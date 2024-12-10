@@ -1,0 +1,112 @@
+name: Release
+run-name: ${{ format('{0} {1}', ((inputs.is-dry-run && 'Dry-run') || inputs.is-github-release-only-run && 'GitHub Release') || 'Release', inputs.tag) }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag / Version number"
+        required: true
+      is-dry-run:
+        description: "Dry-run (do not publish, only test build)"
+        type: boolean
+        default: true
+      is-github-release-only-run:
+        description: "Release to GitHub only (do not upload to Thunderstore). Do not tick Dry-run for this to work"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write # required for pushing to the repository and creating releases
+
+env:
+  thunderstore-config: thunderstore.toml
+  build-dir: build
+  artifact-content-type: application/zip
+
+jobs:
+  release:
+    name: ${{ format('{0} {1}', ((inputs.is-dry-run && 'Dry-run') || inputs.is-github-release-only-run && 'GitHub Release') || 'Release', inputs.tag) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check input tag format
+        run: |
+          if ! echo "${{ inputs.tag }}" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "::error title=Invalid package version number::Version numbers must follow the Major.Minor.Patch format (e.g. 1.45.320)."
+            exit 1
+          fi
+
+      - name: Checkout files
+        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f
+        with:
+          lfs: true
+
+      - name: Rotate version in Thunderstore CLI config
+        run: |
+          sed -i 's/versionNumber = ".*"/versionNumber = "${{ inputs.tag }}"/' ${{ env.thunderstore-config }}
+
+      - name: Install Thunderstore CLI
+        run: dotnet tool install -g tcli
+
+      - name: Build package
+        run: |
+          tcli build
+          ARTIFACT_NAME=$(find "${{ env.build-dir }}" -type f -printf "%f\n")
+          echo "artifact-name=${ARTIFACT_NAME}" >> "$GITHUB_ENV"
+          echo "artifact-path=${{ env.build-dir }}/${ARTIFACT_NAME}" >> "$GITHUB_ENV"
+
+      - name: Upload artifact to workflow
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808
+        with:
+          name: ${{ env.artifact-name }}
+          path: ${{ env.artifact-path }}
+          retention-days: 1
+
+      - name: Publish package
+        if: ${{ !inputs.is-dry-run && !inputs.is-github-release-only-run }}
+        env:
+          TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
+        run: tcli publish --file ${{ env.artifact-path }}
+
+      - name: Tag and push to repository
+        if: ${{ !inputs.is-dry-run }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ${{ env.thunderstore-config }}
+          git commit --message "Release ${{ inputs.tag }}"
+          git tag ${{ inputs.tag }} --annotate --message "Release ${{ inputs.tag }}"
+          git push origin HEAD:${{ github.ref_name }} --tags
+
+      - name: Create Release notes
+        run: |
+          echo "## What's Changed
+          
+          " > RELEASE_NOTES.md
+          sed -n '/<!--Releasenotes start-->/,/<!--Releasenotes end-->/p' CHANGELOG.md >> RELEASE_NOTES.md
+          echo "
+
+          **[Full Changelog](CHANGELOG.md)**" >> RELEASE_NOTES.md
+
+      - name: Create release
+        id: release
+        if: ${{ !inputs.is-dry-run }}
+        uses: actions/create-release@0cb9c9b65d5d1901c1f53e5e66eaf4afd303e70e
+        with:
+          release_name: ${{ inputs.tag }}
+          tag_name: ${{ inputs.tag }}
+          body_path: RELEASE_NOTES.md
+          commitish: ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload artifact to release
+        if: ${{ !inputs.is-dry-run }}
+        uses: actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_name: ${{ env.artifact-name }}
+          asset_path: ${{ env.artifact-path }}
+          asset_content_type: ${{ env.artifact-content-type }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
