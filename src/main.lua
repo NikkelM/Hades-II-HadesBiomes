@@ -80,6 +80,7 @@ local function on_ready()
 	if config.enabled == false then return end
 
 	import "Scripts/HadesBiomes.lua"
+	import "Scripts/RoomSets.lua"
 
 	import "Game/MapGroups.sjson.lua"
 

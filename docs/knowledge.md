@@ -64,6 +64,7 @@ Some data about biomes is stored in `Content/Game/MapGroups.sjson`, for both gam
 
 The respective object grouping for each biome can be copied over from Hades to Hades II.
 Take note that any effects etc. referenced by the `Using` key must be present in Hades II, otherwise the game will crash on startup.
+The format for the values of `Using` also seem to be different between the two games.
 
 ## Map binaries
 
@@ -92,6 +93,12 @@ HadesMapper ec -s -i Hades/Content/Maps/MapName_dc -o Hades II/Content/Maps/bin/
 ```
 
 In the end, for each map, there should be a `.map_text` and a `.thing_bin` file in the `Hades II/Content/Maps` and `Hades II/Content/Maps/bin` directories, respectively.
+
+## Map packages
+
+In Hades, `.pkg` files are in `Content/Win/Packages`, and in Hades II they are in `Content/Packages/<resolution>`.
+As some biome names are re-used (such as Tartarus), we append `ModsNikkelMHadesBiomes` to the biome name in `MapGroups.sjson` and the `.pkg` files.
+The resulting `.pkg` files must be copied from Hades to Hades II, so that all relevant effects and obstacles can exist.
 
 ## Known issues
 
