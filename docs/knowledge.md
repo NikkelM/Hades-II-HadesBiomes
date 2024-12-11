@@ -60,7 +60,13 @@ AddTableKeysCheckDupes( RoomData, RoomSetData.<BiomeName> )
 
 ### Key-Value replacements for RoomData files
 
-TODO
+<!-- TODO -->
+- `RoomSetName` needs to be added to the base room file for the Biome, e.g. `RoomSetName = "A"` for Tartarus.
+- Each room needs a `Name` set to itself, this is handled already by the `mod.ApplyModificationsAndInherit()` function.
+
+#### Not figured out yet
+
+- Door reward previews have the Hades II format, should be possible to get the Hades format instead.
 
 ## Sjson files
 

@@ -80,8 +80,9 @@ local fileNames = {
 	"A_Combat19",
 	"A_Combat20",
 	"A_Combat21",
-	"A_Combat22",
-	"A_Combat23",
+	-- These two rooms have no RoomData table attached, so we don't need to copy them over as well
+	-- "A_Combat22",
+	-- "A_Combat23",
 	"A_Combat24",
 	"A_Combat25",
 	--
@@ -116,4 +117,4 @@ end
 -- Set the config value to false to not do this process again next time the game is run
 print("Finished first time setup")
 -- TODO: Uncomment once done
--- config.firstTimeSetup = false
+config.firstTimeSetup = false
