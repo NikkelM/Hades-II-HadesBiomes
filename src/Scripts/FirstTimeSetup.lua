@@ -1,0 +1,68 @@
+print("First time setup of the mod")
+
+local mod = modutil.mod.Mod.Register(_PLUGIN.guid)
+
+local function copyFile(src, dest)
+	local inputFile = io.open(src, "rb")
+	if not inputFile then
+		error("Could not open source file: " .. src)
+	end
+
+	local outputFile = io.open(dest, "wb")
+	if not outputFile then
+		inputFile:close()
+		error("Could not open destination file: " .. dest)
+	end
+
+	-- Read in blocks to not run out of memory
+	while true do
+		local block = inputFile:read(1024)
+		if not block then break end
+		outputFile:write(block)
+	end
+
+	inputFile:close()
+	outputFile:close()
+end
+
+-- Get and copy the .pkg files for the different biomes
+print("Copying .pkg files...")
+
+local packageFileMappings = {
+	["Content/Win/Packages/Tartarus.pkg"] = "Packages/1080p/TartarusModsNikkelMHadesBiomes.pkg",
+	["Content/Win/Packages/Tartarus.pkg_manifest"] = "Packages/1080p/TartarusModsNikkelMHadesBiomes.pkg_manifest",
+	["Content/Win/Packages/720p/Tartarus.pkg"] = "Packages/720p/TartarusModsNikkelMHadesBiomes.pkg",
+	["Content/Win/Packages/720p/Tartarus.pkg_manifest"] = "Packages/720p/TartarusModsNikkelMHadesBiomes.pkg_manifest",
+}
+
+for src, dest in pairs(packageFileMappings) do
+	local srcPath = rom.path.combine(mod.hadesGameFolder, src)
+	local destPath = rom.path.combine(rom.paths.Content(), dest)
+
+	copyFile(srcPath, destPath)
+	print("Copied " .. src .. " to Content/" .. dest)
+end
+
+-- Copy .map_text files
+print("Copying .map_text files...")
+
+-- TODO: Use regex matching to find e.g. all Tartarus files starting with A_
+local mapTextFileMappings = {
+	["Content/Maps/RoomOpening.map_text"] = "Maps/RoomOpening.map_text",
+}
+
+for src, dest in pairs(mapTextFileMappings) do
+	local srcPath = rom.path.combine(mod.hadesGameFolder, src)
+	local destPath = rom.path.combine(rom.paths.Content(), dest)
+
+	copyFile(srcPath, destPath)
+	print("Copied " .. src .. " to Content/" .. dest)
+end
+
+--TODO: Decode, encode and copy the .thing_bin files
+
+-- Set the config value to false to not do this process again next time the game is run
+print("Finished first time setup")
+-- TODO: Uncomment once done
+-- config.firstTimeSetup = false
+-- chalk.auto("config.lua")

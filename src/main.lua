@@ -79,6 +79,18 @@ local function on_ready()
 	-- what to do when we are ready, but not re-do on reload.
 	if config.enabled == false then return end
 
+	import "Scripts/FileHandling.lua"
+
+	if config.firstTimeSetup then
+		import "Scripts/FirstTimeSetup.lua"
+	end
+
+	-- TODO: Implement
+	if config.uninstall then
+		import "Scripts/Uninstall.lua"
+		return
+	end
+
 	import "Scripts/HadesBiomes.lua"
 	import "Scripts/RoomSets.lua"
 

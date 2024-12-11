@@ -83,13 +83,13 @@ The following tool developed by the Hades modding community can be used: [HadesM
 First, decode a `.thing_bin` file from Hades (don't use file extensions):
 
 ```bash
-HadesMapper dc -i Hades/Content/Win/Maps/MapName -o Hades/Content/Maps/MapName_dc
+HadesMapper dc -i Hades/Content/Win/Maps/<MapName> -o Hades/Content/Maps/<MapName_dc>
 ```
 
 Then, encode it for Hades II. The `-s` flag stands for `sequel`, meaning Hades II:
 
 ```bash
-HadesMapper ec -s -i Hades/Content/Maps/MapName_dc -o Hades II/Content/Maps/bin/MapName
+HadesMapper ec -s -i Hades/Content/Maps/<MapName_dc> -o Hades II/Content/Maps/bin/<MapName>
 ```
 
 In the end, for each map, there should be a `.map_text` and a `.thing_bin` file in the `Hades II/Content/Maps` and `Hades II/Content/Maps/bin` directories, respectively.
