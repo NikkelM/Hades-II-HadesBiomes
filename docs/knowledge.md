@@ -67,6 +67,7 @@ AddTableKeysCheckDupes( RoomData, RoomSetData.<BiomeName> )
 #### Not figured out yet
 
 - Door reward previews have the Hades II format, should be possible to get the Hades format instead.
+- Interaction points on the maps that have the narrator voiceover often use different voicelines (i.e. same ID is used for a different voiceline in Hades II).
 
 ## Sjson files
 

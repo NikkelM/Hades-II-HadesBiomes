@@ -10,14 +10,16 @@ local newRoomSets = {
 		"A_Boss03",
 		"A_PostBoss01",
 
-		"A_MiniBoss01",
-		"A_MiniBoss02",
-		"A_MiniBoss03",
-		"A_MiniBoss04",
+		-- TODO: LegalEncounters
+		-- "A_MiniBoss01",
+		-- "A_MiniBoss02",
+		-- "A_MiniBoss03",
+		-- "A_MiniBoss04",
 
 		"A_Shop01",
 
-		"A_Story01",
+		-- TODO: LegalEncounters = { "Story_Sisyphus_01" } doesn't exist
+		-- "A_Story01",
 
 		"A_Reprieve01",
 		"A_Reprieve01",

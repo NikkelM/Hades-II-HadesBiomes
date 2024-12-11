@@ -33,6 +33,7 @@ function mod.ApplyModificationsAndInherit(base, modifications)
 	game.AddTableKeysCheckDupes(game.RoomData, base)
 	for roomName, roomData in pairs(base) do
 		game.ProcessDataInheritance(roomData, game.RoomData)
-		game.RoomData[roomName] = roomData
+		base[roomName] = roomData
 	end
+	game.AddTableKeysCheckDupes(game.RoomData, base)
 end

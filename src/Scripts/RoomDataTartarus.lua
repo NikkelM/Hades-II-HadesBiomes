@@ -4,7 +4,6 @@ local roomSetDataTartarus = mod.LoadHadesRoomData("RoomDataTartarus.lua").Tartar
 local roomModifications = {
 	BaseTartarus = {
 		LegalEncounters = game.EncounterSets.FEncountersDefault,
-		RoomSetName = "Tartarus" -- TODO: Needed?
 	},
 	RoomOpening = {
 		LegalEncounters = { "OpeningEmpty", "OpeningGeneratedF" },
@@ -21,3 +20,6 @@ local roomModifications = {
 }
 
 mod.ApplyModificationsAndInherit(roomSetDataTartarus, roomModifications)
+-- Applies modifications to the rooms, such as LegalEncounterDictionary
+-- TODO: Move to after all biomes are loaded
+game.SetupRunData()

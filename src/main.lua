@@ -93,10 +93,10 @@ local function on_ready()
 	end
 
 	-- TODO: Before proceeding, check that required files exist
-	import "Scripts/HadesBiomes.lua"
 	import "Scripts/RoomSets.lua"
 	import "Scripts/RoomDataTartarus.lua"
 
+	-- General data needed for map generation/display
 	import "Game/MapGroups.sjson.lua"
 
 	-- Localization/Text replacements
