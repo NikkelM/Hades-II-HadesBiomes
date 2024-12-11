@@ -40,7 +40,7 @@ for src, dest in pairs(packageFileMappings) do
 	local destPath = rom.path.combine(rom.paths.Content(), dest)
 
 	copyFile(srcPath, destPath)
-	print("Copied " .. src .. " to Content/" .. dest)
+	print("Copied Hades/" .. src .. " to Hades II/Content/" .. dest)
 end
 
 -- Copy .map_text files
@@ -56,10 +56,23 @@ for src, dest in pairs(mapTextFileMappings) do
 	local destPath = rom.path.combine(rom.paths.Content(), dest)
 
 	copyFile(srcPath, destPath)
-	print("Copied " .. src .. " to Content/" .. dest)
+	print("Copied Hades/" .. src .. " to Hades II/Content/" .. dest)
 end
 
---TODO: Decode, encode and copy the .thing_bin files
+--Copy over re-encoded .thing_bin files from the plugins_data folder to the game folder
+print("Copying re-encoded .thing_bin files...")
+
+local thingBinFileMappings = {
+	[_PLUGIN.guid .. "/RoomOpening.thing_bin"] = "Maps/bin/RoomOpening.thing_bin",
+}
+
+for src, dest in pairs(thingBinFileMappings) do
+	local srcPath = rom.path.combine(rom.paths.plugins_data(), src)
+	local destPath = rom.path.combine(rom.paths.Content(), dest)
+
+	copyFile(srcPath, destPath)
+	print("Copied plugins_data/" .. src .. " to Hades II/Content/" .. dest)
+end
 
 -- Set the config value to false to not do this process again next time the game is run
 print("Finished first time setup")

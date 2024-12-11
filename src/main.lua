@@ -81,14 +81,14 @@ local function on_ready()
 
 	import "Scripts/FileHandling.lua"
 
-	if config.firstTimeSetup then
-		import "Scripts/FirstTimeSetup.lua"
-	end
-
 	-- TODO: Implement
 	if config.uninstall then
 		import "Scripts/Uninstall.lua"
 		return
+	end
+
+	if config.firstTimeSetup then
+		import "Scripts/FirstTimeSetup.lua"
 	end
 
 	import "Scripts/HadesBiomes.lua"
