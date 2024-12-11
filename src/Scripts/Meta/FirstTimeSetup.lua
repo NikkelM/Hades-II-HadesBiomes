@@ -43,36 +43,74 @@ for src, dest in pairs(packageFileMappings) do
 	print("Copied Hades/" .. src .. " to Hades II/Content/" .. dest)
 end
 
+local fileNames = {
+	-- Tartarus
+	"RoomOpening",
+	"A_PreBoss01",
+	"A_Boss01",
+	"A_Boss02",
+	"A_Boss03",
+	"A_PostBoss01",
+	"A_MiniBoss01",
+	"A_MiniBoss02",
+	"A_MiniBoss03",
+	"A_MiniBoss04",
+	"A_Shop01",
+	"A_Story01",
+	"A_Reprieve01",
+	"A_Combat01",
+	"A_Combat02",
+	"A_Combat03",
+	"A_Combat04",
+	"A_Combat05",
+	"A_Combat06",
+	"A_Combat07",
+	"A_Combat08A",
+	"A_Combat08B",
+	"A_Combat09",
+	"A_Combat10",
+	"A_Combat11",
+	"A_Combat12",
+	"A_Combat13",
+	"A_Combat14",
+	"A_Combat15",
+	"A_Combat16",
+	"A_Combat17",
+	"A_Combat18",
+	"A_Combat19",
+	"A_Combat20",
+	"A_Combat21",
+	"A_Combat22",
+	"A_Combat23",
+	"A_Combat24",
+	"A_Combat25",
+	--
+}
+
 -- Copy .map_text files
 print("Copying .map_text files...")
 
-local mapTextFileMappings = {
-	["Content/Maps/RoomOpening.map_text"] = "Maps/RoomOpening.map_text",
-	["Content/Maps/A_Combat01.map_text"] = "Maps/A_Combat01.map_text",
-}
-
-for src, dest in pairs(mapTextFileMappings) do
-	local srcPath = rom.path.combine(mod.hadesGameFolder, src)
-	local destPath = rom.path.combine(rom.paths.Content(), dest)
+for _, name in ipairs(fileNames) do
+	local mapTextSrc = "Content/Maps/" .. name .. ".map_text"
+	local mapTextDest = "Maps/" .. name .. ".map_text"
+	local srcPath = rom.path.combine(mod.hadesGameFolder, mapTextSrc)
+	local destPath = rom.path.combine(rom.paths.Content(), mapTextDest)
 
 	copyFile(srcPath, destPath)
-	print("Copied Hades/" .. src .. " to Hades II/Content/" .. dest)
+	print("Copied Hades/" .. mapTextSrc .. " to Hades II/Content/" .. mapTextDest)
 end
 
---Copy over re-encoded .thing_bin files from the plugins_data folder to the game folder
+-- Copy over re-encoded .thing_bin files from the plugins_data folder to the game folder
 print("Copying re-encoded .thing_bin files...")
 
-local thingBinFileMappings = {
-	[_PLUGIN.guid .. "/RoomOpening.thing_bin"] = "Maps/bin/RoomOpening.thing_bin",
-	[_PLUGIN.guid .. "/A_Combat01.thing_bin"] = "Maps/bin/A_Combat01.thing_bin",
-}
-
-for src, dest in pairs(thingBinFileMappings) do
-	local srcPath = rom.path.combine(rom.paths.plugins_data(), src)
-	local destPath = rom.path.combine(rom.paths.Content(), dest)
+for _, name in ipairs(fileNames) do
+	local thingBinSrc = _PLUGIN.guid .. "/" .. name .. ".thing_bin"
+	local thingBinDest = "Maps/bin/" .. name .. ".thing_bin"
+	local srcPath = rom.path.combine(rom.paths.plugins_data(), thingBinSrc)
+	local destPath = rom.path.combine(rom.paths.Content(), thingBinDest)
 
 	copyFile(srcPath, destPath)
-	print("Copied plugins_data/" .. src .. " to Hades II/Content/" .. dest)
+	print("Copied plugins_data/" .. thingBinSrc .. " to Hades II/Content/" .. thingBinDest)
 end
 
 -- Set the config value to false to not do this process again next time the game is run

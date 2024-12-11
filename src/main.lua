@@ -92,6 +92,7 @@ local function on_ready()
 		import "Scripts/Meta/FirstTimeSetup.lua"
 	end
 
+	-- TODO: Before proceeding, check that required files exist
 	import "Scripts/HadesBiomes.lua"
 	import "Scripts/RoomSets.lua"
 	import "Scripts/RoomDataTartarus.lua"
