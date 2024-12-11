@@ -77,5 +77,5 @@ end
 -- Set the config value to false to not do this process again next time the game is run
 print("Finished first time setup")
 -- TODO: Uncomment once done
--- config.firstTimeSetup = false
+config.firstTimeSetup = false
 -- chalk.auto("config.lua")

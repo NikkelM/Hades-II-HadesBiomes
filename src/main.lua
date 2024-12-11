@@ -93,6 +93,7 @@ local function on_ready()
 
 	import "Scripts/HadesBiomes.lua"
 	import "Scripts/RoomSets.lua"
+	import "Scripts/RoomDataTartarus.lua"
 
 	import "Game/MapGroups.sjson.lua"
 
