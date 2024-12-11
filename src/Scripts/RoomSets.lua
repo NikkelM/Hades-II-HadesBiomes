@@ -1,7 +1,7 @@
 local newRoomSets = {
 	-- TartarusModsNikkelMHadesBiomes / Tartarus 
 	A = {
-		"RoomSimple01",
+		-- "RoomSimple01",
 		"RoomOpening",
 
 		"A_PreBoss01",

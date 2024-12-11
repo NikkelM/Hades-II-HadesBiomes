@@ -46,9 +46,9 @@ end
 -- Copy .map_text files
 print("Copying .map_text files...")
 
--- TODO: Use regex matching to find e.g. all Tartarus files starting with A_
 local mapTextFileMappings = {
 	["Content/Maps/RoomOpening.map_text"] = "Maps/RoomOpening.map_text",
+	["Content/Maps/A_Combat01.map_text"] = "Maps/A_Combat01.map_text",
 }
 
 for src, dest in pairs(mapTextFileMappings) do
@@ -64,6 +64,7 @@ print("Copying re-encoded .thing_bin files...")
 
 local thingBinFileMappings = {
 	[_PLUGIN.guid .. "/RoomOpening.thing_bin"] = "Maps/bin/RoomOpening.thing_bin",
+	[_PLUGIN.guid .. "/A_Combat01.thing_bin"] = "Maps/bin/A_Combat01.thing_bin",
 }
 
 for src, dest in pairs(thingBinFileMappings) do
@@ -77,5 +78,4 @@ end
 -- Set the config value to false to not do this process again next time the game is run
 print("Finished first time setup")
 -- TODO: Uncomment once done
-config.firstTimeSetup = false
--- chalk.auto("config.lua")
+-- config.firstTimeSetup = false

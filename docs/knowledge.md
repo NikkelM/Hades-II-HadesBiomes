@@ -35,6 +35,12 @@ For Hades, these are the mappings:
 | Charon     | Charon                           | Bossfight                               |
 | Erebus     | RoomChallenge                    | For challenge/teleported by Hades rooms |
 
+## Special rooms
+
+### RoomSimple01
+
+This is the `RoomOpening` for the first run, where a specific set of Athena boons is forced.
+
 ## RoomData lua files
 
 Biome data is stored in `RoomData<BiomeName>.lua` files in Hades under `Hades/Content/Scripts`.
@@ -83,13 +89,14 @@ The following tool developed by the Hades modding community can be used: [HadesM
 First, decode a `.thing_bin` file from Hades (don't use file extensions):
 
 ```bash
-HadesMapper dc -i Hades/Content/Win/Maps/<MapName> -o Hades/Content/Maps/<MapName_dc>
+HadesMapper dc -i Hades/Content/Win/Maps/<MapName> -o Hades/Content/Win/Maps/<MapName_dc>
 ```
 
-Then, encode it for Hades II. The `-s` flag stands for `sequel`, meaning Hades II:
+Then, encode it for Hades II. The `-s` flag stands for `sequel`, meaning Hades II.
+We place the encoded file in the `data` folder of the mod, so it gets added to `plugins_data`:
 
 ```bash
-HadesMapper ec -s -i Hades/Content/Maps/<MapName_dc> -o Hades II/Content/Maps/bin/<MapName>
+HadesMapper ec -s -i Hades/Content/Maps/<MapName_dc> -o <Modroot>/data/<MapName>
 ```
 
 In the end, for each map, there should be a `.map_text` and a `.thing_bin` file in the `Hades II/Content/Maps` and `Hades II/Content/Maps/bin` directories, respectively.

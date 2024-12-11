@@ -80,6 +80,7 @@ local function on_ready()
 	if config.enabled == false then return end
 
 	import "Scripts/Meta/FileHandling.lua"
+	import "Scripts/RoomData.lua"
 
 	-- TODO: Implement
 	if config.uninstall then
