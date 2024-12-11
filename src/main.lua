@@ -81,6 +81,8 @@ local function on_ready()
 
 	import "Scripts/HadesBiomes.lua"
 
+	import "Game/MapGroups.sjson.lua"
+
 	-- Localization/Text replacements
 	import 'Game/Text/HelpText.en.sjson.lua'
 end
