@@ -1,6 +1,6 @@
 local newRoomSets = {
-	-- TartarusModsNikkelMHadesBiomes / Tartarus
-	A = {
+	-- Tartarus
+	Tartarus = {
 		-- "RoomSimple01",
 		"RoomOpening",
 
@@ -58,7 +58,7 @@ end
 
 local newNextRoomSets = {
 	-- Dummy, after Tartarus comes Erebus
-	A = "F"
+	Tartarus = "F"
 }
 
 for key, newNextRoomSet in pairs(newNextRoomSets) do

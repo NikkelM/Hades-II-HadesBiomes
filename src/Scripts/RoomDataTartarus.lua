@@ -4,11 +4,11 @@ local roomSetDataTartarus = mod.LoadHadesRoomData("RoomDataTartarus.lua").Tartar
 local roomModifications = {
 	BaseTartarus = {
 		LegalEncounters = game.EncounterSets.FEncountersDefault,
-		RoomSetName = "A"
+		RoomSetName = "Tartarus" -- TODO: Needed?
 	},
 	RoomOpening = {
 		LegalEncounters = { "OpeningEmpty", "OpeningGeneratedF" },
-		NextRoomSet = { "A", },
+		-- NextRoomSet = { "A" }, -- No longer needed as we are using Tartarus again
 		EntranceFunctionName = "RoomEntranceMaterialize",
 		EntranceFunctionArgs = { HeroGoalAngle = 335 }, -- the spawn point is a bit far away, so Mel doesn't get all the way to the main room area with her dash
 		UnthreadedEvents = {},
