@@ -108,6 +108,9 @@ local function on_ready()
 		-- General data needed for map generation/display
 		import "Game/MapGroups.sjson.lua"
 
+		-- "Normal" code changes
+		import "Scripts/DeathLoopData.lua"
+
 		-- Localization/Text replacements
 		import 'Game/Text/HelpText.en.sjson.lua'
 	else

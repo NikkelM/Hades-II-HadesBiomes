@@ -93,7 +93,7 @@ function mod.FirstTimeSetup()
 
 	-- Check that all files exist
 	if not mod.CheckRequiredFiles() then
-		error("Required files are missing immediately after first time setup. Please check the log for more information.")
+		error("Required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check your config file.")
 	end
 
 	-- Will also update the .cfg file for the user

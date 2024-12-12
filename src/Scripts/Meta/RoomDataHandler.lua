@@ -7,6 +7,7 @@ function mod.LoadHadesRoomData(fileName)
 	if chunk then
 		chunk()
 		-- No worries if this is marked as undefined, it comes from the loaded file
+		---@diagnostic disable-next-line: undefined-global
 		return RoomSetData
 	else
 		print("Error loading RoomData: " .. err)
