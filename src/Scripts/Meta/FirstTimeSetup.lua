@@ -1,5 +1,5 @@
 function mod.FirstTimeSetup()
-	print("Running first time setup of the mod...")
+	print("Installing the mod...")
 
 	-- Get and copy the .pkg files for the different biomes
 	print("Copying .pkg files...")
@@ -46,6 +46,13 @@ function mod.FirstTimeSetup()
 		error(
 			"Required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check your config file.")
 	end
+
+	-- Copy the Scripts/checksums.txt to the plugins_data folder
+	print("Copying checksums.txt to be notified after a game update...")
+
+	local checksumsSrc = rom.path.combine(rom.paths.Content(), "Scripts\\checksums.txt")
+	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
+	CopyFile(checksumsSrc, checksumsDest, true)
 
 	-- Will also update the .cfg file for the user
 	config.firstTimeSetup = false
@@ -97,6 +104,7 @@ function mod.CheckRequiredFiles()
 	return true
 end
 
+-- Creates a new helpTextFile for all given languages with any IDs that do not exist in the Hades II help text files
 function CopyHadesHelpTexts()
 	for _, language in ipairs(HelpTextLanguages) do
 		print("Copying help text for language: " .. language)
@@ -129,7 +137,20 @@ function CopyHadesHelpTexts()
 	end
 end
 
-function CopyFile(src, dest)
+-- Copies a file from src to dest
+
+function CopyFile(src, dest, skipCheck)
+	skipCheck = skipCheck or false
+	-- Check if the file already exists
+	if not skipCheck then
+		local destFile = io.open(dest, "r")
+		if destFile then
+			destFile:close()
+			print("Warning: File already exists and will not be overwritten: " .. dest)
+			return
+		end
+	end
+
 	local inputFile = io.open(src, "rb")
 	if not inputFile then
 		error("Could not open source file: " .. src)

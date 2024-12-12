@@ -89,8 +89,11 @@ local function on_ready()
 	import "Scripts/Meta/FirstTimeSetup.lua"
 	import "Scripts/Meta/Uninstall.lua"
 
+	-- If the game was updated, the file checksums very likely got updated as well
+	-- We can use this to determine if we should re-install the mod, to make sure we do not interfere with any files the game modified
+	mod.CompareChecksums()
+
 	if config.uninstall then
-		-- TODO: Automatically re-install after an update to the game (needed e.g. in case HelpText values were changed)
 		mod.Uninstall()
 		if not config.firstTimeSetup then
 			return
