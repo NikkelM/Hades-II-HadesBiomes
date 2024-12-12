@@ -82,6 +82,7 @@ local function on_ready()
 	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
 
 	-- File handling and other generic functions
+	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 	import "Scripts/Meta/RoomDataHandler.lua"
 
@@ -89,10 +90,11 @@ local function on_ready()
 	import "Scripts/Meta/Uninstall.lua"
 
 	if config.uninstall then
-		-- TODO: Implement
 		-- TODO: Automatically re-install after an update to the game (needed e.g. in case HelpText values were changed)
 		mod.Uninstall()
-		return
+		if not config.firstTimeSetup then
+			return
+		end
 	end
 
 	if config.firstTimeSetup then
