@@ -79,28 +79,40 @@ local function on_ready()
 	-- what to do when we are ready, but not re-do on reload.
 	if config.enabled == false then return end
 
-	import "Scripts/Meta/FileHandling.lua"
-	import "Scripts/RoomData.lua"
+	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
 
-	-- TODO: Implement
+	-- File handling and other generic functions
+	import "Scripts/Meta/FileHandling.lua"
+	import "Scripts/Meta/RoomDataHandler.lua"
+
+	import "Scripts/Meta/FirstTimeSetup.lua"
+	import "Scripts/Meta/Uninstall.lua"
+
 	if config.uninstall then
-		import "Scripts/Meta/Uninstall.lua"
+		-- TODO: Implement
+		mod.Uninstall()
 		return
 	end
 
 	if config.firstTimeSetup then
-		import "Scripts/Meta/FirstTimeSetup.lua"
+		mod.FirstTimeSetup()
 	end
 
-	-- TODO: Before proceeding, check that required files exist
-	import "Scripts/RoomSets.lua"
-	import "Scripts/RoomDataTartarus.lua"
+	-- Before proceeding, check that required files exist
+	if mod.CheckRequiredFiles() then
+		import "Scripts/RoomSets.lua"
+		import "Scripts/RoomDataTartarus.lua"
+		-- This function adds some extra fields to the room data, which we would otherwise be missing if loading a save during a run
+		game.SetupRunData()
 
-	-- General data needed for map generation/display
-	import "Game/MapGroups.sjson.lua"
+		-- General data needed for map generation/display
+		import "Game/MapGroups.sjson.lua"
 
-	-- Localization/Text replacements
-	import 'Game/Text/HelpText.en.sjson.lua'
+		-- Localization/Text replacements
+		import 'Game/Text/HelpText.en.sjson.lua'
+	else
+		error("Required files are missing. Please run first time setup by setting the config value to true, and check the log.")
+	end
 end
 
 local function on_reload()

@@ -1,7 +1,5 @@
 -- Contains generic functions to handle migrating room data from Hades to Hades II
 
-local mod = modutil.mod.Mod.Register(_PLUGIN.guid)
-
 -- Loads RoomData from a file in Hades
 function mod.LoadHadesRoomData(fileName)
 	local pathName = rom.path.combine(mod.hadesGameFolder, "Content/Scripts", fileName)

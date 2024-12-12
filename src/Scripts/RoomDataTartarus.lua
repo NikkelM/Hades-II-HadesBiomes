@@ -1,5 +1,3 @@
-local mod = modutil.mod.Mod.Register(_PLUGIN.guid)
-
 local roomSetDataTartarus = mod.LoadHadesRoomData("RoomDataTartarus.lua").Tartarus
 local roomModifications = {
 	BaseTartarus = {
@@ -21,5 +19,3 @@ local roomModifications = {
 
 mod.ApplyModificationsAndInherit(roomSetDataTartarus, roomModifications)
 -- Applies modifications to the rooms, such as LegalEncounterDictionary
--- TODO: Move to after all biomes are loaded
-game.SetupRunData()
