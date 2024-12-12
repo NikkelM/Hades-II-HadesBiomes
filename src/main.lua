@@ -90,6 +90,7 @@ local function on_ready()
 
 	if config.uninstall then
 		-- TODO: Implement
+		-- TODO: Automatically re-install after an update to the game (needed e.g. in case HelpText values were changed)
 		mod.Uninstall()
 		return
 	end
@@ -114,9 +115,6 @@ local function on_ready()
 
 		-- "Normal" code changes
 		import "Scripts/DeathLoopData.lua"
-
-		-- Localization/Text replacements
-		import 'Game/Text/HelpText.en.sjson.lua'
 	else
 		error(
 			"Required files are missing. Please run first time setup by setting the config value to true, and check the log.")

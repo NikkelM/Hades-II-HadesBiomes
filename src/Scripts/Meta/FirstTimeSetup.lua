@@ -51,6 +51,22 @@ local mapFileNames = {
 	--
 }
 
+-- Languages supported by Hades
+-- Languages other than english are currently not working, as decoding the file from Hades results in a nil value
+local languages = {
+	-- "de",
+	"en",
+	-- "es",
+	-- "fr",
+	-- "it",
+	-- "ja",
+	-- "ko",
+	-- "pl",
+	-- "pt-BR",
+	-- "ru",
+	-- "zh-CN"
+}
+
 function mod.FirstTimeSetup()
 	print("Running first time setup of the mod...")
 
@@ -91,20 +107,24 @@ function mod.FirstTimeSetup()
 		print("Copied plugins_data/" .. thingBinSrc .. " to Hades II/Content/" .. thingBinDest)
 	end
 
+	print("Copying help text files...")
+	CopyHadesHelpTexts()
+
 	-- Check that all files exist
 	if not mod.CheckRequiredFiles() then
-		error("Required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check your config file.")
+		error(
+			"Required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check your config file.")
 	end
 
 	-- Will also update the .cfg file for the user
 	config.firstTimeSetup = false
 
-	print("Finished first time setup")
+	print("Finished first time setup, set config value to false.")
 end
 
 -- Ensure that required files exist, i.e. the first time setup has been successfully run
 function mod.CheckRequiredFiles()
-	-- Ensure pkg, thing_bin and map_text files exist
+	-- Ensure pkg files exist
 	for src, dest in pairs(packageFileMappings) do
 		local destPath = rom.paths.Content() .. "/" .. dest
 		if not io.open(destPath, "r") then
@@ -113,6 +133,7 @@ function mod.CheckRequiredFiles()
 		end
 	end
 
+	-- Ensure map_text files exist
 	for _, name in ipairs(mapFileNames) do
 		local mapTextDest = "Maps/" .. name .. ".map_text"
 		local destPath = rom.paths.Content() .. "/" .. mapTextDest
@@ -122,6 +143,7 @@ function mod.CheckRequiredFiles()
 		end
 	end
 
+	-- Ensure thing_bin files exist
 	for _, name in ipairs(mapFileNames) do
 		local thingBinDest = "Maps/bin/" .. name .. ".thing_bin"
 		local destPath = rom.paths.Content() .. "/" .. thingBinDest
@@ -131,7 +153,49 @@ function mod.CheckRequiredFiles()
 		end
 	end
 
+	-- Ensure help text files exist
+	for _, language in ipairs(languages) do
+		local helpTextFile = rom.path.combine(rom.paths.Content(),
+			'Game/Text/' .. language .. '/HelpTextHades.' .. language .. '.sjson')
+		if not io.open(helpTextFile, "r") then
+			print("Missing file: " .. helpTextFile)
+			return false
+		end
+	end
+
 	return true
+end
+
+function CopyHadesHelpTexts()
+	for _, language in ipairs(languages) do
+		print("Copying help text for language: " .. language)
+
+		local helpTextFile = rom.path.combine(rom.paths.Content(),
+			'Game\\Text\\' .. language .. '\\HelpText.' .. language .. '.sjson')
+		local helpTextData = sjson.decode_file(helpTextFile)
+
+		local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder,
+			'Content\\Game\\Text\\' .. language .. '\\HelpText.' .. language .. '.sjson')
+		local hadesHelpTextData = sjson.decode_file(hadesHelpTextFile)
+
+		local existingIds = {}
+		for _, entry in ipairs(helpTextData.Texts) do
+			existingIds[entry.Id] = true
+		end
+
+		-- Remove all existingIds from hadesHelpTextData - we don't want to overwrite something that already exists in Hades II
+		for i = #hadesHelpTextData.Texts, 1, -1 do
+			local entry = hadesHelpTextData.Texts[i]
+			if existingIds[entry.Id] then
+				table.remove(hadesHelpTextData.Texts, i)
+			end
+		end
+
+		-- Encode the hadesHelpTextFile to a new file in the Hades II folder
+		local hadesHelpTextFileHades = rom.path.combine(rom.paths.Content(),
+			'Game/Text/' .. language .. '/HelpTextHades.' .. language .. '.sjson')
+		sjson.encode_file(hadesHelpTextFileHades, hadesHelpTextData)
+	end
 end
 
 function CopyFile(src, dest)
