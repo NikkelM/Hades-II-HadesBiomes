@@ -100,13 +100,17 @@ local function on_ready()
 
 	-- Before proceeding, check that required files exist
 	if mod.CheckRequiredFiles() then
+		-- Loads room data
 		import "Scripts/RoomSets.lua"
 		import "Scripts/RoomDataTartarus.lua"
-		-- This function adds some extra fields to the room data, which we would otherwise be missing if loading a save during a run
+		-- Applies modifications to the rooms, such as LegalEncounterDictionary
 		game.SetupRunData()
 
 		-- General data needed for map generation/display
 		import "Game/MapGroups.sjson.lua"
+
+		-- Function mappings between Hades and Hades II
+		import "Scripts/FunctionMappings.lua"
 
 		-- "Normal" code changes
 		import "Scripts/DeathLoopData.lua"
@@ -114,7 +118,8 @@ local function on_ready()
 		-- Localization/Text replacements
 		import 'Game/Text/HelpText.en.sjson.lua'
 	else
-		error("Required files are missing. Please run first time setup by setting the config value to true, and check the log.")
+		error(
+			"Required files are missing. Please run first time setup by setting the config value to true, and check the log.")
 	end
 end
 

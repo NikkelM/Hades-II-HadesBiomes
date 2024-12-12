@@ -2,20 +2,20 @@ local roomSetDataTartarus = mod.LoadHadesRoomData("RoomDataTartarus.lua").Tartar
 local roomModifications = {
 	BaseTartarus = {
 		LegalEncounters = game.EncounterSets.FEncountersDefault,
+		SaveProfileLocationText = roomSetDataTartarus.BaseTartarus.LocationText,
 	},
 	RoomOpening = {
 		LegalEncounters = { "OpeningEmpty", "OpeningGeneratedF" },
-		-- NextRoomSet = { "A" }, -- No longer needed as we are using Tartarus again
-		EntranceFunctionName = "RoomEntranceMaterialize",
-		EntranceFunctionArgs = { HeroGoalAngle = 335 }, -- the spawn point is a bit far away, so Mel doesn't get all the way to the main room area with her dash
+		EntranceFunctionArgs = { HeroGoalAngle = 335 },
 		UnthreadedEvents = {},
 		ThreadedEvents = {
-			[3] = {}
-		}
+			[1] = roomSetDataTartarus.RoomOpening.ThreadedEvents[1],
+			[2] = roomSetDataTartarus.RoomOpening.ThreadedEvents[2],
+			[3] = nil
+		},
 	},
-	-- This is the first run RoomOpening room, which forces Athena boons
+	-- This is the first run's opening room, which forces Athena boons
 	RoomSimple01 = nil,
 }
 
 mod.ApplyModificationsAndInherit(roomSetDataTartarus, roomModifications)
--- Applies modifications to the rooms, such as LegalEncounterDictionary
