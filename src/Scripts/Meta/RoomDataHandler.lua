@@ -2,20 +2,23 @@
 
 -- Loads RoomData from a file in Hades
 function mod.LoadHadesRoomData(fileName)
-	local pathName = rom.path.combine(mod.hadesGameFolder, "Content/Scripts", fileName)
+	local originalRoomSetData = game.RoomSetData
+	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
 	local chunk, err = loadfile(pathName)
 	if chunk then
 		chunk()
 		-- No worries if this is marked as undefined, it comes from the loaded file
 		---@diagnostic disable-next-line: undefined-global
-		return RoomSetData
+		local hadesRoomSetData = RoomSetData
+		game.RoomSetData = originalRoomSetData
+		return hadesRoomSetData
 	else
 		print("Error loading RoomData: " .. err)
 	end
 end
 
 -- Applies modifications to base room objects, and then adds the new room objects to the game
-function mod.ApplyModificationsAndInherit(base, modifications)
+function mod.ApplyModificationsAndInheritRoomData(base, modifications)
 	-- Apply modifications
 	for roomName, roomData in pairs(modifications) do
 		for key, value in pairs(roomData) do

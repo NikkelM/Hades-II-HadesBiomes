@@ -1,16 +1,20 @@
+-- TODO: Collision in Tartarus rooms doesn't work (pillars), traps no longer triggering?
+
 local roomSetDataTartarus = mod.LoadHadesRoomData("RoomDataTartarus.lua").Tartarus
 local roomModifications = {
 	BaseTartarus = {
-		LegalEncounters = game.EncounterSets.FEncountersDefault,
+		-- LegalEncounters = game.EncounterSets.FEncountersDefault,
 		SaveProfileLocationText = roomSetDataTartarus.BaseTartarus.LocationText,
 	},
 	RoomOpening = {
-		LegalEncounters = { "OpeningEmpty", "OpeningGeneratedF" },
+		LegalEncounters = { "OpeningGenerated" },
+		-- LegalEncounters = { "OpeningEmpty", "OpeningGeneratedF" },
 		EntranceFunctionArgs = { HeroGoalAngle = 335 },
 		UnthreadedEvents = {},
 		ThreadedEvents = {
 			[1] = roomSetDataTartarus.RoomOpening.ThreadedEvents[1],
 			[2] = roomSetDataTartarus.RoomOpening.ThreadedEvents[2],
+			-- This will work with roomSetDataTartarus.RoomOpening.ThreadedEvents[3].Args.SpawnTypes = { "TartarusGhost01" }, but has the problem of spawning all Ghosts on the same ID
 			[3] = nil
 		},
 	},
@@ -18,4 +22,4 @@ local roomModifications = {
 	RoomSimple01 = nil,
 }
 
-mod.ApplyModificationsAndInherit(roomSetDataTartarus, roomModifications)
+mod.ApplyModificationsAndInheritRoomData(roomSetDataTartarus, roomModifications)

@@ -85,6 +85,9 @@ local function on_ready()
 	-- File handling and other generic functions
 	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/FileHandling.lua"
+
+	import "Scripts/Meta/EnemyDataHandler.lua"
+	import "Scripts/Meta/EncounterDataHandler.lua"
 	import "Scripts/Meta/RoomDataHandler.lua"
 
 	import "Scripts/Meta/FirstTimeSetup.lua"

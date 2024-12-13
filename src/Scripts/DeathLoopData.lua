@@ -49,5 +49,7 @@ function mod.StartHadesRun(source, args)
 	game.LeaveRoomSecretDoorPresentation(game.CurrentRun, source)
 	game.ConfigOptionCache.ShowDamageNumbers = originalConfigDamageOption
 
+	-- TODO: Also load the package when loading a save? Is that needed?
+	LoadPackages({ Name = "TartarusModsNikkelMHadesBiomes" })
 	game.UseEscapeDoor(source, args)
 end
