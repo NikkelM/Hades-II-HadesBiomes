@@ -1,17 +1,9 @@
--- TODO: Create a new "door" to start a Hades run
--- For now, changes the behaviour of the downstairs door to start a Hades run, instead of a Hades II run
--- game.HubRoomData.Hub_PreRun.ObstacleData[420947].OnUsedFunctionArgs = { StartingBiome = "Tartarus", DashTarget = 588632, AltarId = 589766, }
-
--- Chaos gate next to the vows shrine?
-
 -- Add the setup function to the Hub room
 table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 	FunctionName = _PLUGIN.guid .. '.' .. 'SpawnHadesRunStartDoor',
 })
 
 function mod.SpawnHadesRunStartDoor(source, args)
-	print("SpawnHadesRunStartDoor")
-
 	-- Vow shrine: 589694
 	-- Run start door underworld
 	local spawnId = 420947
@@ -35,18 +27,27 @@ function mod.SpawnHadesRunStartDoor(source, args)
 	chaosGate.SpeakerName = nil
 	chaosGate.DistanceTrigger = {}
 	chaosGate.UnlockedSound = nil
+	chaosGate.HealthCost = nil
+
 	chaosGate.UseText = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText"
-	chaosGate.OnUseEvents = {
-		{ FunctionName = _PLUGIN.guid .. '.' .. 'StartHadesRun', },
-	}
-	-- chaosGate.OnUsedFunctionArgs = { StartingBiome = "F", DashTarget = 588632, AltarId = 589766, }
+	-- Normally this would check if the exit door for a room can be used - we always allow it
+	-- Might add a requirement here if we ever put Hades runs behind a requirement/enchantment
+	chaosGate.OnUseEvents = {}
+	chaosGate.OnUsedFunctionName = _PLUGIN.guid .. '.' .. 'StartHadesRun'
+	chaosGate.OnUsedFunctionArgs = { StartingBiome = "Tartarus" }
 
 	game.SetupObstacle(chaosGate)
 	AddToGroup({ Id = chaosGate.ObjectId, Name = "ModsNikkelMHadesBiomes.RunStartDoor" })
 end
 
 function mod.StartHadesRun(source, args)
-	print("StartHadesRun")
-	-- LeaveRoomSecretDoorPresentation()
-	-- Normal game start, but Tartarus biome
+	args = args or {}
+
+	-- Don't show the healing text you normally get when exiting rooms with the Arcana activated
+	local originalConfigDamageOption = game.ConfigOptionCache.ShowDamageNumbers
+	game.ConfigOptionCache.ShowDamageNumbers = false
+	game.LeaveRoomSecretDoorPresentation(game.CurrentRun, source)
+	game.ConfigOptionCache.ShowDamageNumbers = originalConfigDamageOption
+
+	game.UseEscapeDoor(source, args)
 end
