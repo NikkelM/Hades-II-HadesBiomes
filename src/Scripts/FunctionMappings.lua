@@ -11,6 +11,5 @@ end
 
 -- Called when entering the first room of the run
 function game.RoomEntranceOpening(currentRun, currentRoom, args)
-	printTable(args)
 	game.RoomEntranceMaterialize(currentRun, currentRoom, args)
 end
