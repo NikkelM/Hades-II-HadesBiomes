@@ -39,6 +39,7 @@ config = chalk.auto 'config.lua'
 public.config = config -- so other mods can access our config
 
 -- For debugging
+-- TODO: Remove when releasing
 function game.printTable(t, indent)
 	if type(t) ~= "table" then
 		print(t)
@@ -90,6 +91,7 @@ local function on_ready()
 	import "Scripts/Meta/Uninstall.lua"
 
 	-- If the game was updated, the file checksums very likely got updated as well
+	-- At the same time, if the mod gets updated, the checksums.txt will be reset to the empty file as well
 	-- We can use this to determine if we should re-install the mod, to make sure we do not interfere with any files the game modified
 	mod.CompareChecksums()
 
@@ -120,9 +122,15 @@ local function on_ready()
 
 		-- "Normal" code changes
 		import "Scripts/DeathLoopData.lua"
+
+		-- Localizations, custom texts
+		import "Game/Text/HelpText.en.sjson.lua"
+
+		-- Animations
+		import "Game/Obstacles/Chaos.sjson.lua"
 	else
 		error(
-			"Required files are missing. Please run first time setup by setting the config value to true, and check the log.")
+			"Required files are missing. Please check the log and run the first time setup by setting the config value to true.")
 	end
 end
 
