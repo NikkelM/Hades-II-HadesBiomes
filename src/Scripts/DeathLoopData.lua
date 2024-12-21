@@ -1,11 +1,13 @@
+-- Adds a door (Chaos gate) to the training room that allows the player to start a Hades run
+
 -- Add the setup function to the Hub room
 table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 	FunctionName = _PLUGIN.guid .. '.' .. 'SpawnHadesRunStartDoor',
 })
 
 function mod.SpawnHadesRunStartDoor(source, args)
-	-- Vow shrine: 589694
-	-- Run start door underworld
+	-- Vow shrine would be: 589694
+	-- Run start door for the underworld
 	local spawnId = 420947
 
 	local chaosGate = game.DeepCopyTable(game.ObstacleData.SecretDoor)
@@ -49,7 +51,10 @@ function mod.StartHadesRun(source, args)
 	game.LeaveRoomSecretDoorPresentation(game.CurrentRun, source)
 	game.ConfigOptionCache.ShowDamageNumbers = originalConfigDamageOption
 
-	-- TODO: Also load the package when loading a save? Is that needed?
-	LoadPackages({ Name = "TartarusModsNikkelMHadesBiomes" })
+	-- Start the game BEFORE loading packages - otherwise they will be unloaded again
 	game.UseEscapeDoor(source, args)
+
+	-- TODO: Also load the package when loading a save? Is that needed?
+	LoadPackages({ Name = "Erebus" })
+	LoadPackages({ Name = "TartarusModsNikkelMHadesBiomes" })
 end
