@@ -40,36 +40,48 @@ public.config = config -- so other mods can access our config
 
 -- For debugging
 -- TODO: Remove when releasing
-function game.printTable(t, indent)
+function game.printTable(t, maxDepth, indent)
 	if type(t) ~= "table" then
 		print(t)
 		return
 	end
 
 	indent = indent or 0
+	maxDepth = maxDepth or math.huge
+	if indent > maxDepth then
+		print(string.rep("  ", indent) .. "...")
+		return
+	end
+
 	local formatting = string.rep("  ", indent)
 	for k, v in pairs(t) do
 		if type(v) == "table" then
 			print(formatting .. k .. ":")
-			game.printTable(v, indent + 1)
+			game.printTable(v, indent + 1, maxDepth)
 		else
 			print(formatting .. k .. ": " .. tostring(v))
 		end
 	end
 end
 
-function printTable(t, indent)
+function printTable(t, maxDepth, indent)
 	if type(t) ~= "table" then
 		print(t)
 		return
 	end
 
 	indent = indent or 0
+	maxDepth = maxDepth or math.huge
+	if indent > maxDepth then
+		print(string.rep("  ", indent) .. "...")
+		return
+	end
+
 	local formatting = string.rep("  ", indent)
 	for k, v in pairs(t) do
 		if type(v) == "table" then
 			print(formatting .. k .. ":")
-			game.printTable(v, indent + 1)
+			game.printTable(v, indent + 1, maxDepth)
 		else
 			print(formatting .. k .. ": " .. tostring(v))
 		end
@@ -89,6 +101,9 @@ local function on_ready()
 	if not mod.ConfirmHadesInstallation() then return end
 
 	-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
+	-- Done first, as the EncounterData depends on the EnemySets
+	import "Scripts/EnemySets.lua"
+
 	import "Scripts/Meta/EnemyDataHandler.lua"
 	import "Scripts/Meta/EncounterDataHandler.lua"
 	import "Scripts/Meta/RoomDataHandler.lua"
@@ -128,7 +143,6 @@ local function on_ready()
 
 		-- "Normal" code changes
 		import "Scripts/DeathLoopData.lua"
-		import "Scripts/EnemySets.lua"
 
 		-- Localizations, custom texts
 		import "Game/Text/HelpText.en.sjson.lua"
