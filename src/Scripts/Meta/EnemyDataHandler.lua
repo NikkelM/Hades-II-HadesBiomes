@@ -1,7 +1,7 @@
 -- Contains generic functions to handle migrating enemy data from Hades to Hades II
 
 -- Loads EnemyData from a file in Hades
--- Note:Must be loaded before EncounterData, as there are some references to it in EncounterData!
+-- Note: Must be loaded before EncounterData, as there are some references to it in EncounterData!
 local function LoadHadesEnemyData(fileName)
 	local originalEnemyData = game.EnemyData
 	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
@@ -39,28 +39,5 @@ end
 
 local enemyData = LoadHadesEnemyData("EnemyData.lua")
 local enemyModifications = {}
-
-game.EnemySets.EnemiesBiome1 = {
-	-- TODO: The other enemy types are not implemented (Swarmer is a re-used name for Hades II Tartarus skulls)
-	"Swarmer",            -- Wretch Swarmer
-	-- "SwarmerElite",       -- Wretch Swarmer
-	-- "LightSpawner",
-	-- "ThiefMineLayer",     -- Wretch Thief
-	-- "ThiefMineLayerElite", -- Wretch Thief
-
-	-- "PunchingBagUnit",    -- Wretch Glutton
-	-- "HeavyMelee",         -- Wretch Thug
-	-- "DisembodiedHand",
-	-- "DisembodiedHandElite",
-
-	-- "LightRanged", -- Wretch Caster
-	-- "HeavyRanged", -- Crystal
-	-- --"Grenadier", -- Wretch Caster
-
-	-- "HeavyMeleeElite",     -- Wretch Thug Elite
-	-- "LightRangedElite",    -- Wretch Caster Elite
-	-- "PunchingBagUnitElite", -- Wretch Glutton Elite
-	-- "HeavyRangedElite",
-}
 
 ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications)
