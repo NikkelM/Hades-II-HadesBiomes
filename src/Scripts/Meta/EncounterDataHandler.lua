@@ -18,6 +18,18 @@ local function LoadHadesEncounterData(fileName)
 	end
 end
 
+-- Updates the InheritFrom field in the encounter data to match the new property name
+local function updateInheritFrom(encounterData, find, replaceWith)
+	for _, encounter in pairs(encounterData) do
+		if encounter.InheritFrom then
+			for i, value in ipairs(encounter.InheritFrom) do
+				if value == find then
+					encounter.InheritFrom[i] = replaceWith
+				end
+			end
+		end
+	end
+end
 
 -- Applies modifications to base encounter objects, and then adds the new encounter objects to the game
 local function ApplyModificationsAndInheritEncounterData(base, modifications)
@@ -37,11 +49,15 @@ local function ApplyModificationsAndInheritEncounterData(base, modifications)
 	game.AddTableKeysCheckDupes(game.EncounterData, base)
 end
 
+-- TODO: Should this be moved to an EncounterDataTartarus.lua?
 local encounterData = LoadHadesEncounterData("EncounterData.lua")
 local encounterDataTartarus = {
+	ModsNikkelMHadesBiomesGenerated = encounterData.Generated,
 	GeneratedTartarus = encounterData.GeneratedTartarus,
 	OpeningGenerated = encounterData.OpeningGenerated,
 }
+
+updateInheritFrom(encounterDataTartarus, "Generated", "ModsNikkelMHadesBiomesGenerated")
 
 encounterDataTartarus.OpeningGenerated.PreSpawnEnemies = false
 encounterDataTartarus.OpeningGenerated.UnthreadedEvents =
@@ -62,6 +78,7 @@ encounterDataTartarus.OpeningGenerated.UnthreadedEvents =
 
 local encounterModifications = {}
 
+-- TODO: Move to own file
 game.EncounterSets.TartarusEncountersDefault =
 {
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus",
