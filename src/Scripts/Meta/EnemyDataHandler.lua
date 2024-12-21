@@ -22,22 +22,25 @@ end
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
 local function ApplyModificationsAndInheritEnemyData(base, modifications)
 	-- Apply modifications
-	for encounterName, encounterData in pairs(modifications) do
-		for key, value in pairs(encounterData) do
-			base[encounterName][key] = value
+	for enemyName, enemyData in pairs(modifications) do
+		for key, value in pairs(enemyData) do
+			base[enemyName][key] = value
 		end
 	end
 
 	-- Process data inheritance and add the new data to the game's global
-	game.AddTableKeysCheckDupes(game.UnitSetData, base)
-	for encounterName, encounterData in pairs(base) do
-		game.ProcessDataInheritance(encounterData, game.UnitSetData)
-		base[encounterName] = encounterData
+	game.AddTableKeysCheckDupes(game.EnemyData, base)
+	for enemyName, enemyData in pairs(base) do
+		game.ProcessDataInheritance(enemyData, game.EnemyData)
+		base[enemyName] = enemyData
 	end
-	game.AddTableKeysCheckDupes(game.UnitSetData, base)
+	game.AddTableKeysCheckDupes(game.EnemyData, base)
 end
 
 local enemyData = LoadHadesEnemyData("EnemyData.lua")
 local enemyModifications = {}
 
 ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications)
+
+---------------------------- SJSON files ----------------------------
+
