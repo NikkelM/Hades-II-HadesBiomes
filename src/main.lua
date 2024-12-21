@@ -86,6 +86,9 @@ local function on_ready()
 	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 
+	if not mod.ConfirmHadesInstallation() then return end
+
+	-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 	import "Scripts/Meta/EnemyDataHandler.lua"
 	import "Scripts/Meta/EncounterDataHandler.lua"
 	import "Scripts/Meta/RoomDataHandler.lua"

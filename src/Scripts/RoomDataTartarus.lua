@@ -1,4 +1,4 @@
--- TODO: Collision in Tartarus rooms doesn't work (pillars), traps no longer triggering?
+-- TODO: Collision in Tartarus rooms doesn't work (pillars, always broken), traps no longer triggering (since Tartarus encounters added - logic broken that checks if they should be active or not?) 
 
 local roomSetDataTartarus = mod.LoadHadesRoomData("RoomDataTartarus.lua").Tartarus
 local roomModifications = {
