@@ -57,7 +57,7 @@ function game.printTable(t, maxDepth, indent)
 	for k, v in pairs(t) do
 		if type(v) == "table" then
 			print(formatting .. k .. ":")
-			game.printTable(v, indent + 1, maxDepth)
+			game.printTable(v, maxDepth, indent + 1)
 		else
 			print(formatting .. k .. ": " .. tostring(v))
 		end
@@ -81,7 +81,7 @@ function printTable(t, maxDepth, indent)
 	for k, v in pairs(t) do
 		if type(v) == "table" then
 			print(formatting .. k .. ":")
-			game.printTable(v, indent + 1, maxDepth)
+			game.printTable(v, maxDepth, indent + 1)
 		else
 			print(formatting .. k .. ": " .. tostring(v))
 		end
