@@ -4,9 +4,7 @@ function mod.Uninstall()
 	print("Removing .pkg files...")
 	for src, dest in pairs(PackageFileMappings) do
 		local destPath = rom.path.combine(rom.paths.Content(), dest)
-		local file = io.open(destPath, "r")
-		if file then
-			file:close()
+		if rom.path.exists(destPath) then
 			print("Removing file: " .. destPath)
 			local success, err = os.remove(destPath)
 			if not success then
@@ -19,9 +17,7 @@ function mod.Uninstall()
 	for _, name in ipairs(MapFileNames) do
 		local mapTextDest = "Maps\\" .. name .. ".map_text"
 		local destPath = rom.path.combine(rom.paths.Content(), mapTextDest)
-		local file = io.open(destPath, "r")
-		if file then
-			file:close()
+		if rom.path.exists(destPath) then
 			print("Removing file: " .. destPath)
 			local success, err = os.remove(destPath)
 			if not success then
@@ -34,9 +30,7 @@ function mod.Uninstall()
 	for _, name in ipairs(MapFileNames) do
 		local thingBinDest = "Maps\\bin\\" .. name .. ".thing_bin"
 		local destPath = rom.path.combine(rom.paths.Content(), thingBinDest)
-		local file = io.open(destPath, "r")
-		if file then
-			file:close()
+		if rom.path.exists(destPath) then
 			print("Removing file: " .. destPath)
 			local success, err = os.remove(destPath)
 			if not success then
@@ -49,9 +43,7 @@ function mod.Uninstall()
 	for _, language in ipairs(HelpTextLanguages) do
 		local helpTextFile = rom.path.combine(rom.paths.Content(),
 			'Game\\Text\\' .. language .. '\\HelpTextHades.' .. language .. '.sjson')
-		local file = io.open(helpTextFile, "r")
-		if file then
-			file:close()
+		if rom.path.exists(helpTextFile) then
 			print("Removing file: " .. helpTextFile)
 			local success, err = os.remove(helpTextFile)
 			if not success then

@@ -138,14 +138,11 @@ function CopyHadesHelpTexts()
 end
 
 -- Copies a file from src to dest
-
 function CopyFile(src, dest, skipCheck)
 	skipCheck = skipCheck or false
 	-- Check if the file already exists
 	if not skipCheck then
-		local destFile = io.open(dest, "r")
-		if destFile then
-			destFile:close()
+		if rom.path.exists(dest) then
 			print("Warning: File already exists and will not be overwritten: " .. dest)
 			return
 		end

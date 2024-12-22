@@ -10,14 +10,12 @@ function mod.ConfirmHadesInstallation()
 
 	-- Check if the Hades installation is valid (by just confirming the .exe exists)
 	local exePath = rom.path.combine(mod.hadesGameFolder, "x64\\Hades.exe")
-	local file = io.open(exePath, "r")
-	if not file then
+	if not rom.path.exists(exePath) then
 		error("Hades installation not found at \"" ..
 			exePath ..
 			"\". Please set the correct path in the config file. Use \"root\" if the Hades folder is in the same parent directory as Hades II.")
 		return false
 	end
-	file:close()
 
 	print("Hades installation found at " .. mod.hadesGameFolder)
 	return true
