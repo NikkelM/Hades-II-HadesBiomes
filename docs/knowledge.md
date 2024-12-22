@@ -129,3 +129,5 @@ This section details ways the game still crashes or otherwise doesn't work:
 ### Using Hades enemies in EnemySets crashes the game
 
 Using an enemy name that is not defined in Hades II in the enemy set will crash the game immediately upon loading a room.
+
+This might be related to missing animation files - visuals have already been added through `RoomManager.pkg`.
