@@ -3,7 +3,7 @@
 -- Loads EncounterData from a file in Hades
 -- Note: EnemyData must be loaded first, as there are some references to it in EncounterData!
 local function LoadHadesEncounterData(fileName)
-	local originalEncounterData = game.EncounterData
+	local originalEncounterData = game.DeepCopyTable(game.EncounterData)
 	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
 	local chunk, err = loadfile(pathName)
 	if chunk then
@@ -41,12 +41,14 @@ local function ApplyModificationsAndInheritEncounterData(base, modifications)
 	end
 
 	-- Process data inheritance and add the new data to the game's global
-	game.AddTableKeysCheckDupes(game.EncounterData, base)
+	base = mod.AddTableKeysSkipDupes(game.EncounterData, base)
 	for encounterName, encounterData in pairs(base) do
 		game.ProcessDataInheritance(encounterData, game.EncounterData)
 		base[encounterName] = encounterData
 	end
-	game.AddTableKeysCheckDupes(game.EncounterData, base)
+	-- Don't skip duplicates, since we have already added all the data before
+	-- AddTableKeysSkipDupes also removed duplicates, so overwriting here will only overwrite keys we added ourselves
+	game.OverwriteTableKeys(game.EncounterData, base)
 end
 
 -- TODO: Should this be moved to an EncounterDataTartarus.lua?
@@ -85,5 +87,7 @@ game.EncounterSets.TartarusEncountersDefault =
 	-- "GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus",
 	-- "GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus", "ThanatosTartarus"
 }
+
+game.EncounterSets.TartarusEncountersNoSurvival = { "GeneratedTartarus" }
 
 ApplyModificationsAndInheritEncounterData(encounterDataTartarus, encounterModifications)

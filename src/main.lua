@@ -95,6 +95,7 @@ local function on_ready()
 	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
 
 	-- File handling and other generic functions
+	import "Scripts/Meta/Utils.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 

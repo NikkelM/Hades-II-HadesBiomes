@@ -3,7 +3,7 @@
 -- Loads EnemyData from a file in Hades
 -- Note: Must be loaded before EncounterData, as there are some references to it in EncounterData!
 local function LoadHadesEnemyData(fileName)
-	local originalEnemyData = game.EnemyData
+	local originalEnemyData = game.DeepCopyTable(game.EnemyData)
 	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
 	local chunk, err = loadfile(pathName)
 	if chunk then
@@ -29,12 +29,14 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications)
 	end
 
 	-- Process data inheritance and add the new data to the game's global
-	game.AddTableKeysCheckDupes(game.EnemyData, base)
+	base = mod.AddTableKeysSkipDupes(game.EnemyData, base)
 	for enemyName, enemyData in pairs(base) do
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
 		base[enemyName] = enemyData
 	end
-	game.AddTableKeysCheckDupes(game.EnemyData, base)
+	-- Don't skip duplicates, since we have already added all the data before
+	-- AddTableKeysSkipDupes also removed duplicates, so overwriting here will only overwrite keys we added ourselves
+	game.OverwriteTableKeys(game.EnemyData, base)
 end
 
 local enemyData = LoadHadesEnemyData("EnemyData.lua")
@@ -43,4 +45,3 @@ local enemyModifications = {}
 ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications)
 
 ---------------------------- SJSON files ----------------------------
-

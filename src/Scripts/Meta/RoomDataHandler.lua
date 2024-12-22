@@ -2,16 +2,16 @@
 
 -- Loads RoomData from a file in Hades
 function mod.LoadHadesRoomData(fileName)
-	local originalRoomSetData = game.RoomSetData
+	local originalRoomData = game.DeepCopyTable(game.RoomData)
 	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
 	local chunk, err = loadfile(pathName)
 	if chunk then
 		chunk()
 		-- No worries if this is marked as undefined, it comes from the loaded file
 		---@diagnostic disable-next-line: undefined-global
-		local hadesRoomSetData = RoomSetData
-		game.RoomSetData = originalRoomSetData
-		return hadesRoomSetData
+		local hadesRoomData = RoomSetData
+		game.RoomData = originalRoomData
+		return hadesRoomData
 	else
 		print("Error loading RoomData: " .. err)
 	end
@@ -32,10 +32,12 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications)
 	end
 
 	-- Process data inheritance and add the new data to the game's global
-	game.AddTableKeysCheckDupes(game.RoomData, base)
+	base = mod.AddTableKeysSkipDupes(game.RoomData, base)
 	for roomName, roomData in pairs(base) do
 		game.ProcessDataInheritance(roomData, game.RoomData)
 		base[roomName] = roomData
 	end
-	game.AddTableKeysCheckDupes(game.RoomData, base)
+	-- Don't skip duplicates, since we have already added all the data before
+	-- AddTableKeysSkipDupes also removed duplicates, so overwriting here will only overwrite keys we added ourselves
+	game.OverwriteTableKeys(game.RoomData, base)
 end
