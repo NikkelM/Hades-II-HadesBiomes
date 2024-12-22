@@ -1,4 +1,4 @@
--- Maps function names with the same behaviour between Hades and Hades II
+-- Maps function names with the same or similar behaviour between Hades and Hades II
 
 -- Displays the biome's name as a banner at the top when entering the first room
 function game.DisplayLocationText(source, args)
