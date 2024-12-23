@@ -3,7 +3,7 @@
 -- Adds keys or entries from one table to another, skipping duplicates
 -- If property is provided, skips duplicates based on the property (e.g., "Name")
 -- Returns tableToTake without the duplicate keys or entries
-function mod.AddTableSkipDupes(tableToOverwrite, tableToTake, property)
+function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 	if tableToTake == nil then
 		return {}
 	end
