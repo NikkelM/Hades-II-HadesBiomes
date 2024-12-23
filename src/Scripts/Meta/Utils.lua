@@ -3,7 +3,7 @@
 -- Adds keys or entries from one table to another, skipping duplicates
 -- If property is provided, skips duplicates based on the property (e.g., "Name")
 -- Returns tableToTake without the duplicate keys or entries
-function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
+function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property, debug)
 	if tableToTake == nil then
 		return {}
 	end
@@ -26,6 +26,8 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 				table.insert(tableToOverwrite, entryToTake)
 				table.insert(nonDuplicateItems, entryToTake)
 				propertyLookup[entryToTake[property]] = #tableToOverwrite
+			elseif debug then
+				print("Skipping duplicate key: " .. entryToTake[property])
 			end
 		end
 	else
@@ -38,6 +40,8 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 					tableToOverwrite[key] = value
 				end
 				nonDuplicateItems[key] = value
+			elseif debug then
+				print("Skipping duplicate key: " .. key)
 			end
 		end
 	end

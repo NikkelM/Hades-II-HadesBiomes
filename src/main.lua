@@ -152,13 +152,13 @@ local function on_ready()
 		-- "Normal" code changes
 		import "Scripts/DeathLoopData.lua"
 
+		-- SJSON changes
 		import "Game/Units/Enemies.sjson.lua"
-
+		import "Game/Weapons/EnemyWeapons.sjson.lua"
+		import "Game/Projectiles/EnemyProjectiles.sjson.lua"
+		import "Game/Obstacles/Chaos.sjson.lua"
 		-- Localizations, custom texts
 		import "Game/Text/HelpText.en.sjson.lua"
-
-		-- Animations
-		import "Game/Obstacles/Chaos.sjson.lua"
 	else
 		error(
 			"Required files are missing. Please check the log and run the first time setup by setting the config value to true.")
