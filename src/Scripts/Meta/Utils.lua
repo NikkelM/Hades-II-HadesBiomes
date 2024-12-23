@@ -1,57 +1,48 @@
 -- Utility functions
 
--- Adds keys from one table to another, skipping duplicates
--- Returns tableToTake without the duplicate keys
-function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake)
+-- Adds keys or entries from one table to another, skipping duplicates
+-- If property is provided, skips duplicates based on the property (e.g., "Name")
+-- Returns tableToTake without the duplicate keys or entries
+function mod.AddTableSkipDupes(tableToOverwrite, tableToTake, property)
 	if tableToTake == nil then
 		return {}
 	end
 
-	local nonDuplicateKeys = {}
+	local nonDuplicateItems = {}
 
-	for key, value in pairs(tableToTake) do
-		if tableToOverwrite[key] == nil then
-			if value == "nil" then
-				tableToOverwrite[key] = nil
-			else
-				tableToOverwrite[key] = value
+	if property then
+		local propertyLookup = {}
+
+		-- Create a lookup table for the property values in tableToOverwrite
+		for index, entry in ipairs(tableToOverwrite) do
+			if entry[property] then
+				propertyLookup[entry[property]] = index
 			end
-			nonDuplicateKeys[key] = value
+		end
+
+		-- Iterate through tableToTake and add non-duplicate entries to tableToOverwrite
+		for _, entryToTake in pairs(tableToTake) do
+			if entryToTake[property] and not propertyLookup[entryToTake[property]] then
+				table.insert(tableToOverwrite, entryToTake)
+				table.insert(nonDuplicateItems, entryToTake)
+				propertyLookup[entryToTake[property]] = #tableToOverwrite
+			end
+		end
+	else
+		-- Iterate through tableToTake and add non-duplicate keys to tableToOverwrite
+		for key, value in pairs(tableToTake) do
+			if tableToOverwrite[key] == nil then
+				if value == "nil" then
+					tableToOverwrite[key] = nil
+				else
+					tableToOverwrite[key] = value
+				end
+				nonDuplicateItems[key] = value
+			end
 		end
 	end
 
-	return nonDuplicateKeys
-end
-
--- Adds entries from one table to another, skipping duplicates based on a property (e.g. "Name")
--- Returns tableToTake without the duplicate entries
-function mod.AddTableEntriesSkipDupesByProperty(tableToOverwrite, tableToTake, property)
-	if tableToTake == nil then
-		return {}
-	end
-
-	local nonDuplicateEntries = {}
-	local propertyLookup = {}
-
-	-- Create a lookup table for the property values in tableToOverwrite
-	for index, entry in ipairs(tableToOverwrite) do
-		if entry[property] then
-			propertyLookup[entry[property]] = index
-		end
-	end
-
-	-- Iterate through tableToTake and add non-duplicate entries to tableToOverwrite
-	for _, entryToTake in pairs(tableToTake) do
-		if entryToTake[property] and not propertyLookup[entryToTake[property]] then
-			table.insert(tableToOverwrite, entryToTake)
-			table.insert(nonDuplicateEntries, entryToTake)
-			propertyLookup[entryToTake[property]] = #tableToOverwrite
-		-- else
-		-- 	print("Skipping duplicate entry: " .. entryToTake[property])
-		end
-	end
-
-	return nonDuplicateEntries
+	return nonDuplicateItems
 end
 
 -- Updates the InheritFrom field in a table to match the new property name

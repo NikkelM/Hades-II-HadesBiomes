@@ -7,5 +7,5 @@ local hadesEnemiesTable = sjson.decode_file(hadesEnemiesFile)
 local hadesTwoEnemiesFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\Enemies.sjson")
 
 sjson.hook(hadesTwoEnemiesFile, function(data)
-	mod.AddTableEntriesSkipDupesByProperty(data.Units, hadesEnemiesTable.Units, "Name")
+	mod.AddTableSkipDupes(data.Units, hadesEnemiesTable.Units, "Name")
 end)
