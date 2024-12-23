@@ -152,6 +152,8 @@ local function on_ready()
 		-- "Normal" code changes
 		import "Scripts/DeathLoopData.lua"
 
+		import "Game/Units/Enemies.sjson.lua"
+
 		-- Localizations, custom texts
 		import "Game/Text/HelpText.en.sjson.lua"
 

@@ -23,6 +23,37 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake)
 	return nonDuplicateKeys
 end
 
+-- Adds entries from one table to another, skipping duplicates based on a property (e.g. "Name")
+-- Returns tableToTake without the duplicate entries
+function mod.AddTableEntriesSkipDupesByProperty(tableToOverwrite, tableToTake, property)
+	if tableToTake == nil then
+		return {}
+	end
+
+	local nonDuplicateEntries = {}
+	local propertyLookup = {}
+
+	-- Create a lookup table for the property values in tableToOverwrite
+	for index, entry in ipairs(tableToOverwrite) do
+		if entry[property] then
+			propertyLookup[entry[property]] = index
+		end
+	end
+
+	-- Iterate through tableToTake and add non-duplicate entries to tableToOverwrite
+	for _, entryToTake in pairs(tableToTake) do
+		if entryToTake[property] and not propertyLookup[entryToTake[property]] then
+			table.insert(tableToOverwrite, entryToTake)
+			table.insert(nonDuplicateEntries, entryToTake)
+			propertyLookup[entryToTake[property]] = #tableToOverwrite
+		-- else
+		-- 	print("Skipping duplicate entry: " .. entryToTake[property])
+		end
+	end
+
+	return nonDuplicateEntries
+end
+
 -- Updates the InheritFrom field in a table to match the new property name
 function mod.UpdateInheritFrom(tableToModify, find, replaceWith)
 	for _, data in pairs(tableToModify) do
