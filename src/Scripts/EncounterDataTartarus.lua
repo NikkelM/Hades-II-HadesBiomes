@@ -9,6 +9,13 @@ local encounterDataTartarus = {
 
 mod.UpdateInheritFrom(encounterDataTartarus, "Generated", "ModsNikkelMHadesBiomesGenerated")
 
+-- The "Generated" encounter in Hades II uses this to place enemies, Hades doesn't have this
+encounterDataTartarus.ModsNikkelMHadesBiomesGenerated.StartRoomUnthreadedEvents =
+{
+	{
+		FunctionName = "HandleEncounterPreSpawns"
+	}
+}
 -- First room of the run needs to wait for the boon pickup before spawning enemies
 encounterDataTartarus.OpeningGenerated.PreSpawnEnemies = false
 -- Also adapt to the Hades II way of handling the first room
