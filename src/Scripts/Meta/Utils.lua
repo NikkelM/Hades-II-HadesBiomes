@@ -22,3 +22,16 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake)
 
 	return nonDuplicateKeys
 end
+
+-- Updates the InheritFrom field in a table to match the new property name
+function mod.UpdateInheritFrom(tableToModify, find, replaceWith)
+	for _, data in pairs(tableToModify) do
+		if data.InheritFrom then
+			for i, value in ipairs(data.InheritFrom) do
+				if value == find then
+					data.InheritFrom[i] = replaceWith
+				end
+			end
+		end
+	end
+end

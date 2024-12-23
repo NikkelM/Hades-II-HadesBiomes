@@ -130,9 +130,14 @@ local function on_ready()
 
 	-- Before proceeding, check that required files exist
 	if mod.CheckRequiredFiles() then
-		-- Loads room data
+		-- Loads Room data
 		import "Scripts/RoomSets.lua"
 		import "Scripts/RoomDataTartarus.lua"
+
+		-- Loads Encounter data
+		import "Scripts/EncounterSets.lua"
+		import "Scripts/EncounterDataTartarus.lua"
+
 		-- Applies modifications to the rooms, such as LegalEncounterDictionary
 		game.SetupRunData()
 

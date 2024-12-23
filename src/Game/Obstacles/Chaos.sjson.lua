@@ -1,3 +1,5 @@
+-- This is for the chaos gate that functions as the run start door for a Hades run
+
 local order = {
   "Name",
   "InheritFrom",

@@ -51,10 +51,16 @@ function mod.StartHadesRun(source, args)
 	game.LeaveRoomSecretDoorPresentation(game.CurrentRun, source)
 	game.ConfigOptionCache.ShowDamageNumbers = originalConfigDamageOption
 
+	-- TODO: Is this necessary?
+	-- LoadPackages({ Name = "TartarusModsNikkelMHadesBiomes" })
+	-- LoadPackages({ Name = "RoomManagerModsNikkelMHadesBiomes" })
+
 	-- Start the game BEFORE loading packages - otherwise they will be unloaded again
 	game.UseEscapeDoor(source, args)
 
 	-- TODO: Also load the package when loading a save? Is that needed?
-	LoadPackages({ Name = "Erebus" })
+	-- Loading packages loads both .pkg and sound banks it seems
+	-- LoadPackages({ Name = "Erebus" })
 	LoadPackages({ Name = "TartarusModsNikkelMHadesBiomes" })
+	LoadPackages({ Name = "RoomManagerModsNikkelMHadesBiomes" })
 end
