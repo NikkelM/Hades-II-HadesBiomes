@@ -139,6 +139,7 @@ local function on_ready()
 		import "Scripts/RoomSets.lua"
 		import "Scripts/RoomDataTartarus.lua"
 
+		import "Scripts/WeaponData.lua"
 
 		-- Applies modifications to the rooms, such as LegalEncounterDictionary
 		game.SetupRunData()
@@ -153,6 +154,7 @@ local function on_ready()
 		import "Scripts/DeathLoopData.lua"
 
 		-- SJSON changes
+		import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
 		import "Game/Units/Enemies.sjson.lua"
 		import "Game/Weapons/EnemyWeapons.sjson.lua"
 		import "Game/Projectiles/EnemyProjectiles.sjson.lua"

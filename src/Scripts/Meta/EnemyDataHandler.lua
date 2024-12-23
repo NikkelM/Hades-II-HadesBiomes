@@ -43,5 +43,3 @@ local enemyData = LoadHadesEnemyData("EnemyData.lua")
 local enemyModifications = {}
 
 ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications)
-
----------------------------- SJSON files ----------------------------
