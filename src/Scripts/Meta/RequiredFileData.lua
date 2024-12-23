@@ -1,6 +1,11 @@
 -- Contains file names/patterns required for copying over files from the Hades installation, and for uninstalling the mod
 
 PackageFileMappings = {
+	-- Tartarus template map package
+	["Content\\Win\\Packages\\_TartarusTemplateRoom.pkg"] = "Packages\\1080p\\_TartarusTemplateRoomModsNikkelMHadesBiomes.pkg",
+	["Content\\Win\\Packages\\_TartarusTemplateRoom.pkg_manifest"] = "Packages\\1080p\\_TartarusTemplateRoomModsNikkelMHadesBiomes.pkg_manifest",
+	["Content\\Win\\Packages\\720p\\_TartarusTemplateRoom.pkg"] = "Packages\\720p\\_TartarusTemplateRoomModsNikkelMHadesBiomes.pkg",
+	["Content\\Win\\Packages\\720p\\_TartarusTemplateRoom.pkg_manifest"] = "Packages\\720p\\_TartarusTemplateRoomModsNikkelMHadesBiomes.pkg_manifest",
 	-- Tartarus map package
 	["Content\\Win\\Packages\\Tartarus.pkg"] = "Packages\\1080p\\TartarusModsNikkelMHadesBiomes.pkg",
 	["Content\\Win\\Packages\\Tartarus.pkg_manifest"] = "Packages\\1080p\\TartarusModsNikkelMHadesBiomes.pkg_manifest",

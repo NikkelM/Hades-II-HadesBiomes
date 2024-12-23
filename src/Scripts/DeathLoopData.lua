@@ -61,6 +61,7 @@ function mod.StartHadesRun(source, args)
 	-- TODO: Also load the package when loading a save? Is that needed?
 	-- Loading packages loads both .pkg and sound banks it seems
 	-- LoadPackages({ Name = "Erebus" })
+	LoadPackages({ Name = "_TartarusTemplateRoomModsNikkelMHadesBiomes" })
 	LoadPackages({ Name = "TartarusModsNikkelMHadesBiomes" })
 	LoadPackages({ Name = "RoomManagerModsNikkelMHadesBiomes" })
 end
