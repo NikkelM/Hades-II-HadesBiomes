@@ -18,6 +18,32 @@ PackageFileMappings = {
 	["Content\\Win\\Packages\\720p\\RoomManager.pkg_manifest"] = "Packages\\720p\\RoomManagerModsNikkelMHadesBiomes.pkg_manifest",
 }
 
+SjsonFileMappings = {
+	-- Character animations
+	-- Note - it's possible this only works if the file name is the same?
+	["Content\\Game\\Animations\\CharacterAnim_Enemies_BoneDracon.sjson"] = "Game\\Animations\\CharacterAnim_Enemies_BoneDracon.sjson",
+}
+
+BikFileMappings = {
+	-- Enemy animations
+	["Content\\Movies\\EnemyWretchGluttonAttack_Bink.bik"] = "Movies\\1080p\\EnemyWretchGluttonAttack_Bink.bik",
+	["Content\\Movies\\EnemyWretchGluttonAttack_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchGluttonAttack_Bink.bik_atlas",
+	["Content\\Movies\\720p\\EnemyWretchGluttonAttack_Bink.bik"] = "Movies\\720p\\EnemyWretchGluttonAttack_Bink.bik",
+	["Content\\Movies\\720p\\EnemyWretchGluttonAttack_Bink.bik_atlas"] = "Movies\\720p\\EnemyWretchGluttonAttack_Bink.bik_atlas",
+	["Content\\Movies\\EnemyWretchGluttonDeathVFX_Bink.bik"] = "Movies\\1080p\\EnemyWretchGluttonDeathVFX_Bink.bik",
+	["Content\\Movies\\EnemyWretchGluttonDeathVFX_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchGluttonDeathVFX_Bink.bik_atlas",
+	["Content\\Movies\\720p\\EnemyWretchGluttonDeathVFX_Bink.bik"] = "Movies\\720p\\EnemyWretchGluttonDeathVFX_Bink.bik",
+	["Content\\Movies\\720p\\EnemyWretchGluttonDeathVFX_Bink.bik_atlas"] = "Movies\\720p\\EnemyWretchGluttonDeathVFX_Bink.bik_atlas",
+	["Content\\Movies\\EnemyWretchGluttonIdle_Bink.bik"] = "Movies\\1080p\\EnemyWretchGluttonIdle_Bink.bik",
+	["Content\\Movies\\EnemyWretchGluttonIdle_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchGluttonIdle_Bink.bik_atlas",
+	["Content\\Movies\\720p\\EnemyWretchGluttonIdle_Bink.bik"] = "Movies\\720p\\EnemyWretchGluttonIdle_Bink.bik",
+	["Content\\Movies\\720p\\EnemyWretchGluttonIdle_Bink.bik_atlas"] = "Movies\\720p\\EnemyWretchGluttonIdle_Bink.bik_atlas",
+	["Content\\Movies\\EnemyWretchGluttonOnHit_Bink.bik"] = "Movies\\1080p\\EnemyWretchGluttonOnHit_Bink.bik",
+	["Content\\Movies\\EnemyWretchGluttonOnHit_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchGluttonOnHit_Bink.bik_atlas",
+	["Content\\Movies\\720p\\EnemyWretchGluttonOnHit_Bink.bik"] = "Movies\\720p\\EnemyWretchGluttonOnHit_Bink.bik",
+	["Content\\Movies\\720p\\EnemyWretchGluttonOnHit_Bink.bik_atlas"] = "Movies\\720p\\EnemyWretchGluttonOnHit_Bink.bik_atlas",
+}
+
 -- map_text and thing_bin file names
 MapFileNames = {
 	-- Tartarus

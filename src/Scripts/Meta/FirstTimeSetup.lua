@@ -12,6 +12,28 @@ function mod.FirstTimeSetup()
 		print("Copied Hades\\" .. src .. " to Hades II\\Content\\" .. dest)
 	end
 
+	-- Get and copy the .bik and .bik_atlas files
+	print("Copying .bik files...")
+
+	for src, dest in pairs(BikFileMappings) do
+		local srcPath = rom.path.combine(mod.hadesGameFolder, src)
+		local destPath = rom.path.combine(rom.paths.Content(), dest)
+
+		CopyFile(srcPath, destPath)
+		print("Copied Hades\\" .. src .. " to Hades II\\Content\\" .. dest)
+	end
+
+	-- Get and copy the .sjson files
+	print("Copying .sjson files...")
+
+	for src, dest in pairs(SjsonFileMappings) do
+		local srcPath = rom.path.combine(mod.hadesGameFolder, src)
+		local destPath = rom.path.combine(rom.paths.Content(), dest)
+
+		CopyFile(srcPath, destPath)
+		print("Copied Hades\\" .. src .. " to Hades II\\Content\\" .. dest)
+	end
+
 	-- Copy .map_text files
 	print("Copying .map_text files...")
 
