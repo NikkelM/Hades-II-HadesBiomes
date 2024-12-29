@@ -16,3 +16,12 @@ game.EncounterSets.EncounterEventsGenerated = {
 	{ FunctionName = "PostCombatAudio" },
 	{ FunctionName = "SpawnRoomReward" }
 }
+
+game.EncounterSets.EncounterEventsDefault = {
+	{ FunctionName = "EncounterAudio" },
+	{ FunctionName = "HandleTrapChains" },
+	{ FunctionName = "HandleEnemySpawns" },
+	{ FunctionName = "CheckForAllEnemiesDead" },
+	{ FunctionName = "PostCombatAudio" },
+	{ FunctionName = "SpawnRoomReward" },
+}

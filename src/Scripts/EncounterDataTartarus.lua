@@ -37,5 +37,4 @@ encounterDataTartarus.OpeningGenerated.UnthreadedEvents =
 
 local encounterModifications = {}
 
-
 mod.ApplyModificationsAndInheritEncounterData(encounterDataTartarus, encounterModifications)
