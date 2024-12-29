@@ -26,11 +26,17 @@ local hadesTwoEnemiesFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\
 
 -- Modifications/overrides to the Hades enemies
 local hadesEnemiesModifications = {
+	-- Blank_Mesh is a placeholder that allows the enemies to register hits
 	BaseGlutton = {
 		Thing = {
 			GrannyModel = "Blank_Mesh"
 		}
-	}
+	},
+	-- LightSpawner = {
+	-- 	Thing = {
+	-- 		GrannyModel = "Blank_Mesh"
+	-- 	}
+	-- },
 }
 
 applyModifications(hadesEnemiesTable, hadesEnemiesModifications)
