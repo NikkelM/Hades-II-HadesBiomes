@@ -22,7 +22,7 @@ function mod.SpawnHadesRunStartDoor(source, args)
 	})
 	chaosGate.ActivateIds = { chaosGate.ObjectId }
 
-	SetAnimation({ DestinationId = chaosGate.ObjectId, Name = "SecretDoor_RevealedWalkable" })
+	SetAnimation({ DestinationId = chaosGate.ObjectId, Name = "SecretDoor_Revealed" }) -- SecretDoor_RevealedWalkable if no collision wanted
 
 	-- Overwrite some default values
 	chaosGate.SetupEvents = {}
