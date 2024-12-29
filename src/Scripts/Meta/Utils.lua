@@ -61,3 +61,23 @@ function mod.UpdateInheritFrom(tableToModify, find, replaceWith)
 		end
 	end
 end
+
+-- Applies modifications to the given table, not overwriting parent tables
+-- The modification's key must match a Name key in the destinationTable entry
+function mod.applyNestedSjsonModifications(destinationTable, modifications)
+	for _, entry in ipairs(destinationTable) do
+		local modification = modifications[entry.Name]
+		if modification then
+			for key, value in pairs(modification) do
+				if type(value) == "table" then
+					entry[key] = entry[key] or {}
+					for subKey, subValue in pairs(value) do
+						entry[key][subKey] = subValue
+					end
+				else
+					entry[key] = value
+				end
+			end
+		end
+	end
+end

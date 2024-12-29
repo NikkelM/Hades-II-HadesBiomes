@@ -1,24 +1,5 @@
 -- Adds enemies from Hades to Hades II
 
--- Applies modifications to the given table
-local function applyModifications(enemiesTable, modifications)
-	for _, enemy in ipairs(enemiesTable) do
-		local modification = modifications[enemy.Name]
-		if modification then
-			for key, value in pairs(modification) do
-				if type(value) == "table" then
-					enemy[key] = enemy[key] or {}
-					for subKey, subValue in pairs(value) do
-						enemy[key][subKey] = subValue
-					end
-				else
-					enemy[key] = value
-				end
-			end
-		end
-	end
-end
-
 local hadesEnemiesFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Units\\Enemies.sjson")
 local hadesEnemiesTable = sjson.decode_file(hadesEnemiesFile)
 
@@ -39,7 +20,7 @@ local hadesEnemiesModifications = {
 	-- },
 }
 
-applyModifications(hadesEnemiesTable, hadesEnemiesModifications)
+mod.applyNestedSjsonModifications(hadesEnemiesTable, hadesEnemiesModifications)
 
 sjson.hook(hadesTwoEnemiesFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Units, hadesEnemiesTable.Units, "Name")
