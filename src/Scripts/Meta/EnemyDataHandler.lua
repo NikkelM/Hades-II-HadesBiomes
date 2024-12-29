@@ -2,9 +2,9 @@
 
 -- Loads EnemyData from a file in Hades
 -- Note: Must be loaded before EncounterData, as there are some references to it in EncounterData!
-local function LoadHadesEnemyData(fileName)
+local function LoadHadesEnemyData()
 	local originalEnemyData = game.DeepCopyTable(game.EnemyData)
-	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
+	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts\\EnemyData.lua")
 	local chunk, err = loadfile(pathName)
 	if chunk then
 		chunk()
@@ -39,7 +39,16 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications)
 	game.OverwriteTableKeys(game.EnemyData, base)
 end
 
-local enemyData = LoadHadesEnemyData("EnemyData.lua")
-local enemyModifications = {}
+local enemyData = LoadHadesEnemyData()
+-- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
+local enemyModifications = {
+	PunchingBagUnit = {
+		-- Comes from the CharacterAnimationsEnemies.sjson entry which has the OnHit_Bink as VideoTexture
+		StunAnimations =
+		{
+			Default = "EnemyWretchGluttonOnHit"
+		},
+	},
+}
 
 ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications)
