@@ -16,6 +16,8 @@ encounterDataTartarus.ModsNikkelMHadesBiomesGenerated.StartRoomUnthreadedEvents 
 		FunctionName = "HandleEncounterPreSpawns"
 	}
 }
+-- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
+encounterDataTartarus.ModsNikkelMHadesBiomesGenerated.LoadPackages = { "RoomManagerModsNikkelMHadesBiomes" }
 -- First room of the run needs to wait for the boon pickup before spawning enemies
 encounterDataTartarus.OpeningGenerated.PreSpawnEnemies = false
 -- Also adapt to the Hades II way of handling the first room
