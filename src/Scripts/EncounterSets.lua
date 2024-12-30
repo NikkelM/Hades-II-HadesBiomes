@@ -2,6 +2,7 @@
 game.EncounterSets.TartarusEncountersDefault =
 {
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus",
+	-- TODO: Fix SurvivalTartarus and ThanatosTartarus
 	-- "GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus",
 	-- "GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus", "ThanatosTartarus"
 }

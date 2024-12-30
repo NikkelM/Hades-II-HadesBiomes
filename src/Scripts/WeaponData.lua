@@ -22,7 +22,7 @@ local function LoadHadesWeaponData()
 
 		return hadesWeaponData
 	else
-		print("Error loading WeaponData: " .. err)
+		mod.debugPrint("Error loading WeaponData: " .. err)
 	end
 end
 
@@ -36,7 +36,7 @@ local function ApplyModificationsAndInheritWeaponData(base, modifications)
 	end
 
 	-- Process data inheritance and add the new data to the game's global
-	base = mod.AddTableKeysSkipDupes(game.WeaponData, base)
+	base = mod.AddTableKeysSkipDupes(game.WeaponData, base, nil)
 	for weaponName, weaponData in pairs(base) do
 		game.ProcessDataInheritance(weaponData, game.WeaponData, nil, true)
 		base[weaponName] = weaponData

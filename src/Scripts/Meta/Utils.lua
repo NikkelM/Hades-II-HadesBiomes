@@ -1,9 +1,16 @@
 -- Utility functions
 
+-- Prints a message to the console only if debug mode is enabled
+function mod.debugPrint(message)
+	if config.debug then
+		print(message)
+	end
+end
+
 -- Adds keys or entries from one table to another, skipping duplicates
 -- If property is provided, skips duplicates based on the property (e.g., "Name")
 -- Returns tableToTake without the duplicate keys or entries
-function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property, debug)
+function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 	if tableToTake == nil then
 		return {}
 	end
@@ -26,8 +33,8 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property, debu
 				table.insert(tableToOverwrite, entryToTake)
 				table.insert(nonDuplicateItems, entryToTake)
 				propertyLookup[entryToTake[property]] = #tableToOverwrite
-			elseif debug then
-				print("Skipping duplicate key: " .. entryToTake[property])
+			else
+				mod.debugPrint("Skipping duplicate key: " .. entryToTake[property])
 			end
 		end
 	else
@@ -40,8 +47,8 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property, debu
 					tableToOverwrite[key] = value
 				end
 				nonDuplicateItems[key] = value
-			elseif debug then
-				print("Skipping duplicate key: " .. key)
+			else
+				mod.debugPrint("Skipping duplicate key: " .. key)
 			end
 		end
 	end

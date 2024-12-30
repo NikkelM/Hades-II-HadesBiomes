@@ -1,6 +1,7 @@
 -- Adds enemy animations from Hades to Hades II
 
-local hadesEnemyAnimationsFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\CharacterAnimationsEnemies.sjson")
+local hadesEnemyAnimationsFile = rom.path.combine(mod.hadesGameFolder,
+	"Content\\Game\\Animations\\CharacterAnimationsEnemies.sjson")
 local hadesEnemyAnimationsTable = sjson.decode_file(hadesEnemyAnimationsFile)
 
 -- This is the largest file, so we don't run into issues with the hooking
@@ -40,6 +41,7 @@ for i = #hadesEnemyAnimationsTable.Animations, 1, -1 do
 	local animation = hadesEnemyAnimationsTable.Animations[i]
 	if shouldRemoveAnimation(animation.Name) then
 		table.remove(hadesEnemyAnimationsTable.Animations, i)
+		mod.debugPrint("Removed animation: " .. animation.Name)
 	end
 end
 

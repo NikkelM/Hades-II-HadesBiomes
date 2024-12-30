@@ -13,7 +13,7 @@ function mod.LoadHadesRoomData(fileName)
 		game.RoomData = originalRoomData
 		return hadesRoomData
 	else
-		print("Error loading RoomData: " .. err)
+		mod.debugPrint("Error loading RoomData: " .. err)
 	end
 end
 
@@ -32,7 +32,7 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications)
 	end
 
 	-- Process data inheritance and add the new data to the game's global
-	base = mod.AddTableKeysSkipDupes(game.RoomData, base)
+	base = mod.AddTableKeysSkipDupes(game.RoomData, base, nil)
 	for roomName, roomData in pairs(base) do
 		game.ProcessDataInheritance(roomData, game.RoomData)
 		base[roomName] = roomData

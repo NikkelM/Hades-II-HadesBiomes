@@ -4,6 +4,7 @@ local config = {
   firstTimeSetup = true;
   hadesGameFolder = "root";
   uninstall = false;
+  debug = false;
 }
 
 local configDesc = {
@@ -11,6 +12,7 @@ local configDesc = {
   firstTimeSetup = "If set to true, the mod will make required file associations and moves from the \"hadesGameFolder\" to your Hades II installation when the game is started the next time. This process will set this variable to false afterwards. Only set this to true after a breaking update or when re-installing.";
   uninstall = "Set this to true and start the game once to run uninstall steps, which removes files copied and associated to Hades. Do this before uninstalling the mod through r2modman to avoid loose files staying behind. To re-install, set both \"uninstall\" and \"firstTimeSetup\" to true.";
   hadesGameFolder = "The path to the Hades game folder. When set to \"root\", resolves to the \"Hades\" directory in the same parent directory as your Hades II installation. I.e., leave like this if you have both games installed through Steam.";
+  debug = "Enables debug logging to the console. Enable this if you're having issues with the mod, or if the developer asked you for logs to help investigating an issue.";
 }
 
 return config, configDesc

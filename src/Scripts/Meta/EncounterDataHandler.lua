@@ -14,7 +14,7 @@ function mod.LoadHadesEncounterData(fileName)
 		game.EncounterData = originalEncounterData
 		return hadesEncounterData
 	else
-		print("Error loading encounterData: " .. err)
+		mod.debugPrint("Error loading encounterData: " .. err)
 	end
 end
 
@@ -28,7 +28,7 @@ function mod.ApplyModificationsAndInheritEncounterData(base, modifications)
 	end
 
 	-- Process data inheritance and add the new data to the game's global
-	base = mod.AddTableKeysSkipDupes(game.EncounterData, base)
+	base = mod.AddTableKeysSkipDupes(game.EncounterData, base, nil)
 	for encounterName, encounterData in pairs(base) do
 		game.ProcessDataInheritance(encounterData, game.EncounterData)
 		base[encounterName] = encounterData

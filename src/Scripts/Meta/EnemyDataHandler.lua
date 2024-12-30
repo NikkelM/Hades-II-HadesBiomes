@@ -14,7 +14,7 @@ local function LoadHadesEnemyData()
 		game.EnemyData = originalEnemyData
 		return hadesEnemyData
 	else
-		print("Error loading enemyData: " .. err)
+		mod.debugPrint("Error loading enemyData: " .. err)
 	end
 end
 
@@ -29,7 +29,7 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications)
 	end
 
 	-- Process data inheritance and add the new data to the game's global
-	base = mod.AddTableKeysSkipDupes(game.EnemyData, base)
+	base = mod.AddTableKeysSkipDupes(game.EnemyData, base, nil)
 	for enemyName, enemyData in pairs(base) do
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
 		base[enemyName] = enemyData

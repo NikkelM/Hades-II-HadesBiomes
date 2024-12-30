@@ -23,6 +23,7 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	local projectile = hadesProjectilesTable.Projectiles[i]
 	if shouldRemoveProjectile(projectile.Name) then
 		table.remove(hadesProjectilesTable.Projectiles, i)
+		mod.debugPrint("Removed projectile: " .. projectile.Name)
 	end
 end
 

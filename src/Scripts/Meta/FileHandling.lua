@@ -17,7 +17,7 @@ function mod.ConfirmHadesInstallation()
 		return false
 	end
 
-	print("Hades installation found at " .. mod.hadesGameFolder)
+	mod.debugPrint("Hades installation found at " .. mod.hadesGameFolder)
 	return true
 end
 
@@ -33,13 +33,13 @@ function mod.CompareChecksums()
 		local cachedChecksumsContent = cachedChecksums:read("*a")
 		local currentChecksumsContent = currentChecksums:read("*a")
 		if cachedChecksumsContent ~= currentChecksumsContent then
-			print(
+			mod.debugPrint(
 				"Game \"checksums.txt\" does not match the mod's cached \"checksums.txt\". This indicates a game update, the mod will be re-installed.")
 			-- This will cause a re-installation of the mod immediately after this function call
 			config.uninstall = true
 			config.firstTimeSetup = true
 		else
-			print("Game \"checksums.txt\" matches the mod's cached \"checksums.txt\". No game update detected.")
+			mod.debugPrint("Game \"checksums.txt\" matches the mod's cached \"checksums.txt\". No game update detected.")
 		end
 		cachedChecksums:close()
 		currentChecksums:close()

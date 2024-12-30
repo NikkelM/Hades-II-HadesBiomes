@@ -59,7 +59,7 @@ for key, newRoomSet in pairs(newRoomSets) do
 end
 
 local newNextRoomSets = {
-	-- Dummy, after Tartarus comes Erebus
+	-- TODO: Dummy, after Tartarus comes Erebus
 	Tartarus = "F"
 }
 
