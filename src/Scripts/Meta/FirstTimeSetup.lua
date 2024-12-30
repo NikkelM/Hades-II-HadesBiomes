@@ -40,18 +40,30 @@ function mod.FirstTimeSetup()
 	for _, name in ipairs(MapFileNames) do
 		local mapTextSrc = "Content\\Maps\\" .. name .. ".map_text"
 		local mapTextDest = "Maps\\" .. name .. ".map_text"
-		local srcPath = rom.path.combine(mod.hadesGameFolder, mapTextSrc)
+		local srcPath = nil
 		local destPath = rom.path.combine(rom.paths.Content(), mapTextDest)
 
+		-- Check if the map_text file is defined in the MapTextFileNames table, in which case it is in the plugins_data folder, and should not be taken from the Hades installation
+		if MapTextFileNames[name] then
+			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, mapTextSrc)
+		else
+			srcPath = rom.path.combine(mod.hadesGameFolder, mapTextSrc)
+		end
+
 		CopyFile(srcPath, destPath)
-		mod.debugPrint("Copied Hades\\" .. mapTextSrc .. " to Hades II\\Content\\" .. mapTextDest)
+
+		if MapTextFileNames[name] then
+			mod.debugPrint("Copied plugins_data\\" .. mapTextSrc .. " to Hades II\\Content\\" .. mapTextDest)
+		else
+			mod.debugPrint("Copied Hades\\" .. mapTextSrc .. " to Hades II\\Content\\" .. mapTextDest)
+		end
 	end
 
 	-- Copy over re-encoded .thing_bin files from the plugins_data folder to the game folder
 	mod.debugPrint("Copying re-encoded .thing_bin files (from the mod's \"plugin_data\" folder)...")
 
 	for _, name in ipairs(MapFileNames) do
-		local thingBinSrc = _PLUGIN.guid .. "\\" .. name .. ".thing_bin"
+		local thingBinSrc = _PLUGIN.guid .. "\\Content\\Maps\\bin\\" .. name .. ".thing_bin"
 		local thingBinDest = "Maps\\bin\\" .. name .. ".thing_bin"
 		local srcPath = rom.path.combine(rom.paths.plugins_data(), thingBinSrc)
 		local destPath = rom.path.combine(rom.paths.Content(), thingBinDest)

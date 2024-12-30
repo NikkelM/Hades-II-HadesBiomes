@@ -46,7 +46,7 @@ BikFileMappings = {
 
 -- map_text and thing_bin file names
 -- thing_bin files are re-encoded from the original Hades files, and are stored in the plugin_data folder
--- map_text files are copied directly from the Hades installation
+-- map_text files are copied directly from the Hades installation, if not defined below in MapTextFileNames
 MapFileNames = {
 	-- Tartarus
 	"RoomOpening",
@@ -89,6 +89,12 @@ MapFileNames = {
 	-- "A_Combat23",
 	"A_Combat24",
 	"A_Combat25",
+}
+
+-- .map_text files that should be copied from the plugin_data folder instead of the Hades installation
+MapTextFileNames = {
+	-- A new Terrain group was added to resolve flickering tiles next to where the player spawns
+	RoomOpening = true
 }
 
 -- Languages supported by Hades

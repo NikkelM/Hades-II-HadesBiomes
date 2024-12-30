@@ -13,6 +13,30 @@ function mod.Uninstall()
 		end
 	end
 
+	mod.debugPrint("Removing .bik files...")
+	for src, dest in pairs(BikFileMappings) do
+		local destPath = rom.path.combine(rom.paths.Content(), dest)
+		if rom.path.exists(destPath) then
+			mod.debugPrint("Removing file: " .. destPath)
+			local success, err = os.remove(destPath)
+			if not success then
+				mod.debugPrint("Error removing file: " .. err)
+			end
+		end
+	end
+
+	mod.debugPrint("Removing .sjson files...")
+	for src, dest in pairs(SjsonFileMappings) do
+		local destPath = rom.path.combine(rom.paths.Content(), dest)
+		if rom.path.exists(destPath) then
+			mod.debugPrint("Removing file: " .. destPath)
+			local success, err = os.remove(destPath)
+			if not success then
+				mod.debugPrint("Error removing file: " .. err)
+			end
+		end
+	end
+
 	mod.debugPrint("Removing .map_text files...")
 	for _, name in ipairs(MapFileNames) do
 		local mapTextDest = "Maps\\" .. name .. ".map_text"
