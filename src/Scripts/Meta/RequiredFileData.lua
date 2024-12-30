@@ -45,6 +45,8 @@ BikFileMappings = {
 }
 
 -- map_text and thing_bin file names
+-- thing_bin files are re-encoded from the original Hades files, and are stored in the plugin_data folder
+-- map_text files are copied directly from the Hades installation
 MapFileNames = {
 	-- Tartarus
 	"RoomOpening",
@@ -87,7 +89,6 @@ MapFileNames = {
 	-- "A_Combat23",
 	"A_Combat24",
 	"A_Combat25",
-	--
 }
 
 -- Languages supported by Hades

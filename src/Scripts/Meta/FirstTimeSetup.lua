@@ -48,7 +48,7 @@ function mod.FirstTimeSetup()
 	end
 
 	-- Copy over re-encoded .thing_bin files from the plugins_data folder to the game folder
-	mod.debugPrint("Copying re-encoded .thing_bin files...")
+	mod.debugPrint("Copying re-encoded .thing_bin files (from the mod's \"plugin_data\" folder)...")
 
 	for _, name in ipairs(MapFileNames) do
 		local thingBinSrc = _PLUGIN.guid .. "\\" .. name .. ".thing_bin"
