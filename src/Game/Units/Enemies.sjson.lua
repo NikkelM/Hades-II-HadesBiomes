@@ -7,20 +7,15 @@ local hadesTwoEnemiesFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\
 
 -- Modifications/overrides to the Hades enemies
 local hadesEnemiesModifications = {
-	-- Blank_Mesh is a placeholder that allows the enemies to register hits
 	BaseGlutton = {
-		Thing = {
-			GrannyModel = "Blank_Mesh"
-		}
+		InheritFrom = "1_BaseEnemy"
 	},
-	-- LightSpawner = {
-	-- 	Thing = {
-	-- 		GrannyModel = "Blank_Mesh"
-	-- 	}
-	-- },
+	LightSpawner = {
+		InheritFrom = "1_BaseEnemy"
+	},
 }
 
-mod.applyNestedSjsonModifications(hadesEnemiesTable, hadesEnemiesModifications)
+mod.applyNestedSjsonModifications(hadesEnemiesTable.Units, hadesEnemiesModifications)
 
 sjson.hook(hadesTwoEnemiesFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Units, hadesEnemiesTable.Units, "Name")

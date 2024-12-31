@@ -61,6 +61,7 @@ AddTableKeysCheckDupes( RoomData, RoomSetData.<BiomeName> )
 ### Key-Value replacements for RoomData files
 
 <!-- TODO -->
+
 - `RoomSetName` needs to be added to the base room file for the Biome, e.g. `RoomSetName = "A"` for Tartarus.
 - Each room needs a `Name` set to itself, this is handled already by the `mod.ApplyModificationsAndInherit()` function.
 
@@ -81,11 +82,40 @@ The format for the values of `Using` also seem to be different between the two g
 
 ### CharacterAnimationsEnemies.sjson
 
-<!-- TODO -->
+Some animations are duplicates, i.e. they exist in both games.
+These duplicates must be removed from the table imported from Hades, as otherwise the game will crash.
+Shortly before crashing, an error message is shown in the console, allowing you to see which animation is causing the issue and add it to the `animationsToRemove` table.
 
 ### Enemies.sjson
 
-<!-- TODO -->
+Enemies in Hades II inherit data from `1_BaseEnemy`, this is missing for Hades enemies.
+If they do not inherit from this base enemy type, they will not be able to register hits (be invulnerable).
+Use the `hadesEnemiesModifications` table to add the `InheritFrom` property to all relevant enemies.
+Parent enemy types, such as the `BaseGlutton` will work to also apply the inheritance to their children.
+
+```lua
+local hadesEnemiesModifications = {
+	BaseGlutton = {
+		InheritFrom = "1_BaseEnemy"
+	},
+}
+```
+
+### EnemyProjectiles.sjson
+
+Some projectiles are duplicates and must be removed, just as is done for `CharacterAnimationsEnemies.sjson`.
+
+Enemies in Hades use a `DamageLow` and `DamageHigh` property, while Hades II uses a `Damage` property.
+If the `Damage` property is not set, the enemies will not deal damage, or more precisely, their hits will not even register.
+Use the `hadesProjectilesModifications` table to add the `Damage` property to all relevant weapons.
+
+````lua
+local hadesProjectilesModifications = {
+	PunchingBagUnitWeapon = {
+		Damage = 8
+	},
+}
+```
 
 ## Map binaries
 
@@ -105,7 +135,7 @@ First, decode a `.thing_bin` file from Hades (don't use file extensions):
 
 ```bash
 HadesMapper dc -i Hades/Content/Win/Maps/<MapName> -o Hades/Content/Win/Maps/<MapName_dc>
-```
+````
 
 Then, encode it for Hades II. The `-s` flag stands for `sequel`, meaning Hades II.
 We place the encoded file in the `data` folder of the mod, so it gets added to `plugins_data`:
@@ -128,10 +158,12 @@ These two tiles have some bugged z-buffer location, which requires some manual c
 The changes that need to be made are as follows:
 
 To ID `210004`:
+
 - Added `"Comments": "FirstDoor"`
 - Assigned `Terrain_04` to the `GroupNames` array.
 
 To ID `210099`:
+
 - Added `"Comments": "SecondDoor"`
 - Assigned `Terrain_05` to the `GroupNames` array.
 
