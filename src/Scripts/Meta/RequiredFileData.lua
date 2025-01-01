@@ -24,6 +24,7 @@ SjsonFileMappings = {
 	["Content\\Game\\Animations\\CharacterAnim_Enemies_BoneDracon.sjson"] = "Game\\Animations\\CharacterAnim_Enemies_BoneDracon.sjson",
 	["Content\\Game\\Animations\\CharacterAnim_Enemies_Shades.sjson"] = "Game\\Animations\\CharacterAnim_Enemies_Shades.sjson",
 	["Content\\Game\\Animations\\CharacterAnim_Enemies_WretchThug.sjson"] = "Game\\Animations\\CharacterAnim_Enemies_WretchThug.sjson",
+	["Content\\Game\\Animations\\CharacterAnim_Enemies_Wringer.sjson"] = "Game\\Animations\\CharacterAnim_Enemies_Wringer.sjson",
 }
 
 BikFileMappings = {
@@ -70,6 +71,31 @@ BikFileMappings = {
 	["Content\\Movies\\EnemyWretchThugWalk_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchThugWalk_Bink.bik_atlas",
 	["Content\\Movies\\720p\\EnemyWretchThugWalk_Bink.bik"] = "Movies\\720p\\EnemyWretchThugWalk_Bink.bik",
 	["Content\\Movies\\720p\\EnemyWretchThugWalk_Bink.bik_atlas"] = "Movies\\720p\\EnemyWretchThugWalk_Bink.bik_atlas",
+	-- Disembodied Hand/EnemyWringer
+	["Content\\Movies\\Enemy_Wringer_OnHit_Bink.bik"] = "Movies\\1080p\\Enemy_Wringer_OnHit_Bink.bik",
+	["Content\\Movies\\Enemy_Wringer_OnHit_Bink.bik_atlas"] = "Movies\\1080p\\Enemy_Wringer_OnHit_Bink.bik_atlas",
+	["Content\\Movies\\720p\\Enemy_Wringer_OnHit_Bink.bik"] = "Movies\\720p\\Enemy_Wringer_OnHit_Bink.bik",
+	["Content\\Movies\\720p\\Enemy_Wringer_OnHit_Bink.bik_atlas"] = "Movies\\720p\\Enemy_Wringer_OnHit_Bink.bik_atlas",
+	["Content\\Movies\\Enemy_WringerAttack_Bink.bik"] = "Movies\\1080p\\Enemy_WringerAttack_Bink.bik",
+	["Content\\Movies\\Enemy_WringerAttack_Bink.bik_atlas"] = "Movies\\1080p\\Enemy_WringerAttack_Bink.bik_atlas",
+	["Content\\Movies\\720p\\Enemy_WringerAttack_Bink.bik"] = "Movies\\720p\\Enemy_WringerAttack_Bink.bik",
+	["Content\\Movies\\720p\\Enemy_WringerAttack_Bink.bik_atlas"] = "Movies\\720p\\Enemy_WringerAttack_Bink.bik_atlas",
+	["Content\\Movies\\Enemy_WringerDeathVFX_Bink.bik"] = "Movies\\1080p\\Enemy_WringerDeathVFX_Bink.bik",
+	["Content\\Movies\\Enemy_WringerDeathVFX_Bink.bik_atlas"] = "Movies\\1080p\\Enemy_WringerDeathVFX_Bink.bik_atlas",
+	["Content\\Movies\\720p\\Enemy_WringerDeathVFX_Bink.bik"] = "Movies\\720p\\Enemy_WringerDeathVFX_Bink.bik",
+	["Content\\Movies\\720p\\Enemy_WringerDeathVFX_Bink.bik_atlas"] = "Movies\\720p\\Enemy_WringerDeathVFX_Bink.bik_atlas",
+	["Content\\Movies\\Enemy_WringerIdle_Bink.bik"] = "Movies\\1080p\\Enemy_WringerIdle_Bink.bik",
+	["Content\\Movies\\Enemy_WringerIdle_Bink.bik_atlas"] = "Movies\\1080p\\Enemy_WringerIdle_Bink.bik_atlas",
+	["Content\\Movies\\720p\\Enemy_WringerIdle_Bink.bik"] = "Movies\\720p\\Enemy_WringerIdle_Bink.bik",
+	["Content\\Movies\\720p\\Enemy_WringerIdle_Bink.bik_atlas"] = "Movies\\720p\\Enemy_WringerIdle_Bink.bik_atlas",
+	["Content\\Movies\\Enemy_WringerStart_Bink.bik"] = "Movies\\1080p\\Enemy_WringerStart_Bink.bik",
+	["Content\\Movies\\Enemy_WringerStart_Bink.bik_atlas"] = "Movies\\1080p\\Enemy_WringerStart_Bink.bik_atlas",
+	["Content\\Movies\\720p\\Enemy_WringerStart_Bink.bik"] = "Movies\\720p\\Enemy_WringerStart_Bink.bik",
+	["Content\\Movies\\720p\\Enemy_WringerStart_Bink.bik_atlas"] = "Movies\\720p\\Enemy_WringerStart_Bink.bik_atlas",
+	["Content\\Movies\\Enemy_WringerMove_Bink.bik"] = "Movies\\1080p\\Enemy_WringerMove_Bink.bik",
+	["Content\\Movies\\Enemy_WringerMove_Bink.bik_atlas"] = "Movies\\1080p\\Enemy_WringerMove_Bink.bik_atlas",
+	["Content\\Movies\\720p\\Enemy_WringerMove_Bink.bik"] = "Movies\\720p\\Enemy_WringerMove_Bink.bik",
+	["Content\\Movies\\720p\\Enemy_WringerMove_Bink.bik_atlas"] = "Movies\\720p\\Enemy_WringerMove_Bink.bik_atlas",
 }
 
 -- map_text and thing_bin file names

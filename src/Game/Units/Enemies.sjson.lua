@@ -16,6 +16,13 @@ local hadesEnemiesModifications = {
 	BaseThug = {
 		InheritFrom = "1_BaseEnemy"
 	},
+	SmallEnemy = {
+		InheritFrom = "1_BaseEnemy"
+	},
+	-- Not needed - already inherits from SmallEnemy
+	-- DisembodiedHand = {
+		-- InheritFrom = "1_BaseEnemy"
+	-- },
 }
 
 mod.applyNestedSjsonModifications(hadesEnemiesTable.Units, hadesEnemiesModifications)

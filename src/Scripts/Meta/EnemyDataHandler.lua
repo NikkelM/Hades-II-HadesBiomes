@@ -55,6 +55,12 @@ local enemyModifications = {
 			Default = "EnemyWretchThugOnHit"
 		}
 	},
+	DisembodiedHand = {
+		StunAnimations =
+		{
+			Default = "EnemyWringerOnHit"
+		}
+	},
 }
 
 ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications)

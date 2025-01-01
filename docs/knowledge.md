@@ -115,7 +115,22 @@ Use the `hadesProjectilesModifications` table to add the `Damage` property to al
 local hadesProjectilesModifications = {
 	PunchingBagUnitWeapon = {
 		Damage = 8
-	},
+	}
+}
+```
+
+Additionally, the stun animation has been renamed in Hades II.
+Any effects with the Name `ZagreusOnHitStun` are therefore renamed to `HeroOnHitStun`.
+
+Some enemies start an animation during an effect, such as the `DisembodiedHandGrab` projectile, which starts the `ZagreusStun` animation during the `ZagreusHitStun` effect.
+This animation does not exist in Hades II, so it must be removed from the `Effects` property of the projectile.
+This is done through an empty string replacing it in the modifications:
+
+```lua
+DisembodiedHandGrab = {
+	Effect = {
+		StartAnimation = ""
+	}
 }
 ```
 
@@ -279,16 +294,19 @@ In the example, we will use the `HeavyMelee` (Wretch Thug) enemy type.
 1. In `EnemyProjectiles.sjson.lua`, add the `Damage` property for the enemy to the modifications table. This ensures the enemy deals damage.
 	- Search for the enemy name in `EnemyProjectiles.sjson` in Hades to find the `DamageLow` and `DamageHigh` values.
 	- Hades II uses a `Damage` property instead, so take the average or other appropriate value.
+2. In `EnemyProjectiles.sjson.lua`, modify the `Effects` property table as follows, to migrate it to the Hades II format:
+	- ...
 	- Also refer to the [EnemyProjectiles.sjson](#enemyprojectilessjson) section for more information on this file.
-2. Ensure the enemy inherits from `1_BaseEnemy` in `Enemies.sjson.lua`.
+3. Ensure the enemy inherits from `1_BaseEnemy` in `Enemies.sjson.lua`.
 	- Add the enemy name to the `InheritFrom` property in the modifications table. This ensures hits by the player are registered with the enemy.
-	<!-- - Even if the enemy is a child of another enemy type, you need to add the `InheritFrom` property to the child directly, as the inheritence here does not seem to work correctly. -->
+	- If the enemy already inherits from another enemy, you can instead add the `InheritFrom` property to the parent enemy type. Note that this does not work for all files, such as the `EnemyDataHandler.lua`.
 	- This also means that if the enemy has any variants (e.g. an elite unit type), these also need to inherit from `1_BaseEnemy`.
 	- Also refer to the [Enemies.sjson](#enemiessjson) section for more information on this file.
-3. Enable the enemy in `EnemySets.lua` to have it appear in game.
-4. For some enemies, animation data is stored in a separate `CharacterAnim_...` type file - ensure this is added to the `SjsonFileMappings` table in `RequiredFileData.lua` if needed.
+4. Enable the enemy in `EnemySets.lua` to have it appear in game.
+5. For some enemies, animation data is stored in a separate `CharacterAnim_...` type file - ensure this is added to the `SjsonFileMappings` table in `RequiredFileData.lua` if needed.
 
-The following steps apply to binked enemies only:
+The following steps apply to binked enemies only.
+If an enemy is binked, it will have a `Binks` property in `EnemyData.lua`.
 
 1. In `EnemyDataHandler.lua`, add the appropiate stun animation to the `StunAnimations` table in the modifications.
 	- You can find the stun animation by looking for the `OnStunAnimation` property for the enemy (or it's parent) in `Enemies.sjson` in Hades.

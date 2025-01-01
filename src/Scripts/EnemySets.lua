@@ -10,7 +10,7 @@ game.EnemySets.EnemiesBiome1 = {
 
 	"PunchingBagUnit",    -- Wretch Glutton
 	"HeavyMelee",         -- Wretch Thug
-	-- "DisembodiedHand",
+	"DisembodiedHand",			 -- Wringer
 	-- "DisembodiedHandElite",
 
 	-- "LightRanged", -- Wretch Caster
