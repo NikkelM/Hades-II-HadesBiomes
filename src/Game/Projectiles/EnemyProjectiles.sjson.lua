@@ -46,7 +46,7 @@ local hadesProjectilesModifications = {
 	DisembodiedHandGrab = {
 		Damage = 5,
 		Effect = {
-			StartAnimation = ""
+			StartAnimation = "null"
 		}
 	},
 }

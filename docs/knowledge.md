@@ -123,13 +123,12 @@ Additionally, the stun animation has been renamed in Hades II.
 Any effects with the Name `ZagreusOnHitStun` are therefore renamed to `HeroOnHitStun`.
 
 Some enemies start an animation during an effect, such as the `DisembodiedHandGrab` projectile, which starts the `ZagreusStun` animation during the `ZagreusHitStun` effect.
-This animation does not exist in Hades II, so it must be removed from the `Effects` property of the projectile.
-This is done through an empty string replacing it in the modifications:
+This animation does not exist in Hades II, so it must be removed from the `Effects` property of the projectile:
 
 ```lua
 DisembodiedHandGrab = {
 	Effect = {
-		StartAnimation = ""
+		StartAnimation = "null"
 	}
 }
 ```
