@@ -26,14 +26,12 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications)
 		end
 	end
 
-	-- Add a name key
-	for roomName, roomData in pairs(base) do
-		roomData.Name = roomName
-	end
-
 	-- Process data inheritance and add the new data to the game's global
 	base = mod.AddTableKeysSkipDupes(game.RoomData, base, nil)
 	for roomName, roomData in pairs(base) do
+		-- Add a name key
+		roomData.Name = roomName
+
 		game.ProcessDataInheritance(roomData, game.RoomData)
 		base[roomName] = roomData
 	end
