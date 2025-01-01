@@ -19,7 +19,7 @@ PackageFileMappings = {
 }
 
 SjsonFileMappings = {
-	-- Character animations
+	-- Character animations - should only contain unique animation data, so we can simply copy the file instead of hooking
 	-- Note - it's possible this only works if the file name is the same?
 	["Content\\Game\\Animations\\CharacterAnim_Enemies_BoneDracon.sjson"] = "Game\\Animations\\CharacterAnim_Enemies_BoneDracon.sjson",
 	["Content\\Game\\Animations\\CharacterAnim_Enemies_Shades.sjson"] = "Game\\Animations\\CharacterAnim_Enemies_Shades.sjson",

@@ -12,6 +12,7 @@ end
 local hadesProjectilesFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Projectiles\\EnemyProjectiles.sjson")
 local hadesProjectilesTable = sjson.decode_file(hadesProjectilesFile)
 
+-- Projectiles that are defined in a different file and therefore not caught by AddTableKeysSkipDupes()
 local projectilesToRemove = {
 	-- TODO: This is also defined as a player weapon in Hades II - do I need to duplicate this with a different name in order to have the original Hades weapon work as expected?
 	"HadesCastBeam",

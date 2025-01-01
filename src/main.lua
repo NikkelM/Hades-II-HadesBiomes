@@ -97,6 +97,7 @@ local function on_ready()
 	-- File handling and other generic functions
 	import "Scripts/Meta/Utils.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
+	import "Scripts/Meta/FxAnimationDuplicatesData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 
 	if not mod.ConfirmHadesInstallation() then return end

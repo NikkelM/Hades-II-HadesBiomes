@@ -75,6 +75,10 @@ function mod.FirstTimeSetup()
 	mod.debugPrint("Copying help text files...")
 	CopyHadesHelpTexts()
 
+	-- This is done extra, since a LOT of duplicate animations must be removed, and the original file is too large to be hooked into directly
+	mod.debugPrint("Copying Fx animations...")
+	CopyHadesFxAnimations()
+
 	-- Check that all files exist
 	if not mod.CheckRequiredFiles() then
 		error(
@@ -169,6 +173,26 @@ function CopyHadesHelpTexts()
 			'Game\\Text\\' .. language .. '\\HelpTextHades.' .. language .. '.sjson')
 		sjson.encode_file(hadesHelpTextFileHades, hadesHelpTextData)
 	end
+end
+
+-- Gets the Fx animations from Hades, removes duplicate animations and then writes the new file to the Hades II directory
+function CopyHadesFxAnimations()
+	local hadesFxFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\Fx.sjson")
+	local hadesFxTable = sjson.decode_file(hadesFxFile)
+
+	-- Z_ so the file is loaded last, and any animations these effects inherit from are already loaded
+	local destinationFile = rom.path.combine(rom.paths.Content(), "Game\\Animations\\Z_ModsNikkelmHadesBiomesFx.sjson")
+
+	local filteredAnimations = {}
+	for _, animation in ipairs(hadesFxTable.Animations) do
+		if not HadesFxAnimationDuplicates[animation.Name] then
+			table.insert(filteredAnimations, animation)
+		end
+	end
+
+	hadesFxTable.Animations = filteredAnimations
+
+	sjson.encode_file(destinationFile, hadesFxTable)
 end
 
 -- Copies a file from src to dest
