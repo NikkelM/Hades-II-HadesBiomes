@@ -33,6 +33,9 @@ local hadesProjectilesModifications = {
 	PunchingBagUnitWeapon = {
 		Damage = 8
 	},
+	HeavyMelee = {
+		Damage = 10
+	},
 }
 
 mod.applyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjectilesModifications)

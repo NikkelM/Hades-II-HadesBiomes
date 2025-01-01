@@ -48,8 +48,12 @@ local enemyModifications = {
 		{
 			Default = "EnemyWretchGluttonOnHit"
 		},
-		-- TODO: Does this work?
-		RequiredIntroEncounter = nil
+	},
+	HeavyMelee = {
+		StunAnimations =
+		{
+			Default = "EnemyWretchThugOnHit"
+		}
 	},
 }
 

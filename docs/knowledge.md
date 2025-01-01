@@ -1,4 +1,4 @@
-# Knowledge about how to add Hades biomes/maps to Hades II
+# Knowledge base
 
 ## Biome name mapping
 
@@ -72,6 +72,8 @@ AddTableKeysCheckDupes( RoomData, RoomSetData.<BiomeName> )
 
 ## Sjson files
 
+Part of this knowledge is needed when adding Hades enemy types to Hades II - more about that in the [Adding Hades enemies](#adding-hades-enemies) section.
+
 ### MapGroups.sjson
 
 Some data about biomes is stored in `Content/Game/MapGroups.sjson`, for both games.
@@ -109,7 +111,7 @@ Enemies in Hades use a `DamageLow` and `DamageHigh` property, while Hades II use
 If the `Damage` property is not set, the enemies will not deal damage, or more precisely, their hits will not even register.
 Use the `hadesProjectilesModifications` table to add the `Damage` property to all relevant weapons.
 
-````lua
+```lua
 local hadesProjectilesModifications = {
 	PunchingBagUnitWeapon = {
 		Damage = 8
@@ -268,6 +270,32 @@ The tool can be found [here](https://github.com/quaerus/deppth).
 ```bash
 deppth ex <PackageName>.pkg
 ```
+
+## Adding Hades enemies
+
+To add a Hades enemy type to Hades II, follow these steps.
+In the example, we will use the `HeavyMelee` (Wretch Thug) enemy type.
+
+1. In `EnemyProjectiles.sjson.lua`, add the `Damage` property for the enemy to the modifications table. This ensures the enemy deals damage.
+	- Search for the enemy name in `EnemyProjectiles.sjson` in Hades to find the `DamageLow` and `DamageHigh` values.
+	- Hades II uses a `Damage` property instead, so take the average or other appropriate value.
+	- Also refer to the [EnemyProjectiles.sjson](#enemyprojectilessjson) section for more information on this file.
+2. Ensure the enemy inherits from `1_BaseEnemy` in `Enemies.sjson.lua`.
+	- Add the enemy name to the `InheritFrom` property in the modifications table. This ensures hits by the player are registered with the enemy.
+	<!-- - Even if the enemy is a child of another enemy type, you need to add the `InheritFrom` property to the child directly, as the inheritence here does not seem to work correctly. -->
+	- This also means that if the enemy has any variants (e.g. an elite unit type), these also need to inherit from `1_BaseEnemy`.
+	- Also refer to the [Enemies.sjson](#enemiessjson) section for more information on this file.
+3. Enable the enemy in `EnemySets.lua` to have it appear in game.
+4. For some enemies, animation data is stored in a separate `CharacterAnim_...` type file - ensure this is added to the `SjsonFileMappings` table in `RequiredFileData.lua` if needed.
+
+The following steps apply to binked enemies only:
+
+1. In `EnemyDataHandler.lua`, add the appropiate stun animation to the `StunAnimations` table in the modifications.
+	- You can find the stun animation by looking for the `OnStunAnimation` property for the enemy (or it's parent) in `Enemies.sjson` in Hades.
+	- The value of this property is the name of the animation to use for the `Default` property in the `StunAnimations` table.
+	- Even if the enemy is a child of another enemy type, you need to add the `StunAnimations` property to the child directly, as the inheritence here does not seem to work correctly.
+	- If the enemy has different animations for it's Heavy etc. variants, you can add these to the `StunAnimations` table as well - this has not been tested yet.
+2. Add the `.bik` files for the new enemy to the `BikFileMappings` table in `RequiredFileData.lua`, make sure to copy both the 1080p and 720p version.
 
 ## Known issues
 

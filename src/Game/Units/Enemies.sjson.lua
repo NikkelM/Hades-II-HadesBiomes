@@ -13,6 +13,9 @@ local hadesEnemiesModifications = {
 	LightSpawner = {
 		InheritFrom = "1_BaseEnemy"
 	},
+	BaseThug = {
+		InheritFrom = "1_BaseEnemy"
+	},
 }
 
 mod.applyNestedSjsonModifications(hadesEnemiesTable.Units, hadesEnemiesModifications)

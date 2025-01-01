@@ -23,10 +23,12 @@ SjsonFileMappings = {
 	-- Note - it's possible this only works if the file name is the same?
 	["Content\\Game\\Animations\\CharacterAnim_Enemies_BoneDracon.sjson"] = "Game\\Animations\\CharacterAnim_Enemies_BoneDracon.sjson",
 	["Content\\Game\\Animations\\CharacterAnim_Enemies_Shades.sjson"] = "Game\\Animations\\CharacterAnim_Enemies_Shades.sjson",
+	["Content\\Game\\Animations\\CharacterAnim_Enemies_WretchThug.sjson"] = "Game\\Animations\\CharacterAnim_Enemies_WretchThug.sjson",
 }
 
 BikFileMappings = {
 	-- Enemy animations
+	-- Wretch Glutton/PunchingBagUnit
 	["Content\\Movies\\EnemyWretchGluttonAttack_Bink.bik"] = "Movies\\1080p\\EnemyWretchGluttonAttack_Bink.bik",
 	["Content\\Movies\\EnemyWretchGluttonAttack_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchGluttonAttack_Bink.bik_atlas",
 	["Content\\Movies\\720p\\EnemyWretchGluttonAttack_Bink.bik"] = "Movies\\720p\\EnemyWretchGluttonAttack_Bink.bik",
@@ -43,6 +45,31 @@ BikFileMappings = {
 	["Content\\Movies\\EnemyWretchGluttonOnHit_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchGluttonOnHit_Bink.bik_atlas",
 	["Content\\Movies\\720p\\EnemyWretchGluttonOnHit_Bink.bik"] = "Movies\\720p\\EnemyWretchGluttonOnHit_Bink.bik",
 	["Content\\Movies\\720p\\EnemyWretchGluttonOnHit_Bink.bik_atlas"] = "Movies\\720p\\EnemyWretchGluttonOnHit_Bink.bik_atlas",
+	-- Wretch Thug/HeavyMelee
+	["Content\\Movies\\EnemyWretchThugAttack_Bink.bik"] = "Movies\\1080p\\EnemyWretchThugAttack_Bink.bik",
+	["Content\\Movies\\EnemyWretchThugAttack_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchThugAttack_Bink.bik_atlas",
+	["Content\\Movies\\720p\\EnemyWretchThugAttack_Bink.bik"] = "Movies\\720p\\EnemyWretchThugAttack_Bink.bik",
+	["Content\\Movies\\720p\\EnemyWretchThugAttack_Bink.bik_atlas"] = "Movies\\720p\\EnemyWretchThugAttack_Bink.bik_atlas",
+	["Content\\Movies\\EnemyWretchThugDeathVFX_Bink.bik"] = "Movies\\1080p\\EnemyWretchThugDeathVFX_Bink.bik",
+	["Content\\Movies\\EnemyWretchThugDeathVFX_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchThugDeathVFX_Bink.bik_atlas",
+	["Content\\Movies\\720p\\EnemyWretchThugDeathVFX_Bink.bik"] = "Movies\\720p\\EnemyWretchThugDeathVFX_Bink.bik",
+	["Content\\Movies\\720p\\EnemyWretchThugDeathVFX_Bink.bik_atlas"] = "Movies\\720p\\EnemyWretchThugDeathVFX_Bink.bik_atlas",
+	["Content\\Movies\\EnemyWretchThugIdle_Bink.bik"] = "Movies\\1080p\\EnemyWretchThugIdle_Bink.bik",
+	["Content\\Movies\\EnemyWretchThugIdle_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchThugIdle_Bink.bik_atlas",
+	["Content\\Movies\\720p\\EnemyWretchThugIdle_Bink.bik"] = "Movies\\720p\\EnemyWretchThugIdle_Bink.bik",
+	["Content\\Movies\\720p\\EnemyWretchThugIdle_Bink.bik_atlas"] = "Movies\\720p\\EnemyWretchThugIdle_Bink.bik_atlas",
+	["Content\\Movies\\EnemyWretchThugOnHit_Bink.bik"] = "Movies\\1080p\\EnemyWretchThugOnHit_Bink.bik",
+	["Content\\Movies\\EnemyWretchThugOnHit_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchThugOnHit_Bink.bik_atlas",
+	["Content\\Movies\\720p\\EnemyWretchThugOnHit_Bink.bik"] = "Movies\\720p\\EnemyWretchThugOnHit_Bink.bik",
+	["Content\\Movies\\720p\\EnemyWretchThugOnHit_Bink.bik_atlas"] = "Movies\\720p\\EnemyWretchThugOnHit_Bink.bik_atlas",
+	["Content\\Movies\\EnemyWretchThugStart_Bink.bik"] = "Movies\\1080p\\EnemyWretchThugStart_Bink.bik",
+	["Content\\Movies\\EnemyWretchThugStart_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchThugStart_Bink.bik_atlas",
+	["Content\\Movies\\720p\\EnemyWretchThugStart_Bink.bik"] = "Movies\\720p\\EnemyWretchThugStart_Bink.bik",
+	["Content\\Movies\\720p\\EnemyWretchThugStart_Bink.bik_atlas"] = "Movies\\720p\\EnemyWretchThugStart_Bink.bik_atlas",
+	["Content\\Movies\\EnemyWretchThugWalk_Bink.bik"] = "Movies\\1080p\\EnemyWretchThugWalk_Bink.bik",
+	["Content\\Movies\\EnemyWretchThugWalk_Bink.bik_atlas"] = "Movies\\1080p\\EnemyWretchThugWalk_Bink.bik_atlas",
+	["Content\\Movies\\720p\\EnemyWretchThugWalk_Bink.bik"] = "Movies\\720p\\EnemyWretchThugWalk_Bink.bik",
+	["Content\\Movies\\720p\\EnemyWretchThugWalk_Bink.bik_atlas"] = "Movies\\720p\\EnemyWretchThugWalk_Bink.bik_atlas",
 }
 
 -- map_text and thing_bin file names
