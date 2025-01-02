@@ -22,13 +22,14 @@ local hadesEnemiesModifications = {
 	SmallEnemy = {
 		InheritFrom = "1_BaseEnemy"
 	},
-	-- For LightRanged
+	-- For LightRanged (HadesLightRanged)
 	BaseCaster = {
 		InheritFrom = "1_BaseEnemy"
 	},
 }
 
-mod.applyNestedSjsonModifications(hadesEnemiesTable.Units, hadesEnemiesModifications)
+mod.ApplyNestedSjsonModifications(hadesEnemiesTable.Units, hadesEnemiesModifications)
+mod.RenameSjsonEntries(hadesEnemiesTable.Units, EnemyNameMappings, "Enemies.sjson")
 
 sjson.hook(hadesTwoEnemiesFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Units, hadesEnemiesTable.Units, "Name")

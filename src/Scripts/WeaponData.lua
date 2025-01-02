@@ -22,7 +22,7 @@ local function LoadHadesWeaponData()
 
 		return hadesWeaponData
 	else
-		mod.debugPrint("Error loading WeaponData: " .. err)
+		mod.DebugPrint("Error loading WeaponData: " .. err)
 	end
 end
 

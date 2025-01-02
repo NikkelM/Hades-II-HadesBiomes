@@ -44,14 +44,14 @@ public.config = config -- so other mods can access our config
 
 -- For debugging
 -- TODO: Remove when releasing
-function game.printTable(t, maxDepth, indent)
+function game.PrintTable(t, maxDepth, indent)
 	if type(t) ~= "table" then
 		print(t)
 		return
 	end
 
 	indent = indent or 0
-	maxDepth = maxDepth or math.huge
+	maxDepth = maxDepth or 20
 	if indent > maxDepth then
 		print(string.rep("  ", indent) .. "...")
 		return
@@ -61,31 +61,7 @@ function game.printTable(t, maxDepth, indent)
 	for k, v in pairs(t) do
 		if type(v) == "table" then
 			print(formatting .. k .. ":")
-			game.printTable(v, maxDepth, indent + 1)
-		else
-			print(formatting .. k .. ": " .. tostring(v))
-		end
-	end
-end
-
-function printTable(t, maxDepth, indent)
-	if type(t) ~= "table" then
-		print(t)
-		return
-	end
-
-	indent = indent or 0
-	maxDepth = maxDepth or math.huge
-	if indent > maxDepth then
-		print(string.rep("  ", indent) .. "...")
-		return
-	end
-
-	local formatting = string.rep("  ", indent)
-	for k, v in pairs(t) do
-		if type(v) == "table" then
-			print(formatting .. k .. ":")
-			game.printTable(v, maxDepth, indent + 1)
+			game.PrintTable(v, maxDepth, indent + 1)
 		else
 			print(formatting .. k .. ": " .. tostring(v))
 		end
@@ -102,6 +78,7 @@ local function on_ready()
 	import "Scripts/Meta/Utils.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/FxAnimationDuplicatesData.lua"
+	import "Scripts/Meta/NameMappingData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 
 	if not mod.ConfirmHadesInstallation() then return end

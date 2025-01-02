@@ -26,7 +26,7 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	-- Projectiles that should be removed completely, likely as they already exist in Hades II
 	if shouldRemoveProjectile(projectile.Name, projectilesToRemove) then
 		table.remove(hadesProjectilesTable.Projectiles, i)
-		mod.debugPrint("Removed projectile: " .. projectile.Name)
+		mod.DebugPrint("Removed projectile: " .. projectile.Name)
 	end
 
 	-- Modifications that should be made to all projectiles
@@ -53,7 +53,7 @@ local hadesProjectilesModifications = {
 	}
 }
 
-mod.applyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjectilesModifications)
+mod.ApplyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjectilesModifications)
 
 local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Projectiles\\EnemyProjectiles.sjson")
 

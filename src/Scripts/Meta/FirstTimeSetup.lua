@@ -1,41 +1,41 @@
 function mod.FirstTimeSetup()
-	mod.debugPrint("Installing the mod...")
+	mod.DebugPrint("Installing the mod...")
 
 	-- Get and copy the .pkg files for the different biomes
-	mod.debugPrint("Copying .pkg files...")
+	mod.DebugPrint("Copying .pkg files...")
 
 	for src, dest in pairs(PackageFileMappings) do
 		local srcPath = rom.path.combine(mod.hadesGameFolder, src)
 		local destPath = rom.path.combine(rom.paths.Content(), dest)
 
 		CopyFile(srcPath, destPath)
-		mod.debugPrint("Copied Hades\\" .. src .. " to Hades II\\Content\\" .. dest)
+		mod.DebugPrint("Copied Hades\\" .. src .. " to Hades II\\Content\\" .. dest)
 	end
 
 	-- Get and copy the .bik and .bik_atlas files
-	mod.debugPrint("Copying .bik files...")
+	mod.DebugPrint("Copying .bik files...")
 
 	for src, dest in pairs(BikFileMappings) do
 		local srcPath = rom.path.combine(mod.hadesGameFolder, src)
 		local destPath = rom.path.combine(rom.paths.Content(), dest)
 
 		CopyFile(srcPath, destPath)
-		mod.debugPrint("Copied Hades\\" .. src .. " to Hades II\\Content\\" .. dest)
+		mod.DebugPrint("Copied Hades\\" .. src .. " to Hades II\\Content\\" .. dest)
 	end
 
 	-- Get and copy the .sjson files
-	mod.debugPrint("Copying .sjson files...")
+	mod.DebugPrint("Copying .sjson files...")
 
 	for src, dest in pairs(SjsonFileMappings) do
 		local srcPath = rom.path.combine(mod.hadesGameFolder, src)
 		local destPath = rom.path.combine(rom.paths.Content(), dest)
 
 		CopyFile(srcPath, destPath)
-		mod.debugPrint("Copied Hades\\" .. src .. " to Hades II\\Content\\" .. dest)
+		mod.DebugPrint("Copied Hades\\" .. src .. " to Hades II\\Content\\" .. dest)
 	end
 
 	-- Copy .map_text files
-	mod.debugPrint("Copying .map_text files...")
+	mod.DebugPrint("Copying .map_text files...")
 
 	for _, name in ipairs(MapFileNames) do
 		local mapTextSrc = "Content\\Maps\\" .. name .. ".map_text"
@@ -53,14 +53,14 @@ function mod.FirstTimeSetup()
 		CopyFile(srcPath, destPath)
 
 		if MapTextFileNames[name] then
-			mod.debugPrint("Copied plugins_data\\" .. mapTextSrc .. " to Hades II\\Content\\" .. mapTextDest)
+			mod.DebugPrint("Copied plugins_data\\" .. mapTextSrc .. " to Hades II\\Content\\" .. mapTextDest)
 		else
-			mod.debugPrint("Copied Hades\\" .. mapTextSrc .. " to Hades II\\Content\\" .. mapTextDest)
+			mod.DebugPrint("Copied Hades\\" .. mapTextSrc .. " to Hades II\\Content\\" .. mapTextDest)
 		end
 	end
 
 	-- Copy over re-encoded .thing_bin files from the plugins_data folder to the game folder
-	mod.debugPrint("Copying re-encoded .thing_bin files (from the mod's \"plugin_data\" folder)...")
+	mod.DebugPrint("Copying re-encoded .thing_bin files (from the mod's \"plugin_data\" folder)...")
 
 	for _, name in ipairs(MapFileNames) do
 		local thingBinSrc = _PLUGIN.guid .. "\\Content\\Maps\\bin\\" .. name .. ".thing_bin"
@@ -69,14 +69,14 @@ function mod.FirstTimeSetup()
 		local destPath = rom.path.combine(rom.paths.Content(), thingBinDest)
 
 		CopyFile(srcPath, destPath)
-		mod.debugPrint("Copied plugins_data\\" .. thingBinSrc .. " to Hades II\\Content\\" .. thingBinDest)
+		mod.DebugPrint("Copied plugins_data\\" .. thingBinSrc .. " to Hades II\\Content\\" .. thingBinDest)
 	end
 
-	mod.debugPrint("Copying help text files...")
+	mod.DebugPrint("Copying help text files...")
 	CopyHadesHelpTexts()
 
 	-- This is done extra, since a LOT of duplicate animations must be removed, and the original file is too large to be hooked into directly
-	mod.debugPrint("Copying Fx animations...")
+	mod.DebugPrint("Copying Fx animations...")
 	CopyHadesFxAnimations()
 
 	-- Check that all files exist
@@ -86,7 +86,7 @@ function mod.FirstTimeSetup()
 	end
 
 	-- Copy the Scripts/checksums.txt to the plugins_data folder
-	mod.debugPrint("Copying checksums.txt to be notified after a game update...")
+	mod.DebugPrint("Copying checksums.txt to be notified after a game update...")
 
 	local checksumsSrc = rom.path.combine(rom.paths.Content(), "Scripts\\checksums.txt")
 	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
@@ -95,7 +95,7 @@ function mod.FirstTimeSetup()
 	-- Will also update the .cfg file for the user
 	config.firstTimeSetup = false
 
-	mod.debugPrint("Finished first time setup, set config value to false.")
+	mod.DebugPrint("Finished first time setup, set config value to false.")
 end
 
 -- Ensure that required files exist, i.e. the first time setup has been successfully run
@@ -104,7 +104,7 @@ function mod.CheckRequiredFiles()
 	for src, dest in pairs(PackageFileMappings) do
 		local destPath = rom.paths.Content() .. "\\" .. dest
 		if not io.open(destPath, "r") then
-			mod.debugPrint("Missing file: " .. destPath)
+			mod.DebugPrint("Missing file: " .. destPath)
 			return false
 		end
 	end
@@ -114,7 +114,7 @@ function mod.CheckRequiredFiles()
 		local mapTextDest = "Maps\\" .. name .. ".map_text"
 		local destPath = rom.paths.Content() .. "\\" .. mapTextDest
 		if not io.open(destPath, "r") then
-			mod.debugPrint("Missing file: " .. destPath)
+			mod.DebugPrint("Missing file: " .. destPath)
 			return false
 		end
 	end
@@ -124,7 +124,7 @@ function mod.CheckRequiredFiles()
 		local thingBinDest = "Maps\\bin\\" .. name .. ".thing_bin"
 		local destPath = rom.paths.Content() .. "\\" .. thingBinDest
 		if not io.open(destPath, "r") then
-			mod.debugPrint("Missing file: " .. destPath)
+			mod.DebugPrint("Missing file: " .. destPath)
 			return false
 		end
 	end
@@ -134,7 +134,7 @@ function mod.CheckRequiredFiles()
 		local helpTextFile = rom.path.combine(rom.paths.Content(),
 			'Game\\Text\\' .. language .. '\\HelpTextHades.' .. language .. '.sjson')
 		if not io.open(helpTextFile, "r") then
-			mod.debugPrint("Missing file: " .. helpTextFile)
+			mod.DebugPrint("Missing file: " .. helpTextFile)
 			return false
 		end
 	end
@@ -145,7 +145,7 @@ end
 -- Creates a new helpTextFile for all given languages with any IDs that do not exist in the Hades II help text files
 function CopyHadesHelpTexts()
 	for _, language in ipairs(HelpTextLanguages) do
-		mod.debugPrint("Copying help text for language: " .. language)
+		mod.DebugPrint("Copying help text for language: " .. language)
 
 		local helpTextFile = rom.path.combine(rom.paths.Content(),
 			'Game\\Text\\' .. language .. '\\HelpText.' .. language .. '.sjson')
@@ -160,9 +160,16 @@ function CopyHadesHelpTexts()
 			existingIds[entry.Id] = true
 		end
 
+		-- Some entry IDs need to be changed, such as for duplicate enemy names
+		-- Merge these tables if there are multiple types of replacements
+		local IdRemappings = EnemyNameMappings
+
 		-- Remove all existingIds from hadesHelpTextData - we don't want to overwrite something that already exists in Hades II
 		for i = #hadesHelpTextData.Texts, 1, -1 do
 			local entry = hadesHelpTextData.Texts[i]
+			if IdRemappings[entry.Id] then
+				entry.Id = IdRemappings[entry.Id]
+			end
 			if existingIds[entry.Id] then
 				table.remove(hadesHelpTextData.Texts, i)
 			end
@@ -201,7 +208,7 @@ function CopyFile(src, dest, skipCheck)
 	-- Check if the file already exists
 	if not skipCheck then
 		if rom.path.exists(dest) then
-			mod.debugPrint("Warning: File already exists and will not be overwritten: " .. dest)
+			mod.DebugPrint("Warning: File already exists and will not be overwritten: " .. dest)
 			return
 		end
 	end

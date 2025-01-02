@@ -14,7 +14,7 @@ function mod.LoadHadesEncounterData(fileName)
 		game.EncounterData = originalEncounterData
 		return hadesEncounterData
 	else
-		mod.debugPrint("Error loading encounterData: " .. err)
+		mod.DebugPrint("Error loading encounterData: " .. err)
 	end
 end
 

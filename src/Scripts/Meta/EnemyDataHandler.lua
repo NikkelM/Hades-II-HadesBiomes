@@ -14,7 +14,7 @@ local function LoadHadesEnemyData()
 		game.EnemyData = originalEnemyData
 		return hadesEnemyData
 	else
-		mod.debugPrint("Error loading enemyData: " .. err)
+		mod.DebugPrint("Error loading enemyData: " .. err)
 	end
 end
 
@@ -40,6 +40,13 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications)
 end
 
 local enemyData = LoadHadesEnemyData()
+
+-- Some enemies exist in both Hades and Hades II, so we need to rename the Hades enemies
+for oldName, newName in pairs(EnemyNameMappings) do
+	enemyData[newName] = enemyData[oldName]
+	enemyData[oldName] = nil
+end
+
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
 local enemyModifications = {
 	PunchingBagUnit = {

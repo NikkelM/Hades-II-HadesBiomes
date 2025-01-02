@@ -1,15 +1,48 @@
 -- Utility functions
 
--- Prints a message to the console only if debug mode is enabled
-function mod.debugPrint(message)
+---Prints a message to the console only if debug mode is enabled.
+---@param t any The message to print.
+function mod.DebugPrint(t)
 	if config.debug then
-		print(message)
+		mod.PrintTable(t)
 	end
 end
 
--- Adds keys or entries from one table to another, skipping duplicates
--- If property is provided, skips duplicates based on the property (e.g., "Name")
--- Returns tableToTake without the duplicate keys or entries
+---Prints a table up to a certain depth, or any other printable entity.
+---@param t any The table to print, can also be another printable entity.
+---@param maxDepth number|nil The maximum depth to print the table to, after which it is cut off with ...
+---@param indent number|nil The current indentation level.
+function mod.PrintTable(t, maxDepth, indent)
+	if type(t) ~= "table" then
+		print(t)
+		return
+	end
+
+	indent = indent or 0
+	maxDepth = maxDepth or 20
+	if indent > maxDepth then
+		print(string.rep("  ", indent) .. "...")
+		return
+	end
+
+	local formatting = string.rep("  ", indent)
+	for k, v in pairs(t) do
+		if type(v) == "table" then
+			print(formatting .. k .. ":")
+			mod.PrintTable(v, maxDepth, indent + 1)
+		else
+			print(formatting .. k .. ": " .. tostring(v))
+		end
+	end
+end
+
+---Adds keys or entries from one table to another, skipping duplicates.
+---If property is provided, skips duplicates based on the property (e.g., "Name").
+---Returns tableToTake without the duplicate keys or entries.
+---@param tableToOverwrite table The table to add keys or entries to.
+---@param tableToTake table The table to take keys or entries from.
+---@param property string|nil The property to check for duplicates with.
+---@return table tableToTake All non-duplicate keys or entries from tableToTake.
 function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 	if tableToTake == nil then
 		return {}
@@ -34,7 +67,7 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 				table.insert(nonDuplicateItems, entryToTake)
 				propertyLookup[entryToTake[property]] = #tableToOverwrite
 			else
-				mod.debugPrint("Skipping duplicate key: " .. entryToTake[property])
+				mod.DebugPrint("Skipping duplicate key: " .. entryToTake[property])
 			end
 		end
 	else
@@ -48,7 +81,7 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 				end
 				nonDuplicateItems[key] = value
 			else
-				mod.debugPrint("Skipping duplicate key: " .. key)
+				mod.DebugPrint("Skipping duplicate key: " .. key)
 			end
 		end
 	end
@@ -56,7 +89,11 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 	return nonDuplicateItems
 end
 
--- Updates the InheritFrom field in a table to match the new property name
+---Updates the InheritFrom field in a table to match the new property name.
+---This will also work for tables with multiple InheritFrom entries.
+---@param tableToModify table The table to modify.
+---@param find string The InheritFrom value to find.
+---@param replaceWith string The InheritFrom value to replace "find" with.
 function mod.UpdateInheritFrom(tableToModify, find, replaceWith)
 	for _, data in pairs(tableToModify) do
 		if data.InheritFrom then
@@ -69,9 +106,12 @@ function mod.UpdateInheritFrom(tableToModify, find, replaceWith)
 	end
 end
 
--- Applies modifications to the given table, not overwriting parent tables
--- The modification's key must match a Name key in the destinationTable entry
-function mod.applyNestedSjsonModifications(destinationTable, modifications)
+---Applies modifications to the given table, not overwriting parent tables.
+---The modification's key must match a Name key in the destinationTable entry.
+---Do not use this to rename the Name property of an entry, instead use RenameSjsonEntries.
+---@param destinationTable table The table to modify.
+---@param modifications table The modifications to apply. The key must match a Name key in the destinationTable entry.
+function mod.ApplyNestedSjsonModifications(destinationTable, modifications)
 	for _, entry in ipairs(destinationTable) do
 		local modification = modifications[entry.Name]
 		if modification then
@@ -84,6 +124,22 @@ function mod.applyNestedSjsonModifications(destinationTable, modifications)
 				else
 					entry[key] = value
 				end
+			end
+		end
+	end
+end
+
+---Replaces the "Name" values of entries named in the mappings table in the tableToModify.
+---@param tableToModify table The table to modify
+---@param mappings table Needs to have the format {["OldName"] = "NewName"}
+---@param filename string|nil The name of the file being modified, used for debugging purposes
+function mod.RenameSjsonEntries(tableToModify, mappings, filename)
+	for _, entry in ipairs(tableToModify) do
+		if entry.Name then
+			if mappings[entry.Name] then
+				mod.DebugPrint("Renamed entry: " ..
+				entry.Name .. " to " .. mappings[entry.Name] .. " in " .. (filename or "an unknown file"))
+				entry.Name = mappings[entry.Name]
 			end
 		end
 	end
