@@ -109,15 +109,7 @@ Some projectiles are duplicates and must be removed, just as is done for `Charac
 
 Enemies in Hades use a `DamageLow` and `DamageHigh` property, while Hades II uses a `Damage` property.
 If the `Damage` property is not set, the enemies will not deal damage, or more precisely, their hits will not even register.
-Use the `hadesProjectilesModifications` table to add the `Damage` property to all relevant weapons.
-
-```lua
-local hadesProjectilesModifications = {
-	PunchingBagUnitWeapon = {
-		Damage = 8
-	}
-}
-```
+The `EnemyProjectiles.sjson.lua` file automatically migrates the `DamageLow` and `DamageHigh` properties to the `Damage` property, using the average of the two values.
 
 Additionally, the stun animation has been renamed in Hades II.
 Any effects with the Name `ZagreusOnHitStun` are therefore renamed to `HeroOnHitStun`.
@@ -288,21 +280,18 @@ deppth ex <PackageName>.pkg
 ## Adding Hades enemies
 
 To add a Hades enemy type to Hades II, follow these steps.
-In the example, we will use the `HeavyMelee` (Wretch Thug) enemy type.
+Take care! Some enemy names are used in both games, such as "Swarmer" and "LightRanged" - these should be renamed to avoid duplications.
+These renamings must be done everywhere, including encounters.
 
-1. In `EnemyProjectiles.sjson.lua`, add the `Damage` property for the enemy to the modifications table. This ensures the enemy deals damage.
-	- Search for the enemy name in `EnemyProjectiles.sjson` in Hades to find the `DamageLow` and `DamageHigh` values.
-	- Hades II uses a `Damage` property instead, so take the average or other appropriate value.
-2. In `EnemyProjectiles.sjson.lua`, modify the `Effects` property table as follows, to migrate it to the Hades II format:
-	- ...
+1. In `EnemyProjectiles.sjson.lua`, modify the `Effects` property table as follows, to migrate it to the Hades II format:
+	- If the effect defines a `StartAnimation` property, set it to `"null"`. It's possible this guidance changes in the future if these effects can be migrated.
 	- Also refer to the [EnemyProjectiles.sjson](#enemyprojectilessjson) section for more information on this file.
-3. Ensure the enemy inherits from `1_BaseEnemy` in `Enemies.sjson.lua`.
+2. Ensure the enemy inherits from `1_BaseEnemy` in `Enemies.sjson.lua`.
 	- Add the enemy name to the `InheritFrom` property in the modifications table. This ensures hits by the player are registered with the enemy.
 	- If the enemy already inherits from another enemy, you can instead add the `InheritFrom` property to the parent enemy type. Note that this does not work for all files, such as the `EnemyDataHandler.lua`.
-	- This also means that if the enemy has any variants (e.g. an elite unit type), these also need to inherit from `1_BaseEnemy`.
 	- Also refer to the [Enemies.sjson](#enemiessjson) section for more information on this file.
-4. Enable the enemy in `EnemySets.lua` to have it appear in game.
-5. For some enemies, animation data is stored in a separate `CharacterAnim_...` type file - ensure this is added to the `SjsonFileMappings` table in `RequiredFileData.lua` if needed.
+3. Enable the enemy in `EnemySets.lua` to have it appear in game.
+4. For some enemies, animation data is stored in a separate `CharacterAnim_...` type file - ensure this is added to the `SjsonFileMappings` table in `RequiredFileData.lua` if needed.
 
 The following steps apply to binked enemies only.
 If an enemy is binked, it will have a `Binks` property in `EnemyData.lua`.

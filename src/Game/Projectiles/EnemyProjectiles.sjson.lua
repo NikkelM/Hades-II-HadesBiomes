@@ -34,22 +34,23 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then
 		projectile.Effect.Name = "HeroOnHitStun"
 	end
+	-- Hades uses DamageLow and DamageHigh properties, Hades II only has Damage
+	if projectile.DamageLow or projectile.DamageHigh then
+		local damageLow = projectile.DamageLow or 0
+		local damageHigh = projectile.DamageHigh or 0
+		projectile.Damage = math.floor((damageLow + damageHigh) / 2)
+		projectile.DamageLow = nil
+		projectile.DamageHigh = nil
+	end
 end
 
 -- Modifications/overrides to the Hades enemy projectiles
 local hadesProjectilesModifications = {
-	PunchingBagUnitWeapon = {
-		Damage = 8
-	},
-	HeavyMelee = {
-		Damage = 10
-	},
 	DisembodiedHandGrab = {
-		Damage = 5,
 		Effect = {
 			StartAnimation = "null"
 		}
-	},
+	}
 }
 
 mod.applyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjectilesModifications)
