@@ -7,7 +7,7 @@ local encounterDataTartarus = {
 	OpeningGenerated = encounterData.OpeningGenerated,
 }
 
-mod.UpdateInheritFrom(encounterDataTartarus, "Generated", "ModsNikkelMHadesBiomesGenerated")
+mod.UpdateField(encounterDataTartarus, "Generated", "ModsNikkelMHadesBiomesGenerated", {"InheritFrom"}, "EncounterDataTartarus")
 
 -- TODO: Can these be modifications?
 -- The "Generated" encounter in Hades II uses this to place enemies, Hades doesn't have this

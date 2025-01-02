@@ -29,6 +29,12 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 		mod.DebugPrint("Removed projectile: " .. projectile.Name)
 	end
 
+	-- If the projectile Name is in EnemyProjectileMappings, rename it
+	if EnemyProjectileMappings[projectile.Name] then
+		mod.DebugPrint("Renamed projectile: " .. projectile.Name .. " to " .. EnemyProjectileMappings[projectile.Name])
+		projectile.Name = EnemyProjectileMappings[projectile.Name]
+	end
+
 	-- Modifications that should be made to all projectiles
 	-- This property was renamed in Hades II
 	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then

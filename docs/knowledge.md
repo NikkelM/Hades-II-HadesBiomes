@@ -282,6 +282,7 @@ deppth ex <PackageName>.pkg
 To add a Hades enemy type to Hades II, follow these steps.
 Take care! Some enemy names are used in both games, such as "Swarmer" and "LightRanged" - these should be renamed to avoid duplications.
 These renamings must be done everywhere, including encounters.
+See the [Duplicate enemy names](#duplicate-enemy-names) section for more information.
 
 1. In `EnemyProjectiles.sjson.lua`, modify the `Effects` property table as follows, to migrate it to the Hades II format:
 	- If the effect defines a `StartAnimation` property, set it to `"null"`. It's possible this guidance changes in the future if these effects can be migrated.
@@ -292,9 +293,10 @@ These renamings must be done everywhere, including encounters.
 	- Also refer to the [Enemies.sjson](#enemiessjson) section for more information on this file.
 3. Enable the enemy in `EnemySets.lua` to have it appear in game.
 4. For some enemies, animation data is stored in a separate `CharacterAnim_...` type file - ensure this is added to the `SjsonFileMappings` table in `RequiredFileData.lua` if needed.
+5. Ensure that the various animations for the enemy are copied, e.g. `PreAttackAnimation` etc. This will often indicate if the enemy may be binked.
 
 The following steps apply to binked enemies only.
-If an enemy is binked, it will have a `Binks` property in `EnemyData.lua`.
+If an enemy is binked, it might have a `Binks` property in `EnemyData.lua`.
 
 1. In `EnemyDataHandler.lua`, add the appropiate stun animation to the `StunAnimations` table in the modifications.
 	- You can find the stun animation by looking for the `OnStunAnimation` property for the enemy (or it's parent) in `Enemies.sjson` in Hades.
@@ -302,6 +304,16 @@ If an enemy is binked, it will have a `Binks` property in `EnemyData.lua`.
 	- Even if the enemy is a child of another enemy type, you need to add the `StunAnimations` property to the child directly, as the inheritence here does not seem to work correctly.
 	- If the enemy has different animations for it's Heavy etc. variants, you can add these to the `StunAnimations` table as well - this has not been tested yet.
 2. Add the `.bik` files for the new enemy to the `BikFileMappings` table in `RequiredFileData.lua`, make sure to copy both the 1080p and 720p version.
+
+### Duplicate enemy names
+
+Some enemy names exist in both Hades and Hades II, such as "Swarmer" and "LightRanged".
+To avoid conflicts (i.e., the Hades II enemy appearing in a Hades run), we need to rename these enemies.
+This needs to be done in a lot of places:
+
+- In `NameMappingData.lua`, add the old and new enemy name to the `EnemyNameMappings` table.
+	- This will rename the key in a couple of places: The Helptext files during installation, in `EnemyDataHandler.lua`, `EnemySets.lua`
+	<!-- TODO: Complete! -->
 
 ## Known issues
 

@@ -89,19 +89,47 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 	return nonDuplicateItems
 end
 
----Updates the InheritFrom field in a table to match the new property name.
----This will also work for tables with multiple InheritFrom entries.
+---Updates a specified field in a table to match the new property name.
+---This will also work for tables with multiple entries and nested structures.
 ---@param tableToModify table The table to modify.
----@param find string The InheritFrom value to find.
----@param replaceWith string The InheritFrom value to replace "find" with.
-function mod.UpdateInheritFrom(tableToModify, find, replaceWith)
-	for _, data in pairs(tableToModify) do
-		if data.InheritFrom then
-			for i, value in ipairs(data.InheritFrom) do
-				if value == find then
-					data.InheritFrom[i] = replaceWith
+---@param find string The value to find.
+---@param replaceWith string The value to replace "find" with.
+---@param propertyPath table The path to the property being modified, as a list of keys, such as { "GeneratorData", "BlockEnemyTypes" }.
+---@param tableName string|nil The name of the table being modified, used for debugging purposes.
+function mod.UpdateField(tableToModify, find, replaceWith, propertyPath, tableName)
+	local function updateField(data, path)
+		local replaced = false
+		if #path == 0 then
+			if type(data) == "string" then
+				if data == find then
+					replaced = true
+					return replaceWith, replaced
+				end
+			elseif type(data) == "table" then
+				for i, value in ipairs(data) do
+					if value == find then
+						data[i] = replaceWith
+						replaced = true
+					end
 				end
 			end
+			return data, replaced
+		else
+			local key = table.remove(path, 1)
+			if data[key] then
+				data[key], replaced = updateField(data[key], path)
+			end
+			return data, replaced
+		end
+	end
+
+	for name, data in pairs(tableToModify) do
+		local pathCopy = { table.unpack(propertyPath) }
+		data, replaced = updateField(data, pathCopy)
+		if replaced then
+			mod.DebugPrint("Updated " .. table.concat(propertyPath, "-") .. " from " ..
+				find ..
+				" to " .. replaceWith .. " for " .. (name or "an unknown entry") .. " in " .. (tableName or "an unknown table"))
 		end
 	end
 end
@@ -138,7 +166,7 @@ function mod.RenameSjsonEntries(tableToModify, mappings, filename)
 		if entry.Name then
 			if mappings[entry.Name] then
 				mod.DebugPrint("Renamed entry: " ..
-				entry.Name .. " to " .. mappings[entry.Name] .. " in " .. (filename or "an unknown file"))
+					entry.Name .. " to " .. mappings[entry.Name] .. " in " .. (filename or "an unknown file"))
 				entry.Name = mappings[entry.Name]
 			end
 		end

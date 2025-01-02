@@ -4,5 +4,15 @@
 -- Enemies that exist in both games
 EnemyNameMappings = {
 	LightRanged = "HadesLightRanged",
-	LightRangedElite = "HadesLightRangedElite",
+	-- In Hades II, this is LightRanged_Elite
+	-- LightRangedElite = "HadesLightRangedElite",
+	-- Doesn't exist at all in Hades II
+	-- LightRangedSuperElite = "HadesLightRangedSuperElite",
+	-- Not tested yet - is this needed?
+	-- SpreadShotUnit = "HadesSpreadShotUnit",
+}
+
+EnemyProjectileMappings = {
+	-- Not currently used by Hades II
+	-- LightRangedWeapon = "HadesLightRangedWeapon",
 }

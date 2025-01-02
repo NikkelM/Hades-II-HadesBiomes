@@ -45,6 +45,13 @@ local enemyData = LoadHadesEnemyData()
 for oldName, newName in pairs(EnemyNameMappings) do
 	enemyData[newName] = enemyData[oldName]
 	enemyData[oldName] = nil
+	-- Update the name in dependent fields
+	-- Inherit properties from this name
+	mod.UpdateField(enemyData, oldName, newName, { "InheritFrom" }, "EnemyData")
+	-- If an enemy is spawned, this enemy cannot spawn
+	mod.UpdateField(enemyData, oldName, newName, { "GeneratorData", "BlockEnemyTypes" }, "EnemyData")
+	-- Other enemies can spawn this enemy
+	mod.UpdateField(enemyData, oldName, newName, { "SpawnOptions" }, "EnemyData")
 end
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
