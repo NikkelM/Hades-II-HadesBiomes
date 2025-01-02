@@ -288,7 +288,7 @@ These renamings must be done everywhere, including encounters.
 	- Also refer to the [EnemyProjectiles.sjson](#enemyprojectilessjson) section for more information on this file.
 2. Ensure the enemy inherits from `1_BaseEnemy` in `Enemies.sjson.lua`.
 	- Add the enemy name to the `InheritFrom` property in the modifications table. This ensures hits by the player are registered with the enemy.
-	- If the enemy already inherits from another enemy, you can instead add the `InheritFrom` property to the parent enemy type. Note that this does not work for all files, such as the `EnemyDataHandler.lua`.
+	- If the enemy already inherits from another enemy, you can instead add the `InheritFrom` property to the parent enemy type. Note that this approach (inheriting only for the parent class) does not work for all files, such as the `EnemyDataHandler.lua`.
 	- Also refer to the [Enemies.sjson](#enemiessjson) section for more information on this file.
 3. Enable the enemy in `EnemySets.lua` to have it appear in game.
 4. For some enemies, animation data is stored in a separate `CharacterAnim_...` type file - ensure this is added to the `SjsonFileMappings` table in `RequiredFileData.lua` if needed.
