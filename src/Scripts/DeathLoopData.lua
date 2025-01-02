@@ -10,7 +10,7 @@ function mod.SpawnHadesRunStartDoor(source, args)
 	-- Run start door for the underworld
 	local spawnId = 420947
 
-	local chaosGate = game.DeepCopyTable(game.ObstacleData.SecretDoor)
+	local chaosGate = game.DeepCopyTable(game.ObstacleData.SecretDoor) or {}
 
 	chaosGate.ObjectId = SpawnObstacle({
 		Name = "ModsNikkelMHadesBiomes_HadesRunStartDoor",

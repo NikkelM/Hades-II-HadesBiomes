@@ -52,7 +52,7 @@ local function ApplyModificationsAndInheritWeaponData(base, modifications)
 			end
 		end
 
-		game.ProcessDataInheritance(weaponData, game.WeaponData, nil, true)
+		game.ProcessDataInheritance(weaponData, game.WeaponData)
 		base[weaponName] = weaponData
 	end
 	-- Don't skip duplicates, since we have already added all the data before
