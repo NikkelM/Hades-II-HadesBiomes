@@ -3,6 +3,8 @@
 -- these funky (---@) comments are just there
 --	 to help VS Code find the definitions of things
 
+import = require
+
 ---@diagnostic disable-next-line: undefined-global
 local mods = rom.mods
 
