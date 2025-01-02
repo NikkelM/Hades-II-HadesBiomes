@@ -7,22 +7,25 @@ local hadesTwoEnemiesFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\
 
 -- Modifications/overrides to the Hades enemies
 local hadesEnemiesModifications = {
+	-- For PunchingBagUnit
 	BaseGlutton = {
 		InheritFrom = "1_BaseEnemy"
 	},
 	LightSpawner = {
 		InheritFrom = "1_BaseEnemy"
 	},
+	-- For HeavyMelee
 	BaseThug = {
 		InheritFrom = "1_BaseEnemy"
 	},
+	-- For DisembodiedHand
 	SmallEnemy = {
 		InheritFrom = "1_BaseEnemy"
 	},
-	-- Not needed - already inherits from SmallEnemy
-	-- DisembodiedHand = {
-		-- InheritFrom = "1_BaseEnemy"
-	-- },
+	-- For LightRanged
+	BaseCaster = {
+		InheritFrom = "1_BaseEnemy"
+	},
 }
 
 mod.applyNestedSjsonModifications(hadesEnemiesTable.Units, hadesEnemiesModifications)

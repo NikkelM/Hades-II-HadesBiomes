@@ -8,17 +8,17 @@ game.EnemySets.EnemiesBiome1 = {
 	-- "ThiefMineLayer",     -- Wretch Thief
 	-- "ThiefMineLayerElite", -- Wretch Thief
 
-	"PunchingBagUnit",    -- Wretch Glutton
-	"HeavyMelee",         -- Wretch Thug
-	"DisembodiedHand",			 -- Wringer
-	-- "DisembodiedHandElite",
+	"PunchingBagUnit",    -- Wretch Glutton -- Done
+	"HeavyMelee",         -- Wretch Thug -- Done
+	"DisembodiedHand",			 -- Wringer -- Done
+	"DisembodiedHandElite", -- Wringer Elite -- Done with Wringer
 
 	-- "LightRanged", -- Wretch Caster
 	-- "HeavyRanged", -- Crystal
 	-- -- "Grenadier", -- Wretch Caster -- COMMENTED OUT IN HADES EnemySets!
 
-	-- "HeavyMeleeElite",     -- Wretch Thug Elite
+	"HeavyMeleeElite",     -- Wretch Thug Elite -- Done with HeavyMelee
 	-- "LightRangedElite",    -- Wretch Caster Elite
-	-- "PunchingBagUnitElite", -- Wretch Glutton Elite
+	"PunchingBagUnitElite", -- Wretch Glutton Elite -- Done with PunchingBagUnit
 	-- "HeavyRangedElite",
 }
