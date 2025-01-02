@@ -23,6 +23,7 @@ _PLUGIN = _PLUGIN
 ---@module 'game'
 game = rom.game
 ---@module 'game-import'
+---@diagnostic disable-next-line: undefined-global
 import_as_fallback(game)
 
 ---@module 'SGG_Modding-SJSON'
@@ -38,6 +39,7 @@ reload = mods['SGG_Modding-ReLoad']
 ---@module 'config'
 config = chalk.auto 'config.lua'
 -- ^ this updates our `.cfg` file in the config folder!
+---@diagnostic disable-next-line: undefined-global
 public.config = config -- so other mods can access our config
 
 -- For debugging
