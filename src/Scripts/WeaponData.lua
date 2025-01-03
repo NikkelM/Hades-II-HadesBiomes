@@ -38,7 +38,7 @@ local function ApplyModificationsAndInheritWeaponData(base, modifications)
 	-- Process data inheritance and add the new data to the game's global
 	base = mod.AddTableKeysSkipDupes(game.WeaponData, base, nil)
 	for weaponName, weaponData in pairs(base) do
-		-- Replace keys that were renamed
+		-- Replace keys that were renamed between the games
 		if weaponData.AIData then
 			-- The maximum distance before an attack
 			if weaponData.AIData.AIAttackDistance then

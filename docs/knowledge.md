@@ -52,11 +52,13 @@ At the bottom of the Hades files we have the following:
 OverwriteTableKeys( RoomData, RoomSetData.<BiomeName> )
 ```
 
-For Hades II, this should use the following format:
+In Hades II, this format is used:
 
 ```lua
 AddTableKeysCheckDupes( RoomData, RoomSetData.<BiomeName> )
 ```
+
+Note: This is irrelevant with the current method of loading the data.
 
 ### Key-Value replacements for RoomData files
 
@@ -143,7 +145,7 @@ First, decode a `.thing_bin` file from Hades (don't use file extensions):
 
 ```bash
 HadesMapper dc -i Hades/Content/Win/Maps/<MapName> -o Hades/Content/Win/Maps/<MapName_dc>
-````
+```
 
 Then, encode it for Hades II. The `-s` flag stands for `sequel`, meaning Hades II.
 We place the encoded file in the `data` folder of the mod, so it gets added to `plugins_data`:
@@ -272,6 +274,7 @@ The resulting `.pkg` files must be copied from Hades to Hades II, so that all re
 
 You can use `deppth` to unpack `.pkg` files.
 The tool can be found [here](https://github.com/quaerus/deppth).
+This is useful to check texture paths used for animations and effects.
 
 ```bash
 deppth ex <PackageName>.pkg
@@ -285,12 +288,12 @@ These renamings must be done everywhere, including encounters.
 See the [Duplicate enemy names](#duplicate-enemy-names) section for more information.
 
 1. In `EnemyProjectiles.sjson.lua`, modify the `Effects` property table as follows, to migrate it to the Hades II format:
-	- If the effect defines a `StartAnimation` property, set it to `"null"`. It's possible this guidance changes in the future if these effects can be migrated.
-	- Also refer to the [EnemyProjectiles.sjson](#enemyprojectilessjson) section for more information on this file.
+   - If the effect defines a `StartAnimation` property, set it to `"null"`. It's possible this guidance changes in the future if these effects can be migrated.
+   - Also refer to the [EnemyProjectiles.sjson](#enemyprojectilessjson) section for more information on this file.
 2. Ensure the enemy inherits from `1_BaseEnemy` in `Enemies.sjson.lua`.
-	- Add the enemy name to the `InheritFrom` property in the modifications table. This ensures hits by the player are registered with the enemy.
-	- If the enemy already inherits from another enemy, you can instead add the `InheritFrom` property to the parent enemy type. Note that this approach (inheriting only for the parent class) does not work for all files, such as the `EnemyDataHandler.lua`.
-	- Also refer to the [Enemies.sjson](#enemiessjson) section for more information on this file.
+   - Add the enemy name to the `InheritFrom` property in the modifications table. This ensures hits by the player are registered with the enemy.
+   - If the enemy already inherits from another enemy, you can instead add the `InheritFrom` property to the parent enemy type. Note that this approach (inheriting only for the parent class) does not work for all files, such as the `EnemyDataHandler.lua`.
+   - Also refer to the [Enemies.sjson](#enemiessjson) section for more information on this file.
 3. Enable the enemy in `EnemySets.lua` to have it appear in game.
 4. For some enemies, animation data is stored in a separate `CharacterAnim_...` type file - ensure this is added to the `SjsonFileMappings` table in `RequiredFileData.lua` if needed.
 5. Ensure that the various animations for the enemy are copied, e.g. `PreAttackAnimation` etc. This will often indicate if the enemy may be binked.
@@ -299,10 +302,10 @@ The following steps apply to binked enemies only.
 If an enemy is binked, it might have a `Binks` property in `EnemyData.lua`.
 
 1. In `EnemyDataHandler.lua`, add the appropiate stun animation to the `StunAnimations` table in the modifications.
-	- You can find the stun animation by looking for the `OnStunAnimation` property for the enemy (or it's parent) in `Enemies.sjson` in Hades.
-	- The value of this property is the name of the animation to use for the `Default` property in the `StunAnimations` table.
-	- Even if the enemy is a child of another enemy type, you need to add the `StunAnimations` property to the child directly, as the inheritence here does not seem to work correctly.
-	- If the enemy has different animations for it's Heavy etc. variants, you can add these to the `StunAnimations` table as well - this has not been tested yet.
+   - You can find the stun animation by looking for the `OnStunAnimation` property for the enemy (or it's parent) in `Enemies.sjson` in Hades.
+   - The value of this property is the name of the animation to use for the `Default` property in the `StunAnimations` table.
+   - Even if the enemy is a child of another enemy type, you need to add the `StunAnimations` property to the child directly, as the inheritence here does not seem to work correctly.
+   - If the enemy has different animations for it's Heavy etc. variants, you can add these to the `StunAnimations` table as well - this has not been tested yet.
 2. Add the `.bik` files for the new enemy to the `BikFileMappings` table in `RequiredFileData.lua`, make sure to copy both the 1080p and 720p version.
 
 ### Duplicate enemy names
@@ -312,15 +315,5 @@ To avoid conflicts (i.e., the Hades II enemy appearing in a Hades run), we need 
 This needs to be done in a lot of places:
 
 - In `NameMappingData.lua`, add the old and new enemy name to the `EnemyNameMappings` table.
-	- This will rename the key in a couple of places: The Helptext files during installation, in `EnemyDataHandler.lua`, `EnemySets.lua`
-	<!-- TODO: Complete! -->
-
-## Known issues
-
-This section details ways the game still crashes or otherwise doesn't work:
-
-### Using Hades enemies in EnemySets crashes the game
-
-Using an enemy name that is not defined in Hades II in the enemy set will crash the game immediately upon loading a room.
-
-This might be related to missing animation files - visuals have already been added through `RoomManager.pkg`.
+  - This will rename the key in a couple of places: The Helptext files during installation, in `EnemyDataHandler.lua`, `EnemySets.lua`
+  <!-- TODO: Complete this with everywhere replacements are done - use LightRanged as an example -->

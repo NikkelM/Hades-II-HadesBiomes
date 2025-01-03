@@ -1,14 +1,17 @@
 local newRoomSets = {
 	-- Tartarus
 	Tartarus = {
+		-- Opening room for the very first run, forces Athena boon, no enemies
 		-- "RoomSimple01",
 		"RoomOpening",
 
-		"A_PreBoss01",
-		"A_Boss01",
-		"A_Boss02",
-		"A_Boss03",
-		"A_PostBoss01",
+		-- TODO: Not implemented yet
+		-- "A_Boss01",
+		-- "A_Boss02",
+		-- "A_Boss03",
+
+		-- TODO: Not implemented yet
+		-- "A_PostBoss01",
 
 		-- TODO: LegalEncounters don't exist
 		-- "A_MiniBoss01",
@@ -16,7 +19,9 @@ local newRoomSets = {
 		-- "A_MiniBoss03",
 		-- "A_MiniBoss04",
 
-		"A_Shop01",
+		-- TODO: Some error with a spawn being nil
+		-- "A_PreBoss01",
+		-- "A_Shop01",
 
 		-- TODO: LegalEncounters = { "Story_Sisyphus_01" } doesn't exist
 		-- "A_Story01",
