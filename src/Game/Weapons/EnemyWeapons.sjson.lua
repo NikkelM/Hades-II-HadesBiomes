@@ -13,6 +13,15 @@ hadesWeaponsTable.Weapons = mod.AddTableKeysSkipDupes(hadesTwoWeaponsTable.Weapo
 -- Hooking into the enemy file fails as the file size of the target is too small to insert the new data
 local hadesTwoPlayerWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\Weapons\\PlayerWeapons.sjson")
 
+local hadesWeaponsModifications = {
+	LightRangedWeapon = {
+		-- The default length of 55 results in the enemy hitting itself
+		BarrelLength = 75
+	}
+}
+
+mod.ApplyNestedSjsonModifications(hadesWeaponsTable.Weapons, hadesWeaponsModifications)
+
 sjson.hook(hadesTwoPlayerWeaponsFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Weapons, hadesWeaponsTable.Weapons, "Name")
 end)
