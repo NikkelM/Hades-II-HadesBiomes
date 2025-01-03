@@ -27,7 +27,7 @@ local function LoadHadesWeaponData()
 end
 
 -- Applies modifications to base weapon objects, and then adds the new weapon objects to the game
-local function ApplyModificationsAndInheritWeaponData(base, modifications)
+local function ApplyModificationsAndInheritWeaponData(base, modifications, AIDataKeyReplacements)
 	-- Apply modifications
 	for weaponName, weaponData in pairs(modifications) do
 		for key, value in pairs(weaponData) do
@@ -40,15 +40,11 @@ local function ApplyModificationsAndInheritWeaponData(base, modifications)
 	for weaponName, weaponData in pairs(base) do
 		-- Replace keys that were renamed between the games
 		if weaponData.AIData then
-			-- The maximum distance before an attack
-			if weaponData.AIData.AIAttackDistance then
-				weaponData.AIData.AttackDistance = weaponData.AIData.AIAttackDistance
-				weaponData.AIData.AIAttackDistance = nil
-			end
-			-- How far from the player the AI wants to be/should retreat
-			if weaponData.AIData.AIBufferDistance then
-				weaponData.AIData.RetreatBufferDistance = weaponData.AIData.AIBufferDistance
-				weaponData.AIData.AIBufferDistance = nil
+			for oldKey, newKey in pairs(AIDataKeyReplacements) do
+				if weaponData.AIData[oldKey] then
+					weaponData.AIData[newKey] = weaponData.AIData[oldKey]
+					weaponData.AIData[oldKey] = nil
+				end
 			end
 		end
 
@@ -64,4 +60,9 @@ end
 local hadesWeaponData = LoadHadesWeaponData()
 local modifications = {}
 
-ApplyModificationsAndInheritWeaponData(hadesWeaponData, modifications)
+local AIDataKeyReplacements = {
+	AIAttackDistance = "AttackDistance",
+	AIBufferDistance = "RetreatBufferDistance"
+}
+
+ApplyModificationsAndInheritWeaponData(hadesWeaponData, modifications, AIDataKeyReplacements)

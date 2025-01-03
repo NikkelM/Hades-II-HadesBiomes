@@ -56,6 +56,14 @@ local hadesProjectilesModifications = {
 		Effect = {
 			StartAnimation = "null"
 		}
+	},
+	LightRangedWeapon = {
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+		CanBeProjectileDefenseDestroyed = false,
+		DissipateFx = "EnemyProjectileDissipate",
+		DeathFx = "EnemyProjectileDissipate",
+		ImpactFx = "EnemyProjectileImpact",
+		UnpauseResetLocation = true
 	}
 }
 

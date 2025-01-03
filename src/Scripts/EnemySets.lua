@@ -12,15 +12,14 @@ game.EnemySets.EnemiesBiome1 = {
 	"PunchingBagUnit",    -- Wretch Glutton -- Done
 	"HeavyMelee",         -- Wretch Thug -- Done
 	"DisembodiedHand",			 -- Wringer -- Done
-	"DisembodiedHandElite", -- Wringer Elite -- Done with Wringer
+	"DisembodiedHandElite", -- Wringer Elite -- Done through Wringer
 
-	"LightRanged", -- Wretch Caster -- Duplicate name!
+	"LightRanged", -- Wretch Caster -- Done -- Duplicate name!
 	-- "HeavyRanged", -- Crystal
-	-- -- "Grenadier", -- Wretch Caster -- COMMENTED OUT IN HADES EnemySets!
 
-	"HeavyMeleeElite",     -- Wretch Thug Elite -- Done with HeavyMelee
-	"LightRangedElite",    -- Wretch Caster Elite -- Duplicate name!
-	"PunchingBagUnitElite", -- Wretch Glutton Elite -- Done with PunchingBagUnit
+	"HeavyMeleeElite",     -- Wretch Thug Elite -- Done through HeavyMelee
+	"LightRangedElite",    -- Wretch Caster Elite
+	"PunchingBagUnitElite", -- Wretch Glutton Elite -- Done through PunchingBagUnit
 	-- "HeavyRangedElite",
 }
 

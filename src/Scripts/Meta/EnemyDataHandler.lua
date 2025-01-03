@@ -20,17 +20,42 @@ end
 
 
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
-local function ApplyModificationsAndInheritEnemyData(base, modifications)
+local function ApplyModificationsAndInheritEnemyData(base, modifications, AIDataKeyReplacements)
+	local function applyModifications(baseData, modData)
+		for key, value in pairs(modData) do
+			if type(value) == "table" then
+				if type(baseData[key]) ~= "table" then
+					baseData[key] = {}
+				end
+				applyModifications(baseData[key], value)
+			else
+				baseData[key] = value
+			end
+		end
+	end
+
 	-- Apply modifications
 	for enemyName, enemyData in pairs(modifications) do
-		for key, value in pairs(enemyData) do
-			base[enemyName][key] = value
+		if not base[enemyName] then
+			base[enemyName] = {}
 		end
+		applyModifications(base[enemyName], enemyData)
 	end
 
 	-- Process data inheritance and add the new data to the game's global
 	base = mod.AddTableKeysSkipDupes(game.EnemyData, base, nil)
+
 	for enemyName, enemyData in pairs(base) do
+		-- Replace keys that were renamed between the games
+		if enemyData.DefaultAIData then
+			for oldKey, newKey in pairs(AIDataKeyReplacements) do
+				if enemyData.DefaultAIData[oldKey] then
+					enemyData.DefaultAIData[newKey] = enemyData.DefaultAIData[oldKey]
+					enemyData.DefaultAIData[oldKey] = nil
+				end
+			end
+		end
+
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
 		base[enemyName] = enemyData
 	end
@@ -75,6 +100,29 @@ local enemyModifications = {
 			Default = "EnemyWringerOnHit"
 		}
 	},
+	BaseCaster = {
+		AIAggroRange = 1250
+	},
+	-- LightRanged renamed
+	HadesLightRanged = {
+		StunAnimations =
+		{
+			Default = "EnemyWretchCasterOnHit"
+		},
+		DefaultAIData = game.EnemyData.LightRanged.DefaultAIData,
+	}
 }
 
-ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications)
+-- Some keys were renamed in the DefaultAIData property
+local AIDataKeyReplacements = {
+	AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
+	AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
+	AILineOfSightBuffer = "LoSBuffer",
+	AIRequireUnitLineOfSight = "RequireUnitLoS",
+	AIRequireProjectileLineOfSight = "RequireProjectileLoS",
+	AILineOfSighEndBuffer = "LoSEndBuffer",
+	AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
+	AITrackTargetDuringCharge = "TrackTargetDuringCharge",
+}
+
+ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, AIDataKeyReplacements)
