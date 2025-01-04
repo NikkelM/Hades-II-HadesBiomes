@@ -3,41 +3,66 @@
 local encounterData = mod.LoadHadesEncounterData("EncounterData.lua")
 local encounterDataTartarus = {
 	ModsNikkelMHadesBiomesGenerated = encounterData.Generated,
-	GeneratedTartarus = encounterData.GeneratedTartarus,
+	GeneratedTartarus = game.DeepCopyTable(game.EncounterData.GeneratedF),
 	OpeningGenerated = encounterData.OpeningGenerated,
+
+	TimeChallengeTartarus = encounterData.TimeChallengeTartarus,
+	PerfectClearChallengeTartarus = game.DeepCopyTable(encounterData.PerfectClearChallengeF),
+	EliteChallengeTartarus = game.DeepCopyTable(encounterData.EliteChallengeF),
 }
 
-mod.UpdateField(encounterDataTartarus, "Generated", "ModsNikkelMHadesBiomesGenerated", {"InheritFrom"}, "EncounterDataTartarus")
+mod.UpdateField(encounterDataTartarus, "Generated", "ModsNikkelMHadesBiomesGenerated", { "InheritFrom" },
+	"EncounterDataTartarus")
 
--- TODO: Can these be modifications?
--- The "Generated" encounter in Hades II uses this to place enemies, Hades doesn't have this
-encounterDataTartarus.ModsNikkelMHadesBiomesGenerated.StartRoomUnthreadedEvents =
-{
-	{
-		FunctionName = "HandleEncounterPreSpawns"
-	}
-}
--- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
-encounterDataTartarus.ModsNikkelMHadesBiomesGenerated.LoadPackages = { "RoomManagerModsNikkelMHadesBiomes" }
--- First room of the run needs to wait for the boon pickup before spawning enemies
-encounterDataTartarus.OpeningGenerated.PreSpawnEnemies = false
--- Also adapt to the Hades II way of handling the first room
-encounterDataTartarus.OpeningGenerated.UnthreadedEvents =
-{
-	{
-		FunctionName = "SpawnRoomReward",
-		Args =
+-- For TimeChallengeTartarus
+mod.UpdateField(encounterDataTartarus, "Challenge", "TimeChallenge", { "InheritFrom" }, "EncounterDataTartarus")
+
+-- For tables that should be replaced. The modifications append table data!
+-- Can still use modifications if the modified table did not exist beforehand
+local encounterReplacements = {
+	ModsNikkelMHadesBiomesGenerated = {
+		-- The "Generated" encounter in Hades II uses this to place enemies, Hades doesn't have this
+		StartRoomUnthreadedEvents = {
+			{
+				FunctionName = "HandleEncounterPreSpawns"
+			}
+		},
+		PreSpawnSpawnOverrides =
 		{
-			WaitUntilPickup = true,
-		}
+			WakeUpDelay = 0.3,
+			AggroReactionTimeMin = 0.15,
+			AggroReactionTimeMax = 0.45,
+		},
 	},
-	{ FunctionName = "EncounterAudio" },
-	{ FunctionName = "BeginOpeningEncounter" },
-	{ FunctionName = "HandleEnemySpawns" },
-	{ FunctionName = "CheckForAllEnemiesDead" },
-	{ FunctionName = "PostCombatAudio" },
+	GeneratedTartarus = {
+		EnemySet = EnemySets.EnemiesBiome1,
+	},
+
+	PerfectClearChallengeTartarus = {
+		InheritFrom = { "PerfectClearChallenge", "GeneratedTartarus" },
+		EnemySet = EnemySets.EnemiesBiome1,
+	},
+	EliteChallengeTartarus = {
+		InheritFrom = { "EliteChallenge", "GeneratedTartarus" },
+		EnemySet = EnemySets.EnemiesBiome1_EliteChallenge,
+	},
 }
 
-local encounterModifications = {}
+local encounterModifications = {
+	ModsNikkelMHadesBiomesGenerated = {
+		-- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
+		LoadPackages = { "RoomManagerModsNikkelMHadesBiomes" },
+		BlockTypesAcrossWaves = true,
+		UnthreadedEvents = EncounterSets.EncounterEventsDefault,
+		CountsForRoomEncounterDepth = true,
+	},
+	OpeningGenerated = {
+		-- First room of the run needs to wait for the boon pickup before spawning enemies
+		PreSpawnEnemies = false,
+		NoFirstWaveStartDelay = true,
+		-- Difficulty is set to 0
+		DifficultyModifier = -55,
+	},
+}
 
-mod.ApplyModificationsAndInheritEncounterData(encounterDataTartarus, encounterModifications)
+mod.ApplyModificationsAndInheritEncounterData(encounterDataTartarus, encounterModifications, encounterReplacements)

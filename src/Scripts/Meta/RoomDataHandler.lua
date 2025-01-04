@@ -21,9 +21,10 @@ end
 function mod.ApplyModificationsAndInheritRoomData(base, modifications)
 	-- Apply modifications
 	for roomName, roomData in pairs(modifications) do
-		for key, value in pairs(roomData) do
-			base[roomName][key] = value
+		if not base[roomName] then
+			base[roomName] = {}
 		end
+		mod.ApplyModifications(base[roomName], roomData)
 	end
 
 	-- Process data inheritance and add the new data to the game's global

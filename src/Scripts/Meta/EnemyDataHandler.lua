@@ -21,25 +21,12 @@ end
 
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
 local function ApplyModificationsAndInheritEnemyData(base, modifications, AIDataKeyReplacements)
-	local function applyModifications(baseData, modData)
-		for key, value in pairs(modData) do
-			if type(value) == "table" then
-				if type(baseData[key]) ~= "table" then
-					baseData[key] = {}
-				end
-				applyModifications(baseData[key], value)
-			else
-				baseData[key] = value
-			end
-		end
-	end
-
 	-- Apply modifications
 	for enemyName, enemyData in pairs(modifications) do
 		if not base[enemyName] then
 			base[enemyName] = {}
 		end
-		applyModifications(base[enemyName], enemyData)
+		mod.ApplyModifications(base[enemyName], enemyData)
 	end
 
 	-- Process data inheritance and add the new data to the game's global
@@ -57,6 +44,12 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, AIData
 		end
 
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
+
+		-- Remove keys we don't want the enemies to have
+		-- None of the Hades II enemies have this key, and the game crashes when an enemy is picked for a spawn but it hits the large unit cap - there is no fallback enemy defined
+		-- TODO: This behaviour in Hades II might change with a future update
+		enemyData.LargeUnitCap = nil
+
 		base[enemyName] = enemyData
 	end
 	-- Don't skip duplicates, since we have already added all the data before

@@ -19,12 +19,21 @@ function mod.LoadHadesEncounterData(fileName)
 end
 
 -- Applies modifications to base encounter objects, and then adds the new encounter objects to the game
-function mod.ApplyModificationsAndInheritEncounterData(base, modifications)
+function mod.ApplyModificationsAndInheritEncounterData(base, modifications, replacements)
+	-- Apply replacements
+	for encounterName, encounterData in pairs(replacements) do
+		if not base[encounterName] then
+			base[encounterName] = {}
+		end
+		mod.ApplyModifications(base[encounterName], encounterData, true)
+	end
+
 	-- Apply modifications
 	for encounterName, encounterData in pairs(modifications) do
-		for key, value in pairs(encounterData) do
-			base[encounterName][key] = value
+		if not base[encounterName] then
+			base[encounterName] = {}
 		end
+		mod.ApplyModifications(base[encounterName], encounterData, false)
 	end
 
 	-- Process data inheritance and add the new data to the game's global
