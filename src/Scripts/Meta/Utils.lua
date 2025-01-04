@@ -1,5 +1,8 @@
 -- Utility functions
 
+-- Used to represent nil
+mod.NilValue = {}
+
 ---Prints a message to the console only if debug mode is enabled.
 ---@param t any The message to print.
 function mod.DebugPrint(t)
@@ -130,6 +133,29 @@ function mod.UpdateField(tableToModify, find, replaceWith, propertyPath, tableNa
 			mod.DebugPrint("Updated " .. table.concat(propertyPath, "-") .. " from " ..
 				find ..
 				" to " .. replaceWith .. " for " .. (name or "an unknown entry") .. " in " .. (tableName or "an unknown table"))
+		end
+	end
+end
+
+---Apply a set of potentially nested modifications to a table.
+---@param baseData table The table to modify.
+---@param modificationData any The modification(s) to apply.
+---@param replaceTable boolean|nil If modificationData is a table, this will replace the entire table instead of merging.
+function mod.ApplyModifications(baseData, modificationData, replaceTable)
+	for key, value in pairs(modificationData) do
+		if value == mod.NilValue then
+			baseData[key] = nil
+		elseif type(value) == "table" then
+			if replaceTable then
+				baseData[key] = value
+			else
+				if type(baseData[key]) ~= "table" then
+					baseData[key] = {}
+				end
+				mod.ApplyModifications(baseData[key], value)
+			end
+		else
+			baseData[key] = value
 		end
 	end
 end

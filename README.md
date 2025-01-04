@@ -12,6 +12,8 @@ This mod adds encounters and enemies from Hades to Hades II.
 <img src="img/screenshots/tartarus_opening_boon.jpg" alt="Descending into Tartarus" width="49%" style="margin-left: 1%;">
 </div>
 
+> It is recommended to not tab out of the game or otherwise unfocus the window while the game is starting up or loading, as this can sometimes cause the game to load data incorrectly. This would mean you need to restart the game.
+
 ## Prerequisites
 
 In order to use this mod you _must_ have Hades installed on your system when playing Hades II.

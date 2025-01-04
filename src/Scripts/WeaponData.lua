@@ -30,9 +30,10 @@ end
 local function ApplyModificationsAndInheritWeaponData(base, modifications, AIDataKeyReplacements)
 	-- Apply modifications
 	for weaponName, weaponData in pairs(modifications) do
-		for key, value in pairs(weaponData) do
-			base[weaponName][key] = value
+		if not base[weaponName] then
+			base[weaponName] = {}
 		end
+		mod.ApplyModifications(base[weaponName], weaponData)
 	end
 
 	-- Process data inheritance and add the new data to the game's global

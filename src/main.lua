@@ -44,7 +44,7 @@ public.config = config -- so other mods can access our config
 
 -- For debugging
 -- TODO: Remove when releasing
-function game.PrintTable(t, maxDepth, indent)
+function game.printTable(t, maxDepth, indent)
 	if type(t) ~= "table" then
 		print(t)
 		return
@@ -61,7 +61,7 @@ function game.PrintTable(t, maxDepth, indent)
 	for k, v in pairs(t) do
 		if type(v) == "table" then
 			print(formatting .. k .. ":")
-			game.PrintTable(v, maxDepth, indent + 1)
+			game.printTable(v, maxDepth, indent + 1)
 		else
 			print(formatting .. k .. ": " .. tostring(v))
 		end
