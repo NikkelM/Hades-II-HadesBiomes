@@ -36,6 +36,8 @@ local encounterReplacements = {
 	},
 	GeneratedTartarus = {
 		EnemySet = EnemySets.EnemiesBiome1,
+		-- Restoring the original from Hades, down from 55 in Hades II GeneratedF
+		BaseDifficulty = 30,
 	},
 
 	PerfectClearChallengeTartarus = {
@@ -60,8 +62,6 @@ local encounterModifications = {
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
 		PreSpawnEnemies = false,
 		NoFirstWaveStartDelay = true,
-		-- Difficulty is set to 0
-		DifficultyModifier = -55,
 	},
 }
 
