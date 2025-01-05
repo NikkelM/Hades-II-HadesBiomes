@@ -188,7 +188,7 @@ function CopyHadesFxAnimations()
 	local hadesFxTable = sjson.decode_file(hadesFxFile)
 
 	-- Z_ so the file is loaded last, and any animations these effects inherit from are already loaded
-	local destinationFile = rom.path.combine(rom.paths.Content(), "Game\\Animations\\Z_ModsNikkelmHadesBiomesFx.sjson")
+	local destinationFile = rom.path.combine(rom.paths.Content(), HadesFxDestinationFilename)
 
 	local filteredAnimations = {}
 	for _, animation in ipairs(hadesFxTable.Animations) do

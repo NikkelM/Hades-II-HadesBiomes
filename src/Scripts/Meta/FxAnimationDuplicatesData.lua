@@ -1,4 +1,8 @@
 -- Defines animation names that already exist in Hades II and should therefore be skipped when the Hades Fx are imported
+
+-- The destination filename, used in a couple of places in the mod, therefore defined centrally
+HadesFxDestinationFilename = "Game\\Animations\\Z_ModsNikkelmHadesBiomesFx.sjson"
+
 HadesFxAnimationDuplicates = {
 	["GroupChange"] = true,
 	["Test_1"] = true,

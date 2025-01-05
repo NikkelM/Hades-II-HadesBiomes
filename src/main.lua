@@ -137,6 +137,8 @@ local function on_ready()
 
 		-- SJSON changes
 		import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
+		-- Must be loaded after CharacterAnimationsEnemies, as it inherits some animations from it
+		import "Game/Animations/EnemyAnimations.sjson.lua"
 		import "Game/Units/Enemies.sjson.lua"
 		import "Game/Weapons/EnemyWeapons.sjson.lua"
 		import "Game/Projectiles/EnemyProjectiles.sjson.lua"

@@ -26,7 +26,7 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	-- Projectiles that should be removed completely, likely as they already exist in Hades II
 	if shouldRemoveProjectile(projectile.Name, projectilesToRemove) then
 		table.remove(hadesProjectilesTable.Projectiles, i)
-		mod.DebugPrint("Removed projectile: " .. projectile.Name)
+		mod.DebugPrint("Removed projectile: " .. projectile.Name .. " from EnemyProjectiles.sjson")
 	end
 
 	-- If the projectile Name is in EnemyProjectileMappings, rename it

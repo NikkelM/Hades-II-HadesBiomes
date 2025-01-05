@@ -8,7 +8,7 @@ local hadesEnemyAnimationsTable = sjson.decode_file(hadesEnemyAnimationsFile)
 local hadesTwoEnemyAnimationsFile = rom.path.combine(rom.paths.Content(), "Game\\Animations\\Enemy_Olympus_VFX.sjson")
 
 -- Modifications
--- These animations already exist in Hades II and crash the game if added again
+-- These animations already exist in Hades II and may crash the game if added again
 local animationsToRemove = {
 	"Projectile_BloodlessGrenadier",
 	"Projectile_BloodlessGrenadierActivate",
@@ -41,7 +41,7 @@ for i = #hadesEnemyAnimationsTable.Animations, 1, -1 do
 	local animation = hadesEnemyAnimationsTable.Animations[i]
 	if shouldRemoveAnimation(animation.Name) then
 		table.remove(hadesEnemyAnimationsTable.Animations, i)
-		mod.DebugPrint("Removed animation: " .. animation.Name)
+		mod.DebugPrint("Removed animation: " .. animation.Name .. " from CharacterAnimationsEnemies.sjson")
 	end
 end
 

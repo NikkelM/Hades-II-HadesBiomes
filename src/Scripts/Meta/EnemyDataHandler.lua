@@ -45,11 +45,6 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, AIData
 
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
 
-		-- Remove keys we don't want the enemies to have
-		-- None of the Hades II enemies have this key, and the game crashes when an enemy is picked for a spawn but it hits the large unit cap - there is no fallback enemy defined
-		-- TODO: This behaviour in Hades II might change with a future update
-		enemyData.LargeUnitCap = nil
-
 		base[enemyName] = enemyData
 	end
 	-- Don't skip duplicates, since we have already added all the data before
@@ -72,14 +67,75 @@ for oldName, newName in pairs(EnemyNameMappings) do
 	mod.UpdateField(enemyData, oldName, newName, { "SpawnOptions" }, "EnemyData")
 end
 
+-- Some enemies need to be modified so much, it's easier to redefine them
+-- TODO: Move to own file for brevity
+enemyData.DartTrap = {
+	InheritFrom = { "BaseTrap" },
+	TargetGroups = { "GroundEnemies", "HeroTeam" },
+	-- All of these properties were in the root before, but need to be in DefaultAIData for Hades II
+	DefaultAIData = {
+		DeepInheritance = true,
+		PreAttackDuration = 0.2,
+		PostAttackCooldown = 2.0,
+		LinkedEnemy = "DartTrapEmitter",
+		IdleAnimation = "DartTrapIdle",
+		PreAttackAnimation = "DartTrapPreFire",
+		PreAttackSound = "/SFX/TrapSet",
+		PostAttackAnimation = "DartTrapPressed",
+		ReloadingLoopSound = "/SFX/TrapSettingLoop",
+		ReloadedSound = "/Leftovers/Menu Sounds/TalismanMetalClankDown",
+
+		DisabledAnimation = "DartTrapDeactivated",
+		AttackDistance = 100,
+		AIResetDistance = 110,
+		MaxVictimZ = 1,
+	},
+	AIOptions =
+	{
+		-- RemoteAI
+		"RemoteAttackModsNikkelMHadesBiomes"
+	},
+	ToggleTrap = true,
+}
+-- Fires when the player steps on a Dart trap plate
+enemyData.DartTrapEmitter = {
+	InheritFrom = { "IsNeutral" },
+	Type = "Trap",
+	TriggersOnHitEffects = false,
+	DefaultAIData = {
+		DeepInheritance = true,
+		PreAttackAnimation = "DartTrapEmitterFire",
+		PostAttackAnimation = "DartTrapEmitterReturnToIdle",
+		PreAttackDuration = 0.0,
+		PostAttackDuration = 0.0,
+		FireTicksMin = 3,
+		FireTicksMax = 3,
+		FireInterval = 0.15,
+		TrackTargetDuringCharge = false,
+		-- Manually added!
+		ProjectileName = "DartTrapWeapon",
+		PostAttackCooldown = 2.0,
+	},
+	Material = "MetalObstacle",
+	WeaponOptions = { "DartTrapWeapon" },
+	WeaponName = "DartTrapWeapon",
+	OutgoingDamageModifiers = { { NonPlayerMultiplier = 33.33 } }
+}
+
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
 local enemyModifications = {
+	BaseGlutton = {
+		LargeUnitCap = mod.NilValue,
+	},
 	PunchingBagUnit = {
 		-- Comes from the CharacterAnimationsEnemies.sjson entry which has the OnHit_Bink as VideoTexture
 		StunAnimations =
 		{
 			Default = "EnemyWretchGluttonOnHit"
 		},
+	},
+	BaseThug = {
+		LargeUnitCap = mod.NilValue,
 	},
 	HeavyMelee = {
 		StunAnimations =
@@ -94,7 +150,8 @@ local enemyModifications = {
 		}
 	},
 	BaseCaster = {
-		AIAggroRange = 1250
+		AIAggroRange = 1250,
+		LargeUnitCap = mod.NilValue,
 	},
 	-- LightRanged renamed
 	HadesLightRanged = {
@@ -103,11 +160,45 @@ local enemyModifications = {
 			Default = "EnemyWretchCasterOnHit"
 		},
 		DefaultAIData = game.EnemyData.LightRanged.DefaultAIData,
-	}
+	},
+	-- These enemies have not been implemented yet
+	Chariot = {
+		LargeUnitCap = mod.NilValue,
+	},
+	ChariotSuicide = {
+		LargeUnitCap = mod.NilValue,
+	},
+	BloodlessNaked = {
+		LargeUnitCap = mod.NilValue,
+	},
+	BloodlessNakedBerserker = {
+		LargeUnitCap = mod.NilValue,
+	},
+	BloodlessWaveFist = {
+		LargeUnitCap = mod.NilValue,
+	},
+	BloodlessGrenadier = {
+		LargeUnitCap = mod.NilValue,
+	},
+	BloodlessSelfDestruct = {
+		LargeUnitCap = mod.NilValue,
+	},
+	BloodlessPitcher = {
+		LargeUnitCap = mod.NilValue,
+	},
+	SatyrRanged = {
+		LargeUnitCap = mod.NilValue,
+	},
+	SatyrRangedMiniboss = {
+		LargeUnitCap = mod.NilValue,
+	},
+	RatThug = {
+		LargeUnitCap = mod.NilValue,
+	},
 }
 
 -- Some keys were renamed in the DefaultAIData property
-local AIDataKeyReplacements = {
+local DefaultAIDataKeyReplacements = {
 	AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
 	AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
 	AILineOfSightBuffer = "LoSBuffer",
@@ -116,6 +207,11 @@ local AIDataKeyReplacements = {
 	AILineOfSighEndBuffer = "LoSEndBuffer",
 	AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
 	AITrackTargetDuringCharge = "TrackTargetDuringCharge",
+	AIAttackDistance = "AttackDistance",
+	AIFireTicksMin = "FireTicksMin",
+	AIFireTicksMax = "FireTicksMax",
+	AIFireTicksCooldown = "FireInterval",
+
 }
 
-ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, AIDataKeyReplacements)
+ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, DefaultAIDataKeyReplacements)
