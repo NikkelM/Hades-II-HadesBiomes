@@ -76,7 +76,15 @@ local hadesEnemyAnimationsModifications = {
 		Scale = 0.25,
 		Ambient = 0.0,
 	},
-	-- TODO: DartTrapDisabled
+	DartTrapDeactivated = {
+		InheritFrom = mod.NilValue,
+		Type = "Constant",
+		EndFrame = 1,
+		NumFrames = 1,
+		StartFrame = 1,
+		Scale = 0.25,
+		Ambient = 0.0,
+	}
 }
 
 mod.ApplyNestedSjsonModifications(hadesEnemyAnimationsTable.Animations, hadesEnemyAnimationsModifications)
