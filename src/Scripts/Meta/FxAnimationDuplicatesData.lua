@@ -749,8 +749,9 @@ HadesFxAnimationDuplicates = {
 	["AxeCrack"] = true,
 	["AxeCrackDissipate"] = true,
 	["DustPuffASpikeTrap"] = true,
-	["SpikeTrapPressedIn"] = true,
-	["SpikeTrapPressedOut"] = true,
+	-- These are being renamed
+	-- ["SpikeTrapPressedIn"] = true,
+	-- ["SpikeTrapPressedOut"] = true,
 	["BloodMineDeployed"] = true,
 	["BloodMineLight"] = true,
 	["BloodMineDeactivated"] = true,

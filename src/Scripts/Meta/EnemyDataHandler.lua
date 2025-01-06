@@ -20,7 +20,15 @@ end
 
 
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
-local function ApplyModificationsAndInheritEnemyData(base, modifications, AIDataKeyReplacements)
+local function ApplyModificationsAndInheritEnemyData(base, modifications, replacements, AIDataKeyReplacements)
+	-- Apply replacements
+	for enemyName, enemyData in pairs(replacements) do
+		if not base[enemyName] then
+			base[enemyName] = {}
+		end
+		mod.ApplyModifications(base[enemyName], enemyData, true)
+	end
+
 	-- Apply modifications
 	for enemyName, enemyData in pairs(modifications) do
 		if not base[enemyName] then
@@ -76,6 +84,8 @@ end
 
 -- Some enemies need to be modified so much, it's easier to redefine them
 -- TODO: Move to own file for brevity
+-- We need to edit the original trap/enemy instead of adding a new one, as otherwise the maps won't populate the correct trap
+game.EnemyData.SpikeTrap.WeaponOptions = { "HadesSpikeTrapWeapon" }
 enemyData.DartTrap = {
 	InheritFrom = { "BaseTrap" },
 	TargetGroups = { "GroundEnemies", "HeroTeam" },
@@ -91,7 +101,6 @@ enemyData.DartTrap = {
 		PostAttackAnimation = "DartTrapPressed",
 		ReloadingLoopSound = "/SFX/TrapSettingLoop",
 		ReloadedSound = "/Leftovers/Menu Sounds/TalismanMetalClankDown",
-
 		DisabledAnimation = "DartTrapDeactivated",
 		AttackDistance = 100,
 		AIResetDistance = 110,
@@ -128,6 +137,8 @@ enemyData.DartTrapEmitter = {
 	WeaponName = "DartTrapWeapon",
 	OutgoingDamageModifiers = { { NonPlayerMultiplier = 33.33 } }
 }
+
+local enemyReplacements = {}
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
 local enemyModifications = {
@@ -221,4 +232,4 @@ local DefaultAIDataKeyReplacements = {
 
 }
 
-ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, DefaultAIDataKeyReplacements)
+ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplacements, DefaultAIDataKeyReplacements)

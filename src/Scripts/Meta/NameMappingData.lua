@@ -10,8 +10,6 @@ EnemyNameMappings = {
 	-- LightRangedSuperElite = "HadesLightRangedSuperElite",
 	-- Not tested yet - is this needed?
 	-- SpreadShotUnit = "HadesSpreadShotUnit",
-
-	SpikeTrap = "HadesSpikeTrap",
 }
 
 EnemyProjectileMappings = {

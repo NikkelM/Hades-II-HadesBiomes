@@ -12,6 +12,8 @@ end
 local hadesProjectilesFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Projectiles\\EnemyProjectiles.sjson")
 local hadesProjectilesTable = sjson.decode_file(hadesProjectilesFile)
 
+local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Projectiles\\EnemyProjectiles.sjson")
+
 -- Projectiles that are defined in a different file and therefore not caught by AddTableKeysSkipDupes()
 local projectilesToRemove = {
 	-- TODO: This is also defined as a player weapon in Hades II - do I need to duplicate this with a different name in order to have the original Hades weapon work as expected?
@@ -53,6 +55,11 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 		projectile.DamageLow = nil
 		projectile.DamageHigh = nil
 	end
+	-- Hades uses DetonateGraphic, Hades II uses DetonateFx
+	if projectile.DetonateGraphic then
+		projectile.DetonateFx = projectile.DetonateGraphic
+		projectile.DetonateGraphic = nil
+	end
 end
 
 -- Modifications/overrides to the Hades enemy projectiles
@@ -73,8 +80,6 @@ local hadesProjectilesModifications = {
 }
 
 mod.ApplyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjectilesModifications)
-
-local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Projectiles\\EnemyProjectiles.sjson")
 
 sjson.hook(hadesTwoProjectilesFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Projectiles, hadesProjectilesTable.Projectiles, "Name")
