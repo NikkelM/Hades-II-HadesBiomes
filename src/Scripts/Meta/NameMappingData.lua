@@ -10,9 +10,23 @@ EnemyNameMappings = {
 	-- LightRangedSuperElite = "HadesLightRangedSuperElite",
 	-- Not tested yet - is this needed?
 	-- SpreadShotUnit = "HadesSpreadShotUnit",
+
+	SpikeTrap = "HadesSpikeTrap",
 }
 
 EnemyProjectileMappings = {
 	-- Not currently used by Hades II
 	-- LightRangedWeapon = "HadesLightRangedWeapon",
+	-- The two versions have different PressedIn/Out animations
+	SpikeTrapWeapon = "HadesSpikeTrapWeapon",
+}
+
+EnemyWeaponMappings = {
+	-- The two versions have different PressedIn/Out animations
+	SpikeTrapWeapon = "HadesSpikeTrapWeapon",
+}
+
+FxAnimationMappings = {
+	SpikeTrapPressedIn = "HadesSpikeTrapPressedIn",
+	SpikeTrapPressedOut = "HadesSpikeTrapPressedOut",
 }

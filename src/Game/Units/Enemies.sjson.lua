@@ -33,7 +33,9 @@ mod.ApplyNestedSjsonModifications(hadesEnemiesTable.Units, hadesEnemiesModificat
 
 -- Rename duplicate enemy names using EnemyNameMappings
 mod.RenameSjsonEntries(hadesEnemiesTable.Units, EnemyNameMappings, "Enemies.sjson")
-mod.UpdateField(hadesEnemiesTable.Units, "LightRanged", "HadesLightRanged", {"InheritFrom"}, "Enemies.sjson")
+for oldName, newName in pairs(EnemyNameMappings) do
+	mod.UpdateField(hadesEnemiesTable.Units, oldName, newName, { "InheritFrom" }, "Enemies.sjson")
+end
 
 sjson.hook(hadesTwoEnemiesFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Units, hadesEnemiesTable.Units, "Name")

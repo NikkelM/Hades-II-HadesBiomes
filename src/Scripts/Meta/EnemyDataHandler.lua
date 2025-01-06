@@ -56,15 +56,22 @@ local enemyData = LoadHadesEnemyData()
 
 -- Some enemies exist in both Hades and Hades II, so we need to rename the Hades enemies
 for oldName, newName in pairs(EnemyNameMappings) do
-	enemyData[newName] = enemyData[oldName]
-	enemyData[oldName] = nil
+	if enemyData[oldName] then
+		enemyData[newName] = enemyData[oldName]
+		enemyData[oldName] = nil
+		mod.DebugPrint("Renamed enemy: " .. oldName .. " to " .. newName .. " in EnemyData.lua")
+	end
 	-- Update the name in dependent fields
 	-- Inherit properties from this name
-	mod.UpdateField(enemyData, oldName, newName, { "InheritFrom" }, "EnemyData")
+	mod.UpdateField(enemyData, oldName, newName, { "InheritFrom" }, "EnemyData.lua")
 	-- If an enemy is spawned, this enemy cannot spawn
-	mod.UpdateField(enemyData, oldName, newName, { "GeneratorData", "BlockEnemyTypes" }, "EnemyData")
+	mod.UpdateField(enemyData, oldName, newName, { "GeneratorData", "BlockEnemyTypes" }, "EnemyData.lua")
 	-- Other enemies can spawn this enemy
-	mod.UpdateField(enemyData, oldName, newName, { "SpawnOptions" }, "EnemyData")
+	mod.UpdateField(enemyData, oldName, newName, { "SpawnOptions" }, "EnemyData.lua")
+end
+-- For renamed weapon names
+for oldName, newName in pairs(EnemyWeaponMappings) do
+	mod.UpdateField(enemyData, oldName, newName, { "WeaponOptions" }, "EnemyData.lua")
 end
 
 -- Some enemies need to be modified so much, it's easier to redefine them

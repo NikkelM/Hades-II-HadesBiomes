@@ -53,7 +53,7 @@ local encounterReplacements = {
 local encounterModifications = {
 	ModsNikkelMHadesBiomesGenerated = {
 		-- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
-		LoadPackages = { "RoomManagerModsNikkelMHadesBiomes" },
+		LoadPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes" },
 		BlockTypesAcrossWaves = true,
 		UnthreadedEvents = EncounterSets.EncounterEventsDefault,
 		CountsForRoomEncounterDepth = true,

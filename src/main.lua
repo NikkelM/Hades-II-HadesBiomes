@@ -119,6 +119,7 @@ local function on_ready()
 
 		-- Loads Room data
 		import "Scripts/RoomSets.lua"
+		import "Scripts/RoomData.lua"
 		import "Scripts/RoomDataTartarus.lua"
 
 		import "Scripts/WeaponData.lua"
@@ -134,6 +135,7 @@ local function on_ready()
 
 		-- "Normal" code changes
 		import "Scripts/DeathLoopData.lua"
+		import "Scripts/WeaponSets.lua"
 
 		-- SJSON changes
 		import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"

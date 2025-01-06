@@ -22,10 +22,6 @@ local animationsToRemove = {
 	"GrenadePitchParticles",
 	"GrenadePitchParticlesCurveball",
 	"Hades_Idle",
-	-- These try to inherit from EnemyBoneDracon_Idle, which comes from CharacterAnim_Enemies_BoneDracon.sjson
-	-- Even when trying to copy that file over to Hades, it still crashes - EDIT: Sometimes it works? Maybe with the specific naming of the file?
-	-- "EnemyActivationBoneDraconFade",
-	-- "EnemyActivationBoneDraconFlash",
 }
 
 local function shouldRemoveAnimation(name)

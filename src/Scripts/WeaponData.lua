@@ -59,6 +59,16 @@ end
 
 -- Adds weapons from Hades to Hades II
 local hadesWeaponData = LoadHadesWeaponData()
+
+-- Some weapons exist in both Hades and Hades II, so we need to rename the Hades weapons
+for oldName, newName in pairs(EnemyWeaponMappings) do
+	hadesWeaponData[newName] = hadesWeaponData[oldName]
+	hadesWeaponData[oldName] = nil
+	-- Update the name in dependent fields
+	-- Inherit properties from this name
+	mod.UpdateField(hadesWeaponData, oldName, newName, { "InheritFrom" }, "WeaponData")
+end
+
 local modifications = {}
 
 local AIDataKeyReplacements = {

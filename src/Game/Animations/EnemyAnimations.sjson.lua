@@ -66,6 +66,7 @@ end
 
 -- Modifications/overrides to the animations
 local hadesEnemyAnimationsModifications = {
+	-- TODO: Might be able to revert if all SpikeTrap data is replaced with the data from Hades
 	-- Normally inherits from SpikeTrapIdle, but that has a different animation layout apparently
 	DartTrapIdle = {
 		InheritFrom = mod.NilValue,

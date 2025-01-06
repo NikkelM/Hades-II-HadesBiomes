@@ -2,10 +2,10 @@
 
 PackageFileMappings = {
 	-- Tartarus template map package
-	["Content\\Win\\Packages\\_TartarusTemplateRoom.pkg"] = "Packages\\1080p\\_TartarusTemplateRoomModsNikkelMHadesBiomes.pkg",
-	["Content\\Win\\Packages\\_TartarusTemplateRoom.pkg_manifest"] = "Packages\\1080p\\_TartarusTemplateRoomModsNikkelMHadesBiomes.pkg_manifest",
-	["Content\\Win\\Packages\\720p\\_TartarusTemplateRoom.pkg"] = "Packages\\720p\\_TartarusTemplateRoomModsNikkelMHadesBiomes.pkg",
-	["Content\\Win\\Packages\\720p\\_TartarusTemplateRoom.pkg_manifest"] = "Packages\\720p\\_TartarusTemplateRoomModsNikkelMHadesBiomes.pkg_manifest",
+	-- ["Content\\Win\\Packages\\_TartarusTemplateRoom.pkg"] = "Packages\\1080p\\_TartarusTemplateRoomModsNikkelMHadesBiomes.pkg",
+	-- ["Content\\Win\\Packages\\_TartarusTemplateRoom.pkg_manifest"] = "Packages\\1080p\\_TartarusTemplateRoomModsNikkelMHadesBiomes.pkg_manifest",
+	-- ["Content\\Win\\Packages\\720p\\_TartarusTemplateRoom.pkg"] = "Packages\\720p\\_TartarusTemplateRoomModsNikkelMHadesBiomes.pkg",
+	-- ["Content\\Win\\Packages\\720p\\_TartarusTemplateRoom.pkg_manifest"] = "Packages\\720p\\_TartarusTemplateRoomModsNikkelMHadesBiomes.pkg_manifest",
 	-- Tartarus map package
 	["Content\\Win\\Packages\\Tartarus.pkg"] = "Packages\\1080p\\TartarusModsNikkelMHadesBiomes.pkg",
 	["Content\\Win\\Packages\\Tartarus.pkg_manifest"] = "Packages\\1080p\\TartarusModsNikkelMHadesBiomes.pkg_manifest",
@@ -16,6 +16,11 @@ PackageFileMappings = {
 	["Content\\Win\\Packages\\RoomManager.pkg_manifest"] = "Packages\\1080p\\RoomManagerModsNikkelMHadesBiomes.pkg_manifest",
 	["Content\\Win\\Packages\\720p\\RoomManager.pkg"] = "Packages\\720p\\RoomManagerModsNikkelMHadesBiomes.pkg",
 	["Content\\Win\\Packages\\720p\\RoomManager.pkg_manifest"] = "Packages\\720p\\RoomManagerModsNikkelMHadesBiomes.pkg_manifest",
+	-- Fx
+	["Content\\Win\\Packages\\Fx.pkg"] = "Packages\\1080p\\FxModsNikkelMHadesBiomes.pkg",
+	["Content\\Win\\Packages\\Fx.pkg_manifest"] = "Packages\\1080p\\FxModsNikkelMHadesBiomes.pkg_manifest",
+	["Content\\Win\\Packages\\720p\\Fx.pkg"] = "Packages\\720p\\FxModsNikkelMHadesBiomes.pkg",
+	["Content\\Win\\Packages\\720p\\Fx.pkg_manifest"] = "Packages\\720p\\FxModsNikkelMHadesBiomes.pkg_manifest",
 }
 
 SjsonFileMappings = {

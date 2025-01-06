@@ -22,15 +22,23 @@ game.EnemySets.EnemiesBiome1 = {
 	-- "HeavyRangedElite",
 }
 
+-- Rename duplicate enemy names using EnemyNameMappings
+for i, enemy in ipairs(game.EnemySets.EnemiesBiome1) do
+	if EnemyNameMappings[enemy] then
+		game.EnemySets.EnemiesBiome1[i] = EnemyNameMappings[enemy]
+		mod.DebugPrint("Renamed enemy: " .. enemy .. " to " .. game.EnemySets.EnemiesBiome1[i] .. " in EnemiesBiome1")
+	end
+end
+
 game.EnemySets.EnemiesBiome1_EliteChallenge = {
 	"HeavyMeleeElite",     -- Wretch Thug Elite -- Done through HeavyMelee
 	-- "LightRangedElite",    -- Wretch Caster Elite
 	"PunchingBagUnitElite", -- Wretch Glutton Elite -- Done
 }
 
--- Rename duplicate enemy names using EnemyNameMappings
-for i, enemy in ipairs(game.EnemySets.EnemiesBiome1) do
+for i, enemy in ipairs(game.EnemySets.EnemiesBiome1_EliteChallenge) do
 	if EnemyNameMappings[enemy] then
-		game.EnemySets.EnemiesBiome1[i] = EnemyNameMappings[enemy]
+		game.EnemySets.EnemiesBiome1_EliteChallenge[i] = EnemyNameMappings[enemy]
+		mod.DebugPrint("Renamed enemy: " .. enemy .. " to " .. game.EnemySets.EnemiesBiome1_EliteChallenge[i] .. " in EnemiesBiome1_EliteChallenge")
 	end
 end

@@ -27,8 +27,15 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 
 		-- Wait for target to come within range, no timeout
 		enemy.AINotifyName = "WithinDistance_" .. enemy.Name .. "_" .. enemy.ObjectId
-		NotifyWithinDistanceAny({ Ids = { enemy.ObjectId }, DestinationNames = enemy.TargetGroups, Distance = aiData
-		.AttackDistance, ScaleY = 0.5, MaxZ = aiData.MaxVictimZ, Notify = enemy.AINotifyName })
+		NotifyWithinDistanceAny({
+			Ids = { enemy.ObjectId },
+			DestinationNames = enemy.TargetGroups,
+			Distance = aiData
+					.AttackDistance,
+			ScaleY = 0.5,
+			MaxZ = aiData.MaxVictimZ,
+			Notify = enemy.AINotifyName
+		})
 		waitUntil(enemy.AINotifyName)
 		aiData.TargetId = NotifyResultsTable[enemy.AINotifyName]
 
@@ -39,7 +46,7 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 		end
 
 		local linkedEnemy = game.ActiveEnemies
-		[GetClosestUnitOfType({ Id = enemy.ObjectId, DestinationName = aiData.LinkedEnemy, Distance = 2000 })]
+				[GetClosestUnitOfType({ Id = enemy.ObjectId, DestinationName = aiData.LinkedEnemy, Distance = 2000 })]
 
 		local trapChainData = nil
 		if CurrentRun.CurrentRoom.RemoteTrapChains ~= nil then
@@ -133,8 +140,13 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 		-- Wait until target leaves before resetting
 		if aiData.AIResetDistance ~= nil then
 			enemy.AINotifyName = "OutsideDistance" .. enemy.ObjectId
-			NotifyOutsideDistance({ Id = enemy.ObjectId, DestinationId = aiData.TargetId, Distance = aiData.AIResetDistance, Notify =
-			enemy.AINotifyName })
+			NotifyOutsideDistance({
+				Id = enemy.ObjectId,
+				DestinationId = aiData.TargetId,
+				Distance = aiData.AIResetDistance,
+				Notify =
+						enemy.AINotifyName
+			})
 			waitUntil(enemy.AINotifyName)
 
 			if not IsAIActive(enemy) then
