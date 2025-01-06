@@ -162,3 +162,67 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 		end
 	end
 end
+
+-- Wrap around SetupUnit to call CreateTethers()
+modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
+	base(unit, currentRun, args)
+	game.CreateTethers(unit)
+end)
+
+-- Creates "Tethers", which are floating parts of the enemy (e.g. the small crystals for HeavyRanged)
+function game.CreateTethers(newEnemy)
+	print("CreateTethers")
+	if newEnemy == nil or newEnemy.Tethers == nil or newEnemy.TetherIds ~= nil then
+		return
+	end
+
+	newEnemy.TetherIds = {}
+	local prevTetherId = newEnemy.ObjectId
+	for k, tether in ipairs(newEnemy.Tethers) do
+		local count = tether.Count or 1
+		for i = 1, count do
+			local offsetX = nil
+			local offsetY = nil
+			if tether.SpawnRadius ~= nil then
+				offsetX = game.RandomFloat(-tether.SpawnRadius, tether.SpawnRadius)
+				offsetY = game.RandomFloat(-tether.SpawnRadius, tether.SpawnRadius)
+			end
+			local tetherId = SpawnObstacle({
+				Name = tether.Name,
+				DestinationId = newEnemy.ObjectId,
+				Group = tether.GroupName or
+						"Standing",
+				OffsetX = offsetX,
+				offsetY = offsetY
+			})
+			SetAlpha({ Id = tetherId, Fraction = 0 })
+			SetAlpha({ Id = tetherId, Fraction = 1.0, Duration = 0.3 })
+			if tether.Elasticity ~= nil then
+				Attach({
+					Id = tetherId,
+					DestinationId = newEnemy.ObjectId,
+					TetherDistance = tether.Distance,
+					TetherElasticity =
+							tether.Elasticity
+				})
+			else
+				Attach({
+					Id = prevTetherId,
+					DestinationId = tetherId,
+					TetherDistance = tether.Distance,
+					TetherRetractSpeed =
+							tether.RetractSpeed,
+					TetherTrackZRatio = tether.TrackZRatio
+				})
+			end
+			table.insert(newEnemy.TetherIds, tetherId)
+			if newEnemy.EliteIcon or (newEnemy.HealthBuffer ~= nil and newEnemy.HealthBuffer > 0) then
+				newEnemy.Outline.Id = tetherId
+				if newEnemy.Outline.Thickness > 0 then
+					AddOutline(newEnemy.Outline)
+				end
+			end
+			prevTetherId = tetherId
+		end
+	end
+end

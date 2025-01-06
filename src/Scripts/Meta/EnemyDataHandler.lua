@@ -185,6 +185,7 @@ local enemyModifications = {
 		},
 		DefaultAIData = game.EnemyData.LightRanged.DefaultAIData,
 	},
+
 	-- These enemies have not been implemented yet
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
