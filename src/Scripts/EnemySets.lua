@@ -17,7 +17,7 @@ game.EnemySets.EnemiesBiome1 = {
 	-- "HeavyRanged", -- Crystal
 
 	"HeavyMeleeElite",     -- Wretch Thug Elite -- Done through HeavyMelee
-	"LightRangedElite",    -- Wretch Caster Elite
+	"LightRangedElite",    -- Wretch Caster Elite -- Done through LightRanged
 	"PunchingBagUnitElite", -- Wretch Glutton Elite -- Done through PunchingBagUnit
 	-- "HeavyRangedElite",
 }
@@ -32,7 +32,7 @@ end
 
 game.EnemySets.EnemiesBiome1_EliteChallenge = {
 	"HeavyMeleeElite",     -- Wretch Thug Elite -- Done through HeavyMelee
-	-- "LightRangedElite",    -- Wretch Caster Elite
+	-- "LightRangedElite",    -- Wretch Caster Elite -- Not a very difficult enemy, so not included
 	"PunchingBagUnitElite", -- Wretch Glutton Elite -- Done
 }
 

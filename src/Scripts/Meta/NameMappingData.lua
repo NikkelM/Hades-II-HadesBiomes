@@ -24,6 +24,13 @@ EnemyWeaponMappings = {
 	SpikeTrapWeapon = "HadesSpikeTrapWeapon",
 }
 
+EnemyAnimationMappings = {
+	SpikeTrapIdle = "HadesSpikeTrapIdle",
+	SpikeTrapPressed = "HadesSpikeTrapPressed",
+	SpikeTrapPreFire = "HadesSpikeTrapPreFire",
+	SpikeTrapDeactivated = "HadesSpikeTrapDeactivated"
+}
+
 FxAnimationMappings = {
 	SpikeTrapPressedIn = "HadesSpikeTrapPressedIn",
 	SpikeTrapPressedOut = "HadesSpikeTrapPressedOut",

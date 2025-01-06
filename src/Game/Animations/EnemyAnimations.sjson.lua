@@ -41,10 +41,11 @@ local animationsToRemove = {
 	"BreakableIdle1",
 	"BreakableIdle2",
 	"BreakableIdle3",
-	"SpikeTrapIdle",
-	"SpikeTrapPressed",
-	"SpikeTrapPreFire",
-	"SpikeTrapDeactivated"
+	-- Would be a duplicate, but is renamed
+	-- "SpikeTrapIdle",
+	-- "SpikeTrapPressed",
+	-- "SpikeTrapPreFire",
+	-- "SpikeTrapDeactivated"
 }
 
 local function shouldRemoveAnimation(name)
@@ -65,28 +66,13 @@ for i = #hadesEnemyAnimationsTable.Animations, 1, -1 do
 end
 
 -- Modifications/overrides to the animations
-local hadesEnemyAnimationsModifications = {
-	-- TODO: Might be able to revert if all SpikeTrap data is replaced with the data from Hades
-	-- Normally inherits from SpikeTrapIdle, but that has a different animation layout apparently
-	DartTrapIdle = {
-		InheritFrom = mod.NilValue,
-		Type = "Constant",
-		EndFrame = 1,
-		NumFrames = 1,
-		StartFrame = 1,
-		Scale = 0.25,
-		Ambient = 0.0,
-	},
-	DartTrapDeactivated = {
-		InheritFrom = mod.NilValue,
-		Type = "Constant",
-		EndFrame = 1,
-		NumFrames = 1,
-		StartFrame = 1,
-		Scale = 0.25,
-		Ambient = 0.0,
-	}
-}
+local hadesEnemyAnimationsModifications = {}
+
+-- Rename duplicate animation names using EnemyAnimationMappings
+mod.RenameSjsonEntries(hadesEnemyAnimationsTable.Animations, EnemyAnimationMappings, "EnemyAnimations.sjson")
+for oldName, newName in pairs(EnemyAnimationMappings) do
+	mod.UpdateField(hadesEnemyAnimationsTable.Animations, oldName, newName, { "InheritFrom" }, "EnemyAnimations.sjson")
+end
 
 mod.ApplyNestedSjsonModifications(hadesEnemyAnimationsTable.Animations, hadesEnemyAnimationsModifications)
 

@@ -85,7 +85,13 @@ end
 -- Some enemies need to be modified so much, it's easier to redefine them
 -- TODO: Move to own file for brevity
 -- We need to edit the original trap/enemy instead of adding a new one, as otherwise the maps won't populate the correct trap
+-- AFAIK, the original SpikeTrap is not used anywhere in Hades II at the moment
 game.EnemyData.SpikeTrap.WeaponOptions = { "HadesSpikeTrapWeapon" }
+game.EnemyData.SpikeTrap.DefaultAIData.IdleAnimation = "HadesSpikeTrapIdle"
+game.EnemyData.SpikeTrap.DefaultAIData.PreAttackAnimation = "HadesSpikeTrapPreFire"
+game.EnemyData.SpikeTrap.DefaultAIData.PostAttackAnimation = "HadesSpikeTrapPressed"
+game.EnemyData.SpikeTrap.DefaultAIData.DisabledAnimation = "HadesSpikeTrapDeactivated"
+
 enemyData.DartTrap = {
 	InheritFrom = { "BaseTrap" },
 	TargetGroups = { "GroundEnemies", "HeroTeam" },
