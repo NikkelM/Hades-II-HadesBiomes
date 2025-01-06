@@ -19,6 +19,17 @@ local projectilesToRemove = {
 	"HadesCastBeamNoTracking"
 }
 
+-- Rename duplicate enemy names using EnemyProjectileMappings
+mod.RenameSjsonEntries(hadesProjectilesTable.Projectiles, EnemyProjectileMappings, "EnemyProjectiles.sjson")
+-- Rename projectiles
+for oldName, newName in pairs(EnemyProjectileMappings) do
+	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "InheritFrom" }, "EnemyProjectiles.sjson")
+end
+-- Rename attached animations/Fx graphics
+for oldName, newName in pairs(FxAnimationMappings) do
+	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "DetonateGraphic" }, "EnemyProjectiles.sjson")
+end
+
 -- Iterating through all projectiles
 for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	local projectile = hadesProjectilesTable.Projectiles[i]
@@ -27,12 +38,6 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	if shouldRemoveProjectile(projectile.Name, projectilesToRemove) then
 		table.remove(hadesProjectilesTable.Projectiles, i)
 		mod.DebugPrint("Removed projectile: " .. projectile.Name .. " from EnemyProjectiles.sjson")
-	end
-
-	-- If the projectile Name is in EnemyProjectileMappings, rename it
-	if EnemyProjectileMappings[projectile.Name] then
-		mod.DebugPrint("Renamed projectile: " .. projectile.Name .. " to " .. EnemyProjectileMappings[projectile.Name])
-		projectile.Name = EnemyProjectileMappings[projectile.Name]
 	end
 
 	-- Modifications that should be made to all projectiles
