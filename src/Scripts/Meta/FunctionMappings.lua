@@ -171,7 +171,6 @@ end)
 
 -- Creates "Tethers", which are floating parts of the enemy (e.g. the small crystals for HeavyRanged)
 function game.CreateTethers(newEnemy)
-	print("CreateTethers")
 	if newEnemy == nil or newEnemy.Tethers == nil or newEnemy.TetherIds ~= nil then
 		return
 	end
@@ -224,5 +223,48 @@ function game.CreateTethers(newEnemy)
 			end
 			prevTetherId = tetherId
 		end
+	end
+end
+
+-- Wrap around KillPresentation to call HandleTetherParentDeath() before the victim is destroyed in Kill()
+modutil.mod.Path.Wrap("KillPresentation", function(base, victim, killer, args)
+	game.thread(game.HandleTetherParentDeath, victim)
+	base(victim, killer, args)
+end)
+
+function game.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimation)
+	if victim.TetherIds == nil then
+		return
+	end
+
+	for k, id in ipairs(victim.TetherIds) do
+		if skipTetherCount == nil or k > skipTetherCount then
+			if victim.OnDeathTetherUpwardForce ~= nil then
+				SetThingProperty({ Property = "OffsetZ", Value = 0, DestinationId = id })
+				SetThingProperty({ Property = "StopsProjectiles", Value = true, DestinationId = id })
+				SetThingProperty({ Property = "StopsUnits", Value = true, DestinationId = id })
+				ApplyUpwardForce({ Id = id, Speed = victim.OnDeathTetherUpwardForce })
+				ApplyForce({
+					Id = id,
+					Speed = game.RandomFloat(victim.OnDeathTetherRandomForceMin, victim.OnDeathTetherRandomForceMax),
+					Angle =
+							game.RandomFloat(0, 360)
+				})
+			end
+			if victim.DestroyTethersOnDeath then
+				Destroy({ Id = id })
+			end
+			if victim.Tethers[k] ~= nil and victim.Tethers[k].ParentDeathAnimation ~= nil then
+				SetAnimation({ DestinationId = id, Name = victim.Tethers[k].ParentDeathAnimation })
+			end
+			game.wait(0.04, RoomThreadName)
+		else
+			if skipTetherAnimation ~= nil then
+				SetAnimation({ DestinationId = id, Name = skipTetherAnimation })
+				game.wait(0.25, RoomThreadName)
+			end
+		end
+		-- This is added manually - we need to always destroy the tether, as otherwise OnTouchdown is called without a triggeredByTable argument
+		Destroy({ Id = id })
 	end
 end
