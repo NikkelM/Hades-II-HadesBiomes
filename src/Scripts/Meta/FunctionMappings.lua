@@ -269,3 +269,11 @@ function game.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimati
 		Destroy({ Id = id })
 	end
 end
+
+-- Is called whenever HeavyRanged hits the player.
+-- The first hit of each burst should not deal any damage, as it is the lock-on hit
+function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnHit(victim, victimId, triggerArgs)
+	if triggerArgs.Detonation == 0 then
+		triggerArgs.DamageAmount = 0
+	end
+end

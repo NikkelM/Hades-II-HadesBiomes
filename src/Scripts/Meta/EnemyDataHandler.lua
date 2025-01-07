@@ -196,6 +196,8 @@ local enemyModifications = {
 		-- Otherwise the shine sticks around after the enemy dies
 		-- Default is 2 seconds
 		DestroyDelay = 1,
+		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
+		-- SpawnObstaclesOnDeath = { ... }
 	},
 
 	-- These enemies have not been implemented yet
@@ -248,7 +250,7 @@ local DefaultAIDataKeyReplacements = {
 	AIFireTicksMin = "FireTicksMin",
 	AIFireTicksMax = "FireTicksMax",
 	AIFireTicksCooldown = "FireInterval",
-
+	StandOffTime = "SurroundRefreshInterval",
 }
 
 ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplacements, DefaultAIDataKeyReplacements)

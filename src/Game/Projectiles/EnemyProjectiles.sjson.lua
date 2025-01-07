@@ -35,6 +35,11 @@ local hadesProjectilesModifications = {
 		DeathFx = "EnemyProjectileDissipate",
 		ImpactFx = "EnemyProjectileImpact",
 		UnpauseResetLocation = true
+	},
+	HeavyRangedWeapon = {
+		NumPenetrations = 99999,
+		InflictedDamageSound = "/SFX/BurnDamage",
+		MultiDetonate = true,
 	}
 }
 

@@ -68,7 +68,11 @@ for oldName, newName in pairs(EnemyWeaponMappings) do
 	mod.UpdateField(hadesWeaponData, oldName, newName, { "InheritFrom" }, "WeaponData")
 end
 
-local weaponModifications = {}
+local weaponModifications = {
+	HeavyRangedWeapon = {
+		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnHit" },
+	}
+}
 
 local AIDataKeyReplacements = {
 	AIAttackDistance = "AttackDistance",
@@ -78,7 +82,7 @@ local AIDataKeyReplacements = {
 applyModificationsAndInheritWeaponData(hadesWeaponData, weaponModifications, AIDataKeyReplacements)
 
 -- Projectiles
-local function applyModificationsAndInheritProjectileData(base, modifications)
+local function applyModificationsAndInheritProjectileData(base, modifications, projectileKeyReplacements)
 	-- Apply modifications
 	for projectileName, projectileData in pairs(modifications) do
 		if not base[projectileName] then
@@ -90,6 +94,13 @@ local function applyModificationsAndInheritProjectileData(base, modifications)
 	-- Process data inheritance and add the new data to the game's global
 	base = mod.AddTableKeysSkipDupes(game.ProjectileData, base, nil)
 	for projectileName, projectileData in pairs(base) do
+		for oldKey, newKey in pairs(projectileKeyReplacements) do
+			if projectileData[oldKey] then
+				projectileData[newKey] = projectileData[oldKey]
+				projectileData[oldKey] = nil
+			end
+		end
+
 		game.ProcessDataInheritance(projectileData, game.ProjectileData)
 		base[projectileName] = projectileData
 	end
@@ -99,5 +110,8 @@ local function applyModificationsAndInheritProjectileData(base, modifications)
 end
 
 local projectileModifications = {}
+local projectileKeyReplacements = {
+	CancelVulnerabilitySpark = "CancelHitSpark",
+}
 
-applyModificationsAndInheritProjectileData(hadesProjectileData, projectileModifications)
+applyModificationsAndInheritProjectileData(hadesProjectileData, projectileModifications, projectileKeyReplacements)
