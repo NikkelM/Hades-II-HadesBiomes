@@ -191,7 +191,7 @@ function CopyHadesFxAnimations()
 	local destinationFile = rom.path.combine(rom.paths.Content(), HadesFxDestinationFilename)
 
 	-- Before removing duplicates, rename animations for which we need the old version
-	mod.RenameSjsonEntries(hadesFxTable.Animations, FxAnimationMappings, "Fx.sjson")
+	mod.RenameSjsonEntries(hadesFxTable.Animations, FxAnimationMappings, "Name", "Fx.sjson")
 	-- Rename attached animations/Fx graphics
 	for oldName, newName in pairs(FxAnimationMappings) do
 		mod.UpdateField(hadesFxTable.Animations, oldName, newName, { "ChainTo" }, "Fx.sjson")

@@ -184,17 +184,18 @@ function mod.ApplyNestedSjsonModifications(destinationTable, modifications)
 	end
 end
 
----Replaces the "Name" values of entries named in the mappings table in the tableToModify.
+---Replaces the key's value of entries named in the mappings table in the tableToModify.
 ---@param tableToModify table The table to modify
 ---@param mappings table Needs to have the format {["OldName"] = "NewName"}
+---@param key string The key to replace the values of
 ---@param filename string|nil The name of the file being modified, used for debugging purposes
-function mod.RenameSjsonEntries(tableToModify, mappings, filename)
+function mod.RenameSjsonEntries(tableToModify, mappings, key, filename)
 	for _, entry in ipairs(tableToModify) do
-		if entry.Name then
-			if mappings[entry.Name] then
+		if entry[key] then
+			if mappings[entry[key]] then
 				mod.DebugPrint("Renamed entry: " ..
-					entry.Name .. " to " .. mappings[entry.Name] .. " in " .. (filename or "an unknown file"))
-				entry.Name = mappings[entry.Name]
+					entry[key] .. " to " .. mappings[entry[key]] .. " in " .. (filename or "an unknown file"))
+				entry[key] = mappings[entry[key]]
 			end
 		end
 	end

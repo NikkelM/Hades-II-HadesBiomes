@@ -69,7 +69,7 @@ end
 local hadesEnemyAnimationsModifications = {}
 
 -- Rename duplicate animation names using EnemyAnimationMappings
-mod.RenameSjsonEntries(hadesEnemyAnimationsTable.Animations, EnemyAnimationMappings, "EnemyAnimations.sjson")
+mod.RenameSjsonEntries(hadesEnemyAnimationsTable.Animations, EnemyAnimationMappings, "Name", "EnemyAnimations.sjson")
 for oldName, newName in pairs(EnemyAnimationMappings) do
 	mod.UpdateField(hadesEnemyAnimationsTable.Animations, oldName, newName, { "InheritFrom" }, "EnemyAnimations.sjson")
 end

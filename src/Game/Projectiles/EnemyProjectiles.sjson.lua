@@ -21,8 +21,30 @@ local projectilesToRemove = {
 	"HadesCastBeamNoTracking"
 }
 
+-- Modifications/overrides to the Hades enemy projectiles
+local hadesProjectilesModifications = {
+	DisembodiedHandGrab = {
+		Effect = {
+			StartAnimation = "null"
+		}
+	},
+	LightRangedWeapon = {
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+		CanBeProjectileDefenseDestroyed = false,
+		DissipateFx = "EnemyProjectileDissipate",
+		DeathFx = "EnemyProjectileDissipate",
+		ImpactFx = "EnemyProjectileImpact",
+		UnpauseResetLocation = true
+	}
+}
+
+local projectileKeyReplacements = {
+	DissipateGraphic = "DissipateFx",
+	DetonateGraphic = "DetonateFx",
+}
+
 -- Rename duplicate enemy names using EnemyProjectileMappings
-mod.RenameSjsonEntries(hadesProjectilesTable.Projectiles, EnemyProjectileMappings, "EnemyProjectiles.sjson")
+mod.RenameSjsonEntries(hadesProjectilesTable.Projectiles, EnemyProjectileMappings, "Name", "EnemyProjectiles.sjson")
 -- Rename projectiles
 for oldName, newName in pairs(EnemyProjectileMappings) do
 	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "InheritFrom" }, "EnemyProjectiles.sjson")
@@ -43,6 +65,13 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	end
 
 	-- Modifications that should be made to all projectiles
+	-- Rename keys
+	for oldKey, newKey in pairs(projectileKeyReplacements) do
+		if projectile[oldKey] then
+			projectile[newKey] = projectile[oldKey]
+			projectile[oldKey] = nil
+		end
+	end
 	-- This property was renamed in Hades II
 	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then
 		projectile.Effect.Name = "HeroOnHitStun"
@@ -55,29 +84,7 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 		projectile.DamageLow = nil
 		projectile.DamageHigh = nil
 	end
-	-- Hades uses DetonateGraphic, Hades II uses DetonateFx
-	if projectile.DetonateGraphic then
-		projectile.DetonateFx = projectile.DetonateGraphic
-		projectile.DetonateGraphic = nil
-	end
 end
-
--- Modifications/overrides to the Hades enemy projectiles
-local hadesProjectilesModifications = {
-	DisembodiedHandGrab = {
-		Effect = {
-			StartAnimation = "null"
-		}
-	},
-	LightRangedWeapon = {
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
-		CanBeProjectileDefenseDestroyed = false,
-		DissipateFx = "EnemyProjectileDissipate",
-		DeathFx = "EnemyProjectileDissipate",
-		ImpactFx = "EnemyProjectileImpact",
-		UnpauseResetLocation = true
-	}
-}
 
 mod.ApplyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjectilesModifications)
 
