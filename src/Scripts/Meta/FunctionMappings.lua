@@ -189,10 +189,9 @@ function game.CreateTethers(newEnemy)
 			local tetherId = SpawnObstacle({
 				Name = tether.Name,
 				DestinationId = newEnemy.ObjectId,
-				Group = tether.GroupName or
-						"Standing",
+				Group = tether.GroupName or "Standing",
 				OffsetX = offsetX,
-				offsetY = offsetY
+				OffsetY = offsetY
 			})
 			SetAlpha({ Id = tetherId, Fraction = 0 })
 			SetAlpha({ Id = tetherId, Fraction = 1.0, Duration = 0.3 })
@@ -200,17 +199,19 @@ function game.CreateTethers(newEnemy)
 				Attach({
 					Id = tetherId,
 					DestinationId = newEnemy.ObjectId,
-					TetherDistance = tether.Distance,
-					TetherElasticity =
-							tether.Elasticity
+					-- TODO: The issue with the tethers is that TetherDistance and TetherElasticity are no longer existent in Hades II - issue #22
+					-- TetherDistance = tether.Distance,
+					-- TetherElasticity = tether.Elasticity,
+					-- As a workaround, just do some static offsets
+					OffsetX = offsetX,
+					OffsetY = offsetY,
 				})
 			else
 				Attach({
 					Id = prevTetherId,
 					DestinationId = tetherId,
 					TetherDistance = tether.Distance,
-					TetherRetractSpeed =
-							tether.RetractSpeed,
+					TetherRetractSpeed = tether.RetractSpeed,
 					TetherTrackZRatio = tether.TrackZRatio
 				})
 			end

@@ -308,6 +308,11 @@ If an enemy is binked, it might have a `Binks` property in `EnemyData.lua`.
    - If the enemy has different animations for it's Heavy etc. variants, you can add these to the `StunAnimations` table as well - this has not been tested yet.
 2. Add the `.bik` files for the new enemy to the `BikFileMappings` table in `RequiredFileData.lua`, make sure to copy both the 1080p and 720p version.
 
+The following steps apply to non-binked enemies only.
+An example enemy is `HeavyRanged`.
+
+1. In `EnemyDataHandler.lua`, add a `DeathAnimation` and/or `DeathFx` property. This should be the `DeathGraphic` of the enemy in `Enemies.sjson` in Hades. Also adjust the `DestroyDelay`, which by default is 2 seconds, to fit the `DeathAnimation`.
+
 ### Duplicate enemy names
 
 Some enemy names exist in both Hades and Hades II, such as "Swarmer" and "LightRanged".

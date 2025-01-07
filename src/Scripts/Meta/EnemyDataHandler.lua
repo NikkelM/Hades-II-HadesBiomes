@@ -191,6 +191,11 @@ local enemyModifications = {
 			-- Just the default animation, as there is no separate stun animation
 			Default = "HeavyRangedCrystal4"
 		},
+		DeathAnimation = "HeavyRangedCrystal4Shatter",
+		DeathFx = "HeavyRangedCrystal4Shatter",
+		-- Otherwise the shine sticks around after the enemy dies
+		-- Default is 2 seconds
+		DestroyDelay = 1,
 	},
 
 	-- These enemies have not been implemented yet

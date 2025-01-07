@@ -23,18 +23,39 @@ local hadesEnemiesModifications = {
 	SmallEnemy = {
 		InheritFrom = "1_BaseEnemy"
 	},
-	-- For LightRanged (HadesLightRanged)
+	-- For LightRanged (HadesLightRanged) and HeavyRanged
 	BaseCaster = {
 		InheritFrom = "1_BaseEnemy"
 	},
 }
 
+local enemyKeyReplacements = {
+	Life = {
+		DeathGraphic = "DeathFx",
+	}
+}
+
 mod.ApplyNestedSjsonModifications(hadesEnemiesTable.Units, hadesEnemiesModifications)
 
 -- Rename duplicate enemy names using EnemyNameMappings
-mod.RenameSjsonEntries(hadesEnemiesTable.Units, EnemyNameMappings, "Enemies.sjson")
+mod.RenameSjsonEntries(hadesEnemiesTable.Units, EnemyNameMappings, "Name", "Enemies.sjson")
 for oldName, newName in pairs(EnemyNameMappings) do
 	mod.UpdateField(hadesEnemiesTable.Units, oldName, newName, { "InheritFrom" }, "Enemies.sjson")
+end
+
+for i = #hadesEnemiesTable.Units, 1, -1 do
+	local enemy = hadesEnemiesTable.Units[i]
+	for parentKey, replacements in pairs(enemyKeyReplacements) do
+		if enemy[parentKey] ~= nil then
+			for oldName, newName in pairs(replacements) do
+				if enemy[parentKey][oldName] ~= nil then
+					enemy[parentKey][newName] = enemy[parentKey][oldName]
+					enemy[parentKey][oldName] = nil
+					mod.DebugPrint("Replaced " .. parentKey .. "." .. oldName .. " with " .. parentKey .. "." .. newName .. " for " .. enemy.Name .. " in Enemies.sjson")
+				end
+			end
+		end
+	end
 end
 
 sjson.hook(hadesTwoEnemiesFile, function(data)

@@ -10,9 +10,8 @@ local function LoadHadesWeaponData()
 	local chunk, err = loadfile(pathName)
 	if chunk then
 		chunk()
-		-- No worries if this is marked as undefined, it comes from the loaded file
-		---@diagnostic disable-next-line: undefined-global
 		local hadesWeaponData = WeaponData
+		local hadesProjectileData = ProjectileData
 
 		game.WeaponData = originalWeaponData
 		game.ProjectileData = originalProjectileData
@@ -20,14 +19,14 @@ local function LoadHadesWeaponData()
 		game.GameData.WeaponEquipOrder = originalWeaponEquipOrderData
 		game.GameData.MissingPackages = originalMissingPackages
 
-		return hadesWeaponData
+		return hadesWeaponData, hadesProjectileData
 	else
 		mod.DebugPrint("Error loading WeaponData: " .. err)
 	end
 end
 
 -- Applies modifications to base weapon objects, and then adds the new weapon objects to the game
-local function ApplyModificationsAndInheritWeaponData(base, modifications, AIDataKeyReplacements)
+local function applyModificationsAndInheritWeaponData(base, modifications, AIDataKeyReplacements)
 	-- Apply modifications
 	for weaponName, weaponData in pairs(modifications) do
 		if not base[weaponName] then
@@ -58,7 +57,7 @@ local function ApplyModificationsAndInheritWeaponData(base, modifications, AIDat
 end
 
 -- Adds weapons from Hades to Hades II
-local hadesWeaponData = LoadHadesWeaponData()
+local hadesWeaponData, hadesProjectileData = LoadHadesWeaponData()
 
 -- Some weapons exist in both Hades and Hades II, so we need to rename the Hades weapons
 for oldName, newName in pairs(EnemyWeaponMappings) do
@@ -69,11 +68,36 @@ for oldName, newName in pairs(EnemyWeaponMappings) do
 	mod.UpdateField(hadesWeaponData, oldName, newName, { "InheritFrom" }, "WeaponData")
 end
 
-local modifications = {}
+local weaponModifications = {}
 
 local AIDataKeyReplacements = {
 	AIAttackDistance = "AttackDistance",
 	AIBufferDistance = "RetreatBufferDistance"
 }
 
-ApplyModificationsAndInheritWeaponData(hadesWeaponData, modifications, AIDataKeyReplacements)
+applyModificationsAndInheritWeaponData(hadesWeaponData, weaponModifications, AIDataKeyReplacements)
+
+-- Projectiles
+local function applyModificationsAndInheritProjectileData(base, modifications)
+	-- Apply modifications
+	for projectileName, projectileData in pairs(modifications) do
+		if not base[projectileName] then
+			base[projectileName] = {}
+		end
+		mod.ApplyModifications(base[projectileName], projectileData)
+	end
+
+	-- Process data inheritance and add the new data to the game's global
+	base = mod.AddTableKeysSkipDupes(game.ProjectileData, base, nil)
+	for projectileName, projectileData in pairs(base) do
+		game.ProcessDataInheritance(projectileData, game.ProjectileData)
+		base[projectileName] = projectileData
+	end
+	-- Don't skip duplicates, since we have already added all the data before
+	-- AddTableKeysSkipDupes also removed duplicates, so overwriting here will only overwrite keys we added ourselves
+	game.OverwriteTableKeys(game.ProjectileData, base)
+end
+
+local projectileModifications = {}
+
+applyModificationsAndInheritProjectileData(hadesProjectileData, projectileModifications)
