@@ -185,6 +185,13 @@ local enemyModifications = {
 		},
 		DefaultAIData = game.EnemyData.LightRanged.DefaultAIData,
 	},
+	HeavyRanged = {
+		StunAnimations =
+		{
+			-- Just the default animation, as there is no separate stun animation
+			Default = "HeavyRangedCrystal4"
+		},
+	},
 
 	-- These enemies have not been implemented yet
 	Chariot = {
