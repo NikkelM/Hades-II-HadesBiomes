@@ -135,9 +135,9 @@ local enemyModifications = {
 		},
 		DeathAnimation = "HeavyRangedCrystal4Shatter",
 		DeathFx = "HeavyRangedCrystal4Shatter",
-		-- Otherwise the shine sticks around after the enemy dies
+		-- Otherwise the laser sticks around after the enemy dies
 		-- Default is 2 seconds
-		DestroyDelay = 1,
+		DestroyDelay = 0,
 		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
 		-- SpawnObstaclesOnDeath = { ... }
 	},
