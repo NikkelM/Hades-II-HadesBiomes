@@ -70,8 +70,12 @@ end
 
 local weaponModifications = {
 	HeavyRangedWeapon = {
-		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnHit" },
-	}
+		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
+		AIData = {
+			-- Reverts the OutgoingDamageModifier in case it was set to not deal any damage after being hit
+			PostAttackFunctionName = "ModsNikkelMHadesBiomesHeavyRangedCrystalRevertOnHit",
+		}
+	},
 }
 
 local AIDataKeyReplacements = {

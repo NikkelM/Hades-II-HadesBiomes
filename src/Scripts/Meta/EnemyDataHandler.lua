@@ -135,11 +135,14 @@ local enemyModifications = {
 		},
 		DeathAnimation = "HeavyRangedCrystal4Shatter",
 		DeathFx = "HeavyRangedCrystal4Shatter",
+		-- Called when the enemy is being hit - Sets the weapon damage to 0 (for this burst - PostAttackFunctionName on the weapon reset it)
+		OnHitFunctionName = "ModsNikkelMHadesBiomesHeavyRangedCrystalOnHit",
 		-- Otherwise the laser sticks around after the enemy dies
 		-- Default is 2 seconds
 		DestroyDelay = 0,
 		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
 		-- SpawnObstaclesOnDeath = { ... }
+		-- StopAnimationsOnDeath or StopAnimationsOnPolymorph needed to stop the laser?
 	},
 
 	-- These enemies have not been implemented yet

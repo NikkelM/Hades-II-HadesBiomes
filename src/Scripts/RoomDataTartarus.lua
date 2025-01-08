@@ -9,6 +9,9 @@ local roomModifications = {
 		TimeChallengeEncounterOptions = { "TimeChallengeTartarus" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeTartarus" },
 		EliteChallengeEncounterOptions = { "EliteChallengeTartarus" },
+
+		-- Erebus challenge encounter are not currently working
+		ShrinePointDoorRequirements = { Skip = true },
 	},
 	RoomOpening = {
 		LegalEncounters = { "OpeningGenerated" },

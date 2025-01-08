@@ -1,5 +1,6 @@
 -- Maps function names with the same or similar behaviour between Hades and Hades II
 
+----------- RUN LOGIC
 -- Displays the biome's name as a banner at the top when entering the first room
 function game.DisplayLocationText(source, args)
 	if not args.Delay then
@@ -14,6 +15,7 @@ function game.RoomEntranceOpening(currentRun, currentRoom, args)
 	game.RoomEntranceMaterialize(currentRun, currentRoom, args)
 end
 
+----------- TRAPS
 -- Mixes functionality from the original Hades RemoteAttack and the Hades II replacement, RemoteAI, to work with the Dart trap
 function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 	while IsAIActive(enemy) do
@@ -163,6 +165,7 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 	end
 end
 
+----------- HEAVYRANGED
 -- Wrap around SetupUnit to call CreateTethers()
 modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 	base(unit, currentRun, args)
@@ -272,8 +275,30 @@ end
 
 -- Is called whenever HeavyRanged hits the player.
 -- The first hit of each burst should not deal any damage, as it is the lock-on hit
-function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnHit(victim, victimId, triggerArgs)
+function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimId, triggerArgs)
 	if triggerArgs.Detonation == 0 then
 		triggerArgs.DamageAmount = 0
 	end
 end
+
+-- Is called whenever HeavyRanged is hit.
+-- Modified the OutgoingDamageModifiers to have the weapon not deal any more damage
+function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnHit(victim, consolidatedArgs, onHitFunctionArgs, triggerArgs)
+	victim.OutgoingDamageModifiers = { { PlayerMultiplier = 0 } }
+end
+
+-- Called after each attack of HeavyRanged.
+-- Resets the OutgoingDamageModifiers to the default, in case it was hit during an attack
+function game.ModsNikkelMHadesBiomesHeavyRangedCrystalRevertOnHit(enemy, aiData, CurrentRun)
+	enemy.OutgoingDamageModifiers = {}
+end
+
+-- When the enemy's armor is broken, remove the outline from the tethers as well
+modutil.mod.Path.Wrap("DoEnemyHealthBufferDeplete", function(base, enemy)
+	base(enemy)
+	if enemy.TetherIds ~= nil then
+		for k, tetherId in ipairs(enemy.TetherIds) do
+			RemoveOutline({ Id = tetherId })
+		end
+	end
+end)
