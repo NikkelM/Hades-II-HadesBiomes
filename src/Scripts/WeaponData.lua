@@ -60,7 +60,7 @@ end
 local hadesWeaponData, hadesProjectileData = LoadHadesWeaponData()
 
 -- Some weapons exist in both Hades and Hades II, so we need to rename the Hades weapons
-for oldName, newName in pairs(EnemyWeaponMappings) do
+for oldName, newName in pairs(mod.EnemyWeaponMappings) do
 	hadesWeaponData[newName] = hadesWeaponData[oldName]
 	hadesWeaponData[oldName] = nil
 	-- Update the name in dependent fields

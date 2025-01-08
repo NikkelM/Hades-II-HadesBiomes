@@ -48,14 +48,14 @@ local projectileKeyReplacements = {
 	DetonateGraphic = "DetonateFx",
 }
 
--- Rename duplicate enemy names using EnemyProjectileMappings
-mod.RenameSjsonEntries(hadesProjectilesTable.Projectiles, EnemyProjectileMappings, "Name", "EnemyProjectiles.sjson")
+-- Rename duplicate enemy names using mod.EnemyProjectileMappings
+mod.RenameSjsonEntries(hadesProjectilesTable.Projectiles, mod.EnemyProjectileMappings, "Name", "EnemyProjectiles.sjson")
 -- Rename projectiles
-for oldName, newName in pairs(EnemyProjectileMappings) do
+for oldName, newName in pairs(mod.EnemyProjectileMappings) do
 	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "InheritFrom" }, "EnemyProjectiles.sjson")
 end
 -- Rename attached animations/Fx graphics
-for oldName, newName in pairs(FxAnimationMappings) do
+for oldName, newName in pairs(mod.FxAnimationMappings) do
 	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "DetonateGraphic" }, "EnemyProjectiles.sjson")
 end
 

@@ -1,9 +1,10 @@
 -- Defines animation names that already exist in Hades II and should therefore be skipped when the Hades Fx are imported
 
 -- The destination filename, used in a couple of places in the mod, therefore defined centrally
-HadesFxDestinationFilename = "Game\\Animations\\Z_ModsNikkelmHadesBiomesFx.sjson"
+mod.HadesFxDestinationFilename = "Game\\Animations\\Z_ModsNikkelmHadesBiomesFx.sjson"
 
-HadesFxAnimationDuplicates = {
+-- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly
+mod.HadesFxAnimationDuplicates = {
 	["GroupChange"] = true,
 	["Test_1"] = true,
 	["Test_2"] = true,

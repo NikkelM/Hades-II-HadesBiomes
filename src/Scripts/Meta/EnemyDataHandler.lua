@@ -63,7 +63,7 @@ end
 local enemyData = LoadHadesEnemyData()
 
 -- Some enemies exist in both Hades and Hades II, so we need to rename the Hades enemies
-for oldName, newName in pairs(EnemyNameMappings) do
+for oldName, newName in pairs(mod.EnemyNameMappings) do
 	if enemyData[oldName] then
 		enemyData[newName] = enemyData[oldName]
 		enemyData[oldName] = nil
@@ -78,7 +78,7 @@ for oldName, newName in pairs(EnemyNameMappings) do
 	mod.UpdateField(enemyData, oldName, newName, { "SpawnOptions" }, "EnemyData.lua")
 end
 -- For renamed weapon names
-for oldName, newName in pairs(EnemyWeaponMappings) do
+for oldName, newName in pairs(mod.EnemyWeaponMappings) do
 	mod.UpdateField(enemyData, oldName, newName, { "WeaponOptions" }, "EnemyData.lua")
 end
 

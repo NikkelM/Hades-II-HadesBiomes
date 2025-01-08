@@ -37,9 +37,9 @@ local enemyKeyReplacements = {
 
 mod.ApplyNestedSjsonModifications(hadesEnemiesTable.Units, hadesEnemiesModifications)
 
--- Rename duplicate enemy names using EnemyNameMappings
-mod.RenameSjsonEntries(hadesEnemiesTable.Units, EnemyNameMappings, "Name", "Enemies.sjson")
-for oldName, newName in pairs(EnemyNameMappings) do
+-- Rename duplicate enemy names using mod.EnemyNameMappings
+mod.RenameSjsonEntries(hadesEnemiesTable.Units, mod.EnemyNameMappings, "Name", "Enemies.sjson")
+for oldName, newName in pairs(mod.EnemyNameMappings) do
 	mod.UpdateField(hadesEnemiesTable.Units, oldName, newName, { "InheritFrom" }, "Enemies.sjson")
 end
 
@@ -51,7 +51,9 @@ for i = #hadesEnemiesTable.Units, 1, -1 do
 				if enemy[parentKey][oldName] ~= nil then
 					enemy[parentKey][newName] = enemy[parentKey][oldName]
 					enemy[parentKey][oldName] = nil
-					mod.DebugPrint("Replaced " .. parentKey .. "." .. oldName .. " with " .. parentKey .. "." .. newName .. " for " .. enemy.Name .. " in Enemies.sjson")
+					mod.DebugPrint("Replaced " ..
+					parentKey ..
+					"." .. oldName .. " with " .. parentKey .. "." .. newName .. " for " .. enemy.Name .. " in Enemies.sjson")
 				end
 			end
 		end

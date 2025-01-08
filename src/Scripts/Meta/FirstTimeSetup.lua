@@ -162,7 +162,7 @@ function CopyHadesHelpTexts()
 
 		-- Some entry IDs need to be changed, such as for duplicate enemy names
 		-- Merge these tables if there are multiple types of replacements
-		local IdRemappings = EnemyNameMappings
+		local IdRemappings = mod.EnemyNameMappings
 
 		-- Remove all existingIds from hadesHelpTextData - we don't want to overwrite something that already exists in Hades II
 		for i = #hadesHelpTextData.Texts, 1, -1 do
@@ -188,18 +188,18 @@ function CopyHadesFxAnimations()
 	local hadesFxTable = sjson.decode_file(hadesFxFile)
 
 	-- Z_ so the file is loaded last, and any animations these effects inherit from are already loaded
-	local destinationFile = rom.path.combine(rom.paths.Content(), HadesFxDestinationFilename)
+	local destinationFile = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
 
 	-- Before removing duplicates, rename animations for which we need the old version
-	mod.RenameSjsonEntries(hadesFxTable.Animations, FxAnimationMappings, "Name", "Fx.sjson")
+	mod.RenameSjsonEntries(hadesFxTable.Animations, mod.FxAnimationMappings, "Name", "Fx.sjson")
 	-- Rename attached animations/Fx graphics
-	for oldName, newName in pairs(FxAnimationMappings) do
+	for oldName, newName in pairs(mod.FxAnimationMappings) do
 		mod.UpdateField(hadesFxTable.Animations, oldName, newName, { "ChainTo" }, "Fx.sjson")
 	end
 
 	local filteredAnimations = {}
 	for _, animation in ipairs(hadesFxTable.Animations) do
-		if not HadesFxAnimationDuplicates[animation.Name] then
+		if not mod.HadesFxAnimationDuplicates[animation.Name] then
 			table.insert(filteredAnimations, animation)
 		end
 	end
