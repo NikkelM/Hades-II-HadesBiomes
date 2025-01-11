@@ -64,7 +64,7 @@ At the moment, content is limited to encounters and enemies.
 | Wretched Witch         | LightRanged          | Implemented     |
 | Dire Witch (Elite)     | LightRangedElite     | Implemented     |
 | Brimstone              | HeavyRanged          | Implemented     |
-| Dire Brimstone (Elite) | HeavyRangedElite     | Not implemented |
+| Dire Brimstone (Elite) | HeavyRangedElite     | Implemented     |
 | Numbskull              | Swarmer              | Not implemented |
 | Dire Numbskull         | SwarmerElite         | Not implemented |
 | Skullomat              | LightSpawner         | Not implemented |
