@@ -159,6 +159,14 @@ local enemyModifications = {
 		DestroyDelay = 0.9,
 		WeaponOptions = { "HadesSwarmerMelee" }
 	},
+	LightSpawner = {
+		StunAnimations = {
+			Default = "SpawnerAttackAnim",
+		},
+		DeathFx = "BreakableDeathAnim",
+		DeathGraphic = "SpawnerDeath",
+		-- DestroyDelay = 0.9,
+	},
 
 	-- These enemies have not been implemented yet
 	Chariot = {
