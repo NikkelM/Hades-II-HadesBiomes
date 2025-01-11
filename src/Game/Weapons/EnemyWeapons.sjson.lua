@@ -6,13 +6,13 @@ local hadesWeaponsTable = sjson.decode_file(hadesWeaponsFile)
 local hadesTwoWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\Weapons\\EnemyWeapons.sjson")
 local hadesTwoWeaponsTable = sjson.decode_file(hadesTwoWeaponsFile)
 
--- Rename duplicate enemy names using EnemyWeaponMappings
-mod.RenameSjsonEntries(hadesWeaponsTable.Weapons, EnemyWeaponMappings, "EnemyWeapons.sjson")
-for oldName, newName in pairs(EnemyWeaponMappings) do
+-- Rename duplicate enemy names using mod.EnemyWeaponMappings
+mod.RenameSjsonEntries(hadesWeaponsTable.Weapons, mod.EnemyWeaponMappings, "Name", "EnemyWeapons.sjson")
+for oldName, newName in pairs(mod.EnemyWeaponMappings) do
 	mod.UpdateField(hadesWeaponsTable.Weapons, oldName, newName, { "InheritFrom" }, "EnemyWeapons.sjson")
 end
 -- Rename attached projectiles
-for oldName, newName in pairs(EnemyProjectileMappings) do
+for oldName, newName in pairs(mod.EnemyProjectileMappings) do
 	mod.UpdateField(hadesWeaponsTable.Weapons, oldName, newName, { "Projectile" }, "EnemyWeapons.sjson")
 end
 

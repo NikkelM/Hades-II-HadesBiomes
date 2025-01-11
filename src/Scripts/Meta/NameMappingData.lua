@@ -2,7 +2,7 @@
 -- These names need to be changed in order to avoid conflicts and to use both versions alongside each other
 
 -- Enemies that exist in both games
-EnemyNameMappings = {
+mod.EnemyNameMappings = {
 	LightRanged = "HadesLightRanged",
 	-- In Hades II, this is LightRanged_Elite
 	-- LightRangedElite = "HadesLightRangedElite",
@@ -12,26 +12,26 @@ EnemyNameMappings = {
 	-- SpreadShotUnit = "HadesSpreadShotUnit",
 }
 
-EnemyProjectileMappings = {
+mod.EnemyProjectileMappings = {
 	-- Not currently used by Hades II
 	-- LightRangedWeapon = "HadesLightRangedWeapon",
 	-- The two versions have different PressedIn/Out animations
 	SpikeTrapWeapon = "HadesSpikeTrapWeapon",
 }
 
-EnemyWeaponMappings = {
+mod.EnemyWeaponMappings = {
 	-- The two versions have different PressedIn/Out animations
 	SpikeTrapWeapon = "HadesSpikeTrapWeapon",
 }
 
-EnemyAnimationMappings = {
+mod.EnemyAnimationMappings = {
 	SpikeTrapIdle = "HadesSpikeTrapIdle",
 	SpikeTrapPressed = "HadesSpikeTrapPressed",
 	SpikeTrapPreFire = "HadesSpikeTrapPreFire",
 	SpikeTrapDeactivated = "HadesSpikeTrapDeactivated"
 }
 
-FxAnimationMappings = {
+mod.FxAnimationMappings = {
 	SpikeTrapPressedIn = "HadesSpikeTrapPressedIn",
 	SpikeTrapPressedOut = "HadesSpikeTrapPressedOut",
 }

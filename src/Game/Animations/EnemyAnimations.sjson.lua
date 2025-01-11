@@ -5,7 +5,7 @@ local hadesEnemyAnimationsFile = rom.path.combine(mod.hadesGameFolder,
 local hadesEnemyAnimationsTable = sjson.decode_file(hadesEnemyAnimationsFile)
 
 -- These animations depend on some animations in various other files, so we hook into our own FX file, which is loaded last due to the Z_ prefix
-local hadesTwoEnemyAnimationsFile = rom.path.combine(rom.paths.Content(), HadesFxDestinationFilename)
+local hadesTwoEnemyAnimationsFile = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
 
 -- Modifications
 -- These animations already exist in Hades II and may crash the game if added again
@@ -68,9 +68,9 @@ end
 -- Modifications/overrides to the animations
 local hadesEnemyAnimationsModifications = {}
 
--- Rename duplicate animation names using EnemyAnimationMappings
-mod.RenameSjsonEntries(hadesEnemyAnimationsTable.Animations, EnemyAnimationMappings, "EnemyAnimations.sjson")
-for oldName, newName in pairs(EnemyAnimationMappings) do
+-- Rename duplicate animation names using mod.EnemyAnimationMappings
+mod.RenameSjsonEntries(hadesEnemyAnimationsTable.Animations, mod.EnemyAnimationMappings, "Name", "EnemyAnimations.sjson")
+for oldName, newName in pairs(mod.EnemyAnimationMappings) do
 	mod.UpdateField(hadesEnemyAnimationsTable.Animations, oldName, newName, { "InheritFrom" }, "EnemyAnimations.sjson")
 end
 

@@ -38,7 +38,7 @@ At the moment, content is limited to encounters and enemies.
 | Encounter/Room Name | Internal Name                           | Status          |
 | ------------------- | --------------------------------------- | --------------- |
 | **Tartarus**        |                                         |                 |
-| Default Combat      | GeneratedTartarus                       | Implemented     |
+| Default combat      | GeneratedTartarus                       | Implemented     |
 | Fountain room       | A_Reprieve01                            | Implemented     |
 | Survival challenge  | SurvivalTartarus                        | Not implemented |
 | Thanatos encounter  | ThanatosTartarus                        | Not implemented |
@@ -52,28 +52,28 @@ At the moment, content is limited to encounters and enemies.
 
 ### Enemies
 
-| Enemy                  | Internal Name        | Status                |
-| ---------------------- | -------------------- | --------------------- |
-| **Tartarus**           |                      |                       |
-| Wretched Lout          | PunchingBagUnit      | Implemented           |
-| Dire Lout (Elite)      | PunchingBagUnitElite | Implemented           |
-| Wretch Thug            | HeavyMelee           | Implemented           |
-| Dire Thug (Elite)      | HeavyMeleeElite      | Implemented           |
-| Wringer                | DisembodiedHand      | Implemented           |
-| Wringer (Elite)        | DisembodiedHandElite | Implemented           |
-| Wretched Witch         | LightRanged          | Partially implemented |
-| Dire Witch (Elite)     | LightRangedElite     | Partially implemented |
-| Numbskull              | Swarmer              | Not implemented       |
-| Dire Numbskull         | SwarmerElite         | Not implemented       |
-| Skullomat              | LightSpawner         | Not implemented       |
-| Wretched Pest          | ThiefMineLayer       | Not implemented       |
-| Dire Pest (Elite)      | ThiefMineLayerElite  | Not implemented       |
-| Brimstone              | HeavyRanged          | Not implemented       |
-| Dire Brimstone (Elite) | HeavyRangedElite     | Not implemented       |
-| **Asphodel**           |                      | Not implemented       |
-| **Elysium**            |                      | Not implemented       |
-| **Styx**               |                      | Not implemented       |
-| **Surface**            |                      | Not implemented       |
+| Enemy                  | Internal Name        | Status          |
+| ---------------------- | -------------------- | --------------- |
+| **Tartarus**           |                      |                 |
+| Wretched Lout          | PunchingBagUnit      | Implemented     |
+| Dire Lout (Elite)      | PunchingBagUnitElite | Implemented     |
+| Wretch Thug            | HeavyMelee           | Implemented     |
+| Dire Thug (Elite)      | HeavyMeleeElite      | Implemented     |
+| Wringer                | DisembodiedHand      | Implemented     |
+| Wringer (Elite)        | DisembodiedHandElite | Implemented     |
+| Wretched Witch         | LightRanged          | Implemented     |
+| Dire Witch (Elite)     | LightRangedElite     | Implemented     |
+| Brimstone              | HeavyRanged          | Implemented     |
+| Dire Brimstone (Elite) | HeavyRangedElite     | Implemented     |
+| Numbskull              | Swarmer              | Not implemented |
+| Dire Numbskull         | SwarmerElite         | Not implemented |
+| Skullomat              | LightSpawner         | Not implemented |
+| Wretched Pest          | ThiefMineLayer       | Not implemented |
+| Dire Pest (Elite)      | ThiefMineLayerElite  | Not implemented |
+| **Asphodel**           |                      | Not implemented |
+| **Elysium**            |                      | Not implemented |
+| **Styx**               |                      | Not implemented |
+| **Surface**            |                      | Not implemented |
 
 ### Not implemented yet, but somewhat planned
 

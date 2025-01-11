@@ -36,6 +36,7 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 		end
 		mod.ApplyModifications(base[enemyName], enemyData)
 	end
+	mod.PrintTable(base.HeavyRanged)
 
 	-- Process data inheritance and add the new data to the game's global
 	base = mod.AddTableKeysSkipDupes(game.EnemyData, base, nil)
@@ -63,7 +64,7 @@ end
 local enemyData = LoadHadesEnemyData()
 
 -- Some enemies exist in both Hades and Hades II, so we need to rename the Hades enemies
-for oldName, newName in pairs(EnemyNameMappings) do
+for oldName, newName in pairs(mod.EnemyNameMappings) do
 	if enemyData[oldName] then
 		enemyData[newName] = enemyData[oldName]
 		enemyData[oldName] = nil
@@ -78,71 +79,13 @@ for oldName, newName in pairs(EnemyNameMappings) do
 	mod.UpdateField(enemyData, oldName, newName, { "SpawnOptions" }, "EnemyData.lua")
 end
 -- For renamed weapon names
-for oldName, newName in pairs(EnemyWeaponMappings) do
+for oldName, newName in pairs(mod.EnemyWeaponMappings) do
 	mod.UpdateField(enemyData, oldName, newName, { "WeaponOptions" }, "EnemyData.lua")
 end
 
 -- Some enemies need to be modified so much, it's easier to redefine them
--- TODO: Move to own file for brevity
--- We need to edit the original trap/enemy instead of adding a new one, as otherwise the maps won't populate the correct trap
--- AFAIK, the original SpikeTrap is not used anywhere in Hades II at the moment
-game.EnemyData.SpikeTrap.WeaponOptions = { "HadesSpikeTrapWeapon" }
-game.EnemyData.SpikeTrap.DefaultAIData.IdleAnimation = "HadesSpikeTrapIdle"
-game.EnemyData.SpikeTrap.DefaultAIData.PreAttackAnimation = "HadesSpikeTrapPreFire"
-game.EnemyData.SpikeTrap.DefaultAIData.PostAttackAnimation = "HadesSpikeTrapPressed"
-game.EnemyData.SpikeTrap.DefaultAIData.DisabledAnimation = "HadesSpikeTrapDeactivated"
-
-enemyData.DartTrap = {
-	InheritFrom = { "BaseTrap" },
-	TargetGroups = { "GroundEnemies", "HeroTeam" },
-	-- All of these properties were in the root before, but need to be in DefaultAIData for Hades II
-	DefaultAIData = {
-		DeepInheritance = true,
-		PreAttackDuration = 0.2,
-		PostAttackCooldown = 2.0,
-		LinkedEnemy = "DartTrapEmitter",
-		IdleAnimation = "DartTrapIdle",
-		PreAttackAnimation = "DartTrapPreFire",
-		PreAttackSound = "/SFX/TrapSet",
-		PostAttackAnimation = "DartTrapPressed",
-		ReloadingLoopSound = "/SFX/TrapSettingLoop",
-		ReloadedSound = "/Leftovers/Menu Sounds/TalismanMetalClankDown",
-		DisabledAnimation = "DartTrapDeactivated",
-		AttackDistance = 100,
-		AIResetDistance = 110,
-		MaxVictimZ = 1,
-	},
-	AIOptions =
-	{
-		-- RemoteAI
-		"RemoteAttackModsNikkelMHadesBiomes"
-	},
-	ToggleTrap = true,
-}
--- Fires when the player steps on a Dart trap plate
-enemyData.DartTrapEmitter = {
-	InheritFrom = { "IsNeutral" },
-	Type = "Trap",
-	TriggersOnHitEffects = false,
-	DefaultAIData = {
-		DeepInheritance = true,
-		PreAttackAnimation = "DartTrapEmitterFire",
-		PostAttackAnimation = "DartTrapEmitterReturnToIdle",
-		PreAttackDuration = 0.0,
-		PostAttackDuration = 0.0,
-		FireTicksMin = 3,
-		FireTicksMax = 3,
-		FireInterval = 0.15,
-		TrackTargetDuringCharge = false,
-		-- Manually added!
-		ProjectileName = "DartTrapWeapon",
-		PostAttackCooldown = 2.0,
-	},
-	Material = "MetalObstacle",
-	WeaponOptions = { "DartTrapWeapon" },
-	WeaponName = "DartTrapWeapon",
-	OutgoingDamageModifiers = { { NonPlayerMultiplier = 33.33 } }
-}
+-- This is true for most traps
+mod.ModifyEnemyTrapData(enemyData)
 
 local enemyReplacements = {}
 
@@ -185,6 +128,29 @@ local enemyModifications = {
 		},
 		DefaultAIData = game.EnemyData.LightRanged.DefaultAIData,
 	},
+	HeavyRanged = {
+		StunAnimations =
+		{
+			-- Just the default animation, as there is no separate stun animation
+			Default = "HeavyRangedCrystal4"
+		},
+		DeathAnimation = "HeavyRangedCrystal4Shatter",
+		DeathFx = "HeavyRangedCrystal4Shatter",
+		Tethers = {
+			[1] = { Distance = 20 },
+			[2] = { Distance = 20 },
+			[3] = { Distance = 20 }
+		},
+		-- Called when the enemy is being hit - Sets the weapon damage to 0 (for this burst - PostAttackFunctionName on the weapon reset it)
+		OnHitFunctionName = "ModsNikkelMHadesBiomesHeavyRangedCrystalOnHit",
+		-- Otherwise the laser sticks around after the enemy dies
+		-- Default is 2 seconds
+		DestroyDelay = 0,
+		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
+		-- SpawnObstaclesOnDeath = { ... }
+		-- StopAnimationsOnDeath or StopAnimationsOnPolymorph needed to stop the laser?
+	},
+
 	-- These enemies have not been implemented yet
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
@@ -235,7 +201,7 @@ local DefaultAIDataKeyReplacements = {
 	AIFireTicksMin = "FireTicksMin",
 	AIFireTicksMax = "FireTicksMax",
 	AIFireTicksCooldown = "FireInterval",
-
+	StandOffTime = "SurroundRefreshInterval",
 }
 
 ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplacements, DefaultAIDataKeyReplacements)

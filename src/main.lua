@@ -87,6 +87,7 @@ local function on_ready()
 	-- Done first, as the EncounterData depends on the EnemySets
 	import "Scripts/EnemySets.lua"
 
+	import "Scripts/Meta/EnemyTrapDataHandler.lua"
 	import "Scripts/Meta/EnemyDataHandler.lua"
 	import "Scripts/Meta/EncounterDataHandler.lua"
 	import "Scripts/Meta/RoomDataHandler.lua"
