@@ -36,6 +36,7 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 		end
 		mod.ApplyModifications(base[enemyName], enemyData)
 	end
+	mod.PrintTable(base.HeavyRanged)
 
 	-- Process data inheritance and add the new data to the game's global
 	base = mod.AddTableKeysSkipDupes(game.EnemyData, base, nil)
@@ -135,6 +136,11 @@ local enemyModifications = {
 		},
 		DeathAnimation = "HeavyRangedCrystal4Shatter",
 		DeathFx = "HeavyRangedCrystal4Shatter",
+		Tethers = {
+			[1] = { Distance = 20 },
+			[2] = { Distance = 20 },
+			[3] = { Distance = 20 }
+		},
 		-- Called when the enemy is being hit - Sets the weapon damage to 0 (for this burst - PostAttackFunctionName on the weapon reset it)
 		OnHitFunctionName = "ModsNikkelMHadesBiomesHeavyRangedCrystalOnHit",
 		-- Otherwise the laser sticks around after the enemy dies
