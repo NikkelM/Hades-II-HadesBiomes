@@ -2,8 +2,8 @@
 
 game.EnemySets.EnemiesBiome1 = {
 	-- TODO: Swarmer is a re-used name for Hades II Tartarus skulls
-	-- "Swarmer",             -- Wretch Swarmer
-	-- "SwarmerElite",        -- Wretch Swarmer
+	"Swarmer",                -- Wretch Swarmer -- Done -- Duplicate Name!
+	"SwarmerElite",           -- Wretch Swarmer -- Done
 	-- "LightSpawner",        -- Spawns skulls
 	-- "ThiefMineLayer",      -- Wretch Thief
 	-- "ThiefMineLayerElite", -- Wretch Thief

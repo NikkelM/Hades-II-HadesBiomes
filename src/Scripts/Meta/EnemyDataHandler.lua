@@ -36,7 +36,6 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 		end
 		mod.ApplyModifications(base[enemyName], enemyData)
 	end
-	mod.PrintTable(base.HeavyRanged)
 
 	-- Process data inheritance and add the new data to the game's global
 	base = mod.AddTableKeysSkipDupes(game.EnemyData, base, nil)
@@ -126,7 +125,7 @@ local enemyModifications = {
 		{
 			Default = "EnemyWretchCasterOnHit"
 		},
-		DefaultAIData = game.EnemyData.LightRanged.DefaultAIData,
+		DefaultAIData = game.DeepCopyTable(game.EnemyData.LightRanged.DefaultAIData),
 	},
 	HeavyRanged = {
 		StunAnimations =
@@ -149,6 +148,16 @@ local enemyModifications = {
 		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
 		-- SpawnObstaclesOnDeath = { ... }
 		-- StopAnimationsOnDeath or StopAnimationsOnPolymorph needed to stop the laser?
+	},
+	-- Swarmer renamed
+	HadesSwarmer = {
+		StunAnimations = {
+			Default = "EnemyWretchSwarmerAlert",
+		},
+		DeathAnimation = "EnemyWretchSwarmerDeathVFX",
+		DeathFx = "EnemyDeathFx_Small",
+		DestroyDelay = 0.9,
+		WeaponOptions = { "HadesSwarmerMelee" }
 	},
 
 	-- These enemies have not been implemented yet

@@ -76,6 +76,30 @@ local weaponModifications = {
 			PostAttackFunctionName = "ModsNikkelMHadesBiomesHeavyRangedCrystalRevertOnHit",
 		}
 	},
+	-- From Hades II SwarmerMelee
+	HadesSwarmerMelee = {
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "HadesSwarmerMelee",
+			PreAttackEndShake = true,
+			FireProjectileStartDelay = 0.03,
+			-- Modified, as the original 1800 is too short
+			FireSelfVelocity = 3300,
+			ApplyEffectsOnWeaponFire = { WeaponEffectData.AttackHighGrip, },
+			PreAttackDuration = 0.5,
+			FireDuration = 0.25,
+			PostAttackDuration = 0.5,
+			PreAttackAnimation = "EnemyWretchSwarmerAttackCharge",
+			FireAnimation = "EnemyWretchSwarmerAttackFire",
+			PostAttackAnimation = "EnemyWretchSwarmerPostAttack",
+			AttackDistance = 350,
+			RetreatBufferDistance = 550,
+			RetreatAfterAttack = true,
+			RequireUnitLoS = true,
+			LoSBuffer = 80,
+			LoSEndBuffer = 32,
+		},
+	},
 }
 
 local AIDataKeyReplacements = {

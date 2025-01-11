@@ -65,8 +65,8 @@ At the moment, content is limited to encounters and enemies.
 | Dire Witch (Elite)     | LightRangedElite     | Implemented     |
 | Brimstone              | HeavyRanged          | Implemented     |
 | Dire Brimstone (Elite) | HeavyRangedElite     | Implemented     |
-| Numbskull              | Swarmer              | Not implemented |
-| Dire Numbskull         | SwarmerElite         | Not implemented |
+| Numbskull              | Swarmer              | Implemented     |
+| Dire Numbskull         | SwarmerElite         | Implemented     |
 | Skullomat              | LightSpawner         | Not implemented |
 | Wretched Pest          | ThiefMineLayer       | Not implemented |
 | Dire Pest (Elite)      | ThiefMineLayerElite  | Not implemented |
