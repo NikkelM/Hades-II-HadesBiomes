@@ -10,6 +10,8 @@ mod.EnemyNameMappings = {
 	-- LightRangedSuperElite = "HadesLightRangedSuperElite",
 	-- Not tested yet - is this needed?
 	-- SpreadShotUnit = "HadesSpreadShotUnit",
+
+	Swarmer = "HadesSwarmer",
 }
 
 mod.EnemyProjectileMappings = {
@@ -17,11 +19,13 @@ mod.EnemyProjectileMappings = {
 	-- LightRangedWeapon = "HadesLightRangedWeapon",
 	-- The two versions have different PressedIn/Out animations
 	SpikeTrapWeapon = "HadesSpikeTrapWeapon",
+	SwarmerMelee = "HadesSwarmerMelee",
 }
 
 mod.EnemyWeaponMappings = {
 	-- The two versions have different PressedIn/Out animations
 	SpikeTrapWeapon = "HadesSpikeTrapWeapon",
+	SwarmerMelee = "HadesSwarmerMelee",
 }
 
 mod.EnemyAnimationMappings = {
