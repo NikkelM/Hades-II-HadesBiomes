@@ -67,7 +67,7 @@ At the moment, content is limited to encounters and enemies.
 | Dire Brimstone (Elite) | HeavyRangedElite     | Implemented     |
 | Numbskull              | Swarmer              | Implemented     |
 | Dire Numbskull         | SwarmerElite         | Implemented     |
-| Skullomat              | LightSpawner         | Not implemented |
+| Skullomat              | LightSpawner         | Implemented     |
 | Wretched Pest          | ThiefMineLayer       | Not implemented |
 | Dire Pest (Elite)      | ThiefMineLayerElite  | Not implemented |
 | **Asphodel**           |                      | Not implemented |
