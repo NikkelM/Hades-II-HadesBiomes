@@ -148,12 +148,12 @@ function mod.ApplyModifications(baseData, modificationData, replaceTable)
 			baseData[key] = nil
 		elseif type(value) == "table" then
 			if replaceTable then
-				baseData[key] = value
+				baseData[key] = game.DeepCopyTable(value)
 			else
 				if type(baseData[key]) ~= "table" then
 					baseData[key] = {}
 				end
-				mod.ApplyModifications(baseData[key], value)
+				mod.ApplyModifications(baseData[key], value, replaceTable)
 			end
 		else
 			baseData[key] = value
