@@ -74,7 +74,28 @@ local weaponModifications = {
 		AIData = {
 			-- Reverts the OutgoingDamageModifier in case it was set to not deal any damage after being hit
 			PostAttackFunctionName = "ModsNikkelMHadesBiomesHeavyRangedCrystalRevertOnHit",
-		}
+		},
+	},
+	HadesLightSpawnerSpawnerWeapon = {
+		Requirements =
+		{
+			MaxActiveSpawns = 5,
+			RequiresNotCharmed = true,
+		},
+		AIData = {
+			SpawnBurstDelay = 4.5,
+			SpawnsPerBurst = 3,
+			SpawnRadius = 0,
+			SpawnRate = 1.2,
+			SpawnDelay = 0.6,
+			SpawnedAggroTetherDistance = 750,
+			SpawnAggroed = false,
+			SpawnerOptions = { "HadesSwarmer" },
+			NoProjectile = true,
+			SpawnBurstOnFire = true,
+			MaxActiveSpawns = 5,
+			SpawnsSkipActivatePresentation = true,
+		},
 	},
 	-- From Hades II SwarmerMelee
 	HadesSwarmerMelee = {
