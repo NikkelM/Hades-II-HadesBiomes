@@ -86,7 +86,12 @@ end
 -- This is true for most traps
 mod.ModifyEnemyTrapData(enemyData)
 
-local enemyReplacements = {}
+local enemyReplacements = {
+	BaseSpawner = {
+		-- SpawnerAI doesn't exist, spawn logic is in the weapon
+		AIOptions = { "AttackerAI", },
+	},
+}
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
 local enemyModifications = {
@@ -95,25 +100,16 @@ local enemyModifications = {
 	},
 	PunchingBagUnit = {
 		-- Comes from the CharacterAnimationsEnemies.sjson entry which has the OnHit_Bink as VideoTexture
-		StunAnimations =
-		{
-			Default = "EnemyWretchGluttonOnHit"
-		},
+		StunAnimations = { Default = "EnemyWretchGluttonOnHit" },
 	},
 	BaseThug = {
 		LargeUnitCap = mod.NilValue,
 	},
 	HeavyMelee = {
-		StunAnimations =
-		{
-			Default = "EnemyWretchThugOnHit"
-		}
+		StunAnimations = { Default = "EnemyWretchThugOnHit" },
 	},
 	DisembodiedHand = {
-		StunAnimations =
-		{
-			Default = "EnemyWringerOnHit"
-		}
+		StunAnimations = { Default = "EnemyWringerOnHit" },
 	},
 	BaseCaster = {
 		AIAggroRange = 1250,
@@ -121,18 +117,11 @@ local enemyModifications = {
 	},
 	-- LightRanged renamed
 	HadesLightRanged = {
-		StunAnimations =
-		{
-			Default = "EnemyWretchCasterOnHit"
-		},
+		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
 		DefaultAIData = game.DeepCopyTable(game.EnemyData.LightRanged.DefaultAIData),
 	},
 	HeavyRanged = {
-		StunAnimations =
-		{
-			-- Just the default animation, as there is no separate stun animation
-			Default = "HeavyRangedCrystal4"
-		},
+		StunAnimations = { Default = "HeavyRangedCrystal4" },
 		DeathAnimation = "HeavyRangedCrystal4Shatter",
 		DeathFx = "HeavyRangedCrystal4Shatter",
 		Tethers = {
@@ -160,12 +149,15 @@ local enemyModifications = {
 		WeaponOptions = { "HadesSwarmerMelee" }
 	},
 	LightSpawner = {
-		StunAnimations = {
-			Default = "SpawnerAttackAnim",
-		},
+		-- Makes sure we call the modded SpawnerAI function instead of HandleSpawnerBurst
+		IsModdedHadesEnemy = true,
+		StunAnimations = { Default = "SpawnerAttackAnim", },
 		DeathFx = "BreakableDeathAnim",
 		DeathGraphic = "SpawnerDeath",
 		-- DestroyDelay = 0.9,
+		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon" },
+		DefaultAIData = { DeepInheritance = true, },
+		OnDamagedFunctionName = "AggroSpawns",
 	},
 
 	-- These enemies have not been implemented yet
