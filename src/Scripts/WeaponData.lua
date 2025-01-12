@@ -70,10 +70,11 @@ end
 
 local weaponModifications = {
 	HeavyRangedWeapon = {
-		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
 		AIData = {
-			-- Reverts the OutgoingDamageModifier in case it was set to not deal any damage after being hit
-			PostAttackFunctionName = "ModsNikkelMHadesBiomesHeavyRangedCrystalRevertOnHit",
+			ExpireProjectilesOnHitStun = true,
+			ExpireProjectilesOnFreeze = true,
+			ExpireProjectilesOnPolymorph = true,
+			ProjectileName = "HeavyRangedWeapon",
 		},
 	},
 	HadesLightSpawnerSpawnerWeapon = {
@@ -158,7 +159,12 @@ local function applyModificationsAndInheritProjectileData(base, modifications, p
 	game.OverwriteTableKeys(game.ProjectileData, base)
 end
 
-local projectileModifications = {}
+local projectileModifications = {
+	HeavyRangedWeapon = {
+		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
+	}
+}
+
 local projectileKeyReplacements = {
 	CancelVulnerabilitySpark = "CancelHitSpark",
 }

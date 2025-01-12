@@ -108,23 +108,13 @@ function game.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimati
 end
 
 -- Is called whenever HeavyRanged hits the player.
--- The first hit of each burst should not deal any damage, as it is the lock-on hit
 function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimId, triggerArgs)
+	-- The first hit of each burst should not do anything, as it is the lock-on "hit"
 	if triggerArgs.Detonation == 0 then
-		triggerArgs.DamageAmount = 0
+		triggerArgs.Silent = true
 	end
-end
-
--- Is called whenever HeavyRanged is hit.
--- Modified the OutgoingDamageModifiers to have the weapon not deal any more damage
-function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnHit(victim, consolidatedArgs, onHitFunctionArgs, triggerArgs)
-	victim.OutgoingDamageModifiers = { { PlayerMultiplier = 0 } }
-end
-
--- Called after each attack of HeavyRanged.
--- Resets the OutgoingDamageModifiers to the default, in case it was hit during an attack
-function game.ModsNikkelMHadesBiomesHeavyRangedCrystalRevertOnHit(enemy, aiData, CurrentRun)
-	enemy.OutgoingDamageModifiers = {}
+	-- Suppress the damage presentation on the player (blood splatter etc.)
+	triggerArgs.SourceWeapon = "HeavyRangedWeapon"
 end
 
 -- When the enemy's armor is broken, remove the outline from the tethers as well

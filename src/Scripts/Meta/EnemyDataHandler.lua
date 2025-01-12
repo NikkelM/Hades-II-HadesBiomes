@@ -129,14 +129,10 @@ local enemyModifications = {
 			[2] = { Distance = 20 },
 			[3] = { Distance = 20 }
 		},
-		-- Called when the enemy is being hit - Sets the weapon damage to 0 (for this burst - PostAttackFunctionName on the weapon reset it)
-		OnHitFunctionName = "ModsNikkelMHadesBiomesHeavyRangedCrystalOnHit",
-		-- Otherwise the laser sticks around after the enemy dies
-		-- Default is 2 seconds
+		-- Setting DestroyDelay to 0, as otherwise the crystal shine sticks around after the enemy dies
 		DestroyDelay = 0,
 		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
 		-- SpawnObstaclesOnDeath = { ... }
-		-- StopAnimationsOnDeath or StopAnimationsOnPolymorph needed to stop the laser?
 	},
 	-- Swarmer renamed
 	HadesSwarmer = {
