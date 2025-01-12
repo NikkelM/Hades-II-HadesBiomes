@@ -62,6 +62,7 @@ local encounterModifications = {
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
 		PreSpawnEnemies = false,
 		NoFirstWaveStartDelay = true,
+		SpawnOverrides = { UseActivatePresentation = false, },
 	},
 }
 
