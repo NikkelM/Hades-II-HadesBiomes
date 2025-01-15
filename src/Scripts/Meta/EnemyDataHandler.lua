@@ -21,6 +21,20 @@ end
 
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
 local function ApplyModificationsAndInheritEnemyData(base, modifications, replacements, AIDataKeyReplacements)
+	-- Rename keys if the enemy is in EnemyNameMappings
+	for oldKey, newKey in pairs(mod.EnemyNameMappings) do
+		if modifications[oldKey] then
+			modifications[newKey] = modifications[oldKey]
+			modifications[oldKey] = nil
+			mod.DebugPrint("Renamed enemy modification " .. oldKey .. " to " .. newKey .. " in EnemyDataHandler")
+		end
+		if replacements[oldKey] then
+			replacements[newKey] = replacements[oldKey]
+			replacements[oldKey] = nil
+			mod.DebugPrint("Renamed enemy replacement " .. oldKey .. " to " .. newKey .. " in EnemyDataHandler")
+		end
+	end
+
 	-- Apply replacements
 	for enemyName, enemyData in pairs(replacements) do
 		if not base[enemyName] then
@@ -99,7 +113,6 @@ local enemyModifications = {
 		LargeUnitCap = mod.NilValue,
 	},
 	PunchingBagUnit = {
-		-- Comes from the CharacterAnimationsEnemies.sjson entry which has the OnHit_Bink as VideoTexture
 		StunAnimations = { Default = "EnemyWretchGluttonOnHit" },
 	},
 	BaseThug = {
@@ -115,10 +128,14 @@ local enemyModifications = {
 		AIAggroRange = 1250,
 		LargeUnitCap = mod.NilValue,
 	},
-	-- LightRanged renamed
-	HadesLightRanged = {
+	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
+		-- TODO: Maybe take the Hades LightRanged data instead, as LightRanged is a TestEnemy in Hades II
 		DefaultAIData = game.DeepCopyTable(game.EnemyData.LightRanged.DefaultAIData),
+	},
+	ThiefMineLayer = {
+		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
+		DefaultAIData = game.DeepCopyTable(game.EnemyData.ThiefMineLayer.DefaultAIData),
 	},
 	HeavyRanged = {
 		StunAnimations = { Default = "HeavyRangedCrystal4" },
@@ -134,8 +151,7 @@ local enemyModifications = {
 		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
 		-- SpawnObstaclesOnDeath = { ... }
 	},
-	-- Swarmer renamed
-	HadesSwarmer = {
+	Swarmer = {
 		StunAnimations = {
 			Default = "EnemyWretchSwarmerAlert",
 		},
@@ -191,6 +207,18 @@ local enemyModifications = {
 		LargeUnitCap = mod.NilValue,
 	},
 }
+
+local renamedEnemyModifications = {}
+for oldName, newName in pairs(mod.EnemyNameMappings) do
+	if enemyModifications[oldName] then
+		renamedEnemyModifications[newName] = enemyModifications[oldName]
+		enemyModifications[oldName] = nil
+		mod.DebugPrint("Renamed enemy modification: " .. oldName .. " to " .. newName .. " in EnemyDataHandler")
+	end
+end
+for key, value in pairs(renamedEnemyModifications) do
+	enemyModifications[key] = value
+end
 
 -- Some keys were renamed in the DefaultAIData property
 local DefaultAIDataKeyReplacements = {
