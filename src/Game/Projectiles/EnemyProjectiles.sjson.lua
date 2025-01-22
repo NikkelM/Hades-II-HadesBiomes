@@ -40,7 +40,7 @@ local hadesProjectilesModifications = {
 		NumPenetrations = 99999,
 		InflictedDamageSound = "/SFX/BurnDamage",
 		MultiDetonate = true,
-	}
+	},
 }
 
 local projectileKeyReplacements = {

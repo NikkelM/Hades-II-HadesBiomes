@@ -137,6 +137,9 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
 		DefaultAIData = game.DeepCopyTable(game.EnemyData.ThiefMineLayer.DefaultAIData),
 	},
+	ThiefMineLayerElite = {
+		DefaultAIData = game.DeepCopyTable(game.EnemyData.ThiefMineLayer_Elite.DefaultAIData),
+	},
 	HeavyRanged = {
 		StunAnimations = { Default = "HeavyRangedCrystal4" },
 		DeathAnimation = "HeavyRangedCrystal4Shatter",

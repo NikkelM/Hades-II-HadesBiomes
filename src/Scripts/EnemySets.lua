@@ -4,8 +4,8 @@ game.EnemySets.EnemiesBiome1 = {
 	"Swarmer",             -- Wretch Swarmer -- Done -- Duplicate Name!
 	"SwarmerElite",        -- Wretch Swarmer -- Done
 	"LightSpawner",        -- Spawns skulls -- Done
-	-- "ThiefMineLayer",      -- Wretch Thief
-	-- "ThiefMineLayerElite", -- Wretch Thief
+	"ThiefMineLayer",      -- Wretch Thief
+	"ThiefMineLayerElite", -- Wretch Thief
 
 	"PunchingBagUnit",     -- Wretch Glutton -- Done
 	"HeavyMelee",          -- Wretch Thug -- Done
