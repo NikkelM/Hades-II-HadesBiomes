@@ -36,7 +36,12 @@ function mod.SpawnHadesRunStartDoor(source, args)
 	-- Might add a requirement here if we ever put Hades runs behind a requirement/enchantment
 	chaosGate.OnUseEvents = {}
 	chaosGate.OnUsedFunctionName = _PLUGIN.guid .. '.' .. 'StartHadesRun'
-	chaosGate.OnUsedFunctionArgs = { StartingBiome = "Tartarus" }
+	chaosGate.OnUsedFunctionArgs = {
+		StartingBiome = "Tartarus",
+		-- Don't play a voiceline - we do this when entering the Chaos gate
+		-- We have to do it then, as otherwise MelinoeField is being onloaded in PreThingCreation
+		GlobalVoiceLines = "EmptyStartNewHadesRunVoiceLines"
+	}
 
 	game.SetupObstacle(chaosGate)
 	AddToGroup({ Id = chaosGate.ObjectId, Name = "ModsNikkelMHadesBiomes.RunStartDoor" })
@@ -44,11 +49,20 @@ end
 
 function mod.StartHadesRun(source, args)
 	args = args or {}
+	-- Enable MelinoeField voicelines when entering the Chaos gate
+	game.LoadVoiceBanks({ Name = "MelinoeField" })
+
+	-- Replace the voicelines that can play when entering the Chaos gate
+	local originalSecretUnlockedVoiceLines = game.DeepCopyTable(game.HeroVoiceLines.SecretUnlockedVoiceLines)
+	game.HeroVoiceLines.SecretUnlockedVoiceLines = game.GlobalVoiceLines.StartNewHadesRunVoiceLines
 
 	-- Don't show the healing text you normally get when exiting rooms with the Arcana activated
 	local originalConfigDamageOption = game.ConfigOptionCache.ShowDamageNumbers
 	game.ConfigOptionCache.ShowDamageNumbers = false
+
 	game.LeaveRoomSecretDoorPresentation(game.CurrentRun, source)
+
+	game.HeroVoiceLines.SecretUnlockedVoiceLines = originalSecretUnlockedVoiceLines
 	game.ConfigOptionCache.ShowDamageNumbers = originalConfigDamageOption
 
 	game.UseEscapeDoor(source, args)

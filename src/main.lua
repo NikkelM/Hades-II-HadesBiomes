@@ -138,6 +138,8 @@ local function on_ready()
 		import "Scripts/Functions/HeavyRanged.lua"
 
 		-- "Normal" code changes
+		import "Scripts/AudioData.lua"
+
 		import "Scripts/DeathLoopData.lua"
 		import "Scripts/WeaponSets.lua"
 
