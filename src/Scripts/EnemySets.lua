@@ -1,24 +1,24 @@
 -- Adds enemy sets for the new regions
 
 game.EnemySets.EnemiesBiome1 = {
-	"Swarmer",             -- Wretch Swarmer -- Done -- Duplicate Name!
-	"SwarmerElite",        -- Wretch Swarmer -- Done
-	"LightSpawner",        -- Spawns skulls -- Done
+	"Swarmer",             -- Wretch Swarmer -- Duplicate Name!
+	"SwarmerElite",        -- Wretch Swarmer
+	"LightSpawner",        -- Spawns skulls
 	"ThiefMineLayer",      -- Wretch Thief
 	"ThiefMineLayerElite", -- Wretch Thief
 
-	"PunchingBagUnit",     -- Wretch Glutton -- Done
-	"HeavyMelee",          -- Wretch Thug -- Done
-	"DisembodiedHand",     -- Wringer -- Done
-	"DisembodiedHandElite",-- Wringer Elite -- Done through Wringer
+	"PunchingBagUnit",     -- Wretch Glutton
+	"HeavyMelee",          -- Wretch Thug
+	"DisembodiedHand",     -- Wringer
+	"DisembodiedHandElite",-- Wringer Elite
 
-	"LightRanged",         -- Wretch Caster -- Done -- Duplicate name!
-	"HeavyRanged",         -- Crystal -- Done
+	"LightRanged",         -- Wretch Caster -- Duplicate name!
+	"HeavyRanged",         -- Crystal
 
-	"HeavyMeleeElite",     -- Wretch Thug Elite -- Done through HeavyMelee
-	"LightRangedElite",    -- Wretch Caster Elite -- Done through LightRanged
-	"PunchingBagUnitElite",-- Wretch Glutton Elite -- Done through PunchingBagUnit
-	"HeavyRangedElite",    -- Crystal Elite -- Done through HeavyRanged
+	"HeavyMeleeElite",     -- Wretch Thug Elite
+	"LightRangedElite",    -- Wretch Caster Elite
+	"PunchingBagUnitElite",-- Wretch Glutton Elite
+	"HeavyRangedElite",    -- Crystal Elite
 }
 
 -- Rename duplicate enemy names using mod.EnemyNameMappings
