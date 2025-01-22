@@ -12,6 +12,8 @@ mod.EnemyNameMappings = {
 	-- SpreadShotUnit = "HadesSpreadShotUnit",
 
 	Swarmer = "HadesSwarmer",
+
+	ThiefMineLayer = "HadesThiefMineLayer",
 }
 
 mod.EnemyProjectileMappings = {

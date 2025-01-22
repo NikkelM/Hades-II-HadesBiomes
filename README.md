@@ -68,8 +68,8 @@ At the moment, content is limited to encounters and enemies.
 | Numbskull              | Swarmer              | Implemented     |
 | Dire Numbskull         | SwarmerElite         | Implemented     |
 | Skullomat              | LightSpawner         | Implemented     |
-| Wretched Pest          | ThiefMineLayer       | Not implemented |
-| Dire Pest (Elite)      | ThiefMineLayerElite  | Not implemented |
+| Wretched Pest          | ThiefMineLayer       | Implemented     |
+| Dire Pest (Elite)      | ThiefMineLayerElite  | Implemented     |
 | **Asphodel**           |                      | Not implemented |
 | **Elysium**            |                      | Not implemented |
 | **Styx**               |                      | Not implemented |

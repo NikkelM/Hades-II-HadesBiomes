@@ -68,6 +68,7 @@ for oldName, newName in pairs(mod.EnemyWeaponMappings) do
 	mod.UpdateField(hadesWeaponData, oldName, newName, { "InheritFrom" }, "WeaponData")
 end
 
+-- Modify or add weapons
 local weaponModifications = {
 	HeavyRangedWeapon = {
 		AIData = {
@@ -98,8 +99,7 @@ local weaponModifications = {
 			SpawnsSkipActivatePresentation = true,
 		},
 	},
-	-- From Hades II SwarmerMelee
-	HadesSwarmerMelee = {
+	SwarmerMelee = {
 		AIData = {
 			DeepInheritance = true,
 			ProjectileName = "HadesSwarmerMelee",
@@ -123,6 +123,18 @@ local weaponModifications = {
 		},
 	},
 }
+
+local renamedWeaponModifications = {}
+for oldName, newName in pairs(mod.EnemyWeaponMappings) do
+	if weaponModifications[oldName] then
+		renamedWeaponModifications[newName] = weaponModifications[oldName]
+		weaponModifications[oldName] = nil
+		mod.DebugPrint("Renamed weapon modification: " .. oldName .. " to " .. newName .. " in WeaponData")
+	end
+end
+for key, value in pairs(renamedWeaponModifications) do
+	weaponModifications[key] = value
+end
 
 local AIDataKeyReplacements = {
 	AIAttackDistance = "AttackDistance",
