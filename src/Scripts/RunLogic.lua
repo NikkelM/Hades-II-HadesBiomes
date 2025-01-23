@@ -13,3 +13,13 @@ end
 function game.RoomEntranceOpening(currentRun, currentRoom, args)
 	game.RoomEntranceMaterialize(currentRun, currentRoom, args)
 end
+
+-- If the door has separate locked animations for Meta or Run rewards, honour it
+modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle, replaceOnlyNull, args)
+	base(obstacle, replaceOnlyNull, args)
+
+	if obstacle.Name == "TartarusDoor03b" then
+		game.CurrentRun.ModsNikkelMHadesBiomesExitDoors = game.CurrentRun.ModsNikkelMHadesBiomesExitDoors or {}
+		table.insert(game.CurrentRun.ModsNikkelMHadesBiomesExitDoors, obstacle)
+	end
+end)

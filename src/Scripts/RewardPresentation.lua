@@ -17,6 +17,10 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		local doorIconIsometricShiftX = -6
 		local doorIconIsometricShiftZ = -3
 
+		if chosenRewardType == "MaxHealthDrop" then
+			doorIconOffsetY = 40
+		end
+
 		if IsHorizontallyFlipped({ Id = exitDoor.ObjectId }) then
 			doorIconOffsetX = doorIconOffsetX * -1
 			doorIconIsometricShiftX = doorIconIsometricShiftX * -1
