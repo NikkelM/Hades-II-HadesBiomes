@@ -3,6 +3,9 @@
 local roomSetDataTartarus = mod.LoadHadesRoomData("RoomDataTartarus.lua").Tartarus
 local roomModifications = {
 	BaseTartarus = {
+		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes" },
+
 		-- TODO: Localization?
 		SaveProfileLocationText = "TARTARUS (Nightmare)", -- roomSetDataTartarus.BaseTartarus.LocationText,
 

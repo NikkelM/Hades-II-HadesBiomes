@@ -1,37 +1,49 @@
 function mod.FirstTimeSetup()
 	mod.DebugPrint("Installing the mod...")
 
+	-- Get and copy the .bank files
+	mod.DebugPrint("Copying .bank files...")
+	for src, dest in pairs(AudioFileMappings) do
+		local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Audio\\FMOD\\Build\\Desktop\\" .. src)
+		local destPath = rom.path.combine(rom.paths.Content(), "Audio\\Desktop\\" .. dest)
+
+		CopyFile(srcPath, destPath)
+		mod.DebugPrint("Copied Hades\\Content\\Audio\\FMOD\\Build\\Desktop\\" ..
+			src .. " to Hades II\\Content\\Audio\\Desktop\\" .. dest)
+	end
+
 	-- Get and copy the .pkg files for the different biomes
 	mod.DebugPrint("Copying .pkg files...")
 
 	for src, dest in pairs(PackageFileMappings) do
-		local srcPath = rom.path.combine(mod.hadesGameFolder, src)
-		local destPath = rom.path.combine(rom.paths.Content(), dest)
+		local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Win\\Packages\\" .. src)
+		local destPath = rom.path.combine(rom.paths.Content(), "Packages\\" .. dest)
 
 		CopyFile(srcPath, destPath)
-		mod.DebugPrint("Copied Hades\\" .. src .. " to Hades II\\Content\\" .. dest)
+		mod.DebugPrint("Copied Hades\\Content\\Win\\Packages\\" .. src .. " to Hades II\\Content\\Packages\\" .. dest)
 	end
 
 	-- Get and copy the .bik and .bik_atlas files
 	mod.DebugPrint("Copying .bik files...")
 
 	for src, dest in pairs(BikFileMappings) do
-		local srcPath = rom.path.combine(mod.hadesGameFolder, src)
-		local destPath = rom.path.combine(rom.paths.Content(), dest)
+		local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Movies\\" .. src)
+		local destPath = rom.path.combine(rom.paths.Content(), "Movies\\" .. dest)
 
 		CopyFile(srcPath, destPath)
-		mod.DebugPrint("Copied Hades\\" .. src .. " to Hades II\\Content\\" .. dest)
+		mod.DebugPrint("Copied Hades\\Content\\Movies\\" .. src .. " to Hades II\\Content\\Movies\\" .. dest)
 	end
 
 	-- Get and copy the .sjson files
 	mod.DebugPrint("Copying .sjson files...")
 
 	for src, dest in pairs(SjsonFileMappings) do
-		local srcPath = rom.path.combine(mod.hadesGameFolder, src)
-		local destPath = rom.path.combine(rom.paths.Content(), dest)
+		local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\" .. src)
+		local destPath = rom.path.combine(rom.paths.Content(), "Game\\" .. dest)
 
 		CopyFile(srcPath, destPath)
-		mod.DebugPrint("Copied Hades\\" .. src .. " to Hades II\\Content\\" .. dest)
+		mod.DebugPrint("Copied Hades\\Content\\Game\\" ..
+			src .. " to Hades II\\Content\\Game\\" .. dest)
 	end
 
 	-- Copy .map_text files
@@ -100,16 +112,43 @@ end
 
 -- Ensure that required files exist, i.e. the first time setup has been successfully run
 function mod.CheckRequiredFiles()
-	-- Ensure pkg files exist
-	for src, dest in pairs(PackageFileMappings) do
-		local destPath = rom.paths.Content() .. "\\" .. dest
+	-- Ensure .bank files exist
+	for src, dest in pairs(AudioFileMappings) do
+		local destPath = rom.paths.Content() .. "\\Audio\\Desktop\\" .. dest
 		if not io.open(destPath, "r") then
 			mod.DebugPrint("Missing file: " .. destPath)
 			return false
 		end
 	end
 
-	-- Ensure map_text files exist
+	-- Ensure .pkg files exist
+	for src, dest in pairs(PackageFileMappings) do
+		local destPath = rom.paths.Content() .. "\\Packages\\" .. dest
+		if not io.open(destPath, "r") then
+			mod.DebugPrint("Missing file: " .. destPath)
+			return false
+		end
+	end
+
+	-- Ensure .bik files exist
+	for src, dest in pairs(BikFileMappings) do
+		local destPath = rom.paths.Content() .. "\\Movies\\" .. dest
+		if not io.open(destPath, "r") then
+			mod.DebugPrint("Missing file: " .. destPath)
+			return false
+		end
+	end
+
+	-- Ensure .sjson files exist
+	for src, dest in pairs(SjsonFileMappings) do
+		local destPath = rom.paths.Content() .. "\\Game\\" .. dest
+		if not io.open(destPath, "r") then
+			mod.DebugPrint("Missing file: " .. destPath)
+			return false
+		end
+	end
+
+	-- Ensure .map_text files exist
 	for _, name in ipairs(MapFileNames) do
 		local mapTextDest = "Maps\\" .. name .. ".map_text"
 		local destPath = rom.paths.Content() .. "\\" .. mapTextDest
@@ -119,7 +158,7 @@ function mod.CheckRequiredFiles()
 		end
 	end
 
-	-- Ensure thing_bin files exist
+	-- Ensure .thing_bin files exist
 	for _, name in ipairs(MapFileNames) do
 		local thingBinDest = "Maps\\bin\\" .. name .. ".thing_bin"
 		local destPath = rom.paths.Content() .. "\\" .. thingBinDest

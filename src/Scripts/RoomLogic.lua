@@ -13,3 +13,14 @@ modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
 		run.ModsNikkelMHadesBiomesExitDoors = {}
 	end
 end)
+
+-- Wrap to also load modded resources, such as additional audio banks
+modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
+	base(currentRoom)
+
+	if currentRoom.LoadModdedAudioBanks ~= nil then
+		for _, bank in ipairs(currentRoom.LoadModdedAudioBanks) do
+			rom.audio.load_bank(rom.path.combine(rom.paths.Content(), "Audio\\Desktop\\" .. bank .. ".bank"))
+		end
+	end
+end)

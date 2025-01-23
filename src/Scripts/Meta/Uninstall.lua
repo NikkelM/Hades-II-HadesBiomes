@@ -1,9 +1,21 @@
 function mod.Uninstall()
 	mod.DebugPrint("Uninstalling mod - removing files added by the mod")
 
+	mod.DebugPrint("Removing .bank files...")
+	for src, dest in pairs(AudioFileMappings) do
+		local destPath = rom.path.combine(rom.paths.Content(), "Audio\\Desktop\\" .. dest)
+		if rom.path.exists(destPath) then
+			mod.DebugPrint("Removing file: " .. destPath)
+			local success, err = os.remove(destPath)
+			if not success then
+				mod.DebugPrint("Error removing file: " .. err)
+			end
+		end
+	end
+
 	mod.DebugPrint("Removing .pkg files...")
 	for src, dest in pairs(PackageFileMappings) do
-		local destPath = rom.path.combine(rom.paths.Content(), dest)
+		local destPath = rom.path.combine(rom.paths.Content(), "Packages\\" .. dest)
 		if rom.path.exists(destPath) then
 			mod.DebugPrint("Removing file: " .. destPath)
 			local success, err = os.remove(destPath)
@@ -15,7 +27,7 @@ function mod.Uninstall()
 
 	mod.DebugPrint("Removing .bik files...")
 	for src, dest in pairs(BikFileMappings) do
-		local destPath = rom.path.combine(rom.paths.Content(), dest)
+		local destPath = rom.path.combine(rom.paths.Content(), "Movies\\" .. dest)
 		if rom.path.exists(destPath) then
 			mod.DebugPrint("Removing file: " .. destPath)
 			local success, err = os.remove(destPath)
@@ -27,7 +39,7 @@ function mod.Uninstall()
 
 	mod.DebugPrint("Removing .sjson files...")
 	for src, dest in pairs(SjsonFileMappings) do
-		local destPath = rom.path.combine(rom.paths.Content(), dest)
+		local destPath = rom.path.combine(rom.paths.Content(), "Game\\" .. dest)
 		if rom.path.exists(destPath) then
 			mod.DebugPrint("Removing file: " .. destPath)
 			local success, err = os.remove(destPath)
