@@ -194,6 +194,7 @@ function CopyHadesFxAnimations()
 	mod.RenameSjsonEntries(hadesFxTable.Animations, mod.FxAnimationMappings, "Name", "Fx.sjson")
 	-- Rename attached animations/Fx graphics
 	for oldName, newName in pairs(mod.FxAnimationMappings) do
+		mod.UpdateField(hadesFxTable.Animations, oldName, newName, { "InheritFrom" }, "Fx.sjson")
 		mod.UpdateField(hadesFxTable.Animations, oldName, newName, { "ChainTo" }, "Fx.sjson")
 	end
 

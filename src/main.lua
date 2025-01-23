@@ -132,16 +132,17 @@ local function on_ready()
 		import "Game/MapGroups.sjson.lua"
 
 		-- Function mappings between Hades and Hades II
-		import "Scripts/Functions/RewardPresentation.lua"
-		import "Scripts/Functions/RunLogic.lua"
-		import "Scripts/Functions/Traps.lua"
-		import "Scripts/Functions/LightSpawner.lua"
-		import "Scripts/Functions/HeavyRanged.lua"
+		import "Scripts/FunctionMappings/RunLogic.lua"
+		import "Scripts/FunctionMappings/Traps.lua"
+		import "Scripts/FunctionMappings/LightSpawner.lua"
+		import "Scripts/FunctionMappings/HeavyRanged.lua"
 
 		-- "Normal" code changes
 		import "Scripts/ObstacleData.lua"
 		import "Scripts/AudioData.lua"
 
+		import "Scripts/RewardPresentation.lua"
+		import "Scripts/RoomPresentation.lua"
 		import "Scripts/DeathLoopData.lua"
 		import "Scripts/WeaponSets.lua"
 

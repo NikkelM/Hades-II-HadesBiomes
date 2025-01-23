@@ -40,4 +40,8 @@ mod.EnemyAnimationMappings = {
 mod.FxAnimationMappings = {
 	SpikeTrapPressedIn = "HadesSpikeTrapPressedIn",
 	SpikeTrapPressedOut = "HadesSpikeTrapPressedOut",
+
+	DoorLocked = "HadesDoorLocked",
+	DoorUnlocked = "HadesDoorUnlocked",
+
 }
