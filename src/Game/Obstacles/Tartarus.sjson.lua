@@ -21,7 +21,46 @@ local hadesTwoObstacleModifications = {
 	TartarusWallBrick11 = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
+	TartarusPillarBase03 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
 	TartarusPillarBase04 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusPillarBase08b = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusPillarBase12 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusPillarBase13 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusArchitrave01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusCornice01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusCornice01A = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusCornice03 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusCornice04 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusCornice04b = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusCornice05 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusFencePost03 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusGable04 = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
 }
