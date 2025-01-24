@@ -221,7 +221,7 @@ MapFileNames = {
 -- .map_text files that should be copied from the plugin_data folder instead of the Hades installation
 MapTextFileNames = {
 	-- A new Terrain group was added to resolve flickering tiles next to where the player spawns
-	RoomOpening = true
+	RoomOpening = true,
 }
 
 -- Languages supported by Hades
