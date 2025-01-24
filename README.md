@@ -40,10 +40,10 @@ At the moment, content is limited to encounters and enemies.
 | **Tartarus**        |                                         |                 |
 | Default combat      | GeneratedTartarus                       | Implemented     |
 | Fountain room       | A_Reprieve01                            | Implemented     |
+| Shops               | A_Shop01/A_PreBoss01                    | Implemented     |
 | Survival challenge  | SurvivalTartarus                        | Not implemented |
 | Thanatos encounter  | ThanatosTartarus                        | Not implemented |
 | Miniboss encounters | A_MiniBoss0x                            | Not implemented |
-| Shops               | A_Shop01/A_PreBoss01                    | Not implemented |
 | Bosses              | A_Boss01/A_Boss02/A_Boss03/A_PostBoss01 | Not implemented |
 | **Asphodel**        |                                         | Not implemented |
 | **Elysium**         |                                         | Not implemented |
@@ -79,7 +79,6 @@ At the moment, content is limited to encounters and enemies.
 
 In no particular order:
 
-- Sound effects/original Hades enemy sounds
 - (Mini) Boss encounters
 - Additional biomes
 - Light story elements
