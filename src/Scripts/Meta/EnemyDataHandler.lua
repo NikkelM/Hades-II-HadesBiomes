@@ -111,34 +111,76 @@ local enemyReplacements = {
 local enemyModifications = {
 	BaseGlutton = {
 		LargeUnitCap = mod.NilValue,
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInWretchGluttonContainer",
 	},
 	PunchingBagUnit = {
 		StunAnimations = { Default = "EnemyWretchGluttonOnHit" },
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInWretchGluttonContainer",
 	},
 	BaseThug = {
 		LargeUnitCap = mod.NilValue,
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInWretchThugContainer",
 	},
 	HeavyMelee = {
 		StunAnimations = { Default = "EnemyWretchThugOnHit" },
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInWretchThugContainer",
 	},
 	DisembodiedHand = {
 		StunAnimations = { Default = "EnemyWringerOnHit" },
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInDisembodiedHandContainer",
 	},
 	BaseCaster = {
 		AIAggroRange = 1250,
 		LargeUnitCap = mod.NilValue,
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInWretchCasterContainer",
 	},
 	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
 		-- TODO: Maybe take the Hades LightRanged data instead, as LightRanged is a TestEnemy in Hades II
 		DefaultAIData = game.DeepCopyTable(game.EnemyData.LightRanged.DefaultAIData),
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInWretchCasterContainer",
+	},
+	BaseThief = {
+		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
+		ActivateFx = "EnemySummonRuneSmall",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInThiefMineLayerContainer",
 	},
 	ThiefMineLayer = {
-		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
 		DefaultAIData = game.DeepCopyTable(game.EnemyData.ThiefMineLayer.DefaultAIData),
+		ActivateFx = "EnemySummonRuneSmall",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInThiefMineLayerContainer",
 	},
 	ThiefMineLayerElite = {
 		DefaultAIData = game.DeepCopyTable(game.EnemyData.ThiefMineLayer_Elite.DefaultAIData),
+		ActivateFx = "EnemySummonRuneSmall",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInThiefMineLayerContainer",
 	},
 	HeavyRanged = {
 		StunAnimations = { Default = "HeavyRangedCrystal4" },
@@ -153,6 +195,10 @@ local enemyModifications = {
 		DestroyDelay = 0,
 		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
 		-- SpawnObstaclesOnDeath = { ... }
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
 	},
 	Swarmer = {
 		StunAnimations = {
@@ -161,7 +207,11 @@ local enemyModifications = {
 		DeathAnimation = "EnemyWretchSwarmerDeathVFX",
 		DeathFx = "EnemyDeathFx_Small",
 		DestroyDelay = 0.9,
-		WeaponOptions = { "HadesSwarmerMelee" }
+		WeaponOptions = { "HadesSwarmerMelee" },
+		ActivateFx = "EnemySummonRuneSmall",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInWretchSwarmerContainer",
 	},
 	LightSpawner = {
 		-- Makes sure we call the modded SpawnerAI function instead of HandleSpawnerBurst
@@ -173,6 +223,10 @@ local enemyModifications = {
 		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon" },
 		DefaultAIData = { DeepInheritance = true, },
 		OnDamagedFunctionName = "AggroSpawns",
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
 	},
 
 	-- These enemies have not been implemented yet
