@@ -17,7 +17,8 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		local doorIconIsometricShiftX = -6
 		local doorIconIsometricShiftZ = -3
 
-		if chosenRewardType == "MaxHealthDrop" then
+		-- Adjusting the offset of some items
+		if chosenRewardType == "MaxHealthDrop" or chosenRewardType == "MaxManaDrop" then
 			doorIconOffsetY = 40
 		end
 

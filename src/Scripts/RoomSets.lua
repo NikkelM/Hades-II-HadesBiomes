@@ -20,8 +20,8 @@ local newRoomSets = {
 		-- "A_MiniBoss04",
 
 		-- TODO: Some error with a spawn being nil
-		-- "A_PreBoss01",
-		-- "A_Shop01",
+		"A_PreBoss01",
+		"A_Shop01",
 
 		-- TODO: LegalEncounters = { "Story_Sisyphus_01" } doesn't exist
 		-- "A_Story01",

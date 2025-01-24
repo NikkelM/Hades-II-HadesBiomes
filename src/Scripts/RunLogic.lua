@@ -9,11 +9,6 @@ function game.DisplayLocationText(source, args)
 	game.DisplayInfoBanner(source, args)
 end
 
--- Called when entering the first room of the run
-function game.RoomEntranceOpening(currentRun, currentRoom, args)
-	game.RoomEntranceMaterialize(currentRun, currentRoom, args)
-end
-
 -- If the door has separate locked animations for Meta or Run rewards, honour it
 modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle, replaceOnlyNull, args)
 	base(obstacle, replaceOnlyNull, args)
