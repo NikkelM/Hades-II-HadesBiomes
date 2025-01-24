@@ -162,13 +162,13 @@ local enemyModifications = {
 		ActivateAnimation = "EnemyActivationFadeInWretchCasterContainer",
 	},
 	BaseThief = {
-		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
 		ActivateFx = "EnemySummonRuneSmall",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInThiefMineLayerContainer",
 	},
 	ThiefMineLayer = {
+		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
 		DefaultAIData = game.DeepCopyTable(game.EnemyData.ThiefMineLayer.DefaultAIData),
 		ActivateFx = "EnemySummonRuneSmall",
 		ActivateFx2 = "nil",
