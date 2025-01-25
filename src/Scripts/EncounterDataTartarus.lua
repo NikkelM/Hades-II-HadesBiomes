@@ -56,9 +56,11 @@ local encounterReplacements = {
 }
 
 local encounterModifications = {
+	-- Generic
 	ModsNikkelMHadesBiomesGenerated = {
 		-- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
-		LoadPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes" },
+		-- Asphodel for BloodlessGrenadier_Elite in MiniBossGrenadier
+		LoadPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "Asphodel"  },
 		BlockTypesAcrossWaves = true,
 		UnthreadedEvents = EncounterSets.EncounterEventsDefault,
 		CountsForRoomEncounterDepth = true,
@@ -69,6 +71,20 @@ local encounterModifications = {
 		NoFirstWaveStartDelay = true,
 		SpawnOverrides = { UseActivatePresentation = false, },
 	},
+
+	-- Minibosses
+	MiniBossGrenadier = {
+		ManualWaveTemplates = {
+			[1] = {
+				Spawns = {
+					{
+						-- TODO: Using this enemy plays the Hades II intro animation/Fx -- need to suppress
+						Name = "BloodlessGrenadier_Elite"
+					}
+				}
+			}
+		}
+	}
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataTartarus, encounterModifications, encounterReplacements)

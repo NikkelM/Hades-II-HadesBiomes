@@ -70,7 +70,7 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 				table.insert(nonDuplicateItems, entryToTake)
 				propertyLookup[entryToTake[property]] = #tableToOverwrite
 			else
-				mod.DebugPrint("Skipping duplicate key: " .. entryToTake[property])
+				mod.DebugPrint("Skipped duplicate key: " .. entryToTake[property])
 			end
 		end
 	else
@@ -84,7 +84,7 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 				end
 				nonDuplicateItems[key] = value
 			else
-				mod.DebugPrint("Skipping duplicate key: " .. key)
+				mod.DebugPrint("Skipped duplicate key: " .. key)
 			end
 		end
 	end
@@ -104,7 +104,7 @@ function mod.RenameKeys(base, replacements, baseName, propertyPath)
 			if type(value) == "table" then
 				mod.RenameKeys(base[key], value, baseName, currentPath)
 			else
-				mod.DebugPrint("Renaming key " .. currentPath .. " to " .. value .. " for " .. baseName)
+				mod.DebugPrint("Renamed key " .. currentPath .. " to " .. value .. " for " .. baseName)
 				base[value] = base[key]
 				base[key] = nil
 			end

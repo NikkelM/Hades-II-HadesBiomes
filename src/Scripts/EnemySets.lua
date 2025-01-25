@@ -37,8 +37,9 @@ game.EnemySets.EnemiesBiome1_EliteChallenge = {
 }
 
 game.EnemySets.EnemiesBiome1MiniBoss = {
-	-- TODO: This is a dummy enemy
-	"PunchingBagUnitElite"
+	"BloodlessGrenadier_Elite",
+	"BloodlessSelfDestruct_Elite",
+	"BloodlessPitcher_Elite"
 	-- "BloodlessGrenadierElite",
 	-- "BloodlessPitcherElite",
 	-- "BloodlessSelfDestructElite",
