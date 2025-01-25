@@ -2,6 +2,8 @@
 
 -- Loads RoomData from a file in Hades
 function mod.LoadHadesRoomData(fileName)
+	local originalRoomEventData = game.DeepCopyTable(game.RoomEventData)
+	local originalRoomSetData = game.DeepCopyTable(game.RoomSetData)
 	local originalRoomData = game.DeepCopyTable(game.RoomData)
 	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
 	local chunk, err = loadfile(pathName)
@@ -10,6 +12,8 @@ function mod.LoadHadesRoomData(fileName)
 		-- No worries if this is marked as undefined, it comes from the loaded file
 		---@diagnostic disable-next-line: undefined-global
 		local hadesRoomData = RoomSetData
+		game.RoomEventData = originalRoomEventData
+		game.RoomSetData = originalRoomSetData
 		game.RoomData = originalRoomData
 		return hadesRoomData
 	else
@@ -17,8 +21,30 @@ function mod.LoadHadesRoomData(fileName)
 	end
 end
 
+local roomKeyReplacements = {
+	BoonRaritiesOverride = {
+		LegendaryChance = "Legendary",
+		EpicChance = "Epic",
+		RareChance = "Rare",
+	}
+}
+
 -- Applies modifications to base room objects, and then adds the new room objects to the game
-function mod.ApplyModificationsAndInheritRoomData(base, modifications)
+function mod.ApplyModificationsAndInheritRoomData(base, modifications, replacements, roomSetName)
+	-- Rename keys
+	for roomName, roomData in pairs(base) do
+		mod.RenameKeys(roomData, roomKeyReplacements, roomName)
+	end
+
+	-- Apply replacements
+	for roomName, roomData in pairs(replacements) do
+		mod.PrintTable(replacements)
+		if not base[roomName] then
+			base[roomName] = {}
+		end
+		mod.ApplyModifications(base[roomName], roomData, true)
+	end
+
 	-- Apply modifications
 	for roomName, roomData in pairs(modifications) do
 		if not base[roomName] then
@@ -27,8 +53,16 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications)
 		mod.ApplyModifications(base[roomName], roomData)
 	end
 
-	-- Process data inheritance and add the new data to the game's global
+	-- Process data inheritance and add the new data to the game's globals
+	-- Once for the RoomSetData of the current set, and once to the global RoomData containing all rooms
+	if game.RoomSetData[roomSetName] == nil then
+		game.RoomSetData[roomSetName] = base
+	else
+		mod.AddTableKeysSkipDupes(game.RoomSetData[roomSetName], base, nil)
+	end
+
 	base = mod.AddTableKeysSkipDupes(game.RoomData, base, nil)
+
 	for roomName, roomData in pairs(base) do
 		-- Add a name key
 		roomData.Name = roomName

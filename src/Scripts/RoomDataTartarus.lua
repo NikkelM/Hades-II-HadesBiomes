@@ -1,7 +1,15 @@
 -- Adds RoomData for Tartarus from Hades to Hades II
 
 local roomSetDataTartarus = mod.LoadHadesRoomData("RoomDataTartarus.lua").Tartarus
+
+local roomReplacements = {
+	BaseTartarus = {
+		SecretDoorRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.SecretDoorRequirements),
+	},
+}
+
 local roomModifications = {
+	-- Generic
 	BaseTartarus = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes" },
@@ -62,6 +70,12 @@ local roomModifications = {
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 	},
+
+	-- Minibosses
+	A_MiniBoss01 = {
+		-- TODO: This is misaligned, done in EventPresentation Line 3921 onwards
+		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+	}
 }
 
-mod.ApplyModificationsAndInheritRoomData(roomSetDataTartarus, roomModifications)
+mod.ApplyModificationsAndInheritRoomData(roomSetDataTartarus, roomModifications, roomReplacements, "Tartarus")

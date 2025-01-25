@@ -20,7 +20,7 @@ end
 
 
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
-local function ApplyModificationsAndInheritEnemyData(base, modifications, replacements, AIDataKeyReplacements)
+local function ApplyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
 	-- Rename keys if the enemy is in EnemyNameMappings
 	for oldKey, newKey in pairs(mod.EnemyNameMappings) do
 		if modifications[oldKey] then
@@ -56,21 +56,22 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 
 	for enemyName, enemyData in pairs(base) do
 		-- Replace keys that were renamed between the games
-		if enemyData.DefaultAIData then
-			for oldKey, newKey in pairs(AIDataKeyReplacements) do
-				if enemyData.DefaultAIData[oldKey] then
-					enemyData.DefaultAIData[newKey] = enemyData.DefaultAIData[oldKey]
-					enemyData.DefaultAIData[oldKey] = nil
-				end
-			end
+		mod.RenameKeys(enemyData, enemyKeyReplacements, enemyName)
+
+		-- Increase health and armour for increased difficulty
+		if enemyData.MaxHealth then
+			enemyData.MaxHealth = enemyData.MaxHealth * 1.25
+		end
+		if enemyData.HealthBuffer then
+			enemyData.HealthBuffer = enemyData.HealthBuffer * 1.25
 		end
 
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
 
 		base[enemyName] = enemyData
 	end
-	-- Don't skip duplicates, since we have already added all the data before
-	-- AddTableKeysSkipDupes also removed duplicates, so overwriting here will only overwrite keys we added ourselves
+	-- Don't skip duplicates, since we have already added all the new data before
+	-- AddTableKeysSkipDupes also removed duplicates from base, so overwriting here will only overwrite keys we added ourselves
 	game.OverwriteTableKeys(game.EnemyData, base)
 end
 
@@ -100,15 +101,19 @@ end
 -- This is true for most traps
 mod.ModifyEnemyTrapData(enemyData)
 
+-- Replaces the key with the new value instead of modifying
 local enemyReplacements = {
 	BaseSpawner = {
 		-- SpawnerAI doesn't exist, spawn logic is in the weapon
 		AIOptions = { "AttackerAI", },
 	},
+	-- Copy paste the enemy in Hades II, but replace some animations and effects in modifications
+	BloodlessGrenadierElite = game.DeepCopyTable(game.EnemyData.BloodlessGrenadier_Elite),
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
 local enemyModifications = {
+	-- TARTARUS
 	BaseGlutton = {
 		LargeUnitCap = mod.NilValue,
 		ActivateFx = "EnemySummonRune",
@@ -229,6 +234,13 @@ local enemyModifications = {
 		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
 	},
 
+	-- ASPHODEL
+	BloodlessGrenadierElite = {
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+	},
+
 	-- These enemies have not been implemented yet
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
@@ -278,20 +290,22 @@ for key, value in pairs(renamedEnemyModifications) do
 end
 
 -- Some keys were renamed in the DefaultAIData property
-local DefaultAIDataKeyReplacements = {
-	AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
-	AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
-	AILineOfSightBuffer = "LoSBuffer",
-	AIRequireUnitLineOfSight = "RequireUnitLoS",
-	AIRequireProjectileLineOfSight = "RequireProjectileLoS",
-	AILineOfSighEndBuffer = "LoSEndBuffer",
-	AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
-	AITrackTargetDuringCharge = "TrackTargetDuringCharge",
-	AIAttackDistance = "AttackDistance",
-	AIFireTicksMin = "FireTicksMin",
-	AIFireTicksMax = "FireTicksMax",
-	AIFireTicksCooldown = "FireInterval",
-	StandOffTime = "SurroundRefreshInterval",
+local enemyKeyReplacements = {
+	DefaultAIData = {
+		AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
+		AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
+		AILineOfSightBuffer = "LoSBuffer",
+		AIRequireUnitLineOfSight = "RequireUnitLoS",
+		AIRequireProjectileLineOfSight = "RequireProjectileLoS",
+		AILineOfSighEndBuffer = "LoSEndBuffer",
+		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
+		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
+		AIAttackDistance = "AttackDistance",
+		AIFireTicksMin = "FireTicksMin",
+		AIFireTicksMax = "FireTicksMax",
+		AIFireTicksCooldown = "FireInterval",
+		StandOffTime = "SurroundRefreshInterval",
+	},
 }
 
-ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplacements, DefaultAIDataKeyReplacements)
+ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)

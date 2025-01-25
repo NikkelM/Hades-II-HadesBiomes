@@ -2,10 +2,15 @@
 
 local encounterData = mod.LoadHadesEncounterData("EncounterData.lua")
 local encounterDataTartarus = {
+	-- Generic encounters
 	ModsNikkelMHadesBiomesGenerated = encounterData.Generated,
 	GeneratedTartarus = game.DeepCopyTable(game.EncounterData.GeneratedF),
 	OpeningGenerated = encounterData.OpeningGenerated,
 
+	-- Minibosses
+	MiniBossGrenadier = encounterData.MiniBossGrenadier,
+
+	-- Challenge encounters within a room
 	TimeChallengeTartarus = encounterData.TimeChallengeTartarus,
 	PerfectClearChallengeTartarus = game.DeepCopyTable(encounterData.PerfectClearChallengeF),
 	EliteChallengeTartarus = game.DeepCopyTable(encounterData.EliteChallengeF),
@@ -36,8 +41,8 @@ local encounterReplacements = {
 	},
 	GeneratedTartarus = {
 		EnemySet = EnemySets.EnemiesBiome1,
-		-- Restoring the original from Hades, down from 55 in Hades II GeneratedF
-		BaseDifficulty = 30,
+		-- The original from Hades is 30, Hades II GeneratedF is 55
+		BaseDifficulty = 50,
 	},
 
 	PerfectClearChallengeTartarus = {
@@ -51,6 +56,7 @@ local encounterReplacements = {
 }
 
 local encounterModifications = {
+	-- Generic
 	ModsNikkelMHadesBiomesGenerated = {
 		-- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
 		LoadPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes" },
@@ -59,10 +65,17 @@ local encounterModifications = {
 		CountsForRoomEncounterDepth = true,
 	},
 	OpeningGenerated = {
+		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
+		DifficultyModifier = -50,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
 		PreSpawnEnemies = false,
 		NoFirstWaveStartDelay = true,
 		SpawnOverrides = { UseActivatePresentation = false, },
+	},
+
+	-- Minibosses
+	MiniBossGrenadier = {
+		LoadPackages = { "Asphodel" },
 	},
 }
 

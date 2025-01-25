@@ -44,7 +44,7 @@ end
 ---Returns tableToTake without the duplicate keys or entries.
 ---@param tableToOverwrite table The table to add keys or entries to.
 ---@param tableToTake table The table to take keys or entries from.
----@param property string|nil The property to check for duplicates with.
+---@param property string|nil The property to check for duplicates with. If nil, keys are checked.
 ---@return table tableToTake All non-duplicate keys or entries from tableToTake.
 function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 	if tableToTake == nil then
@@ -70,7 +70,7 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 				table.insert(nonDuplicateItems, entryToTake)
 				propertyLookup[entryToTake[property]] = #tableToOverwrite
 			else
-				mod.DebugPrint("Skipping duplicate key: " .. entryToTake[property])
+				mod.DebugPrint("Skipped duplicate key: " .. entryToTake[property])
 			end
 		end
 	else
@@ -84,12 +84,32 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 				end
 				nonDuplicateItems[key] = value
 			else
-				mod.DebugPrint("Skipping duplicate key: " .. key)
+				mod.DebugPrint("Skipped duplicate key: " .. key)
 			end
 		end
 	end
 
 	return nonDuplicateItems
+end
+
+---Recursive function to rename keys in a table.
+---@param base table The table to modify
+---@param replacements table The replacements to apply. May contain nested tables, but leaf values must be strings.
+---@param baseName string The name of the base table, used for debugging purposes.
+function mod.RenameKeys(base, replacements, baseName, propertyPath)
+	propertyPath = propertyPath or ""
+	for key, value in pairs(replacements) do
+		local currentPath = propertyPath .. (propertyPath == "" and "" or ".") .. key
+		if base[key] then
+			if type(value) == "table" then
+				mod.RenameKeys(base[key], value, baseName, currentPath)
+			else
+				mod.DebugPrint("Renamed key " .. currentPath .. " to " .. value .. " for " .. baseName)
+				base[value] = base[key]
+				base[key] = nil
+			end
+		end
+	end
 end
 
 ---Updates a specified field in a table to match the new property name.

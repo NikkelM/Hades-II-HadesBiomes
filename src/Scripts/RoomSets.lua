@@ -14,12 +14,11 @@ local newRoomSets = {
 		-- "A_PostBoss01",
 
 		-- TODO: LegalEncounters don't exist
-		-- "A_MiniBoss01",
+		"A_MiniBoss01",
 		-- "A_MiniBoss02",
 		-- "A_MiniBoss03",
 		-- "A_MiniBoss04",
 
-		-- TODO: Some error with a spawn being nil
 		"A_PreBoss01",
 		"A_Shop01",
 
@@ -51,11 +50,11 @@ local newRoomSets = {
 		"A_Combat19",
 		"A_Combat20",
 		"A_Combat21",
+		"A_Combat24",
+		"A_Combat25"
 		-- These two rooms have no RoomData table attached
 		-- "A_Combat22",
 		-- "A_Combat23",
-		"A_Combat24",
-		"A_Combat25"
 	}
 }
 
