@@ -2,10 +2,15 @@
 
 local encounterData = mod.LoadHadesEncounterData("EncounterData.lua")
 local encounterDataTartarus = {
+	-- Generic encounters
 	ModsNikkelMHadesBiomesGenerated = encounterData.Generated,
 	GeneratedTartarus = game.DeepCopyTable(game.EncounterData.GeneratedF),
 	OpeningGenerated = encounterData.OpeningGenerated,
 
+	-- Minibosses
+	MiniBossGrenadier = encounterData.MiniBossGrenadier,
+
+	-- Challenge encounters within a room
 	TimeChallengeTartarus = encounterData.TimeChallengeTartarus,
 	PerfectClearChallengeTartarus = game.DeepCopyTable(encounterData.PerfectClearChallengeF),
 	EliteChallengeTartarus = game.DeepCopyTable(encounterData.EliteChallengeF),

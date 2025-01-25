@@ -62,6 +62,12 @@ local roomModifications = {
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 	},
+
+	-- Minibosses
+	A_MiniBoss01 = {
+		-- TODO: This is misaligned, done in EventPresentation Line 3921 onwards
+		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+	}
 }
 
 mod.ApplyModificationsAndInheritRoomData(roomSetDataTartarus, roomModifications)
