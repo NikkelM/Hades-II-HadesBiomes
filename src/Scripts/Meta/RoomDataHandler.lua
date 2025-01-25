@@ -17,8 +17,21 @@ function mod.LoadHadesRoomData(fileName)
 	end
 end
 
+local roomKeyReplacements = {
+	BoonRaritiesOverride = {
+		LegendaryChance = "Legendary",
+		EpicChance = "Epic",
+		RareChance = "Rare",
+	}
+}
+
 -- Applies modifications to base room objects, and then adds the new room objects to the game
 function mod.ApplyModificationsAndInheritRoomData(base, modifications)
+	-- Rename keys
+	for roomName, roomData in pairs(base) do
+		mod.RenameKeys(roomData, roomKeyReplacements, roomName)
+	end
+
 	-- Apply modifications
 	for roomName, roomData in pairs(modifications) do
 		if not base[roomName] then

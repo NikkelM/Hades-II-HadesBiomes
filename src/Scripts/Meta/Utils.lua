@@ -92,6 +92,26 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 	return nonDuplicateItems
 end
 
+---Recursive function to rename keys in a table.
+---@param base table The table to modify
+---@param replacements table The replacements to apply. May contain nested tables, but leaf values must be strings.
+---@param baseName string The name of the base table, used for debugging purposes.
+function mod.RenameKeys(base, replacements, baseName, propertyPath)
+	propertyPath = propertyPath or ""
+	for key, value in pairs(replacements) do
+		local currentPath = propertyPath .. (propertyPath == "" and "" or ".") .. key
+		if base[key] then
+			if type(value) == "table" then
+				mod.RenameKeys(base[key], value, baseName, currentPath)
+			else
+				mod.DebugPrint("Renaming key " .. currentPath .. " to " .. value .. " for " .. baseName)
+				base[value] = base[key]
+				base[key] = nil
+			end
+		end
+	end
+end
+
 ---Updates a specified field in a table to match the new property name.
 ---This will also work for tables with multiple entries and nested structures.
 ---@param tableToModify table The table to modify.

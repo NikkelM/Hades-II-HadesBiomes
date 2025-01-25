@@ -26,7 +26,7 @@ local function LoadHadesWeaponData()
 end
 
 -- Applies modifications to base weapon objects, and then adds the new weapon objects to the game
-local function applyModificationsAndInheritWeaponData(base, modifications, AIDataKeyReplacements)
+local function applyModificationsAndInheritWeaponData(base, modifications, weaponKeyReplacements)
 	-- Apply modifications
 	for weaponName, weaponData in pairs(modifications) do
 		if not base[weaponName] then
@@ -39,14 +39,7 @@ local function applyModificationsAndInheritWeaponData(base, modifications, AIDat
 	base = mod.AddTableKeysSkipDupes(game.WeaponData, base, nil)
 	for weaponName, weaponData in pairs(base) do
 		-- Replace keys that were renamed between the games
-		if weaponData.AIData then
-			for oldKey, newKey in pairs(AIDataKeyReplacements) do
-				if weaponData.AIData[oldKey] then
-					weaponData.AIData[newKey] = weaponData.AIData[oldKey]
-					weaponData.AIData[oldKey] = nil
-				end
-			end
-		end
+		mod.RenameKeys(weaponData, weaponKeyReplacements, weaponName)
 
 		game.ProcessDataInheritance(weaponData, game.WeaponData)
 		base[weaponName] = weaponData
@@ -125,6 +118,7 @@ local weaponModifications = {
 }
 
 local renamedWeaponModifications = {}
+
 for oldName, newName in pairs(mod.EnemyWeaponMappings) do
 	if weaponModifications[oldName] then
 		renamedWeaponModifications[newName] = weaponModifications[oldName]
@@ -136,12 +130,14 @@ for key, value in pairs(renamedWeaponModifications) do
 	weaponModifications[key] = value
 end
 
-local AIDataKeyReplacements = {
-	AIAttackDistance = "AttackDistance",
-	AIBufferDistance = "RetreatBufferDistance"
+local weaponKeyReplacements = {
+	AIData = {
+		AIAttackDistance = "AttackDistance",
+		AIBufferDistance = "RetreatBufferDistance",
+	},
 }
 
-applyModificationsAndInheritWeaponData(hadesWeaponData, weaponModifications, AIDataKeyReplacements)
+applyModificationsAndInheritWeaponData(hadesWeaponData, weaponModifications, weaponKeyReplacements)
 
 -- Projectiles
 local function applyModificationsAndInheritProjectileData(base, modifications, projectileKeyReplacements)
@@ -156,12 +152,7 @@ local function applyModificationsAndInheritProjectileData(base, modifications, p
 	-- Process data inheritance and add the new data to the game's global
 	base = mod.AddTableKeysSkipDupes(game.ProjectileData, base, nil)
 	for projectileName, projectileData in pairs(base) do
-		for oldKey, newKey in pairs(projectileKeyReplacements) do
-			if projectileData[oldKey] then
-				projectileData[newKey] = projectileData[oldKey]
-				projectileData[oldKey] = nil
-			end
-		end
+		mod.RenameKeys(projectileData, projectileKeyReplacements, projectileName)
 
 		game.ProcessDataInheritance(projectileData, game.ProjectileData)
 		base[projectileName] = projectileData

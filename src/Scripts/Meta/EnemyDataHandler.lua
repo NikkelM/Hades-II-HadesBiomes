@@ -20,7 +20,7 @@ end
 
 
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
-local function ApplyModificationsAndInheritEnemyData(base, modifications, replacements, AIDataKeyReplacements)
+local function ApplyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
 	-- Rename keys if the enemy is in EnemyNameMappings
 	for oldKey, newKey in pairs(mod.EnemyNameMappings) do
 		if modifications[oldKey] then
@@ -56,14 +56,7 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 
 	for enemyName, enemyData in pairs(base) do
 		-- Replace keys that were renamed between the games
-		if enemyData.DefaultAIData then
-			for oldKey, newKey in pairs(AIDataKeyReplacements) do
-				if enemyData.DefaultAIData[oldKey] then
-					enemyData.DefaultAIData[newKey] = enemyData.DefaultAIData[oldKey]
-					enemyData.DefaultAIData[oldKey] = nil
-				end
-			end
-		end
+		mod.RenameKeys(enemyData, enemyKeyReplacements, enemyName)
 
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
 
@@ -278,20 +271,22 @@ for key, value in pairs(renamedEnemyModifications) do
 end
 
 -- Some keys were renamed in the DefaultAIData property
-local DefaultAIDataKeyReplacements = {
-	AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
-	AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
-	AILineOfSightBuffer = "LoSBuffer",
-	AIRequireUnitLineOfSight = "RequireUnitLoS",
-	AIRequireProjectileLineOfSight = "RequireProjectileLoS",
-	AILineOfSighEndBuffer = "LoSEndBuffer",
-	AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
-	AITrackTargetDuringCharge = "TrackTargetDuringCharge",
-	AIAttackDistance = "AttackDistance",
-	AIFireTicksMin = "FireTicksMin",
-	AIFireTicksMax = "FireTicksMax",
-	AIFireTicksCooldown = "FireInterval",
-	StandOffTime = "SurroundRefreshInterval",
+local enemyKeyReplacements = {
+	DefaultAIData = {
+		AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
+		AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
+		AILineOfSightBuffer = "LoSBuffer",
+		AIRequireUnitLineOfSight = "RequireUnitLoS",
+		AIRequireProjectileLineOfSight = "RequireProjectileLoS",
+		AILineOfSighEndBuffer = "LoSEndBuffer",
+		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
+		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
+		AIAttackDistance = "AttackDistance",
+		AIFireTicksMin = "FireTicksMin",
+		AIFireTicksMax = "FireTicksMax",
+		AIFireTicksCooldown = "FireInterval",
+		StandOffTime = "SurroundRefreshInterval",
+	},
 }
 
-ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplacements, DefaultAIDataKeyReplacements)
+ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
