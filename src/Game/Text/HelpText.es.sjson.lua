@@ -1,9 +1,9 @@
 local helpTextFile = rom.path.combine(rom.paths.Content, 'Game/Text/es/HelpText.es.sjson')
 
 local order = {
-  "Id",
-  "DisplayName",
-  "OverwriteLocalization"
+	"Id",
+	"DisplayName",
+	"OverwriteLocalization"
 }
 
 local newData = {
@@ -12,7 +12,7 @@ local newData = {
 	-- 	DisplayName = "{I} {#UseTextPreReqFormat}Descend into Nightmare",
 	-- },
 	{
-		Id = "Location_Hades_Tartarus",
+		Id = "ModdedLocation_Hades_Tartarus",
 		DisplayName = "TÁRTARO (Pesadilla)",
 	},
 }

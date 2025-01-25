@@ -74,7 +74,7 @@ local function on_ready()
 
 	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
 
-	-- File handling and other generic functions
+	-- File handling and other generic functions required at install time
 	import "Scripts/Meta/Utils.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/FxAnimationDuplicatesData.lua"
@@ -82,15 +82,6 @@ local function on_ready()
 	import "Scripts/Meta/FileHandling.lua"
 
 	if not mod.ConfirmHadesInstallation() then return end
-
-	-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
-	-- Done first, as the EncounterData depends on the EnemySets
-	import "Scripts/EnemySets.lua"
-
-	import "Scripts/Meta/EnemyTrapDataHandler.lua"
-	import "Scripts/Meta/EnemyDataHandler.lua"
-	import "Scripts/Meta/EncounterDataHandler.lua"
-	import "Scripts/Meta/RoomDataHandler.lua"
 
 	import "Scripts/Meta/FirstTimeSetup.lua"
 	import "Scripts/Meta/Uninstall.lua"
@@ -113,6 +104,15 @@ local function on_ready()
 
 	-- Before proceeding, check that required files exist
 	if mod.CheckRequiredFiles() then
+		-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
+		-- Done first, as the EncounterData depends on the EnemySets
+		import "Scripts/EnemySets.lua"
+
+		import "Scripts/Meta/EnemyTrapDataHandler.lua"
+		import "Scripts/Meta/EnemyDataHandler.lua"
+		import "Scripts/Meta/EncounterDataHandler.lua"
+		import "Scripts/Meta/RoomDataHandler.lua"
+
 		-- Loads Encounter data
 		-- Do this before loading the room data, as the rooms need the legal encounters defined in here
 		import "Scripts/EncounterSets.lua"
@@ -175,7 +175,7 @@ local function on_ready()
 		import "Game/Text/HelpText.zh-TW.sjson.lua"
 	else
 		error(
-			"Required files are missing. Please check the log and run the first time setup by setting the config value to true.")
+			"Required files are missing and the mod is not active. Please check the log and run the first time setup by setting the config value to true.")
 	end
 end
 

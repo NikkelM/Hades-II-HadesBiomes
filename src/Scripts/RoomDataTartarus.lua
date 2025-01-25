@@ -17,7 +17,7 @@ local roomModifications = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes" },
 
-		SaveProfileLocationText = "Location_Hades_Tartarus",
+		SaveProfileLocationText = "ModdedLocation_Hades_Tartarus",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeTartarus" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeTartarus" },
@@ -46,14 +46,14 @@ local roomModifications = {
 		StartThreadedEvents =
 		{
 			{ FunctionName = "CheckBiomeStateStart" },
-			{ FunctionName = "ShadeMercManager", Args = { StartingCountMin = 3, StartingCountMax = 12, ObjectNames = { "ShadeMerc" }, MaxActive = 12 } },
+			{ FunctionName = "ShadeMercManager",    Args = { StartingCountMin = 3, StartingCountMax = 12, ObjectNames = { "ShadeMerc" }, MaxActive = 12 } },
 		},
 	},
 	-- This is the first run's opening room, which forces Athena boons
 	RoomSimple01 = mod.NilValue,
 
 	-- Shops
-	-- TODO: Move some of these into a base shop object for all Hades shops to inherit from to prevent duplicates 
+	-- TODO: Move some of these into a base shop object for all Hades shops to inherit from to prevent duplicates
 	A_Shop01 = {
 		ThreadedEvents = {
 			-- To get PatrolPath working, see RoomOpening
