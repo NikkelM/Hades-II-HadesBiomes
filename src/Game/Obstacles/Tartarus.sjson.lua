@@ -4,7 +4,7 @@ local hadesTartarusObstacleFile = rom.path.combine(mod.hadesGameFolder, "Content
 local hadesTartarusObstacleTable = sjson.decode_file(hadesTartarusObstacleFile)
 
 local hadesTwoTartarusObstacleFile = rom.path.combine(rom.paths.Content(), "Game\\Obstacles\\Tartarus.sjson")
-local hadesTwoTartarusObstacleTable = sjson.decode_file(hadesTwoTartarusObstacleFile)
+-- local hadesTwoTartarusObstacleTable = sjson.decode_file(hadesTwoTartarusObstacleFile)
 
 -- Modifications for new obstacles copied from Hades
 local obstacleModifications = {}

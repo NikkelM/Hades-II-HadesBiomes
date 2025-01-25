@@ -1,3 +1,5 @@
+local helpTextFile = rom.path.combine(rom.paths.Content, 'Game/Text/en/HelpText.en.sjson')
+
 local order = {
   "Id",
   "DisplayName",
@@ -8,10 +10,14 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText",
 		DisplayName = "{I} {#UseTextPreReqFormat}Descend into Nightmare",
+	-- No matter what, always use this version
     OverwriteLocalization = true
 	},
+	{
+		Id = "Location_Hades_Tartarus",
+		DisplayName = "TARTARUS (Nightmare)",
+	},
 }
-local helpTextFile = rom.path.combine(rom.paths.Content, 'Game/Text/en/HelpText.en.sjson')
 
 sjson.hook(helpTextFile, function(data)
 	for _, newValue in ipairs(newData) do

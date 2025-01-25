@@ -158,7 +158,21 @@ local function on_ready()
 		import "Game/Obstacles/Tartarus.sjson.lua"
 		import "Game/Obstacles/Chaos.sjson.lua"
 		-- Localizations, custom texts
+		import "Game/Text/HelpText.de.sjson.lua"
+		import "Game/Text/HelpText.el.sjson.lua"
 		import "Game/Text/HelpText.en.sjson.lua"
+		import "Game/Text/HelpText.es.sjson.lua"
+		import "Game/Text/HelpText.fr.sjson.lua"
+		import "Game/Text/HelpText.it.sjson.lua"
+		import "Game/Text/HelpText.ja.sjson.lua"
+		import "Game/Text/HelpText.ko.sjson.lua"
+		import "Game/Text/HelpText.pl.sjson.lua"
+		import "Game/Text/HelpText.pt-BR.sjson.lua"
+		import "Game/Text/HelpText.ru.sjson.lua"
+		import "Game/Text/HelpText.tr.sjson.lua"
+		import "Game/Text/HelpText.uk.sjson.lua"
+		import "Game/Text/HelpText.zh-CN.sjson.lua"
+		import "Game/Text/HelpText.zh-TW.sjson.lua"
 	else
 		error(
 			"Required files are missing. Please check the log and run the first time setup by setting the config value to true.")

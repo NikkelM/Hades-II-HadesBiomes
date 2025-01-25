@@ -38,7 +38,6 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications, replaceme
 
 	-- Apply replacements
 	for roomName, roomData in pairs(replacements) do
-		mod.PrintTable(replacements)
 		if not base[roomName] then
 			base[roomName] = {}
 		end

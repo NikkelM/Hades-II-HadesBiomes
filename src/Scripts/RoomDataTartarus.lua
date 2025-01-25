@@ -5,6 +5,9 @@ local roomSetDataTartarus = mod.LoadHadesRoomData("RoomDataTartarus.lua").Tartar
 local roomReplacements = {
 	BaseTartarus = {
 		SecretDoorRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.SecretDoorRequirements),
+		WellShopRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.WellShopRequirements),
+		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
+		AnomalyDoorChance = 0.0,
 	},
 }
 
@@ -14,14 +17,13 @@ local roomModifications = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes" },
 
-		-- TODO: Localization?
-		SaveProfileLocationText = "TARTARUS (Nightmare)", -- roomSetDataTartarus.BaseTartarus.LocationText,
+		SaveProfileLocationText = "Location_Hades_Tartarus",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeTartarus" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeTartarus" },
 		EliteChallengeEncounterOptions = { "EliteChallengeTartarus" },
 
-		-- Erebus challenge encounter are not currently working
+		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
 		ShrinePointDoorRequirements = { Skip = true },
 	},
 
