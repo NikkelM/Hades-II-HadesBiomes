@@ -1,6 +1,13 @@
 -- Adds RoomData for Tartarus from Hades to Hades II
 
 local roomSetDataTartarus = mod.LoadHadesRoomData("RoomDataTartarus.lua").Tartarus
+
+local roomReplacements = {
+	BaseTartarus = {
+		SecretDoorRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.SecretDoorRequirements),
+	},
+}
+
 local roomModifications = {
 	-- Generic
 	BaseTartarus = {
@@ -71,4 +78,4 @@ local roomModifications = {
 	}
 }
 
-mod.ApplyModificationsAndInheritRoomData(roomSetDataTartarus, roomModifications)
+mod.ApplyModificationsAndInheritRoomData(roomSetDataTartarus, roomModifications, roomReplacements, "Tartarus")

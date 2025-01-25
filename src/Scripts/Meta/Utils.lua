@@ -44,7 +44,7 @@ end
 ---Returns tableToTake without the duplicate keys or entries.
 ---@param tableToOverwrite table The table to add keys or entries to.
 ---@param tableToTake table The table to take keys or entries from.
----@param property string|nil The property to check for duplicates with.
+---@param property string|nil The property to check for duplicates with. If nil, keys are checked.
 ---@return table tableToTake All non-duplicate keys or entries from tableToTake.
 function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 	if tableToTake == nil then

@@ -41,8 +41,8 @@ local encounterReplacements = {
 	},
 	GeneratedTartarus = {
 		EnemySet = EnemySets.EnemiesBiome1,
-		-- Restoring the original from Hades, down from 55 in Hades II GeneratedF
-		BaseDifficulty = 30,
+		-- The original from Hades is 30, Hades II GeneratedF is 55
+		BaseDifficulty = 50,
 	},
 
 	PerfectClearChallengeTartarus = {
@@ -59,13 +59,14 @@ local encounterModifications = {
 	-- Generic
 	ModsNikkelMHadesBiomesGenerated = {
 		-- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
-		-- Asphodel for BloodlessGrenadier_Elite in MiniBossGrenadier
-		LoadPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "Asphodel"  },
+		LoadPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes" },
 		BlockTypesAcrossWaves = true,
 		UnthreadedEvents = EncounterSets.EncounterEventsDefault,
 		CountsForRoomEncounterDepth = true,
 	},
 	OpeningGenerated = {
+		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
+		DifficultyModifier = -50,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
 		PreSpawnEnemies = false,
 		NoFirstWaveStartDelay = true,
@@ -74,17 +75,8 @@ local encounterModifications = {
 
 	-- Minibosses
 	MiniBossGrenadier = {
-		ManualWaveTemplates = {
-			[1] = {
-				Spawns = {
-					{
-						-- TODO: Using this enemy plays the Hades II intro animation/Fx -- need to suppress
-						Name = "BloodlessGrenadier_Elite"
-					}
-				}
-			}
-		}
-	}
+		LoadPackages = { "Asphodel" },
+	},
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataTartarus, encounterModifications, encounterReplacements)

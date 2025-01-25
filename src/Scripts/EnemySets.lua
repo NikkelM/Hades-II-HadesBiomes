@@ -37,10 +37,9 @@ game.EnemySets.EnemiesBiome1_EliteChallenge = {
 }
 
 game.EnemySets.EnemiesBiome1MiniBoss = {
-	"BloodlessGrenadier_Elite",
+	"BloodlessGrenadierElite",
 	"BloodlessSelfDestruct_Elite",
 	"BloodlessPitcher_Elite"
-	-- "BloodlessGrenadierElite",
 	-- "BloodlessPitcherElite",
 	-- "BloodlessSelfDestructElite",
 }
