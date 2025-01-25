@@ -225,17 +225,16 @@ MapTextFileNames = {
 }
 
 -- Languages supported by Hades
--- Languages other than english are currently not working, as decoding the file from Hades results in a nil value
 HelpTextLanguages = {
-	-- "de",
+	"de",
 	"en",
-	-- "es",
-	-- "fr",
-	-- "it",
-	-- "ja",
-	-- "ko",
-	-- "pl",
-	-- "pt-BR",
-	-- "ru",
-	-- "zh-CN"
+	"es",
+	"fr",
+	"it",
+	"ja",
+	"ko",
+	"pl",
+	"pt-BR",
+	"ru",
+	"zh-CN"
 }

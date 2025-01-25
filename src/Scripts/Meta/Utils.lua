@@ -181,6 +181,34 @@ function mod.ApplyModifications(baseData, modificationData, replaceTable)
 	end
 end
 
+---Wrapper function around sjson.decode that reads a file and decodes it.
+---It replaces quadruple quotes with triple quotes and a newline, as quadruple quotes are not parsed correctly in the sjson library.
+---@param filePath string The path to the file to decode.
+---@return table sjsonAsTable The decoded table.
+function mod.DecodeSjsonFile(filePath)
+	local fileHandle = io.open(filePath, "r")
+	if not fileHandle then
+		error("Could not open help text file: " .. filePath)
+	end
+
+	local fileString = fileHandle:read("*a")
+	fileHandle:close()
+
+	-- Replace opening quadruple quotes with triple quotes and a newline
+	fileString = string.gsub(fileString, '= """"', '= """\n"')
+	-- Replace closing quadruple quotes with a newline and triple quotes
+	fileString = string.gsub(fileString, '""""', '"\n"""')
+
+	-- Exception for the pt-BR help text file
+	if filePath:find("pt%-BR") then
+		-- Cannot decode “, so replace it with '
+		fileString = string.gsub(fileString, '\\“', '\'')
+	end
+
+	-- Decode the string to a table
+	return sjson.decode(fileString)
+end
+
 ---Applies modifications to the given table, not overwriting parent tables.
 ---The modification's key must match a Name key in the destinationTable entry.
 ---Do not use this to rename the Name property of an entry, instead use RenameSjsonEntries.

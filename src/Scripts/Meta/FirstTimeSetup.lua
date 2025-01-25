@@ -188,11 +188,11 @@ function CopyHadesHelpTexts()
 
 		local helpTextFile = rom.path.combine(rom.paths.Content(),
 			'Game\\Text\\' .. language .. '\\HelpText.' .. language .. '.sjson')
-		local helpTextData = sjson.decode_file(helpTextFile)
+		local helpTextData = mod.DecodeSjsonFile(helpTextFile)
 
 		local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder,
 			'Content\\Game\\Text\\' .. language .. '\\HelpText.' .. language .. '.sjson')
-		local hadesHelpTextData = sjson.decode_file(hadesHelpTextFile)
+		local hadesHelpTextData = mod.DecodeSjsonFile(hadesHelpTextFile)
 
 		local existingIds = {}
 		for _, entry in ipairs(helpTextData.Texts) do
