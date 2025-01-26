@@ -3,15 +3,17 @@
 -- Loads EnemyData from a file in Hades
 -- Note: Must be loaded before EncounterData, as there are some references to it in EncounterData!
 local function LoadHadesEnemyData()
+	local originalUnitSetDataEnemies = game.DeepCopyTable(game.UnitSetData.Enemies)
 	local originalEnemyData = game.DeepCopyTable(game.EnemyData)
+	local originalStatusAnimations = game.DeepCopyTable(game.StatusAnimations)
 	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts\\EnemyData.lua")
 	local chunk, err = loadfile(pathName)
 	if chunk then
 		chunk()
-		-- No worries if this is marked as undefined, it comes from the loaded file
-		---@diagnostic disable-next-line: undefined-global
 		local hadesEnemyData = UnitSetData.Enemies
+		game.UnitSetData.Enemies = originalUnitSetDataEnemies
 		game.EnemyData = originalEnemyData
+		game.StatusAnimations = originalStatusAnimations
 		return hadesEnemyData
 	else
 		mod.DebugPrint("Error loading enemyData: " .. err)

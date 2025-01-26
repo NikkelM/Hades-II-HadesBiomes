@@ -44,4 +44,7 @@ mod.FxAnimationMappings = {
 	DoorLocked = "HadesDoorLocked",
 	DoorUnlocked = "HadesDoorUnlocked",
 
+	EnemyProjectile = "HadesEnemyProjectile",
+	EnemyProjectileIn = "HadesEnemyProjectileIn",
+	EnemyProjectileLight = "HadesEnemyProjectileLight",
 }

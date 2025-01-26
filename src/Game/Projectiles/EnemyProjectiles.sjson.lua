@@ -25,16 +25,18 @@ local projectilesToRemove = {
 local hadesProjectilesModifications = {
 	DisembodiedHandGrab = {
 		Effect = {
-			StartAnimation = "null"
-		}
+			StartAnimation = "null",
+		},
 	},
 	LightRangedWeapon = {
 		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 		CanBeProjectileDefenseDestroyed = false,
+		-- It just disappears instead of exploding like in Hades
+		-- The explosion has a weird boxed brightness around it
 		DissipateFx = "EnemyProjectileDissipate",
-		DeathFx = "EnemyProjectileDissipate",
-		ImpactFx = "EnemyProjectileImpact",
-		UnpauseResetLocation = true
+		UnpauseResetLocation = true,
+		-- Otherwise the enemy hits itself
+		AffectsSelf = false,
 	},
 	HeavyRangedWeapon = {
 		NumPenetrations = 99999,
@@ -56,6 +58,8 @@ for oldName, newName in pairs(mod.EnemyProjectileMappings) do
 end
 -- Rename attached animations/Fx graphics
 for oldName, newName in pairs(mod.FxAnimationMappings) do
+	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "Thing", "Graphic" }, "EnemyProjectiles.sjson")
+	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "Thing", "AttachedAnim" }, "EnemyProjectiles.sjson")
 	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "DetonateGraphic" }, "EnemyProjectiles.sjson")
 end
 
