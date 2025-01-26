@@ -104,6 +104,36 @@ local function on_ready()
 
 	-- Before proceeding, check that required files exist
 	if mod.CheckRequiredFiles() then
+		-- General data needed for map generation/display
+		import "Game/MapGroups.sjson.lua"
+
+		-- SJSON changes
+		import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
+		-- import "Game/Animations/Obstacle_Deprecated_VFX.sjson.lua" -- Currently doesn't add anything
+		-- Must be loaded after CharacterAnimationsEnemies, as it inherits some animations from it
+		import "Game/Animations/EnemyAnimations.sjson.lua"
+		import "Game/Units/Enemies.sjson.lua"
+		import "Game/Weapons/EnemyWeapons.sjson.lua"
+		import "Game/Projectiles/EnemyProjectiles.sjson.lua"
+		import "Game/Obstacles/Tartarus.sjson.lua"
+		import "Game/Obstacles/Chaos.sjson.lua"
+		-- Localizations, custom texts
+		import "Game/Text/HelpText.de.sjson.lua"
+		import "Game/Text/HelpText.el.sjson.lua"
+		import "Game/Text/HelpText.en.sjson.lua"
+		import "Game/Text/HelpText.es.sjson.lua"
+		import "Game/Text/HelpText.fr.sjson.lua"
+		import "Game/Text/HelpText.it.sjson.lua"
+		import "Game/Text/HelpText.ja.sjson.lua"
+		import "Game/Text/HelpText.ko.sjson.lua"
+		import "Game/Text/HelpText.pl.sjson.lua"
+		import "Game/Text/HelpText.pt-BR.sjson.lua"
+		import "Game/Text/HelpText.ru.sjson.lua"
+		import "Game/Text/HelpText.tr.sjson.lua"
+		import "Game/Text/HelpText.uk.sjson.lua"
+		import "Game/Text/HelpText.zh-CN.sjson.lua"
+		import "Game/Text/HelpText.zh-TW.sjson.lua"
+
 		-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 		-- Done first, as the EncounterData depends on the EnemySets
 		import "Scripts/EnemySets.lua"
@@ -128,9 +158,6 @@ local function on_ready()
 		-- Applies modifications to the rooms, such as LegalEncounterDictionary
 		game.SetupRunData()
 
-		-- General data needed for map generation/display
-		import "Game/MapGroups.sjson.lua"
-
 		-- Function mappings between Hades and Hades II
 		import "Scripts/FunctionMappings/MiniBossTartarus.lua"
 		import "Scripts/FunctionMappings/Traps.lua"
@@ -147,32 +174,6 @@ local function on_ready()
 		import "Scripts/RoomPresentation.lua"
 		import "Scripts/DeathLoopData.lua"
 		import "Scripts/WeaponSets.lua"
-
-		-- SJSON changes
-		import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
-		-- Must be loaded after CharacterAnimationsEnemies, as it inherits some animations from it
-		import "Game/Animations/EnemyAnimations.sjson.lua"
-		import "Game/Units/Enemies.sjson.lua"
-		import "Game/Weapons/EnemyWeapons.sjson.lua"
-		import "Game/Projectiles/EnemyProjectiles.sjson.lua"
-		import "Game/Obstacles/Tartarus.sjson.lua"
-		import "Game/Obstacles/Chaos.sjson.lua"
-		-- Localizations, custom texts
-		import "Game/Text/HelpText.de.sjson.lua"
-		import "Game/Text/HelpText.el.sjson.lua"
-		import "Game/Text/HelpText.en.sjson.lua"
-		import "Game/Text/HelpText.es.sjson.lua"
-		import "Game/Text/HelpText.fr.sjson.lua"
-		import "Game/Text/HelpText.it.sjson.lua"
-		import "Game/Text/HelpText.ja.sjson.lua"
-		import "Game/Text/HelpText.ko.sjson.lua"
-		import "Game/Text/HelpText.pl.sjson.lua"
-		import "Game/Text/HelpText.pt-BR.sjson.lua"
-		import "Game/Text/HelpText.ru.sjson.lua"
-		import "Game/Text/HelpText.tr.sjson.lua"
-		import "Game/Text/HelpText.uk.sjson.lua"
-		import "Game/Text/HelpText.zh-CN.sjson.lua"
-		import "Game/Text/HelpText.zh-TW.sjson.lua"
 	else
 		error(
 			"Required files are missing and the mod is not active. Please check the log and run the first time setup by setting the config value to true.")
