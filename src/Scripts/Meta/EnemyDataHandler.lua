@@ -277,6 +277,14 @@ local enemyModifications = {
 	RatThug = {
 		LargeUnitCap = mod.NilValue,
 	},
+
+	-- ENVIRONMENT
+	-- TODO: Variations
+	Breakable = {
+		CannotDieFromDamage = true,
+		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
+		DestroyedAnimation = "BreakableDeathAnim",
+	}
 }
 
 local renamedEnemyModifications = {}

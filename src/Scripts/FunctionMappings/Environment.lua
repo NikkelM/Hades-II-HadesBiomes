@@ -148,3 +148,9 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 		end
 	end
 end
+
+-- Triggered when a breakable is hit
+function game.BreakableOnHitModsNikkelMHadesBiomes(enemy, attacker, triggerArgs)
+	print("BreakableOnHitModsNikkelMHadesBiomes")
+	SetAnimation({ DestinationId = enemy.ObjectId, Name = enemy.DestroyedAnimation })
+end
