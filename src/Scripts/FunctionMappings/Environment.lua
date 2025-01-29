@@ -151,6 +151,8 @@ end
 
 -- Triggered when a breakable is hit
 function game.BreakableOnHitModsNikkelMHadesBiomes(enemy, attacker, triggerArgs)
-	print("BreakableOnHitModsNikkelMHadesBiomes")
 	SetAnimation({ DestinationId = enemy.ObjectId, Name = enemy.DestroyedAnimation })
+	if enemy.DeathSound ~= nil then
+		PlaySound({ Name = enemy.DeathSound, Id = enemy.ObjectId, ManagerCap = enemy.DeathSoundManagerCap or 46 })
+	end
 end

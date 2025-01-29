@@ -279,12 +279,31 @@ local enemyModifications = {
 	},
 
 	-- ENVIRONMENT
-	-- TODO: Variations
+	-- TODO: Money drop on death
 	Breakable = {
 		CannotDieFromDamage = true,
 		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
 		DestroyedAnimation = "BreakableDeathAnim",
-	}
+		DeathSound = "/SFX/CeramicPotSmash",
+		SetupEvents = {
+			{
+				FunctionName = "RandomizeObject",
+				Args = {
+					RandomizeSets = {
+						{
+							Animation = { "BreakableIdle1" },
+						},
+						{
+							Animation = { "BreakableIdle2" },
+						},
+						{
+							Animation = { "BreakableIdle3" },
+						},
+					},
+				},
+			},
+		},
+	},
 }
 
 local renamedEnemyModifications = {}
