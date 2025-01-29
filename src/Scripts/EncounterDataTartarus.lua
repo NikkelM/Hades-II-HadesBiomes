@@ -42,7 +42,7 @@ local encounterReplacements = {
 	GeneratedTartarus = {
 		EnemySet = EnemySets.EnemiesBiome1,
 		-- The original from Hades is 30, Hades II GeneratedF is 55
-		BaseDifficulty = 50,
+		BaseDifficulty = 40,
 	},
 
 	PerfectClearChallengeTartarus = {
@@ -66,7 +66,7 @@ local encounterModifications = {
 	},
 	OpeningGenerated = {
 		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
-		DifficultyModifier = -50,
+		DifficultyModifier = -30,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
 		PreSpawnEnemies = false,
 		NoFirstWaveStartDelay = true,

@@ -60,12 +60,12 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 		-- Replace keys that were renamed between the games
 		mod.RenameKeys(enemyData, enemyKeyReplacements, enemyName)
 
-		-- Increase health and armour for increased difficulty
+		-- Increase health and armour for slightly increased difficulty
 		if enemyData.MaxHealth then
-			enemyData.MaxHealth = enemyData.MaxHealth * 1.25
+			enemyData.MaxHealth = enemyData.MaxHealth * 1.15
 		end
 		if enemyData.HealthBuffer then
-			enemyData.HealthBuffer = enemyData.HealthBuffer * 1.25
+			enemyData.HealthBuffer = enemyData.HealthBuffer * 1.2
 		end
 
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
