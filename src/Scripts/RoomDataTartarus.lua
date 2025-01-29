@@ -9,6 +9,18 @@ local roomReplacements = {
 		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
 		AnomalyDoorChance = 0.0,
 	},
+	A_Shop01 = {
+		-- Same requirements, but different format
+		GameStateRequirements = {
+			FunctionName = "RequiredMinExits",
+			FunctionArgs = { Count = 2 },
+		},
+		{
+			Path = { "CurrentRun", "BiomeDepthCache" },
+			Comparison = "<=",
+			Value = 6,
+		},
+	}
 }
 
 local roomModifications = {
@@ -34,8 +46,6 @@ local roomModifications = {
 		EntranceFunctionArgs = { HeroGoalAngle = 335 },
 		UnthreadedEvents = {},
 		ThreadedEvents = {
-			[1] = roomSetDataTartarus.RoomOpening.ThreadedEvents[1],
-			[2] = roomSetDataTartarus.RoomOpening.ThreadedEvents[2],
 			-- This will work with roomSetDataTartarus.RoomOpening.ThreadedEvents[3].Args.SpawnTypes = { "TartarusGhost01" }, but has the problem of spawning all Ghosts on the same ID
 			[3] = mod.NilValue
 		},
