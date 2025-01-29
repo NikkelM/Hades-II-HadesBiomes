@@ -150,9 +150,10 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 end
 
 -- Triggered when a breakable is hit
-function game.BreakableOnHitModsNikkelMHadesBiomes(enemy, attacker, triggerArgs)
-	SetAnimation({ DestinationId = enemy.ObjectId, Name = enemy.DestroyedAnimation })
-	if enemy.DeathSound ~= nil then
-		PlaySound({ Name = enemy.DeathSound, Id = enemy.ObjectId, ManagerCap = enemy.DeathSoundManagerCap or 46 })
-	end
+function game.BreakableOnHitModsNikkelMHadesBiomes(victim, attacker, triggerArgs)
+	triggerArgs = triggerArgs or {}
+	game.CheckMoneyDrop( victim, victim.MoneyDropOnDeath, attacker )
+	game.KillPresentation(victim, attacker, triggerArgs)
+	-- Only destroy the breakable once
+	victim.IgnoreDamage = true
 end

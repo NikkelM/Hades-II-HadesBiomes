@@ -279,11 +279,12 @@ local enemyModifications = {
 	},
 
 	-- ENVIRONMENT
-	-- TODO: Money drop on death
+	-- TODO: No visible graphics in RoomOpening
+	-- TODO: Not visible when loading a save
 	Breakable = {
 		CannotDieFromDamage = true,
 		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
-		DestroyedAnimation = "BreakableDeathAnim",
+		DeathAnimation = "BreakableDeathAnim",
 		DeathSound = "/SFX/CeramicPotSmash",
 		SetupEvents = {
 			{
