@@ -1,13 +1,7 @@
 -- Functions required by the HeavyRanged enemy
 
--- Wrap around SetupUnit to call CreateTethers()
-modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
-	base(unit, currentRun, args)
-	game.CreateTethers(unit)
-end)
-
 -- Creates "Tethers", which are floating parts of the enemy (e.g. the small crystals for HeavyRanged)
-function game.CreateTethers(newEnemy)
+function game.CreateTethers(newEnemy, args)
 	if newEnemy == nil or newEnemy.Tethers == nil or newEnemy.TetherIds ~= nil then
 		return
 	end

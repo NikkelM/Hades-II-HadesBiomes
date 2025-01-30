@@ -35,7 +35,7 @@ function mod.CompareChecksums()
 		local currentChecksumsContent = currentChecksums:read("*a")
 
 		if cachedChecksumsContent == "" then
-			mod.DebugPrint("First game start with the mod installed has been detected. Running first time setup.", 2)
+			mod.DebugPrint("First game start with the mod installed has been detected. Running first time setup.", 3)
 			-- Just in case the user disabled the setting, we will set it to true here
 			config.firstTimeSetup = true
 		elseif cachedChecksumsContent ~= currentChecksumsContent then
@@ -43,7 +43,7 @@ function mod.CompareChecksums()
 				"Game \"checksums.txt\" does not match the mod's cached \"checksums.txt\". This indicates a game or mod update, the mod will be re-installed.",
 				2)
 			-- This will cause a re-installation of the mod immediately after this function call
-			config.uninstall = true
+			config.uninstall = "true"
 			config.firstTimeSetup = true
 		else
 			mod.DebugPrint("Game \"checksums.txt\" matches the mod's cached \"checksums.txt\". No game update detected, proceeding normally.", 3)

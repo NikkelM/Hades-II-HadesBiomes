@@ -91,11 +91,19 @@ local function on_ready()
 	-- We can use this to determine if we should re-install the mod, to make sure we do not interfere with any files the game modified
 	mod.CompareChecksums()
 
-	if config.uninstall then
-		mod.Uninstall()
-		if not config.firstTimeSetup then
+	if config.uninstall == "true" or config.uninstall == "I AM SURE - UNINSTALL" then
+		local uninstallSuccessful = mod.Uninstall()
+		if uninstallSuccessful and not config.firstTimeSetup then
+			config.enabled = false
 			return
 		end
+	elseif config.uninstall ~= "false" then
+		mod.DebugPrint(
+			"Invalid value for \"uninstall\" in the config file (\"" ..
+			config.uninstall ..
+			"\"). Please set it to \"true\" to uninstall the mod normally, \"I AM SURE - UNINSTALL\" to force an uninstall, or \"false\" to not uninstall.",
+			2)
+		config.uninstall = "false"
 	end
 
 	if config.firstTimeSetup then

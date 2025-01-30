@@ -8,7 +8,7 @@ mod.NilValue = {}
 ---@param level number|nil The log level. 0 = Off, 1 = Errors, 2 = Warnings, 3 = Info, 4 = Debug. nil omits the level display.
 function mod.LogMessage(t, level)
 	local logLevels = { [1] = "[ERROR] ", [2] = "[WARNING] ", [3] = "[INFO] ", [4] = "[DEBUG] " }
-	local logColours = { [1] = "\27[31m", [2] = "\27[33m", [3] = "\27[32m", [4] = "\27[34m" }   -- Red, Yellow, Green, Blue
+	local logColours = { [1] = "\27[31m", [2] = "\27[33m", [3] = "\27[32m", [4] = "\27[34m" } -- Red, Yellow, Green, Blue
 	local resetColour = "\27[0m"
 
 	local logLevelText = logLevels[level] or ""
@@ -59,6 +59,19 @@ function mod.PrintTable(t, maxDepth, indent)
 		else
 			print(formatting .. k .. ": " .. tostring(v))
 		end
+	end
+end
+
+mod.CachedRunsFilePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\cache\\cachedRuns.sjson")
+
+---Loads the cachedRuns.sjson file and returns its contents.
+---@return table
+function mod.LoadCachedRunsFile()
+	if rom.path.exists(mod.CachedRunsFilePath) then
+		return sjson.decode_file(mod.CachedRunsFilePath)
+	else
+		error(
+		"\"cachedRuns.sjson\" not found! Please re-install the mod by setting both \"uninstall\" and \"firstTimeSetup\" in the config to \"true\".")
 	end
 end
 

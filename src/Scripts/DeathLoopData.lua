@@ -52,6 +52,17 @@ function mod.StartHadesRun(source, args)
 	-- Enable MelinoeField voicelines when entering the Chaos gate
 	game.LoadVoiceBanks({ Name = "MelinoeField" })
 
+	local cachedRuns = mod.LoadCachedRunsFile()
+
+	if game.GameState.ModsNikkelMHadesBiomesSaveFileIndex == nil then
+		-- Assign the GameState memory address (hash) as the index
+		game.GameState.ModsNikkelMHadesBiomesSaveFileIndex = tostring(game.GameState):match("table: (.+)")
+		game.RequestPreRunLoadoutChangeSave()
+		sjson.encode_file(mod.CachedRunsFilePath, cachedRuns)
+		mod.DebugPrint("Assigned the following mod save file identifier to the current save slot: " .. game.GameState.ModsNikkelMHadesBiomesSaveFileIndex, 4)
+	end
+
+	-- TODO: Chaos gate has sound
 	-- Replace the voicelines that can play when entering the Chaos gate
 	local originalSecretUnlockedVoiceLines = game.DeepCopyTable(game.HeroVoiceLines.SecretUnlockedVoiceLines)
 	game.HeroVoiceLines.SecretUnlockedVoiceLines = game.GlobalVoiceLines.StartNewHadesRunVoiceLines
