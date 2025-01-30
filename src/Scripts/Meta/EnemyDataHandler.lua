@@ -16,10 +16,9 @@ local function LoadHadesEnemyData()
 		game.StatusAnimations = originalStatusAnimations
 		return hadesEnemyData
 	else
-		mod.DebugPrint("Error loading enemyData: " .. err)
+		mod.DebugPrint("Error loading enemyData: " .. err, 1)
 	end
 end
-
 
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
 local function ApplyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
@@ -28,12 +27,12 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 		if modifications[oldKey] then
 			modifications[newKey] = modifications[oldKey]
 			modifications[oldKey] = nil
-			mod.DebugPrint("Renamed enemy modification " .. oldKey .. " to " .. newKey .. " in EnemyDataHandler")
+			mod.DebugPrint("Renamed enemy modification " .. oldKey .. " to " .. newKey .. " in EnemyDataHandler", 4)
 		end
 		if replacements[oldKey] then
 			replacements[newKey] = replacements[oldKey]
 			replacements[oldKey] = nil
-			mod.DebugPrint("Renamed enemy replacement " .. oldKey .. " to " .. newKey .. " in EnemyDataHandler")
+			mod.DebugPrint("Renamed enemy replacement " .. oldKey .. " to " .. newKey .. " in EnemyDataHandler", 4)
 		end
 	end
 
@@ -84,7 +83,7 @@ for oldName, newName in pairs(mod.EnemyNameMappings) do
 	if enemyData[oldName] then
 		enemyData[newName] = enemyData[oldName]
 		enemyData[oldName] = nil
-		mod.DebugPrint("Renamed enemy: " .. oldName .. " to " .. newName .. " in EnemyData.lua")
+		mod.DebugPrint("Renamed enemy: " .. oldName .. " to " .. newName .. " in EnemyData.lua", 4)
 	end
 	-- Update the name in dependent fields
 	-- Inherit properties from this name
@@ -105,6 +104,8 @@ mod.ModifyEnemyTrapData(enemyData)
 
 -- Replaces the key with the new value instead of modifying
 local enemyReplacements = {
+	-- Breaks spawning Skelly, as it adds invalid conversations to the enemy
+	TrainingMelee = { mod.NilValue },
 	BaseSpawner = {
 		-- SpawnerAI doesn't exist, spawn logic is in the weapon
 		AIOptions = { "AttackerAI", },
@@ -197,6 +198,13 @@ local enemyModifications = {
 			[1] = { Distance = 20 },
 			[2] = { Distance = 20 },
 			[3] = { Distance = 20 }
+		},
+		-- TODO: Test if works
+		SpawnEvents = {
+			{
+				FunctionName = "CreateTethers",
+				Threaded = true,
+			},
 		},
 		-- Setting DestroyDelay to 0, as otherwise the crystal shine sticks around after the enemy dies
 		DestroyDelay = 0,
@@ -312,7 +320,7 @@ for oldName, newName in pairs(mod.EnemyNameMappings) do
 	if enemyModifications[oldName] then
 		renamedEnemyModifications[newName] = enemyModifications[oldName]
 		enemyModifications[oldName] = nil
-		mod.DebugPrint("Renamed enemy modification: " .. oldName .. " to " .. newName .. " in EnemyDataHandler")
+		mod.DebugPrint("Renamed enemy modification: " .. oldName .. " to " .. newName .. " in EnemyDataHandler", 4)
 	end
 end
 for key, value in pairs(renamedEnemyModifications) do
