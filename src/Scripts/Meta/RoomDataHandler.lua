@@ -17,7 +17,7 @@ function mod.LoadHadesRoomData(fileName)
 		game.RoomData = originalRoomData
 		return hadesRoomData
 	else
-		mod.DebugPrint("Error loading RoomData: " .. err)
+		mod.DebugPrint("Error loading RoomData: " .. err, 1)
 	end
 end
 

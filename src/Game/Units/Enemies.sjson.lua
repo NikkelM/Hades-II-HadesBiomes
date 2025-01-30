@@ -42,7 +42,7 @@ for i = #hadesEnemiesTable.Units, 1, -1 do
 					enemy[parentKey][oldName] = nil
 					mod.DebugPrint("Replaced " ..
 						parentKey ..
-						"." .. oldName .. " with " .. parentKey .. "." .. newName .. " for " .. enemy.Name .. " in Enemies.sjson")
+						"." .. oldName .. " with " .. parentKey .. "." .. newName .. " for " .. enemy.Name .. " in Enemies.sjson", 4)
 				end
 			end
 		end

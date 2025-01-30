@@ -5,7 +5,7 @@ local function renameEnemies(enemySet, setName)
 	for i, enemy in ipairs(enemySet) do
 		if mod.EnemyNameMappings[enemy] then
 			enemySet[i] = mod.EnemyNameMappings[enemy]
-			mod.DebugPrint("Renamed enemy: " .. enemy .. " to " .. enemySet[i] .. " in " .. setName)
+			mod.DebugPrint("Renamed enemy: " .. enemy .. " to " .. enemySet[i] .. " in " .. setName, 4)
 		end
 	end
 end

@@ -17,7 +17,7 @@ function mod.ConfirmHadesInstallation()
 		return false
 	end
 
-	mod.DebugPrint("Hades installation found at " .. mod.hadesGameFolder)
+	mod.DebugPrint("Hades installation found at " .. mod.hadesGameFolder, 3)
 	return true
 end
 
@@ -29,18 +29,26 @@ function mod.CompareChecksums()
 
 	local cachedChecksums = io.open(cachedChecksumsPath, "r")
 	local currentChecksums = io.open(currentChecksumsPath, "r")
+
 	if cachedChecksums and currentChecksums then
 		local cachedChecksumsContent = cachedChecksums:read("*a")
 		local currentChecksumsContent = currentChecksums:read("*a")
-		if cachedChecksumsContent ~= currentChecksumsContent then
+
+		if cachedChecksumsContent == "" then
+			mod.DebugPrint("First game start with the mod installed has been detected. Running first time setup.", 2)
+			-- Just in case the user disabled the setting, we will set it to true here
+			config.firstTimeSetup = true
+		elseif cachedChecksumsContent ~= currentChecksumsContent then
 			mod.DebugPrint(
-				"Game \"checksums.txt\" does not match the mod's cached \"checksums.txt\". This indicates a game update, the mod will be re-installed.")
+				"Game \"checksums.txt\" does not match the mod's cached \"checksums.txt\". This indicates a game or mod update, the mod will be re-installed.",
+				2)
 			-- This will cause a re-installation of the mod immediately after this function call
 			config.uninstall = true
 			config.firstTimeSetup = true
 		else
-			mod.DebugPrint("Game \"checksums.txt\" matches the mod's cached \"checksums.txt\". No game update detected.")
+			mod.DebugPrint("Game \"checksums.txt\" matches the mod's cached \"checksums.txt\". No game update detected, proceeding normally.", 3)
 		end
+
 		cachedChecksums:close()
 		currentChecksums:close()
 	end

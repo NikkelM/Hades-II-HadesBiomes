@@ -50,7 +50,7 @@ for i = #hadesObstacleAnimationsTable.Animations, 1, -1 do
 	local animation = hadesObstacleAnimationsTable.Animations[i]
 	if shouldRemoveAnimation(animation.Name) then
 		table.remove(hadesObstacleAnimationsTable.Animations, i)
-		mod.DebugPrint("Removed animation: " .. animation.Name .. " from EnemyAnimations.sjson")
+		mod.DebugPrint("Removed animation: " .. animation.Name .. " from EnemyAnimations.sjson", 4)
 	end
 end
 

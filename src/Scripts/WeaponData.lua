@@ -21,7 +21,7 @@ local function LoadHadesWeaponData()
 
 		return hadesWeaponData, hadesProjectileData
 	else
-		mod.DebugPrint("Error loading WeaponData: " .. err)
+		mod.DebugPrint("Error loading WeaponData: " .. err, 1)
 	end
 end
 
@@ -123,7 +123,7 @@ for oldName, newName in pairs(mod.EnemyWeaponMappings) do
 	if weaponModifications[oldName] then
 		renamedWeaponModifications[newName] = weaponModifications[oldName]
 		weaponModifications[oldName] = nil
-		mod.DebugPrint("Renamed weapon modification: " .. oldName .. " to " .. newName .. " in WeaponData")
+		mod.DebugPrint("Renamed weapon modification: " .. oldName .. " to " .. newName .. " in WeaponData", 4)
 	end
 end
 for key, value in pairs(renamedWeaponModifications) do
