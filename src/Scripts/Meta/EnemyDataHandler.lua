@@ -77,6 +77,9 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 end
 
 local enemyData = LoadHadesEnemyData()
+-- Breaks spawning Skelly, as it adds invalid conversations to the enemy
+-- Somehow doesn't work if set to mod.NilValue in enemyReplacements
+enemyData.TrainingMelee = nil
 
 -- Some enemies exist in both Hades and Hades II, so we need to rename the Hades enemies
 for oldName, newName in pairs(mod.EnemyNameMappings) do
@@ -104,8 +107,6 @@ mod.ModifyEnemyTrapData(enemyData)
 
 -- Replaces the key with the new value instead of modifying
 local enemyReplacements = {
-	-- Breaks spawning Skelly, as it adds invalid conversations to the enemy
-	TrainingMelee = { mod.NilValue },
 	BaseSpawner = {
 		-- SpawnerAI doesn't exist, spawn logic is in the weapon
 		AIOptions = { "AttackerAI", },
