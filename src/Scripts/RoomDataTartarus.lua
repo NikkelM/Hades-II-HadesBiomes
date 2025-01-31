@@ -9,6 +9,12 @@ local roomReplacements = {
 		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
 		AnomalyDoorChance = 0.0,
 	},
+	RoomOpening = {
+		-- Music
+		MusicActiveStems = { "Guitar", "Drums", "Bass", },
+		Music = mod.NilValue,
+		MusicRequirements = mod.NilValue,
+	},
 	A_Shop01 = {
 		-- Same requirements, but different format
 		GameStateRequirements = {
@@ -46,9 +52,12 @@ local roomModifications = {
 		LegalEncounters = { "OpeningGenerated" },
 		EntranceFunctionName = "RoomEntranceMaterialize",
 		EntranceFunctionArgs = { HeroGoalAngle = 335 },
-		UnthreadedEvents = {},
 		ThreadedEvents = {
 			-- This will work with roomSetDataTartarus.RoomOpening.ThreadedEvents[3].Args.SpawnTypes = { "TartarusGhost01" }, but has the problem of spawning all Ghosts on the same ID
+			[3] = mod.NilValue
+		},
+		StartUnthreadedEvents = {
+			-- Don't play the standard music event, it won't be able to get changed later
 			[3] = mod.NilValue
 		},
 		ForcedRewards = mod.NilValue,

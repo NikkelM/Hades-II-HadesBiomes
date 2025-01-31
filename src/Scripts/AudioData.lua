@@ -49,3 +49,44 @@ game.GlobalVoiceLines.StartNewHadesRunVoiceLines = {
 }
 
 game.GlobalVoiceLines.EmptyStartNewHadesRunVoiceLines = {}
+
+local tartarusRoomStartMusicEvents = {
+	GameStateRequirements = {
+		{
+			PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
+		},
+		{
+			PathFalse = { "CurrentRun", "Hero", "IsDead" }
+		},
+		{
+			PathFalse = { "AudioState", "MusicId" },
+		},
+		{
+			PathFalse = { "AudioState", "SecretMusicId" },
+		},
+	},
+	PlayBiomeMusic = true,
+	MusicSection = 0,
+	UseRoomMusicSection = true,
+}
+table.insert(game.RoomStartMusicEvents, tartarusRoomStartMusicEvents)
+
+game.MusicTrackData.Tartarus = {
+	{ Name = "/Music/MusicHadesReset_MC", },
+	{ Name = "/Music/MusicHadesReset2_MC", },
+	{ Name = "/Music/MusicHadesReset3_MC", },
+	{ Name = "/Music/MusicTartarus4_MC", },
+}
+game.MusicTrackData.Asphodel = {
+	{ Name = "/Music/MusicAsphodel1_MC", },
+	{ Name = "/Music/MusicAsphodel2_MC", },
+	{ Name = "/Music/MusicAsphodel3_MC", },
+}
+game.MusicTrackData.Elysium = {
+	{ Name = "/Music/MusicElysium1_MC", },
+	{ Name = "/Music/MusicElysium2_MC", },
+	{ Name = "/Music/MusicElysium3_MC", },
+}
+game.MusicTrackData.Styx = {
+	{ Name = "/Music/MusicStyx1_MC", },
+}
