@@ -1,175 +1,89 @@
+local function copyFiles(fileMappings, srcBasePath, destBasePath, fileType)
+	mod.DebugPrint("Copying " .. fileType .. " files...", 3)
+	for src, dest in pairs(fileMappings) do
+		local srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. src)
+		local destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest)
+		CopyFile(srcPath, destPath)
+		mod.DebugPrint("Copied " .. srcBasePath .. src .. " to " .. destBasePath .. dest, 4)
+	end
+end
+
+local function copyFilesByNames(fileNames, srcBasePath, destBasePath, extension, fileType, usePluginData)
+	mod.DebugPrint("Copying " .. fileType .. " files...", 3)
+	for _, name in ipairs(fileNames) do
+		local srcPath, destPath
+		if usePluginData then
+			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, srcBasePath .. name .. extension)
+		else
+			srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. name .. extension)
+		end
+		destPath = rom.path.combine(rom.paths.Content(), destBasePath .. name .. extension)
+		CopyFile(srcPath, destPath)
+		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
+	end
+end
+
 function mod.FirstTimeSetup()
 	mod.DebugPrint("Installing the mod...", 3)
 
-	-- Get and copy the .bank files
-	mod.DebugPrint("Copying .bank files...", 3)
-	for src, dest in pairs(AudioFileMappings) do
-		local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Audio\\FMOD\\Build\\Desktop\\" .. src)
-		local destPath = rom.path.combine(rom.paths.Content(), "Audio\\Desktop\\" .. dest)
+	copyFiles(AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank")
+	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\", ".pkg")
+	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\", ".bik")
+	copyFiles(SjsonFileMappings, "Content\\Game\\", "Game\\", ".sjson")
 
-		CopyFile(srcPath, destPath)
-		mod.DebugPrint("Copied Hades\\Content\\Audio\\FMOD\\Build\\Desktop\\" ..
-			src .. " to Hades II\\Content\\Audio\\Desktop\\" .. dest, 4)
-	end
-
-	-- Get and copy the .pkg files for the different biomes
-	mod.DebugPrint("Copying .pkg files...", 3)
-
-	for src, dest in pairs(PackageFileMappings) do
-		local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Win\\Packages\\" .. src)
-		local destPath = rom.path.combine(rom.paths.Content(), "Packages\\" .. dest)
-
-		CopyFile(srcPath, destPath)
-		mod.DebugPrint("Copied Hades\\Content\\Win\\Packages\\" .. src .. " to Hades II\\Content\\Packages\\" .. dest, 4)
-	end
-
-	-- Get and copy the .bik and .bik_atlas files
-	mod.DebugPrint("Copying .bik files...", 3)
-
-	for src, dest in pairs(BikFileMappings) do
-		local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Movies\\" .. src)
-		local destPath = rom.path.combine(rom.paths.Content(), "Movies\\" .. dest)
-
-		CopyFile(srcPath, destPath)
-		mod.DebugPrint("Copied Hades\\Content\\Movies\\" .. src .. " to Hades II\\Content\\Movies\\" .. dest, 4)
-	end
-
-	-- Get and copy the .sjson files
-	mod.DebugPrint("Copying .sjson files...", 3)
-
-	for src, dest in pairs(SjsonFileMappings) do
-		local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\" .. src)
-		local destPath = rom.path.combine(rom.paths.Content(), "Game\\" .. dest)
-
-		CopyFile(srcPath, destPath)
-		mod.DebugPrint("Copied Hades\\Content\\Game\\" ..
-			src .. " to Hades II\\Content\\Game\\" .. dest, 4)
-	end
-
-	-- Copy .map_text files
-	mod.DebugPrint("Copying .map_text files...", 3)
-
-	for _, name in ipairs(MapFileNames) do
-		local mapTextSrc = "Content\\Maps\\" .. name .. ".map_text"
-		local mapTextDest = "Maps\\" .. name .. ".map_text"
-		local srcPath = nil
-		local destPath = rom.path.combine(rom.paths.Content(), mapTextDest)
-
-		-- Check if the map_text file is defined in the MapTextFileNames table, in which case it is in the plugins_data folder, and should not be taken from the Hades installation
-		if MapTextFileNames[name] then
-			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, mapTextSrc)
-		else
-			srcPath = rom.path.combine(mod.hadesGameFolder, mapTextSrc)
-		end
-
-		CopyFile(srcPath, destPath)
-
-		if MapTextFileNames[name] then
-			mod.DebugPrint("Copied plugins_data\\" .. mapTextSrc .. " to Hades II\\Content\\" .. mapTextDest, 4)
-		else
-			mod.DebugPrint("Copied Hades\\" .. mapTextSrc .. " to Hades II\\Content\\" .. mapTextDest, 4)
-		end
-	end
-
-	-- Copy over re-encoded .thing_bin files from the plugins_data folder to the game folder
-	mod.DebugPrint("Copying re-encoded .thing_bin files (from the mod's \"plugin_data\" folder)...", 3)
-
-	for _, name in ipairs(MapFileNames) do
-		local thingBinSrc = _PLUGIN.guid .. "\\Content\\Maps\\bin\\" .. name .. ".thing_bin"
-		local thingBinDest = "Maps\\bin\\" .. name .. ".thing_bin"
-		local srcPath = rom.path.combine(rom.paths.plugins_data(), thingBinSrc)
-		local destPath = rom.path.combine(rom.paths.Content(), thingBinDest)
-
-		CopyFile(srcPath, destPath)
-		mod.DebugPrint("Copied plugins_data\\" .. thingBinSrc .. " to Hades II\\Content\\" .. thingBinDest, 4)
-	end
+	copyFilesByNames(MapFileNames, "Content\\Maps\\", "Maps\\", ".map_text", ".map_text", false)
+	copyFilesByNames(MapFileNames, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", ".thing_bin", true)
 
 	mod.DebugPrint("Copying help text files...", 3)
 	CopyHadesHelpTexts()
 
-	-- This is done extra, since a LOT of duplicate animations must be removed, and the original file is too large to be hooked into directly
 	mod.DebugPrint("Copying Fx animations...", 3)
 	CopyHadesFxAnimations()
 
-	-- Check that all files exist
 	if not mod.CheckRequiredFiles() then
 		error(
-			"Required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check your config file.")
+		"Required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check your config file.")
 	end
 
-	-- Copy the Scripts/checksums.txt to the plugins_data folder
 	mod.DebugPrint("Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
-
 	local checksumsSrc = rom.path.combine(rom.paths.Content(), "Scripts\\checksums.txt")
 	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
 	CopyFile(checksumsSrc, checksumsDest, true)
 
-	-- Will also update the .cfg file for the user
 	config.firstTimeSetup = false
-
 	mod.DebugPrint("Finished mod installation and first time setup.", 3)
 end
 
--- Ensure that required files exist, i.e. the first time setup has been successfully run
+local function checkFilesExist(fileMappings, basePath)
+	for src, dest in pairs(fileMappings) do
+		local destPath = rom.path.combine(rom.paths.Content(), basePath .. dest)
+		if not io.open(destPath, "r") then
+			mod.DebugPrint("Missing file: " .. destPath, 1)
+			return false
+		end
+	end
+	return true
+end
+
+local function checkFilesExistByNames(fileNames, basePath, extension)
+	for _, name in ipairs(fileNames) do
+		local destPath = rom.path.combine(rom.paths.Content(), basePath .. name .. extension)
+		if not io.open(destPath, "r") then
+			mod.DebugPrint("Missing file: " .. destPath, 1)
+			return false
+		end
+	end
+	return true
+end
+
 function mod.CheckRequiredFiles()
-	-- TODO: Refactor to only print once
-	-- Ensure .bank files exist
-	for src, dest in pairs(AudioFileMappings) do
-		local destPath = rom.paths.Content() .. "\\Audio\\Desktop\\" .. dest
-		if not io.open(destPath, "r") then
-			mod.DebugPrint("Missing file: " .. destPath, 1)
-			return false
-		end
-	end
+	if not checkFilesExist(AudioFileMappings, "Audio\\Desktop\\") then return false end
+	if not checkFilesExist(PackageFileMappings, "Packages\\") then return false end
+	if not checkFilesExist(BikFileMappings, "Movies\\") then return false end
+	if not checkFilesExist(SjsonFileMappings, "Game\\") then return false end
+	if not checkFilesExistByNames(MapFileNames, "Maps\\", ".map_text") then return false end
+	if not checkFilesExistByNames(MapFileNames, "Maps\\bin\\", ".thing_bin") then return false end
 
-	-- Ensure .pkg files exist
-	for src, dest in pairs(PackageFileMappings) do
-		local destPath = rom.paths.Content() .. "\\Packages\\" .. dest
-		if not io.open(destPath, "r") then
-			mod.DebugPrint("Missing file: " .. destPath, 1)
-			return false
-		end
-	end
-
-	-- Ensure .bik files exist
-	for src, dest in pairs(BikFileMappings) do
-		local destPath = rom.paths.Content() .. "\\Movies\\" .. dest
-		if not io.open(destPath, "r") then
-			mod.DebugPrint("Missing file: " .. destPath, 1)
-			return false
-		end
-	end
-
-	-- Ensure .sjson files exist
-	for src, dest in pairs(SjsonFileMappings) do
-		local destPath = rom.paths.Content() .. "\\Game\\" .. dest
-		if not io.open(destPath, "r") then
-			mod.DebugPrint("Missing file: " .. destPath, 1)
-			return false
-		end
-	end
-
-	-- Ensure .map_text files exist
-	for _, name in ipairs(MapFileNames) do
-		local mapTextDest = "Maps\\" .. name .. ".map_text"
-		local destPath = rom.paths.Content() .. "\\" .. mapTextDest
-		if not io.open(destPath, "r") then
-			mod.DebugPrint("Missing file: " .. destPath, 1)
-			return false
-		end
-	end
-
-	-- Ensure .thing_bin files exist
-	for _, name in ipairs(MapFileNames) do
-		local thingBinDest = "Maps\\bin\\" .. name .. ".thing_bin"
-		local destPath = rom.paths.Content() .. "\\" .. thingBinDest
-		if not io.open(destPath, "r") then
-			mod.DebugPrint("Missing file: " .. destPath, 1)
-			return false
-		end
-	end
-
-	-- Ensure help text files exist
 	for _, language in ipairs(HelpTextLanguages) do
 		local helpTextFile = rom.path.combine(rom.paths.Content(),
 			'Game\\Text\\' .. language .. '\\HelpTextHades.' .. language .. '.sjson')
