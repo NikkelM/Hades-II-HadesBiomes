@@ -152,8 +152,13 @@ end
 -- Triggered when a breakable is hit
 function game.BreakableOnHitModsNikkelMHadesBiomes(victim, attacker, triggerArgs)
 	triggerArgs = triggerArgs or {}
-	game.CheckMoneyDrop( victim, victim.MoneyDropOnDeath, attacker )
+	game.CheckMoneyDrop(victim, victim.MoneyDropOnDeath, attacker)
 	game.KillPresentation(victim, attacker, triggerArgs)
 	-- Only destroy the breakable once
 	victim.IgnoreDamage = true
+	-- Turn off collision
+	SetThingProperty({ Property = "StopsUnits", Value = false, DestinationId = victim.ObjectId })
+	SetThingProperty({ Property = "StopsLight", Value = false, DestinationId = victim.ObjectId })
+	SetThingProperty({ Property = "StopsProjectiles", Value = false, DestinationId = victim.ObjectId })
+	SetUnitProperty({ Property = "CollideWithUnits", Value = false, DestinationId = victim.ObjectId })
 end
