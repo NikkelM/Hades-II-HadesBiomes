@@ -321,4 +321,3 @@ This needs to be done in a lot of places:
 
 - In `NameMappingData.lua`, add the old and new enemy name to the `mod.EnemyNameMappings` table.
   - This will rename the key in a couple of places: The Helptext files during installation, in `EnemyDataHandler.lua`, `EnemySets.lua`
-  <!-- TODO: Complete this with everywhere replacements are done - use LightRanged as an example -->

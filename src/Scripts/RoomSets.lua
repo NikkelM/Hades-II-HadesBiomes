@@ -5,15 +5,12 @@ local newRoomSets = {
 		-- "RoomSimple01",
 		"RoomOpening",
 
-		-- TODO: Not implemented yet
 		-- "A_Boss01",
 		-- "A_Boss02",
 		-- "A_Boss03",
 
-		-- TODO: Not implemented yet
 		-- "A_PostBoss01",
 
-		-- TODO: LegalEncounters don't exist
 		"A_MiniBoss01",
 		-- "A_MiniBoss02",
 		-- "A_MiniBoss03",
@@ -22,7 +19,6 @@ local newRoomSets = {
 		"A_PreBoss01",
 		"A_Shop01",
 
-		-- TODO: LegalEncounters = { "Story_Sisyphus_01" } doesn't exist
 		-- "A_Story01",
 
 		"A_Reprieve01",
@@ -62,8 +58,8 @@ for key, newRoomSet in pairs(newRoomSets) do
 	game.RoomSets[key] = newRoomSet
 end
 
+-- This is for the vow that may spawn enemies from the next Biome
 local newNextRoomSets = {
-	-- TODO: Dummy, after Tartarus comes Erebus
 	Tartarus = "F"
 }
 

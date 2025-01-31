@@ -62,7 +62,6 @@ function mod.StartHadesRun(source, args)
 		mod.DebugPrint("Assigned the following mod save file identifier to the current save slot: " .. game.GameState.ModsNikkelMHadesBiomesSaveFileIndex, 4)
 	end
 
-	-- TODO: Chaos gate has sound
 	-- Replace the voicelines that can play when entering the Chaos gate
 	local originalSecretUnlockedVoiceLines = game.DeepCopyTable(game.HeroVoiceLines.SecretUnlockedVoiceLines)
 	game.HeroVoiceLines.SecretUnlockedVoiceLines = game.GlobalVoiceLines.StartNewHadesRunVoiceLines

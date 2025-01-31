@@ -104,8 +104,6 @@ That's it - when first starting the game, the mod will copy any required files f
 
 > **Note**: With the current approach, these files will stay in your game folder and be read by the game even if you switch profiles or play vanilla. I do not expect this to cause any issues, as the data within these files should just not have any effect in these cases. If you want to make a clean switch, use the `uninstall` option in the mod config to remove the files from your game folder.
 
-<!-- TODO: How much disk space is needed? #10 -->
-
 > **Note**: Using this mod will copy files from the Hades installation folder to the Hades II folder. This requires at least an additional **XX** GB of disk space.
 
 ## Uninstallation

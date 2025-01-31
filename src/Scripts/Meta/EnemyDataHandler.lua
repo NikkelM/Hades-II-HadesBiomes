@@ -200,7 +200,6 @@ local enemyModifications = {
 			[2] = { Distance = 20 },
 			[3] = { Distance = 20 }
 		},
-		-- TODO: Test if works
 		SpawnEvents = {
 			{
 				FunctionName = "CreateTethers",
@@ -288,8 +287,6 @@ local enemyModifications = {
 	},
 
 	-- ENVIRONMENT
-	-- TODO: No visible graphics in RoomOpening
-	-- TODO: Not visible when loading a save
 	Breakable = {
 		CannotDieFromDamage = true,
 		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",

@@ -30,7 +30,7 @@ function game.CreateTethers(newEnemy, args)
 				Attach({
 					Id = tetherId,
 					DestinationId = newEnemy.ObjectId,
-					-- TODO: The issue with the tethers is that TetherDistance and TetherElasticity are no longer existent in Hades II - issue #22
+					-- The issue with the tethers is that TetherDistance and TetherElasticity are no longer existent in Hades II - issue #22
 					-- TetherDistance = tether.Distance,
 					-- TetherElasticity = tether.Elasticity,
 					-- As a workaround, just do some static offsets

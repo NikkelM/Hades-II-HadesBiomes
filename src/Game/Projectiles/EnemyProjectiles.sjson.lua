@@ -16,7 +16,6 @@ local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Pro
 
 -- Projectiles that are defined in a different file and therefore not caught by AddTableKeysSkipDupes()
 local projectilesToRemove = {
-	-- TODO: This is also defined as a player weapon in Hades II - do I need to duplicate this with a different name in order to have the original Hades weapon work as expected?
 	"HadesCastBeam",
 	"HadesCastBeamNoTracking"
 }
