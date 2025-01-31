@@ -12,13 +12,15 @@ local roomReplacements = {
 	A_Shop01 = {
 		-- Same requirements, but different format
 		GameStateRequirements = {
-			FunctionName = "RequiredMinExits",
-			FunctionArgs = { Count = 2 },
-		},
-		{
-			Path = { "CurrentRun", "BiomeDepthCache" },
-			Comparison = "<=",
-			Value = 6,
+			{
+				FunctionName = "RequiredMinExits",
+				FunctionArgs = { Count = 2 },
+			},
+			{
+				Path = { "CurrentRun", "BiomeDepthCache" },
+				Comparison = "<=",
+				Value = 6,
+			},
 		},
 	}
 }
