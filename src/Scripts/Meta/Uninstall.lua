@@ -2,12 +2,12 @@ function mod.Uninstall()
 	-- Check if any savegame has a modded run as the most recent one - block uninstallation if so, as it would corrupt the save file
 	local cachedRuns = mod.LoadCachedRunsFile()
 	if config.uninstall == "I AM SURE - UNINSTALL" then
-		mod.DebugPrint("Uninstalling mod - forced uninstallation! Saved games may corrupt. Re-install the mod to try and restore them.", 2)
+		mod.DebugPrint("Uninstalling mod - forced uninstallation! Savegames may corrupt. Re-install the mod to try and restore them.", 2)
 	else
 		for saveFileIndex, isActive in pairs(cachedRuns.ActiveModdedRuns) do
 			if isActive then
 				mod.DebugPrint(
-				"For at least one of your save files, the most recent run is/was a modded Hades run. The mod will not uninstall, otherwise your savegame will corrupt! Make sure you are currently in a normal Hades II run, or were before returning to the crossroads! Then try uninstalling the mod again. Are you SURE this is wrong? Set \"uninstall\" in the config to \"I AM SURE - UNINSTALL\".",
+				"For at least one of your save files, the most recent run is/was a modded Hades run. The mod will not uninstall, otherwise your savegame will corrupt! Make sure you are currently in a normal Hades II run, or were in one before you returned to the crossroads! Then try uninstalling the mod again. Are you SURE this is wrong? Set \"uninstall\" in the config to \"I AM SURE - UNINSTALL\".",
 					1)
 				config.uninstall = "false"
 				return false
