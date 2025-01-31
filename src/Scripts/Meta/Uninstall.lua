@@ -36,7 +36,7 @@ function mod.Uninstall()
 	if config.uninstall == "I AM SURE - UNINSTALL" then
 		mod.DebugPrint(
 			"Uninstalling mod - forced uninstallation! Savegames may corrupt. Re-install the mod to try and restore them.", 2)
-	else
+	elseif not config.firstTimeSetup then
 		for saveFileIndex, isActive in pairs(cachedRuns.ActiveModdedRuns) do
 			if isActive then
 				mod.DebugPrint(
@@ -46,8 +46,8 @@ function mod.Uninstall()
 				return false
 			end
 		end
-		mod.DebugPrint("Uninstalling mod - removing files added by the mod", 3)
 	end
+	mod.DebugPrint("Uninstalling mod - removing files added by the mod", 3)
 
 	removeFiles(AudioFileMappings, "Audio\\Desktop\\", ".bank")
 	removeFiles(PackageFileMappings, "Packages\\", ".pkg")

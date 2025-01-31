@@ -31,7 +31,20 @@ function mod.FirstTimeSetup()
 	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\", ".bik")
 	copyFiles(SjsonFileMappings, "Content\\Game\\", "Game\\", ".sjson")
 
-	copyFilesByNames(MapFileNames, "Content\\Maps\\", "Maps\\", ".map_text", ".map_text", false)
+	-- Special treatment, as some are copied from the plugins_data, and some from the Hades installation
+	mod.DebugPrint("Copying map_text files...", 3)
+	for _, name in ipairs(MapFileNames) do
+		local srcPath, destPath
+		if MapTextFileNames[name] then
+			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content\\Maps\\" .. name .. ".map_text")
+		else
+			srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Maps\\" .. name .. ".map_text")
+		end
+		destPath = rom.path.combine(rom.paths.Content(), "Maps\\" .. name .. ".map_text")
+		CopyFile(srcPath, destPath)
+		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
+	end
+
 	copyFilesByNames(MapFileNames, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", ".thing_bin", true)
 
 	mod.DebugPrint("Copying help text files...", 3)
@@ -42,7 +55,7 @@ function mod.FirstTimeSetup()
 
 	if not mod.CheckRequiredFiles() then
 		error(
-		"Required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check your config file.")
+			"Required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check your config file.")
 	end
 
 	mod.DebugPrint("Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
