@@ -230,16 +230,11 @@ local enemyModifications = {
 			},
 		},
 	},
-	-- TODO: When it gets thrown for the spawn, it disappears
-	-- TODO: Instantly locks on to the player and has perfect tracking
 	HeavyRangedSplitterFragment = {
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
 		DeathFx = "HeavyRangedSplitterFragmentDeath",
 		DeathGraphic = "HeavyRangedSplitterFragmentDeath",
-		ActivateFx = "nil",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
-		ActivateAnimation = "EnemyActivate",
+		UseActivatePresentation = false,
 	},
 	Swarmer = {
 		StunAnimations = {
