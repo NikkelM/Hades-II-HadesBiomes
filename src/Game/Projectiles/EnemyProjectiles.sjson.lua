@@ -40,7 +40,6 @@ local hadesProjectilesModifications = {
 	HeavyRangedWeapon = {
 		NumPenetrations = 99999,
 		InflictedDamageSound = "/SFX/BurnDamage",
-		-- MultiDetonate = true,
 	},
 	HeavyRangedSplitterFragment = {
 		DieWithOwner = true,
