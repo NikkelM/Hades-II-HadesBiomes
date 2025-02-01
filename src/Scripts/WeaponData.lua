@@ -119,6 +119,10 @@ local weaponModifications = {
 		InheritFrom = { "HeavyRangedWeapon", },
 		AIData = {
 			ProjectileName = "HeavyRangedWeaponSplitter",
+      NumProjectiles = 8,
+      ProjectileStartAngleOffset = 45,
+      ProjectileInterval = 0.25,
+			ProjectileAngleEvenlySpaced = true,
 		},
 	},
 	HeavyRangedSplitterFragment = {
@@ -181,6 +185,10 @@ end
 
 local projectileModifications = {
 	HeavyRangedWeapon = {
+		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
+	},
+	HeavyRangedWeaponSplitter = {
+		InheritFrom = { "HeavyRangedWeapon", },
 		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
 	},
 }
