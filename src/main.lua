@@ -176,6 +176,7 @@ local function on_ready()
 		import "Scripts/ObstacleData.lua"
 		import "Scripts/AudioData.lua"
 
+		import "Scripts/CombatLogic.lua"
 		import "Scripts/RunLogic.lua"
 		import "Scripts/RoomLogic.lua"
 		import "Scripts/CombatPresentation.lua"

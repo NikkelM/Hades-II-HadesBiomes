@@ -62,8 +62,6 @@ Note: This is irrelevant with the current method of loading the data.
 
 ### Key-Value replacements for RoomData files
 
-<!-- TODO -->
-
 - `RoomSetName` needs to be added to the base room file for the Biome, e.g. `RoomSetName = "A"` for Tartarus.
 - Each room needs a `Name` set to itself, this is handled already by the `mod.ApplyModificationsAndInherit()` function.
 

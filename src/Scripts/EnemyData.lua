@@ -232,12 +232,11 @@ local enemyModifications = {
 	},
 	-- TODO: When it gets thrown for the spawn, it disappears
 	-- TODO: Instantly locks on to the player and has perfect tracking
-	-- TODO: First "hit" does damage even though it shouldn't (see HeavyRanged)
 	HeavyRangedSplitterFragment = {
-		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
+		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
 		DeathFx = "HeavyRangedSplitterFragmentDeath",
 		DeathGraphic = "HeavyRangedSplitterFragmentDeath",
-		ActivateFx = "EnemySummonRuneSmall",
+		ActivateFx = "nil",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivate",
@@ -370,7 +369,6 @@ local enemyKeyReplacements = {
 		AIBufferDistance = "RetreatBufferDistance",
 		StandOffTime = "SurroundRefreshInterval",
 	},
-	WipeEnemyTypesOnKill = "WipeEnemiesOnKill",
 }
 
 ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)

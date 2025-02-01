@@ -115,9 +115,21 @@ local weaponModifications = {
 			LoSEndBuffer = 32,
 		},
 	},
-	-- TODO: The fragment's projectile stays even when hit(?) and after the enemy dies
 	HeavyRangedWeaponSplitter = {
 		InheritFrom = { "HeavyRangedWeapon", },
+		AIData = {
+			ProjectileName = "HeavyRangedWeaponSplitter",
+		},
+	},
+	HeavyRangedSplitterFragment = {
+		AIData = {
+			TargetClosestOfTypes = { "HeavyRangedSplitterMiniboss" },
+			TargetClosest = mod.NilValue,
+			TargetFriends = mod.NilValue,
+			ExpireProjectilesOnHitStun = true,
+			ExpireProjectilesOnFreeze = true,
+			ExpireProjectilesOnPolymorph = true,
+		},
 	},
 }
 
@@ -138,6 +150,7 @@ local weaponKeyReplacements = {
 	AIData = {
 		AIAttackDistance = "AttackDistance",
 		AIBufferDistance = "RetreatBufferDistance",
+		TargetFriends = "TargetRequiredKillEnemy",
 	},
 }
 
@@ -168,11 +181,6 @@ end
 
 local projectileModifications = {
 	HeavyRangedWeapon = {
-		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
-	},
-	-- TODO: Doesn't work - still deals damage immediately
-	HeavyRangedWeaponSplitter = {
-		InheritFrom = { "HeavyRangedWeapon", },
 		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
 	},
 }

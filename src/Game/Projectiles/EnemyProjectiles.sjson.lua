@@ -40,7 +40,10 @@ local hadesProjectilesModifications = {
 	HeavyRangedWeapon = {
 		NumPenetrations = 99999,
 		InflictedDamageSound = "/SFX/BurnDamage",
-		MultiDetonate = true,
+		-- MultiDetonate = true,
+	},
+	HeavyRangedSplitterFragment = {
+		DieWithOwner = true,
 	},
 }
 
@@ -58,7 +61,7 @@ end
 -- Rename attached animations/Fx graphics
 for oldName, newName in pairs(mod.FxAnimationMappings) do
 	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "Thing", "Graphic" }, "EnemyProjectiles.sjson")
-	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "Thing", "AttachedAnim" }, "EnemyProjectiles.sjson")
+	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "Thing", "AttachedAnim" },	"EnemyProjectiles.sjson")
 	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "DetonateGraphic" }, "EnemyProjectiles.sjson")
 end
 

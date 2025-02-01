@@ -104,13 +104,3 @@ function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victim
 	-- Suppress the damage presentation on the player (blood splatter etc.)
 	triggerArgs.SourceWeapon = "HeavyRangedWeapon"
 end
-
--- When the enemy's armor is broken, remove the outline from the tethers as well
-modutil.mod.Path.Wrap("DoEnemyHealthBufferDeplete", function(base, enemy)
-	base(enemy)
-	if enemy.TetherIds ~= nil then
-		for k, tetherId in ipairs(enemy.TetherIds) do
-			RemoveOutline({ Id = tetherId })
-		end
-	end
-end)

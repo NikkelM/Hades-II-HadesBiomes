@@ -79,6 +79,14 @@ local encounterModifications = {
 	MiniBossGrenadier = {
 		LoadPackages = { "Asphodel" },
 	},
+	MiniBossHeavyRangedSplitter = {
+		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
+		CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
+	},
+	-- MiniBossHeavyRangedSplitter2 = {
+		-- WipeEnemiesOnKill = { "HeavyRangedSplitterMiniboss" },		
+		-- CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
+	-- },
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataTartarus, encounterModifications, encounterReplacements)

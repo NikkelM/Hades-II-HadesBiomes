@@ -1,4 +1,4 @@
--- TODO: This file is currently not used
+-- This file is currently not used
 -- Adds non-character enemy animations from Hades to Hades II
 
 local hadesObstacleAnimationsFile = rom.path.combine(mod.hadesGameFolder,
