@@ -9,6 +9,8 @@ local encounterDataTartarus = {
 
 	-- Minibosses
 	MiniBossGrenadier = encounterData.MiniBossGrenadier,
+	MiniBossHeavyRangedSplitter = encounterData.MiniBossHeavyRangedSplitter,
+	-- MiniBossHeavyRangedSplitter2 = encounterData.MiniBossHeavyRangedSplitter2,
 
 	-- Challenge encounters within a room
 	TimeChallengeTartarus = encounterData.TimeChallengeTartarus,

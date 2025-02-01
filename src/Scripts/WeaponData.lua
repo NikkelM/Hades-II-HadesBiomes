@@ -115,6 +115,10 @@ local weaponModifications = {
 			LoSEndBuffer = 32,
 		},
 	},
+	-- TODO: The fragment's projectile stays even when hit(?) and after the enemy dies
+	HeavyRangedWeaponSplitter = {
+		InheritFrom = { "HeavyRangedWeapon", },
+	},
 }
 
 local renamedWeaponModifications = {}
@@ -165,7 +169,12 @@ end
 local projectileModifications = {
 	HeavyRangedWeapon = {
 		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
-	}
+	},
+	-- TODO: Doesn't work - still deals damage immediately
+	HeavyRangedWeaponSplitter = {
+		InheritFrom = { "HeavyRangedWeapon", },
+		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
+	},
 }
 
 local projectileKeyReplacements = {

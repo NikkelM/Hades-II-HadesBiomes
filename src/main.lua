@@ -147,7 +147,7 @@ local function on_ready()
 		import "Scripts/EnemySets.lua"
 
 		import "Scripts/Meta/EnemyTrapDataHandler.lua"
-		import "Scripts/Meta/EnemyDataHandler.lua"
+		import "Scripts/EnemyData.lua"
 		import "Scripts/Meta/EncounterDataHandler.lua"
 		import "Scripts/Meta/RoomDataHandler.lua"
 
@@ -178,6 +178,7 @@ local function on_ready()
 
 		import "Scripts/RunLogic.lua"
 		import "Scripts/RoomLogic.lua"
+		import "Scripts/CombatPresentation.lua"
 		import "Scripts/RewardPresentation.lua"
 		import "Scripts/RoomPresentation.lua"
 		import "Scripts/DeathLoopData.lua"

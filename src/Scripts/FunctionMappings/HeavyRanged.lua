@@ -58,12 +58,6 @@ function game.CreateTethers(newEnemy, args)
 	end
 end
 
--- Wrap around KillPresentation to call HandleTetherParentDeath() before the victim is destroyed in Kill()
-modutil.mod.Path.Wrap("KillPresentation", function(base, victim, killer, args)
-	game.thread(game.HandleTetherParentDeath, victim)
-	base(victim, killer, args)
-end)
-
 function game.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimation)
 	if victim.TetherIds == nil then
 		return

@@ -1,0 +1,5 @@
+-- Wrap around KillPresentation to call HandleTetherParentDeath() before the victim is destroyed in Kill()
+modutil.mod.Path.Wrap("KillPresentation", function(base, victim, killer, args)
+	game.thread(game.HandleTetherParentDeath, victim)
+	base(victim, killer, args)
+end)
