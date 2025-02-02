@@ -51,7 +51,7 @@ local roomReplacements = {
 				Path = { "CurrentRun", "RoomsEntered" },
 				HasNone = { "A_MiniBoss01", "A_MiniBoss03", "A_MiniBoss04" },
 			},
-			-- NamedRequirements = { "MinibossCountShrineUpgradeActive" }, -- Disabled for debugging
+			NamedRequirements = { "MinibossCountShrineUpgradeActive" },
 			-- RequiredSeenEncounter = "BossHarpy1", -- Not implemented yet
 		},
 	},
@@ -61,7 +61,7 @@ local roomReplacements = {
 				Path = { "CurrentRun", "RoomsEntered" },
 				HasNone = { "A_MiniBoss01", "A_MiniBoss02", "A_MiniBoss03" },
 			},
-			-- NamedRequirements = { "MinibossCountShrineUpgradeActive" }, -- Disabled for debugging
+			NamedRequirements = { "MinibossCountShrineUpgradeActive" },
 			-- RequiredSeenEncounter = "BossHarpy1", -- Not implemented yet
 		},
 	},
