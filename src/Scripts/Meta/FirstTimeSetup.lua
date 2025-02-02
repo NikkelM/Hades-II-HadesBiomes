@@ -67,48 +67,6 @@ function mod.FirstTimeSetup()
 	mod.DebugPrint("Finished mod installation and first time setup.", 3)
 end
 
-local function checkFilesExist(fileMappings, basePath)
-	for src, dest in pairs(fileMappings) do
-		local destPath = rom.path.combine(rom.paths.Content(), basePath .. dest)
-		if not io.open(destPath, "r") then
-			mod.DebugPrint("Missing file: " .. destPath, 1)
-			return false
-		end
-	end
-	return true
-end
-
-local function checkFilesExistByNames(fileNames, basePath, extension)
-	for _, name in ipairs(fileNames) do
-		local destPath = rom.path.combine(rom.paths.Content(), basePath .. name .. extension)
-		if not io.open(destPath, "r") then
-			mod.DebugPrint("Missing file: " .. destPath, 1)
-			return false
-		end
-	end
-	return true
-end
-
-function mod.CheckRequiredFiles()
-	if not checkFilesExist(AudioFileMappings, "Audio\\Desktop\\") then return false end
-	if not checkFilesExist(PackageFileMappings, "Packages\\") then return false end
-	if not checkFilesExist(BikFileMappings, "Movies\\") then return false end
-	if not checkFilesExist(SjsonFileMappings, "Game\\") then return false end
-	if not checkFilesExistByNames(MapFileNames, "Maps\\", ".map_text") then return false end
-	if not checkFilesExistByNames(MapFileNames, "Maps\\bin\\", ".thing_bin") then return false end
-
-	for _, language in ipairs(HelpTextLanguages) do
-		local helpTextFile = rom.path.combine(rom.paths.Content(),
-			'Game\\Text\\' .. language .. '\\HelpTextHades.' .. language .. '.sjson')
-		if not io.open(helpTextFile, "r") then
-			mod.DebugPrint("Missing file: " .. helpTextFile, 1)
-			return false
-		end
-	end
-
-	return true
-end
-
 -- Creates a new helpTextFile for all given languages with any IDs that do not exist in the Hades II help text files
 function CopyHadesHelpTexts()
 	for _, language in ipairs(HelpTextLanguages) do

@@ -1,10 +1,9 @@
 -- Contains file names/patterns required for copying over files from the Hades installation, and for uninstalling the mod
 
 AudioFileMappings = {
-	-- Enemy sounds (not SFX!)
 	["Enemies.bank"] = "EnemiesModsNikkelMHadesBiomes.bank",
-	-- SFX
 	["Sounds.bank"] = "SoundsModsNikkelMHadesBiomes.bank",
+	["Tartarus.bank"] = "TartarusModsNikkelMHadesBiomes.bank",
 }
 
 PackageFileMappings = {
@@ -160,6 +159,31 @@ BikFileMappings = {
 	["EnemyStyxThiefWalk_Bink.bik_atlas"] = "1080p\\EnemyStyxThiefWalk_Bink.bik_atlas",
 	["720p\\EnemyStyxThiefWalk_Bink.bik"] = "720p\\EnemyStyxThiefWalk_Bink.bik",
 	["720p\\EnemyStyxThiefWalk_Bink.bik_atlas"] = "720p\\EnemyStyxThiefWalk_Bink.bik_atlas",
+	-- Wretch assassin
+	["Enemy_WretchAssassin_Idle_Bink.bik"] = "1080p\\Enemy_WretchAssassin_Idle_Bink.bik",
+	["Enemy_WretchAssassin_Idle_Bink.bik_atlas"] = "1080p\\Enemy_WretchAssassin_Idle_Bink.bik_atlas",
+	["720p\\Enemy_WretchAssassin_Idle_Bink.bik"] = "720p\\Enemy_WretchAssassin_Idle_Bink.bik",
+	["720p\\Enemy_WretchAssassin_Idle_Bink.bik_atlas"] = "720p\\Enemy_WretchAssassin_Idle_Bink.bik_atlas",
+	["Enemy_WretchAssassin_Teleport_Bink.bik"] = "1080p\\Enemy_WretchAssassin_Teleport_Bink.bik",
+	["Enemy_WretchAssassin_Teleport_Bink.bik_atlas"] = "1080p\\Enemy_WretchAssassin_Teleport_Bink.bik_atlas",
+	["720p\\Enemy_WretchAssassin_Teleport_Bink.bik"] = "720p\\Enemy_WretchAssassin_Teleport_Bink.bik",
+	["720p\\Enemy_WretchAssassin_Teleport_Bink.bik_atlas"] = "720p\\Enemy_WretchAssassin_Teleport_Bink.bik_atlas",
+	["Enemy_WretchAssassin_OnHit_Bink.bik"] = "1080p\\Enemy_WretchAssassin_OnHit_Bink.bik",
+	["Enemy_WretchAssassin_OnHit_Bink.bik_atlas"] = "1080p\\Enemy_WretchAssassin_OnHit_Bink.bik_atlas",
+	["720p\\Enemy_WretchAssassin_OnHit_Bink.bik"] = "720p\\Enemy_WretchAssassin_OnHit_Bink.bik",
+	["720p\\Enemy_WretchAssassin_OnHit_Bink.bik_atlas"] = "720p\\Enemy_WretchAssassin_OnHit_Bink.bik_atlas",
+	["Enemy_WretchAssassinRange_Bink.bik"] = "1080p\\Enemy_WretchAssassinRange_Bink.bik",
+	["Enemy_WretchAssassinRange_Bink.bik_atlas"] = "1080p\\Enemy_WretchAssassinRange_Bink.bik_atlas",
+	["720p\\Enemy_WretchAssassinRange_Bink.bik"] = "720p\\Enemy_WretchAssassinRange_Bink.bik",
+	["720p\\Enemy_WretchAssassinRange_Bink.bik_atlas"] = "720p\\Enemy_WretchAssassinRange_Bink.bik_atlas",
+	["Enemy_WretchAssassinStab_Bink.bik"] = "1080p\\Enemy_WretchAssassinStab_Bink.bik",
+	["Enemy_WretchAssassinStab_Bink.bik_atlas"] = "1080p\\Enemy_WretchAssassinStab_Bink.bik_atlas",
+	["720p\\Enemy_WretchAssassinStab_Bink.bik"] = "720p\\Enemy_WretchAssassinStab_Bink.bik",
+	["720p\\Enemy_WretchAssassinStab_Bink.bik_atlas"] = "720p\\Enemy_WretchAssassinStab_Bink.bik_atlas",
+	["Enemy_WretchAssassin_DeathVFX_Bink.bik"] = "1080p\\Enemy_WretchAssassin_DeathVFX_Bink.bik",
+	["Enemy_WretchAssassin_DeathVFX_Bink.bik_atlas"] = "1080p\\Enemy_WretchAssassin_DeathVFX_Bink.bik_atlas",
+	["720p\\Enemy_WretchAssassin_DeathVFX_Bink.bik"] = "720p\\Enemy_WretchAssassin_DeathVFX_Bink.bik",
+	["720p\\Enemy_WretchAssassin_DeathVFX_Bink.bik_atlas"] = "720p\\Enemy_WretchAssassin_DeathVFX_Bink.bik_atlas",
 }
 
 SjsonFileMappings = {
@@ -169,6 +193,7 @@ SjsonFileMappings = {
 	["Animations\\CharacterAnim_Enemies_Shades.sjson"] = "Animations\\CharacterAnim_Enemies_Shades.sjson",
 	["Animations\\CharacterAnim_Enemies_WretchThug.sjson"] = "Animations\\CharacterAnim_Enemies_WretchThug.sjson",
 	["Animations\\CharacterAnim_Enemies_Wringer.sjson"] = "Animations\\CharacterAnim_Enemies_Wringer.sjson",
+	["Animations\\CharacterAnim_Enemies_WretchAssassin.sjson"] = "Animations\\CharacterAnim_Enemies_WretchAssassin.sjson",
 }
 
 -- map_text and thing_bin file names

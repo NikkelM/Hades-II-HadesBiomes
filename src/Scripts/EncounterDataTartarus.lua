@@ -10,6 +10,7 @@ local encounterDataTartarus = {
 	-- Minibosses
 	MiniBossGrenadier = encounterData.MiniBossGrenadier,
 	MiniBossHeavyRangedSplitter = encounterData.MiniBossHeavyRangedSplitter,
+	MiniBossWretchAssassin = encounterData.MiniBossWretchAssassin,
 	MiniBossHeavyRangedSplitter2 = encounterData.MiniBossHeavyRangedSplitter2,
 
 	-- Challenge encounters within a room
@@ -86,6 +87,10 @@ local encounterModifications = {
 	MiniBossHeavyRangedSplitter2 = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
+	},
+	MiniBossWretchAssassin = {
+		WipeEnemiesOnKillAllTypes = { "WretchAssassinMiniboss" },
+		CancelSpawnsOnKillAllTypes = { "WretchAssassinMiniboss" },
 	},
 }
 

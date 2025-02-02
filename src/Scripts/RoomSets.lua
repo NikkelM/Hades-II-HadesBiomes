@@ -13,7 +13,7 @@ local newRoomSets = {
 
 		"A_MiniBoss01",
 		"A_MiniBoss02",
-		-- "A_MiniBoss03",
+		"A_MiniBoss03",
 		"A_MiniBoss04",
 
 		"A_PreBoss01",
@@ -45,7 +45,7 @@ local newRoomSets = {
 		"A_Combat20",
 		"A_Combat21",
 		"A_Combat24",
-		"A_Combat25"
+		"A_Combat25",
 		-- These two rooms have no RoomData table attached
 		-- "A_Combat22",
 		-- "A_Combat23",

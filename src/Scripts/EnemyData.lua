@@ -265,6 +265,13 @@ local enemyModifications = {
 		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
 	},
+	WretchAssassin = {
+		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivate",
+	},
 
 	-- ASPHODEL
 	BloodlessGrenadierElite = {

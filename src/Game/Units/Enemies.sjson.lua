@@ -17,6 +17,7 @@ local hadesEnemiesModifications = {
 	BaseSwarmer = { InheritFrom = "1_BaseEnemy" },
 	BaseSpawner = { InheritFrom = "1_BaseEnemy" },
 	BaseThief = { InheritFrom = "1_BaseEnemy" },
+	WretchAssassin = { InheritFrom = "1_BaseEnemy" },
 
 	-- ENVIRONMENT
 	Breakable = { InheritFrom = "1_BaseDestructible" },
