@@ -46,10 +46,67 @@ function mod.CompareChecksums()
 			config.uninstall = "true"
 			config.firstTimeSetup = true
 		else
-			mod.DebugPrint("Game \"checksums.txt\" matches the mod's cached \"checksums.txt\". No game update detected, proceeding normally.", 3)
+			mod.DebugPrint(
+				"Game \"checksums.txt\" matches the mod's cached \"checksums.txt\". No game update detected, proceeding normally.",
+				3)
 		end
 
 		cachedChecksums:close()
 		currentChecksums:close()
 	end
+end
+
+local function checkFileExistsWithRetry(filePath, retries, delay)
+	for i = 1, retries do
+		local file = io.open(filePath, "r")
+		if file then
+			file:close()
+			return true
+		end
+		mod.DebugPrint("File not found: " .. filePath .. " (attempt " .. i .. ")", 1)
+		os.execute("sleep " .. delay)
+	end
+	return false
+end
+
+local function checkFilesExist(fileMappings, basePath)
+	for src, dest in pairs(fileMappings) do
+		local destPath = rom.path.combine(rom.paths.Content(), basePath .. dest)
+		if not checkFileExistsWithRetry(destPath, 3, 1) then
+			mod.DebugPrint("Missing file: " .. destPath, 1)
+			return false
+		end
+	end
+	return true
+end
+
+local function checkFilesExistByNames(fileNames, basePath, extension)
+	for _, name in ipairs(fileNames) do
+		local destPath = rom.path.combine(rom.paths.Content(), basePath .. name .. extension)
+		if not checkFileExistsWithRetry(destPath, 3, 1) then
+			mod.DebugPrint("Missing file: " .. destPath, 1)
+			return false
+		end
+	end
+	return true
+end
+
+function mod.CheckRequiredFiles()
+	if not checkFilesExist(AudioFileMappings, "Audio\\Desktop\\") then return false end
+	if not checkFilesExist(PackageFileMappings, "Packages\\") then return false end
+	if not checkFilesExist(BikFileMappings, "Movies\\") then return false end
+	if not checkFilesExist(SjsonFileMappings, "Game\\") then return false end
+	if not checkFilesExistByNames(MapFileNames, "Maps\\", ".map_text") then return false end
+	if not checkFilesExistByNames(MapFileNames, "Maps\\bin\\", ".thing_bin") then return false end
+
+	for _, language in ipairs(HelpTextLanguages) do
+		local helpTextFile = rom.path.combine(rom.paths.Content(),
+			'Game\\Text\\' .. language .. '\\HelpTextHades.' .. language .. '.sjson')
+		if not checkFileExistsWithRetry(helpTextFile, 3, 1) then
+			mod.DebugPrint("Missing file: " .. helpTextFile, 1)
+			return false
+		end
+	end
+
+	return true
 end

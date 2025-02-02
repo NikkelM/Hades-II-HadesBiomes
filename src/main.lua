@@ -171,6 +171,7 @@ local function on_ready()
 		import "Scripts/FunctionMappings/Environment.lua"
 		import "Scripts/FunctionMappings/LightSpawner.lua"
 		import "Scripts/FunctionMappings/HeavyRanged.lua"
+		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes
 		import "Scripts/ObstacleData.lua"

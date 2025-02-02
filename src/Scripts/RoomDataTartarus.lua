@@ -52,7 +52,20 @@ local roomReplacements = {
 				HasNone = { "A_MiniBoss01", "A_MiniBoss03", "A_MiniBoss04" },
 			},
 			NamedRequirements = { "MinibossCountShrineUpgradeActive" },
-			-- RequiredSeenEncounter = "BossHarpy1", -- Not implemented yet
+			-- {
+			-- 	PathTrue = { "GameState", "EncountersOccurredCache", "BossHarpy1" }, -- Not implemented yet
+			-- },
+		},
+	},
+	A_MiniBoss03 = {
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "RoomsEntered" },
+				HasNone = { "A_MiniBoss01", "A_MiniBoss02", "A_MiniBoss04" },
+			},
+			-- {
+			-- 	PathTrue = { "GameState", "EncountersOccurredCache", "BossHades" }, -- Not implemented yet
+			-- },
 		},
 	},
 	A_MiniBoss04 = {
@@ -62,7 +75,9 @@ local roomReplacements = {
 				HasNone = { "A_MiniBoss01", "A_MiniBoss02", "A_MiniBoss03" },
 			},
 			NamedRequirements = { "MinibossCountShrineUpgradeActive" },
-			-- RequiredSeenEncounter = "BossHarpy1", -- Not implemented yet
+			-- {
+			-- 	PathTrue = { "GameState", "EncountersOccurredCache", "BossHarpy1" }, -- Not implemented yet
+			-- },
 		},
 	},
 }
@@ -71,7 +86,7 @@ local roomModifications = {
 	-- GENERIC
 	BaseTartarus = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes" },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "TartarusModsNikkelMHadesBiomes", },
 
 		SaveProfileLocationText = "ModdedLocation_Hades_Tartarus",
 
