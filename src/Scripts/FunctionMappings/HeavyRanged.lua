@@ -104,3 +104,9 @@ function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victim
 	-- Suppress the damage presentation on the player (blood splatter etc.)
 	triggerArgs.SourceWeapon = "HeavyRangedWeapon"
 end
+
+-- Stops new fragments from spawning after the miniboss dies
+function game.ModsNikkelMMiniBossHeavyRangedSplitterDeath(victim, victimId, triggerArgs)
+	CancelWeaponFireRequests({ Id = victim.ObjectId })
+	ExpireProjectiles({ Names = { "SpawnSplitterFragment" } })
+end

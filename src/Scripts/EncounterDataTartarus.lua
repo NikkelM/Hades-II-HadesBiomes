@@ -10,7 +10,7 @@ local encounterDataTartarus = {
 	-- Minibosses
 	MiniBossGrenadier = encounterData.MiniBossGrenadier,
 	MiniBossHeavyRangedSplitter = encounterData.MiniBossHeavyRangedSplitter,
-	-- MiniBossHeavyRangedSplitter2 = encounterData.MiniBossHeavyRangedSplitter2,
+	MiniBossHeavyRangedSplitter2 = encounterData.MiniBossHeavyRangedSplitter2,
 
 	-- Challenge encounters within a room
 	TimeChallengeTartarus = encounterData.TimeChallengeTartarus,
@@ -83,10 +83,10 @@ local encounterModifications = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 	},
-	-- MiniBossHeavyRangedSplitter2 = {
-		-- WipeEnemiesOnKill = { "HeavyRangedSplitterMiniboss" },		
-		-- CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
-	-- },
+	MiniBossHeavyRangedSplitter2 = {
+		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
+		CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
+	},
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataTartarus, encounterModifications, encounterReplacements)
