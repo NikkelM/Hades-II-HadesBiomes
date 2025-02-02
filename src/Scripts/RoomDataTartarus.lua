@@ -3,18 +3,24 @@
 local roomSetDataTartarus = mod.LoadHadesRoomData("RoomDataTartarus.lua").Tartarus
 
 local roomReplacements = {
+	-- GENERIC
 	BaseTartarus = {
 		SecretDoorRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.SecretDoorRequirements),
 		WellShopRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.WellShopRequirements),
 		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
 		AnomalyDoorChance = 0.0,
 	},
+
+	-- OPENING ROOMS
 	RoomOpening = {
 		-- Music
 		MusicActiveStems = { "Guitar", "Drums", "Bass", },
 		Music = mod.NilValue,
 		MusicRequirements = mod.NilValue,
+		MusicStartDelay = 3.75,
 	},
+
+	-- SHOPS
 	A_Shop01 = {
 		-- Same requirements, but different format
 		GameStateRequirements = {
@@ -28,11 +34,41 @@ local roomReplacements = {
 				Value = 6,
 			},
 		},
-	}
+	},
+
+	-- MINIBOSSES
+	A_MiniBoss01 = {
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "RoomsEntered" },
+				HasNone = { "A_MiniBoss02", "A_MiniBoss03", "A_MiniBoss04" },
+			},
+		},
+	},
+	A_MiniBoss02 = {
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "RoomsEntered" },
+				HasNone = { "A_MiniBoss01", "A_MiniBoss03", "A_MiniBoss04" },
+			},
+			NamedRequirements = { "MinibossCountShrineUpgradeActive" },
+			-- RequiredSeenEncounter = "BossHarpy1", -- Not implemented yet
+		},
+	},
+	A_MiniBoss04 = {
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "RoomsEntered" },
+				HasNone = { "A_MiniBoss01", "A_MiniBoss02", "A_MiniBoss03" },
+			},
+			NamedRequirements = { "MinibossCountShrineUpgradeActive" },
+			-- RequiredSeenEncounter = "BossHarpy1", -- Not implemented yet
+		},
+	},
 }
 
 local roomModifications = {
-	-- Generic
+	-- GENERIC
 	BaseTartarus = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes" },
@@ -47,7 +83,7 @@ local roomModifications = {
 		ShrinePointDoorRequirements = { Skip = true },
 	},
 
-	-- Opening rooms
+	-- OPENING ROOMS
 	RoomOpening = {
 		LegalEncounters = { "OpeningGenerated" },
 		EntranceFunctionName = "RoomEntranceMaterialize",
@@ -73,7 +109,7 @@ local roomModifications = {
 	-- This is the first run's opening room, which forces Athena boons
 	RoomSimple01 = mod.NilValue,
 
-	-- Shops
+	-- SHOPS
 	-- TODO: Move some of these into a base shop object for all Hades shops to inherit from to prevent duplicates
 	A_Shop01 = {
 		ThreadedEvents = {
@@ -94,11 +130,11 @@ local roomModifications = {
 		FrogFamiliarMaxLeapDistance = 800,
 	},
 
-	-- Minibosses
+	-- MINIBOSSES
 	A_MiniBoss01 = {
 		-- TODO: This is misaligned, done in EventPresentation Line 3921 onwards
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
-	}
+	},
 }
 
 mod.ApplyModificationsAndInheritRoomData(roomSetDataTartarus, roomModifications, roomReplacements, "Tartarus")

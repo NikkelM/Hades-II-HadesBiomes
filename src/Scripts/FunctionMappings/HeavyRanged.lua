@@ -58,12 +58,6 @@ function game.CreateTethers(newEnemy, args)
 	end
 end
 
--- Wrap around KillPresentation to call HandleTetherParentDeath() before the victim is destroyed in Kill()
-modutil.mod.Path.Wrap("KillPresentation", function(base, victim, killer, args)
-	game.thread(game.HandleTetherParentDeath, victim)
-	base(victim, killer, args)
-end)
-
 function game.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimation)
 	if victim.TetherIds == nil then
 		return
@@ -111,12 +105,8 @@ function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victim
 	triggerArgs.SourceWeapon = "HeavyRangedWeapon"
 end
 
--- When the enemy's armor is broken, remove the outline from the tethers as well
-modutil.mod.Path.Wrap("DoEnemyHealthBufferDeplete", function(base, enemy)
-	base(enemy)
-	if enemy.TetherIds ~= nil then
-		for k, tetherId in ipairs(enemy.TetherIds) do
-			RemoveOutline({ Id = tetherId })
-		end
-	end
-end)
+-- Stops new fragments from spawning after the miniboss dies
+function game.ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath(victim, victimId, triggerArgs)
+	CancelWeaponFireRequests({ Id = victim.ObjectId })
+	ExpireProjectiles({ Names = { "SpawnSplitterFragment" } })
+end

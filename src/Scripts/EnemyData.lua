@@ -215,6 +215,28 @@ local enemyModifications = {
 		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
 	},
+	HeavyRangedSplitterMiniboss = {
+		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
+		DeathFx = "EnemyDeathFx",
+		DeathGraphic = "HeavyRangedSplitterCrystalDeath",
+		ActivateFx = "EnemySummonRuneExtraLarge",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInHeavyRangedSplitterContainer",
+		SpawnEvents = {
+			{
+				FunctionName = "CreateTethers",
+				Threaded = true,
+			},
+		},
+		OnDeathFunctionName = "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
+	},
+	HeavyRangedSplitterFragment = {
+		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
+		DeathFx = "HeavyRangedSplitterFragmentDeath",
+		DeathGraphic = "HeavyRangedSplitterFragmentDeath",
+		UseActivatePresentation = false,
+	},
 	Swarmer = {
 		StunAnimations = {
 			Default = "EnemyWretchSwarmerAlert",
@@ -340,6 +362,7 @@ local enemyKeyReplacements = {
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",
 		AIFireTicksCooldown = "FireInterval",
+		AIBufferDistance = "RetreatBufferDistance",
 		StandOffTime = "SurroundRefreshInterval",
 	},
 }

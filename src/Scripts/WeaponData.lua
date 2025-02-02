@@ -115,6 +115,26 @@ local weaponModifications = {
 			LoSEndBuffer = 32,
 		},
 	},
+	HeavyRangedWeaponSplitter = {
+		InheritFrom = { "HeavyRangedWeapon", },
+		AIData = {
+			ProjectileName = "HeavyRangedWeaponSplitter",
+      NumProjectiles = 8,
+      ProjectileStartAngleOffset = 45,
+      ProjectileInterval = 0.25,
+			ProjectileAngleEvenlySpaced = true,
+		},
+	},
+	HeavyRangedSplitterFragment = {
+		AIData = {
+			TargetClosestOfTypes = { "HeavyRangedSplitterMiniboss" },
+			TargetClosest = mod.NilValue,
+			TargetFriends = mod.NilValue,
+			ExpireProjectilesOnHitStun = true,
+			ExpireProjectilesOnFreeze = true,
+			ExpireProjectilesOnPolymorph = true,
+		},
+	},
 }
 
 local renamedWeaponModifications = {}
@@ -134,6 +154,7 @@ local weaponKeyReplacements = {
 	AIData = {
 		AIAttackDistance = "AttackDistance",
 		AIBufferDistance = "RetreatBufferDistance",
+		TargetFriends = "TargetRequiredKillEnemy",
 	},
 }
 
@@ -165,7 +186,11 @@ end
 local projectileModifications = {
 	HeavyRangedWeapon = {
 		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
-	}
+	},
+	HeavyRangedWeaponSplitter = {
+		InheritFrom = { "HeavyRangedWeapon", },
+		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
+	},
 }
 
 local projectileKeyReplacements = {

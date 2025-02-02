@@ -8,6 +8,7 @@ local hadesTwoEnemiesFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\
 -- Modifications/overrides to the Hades enemies
 -- Use the original names from the Hades file here, as modifications are applied before renaming
 local hadesEnemiesModifications = {
+	-- TARTARUS
 	BaseGlutton = { InheritFrom = "1_BaseEnemy" },
 	LightSpawner = { InheritFrom = "1_BaseEnemy" },
 	BaseThug = { InheritFrom = "1_BaseEnemy" },
@@ -17,6 +18,7 @@ local hadesEnemiesModifications = {
 	BaseSpawner = { InheritFrom = "1_BaseEnemy" },
 	BaseThief = { InheritFrom = "1_BaseEnemy" },
 
+	-- ENVIRONMENT
 	Breakable = { InheritFrom = "1_BaseDestructible" },
 }
 
