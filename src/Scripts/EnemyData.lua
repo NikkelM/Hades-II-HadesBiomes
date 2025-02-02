@@ -229,7 +229,7 @@ local enemyModifications = {
 				Threaded = true,
 			},
 		},
-		OnDeathFunctionName = "ModsNikkelMMiniBossHeavyRangedSplitterDeath",
+		OnDeathFunctionName = "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 	},
 	HeavyRangedSplitterFragment = {
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
