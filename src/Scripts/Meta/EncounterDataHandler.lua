@@ -20,6 +20,12 @@ end
 
 -- Applies modifications to base encounter objects, and then adds the new encounter objects to the game
 function mod.ApplyModificationsAndInheritEncounterData(base, modifications, replacements)
+-- Some enemies exist in both Hades and Hades II, so we need to rename the Hades enemies in encounters that reference them
+for oldName, newName in pairs(mod.EnemyNameMappings) do
+	-- If an encounter has predefined spawn waves, spawn the correct enemies
+	mod.UpdateField(base, oldName, newName, { "SpawnWaves", "*", "Spawns", "*", "Name" }, "EncounterData.lua")
+end
+
 	-- Apply replacements
 	for encounterName, encounterData in pairs(replacements) do
 		if not base[encounterName] then
