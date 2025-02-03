@@ -113,6 +113,14 @@ local enemyReplacements = {
 	},
 	-- Copy paste the enemy in Hades II, but replace some animations and effects in modifications
 	BloodlessGrenadierElite = game.DeepCopyTable(game.EnemyData.BloodlessGrenadier_Elite),
+	-- Setting this to an empty table in the enemy doesn't work, so resetting the keys that break the animations here
+	Harpy = {
+		DefaultAIData = {
+			MoveWithinRange = false,
+			StopMoveWithinRange = false,
+			DontRetreatIfCharmed = false,
+		},
+	},
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly

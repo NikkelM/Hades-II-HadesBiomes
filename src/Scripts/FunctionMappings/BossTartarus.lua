@@ -22,6 +22,24 @@ function game.MultiFuryActivations(eventSource, args)
 	end
 end
 
+function game.SelectHarpySupportAIs(enemy, currentRun)
+	local shrineLevel = GetNumMetaUpgrades( enemy.ShrineMetaUpgradeName )
+
+	enemy.SupportAINames = enemy.SupportAINames or {}
+
+	if shrineLevel > 0 then
+		local supportCount = RandomInt(1, 2)
+		if game.TextLinesRecord.FurySistersUnion01 == nil then
+			supportCount = 2
+		end
+		for i=1, supportCount, 1 do
+			local supportAIName = RemoveRandomValue(enemy.SupportAIWeaponSetOptions) or "Alecto"
+			table.insert(enemy.SupportAINames, supportAIName)
+			currentRun.SupportAINames[supportAIName] = true
+		end
+	end
+end
+
 function game.HarpyKillPresentation(unit, args)
 	print("HarpyKillPresentation")
 	DebugPrint({ Text = "Harpy Kill Presentation: " })

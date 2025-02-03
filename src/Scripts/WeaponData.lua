@@ -119,9 +119,9 @@ local weaponModifications = {
 		InheritFrom = { "HeavyRangedWeapon", },
 		AIData = {
 			ProjectileName = "HeavyRangedWeaponSplitter",
-      NumProjectiles = 8,
-      ProjectileStartAngleOffset = 45,
-      ProjectileInterval = 0.25,
+			NumProjectiles = 8,
+			ProjectileStartAngleOffset = 45,
+			ProjectileInterval = 0.25,
 			ProjectileAngleEvenlySpaced = true,
 		},
 	},
@@ -133,6 +133,17 @@ local weaponModifications = {
 			ExpireProjectilesOnHitStun = true,
 			ExpireProjectilesOnFreeze = true,
 			ExpireProjectilesOnPolymorph = true,
+		},
+	},
+	HarpyLunge = {
+		Requirements = {
+			MaxConsecutiveUses = 2,
+		},
+	},
+	HarpyWhipWhirl = {
+		Requirements = {
+			MinAttacksBetweenUse = 2,
+			MaxPlayerDistance = 600,
 		},
 	},
 }
@@ -154,7 +165,11 @@ local weaponKeyReplacements = {
 	AIData = {
 		AIAttackDistance = "AttackDistance",
 		AIBufferDistance = "RetreatBufferDistance",
+		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
+		AILineOfSightBuffer = "LoSBuffer",
+		AIMoveWithinRangeTimeout = "MoveWithinRangeTimeout",
 		TargetFriends = "TargetRequiredKillEnemy",
+		AIRequireUnitLineOfSight = "RequireUnitLoS",
 	},
 }
 
