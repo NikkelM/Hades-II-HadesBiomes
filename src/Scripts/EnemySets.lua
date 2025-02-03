@@ -11,29 +11,29 @@ local function renameEnemies(enemySet, setName)
 end
 
 game.EnemySets.EnemiesBiome1 = {
-	"Swarmer",              -- Wretch Swarmer -- Duplicate Name!
-	"SwarmerElite",         -- Wretch Swarmer
-	"LightSpawner",         -- Spawns skulls
-	"ThiefMineLayer",       -- Wretch Thief
-	"ThiefMineLayerElite",  -- Wretch Thief
+	"Swarmer",             -- Wretch Swarmer -- Duplicate Name!
+	"SwarmerElite",        -- Wretch Swarmer
+	"LightSpawner",        -- Spawns skulls
+	"ThiefMineLayer",      -- Wretch Thief
+	"ThiefMineLayerElite", -- Wretch Thief
 
-	"PunchingBagUnit",      -- Wretch Glutton
-	"HeavyMelee",           -- Wretch Thug
-	"DisembodiedHand",      -- Wringer
+	"PunchingBagUnit",     -- Wretch Glutton
+	"HeavyMelee",          -- Wretch Thug
+	"DisembodiedHand",     -- Wringer
 	"DisembodiedHandElite", -- Wringer Elite
 
-	"LightRanged",          -- Wretch Caster -- Duplicate name!
-	"HeavyRanged",          -- Crystal
+	"LightRanged",         -- Wretch Caster -- Duplicate name!
+	"HeavyRanged",         -- Crystal
 
-	"HeavyMeleeElite",      -- Wretch Thug Elite
-	"LightRangedElite",     -- Wretch Caster Elite
+	"HeavyMeleeElite",     -- Wretch Thug Elite
+	"LightRangedElite",    -- Wretch Caster Elite
 	"PunchingBagUnitElite", -- Wretch Glutton Elite
-	"HeavyRangedElite",     -- Crystal Elite
+	"HeavyRangedElite",    -- Crystal Elite
 }
 
 game.EnemySets.EnemiesBiome1_EliteChallenge = {
-	"HeavyMeleeElite",     -- Wretch Thug Elite -- Done through HeavyMelee
-	"PunchingBagUnitElite", -- Wretch Glutton Elite -- Done
+	"HeavyMeleeElite",     -- Wretch Thug Elite
+	"PunchingBagUnitElite", -- Wretch Glutton Elite
 }
 
 game.EnemySets.EnemiesBiome1MiniBoss = {
@@ -44,6 +44,9 @@ game.EnemySets.EnemiesBiome1MiniBoss = {
 	-- "BloodlessSelfDestructElite",
 }
 
+game.EnemySets.TrapsBiome1 = { "SpikeTrap", }
+
 renameEnemies(game.EnemySets.EnemiesBiome1, "EnemiesBiome1")
 renameEnemies(game.EnemySets.EnemiesBiome1_EliteChallenge, "EnemiesBiome1_EliteChallenge")
 renameEnemies(game.EnemySets.EnemiesBiome1MiniBoss, "EnemiesBiome1MiniBoss")
+renameEnemies(game.EnemySets.TrapsBiome1, "TrapsBiome1")

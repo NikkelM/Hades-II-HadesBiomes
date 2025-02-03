@@ -272,6 +272,10 @@ local enemyModifications = {
 		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivate",
 	},
+	-- Bosses
+	Harpy = {
+		StunAnimations = {},
+	},
 
 	-- ASPHODEL
 	BloodlessGrenadierElite = {

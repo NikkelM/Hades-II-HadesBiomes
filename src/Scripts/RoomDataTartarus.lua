@@ -35,6 +35,10 @@ local roomReplacements = {
 			},
 		},
 	},
+	-- TODO: Add additional bosses as they are implemented
+	A_PreBoss01 = {
+		LinkedRooms = { "A_Boss01" }, -- , "A_Boss02", "A_Boss03"
+	},
 
 	-- MINIBOSSES
 	A_MiniBoss01 = {
@@ -146,9 +150,20 @@ local roomModifications = {
 	},
 
 	-- MINIBOSSES
+	-- Other miniboss rooms inherit from this
 	A_MiniBoss01 = {
 		-- TODO: This is misaligned, done in EventPresentation Line 3921 onwards
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+	},
+
+	-- BOSSES
+	A_Boss01 = {
+		-- TODO - Hades II drops the same item always - which one to choose?
+		ForcedReward = "MixerFBossDrop",
+		FirstClearRewardStore = mod.NilValue,
+		ForcedRewardStore = mod.NilValue,
+		EligibleRewards = mod.NilValue,
+		RewardConsumableOverrides = mod.NilValue,
 	},
 }
 
