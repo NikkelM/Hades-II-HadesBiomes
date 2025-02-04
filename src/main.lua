@@ -168,6 +168,7 @@ local function on_ready()
 
 		-- Function mappings between Hades and Hades II
 		import "Scripts/FunctionMappings/MiniBossTartarus.lua"
+		import "Scripts/FunctionMappings/BossTartarus.lua"
 		import "Scripts/FunctionMappings/Environment.lua"
 		import "Scripts/FunctionMappings/LightSpawner.lua"
 		import "Scripts/FunctionMappings/HeavyRanged.lua"

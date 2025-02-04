@@ -29,8 +29,8 @@ local hadesProjectilesModifications = {
 		},
 	},
 	LightRangedWeapon = {
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 		-- It just disappears instead of exploding like in Hades
 		-- The explosion has a weird boxed brightness around it
 		DissipateFx = "EnemyProjectileDissipate",
@@ -49,6 +49,11 @@ local hadesProjectilesModifications = {
 	-- TARTARUS - MEGAERA
 	HarpyBeam = {
 		Speed = 700,
+	},
+	HarpyLightning = {
+		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByName2 = "null",
+		CanBeProjectileDefenseDestroyedByLayer = "null",
 	},
 }
 
