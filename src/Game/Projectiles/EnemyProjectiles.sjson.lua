@@ -22,6 +22,7 @@ local projectilesToRemove = {
 
 -- Modifications/overrides to the Hades enemy projectiles
 local hadesProjectilesModifications = {
+	-- TARTARUS
 	DisembodiedHandGrab = {
 		Effect = {
 			StartAnimation = "null",
@@ -43,6 +44,11 @@ local hadesProjectilesModifications = {
 	},
 	HeavyRangedSplitterFragment = {
 		DieWithOwner = true,
+	},
+
+	-- TARTARUS - MEGAERA
+	HarpyBeam = {
+		Speed = 700,
 	},
 }
 

@@ -63,6 +63,7 @@ end
 
 -- Modify or add weapons
 local weaponModifications = {
+	-- TARTARUS
 	HeavyRangedWeapon = {
 		AIData = {
 			ExpireProjectilesOnHitStun = true,
@@ -135,6 +136,8 @@ local weaponModifications = {
 			ExpireProjectilesOnPolymorph = true,
 		},
 	},
+
+	-- TARTARUS - MEGAERA
 	HarpyLunge = {
 		Requirements = {
 			MaxConsecutiveUses = 2,
@@ -144,6 +147,18 @@ local weaponModifications = {
 		Requirements = {
 			MinAttacksBetweenUse = 2,
 			MaxPlayerDistance = 600,
+		},
+	},
+	HarpyBeam = {
+		Requirements = {
+			MinAttacksBetweenUse = 3,
+		},
+		AIData = {
+			NumProjectiles = 5,
+      Spread = 5,
+			-- FireCooldown is FireInterval in Hades II - FireCooldown doesn't seem to be used
+			FireInterval = 0.25,
+			FireCooldown = mod.NilValue,
 		},
 	},
 }
@@ -169,7 +184,16 @@ local weaponKeyReplacements = {
 		AILineOfSightBuffer = "LoSBuffer",
 		AIMoveWithinRangeTimeout = "MoveWithinRangeTimeout",
 		TargetFriends = "TargetRequiredKillEnemy",
+		AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
+		AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
 		AIRequireUnitLineOfSight = "RequireUnitLoS",
+		AIRequireProjectileLineOfSight = "RequireProjectileLoS",
+		AILineOfSighEndBuffer = "LoSEndBuffer",
+		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
+		AIFireTicksMin = "FireTicksMin",
+		AIFireTicksMax = "FireTicksMax",
+		AIFireTicksCooldown = "FireInterval",
+		StandOffTime = "SurroundRefreshInterval",
 	},
 }
 

@@ -99,6 +99,7 @@ end
 function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimId, triggerArgs)
 	-- The first hit of each burst should not do anything, as it is the lock-on "hit"
 	if triggerArgs.Detonation == 0 then
+		triggerArgs.DamageAmount = 0
 		triggerArgs.Silent = true
 	end
 	-- Suppress the damage presentation on the player (blood splatter etc.)

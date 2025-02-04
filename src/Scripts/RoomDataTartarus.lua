@@ -34,10 +34,12 @@ local roomReplacements = {
 				Value = 6,
 			},
 		},
+		Binks = mod.NilValue,
 	},
 	-- TODO: Add additional bosses as they are implemented
 	A_PreBoss01 = {
 		LinkedRooms = { "A_Boss01" }, -- , "A_Boss02", "A_Boss03"
+		Binks = mod.NilValue,
 	},
 
 	-- MINIBOSSES

@@ -369,19 +369,21 @@ end
 -- Some keys were renamed in the DefaultAIData property
 local enemyKeyReplacements = {
 	DefaultAIData = {
+		AIAttackDistance = "AttackDistance",
+		AIBufferDistance = "RetreatBufferDistance",
+		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
+		AILineOfSightBuffer = "LoSBuffer",
+		AIMoveWithinRangeTimeout = "MoveWithinRangeTimeout",
+		TargetFriends = "TargetRequiredKillEnemy",
 		AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
 		AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
-		AILineOfSightBuffer = "LoSBuffer",
 		AIRequireUnitLineOfSight = "RequireUnitLoS",
 		AIRequireProjectileLineOfSight = "RequireProjectileLoS",
 		AILineOfSighEndBuffer = "LoSEndBuffer",
 		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
-		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
-		AIAttackDistance = "AttackDistance",
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",
 		AIFireTicksCooldown = "FireInterval",
-		AIBufferDistance = "RetreatBufferDistance",
 		StandOffTime = "SurroundRefreshInterval",
 	},
 }
