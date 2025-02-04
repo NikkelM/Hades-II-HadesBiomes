@@ -63,6 +63,7 @@ end
 
 -- Modify or add weapons
 local weaponModifications = {
+	-- TARTARUS
 	HeavyRangedWeapon = {
 		AIData = {
 			ExpireProjectilesOnHitStun = true,
@@ -119,9 +120,9 @@ local weaponModifications = {
 		InheritFrom = { "HeavyRangedWeapon", },
 		AIData = {
 			ProjectileName = "HeavyRangedWeaponSplitter",
-      NumProjectiles = 8,
-      ProjectileStartAngleOffset = 45,
-      ProjectileInterval = 0.25,
+			NumProjectiles = 8,
+			ProjectileStartAngleOffset = 45,
+			ProjectileInterval = 0.25,
 			ProjectileAngleEvenlySpaced = true,
 		},
 	},
@@ -133,6 +134,41 @@ local weaponModifications = {
 			ExpireProjectilesOnHitStun = true,
 			ExpireProjectilesOnFreeze = true,
 			ExpireProjectilesOnPolymorph = true,
+		},
+	},
+
+	-- TARTARUS - MEGAERA
+	HarpyLunge = {
+		Requirements = {
+			MaxConsecutiveUses = 2,
+		},
+	},
+	HarpyWhipWhirl = {
+		Requirements = {
+			MinAttacksBetweenUse = 2,
+			MaxPlayerDistance = 600,
+		},
+	},
+	HarpyBeam = {
+		Requirements = {
+			MinAttacksBetweenUse = 3,
+		},
+		AIData = {
+			-- FireCooldown is FireInterval in Hades II - FireCooldown doesn't seem to be used
+			FireInterval = 0.25,
+			FireCooldown = mod.NilValue,
+		},
+	},
+	HarpyLightning = {
+		Requirements = {
+			MinAttacksBetweenUse = 3,
+		},
+		AIData = {
+			-- FireCooldown is FireInterval in Hades II - FireCooldown doesn't seem to be used
+			FireInterval = 1.2,
+			FireCooldown = mod.NilValue,
+			AttackSlotInterval = 0.0,
+			ProjectileName = "HarpyLightning",
 		},
 	},
 }
@@ -154,7 +190,20 @@ local weaponKeyReplacements = {
 	AIData = {
 		AIAttackDistance = "AttackDistance",
 		AIBufferDistance = "RetreatBufferDistance",
+		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
+		AILineOfSightBuffer = "LoSBuffer",
+		AIMoveWithinRangeTimeout = "MoveWithinRangeTimeout",
 		TargetFriends = "TargetRequiredKillEnemy",
+		AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
+		AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
+		AIRequireUnitLineOfSight = "RequireUnitLoS",
+		AIRequireProjectileLineOfSight = "RequireProjectileLoS",
+		AILineOfSighEndBuffer = "LoSEndBuffer",
+		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
+		AIFireTicksMin = "FireTicksMin",
+		AIFireTicksMax = "FireTicksMax",
+		AIFireTicksCooldown = "FireInterval",
+		StandOffTime = "SurroundRefreshInterval",
 	},
 }
 
@@ -190,6 +239,9 @@ local projectileModifications = {
 	HeavyRangedWeaponSplitter = {
 		InheritFrom = { "HeavyRangedWeapon", },
 		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
+	},
+	HarpyLightning ={
+		InheritFrom = { "NoSlowFrameProjectile", },
 	},
 }
 

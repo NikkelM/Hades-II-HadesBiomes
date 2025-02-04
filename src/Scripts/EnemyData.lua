@@ -113,6 +113,14 @@ local enemyReplacements = {
 	},
 	-- Copy paste the enemy in Hades II, but replace some animations and effects in modifications
 	BloodlessGrenadierElite = game.DeepCopyTable(game.EnemyData.BloodlessGrenadier_Elite),
+	-- Setting this to an empty table in the enemy doesn't work, so resetting the keys that break the animations here
+	Harpy = {
+		DefaultAIData = {
+			MoveWithinRange = false,
+			StopMoveWithinRange = false,
+			DontRetreatIfCharmed = false,
+		},
+	},
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
@@ -272,6 +280,10 @@ local enemyModifications = {
 		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivate",
 	},
+	-- Bosses
+	Harpy = {
+		StunAnimations = {},
+	},
 
 	-- ASPHODEL
 	BloodlessGrenadierElite = {
@@ -357,19 +369,21 @@ end
 -- Some keys were renamed in the DefaultAIData property
 local enemyKeyReplacements = {
 	DefaultAIData = {
+		AIAttackDistance = "AttackDistance",
+		AIBufferDistance = "RetreatBufferDistance",
+		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
+		AILineOfSightBuffer = "LoSBuffer",
+		AIMoveWithinRangeTimeout = "MoveWithinRangeTimeout",
+		TargetFriends = "TargetRequiredKillEnemy",
 		AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
 		AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
-		AILineOfSightBuffer = "LoSBuffer",
 		AIRequireUnitLineOfSight = "RequireUnitLoS",
 		AIRequireProjectileLineOfSight = "RequireProjectileLoS",
 		AILineOfSighEndBuffer = "LoSEndBuffer",
 		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
-		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
-		AIAttackDistance = "AttackDistance",
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",
 		AIFireTicksCooldown = "FireInterval",
-		AIBufferDistance = "RetreatBufferDistance",
 		StandOffTime = "SurroundRefreshInterval",
 	},
 }

@@ -13,6 +13,9 @@ local encounterDataTartarus = {
 	MiniBossWretchAssassin = encounterData.MiniBossWretchAssassin,
 	MiniBossHeavyRangedSplitter2 = encounterData.MiniBossHeavyRangedSplitter2,
 
+	-- Bosses
+	BossHarpy1 = encounterData.BossHarpy1,
+
 	-- Challenge encounters within a room
 	TimeChallengeTartarus = encounterData.TimeChallengeTartarus,
 	PerfectClearChallengeTartarus = game.DeepCopyTable(encounterData.PerfectClearChallengeF),
@@ -59,7 +62,7 @@ local encounterReplacements = {
 }
 
 local encounterModifications = {
-	-- Generic
+	-- GENERIC
 	ModsNikkelMHadesBiomesGenerated = {
 		-- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
 		LoadPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes" },
@@ -76,7 +79,7 @@ local encounterModifications = {
 		SpawnOverrides = { UseActivatePresentation = false, },
 	},
 
-	-- Minibosses
+	-- MINIBOSSES
 	MiniBossGrenadier = {
 		LoadPackages = { "Asphodel" },
 	},
@@ -91,6 +94,14 @@ local encounterModifications = {
 	MiniBossWretchAssassin = {
 		WipeEnemiesOnKillAllTypes = { "WretchAssassinMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "WretchAssassinMiniboss" },
+	},
+
+	-- BOSSES
+	BossHarpy1 = {
+		WipeEnemiesOnKillAllTypes = { "Harpy" },
+		CancelSpawnsOnKillAllTypes = { "Harpy" },
+		-- TODO: Modify to drop other resources if there is an incantation for this in Hades II
+		PostUnthreadedEvents = mod.NilValue,
 	},
 }
 

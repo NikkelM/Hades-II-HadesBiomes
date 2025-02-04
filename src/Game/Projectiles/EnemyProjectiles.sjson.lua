@@ -22,14 +22,15 @@ local projectilesToRemove = {
 
 -- Modifications/overrides to the Hades enemy projectiles
 local hadesProjectilesModifications = {
+	-- TARTARUS
 	DisembodiedHandGrab = {
 		Effect = {
 			StartAnimation = "null",
 		},
 	},
 	LightRangedWeapon = {
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 		-- It just disappears instead of exploding like in Hades
 		-- The explosion has a weird boxed brightness around it
 		DissipateFx = "EnemyProjectileDissipate",
@@ -43,6 +44,16 @@ local hadesProjectilesModifications = {
 	},
 	HeavyRangedSplitterFragment = {
 		DieWithOwner = true,
+	},
+
+	-- TARTARUS - MEGAERA
+	HarpyBeam = {
+		Speed = 700,
+	},
+	HarpyLightning = {
+		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByName2 = "null",
+		CanBeProjectileDefenseDestroyedByLayer = "null",
 	},
 }
 

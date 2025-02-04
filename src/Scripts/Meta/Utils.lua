@@ -71,7 +71,7 @@ function mod.LoadCachedRunsFile()
 		return sjson.decode_file(mod.CachedRunsFilePath)
 	else
 		error(
-		"\"cachedRuns.sjson\" not found! Please re-install the mod by setting both \"uninstall\" and \"firstTimeSetup\" in the config to \"true\".")
+			"\"cachedRuns.sjson\" not found! Please re-install the mod by setting both \"uninstall\" and \"firstTimeSetup\" in the config to \"true\".")
 	end
 end
 
@@ -153,7 +153,7 @@ end
 ---@param tableToModify table The table to modify.
 ---@param find string The value to find.
 ---@param replaceWith string The value to replace "find" with.
----@param propertyPath table The path to the property being modified, as a list of keys, such as { "GeneratorData", "BlockEnemyTypes" }.
+---@param propertyPath table The path to the property being modified, as a list of keys, such as { "GeneratorData", "BlockEnemyTypes" }. A "*" key will apply the change to all keys in the table.
 ---@param tableName string|nil The name of the table being modified, used for debugging purposes.
 function mod.UpdateField(tableToModify, find, replaceWith, propertyPath, tableName)
 	local function updateField(data, path)
@@ -175,7 +175,13 @@ function mod.UpdateField(tableToModify, find, replaceWith, propertyPath, tableNa
 			return data, replaced
 		else
 			local key = table.remove(path, 1)
-			if data[key] then
+			if key == '*' then
+				if type(data) == "table" then
+					for k, v in pairs(data) do
+						data[k], replaced = updateField(v, { table.unpack(path) })
+					end
+				end
+			elseif data ~= nil and data[key] then
 				data[key], replaced = updateField(data[key], path)
 			end
 			return data, replaced
