@@ -160,6 +160,7 @@ local roomModifications = {
 
 	-- BOSSES
 	A_Boss01 = {
+		LoadModdedVoiceBanks = { "MegaeraField" }, -- MegaeraHome, Megaera?
 		-- TODO - Hades II drops the same item always - which one to choose?
 		ForcedReward = "MixerFBossDrop",
 		FirstClearRewardStore = mod.NilValue,

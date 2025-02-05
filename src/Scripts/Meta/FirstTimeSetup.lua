@@ -8,8 +8,8 @@ local function copyFiles(fileMappings, srcBasePath, destBasePath, fileType)
 	end
 end
 
-local function copyFilesByNames(fileNames, srcBasePath, destBasePath, extension, fileType, usePluginData)
-	mod.DebugPrint("Copying " .. fileType .. " files...", 3)
+local function copyFilesByNames(fileNames, srcBasePath, destBasePath, extension, usePluginData)
+	mod.DebugPrint("Copying " .. extension .. " files...", 3)
 	for _, name in ipairs(fileNames) do
 		local srcPath, destPath
 		if usePluginData then
@@ -45,7 +45,11 @@ function mod.FirstTimeSetup()
 		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 	end
 
-	copyFilesByNames(MapFileNames, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", ".thing_bin", true)
+	copyFilesByNames(MapFileNames, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", true)
+
+	mod.DebugPrint("Copying voicelines...", 3)
+	copyFilesByNames(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", true)
+	copyFilesByNames(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", true)
 
 	mod.DebugPrint("Copying help text files...", 3)
 	CopyHadesHelpTexts()

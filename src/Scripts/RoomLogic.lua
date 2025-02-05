@@ -23,4 +23,8 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 			rom.audio.load_bank(rom.path.combine(rom.paths.Content(), "Audio\\Desktop\\" .. bank .. ".bank"))
 		end
 	end
+
+	if currentRoom.LoadModdedVoiceBanks ~= nil then
+		game.LoadVoiceBanks(currentRoom.LoadModdedVoiceBanks)
+	end
 end)

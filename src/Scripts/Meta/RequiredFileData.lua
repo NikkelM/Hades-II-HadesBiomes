@@ -6,6 +6,12 @@ AudioFileMappings = {
 	["Tartarus.bank"] = "TartarusModsNikkelMHadesBiomes.bank",
 }
 
+-- Voiceover .txt and .fsb file names
+-- The file name must be the same as the event names within the file
+VoiceoverFileNames = {
+	"MegaeraField",
+}
+
 PackageFileMappings = {
 	-- Tartarus map package
 	["Tartarus.pkg"] = "1080p\\TartarusModsNikkelMHadesBiomes.pkg",

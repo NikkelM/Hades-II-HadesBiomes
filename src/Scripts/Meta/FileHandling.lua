@@ -57,6 +57,11 @@ function mod.CompareChecksums()
 end
 
 local function checkFileExistsWithRetry(filePath, retries, delay)
+	local function sleep(sleepFor)
+		local t0 = os.clock()
+		while os.clock() - t0 <= sleepFor do end
+	end
+
 	for i = 1, retries do
 		local file = io.open(filePath, "r")
 		if file then
@@ -64,7 +69,7 @@ local function checkFileExistsWithRetry(filePath, retries, delay)
 			return true
 		end
 		mod.DebugPrint("File not found: " .. filePath .. " (attempt " .. i .. ")", 1)
-		os.execute("sleep " .. delay)
+		sleep(delay)
 	end
 	return false
 end
