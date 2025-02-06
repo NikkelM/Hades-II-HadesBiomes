@@ -28,6 +28,11 @@ PackageFileMappings = {
 	["Fx.pkg_manifest"] = "1080p\\FxModsNikkelMHadesBiomes.pkg_manifest",
 	["720p\\Fx.pkg"] = "720p\\FxModsNikkelMHadesBiomes.pkg",
 	["720p\\Fx.pkg_manifest"] = "720p\\FxModsNikkelMHadesBiomes.pkg_manifest",
+	-- GUI
+	["GUI.pkg"] = "1080p\\GUIModsNikkelMHadesBiomes.pkg",
+	["GUI.pkg_manifest"] = "1080p\\GUIModsNikkelMHadesBiomes.pkg_manifest",
+	["720p\\GUI.pkg"] = "720p\\GUIModsNikkelMHadesBiomes.pkg",
+	["720p\\GUI.pkg_manifest"] = "720p\\GUIModsNikkelMHadesBiomes.pkg_manifest",
 }
 
 BikFileMappings = {
