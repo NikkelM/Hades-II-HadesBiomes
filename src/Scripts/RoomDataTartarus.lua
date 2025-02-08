@@ -171,9 +171,29 @@ local roomModifications = {
 	A_PostBoss01 = {
 		ExitPreviewAnim = "HadesExitPreview",
 		-- TODO: Remove placeholder
-		NextRoomSet = "G",
-		-- Makes the door interactable
+		NextRoomSet = { "G" },
+		SellShopSpawnChance = 1.0,
+		SellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossSellTraitShops" },
+			},
+		},
+		-- Defines where the well spawns, making sure the sell shop spawns on the other possible ID
+		WellShopChallengeBaseId = 487438,
+		WellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossWellShops" },
+			},
+		},
 		ObstacleData = {
+			[486504] = {
+				SetupGameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradePostBossGiftRack" },
+					},
+				},
+			},
+			-- Makes the exit door interactable
 			[430000] = {
 				ActivateIds = { 430000, },
 			},
