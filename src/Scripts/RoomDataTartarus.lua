@@ -170,6 +170,11 @@ local roomModifications = {
 	},
 	A_PostBoss01 = {
 		ExitPreviewAnim = "HadesExitPreview",
+		ObstacleData = {
+			[430000] = {
+				ActivateIds = { 430000, },
+			},
+		},
 	},
 }
 

@@ -9,7 +9,7 @@ local newRoomSets = {
 		-- "A_Boss02",
 		-- "A_Boss03",
 
-		-- "A_PostBoss01",
+		"A_PostBoss01",
 
 		"A_MiniBoss01",
 		"A_MiniBoss02",
