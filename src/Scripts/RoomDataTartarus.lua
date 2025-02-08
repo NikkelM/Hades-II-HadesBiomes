@@ -170,6 +170,9 @@ local roomModifications = {
 	},
 	A_PostBoss01 = {
 		ExitPreviewAnim = "HadesExitPreview",
+		-- TODO: Remove placeholder
+		NextRoomSet = "G",
+		-- Makes the door interactable
 		ObstacleData = {
 			[430000] = {
 				ActivateIds = { 430000, },
