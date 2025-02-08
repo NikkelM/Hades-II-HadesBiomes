@@ -1,7 +1,7 @@
 -- Utility functions
 
--- Used to represent nil
 mod.NilValue = {}
+mod.TableValue = {}
 
 ---Logs a message at the specified log level with colour coding.
 ---@param t any The message to log.
@@ -207,7 +207,12 @@ end
 ---@param replaceTable boolean|nil If modificationData is a table, this will replace the entire table instead of merging.
 function mod.ApplyModifications(baseData, modificationData, replaceTable)
 	for key, value in pairs(modificationData) do
-		if value == mod.NilValue then
+		if key == "ModsNikkelMHadesBiomesMapGameStateRequirements" then
+			for _, requirementValue in ipairs(value) do
+				mod.MapGameStateRequirements(baseData, requirementValue.Path, requirementValue.Context)
+			end
+			modificationData[key] = nil
+		elseif value == mod.NilValue then
 			baseData[key] = nil
 		elseif type(value) == "table" then
 			if replaceTable then

@@ -75,6 +75,7 @@ local function on_ready()
 	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
 
 	-- File handling and other generic functions required at install time
+	import "Scripts/Meta/GameStateRequirements.lua"
 	import "Scripts/Meta/Utils.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/FxAnimationDuplicatesData.lua"

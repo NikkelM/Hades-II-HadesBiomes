@@ -160,6 +160,13 @@ local roomModifications = {
 
 	-- BOSSES
 	A_Boss01 = {
+		ModsNikkelMHadesBiomesMapGameStateRequirements = {
+			{
+				-- Voicelines played before entering the conversation, depends on if there are supporting bosses
+				Path = { "UnthreadedEvents", 1, "Args", "VoiceLines", "*" },
+				Context = "TartarusBossRoom",
+			},
+		},
 		LoadModdedVoiceBanks = { "MegaeraField" },
 		-- TODO - Hades II drops the same item always - which one to choose?
 		ForcedReward = "MixerFBossDrop",
