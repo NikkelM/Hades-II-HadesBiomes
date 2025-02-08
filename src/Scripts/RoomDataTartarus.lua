@@ -167,7 +167,19 @@ local roomModifications = {
 				Context = "TartarusBossRoom",
 			},
 		},
-		LoadModdedVoiceBanks = { "MegaeraField" },
+		LoadModdedVoiceBanks = { "Megaera*" },
+		-- Replace MegaeraHome with Megaera voicelines
+		UnthreadedEvents = {
+			[1] = {
+				Args = {
+					VoiceLines = {
+						[1] = { Cue = "/VO/Megaera_0061" },
+						[2] = { Cue = "/VO/Megaera_0053", RequiredPlayed = { "/VO/Megaera_0061" }, },
+						[4] = { Cue = "/VO/Megaera_0057", },
+					},
+				},
+			},
+		},
 		-- TODO - Hades II drops the same item always - which one to choose?
 		ForcedReward = "MixerFBossDrop",
 		FirstClearRewardStore = mod.NilValue,
