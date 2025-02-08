@@ -64,8 +64,6 @@ local encounterReplacements = {
 local encounterModifications = {
 	-- GENERIC
 	ModsNikkelMHadesBiomesGenerated = {
-		-- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
-		LoadPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes" },
 		BlockTypesAcrossWaves = true,
 		UnthreadedEvents = EncounterSets.EncounterEventsDefault,
 		CountsForRoomEncounterDepth = true,
@@ -103,6 +101,12 @@ local encounterModifications = {
 		-- TODO: Modify to drop other resources if there is an incantation for this in Hades II
 		PostUnthreadedEvents = mod.NilValue,
 	},
+}
+
+-- Assign separately so we don't get a circular reference
+game.EncounterData.ModsNikkelMHadesBiomesBaseEncounter = {
+	-- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
+	LoadPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "GUIModsNikkelMHadesBiomes" },
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataTartarus, encounterModifications, encounterReplacements)

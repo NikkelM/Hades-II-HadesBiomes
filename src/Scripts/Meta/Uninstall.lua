@@ -22,11 +22,11 @@ local function removeFile(filePath, fileType)
 	end
 end
 
-local function removeFilesByNames(fileNames, basePath, extension, fileType)
-	mod.DebugPrint("Removing " .. fileType .. " files...", 3)
+local function removeFilesByNames(fileNames, basePath, extension)
+	mod.DebugPrint("Removing " .. extension .. " files...", 3)
 	for _, name in ipairs(fileNames) do
 		local destPath = rom.path.combine(rom.paths.Content(), basePath .. name .. extension)
-		removeFile(destPath, fileType)
+		removeFile(destPath, extension)
 	end
 end
 
@@ -58,8 +58,15 @@ function mod.Uninstall()
 	local fxSjsonFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
 	removeFile(fxSjsonFilePath, ".sjson")
 
-	removeFilesByNames(MapFileNames, "Maps\\", ".map_text", ".map_text")
-	removeFilesByNames(MapFileNames, "Maps\\bin\\", ".thing_bin", ".thing_bin")
+	-- GUI Animations file
+	local guiSjsonFilePath = rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename)
+	removeFile(guiSjsonFilePath, ".sjson")
+
+	removeFilesByNames(MapFileNames, "Maps\\", ".map_text")
+	removeFilesByNames(MapFileNames, "Maps\\bin\\", ".thing_bin")
+
+	removeFilesByNames(VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".txt")
+	removeFilesByNames(VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb")
 
 	mod.DebugPrint("Removing help text files...", 3)
 	for _, language in ipairs(HelpTextLanguages) do

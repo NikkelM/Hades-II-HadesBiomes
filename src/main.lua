@@ -78,6 +78,7 @@ local function on_ready()
 	import "Scripts/Meta/Utils.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/FxAnimationDuplicatesData.lua"
+	import "Scripts/Meta/GUIAnimationDuplicatesData.lua"
 	import "Scripts/Meta/NameMappingData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 
@@ -183,7 +184,6 @@ local function on_ready()
 		import "Scripts/RoomLogic.lua"
 		import "Scripts/CombatPresentation.lua"
 		import "Scripts/RewardPresentation.lua"
-		import "Scripts/RoomPresentation.lua"
 		import "Scripts/DeathLoopData.lua"
 		import "Scripts/WeaponSets.lua"
 	else

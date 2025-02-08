@@ -160,13 +160,44 @@ local roomModifications = {
 
 	-- BOSSES
 	A_Boss01 = {
-		LoadModdedVoiceBanks = { "MegaeraField" }, -- MegaeraHome, Megaera?
+		LoadModdedVoiceBanks = { "MegaeraField" },
 		-- TODO - Hades II drops the same item always - which one to choose?
 		ForcedReward = "MixerFBossDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
+	},
+	A_PostBoss01 = {
+		ExitPreviewAnim = "HadesExitPreview",
+		-- TODO: Remove placeholder
+		NextRoomSet = { "G" },
+		SellShopSpawnChance = 1.0,
+		SellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossSellTraitShops" },
+			},
+		},
+		-- Defines where the well spawns, making sure the sell shop spawns on the other possible ID
+		WellShopChallengeBaseId = 487438,
+		WellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossWellShops" },
+			},
+		},
+		ObstacleData = {
+			[486504] = {
+				SetupGameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradePostBossGiftRack" },
+					},
+				},
+			},
+			-- Makes the exit door interactable
+			[430000] = {
+				ActivateIds = { 430000, },
+			},
+		},
 	},
 }
 

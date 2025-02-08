@@ -1,5 +1,4 @@
 local newRoomSets = {
-	-- Tartarus
 	Tartarus = {
 		-- Opening room for the very first run, forces Athena boon, no enemies
 		-- "RoomSimple01",
@@ -9,7 +8,7 @@ local newRoomSets = {
 		-- "A_Boss02",
 		-- "A_Boss03",
 
-		-- "A_PostBoss01",
+		"A_PostBoss01",
 
 		"A_MiniBoss01",
 		"A_MiniBoss02",
@@ -51,7 +50,7 @@ local newRoomSets = {
 		-- "A_Combat23",
 
 		-- "A_Story01",
-	}
+	},
 }
 
 for key, newRoomSet in pairs(newRoomSets) do

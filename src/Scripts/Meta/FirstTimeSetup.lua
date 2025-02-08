@@ -57,6 +57,9 @@ function mod.FirstTimeSetup()
 	mod.DebugPrint("Copying Fx animations...", 3)
 	CopyHadesFxAnimations()
 
+	mod.DebugPrint("Copying GUI animations...", 3)
+	CopyHadesGUIAnimations()
+
 	if not mod.CheckRequiredFiles() then
 		error(
 			"Required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check your config file.")
@@ -121,7 +124,6 @@ function CopyHadesFxAnimations()
 	local hadesFxFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\Fx.sjson")
 	local hadesFxTable = sjson.decode_file(hadesFxFile)
 
-	-- Z_ so the file is loaded last, and any animations these effects inherit from are already loaded
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
 	if rom.path.exists(destinationFilePath) then
 		mod.DebugPrint("File already exists and will not be overwritten: " .. destinationFilePath, 2)
@@ -146,6 +148,36 @@ function CopyHadesFxAnimations()
 	hadesFxTable.Animations = filteredAnimations
 
 	sjson.encode_file(destinationFilePath, hadesFxTable)
+end
+
+-- Gets the GUI animations from Hades, removes duplicate animations and then writes the new file to the Hades II directory
+function CopyHadesGUIAnimations()
+	local hadesGUIAnimationsFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\GUIAnimations.sjson")
+	local hadesGUIAnimationsTable = sjson.decode_file(hadesGUIAnimationsFile)
+
+	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename)
+	if rom.path.exists(destinationFilePath) then
+		mod.DebugPrint("File already exists and will not be overwritten: " .. destinationFilePath, 2)
+		return
+	end
+
+	-- Before removing duplicates, rename animations for which we need the old version
+	mod.RenameSjsonEntries(hadesGUIAnimationsTable.Animations, mod.GUIAnimationMappings, "Name", "GUIAnimations.sjson")
+	for oldName, newName in pairs(mod.FxAnimationMappings) do
+		mod.UpdateField(hadesGUIAnimationsTable.Animations, oldName, newName, { "InheritFrom" }, "GUIAnimations.sjson")
+		mod.UpdateField(hadesGUIAnimationsTable.Animations, oldName, newName, { "ChainTo" }, "GUIAnimations.sjson")
+	end
+
+	local filteredAnimations = {}
+	for _, animation in ipairs(hadesGUIAnimationsTable.Animations) do
+		if not mod.HadesGUIAnimationDuplicates[animation.Name] then
+			table.insert(filteredAnimations, animation)
+		end
+	end
+
+	hadesGUIAnimationsTable.Animations = filteredAnimations
+
+	sjson.encode_file(destinationFilePath, hadesGUIAnimationsTable)
 end
 
 -- Copies a file from src to dest

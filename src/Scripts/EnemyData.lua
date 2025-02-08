@@ -283,6 +283,7 @@ local enemyModifications = {
 	-- Bosses
 	Harpy = {
 		StunAnimations = {},
+		DestroyDelay = 0.0,
 	},
 
 	-- ASPHODEL
