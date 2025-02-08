@@ -58,5 +58,4 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 	end
 
 	base(exitDoor, chosenRewardType, chosenLootName, index, args)
-
 end)

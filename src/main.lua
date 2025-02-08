@@ -184,7 +184,6 @@ local function on_ready()
 		import "Scripts/RoomLogic.lua"
 		import "Scripts/CombatPresentation.lua"
 		import "Scripts/RewardPresentation.lua"
-		import "Scripts/RoomPresentation.lua"
 		import "Scripts/DeathLoopData.lua"
 		import "Scripts/WeaponSets.lua"
 	else

@@ -9,7 +9,8 @@ function game.DisplayLocationText(source, args)
 	game.DisplayInfoBanner(source, args)
 end
 
--- If the door has separate locked animations for Meta or Run rewards, honour it
+-- Hades run doors have a backing even while still locked (Hades II doors just don't have a preview)
+-- Make sure we know which doors to add a backing to already
 modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle, replaceOnlyNull, args)
 	base(obstacle, replaceOnlyNull, args)
 
