@@ -163,14 +163,14 @@ local roomModifications = {
 		ModsNikkelMHadesBiomesMapGameStateRequirements = {
 			{
 				-- Voicelines played before entering the conversation, depends on if there are supporting bosses
-				Path = { "UnthreadedEvents", 1, "Args", "VoiceLines", "*" },
-				Context = "TartarusBossRoom",
+				Path = { "UnthreadedEvents", 1, "Args", "VoiceLines", "*" }
 			},
 		},
 		LoadModdedVoiceBanks = { "Megaera*" },
 		-- Replace MegaeraHome with Megaera voicelines
 		UnthreadedEvents = {
 			[1] = {
+				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
 				Args = {
 					VoiceLines = {
 						[1] = { Cue = "/VO/Megaera_0061" },

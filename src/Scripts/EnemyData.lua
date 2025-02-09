@@ -59,6 +59,40 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 		-- Replace keys that were renamed between the games
 		mod.RenameKeys(enemyData, enemyKeyReplacements, enemyName)
 
+		if enemyData.BossPresentationSuperPriorityIntroTextLineSets then
+			for key, textLineSet in pairs(enemyData.BossPresentationSuperPriorityIntroTextLineSets) do
+				textLineSet.Name = key
+			end
+			-- Debug, removing voicelines where Zagreus answers
+			enemyData.BossPresentationSuperPriorityIntroTextLineSets = {}
+		end
+		if enemyData.BossPresentationPriorityIntroTextLineSets then
+			for key, textLineSet in pairs(enemyData.BossPresentationPriorityIntroTextLineSets) do
+				textLineSet.Name = key
+			end
+			-- Debug, removing voicelines where Zagreus answers
+			enemyData.BossPresentationPriorityIntroTextLineSets = {}
+		end
+		if enemyData.BossPresentationIntroTextLineSets then
+			for key, textLineSet in pairs(enemyData.BossPresentationIntroTextLineSets) do
+				textLineSet.Name = key
+			end
+			-- Debug, removing voicelines where Zagreus answers
+			enemyData.BossPresentationIntroTextLineSets = {}
+		end
+		if enemyData.BossPresentationTextLineSets then
+			for key, textLineSet in pairs(enemyData.BossPresentationTextLineSets) do
+				textLineSet.Name = key
+			end
+			-- Debug, removing voicelines where Zagreus answers
+			enemyData.BossPresentationTextLineSets = {}
+		end
+		if enemyData.BossPresentationRepeatableTextLineSets then
+			for key, textLineSet in pairs(enemyData.BossPresentationRepeatableTextLineSets) do
+				textLineSet.Name = key
+			end
+		end
+
 		-- Increase health and armour for slightly increased difficulty
 		if enemyData.MaxHealth then
 			enemyData.MaxHealth = enemyData.MaxHealth * 1.15
@@ -282,6 +316,12 @@ local enemyModifications = {
 	},
 	-- Bosses
 	Harpy = {
+		ModsNikkelMHadesBiomesMapGameStateRequirements = {
+			{
+				-- Conversations started when entering the boss's room
+				Path = { "BossPresentationRepeatableTextLineSets", "*" }
+			},
+		},
 		StunAnimations = {},
 		DestroyDelay = 0.0,
 	},
