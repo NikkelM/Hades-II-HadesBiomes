@@ -285,6 +285,23 @@ local enemyModifications = {
 		StunAnimations = {},
 		DestroyDelay = 0.0,
 	},
+	Harpy2 = {
+		StunAnimations = {},
+		DestroyDelay = 0.0,
+	},
+	Harpy3 = {
+		StunAnimations = {},
+		DestroyDelay = 0.0,
+		BossPresentationTextLineSets = {
+			Fury3Encounter10 = {
+				EndVoiceLines = {
+					[1] = {
+						[1] = { Cue = "/VO/Megaera_0289" }
+					},
+				},
+			},
+		},
+	},
 
 	-- ASPHODEL
 	BloodlessGrenadierElite = {
