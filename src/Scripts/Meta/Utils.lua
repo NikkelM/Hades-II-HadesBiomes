@@ -209,7 +209,7 @@ function mod.ApplyModifications(baseData, modificationData, replaceTable)
 	for key, value in pairs(modificationData) do
 		if key == "ModsNikkelMHadesBiomesMapGameStateRequirements" then
 			for _, requirementValue in ipairs(value) do
-				mod.MapGameStateRequirements(baseData, requirementValue.Path, requirementValue.Context)
+				mod.MapGameStateRequirements(baseData, requirementValue.Path)
 			end
 			modificationData[key] = nil
 		elseif value == mod.NilValue then
