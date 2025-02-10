@@ -35,7 +35,7 @@ local roomModifications = {
 	-- GENERIC
 	BaseTartarus = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "TartarusModsNikkelMHadesBiomes", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "TartarusModsNikkelMHadesBiomes" },
 
 		SaveProfileLocationText = "ModdedLocation_Hades_Tartarus",
 

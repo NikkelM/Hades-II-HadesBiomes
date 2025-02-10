@@ -130,60 +130,81 @@ function CopyHadesHelpTexts()
 end
 
 -- Common function to copy and filter animations
-local function CopyAndFilterAnimations(sourceFilePath, destinationFilePath, animationMappings, animationDuplicates,
-																			 animationType)
-	local animationsTable = sjson.decode_file(sourceFilePath)
+local function CopyAndFilterAnimations(srcPath, destPath, mappings, duplicates, modifications, animationType)
+	local animationsTable = sjson.decode_file(srcPath)
 
-	if rom.path.exists(destinationFilePath) then
-		mod.DebugPrint("File already exists and will not be overwritten: " .. destinationFilePath, 2)
+	if rom.path.exists(destPath) then
+		mod.DebugPrint("File already exists and will not be overwritten: " .. destPath, 2)
 		return
 	end
 
 	-- Before removing duplicates, rename animations for which we need the old version
-	mod.RenameSjsonEntries(animationsTable.Animations, animationMappings, "Name", animationType)
-	for oldName, newName in pairs(animationMappings) do
+	mod.RenameSjsonEntries(animationsTable.Animations, mappings, "Name", animationType)
+	for oldName, newName in pairs(mappings) do
 		mod.UpdateField(animationsTable.Animations, oldName, newName, { "InheritFrom" }, animationType)
 		mod.UpdateField(animationsTable.Animations, oldName, newName, { "ChainTo" }, animationType)
 	end
 
 	local filteredAnimations = {}
 	for _, animation in ipairs(animationsTable.Animations) do
-		if not animationDuplicates[animation.Name] then
+		if not duplicates[animation.Name] then
+			if modifications[animation.Name] then
+				mod.PrintTable(animation)
+				mod.PrintTable(modifications[animation.Name])
+				for key, value in pairs(modifications[animation.Name]) do
+					animation[key] = value
+				end
+			end
 			table.insert(filteredAnimations, animation)
 		end
 	end
 
 	animationsTable.Animations = filteredAnimations
 
-	sjson.encode_file(destinationFilePath, animationsTable)
+	sjson.encode_file(destPath, animationsTable)
 end
 
 function CopyHadesFxAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\Fx.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
+	local modifications = {}
 	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates,
-		"Fx.sjson")
+		modifications, "Fx.sjson")
 end
 
 function CopyHadesGUIAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\GUIAnimations.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename)
+	local modifications = {}
 	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.GUIAnimationMappings, mod.HadesGUIAnimationDuplicates,
-		"GUIAnimations.sjson")
+		modifications, "GUIAnimations.sjson")
 end
 
 function CopyHadesPortraitAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\PortraitAnimations.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename)
+	local modifications = {
+		Portrait_Zag_Default_01 = {
+			FilePath = "Portraits\\MelAndZagCloser.png",
+			OffsetY = 32,
+			OffsetX = -75,
+		},
+		Portrait_Zag_Default_01_Exit = {
+			FilePath = "Portraits\\MelAndZagCloser.png",
+			OffsetY = 32,
+			OffsetX = -75,
+		},
+	}
 	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.PortraitAnimationMappings,
-		mod.HadesPortraitAnimationDuplicates, "PortraitAnimations.sjson")
+		mod.HadesPortraitAnimationDuplicates, modifications, "PortraitAnimations.sjson")
 end
 
 function CopyHadesCharacterAnimationsNPCs()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\CharacterAnimationsNPCs.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesCharacterAnimationsNPCsDestinationFilename)
+	local modifications = {}
 	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.CharacterAnimationsNPCsMappings,
-		mod.HadesCharacterAnimationsNPCsDuplicates, "CharacterAnimationsNPCs.sjson")
+	mod.HadesCharacterAnimationsNPCsDuplicates, modifications, "CharacterAnimationsNPCs.sjson")
 end
 
 -- Copies a file from src to dest

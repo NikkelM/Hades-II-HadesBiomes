@@ -108,7 +108,7 @@ local encounterModifications = {
 -- Assign separately so we don't get a circular reference
 game.EncounterData.ModsNikkelMHadesBiomesBaseEncounter = {
 	-- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
-	LoadPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "GUIModsNikkelMHadesBiomes" },
+	LoadPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "GUIModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits" },
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataTartarus, encounterModifications, encounterReplacements)

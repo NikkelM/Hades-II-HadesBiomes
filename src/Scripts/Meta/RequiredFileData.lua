@@ -38,7 +38,7 @@ PackageFileMappings = {
 }
 
 CustomPackageFileNames = {
-	"Z_GUIModsNikkelMHadesBiomes",
+	"ModsNikkelMHadesBiomesPortraits",
 }
 
 BikFileMappings = {
