@@ -22,69 +22,12 @@ local roomReplacements = {
 
 	-- SHOPS
 	A_Shop01 = {
-		-- Same requirements, but different format
-		GameStateRequirements = {
-			{
-				FunctionName = "RequiredMinExits",
-				FunctionArgs = { Count = 2 },
-			},
-			{
-				Path = { "CurrentRun", "BiomeDepthCache" },
-				Comparison = "<=",
-				Value = 6,
-			},
-		},
 		Binks = mod.NilValue,
 	},
 	-- TODO: Add additional bosses as they are implemented
 	A_PreBoss01 = {
 		LinkedRooms = { "A_Boss01" }, -- , "A_Boss02", "A_Boss03"
 		Binks = mod.NilValue,
-	},
-
-	-- MINIBOSSES
-	A_MiniBoss01 = {
-		GameStateRequirements = {
-			{
-				Path = { "CurrentRun", "RoomsEntered" },
-				HasNone = { "A_MiniBoss02", "A_MiniBoss03", "A_MiniBoss04" },
-			},
-		},
-	},
-	A_MiniBoss02 = {
-		GameStateRequirements = {
-			{
-				Path = { "CurrentRun", "RoomsEntered" },
-				HasNone = { "A_MiniBoss01", "A_MiniBoss03", "A_MiniBoss04" },
-			},
-			NamedRequirements = { "MinibossCountShrineUpgradeActive" },
-			-- {
-			-- 	PathTrue = { "GameState", "EncountersOccurredCache", "BossHarpy1" }, -- Not implemented yet
-			-- },
-		},
-	},
-	A_MiniBoss03 = {
-		GameStateRequirements = {
-			{
-				Path = { "CurrentRun", "RoomsEntered" },
-				HasNone = { "A_MiniBoss01", "A_MiniBoss02", "A_MiniBoss04" },
-			},
-			-- {
-			-- 	PathTrue = { "GameState", "EncountersOccurredCache", "BossHades" }, -- Not implemented yet
-			-- },
-		},
-	},
-	A_MiniBoss04 = {
-		GameStateRequirements = {
-			{
-				Path = { "CurrentRun", "RoomsEntered" },
-				HasNone = { "A_MiniBoss01", "A_MiniBoss02", "A_MiniBoss03" },
-			},
-			NamedRequirements = { "MinibossCountShrineUpgradeActive" },
-			-- {
-			-- 	PathTrue = { "GameState", "EncountersOccurredCache", "BossHarpy1" }, -- Not implemented yet
-			-- },
-		},
 	},
 }
 
@@ -126,6 +69,12 @@ local roomModifications = {
 			{ FunctionName = "CheckBiomeStateStart" },
 			{ FunctionName = "ShadeMercManager",    Args = { StartingCountMin = 3, StartingCountMax = 12, ObjectNames = { "ShadeMerc" }, MaxActive = 12 } },
 		},
+		UnthreadedEvents = {
+			[1] = {
+				-- Requires AthenaFirstPickup voiceline, which is not implemented
+				GameStateRequirements = mod.NilValue
+			}
+		}
 	},
 	-- This is the first run's opening room, which forces Athena boons
 	RoomSimple01 = mod.NilValue,
@@ -160,12 +109,6 @@ local roomModifications = {
 
 	-- BOSSES
 	A_Boss01 = {
-		ModsNikkelMHadesBiomesMapGameStateRequirements = {
-			{
-				-- Voicelines played before entering the conversation, depends on if there are supporting bosses
-				Path = { "UnthreadedEvents", 1, "Args", "VoiceLines", "*" }
-			},
-		},
 		LoadModdedVoiceBanks = { "Megaera*" },
 		-- Replace MegaeraHome with Megaera voicelines
 		UnthreadedEvents = {
@@ -186,6 +129,13 @@ local roomModifications = {
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
+	},
+
+	-- OTHER
+	A_Reprieve01 = {
+		GameStateRequirements = {
+			RequiredCosmetics = mod.NilValue,
+		},
 	},
 	A_PostBoss01 = {
 		ExitPreviewAnim = "HadesExitPreview",
@@ -210,6 +160,7 @@ local roomModifications = {
 					{
 						PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradePostBossGiftRack" },
 					},
+					RequiredCosmetics = mod.NilValue,
 				},
 			},
 			-- Makes the exit door interactable

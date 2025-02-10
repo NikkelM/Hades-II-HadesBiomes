@@ -316,12 +316,6 @@ local enemyModifications = {
 	},
 	-- Bosses
 	Harpy = {
-		ModsNikkelMHadesBiomesMapGameStateRequirements = {
-			{
-				-- Conversations started when entering the boss's room
-				Path = { "BossPresentationRepeatableTextLineSets", "*" }
-			},
-		},
 		StunAnimations = {},
 		DestroyDelay = 0.0,
 	},
@@ -408,6 +402,11 @@ local enemyModifications = {
 					},
 				},
 			},
+		},
+		ValueOptions = {
+			[1] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[2] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
 		},
 	},
 }

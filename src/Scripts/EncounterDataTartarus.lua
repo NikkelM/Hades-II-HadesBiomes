@@ -75,6 +75,8 @@ local encounterModifications = {
 		PreSpawnEnemies = false,
 		NoFirstWaveStartDelay = true,
 		SpawnOverrides = { UseActivatePresentation = false, },
+		-- Requires AthenaFirstPickup voiceline, which is not implemented
+		RequiredTextLines = mod.NilValue,
 	},
 
 	-- MINIBOSSES
