@@ -149,8 +149,6 @@ local function CopyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 	for _, animation in ipairs(animationsTable.Animations) do
 		if not duplicates[animation.Name] then
 			if modifications[animation.Name] then
-				mod.PrintTable(animation)
-				mod.PrintTable(modifications[animation.Name])
 				for key, value in pairs(modifications[animation.Name]) do
 					animation[key] = value
 				end

@@ -36,6 +36,7 @@ local roomModifications = {
 	BaseTartarus = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "TartarusModsNikkelMHadesBiomes" },
+		-- LoadModdedVoiceBanks = { "ZagreusField" },
 
 		SaveProfileLocationText = "ModdedLocation_Hades_Tartarus",
 
@@ -111,8 +112,8 @@ local roomModifications = {
 
 	-- BOSSES
 	A_Boss01 = {
-		LoadModdedVoiceBanks = { "Megaera*" },
-		-- Replace MegaeraHome with Megaera voicelines
+		LoadModdedVoiceBanks = { "Megaera*", "ZagreusField" },
+		-- Replaces MegaeraHome with Megaera voicelines
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = "ModsNikkelMHadesBiomesBossIntro",

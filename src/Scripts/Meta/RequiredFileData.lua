@@ -12,6 +12,7 @@ AudioFileMappings = {
 VoiceoverFileNames = {
 	"MegaeraField",
 	"Megaera",
+	"ZagreusField",
 }
 
 PackageFileMappings = {
