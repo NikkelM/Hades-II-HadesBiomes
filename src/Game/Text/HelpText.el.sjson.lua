@@ -15,6 +15,11 @@ local newData = {
 		Id = "ModdedLocation_Hades_Tartarus",
 		DisplayName = "ΤΑΡΤΑΡΑ (Εφιάλτης)",
 	},
+	{
+		Id = "CharProtag",
+		DisplayName = "Ζαγρεύς",
+		Description = "Πρίγκιπας του Κάτω Κόσμου",
+	},
 }
 
 sjson.hook(helpTextFile, function(data)

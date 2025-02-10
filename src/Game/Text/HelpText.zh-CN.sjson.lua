@@ -15,6 +15,11 @@ local newData = {
 		Id = "ModdedLocation_Hades_Tartarus",
 		DisplayName = "塔耳塔罗斯 （梦魇）",
 	},
+	{
+		Id = "CharProtag",
+		DisplayName = "扎格列欧斯",
+		Description = "冥界王子",
+	},
 }
 
 sjson.hook(helpTextFile, function(data)

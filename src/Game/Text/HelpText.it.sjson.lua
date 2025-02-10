@@ -15,6 +15,11 @@ local newData = {
 		Id = "ModdedLocation_Hades_Tartarus",
 		DisplayName = "TARTARO (Incubo)",
 	},
+	{
+		Id = "CharProtag",
+		DisplayName = "Zagreus",
+		Description = "Principe dell'Oltretomba",
+	},
 }
 
 sjson.hook(helpTextFile, function(data)

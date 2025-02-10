@@ -17,6 +17,12 @@ local newData = {
 		Id = "ModdedLocation_Hades_Tartarus",
 		DisplayName = "TARTARUS (Nightmare)",
 	},
+	{
+		-- Almost all textlines use CharProtag in Hades
+		Id = "CharProtag",
+		DisplayName = "Zagreus",
+		Description = "Prince of the Underworld",
+	},
 }
 
 sjson.hook(helpTextFile, function(data)
