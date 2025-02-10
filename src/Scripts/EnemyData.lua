@@ -63,29 +63,21 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 			for key, textLineSet in pairs(enemyData.BossPresentationSuperPriorityIntroTextLineSets) do
 				textLineSet.Name = key
 			end
-			-- Debug, removing voicelines where Zagreus answers
-			enemyData.BossPresentationSuperPriorityIntroTextLineSets = {}
 		end
 		if enemyData.BossPresentationPriorityIntroTextLineSets then
 			for key, textLineSet in pairs(enemyData.BossPresentationPriorityIntroTextLineSets) do
 				textLineSet.Name = key
 			end
-			-- Debug, removing voicelines where Zagreus answers
-			enemyData.BossPresentationPriorityIntroTextLineSets = {}
 		end
 		if enemyData.BossPresentationIntroTextLineSets then
 			for key, textLineSet in pairs(enemyData.BossPresentationIntroTextLineSets) do
 				textLineSet.Name = key
 			end
-			-- Debug, removing voicelines where Zagreus answers
-			enemyData.BossPresentationIntroTextLineSets = {}
 		end
 		if enemyData.BossPresentationTextLineSets then
 			for key, textLineSet in pairs(enemyData.BossPresentationTextLineSets) do
 				textLineSet.Name = key
 			end
-			-- Debug, removing voicelines where Zagreus answers
-			enemyData.BossPresentationTextLineSets = {}
 		end
 		if enemyData.BossPresentationRepeatableTextLineSets then
 			for key, textLineSet in pairs(enemyData.BossPresentationRepeatableTextLineSets) do

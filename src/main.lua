@@ -120,6 +120,7 @@ local function on_ready()
 		import "Game/MapGroups.sjson.lua"
 
 		-- SJSON changes
+		import "Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson.lua"
 		import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
 		-- import "Game/Animations/Obstacle_Deprecated_VFX.sjson.lua" -- Currently doesn't add anything
 		-- Must be loaded after CharacterAnimationsEnemies, as it inherits some animations from it
