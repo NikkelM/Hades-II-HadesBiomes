@@ -51,5 +51,8 @@ mod.FxAnimationMappings = {
 mod.GUIAnimationMappings = {
 	ExitPreview = "HadesExitPreview",
 }
-mod.PortraitAnimationMappings = {}
+mod.PortraitAnimationMappings = {
+	Portrait_Base_01 = "HadesPortrait_Base_01",
+	Portrait_Base_01_Exit = "HadesPortrait_Base_01_Exit",
+}
 mod.CharacterAnimationsNPCsMappings = {}
