@@ -78,8 +78,10 @@ local function on_ready()
 	import "Scripts/Meta/GameStateRequirements.lua"
 	import "Scripts/Meta/Utils.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
-	import "Scripts/Meta/FxAnimationDuplicatesData.lua"
-	import "Scripts/Meta/GUIAnimationDuplicatesData.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataFx.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataGUI.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
 	import "Scripts/Meta/NameMappingData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 

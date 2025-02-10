@@ -48,7 +48,8 @@ mod.FxAnimationMappings = {
 	EnemyProjectileIn = "HadesEnemyProjectileIn",
 	EnemyProjectileLight = "HadesEnemyProjectileLight",
 }
-
 mod.GUIAnimationMappings = {
 	ExitPreview = "HadesExitPreview",
 }
+mod.PortraitAnimationMappings = {}
+mod.CharacterAnimationsNPCsMappings = {}

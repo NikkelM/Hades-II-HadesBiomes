@@ -281,6 +281,7 @@ SjsonFileMappings = {
 	["Animations\\CharacterAnim_Enemies_Wringer.sjson"] = "Animations\\CharacterAnim_Enemies_Wringer.sjson",
 	["Animations\\CharacterAnim_Enemies_WretchAssassin.sjson"] = "Animations\\CharacterAnim_Enemies_WretchAssassin.sjson",
 	["Animations\\CharacterAnim_EnemiesBosses_Furies.sjson"] = "Animations\\CharacterAnim_EnemiesBosses_Furies.sjson",
+	["Animations\\CharacterAnimationsNPC_Thanatos.sjson"] = "Animations\\CharacterAnimationsNPC_Thanatos.sjson",
 }
 
 -- map_text and thing_bin file names

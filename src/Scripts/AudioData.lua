@@ -3,11 +3,7 @@ game.GlobalVoiceLines.StartNewHadesRunVoiceLines = {
 	Queue = "Never",
 	PreLineWait = 0.35,
 	RandomRemaining = true,
-	GameStateRequirements =
-	{
-		{
-		},
-	},
+	GameStateRequirements = { {}, },
 
 	-- Custom
 	{ Cue = "/VO/MelinoeField_0205", Text = "Every bad dream has an escape...", PlayFirst = true },
@@ -16,8 +12,7 @@ game.GlobalVoiceLines.StartNewHadesRunVoiceLines = {
 	{
 		Cue = "/VO/Melinoe_3391",
 		Text = "Hence I go...",
-		GameStateRequirements =
-		{
+		GameStateRequirements = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "HecateHideAndSeek01" },
 			},
@@ -36,8 +31,7 @@ game.GlobalVoiceLines.StartNewHadesRunVoiceLines = {
 		Cue = "/VO/Melinoe_2487",
 		Text = "New night, new path.",
 		PlayFirst = true,
-		GameStateRequirements =
-		{
+		GameStateRequirements = {
 			{
 				PathTrue = { "GameState", "SpeechRecord", "/VO/Melinoe_2485" },
 			},
