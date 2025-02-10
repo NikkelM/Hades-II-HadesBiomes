@@ -57,6 +57,8 @@ local roomModifications = {
 			[3] = mod.NilValue
 		},
 		StartUnthreadedEvents = {
+			-- Don't start the demo presentation mode
+			[1] = mod.NilValue,
 			-- Don't play the standard music event, it won't be able to get changed later
 			[3] = mod.NilValue
 		},
