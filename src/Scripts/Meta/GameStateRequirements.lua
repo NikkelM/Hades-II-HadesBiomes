@@ -1352,7 +1352,6 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	end
 
 	if requirements.RequiredSupportAINames ~= nil then
-		print("RequiredSupportAINames")
 		for k, requiredSupportAIName in pairs(requirements.RequiredSupportAINames) do
 			if not game.CurrentRun.SupportAINames[requiredSupportAIName] then
 				return false
