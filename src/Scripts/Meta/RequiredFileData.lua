@@ -37,6 +37,10 @@ PackageFileMappings = {
 	["720p\\GUI.pkg_manifest"] = "720p\\GUIModsNikkelMHadesBiomes.pkg_manifest",
 }
 
+CustomPackageFileNames = {
+	"Z_GUIModsNikkelMHadesBiomes",
+}
+
 BikFileMappings = {
 	-- Enemy animations
 	-- Wretch Glutton/PunchingBagUnit

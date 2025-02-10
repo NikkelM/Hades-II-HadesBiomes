@@ -51,6 +51,10 @@ function mod.Uninstall()
 
 	removeFiles(AudioFileMappings, "Audio\\Desktop\\", ".bank")
 	removeFiles(PackageFileMappings, "Packages\\", ".pkg")
+	removeFilesByNames(CustomPackageFileNames, "Packages\\1080p\\", ".pkg")
+	removeFilesByNames(CustomPackageFileNames, "Packages\\1080p\\", ".pkg_manifest")
+	removeFilesByNames(CustomPackageFileNames, "Packages\\720p\\", ".pkg")
+	removeFilesByNames(CustomPackageFileNames, "Packages\\720p\\", ".pkg_manifest")
 	removeFiles(BikFileMappings, "Movies\\", ".bik")
 	removeFiles(SjsonFileMappings, "Game\\", ".sjson")
 

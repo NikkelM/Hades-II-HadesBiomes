@@ -28,6 +28,10 @@ function mod.FirstTimeSetup()
 
 	copyFiles(AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank")
 	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\", ".pkg")
+	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg", true)
+	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", true)
+	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg", true)
+	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg_manifest", true)
 	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\", ".bik")
 	copyFiles(SjsonFileMappings, "Content\\Game\\", "Game\\", ".sjson")
 
