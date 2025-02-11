@@ -206,21 +206,37 @@ end
 ---@param modificationData any The modification(s) to apply.
 ---@param replaceTable boolean|nil If modificationData is a table, this will replace the entire table instead of merging.
 function mod.ApplyModifications(baseData, modificationData, replaceTable)
-	for key, value in pairs(modificationData) do
-		if value == mod.NilValue then
-			baseData[key] = nil
-		elseif type(value) == "table" then
-			if replaceTable then
-				baseData[key] = game.DeepCopyTable(value)
-			else
-				if type(baseData[key]) ~= "table" then
-					baseData[key] = {}
+	local function mergeTables(base, modification)
+		for key, value in pairs(modification) do
+			if value == mod.NilValue then
+				base[key] = nil
+			elseif type(value) == "table" and type(base[key]) == "table" then
+				if #base[key] > 0 and #value > 0 then
+					-- Both are arrays, merge them element-wise (merging nested tables recursively again)
+					for i, v in ipairs(value) do
+						if v == mod.NilValue then
+							base[key][i] = nil
+						elseif type(v) == "table" and type(base[key][i]) == "table" then
+							mergeTables(base[key][i], v)
+						else
+							table.insert(base[key], v)
+						end
+					end
+				else
+					mergeTables(base[key], value)
 				end
-				mod.ApplyModifications(baseData[key], value, replaceTable)
+			else
+				base[key] = value
 			end
-		else
+		end
+	end
+
+	if replaceTable then
+		for key, value in pairs(modificationData) do
 			baseData[key] = value
 		end
+	else
+		mergeTables(baseData, modificationData)
 	end
 end
 
