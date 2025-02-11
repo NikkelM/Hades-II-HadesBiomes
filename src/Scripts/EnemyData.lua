@@ -210,14 +210,22 @@ local enemyModifications = {
 	},
 	ThiefMineLayer = {
 		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
-		DefaultAIData = game.DeepCopyTable(game.EnemyData.ThiefMineLayer.DefaultAIData),
+		DefaultAIData = {
+			AttackWhileBlendingIntervalMin = 2.0,
+			AttackWhileBlendingIntervalMax = 2.5,
+			PostAttackDuration = 0.75,
+		},
 		ActivateFx = "EnemySummonRuneSmall",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInThiefMineLayerContainer",
 	},
 	ThiefMineLayerElite = {
-		DefaultAIData = game.DeepCopyTable(game.EnemyData.ThiefMineLayer_Elite.DefaultAIData),
+		DefaultAIData = {
+			AttackWhileBlendingIntervalMin = 1.5,
+			AttackWhileBlendingIntervalMax = 2.0,
+			PostAttackDuration = 0.5,
+		},
 		ActivateFx = "EnemySummonRuneSmall",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -262,12 +270,14 @@ local enemyModifications = {
 			},
 		},
 		OnDeathFunctionName = "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
+		BlockRaiseDead = true,
 	},
 	HeavyRangedSplitterFragment = {
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
 		DeathFx = "HeavyRangedSplitterFragmentDeath",
 		DeathGraphic = "HeavyRangedSplitterFragmentDeath",
 		UseActivatePresentation = false,
+		BlockRaiseDead = true,
 	},
 	Swarmer = {
 		StunAnimations = {
@@ -296,6 +306,7 @@ local enemyModifications = {
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
+		BlockRaiseDead = true,
 	},
 	WretchAssassin = {
 		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
@@ -303,6 +314,7 @@ local enemyModifications = {
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivate",
+		BlockRaiseDead = true
 	},
 	-- Bosses
 	Harpy = {

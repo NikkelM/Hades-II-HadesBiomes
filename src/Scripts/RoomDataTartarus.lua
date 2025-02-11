@@ -49,6 +49,7 @@ local roomModifications = {
 
 	-- OPENING ROOMS
 	RoomOpening = {
+		InheritFrom = { "BiomeStartRoom", },
 		LegalEncounters = { "OpeningGenerated" },
 		EntranceFunctionName = "RoomEntranceMaterialize",
 		EntranceFunctionArgs = { HeroGoalAngle = 335 },
