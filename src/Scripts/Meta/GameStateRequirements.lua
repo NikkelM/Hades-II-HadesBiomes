@@ -962,20 +962,53 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 		end
 	end
 
-	if requirements.RequiredCompletedRuns ~= nil and GetCompletedRuns() ~= requirements.RequiredCompletedRuns then
-		return false
+	-- if requirements.RequiredCompletedRuns ~= nil and GetCompletedRuns() ~= requirements.RequiredCompletedRuns then
+	if requirements.RequiredCompletedRuns ~= nil then
+		local completedModdedRuns = 0
+		for i, run in pairs(game.GameState.RunHistory) do
+			if run.BiomesReached.Tartarus then
+				completedModdedRuns = completedModdedRuns + 1
+			end
+		end
+		if completedModdedRuns ~= requirements.RequiredCompletedRuns then
+			return false
+		end
 	end
 
-	if requirements.RequiredFalseCompletedRuns ~= nil and GetCompletedRuns() == requirements.RequiredFalseCompletedRuns then
-		return false
+	if requirements.RequiredFalseCompletedRuns ~= nil then
+		local completedModdedRuns = 0
+		for i, run in pairs(game.GameState.RunHistory) do
+			if run.BiomesReached.Tartarus then
+				completedModdedRuns = completedModdedRuns + 1
+			end
+		end
+		if completedModdedRuns == requirements.RequiredFalseCompletedRuns then
+			return false
+		end
 	end
 
-	if requirements.RequiredMinCompletedRuns ~= nil and GetCompletedRuns() < requirements.RequiredMinCompletedRuns then
-		return false
+	if requirements.RequiredMinCompletedRuns ~= nil then
+		local completedModdedRuns = 0
+		for i, run in pairs(game.GameState.RunHistory) do
+			if run.BiomesReached.Tartarus then
+				completedModdedRuns = completedModdedRuns + 1
+			end
+		end
+		if completedModdedRuns < requirements.RequiredMinCompletedRuns then
+			return false
+		end
 	end
 
-	if requirements.RequiredMaxCompletedRuns ~= nil and GetCompletedRuns() > requirements.RequiredMaxCompletedRuns then
-		return false
+	if requirements.RequiredMaxCompletedRuns ~= nil then
+		local completedModdedRuns = 0
+		for i, run in pairs(game.GameState.RunHistory) do
+			if run.BiomesReached.Tartarus then
+				completedModdedRuns = completedModdedRuns + 1
+			end
+		end
+		if completedModdedRuns > requirements.RequiredMaxCompletedRuns then
+			return false
+		end
 	end
 
 	if requirements.RequiresRunCleared ~= nil and not game.CurrentRun.Cleared then
@@ -2020,22 +2053,49 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 		return false
 	end
 
-	if requirements.RequiredMinRunsCleared ~= nil and game.GameState.CompletedRunsCache < requirements.RequiredMinRunsCleared then
+	-- if requirements.RequiredMinRunsCleared ~= nil and game.GameState.CompletedRunsCache < requirements.RequiredMinRunsCleared then
+	if requirements.RequiredMinRunsCleared ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache < requirements.RequiredMinRunsCleared then
 		return false
 	end
-	if requirements.RequiredMaxRunsCleared ~= nil and game.GameState.CompletedRunsCache > requirements.RequiredMaxRunsCleared then
+	if requirements.RequiredMaxRunsCleared ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache > requirements.RequiredMaxRunsCleared then
 		return false
 	end
-	if requirements.RequiredRunsCleared ~= nil and game.GameState.CompletedRunsCache ~= requirements.RequiredRunsCleared then
-		return false
-	end
-
-	if requirements.RequiredMinConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= nil and game.GameState.ConsecutiveClears < requirements.RequiredMinConsecutiveClears then
+	if requirements.RequiredRunsCleared ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache ~= requirements.RequiredRunsCleared then
 		return false
 	end
 
-	if requirements.RequiredConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= requirements.RequiredConsecutiveClears then
-		return false
+	-- if requirements.RequiredMinConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= nil and game.GameState.ConsecutiveClears < requirements.RequiredMinConsecutiveClears then
+	if requirements.RequiredMinConsecutiveClears ~= nil then
+		local consecutiveModdedClears = 0
+		for k, run in game.GameState.RunHistory do
+			if run.BiomesReached.Tartarus then
+				if run.Cleared then
+					consecutiveModdedClears = consecutiveModdedClears + 1
+				else
+					break
+				end
+			end
+		end
+		if consecutiveModdedClears < requirements.RequiredMinConsecutiveClears then
+			return false
+		end
+	end
+
+	-- if requirements.RequiredConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= requirements.RequiredConsecutiveClears then
+	if requirements.RequiredConsecutiveClears ~= nil then
+		local consecutiveModdedClears = 0
+		for k, run in game.GameState.RunHistory do
+			if run.BiomesReached.Tartarus then
+				if run.Cleared then
+					consecutiveModdedClears = consecutiveModdedClears + 1
+				else
+					break
+				end
+			end
+		end
+		if consecutiveModdedClears ~= requirements.RequiredConsecutiveClears then
+			return false
+		end
 	end
 
 	if requirements.PlayerMaxHealthFraction ~= nil and game.CurrentRun.Hero.Health / game.CurrentRun.Hero.MaxHealth >= requirements.PlayerMaxHealthFraction then
