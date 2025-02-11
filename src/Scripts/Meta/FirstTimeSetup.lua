@@ -182,15 +182,56 @@ function CopyHadesPortraitAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\PortraitAnimations.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename)
 	local modifications = {
+		-- Replacing Zagreus solo portraits with ones where Melinoe is also present as a ghostly version behind him
 		Portrait_Zag_Default_01 = {
-			FilePath = "Portraits\\MelAndZagCloser.png",
+			FilePath = "Portraits\\MelAndZagDefault.png",
+			OffsetY = 32,
+			OffsetX = -100,
+		},
+		Portrait_Zag_Default_01_Exit = {
+			FilePath = "Portraits\\MelAndZagDefault.png",
+			OffsetY = 32,
+			OffsetX = -100,
+		},
+		Portrait_Zag_Serious_01 = {
+			FilePath = "Portraits\\MelAndZagSerious.png",
+			OffsetY = 32,
+			OffsetX = -70,
+		},
+		Portrait_Zag_Serious_01_Exit = {
+			FilePath = "Portraits\\MelAndZagSerious.png",
+			OffsetY = 32,
+			OffsetX = -70,
+		},
+		Portrait_Zag_Defiant_01 = {
+			FilePath = "Portraits\\MelAndZagDefiant.png",
 			OffsetY = 32,
 			OffsetX = -75,
 		},
-		Portrait_Zag_Default_01_Exit = {
-			FilePath = "Portraits\\MelAndZagCloser.png",
+		Portrait_Zag_Defiant_01_Exit = {
+			FilePath = "Portraits\\MelAndZagDefiant.png",
 			OffsetY = 32,
 			OffsetX = -75,
+		},
+		Portrait_Zag_Empathetic_01 = {
+			FilePath = "Portraits\\MelAndZagEmpathetic.png",
+			OffsetY = 32,
+			OffsetX = -100,
+		},
+		Portrait_Zag_Empathetic_01_Exit = {
+			FilePath = "Portraits\\MelAndZagEmpathetic.png",
+			OffsetY = 32,
+			OffsetX = -100,
+		},
+		Portrait_Zag_Unwell_01 = {
+			FilePath = "Portraits\\MelAndZagUnwell.png",
+			OffsetY = 32,
+			OffsetX = -100,
+		},
+		Portrait_Zag_Unwell_01_Exit = {
+			FilePath = "Portraits\\MelAndZagUnwell.png",
+			OffsetY = 32,
+			OffsetX = -100,
 		},
 	}
 	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.PortraitAnimationMappings,

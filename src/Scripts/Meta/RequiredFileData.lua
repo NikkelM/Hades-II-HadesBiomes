@@ -38,6 +38,7 @@ PackageFileMappings = {
 	["720p\\GUI.pkg_manifest"] = "720p\\GUIModsNikkelMHadesBiomes.pkg_manifest",
 }
 
+-- These will be copied from the plugins_data folder
 CustomPackageFileNames = {
 	"ModsNikkelMHadesBiomesPortraits",
 }
