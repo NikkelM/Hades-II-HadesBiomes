@@ -909,15 +909,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	end
 
 	if requirements.RequiredMinExits ~= nil then
-		if game.CurrentRun.CurrentRoom == nil then
-			return false
-		end
-		DebugAssert({
-			Condition = game.CurrentRun.CurrentRoom.NumExits ~= nil,
-			Text = game.CurrentRun.CurrentRoom.Name ..
-					" missing NumExits data."
-		})
-		if game.CurrentRun.CurrentRoom.NumExits < requirements.RequiredMinExits then
+		if game.CurrentRun.CurrentRoom == nil or game.CurrentRun.CurrentRoom.NumExits == nil or game.CurrentRun.CurrentRoom.NumExits < requirements.RequiredMinExits then
 			return false
 		end
 	end
@@ -1002,7 +994,6 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	end
 
 	if requirements.RequiredMinCompletedRuns ~= nil then
-		mod.PrintTable(source)
 		local completedModdedRuns = 0
 		for i, run in pairs(game.GameState.RunHistory) do
 			if run.BiomesReached.Tartarus then

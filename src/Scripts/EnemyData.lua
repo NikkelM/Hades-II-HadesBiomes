@@ -270,12 +270,14 @@ local enemyModifications = {
 			},
 		},
 		OnDeathFunctionName = "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
+		BlockRaiseDead = true,
 	},
 	HeavyRangedSplitterFragment = {
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
 		DeathFx = "HeavyRangedSplitterFragmentDeath",
 		DeathGraphic = "HeavyRangedSplitterFragmentDeath",
 		UseActivatePresentation = false,
+		BlockRaiseDead = true,
 	},
 	Swarmer = {
 		StunAnimations = {
@@ -304,6 +306,7 @@ local enemyModifications = {
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
+		BlockRaiseDead = true,
 	},
 	WretchAssassin = {
 		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
@@ -311,6 +314,7 @@ local enemyModifications = {
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivate",
+		BlockRaiseDead = true
 	},
 	-- Bosses
 	Harpy = {
