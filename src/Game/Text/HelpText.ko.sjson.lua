@@ -15,6 +15,11 @@ local newData = {
 		Id = "ModdedLocation_Hades_Tartarus",
 		DisplayName = "타르타로스 (악몽)",
 	},
+	{
+		Id = "CharProtag",
+		DisplayName = "자그레우스",
+		Description = "지하세계의 왕자",
+	},
 }
 
 sjson.hook(helpTextFile, function(data)

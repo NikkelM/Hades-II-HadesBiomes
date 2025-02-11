@@ -75,10 +75,13 @@ local function on_ready()
 	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
 
 	-- File handling and other generic functions required at install time
+	import "Scripts/Meta/GameStateRequirements.lua"
 	import "Scripts/Meta/Utils.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
-	import "Scripts/Meta/FxAnimationDuplicatesData.lua"
-	import "Scripts/Meta/GUIAnimationDuplicatesData.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataFx.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataGUI.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
 	import "Scripts/Meta/NameMappingData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 
@@ -117,6 +120,7 @@ local function on_ready()
 		import "Game/MapGroups.sjson.lua"
 
 		-- SJSON changes
+		import "Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson.lua"
 		import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
 		-- import "Game/Animations/Obstacle_Deprecated_VFX.sjson.lua" -- Currently doesn't add anything
 		-- Must be loaded after CharacterAnimationsEnemies, as it inherits some animations from it
@@ -182,6 +186,7 @@ local function on_ready()
 		import "Scripts/CombatLogic.lua"
 		import "Scripts/RunLogic.lua"
 		import "Scripts/RoomLogic.lua"
+		import "Scripts/RoomEvents.lua"
 		import "Scripts/CombatPresentation.lua"
 		import "Scripts/RewardPresentation.lua"
 		import "Scripts/DeathLoopData.lua"

@@ -1,7 +1,7 @@
 -- Utility functions
 
--- Used to represent nil
 mod.NilValue = {}
+mod.TableValue = {}
 
 ---Logs a message at the specified log level with colour coding.
 ---@param t any The message to log.

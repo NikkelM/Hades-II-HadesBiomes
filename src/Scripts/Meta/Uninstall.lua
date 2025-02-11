@@ -51,16 +51,17 @@ function mod.Uninstall()
 
 	removeFiles(AudioFileMappings, "Audio\\Desktop\\", ".bank")
 	removeFiles(PackageFileMappings, "Packages\\", ".pkg")
+	removeFilesByNames(CustomPackageFileNames, "Packages\\1080p\\", ".pkg")
+	removeFilesByNames(CustomPackageFileNames, "Packages\\1080p\\", ".pkg_manifest")
+	removeFilesByNames(CustomPackageFileNames, "Packages\\720p\\", ".pkg")
+	removeFilesByNames(CustomPackageFileNames, "Packages\\720p\\", ".pkg_manifest")
 	removeFiles(BikFileMappings, "Movies\\", ".bik")
 	removeFiles(SjsonFileMappings, "Game\\", ".sjson")
 
-	-- FX file
-	local fxSjsonFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
-	removeFile(fxSjsonFilePath, ".sjson")
-
-	-- GUI Animations file
-	local guiSjsonFilePath = rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename)
-	removeFile(guiSjsonFilePath, ".sjson")
+	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename), ".sjson")
+	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename), ".sjson")
+	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename), ".sjson")
+	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesCharacterAnimationsNPCsDestinationFilename), ".sjson")
 
 	removeFilesByNames(MapFileNames, "Maps\\", ".map_text")
 	removeFilesByNames(MapFileNames, "Maps\\bin\\", ".thing_bin")

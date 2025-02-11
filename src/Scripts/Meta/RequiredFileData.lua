@@ -8,8 +8,11 @@ AudioFileMappings = {
 
 -- Voiceover .txt and .fsb file names
 -- The file name must be the same as the event names within the file
+-- Some speaker names do not work (e.g. MegaeraHome)!
 VoiceoverFileNames = {
 	"MegaeraField",
+	"Megaera",
+	"ZagreusField",
 }
 
 PackageFileMappings = {
@@ -33,6 +36,11 @@ PackageFileMappings = {
 	["GUI.pkg_manifest"] = "1080p\\GUIModsNikkelMHadesBiomes.pkg_manifest",
 	["720p\\GUI.pkg"] = "720p\\GUIModsNikkelMHadesBiomes.pkg",
 	["720p\\GUI.pkg_manifest"] = "720p\\GUIModsNikkelMHadesBiomes.pkg_manifest",
+}
+
+-- These will be copied from the plugins_data folder
+CustomPackageFileNames = {
+	"ModsNikkelMHadesBiomesPortraits",
 }
 
 BikFileMappings = {
@@ -279,6 +287,7 @@ SjsonFileMappings = {
 	["Animations\\CharacterAnim_Enemies_Wringer.sjson"] = "Animations\\CharacterAnim_Enemies_Wringer.sjson",
 	["Animations\\CharacterAnim_Enemies_WretchAssassin.sjson"] = "Animations\\CharacterAnim_Enemies_WretchAssassin.sjson",
 	["Animations\\CharacterAnim_EnemiesBosses_Furies.sjson"] = "Animations\\CharacterAnim_EnemiesBosses_Furies.sjson",
+	["Animations\\CharacterAnimationsNPC_Thanatos.sjson"] = "Animations\\CharacterAnimationsNPC_Thanatos.sjson",
 }
 
 -- map_text and thing_bin file names

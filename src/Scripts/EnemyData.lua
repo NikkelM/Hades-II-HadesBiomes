@@ -59,6 +59,30 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 		-- Replace keys that were renamed between the games
 		mod.RenameKeys(enemyData, enemyKeyReplacements, enemyName)
 
+		-- Do replacements that can be done the same way for multiple enemies
+		if enemyData.Portrait then
+			enemyData.BoxAnimation = "DialogueSpeechBubbleLight"
+			enemyData.BoxExitAnimation = "DialogueSpeechBubbleLightOut"
+			enemyData.NarrativeTextColor = game.Color.DialogueTextLight
+			enemyData.NameplateSpeakerNameColor = game.Color.DialogueSpeakerNameOlympian
+			enemyData.NameplateDescriptionColor = { 145, 45, 90, 255 }
+		end
+
+		local bossPresentationProperties = {
+			"BossPresentationSuperPriorityIntroTextLineSets",
+			"BossPresentationPriorityIntroTextLineSets",
+			"BossPresentationIntroTextLineSets",
+			"BossPresentationTextLineSets",
+			"BossPresentationRepeatableTextLineSets"
+		}
+		for _, property in ipairs(bossPresentationProperties) do
+			if enemyData[property] then
+				for key, textLineSet in pairs(enemyData[property]) do
+					textLineSet.Name = key
+				end
+			end
+		end
+
 		-- Increase health and armour for slightly increased difficulty
 		if enemyData.MaxHealth then
 			enemyData.MaxHealth = enemyData.MaxHealth * 1.15
@@ -285,6 +309,23 @@ local enemyModifications = {
 		StunAnimations = {},
 		DestroyDelay = 0.0,
 	},
+	Harpy2 = {
+		StunAnimations = {},
+		DestroyDelay = 0.0,
+	},
+	Harpy3 = {
+		StunAnimations = {},
+		DestroyDelay = 0.0,
+		BossPresentationTextLineSets = {
+			Fury3Encounter10 = {
+				EndVoiceLines = {
+					[1] = {
+						[1] = { Cue = "/VO/Megaera_0289" }
+					},
+				},
+			},
+		},
+	},
 
 	-- ASPHODEL
 	BloodlessGrenadierElite = {
@@ -351,6 +392,11 @@ local enemyModifications = {
 					},
 				},
 			},
+		},
+		ValueOptions = {
+			[1] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[2] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
 		},
 	},
 }

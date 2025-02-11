@@ -28,6 +28,10 @@ function mod.FirstTimeSetup()
 
 	copyFiles(AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank")
 	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\", ".pkg")
+	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg", true)
+	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", true)
+	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg", true)
+	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg_manifest", true)
 	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\", ".bik")
 	copyFiles(SjsonFileMappings, "Content\\Game\\", "Game\\", ".sjson")
 
@@ -59,6 +63,12 @@ function mod.FirstTimeSetup()
 
 	mod.DebugPrint("Copying GUI animations...", 3)
 	CopyHadesGUIAnimations()
+
+	mod.DebugPrint("Copying Portrait animations...", 3)
+	CopyHadesPortraitAnimations()
+
+	mod.DebugPrint("Copying Character animations for NPCs...", 3)
+	CopyHadesCharacterAnimationsNPCs()
 
 	if not mod.CheckRequiredFiles() then
 		error(
@@ -119,65 +129,121 @@ function CopyHadesHelpTexts()
 	end
 end
 
--- Gets the Fx animations from Hades, removes duplicate animations and then writes the new file to the Hades II directory
-function CopyHadesFxAnimations()
-	local hadesFxFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\Fx.sjson")
-	local hadesFxTable = sjson.decode_file(hadesFxFile)
+-- Common function to copy and filter animations
+local function CopyAndFilterAnimations(srcPath, destPath, mappings, duplicates, modifications, animationType)
+	local animationsTable = sjson.decode_file(srcPath)
 
-	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
-	if rom.path.exists(destinationFilePath) then
-		mod.DebugPrint("File already exists and will not be overwritten: " .. destinationFilePath, 2)
+	if rom.path.exists(destPath) then
+		mod.DebugPrint("File already exists and will not be overwritten: " .. destPath, 2)
 		return
 	end
 
 	-- Before removing duplicates, rename animations for which we need the old version
-	mod.RenameSjsonEntries(hadesFxTable.Animations, mod.FxAnimationMappings, "Name", "Fx.sjson")
-	-- Rename attached animations/Fx graphics
-	for oldName, newName in pairs(mod.FxAnimationMappings) do
-		mod.UpdateField(hadesFxTable.Animations, oldName, newName, { "InheritFrom" }, "Fx.sjson")
-		mod.UpdateField(hadesFxTable.Animations, oldName, newName, { "ChainTo" }, "Fx.sjson")
+	mod.RenameSjsonEntries(animationsTable.Animations, mappings, "Name", animationType)
+	for oldName, newName in pairs(mappings) do
+		mod.UpdateField(animationsTable.Animations, oldName, newName, { "InheritFrom" }, animationType)
+		mod.UpdateField(animationsTable.Animations, oldName, newName, { "ChainTo" }, animationType)
 	end
 
 	local filteredAnimations = {}
-	for _, animation in ipairs(hadesFxTable.Animations) do
-		if not mod.HadesFxAnimationDuplicates[animation.Name] then
+	for _, animation in ipairs(animationsTable.Animations) do
+		if not duplicates[animation.Name] then
+			if modifications[animation.Name] then
+				for key, value in pairs(modifications[animation.Name]) do
+					animation[key] = value
+				end
+			end
 			table.insert(filteredAnimations, animation)
 		end
 	end
 
-	hadesFxTable.Animations = filteredAnimations
+	animationsTable.Animations = filteredAnimations
 
-	sjson.encode_file(destinationFilePath, hadesFxTable)
+	sjson.encode_file(destPath, animationsTable)
 end
 
--- Gets the GUI animations from Hades, removes duplicate animations and then writes the new file to the Hades II directory
+function CopyHadesFxAnimations()
+	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\Fx.sjson")
+	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
+	local modifications = {}
+	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates,
+		modifications, "Fx.sjson")
+end
+
 function CopyHadesGUIAnimations()
-	local hadesGUIAnimationsFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\GUIAnimations.sjson")
-	local hadesGUIAnimationsTable = sjson.decode_file(hadesGUIAnimationsFile)
-
+	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\GUIAnimations.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename)
-	if rom.path.exists(destinationFilePath) then
-		mod.DebugPrint("File already exists and will not be overwritten: " .. destinationFilePath, 2)
-		return
-	end
+	local modifications = {}
+	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.GUIAnimationMappings, mod.HadesGUIAnimationDuplicates,
+		modifications, "GUIAnimations.sjson")
+end
 
-	-- Before removing duplicates, rename animations for which we need the old version
-	mod.RenameSjsonEntries(hadesGUIAnimationsTable.Animations, mod.GUIAnimationMappings, "Name", "GUIAnimations.sjson")
-	for oldName, newName in pairs(mod.FxAnimationMappings) do
-		mod.UpdateField(hadesGUIAnimationsTable.Animations, oldName, newName, { "InheritFrom" }, "GUIAnimations.sjson")
-		mod.UpdateField(hadesGUIAnimationsTable.Animations, oldName, newName, { "ChainTo" }, "GUIAnimations.sjson")
-	end
+function CopyHadesPortraitAnimations()
+	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\PortraitAnimations.sjson")
+	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename)
+	local modifications = {
+		-- Replacing Zagreus solo portraits with ones where Melinoe is also present as a ghostly version behind him
+		Portrait_Zag_Default_01 = {
+			FilePath = "Portraits\\MelAndZagDefault.png",
+			OffsetY = 32,
+			OffsetX = -100,
+		},
+		Portrait_Zag_Default_01_Exit = {
+			FilePath = "Portraits\\MelAndZagDefault.png",
+			OffsetY = 32,
+			OffsetX = -100,
+		},
+		Portrait_Zag_Serious_01 = {
+			FilePath = "Portraits\\MelAndZagSerious.png",
+			OffsetY = 32,
+			OffsetX = -70,
+		},
+		Portrait_Zag_Serious_01_Exit = {
+			FilePath = "Portraits\\MelAndZagSerious.png",
+			OffsetY = 32,
+			OffsetX = -70,
+		},
+		Portrait_Zag_Defiant_01 = {
+			FilePath = "Portraits\\MelAndZagDefiant.png",
+			OffsetY = 32,
+			OffsetX = -75,
+		},
+		Portrait_Zag_Defiant_01_Exit = {
+			FilePath = "Portraits\\MelAndZagDefiant.png",
+			OffsetY = 32,
+			OffsetX = -75,
+		},
+		Portrait_Zag_Empathetic_01 = {
+			FilePath = "Portraits\\MelAndZagEmpathetic.png",
+			OffsetY = 32,
+			OffsetX = -100,
+		},
+		Portrait_Zag_Empathetic_01_Exit = {
+			FilePath = "Portraits\\MelAndZagEmpathetic.png",
+			OffsetY = 32,
+			OffsetX = -100,
+		},
+		Portrait_Zag_Unwell_01 = {
+			FilePath = "Portraits\\MelAndZagUnwell.png",
+			OffsetY = 32,
+			OffsetX = -100,
+		},
+		Portrait_Zag_Unwell_01_Exit = {
+			FilePath = "Portraits\\MelAndZagUnwell.png",
+			OffsetY = 32,
+			OffsetX = -100,
+		},
+	}
+	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.PortraitAnimationMappings,
+		mod.HadesPortraitAnimationDuplicates, modifications, "PortraitAnimations.sjson")
+end
 
-	local filteredAnimations = {}
-	for _, animation in ipairs(hadesGUIAnimationsTable.Animations) do
-		if not mod.HadesGUIAnimationDuplicates[animation.Name] then
-			table.insert(filteredAnimations, animation)
-		end
-	end
-
-	hadesGUIAnimationsTable.Animations = filteredAnimations
-
-	sjson.encode_file(destinationFilePath, hadesGUIAnimationsTable)
+function CopyHadesCharacterAnimationsNPCs()
+	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\CharacterAnimationsNPCs.sjson")
+	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesCharacterAnimationsNPCsDestinationFilename)
+	local modifications = {}
+	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.CharacterAnimationsNPCsMappings,
+	mod.HadesCharacterAnimationsNPCsDuplicates, modifications, "CharacterAnimationsNPCs.sjson")
 end
 
 -- Copies a file from src to dest
