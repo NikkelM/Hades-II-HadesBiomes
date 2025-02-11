@@ -59,29 +59,27 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 		-- Replace keys that were renamed between the games
 		mod.RenameKeys(enemyData, enemyKeyReplacements, enemyName)
 
-		if enemyData.BossPresentationSuperPriorityIntroTextLineSets then
-			for key, textLineSet in pairs(enemyData.BossPresentationSuperPriorityIntroTextLineSets) do
-				textLineSet.Name = key
-			end
+		-- Do replacements that can be done the same way for multiple enemies
+		if enemyData.Portrait then
+			enemyData.BoxAnimation = "DialogueSpeechBubbleLight"
+			enemyData.BoxExitAnimation = "DialogueSpeechBubbleLightOut"
+			enemyData.NarrativeTextColor = game.Color.DialogueTextLight
+			enemyData.NameplateSpeakerNameColor = game.Color.DialogueSpeakerNameOlympian
+			enemyData.NameplateDescriptionColor = { 145, 45, 90, 255 }
 		end
-		if enemyData.BossPresentationPriorityIntroTextLineSets then
-			for key, textLineSet in pairs(enemyData.BossPresentationPriorityIntroTextLineSets) do
-				textLineSet.Name = key
-			end
-		end
-		if enemyData.BossPresentationIntroTextLineSets then
-			for key, textLineSet in pairs(enemyData.BossPresentationIntroTextLineSets) do
-				textLineSet.Name = key
-			end
-		end
-		if enemyData.BossPresentationTextLineSets then
-			for key, textLineSet in pairs(enemyData.BossPresentationTextLineSets) do
-				textLineSet.Name = key
-			end
-		end
-		if enemyData.BossPresentationRepeatableTextLineSets then
-			for key, textLineSet in pairs(enemyData.BossPresentationRepeatableTextLineSets) do
-				textLineSet.Name = key
+
+		local bossPresentationProperties = {
+			"BossPresentationSuperPriorityIntroTextLineSets",
+			"BossPresentationPriorityIntroTextLineSets",
+			"BossPresentationIntroTextLineSets",
+			"BossPresentationTextLineSets",
+			"BossPresentationRepeatableTextLineSets"
+		}
+		for _, property in ipairs(bossPresentationProperties) do
+			if enemyData[property] then
+				for key, textLineSet in pairs(enemyData[property]) do
+					textLineSet.Name = key
+				end
 			end
 		end
 
