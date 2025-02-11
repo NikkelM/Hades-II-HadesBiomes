@@ -23,6 +23,20 @@ modutil.mod.Path.Wrap("IsVoiceLineEligible", function(base, line, prevLine, pare
 	return isEligible
 end)
 
+modutil.mod.Path.Wrap("IsEnemyEligible", function(base, enemyName, encounter, wave)
+	local isEligible = base(enemyName, encounter, wave)
+
+	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+		local isGameStateEligibleArgs = {}
+		if game.EnemyData[enemyName].IsElite and game.GetNumMetaUpgrades("EnemyEliteShrineUpgrade") > 0 then
+			isGameStateEligibleArgs.SkipMinBiomeDepth = true
+		end
+		return game.ModsNikkelMHadesBiomesIsGameStateEligible(game.EnemyData[enemyName], game.EnemyData[enemyName], isGameStateEligibleArgs)
+	end
+
+	return isEligible
+end)
+
 modutil.mod.Path.Wrap("IsTextLineEligible", function(base, currentRun, source, line, prevLine, parentLine, args)
 	local isEligible = base(currentRun, source, line, prevLine, parentLine, args)
 
@@ -988,6 +1002,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	end
 
 	if requirements.RequiredMinCompletedRuns ~= nil then
+		mod.PrintTable(source)
 		local completedModdedRuns = 0
 		for i, run in pairs(game.GameState.RunHistory) do
 			if run.BiomesReached.Tartarus then
