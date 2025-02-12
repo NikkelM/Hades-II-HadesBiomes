@@ -44,6 +44,7 @@ game.EnemySets.EnemiesBiome1MiniBoss = {
 	-- "BloodlessSelfDestructElite",
 }
 
+-- Decides which traps can be added to rooms that randomize traps
 game.EnemySets.TrapsBiome1 = { "SpikeTrap", }
 
 renameEnemies(game.EnemySets.EnemiesBiome1, "EnemiesBiome1")

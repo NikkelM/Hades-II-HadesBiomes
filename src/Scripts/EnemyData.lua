@@ -448,3 +448,9 @@ local enemyKeyReplacements = {
 }
 
 ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
+
+-- Modifications to Hades II enemies
+-- Only modify enemies that are not being used in Hades II in this way!
+
+-- Removing DestructibleGeo as TargetGroup, so the rubble from destructible pillars doesn't trigger the trap
+game.EnemyData.SpikeTrap.DefaultAIData.TargetGroups = { "GroundEnemies", "HeroTeam", }

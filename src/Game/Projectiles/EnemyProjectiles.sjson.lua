@@ -17,7 +17,7 @@ local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Pro
 -- Projectiles that are defined in a different file and therefore not caught by AddTableKeysSkipDupes()
 local projectilesToRemove = {
 	"HadesCastBeam",
-	"HadesCastBeamNoTracking"
+	"HadesCastBeamNoTracking",
 }
 
 -- Modifications/overrides to the Hades enemy projectiles
@@ -62,7 +62,6 @@ local projectileKeyReplacements = {
 	DetonateGraphic = "DetonateFx",
 }
 
--- Rename duplicate enemy names using mod.EnemyProjectileMappings
 mod.RenameSjsonEntries(hadesProjectilesTable.Projectiles, mod.EnemyProjectileMappings, "Name", "EnemyProjectiles.sjson")
 -- Rename projectiles
 for oldName, newName in pairs(mod.EnemyProjectileMappings) do
