@@ -14,6 +14,15 @@ end)
 modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	base(currentRoom)
 
+	-- The base game doesn't load encounter packages when a save is loaded, or the RoomOpening is entered
+	if currentRoom.Encounter.LoadPackages then
+		for _, name in pairs(currentRoom.Encounter.LoadPackages) do
+			if not game.GameData.MissingPackages[name] then
+				LoadPackages({ Name = name })
+			end
+		end
+	end
+
 	if currentRoom.LoadModdedAudioBanks ~= nil then
 		for _, bank in ipairs(currentRoom.LoadModdedAudioBanks) do
 			rom.audio.load_bank(rom.path.combine(rom.paths.Content(), "Audio\\Desktop\\" .. bank .. ".bank"))
