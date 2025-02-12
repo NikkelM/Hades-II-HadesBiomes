@@ -202,49 +202,26 @@ function mod.UpdateField(tableToModify, find, replaceWith, propertyPath, tableNa
 end
 
 ---Apply a set of potentially nested modifications to a table.
+---If the leaf node is a table, the contents will be replaced, not merged!
 ---@param baseData table The table to modify.
 ---@param modificationData any The modification(s) to apply.
 ---@param replaceTable boolean|nil If modificationData is a table, this will replace the entire table instead of merging.
 function mod.ApplyModifications(baseData, modificationData, replaceTable)
-	local function mergeTables(base, modification)
-		for key, value in pairs(modification) do
-			if value == mod.NilValue then
-				base[key] = nil
-			elseif type(value) == "table" and type(base[key]) == "table" then
-				if #base[key] > 0 and #value > 0 then
-					-- Both are arrays, merge them element-wise (merging nested tables recursively again)
-					-- Iterate in reverse order on a copy of the base table to avoid issues with removing elements
-					local baseCopy = game.DeepCopyTable(base[key]) or {}
-					for i = #value, 1, -1 do
-						local v = value[i]
-						if v == mod.NilValue then
-							table.remove(baseCopy, i)
-						elseif type(v) == "table" and type(baseCopy[i]) == "table" then
-							mergeTables(baseCopy[i], v)
-						else
-							table.insert(baseCopy, v)
-						end
-					end
-					base[key] = baseCopy
-				else
-					mergeTables(base[key], value)
+	for key, value in pairs(modificationData) do
+		if value == mod.NilValue then
+			baseData[key] = nil
+		elseif type(value) == "table" then
+			if replaceTable then
+				baseData[key] = game.DeepCopyTable(value)
+			else
+				if type(baseData[key]) ~= "table" then
+					baseData[key] = {}
 				end
-			else
-				base[key] = value
+				mod.ApplyModifications(baseData[key], value, replaceTable)
 			end
+		else
+			baseData[key] = value
 		end
-	end
-
-	if replaceTable then
-		for key, value in pairs(modificationData) do
-			if value == mod.NilValue then
-				baseData[key] = nil
-			else
-				baseData[key] = value
-			end
-		end
-	else
-		mergeTables(baseData, modificationData)
 	end
 end
 
