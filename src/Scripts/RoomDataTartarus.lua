@@ -49,7 +49,7 @@ local roomModifications = {
 
 	-- OPENING ROOMS
 	RoomOpening = {
-		InheritFrom = { "BiomeStartRoom", },
+		InheritFrom = { "BaseTartarus", "BiomeStartRoom", },
 		LegalEncounters = { "OpeningGenerated" },
 		EntranceFunctionName = "RoomEntranceMaterialize",
 		EntranceFunctionArgs = { HeroGoalAngle = 335 },
@@ -61,7 +61,7 @@ local roomModifications = {
 			-- Don't start the demo presentation mode
 			[1] = mod.NilValue,
 			-- Don't play the standard music event, it won't be able to get changed later
-			[3] = mod.NilValue
+			[3] = mod.NilValue,
 		},
 		ForcedRewards = mod.NilValue,
 		IneligibleRewards = game.RewardSets.OpeningRoomBans,

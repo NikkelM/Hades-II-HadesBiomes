@@ -10,9 +10,6 @@ local newData = {
 	{
 		Name = "ModsNikkelMHadesBiomes_HadesRunStartDoor",
 		InheritFrom = "SecretDoor",
-		Thing = {
-			AmbientSound = "/EmptyCue"
-		}
 	}
 }
 

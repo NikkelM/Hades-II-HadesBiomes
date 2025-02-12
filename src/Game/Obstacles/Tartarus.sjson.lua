@@ -31,8 +31,9 @@ local hadesTwoObstacleModifications = {
 	TartarusPillarBase03 = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
+	-- Destructible pillars that crumble when hit
 	TartarusPillarBase04 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+		InheritFrom = "1_BaseVulnerableObstacle",
 	},
 	TartarusPillarBase08b = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",

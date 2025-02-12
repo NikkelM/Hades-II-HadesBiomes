@@ -202,6 +202,7 @@ function mod.UpdateField(tableToModify, find, replaceWith, propertyPath, tableNa
 end
 
 ---Apply a set of potentially nested modifications to a table.
+---If the leaf node is a table, the contents will be replaced, not merged!
 ---@param baseData table The table to modify.
 ---@param modificationData any The modification(s) to apply.
 ---@param replaceTable boolean|nil If modificationData is a table, this will replace the entire table instead of merging.
