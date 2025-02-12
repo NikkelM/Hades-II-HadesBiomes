@@ -213,15 +213,19 @@ function mod.ApplyModifications(baseData, modificationData, replaceTable)
 			elseif type(value) == "table" and type(base[key]) == "table" then
 				if #base[key] > 0 and #value > 0 then
 					-- Both are arrays, merge them element-wise (merging nested tables recursively again)
-					for i, v in ipairs(value) do
+					-- Iterate in reverse order on a copy of the base table to avoid issues with removing elements
+					local baseCopy = game.DeepCopyTable(base[key]) or {}
+					for i = #value, 1, -1 do
+						local v = value[i]
 						if v == mod.NilValue then
-							base[key][i] = nil
-						elseif type(v) == "table" and type(base[key][i]) == "table" then
-							mergeTables(base[key][i], v)
+							table.remove(baseCopy, i)
+						elseif type(v) == "table" and type(baseCopy[i]) == "table" then
+							mergeTables(baseCopy[i], v)
 						else
-							table.insert(base[key], v)
+							table.insert(baseCopy, v)
 						end
 					end
+					base[key] = baseCopy
 				else
 					mergeTables(base[key], value)
 				end
@@ -233,7 +237,11 @@ function mod.ApplyModifications(baseData, modificationData, replaceTable)
 
 	if replaceTable then
 		for key, value in pairs(modificationData) do
-			baseData[key] = value
+			if value == mod.NilValue then
+				baseData[key] = nil
+			else
+				baseData[key] = value
+			end
 		end
 	else
 		mergeTables(baseData, modificationData)
