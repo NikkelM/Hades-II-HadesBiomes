@@ -330,11 +330,7 @@ MapFileNames = {
 	"A_Combat19",
 	"A_Combat20",
 	"A_Combat21",
-	-- These two rooms have no RoomData table attached, so we don't need to copy them over
-	-- "A_Combat22",
-	-- "A_Combat23",
 	"A_Combat24",
-	"A_Combat25",
 }
 
 -- .map_text files that should be copied from the plugin_data folder instead of the Hades installation

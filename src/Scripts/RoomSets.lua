@@ -44,10 +44,6 @@ local newRoomSets = {
 		"A_Combat20",
 		"A_Combat21",
 		"A_Combat24",
-		"A_Combat25",
-		-- These two rooms have no RoomData table attached
-		-- "A_Combat22",
-		-- "A_Combat23",
 
 		-- "A_Story01",
 	},

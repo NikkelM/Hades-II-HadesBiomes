@@ -174,4 +174,10 @@ local roomModifications = {
 	},
 }
 
+-- Assign separately so we don't get a circular reference
+game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
+	-- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
+	LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "GUIModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits" },
+}
+
 mod.ApplyModificationsAndInheritRoomData(roomSetDataTartarus, roomModifications, roomReplacements, "Tartarus")

@@ -63,7 +63,11 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications, replaceme
 	base = mod.AddTableKeysSkipDupes(game.RoomData, base, nil)
 
 	for roomName, roomData in pairs(base) do
-		-- Add a name key
+		if not roomData.InheritFrom then
+			roomData.InheritFrom = {}
+		end
+		table.insert(roomData.InheritFrom, "ModsNikkelMHadesBiomesBaseRoom")
+
 		roomData.Name = roomName
 
 		game.ProcessDataInheritance(roomData, game.RoomData)

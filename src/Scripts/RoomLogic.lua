@@ -22,6 +22,13 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 			end
 		end
 	end
+	if currentRoom.LoadModdedPackages then
+		for _, name in pairs(currentRoom.LoadModdedPackages) do
+			if not game.GameData.MissingPackages[name] then
+				LoadPackages({ Name = name })
+			end
+		end
+	end
 
 	if currentRoom.LoadModdedAudioBanks ~= nil then
 		for _, bank in ipairs(currentRoom.LoadModdedAudioBanks) do
