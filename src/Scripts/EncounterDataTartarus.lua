@@ -6,6 +6,7 @@ local encounterDataTartarus = {
 	ModsNikkelMHadesBiomesGenerated = encounterData.Generated,
 	GeneratedTartarus = game.DeepCopyTable(game.EncounterData.GeneratedF),
 	OpeningGenerated = encounterData.OpeningGenerated,
+	DevotionTestTartarus = encounterData.DevotionTestTartarus,
 
 	-- Minibosses
 	MiniBossGrenadier = encounterData.MiniBossGrenadier,
@@ -77,6 +78,9 @@ local encounterModifications = {
 		SpawnOverrides = { UseActivatePresentation = false, },
 		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		RequiredTextLines = mod.NilValue,
+	},
+	DevotionTestTartarus = {
+		CanEncounterSkip = false,
 	},
 
 	-- MINIBOSSES

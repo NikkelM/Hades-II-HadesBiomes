@@ -14,19 +14,19 @@ end)
 modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	base(currentRoom)
 
+	-- The Chaos package introduces artifacts
+	if currentRoom.RoomSetName ~= "Chaos" then
+		UnloadPackages({ Name = "Chaos" })
+	end
 	-- The base game doesn't load encounter packages when a save is loaded, or the RoomOpening is entered
 	if currentRoom.Encounter.LoadPackages then
 		for _, name in pairs(currentRoom.Encounter.LoadPackages) do
-			if not game.GameData.MissingPackages[name] then
-				LoadPackages({ Name = name })
-			end
+			LoadPackages({ Name = name })
 		end
 	end
 	if currentRoom.LoadModdedPackages then
 		for _, name in pairs(currentRoom.LoadModdedPackages) do
-			if not game.GameData.MissingPackages[name] then
-				LoadPackages({ Name = name })
-			end
+			LoadPackages({ Name = name })
 		end
 	end
 

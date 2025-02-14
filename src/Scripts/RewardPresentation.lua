@@ -31,7 +31,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				doorIconOffsetY = 55,
 			},
 			A_Combat10 = {
-				doorIconOffsetY = 55,
+				doorIconOffsetY = 30,
 			},
 			A_Combat11 = {
 				doorIconOffsetY = 35,
