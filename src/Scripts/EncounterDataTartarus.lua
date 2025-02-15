@@ -104,7 +104,6 @@ local encounterModifications = {
 	BossHarpy1 = {
 		WipeEnemiesOnKillAllTypes = { "Harpy" },
 		CancelSpawnsOnKillAllTypes = { "Harpy" },
-		-- TODO: Modify to drop other resources if there is an incantation for this in Hades II
 		PostUnthreadedEvents = mod.NilValue,
 	},
 }

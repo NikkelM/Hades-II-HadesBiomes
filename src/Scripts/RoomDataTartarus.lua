@@ -83,7 +83,6 @@ local roomModifications = {
 	RoomSimple01 = mod.NilValue,
 
 	-- SHOPS
-	-- TODO: Move some of these into a base shop object for all Hades shops to inherit from to prevent duplicates
 	A_Shop01 = {
 		ThreadedEvents = {
 			-- To get PatrolPath working, see RoomOpening
@@ -106,7 +105,6 @@ local roomModifications = {
 	-- MINIBOSSES
 	-- Other miniboss rooms inherit from this
 	A_MiniBoss01 = {
-		-- TODO: This is misaligned, done in EventPresentation Line 3921 onwards
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
 	},
 
@@ -126,7 +124,6 @@ local roomModifications = {
 				},
 			},
 		},
-		-- TODO - Hades II drops the same item always - which one to choose?
 		ForcedReward = "MixerFBossDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,

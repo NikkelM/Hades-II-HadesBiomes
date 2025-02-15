@@ -123,7 +123,6 @@ mod.HadesPortraitAnimationDuplicates = {
 	["PortraitGodRayEmitter_Dionysus"] = true,
 	["PortraitGodRayEmitter_Poseidon"] = true,
 	["PortraitGodRayEmitter_Zeus"] = true,
-	-- TODO: Remap the portraits for the gods for Hades runs?
 	["Portrait_Base_01"] = true,
 	["Portrait_God_01"] = true,
 	["Portrait_Base_01_Exit"] = true,

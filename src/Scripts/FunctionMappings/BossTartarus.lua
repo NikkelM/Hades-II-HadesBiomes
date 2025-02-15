@@ -153,7 +153,7 @@ function game.HarpyKillPresentation(unit, args)
 
 	SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 0.0, DataValue = false, DestinationId = killerId })
 	SetThingProperty({ Property = "Grip", Value = 99999, DestinationId = victimId })
-	game.thread(game.VictimDeathHold, victimId, 0.02, 0.5) -- TODO?
+	game.thread(game.VictimDeathHold, victimId, 0.02, 0.5)
 	if deathPanSettings.FlashRed then
 		Flash({ Id = victimId, Speed = 0.01, MinFraction = 1.0, MaxFraction = 1.0, Color = Color.Red, Duration = 0.5, ExpireAfterCycle = true })
 	end

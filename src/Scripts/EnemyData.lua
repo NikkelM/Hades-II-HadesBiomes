@@ -195,7 +195,6 @@ local enemyModifications = {
 	},
 	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
-		-- TODO: Maybe take the Hades LightRanged data instead, as LightRanged is a TestEnemy in Hades II
 		DefaultAIData = game.DeepCopyTable(game.EnemyData.LightRanged.DefaultAIData),
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
