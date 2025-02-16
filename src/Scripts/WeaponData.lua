@@ -194,6 +194,7 @@ local weaponModifications = {
 			MinAttacksBetweenUse = 5,
 			RequiresNotEnraged = true,
 			ForceUseIfReady = true,
+			BlockAsFirstWeapon = true,
 		},
 		AIData = {
 			PreAttackStop = true,
@@ -202,6 +203,8 @@ local weaponModifications = {
 			StopMoveWithinRange = true,
 			MoveSuccessDistance = 25,
 			ProjectileName = "HarpyBuildRage",
+			-- Zagreus voicelines
+			PreAttackVoiceLines = mod.NilValue,
 		},
 	},
 	HarpyLightningChase = {

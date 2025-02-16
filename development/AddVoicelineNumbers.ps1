@@ -1,7 +1,7 @@
 # Bank name that is being looked at
-$speakerName = "ZagreusField"
-$inputFile = ".\Fmod Bank Tools\wav\$speakerName\$speakerName.txt"
-$outputFile = ".\..\..\data\Content\Audio\Desktop\VO\$speakerName.txt"
+$speakerName = "Alecto"
+$inputFile = ".\dev\FMOD\Fmod Bank Tools\wav\$speakerName\$speakerName.txt"
+$outputFile = ".\..\data\Content\Audio\Desktop\VO\$speakerName.txt"
 
 $content = Get-Content $inputFile
 $lineCount = $content.Length

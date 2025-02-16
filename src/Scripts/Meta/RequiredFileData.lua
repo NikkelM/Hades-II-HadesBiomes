@@ -10,8 +10,9 @@ AudioFileMappings = {
 -- The file name must be the same as the event names within the file
 -- Some speaker names do not work (e.g. MegaeraHome)!
 VoiceoverFileNames = {
-	"MegaeraField",
+	"Alecto",
 	"Megaera",
+	"MegaeraField",
 	"ZagreusField",
 }
 

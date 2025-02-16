@@ -109,8 +109,7 @@ local roomModifications = {
 
 	-- BOSSES
 	A_Boss01 = {
-		-- Alecto, Tisiphone voicelines
-		LoadModdedVoiceBanks = { "Megaera*", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Megaera*", "Alecto*", "Tisiphone*", "ZagreusField" },
 		-- Replaces MegaeraHome with Megaera voicelines
 		UnthreadedEvents = {
 			[1] = {
@@ -129,6 +128,20 @@ local roomModifications = {
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
+	},
+	A_Boss02 = {
+		UnthreadedEvents = {
+			[1] = {
+				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
+			},
+		},
+	},
+	A_Boss03 = {
+		UnthreadedEvents = {
+			[1] = {
+				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
+			},
+		},
 	},
 
 	-- OTHER
