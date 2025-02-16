@@ -51,6 +51,8 @@ function mod.StartHadesRun(source, args)
 	args = args or {}
 	-- Enable MelinoeField voicelines when entering the Chaos gate
 	game.LoadVoiceBanks({ Name = "MelinoeField" })
+	-- Don't allow rain in underworld/modded runs
+	game.GameState.NextBiomeStateName = "VanillaState"
 
 	local cachedRuns = mod.LoadCachedRunsFile()
 
@@ -59,7 +61,9 @@ function mod.StartHadesRun(source, args)
 		game.GameState.ModsNikkelMHadesBiomesSaveFileIndex = tostring(game.GameState):match("table: (.+)")
 		game.RequestPreRunLoadoutChangeSave()
 		sjson.encode_file(mod.CachedRunsFilePath, cachedRuns)
-		mod.DebugPrint("Assigned the following mod save file identifier to the current save slot: " .. game.GameState.ModsNikkelMHadesBiomesSaveFileIndex, 4)
+		mod.DebugPrint(
+			"Assigned the following mod save file identifier to the current save slot: " ..
+			game.GameState.ModsNikkelMHadesBiomesSaveFileIndex, 4)
 	end
 
 	-- Replace the voicelines that can play when entering the Chaos gate
