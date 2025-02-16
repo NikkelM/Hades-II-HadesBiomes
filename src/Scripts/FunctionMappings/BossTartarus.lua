@@ -272,3 +272,140 @@ function game.HarpyKillPresentation(unit, args)
 	-- EnableCombatControls()
 	SetThingProperty({ Property = "AllowAnyFire", Value = true, DestinationId = CurrentRun.Hero.ObjectId, DataValue = false })
 end
+
+function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
+	if enemy.Enraged or IsInvulnerable({ Id = enemy.ObjectId }) then
+		return
+	end
+
+	ShakeScreen({ Speed = 300, Distance = 3, FalloffSpeed = 2000, Duration = 1.0 })
+	Flash({ Id = ScreenAnchors.BossRageFill, Speed = 3.0, MinFraction = 0, MaxFraction = 0.8, Color = Color.Yellow })
+
+	local hitsTaken = 0
+
+	for tick = 1, weaponAIData.BuildRageTicks, 1 do
+		if enemy.RageHit then
+			enemy.RageHit = nil
+			hitsTaken = hitsTaken + 1
+		end
+
+		if hitsTaken >= 3 then
+			if weaponAIData.EarlyBreakAnimation ~= nil then
+				SetAnimation({ Id = enemy.ObjectId, Name = weaponAIData.EarlyBreakAnimation })
+			end
+			-- To stop the dumb fire from continuing after the early break
+			enemy.HarpyBuildRageEarlyExit = true
+			StopFlashing({ Id = ScreenAnchors.BossRageFill })
+			game.wait(game.CalcEnemyWait(enemy, weaponAIData.EarlyBreakStunDuration), enemy.AIThreadName)
+			enemy.HarpyBuildRageEarlyExit = false
+			return
+		end
+
+		local meterAmount = 0.01
+		game.BuildRageMeter(currentRun, meterAmount, enemy)
+		if enemy.Enraged or IsInvulnerable({ Id = enemy.ObjectId }) then
+			enemy.HarpyBuildRageEarlyExit = true
+			if not enemy.Enraged then
+				StopFlashing({ Id = ScreenAnchors.BossRageFill })
+			end
+			if weaponAIData.BuildRageEndAnimation ~= nil then
+				SetAnimation({ Id = enemy.ObjectId, Name = weaponAIData.BuildRageEndAnimation })
+			end
+			game.wait(game.CalcEnemyWait(enemy, weaponAIData.BuildRageEndDuration), enemy.AIThreadName)
+			enemy.HarpyBuildRageEarlyExit = false
+			return
+		end
+		game.wait(game.CalcEnemyWait(enemy, weaponAIData.BuildRageTicksInterval), enemy.AIThreadName)
+	end
+	enemy.HarpyBuildRageEarlyExit = true
+	if weaponAIData.BuildRageEndAnimation ~= nil then
+		SetAnimation({ Id = enemy.ObjectId, Name = weaponAIData.BuildRageEndAnimation })
+	end
+	StopFlashing({ Id = ScreenAnchors.BossRageFill })
+	game.wait(game.CalcEnemyWait(enemy, weaponAIData.BuildRageEndDuration), enemy.AIThreadName)
+	enemy.HarpyBuildRageEarlyExit = false
+end
+
+function game.BuildRageMeter(currentRun, meterAmount, enemy)
+	if enemy.Enraged then
+		return
+	end
+
+	local screenId = ScreenAnchors.BossRageFill
+	enemy.RageFraction = enemy.RageFraction or 0
+
+	enemy.RageFraction = enemy.RageFraction + meterAmount
+	enemy.LastRageGainTime = _worldTime
+	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 1 - enemy.RageFraction, DestinationId = screenId })
+	if enemy.RageFraction >= 1 then
+		enemy.RageFraction = 0
+		thread(game.EnrageUnit, enemy)
+	end
+end
+
+function game.HandleHarpyRage(enemy, currentRun)
+	if ScreenAnchors.BossRageFill == nil then
+		CreateBossRageMeter(enemy)
+	end
+	local screenId = ScreenAnchors.BossRageFill
+	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 1.0, DestinationId = screenId })
+	enemy.RageFraction = enemy.RageFraction or 0
+
+	local rageDecayInterval = 1.0
+	local rageDecayRate = enemy.RageDecayRate or 0.01
+
+	while not enemy.IsDead and not enemy.PermanentEnraged do
+		game.wait(rageDecayInterval)
+		if enemy.RageFraction > 0 and _worldTime - enemy.LastRageGainTime > enemy.RageDecayStartDuration then
+			enemy.RageFraction = enemy.RageFraction - rageDecayRate
+			SetAnimationFrameTarget({
+				Name = "EnemyHealthBarFillBoss",
+				Fraction = 1 - enemy.RageFraction,
+				DestinationId =
+						screenId
+			})
+		end
+	end
+end
+
+function game.CreateBossRageMeter(boss)
+	ScreenAnchors.BossRageTitle = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 130, Scale = 1.0 })
+	ScreenAnchors.BossRageBack = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 150, Scale = 0.5 })
+	ScreenAnchors.BossRageFill = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 152, Scale = 0.5 })
+
+	CreateTextBox({
+		Id = ScreenAnchors.BossRageTitle,
+		Text = "RageMeter",
+		Font = "AlegreyaSansSCBold",
+		FontSize = 14,
+		ShadowRed = 0,
+		ShadowBlue = 0,
+		ShadowGreen = 0,
+		OutlineColor = { 0, 0, 0, 1 },
+		OutlineThickness = 2,
+		ShadowAlpha = 1.0,
+		ShadowBlur = 0,
+		ShadowOffsetY = 3,
+		ShadowOffsetX = 0,
+		Justification = "Center"
+	})
+	SetAlpha({ Id = ScreenAnchors.BossRageTitle, Fraction = 0.01, Duration = 0.0 })
+	SetAlpha({ Id = ScreenAnchors.BossRageTitle, Fraction = 1, Duration = 2.0 })
+
+	SetAnimation({ Name = "EnemyHealthBarBoss", DestinationId = ScreenAnchors.BossRageBack })
+	SetAlpha({ Id = ScreenAnchors.BossRageBack, Fraction = 0.01, Duration = 0.0 })
+	SetAlpha({ Id = ScreenAnchors.BossRageBack, Fraction = 1, Duration = 2.0 })
+
+	boss.RageBarFill = "EnemyHealthBarFillBoss"
+	SetAnimation({ Name = "EnemyHealthBarFillBoss", DestinationId = ScreenAnchors.BossRageFill })
+	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 1, DestinationId = screenId })
+	SetAlpha({ Id = ScreenAnchors.BossRageFill, Fraction = 0.01, Duration = 0.0 })
+	SetAlpha({ Id = ScreenAnchors.BossRageFill, Fraction = 1, Duration = 2.0 })
+end
+
+function game.EnrageHarpyPermanent(enemy, currentRun)
+	enemy.Enraged = true
+	enemy.PermanentEnraged = true
+	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 0.0, DestinationId = ScreenAnchors.BossRageFill })
+	EnrageUnit(enemy)
+end

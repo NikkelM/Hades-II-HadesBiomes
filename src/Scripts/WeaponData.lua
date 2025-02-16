@@ -171,6 +171,96 @@ local weaponModifications = {
 			ProjectileName = "HarpyLightning",
 		},
 	},
+	-- TARTARUS - ALECTO
+	HarpyLungeAlecto = {
+		Requirements = {
+			MaxConsecutiveUses = 2,
+		},
+		AIData = {
+			PreAttackStop = true,
+		},
+	},
+	HarpyWhipArc = {
+		Requirements = {
+			MaxConsecutiveUses = 1,
+		},
+		AIData = {
+			PreAttackStop = true,
+		},
+	},
+	HarpyBuildRage = {
+		Requirements = {
+			MaxActiveSpawns = 1,
+			MinAttacksBetweenUse = 5,
+			RequiresNotEnraged = true,
+			ForceUseIfReady = true,
+		},
+		AIData = {
+			PreAttackStop = true,
+			PreAttackDuration = 1.5,
+			FireMoveTowardTarget = true,
+			StopMoveWithinRange = true,
+			MoveSuccessDistance = 25,
+			ProjectileName = "HarpyBuildRage",
+		},
+	},
+	HarpyLightningChase = {
+		Requirements = {
+			MinAttacksBetweenUse = 5,
+		},
+		AIData = {
+			PreAttackStop = true,
+			PreAttackDuration = 0.0,
+			FireMoveTowardTarget = true,
+			StopMoveWithinRange = true,
+			MoveSuccessDistance = 25,
+			FireInterval = 1.2,
+			FireCooldown = mod.NilValue,
+			ProjectileName = "HarpyLightningAlecto",
+		},
+	},
+	HarpyLightningChaseRage = {
+		Requirements = {
+			MinAttacksBetweenUse = 5,
+		},
+		AIData = {
+			PreAttackStop = true,
+			PreAttackDuration = 0.0,
+			FireMoveTowardTarget = true,
+			FireInterval = 0.8,
+			FireCooldown = mod.NilValue,
+			ProjectileName = "HarpyLightningAlecto",
+		},
+	},
+	HarpyBuildRageBlast = {
+		AIData = {
+			PreAttackStop = true,
+			EndOnFlagName = "HarpyBuildRageEarlyExit",
+			-- Increasing to match new animation lengths
+			FireTicks = 9,
+			NumProjectiles = 10,
+			ProjectileAngleEvenlySpaced = true,
+			FireInterval = 0.75,
+			FireCooldown = mod.NilValue,
+			ProjectileName = "HarpyBeamAlecto",
+		},
+	},
+	HarpyWhipShot = {
+		Requirements = {
+			MaxConsecutiveUses = 3,
+		},
+		AIData = {
+			PreAttackStop = true,
+		},
+	},
+	HarpyWhipShotRage = {
+		Requirements = {
+			MaxConsecutiveUses = 3,
+		},
+		AIData = {
+			PreAttackStop = true,
+		},
+	},
 }
 
 local renamedWeaponModifications = {}
@@ -240,7 +330,7 @@ local projectileModifications = {
 		InheritFrom = { "HeavyRangedWeapon", },
 		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
 	},
-	HarpyLightning ={
+	HarpyLightning = {
 		InheritFrom = { "NoSlowFrameProjectile", },
 	},
 }

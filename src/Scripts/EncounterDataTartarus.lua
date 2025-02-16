@@ -16,6 +16,8 @@ local encounterDataTartarus = {
 
 	-- Bosses
 	BossHarpy1 = encounterData.BossHarpy1,
+	BossHarpy2 = encounterData.BossHarpy2,
+	BossHarpy3 = encounterData.BossHarpy3,
 
 	-- Challenge encounters within a room
 	TimeChallengeTartarus = encounterData.TimeChallengeTartarus,
@@ -105,6 +107,14 @@ local encounterModifications = {
 		WipeEnemiesOnKillAllTypes = { "Harpy" },
 		CancelSpawnsOnKillAllTypes = { "Harpy" },
 		PostUnthreadedEvents = mod.NilValue,
+	},
+	BossHarpy2 = {
+		WipeEnemiesOnKillAllTypes = { "Harpy2" },
+		CancelSpawnsOnKillAllTypes = { "Harpy2" },
+	},
+	BossHarpy3 = {
+		WipeEnemiesOnKillAllTypes = { "Harpy3" },
+		CancelSpawnsOnKillAllTypes = { "Harpy3" },
 	},
 }
 

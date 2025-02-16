@@ -49,8 +49,16 @@ local hadesProjectilesModifications = {
 	-- TARTARUS - MEGAERA
 	HarpyBeam = {
 		Speed = 700,
+		-- Can't be destroyed by hitting it, but if you have a projectile defense boon (like Hestia sprint)
+		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
 	HarpyLightning = {
+		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByName2 = "null",
+		CanBeProjectileDefenseDestroyedByLayer = "null",
+	},
+	HarpyLightningChase = {
 		CanBeProjectileDefenseDestroyed = false,
 		CanBeProjectileDefenseDestroyedByName2 = "null",
 		CanBeProjectileDefenseDestroyedByLayer = "null",

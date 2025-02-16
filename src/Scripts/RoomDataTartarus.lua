@@ -24,9 +24,8 @@ local roomReplacements = {
 	A_Shop01 = {
 		Binks = mod.NilValue,
 	},
-	-- TODO: Add additional bosses as they are implemented
 	A_PreBoss01 = {
-		LinkedRooms = { "A_Boss01" }, -- , "A_Boss02", "A_Boss03"
+		LinkedRooms = { "A_Boss01", "A_Boss02",}, -- "A_Boss03"
 		Binks = mod.NilValue,
 	},
 }
@@ -110,6 +109,7 @@ local roomModifications = {
 
 	-- BOSSES
 	A_Boss01 = {
+		-- Alecto, Tisiphone voicelines
 		LoadModdedVoiceBanks = { "Megaera*", "ZagreusField" },
 		-- Replaces MegaeraHome with Megaera voicelines
 		UnthreadedEvents = {

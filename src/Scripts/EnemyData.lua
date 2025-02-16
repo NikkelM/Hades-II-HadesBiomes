@@ -145,6 +145,20 @@ local enemyReplacements = {
 			DontRetreatIfCharmed = false,
 		},
 	},
+	Harpy2 = {
+		DefaultAIData = {
+			MoveWithinRange = false,
+			StopMoveWithinRange = false,
+			DontRetreatIfCharmed = false,
+		},
+	},
+	Harpy3 = {
+		DefaultAIData = {
+			MoveWithinRange = false,
+			StopMoveWithinRange = false,
+			DontRetreatIfCharmed = false,
+		},
+	},
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
