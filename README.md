@@ -1,7 +1,7 @@
 # Hades (Almost) Total Conversion for Hades II
 
 > [!NOTE]
-> Refer to the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/FAQ) with any questions before opening an issue.
+> Refer to the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki) with any questions before opening an issue.
 
 This mod adds encounters and enemies from Hades to Hades II.
 
