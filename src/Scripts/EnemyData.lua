@@ -104,6 +104,10 @@ local enemyData = LoadHadesEnemyData()
 -- Breaks spawning Skelly, as it adds invalid conversations to the enemy
 -- Somehow doesn't work if set to mod.NilValue in enemyReplacements
 enemyData.TrainingMelee = nil
+-- Modified BaseVulnerableEnemy for all Hades enemies
+enemyData.BaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
+-- Modified BaseVulnerableEnemy just for Hades bosses, which need some modifications
+enemyData.HadesBossBaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
 
 -- Some enemies exist in both Hades and Hades II, so we need to rename the Hades enemies
 for oldName, newName in pairs(mod.EnemyNameMappings) do
@@ -130,7 +134,32 @@ end
 mod.ModifyEnemyTrapData(enemyData)
 
 -- Replaces the key with the new value instead of modifying
+-- This is done AFTER data inheritance is processed
 local enemyReplacements = {
+	BaseVulnerableEnemy = {
+		DestroyDelay = mod.NilValue,
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+	},
+	HadesBossBaseVulnerableEnemy = {
+		DestroyDelay = mod.NilValue,
+		DefaultAIData = {
+			DeepInheritance = true,
+			MoveWithinRange = false,
+			StopMoveWithinRange = false,
+			DontRetreatIfCharmed = false,
+			PreAttackAngleTowardTarget = true,
+			PreAttackStop = false,
+			PreAttackEndStop = false,
+			PostAttackStop = false,
+		},
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+	},
+
+	-- TARTARUS
 	BaseSpawner = {
 		-- SpawnerAI doesn't exist, spawn logic is in the weapon
 		AIOptions = { "AttackerAI", },
@@ -139,25 +168,7 @@ local enemyReplacements = {
 	BloodlessGrenadierElite = game.DeepCopyTable(game.EnemyData.BloodlessGrenadier_Elite),
 	-- Setting this to an empty table in the enemy doesn't work, so resetting the keys that break the animations here
 	Harpy = {
-		DefaultAIData = {
-			MoveWithinRange = false,
-			StopMoveWithinRange = false,
-			DontRetreatIfCharmed = false,
-		},
-	},
-	Harpy2 = {
-		DefaultAIData = {
-			MoveWithinRange = false,
-			StopMoveWithinRange = false,
-			DontRetreatIfCharmed = false,
-		},
-	},
-	Harpy3 = {
-		DefaultAIData = {
-			MoveWithinRange = false,
-			StopMoveWithinRange = false,
-			DontRetreatIfCharmed = false,
-		},
+		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy"},
 	},
 }
 
@@ -166,59 +177,37 @@ local enemyModifications = {
 	-- TARTARUS
 	BaseGlutton = {
 		LargeUnitCap = mod.NilValue,
-		ActivateFx = "EnemySummonRune",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
-		ActivateAnimation = "EnemyActivationFadeInWretchGluttonContainer",
 	},
 	PunchingBagUnit = {
 		StunAnimations = { Default = "EnemyWretchGluttonOnHit" },
-		ActivateFx = "EnemySummonRune",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInWretchGluttonContainer",
 	},
 	BaseThug = {
 		LargeUnitCap = mod.NilValue,
-		ActivateFx = "EnemySummonRune",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInWretchThugContainer",
 	},
 	HeavyMelee = {
 		StunAnimations = { Default = "EnemyWretchThugOnHit" },
-		ActivateFx = "EnemySummonRune",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInWretchThugContainer",
 	},
 	DisembodiedHand = {
 		StunAnimations = { Default = "EnemyWringerOnHit" },
-		ActivateFx = "EnemySummonRuneMedium",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInDisembodiedHandContainer",
 	},
 	BaseCaster = {
 		AIAggroRange = 1250,
 		LargeUnitCap = mod.NilValue,
 		ActivateFx = "EnemySummonRuneMedium",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInWretchCasterContainer",
 	},
 	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
 		DefaultAIData = game.DeepCopyTable(game.EnemyData.LightRanged.DefaultAIData),
 		ActivateFx = "EnemySummonRuneMedium",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInWretchCasterContainer",
 	},
 	BaseThief = {
 		ActivateFx = "EnemySummonRuneSmall",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInThiefMineLayerContainer",
 	},
 	ThiefMineLayer = {
@@ -229,8 +218,6 @@ local enemyModifications = {
 			PostAttackDuration = 0.75,
 		},
 		ActivateFx = "EnemySummonRuneSmall",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInThiefMineLayerContainer",
 	},
 	ThiefMineLayerElite = {
@@ -240,8 +227,6 @@ local enemyModifications = {
 			PostAttackDuration = 0.5,
 		},
 		ActivateFx = "EnemySummonRuneSmall",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInThiefMineLayerContainer",
 	},
 	HeavyRanged = {
@@ -259,13 +244,9 @@ local enemyModifications = {
 				Threaded = true,
 			},
 		},
-		-- Setting DestroyDelay to 0, as otherwise the crystal shine sticks around after the enemy dies
-		DestroyDelay = 0,
 		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
 		-- SpawnObstaclesOnDeath = { ... }
 		ActivateFx = "EnemySummonRuneMedium",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
 	},
 	HeavyRangedSplitterMiniboss = {
@@ -273,8 +254,6 @@ local enemyModifications = {
 		DeathFx = "EnemyDeathFx",
 		DeathGraphic = "HeavyRangedSplitterCrystalDeath",
 		ActivateFx = "EnemySummonRuneExtraLarge",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInHeavyRangedSplitterContainer",
 		SpawnEvents = {
 			{
@@ -293,16 +272,12 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 	},
 	Swarmer = {
-		StunAnimations = {
-			Default = "EnemyWretchSwarmerAlert",
-		},
+		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
 		DeathAnimation = "EnemyWretchSwarmerDeathVFX",
 		DeathFx = "EnemyDeathFx_Small",
 		DestroyDelay = 0.9,
 		WeaponOptions = { "HadesSwarmerMelee" },
 		ActivateFx = "EnemySummonRuneSmall",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInWretchSwarmerContainer",
 	},
 	LightSpawner = {
@@ -311,36 +286,18 @@ local enemyModifications = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
 		DeathFx = "BreakableDeathAnim",
 		DeathGraphic = "SpawnerDeath",
-		-- DestroyDelay = 0.9,
 		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon" },
 		DefaultAIData = { DeepInheritance = true, },
 		OnDamagedFunctionName = "AggroSpawns",
-		ActivateFx = "EnemySummonRune",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
 		BlockRaiseDead = true,
 	},
 	WretchAssassin = {
 		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
-		ActivateFx = "EnemySummonRune",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
 		ActivateAnimation = "EnemyActivate",
 		BlockRaiseDead = true
 	},
-	-- Bosses
-	Harpy = {
-		StunAnimations = {},
-		DestroyDelay = 0.0,
-	},
-	Harpy2 = {
-		StunAnimations = {},
-		DestroyDelay = 0.0,
-	},
 	Harpy3 = {
-		StunAnimations = {},
-		DestroyDelay = 0.0,
 		BossPresentationTextLineSets = {
 			Fury3Encounter10 = {
 				EndVoiceLines = {
@@ -350,13 +307,8 @@ local enemyModifications = {
 				},
 			},
 		},
-	},
-
-	-- ASPHODEL
-	BloodlessGrenadierElite = {
-		ActivateFx = "EnemySummonRune",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
+		-- TODO: Maybe replace with fitting Melinoe voicelines?
+		MapTransitionReactionVoiceLines = mod.NilValue,
 	},
 
 	-- These enemies have not been implemented yet
@@ -464,6 +416,5 @@ ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplac
 
 -- Modifications to Hades II enemies
 -- Only modify enemies that are not being used in Hades II in this way!
-
 -- Removing DestructibleGeo as TargetGroup, so the rubble from destructible pillars doesn't trigger the trap
 game.EnemyData.SpikeTrap.DefaultAIData.TargetGroups = { "GroundEnemies", "HeroTeam", }

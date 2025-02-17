@@ -3,16 +3,10 @@
 
 -- Enemies that exist in both games
 mod.EnemyNameMappings = {
+	BaseVulnerableEnemy = "HadesBaseVulnerableEnemy",
+
 	LightRanged = "HadesLightRanged",
-	-- In Hades II, this is LightRanged_Elite
-	-- LightRangedElite = "HadesLightRangedElite",
-	-- Doesn't exist at all in Hades II
-	-- LightRangedSuperElite = "HadesLightRangedSuperElite",
-	-- Not tested yet - is this needed?
-	-- SpreadShotUnit = "HadesSpreadShotUnit",
-
 	Swarmer = "HadesSwarmer",
-
 	ThiefMineLayer = "HadesThiefMineLayer",
 }
 

@@ -136,7 +136,7 @@ function mod.RenameKeys(base, replacements, baseName, propertyPath)
 	propertyPath = propertyPath or ""
 	for key, value in pairs(replacements) do
 		local currentPath = propertyPath .. (propertyPath == "" and "" or ".") .. key
-		if base[key] then
+		if base[key] ~= nil then
 			if type(value) == "table" then
 				mod.RenameKeys(base[key], value, baseName, currentPath)
 			else
@@ -207,6 +207,12 @@ end
 ---@param modificationData any The modification(s) to apply.
 ---@param replaceTable boolean|nil If modificationData is a table, this will replace the entire table instead of merging.
 function mod.ApplyModifications(baseData, modificationData, replaceTable)
+	-- if replaceTable then
+	-- 	print("Replacing table")
+	-- 	mod.PrintTable(baseData)
+	-- 	print("\nwith\n")
+	-- 	mod.PrintTable(modificationData)
+	-- end
 	for key, value in pairs(modificationData) do
 		if value == mod.NilValue then
 			baseData[key] = nil
