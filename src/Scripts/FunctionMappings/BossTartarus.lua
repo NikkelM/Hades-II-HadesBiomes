@@ -409,3 +409,158 @@ function game.EnrageHarpyPermanent(enemy, currentRun)
 	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 0.0, DestinationId = ScreenAnchors.BossRageFill })
 	EnrageUnit(enemy)
 end
+
+function game.Harpy3MapTransition(enemy, currentRun)
+	local currentRoom = currentRun.CurrentRoom
+	currentRoom.InStageTransition = true
+
+	if currentRoom.Name ~= "A_Boss03" then
+		return
+	end
+
+	AdjustColorGrading({ Name = "Team02", Duration = 0.5 })
+
+	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteDepressed" })
+	PlaySound({ Name = "/Leftovers/World Sounds/ThunderHuge" })
+	ShakeScreen({ Speed = 1000, Distance = 10, FalloffSpeed = 2000, Duration = 1.5 })
+	FocusCamera({ Fraction = 0.97, ZoomType = "Ease", Duration = 2.5 })
+	--PanCamera({ Id =  enemy.ObjectId, Duration = 4.0 })
+
+	AdjustRadialBlurDistance({ Fraction = 2.0, Duration = 2.0 })
+	AdjustRadialBlurStrength({ Fraction = 1.5, Duration = 2.0 })
+	game.thread(game.DoRumble, { { ScreenPreWait = 0.04, RightFraction = 0.17, Duration = 1.5 } })
+	game.thread(game.Harpy3MapRubbleFall)
+
+	for k, simData in ipairs(game.CurrentRun.Hero.FinalHitSlowParameters) do
+		if simData.Fraction < 1.0 then
+			game.AddSimSpeedChange("Harpy3MapTransition", { Fraction = simData.Fraction, LerpTime = simData.LerpTime })
+		else
+			game.RemoveSimSpeedChange("Harpy3MapTransition", { LerpTime = simData.LerpTime })
+		end
+	end
+
+	ExpireProjectiles({ ExcludeNames = WeaponSets.MapTransitionExpireProjectileExcludeNames })
+	game.wait(0.75)
+
+	ExpireProjectiles({ ExcludeNames = WeaponSets.MapTransitionExpireProjectileExcludeNames })
+	AddInputBlock({ Name = "Harpy3MapTransition" })
+	PlaySound({ Name = "/SFX/Menu Sounds/HadesTextDisappearFade" })
+	game.FullScreenFadeOutAnimation()
+
+	game.wait(0.4)
+
+	FocusCamera({ Fraction = currentRoom.ZoomFraction, Duration = 0.02 })
+
+	if enemy.MapTransitionReactionVoiceLines ~= nil then
+		game.thread(game.PlayVoiceLines, enemy.MapTransitionReactionVoiceLines, nil, enemy)
+	end
+
+	PlaySound({ Name = "/SFX/A_Boss03_RoomTransitionSFX" })
+	game.wait(0.3)
+	Teleport({ Id = currentRun.Hero.ObjectId, DestinationId = 40012 })
+	Teleport({ Id = enemy.ObjectId, DestinationId = 410021 })
+	-- Skelly Summon
+	local skellyId = GetIdsByType({ Name = "TrainingMeleeSummon" })
+	Teleport({ Id = skellyId, DestinationId = 520857 })
+	-- Dusa Summon
+	local dusaId = GetIdsByType({ Name = "DusaSummon" })
+	Teleport({ Id = dusaId, DestinationId = 520857 })
+
+	local activateObstacles = {}
+	local deactivateObstacles = {}
+
+	if currentRoom.CurrentPhase == nil then
+		currentRoom.CurrentPhase = 2
+	end
+
+	if currentRoom.CurrentPhase == 1 then
+		--activateObstacles = GetInactiveIds({ Name = "Phase2Add" })
+		--deactivateObstacles = GetIds({ Name = "Phase2Remove" })
+	elseif currentRoom.CurrentPhase == 2 then
+		activateObstacles = game.CombineTables(GetInactiveIds({ Name = "Phase3Add" }), GetInactiveIds({ Name = "Phase2Add" })) or
+				{}
+		deactivateObstacles = game.CombineTables(GetIds({ Name = "Phase3Remove" }), GetIds({ Name = "Phase2Remove" })) or {}
+	elseif currentRoom.CurrentPhase == 3 then
+		activateObstacles = GetInactiveIds({ Name = "Phase4Add" }) or {}
+		deactivateObstacles = GetIds({ Name = "Phase4Remove" }) or {}
+	else
+		DebugPrint({ Text = "Harpy 3: No more phases" })
+	end
+
+	for k, id in pairs(activateObstacles) do
+		Activate({ Id = id })
+	end
+
+	for k, id in pairs(deactivateObstacles) do
+		SetAlpha({ Id = id, Fraction = 0.0, Duration = 1.5 })
+	end
+
+	currentRoom.CurrentPhase = currentRoom.CurrentPhase + 1
+	if currentRoom.CurrentPhase ~= nil then
+		game.thread(game.Harpy3MapReturnSmoke, currentRoom.CurrentPhase)
+	end
+	game.wait(0.1)
+
+	local ammoIds = GetIdsByType({ Name = "AmmoPack" })
+	SetObstacleProperty({ Property = "Magnetism", Value = 3000, DestinationIds = ammoIds })
+	SetObstacleProperty({
+		Property = "MagnetismSpeedMax",
+		Value = currentRun.Hero.LeaveRoomAmmoMangetismSpeed,
+		DestinationIds = ammoIds
+	})
+	StopAnimation({ DestinationIds = ammoIds, Name = "AmmoReturnTimer" })
+
+	RemoveInputBlock({ Name = "Harpy3MapTransition" })
+	PlaySound({ Name = "/SFX/Menu Sounds/HadesTextDisappearFade" })
+	game.FullScreenFadeInAnimation()
+	ShakeScreen({ Speed = 300, Distance = 3, FalloffSpeed = 1000, Duration = 0.65 })
+	AdjustRadialBlurDistance({ Fraction = 0.0, Duration = 1.4 })
+	AdjustRadialBlurStrength({ Fraction = 0.0, Duration = 1.4 })
+
+	game.wait(1.3)
+
+	AdjustColorGrading({ Name = "Off", Duration = 0.45 })
+	currentRoom.InStageTransition = false
+end
+
+function game.Harpy3MapRubbleFall()
+	local rubbleLimit = 15
+	for index = 1, rubbleLimit, 1 do
+		local offsetX = game.RandomFloat(-400, 400)
+		local offsetY = game.RandomFloat(-400, 400)
+		local targetId = SpawnObstacle({
+			Name = "BlankObstacle",
+			DestinationId = game.CurrentRun.Hero.ObjectId,
+			OffsetX = offsetX,
+			OffsetY =
+					offsetY
+		})
+		FireWeaponFromUnit({ Weapon = "RubbleFall", Id = game.CurrentRun.Hero.ObjectId, DestinationId = targetId, FireFromTarget = true })
+		local rubbleWait = game.RandomFloat(0.06, 0.12)
+		game.wait(rubbleWait)
+	end
+end
+
+function game.Harpy3MapReturnSmoke(currentPhase)
+	local phaseSmokeObstacles = {
+		[3] = { 519116, 520677, 519118, 518995, 519033, 519037, 519220, 519970, 519010, 519097, 519039, 519074, 519123, 519124, 520676, 519126, 520128, 519020, 519104, 519052, 519082, 511073 },
+		[4] = { 518874, 518857, 518880, 518890, 518896, 518902, 518906, 518910, 518914, 520866, 520862, 518948, 518870, 520872, 518894, 518892, 520866, 518864, 518885, 518862 },
+	}
+	if currentPhase == nil then
+		return
+	end
+	DebugPrint({ Text = tostring(currentPhase) })
+	game.wait(0.1)
+	local smokeTable = phaseSmokeObstacles[currentPhase]
+	if smokeTable ~= nil then
+		for k, obstacleId in pairs(smokeTable) do
+			local randomScale = game.RandomFloat(0.8, 1.2)
+			CreateAnimation({
+				Name = "SmokeTrapLoopDissipate",
+				DestinationId = obstacleId,
+				Group = "FX_Standing_Top",
+				Scale = randomScale
+			})
+		end
+	end
+end

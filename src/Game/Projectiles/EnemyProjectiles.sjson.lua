@@ -25,7 +25,8 @@ local hadesProjectilesModifications = {
 	-- TARTARUS
 	DisembodiedHandGrab = {
 		Effect = {
-			StartAnimation = "null",
+			-- Don't play the ZagreusStun animation
+			StartAnimation = "MelinoeGetHit",
 		},
 	},
 	LightRangedWeapon = {
@@ -46,12 +47,18 @@ local hadesProjectilesModifications = {
 		DieWithOwner = true,
 	},
 
-	-- TARTARUS - MEGAERA
+	-- TARTARUS - BOSSES
 	HarpyBeam = {
 		Speed = 700,
 		-- Can't be destroyed by hitting it, but if you have a projectile defense boon (like Hestia sprint)
 		CanBeProjectileDefenseDestroyed = false,
 		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+	},
+	HarpySlowBeam = {
+		UnpauseAnimation = mod.NilValue,
+		Thing = {
+			Graphic = "FuryBeamEmitterTisiphone",
+		},
 	},
 	HarpyLightning = {
 		CanBeProjectileDefenseDestroyed = false,
@@ -62,6 +69,19 @@ local hadesProjectilesModifications = {
 		CanBeProjectileDefenseDestroyed = false,
 		CanBeProjectileDefenseDestroyedByName2 = "null",
 		CanBeProjectileDefenseDestroyedByLayer = "null",
+	},
+	HarpyWhipLasso = {
+		Effects = {
+			[1] = { StartAnimation = "MelinoeGetHit", },
+		},
+	},
+
+	-- STYX
+	StaggeredSatyrRangedWeapon = {
+		UnpauseAnimation = mod.NilValue,
+		Thing = {
+			Graphic = "SatyrDart",
+		},
 	},
 }
 
@@ -78,7 +98,8 @@ end
 -- Rename attached animations/Fx graphics
 for oldName, newName in pairs(mod.FxAnimationMappings) do
 	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "Thing", "Graphic" }, "EnemyProjectiles.sjson")
-	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "Thing", "AttachedAnim" },	"EnemyProjectiles.sjson")
+	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "Thing", "AttachedAnim" },
+		"EnemyProjectiles.sjson")
 	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "DetonateGraphic" }, "EnemyProjectiles.sjson")
 end
 

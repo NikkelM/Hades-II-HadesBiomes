@@ -25,7 +25,7 @@ local roomReplacements = {
 		Binks = mod.NilValue,
 	},
 	A_PreBoss01 = {
-		LinkedRooms = { "A_Boss01", "A_Boss02",}, -- "A_Boss03"
+		LinkedRooms = { "A_Boss01", "A_Boss02", "A_Boss03", },
 		Binks = mod.NilValue,
 	},
 }

@@ -153,20 +153,12 @@ local weaponModifications = {
 		Requirements = {
 			MinAttacksBetweenUse = 3,
 		},
-		AIData = {
-			-- FireCooldown is FireInterval in Hades II - FireCooldown doesn't seem to be used
-			FireInterval = 0.25,
-			FireCooldown = mod.NilValue,
-		},
 	},
 	HarpyLightning = {
 		Requirements = {
 			MinAttacksBetweenUse = 3,
 		},
 		AIData = {
-			-- FireCooldown is FireInterval in Hades II - FireCooldown doesn't seem to be used
-			FireInterval = 1.2,
-			FireCooldown = mod.NilValue,
 			AttackSlotInterval = 0.0,
 			ProjectileName = "HarpyLightning",
 		},
@@ -186,6 +178,13 @@ local weaponModifications = {
 		},
 		AIData = {
 			PreAttackStop = true,
+		},
+	},
+	HarpyWhipRageBeam = {
+		AIData = {
+			ProjectileName = "HarpyBeamAlecto",
+			NumProjectiles = 5,
+			ProjectileAngleInterval = 30,
 		},
 	},
 	HarpyBuildRage = {
@@ -217,8 +216,6 @@ local weaponModifications = {
 			FireMoveTowardTarget = true,
 			StopMoveWithinRange = true,
 			MoveSuccessDistance = 25,
-			FireInterval = 1.2,
-			FireCooldown = mod.NilValue,
 			ProjectileName = "HarpyLightningAlecto",
 		},
 	},
@@ -230,8 +227,6 @@ local weaponModifications = {
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
 			FireMoveTowardTarget = true,
-			FireInterval = 0.8,
-			FireCooldown = mod.NilValue,
 			ProjectileName = "HarpyLightningAlecto",
 		},
 	},
@@ -243,8 +238,6 @@ local weaponModifications = {
 			FireTicks = 9,
 			NumProjectiles = 10,
 			ProjectileAngleEvenlySpaced = true,
-			FireInterval = 0.75,
-			FireCooldown = mod.NilValue,
 			ProjectileName = "HarpyBeamAlecto",
 		},
 	},
@@ -264,6 +257,41 @@ local weaponModifications = {
 			PreAttackStop = true,
 		},
 	},
+	-- TARTARUS - TISIPHONE
+	HarpyWhipCombo1 = {
+		Requirements = {
+			MaxConsecutiveUses = 1,
+		},
+	},
+	HarpyLightningLine = {
+		AIData = {
+			ProjectileName = "HarpyLightningTisiphone",
+		},
+	},
+	HarpyLungeSurgeBeam = {
+		AIData = {
+			ProjectileName = "HarpyBeamTisiphone",
+			NumProjectiles = 2,
+			ProjectileAngleInterval = 180,
+			ProjectileStartAngleOffset = 90,
+		},
+	},
+	HarpySlowBeam360 = {
+		Requirements = {
+			MinAttacksBetweenUse = 2,
+		},
+		AIData = {
+			ProjectileName = "HarpySlowBeam",
+			NumProjectiles = 36,
+      ProjectileInterval = 0.0025,
+			ProjectileAngleEvenlySpaced = true,
+		},
+	},
+	HarpyLightningCardinal = {
+		AIData = {
+			ProjectileName = "HarpyLightningTisiphone",
+		}
+	}
 }
 
 local renamedWeaponModifications = {}
@@ -297,6 +325,7 @@ local weaponKeyReplacements = {
 		AIFireTicksMax = "FireTicksMax",
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
+		FireCooldown = "FireInterval",
 	},
 }
 
