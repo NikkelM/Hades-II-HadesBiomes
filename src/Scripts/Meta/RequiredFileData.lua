@@ -13,6 +13,7 @@ VoiceoverFileNames = {
 	"Alecto",
 	"Megaera",
 	"MegaeraField",
+	"Tisiphone",
 	"ZagreusField",
 }
 
