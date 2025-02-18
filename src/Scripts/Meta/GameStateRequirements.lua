@@ -28,7 +28,7 @@ modutil.mod.Path.Wrap("IsEnemyEligible", function(base, enemyName, encounter, wa
 
 	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
 		local isGameStateEligibleArgs = {}
-		if game.EnemyData[enemyName].IsElite and game.GetNumMetaUpgrades("EnemyEliteShrineUpgrade") > 0 then
+		if game.EnemyData[enemyName].IsElite and game.GetNumShrineUpgrades("EnemyEliteShrineUpgrade") > 0 then
 			isGameStateEligibleArgs.SkipMinBiomeDepth = true
 		end
 		return game.ModsNikkelMHadesBiomesIsGameStateEligible(game.EnemyData[enemyName], game.EnemyData[enemyName], isGameStateEligibleArgs)
@@ -1282,10 +1282,11 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	-- 	end
 	-- end
 
-	if requirements.RequiredInactiveMetaUpgrade ~= nil and GetNumMetaUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 then
+	-- TODO
+	if requirements.RequiredInactiveMetaUpgrade ~= nil and GetNumMetaUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 or GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 then
 		return false
 	end
-	if requirements.RequiredActiveMetaUpgrade ~= nil and GetNumMetaUpgrades(requirements.RequiredActiveMetaUpgrade) < 1 then
+	if requirements.RequiredActiveMetaUpgrade ~= nil and GetNumMetaUpgrades(requirements.RequiredActiveMetaUpgrade) < 1 and GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgrade) < 1 then
 		return false
 	end
 
@@ -1313,19 +1314,19 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	-- end
 
 	if requirements.RequiredMinActiveMetaUpgradeLevel ~= nil then
-		if GetNumMetaUpgrades(requirements.RequiredMinActiveMetaUpgradeLevel.Name) < requirements.RequiredMinActiveMetaUpgradeLevel.Count then
+		if GetNumMetaUpgrades(requirements.RequiredMinActiveMetaUpgradeLevel.Name) < requirements.RequiredMinActiveMetaUpgradeLevel.Count and GetNumShrineUpgrades(requirements.RequiredMinActiveMetaUpgradeLevel.Name) < requirements.RequiredMinActiveMetaUpgradeLevel.Count then
 			return false
 		end
 	end
 
 	if requirements.RequiredMaxActiveMetaUpgradeLevel ~= nil then
-		if GetNumMetaUpgrades(requirements.RequiredMaxActiveMetaUpgradeLevel.Name) > requirements.RequiredMaxActiveMetaUpgradeLevel.Count then
+		if GetNumMetaUpgrades(requirements.RequiredMaxActiveMetaUpgradeLevel.Name) > requirements.RequiredMaxActiveMetaUpgradeLevel.Count or GetNumShrineUpgrades(requirements.RequiredMaxActiveMetaUpgradeLevel.Name) > requirements.RequiredMaxActiveMetaUpgradeLevel.Count then
 			return false
 		end
 	end
 
 	if requirements.RequiredActiveMetaUpgradeLevel ~= nil then
-		if GetNumMetaUpgrades(requirements.RequiredActiveMetaUpgradeLevel.Name) ~= requirements.RequiredActiveMetaUpgradeLevel.Count then
+		if GetNumMetaUpgrades(requirements.RequiredActiveMetaUpgradeLevel.Name) ~= requirements.RequiredActiveMetaUpgradeLevel.Count and GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgradeLevel.Name) ~= requirements.RequiredActiveMetaUpgradeLevel.Count then
 			return false
 		end
 	end
@@ -1381,7 +1382,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	end
 
 	if requirements.RequiredTextLinesPerMetaUpgradeLevel ~= nil then
-		if GetNumMetaUpgrades(requirements.RequiredTextLinesPerMetaUpgradeLevel.MetaUpgradeName) >= requirements.RequiredTextLinesPerMetaUpgradeLevel.Count then
+		if GetNumMetaUpgrades(requirements.RequiredTextLinesPerMetaUpgradeLevel.MetaUpgradeName) >= requirements.RequiredTextLinesPerMetaUpgradeLevel.Count or GetNumShrineUpgrades(requirements.RequiredTextLinesPerMetaUpgradeLevel.MetaUpgradeName) >= requirements.RequiredTextLinesPerMetaUpgradeLevel.Count then
 			for k, textLineSet in pairs(requirements.RequiredTextLinesPerMetaUpgradeLevel.TextLines) do
 				if game.GameState.TextLinesRecord[textLineSet] == nil then
 					return false
@@ -1457,7 +1458,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 		return false
 	end
 
-	if requirements.EliteShrineUpgradeMinBiomeDepth ~= nil and requirements.IsElite and GetNumMetaUpgrades("EnemyEliteShrineUpgrade") > 0 then
+	if requirements.EliteShrineUpgradeMinBiomeDepth ~= nil and requirements.IsElite and GetNumShrineUpgrades("EnemyEliteShrineUpgrade") > 0 then
 		if currentBiomeDepth < requirements.EliteShrineUpgradeMinBiomeDepth then
 			return false
 		end

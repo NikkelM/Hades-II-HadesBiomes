@@ -165,7 +165,17 @@ end
 function CopyHadesFxAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\Fx.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
-	local modifications = {}
+	local modifications = {
+		TisiphoneFogIn = {
+      EndAlpha = 0.899,
+		},
+		TisiphoneFogLoop = {
+      EndAlpha = 0.898,
+		},
+		TisiphoneFogLoopDissipate = {
+      EndAlpha = 0.899,
+		},
+	}
 	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates,
 		modifications, "Fx.sjson")
 end

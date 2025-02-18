@@ -195,18 +195,18 @@ local function on_ready()
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes
-		import "Scripts/ObstacleData.lua"
 		import "Scripts/AudioData.lua"
-
 		import "Scripts/Combat.lua"
 		import "Scripts/CombatLogic.lua"
-		import "Scripts/HeroData.lua"
-		import "Scripts/RunLogic.lua"
-		import "Scripts/RoomLogic.lua"
-		import "Scripts/RoomEvents.lua"
 		import "Scripts/CombatPresentation.lua"
-		import "Scripts/RewardPresentation.lua"
 		import "Scripts/DeathLoopData.lua"
+		import "Scripts/EnemyAILogic.lua"
+		import "Scripts/HeroData.lua"
+		import "Scripts/ObstacleData.lua"
+		import "Scripts/RewardPresentation.lua"
+		import "Scripts/RoomEvents.lua"
+		import "Scripts/RoomLogic.lua"
+		import "Scripts/RunLogic.lua"
 		import "Scripts/WeaponSets.lua"
 	else
 		error(

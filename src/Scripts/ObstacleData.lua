@@ -7,3 +7,7 @@ game.ObstacleData.TartarusDoor03b.UnlockedAnimation = "DoorLocked_MetaReward"
 game.ObstacleData.TartarusRubble02 = game.DeepCopyTable(game.ObstacleData.CWTartarusRubble01)
 game.ObstacleData.TartarusRubble02b = game.DeepCopyTable(game.ObstacleData.CWTartarusRubble01)
 game.ObstacleData.TartarusRubble02c = game.DeepCopyTable(game.ObstacleData.CWTartarusRubble01)
+
+game.ObstacleData.MultiFuryMegaeraIntro = { ExitAnimation = "MegaeraMultiFuryTakeOff", }
+game.ObstacleData.MultiFuryAlectoIntro = { ExitAnimation = "AlectoMultiFuryTakeOff", }
+game.ObstacleData.MultiFuryTisiphoneIntro = { ExitAnimation = "TisiphoneMultiFuryTakeOff", }

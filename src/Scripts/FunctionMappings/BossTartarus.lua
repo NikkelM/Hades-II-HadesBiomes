@@ -1,45 +1,86 @@
 function game.MultiFuryIntro(eventSource, args)
-	-- local boss = game.ActiveEnemies[args.BossId]
-	-- for k, supportAIName in pairs(boss.SupportAINames) do
-	-- 	local obstacleName = "MultiFury" .. supportAIName .. "Intro"
-	-- 	SetAnimation({
-	-- 		DestinationIds = GetIdsByType({ Name = obstacleName }),
-	-- 		Name = ObstacleData[obstacleName]
-	-- 				.ExitAnimation
-	-- 	})
-	-- 	game.wait(0.3)
-	-- end
+	local boss = game.ActiveEnemies[args.BossId]
+	for k, supportAIName in pairs(boss.SupportAINames) do
+		local obstacleName = "MultiFury" .. supportAIName .. "Intro"
+		SetAnimation({
+			DestinationIds = GetIdsByType({ Name = obstacleName }),
+			Name = game.ObstacleData[obstacleName].ExitAnimation
+		})
+		game.wait(0.3)
+	end
 end
 
-function game.SelectHarpySupportAIs(enemy, currentRun)
-	-- local shrineLevel = GetNumMetaUpgrades(enemy.ShrineMetaUpgradeName)
+function game.SelectHarpySupportAIs(enemy)
+	local shrineLevel = game.GetNumShrineUpgrades(enemy.ShrineMetaUpgradeName)
+	enemy.SupportAINames = enemy.SupportAINames or {}
 
-	-- enemy.SupportAINames = enemy.SupportAINames or {}
-
-	-- if shrineLevel > 0 then
-	-- 	local supportCount = RandomInt(1, 2)
-	-- 	if game.TextLinesRecord.FurySistersUnion01 == nil then
-	-- 		supportCount = 2
-	-- 	end
-	-- 	for i = 1, supportCount, 1 do
-	-- 		local supportAIName = RemoveRandomValue(enemy.SupportAIWeaponSetOptions) or "Alecto"
-	-- 		table.insert(enemy.SupportAINames, supportAIName)
-	-- 		currentRun.SupportAINames[supportAIName] = true
-	-- 	end
-	-- end
+	if shrineLevel > 0 then
+		local supportCount = game.RandomInt(1, 2)
+		if game.GameState.TextLinesRecord.FurySistersUnion01 == nil then
+			supportCount = 2
+		end
+		for i = 1, supportCount, 1 do
+			local supportAIName = game.RemoveRandomValue(enemy.SupportAIWeaponSetOptions) or "Alecto"
+			table.insert(enemy.SupportAINames, supportAIName)
+			game.CurrentRun.SupportAINames[supportAIName] = true
+		end
+	end
 end
 
 -- TODO: Needs enemy.AdditionalEnemySetupFunctionName in RoomManager 4214
 -- Or perhaps, use _Shrine variant of the encounter itself that inherits from base encounter and adds the additional enemies
 -- Or, encounter.SetupEvents
 function game.MultiFuryActivations(eventSource, args)
-	-- local boss = game.ActiveEnemies[args.BossId]
-	-- boss.MultiFuryObstacleIds = {}
+	local boss = game.ActiveEnemies[args.BossId]
+	boss.MultiFuryObstacleIds = {}
 
-	-- for k, supportAIName in pairs(boss.SupportAINames) do
-	-- 	Activate({ Id = args.ObstacleIds[supportAIName] })
-	-- 	boss.MultiFuryObstacleIds[supportAIName] = args.ObstacleIds[supportAIName]
-	-- end
+	for k, supportAIName in pairs(boss.SupportAINames) do
+		Activate({ Id = args.ObstacleIds[supportAIName] })
+		boss.MultiFuryObstacleIds[supportAIName] = args.ObstacleIds[supportAIName]
+	end
+end
+
+function game.HarpySupportAI(enemy)
+	-- Wake up delay
+	if enemy.WakeUpDelayMin ~= nil and enemy.WakeUpDelayMax ~= nil then
+		enemy.WakeUpDelay = game.RandomFloat(enemy.WakeUpDelayMin, enemy.WakeUpDelayMax)
+	end
+	if enemy.WakeUpDelay then
+		game.wait(game.CalcEnemyWait(enemy, enemy.WakeUpDelay), enemy.AIThreadName)
+	end
+
+	while game.ActiveEnemies[enemy.ObjectId] ~= nil do
+		local supportAIWeaponSetName = game.GetRandomValue(enemy.SupportAINames)
+		local weaponName = game.GetRandomValue(enemy.SupportAIWeaponOptions[supportAIWeaponSetName])
+		if weaponName ~= nil then
+			local weaponData = WeaponData[weaponName]
+			local weaponAIData = game.ShallowCopyTable(enemy.DefaultAIData) or enemy
+			if weaponData ~= nil then
+				if weaponData.AIData ~= nil then
+					game.OverwriteTableKeys(weaponAIData, weaponData.AIData)
+				else
+					game.OverwriteTableKeys(weaponAIData, weaponData)
+				end
+			end
+			weaponAIData.WeaponName = weaponName
+
+			local targetId = SpawnObstacle({
+				Name = "BlankObstacle",
+				Group = "Scripting",
+				DestinationId = game.GetTargetId(enemy, weaponAIData)
+			})
+
+			Teleport({ Id = enemy.ObjectId, DestinationId = targetId })
+			game.DoAttack(enemy, weaponAIData)
+			if weaponAIData.ForcedEarlyExit then
+				SetAnimation({ DestinationId = enemy.ObjectId, Name = supportAIWeaponSetName .. "MultiFurySkyDiveFadeOut" })
+			end
+			Destroy({ Id = targetId })
+		end
+
+		local attackRate = enemy.AttackRate or game.RandomFloat(enemy.AttackRateMin, enemy.AttackRateMax)
+		game.wait(game.CalcEnemyWait(enemy, attackRate), enemy.AIThreadName)
+	end
 end
 
 function game.HarpyKillPresentation(unit, args)
@@ -169,11 +210,11 @@ function game.HarpyKillPresentation(unit, args)
 
 	-- black out world
 	AdjustFrame({ Color = Color.TransparentRed, Duration = 0.0, Fraction = 0 })
-	ScreenAnchors.DeathBackground = ScreenAnchors.DeathBackground or
+	game.ScreenAnchors.DeathBackground = game.ScreenAnchors.DeathBackground or
 			game.CreateScreenObstacle({ Name = "rectangle01", Group = "Combat_UI", X = ScreenCenterX, Y = ScreenCenterY })
-	SetScale({ Id = ScreenAnchors.DeathBackground, Fraction = 10 })
-	SetColor({ Id = ScreenAnchors.DeathBackground, Color = Color.Black })
-	SetAlpha({ Id = ScreenAnchors.DeathBackground, Fraction = 1.0, Duration = 0 })
+	SetScale({ Id = game.ScreenAnchors.DeathBackground, Fraction = 10 })
+	SetColor({ Id = game.ScreenAnchors.DeathBackground, Color = Color.Black })
+	SetAlpha({ Id = game.ScreenAnchors.DeathBackground, Fraction = 1.0, Duration = 0 })
 
 	game.thread(game.DoRumble,
 		{ { ScreenPreWait = 0.04, RightFraction = 0.17, Duration = 0.65 }, { ScreenPreWait = 2.8, LeftFraction = 0.3, Duration = 0.6 } })
@@ -196,9 +237,6 @@ function game.HarpyKillPresentation(unit, args)
 	if deathPanSettings.BossDifficultyMessage and game.GetNumShrineUpgrades("BossDifficultyShrineUpgrade") > 0 then
 		textMessage = deathPanSettings.BossDifficultyMessage
 	end
-	-- if deathPanSettings.BossDifficultyMessage and GetNumMetaUpgrades("BossDifficultyShrineUpgrade") > 0 then
-	-- 	textMessage = deathPanSettings.BossDifficultyMessage
-	-- end
 
 	game.thread(DisplayInfoBanner, nil,
 		{
@@ -239,7 +277,7 @@ function game.HarpyKillPresentation(unit, args)
 		game.wait(5.5)
 	end
 
-	SetAlpha({ Id = ScreenAnchors.DeathBackground, Fraction = 0.0, Duration = 0.3 })
+	SetAlpha({ Id = game.ScreenAnchors.DeathBackground, Fraction = 0.0, Duration = 0.3 })
 
 	SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 1.0, DataValue = false, AllProjectiles = true })
 	SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 1.0, DataValue = false, DestinationId = killerId })
@@ -279,7 +317,7 @@ function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
 	end
 
 	ShakeScreen({ Speed = 300, Distance = 3, FalloffSpeed = 2000, Duration = 1.0 })
-	Flash({ Id = ScreenAnchors.BossRageFill, Speed = 3.0, MinFraction = 0, MaxFraction = 0.8, Color = Color.Yellow })
+	Flash({ Id = game.ScreenAnchors.BossRageFill, Speed = 3.0, MinFraction = 0, MaxFraction = 0.8, Color = Color.Yellow })
 
 	local hitsTaken = 0
 
@@ -295,7 +333,7 @@ function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
 			end
 			-- To stop the dumb fire from continuing after the early break
 			enemy.HarpyBuildRageEarlyExit = true
-			StopFlashing({ Id = ScreenAnchors.BossRageFill })
+			StopFlashing({ Id = game.ScreenAnchors.BossRageFill })
 			game.wait(game.CalcEnemyWait(enemy, weaponAIData.EarlyBreakStunDuration), enemy.AIThreadName)
 			enemy.HarpyBuildRageEarlyExit = false
 			return
@@ -306,7 +344,7 @@ function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
 		if enemy.Enraged or IsInvulnerable({ Id = enemy.ObjectId }) then
 			enemy.HarpyBuildRageEarlyExit = true
 			if not enemy.Enraged then
-				StopFlashing({ Id = ScreenAnchors.BossRageFill })
+				StopFlashing({ Id = game.ScreenAnchors.BossRageFill })
 			end
 			if weaponAIData.BuildRageEndAnimation ~= nil then
 				SetAnimation({ Id = enemy.ObjectId, Name = weaponAIData.BuildRageEndAnimation })
@@ -321,7 +359,7 @@ function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
 	if weaponAIData.BuildRageEndAnimation ~= nil then
 		SetAnimation({ Id = enemy.ObjectId, Name = weaponAIData.BuildRageEndAnimation })
 	end
-	StopFlashing({ Id = ScreenAnchors.BossRageFill })
+	StopFlashing({ Id = game.ScreenAnchors.BossRageFill })
 	game.wait(game.CalcEnemyWait(enemy, weaponAIData.BuildRageEndDuration), enemy.AIThreadName)
 	enemy.HarpyBuildRageEarlyExit = false
 end
@@ -331,7 +369,7 @@ function game.BuildRageMeter(currentRun, meterAmount, enemy)
 		return
 	end
 
-	local screenId = ScreenAnchors.BossRageFill
+	local screenId = game.ScreenAnchors.BossRageFill
 	enemy.RageFraction = enemy.RageFraction or 0
 
 	enemy.RageFraction = enemy.RageFraction + meterAmount
@@ -344,10 +382,10 @@ function game.BuildRageMeter(currentRun, meterAmount, enemy)
 end
 
 function game.HandleHarpyRage(enemy, currentRun)
-	if ScreenAnchors.BossRageFill == nil then
-		CreateBossRageMeter(enemy)
+	if game.ScreenAnchors.BossRageFill == nil then
+		game.CreateBossRageMeter(enemy)
 	end
-	local screenId = ScreenAnchors.BossRageFill
+	local screenId = game.ScreenAnchors.BossRageFill
 	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 1.0, DestinationId = screenId })
 	enemy.RageFraction = enemy.RageFraction or 0
 
@@ -369,12 +407,12 @@ function game.HandleHarpyRage(enemy, currentRun)
 end
 
 function game.CreateBossRageMeter(boss)
-	ScreenAnchors.BossRageTitle = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 130, Scale = 1.0 })
-	ScreenAnchors.BossRageBack = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 150, Scale = 0.5 })
-	ScreenAnchors.BossRageFill = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 152, Scale = 0.5 })
+	game.ScreenAnchors.BossRageTitle = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 130, Scale = 1.0 })
+	game.ScreenAnchors.BossRageBack = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 150, Scale = 0.5 })
+	game.ScreenAnchors.BossRageFill = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 152, Scale = 0.5 })
 
 	CreateTextBox({
-		Id = ScreenAnchors.BossRageTitle,
+		Id = game.ScreenAnchors.BossRageTitle,
 		Text = "RageMeter",
 		Font = "AlegreyaSansSCBold",
 		FontSize = 14,
@@ -389,24 +427,24 @@ function game.CreateBossRageMeter(boss)
 		ShadowOffsetX = 0,
 		Justification = "Center"
 	})
-	SetAlpha({ Id = ScreenAnchors.BossRageTitle, Fraction = 0.01, Duration = 0.0 })
-	SetAlpha({ Id = ScreenAnchors.BossRageTitle, Fraction = 1, Duration = 2.0 })
+	SetAlpha({ Id = game.ScreenAnchors.BossRageTitle, Fraction = 0.01, Duration = 0.0 })
+	SetAlpha({ Id = game.ScreenAnchors.BossRageTitle, Fraction = 1, Duration = 2.0 })
 
-	SetAnimation({ Name = "EnemyHealthBarBoss", DestinationId = ScreenAnchors.BossRageBack })
-	SetAlpha({ Id = ScreenAnchors.BossRageBack, Fraction = 0.01, Duration = 0.0 })
-	SetAlpha({ Id = ScreenAnchors.BossRageBack, Fraction = 1, Duration = 2.0 })
+	SetAnimation({ Name = "EnemyHealthBarBoss", DestinationId = game.ScreenAnchors.BossRageBack })
+	SetAlpha({ Id = game.ScreenAnchors.BossRageBack, Fraction = 0.01, Duration = 0.0 })
+	SetAlpha({ Id = game.ScreenAnchors.BossRageBack, Fraction = 1, Duration = 2.0 })
 
 	boss.RageBarFill = "EnemyHealthBarFillBoss"
-	SetAnimation({ Name = "EnemyHealthBarFillBoss", DestinationId = ScreenAnchors.BossRageFill })
+	SetAnimation({ Name = "EnemyHealthBarFillBoss", DestinationId = game.ScreenAnchors.BossRageFill })
 	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 1, DestinationId = screenId })
-	SetAlpha({ Id = ScreenAnchors.BossRageFill, Fraction = 0.01, Duration = 0.0 })
-	SetAlpha({ Id = ScreenAnchors.BossRageFill, Fraction = 1, Duration = 2.0 })
+	SetAlpha({ Id = game.ScreenAnchors.BossRageFill, Fraction = 0.01, Duration = 0.0 })
+	SetAlpha({ Id = game.ScreenAnchors.BossRageFill, Fraction = 1, Duration = 2.0 })
 end
 
 function game.EnrageHarpyPermanent(enemy, currentRun)
 	enemy.Enraged = true
 	enemy.PermanentEnraged = true
-	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 0.0, DestinationId = ScreenAnchors.BossRageFill })
+	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 0.0, DestinationId = game.ScreenAnchors.BossRageFill })
 	EnrageUnit(enemy)
 end
 

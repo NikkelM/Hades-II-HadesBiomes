@@ -168,7 +168,7 @@ local enemyReplacements = {
 	BloodlessGrenadierElite = game.DeepCopyTable(game.EnemyData.BloodlessGrenadier_Elite),
 	-- Setting this to an empty table in the enemy doesn't work, so resetting the keys that break the animations here
 	Harpy = {
-		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy"},
+		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
 }
 
@@ -296,6 +296,9 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
 		ActivateAnimation = "EnemyActivate",
 		BlockRaiseDead = true
+	},
+	HarpySupportUnit = {
+		AIOptions = { "HarpySupportAI" },
 	},
 	Harpy3 = {
 		BossPresentationTextLineSets = {

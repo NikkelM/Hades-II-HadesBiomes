@@ -159,8 +159,20 @@ local weaponModifications = {
 			MinAttacksBetweenUse = 3,
 		},
 		AIData = {
-			AttackSlotInterval = 0.0,
+			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightning",
+		},
+	},
+	SummonMegaeraWhipWhirl = {
+		AIData = {
+			ProjectileName = "SummonMegaeraWhipWhirl",
+		},
+	},
+	SummonMegaeraHarpyBeam = {
+		AIData = {
+			ProjectileName = "HarpyBeamSky",
+			NumProjectiles = 8,
+			ProjectileInterval = 0.3,
 		},
 	},
 	-- TARTARUS - ALECTO
@@ -216,6 +228,7 @@ local weaponModifications = {
 			FireMoveTowardTarget = true,
 			StopMoveWithinRange = true,
 			MoveSuccessDistance = 25,
+			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightningAlecto",
 		},
 	},
@@ -227,6 +240,7 @@ local weaponModifications = {
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
 			FireMoveTowardTarget = true,
+			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightningAlecto",
 		},
 	},
@@ -257,6 +271,16 @@ local weaponModifications = {
 			PreAttackStop = true,
 		},
 	},
+	SummonAlectoWhipShot = {
+		AIData = {
+			ProjectileName = "HarpyWhipShotSky",
+		},
+	},
+	SummonAlectoLightningChase = {
+		AIData = {
+			ProjectileName = "HarpyLightningAlecto",
+		},
+	},
 	-- TARTARUS - TISIPHONE
 	HarpyWhipCombo1 = {
 		Requirements = {
@@ -265,6 +289,7 @@ local weaponModifications = {
 	},
 	HarpyLightningLine = {
 		AIData = {
+			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightningTisiphone",
 		},
 	},
@@ -283,16 +308,35 @@ local weaponModifications = {
 		AIData = {
 			ProjectileName = "HarpySlowBeam",
 			NumProjectiles = 36,
-      ProjectileInterval = 0.0025,
+			ProjectileInterval = 0.0025,
 			ProjectileAngleEvenlySpaced = true,
 		},
 	},
 	HarpyLightningCardinal = {
 		AIData = {
+			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightningTisiphone",
-		}
-	}
+		},
+	},
+	SummonTisiphoneBombingRun = {
+		AIData = {
+			AttackSlotInterval = 0.01,
+			ProjectileName = "HarpyLightningTisiphone",
+		},
+	},
+	SummonTisiphoneFog = {
+		AIData = {
+			ProjectileName = "TisiphoneFog",
+		},
+	},
 }
+
+-- Modifications easier done in a loop
+for _, attackSlot in ipairs(hadesWeaponData.SummonTisiphoneBombingRun.AIData.AttackSlots) do
+	attackSlot.AnchorOffset = attackSlot.AnchorAngleOffset or nil
+	attackSlot.AnchorAngleOffset = nil
+	attackSlot.AnchorOffsetAngle = 0
+end
 
 local renamedWeaponModifications = {}
 
@@ -309,6 +353,26 @@ end
 
 local weaponKeyReplacements = {
 	AIData = {
+		AIAttackDistance = "AttackDistance",
+		AIBufferDistance = "RetreatBufferDistance",
+		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
+		AILineOfSightBuffer = "LoSBuffer",
+		AIMoveWithinRangeTimeout = "MoveWithinRangeTimeout",
+		TargetFriends = "TargetRequiredKillEnemy",
+		AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
+		AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
+		AIRequireUnitLineOfSight = "RequireUnitLoS",
+		AIRequireProjectileLineOfSight = "RequireProjectileLoS",
+		AILineOfSighEndBuffer = "LoSEndBuffer",
+		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
+		AIFireTicksMin = "FireTicksMin",
+		AIFireTicksMax = "FireTicksMax",
+		AIFireTicksCooldown = "FireInterval",
+		StandOffTime = "SurroundRefreshInterval",
+		FireCooldown = "FireInterval",
+	},
+	-- Same as above
+	ShrineAIDataOverwrites = {
 		AIAttackDistance = "AttackDistance",
 		AIBufferDistance = "RetreatBufferDistance",
 		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
