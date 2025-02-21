@@ -16,6 +16,8 @@ local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Pro
 
 -- Projectiles that are defined in a different file and therefore not caught by AddTableKeysSkipDupes()
 local projectilesToRemove = {
+	"1_BaseEnemyMagicProjectile",
+	"1_BaseTrapProjectile",
 	"HadesCastBeam",
 	"HadesCastBeamNoTracking",
 	"LavaPuddleLarge",

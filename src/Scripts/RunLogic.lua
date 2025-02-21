@@ -129,26 +129,6 @@ modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
 				end
 			end
 		end
-
-		if run.WeaponsCache ~= nil then
-			for weaponName in pairs(run.WeaponsCache) do
-				if game.Contains(game.WeaponSets.HeroPrimaryWeapons, weaponName) then
-					game.GameState.LifetimeWeaponStats[weaponName] = game.GameState.LifetimeWeaponStats[weaponName] or {}
-					local stats = game.GameState.LifetimeWeaponStats[weaponName]
-					stats.UseCount = (stats.UseCount or 0) + 1
-					if run.Cleared then
-						stats[clearCountRecordName] = (stats[clearCountRecordName] or 0) + 1
-						stats.ClearCount = (stats.ClearCount or 0) + 1
-						if run.GameplayTime < (stats[fastestTimeRecordName] or 999999) then
-							stats[fastestTimeRecordName] = run.GameplayTime
-						end
-						if run.ShrinePointsCache > (stats[shrinePointsRecordName] or 0) then
-							stats[shrinePointsRecordName] = run.ShrinePointsCache
-						end
-					end
-				end
-			end
-		end
 	else
 		base(run)
 	end
