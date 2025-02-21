@@ -1,11 +1,9 @@
 -- Adds basic RoomData from Hades to Hades II
 
-local roomDataBase = mod.LoadHadesRoomData("RoomData.lua").Base
-
 local roomData = {
-	RandomizeTrapTypes = roomDataBase.RandomizeTrapTypes,
-	RandomizeTrapTypesAll = roomDataBase.RandomizeTrapTypesAll,
-	AllPrePlacedTraps = roomDataBase.AllPrePlacedTraps,
+	RandomizeTrapTypes = mod.RoomData.Base.RandomizeTrapTypes,
+	RandomizeTrapTypesAll = mod.RoomData.Base.RandomizeTrapTypesAll,
+	AllPrePlacedTraps = mod.RoomData.Base.AllPrePlacedTraps,
 }
 
 local roomReplacements = {}

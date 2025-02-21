@@ -314,6 +314,14 @@ local enemyModifications = {
 		MapTransitionReactionVoiceLines = mod.NilValue,
 	},
 
+	-- ASPHODEL
+	-- Need to manually modify, as the enemy is DeepCopyTable'd above
+	BloodlessGrenadierElite = {
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+	},
+
 	-- These enemies have not been implemented yet
 	Chariot = {
 		LargeUnitCap = mod.NilValue,

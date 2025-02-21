@@ -36,6 +36,9 @@ function mod.Uninstall()
 	if config.uninstall == "I AM SURE - UNINSTALL" then
 		mod.DebugPrint(
 			"Uninstalling mod - forced uninstallation! Savegames may corrupt. Re-install the mod to try and restore them.", 2)
+		-- Empty the list of cached runs - as the user thinks it is wrong
+		local defaultCachedRuns = { ActiveModdedRuns = {} }
+		sjson.encode_file(mod.CachedRunsFilePath, defaultCachedRuns)
 	elseif not config.firstTimeSetup then
 		for saveFileIndex, isActive in pairs(cachedRuns.ActiveModdedRuns) do
 			if isActive then

@@ -3,7 +3,7 @@
 local hadesWeaponsFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Weapons\\EnemyWeapons.sjson")
 local hadesWeaponsTable = sjson.decode_file(hadesWeaponsFile)
 
-local hadesTwoWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\Weapons\\EnemyWeapons.sjson")
+local hadesTwoWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\Weapons\\Weapons.sjson")
 local hadesTwoWeaponsTable = sjson.decode_file(hadesTwoWeaponsFile)
 
 -- Rename duplicate enemy names using mod.EnemyWeaponMappings

@@ -12,12 +12,42 @@ end
 local hadesProjectilesFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Projectiles\\EnemyProjectiles.sjson")
 local hadesProjectilesTable = sjson.decode_file(hadesProjectilesFile)
 
-local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Projectiles\\EnemyProjectiles.sjson")
+local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Projectiles\\PlayerProjectiles.sjson")
 
 -- Projectiles that are defined in a different file and therefore not caught by AddTableKeysSkipDupes()
 local projectilesToRemove = {
 	"HadesCastBeam",
 	"HadesCastBeamNoTracking",
+	"LavaPuddleLarge",
+	"BaseCollisionWeapon",
+	"LavaSplash",
+	"BloodlessMelee",
+	"BloodlessMeleeBerserker",
+	"BloodlessMeleeBerserker2",
+	"BloodlessGrenadierRanged",
+	"BloodlessGrenadierRangedElite",
+	"BloodlessGrenadierCluster",
+	"BloodlessGrenadierDrop",
+	"BloodlessPitch",
+	"BloodlessPitchCurve",
+	"BloodlessPitcherDeathLob",
+	"BloodlessSelfDestructDeathLob",
+	"BloodlessWaveFistWeapon",
+	"DevotionZeus",
+	"DevotionPoseidon",
+	"DevotionAphrodite",
+	"DevotionAres",
+	"DevotionDemeter",
+	"SmokeTrapWeapon",
+	"ExplosiveBlast",
+	"BlastCubeExplosion",
+	"BloodlessGrenadierDive",
+	"EliteVacuum",
+	"LavaTileWeapon",
+	"LavaTileTriangle01Weapon",
+	"LavaTileTriangle02Weapon",
+	"EnemyBombs",
+	"LightningAura",
 }
 
 -- Modifications/overrides to the Hades enemy projectiles
