@@ -442,7 +442,7 @@ function game.CreateBossRageMeter(boss)
 
 	boss.RageBarFill = "EnemyHealthBarFillBoss"
 	SetAnimation({ Name = "EnemyHealthBarFillBoss", DestinationId = game.ScreenAnchors.BossRageFill })
-	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 1, DestinationId = screenId })
+	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 1, DestinationId = game.screenId })
 	SetAlpha({ Id = game.ScreenAnchors.BossRageFill, Fraction = 0.01, Duration = 0.0 })
 	SetAlpha({ Id = game.ScreenAnchors.BossRageFill, Fraction = 1, Duration = 2.0 })
 end

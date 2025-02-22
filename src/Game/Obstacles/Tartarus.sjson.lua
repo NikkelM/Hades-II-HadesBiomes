@@ -35,6 +35,7 @@ local hadesTwoObstacleModifications = {
 	TartarusPillarBase04 = {
 		InheritFrom = "1_BaseVulnerableObstacle",
 	},
+	-- Obstacles that shouldn't be passable
 	TartarusPillarBase08b = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
