@@ -383,13 +383,13 @@ local enemyModifications = {
 				Args = {
 					RandomizeSets = {
 						{
-							Animation = { "BreakableIdle1" },
+							Animation = { "ModsNikkelMHadesBiomesBreakableIdle1" },
 						},
 						{
-							Animation = { "BreakableIdle2" },
+							Animation = { "ModsNikkelMHadesBiomesBreakableIdle2" },
 						},
 						{
-							Animation = { "BreakableIdle3" },
+							Animation = { "ModsNikkelMHadesBiomesBreakableIdle3" },
 						},
 					},
 				},

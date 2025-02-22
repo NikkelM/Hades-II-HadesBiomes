@@ -12,7 +12,7 @@ local newData = {
 	-- 	DisplayName = "{I} {#UseTextPreReqFormat}Descend into Nightmare",
 	-- },
 	{
-		Id = "ModdedLocation_Hades_Tartarus",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus",
 		DisplayName = "타르타로스 (악몽)",
 	},
 	{

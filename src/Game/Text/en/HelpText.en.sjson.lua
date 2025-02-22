@@ -14,7 +14,7 @@ local newData = {
 		OverwriteLocalization = true
 	},
 	{
-		Id = "ModdedLocation_Hades_Tartarus",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus",
 		DisplayName = "TARTARUS (Nightmare)",
 	},
 	{

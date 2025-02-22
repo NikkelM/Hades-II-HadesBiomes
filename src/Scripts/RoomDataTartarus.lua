@@ -7,6 +7,8 @@ local roomReplacements = {
 		WellShopRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.WellShopRequirements),
 		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
 		AnomalyDoorChance = 0.0,
+		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
+		BreakableOptions = { "ModsNikkelMHadesBiomesBreakableIdle1", "ModsNikkelMHadesBiomesBreakableIdle2", "ModsNikkelMHadesBiomesBreakableIdle3" },
 	},
 
 	-- OPENING ROOMS
@@ -34,7 +36,7 @@ local roomModifications = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "TartarusModsNikkelMHadesBiomes" },
 
-		SaveProfileLocationText = "ModdedLocation_Hades_Tartarus",
+		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeTartarus" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeTartarus" },
