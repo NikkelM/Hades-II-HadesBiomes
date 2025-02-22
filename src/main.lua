@@ -212,6 +212,7 @@ local function on_ready()
 		import "Scripts/RoomEvents.lua"
 		import "Scripts/RoomLogic.lua"
 		import "Scripts/RunLogic.lua"
+		import "Scripts/UIData.lua"
 		import "Scripts/WeaponSets.lua"
 	else
 		error(

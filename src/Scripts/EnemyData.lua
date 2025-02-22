@@ -68,6 +68,7 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 			enemyData.NameplateDescriptionColor = { 145, 45, 90, 255 }
 		end
 
+		-- Dialogues playing before boss fights
 		local bossPresentationProperties = {
 			"BossPresentationSuperPriorityIntroTextLineSets",
 			"BossPresentationPriorityIntroTextLineSets",
@@ -80,6 +81,13 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 				for key, textLineSet in pairs(enemyData[property]) do
 					textLineSet.Name = key
 				end
+			end
+		end
+
+		-- AIStage functionality has been changed, so we need to call a modded handler
+		if enemyData.AIStages then
+			for _, aiStage in ipairs(enemyData.AIStages) do
+				aiStage.ThreadedEvents = { { FunctionName = "NikkelMHadesBiomesBossAIStageHandler", } }
 			end
 		end
 

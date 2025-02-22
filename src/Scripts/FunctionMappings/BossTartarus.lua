@@ -407,14 +407,20 @@ function game.HandleHarpyRage(enemy, currentRun)
 end
 
 function game.CreateBossRageMeter(boss)
-	game.ScreenAnchors.BossRageTitle = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 130, Scale = 1.0 })
+	game.ScreenAnchors.BossRageTitle = CreateScreenObstacle({
+		Name = "BlankObstacle",
+		Group = "Combat_UI",
+		X = ScreenCenterX,
+		Y = 130,
+		Scale = 1.0
+	})
 	game.ScreenAnchors.BossRageBack = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 150, Scale = 0.5 })
 	game.ScreenAnchors.BossRageFill = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 152, Scale = 0.5 })
 
 	CreateTextBox({
 		Id = game.ScreenAnchors.BossRageTitle,
 		Text = "RageMeter",
-		Font = "AlegreyaSansSCBold",
+		Font = "LatoBold",
 		FontSize = 14,
 		ShadowRed = 0,
 		ShadowBlue = 0,
@@ -444,8 +450,55 @@ end
 function game.EnrageHarpyPermanent(enemy, currentRun)
 	enemy.Enraged = true
 	enemy.PermanentEnraged = true
-	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 0.0, DestinationId = game.ScreenAnchors.BossRageFill })
+	SetAnimationFrameTarget({
+		Name = "EnemyHealthBarFillBoss",
+		Fraction = 0.0,
+		DestinationId = game.ScreenAnchors.BossRageFill
+	})
 	EnrageUnit(enemy)
+end
+
+function game.HarpyEnragedPresentation(enemy, currentRun)
+	local screenId = ScreenAnchors.BossRageFill
+
+	if enemy.PermanentEnraged then
+		game.thread(game.InCombatText, enemy.ObjectId, "Combat_PermanentEnraged", 1)
+	else
+		game.thread(game.InCombatText, enemy.ObjectId, "Combat_Enraged", 1)
+	end
+
+	AdjustColorGrading({ Name = "AlectoRage", Duration = 0.5 })
+	ShakeScreen({ Speed = 600, Distance = 6, FalloffSpeed = 2000, Duration = 1.0 })
+	Flash({ Id = screenId, Speed = 2.0, MinFraction = 0, MaxFraction = 0.8, Color = Color.Purple })
+
+	if enemy.RageFullVoiceLines ~= nil then
+		game.thread(game.PlayVoiceLines, enemy.RageFullVoiceLines, nil, enemy)
+	end
+	if enemy.RageFullSound ~= nil then
+		PlaySound({ Name = enemy.RageFullSound })
+	end
+
+	if not enemy.PermanentEnraged then
+		game.thread(game.DrainHarpyRageMeter, enemy, game.CurrentRun, enemy.EnragedDuration)
+	end
+end
+
+function game.DrainHarpyRageMeter(enemy, currentRun, duration)
+	local tickDuration = duration * 0.01
+
+	local fraction = 0.00
+	for tick = 1, 100 do
+		if enemy.PermanentEnraged then
+			return
+		end
+		fraction = fraction + 0.01
+		SetAnimationFrameTarget({
+			Name = "EnemyHealthBarFillBoss",
+			Fraction = fraction,
+			DestinationId = ScreenAnchors.BossRageFill
+		})
+		game.wait(tickDuration, RoomThreadName)
+	end
 end
 
 function game.Harpy3MapTransition(enemy, currentRun)
