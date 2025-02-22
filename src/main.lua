@@ -126,6 +126,7 @@ local function on_ready()
 		import "Game/Animations/EnemyAnimations.sjson.lua"
 		import "Game/Units/Enemies.sjson.lua"
 		import "Game/Weapons/EnemyWeapons.sjson.lua"
+		import "Game/Projectiles/Projectiles.sjson.lua"
 		import "Game/Projectiles/EnemyProjectiles.sjson.lua"
 		import "Game/Obstacles/Tartarus.sjson.lua"
 		import "Game/Obstacles/Chaos.sjson.lua"
@@ -178,9 +179,13 @@ local function on_ready()
 
 		-- Loads Room data
 		import "Scripts/RoomSets.lua"
+		import "Scripts/HadesRoomData.lua"
 		import "Scripts/RoomData.lua"
+		import "Scripts/HadesRoomDataTartarus.lua"
 		import "Scripts/RoomDataTartarus.lua"
 
+		-- Loads Weapon data
+		import "Scripts/HadesWeaponData.lua"
 		import "Scripts/WeaponData.lua"
 
 		-- Applies modifications to the rooms, such as LegalEncounterDictionary
@@ -207,6 +212,7 @@ local function on_ready()
 		import "Scripts/RoomEvents.lua"
 		import "Scripts/RoomLogic.lua"
 		import "Scripts/RunLogic.lua"
+		import "Scripts/UIData.lua"
 		import "Scripts/WeaponSets.lua"
 	else
 		error(

@@ -1,30 +1,3 @@
--- Loads WeaponData from the Hades file
-local function LoadHadesWeaponData()
-	local originalWeaponData = game.DeepCopyTable(game.WeaponData)
-	local originalProjectileData = game.DeepCopyTable(game.ProjectileData)
-	local originalEffectData = game.DeepCopyTable(game.EffectData)
-	local originalWeaponEquipOrderData = game.DeepCopyTable(game.GameData.WeaponEquipOrder)
-	local originalMissingPackages = game.DeepCopyTable(game.GameData.MissingPackages)
-
-	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts\\WeaponData.lua")
-	local chunk, err = loadfile(pathName)
-	if chunk then
-		chunk()
-		local hadesWeaponData = WeaponData
-		local hadesProjectileData = ProjectileData
-
-		game.WeaponData = originalWeaponData
-		game.ProjectileData = originalProjectileData
-		game.EffectData = originalEffectData
-		game.GameData.WeaponEquipOrder = originalWeaponEquipOrderData
-		game.GameData.MissingPackages = originalMissingPackages
-
-		return hadesWeaponData, hadesProjectileData
-	else
-		mod.DebugPrint("Error loading WeaponData: " .. err, 1)
-	end
-end
-
 -- Applies modifications to base weapon objects, and then adds the new weapon objects to the game
 local function applyModificationsAndInheritWeaponData(base, modifications, weaponKeyReplacements)
 	-- Apply modifications
@@ -49,16 +22,13 @@ local function applyModificationsAndInheritWeaponData(base, modifications, weapo
 	game.OverwriteTableKeys(game.WeaponData, base)
 end
 
--- Adds weapons from Hades to Hades II
-local hadesWeaponData, hadesProjectileData = LoadHadesWeaponData()
-
 -- Some weapons exist in both Hades and Hades II, so we need to rename the Hades weapons
 for oldName, newName in pairs(mod.EnemyWeaponMappings) do
-	hadesWeaponData[newName] = hadesWeaponData[oldName]
-	hadesWeaponData[oldName] = nil
+	mod.HadesWeaponData[newName] = mod.HadesWeaponData[oldName]
+	mod.HadesWeaponData[oldName] = nil
 	-- Update the name in dependent fields
 	-- Inherit properties from this name
-	mod.UpdateField(hadesWeaponData, oldName, newName, { "InheritFrom" }, "WeaponData")
+	mod.UpdateField(mod.HadesWeaponData, oldName, newName, { "InheritFrom" }, "WeaponData")
 end
 
 -- Modify or add weapons
@@ -332,7 +302,7 @@ local weaponModifications = {
 }
 
 -- Modifications easier done in a loop
-for _, attackSlot in ipairs(hadesWeaponData.SummonTisiphoneBombingRun.AIData.AttackSlots) do
+for _, attackSlot in ipairs(mod.HadesWeaponData.SummonTisiphoneBombingRun.AIData.AttackSlots) do
 	attackSlot.AnchorOffset = attackSlot.AnchorAngleOffset or nil
 	attackSlot.AnchorAngleOffset = nil
 	attackSlot.AnchorOffsetAngle = 0
@@ -393,7 +363,7 @@ local weaponKeyReplacements = {
 	},
 }
 
-applyModificationsAndInheritWeaponData(hadesWeaponData, weaponModifications, weaponKeyReplacements)
+applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponKeyReplacements)
 
 -- Projectiles
 local function applyModificationsAndInheritProjectileData(base, modifications, projectileKeyReplacements)
@@ -435,4 +405,4 @@ local projectileKeyReplacements = {
 	CancelVulnerabilitySpark = "CancelHitSpark",
 }
 
-applyModificationsAndInheritProjectileData(hadesProjectileData, projectileModifications, projectileKeyReplacements)
+applyModificationsAndInheritProjectileData(mod.HadesProjectileData, projectileModifications, projectileKeyReplacements)

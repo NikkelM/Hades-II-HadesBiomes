@@ -178,4 +178,7 @@ mod.HadesPortraitAnimationDuplicates = {
 	["Codex_Portrait_SurfaceBiome"] = true,
 	["Codex_Portrait_BloodlessBerserker"] = true,
 	["Codex_Portrait_CrawlerMiniBoss"] = true,
+	["Portrait_Ares_Default_01"] = true,
+	["Portrait_Ares_Default_01_Exit"] = true,
+	["Codex_Portrait_Ares"] = true,
 }

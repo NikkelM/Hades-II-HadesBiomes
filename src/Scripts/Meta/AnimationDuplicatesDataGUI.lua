@@ -620,4 +620,10 @@ mod.HadesGUIAnimationDuplicates = {
 	["ShrinePointRefundStreak2-Reverse"] = true,
 	["ShrinePointRefundStreak3-Reverse"] = true,
 	["ShrinePointRefundStreak4-Reverse"] = true,
+	["BoonInfoSymbolAresIcon"] = true,
+	["BoonSymbolAres"] = true,
+	["BoonSymbolArtemis"] = true,
+	["BoonSymbolAthena"] = true,
+	["BoonSymbolDionysus"] = true,
+	["MusicPlayerBackground"] = true,
 }

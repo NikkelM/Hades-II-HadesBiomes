@@ -1,7 +1,5 @@
 -- Adds RoomData for Tartarus from Hades to Hades II
 
-local roomSetDataTartarus = mod.LoadHadesRoomData("RoomDataTartarus.lua").Tartarus
-
 local roomReplacements = {
 	-- GENERIC
 	BaseTartarus = {
@@ -190,4 +188,4 @@ game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
 	LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "GUIModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits" },
 }
 
-mod.ApplyModificationsAndInheritRoomData(roomSetDataTartarus, roomModifications, roomReplacements, "Tartarus")
+mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Tartarus, roomModifications, roomReplacements, "Tartarus")
