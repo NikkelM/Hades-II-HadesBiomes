@@ -5,6 +5,7 @@ modutil.mod.Path.Wrap("IsGameStateEligible", function(base, source, requirements
 	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
 		isEligible = game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
 		if not isEligible then
+			-- TODO: Debugging only
 			mod.DebugPrint(requirements)
 			print("\n\n")
 		end

@@ -91,6 +91,12 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 			end
 		end
 
+		-- For Harpy Extreme Measures
+		if enemyData.AdditionalEnemySetupFunctionName then
+			enemyData.SpawnEvents = { { FunctionName = enemyData.AdditionalEnemySetupFunctionName, } }
+			enemyData.AdditionalEnemySetupFunctionName = nil
+		end
+
 		-- Increase health and armour for slightly increased difficulty
 		if enemyData.MaxHealth then
 			enemyData.MaxHealth = enemyData.MaxHealth * 1.15

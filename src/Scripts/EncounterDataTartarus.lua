@@ -36,13 +36,8 @@ mod.UpdateField(encounterDataTartarus, "Challenge", "TimeChallenge", { "InheritF
 local encounterReplacements = {
 	ModsNikkelMHadesBiomesGenerated = {
 		-- The "Generated" encounter in Hades II uses this to place enemies, Hades doesn't have this
-		StartRoomUnthreadedEvents = {
-			{
-				FunctionName = "HandleEncounterPreSpawns"
-			}
-		},
-		PreSpawnSpawnOverrides =
-		{
+		StartRoomUnthreadedEvents = { { FunctionName = "HandleEncounterPreSpawns", }, },
+		PreSpawnSpawnOverrides = {
 			WakeUpDelay = 0.3,
 			AggroReactionTimeMin = 0.15,
 			AggroReactionTimeMax = 0.45,

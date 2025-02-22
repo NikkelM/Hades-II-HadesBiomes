@@ -193,6 +193,7 @@ function CopyHadesPortraitAnimations()
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename)
 	local modifications = {
 		-- Replacing Zagreus solo portraits with ones where Melinoe is also present as a ghostly version behind him
+		-- Trying to align so the player can be seen behind the portrait
 		Portrait_Zag_Default_01 = {
 			FilePath = "Portraits\\MelAndZagDefault.png",
 			OffsetY = 32,
@@ -216,12 +217,12 @@ function CopyHadesPortraitAnimations()
 		Portrait_Zag_Defiant_01 = {
 			FilePath = "Portraits\\MelAndZagDefiant.png",
 			OffsetY = 32,
-			OffsetX = -75,
+			OffsetX = 0,
 		},
 		Portrait_Zag_Defiant_01_Exit = {
 			FilePath = "Portraits\\MelAndZagDefiant.png",
 			OffsetY = 32,
-			OffsetX = -75,
+			OffsetX = 0,
 		},
 		Portrait_Zag_Empathetic_01 = {
 			FilePath = "Portraits\\MelAndZagEmpathetic.png",

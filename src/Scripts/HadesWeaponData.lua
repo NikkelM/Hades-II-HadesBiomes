@@ -4646,7 +4646,8 @@ mod.HadesWeaponData = {
 			FireAnimation = "Fury3WhipWhirlFire",
 
 			FireDuration = 0.1,
-			PreAttackDuration = 0.65,
+			PreAttackDuration = 0.75,
+			PreAttackEndDuration = 0.4,
 			PreAttackEndShake = true,
 			PostAttackDuration = 0.3,
 			AIAttackDistance = 200,
@@ -4701,8 +4702,9 @@ mod.HadesWeaponData = {
 			FireAnimation = "Fury3WhipWhirlFire",
 
 			FireDuration = 0.1,
-			PreAttackDuration = 0.1,
-			PreAttackEndMinWaitTime = 0.1,
+			PreAttackDuration = 0.2,
+			PreAttackEndDuration = 0.2,
+			PreAttackEndMinWaitTime = 0.2,
 			PostAttackDuration = 0.1,
 			PostAttackMinWaitTime = 0.1,
 			-- AIAttackDistance = 9999,
