@@ -9,26 +9,30 @@ rem Laptop
 @REM set OUTPUT_DIR=C:\Users\nikke\OneDrive\Privat\Projects\Hades-II-HadesBiomes\data\Content\Maps\bin
 
 rem Desktop
+set DECOMPILE_OUTPUT=C:\Users\nikke\Downloads
 set HADES_MAPPER=C:\Users\nikke\AppData\Local\Programs\Python\Python39\Scripts\HadesMapper
 set HADES_CONTENT=D:\Program Files (x86)\Steam\steamapps\common\Hades\Content\Win\Maps
 set HADES_TWO_CONTENT=D:\Program Files (x86)\Steam\steamapps\common\Hades II\Content\Maps\bin
-set OUTPUT_DIR=F:\Users\nikke\OneDrive\Privat\Projects\Hades-II-HadesBiomes\data\Content\Maps\bin
+set OUTPUT_DIR_MOD=F:\Users\nikke\OneDrive\Privat\Projects\Hades-II-HadesBiomes\data\Content\Maps\bin
+set OUTPUT_DIR_PLUGINS=C:\Users\nikke\AppData\Roaming\r2modmanPlus-local\HadesII\profiles\Default\ReturnOfModding\plugins_data\NikkelM-Hades_Biomes\Content\Maps\bin
 
 rem Define the list of files to process, separated by spaces
-set FILES=A_PostBoss01
+set FILES=RoomOpening
 
 rem Loop through each file and process it
 (for %%f in (%FILES%) do (
     echo Processing file: %%f
 
     rem Decode the file
-    %HADES_MAPPER% dc -i "%HADES_CONTENT%\%%f" -o "%HADES_CONTENT%\%%f_DECOMPILED"
+    @REM %HADES_MAPPER% dc -i "%HADES_CONTENT%\%%f" -o "%DECOMPILE_OUTPUT%\%%f_DECOMPILED"
 
     rem Decode the file (from Hades II)
-    @REM %HADES_MAPPER% dc -s -i "%HADES_TWO_CONTENT%\%%f" -o "%HADES_TWO_CONTENT%\%%f_DECOMPILED"
+    @REM %HADES_MAPPER% dc -s -i "%HADES_TWO_CONTENT%\%%f" -o "%DECOMPILE_OUTPUT%\%%f_DECOMPILED"
     
-    rem Encode the file in the output directory
-    @REM %HADES_MAPPER% ec -s -i "%HADES_CONTENT%\%%f_DECOMPILED" -o "%OUTPUT_DIR%\%%f"
+    rem Encode the file in the output directories
+    %HADES_MAPPER% ec -s -i "%DECOMPILE_OUTPUT%\%%f_DECOMPILED" -o "%OUTPUT_DIR_MOD%\%%f"
+    %HADES_MAPPER% ec -s -i "%DECOMPILE_OUTPUT%\%%f_DECOMPILED" -o "%OUTPUT_DIR_PLUGINS%\%%f"
+    %HADES_MAPPER% ec -s -i "%DECOMPILE_OUTPUT%\%%f_DECOMPILED" -o "%HADES_TWO_CONTENT%\%%f"
     
     rem Remove the intermediate file
     @REM del "%HADES_CONTENT%\%%f_dc.thing_text"
