@@ -435,6 +435,8 @@ local enemyKeyReplacements = {
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
 	},
+	-- Key is only used for the four breakables
+	ValueOptions = "BreakableValueOptions",
 }
 
 ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
