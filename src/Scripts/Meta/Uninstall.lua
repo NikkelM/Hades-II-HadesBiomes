@@ -1,7 +1,7 @@
-local function removeFiles(fileMappings, basePath, fileType)
-	mod.DebugPrint("Removing " .. fileType .. " files...", 3)
+local function removeFiles(fileMappings, basePath, extension)
+	mod.DebugPrint("Removing " .. extension .. " files...", 3)
 	for src, dest in pairs(fileMappings) do
-		local destPath = rom.path.combine(rom.paths.Content(), basePath .. dest)
+		local destPath = rom.path.combine(rom.paths.Content(), basePath .. dest .. extension)
 		if rom.path.exists(destPath) then
 			mod.DebugPrint("Removing file: " .. destPath, 4)
 			local success, err = os.remove(destPath)
@@ -12,10 +12,11 @@ local function removeFiles(fileMappings, basePath, fileType)
 	end
 end
 
-local function removeFile(filePath, fileType)
-	if rom.path.exists(filePath) then
-		mod.DebugPrint("Removing file: " .. filePath, 4)
-		local success, err = os.remove(filePath)
+local function removeFile(filePath, extension)
+	local destPath = filePath .. extension
+	if rom.path.exists(destPath) then
+		mod.DebugPrint("Removing file: " .. destPath, 4)
+		local success, err = os.remove(destPath)
 		if not success then
 			mod.DebugPrint("Error removing file: " .. err, 1)
 		end
@@ -25,7 +26,8 @@ end
 local function removeFilesByNames(fileNames, basePath, extension)
 	mod.DebugPrint("Removing " .. extension .. " files...", 3)
 	for _, name in ipairs(fileNames) do
-		local destPath = rom.path.combine(rom.paths.Content(), basePath .. name .. extension)
+		-- Extension is set again in removeFile
+		local destPath = rom.path.combine(rom.paths.Content(), basePath .. name)
 		removeFile(destPath, extension)
 	end
 end
@@ -53,21 +55,27 @@ function mod.Uninstall()
 	mod.DebugPrint("Uninstalling mod - removing files added by the mod", 3)
 
 	removeFiles(AudioFileMappings, "Audio\\Desktop\\", ".bank")
-	removeFiles(PackageFileMappings, "Packages\\", ".pkg")
+	removeFiles(PackageFileMappings, "Packages\\1080p\\", ".pkg")
+	removeFiles(PackageFileMappings, "Packages\\1080p\\", ".pkg_manifest")
+	removeFiles(PackageFileMappings, "Packages\\720p\\", ".pkg")
+	removeFiles(PackageFileMappings, "Packages\\720p\\", ".pkg_manifest")
 	removeFilesByNames(CustomPackageFileNames, "Packages\\1080p\\", ".pkg")
 	removeFilesByNames(CustomPackageFileNames, "Packages\\1080p\\", ".pkg_manifest")
 	removeFilesByNames(CustomPackageFileNames, "Packages\\720p\\", ".pkg")
 	removeFilesByNames(CustomPackageFileNames, "Packages\\720p\\", ".pkg_manifest")
-	removeFiles(BikFileMappings, "Movies\\", ".bik")
+	removeFiles(BikFileMappings, "Movies\\1080p\\", ".bik")
+	removeFiles(BikFileMappings, "Movies\\1080p\\", ".bik_atlas")
+	removeFiles(BikFileMappings, "Movies\\720p\\", ".bik")
+	removeFiles(BikFileMappings, "Movies\\720p\\", ".bik_atlas")
 	removeFiles(SjsonFileMappings, "Game\\", ".sjson")
 
-	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename), ".sjson")
-	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename), ".sjson")
-	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename), ".sjson")
-	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesCharacterAnimationsNPCsDestinationFilename), ".sjson")
+	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename), "")
+	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename), "")
+	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename), "")
+	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesCharacterAnimationsNPCsDestinationFilename), "")
 
-	removeFilesByNames(MapFileNames, "Maps\\", ".map_text")
-	removeFilesByNames(MapFileNames, "Maps\\bin\\", ".thing_bin")
+	removeFiles(MapFileMappings, "Maps\\", ".map_text")
+	removeFiles(MapFileMappings, "Maps\\bin\\", ".thing_bin")
 
 	removeFilesByNames(VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".txt")
 	removeFilesByNames(VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb")
@@ -75,7 +83,7 @@ function mod.Uninstall()
 	mod.DebugPrint("Removing help text files...", 3)
 	for _, language in ipairs(HelpTextLanguages) do
 		local helpTextFile = rom.path.combine(rom.paths.Content(),
-			'Game\\Text\\' .. language .. '\\HelpTextHades.' .. language .. '.sjson')
+			"Game\\Text\\" .. language .. "\\HelpTextHades." .. language)
 		removeFile(helpTextFile, ".sjson")
 	end
 

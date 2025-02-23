@@ -74,9 +74,9 @@ local function checkFileExistsWithRetry(filePath, retries, delay)
 	return false
 end
 
-local function checkFilesExist(fileMappings, basePath)
+local function checkFilesExist(fileMappings, basePath, extension)
 	for src, dest in pairs(fileMappings) do
-		local destPath = rom.path.combine(rom.paths.Content(), basePath .. dest)
+		local destPath = rom.path.combine(rom.paths.Content(), basePath .. dest .. extension)
 		if not checkFileExistsWithRetry(destPath, 3, 1) then
 			mod.DebugPrint("Missing file: " .. destPath, 1)
 			return false
@@ -97,12 +97,19 @@ local function checkFilesExistByNames(fileNames, basePath, extension)
 end
 
 function mod.CheckRequiredFiles()
-	if not checkFilesExist(AudioFileMappings, "Audio\\Desktop\\") then return false end
-	if not checkFilesExist(PackageFileMappings, "Packages\\") then return false end
-	if not checkFilesExist(BikFileMappings, "Movies\\") then return false end
-	if not checkFilesExist(SjsonFileMappings, "Game\\") then return false end
-	if not checkFilesExistByNames(MapFileNames, "Maps\\", ".map_text") then return false end
-	if not checkFilesExistByNames(MapFileNames, "Maps\\bin\\", ".thing_bin") then return false end
+	if not checkFilesExist(AudioFileMappings, "Audio\\Desktop\\", ".bank") then return false end
+	if not checkFilesExist(PackageFileMappings, "Packages\\1080p\\", ".pkg") then return false end
+	if not checkFilesExist(PackageFileMappings, "Packages\\1080p\\", ".pkg_manifest") then return false end
+	if not checkFilesExist(PackageFileMappings, "Packages\\720p\\", ".pkg") then return false end
+	if not checkFilesExist(PackageFileMappings, "Packages\\720p\\", ".pkg_manifest") then return false end
+	if not checkFilesExist(BikFileMappings, "Movies\\1080p\\", ".bik") then return false end
+	if not checkFilesExist(BikFileMappings, "Movies\\1080p\\", ".bik_atlas") then return false end
+	if not checkFilesExist(BikFileMappings, "Movies\\720p\\", ".bik") then return false end
+	if not checkFilesExist(BikFileMappings, "Movies\\720p\\", ".bik_atlas") then return false end
+	if not checkFilesExist(SjsonFileMappings, "Game\\", ".sjson") then return false end
+	if not checkFilesExistByNames(MapFileMappings, "Maps\\", ".map_text") then return false end
+	if not checkFilesExistByNames(MapFileMappings, "Maps\\bin\\1080p\\", ".thing_bin") then return false end
+	if not checkFilesExistByNames(MapFileMappings, "Maps\\bin\\720p\\", ".thing_bin") then return false end
 
 	for _, language in ipairs(HelpTextLanguages) do
 		local helpTextFile = rom.path.combine(rom.paths.Content(),
