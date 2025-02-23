@@ -16,6 +16,10 @@ local newData = {
 		DisplayName = "ТАРТАР (Кошмар)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DisplayName = "АСФОДЕЛЬ (Кошмар)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Загрей",
 		Description = "Принц Подземного мира",

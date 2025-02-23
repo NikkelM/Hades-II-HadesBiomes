@@ -178,6 +178,7 @@ local function on_ready()
 		-- Do this before loading the room data, as the rooms need the legal encounters defined in here
 		import "Scripts/EncounterSets.lua"
 		import "Scripts/EncounterDataTartarus.lua"
+		import "Scripts/EncounterDataAsphodel.lua"
 
 		-- Loads Room data
 		import "Scripts/RoomSets.lua"
@@ -185,6 +186,8 @@ local function on_ready()
 		import "Scripts/RoomData.lua"
 		import "Scripts/HadesRoomDataTartarus.lua"
 		import "Scripts/RoomDataTartarus.lua"
+		import "Scripts/HadesRoomDataAsphodel.lua"
+		import "Scripts/RoomDataAsphodel.lua"
 
 		-- Loads Weapon data
 		import "Scripts/HadesWeaponData.lua"
@@ -209,12 +212,12 @@ local function on_ready()
 		import "Scripts/DeathLoopData.lua"
 		import "Scripts/EnemyAILogic.lua"
 		import "Scripts/HeroData.lua"
-		import "Scripts/NPCData.lua"
 		import "Scripts/ObstacleData.lua"
 		import "Scripts/ProjectileData.lua"
 		import "Scripts/RewardPresentation.lua"
 		import "Scripts/RoomEvents.lua"
 		import "Scripts/RoomLogic.lua"
+		import "Scripts/RoomPresentation.lua"
 		import "Scripts/RunLogic.lua"
 		import "Scripts/UIData.lua"
 		import "Scripts/WeaponSets.lua"

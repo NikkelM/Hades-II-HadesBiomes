@@ -16,6 +16,10 @@ local newData = {
 		DisplayName = "TARTARE (Cauchemar)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DisplayName = "ASPHODÈLE (Cauchemar)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Zagreus",
 		Description = "Prince des Enfers",

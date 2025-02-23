@@ -14,8 +14,14 @@ end)
 modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	base(currentRoom)
 
-	-- TODO: Add additional biomes
-	if currentRoom.RoomSetName == "Tartarus" then
+	local validRoomSets = {
+		["Tartarus"] = true,
+		["Asphodel"] = true,
+		["Elysium"] = true,
+		["Styx"] = true,
+	}
+
+	if validRoomSets[currentRoom.RoomSetName] then
 		-- Some packages introduce artifacts
 		UnloadPackages({ Name = "DeathArea" })
 		UnloadPackages({ Name = "Chaos" })

@@ -18,6 +18,10 @@ local newData = {
 		DisplayName = "TARTARUS (Nightmare)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DisplayName = "ASPHODEL (Nightmare)",
+	},
+	{
 		-- Almost all textlines use CharProtag in Hades
 		Id = "CharProtag",
 		DisplayName = "Zagreus",
