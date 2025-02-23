@@ -4,8 +4,12 @@ game.ObstacleData.TartarusDoor03b.UnlockedAnimation = "DoorLocked_MetaReward"
 
 -- Rubble that falls when hitting destructible pillars
 game.ObstacleData.TartarusRubble02 = game.DeepCopyTable(game.ObstacleData.CWTartarusRubble01)
+game.ObstacleData.TartarusRubble02.OnTouchdown.ProjectileName = "ModsNikkelMHadesBiomesRubbleFall"
 game.ObstacleData.TartarusRubble02b = game.DeepCopyTable(game.ObstacleData.CWTartarusRubble01)
+game.ObstacleData.TartarusRubble02b.OnTouchdown.ProjectileName = "ModsNikkelMHadesBiomesRubbleFall"
 game.ObstacleData.TartarusRubble02c = game.DeepCopyTable(game.ObstacleData.CWTartarusRubble01)
+game.ObstacleData.TartarusRubble02c.OnTouchdown.ProjectileName = "ModsNikkelMHadesBiomesRubbleFall"
+
 game.ObstacleData.TartarusHalfPillarBase04 = {
 	Material = "Stone",
 	OnHitShake = { Distance = 3, Speed = 300, Duration = 0.15 },

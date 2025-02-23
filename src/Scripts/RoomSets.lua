@@ -45,6 +45,7 @@ local newRoomSets = {
 		"A_Combat21",
 		"A_Combat24",
 
+		-- Sisyphus NPC cannot be activated, ID is not found
 		-- "A_Story01",
 	},
 }
