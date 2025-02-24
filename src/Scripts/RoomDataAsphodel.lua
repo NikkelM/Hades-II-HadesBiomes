@@ -23,13 +23,12 @@ local roomReplacements = {
 	-- },
 
 	-- -- SHOPS
-	-- A_Shop01 = {
-	-- 	Binks = mod.NilValue,
-	-- },
-	-- A_PreBoss01 = {
-	-- 	LinkedRooms = { "A_Boss01", "A_Boss02", "A_Boss03", },
-	-- 	Binks = mod.NilValue,
-	-- },
+	X_Shop01 = {
+		Binks = mod.NilValue,
+	},
+	X_PreBoss01 = {
+		Binks = mod.NilValue,
+	},
 }
 
 local roomModifications = {
@@ -56,59 +55,22 @@ local roomModifications = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
 		},
-		
 	},
-	-- RoomOpening = {
-	-- 	InheritFrom = { "BaseTartarus", "BiomeStartRoom", },
-	-- 	LegalEncounters = { "OpeningGenerated" },
-	-- 	EntranceFunctionName = "RoomEntranceMaterialize",
-	-- 	EntranceFunctionArgs = { HeroGoalAngle = 335 },
-	-- 	ThreadedEvents = {
-	-- 		-- This will work with roomSetDataTartarus.RoomOpening.ThreadedEvents[3].Args.SpawnTypes = { "TartarusGhost01" }, but has the problem of spawning all Ghosts on the same ID
-	-- 		[3] = mod.NilValue
-	-- 	},
-	-- 	StartUnthreadedEvents = {
-	-- 		-- Don't start the demo presentation mode
-	-- 		[1] = mod.NilValue,
-	-- 		-- Don't play the standard music event, it won't be able to get changed later
-	-- 		[3] = mod.NilValue,
-	-- 	},
-	-- 	ForcedRewards = mod.NilValue,
-	-- 	IneligibleRewards = game.RewardSets.OpeningRoomBans,
-	-- 	MaxAppearancesThisBiome = 1,
-	-- 	BlockRunProgressUI = true,
-	-- 	StartThreadedEvents =
-	-- 	{
-	-- 		{ FunctionName = "CheckBiomeStateStart" },
-	-- 		{ FunctionName = "ShadeMercManager",    Args = { StartingCountMin = 3, StartingCountMax = 12, ObjectNames = { "ShadeMerc" }, MaxActive = 12 } },
-	-- 	},
-	-- 	UnthreadedEvents = {
-	-- 		[1] = {
-	-- 			-- Requires AthenaFirstPickup voiceline, which is not implemented
-	-- 			GameStateRequirements = mod.NilValue
-	-- 		}
-	-- 	}
-	-- },
 
 	-- SHOPS
-	-- A_Shop01 = {
-	-- 	ThreadedEvents = {
-	-- 		-- To get PatrolPath working, see RoomOpening
-	-- 		[1] = mod.NilValue,
-	-- 		[2] = mod.NilValue
-	-- 	},
-	-- 	StoreDataName = "WorldShop",
-	-- 	StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
-	-- 	FamiliarsPreferSpawnPointMovement = true,
-	-- 	FrogFamiliarMaxLeapDistance = 800,
-	-- },
-	-- A_PreBoss01 = {
-	-- 	SkipLastKillPresentation = true,
-	-- 	StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
-	-- 	IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
-	-- 	FamiliarsPreferSpawnPointMovement = true,
-	-- 	FrogFamiliarMaxLeapDistance = 800,
-	-- },
+	X_Shop01 = {
+		StoreDataName = "WorldShop",
+		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
+		FamiliarsPreferSpawnPointMovement = true,
+		FrogFamiliarMaxLeapDistance = 800,
+	},
+	X_PreBoss01 = {
+		SkipLastKillPresentation = true,
+		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
+		-- IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
+		FamiliarsPreferSpawnPointMovement = true,
+		FrogFamiliarMaxLeapDistance = 800,
+	},
 
 	-- -- MINIBOSSES
 	-- -- Other miniboss rooms inherit from this
