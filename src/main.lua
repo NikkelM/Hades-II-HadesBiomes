@@ -75,7 +75,6 @@ local function on_ready()
 	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
 
 	-- File handling and other generic functions required at install time
-	import "Scripts/Meta/GameStateRequirements.lua"
 	import "Scripts/Meta/Utils.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataFx.lua"
@@ -214,6 +213,7 @@ local function on_ready()
 		import "Scripts/HeroData.lua"
 		import "Scripts/ObstacleData.lua"
 		import "Scripts/ProjectileData.lua"
+		import "Scripts/RequirementsLogic.lua"
 		import "Scripts/RewardPresentation.lua"
 		import "Scripts/RoomEvents.lua"
 		import "Scripts/RoomLogic.lua"
