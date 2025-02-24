@@ -3,7 +3,9 @@ modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
 	base(run)
 	if run.ModsNikkelMHadesBiomesExitDoors ~= nil then
 		for _, door in ipairs(run.ModsNikkelMHadesBiomesExitDoors) do
-			SetAnimation({ Name = door.LockedAnimation, DestinationId = door.ObjectId })
+			if door.LockedAnimation ~= nil then
+				SetAnimation({ Name = door.LockedAnimation, DestinationId = door.ObjectId })
+			end
 		end
 
 		run.ModsNikkelMHadesBiomesExitDoors = {}

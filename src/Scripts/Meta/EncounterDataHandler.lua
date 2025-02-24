@@ -2,7 +2,11 @@
 
 -- Loads EncounterData from a file in Hades
 -- Note: EnemyData must be loaded first, as there are some references to it in EncounterData!
+mod.CachedHadesEncounterData = nil
 function mod.LoadHadesEncounterData(fileName)
+	if mod.CachedHadesEncounterData then
+		return mod.CachedHadesEncounterData
+	end
 	local originalEncounterData = game.DeepCopyTable(game.EncounterData)
 	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
 	local chunk, err = loadfile(pathName)
@@ -10,9 +14,9 @@ function mod.LoadHadesEncounterData(fileName)
 		chunk()
 		-- No worries if this is marked as undefined, it comes from the loaded file
 		---@diagnostic disable-next-line: undefined-global
-		local hadesEncounterData = EncounterData
+		mod.CachedHadesEncounterData = EncounterData
 		game.EncounterData = originalEncounterData
-		return hadesEncounterData
+		return mod.CachedHadesEncounterData
 	else
 		mod.DebugPrint("Error loading encounterData: " .. err, 1)
 	end

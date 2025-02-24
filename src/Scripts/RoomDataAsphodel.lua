@@ -194,5 +194,3 @@ local roomModifications = {
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Asphodel, roomModifications, roomReplacements, "Asphodel")
-
-mod.PrintTable(mod.RoomData.Asphodel.X_Intro)

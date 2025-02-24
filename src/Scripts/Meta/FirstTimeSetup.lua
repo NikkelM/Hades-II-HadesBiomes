@@ -119,15 +119,13 @@ function CopyHadesHelpTexts()
 				existingIds[entry.Id] = true
 			end
 
-			-- Some entry IDs need to be changed, such as for duplicate enemy names
-			-- Merge these tables if there are multiple types of replacements
-			local IdRemappings = mod.EnemyNameMappings
-
 			-- Remove all existingIds from hadesHelpTextData - we don't want to overwrite something that already exists in Hades II
 			for i = #hadesHelpTextData.Texts, 1, -1 do
 				local entry = hadesHelpTextData.Texts[i]
-				if IdRemappings[entry.Id] then
-					entry.Id = IdRemappings[entry.Id]
+				-- Some entry IDs need to be changed, such as for duplicate enemy names
+				-- Merge these tables if there are multiple types of replacements
+				if mod.EnemyNameMappings[entry.Id] then
+					entry.Id = mod.EnemyNameMappings[entry.Id]
 				end
 				if existingIds[entry.Id] then
 					table.remove(hadesHelpTextData.Texts, i)

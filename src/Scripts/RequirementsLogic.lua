@@ -32,7 +32,8 @@ modutil.mod.Path.Wrap("IsEnemyEligible", function(base, enemyName, encounter, wa
 		if game.EnemyData[enemyName].IsElite and game.GetNumShrineUpgrades("EnemyEliteShrineUpgrade") > 0 then
 			isGameStateEligibleArgs.SkipMinBiomeDepth = true
 		end
-		return game.ModsNikkelMHadesBiomesIsGameStateEligible(game.EnemyData[enemyName], game.EnemyData[enemyName], isGameStateEligibleArgs)
+		return game.ModsNikkelMHadesBiomesIsGameStateEligible(game.EnemyData[enemyName], game.EnemyData[enemyName],
+			isGameStateEligibleArgs)
 	end
 
 	return isEligible
@@ -77,6 +78,53 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 
 	if requirements.Force then
 		return true
+	end
+
+	-- Map Asphodel room names for any requirement that has rooms in it
+	local roomRequirementOptions = {
+		RequiredRoom = "string",
+		RequiredRooms = "table",
+		RequiredFalseRooms = "table",
+		RequiredSeenRoom = "string",
+		RequiredSeenRooms = "table",
+		RequiredFalseSeenRoom = "string",
+		RequiredFalseSeenRooms = "table",
+		RequiredFalseSeenRoomThisRun = "string",
+		RequiredFalseSeenRoomsThisRun = "table",
+		RequiredSeenRoomsBeforeThisRun = "table",
+		RequiredFalseSeenRoomsBeforeThisRun = "table",
+		RequiredMinTimesSeenRoom = "string",
+		RequiredMaxTimesSeenRoom = "string",
+		RequiredRoomThisRun = "string",
+		RequiredRoomsThisRun = "table",
+		RequiredAnyRoomsThisRun = "table",
+		RequiredRoomLastRun = "string",
+		RequiredFalseRoomLastRun = "string",
+		RequiredAnyRoomsLastRun = "table",
+		RequiredDeathRoom = "string",
+		RequiredAnyDeathRooms = "table",
+		RequiredFalseDeathRoom = "string",
+		RequiredFalseDeathRooms = "table",
+		RequiredAnyPrevRoom = "table",
+		RequiredFalsePrevRooms = "table",
+		ConsecutiveDeathsInRoom = "nameTable",
+		ConsecutiveClearsOfRoom = "nameTable",
+	}
+	local roomMappings = mod.AsphodelRoomNameMappings
+	for roomRequirement, requirementType in pairs(roomRequirementOptions) do
+		if requirements[roomRequirement] then
+			if requirementType == "string" then
+				requirements[roomRequirement] = roomMappings[requirements[roomRequirement]] or requirements[roomRequirement]
+			elseif requirementType == "table" then
+				for i, roomName in ipairs(requirements[roomRequirement]) do
+					requirements[roomRequirement][i] = roomMappings[roomName] or roomName
+				end
+			elseif requirementType == "nameTable" then
+				for i, roomName in ipairs(requirements[roomRequirement]) do
+					requirements[roomRequirement][i].Name = roomMappings[roomName.Name] or roomName.Name
+				end
+			end
+		end
 	end
 
 	-- ChanceToPlay is already taken care of in the Hades II function call

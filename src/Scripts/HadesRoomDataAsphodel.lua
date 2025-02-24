@@ -346,7 +346,7 @@ mod.RoomData.Asphodel = {
 		EntranceDirection = "LeftRight",
 
 		ShrineMetaUpgradeName = "BossDifficultyShrineUpgrade",
-		-- TODO: Check
+		-- TODO: Need to implement logic!
 		LinkedRoomByPactLevel =
 		{
 			[0] = "X_Boss01", [1] = "X_Boss01", [2] = "X_Boss02", [3] = "X_Boss02", [4] = "X_Boss02"
@@ -383,7 +383,7 @@ mod.RoomData.Asphodel = {
 				UseText = "UseExamineMisc",
 				InteractTextLineSets =
 				{
-					Inspect_X_PreBoss_01_01 =
+					Inspect_B_PreBoss_01_01 =
 					{
 						-- Way to spoil the surprise, old man.
 						EndCue = "/VO/ZagreusField_0932",
@@ -408,7 +408,7 @@ mod.RoomData.Asphodel = {
 		EntranceDirection = "Right",
 		RewardPreviewIcon = "RoomElitePreview4",
 		RewardPreviewFx = "RoomRewardAvailableRareSparkles",
-		ResultText = "RunHistoryScreenResult_X_Boss01",
+		ResultText = "RunHistoryScreenResult_B_Boss01",
 		RichPresence = "#RichPresence_BBoss01",
 
 		GameStateRequirements =
@@ -610,7 +610,7 @@ mod.RoomData.Asphodel = {
 				UseText = "UseExamineMisc",
 				InteractTextLineSets =
 				{
-					Inspect_X_Story_01_01 =
+					Inspect_B_Story_01_01 =
 					{
 						-- Surely they're friendly, right?
 						EndCue = "/VO/ZagreusField_1660",
@@ -632,13 +632,13 @@ mod.RoomData.Asphodel = {
 		IsMiniBossRoom = true,
 		RewardPreviewIcon = "RoomElitePreview2",
 		RewardPreviewFx = "RoomRewardAvailableRareSparkles",
-		ResultText = "RunHistoryScreenResult_X_Wrapping01",
+		ResultText = "RunHistoryScreenResult_B_Wrapping01",
 		Ambience = "/Leftovers/Object Ambiences/WaterRushingBloodRiver2",
 
 		GameStateRequirements =
 		{
-			RequiredFalseSeenRoomsThisRun = { "X_MiniBoss01", "X_MiniBoss02" },
-			RequiredFalseRooms = { "X_MiniBoss01" },
+			RequiredFalseSeenRoomsThisRun = { "B_MiniBoss01", "B_MiniBoss02" },
+			RequiredFalseRooms = { "B_MiniBoss01" },
 		},
 
 		LegalEncounters = { "WrappingAsphodel", "WrappingAsphodel2" },
@@ -773,11 +773,11 @@ mod.RoomData.Asphodel = {
 		IsMiniBossRoom = true,
 		RewardPreviewIcon = "RoomElitePreview2",
 		RewardPreviewFx = "RoomRewardAvailableRareSparkles",
-		ResultText = "RunHistoryScreenResult_X_MiniBoss01",
+		ResultText = "RunHistoryScreenResult_B_MiniBoss01",
 
 		GameStateRequirements =
 		{
-			RequiredFalseSeenRoomsThisRun = { "X_Wrapping01", "X_MiniBoss02" },
+			RequiredFalseSeenRoomsThisRun = { "B_Wrapping01", "B_MiniBoss02" },
 		},
 
 		LegalEncounters = { "MiniBossHitAndRun" },
@@ -845,11 +845,11 @@ mod.RoomData.Asphodel = {
 		IsMiniBossRoom = true,
 		RewardPreviewIcon = "RoomElitePreview2",
 		RewardPreviewFx = "RoomRewardAvailableRareSparkles",
-		ResultText = "RunHistoryScreenResult_X_MiniBoss02",
+		ResultText = "RunHistoryScreenResult_B_MiniBoss02",
 
 		GameStateRequirements =
 		{
-			RequiredFalseSeenRoomsThisRun = { "X_Wrapping01", "X_MiniBoss01" },
+			RequiredFalseSeenRoomsThisRun = { "B_Wrapping01", "B_MiniBoss01" },
 			RequiredSeenEncounter = "BossHydra",
 		},
 
@@ -916,7 +916,7 @@ mod.RoomData.Asphodel = {
 				RequiredMinCompletedRuns = 1,
 				InteractTextLineSets =
 				{
-					X_MiniBoss02_FirstInspect =
+					B_MiniBoss02_FirstInspect =
 					{
 						EndVoiceLines =
 						{
@@ -971,7 +971,7 @@ mod.RoomData.Asphodel = {
 				UseText = "UseExamineMisc",
 				InteractTextLineSets =
 				{
-					Inspect_X_Shop_01_01 =
+					Inspect_B_Shop_01_01 =
 					{
 						-- I do enjoy dead people's fineries.
 						EndCue = "/VO/ZagreusField_0933",
@@ -1033,7 +1033,7 @@ mod.RoomData.Asphodel = {
 				UseText = "UseExamineMisc",
 				InteractTextLineSets =
 				{
-					Inspect_X_Reprieve_01_01 =
+					Inspect_B_Reprieve_01_01 =
 					{
 						-- You feeling lucky, too, old man? Then show yourself! No...?
 						EndCue = "/VO/ZagreusField_0934",
@@ -1136,13 +1136,13 @@ mod.RoomData.Asphodel = {
 			-- Be there soon, Lernie...
 			{ Cue = "/VO/ZagreusField_4242", RequiredPlayed = { "/VO/ZagreusField_3147", "/VO/ZagreusField_0262" }, RequiredFalsePlayedLastRun = { "/VO/ZagreusField_3147" }, },
 			-- Be there soon, Bone Hydra...
-			{ Cue = "/VO/ZagreusField_4243", RequiredSeenRooms = { "X_Boss01" },                                    RequiredFalsePlayed = { "/VO/ZagreusField_3147" },                     RequiredPlayed = { "/VO/ZagreusField_0262" } },
+			{ Cue = "/VO/ZagreusField_4243", RequiredSeenRooms = { "B_Boss01" },                                    RequiredFalsePlayed = { "/VO/ZagreusField_3147" },                     RequiredPlayed = { "/VO/ZagreusField_0262" } },
 			-- Ugh, this heat...
 			{ Cue = "/VO/ZagreusField_4244", RequiredPlayed = { "/VO/ZagreusField_0262" } },
 			-- The Bone Hydra awaits...
-			{ Cue = "/VO/ZagreusField_4245", RequiredSeenRooms = { "X_Boss01" },                                    RequiredFalsePlayed = { "/VO/ZagreusField_3147" },                     RequiredPlayed = { "/VO/ZagreusField_0262" } },
+			{ Cue = "/VO/ZagreusField_4245", RequiredSeenRooms = { "B_Boss01" },                                    RequiredFalsePlayed = { "/VO/ZagreusField_3147" },                     RequiredPlayed = { "/VO/ZagreusField_0262" } },
 			-- Lernie awaits...
-			{ Cue = "/VO/ZagreusField_4246", RequiredSeenRooms = { "X_Boss01" },                                    RequiredPlayed = { "/VO/ZagreusField_3147", "/VO/ZagreusField_0262" }, RequiredFalsePlayedLastRun = { "/VO/ZagreusField_3147" }, },
+			{ Cue = "/VO/ZagreusField_4246", RequiredSeenRooms = { "B_Boss01" },                                    RequiredPlayed = { "/VO/ZagreusField_3147", "/VO/ZagreusField_0262" }, RequiredFalsePlayedLastRun = { "/VO/ZagreusField_3147" }, },
 			-- Love that sulfur smell...
 			{ Cue = "/VO/ZagreusField_4247", RequiredPlayed = { "/VO/ZagreusField_0262" } },
 		},
@@ -1155,7 +1155,7 @@ mod.RoomData.Asphodel = {
 				UseText = "UseExamineMisc",
 				InteractTextLineSets =
 				{
-					Inspect_X_Intro_01_01 =
+					Inspect_B_Intro_01_01 =
 					{
 						-- I'm only flame-resistant not flame-proof.
 						EndCue = "/VO/ZagreusField_0936",
@@ -1172,10 +1172,10 @@ mod.RoomData.Asphodel = {
 			{
 				PlayOnce = true,
 				UseText = "UseExamineMisc",
-				RequiredTextLines = { "Inspect_X_Intro_01_01", },
+				RequiredTextLines = { "Inspect_B_Intro_01_01", },
 				InteractTextLineSets =
 				{
-					Inspect_X_Intro_02 =
+					Inspect_B_Intro_02 =
 					{
 						-- Or until I crush their bones to dust.
 						EndCue = "/VO/ZagreusField_0534",
@@ -1218,7 +1218,7 @@ mod.RoomData.Asphodel = {
 			RequiredFalseTextLinesLastRun = { "OrpheusAboutSingersReunionQuest01" },
 			RequiredMinBiomeDepth = 2,
 			RequiredMinCompletedRuns = 1,
-			RequiredSeenRooms = { "X_Boss01" },
+			RequiredSeenRooms = { "B_Boss01" },
 		},
 
 		ZoomFraction = 0.85,
@@ -1240,7 +1240,7 @@ mod.RoomData.Asphodel = {
 				RequiredAnyTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C" },
 				InteractTextLineSets =
 				{
-					Inspect_X_Story_01_01 =
+					Inspect_B_Story_01_01 =
 					{
 						-- You watch yourself, old man.
 						EndCue = "/VO/ZagreusHome_1316",

@@ -33,7 +33,7 @@ function game.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId
 	AngleTowardTarget({ Id = currentRun.Hero.ObjectId, DestinationId = boatMovePoint })
 	AdjustZLocation({ Id = boatId, Distance = 10, Duration = 0.0 })
 	Move({ Id = boatId, DestinationId = boatMovePoint, Duration = 1.0, EaseOut = 1.0 })
-	Shake({ Id = raftMovePoint, Distance = 2, Speed = 100, Duration = 0.3 })
+	-- Shake({ Id = raftMovePoint, Distance = 2, Speed = 100, Duration = 0.3 })
 	game.wait(0.9)
 
 	AdjustZLocation({ Id = boatId, Distance = -10, Duration = 0.5 })
@@ -41,9 +41,9 @@ function game.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId
 
 	game.wait(0.35)
 
-	StopSound({ Id = AsphodelBoatSoundId, Duration = 0.2 })
-	AsphodelBoatSoundId = nil
-	PlaySound({ Name = "/Leftovers/World Sounds/CaravanWaterBuck2", Id = raftMovePoint })
+	StopSound({ Id = game.AsphodelBoatSoundId, Duration = 0.2 })
+	game.AsphodelBoatSoundId = nil
+	-- PlaySound({ Name = "/Leftovers/World Sounds/CaravanWaterBuck2", Id = raftMovePoint })
 	local rumbleParams = { { ScreenPreWait = 0.02, Fraction = 0.15, Duration = 0.3 }, }
 	game.thread(game.DoRumble, rumbleParams)
 
@@ -145,7 +145,7 @@ function game.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
 	Move({ Id = boatId, DestinationId = boatMovePoint, Duration = 2.0, EaseIn = 0.4 })
 	Shake({ Id = boatMovePoint, Distance = 4, Speed = 100, Duration = 3 })
 	PlaySound({ Name = "/SFX/AsphodelIslandTransitionStart", Id = currentRun.Hero.ObjectId })
-	AsphodelBoatSoundId = PlaySound({ Name = "/SFX/AsphodelIslandTransitionLoop" })
+	game.AsphodelBoatSoundId = PlaySound({ Name = "/SFX/AsphodelIslandTransitionLoop" })
 
 	RemoveFromGroup({ Id = currentRun.Hero.ObjectId, Name = "Standing_Front" })
 	AddToGroup({ Id = currentRun.Hero.ObjectId, Name = "Standing", DrawGroup = true })
