@@ -1,10 +1,15 @@
-local function copyFiles(fileMappings, srcBasePath, destBasePath, fileType)
-	mod.DebugPrint("Copying " .. fileType .. " files...", 3)
+local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, usePluginData)
+	mod.DebugPrint("Copying " .. extension .. " files...", 3)
 	for src, dest in pairs(fileMappings) do
-		local srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. src)
-		local destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest)
+		local srcPath, destPath
+		if usePluginData then
+			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, srcBasePath .. src .. extension)
+		else
+			srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. src .. extension)
+		end
+		destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest .. extension)
 		CopyFile(srcPath, destPath)
-		mod.DebugPrint("Copied " .. srcBasePath .. src .. " to " .. destBasePath .. dest, 4)
+		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 	end
 end
 
@@ -27,29 +32,35 @@ function mod.FirstTimeSetup()
 	mod.DebugPrint("Installing the mod...", 3)
 
 	copyFiles(AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank")
-	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\", ".pkg")
+	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg")
+	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg_manifest")
+	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg")
+	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg_manifest")
 	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg", true)
 	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", true)
 	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg", true)
 	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg_manifest", true)
-	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\", ".bik")
+	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik")
+	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas")
+	copyFiles(BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik")
+	copyFiles(BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas")
 	copyFiles(SjsonFileMappings, "Content\\Game\\", "Game\\", ".sjson")
 
 	-- Special treatment, as some are copied from the plugins_data, and some from the Hades installation
 	mod.DebugPrint("Copying map_text files...", 3)
-	for _, name in ipairs(MapFileNames) do
+	for src, dest in pairs(MapFileMappings) do
 		local srcPath, destPath
-		if MapTextFileNames[name] then
-			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content\\Maps\\" .. name .. ".map_text")
+		if MapTextFileNames[src] then
+			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content\\Maps\\" .. src .. ".map_text")
 		else
-			srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Maps\\" .. name .. ".map_text")
+			srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Maps\\" .. src .. ".map_text")
 		end
-		destPath = rom.path.combine(rom.paths.Content(), "Maps\\" .. name .. ".map_text")
+		destPath = rom.path.combine(rom.paths.Content(), "Maps\\" .. dest .. ".map_text")
 		CopyFile(srcPath, destPath)
 		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 	end
 
-	copyFilesByNames(MapFileNames, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", true)
+	copyFiles(MapFileMappings, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", true)
 
 	mod.DebugPrint("Copying voicelines...", 3)
 	copyFilesByNames(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", true)
@@ -108,15 +119,13 @@ function CopyHadesHelpTexts()
 				existingIds[entry.Id] = true
 			end
 
-			-- Some entry IDs need to be changed, such as for duplicate enemy names
-			-- Merge these tables if there are multiple types of replacements
-			local IdRemappings = mod.EnemyNameMappings
-
 			-- Remove all existingIds from hadesHelpTextData - we don't want to overwrite something that already exists in Hades II
 			for i = #hadesHelpTextData.Texts, 1, -1 do
 				local entry = hadesHelpTextData.Texts[i]
-				if IdRemappings[entry.Id] then
-					entry.Id = IdRemappings[entry.Id]
+				-- Some entry IDs need to be changed, such as for duplicate enemy names
+				-- Merge these tables if there are multiple types of replacements
+				if mod.EnemyNameMappings[entry.Id] then
+					entry.Id = mod.EnemyNameMappings[entry.Id]
 				end
 				if existingIds[entry.Id] then
 					table.remove(hadesHelpTextData.Texts, i)
@@ -165,17 +174,7 @@ end
 function CopyHadesFxAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\Fx.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
-	local modifications = {
-		TisiphoneFogIn = {
-      EndAlpha = 0.899,
-		},
-		TisiphoneFogLoop = {
-      EndAlpha = 0.898,
-		},
-		TisiphoneFogLoopDissipate = {
-      EndAlpha = 0.899,
-		},
-	}
+	local modifications = mod.HadesFxAnimationModifications
 	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates,
 		modifications, "Fx.sjson")
 end
@@ -191,60 +190,7 @@ end
 function CopyHadesPortraitAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\PortraitAnimations.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename)
-	local modifications = {
-		-- Replacing Zagreus solo portraits with ones where Melinoe is also present as a ghostly version behind him
-		-- Trying to align so the player can be seen behind the portrait
-		Portrait_Zag_Default_01 = {
-			FilePath = "Portraits\\MelAndZagDefault.png",
-			OffsetY = 32,
-			OffsetX = -100,
-		},
-		Portrait_Zag_Default_01_Exit = {
-			FilePath = "Portraits\\MelAndZagDefault.png",
-			OffsetY = 32,
-			OffsetX = -100,
-		},
-		Portrait_Zag_Serious_01 = {
-			FilePath = "Portraits\\MelAndZagSerious.png",
-			OffsetY = 32,
-			OffsetX = -70,
-		},
-		Portrait_Zag_Serious_01_Exit = {
-			FilePath = "Portraits\\MelAndZagSerious.png",
-			OffsetY = 32,
-			OffsetX = -70,
-		},
-		Portrait_Zag_Defiant_01 = {
-			FilePath = "Portraits\\MelAndZagDefiant.png",
-			OffsetY = 32,
-			OffsetX = 0,
-		},
-		Portrait_Zag_Defiant_01_Exit = {
-			FilePath = "Portraits\\MelAndZagDefiant.png",
-			OffsetY = 32,
-			OffsetX = 0,
-		},
-		Portrait_Zag_Empathetic_01 = {
-			FilePath = "Portraits\\MelAndZagEmpathetic.png",
-			OffsetY = 32,
-			OffsetX = -100,
-		},
-		Portrait_Zag_Empathetic_01_Exit = {
-			FilePath = "Portraits\\MelAndZagEmpathetic.png",
-			OffsetY = 32,
-			OffsetX = -100,
-		},
-		Portrait_Zag_Unwell_01 = {
-			FilePath = "Portraits\\MelAndZagUnwell.png",
-			OffsetY = 32,
-			OffsetX = -100,
-		},
-		Portrait_Zag_Unwell_01_Exit = {
-			FilePath = "Portraits\\MelAndZagUnwell.png",
-			OffsetY = 32,
-			OffsetX = -100,
-		},
-	}
+	local modifications = mod.HadesPortraitAnimationModifications
 	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.PortraitAnimationMappings,
 		mod.HadesPortraitAnimationDuplicates, modifications, "PortraitAnimations.sjson")
 end
@@ -254,7 +200,7 @@ function CopyHadesCharacterAnimationsNPCs()
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesCharacterAnimationsNPCsDestinationFilename)
 	local modifications = {}
 	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.CharacterAnimationsNPCsMappings,
-	mod.HadesCharacterAnimationsNPCsDuplicates, modifications, "CharacterAnimationsNPCs.sjson")
+		mod.HadesCharacterAnimationsNPCsDuplicates, modifications, "CharacterAnimationsNPCs.sjson")
 end
 
 -- Copies a file from src to dest

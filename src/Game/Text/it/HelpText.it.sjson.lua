@@ -16,6 +16,10 @@ local newData = {
 		DisplayName = "TARTARO (Incubo)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DisplayName = "ASFODELO (Incubo)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Zagreus",
 		Description = "Principe dell'Oltretomba",

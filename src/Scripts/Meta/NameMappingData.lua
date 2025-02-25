@@ -50,3 +50,30 @@ mod.PortraitAnimationMappings = {
 	Portrait_Base_01_Exit = "HadesPortrait_Base_01_Exit",
 }
 mod.CharacterAnimationsNPCsMappings = {}
+
+-- Mappings for Asphodel room names, as B_ is also used in Hades II. Used e.g. in IsGameStateEligible to map requirements for rooms
+mod.AsphodelRoomNameMappings = {
+	["B_Intro"] = "X_Intro",
+	["B_Boss01"] = "X_Boss01",
+	["B_Boss02"] = "X_Boss02",
+	["B_PostBoss01"] = "X_PostBoss01",
+	["B_Wrapping01"] = "X_Wrapping01",
+	["B_MiniBoss01"] = "X_MiniBoss01",
+	["B_MiniBoss02"] = "X_MiniBoss02",
+	["B_PreBoss01"] = "X_PreBoss01",
+	["B_Shop01"] = "X_Shop01",
+	["B_Reprieve01"] = "X_Reprieve01",
+	["B_Combat01"] = "X_Combat01",
+	["B_Combat02"] = "X_Combat02",
+	["B_Combat03"] = "X_Combat03",
+	["B_Combat04"] = "X_Combat04",
+	["B_Combat05"] = "X_Combat05",
+	["B_Combat06"] = "X_Combat06",
+	["B_Combat07"] = "X_Combat07",
+	["B_Combat08"] = "X_Combat08",
+	["B_Combat09"] = "X_Combat09",
+	["B_Combat10"] = "X_Combat10",
+	["B_Combat21"] = "X_Combat21",
+	["B_Combat22"] = "X_Combat22",
+	["B_Story01"] = "X_Story01",
+}

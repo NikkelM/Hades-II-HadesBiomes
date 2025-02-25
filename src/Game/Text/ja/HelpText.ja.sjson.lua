@@ -16,6 +16,10 @@ local newData = {
 		DisplayName = "タルタロス （凶夢）",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DisplayName = "アスポデロス （凶夢）",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "ザグレウス",
 		Description = "冥界の王子",

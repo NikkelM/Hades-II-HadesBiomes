@@ -399,8 +399,7 @@ function game.HandleHarpyRage(enemy, currentRun)
 			SetAnimationFrameTarget({
 				Name = "EnemyHealthBarFillBoss",
 				Fraction = 1 - enemy.RageFraction,
-				DestinationId =
-						screenId
+				DestinationId = screenId
 			})
 		end
 	end

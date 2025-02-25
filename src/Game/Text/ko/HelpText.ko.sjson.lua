@@ -16,6 +16,10 @@ local newData = {
 		DisplayName = "타르타로스 (악몽)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DisplayName = "아스포델 (악몽)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "자그레우스",
 		Description = "지하세계의 왕자",

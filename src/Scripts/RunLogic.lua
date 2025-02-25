@@ -14,7 +14,7 @@ end
 modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle, replaceOnlyNull, args)
 	base(obstacle, replaceOnlyNull, args)
 
-	if obstacle.Name == "TartarusDoor03b" then
+	if obstacle.Name == "TartarusDoor03b" or obstacle.Name == "AsphodelBoat01b" then
 		game.CurrentRun.ModsNikkelMHadesBiomesExitDoors = game.CurrentRun.ModsNikkelMHadesBiomesExitDoors or {}
 		table.insert(game.CurrentRun.ModsNikkelMHadesBiomesExitDoors, obstacle)
 	end

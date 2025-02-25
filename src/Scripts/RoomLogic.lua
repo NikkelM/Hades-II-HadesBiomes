@@ -3,7 +3,9 @@ modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
 	base(run)
 	if run.ModsNikkelMHadesBiomesExitDoors ~= nil then
 		for _, door in ipairs(run.ModsNikkelMHadesBiomesExitDoors) do
-			SetAnimation({ Name = door.LockedAnimation, DestinationId = door.ObjectId })
+			if door.LockedAnimation ~= nil then
+				SetAnimation({ Name = door.LockedAnimation, DestinationId = door.ObjectId })
+			end
 		end
 
 		run.ModsNikkelMHadesBiomesExitDoors = {}
@@ -14,8 +16,14 @@ end)
 modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	base(currentRoom)
 
-	-- TODO: Add additional biomes
-	if currentRoom.RoomSetName == "Tartarus" then
+	local validRoomSets = {
+		["Tartarus"] = true,
+		["Asphodel"] = true,
+		["Elysium"] = true,
+		["Styx"] = true,
+	}
+
+	if validRoomSets[currentRoom.RoomSetName] then
 		-- Some packages introduce artifacts
 		UnloadPackages({ Name = "DeathArea" })
 		UnloadPackages({ Name = "Chaos" })

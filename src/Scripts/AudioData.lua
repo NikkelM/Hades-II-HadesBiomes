@@ -72,7 +72,7 @@ game.MusicTrackData.Tartarus = {
 	-- { Name = "/Music/MusicTartarus4_MC", }, -- The audio event for this track does not exist - #56
 }
 game.MusicTrackData.Asphodel = {
-	{ Name = "/Music/MusicAsphodel1_MC", },
+	-- { Name = "/Music/MusicAsphodel1_MC", }, -- The audio event for this track does not exist - #82
 	{ Name = "/Music/MusicAsphodel2_MC", },
 	{ Name = "/Music/MusicAsphodel3_MC", },
 }

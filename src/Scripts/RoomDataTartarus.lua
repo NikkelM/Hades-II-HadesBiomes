@@ -7,6 +7,7 @@ local roomReplacements = {
 		WellShopRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.WellShopRequirements),
 		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
 		AnomalyDoorChance = 0.0,
+		RoomSetName = "Tartarus",
 		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
 		BreakableOptions = { "ModsNikkelMHadesBiomesBreakableIdle1", "ModsNikkelMHadesBiomesBreakableIdle2", "ModsNikkelMHadesBiomesBreakableIdle3" },
 	},
@@ -25,7 +26,6 @@ local roomReplacements = {
 		Binks = mod.NilValue,
 	},
 	A_PreBoss01 = {
-		LinkedRooms = { "A_Boss01", "A_Boss02", "A_Boss03", },
 		Binks = mod.NilValue,
 	},
 }
@@ -152,8 +152,7 @@ local roomModifications = {
 	},
 	A_PostBoss01 = {
 		ExitPreviewAnim = "HadesExitPreview",
-		-- TODO: Remove placeholder
-		NextRoomSet = { "G" },
+		NextRoomSet = { "Asphodel" },
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
 			{
@@ -186,8 +185,7 @@ local roomModifications = {
 
 -- Assign separately so we don't get a circular reference
 game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
-	-- We need to always load the RoomManagerModsNikkelMHadesBiomes package to get animations for non-binked enemies
-	LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "GUIModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits" },
+	LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "GUIModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "ModsNikkelMHadesBiomesFxModded", },
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Tartarus, roomModifications, roomReplacements, "Tartarus")

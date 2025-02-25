@@ -3,6 +3,18 @@
 -- The destination filename, used in a couple of places in the mod, therefore defined centrally
 mod.HadesFxDestinationFilename = "Game\\Animations\\Z_ModsNikkelmHadesBiomesFx.sjson"
 
+mod.HadesFxAnimationModifications = {
+	TisiphoneFogIn = {
+		EndAlpha = 0.899,
+	},
+	TisiphoneFogLoop = {
+		EndAlpha = 0.898,
+	},
+	TisiphoneFogLoopDissipate = {
+		EndAlpha = 0.899,
+	},
+}
+
 -- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly
 mod.HadesFxAnimationDuplicates = {
 	["GroupChange"] = true,
