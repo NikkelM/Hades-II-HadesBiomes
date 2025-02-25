@@ -29,6 +29,8 @@ PackageFileMappings = {
 -- These will be copied from the plugins_data folder
 CustomPackageFileNames = {
 	"ModsNikkelMHadesBiomesPortraits",
+	-- Contains e.g. the renamed RoomRewardPreview-Front effects
+	"ModsNikkelMHadesBiomesFxModded",
 }
 
 BikFileMappings = {

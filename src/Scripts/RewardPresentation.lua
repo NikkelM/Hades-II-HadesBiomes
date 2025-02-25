@@ -3,12 +3,11 @@
 modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosenRewardType, chosenLootName, index, args)
 	args = args or {}
 
-	if exitDoor.Name == "TartarusDoor03b" then
+	if exitDoor.Name == "TartarusDoor03b" or exitDoor.Name == "AsphodelBoat01b" then
 		local room = exitDoor.Room
 		chosenRewardType = chosenRewardType or room.ChosenRewardType
 
 		index = index or 1
-
 		local properties = {
 			doorIconOffsetX = 0,
 			doorIconOffsetY = 30,
@@ -20,71 +19,79 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		local doorIconIsometricShiftX = -6
 		local doorIconIsometricShiftZ = -3
 
-		local offsetMappings = {
-			RoomOpening = {
-				doorIconOffsetY = 20,
-			},
-			A_Combat03 = {
-				doorIconOffsetY = 40,
-			},
-			A_Combat06 = {
-				doorIconOffsetY = 55,
-			},
-			A_Combat10 = {
-				doorIconOffsetY = 35,
-			},
-			A_Combat11 = {
-				doorIconOffsetY = 35,
-			},
-			A_Combat19 = {
-				doorIconOffsetY = 35,
-			},
-			A_Combat24 = {
-				doorIconOffsetY = 40,
-			},
-			A_MiniBoss01 = {
-				doorIconOffsetY = 62,
-				overrideSkip = true,
-			},
-			A_MiniBoss02 = {
-				doorIconOffsetY = 62,
-				overrideSkip = true,
-			},
-			A_MiniBoss03 = {
-				doorIconOffsetY = 62,
-				overrideSkip = true,
-			},
-			A_MiniBoss04 = {
-				doorIconOffsetY = 62,
-				overrideSkip = true,
-			},
-			A_PreBoss01 = {
-				doorIconOffsetY = 20,
-				doorIconScale = 0.75,
-			},
-			A_Boss01 = {
-				doorIconOffsetY = -20,
-			},
-		}
+		local offsetMappings = {}
+		local skipModifiers = {}
+		local additionalModifications = {}
 
-		local skipModifiers = {
-			Shop = { doorIconOffsetX = true, doorIconOffsetY = true, doorIconScale = true },
-			StackUpgrade = { doorIconScale = true },
-		}
+		if exitDoor.Name == "TartarusDoor03b" then
+			offsetMappings = {
+				RoomOpening = {
+					doorIconOffsetY = 20,
+				},
+				A_Combat03 = {
+					doorIconOffsetY = 40,
+				},
+				A_Combat06 = {
+					doorIconOffsetY = 55,
+				},
+				A_Combat10 = {
+					doorIconOffsetY = 35,
+				},
+				A_Combat11 = {
+					doorIconOffsetY = 35,
+				},
+				A_Combat19 = {
+					doorIconOffsetY = 35,
+				},
+				A_Combat24 = {
+					doorIconOffsetY = 40,
+				},
+				A_MiniBoss01 = {
+					doorIconOffsetY = 62,
+					overrideSkip = true,
+				},
+				A_MiniBoss02 = {
+					doorIconOffsetY = 62,
+					overrideSkip = true,
+				},
+				A_MiniBoss03 = {
+					doorIconOffsetY = 62,
+					overrideSkip = true,
+				},
+				A_MiniBoss04 = {
+					doorIconOffsetY = 62,
+					overrideSkip = true,
+				},
+				A_PreBoss01 = {
+					doorIconOffsetY = 20,
+					doorIconScale = 0.75,
+				},
+				A_Boss01 = {
+					doorIconOffsetY = -20,
+				},
+			}
 
-		if offsetMappings[game.CurrentRun.CurrentRoom.Name] then
-			for property, value in pairs(properties) do
-				if offsetMappings[game.CurrentRun.CurrentRoom.Name].overrideSkip or not skipModifiers[chosenRewardType] or (skipModifiers[chosenRewardType] and not skipModifiers[chosenRewardType][property]) then
-					properties[property] = offsetMappings[game.CurrentRun.CurrentRoom.Name][property] or properties[property]
+			skipModifiers = {
+				Shop = { doorIconOffsetX = true, doorIconOffsetY = true, doorIconScale = true },
+				StackUpgrade = { doorIconScale = true },
+			}
+
+			if offsetMappings[game.CurrentRun.CurrentRoom.Name] then
+				for property, value in pairs(properties) do
+					if offsetMappings[game.CurrentRun.CurrentRoom.Name].overrideSkip or not skipModifiers[chosenRewardType] or (skipModifiers[chosenRewardType] and not skipModifiers[chosenRewardType][property]) then
+						properties[property] = offsetMappings[game.CurrentRun.CurrentRoom.Name][property] or properties[property]
+					end
 				end
 			end
-		end
 
-		local additionalModifications = {
-			Devotion = {
-				doorIconOffsetY = -5,
-			},
-		}
+			additionalModifications = {
+				Devotion = {
+					doorIconOffsetY = -5,
+				},
+			}
+		elseif exitDoor.Name == "AsphodelBoat01b" then
+			print("AsphodelBoat01b exitdoor")
+		end
 
 		-- Add the additional modifications for the chosen reward type (or multiply for scale)
 		if additionalModifications[chosenRewardType] then
