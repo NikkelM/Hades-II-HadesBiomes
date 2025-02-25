@@ -13,9 +13,6 @@ mod.HadesFxAnimationModifications = {
 	TisiphoneFogLoopDissipate = {
 		EndAlpha = 0.899,
 	},
-	["AsphodelRoomRewardAvailable-Back"] = {
-		ChildAnimation = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front"
-	}
 }
 
 -- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly

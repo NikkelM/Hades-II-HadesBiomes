@@ -8,6 +8,8 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		chosenRewardType = chosenRewardType or room.ChosenRewardType
 
 		index = index or 1
+		-- Positive X is to the left, negative to the right
+		-- Positive Y is up, negative down
 		local properties = {
 			doorIconOffsetX = 0,
 			doorIconOffsetY = 30,
@@ -21,7 +23,11 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 
 		local offsetMappings = {}
 		local skipModifiers = {}
-		local additionalModifications = {}
+		local additionalModifications = {
+			Devotion = {
+				doorIconOffsetY = -5,
+			},
+		}
 
 		if exitDoor.Name == "TartarusDoor03b" then
 			offsetMappings = {
@@ -83,14 +89,12 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 					end
 				end
 			end
-
-			additionalModifications = {
-				Devotion = {
-					doorIconOffsetY = -5,
-				},
-			}
 		elseif exitDoor.Name == "AsphodelBoat01b" then
-			print("AsphodelBoat01b exitdoor")
+			properties = {
+				doorIconOffsetX = -5,
+				doorIconOffsetY = 70,
+				doorIconScale = 0.85,
+			}
 		end
 
 		-- Add the additional modifications for the chosen reward type (or multiply for scale)
@@ -111,7 +115,8 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		end
 
 		-- Dummy backing - is not attached to the door, so the Hades II preview object isn't visible
-		local backingId = SpawnObstacle({ Name = "BlankGeoObstacle", Group = "Combat_UI_World" })
+		local backingId = SpawnObstacle({ Name = "BlankGeoObstacle", Group = "Combat_UI" })
+		SetAlpha({ Id = backingId, Fraction = 0.0, Duration = 0.0 })
 
 		exitDoor.RewardPreviewBackingIds = exitDoor.RewardPreviewBackingIds or {}
 		table.insert(exitDoor.RewardPreviewBackingIds, backingId)
@@ -134,8 +139,21 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		exitDoor.RewardPreviewIconIds = exitDoor.RewardPreviewIconIds or {}
 		table.insert(exitDoor.RewardPreviewIconIds, doorIconId)
 
+		exitDoor.AdditionalAttractIds = exitDoor.AdditionalAttractIds or {}
+		exitDoor.DoorIconFront = SpawnObstacle({ Name = "BlankGeoObstacle", Group = "Combat_Menu_Backing" })
+		table.insert(exitDoor.AdditionalAttractIds, exitDoor.DoorIconFront)
+		Attach({ Id = exitDoor.DoorIconFront, DestinationId = exitDoor.ObjectId, DynamicScaleOffset = true })
+		SetThingProperty({
+			Property = "SortMode",
+			Value = exitDoor.IconSortMode or "FromParent",
+			DestinationId = exitDoor.DoorIconFront
+		})
+		SetThingProperty({ Property = "SortBoundsScale", Value = 2, DestinationId = exitDoor.DoorIconFront })
+
+		SetAnimation({ Name = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front", DestinationId = exitDoor.DoorIconFront })
+
 		if IsHorizontallyFlipped({ Id = exitDoor.ObjectId }) then
-			local ids = { doorIconId, backingId }
+			local ids = { doorIconId, exitDoor.DoorIconFront, backingId }
 			FlipHorizontal({ Ids = ids })
 		end
 
