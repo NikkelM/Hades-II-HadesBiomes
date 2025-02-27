@@ -401,6 +401,36 @@ local enemyModifications = {
 			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
 		},
 	},
+
+	BreakableAsphodel = {
+		CannotDieFromDamage = true,
+		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
+		DeathAnimation = "BreakableDeathAnim",
+		DeathSound = "/SFX/CeramicPotSmash",
+		SetupEvents = {
+			{
+				FunctionName = "RandomizeObject",
+				Args = {
+					RandomizeSets = {
+						{
+							Animation = { "BreakableAsphodelIdle" },
+						},
+						{
+							Animation = { "BreakableAsphodelIdle2" },
+						},
+						{
+							Animation = { "BreakableAsphodelIdle3" },
+						},
+					},
+				},
+			},
+		},
+		ValueOptions = {
+			[1] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[2] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+		},
+	},
 }
 
 local renamedEnemyModifications = {}
