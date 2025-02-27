@@ -27,29 +27,20 @@ mod.UpdateField(encounterDataAsphodel, "Challenge", "TimeChallenge", { "InheritF
 -- For tables that should be replaced. The modifications append table data!
 -- Can still use modifications if the modified table did not exist beforehand
 local encounterReplacements = {
-	ModsNikkelMHadesBiomesGenerated = {
-		-- The "Generated" encounter in Hades II uses this to place enemies, Hades doesn't have this
-		StartRoomUnthreadedEvents = { { FunctionName = "HandleEncounterPreSpawns", }, },
-		PreSpawnSpawnOverrides = {
-			WakeUpDelay = 0.3,
-			AggroReactionTimeMin = 0.15,
-			AggroReactionTimeMax = 0.45,
-		},
-	},
 	GeneratedAsphodel = {
-		EnemySet = EnemySets.EnemiesBiome2,
+		EnemySet = game.EnemySets.EnemiesBiome2,
 		-- The original from Hades is 170, Hades II GeneratedF is 140
 		BaseDifficulty = 180,
+		-- Load the base Hades II Asphodel package, since we can reuse some enemies
+		LoadPackages = "Asphodel",
 	},
 
 	PerfectClearChallengeAsphodel = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedAsphodel" },
-		-- TODO
 		EnemySet = EnemySets.EnemiesBiome2,
 	},
 	EliteChallengeAsphodel = {
 		InheritFrom = { "EliteChallenge", "GeneratedAsphodel" },
-		-- TODO
 		EnemySet = EnemySets.EnemiesBiome2_EliteChallenge,
 	},
 }

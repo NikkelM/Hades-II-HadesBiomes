@@ -9,8 +9,7 @@ local roomReplacements = {
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Asphodel",
 		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
-		-- TODO: Make BreakableAsphodelIdle
-		BreakableOptions = { "ModsNikkelMHadesBiomesBreakableIdle1", "ModsNikkelMHadesBiomesBreakableIdle2", "ModsNikkelMHadesBiomesBreakableIdle3" },
+		BreakableOptions = { "BreakableAsphodelIdle", "BreakableAsphodelIdle2", "BreakableAsphodelIdle3" },
 	},
 
 	-- OPENING ROOMS
@@ -35,8 +34,7 @@ local roomModifications = {
 	-- GENERIC
 	BaseAsphodel = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		-- TODO: Tartarus for debug
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "AsphodelModsNikkelMHadesBiomes", "TartarusModsNikkelMHadesBiomes" },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "AsphodelModsNikkelMHadesBiomes" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
 

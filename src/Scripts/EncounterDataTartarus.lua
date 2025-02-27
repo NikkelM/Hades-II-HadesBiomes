@@ -3,7 +3,9 @@
 local encounterData = mod.LoadHadesEncounterData("EncounterData.lua")
 local encounterDataTartarus = {
 	-- Generic encounters
+	-- This one is used by all biomes, we define it here
 	ModsNikkelMHadesBiomesGenerated = encounterData.Generated,
+
 	GeneratedTartarus = game.DeepCopyTable(game.EncounterData.GeneratedF),
 	OpeningGenerated = encounterData.OpeningGenerated,
 	DevotionTestTartarus = encounterData.DevotionTestTartarus,
@@ -44,7 +46,7 @@ local encounterReplacements = {
 		},
 	},
 	GeneratedTartarus = {
-		EnemySet = EnemySets.EnemiesBiome1,
+		EnemySet = game.EnemySets.EnemiesBiome1,
 		-- The original from Hades is 30, Hades II GeneratedF is 55
 		BaseDifficulty = 40,
 	},
