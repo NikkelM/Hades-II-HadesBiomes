@@ -1,3 +1,15 @@
+modutil.mod.Path.Wrap("DestroyDoorRewardPresenation", function(base, door)
+	if door.AdditionalAttractIds ~= nil then
+		for i, _ in ipairs(door.AdditionalAttractIds) do
+			Destroy({ Id = door.RewardPreviewBackingIds[i] })
+		end
+	end
+	if door.DoorIconFront ~= nil then
+		Destroy({ Id = door.DoorIconFront })
+	end
+	base(door)
+end)
+
 function game.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId, skipCameraLockOnEnd)
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or
 			0.8

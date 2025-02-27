@@ -159,9 +159,10 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			SetThingProperty({ Property = "SortBoundsScale", Value = 2, DestinationId = exitDoor.DoorIconFront })
 
 			local rewardContainerAnim = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front"
-			if room.RewardStoreName == "MetaProgress" then
-				rewardContainerAnim = rewardContainerAnim .. "_MetaReward"
-			end
+			-- Same for both in Asphodel!
+			-- if room.RewardStoreName == "MetaProgress" then
+			-- 	rewardContainerAnim = rewardContainerAnim .. "_MetaReward"
+			-- end
 
 			SetAnimation({
 				Name = rewardContainerAnim,
