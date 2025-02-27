@@ -26,7 +26,6 @@ local addAnimations = {
 	{
 		Name = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front",
 		FilePath = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front\\ModsNikkelMHadesBiomes-RoomRewardAvailable-Front",
-		OffsetY = -112.0,
 		Scale = 1.1,
 		Type = "Book",
 		AngleFromOwner = "Ignore",

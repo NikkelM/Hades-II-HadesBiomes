@@ -152,6 +152,9 @@ local function CopyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 	for oldName, newName in pairs(mappings) do
 		mod.UpdateField(animationsTable.Animations, oldName, newName, { "InheritFrom" }, animationType)
 		mod.UpdateField(animationsTable.Animations, oldName, newName, { "ChainTo" }, animationType)
+		mod.UpdateField(animationsTable.Animations, oldName, newName, { "ChildAnimation" }, animationType)
+		mod.UpdateField(animationsTable.Animations, oldName, newName, { "CreateAnimation" }, animationType)
+		mod.UpdateField(animationsTable.Animations, oldName, newName, { "CreateAnimations" }, animationType)
 	end
 
 	local filteredAnimations = {}

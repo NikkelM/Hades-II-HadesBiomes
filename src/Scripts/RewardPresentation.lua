@@ -9,11 +9,12 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 
 		index = index or 1
 		-- Positive X is to the left, negative to the right
-		-- Positive Y is up, negative down
+		-- Positive Y is down, negative up
 		local properties = {
 			doorIconOffsetX = 0,
 			doorIconOffsetY = 30,
 			doorIconScale = 0.85,
+			doorIconFrontOffsetY = -140,
 		}
 		local doorIconOffsetZ = 210
 		doorIconOffsetZ = doorIconOffsetZ + ((index - 1) * 180)
@@ -94,6 +95,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				doorIconOffsetX = -5,
 				doorIconOffsetY = 70,
 				doorIconScale = 0.85,
+				doorIconFrontOffsetY = -112,
 			}
 		end
 
@@ -139,21 +141,37 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		exitDoor.RewardPreviewIconIds = exitDoor.RewardPreviewIconIds or {}
 		table.insert(exitDoor.RewardPreviewIconIds, doorIconId)
 
-		exitDoor.AdditionalAttractIds = exitDoor.AdditionalAttractIds or {}
-		exitDoor.DoorIconFront = SpawnObstacle({ Name = "BlankGeoObstacle", Group = "Combat_Menu_Backing" })
-		table.insert(exitDoor.AdditionalAttractIds, exitDoor.DoorIconFront)
-		Attach({ Id = exitDoor.DoorIconFront, DestinationId = exitDoor.ObjectId, DynamicScaleOffset = true })
-		SetThingProperty({
-			Property = "SortMode",
-			Value = exitDoor.IconSortMode or "FromParent",
-			DestinationId = exitDoor.DoorIconFront
-		})
-		SetThingProperty({ Property = "SortBoundsScale", Value = 2, DestinationId = exitDoor.DoorIconFront })
+		-- Not adding for Tartarus, as the previews work differently there and it's always breaking
+		if exitDoor.Name == "AsphodelBoat01b" then
+			-- Shimmer animation in front of the backing and reward
+			exitDoor.AdditionalAttractIds = exitDoor.AdditionalAttractIds or {}
+			exitDoor.DoorIconFront = SpawnObstacle({
+				Name = "BlankGeoObstacle",
+				Group = "Combat_Menu_Backing"
+			})
+			table.insert(exitDoor.AdditionalAttractIds, exitDoor.DoorIconFront)
+			Attach({ Id = exitDoor.DoorIconFront, DestinationId = exitDoor.ObjectId, DynamicScaleOffset = true })
+			SetThingProperty({
+				Property = "SortMode",
+				Value = exitDoor.IconSortMode or "FromParent",
+				DestinationId = exitDoor.DoorIconFront
+			})
+			SetThingProperty({ Property = "SortBoundsScale", Value = 2, DestinationId = exitDoor.DoorIconFront })
 
-		SetAnimation({ Name = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front", DestinationId = exitDoor.DoorIconFront })
+			local rewardContainerAnim = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front"
+			if room.RewardStoreName == "MetaProgress" then
+				rewardContainerAnim = rewardContainerAnim .. "_MetaReward"
+			end
+
+			SetAnimation({
+				Name = rewardContainerAnim,
+				DestinationId = exitDoor.DoorIconFront,
+				OffsetY = properties.doorIconFrontOffsetY
+			})
+		end
 
 		if IsHorizontallyFlipped({ Id = exitDoor.ObjectId }) then
-			local ids = { doorIconId, exitDoor.DoorIconFront, backingId }
+			local ids = { doorIconId, exitDoor.DoorIconFront or nil, backingId }
 			FlipHorizontal({ Ids = ids })
 		end
 

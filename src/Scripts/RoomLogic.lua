@@ -2,12 +2,13 @@
 modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
 	base(run)
 	if run.ModsNikkelMHadesBiomesExitDoors ~= nil then
-		for _, door in ipairs(run.ModsNikkelMHadesBiomesExitDoors) do
-			if door.LockedAnimation ~= nil then
-				SetAnimation({ Name = door.LockedAnimation, DestinationId = door.ObjectId })
+		for _, exitDoor in ipairs(run.ModsNikkelMHadesBiomesExitDoors) do
+			if run.NextRewardStoreName == "RunProgress" and exitDoor.CustomLockedAnimation_Run ~= nil then
+				SetAnimation({ Name = exitDoor.CustomLockedAnimation_Run, DestinationId = exitDoor.ObjectId })
+			elseif run.NextRewardStoreName == "MetaProgress" and exitDoor.CustomLockedAnimation_Meta ~= nil then
+				SetAnimation({ Name = exitDoor.CustomLockedAnimation_Meta, DestinationId = exitDoor.ObjectId })
 			end
 		end
-
 		run.ModsNikkelMHadesBiomesExitDoors = {}
 	end
 end)

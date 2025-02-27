@@ -1,5 +1,6 @@
 -- Red and blue reward preview backing
-game.ObstacleData.TartarusDoor03b.LockedAnimation = "HadesDoorLocked"
+game.ObstacleData.TartarusDoor03b.CustomLockedAnimation_Run = "HadesDoorLocked"
+game.ObstacleData.TartarusDoor03b.CustomLockedAnimation_Meta = "DoorLocked_MetaReward"
 game.ObstacleData.TartarusDoor03b.UnlockedAnimation = "DoorLocked_MetaReward"
 
 -- Rubble that falls when hitting destructible pillars

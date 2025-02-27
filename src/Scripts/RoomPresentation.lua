@@ -1,7 +1,4 @@
 function game.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId, skipCameraLockOnEnd)
-	print("AsphodelEnterRoomPresentation")
-	print(endLookAtId)
-	print(skipCameraLockOnEnd)
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or
 			0.8
 
@@ -85,7 +82,6 @@ function game.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId
 end
 
 function game.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
-	print("AsphodelLeaveRoomPresentation")
 	local exitDoorId = exitDoor.ObjectId
 	AddInputBlock({ Name = "LeaveRoomPresentation" })
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
