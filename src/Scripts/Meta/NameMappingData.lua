@@ -14,6 +14,8 @@ mod.EnemyNameMappings = {
 	BloodlessNakedElite = "HadesBloodlessNakedElite",
 	BloodlessGrenadier = "HadesBloodlessGrenadier",
 	BloodlessGrenadierElite = "HadesBloodlessGrenadierElite",
+	BloodlessSelfDestruct = "HadesBloodlessSelfDestruct",
+	BloodlessSelfDestructElite = "HadesBloodlessSelfDestructElite",
 }
 
 -- Enemies that should be removed from the Hades enemy data, as they already exist in Hades II. Also applies to Enemies.sjson
@@ -23,6 +25,8 @@ mod.EnemyNameRemovals = {
 	"BloodlessNakedElite",
 	"BloodlessGrenadier",
 	"BloodlessGrenadierElite",
+	"BloodlessSelfDestruct",
+	"BloodlessSelfDestructElite",
 }
 
 mod.EnemyProjectileMappings = {

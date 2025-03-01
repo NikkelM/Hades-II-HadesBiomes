@@ -46,6 +46,14 @@ local enemyAdditions = {
 		InheritFrom = "BloodlessGrenadier_Elite",
 		Speed = 550.0,
 	},
+	{
+		Name = "HadesBloodlessSelfDestruct",
+		InheritFrom = "BloodlessSelfDestruct",
+	},
+	{
+		Name = "HadesBloodlessSelfDestructElite",
+		InheritFrom = "BloodlessSelfDestruct_Elite",
+	},
 }
 
 local enemyKeyReplacements = {

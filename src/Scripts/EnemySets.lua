@@ -86,26 +86,26 @@ game.EnemySets.EnemiesBiome1_EliteChallenge = {
 	"PunchingBagUnitElite", -- Wretch Glutton Elite
 }
 
--- TODO: Test with new version
+-- TODO: Add other possible enemies
 game.EnemySets.EnemiesBiome1MiniBoss = {
 	"BloodlessGrenadierElite",
-	-- "BloodlessSelfDestruct_Elite",
+	"BloodlessSelfDestructElite",
 	-- "BloodlessPitcher_Elite",
 }
 
 -- Asphodel
 game.EnemySets.EnemiesBiome2 = {
 	-- "CrusherUnit",
-	"LightSpawnerElite",
+	"LightSpawnerElite",  -- Done
 
-	"BloodlessNaked",      -- Bloodless -- Duplicate Name!
-	"BloodlessNakedElite", -- re-using enemy from Hades II
+	"BloodlessNaked",     -- Done
+	"BloodlessNakedElite", -- Done
 	-- "BloodlessNakedBerserker",
 	-- "BloodlessNakedBerserkerElite",
-	"BloodlessGrenadier", -- Bloodless
-	"BloodlessGrenadierElite", -- Bloodless
-	-- "BloodlessSelfDestruct",
-	-- "BloodlessSelfDestructElite",
+	-- "BloodlessGrenadier",     -- Done
+	-- "BloodlessGrenadierElite", -- Done
+	"BloodlessSelfDestruct",     -- Done
+	"BloodlessSelfDestructElite", -- Done
 	-- "BloodlessPitcher",
 	-- "BloodlessPitcherElite",
 	-- "BloodlessWaveFist",
@@ -121,17 +121,17 @@ game.EnemySets.EnemiesBiome2 = {
 
 -- TimeChallenge
 game.EnemySets.EnemiesBiome2Challenge = {
-	"LightSpawnerElite",
+	"LightSpawnerElite",         -- Done
 
-	"BloodlessNaked",      -- Bloodless
-	"BloodlessNaked",      -- Bloodless
+	"BloodlessNaked",            -- Done
+	"BloodlessNaked",            -- Done
 
-	"BloodlessNakedElite", -- re-using enemy from Hades II
+	"BloodlessNakedElite",       -- Done
 	-- "BloodlessNakedBerserkerElite",
-	"BloodlessGrenadier",     -- Bloodless
-	"BloodlessGrenadierElite", -- Bloodless
-	-- "BloodlessSelfDestruct",
-	-- "BloodlessSelfDestructElite",
+	"BloodlessGrenadier",        -- Done
+	"BloodlessGrenadierElite",   -- Done
+	"BloodlessSelfDestruct",     -- Done
+	"BloodlessSelfDestructElite", -- Done
 	-- "BloodlessPitcher",
 	-- "BloodlessPitcherElite",
 	-- "BloodlessWaveFist",
@@ -149,13 +149,13 @@ game.EnemySets.EnemiesBiome2Challenge = {
 game.EnemySets.EnemiesBiome2Thanatos = {
 	-- "CrusherUnit",
 
-	"BloodlessNaked",      -- Bloodless
-	"BloodlessNakedElite", -- re-using enemy from Hades II
+	"BloodlessNaked",     -- Done
+	"BloodlessNakedElite", -- Done
 	-- "BloodlessNakedBerserker",
 	-- "BloodlessNakedBerserkerElite",
-	"BloodlessGrenadier", -- Bloodless
-	-- "BloodlessSelfDestruct",
-	-- "BloodlessSelfDestructElite",
+	"BloodlessGrenadier",        -- Done
+	"BloodlessSelfDestruct",     -- Done
+	"BloodlessSelfDestructElite", -- Done
 	-- "BloodlessPitcher",
 	-- "BloodlessWaveFist",
 	-- "BloodlessWaveFistElite",
@@ -169,17 +169,17 @@ game.EnemySets.EnemiesBiome2Thanatos = {
 
 -- Copied from Wrapping - need to test which make sense
 game.EnemySets.EnemiesBiome2_EliteChallenge = {
-	"BloodlessNakedElite", -- re-using enemy from Hades II
-	"BloodlessGrenadierElite", -- Bloodless
-	-- "BloodlessSelfDestructElite",
+	"BloodlessNakedElite",       -- Done
+	"BloodlessGrenadierElite",   -- Done
+	"BloodlessSelfDestructElite", -- Done
 	-- "BloodlessPitcherElite",
 	-- "BloodlessWaveFistElite",
 }
 
 game.EnemySets.EnemiesBiome2Wrapping = {
-	"BloodlessNakedElite", -- re-using enemy from Hades II
-	"BloodlessGrenadierElite", -- Bloodless
-	-- "BloodlessSelfDestructElite",
+	"BloodlessNakedElite",       -- Done
+	"BloodlessGrenadierElite",   -- Done
+	"BloodlessSelfDestructElite", -- Done
 	-- "BloodlessPitcherElite",
 	-- "BloodlessWaveFistElite",
 }
@@ -188,10 +188,10 @@ game.EnemySets.EnemiesBiome2Devotion = {
 	-- "SpreadShotUnitElite", -- Wretch Caster
 	-- "FreezeShotUnitElite", -- Wretch Caster
 
-	"BloodlessNakedElite", -- re-using enemy from Hades II
-	"BloodlessNakedBerserkerElite",
-	-- "BloodlessGrenadierElite", -- Bloodless
-	-- "BloodlessSelfDestructElite",
+	"BloodlessNakedElite",         -- Done
+	"BloodlessNakedBerserkerElite", -- Done
+	"BloodlessGrenadierElite",     -- Done
+	"BloodlessSelfDestructElite",  -- Done
 	-- "BloodlessPitcherElite",
 	-- "BloodlessWaveFistElite",
 	-- "RangedBurrowerElite",
@@ -199,14 +199,14 @@ game.EnemySets.EnemiesBiome2Devotion = {
 
 game.EnemySets.EnemiesBiome2Hard = {
 	-- "SpreadShotUnitElite", -- Wretch Caster
-	"LightSpawnerElite",
+	"LightSpawnerElite", -- Done
 	-- "FreezeShotUnitElite",
 	-- "CrusherUnit",
 
-	"BloodlessNakedElite", -- re-using enemy from Hades II
+	"BloodlessNakedElite",       -- Done
 	-- "BloodlessNakedBerserkerElite",
-	"BloodlessGrenadierElite", -- Bloodless
-	-- "BloodlessSelfDestructElite",
+	"BloodlessGrenadierElite",   -- Done
+	"BloodlessSelfDestructElite", -- Done
 	-- "BloodlessPitcherElite",
 	-- "BloodlessWaveFistElite",
 	-- "RangedBurrowerElite",
