@@ -200,6 +200,8 @@ local enemyReplacements = {
 	HadesBloodlessWaveFistElite = game.DeepCopyTable(game.EnemyData.BloodlessWaveFist_Elite),
 	HadesSpreadShotUnit = game.DeepCopyTable(game.EnemyData.SpreadShotUnit),
 	HadesSpreadShotUnitElite = game.DeepCopyTable(game.EnemyData.SpreadShotUnit_Elite),
+	BloodlessNakedBerserker = game.DeepCopyTable(game.EnemyData.BloodlessBerserker),
+	BloodlessNakedBerserkerElite = game.DeepCopyTable(game.EnemyData.BloodlessBerserker_Elite),
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
@@ -375,6 +377,40 @@ local enemyModifications = {
 			BlockEnemyTypes = { "HadesBloodlessNaked" },
 		},
 	},
+	BloodlessNakedBerserker = {
+		RequiredIntroEncounter = "BerserkerIntro",
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "BloodlessNakedBerserkerElite" },
+		},
+	},
+	BloodlessNakedBerserkerElite = {
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "BloodlessNakedBerserker" },
+		},
+	},
+	HadesBloodlessWaveFist = {
+		RequiredIntroEncounter = "WaveFistIntro",
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessWaveFistElite" },
+		},
+	},
+	HadesBloodlessWaveFistElite = {
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessWaveFist" },
+		},
+	},
 	HadesBloodlessGrenadier = {
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -392,6 +428,7 @@ local enemyModifications = {
 		},
 	},
 	HadesBloodlessSelfDestruct = {
+		RequiredIntroEncounter = "SelfDestructIntro",
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -408,6 +445,7 @@ local enemyModifications = {
 		},
 	},
 	HadesBloodlessPitcher = {
+		RequiredIntroEncounter = "PitcherIntro",
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -421,22 +459,6 @@ local enemyModifications = {
 		ActivateFxPreSpawn = "nil",
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessPitcher" },
-		},
-	},
-	HadesBloodlessWaveFist = {
-		ActivateFx = "EnemySummonRune",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
-		GeneratorData = {
-			BlockEnemyTypes = { "HadesBloodlessWaveFistElite" },
-		},
-	},
-	HadesBloodlessWaveFistElite = {
-		ActivateFx = "EnemySummonRune",
-		ActivateFx2 = "nil",
-		ActivateFxPreSpawn = "nil",
-		GeneratorData = {
-			BlockEnemyTypes = { "HadesBloodlessWaveFist" },
 		},
 	},
 	HadesSpreadShotUnit = {

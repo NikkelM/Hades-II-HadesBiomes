@@ -39,6 +39,8 @@ mod.EnemyNameRemovals = {
 	"BloodlessWaveFistElite",
 	"SpreadShotUnit",
 	"SpreadShotUnitElite",
+	"BloodlessNakedBerserker",
+	"BloodlessNakedBerserkerElite",
 }
 
 mod.EnemyProjectileMappings = {

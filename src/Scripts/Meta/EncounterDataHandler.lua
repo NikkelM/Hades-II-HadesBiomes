@@ -28,6 +28,7 @@ function mod.ApplyModificationsAndInheritEncounterData(base, modifications, repl
 	for oldName, newName in pairs(mod.EnemyNameMappings) do
 		-- If an encounter has predefined spawn waves, spawn the correct enemies
 		mod.UpdateField(base, oldName, newName, { "SpawnWaves", "*", "Spawns", "*", "Name" }, "EncounterData.lua")
+		mod.UpdateField(base, oldName, newName, { "WaveTemplate", "Spawns", "*", "Name" }, "EncounterData.lua")
 		mod.UpdateField(base, oldName, newName, { "ManualWaveTemplates", "*", "Spawns", "*", "Name" }, "EncounterData.lua")
 	end
 

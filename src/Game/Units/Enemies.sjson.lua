@@ -78,6 +78,14 @@ local enemyAdditions = {
 		Name = "HadesSpreadShotUnitElite",
 		InheritFrom = "SpreadShotUnit_Elite",
 	},
+	{
+		Name = "BloodlessNakedBerserker",
+		InheritFrom = "BloodlessBerserker",
+	},
+	{
+		Name = "BloodlessNakedBerserkerElite",
+		InheritFrom = "BloodlessBerserker_Elite",
+	},
 }
 
 local enemyKeyReplacements = {
