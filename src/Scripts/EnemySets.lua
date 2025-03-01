@@ -14,18 +14,15 @@ end
 game.EnemySets.EnemiesBiome1 = {
 	"Swarmer",             -- Wretch Swarmer -- Duplicate Name!
 	"SwarmerElite",        -- Wretch Swarmer
-	"LightSpawner",        -- Spawns skulls
+	"LightSpawner",        -- Skullomat
 	"ThiefMineLayer",      -- Wretch Thief
 	"ThiefMineLayerElite", -- Wretch Thief
-
 	"PunchingBagUnit",     -- Wretch Glutton
 	"HeavyMelee",          -- Wretch Thug
 	"DisembodiedHand",     -- Wringer
 	"DisembodiedHandElite", -- Wringer Elite
-
 	"LightRanged",         -- Wretch Caster -- Duplicate name!
 	"HeavyRanged",         -- Crystal
-
 	"HeavyMeleeElite",     -- Wretch Thug Elite
 	"LightRangedElite",    -- Wretch Caster Elite
 	"PunchingBagUnitElite", -- Wretch Glutton Elite
@@ -40,19 +37,15 @@ game.EnemySets.EnemiesBiome1Devotion = {
 }
 
 game.EnemySets.EnemiesBiome1Survival = {
-	"Swarmer",            -- Wretch Swarmer
-	"SwarmerElite",       -- Wretch Swarmer
-	"LightSpawner",
-	"ThiefMineLayer",     -- Wretch Thief
+	"Swarmer",             -- Wretch Swarmer
+	"SwarmerElite",        -- Wretch Swarmer
+	"LightSpawner",        -- Skullomat
+	"ThiefMineLayer",      -- Wretch Thief
 	"ThiefMineLayerElite", -- Wretch Thief
-
-	"PunchingBagUnit",    -- Wretch Glutton
-	"HeavyMelee",         -- Wretch Thug
-
-	"LightRanged",        -- Wretch Caster
-	"HeavyRanged",        -- Crystal
-	--"Grenadier", -- Wretch Caster
-
+	"PunchingBagUnit",     -- Wretch Glutton
+	"HeavyMelee",          -- Wretch Thug
+	"LightRanged",         -- Wretch Caster
+	"HeavyRanged",         -- Crystal
 	"HeavyMeleeElite",     -- Wretch Thug Elite
 	"LightRangedElite",    -- Wretch Caster Elite
 	"PunchingBagUnitElite", -- Wretch Glutton Elite
@@ -101,17 +94,17 @@ game.EnemySets.EnemiesBiome2 = {
 	"BloodlessNakedElite", -- Done
 	-- "BloodlessNakedBerserker",
 	-- "BloodlessNakedBerserkerElite",
-	"BloodlessGrenadier",     -- Done
-	"BloodlessGrenadierElite", -- Done
+	"BloodlessGrenadier",        -- Done
+	"BloodlessGrenadierElite",   -- Done
 	"BloodlessSelfDestruct",     -- Done
 	"BloodlessSelfDestructElite", -- Done
-	"BloodlessPitcher",     -- Done
-	"BloodlessPitcherElite", -- Done
-	-- "BloodlessWaveFist",
-	-- "BloodlessWaveFistElite",
+	"BloodlessPitcher",          -- Done
+	"BloodlessPitcherElite",     -- Done
+	"BloodlessWaveFist",         -- Done
+	"BloodlessWaveFistElite",    -- Done
 
-	-- "SpreadShotUnit", -- Wretch Caster
-	-- "SpreadShotUnitElite", -- Wretch Caster
+	-- "SpreadShotUnit",
+	-- "SpreadShotUnitElite",
 	-- "FreezeShotUnit",
 	-- "FreezeShotUnitElite",
 	-- "RangedBurrower",
@@ -133,12 +126,12 @@ game.EnemySets.EnemiesBiome2Challenge = {
 	"BloodlessSelfDestructElite", -- Done
 	"BloodlessPitcher",          -- Done
 	"BloodlessPitcherElite",     -- Done
-	-- "BloodlessWaveFist",
-	-- "BloodlessWaveFistElite",
+	"BloodlessWaveFist",         -- Done
+	"BloodlessWaveFistElite",    -- Done
 
-	-- "HeavyRangedElite",
-	-- "SpreadShotUnit",     -- Wretch Caster
-	-- "SpreadShotUnitElite", -- Wretch Caster
+	"HeavyRangedElite",          -- Done
+	-- "SpreadShotUnit",
+	-- "SpreadShotUnitElite",
 	-- "FreezeShotUnit",
 	-- "FreezeShotUnitElite",
 	-- "RangedBurrower",
@@ -156,11 +149,11 @@ game.EnemySets.EnemiesBiome2Thanatos = {
 	"BloodlessSelfDestruct",     -- Done
 	"BloodlessSelfDestructElite", -- Done
 	"BloodlessPitcher",          -- Done
-	-- "BloodlessWaveFist",
-	-- "BloodlessWaveFistElite",
+	"BloodlessWaveFist",         -- Done
+	"BloodlessWaveFistElite",    -- Done
 
-	-- "SpreadShotUnit",     -- Wretch Caster
-	-- "SpreadShotUnitElite", -- Wretch Caster
+	-- "SpreadShotUnit",
+	-- "SpreadShotUnitElite",
 	-- "FreezeShotUnit",
 	-- "RangedBurrower",
 	-- "RangedBurrowerElite",
@@ -172,7 +165,7 @@ game.EnemySets.EnemiesBiome2_EliteChallenge = {
 	"BloodlessGrenadierElite",   -- Done
 	"BloodlessSelfDestructElite", -- Done
 	"BloodlessPitcherElite",     -- Done
-	-- "BloodlessWaveFistElite",
+	"BloodlessWaveFistElite",    -- Done
 }
 
 game.EnemySets.EnemiesBiome2Wrapping = {
@@ -180,24 +173,24 @@ game.EnemySets.EnemiesBiome2Wrapping = {
 	"BloodlessGrenadierElite",   -- Done
 	"BloodlessSelfDestructElite", -- Done
 	"BloodlessPitcherElite",     -- Done
-	-- "BloodlessWaveFistElite",
+	"BloodlessWaveFistElite",    -- Done
 }
 
 game.EnemySets.EnemiesBiome2Devotion = {
-	-- "SpreadShotUnitElite", -- Wretch Caster
-	-- "FreezeShotUnitElite", -- Wretch Caster
+	-- "SpreadShotUnitElite", r
+	-- "FreezeShotUnitElite",
 
 	"BloodlessNakedElite",         -- Done
 	"BloodlessNakedBerserkerElite", -- Done
 	"BloodlessGrenadierElite",     -- Done
 	"BloodlessSelfDestructElite",  -- Done
 	"BloodlessPitcherElite",       -- Done
-	-- "BloodlessWaveFistElite",
+	"BloodlessWaveFistElite",      -- Done
 	-- "RangedBurrowerElite",
 }
 
 game.EnemySets.EnemiesBiome2Hard = {
-	-- "SpreadShotUnitElite", -- Wretch Caster
+	-- "SpreadShotUnitElite",
 	"LightSpawnerElite", -- Done
 	-- "FreezeShotUnitElite",
 	-- "CrusherUnit",
@@ -207,7 +200,7 @@ game.EnemySets.EnemiesBiome2Hard = {
 	"BloodlessGrenadierElite",   -- Done
 	"BloodlessSelfDestructElite", -- Done
 	"BloodlessPitcherElite",     -- Done
-	-- "BloodlessWaveFistElite",
+	"BloodlessWaveFistElite",    -- Done
 	-- "RangedBurrowerElite",
 }
 
