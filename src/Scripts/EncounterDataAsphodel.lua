@@ -32,7 +32,7 @@ local encounterReplacements = {
 		-- The original from Hades is 170, Hades II GeneratedF is 140
 		BaseDifficulty = 180,
 		-- Load the base Hades II Asphodel package, since we can reuse some enemies
-		LoadPackages = "Asphodel",
+		LoadPackages = { "Asphodel" },
 	},
 
 	PerfectClearChallengeAsphodel = {

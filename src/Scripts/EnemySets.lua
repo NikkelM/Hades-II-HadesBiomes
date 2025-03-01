@@ -86,24 +86,24 @@ game.EnemySets.EnemiesBiome1_EliteChallenge = {
 	"PunchingBagUnitElite", -- Wretch Glutton Elite
 }
 
+-- TODO: Test with new version
 game.EnemySets.EnemiesBiome1MiniBoss = {
 	"BloodlessGrenadierElite",
-	"BloodlessSelfDestruct_Elite",
-	"BloodlessPitcher_Elite"
+	-- "BloodlessSelfDestruct_Elite",
+	-- "BloodlessPitcher_Elite",
 }
 
 -- Asphodel
--- TODO: Copy-paste Hades II enemies to replace the spawn FX
 game.EnemySets.EnemiesBiome2 = {
 	-- "CrusherUnit",
-	-- "LightSpawnerElite", -- disabled to test the new enemies
+	"LightSpawnerElite",
 
-	"BloodlessNaked", -- Bloodless - already in Hades II
-	"BloodlessNaked_Elite", -- already in Hades II as BloodlessNaked_Elite instead of BloodlessNakedElite
+	"BloodlessNaked",      -- Bloodless -- Duplicate Name!
+	"BloodlessNakedElite", -- re-using enemy from Hades II
 	-- "BloodlessNakedBerserker",
 	-- "BloodlessNakedBerserkerElite",
-	-- "BloodlessGrenadier", -- Bloodless
-	-- "BloodlessGrenadierElite", -- Bloodless
+	"BloodlessGrenadier", -- Bloodless
+	"BloodlessGrenadierElite", -- Bloodless
 	-- "BloodlessSelfDestruct",
 	-- "BloodlessSelfDestructElite",
 	-- "BloodlessPitcher",
@@ -123,13 +123,13 @@ game.EnemySets.EnemiesBiome2 = {
 game.EnemySets.EnemiesBiome2Challenge = {
 	"LightSpawnerElite",
 
-	"BloodlessNaked", -- Bloodless
-	"BloodlessNaked", -- Bloodless
+	"BloodlessNaked",      -- Bloodless
+	"BloodlessNaked",      -- Bloodless
 
-	"BloodlessNaked_Elite",
+	"BloodlessNakedElite", -- re-using enemy from Hades II
 	-- "BloodlessNakedBerserkerElite",
-	-- "BloodlessGrenadier",     -- Bloodless
-	-- "BloodlessGrenadierElite", -- Bloodless
+	"BloodlessGrenadier",     -- Bloodless
+	"BloodlessGrenadierElite", -- Bloodless
 	-- "BloodlessSelfDestruct",
 	-- "BloodlessSelfDestructElite",
 	-- "BloodlessPitcher",
@@ -149,11 +149,11 @@ game.EnemySets.EnemiesBiome2Challenge = {
 game.EnemySets.EnemiesBiome2Thanatos = {
 	-- "CrusherUnit",
 
-	"BloodlessNaked", -- Bloodless
-	"BloodlessNaked_Elite",
+	"BloodlessNaked",      -- Bloodless
+	"BloodlessNakedElite", -- re-using enemy from Hades II
 	-- "BloodlessNakedBerserker",
 	-- "BloodlessNakedBerserkerElite",
-	-- "BloodlessGrenadier", -- Bloodless
+	"BloodlessGrenadier", -- Bloodless
 	-- "BloodlessSelfDestruct",
 	-- "BloodlessSelfDestructElite",
 	-- "BloodlessPitcher",
@@ -169,16 +169,16 @@ game.EnemySets.EnemiesBiome2Thanatos = {
 
 -- Copied from Wrapping - need to test which make sense
 game.EnemySets.EnemiesBiome2_EliteChallenge = {
-	"BloodlessNaked_Elite",
-	-- "BloodlessGrenadierElite", -- Bloodless
+	"BloodlessNakedElite", -- re-using enemy from Hades II
+	"BloodlessGrenadierElite", -- Bloodless
 	-- "BloodlessSelfDestructElite",
 	-- "BloodlessPitcherElite",
 	-- "BloodlessWaveFistElite",
 }
 
 game.EnemySets.EnemiesBiome2Wrapping = {
-	"BloodlessNaked_Elite",
-	-- "BloodlessGrenadierElite", -- Bloodless
+	"BloodlessNakedElite", -- re-using enemy from Hades II
+	"BloodlessGrenadierElite", -- Bloodless
 	-- "BloodlessSelfDestructElite",
 	-- "BloodlessPitcherElite",
 	-- "BloodlessWaveFistElite",
@@ -188,8 +188,8 @@ game.EnemySets.EnemiesBiome2Devotion = {
 	-- "SpreadShotUnitElite", -- Wretch Caster
 	-- "FreezeShotUnitElite", -- Wretch Caster
 
-	"BloodlessNaked_Elite",
-	-- "BloodlessNakedBerserkerElite",
+	"BloodlessNakedElite", -- re-using enemy from Hades II
+	"BloodlessNakedBerserkerElite",
 	-- "BloodlessGrenadierElite", -- Bloodless
 	-- "BloodlessSelfDestructElite",
 	-- "BloodlessPitcherElite",
@@ -203,9 +203,9 @@ game.EnemySets.EnemiesBiome2Hard = {
 	-- "FreezeShotUnitElite",
 	-- "CrusherUnit",
 
-	"BloodlessNaked_Elite",
+	"BloodlessNakedElite", -- re-using enemy from Hades II
 	-- "BloodlessNakedBerserkerElite",
-	-- "BloodlessGrenadierElite", -- Bloodless
+	"BloodlessGrenadierElite", -- Bloodless
 	-- "BloodlessSelfDestructElite",
 	-- "BloodlessPitcherElite",
 	-- "BloodlessWaveFistElite",

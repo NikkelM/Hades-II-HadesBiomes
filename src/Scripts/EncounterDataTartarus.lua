@@ -77,6 +77,11 @@ local encounterModifications = {
 		SpawnOverrides = { UseActivatePresentation = false, },
 		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		RequiredTextLines = mod.NilValue,
+		WaveTemplate = {
+			Spawns = {},
+			OverrideValues = game.BaseWaveOverrideValues,
+			StartDelay = 0.0
+		},
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,

@@ -292,3 +292,23 @@ function mod.RenameSjsonEntries(tableToModify, mappings, key, filename)
 		end
 	end
 end
+
+---Removes entries named in the mappings table from the tableToModify.
+---@param tableToModify table The table to modify
+---@param mappings table Needs to be a list of names to remove
+---@param key string The key to check for removal
+---@param filename string|nil The name of the file being modified, used for debugging purposes
+function mod.RemoveSjsonEntries(tableToModify, mappings, key, filename)
+	local mappingsSet = {}
+	for _, name in ipairs(mappings) do
+		mappingsSet[name] = true
+	end
+
+	for i = #tableToModify, 1, -1 do
+		local entry = tableToModify[i]
+		if entry[key] and mappingsSet[entry[key]] then
+			mod.DebugPrint("Removed entry: " .. entry[key] .. " from " .. (filename or "an unknown file"), 4)
+			table.remove(tableToModify, i)
+		end
+	end
+end

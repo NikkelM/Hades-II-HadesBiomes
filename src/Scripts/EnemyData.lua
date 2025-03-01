@@ -36,7 +36,7 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 		end
 	end
 
-	-- Apply replacements
+	-- Apply replacements/additions
 	for enemyName, enemyData in pairs(replacements) do
 		if not base[enemyName] then
 			base[enemyName] = {}
@@ -114,38 +114,40 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 	game.OverwriteTableKeys(game.EnemyData, base)
 end
 
-local enemyData = LoadHadesEnemyData()
--- Breaks spawning Skelly, as it adds invalid conversations to the enemy
--- Somehow doesn't work if set to mod.NilValue in enemyReplacements
-enemyData.TrainingMelee = nil
+local hadesEnemyData = LoadHadesEnemyData()
 -- Modified BaseVulnerableEnemy for all Hades enemies
-enemyData.BaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
+hadesEnemyData.BaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
 -- Modified BaseVulnerableEnemy just for Hades bosses, which need some modifications
-enemyData.HadesBossBaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
+hadesEnemyData.HadesBossBaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
+
+-- Remove data from Hades that we don't want to use (e.g. enemies in Asphodel that are already implemented in Hades II)
+for _, name in ipairs(mod.EnemyNameRemovals) do
+	hadesEnemyData[name] = nil
+end
 
 -- Some enemies exist in both Hades and Hades II, so we need to rename the Hades enemies
 for oldName, newName in pairs(mod.EnemyNameMappings) do
-	if enemyData[oldName] then
-		enemyData[newName] = enemyData[oldName]
-		enemyData[oldName] = nil
+	if hadesEnemyData[oldName] then
+		hadesEnemyData[newName] = hadesEnemyData[oldName]
+		hadesEnemyData[oldName] = nil
 		mod.DebugPrint("Renamed enemy: " .. oldName .. " to " .. newName .. " in EnemyData.lua", 4)
 	end
 	-- Update the name in dependent fields
 	-- Inherit properties from this name
-	mod.UpdateField(enemyData, oldName, newName, { "InheritFrom" }, "EnemyData.lua")
+	mod.UpdateField(hadesEnemyData, oldName, newName, { "InheritFrom" }, "EnemyData.lua")
 	-- If an enemy is spawned, this enemy cannot spawn
-	mod.UpdateField(enemyData, oldName, newName, { "GeneratorData", "BlockEnemyTypes" }, "EnemyData.lua")
+	mod.UpdateField(hadesEnemyData, oldName, newName, { "GeneratorData", "BlockEnemyTypes" }, "EnemyData.lua")
 	-- Other enemies can spawn this enemy
-	mod.UpdateField(enemyData, oldName, newName, { "SpawnOptions" }, "EnemyData.lua")
+	mod.UpdateField(hadesEnemyData, oldName, newName, { "SpawnOptions" }, "EnemyData.lua")
 end
 -- For renamed weapon names
 for oldName, newName in pairs(mod.EnemyWeaponMappings) do
-	mod.UpdateField(enemyData, oldName, newName, { "WeaponOptions" }, "EnemyData.lua")
+	mod.UpdateField(hadesEnemyData, oldName, newName, { "WeaponOptions" }, "EnemyData.lua")
 end
 
 -- Some enemies need to be modified so much, it's easier to redefine them
 -- This is true for most traps
-mod.ModifyEnemyTrapData(enemyData)
+mod.ModifyEnemyTrapData(hadesEnemyData)
 
 -- Replaces the key with the new value instead of modifying
 -- This is done AFTER data inheritance is processed
@@ -178,12 +180,18 @@ local enemyReplacements = {
 		-- SpawnerAI doesn't exist, spawn logic is in the weapon
 		AIOptions = { "AttackerAI", },
 	},
-	-- Copy paste the enemy in Hades II, but replace some animations and effects in modifications
-	BloodlessGrenadierElite = game.DeepCopyTable(game.EnemyData.BloodlessGrenadier_Elite),
 	-- Setting this to an empty table in the enemy doesn't work, so resetting the keys that break the animations here
 	Harpy = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
+
+	-- ASPHODEL
+	-- Copy pasting the enemy from Hades II, but replacing some animations and effects in modifications
+	-- The name here should be the name of the enemy we use in Hades, to make sure we don't accidentally change data for the Hades II enemy
+	HadesBloodlessNaked = game.DeepCopyTable(game.EnemyData.BloodlessNaked),
+	HadesBloodlessNakedElite = game.DeepCopyTable(game.EnemyData.BloodlessNaked_Elite),
+	HadesBloodlessGrenadier = game.DeepCopyTable(game.EnemyData.BloodlessGrenadier),
+	HadesBloodlessGrenadierElite = game.DeepCopyTable(game.EnemyData.BloodlessGrenadier_Elite),
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
@@ -329,47 +337,70 @@ local enemyModifications = {
 	},
 
 	-- ASPHODEL
-	-- Need to manually modify, as the enemy is DeepCopyTable'd above
-	BloodlessGrenadierElite = {
+	-- Need to manually modify these fields, as the enemies are DeepCopyTable'd from Hades II above
+	HadesBloodlessNaked = {
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessNakedElite" },
+		},
+	},
+	HadesBloodlessNakedElite = {
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessNaked" },
+		},
+	},
+	HadesBloodlessGrenadier = {
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInBloodlessGrenadierContainer",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessGrenadierElite" },
+		},
+	},
+	HadesBloodlessGrenadierElite = {
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		ActivateAnimation = "EnemyActivationFadeInBloodlessGrenadierContainer",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessGrenadier" },
+		},
 	},
 
 	-- These enemies have not been implemented yet
-	Chariot = {
-		LargeUnitCap = mod.NilValue,
-	},
-	ChariotSuicide = {
-		LargeUnitCap = mod.NilValue,
-	},
-	BloodlessNaked = {
-		LargeUnitCap = mod.NilValue,
-	},
-	BloodlessNakedBerserker = {
-		LargeUnitCap = mod.NilValue,
-	},
-	BloodlessWaveFist = {
-		LargeUnitCap = mod.NilValue,
-	},
-	BloodlessGrenadier = {
-		LargeUnitCap = mod.NilValue,
-	},
-	BloodlessSelfDestruct = {
-		LargeUnitCap = mod.NilValue,
-	},
-	BloodlessPitcher = {
-		LargeUnitCap = mod.NilValue,
-	},
-	SatyrRanged = {
-		LargeUnitCap = mod.NilValue,
-	},
-	SatyrRangedMiniboss = {
-		LargeUnitCap = mod.NilValue,
-	},
-	RatThug = {
-		LargeUnitCap = mod.NilValue,
-	},
+	-- Chariot = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
+	-- ChariotSuicide = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
+	-- BloodlessNakedBerserker = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
+	-- BloodlessWaveFist = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
+	-- BloodlessSelfDestruct = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
+	-- BloodlessPitcher = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
+	-- SatyrRanged = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
+	-- SatyrRangedMiniboss = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
+	-- RatThug = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
 
 	-- ENVIRONMENT
 	Breakable = {
@@ -401,7 +432,6 @@ local enemyModifications = {
 			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
 		},
 	},
-
 	BreakableAsphodel = {
 		CannotDieFromDamage = true,
 		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
@@ -469,7 +499,7 @@ local enemyKeyReplacements = {
 	ValueOptions = "BreakableValueOptions",
 }
 
-ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
+ApplyModificationsAndInheritEnemyData(hadesEnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
 
 -- Modifications to Hades II enemies
 -- Only modify enemies that are not being used in Hades II in this way!

@@ -4,10 +4,25 @@
 -- Enemies that exist in both games
 mod.EnemyNameMappings = {
 	BaseVulnerableEnemy = "HadesBaseVulnerableEnemy",
-
+	-- TARTARUS
 	LightRanged = "HadesLightRanged",
 	Swarmer = "HadesSwarmer",
 	ThiefMineLayer = "HadesThiefMineLayer",
+	-- ASPHODEL
+	-- Most of these already exist in Hades II, so we copy them and do some minor modifications, such as for spawn FX
+	BloodlessNaked = "HadesBloodlessNaked",
+	BloodlessNakedElite = "HadesBloodlessNakedElite",
+	BloodlessGrenadier = "HadesBloodlessGrenadier",
+	BloodlessGrenadierElite = "HadesBloodlessGrenadierElite",
+}
+
+-- Enemies that should be removed from the Hades enemy data, as they already exist in Hades II. Also applies to Enemies.sjson
+mod.EnemyNameRemovals = {
+	"TrainingMelee",
+	"BloodlessNaked",
+	"BloodlessNakedElite",
+	"BloodlessGrenadier",
+	"BloodlessGrenadierElite",
 }
 
 mod.EnemyProjectileMappings = {
