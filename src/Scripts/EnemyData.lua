@@ -198,6 +198,8 @@ local enemyReplacements = {
 	HadesBloodlessPitcherElite = game.DeepCopyTable(game.EnemyData.BloodlessPitcher_Elite),
 	HadesBloodlessWaveFist = game.DeepCopyTable(game.EnemyData.BloodlessWaveFist),
 	HadesBloodlessWaveFistElite = game.DeepCopyTable(game.EnemyData.BloodlessWaveFist_Elite),
+	HadesSpreadShotUnit = game.DeepCopyTable(game.EnemyData.SpreadShotUnit),
+	HadesSpreadShotUnitElite = game.DeepCopyTable(game.EnemyData.SpreadShotUnit_Elite),
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
@@ -435,6 +437,22 @@ local enemyModifications = {
 		ActivateFxPreSpawn = "nil",
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessWaveFist" },
+		},
+	},
+	HadesSpreadShotUnit = {
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesSpreadShotUnitElite" },
+		},
+	},
+	HadesSpreadShotUnitElite = {
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesSpreadShotUnit" },
 		},
 	},
 

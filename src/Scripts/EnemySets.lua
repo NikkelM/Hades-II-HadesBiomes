@@ -89,10 +89,9 @@ game.EnemySets.EnemiesBiome1MiniBoss = {
 game.EnemySets.EnemiesBiome2 = {
 	-- "CrusherUnit",
 	"LightSpawnerElite",  -- Done
-
 	"BloodlessNaked",     -- Done
 	"BloodlessNakedElite", -- Done
-	-- "BloodlessNakedBerserker",
+	-- "BloodlessNakedBerserker", -- BloodlessBerserker in Hades II
 	-- "BloodlessNakedBerserkerElite",
 	"BloodlessGrenadier",        -- Done
 	"BloodlessGrenadierElite",   -- Done
@@ -102,9 +101,8 @@ game.EnemySets.EnemiesBiome2 = {
 	"BloodlessPitcherElite",     -- Done
 	"BloodlessWaveFist",         -- Done
 	"BloodlessWaveFistElite",    -- Done
-
-	-- "SpreadShotUnit",
-	-- "SpreadShotUnitElite",
+	"SpreadShotUnit",            -- Done
+	"SpreadShotUnitElite",       -- Done
 	-- "FreezeShotUnit",
 	-- "FreezeShotUnitElite",
 	-- "RangedBurrower",
@@ -114,10 +112,8 @@ game.EnemySets.EnemiesBiome2 = {
 -- TimeChallenge
 game.EnemySets.EnemiesBiome2Challenge = {
 	"LightSpawnerElite",         -- Done
-
 	"BloodlessNaked",            -- Done
 	"BloodlessNaked",            -- Done
-
 	"BloodlessNakedElite",       -- Done
 	-- "BloodlessNakedBerserkerElite",
 	"BloodlessGrenadier",        -- Done
@@ -128,10 +124,9 @@ game.EnemySets.EnemiesBiome2Challenge = {
 	"BloodlessPitcherElite",     -- Done
 	"BloodlessWaveFist",         -- Done
 	"BloodlessWaveFistElite",    -- Done
-
 	"HeavyRangedElite",          -- Done
-	-- "SpreadShotUnit",
-	-- "SpreadShotUnitElite",
+	"SpreadShotUnit",            -- Done
+	"SpreadShotUnitElite",       -- Done
 	-- "FreezeShotUnit",
 	-- "FreezeShotUnitElite",
 	-- "RangedBurrower",
@@ -140,7 +135,6 @@ game.EnemySets.EnemiesBiome2Challenge = {
 
 game.EnemySets.EnemiesBiome2Thanatos = {
 	-- "CrusherUnit",
-
 	"BloodlessNaked",     -- Done
 	"BloodlessNakedElite", -- Done
 	-- "BloodlessNakedBerserker",
@@ -151,9 +145,8 @@ game.EnemySets.EnemiesBiome2Thanatos = {
 	"BloodlessPitcher",          -- Done
 	"BloodlessWaveFist",         -- Done
 	"BloodlessWaveFistElite",    -- Done
-
-	-- "SpreadShotUnit",
-	-- "SpreadShotUnitElite",
+	"SpreadShotUnit",            -- Done
+	"SpreadShotUnitElite",       -- Done
 	-- "FreezeShotUnit",
 	-- "RangedBurrower",
 	-- "RangedBurrowerElite",
@@ -177,9 +170,8 @@ game.EnemySets.EnemiesBiome2Wrapping = {
 }
 
 game.EnemySets.EnemiesBiome2Devotion = {
-	-- "SpreadShotUnitElite", r
+	"SpreadShotUnitElite",         -- Done
 	-- "FreezeShotUnitElite",
-
 	"BloodlessNakedElite",         -- Done
 	"BloodlessNakedBerserkerElite", -- Done
 	"BloodlessGrenadierElite",     -- Done
@@ -190,8 +182,8 @@ game.EnemySets.EnemiesBiome2Devotion = {
 }
 
 game.EnemySets.EnemiesBiome2Hard = {
-	-- "SpreadShotUnitElite",
-	"LightSpawnerElite", -- Done
+	"SpreadShotUnitElite", -- Done
+	"LightSpawnerElite",  -- Done
 	-- "FreezeShotUnitElite",
 	-- "CrusherUnit",
 
