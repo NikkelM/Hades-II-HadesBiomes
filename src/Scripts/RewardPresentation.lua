@@ -93,9 +93,9 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		elseif exitDoor.Name == "AsphodelBoat01b" then
 			properties = {
 				doorIconOffsetX = -5,
-				doorIconOffsetY = 70,
+				doorIconOffsetY = 50,
 				doorIconScale = 0.85,
-				doorIconFrontOffsetY = -112,
+				doorIconFrontOffsetY = -132,
 			}
 		end
 

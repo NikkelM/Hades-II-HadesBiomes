@@ -13,6 +13,9 @@ mod.HadesFxAnimationModifications = {
 	TisiphoneFogLoopDissipate = {
 		EndAlpha = 0.899,
 	},
+	["AsphodelRoomRewardAvailable-Back"] = {
+		OffsetY = -407.0,
+	},
 }
 
 -- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly
