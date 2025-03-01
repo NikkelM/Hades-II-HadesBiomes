@@ -25,6 +25,13 @@ local encounterDataTartarus = {
 	TimeChallengeTartarus = encounterData.TimeChallengeTartarus,
 	PerfectClearChallengeTartarus = game.DeepCopyTable(encounterData.PerfectClearChallengeF),
 	EliteChallengeTartarus = game.DeepCopyTable(encounterData.EliteChallengeF),
+
+	-- Intro encounters
+	-- ThiefMineLayerIntro = encounterData.ThiefMineLayerIntro, -- is broken
+	HeavyRangedIntro = encounterData.HeavyRangedIntro,
+	PunchingBagIntro = encounterData.PunchingBagIntro,
+	LightSpawnerIntro = encounterData.LightSpawnerIntro,
+	DisembodiedHandIntro = encounterData.DisembodiedHandIntro,
 }
 
 mod.UpdateField(encounterDataTartarus, "Generated", "ModsNikkelMHadesBiomesGenerated", { "InheritFrom" },

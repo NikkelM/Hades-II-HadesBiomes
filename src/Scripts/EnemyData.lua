@@ -234,6 +234,8 @@ local enemyModifications = {
 	},
 	ThiefMineLayer = {
 		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
+		-- The intro encounter is broken, there is nothing happening after the two enemies die
+		RequiredIntroEncounter = mod.NilValue,
 		DefaultAIData = {
 			AttackWhileBlendingIntervalMin = 2.0,
 			AttackWhileBlendingIntervalMax = 2.5,
@@ -308,7 +310,7 @@ local enemyModifications = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
 		DeathFx = "BreakableDeathAnim",
 		DeathGraphic = "SpawnerDeath",
-		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon" },
+		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon", },
 		DefaultAIData = { DeepInheritance = true, },
 		OnDamagedFunctionName = "AggroSpawns",
 		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
@@ -337,6 +339,17 @@ local enemyModifications = {
 	},
 
 	-- ASPHODEL
+	LightSpawnerElite = {
+		IsModdedHadesEnemy = true,
+		StunAnimations = { Default = "SpawnerAttackAnim", },
+		DeathFx = "BreakableDeathAnim",
+		DeathGraphic = "SpawnerDeath",
+		WeaponOptions = { "HadesLightSpawnerEliteSpawnerWeapon", },
+		DefaultAIData = { DeepInheritance = true, },
+		OnDamagedFunctionName = "AggroSpawns",
+		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
+		BlockRaiseDead = true,
+	},
 	-- Need to manually modify these fields, as the enemies are DeepCopyTable'd from Hades II above
 	HadesBloodlessNaked = {
 		ActivateFx = "EnemySummonRuneMedium",
@@ -358,7 +371,6 @@ local enemyModifications = {
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
-		ActivateAnimation = "EnemyActivationFadeInBloodlessGrenadierContainer",
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessGrenadierElite" },
 		},
@@ -367,7 +379,6 @@ local enemyModifications = {
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
-		ActivateAnimation = "EnemyActivationFadeInBloodlessGrenadierContainer",
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessGrenadier" },
 		},
@@ -477,6 +488,7 @@ end
 
 -- Some keys were renamed in the DefaultAIData property
 local enemyKeyReplacements = {
+	RequiredIntroEncounter = "IntroEncounterName",
 	DefaultAIData = {
 		AIAttackDistance = "AttackDistance",
 		AIBufferDistance = "RetreatBufferDistance",

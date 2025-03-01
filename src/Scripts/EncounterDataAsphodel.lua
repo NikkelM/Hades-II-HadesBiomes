@@ -16,6 +16,17 @@ local encounterDataAsphodel = {
 	TimeChallengeAsphodel = encounterData.TimeChallengeAsphodel,
 	PerfectClearChallengeAsphodel = game.DeepCopyTable(encounterData.PerfectClearChallengeF),
 	EliteChallengeAsphodel = game.DeepCopyTable(encounterData.EliteChallengeF),
+
+	-- Intro encounters
+	SpreadShotIntro = encounterData.SpreadShotIntro,
+	ShieldRangedIntro = encounterData.ShieldRangedIntro,
+	CrusherIntro = encounterData.CrusherIntro,
+	FreezeShotIntro = encounterData.FreezeShotIntro,
+	RangedBurrowerIntro = encounterData.RangedBurrowerIntro,
+	BerserkerIntro = encounterData.BerserkerIntro,
+	WaveFistIntro = encounterData.WaveFistIntro,
+	PitcherIntro = encounterData.PitcherIntro,
+	SelfDestructIntro = encounterData.SelfDestructIntro,
 }
 
 mod.UpdateField(encounterDataAsphodel, "Generated", "ModsNikkelMHadesBiomesGenerated", { "InheritFrom" },

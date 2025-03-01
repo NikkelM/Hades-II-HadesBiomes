@@ -20,6 +20,8 @@ local hadesEnemiesModifications = {
 	WretchAssassin = { InheritFrom = "1_BaseEnemy" },
 	Harpy = { InheritFrom = "1_BaseEnemy" },
 
+	-- ASPHODEL
+
 	-- ENVIRONMENT
 	Breakable = { InheritFrom = "1_BaseDestructible" },
 }

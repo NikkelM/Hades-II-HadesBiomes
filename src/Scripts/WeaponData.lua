@@ -43,8 +43,7 @@ local weaponModifications = {
 		},
 	},
 	HadesLightSpawnerSpawnerWeapon = {
-		Requirements =
-		{
+		Requirements = {
 			MaxActiveSpawns = 5,
 			RequiresNotCharmed = true,
 		},
@@ -297,6 +296,28 @@ local weaponModifications = {
 	SummonTisiphoneFog = {
 		AIData = {
 			ProjectileName = "TisiphoneFog",
+		},
+	},
+
+	-- ASPHODEL
+	HadesLightSpawnerEliteSpawnerWeapon = {
+		Requirements = {
+			MaxActiveSpawns = 6,
+			RequiresNotCharmed = true,
+		},
+		AIData = {
+			SpawnBurstDelay = 4.5,
+			SpawnsPerBurst = 3,
+			SpawnRadius = 0,
+			SpawnRate = 1.2,
+			SpawnDelay = 0.6,
+			SpawnedAggroTetherDistance = 1200,
+			SpawnAggroed = false,
+			SpawnerOptions = { "SwarmerElite" },
+			NoProjectile = true,
+			SpawnBurstOnFire = true,
+			MaxActiveSpawns = 6,
+			SpawnsSkipActivatePresentation = true,
 		},
 	},
 }
