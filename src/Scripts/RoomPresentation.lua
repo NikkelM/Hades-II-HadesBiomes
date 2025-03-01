@@ -1,8 +1,6 @@
 modutil.mod.Path.Wrap("DestroyDoorRewardPresenation", function(base, door)
 	if door.AdditionalAttractIds ~= nil then
-		for i, _ in ipairs(door.AdditionalAttractIds) do
-			Destroy({ Id = door.RewardPreviewBackingIds[i] })
-		end
+		Destroy({ Ids = GetAllValues(door.RewardPreviewBackingIds) })
 	end
 	if door.DoorIconFront ~= nil then
 		Destroy({ Id = door.DoorIconFront })
@@ -105,7 +103,7 @@ function game.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
 
 	if door ~= nil then
 		if door.AdditionalIcons ~= nil and not game.IsEmpty(door.AdditionalIcons) then
-			Destroy({ Ids = door.AdditionalIcons })
+			Destroy({ Ids = GetAllValues(door.AdditionalIcons) })
 			door.AdditionalIcons = nil
 		end
 		game.DestroyDoorRewardPresenation(door)
@@ -183,5 +181,4 @@ function game.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
 	RemoveInputBlock({ Name = "LeaveRoomPresentation" })
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
 	SetPlayerVulnerable("LeaveRoomPresentation")
-	print("Presentation done")
 end
