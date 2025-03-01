@@ -99,8 +99,8 @@ game.EnemySets.EnemiesBiome2 = {
 
 	"BloodlessNaked",     -- Done
 	"BloodlessNakedElite", -- Done
-	"BloodlessNakedBerserker",
-	"BloodlessNakedBerserkerElite",
+	-- "BloodlessNakedBerserker",
+	-- "BloodlessNakedBerserkerElite",
 	"BloodlessGrenadier",     -- Done
 	"BloodlessGrenadierElite", -- Done
 	"BloodlessSelfDestruct",     -- Done
