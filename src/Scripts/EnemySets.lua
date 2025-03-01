@@ -86,11 +86,10 @@ game.EnemySets.EnemiesBiome1_EliteChallenge = {
 	"PunchingBagUnitElite", -- Wretch Glutton Elite
 }
 
--- TODO: Add other possible enemies
 game.EnemySets.EnemiesBiome1MiniBoss = {
 	"BloodlessGrenadierElite",
 	"BloodlessSelfDestructElite",
-	-- "BloodlessPitcher_Elite",
+	"BloodlessPitcherElite",
 }
 
 -- Asphodel
@@ -100,14 +99,14 @@ game.EnemySets.EnemiesBiome2 = {
 
 	"BloodlessNaked",     -- Done
 	"BloodlessNakedElite", -- Done
-	-- "BloodlessNakedBerserker",
-	-- "BloodlessNakedBerserkerElite",
-	-- "BloodlessGrenadier",     -- Done
-	-- "BloodlessGrenadierElite", -- Done
+	"BloodlessNakedBerserker",
+	"BloodlessNakedBerserkerElite",
+	"BloodlessGrenadier",     -- Done
+	"BloodlessGrenadierElite", -- Done
 	"BloodlessSelfDestruct",     -- Done
 	"BloodlessSelfDestructElite", -- Done
-	-- "BloodlessPitcher",
-	-- "BloodlessPitcherElite",
+	"BloodlessPitcher",     -- Done
+	"BloodlessPitcherElite", -- Done
 	-- "BloodlessWaveFist",
 	-- "BloodlessWaveFistElite",
 
@@ -132,8 +131,8 @@ game.EnemySets.EnemiesBiome2Challenge = {
 	"BloodlessGrenadierElite",   -- Done
 	"BloodlessSelfDestruct",     -- Done
 	"BloodlessSelfDestructElite", -- Done
-	-- "BloodlessPitcher",
-	-- "BloodlessPitcherElite",
+	"BloodlessPitcher",          -- Done
+	"BloodlessPitcherElite",     -- Done
 	-- "BloodlessWaveFist",
 	-- "BloodlessWaveFistElite",
 
@@ -156,7 +155,7 @@ game.EnemySets.EnemiesBiome2Thanatos = {
 	"BloodlessGrenadier",        -- Done
 	"BloodlessSelfDestruct",     -- Done
 	"BloodlessSelfDestructElite", -- Done
-	-- "BloodlessPitcher",
+	"BloodlessPitcher",          -- Done
 	-- "BloodlessWaveFist",
 	-- "BloodlessWaveFistElite",
 
@@ -172,7 +171,7 @@ game.EnemySets.EnemiesBiome2_EliteChallenge = {
 	"BloodlessNakedElite",       -- Done
 	"BloodlessGrenadierElite",   -- Done
 	"BloodlessSelfDestructElite", -- Done
-	-- "BloodlessPitcherElite",
+	"BloodlessPitcherElite",     -- Done
 	-- "BloodlessWaveFistElite",
 }
 
@@ -180,7 +179,7 @@ game.EnemySets.EnemiesBiome2Wrapping = {
 	"BloodlessNakedElite",       -- Done
 	"BloodlessGrenadierElite",   -- Done
 	"BloodlessSelfDestructElite", -- Done
-	-- "BloodlessPitcherElite",
+	"BloodlessPitcherElite",     -- Done
 	-- "BloodlessWaveFistElite",
 }
 
@@ -192,7 +191,7 @@ game.EnemySets.EnemiesBiome2Devotion = {
 	"BloodlessNakedBerserkerElite", -- Done
 	"BloodlessGrenadierElite",     -- Done
 	"BloodlessSelfDestructElite",  -- Done
-	-- "BloodlessPitcherElite",
+	"BloodlessPitcherElite",       -- Done
 	-- "BloodlessWaveFistElite",
 	-- "RangedBurrowerElite",
 }
@@ -207,7 +206,7 @@ game.EnemySets.EnemiesBiome2Hard = {
 	-- "BloodlessNakedBerserkerElite",
 	"BloodlessGrenadierElite",   -- Done
 	"BloodlessSelfDestructElite", -- Done
-	-- "BloodlessPitcherElite",
+	"BloodlessPitcherElite",     -- Done
 	-- "BloodlessWaveFistElite",
 	-- "RangedBurrowerElite",
 }

@@ -54,6 +54,14 @@ local enemyAdditions = {
 		Name = "HadesBloodlessSelfDestructElite",
 		InheritFrom = "BloodlessSelfDestruct_Elite",
 	},
+	{
+		Name = "HadesBloodlessPitcher",
+		InheritFrom = "BloodlessPitcher",
+	},
+	{
+		Name = "HadesBloodlessPitcherElite",
+		InheritFrom = "BloodlessPitcher_Elite",
+	}
 }
 
 local enemyKeyReplacements = {

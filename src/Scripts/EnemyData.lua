@@ -194,6 +194,8 @@ local enemyReplacements = {
 	HadesBloodlessGrenadierElite = game.DeepCopyTable(game.EnemyData.BloodlessGrenadier_Elite),
 	HadesBloodlessSelfDestruct = game.DeepCopyTable(game.EnemyData.BloodlessSelfDestruct),
 	HadesBloodlessSelfDestructElite = game.DeepCopyTable(game.EnemyData.BloodlessSelfDestruct_Elite),
+	HadesBloodlessPitcher = game.DeepCopyTable(game.EnemyData.BloodlessPitcher),
+	HadesBloodlessPitcherElite = game.DeepCopyTable(game.EnemyData.BloodlessPitcher_Elite),
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
@@ -401,6 +403,22 @@ local enemyModifications = {
 			BlockEnemyTypes = { "HadesBloodlessSelfDestruct" },
 		},
 	},
+	HadesBloodlessPitcher = {
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessPitcherElite" },
+		},
+	},
+	HadesBloodlessPitcherElite = {
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessPitcher" },
+		},
+	},
 
 	-- These enemies have not been implemented yet
 	-- Chariot = {
@@ -413,12 +431,6 @@ local enemyModifications = {
 	-- 	LargeUnitCap = mod.NilValue,
 	-- },
 	-- BloodlessWaveFist = {
-	-- 	LargeUnitCap = mod.NilValue,
-	-- },
-	-- BloodlessSelfDestruct = {
-	-- 	LargeUnitCap = mod.NilValue,
-	-- },
-	-- BloodlessPitcher = {
 	-- 	LargeUnitCap = mod.NilValue,
 	-- },
 	-- SatyrRanged = {
