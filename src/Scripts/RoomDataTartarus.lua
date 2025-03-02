@@ -50,8 +50,8 @@ local roomModifications = {
 	RoomOpening = {
 		InheritFrom = { "BaseTartarus", "BiomeStartRoom", },
 		LegalEncounters = { "OpeningGenerated" },
-		EntranceFunctionName = "RoomEntranceMaterialize",
-		EntranceFunctionArgs = { HeroGoalAngle = 335 },
+		EntranceFunctionName = "RoomEntranceDrop",
+		EntranceFunctionArgs = { LandingAnimation = "Melinoe_HeroLanding", Sound = "/SFX/Player Sounds/MelWhooshDropIn", IntroHoldDuration = 2.34, StartZoomFraction = 0.65, ZoomDuration = 4 },
 		ThreadedEvents = {
 			-- This will work with roomSetDataTartarus.RoomOpening.ThreadedEvents[3].Args.SpawnTypes = { "TartarusGhost01" }, but has the problem of spawning all Ghosts on the same ID
 			[3] = mod.NilValue
