@@ -76,7 +76,7 @@ local roomModifications = {
 				-- Requires AthenaFirstPickup voiceline, which is not implemented
 				GameStateRequirements = mod.NilValue
 			}
-		}
+		},
 	},
 	-- This is the first run's opening room, which forces Athena boons
 	RoomSimple01 = mod.NilValue,

@@ -108,6 +108,8 @@ local hadesProjectilesModifications = {
 		},
 	},
 
+	-- ASPHODEL
+
 	-- STYX
 	StaggeredSatyrRangedWeapon = {
 		UnpauseAnimation = mod.NilValue,

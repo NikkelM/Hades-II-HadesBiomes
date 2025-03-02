@@ -16,6 +16,12 @@ mod.HadesFxAnimationModifications = {
 	["AsphodelRoomRewardAvailable-Back"] = {
 		OffsetY = -407.0,
 	},
+	RubbleFallImpactDecalMedusaHeadDeath = {
+		OffsetY = 0.0,
+	},
+	RubbleFallImpactDecalMedusaHeadDeathFade = {
+		OffsetY = 0.0,
+	},
 }
 
 -- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly

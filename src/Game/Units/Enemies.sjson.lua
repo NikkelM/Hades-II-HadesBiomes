@@ -21,6 +21,7 @@ local hadesEnemiesModifications = {
 	Harpy = { InheritFrom = "1_BaseEnemy" },
 
 	-- ASPHODEL
+	BaseMedusaHead = { InheritFrom = "1_BaseEnemy" },
 
 	-- ENVIRONMENT
 	Breakable = { InheritFrom = "1_BaseDestructible" },

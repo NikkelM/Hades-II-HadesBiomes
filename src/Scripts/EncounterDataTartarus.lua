@@ -89,6 +89,8 @@ local encounterModifications = {
 			OverrideValues = game.BaseWaveOverrideValues,
 			StartDelay = 0.0
 		},
+		-- Sometimes these can move around when spawning, so we blacklist them
+		Blacklist = { LightSpawner = true, },
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,

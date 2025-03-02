@@ -477,6 +477,14 @@ local enemyModifications = {
 			BlockEnemyTypes = { "HadesSpreadShotUnit" },
 		},
 	},
+	-- Normal/new Hades enemies for Asphodel
+	FreezeShotUnit = {
+		StunAnimations = { Default = "EnemyMedusaOnHit" },
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateAnimation = "EnemyActivationFadeInMedusaHeadContainer",
+		DeathAnimation = "EnemyMedusaHeadDeath",
+		DestroyDelay = 3.0,
+	},
 
 	-- These enemies have not been implemented yet
 	-- Chariot = {

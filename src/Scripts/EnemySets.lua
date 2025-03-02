@@ -49,7 +49,7 @@ game.EnemySets.EnemiesBiome1Survival = {
 	"HeavyMeleeElite",     -- Wretch Thug Elite
 	"LightRangedElite",    -- Wretch Caster Elite
 	"PunchingBagUnitElite", -- Wretch Glutton Elite
-	"HeavyRangedElite",
+	"HeavyRangedElite",    -- Crystal Elite
 }
 
 game.EnemySets.EnemiesBiome1Hard = {
@@ -103,8 +103,8 @@ game.EnemySets.EnemiesBiome2 = {
 	"BloodlessWaveFistElite",      -- Done
 	"SpreadShotUnit",              -- Done
 	"SpreadShotUnitElite",         -- Done
-	-- "FreezeShotUnit",
-	-- "FreezeShotUnitElite",
+	"FreezeShotUnit",              -- Done
+	"FreezeShotUnitElite",         -- Done
 	-- "RangedBurrower",
 	-- "RangedBurrowerElite",
 }
@@ -127,8 +127,8 @@ game.EnemySets.EnemiesBiome2Challenge = {
 	"HeavyRangedElite",            -- Done
 	"SpreadShotUnit",              -- Done
 	"SpreadShotUnitElite",         -- Done
-	-- "FreezeShotUnit",
-	-- "FreezeShotUnitElite",
+	"FreezeShotUnit",              -- Done
+	"FreezeShotUnitElite",         -- Done
 	-- "RangedBurrower",
 	-- "RangedBurrowerElite",
 }
@@ -147,7 +147,7 @@ game.EnemySets.EnemiesBiome2Thanatos = {
 	"BloodlessWaveFistElite",      -- Done
 	"SpreadShotUnit",              -- Done
 	"SpreadShotUnitElite",         -- Done
-	-- "FreezeShotUnit",
+	"FreezeShotUnit",              -- Done
 	-- "RangedBurrower",
 	-- "RangedBurrowerElite",
 }
@@ -171,7 +171,7 @@ game.EnemySets.EnemiesBiome2Wrapping = {
 
 game.EnemySets.EnemiesBiome2Devotion = {
 	"SpreadShotUnitElite",         -- Done
-	-- "FreezeShotUnitElite",
+	"FreezeShotUnitElite",         -- Done
 	"BloodlessNakedElite",         -- Done
 	"BloodlessNakedBerserkerElite", -- Done
 	"BloodlessGrenadierElite",     -- Done
@@ -184,9 +184,8 @@ game.EnemySets.EnemiesBiome2Devotion = {
 game.EnemySets.EnemiesBiome2Hard = {
 	"SpreadShotUnitElite", -- Done
 	"LightSpawnerElite",  -- Done
-	-- "FreezeShotUnitElite",
+	"FreezeShotUnitElite", -- Done
 	-- "CrusherUnit",
-
 	"BloodlessNakedElite",         -- Done
 	"BloodlessNakedBerserkerElite", -- Done
 	"BloodlessGrenadierElite",     -- Done
