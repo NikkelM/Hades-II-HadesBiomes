@@ -299,7 +299,7 @@ See the [Duplicate enemy names](#duplicate-enemy-names) section for more informa
 The following steps apply to binked enemies only.
 If an enemy is binked, it might have a `Binks` property in `EnemyData.lua`.
 
-1. In `EnemyDataHandler.lua`, add the appropiate stun animation to the `StunAnimations` table in the modifications.
+1. In `EnemyData.lua`, add the appropiate stun animation to the `StunAnimations` table in the modifications.
    - You can find the stun animation by looking for the `OnStunAnimation` property for the enemy (or it's parent) in `Enemies.sjson` in Hades.
    - The value of this property is the name of the animation to use for the `Default` property in the `StunAnimations` table.
    - Even if the enemy is a child of another enemy type, you need to add the `StunAnimations` property to the child directly, as the inheritence here does not seem to work correctly.

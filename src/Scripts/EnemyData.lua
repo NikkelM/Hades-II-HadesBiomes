@@ -485,6 +485,10 @@ local enemyModifications = {
 		DeathAnimation = "EnemyMedusaHeadDeath",
 		DestroyDelay = 3.0,
 	},
+	RangedBurrower = {
+		StunAnimations = { Default = "EnemyBoneDraconOnHit" },
+		UseActivatePresentation = false,
+	},
 
 	-- These enemies have not been implemented yet
 	-- Chariot = {

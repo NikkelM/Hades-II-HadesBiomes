@@ -109,6 +109,10 @@ local hadesProjectilesModifications = {
 	},
 
 	-- ASPHODEL
+	RangedBurrowerWeapon = {
+		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+	},
 
 	-- STYX
 	StaggeredSatyrRangedWeapon = {

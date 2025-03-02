@@ -105,8 +105,8 @@ game.EnemySets.EnemiesBiome2 = {
 	"SpreadShotUnitElite",         -- Done
 	"FreezeShotUnit",              -- Done
 	"FreezeShotUnitElite",         -- Done
-	-- "RangedBurrower",
-	-- "RangedBurrowerElite",
+	"RangedBurrower",              -- Done
+	"RangedBurrowerElite",         -- Done
 }
 
 -- TimeChallenge
@@ -129,8 +129,8 @@ game.EnemySets.EnemiesBiome2Challenge = {
 	"SpreadShotUnitElite",         -- Done
 	"FreezeShotUnit",              -- Done
 	"FreezeShotUnitElite",         -- Done
-	-- "RangedBurrower",
-	-- "RangedBurrowerElite",
+	"RangedBurrower",              -- Done
+	"RangedBurrowerElite",         -- Done
 }
 
 game.EnemySets.EnemiesBiome2Thanatos = {
@@ -148,8 +148,8 @@ game.EnemySets.EnemiesBiome2Thanatos = {
 	"SpreadShotUnit",              -- Done
 	"SpreadShotUnitElite",         -- Done
 	"FreezeShotUnit",              -- Done
-	-- "RangedBurrower",
-	-- "RangedBurrowerElite",
+	"RangedBurrower",              -- Done
+	"RangedBurrowerElite",         -- Done
 }
 
 -- Copied from Wrapping - need to test which make sense
@@ -178,13 +178,13 @@ game.EnemySets.EnemiesBiome2Devotion = {
 	"BloodlessSelfDestructElite",  -- Done
 	"BloodlessPitcherElite",       -- Done
 	"BloodlessWaveFistElite",      -- Done
-	-- "RangedBurrowerElite",
+	"RangedBurrowerElite",         -- Done
 }
 
 game.EnemySets.EnemiesBiome2Hard = {
-	"SpreadShotUnitElite", -- Done
-	"LightSpawnerElite",  -- Done
-	"FreezeShotUnitElite", -- Done
+	"SpreadShotUnitElite",         -- Done
+	"LightSpawnerElite",           -- Done
+	"FreezeShotUnitElite",         -- Done
 	-- "CrusherUnit",
 	"BloodlessNakedElite",         -- Done
 	"BloodlessNakedBerserkerElite", -- Done
@@ -192,7 +192,7 @@ game.EnemySets.EnemiesBiome2Hard = {
 	"BloodlessSelfDestructElite",  -- Done
 	"BloodlessPitcherElite",       -- Done
 	"BloodlessWaveFistElite",      -- Done
-	-- "RangedBurrowerElite",
+	"RangedBurrowerElite",         -- Done
 }
 
 game.EnemySets.HydraHeads = {

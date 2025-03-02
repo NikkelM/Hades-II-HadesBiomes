@@ -127,6 +127,12 @@ BikFileMappings = {
 	["Enemy_TisiphoneMultiFuryHover_Bink"] = "Enemy_TisiphoneMultiFuryHover_Bink",
 	["Enemy_TisiphoneMultiFuryTakeOff_Bink"] = "Enemy_TisiphoneMultiFuryTakeOff_Bink",
 	["Enemy_TisiphoneMultiFurySkyDive_Bink"] = "Enemy_TisiphoneMultiFurySkyDive_Bink",
+	-- RangedBurrower
+	["Enemy_BoneDracon_Idle_Bink"] = "Enemy_BoneDracon_Idle_Bink",
+	["Enemy_BoneDracon_OnHit_Bink"] = "Enemy_BoneDracon_OnHit_Bink",
+	["Enemy_BoneDraconBurrowSet_Bink"] = "Enemy_BoneDraconBurrowSet_Bink",
+	["Enemy_BoneDraconAttackRange_Bink"] = "Enemy_BoneDraconAttackRange_Bink",
+	["Enemy_BoneDraconDeathVFX_Bink"] = "Enemy_BoneDraconDeathVFX_Bink",
 }
 
 SjsonFileMappings = {
