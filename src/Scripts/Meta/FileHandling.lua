@@ -56,7 +56,7 @@ function mod.CompareChecksums()
 	end
 end
 
-local function checkFileExistsWithRetry(filePath, retries, delay)
+local function checkFileExistsWithRetry(filePath, retries, delay, failFast)
 	local function sleep(sleepFor)
 		local t0 = os.clock()
 		while os.clock() - t0 <= sleepFor do end
@@ -68,57 +68,76 @@ local function checkFileExistsWithRetry(filePath, retries, delay)
 			file:close()
 			return true
 		end
-		mod.DebugPrint("File not found: " .. filePath .. " (attempt " .. i .. ")", 1)
+		if not failFast then
+			mod.DebugPrint("File not found: " .. filePath .. " (attempt " .. i .. ")", 1)
+		else
+			return false
+		end
 		sleep(delay)
 	end
 	return false
 end
 
-local function checkFilesExist(fileMappings, basePath, extension)
+local function checkFilesExist(fileMappings, basePath, extension, failFast)
+	local missingFiles = 0
 	for src, dest in pairs(fileMappings) do
 		local destPath = rom.path.combine(rom.paths.Content(), basePath .. dest .. extension)
-		if not checkFileExistsWithRetry(destPath, 3, 1) then
-			mod.DebugPrint("Missing file: " .. destPath, 1)
-			return false
+		if not checkFileExistsWithRetry(destPath, 3, 1, failFast) then
+			if not failFast then
+				mod.DebugPrint("Missing file: " .. destPath, 1)
+			end
+			missingFiles = missingFiles + 1
+			if failFast then return missingFiles end
 		end
 	end
-	return true
+	return missingFiles
 end
 
-local function checkFilesExistByNames(fileNames, basePath, extension)
-	for _, name in ipairs(fileNames) do
-		local destPath = rom.path.combine(rom.paths.Content(), basePath .. name .. extension)
-		if not checkFileExistsWithRetry(destPath, 3, 1) then
-			mod.DebugPrint("Missing file: " .. destPath, 1)
-			return false
-		end
-	end
-	return true
-end
+function mod.CheckRequiredFiles(failFast)
+	failFast = failFast or false
+	local missingFiles = 0
 
-function mod.CheckRequiredFiles()
-	if not checkFilesExist(AudioFileMappings, "Audio\\Desktop\\", ".bank") then return false end
-	if not checkFilesExist(PackageFileMappings, "Packages\\1080p\\", ".pkg") then return false end
-	if not checkFilesExist(PackageFileMappings, "Packages\\1080p\\", ".pkg_manifest") then return false end
-	if not checkFilesExist(PackageFileMappings, "Packages\\720p\\", ".pkg") then return false end
-	if not checkFilesExist(PackageFileMappings, "Packages\\720p\\", ".pkg_manifest") then return false end
-	if not checkFilesExist(BikFileMappings, "Movies\\1080p\\", ".bik") then return false end
-	if not checkFilesExist(BikFileMappings, "Movies\\1080p\\", ".bik_atlas") then return false end
-	if not checkFilesExist(BikFileMappings, "Movies\\720p\\", ".bik") then return false end
-	if not checkFilesExist(BikFileMappings, "Movies\\720p\\", ".bik_atlas") then return false end
-	if not checkFilesExist(SjsonFileMappings, "Game\\", ".sjson") then return false end
-	if not checkFilesExistByNames(MapFileMappings, "Maps\\", ".map_text") then return false end
-	if not checkFilesExistByNames(MapFileMappings, "Maps\\bin\\1080p\\", ".thing_bin") then return false end
-	if not checkFilesExistByNames(MapFileMappings, "Maps\\bin\\720p\\", ".thing_bin") then return false end
+	missingFiles = missingFiles + checkFilesExist(AudioFileMappings, "Audio\\Desktop\\", ".bank", failFast)
+	-- We only check once, since with a successful uninstall, there will be at least one missing file here already
+	if failFast and missingFiles > 0 then return missingFiles end
 
+	missingFiles = missingFiles + checkFilesExist(PackageFileMappings, "Packages\\1080p\\", ".pkg", failFast)
+	missingFiles = missingFiles + checkFilesExist(PackageFileMappings, "Packages\\1080p\\", ".pkg_manifest", failFast)
+	missingFiles = missingFiles + checkFilesExist(PackageFileMappings, "Packages\\720p\\", ".pkg", failFast)
+	missingFiles = missingFiles + checkFilesExist(PackageFileMappings, "Packages\\720p\\", ".pkg_manifest", failFast)
+
+	missingFiles = missingFiles + checkFilesExist(CustomPackageFileNames, "Packages\\1080p\\", ".pkg", failFast)
+	missingFiles = missingFiles + checkFilesExist(CustomPackageFileNames, "Packages\\1080p\\", ".pkg_manifest", failFast)
+	missingFiles = missingFiles + checkFilesExist(CustomPackageFileNames, "Packages\\720p\\", ".pkg", failFast)
+	missingFiles = missingFiles + checkFilesExist(CustomPackageFileNames, "Packages\\720p\\", ".pkg_manifest", failFast)
+
+	missingFiles = missingFiles + checkFilesExist(BikFileMappings, "Movies\\1080p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(BikFileMappings, "Movies\\1080p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(BikFileMappings, "Movies\\720p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(BikFileMappings, "Movies\\720p\\", ".bik_atlas", failFast)
+
+	missingFiles = missingFiles + checkFilesExist(SjsonFileMappings, "Game\\", ".sjson", failFast)
+
+	missingFiles = missingFiles + checkFilesExist({ mod.HadesFxDestinationFilename }, "", "", failFast)
+	missingFiles = missingFiles + checkFilesExist({ mod.HadesGUIAnimationsDestinationFilename }, "", "", failFast)
+	missingFiles = missingFiles + checkFilesExist({ mod.HadesPortraitAnimationsDestinationFilename }, "", "", failFast)
+	missingFiles = missingFiles + checkFilesExist({ mod.HadesCharacterAnimationsNPCsDestinationFilename }, "", "", failFast)
+
+	missingFiles = missingFiles + checkFilesExist(MapFileMappings, "Maps\\", ".map_text", failFast)
+	missingFiles = missingFiles + checkFilesExist(MapFileMappings, "Maps\\bin\\", ".thing_bin", failFast)
+
+	missingFiles = missingFiles + checkFilesExist(VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".txt", failFast)
+	missingFiles = missingFiles + checkFilesExist(VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb", failFast)
+
+	-- The helpText files in the different languages
 	for _, language in ipairs(HelpTextLanguages) do
 		local helpTextFile = rom.path.combine(rom.paths.Content(),
 			'Game\\Text\\' .. language .. '\\HelpTextHades.' .. language .. '.sjson')
 		if not checkFileExistsWithRetry(helpTextFile, 3, 1) then
 			mod.DebugPrint("Missing file: " .. helpTextFile, 1)
-			return false
+			missingFiles = missingFiles + 1
 		end
 	end
 
-	return true
+	return missingFiles
 end

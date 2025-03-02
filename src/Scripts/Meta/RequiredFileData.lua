@@ -11,11 +11,11 @@ AudioFileMappings = {
 -- The file name must be the same as the event names within the file
 -- Some speaker names do not work (e.g. MegaeraHome)!
 VoiceoverFileNames = {
-	"Alecto",
-	"Megaera",
-	"MegaeraField",
-	"Tisiphone",
-	"ZagreusField",
+	Alecto = "Alecto",
+	Megaera = "Megaera",
+	MegaeraField = "MegaeraField",
+	Tisiphone = "Tisiphone",
+	ZagreusField = "ZagreusField",
 }
 
 PackageFileMappings = {
@@ -28,9 +28,9 @@ PackageFileMappings = {
 
 -- These will be copied from the plugins_data folder
 CustomPackageFileNames = {
-	"ModsNikkelMHadesBiomesPortraits",
+	ModsNikkelMHadesBiomesPortraits = "ModsNikkelMHadesBiomesPortraits",
 	-- Contains e.g. the renamed RoomRewardPreview-Front effects
-	"ModsNikkelMHadesBiomesFxModded",
+	ModsNikkelMHadesBiomesFxModded = "ModsNikkelMHadesBiomesFxModded",
 }
 
 BikFileMappings = {

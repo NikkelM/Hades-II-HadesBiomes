@@ -69,22 +69,34 @@ function game.printTable(t, maxDepth, indent)
 end
 
 local function on_ready()
-	-- what to do when we are ready, but not re-do on reload.
-	if config.enabled == false then return end
-
 	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
 
 	-- File handling and other generic functions required at install time
 	import "Scripts/Meta/Utils.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
+	import "Scripts/Meta/FileHandling.lua"
+
+	if config.enabled == false then
+		local numMissingFiles = mod.CheckRequiredFiles(true)
+		if numMissingFiles == 0 then
+			-- Mod is disabled, but has not been uninstalled - do not return early
+			mod.DebugPrint(
+				"The mod is disabled, but has not been uninstalled yet. Uninstallation will be attempted shortly...", 2)
+		else
+			return
+		end
+	end
+
 	import "Scripts/Meta/AnimationDuplicatesDataFx.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataGUI.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
 	import "Scripts/Meta/NameMappingData.lua"
-	import "Scripts/Meta/FileHandling.lua"
 
-	if not mod.ConfirmHadesInstallation() then return end
+	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
+	local shouldProceed = config.enabled and
+			((config.uninstall ~= "true" and config.uninstall ~= "I AM SURE - UNINSTALL") or config.firstTimeSetup)
+	if shouldProceed and not mod.ConfirmHadesInstallation() then return end
 
 	import "Scripts/Meta/FirstTimeSetup.lua"
 	import "Scripts/Meta/Uninstall.lua"
@@ -94,17 +106,42 @@ local function on_ready()
 	-- We can use this to determine if we should re-install the mod, to make sure we do not interfere with any files the game modified
 	mod.CompareChecksums()
 
-	if config.uninstall == "true" or config.uninstall == "I AM SURE - UNINSTALL" then
+	-- If the mod is disabled, we also want to uninstall it and set the firstTimeSetup flag to true for the next time the mod is enabled again
+	if not config.enabled or config.uninstall == "true" or config.uninstall == "I AM SURE - UNINSTALL" then
 		local uninstallSuccessful = mod.Uninstall()
+
+		if not config.enabled then
+			-- Mark mod to be installed again when enabled
+			if uninstallSuccessful then
+				mod.DebugPrint(
+					"The mod is disabled and was uninstalled successfully. It will be installed again when enabled the next time.",
+					3)
+				config.firstTimeSetup = true
+				return
+			else
+				-- Do not disable, as otherwise save files will break
+				mod.DebugPrint(
+					"You tried disabling the mod, but uninstallation was not successful. As this may cause issues if left unresolved, the mod has been enabled again. Please follow the instructions in the logs above for more information.",
+					1)
+				config.enabled = true
+				-- We need to confirm the Hades installation, as the mod has been enabled again
+				if not mod.ConfirmHadesInstallation() then return end
+			end
+		end
+
 		if uninstallSuccessful and not config.firstTimeSetup then
+			mod.DebugPrint(
+				"The mod was uninstalled successfully, but the \"firstTimeSetup\" flag is set to false, disabling mod.", 3)
 			config.enabled = false
+			-- Set to true to install the next time the mod is enabled
+			config.firstTimeSetup = true
 			return
 		end
 	elseif config.uninstall ~= "false" then
 		mod.DebugPrint(
 			"Invalid value for \"uninstall\" in the config file (\"" ..
 			config.uninstall ..
-			"\"). Please set it to \"true\" to uninstall the mod normally, \"I AM SURE - UNINSTALL\" to force an uninstall, or \"false\" to not uninstall.",
+			"\"). Please set it to \"true\" to uninstall the mod normally, \"I AM SURE - UNINSTALL\" to force an uninstall, or \"false\" to not uninstall. Proceeding normally.",
 			2)
 		config.uninstall = "false"
 	end
@@ -113,8 +150,9 @@ local function on_ready()
 		mod.FirstTimeSetup()
 	end
 
+	local numMissingFiles = mod.CheckRequiredFiles(false)
 	-- Before proceeding, check that required files exist
-	if mod.CheckRequiredFiles() then
+	if numMissingFiles == 0 then
 		-- General data needed for map generation/display
 		import "Game/MapGroups.sjson.lua"
 
@@ -222,8 +260,10 @@ local function on_ready()
 		import "Scripts/UIData.lua"
 		import "Scripts/WeaponSets.lua"
 	else
-		error(
-			"Required files are missing and the mod is not active. Please check the log and run the first time setup by setting the config value to true.")
+		mod.DebugPrint(
+			"A total of " .. numMissingFiles ..
+			" required files are missing and the mod is not active. Please check the log and run the \"firstTimeSetup\" by setting the config value to true.",
+			1)
 	end
 end
 

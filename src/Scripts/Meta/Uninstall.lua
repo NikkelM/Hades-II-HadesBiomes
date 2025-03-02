@@ -23,15 +23,6 @@ local function removeFile(filePath, extension)
 	end
 end
 
-local function removeFilesByNames(fileNames, basePath, extension)
-	mod.DebugPrint("Removing " .. extension .. " files...", 3)
-	for _, name in ipairs(fileNames) do
-		-- Extension is set again in removeFile
-		local destPath = rom.path.combine(rom.paths.Content(), basePath .. name)
-		removeFile(destPath, extension)
-	end
-end
-
 function mod.Uninstall()
 	-- Check if any savegame has a modded run as the most recent one - block uninstallation if so, as it would corrupt the save file
 	local cachedRuns = mod.LoadCachedRunsFile()
@@ -45,7 +36,7 @@ function mod.Uninstall()
 		for saveFileIndex, isActive in pairs(cachedRuns.ActiveModdedRuns) do
 			if isActive then
 				mod.DebugPrint(
-					"For at least one of your save files, the most recent run is/was a modded Hades run. The mod will not uninstall, otherwise your savegame will corrupt! Make sure you are currently in a normal Hades II run, or were in one before you returned to the crossroads! Then try uninstalling the mod again. Are you SURE this is wrong? Set \"uninstall\" in the config to \"I AM SURE - UNINSTALL\".",
+					"For at least one of your save files, the most recent saved run is/was a modded Hades run. The mod will *NOT* be uninstalled, otherwise your savegame will corrupt!\nMake sure you are currently in a normal Hades II run (and complete it normally without giving up), or were in one before you returned to the crossroads (by winning or dying, not giving up) to prevent savegame corruption! Then try uninstalling the mod again.\nAre you SURE this is wrong? Set \"uninstall\" in the config to \"I AM SURE - UNINSTALL\".",
 					1)
 				config.uninstall = "false"
 				return false
@@ -55,18 +46,22 @@ function mod.Uninstall()
 	mod.DebugPrint("Uninstalling mod - removing files added by the mod", 3)
 
 	removeFiles(AudioFileMappings, "Audio\\Desktop\\", ".bank")
+
 	removeFiles(PackageFileMappings, "Packages\\1080p\\", ".pkg")
 	removeFiles(PackageFileMappings, "Packages\\1080p\\", ".pkg_manifest")
 	removeFiles(PackageFileMappings, "Packages\\720p\\", ".pkg")
 	removeFiles(PackageFileMappings, "Packages\\720p\\", ".pkg_manifest")
-	removeFilesByNames(CustomPackageFileNames, "Packages\\1080p\\", ".pkg")
-	removeFilesByNames(CustomPackageFileNames, "Packages\\1080p\\", ".pkg_manifest")
-	removeFilesByNames(CustomPackageFileNames, "Packages\\720p\\", ".pkg")
-	removeFilesByNames(CustomPackageFileNames, "Packages\\720p\\", ".pkg_manifest")
+
+	removeFiles(CustomPackageFileNames, "Packages\\1080p\\", ".pkg")
+	removeFiles(CustomPackageFileNames, "Packages\\1080p\\", ".pkg_manifest")
+	removeFiles(CustomPackageFileNames, "Packages\\720p\\", ".pkg")
+	removeFiles(CustomPackageFileNames, "Packages\\720p\\", ".pkg_manifest")
+
 	removeFiles(BikFileMappings, "Movies\\1080p\\", ".bik")
 	removeFiles(BikFileMappings, "Movies\\1080p\\", ".bik_atlas")
 	removeFiles(BikFileMappings, "Movies\\720p\\", ".bik")
 	removeFiles(BikFileMappings, "Movies\\720p\\", ".bik_atlas")
+
 	removeFiles(SjsonFileMappings, "Game\\", ".sjson")
 
 	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename), "")
@@ -77,8 +72,8 @@ function mod.Uninstall()
 	removeFiles(MapFileMappings, "Maps\\", ".map_text")
 	removeFiles(MapFileMappings, "Maps\\bin\\", ".thing_bin")
 
-	removeFilesByNames(VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".txt")
-	removeFilesByNames(VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb")
+	removeFiles(VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".txt")
+	removeFiles(VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb")
 
 	mod.DebugPrint("Removing help text files...", 3)
 	for _, language in ipairs(HelpTextLanguages) do

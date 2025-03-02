@@ -13,37 +13,26 @@ local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, use
 	end
 end
 
-local function copyFilesByNames(fileNames, srcBasePath, destBasePath, extension, usePluginData)
-	mod.DebugPrint("Copying " .. extension .. " files...", 3)
-	for _, name in ipairs(fileNames) do
-		local srcPath, destPath
-		if usePluginData then
-			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, srcBasePath .. name .. extension)
-		else
-			srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. name .. extension)
-		end
-		destPath = rom.path.combine(rom.paths.Content(), destBasePath .. name .. extension)
-		CopyFile(srcPath, destPath)
-		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
-	end
-end
-
 function mod.FirstTimeSetup()
 	mod.DebugPrint("Installing the mod...", 3)
 
 	copyFiles(AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank")
+
 	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg")
 	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg_manifest")
 	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg")
 	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg_manifest")
-	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg", true)
-	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", true)
-	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg", true)
-	copyFilesByNames(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg_manifest", true)
+
+	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg", true)
+	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", true)
+	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg", true)
+	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg_manifest", true)
+
 	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik")
 	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas")
 	copyFiles(BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik")
 	copyFiles(BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas")
+
 	copyFiles(SjsonFileMappings, "Content\\Game\\", "Game\\", ".sjson")
 
 	-- Special treatment, as some are copied from the plugins_data, and some from the Hades installation
@@ -63,8 +52,8 @@ function mod.FirstTimeSetup()
 	copyFiles(MapFileMappings, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", true)
 
 	mod.DebugPrint("Copying voicelines...", 3)
-	copyFilesByNames(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", true)
-	copyFilesByNames(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", true)
+	copyFiles(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", true)
+	copyFiles(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", true)
 
 	mod.DebugPrint("Copying help text files...", 3)
 	CopyHadesHelpTexts()
@@ -81,9 +70,13 @@ function mod.FirstTimeSetup()
 	mod.DebugPrint("Copying Character animations for NPCs...", 3)
 	CopyHadesCharacterAnimationsNPCs()
 
-	if not mod.CheckRequiredFiles() then
-		error(
-			"Required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check your config file.")
+	local numMissingFiles = mod.CheckRequiredFiles(false)
+	if numMissingFiles > 0 then
+		mod.DebugPrint(
+			"A total of " .. numMissingFiles ..
+			" required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check the \"hadesGameFolder\" setting in your config file.",
+			1)
+		return
 	end
 
 	mod.DebugPrint("Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
