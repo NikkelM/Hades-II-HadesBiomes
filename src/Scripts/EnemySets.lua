@@ -87,7 +87,7 @@ game.EnemySets.EnemiesBiome1MiniBoss = {
 
 -- Asphodel
 game.EnemySets.EnemiesBiome2 = {
-	-- "CrusherUnit",
+	"CrusherUnit",                 -- Done
 	"LightSpawnerElite",           -- Done
 	"BloodlessNaked",              -- Done
 	"BloodlessNakedElite",         -- Done
@@ -134,7 +134,7 @@ game.EnemySets.EnemiesBiome2Challenge = {
 }
 
 game.EnemySets.EnemiesBiome2Thanatos = {
-	-- "CrusherUnit",
+	"CrusherUnit",                 -- Done
 	"BloodlessNaked",              -- Done
 	"BloodlessNakedElite",         -- Done
 	"BloodlessNakedBerserker",     -- Done
@@ -185,7 +185,7 @@ game.EnemySets.EnemiesBiome2Hard = {
 	"SpreadShotUnitElite",         -- Done
 	"LightSpawnerElite",           -- Done
 	"FreezeShotUnitElite",         -- Done
-	-- "CrusherUnit",
+	"CrusherUnit",                 -- Done
 	"BloodlessNakedElite",         -- Done
 	"BloodlessNakedBerserkerElite", -- Done
 	"BloodlessGrenadierElite",     -- Done

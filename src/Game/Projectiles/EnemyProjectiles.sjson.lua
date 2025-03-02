@@ -113,6 +113,9 @@ local hadesProjectilesModifications = {
 		CanBeProjectileDefenseDestroyed = false,
 		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
+	CrusherUnitTouchdown = {
+		DetonateGraphic = "CrusherTouchdownFx",
+	},
 
 	-- STYX
 	StaggeredSatyrRangedWeapon = {
@@ -139,6 +142,16 @@ for oldName, newName in pairs(mod.FxAnimationMappings) do
 	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "Thing", "AttachedAnim" },
 		"EnemyProjectiles.sjson")
 	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "DetonateGraphic" }, "EnemyProjectiles.sjson")
+end
+
+-- Rename keys in the modifications
+for _, projectileMod in pairs(hadesProjectilesModifications) do
+	for oldKey, newKey in pairs(projectileKeyReplacements) do
+		if projectileMod[oldKey] then
+			projectileMod[newKey] = projectileMod[oldKey]
+			projectileMod[oldKey] = nil
+		end
+	end
 end
 
 -- Iterating through all projectiles

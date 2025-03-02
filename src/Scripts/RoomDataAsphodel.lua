@@ -114,11 +114,11 @@ local roomModifications = {
 	-- },
 
 	-- -- OTHER
-	-- A_Reprieve01 = {
-	-- 	GameStateRequirements = {
-	-- 		RequiredCosmetics = mod.NilValue,
-	-- 	},
-	-- },
+	X_Reprieve01 = {
+		GameStateRequirements = {
+			RequiredCosmetics = mod.NilValue,
+		},
+	},
 	-- A_PostBoss01 = {
 	-- 	ExitPreviewAnim = "HadesExitPreview",
 	-- 	-- TODO: Remove placeholder
