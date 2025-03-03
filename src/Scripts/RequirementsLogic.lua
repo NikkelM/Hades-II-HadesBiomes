@@ -28,12 +28,41 @@ modutil.mod.Path.Wrap("IsEnemyEligible", function(base, enemyName, encounter, wa
 	local isEligible = base(enemyName, encounter, wave)
 
 	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
-		local isGameStateEligibleArgs = {}
+		local args = {}
 		if game.EnemyData[enemyName].IsElite and game.GetNumShrineUpgrades("EnemyEliteShrineUpgrade") > 0 then
-			isGameStateEligibleArgs.SkipMinBiomeDepth = true
+			args.SkipMinBiomeDepth = true
 		end
-		return game.ModsNikkelMHadesBiomesIsGameStateEligible(game.EnemyData[enemyName], game.EnemyData[enemyName],
-			isGameStateEligibleArgs)
+		return game.ModsNikkelMHadesBiomesIsGameStateEligible(game.EnemyData[enemyName], game.EnemyData[enemyName], args)
+	end
+
+	return isEligible
+end)
+
+modutil.mod.Path.Wrap("IsRoomEligible", function(base, currentRun, currentRoom, nextRoomData, args)
+	local isEligible = base(currentRun, currentRoom, nextRoomData, args)
+
+	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+		return game.ModsNikkelMHadesBiomesIsGameStateEligible(nextRoomData, nextRoomData, args)
+	end
+
+	return isEligible
+end)
+
+modutil.mod.Path.Wrap("IsEncounterEligible", function(base, currentRun, room, nextEncounterData, args)
+	local isEligible = base(currentRun, room, nextEncounterData, args)
+
+	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+		return game.ModsNikkelMHadesBiomesIsGameStateEligible(nextEncounterData, nextEncounterData, args)
+	end
+
+	return isEligible
+end)
+
+modutil.mod.Path.Wrap("IsInspectPointEligible", function(base, currentRun, source, inspectPointData)
+	local isEligible = base(currentRun, source, inspectPointData)
+
+	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+		return game.ModsNikkelMHadesBiomesIsGameStateEligible(source, inspectPointData)
 	end
 
 	return isEligible
@@ -1332,6 +1361,11 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	-- end
 
 	-- TODO
+	if requirements.RequiredInactiveMetaUpgrade then
+		print(requirements.RequiredInactiveMetaUpgrade)
+		print(GetNumMetaUpgrades(requirements.RequiredInactiveMetaUpgrade))
+		print(GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade))
+	end
 	if requirements.RequiredInactiveMetaUpgrade ~= nil and GetNumMetaUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 or GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 then
 		return false
 	end
