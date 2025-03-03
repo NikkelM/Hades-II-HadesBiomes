@@ -518,6 +518,13 @@ local enemyModifications = {
 			},
 		},
 	},
+	ShieldRangedMiniBoss = {
+		StunAnimations = { Default = "HealRangedCrystal4" },
+		ActivateFx = "EnemySummonRuneExtraLarge",
+		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
+		DeathAnimation = "HealRangedDeathMiniBoss",
+		DeathFx = "HealRangedDeathMiniBoss",
+	},
 
 	-- These enemies have not been implemented yet
 	-- Chariot = {

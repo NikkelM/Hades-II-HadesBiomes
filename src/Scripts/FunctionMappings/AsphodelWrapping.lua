@@ -54,8 +54,83 @@ function game.ModsNikkelMHadesBiomesHandleWrapping(encounter)
 					OffsetX = offset.X,
 					OffsetY = offset.Y
 				})
-				game.thread(game.WrapObstacle, id, obstacleWrapData, 24, encounter, resetTargetId, 0)
+				obstacleWrapData.WrapCount = 0
+				game.thread(game.WrapObstacle, id, obstacleWrapData, encounter, resetTargetId)
 			end
+		end
+	end
+
+	local spawnData = wrappingData.SpawnData
+	if spawnData ~= nil then
+		if spawnData.PreSpawnObstacles then
+			for i = 1, 5 do
+				local nextObstacleName = game.GetRandomValue(spawnData.ObstacleNames)
+				local nextSpawnDestination = game.GetRandomValue(spawnData.SpawnPoints) or {}
+				if not nextSpawnDestination.SkipPreSpawn then
+					offset = game.CalcOffset(math.rad(-155), i * 1750) or { X = 0, Y = 0 }
+					local newObstacleId = SpawnObstacle({
+						Name = nextObstacleName,
+						DestinationId = nextSpawnDestination.Id,
+						Group = nextSpawnDestination.GroupName,
+						OffsetX = offset.X,
+						OffsetY = offset.Y
+					})
+					SetThingProperty({ Property = "StopsLight", Value = false, DestinationId = newObstacleId })
+					SetThingProperty({ Property = "StopsUnits", Value = false, DestinationId = newObstacleId })
+					if nextSpawnDestination.ObstacleHSVOverrides ~= nil and nextSpawnDestination.ObstacleHSVOverrides[nextObstacleName] ~= nil then
+						SetHSV({
+							Id = newObstacleId,
+							HSV = nextSpawnDestination.ObstacleHSVOverrides[nextObstacleName],
+							ValueChangeType = "Absolute"
+						})
+					end
+					if nextSpawnDestination.ObstacleColorOverrides ~= nil and nextSpawnDestination.ObstacleColorOverrides[nextObstacleName] ~= nil then
+						SetColor({
+							Id = newObstacleId,
+							Color = nextSpawnDestination.ObstacleColorOverrides[nextObstacleName],
+							ValueChangeType = "Absolute"
+						})
+					end
+
+					Move({ Id = newObstacleId, Angle = -155, Speed = spawnData.MoveSpeed or 500 })
+					game.thread(game.DestroyOnDelay, { newObstacleId }, spawnData.MoveTime or 10)
+				end
+			end
+		end
+
+		while true do
+			local nextObstacleName = game.GetRandomValue(spawnData.ObstacleNames)
+			local nextSpawnDestination = game.GetRandomValue(spawnData.SpawnPoints) or {}
+			local groupName = nextSpawnDestination.GroupName
+			if nextSpawnDestination.ObstacleGroupOverrides ~= nil then
+				groupName = nextSpawnDestination.ObstacleGroupOverrides[nextObstacleName] or groupName
+			end
+			local newObstacleId = SpawnObstacle({
+				Name = nextObstacleName,
+				DestinationId = nextSpawnDestination.Id,
+				Group = groupName
+			})
+			SetThingProperty({ Property = "StopsLight", Value = false, DestinationId = newObstacleId })
+			SetThingProperty({ Property = "StopsUnits", Value = false, DestinationId = newObstacleId })
+			if nextSpawnDestination.ObstacleHSVOverrides ~= nil and nextSpawnDestination.ObstacleHSVOverrides[nextObstacleName] ~= nil then
+				SetHSV({
+					Id = newObstacleId,
+					HSV = nextSpawnDestination.ObstacleHSVOverrides[nextObstacleName],
+					ValueChangeType = "Absolute"
+				})
+			end
+			if nextSpawnDestination.ObstacleColorOverrides ~= nil and nextSpawnDestination.ObstacleColorOverrides[nextObstacleName] ~= nil then
+				SetColor({
+					Id = newObstacleId,
+					Color = nextSpawnDestination.ObstacleColorOverrides[nextObstacleName],
+					ValueChangeType = "Absolute"
+				})
+			end
+			Move({ Id = newObstacleId, Angle = -155, Speed = spawnData.MoveSpeed or 500 })
+			game.thread(game.DestroyOnDelay, { newObstacleId }, spawnData.MoveTime or 10)
+
+			local nextSpawnInterval = game.RandomFloat(spawnData.SpawnIntervalMin, spawnData.SpawnIntervalMax)
+			game.wait(nextSpawnInterval, RoomThreadName)
 		end
 	end
 end
