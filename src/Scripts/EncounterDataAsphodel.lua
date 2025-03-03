@@ -9,6 +9,8 @@ local encounterDataAsphodel = {
 	DevotionTestAsphodel = encounterData.DevotionTestAsphodel,
 
 	-- Minibosses
+	WrappingAsphodel = encounterData.WrappingAsphodel,
+	WrappingAsphodel2 = encounterData.WrappingAsphodel2,
 
 	-- Bosses
 
@@ -63,36 +65,8 @@ local encounterModifications = {
 	},
 
 	-- MINIBOSSES
-	-- MiniBossGrenadier = {
-	-- 	LoadPackages = { "Asphodel" },
-	-- },
-	-- MiniBossHeavyRangedSplitter = {
-	-- 	WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
-	-- 	CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
-	-- },
-	-- MiniBossHeavyRangedSplitter2 = {
-	-- 	WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
-	-- 	CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
-	-- },
-	-- MiniBossWretchAssassin = {
-	-- 	WipeEnemiesOnKillAllTypes = { "WretchAssassinMiniboss" },
-	-- 	CancelSpawnsOnKillAllTypes = { "WretchAssassinMiniboss" },
-	-- },
 
 	-- BOSSES
-	-- BossHarpy1 = {
-	-- 	WipeEnemiesOnKillAllTypes = { "Harpy" },
-	-- 	CancelSpawnsOnKillAllTypes = { "Harpy" },
-	-- 	PostUnthreadedEvents = mod.NilValue,
-	-- },
-	-- BossHarpy2 = {
-	-- 	WipeEnemiesOnKillAllTypes = { "Harpy2" },
-	-- 	CancelSpawnsOnKillAllTypes = { "Harpy2" },
-	-- },
-	-- BossHarpy3 = {
-	-- 	WipeEnemiesOnKillAllTypes = { "Harpy3" },
-	-- 	CancelSpawnsOnKillAllTypes = { "Harpy3" },
-	-- },
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataAsphodel, encounterModifications, encounterReplacements)

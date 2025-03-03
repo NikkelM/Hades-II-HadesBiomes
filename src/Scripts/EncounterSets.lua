@@ -1,4 +1,4 @@
--- Tartarus
+-- TARTARUS
 game.EncounterSets.TartarusEncountersDefault = {
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus",
 	-- "GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus",
@@ -6,13 +6,12 @@ game.EncounterSets.TartarusEncountersDefault = {
 }
 game.EncounterSets.TartarusEncountersNoSurvival = { "GeneratedTartarus" }
 
--- Asphodel
+-- ASPHODEL
 game.EncounterSets.AsphodelEncountersDefault = {
 	"GeneratedAsphodel", "GeneratedAsphodel", "GeneratedAsphodel",
 	"GeneratedAsphodel", "GeneratedAsphodel", "GeneratedAsphodel",
 	-- "GeneratedAsphodel", "GeneratedAsphodel", "GeneratedAsphodel", "ThanatosAsphodel"
 }
--- TODO: Implement missing functions
 game.EncounterSets.EncounterEventsWrapping = {
 	{ FunctionName = "WrappingEncounterStartPresentation" },
 	{ FunctionName = "EncounterAudio" },
@@ -29,7 +28,7 @@ game.EncounterSets.EncounterEventsHydraPhase = {
 	{ FunctionName = "CheckForEncounterEnemiesDead" },
 }
 
--- Elysium
+-- ELYSIUM
 game.EncounterSets.ElysiumEncountersDefault = {
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
@@ -37,12 +36,12 @@ game.EncounterSets.ElysiumEncountersDefault = {
 	-- "ThanatosElysiumIntro", "ThanatosElysiumIntro", "ThanatosElysiumIntro"
 }
 
--- Styx
+-- STYX
 game.EncounterSets.StyxEncountersMini = {
 	"GeneratedStyxMini", "GeneratedStyxMini", "GeneratedStyxMini", "GeneratedStyxMini",
 }
 
--- Generic
+-- GENERIC
 game.EncounterSets.EncounterEventsDefault = {
 	{ FunctionName = "EncounterAudio" },
 	{ FunctionName = "HandleTrapChains" },
@@ -51,7 +50,6 @@ game.EncounterSets.EncounterEventsDefault = {
 	{ FunctionName = "PostCombatAudio" },
 	{ FunctionName = "SpawnRoomReward" },
 }
-
 -- TODO: Implement missing functions
 game.EncounterSets.EncounterEventsThanatos = {
 	{ FunctionName = "ThanatosPreSpawnPresentation" },
@@ -64,7 +62,6 @@ game.EncounterSets.EncounterEventsThanatos = {
 	{ FunctionName = "PostCombatAudio" },
 	{ FunctionName = "SpawnRoomReward" },
 }
-
 -- TODO: Implement missing functions
 game.EncounterSets.EncounterEventsCrawlerMiniBoss = {
 	{ FunctionName = "EncounterAudio" },
@@ -75,7 +72,6 @@ game.EncounterSets.EncounterEventsCrawlerMiniBoss = {
 	{ FunctionName = "PostCombatAudio" },
 	{ FunctionName = "SpawnRoomReward" },
 }
-
 -- TODO: Implement missing functions
 game.EncounterSets.EncounterEventsOnslaught = {
 	{ FunctionName = "EncounterAudio" },
@@ -86,7 +82,6 @@ game.EncounterSets.EncounterEventsOnslaught = {
 	{ FunctionName = "PostCombatAudio" },
 	{ FunctionName = "SpawnRoomReward" },
 }
-
 game.EncounterSets.EncounterEventsCharonFight = {
 	{ FunctionName = "EncounterAudio" },
 	{ FunctionName = "HandleEnemySpawns" },
