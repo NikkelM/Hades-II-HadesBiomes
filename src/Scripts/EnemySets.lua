@@ -167,6 +167,7 @@ game.EnemySets.EnemiesBiome2Wrapping = {
 	"BloodlessSelfDestructElite", -- Done
 	"BloodlessPitcherElite",     -- Done
 	"BloodlessWaveFistElite",    -- Done
+	-- ShieldRanged, -- Added through the encounter directly for each wave
 }
 
 game.EnemySets.EnemiesBiome2Devotion = {

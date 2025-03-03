@@ -114,6 +114,7 @@ local roomModifications = {
 	-- },
 
 	-- -- OTHER
+	-- TODO: Check fountain tooltip here and in the Tartarus room
 	X_Reprieve01 = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,

@@ -489,11 +489,8 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyBoneDraconOnHit" },
 		UseActivatePresentation = false,
 	},
-	-- TODO: Can still take off even if being stunned/hit - how is the Hades behaviour?
 	CrusherUnit = {
 		StunAnimations = { Default = "CrusherUnitOnHit" },
-		-- TODO: Handle similar to RangedBurrower and just have it crush down when spawning?
-		ActivateFx = "CrusherCraterFadeIn",
 		ActivateAnimation = "EnemyActivationFadeInCrusherUnitContainer",
 		DeathFx = "EnemyDeathFxBone",
 		DeathAnimation = "CrusherUnitDeathVFX",
@@ -503,6 +500,23 @@ local enemyModifications = {
 			ProjectileName = "CrusherUnitTouchdown",
 		},
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesCrusherUnitTouchdown",
+	},
+	ShieldRanged = {
+		StunAnimations = { Default = "HealRangedCrystal4" },
+		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
+		DeathAnimation = "HealRangedDeath",
+		DeathFx = "HealRangedDeath",
+		Tethers = {
+			[1] = { Distance = 20 },
+			[2] = { Distance = 20 },
+			[3] = { Distance = 20 }
+		},
+		SpawnEvents = {
+			{
+				FunctionName = "CreateTethers",
+				Threaded = true,
+			},
+		},
 	},
 
 	-- These enemies have not been implemented yet
