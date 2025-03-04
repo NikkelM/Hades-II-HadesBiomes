@@ -248,7 +248,8 @@ function game.HarpyKillPresentation(unit, args)
 			Duration = args.MessageDuration,
 			AnimationName = "LocationTextBGVictoryIn",
 			AnimationOutName = "LocationTextBGVictoryOut",
-			FontScale = 0.85
+			FontScale = 0.85,
+			TextOffsetY = 0,
 		})
 
 	if deathPanSettings.BatsAfterDeath then
