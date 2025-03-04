@@ -1,5 +1,6 @@
-local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, usePluginData)
-	mod.DebugPrint("Copying " .. extension .. " files...", 3)
+local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nameHint, usePluginData)
+	nameHint = nameHint or ""
+	mod.DebugPrint("Copying " .. nameHint .. extension .. " files...", 3)
 	for src, dest in pairs(fileMappings) do
 		local srcPath, destPath
 		if usePluginData then
@@ -16,27 +17,27 @@ end
 function mod.FirstTimeSetup()
 	mod.DebugPrint("Installing the mod...", 3)
 
-	copyFiles(AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank")
+	copyFiles(AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank", "Audio ")
 
-	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg")
-	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg_manifest")
-	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg")
-	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg_manifest")
+	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg", "1080p Hades ")
+	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", "1080p Hades ")
+	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg", "720p Hades ")
+	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg_manifest", "720p Hades ")
 
-	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg", true)
-	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", true)
-	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg", true)
-	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg_manifest", true)
+	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg", "1080p Mod ", true)
+	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", "1080p Mod ", true)
+	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg", "720p Mod ", true)
+	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg_manifest", "720p Mod ", true)
 
-	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik")
-	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas")
-	copyFiles(BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik")
-	copyFiles(BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas")
+	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Animation ")
+	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas", "1080p Animation ")
+	copyFiles(BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Animation ")
+	copyFiles(BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p Animation ")
 
 	copyFiles(SjsonFileMappings, "Content\\Game\\", "Game\\", ".sjson")
 
 	-- Special treatment, as some are copied from the plugins_data, and some from the Hades installation
-	mod.DebugPrint("Copying map_text files...", 3)
+	mod.DebugPrint("Copying .map_text files...", 3)
 	for src, dest in pairs(MapFileMappings) do
 		local srcPath, destPath
 		if MapTextFileNames[src] then
@@ -49,11 +50,10 @@ function mod.FirstTimeSetup()
 		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 	end
 
-	copyFiles(MapFileMappings, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", true)
+	copyFiles(MapFileMappings, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", "Map binary ", true)
 
-	mod.DebugPrint("Copying voicelines...", 3)
-	copyFiles(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", true)
-	copyFiles(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", true)
+	copyFiles(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", "Voiceline ", true)
+	copyFiles(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", "Voiceline ", true)
 
 	mod.DebugPrint("Copying help text files...", 3)
 	CopyHadesHelpTexts()
@@ -112,6 +112,8 @@ function CopyHadesHelpTexts()
 				existingIds[entry.Id] = true
 			end
 
+			local languageModifications = mod.HadesHelpTextModifications[language] or {}
+
 			-- Remove all existingIds from hadesHelpTextData - we don't want to overwrite something that already exists in Hades II
 			for i = #hadesHelpTextData.Texts, 1, -1 do
 				local entry = hadesHelpTextData.Texts[i]
@@ -122,6 +124,11 @@ function CopyHadesHelpTexts()
 				end
 				if existingIds[entry.Id] then
 					table.remove(hadesHelpTextData.Texts, i)
+				elseif languageModifications[entry.Id] then
+					mod.DebugPrint("Help text entry " .. entry.Id .. " has modifications in the mod", 2)
+					for key, value in pairs(languageModifications[entry.Id]) do
+						entry[key] = value
+					end
 				end
 			end
 
