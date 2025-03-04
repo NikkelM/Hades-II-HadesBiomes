@@ -60,10 +60,10 @@ local newRoomSets = {
 
 		-- Barge of Death
 		"X_Wrapping01",
-		-- "X_MiniBoss01",
+		"X_MiniBoss01",
 		-- "X_MiniBoss02",
 
-		"X_Reprieve01",
+		-- "X_Reprieve01",
 
 		"X_Combat01",
 		"X_Combat02",

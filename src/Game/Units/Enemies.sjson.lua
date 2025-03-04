@@ -30,6 +30,7 @@ local hadesEnemiesModifications = {
 -- Copy an enemy from Hades II as a Hades enemy
 -- Needed if the replaced name is skipped in mod.EnemyNameRemovals
 local enemyAdditions = {
+	-- ASPHODEL
 	{
 		Name = "HadesBloodlessNaked",
 		InheritFrom = "BloodlessNaked",
