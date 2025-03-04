@@ -3,9 +3,8 @@
 local encounterData = mod.LoadHadesEncounterData("EncounterData.lua")
 local encounterDataAsphodel = {
 	-- Generic encounters
-	-- ModsNikkelMHadesBiomesGenerated = encounterData.Generated,
+	-- TODO: Modify with Asphodel data
 	GeneratedAsphodel = game.DeepCopyTable(game.EncounterData.GeneratedF),
-	-- OpeningGenerated = encounterData.OpeningGenerated,
 	DevotionTestAsphodel = encounterData.DevotionTestAsphodel,
 
 	-- Minibosses

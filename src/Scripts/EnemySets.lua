@@ -87,113 +87,117 @@ game.EnemySets.EnemiesBiome1MiniBoss = {
 
 -- Asphodel
 game.EnemySets.EnemiesBiome2 = {
-	"CrusherUnit",                 -- Done
-	"LightSpawnerElite",           -- Done
-	"BloodlessNaked",              -- Done
-	"BloodlessNakedElite",         -- Done
-	"BloodlessNakedBerserker",     -- Done -- BloodlessBerserker in Hades II
-	"BloodlessNakedBerserkerElite", -- Done
-	"BloodlessGrenadier",          -- Done
-	"BloodlessGrenadierElite",     -- Done
-	"BloodlessSelfDestruct",       -- Done
-	"BloodlessSelfDestructElite",  -- Done
-	"BloodlessPitcher",            -- Done
-	"BloodlessPitcherElite",       -- Done
-	"BloodlessWaveFist",           -- Done
-	"BloodlessWaveFistElite",      -- Done
-	"SpreadShotUnit",              -- Done
-	"SpreadShotUnitElite",         -- Done
-	"FreezeShotUnit",              -- Done
-	"FreezeShotUnitElite",         -- Done
-	"RangedBurrower",              -- Done
-	"RangedBurrowerElite",         -- Done
+	"CrusherUnit",
+	"LightSpawnerElite",
+	"BloodlessNaked",
+	"BloodlessNakedElite",
+	"BloodlessNakedBerserker", -- BloodlessBerserker in Hades II
+	"BloodlessNakedBerserkerElite",
+	"BloodlessGrenadier",
+	"BloodlessGrenadierElite",
+	"BloodlessSelfDestruct",
+	"BloodlessSelfDestructElite",
+	"BloodlessPitcher",
+	"BloodlessPitcherElite",
+	"BloodlessWaveFist",
+	"BloodlessWaveFistElite",
+	"SpreadShotUnit",
+	"SpreadShotUnitElite",
+	"FreezeShotUnit",
+	"FreezeShotUnitElite",
+	"RangedBurrower",
+	"RangedBurrowerElite",
 }
 
 -- TimeChallenge
 game.EnemySets.EnemiesBiome2Challenge = {
-	"LightSpawnerElite",           -- Done
-	"BloodlessNaked",              -- Done
-	"BloodlessNaked",              -- Done
-	"BloodlessNakedElite",         -- Done
-	"BloodlessNakedBerserkerElite", -- Done
-	"BloodlessGrenadier",          -- Done
-	"BloodlessGrenadierElite",     -- Done
-	"BloodlessSelfDestruct",       -- Done
-	"BloodlessSelfDestructElite",  -- Done
-	"BloodlessPitcher",            -- Done
-	"BloodlessPitcherElite",       -- Done
-	"BloodlessWaveFist",           -- Done
-	"BloodlessWaveFistElite",      -- Done
-	"HeavyRangedElite",            -- Done
-	"SpreadShotUnit",              -- Done
-	"SpreadShotUnitElite",         -- Done
-	"FreezeShotUnit",              -- Done
-	"FreezeShotUnitElite",         -- Done
-	"RangedBurrower",              -- Done
-	"RangedBurrowerElite",         -- Done
+	"LightSpawnerElite",
+	"BloodlessNaked",
+	"BloodlessNaked",
+	"BloodlessNakedElite",
+	"BloodlessNakedBerserkerElite",
+	"BloodlessGrenadier",
+	"BloodlessGrenadierElite",
+	"BloodlessSelfDestruct",
+	"BloodlessSelfDestructElite",
+	"BloodlessPitcher",
+	"BloodlessPitcherElite",
+	"BloodlessWaveFist",
+	"BloodlessWaveFistElite",
+	"HeavyRangedElite",
+	"SpreadShotUnit",
+	"SpreadShotUnitElite",
+	"FreezeShotUnit",
+	"FreezeShotUnitElite",
+	"RangedBurrower",
+	"RangedBurrowerElite",
 }
 
 game.EnemySets.EnemiesBiome2Thanatos = {
-	"CrusherUnit",                 -- Done
-	"BloodlessNaked",              -- Done
-	"BloodlessNakedElite",         -- Done
-	"BloodlessNakedBerserker",     -- Done
-	"BloodlessNakedBerserkerElite", -- Done
-	"BloodlessGrenadier",          -- Done
-	"BloodlessSelfDestruct",       -- Done
-	"BloodlessSelfDestructElite",  -- Done
-	"BloodlessPitcher",            -- Done
-	"BloodlessWaveFist",           -- Done
-	"BloodlessWaveFistElite",      -- Done
-	"SpreadShotUnit",              -- Done
-	"SpreadShotUnitElite",         -- Done
-	"FreezeShotUnit",              -- Done
-	"RangedBurrower",              -- Done
-	"RangedBurrowerElite",         -- Done
+	"CrusherUnit",
+	"BloodlessNaked",
+	"BloodlessNakedElite",
+	"BloodlessNakedBerserker",
+	"BloodlessNakedBerserkerElite",
+	"BloodlessGrenadier",
+	"BloodlessSelfDestruct",
+	"BloodlessSelfDestructElite",
+	"BloodlessPitcher",
+	"BloodlessWaveFist",
+	"BloodlessWaveFistElite",
+	"SpreadShotUnit",
+	"SpreadShotUnitElite",
+	"FreezeShotUnit",
+	"RangedBurrower",
+	"RangedBurrowerElite",
 }
 
--- Copied from Wrapping - need to test which make sense
 game.EnemySets.EnemiesBiome2_EliteChallenge = {
-	"BloodlessNakedElite",       -- Done
-	"BloodlessGrenadierElite",   -- Done
-	"BloodlessSelfDestructElite", -- Done
-	"BloodlessPitcherElite",     -- Done
-	"BloodlessWaveFistElite",    -- Done
+	"BloodlessSelfDestructElite",
+	"BloodlessNakedBerserkerElite",
+	"BloodlessSelfDestructElite",
+	"BloodlessPitcherElite",
+	"BloodlessWaveFistElite",
 }
 
 game.EnemySets.EnemiesBiome2Wrapping = {
-	"BloodlessNakedElite",       -- Done
-	"BloodlessGrenadierElite",   -- Done
-	"BloodlessSelfDestructElite", -- Done
-	"BloodlessPitcherElite",     -- Done
-	"BloodlessWaveFistElite",    -- Done
+	"BloodlessNakedElite",
+	"BloodlessGrenadierElite",
+	"BloodlessSelfDestructElite",
+	"BloodlessPitcherElite",
+	"BloodlessWaveFistElite",
 	-- ShieldRanged, -- Added through the encounter directly for each wave
 }
 
 game.EnemySets.EnemiesBiome2Devotion = {
-	"SpreadShotUnitElite",         -- Done
-	"FreezeShotUnitElite",         -- Done
-	"BloodlessNakedElite",         -- Done
-	"BloodlessNakedBerserkerElite", -- Done
-	"BloodlessGrenadierElite",     -- Done
-	"BloodlessSelfDestructElite",  -- Done
-	"BloodlessPitcherElite",       -- Done
-	"BloodlessWaveFistElite",      -- Done
-	"RangedBurrowerElite",         -- Done
+	"SpreadShotUnitElite",
+	"FreezeShotUnitElite",
+	"BloodlessNakedElite",
+	"BloodlessNakedBerserkerElite",
+	"BloodlessGrenadierElite",
+	"BloodlessSelfDestructElite",
+	"BloodlessPitcherElite",
+	"BloodlessWaveFistElite",
+	"RangedBurrowerElite",
+	-- Need to add some non-elite enemies, to ensure there are always valid enemies available
+	"SpreadShotUnit",
+	"RangedBurrower",
+	"BloodlessPitcher",
+	"BloodlessWaveFist",
 }
 
 game.EnemySets.EnemiesBiome2Hard = {
-	"SpreadShotUnitElite",         -- Done
-	"LightSpawnerElite",           -- Done
-	"FreezeShotUnitElite",         -- Done
-	"CrusherUnit",                 -- Done
-	"BloodlessNakedElite",         -- Done
-	"BloodlessNakedBerserkerElite", -- Done
-	"BloodlessGrenadierElite",     -- Done
-	"BloodlessSelfDestructElite",  -- Done
-	"BloodlessPitcherElite",       -- Done
-	"BloodlessWaveFistElite",      -- Done
-	"RangedBurrowerElite",         -- Done
+	"SpreadShotUnitElite",
+	"LightSpawnerElite",
+	"FreezeShotUnitElite",
+	"CrusherUnit",
+	"BloodlessNakedElite",
+	"BloodlessNakedBerserkerElite",
+	"BloodlessGrenadierElite",
+	"BloodlessSelfDestructElite",
+	"BloodlessPitcherElite",
+	"BloodlessWaveFistElite",
+	"RangedBurrowerElite",
 }
 
 game.EnemySets.HydraHeads = {
