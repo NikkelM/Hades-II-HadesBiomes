@@ -2,7 +2,12 @@
 
 -- Loads EnemyData from a file in Hades
 -- Note: Must be loaded before EncounterData, as there are some references to it in EncounterData!
+mod.CachedHadesEnemyData = nil
 local function LoadHadesEnemyData()
+	if mod.CachedHadesEnemyData then
+		return mod.CachedHadesEnemyData
+	end
+
 	local originalUnitSetDataEnemies = game.DeepCopyTable(game.UnitSetData.Enemies)
 	local originalEnemyData = game.DeepCopyTable(game.EnemyData)
 	local originalStatusAnimations = game.DeepCopyTable(game.StatusAnimations)
@@ -11,10 +16,11 @@ local function LoadHadesEnemyData()
 	if chunk then
 		chunk()
 		local hadesEnemyData = UnitSetData.Enemies
+		mod.CachedHadesEnemyData = hadesEnemyData
 		game.UnitSetData.Enemies = originalUnitSetDataEnemies
 		game.EnemyData = originalEnemyData
 		game.StatusAnimations = originalStatusAnimations
-		return hadesEnemyData
+		return mod.CachedHadesEnemyData
 	else
 		mod.DebugPrint("Error loading enemyData: " .. err, 1)
 	end

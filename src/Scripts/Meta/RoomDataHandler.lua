@@ -1,7 +1,12 @@
 -- Contains generic functions to handle migrating room data from Hades to Hades II
 
 -- Loads RoomData from a file in Hades
+mod.CachedHadesRoomData = nil
 function mod.LoadHadesRoomData(fileName)
+	if mod.CachedHadesRoomData then
+		return mod.CachedHadesRoomData
+	end
+
 	local originalRoomEventData = game.DeepCopyTable(game.RoomEventData)
 	local originalRoomSetData = game.DeepCopyTable(game.RoomSetData)
 	local originalRoomData = game.DeepCopyTable(game.RoomData)
@@ -12,10 +17,11 @@ function mod.LoadHadesRoomData(fileName)
 		-- No worries if this is marked as undefined, it comes from the loaded file
 		---@diagnostic disable-next-line: undefined-global
 		local hadesRoomData = RoomSetData
+		mod.CachedHadesRoomData = hadesRoomData
 		game.RoomEventData = originalRoomEventData
 		game.RoomSetData = originalRoomSetData
 		game.RoomData = originalRoomData
-		return hadesRoomData
+		return mod.CachedHadesRoomData
 	else
 		mod.DebugPrint("Error loading RoomData: " .. err, 1)
 	end
