@@ -333,6 +333,54 @@ local weaponModifications = {
 		},
 		ForceFirst = mod.NilValue,
 	},
+	-- ASPHODEL - Witches Circle
+	SpreadShotMinibossRadial = {
+		-- Fixing the animations and increasing the cooldown to scale with difficulty of not being able to destroy projectiles
+		-- Decreasing cooldown again if the shrine upgrade is active, to increase difficulty
+		AIData = {
+			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
+			PreAttackWaitForAnimation = true,
+			PostAttackCooldown = mod.NilValue,
+			PostAttackCooldownMin = 2.0,
+			PostAttackCooldownMax = 3.0,
+		},
+		ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",
+		ShrineMetaUpgradeRequiredLevel = 1,
+		ShrineAIDataOverwrites = {
+			PostAttackCooldownMin = 1.5,
+			PostAttackCooldownMax = 1.5,
+		},
+	},
+	SpreadShotMinibossCone = {
+		AIData = {
+			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
+			PreAttackWaitForAnimation = true,
+			PostAttackCooldown = mod.NilValue,
+			PostAttackCooldownMin = 2.0,
+			PostAttackCooldownMax = 3.0,
+		},
+		ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",
+		ShrineMetaUpgradeRequiredLevel = 1,
+		ShrineAIDataOverwrites = {
+			PostAttackCooldownMin = 1.5,
+			PostAttackCooldownMax = 1.5,
+		},
+	},
+	SpreadShotMinibossCross = {
+		AIData = {
+			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
+			PreAttackWaitForAnimation = true,
+			PostAttackCooldown = mod.NilValue,
+			PostAttackCooldownMin = 2.0,
+			PostAttackCooldownMax = 3.0,
+		},
+		ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",
+		ShrineMetaUpgradeRequiredLevel = 1,
+		ShrineAIDataOverwrites = {
+			PostAttackCooldownMin = 1.5,
+			PostAttackCooldownMax = 1.5,
+		},
+	},
 }
 
 -- Modifications easier done in a loop

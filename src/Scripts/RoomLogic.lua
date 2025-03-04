@@ -52,3 +52,25 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 		end
 	end
 end)
+
+modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
+	base(unit, currentRun, args)
+
+	-- Overwrite weapon/AI data if necessary due to a vow
+	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun then
+		local shrineLevel = game.GetNumShrineUpgrades(unit.ShrineMetaUpgradeName)
+		local requiredShrineLevel = unit.ShrineMetaUpgradeRequiredLevel or 1
+		if unit.ShrineDataOverwrites ~= nil and shrineLevel >= requiredShrineLevel then
+			game.OverwriteTableKeys(unit, unit.ShrineDataOverwrites)
+		end
+		if unit.ShrineDefualtAIDataOverwrites ~= nil and shrineLevel > 0 then
+			if unit.DefaultAIData == nil then
+				unit.DefaultAIData = {}
+			end
+			game.OverwriteTableKeys(unit.DefaultAIData, unit.ShrineDefualtAIDataOverwrites)
+		end
+		if unit.ShrineWeaponOptionsOverwrite ~= nil and shrineLevel > 0 then
+			unit.WeaponOptions = unit.ShrineWeaponOptionsOverwrite
+		end
+	end
+end)

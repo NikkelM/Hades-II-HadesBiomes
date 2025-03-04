@@ -12,6 +12,7 @@ local encounterDataAsphodel = {
 	WrappingAsphodel = encounterData.WrappingAsphodel,
 	WrappingAsphodel2 = encounterData.WrappingAsphodel2,
 	MiniBossHitAndRun = encounterData.MiniBossHitAndRun,
+	MiniBossSpreadShot = encounterData.MiniBossSpreadShot,
 
 	-- Bosses
 
@@ -68,6 +69,13 @@ local encounterModifications = {
 	-- MINIBOSSES
 	MiniBossHitAndRun = {
 		InheritFrom = { "MinibossEncounter", "GeneratedAsphodel" },
+		MinWaves = 1,
+		MaxWaves = 1,
+	},
+	MiniBossSpreadShot = {
+		InheritFrom = { "MinibossEncounter", "GeneratedAsphodel" },
+		MinWaves = 1,
+		MaxWaves = 1,
 	},
 
 	-- BOSSES
