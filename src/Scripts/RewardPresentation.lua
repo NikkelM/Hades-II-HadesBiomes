@@ -3,7 +3,7 @@
 modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosenRewardType, chosenLootName, index, args)
 	args = args or {}
 
-	if exitDoor.Name == "TartarusDoor03b" or exitDoor.Name == "AsphodelBoat01b" then
+	if not args.ReUseIds and (exitDoor.Name == "TartarusDoor03b" or exitDoor.Name == "AsphodelBoat01b") then
 		local room = exitDoor.Room
 		chosenRewardType = chosenRewardType or room.ChosenRewardType
 
