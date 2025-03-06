@@ -103,15 +103,15 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 			enemyData.AdditionalEnemySetupFunctionName = nil
 		end
 
+		game.ProcessDataInheritance(enemyData, game.EnemyData)
+
 		-- Increase health and armour for slightly increased difficulty
 		if enemyData.MaxHealth then
-			enemyData.MaxHealth = enemyData.MaxHealth * 1.15
+			enemyData.MaxHealth = enemyData.MaxHealth * 1.35
 		end
 		if enemyData.HealthBuffer then
 			enemyData.HealthBuffer = enemyData.HealthBuffer * 1.2
 		end
-
-		game.ProcessDataInheritance(enemyData, game.EnemyData)
 
 		base[enemyName] = enemyData
 	end
@@ -303,6 +303,8 @@ local enemyModifications = {
 		},
 		OnDeathFunctionName = "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		BlockRaiseDead = true,
+		-- From 1325
+		HealthBuffer = 2000,
 	},
 	HeavyRangedSplitterFragment = {
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },

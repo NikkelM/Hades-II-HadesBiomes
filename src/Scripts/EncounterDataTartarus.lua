@@ -6,7 +6,7 @@ local encounterDataTartarus = {
 	-- This one is used by all biomes, we define it here
 	ModsNikkelMHadesBiomesGenerated = encounterData.Generated,
 
-	GeneratedTartarus = game.DeepCopyTable(game.EncounterData.GeneratedF),
+	GeneratedTartarus = encounterData.GeneratedTartarus,
 	OpeningGenerated = encounterData.OpeningGenerated,
 	DevotionTestTartarus = encounterData.DevotionTestTartarus,
 
@@ -51,11 +51,16 @@ local encounterReplacements = {
 			AggroReactionTimeMin = 0.15,
 			AggroReactionTimeMax = 0.45,
 		},
+		CanEncounterSkip = true,
+		BlockAthenaEncounterKeepsake = false,
 	},
 	GeneratedTartarus = {
-		EnemySet = game.EnemySets.EnemiesBiome1,
-		-- The original from Hades is 30, Hades II GeneratedF is 55
-		BaseDifficulty = 40,
+		-- The original from Hades is 30
+		BaseDifficulty = 80,
+		-- The original from Hades is 0.35
+		ActiveEnemyCapDepthRamp = 0.55,
+		-- The original from Hades is 11
+		DepthDifficultyRamp = 17,
 	},
 
 	PerfectClearChallengeTartarus = {
@@ -77,7 +82,7 @@ local encounterModifications = {
 	},
 	OpeningGenerated = {
 		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
-		DifficultyModifier = -30,
+		DifficultyModifier = -80,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
 		PreSpawnEnemies = false,
 		NoFirstWaveStartDelay = true,
