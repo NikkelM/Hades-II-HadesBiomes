@@ -3,8 +3,7 @@
 local encounterData = mod.LoadHadesEncounterData("EncounterData.lua")
 local encounterDataAsphodel = {
 	-- Generic encounters
-	-- TODO: Modify with Asphodel data
-	GeneratedAsphodel = game.DeepCopyTable(game.EncounterData.GeneratedF),
+	GeneratedAsphodel = encounterData.GeneratedAsphodel,
 	DevotionTestAsphodel = encounterData.DevotionTestAsphodel,
 
 	-- Minibosses
@@ -42,11 +41,18 @@ mod.UpdateField(encounterDataAsphodel, "Challenge", "TimeChallenge", { "InheritF
 -- Can still use modifications if the modified table did not exist beforehand
 local encounterReplacements = {
 	GeneratedAsphodel = {
-		EnemySet = game.EnemySets.EnemiesBiome2,
-		-- The original from Hades is 170, Hades II GeneratedF is 140
-		BaseDifficulty = 180,
+		-- The original from Hades is 170
+		BaseDifficulty = 200,
 		-- Load the base Hades II Asphodel package, since we can reuse some enemies
 		LoadPackages = { "Asphodel" },
+		-- Original is missing HandleEncounterPreSpawns
+		StartRoomUnthreadedEvents = {
+			{ FunctionName = "HandleEncounterPreSpawns" },
+			{ FunctionName = "DisableRoomTraps" },
+		},
+		-- Importing base Hades II properties
+		CanEncounterSkip = true,
+		BlockAthenaEncounterKeepsake = false,
 	},
 
 	PerfectClearChallengeAsphodel = {

@@ -506,6 +506,8 @@ local enemyModifications = {
 			ProjectileName = "CrusherUnitTouchdown",
 		},
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesCrusherUnitTouchdown",
+		-- Breaks the animation, as they are only slowed down and not actually frozen
+		CanBeFrozen = false,
 	},
 	ShieldRanged = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
