@@ -41,6 +41,9 @@ local roomModifications = {
 		TimeChallengeEncounterOptions = { "TimeChallengeAsphodel" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeAsphodel" },
 		EliteChallengeEncounterOptions = { "EliteChallengeAsphodel" },
+
+		-- LavaSplash fires, but the puddle is not created when it lands - #88
+		HazardData = mod.NilValue,
 	},
 
 	-- OPENING ROOMS
@@ -65,16 +68,10 @@ local roomModifications = {
 	X_PreBoss01 = {
 		SkipLastKillPresentation = true,
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
-		-- IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
+		IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 	},
-
-	-- -- MINIBOSSES
-	-- -- Other miniboss rooms inherit from this
-	-- A_MiniBoss01 = {
-	-- 	RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
-	-- },
 
 	-- -- BOSSES
 	-- A_Boss01 = {
@@ -114,7 +111,6 @@ local roomModifications = {
 	-- },
 
 	-- -- OTHER
-	-- TODO: Check fountain tooltip here and in the Tartarus room
 	X_Reprieve01 = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,
