@@ -98,6 +98,10 @@ function game.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
 	game.SetPlayerInvulnerable("LeaveRoomPresentation")
 	game.HideCombatUI("LeaveRoomPresentation")
 
+	-- Custom: Prevent the invulnerable hit presentation from playing when leaving the room and not being centered on the boat
+	local originalExclusiveOnHitFunctionName = currentRun.Hero.ExclusiveOnHitFunctionName
+	currentRun.Hero.ExclusiveOnHitFunctionName = game.AsphodelLeaveRoomPresentationDummyOnHitFunction
+
 	local door = game.MapState.OfferedExitDoors[exitDoorId]
 	local boatId = exitDoorId
 
@@ -178,7 +182,13 @@ function game.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
 
 	AllowShout = false
 
+	currentRun.Hero.ExclusiveOnHitFunctionName = originalExclusiveOnHitFunctionName
+
 	RemoveInputBlock({ Name = "LeaveRoomPresentation" })
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
 	SetPlayerVulnerable("LeaveRoomPresentation")
+end
+
+-- Doesn't do anything, used to not play the invulnerable hit presentation when leaving the room and not being centered on the boat
+function game.AsphodelLeaveRoomPresentationDummyOnHitFunction(victim, triggerArgs, args)
 end
