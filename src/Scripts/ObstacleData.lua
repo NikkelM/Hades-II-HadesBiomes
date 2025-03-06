@@ -84,3 +84,22 @@ game.ObstacleData.TartarusHalfPillarBase04C = {
 game.ObstacleData.MultiFuryMegaeraIntro = { ExitAnimation = "MegaeraMultiFuryTakeOff", }
 game.ObstacleData.MultiFuryAlectoIntro = { ExitAnimation = "AlectoMultiFuryTakeOff", }
 game.ObstacleData.MultiFuryTisiphoneIntro = { ExitAnimation = "TisiphoneMultiFuryTakeOff", }
+
+game.ObstacleData.HealthFountainAsphodel = {
+	InheritFrom = { "HealthFountain" },
+	HealingSpentAnimation = "HealthFountainEmptyAsphodel",
+}
+game.ObstacleData.HealthFountainElysium = {
+	InheritFrom = { "HealthFountain" },
+	HealingSpentAnimation = "HealthFountainEmptyElysium",
+}
+
+-- We need to re-process data inheritance for any redefined obstacles that define an InheritFrom
+local needInheritanceProcessing = {
+	"HealthFountainAsphodel",
+	"HealthFountainElysium",
+}
+
+for _, obstacleName in pairs(needInheritanceProcessing) do
+	game.ProcessDataInheritance(game.ObstacleData[obstacleName], game.ObstacleData)
+end

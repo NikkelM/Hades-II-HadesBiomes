@@ -20,6 +20,9 @@ local hadesTwoObstacleModifications = {
 	AsphodelBoatSunkUnlocked = {
 		ChildAnimation = "AsphodelRoomRewardAvailable-Back"
 	},
+	HealthFountainEmptyAsphodel = {
+		ChildAnimation = "ModsNikkelMHadesBiomes-HealthFountainEmptyAsphodelWater",
+	},
 }
 
 local addAnimations = {
@@ -38,6 +41,13 @@ local addAnimations = {
 		ScaleFromOwner = "Ignore",
 		Ambient = 0.0,
 		OnlyWhenVisible = true,
+	},
+	-- There is no existing equivalent animation
+	{
+		Name = "ModsNikkelMHadesBiomes-HealthFountainEmptyAsphodelWater",
+		InheritFrom = "HealthFountainFullAsphodelWater",
+		VisualFx = nil,
+		Alpha = 0.6,
 	},
 }
 

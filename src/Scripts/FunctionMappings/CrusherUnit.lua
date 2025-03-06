@@ -48,9 +48,8 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 			end
 			CreateAnimation({ DestinationId = enemy.ObjectId, Name = aiData.ShadowAnimationFadeOutName })
 
-			-- Modified from 5000 to 8000 to move it offscreen completely and in a smoother motion
-			-- Don't set it too high, or the enemy will ascend too fast and it doesn't look good anymore
-			ApplyUpwardForce({ Id = enemy.ObjectId, Speed = 8000 })
+			-- Modified from 5000 to 10000 to move it offscreen completely and in a smoother motion
+			ApplyUpwardForce({ Id = enemy.ObjectId, Speed = 10000 })
 			-- Prevent it from being affected by the Cast
 			SetInvulnerable({ Id = enemy.ObjectId })
 			game.wait(0.5, enemy.AIThreadName)
