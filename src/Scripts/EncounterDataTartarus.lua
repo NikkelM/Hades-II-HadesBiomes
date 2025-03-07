@@ -56,11 +56,11 @@ local encounterReplacements = {
 	},
 	GeneratedTartarus = {
 		-- The original from Hades is 30
-		BaseDifficulty = 80,
+		BaseDifficulty = 60,
 		-- The original from Hades is 0.35
 		ActiveEnemyCapDepthRamp = 0.55,
 		-- The original from Hades is 11
-		DepthDifficultyRamp = 17,
+		DepthDifficultyRamp = 14,
 	},
 
 	PerfectClearChallengeTartarus = {

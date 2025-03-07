@@ -42,13 +42,13 @@ mod.UpdateField(encounterDataAsphodel, "Challenge", "TimeChallenge", { "InheritF
 local encounterReplacements = {
 	GeneratedAsphodel = {
 		-- The original from Hades is 170
-		BaseDifficulty = 250,
+		BaseDifficulty = 220,
 		-- The original from Hades is 1.0
-		ActiveEnemyCapDepthRamp = 1.4,
+		ActiveEnemyCapDepthRamp = 1.3,
 		-- The original from Hades is 0.35
 		TypeCountDepthRamp = 0.55,
 		-- The original from Hades is 25
-		DepthDifficultyRamp = 35,
+		DepthDifficultyRamp = 30,
 		-- Load the base Hades II Asphodel package, since we can reuse some enemies
 		LoadPackages = { "Asphodel" },
 		-- Original is missing HandleEncounterPreSpawns
