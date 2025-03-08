@@ -208,6 +208,9 @@ local enemyReplacements = {
 	HadesSpreadShotUnitElite = game.DeepCopyTable(game.EnemyData.SpreadShotUnit_Elite),
 	BloodlessNakedBerserker = game.DeepCopyTable(game.EnemyData.BloodlessBerserker),
 	BloodlessNakedBerserkerElite = game.DeepCopyTable(game.EnemyData.BloodlessBerserker_Elite),
+	HydraHeadImmortal = {
+		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+	},
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
@@ -504,10 +507,11 @@ local enemyModifications = {
 		DeathAnimation = "CrusherUnitDeathVFX",
 		DestroyDelay = 1.2,
 		PostAggroAI = "ModsNikkelMHadesBiomesSkyAttackerAI",
+		-- TODO: Same for Hydra boss and heads
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesCrusherUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
 		},
-		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesCrusherUnitTouchdown",
 		-- Breaks the animation, as they are only slowed down and not actually frozen
 		CanBeFrozen = false,
 	},
@@ -521,6 +525,7 @@ local enemyModifications = {
 			[2] = { Distance = 20 },
 			[3] = { Distance = 20 }
 		},
+		-- TODO: Same for hydra boss and heads
 		SpawnEvents = {
 			{
 				FunctionName = "CreateTethers",
@@ -544,6 +549,11 @@ local enemyModifications = {
 			MaxAttackers = 4,
 		},
 		ShrineWeaponOptionsOverwrite = mod.NilValue,
+	},
+	-- Boss - Hydra heads
+	BaseHydraHead = {
+		ActivateFx = "nil",
+		ActivateAnimation = "HydraHeadLavaBubbles",
 	},
 
 	-- These enemies have not been implemented yet

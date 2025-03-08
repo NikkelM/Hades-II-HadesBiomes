@@ -13,6 +13,15 @@ local encounterDataAsphodel = {
 	MiniBossSpreadShot = encounterData.MiniBossSpreadShot,
 
 	-- Bosses
+	BossHydra = encounterData.BossHydra,
+	BaseHydraEncounter = encounterData.BaseHydraEncounter,
+	HydraHeads1 = encounterData.HydraHeads1,
+	HydraHeads2 = encounterData.HydraHeads2,
+	HydraHeads3 = encounterData.HydraHeads3,
+	HydraHeads4 = encounterData.HydraHeads4,
+	HydraHeads5 = encounterData.HydraHeads5,
+	HydraHeads6 = encounterData.HydraHeads6,
+	HydraHeads7 = encounterData.HydraHeads7,
 
 	-- Challenge encounters within a room
 	TimeChallengeAsphodel = encounterData.TimeChallengeAsphodel,
@@ -87,6 +96,11 @@ local encounterModifications = {
 	},
 
 	-- BOSSES
+	BossHydra = {
+		WipeEnemiesOnKillAllTypes = { "HydraHeadImmortal" },
+		CancelSpawnsOnKillAllTypes = { "HydraHeadImmortal" },
+		PostUnthreadedEvents = mod.NilValue,
+	},
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataAsphodel, encounterModifications, encounterReplacements)

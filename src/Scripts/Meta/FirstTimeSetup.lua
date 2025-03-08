@@ -125,7 +125,6 @@ function CopyHadesHelpTexts()
 				if existingIds[entry.Id] then
 					table.remove(hadesHelpTextData.Texts, i)
 				elseif languageModifications[entry.Id] then
-					mod.DebugPrint("Help text entry " .. entry.Id .. " has modifications in the mod", 2)
 					for key, value in pairs(languageModifications[entry.Id]) do
 						entry[key] = value
 					end

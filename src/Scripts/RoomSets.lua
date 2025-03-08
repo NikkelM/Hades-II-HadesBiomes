@@ -50,10 +50,10 @@ local newRoomSets = {
 	Asphodel = {
 		"X_Intro",
 
-		-- "X_Boss01",
-		-- "X_Boss02",
+		"X_Boss01",
+		"X_Boss02",
 
-		-- "X_PostBoss01",
+		"X_PostBoss01",
 
 		"X_PreBoss01",
 		"X_Shop01",

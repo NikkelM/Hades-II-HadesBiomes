@@ -12,16 +12,7 @@ local roomReplacements = {
 		BreakableOptions = { "BreakableAsphodelIdle", "BreakableAsphodelIdle2", "BreakableAsphodelIdle3" },
 	},
 
-	-- OPENING ROOMS
-	-- RoomOpening = {
-	-- 	-- Music
-	-- 	MusicActiveStems = { "Guitar", "Drums", "Bass", },
-	-- 	Music = mod.NilValue,
-	-- 	MusicRequirements = mod.NilValue,
-	-- 	MusicStartDelay = 3.75,
-	-- },
-
-	-- -- SHOPS
+	-- SHOPS
 	X_Shop01 = {
 		Binks = mod.NilValue,
 	},
@@ -71,46 +62,41 @@ local roomModifications = {
 		IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
+		-- Deciding which room to create, depending on EM level
+		ShrineMetaUpgradeName = mod.NilValue,
+		LinkedRoomByPactLevel = mod.NilValue,
+		LinkedRooms = { "X_Boss01", "X_Boss02" },
 	},
 
-	-- -- BOSSES
-	-- A_Boss01 = {
-	-- 	LoadModdedVoiceBanks = { "Megaera*", "Alecto*", "Tisiphone*", "ZagreusField" },
-	-- 	-- Replaces MegaeraHome with Megaera voicelines
-	-- 	UnthreadedEvents = {
-	-- 		[1] = {
-	-- 			FunctionName = "ModsNikkelMHadesBiomesBossIntro",
-	-- 			Args = {
-	-- 				VoiceLines = {
-	-- 					[1] = { Cue = "/VO/Megaera_0061" },
-	-- 					[2] = { Cue = "/VO/Megaera_0053", RequiredPlayed = { "/VO/Megaera_0061" }, },
-	-- 					[4] = { Cue = "/VO/Megaera_0057", },
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 	},
-	-- 	ForcedReward = "MixerFBossDrop",
-	-- 	FirstClearRewardStore = mod.NilValue,
-	-- 	ForcedRewardStore = mod.NilValue,
-	-- 	EligibleRewards = mod.NilValue,
-	-- 	RewardConsumableOverrides = mod.NilValue,
-	-- },
-	-- A_Boss02 = {
-	-- 	UnthreadedEvents = {
-	-- 		[1] = {
-	-- 			FunctionName = "ModsNikkelMHadesBiomesBossIntro",
-	-- 		},
-	-- 	},
-	-- },
-	-- A_Boss03 = {
-	-- 	UnthreadedEvents = {
-	-- 		[1] = {
-	-- 			FunctionName = "ModsNikkelMHadesBiomesBossIntro",
-	-- 		},
-	-- 	},
-	-- },
+	-- BOSSES
+	-- GameStateRequirements depending on the EM level
+	X_Boss01 = {
+		-- TODO: Are these needed - only entrance voicelines?
+		-- LoadModdedVoiceBanks = { "ZagreusField" },
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ShrineUpgrades", "BossDifficultyShrineUpgrade" },
+				Comparison = "<",
+				Value = 2,
+			},
+		},
+		ForcedReward = "MixerGBossDrop",
+		FirstClearRewardStore = mod.NilValue,
+		ForcedRewardStore = mod.NilValue,
+		EligibleRewards = mod.NilValue,
+		RewardConsumableOverrides = mod.NilValue,
+	},
+	X_Boss02 = {
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ShrineUpgrades", "BossDifficultyShrineUpgrade" },
+				Comparison = ">=",
+				Value = 2,
+			},
+		},
+	},
 
-	-- -- OTHER
+	-- OTHER
 	X_Reprieve01 = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,

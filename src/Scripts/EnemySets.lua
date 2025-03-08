@@ -200,12 +200,13 @@ game.EnemySets.EnemiesBiome2Hard = {
 	"RangedBurrowerElite",
 }
 
+-- TODO 
 game.EnemySets.HydraHeads = {
-	-- "HydraHeadDartmaker",
-	-- "HydraHeadLavamaker",
-	-- "HydraHeadSummoner",
-	-- "HydraHeadSlammer",
-	-- "HydraHeadWavemaker",
+	"HydraHeadDartmaker",
+	"HydraHeadLavamaker",
+	"HydraHeadSummoner",
+	"HydraHeadSlammer",
+	"HydraHeadWavemaker",
 }
 
 -- Decides which traps can be added to rooms that randomize traps

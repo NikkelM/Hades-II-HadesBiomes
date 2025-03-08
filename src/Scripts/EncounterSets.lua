@@ -1,8 +1,8 @@
 -- TARTARUS
 game.EncounterSets.TartarusEncountersDefault = {
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus",
-	-- "GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus",
-	-- "GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus", "ThanatosTartarus"
+	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", --"SurvivalTartarus",
+	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", --"SurvivalTartarus", "ThanatosTartarus"
 }
 game.EncounterSets.TartarusEncountersNoSurvival = { "GeneratedTartarus" }
 
@@ -10,7 +10,7 @@ game.EncounterSets.TartarusEncountersNoSurvival = { "GeneratedTartarus" }
 game.EncounterSets.AsphodelEncountersDefault = {
 	"GeneratedAsphodel", "GeneratedAsphodel", "GeneratedAsphodel",
 	"GeneratedAsphodel", "GeneratedAsphodel", "GeneratedAsphodel",
-	-- "GeneratedAsphodel", "GeneratedAsphodel", "GeneratedAsphodel", "ThanatosAsphodel"
+	"GeneratedAsphodel", "GeneratedAsphodel", "GeneratedAsphodel", --"ThanatosAsphodel"
 }
 game.EncounterSets.EncounterEventsWrapping = {
 	{ FunctionName = "WrappingEncounterStartPresentation" },
@@ -32,7 +32,7 @@ game.EncounterSets.EncounterEventsHydraPhase = {
 game.EncounterSets.ElysiumEncountersDefault = {
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
-	-- "GeneratedElysium", "GeneratedElysium", "GeneratedElysium", "ThanatosElysium",
+	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium", --"ThanatosElysium",
 	-- "ThanatosElysiumIntro", "ThanatosElysiumIntro", "ThanatosElysiumIntro"
 }
 
@@ -55,7 +55,6 @@ game.EncounterSets.EncounterEventsThanatos = {
 	{ FunctionName = "ThanatosPreSpawnPresentation" },
 	{ FunctionName = "HandleThanatosSpawn" },
 	{ FunctionName = "ThanatosEncounterStartPresentation" },
-	-- { FunctionName = "EncounterAudio" },
 	{ FunctionName = "BeginThanatosEncounter" },
 	{ FunctionName = "HandleEnemySpawns" },
 	{ FunctionName = "CheckForAllEnemiesDead" },

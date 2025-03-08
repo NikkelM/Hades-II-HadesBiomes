@@ -230,7 +230,7 @@ function game.HarpyKillPresentation(unit, args)
 
 	-- hydra-specific
 	local textMessage = deathPanSettings.Message
-	if deathPanSettings.AltMessage and game.SpeechRecord["/VO/ZagreusField_3147"] then
+	if deathPanSettings.AltMessage and game.GameState.SpeechRecord["/VO/ZagreusField_3147"] then
 		textMessage = deathPanSettings.AltMessage
 	end
 

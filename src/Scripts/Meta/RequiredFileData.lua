@@ -133,17 +133,63 @@ BikFileMappings = {
 	["Enemy_BoneDraconBurrowSet_Bink"] = "Enemy_BoneDraconBurrowSet_Bink",
 	["Enemy_BoneDraconAttackRange_Bink"] = "Enemy_BoneDraconAttackRange_Bink",
 	["Enemy_BoneDraconDeathVFX_Bink"] = "Enemy_BoneDraconDeathVFX_Bink",
+	-- Asphodel Boss - Hydras
+	["Enemy_Hydra_Roar_Bink"] = "Enemy_Hydra_Roar_Bink",
+	["Enemy_Hydra_OnHit_Bink"] = "Enemy_Hydra_OnHit_Bink",
+	["Enemy_Hydra_MouthOpening_Bink"] = "Enemy_Hydra_MouthOpening_Bink",
+	["Enemy_Hydra_Slam_Bink"] = "Enemy_Hydra_Slam_Bink",
+	["Enemy_Hydra_Idle_Bink"] = "Enemy_Hydra_Idle_Bink",
+	["Enemy_Hydra_Ranged_Bink"] = "Enemy_Hydra_Ranged_Bink",
+	["Enemy_Hydra_DeathVFX_Bink"] = "Enemy_Hydra_DeathVFX_Bink",
+	["Enemy_Hydra_Lunge_Bink"] = "Enemy_Hydra_Lunge_Bink",
+	["Enemy_Hydra_Sleep_Bink"] = "Enemy_Hydra_Sleep_Bink",
+	["Enemy_HydraPurple_Roar_Bink"] = "Enemy_HydraPurple_Roar_Bink",
+	["Enemy_HydraPurple_OnHit_Bink"] = "Enemy_HydraPurple_OnHit_Bink",
+	["Enemy_HydraPurple_MouthOpening_Bink"] = "Enemy_HydraPurple_MouthOpening_Bink",
+	["Enemy_HydraPurple_Slam_Bink"] = "Enemy_HydraPurple_Slam_Bink",
+	["Enemy_HydraPurple_Idle_Bink"] = "Enemy_HydraPurple_Idle_Bink",
+	["Enemy_HydraPurple_Ranged_Bink"] = "Enemy_HydraPurple_Ranged_Bink",
+	["Enemy_HydraPurple_Lunge_Bink"] = "Enemy_HydraPurple_Lunge_Bink",
+	["Enemy_HydraPurple_Sleep_Bink"] = "Enemy_HydraPurple_Sleep_Bink",
+	["Enemy_HydraOrange_Roar_Bink"] = "Enemy_HydraOrange_Roar_Bink",
+	["Enemy_HydraOrange_OnHit_Bink"] = "Enemy_HydraOrange_OnHit_Bink",
+	["Enemy_HydraOrange_MouthOpening_Bink"] = "Enemy_HydraOrange_MouthOpening_Bink",
+	["Enemy_HydraOrange_Slam_Bink"] = "Enemy_HydraOrange_Slam_Bink",
+	["Enemy_HydraOrange_Idle_Bink"] = "Enemy_HydraOrange_Idle_Bink",
+	["Enemy_HydraOrange_Ranged_Bink"] = "Enemy_HydraOrange_Ranged_Bink",
+	["Enemy_HydraOrange_Lunge_Bink"] = "Enemy_HydraOrange_Lunge_Bink",
+	["Enemy_HydraOrange_Sleep_Bink"] = "Enemy_HydraOrange_Sleep_Bink",
+	["Enemy_HydraGreen_Roar_Bink"] = "Enemy_HydraGreen_Roar_Bink",
+	["Enemy_HydraGreen_OnHit_Bink"] = "Enemy_HydraGreen_OnHit_Bink",
+	["Enemy_HydraGreen_MouthOpening_Bink"] = "Enemy_HydraGreen_MouthOpening_Bink",
+	["Enemy_HydraGreen_Slam_Bink"] = "Enemy_HydraGreen_Slam_Bink",
+	["Enemy_HydraGreen_Idle_Bink"] = "Enemy_HydraGreen_Idle_Bink",
+	["Enemy_HydraGreen_Ranged_Bink"] = "Enemy_HydraGreen_Ranged_Bink",
+	["Enemy_HydraGreen_Lunge_Bink"] = "Enemy_HydraGreen_Lunge_Bink",
+	["Enemy_HydraGreen_Sleep_Bink"] = "Enemy_HydraGreen_Sleep_Bink",
+	["Enemy_HydraBlue_Roar_Bink"] = "Enemy_HydraBlue_Roar_Bink",
+	["Enemy_HydraBlue_OnHit_Bink"] = "Enemy_HydraBlue_OnHit_Bink",
+	["Enemy_HydraBlue_MouthOpening_Bink"] = "Enemy_HydraBlue_MouthOpening_Bink",
+	["Enemy_HydraBlue_Slam_Bink"] = "Enemy_HydraBlue_Slam_Bink",
+	["Enemy_HydraBlue_Idle_Bink"] = "Enemy_HydraBlue_Idle_Bink",
+	["Enemy_HydraBlue_Ranged_Bink"] = "Enemy_HydraBlue_Ranged_Bink",
+	["Enemy_HydraBlue_Lunge_Bink"] = "Enemy_HydraBlue_Lunge_Bink",
+	["Enemy_HydraBlue_Sleep_Bink"] = "Enemy_HydraBlue_Sleep_Bink",
 }
 
 SjsonFileMappings = {
 	-- Character animations - should only contain unique animation data, so we can simply copy the file instead of hooking
 	-- Note - it's possible this only works if the file name is the same?
+	-- Normal enemies
 	["Animations\\CharacterAnim_Enemies_BoneDracon"] = "Animations\\CharacterAnim_Enemies_BoneDracon",
 	["Animations\\CharacterAnim_Enemies_Shades"] = "Animations\\CharacterAnim_Enemies_Shades",
 	["Animations\\CharacterAnim_Enemies_WretchThug"] = "Animations\\CharacterAnim_Enemies_WretchThug",
 	["Animations\\CharacterAnim_Enemies_Wringer"] = "Animations\\CharacterAnim_Enemies_Wringer",
 	["Animations\\CharacterAnim_Enemies_WretchAssassin"] = "Animations\\CharacterAnim_Enemies_WretchAssassin",
+	-- Bosses
 	["Animations\\CharacterAnim_EnemiesBosses_Furies"] = "Animations\\CharacterAnim_EnemiesBosses_Furies",
+	["Animations\\CharacterAnim_EnemiesBosses_Hydra"] = "Animations\\CharacterAnim_EnemiesBosses_Hydra",
+	-- NPCs
 	["Animations\\CharacterAnimationsNPC_Thanatos"] = "Animations\\CharacterAnimationsNPC_Thanatos",
 }
 
