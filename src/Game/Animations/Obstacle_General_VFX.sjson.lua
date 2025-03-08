@@ -5,7 +5,13 @@ local hadesTwoTartarusObstacleFile = rom.path.combine(rom.paths.Content(),
 -- These should NOT be in use by Hades II to not break functionality there!
 local hadesTwoObstacleModifications = {}
 
+-- Make sure to add a Name key!
 local addAnimations = {
+	ModsNikkelMHadesBiomes_SecretDoor_Revealed = {
+		Name = "ModsNikkelMHadesBiomes_SecretDoor_Revealed",
+		InheritFrom = "SecretDoor_Revealed",
+		Sound = "/EmptyCue",
+	},
 	-- The offsets added to these in Hades II do not match the spawn points in Hades
 	ModsNikkelMHadesBiomesBreakableIdle1 = {
 		Name = "ModsNikkelMHadesBiomesBreakableIdle1",

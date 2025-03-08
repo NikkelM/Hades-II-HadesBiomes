@@ -22,7 +22,7 @@ function game.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(s
 		else
 			escapeDoor.UseText = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText"
 			escapeDoor.OnUsedFunctionName = _PLUGIN.guid .. "." .. "StartHadesRun"
-			SetAnimation({ DestinationId = escapeDoor.ObjectId, Name = "SecretDoor_Revealed" })
+			SetAnimation({ DestinationId = escapeDoor.ObjectId, Name = "ModsNikkelMHadesBiomes_SecretDoor_Revealed" })
 		end
 	end
 end

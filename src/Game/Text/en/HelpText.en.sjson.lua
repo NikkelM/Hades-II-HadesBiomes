@@ -10,8 +10,6 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText",
 		DisplayName = "{I} {#UseTextPreReqFormat}Descend into Nightmare",
-		-- No matter what, always use this version
-		OverwriteLocalization = true
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus",
