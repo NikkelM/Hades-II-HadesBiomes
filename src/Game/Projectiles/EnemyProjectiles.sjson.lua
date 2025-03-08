@@ -117,7 +117,10 @@ local hadesProjectilesModifications = {
 		DetonateGraphic = "CrusherTouchdownFx",
 	},
 	-- ASPHODEL - HYDRA
-
+	HydraDart = {
+		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+	},
 
 	-- STYX
 	StaggeredSatyrRangedWeapon = {

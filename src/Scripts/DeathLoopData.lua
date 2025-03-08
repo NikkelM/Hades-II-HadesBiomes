@@ -22,20 +22,19 @@ function mod.SpawnHadesRunStartDoor(source, args)
 	})
 	chaosGate.ActivateIds = { chaosGate.ObjectId }
 
-	SetAnimation({ DestinationId = chaosGate.ObjectId, Name = "SecretDoor_Revealed" }) -- SecretDoor_RevealedWalkable if no collision wanted
-
-	-- Overwrite some default values
-	chaosGate.SetupEvents = {}
+	chaosGate.SetupEvents = { { FunctionName = "ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade", }, }
 	chaosGate.SpeakerName = nil
 	chaosGate.DistanceTrigger = {}
 	chaosGate.UnlockedSound = nil
 	chaosGate.HealthCost = nil
+	chaosGate.ExitBlockedVoiceLines = nil
+	chaosGate.ExitDoorOpenAnimation = nil
 
 	chaosGate.UseText = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText"
 	-- Normally this would check if the exit door for a room can be used - we always allow it
 	-- Might add a requirement here if we ever put Hades runs behind a requirement/enchantment
 	chaosGate.OnUseEvents = {}
-	chaosGate.OnUsedFunctionName = _PLUGIN.guid .. '.' .. 'StartHadesRun'
+	chaosGate.OnUsedFunctionName = _PLUGIN.guid .. "." .. "StartHadesRun"
 	chaosGate.OnUsedFunctionArgs = {
 		StartingBiome = "Tartarus",
 		-- Don't play a voiceline - we do this when entering the Chaos gate
