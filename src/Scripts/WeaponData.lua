@@ -381,6 +381,37 @@ local weaponModifications = {
 			PostAttackCooldownMax = 1.5,
 		},
 	},
+	-- ASPHODEL - HYDRA
+	HydraLunge = {
+		Requirements = {
+			MinAttacksBetweenUse = 2,
+			MinPlayerDistance = 350,
+		},
+		AIData = {
+			PreAttackDuration = 0.8,
+			MoveWithinRangeTimeout = 0.5,
+		},
+	},
+	HydraSlam = {
+		Requirements = {
+			MaxPlayerDistance = 600,
+			MinAttacksBetweenUse = 2,
+			ForceUseIfReady = true,
+		},
+		AIData = {
+			PostAttackDuration = 0.5,
+			MoveWithinRange = false,
+		},
+	},
+	HydraDart = {
+		Requirements = {
+			MinAttacksBetweenUse = 2,
+		},
+		AIData = {
+			AIMoveWithinRangeTimeout = 1.0,
+			PostAttackDuration = 0.5,
+		},
+	},
 }
 
 -- Modifications easier done in a loop

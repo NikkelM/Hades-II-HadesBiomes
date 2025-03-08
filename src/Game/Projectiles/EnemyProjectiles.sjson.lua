@@ -116,6 +116,8 @@ local hadesProjectilesModifications = {
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
 	},
+	-- ASPHODEL - HYDRA
+
 
 	-- STYX
 	StaggeredSatyrRangedWeapon = {

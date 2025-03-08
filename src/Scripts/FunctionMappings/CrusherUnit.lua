@@ -1,6 +1,12 @@
-function game.ModsNikkelMHadesBiomesCrusherUnitTouchdown(unit, args)
-	-- Make the enemy vulnerable again after the hack to prevent it from being caught in the Cast
-	SetVulnerable({ Id = unit.ObjectId })
+function game.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
+	args = args or {}
+	if args.Delay then
+		game.wait(args.Delay, unit.AIThreadName)
+	end
+	if args.SetVulnerable then
+		-- For CrusherUnit: Make its vulnerable again after the Cast hack in the modded SkyAttackerAI
+		SetVulnerable({ Id = unit.ObjectId })
+	end
 	CreateProjectileFromUnit({
 		Name = args.ProjectileName,
 		Id = unit.ObjectId,
@@ -126,4 +132,3 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 		end
 	end
 end
-

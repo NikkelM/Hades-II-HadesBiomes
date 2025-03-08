@@ -507,10 +507,10 @@ local enemyModifications = {
 		DeathAnimation = "CrusherUnitDeathVFX",
 		DestroyDelay = 1.2,
 		PostAggroAI = "ModsNikkelMHadesBiomesSkyAttackerAI",
-		-- TODO: Same for Hydra boss and heads
-		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesCrusherUnitTouchdown",
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
+			SetVulnerable = true,
 		},
 		-- Breaks the animation, as they are only slowed down and not actually frozen
 		CanBeFrozen = false,
@@ -525,7 +525,6 @@ local enemyModifications = {
 			[2] = { Distance = 20 },
 			[3] = { Distance = 20 }
 		},
-		-- TODO: Same for hydra boss and heads
 		SpawnEvents = {
 			{
 				FunctionName = "CreateTethers",
@@ -550,10 +549,58 @@ local enemyModifications = {
 		},
 		ShrineWeaponOptionsOverwrite = mod.NilValue,
 	},
-	-- Boss - Hydra heads
+	-- Boss - Hydra
+	HydraHeadImmortal = {
+		AIStages = {
+			[2] = {
+				SelectRandomAIStage = mod.NilValue,
+				RandomSpawnEncounter = { "HydraHeads1", "HydraHeads3", "HydraHeads3" },
+			},
+			[4] = {
+				SelectRandomAIStage = mod.NilValue,
+				RandomSpawnEncounter = { "HydraHeads5", "HydraHeads6" },
+			},
+		},
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "HydraTouchdown",
+			-- Lining up with when the head actually touches the ground
+			Delay = 0.23,
+		},
+		-- SpawnEvents = {
+		-- 	{
+		-- 		FunctionName = "CreateTethers",
+		-- 		Threaded = true,
+		-- 	},
+		-- },
+		-- While Tethers are broken - enemy returns to spawnpoint after attacking
+		DefaultAIData = {
+			MoveToId = 480903,
+			MoveWithinRange = true,
+			MoveWithinRangeTimeout = 1.0,
+		},
+	},
 	BaseHydraHead = {
+		StunAnimations = { Default = "EnemyHydraOnHit" },
 		ActivateFx = "nil",
 		ActivateAnimation = "HydraHeadLavaBubbles",
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "HydraTouchdown",
+			Delay = 0.23,
+		},
+		-- SpawnEvents = {
+		-- 	{
+		-- 		FunctionName = "CreateTethers",
+		-- 		Threaded = true,
+		-- 	},
+		-- },
+		-- While Tethers are broken - enemy returns to nearest spawnpoint after attacking
+		DefaultAIData = {
+			MoveToClosestSpawnPoint = true,
+			MoveWithinRange = true,
+			MoveWithinRangeTimeout = 1.0,
+		},
 	},
 
 	-- These enemies have not been implemented yet

@@ -34,6 +34,9 @@ function game.RoomEntranceBossHydra(currentRun, currentRoom)
 		SetAnimation({ Name = hydra.SwapAnimations["EnemyHydraSleep_Loop"] or "EnemyHydraSleep_Loop", DestinationId = hydraId })
 	end
 	game.thread(game.AsphodelEnterRoomPresentation, currentRun, currentRoom, hydraId, true)
+
+	currentRun.Hero.ExclusiveOnHitFunctionName = originalExclusiveOnHitFunctionName
+
 	game.wait(3.0)
 	SetUnitProperty({ Property = "Speed", Value = acutalSpeed, DestinationId = hydraId })
 	if hydra.SwapAnimations ~= nil then
@@ -43,12 +46,10 @@ function game.RoomEntranceBossHydra(currentRun, currentRoom)
 	PlaySound({ Name = "/SFX/Enemy Sounds/HydraHead/EmoteAlerted", Id = hydraId })
 	game.thread(game.InCombatText, hydraId, "Alerted", 0.45, { SkipShadow = true })
 	game.wait(3.4)
+	-- TODO: Roar doesn't play correctly - either sped up, or interrupted by something else 
 	if hydra.SwapAnimations ~= nil then
-		-- TODO: Roar doesn't seem to play all the way?
 		SetAnimation({ DestinationId = hydraId, Name = hydra.SwapAnimations["EnemyHydraTaunt"] or "EnemyHydraTaunt" })
 	end
-
-	currentRun.Hero.ExclusiveOnHitFunctionName = originalExclusiveOnHitFunctionName
 
 	game.thread(game.HydraRoarPresentation)
 	game.wait(0.5)
