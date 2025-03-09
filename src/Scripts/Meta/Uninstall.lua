@@ -36,7 +36,7 @@ function mod.Uninstall()
 		for saveFileIndex, isActive in pairs(cachedRuns.ActiveModdedRuns) do
 			if isActive then
 				mod.DebugPrint(
-					"For at least one of your save files, the most recent saved run is/was a modded Hades run. The mod will *NOT* be uninstalled, otherwise your savegame will corrupt!\nMake sure you are currently in a normal Hades II run (and complete it normally without giving up), or were in one before you returned to the crossroads (by winning or dying, not giving up) to prevent savegame corruption! Then try uninstalling the mod again.\nAre you SURE this is wrong? Set \"uninstall\" in the config to \"I AM SURE - UNINSTALL\".",
+					"For at least one of your save files, the most recent saved run is/was a modded Hades run (this may be incorrect if you replaced or deleted a save file with an active modded run at some point). The mod will *NOT* be uninstalled, otherwise your savegame will corrupt!\nMake sure you are currently in a normal Hades II run (and complete it normally without giving up), or were in one before you returned to the crossroads (by winning or dying, not giving up) to prevent savegame corruption! Then try uninstalling the mod again.\nAre you SURE this is wrong? Set \"uninstall\" in the config to \"I AM SURE - UNINSTALL\".",
 					1)
 				config.uninstall = "false"
 				return false

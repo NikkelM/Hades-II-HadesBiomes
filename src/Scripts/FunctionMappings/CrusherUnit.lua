@@ -56,7 +56,7 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 			ApplyUpwardForce({ Id = enemy.ObjectId, Speed = 10000 })
 
 			-- Custom: Prevent it from being affected by the Cast
-			game.SetUnitInvulnerable(enemy, "ModsNikkelMHadesBiomesUnitTouchdownFlag")
+			game.SetUnitInvulnerable(enemy, "ModsNikkelMHadesBiomesUnitTouchdownFlag", { Silent = true})
 
 			game.wait(0.5, enemy.AIThreadName)
 			enemy.BlockingLocation = false
@@ -69,7 +69,7 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 			-- Disapear
 			local hideDuration = aiData.PostLaunchHideDuration or
 					game.RandomFloat(aiData.PostLaunchHideDurationMin, aiData.PostLaunchHideDurationMax)
-			game.wait(game.CalcEnemyWait(enemy, aiData.PostLaunchHideDuration, { IgnoreSpeedMultiplier = true }),
+			game.wait(game.CalcEnemyWait(enemy, hideDuration, { IgnoreSpeedMultiplier = true }),
 				enemy.AIThreadName)
 			Teleport({ Id = enemy.ObjectId, DestinationId = aiData.TargetId })
 			CreateAnimation({ DestinationId = enemy.ObjectId, Name = aiData.ShadowAnimationFadeInName })
@@ -118,6 +118,8 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 				Stop({ Id = enemy.ObjectId })
 				Halt({ Id = enemy.ObjectId })
 				attackSuccess = game.DoAttack(enemy, aiData) or false
+				print("Attack done")
+				print(attackSuccess)
 				if not attackSuccess then
 					enemy.AINotifyName = "CanAttack" .. enemy.ObjectId
 					NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 9.0 })
