@@ -26,10 +26,8 @@ local hadesTwoPlayerWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\W
 local hadesWeaponsModifications = {
 	HydraLunge = {
 		-- Needs to be lowered due to tethers not locking the head in place
-		SelfVelocity = 5000.0,
-	},
-	HydraBite = {
-		SelfVelocity = -400.0,
+		-- It would otherwise fly over the whole map
+		SelfVelocity = 4300.0,
 	},
 	HydraSnap = {
 		SelfVelocity = 2000.0,

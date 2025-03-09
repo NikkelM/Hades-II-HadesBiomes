@@ -22,6 +22,9 @@ mod.HadesFxAnimationModifications = {
 	RubbleFallImpactDecalMedusaHeadDeathFade = {
 		OffsetY = 0.0,
 	},
+	HydraBubble = {
+		OffsetY = -70.0,
+	},
 }
 
 -- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly

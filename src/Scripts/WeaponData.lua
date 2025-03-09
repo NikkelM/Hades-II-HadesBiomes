@@ -257,9 +257,17 @@ local weaponModifications = {
 		},
 	},
 	HarpyLightningLine = {
+		Requirements = {
+			BlockAsFirstWeapon = true,
+		},
 		AIData = {
 			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightningTisiphone",
+		},
+	},
+	HarpyWhipLasso = {
+		Requirements = {
+			ForceFirst = true,
 		},
 	},
 	HarpyLungeSurgeBeam = {
@@ -273,6 +281,7 @@ local weaponModifications = {
 	HarpySlowBeam360 = {
 		Requirements = {
 			MinAttacksBetweenUse = 2,
+			BlockAsFirstWeapon = true,
 		},
 		AIData = {
 			ProjectileName = "HarpySlowBeam",
