@@ -513,7 +513,6 @@ local enemyModifications = {
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
-			SetVulnerable = true,
 		},
 		-- Breaks the animation, as they are only slowed down and not actually frozen
 		CanBeFrozen = false,
@@ -607,6 +606,8 @@ local enemyModifications = {
 			MoveWithinRange = true,
 			MoveWithinRangeTimeout = 1.0,
 		},
+		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
+		HasOutline = true,
 	},
 
 	-- These enemies have not been implemented yet

@@ -3,10 +3,8 @@ function game.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
 	if args.Delay then
 		game.wait(args.Delay, unit.AIThreadName)
 	end
-	if args.SetVulnerable then
-		-- For CrusherUnit: Make its vulnerable again after the Cast hack in the modded SkyAttackerAI
-		SetVulnerable({ Id = unit.ObjectId })
-	end
+	-- For CrusherUnit: Make its vulnerable again after the Cast hack in the modded SkyAttackerAI
+	game.SetUnitVulnerable(unit, "ModsNikkelMHadesBiomesUnitTouchdownFlag")
 	CreateProjectileFromUnit({
 		Name = args.ProjectileName,
 		Id = unit.ObjectId,
@@ -56,8 +54,10 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 
 			-- Modified from 5000 to 10000 to move it offscreen completely and in a smoother motion
 			ApplyUpwardForce({ Id = enemy.ObjectId, Speed = 10000 })
-			-- Prevent it from being affected by the Cast
-			SetInvulnerable({ Id = enemy.ObjectId })
+
+			-- Custom: Prevent it from being affected by the Cast
+			game.SetUnitInvulnerable(enemy, "ModsNikkelMHadesBiomesUnitTouchdownFlag")
+
 			game.wait(0.5, enemy.AIThreadName)
 			enemy.BlockingLocation = false
 			enemy.InSky = true

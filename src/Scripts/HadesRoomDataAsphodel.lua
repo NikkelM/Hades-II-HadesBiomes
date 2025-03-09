@@ -346,7 +346,6 @@ mod.RoomData.Asphodel = {
 		EntranceDirection = "LeftRight",
 
 		ShrineMetaUpgradeName = "BossDifficultyShrineUpgrade",
-		-- TODO: Need to implement logic!
 		LinkedRoomByPactLevel =
 		{
 			[0] = "X_Boss01", [1] = "X_Boss01", [2] = "X_Boss02", [3] = "X_Boss02", [4] = "X_Boss02"

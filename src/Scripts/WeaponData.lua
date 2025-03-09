@@ -487,7 +487,7 @@ local weaponKeyReplacements = {
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponKeyReplacements)
 
--- Projectiles
+-- PROJECTILES
 local function applyModificationsAndInheritProjectileData(base, modifications, projectileKeyReplacements)
 	-- Apply modifications
 	for projectileName, projectileData in pairs(modifications) do
