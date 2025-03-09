@@ -327,7 +327,7 @@ local enemyModifications = {
 	},
 	LightSpawner = {
 		-- Makes sure we call the modded SpawnerAI function instead of HandleSpawnerBurst
-		IsModdedHadesEnemy = true,
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		StunAnimations = { Default = "SpawnerAttackAnim", },
 		DeathFx = "BreakableDeathAnim",
 		DeathGraphic = "SpawnerDeath",
@@ -345,6 +345,9 @@ local enemyModifications = {
 	HarpySupportUnit = {
 		AIOptions = { "HarpySupportAI" },
 	},
+	Harpy = {
+		InvulnerableFx = "Invincibubble",
+	},
 	Harpy3 = {
 		BossPresentationTextLineSets = {
 			Fury3Encounter10 = {
@@ -361,7 +364,7 @@ local enemyModifications = {
 
 	-- ASPHODEL
 	LightSpawnerElite = {
-		IsModdedHadesEnemy = true,
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		StunAnimations = { Default = "SpawnerAttackAnim", },
 		DeathFx = "BreakableDeathAnim",
 		DeathGraphic = "SpawnerDeath",
@@ -551,6 +554,7 @@ local enemyModifications = {
 	},
 	-- Boss - Hydra
 	HydraHeadImmortal = {
+		InvulnerableFx = "HydraBubble",
 		AIStages = {
 			[2] = {
 				SelectRandomAIStage = mod.NilValue,
@@ -581,6 +585,7 @@ local enemyModifications = {
 		},
 	},
 	BaseHydraHead = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		StunAnimations = { Default = "EnemyHydraOnHit" },
 		ActivateFx = "nil",
 		ActivateAnimation = "HydraHeadLavaBubbles",
@@ -597,7 +602,8 @@ local enemyModifications = {
 		-- },
 		-- While Tethers are broken - enemy returns to nearest spawnpoint after attacking
 		DefaultAIData = {
-			MoveToClosestSpawnPoint = true,
+			-- Is overwritten by the actual spawnpoint in ModsNikkelMHadesBiomesRememberHydraSpawnpoint
+			MoveToClosestId = { 506375, 506376, 506377, 506378, 506380, 506381, },
 			MoveWithinRange = true,
 			MoveWithinRangeTimeout = 1.0,
 		},

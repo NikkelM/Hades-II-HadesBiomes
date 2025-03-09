@@ -2,7 +2,7 @@
 
 -- Call the modded spawning logic instead of the default one if the enemy was modded in/needs it
 modutil.mod.Path.Wrap("HandleSpawnerBurst", function(base, enemy, aiData)
-	if enemy.IsModdedHadesEnemy then
+	if enemy.ModsNikkelMHadesBiomesIsModdedEnemy then
 		game.ModsNikkelMHadesBiomesSpawnerAI(enemy, aiData)
 	else
 		base(enemy, aiData)

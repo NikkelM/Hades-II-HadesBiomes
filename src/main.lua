@@ -251,6 +251,7 @@ local function on_ready()
 		import "Scripts/CombatPresentation.lua"
 		import "Scripts/DeathLoopData.lua"
 		import "Scripts/EnemyAILogic.lua"
+		import "Scripts/EncounterLogic.lua"
 		import "Scripts/HeroData.lua"
 		import "Scripts/HubPresentation.lua"
 		import "Scripts/ObstacleData.lua"

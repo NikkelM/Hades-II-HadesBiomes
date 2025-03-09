@@ -27,9 +27,6 @@ function game.SelectHarpySupportAIs(enemy)
 	end
 end
 
--- TODO: Needs enemy.AdditionalEnemySetupFunctionName in RoomManager 4214
--- Or perhaps, use _Shrine variant of the encounter itself that inherits from base encounter and adds the additional enemies
--- Or, encounter.SetupEvents
 function game.MultiFuryActivations(eventSource, args)
 	local boss = game.ActiveEnemies[args.BossId]
 	boss.MultiFuryObstacleIds = {}
