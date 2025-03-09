@@ -32,9 +32,6 @@ local roomModifications = {
 		TimeChallengeEncounterOptions = { "TimeChallengeAsphodel" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeAsphodel" },
 		EliteChallengeEncounterOptions = { "EliteChallengeAsphodel" },
-
-		-- LavaSplash fires, but the puddle is not created when it lands - #88
-		HazardData = mod.NilValue,
 	},
 
 	-- OPENING ROOMS
@@ -69,7 +66,7 @@ local roomModifications = {
 	},
 
 	-- BOSSES
-	-- GameStateRequirements depending on the EM level
+	-- GameStateRequirements to choose the correct arena depending on the EM level
 	X_Boss01 = {
 		-- TODO: Are these needed - only entrance voicelines?
 		-- LoadModdedVoiceBanks = { "ZagreusField" },
@@ -102,38 +99,38 @@ local roomModifications = {
 			RequiredCosmetics = mod.NilValue,
 		},
 	},
-	-- A_PostBoss01 = {
-	-- 	ExitPreviewAnim = "HadesExitPreview",
-	-- 	-- TODO: Remove placeholder
-	-- 	NextRoomSet = { "G" },
-	-- 	SellShopSpawnChance = 1.0,
-	-- 	SellShopRequirements = {
-	-- 		{
-	-- 			PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossSellTraitShops" },
-	-- 		},
-	-- 	},
-	-- 	-- Defines where the well spawns, making sure the sell shop spawns on the other possible ID
-	-- 	WellShopChallengeBaseId = 487438,
-	-- 	WellShopRequirements = {
-	-- 		{
-	-- 			PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossWellShops" },
-	-- 		},
-	-- 	},
-	-- 	ObstacleData = {
-	-- 		[486504] = {
-	-- 			SetupGameStateRequirements = {
-	-- 				{
-	-- 					PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradePostBossGiftRack" },
-	-- 				},
-	-- 				RequiredCosmetics = mod.NilValue,
-	-- 			},
-	-- 		},
-	-- 		-- Makes the exit door interactable
-	-- 		[430000] = {
-	-- 			ActivateIds = { 430000, },
-	-- 		},
-	-- 	},
-	-- },
+	X_PostBoss01 = {
+		ExitPreviewAnim = "HadesExitPreview",
+		-- TODO: Remove placeholder
+		NextRoomSet = { "G" },
+		SellShopSpawnChance = 1.0,
+		SellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossSellTraitShops" },
+			},
+		},
+		-- Defines where the well spawns, making sure the sell shop spawns on the other possible ID
+		WellShopChallengeBaseId = 487438,
+		WellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossWellShops" },
+			},
+		},
+		ObstacleData = {
+			[486504] = {
+				SetupGameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradePostBossGiftRack" },
+					},
+					RequiredCosmetics = mod.NilValue,
+				},
+			},
+			-- Makes the exit door interactable
+			[430000] = {
+				ActivateIds = { 430000, },
+			},
+		},
+	},
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Asphodel, roomModifications, roomReplacements, "Asphodel")

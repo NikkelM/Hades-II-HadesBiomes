@@ -200,7 +200,6 @@ game.EnemySets.EnemiesBiome2Hard = {
 	"RangedBurrowerElite",
 }
 
--- TODO 
 game.EnemySets.HydraHeads = {
 	"HydraHeadDartmaker",
 	"HydraHeadLavamaker",
