@@ -85,11 +85,6 @@ function game.PickHydraVariant(eventSource, args)
 		game.RemoveRandomValue(eventSource.EnemySet)
 	end
 
-	eventSource.WipeEnemiesOnKillAllTypes = { eventSource.HydraVariant }
-	eventSource.CancelSpawnsOnKillAllTypes = { eventSource.HydraVariant }
-	-- CancelSpawnsOnKill = { eventSource.HydraVariant }
-	-- eventSource.WipeEnemiesOnKill = eventSource.HydraVariant
-
 	for k, enemyName in pairs(eventSource.EnemySet) do
 		PreLoadBinks({ Names = EnemyData[enemyName].Binks })
 	end
@@ -166,6 +161,7 @@ function game.HydraKillPresentation(unit, args)
 	if args.KillEnemyNames ~= nil then
 		for enemyData, enemy in pairs(game.ActiveEnemies) do
 			if game.Contains(args.KillEnemyNames, enemy.Name) then
+				print("KillEnemyNames BossAsphodel")
 				game.Kill(enemy)
 			end
 		end

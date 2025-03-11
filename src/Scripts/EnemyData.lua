@@ -561,6 +561,12 @@ local enemyModifications = {
 	},
 	-- ASPHODEL BOSS - HYDRA
 	HydraHeadImmortal = {
+		AltHealthBarTextIds = {
+			[1] = {
+				GameStateRequirements = { RequiredPlayed = { "/VO/ZagreusField_3147" } },
+				Requirements = mod.NilValue,
+			},
+		},
 		InvulnerableFx = "HydraBubble",
 		AIStages = {
 			[2] = {
@@ -578,29 +584,6 @@ local enemyModifications = {
 			-- Lining up with when the head actually touches the ground
 			Delay = 0.23,
 		},
-		-- Need to overwrite and include OtherEnemyBinks as well
-		-- TODO: Might be able to remove, since we reuse the Hades II enemies that don't use Binks?
-		Binks = {
-			"Enemy_Hydra_Roar_Bink",
-			"Enemy_Hydra_OnHit_Bink",
-			"Enemy_Hydra_MouthOpening_Bink",
-			"Enemy_Hydra_Slam_Bink",
-			"Enemy_Hydra_Idle_Bink",
-			"Enemy_Hydra_Ranged_Bink",
-			"Enemy_Hydra_DeathVFX_Bink",
-			"Enemy_Hydra_Lunge_Bink",
-			"Enemy_Hydra_Sleep_Bink",
-			-- OtherEnemyBinks
-			"Enemy_BloodlessNaked_OnHit_Bink",
-			"Enemy_BloodlessNaked_Attack_Bink",
-			"Enemy_BloodlessNaked_Idle_Bink",
-			"Enemy_BloodlessNaked_StartStop_Bink",
-			"Enemy_BloodlessNaked_Leap_Bink",
-			"Enemy_BloodlessNaked_LeapLong_Bink",
-			"Enemy_BloodlessNaked_Walk_Bink",
-			"Enemy_BloodlessNaked_WalkFidget_Bink",
-			"Enemy_SkellyDeathVFX_Bink",
-		},
 		-- SpawnEvents = {
 		-- 	{
 		-- 		FunctionName = "CreateTethers",
@@ -612,98 +595,6 @@ local enemyModifications = {
 			MoveToId = 480903,
 			MoveWithinRange = true,
 			MoveWithinRangeTimeout = 1.0,
-		},
-	},
-	HydraHeadImmortalLavamaker = {
-		Binks = {
-			"Enemy_HydraOrange_Roar_Bink",
-			"Enemy_HydraOrange_OnHit_Bink",
-			"Enemy_HydraOrange_MouthOpening_Bink",
-			"Enemy_HydraOrange_Slam_Bink",
-			"Enemy_HydraOrange_Idle_Bink",
-			"Enemy_HydraOrange_Ranged_Bink",
-			"Enemy_Hydra_DeathVFX_Bink",
-			"Enemy_HydraOrange_Lunge_Bink",
-			"Enemy_HydraOrange_Sleep_Bink",
-			-- OtherEnemyBinks
-			"Enemy_BloodlessNaked_OnHit_Bink",
-			"Enemy_BloodlessNaked_Attack_Bink",
-			"Enemy_BloodlessNaked_Idle_Bink",
-			"Enemy_BloodlessNaked_StartStop_Bink",
-			"Enemy_BloodlessNaked_Leap_Bink",
-			"Enemy_BloodlessNaked_LeapLong_Bink",
-			"Enemy_BloodlessNaked_Walk_Bink",
-			"Enemy_BloodlessNaked_WalkFidget_Bink",
-			"Enemy_SkellyDeathVFX_Bink",
-		},
-	},
-	HydraHeadImmortalSummoner = {
-		Binks = {
-			"Enemy_HydraGreen_Roar_Bink",
-			"Enemy_HydraGreen_OnHit_Bink",
-			"Enemy_HydraGreen_MouthOpening_Bink",
-			"Enemy_HydraGreen_Slam_Bink",
-			"Enemy_HydraGreen_Idle_Bink",
-			"Enemy_HydraGreen_Ranged_Bink",
-			"Enemy_Hydra_DeathVFX_Bink",
-			"Enemy_HydraGreen_Lunge_Bink",
-			"Enemy_HydraGreen_Sleep_Bink",
-			-- OtherEnemyBinks
-			"Enemy_BloodlessNaked_OnHit_Bink",
-			"Enemy_BloodlessNakedBerserk_Attacks_Bink",
-			"Enemy_BloodlessNaked_Idle_Bink",
-			"Enemy_BloodlessNaked_StartStop_Bink",
-			"Enemy_BloodlessNaked_Leap_Bink",
-			"Enemy_BloodlessNaked_LeapLong_Bink",
-			"Enemy_BloodlessNaked_Walk_Bink",
-			"Enemy_BloodlessNaked_WalkFidget_Bink",
-			"Enemy_SkellyDeathVFX_Bink",
-		},
-	},
-	HydraHeadImmortalSlammer = {
-		Binks = {
-			"Enemy_HydraBlue_Roar_Bink",
-			"Enemy_HydraBlue_OnHit_Bink",
-			"Enemy_HydraBlue_MouthOpening_Bink",
-			"Enemy_HydraBlue_Slam_Bink",
-			"Enemy_HydraBlue_Idle_Bink",
-			"Enemy_HydraBlue_Ranged_Bink",
-			"Enemy_Hydra_DeathVFX_Bink",
-			"Enemy_HydraBlue_Lunge_Bink",
-			"Enemy_HydraBlue_Sleep_Bink",
-			-- OtherEnemyBinks
-			"Enemy_BloodlessNaked_OnHit_Bink",
-			"Enemy_BloodlessNaked_Attack_Bink",
-			"Enemy_BloodlessNaked_Idle_Bink",
-			"Enemy_BloodlessNaked_StartStop_Bink",
-			"Enemy_BloodlessNaked_Leap_Bink",
-			"Enemy_BloodlessNaked_LeapLong_Bink",
-			"Enemy_BloodlessNaked_Walk_Bink",
-			"Enemy_BloodlessNaked_WalkFidget_Bink",
-			"Enemy_SkellyDeathVFX_Bink",
-		},
-	},
-	HydraHeadImmortalWavemaker = {
-		Binks = {
-			"Enemy_HydraPurple_Roar_Bink",
-			"Enemy_HydraPurple_OnHit_Bink",
-			"Enemy_HydraPurple_MouthOpening_Bink",
-			"Enemy_HydraPurple_Slam_Bink",
-			"Enemy_HydraPurple_Idle_Bink",
-			"Enemy_HydraPurple_Ranged_Bink",
-			"Enemy_Hydra_DeathVFX_Bink",
-			"Enemy_HydraPurple_Lunge_Bink",
-			"Enemy_HydraPurple_Sleep_Bink",
-			-- OtherEnemyBinks
-			"Enemy_BloodlessNaked_OnHit_Bink",
-			"Enemy_BloodlessNaked_Attack_Bink",
-			"Enemy_BloodlessNaked_Idle_Bink",
-			"Enemy_BloodlessNaked_StartStop_Bink",
-			"Enemy_BloodlessNaked_Leap_Bink",
-			"Enemy_BloodlessNaked_LeapLong_Bink",
-			"Enemy_BloodlessNaked_Walk_Bink",
-			"Enemy_BloodlessNaked_WalkFidget_Bink",
-			"Enemy_SkellyDeathVFX_Bink",
 		},
 	},
 	-- Spawned heads
