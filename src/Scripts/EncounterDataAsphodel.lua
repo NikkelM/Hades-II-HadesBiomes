@@ -97,6 +97,7 @@ local encounterModifications = {
 
 	-- BOSSES
 	BossHydra = {
+		LoadPackages = { "Asphodel" },
 		WipeEnemiesOnKillAllTypes = { "HydraHeadImmortal" },
 		CancelSpawnsOnKillAllTypes = { "HydraHeadImmortal" },
 		PostUnthreadedEvents = mod.NilValue,

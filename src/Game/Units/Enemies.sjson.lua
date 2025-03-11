@@ -9,22 +9,22 @@ local hadesTwoEnemiesFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\
 -- Use the original names from the Hades file here, as modifications are applied before renaming
 local hadesEnemiesModifications = {
 	-- TARTARUS
-	BaseGlutton = { InheritFrom = "1_BaseEnemy" },
-	LightSpawner = { InheritFrom = "1_BaseEnemy" },
-	BaseThug = { InheritFrom = "1_BaseEnemy" },
-	SmallEnemy = { InheritFrom = "1_BaseEnemy" },
-	BaseCaster = { InheritFrom = "1_BaseEnemy" },
-	BaseSwarmer = { InheritFrom = "1_BaseEnemy" },
-	BaseSpawner = { InheritFrom = "1_BaseEnemy" },
-	BaseThief = { InheritFrom = "1_BaseEnemy" },
-	WretchAssassin = { InheritFrom = "1_BaseEnemy" },
-	Harpy = { InheritFrom = "1_BaseEnemy" },
+	BaseGlutton = { InheritFrom = "1_BaseEnemy", },
+	LightSpawner = { InheritFrom = "1_BaseEnemy", },
+	BaseThug = { InheritFrom = "1_BaseEnemy", },
+	SmallEnemy = { InheritFrom = "1_BaseEnemy", },
+	BaseCaster = { InheritFrom = "1_BaseEnemy", },
+	BaseSwarmer = { InheritFrom = "1_BaseEnemy", },
+	BaseSpawner = { InheritFrom = "1_BaseEnemy", },
+	BaseThief = { InheritFrom = "1_BaseEnemy", },
+	WretchAssassin = { InheritFrom = "1_BaseEnemy", },
+	Harpy = { InheritFrom = "1_BaseEnemy", },
 
 	-- ASPHODEL
-	BaseMedusaHead = { InheritFrom = "1_BaseEnemy" },
+	BaseMedusaHead = { InheritFrom = "1_BaseEnemy", },
 
 	-- ENVIRONMENT
-	Breakable = { InheritFrom = "1_BaseDestructible" },
+	Breakable = { InheritFrom = "1_BaseDestructible", },
 }
 
 -- Copy an enemy from Hades II as a Hades enemy
@@ -33,6 +33,10 @@ local enemyAdditions = {
 	-- ASPHODEL
 	{
 		Name = "HadesBloodlessNaked",
+		InheritFrom = "BloodlessNaked",
+	},
+	{
+		Name = "HadesBloodlessNakedSummoned",
 		InheritFrom = "BloodlessNaked",
 	},
 	{
@@ -86,6 +90,10 @@ local enemyAdditions = {
 	},
 	{
 		Name = "BloodlessNakedBerserkerElite",
+		InheritFrom = "BloodlessBerserker_Elite",
+	},
+	{
+		Name = "BloodlessNakedBerserkerEliteSummoned",
 		InheritFrom = "BloodlessBerserker_Elite",
 	},
 }

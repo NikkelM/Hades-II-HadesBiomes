@@ -121,6 +121,15 @@ local hadesProjectilesModifications = {
 		CanBeProjectileDefenseDestroyed = false,
 		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
+	HydraSummon = {
+		SpawnOnDetonate = "HadesBloodlessNakedSummoned",
+	},
+	HydraSummon2 = {
+		SpawnOnDetonate = "BloodlessNakedBerserkerEliteSummoned",
+	},
+	HydraSummonSpread = {
+		SpawnOnDetonate = "BloodlessNakedBerserkerEliteSummoned",
+	},
 
 	-- STYX
 	StaggeredSatyrRangedWeapon = {

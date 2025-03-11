@@ -1,12 +1,10 @@
 function game.BossIntroHydra(eventSource, args)
-	print("BossIntroHydra")
 	args.ProcessTextLinesIds = { eventSource.Encounter.BossId }
 	args.SetupBossIds = { eventSource.Encounter.BossId }
 	game.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 end
 
 function game.RoomEntranceBossHydra(currentRun, currentRoom)
-	print("RoomEntranceBossHydra")
 	local hydraId = currentRoom.Encounter.BossId
 	local hydra = game.ActiveEnemies[hydraId] or {}
 	game.HideCombatUI("BossEntrance")
@@ -46,7 +44,7 @@ function game.RoomEntranceBossHydra(currentRun, currentRoom)
 	PlaySound({ Name = "/SFX/Enemy Sounds/HydraHead/EmoteAlerted", Id = hydraId })
 	game.thread(game.InCombatText, hydraId, "Alerted", 0.45, { SkipShadow = true })
 	game.wait(3.4)
-	-- TODO: Roar doesn't play correctly - either sped up, or interrupted by something else 
+	-- TODO: Roar doesn't play correctly - either sped up, or interrupted by something else
 	if hydra.SwapAnimations ~= nil then
 		SetAnimation({ DestinationId = hydraId, Name = hydra.SwapAnimations["EnemyHydraTaunt"] or "EnemyHydraTaunt" })
 	end
@@ -71,7 +69,6 @@ function game.HydraRoarPresentation()
 end
 
 function game.PickHydraVariant(eventSource, args)
-	print("PickHydraVariant")
 	local eligibleOptions = {}
 	for k, variantName in pairs(args.Options) do
 		if game.IsEnemyEligible(variantName, eventSource) then
@@ -99,10 +96,7 @@ function game.PickHydraVariant(eventSource, args)
 end
 
 function game.ActivateHydra(eventSource, args)
-	print("ActivateHydra")
 	args.LegalTypes = { eventSource.HydraVariant }
-
-	mod.PrintTable(GetInactiveIdsByType({ Name = eventSource.HydraVariant }))
 	eventSource.BossId = game.GetFirstValue(GetInactiveIdsByType({ Name = eventSource.HydraVariant }))
 	game.ActivatePrePlaced(eventSource, args)
 end
@@ -187,4 +181,134 @@ function game.HydraKillPresentation(unit, args)
 
 	game.RemoveTimerBlock(CurrentRun, "HydraKillPresentation")
 	game.SetPlayerVulnerable("HydraKillPresentation")
+end
+
+function game.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
+	local enemyId = enemy.ObjectId
+	local spawnGroupName = weaponAIData.SpawnGroupName or ("Spawner" .. enemyId)
+	local spawnRadius = weaponAIData.SpawnRadius or 100
+	local spawnOptions = weaponAIData.SpawnOptions or enemy.SpawnOptions
+	spawnOptions = game.ShallowCopyTable(spawnOptions)
+	local spawnCount = weaponAIData.SpawnCount
+	enemy.BossSpawnsUses = enemy.BossSpawnsUses or 0
+
+	if weaponAIData.SpawnClones then
+		spawnOptions = {}
+		table.insert(spawnOptions, enemy.Name)
+	end
+
+	if game.GetActiveEnemyCount() >= currentRun.CurrentRoom.Encounter.ActiveEnemyCap then
+		return
+	end
+
+	if weaponAIData.MaxActiveSpawns ~= nil and game.TableLength(GetIds({ Name = spawnGroupName })) >= weaponAIData.MaxActiveSpawns then
+		return
+	end
+
+	local spawns = {}
+	if spawnCount == nil and weaponAIData.DifficultyRating ~= nil then
+		local difficultyRating = weaponAIData.DifficultyRating
+		if weaponAIData.DifficultyRatingIncreasePerUse ~= nil then
+			difficultyRating = difficultyRating + (weaponAIData.DifficultyRatingIncreasePerUse * enemy.BossSpawnsUses)
+		end
+		local totalDifficultyRating = 0
+		while totalDifficultyRating < difficultyRating do
+			local spawnName = game.GetRandomValue(spawnOptions)
+			local enemyData = EnemyData[spawnName]
+			local enemyDifficultyRating = enemyData.GeneratorData.DifficultyRating or 1
+
+			if totalDifficultyRating + enemyDifficultyRating > difficultyRating then
+				game.RemoveValue(spawnOptions, spawnName)
+				if game.IsEmpty(spawnOptions) then
+					break
+				end
+			else
+				totalDifficultyRating = totalDifficultyRating + enemyDifficultyRating
+				table.insert(spawns, spawnName)
+			end
+		end
+		spawnCount = #spawns
+	end
+
+	for i = 1, spawnCount do
+		local spawnName = spawns[i] or game.GetRandomValue(spawnOptions)
+
+		local enemyData = game.EnemyData[spawnName]
+		local newEnemy = game.DeepCopyTable(enemyData) or {}
+		newEnemy.SkipChallengeKillCounts = true
+		newEnemy.PreferredSpawnPoint = nil
+
+		local spawnPointId = 0
+		if weaponAIData.SpawnOnSelf then
+			spawnPointId = enemy.ObjectId
+		else
+			spawnPointId = game.SelectSpawnPoint(currentRun.CurrentRoom, newEnemy,
+				{ SpawnNearId = enemy.ObjectId, SpawnRadius = weaponAIData.SpawnRadius }) or 0
+		end
+		if spawnPointId == nil or spawnPointId == 0 then
+			--DebugPrint({ Text="No eligible spawn points to continue spawning "..enemy.Name.."'s enemies!" })
+			return
+		end
+		newEnemy.ObjectId = SpawnUnit({
+			Name = spawnName,
+			Group = "Standing",
+			DestinationId = spawnPointId,
+			ForceToValidLocation = true,
+			DoActivatePresentation = weaponAIData.DoSpawnsActivatePresentation
+		})
+		newEnemy.OccupyingSpawnPointId = spawnPointId
+		newEnemy.AggroReactionTimeMin = weaponAIData.SpawnAggroReactionTimeMin or newEnemy.AggroReactionTimeMin
+		game.SessionMapState.SpawnPointsUsed[spawnPointId] = newEnemy.ObjectId
+
+		if weaponAIData.SpawnClones then
+			newEnemy.IsClone = true
+			SetAlpha({ Id = newEnemy.ObjectId, Fraction = weaponAIData.CloneAlphaFraction or 0.4 })
+		end
+
+		if weaponAIData.SpawnAggroed then
+			newEnemy.StartAggroed = true
+		end
+
+		if weaponAIData.SpawnDefaultAIDataOverrides ~= nil then
+			if weaponAIData.SpawnSkipOverridesForTypes == nil or not game.Contains(weaponAIData.SpawnSkipOverridesForTypes, newEnemy.Name) then
+				game.OverwriteTableKeys(newEnemy.DefaultAIData, weaponAIData.SpawnDefaultAIDataOverrides)
+			end
+		end
+
+		if weaponAIData.SpawnDataOverrides ~= nil then
+			if weaponAIData.SpawnSkipOverridesForTypes == nil or not game.Contains(weaponAIData.SpawnSkipOverridesForTypes, newEnemy.Name) then
+				game.OverwriteTableKeys(newEnemy, weaponAIData.SpawnDataOverrides)
+			end
+		end
+
+		SetupUnit(newEnemy, game.CurrentRun, args)
+		AddToGroup({ Id = newEnemy.ObjectId, Name = spawnGroupName })
+		--newEnemy.SkipActiveCount = true
+
+		if weaponAIData.SpawnClones then
+			newEnemy.MaxHealth = 1
+			newEnemy.Health = 1
+			newEnemy.HealthBuffer = 1
+		end
+
+		game.wait(game.CalcEnemyWait(enemy, weaponAIData.SpawnInterval), RoomThreadName)
+		if enemy.IsDead then
+			return
+		end
+
+		if game.GetActiveEnemyCount() >= currentRun.CurrentRoom.Encounter.ActiveEnemyCap then
+			return
+		end
+	end
+
+	local spawnGroupIds = GetIds({ Name = spawnGroupName })
+	if weaponAIData.HealInterval and weaponAIData.HealPerTick then
+		while IsAlive({ Ids = spawnGroupIds }) do
+			game.Heal(enemy, { HealAmount = weaponAIData.HealPerTick, SourceName = "BossSpawnHeal", Silent = true })
+			game.thread(game.UpdateHealthBar, enemy)
+			game.wait(game.CalcEnemyWait(enemy, weaponAIData.HealInterval), RoomThreadName)
+		end
+	end
+
+	enemy.BossSpawnsUses = enemy.BossSpawnsUses + 1
 end
