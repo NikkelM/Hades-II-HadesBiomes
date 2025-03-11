@@ -66,6 +66,7 @@ local roomModifications = {
 		IneligibleRewards = game.RewardSets.OpeningRoomBans,
 		MaxAppearancesThisBiome = 1,
 		BlockRunProgressUI = true,
+		DisableRewardMagnetisim = true,
 		StartThreadedEvents =
 		{
 			{ FunctionName = "CheckBiomeStateStart" },
