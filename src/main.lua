@@ -168,7 +168,6 @@ local function on_ready()
 		import "Game/Projectiles/Projectiles.sjson.lua"
 		import "Game/Projectiles/EnemyProjectiles.sjson.lua"
 		import "Game/Obstacles/Tartarus.sjson.lua"
-		import "Game/Obstacles/Chaos.sjson.lua"
 		-- Localizations, custom texts
 		import "Game/Text/de/HelpText.de.sjson.lua"
 		import "Game/Text/el/HelpText.el.sjson.lua"
