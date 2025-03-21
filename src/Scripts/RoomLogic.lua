@@ -1,6 +1,6 @@
 -- Set a backing for the door's reward preview
 modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
-	base(run)
+	local rewardStoreName = base(run)
 	if run.ModsNikkelMHadesBiomesExitDoors ~= nil then
 		for _, exitDoor in ipairs(run.ModsNikkelMHadesBiomesExitDoors) do
 			if run.NextRewardStoreName == "RunProgress" and exitDoor.CustomLockedAnimation_Run ~= nil then
@@ -11,6 +11,7 @@ modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
 		end
 		run.ModsNikkelMHadesBiomesExitDoors = {}
 	end
+	return rewardStoreName
 end)
 
 -- Wrap to also load modded resources, such as additional audio banks
@@ -57,7 +58,7 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 	base(unit, currentRun, args)
 
 	-- Overwrite weapon/AI data if necessary due to a vow
-	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		local shrineLevel = game.GetNumShrineUpgrades(unit.ShrineMetaUpgradeName)
 		local requiredShrineLevel = unit.ShrineMetaUpgradeRequiredLevel or 1
 		if unit.ShrineDataOverwrites ~= nil and shrineLevel >= requiredShrineLevel then

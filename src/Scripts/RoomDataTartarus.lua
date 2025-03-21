@@ -18,7 +18,6 @@ local roomReplacements = {
 		MusicActiveStems = { "Guitar", "Drums", "Bass", },
 		Music = mod.NilValue,
 		MusicRequirements = mod.NilValue,
-		MusicStartDelay = 3.75,
 	},
 
 	-- SHOPS
@@ -34,7 +33,12 @@ local roomModifications = {
 	-- GENERIC
 	BaseTartarus = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "TartarusModsNikkelMHadesBiomes" },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
+
+		Ambience = "/Leftovers/Object Ambiences/EvilLairAmbienceMatchSiteE",
+		ReverbValue = 2.0,
+		-- TODO: Always play Bass?
+		MusicActiveStems = { "Bass" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus",
 
@@ -143,6 +147,10 @@ local roomModifications = {
 				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
 			},
 		},
+		PostCombatReloadEvents = {
+			{ FunctionName = "Harpy3MapRestore" },
+		},
+		RestorePresentationFunction = mod.NilValue,
 	},
 
 	-- OTHER

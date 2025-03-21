@@ -25,7 +25,12 @@ local roomModifications = {
 	-- GENERIC
 	BaseAsphodel = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "AsphodelModsNikkelMHadesBiomes" },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
+
+		Ambience = "/Leftovers/Object Ambiences/LavaAmbience_MatchSiteB",
+		ReverbValue = 1.0,
+		-- Always play Bass
+		MusicActiveStems = { "Bass" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
 

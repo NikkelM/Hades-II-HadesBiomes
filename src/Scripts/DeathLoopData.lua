@@ -13,7 +13,7 @@ function mod.SpawnHadesRunStartDoor(source, args)
 	local chaosGate = game.DeepCopyTable(game.ObstacleData.SecretDoor) or {}
 
 	chaosGate.ObjectId = SpawnObstacle({
-		Name = "ModsNikkelMHadesBiomes_HadesRunStartDoor",
+		Name = "ModsNikkelMHadesBiomes_SecretDoor_Revealed",
 		Group = "FX_Terrain",
 		DestinationId = spawnId,
 		AttachedTable = chaosGate,
