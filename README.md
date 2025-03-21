@@ -127,17 +127,7 @@ At the moment, content is limited to encounters and enemies.
 
 ## Configuration
 
-<!-- TODO: Wiki page for this & update -->
-
-These are the configuration options available for the mod:
-
-| Name              | Type     | Default | Description                                                                                                                                                                                                                                                                                           |
-| ----------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `enabled`         | `bool`   | `true`  | Whether the mod is enabled or not.                                                                                                                                                                                                                                                                    |
-| `firstTimeSetup`  | `bool`   | `true`  | If set to true, the mod will make required file associations and moves from the `hadesGameFolder` to your Hades II installation when the game is started the next time. This process will set this variable to false afterwards. Only set this to true after a breaking update or when re-installing. |
-| `uninstall`       | `bool`   | `false` | Set this to true and start the game once to run uninstall steps, which removes files copied and associated to Hades. Do this before uninstalling the mod through r2modman to avoid loose files staying behind. To re-install, set both `uninstall` and `firstTimeSetup` to true.                      |
-| `hadesGameFolder` | `string` | `root`  | The path to the Hades game folder. When set to `root`, resolves to the "Hades" directory in the same parent directory as your Hades II installation. I.e., leave like this if you have both games installed through Steam.                                                                            |
-| `debug`           | `bool`   | `false` | Enables debug logging to the console. Enable this if you're having issues with the mod, or if the developer asked you for logs to help investigating an issue.                                                                                                                                        |
+[See this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration)
 
 ## Notes for other developers
 
