@@ -524,6 +524,7 @@ local enemyModifications = {
 		},
 		-- Breaks the animation, as they are only slowed down and not actually frozen
 		CanBeFrozen = false,
+		MaxHealth = 250,
 	},
 	ShieldRanged = {
 		StunAnimations = { Default = "HealRangedCrystal4" },

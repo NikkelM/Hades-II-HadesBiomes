@@ -121,6 +121,7 @@ local hadesProjectilesModifications = {
 		CanBeProjectileDefenseDestroyed = false,
 		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
+	-- TODO: Crashing if there is too many spawns?
 	HydraSummon = {
 		SpawnOnDetonate = "HadesBloodlessNakedSummoned",
 	},

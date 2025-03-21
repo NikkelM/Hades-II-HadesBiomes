@@ -2,7 +2,7 @@ modutil.mod.Path.Wrap("IsGameStateEligible", function(base, source, requirements
 	local isEligible = base(source, requirements, args)
 
 	-- If it's a modded run and the already existing requirements are met, also check the Hades requirements
-	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
 		isEligible = game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
 		if not isEligible then
 			-- TODO: Debugging only
@@ -17,7 +17,7 @@ end)
 modutil.mod.Path.Wrap("IsVoiceLineEligible", function(base, line, prevLine, parentLine, source, args)
 	local isEligible = base(line, prevLine, parentLine, source, args)
 
-	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
 		return game.ModsNikkelMHadesBiomesIsGameStateEligible(source, line, args)
 	end
 
@@ -27,7 +27,7 @@ end)
 modutil.mod.Path.Wrap("IsEnemyEligible", function(base, enemyName, encounter, wave)
 	local isEligible = base(enemyName, encounter, wave)
 
-	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
 		local args = {}
 		if game.EnemyData[enemyName].IsElite and game.GetNumShrineUpgrades("EnemyEliteShrineUpgrade") > 0 then
 			args.SkipMinBiomeDepth = true
@@ -41,7 +41,7 @@ end)
 modutil.mod.Path.Wrap("IsRoomEligible", function(base, currentRun, currentRoom, nextRoomData, args)
 	local isEligible = base(currentRun, currentRoom, nextRoomData, args)
 
-	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
 		return game.ModsNikkelMHadesBiomesIsGameStateEligible(nextRoomData, nextRoomData, args)
 	end
 
@@ -51,7 +51,7 @@ end)
 modutil.mod.Path.Wrap("IsEncounterEligible", function(base, currentRun, room, nextEncounterData, args)
 	local isEligible = base(currentRun, room, nextEncounterData, args)
 
-	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
 		return game.ModsNikkelMHadesBiomesIsGameStateEligible(nextEncounterData, nextEncounterData, args)
 	end
 
@@ -61,7 +61,7 @@ end)
 modutil.mod.Path.Wrap("IsInspectPointEligible", function(base, currentRun, source, inspectPointData)
 	local isEligible = base(currentRun, source, inspectPointData)
 
-	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
 		return game.ModsNikkelMHadesBiomesIsGameStateEligible(source, inspectPointData)
 	end
 
@@ -71,7 +71,7 @@ end)
 modutil.mod.Path.Wrap("IsTextLineEligible", function(base, currentRun, source, line, prevLine, parentLine, args)
 	local isEligible = base(currentRun, source, line, prevLine, parentLine, args)
 
-	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
 		return game.ModsNikkelMHadesBiomesIsGameStateEligible(source, line, args)
 	end
 

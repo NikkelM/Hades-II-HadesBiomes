@@ -118,8 +118,6 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 				Stop({ Id = enemy.ObjectId })
 				Halt({ Id = enemy.ObjectId })
 				attackSuccess = game.DoAttack(enemy, aiData) or false
-				print("Attack done")
-				print(attackSuccess)
 				if not attackSuccess then
 					enemy.AINotifyName = "CanAttack" .. enemy.ObjectId
 					NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 9.0 })

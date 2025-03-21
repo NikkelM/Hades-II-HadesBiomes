@@ -652,3 +652,14 @@ function game.Harpy3MapReturnSmoke(currentPhase)
 		end
 	end
 end
+
+function game.Harpy3MapRestore()
+	local activateObstacles = GetInactiveIds({ Names = { "Phase2Add", "Phase3Add", "Phase4Add", } }) or {}
+	local deactivateObstacles = GetIds({ Names = { "Phase2Remove", "Phase3Remove", "Phase4Remove", } }) or {}
+	for k, id in pairs(activateObstacles) do
+		Activate({ Id = id })
+	end
+	for k, id in pairs(deactivateObstacles) do
+		SetAlpha({ Id = id, Fraction = 0.0, Duration = 1.5 })
+	end
+end

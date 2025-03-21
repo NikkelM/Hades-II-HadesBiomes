@@ -30,7 +30,7 @@ local hadesWeaponsModifications = {
 		SelfVelocity = 4300.0,
 	},
 	HydraSnap = {
-		SelfVelocity = 2000.0,
+		SelfVelocity = 4000.0,
 	},
 }
 
