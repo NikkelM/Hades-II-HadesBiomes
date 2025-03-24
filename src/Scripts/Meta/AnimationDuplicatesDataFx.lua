@@ -4,6 +4,7 @@
 mod.HadesFxDestinationFilename = "Game\\Animations\\Z_ModsNikkelmHadesBiomesFx.sjson"
 
 mod.HadesFxAnimationModifications = {
+	-- TARTARUS
 	TisiphoneFogIn = {
 		EndAlpha = 0.899,
 	},
@@ -13,9 +14,11 @@ mod.HadesFxAnimationModifications = {
 	TisiphoneFogLoopDissipate = {
 		EndAlpha = 0.899,
 	},
+	-- ASPHODEL
 	["AsphodelRoomRewardAvailable-Back"] = {
 		OffsetY = -407.0,
 	},
+	-- The death animation of the Gorgon heads
 	RubbleFallImpactDecalMedusaHeadDeath = {
 		OffsetY = 0.0,
 	},
@@ -25,6 +28,7 @@ mod.HadesFxAnimationModifications = {
 	HydraBubble = {
 		OffsetY = -70.0,
 	},
+	-- ELYISUM
 }
 
 -- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly
