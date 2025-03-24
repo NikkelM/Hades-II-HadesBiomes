@@ -16,6 +16,18 @@ local hadesTwoObstacleModifications = {
 		ChildAnimation = "null",
 		CreateAnimation = "Asphodel_Pillar06TransitionC"
 	},
+	["AsphodelDestructibleStalagmiteA"] = {
+		ChildAnimation = "null",
+		CreateAnimation = "Asphodel_Stalagmite04TransitionA"
+	},
+	["AsphodelDestructibleStalagmiteB"] = {
+		ChildAnimation = "null",
+		CreateAnimation = "Asphodel_Stalagmite04TransitionB"
+	},
+	["AsphodelDestructibleStalagmiteC"] = {
+		ChildAnimation = "null",
+		CreateAnimation = "Asphodel_Stalagmite04TransitionC"
+	},
 }
 
 local addAnimations = {}
