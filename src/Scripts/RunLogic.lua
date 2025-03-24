@@ -27,8 +27,8 @@ modutil.mod.Path.Wrap("StartNewRun", function(base, prevRun, args)
 
 	-- Only set the flag if we are starting a Hades run
 	if args.StartingBiome == "Tartarus" then
-		game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun = true
-		currentRun.IsModsNikkelMHadesBiomesHadesRun = true
+		game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun = true
+		currentRun.ModsNikkelMHadesBiomesIsModdedRun = true
 
 		cachedRuns.ActiveModdedRuns[game.GameState.ModsNikkelMHadesBiomesSaveFileIndex] = true
 		sjson.encode_file(mod.CachedRunsFilePath, cachedRuns)
