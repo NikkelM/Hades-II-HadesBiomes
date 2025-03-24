@@ -5,7 +5,7 @@
 mod.CachedHadesEncounterData = nil
 function mod.LoadHadesEncounterData(fileName)
 	if mod.CachedHadesEncounterData then
-		return mod.CachedHadesEncounterData
+		return game.DeepCopyTable(mod.CachedHadesEncounterData)
 	end
 	local originalEncounterData = game.DeepCopyTable(game.EncounterData)
 	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
@@ -14,9 +14,9 @@ function mod.LoadHadesEncounterData(fileName)
 		chunk()
 		-- No worries if this is marked as undefined, it comes from the loaded file
 		---@diagnostic disable-next-line: undefined-global
-		mod.CachedHadesEncounterData = EncounterData
+		mod.CachedHadesEncounterData = game.DeepCopyTable(EncounterData)
 		game.EncounterData = originalEncounterData
-		return mod.CachedHadesEncounterData
+		return game.DeepCopyTable(mod.CachedHadesEncounterData)
 	else
 		mod.DebugPrint("Error loading encounterData: " .. err, 1)
 	end

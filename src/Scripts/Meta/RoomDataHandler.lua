@@ -4,7 +4,7 @@
 mod.CachedHadesRoomData = nil
 function mod.LoadHadesRoomData(fileName)
 	if mod.CachedHadesRoomData then
-		return mod.CachedHadesRoomData
+		return game.DeepCopyTable(mod.CachedHadesRoomData)
 	end
 
 	local originalRoomEventData = game.DeepCopyTable(game.RoomEventData)
@@ -16,12 +16,11 @@ function mod.LoadHadesRoomData(fileName)
 		chunk()
 		-- No worries if this is marked as undefined, it comes from the loaded file
 		---@diagnostic disable-next-line: undefined-global
-		local hadesRoomData = RoomSetData
-		mod.CachedHadesRoomData = hadesRoomData
+		mod.CachedHadesRoomData = game.DeepCopyTable(RoomSetData)
 		game.RoomEventData = originalRoomEventData
 		game.RoomSetData = originalRoomSetData
 		game.RoomData = originalRoomData
-		return mod.CachedHadesRoomData
+		return game.DeepCopyTable(mod.CachedHadesRoomData)
 	else
 		mod.DebugPrint("Error loading RoomData: " .. err, 1)
 	end

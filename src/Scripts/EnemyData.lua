@@ -5,7 +5,7 @@
 mod.CachedHadesEnemyData = nil
 local function LoadHadesEnemyData()
 	if mod.CachedHadesEnemyData then
-		return mod.CachedHadesEnemyData
+		return game.DeepCopyTable(mod.CachedHadesEnemyData)
 	end
 
 	local originalUnitSetDataEnemies = game.DeepCopyTable(game.UnitSetData.Enemies)
@@ -15,12 +15,11 @@ local function LoadHadesEnemyData()
 	local chunk, err = loadfile(pathName)
 	if chunk then
 		chunk()
-		local hadesEnemyData = UnitSetData.Enemies
-		mod.CachedHadesEnemyData = hadesEnemyData
+		mod.CachedHadesEnemyData = game.DeepCopyTable(UnitSetData.Enemies)
 		game.UnitSetData.Enemies = originalUnitSetDataEnemies
 		game.EnemyData = originalEnemyData
 		game.StatusAnimations = originalStatusAnimations
-		return mod.CachedHadesEnemyData
+		return game.DeepCopyTable(mod.CachedHadesEnemyData)
 	else
 		mod.DebugPrint("Error loading enemyData: " .. err, 1)
 	end

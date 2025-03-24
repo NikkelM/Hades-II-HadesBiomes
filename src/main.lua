@@ -70,6 +70,7 @@ end
 
 local function on_ready()
 	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
+	local startTime = os.clock()
 
 	-- File handling and other generic functions required at install time
 	import "Scripts/Meta/Utils.lua"
@@ -265,6 +266,8 @@ local function on_ready()
 		import "Scripts/RunLogic.lua"
 		import "Scripts/UIData.lua"
 		import "Scripts/WeaponSets.lua"
+
+		mod.DebugPrint("Mod loaded successfully (took " .. os.clock() - startTime .. "s)!", 3)
 	else
 		mod.DebugPrint(
 			"A total of " .. numMissingFiles ..
