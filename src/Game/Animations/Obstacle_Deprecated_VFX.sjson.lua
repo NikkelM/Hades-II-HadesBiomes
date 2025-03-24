@@ -4,6 +4,7 @@ local hadesTwoTartarusObstacleFile = rom.path.combine(rom.paths.Content(),
 -- Modifications to existing obstacle animations in Hades II
 -- These should NOT be in use by Hades II to not break functionality there!
 local hadesTwoObstacleModifications = {
+	-- TARTARUS
 	-- For the reaction animations, they cannot be set as a ChildAnimation, must be in CreateAnimations
 	["TartarusPillarBase04A-Fx"] = {
 		ChildAnimation = "null",
@@ -17,6 +18,7 @@ local hadesTwoObstacleModifications = {
 		ChildAnimation = "null",
 		CreateAnimation = "TartarusPillarBase04C-Transition"
 	},
+	-- ASPHODEL
 	AsphodelBoatSunkUnlocked = {
 		ChildAnimation = "AsphodelRoomRewardAvailable-Back"
 	},
