@@ -1,14 +1,14 @@
-# Hades (Almost) Total Conversion for Hades II
+# Hades underworld run in Hades II
 
 > [!NOTE]
 > Refer to the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki) with any questions before opening an issue.
 
-This mod adds encounters and enemies from Hades to Hades II.
+This mod adds biomes and enemies from Hades to Hades II, as a third route.
 
-> The mod is still early in development, and not everything is working as expected.
+> The mod is still early in development, and not everything might work as expected.
 
 > [!WARNING]
-> I do not recommend using this mod on any active "real" saves during this WIP period.
+> I do not recommend using this mod on any "real" saves during this WIP period.
 > It's recommended to use a save file dedicated to testing or developing mods, and to create a backup of all save files before using the mod.
 
   <img src="img/screenshots/tartarus_fight.jpg" alt="Battling out of Tartarus">
@@ -16,8 +16,6 @@ This mod adds encounters and enemies from Hades to Hades II.
   <img src="img/screenshots/run_start.jpg" alt="Descend into Nightmare - Start a Hades run" width="49%" style="margin-right: 1%;">
 <img src="img/screenshots/tartarus_opening_boon.jpg" alt="Descending into Tartarus" width="49%" style="margin-left: 1%;">
 </div>
-
-> It is recommended to not tab out of the game or otherwise unfocus the window while the game is starting up or loading, as this can sometimes cause the game to load data incorrectly. This would mean you need to restart the game.
 
 ## Prerequisites
 
