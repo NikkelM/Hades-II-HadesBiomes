@@ -35,6 +35,11 @@ local obstacleModifications = {
 	TartarusRubble02b = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", }, },
 	TartarusRubble02c = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", }, },
 	-- ASPHODEL
+	AsphodelTerrainRock01 = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", }, },
+	AsphodelTerrainRock02 = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", }, },
+	AsphodelTerrainRock03 = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", }, },
+	AsphodelSkull = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFallLarge", }, },
+
 	HealthFountainAsphodel = {
 		InheritFrom = { "HealthFountain" },
 		HealingSpentAnimation = "HealthFountainEmptyAsphodel",

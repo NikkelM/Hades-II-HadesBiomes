@@ -165,13 +165,20 @@ local function on_ready()
 		import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_Deprecated_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_General_VFX.sjson.lua"
+
 		import "Game/Units/Enemies.sjson.lua"
+
 		import "Game/Weapons/EnemyWeapons.sjson.lua"
+
+		-- Must be loaded before the other projectile files
 		import "Game/Projectiles/Projectiles.sjson.lua"
 		import "Game/Projectiles/EnemyProjectiles.sjson.lua"
+		import "Game/Projectiles/Enemy_Traps_Projectiles.sjson.lua"
+
 		import "Game/Obstacles/Asphodel.sjson.lua"
 		import "Game/Obstacles/Tartarus.sjson.lua"
 		import "Game/Obstacles/Chaos.sjson.lua"
+
 		-- Localizations, custom texts
 		import "Game/Text/de/HelpText.de.sjson.lua"
 		import "Game/Text/el/HelpText.el.sjson.lua"
