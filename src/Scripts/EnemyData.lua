@@ -624,22 +624,20 @@ local enemyModifications = {
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
 	},
-	-- TODO: HydraTooth2/HydraSummon2 etc.
 	HydraTooth = {
 		StunAnimations = { Default = "HydraToothLanded" },
 		ActivateFx = "nil",
 		ActivateAnimation = "nil",
 
+		WeaponOptions = mod.NilValue,
 		-- Adapted from TyphonHeadEgg
 		Groups = { "EnemyTeam", "GroundEnemies" },
 		UseActivatePresentation = false,
 		HealthBarType = "Small",
 		BlockRaiseDead = true,
-		-- DeathFx = "EnemyDeathFxTyphon",
 		OnHitShake = { Distance = 3, Speed = 300, Duration = 0.15 },
 		DefaultAIData = {
 			DeepInheritance = true,
-			-- SpawnFx = "TyphonEggSpawnFx",
 			SpawnOptions = { "HadesBloodlessNaked" },
 			HatchDuration = 5,
 		},
@@ -647,6 +645,13 @@ local enemyModifications = {
 		StartCharmedDataOverrides = { TriggerGroups = { "EnemyTeam" }, },
 		IncomingDamageModifiers = { { NonPlayerMultiplier = 0.0, }, },
 		AIOptions = { "ModsNikkelMHadesBiomesHydraToothAI", },
+	},
+	HydraTooth2 = {
+		DefaultAIData = {
+			DeepInheritance = true,
+			SpawnOptions = { "BloodlessNakedBerserkerElite" },
+			HatchDuration = 5,
+		},
 	},
 
 	-- These enemies have not been implemented yet

@@ -391,6 +391,12 @@ local weaponModifications = {
 		},
 	},
 	-- ASPHODEL - HYDRA
+	HydraCrusher = {
+		GameStateRequirements = {
+			-- Is broken
+			Skip = true,
+		},
+	},
 	HydraLunge = {
 		Requirements = {
 			MinAttacksBetweenUse = 2,
@@ -399,6 +405,11 @@ local weaponModifications = {
 		AIData = {
 			PreAttackDuration = 0.8,
 			MoveWithinRangeTimeout = 0.5,
+		},
+	},
+	HydraLungeUntethered = {
+		Requirements = {
+			MinAttacksBetweenUse = 0,
 		},
 	},
 	HydraSlam = {
@@ -412,6 +423,59 @@ local weaponModifications = {
 			MoveWithinRange = false,
 		},
 	},
+	HydraSlamUntethered = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
+			ForceUseIfReady = false,
+			MaxPlayerDistance = 800,
+		},
+	},
+	HydraSlamScattered = {
+		Requirements = {
+			MaxPlayerDistance = 9999,
+		},
+	},
+	HydraSlamScatteredFrenzy = {
+		Requirements = {
+			MaxPlayerDistance = 9999,
+		},
+	},
+	HydraPull = {
+		Requirements = {
+			MinAttacksBetweenUse = 3,
+			ForceUseIfReady = true,
+		},
+	},
+	HydraLavaSpit = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
+			ForceUseIfReady = true,
+		},
+	},
+	HydraLavaSpit2 = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
+			MinPlayerDistance = 450,
+		},
+	},
+	HydraLavaSpitFrenzy = {
+		Requirements = {
+			MaxConsecutiveUses = 1,
+		},
+	},
+	HydraLavaSpitExterior = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
+			ForceUseIfReady = true,
+			MinPlayerDistance = 450,
+		},
+	},
+	HydraLavaSpitInterior = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
+			MaxPlayerDistance = 700,
+		},
+	},
 	HydraDart = {
 		Requirements = {
 			MinAttacksBetweenUse = 2,
@@ -421,10 +485,64 @@ local weaponModifications = {
 			PostAttackDuration = 0.5,
 		},
 	},
+	HydraDartVolley = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
+		},
+	},
+	HydraRoar = {
+		Requirements = {
+			MaxConsecutiveUses = 1,
+			ForceUseIfReady = true,
+		},
+	},
+	HydraRoarVolleyLeft = {
+		Requirements = {
+			MaxConsecutiveUses = 1,
+			ForceUseIfReady = true,
+		},
+	},
+	HydraRoarVolleyRight = {
+		Requirements = {
+			MaxConsecutiveUses = 1,
+			ForceUseIfReady = true,
+		},
+	},
+	HydraRoarVolleyInsideOut = {
+		Requirements = {
+			MaxConsecutiveUses = 1,
+			ForceUseIfReady = true,
+		},
+	},
 	HydraSummon = {
 		Requirements = {
 			MinAttacksBetweenUse = 3,
 			ForceUseIfReady = true,
+			MaxActiveSpawns = 10,
+		},
+	},
+	HydraSummon2 = {
+		Requirements = {
+			MinAttacksBetweenUse = 3,
+			ForceUseIfReady = true,
+			MaxActiveSpawns = 5,
+		},
+	},
+	HydraSummonSpread = {
+		Requirements = {
+			MinAttacksBetweenUse = 4,
+			ForceUseIfReady = true,
+			MaxActiveSpawns = 5,
+		},
+	},
+	HydraSpawns = {
+		Requirements = {
+			MaxActiveSpawns = 10,
+		},
+	},
+	HydraHeal = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
 		},
 	},
 }

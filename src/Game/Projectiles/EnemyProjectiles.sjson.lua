@@ -133,10 +133,12 @@ local hadesProjectilesModifications = {
 		SpawnOnDeath = "HydraTooth",
 	},
 	HydraSummon2 = {
-		SpawnOnDetonate = "BloodlessNakedBerserkerEliteSummoned",
+		SpawnOnDetonate = "null",
+		SpawnOnDeath = "HydraTooth2",
 	},
 	HydraSummonSpread = {
-		SpawnOnDetonate = "BloodlessNakedBerserkerEliteSummoned",
+		SpawnOnDetonate = "null",
+		SpawnOnDeath = "HydraTooth2",
 	},
 
 	-- STYX
