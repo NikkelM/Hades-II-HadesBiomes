@@ -121,9 +121,16 @@ local hadesProjectilesModifications = {
 		CanBeProjectileDefenseDestroyed = false,
 		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
-	-- TODO: Crashing if there is too many spawns?
+	-- TODO: Are all these needed?
 	HydraSummon = {
-		SpawnOnDetonate = "HadesBloodlessNakedSummoned",
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+		CheckObstacleImpact = true,
+		UseVulnerability = false,
+		DetonateOnTouchdown = true,
+		SpawnOnDetonate = "null",
+		ImmunityDuration = 0.5,
+		SpawnType = "Unit",
+		SpawnOnDeath = "HydraTooth",
 	},
 	HydraSummon2 = {
 		SpawnOnDetonate = "BloodlessNakedBerserkerEliteSummoned",

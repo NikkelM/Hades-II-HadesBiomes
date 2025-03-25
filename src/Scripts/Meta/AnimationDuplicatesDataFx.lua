@@ -25,8 +25,17 @@ mod.HadesFxAnimationModifications = {
 	RubbleFallImpactDecalMedusaHeadDeathFade = {
 		OffsetY = 0.0,
 	},
+	-- ASPHODEL BOSS - HYDRA 
 	HydraBubble = {
 		OffsetY = -70.0,
+	},
+	HydraTooth = {
+		-- If these are the original animation values, the tooth is not visible at all
+		Type = "null",
+		EndFrame = "null",
+		Loop = "null",
+		NumFrames = "null",
+		StartFrame = "null",
 	},
 	-- ELYISUM
 }

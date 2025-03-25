@@ -421,6 +421,12 @@ local weaponModifications = {
 			PostAttackDuration = 0.5,
 		},
 	},
+	HydraSummon = {
+		Requirements = {
+			MinAttacksBetweenUse = 3,
+			ForceUseIfReady = true,
+		},
+	},
 }
 
 -- Modifications easier done in a loop

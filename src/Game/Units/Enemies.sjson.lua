@@ -22,6 +22,7 @@ local hadesEnemiesModifications = {
 
 	-- ASPHODEL
 	BaseMedusaHead = { InheritFrom = "1_BaseEnemy", },
+	HydraTooth = { InheritFrom = "1_BaseEnemy", },
 
 	-- ENVIRONMENT
 	Breakable = { InheritFrom = "1_BaseDestructible", },
@@ -33,10 +34,6 @@ local enemyAdditions = {
 	-- ASPHODEL
 	{
 		Name = "HadesBloodlessNaked",
-		InheritFrom = "BloodlessNaked",
-	},
-	{
-		Name = "HadesBloodlessNakedSummoned",
 		InheritFrom = "BloodlessNaked",
 	},
 	{
@@ -90,10 +87,6 @@ local enemyAdditions = {
 	},
 	{
 		Name = "BloodlessNakedBerserkerElite",
-		InheritFrom = "BloodlessBerserker_Elite",
-	},
-	{
-		Name = "BloodlessNakedBerserkerEliteSummoned",
 		InheritFrom = "BloodlessBerserker_Elite",
 	},
 }

@@ -628,6 +628,25 @@ local enemyModifications = {
 		StunAnimations = { Default = "HydraToothLanded" },
 		ActivateFx = "nil",
 		ActivateAnimation = "nil",
+
+		-- Adapted from TyphonHeadEgg
+		Groups = { "EnemyTeam", "GroundEnemies" },
+		UseActivatePresentation = false,
+		HealthBarType = "Small",
+		BlockRaiseDead = true,
+		-- DeathFx = "EnemyDeathFxTyphon",
+		OnHitShake = { Distance = 3, Speed = 300, Duration = 0.15 },
+		DefaultAIData =
+		{
+			DeepInheritance = true,
+			-- SpawnFx = "TyphonEggSpawnFx",
+			SpawnOptions = { "HadesBloodlessNaked" },
+			HatchDuration = 5,
+		},
+		TriggerGroups = { "HeroTeam" },
+		StartCharmedDataOverrides = { TriggerGroups = { "EnemyTeam" }, },
+		IncomingDamageModifiers = { { NonPlayerMultiplier = 0.0, }, },
+		AIOptions = { "TyphonHeadEggAI", },
 	},
 
 	-- These enemies have not been implemented yet
