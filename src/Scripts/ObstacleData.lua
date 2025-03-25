@@ -31,14 +31,19 @@ local obstacleModifications = {
 		UnlockedAnimation = "DoorLocked_MetaReward",
 	},
 	-- Rubble that falls when hitting destructible pillars
-	TartarusRubble02 = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", }, },
-	TartarusRubble02b = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", }, },
-	TartarusRubble02c = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", }, },
+	TartarusRubble02 = {
+		DeathFx = "RubbleFall",
+		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
+	},
 	-- ASPHODEL
-	AsphodelTerrainRock01 = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", }, },
-	AsphodelTerrainRock02 = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", }, },
-	AsphodelTerrainRock03 = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", }, },
-	AsphodelSkull = { OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFallLarge", }, },
+	AsphodelTerrainRock01 = {
+		DeathFx = "RubbleFall",
+		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
+	},
+	AsphodelSkull = {
+		DeathFx = "RubbleFall",
+		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFallLarge", },
+	},
 
 	HealthFountainAsphodel = {
 		InheritFrom = { "HealthFountain" },
