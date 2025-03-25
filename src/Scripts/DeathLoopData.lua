@@ -44,12 +44,12 @@ function mod.SpawnHadesRunStartDoor(source, args)
 
 	game.SetupObstacle(chaosGate)
 	AddToGroup({ Id = chaosGate.ObjectId, Name = "ModsNikkelMHadesBiomes.RunStartDoor" })
+	-- Enable MelinoeField voicelines when entering the Chaos gate
+	game.LoadVoiceBanks({ Name = "MelinoeField" })
 end
 
 function mod.StartHadesRun(source, args)
 	args = args or {}
-	-- Enable MelinoeField voicelines when entering the Chaos gate
-	game.LoadVoiceBanks({ Name = "MelinoeField" })
 	-- Don't allow rain in underworld/modded runs
 	game.GameState.NextBiomeStateName = "VanillaState"
 

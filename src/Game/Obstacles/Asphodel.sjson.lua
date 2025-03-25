@@ -30,6 +30,21 @@ local hadesTwoObstacleModifications = {
 		InheritFrom = "1_BaseVulnerableObstacle",
 	},
 	-- Obstacles that shouldn't be passable
+	AsphodelHydraRock01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	AsphodelHydraRock02 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	AsphodelHydraRock02a = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	AsphodelHydraRock03 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	AsphodelHydraRock03a = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
 }
 
 sjson.hook(hadesTwoAsphodelObstacleFile, function(data)
