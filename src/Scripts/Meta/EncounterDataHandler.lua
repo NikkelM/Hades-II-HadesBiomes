@@ -31,6 +31,11 @@ function mod.ApplyModificationsAndInheritEncounterData(base, modifications, repl
 		mod.UpdateField(base, oldName, newName, { "WaveTemplate", "Spawns", "*", "Name" }, "EncounterData.lua")
 		mod.UpdateField(base, oldName, newName, { "ManualWaveTemplates", "*", "Spawns", "*", "Name" }, "EncounterData.lua")
 	end
+	-- Rename the requirement for MinibossCountShrineUpgrade
+	mod.UpdatePropertyName(base, "RequiredMetaUpgrade", "RequiredMiniBossShrine",
+		{ "ManualWaveTemplates", "*", "Spawns", "*" }, "EncounterData.lua")
+	mod.UpdateField(base, "MinibossCountShrineUpgrade", true,
+		{ "ManualWaveTemplates", "*", "Spawns", "*", "RequiredMiniBossShrine" }, "EncounterData.lua")
 
 	-- Apply replacements
 	for encounterName, encounterData in pairs(replacements) do
