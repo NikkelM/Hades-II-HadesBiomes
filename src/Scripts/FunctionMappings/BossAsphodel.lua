@@ -308,3 +308,29 @@ function game.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 
 	enemy.BossSpawnsUses = enemy.BossSpawnsUses + 1
 end
+
+-- Adapted from TyphonHeadEggAI
+function game.ModsNikkelMHadesBiomesHydraToothAI(enemy)
+	local duration = enemy.DefaultAIData.HatchDuration or 8
+	for i = 1, duration do
+		game.thread(game.InCombatText, enemy.ObjectId, duration + 1 - i, 0.5,
+			{ OffsetY = 20, SkipShadow = true, FontSize = 40, FlashAnimation = "TyphonEggTimerFlash", })
+		-- CreateAnimation({ Name = "TyphonHeadEggPulse", DestinationId = enemy.ObjectId })
+		game.AIWait(1.0, enemy, enemy.AIThreadName)
+	end
+
+	if enemy.DefaultAIData.SpawnFx ~= nil then
+		CreateAnimation({ DestinationId = enemy.ObjectId, Name = enemy.DefaultAIData.SpawnFx })
+	end
+	local enemyData = game.EnemyData[game.GetRandomValue(enemy.DefaultAIData.SpawnOptions)]
+	local newEnemy = game.DeepCopyTable(enemyData) or {}
+	newEnemy.StartAggroed = true
+	if newEnemy.IsUnitGroup then
+		game.SpawnUnitGroup(newEnemy, nil, nil, enemy.ObjectId)
+	else
+		newEnemy.ObjectId = SpawnUnit({ Name = newEnemy.Name, Group = "Standing", DestinationId = enemy.ObjectId })
+		game.thread(game.SetupUnit, newEnemy, game.CurrentRun, { SkipPresentation = true })
+	end
+
+	game.Kill(enemy)
+end
