@@ -158,12 +158,14 @@ mod.ModifyEnemyTrapData(hadesEnemyData)
 -- This is done AFTER data inheritance is processed
 local enemyReplacements = {
 	BaseVulnerableEnemy = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DestroyDelay = mod.NilValue,
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 	},
 	HadesBossBaseVulnerableEnemy = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DestroyDelay = mod.NilValue,
 		DefaultAIData = {
 			DeepInheritance = true,
@@ -325,8 +327,6 @@ local enemyModifications = {
 		ActivateAnimation = "EnemyActivationFadeInWretchSwarmerContainer",
 	},
 	LightSpawner = {
-		-- Makes sure we call the modded SpawnerAI function instead of HandleSpawnerBurst
-		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		StunAnimations = { Default = "SpawnerAttackAnim", },
 		DeathFx = "BreakableDeathAnim",
 		DeathGraphic = "SpawnerDeath",
@@ -363,7 +363,6 @@ local enemyModifications = {
 
 	-- ASPHODEL
 	LightSpawnerElite = {
-		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		StunAnimations = { Default = "SpawnerAttackAnim", },
 		DeathFx = "BreakableDeathAnim",
 		DeathGraphic = "SpawnerDeath",
@@ -597,7 +596,6 @@ local enemyModifications = {
 	},
 	-- Spawned heads
 	BaseHydraHead = {
-		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		StunAnimations = { Default = "EnemyHydraOnHit" },
 		ActivateFx = "nil",
 		ActivateAnimation = "HydraHeadLavaBubbles",

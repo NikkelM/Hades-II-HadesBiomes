@@ -50,10 +50,12 @@ mod.UpdateField(encounterDataAsphodel, "Challenge", "TimeChallenge", { "InheritF
 -- Can still use modifications if the modified table did not exist beforehand
 local encounterReplacements = {
 	GeneratedAsphodel = {
+		-- The original from Hades is 5.0
+		ActiveEnemyCapBase = 8.5,
 		-- The original from Hades is 170
 		BaseDifficulty = 200,
 		-- The original from Hades is 1.0
-		ActiveEnemyCapDepthRamp = 1.5,
+		ActiveEnemyCapDepthRamp = 1.3,
 		-- The original from Hades is 0.35
 		TypeCountDepthRamp = 0.55,
 		-- The original from Hades is 25

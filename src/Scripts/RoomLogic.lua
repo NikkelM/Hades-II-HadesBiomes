@@ -57,8 +57,8 @@ end)
 modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 	base(unit, currentRun, args)
 
-	-- Overwrite weapon/AI data if necessary due to a vow
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and unit.ModsNikkelMHadesBiomesIsModdedEnemy then
+		-- Overwrite weapon/AI data if necessary due to a vow
 		local shrineLevel = game.GetNumShrineUpgrades(unit.ShrineMetaUpgradeName)
 		local requiredShrineLevel = unit.ShrineMetaUpgradeRequiredLevel or 1
 		if unit.ShrineDataOverwrites ~= nil and shrineLevel >= requiredShrineLevel then

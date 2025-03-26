@@ -55,6 +55,8 @@ local encounterReplacements = {
 		BlockAthenaEncounterKeepsake = false,
 	},
 	GeneratedTartarus = {
+		-- The original from Hades is 2.3
+		ActiveEnemyCapBase = 6.9,
 		-- The original from Hades is 30
 		BaseDifficulty = 60,
 		-- The original from Hades is 0.35
