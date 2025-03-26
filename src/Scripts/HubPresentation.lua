@@ -17,7 +17,7 @@ function game.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(s
 		if shouldLock then
 			escapeDoor.UseText = "LimitGraspShrineUpgradeEscapeDoorClosed"
 			escapeDoor.OnUsedFunctionName = "LimitGraspShrineUpgradeEscapeDoorClosed"
-			StopAnimation({  Names = { "ChaosDoorOpen", "ChaosDoorFloor" }, DestinationId = escapeDoor.ObjectId })
+			StopAnimation({ Names = { "ChaosDoorOpen", "ChaosDoorFloor" }, DestinationId = escapeDoor.ObjectId })
 			SetAnimation({ DestinationId = escapeDoor.ObjectId, Name = "SecretDoor_Closed" })
 		else
 			escapeDoor.UseText = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText"
@@ -30,7 +30,18 @@ end
 modutil.mod.Path.Wrap("UpdateEscapeDoorForLimitGraspShrineUpgrade", function(base, source, args)
 	args = args or {}
 	if args.EscapeDoorIds ~= nil then
-		game.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(nil, { EscapeDoorIds = { 2000043 } })
+		local moddedEscapeDoorId = nil
+		for _, obstacle in pairs(game.MapState.ActiveObstacles) do
+			if obstacle.ModsNikkelMHadesBiomesIsRunStartDoor then
+				moddedEscapeDoorId = obstacle.ObjectId
+				break
+			end
+		end
+		if moddedEscapeDoorId == nil then
+			return
+		end
+
+		game.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(nil, { EscapeDoorIds = { moddedEscapeDoorId } })
 	end
 	base(source, args)
 end)

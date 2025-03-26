@@ -276,7 +276,7 @@ local function on_ready()
 		import "Scripts/UIData.lua"
 		import "Scripts/WeaponSets.lua"
 
-		mod.DebugPrint("Mod loaded successfully (took " .. os.clock() - startTime .. "s)!", 3)
+		mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)
 	else
 		mod.DebugPrint(
 			"A total of " .. numMissingFiles ..

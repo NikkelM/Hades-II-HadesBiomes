@@ -623,6 +623,9 @@ local enemyModifications = {
 		},
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
+		BlockCharm = true,
+		ImmuneToPolymorph = true,
+		BlockRaiseDead = true,
 	},
 	HydraTooth = {
 		StunAnimations = { Default = "HydraToothLanded" },

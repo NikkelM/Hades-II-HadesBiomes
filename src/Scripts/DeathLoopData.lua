@@ -29,6 +29,7 @@ function mod.SpawnHadesRunStartDoor(source, args)
 	chaosGate.HealthCost = nil
 	chaosGate.ExitBlockedVoiceLines = nil
 	chaosGate.ExitDoorOpenAnimation = nil
+	chaosGate.ModsNikkelMHadesBiomesIsRunStartDoor = true
 
 	chaosGate.UseText = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText"
 	-- Normally this would check if the exit door for a room can be used - we always allow it
