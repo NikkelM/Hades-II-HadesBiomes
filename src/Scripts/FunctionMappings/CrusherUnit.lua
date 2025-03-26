@@ -56,7 +56,7 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 			ApplyUpwardForce({ Id = enemy.ObjectId, Speed = 10000 })
 
 			-- Custom: Prevent it from being affected by the Cast
-			game.SetUnitInvulnerable(enemy, "ModsNikkelMHadesBiomesUnitTouchdownFlag", { Silent = true})
+			game.SetUnitInvulnerable(enemy, "ModsNikkelMHadesBiomesUnitTouchdownFlag", { Silent = true })
 
 			game.wait(0.5, enemy.AIThreadName)
 			enemy.BlockingLocation = false

@@ -521,9 +521,7 @@ local enemyModifications = {
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
 		},
-		-- Breaks the animation, as they are only slowed down and not actually frozen
-		CanBeFrozen = false,
-		MaxHealth = 250,
+		MaxHealth = 200,
 	},
 	ShieldRanged = {
 		StunAnimations = { Default = "HealRangedCrystal4" },

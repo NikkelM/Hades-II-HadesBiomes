@@ -10,6 +10,9 @@ local roomReplacements = {
 		RoomSetName = "Asphodel",
 		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
 		BreakableOptions = { "BreakableAsphodelIdle", "BreakableAsphodelIdle2", "BreakableAsphodelIdle3" },
+
+		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
+		ShrinePointDoorRequirements = { Skip = true },
 	},
 
 	-- SHOPS
