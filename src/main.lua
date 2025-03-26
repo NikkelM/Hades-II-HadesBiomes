@@ -217,6 +217,7 @@ local function on_ready()
 		import "Scripts/EnemySets.lua"
 
 		import "Scripts/Meta/EnemyTrapDataHandler.lua"
+		import "Scripts/HadesEnemyData.lua"
 		import "Scripts/EnemyData.lua"
 		import "Scripts/Meta/EncounterDataHandler.lua"
 		import "Scripts/Meta/RoomDataHandler.lua"

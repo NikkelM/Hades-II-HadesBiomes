@@ -1,31 +1,5 @@
 -- Contains generic functions to handle migrating room data from Hades to Hades II
 
--- Loads RoomData from a file in Hades
-mod.CachedHadesRoomData = nil
-function mod.LoadHadesRoomData(fileName)
-	if mod.CachedHadesRoomData then
-		return game.DeepCopyTable(mod.CachedHadesRoomData)
-	end
-
-	local originalRoomEventData = game.DeepCopyTable(game.RoomEventData)
-	local originalRoomSetData = game.DeepCopyTable(game.RoomSetData)
-	local originalRoomData = game.DeepCopyTable(game.RoomData)
-	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
-	local chunk, err = loadfile(pathName)
-	if chunk then
-		chunk()
-		-- No worries if this is marked as undefined, it comes from the loaded file
-		---@diagnostic disable-next-line: undefined-global
-		mod.CachedHadesRoomData = game.DeepCopyTable(RoomSetData)
-		game.RoomEventData = originalRoomEventData
-		game.RoomSetData = originalRoomSetData
-		game.RoomData = originalRoomData
-		return game.DeepCopyTable(mod.CachedHadesRoomData)
-	else
-		mod.DebugPrint("Error loading RoomData: " .. err, 1)
-	end
-end
-
 local roomKeyReplacements = {
 	BoonRaritiesOverride = {
 		LegendaryChance = "Legendary",

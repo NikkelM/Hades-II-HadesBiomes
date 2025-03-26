@@ -1,30 +1,5 @@
 -- Contains generic functions to handle migrating enemy data from Hades to Hades II
 
--- Loads EnemyData from a file in Hades
--- Note: Must be loaded before EncounterData, as there are some references to it in EncounterData!
-mod.CachedHadesEnemyData = nil
-local function LoadHadesEnemyData()
-	if mod.CachedHadesEnemyData then
-		return game.DeepCopyTable(mod.CachedHadesEnemyData)
-	end
-
-	local originalUnitSetDataEnemies = game.DeepCopyTable(game.UnitSetData.Enemies)
-	local originalEnemyData = game.DeepCopyTable(game.EnemyData)
-	local originalStatusAnimations = game.DeepCopyTable(game.StatusAnimations)
-	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts\\EnemyData.lua")
-	local chunk, err = loadfile(pathName)
-	if chunk then
-		chunk()
-		mod.CachedHadesEnemyData = game.DeepCopyTable(UnitSetData.Enemies)
-		game.UnitSetData.Enemies = originalUnitSetDataEnemies
-		game.EnemyData = originalEnemyData
-		game.StatusAnimations = originalStatusAnimations
-		return game.DeepCopyTable(mod.CachedHadesEnemyData)
-	else
-		mod.DebugPrint("Error loading enemyData: " .. err, 1)
-	end
-end
-
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
 local function ApplyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
 	-- Rename keys if the enemy is in EnemyNameMappings
@@ -119,40 +94,40 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 	game.OverwriteTableKeys(game.EnemyData, base)
 end
 
-local hadesEnemyData = LoadHadesEnemyData()
+-- TODO: Make required changes in own file
 -- Modified BaseVulnerableEnemy for all Hades enemies
-hadesEnemyData.BaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
+mod.EnemyData.BaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
 -- Modified BaseVulnerableEnemy just for Hades bosses, which need some modifications
-hadesEnemyData.HadesBossBaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
+mod.EnemyData.HadesBossBaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
 
 -- Remove data from Hades that we don't want to use (e.g. enemies in Asphodel that are already implemented in Hades II)
 for _, name in ipairs(mod.EnemyNameRemovals) do
-	hadesEnemyData[name] = nil
+	mod.EnemyData[name] = nil
 end
 
 -- Some enemies exist in both Hades and Hades II, so we need to rename the Hades enemies
 for oldName, newName in pairs(mod.EnemyNameMappings) do
-	if hadesEnemyData[oldName] then
-		hadesEnemyData[newName] = hadesEnemyData[oldName]
-		hadesEnemyData[oldName] = nil
+	if mod.EnemyData[oldName] then
+		mod.EnemyData[newName] = mod.EnemyData[oldName]
+		mod.EnemyData[oldName] = nil
 		mod.DebugPrint("Renamed enemy: " .. oldName .. " to " .. newName .. " in EnemyData.lua", 4)
 	end
 	-- Update the name in dependent fields
 	-- Inherit properties from this name
-	mod.UpdateField(hadesEnemyData, oldName, newName, { "InheritFrom" }, "EnemyData.lua")
+	mod.UpdateField(mod.EnemyData, oldName, newName, { "InheritFrom" }, "EnemyData.lua")
 	-- If an enemy is spawned, this enemy cannot spawn
-	mod.UpdateField(hadesEnemyData, oldName, newName, { "GeneratorData", "BlockEnemyTypes" }, "EnemyData.lua")
+	mod.UpdateField(mod.EnemyData, oldName, newName, { "GeneratorData", "BlockEnemyTypes" }, "EnemyData.lua")
 	-- Other enemies can spawn this enemy
-	mod.UpdateField(hadesEnemyData, oldName, newName, { "SpawnOptions" }, "EnemyData.lua")
+	mod.UpdateField(mod.EnemyData, oldName, newName, { "SpawnOptions" }, "EnemyData.lua")
 end
 -- For renamed weapon names
 for oldName, newName in pairs(mod.EnemyWeaponMappings) do
-	mod.UpdateField(hadesEnemyData, oldName, newName, { "WeaponOptions" }, "EnemyData.lua")
+	mod.UpdateField(mod.EnemyData, oldName, newName, { "WeaponOptions" }, "EnemyData.lua")
 end
 
 -- Some enemies need to be modified so much, it's easier to redefine them
 -- This is true for most traps
-mod.ModifyEnemyTrapData(hadesEnemyData)
+mod.ModifyEnemyTrapData(mod.EnemyData)
 
 -- Replaces the key with the new value instead of modifying
 -- This is done AFTER data inheritance is processed
@@ -768,7 +743,7 @@ local enemyKeyReplacements = {
 	ValueOptions = "BreakableValueOptions",
 }
 
-ApplyModificationsAndInheritEnemyData(hadesEnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
+ApplyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
 
 -- Modifications to Hades II enemies
 -- Only modify enemies that are not being used in Hades II in this way!
