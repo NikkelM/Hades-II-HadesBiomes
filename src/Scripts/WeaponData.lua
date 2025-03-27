@@ -88,6 +88,7 @@ local weaponModifications = {
 	HeavyRangedWeaponSplitter = {
 		InheritFrom = { "HeavyRangedWeapon", },
 		AIData = {
+			DeepInheritance = true,
 			ProjectileName = "HeavyRangedWeaponSplitter",
 			NumProjectiles = 8,
 			ProjectileStartAngleOffset = 45,
@@ -97,6 +98,7 @@ local weaponModifications = {
 	},
 	HeavyRangedSplitterFragment = {
 		AIData = {
+			DeepInheritance = true,
 			TargetClosestOfTypes = { "HeavyRangedSplitterMiniboss" },
 			TargetClosest = mod.NilValue,
 			TargetFriends = mod.NilValue,

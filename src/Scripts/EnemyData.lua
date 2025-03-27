@@ -282,7 +282,16 @@ local enemyModifications = {
 		OnDeathFunctionName = "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		BlockRaiseDead = true,
 		-- From 1325
-		HealthBuffer = 2000,
+		HealthBuffer = 2200,
+		-- From 850
+		MaxHealth = 500,
+		DefaultAIData = {
+			-- How long it waits before moving again while firing the beams
+			FireDuration = 5.75,
+			-- Sort of acts as a PreAttackDuration as well
+			MoveWithinRangeTimeoutMin = 2.0,
+			MoveWithinRangeTimeoutMax = 3.5,
+		},
 	},
 	HeavyRangedSplitterFragment = {
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },

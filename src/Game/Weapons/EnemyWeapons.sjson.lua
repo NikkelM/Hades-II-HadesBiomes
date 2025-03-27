@@ -24,6 +24,8 @@ hadesWeaponsTable.Weapons = mod.AddTableKeysSkipDupes(hadesTwoWeaponsTable.Weapo
 local hadesTwoPlayerWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\Weapons\\PlayerWeapons.sjson")
 
 local hadesWeaponsModifications = {
+	-- TARTARUS
+	-- ASPHODEL - HYDRA
 	HydraLunge = {
 		-- Needs to be lowered due to tethers not locking the head in place
 		-- It would otherwise fly over the whole map
