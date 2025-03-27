@@ -117,6 +117,7 @@ local roomModifications = {
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossSellTraitShops" },
 			},
 		},
+		-- TODO: Doesn't work - a bench is added instead
 		-- Defines where the well spawns, making sure the sell shop spawns on the other possible ID
 		WellShopChallengeBaseId = 487438,
 		WellShopRequirements = {

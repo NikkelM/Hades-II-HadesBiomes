@@ -79,8 +79,13 @@ local roomModifications = {
 		UnthreadedEvents = {
 			[1] = {
 				-- Requires AthenaFirstPickup voiceline, which is not implemented
-				GameStateRequirements = mod.NilValue
-			}
+				GameStateRequirements = mod.NilValue,
+			},
+		},
+		InspectPoints = {
+			[410183] = {
+				RequiredAnyTextLines = mod.NilValue,
+			},
 		},
 	},
 	-- This is the first run's opening room, which forces Athena boons
