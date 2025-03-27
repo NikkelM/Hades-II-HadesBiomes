@@ -94,7 +94,6 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 	game.OverwriteTableKeys(game.EnemyData, base)
 end
 
--- TODO: Make required changes in own file
 -- Modified BaseVulnerableEnemy for all Hades enemies
 mod.EnemyData.BaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
 -- Modified BaseVulnerableEnemy just for Hades bosses, which need some modifications

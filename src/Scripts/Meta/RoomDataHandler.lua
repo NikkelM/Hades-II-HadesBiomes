@@ -31,6 +31,24 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications, replaceme
 		mod.ApplyModifications(base[roomName], roomData)
 	end
 
+	-- Modify InspectPoint Storyteller voiceline identifiers
+	for roomName, roomData in pairs(base) do
+		if roomData.InspectPoints then
+			for inspectPointId, inspectPointData in pairs(roomData.InspectPoints) do
+				if inspectPointData.InteractTextLineSets then
+					for setName, setData in pairs(inspectPointData.InteractTextLineSets) do
+						for _, line in ipairs(setData) do
+							if line.Cue and line.Cue:find("^/VO/Storyteller_") then
+								line.Cue = line.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+								mod.DebugPrint("Renamed Storyteller voiceline in room " .. roomName .. " to " .. line.Cue, 4)
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+
 	-- Process data inheritance and add the new data to the game's globals
 	-- Once for the RoomSetData of the current set, and once to the global RoomData containing all rooms
 	if game.RoomSetData[roomSetName] == nil then
