@@ -47,8 +47,8 @@ local roomModifications = {
 		InheritFrom = { "BaseAsphodel", "BiomeStartRoom", },
 		Starting = true,
 		BlockRunProgressUI = true,
+		-- TODO: Need to add for the other start rooms as well (except Tartarus)
 		StartUnthreadedEvents = {
-			-- TODO: Test/Check
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
 		},
@@ -76,8 +76,6 @@ local roomModifications = {
 	-- BOSSES
 	-- GameStateRequirements to choose the correct arena depending on the EM level
 	X_Boss01 = {
-		-- TODO: Are these needed - only entrance voicelines?
-		-- LoadModdedVoiceBanks = { "ZagreusField" },
 		GameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineUpgrades", "BossDifficultyShrineUpgrade" },
