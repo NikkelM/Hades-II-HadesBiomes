@@ -199,30 +199,32 @@ local roomModifications = {
 			{
 				FunctionName = "ModsNikkelMHadesBiomesBiomeMapPresentation",
 				Args = {
-					HeroStartOffsetX = -680,
-					HeroStartOffsetY = 580,
+					HeroStartOffsetX = -100,
+					HeroStartOffsetY = 500,
 
-					FamiliarStartOffsetX = -800,
-					FamiliarStartOffsetY = 580,
+					-- TODO: Adjust same as Hero
+					FamiliarStartOffsetX = 0,
+					FamiliarStartOffsetY = 0,
 
-					HeroMoveOffsetX = 745,
-					HeroMoveOffsetY = 285,
-					HeroMoveDuration = 1.4,
+					HeroMoveOffsetX = 365,
+					HeroMoveOffsetY = -455,
+					HeroMoveDuration = 2.0,
 
+					-- TODO: Adjust same as Hero
 					FamiliarMoveOffsetX = 745,
 					FamiliarMoveOffsetY = 285,
-					FamiliarMoveDuration = 1.4,
+					FamiliarMoveDuration = 2.0,
 
 					MoveEaseIn = 0.5,
 					MoveEaseOut = 1.0,
 
-					BiomeStart = "BiomeF",
-					BiomeEnd = "BiomeG",
+					BiomeStart = "Tartarus",
+					BiomeEnd = "Asphodel",
 					PreviousBiomes = {},
 
 					AdditionalFirstTimeWait = 1.15,
+					-- TODO: Hydra
 					ShrineBounty = "BossScylla01",
-					--CrossroadsStart = true,
 				},
 				GameStateRequirements = {}
 			},

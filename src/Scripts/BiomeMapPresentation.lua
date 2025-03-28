@@ -1,119 +1,5 @@
 function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	print("BiomeMapPresentation: Start")
-	-- TODO: Update labels
-	local labelData =
-	{
-		{
-			Text = "Hub",
-			OffsetX = 20,
-			OffsetY = -440,
-			Glow = nil,
-			GlowOffsetX = nil,
-			GlowOffsetY = nil,
-		},
-		{
-			Text = "BiomeF",
-			OffsetX = -680,
-			OffsetY = 263,
-			Glow = "GUI\\BiomeMap\\BiomeMap_Glow_F",
-			GlowOffsetX = -690,
-			GlowOffsetY = 270 + 355,
-			SelectedLoopScale = 1.0,
-			SelectedLoopOffsetX = -680,
-			SelectedLoopOffsetY = 270 + 340,
-			Fog = "GUI\\BiomeMap\\BiomeMap_Fog_F",
-			FogOffsetX = -680,
-			FogOffsetY = 270 + 340,
-		},
-		{
-			Text = "BiomeG",
-			OffsetX = 20,
-			OffsetY = 480,
-			Glow = "GUI\\BiomeMap\\BiomeMap_Glow_G",
-			GlowOffsetX = 20,
-			GlowOffsetY = 480 + 340,
-			SelectedLoopScale = 0.5,
-			SelectedLoopOffsetX = 20,
-			SelectedLoopOffsetY = 480 + 340,
-			Fog = "GUI\\BiomeMap\\BiomeMap_Fog_G",
-			FogOffsetX = 20,
-			FogOffsetY = 480 + 340,
-			--SpotlightScale = 1.5,
-		},
-		{
-			Text = "BiomeH",
-			OffsetX = 633,
-			OffsetY = 1335,
-			Glow = "GUI\\BiomeMap\\BiomeMap_Glow_H",
-			GlowOffsetX = 643,
-			GlowOffsetY = 750 + 320,
-			SelectedLoopScale = 0.55,
-			SelectedLoopOffsetX = 629,
-			SelectedLoopOffsetY = 728 + 340,
-			Fog = "GUI\\BiomeMap\\BiomeMap_Fog_H",
-			FogOffsetX = 661,
-			FogOffsetY = 750 + 340,
-		},
-		{
-			Text = "BiomeI",
-			OffsetX = 33,
-			OffsetY = 1935,
-			Glow = "GUI\\BiomeMap\\BiomeMap_Glow_I",
-			GlowOffsetX = 11,
-			GlowOffsetY = 1260 + 290,
-			SelectedLoopScale = 0.60,
-			SelectedLoopOffsetX = 10,
-			SelectedLoopOffsetY = 1160 + 340,
-			Fog = "GUI\\BiomeMap\\BiomeMap_Fog_I",
-			FogOffsetX = 30,
-			FogOffsetY = 1260 + 340,
-		},
-
-		{
-			Text = "BiomeN",
-			OffsetX = 626,
-			OffsetY = -250,
-			Glow = "GUI\\BiomeMap\\BiomeMap_Glow_N",
-			GlowOffsetX = 613,
-			GlowOffsetY = -610,
-			SelectedLoopScale = 0.5,
-			SelectedLoopOffsetX = 604,
-			SelectedLoopOffsetY = -614,
-			Fog = "GUI\\BiomeMap\\BiomeMap_Fog_N",
-			FogOffsetX = 604,
-			FogOffsetY = -614,
-		},
-
-		{
-			Text = "BiomeO",
-			OffsetX = -460,
-			OffsetY = -885,
-			Glow = "GUI\\BiomeMap\\BiomeMap_Glow_O",
-			GlowOffsetX = 15,
-			GlowOffsetY = -910,
-			SelectedLoopScale = 0.65,
-			SelectedLoopOffsetX = 12,
-			SelectedLoopOffsetY = -905,
-			Fog = "GUI\\BiomeMap\\BiomeMap_Fog_O",
-			FogOffsetX = 15,
-			FogOffsetY = -910,
-		},
-
-		{
-			Text = "BiomeP",
-			OffsetX = 16,
-			OffsetY = -1875,
-			Glow = "GUI\\BiomeMap\\BiomeMap_Glow_P",
-			GlowOffsetX = 16,
-			GlowOffsetY = -1540,
-			SelectedLoopScale = 0.5,
-			SelectedLoopOffsetX = 16,
-			SelectedLoopOffsetY = -1560,
-			Fog = "GUI\\BiomeMap\\BiomeMap_Fog_P",
-			FogOffsetX = 16,
-			FogOffsetY = -1560,
-		},
-	}
 
 	game.killTaggedThreads("MetaUpgradePresentation")
 	for _, id in pairs(game.SessionMapState.ShownMetaUpgradeCardIds) do
@@ -123,12 +9,14 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 
 	print("BiomeMapPresentation: Loading BiomeMap package")
 	AddInputBlock({ Name = "BiomeMapPresentation" })
-	-- TODO: Load H1 package
+	-- Needed for the figure textures
 	LoadPackages({ Name = "BiomeMap", IgnoreAssert = true })
 	print("BiomeMapPresentation: BiomeMap package loaded successfully")
 
 	-- How often this biome has been shown on the map (Longer wait time for first time)
 	game.GameState.BiomeMapRecord[args.BiomeStart] = (game.GameState.BiomeMapRecord[args.BiomeStart] or 0) + 1
+	-- TODO: Debugging
+	game.GameState.BiomeMapRecord[args.BiomeStart] = 0
 
 	-- setup biome map
 	print("BiomeMapPresentation: Setup BiomeMap")
@@ -136,22 +24,20 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	local backgroundId = SpawnObstacle({ Name = "rectangle01", Group = groupName, LocationX = 0.0, LocationY = 0.0, SortById = true })
 	SetColor({ Id = backgroundId, Color = game.Color.Black, Duration = 0 })
 	SetScale({ Id = backgroundId, Fraction = 10.0 })
-	local biomeMapId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = 0.0, SortById = true })
+	local biomeMapTopId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = -500.0, SortById = true })
+	local biomeMapBottomId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = 0.0, SortById = true })
 	-- TODO: Use own animation
-	SetAnimation({ DestinationId = biomeMapId, Name = "GUI\\BiomeMap\\BiomeMap" }) -- nopkg
-	-- TODO: Use own animation
-	CreateAnimation({ Name = "BiomeMapAnimations", DestinationId = biomeMapId })  -- nopkg
+	SetAnimation({ DestinationId = biomeMapTopId, Name = "GUI\\BiomeMap\\MapTop" }) -- nopkg
+	SetAnimation({ DestinationId = biomeMapBottomId, Name = "GUI\\BiomeMap\\MapBottom" }) -- nopkg
+	print("BiomeMapPresentation: Animations created")
+
+	-- TODO: Lock camera to biome map, don't pan with the figures
 	ClearCameraClamp({ LerpTime = 0 })
-	PanCamera({ Id = biomeMapId, Duration = 0.0 })
-	LockCamera({ Id = biomeMapId, Duration = 0.0 })
-	local mapIds = {}
-	table.insert(mapIds, biomeMapId)
-	local startingGlowId = nil
-	local endingGlowId = nil
-	local selectedCircleId = nil
-	local selectedCircleEndScale = nil
-	local endingFogId = nil
-	local endingSpotlightId = nil
+	PanCamera({ Id = biomeMapBottomId, Duration = 0.0 })
+	LockCamera({ Id = biomeMapBottomId, Duration = 0.0 })
+	-- local mapIds = {}
+	-- table.insert(mapIds, biomeMapTopId)
+	-- table.insert(mapIds, biomeMapBottomId)
 
 	print("BiomeMapPresentation: Setup vignette")
 	-- setup vignette
@@ -164,85 +50,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		ScaleY = game.ScreenScaleY,
 		Animation = "BiomeMapVignetteLoop"
 	})
-
-	-- setup map glows & labels
-	for k, label in pairs(labelData) do
-		-- TODO: Is this from H1?
-		--ShowBiomeMapLabel( label, biomeMapId ) -- don't show label in Biome Map version
-
-		if label.Glow ~= nil then
-			local startingAlpha = 0.0
-			if label.Text == args.BiomeStart then
-				startingAlpha = 1.0
-			end
-			local glowId = SpawnObstacle({
-				Name = "BlankObstacle",
-				Group = "Combat_UI_Additive",
-				LocationX = label.GlowOffsetX,
-				LocationY = label.GlowOffsetY
-			})
-			SetAnimation({ DestinationId = glowId, Name = label.Glow })
-			SetAlpha({ Id = glowId, Fraction = startingAlpha, Duration = 0 })
-			if label.Text == args.BiomeStart then
-				startingGlowId = glowId
-			elseif label.Text == args.BiomeEnd then
-				endingGlowId = glowId
-			end
-			table.insert(mapIds, glowId)
-		end
-
-		if label.Text == args.BiomeEnd then
-			local startingAlpha = 0.0
-			-- TODO: Witch circle animation - remove or update?
-			selectedCircleId = SpawnObstacle({
-				Name = "BlankObstacle",
-				Group = "Combat_Menu_TraitTray_Overlay_Additive",
-				LocationX = label.SelectedLoopOffsetX,
-				LocationY = label.SelectedLoopOffsetY
-			})
-			--SetAnimation({ DestinationId = selectedCircleId, Name = "BiomeMapSelectedLoop" }) -- nopkg
-			SetAlpha({ Id = selectedCircleId, Fraction = startingAlpha, Duration = 0 })
-			selectedCircleEndScale = label.SelectedLoopScale
-			SetScale({ Id = selectedCircleId, Fraction = label.SelectedLoopScale * 1.12, Duration = 0 })
-			table.insert(mapIds, selectedCircleId)
-		end
-
-		-- TODO: Fog on not reached biomes - remove?
-		if label.Text ~= args.BiomeStart and label.Text ~= args.BiomeEnd and label.Fog ~= nil and not game.Contains(args.PreviousBiomes, label.Text) then
-			local fogId = SpawnObstacle({
-				Name = "BlankObstacle",
-				Group = "Combat_Menu_TraitTray",
-				LocationX = label.FogOffsetX,
-				LocationY = label.FogOffsetY
-			})
-			SetAnimation({ DestinationId = fogId, Name = label.Fog })
-			SetAlpha({ Id = fogId, Fraction = 1.0, Duration = 0 })
-			SetScale({ Id = fogId, Duration = 12, Fraction = 1.25 })
-			table.insert(mapIds, fogId)
-		end
-		if label.Text == args.BiomeEnd and label.Fog ~= nil then
-			endingFogId = SpawnObstacle({
-				Name = "BlankObstacle",
-				Group = "Combat_Menu_TraitTray",
-				LocationX = label.FogOffsetX,
-				LocationY = label.FogOffsetY
-			})
-			SetAnimation({ DestinationId = endingFogId, Name = label.Fog })
-			SetAlpha({ Id = endingFogId, Fraction = 1.0, Duration = 0 })
-			table.insert(mapIds, endingFogId)
-
-			endingSpotlightId = SpawnObstacle({
-				Name = "BlankObstacle",
-				Group = "Combat_Menu_TraitTray_Overlay_Text",
-				LocationX = label.FogOffsetX,
-				LocationY = label.FogOffsetY
-			})
-			SetAnimation({ DestinationId = endingSpotlightId, Name = "GUI\\BiomeMap\\Spotlight_01" }) --nopkg
-			SetAlpha({ Id = endingSpotlightId, Fraction = 0, Duration = 0 })
-			SetScale({ Id = endingSpotlightId, Fraction = label.SpotlightScale or 1.0 })
-			table.insert(mapIds, endingSpotlightId)
-		end
-	end
 
 	-- setup marker units
 	local melId = SpawnObstacle({
@@ -275,8 +82,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		SetThingProperty({
 			Property = "GrannyModel",
 			Value = game.MapState.FamiliarUnit.MarkerModel,
-			DestinationId =
-					familiarId
+			DestinationId = familiarId
 		})
 		SetAnimation({ Name = game.MapState.FamiliarUnit.MarkerIdleAnimation, DestinationId = familiarId })
 		table.insert(playerTeamIds, familiarId)
@@ -309,8 +115,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	SetAngle({ Ids = playerTeamIds, Angle = math.deg(melAngle) })
 
 	-- setup visual effects
-	CreateAnimation({ Name = "BiomeMapDustEmitter", DestinationId = startingGlowId })
-	CreateAnimation({ Name = "BiomeMapDustEmitter", DestinationId = endingGlowId })
 	SetScale({ Id = vignetteId, Duration = 10, Fraction = 1.2 })
 
 	-- camera start
@@ -402,13 +206,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 
 		PanCamera({ Id = destinationId, OffsetY = cameraEndOffsetY, Duration = cameraDuration, EaseIn = 0, EaseOut = 0.5 })
 		FocusCamera({ Fraction = 0.85, Duration = cameraDuration, ZoomType = "Ease" })
-		SetAlpha({ Id = endingFogId, Fraction = 0.0, Duration = 1.5 })
-		local currentScale = GetThingDataValue({ Id = endingFogId, Property = "Scale" })
-		SetScale({ Id = endingFogId, Fraction = currentScale * 1.5, Duration = 1.5 })
 		PlaySound({ Name = "/SFX/Menu Sounds/HadesMainMenuWhoosh" })
-		SetAlpha({ Id = startingGlowId, Fraction = 0.0, Duration = 0.3 })
-		SetAlpha({ Id = endingGlowId, Fraction = 1.0, Duration = 0.3 })
-		SetAlpha({ Id = endingSpotlightId, Fraction = 0.55, Duration = 1.0 })
 	end
 	game.wait(1.5)
 
@@ -428,17 +226,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	-- TODO: Does original work?
 	game.thread(game.BiomeMapPresentationFamiliar, source, args, familiarId)
 
-	game.wait(1.0)
-
-	-- punctuation VFX
-	if selectedCircleId ~= nil then
-		SetAnimation({ DestinationId = selectedCircleId, Name = "BiomeHilightSummoningCircleAnim" }) -- nopkg
-		--SetAlpha({ Id = selectedCircleId, Fraction = 1.0, Duration = 0.3 })
-		SetScale({ Id = selectedCircleId, Fraction = selectedCircleEndScale, Duration = 0.3 })
-	end
-	PlaySound({ Name = "/SFX/Menu Sounds/MenuMagicFlashLong", Id = selectedCircleId })
-
-	game.wait(0.1)
+	game.wait(1.1)
 
 	-- marker land
 	SetAnimation({ Name = "MelMarkerIdle", DestinationId = melId })
