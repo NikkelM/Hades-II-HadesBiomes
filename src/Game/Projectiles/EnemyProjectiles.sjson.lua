@@ -83,7 +83,6 @@ local hadesProjectilesModifications = {
 	HeavyRangedSplitterFragment = {
 		DieWithOwner = true,
 	},
-
 	-- TARTARUS - BOSSES
 	HarpyBeam = {
 		Speed = 700,
@@ -112,7 +111,6 @@ local hadesProjectilesModifications = {
 			[1] = { StartAnimation = "MelinoeGetHit", },
 		},
 	},
-
 	-- ASPHODEL
 	RangedBurrowerWeapon = {
 		CanBeProjectileDefenseDestroyed = false,
@@ -126,26 +124,11 @@ local hadesProjectilesModifications = {
 		CanBeProjectileDefenseDestroyed = false,
 		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
-	-- TODO: Are all these needed?
 	HydraSummon = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 		CheckObstacleImpact = true,
-		UseVulnerability = false,
 		DetonateOnTouchdown = true,
-		SpawnOnDetonate = "null",
-		ImmunityDuration = 0.5,
-		SpawnType = "Unit",
-		SpawnOnDeath = "HydraTooth",
 	},
-	HydraSummon2 = {
-		SpawnOnDetonate = "null",
-		SpawnOnDeath = "HydraTooth2",
-	},
-	HydraSummonSpread = {
-		SpawnOnDetonate = "null",
-		SpawnOnDeath = "HydraTooth2",
-	},
-
 	-- STYX
 	StaggeredSatyrRangedWeapon = {
 		UnpauseAnimation = mod.NilValue,
