@@ -75,7 +75,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	SetThingProperty({ DestinationId = previousFillGraphic, Property = "Ambient", Value = 0.0 })
 
 	ClearCameraClamp({ LerpTime = 0 })
-	FocusCamera({ Fraction = 0.95, Duration = 0.0 })
+	FocusCamera({ Fraction = 1.0, Duration = 0.0 })
 	PanCamera({ Id = biomeMapBottomId, OffsetY = args.HeroStartOffsetY, Duration = 0.0 })
 
 	-- setup marker units
@@ -139,7 +139,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		Group = groupName,
 		SortById = true,
 		LocationX = 0,
-		LocationY = args.HeroStartOffsetY + 1.5 * args.HeroMoveOffsetY
+		LocationY = args.HeroStartOffsetY + 1.75 * args.HeroMoveOffsetY
 	})
 
 	PanCamera({ Id = cameraDestinationId, Duration = 8 + args.HeroMoveDuration, EaseIn = 0.0, EaseOut = 0.5 })
