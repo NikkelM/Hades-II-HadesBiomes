@@ -7,8 +7,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 			-- PactRewardOffsetX = -100,
 			-- PactRewardOffsetY = 250,
 			-- PactRewardRoomName = "A_Boss",
-			-- Index = 1,
-			-- BiomePanDurationIncrease = 1.2,
 		},
 		Asphodel = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Asphodel",
@@ -17,8 +15,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 			-- PactRewardOffsetX = 350,
 			-- PactRewardOffsetY = 150,
 			-- PactRewardRoomName = "B_Boss01",
-			-- Index = 2,
-			-- BiomePanDurationIncrease = 2.1,
 		},
 		Elysium = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Elysium",
@@ -27,18 +23,14 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 			-- PactRewardOffsetX = -300,
 			-- PactRewardOffsetY = 200,
 			-- PactRewardRoomName = "C_Boss01",
-			-- Index = 3,
-			-- BiomePanDurationIncrease = 2.3,
 		},
 		Styx = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Styx",
-			OffsetX = 0,
-			OffsetY = -1500,
+			OffsetX = 80,
+			OffsetY = -2038,
 			-- PactRewardOffsetX = 200,
 			-- PactRewardOffsetY = 400,
 			-- PactRewardRoomName = "D_Boss01",
-			-- Index = 4,
-			-- BiomePanDurationIncrease = 0,
 		},
 	}
 

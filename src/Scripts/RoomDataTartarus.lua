@@ -219,7 +219,6 @@ local roomModifications = {
 					-- TODO: Hydra
 					ShrineBounty = "BossScylla01",
 				},
-				GameStateRequirements = {}
 			},
 		},
 	},

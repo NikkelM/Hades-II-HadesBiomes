@@ -163,9 +163,37 @@ local roomModifications = {
 					-- TODO: Theseus
 					ShrineBounty = "BossScylla01",
 				},
-				GameStateRequirements = {}
 			},
 		},
+		-- Temporarily here for Elysium
+		-- LeavePostPresentationEvents = {
+		-- 	{
+		-- 		FunctionName = "ModsNikkelMHadesBiomesBiomeMapPresentation",
+		-- 		Args = {
+		-- 			HeroStartOffsetX = 120,
+		-- 			HeroStartOffsetY = -1370,
+		-- 			FamiliarStartOffsetX = 220,
+		-- 			FamiliarStartOffsetY = -1335,
+
+		-- 			HeroMoveOffsetX = -80,
+		-- 			HeroMoveOffsetY = -480,
+		-- 			HeroMoveDuration = 2.0,
+		-- 			FamiliarMoveOffsetX = -80,
+		-- 			FamiliarMoveOffsetY = -430,
+		-- 			FamiliarMoveDuration = 2.0,
+		-- 			CameraMoveOffsetY = -390,
+
+		-- 			MoveEaseIn = 0.5,
+		-- 			MoveEaseOut = 1.0,
+
+		-- 			-- AdditionalEndTimeWait = 1.0,
+		-- 			BiomeStart = "Elysium",
+		-- 			BiomeEnd = "Styx",
+		-- 			-- TODO: Hades
+		-- 			ShrineBounty = "BossScylla01",
+		-- 		},
+		-- 	},
+		-- },
 	},
 }
 
