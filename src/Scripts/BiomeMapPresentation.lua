@@ -1,4 +1,51 @@
 function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
+	local dataTable = {
+		Tartarus = {
+			PreviousFillGraphic = "GUI\\BiomeMap\\MapFill_Tartarus",
+			FillGraphic = "GUI\\BiomeMap\\MapFill_Asphodel",
+			OffsetX = -62,
+			OffsetY = 234,
+			-- PactRewardOffsetX = -100,
+			-- PactRewardOffsetY = 250,
+			-- PactRewardRoomName = "A_Boss",
+			-- Index = 1,
+			-- BiomePanDurationIncrease = 1.2,
+		},
+		Asphodel = {
+			PreviousFillGraphic = "GUI\\BiomeMap\\MapFill_Asphodel",
+			FillGraphic = "GUI\\BiomeMap\\BiomeMapFill_Elysium",
+			OffsetX = 108,
+			OffsetY = 200,
+			-- PactRewardOffsetX = 350,
+			-- PactRewardOffsetY = 150,
+			-- PactRewardRoomName = "B_Boss01",
+			-- Index = 2,
+			-- BiomePanDurationIncrease = 2.1,
+		},
+		Elysium = {
+			PreviousFillGraphic = "GUI\\BiomeMap\\MapFill_Elysium",
+			FillGraphic = "GUI\\BiomeMap\\MapFill_Styx",
+			OffsetX = 111,
+			OffsetY = 1190,
+			-- PactRewardOffsetX = -300,
+			-- PactRewardOffsetY = 200,
+			-- PactRewardRoomName = "C_Boss01",
+			-- Index = 3,
+			-- BiomePanDurationIncrease = 2.3,
+		},
+		Styx = {
+			PreviousFillGraphic = "GUI\\BiomeMap\\MapFill_Elysium",
+			FillGraphic = "GUI\\BiomeMap\\MapFill_Styx",
+			OffsetX = 0,
+			OffsetY = 1675,
+			-- PactRewardOffsetX = 200,
+			-- PactRewardOffsetY = 400,
+			-- PactRewardRoomName = "D_Boss01",
+			-- Index = 4,
+			-- BiomePanDurationIncrease = 0,
+		},
+	}
+
 	game.killTaggedThreads("MetaUpgradePresentation")
 	for _, id in pairs(game.SessionMapState.ShownMetaUpgradeCardIds) do
 		StopAnimation({ Names = { "MetaUpgradeCardFlip", "CardFlipGlowA", "CardFlipGlowB" }, DestinationId = id })
@@ -19,6 +66,19 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	local biomeMapTopId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = -1872.0, SortById = true })
 	SetAnimation({ DestinationId = biomeMapTopId, Name = "GUI\\BiomeMap\\MapTop" })
 	SetAnimation({ DestinationId = biomeMapBottomId, Name = "GUI\\BiomeMap\\MapBottom" })
+
+	-- Overlay graphics for previous and next biome
+	local previousFillGraphic = SpawnObstacle({
+		Name = "BlankObstacle",
+		Group = groupName,
+		OffsetX = dataTable[args.BiomeStart].OffsetX,
+		OffsetY = dataTable[args.BiomeStart].OffsetY,
+		SortById = true
+	})
+	SetAnimation({ Name = dataTable[args.BiomeStart].PreviousFillGraphic, DestinationId = previousFillGraphic })
+	SetThingProperty({ DestinationId = previousFillGraphic, Property = "Ambient", Value = 0.0 })
+
+	-- TODO: Next biome overlay - start with move?
 
 	ClearCameraClamp({ LerpTime = 0 })
 	FocusCamera({ Fraction = 0.95, Duration = 0.0 })
@@ -92,7 +152,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 
 	-- presentation starts
 	game.FullScreenFadeInAnimation()
-	-- PlaySound({ Name = "/SFX/Menu Sounds/HadesTextDisappearFadeLOCATION" })
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.RegionClearedVoiceLines, true)
 
 	-- show completed bounties from previous region
@@ -143,7 +202,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		game.wait(1.05)
 	end
 
-	-- PlaySound({ Name = "/SFX/Menu Sounds/HadesMainMenuWhoosh" })
 	game.wait(1.5)
 
 	-- move pieces
