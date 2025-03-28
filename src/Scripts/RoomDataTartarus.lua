@@ -194,7 +194,6 @@ local roomModifications = {
 				ActivateIds = { 430000, },
 			},
 		},
-		-- Showing the Biome map, moving up
 		LeavePostPresentationEvents = {
 			{
 				FunctionName = "ModsNikkelMHadesBiomesBiomeMapPresentation",
@@ -210,6 +209,7 @@ local roomModifications = {
 					FamiliarMoveOffsetX = 365,
 					FamiliarMoveOffsetY = -455,
 					FamiliarMoveDuration = 2.0,
+					CameraMoveOffsetY = -805,
 
 					MoveEaseIn = 0.5,
 					MoveEaseOut = 1.0,

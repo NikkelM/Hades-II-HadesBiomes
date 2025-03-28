@@ -137,6 +137,35 @@ local roomModifications = {
 				ActivateIds = { 430000, },
 			},
 		},
+		LeavePostPresentationEvents = {
+			{
+				FunctionName = "ModsNikkelMHadesBiomesBiomeMapPresentation",
+				Args = {
+					HeroStartOffsetX = 230,
+					HeroStartOffsetY = -320,
+					FamiliarStartOffsetX = 120,
+					FamiliarStartOffsetY = -285,
+
+					HeroMoveOffsetX = -350,
+					HeroMoveOffsetY = -630,
+					HeroMoveDuration = 2.0,
+					FamiliarMoveOffsetX = -350,
+					FamiliarMoveOffsetY = -630,
+					FamiliarMoveDuration = 2.0,
+					CameraMoveOffsetY = -950,
+
+					MoveEaseIn = 0.5,
+					MoveEaseOut = 1.0,
+
+					AdditionalEndTimeWait = 1.0,
+					BiomeStart = "Asphodel",
+					BiomeEnd = "Elysium",
+					-- TODO: Theseus
+					ShrineBounty = "BossScylla01",
+				},
+				GameStateRequirements = {}
+			},
+		},
 	},
 }
 

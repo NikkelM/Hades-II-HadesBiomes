@@ -23,7 +23,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		Elysium = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Elysium",
 			OffsetX = 111,
-			OffsetY = 1190,
+			OffsetY = -1303,
 			-- PactRewardOffsetX = -300,
 			-- PactRewardOffsetY = 200,
 			-- PactRewardRoomName = "C_Boss01",
@@ -33,7 +33,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		Styx = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Styx",
 			OffsetX = 0,
-			OffsetY = 1675,
+			OffsetY = -1500,
 			-- PactRewardOffsetX = 200,
 			-- PactRewardOffsetY = 400,
 			-- PactRewardRoomName = "D_Boss01",
@@ -139,7 +139,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		Group = groupName,
 		SortById = true,
 		LocationX = 0,
-		LocationY = args.HeroStartOffsetY + 1.75 * args.HeroMoveOffsetY
+		LocationY = args.HeroStartOffsetY + args.CameraMoveOffsetY
 	})
 
 	PanCamera({ Id = cameraDestinationId, Duration = 8 + args.HeroMoveDuration, EaseIn = 0.0, EaseOut = 0.5 })
@@ -273,7 +273,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		end
 	end
 
-	game.wait(4.25)
+	game.wait(4.5 + (args.AdditionalEndTimeWait or 0))
 
 	PlaySound({ Name = "/Leftovers/World Sounds/MapZoomInShortHigh" })
 	game.FullScreenFadeOutAnimation()
