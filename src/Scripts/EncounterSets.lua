@@ -63,23 +63,12 @@ game.EncounterSets.EncounterEventsThanatos = {
 	{ FunctionName = "PostCombatAudio" },
 	{ FunctionName = "SpawnRoomReward" },
 }
--- TODO: Implement missing functions
 game.EncounterSets.EncounterEventsCrawlerMiniBoss = {
 	{ FunctionName = "EncounterAudio" },
 	{ FunctionName = "HandleTrapChains" },
 	{ FunctionName = "HandleEnemySpawns" },
 	{ FunctionName = "CheckForAllEnemiesDead" },
 	{ FunctionName = "CrawlerMiniBossEndPresentation" },
-	{ FunctionName = "PostCombatAudio" },
-	{ FunctionName = "SpawnRoomReward" },
-}
--- TODO: Implement missing functions
-game.EncounterSets.EncounterEventsOnslaught = {
-	{ FunctionName = "EncounterAudio" },
-	{ FunctionName = "HandleCoverSpawns" },
-	{ FunctionName = "SpawnOnslaughtObjects" },
-	{ FunctionName = "HandleEnemySpawns" },
-	{ FunctionName = "CheckForAllEnemiesDead" },
 	{ FunctionName = "PostCombatAudio" },
 	{ FunctionName = "SpawnRoomReward" },
 }
