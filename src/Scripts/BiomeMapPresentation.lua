@@ -8,11 +8,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	AddInputBlock({ Name = "BiomeMapPresentation" })
 	LoadPackages({ Name = "BiomeMap", IgnoreAssert = true })
 
-	-- How often this biome has been shown on the map (Longer wait time for first time)
-	game.GameState.BiomeMapRecord[args.BiomeStart] = (game.GameState.BiomeMapRecord[args.BiomeStart] or 0) + 1
-	-- TODO: Debugging
-	game.GameState.BiomeMapRecord[args.BiomeStart] = 0
-
 	-- setup biome map
 	local groupName = "Combat_UI"
 	local backgroundId = SpawnObstacle({ Name = "rectangle01", Group = groupName, LocationX = 0.0, LocationY = 0.0, SortById = true })
@@ -27,7 +22,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 
 	ClearCameraClamp({ LerpTime = 0 })
 	FocusCamera({ Fraction = 0.95, Duration = 0.0 })
-	-- TODO: Check if Offset works as expected
 	PanCamera({ Id = biomeMapBottomId, OffsetY = args.HeroStartOffsetY, Duration = 0.0 })
 
 	-- setup marker units
@@ -86,7 +80,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	local melAngle = math.atan2(-args.HeroMoveOffsetY, args.HeroMoveOffsetX)
 	SetAngle({ Ids = playerTeamIds, Angle = math.deg(melAngle) })
 
-	-- camera setup
 	local cameraDestinationId = SpawnObstacle({
 		Name = "InvisibleTarget",
 		Group = groupName,
@@ -95,11 +88,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		LocationY = args.HeroStartOffsetY + 1.5 * args.HeroMoveOffsetY
 	})
 
-	local cameraDuration = 10
-	if game.GameState.BiomeMapRecord[args.BiomeStart] > 1 then
-		-- Start the camera before the fade-in if we don't linger on the map
-		PanCamera({ Id = cameraDestinationId, Duration = cameraDuration })
-	end
+	PanCamera({ Id = cameraDestinationId, Duration = 8 + args.HeroMoveDuration, EaseIn = 0.0, EaseOut = 0.5 })
 
 	-- presentation starts
 	game.FullScreenFadeInAnimation()
@@ -154,13 +143,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		game.wait(1.05)
 	end
 
-	if game.GameState.BiomeMapRecord[args.BiomeStart] <= 1 then
-		game.wait(args.AdditionalFirstTimeWait / 2)
-		-- Start the camera move if we waited before
-		PanCamera({ Id = cameraDestinationId, Duration = cameraDuration })
-		game.wait(args.AdditionalFirstTimeWait / 2)
-	end
-
 	-- PlaySound({ Name = "/SFX/Menu Sounds/HadesMainMenuWhoosh" })
 	game.wait(1.5)
 
@@ -179,7 +161,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	})
 	game.thread(game.BiomeMapPresentationFamiliar, source, args, familiarId)
 
-	game.wait(1.1)
+	game.wait(args.HeroMoveDuration)
 
 	-- marker land
 	SetAnimation({ Name = "MelMarkerIdle", DestinationId = melId })
@@ -224,11 +206,8 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		end
 	end
 
-	game.wait(1.6)
+	game.wait(4.25)
 
-	if game.GameState.BiomeMapRecord[args.BiomeStart] <= 1 then
-		game.wait(args.AdditionalFirstTimeWait)
-	end
 	PlaySound({ Name = "/Leftovers/World Sounds/MapZoomInShortHigh" })
 	game.FullScreenFadeOutAnimation()
 	RemoveInputBlock({ Name = "BiomeMapPresentation" })

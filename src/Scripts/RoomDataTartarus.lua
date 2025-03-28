@@ -216,8 +216,6 @@ local roomModifications = {
 
 					BiomeStart = "Tartarus",
 					BiomeEnd = "Asphodel",
-
-					AdditionalFirstTimeWait = 1.15,
 					-- TODO: Hydra
 					ShrineBounty = "BossScylla01",
 				},
