@@ -1,17 +1,12 @@
 function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
-	print("BiomeMapPresentation: Start")
-
 	game.killTaggedThreads("MetaUpgradePresentation")
 	for _, id in pairs(game.SessionMapState.ShownMetaUpgradeCardIds) do
 		StopAnimation({ Names = { "MetaUpgradeCardFlip", "CardFlipGlowA", "CardFlipGlowB" }, DestinationId = id })
 	end
 	Destroy({ Ids = game.CollapseTable(game.SessionMapState.ShownMetaUpgradeCardIds) })
 
-	print("BiomeMapPresentation: Loading BiomeMap package")
 	AddInputBlock({ Name = "BiomeMapPresentation" })
-	-- Needed for the figure textures
 	LoadPackages({ Name = "BiomeMap", IgnoreAssert = true })
-	print("BiomeMapPresentation: BiomeMap package loaded successfully")
 
 	-- How often this biome has been shown on the map (Longer wait time for first time)
 	game.GameState.BiomeMapRecord[args.BiomeStart] = (game.GameState.BiomeMapRecord[args.BiomeStart] or 0) + 1
@@ -19,35 +14,21 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	game.GameState.BiomeMapRecord[args.BiomeStart] = 0
 
 	-- setup biome map
-	print("BiomeMapPresentation: Setup BiomeMap")
 	local groupName = "Combat_UI"
 	local backgroundId = SpawnObstacle({ Name = "rectangle01", Group = groupName, LocationX = 0.0, LocationY = 0.0, SortById = true })
 	SetColor({ Id = backgroundId, Color = game.Color.Black, Duration = 0 })
 	SetScale({ Id = backgroundId, Fraction = 10.0 })
+
 	-- Bottom must be first so it is sorted behind the top
 	local biomeMapBottomId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = 0.0, SortById = true })
 	local biomeMapTopId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = -1872.0, SortById = true })
-	-- TODO: Use own animation
-	SetAnimation({ DestinationId = biomeMapTopId, Name = "GUI\\BiomeMap\\MapTop" }) -- nopkg
-	SetAnimation({ DestinationId = biomeMapBottomId, Name = "GUI\\BiomeMap\\MapBottom" }) -- nopkg
-	print("BiomeMapPresentation: Animations created")
+	SetAnimation({ DestinationId = biomeMapTopId, Name = "GUI\\BiomeMap\\MapTop" })
+	SetAnimation({ DestinationId = biomeMapBottomId, Name = "GUI\\BiomeMap\\MapBottom" })
 
-	-- TODO: Lock camera to biome map, don't pan with the figures
 	ClearCameraClamp({ LerpTime = 0 })
-	PanCamera({ Id = biomeMapBottomId, Duration = 0.0 })
-	LockCamera({ Id = biomeMapBottomId, Duration = 0.0 })
-
-	print("BiomeMapPresentation: Setup vignette")
-	-- setup vignette
-	local vignetteId = game.CreateScreenObstacle({
-		Name = "BlankObstacle",
-		Group = "Combat_Menu_TraitTray_Overlay",
-		X = game.ScreenCenterX,
-		Y = game.ScreenCenterY,
-		ScaleX = game.ScreenScaleX,
-		ScaleY = game.ScreenScaleY,
-		Animation = "BiomeMapVignetteLoop"
-	})
+	FocusCamera({ Fraction = 0.95, Duration = 0.0 })
+	-- TODO: Check if Offset works as expected
+	PanCamera({ Id = biomeMapBottomId, OffsetY = args.HeroStartOffsetY, Duration = 0.0 })
 
 	-- setup marker units
 	local melId = SpawnObstacle({
@@ -59,13 +40,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	})
 	SetThingProperty({ Property = "GrannyModel", Value = "MelMarker_Mesh", DestinationId = melId })
 	SetAnimation({ Name = "MelMarkerIdle", DestinationId = melId })
-
-	-- adjust scale of Mel based on Circe's spells
-	if game.HeroHasTrait("CirceEnlargeTrait") then
-		SetScale({ Id = melId, Fraction = 1.70 })
-	elseif game.HeroHasTrait("CirceShrinkTrait") then
-		SetScale({ Id = melId, Fraction = 0.65 })
-	end
 
 	local playerTeamIds = { melId }
 	local familiarId = nil
@@ -112,31 +86,25 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	local melAngle = math.atan2(-args.HeroMoveOffsetY, args.HeroMoveOffsetX)
 	SetAngle({ Ids = playerTeamIds, Angle = math.deg(melAngle) })
 
-	-- setup visual effects
-	SetScale({ Id = vignetteId, Duration = 10, Fraction = 1.2 })
+	-- camera setup
+	local cameraDestinationId = SpawnObstacle({
+		Name = "InvisibleTarget",
+		Group = groupName,
+		SortById = true,
+		LocationX = 0,
+		LocationY = args.HeroStartOffsetY + 1.5 * args.HeroMoveOffsetY
+	})
 
-	-- camera start
-	game.wait(0.02)
-	if args.CrossroadsStart then
-		AdjustZoom({ Fraction = 0.785, LerpTime = 0 })
-	else
-		LockCamera({ Id = melId, Duration = 0 })
-		AdjustZoom({ Fraction = 0.950, LerpTime = 0 })
+	local cameraDuration = 10
+	if game.GameState.BiomeMapRecord[args.BiomeStart] > 1 then
+		-- Start the camera before the fade-in if we don't linger on the map
+		PanCamera({ Id = cameraDestinationId, Duration = cameraDuration })
 	end
 
 	-- presentation starts
 	game.FullScreenFadeInAnimation()
-	PlaySound({ Name = "/SFX/Menu Sounds/HadesTextDisappearFadeLOCATION" })
+	-- PlaySound({ Name = "/SFX/Menu Sounds/HadesTextDisappearFadeLOCATION" })
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.RegionClearedVoiceLines, true)
-
-	-- camera setup
-	local destinationId = SpawnObstacle({
-		Name = "InvisibleTarget",
-		Group = groupName,
-		SortById = true,
-		LocationX = args.HeroStartOffsetX + args.HeroMoveOffsetX,
-		LocationY = args.HeroStartOffsetY + args.HeroMoveOffsetY
-	})
 
 	-- show completed bounties from previous region
 	for bountyName, v in pairs(game.CurrentRun.BountiesCompleted) do
@@ -175,37 +143,25 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		end
 	end
 
-	local cameraDuration = 1.0
-	local cameraEndOffsetY = 0
-	if args.CameraEndOffsetY then
-		cameraEndOffsetY = args.CameraEndOffsetY
-	end
-	if args.CrossroadsStart then
-		game.wait(1.5)
-		PlaySound({ Name = "/Leftovers/World Sounds/MapZoomInShortHigh" })
-		PanCamera({ Id = destinationId, Duration = cameraDuration, EaseIn = 0, EaseOut = 0.5 })
-		FocusCamera({ Fraction = 0.90, Duration = cameraDuration, ZoomType = "Ease" })
+	if args.ShrinePointItemId then
+		game.wait(0.35)
+		SetScale({ Id = args.TargetItemId, Fraction = 0, Duration = 0.2 })
+		SetScale({ Id = args.BountyBackingId, Fraction = 0, Duration = 0.2 })
+		SetScale({ Id = args.ShrinePointItemId, Fraction = 0, Duration = 0.2 })
+		SetScale({ Id = args.WeaponItemId, Fraction = 0, Duration = 0.2 })
+		StopAnimation({ Name = "StaffReloadTimerReady", DestinationId = args.TargetItemId })
 	else
-		cameraDuration = 1.95
-		if args.ShrinePointItemId then
-			game.wait(0.35)
-			SetScale({ Id = args.TargetItemId, Fraction = 0, Duration = 0.2 })
-			SetScale({ Id = args.BountyBackingId, Fraction = 0, Duration = 0.2 })
-			SetScale({ Id = args.ShrinePointItemId, Fraction = 0, Duration = 0.2 })
-			SetScale({ Id = args.WeaponItemId, Fraction = 0, Duration = 0.2 })
-			StopAnimation({ Name = "StaffReloadTimerReady", DestinationId = args.TargetItemId })
-		else
-			game.wait(1.05)
-		end
-
-		if game.GameState.BiomeMapRecord[args.BiomeStart] <= 1 then
-			game.wait(args.AdditionalFirstTimeWait)
-		end
-
-		PanCamera({ Id = destinationId, OffsetY = cameraEndOffsetY, Duration = cameraDuration, EaseIn = 0, EaseOut = 0.5 })
-		FocusCamera({ Fraction = 0.85, Duration = cameraDuration, ZoomType = "Ease" })
-		PlaySound({ Name = "/SFX/Menu Sounds/HadesMainMenuWhoosh" })
+		game.wait(1.05)
 	end
+
+	if game.GameState.BiomeMapRecord[args.BiomeStart] <= 1 then
+		game.wait(args.AdditionalFirstTimeWait / 2)
+		-- Start the camera move if we waited before
+		PanCamera({ Id = cameraDestinationId, Duration = cameraDuration })
+		game.wait(args.AdditionalFirstTimeWait / 2)
+	end
+
+	-- PlaySound({ Name = "/SFX/Menu Sounds/HadesMainMenuWhoosh" })
 	game.wait(1.5)
 
 	-- move pieces
@@ -221,7 +177,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		EaseOut = args.MoveEaseOut,
 		ShiftThingsByOffset = true
 	})
-	-- TODO: Does original work?
 	game.thread(game.BiomeMapPresentationFamiliar, source, args, familiarId)
 
 	game.wait(1.1)
@@ -268,16 +223,13 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 			end
 		end
 	end
-	if args.CrossroadsStart then
-		game.wait(2.2)
-	else
-		game.wait(1.6)
-	end
+
+	game.wait(1.6)
+
 	if game.GameState.BiomeMapRecord[args.BiomeStart] <= 1 then
 		game.wait(args.AdditionalFirstTimeWait)
 	end
 	PlaySound({ Name = "/Leftovers/World Sounds/MapZoomInShortHigh" })
 	game.FullScreenFadeOutAnimation()
 	RemoveInputBlock({ Name = "BiomeMapPresentation" })
-	print("BiomeMapPresentation: End")
 end
