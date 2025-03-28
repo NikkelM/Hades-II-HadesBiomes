@@ -201,18 +201,14 @@ local roomModifications = {
 				Args = {
 					HeroStartOffsetX = -100,
 					HeroStartOffsetY = 500,
-
-					-- TODO: Adjust same as Hero
-					FamiliarStartOffsetX = 0,
-					FamiliarStartOffsetY = 0,
+					FamiliarStartOffsetX = -10,
+					FamiliarStartOffsetY = 550,
 
 					HeroMoveOffsetX = 365,
 					HeroMoveOffsetY = -455,
 					HeroMoveDuration = 2.0,
-
-					-- TODO: Adjust same as Hero
-					FamiliarMoveOffsetX = 745,
-					FamiliarMoveOffsetY = 285,
+					FamiliarMoveOffsetX = 365,
+					FamiliarMoveOffsetY = -455,
 					FamiliarMoveDuration = 2.0,
 
 					MoveEaseIn = 0.5,
@@ -220,7 +216,6 @@ local roomModifications = {
 
 					BiomeStart = "Tartarus",
 					BiomeEnd = "Asphodel",
-					PreviousBiomes = {},
 
 					AdditionalFirstTimeWait = 1.15,
 					-- TODO: Hydra

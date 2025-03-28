@@ -24,8 +24,9 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	local backgroundId = SpawnObstacle({ Name = "rectangle01", Group = groupName, LocationX = 0.0, LocationY = 0.0, SortById = true })
 	SetColor({ Id = backgroundId, Color = game.Color.Black, Duration = 0 })
 	SetScale({ Id = backgroundId, Fraction = 10.0 })
-	local biomeMapTopId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = -500.0, SortById = true })
+	-- Bottom must be first so it is sorted behind the top
 	local biomeMapBottomId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = 0.0, SortById = true })
+	local biomeMapTopId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = -1872.0, SortById = true })
 	-- TODO: Use own animation
 	SetAnimation({ DestinationId = biomeMapTopId, Name = "GUI\\BiomeMap\\MapTop" }) -- nopkg
 	SetAnimation({ DestinationId = biomeMapBottomId, Name = "GUI\\BiomeMap\\MapBottom" }) -- nopkg
@@ -35,9 +36,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	ClearCameraClamp({ LerpTime = 0 })
 	PanCamera({ Id = biomeMapBottomId, Duration = 0.0 })
 	LockCamera({ Id = biomeMapBottomId, Duration = 0.0 })
-	-- local mapIds = {}
-	-- table.insert(mapIds, biomeMapTopId)
-	-- table.insert(mapIds, biomeMapBottomId)
 
 	print("BiomeMapPresentation: Setup vignette")
 	-- setup vignette
