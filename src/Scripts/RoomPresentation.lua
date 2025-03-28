@@ -177,9 +177,6 @@ function game.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
 	game.wait(1.0)
 
 	game.FullScreenFadeOutAnimation()
-	-- TODO
-	-- ShowInterMapComponents()
-
 	AllowShout = false
 
 	currentRun.Hero.ExclusiveOnHitFunctionName = originalExclusiveOnHitFunctionName

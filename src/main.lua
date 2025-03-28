@@ -259,6 +259,7 @@ local function on_ready()
 		-- "Normal" code changes
 		import "Scripts/AudioData.lua"
 		import "Scripts/AudioLogic.lua"
+		import "Scripts/BiomeMapPresentation.lua"
 		import "Scripts/Combat.lua"
 		import "Scripts/CombatLogic.lua"
 		import "Scripts/CombatPresentation.lua"

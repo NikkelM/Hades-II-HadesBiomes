@@ -194,6 +194,39 @@ local roomModifications = {
 				ActivateIds = { 430000, },
 			},
 		},
+		-- Showing the Biome map, moving up
+		LeavePostPresentationEvents = {
+			{
+				FunctionName = "ModsNikkelMHadesBiomesBiomeMapPresentation",
+				Args = {
+					HeroStartOffsetX = -680,
+					HeroStartOffsetY = 580,
+
+					FamiliarStartOffsetX = -800,
+					FamiliarStartOffsetY = 580,
+
+					HeroMoveOffsetX = 745,
+					HeroMoveOffsetY = 285,
+					HeroMoveDuration = 1.4,
+
+					FamiliarMoveOffsetX = 745,
+					FamiliarMoveOffsetY = 285,
+					FamiliarMoveDuration = 1.4,
+
+					MoveEaseIn = 0.5,
+					MoveEaseOut = 1.0,
+
+					BiomeStart = "BiomeF",
+					BiomeEnd = "BiomeG",
+					PreviousBiomes = {},
+
+					AdditionalFirstTimeWait = 1.15,
+					ShrineBounty = "BossScylla01",
+					--CrossroadsStart = true,
+				},
+				GameStateRequirements = {}
+			},
+		},
 	},
 }
 
