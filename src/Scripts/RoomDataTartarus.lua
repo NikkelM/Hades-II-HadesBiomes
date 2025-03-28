@@ -201,7 +201,7 @@ local roomModifications = {
 				Args = {
 					HeroStartOffsetX = -100,
 					HeroStartOffsetY = 500,
-					FamiliarStartOffsetX = -10,
+					FamiliarStartOffsetX = -200,
 					FamiliarStartOffsetY = 550,
 
 					HeroMoveOffsetX = 365,

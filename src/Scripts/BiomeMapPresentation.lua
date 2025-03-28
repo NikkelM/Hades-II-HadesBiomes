@@ -1,8 +1,7 @@
 function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	local dataTable = {
 		Tartarus = {
-			PreviousFillGraphic = "GUI\\BiomeMap\\MapFill_Tartarus",
-			FillGraphic = "GUI\\BiomeMap\\MapFill_Asphodel",
+			FillGraphic = "GUI\\BiomeMap\\MapFill_Tartarus",
 			OffsetX = -62,
 			OffsetY = 234,
 			-- PactRewardOffsetX = -100,
@@ -12,10 +11,9 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 			-- BiomePanDurationIncrease = 1.2,
 		},
 		Asphodel = {
-			PreviousFillGraphic = "GUI\\BiomeMap\\MapFill_Asphodel",
-			FillGraphic = "GUI\\BiomeMap\\BiomeMapFill_Elysium",
+			FillGraphic = "GUI\\BiomeMap\\MapFill_Asphodel",
 			OffsetX = 108,
-			OffsetY = 200,
+			OffsetY = -450,
 			-- PactRewardOffsetX = 350,
 			-- PactRewardOffsetY = 150,
 			-- PactRewardRoomName = "B_Boss01",
@@ -23,8 +21,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 			-- BiomePanDurationIncrease = 2.1,
 		},
 		Elysium = {
-			PreviousFillGraphic = "GUI\\BiomeMap\\MapFill_Elysium",
-			FillGraphic = "GUI\\BiomeMap\\MapFill_Styx",
+			FillGraphic = "GUI\\BiomeMap\\MapFill_Elysium",
 			OffsetX = 111,
 			OffsetY = 1190,
 			-- PactRewardOffsetX = -300,
@@ -34,7 +31,6 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 			-- BiomePanDurationIncrease = 2.3,
 		},
 		Styx = {
-			PreviousFillGraphic = "GUI\\BiomeMap\\MapFill_Elysium",
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Styx",
 			OffsetX = 0,
 			OffsetY = 1675,
@@ -75,10 +71,8 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		OffsetY = dataTable[args.BiomeStart].OffsetY,
 		SortById = true
 	})
-	SetAnimation({ Name = dataTable[args.BiomeStart].PreviousFillGraphic, DestinationId = previousFillGraphic })
+	SetAnimation({ Name = dataTable[args.BiomeStart].FillGraphic, DestinationId = previousFillGraphic })
 	SetThingProperty({ DestinationId = previousFillGraphic, Property = "Ambient", Value = 0.0 })
-
-	-- TODO: Next biome overlay - start with move?
 
 	ClearCameraClamp({ LerpTime = 0 })
 	FocusCamera({ Fraction = 0.95, Duration = 0.0 })
@@ -219,7 +213,22 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	})
 	game.thread(game.BiomeMapPresentationFamiliar, source, args, familiarId)
 
-	game.wait(args.HeroMoveDuration)
+	-- Next biome fill graphic
+	local nextFillGraphic = SpawnObstacle({
+		Name = "BlankObstacle",
+		Group = groupName,
+		OffsetX = dataTable[args.BiomeEnd].OffsetX,
+		OffsetY = dataTable[args.BiomeEnd].OffsetY,
+		SortById = true
+	})
+	SetThingProperty({ DestinationId = nextFillGraphic, Property = "Ambient", Value = 0.0 })
+	SetAlpha({ Id = nextFillGraphic, Fraction = 0.0, Duration = 0.0 })
+	SetAnimation({ Name = dataTable[args.BiomeEnd].FillGraphic, DestinationId = nextFillGraphic })
+
+	game.wait(args.HeroMoveDuration / 2)
+	SetAlpha({ Id = nextFillGraphic, Fraction = 1.0, Duration = 1.0 })
+	SetAlpha({ Id = previousFillGraphic, Fraction = 0.0, Duration = 1.5 })
+	game.wait(args.HeroMoveDuration / 2)
 
 	-- marker land
 	SetAnimation({ Name = "MelMarkerIdle", DestinationId = melId })
