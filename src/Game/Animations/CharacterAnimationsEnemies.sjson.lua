@@ -1,5 +1,14 @@
 -- Adds enemy animations from Hades to Hades II
 
+local function shouldRemoveAnimation(name, animationsToRemove)
+	for _, removeName in ipairs(animationsToRemove) do
+		if name == removeName then
+			return true
+		end
+	end
+	return false
+end
+
 local hadesEnemyAnimationsFile = rom.path.combine(mod.hadesGameFolder,
 	"Content\\Game\\Animations\\CharacterAnimationsEnemies.sjson")
 local hadesEnemyAnimationsTable = sjson.decode_file(hadesEnemyAnimationsFile)
@@ -24,22 +33,26 @@ local animationsToRemove = {
 	"Hades_Idle",
 }
 
-local function shouldRemoveAnimation(name)
-	for _, removeName in ipairs(animationsToRemove) do
-		if name == removeName then
-			return true
-		end
-	end
-	return false
-end
-
 for i = #hadesEnemyAnimationsTable.Animations, 1, -1 do
 	local animation = hadesEnemyAnimationsTable.Animations[i]
-	if shouldRemoveAnimation(animation.Name) then
+	if shouldRemoveAnimation(animation.Name, animationsToRemove) then
 		table.remove(hadesEnemyAnimationsTable.Animations, i)
 		mod.DebugPrint("Removed animation: " .. animation.Name .. " from CharacterAnimationsEnemies.sjson", 4)
 	end
 end
+
+local modifications = {
+	EnemyMedusaHeadDeath = {
+		OffsetY = 0.0,
+		BlockNewOwnerAnims = true,
+		OwnerInvulnerable = true,
+		OwnerUntargetable = true,
+		OwnerHasNoCollision = true,
+		OwnerImmobile = true,
+	},
+}
+
+mod.ApplyNestedSjsonModifications(hadesEnemyAnimationsTable.Animations, modifications)
 
 sjson.hook(hadesTwoEnemyAnimationsFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Animations, hadesEnemyAnimationsTable.Animations, "Name")

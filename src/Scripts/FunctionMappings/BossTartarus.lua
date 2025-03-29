@@ -27,9 +27,6 @@ function game.SelectHarpySupportAIs(enemy)
 	end
 end
 
--- TODO: Needs enemy.AdditionalEnemySetupFunctionName in RoomManager 4214
--- Or perhaps, use _Shrine variant of the encounter itself that inherits from base encounter and adds the additional enemies
--- Or, encounter.SetupEvents
 function game.MultiFuryActivations(eventSource, args)
 	local boss = game.ActiveEnemies[args.BossId]
 	boss.MultiFuryObstacleIds = {}
@@ -230,7 +227,7 @@ function game.HarpyKillPresentation(unit, args)
 
 	-- hydra-specific
 	local textMessage = deathPanSettings.Message
-	if deathPanSettings.AltMessage and game.SpeechRecord["/VO/ZagreusField_3147"] then
+	if deathPanSettings.AltMessage and game.GameState.SpeechRecord["/VO/ZagreusField_3147"] then
 		textMessage = deathPanSettings.AltMessage
 	end
 
@@ -248,7 +245,8 @@ function game.HarpyKillPresentation(unit, args)
 			Duration = args.MessageDuration,
 			AnimationName = "LocationTextBGVictoryIn",
 			AnimationOutName = "LocationTextBGVictoryOut",
-			FontScale = 0.85
+			FontScale = 0.85,
+			TextOffsetY = 0,
 		})
 
 	if deathPanSettings.BatsAfterDeath then
@@ -399,8 +397,7 @@ function game.HandleHarpyRage(enemy, currentRun)
 			SetAnimationFrameTarget({
 				Name = "EnemyHealthBarFillBoss",
 				Fraction = 1 - enemy.RageFraction,
-				DestinationId =
-						screenId
+				DestinationId = screenId
 			})
 		end
 	end
@@ -653,5 +650,16 @@ function game.Harpy3MapReturnSmoke(currentPhase)
 				Scale = randomScale
 			})
 		end
+	end
+end
+
+function game.Harpy3MapRestore()
+	local activateObstacles = GetInactiveIds({ Names = { "Phase2Add", "Phase3Add", "Phase4Add", } }) or {}
+	local deactivateObstacles = GetIds({ Names = { "Phase2Remove", "Phase3Remove", "Phase4Remove", } }) or {}
+	for k, id in pairs(activateObstacles) do
+		Activate({ Id = id })
+	end
+	for k, id in pairs(deactivateObstacles) do
+		SetAlpha({ Id = id, Fraction = 0.0, Duration = 1.5 })
 	end
 end

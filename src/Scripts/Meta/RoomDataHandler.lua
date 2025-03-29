@@ -1,26 +1,5 @@
 -- Contains generic functions to handle migrating room data from Hades to Hades II
 
--- Loads RoomData from a file in Hades
-function mod.LoadHadesRoomData(fileName)
-	local originalRoomEventData = game.DeepCopyTable(game.RoomEventData)
-	local originalRoomSetData = game.DeepCopyTable(game.RoomSetData)
-	local originalRoomData = game.DeepCopyTable(game.RoomData)
-	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
-	local chunk, err = loadfile(pathName)
-	if chunk then
-		chunk()
-		-- No worries if this is marked as undefined, it comes from the loaded file
-		---@diagnostic disable-next-line: undefined-global
-		local hadesRoomData = RoomSetData
-		game.RoomEventData = originalRoomEventData
-		game.RoomSetData = originalRoomSetData
-		game.RoomData = originalRoomData
-		return hadesRoomData
-	else
-		mod.DebugPrint("Error loading RoomData: " .. err, 1)
-	end
-end
-
 local roomKeyReplacements = {
 	BoonRaritiesOverride = {
 		LegendaryChance = "Legendary",
@@ -50,6 +29,24 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications, replaceme
 			base[roomName] = {}
 		end
 		mod.ApplyModifications(base[roomName], roomData)
+	end
+
+	-- Modify InspectPoint Storyteller voiceline identifiers
+	for roomName, roomData in pairs(base) do
+		if roomData.InspectPoints then
+			for inspectPointId, inspectPointData in pairs(roomData.InspectPoints) do
+				if inspectPointData.InteractTextLineSets then
+					for setName, setData in pairs(inspectPointData.InteractTextLineSets) do
+						for _, line in ipairs(setData) do
+							if line.Cue and line.Cue:find("^/VO/Storyteller_") then
+								line.Cue = line.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+								mod.DebugPrint("Renamed Storyteller voiceline in room " .. roomName .. " to " .. line.Cue, 4)
+							end
+						end
+					end
+				end
+			end
+		end
 	end
 
 	-- Process data inheritance and add the new data to the game's globals

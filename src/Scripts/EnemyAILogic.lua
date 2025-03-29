@@ -10,14 +10,14 @@ modutil.mod.Path.Wrap("GetWeaponAIData", function(base, enemy, weaponName)
 	return aiData
 end)
 
--- Gets called a a ThreadedEvents function in each boss's AIStage.
--- This re-implements some of the logic from Hades that was removed in Hades II
+-- Gets called in a ThreadedEvents function in each boss's AIStage.
+-- This re-implements some of the logic from Hades' StagedAI that was removed in Hades II
 function game.NikkelMHadesBiomesBossAIStageHandler(enemy, args)
 	local aiStage = enemy.AIStages[enemy.AIStageActive]
 
 	if aiStage.UnequipWeapons ~= nil then
 		for k, weaponName in pairs(aiStage.UnequipWeapons) do
-			RemoveValue(enemy.WeaponOptions, weaponName)
+			game.RemoveValue(enemy.WeaponOptions, weaponName)
 			UnequipWeapon({ Name = weaponName, DestinationId = enemy.ObjectId })
 		end
 	end

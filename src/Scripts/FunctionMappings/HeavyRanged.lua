@@ -1,6 +1,6 @@
 -- Functions required by the HeavyRanged enemy
 
--- Creates "Tethers", which are floating parts of the enemy (e.g. the small crystals for HeavyRanged)
+-- Creates "Tethers", which are floating parts of the enemy (e.g. the small crystals for HeavyRanged or the neck for the Hydra heads)
 function game.CreateTethers(newEnemy, args)
 	if newEnemy == nil or newEnemy.Tethers == nil or newEnemy.TetherIds ~= nil then
 		return
@@ -11,11 +11,11 @@ function game.CreateTethers(newEnemy, args)
 	for k, tether in ipairs(newEnemy.Tethers) do
 		local count = tether.Count or 1
 		for i = 1, count do
-			local offsetX = nil
-			local offsetY = nil
+			local offsetX = 0.0
+			local offsetY = 0.0
 			if tether.SpawnRadius ~= nil then
-				offsetX = game.RandomFloat(-tether.SpawnRadius, tether.SpawnRadius)
-				offsetY = game.RandomFloat(-tether.SpawnRadius, tether.SpawnRadius)
+				offsetX = game.RandomFloat(-tether.SpawnRadius, tether.SpawnRadius) or 0.0
+				offsetY = game.RandomFloat(-tether.SpawnRadius, tether.SpawnRadius) or 0.0
 			end
 			local tetherId = SpawnObstacle({
 				Name = tether.Name,
@@ -42,12 +42,14 @@ function game.CreateTethers(newEnemy, args)
 					Id = prevTetherId,
 					DestinationId = tetherId,
 					TetherDistance = tether.Distance,
-					TetherRetractSpeed = tether.RetractSpeed,
-					TetherTrackZRatio = tether.TrackZRatio
+					-- TetherRetractSpeed = tether.RetractSpeed,
+					-- TetherTrackZRatio = tether.TrackZRatio,
+					OffsetX = offsetX,
+					OffsetY = offsetY,
 				})
 			end
 			table.insert(newEnemy.TetherIds, tetherId)
-			if newEnemy.EliteIcon or (newEnemy.HealthBuffer ~= nil and newEnemy.HealthBuffer > 0) then
+			if (newEnemy.EliteIcon or (newEnemy.HealthBuffer ~= nil and newEnemy.HealthBuffer > 0)) and tetherId ~= newEnemy.ObjectId then
 				newEnemy.Outline.Id = tetherId
 				if newEnemy.Outline.Thickness > 0 then
 					AddOutline(newEnemy.Outline)

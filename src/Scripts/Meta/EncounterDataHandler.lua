@@ -2,7 +2,11 @@
 
 -- Loads EncounterData from a file in Hades
 -- Note: EnemyData must be loaded first, as there are some references to it in EncounterData!
+mod.CachedHadesEncounterData = nil
 function mod.LoadHadesEncounterData(fileName)
+	if mod.CachedHadesEncounterData then
+		return game.DeepCopyTable(mod.CachedHadesEncounterData)
+	end
 	local originalEncounterData = game.DeepCopyTable(game.EncounterData)
 	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
 	local chunk, err = loadfile(pathName)
@@ -10,9 +14,9 @@ function mod.LoadHadesEncounterData(fileName)
 		chunk()
 		-- No worries if this is marked as undefined, it comes from the loaded file
 		---@diagnostic disable-next-line: undefined-global
-		local hadesEncounterData = EncounterData
+		mod.CachedHadesEncounterData = game.DeepCopyTable(EncounterData)
 		game.EncounterData = originalEncounterData
-		return hadesEncounterData
+		return game.DeepCopyTable(mod.CachedHadesEncounterData)
 	else
 		mod.DebugPrint("Error loading encounterData: " .. err, 1)
 	end
@@ -24,7 +28,14 @@ function mod.ApplyModificationsAndInheritEncounterData(base, modifications, repl
 	for oldName, newName in pairs(mod.EnemyNameMappings) do
 		-- If an encounter has predefined spawn waves, spawn the correct enemies
 		mod.UpdateField(base, oldName, newName, { "SpawnWaves", "*", "Spawns", "*", "Name" }, "EncounterData.lua")
+		mod.UpdateField(base, oldName, newName, { "WaveTemplate", "Spawns", "*", "Name" }, "EncounterData.lua")
+		mod.UpdateField(base, oldName, newName, { "ManualWaveTemplates", "*", "Spawns", "*", "Name" }, "EncounterData.lua")
 	end
+	-- Rename the requirement for MinibossCountShrineUpgrade
+	mod.UpdatePropertyName(base, "RequiredMetaUpgrade", "RequiredMiniBossShrine",
+		{ "ManualWaveTemplates", "*", "Spawns", "*" }, "EncounterData.lua")
+	mod.UpdateField(base, "MinibossCountShrineUpgrade", true,
+		{ "ManualWaveTemplates", "*", "Spawns", "*", "RequiredMiniBossShrine" }, "EncounterData.lua")
 
 	-- Apply replacements
 	for encounterName, encounterData in pairs(replacements) do

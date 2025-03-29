@@ -16,6 +16,10 @@ local newData = {
 		DisplayName = "TARTAROS (Albtraum)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DisplayName = "ASPHODEL (Albtraum)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Zagreus",
 		Description = "Prinz der Unterwelt",

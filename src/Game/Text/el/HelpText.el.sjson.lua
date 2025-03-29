@@ -16,6 +16,10 @@ local newData = {
 		DisplayName = "ΤΑΡΤΑΡΑ (Εφιάλτης)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DisplayName = "ΑΣΦΟΔΕΛΑ ΛΙΒΑΔΙΑ (Εφιάλτης)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Ζαγρεύς",
 		Description = "Πρίγκιπας του Κάτω Κόσμου",

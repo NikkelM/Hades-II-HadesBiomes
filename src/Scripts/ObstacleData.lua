@@ -1,85 +1,71 @@
--- Red and blue reward preview backing
-game.ObstacleData.TartarusDoor03b.LockedAnimation = "HadesDoorLocked"
-game.ObstacleData.TartarusDoor03b.UnlockedAnimation = "DoorLocked_MetaReward"
+local function applyModificationsAndInheritObstacleData(base, modifications, additions, needInheritanceProcessing)
+	-- Apply additions
+	for obstacleName, obstacleData in pairs(additions) do
+		if base[obstacleName] then
+			mod.DebugPrint("Obstacle " .. obstacleName .. " already exists, skipping", 1)
+		else
+			base[obstacleName] = obstacleData
+		end
+	end
 
--- Rubble that falls when hitting destructible pillars
-game.ObstacleData.TartarusRubble02 = game.DeepCopyTable(game.ObstacleData.CWTartarusRubble01)
-game.ObstacleData.TartarusRubble02.OnTouchdown.ProjectileName = "ModsNikkelMHadesBiomesRubbleFall"
-game.ObstacleData.TartarusRubble02b = game.DeepCopyTable(game.ObstacleData.CWTartarusRubble01)
-game.ObstacleData.TartarusRubble02b.OnTouchdown.ProjectileName = "ModsNikkelMHadesBiomesRubbleFall"
-game.ObstacleData.TartarusRubble02c = game.DeepCopyTable(game.ObstacleData.CWTartarusRubble01)
-game.ObstacleData.TartarusRubble02c.OnTouchdown.ProjectileName = "ModsNikkelMHadesBiomesRubbleFall"
+	-- Apply modifications
+	for obstacleName, obstacleData in pairs(modifications) do
+		if not base[obstacleName] then
+			base[obstacleName] = {}
+		end
+		mod.ApplyModifications(base[obstacleName], obstacleData, false)
+	end
 
-game.ObstacleData.TartarusHalfPillarBase04 = {
-	Material = "Stone",
-	OnHitShake = { Distance = 3, Speed = 300, Duration = 0.15 },
-	ImpactReaction = {
-		Animation = "Tilesets\\Tartarus\\Tartarus_HalfPillarBase_04A",
-		RequiredHitsForImpactReaction = 3,
-		SpawnOffsetXMin = 50,
-		SpawnOffsetXMax = 150,
-		SpawnOffsetYMin = 50,
-		SpawnOffsetYMax = 130,
-		SpawnOffsetZ = 1000,
-		FallForce = 1500,
-		SpawnScaleMin = 0.2,
-		SpawnScaleMax = 0.4,
-		SwapData = "TartarusHalfPillarBase04A",
+	-- Process data inheritance
+	for _, obstacleName in ipairs(needInheritanceProcessing) do
+		game.ProcessDataInheritance(game.ObstacleData[obstacleName], game.ObstacleData)
+	end
+end
+
+local obstacleModifications = {
+	-- TARTARUS
+	TartarusDoor03b = {
+		-- Red and blue reward preview backing
+		CustomLockedAnimation_Run = "HadesDoorLocked",
+		CustomLockedAnimation_Meta = "DoorLocked_MetaReward",
+		UnlockedAnimation = "DoorLocked_MetaReward",
 	},
-}
-game.ObstacleData.TartarusHalfPillarBase04A = {
-	Material = "Stone",
-	OnHitShake = { Distance = 3, Speed = 300, Duration = 0.15 },
-	ImpactReaction = {
-		Animation = "Tilesets\\Tartarus\\Tartarus_HalfPillarBase_04B",
-		RequiredHitsForImpactReaction = 5,
-		SpawnAmount = 2,
-		SpawnOffsetXMin = 50,
-		SpawnOffsetXMax = 150,
-		SpawnOffsetYMin = 50,
-		SpawnOffsetYMax = 130,
-		SpawnOffsetZ = 2000,
-		FallForce = 3000,
-		SpawnScaleMin = 0.2,
-		SpawnScaleMax = 0.4,
-		SwapData = "TartarusHalfPillarBase04B",
-		GlobalVoiceLines = "BreakingStuffVoiceLines",
+	-- Rubble that falls when hitting destructible pillars
+	TartarusRubble02 = {
+		DeathFx = "RubbleFall",
+		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
 	},
-}
-game.ObstacleData.TartarusHalfPillarBase04B = {
-	Material = "Stone",
-	OnHitShake = { Distance = 3, Speed = 300, Duration = 0.15 },
-	ImpactReaction = {
-		Animation = "Tilesets\\Tartarus\\Tartarus_HalfPillarBase_04C",
-		RequiredHitsForImpactReaction = 7,
-		SpawnRandomObstacle = { "TartarusRubble02", "TartarusRubble02b", "TartarusRubble02c", },
-		ForceSpawnToValidLocation = true,
-		SpawnAmount = 4,
-		SpawnOffsetXMin = 50,
-		SpawnOffsetXMax = 150,
-		SpawnOffsetYMin = 50,
-		SpawnOffsetYMax = 130,
-		SpawnOffsetZ = 1000,
-		FallForce = 3000,
-		SpawnScaleMin = 0.2,
-		SpawnScaleMax = 0.4,
-		SwapData = "TartarusHalfPillarBase04C",
+	-- ASPHODEL
+	AsphodelTerrainRock01 = {
+		DeathFx = "RubbleFall",
+		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
 	},
-}
-game.ObstacleData.TartarusHalfPillarBase04C = {
-	Material = "Stone",
-	SpawnPropertyChanges = {
-		{
-			ThingProperty = "StopsProjectiles",
-			ChangeValue = false,
-		},
-		{
-			ThingProperty = "DrawVfxOnTop",
-			ChangeValue = true,
-		},
+	AsphodelSkull = {
+		DeathFx = "RubbleFall",
+		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFallLarge", },
+	},
+
+	HealthFountainAsphodel = {
+		InheritFrom = { "HealthFountain" },
+		HealingSpentAnimation = "HealthFountainEmptyAsphodel",
+	},
+	HealthFountainElysium = {
+		InheritFrom = { "HealthFountain" },
+		HealingSpentAnimation = "HealthFountainEmptyElysium",
 	},
 }
 
-game.ObstacleData.MultiFuryMegaeraIntro = { ExitAnimation = "MegaeraMultiFuryTakeOff", }
-game.ObstacleData.MultiFuryAlectoIntro = { ExitAnimation = "AlectoMultiFuryTakeOff", }
-game.ObstacleData.MultiFuryTisiphoneIntro = { ExitAnimation = "TisiphoneMultiFuryTakeOff", }
+local addedObstacles = {
+	MultiFuryMegaeraIntro = { ExitAnimation = "MegaeraMultiFuryTakeOff", },
+	MultiFuryAlectoIntro = { ExitAnimation = "AlectoMultiFuryTakeOff", },
+	MultiFuryTisiphoneIntro = { ExitAnimation = "TisiphoneMultiFuryTakeOff", },
+}
+
+-- We need to re-process data inheritance for any redefined obstacles that define an InheritFrom
+local needInheritanceProcessing = {
+	"HealthFountainAsphodel",
+	"HealthFountainElysium",
+}
+
+applyModificationsAndInheritObstacleData(game.ObstacleData, obstacleModifications, addedObstacles,
+	needInheritanceProcessing)

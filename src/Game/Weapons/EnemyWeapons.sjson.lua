@@ -23,7 +23,18 @@ hadesWeaponsTable.Weapons = mod.AddTableKeysSkipDupes(hadesTwoWeaponsTable.Weapo
 -- Hooking into the enemy file fails as the file size of the target is too small to insert the new data
 local hadesTwoPlayerWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\Weapons\\PlayerWeapons.sjson")
 
-local hadesWeaponsModifications = {}
+local hadesWeaponsModifications = {
+	-- TARTARUS
+	-- ASPHODEL - HYDRA
+	HydraLunge = {
+		-- Needs to be lowered due to tethers not locking the head in place
+		-- It would otherwise fly over the whole map
+		SelfVelocity = 4300.0,
+	},
+	HydraSnap = {
+		SelfVelocity = 4000.0,
+	},
+}
 
 mod.ApplyNestedSjsonModifications(hadesWeaponsTable.Weapons, hadesWeaponsModifications)
 

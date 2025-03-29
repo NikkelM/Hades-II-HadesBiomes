@@ -16,6 +16,10 @@ local newData = {
 		DisplayName = "塔耳塔罗斯 （梦魇）",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DisplayName = "水仙花平原 （梦魇）",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "扎格列欧斯",
 		Description = "冥界王子",

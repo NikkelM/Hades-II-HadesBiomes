@@ -152,7 +152,7 @@ end
 ---This will also work for tables with multiple entries and nested structures.
 ---@param tableToModify table The table to modify.
 ---@param find string The value to find.
----@param replaceWith string The value to replace "find" with.
+---@param replaceWith any The value to replace "find" with.
 ---@param propertyPath table The path to the property being modified, as a list of keys, such as { "GeneratorData", "BlockEnemyTypes" }. A "*" key will apply the change to all keys in the table.
 ---@param tableName string|nil The name of the table being modified, used for debugging purposes.
 function mod.UpdateField(tableToModify, find, replaceWith, propertyPath, tableName)
@@ -193,10 +193,54 @@ function mod.UpdateField(tableToModify, find, replaceWith, propertyPath, tableNa
 		local pathCopy = { table.unpack(propertyPath) }
 		data, replaced = updateField(data, pathCopy)
 		if replaced then
-			mod.DebugPrint("Updated " .. table.concat(propertyPath, "-") .. " from " ..
-				find ..
-				" to " .. replaceWith .. " for " .. (name or "an unknown entry") .. " in " .. (tableName or "an unknown table"),
-				4)
+			mod.DebugPrint(
+				"Updated " .. table.concat(propertyPath, "-") .. " from " .. find .. " to " .. tostring(replaceWith) ..
+				" for " .. (name or "an unknown entry") .. " in " .. (tableName or "an unknown table"), 4)
+		end
+	end
+end
+
+---Updates the name of a property at a given path, including handling wildcards.
+---Useful when needing to replace a property that was changed between Hades and Hades II, and in conjunction with UpdateField().
+---@param tableToModify table The table to modify.
+---@param propertyNameToFind string The property name to find.
+---@param newPropertyName string The new property name to replace the old one.
+---@param propertyPath table The path to the property being modified, as a list of keys, such as { "ManualWaveTemplates", "*", "Spawns", "*" }.
+---@param tableName string|nil The name of the table being modified, used for debugging purposes.
+function mod.UpdatePropertyName(tableToModify, propertyNameToFind, newPropertyName, propertyPath, tableName)
+	local function updateProperty(data, path)
+		local renamed = false
+		if #path == 0 then
+			if type(data) == "table" and data[propertyNameToFind] ~= nil then
+				data[newPropertyName] = data[propertyNameToFind]
+				data[propertyNameToFind] = nil
+				renamed = true
+			end
+			return data, renamed
+		else
+			local key = table.remove(path, 1)
+			if key == "*" then
+				if type(data) == "table" then
+					for _, child in pairs(data) do
+						child, renamed = updateProperty(child, { table.unpack(path) })
+					end
+				end
+			elseif data ~= nil and data[key] then
+				data[key], renamed = updateProperty(data[key], path)
+			end
+			return data, renamed
+		end
+	end
+
+	local renamed = false
+	for name, data in pairs(tableToModify) do
+		local pathCopy = { table.unpack(propertyPath) }
+		data, renamed = updateProperty(data, pathCopy)
+		if renamed then
+			mod.DebugPrint(
+				"Renamed property " ..
+				propertyNameToFind .. " to " .. newPropertyName .. " at path " .. table.concat(propertyPath, "-") ..
+				" for " .. (name or "an unknown entry") .. " in " .. (tableName or "an unknown table"), 4)
 		end
 	end
 end
@@ -289,6 +333,26 @@ function mod.RenameSjsonEntries(tableToModify, mappings, key, filename)
 					entry[key] .. " to " .. mappings[entry[key]] .. " in " .. (filename or "an unknown file"), 4)
 				entry[key] = mappings[entry[key]]
 			end
+		end
+	end
+end
+
+---Removes entries named in the mappings table from the tableToModify.
+---@param tableToModify table The table to modify
+---@param mappings table Needs to be a list of names to remove
+---@param key string The key to check for removal
+---@param filename string|nil The name of the file being modified, used for debugging purposes
+function mod.RemoveSjsonEntries(tableToModify, mappings, key, filename)
+	local mappingsSet = {}
+	for _, name in ipairs(mappings) do
+		mappingsSet[name] = true
+	end
+
+	for i = #tableToModify, 1, -1 do
+		local entry = tableToModify[i]
+		if entry[key] and mappingsSet[entry[key]] then
+			mod.DebugPrint("Removed entry: " .. entry[key] .. " from " .. (filename or "an unknown file"), 4)
+			table.remove(tableToModify, i)
 		end
 	end
 end

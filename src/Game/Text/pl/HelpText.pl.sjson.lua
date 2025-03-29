@@ -16,6 +16,10 @@ local newData = {
 		DisplayName = "TARTAR (Koszmar)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DisplayName = "ASFODEL (Koszmar)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Zagreus",
 		Description = "Książę Podziemi",
