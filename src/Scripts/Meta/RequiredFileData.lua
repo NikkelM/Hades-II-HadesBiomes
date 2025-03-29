@@ -1,6 +1,5 @@
 -- Contains file names/patterns required for copying over files from the Hades installation, and for uninstalling the mod
-
-AudioFileMappings = {
+mod.AudioFileMappings = {
 	Enemies = "EnemiesModsNikkelMHadesBiomes",
 	Sounds = "SoundsModsNikkelMHadesBiomes",
 	Tartarus = "TartarusModsNikkelMHadesBiomes",
@@ -10,7 +9,7 @@ AudioFileMappings = {
 -- Voiceover .txt and .fsb file names
 -- The file name must be the same as the event names within the file
 -- Some speaker names do not work (e.g. MegaeraHome)!
-VoiceoverFileNames = {
+mod.VoiceoverFileNames = {
 	Alecto = "Alecto",
 	Megaera = "Megaera",
 	MegaeraField = "MegaeraField",
@@ -18,7 +17,7 @@ VoiceoverFileNames = {
 	ZagreusField = "ZagreusField",
 }
 
-PackageFileMappings = {
+mod.PackageFileMappings = {
 	Tartarus = "TartarusModsNikkelMHadesBiomes",
 	Asphodel = "AsphodelModsNikkelMHadesBiomes",
 	RoomManager = "RoomManagerModsNikkelMHadesBiomes",
@@ -27,13 +26,13 @@ PackageFileMappings = {
 }
 
 -- These will be copied from the plugins_data folder
-CustomPackageFileNames = {
+mod.CustomPackageFileNames = {
 	ModsNikkelMHadesBiomesPortraits = "ModsNikkelMHadesBiomesPortraits",
 	-- Contains e.g. the renamed RoomRewardPreview-Front effects
 	ModsNikkelMHadesBiomesFxModded = "ModsNikkelMHadesBiomesFxModded",
 }
 
-BikFileMappings = {
+mod.BikFileMappings = {
 	-- Enemy animations
 	-- Wretch Glutton/PunchingBagUnit
 	["EnemyWretchGluttonAttack_Bink"] = "EnemyWretchGluttonAttack_Bink",
@@ -177,7 +176,7 @@ BikFileMappings = {
 	["Enemy_HydraBlue_Sleep_Bink"] = "Enemy_HydraBlue_Sleep_Bink",
 }
 
-SjsonFileMappings = {
+mod.SjsonFileMappings = {
 	-- Character animations - should only contain unique animation data, so we can simply copy the file instead of hooking
 	-- Note - it's possible this only works if the file name is the same?
 	-- Normal enemies
@@ -193,10 +192,19 @@ SjsonFileMappings = {
 	["Animations\\CharacterAnimationsNPC_Thanatos"] = "Animations\\CharacterAnimationsNPC_Thanatos",
 }
 
+-- Modifications to animations in the above files, before they are copied over
+mod.SjsonFileModifications = {
+	["Animations\\CharacterAnim_EnemiesBosses_Hydra"] = {
+		EnemyHydraTaunt = {
+			ChainTo = "EnemyHydraRoarReturnToIdle",
+		},
+	},
+}
+
 -- map_text and thing_bin file names
 -- thing_bin files are re-encoded from the original Hades files, and are stored in the plugin_data folder
 -- map_text files are copied directly from the Hades installation, if not defined below in MapTextFileNames
-MapFileMappings = {
+mod.MapFileMappings = {
 	-- Tartarus
 	["RoomOpening"] = "RoomOpening",
 	["A_PreBoss01"] = "A_PreBoss01",
@@ -261,13 +269,13 @@ MapFileMappings = {
 }
 
 -- .map_text files that should be copied from the plugin_data folder instead of the Hades installation
-MapTextFileNames = {
+mod.MapTextFileNames = {
 	-- A new Terrain group was added to resolve flickering tiles next to where the player spawns
 	RoomOpening = true,
 }
 
 -- Languages supported by Hades
-HelpTextLanguages = {
+mod.HelpTextLanguages = {
 	"de",
 	"en",
 	"es",

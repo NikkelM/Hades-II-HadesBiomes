@@ -1,3 +1,36 @@
+-- Copies a file from src to dest
+local function copyFile(src, dest, skipCheck)
+	skipCheck = skipCheck or false
+	-- Check if the file already exists
+	if not skipCheck then
+		if rom.path.exists(dest) then
+			mod.DebugPrint("File already exists and will not be overwritten: " .. dest, 2)
+			return
+		end
+	end
+
+	local inputFile = io.open(src, "rb")
+	if not inputFile then
+		error("Could not open source file: " .. src .. " - validate your Hades installation and try again.")
+	end
+
+	local outputFile = io.open(dest, "wb")
+	if not outputFile then
+		inputFile:close()
+		error("Could not open destination file: " .. dest)
+	end
+
+	-- Read in blocks to not run out of memory
+	while true do
+		local block = inputFile:read(1024)
+		if not block then break end
+		outputFile:write(block)
+	end
+
+	inputFile:close()
+	outputFile:close()
+end
+
 local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nameHint, usePluginData)
 	nameHint = nameHint or ""
 	mod.DebugPrint("Copying " .. nameHint .. extension .. " files...", 3)
@@ -9,88 +42,32 @@ local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nam
 			srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. src .. extension)
 		end
 		destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest .. extension)
-		CopyFile(srcPath, destPath)
+		copyFile(srcPath, destPath)
 		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 	end
 end
 
-function mod.FirstTimeSetup()
-	mod.DebugPrint("Installing the mod...", 3)
+local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, destBasePath, modifications)
+	mod.DebugPrint("Copying .sjson files...", 3)
+	for src, dest in pairs(fileMappings) do
+		local srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. src .. ".sjson")
+		local destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest .. ".sjson")
 
-	copyFiles(AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank", "Audio ")
-
-	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg", "1080p Hades ")
-	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", "1080p Hades ")
-	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg", "720p Hades ")
-	copyFiles(PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg_manifest", "720p Hades ")
-
-	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg", "1080p Mod ", true)
-	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", "1080p Mod ", true)
-	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg", "720p Mod ", true)
-	copyFiles(CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg_manifest", "720p Mod ", true)
-
-	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Animation ")
-	copyFiles(BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas", "1080p Animation ")
-	copyFiles(BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Animation ")
-	copyFiles(BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p Animation ")
-
-	copyFiles(SjsonFileMappings, "Content\\Game\\", "Game\\", ".sjson")
-
-	-- Special treatment, as some are copied from the plugins_data, and some from the Hades installation
-	mod.DebugPrint("Copying .map_text files...", 3)
-	for src, dest in pairs(MapFileMappings) do
-		local srcPath, destPath
-		if MapTextFileNames[src] then
-			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content\\Maps\\" .. src .. ".map_text")
+		if not rom.path.exists(destPath) then
+			local fileData = mod.DecodeSjsonFile(srcPath)
+			mod.ApplyNestedSjsonModifications(fileData.Animations, modifications[src] or {})
+			sjson.encode_file(destPath, fileData)
+			mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 		else
-			srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Maps\\" .. src .. ".map_text")
+			mod.DebugPrint("File already exists and will not be overwritten: " .. destPath, 2)
 		end
-		destPath = rom.path.combine(rom.paths.Content(), "Maps\\" .. dest .. ".map_text")
-		CopyFile(srcPath, destPath)
-		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 	end
-
-	copyFiles(MapFileMappings, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", "Map binary ", true)
-
-	copyFiles(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", "Voiceline ", true)
-	copyFiles(VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", "Voiceline ", true)
-
-	mod.DebugPrint("Copying help text files...", 3)
-	CopyHadesHelpTexts()
-
-	mod.DebugPrint("Copying Fx animations...", 3)
-	CopyHadesFxAnimations()
-
-	mod.DebugPrint("Copying GUI animations...", 3)
-	CopyHadesGUIAnimations()
-
-	mod.DebugPrint("Copying Portrait animations...", 3)
-	CopyHadesPortraitAnimations()
-
-	mod.DebugPrint("Copying Character animations for NPCs...", 3)
-	CopyHadesCharacterAnimationsNPCs()
-
-	local numMissingFiles = mod.CheckRequiredFiles(false)
-	if numMissingFiles > 0 then
-		mod.DebugPrint(
-			"A total of " .. numMissingFiles ..
-			" required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check the \"hadesGameFolder\" setting in your config file.",
-			1)
-		return
-	end
-
-	mod.DebugPrint("Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
-	local checksumsSrc = rom.path.combine(rom.paths.Content(), "Scripts\\checksums.txt")
-	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
-	CopyFile(checksumsSrc, checksumsDest, true)
-
-	config.firstTimeSetup = false
-	mod.DebugPrint("Finished mod installation and first time setup.", 3)
 end
+
 
 -- Creates a new helpTextFile for all given languages with any IDs that do not exist in the Hades II help text files
-function CopyHadesHelpTexts()
-	for _, language in ipairs(HelpTextLanguages) do
+local function copyHadesHelpTexts()
+	for _, language in ipairs(mod.HelpTextLanguages) do
 		mod.DebugPrint("Copying help text for language: " .. language, 4)
 
 		local hadesHelpTextFilePath = rom.path.combine(rom.paths.Content(),
@@ -138,7 +115,7 @@ function CopyHadesHelpTexts()
 end
 
 -- Common function to copy and filter animations
-local function CopyAndFilterAnimations(srcPath, destPath, mappings, duplicates, modifications, animationType)
+local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, modifications, animationType)
 	local animationsTable = sjson.decode_file(srcPath)
 
 	if rom.path.exists(destPath) then
@@ -173,67 +150,108 @@ local function CopyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 	sjson.encode_file(destPath, animationsTable)
 end
 
-function CopyHadesFxAnimations()
+local function copyHadesFxAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\Fx.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
 	local modifications = mod.HadesFxAnimationModifications
-	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates,
+	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates,
 		modifications, "Fx.sjson")
 end
 
-function CopyHadesGUIAnimations()
+local function copyHadesGUIAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\GUIAnimations.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename)
 	local modifications = {}
-	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.GUIAnimationMappings, mod.HadesGUIAnimationDuplicates,
+	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.GUIAnimationMappings, mod.HadesGUIAnimationDuplicates,
 		modifications, "GUIAnimations.sjson")
 end
 
-function CopyHadesPortraitAnimations()
+local function copyHadesPortraitAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\PortraitAnimations.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename)
 	local modifications = mod.HadesPortraitAnimationModifications
-	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.PortraitAnimationMappings,
+	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.PortraitAnimationMappings,
 		mod.HadesPortraitAnimationDuplicates, modifications, "PortraitAnimations.sjson")
 end
 
-function CopyHadesCharacterAnimationsNPCs()
+local function copyHadesCharacterAnimationsNPCs()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\CharacterAnimationsNPCs.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesCharacterAnimationsNPCsDestinationFilename)
 	local modifications = {}
-	CopyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.CharacterAnimationsNPCsMappings,
+	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.CharacterAnimationsNPCsMappings,
 		mod.HadesCharacterAnimationsNPCsDuplicates, modifications, "CharacterAnimationsNPCs.sjson")
 end
 
--- Copies a file from src to dest
-function CopyFile(src, dest, skipCheck)
-	skipCheck = skipCheck or false
-	-- Check if the file already exists
-	if not skipCheck then
-		if rom.path.exists(dest) then
-			mod.DebugPrint("File already exists and will not be overwritten: " .. dest, 2)
-			return
+function mod.FirstTimeSetup()
+	mod.DebugPrint("Installing the mod...", 3)
+
+	copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank", "Audio ")
+
+	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg", "1080p Hades ")
+	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", "1080p Hades ")
+	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg", "720p Hades ")
+	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg_manifest", "720p Hades ")
+
+	copyFiles(mod.CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg", "1080p Mod ", true)
+	copyFiles(mod.CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", "1080p Mod ", true)
+	copyFiles(mod.CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg", "720p Mod ", true)
+	copyFiles(mod.CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg_manifest", "720p Mod ", true)
+
+	copyFiles(mod.BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Animation ")
+	copyFiles(mod.BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas", "1080p Animation ")
+	copyFiles(mod.BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Animation ")
+	copyFiles(mod.BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p Animation ")
+
+	applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", "Game\\", mod.SjsonFileModifications)
+
+	-- Special treatment, as some are copied from the plugins_data, and some from the Hades installation
+	mod.DebugPrint("Copying .map_text files...", 3)
+	for src, dest in pairs(mod.MapFileMappings) do
+		local srcPath, destPath
+		if mod.MapTextFileNames[src] then
+			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content\\Maps\\" .. src .. ".map_text")
+		else
+			srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Maps\\" .. src .. ".map_text")
 		end
+		destPath = rom.path.combine(rom.paths.Content(), "Maps\\" .. dest .. ".map_text")
+		copyFile(srcPath, destPath)
+		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 	end
 
-	local inputFile = io.open(src, "rb")
-	if not inputFile then
-		error("Could not open source file: " .. src)
+	copyFiles(mod.MapFileMappings, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", "Map binary ", true)
+
+	copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", "Voiceline ", true)
+	copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", "Voiceline ", true)
+
+	mod.DebugPrint("Copying help text files...", 3)
+	copyHadesHelpTexts()
+
+	mod.DebugPrint("Copying Fx animations...", 3)
+	copyHadesFxAnimations()
+
+	mod.DebugPrint("Copying GUI animations...", 3)
+	copyHadesGUIAnimations()
+
+	mod.DebugPrint("Copying Portrait animations...", 3)
+	copyHadesPortraitAnimations()
+
+	mod.DebugPrint("Copying Character animations for NPCs...", 3)
+	copyHadesCharacterAnimationsNPCs()
+
+	local numMissingFiles = mod.CheckRequiredFiles(false)
+	if numMissingFiles > 0 then
+		mod.DebugPrint(
+			"A total of " .. numMissingFiles ..
+			" required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check the \"hadesGameFolder\" setting in your config file.",
+			1)
+		return
 	end
 
-	local outputFile = io.open(dest, "wb")
-	if not outputFile then
-		inputFile:close()
-		error("Could not open destination file: " .. dest)
-	end
+	mod.DebugPrint("Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
+	local checksumsSrc = rom.path.combine(rom.paths.Content(), "Scripts\\checksums.txt")
+	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
+	copyFile(checksumsSrc, checksumsDest, true)
 
-	-- Read in blocks to not run out of memory
-	while true do
-		local block = inputFile:read(1024)
-		if not block then break end
-		outputFile:write(block)
-	end
-
-	inputFile:close()
-	outputFile:close()
+	config.firstTimeSetup = false
+	mod.DebugPrint("Finished mod installation and first time setup.", 3)
 end

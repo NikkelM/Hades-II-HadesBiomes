@@ -44,18 +44,16 @@ function game.RoomEntranceBossHydra(currentRun, currentRoom)
 	PlaySound({ Name = "/SFX/Enemy Sounds/HydraHead/EmoteAlerted", Id = hydraId })
 	game.thread(game.InCombatText, hydraId, "Alerted", 0.45, { SkipShadow = true })
 	game.wait(3.4)
-	-- TODO: Roar doesn't play correctly - either sped up, or interrupted by something else
 	if hydra.SwapAnimations ~= nil then
 		SetAnimation({ DestinationId = hydraId, Name = hydra.SwapAnimations["EnemyHydraTaunt"] or "EnemyHydraTaunt" })
 	end
 
 	game.thread(game.HydraRoarPresentation)
-	game.wait(0.5)
+	game.wait(0.6)
 	game.UnblockCombatUI("BossEntrance")
 end
 
 function game.HydraRoarPresentation()
-	print("HydraRoarPresentation")
 	game.wait(0.30)
 	AdjustRadialBlurDistance({ Fraction = 2.0, Duration = 0.3 })
 	AdjustRadialBlurStrength({ Fraction = 1.0, Duration = 0.3 })
@@ -161,7 +159,6 @@ function game.HydraKillPresentation(unit, args)
 	if args.KillEnemyNames ~= nil then
 		for enemyData, enemy in pairs(game.ActiveEnemies) do
 			if game.Contains(args.KillEnemyNames, enemy.Name) then
-				print("KillEnemyNames BossAsphodel")
 				game.Kill(enemy)
 			end
 		end

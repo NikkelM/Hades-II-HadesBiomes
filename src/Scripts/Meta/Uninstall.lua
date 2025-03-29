@@ -45,38 +45,38 @@ function mod.Uninstall()
 	end
 	mod.DebugPrint("Uninstalling mod - removing files added by the mod", 3)
 
-	removeFiles(AudioFileMappings, "Audio\\Desktop\\", ".bank")
+	removeFiles(mod.AudioFileMappings, "Audio\\Desktop\\", ".bank")
 
-	removeFiles(PackageFileMappings, "Packages\\1080p\\", ".pkg")
-	removeFiles(PackageFileMappings, "Packages\\1080p\\", ".pkg_manifest")
-	removeFiles(PackageFileMappings, "Packages\\720p\\", ".pkg")
-	removeFiles(PackageFileMappings, "Packages\\720p\\", ".pkg_manifest")
+	removeFiles(mod.PackageFileMappings, "Packages\\1080p\\", ".pkg")
+	removeFiles(mod.PackageFileMappings, "Packages\\1080p\\", ".pkg_manifest")
+	removeFiles(mod.PackageFileMappings, "Packages\\720p\\", ".pkg")
+	removeFiles(mod.PackageFileMappings, "Packages\\720p\\", ".pkg_manifest")
 
-	removeFiles(CustomPackageFileNames, "Packages\\1080p\\", ".pkg")
-	removeFiles(CustomPackageFileNames, "Packages\\1080p\\", ".pkg_manifest")
-	removeFiles(CustomPackageFileNames, "Packages\\720p\\", ".pkg")
-	removeFiles(CustomPackageFileNames, "Packages\\720p\\", ".pkg_manifest")
+	removeFiles(mod.CustomPackageFileNames, "Packages\\1080p\\", ".pkg")
+	removeFiles(mod.CustomPackageFileNames, "Packages\\1080p\\", ".pkg_manifest")
+	removeFiles(mod.CustomPackageFileNames, "Packages\\720p\\", ".pkg")
+	removeFiles(mod.CustomPackageFileNames, "Packages\\720p\\", ".pkg_manifest")
 
-	removeFiles(BikFileMappings, "Movies\\1080p\\", ".bik")
-	removeFiles(BikFileMappings, "Movies\\1080p\\", ".bik_atlas")
-	removeFiles(BikFileMappings, "Movies\\720p\\", ".bik")
-	removeFiles(BikFileMappings, "Movies\\720p\\", ".bik_atlas")
+	removeFiles(mod.BikFileMappings, "Movies\\1080p\\", ".bik")
+	removeFiles(mod.BikFileMappings, "Movies\\1080p\\", ".bik_atlas")
+	removeFiles(mod.BikFileMappings, "Movies\\720p\\", ".bik")
+	removeFiles(mod.BikFileMappings, "Movies\\720p\\", ".bik_atlas")
 
-	removeFiles(SjsonFileMappings, "Game\\", ".sjson")
+	removeFiles(mod.SjsonFileMappings, "Game\\", ".sjson")
 
 	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename), "")
 	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename), "")
 	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename), "")
 	removeFile(rom.path.combine(rom.paths.Content(), mod.HadesCharacterAnimationsNPCsDestinationFilename), "")
 
-	removeFiles(MapFileMappings, "Maps\\", ".map_text")
-	removeFiles(MapFileMappings, "Maps\\bin\\", ".thing_bin")
+	removeFiles(mod.MapFileMappings, "Maps\\", ".map_text")
+	removeFiles(mod.MapFileMappings, "Maps\\bin\\", ".thing_bin")
 
-	removeFiles(VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".txt")
-	removeFiles(VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb")
+	removeFiles(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".txt")
+	removeFiles(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb")
 
 	mod.DebugPrint("Removing help text files...", 3)
-	for _, language in ipairs(HelpTextLanguages) do
+	for _, language in ipairs(mod.HelpTextLanguages) do
 		local helpTextFile = rom.path.combine(rom.paths.Content(),
 			"Game\\Text\\" .. language .. "\\HelpTextHades." .. language)
 		removeFile(helpTextFile, ".sjson")
