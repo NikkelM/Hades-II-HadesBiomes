@@ -1,4 +1,3 @@
--- TODO: Remove known duplicates
 mod.EnemyData = {
 	-- Top-level inheritance
 	IsNeutral =
