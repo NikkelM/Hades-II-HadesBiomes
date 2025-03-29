@@ -6,7 +6,6 @@ modutil.mod.Path.Wrap("IsGameStateEligible", function(base, source, requirements
 		isEligible = game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
 		if not isEligible then
 			-- TODO: Debugging only
-			print("IsGameStateEligible not eligible")
 			mod.DebugPrint(requirements)
 			print()
 		end
@@ -63,14 +62,7 @@ modutil.mod.Path.Wrap("IsInspectPointEligible", function(base, currentRun, sourc
 	local isEligible = base(currentRun, source, inspectPointData)
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
-		isEligible = game.ModsNikkelMHadesBiomesIsGameStateEligible(source, inspectPointData)
-		if not isEligible then
-			-- TODO: Debugging only
-			print("InspectPoint not eligible")
-			mod.DebugPrint(inspectPointData)
-			print()
-		end
-		return isEligible
+		return game.ModsNikkelMHadesBiomesIsGameStateEligible(source, inspectPointData)
 	end
 
 	return isEligible
