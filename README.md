@@ -20,7 +20,7 @@ This mod adds biomes and enemies from Hades to Hades II, as a third route.
 ## Prerequisites
 
 In order to use this mod you _must_ have Hades installed on your system when playing Hades II.
-You cannot uninstall Hades after insalling the mod, as the mod will not work without it.
+You should not uninstall Hades after insalling the mod, as the mod will not work without it.
 
 It is recommended to have both Hades and Hades II installed through the same platform (e.g. both through Steam or both through Epic)/in the same parent directory.
 
@@ -36,8 +36,6 @@ Read on at [Installation](#installation) for information on how to install the m
 > Not everything is working as expected or fully implemented.
 
 The following content from Hades is available in Hades II through this mod, allowing you to play as Melinoë, with her weapons and abilities.
-
-At the moment, content is limited to encounters and enemies.
 
 ### Encounters/Rooms:
 
@@ -57,6 +55,7 @@ At the moment, content is limited to encounters and enemies.
 | Fountain room       | X_Reprieve01               | Implemented           |
 | Shops               | X_Shop01/X_PreBoss01       | Implemented           |
 | Bosses              | X_Boss01/X_Boss02          | Partially Implemented |
+| Thanatos encounter  | ThanatosTartarus           | Not implemented       |
 | **Elysium**         |                            | Not implemented       |
 | **Styx**            |                            | Not implemented       |
 | **Surface**         |                            | Not implemented       |
@@ -110,14 +109,6 @@ At the moment, content is limited to encounters and enemies.
 | **Elysium**                 |                              | Not implemented |
 | **Styx**                    |                              | Not implemented |
 | **Surface**                 |                              | Not implemented |
-
-### Not implemented yet, but somewhat planned
-
-- Light story elements
-
-### Would be nice, but likely not possible (as easily)
-
-- Hades God boons
 
 ## Installation & Uninstallation
 
