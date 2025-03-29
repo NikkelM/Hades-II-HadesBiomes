@@ -255,4 +255,5 @@ renameEnemies(game.EnemySets.EnemiesBiome2_EliteChallenge, "EnemiesBiome2_EliteC
 renameEnemies(game.EnemySets.EnemiesBiome2Wrapping, "EnemiesBiome2Wrapping")
 renameEnemies(game.EnemySets.EnemiesBiome2Devotion, "EnemiesBiome2Devotion")
 renameEnemies(game.EnemySets.EnemiesBiome2Hard, "EnemiesBiome2Hard")
+renameEnemies(game.EnemySets.HydraHeads, "EnemiesBiome2Hard")
 renameEnemies(game.EnemySets.TrapsBiome2, "TrapsBiome2")

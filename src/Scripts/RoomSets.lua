@@ -89,6 +89,8 @@ end
 -- This is for the vow that may spawn enemies from the next Biome
 local newNextRoomSets = {
 	Tartarus = "Asphodel",
+	Asphodel = "Elysium",
+	Elysium = "Styx",
 }
 
 for key, newNextRoomSet in pairs(newNextRoomSets) do

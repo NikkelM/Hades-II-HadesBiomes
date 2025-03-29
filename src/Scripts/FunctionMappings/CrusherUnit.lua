@@ -1,9 +1,10 @@
+-- Also used for Hydra in Asphodel
 function game.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
 	args = args or {}
 	if args.Delay then
 		game.wait(args.Delay, unit.AIThreadName)
 	end
-	-- For CrusherUnit: Make its vulnerable again after the Cast hack in the modded SkyAttackerAI
+	-- For CrusherUnit: Make it vulnerable again after the Cast hack in the modded SkyAttackerAI
 	game.SetUnitVulnerable(unit, "ModsNikkelMHadesBiomesUnitTouchdownFlag")
 	CreateProjectileFromUnit({
 		Name = args.ProjectileName,
@@ -126,7 +127,7 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 			end
 		else
 			if enemy.NoTargetMoveTowardsPlayer then
-				game.MoveWithinRange(enemy, CurrentRun.Hero.ObjectId, aiData)
+				game.MoveWithinRange(enemy, game.CurrentRun.Hero.ObjectId, aiData)
 			end
 			game.wait(game.CalcEnemyWait(enemy, enemy.NoTargetWanderDuration or 0.5), enemy.AIThreadName)
 		end

@@ -2,9 +2,9 @@
 -- Even though we set a different animation, this is the base obstacle we still need to mute the sound
 
 local order = {
-  "Name",
-  "InheritFrom",
-  "OverwriteLocalization"
+	"Name",
+	"InheritFrom",
+	"OverwriteLocalization"
 }
 
 local newData = {

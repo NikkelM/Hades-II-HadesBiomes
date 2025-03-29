@@ -1360,12 +1360,6 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	-- 	end
 	-- end
 
-	-- TODO
-	if requirements.RequiredInactiveMetaUpgrade then
-		print(requirements.RequiredInactiveMetaUpgrade)
-		print(GetNumMetaUpgrades(requirements.RequiredInactiveMetaUpgrade))
-		print(GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade))
-	end
 	if requirements.RequiredInactiveMetaUpgrade ~= nil and GetNumMetaUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 or GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 then
 		return false
 	end

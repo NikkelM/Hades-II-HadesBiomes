@@ -26,7 +26,13 @@ modutil.mod.Path.Wrap("StartNewRun", function(base, prevRun, args)
 	local cachedRuns = mod.LoadCachedRunsFile()
 
 	-- Only set the flag if we are starting a Hades run
-	if args.StartingBiome == "Tartarus" then
+	local validModdedRunBiomes = {
+		"Tartarus",
+		"Asphodel",
+		"Elysium",
+		"Styx",
+	}
+	if game.Contains(validModdedRunBiomes, args.StartingBiome) then
 		game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun = true
 		currentRun.ModsNikkelMHadesBiomesIsModdedRun = true
 

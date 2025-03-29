@@ -84,7 +84,7 @@ local encounterModifications = {
 	},
 	OpeningGenerated = {
 		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
-		DifficultyModifier = -80,
+		DifficultyModifier = -60,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
 		PreSpawnEnemies = false,
 		NoFirstWaveStartDelay = true,

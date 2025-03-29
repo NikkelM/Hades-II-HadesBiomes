@@ -3,7 +3,7 @@ function game.WrappingEncounterStartPresentation(eventSource)
 		return
 	end
 
-	-- Using a modified version/original Hades version, as it has a game.wait() call that feel more natural when starting the level
+	-- Using a modified version/original Hades version, as it has a game.wait() call that feels more natural when starting the level
 	game.thread(game.ModsNikkelMHadesBiomesHandleWrapping, eventSource)
 	game.wait(2.0, game.RoomThreadName)
 	Activate({ Ids = { 548133, 548134 } })
