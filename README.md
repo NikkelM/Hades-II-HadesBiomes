@@ -20,7 +20,7 @@ This mod adds biomes and enemies from Hades to Hades II, as a third route.
 ## Prerequisites
 
 In order to use this mod you _must_ have Hades installed on your system when playing Hades II.
-You should not uninstall Hades after insalling the mod, as the mod will not work without it.
+You should not uninstall Hades after installing the mod, as the mod will not work without it.
 
 It is recommended to have both Hades and Hades II installed through the same platform (e.g. both through Steam or both through Epic)/in the same parent directory.
 
@@ -54,7 +54,7 @@ The following content from Hades is available in Hades II through this mod, allo
 | Miniboss encounters | X_MiniBoss0x/X_Wrapping01  | Implemented           |
 | Fountain room       | X_Reprieve01               | Implemented           |
 | Shops               | X_Shop01/X_PreBoss01       | Implemented           |
-| Bosses              | X_Boss01/X_Boss02          | Partially Implemented |
+| Bosses              | X_Boss01/X_Boss02          | Implemented |
 | Thanatos encounter  | ThanatosTartarus           | Not implemented       |
 | **Elysium**         |                            | Not implemented       |
 | **Styx**            |                            | Not implemented       |
