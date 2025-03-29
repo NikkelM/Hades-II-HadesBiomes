@@ -37,7 +37,6 @@ local roomModifications = {
 
 		Ambience = "/Leftovers/Object Ambiences/EvilLairAmbienceMatchSiteE",
 		ReverbValue = 2.0,
-		-- TODO: Always play Bass?
 		MusicActiveStems = { "Bass" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus",
