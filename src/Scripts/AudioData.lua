@@ -44,26 +44,101 @@ game.GlobalVoiceLines.StartNewHadesRunVoiceLines = {
 
 game.GlobalVoiceLines.EmptyStartNewHadesRunVoiceLines = {}
 
-local tartarusRoomStartMusicEvents = {
-	GameStateRequirements = {
+local additionalRoomStartMusicEvents = {
+	-- {
+	-- 	GameStateRequirements =
+	-- 	{
+	-- 		{
+	-- 			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+	-- 			IsAny = { "Tartarus", "Asphodel", "Elysium", "Styx" },
+	-- 		},
+	-- 		{
+	-- 			PathFalse = { "CurrentRun", "Hero", "IsDead" }
+	-- 		},
+	-- 		{
+	-- 			Path = { "CurrentRun", "RunDepthCache" },
+	-- 			Comparison = "==",
+	-- 			Value = 2,
+	-- 		},
+	-- 	},
+	-- 	MusicSection = 2,
+	-- },
+	-- {
+	-- 	GameStateRequirements =
+	-- 	{
+	-- 		{
+	-- 			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+	-- 			IsAny = { "Tartarus", "Asphodel", "Elysium", "Styx" },
+	-- 		},
+	-- 		{
+	-- 			PathFalse = { "CurrentRun", "Hero", "IsDead" }
+	-- 		},
+	-- 		{
+	-- 			Path = { "CurrentRun", "RunDepthCache" },
+	-- 			Comparison = "==",
+	-- 			Value = 3,
+	-- 		},
+	-- 	},
+	-- 	MusicSection = 3,
+	-- },
+	{
+		GameStateRequirements =
 		{
-			PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
+			{
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsAny = { "Tartarus", "Asphodel", "Elysium", },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" }
+			},
+			{
+				Path = { "AudioState", "MusicSection", },
+				Comparison = "==",
+				Value = 0,
+			},
+			{
+				Path = { "CurrentRun", "RunDepthCache" },
+				Comparison = ">",
+				Value = 3,
+			},
+			{
+				FunctionName = "RequiredMusicSectionRoomDuration",
+				FunctionArgs = { Value = 2 },
+			},
 		},
-		{
-			PathFalse = { "CurrentRun", "Hero", "IsDead" }
-		},
-		{
-			PathFalse = { "AudioState", "MusicId" },
-		},
-		{
-			PathFalse = { "AudioState", "SecretMusicId" },
-		},
+		MusicSection = 1,
 	},
-	PlayBiomeMusic = true,
-	MusicSection = 0,
-	UseRoomMusicSection = true,
+	{
+		GameStateRequirements =
+		{
+			{
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsAny = { "Tartarus", "Asphodel", "Elysium", "Styx" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" }
+			},
+			{
+				PathFalse = { "AudioState", "MusicId" },
+			},
+			{
+				PathFalse = { "AudioState", "SecretMusicId" },
+			},
+			{
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsNone = { "X_Wrapping01", "X_Intro", "C_Intro", "D_Intro", "A_Reprieve01", "X_Reprieve01", "C_Reprieve01", "D_Reprieve01", "B_Story01", },
+			},
+		},
+		PlayBiomeMusic = true,
+		MusicSection = 0,
+		UseRoomMusicSection = true,
+	},
 }
-table.insert(game.RoomStartMusicEvents, tartarusRoomStartMusicEvents)
+
+for _, event in ipairs(additionalRoomStartMusicEvents) do
+	table.insert(game.RoomStartMusicEvents, event)
+end
+-- game.RoomStartMusicEvents = additionalRoomStartMusicEvents
 
 game.MusicTrackData.Tartarus = {
 	{ Name = "/Music/MusicHadesReset_MC", },
