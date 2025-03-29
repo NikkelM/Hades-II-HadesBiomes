@@ -403,6 +403,7 @@ local weaponModifications = {
 		Requirements = {
 			MinAttacksBetweenUse = 2,
 			MinPlayerDistance = 350,
+			MaxConsecutiveUses = 3,
 		},
 		AIData = {
 			PreAttackDuration = 0.8,
@@ -412,6 +413,7 @@ local weaponModifications = {
 	HydraLungeUntethered = {
 		Requirements = {
 			MinAttacksBetweenUse = 0,
+			MaxConsecutiveUses = 3,
 		},
 	},
 	HydraSlam = {
