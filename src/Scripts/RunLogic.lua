@@ -14,7 +14,7 @@ end
 modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle, replaceOnlyNull, args)
 	base(obstacle, replaceOnlyNull, args)
 
-	if obstacle.Name == "TartarusDoor03b" then
+	if obstacle.Name == "TartarusDoor03b" or obstacle.Name == "AsphodelBoat01b" then
 		game.CurrentRun.ModsNikkelMHadesBiomesExitDoors = game.CurrentRun.ModsNikkelMHadesBiomesExitDoors or {}
 		table.insert(game.CurrentRun.ModsNikkelMHadesBiomesExitDoors, obstacle)
 	end
@@ -26,9 +26,15 @@ modutil.mod.Path.Wrap("StartNewRun", function(base, prevRun, args)
 	local cachedRuns = mod.LoadCachedRunsFile()
 
 	-- Only set the flag if we are starting a Hades run
-	if args.StartingBiome == "Tartarus" then
-		game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun = true
-		currentRun.IsModsNikkelMHadesBiomesHadesRun = true
+	local validModdedRunBiomes = {
+		"Tartarus",
+		"Asphodel",
+		"Elysium",
+		"Styx",
+	}
+	if game.Contains(validModdedRunBiomes, args.StartingBiome) then
+		game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun = true
+		currentRun.ModsNikkelMHadesBiomesIsModdedRun = true
 
 		cachedRuns.ActiveModdedRuns[game.GameState.ModsNikkelMHadesBiomesSaveFileIndex] = true
 		sjson.encode_file(mod.CachedRunsFilePath, cachedRuns)

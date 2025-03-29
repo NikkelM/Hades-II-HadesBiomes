@@ -2,12 +2,12 @@ modutil.mod.Path.Wrap("IsGameStateEligible", function(base, source, requirements
 	local isEligible = base(source, requirements, args)
 
 	-- If it's a modded run and the already existing requirements are met, also check the Hades requirements
-	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
 		isEligible = game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
 		if not isEligible then
 			-- TODO: Debugging only
 			mod.DebugPrint(requirements)
-			print("\n\n")
+			print()
 		end
 	end
 
@@ -17,7 +17,7 @@ end)
 modutil.mod.Path.Wrap("IsVoiceLineEligible", function(base, line, prevLine, parentLine, source, args)
 	local isEligible = base(line, prevLine, parentLine, source, args)
 
-	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
 		return game.ModsNikkelMHadesBiomesIsGameStateEligible(source, line, args)
 	end
 
@@ -27,12 +27,42 @@ end)
 modutil.mod.Path.Wrap("IsEnemyEligible", function(base, enemyName, encounter, wave)
 	local isEligible = base(enemyName, encounter, wave)
 
-	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
-		local isGameStateEligibleArgs = {}
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
+		local args = {}
 		if game.EnemyData[enemyName].IsElite and game.GetNumShrineUpgrades("EnemyEliteShrineUpgrade") > 0 then
-			isGameStateEligibleArgs.SkipMinBiomeDepth = true
+			args.SkipMinBiomeDepth = true
 		end
-		return game.ModsNikkelMHadesBiomesIsGameStateEligible(game.EnemyData[enemyName], game.EnemyData[enemyName], isGameStateEligibleArgs)
+		return game.ModsNikkelMHadesBiomesIsGameStateEligible(game.EnemyData[enemyName], game.EnemyData[enemyName], args)
+	end
+
+	return isEligible
+end)
+
+modutil.mod.Path.Wrap("IsRoomEligible", function(base, currentRun, currentRoom, nextRoomData, args)
+	local isEligible = base(currentRun, currentRoom, nextRoomData, args)
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
+		return game.ModsNikkelMHadesBiomesIsGameStateEligible(nextRoomData, nextRoomData, args)
+	end
+
+	return isEligible
+end)
+
+modutil.mod.Path.Wrap("IsEncounterEligible", function(base, currentRun, room, nextEncounterData, args)
+	local isEligible = base(currentRun, room, nextEncounterData, args)
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
+		return game.ModsNikkelMHadesBiomesIsGameStateEligible(nextEncounterData, nextEncounterData, args)
+	end
+
+	return isEligible
+end)
+
+modutil.mod.Path.Wrap("IsInspectPointEligible", function(base, currentRun, source, inspectPointData)
+	local isEligible = base(currentRun, source, inspectPointData)
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
+		return game.ModsNikkelMHadesBiomesIsGameStateEligible(source, inspectPointData)
 	end
 
 	return isEligible
@@ -41,7 +71,7 @@ end)
 modutil.mod.Path.Wrap("IsTextLineEligible", function(base, currentRun, source, line, prevLine, parentLine, args)
 	local isEligible = base(currentRun, source, line, prevLine, parentLine, args)
 
-	if game.CurrentRun.IsModsNikkelMHadesBiomesHadesRun and isEligible then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
 		return game.ModsNikkelMHadesBiomesIsGameStateEligible(source, line, args)
 	end
 
@@ -77,6 +107,53 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 
 	if requirements.Force then
 		return true
+	end
+
+	-- Map Asphodel room names for any requirement that has rooms in it
+	local roomRequirementOptions = {
+		RequiredRoom = "string",
+		RequiredRooms = "table",
+		RequiredFalseRooms = "table",
+		RequiredSeenRoom = "string",
+		RequiredSeenRooms = "table",
+		RequiredFalseSeenRoom = "string",
+		RequiredFalseSeenRooms = "table",
+		RequiredFalseSeenRoomThisRun = "string",
+		RequiredFalseSeenRoomsThisRun = "table",
+		RequiredSeenRoomsBeforeThisRun = "table",
+		RequiredFalseSeenRoomsBeforeThisRun = "table",
+		RequiredMinTimesSeenRoom = "string",
+		RequiredMaxTimesSeenRoom = "string",
+		RequiredRoomThisRun = "string",
+		RequiredRoomsThisRun = "table",
+		RequiredAnyRoomsThisRun = "table",
+		RequiredRoomLastRun = "string",
+		RequiredFalseRoomLastRun = "string",
+		RequiredAnyRoomsLastRun = "table",
+		RequiredDeathRoom = "string",
+		RequiredAnyDeathRooms = "table",
+		RequiredFalseDeathRoom = "string",
+		RequiredFalseDeathRooms = "table",
+		RequiredAnyPrevRoom = "table",
+		RequiredFalsePrevRooms = "table",
+		ConsecutiveDeathsInRoom = "nameTable",
+		ConsecutiveClearsOfRoom = "nameTable",
+	}
+	local roomMappings = mod.AsphodelRoomNameMappings
+	for roomRequirement, requirementType in pairs(roomRequirementOptions) do
+		if requirements[roomRequirement] then
+			if requirementType == "string" then
+				requirements[roomRequirement] = roomMappings[requirements[roomRequirement]] or requirements[roomRequirement]
+			elseif requirementType == "table" then
+				for i, roomName in ipairs(requirements[roomRequirement]) do
+					requirements[roomRequirement][i] = roomMappings[roomName] or roomName
+				end
+			elseif requirementType == "nameTable" then
+				for i, roomName in ipairs(requirements[roomRequirement]) do
+					requirements[roomRequirement][i].Name = roomMappings[roomName.Name] or roomName.Name
+				end
+			end
+		end
 	end
 
 	-- ChanceToPlay is already taken care of in the Hades II function call
@@ -1283,7 +1360,6 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	-- 	end
 	-- end
 
-	-- TODO
 	if requirements.RequiredInactiveMetaUpgrade ~= nil and GetNumMetaUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 or GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 then
 		return false
 	end

@@ -16,6 +16,10 @@ local newData = {
 		DisplayName = "TÁRTARO (Pesadilla)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DisplayName = "¿ASFÓDELOS (Pesadilla)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Zagreo",
 		Description = "Príncipe del Inframundo",

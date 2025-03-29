@@ -3,8 +3,10 @@
 local encounterData = mod.LoadHadesEncounterData("EncounterData.lua")
 local encounterDataTartarus = {
 	-- Generic encounters
+	-- This one is used by all biomes, we define it here
 	ModsNikkelMHadesBiomesGenerated = encounterData.Generated,
-	GeneratedTartarus = game.DeepCopyTable(game.EncounterData.GeneratedF),
+
+	GeneratedTartarus = encounterData.GeneratedTartarus,
 	OpeningGenerated = encounterData.OpeningGenerated,
 	DevotionTestTartarus = encounterData.DevotionTestTartarus,
 
@@ -23,6 +25,13 @@ local encounterDataTartarus = {
 	TimeChallengeTartarus = encounterData.TimeChallengeTartarus,
 	PerfectClearChallengeTartarus = game.DeepCopyTable(encounterData.PerfectClearChallengeF),
 	EliteChallengeTartarus = game.DeepCopyTable(encounterData.EliteChallengeF),
+
+	-- Intro encounters
+	-- ThiefMineLayerIntro = encounterData.ThiefMineLayerIntro, -- is broken
+	HeavyRangedIntro = encounterData.HeavyRangedIntro,
+	PunchingBagIntro = encounterData.PunchingBagIntro,
+	LightSpawnerIntro = encounterData.LightSpawnerIntro,
+	DisembodiedHandIntro = encounterData.DisembodiedHandIntro,
 }
 
 mod.UpdateField(encounterDataTartarus, "Generated", "ModsNikkelMHadesBiomesGenerated", { "InheritFrom" },
@@ -42,11 +51,18 @@ local encounterReplacements = {
 			AggroReactionTimeMin = 0.15,
 			AggroReactionTimeMax = 0.45,
 		},
+		CanEncounterSkip = true,
+		BlockAthenaEncounterKeepsake = false,
 	},
 	GeneratedTartarus = {
-		EnemySet = EnemySets.EnemiesBiome1,
-		-- The original from Hades is 30, Hades II GeneratedF is 55
-		BaseDifficulty = 40,
+		-- The original from Hades is 2.3
+		ActiveEnemyCapBase = 6.9,
+		-- The original from Hades is 30
+		BaseDifficulty = 60,
+		-- The original from Hades is 0.35
+		ActiveEnemyCapDepthRamp = 0.55,
+		-- The original from Hades is 11
+		DepthDifficultyRamp = 14,
 	},
 
 	PerfectClearChallengeTartarus = {
@@ -68,13 +84,20 @@ local encounterModifications = {
 	},
 	OpeningGenerated = {
 		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
-		DifficultyModifier = -30,
+		DifficultyModifier = -60,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
 		PreSpawnEnemies = false,
 		NoFirstWaveStartDelay = true,
 		SpawnOverrides = { UseActivatePresentation = false, },
 		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		RequiredTextLines = mod.NilValue,
+		WaveTemplate = {
+			Spawns = {},
+			OverrideValues = game.BaseWaveOverrideValues,
+			StartDelay = 0.0
+		},
+		-- Sometimes these can move around when spawning, so we blacklist them
+		Blacklist = { LightSpawner = true, },
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,

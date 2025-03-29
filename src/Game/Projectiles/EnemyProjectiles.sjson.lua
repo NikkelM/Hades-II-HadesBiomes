@@ -75,10 +75,14 @@ local hadesProjectilesModifications = {
 		NumPenetrations = 99999,
 		InflictedDamageSound = "/SFX/BurnDamage",
 	},
+	HeavyRangedWeaponSplitter = {
+		TotalFuse = 4.0,
+		AutoAdjustForTarget = true,
+		MaxAdjustRate = 5,
+	},
 	HeavyRangedSplitterFragment = {
 		DieWithOwner = true,
 	},
-
 	-- TARTARUS - BOSSES
 	HarpyBeam = {
 		Speed = 700,
@@ -107,7 +111,24 @@ local hadesProjectilesModifications = {
 			[1] = { StartAnimation = "MelinoeGetHit", },
 		},
 	},
-
+	-- ASPHODEL
+	RangedBurrowerWeapon = {
+		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+	},
+	CrusherUnitTouchdown = {
+		DetonateGraphic = "CrusherTouchdownFx",
+	},
+	-- ASPHODEL - HYDRA
+	HydraDart = {
+		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+	},
+	HydraSummon = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+		CheckObstacleImpact = true,
+		DetonateOnTouchdown = true,
+	},
 	-- STYX
 	StaggeredSatyrRangedWeapon = {
 		UnpauseAnimation = mod.NilValue,
@@ -133,6 +154,16 @@ for oldName, newName in pairs(mod.FxAnimationMappings) do
 	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "Thing", "AttachedAnim" },
 		"EnemyProjectiles.sjson")
 	mod.UpdateField(hadesProjectilesTable.Projectiles, oldName, newName, { "DetonateGraphic" }, "EnemyProjectiles.sjson")
+end
+
+-- Rename keys in the modifications
+for _, projectileMod in pairs(hadesProjectilesModifications) do
+	for oldKey, newKey in pairs(projectileKeyReplacements) do
+		if projectileMod[oldKey] then
+			projectileMod[newKey] = projectileMod[oldKey]
+			projectileMod[oldKey] = nil
+		end
+	end
 end
 
 -- Iterating through all projectiles

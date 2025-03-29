@@ -20,7 +20,7 @@ This mod adds biomes and enemies from Hades to Hades II, as a third route.
 ## Prerequisites
 
 In order to use this mod you _must_ have Hades installed on your system when playing Hades II.
-You cannot uninstall Hades after insalling the mod, as the mod will not work without it.
+You should not uninstall Hades after installing the mod, as the mod will not work without it.
 
 It is recommended to have both Hades and Hades II installed through the same platform (e.g. both through Steam or both through Epic)/in the same parent directory.
 
@@ -37,62 +37,78 @@ Read on at [Installation](#installation) for information on how to install the m
 
 The following content from Hades is available in Hades II through this mod, allowing you to play as Melinoë, with her weapons and abilities.
 
-At the moment, content is limited to encounters and enemies.
-
 ### Encounters/Rooms:
 
-| Encounter/Room Name | Internal Name                           | Status          |
-| ------------------- | --------------------------------------- | --------------- |
-| **Tartarus**        |                                         |                 |
-| Default combat      | GeneratedTartarus                       | Implemented     |
-| Miniboss encounters | A_MiniBoss0x                            | Implemented     |
-| Fountain room       | A_Reprieve01                            | Implemented     |
-| Shops               | A_Shop01/A_PreBoss01                    | Implemented     |
-| Survival challenge  | SurvivalTartarus                        | Not implemented |
-| Thanatos encounter  | ThanatosTartarus                        | Not implemented |
-| Bosses              | A_Boss01/A_Boss02/A_Boss03              | Not implemented |
-| **Asphodel**        |                                         | Not implemented |
-| **Elysium**         |                                         | Not implemented |
-| **Styx**            |                                         | Not implemented |
-| **Surface**         |                                         | Not implemented |
+| Encounter/Room Name | Internal Name              | Status                |
+| ------------------- | -------------------------- | --------------------- |
+| **Tartarus**        |                            |                       |
+| Default combat      | GeneratedTartarus          | Implemented           |
+| Miniboss encounters | A_MiniBoss0x               | Implemented           |
+| Fountain room       | A_Reprieve01               | Implemented           |
+| Shops               | A_Shop01/A_PreBoss01       | Implemented           |
+| Bosses              | A_Boss01/A_Boss02/A_Boss03 | Implemented           |
+| Survival challenge  | SurvivalTartarus           | Not implemented       |
+| Thanatos encounter  | ThanatosTartarus           | Not implemented       |
+| **Asphodel**        |                            | Not implemented       |
+| Default combat      | GeneratedAsphodel          | Implemented           |
+| Miniboss encounters | X_MiniBoss0x/X_Wrapping01  | Implemented           |
+| Fountain room       | X_Reprieve01               | Implemented           |
+| Shops               | X_Shop01/X_PreBoss01       | Implemented           |
+| Bosses              | X_Boss01/X_Boss02          | Implemented |
+| Thanatos encounter  | ThanatosTartarus           | Not implemented       |
+| **Elysium**         |                            | Not implemented       |
+| **Styx**            |                            | Not implemented       |
+| **Surface**         |                            | Not implemented       |
 
 ### Enemies
 
-| Enemy                  | Internal Name        | Status          |
-| ---------------------- | -------------------- | --------------- |
-| **Tartarus**           |                      |                 |
-| Wretched Lout          | PunchingBagUnit      | Implemented     |
-| Dire Lout (Elite)      | PunchingBagUnitElite | Implemented     |
-| Wretch Thug            | HeavyMelee           | Implemented     |
-| Dire Thug (Elite)      | HeavyMeleeElite      | Implemented     |
-| Wringer                | DisembodiedHand      | Implemented     |
-| Wringer (Elite)        | DisembodiedHandElite | Implemented     |
-| Wretched Witch         | LightRanged          | Implemented     |
-| Dire Witch (Elite)     | LightRangedElite     | Implemented     |
-| Brimstone              | HeavyRanged          | Implemented     |
-| Dire Brimstone (Elite) | HeavyRangedElite     | Implemented     |
-| Numbskull              | Swarmer              | Implemented     |
-| Dire Numbskull         | SwarmerElite         | Implemented     |
-| Skullomat              | LightSpawner         | Implemented     |
-| Wretched Pest          | ThiefMineLayer       | Implemented     |
-| Dire Pest (Elite)      | ThiefMineLayerElite  | Implemented     |
-| **Asphodel**           |                      | Not implemented |
-| **Elysium**            |                      | Not implemented |
-| **Styx**               |                      | Not implemented |
-| **Surface**            |                      | Not implemented |
-
-### Not implemented yet, but somewhat planned
-
-In no particular order:
-
-- (Mini) Boss encounters
-- Additional biomes
-- Light story elements
-
-### Would be nice, but likely not possible (as easily)
-
-- Hades God boons
-- Playing as Zagreus/Switching between characters
+| Enemy                       | Internal Name                | Status          |
+| --------------------------- | ---------------------------- | --------------- |
+| **Tartarus**                |                              |                 |
+| Wretched Lout               | PunchingBagUnit              | Implemented     |
+| Dire Lout (Elite)           | PunchingBagUnitElite         | Implemented     |
+| Wretch Thug                 | HeavyMelee                   | Implemented     |
+| Dire Thug (Elite)           | HeavyMeleeElite              | Implemented     |
+| Wringer                     | DisembodiedHand              | Implemented     |
+| Wringer (Elite)             | DisembodiedHandElite         | Implemented     |
+| Wretched Witch              | LightRanged                  | Implemented     |
+| Dire Witch (Elite)          | LightRangedElite             | Implemented     |
+| Brimstone                   | HeavyRanged                  | Implemented     |
+| Dire Brimstone (Elite)      | HeavyRangedElite             | Implemented     |
+| Numbskull                   | Swarmer                      | Implemented     |
+| Dire Numbskull              | SwarmerElite                 | Implemented     |
+| Skullomat                   | LightSpawner                 | Implemented     |
+| Wretched Pest               | ThiefMineLayer               | Implemented     |
+| Dire Pest (Elite)           | ThiefMineLayerElite          | Implemented     |
+| Minibosses                  | Various                      | Implemented     |
+| Megaera, Alecto, Tisiphone  | Harpy, Harpy2, Harpy3        | Implemented     |
+| **Asphodel**                |                              | Implemented     |
+| Skull-Crusher               | CrusherUnit                  | Implemented     |
+| Skull-Crusher (Elite)       | CrusherUnitElite             | Implemented     |
+| Dire Skullomat              | LightSpawnerElite            | Implemented     |
+| Bloodless                   | BloodlessNaked               | Implemented     |
+| Bloodless Naked (Elite)     | BloodlessNakedElite          | Implemented     |
+| Bone-Raker                  | BloodlessNakedBerserker      | Implemented     |
+| Bloodless Berserker (Elite) | BloodlessNakedBerserkerElite | Implemented     |
+| Inferno-Bomber              | BloodlessGrenadier           | Implemented     |
+| Dire Inferno-Bomber         | BloodlessGrenadierElite      | Implemented     |
+| Slam-Dancer                 | BloodlessSelfDestruct        | Implemented     |
+| Slam-Dancer (Elite)         | BloodlessSelfDestructElite   | Implemented     |
+| Burn-Flinger                | BloodlessPitcher             | Implemented     |
+| Dire Burn-Flinger           | BloodlessPitcherElite        | Implemented     |
+| Wave-Maker                  | BloodlessWaveFist            | Implemented     |
+| Dire Wave-Maker             | BloodlessWaveFistElite       | Implemented     |
+| Spreader                    | SpreadShotUnit               | Implemented     |
+| Spreader (Elite)            | SpreadShotUnitElite          | Implemented     |
+| Gorgon                      | FreezeShotUnit               | Implemented     |
+| Gorgon (Elite)              | FreezeShotUnitElite          | Implemented     |
+| Dracon                      | RangedBurrower               | Implemented     |
+| Dracon (Elite)              | RangedBurrowerElite          | Implemented     |
+| Minibosses                  | Various                      | Implemented     |
+| Bone Hydra (and variants)   | Various                      | Implemented     |
+| **Elysium**                 |                              | Not implemented |
+| **Styx**                    |                              | Not implemented |
+| **Surface**                 |                              | Not implemented |
 
 ## Installation & Uninstallation
 
@@ -100,17 +116,7 @@ In no particular order:
 
 ## Configuration
 
-<!-- TODO: Wiki page for this & update -->
-
-These are the configuration options available for the mod:
-
-| Name              | Type     | Default | Description                                                                                                                                                                                                                                                                                           |
-| ----------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `enabled`         | `bool`   | `true`  | Whether the mod is enabled or not.                                                                                                                                                                                                                         |
-| `firstTimeSetup`  | `bool`   | `true`  | If set to true, the mod will make required file associations and moves from the `hadesGameFolder` to your Hades II installation when the game is started the next time. This process will set this variable to false afterwards. Only set this to true after a breaking update or when re-installing. |
-| `uninstall`       | `bool`   | `false` | Set this to true and start the game once to run uninstall steps, which removes files copied and associated to Hades. Do this before uninstalling the mod through r2modman to avoid loose files staying behind. To re-install, set both `uninstall` and `firstTimeSetup` to true.                      |
-| `hadesGameFolder` | `string` | `root`  | The path to the Hades game folder. When set to `root`, resolves to the "Hades" directory in the same parent directory as your Hades II installation. I.e., leave like this if you have both games installed through Steam.                                                                            |
-| `debug`           | `bool`   | `false` | Enables debug logging to the console. Enable this if you're having issues with the mod, or if the developer asked you for logs to help investigating an issue.                                                                        |
+[See this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration)
 
 ## Notes for other developers
 

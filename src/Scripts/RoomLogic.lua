@@ -1,21 +1,31 @@
 -- Set a backing for the door's reward preview
 modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
-	base(run)
+	local rewardStoreName = base(run)
 	if run.ModsNikkelMHadesBiomesExitDoors ~= nil then
-		for _, door in ipairs(run.ModsNikkelMHadesBiomesExitDoors) do
-			SetAnimation({ Name = door.LockedAnimation, DestinationId = door.ObjectId })
+		for _, exitDoor in ipairs(run.ModsNikkelMHadesBiomesExitDoors) do
+			if run.NextRewardStoreName == "RunProgress" and exitDoor.CustomLockedAnimation_Run ~= nil then
+				SetAnimation({ Name = exitDoor.CustomLockedAnimation_Run, DestinationId = exitDoor.ObjectId })
+			elseif run.NextRewardStoreName == "MetaProgress" and exitDoor.CustomLockedAnimation_Meta ~= nil then
+				SetAnimation({ Name = exitDoor.CustomLockedAnimation_Meta, DestinationId = exitDoor.ObjectId })
+			end
 		end
-
 		run.ModsNikkelMHadesBiomesExitDoors = {}
 	end
+	return rewardStoreName
 end)
 
 -- Wrap to also load modded resources, such as additional audio banks
 modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	base(currentRoom)
 
-	-- TODO: Add additional biomes
-	if currentRoom.RoomSetName == "Tartarus" then
+	local validRoomSets = {
+		["Tartarus"] = true,
+		["Asphodel"] = true,
+		["Elysium"] = true,
+		["Styx"] = true,
+	}
+
+	if validRoomSets[currentRoom.RoomSetName] then
 		-- Some packages introduce artifacts
 		UnloadPackages({ Name = "DeathArea" })
 		UnloadPackages({ Name = "Chaos" })
@@ -42,4 +52,34 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 			game.LoadVoiceBanks(currentRoom.LoadModdedVoiceBanks)
 		end
 	end
+end)
+
+modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
+	base(unit, currentRun, args)
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and unit.ModsNikkelMHadesBiomesIsModdedEnemy then
+		-- Overwrite weapon/AI data if necessary due to a vow
+		local shrineLevel = game.GetNumShrineUpgrades(unit.ShrineMetaUpgradeName)
+		local requiredShrineLevel = unit.ShrineMetaUpgradeRequiredLevel or 1
+		if unit.ShrineDataOverwrites ~= nil and shrineLevel >= requiredShrineLevel then
+			game.OverwriteTableKeys(unit, unit.ShrineDataOverwrites)
+		end
+		if unit.ShrineDefualtAIDataOverwrites ~= nil and shrineLevel > 0 then
+			if unit.DefaultAIData == nil then
+				unit.DefaultAIData = {}
+			end
+			game.OverwriteTableKeys(unit.DefaultAIData, unit.ShrineDefualtAIDataOverwrites)
+		end
+		if unit.ShrineWeaponOptionsOverwrite ~= nil and shrineLevel > 0 then
+			unit.WeaponOptions = unit.ShrineWeaponOptionsOverwrite
+		end
+	end
+end)
+
+modutil.mod.Path.Wrap("SetupInspectPoint", function(base, inspectPointData)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		-- Storyteller voicelines are added to the Megaera voicebank, as the game can't load unknown voicebanks and Storyteller is already taken
+		game.LoadVoiceBanks({ Name = "Megaera" })
+	end
+	base(inspectPointData)
 end)

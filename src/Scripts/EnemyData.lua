@@ -1,25 +1,5 @@
 -- Contains generic functions to handle migrating enemy data from Hades to Hades II
 
--- Loads EnemyData from a file in Hades
--- Note: Must be loaded before EncounterData, as there are some references to it in EncounterData!
-local function LoadHadesEnemyData()
-	local originalUnitSetDataEnemies = game.DeepCopyTable(game.UnitSetData.Enemies)
-	local originalEnemyData = game.DeepCopyTable(game.EnemyData)
-	local originalStatusAnimations = game.DeepCopyTable(game.StatusAnimations)
-	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts\\EnemyData.lua")
-	local chunk, err = loadfile(pathName)
-	if chunk then
-		chunk()
-		local hadesEnemyData = UnitSetData.Enemies
-		game.UnitSetData.Enemies = originalUnitSetDataEnemies
-		game.EnemyData = originalEnemyData
-		game.StatusAnimations = originalStatusAnimations
-		return hadesEnemyData
-	else
-		mod.DebugPrint("Error loading enemyData: " .. err, 1)
-	end
-end
-
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
 local function ApplyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
 	-- Rename keys if the enemy is in EnemyNameMappings
@@ -36,7 +16,7 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 		end
 	end
 
-	-- Apply replacements
+	-- Apply replacements/additions
 	for enemyName, enemyData in pairs(replacements) do
 		if not base[enemyName] then
 			base[enemyName] = {}
@@ -97,15 +77,15 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 			enemyData.AdditionalEnemySetupFunctionName = nil
 		end
 
+		game.ProcessDataInheritance(enemyData, game.EnemyData)
+
 		-- Increase health and armour for slightly increased difficulty
 		if enemyData.MaxHealth then
-			enemyData.MaxHealth = enemyData.MaxHealth * 1.15
+			enemyData.MaxHealth = enemyData.MaxHealth * 1.35
 		end
 		if enemyData.HealthBuffer then
 			enemyData.HealthBuffer = enemyData.HealthBuffer * 1.2
 		end
-
-		game.ProcessDataInheritance(enemyData, game.EnemyData)
 
 		base[enemyName] = enemyData
 	end
@@ -114,49 +94,52 @@ local function ApplyModificationsAndInheritEnemyData(base, modifications, replac
 	game.OverwriteTableKeys(game.EnemyData, base)
 end
 
-local enemyData = LoadHadesEnemyData()
--- Breaks spawning Skelly, as it adds invalid conversations to the enemy
--- Somehow doesn't work if set to mod.NilValue in enemyReplacements
-enemyData.TrainingMelee = nil
 -- Modified BaseVulnerableEnemy for all Hades enemies
-enemyData.BaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
+mod.EnemyData.BaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
 -- Modified BaseVulnerableEnemy just for Hades bosses, which need some modifications
-enemyData.HadesBossBaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
+mod.EnemyData.HadesBossBaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
+
+-- Remove data from Hades that we don't want to use (e.g. enemies in Asphodel that are already implemented in Hades II)
+for _, name in ipairs(mod.EnemyNameRemovals) do
+	mod.EnemyData[name] = nil
+end
 
 -- Some enemies exist in both Hades and Hades II, so we need to rename the Hades enemies
 for oldName, newName in pairs(mod.EnemyNameMappings) do
-	if enemyData[oldName] then
-		enemyData[newName] = enemyData[oldName]
-		enemyData[oldName] = nil
+	if mod.EnemyData[oldName] then
+		mod.EnemyData[newName] = mod.EnemyData[oldName]
+		mod.EnemyData[oldName] = nil
 		mod.DebugPrint("Renamed enemy: " .. oldName .. " to " .. newName .. " in EnemyData.lua", 4)
 	end
 	-- Update the name in dependent fields
 	-- Inherit properties from this name
-	mod.UpdateField(enemyData, oldName, newName, { "InheritFrom" }, "EnemyData.lua")
+	mod.UpdateField(mod.EnemyData, oldName, newName, { "InheritFrom" }, "EnemyData.lua")
 	-- If an enemy is spawned, this enemy cannot spawn
-	mod.UpdateField(enemyData, oldName, newName, { "GeneratorData", "BlockEnemyTypes" }, "EnemyData.lua")
+	mod.UpdateField(mod.EnemyData, oldName, newName, { "GeneratorData", "BlockEnemyTypes" }, "EnemyData.lua")
 	-- Other enemies can spawn this enemy
-	mod.UpdateField(enemyData, oldName, newName, { "SpawnOptions" }, "EnemyData.lua")
+	mod.UpdateField(mod.EnemyData, oldName, newName, { "SpawnOptions" }, "EnemyData.lua")
 end
 -- For renamed weapon names
 for oldName, newName in pairs(mod.EnemyWeaponMappings) do
-	mod.UpdateField(enemyData, oldName, newName, { "WeaponOptions" }, "EnemyData.lua")
+	mod.UpdateField(mod.EnemyData, oldName, newName, { "WeaponOptions" }, "EnemyData.lua")
 end
 
 -- Some enemies need to be modified so much, it's easier to redefine them
 -- This is true for most traps
-mod.ModifyEnemyTrapData(enemyData)
+mod.ModifyEnemyTrapData(mod.EnemyData)
 
 -- Replaces the key with the new value instead of modifying
 -- This is done AFTER data inheritance is processed
 local enemyReplacements = {
 	BaseVulnerableEnemy = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DestroyDelay = mod.NilValue,
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 	},
 	HadesBossBaseVulnerableEnemy = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DestroyDelay = mod.NilValue,
 		DefaultAIData = {
 			DeepInheritance = true,
@@ -178,10 +161,29 @@ local enemyReplacements = {
 		-- SpawnerAI doesn't exist, spawn logic is in the weapon
 		AIOptions = { "AttackerAI", },
 	},
-	-- Copy paste the enemy in Hades II, but replace some animations and effects in modifications
-	BloodlessGrenadierElite = game.DeepCopyTable(game.EnemyData.BloodlessGrenadier_Elite),
 	-- Setting this to an empty table in the enemy doesn't work, so resetting the keys that break the animations here
 	Harpy = {
+		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+	},
+
+	-- ASPHODEL
+	-- Copy pasting the enemy from Hades II, but replacing some animations and effects in modifications
+	-- The name here should be the name of the enemy we use in Hades, to make sure we don't accidentally change data for the Hades II enemy
+	HadesBloodlessNaked = game.DeepCopyTable(game.EnemyData.BloodlessNaked),
+	HadesBloodlessNakedElite = game.DeepCopyTable(game.EnemyData.BloodlessNaked_Elite),
+	HadesBloodlessGrenadier = game.DeepCopyTable(game.EnemyData.BloodlessGrenadier),
+	HadesBloodlessGrenadierElite = game.DeepCopyTable(game.EnemyData.BloodlessGrenadier_Elite),
+	HadesBloodlessSelfDestruct = game.DeepCopyTable(game.EnemyData.BloodlessSelfDestruct),
+	HadesBloodlessSelfDestructElite = game.DeepCopyTable(game.EnemyData.BloodlessSelfDestruct_Elite),
+	HadesBloodlessPitcher = game.DeepCopyTable(game.EnemyData.BloodlessPitcher),
+	HadesBloodlessPitcherElite = game.DeepCopyTable(game.EnemyData.BloodlessPitcher_Elite),
+	HadesBloodlessWaveFist = game.DeepCopyTable(game.EnemyData.BloodlessWaveFist),
+	HadesBloodlessWaveFistElite = game.DeepCopyTable(game.EnemyData.BloodlessWaveFist_Elite),
+	HadesSpreadShotUnit = game.DeepCopyTable(game.EnemyData.SpreadShotUnit),
+	HadesSpreadShotUnitElite = game.DeepCopyTable(game.EnemyData.SpreadShotUnit_Elite),
+	BloodlessNakedBerserker = game.DeepCopyTable(game.EnemyData.BloodlessBerserker),
+	BloodlessNakedBerserkerElite = game.DeepCopyTable(game.EnemyData.BloodlessBerserker_Elite),
+	HydraHeadImmortal = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
 }
@@ -226,6 +228,8 @@ local enemyModifications = {
 	},
 	ThiefMineLayer = {
 		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
+		-- The intro encounter is broken, there is nothing happening after the two enemies die
+		RequiredIntroEncounter = mod.NilValue,
 		DefaultAIData = {
 			AttackWhileBlendingIntervalMin = 2.0,
 			AttackWhileBlendingIntervalMax = 2.5,
@@ -277,6 +281,17 @@ local enemyModifications = {
 		},
 		OnDeathFunctionName = "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		BlockRaiseDead = true,
+		-- From 1325
+		HealthBuffer = 2200,
+		-- From 850
+		MaxHealth = 500,
+		DefaultAIData = {
+			-- How long it waits before moving again while firing the beams
+			FireDuration = 5.75,
+			-- Sort of acts as a PreAttackDuration as well
+			MoveWithinRangeTimeoutMin = 2.0,
+			MoveWithinRangeTimeoutMax = 3.5,
+		},
 	},
 	HeavyRangedSplitterFragment = {
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
@@ -295,12 +310,10 @@ local enemyModifications = {
 		ActivateAnimation = "EnemyActivationFadeInWretchSwarmerContainer",
 	},
 	LightSpawner = {
-		-- Makes sure we call the modded SpawnerAI function instead of HandleSpawnerBurst
-		IsModdedHadesEnemy = true,
 		StunAnimations = { Default = "SpawnerAttackAnim", },
 		DeathFx = "BreakableDeathAnim",
 		DeathGraphic = "SpawnerDeath",
-		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon" },
+		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon", },
 		DefaultAIData = { DeepInheritance = true, },
 		OnDamagedFunctionName = "AggroSpawns",
 		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
@@ -313,6 +326,9 @@ local enemyModifications = {
 	},
 	HarpySupportUnit = {
 		AIOptions = { "HarpySupportAI" },
+	},
+	Harpy = {
+		InvulnerableFx = "Invincibubble",
 	},
 	Harpy3 = {
 		BossPresentationTextLineSets = {
@@ -329,47 +345,313 @@ local enemyModifications = {
 	},
 
 	-- ASPHODEL
-	-- Need to manually modify, as the enemy is DeepCopyTable'd above
-	BloodlessGrenadierElite = {
+	LightSpawnerElite = {
+		StunAnimations = { Default = "SpawnerAttackAnim", },
+		DeathFx = "BreakableDeathAnim",
+		DeathGraphic = "SpawnerDeath",
+		WeaponOptions = { "HadesLightSpawnerEliteSpawnerWeapon", },
+		DefaultAIData = { DeepInheritance = true, },
+		OnDamagedFunctionName = "AggroSpawns",
+		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
+		BlockRaiseDead = true,
+	},
+	-- Need to manually modify these fields, as the enemies are DeepCopyTable'd from Hades II above
+	HadesBloodlessNaked = {
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessNakedElite" },
+		},
+	},
+	HadesBloodlessNakedSummoned = {
+		InheritFrom = { "HadesBloodlessNaked" },
+		ActivateFx = "nil",
+	},
+	HadesBloodlessNakedElite = {
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessNaked" },
+		},
+	},
+	BloodlessNakedBerserker = {
+		RequiredIntroEncounter = "BerserkerIntro",
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "BloodlessNakedBerserkerElite" },
+		},
+	},
+	BloodlessNakedBerserkerElite = {
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "BloodlessNakedBerserker" },
+		},
+	},
+	BloodlessNakedBerserkerEliteSummoned = {
+		InheritFrom = { "BloodlessNakedBerserkerElite" },
+		ActivateFx = "nil",
+	},
+	HadesBloodlessWaveFist = {
+		RequiredIntroEncounter = "WaveFistIntro",
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessWaveFistElite" },
+		},
+	},
+	HadesBloodlessWaveFistElite = {
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessWaveFist" },
+		},
+	},
+	HadesBloodlessGrenadier = {
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessGrenadierElite" },
+		},
+	},
+	HadesBloodlessGrenadierElite = {
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessGrenadier" },
+		},
+	},
+	HadesBloodlessSelfDestruct = {
+		RequiredIntroEncounter = "SelfDestructIntro",
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessSelfDestructElite" },
+		},
+	},
+	HadesBloodlessSelfDestructElite = {
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessSelfDestruct" },
+		},
+	},
+	HadesBloodlessPitcher = {
+		RequiredIntroEncounter = "PitcherIntro",
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessPitcherElite" },
+		},
+	},
+	HadesBloodlessPitcherElite = {
+		ActivateFx = "EnemySummonRune",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesBloodlessPitcher" },
+		},
+	},
+	HadesSpreadShotUnit = {
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesSpreadShotUnitElite" },
+		},
+	},
+	HadesSpreadShotUnitElite = {
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		GeneratorData = {
+			BlockEnemyTypes = { "HadesSpreadShotUnit" },
+		},
+	},
+	-- Normal/new Hades enemies for Asphodel
+	FreezeShotUnit = {
+		StunAnimations = { Default = "EnemyMedusaOnHit" },
+		ActivateFx = "EnemySummonRuneMedium",
+		ActivateAnimation = "EnemyActivationFadeInMedusaHeadContainer",
+		DeathAnimation = "EnemyMedusaHeadDeath",
+		DestroyDelay = 3.0,
+	},
+	RangedBurrower = {
+		StunAnimations = { Default = "EnemyBoneDraconOnHit" },
+		UseActivatePresentation = false,
+	},
+	CrusherUnit = {
+		StunAnimations = { Default = "CrusherUnitOnHit" },
+		ActivateAnimation = "EnemyActivationFadeInCrusherUnitContainer",
+		DeathFx = "EnemyDeathFxBone",
+		DeathAnimation = "CrusherUnitDeathVFX",
+		DestroyDelay = 1.2,
+		PostAggroAI = "ModsNikkelMHadesBiomesSkyAttackerAI",
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "CrusherUnitTouchdown",
+		},
+		MaxHealth = 200,
+	},
+	ShieldRanged = {
+		StunAnimations = { Default = "HealRangedCrystal4" },
+		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
+		DeathAnimation = "HealRangedDeath",
+		DeathFx = "HealRangedDeath",
+		Tethers = {
+			[1] = { Distance = 20 },
+			[2] = { Distance = 20 },
+			[3] = { Distance = 20 }
+		},
+		SpawnEvents = {
+			{
+				FunctionName = "CreateTethers",
+				Threaded = true,
+			},
+		},
+	},
+	ShieldRangedMiniBoss = {
+		StunAnimations = { Default = "HealRangedCrystal4" },
+		ActivateFx = "EnemySummonRuneExtraLarge",
+		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
+		DeathAnimation = "HealRangedDeathMiniBoss",
+		DeathFx = "HealRangedDeathMiniBoss",
+	},
+	SpreadShotUnitMiniboss = {
+		-- In Hades II, projectiles can't be destroyed by attacks by default
+		-- So we change the difficulty introduced by the shrine to have all four enemies attack at once, as the invulnerable projectiles are actually easier to dodge than the normal attacks
+		-- As the default difficulty increases, the cooldowns for the attacks are increased slightly in the WeaponData
+		-- The typo is intentional
+		ShrineDefualtAIDataOverwrites = {
+			MaxAttackers = 4,
+		},
+		ShrineWeaponOptionsOverwrite = mod.NilValue,
+	},
+	-- ASPHODEL BOSS - HYDRA
+	HydraHeadImmortal = {
+		AltHealthBarTextIds = {
+			[1] = {
+				GameStateRequirements = { RequiredPlayed = { "/VO/ZagreusField_3147" } },
+				Requirements = mod.NilValue,
+			},
+		},
+		InvulnerableFx = "HydraBubble",
+		AIStages = {
+			[2] = {
+				SelectRandomAIStage = mod.NilValue,
+				RandomSpawnEncounter = { "HydraHeads1", "HydraHeads3", "HydraHeads3" },
+			},
+			[4] = {
+				SelectRandomAIStage = mod.NilValue,
+				RandomSpawnEncounter = { "HydraHeads5", "HydraHeads6" },
+			},
+		},
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "HydraTouchdown",
+			-- Lining up with when the head actually touches the ground
+			Delay = 0.23,
+		},
+		-- SpawnEvents = {
+		-- 	{
+		-- 		FunctionName = "CreateTethers",
+		-- 		Threaded = true,
+		-- 	},
+		-- },
+		-- While Tethers are broken - enemy returns to spawnpoint after attacking
+		DefaultAIData = {
+			MoveToId = 480903,
+			MoveWithinRange = true,
+			MoveWithinRangeTimeout = 1.0,
+		},
+	},
+	-- Spawned heads
+	BaseHydraHead = {
+		StunAnimations = { Default = "EnemyHydraOnHit" },
+		ActivateFx = "nil",
+		ActivateAnimation = "HydraHeadLavaBubbles",
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "HydraTouchdown",
+			Delay = 0.23,
+		},
+		-- SpawnEvents = {
+		-- 	{
+		-- 		FunctionName = "CreateTethers",
+		-- 		Threaded = true,
+		-- 	},
+		-- },
+		-- While Tethers are broken - enemy returns to nearest spawnpoint after attacking
+		DefaultAIData = {
+			-- Is overwritten by the actual spawnpoint in ModsNikkelMHadesBiomesRememberHydraSpawnpoint
+			MoveToClosestId = { 506375, 506376, 506377, 506378, 506380, 506381, },
+			MoveWithinRange = true,
+			MoveWithinRangeTimeout = 1.0,
+		},
+		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
+		HasOutline = true,
+		BlockCharm = true,
+		ImmuneToPolymorph = true,
+		BlockRaiseDead = true,
+	},
+	HydraTooth = {
+		StunAnimations = { Default = "HydraToothLanded" },
+		ActivateFx = "nil",
+		ActivateAnimation = "nil",
+
+		WeaponOptions = mod.NilValue,
+		-- Adapted from TyphonHeadEgg
+		Groups = { "EnemyTeam", "GroundEnemies" },
+		UseActivatePresentation = false,
+		HealthBarType = "Small",
+		BlockRaiseDead = true,
+		OnHitShake = { Distance = 3, Speed = 300, Duration = 0.15 },
+		DefaultAIData = {
+			DeepInheritance = true,
+			SpawnOptions = { "HadesBloodlessNaked" },
+			HatchDuration = 5,
+		},
+		TriggerGroups = { "HeroTeam" },
+		StartCharmedDataOverrides = { TriggerGroups = { "EnemyTeam" }, },
+		IncomingDamageModifiers = { { NonPlayerMultiplier = 0.0, }, },
+		AIOptions = { "ModsNikkelMHadesBiomesHydraToothAI", },
+	},
+	HydraTooth2 = {
+		DefaultAIData = {
+			DeepInheritance = true,
+			SpawnOptions = { "BloodlessNakedBerserkerElite" },
+			HatchDuration = 5,
+		},
 	},
 
 	-- These enemies have not been implemented yet
-	Chariot = {
-		LargeUnitCap = mod.NilValue,
-	},
-	ChariotSuicide = {
-		LargeUnitCap = mod.NilValue,
-	},
-	BloodlessNaked = {
-		LargeUnitCap = mod.NilValue,
-	},
-	BloodlessNakedBerserker = {
-		LargeUnitCap = mod.NilValue,
-	},
-	BloodlessWaveFist = {
-		LargeUnitCap = mod.NilValue,
-	},
-	BloodlessGrenadier = {
-		LargeUnitCap = mod.NilValue,
-	},
-	BloodlessSelfDestruct = {
-		LargeUnitCap = mod.NilValue,
-	},
-	BloodlessPitcher = {
-		LargeUnitCap = mod.NilValue,
-	},
-	SatyrRanged = {
-		LargeUnitCap = mod.NilValue,
-	},
-	SatyrRangedMiniboss = {
-		LargeUnitCap = mod.NilValue,
-	},
-	RatThug = {
-		LargeUnitCap = mod.NilValue,
-	},
+	-- Chariot = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
+	-- ChariotSuicide = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
+	-- SatyrRanged = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
+	-- SatyrRangedMiniboss = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
+	-- RatThug = {
+	-- 	LargeUnitCap = mod.NilValue,
+	-- },
 
 	-- ENVIRONMENT
 	Breakable = {
@@ -401,6 +683,35 @@ local enemyModifications = {
 			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
 		},
 	},
+	BreakableAsphodel = {
+		CannotDieFromDamage = true,
+		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
+		DeathAnimation = "BreakableDeathAnim",
+		DeathSound = "/SFX/CeramicPotSmash",
+		SetupEvents = {
+			{
+				FunctionName = "RandomizeObject",
+				Args = {
+					RandomizeSets = {
+						{
+							Animation = { "BreakableAsphodelIdle" },
+						},
+						{
+							Animation = { "BreakableAsphodelIdle2" },
+						},
+						{
+							Animation = { "BreakableAsphodelIdle3" },
+						},
+					},
+				},
+			},
+		},
+		ValueOptions = {
+			[1] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[2] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+		},
+	},
 }
 
 local renamedEnemyModifications = {}
@@ -417,6 +728,7 @@ end
 
 -- Some keys were renamed in the DefaultAIData property
 local enemyKeyReplacements = {
+	RequiredIntroEncounter = "IntroEncounterName",
 	DefaultAIData = {
 		AIAttackDistance = "AttackDistance",
 		AIBufferDistance = "RetreatBufferDistance",
@@ -439,7 +751,7 @@ local enemyKeyReplacements = {
 	ValueOptions = "BreakableValueOptions",
 }
 
-ApplyModificationsAndInheritEnemyData(enemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
+ApplyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
 
 -- Modifications to Hades II enemies
 -- Only modify enemies that are not being used in Hades II in this way!

@@ -1,9 +1,10 @@
 -- This is for the chaos gate that functions as the run start door for a Hades run
+-- Even though we set a different animation, this is the base obstacle we still need to mute the sound
 
 local order = {
-  "Name",
-  "InheritFrom",
-  "OverwriteLocalization"
+	"Name",
+	"InheritFrom",
+	"OverwriteLocalization"
 }
 
 local newData = {

@@ -43,8 +43,7 @@ local weaponModifications = {
 		},
 	},
 	HadesLightSpawnerSpawnerWeapon = {
-		Requirements =
-		{
+		Requirements = {
 			MaxActiveSpawns = 5,
 			RequiresNotCharmed = true,
 		},
@@ -89,6 +88,7 @@ local weaponModifications = {
 	HeavyRangedWeaponSplitter = {
 		InheritFrom = { "HeavyRangedWeapon", },
 		AIData = {
+			DeepInheritance = true,
 			ProjectileName = "HeavyRangedWeaponSplitter",
 			NumProjectiles = 8,
 			ProjectileStartAngleOffset = 45,
@@ -98,6 +98,7 @@ local weaponModifications = {
 	},
 	HeavyRangedSplitterFragment = {
 		AIData = {
+			DeepInheritance = true,
 			TargetClosestOfTypes = { "HeavyRangedSplitterMiniboss" },
 			TargetClosest = mod.NilValue,
 			TargetFriends = mod.NilValue,
@@ -258,9 +259,17 @@ local weaponModifications = {
 		},
 	},
 	HarpyLightningLine = {
+		Requirements = {
+			BlockAsFirstWeapon = true,
+		},
 		AIData = {
 			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightningTisiphone",
+		},
+	},
+	HarpyWhipLasso = {
+		Requirements = {
+			ForceFirst = true,
 		},
 	},
 	HarpyLungeSurgeBeam = {
@@ -274,6 +283,7 @@ local weaponModifications = {
 	HarpySlowBeam360 = {
 		Requirements = {
 			MinAttacksBetweenUse = 2,
+			BlockAsFirstWeapon = true,
 		},
 		AIData = {
 			ProjectileName = "HarpySlowBeam",
@@ -297,6 +307,246 @@ local weaponModifications = {
 	SummonTisiphoneFog = {
 		AIData = {
 			ProjectileName = "TisiphoneFog",
+		},
+	},
+
+	-- ASPHODEL
+	HadesLightSpawnerEliteSpawnerWeapon = {
+		Requirements = {
+			MaxActiveSpawns = 6,
+			RequiresNotCharmed = true,
+		},
+		AIData = {
+			SpawnBurstDelay = 4.5,
+			SpawnsPerBurst = 3,
+			SpawnRadius = 0,
+			SpawnRate = 1.2,
+			SpawnDelay = 0.6,
+			SpawnedAggroTetherDistance = 1200,
+			SpawnAggroed = false,
+			SpawnerOptions = { "SwarmerElite" },
+			NoProjectile = true,
+			SpawnBurstOnFire = true,
+			MaxActiveSpawns = 6,
+			SpawnsSkipActivatePresentation = true,
+		},
+	},
+	-- Swap which weapon is used first due to how the activate animation was changed
+	RangedBurrowerBurrow = {
+		AIData = {
+			ForceFirst = false,
+		},
+		ForceFirst = mod.NilValue,
+	},
+	RangedBurrowerWeapon = {
+		AIData = {
+			ForceFirst = true,
+		},
+		ForceFirst = mod.NilValue,
+	},
+	-- ASPHODEL - Witches Circle
+	SpreadShotMinibossRadial = {
+		-- Fixing the animations and increasing the cooldown to scale with difficulty of not being able to destroy projectiles
+		-- Decreasing cooldown again if the shrine upgrade is active, to increase difficulty
+		AIData = {
+			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
+			PreAttackWaitForAnimation = true,
+			PostAttackCooldown = mod.NilValue,
+			PostAttackCooldownMin = 2.0,
+			PostAttackCooldownMax = 3.0,
+		},
+		ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",
+		ShrineMetaUpgradeRequiredLevel = 1,
+		ShrineAIDataOverwrites = {
+			PostAttackCooldownMin = 1.5,
+			PostAttackCooldownMax = 1.5,
+		},
+	},
+	SpreadShotMinibossCone = {
+		AIData = {
+			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
+			PreAttackWaitForAnimation = true,
+			PostAttackCooldown = mod.NilValue,
+			PostAttackCooldownMin = 2.0,
+			PostAttackCooldownMax = 3.0,
+		},
+		ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",
+		ShrineMetaUpgradeRequiredLevel = 1,
+		ShrineAIDataOverwrites = {
+			PostAttackCooldownMin = 1.5,
+			PostAttackCooldownMax = 1.5,
+		},
+	},
+	SpreadShotMinibossCross = {
+		AIData = {
+			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
+			PreAttackWaitForAnimation = true,
+			PostAttackCooldown = mod.NilValue,
+			PostAttackCooldownMin = 2.0,
+			PostAttackCooldownMax = 3.0,
+		},
+		ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",
+		ShrineMetaUpgradeRequiredLevel = 1,
+		ShrineAIDataOverwrites = {
+			PostAttackCooldownMin = 1.5,
+			PostAttackCooldownMax = 1.5,
+		},
+	},
+	-- ASPHODEL - HYDRA
+	HydraCrusher = {
+		GameStateRequirements = {
+			-- Is broken
+			Skip = true,
+		},
+	},
+	HydraLunge = {
+		Requirements = {
+			MinAttacksBetweenUse = 2,
+			MinPlayerDistance = 350,
+			MaxConsecutiveUses = 3,
+		},
+		AIData = {
+			PreAttackDuration = 0.8,
+			MoveWithinRangeTimeout = 0.5,
+		},
+	},
+	HydraLungeUntethered = {
+		Requirements = {
+			MinAttacksBetweenUse = 0,
+			MaxConsecutiveUses = 3,
+		},
+	},
+	HydraSlam = {
+		Requirements = {
+			MaxPlayerDistance = 600,
+			MinAttacksBetweenUse = 2,
+			ForceUseIfReady = true,
+		},
+		AIData = {
+			PostAttackDuration = 0.5,
+			MoveWithinRange = false,
+		},
+	},
+	HydraSlamUntethered = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
+			ForceUseIfReady = false,
+			MaxPlayerDistance = 800,
+		},
+	},
+	HydraSlamScattered = {
+		Requirements = {
+			MaxPlayerDistance = 9999,
+		},
+	},
+	HydraSlamScatteredFrenzy = {
+		Requirements = {
+			MaxPlayerDistance = 9999,
+		},
+	},
+	HydraPull = {
+		Requirements = {
+			MinAttacksBetweenUse = 3,
+			ForceUseIfReady = true,
+		},
+	},
+	HydraLavaSpit = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
+			ForceUseIfReady = true,
+		},
+	},
+	HydraLavaSpit2 = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
+			MinPlayerDistance = 450,
+		},
+	},
+	HydraLavaSpitFrenzy = {
+		Requirements = {
+			MaxConsecutiveUses = 1,
+		},
+	},
+	HydraLavaSpitExterior = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
+			ForceUseIfReady = true,
+			MinPlayerDistance = 450,
+		},
+	},
+	HydraLavaSpitInterior = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
+			MaxPlayerDistance = 700,
+		},
+	},
+	HydraDart = {
+		Requirements = {
+			MinAttacksBetweenUse = 2,
+		},
+		AIData = {
+			AIMoveWithinRangeTimeout = 1.0,
+			PostAttackDuration = 0.5,
+		},
+	},
+	HydraDartVolley = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
+		},
+	},
+	HydraRoar = {
+		Requirements = {
+			MaxConsecutiveUses = 1,
+			ForceUseIfReady = true,
+		},
+	},
+	HydraRoarVolleyLeft = {
+		Requirements = {
+			MaxConsecutiveUses = 1,
+			ForceUseIfReady = true,
+		},
+	},
+	HydraRoarVolleyRight = {
+		Requirements = {
+			MaxConsecutiveUses = 1,
+			ForceUseIfReady = true,
+		},
+	},
+	HydraRoarVolleyInsideOut = {
+		Requirements = {
+			MaxConsecutiveUses = 1,
+			ForceUseIfReady = true,
+		},
+	},
+	HydraSummon = {
+		Requirements = {
+			MinAttacksBetweenUse = 3,
+			ForceUseIfReady = true,
+			MaxActiveSpawns = 10,
+		},
+	},
+	HydraSummon2 = {
+		Requirements = {
+			MinAttacksBetweenUse = 3,
+			ForceUseIfReady = true,
+			MaxActiveSpawns = 5,
+		},
+	},
+	HydraSummonSpread = {
+		Requirements = {
+			MinAttacksBetweenUse = 4,
+			ForceUseIfReady = true,
+			MaxActiveSpawns = 5,
+		},
+	},
+	HydraSpawns = {
+		Requirements = {
+			MaxActiveSpawns = 10,
+		},
+	},
+	HydraHeal = {
+		Requirements = {
+			MinAttacksBetweenUse = 1,
 		},
 	},
 }
@@ -364,45 +614,3 @@ local weaponKeyReplacements = {
 }
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponKeyReplacements)
-
--- Projectiles
-local function applyModificationsAndInheritProjectileData(base, modifications, projectileKeyReplacements)
-	-- Apply modifications
-	for projectileName, projectileData in pairs(modifications) do
-		if not base[projectileName] then
-			base[projectileName] = {}
-		end
-		mod.ApplyModifications(base[projectileName], projectileData)
-	end
-
-	-- Process data inheritance and add the new data to the game's global
-	base = mod.AddTableKeysSkipDupes(game.ProjectileData, base, nil)
-	for projectileName, projectileData in pairs(base) do
-		mod.RenameKeys(projectileData, projectileKeyReplacements, projectileName)
-
-		game.ProcessDataInheritance(projectileData, game.ProjectileData)
-		base[projectileName] = projectileData
-	end
-	-- Don't skip duplicates, since we have already added all the data before
-	-- AddTableKeysSkipDupes also removed duplicates, so overwriting here will only overwrite keys we added ourselves
-	game.OverwriteTableKeys(game.ProjectileData, base)
-end
-
-local projectileModifications = {
-	HeavyRangedWeapon = {
-		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
-	},
-	HeavyRangedWeaponSplitter = {
-		InheritFrom = { "HeavyRangedWeapon", },
-		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
-	},
-	HarpyLightning = {
-		InheritFrom = { "NoSlowFrameProjectile", },
-	},
-}
-
-local projectileKeyReplacements = {
-	CancelVulnerabilitySpark = "CancelHitSpark",
-}
-
-applyModificationsAndInheritProjectileData(mod.HadesProjectileData, projectileModifications, projectileKeyReplacements)

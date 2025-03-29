@@ -16,6 +16,10 @@ local newData = {
 		DisplayName = "TARTAROS (Kâbus)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DisplayName = "ASFODEL (Kâbus)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Zagreus",
 		Description = "Yeraltı Dünyasının Prensi",

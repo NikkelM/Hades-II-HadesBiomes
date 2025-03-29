@@ -60,4 +60,13 @@ function mod.ModifyEnemyTrapData(enemyData)
 		WeaponName = "DartTrapWeapon",
 		OutgoingDamageModifiers = { { NonPlayerMultiplier = 33.33 } }
 	}
+
+	-- Not being used anywhere - defined in BaseG, but doesn't make sense there - may have been left in by accident
+	game.WeaponData.LavaSplash.IgnoreOnHitEffects = true
+	game.WeaponData.LavaSplash.AIData = game.WeaponData.LavaSplash.AIData or
+			{
+				DeepInheritance = true,
+				PreAttackDuration = 0.1,
+				PostAttackDuration = 3.0,
+			}
 end

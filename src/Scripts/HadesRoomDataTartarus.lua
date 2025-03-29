@@ -141,7 +141,7 @@ mod.RoomData.Tartarus = {
 		InheritFrom = { "BaseTartarus" },
 
 		LinkedRooms = { "A_Boss01", "A_Boss02", "A_Boss03" },
-		-- TODO: comment to force earlier
+
 		ForceAtBiomeDepthMin = 11,
 		ForceAtBiomeDepthMax = 11,
 
