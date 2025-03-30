@@ -232,15 +232,28 @@ function mod.UpdatePropertyName(tableToModify, propertyNameToFind, newPropertyNa
 		end
 	end
 
-	local renamed = false
-	for name, data in pairs(tableToModify) do
-		local pathCopy = { table.unpack(propertyPath) }
-		data, renamed = updateProperty(data, pathCopy)
-		if renamed then
+	-- Handle renaming at the top level if propertyPath is empty
+	if #propertyPath == 0 then
+		if tableToModify[propertyNameToFind] ~= nil then
+			tableToModify[newPropertyName] = tableToModify[propertyNameToFind]
+			tableToModify[propertyNameToFind] = nil
 			mod.DebugPrint(
-				"Renamed property " ..
-				propertyNameToFind .. " to " .. newPropertyName .. " at path " .. table.concat(propertyPath, "-") ..
-				" for " .. (name or "an unknown entry") .. " in " .. (tableName or "an unknown table"), 4)
+				"Renamed top-level property " ..
+				propertyNameToFind .. " to " .. newPropertyName ..
+				" in " .. (tableName or "an unknown table"), 4)
+		end
+	else
+		-- Handle nested renaming
+		local renamed = false
+		for name, data in pairs(tableToModify) do
+			local pathCopy = { table.unpack(propertyPath) }
+			data, renamed = updateProperty(data, pathCopy)
+			if renamed then
+				mod.DebugPrint(
+					"Renamed property " ..
+					propertyNameToFind .. " to " .. newPropertyName .. " at path " .. table.concat(propertyPath, "-") ..
+					" for " .. (name or "an unknown entry") .. " in " .. (tableName or "an unknown table"), 4)
+			end
 		end
 	end
 end
