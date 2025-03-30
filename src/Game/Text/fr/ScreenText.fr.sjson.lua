@@ -1,4 +1,4 @@
-local screenTextFile = rom.path.combine(rom.paths.Content, 'Game/Text/fr/ScreenText.fr.sjson')
+local screenTextFile = rom.path.combine(rom.paths.Content(), 'Game/Text/fr/ScreenText.fr.sjson')
 
 local order = {
 	"Id",
