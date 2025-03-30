@@ -118,7 +118,6 @@ end
 
 -- Remove all groups in CodexData that are not in the mappings, and rename the others
 local updatedCodexData = {}
--- "Save" the moved entries
 updatedCodexData.SavedEntries = {}
 updatedCodexData.SavedEntries.NPC_FurySister_01 = hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01
 updatedCodexData.SavedEntries.Harpy2 = hadesCodexData.ChthonicGods.Entries.Harpy2
@@ -126,6 +125,10 @@ updatedCodexData.SavedEntries.Harpy3 = hadesCodexData.ChthonicGods.Entries.Harpy
 updatedCodexData.SavedEntries.Theseus = hadesCodexData.ChthonicGods.Entries.Theseus
 updatedCodexData.SavedEntries.Minotaur = hadesCodexData.ChthonicGods.Entries.Minotaur
 updatedCodexData.SavedEntries.NPC_Hades_01 = hadesCodexData.ChthonicGods.Entries.NPC_Hades_01
+updatedCodexData.SavedEntries.NPC_Hades_01.Entries[1].UnlockThreshold = 1
+updatedCodexData.SavedEntries.NPC_Hades_01.Entries[2].UnlockThreshold = 3
+updatedCodexData.SavedEntries.NPC_Hades_01.Entries[3].UnlockThreshold = 7
+updatedCodexData.SavedEntries.NPC_Hades_01.Entries[4].UnlockThreshold = 10
 
 for groupName, groupData in pairs(hadesCodexData) do
 	if codexGroupNameMappings[groupName] then
@@ -133,12 +136,26 @@ for groupName, groupData in pairs(hadesCodexData) do
 		updatedCodexData[newGroupName] = groupData
 		mod.DebugPrint("Renamed " .. groupName .. " to " .. newGroupName .. " in CodexData", 4)
 
-		-- Other changes
-		-- TODO: Get proper icons
 		-- Map unlock requirements to the new system
 		if groupData.UnlockType == "Enter" then
+			-- TODO: Get proper icons (to distinguish from H1 and H2 groups - something with the nightmare theme?)
 			groupData.Icon = "GUI\\Screens\\Codex\\Icon-Places"
-		elseif groupData.UnlockType == "Slay" then
+			for biomeName, biomeCollection in pairs(groupData.Entries) do
+				for _, entry in ipairs(biomeCollection.Entries) do
+					if entry.UnlockThreshold then
+						entry.UnlockGameStateRequirements =
+						{
+							{
+								Path = { "GameState", "BiomeVisits", biomeName },
+								Comparison = ">=",
+								Value = entry.UnlockThreshold,
+							},
+						}
+						entry.UnlockThreshold = nil
+					end
+				end
+			end
+		elseif groupData.UnlockType == "Slay" or groupData.UnlockType == "SlayAlt" then
 			groupData.Icon = "GUI\\Screens\\Codex\\Icon-EnemiesUW"
 			for enemyName, enemyCollection in pairs(groupData.Entries) do
 				for _, entry in ipairs(enemyCollection.Entries) do
@@ -163,14 +180,28 @@ for groupName, groupData in pairs(hadesCodexData) do
 end
 -- Add the saved entries to the ModsNikkelMHadesBiomesEnemies group
 for entryName, entry in pairs(updatedCodexData.SavedEntries) do
+	-- Update the unlock requirements
+	for _, entryData in ipairs(entry.Entries) do
+		if entryData.UnlockThreshold then
+			entryData.UnlockGameStateRequirements = {
+				{
+					Path = { "GameState", "EnemyKills" },
+					SumOf = hadesEnemyCodexGroups[entryName] or { entryName },
+					Comparison = ">=",
+					Value = entryData.UnlockThreshold,
+				},
+			}
+			entryData.UnlockThreshold = nil
+		end
+	end
 	updatedCodexData.ModsNikkelMHadesBiomesEnemies.Entries[entryName] = entry
 end
 updatedCodexData.SavedEntries = nil
 hadesCodexData = updatedCodexData
 
 local additionalCodexTabs = {
-	{ X = -15, Y = -88, Animation = "GUI\\Screens\\Codex\\CategoryTab3", Highlight = "GUI\\Screens\\Codex\\CategoryTabHighlight3", Active = "GUI\\Screens\\Codex\\CategoryTabActiveHighlightOverlay3" },
-	{ X = 5,   Y = -88, Animation = "GUI\\Screens\\Codex\\CategoryTab2", Highlight = "GUI\\Screens\\Codex\\CategoryTabHighlight2", Active = "GUI\\Screens\\Codex\\CategoryTabActiveHighlightOverlay2" },
+	{ X = 0,  Y = -88, Animation = "GUI\\Screens\\Codex\\CategoryTab1", Highlight = "GUI\\Screens\\Codex\\CategoryTabHighlight1", Active = "GUI\\Screens\\Codex\\CategoryTabActiveHighlightOverlay1" },
+	{ X = 20, Y = -88, Animation = "GUI\\Screens\\Codex\\CategoryTab2", Highlight = "GUI\\Screens\\Codex\\CategoryTabHighlight2", Active = "GUI\\Screens\\Codex\\CategoryTabActiveHighlightOverlay2" },
 }
 
 for groupName, _ in pairs(hadesCodexOrdering) do
