@@ -1,4 +1,5 @@
-local screenTextFile = rom.path.combine(rom.paths.Content, 'Game/Text/it/ScreenText.it.sjson')
+-- Hooking CodexText for this language, as ScreenText has """" which sjson.hook doesn't handle correctly
+local screenTextFile = rom.path.combine(rom.paths.Content(), 'Game\\Text\\it\\CodexText.it.sjson')
 
 local order = {
 	"Id",
@@ -7,6 +8,7 @@ local order = {
 }
 
 local newData = {
+	-- Run history
 	{
 		Id = "RunHistoryScreen_RouteTartarus",
 		DisplayName = "Incubo",
@@ -25,6 +27,11 @@ local newData = {
 	},
 	{
 		Id = "RunHistoryScreen_RouteSurface",
+		DisplayName = "Incubo",
+	},
+	-- Codex
+	{
+		Id = "ModsNikkelMHadesBiomesCodexEntryTitleText",
 		DisplayName = "Incubo",
 	},
 }

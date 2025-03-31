@@ -22,6 +22,9 @@ mod.EnemyNameMappings = {
 	BloodlessWaveFistElite = "HadesBloodlessWaveFistElite",
 	SpreadShotUnit = "HadesSpreadShotUnit",
 	SpreadShotUnitElite = "HadesSpreadShotUnitElite",
+	-- ELYSIUM
+	-- STYX
+	Crawler = "HadesCrawler",
 }
 
 -- Enemies that should be removed from the Hades enemy data, as they already exist in Hades II. Also applies to Enemies.sjson

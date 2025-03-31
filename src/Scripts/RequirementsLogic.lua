@@ -139,18 +139,17 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 		ConsecutiveDeathsInRoom = "nameTable",
 		ConsecutiveClearsOfRoom = "nameTable",
 	}
-	local roomMappings = mod.AsphodelRoomNameMappings
 	for roomRequirement, requirementType in pairs(roomRequirementOptions) do
 		if requirements[roomRequirement] then
 			if requirementType == "string" then
-				requirements[roomRequirement] = roomMappings[requirements[roomRequirement]] or requirements[roomRequirement]
+				requirements[roomRequirement] = mod.AsphodelRoomNameMappings[requirements[roomRequirement]] or requirements[roomRequirement]
 			elseif requirementType == "table" then
 				for i, roomName in ipairs(requirements[roomRequirement]) do
-					requirements[roomRequirement][i] = roomMappings[roomName] or roomName
+					requirements[roomRequirement][i] = mod.AsphodelRoomNameMappings[roomName] or roomName
 				end
 			elseif requirementType == "nameTable" then
 				for i, roomName in ipairs(requirements[roomRequirement]) do
-					requirements[roomRequirement][i].Name = roomMappings[roomName.Name] or roomName.Name
+					requirements[roomRequirement][i].Name = mod.AsphodelRoomNameMappings[roomName.Name] or roomName.Name
 				end
 			end
 		end
