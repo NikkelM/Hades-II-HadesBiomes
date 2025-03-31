@@ -196,6 +196,18 @@ local function on_ready()
 		import "Game/Text/zh-CN/HelpText.zh-CN.sjson.lua"
 		import "Game/Text/zh-TW/HelpText.zh-TW.sjson.lua"
 
+		import "Game/Text/de/CodexText.de.sjson.lua"
+		import "Game/Text/en/CodexText.en.sjson.lua"
+		import "Game/Text/es/CodexText.es.sjson.lua"
+		import "Game/Text/fr/CodexText.fr.sjson.lua"
+		import "Game/Text/it/CodexText.it.sjson.lua"
+		import "Game/Text/ja/CodexText.ja.sjson.lua"
+		import "Game/Text/ko/CodexText.ko.sjson.lua"
+		import "Game/Text/pl/CodexText.pl.sjson.lua"
+		import "Game/Text/pt-BR/CodexText.pt-BR.sjson.lua"
+		import "Game/Text/ru/CodexText.ru.sjson.lua"
+		import "Game/Text/zh-CN/CodexText.zh-CN.sjson.lua"
+
 		import "Game/Text/de/ScreenText.de.sjson.lua"
 		import "Game/Text/el/ScreenText.el.sjson.lua"
 		import "Game/Text/en/ScreenText.en.sjson.lua"

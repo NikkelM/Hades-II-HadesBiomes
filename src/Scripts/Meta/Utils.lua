@@ -295,16 +295,18 @@ function mod.DecodeSjsonFile(filePath)
 	local fileString = fileHandle:read("*a")
 	fileHandle:close()
 
+	if filePath:find("pt%-BR") then
+		-- Cannot decode “, so replace it with '
+		fileString = string.gsub(fileString, '\\“', '\'')
+	elseif filePath:find("CodexText%.de") then
+		-- Replace mistakenly added """" instead of '"""
+		fileString = string.gsub(fileString, '""""', '\'"""')
+	end
+
 	-- Replace opening quadruple quotes with triple quotes and a newline
 	fileString = string.gsub(fileString, '= """"', '= """\n"')
 	-- Replace closing quadruple quotes with a newline and triple quotes
 	fileString = string.gsub(fileString, '""""', '"\n"""')
-
-	-- Exception for the pt-BR help text file
-	if filePath:find("pt%-BR") then
-		-- Cannot decode “, so replace it with '
-		fileString = string.gsub(fileString, '\\“', '\'')
-	end
 
 	-- Decode the string to a table
 	return sjson.decode(fileString)
