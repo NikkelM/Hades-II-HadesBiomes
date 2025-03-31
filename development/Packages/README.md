@@ -19,4 +19,8 @@ Copy the resulting `.pkg` and `.pkg_manifest` files to the `data/Content/Package
 
 Add the package name to `CustomPackageFileNames` in `RequiredFileData.lua`.
 
-Load the new package in `game.RoomData.ModsNikkelMHadesBiomesBaseRoom`.
+Load the new package in `game.RoomData.ModsNikkelMHadesBiomesBaseRoom`, or wherever else it needs to be loaded.
+
+## Setup
+
+To run the script, follow this guide: [Hades-Texture-Packer](https://github.com/excellent-ae/Hades-Texture-Packer/tree/main)

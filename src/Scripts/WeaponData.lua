@@ -24,10 +24,8 @@ end
 
 -- Some weapons exist in both Hades and Hades II, so we need to rename the Hades weapons
 for oldName, newName in pairs(mod.EnemyWeaponMappings) do
-	mod.HadesWeaponData[newName] = mod.HadesWeaponData[oldName]
-	mod.HadesWeaponData[oldName] = nil
-	-- Update the name in dependent fields
-	-- Inherit properties from this name
+	mod.UpdatePropertyName(mod.HadesWeaponData, oldName, newName, { }, "WeaponData")
+	-- Inherit properties from this weapon
 	mod.UpdateField(mod.HadesWeaponData, oldName, newName, { "InheritFrom" }, "WeaponData")
 end
 

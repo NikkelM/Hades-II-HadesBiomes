@@ -1,19 +1,10 @@
 -- Contains generic functions to handle migrating enemy data from Hades to Hades II
 
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
-local function ApplyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
-	-- Rename keys if the enemy is in EnemyNameMappings
-	for oldKey, newKey in pairs(mod.EnemyNameMappings) do
-		if modifications[oldKey] then
-			modifications[newKey] = modifications[oldKey]
-			modifications[oldKey] = nil
-			mod.DebugPrint("Renamed enemy modification " .. oldKey .. " to " .. newKey .. " in EnemyDataHandler", 4)
-		end
-		if replacements[oldKey] then
-			replacements[newKey] = replacements[oldKey]
-			replacements[oldKey] = nil
-			mod.DebugPrint("Renamed enemy replacement " .. oldKey .. " to " .. newKey .. " in EnemyDataHandler", 4)
-		end
+local function applyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
+	for oldName, newName in pairs(mod.EnemyNameMappings) do
+		mod.UpdatePropertyName(modifications, oldName, newName, { }, "EnemyDataHandler modifications")
+		mod.UpdatePropertyName(replacements, oldName, newName, { }, "EnemyDataHandler replacements")
 	end
 
 	-- Apply replacements/additions
@@ -106,18 +97,16 @@ end
 
 -- Some enemies exist in both Hades and Hades II, so we need to rename the Hades enemies
 for oldName, newName in pairs(mod.EnemyNameMappings) do
-	if mod.EnemyData[oldName] then
-		mod.EnemyData[newName] = mod.EnemyData[oldName]
-		mod.EnemyData[oldName] = nil
-		mod.DebugPrint("Renamed enemy: " .. oldName .. " to " .. newName .. " in EnemyData.lua", 4)
-	end
-	-- Update the name in dependent fields
+	mod.UpdatePropertyName(mod.EnemyData, oldName, newName, { }, "EnemyData.lua")
+	-- Update the names in dependent fields
 	-- Inherit properties from this name
 	mod.UpdateField(mod.EnemyData, oldName, newName, { "InheritFrom" }, "EnemyData.lua")
 	-- If an enemy is spawned, this enemy cannot spawn
 	mod.UpdateField(mod.EnemyData, oldName, newName, { "GeneratorData", "BlockEnemyTypes" }, "EnemyData.lua")
 	-- Other enemies can spawn this enemy
 	mod.UpdateField(mod.EnemyData, oldName, newName, { "SpawnOptions" }, "EnemyData.lua")
+	-- Used for the Codex
+	mod.UpdateField(mod.EnemyData, oldName, newName, { "GenusName" }, "EnemyData.lua")
 end
 -- For renamed weapon names
 for oldName, newName in pairs(mod.EnemyWeaponMappings) do
@@ -714,18 +703,6 @@ local enemyModifications = {
 	},
 }
 
-local renamedEnemyModifications = {}
-for oldName, newName in pairs(mod.EnemyNameMappings) do
-	if enemyModifications[oldName] then
-		renamedEnemyModifications[newName] = enemyModifications[oldName]
-		enemyModifications[oldName] = nil
-		mod.DebugPrint("Renamed enemy modification: " .. oldName .. " to " .. newName .. " in EnemyDataHandler", 4)
-	end
-end
-for key, value in pairs(renamedEnemyModifications) do
-	enemyModifications[key] = value
-end
-
 -- Some keys were renamed in the DefaultAIData property
 local enemyKeyReplacements = {
 	RequiredIntroEncounter = "IntroEncounterName",
@@ -751,7 +728,7 @@ local enemyKeyReplacements = {
 	ValueOptions = "BreakableValueOptions",
 }
 
-ApplyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
+applyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
 
 -- Modifications to Hades II enemies
 -- Only modify enemies that are not being used in Hades II in this way!

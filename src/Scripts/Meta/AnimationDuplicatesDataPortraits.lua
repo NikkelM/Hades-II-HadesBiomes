@@ -58,6 +58,70 @@ mod.HadesPortraitAnimationModifications = {
 	},
 }
 
+mod.HadesPortraitAnimationAdditions = {
+	-- Codex portraits where the names are duplicate between the games
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_AsphodelBiome",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BiomeAsphodel",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_ErebusBiome",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BiomeErebus",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_TartarusBiome",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BiomeTartarus",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_BloodlessBerserker",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BloodlessBerserker",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Grenadier",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BloodlessGrenadier",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Pitcher",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BloodlessPitcher",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_SelfDestruct",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BloodlessSelfDestruct",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Crawler",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Crawler",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_CrawlerMiniBoss",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_CrawlerMiniBoss",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Hades",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Hades",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Thug",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_WretchThug",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Zagreus",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Zagreus",
+	},
+}
+
 -- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly
 mod.HadesPortraitAnimationDuplicates = {
 	["PortraitEmoteNervous"] = true,

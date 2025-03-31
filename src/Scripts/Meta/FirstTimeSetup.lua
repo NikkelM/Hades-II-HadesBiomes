@@ -115,7 +115,7 @@ local function copyHadesHelpTexts()
 end
 
 -- Common function to copy and filter animations
-local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, modifications, animationType)
+local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, modifications, additions, animationType)
 	local animationsTable = sjson.decode_file(srcPath)
 
 	if rom.path.exists(destPath) then
@@ -145,6 +145,10 @@ local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 		end
 	end
 
+	for _, addition in ipairs(additions) do
+		table.insert(filteredAnimations, addition)
+	end
+
 	animationsTable.Animations = filteredAnimations
 
 	sjson.encode_file(destPath, animationsTable)
@@ -153,33 +157,37 @@ end
 local function copyHadesFxAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\Fx.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
-	local modifications = mod.HadesFxAnimationModifications
+	local modifications = mod.HadesFxAnimationModifications or {}
+	local additions = mod.HadesFxAnimationAdditions or {}
 	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates,
-		modifications, "Fx.sjson")
+		modifications, additions, "Fx.sjson")
 end
 
 local function copyHadesGUIAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\GUIAnimations.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename)
-	local modifications = {}
+	local modifications = mod.HadesGUIAnimationModifications or {}
+	local additions = mod.HadesGUIAnimationAdditions or {}
 	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.GUIAnimationMappings, mod.HadesGUIAnimationDuplicates,
-		modifications, "GUIAnimations.sjson")
+		modifications, additions, "GUIAnimations.sjson")
 end
 
 local function copyHadesPortraitAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\PortraitAnimations.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename)
-	local modifications = mod.HadesPortraitAnimationModifications
+	local modifications = mod.HadesPortraitAnimationModifications or {}
+	local additions = mod.HadesPortraitAnimationAdditions or {}
 	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.PortraitAnimationMappings,
-		mod.HadesPortraitAnimationDuplicates, modifications, "PortraitAnimations.sjson")
+		mod.HadesPortraitAnimationDuplicates, modifications, additions, "PortraitAnimations.sjson")
 end
 
 local function copyHadesCharacterAnimationsNPCs()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\CharacterAnimationsNPCs.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesCharacterAnimationsNPCsDestinationFilename)
-	local modifications = {}
+	local modifications = mod.HadesCharacterAnimationsNPCsModifications or {}
+	local additions = mod.HadesCharacterAnimationsNPCsAdditions or {}
 	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.CharacterAnimationsNPCsMappings,
-		mod.HadesCharacterAnimationsNPCsDuplicates, modifications, "CharacterAnimationsNPCs.sjson")
+		mod.HadesCharacterAnimationsNPCsDuplicates, modifications, additions, "CharacterAnimationsNPCs.sjson")
 end
 
 function mod.FirstTimeSetup()
@@ -235,7 +243,7 @@ function mod.FirstTimeSetup()
 	mod.DebugPrint("Copying Portrait animations...", 3)
 	copyHadesPortraitAnimations()
 
-	mod.DebugPrint("Copying Character animations for NPCs...", 3)
+	mod.DebugPrint("Copying Character animations...", 3)
 	copyHadesCharacterAnimationsNPCs()
 
 	local numMissingFiles = mod.CheckRequiredFiles(false)
