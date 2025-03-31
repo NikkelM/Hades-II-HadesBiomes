@@ -107,6 +107,24 @@ local hadesEnemyCodexGroups = {
 	NPC_Hades_01 = { "Hades", },
 }
 
+local duplicateCodexPortraits = {
+	Biomes = {
+		"Tartarus",
+		"Asphodel",
+		"Challenge",
+	},
+	Enemies = {
+		"BloodlessNakedBerserker",
+		"BloodlessGrenadier",
+		"BloodlessSelfDestruct",
+		"BloodlessPitcher",
+		"Crawler",
+		"CrawlerMiniBoss",
+		-- "NPC_Hades_01", -- Done in SavedEntries
+		"HeavyMelee",
+	},
+}
+
 local hadesCodexData = loadHadesCodexData("CodexData.lua")
 
 for oldName, newName in pairs(mod.EnemyNameMappings) do
@@ -116,10 +134,12 @@ for oldName, newName in pairs(mod.EnemyNameMappings) do
 
 	mod.UpdatePropertyName(hadesEnemyCodexGroups, oldName, newName, {}, "hadesEnemyCodexGroups")
 	mod.UpdateField(hadesEnemyCodexGroups, oldName, newName, { "*" }, "hadesEnemyCodexGroups")
+
+	mod.UpdateField(duplicateCodexPortraits, oldName, newName, { "*" }, "duplicateCodexPortraits")
 end
 
--- Remove all groups in CodexData that are not in the mappings, and rename the others
 local updatedCodexData = {}
+-- Manually copy some entries from other groups
 updatedCodexData.SavedEntries = {}
 updatedCodexData.SavedEntries.NPC_FurySister_01 = hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01
 -- Romance entry
@@ -133,7 +153,10 @@ updatedCodexData.SavedEntries.NPC_Hades_01.Entries[1].UnlockThreshold = 1
 updatedCodexData.SavedEntries.NPC_Hades_01.Entries[2].UnlockThreshold = 3
 updatedCodexData.SavedEntries.NPC_Hades_01.Entries[3].UnlockThreshold = 7
 updatedCodexData.SavedEntries.NPC_Hades_01.Entries[4].UnlockThreshold = 10
+updatedCodexData.SavedEntries.NPC_Hades_01.Image = "ModsNikkelMHadesBiomes_" ..
+		updatedCodexData.SavedEntries.NPC_Hades_01.Image
 
+-- Remove all groups in CodexData that are not in the mappings, and rename the others
 for groupName, groupData in pairs(hadesCodexData) do
 	if codexGroupNameMappings[groupName] then
 		local newGroupName = codexGroupNameMappings[groupName]
@@ -177,6 +200,16 @@ for groupName, groupData in pairs(hadesCodexData) do
 			mod.DebugPrint("Unknown unlock type: " .. groupData.UnlockType, 1)
 		end
 		groupData.UnlockType = nil
+
+		-- Update portraits if needed
+		if duplicateCodexPortraits[groupName] then
+			for _, entryName in ipairs(duplicateCodexPortraits[groupName]) do
+				local entry = updatedCodexData[codexGroupNameMappings[groupName]].Entries[entryName]
+				if entry then
+					entry.Image = "ModsNikkelMHadesBiomes_" .. entry.Image
+				end
+			end
+		end
 	end
 end
 -- Add the saved entries to the ModsNikkelMHadesBiomesEnemies group
@@ -209,11 +242,10 @@ updatedCodexData[codexGroupNameMappings.Biomes] = nil
 updatedCodexData[codexGroupNameMappings.Enemies].Icon = "GUI\\Icons\\Critical"
 updatedCodexData[codexGroupNameMappings.Enemies].TitleText = "ModsNikkelMHadesBiomesCodexEntryTitleText"
 
--- Assign to original table
 hadesCodexData = updatedCodexData
 
 local additionalCodexTabs = {
-	{ X = 0,  Y = -88, Animation = "GUI\\Screens\\Codex\\CategoryTab1", Highlight = "GUI\\Screens\\Codex\\CategoryTabHighlight1", Active = "GUI\\Screens\\Codex\\CategoryTabActiveHighlightOverlay1" },
+	{ X = 0, Y = -88, Animation = "GUI\\Screens\\Codex\\CategoryTab1", Highlight = "GUI\\Screens\\Codex\\CategoryTabHighlight1", Active = "GUI\\Screens\\Codex\\CategoryTabActiveHighlightOverlay1" },
 }
 
 for groupName, _ in pairs(hadesCodexOrdering) do

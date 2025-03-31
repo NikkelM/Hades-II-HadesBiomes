@@ -273,6 +273,7 @@ local function on_ready()
 		import "Scripts/AudioLogic.lua"
 		import "Scripts/BiomeMapPresentation.lua"
 		import "Scripts/CodexData.lua"
+		import "Scripts/CodexLogic.lua"
 		import "Scripts/Combat.lua"
 		import "Scripts/CombatLogic.lua"
 		import "Scripts/CombatPresentation.lua"
