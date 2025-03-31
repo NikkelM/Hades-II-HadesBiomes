@@ -8,6 +8,7 @@ local order = {
 }
 
 local newData = {
+	-- Run history
 	{
 		Id = "RunHistoryScreen_RouteTartarus",
 		DisplayName = "악몽",
@@ -26,6 +27,11 @@ local newData = {
 	},
 	{
 		Id = "RunHistoryScreen_RouteSurface",
+		DisplayName = "악몽",
+	},
+	-- Codex
+	{
+		Id = "ModsNikkelMHadesBiomesCodexEntryTitleText",
 		DisplayName = "악몽",
 	},
 }

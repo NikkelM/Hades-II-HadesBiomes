@@ -33,7 +33,10 @@ local hadesCodexOrdering = {
 	-- 	"NPC_Sisyphus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Persephone_Home_01",
 	-- },
 	-- Moved NPC_FurySister_01, Harpy2, Harpy3, Theseus, Minotaur, NPC_Hades_01 here from ChthonicGods
-	ModsNikkelMHadesBiomesEnemies = {
+	ModsNikkelMHadesBiomesCodexEntry = {
+		-- Locations
+		"Tartarus", "Asphodel", "Elysium", "Styx", "Challenge", "Surface",
+		-- Enemies
 		"HeavyMelee", "LightRanged", "PunchingBagUnit", "ThiefMineLayer", "WretchAssassinMiniboss", "Swarmer", "LightSpawner",
 		"DisembodiedHand", "HeavyRanged", "HeavyRangedSplitterMiniboss", "NPC_FurySister_01", "Harpy2", "Harpy3",
 		"ShieldRanged", "BloodlessNaked", "BloodlessNakedBerserker", "BloodlessGrenadier", "BloodlessSelfDestruct",
@@ -42,14 +45,13 @@ local hadesCodexOrdering = {
 		"ShadeSpearUnit", "ShadeBowUnit", "ShadeShieldUnit", "FlurrySpawner", "Theseus", "Minotaur", "Crawler", "RatThug",
 		"CrawlerMiniBoss", "ThiefImpulseMineLayer", "HeavyRangedForked", "SatyrRanged", "NPC_Hades_01",
 	},
-	ModsNikkelMHadesBiomesBiomes = {
-		"Tartarus", "Asphodel", "Elysium", "Styx", "Challenge", "Surface",
-	},
 }
 
 -- Defines mappings, and all that are not in here are removed
 local codexGroupNameMappings = {
-	Enemies = "ModsNikkelMHadesBiomesEnemies",
+	-- Used as the base category we create the new one from
+	Enemies = "ModsNikkelMHadesBiomesCodexEntry",
+	-- Will be moved into Enemies after the mapping
 	Biomes = "ModsNikkelMHadesBiomesBiomes",
 }
 
@@ -120,10 +122,12 @@ end
 local updatedCodexData = {}
 updatedCodexData.SavedEntries = {}
 updatedCodexData.SavedEntries.NPC_FurySister_01 = hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01
+-- Romance entry
+updatedCodexData.SavedEntries.NPC_FurySister_01.Entries[4] = nil
 updatedCodexData.SavedEntries.Harpy2 = hadesCodexData.ChthonicGods.Entries.Harpy2
 updatedCodexData.SavedEntries.Harpy3 = hadesCodexData.ChthonicGods.Entries.Harpy3
-updatedCodexData.SavedEntries.Theseus = hadesCodexData.ChthonicGods.Entries.Theseus
-updatedCodexData.SavedEntries.Minotaur = hadesCodexData.ChthonicGods.Entries.Minotaur
+updatedCodexData.SavedEntries.Theseus = hadesCodexData.OtherDenizens.Entries.Theseus
+updatedCodexData.SavedEntries.Minotaur = hadesCodexData.OtherDenizens.Entries.Minotaur
 updatedCodexData.SavedEntries.NPC_Hades_01 = hadesCodexData.ChthonicGods.Entries.NPC_Hades_01
 updatedCodexData.SavedEntries.NPC_Hades_01.Entries[1].UnlockThreshold = 1
 updatedCodexData.SavedEntries.NPC_Hades_01.Entries[2].UnlockThreshold = 3
@@ -138,8 +142,6 @@ for groupName, groupData in pairs(hadesCodexData) do
 
 		-- Map unlock requirements to the new system
 		if groupData.UnlockType == "Enter" then
-			-- TODO: Get proper icons (to distinguish from H1 and H2 groups - something with the nightmare theme?)
-			groupData.Icon = "GUI\\Screens\\Codex\\Icon-Places"
 			for biomeName, biomeCollection in pairs(groupData.Entries) do
 				for _, entry in ipairs(biomeCollection.Entries) do
 					if entry.UnlockThreshold then
@@ -156,7 +158,6 @@ for groupName, groupData in pairs(hadesCodexData) do
 				end
 			end
 		elseif groupData.UnlockType == "Slay" or groupData.UnlockType == "SlayAlt" then
-			groupData.Icon = "GUI\\Screens\\Codex\\Icon-EnemiesUW"
 			for enemyName, enemyCollection in pairs(groupData.Entries) do
 				for _, entry in ipairs(enemyCollection.Entries) do
 					if entry.UnlockThreshold then
@@ -194,14 +195,25 @@ for entryName, entry in pairs(updatedCodexData.SavedEntries) do
 			entryData.UnlockThreshold = nil
 		end
 	end
-	updatedCodexData.ModsNikkelMHadesBiomesEnemies.Entries[entryName] = entry
+	updatedCodexData[codexGroupNameMappings.Enemies].Entries[entryName] = entry
 end
 updatedCodexData.SavedEntries = nil
+
+-- Move the biome entries to the enemies group, so they are all in one tab
+for entryName, entry in pairs(updatedCodexData[codexGroupNameMappings.Biomes].Entries) do
+	updatedCodexData[codexGroupNameMappings.Enemies].Entries[entryName] = entry
+end
+updatedCodexData[codexGroupNameMappings.Biomes] = nil
+
+-- Set metadata for the new group
+updatedCodexData[codexGroupNameMappings.Enemies].Icon = "GUI\\Icons\\Critical"
+updatedCodexData[codexGroupNameMappings.Enemies].TitleText = "ModsNikkelMHadesBiomesCodexEntryTitleText"
+
+-- Assign to original table
 hadesCodexData = updatedCodexData
 
 local additionalCodexTabs = {
 	{ X = 0,  Y = -88, Animation = "GUI\\Screens\\Codex\\CategoryTab1", Highlight = "GUI\\Screens\\Codex\\CategoryTabHighlight1", Active = "GUI\\Screens\\Codex\\CategoryTabActiveHighlightOverlay1" },
-	{ X = 20, Y = -88, Animation = "GUI\\Screens\\Codex\\CategoryTab2", Highlight = "GUI\\Screens\\Codex\\CategoryTabHighlight2", Active = "GUI\\Screens\\Codex\\CategoryTabActiveHighlightOverlay2" },
 }
 
 for groupName, _ in pairs(hadesCodexOrdering) do

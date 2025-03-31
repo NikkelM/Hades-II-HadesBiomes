@@ -1,4 +1,4 @@
-local screenTextFile = rom.path.combine(rom.paths.Content(), 'Game/Text/en/ScreenText.en.sjson')
+local screenTextFile = rom.path.combine(rom.paths.Content(), 'Game\\Text\\en\\ScreenText.en.sjson')
 
 local order = {
 	"Id",
@@ -7,6 +7,7 @@ local order = {
 }
 
 local newData = {
+	-- Run history
 	{
 		Id = "RunHistoryScreen_RouteTartarus",
 		DisplayName = "Nightmare",
@@ -25,6 +26,11 @@ local newData = {
 	},
 	{
 		Id = "RunHistoryScreen_RouteSurface",
+		DisplayName = "Nightmare",
+	},
+	-- Codex
+	{
+		Id = "ModsNikkelMHadesBiomesCodexEntryTitleText",
 		DisplayName = "Nightmare",
 	},
 }
