@@ -184,12 +184,21 @@ for groupName, groupData in pairs(hadesCodexData) do
 			for enemyName, enemyCollection in pairs(groupData.Entries) do
 				for _, entry in ipairs(enemyCollection.Entries) do
 					if entry.UnlockThreshold then
+						local newThreshold = entry.UnlockThreshold
+						-- For normal enemies, up the requirements
+						if groupData.UnlockType == "Slay" then
+							if newThreshold == 1 then
+								newThreshold = 5
+							else
+								newThreshold = newThreshold * 2
+							end
+						end
 						entry.UnlockGameStateRequirements = {
 							{
 								Path = { "GameState", "EnemyKills" },
 								SumOf = hadesEnemyCodexGroups[enemyName] or { enemyName },
 								Comparison = ">=",
-								Value = entry.UnlockThreshold,
+								Value = newThreshold,
 							},
 						}
 						entry.UnlockThreshold = nil
