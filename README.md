@@ -39,76 +39,42 @@ The following content from Hades is available in Hades II through this mod, allo
 
 ### Encounters/Rooms:
 
-| Encounter/Room Name | Internal Name              | Status                |
-| ------------------- | -------------------------- | --------------------- |
-| **Tartarus**        |                            |                       |
-| Default combat      | GeneratedTartarus          | Implemented           |
-| Miniboss encounters | A_MiniBoss0x               | Implemented           |
-| Fountain room       | A_Reprieve01               | Implemented           |
-| Shops               | A_Shop01/A_PreBoss01       | Implemented           |
-| Bosses              | A_Boss01/A_Boss02/A_Boss03 | Implemented           |
-| Survival challenge  | SurvivalTartarus           | Not implemented       |
-| Thanatos encounter  | ThanatosTartarus           | Not implemented       |
-| **Asphodel**        |                            | Not implemented       |
-| Default combat      | GeneratedAsphodel          | Implemented           |
-| Miniboss encounters | X_MiniBoss0x/X_Wrapping01  | Implemented           |
-| Fountain room       | X_Reprieve01               | Implemented           |
-| Shops               | X_Shop01/X_PreBoss01       | Implemented           |
-| Bosses              | X_Boss01/X_Boss02          | Implemented |
-| Thanatos encounter  | ThanatosTartarus           | Not implemented       |
-| **Elysium**         |                            | Not implemented       |
-| **Styx**            |                            | Not implemented       |
-| **Surface**         |                            | Not implemented       |
+| Encounter/Room Name | Status                |
+| ------------------- | --------------------- |
+| **Tartarus**        |                       |
+| Default combat      | Implemented           |
+| Miniboss encounters | Implemented           |
+| Fountain room       | Implemented           |
+| Shops               | Implemented           |
+| Bosses              | Implemented           |
+| Survival challenge  | Not implemented       |
+| Thanatos encounter  | Not implemented       |
+| **Asphodel**        | Not implemented       |
+| Default combat      | Implemented           |
+| Miniboss encounters | Implemented           |
+| Fountain room       | Implemented           |
+| Shops               | Implemented           |
+| Bosses              | Implemented           |
+| Thanatos encounter  | Not implemented       |
+| **Elysium**         | Not implemented       |
+| **Styx**            | Not implemented       |
+| **Surface**         | Not implemented       |
 
 ### Enemies
 
-| Enemy                       | Internal Name                | Status          |
-| --------------------------- | ---------------------------- | --------------- |
-| **Tartarus**                |                              |                 |
-| Wretched Lout               | PunchingBagUnit              | Implemented     |
-| Dire Lout (Elite)           | PunchingBagUnitElite         | Implemented     |
-| Wretch Thug                 | HeavyMelee                   | Implemented     |
-| Dire Thug (Elite)           | HeavyMeleeElite              | Implemented     |
-| Wringer                     | DisembodiedHand              | Implemented     |
-| Wringer (Elite)             | DisembodiedHandElite         | Implemented     |
-| Wretched Witch              | LightRanged                  | Implemented     |
-| Dire Witch (Elite)          | LightRangedElite             | Implemented     |
-| Brimstone                   | HeavyRanged                  | Implemented     |
-| Dire Brimstone (Elite)      | HeavyRangedElite             | Implemented     |
-| Numbskull                   | Swarmer                      | Implemented     |
-| Dire Numbskull              | SwarmerElite                 | Implemented     |
-| Skullomat                   | LightSpawner                 | Implemented     |
-| Wretched Pest               | ThiefMineLayer               | Implemented     |
-| Dire Pest (Elite)           | ThiefMineLayerElite          | Implemented     |
-| Minibosses                  | Various                      | Implemented     |
-| Megaera, Alecto, Tisiphone  | Harpy, Harpy2, Harpy3        | Implemented     |
-| **Asphodel**                |                              | Implemented     |
-| Skull-Crusher               | CrusherUnit                  | Implemented     |
-| Skull-Crusher (Elite)       | CrusherUnitElite             | Implemented     |
-| Dire Skullomat              | LightSpawnerElite            | Implemented     |
-| Bloodless                   | BloodlessNaked               | Implemented     |
-| Bloodless Naked (Elite)     | BloodlessNakedElite          | Implemented     |
-| Bone-Raker                  | BloodlessNakedBerserker      | Implemented     |
-| Bloodless Berserker (Elite) | BloodlessNakedBerserkerElite | Implemented     |
-| Inferno-Bomber              | BloodlessGrenadier           | Implemented     |
-| Dire Inferno-Bomber         | BloodlessGrenadierElite      | Implemented     |
-| Slam-Dancer                 | BloodlessSelfDestruct        | Implemented     |
-| Slam-Dancer (Elite)         | BloodlessSelfDestructElite   | Implemented     |
-| Burn-Flinger                | BloodlessPitcher             | Implemented     |
-| Dire Burn-Flinger           | BloodlessPitcherElite        | Implemented     |
-| Wave-Maker                  | BloodlessWaveFist            | Implemented     |
-| Dire Wave-Maker             | BloodlessWaveFistElite       | Implemented     |
-| Spreader                    | SpreadShotUnit               | Implemented     |
-| Spreader (Elite)            | SpreadShotUnitElite          | Implemented     |
-| Gorgon                      | FreezeShotUnit               | Implemented     |
-| Gorgon (Elite)              | FreezeShotUnitElite          | Implemented     |
-| Dracon                      | RangedBurrower               | Implemented     |
-| Dracon (Elite)              | RangedBurrowerElite          | Implemented     |
-| Minibosses                  | Various                      | Implemented     |
-| Bone Hydra (and variants)   | Various                      | Implemented     |
-| **Elysium**                 |                              | Not implemented |
-| **Styx**                    |                              | Not implemented |
-| **Surface**                 |                              | Not implemented |
+| Enemy                       |  Status          |
+| --------------------------- |  --------------- |
+| **Tartarus**                | Implemented      |
+| Regular enemies             | Implemented      |
+| Minibosses                  | Implemented      |
+| Megaera, Alecto, Tisiphone  | Implemented      |
+| **Asphodel**                | Implemented      |
+| Regular enemies             | Implemented      |
+| Minibosses                  | Implemented      |
+| Bone Hydra                  | Implemented      |
+| **Elysium**                 | Not implemented  |
+| **Styx**                    | Not implemented  |
+| **Surface**                 | Not implemented  |
 
 ## Installation & Uninstallation
 
