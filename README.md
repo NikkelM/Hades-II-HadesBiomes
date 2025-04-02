@@ -49,7 +49,7 @@ The following content from Hades is available in Hades II through this mod, allo
 | Bosses              | Implemented           |
 | Survival challenge  | Not implemented       |
 | Thanatos encounter  | Not implemented       |
-| **Asphodel**        | Not implemented       |
+| **Asphodel**        |                       |
 | Default combat      | Implemented           |
 | Miniboss encounters | Implemented           |
 | Fountain room       | Implemented           |
@@ -64,11 +64,11 @@ The following content from Hades is available in Hades II through this mod, allo
 
 | Enemy                       |  Status          |
 | --------------------------- |  --------------- |
-| **Tartarus**                | Implemented      |
+| **Tartarus**                |                  |
 | Regular enemies             | Implemented      |
 | Minibosses                  | Implemented      |
 | Megaera, Alecto, Tisiphone  | Implemented      |
-| **Asphodel**                | Implemented      |
+| **Asphodel**                |                  |
 | Regular enemies             | Implemented      |
 | Minibosses                  | Implemented      |
 | Bone Hydra                  | Implemented      |
