@@ -11,7 +11,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		Asphodel = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Asphodel",
 			OffsetX = 108,
-			OffsetY = -450,
+			OffsetY = -453,
 			-- PactRewardOffsetX = 350,
 			-- PactRewardOffsetY = 150,
 			-- PactRewardRoomName = "B_Boss01",
