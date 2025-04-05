@@ -88,6 +88,7 @@ local roomModifications = {
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
+		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 	X_Boss02 = {
 		GameStateRequirements = {

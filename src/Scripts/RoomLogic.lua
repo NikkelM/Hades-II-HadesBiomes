@@ -18,14 +18,14 @@ end)
 modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	base(currentRoom)
 
-	local validRoomSets = {
+	local moddedRoomSets = {
 		["Tartarus"] = true,
 		["Asphodel"] = true,
 		["Elysium"] = true,
 		["Styx"] = true,
 	}
 
-	if validRoomSets[currentRoom.RoomSetName] then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and moddedRoomSets[currentRoom.RoomSetName] then
 		-- Some packages introduce artifacts
 		UnloadPackages({ Name = "DeathArea" })
 		UnloadPackages({ Name = "Chaos" })
@@ -39,6 +39,14 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 		if currentRoom.LoadModdedPackages then
 			for _, name in pairs(currentRoom.LoadModdedPackages) do
 				LoadPackages({ Name = name })
+			end
+		end
+
+		-- For the vow that gives a chance for enemies to be from the next biome
+		if game.GetShrineUpgradeChangeValue("NextBiomeEnemyShrineUpgrade") > 0 then
+			local nextRoomSet = game.NextRoomSets[CurrentRun.CurrentRoom.RoomSetName]
+			if nextRoomSet ~= nil then
+				LoadPackages({ Name = nextRoomSet })
 			end
 		end
 

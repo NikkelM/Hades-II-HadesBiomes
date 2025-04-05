@@ -70,6 +70,7 @@ local roomModifications = {
 		MaxAppearancesThisBiome = 1,
 		BlockRunProgressUI = true,
 		DisableRewardMagnetisim = true,
+		BlockNextBiomeEnemyShrineUpgrade = true,
 		StartThreadedEvents =
 		{
 			{ FunctionName = "CheckBiomeStateStart" },
@@ -137,6 +138,7 @@ local roomModifications = {
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
+		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 	A_Boss02 = {
 		UnthreadedEvents = {

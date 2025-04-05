@@ -282,6 +282,7 @@ local function on_ready()
 		import "Scripts/EncounterLogic.lua"
 		import "Scripts/HeroData.lua"
 		import "Scripts/HubPresentation.lua"
+		import "Scripts/MetaUpgradeData.lua"
 		import "Scripts/ObstacleData.lua"
 		import "Scripts/PowersLogic.lua"
 		import "Scripts/ProjectileData.lua"

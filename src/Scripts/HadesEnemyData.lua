@@ -2615,7 +2615,7 @@ mod.EnemyData = {
 		{
 			AggroAI,
 		},
-		PostAggroAI = AttackerAI,
+		PostAggroAI = SurroundAI,
 		WeaponOptions = { "HeavyRangedSplitterFragment" },
 
 		Outline =
