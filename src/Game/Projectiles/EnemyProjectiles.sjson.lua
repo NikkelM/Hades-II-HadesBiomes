@@ -64,6 +64,7 @@ local hadesProjectilesModifications = {
 	LightRangedWeapon = {
 		CanBeProjectileDefenseDestroyed = false,
 		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+		CanBeReflected = true,
 		-- It just disappears instead of exploding like in Hades
 		-- The explosion has a weird boxed brightness around it
 		DissipateFx = "EnemyProjectileDissipate",
@@ -86,9 +87,9 @@ local hadesProjectilesModifications = {
 	-- TARTARUS - BOSSES
 	HarpyBeam = {
 		Speed = 700,
-		-- Can't be destroyed by hitting it, but if you have a projectile defense boon (like Hestia sprint)
 		CanBeProjectileDefenseDestroyed = false,
 		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+		CanBeReflected = true,
 	},
 	HarpySlowBeam = {
 		UnpauseAnimation = mod.NilValue,
@@ -115,6 +116,7 @@ local hadesProjectilesModifications = {
 	RangedBurrowerWeapon = {
 		CanBeProjectileDefenseDestroyed = false,
 		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+		CanBeReflected = true,
 	},
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
@@ -123,6 +125,7 @@ local hadesProjectilesModifications = {
 	HydraDart = {
 		CanBeProjectileDefenseDestroyed = false,
 		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+		CanBeReflected = true,
 	},
 	HydraSummon = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
