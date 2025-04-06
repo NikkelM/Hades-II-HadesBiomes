@@ -3,8 +3,8 @@
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
 local function applyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
 	for oldName, newName in pairs(mod.EnemyNameMappings) do
-		mod.UpdatePropertyName(modifications, oldName, newName, { }, "EnemyDataHandler modifications")
-		mod.UpdatePropertyName(replacements, oldName, newName, { }, "EnemyDataHandler replacements")
+		mod.UpdatePropertyName(modifications, oldName, newName, {}, "EnemyDataHandler modifications")
+		mod.UpdatePropertyName(replacements, oldName, newName, {}, "EnemyDataHandler replacements")
 	end
 
 	-- Apply replacements/additions
@@ -97,7 +97,7 @@ end
 
 -- Some enemies exist in both Hades and Hades II, so we need to rename the Hades enemies
 for oldName, newName in pairs(mod.EnemyNameMappings) do
-	mod.UpdatePropertyName(mod.EnemyData, oldName, newName, { }, "EnemyData.lua")
+	mod.UpdatePropertyName(mod.EnemyData, oldName, newName, {}, "EnemyData.lua")
 	-- Update the names in dependent fields
 	-- Inherit properties from this name
 	mod.UpdateField(mod.EnemyData, oldName, newName, { "InheritFrom" }, "EnemyData.lua")
@@ -126,6 +126,8 @@ local enemyReplacements = {
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
+		-- The projectile scaling this is supposed to do doesn't work for H1 enemies it seems
+		BlockAttributes = { "Massive" },
 	},
 	HadesBossBaseVulnerableEnemy = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -187,6 +189,9 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyWretchGluttonOnHit" },
 		ActivateAnimation = "EnemyActivationFadeInWretchGluttonContainer",
 	},
+	PunchingBagUnitElite = {
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
+	},
 	BaseThug = {
 		LargeUnitCap = mod.NilValue,
 		ActivateAnimation = "EnemyActivationFadeInWretchThugContainer",
@@ -195,9 +200,15 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyWretchThugOnHit" },
 		ActivateAnimation = "EnemyActivationFadeInWretchThugContainer",
 	},
+	HeavyMeleeElite = {
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
+	},
 	DisembodiedHand = {
 		StunAnimations = { Default = "EnemyWringerOnHit" },
 		ActivateAnimation = "EnemyActivationFadeInDisembodiedHandContainer",
+	},
+	DisembodiedHandElite = {
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
 	BaseCaster = {
 		AIAggroRange = 1250,
@@ -235,6 +246,7 @@ local enemyModifications = {
 		},
 		ActivateFx = "EnemySummonRuneSmall",
 		ActivateAnimation = "EnemyActivationFadeInThiefMineLayerContainer",
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
 	},
 	HeavyRanged = {
 		StunAnimations = { Default = "HeavyRangedCrystal4" },
@@ -278,8 +290,8 @@ local enemyModifications = {
 			-- How long it waits before moving again while firing the beams
 			FireDuration = 5.75,
 			-- Sort of acts as a PreAttackDuration as well
-			MoveWithinRangeTimeoutMin = 2.0,
-			MoveWithinRangeTimeoutMax = 3.5,
+			MoveWithinRangeTimeoutMin = 1.5,
+			MoveWithinRangeTimeoutMax = 2.0,
 		},
 	},
 	HeavyRangedSplitterFragment = {
@@ -297,6 +309,10 @@ local enemyModifications = {
 		WeaponOptions = { "HadesSwarmerMelee" },
 		ActivateFx = "EnemySummonRuneSmall",
 		ActivateAnimation = "EnemyActivationFadeInWretchSwarmerContainer",
+		BlockAttributes = { "Orbit", "Vacuum", "Massive", },
+	},
+	SwarmerElite = {
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
 	LightSpawner = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
@@ -307,6 +323,7 @@ local enemyModifications = {
 		OnDamagedFunctionName = "AggroSpawns",
 		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
 		BlockRaiseDead = true,
+		EliteAttributeOptions = { "Fog", "HeavyArmor", "Orbit", "Radial", },
 	},
 	WretchAssassin = {
 		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
@@ -353,10 +370,6 @@ local enemyModifications = {
 			BlockEnemyTypes = { "HadesBloodlessNakedElite" },
 		},
 	},
-	HadesBloodlessNakedSummoned = {
-		InheritFrom = { "HadesBloodlessNaked" },
-		ActivateFx = "nil",
-	},
 	HadesBloodlessNakedElite = {
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
@@ -364,6 +377,8 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessNaked" },
 		},
+		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
 	BloodlessNakedBerserker = {
 		RequiredIntroEncounter = "BerserkerIntro",
@@ -381,10 +396,8 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "BloodlessNakedBerserker" },
 		},
-	},
-	BloodlessNakedBerserkerEliteSummoned = {
-		InheritFrom = { "BloodlessNakedBerserkerElite" },
-		ActivateFx = "nil",
+		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
 	},
 	HadesBloodlessWaveFist = {
 		RequiredIntroEncounter = "WaveFistIntro",
@@ -402,6 +415,7 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessWaveFist" },
 		},
+		BlockAttributes = { "Blink", "Orbit", "Massive", },
 	},
 	HadesBloodlessGrenadier = {
 		ActivateFx = "EnemySummonRune",
@@ -418,6 +432,7 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessGrenadier" },
 		},
+		BlockAttributes = { "Blink", "Orbit", "Massive", },
 	},
 	HadesBloodlessSelfDestruct = {
 		RequiredIntroEncounter = "SelfDestructIntro",
@@ -435,6 +450,7 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessSelfDestruct" },
 		},
+		BlockAttributes = { "Blink", "Orbit", "Massive", },
 	},
 	HadesBloodlessPitcher = {
 		RequiredIntroEncounter = "PitcherIntro",
@@ -452,6 +468,8 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessPitcher" },
 		},
+		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
 	HadesSpreadShotUnit = {
 		ActivateFx = "EnemySummonRuneMedium",
@@ -477,9 +495,15 @@ local enemyModifications = {
 		DeathAnimation = "EnemyMedusaHeadDeath",
 		DestroyDelay = 3.0,
 	},
+	FreezeShotUnitElite = {
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
+	},
 	RangedBurrower = {
 		StunAnimations = { Default = "EnemyBoneDraconOnHit" },
 		UseActivatePresentation = false,
+	},
+	RangedBurrowerElite = {
+		BlockAttributes = { "Blink", "Orbit", "Massive", },
 	},
 	CrusherUnit = {
 		StunAnimations = { Default = "CrusherUnitOnHit" },
@@ -492,7 +516,9 @@ local enemyModifications = {
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
 		},
-		MaxHealth = 200,
+	},
+	CrusherUnitElite = {
+		BlockAttributes = { "Blink", "Orbit", "Fog", "Frenzy", "ManaDrain", "Molten", "Unflinching", "Vacuuming", },
 	},
 	ShieldRanged = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
@@ -728,9 +754,18 @@ local enemyKeyReplacements = {
 	ValueOptions = "BreakableValueOptions",
 }
 
-applyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
-
 -- Modifications to Hades II enemies
 -- Only modify enemies that are not being used in Hades II in this way!
--- Removing DestructibleGeo as TargetGroup, so the rubble from destructible pillars doesn't trigger the trap
+-- Needs to be done before the enemy data is added to the game
 game.EnemyData.SpikeTrap.DefaultAIData.TargetGroups = { "GroundEnemies", "HeroTeam", }
+game.EnemyData.Elite.EliteAttributeData.ModsNikkelMHadesBiomesStasisDeath = {
+	GameStateRequirements = {
+		{
+			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+			IsAny = { "Tartarus", "Asphodel", "Elysium", "Styx", },
+		},
+	},
+	AddDeathWeapons = { "EliteStasisDeath" },
+}
+
+applyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)

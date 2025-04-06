@@ -332,12 +332,6 @@ local weaponModifications = {
 	-- Swap which weapon is used first due to how the activate animation was changed
 	RangedBurrowerBurrow = {
 		AIData = {
-			ForceFirst = false,
-		},
-		ForceFirst = mod.NilValue,
-	},
-	RangedBurrowerWeapon = {
-		AIData = {
 			ForceFirst = true,
 		},
 		ForceFirst = mod.NilValue,

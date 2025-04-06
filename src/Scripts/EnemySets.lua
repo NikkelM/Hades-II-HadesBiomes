@@ -2,66 +2,66 @@
 local additionalEnemySets = {
 	-- TARTARUS
 	EnemiesBiome1 = {
-		"Swarmer",           -- Wretch Swarmer -- Duplicate Name!
-		"SwarmerElite",      -- Wretch Swarmer
-		"LightSpawner",      -- Skullomat
-		"ThiefMineLayer",    -- Wretch Thief
-		"ThiefMineLayerElite", -- Wretch Thief
-		"PunchingBagUnit",   -- Wretch Glutton
-		"HeavyMelee",        -- Wretch Thug
-		"DisembodiedHand",   -- Wringer
-		"DisembodiedHandElite", -- Wringer Elite
-		"LightRanged",       -- Wretch Caster -- Duplicate name!
-		"HeavyRanged",       -- Crystal
-		"HeavyMeleeElite",   -- Wretch Thug Elite
-		"LightRangedElite",  -- Wretch Caster Elite
-		"PunchingBagUnitElite", -- Wretch Glutton Elite
-		"HeavyRangedElite",  -- Crystal Elite
+		"Swarmer",
+		"SwarmerElite",
+		"LightSpawner",
+		"ThiefMineLayer",
+		"ThiefMineLayerElite",
+		"PunchingBagUnit",
+		"HeavyMelee",
+		"DisembodiedHand",
+		"DisembodiedHandElite",
+		"LightRanged",
+		"HeavyRanged",
+		"HeavyMeleeElite",
+		"LightRangedElite",
+		"PunchingBagUnitElite",
+		"HeavyRangedElite",
 	},
 	EnemiesBiome1Devotion = {
-		"HeavyMeleeElite",   -- Wretch Thug Elite
-		"LightRangedElite",  -- Wretch Caster Elite
-		"PunchingBagUnitElite", -- Wretch Glutton Elite
+		"HeavyMeleeElite",
+		"LightRangedElite",
+		"PunchingBagUnitElite",
 		"HeavyRangedElite",
 	},
 	EnemiesBiome1Survival = {
-		"Swarmer",           -- Wretch Swarmer
-		"SwarmerElite",      -- Wretch Swarmer
-		"LightSpawner",      -- Skullomat
-		"ThiefMineLayer",    -- Wretch Thief
-		"ThiefMineLayerElite", -- Wretch Thief
-		"PunchingBagUnit",   -- Wretch Glutton
-		"HeavyMelee",        -- Wretch Thug
-		"LightRanged",       -- Wretch Caster
-		"HeavyRanged",       -- Crystal
-		"HeavyMeleeElite",   -- Wretch Thug Elite
-		"LightRangedElite",  -- Wretch Caster Elite
-		"PunchingBagUnitElite", -- Wretch Glutton Elite
-		"HeavyRangedElite",  -- Crystal Elite
+		"Swarmer",
+		"SwarmerElite",
+		"LightSpawner",
+		"ThiefMineLayer",
+		"ThiefMineLayerElite",
+		"PunchingBagUnit",
+		"HeavyMelee",
+		"LightRanged",
+		"HeavyRanged",
+		"HeavyMeleeElite",
+		"LightRangedElite",
+		"PunchingBagUnitElite",
+		"HeavyRangedElite",
 	},
 	EnemiesBiome1Hard = {
-		"SwarmerElite",      -- Wretch Swarmer
-		"HeavyMeleeElite",   -- Wretch Thug Elite
-		"LightRangedElite",  -- Wretch Caster Elite
-		"ThiefMineLayerElite", -- Wretch Thief
-		"PunchingBagUnitElite", -- Wretch Glutton Elite
+		"SwarmerElite",
+		"HeavyMeleeElite",
+		"LightRangedElite",
+		"ThiefMineLayerElite",
+		"PunchingBagUnitElite",
 		"HeavyRangedElite",
 	},
 	EnemiesBiome1Thanatos = {
-		"SwarmerElite",      -- Wretch Swarmer
-		"PunchingBagUnit",   -- Wretch Glutton
-		"HeavyMelee",        -- Wretch Thug
-		"HeavyRanged",       -- Crystal
+		"SwarmerElite",
+		"PunchingBagUnit",
+		"HeavyMelee",
+		"HeavyRanged",
 
-		"HeavyMeleeElite",   -- Wretch Thug Elite
-		"LightRangedElite",  -- Wretch Caster Elite
-		"ThiefMineLayerElite", -- Wretch Thief
-		"PunchingBagUnitElite", -- Wretch Glutton Elite
+		"HeavyMeleeElite",
+		"LightRangedElite",
+		"ThiefMineLayerElite",
+		"PunchingBagUnitElite",
 		"HeavyRangedElite",
 	},
 	EnemiesBiome1_EliteChallenge = {
-		"HeavyMeleeElite",   -- Wretch Thug Elite
-		"PunchingBagUnitElite", -- Wretch Glutton Elite
+		"HeavyMeleeElite",
+		"PunchingBagUnitElite",
 	},
 	EnemiesBiome1MiniBoss = {
 		"BloodlessGrenadierElite",
@@ -74,7 +74,7 @@ local additionalEnemySets = {
 		"LightSpawnerElite",
 		"BloodlessNaked",
 		"BloodlessNakedElite",
-		"BloodlessNakedBerserker", -- BloodlessBerserker in Hades II
+		"BloodlessNakedBerserker",
 		"BloodlessNakedBerserkerElite",
 		"BloodlessGrenadier",
 		"BloodlessGrenadierElite",
@@ -218,8 +218,10 @@ local additionalEnemySets = {
 	TrapsBiome2 = { "GasTrapPassive", },
 }
 
+table.insert(game.EnemySets.GenericEliteAttributes, "ModsNikkelMHadesBiomesStasisDeath")
+
 for oldName, newName in pairs(mod.EnemyNameMappings) do
-	mod.UpdateField(additionalEnemySets, oldName, newName, { }, "EnemySets.lua")
+	mod.UpdateField(additionalEnemySets, oldName, newName, {}, "EnemySets.lua")
 end
 
 -- Adds the new enemy sets to the game
