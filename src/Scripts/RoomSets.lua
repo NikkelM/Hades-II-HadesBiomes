@@ -23,8 +23,9 @@ local newRoomSets = {
 		"A_Combat01",
 		"A_Combat02",
 		"A_Combat03",
-		"A_Combat04",
-		"A_Combat05",
+		-- Disabled due to dart traps not working, #52
+		-- "A_Combat04",
+		-- "A_Combat05",
 		"A_Combat06",
 		"A_Combat07",
 		"A_Combat08A",
