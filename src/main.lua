@@ -179,6 +179,9 @@ local function on_ready()
 		import "Game/Obstacles/Tartarus.sjson.lua"
 		import "Game/Obstacles/Chaos.sjson.lua"
 
+		-- The ScreenText files depend on icons in here
+		import "Scripts/UIData.lua"
+
 		-- Localizations, custom texts
 		import "Game/Text/de/HelpText.de.sjson.lua"
 		import "Game/Text/el/HelpText.el.sjson.lua"
@@ -291,8 +294,8 @@ local function on_ready()
 		import "Scripts/RoomEvents.lua"
 		import "Scripts/RoomLogic.lua"
 		import "Scripts/RoomPresentation.lua"
+		import "Scripts/RunHistoryLogic.lua"
 		import "Scripts/RunLogic.lua"
-		import "Scripts/UIData.lua"
 		import "Scripts/WeaponSets.lua"
 
 		mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)

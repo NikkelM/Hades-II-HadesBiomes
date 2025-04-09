@@ -28,6 +28,12 @@ local newData = {
 		Id = "RunHistoryScreen_RouteSurface",
 		DisplayName = "Nightmare",
 	},
+	{
+		Id = "RunHistoryScreen_RouteModsNikkelMHadesBiomes",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesIcon}",
+		-- Icon only, no localization needed
+		OverwriteLocalization = true,
+	},
 	-- Codex
 	{
 		Id = "ModsNikkelMHadesBiomesCodexEntryTitleText",
