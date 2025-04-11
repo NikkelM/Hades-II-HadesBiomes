@@ -1,6 +1,5 @@
--- Adds EncounterData for Tartarus from Hades to Hades II
-
-local encounterData = mod.LoadHadesEncounterData("EncounterData.lua")
+-- Adds EncounterData for Asphodel from Hades to Hades II
+local encounterData = mod.LoadHadesEncounterData("EncounterData.lua") or {}
 local encounterDataAsphodel = {
 	-- Generic encounters
 	GeneratedAsphodel = encounterData.GeneratedAsphodel,
@@ -103,7 +102,7 @@ local encounterModifications = {
 		WipeEnemiesOnKillAllTypes = { "HydraHeadImmortal", "HydraHeadImmortalLavamaker", "HydraHeadImmortalSummoner", "HydraHeadImmortalSlammer", "HydraHeadImmortalWavemaker", },
 		CancelSpawnsOnKillAllTypes = { "HydraHeadImmortal", "HydraHeadImmortalLavamaker", "HydraHeadImmortalSummoner", "HydraHeadImmortalSlammer", "HydraHeadImmortalWavemaker", },
 		CancelSpawnsOnKill = mod.NilValue,
-		WipeEnemiesOnKill =  mod.NilValue,
+		WipeEnemiesOnKill = mod.NilValue,
 		PostUnthreadedEvents = mod.NilValue,
 	},
 }

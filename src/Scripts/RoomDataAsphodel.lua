@@ -108,8 +108,7 @@ local roomModifications = {
 	},
 	X_PostBoss01 = {
 		ExitPreviewAnim = "HadesExitPreview",
-		-- TODO: Remove placeholder
-		NextRoomSet = { "G" },
+		NextRoomSet = { "Elysium" },
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
 			{
@@ -165,35 +164,6 @@ local roomModifications = {
 				},
 			},
 		},
-		-- Temporarily here for Elysium
-		-- LeavePostPresentationEvents = {
-		-- 	{
-		-- 		FunctionName = "ModsNikkelMHadesBiomesBiomeMapPresentation",
-		-- 		Args = {
-		-- 			HeroStartOffsetX = 120,
-		-- 			HeroStartOffsetY = -1370,
-		-- 			FamiliarStartOffsetX = 220,
-		-- 			FamiliarStartOffsetY = -1335,
-
-		-- 			HeroMoveOffsetX = -80,
-		-- 			HeroMoveOffsetY = -480,
-		-- 			HeroMoveDuration = 2.0,
-		-- 			FamiliarMoveOffsetX = -80,
-		-- 			FamiliarMoveOffsetY = -430,
-		-- 			FamiliarMoveDuration = 2.0,
-		-- 			CameraMoveOffsetY = -390,
-
-		-- 			MoveEaseIn = 0.5,
-		-- 			MoveEaseOut = 1.0,
-
-		-- 			-- AdditionalEndTimeWait = 1.0,
-		-- 			BiomeStart = "Elysium",
-		-- 			BiomeEnd = "Styx",
-		-- 			-- TODO: Hades
-		-- 			ShrineBounty = "BossScylla01",
-		-- 		},
-		-- 	},
-		-- },
 	},
 }
 

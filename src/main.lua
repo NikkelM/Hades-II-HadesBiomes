@@ -242,6 +242,8 @@ local function on_ready()
 		import "Scripts/EncounterSets.lua"
 		import "Scripts/EncounterDataTartarus.lua"
 		import "Scripts/EncounterDataAsphodel.lua"
+		import "Scripts/EncounterDataElysium.lua"
+		-- import "Scripts/EncounterDataStyx.lua"
 
 		-- Loads Room data
 		import "Scripts/RoomSets.lua"
@@ -251,6 +253,10 @@ local function on_ready()
 		import "Scripts/RoomDataTartarus.lua"
 		import "Scripts/HadesRoomDataAsphodel.lua"
 		import "Scripts/RoomDataAsphodel.lua"
+		import "Scripts/HadesRoomDataElysium.lua"
+		import "Scripts/RoomDataElysium.lua"
+		-- import "Scripts/HadesRoomDataStyx.lua"
+		-- import "Scripts/RoomDataStyx.lua"
 
 		-- Loads Weapon data
 		import "Scripts/HadesWeaponData.lua"

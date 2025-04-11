@@ -44,7 +44,6 @@ local obstacleModifications = {
 		DeathFx = "RubbleFall",
 		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFallLarge", },
 	},
-
 	HealthFountainAsphodel = {
 		InheritFrom = { "HealthFountain" },
 		HealingSpentAnimation = "HealthFountainEmptyAsphodel",
@@ -53,6 +52,8 @@ local obstacleModifications = {
 		InheritFrom = { "HealthFountain" },
 		HealingSpentAnimation = "HealthFountainEmptyElysium",
 	},
+	-- ELYSIUM
+	-- STYX
 }
 
 local addedObstacles = {

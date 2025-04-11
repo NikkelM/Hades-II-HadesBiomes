@@ -6,7 +6,7 @@ local nextBiomeShrineBiomeEnemySets = {
 
 -- Which enemy is swapped for which other enemy
 local nextbiomeShrineSwapMap = {
-	-- Tartarus
+	-- Tartarus -> Asphodel
 	Swarmer = { Name = "BloodlessNaked", },
 	SwarmerElite = { Name = "BloodlessNakedElite", },
 	LightSpawner = { Name = "LightSpawnerElite", },
@@ -23,7 +23,7 @@ local nextbiomeShrineSwapMap = {
 	PunchingBagUnitElite = { Name = "BloodlessNakedBerserkerElite", },
 	HeavyRangedElite = { Name = "RangedBurrowerElite", },
 
-	-- Asphodel
+	-- Asphodel -> Elysium
 	-- CrusherUnit = { Name = "CrusherUnit", },
 	-- LightSpawnerElite = { Name = "LightSpawnerElite", },
 	-- BloodlessNaked = { Name = "BloodlessNaked", },
@@ -44,6 +44,8 @@ local nextbiomeShrineSwapMap = {
 	-- FreezeShotUnitElite = { Name = "FreezeShotUnitElite", },
 	-- RangedBurrower = { Name = "RangedBurrower", },
 	-- RangedBurrowerElite = { Name = "RangedBurrowerElite", },
+
+	-- Elysium -> Styx
 }
 
 -- Map the names

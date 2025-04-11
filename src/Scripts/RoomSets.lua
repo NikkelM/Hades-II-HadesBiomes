@@ -81,6 +81,40 @@ local newRoomSets = {
 
 		-- "X_Story01",
 	},
+	Elysium = {
+		"C_Intro",
+
+		"C_Boss01",
+
+		"C_PostBoss01",
+
+		"C_PreBoss01",
+		"C_Shop01",
+
+		"C_MiniBoss01",
+		"C_MiniBoss02",
+		"C_MiniBoss03",
+
+		"C_Reprieve01",
+
+		"C_Combat01",
+		"C_Combat02",
+		"C_Combat03",
+		"C_Combat04",
+		"C_Combat05",
+		"C_Combat06",
+		"C_Combat07",
+		"C_Combat08",
+		"C_Combat09",
+		"C_Combat10",
+		"C_Combat11",
+		"C_Combat12",
+		"C_Combat13",
+		"C_Combat14",
+		"C_Combat15",
+
+		-- "C_Story01",
+	},
 }
 
 for key, newRoomSet in pairs(newRoomSets) do
