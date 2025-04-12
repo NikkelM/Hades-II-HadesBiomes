@@ -34,7 +34,16 @@ end
 local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nameHint, usePluginData)
 	nameHint = nameHint or ""
 	mod.DebugPrint("Copying " .. nameHint .. extension .. " files...", 3)
-	for src, dest in pairs(fileMappings) do
+	for key, value in pairs(fileMappings) do
+		local src, dest
+		if type(key) == "number" then
+			src = value
+			dest = value
+		else
+			src = key
+			dest = value
+		end
+
 		local srcPath, destPath
 		if usePluginData then
 			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, srcBasePath .. src .. extension)
@@ -49,7 +58,16 @@ end
 
 local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, destBasePath, modifications)
 	mod.DebugPrint("Copying .sjson files...", 3)
-	for src, dest in pairs(fileMappings) do
+	for key, value in pairs(fileMappings) do
+		local src, dest
+		if type(key) == "number" then
+			src = value
+			dest = value
+		else
+			src = key
+			dest = value
+		end
+
 		local srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. src .. ".sjson")
 		local destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest .. ".sjson")
 
@@ -63,7 +81,6 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, de
 		end
 	end
 end
-
 
 -- Creates a new helpTextFile for all given languages with any IDs that do not exist in the Hades II help text files
 local function copyHadesHelpTexts()

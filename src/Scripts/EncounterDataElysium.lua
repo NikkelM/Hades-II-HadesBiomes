@@ -15,7 +15,14 @@ local encounterDataElysium = {
 	EliteChallengeElysium = game.DeepCopyTable(encounterData.EliteChallengeF),
 
 	-- Intro encounters
-
+	ShadeSpearUnitIntro = encounterData.ShadeSpearUnitIntro,
+	ShadeSwordUnitIntro = encounterData.ShadeSwordUnitIntro,
+	ShadeShieldUnitIntro = encounterData.ShadeShieldUnitIntro,
+	ShadeBowUnitIntro = encounterData.ShadeBowUnitIntro,
+	FlurrySpawnerUnitIntro = encounterData.FlurrySpawnerUnitIntro,
+	IllusionistIntro = encounterData.IllusionistIntro,
+	ChariotIntro = encounterData.ChariotIntro,
+	ChariotSuicideIntro = encounterData.ChariotSuicideIntro,
 }
 
 mod.UpdateField(encounterDataElysium, "Generated", "ModsNikkelMHadesBiomesGenerated", { "InheritFrom" },
@@ -39,9 +46,6 @@ local encounterReplacements = {
 		TypeCountDepthRamp = 0.55,
 		-- The original from Hades is
 		DepthDifficultyRamp = 30,
-		-- TODO: Debugging
-		LoadPackages = { "TartarusModsNikkelMHadesBiomes" },
-		-- TODO: Check
 		-- Original is missing HandleEncounterPreSpawns
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
