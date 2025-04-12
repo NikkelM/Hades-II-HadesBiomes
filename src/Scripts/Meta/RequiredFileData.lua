@@ -13,8 +13,11 @@ mod.AudioFileMappings = {
 -- Some speaker names do not work (e.g. MegaeraHome)!
 mod.VoiceoverFileNames = {
 	Alecto = "Alecto",
+	HadesField = "HadesField",
 	Megaera = "Megaera",
 	MegaeraField = "MegaeraField",
+	Minotaur = "Minotaur",
+	Theseus = "Theseus",
 	Tisiphone = "Tisiphone",
 	ZagreusField = "ZagreusField",
 }
