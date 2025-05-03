@@ -209,6 +209,14 @@ mod.BikFileMappings = {
 	"ShadeSwordRun_Bink",
 	"ShadeSwordOnHit_Bink",
 	"ShadeSwordIdle_Bink",
+	-- SplitShotUnit
+	"EnemyWretchCasterSplitShotAttack_Bink",
+	"EnemyWretchCasterSplitShotAttackAlt_Bink",
+	"EnemyWretchCasterSplitShotIdle_Bink",
+	"EnemyWretchCasterSplitShotMove_Bink",
+	"EnemyWretchCasterSplitShotOnHit_Bink",
+	"EnemyWretchCasterSplitShotStart_Bink",
+	"EnemyWretchCasterSplitShotStop_Bink"
 	-- STYX
 }
 

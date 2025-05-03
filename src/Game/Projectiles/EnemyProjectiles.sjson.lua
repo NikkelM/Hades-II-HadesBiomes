@@ -132,6 +132,29 @@ local hadesProjectilesModifications = {
 		CheckObstacleImpact = true,
 		DetonateOnTouchdown = true,
 	},
+	-- ELYSIUM
+	-- When player is hit by it, still spawns the small projectiles
+	SplitShotWeapon = {
+		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+		CanBeReflected = true,
+		DissipateFx = "EnemyProjectileMultiBreak",
+		SpawnOnDeath = nil,
+		UnpauseResetLocation = true,
+		AffectsSelf = false,
+		Fuse = 1.7,
+	},
+	SplitShotWeaponSmall = {
+		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+		CanBeReflected = true,
+		DissipateFx = "EnemyProjectileDissipate",
+		UnpauseResetLocation = true,
+		AffectsSelf = false,
+		Thing = {
+			Graphic = "EnemyProjectileIn",
+		},
+	},
 	-- STYX
 	StaggeredSatyrRangedWeapon = {
 		UnpauseAnimation = mod.NilValue,
