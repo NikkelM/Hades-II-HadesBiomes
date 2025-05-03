@@ -77,9 +77,10 @@ game.MusicTrackData.Asphodel = {
 	-- { Name = "/Music/MusicAsphodel3_MC", }, -- The audio event for this track does not exist - #82
 }
 game.MusicTrackData.Elysium = {
-	{ Name = "/Music/MusicElysium1_MC", },
-	{ Name = "/Music/MusicElysium2_MC", },
-	{ Name = "/Music/MusicElysium3_MC", },
+	{ Name = "/Music/MusicHadesReset_MC", }, -- Is this somehow the Elysium music??
+	-- { Name = "/Music/MusicElysium1_MC", }, -- Audio events don't exist? Or file not loaded correctly?
+	-- { Name = "/Music/MusicElysium2_MC", },
+	-- { Name = "/Music/MusicElysium3_MC", },
 }
 game.MusicTrackData.Styx = {
 	{ Name = "/Music/MusicStyx1_MC", },

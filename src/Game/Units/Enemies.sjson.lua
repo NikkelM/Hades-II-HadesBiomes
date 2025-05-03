@@ -24,6 +24,11 @@ local hadesEnemiesModifications = {
 	BaseMedusaHead = { InheritFrom = "1_BaseEnemy", },
 	HydraTooth = { InheritFrom = "1_BaseEnemy", },
 
+	-- ELYSIUM
+	BaseShade = { InheritFrom = "1_BaseEnemy", },
+	FlurrySpawner = { InheritFrom = "1_BaseEnemy", },
+	Chariot = { InheritFrom = "1_BaseEnemy", },
+
 	-- ENVIRONMENT
 	Breakable = { InheritFrom = "1_BaseDestructible", },
 }

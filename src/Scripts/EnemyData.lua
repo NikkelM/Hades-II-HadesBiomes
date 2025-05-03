@@ -651,13 +651,36 @@ local enemyModifications = {
 		},
 	},
 
-	-- These enemies have not been implemented yet
-	-- Chariot = {
-	-- 	LargeUnitCap = mod.NilValue,
-	-- },
-	-- ChariotSuicide = {
-	-- 	LargeUnitCap = mod.NilValue,
-	-- },
+	-- ELYSIUM
+	ShadeSpearUnit = {
+		StunAnimations = { Default = "ShadeSpear_OnHit" },
+		ActivateAnimation = "EnemyActivationFadeInShadeSpearContainer",
+		-- TODO: Test
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "ShadeSpearTouchdown",
+		},
+	},
+	ShadeBowUnit = {
+		StunAnimations = { Default = "ShadeBow_OnHit" },
+		ActivateAnimation = "EnemyActivationFadeInShadeBowContainer",
+	},
+	ShadeShieldUnit = {
+		StunAnimations = { Default = "ShadeShield_OnHit" },
+		ActivateAnimation = "EnemyActivationFadeInShadeShieldContainer",
+	},
+	ShadeSwordUnit = {
+		StunAnimations = { Default = "ShadeSword_OnHit" },
+		ActivateAnimation = "EnemyActivationFadeInShadeSwordContainer",
+	},
+	Chariot = {
+		LargeUnitCap = mod.NilValue,
+	},
+	ChariotSuicide = {
+		LargeUnitCap = mod.NilValue,
+	},
+
+	-- STYX
 	-- SatyrRanged = {
 	-- 	LargeUnitCap = mod.NilValue,
 	-- },
