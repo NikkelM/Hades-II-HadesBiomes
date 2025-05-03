@@ -20,6 +20,18 @@ local newData = {
 		DisplayName = "ASFODEL (Kâbus)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DisplayName = "ELISYUM (Kâbus)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DisplayName = "STIKS (Kâbus)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
+		DisplayName = "YÜZEY (Kâbus)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Zagreus",
 		Description = "Yeraltı Dünyasının Prensi",

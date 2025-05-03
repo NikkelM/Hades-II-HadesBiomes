@@ -20,6 +20,18 @@ local newData = {
 		DisplayName = "АСФОДЕЛЬ (Кошмар)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DisplayName = "ЭЛИЗИУМ (Кошмар)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DisplayName = "СТИКС (Кошмар)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
+		DisplayName = "ГРЕЦИЯ (Кошмар)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Загрей",
 		Description = "Принц Подземного мира",
