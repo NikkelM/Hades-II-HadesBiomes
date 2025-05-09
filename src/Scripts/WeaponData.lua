@@ -24,7 +24,7 @@ end
 
 -- Some weapons exist in both Hades and Hades II, so we need to rename the Hades weapons
 for oldName, newName in pairs(mod.EnemyWeaponMappings) do
-	mod.UpdatePropertyName(mod.HadesWeaponData, oldName, newName, { }, "WeaponData")
+	mod.UpdatePropertyName(mod.HadesWeaponData, oldName, newName, {}, "WeaponData")
 	-- Inherit properties from this weapon
 	mod.UpdateField(mod.HadesWeaponData, oldName, newName, { "InheritFrom" }, "WeaponData")
 end
@@ -541,6 +541,21 @@ local weaponModifications = {
 			MinAttacksBetweenUse = 1,
 		},
 	},
+
+	-- ELYSIUM
+	ShadeSideDash = {
+		AIData = {
+			-- Causes an infinite loop, as this would be set to itself
+			AttackFailWeapon = mod.NilValue,
+		},
+	},
+	ShadeBowSideDash = {
+		AIData = {
+			-- Causes an infinite loop, as this would be set to itself
+			AttackFailWeapon = mod.NilValue,
+		},
+	},
+	-- STYX
 }
 
 -- Modifications easier done in a loop
