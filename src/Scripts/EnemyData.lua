@@ -655,7 +655,6 @@ local enemyModifications = {
 	ShadeSpearUnit = {
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeSpearContainer",
-		-- TODO: Test
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "ShadeSpearTouchdown",
@@ -668,6 +667,8 @@ local enemyModifications = {
 	ShadeShieldUnit = {
 		StunAnimations = { Default = "ShadeShield_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeShieldContainer",
+		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
+		InvulnerableHitFx = "ShadeShieldBlock",
 	},
 	ShadeSwordUnit = {
 		StunAnimations = { Default = "ShadeSword_OnHit" },
@@ -678,6 +679,12 @@ local enemyModifications = {
 	},
 	ChariotSuicide = {
 		LargeUnitCap = mod.NilValue,
+	},
+
+	-- ELYSIUM BOSS - THESEUS & MINOTAUR
+	Theseus = {
+		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
+		InvulnerableHitFx = "ShadeShieldBlock",
 	},
 
 	-- STYX
