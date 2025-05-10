@@ -52,3 +52,11 @@ function game.NikkelMHadesBiomesBossAIStageHandler(enemy, args)
 		Destroy({ Ids = GetIdsByType({ Name = aiStage.ClearObstacleTypes }) })
 	end
 end
+
+-- If the enemy is the ShadeNaked, we don't want a summon animation for the picked up enemy
+modutil.mod.Path.Wrap("ProcessPickup", function(base, enemy, pickupTarget)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.Name == "ShadeNaked" then
+		game.CurrentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation = true
+	end
+	base(enemy, pickupTarget)
+end)

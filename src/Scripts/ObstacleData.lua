@@ -22,6 +22,7 @@ local function applyModificationsAndInheritObstacleData(base, modifications, add
 	end
 end
 
+-- Also works for already existing obstacles
 local obstacleModifications = {
 	-- TARTARUS
 	TartarusDoor03b = {
@@ -53,6 +54,21 @@ local obstacleModifications = {
 		HealingSpentAnimation = "HealthFountainEmptyElysium",
 	},
 	-- ELYSIUM
+	EnemyShield = {
+		SwapToUnitOnPickup = "ShadeShieldUnit",
+	},
+	EnemyBow = {
+		SwapToUnitOnPickup = "ShadeBowUnit",
+	},
+	EnemySword = {
+		SwapToUnitOnPickup = "ShadeSwordUnit",
+	},
+	EnemySpear = {
+		SwapToUnitOnPickup = "ShadeSpearUnit",
+	},
+	EnemyDagger = {
+		SwapToUnitOnPickup = "ShadeSwordUnit",
+	},
 	-- STYX
 }
 

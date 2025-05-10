@@ -94,6 +94,8 @@ local enemyAdditions = {
 		Name = "BloodlessNakedBerserkerElite",
 		InheritFrom = "BloodlessBerserker_Elite",
 	},
+	-- ELYSIUM
+	-- STYX
 }
 
 local enemyKeyReplacements = {

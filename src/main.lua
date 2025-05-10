@@ -275,6 +275,7 @@ local function on_ready()
 		import "Scripts/FunctionMappings/HeavyRanged.lua"
 		import "Scripts/FunctionMappings/LightSpawner.lua"
 		import "Scripts/FunctionMappings/MiniBossTartarus.lua"
+		import "Scripts/FunctionMappings/ShadeNaked.lua"
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes

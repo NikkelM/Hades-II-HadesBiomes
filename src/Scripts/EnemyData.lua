@@ -177,6 +177,9 @@ local enemyReplacements = {
 	HydraHeadImmortal = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
+
+	-- ELYSIUM
+	-- STYX
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
@@ -652,9 +655,15 @@ local enemyModifications = {
 	},
 
 	-- ELYSIUM
+	-- TODO: Push away from player with some random force to force it to move to a pickup location
+	ShadeNaked = {
+		StunAnimations = { Default = "ShadeNaked_Idle" },
+		UseActivatePresentation = false,
+	},
 	ShadeSpearUnit = {
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeSpearContainer",
+		SpawnUnitOnDeath = "ShadeNaked",
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "ShadeSpearTouchdown",
@@ -663,16 +672,19 @@ local enemyModifications = {
 	ShadeBowUnit = {
 		StunAnimations = { Default = "ShadeBow_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeBowContainer",
+		SpawnUnitOnDeath = "ShadeNaked",
 	},
 	ShadeShieldUnit = {
 		StunAnimations = { Default = "ShadeShield_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeShieldContainer",
+		SpawnUnitOnDeath = "ShadeNaked",
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
 	},
 	ShadeSwordUnit = {
 		StunAnimations = { Default = "ShadeSword_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeSwordContainer",
+		SpawnUnitOnDeath = "ShadeNaked",
 	},
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
@@ -782,6 +794,8 @@ local enemyKeyReplacements = {
 	},
 	-- Key is only used for the four breakables
 	ValueOptions = "BreakableValueOptions",
+	-- For the ShadeNaked
+	AIPickupType = "AIPickupTypes",
 }
 
 -- Modifications to Hades II enemies
