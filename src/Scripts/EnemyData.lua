@@ -655,36 +655,71 @@ local enemyModifications = {
 	},
 
 	-- ELYSIUM
-	-- TODO: Push away from player with some random force to force it to move to a pickup location
 	ShadeNaked = {
 		StunAnimations = { Default = "ShadeNaked_Idle" },
-		UseActivatePresentation = false,
+		-- Push the Shade away after spawning so it has to move to the pickupTarget
+		PostActivateEvents = {
+			{
+				FunctionName = "ModsNikkelMHadesBiomesShadeNakedPostActivate",
+				Args = { ForceMin = 3000, ForceMax = 3500, },
+			},
+		},
+		-- To prevent the first damage occurrence, which is duplicated from the killing blow
+		ModsNikkelMHadesBiomesIgnoreFirstDamage = true,
 	},
 	ShadeSpearUnit = {
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeSpearContainer",
 		SpawnUnitOnDeath = "ShadeNaked",
+		SkipActivatePresentationOnSpawns = true,
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "ShadeSpearTouchdown",
 		},
 	},
+	ShadeSpearUnitElite = {
+		SpawnUnitOnDeath = "ShadeNakedElite",
+	},
+	ShadeSpearUnitSuperElite = {
+		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+	},
 	ShadeBowUnit = {
 		StunAnimations = { Default = "ShadeBow_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeBowContainer",
 		SpawnUnitOnDeath = "ShadeNaked",
+		SkipActivatePresentationOnSpawns = true,
+	},
+	ShadeBowUnitElite = {
+		SpawnUnitOnDeath = "ShadeNakedElite",
+	},
+	ShadeBowUnitSuperElite = {
+		SpawnUnitOnDeath = "ShadeNakedSuperElite",
 	},
 	ShadeShieldUnit = {
 		StunAnimations = { Default = "ShadeShield_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeShieldContainer",
 		SpawnUnitOnDeath = "ShadeNaked",
+		SkipActivatePresentationOnSpawns = true,
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
+	},
+	ShadeShieldUnitElite = {
+		SpawnUnitOnDeath = "ShadeNakedElite",
+	},
+	ShadeShieldUnitSuperElite = {
+		SpawnUnitOnDeath = "ShadeNakedSuperElite",
 	},
 	ShadeSwordUnit = {
 		StunAnimations = { Default = "ShadeSword_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeSwordContainer",
 		SpawnUnitOnDeath = "ShadeNaked",
+		SkipActivatePresentationOnSpawns = true,
+	},
+	ShadeSwordUnitElite = {
+		SpawnUnitOnDeath = "ShadeNakedElite",
+	},
+	ShadeSwordUnitSuperElite = {
+		SpawnUnitOnDeath = "ShadeNakedSuperElite",
 	},
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
