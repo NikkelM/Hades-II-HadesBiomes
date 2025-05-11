@@ -39,8 +39,23 @@ local hadesWeaponsModifications = {
 		Effect = {
 			-- The speedup during the ram - higher so it can't just be outsprinted
 			Modifier = 760,
-		}
-	}
+		},
+	},
+	TheseusChariotRam = {
+		Effect = {
+			Modifier = 760,
+		},
+	},
+	ChariotRamElite = {
+		Effect = {
+			Modifier = 880,
+		},
+	},
+	ChariotRamSelfDestruct = {
+		Effect = {
+			Modifier = 700,
+		},
+	},
 	-- STYX
 }
 

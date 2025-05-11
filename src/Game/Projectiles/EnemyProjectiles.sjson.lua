@@ -155,6 +155,9 @@ local hadesProjectilesModifications = {
 			Graphic = "EnemyProjectileIn",
 		},
 	},
+	ChariotRamSelfDestruct = {
+		AffectsEnemies = true,
+	},
 	-- STYX
 	StaggeredSatyrRangedWeapon = {
 		UnpauseAnimation = mod.NilValue,

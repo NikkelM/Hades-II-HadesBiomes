@@ -737,13 +737,22 @@ local enemyModifications = {
 			-- Longer time ramming before timing out and stopping
 			RamTimeout = 3.0,
 			RamDistance = 120,
-		}
+		},
 	},
 	ChariotSuicide = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotSuicideOnHit" },
 		ActivateAnimation = "EnemyActivationFadeInChariotSuicideContainer",
 		ActivateFx = "EnemySummonRuneMedium",
+		DefaultAIData = {
+			PreAttackAngleTowardTarget = false,
+			AttackDistanceBuffer = 0,
+			StopMoveWithinRange = false,
+			ProjectileName = "ChariotRamSelfDestruct",
+			SetupDistance = 900,
+			SetupTimeout = 7.0,
+			RamDistance = 80,
+		},
 	},
 
 	-- ELYSIUM BOSS - THESEUS & MINOTAUR
