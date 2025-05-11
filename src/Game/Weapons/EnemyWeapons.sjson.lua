@@ -34,6 +34,14 @@ local hadesWeaponsModifications = {
 	HydraSnap = {
 		SelfVelocity = 4000.0,
 	},
+	-- ELYSIUM
+	ChariotRam = {
+		Effect = {
+			-- The speedup during the ram - higher so it can't just be outsprinted
+			Modifier = 800,
+		}
+	}
+	-- STYX
 }
 
 mod.ApplyNestedSjsonModifications(hadesWeaponsTable.Weapons, hadesWeaponsModifications)

@@ -668,6 +668,7 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesIgnoreFirstDamage = true,
 	},
 	ShadeSpearUnit = {
+		-- StopAnimationsOnDeath? for the glow animations
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeSpearContainer",
 		SpawnUnitOnDeath = "ShadeNaked",
@@ -723,9 +724,27 @@ local enemyModifications = {
 	},
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
+		StunAnimations = { Default = "ChariotOnHit" },
+		ActivateAnimation = "EnemyActivationFadeInChariotContainer",
+		DefaultAIData = {
+			-- TODO: Test if these are needed
+			MoveWithinRange = false,
+			PreAttackAngleTowardTarget = false,
+			AttackDistanceBuffer = 0,
+			ProjectileName = "ChariotRam",
+			StopMoveWithinRange = false,
+			-- TODO: Test end
+			-- Setup is the when it can start ramming instead of moving
+			SetupDistance = 600,
+			SetupTimeout = 7.0,
+			RamDistance = 120,
+		}
 	},
 	ChariotSuicide = {
 		LargeUnitCap = mod.NilValue,
+		StunAnimations = { Default = "ChariotSuicideOnHit" },
+		ActivateAnimation = "EnemyActivationFadeInChariotSuicideContainer",
+		ActivateFx = "EnemySummonRuneMedium",
 	},
 
 	-- ELYSIUM BOSS - THESEUS & MINOTAUR

@@ -216,7 +216,17 @@ mod.BikFileMappings = {
 	"EnemyWretchCasterSplitShotMove_Bink",
 	"EnemyWretchCasterSplitShotOnHit_Bink",
 	"EnemyWretchCasterSplitShotStart_Bink",
-	"EnemyWretchCasterSplitShotStop_Bink"
+	"EnemyWretchCasterSplitShotStop_Bink",
+	-- Chariot
+	"Enemy_ChariotIdle_Bink",
+	"Enemy_ChariotAttack_Bink",
+	"Enemy_ChariotOnHit_Bink",
+	"Enemy_ChariotDeathVFX_Bink",
+	-- ChariotSuicide
+	"Enemy_ChariotSmallIdle_Bink",
+	"Enemy_ChariotSmallAttack_Bink",
+	"Enemy_ChariotSmallOnHit_Bink",
+	"Enemy_ChariotSmallDeathVFX_Bink",
 	-- STYX
 }
 
@@ -225,6 +235,7 @@ mod.SjsonFileMappings = {
 	-- Note - it's possible this only works if the file name is the same?
 	-- Normal enemies
 	"Animations\\CharacterAnim_Enemies_BoneDracon",
+	"Animations\\CharacterAnim_Enemies_Chariot",
 	"Animations\\CharacterAnim_Enemies_Shades",
 	"Animations\\CharacterAnim_Enemies_WretchThug",
 	"Animations\\CharacterAnim_Enemies_Wringer",
