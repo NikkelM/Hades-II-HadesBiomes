@@ -62,9 +62,7 @@ local hadesProjectilesModifications = {
 		},
 	},
 	LightRangedWeapon = {
-		CanBeProjectileDefenseDestroyed = false,
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
-		CanBeReflected = true,
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		-- It just disappears instead of exploding like in Hades
 		-- The explosion has a weird boxed brightness around it
 		DissipateFx = "EnemyProjectileDissipate",
@@ -87,9 +85,7 @@ local hadesProjectilesModifications = {
 	-- TARTARUS - BOSSES
 	HarpyBeam = {
 		Speed = 700,
-		CanBeProjectileDefenseDestroyed = false,
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
-		CanBeReflected = true,
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
 	},
 	HarpySlowBeam = {
 		UnpauseAnimation = mod.NilValue,
@@ -114,18 +110,14 @@ local hadesProjectilesModifications = {
 	},
 	-- ASPHODEL
 	RangedBurrowerWeapon = {
-		CanBeProjectileDefenseDestroyed = false,
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
-		CanBeReflected = true,
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
 	},
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
 	},
 	-- ASPHODEL - HYDRA
 	HydraDart = {
-		CanBeProjectileDefenseDestroyed = false,
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
-		CanBeReflected = true,
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
 	},
 	HydraSummon = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
@@ -133,21 +125,18 @@ local hadesProjectilesModifications = {
 		DetonateOnTouchdown = true,
 	},
 	-- ELYSIUM
-	-- When player is hit by it, still spawns the small projectiles
 	SplitShotWeapon = {
-		CanBeProjectileDefenseDestroyed = false,
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
-		CanBeReflected = true,
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
+		ImpactFx = "EnemyProjectileImpact",
 		DissipateFx = "EnemyProjectileMultiBreak",
-		SpawnOnDeath = nil,
+		SpawnOnDeath = "null",
+		SpawnOnDissipate = "SplitShotWeaponSmall",
 		UnpauseResetLocation = true,
 		AffectsSelf = false,
-		Fuse = 1.7,
+		Fuse = 1.65,
 	},
 	SplitShotWeaponSmall = {
-		CanBeProjectileDefenseDestroyed = false,
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
-		CanBeReflected = true,
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
 		UnpauseResetLocation = true,
 		AffectsSelf = false,
