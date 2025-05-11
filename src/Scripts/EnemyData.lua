@@ -727,16 +727,15 @@ local enemyModifications = {
 		StunAnimations = { Default = "ChariotOnHit" },
 		ActivateAnimation = "EnemyActivationFadeInChariotContainer",
 		DefaultAIData = {
-			-- TODO: Test if these are needed
-			MoveWithinRange = false,
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
-			ProjectileName = "ChariotRam",
 			StopMoveWithinRange = false,
-			-- TODO: Test end
+			ProjectileName = "ChariotRam",
 			-- Setup is the when it can start ramming instead of moving
-			SetupDistance = 600,
+			SetupDistance = 500,
 			SetupTimeout = 7.0,
+			-- Longer time ramming before timing out and stopping
+			RamTimeout = 3.0,
 			RamDistance = 120,
 		}
 	},

@@ -74,8 +74,7 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 				Id = enemy.ObjectId,
 				DestinationId = enemy.ObjectId,
 				AutoEquip = true,
-				WeaponName = aiData
-						.RamWeaponName,
+				WeaponName = aiData.RamWeaponName,
 				EffectName = aiData.RamEffectName,
 				Duration = aiData.RamTimeout
 			})

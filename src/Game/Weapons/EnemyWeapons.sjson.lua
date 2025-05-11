@@ -38,7 +38,7 @@ local hadesWeaponsModifications = {
 	ChariotRam = {
 		Effect = {
 			-- The speedup during the ram - higher so it can't just be outsprinted
-			Modifier = 800,
+			Modifier = 760,
 		}
 	}
 	-- STYX
