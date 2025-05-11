@@ -53,7 +53,7 @@ local hadesWeaponsModifications = {
 	},
 	ChariotRamSelfDestruct = {
 		Effect = {
-			Modifier = 700,
+			Modifier = 680,
 		},
 	},
 	-- STYX
