@@ -72,8 +72,8 @@ local roomModifications = {
 
 	-- MINIBOSSES
 	C_MiniBoss01 = {
-		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
 		LoadModdedVoiceBanks = { "Minotaur", "ZagreusField" },
+		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
 	},
 
 	-- BOSSES
@@ -93,35 +93,35 @@ local roomModifications = {
 		},
 	},
 	C_PostBoss01 = {
-		-- ExitPreviewAnim = "HadesExitPreview",
-		-- NextRoomSet = { "Elysium" },
-		-- SellShopSpawnChance = 1.0,
-		-- SellShopRequirements = {
-		-- 	{
-		-- 		PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossSellTraitShops" },
-		-- 	},
-		-- },
-		-- -- Defines where the well spawns, making sure the sell shop spawns on the other possible ID - available IDs are 480768 and 532755
-		-- WellShopChallengeBaseId = 532755,
-		-- WellShopRequirements = {
-		-- 	{
-		-- 		PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossWellShops" },
-		-- 	},
-		-- },
-		-- ObstacleData = {
-		-- 	[486504] = {
-		-- 		SetupGameStateRequirements = {
-		-- 			{
-		-- 				PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradePostBossGiftRack" },
-		-- 			},
-		-- 			RequiredCosmetics = mod.NilValue,
-		-- 		},
-		-- 	},
-		-- 	-- Makes the exit door interactable
-		-- 	[430000] = {
-		-- 		ActivateIds = { 430000, },
-		-- 	},
-		-- },
+		ExitPreviewAnim = "HadesExitPreview",
+		NextRoomSet = { "Styx" },
+		SellShopSpawnChance = 1.0,
+		SellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossSellTraitShops" },
+			},
+		},
+		-- Defines where the well spawns, making sure the sell shop spawns on the other possible ID - available IDs are 480768 and 532755
+		WellShopChallengeBaseId = 532755,
+		WellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossWellShops" },
+			},
+		},
+		ObstacleData = {
+			[486504] = {
+				SetupGameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradePostBossGiftRack" },
+					},
+					RequiredCosmetics = mod.NilValue,
+				},
+			},
+			-- Makes the exit door interactable
+			[430000] = {
+				ActivateIds = { 430000, },
+			},
+		},
 		LeavePostPresentationEvents = {
 			{
 				FunctionName = "ModsNikkelMHadesBiomesBiomeMapPresentation",

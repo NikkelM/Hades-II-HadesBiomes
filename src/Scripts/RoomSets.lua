@@ -84,7 +84,7 @@ local newRoomSets = {
 	Elysium = {
 		"C_Intro",
 
-		-- "C_Boss01",
+		"C_Boss01",
 
 		"C_PostBoss01",
 
