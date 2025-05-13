@@ -35,17 +35,16 @@ mod.UpdateField(encounterDataElysium, "Challenge", "TimeChallenge", { "InheritFr
 -- Can still use modifications if the modified table did not exist beforehand
 local encounterReplacements = {
 	GeneratedElysium = {
-		-- TODO: Set values
-		-- The original from Hades is
-		ActiveEnemyCapBase = 8.5,
-		-- The original from Hades is
-		BaseDifficulty = 200,
-		-- The original from Hades is
-		ActiveEnemyCapDepthRamp = 1.3,
-		-- The original from Hades is
+		-- The original from Hades is 2.3 - inherited from Generated
+		ActiveEnemyCapBase = 5.0,
+		-- The original from Hades is 220
+		BaseDifficulty = 300,
+		-- The original from Hades is 0.4
+		ActiveEnemyCapDepthRamp = 0.7,
+		-- The original from Hades is 0.35
 		TypeCountDepthRamp = 0.55,
-		-- The original from Hades is
-		DepthDifficultyRamp = 30,
+		-- The original from Hades is 70
+		DepthDifficultyRamp = 85,
 		-- Original is missing HandleEncounterPreSpawns
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },

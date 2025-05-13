@@ -22,7 +22,7 @@ function game.PickupAI(enemy, currentRun)
 end
 
 function game.ModsNikkelMHadesBiomesShadeNakedPostActivate(source, args)
-	local angle = GetAngleBetween({ DestinationId = source.ObjectId, Id = game.CurrentRun.Hero.ObjectId })
+	local angle = GetAngleBetween({ DestinationId = source.ObjectId, Id = game.CurrentRun.Hero.ObjectId }) + game.RandomFloat(args.AngleOffsetMin, args.AngleOffsetMax)
 	local force = game.RandomFloat(args.ForceMin, args.ForceMax)
 	ApplyForce({ Id = source.ObjectId, Speed = force, Angle = angle, SelfApplied = true })
 end

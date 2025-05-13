@@ -661,7 +661,7 @@ local enemyModifications = {
 		PostActivateEvents = {
 			{
 				FunctionName = "ModsNikkelMHadesBiomesShadeNakedPostActivate",
-				Args = { ForceMin = 3000, ForceMax = 3500, },
+				Args = { ForceMin = 3200, ForceMax = 3300, AngleOffsetMin = -60, AngleOffsetMax = 60, },
 			},
 		},
 		-- To prevent the first damage occurrence, which is duplicated from the killing blow
