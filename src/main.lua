@@ -176,8 +176,10 @@ local function on_ready()
 		import "Game/Projectiles/Enemy_Traps_Projectiles.sjson.lua"
 
 		import "Game/Obstacles/Asphodel.sjson.lua"
-		import "Game/Obstacles/Tartarus.sjson.lua"
 		import "Game/Obstacles/Chaos.sjson.lua"
+		import "Game/Obstacles/Elysium.sjson.lua"
+		-- import "Game/Obstacles/Styx.sjson.lua"
+		import "Game/Obstacles/Tartarus.sjson.lua"
 
 		-- The ScreenText files depend on icons in here
 		import "Scripts/UIData.lua"

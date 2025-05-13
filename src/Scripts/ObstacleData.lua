@@ -22,7 +22,7 @@ local function applyModificationsAndInheritObstacleData(base, modifications, add
 	end
 end
 
--- Also works for already existing obstacles
+-- Also works for already existing obstacles in Hades II
 local obstacleModifications = {
 	-- TARTARUS
 	TartarusDoor03b = {
@@ -49,10 +49,6 @@ local obstacleModifications = {
 		InheritFrom = { "HealthFountain" },
 		HealingSpentAnimation = "HealthFountainEmptyAsphodel",
 	},
-	HealthFountainElysium = {
-		InheritFrom = { "HealthFountain" },
-		HealingSpentAnimation = "HealthFountainEmptyElysium",
-	},
 	-- ELYSIUM
 	EnemyShield = {
 		SwapToUnitOnPickup = "ShadeShieldUnit",
@@ -69,13 +65,25 @@ local obstacleModifications = {
 	EnemyDagger = {
 		SwapToUnitOnPickup = "ShadeSwordUnit",
 	},
+	HealthFountainElysium = {
+		InheritFrom = { "HealthFountain" },
+		HealingSpentAnimation = "HealthFountainEmptyElysium",
+	},
+	ElysiumRubble04 = {
+		DeathFx = "RubbleFall",
+		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
+	},
 	-- STYX
 }
 
 local addedObstacles = {
+	-- TARTARUS
 	MultiFuryMegaeraIntro = { ExitAnimation = "MegaeraMultiFuryTakeOff", },
 	MultiFuryAlectoIntro = { ExitAnimation = "AlectoMultiFuryTakeOff", },
 	MultiFuryTisiphoneIntro = { ExitAnimation = "TisiphoneMultiFuryTakeOff", },
+	-- ASPHODEL
+	-- ELYSIUM
+	-- STYX
 }
 
 -- We need to re-process data inheritance for any redefined obstacles that define an InheritFrom
