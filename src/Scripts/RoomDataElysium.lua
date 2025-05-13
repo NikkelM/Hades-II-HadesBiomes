@@ -1,4 +1,4 @@
--- Adds RoomData for Asphodel from Hades to Hades II
+-- Adds RoomData for Elysium from Hades to Hades II
 
 local roomReplacements = {
 	-- GENERIC
@@ -9,7 +9,6 @@ local roomReplacements = {
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Elysium",
 		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
-		-- TODO: Modded obstacles?
 		BreakableOptions = { "BreakableElysiumIdle", "BreakableElysiumIdle2", "BreakableElysiumIdle3" },
 
 		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
@@ -69,6 +68,12 @@ local roomModifications = {
 		IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
+	},
+
+	-- MINIBOSSES
+	C_MiniBoss01 = {
+		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+		LoadModdedVoiceBanks = { "Minotaur", "ZagreusField" },
 	},
 
 	-- BOSSES

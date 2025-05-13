@@ -227,6 +227,45 @@ mod.BikFileMappings = {
 	"Enemy_ChariotSmallAttack_Bink",
 	"Enemy_ChariotSmallOnHit_Bink",
 	"Enemy_ChariotSmallDeathVFX_Bink",
+	-- Theseus
+	"TheseusWalk_Bink",
+	"TheseusIdle_Bink",
+	"TheseusSpearSpin_Bink",
+	"TheseusWrath_Bink",
+	"TheseusSpearThrow_Bink",
+	"MinotaurTheseusThrow_Bink",
+	"TheseusTaunt_Bink",
+	"TheseusDeathVFX_Bink",
+	-- Theseus Armored
+	"TheseusChariotTaunt_Bink",
+	"TheseusChariotRide_Bink",
+	"TheseusChariotFall_Bink",
+	-- Minotaur
+	"MinotaurIdle_Bink",
+	"MinotaurBullRush_Bink",
+	"MinotaurWalk_Bink",
+	"MinotaurBullRushCharge_Bink",
+	"MinotaurCrouchThrow_Bink",
+	"MinotaurBullRushStrike_Bink",
+	"MinotaurCrescentStrike_Bink",
+	"MinotaurAttackLeap_Bink",
+	"MinotaurWalkStop_Bink",
+	"MinotaurAttackSwings_Bink",
+	"MinotaurTaunt_Bink",
+	"MinotaurDeathVFX_Bink",
+	-- Minotaur Armored
+	"MinotaurArmoredIdle_Bink",
+	"MinotaurArmoredBullRush_Bink",
+	"MinotaurArmoredWalk_Bink",
+	"MinotaurArmoredBullRushCharge_Bink",
+	"MinotaurArmoredAttackAxeSpin_Bink",
+	"MinotaurArmoredBullRushStrike_Bink",
+	"MinotaurArmoredCrescentStrike_Bink",
+	"MinotaurArmoredAttackLeap_Bink",
+	"MinotaurArmoredWalkStop_Bink",
+	"MinotaurArmoredAttackSwings_Bink",
+	"MinotaurArmoredTaunt_Bink",
+	"MinotaurArmoredDeathVFX_Bink",
 	-- STYX
 }
 
@@ -236,14 +275,22 @@ mod.SjsonFileMappings = {
 	-- Normal enemies
 	"Animations\\CharacterAnim_Enemies_BoneDracon",
 	"Animations\\CharacterAnim_Enemies_Chariot",
+	-- "Animations\\CharacterAnim_Enemies_Crawler",
+	-- "Animations\\CharacterAnim_Enemies_Rat",
+	-- "Animations\\CharacterAnim_Enemies_Satyr",
 	"Animations\\CharacterAnim_Enemies_Shades",
+	"Animations\\CharacterAnim_Enemies_WretchAssassin",
 	"Animations\\CharacterAnim_Enemies_WretchThug",
 	"Animations\\CharacterAnim_Enemies_Wringer",
-	"Animations\\CharacterAnim_Enemies_WretchAssassin",
 	-- Bosses
+	-- "Animations\\CharacterAnim_EnemiesBosses_Charon",
 	"Animations\\CharacterAnim_EnemiesBosses_Furies",
+	-- "Animations\\CharacterAnim_EnemiesBosses_Hades",
 	"Animations\\CharacterAnim_EnemiesBosses_Hydra",
+	"Animations\\CharacterAnim_EnemiesBosses_Minotaur",
+	"Animations\\CharacterAnim_EnemiesBosses_Theseus",
 	-- NPCs
+	-- "Animations\\CharacterAnimationsNPC_Persephone",
 	"Animations\\CharacterAnimationsNPC_Thanatos",
 }
 

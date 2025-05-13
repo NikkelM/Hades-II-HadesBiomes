@@ -6,6 +6,10 @@ local encounterDataElysium = {
 	DevotionTestElysium = encounterData.DevotionTestElysium,
 
 	-- Minibosses
+	MiniBossMinotaur = encounterData.MiniBossMinotaur,
+	MiniBossNakedSpawners = encounterData.MiniBossNakedSpawners,
+	-- Not implemented in Hades
+	-- MiniBossShadeMagic = encounterData.MiniBossShadeMagic,
 
 	-- Bosses
 

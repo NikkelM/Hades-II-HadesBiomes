@@ -91,8 +91,9 @@ local newRoomSets = {
 		"C_PreBoss01",
 		"C_Shop01",
 
-		-- "C_MiniBoss01",
-		-- "C_MiniBoss02",
+		"C_MiniBoss01",
+		"C_MiniBoss02",
+		-- Not implemented in Hades
 		-- "C_MiniBoss03",
 
 		"C_Reprieve01",
