@@ -46,6 +46,12 @@ local hadesTwoObstacleModifications = {
 	ElysiumPlanter02 = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
+	ElysiumBush01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumFence05 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
 }
 
 sjson.hook(hadesTwoElysiumObstacleFile, function(data)
