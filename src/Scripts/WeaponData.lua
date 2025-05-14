@@ -555,6 +555,12 @@ local weaponModifications = {
 			AttackFailWeapon = mod.NilValue,
 		},
 	},
+	-- ELYSIUM - MINOTAUR
+	MinotaurBullRush ={
+		Requirements = {
+			MinPlayerDistance = 300,
+		},
+	},
 	-- STYX
 }
 

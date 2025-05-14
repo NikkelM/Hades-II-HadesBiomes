@@ -36,16 +36,16 @@ function game.NikkelMHadesBiomesBossAIStageHandler(enemy, args)
 		enemy.RageWeapon = aiStage.SetRageWeapon
 	end
 
-	-- Transistion
+	-- Transition
 	if aiStage.ThreadedFunctions ~= nil then
 		for k, aiFunctionName in pairs(aiStage.ThreadedFunctions) do
-			game.thread(game.CallFunctionName, aiFunctionName, enemy, CurrentRun)
+			game.thread(game.CallFunctionName, aiFunctionName, enemy)
 		end
 	end
 
 	if aiStage.PermanentlyEnrage then
 		enemy.PermanentEnraged = true
-		game.thread(game.EnrageUnit, enemy, game.CurrentRun)
+		game.thread(game.EnrageUnit, enemy)
 	end
 
 	if aiStage.ClearObstacleTypes then
