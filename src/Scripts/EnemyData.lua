@@ -54,8 +54,6 @@ local function applyModificationsAndInheritEnemyData(base, modifications, replac
 					for _, entry in ipairs(textLineSet) do
 						if type(entry) == "table" and entry.Text then
 							entry.Text = string.gsub(entry.Text, "{#PreviousFormat}", "{#Prev}")
-							-- Not needed, both work
-							-- entry.Text = string.gsub(entry.Text, "{#DialogueItalicFormat}", "{#Emph}")
 						end
 					end
 				end
