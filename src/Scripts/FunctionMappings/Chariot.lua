@@ -42,8 +42,7 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 					Speed = aiData.PreAttackFlash,
 					MinFraction = 0,
 					MaxFraction = 0.8,
-					Color = Color
-							.White,
+					Color = Color.White,
 					Duration = aiData.PreAttackDuration
 				})
 			end
