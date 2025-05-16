@@ -73,9 +73,12 @@ local encounterModifications = {
 	},
 
 	-- MINIBOSSES
+	MiniBossMinotaur = {
+		-- Without this, the Minotaur will not spawn if a save is loaded
+		PreSpawnEnemies = false,
+	},
 
 	-- BOSSES
-
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataElysium, encounterModifications, encounterReplacements)
