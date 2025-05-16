@@ -763,6 +763,12 @@ local enemyModifications = {
 	},
 
 	-- ELYSIUM BOSS - THESEUS & MINOTAUR
+	Minotaur = {
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "MinotaurOverheadTouchdown",
+		},
+	},
 	Theseus = {
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
@@ -790,15 +796,9 @@ local enemyModifications = {
 				FunctionName = "RandomizeObject",
 				Args = {
 					RandomizeSets = {
-						{
-							Animation = { "ModsNikkelMHadesBiomesBreakableIdle1" },
-						},
-						{
-							Animation = { "ModsNikkelMHadesBiomesBreakableIdle2" },
-						},
-						{
-							Animation = { "ModsNikkelMHadesBiomesBreakableIdle3" },
-						},
+						{ Animation = { "ModsNikkelMHadesBiomesBreakableIdle1" }, },
+						{ Animation = { "ModsNikkelMHadesBiomesBreakableIdle2" }, },
+						{ Animation = { "ModsNikkelMHadesBiomesBreakableIdle3" }, },
 					},
 				},
 			},
@@ -819,15 +819,9 @@ local enemyModifications = {
 				FunctionName = "RandomizeObject",
 				Args = {
 					RandomizeSets = {
-						{
-							Animation = { "BreakableAsphodelIdle" },
-						},
-						{
-							Animation = { "BreakableAsphodelIdle2" },
-						},
-						{
-							Animation = { "BreakableAsphodelIdle3" },
-						},
+						{ Animation = { "BreakableAsphodelIdle" }, },
+						{ Animation = { "BreakableAsphodelIdle2" }, },
+						{ Animation = { "BreakableAsphodelIdle3" }, },
 					},
 				},
 			},
@@ -848,15 +842,9 @@ local enemyModifications = {
 				FunctionName = "RandomizeObject",
 				Args = {
 					RandomizeSets = {
-						{
-							Animation = { "BreakableElysiumIdle" },
-						},
-						{
-							Animation = { "BreakableElysiumIdle2" },
-						},
-						{
-							Animation = { "BreakableElysiumIdle3" },
-						},
+						{ Animation = { "BreakableElysiumIdle1" }, },
+						{ Animation = { "BreakableElysiumIdle2" }, },
+						{ Animation = { "BreakableElysiumIdle3" }, },
 					},
 				},
 			},
