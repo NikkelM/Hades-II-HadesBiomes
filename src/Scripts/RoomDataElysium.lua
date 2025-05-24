@@ -9,7 +9,7 @@ local roomReplacements = {
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Elysium",
 		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
-		BreakableOptions = { "BreakableElysiumIdle", "BreakableElysiumIdle2", "BreakableElysiumIdle3" },
+		BreakableOptions = { "BreakableElysiumIdle1", "BreakableElysiumIdle2", "BreakableElysiumIdle3" },
 
 		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
 		ShrinePointDoorRequirements = { Skip = true },
