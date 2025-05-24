@@ -147,6 +147,13 @@ local hadesProjectilesModifications = {
 	ChariotRamSelfDestruct = {
 		AffectsEnemies = true,
 	},
+	-- ELYSIUM - MINOTAUR
+	MinotaurOverheadTouchdown = {
+      DamageRadius = 700,
+			-- TODO: Figure this out
+      DamageRadiusScaleY = 0.4,
+      DamageRadiusScaleX = 0.5,
+	},
 	-- STYX
 	StaggeredSatyrRangedWeapon = {
 		UnpauseAnimation = mod.NilValue,
@@ -206,10 +213,18 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then
 		projectile.Effect.Name = "HeroOnHitStun"
 	end
+	if projectile.Effects then
+		for _, effect in ipairs(projectile.Effects) do
+			if effect.Name == "ZagreusOnHitStun" then
+				effect.Name = "HeroOnHitStun"
+			end
+		end
+	end
+
 	-- Hades uses DamageLow and DamageHigh properties, Hades II only has Damage
 	if projectile.DamageLow or projectile.DamageHigh then
 		local damageLow = projectile.DamageLow or 0
-		local damageHigh = projectile.DamageHigh or 0
+		local damageHigh = projectile.DamageHigh or damageLow
 		projectile.Damage = math.floor((damageLow + damageHigh) / 2)
 		projectile.DamageLow = nil
 		projectile.DamageHigh = nil
