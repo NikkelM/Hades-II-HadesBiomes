@@ -10,8 +10,6 @@ local function applyModificationsAndInheritWeaponData(base, modifications, weapo
 
 	-- Move weapon requirements/eligibility data to the Requirements table
 	for weaponName, weaponData in pairs(base) do
-		print("Processing weapon: " .. weaponName)
-		local printWeapon = false
 		if weaponData.AIData then
 			local aiData = weaponData.AIData
 			for key, value in pairs(aiData) do
@@ -19,16 +17,11 @@ local function applyModificationsAndInheritWeaponData(base, modifications, weapo
 					if not weaponData.Requirements then
 						weaponData.Requirements = {}
 					end
-					printWeapon = true
 					-- Respect existing override from modifications above
 					weaponData.Requirements[key] = weaponData.Requirements[key] or value
 					aiData[key] = nil
 				end
 			end
-		end
-		if printWeapon then
-			mod.PrintTable(weaponData)
-			print()
 		end
 	end
 
@@ -56,6 +49,7 @@ end
 -- Modify or add weapons
 local weaponModifications = {
 	-- #region TARTARUS
+
 	-- #region Regular
 	HeavyRangedWeapon = {
 		AIData = {
@@ -133,7 +127,6 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region TARTARUS - MEGAERA
-
 	HarpyLightning = {
 		AIData = {
 			AttackSlotInterval = 0.01,
@@ -296,6 +289,7 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region ASPHODEL
+
 	-- #region Regular
 	HadesLightSpawnerEliteSpawnerWeapon = {
 		Requirements = {
@@ -414,6 +408,7 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region ELYSIUM
+
 	-- #region Regular
 	ShadeSideDash = {
 		AIData = {
@@ -456,6 +451,11 @@ local weaponModifications = {
 			PreFireDuration = 0.0,
 			-- Comes down too quickly otherwise
 			FireDuration = 0.3,
+		},
+	},
+	Minotaur5AxeCombo5 = {
+		AIData = {
+			PostAttackDuration = 1.8,
 		},
 	},
 	MinotaurLeapCombo5 = {

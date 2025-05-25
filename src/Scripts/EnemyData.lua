@@ -768,7 +768,7 @@ local enemyModifications = {
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "MinotaurOverheadTouchdown",
 			-- Moves the damage cone in front of the Minotaur to line up with the Axe and not the character
-			SpawnDistance = 70,
+			SpawnDistance = 90,
 			CalcOffset = true,
 			CalcAngle = true,
 		},
