@@ -1,11 +1,35 @@
 -- Applies modifications to base weapon objects, and then adds the new weapon objects to the game
-local function applyModificationsAndInheritWeaponData(base, modifications, weaponKeyReplacements)
+local function applyModificationsAndInheritWeaponData(base, modifications, weaponKeyReplacements, AIRequirements)
 	-- Apply modifications
 	for weaponName, weaponData in pairs(modifications) do
 		if not base[weaponName] then
 			base[weaponName] = {}
 		end
 		mod.ApplyModifications(base[weaponName], weaponData)
+	end
+
+	-- Move weapon requirements/eligibility data to the Requirements table
+	for weaponName, weaponData in pairs(base) do
+		print("Processing weapon: " .. weaponName)
+		local printWeapon = false
+		if weaponData.AIData then
+			local aiData = weaponData.AIData
+			for key, value in pairs(aiData) do
+				if game.Contains(AIRequirements, key) then
+					if not weaponData.Requirements then
+						weaponData.Requirements = {}
+					end
+					printWeapon = true
+					-- Respect existing override from modifications above
+					weaponData.Requirements[key] = weaponData.Requirements[key] or value
+					aiData[key] = nil
+				end
+			end
+		end
+		if printWeapon then
+			mod.PrintTable(weaponData)
+			print()
+		end
 	end
 
 	-- Process data inheritance and add the new data to the game's global
@@ -109,26 +133,8 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region TARTARUS - MEGAERA
-	HarpyLunge = {
-		Requirements = {
-			MaxConsecutiveUses = 2,
-		},
-	},
-	HarpyWhipWhirl = {
-		Requirements = {
-			MinAttacksBetweenUse = 2,
-			MaxPlayerDistance = 600,
-		},
-	},
-	HarpyBeam = {
-		Requirements = {
-			MinAttacksBetweenUse = 3,
-		},
-	},
+
 	HarpyLightning = {
-		Requirements = {
-			MinAttacksBetweenUse = 3,
-		},
 		AIData = {
 			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightning",
@@ -150,17 +156,11 @@ local weaponModifications = {
 
 	-- #region TARTARUS - ALECTO
 	HarpyLungeAlecto = {
-		Requirements = {
-			MaxConsecutiveUses = 2,
-		},
 		AIData = {
 			PreAttackStop = true,
 		},
 	},
 	HarpyWhipArc = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-		},
 		AIData = {
 			PreAttackStop = true,
 		},
@@ -174,10 +174,7 @@ local weaponModifications = {
 	},
 	HarpyBuildRage = {
 		Requirements = {
-			MaxActiveSpawns = 1,
-			MinAttacksBetweenUse = 5,
-			RequiresNotEnraged = true,
-			ForceUseIfReady = true,
+			-- TODO: Check MaxActiveSpawns - was 1, in Hades 5
 			BlockAsFirstWeapon = true,
 		},
 		AIData = {
@@ -192,9 +189,6 @@ local weaponModifications = {
 		},
 	},
 	HarpyLightningChase = {
-		Requirements = {
-			MinAttacksBetweenUse = 5,
-		},
 		AIData = {
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
@@ -206,9 +200,6 @@ local weaponModifications = {
 		},
 	},
 	HarpyLightningChaseRage = {
-		Requirements = {
-			MinAttacksBetweenUse = 5,
-		},
 		AIData = {
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
@@ -229,17 +220,11 @@ local weaponModifications = {
 		},
 	},
 	HarpyWhipShot = {
-		Requirements = {
-			MaxConsecutiveUses = 3,
-		},
 		AIData = {
 			PreAttackStop = true,
 		},
 	},
 	HarpyWhipShotRage = {
-		Requirements = {
-			MaxConsecutiveUses = 3,
-		},
 		AIData = {
 			PreAttackStop = true,
 		},
@@ -257,11 +242,6 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region TARTARUS - TISIPHONE
-	HarpyWhipCombo1 = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-		},
-	},
 	HarpyLightningLine = {
 		Requirements = {
 			BlockAsFirstWeapon = true,
@@ -286,7 +266,6 @@ local weaponModifications = {
 	},
 	HarpySlowBeam360 = {
 		Requirements = {
-			MinAttacksBetweenUse = 2,
 			BlockAsFirstWeapon = true,
 		},
 		AIData = {
@@ -400,14 +379,12 @@ local weaponModifications = {
 	-- #region ASPHODEL - HYDRA
 	HydraCrusher = {
 		GameStateRequirements = {
-			-- Is broken
+			-- TODO: Is broken
 			Skip = true,
 		},
 	},
 	HydraLunge = {
 		Requirements = {
-			MinAttacksBetweenUse = 2,
-			MinPlayerDistance = 350,
 			MaxConsecutiveUses = 3,
 		},
 		AIData = {
@@ -417,141 +394,19 @@ local weaponModifications = {
 	},
 	HydraLungeUntethered = {
 		Requirements = {
-			MinAttacksBetweenUse = 0,
 			MaxConsecutiveUses = 3,
 		},
 	},
 	HydraSlam = {
-		Requirements = {
-			MaxPlayerDistance = 600,
-			MinAttacksBetweenUse = 2,
-			ForceUseIfReady = true,
-		},
 		AIData = {
 			PostAttackDuration = 0.5,
 			MoveWithinRange = false,
 		},
 	},
-	HydraSlamUntethered = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
-			ForceUseIfReady = false,
-			MaxPlayerDistance = 800,
-		},
-	},
-	HydraSlamScattered = {
-		Requirements = {
-			MaxPlayerDistance = 9999,
-		},
-	},
-	HydraSlamScatteredFrenzy = {
-		Requirements = {
-			MaxPlayerDistance = 9999,
-		},
-	},
-	HydraPull = {
-		Requirements = {
-			MinAttacksBetweenUse = 3,
-			ForceUseIfReady = true,
-		},
-	},
-	HydraLavaSpit = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
-			ForceUseIfReady = true,
-		},
-	},
-	HydraLavaSpit2 = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
-			MinPlayerDistance = 450,
-		},
-	},
-	HydraLavaSpitFrenzy = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-		},
-	},
-	HydraLavaSpitExterior = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
-			ForceUseIfReady = true,
-			MinPlayerDistance = 450,
-		},
-	},
-	HydraLavaSpitInterior = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
-			MaxPlayerDistance = 700,
-		},
-	},
 	HydraDart = {
-		Requirements = {
-			MinAttacksBetweenUse = 2,
-		},
 		AIData = {
 			AIMoveWithinRangeTimeout = 1.0,
 			PostAttackDuration = 0.5,
-		},
-	},
-	HydraDartVolley = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
-		},
-	},
-	HydraRoar = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-			ForceUseIfReady = true,
-		},
-	},
-	HydraRoarVolleyLeft = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-			ForceUseIfReady = true,
-		},
-	},
-	HydraRoarVolleyRight = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-			ForceUseIfReady = true,
-		},
-	},
-	HydraRoarVolleyInsideOut = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-			ForceUseIfReady = true,
-		},
-	},
-	HydraSummon = {
-		Requirements = {
-			MinAttacksBetweenUse = 3,
-			ForceUseIfReady = true,
-			MaxActiveSpawns = 10,
-		},
-	},
-	HydraSummon2 = {
-		Requirements = {
-			MinAttacksBetweenUse = 3,
-			ForceUseIfReady = true,
-			MaxActiveSpawns = 5,
-		},
-	},
-	HydraSummonSpread = {
-		Requirements = {
-			MinAttacksBetweenUse = 4,
-			ForceUseIfReady = true,
-			MaxActiveSpawns = 5,
-		},
-	},
-	HydraSpawns = {
-		Requirements = {
-			MaxActiveSpawns = 10,
-		},
-	},
-	HydraHeal = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
 		},
 	},
 	-- #endregion
@@ -575,11 +430,6 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region ELYSIUM - MINOTAUR
-	Minotaur5AxeCombo1 = {
-		Requirements = {
-			MaxConsecutiveUses = 2,
-		},
-	},
 	Minotaur5AxeCombo3 = {
 		AIData = {
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
@@ -617,12 +467,6 @@ local weaponModifications = {
 			MoveWithinRange = false,
 			StopBeforeFire = true,
 			PreFireDuration = 0.0,
-		},
-	},
-	MinotaurBullRush = {
-		Requirements = {
-			MinPlayerDistance = 300,
-			MinAttacksBetweenUse = 1,
 		},
 	},
 	-- #endregion
@@ -697,4 +541,20 @@ local weaponKeyReplacements = {
 	},
 }
 
-applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponKeyReplacements)
+local AIRequirements = {
+	"MaxConsecutiveUses",
+	"MinAttacksBetweenUse",
+	"MaxUses",
+	"MaxPlayerDistance",
+	"MinPlayerDistance",
+	"MaxAttackers",
+	"RequireTotalAttacks",
+	"RequiresNotCharmed",
+	"MaxActiveSpawns",
+	"RequiresNotEnraged",
+	"ForceUseIfReady",
+	"BlockAsFirstWeapon",
+	"ForceFirst",
+}
+
+applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponKeyReplacements, AIRequirements)
