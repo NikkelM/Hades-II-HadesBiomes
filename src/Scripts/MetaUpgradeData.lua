@@ -45,7 +45,7 @@ local nextbiomeShrineSwapMap = {
 	-- RangedBurrower = { Name = "RangedBurrower", },
 	-- RangedBurrowerElite = { Name = "RangedBurrowerElite", },
 
-	-- Elysium -> Styx
+	-- TODO: Elysium -> Styx
 }
 
 -- Map the names

@@ -555,10 +555,17 @@ local weaponModifications = {
 			AttackFailWeapon = mod.NilValue,
 		},
 	},
+
 	-- ELYSIUM - MINOTAUR
+	Minotaur5AxeCombo1 = {
+		Requirements = {
+			MaxConsecutiveUses = 2,
+		},
+	},
 	MinotaurBullRush ={
 		Requirements = {
 			MinPlayerDistance = 300,
+			MinAttacksBetweenUse = 1,
 		},
 	},
 	-- STYX

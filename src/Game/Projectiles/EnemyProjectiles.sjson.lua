@@ -149,10 +149,9 @@ local hadesProjectilesModifications = {
 	},
 	-- ELYSIUM - MINOTAUR
 	MinotaurOverheadTouchdown = {
-      DamageRadius = 700,
-			-- TODO: Figure this out
-      DamageRadiusScaleY = 0.4,
-      DamageRadiusScaleX = 0.5,
+		AttachToOwner = false,
+		DamageRadius = 400,
+		DamageRadiusScaleY = 0.4,
 	},
 	-- STYX
 	StaggeredSatyrRangedWeapon = {
@@ -222,7 +221,7 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	end
 
 	-- Hades uses DamageLow and DamageHigh properties, Hades II only has Damage
-	if projectile.DamageLow or projectile.DamageHigh then
+	if projectile.DamageLow or projectile.DamageHigh and not projectile.Damage then
 		local damageLow = projectile.DamageLow or 0
 		local damageHigh = projectile.DamageHigh or damageLow
 		projectile.Damage = math.floor((damageLow + damageHigh) / 2)
