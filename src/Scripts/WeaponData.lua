@@ -31,7 +31,8 @@ end
 
 -- Modify or add weapons
 local weaponModifications = {
-	-- TARTARUS
+	-- #region TARTARUS
+	-- #region Regular
 	HeavyRangedWeapon = {
 		AIData = {
 			ExpireProjectilesOnHitStun = true,
@@ -105,8 +106,9 @@ local weaponModifications = {
 			ExpireProjectilesOnPolymorph = true,
 		},
 	},
+	-- #endregion
 
-	-- TARTARUS - MEGAERA
+	-- #region TARTARUS - MEGAERA
 	HarpyLunge = {
 		Requirements = {
 			MaxConsecutiveUses = 2,
@@ -144,7 +146,9 @@ local weaponModifications = {
 			ProjectileInterval = 0.3,
 		},
 	},
-	-- TARTARUS - ALECTO
+	-- #endregion
+
+	-- #region TARTARUS - ALECTO
 	HarpyLungeAlecto = {
 		Requirements = {
 			MaxConsecutiveUses = 2,
@@ -250,7 +254,9 @@ local weaponModifications = {
 			ProjectileName = "HarpyLightningAlecto",
 		},
 	},
-	-- TARTARUS - TISIPHONE
+	-- #endregion
+
+	-- #region TARTARUS - TISIPHONE
 	HarpyWhipCombo1 = {
 		Requirements = {
 			MaxConsecutiveUses = 1,
@@ -307,8 +313,11 @@ local weaponModifications = {
 			ProjectileName = "TisiphoneFog",
 		},
 	},
+	-- #endregion
+	-- #endregion
 
-	-- ASPHODEL
+	-- #region ASPHODEL
+	-- #region Regular
 	HadesLightSpawnerEliteSpawnerWeapon = {
 		Requirements = {
 			MaxActiveSpawns = 6,
@@ -336,7 +345,9 @@ local weaponModifications = {
 		},
 		ForceFirst = mod.NilValue,
 	},
-	-- ASPHODEL - Witches Circle
+	-- #endregion
+
+	-- #region ASPHODEL - Witches Circle
 	SpreadShotMinibossRadial = {
 		-- Fixing the animations and increasing the cooldown to scale with difficulty of not being able to destroy projectiles
 		-- Decreasing cooldown again if the shrine upgrade is active, to increase difficulty
@@ -384,7 +395,9 @@ local weaponModifications = {
 			PostAttackCooldownMax = 1.5,
 		},
 	},
-	-- ASPHODEL - HYDRA
+	-- #endregion
+
+	-- #region ASPHODEL - HYDRA
 	HydraCrusher = {
 		GameStateRequirements = {
 			-- Is broken
@@ -541,8 +554,12 @@ local weaponModifications = {
 			MinAttacksBetweenUse = 1,
 		},
 	},
+	-- #endregion
 
-	-- ELYSIUM
+	-- #endregion
+
+	-- #region ELYSIUM
+	-- #region Regular
 	ShadeSideDash = {
 		AIData = {
 			-- Causes an infinite loop, as this would be set to itself
@@ -555,20 +572,67 @@ local weaponModifications = {
 			AttackFailWeapon = mod.NilValue,
 		},
 	},
+	-- #endregion
 
-	-- ELYSIUM - MINOTAUR
+	-- #region ELYSIUM - MINOTAUR
 	Minotaur5AxeCombo1 = {
 		Requirements = {
 			MaxConsecutiveUses = 2,
 		},
 	},
-	MinotaurBullRush ={
+	Minotaur5AxeCombo3 = {
+		AIData = {
+			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
+			-- Applied after takeoff
+			FireSelfVelocity = 2000,
+			FireSelfUpwardVelocity = 1200,
+			-- Don't track during fire, but allow tracking during charge
+			StopBeforeFire = true,
+			-- If not set, Minotaur stays in one spot each leap
+			TrackTargetDuringCharge = true,
+			-- Can jump from anywhere
+			MoveWithinRange = false,
+			PreFireDuration = 0.0,
+		},
+	},
+	Minotaur5AxeCombo4 = {
+		AIData = {
+			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
+			FireSelfVelocity = 2000,
+			FireSelfUpwardVelocity = 1200,
+			StopBeforeFire = true,
+			TrackTargetDuringCharge = true,
+			MoveWithinRange = false,
+			PreFireDuration = 0.0,
+			-- Comes down too quickly otherwise
+			FireDuration = 0.3,
+		},
+	},
+	MinotaurLeapCombo5 = {
+		AIData = {
+			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
+			FireSelfVelocity = 2000,
+			FireSelfUpwardVelocity = 1200,
+			TrackTargetDuringCharge = true,
+			MoveWithinRange = false,
+			StopBeforeFire = true,
+			PreFireDuration = 0.0,
+		},
+	},
+	MinotaurBullRush = {
 		Requirements = {
 			MinPlayerDistance = 300,
 			MinAttacksBetweenUse = 1,
 		},
 	},
-	-- STYX
+	-- #endregion
+
+	-- #region ELYSIUM - THESEUS
+	-- #endregion
+	-- #endregion
+
+	-- #region STYX
+	-- #endregion
 }
 
 -- Modifications easier done in a loop
