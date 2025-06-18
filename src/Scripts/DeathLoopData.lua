@@ -37,6 +37,7 @@ function mod.SpawnHadesRunStartDoor(source, args)
 	chaosGate.OnUseEvents = {}
 	chaosGate.OnUsedFunctionName = _PLUGIN.guid .. "." .. "StartHadesRun"
 	chaosGate.OnUsedFunctionArgs = {
+		-- TODO: For debugging, change to currently worked on biome
 		StartingBiome = "Tartarus",
 		-- Don't play a voiceline - we do this when entering the Chaos gate
 		-- We have to do it then, as otherwise MelinoeField is being onloaded in PreThingCreation

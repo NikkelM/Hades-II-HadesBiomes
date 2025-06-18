@@ -469,6 +469,63 @@ local weaponModifications = {
 			PreFireDuration = 0.0,
 		},
 	},
+	MinotaurBullRush = {
+		AIData = {
+			-- ApplyEffectsOnPreAttackStart = {
+			-- 	-- {
+			-- 	-- 	EffectName = "BullRushSpeed",
+			-- 	-- 	DataProperties = {
+			-- 	-- 		Type = "SPEED",
+			-- 	-- 		-- ChangeType = "ADD",
+			-- 	-- 		Duration = 9.0,
+			-- 	-- 		Modifier = 1.75,
+			-- 	-- 		ClearOnCollision = true,
+			-- 	-- 		-- Active = true,
+			-- 	-- 		-- ExpiringTimeThreshold = 8.5,
+			-- 	-- 		-- ExpiringModifierFalloff = 50,
+			-- 	-- 	},
+			-- 	-- },
+			-- 	{
+			-- 		EffectName = "BullRushRotation",
+			-- 		DataProperties = {
+			-- 			Duration = 9.0,
+			-- 			RotationMultiplier = 0.8,
+			-- 			ClearOnCollision = true,
+			-- 			-- Active = true,
+			-- 		},
+			-- 	}
+			-- },
+			-- PreAttackSetUnitProperties =
+			-- {
+			-- 	Speed = 700,
+			-- 	-- RotationMultiplier doesn't work here
+			-- },
+			-- PostAttackResetUnitProperties = true,
+			PostAttackAnimation = "MinotaurBullRush_PreStrike",
+			ProjectileName = "MinotaurBullRushRam",
+			RamWeaponName = "MinotaurBullRush",
+			-- TODO: Doesn't yet work correctly - gets applied erratically, removed too soon or too late
+			RamEffectNames = { "BullRushSpeed", "BullRushRotation" },
+			RamRecoverTime = 2.0,
+			UseRamAILoop = true,
+			SetupDistance = 400,
+			SetupTimeout = 5.0,
+			RamDistance = 150,
+			RamTimeout = 9.0,
+			AttackDistanceBuffer = 0,
+			StopMoveWithinRange = false,
+			-- Comment the below out in the HadesWeaponData for testing
+			-- AIAttackDistance = 3000,
+			-- AILineOfSightBuffer = 200,
+			-- AILineOfSighEndBuffer = 80,
+			-- PostAttackAI = "MoveUntilEffectExpired",
+			-- PostAttackAICanOnlyMoveForward = true,
+			-- EffectExpiredName = "BullRushSpeed",
+			-- MoveSuccessDistance = 32,
+			-- PostAttackAIWait = 2.0,
+			-- PostAttackCooldown = 0.0,
+		}
+	},
 	-- #endregion
 
 	-- #region ELYSIUM - THESEUS
@@ -505,13 +562,13 @@ local weaponKeyReplacements = {
 		AIBufferDistance = "RetreatBufferDistance",
 		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
 		AILineOfSightBuffer = "LoSBuffer",
+		AILineOfSighEndBuffer = "LoSEndBuffer",
 		AIMoveWithinRangeTimeout = "MoveWithinRangeTimeout",
 		TargetFriends = "TargetRequiredKillEnemy",
 		AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
 		AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
 		AIRequireUnitLineOfSight = "RequireUnitLoS",
 		AIRequireProjectileLineOfSight = "RequireProjectileLoS",
-		AILineOfSighEndBuffer = "LoSEndBuffer",
 		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",
@@ -525,13 +582,13 @@ local weaponKeyReplacements = {
 		AIBufferDistance = "RetreatBufferDistance",
 		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
 		AILineOfSightBuffer = "LoSBuffer",
+		AILineOfSighEndBuffer = "LoSEndBuffer",
 		AIMoveWithinRangeTimeout = "MoveWithinRangeTimeout",
 		TargetFriends = "TargetRequiredKillEnemy",
 		AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
 		AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
 		AIRequireUnitLineOfSight = "RequireUnitLoS",
 		AIRequireProjectileLineOfSight = "RequireProjectileLoS",
-		AILineOfSighEndBuffer = "LoSEndBuffer",
 		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",

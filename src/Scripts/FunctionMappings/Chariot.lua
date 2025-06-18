@@ -10,7 +10,7 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 	if not CanAttack({ Id = enemy.ObjectId }) then
 		enemy.AINotifyName = "CanAttack" .. enemy.ObjectId
 		NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 9.0 })
-		waitUntil(enemy.AINotifyName)
+		game.waitUntil(enemy.AINotifyName)
 	end
 
 	aiData.TargetId = GetTargetId(enemy, aiData)
@@ -18,12 +18,12 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 		-- Setup move
 		aiData.AttackDistance = aiData.SetupDistance
 		aiData.MoveWithinRangeTimeout = aiData.SetupTimeout
-		MoveWithinRange(enemy, aiData.TargetId, aiData)
+		game.MoveWithinRange(enemy, aiData.TargetId, aiData)
 
 		if not _eventTimeoutRecord[enemy.AINotifyName] then
 			-- Teleportation
 			if aiData.TeleportToSpawnPoints then
-				HandleEnemyTeleportation(enemy, aiData)
+				game.HandleEnemyTeleportation(enemy, aiData)
 			end
 
 			-- Prepare to ram
@@ -55,15 +55,16 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 			if aiData.PreAttackFx ~= nil then
 				CreateAnimation({ DestinationId = enemy.ObjectId, Name = aiData.PreAttackFx })
 			end
-			wait(CalcEnemyWait(enemy, aiData.PreAttackDuration), enemy.AIThreadName)
+			game.wait(game.CalcEnemyWait(enemy, aiData.PreAttackDuration), enemy.AIThreadName)
 
-			if HeroHasTrait("FocusDamageShaveBoon") then
-				for _, data in pairs(GetHeroTraitValues("OnAttackWindUpAction")) do
-					CallFunctionName(data.FunctionName, enemy, data.Args)
+			if game.HeroHasTrait("FocusDamageShaveBoon") then
+				for _, data in pairs(game.GetHeroTraitValues("OnAttackWindUpAction") or {}) do
+					game.CallFunctionName(data.FunctionName, enemy, data.Args)
 				end
 			end
-			if aiData.RamEffectName ~= nil and WeaponEffectData[aiData.RamEffectName] ~= nil then
-				effectData = DeepCopyTable(WeaponEffectData[aiData.RamEffectName])
+			-- Adds the speedup during ram
+			if aiData.RamEffectName ~= nil and game.WeaponEffectData[aiData.RamEffectName] ~= nil then
+				local effectData = game.DeepCopyTable(game.WeaponEffectData[aiData.RamEffectName]) or {}
 				effectData.Id = enemy.ObjectId
 				effectData.DestinationId = enemy.ObjectId
 				ApplyEffect(effectData)
@@ -92,21 +93,22 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 			-- Ram move
 			aiData.AttackDistance = aiData.RamDistance
 			aiData.MoveWithinRangeTimeout = aiData.RamTimeout
-			local moveSuccess = MoveWithinRange(enemy, aiData.TargetId, aiData)
+			local moveSuccess = game.MoveWithinRange(enemy, aiData.TargetId, aiData)
 			-- Added: Fires the weapon after a successful ram
 			if moveSuccess ~= false then
-				AIFireProjectile(enemy, aiData)
+				game.AIFireProjectile(enemy, aiData)
 			end
 			Stop({ Id = enemy.ObjectId })
 			if aiData.PostAttackAnimation ~= nil then
 				SetAnimation({ Name = aiData.PostAttackAnimation, DestinationId = enemy.ObjectId })
 			end
-			wait(CalcEnemyWait(enemy, aiData.RamRecoverTime), enemy.AIThreadName)
+			game.wait(game.CalcEnemyWait(enemy, aiData.RamRecoverTime), enemy.AIThreadName)
 		end
 	else
-		MoveToRandomLocation(enemy, enemy.ObjectId, aiData.NoTargetWanderDistance or 100, aiData.NoTargetWanderDistance or 0,
+		game.MoveToRandomLocation(enemy, enemy.ObjectId, aiData.NoTargetWanderDistance or 100,
+			aiData.NoTargetWanderDistance or 0,
 			aiData.NoTargetWanderDuration)
-		wait(CalcEnemyWait(enemy, aiData.NoTargetWanderDuration or 0.5), enemy.AIThreadName)
+		game.wait(game.CalcEnemyWait(enemy, aiData.NoTargetWanderDuration or 0.5), enemy.AIThreadName)
 	end
 
 	if aiData.RetreatAfterRam then

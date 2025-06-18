@@ -45,6 +45,7 @@ local roomModifications = {
 
 	-- OPENING ROOMS
 	C_Intro = {
+		-- TODO: Comment next two out for Minotaur as first room testing
 		InheritFrom = { "BaseElysium", "BiomeStartRoom", },
 		Starting = true,
 		BlockRunProgressUI = true,
