@@ -300,4 +300,7 @@ mod.HadesPortraitAnimationDuplicates = {
 	["Portrait_Ares_Default_01"] = true,
 	["Portrait_Ares_Default_01_Exit"] = true,
 	["Codex_Portrait_Ares"] = true,
+	-- Unseen Update
+	["Portrait_Ares_Blink"] = true,
+	["Portrait_Dionysus_Blink"] = true,
 }

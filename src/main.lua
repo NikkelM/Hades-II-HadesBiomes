@@ -74,6 +74,7 @@ local function on_ready()
 
 	-- File handling and other generic functions required at install time
 	import "Scripts/Meta/Utils.lua"
+	import "Scripts/UtilityLogic.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 
@@ -89,7 +90,7 @@ local function on_ready()
 	end
 
 	import "Scripts/Meta/AnimationDuplicatesDataFx.lua"
-	import "Scripts/Meta/AnimationDuplicatesDataGUI.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataGUIAnimations.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
 	import "Scripts/Meta/NameMappingData.lua"

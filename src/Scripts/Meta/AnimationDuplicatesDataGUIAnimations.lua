@@ -519,7 +519,6 @@ mod.HadesGUIAnimationDuplicates = {
 	["Keepsake_Skelly_Tooth"] = true,
 	["Keepsake_Collar"] = true,
 	["KeepsakeMax_Corner"] = true,
-	["KeepsakeMax_Sticker"] = true,
 	["Shop_BedroomDecor"] = true,
 	["Menu_Frame"] = true,
 	["Frame_Sell"] = true,
@@ -559,7 +558,6 @@ mod.HadesGUIAnimationDuplicates = {
 	["Boon_Zeus_13_Small"] = true,
 	["AwardMenuBackground"] = true,
 	["AwardMenuCursorHighlight"] = true,
-	["AwardMenuItemEquipped"] = true,
 	["Box_FullScreen"] = true,
 	["MusicPlayerPlayButton"] = true,
 	["MusicPlayerPauseButton"] = true,
@@ -626,4 +624,9 @@ mod.HadesGUIAnimationDuplicates = {
 	["BoonSymbolAthena"] = true,
 	["BoonSymbolDionysus"] = true,
 	["MusicPlayerBackground"] = true,
+	-- Unseen Update
+	["ExtraLifeAthena"] = true,
+	["ShrineIn"] = true,
+	["ShrineOut"] = true,
+	["StackUpgradePreview"] = true,
 }

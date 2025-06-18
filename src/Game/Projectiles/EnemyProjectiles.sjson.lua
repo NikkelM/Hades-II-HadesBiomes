@@ -50,6 +50,8 @@ local projectilesToRemove = {
 	"LavaTileTriangle02Weapon",
 	"EnemyBombs",
 	"LightningAura",
+	"PoisonPuddle",
+	"PoisonPuddleSmall",
 }
 
 -- Modifications/overrides to the Hades enemy projectiles
