@@ -49,43 +49,59 @@ end)
 -- Recording stats after a run
 modutil.mod.Path.Wrap("RecordRunStats", function(base)
 	if game.CurrentRun.BiomesReached.Tartarus then
+		game.CurrentRun.RunResult = game.GetRunResult(game.CurrentRun)
 		game.CurrentRun.EndingRoomName = game.CurrentRun.CurrentRoom.Name
 		game.CurrentRun.WeaponsCache = game.DeepCopyTable(game.CurrentRun.Hero.Weapons)
 		game.CurrentRun.TraitRarityCache = game.CurrentRun.TraitRarityCache or {}
-		for k, traitData in pairs(game.CurrentRun.Hero.Traits) do
+		for k, traitData in ipairs(game.CurrentRun.Hero.Traits) do
 			if not traitData.RecordCacheOnEquip then
 				game.CurrentRun.TraitCache[traitData.Name] = (game.CurrentRun.TraitCache[traitData.Name] or 0) + 1
-				game.CurrentRun.TraitRarityCache[traitData.Name] = traitData.Rarity or "Common"
 			end
+			game.CurrentRun.TraitRarityCache[traitData.Name] = traitData.Rarity or "Common"
 		end
 		game.CurrentRun.ShrinePointsCache = game.GetTotalSpentShrinePoints()
 		game.CurrentRun.ShrineUpgradesCache = game.DeepCopyTable(game.GameState.ShrineUpgrades)
 		game.CurrentRun.MetaUpgradeCostCache = game.GameState.MetaUpgradeCostCache
+		-- Modded runs shouldn't count for this progress
+		-- if game.GameState.HighestRunDepthCache < game.CurrentRun.RunDepthCache then
+		-- 	game.GameState.HighestRunDepthCache = game.CurrentRun.RunDepthCache
+		-- end
+		-- local roomNames = {}
+		-- for k, room in ipairs(game.CurrentRun.RoomHistory) do
+		-- 	table.insert(roomNames, room.Name)
+		-- end
+		-- table.insert(roomNames, game.CurrentRun.CurrentRoom.Name)
+		-- SendProgressionEvents({
+		-- 	Names = roomNames,
+		-- 	CompletedRuns = game.GameState.CompletedRunsCache,
+		-- 	ClearedUnderworldRuns = game.GameState.ClearedUnderworldRunsCache,
+		-- 	ClearedSurfaceRuns = game.GameState.ClearedSurfaceRunsCache,
+		-- 	Cleared = game.CurrentRun.Cleared,
+		-- 	GameplayTime = game.GameState.GameplayTime,
+		-- 	TotalTime = game.GameState.TotalTime
+		-- })
 
 		-- 'cleared' means achieved a victory condition as opposed to dying	
 		local runsCleared = 0
 		local underworldRunsCleared = 0
 		local surfaceRunsCleared = 0
 		local moddedRunsCleared = 0
-		if CurrentRun.Cleared then
+		if game.CurrentRun.Cleared then
 			runsCleared = runsCleared + 1
-			if not CurrentRun.ActiveBounty and CurrentRun.BiomesReached ~= nil then
+			if not game.CurrentRun.ActiveBounty and game.CurrentRun.BiomesReached ~= nil then
 				moddedRunsCleared = moddedRunsCleared + 1
 			end
 		end
-		for k, run in pairs(game.GameState.RunHistory) do
-			if run.Cleared then
+		for k, run in ipairs(game.GameState.RunHistory) do
+			if run.RunResult == game.RunResultData.UnderworldSuccess then
 				runsCleared = runsCleared + 1
-				if not run.ActiveBounty then
-					if run.BiomesReached == nil or run.BiomesReached.F or run.EndingRoomName == "I_Boss01" then
-						underworldRunsCleared = underworldRunsCleared + 1
-					elseif run.BiomesReached.N then
-						surfaceRunsCleared = surfaceRunsCleared + 1
-					else
-						-- This is a modded run
-						moddedRunsCleared = moddedRunsCleared + 1
-					end
-				end
+				underworldRunsCleared = underworldRunsCleared + 1
+			elseif run.RunResult == game.RunResultData.SurfaceSuccess then
+				runsCleared = runsCleared + 1
+				surfaceRunsCleared = surfaceRunsCleared + 1
+			elseif run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess then
+				runsCleared = runsCleared + 1
+				moddedRunsCleared = moddedRunsCleared + 1
 			end
 		end
 		game.GameState.ClearedRunsCache = runsCleared
@@ -94,20 +110,31 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 		-- Custom field
 		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = moddedRunsCleared
 
-		game.GameState.HighestShrinePointClearUnderworldCache = GetHighestShrinePointRunClear(CurrentRun,
-			{ RequiredBiome = "F" })
-		game.GameState.HighestShrinePointClearSurfaceCache = GetHighestShrinePointRunClear(CurrentRun,
-			{ RequiredBiome = "N" })
-		game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearCache = GetHighestShrinePointRunClear(CurrentRun,
-			{ RequiredBiome = "Tartarus" })
-
 		game.UpdateLifetimeTraitRecords(game.CurrentRun)
 
 		for bossName, healthFraction in pairs(game.CurrentRun.BossHealthBarRecord) do
 			game.GameState.LastBossHealthBarRecord[bossName] = healthFraction
 		end
+
+		-- Only used for voicelines, don't need in the modded runs
+		-- for bossName, bossData in pairs(game.BossDifficultyShrineEncounterMap) do
+		-- 	if game.CurrentRun.EncountersOccurredCache[bossData.Encounter] then
+		-- 		game.GameState.LastBossDifficultyRecord[bossName] = false
+		-- 	elseif game.CurrentRun.EncountersOccurredCache[bossData.AltEncounter] then
+		-- 		game.GameState.LastBossDifficultyRecord[bossName] = true
+		-- 	end
+		-- end
 	else
 		base()
+		-- Redo the run results to include modded runs in the GameState
+		local moddedRunsCleared = 0
+		for k, run in ipairs(game.GameState.RunHistory) do
+			if run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess then
+				moddedRunsCleared = moddedRunsCleared + 1
+			end
+		end
+		-- Custom field
+		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = moddedRunsCleared
 	end
 end)
 
@@ -138,4 +165,16 @@ modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
 	else
 		base(run)
 	end
+end)
+
+modutil.mod.Path.Wrap("GetRunResult", function(base, run)
+	-- Run this before the base function, as the base function defaults to a surface run if it's not the underworld
+	if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+		if run.Cleared then
+			return game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess
+		else
+			return game.RunResultData.ModsNikkelMHadesBiomesUnderworldFail
+		end
+	end
+	return base(run)
 end)

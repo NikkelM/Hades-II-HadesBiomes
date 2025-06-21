@@ -306,6 +306,7 @@ local function on_ready()
 		import "Scripts/RoomEvents.lua"
 		import "Scripts/RoomLogic.lua"
 		import "Scripts/RoomPresentation.lua"
+		import "Scripts/RunHistoryData.lua"
 		import "Scripts/RunHistoryLogic.lua"
 		import "Scripts/RunLogic.lua"
 		import "Scripts/WeaponSets.lua"

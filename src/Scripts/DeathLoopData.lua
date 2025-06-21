@@ -43,6 +43,8 @@ function mod.SpawnHadesRunStartDoor(source, args)
 		-- We have to do it then, as otherwise MelinoeField is being onloaded in PreThingCreation
 		GlobalVoiceLines = "EmptyStartNewHadesRunVoiceLines"
 	}
+	-- Used by LeaveRoomSecretDoorPresentation to determine the fade animation
+	chaosGate.Room = {}
 
 	game.SetupObstacle(chaosGate)
 	AddToGroup({ Id = chaosGate.ObjectId, Name = "ModsNikkelMHadesBiomes.RunStartDoor" })

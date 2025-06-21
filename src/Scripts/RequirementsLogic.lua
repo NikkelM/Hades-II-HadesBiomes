@@ -1049,7 +1049,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequiredCompletedRuns ~= nil then
 		local completedModdedRuns = 0
 		for i, run in pairs(game.GameState.RunHistory) do
-			if run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				completedModdedRuns = completedModdedRuns + 1
 			end
 		end
@@ -1061,7 +1061,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequiredFalseCompletedRuns ~= nil then
 		local completedModdedRuns = 0
 		for i, run in pairs(game.GameState.RunHistory) do
-			if run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				completedModdedRuns = completedModdedRuns + 1
 			end
 		end
@@ -1073,7 +1073,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequiredMinCompletedRuns ~= nil then
 		local completedModdedRuns = 0
 		for i, run in pairs(game.GameState.RunHistory) do
-			if run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				completedModdedRuns = completedModdedRuns + 1
 			end
 		end
@@ -1085,7 +1085,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequiredMaxCompletedRuns ~= nil then
 		local completedModdedRuns = 0
 		for i, run in pairs(game.GameState.RunHistory) do
-			if run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				completedModdedRuns = completedModdedRuns + 1
 			end
 		end
@@ -2151,7 +2151,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequiredMinConsecutiveClears ~= nil then
 		local consecutiveModdedClears = 0
 		for k, run in game.GameState.RunHistory do
-			if run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				if run.Cleared then
 					consecutiveModdedClears = consecutiveModdedClears + 1
 				else
@@ -2168,7 +2168,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequiredConsecutiveClears ~= nil then
 		local consecutiveModdedClears = 0
 		for k, run in game.GameState.RunHistory do
-			if run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				if run.Cleared then
 					consecutiveModdedClears = consecutiveModdedClears + 1
 				else
