@@ -64,3 +64,11 @@ mod.ApplyNestedSjsonModifications(hadesWeaponsTable.Weapons, hadesWeaponsModific
 sjson.hook(hadesTwoPlayerWeaponsFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Weapons, hadesWeaponsTable.Weapons, "Name")
 end)
+
+-- Assign to mod so we can get required properties in WeaponData.lua
+mod.HadesSjsonWeaponsTable = {}
+for _, weapon in ipairs(hadesWeaponsTable.Weapons) do
+	if weapon.Name then
+		mod.HadesSjsonWeaponsTable[weapon.Name] = weapon
+	end
+end

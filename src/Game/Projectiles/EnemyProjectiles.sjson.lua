@@ -237,3 +237,11 @@ mod.ApplyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjec
 sjson.hook(hadesTwoProjectilesFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Projectiles, hadesProjectilesTable.Projectiles, "Name")
 end)
+
+-- Assign to mod so we can check if the projectile exists in WeaponData.lua
+mod.HadesSjsonProjectilesTable = {}
+for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
+	if projectile.Name then
+		mod.HadesSjsonProjectilesTable[projectile.Name] = true
+	end
+end
