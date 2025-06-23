@@ -184,7 +184,16 @@ local enemyReplacements = {
 	},
 
 	-- ELYSIUM
+	Minotaur = {
+		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+	},
+	Theseus = {
+		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+	},
 	-- STYX
+	Hades = {
+		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+	},
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
@@ -239,8 +248,6 @@ local enemyModifications = {
 		-- The intro encounter is broken, there is nothing happening after the two enemies die
 		RequiredIntroEncounter = mod.NilValue,
 		DefaultAIData = {
-			AttackWhileBlendingIntervalMin = 2.0,
-			AttackWhileBlendingIntervalMax = 2.5,
 			PostAttackDuration = 0.75,
 		},
 		ActivateFx = "EnemySummonRuneSmall",
@@ -519,7 +526,6 @@ local enemyModifications = {
 		DeathFx = "EnemyDeathFxBone",
 		DeathAnimation = "CrusherUnitDeathVFX",
 		DestroyDelay = 1.2,
-		PostAggroAI = "ModsNikkelMHadesBiomesSkyAttackerAI",
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
