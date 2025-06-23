@@ -1,4 +1,8 @@
 -- Functions that ensure the run logic works as intended
+modutil.mod.Path.Wrap("RunStateInit", function(base)
+	base()
+	game.CurrentRun.SupportAINames = game.CurrentRun.SupportAINames or {}
+end)
 
 -- Displays the biome's name as a banner at the top when entering the first room
 function game.DisplayLocationText(source, args)

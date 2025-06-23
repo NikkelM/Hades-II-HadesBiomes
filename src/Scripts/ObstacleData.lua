@@ -51,18 +51,36 @@ local obstacleModifications = {
 	},
 	-- ELYSIUM
 	EnemyShield = {
+		IsEnemyWeapon = true,
+		UseText = "UseEnemyWeapon",
+		BeginPickupAnimation = "EnemyShieldPickupContainer",
+		PickupFailedAnimation = "EnemyShieldIdleContainer",
 		SwapToUnitOnPickup = "ShadeShieldUnit",
 	},
 	EnemyBow = {
+		IsEnemyWeapon = true,
+		UseText = "UseEnemyWeapon",
+		BeginPickupAnimation = "EnemyBowPickupContainer",
+		PickupFailedAnimation = "EnemyBowIdleContainer",
 		SwapToUnitOnPickup = "ShadeBowUnit",
 	},
-	EnemySword = {
-		SwapToUnitOnPickup = "ShadeSwordUnit",
-	},
 	EnemySpear = {
+		IsEnemyWeapon = true,
+		UseText = "UseEnemyWeapon",
+		BeginPickupAnimation = "EnemySpearPickupContainer",
+		PickupFailedAnimation = "EnemySpearIdleContainer",
 		SwapToUnitOnPickup = "ShadeSpearUnit",
 	},
+	EnemySword = {
+		IsEnemyWeapon = true,
+		UseText = "UseEnemyWeapon",
+		BeginPickupAnimation = "EnemySwordPickupContainer",
+		PickupFailedAnimation = "EnemySwordIdleContainer",
+		SwapToUnitOnPickup = "ShadeSwordUnit",
+	},
 	EnemyDagger = {
+		IsEnemyWeapon = true,
+		UseText = "UseEnemyWeapon",
 		SwapToUnitOnPickup = "ShadeSwordUnit",
 	},
 	HealthFountainElysium = {

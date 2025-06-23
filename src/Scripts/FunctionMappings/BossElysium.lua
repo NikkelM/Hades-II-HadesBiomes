@@ -32,9 +32,7 @@ function game.MoveUntilEffectExpired(enemy, aiData)
 	end
 	if aiData.PostAttackAIDumbFireWeapons ~= nil then
 		for k, weaponName in pairs(aiData.PostAttackAIDumbFireWeapons) do
-			local weaponData = WeaponData[weaponName].AIData or WeaponData[weaponName]
-			weaponData.Name = weaponName
-			game.thread(game.DumbFireAttack, enemy, game.CurrentRun, weaponData)
+			game.thread(game.DumbFireAttack, enemy, weaponName)
 		end
 	end
 	print("End MoveUntilEffectExpired")

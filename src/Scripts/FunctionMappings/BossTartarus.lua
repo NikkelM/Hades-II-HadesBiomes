@@ -663,3 +663,66 @@ function game.Harpy3MapRestore()
 		SetAlpha({ Id = id, Fraction = 0.0, Duration = 1.5 })
 	end
 end
+
+function game.EnrageUnit(enemy, startDelay)
+	game.wait(startDelay)
+	if not IsAlive({ Id = enemy.ObjectId }) then
+		return
+	end
+
+	DebugPrint({ Text = "Enraging: " .. enemy.Name })
+	if enemy.EnragedMoveSpeedBonus ~= nil then
+		enemy.MoveSpeedReset = GetUnitDataValue({ Id = enemy.ObjectId, Property = "Speed" })
+		local enragedMoveSpeed = enemy.EnragedMoveSpeedBonus + enemy.MoveSpeedReset
+		SetUnitProperty({ DestinationId = enemy.ObjectId, Property = "Speed", Value = enragedMoveSpeed })
+	end
+
+	enemy.Enraged = true
+	if enemy.EnragedPresentation ~= nil then
+		game.CallFunctionName(enemy.EnragedPresentation, enemy, game.CurrentRun)
+	end
+
+	game.wait(enemy.EnragedDuration)
+
+	if enemy.PermanentEnraged then
+		local notifyName = enemy.ObjectId .. "PermanentEnraged"
+		NotifyOnAllDead({ Ids = { enemy.ObjectId }, Notify = notifyName })
+		game.waitUntil(notifyName)
+		AdjustColorGrading({ Name = "Off", Duration = 0.45 })
+	else
+		game.EndEnemyEnrage(enemy, game.CurrentRun)
+	end
+end
+
+function game.EndEnemyEnrage(enemy)
+	local screenId = game.ScreenAnchors.BossRageFill
+	enemy.Enraged = false
+	StopFlashing({ Id = screenId })
+	AdjustColorGrading({ Name = "Off", Duration = 0.45 })
+	if enemy.RageExpiredSound ~= nil then
+		PlaySound({ Name = enemy.RageExpiredSound })
+	end
+	if enemy.RageExpiredVoiceLines ~= nil then
+		game.thread(game.PlayVoiceLines, enemy.RageExpiredVoiceLines, nil, enemy)
+	end
+	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 1.0, DestinationId = screenId })
+	if enemy.EnragedMoveSpeedBonus ~= nil then
+		SetUnitProperty({ DestinationId = enemy.ObjectId, Property = "Speed", Value = enemy.MoveSpeedReset })
+	end
+end
+
+function game.SpawnSupportAI(enemy)
+	if game.IsEmpty(enemy.SupportAINames) then
+		return
+	end
+
+	local supportUnit = game.DeepCopyTable(EnemyData[enemy.SupportUnitName]) or {}
+	supportUnit.ObjectId = SpawnUnit({
+		Name = enemy.SupportUnitName,
+		Group = "Standing",
+		DestinationId = game.CurrentRun.Hero.ObjectId
+	})
+	supportUnit.SupportAINames = enemy.SupportAINames
+	enemy.SupportAIUnitId = supportUnit.ObjectId
+	game.thread(game.SetupUnit, supportUnit, game.CurrentRun)
+end

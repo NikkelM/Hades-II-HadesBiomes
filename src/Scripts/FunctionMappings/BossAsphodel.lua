@@ -298,7 +298,7 @@ function game.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 	if weaponAIData.HealInterval and weaponAIData.HealPerTick then
 		while IsAlive({ Ids = spawnGroupIds }) do
 			game.Heal(enemy, { HealAmount = weaponAIData.HealPerTick, SourceName = "BossSpawnHeal", Silent = true })
-			game.thread(game.UpdateHealthBar, enemy)
+			game.UpdateHealthBar(enemy)
 			game.wait(game.CalcEnemyWait(enemy, weaponAIData.HealInterval), RoomThreadName)
 		end
 	end
