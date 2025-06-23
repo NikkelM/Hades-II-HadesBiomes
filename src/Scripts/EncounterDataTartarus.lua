@@ -104,7 +104,7 @@ local encounterModifications = {
 
 	-- MINIBOSSES
 	MiniBossGrenadier = {
-		LoadPackages = { "Asphodel" },
+		LoadPackages = { "BiomeB" },
 	},
 	MiniBossHeavyRangedSplitter = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },

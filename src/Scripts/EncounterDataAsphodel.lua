@@ -60,7 +60,7 @@ local encounterReplacements = {
 		-- The original from Hades is 25
 		DepthDifficultyRamp = 35,
 		-- Load the base Hades II Asphodel package, since we reuse some enemies
-		LoadPackages = { "Asphodel" },
+		LoadPackages = { "BiomeB" },
 		-- Original is missing HandleEncounterPreSpawns
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
@@ -98,7 +98,7 @@ local encounterModifications = {
 
 	-- BOSSES
 	BossHydra = {
-		LoadPackages = { "Asphodel" },
+		LoadPackages = { "BiomeB" },
 		WipeEnemiesOnKillAllTypes = { "HydraHeadImmortal", "HydraHeadImmortalLavamaker", "HydraHeadImmortalSummoner", "HydraHeadImmortalSlammer", "HydraHeadImmortalWavemaker", },
 		CancelSpawnsOnKillAllTypes = { "HydraHeadImmortal", "HydraHeadImmortalLavamaker", "HydraHeadImmortalSummoner", "HydraHeadImmortalSlammer", "HydraHeadImmortalWavemaker", },
 		CancelSpawnsOnKill = mod.NilValue,
