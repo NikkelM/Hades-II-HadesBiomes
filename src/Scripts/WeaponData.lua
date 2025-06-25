@@ -1,5 +1,6 @@
 -- Applies modifications to base weapon objects, and then adds the new weapon objects to the game
-local function applyModificationsAndInheritWeaponData(base, modifications, weaponKeyReplacements, AIRequirements)
+local function applyModificationsAndInheritWeaponData(base, modifications, weaponKeyReplacements, AIRequirements,
+																											SjsonToAIDataProperties)
 	-- Apply modifications
 	for weaponName, weaponData in pairs(modifications) do
 		if not base[weaponName] then
@@ -19,7 +20,28 @@ local function applyModificationsAndInheritWeaponData(base, modifications, weapo
 					end
 					-- Respect existing override from modifications above
 					weaponData.Requirements[key] = weaponData.Requirements[key] or value
-					aiData[key] = nil
+				end
+			end
+		end
+
+		-- Copy properties to the WeaponData table according to the SjsonToAIDataProperties
+		if not weaponData.AIData then
+			weaponData.AIData = { DeepInheritance = true }
+		end
+		-- If there is not already a projectile, the enemy should have a projectile, and a projectile with this name exists
+		if not weaponData.AIData.ProjectileName and not weaponData.AIData.NoProjectile then
+			if mod.HadesSjsonProjectilesTable[weaponName] then
+				weaponData.AIData.ProjectileName = weaponName
+				-- It's likely an elite version of a weapon for which the default projectile should be used
+			elseif mod.HadesSjsonWeaponsTable[weaponName] and mod.HadesSjsonWeaponsTable[weaponName].InheritFrom and mod.HadesSjsonWeaponsTable[weaponName].InheritFrom ~= "1_BasePlayerSlowWeapon" then
+				weaponData.AIData.ProjectileName = mod.HadesSjsonWeaponsTable[weaponName].InheritFrom
+			end
+		end
+		if mod.HadesSjsonWeaponsTable[weaponName] and not weaponData.AIData.NoProjectile then
+			local sjsonWeaponData = mod.HadesSjsonWeaponsTable[weaponName]
+			for key, value in pairs(SjsonToAIDataProperties) do
+				if sjsonWeaponData[key] and not weaponData.AIData[value] then
+					weaponData.AIData[value] = sjsonWeaponData[key]
 				end
 			end
 		end
@@ -51,6 +73,16 @@ local weaponModifications = {
 	-- #region TARTARUS
 
 	-- #region Regular
+	MineToss = {
+		AIData = {
+			DeepInheritance = true,
+			ApplyEffectsOnWeaponFire = { WeaponEffectData.RootedAttacker, },
+			ProjectileName = "BloodMineToss",
+			Spread = 30,
+			FireFx = "BloodlessGrenadierPotDropDust",
+		},
+		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
+	},
 	HeavyRangedWeapon = {
 		AIData = {
 			ExpireProjectilesOnHitStun = true,
@@ -86,8 +118,8 @@ local weaponModifications = {
 			PreAttackEndShake = true,
 			FireProjectileStartDelay = 0.03,
 			-- Modified, as the original 1800 is too short
-			FireSelfVelocity = 3300,
-			ApplyEffectsOnWeaponFire = { WeaponEffectData.AttackHighGrip, },
+			FireSelfVelocity = 3000,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackHighGrip, },
 			PreAttackDuration = 0.5,
 			FireDuration = 0.25,
 			PostAttackDuration = 0.5,
@@ -127,6 +159,11 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region TARTARUS - MEGAERA
+	HarpyLunge = {
+		AIData = {
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+		},
+	},
 	HarpyLightning = {
 		AIData = {
 			AttackSlotInterval = 0.01,
@@ -575,6 +612,8 @@ local weaponKeyReplacements = {
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
 		FireCooldown = "FireInterval",
+		TeleportToSpawnPoints = "PreMoveTeleport",
+		PostAttackTeleportToSpawnPoints = "PostAttackEndTeleport",
 	},
 	-- Same as above
 	ShrineAIDataOverwrites = {
@@ -595,6 +634,8 @@ local weaponKeyReplacements = {
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
 		FireCooldown = "FireInterval",
+		TeleportToSpawnPoints = "PreMoveTeleport",
+		PostAttackTeleportToSpawnPoints = "PostAttackEndTeleport",
 	},
 }
 
@@ -614,4 +655,11 @@ local AIRequirements = {
 	"ForceFirst",
 }
 
-applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponKeyReplacements, AIRequirements)
+local SjsonToAIDataPropertyMappings = {
+	SelfVelocity = "FireSelfVelocity",
+	BarrelLength = "BarrelLength",
+	Spread = "Spread",
+}
+
+applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponKeyReplacements, AIRequirements,
+	SjsonToAIDataPropertyMappings)
