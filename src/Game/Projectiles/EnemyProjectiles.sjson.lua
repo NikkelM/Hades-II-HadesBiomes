@@ -164,6 +164,18 @@ local hadesProjectilesModifications = {
 	},
 }
 
+local renamedProjectileModifications = {}
+for oldName, newName in pairs(mod.EnemyProjectileMappings) do
+	if hadesProjectilesModifications[oldName] then
+		renamedProjectileModifications[newName] = hadesProjectilesModifications[oldName]
+		hadesProjectilesModifications[oldName] = nil
+		mod.DebugPrint("Renamed projectile modification: " .. oldName .. " to " .. newName .. " in EnemyProjectiles.sjson", 4)
+	end
+end
+for key, value in pairs(renamedProjectileModifications) do
+	hadesProjectilesModifications[key] = value
+end
+
 local projectileKeyReplacements = {
 	DissipateGraphic = "DissipateFx",
 	DetonateGraphic = "DetonateFx",
