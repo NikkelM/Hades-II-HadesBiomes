@@ -69,4 +69,18 @@ function mod.ModifyEnemyTrapData(enemyData)
 				PreAttackDuration = 0.1,
 				PostAttackDuration = 3.0,
 			}
+
+	game.WeaponData.HadesSpikeTrapWeapon = {
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "HadesSpikeTrapWeapon",
+			TargetSelf = true,
+			MoveWithinRange = false,
+			PreAttackDuration = 0.2,
+			FireDuration = 0.3,
+			PostAttackDuration = 0.5,
+			PreAttackEndShake = true,
+		},
+		Sounds = { FireSounds = { { Name = "/SFX/SpikeTrapFire" }, }, },
+	}
 end

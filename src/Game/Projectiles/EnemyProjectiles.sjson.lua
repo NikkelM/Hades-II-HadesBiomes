@@ -57,6 +57,12 @@ local projectilesToRemove = {
 -- Modifications/overrides to the Hades enemy projectiles
 local hadesProjectilesModifications = {
 	-- TARTARUS
+	-- TODO: Still work in progress, as it is not aligned perfectly with the trap itself
+	SpikeTrapWeapon = {
+		Thing = {
+			Scale = 1.0,
+		},
+	},
 	DisembodiedHandGrab = {
 		Effect = {
 			-- Don't play the ZagreusStun animation
