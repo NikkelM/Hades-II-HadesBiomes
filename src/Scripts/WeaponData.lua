@@ -659,6 +659,9 @@ local SjsonToAIDataPropertyMappings = {
 	SelfVelocity = "FireSelfVelocity",
 	BarrelLength = "BarrelLength",
 	Spread = "Spread",
+	NumProjectiles = "NumProjectiles",
+	ProjectileInterval = "ProjectileInterval",
+	ProjectileAngleOffset = "ProjectileAngleInterval",
 }
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponKeyReplacements, AIRequirements,

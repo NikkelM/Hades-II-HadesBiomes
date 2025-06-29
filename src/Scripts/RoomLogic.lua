@@ -93,6 +93,13 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 	end
 end)
 
+modutil.mod.Path.Wrap("SetupAI", function(base, enemy, args)
+	if enemy.SupportUnitName ~= nil then
+		game.SpawnSupportAI(enemy)
+	end
+	base(enemy, args)
+end)
+
 modutil.mod.Path.Wrap("SetupInspectPoint", function(base, inspectPointData)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		-- Storyteller voicelines are added to the Megaera voicebank, as the game can't load unknown voicebanks and Storyteller is already taken
