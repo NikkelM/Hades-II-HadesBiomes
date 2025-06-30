@@ -1,6 +1,19 @@
 -- Applies modifications to base weapon objects, and then adds the new weapon objects to the game
-local function applyModificationsAndInheritWeaponData(base, modifications, weaponKeyReplacements, AIRequirements,
-																											SjsonToAIDataProperties)
+local function applyModificationsAndInheritWeaponData(base, modifications, replacements, weaponKeyReplacements,
+																											AIRequirements, SjsonToAIDataProperties)
+	for oldName, newName in pairs(mod.EnemyWeaponMappings) do
+		mod.UpdatePropertyName(modifications, oldName, newName, {}, "WeaponDataHandler modifications")
+		mod.UpdatePropertyName(replacements, oldName, newName, {}, "WeaponDataHandler replacements")
+	end
+
+	-- Apply replacements/additions
+	for weaponName, weaponData in pairs(replacements) do
+		if not base[weaponName] then
+			base[weaponName] = {}
+		end
+		mod.ApplyModifications(base[weaponName], weaponData, true)
+	end
+
 	-- Apply modifications
 	for weaponName, weaponData in pairs(modifications) do
 		if not base[weaponName] then
@@ -67,6 +80,39 @@ for oldName, newName in pairs(mod.EnemyWeaponMappings) do
 	-- Inherit properties from this weapon
 	mod.UpdateField(mod.HadesWeaponData, oldName, newName, { "InheritFrom" }, "WeaponData")
 end
+
+local weaponReplacements = {
+	SummonTisiphoneBombingRun = {
+		AIData = {
+			AttackSlots = {
+				-- Left row
+				{ OffsetX = -400, OffsetY = -900, OffsetScaleY = 0.48 },
+				{ OffsetX = -400, OffsetY = -600, OffsetScaleY = 0.48 },
+				{ OffsetX = -400, OffsetY = -300, OffsetScaleY = 0.48 },
+				{ OffsetX = -400, OffsetY = 0,    OffsetScaleY = 0.48 },
+				{ OffsetX = -400, OffsetY = 300,  OffsetScaleY = 0.48 },
+				{ OffsetX = -400, OffsetY = 600,  OffsetScaleY = 0.48 },
+				{ OffsetX = -400, OffsetY = 900,  OffsetScaleY = 0.48, PauseDuration = 0.1 },
+				-- Center row
+				{ OffsetX = 0,    OffsetY = -900, OffsetScaleY = 0.48 },
+				{ OffsetX = 0,    OffsetY = -600, OffsetScaleY = 0.48 },
+				{ OffsetX = 0,    OffsetY = -300, OffsetScaleY = 0.48 },
+				{ OffsetX = 0,    OffsetY = 0,    OffsetScaleY = 0.48 },
+				{ OffsetX = 0,    OffsetY = 300,  OffsetScaleY = 0.48 },
+				{ OffsetX = 0,    OffsetY = 600,  OffsetScaleY = 0.48 },
+				{ OffsetX = 0,    OffsetY = 900,  OffsetScaleY = 0.48, PauseDuration = 0.1 },
+				-- Right row
+				{ OffsetX = 400,  OffsetY = -900, OffsetScaleY = 0.48 },
+				{ OffsetX = 400,  OffsetY = -600, OffsetScaleY = 0.48 },
+				{ OffsetX = 400,  OffsetY = -300, OffsetScaleY = 0.48 },
+				{ OffsetX = 400,  OffsetY = 0,    OffsetScaleY = 0.48 },
+				{ OffsetX = 400,  OffsetY = 300,  OffsetScaleY = 0.48 },
+				{ OffsetX = 400,  OffsetY = 600,  OffsetScaleY = 0.48 },
+				{ OffsetX = 400,  OffsetY = 900,  OffsetScaleY = 0.48 },
+			},
+		},
+	},
+}
 
 -- Modify or add weapons
 local weaponModifications = {
@@ -573,13 +619,6 @@ local weaponModifications = {
 	-- #endregion
 }
 
--- Modifications easier done in a loop
-for _, attackSlot in ipairs(mod.HadesWeaponData.SummonTisiphoneBombingRun.AIData.AttackSlots) do
-	attackSlot.AnchorOffset = attackSlot.AnchorAngleOffset or nil
-	attackSlot.AnchorAngleOffset = nil
-	attackSlot.AnchorOffsetAngle = 0
-end
-
 local renamedWeaponModifications = {}
 
 for oldName, newName in pairs(mod.EnemyWeaponMappings) do
@@ -664,5 +703,5 @@ local SjsonToAIDataPropertyMappings = {
 	ProjectileAngleOffset = "ProjectileAngleInterval",
 }
 
-applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponKeyReplacements, AIRequirements,
-	SjsonToAIDataPropertyMappings)
+applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponReplacements,
+	weaponKeyReplacements, AIRequirements, SjsonToAIDataPropertyMappings)
