@@ -2826,14 +2826,16 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	end
 
 	if requirements.RequiredActiveMetaPointsMin ~= nil then
-		if GetTotalSpentMetaPoints() < requirements.RequiredActiveMetaPointsMin then
-			return false
-		end
+		return false
+		-- if GetTotalSpentMetaPoints() < requirements.RequiredActiveMetaPointsMin then
+		-- 	return false
+		-- end
 	end
 	if requirements.RequiredActiveMetaPointsMax ~= nil then
-		if GetTotalSpentMetaPoints() > requirements.RequiredActiveMetaPointsMax then
-			return false
-		end
+		return false
+		-- if GetTotalSpentMetaPoints() > requirements.RequiredActiveMetaPointsMax then
+		-- 	return false
+		-- end
 	end
 
 	if requirements.RequiredResourcesMin ~= nil then
