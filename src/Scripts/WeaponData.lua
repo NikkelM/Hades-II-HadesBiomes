@@ -82,6 +82,9 @@ for oldName, newName in pairs(mod.EnemyWeaponMappings) do
 end
 
 local weaponReplacements = {
+	-- #region TARTARUS
+
+	-- #region TARTARUS - TISIPHONE
 	SummonTisiphoneBombingRun = {
 		AIData = {
 			AttackSlots = {
@@ -92,7 +95,7 @@ local weaponReplacements = {
 				{ OffsetX = -400, OffsetY = 0,    OffsetScaleY = 0.48 },
 				{ OffsetX = -400, OffsetY = 300,  OffsetScaleY = 0.48 },
 				{ OffsetX = -400, OffsetY = 600,  OffsetScaleY = 0.48 },
-				{ OffsetX = -400, OffsetY = 900,  OffsetScaleY = 0.48, PauseDuration = 0.1 },
+				{ OffsetX = -400, OffsetY = 900,  OffsetScaleY = 0.48, PauseDuration = 0.2 },
 				-- Center row
 				{ OffsetX = 0,    OffsetY = -900, OffsetScaleY = 0.48 },
 				{ OffsetX = 0,    OffsetY = -600, OffsetScaleY = 0.48 },
@@ -100,7 +103,7 @@ local weaponReplacements = {
 				{ OffsetX = 0,    OffsetY = 0,    OffsetScaleY = 0.48 },
 				{ OffsetX = 0,    OffsetY = 300,  OffsetScaleY = 0.48 },
 				{ OffsetX = 0,    OffsetY = 600,  OffsetScaleY = 0.48 },
-				{ OffsetX = 0,    OffsetY = 900,  OffsetScaleY = 0.48, PauseDuration = 0.1 },
+				{ OffsetX = 0,    OffsetY = 900,  OffsetScaleY = 0.48, PauseDuration = 0.2 },
 				-- Right row
 				{ OffsetX = 400,  OffsetY = -900, OffsetScaleY = 0.48 },
 				{ OffsetX = 400,  OffsetY = -600, OffsetScaleY = 0.48 },
@@ -112,6 +115,9 @@ local weaponReplacements = {
 			},
 		},
 	},
+	-- #endregion
+
+	-- #endregion
 }
 
 -- Modify or add weapons
