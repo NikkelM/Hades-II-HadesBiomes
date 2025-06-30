@@ -125,6 +125,7 @@ mod.ModifyEnemyTrapData(mod.EnemyData)
 -- Replaces the key with the new value instead of modifying
 -- This is done AFTER data inheritance is processed
 local enemyReplacements = {
+	-- #region GENERAL
 	BaseVulnerableEnemy = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DestroyDelay = mod.NilValue,
@@ -151,18 +152,25 @@ local enemyReplacements = {
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 	},
+	-- #endregion
 
-	-- TARTARUS
+	-- #region TARTARUS
+	-- #region TARTARUS - Regular
 	BaseSpawner = {
 		-- SpawnerAI doesn't exist, spawn logic is in the weapon
 		AIOptions = { "AttackerAI", },
 	},
+	-- #endregion
+	-- #region TARTARUS - Megaera
 	-- Setting this to an empty table in the enemy doesn't work, so resetting the keys that break the animations here
 	Harpy = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
+	-- #endregion
+	-- #endregion
 
-	-- ASPHODEL
+	-- #region ASPHODEL
+	-- #region ASPHODEL - Regular
 	-- Copy pasting the enemy from Hades II, but replacing some animations and effects in modifications
 	-- The name here should be the name of the enemy we use in Hades, to make sure we don't accidentally change data for the Hades II enemy
 	HadesBloodlessNaked = game.DeepCopyTable(game.EnemyData.BloodlessNaked),
@@ -179,26 +187,40 @@ local enemyReplacements = {
 	HadesSpreadShotUnitElite = game.DeepCopyTable(game.EnemyData.SpreadShotUnit_Elite),
 	BloodlessNakedBerserker = game.DeepCopyTable(game.EnemyData.BloodlessBerserker),
 	BloodlessNakedBerserkerElite = game.DeepCopyTable(game.EnemyData.BloodlessBerserker_Elite),
+	-- #endregion
+	-- #region ASPHODEL - Hydra
 	HydraHeadImmortal = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
+	-- #endregion
+	-- #endregion
 
-	-- ELYSIUM
+	-- #region ELYSIUM
+	-- #region ELYSIUM - Minotaur
 	Minotaur = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
+	-- #endregion
+	-- #region ELYSIUM - Theseus
 	Theseus = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
-	-- STYX
+	-- #endregion
+	-- #endregion
+
+	-- #region STYX
+	-- #region STYX - Hades
 	Hades = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
+	-- #endregion
+	-- #endregion
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
 local enemyModifications = {
-	-- TARTARUS
+	-- #region TARTARUS
+	-- #region TARTARUS - Regular
 	BaseGlutton = {
 		LargeUnitCap = mod.NilValue,
 	},
@@ -283,6 +305,32 @@ local enemyModifications = {
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
 	},
+	Swarmer = {
+		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
+		DeathAnimation = "EnemyWretchSwarmerDeathVFX",
+		DeathFx = "EnemyDeathFx_Small",
+		DestroyDelay = 0.9,
+		WeaponOptions = { "HadesSwarmerMelee" },
+		ActivateFx = "EnemySummonRuneSmall",
+		ActivateAnimation = "EnemyActivationFadeInWretchSwarmerContainer",
+		BlockAttributes = { "Orbit", "Vacuum", "Massive", },
+	},
+	SwarmerElite = {
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
+	},
+	LightSpawner = {
+		StunAnimations = { Default = "SpawnerAttackAnim", },
+		DeathFx = "BreakableDeathAnim",
+		DeathGraphic = "SpawnerDeath",
+		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon", },
+		DefaultAIData = { DeepInheritance = true, },
+		OnDamagedFunctionName = "AggroSpawns",
+		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
+		BlockRaiseDead = true,
+		EliteAttributeOptions = { "Fog", "HeavyArmor", "Orbit", "Radial", },
+	},
+	-- #endregion
+	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		DeathFx = "EnemyDeathFx",
@@ -316,35 +364,13 @@ local enemyModifications = {
 		UseActivatePresentation = false,
 		BlockRaiseDead = true,
 	},
-	Swarmer = {
-		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
-		DeathAnimation = "EnemyWretchSwarmerDeathVFX",
-		DeathFx = "EnemyDeathFx_Small",
-		DestroyDelay = 0.9,
-		WeaponOptions = { "HadesSwarmerMelee" },
-		ActivateFx = "EnemySummonRuneSmall",
-		ActivateAnimation = "EnemyActivationFadeInWretchSwarmerContainer",
-		BlockAttributes = { "Orbit", "Vacuum", "Massive", },
-	},
-	SwarmerElite = {
-		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
-	},
-	LightSpawner = {
-		StunAnimations = { Default = "SpawnerAttackAnim", },
-		DeathFx = "BreakableDeathAnim",
-		DeathGraphic = "SpawnerDeath",
-		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon", },
-		DefaultAIData = { DeepInheritance = true, },
-		OnDamagedFunctionName = "AggroSpawns",
-		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
-		BlockRaiseDead = true,
-		EliteAttributeOptions = { "Fog", "HeavyArmor", "Orbit", "Radial", },
-	},
 	WretchAssassin = {
 		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
 		ActivateAnimation = "EnemyActivate",
 		BlockRaiseDead = true
 	},
+	-- #endregion
+	-- #region TARTARUS - Bosses
 	HarpySupportUnit = {
 		AIOptions = { "HarpySupportAI" },
 		-- Otherwise, doesn't get cleaned up after boss kill as of the Unseen Update
@@ -366,8 +392,11 @@ local enemyModifications = {
 		-- TODO: Maybe replace with fitting Melinoe voicelines?
 		MapTransitionReactionVoiceLines = mod.NilValue,
 	},
+	-- #endregion
+	-- #endregion
 
-	-- ASPHODEL
+	-- #region ASPHODEL
+	-- #region ASPHODEL - Regular
 	LightSpawnerElite = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
 		DeathFx = "BreakableDeathAnim",
@@ -553,6 +582,8 @@ local enemyModifications = {
 			},
 		},
 	},
+	-- #endregion
+	-- #region ASPHODEL - Minibosses
 	ShieldRangedMiniBoss = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
 		ActivateFx = "EnemySummonRuneExtraLarge",
@@ -570,7 +601,8 @@ local enemyModifications = {
 		},
 		ShrineWeaponOptionsOverwrite = mod.NilValue,
 	},
-	-- ASPHODEL BOSS - HYDRA
+	-- #endregion
+	-- #region ASPHODEL - Bosses
 	HydraHeadImmortal = {
 		AltHealthBarTextIds = {
 			[1] = {
@@ -666,8 +698,11 @@ local enemyModifications = {
 			HatchDuration = 5,
 		},
 	},
+	-- #endregion
+	-- #endregion
 
-	-- ELYSIUM
+	-- #region ELYSIUM
+	-- #region ELYSIUM - Regular
 	ShadeNaked = {
 		StunAnimations = { Default = "ShadeNaked_Idle" },
 		-- Push the Shade away after spawning so it has to move to the pickupTarget
@@ -769,8 +804,8 @@ local enemyModifications = {
 			RamDistance = 80,
 		},
 	},
-
-	-- ELYSIUM BOSS - THESEUS & MINOTAUR
+	-- #endregion
+	-- #region ELYSIUM - Bosses
 	Minotaur = {
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
@@ -785,8 +820,11 @@ local enemyModifications = {
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
 	},
+	-- #endregion
+	-- #endregion
 
-	-- STYX
+	-- #region STYX
+	-- #region STYX - Regular
 	-- SatyrRanged = {
 	-- 	LargeUnitCap = mod.NilValue,
 	-- },
@@ -796,8 +834,14 @@ local enemyModifications = {
 	-- RatThug = {
 	-- 	LargeUnitCap = mod.NilValue,
 	-- },
+	-- #endregion
+	-- #region STYX - Minibosses
+	-- #endregion
+	-- #region STYX - Bosses
+	-- #endregion
+	-- #endregion
 
-	-- ENVIRONMENT
+	-- #region ENVIRONMENT
 	Breakable = {
 		CannotDieFromDamage = true,
 		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
@@ -867,6 +911,7 @@ local enemyModifications = {
 			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
 		},
 	},
+	-- #endregion
 }
 
 -- Some keys were renamed in the DefaultAIData property

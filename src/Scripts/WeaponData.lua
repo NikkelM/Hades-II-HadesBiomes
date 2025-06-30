@@ -83,7 +83,6 @@ end
 
 local weaponReplacements = {
 	-- #region TARTARUS
-
 	-- #region TARTARUS - TISIPHONE
 	SummonTisiphoneBombingRun = {
 		AIData = {
@@ -116,15 +115,13 @@ local weaponReplacements = {
 		},
 	},
 	-- #endregion
-
 	-- #endregion
 }
 
 -- Modify or add weapons
 local weaponModifications = {
 	-- #region TARTARUS
-
-	-- #region Regular
+	-- #region TARTARUS - Regular
 	MineToss = {
 		AIData = {
 			DeepInheritance = true,
@@ -186,6 +183,9 @@ local weaponModifications = {
 			LoSEndBuffer = 32,
 		},
 	},
+	-- #endregion
+	-- #region TARTARUS - Minibosses
+	-- #region TARTARUS - Minibosses - HeavyRangedSplitter
 	HeavyRangedWeaponSplitter = {
 		InheritFrom = { "HeavyRangedWeapon", },
 		AIData = {
@@ -209,8 +209,8 @@ local weaponModifications = {
 		},
 	},
 	-- #endregion
-
-	-- #region TARTARUS - MEGAERA
+	-- #endregion
+	-- #region TARTARUS - Megaera
 	HarpyLunge = {
 		AIData = {
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
@@ -235,8 +235,7 @@ local weaponModifications = {
 		},
 	},
 	-- #endregion
-
-	-- #region TARTARUS - ALECTO
+	-- #region TARTARUS - Alecto
 	HarpyLungeAlecto = {
 		AIData = {
 			PreAttackStop = true,
@@ -322,8 +321,7 @@ local weaponModifications = {
 		},
 	},
 	-- #endregion
-
-	-- #region TARTARUS - TISIPHONE
+	-- #region TARTARUS - Tisiphone
 	HarpyLightningLine = {
 		Requirements = {
 			BlockAsFirstWeapon = true,
@@ -378,8 +376,7 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region ASPHODEL
-
-	-- #region Regular
+	-- #region ASPHODEL - Regular
 	HadesLightSpawnerEliteSpawnerWeapon = {
 		Requirements = {
 			MaxActiveSpawns = 6,
@@ -408,8 +405,8 @@ local weaponModifications = {
 		ForceFirst = mod.NilValue,
 	},
 	-- #endregion
-
-	-- #region ASPHODEL - Witches Circle
+	-- #region ASPHODEL - Minibosses
+	-- #region ASPHODEL - Minibosses - SpreadShot
 	SpreadShotMinibossRadial = {
 		-- Fixing the animations and increasing the cooldown to scale with difficulty of not being able to destroy projectiles
 		-- Decreasing cooldown again if the shrine upgrade is active, to increase difficulty
@@ -458,8 +455,8 @@ local weaponModifications = {
 		},
 	},
 	-- #endregion
-
-	-- #region ASPHODEL - HYDRA
+	-- #endregion
+	-- #region ASPHODEL - Hydra
 	HydraCrusher = {
 		GameStateRequirements = {
 			-- TODO: Is broken
@@ -493,12 +490,10 @@ local weaponModifications = {
 		},
 	},
 	-- #endregion
-
 	-- #endregion
 
 	-- #region ELYSIUM
-
-	-- #region Regular
+	-- #region ELYSIUM - Regular
 	ShadeSideDash = {
 		AIData = {
 			-- Causes an infinite loop, as this would be set to itself
@@ -512,8 +507,7 @@ local weaponModifications = {
 		},
 	},
 	-- #endregion
-
-	-- #region ELYSIUM - MINOTAUR
+	-- #region ELYSIUM - Minotaur
 	Minotaur5AxeCombo3 = {
 		AIData = {
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
@@ -616,8 +610,7 @@ local weaponModifications = {
 		}
 	},
 	-- #endregion
-
-	-- #region ELYSIUM - THESEUS
+	-- #region ELYSIUM - Theseus
 	-- #endregion
 	-- #endregion
 
