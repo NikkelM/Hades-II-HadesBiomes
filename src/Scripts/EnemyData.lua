@@ -347,6 +347,8 @@ local enemyModifications = {
 	},
 	HarpySupportUnit = {
 		AIOptions = { "HarpySupportAI" },
+		-- Otherwise, doesn't get cleaned up after boss kill as of the Unseen Update
+		RequiredKill = true,
 	},
 	Harpy = {
 		InvulnerableFx = "Invincibubble",
