@@ -633,6 +633,9 @@ end
 
 local weaponKeyReplacements = {
 	AIData = {
+		AttackSlots = {
+			TeleportToId = "InstantTeleportToId",
+		},
 		AIAttackDistance = "AttackDistance",
 		AIBufferDistance = "RetreatBufferDistance",
 		AITrackTargetDuringCharge = "TrackTargetDuringCharge",

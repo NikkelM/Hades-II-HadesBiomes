@@ -82,6 +82,7 @@ local encounterModifications = {
 	},
 
 	-- BOSSES
+	-- DelayedStart = true,
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataElysium, encounterModifications, encounterReplacements)

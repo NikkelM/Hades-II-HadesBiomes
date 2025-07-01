@@ -18,6 +18,8 @@ local roomReplacements = {
 		MusicActiveStems = { "Guitar", "Drums", "Bass", },
 		Music = mod.NilValue,
 		MusicRequirements = mod.NilValue,
+		-- Will be set in the encounter instead
+		UnthreadedEvents = mod.NilValue,
 	},
 
 	-- SHOPS
@@ -76,12 +78,6 @@ local roomModifications = {
 			{ FunctionName = "CheckBiomeStateStart" },
 			{ FunctionName = "ShadeMercManager",    Args = { StartingCountMin = 3, StartingCountMax = 12, ObjectNames = { "ShadeMerc" }, MaxActive = 12 } },
 		},
-		UnthreadedEvents = {
-			[1] = {
-				-- Requires AthenaFirstPickup voiceline, which is not implemented
-				GameStateRequirements = mod.NilValue,
-			},
-		},
 		InspectPoints = {
 			[410183] = {
 				RequiredAnyTextLines = mod.NilValue,
@@ -130,6 +126,7 @@ local roomModifications = {
 						[2] = { Cue = "/VO/Megaera_0053", RequiredPlayed = { "/VO/Megaera_0061" }, },
 						[4] = { Cue = "/VO/Megaera_0057", },
 					},
+					DelayedStart = true,
 				},
 			},
 		},

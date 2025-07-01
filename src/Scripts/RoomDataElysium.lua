@@ -85,6 +85,12 @@ local roomModifications = {
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		UnthreadedEvents = {
+			[1] = {
+				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
+				Args = { DelayedStart = true, },
+			},
+		},
 	},
 
 	-- OTHER

@@ -136,7 +136,7 @@ function game.ModsNikkelMHadesBiomesHandleWrapping(encounter)
 end
 
 function game.BeginWrappingEncounter()
-	game.StartEncounterEffects(game.CurrentRun)
+	game.StartEncounterEffects()
 end
 
 function game.WrappingEncounterEndPresentation(eventSource)
