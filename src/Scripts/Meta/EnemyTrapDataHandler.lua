@@ -83,4 +83,6 @@ function mod.ModifyEnemyTrapData(enemyData)
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/SpikeTrapFire" }, }, },
 	}
+
+	game.ProjectileData.BlastCubeExplosion.OutgoingDamageModifiers = { { NonPlayerMultiplier = 50, }, }
 end

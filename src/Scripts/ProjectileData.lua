@@ -1,4 +1,8 @@
 local function applyModificationsAndInheritProjectileData(base, modifications, projectileKeyReplacements)
+	for oldName, newName in pairs(mod.EnemyProjectileMappings) do
+		mod.UpdatePropertyName(modifications, oldName, newName, {}, "ProjectileDataHandler modifications")
+		-- mod.UpdatePropertyName(replacements, oldName, newName, {}, "ProjectileDataHandler replacements")
+	end
 	-- Apply modifications
 	for projectileName, projectileData in pairs(modifications) do
 		if not base[projectileName] then
