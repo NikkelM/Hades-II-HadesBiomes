@@ -94,51 +94,50 @@ local function checkFilesExist(fileMappings, basePath, extension, failFast)
 end
 
 function mod.CheckRequiredFiles(failFast)
-	return 0
-	-- failFast = failFast or false
-	-- local missingFiles = 0
+	failFast = failFast or false
+	local missingFiles = 0
 
-	-- missingFiles = missingFiles + checkFilesExist(mod.AudioFileMappings, "Audio\\Desktop\\", ".bank", failFast)
-	-- -- We only check once, since with a successful uninstall, there will be at least one missing file here already
-	-- if failFast and missingFiles > 0 then return missingFiles end
+	missingFiles = missingFiles + checkFilesExist(mod.AudioFileMappings, "Audio\\Desktop\\", ".bank", failFast)
+	-- We only check once, since with a successful uninstall, there will be at least one missing file here already
+	if failFast and missingFiles > 0 then return missingFiles end
 
-	-- missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\1080p\\", ".pkg", failFast)
-	-- missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\1080p\\", ".pkg_manifest", failFast)
-	-- missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\720p\\", ".pkg", failFast)
-	-- missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\720p\\", ".pkg_manifest", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\1080p\\", ".pkg", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\1080p\\", ".pkg_manifest", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\720p\\", ".pkg", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\720p\\", ".pkg_manifest", failFast)
 
-	-- missingFiles = missingFiles + checkFilesExist(mod.CustomPackageFileNames, "Packages\\1080p\\", ".pkg", failFast)
-	-- missingFiles = missingFiles + checkFilesExist(mod.CustomPackageFileNames, "Packages\\1080p\\", ".pkg_manifest", failFast)
-	-- missingFiles = missingFiles + checkFilesExist(mod.CustomPackageFileNames, "Packages\\720p\\", ".pkg", failFast)
-	-- missingFiles = missingFiles + checkFilesExist(mod.CustomPackageFileNames, "Packages\\720p\\", ".pkg_manifest", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomPackageFileNames, "Packages\\1080p\\", ".pkg", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomPackageFileNames, "Packages\\1080p\\", ".pkg_manifest", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomPackageFileNames, "Packages\\720p\\", ".pkg", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomPackageFileNames, "Packages\\720p\\", ".pkg_manifest", failFast)
 
-	-- missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\1080p\\", ".bik", failFast)
-	-- missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\1080p\\", ".bik_atlas", failFast)
-	-- missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\720p\\", ".bik", failFast)
-	-- missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\720p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\1080p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\1080p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\720p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\720p\\", ".bik_atlas", failFast)
 
-	-- missingFiles = missingFiles + checkFilesExist(mod.SjsonFileMappings, "Game\\", ".sjson", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.SjsonFileMappings, "Game\\", ".sjson", failFast)
 
-	-- missingFiles = missingFiles + checkFilesExist({ mod.HadesFxDestinationFilename }, "", "", failFast)
-	-- missingFiles = missingFiles + checkFilesExist({ mod.HadesGUIAnimationsDestinationFilename }, "", "", failFast)
-	-- missingFiles = missingFiles + checkFilesExist({ mod.HadesPortraitAnimationsDestinationFilename }, "", "", failFast)
-	-- missingFiles = missingFiles + checkFilesExist({ mod.HadesCharacterAnimationsNPCsDestinationFilename }, "", "", failFast)
+	missingFiles = missingFiles + checkFilesExist({ mod.HadesFxDestinationFilename }, "", "", failFast)
+	missingFiles = missingFiles + checkFilesExist({ mod.HadesGUIAnimationsDestinationFilename }, "", "", failFast)
+	missingFiles = missingFiles + checkFilesExist({ mod.HadesPortraitAnimationsDestinationFilename }, "", "", failFast)
+	missingFiles = missingFiles + checkFilesExist({ mod.HadesCharacterAnimationsNPCsDestinationFilename }, "", "", failFast)
 
-	-- missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, "Maps\\", ".map_text", failFast)
-	-- missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, "Maps\\bin\\", ".thing_bin", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, "Maps\\", ".map_text", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, "Maps\\bin\\", ".thing_bin", failFast)
 
-	-- missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".txt", failFast)
-	-- missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".txt", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb", failFast)
 
-	-- -- The helpText files in the different languages
-	-- for _, language in ipairs(mod.HelpTextLanguages) do
-	-- 	local helpTextFile = rom.path.combine(rom.paths.Content(),
-	-- 		'Game\\Text\\' .. language .. '\\HelpTextHades.' .. language .. '.sjson')
-	-- 	if not checkFileExistsWithRetry(helpTextFile, 3, 1) then
-	-- 		mod.DebugPrint("Missing file: " .. helpTextFile, 1)
-	-- 		missingFiles = missingFiles + 1
-	-- 	end
-	-- end
+	-- The helpText files in the different languages
+	for _, language in ipairs(mod.HelpTextLanguages) do
+		local helpTextFile = rom.path.combine(rom.paths.Content(),
+			'Game\\Text\\' .. language .. '\\HelpTextHades.' .. language .. '.sjson')
+		if not checkFileExistsWithRetry(helpTextFile, 3, 1) then
+			mod.DebugPrint("Missing file: " .. helpTextFile, 1)
+			missingFiles = missingFiles + 1
+		end
+	end
 
-	-- return missingFiles
+	return missingFiles
 end

@@ -78,16 +78,16 @@ local function on_ready()
 	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 
-	-- if config.enabled == false then
-	-- 	local numMissingFiles = mod.CheckRequiredFiles(true)
-	-- 	if numMissingFiles == 0 then
-	-- 		-- Mod is disabled, but has not been uninstalled - do not return early
-	-- 		mod.DebugPrint(
-	-- 			"The mod is disabled, but has not been uninstalled yet. Uninstallation will be attempted shortly...", 2)
-	-- 	else
-	-- 		return
-	-- 	end
-	-- end
+	if config.enabled == false then
+		local numMissingFiles = mod.CheckRequiredFiles(true)
+		if numMissingFiles == 0 then
+			-- Mod is disabled, but has not been uninstalled - do not return early
+			mod.DebugPrint(
+				"The mod is disabled, but has not been uninstalled yet. Uninstallation will be attempted shortly...", 2)
+		else
+			return
+		end
+	end
 
 	import "Scripts/Meta/AnimationDuplicatesDataFx.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataGUIAnimations.lua"
@@ -152,7 +152,7 @@ local function on_ready()
 		mod.FirstTimeSetup()
 	end
 
-	local numMissingFiles = 0--mod.CheckRequiredFiles(false)
+	local numMissingFiles = mod.CheckRequiredFiles(false)
 	-- Before proceeding, check that required files exist
 	if numMissingFiles == 0 then
 		-- General data needed for map generation/display
