@@ -64,6 +64,8 @@ local encounterReplacements = {
 		DepthDifficultyRamp = 14,
 	},
 	OpeningGenerated = {
+		-- Blocks the LocationText from being shown an extra time in RoomEntranceDrop
+		BlockLocationText = true,
 		UnthreadedEvents = {
 			{
 				FunctionName = "SpawnRoomReward",

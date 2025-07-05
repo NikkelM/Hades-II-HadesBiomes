@@ -52,6 +52,9 @@ local roomModifications = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
 		},
+		ThreadedEvents = {
+			[1] = { Args = { AnimationName = "LocationBackingIrisChaosIn", AnimationOutName = "LocationBackingIrisChaosOut" }, },
+		},
 	},
 
 	-- SHOPS
