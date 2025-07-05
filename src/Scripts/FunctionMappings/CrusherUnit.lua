@@ -1,4 +1,4 @@
--- Also used for Hydra in Asphodel
+-- Used for all modded units with touchdown behavior
 function game.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
 	args = args or {}
 	if args.Delay then
@@ -28,10 +28,11 @@ function game.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
 	})
 end
 
--- Same as in Hades II, but:
+-- Same as in Hades, but:
 -- More upward force to move the enemy off screen completely
 -- SetInvulnerable to prevent the airborne enemy from being affected by the Cast
-function game.SkyAttackerAI(enemy, currentRun)
+-- For some reason, even though the function no longer exists in Hades II, we still need to use another name
+function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 	currentRun = currentRun or game.CurrentRun
 	if enemy.WakeUpDelay ~= nil or (enemy.WakeUpDelayMin ~= nil and enemy.WakeUpDelayMax ~= nil) then
 		local wakeUpDelay = enemy.WakeUpDelay or game.RandomFloat(enemy.WakeUpDelayMin, enemy.WakeUpDelayMax)

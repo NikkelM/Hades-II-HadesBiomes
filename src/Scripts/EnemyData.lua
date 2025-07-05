@@ -579,6 +579,7 @@ local enemyModifications = {
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
 		},
+		PostAggroAI = "ModsNikkelMHadesBiomesSkyAttackerAI",
 	},
 	CrusherUnitElite = {
 		BlockAttributes = { "Blink", "Orbit", "Fog", "Frenzy", "ManaDrain", "Molten", "Unflinching", "Vacuuming", },
