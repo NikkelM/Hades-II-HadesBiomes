@@ -1,6 +1,12 @@
 -- For the RunHistoryScreen, we need to set a proper name for when the player is killed by a HarpySupportUnit
 modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 	local killer = triggerArgs.AttackerTable
+	if killer == nil then
+		killer = {}
+		killer.Name = triggerArgs.AttackerName
+		killer.ObjectId = triggerArgs.AttackerId
+	end
+
 	if killer.Name == "HarpySupportUnit" then
 		local resultText = game.CurrentRun.CurrentRoom.ResultText
 		if resultText == "RunHistoryScreenResult_A_Boss01" then
