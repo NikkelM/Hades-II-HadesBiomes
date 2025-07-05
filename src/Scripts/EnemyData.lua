@@ -379,6 +379,7 @@ local enemyModifications = {
 		DeathGraphic = "HeavyRangedSplitterFragmentDeath",
 		UseActivatePresentation = false,
 		BlockRaiseDead = true,
+		RunHistoryKilledByName = "HeavyRangedSplitterMiniboss",
 	},
 	WretchAssassin = {
 		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
@@ -394,6 +395,7 @@ local enemyModifications = {
 	},
 	Harpy = {
 		InvulnerableFx = "Invincibubble",
+		RunHistoryKilledByName = "NPC_FurySister_01",
 	},
 	Harpy3 = {
 		BossPresentationTextLineSets = {

@@ -182,3 +182,8 @@ modutil.mod.Path.Wrap("GetRunResult", function(base, run)
 	end
 	return base(run)
 end)
+
+-- We want our modded runs to be considered a bounty run for the RunHistoryScreen
+modutil.mod.Path.Wrap("WasBountyRun", function(base, run)
+	return (run.BiomesReached ~= nil and run.BiomesReached.Tartarus) or base(run)
+end)
