@@ -138,7 +138,26 @@ function mod.RenameKeys(base, replacements, baseName, propertyPath)
 		local currentPath = propertyPath .. (propertyPath == "" and "" or ".") .. key
 		if base[key] ~= nil then
 			if type(value) == "table" then
-				mod.RenameKeys(base[key], value, baseName, currentPath)
+				-- If all values of base[key] are tables, apply recursively to each child
+				local allChildrenAreTables = true
+				if type(base[key]) == "table" then
+					for _, v in pairs(base[key]) do
+						if type(v) ~= "table" then
+							allChildrenAreTables = false
+							break
+						end
+					end
+				else
+					allChildrenAreTables = false
+				end
+
+				if allChildrenAreTables then
+					for childKey, childTable in pairs(base[key]) do
+						mod.RenameKeys(childTable, value, baseName, currentPath .. "." .. tostring(childKey))
+					end
+				else
+					mod.RenameKeys(base[key], value, baseName, currentPath)
+				end
 			else
 				mod.DebugPrint("Renamed key " .. currentPath .. " to " .. value .. " for " .. baseName, 4)
 				base[value] = base[key]

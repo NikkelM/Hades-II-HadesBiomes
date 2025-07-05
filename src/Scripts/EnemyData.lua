@@ -935,6 +935,10 @@ local enemyModifications = {
 -- Some keys were renamed in the DefaultAIData property
 local enemyKeyReplacements = {
 	RequiredIntroEncounter = "IntroEncounterName",
+	-- Key is only used for the four breakables
+	ValueOptions = "BreakableValueOptions",
+	-- For the ShadeNaked
+	AIPickupType = "AIPickupTypes",
 	DefaultAIData = {
 		AIAttackDistance = "AttackDistance",
 		AIBufferDistance = "RetreatBufferDistance",
@@ -953,10 +957,9 @@ local enemyKeyReplacements = {
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
 	},
-	-- Key is only used for the four breakables
-	ValueOptions = "BreakableValueOptions",
-	-- For the ShadeNaked
-	AIPickupType = "AIPickupTypes",
+	AIStages = {
+		SelectPactLevelAIStage = "EMStageDataOverrides",
+	},
 }
 
 -- Modifications to Hades II enemies
