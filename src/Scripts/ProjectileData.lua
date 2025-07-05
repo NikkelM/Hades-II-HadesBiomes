@@ -43,6 +43,10 @@ local projectileModifications = {
 	HeavyRangedWeaponSplitter = {
 		InheritFrom = { "HeavyRangedWeapon", },
 	},
+	HeavyRangedSplitterFragment = {
+		InheritFrom = { "HeavyRangedWeaponSplitter", },
+		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedSplitterFragmentOnWeaponHit" },
+	},
 	HarpyLightning = {
 		InheritFrom = { "NoSlowFrameProjectile", },
 	},

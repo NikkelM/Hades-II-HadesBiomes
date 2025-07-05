@@ -356,6 +356,22 @@ local enemyModifications = {
 			MoveWithinRangeTimeoutMin = 1.5,
 			MoveWithinRangeTimeoutMax = 2.0,
 		},
+		OnDamagedFireProjectiles = {
+			{
+				ProjectileName = "SpawnSplitterFragment",
+				Requirements = { MaxUnitsByType = { HeavyRangedSplitterFragment = 12 } },
+			},
+		},
+		OnDamagedWeapons = mod.NilValue,
+	},
+	HeavyRangedSplitterMinibossSuperElite = {
+		OnDamagedFireProjectiles = {
+			{
+				ProjectileName = "SpawnSplitterFragmentSuperElite",
+				Requirements = { MaxUnitsByType = { HeavyRangedSplitterFragmentSuperElite = 12 } },
+			},
+		},
+		OnDamagedWeapons = mod.NilValue,
 	},
 	HeavyRangedSplitterFragment = {
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
