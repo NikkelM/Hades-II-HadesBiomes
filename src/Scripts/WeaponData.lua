@@ -459,7 +459,7 @@ local weaponModifications = {
 	-- #region ASPHODEL - Hydra
 	HydraCrusher = {
 		GameStateRequirements = {
-			-- TODO: Is broken
+			-- TODO: Is broken?
 			Skip = true,
 		},
 	},
@@ -509,6 +509,11 @@ local weaponModifications = {
 		AIData = {
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
+		},
+	},
+	ShieldAlliesAoE = {
+		AIData = {
+			ProjectileName = "ShieldAlliesAoE",
 		},
 	},
 	-- #endregion
