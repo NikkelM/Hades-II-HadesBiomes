@@ -479,6 +479,11 @@ local weaponModifications = {
 	},
 	HydraSlam = {
 		AIData = {
+			ProjectileName = "HydraTouchdown",
+			PreAttackAnimation = "EnemyHydraSlamCharge",
+			FireAnimation = mod.NilValue,
+			PreAttackWaitForAnimation = true,
+			PreAttackDuration = mod.NilValue,
 			PostAttackDuration = 0.5,
 			MoveWithinRange = false,
 		},

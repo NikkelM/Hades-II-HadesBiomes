@@ -56,13 +56,8 @@ local projectilesToRemove = {
 
 -- Modifications/overrides to the Hades enemy projectiles
 local hadesProjectilesModifications = {
-	-- TARTARUS
-	-- TODO: Still work in progress, as it is not aligned perfectly with the trap itself
-	SpikeTrapWeapon = {
-		Thing = {
-			Scale = 1.0,
-		},
-	},
+	-- #region TARTARUS
+	-- #region TARTARUS - Regular
 	DisembodiedHandGrab = {
 		Effect = {
 			-- Don't play the ZagreusStun animation
@@ -90,7 +85,8 @@ local hadesProjectilesModifications = {
 	HeavyRangedSplitterFragment = {
 		DieWithOwner = true,
 	},
-	-- TARTARUS - BOSSES
+	-- #endregion
+	-- #region TARTARUS - Harpies
 	HarpyBeam = {
 		Speed = 700,
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
@@ -116,14 +112,19 @@ local hadesProjectilesModifications = {
 			[1] = { StartAnimation = "MelinoeGetHit", },
 		},
 	},
-	-- ASPHODEL
+	-- #endregion
+	-- #endregion
+
+	-- #region ASPHODEL
+	-- #region ASPHODEL - Regular
 	RangedBurrowerWeapon = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 	},
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
 	},
-	-- ASPHODEL - HYDRA
+	-- #endregion
+	-- #region ASPHODEL - Hydra
 	HydraDart = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 	},
@@ -132,7 +133,11 @@ local hadesProjectilesModifications = {
 		CheckObstacleImpact = true,
 		DetonateOnTouchdown = true,
 	},
-	-- ELYSIUM
+	-- #endregion
+	-- #endregion
+
+	-- #region ELYSIUM
+	-- #region ELYSIUM - Regular
 	SplitShotWeapon = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		ImpactFx = "EnemyProjectileImpact",
@@ -155,19 +160,33 @@ local hadesProjectilesModifications = {
 	ChariotRamSelfDestruct = {
 		AffectsEnemies = true,
 	},
-	-- ELYSIUM - MINOTAUR
+	-- #endregion
+	-- #region ELYSIUM - Minotaur
 	MinotaurOverheadTouchdown = {
 		AttachToOwner = false,
 		DamageRadius = 400,
 		DamageRadiusScaleY = 0.4,
 	},
-	-- STYX
+	-- #endregion
+	-- #endregion
+
+	-- #region STYX
 	StaggeredSatyrRangedWeapon = {
 		UnpauseAnimation = mod.NilValue,
 		Thing = {
 			Graphic = "SatyrDart",
 		},
 	},
+	-- #endregion
+
+	-- #region ENVIRONMENT
+	-- TODO: Still work in progress, as it is not aligned perfectly with the trap itself
+	SpikeTrapWeapon = {
+		Thing = {
+			Scale = 1.0,
+		},
+	},
+	-- #endregion
 }
 
 local renamedProjectileModifications = {}
