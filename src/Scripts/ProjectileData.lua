@@ -37,6 +37,7 @@ end
 
 -- Also able to modify added projectiles here
 local projectileModifications = {
+	-- #region TARTARUS
 	HeavyRangedWeapon = {
 		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
 	},
@@ -50,6 +51,8 @@ local projectileModifications = {
 	HarpyLightning = {
 		InheritFrom = { "NoSlowFrameProjectile", },
 	},
+	-- #endregion
+	-- #region ENVIRONMENT
 	ModsNikkelMHadesBiomesRubbleFall = {
 		-- So it doesn't deal more damage to enemies than it should, and it doesn't destroy the rubble obstacles it spawns itself
 		OutgoingDamageModifiers = { { ObstacleMultiplier = 0.0, NonPlayerMultiplier = 3.0, }, }
@@ -57,6 +60,7 @@ local projectileModifications = {
 	ModsNikkelMHadesBiomesRubbleFallLarge = {
 		OutgoingDamageModifiers = { { ObstacleMultiplier = 0.0, NonPlayerMultiplier = 1.0, }, }
 	},
+	-- #endregion
 }
 
 local projectileKeyReplacements = {
