@@ -6,9 +6,12 @@ local hadesAsphodelObstacleTable = sjson.decode_file(hadesAsphodelObstacleFile)
 local hadesTwoAsphodelObstacleFile = rom.path.combine(rom.paths.Content(), "Game\\Obstacles\\Asphodel.sjson")
 -- local hadesTwoAsphodelObstacleTable = sjson.decode_file(hadesTwoAsphodelObstacleFile)
 
+-- These need to be added before the others, as they are inherited from
+local hadesObstacleAdditionsParents = {}
 local hadesObstacleAdditions = {}
 
 -- Add the added obstacles
+mod.AddTableKeysSkipDupes(hadesAsphodelObstacleTable.Obstacles, hadesObstacleAdditionsParents, "Name")
 mod.AddTableKeysSkipDupes(hadesAsphodelObstacleTable.Obstacles, hadesObstacleAdditions, "Name")
 
 -- Modifications for new obstacles copied from Hades

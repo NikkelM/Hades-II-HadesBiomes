@@ -5,9 +5,71 @@ local hadesElysiumObstacleTable = sjson.decode_file(hadesElysiumObstacleFile)
 
 local hadesTwoElysiumObstacleFile = rom.path.combine(rom.paths.Content(), "Game\\Obstacles\\Elysium.sjson")
 
-local hadesObstacleAdditions = {}
-
+-- These need to be added before the others, as they are inherited from
+local hadesObstacleAdditionsParents = {
+	EnemyShadeWeapon = {
+		Name = "EnemyShadeWeapon",
+		DisplayInEditor = true,
+		Life = { Invulnerable = true, },
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "EnemySpearIdleContainer",
+			StopsProjectiles = false,
+			StopsUnits = false,
+			Tallness = 60.0,
+			Points = {
+				{ X = 0,   Y = 14 },
+				{ X = 32,  Y = -2 },
+				{ X = 1,   Y = -18 },
+				{ X = -32, Y = -2 },
+			},
+		},
+	},
+}
+local hadesObstacleAdditions = {
+	EnemySpear = {
+		Name = "EnemySpear",
+		InheritFrom = "EnemyShadeWeapon",
+		DisplayInEditor = true,
+		Thing = {
+			AttachedAnim = "EnemyShadeWeaponShadow",
+			EditorOutlineDrawBounds = false,
+			Tallness = 100.0,
+		},
+	},
+	EnemyShield = {
+		Name = "EnemyShield",
+		InheritFrom = "EnemyShadeWeapon",
+		DisplayInEditor = true,
+		Thing = {
+			AttachedAnim = "EnemyShadeWeaponShadow",
+			EditorOutlineDrawBounds = false,
+			Graphic = "EnemyShieldIdleContainer",
+		},
+	},
+	EnemyBow = {
+		Name = "EnemyBow",
+		InheritFrom = "EnemyShadeWeapon",
+		DisplayInEditor = true,
+		Thing = {
+			AttachedAnim = "EnemyShadeWeaponShadow",
+			EditorOutlineDrawBounds = false,
+			Graphic = "EnemyBowIdleContainer",
+		},
+	},
+	EnemySword = {
+		Name = "EnemySword",
+		InheritFrom = "EnemyShadeWeapon",
+		DisplayInEditor = true,
+		Thing = {
+			AttachedAnim = "EnemyShadeWeaponShadow",
+			EditorOutlineDrawBounds = false,
+			Graphic = "EnemySwordIdleContainer",
+		},
+	},
+}
 -- Add the added obstacles
+mod.AddTableKeysSkipDupes(hadesElysiumObstacleTable.Obstacles, hadesObstacleAdditionsParents, "Name")
 mod.AddTableKeysSkipDupes(hadesElysiumObstacleTable.Obstacles, hadesObstacleAdditions, "Name")
 
 -- Modifications for new obstacles copied from Hades

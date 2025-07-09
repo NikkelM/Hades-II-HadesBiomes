@@ -6,6 +6,9 @@ local function applyModificationsAndInheritObstacleData(base, modifications, add
 		else
 			base[obstacleName] = obstacleData
 		end
+		if base[obstacleName].Name == nil then
+			base[obstacleName].Name = obstacleName
+		end
 	end
 
 	-- Apply modifications
@@ -24,7 +27,7 @@ end
 
 -- Also works for already existing obstacles in Hades II
 local obstacleModifications = {
-	-- TARTARUS
+	-- #region TARTARUS
 	TartarusDoor03b = {
 		-- Red and blue reward preview backing
 		CustomLockedAnimation_Run = "HadesDoorLocked",
@@ -36,7 +39,9 @@ local obstacleModifications = {
 		DeathFx = "RubbleFall",
 		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
 	},
-	-- ASPHODEL
+	-- #endregion
+
+	-- #region ASPHODEL
 	AsphodelTerrainRock01 = {
 		DeathFx = "RubbleFall",
 		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
@@ -49,7 +54,34 @@ local obstacleModifications = {
 		InheritFrom = { "HealthFountain" },
 		HealingSpentAnimation = "HealthFountainEmptyAsphodel",
 	},
-	-- ELYSIUM
+	-- #endregion
+
+	-- #region ELYSIUM
+	HealthFountainElysium = {
+		InheritFrom = { "HealthFountain" },
+		HealingSpentAnimation = "HealthFountainEmptyElysium",
+	},
+	ElysiumRubble04 = {
+		DeathFx = "RubbleFall",
+		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
+	},
+	-- #endregion
+
+	-- #region STYX
+	-- #endregion
+}
+
+local addedObstacles = {
+	-- #region TARTARUS
+	MultiFuryMegaeraIntro = { ExitAnimation = "MegaeraMultiFuryTakeOff", },
+	MultiFuryAlectoIntro = { ExitAnimation = "AlectoMultiFuryTakeOff", },
+	MultiFuryTisiphoneIntro = { ExitAnimation = "TisiphoneMultiFuryTakeOff", },
+	-- #endregion
+
+	-- #region ASPHODEL
+	-- #endregion
+
+	-- #region ELYSIUM
 	EnemyShield = {
 		IsEnemyWeapon = true,
 		UseText = "UseEnemyWeapon",
@@ -78,30 +110,10 @@ local obstacleModifications = {
 		PickupFailedAnimation = "EnemySwordIdleContainer",
 		SwapToUnitOnPickup = "ShadeSwordUnit",
 	},
-	EnemyDagger = {
-		IsEnemyWeapon = true,
-		UseText = "UseEnemyWeapon",
-		SwapToUnitOnPickup = "ShadeSwordUnit",
-	},
-	HealthFountainElysium = {
-		InheritFrom = { "HealthFountain" },
-		HealingSpentAnimation = "HealthFountainEmptyElysium",
-	},
-	ElysiumRubble04 = {
-		DeathFx = "RubbleFall",
-		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
-	},
-	-- STYX
-}
+	-- #endregion
 
-local addedObstacles = {
-	-- TARTARUS
-	MultiFuryMegaeraIntro = { ExitAnimation = "MegaeraMultiFuryTakeOff", },
-	MultiFuryAlectoIntro = { ExitAnimation = "AlectoMultiFuryTakeOff", },
-	MultiFuryTisiphoneIntro = { ExitAnimation = "TisiphoneMultiFuryTakeOff", },
-	-- ASPHODEL
-	-- ELYSIUM
-	-- STYX
+	-- #region STYX
+	-- #endregion
 }
 
 -- We need to re-process data inheritance for any redefined obstacles that define an InheritFrom

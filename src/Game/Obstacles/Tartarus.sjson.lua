@@ -6,9 +6,12 @@ local hadesTartarusObstacleTable = sjson.decode_file(hadesTartarusObstacleFile)
 local hadesTwoTartarusObstacleFile = rom.path.combine(rom.paths.Content(), "Game\\Obstacles\\Tartarus.sjson")
 -- local hadesTwoTartarusObstacleTable = sjson.decode_file(hadesTwoTartarusObstacleFile)
 
+-- These need to be added before the others, as they are inherited from
+local hadesObstacleAdditionsParents = {}
 local hadesObstacleAdditions = {}
 
 -- Add the added obstacles
+mod.AddTableKeysSkipDupes(hadesTartarusObstacleTable.Obstacles, hadesObstacleAdditionsParents, "Name")
 mod.AddTableKeysSkipDupes(hadesTartarusObstacleTable.Obstacles, hadesObstacleAdditions, "Name")
 
 -- Modifications for new obstacles copied from Hades

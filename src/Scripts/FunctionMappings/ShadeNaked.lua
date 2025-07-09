@@ -162,6 +162,11 @@ function game.ProcessPickup(enemy, pickupTarget)
 		return
 	end
 
+	-- If the enemy is the ShadeNaked, we don't want a summon animation for the picked up enemy
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.GenusName == "ShadeNaked" then
+		game.CurrentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation = true
+	end
+
 	local pickupType = game.MapState.ActiveObstacles[pickupTarget].Name
 	local pickupData = game.ObstacleData[pickupType] or game.ConsumableData[pickupType]
 
@@ -215,4 +220,8 @@ function game.ProcessPickup(enemy, pickupTarget)
 	if pickupData.AttachAnimation ~= nil then
 		CreateAnimation({ Name = pickupData.AttachAnimation, DestinationId = enemy.ObjectId })
 	end
+end
+
+function game.RemoveOnDeathWeapons(unit)
+	unit.OnDeathWeapons = nil
 end
