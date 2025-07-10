@@ -511,6 +511,35 @@ local weaponModifications = {
 			AttackFailWeapon = mod.NilValue,
 		},
 	},
+	ShadeSpearThrustSingle = {
+		AIData = {
+			ProjectileName = "ShadeSpearThrust",
+		},
+	},
+	ShadeSpearLeap = {
+		Requirements = {
+			MaxPlayerDistance = 800,
+		},
+		AIData = {
+			DeepInheritance = true,
+			PreAttackAnimation = mod.NilValue,
+			FireAnimation =  mod.NilValue,
+			LeapToTarget = true,
+			PreMoveLeap = true,
+			LeapAgainIfBlocked = true,
+			RequireLeapTargetLoS = true,
+			LeapChargeAnimation = "ShadeSpear_LeapPreAttack",
+			FireProjectileStartDelay = 0.05,
+			MoveWithinRange = false,
+			PreAttackDuration = 0.0,
+			PreFireDuration = 0.0,
+			FireDuration = 0,
+			PostAttackDuration = 0.35,
+			TrackTargetDuringCharge = true,
+			StopBeforeFire = true,
+			PostAttackStop = true,
+		},
+	},
 	ShieldAlliesAoE = {
 		AIData = {
 			ProjectileName = "ShieldAlliesAoE",

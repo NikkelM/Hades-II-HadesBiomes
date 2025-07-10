@@ -24,8 +24,10 @@ hadesWeaponsTable.Weapons = mod.AddTableKeysSkipDupes(hadesTwoWeaponsTable.Weapo
 local hadesTwoPlayerWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\Weapons\\PlayerWeapons.sjson")
 
 local hadesWeaponsModifications = {
-	-- TARTARUS
-	-- ASPHODEL - HYDRA
+	-- #region TARTARUS
+	-- #endregion
+
+	-- #region ASPHODEL
 	HydraLunge = {
 		-- Needs to be lowered due to tethers not locking the head in place
 		-- It would otherwise fly over the whole map
@@ -34,15 +36,16 @@ local hadesWeaponsModifications = {
 	HydraSnap = {
 		SelfVelocity = 4000.0,
 	},
-	-- ELYSIUM
+	-- #endregion
+
+	-- #region ELYSIUM
+	ShadeSpearLeap = {
+		SelfVelocity = mod.NilValue,
+		SelfUpwardVelocity = mod.NilValue,
+	},
 	ChariotRam = {
 		Effect = {
 			-- The speedup during the ram - higher so it can't just be outsprinted
-			Modifier = 760,
-		},
-	},
-	TheseusChariotRam = {
-		Effect = {
 			Modifier = 760,
 		},
 	},
@@ -56,7 +59,15 @@ local hadesWeaponsModifications = {
 			Modifier = 680,
 		},
 	},
-	-- STYX
+	TheseusChariotRam = {
+		Effect = {
+			Modifier = 760,
+		},
+	},
+	-- #endregion
+
+	-- #region STYX
+	-- #endregion
 }
 
 mod.ApplyNestedSjsonModifications(hadesWeaponsTable.Weapons, hadesWeaponsModifications)
