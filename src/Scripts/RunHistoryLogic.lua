@@ -17,3 +17,21 @@ modutil.mod.Path.Wrap("RunHistoryUpdateVisibility", function(base, screen)
 		end
 	end
 end)
+
+-- Add the biome Codex entries to the Biome category so they are picked up by the Run History screen
+-- Remove them afterwards so they don't show up in the Codex itself
+modutil.mod.Path.Wrap("ShowRunHistory", function(base, screen, button)
+	local originalEntries = game.DeepCopyTable(game.CodexData.Biomes.Entries)
+	local hadesBiomeCodexEntries = {}
+	hadesBiomeCodexEntries.BiomeTartarus = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Tartarus
+	hadesBiomeCodexEntries.BiomeAsphodel = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Asphodel
+	hadesBiomeCodexEntries.BiomeElysium = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Elysium
+	hadesBiomeCodexEntries.BiomeStyx = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Styx
+	hadesBiomeCodexEntries.BiomeChallenge = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Challenge
+	hadesBiomeCodexEntries.BiomeSurface = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Surface
+	game.CodexData.Biomes.Entries = game.MergeTables(game.CodexData.Biomes.Entries, hadesBiomeCodexEntries)
+
+	base(screen, button)
+
+	game.CodexData.Biomes.Entries = originalEntries
+end)

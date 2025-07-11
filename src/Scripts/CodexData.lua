@@ -242,13 +242,8 @@ end
 updatedCodexData.SavedEntries = nil
 
 -- Move the biome entries to the enemies group, so they are all in one tab
--- Also add them to the normal Biomes entries, so they get picked up in the RunHistoryScreen
--- They won't be in the Codex, as they are not added to the order
 for entryName, entry in pairs(updatedCodexData[codexGroupNameMappings.Biomes].Entries) do
 	updatedCodexData[codexGroupNameMappings.Enemies].Entries[entryName] = entry
-	if game.CodexData.Biomes.Entries[entryName] == nil then
-		game.CodexData.Biomes.Entries["Biome" .. entryName] = entry
-	end
 end
 updatedCodexData[codexGroupNameMappings.Biomes] = nil
 
