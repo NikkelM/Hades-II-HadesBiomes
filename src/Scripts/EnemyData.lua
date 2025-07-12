@@ -798,13 +798,34 @@ local enemyModifications = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
 			StopMoveWithinRange = false,
-			ProjectileName = "ChariotRam",
+			RamEffectName = mod.NilValue,
+			-- TODO: What about the speedShrine modifier - is it done before or after?
+			RamEffectProperties = {
+				Property = "Speed",
+				Value = 950,
+			},
+			RamEffectResetProperties = {
+				Property = "Speed",
+				Value = 300,
+			},
 			-- Setup is the when it can start ramming instead of moving
 			SetupDistance = 500,
 			SetupTimeout = 7.0,
 			-- Longer time ramming before timing out and stopping
 			RamTimeout = 3.0,
 			RamDistance = 120,
+		},
+	},
+	ChariotElite = {
+		DefaultAIData = {
+			RamEffectProperties = {
+				Property = "Speed",
+				Value = 1100,
+			},
+			RamEffectResetProperties = {
+				Property = "Speed",
+				Value = 400,
+			},
 		},
 	},
 	ChariotSuicide = {
@@ -817,11 +838,21 @@ local enemyModifications = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
 			StopMoveWithinRange = false,
-			ProjectileName = "ChariotRamSelfDestruct",
+			RamEffectName = mod.NilValue,
+			RamEffectProperties = {
+				Property = "Speed",
+				Value = 900,
+			},
+			RamEffectResetProperties = {
+				Property = "Speed",
+				Value = 200,
+			},
 			SetupDistance = 900,
 			SetupTimeout = 7.0,
 			RamDistance = 80,
+			OnFiredFunctionName = "SelfDestruct",
 		},
+		WeaponOptions = { "ChariotRamSelfDestruct" },
 	},
 	-- #endregion
 	-- #region ELYSIUM - Bosses

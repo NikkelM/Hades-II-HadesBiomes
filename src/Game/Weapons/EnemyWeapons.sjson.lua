@@ -43,22 +43,7 @@ local hadesWeaponsModifications = {
 		SelfVelocity = mod.NilValue,
 		SelfUpwardVelocity = mod.NilValue,
 	},
-	ChariotRam = {
-		Effect = {
-			-- The speedup during the ram - higher so it can't just be outsprinted
-			Modifier = 760,
-		},
-	},
-	ChariotRamElite = {
-		Effect = {
-			Modifier = 880,
-		},
-	},
-	ChariotRamSelfDestruct = {
-		Effect = {
-			Modifier = 680,
-		},
-	},
+	-- TODO: Rework same as for ChariotRam
 	TheseusChariotRam = {
 		Effect = {
 			Modifier = 760,

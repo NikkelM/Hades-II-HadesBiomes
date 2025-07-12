@@ -63,21 +63,13 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 				end
 			end
 			-- Adds the speedup during ram
-			if aiData.RamEffectName ~= nil and game.WeaponEffectData[aiData.RamEffectName] ~= nil then
-				local effectData = game.DeepCopyTable(game.WeaponEffectData[aiData.RamEffectName]) or {}
-				effectData.Id = enemy.ObjectId
-				effectData.DestinationId = enemy.ObjectId
-				ApplyEffect(effectData)
+			if aiData.RamEffectProperties ~= nil and aiData.RamEffectResetProperties ~= nil then
+				SetUnitProperty({
+					DestinationId = enemy.ObjectId,
+					Value = aiData.RamEffectProperties.Value,
+					Property = aiData.RamEffectProperties.Property,
+				})
 			end
-			-- Adds the speedup during ram
-			ApplyEffectFromWeapon({
-				Id = enemy.ObjectId,
-				DestinationId = enemy.ObjectId,
-				AutoEquip = true,
-				WeaponName = aiData.RamWeaponName,
-				EffectName = aiData.RamEffectName,
-				Duration = aiData.RamTimeout
-			})
 			if aiData.FireSound ~= nil then
 				PlaySound({ Name = aiData.FireSound, Id = enemy.ObjectId })
 			end
@@ -94,9 +86,20 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 			aiData.AttackDistance = aiData.RamDistance
 			aiData.MoveWithinRangeTimeout = aiData.RamTimeout
 			local moveSuccess = game.MoveWithinRange(enemy, aiData.TargetId, aiData)
+			if aiData.RamEffectProperties ~= nil and aiData.RamEffectResetProperties ~= nil then
+				SetUnitProperty({
+					DestinationId = enemy.ObjectId,
+					Value = aiData.RamEffectResetProperties.Value,
+					Property = aiData.RamEffectResetProperties.Property,
+				})
+			end
 			-- Added: Fires the weapon after a successful ram
 			if moveSuccess ~= false then
 				game.AIFireProjectile(enemy, aiData)
+				-- To destroy the ChariotSuicide
+				if aiData.OnFiredFunctionName ~= nil then
+					game.CallFunctionName(aiData.OnFiredFunctionName, enemy, aiData)
+				end
 			end
 			Stop({ Id = enemy.ObjectId })
 			if aiData.PostAttackAnimation ~= nil then
