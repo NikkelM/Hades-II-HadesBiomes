@@ -49,6 +49,9 @@ local roomModifications = {
 
 		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
 		ShrinePointDoorRequirements = { Skip = true },
+
+		LocationAnimName = "LocationBackingIrisChaosIn",
+		LocationAnimOutName = "LocationBackingIrisChaosOut",
 	},
 
 	-- OPENING ROOMS

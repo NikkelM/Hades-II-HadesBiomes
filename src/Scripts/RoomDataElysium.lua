@@ -41,6 +41,9 @@ local roomModifications = {
 		TimeChallengeEncounterOptions = { "TimeChallengeElysium" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeElysium" },
 		EliteChallengeEncounterOptions = { "EliteChallengeElysium" },
+
+		LocationAnimName = "LocationBackingIrisChaosIn",
+		LocationAnimOutName = "LocationBackingIrisChaosOut",
 	},
 
 	-- OPENING ROOMS

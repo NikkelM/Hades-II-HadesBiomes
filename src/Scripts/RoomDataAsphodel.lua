@@ -40,6 +40,9 @@ local roomModifications = {
 		TimeChallengeEncounterOptions = { "TimeChallengeAsphodel" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeAsphodel" },
 		EliteChallengeEncounterOptions = { "EliteChallengeAsphodel" },
+
+		LocationAnimName = "LocationBackingIrisChaosIn",
+		LocationAnimOutName = "LocationBackingIrisChaosOut",
 	},
 
 	-- OPENING ROOMS
