@@ -799,7 +799,6 @@ local enemyModifications = {
 			AttackDistanceBuffer = 0,
 			StopMoveWithinRange = false,
 			RamEffectName = mod.NilValue,
-			-- TODO: What about the speedShrine modifier - is it done before or after?
 			RamEffectProperties = {
 				Property = "Speed",
 				Value = 950,
@@ -808,7 +807,7 @@ local enemyModifications = {
 				Property = "Speed",
 				Value = 300,
 			},
-			-- Setup is the when it can start ramming instead of moving
+			-- SetupDistance is when it can start ramming instead of moving
 			SetupDistance = 500,
 			SetupTimeout = 7.0,
 			-- Longer time ramming before timing out and stopping

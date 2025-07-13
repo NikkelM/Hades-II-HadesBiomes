@@ -1,6 +1,6 @@
 -- Adds enemy sets for the new regions
 local additionalEnemySets = {
-	-- TARTARUS
+	-- #region TARTARUS
 	EnemiesBiome1 = {
 		"Swarmer",
 		"SwarmerElite",
@@ -68,7 +68,9 @@ local additionalEnemySets = {
 		"BloodlessSelfDestructElite",
 		"BloodlessPitcherElite",
 	},
-	-- ASPHODEL
+	-- #endregion
+
+	-- #region ASPHODEL
 	EnemiesBiome2 = {
 		"CrusherUnit",
 		"LightSpawnerElite",
@@ -211,7 +213,9 @@ local additionalEnemySets = {
 		"HydraHeadSlammer",
 		"HydraHeadWavemaker",
 	},
-	-- ELYSIUM
+	-- #endregion
+
+	-- #region ELYSIUM
 	EnemiesBiome3 = {
 		"ShadeSpearUnit",
 		"ShadeSpearUnitElite",
@@ -267,10 +271,16 @@ local additionalEnemySets = {
 		"SplitShotUnitElite",
 		"ChariotElite",
 	},
-	-- STYX
+	-- #endregion
+
+	-- #region STYX
+	-- #endregion
+
+	-- #region ENVIRONMENT
 	-- Decides which traps can be added to rooms that randomize traps
 	TrapsBiome1 = { "SpikeTrap", },
 	TrapsBiome2 = { "GasTrapPassive", },
+	-- #endregion
 }
 
 table.insert(game.EnemySets.GenericEliteAttributes, "ModsNikkelMHadesBiomesStasisDeath")
