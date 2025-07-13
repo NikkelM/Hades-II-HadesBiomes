@@ -613,6 +613,7 @@ local enemyModifications = {
 	SpreadShotUnitMiniboss = {
 		-- In Hades II, projectiles can't be destroyed by attacks by default
 		-- So we change the difficulty introduced by the shrine to have all four enemies attack at once, as the invulnerable projectiles are actually easier to dodge than the normal attacks
+		-- We also remove the ShrineWeaponOptionsOverwrite, so we don't use the invulnerable projectiles at all
 		-- As the default difficulty increases, the cooldowns for the attacks are increased slightly in the WeaponData
 		-- The typo is intentional
 		ShrineDefualtAIDataOverwrites = {

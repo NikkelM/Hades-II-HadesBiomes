@@ -411,6 +411,7 @@ local weaponModifications = {
 		-- Fixing the animations and increasing the cooldown to scale with difficulty of not being able to destroy projectiles
 		-- Decreasing cooldown again if the shrine upgrade is active, to increase difficulty
 		AIData = {
+			ProjectileName = "SpreadShotWeapon",
 			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
 			PreAttackWaitForAnimation = true,
 			PostAttackCooldown = mod.NilValue,
@@ -426,6 +427,7 @@ local weaponModifications = {
 	},
 	SpreadShotMinibossCone = {
 		AIData = {
+			ProjectileName = "SpreadShotWeapon",
 			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
 			PreAttackWaitForAnimation = true,
 			PostAttackCooldown = mod.NilValue,
@@ -441,6 +443,7 @@ local weaponModifications = {
 	},
 	SpreadShotMinibossCross = {
 		AIData = {
+			ProjectileName = "SpreadShotWeapon",
 			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
 			PreAttackWaitForAnimation = true,
 			PostAttackCooldown = mod.NilValue,
