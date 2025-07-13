@@ -655,6 +655,23 @@ local weaponModifications = {
 
 	-- #region STYX
 	-- #endregion
+
+	-- #region ENVIRONMENT
+	BlastCubeExplosionElysium = {
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "BlastCubeExplosionElysium",
+			FireProjectileAtSelf = true,
+			FireFromTarget = true,
+			PreAttackDuration = 0.0,
+			FireDuration = 0.0,
+			PostAttackDuration = 0.0,
+			MoveWithinRange = false,
+			AttackDistance = 9999999,
+			PostAttackAnimation = "BlastCubeFusedRegeneratingExplode",
+		},
+	},
+	-- #endregion
 }
 
 local renamedWeaponModifications = {}

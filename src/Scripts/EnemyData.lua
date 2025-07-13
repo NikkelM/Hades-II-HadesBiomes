@@ -960,6 +960,10 @@ local enemyModifications = {
 			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
 		},
 	},
+	BlastCubeFusedRegenerating = {
+		OnDeathFireWeapons = { "BlastCubeExplosionElysium" },
+		FuseWarningProjectileName = "ModsNikkelMHadesBiomesBlastWarningDecalElysium"
+	},
 	-- #endregion
 }
 

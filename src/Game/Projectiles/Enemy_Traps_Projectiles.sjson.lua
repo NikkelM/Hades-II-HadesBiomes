@@ -15,6 +15,11 @@ local addProjectiles = {
 		DetonateGraphic = "RadialNovaRubbleLarge",
 		DamageRadius = 450,
 	},
+	{
+		-- Overwrites the DamageRadius of the WarningDecal, doesn't change anything else
+		Name = "ModsNikkelMHadesBiomesBlastWarningDecalElysium",
+		DamageRadius = 450.0,
+	},
 }
 
 sjson.hook(hadesTwoProjectilesFile, function(data)
