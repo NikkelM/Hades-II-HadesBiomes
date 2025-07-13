@@ -620,6 +620,9 @@ local enemyModifications = {
 		},
 		ShrineWeaponOptionsOverwrite = mod.NilValue,
 	},
+	HitAndRunUnit = {
+		BlockRaiseDead = true,
+	},
 	-- #endregion
 	-- #region ASPHODEL - Bosses
 	HydraHeadImmortal = {
