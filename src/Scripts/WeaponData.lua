@@ -209,6 +209,18 @@ local weaponModifications = {
 		},
 	},
 	-- #endregion
+	-- #region TARTARUS - Minibosses - WretchAssassin
+	WretchAssassinStab = {
+		AIData = {
+			-- Fixed to use the Hades II teleportation
+			PreAttackTeleport = true,
+			TeleportToTarget = true,
+			TeleportBehindTarget = true,
+			PostTeleportAngleTowardTarget = true,
+			PreAttackFunctionName = mod.NilValue,
+		},
+	},
+	-- #endregion
 	-- #endregion
 	-- #region TARTARUS - Megaera
 	HarpyLunge = {

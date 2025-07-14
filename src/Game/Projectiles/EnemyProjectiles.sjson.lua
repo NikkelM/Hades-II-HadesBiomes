@@ -86,6 +86,11 @@ local hadesProjectilesModifications = {
 		DieWithOwner = true,
 	},
 	-- #endregion
+	-- #region TARTARUS - Minibosses
+	WretchAssassinRanged = {
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
+	},
+	-- #endregion
 	-- #region TARTARUS - Harpies
 	HarpyBeam = {
 		Speed = 700,
