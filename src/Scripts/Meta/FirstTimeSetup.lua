@@ -163,7 +163,13 @@ local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 	end
 
 	for _, addition in ipairs(additions) do
-		table.insert(filteredAnimations, addition)
+		if addition.InheritFrom then
+			-- Add it at the end, as it needs to inherit from something else
+			table.insert(filteredAnimations, addition)
+		else
+			-- At to the beginning of the list in case we need to inherit from the addition
+			table.insert(filteredAnimations, 1, addition)
+		end
 	end
 
 	animationsTable.Animations = filteredAnimations

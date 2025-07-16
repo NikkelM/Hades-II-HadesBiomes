@@ -3,6 +3,76 @@
 -- The destination filename, used in a couple of places in the mod, therefore defined centrally
 mod.HadesGUIAnimationsDestinationFilename = "Game\\Animations\\Z_ModsNikkelmHadesBiomesGUIAnimations.sjson"
 
+mod.HadesGUIAnimationAdditions = {
+	-- TARTARUS
+	{
+		-- The original from Hades, as we cannot InheritFrom, as that would place the animation at the end of the file, and we need something else to inherit from it
+		Name = "ModsNikkelMHadesBiomesLocationTextBGOut",
+		FilePath = "GUI\\UnlockTextBG\\LocationTextBG",
+		Type = "Slide",
+		EndFrame = 44,
+		NumFrames = 44,
+		PlaySpeed = 30.0,
+		StartFrame = 1,
+		SortMode = "Id",
+		Material = "Unlit",
+		Sound = "/SFX/Menu Sounds/RelationshipPanelOut",
+		Slides = {
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 0 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+			{ DurationFrames = 2 },
+		},
+	},
+}
+
+mod.HadesGUIAnimationModifications = {
+	-- TARTARUS
+	LocationTextBGVictoryOut = {
+		InheritFrom = "ModsNikkelMHadesBiomesLocationTextBGOut",
+	},
+}
+
 -- Duplicate GUI animations, saved here due to the animations not being hooked, but copied directly
 mod.HadesGUIAnimationDuplicates = {
 	["NewTraitHighlight"] = true,
