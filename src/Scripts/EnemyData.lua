@@ -581,9 +581,6 @@ local enemyModifications = {
 		},
 		PostAggroAI = "ModsNikkelMHadesBiomesSkyAttackerAI",
 	},
-	CrusherUnitElite = {
-		BlockAttributes = { "Blink", "Orbit", "Fog", "Frenzy", "ManaDrain", "Molten", "Unflinching", "Vacuuming", },
-	},
 	ShieldRanged = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
 		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
@@ -622,6 +619,10 @@ local enemyModifications = {
 		ShrineWeaponOptionsOverwrite = mod.NilValue,
 	},
 	HitAndRunUnit = {
+		BlockRaiseDead = true,
+	},
+	CrusherUnitElite = {
+		BlockAttributes = { "Blink", "Orbit", "Fog", "Frenzy", "ManaDrain", "Molten", "Unflinching", "Vacuuming", },
 		BlockRaiseDead = true,
 	},
 	-- #endregion
