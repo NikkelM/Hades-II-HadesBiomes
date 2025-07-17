@@ -52,9 +52,21 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 		end
 		if mod.HadesSjsonWeaponsTable[weaponName] and not weaponData.AIData.NoProjectile then
 			local sjsonWeaponData = mod.HadesSjsonWeaponsTable[weaponName]
+			local alternativeSjsonWeaponData = nil
+			-- If this weapon inherits from another, use it as an alternative base, if the existing sjsonWeaponData does not have the property
+			if mod.HadesSjsonWeaponsTable[weaponName].InheritFrom and mod.HadesSjsonWeaponsTable[weaponName].InheritFrom ~= "1_BasePlayerSlowWeapon" then
+				local inheritFrom = mod.HadesSjsonWeaponsTable[weaponName].InheritFrom
+				if mod.HadesSjsonWeaponsTable[inheritFrom] then
+					alternativeSjsonWeaponData = mod.HadesSjsonWeaponsTable[inheritFrom]
+				end
+			end
 			for key, value in pairs(SjsonToAIDataProperties) do
 				if sjsonWeaponData[key] and not weaponData.AIData[value] then
 					weaponData.AIData[value] = sjsonWeaponData[key]
+				else
+					if alternativeSjsonWeaponData and alternativeSjsonWeaponData[key] and not weaponData.AIData[value] then
+						weaponData.AIData[value] = alternativeSjsonWeaponData[key]
+					end
 				end
 			end
 		end
@@ -231,6 +243,7 @@ local weaponModifications = {
 	HarpyLightning = {
 		AIData = {
 			AttackSlotInterval = 0.01,
+			-- TODO: Try removing
 			ProjectileName = "HarpyLightning",
 		},
 	},
@@ -250,6 +263,7 @@ local weaponModifications = {
 	-- #region TARTARUS - Alecto
 	HarpyLungeAlecto = {
 		AIData = {
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			PreAttackStop = true,
 		},
 	},
