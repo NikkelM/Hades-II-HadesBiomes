@@ -263,7 +263,7 @@ function game.HarpyKillPresentation(unit, args)
 				MaxSpeed = 2000,
 				MinInterval = 0.03,
 				MaxInterval = 0.1,
-				GroupName =	"CrazyDeathBats"
+				GroupName = "CrazyDeathBats"
 			})
 	end
 
@@ -333,7 +333,6 @@ function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
 			enemy.HarpyBuildRageEarlyExit = true
 			StopFlashing({ Id = game.ScreenAnchors.BossRageFill })
 			game.wait(game.CalcEnemyWait(enemy, weaponAIData.EarlyBreakStunDuration), enemy.AIThreadName)
-			enemy.HarpyBuildRageEarlyExit = false
 			return
 		end
 
@@ -348,7 +347,6 @@ function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
 				SetAnimation({ Id = enemy.ObjectId, Name = weaponAIData.BuildRageEndAnimation })
 			end
 			game.wait(game.CalcEnemyWait(enemy, weaponAIData.BuildRageEndDuration), enemy.AIThreadName)
-			enemy.HarpyBuildRageEarlyExit = false
 			return
 		end
 		game.wait(game.CalcEnemyWait(enemy, weaponAIData.BuildRageTicksInterval), enemy.AIThreadName)
@@ -359,7 +357,6 @@ function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
 	end
 	StopFlashing({ Id = game.ScreenAnchors.BossRageFill })
 	game.wait(game.CalcEnemyWait(enemy, weaponAIData.BuildRageEndDuration), enemy.AIThreadName)
-	enemy.HarpyBuildRageEarlyExit = false
 end
 
 function game.BuildRageMeter(meterAmount, enemy)
@@ -685,8 +682,8 @@ function game.EnrageUnit(enemy, startDelay)
 	game.wait(enemy.EnragedDuration)
 
 	if enemy.PermanentEnraged then
-		local notifyName = enemy.ObjectId .. "PermanentEnraged"
-		NotifyOnAllDead({ Ids = { enemy.ObjectId }, Notify = notifyName })
+		local notifyName = "AllRequiredKillEnemiesDead"
+		-- NotifyOnAllDead({ Ids = { enemy.ObjectId }, Notify = notifyName })
 		game.waitUntil(notifyName)
 		AdjustColorGrading({ Name = "Off", Duration = 0.45 })
 	else
@@ -725,4 +722,9 @@ function game.SpawnSupportAI(enemy)
 	supportUnit.SupportAINames = enemy.SupportAINames
 	enemy.SupportAIUnitId = supportUnit.ObjectId
 	game.thread(game.SetupUnit, supportUnit, game.CurrentRun)
+end
+
+-- We need to reset this before the FireFunction, as the DumbFireAttack is called before it and would get cancelled otherwise
+function game.ModsNikkelMHadesBiomesHarpyBuildRageStart(enemy, aiData)
+	enemy.HarpyBuildRageEarlyExit = false
 end

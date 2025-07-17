@@ -23,6 +23,19 @@ hadesWeaponsTable.Weapons = mod.AddTableKeysSkipDupes(hadesTwoWeaponsTable.Weapo
 -- Hooking into the enemy file fails as the file size of the target is too small to insert the new data
 local hadesTwoPlayerWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\Weapons\\PlayerWeapons.sjson")
 
+local hadesWeaponAdditions = {
+	HarpyLungeAlectoRage = {
+		Name = "HarpyLungeAlectoRage",
+		InheritFrom = "HarpyLungeAlecto",
+	},
+	HarpyWhipArcRage = {
+		Name = "HarpyWhipArcRage",
+		InheritFrom = "HarpyWhipArc",
+	},
+}
+-- Add the added weapons
+mod.AddTableKeysSkipDupes(hadesWeaponsTable.Weapons, hadesWeaponAdditions, "Name")
+
 local hadesWeaponsModifications = {
 	-- #region TARTARUS
 	-- #endregion

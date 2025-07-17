@@ -53,11 +53,16 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 		if mod.HadesSjsonWeaponsTable[weaponName] and not weaponData.AIData.NoProjectile then
 			local sjsonWeaponData = mod.HadesSjsonWeaponsTable[weaponName]
 			local alternativeSjsonWeaponData = nil
+			local secondAlternativeSjsonWeaponData = nil
 			-- If this weapon inherits from another, use it as an alternative base, if the existing sjsonWeaponData does not have the property
 			if mod.HadesSjsonWeaponsTable[weaponName].InheritFrom and mod.HadesSjsonWeaponsTable[weaponName].InheritFrom ~= "1_BasePlayerSlowWeapon" then
 				local inheritFrom = mod.HadesSjsonWeaponsTable[weaponName].InheritFrom
 				if mod.HadesSjsonWeaponsTable[inheritFrom] then
 					alternativeSjsonWeaponData = mod.HadesSjsonWeaponsTable[inheritFrom]
+					-- If this also inherits, we add a second, final alternative
+					if alternativeSjsonWeaponData.InheritFrom and alternativeSjsonWeaponData.InheritFrom ~= "1_BasePlayerSlowWeapon" then
+						secondAlternativeSjsonWeaponData = mod.HadesSjsonWeaponsTable[alternativeSjsonWeaponData.InheritFrom]
+					end
 				end
 			end
 			for key, value in pairs(SjsonToAIDataProperties) do
@@ -66,6 +71,10 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 				else
 					if alternativeSjsonWeaponData and alternativeSjsonWeaponData[key] and not weaponData.AIData[value] then
 						weaponData.AIData[value] = alternativeSjsonWeaponData[key]
+					else
+						if secondAlternativeSjsonWeaponData and secondAlternativeSjsonWeaponData[key] and not weaponData.AIData[value] then
+							weaponData.AIData[value] = secondAlternativeSjsonWeaponData[key]
+						end
 					end
 				end
 			end
@@ -93,9 +102,26 @@ for oldName, newName in pairs(mod.EnemyWeaponMappings) do
 	mod.UpdateField(mod.HadesWeaponData, oldName, newName, { "InheritFrom" }, "WeaponData")
 end
 
+-- Replacements/Additions
 local weaponReplacements = {
 	-- #region TARTARUS
-	-- #region TARTARUS - TISIPHONE
+	-- #region TARTARUS - Alecto
+	HarpyLungeAlectoRage = {
+		InheritFrom = { "HarpyLungeAlecto" },
+		GenusName = "HarpyLungeAlecto",
+		AIData = {
+			FireDuration = 0.5,
+		},
+	},
+	HarpyWhipArcRage = {
+		InheritFrom = { "HarpyWhipArc" },
+		GenusName = "HarpyWhipArc",
+		AIData = {
+			FireDuration = 0.4,
+		},
+	},
+	-- #endregion
+	-- #region TARTARUS - Tisiphone
 	SummonTisiphoneBombingRun = {
 		AIData = {
 			AttackSlots = {
@@ -139,8 +165,6 @@ local weaponModifications = {
 			DeepInheritance = true,
 			ApplyEffectsOnWeaponFire = { WeaponEffectData.RootedAttacker, },
 			ProjectileName = "BloodMineToss",
-			Spread = 30,
-			FireFx = "BloodlessGrenadierPotDropDust",
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
 	},
@@ -203,9 +227,6 @@ local weaponModifications = {
 		AIData = {
 			DeepInheritance = true,
 			ProjectileName = "HeavyRangedWeaponSplitter",
-			NumProjectiles = 8,
-			ProjectileStartAngleOffset = 45,
-			ProjectileInterval = 0.25,
 			ProjectileAngleEvenlySpaced = true,
 		},
 	},
@@ -255,8 +276,6 @@ local weaponModifications = {
 	SummonMegaeraHarpyBeam = {
 		AIData = {
 			ProjectileName = "HarpyBeamSky",
-			NumProjectiles = 8,
-			ProjectileInterval = 0.3,
 		},
 	},
 	-- #endregion
@@ -265,6 +284,9 @@ local weaponModifications = {
 		AIData = {
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			PreAttackStop = true,
+			-- So the Rage version works correctly
+			DeepInheritance = true,
+			EnragedWeaponSwap = "HarpyLungeAlectoRage",
 		},
 	},
 	HarpyWhipArc = {
@@ -275,8 +297,11 @@ local weaponModifications = {
 	HarpyWhipRageBeam = {
 		AIData = {
 			ProjectileName = "HarpyBeamAlecto",
-			NumProjectiles = 5,
-			ProjectileAngleInterval = 30,
+		},
+	},
+	HarpyLungeRageBeamAlecto = {
+		AIData = {
+			ProjectileName = "HarpyBeamAlecto",
 		},
 	},
 	HarpyBuildRage = {
@@ -284,13 +309,14 @@ local weaponModifications = {
 			-- TODO: Check MaxActiveSpawns - was 1, in Hades 5
 			BlockAsFirstWeapon = true,
 		},
+		BlockInterrupt = true,
 		AIData = {
 			PreAttackStop = true,
 			PreAttackDuration = 1.5,
 			FireMoveTowardTarget = true,
 			StopMoveWithinRange = true,
 			MoveSuccessDistance = 25,
-			ProjectileName = "HarpyBuildRage",
+			FireStartFunctionName = "ModsNikkelMHadesBiomesHarpyBuildRageStart",
 			-- Zagreus voicelines
 			PreAttackVoiceLines = mod.NilValue,
 		},
@@ -304,6 +330,7 @@ local weaponModifications = {
 			MoveSuccessDistance = 25,
 			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightningAlecto",
+			RemoveFromGroups = { "GroundEnemies" },
 		},
 	},
 	HarpyLightningChaseRage = {
@@ -313,6 +340,7 @@ local weaponModifications = {
 			FireMoveTowardTarget = true,
 			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightningAlecto",
+			RemoveFromGroups = { "GroundEnemies" },
 		},
 	},
 	HarpyBuildRageBlast = {
@@ -321,7 +349,6 @@ local weaponModifications = {
 			EndOnFlagName = "HarpyBuildRageEarlyExit",
 			-- Increasing to match new animation lengths
 			FireTicks = 9,
-			NumProjectiles = 10,
 			ProjectileAngleEvenlySpaced = true,
 			ProjectileName = "HarpyBeamAlecto",
 		},
@@ -364,10 +391,8 @@ local weaponModifications = {
 	},
 	HarpyLungeSurgeBeam = {
 		AIData = {
+			-- ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			ProjectileName = "HarpyBeamTisiphone",
-			NumProjectiles = 2,
-			ProjectileAngleInterval = 180,
-			ProjectileStartAngleOffset = 90,
 		},
 	},
 	HarpySlowBeam360 = {
@@ -376,8 +401,6 @@ local weaponModifications = {
 		},
 		AIData = {
 			ProjectileName = "HarpySlowBeam",
-			NumProjectiles = 36,
-			ProjectileInterval = 0.0025,
 			ProjectileAngleEvenlySpaced = true,
 		},
 	},
@@ -788,11 +811,15 @@ local AIRequirements = {
 
 local SjsonToAIDataPropertyMappings = {
 	SelfVelocity = "FireSelfVelocity",
+	SelfUpwardVelocity = "FireSelfUpwardVelocity",
 	BarrelLength = "BarrelLength",
 	Spread = "Spread",
 	NumProjectiles = "NumProjectiles",
 	ProjectileInterval = "ProjectileInterval",
 	ProjectileAngleOffset = "ProjectileAngleInterval",
+	ProjectileStartAngleOffset = "ProjectileStartAngleOffset",
+	ProjectileStartAngleOffsetMin = "ProjectileStartAngleOffsetMin",
+	ProjectileStartAngleOffsetMax = "ProjectileStartAngleOffsetMax",
 	FireFx = "FireFx",
 }
 
