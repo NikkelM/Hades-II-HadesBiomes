@@ -793,6 +793,7 @@ local SjsonToAIDataPropertyMappings = {
 	NumProjectiles = "NumProjectiles",
 	ProjectileInterval = "ProjectileInterval",
 	ProjectileAngleOffset = "ProjectileAngleInterval",
+	FireFx = "FireFx",
 }
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponReplacements,
