@@ -116,6 +116,10 @@ function game.HarpyKillPresentation(unit, args)
 	-- StopSuper()
 	game.SetUnitInvulnerable(unit)
 
+	if game.ScreenAnchors.BossRageTitle ~= nil then
+		local ids = { game.ScreenAnchors.BossRageTitle, game.ScreenAnchors.BossRageBack, game.ScreenAnchors.BossRageFill }
+		Destroy({ Ids = ids })
+	end
 
 	if unit.DeathFx ~= nil then
 		CreateAnimation({ Name = unit.DeathFx, DestinationId = unit.ObjectId, Angle = args.ImpactAngle })
@@ -404,12 +408,14 @@ function game.CreateBossRageMeter(boss)
 	game.ScreenAnchors.BossRageTitle = CreateScreenObstacle({
 		Name = "BlankObstacle",
 		Group = "Combat_UI",
-		X = ScreenCenterX,
+		X = game.ScreenCenterX,
 		Y = 130,
 		Scale = 1.0
 	})
-	game.ScreenAnchors.BossRageBack = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 150, Scale = 0.5 })
-	game.ScreenAnchors.BossRageFill = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = ScreenCenterX, Y = 152, Scale = 0.5 })
+	game.ScreenAnchors.BossRageBack = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = game
+	.ScreenCenterX, Y = 150, Scale = 0.5 })
+	game.ScreenAnchors.BossRageFill = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = game
+	.ScreenCenterX, Y = 152, Scale = 0.5 })
 
 	CreateTextBox({
 		Id = game.ScreenAnchors.BossRageTitle,
