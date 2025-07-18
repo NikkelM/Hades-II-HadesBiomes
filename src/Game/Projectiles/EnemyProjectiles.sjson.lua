@@ -117,6 +117,12 @@ local hadesProjectilesModifications = {
 			[1] = { StartAnimation = "MelinoeGetHit", },
 		},
 	},
+	HarpyWhipArc = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
+	SummonMegaeraWhipWhirl = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
 	-- #endregion
 	-- #endregion
 

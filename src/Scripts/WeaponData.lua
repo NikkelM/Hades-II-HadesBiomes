@@ -264,13 +264,6 @@ local weaponModifications = {
 	HarpyLightning = {
 		AIData = {
 			AttackSlotInterval = 0.01,
-			-- TODO: Try removing
-			ProjectileName = "HarpyLightning",
-		},
-	},
-	SummonMegaeraWhipWhirl = {
-		AIData = {
-			ProjectileName = "SummonMegaeraWhipWhirl",
 		},
 	},
 	SummonMegaeraHarpyBeam = {
@@ -599,6 +592,7 @@ local weaponModifications = {
 	},
 	ShieldAlliesAoE = {
 		AIData = {
+			-- TODO: Try removing
 			ProjectileName = "ShieldAlliesAoE",
 		},
 	},
