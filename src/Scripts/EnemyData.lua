@@ -397,7 +397,12 @@ local enemyModifications = {
 		InvulnerableFx = "Invincibubble",
 		RunHistoryKilledByName = "NPC_FurySister_01",
 	},
+	Harpy2 = {
+		-- Gets overwritten by the Harpy value if not set
+		RunHistoryKilledByName = "Harpy2",
+	},
 	Harpy3 = {
+		RunHistoryKilledByName = "Harpy3",
 		BossPresentationTextLineSets = {
 			Fury3Encounter10 = {
 				EndVoiceLines = {
