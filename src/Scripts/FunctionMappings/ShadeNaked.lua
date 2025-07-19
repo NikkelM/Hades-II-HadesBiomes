@@ -22,6 +22,10 @@ function game.PickupAI(enemy, currentRun)
 end
 
 function game.ModsNikkelMHadesBiomesShadeNakedPostActivate(source, args)
+	-- If the enemy spawned normally (in the Butterfly miniboss chamber), we don't want to apply the force
+	if source.UseActivatePresentation then
+		return
+	end
 	local angle = GetAngleBetween({ DestinationId = source.ObjectId, Id = game.CurrentRun.Hero.ObjectId }) +
 			game.RandomFloat(args.AngleOffsetMin, args.AngleOffsetMax)
 	local force = game.RandomFloat(args.ForceMin, args.ForceMax)

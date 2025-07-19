@@ -169,6 +169,14 @@ local weaponReplacements = {
 	},
 	-- #endregion
 	-- #endregion
+
+	-- #region ELYSIUM
+	-- #region Minibosses
+	FlurrySpawnerWeaponElite = {
+		InheritFrom = { "FlurrySpawnerWeapon" },
+	},
+	-- #endregion
+	-- #endregion
 }
 
 -- Modify or add weapons

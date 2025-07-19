@@ -56,8 +56,9 @@ local roomModifications = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
 		},
-		EntranceDirection = "Right",
-		FlipHorizontalChance = 0,
+		EntranceDirection = "LeftRight",
+		StrictLeftRight = true,
+		FlipHorizontalChance = 0.0,
 		ThreadedEvents = {
 			[1] = { Args = { AnimationName = "LocationBackingIrisChaosIn", AnimationOutName = "LocationBackingIrisChaosOut" }, },
 		},

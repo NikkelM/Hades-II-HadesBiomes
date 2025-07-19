@@ -10,9 +10,10 @@ end)
 
 modutil.mod.Path.Wrap("Damage", function(base, victim, triggerArgs)
 	-- Ignore the first damage occurrence if applicable
-	-- Currently used for e.g. the ShadeNaked, which would be damaged when spawning for some reason
+	-- Currently used for the ShadeNaked, which would be damaged when spawning for some reason
+	-- If the ShadeNaked spawned normally (in the Butterfly miniboss chamber), we don't want to ignore the first damage
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		if victim.ModsNikkelMHadesBiomesIgnoreFirstDamage then
+		if victim.ModsNikkelMHadesBiomesIgnoreFirstDamage and not victim.UseActivatePresentation then
 			victim.ModsNikkelMHadesBiomesIgnoreFirstDamage = false
 			return
 		end
