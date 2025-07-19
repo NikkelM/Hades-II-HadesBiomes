@@ -703,7 +703,7 @@ local weaponModifications = {
 	},
 	ShieldAlliesAoE = {
 		AIData = {
-			-- TODO: Try removing
+			-- Don't remove this - doesn't work without, even though it's the same name
 			ProjectileName = "ShieldAlliesAoE",
 		},
 	},
