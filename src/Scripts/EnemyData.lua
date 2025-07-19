@@ -867,6 +867,12 @@ local enemyModifications = {
 		WeaponOptions = { "ChariotRamSelfDestruct" },
 	},
 	-- #endregion
+	-- #region ELYSIUM - Minibosses
+	FlurrySpawnerElite = {
+		-- The dash weapon does not work in Hades II, alternative difficulty was added through more enemies
+		ShrineWeaponOptionsOverwrite = mod.NilValue,
+	},
+	-- #endregion
 	-- #region ELYSIUM - Bosses
 	Minotaur = {
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",

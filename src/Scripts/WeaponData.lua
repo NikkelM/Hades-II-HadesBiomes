@@ -935,6 +935,7 @@ local SjsonToAIDataPropertyMappings = {
 	ProjectileStartAngleOffsetMin = "ProjectileStartAngleOffsetMin",
 	ProjectileStartAngleOffsetMax = "ProjectileStartAngleOffsetMax",
 	FireFx = "FireFx",
+	UseTargetAngle = "UseTargetAngle",
 }
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponReplacements,

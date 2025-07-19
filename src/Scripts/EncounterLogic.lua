@@ -9,3 +9,15 @@ function game.ModsNikkelMHadesBiomesRememberHydraSpawnpoint(encounter, args)
 		end
 	end
 end
+
+modutil.mod.Path.Wrap("CalculateActiveEnemyCap", function(base, currentRun, currentRoom, currentEncounter)
+	local enemyCap = base(currentRun, currentRoom, currentEncounter)
+
+	if currentEncounter.EnemyCountShrineModifierName then
+		local modifierName = currentEncounter.EnemyCountShrineModifierName
+		enemyCap = math.floor(enemyCap +
+			(GetNumShrineUpgrades(modifierName) * currentEncounter.EnemyCountShineModifierAmount))
+	end
+
+	return enemyCap
+end)
