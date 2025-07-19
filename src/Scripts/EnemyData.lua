@@ -77,10 +77,13 @@ local function applyModificationsAndInheritEnemyData(base, modifications, replac
 
 		-- Increase health and armour for slightly increased difficulty
 		if enemyData.MaxHealth then
-			enemyData.MaxHealth = enemyData.MaxHealth * 1.35
+			enemyData.MaxHealth = enemyData.MaxHealth * 1.5
+		end
+		if enemyData.ShrineDataOverwrites and enemyData.ShrineDataOverwrites.MaxHealth then
+			enemyData.ShrineDataOverwrites.MaxHealth = enemyData.ShrineDataOverwrites.MaxHealth * 1.5
 		end
 		if enemyData.HealthBuffer then
-			enemyData.HealthBuffer = enemyData.HealthBuffer * 1.2
+			enemyData.HealthBuffer = enemyData.HealthBuffer * 1.3
 		end
 
 		base[enemyName] = enemyData

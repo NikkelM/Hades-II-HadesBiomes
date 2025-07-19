@@ -72,8 +72,6 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 		unit.UseActivatePresentation = false
 	end
 
-	base(unit, currentRun, args)
-
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and unit.ModsNikkelMHadesBiomesIsModdedEnemy then
 		-- Overwrite weapon/AI data if necessary due to a vow
 		local shrineLevel = game.GetNumShrineUpgrades(unit.ShrineMetaUpgradeName)
@@ -91,6 +89,8 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 			unit.WeaponOptions = unit.ShrineWeaponOptionsOverwrite
 		end
 	end
+
+	base(unit, currentRun, args)
 end)
 
 modutil.mod.Path.Wrap("SetupAI", function(base, enemy, args)
