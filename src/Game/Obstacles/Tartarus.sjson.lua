@@ -74,6 +74,9 @@ local hadesTwoObstacleModifications = {
 	TartarusGable04 = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
+	TartarusPillarDecorative03 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
 }
 
 sjson.hook(hadesTwoTartarusObstacleFile, function(data)

@@ -17,8 +17,9 @@ function game.NikkelMHadesBiomesBossAIStageHandler(enemy, args)
 
 	if aiStage.UnequipWeapons ~= nil then
 		for k, weaponName in pairs(aiStage.UnequipWeapons) do
-			game.RemoveValue(enemy.WeaponOptions, weaponName)
-			UnequipWeapon({ Name = weaponName, DestinationId = enemy.ObjectId })
+			game.RemoveValueAndCollapse(enemy.WeaponOptions, weaponName)
+			-- This crashes the game for some reason
+			-- UnequipWeapon({ Name = weaponName, DestinationId = enemy.ObjectId })
 		end
 	end
 

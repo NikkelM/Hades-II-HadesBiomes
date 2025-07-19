@@ -113,15 +113,30 @@ local weaponReplacements = {
 			FireDuration = 0.5,
 		},
 	},
-	HarpyWhipArcRage = {
-		InheritFrom = { "HarpyWhipArc" },
-		GenusName = "HarpyWhipArc",
-		AIData = {
-			FireDuration = 0.4,
-		},
-	},
 	-- #endregion
 	-- #region TARTARUS - Tisiphone
+	HarpyLassoLungeEM = {
+		InheritFrom = { "HarpyLassoLunge" },
+		GenusName = "HarpyLassoLunge",
+		GameStateRequirements = {
+			{
+				FunctionName = "RequiredShrineLevel",
+				FunctionArgs =
+				{
+					ShrineUpgradeName = "BossDifficultyShrineUpgrade",
+					Comparison = ">=",
+					Value = 1,
+				},
+			},
+		},
+		AIData = {
+			ProjectileName = "HarpyLassoLunge",
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+			PostAttackDuration = 1.7,
+			-- Do the beam attack both before and after the lunge
+			PostAttackDumbFireWeapons = { "HarpyLungeSurgeBeam" },
+		},
+	},
 	SummonTisiphoneBombingRun = {
 		AIData = {
 			AttackSlots = {
@@ -274,6 +289,9 @@ local weaponModifications = {
 	-- #endregion
 	-- #region TARTARUS - Alecto
 	HarpyLungeAlecto = {
+		Requirements = {
+			ForceFirst = true,
+		},
 		AIData = {
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			PreAttackStop = true,
@@ -375,17 +393,74 @@ local weaponModifications = {
 		AIData = {
 			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightningTisiphone",
+			PreAttackAngleTowardTarget = true,
+			WaitForAngleTowardTarget = true,
+			AttackSlots = {
+				{ OffsetDistance = 300,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
+				{ OffsetDistance = 600,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
+				{ OffsetDistance = 900,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
+				{ OffsetDistance = 1200, OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
+				{ OffsetDistance = 1500, OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
+			},
 		},
 	},
 	HarpyWhipLasso = {
 		Requirements = {
 			ForceFirst = true,
 		},
+		AIData = {
+			ChainedWeaponOptions = { "HarpyLassoLunge", "HarpyLassoLungeEM" },
+			ChainedWeapon = mod.NilValue,
+		},
+	},
+	-- Chained from HarpyWhipLasso
+	HarpyLassoLunge = {
+		-- In the EM version, we use an alternative with an extra DumbFireAttack after the lunge
+		GameStateRequirements = {
+			{
+				FunctionName = "RequiredShrineLevel",
+				FunctionArgs =
+				{
+					ShrineUpgradeName = "BossDifficultyShrineUpgrade",
+					Comparison = "==",
+					Value = 0,
+				},
+			},
+		},
+		AIData = {
+			DeepInheritance = true,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+			PostAttackDuration = 1.0,
+		},
 	},
 	HarpyLungeSurgeBeam = {
 		AIData = {
-			-- ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			ProjectileName = "HarpyBeamTisiphone",
+			-- Alternative attack pattern (circular beams) instead of the original, as I could not get the tracking working on it
+			AttackSlots = {
+				{ AIDataOverrides = { FireProjectileAngleRelative = 9 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = -9 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = 27 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = -27 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = 45 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = -45 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = 63 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = -63 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = 81 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = -81 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = 99 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = -99 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = 117 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = -117 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = 135 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = -135 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = 153 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = -153 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = 171 } },
+				{ AIDataOverrides = { FireProjectileAngleRelative = -171 } },
+			},
+			FireTicks = 1,
+			NumProjectiles = 1,
 		},
 	},
 	HarpySlowBeam360 = {
@@ -396,11 +471,47 @@ local weaponModifications = {
 			ProjectileName = "HarpySlowBeam",
 			ProjectileAngleEvenlySpaced = true,
 		},
+		Sounds = {
+			-- Otherwise the sound is terribly loud and overlayed
+			FireSounds = {
+				{ Name = "/SFX/Enemy Sounds/Tisiphone/TisiphoneHarpySlowBeam", Cooldown = 0.15 },
+			},
+		},
 	},
 	HarpyLightningCardinal = {
 		AIData = {
 			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightningTisiphone",
+			AttackSlots = {
+				{ OffsetDistance = 300,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
+				{ OffsetDistance = 600,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
+				{ OffsetDistance = 900,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
+				{ OffsetDistance = 1200, OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
+				{ OffsetDistance = 300,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue, OffsetAngle = 90 },
+				{ OffsetDistance = 600,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue, OffsetAngle = 90 },
+				{ OffsetDistance = 900,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue, OffsetAngle = 90 },
+				{ OffsetDistance = 300,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue, OffsetAngle = 270 },
+				{ OffsetDistance = 600,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue, OffsetAngle = 270 },
+				{ OffsetDistance = 900,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue, OffsetAngle = 270 },
+			},
+		},
+	},
+	HarpyWhipCombo1 = {
+		Requirements = {
+			BlockAsFirstWeapon = true,
+		},
+		AIData = {
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+		},
+	},
+	HarpyWhipCombo2 = {
+		AIData = {
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+		},
+	},
+	HarpyWhipCombo3 = {
+		AIData = {
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 		},
 	},
 	SummonTisiphoneBombingRun = {
@@ -811,6 +922,7 @@ local SjsonToAIDataPropertyMappings = {
 	NumProjectiles = "NumProjectiles",
 	ProjectileInterval = "ProjectileInterval",
 	ProjectileAngleOffset = "ProjectileAngleInterval",
+	ProjectileAngleStartOffset = "ProjectileAngleStartOffset",
 	ProjectileStartAngleOffset = "ProjectileStartAngleOffset",
 	ProjectileStartAngleOffsetMin = "ProjectileStartAngleOffsetMin",
 	ProjectileStartAngleOffsetMax = "ProjectileStartAngleOffsetMax",

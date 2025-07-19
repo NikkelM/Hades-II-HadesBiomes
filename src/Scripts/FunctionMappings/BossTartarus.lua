@@ -412,10 +412,20 @@ function game.CreateBossRageMeter(boss)
 		Y = 130,
 		Scale = 1.0
 	})
-	game.ScreenAnchors.BossRageBack = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = game
-	.ScreenCenterX, Y = 150, Scale = 0.5 })
-	game.ScreenAnchors.BossRageFill = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = game
-	.ScreenCenterX, Y = 152, Scale = 0.5 })
+	game.ScreenAnchors.BossRageBack = CreateScreenObstacle({
+		Name = "BlankObstacle",
+		Group = "Combat_UI",
+		X = game.ScreenCenterX,
+		Y = 150,
+		Scale = 0.5
+	})
+	game.ScreenAnchors.BossRageFill = CreateScreenObstacle({
+		Name = "BlankObstacle",
+		Group = "Combat_UI",
+		X = game.ScreenCenterX,
+		Y = 152,
+		Scale = 0.5
+	})
 
 	CreateTextBox({
 		Id = game.ScreenAnchors.BossRageTitle,
@@ -623,10 +633,9 @@ function game.Harpy3MapRubbleFall()
 			Name = "BlankObstacle",
 			DestinationId = game.CurrentRun.Hero.ObjectId,
 			OffsetX = offsetX,
-			OffsetY =
-					offsetY
+			OffsetY = offsetY
 		})
-		FireWeaponFromUnit({ Weapon = "RubbleFall", Id = game.CurrentRun.Hero.ObjectId, DestinationId = targetId, FireFromTarget = true })
+		CreateProjectileFromUnit({ Name = "RubbleFall", Id = game.CurrentRun.Hero.ObjectId, DestinationId = targetId, FireFromTarget = true })
 		local rubbleWait = game.RandomFloat(0.06, 0.12)
 		game.wait(rubbleWait)
 	end

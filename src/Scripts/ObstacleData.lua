@@ -39,6 +39,22 @@ local obstacleModifications = {
 		DeathFx = "RubbleFall",
 		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
 	},
+	-- So they don't all immediately get destroyed in the fight with Tisiphone
+	TartarusPillarBase04 = {
+		ImpactReaction = {
+			RequireNotProjectileNames = { "HarpyBeamTisiphone" },
+		},
+	},
+	TartarusPillarBase04A = {
+		ImpactReaction = {
+			RequireNotProjectileNames = { "HarpyBeamTisiphone" },
+		},
+	},
+	TartarusPillarBase04B = {
+		ImpactReaction = {
+			RequireNotProjectileNames = { "HarpyBeamTisiphone" },
+		},
+	},
 	-- #endregion
 
 	-- #region ASPHODEL
