@@ -78,7 +78,7 @@ local obstacleModifications = {}
 -- Rename attached animations/Fx graphics
 for oldName, newName in pairs(mod.FxAnimationMappings) do
 	mod.UpdateField(hadesElysiumObstacleTable.Obstacles, oldName, newName, { "Thing", "Graphic" }, "Elysium.sjson")
-	mod.UpdateField(hadesElysiumObstacleTable.Obstacles, oldName, newName, { "Thing", "AtachedAnim" }, "Elysium.sjson")
+	mod.UpdateField(hadesElysiumObstacleTable.Obstacles, oldName, newName, { "Thing", "AttachedAnim" }, "Elysium.sjson")
 end
 
 mod.ApplyNestedSjsonModifications(hadesElysiumObstacleTable.Obstacles, obstacleModifications)

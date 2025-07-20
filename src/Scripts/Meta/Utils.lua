@@ -209,6 +209,9 @@ function mod.UpdateField(tableToModify, find, replaceWith, propertyPath, tableNa
 
 	local replaced = false
 	for name, data in pairs(tableToModify) do
+		if type(name) == "number" and data.Name ~= nil then
+			name = data.Name
+		end
 		local pathCopy = { table.unpack(propertyPath) }
 		data, replaced = updateField(data, pathCopy)
 		if replaced then

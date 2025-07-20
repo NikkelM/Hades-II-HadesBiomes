@@ -20,7 +20,7 @@ local obstacleModifications = {}
 -- Rename attached animations/Fx graphics
 for oldName, newName in pairs(mod.FxAnimationMappings) do
 	mod.UpdateField(hadesAsphodelObstacleTable.Obstacles, oldName, newName, { "Thing", "Graphic" }, "Asphodel.sjson")
-	mod.UpdateField(hadesAsphodelObstacleTable.Obstacles, oldName, newName, { "Thing", "AtachedAnim" }, "Asphodel.sjson")
+	mod.UpdateField(hadesAsphodelObstacleTable.Obstacles, oldName, newName, { "Thing", "AttachedAnim" }, "Asphodel.sjson")
 end
 
 mod.ApplyNestedSjsonModifications(hadesAsphodelObstacleTable.Obstacles, obstacleModifications)

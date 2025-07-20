@@ -232,14 +232,13 @@ for oldName, newName in pairs(mod.FxAnimationMappings) do
 end
 
 -- Rename keys in the modifications
-for _, projectileMod in pairs(hadesProjectilesModifications) do
-	for oldKey, newKey in pairs(projectileKeyReplacements) do
-		if projectileMod[oldKey] then
-			projectileMod[newKey] = projectileMod[oldKey]
-			projectileMod[oldKey] = nil
-		end
-	end
+for modName, projectileMod in pairs(hadesProjectilesModifications) do
+	mod.RenameKeys(projectileMod, projectileKeyReplacements, "hadesProjectilesModifications[" .. tostring(modName) .. "]")
 end
+
+-- Replace the ZagreusOnHitStun effect with HeroOnHitStun
+mod.UpdateField(hadesProjectilesTable.Projectiles, "ZagreusOnHitStun", "HeroOnHitStun", { "Effect", "Name" }, "EnemyProjectiles.sjson")
+mod.UpdateField(hadesProjectilesTable.Projectiles, "ZagreusOnHitStun", "HeroOnHitStun", { "Effects", "*", "Name" }, "EnemyProjectiles.sjson")
 
 -- Iterating through all projectiles
 for i = #hadesProjectilesTable.Projectiles, 1, -1 do
@@ -252,13 +251,8 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	end
 
 	-- Modifications that should be made to all projectiles
-	-- Rename keys
-	for oldKey, newKey in pairs(projectileKeyReplacements) do
-		if projectile[oldKey] then
-			projectile[newKey] = projectile[oldKey]
-			projectile[oldKey] = nil
-		end
-	end
+	mod.RenameKeys(projectile, projectileKeyReplacements, "hadesProjectilesTable.Projectiles[" .. tostring(i) .. "]")
+
 	-- This property was renamed in Hades II
 	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then
 		projectile.Effect.Name = "HeroOnHitStun"
