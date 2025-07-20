@@ -696,16 +696,6 @@ local weaponModifications = {
 			},
 		},
 	},
-	HydraDartVolleyLeft = {
-		AIData = {
-			ProjectileName = "HydraDart",
-		},
-	},
-	HydraDartVolleyRight = {
-		AIData = {
-			ProjectileName = "HydraDart",
-		},
-	},
 	-- #endregion
 	-- #endregion
 
