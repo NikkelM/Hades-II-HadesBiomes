@@ -138,6 +138,7 @@ local hadesProjectilesModifications = {
 	-- #region ASPHODEL - Hydra
 	HydraDart = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
+		DissipateFx = "EnemyProjectileDissipate",
 	},
 	HydraSummon = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
