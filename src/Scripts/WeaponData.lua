@@ -649,18 +649,61 @@ local weaponModifications = {
 	HydraSlam = {
 		AIData = {
 			ProjectileName = "HydraTouchdown",
-			PreAttackAnimation = "EnemyHydraSlamCharge",
+			PreFireAnimation = "EnemyHydraSlamCharge",
 			FireAnimation = mod.NilValue,
-			PreAttackWaitForAnimation = true,
+			-- Otherwise the projectile fires before the head touches down
+			PreFireDuration = 0.5,
 			PreAttackDuration = mod.NilValue,
 			PostAttackDuration = 0.5,
 			MoveWithinRange = false,
+		},
+	},
+	HydraSlamFrenzy = {
+		AIData = {
+			ProjectileName = "HydraTouchdown",
+			AIFireTicksCooldown = 0.1,
+		},
+	},
+	HydraSlamUntethered = {
+		AIData = {
+			ProjectileName = "HydraTouchdown",
 		},
 	},
 	HydraDart = {
 		AIData = {
 			AIMoveWithinRangeTimeout = 1.0,
 			PostAttackDuration = 0.5,
+		},
+	},
+	HydraDartVolley = {
+		AIData = {
+			ProjectileName = "HydraDart",
+			AttackSlots = {
+				-- TODO: InstantAngleTowardsTarget was removed
+				{ UseAttackerAngle = true, OffsetAngle = 0,   OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = 15,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = -15, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = 30,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = -30, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = 45,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = -45, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = 60,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = -60, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = 75,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = -75, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = 90,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = -90, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+			},
+		},
+	},
+	HydraDartVolleyLeft = {
+		AIData = {
+			ProjectileName = "HydraDart",
+		},
+	},
+	HydraDartVolleyRight = {
+		AIData = {
+			ProjectileName = "HydraDart",
 		},
 	},
 	-- #endregion

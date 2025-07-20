@@ -64,6 +64,20 @@ local function applyModificationsAndInheritEnemyData(base, modifications, replac
 		if enemyData.AIStages then
 			for _, aiStage in ipairs(enemyData.AIStages) do
 				aiStage.ThreadedEvents = { { FunctionName = "NikkelMHadesBiomesBossAIStageHandler", } }
+				-- For the Hydra, perform the mapping of the SelectPactLevelAIStage to EMStageDataOverrides
+				if aiStage.SelectPactLevelAIStage then
+					-- These are applied if the shrineLevel is not high enough/default behaviour for this AIStage
+					local defaultAIStageOverrides = enemyData[aiStage.SelectPactLevelAIStage].Default or {}
+					game.OverwriteTableKeys(aiStage, defaultAIStageOverrides)
+					-- These are applied if the shrineLevel is high enough, as defined by enemy.BossDifficultyShrineRequiredCount
+					-- Checking level 4 as all enemies with this property implement 4, but not necessarily the lower levels
+					local emStageDataOverrides = enemyData[aiStage.SelectPactLevelAIStage][4] or {}
+					-- Only add the property if it would not be empty
+					if game.TableLength(emStageDataOverrides) > 0 then
+						aiStage.EMStageDataOverrides = emStageDataOverrides
+					end
+					aiStage.SelectPactLevelAIStage = nil
+				end
 			end
 		end
 
@@ -643,6 +657,7 @@ local enemyModifications = {
 			},
 		},
 		InvulnerableFx = "HydraBubble",
+		BossDifficultyShrineRequiredCount = 2,
 		AIStages = {
 			[2] = {
 				SelectRandomAIStage = mod.NilValue,
@@ -653,18 +668,7 @@ local enemyModifications = {
 				RandomSpawnEncounter = { "HydraHeads5", "HydraHeads6" },
 			},
 		},
-		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
-		OnTouchdownFunctionArgs = {
-			ProjectileName = "HydraTouchdown",
-			-- Lining up with when the head actually touches the ground
-			Delay = 0.23,
-		},
-		-- SpawnEvents = {
-		-- 	{
-		-- 		FunctionName = "CreateTethers",
-		-- 		Threaded = true,
-		-- 	},
-		-- },
+		-- SpawnEvents = { { FunctionName = "CreateTethers", Threaded = true, }, },
 		-- While Tethers are broken - enemy returns to spawnpoint after attacking
 		DefaultAIData = {
 			MoveToId = 480903,
@@ -677,17 +681,7 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyHydraOnHit" },
 		ActivateFx = "nil",
 		ActivateAnimation = "HydraHeadLavaBubbles",
-		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
-		OnTouchdownFunctionArgs = {
-			ProjectileName = "HydraTouchdown",
-			Delay = 0.23,
-		},
-		-- SpawnEvents = {
-		-- 	{
-		-- 		FunctionName = "CreateTethers",
-		-- 		Threaded = true,
-		-- 	},
-		-- },
+		-- SpawnEvents = { { FunctionName = "CreateTethers", Threaded = true, }, },
 		-- While Tethers are broken - enemy returns to nearest spawnpoint after attacking
 		DefaultAIData = {
 			-- Is overwritten by the actual spawnpoint in ModsNikkelMHadesBiomesRememberHydraSpawnpoint
@@ -906,6 +900,9 @@ local enemyModifications = {
 	-- #region STYX - Minibosses
 	-- #endregion
 	-- #region STYX - Bosses
+	-- Hades = {
+	--   BossDifficultyShrineRequiredCount = 4,
+	-- },
 	-- #endregion
 	-- #endregion
 
@@ -1010,9 +1007,6 @@ local enemyKeyReplacements = {
 		AIFireTicksMax = "FireTicksMax",
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
-	},
-	AIStages = {
-		SelectPactLevelAIStage = "EMStageDataOverrides",
 	},
 }
 
