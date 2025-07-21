@@ -625,7 +625,7 @@ local weaponModifications = {
 	},
 	-- #endregion
 	-- #endregion
-	-- #region ASPHODEL - Hydra
+	-- #region ASPHODEL - Hydra (Basic)
 	HydraCrusher = {
 		GameStateRequirements = {
 			-- TODO: Is broken?
@@ -677,7 +677,8 @@ local weaponModifications = {
 	},
 	HydraDartVolley = {
 		AIData = {
-			ProjectileName = "HydraDart",
+			ProjectileName = "HydraDartVolley",
+			FireProjectileTowardTarget = true,
 			AttackSlots = {
 				-- InstantAngleTowardsTarget was removed
 				{ UseAttackerAngle = true, OffsetAngle = 0,   OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
@@ -685,15 +686,30 @@ local weaponModifications = {
 				{ UseAttackerAngle = true, OffsetAngle = -15, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
 				{ UseAttackerAngle = true, OffsetAngle = 30,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
 				{ UseAttackerAngle = true, OffsetAngle = -30, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 40,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -40, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 55,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -55, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 65,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -65, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = 45,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = -45, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = 60,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = -60, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
 				{ UseAttackerAngle = true, OffsetAngle = 75,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
 				{ UseAttackerAngle = true, OffsetAngle = -75, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = 90,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
+				{ UseAttackerAngle = true, OffsetAngle = -90, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
 			},
+		},
+	},
+	-- #endregion
+	-- #region ASPHODEL - Hydra (Orange/Lava)
+	HydraLavaSpitExterior = {
+		AIData = {
+			ProjectileName = "HydraLavaSpit",
+			-- Not the same as InstantAngleTowardsTarget (Hydra head will not move), but will make sure it's fired at the target instead of straight line ahead
+			FireProjectileTowardTarget = true,
+		},
+	},
+	HydraLavaSpitInterior = {
+		AIData = {
+			ProjectileName = "HydraLavaSpit",
+			FireProjectileTowardTarget = true,
 		},
 	},
 	-- #endregion

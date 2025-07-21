@@ -141,11 +141,6 @@ local hadesProjectilesModifications = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
 	},
-	HydraDartVolley = {
-		-- Making it a little more difficult
-		Speed = 1200,
-		MaxSpeed = 1400,
-	},
 	HydraSummon = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 		CheckObstacleImpact = true,
