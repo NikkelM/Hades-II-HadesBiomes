@@ -84,6 +84,17 @@ end
 
 -- Creates a new helpTextFile for all given languages with any IDs that do not exist in the Hades II help text files
 local function copyHadesHelpTexts()
+	-- Load the Aliases.sjson file to get required aliases that need to be added as new entries to each language
+	local aliasesFilePath = rom.path.combine(mod.hadesGameFolder, 'Content\\Game\\Text\\Aliases.sjson')
+	local aliasesDataRaw = mod.DecodeSjsonFile(aliasesFilePath)
+	local aliasesData = {}
+	-- There's one set for each language. All are the same, so we can just use the first
+	if aliasesDataRaw and aliasesDataRaw.HelpTexts and aliasesDataRaw.HelpTexts[1] and aliasesDataRaw.HelpTexts[1].Texts then
+		aliasesData = aliasesDataRaw.HelpTexts[1].Texts
+	else
+		mod.DebugPrint("No aliases found in Aliases.sjson, skipping alias copying. This should not happen - please verify the game files!", 2)
+	end
+
 	for _, language in ipairs(mod.HelpTextLanguages) do
 		mod.DebugPrint("Copying help text for language: " .. language, 4)
 
@@ -122,6 +133,15 @@ local function copyHadesHelpTexts()
 					for key, value in pairs(languageModifications[entry.Id]) do
 						entry[key] = value
 					end
+				end
+			end
+
+			-- Add aliases
+			for _, alias in ipairs(aliasesData) do
+				if not existingIds[alias.Id] then
+					table.insert(hadesHelpTextData.Texts, alias)
+					existingIds[alias.Id] = true
+				else
 				end
 			end
 
