@@ -139,6 +139,13 @@ end
 -- This is true for most traps
 mod.ModifyEnemyTrapData(mod.EnemyData)
 
+-- Required modifications to the Hydra boss AIStages, so we can DeepCopyTable them onto the different Hydra heads, so the SelectPactLevelAIStage modifications can be done later on
+local hydraHeadAIStages = game.DeepCopyTable(mod.EnemyData.HydraHeadImmortal.AIStages) or {}
+hydraHeadAIStages[2].SelectRandomAIStage = mod.NilValue
+hydraHeadAIStages[2].RandomSpawnEncounter = { "HydraHeads1", "HydraHeads3", "HydraHeads3" }
+hydraHeadAIStages[4].SelectRandomAIStage = mod.NilValue
+hydraHeadAIStages[4].RandomSpawnEncounter = { "HydraHeads5", "HydraHeads6" }
+
 -- Replaces the key with the new value instead of modifying
 -- This is done AFTER data inheritance is processed
 local enemyReplacements = {
@@ -208,6 +215,20 @@ local enemyReplacements = {
 	-- #region ASPHODEL - Hydra
 	HydraHeadImmortal = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+		AIStages = game.DeepCopyTable(hydraHeadAIStages),
+	},
+	-- These are all the same, but the SelectPactLevelAIStages are different and will be set accordingly in the modification handler
+	HydraHeadImmortalLavamaker = {
+		AIStages = game.DeepCopyTable(hydraHeadAIStages),
+	},
+	HydraHeadImmortalSummoner = {
+		AIStages = game.DeepCopyTable(hydraHeadAIStages),
+	},
+	HydraHeadImmortalSlammer = {
+		AIStages = game.DeepCopyTable(hydraHeadAIStages),
+	},
+	HydraHeadImmortalWavemaker = {
+		AIStages = game.DeepCopyTable(hydraHeadAIStages),
 	},
 	-- #endregion
 	-- #endregion
@@ -666,16 +687,6 @@ local enemyModifications = {
 		},
 		InvulnerableFx = "HydraBubble",
 		BossDifficultyShrineRequiredCount = 2,
-		AIStages = {
-			[2] = {
-				SelectRandomAIStage = mod.NilValue,
-				RandomSpawnEncounter = { "HydraHeads1", "HydraHeads3", "HydraHeads3" },
-			},
-			[4] = {
-				SelectRandomAIStage = mod.NilValue,
-				RandomSpawnEncounter = { "HydraHeads5", "HydraHeads6" },
-			},
-		},
 		-- SpawnEvents = { { FunctionName = "CreateTethers", Threaded = true, }, },
 		-- While Tethers are broken - enemy returns to spawnpoint after attacking
 		DefaultAIData = {
