@@ -130,6 +130,7 @@ local hadesProjectilesModifications = {
 	-- #region ASPHODEL - Regular
 	RangedBurrowerWeapon = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
+		DissipateFx = "EnemyProjectileDissipate",
 	},
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
@@ -139,6 +140,12 @@ local hadesProjectilesModifications = {
 	HydraDart = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
+	},
+	HydraDartVolley = {
+		-- Making it a little more difficult
+		Speed = 1000,
+		MaxSpeed = 1400,
+		MaxAdjustRate = 150,
 	},
 	HydraSummon = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
@@ -237,8 +244,10 @@ for modName, projectileMod in pairs(hadesProjectilesModifications) do
 end
 
 -- Replace the ZagreusOnHitStun effect with HeroOnHitStun
-mod.UpdateField(hadesProjectilesTable.Projectiles, "ZagreusOnHitStun", "HeroOnHitStun", { "Effect", "Name" }, "EnemyProjectiles.sjson")
-mod.UpdateField(hadesProjectilesTable.Projectiles, "ZagreusOnHitStun", "HeroOnHitStun", { "Effects", "*", "Name" }, "EnemyProjectiles.sjson")
+mod.UpdateField(hadesProjectilesTable.Projectiles, "ZagreusOnHitStun", "HeroOnHitStun", { "Effect", "Name" },
+	"EnemyProjectiles.sjson")
+mod.UpdateField(hadesProjectilesTable.Projectiles, "ZagreusOnHitStun", "HeroOnHitStun", { "Effects", "*", "Name" },
+	"EnemyProjectiles.sjson")
 
 -- Iterating through all projectiles
 for i = #hadesProjectilesTable.Projectiles, 1, -1 do

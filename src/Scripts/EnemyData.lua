@@ -646,6 +646,14 @@ local enemyModifications = {
 	CrusherUnitElite = {
 		BlockAttributes = { "Blink", "Orbit", "Fog", "Frenzy", "ManaDrain", "Molten", "Unflinching", "Vacuuming", },
 		BlockRaiseDead = true,
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "CrusherUnitTouchdown",
+			-- Also fire this projectile if the Vow of Shadows is active
+			ShrineProjectileName = "CrusherUnitSlamUpgraded",
+			ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",
+			ShrineMetaUpgradeRequiredLevel = 1,
+		},
 	},
 	-- #endregion
 	-- #region ASPHODEL - Bosses

@@ -26,6 +26,19 @@ function game.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
 		OffsetY = offset.Y,
 		Angle = angle,
 	})
+
+	-- For the CrusherUnitElite, if the Vow of Shadows is active
+	if args.ShrineProjectileName and game.GetNumShrineUpgrades(args.ShrineMetaUpgradeName) >= args.ShrineMetaUpgradeRequiredLevel then
+		CreateProjectileFromUnit({
+			Name = args.ShrineProjectileName,
+			Id = unit.ObjectId,
+			DestinationId = unit.ObjectId,
+			FireFromTarget = args.FireFromTarget or true,
+			OffsetX = offset.X,
+			OffsetY = offset.Y,
+			Angle = angle,
+		})
+	end
 end
 
 -- Same as in Hades, but:
