@@ -143,9 +143,8 @@ local hadesProjectilesModifications = {
 	},
 	HydraDartVolley = {
 		-- Making it a little more difficult
-		Speed = 1000,
+		Speed = 1200,
 		MaxSpeed = 1400,
-		MaxAdjustRate = 150,
 	},
 	HydraSummon = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
