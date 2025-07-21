@@ -21,7 +21,7 @@ end
 
 ---Prints a message to the console at the specified log level
 ---@param t any The message to print.
----@param level number|nil The verbosity level required to print the message. 0 = Off, 1 = Errors, 2 = Warnings, 3 = Info, 4 = Debug
+---@param level number|nil The verbosity level required to print the message. 0 = Off/Always printed, 1 = Errors, 2 = Warnings, 3 = Info, 4 = Debug
 function mod.DebugPrint(t, level)
 	level = level or 0
 	if config.logLevel >= level then

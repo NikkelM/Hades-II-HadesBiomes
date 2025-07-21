@@ -41,15 +41,69 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 		if not weaponData.AIData then
 			weaponData.AIData = { DeepInheritance = true }
 		end
-		-- If there is not already a projectile, the enemy should have a projectile, and a projectile with this name exists
-		if not weaponData.AIData.ProjectileName and not weaponData.AIData.NoProjectile then
-			if mod.HadesSjsonProjectilesTable[weaponName] then
-				weaponData.AIData.ProjectileName = weaponName
-				-- It's likely an elite version of a weapon for which the default projectile should be used
-			elseif mod.HadesSjsonWeaponsTable[weaponName] and mod.HadesSjsonWeaponsTable[weaponName].InheritFrom and mod.HadesSjsonWeaponsTable[weaponName].InheritFrom ~= "1_BasePlayerSlowWeapon" then
-				weaponData.AIData.ProjectileName = mod.HadesSjsonWeaponsTable[weaponName].InheritFrom
+
+		-- TODO: Remove print statements once the migration is complete
+		-- If the weapon defines a projectile to use, it might be different from the weapon name, so use it instead
+		local sjsonWeaponProjectileName = (mod.HadesSjsonWeaponsTable[weaponName] and
+			mod.HadesSjsonWeaponsTable[weaponName].Projectile) or weaponName
+		-- If there is not already a projectile, and if the enemy should have a projectile
+		if not weaponData.AIData.ProjectileName and not weaponData.AIData.NoProjectile and not game.Contains({ "nil", "null" }, sjsonWeaponProjectileName) then
+			-- If the projectile we are looking for exists already, use it directly
+			if mod.HadesSjsonProjectilesTable[sjsonWeaponProjectileName] then
+				weaponData.AIData.ProjectileName = sjsonWeaponProjectileName
+				print("Assigned the projectile: " .. sjsonWeaponProjectileName ..
+					" to weapon: " .. weaponName .. ", as it exists in the Hades SJSON projectiles table.")
+				-- Else, it's likely an elite version of a weapon for which the default projectile should be used
+				-- Look for the projectile used by the parent of the weapon
+			elseif mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName] then
+				-- If a proper parent weapon exists
+				if mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName].InheritFrom and not game.Contains({ "1_BasePlayerSlowWeapon", "1_BaseEnemyMagicWeapon", "1_BaseTrapWeapon" }, mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName].InheritFrom) then
+					-- If the parent weapon has a projectile defined, use it directly, else use the parent weapon's name as the projectile
+					local parentWeaponName = mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName].InheritFrom
+					if mod.HadesSjsonWeaponsTable[parentWeaponName] and mod.HadesSjsonWeaponsTable[parentWeaponName].Projectile then
+						if not game.Contains({ "nil", "null" }, mod.HadesSjsonWeaponsTable[parentWeaponName].Projectile) then
+							weaponData.AIData.ProjectileName = mod.HadesSjsonWeaponsTable[parentWeaponName].Projectile
+						end
+						print("Assigned the projectile: " .. mod.HadesSjsonWeaponsTable[parentWeaponName].Projectile ..
+							" to weapon: " .. weaponName .. ", as the parent weapon: " .. parentWeaponName ..
+							" defines a projectile.")
+					else
+						-- The parent weapon did not define a projectile, try to look one level deeper, if this weapon also inherits from another weapon
+						if mod.HadesSjsonWeaponsTable[parentWeaponName].InheritFrom and not game.Contains({ "1_BasePlayerSlowWeapon", "1_BaseEnemyMagicWeapon" }, mod.HadesSjsonWeaponsTable[parentWeaponName].InheritFrom) then
+							local grandParentWeaponName = mod.HadesSjsonWeaponsTable[parentWeaponName].InheritFrom
+							if mod.HadesSjsonWeaponsTable[grandParentWeaponName] and mod.HadesSjsonWeaponsTable[grandParentWeaponName].Projectile then
+								if not game.Contains({ "nil", "null" }, mod.HadesSjsonWeaponsTable[grandParentWeaponName].Projectile) then
+									weaponData.AIData.ProjectileName = mod.HadesSjsonWeaponsTable[grandParentWeaponName].Projectile
+								end
+								print("Assigned the projectile: " .. mod.HadesSjsonWeaponsTable[grandParentWeaponName].Projectile ..
+									" to weapon: " .. weaponName .. ", as the parent weapon: " .. parentWeaponName ..
+									" does not define a projectile, but the grandparent weapon: " .. grandParentWeaponName .. " does.")
+							else
+								if not game.Contains({ "nil", "null" }, grandParentWeaponName) then
+									weaponData.AIData.ProjectileName = grandParentWeaponName
+								end
+								print("Assigned the projectile: " .. grandParentWeaponName ..
+									" to weapon: " .. weaponName .. ", as the parent weapon: " .. parentWeaponName ..
+									" does not define a projectile, and the grandparent weapon: " .. grandParentWeaponName .. " also does not define a projectile.")
+							end
+						else
+							if not game.Contains({ "nil", "null" }, parentWeaponName) then
+								weaponData.AIData.ProjectileName = parentWeaponName
+							end
+							print("Assigned the projectile: " .. parentWeaponName .. " to weapon: " ..
+								weaponName .. ", as the parent weapon does not define a projectile, and there is no grandparent weapon.")
+						end
+					end
+				end
+				-- If the parent weapon does not define a projectile, and inherits from another weapon, use that weapon's projectile, or the weapon name itself
+			else
+				mod.DebugPrint("There is no projectile with the name of the weapon or projectile we are looking for: " ..
+					sjsonWeaponProjectileName .. ", for weapon: " .. weaponName ..
+					". It might be a player weapon, or the projectile exists in Hades II already.", 1)
 			end
 		end
+
+		-- Move properties that were in the sjson in Hades to the lua table in Hades II
 		if mod.HadesSjsonWeaponsTable[weaponName] and not weaponData.AIData.NoProjectile then
 			local sjsonWeaponData = mod.HadesSjsonWeaponsTable[weaponName]
 			local alternativeSjsonWeaponData = nil
@@ -130,7 +184,6 @@ local weaponReplacements = {
 			},
 		},
 		AIData = {
-			ProjectileName = "HarpyLassoLunge",
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			PostAttackDuration = 1.7,
 			-- Do the beam attack both before and after the lunge
@@ -196,7 +249,6 @@ local weaponModifications = {
 			ExpireProjectilesOnHitStun = true,
 			ExpireProjectilesOnFreeze = true,
 			ExpireProjectilesOnPolymorph = true,
-			ProjectileName = "HeavyRangedWeapon",
 		},
 	},
 	HadesLightSpawnerSpawnerWeapon = {
@@ -222,7 +274,6 @@ local weaponModifications = {
 	SwarmerMelee = {
 		AIData = {
 			DeepInheritance = true,
-			ProjectileName = "HadesSwarmerMelee",
 			PreAttackEndShake = true,
 			FireProjectileStartDelay = 0.03,
 			-- Modified, as the original 1800 is too short
@@ -249,7 +300,6 @@ local weaponModifications = {
 		InheritFrom = { "HeavyRangedWeapon", },
 		AIData = {
 			DeepInheritance = true,
-			ProjectileName = "HeavyRangedWeaponSplitter",
 			ProjectileAngleEvenlySpaced = true,
 		},
 	},
@@ -289,11 +339,6 @@ local weaponModifications = {
 			AttackSlotInterval = 0.01,
 		},
 	},
-	SummonMegaeraHarpyBeam = {
-		AIData = {
-			ProjectileName = "HarpyBeamSky",
-		},
-	},
 	-- #endregion
 	-- #region TARTARUS - Alecto
 	HarpyLungeAlecto = {
@@ -311,16 +356,6 @@ local weaponModifications = {
 	HarpyWhipArc = {
 		AIData = {
 			PreAttackStop = true,
-		},
-	},
-	HarpyWhipRageBeam = {
-		AIData = {
-			ProjectileName = "HarpyBeamAlecto",
-		},
-	},
-	HarpyLungeRageBeamAlecto = {
-		AIData = {
-			ProjectileName = "HarpyBeamAlecto",
 		},
 	},
 	HarpyBuildRage = {
@@ -348,7 +383,6 @@ local weaponModifications = {
 			StopMoveWithinRange = true,
 			MoveSuccessDistance = 25,
 			AttackSlotInterval = 0.01,
-			ProjectileName = "HarpyLightningAlecto",
 			RemoveFromGroups = { "GroundEnemies" },
 		},
 	},
@@ -358,7 +392,6 @@ local weaponModifications = {
 			PreAttackDuration = 0.0,
 			FireMoveTowardTarget = true,
 			AttackSlotInterval = 0.01,
-			ProjectileName = "HarpyLightningAlecto",
 			RemoveFromGroups = { "GroundEnemies" },
 		},
 	},
@@ -369,7 +402,6 @@ local weaponModifications = {
 			-- Increasing to match new animation lengths
 			FireTicks = 9,
 			ProjectileAngleEvenlySpaced = true,
-			ProjectileName = "HarpyBeamAlecto",
 		},
 	},
 	HarpyWhipShot = {
@@ -382,16 +414,6 @@ local weaponModifications = {
 			PreAttackStop = true,
 		},
 	},
-	SummonAlectoWhipShot = {
-		AIData = {
-			ProjectileName = "HarpyWhipShotSky",
-		},
-	},
-	SummonAlectoLightningChase = {
-		AIData = {
-			ProjectileName = "HarpyLightningAlecto",
-		},
-	},
 	-- #endregion
 	-- #region TARTARUS - Tisiphone
 	HarpyLightningLine = {
@@ -400,7 +422,6 @@ local weaponModifications = {
 		},
 		AIData = {
 			AttackSlotInterval = 0.01,
-			ProjectileName = "HarpyLightningTisiphone",
 			PreAttackAngleTowardTarget = true,
 			WaitForAngleTowardTarget = true,
 			AttackSlots = {
@@ -443,7 +464,6 @@ local weaponModifications = {
 	},
 	HarpyLungeSurgeBeam = {
 		AIData = {
-			ProjectileName = "HarpyBeamTisiphone",
 			-- Alternative attack pattern (circular beams) instead of the original, as I could not get the tracking working on it
 			AttackSlots = {
 				{ AIDataOverrides = { FireProjectileAngleRelative = 9 } },
@@ -476,7 +496,6 @@ local weaponModifications = {
 			BlockAsFirstWeapon = true,
 		},
 		AIData = {
-			ProjectileName = "HarpySlowBeam",
 			ProjectileAngleEvenlySpaced = true,
 		},
 		Sounds = {
@@ -489,7 +508,6 @@ local weaponModifications = {
 	HarpyLightningCardinal = {
 		AIData = {
 			AttackSlotInterval = 0.01,
-			ProjectileName = "HarpyLightningTisiphone",
 			AttackSlots = {
 				{ OffsetDistance = 300,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
 				{ OffsetDistance = 600,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
@@ -525,12 +543,6 @@ local weaponModifications = {
 	SummonTisiphoneBombingRun = {
 		AIData = {
 			AttackSlotInterval = 0.01,
-			ProjectileName = "HarpyLightningTisiphone",
-		},
-	},
-	SummonTisiphoneFog = {
-		AIData = {
-			ProjectileName = "TisiphoneFog",
 		},
 	},
 	-- #endregion
@@ -577,7 +589,6 @@ local weaponModifications = {
 		-- Fixing the animations and increasing the cooldown to scale with difficulty of not being able to destroy projectiles
 		-- Decreasing cooldown again if the shrine upgrade is active, to increase difficulty
 		AIData = {
-			ProjectileName = "SpreadShotWeapon",
 			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
 			PreAttackWaitForAnimation = true,
 			PostAttackCooldown = mod.NilValue,
@@ -593,7 +604,6 @@ local weaponModifications = {
 	},
 	SpreadShotMinibossCone = {
 		AIData = {
-			ProjectileName = "SpreadShotWeapon",
 			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
 			PreAttackWaitForAnimation = true,
 			PostAttackCooldown = mod.NilValue,
@@ -609,7 +619,6 @@ local weaponModifications = {
 	},
 	SpreadShotMinibossCross = {
 		AIData = {
-			ProjectileName = "SpreadShotWeapon",
 			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
 			PreAttackWaitForAnimation = true,
 			PostAttackCooldown = mod.NilValue,
@@ -648,6 +657,7 @@ local weaponModifications = {
 	},
 	HydraSlam = {
 		AIData = {
+			-- TODO: Test if this can be removed
 			ProjectileName = "HydraTouchdown",
 			PreFireAnimation = "EnemyHydraSlamCharge",
 			FireAnimation = mod.NilValue,
@@ -677,7 +687,6 @@ local weaponModifications = {
 	},
 	HydraDartVolley = {
 		AIData = {
-			ProjectileName = "HydraDartVolley",
 			FireProjectileTowardTarget = true,
 			AttackSlots = {
 				-- InstantAngleTowardsTarget was removed
@@ -701,14 +710,12 @@ local weaponModifications = {
 	-- #region ASPHODEL - Hydra (Orange/Lava)
 	HydraLavaSpitExterior = {
 		AIData = {
-			ProjectileName = "HydraLavaSpit",
 			-- Not the same as InstantAngleTowardsTarget (Hydra head will not move), but will make sure it's fired at the target instead of straight line ahead
 			FireProjectileTowardTarget = true,
 		},
 	},
 	HydraLavaSpitInterior = {
 		AIData = {
-			ProjectileName = "HydraLavaSpit",
 			FireProjectileTowardTarget = true,
 		},
 	},
@@ -727,11 +734,6 @@ local weaponModifications = {
 		AIData = {
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
-		},
-	},
-	ShadeSpearThrustSingle = {
-		AIData = {
-			ProjectileName = "ShadeSpearThrust",
 		},
 	},
 	ShadeSpearLeap = {
@@ -850,6 +852,7 @@ local weaponModifications = {
 			-- },
 			-- PostAttackResetUnitProperties = true,
 			PostAttackAnimation = "MinotaurBullRush_PreStrike",
+			-- TODO: Check if needed - related to #139?
 			ProjectileName = "MinotaurBullRushRam",
 			RamWeaponName = "MinotaurBullRush",
 			-- TODO: Doesn't yet work correctly - gets applied erratically, removed too soon or too late
@@ -886,7 +889,6 @@ local weaponModifications = {
 	BlastCubeExplosionElysium = {
 		AIData = {
 			DeepInheritance = true,
-			ProjectileName = "BlastCubeExplosionElysium",
 			FireProjectileAtSelf = true,
 			FireFromTarget = true,
 			PreAttackDuration = 0.0,
