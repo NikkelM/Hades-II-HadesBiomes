@@ -711,10 +711,19 @@ local weaponModifications = {
 	},
 	-- #endregion
 	-- #region ASPHODEL - Hydra (Green/Summoner)
+	HydraSummon = {
+		AIData = {
+			PreAttackDuration = 0.2,
+		},
+	},
+	HydraSummon2 = {
+		AIData = {
+			PreAttackDuration = 0.2,
+		},
+	},
 	HydraSummonSpread = {
 		AIData = {
 			PreAttackDuration = 0.2,
-			-- Not the same as InstantAngleTowardsTarget (Hydra head will not move), but will make sure it's fired at the target instead of straight line ahead
 			FireProjectileTowardTarget = true,
 		},
 	},
