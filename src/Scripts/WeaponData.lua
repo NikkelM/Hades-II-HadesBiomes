@@ -45,6 +45,8 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 		-- If the weapon defines a projectile to use, it might be different from the weapon name, so use it instead
 		local sjsonWeaponProjectileName = (mod.HadesSjsonWeaponsTable[weaponName] and
 			mod.HadesSjsonWeaponsTable[weaponName].Projectile) or weaponName
+		local parentWeaponName = nil
+		local grandParentWeaponName = nil
 		-- If there is not already a projectile, and if the enemy should have a projectile, and the projectile is not explicitly nil
 		if not weaponData.AIData.ProjectileName and not weaponData.AIData.NoProjectile and not game.Contains({ "nil", "null" }, sjsonWeaponProjectileName) then
 			-- If the projectile we are looking for exists already, use it directly
@@ -54,7 +56,7 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 			elseif mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName] then
 				-- If a proper parent weapon exists
 				if mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName].InheritFrom and not game.Contains({ "1_BasePlayerSlowWeapon", "1_BaseEnemyMagicWeapon", "1_BaseTrapWeapon" }, mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName].InheritFrom) then
-					local parentWeaponName = mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName].InheritFrom
+					parentWeaponName = mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName].InheritFrom
 					-- If the parent weapon has a projectile defined, use it directly
 					if mod.HadesSjsonWeaponsTable[parentWeaponName] and mod.HadesSjsonWeaponsTable[parentWeaponName].Projectile then
 						if not game.Contains({ "nil", "null" }, mod.HadesSjsonWeaponsTable[parentWeaponName].Projectile) then
@@ -63,7 +65,7 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 					else
 						-- The parent weapon did not define a projectile, try to look one level deeper, if this weapon also inherits from another weapon
 						if mod.HadesSjsonWeaponsTable[parentWeaponName].InheritFrom and not game.Contains({ "1_BasePlayerSlowWeapon", "1_BaseEnemyMagicWeapon", "1_BaseTrapWeapon" }, mod.HadesSjsonWeaponsTable[parentWeaponName].InheritFrom) then
-							local grandParentWeaponName = mod.HadesSjsonWeaponsTable[parentWeaponName].InheritFrom
+							grandParentWeaponName = mod.HadesSjsonWeaponsTable[parentWeaponName].InheritFrom
 							-- If the grandparent weapon has a projectile defined, use it directly
 							if mod.HadesSjsonWeaponsTable[grandParentWeaponName] and mod.HadesSjsonWeaponsTable[grandParentWeaponName].Projectile then
 								if not game.Contains({ "nil", "null" }, mod.HadesSjsonWeaponsTable[grandParentWeaponName].Projectile) then
@@ -113,6 +115,26 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 							weaponData.AIData[value] = secondAlternativeSjsonWeaponData[key]
 						end
 					end
+				end
+			end
+		end
+
+		-- Assign FireSounds if none exist
+		if not weaponData.Sounds or not weaponData.Sounds.FireSounds then
+			weaponData.Sounds = weaponData.Sounds or {}
+			weaponData.Sounds.FireSounds = weaponData.Sounds.FireSounds or {}
+			if mod.HadesSjsonWeaponsTable[weaponName] and mod.HadesSjsonWeaponsTable[weaponName].FireSound then
+				if mod.HadesSjsonWeaponsTable[weaponName].FireSound ~= "null" then
+					table.insert(weaponData.Sounds.FireSounds, { Name = mod.HadesSjsonWeaponsTable[weaponName].FireSound })
+				end
+			elseif parentWeaponName and mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound then
+				if mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound ~= "null" then
+					table.insert(weaponData.Sounds.FireSounds, { Name = mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound })
+				end
+			elseif grandParentWeaponName and mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound then
+				if mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound ~= "null" then
+					table.insert(weaponData.Sounds.FireSounds,
+						{ Name = mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound })
 				end
 			end
 		end
@@ -637,29 +659,14 @@ local weaponModifications = {
 		Requirements = {
 			MaxConsecutiveUses = 3,
 		},
+		AIData = {
+			PreAttackDuration = 0.8,
+		},
 	},
 	HydraSlam = {
 		AIData = {
-			-- TODO: Test if this can be removed
-			ProjectileName = "HydraTouchdown",
-			PreFireAnimation = "EnemyHydraSlamCharge",
-			FireAnimation = mod.NilValue,
-			-- Otherwise the projectile fires before the head touches down
-			PreFireDuration = 0.5,
-			PreAttackDuration = mod.NilValue,
 			PostAttackDuration = 0.5,
 			MoveWithinRange = false,
-		},
-	},
-	HydraSlamFrenzy = {
-		AIData = {
-			ProjectileName = "HydraTouchdown",
-			AIFireTicksCooldown = 0.1,
-		},
-	},
-	HydraSlamUntethered = {
-		AIData = {
-			ProjectileName = "HydraTouchdown",
 		},
 	},
 	HydraDart = {
@@ -699,6 +706,15 @@ local weaponModifications = {
 	},
 	HydraLavaSpitInterior = {
 		AIData = {
+			FireProjectileTowardTarget = true,
+		},
+	},
+	-- #endregion
+	-- #region ASPHODEL - Hydra (Green/Summoner)
+	HydraSummonSpread = {
+		AIData = {
+			PreAttackDuration = 0.2,
+			-- Not the same as InstantAngleTowardsTarget (Hydra head will not move), but will make sure it's fired at the target instead of straight line ahead
 			FireProjectileTowardTarget = true,
 		},
 	},

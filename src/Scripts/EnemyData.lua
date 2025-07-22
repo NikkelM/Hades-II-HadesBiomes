@@ -216,6 +216,13 @@ local enemyReplacements = {
 	HydraHeadImmortal = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 		AIStages = game.DeepCopyTable(hydraHeadAIStages),
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "HydraTouchdown",
+			-- Lining up with when the head actually touches the ground
+			Delay = 0.23,
+		},
+
 	},
 	-- These are all the same, but the SelectPactLevelAIStages are different and will be set accordingly in the modification handler
 	HydraHeadImmortalLavamaker = {
