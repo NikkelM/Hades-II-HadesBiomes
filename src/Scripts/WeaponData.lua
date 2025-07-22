@@ -42,64 +42,47 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 			weaponData.AIData = { DeepInheritance = true }
 		end
 
-		-- TODO: Remove print statements once the migration is complete
 		-- If the weapon defines a projectile to use, it might be different from the weapon name, so use it instead
 		local sjsonWeaponProjectileName = (mod.HadesSjsonWeaponsTable[weaponName] and
 			mod.HadesSjsonWeaponsTable[weaponName].Projectile) or weaponName
-		-- If there is not already a projectile, and if the enemy should have a projectile
+		-- If there is not already a projectile, and if the enemy should have a projectile, and the projectile is not explicitly nil
 		if not weaponData.AIData.ProjectileName and not weaponData.AIData.NoProjectile and not game.Contains({ "nil", "null" }, sjsonWeaponProjectileName) then
 			-- If the projectile we are looking for exists already, use it directly
 			if mod.HadesSjsonProjectilesTable[sjsonWeaponProjectileName] then
 				weaponData.AIData.ProjectileName = sjsonWeaponProjectileName
-				print("Assigned the projectile: " .. sjsonWeaponProjectileName ..
-					" to weapon: " .. weaponName .. ", as it exists in the Hades SJSON projectiles table.")
-				-- Else, it's likely an elite version of a weapon for which the default projectile should be used
-				-- Look for the projectile used by the parent of the weapon
+				-- Look for the projectile used by the parent of the weapon instead
 			elseif mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName] then
 				-- If a proper parent weapon exists
 				if mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName].InheritFrom and not game.Contains({ "1_BasePlayerSlowWeapon", "1_BaseEnemyMagicWeapon", "1_BaseTrapWeapon" }, mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName].InheritFrom) then
-					-- If the parent weapon has a projectile defined, use it directly, else use the parent weapon's name as the projectile
 					local parentWeaponName = mod.HadesSjsonWeaponsTable[sjsonWeaponProjectileName].InheritFrom
+					-- If the parent weapon has a projectile defined, use it directly
 					if mod.HadesSjsonWeaponsTable[parentWeaponName] and mod.HadesSjsonWeaponsTable[parentWeaponName].Projectile then
 						if not game.Contains({ "nil", "null" }, mod.HadesSjsonWeaponsTable[parentWeaponName].Projectile) then
 							weaponData.AIData.ProjectileName = mod.HadesSjsonWeaponsTable[parentWeaponName].Projectile
 						end
-						print("Assigned the projectile: " .. mod.HadesSjsonWeaponsTable[parentWeaponName].Projectile ..
-							" to weapon: " .. weaponName .. ", as the parent weapon: " .. parentWeaponName ..
-							" defines a projectile.")
 					else
 						-- The parent weapon did not define a projectile, try to look one level deeper, if this weapon also inherits from another weapon
-						if mod.HadesSjsonWeaponsTable[parentWeaponName].InheritFrom and not game.Contains({ "1_BasePlayerSlowWeapon", "1_BaseEnemyMagicWeapon" }, mod.HadesSjsonWeaponsTable[parentWeaponName].InheritFrom) then
+						if mod.HadesSjsonWeaponsTable[parentWeaponName].InheritFrom and not game.Contains({ "1_BasePlayerSlowWeapon", "1_BaseEnemyMagicWeapon", "1_BaseTrapWeapon" }, mod.HadesSjsonWeaponsTable[parentWeaponName].InheritFrom) then
 							local grandParentWeaponName = mod.HadesSjsonWeaponsTable[parentWeaponName].InheritFrom
+							-- If the grandparent weapon has a projectile defined, use it directly
 							if mod.HadesSjsonWeaponsTable[grandParentWeaponName] and mod.HadesSjsonWeaponsTable[grandParentWeaponName].Projectile then
 								if not game.Contains({ "nil", "null" }, mod.HadesSjsonWeaponsTable[grandParentWeaponName].Projectile) then
 									weaponData.AIData.ProjectileName = mod.HadesSjsonWeaponsTable[grandParentWeaponName].Projectile
 								end
-								print("Assigned the projectile: " .. mod.HadesSjsonWeaponsTable[grandParentWeaponName].Projectile ..
-									" to weapon: " .. weaponName .. ", as the parent weapon: " .. parentWeaponName ..
-									" does not define a projectile, but the grandparent weapon: " .. grandParentWeaponName .. " does.")
 							else
+								-- The grandparent weapon did not define a projectile, so we use it as the projectile name instead as a fallback
 								if not game.Contains({ "nil", "null" }, grandParentWeaponName) then
 									weaponData.AIData.ProjectileName = grandParentWeaponName
 								end
-								print("Assigned the projectile: " .. grandParentWeaponName ..
-									" to weapon: " .. weaponName .. ", as the parent weapon: " .. parentWeaponName ..
-									" does not define a projectile, and the grandparent weapon: " .. grandParentWeaponName .. " also does not define a projectile.")
 							end
 						else
+							-- There is no grandparent weapon, so we use the parent weapon as the projectile name instead as a fallback
 							if not game.Contains({ "nil", "null" }, parentWeaponName) then
 								weaponData.AIData.ProjectileName = parentWeaponName
 							end
-							print("Assigned the projectile: " .. parentWeaponName .. " to weapon: " ..
-								weaponName .. ", as the parent weapon does not define a projectile, and there is no grandparent weapon.")
 						end
 					end
 				end
-				-- If the parent weapon does not define a projectile, and inherits from another weapon, use that weapon's projectile, or the weapon name itself
-			else
-				mod.DebugPrint("There is no projectile with the name of the weapon or projectile we are looking for: " ..
-					sjsonWeaponProjectileName .. ", for weapon: " .. weaponName ..
-					". It might be a player weapon, or the projectile exists in Hades II already.", 1)
 			end
 		end
 
