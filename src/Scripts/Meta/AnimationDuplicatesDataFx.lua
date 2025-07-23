@@ -37,8 +37,18 @@ mod.HadesFxAnimationModifications = {
 		NumFrames = "null",
 		StartFrame = "null",
 	},
-	-- ELYISIUM
+	-- ELYSIUM
 	-- STYX
+	-- ENVIRONMENT
+	-- Used by the HydraSlamScattered attack
+	RadialNovaRubble = {
+		-- Updating the third value, but need to include the others to not set them to null
+		CreateAnimations = {
+			{ Name = "RubbleFall" },
+			{ Name = "RubbleFallImpactSpike" },
+			{ Name = "ModsNikkelMHadesBiomesRubbleFallImpactDecal" },
+		},
+	},
 }
 
 -- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly
