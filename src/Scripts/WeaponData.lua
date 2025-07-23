@@ -640,12 +640,6 @@ local weaponModifications = {
 	-- #endregion
 	-- #endregion
 	-- #region ASPHODEL - Hydra (Basic)
-	HydraCrusher = {
-		GameStateRequirements = {
-			-- TODO: Is broken?
-			Skip = true,
-		},
-	},
 	HydraLunge = {
 		Requirements = {
 			MaxConsecutiveUses = 3,
@@ -725,6 +719,39 @@ local weaponModifications = {
 		AIData = {
 			PreAttackDuration = 0.2,
 			FireProjectileTowardTarget = true,
+		},
+	},
+	HydraCrusher = {
+		AIData = {
+			ProjectileName = "ModsNikkelMHadesBiomesHydraCrusher",
+			PreAttackDuration = 0.7,
+			CreateOwnTargetFromOriginalTarget = true,
+			FireProjectileTowardTarget = true,
+			TrackTargetDuringCharge = true,
+		},
+	},
+	HydraCrusher2 = {
+		AIData = {
+			ProjectileName = "ModsNikkelMHadesBiomesHydraCrusher",
+			ResetTargetPerTick = true,
+			PreAttackDuration = 0.7,
+			FireCooldown = 0.7,
+			CreateOwnTargetFromOriginalTarget = false,
+			FireProjectileTowardTarget = true,
+			TrackTargetDuringFire = true,
+			TrackTargetDuringCharge = true,
+		},
+	},
+	HydraCrusher3 = {
+		AIData = {
+			ProjectileName = "ModsNikkelMHadesBiomesHydraCrusher",
+			ResetTargetPerTick = true,
+			PreAttackDuration = 0.7,
+			FireCooldown = 0.7,
+			CreateOwnTargetFromOriginalTarget = false,
+			TrackTargetDuringFire = true,
+			FireProjectileTowardTarget = true,
+			TrackTargetDuringCharge = true,
 		},
 	},
 	-- #endregion

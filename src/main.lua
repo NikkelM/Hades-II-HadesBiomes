@@ -174,6 +174,7 @@ local function on_ready()
 		-- Must be loaded before the other projectile files
 		import "Game/Projectiles/Projectiles.sjson.lua"
 		import "Game/Projectiles/EnemyProjectiles.sjson.lua"
+		import "Game/Projectiles/Enemy_BiomeN_Projectiles.sjson.lua"
 		import "Game/Projectiles/Enemy_Traps_Projectiles.sjson.lua"
 
 		import "Game/Obstacles/Asphodel.sjson.lua"

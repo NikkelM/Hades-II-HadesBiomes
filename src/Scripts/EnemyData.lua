@@ -216,13 +216,6 @@ local enemyReplacements = {
 	HydraHeadImmortal = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 		AIStages = game.DeepCopyTable(hydraHeadAIStages),
-		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
-		OnTouchdownFunctionArgs = {
-			ProjectileName = "HydraTouchdown",
-			-- Lining up with when the head actually touches the ground
-			Delay = 0.23,
-		},
-
 	},
 	-- These are all the same, but the SelectPactLevelAIStages are different and will be set accordingly in the modification handler
 	HydraHeadImmortalLavamaker = {
@@ -694,6 +687,12 @@ local enemyModifications = {
 		},
 		InvulnerableFx = "HydraBubble",
 		BossDifficultyShrineRequiredCount = 2,
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "HydraTouchdown",
+			-- Lining up with when the head actually touches the ground
+			Delay = 0.23,
+		},
 		-- SpawnEvents = { { FunctionName = "CreateTethers", Threaded = true, }, },
 		-- While Tethers are broken - enemy returns to spawnpoint after attacking
 		DefaultAIData = {
@@ -707,6 +706,12 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyHydraOnHit" },
 		ActivateFx = "nil",
 		ActivateAnimation = "HydraHeadLavaBubbles",
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "HydraTouchdown",
+			-- Lining up with when the head actually touches the ground
+			Delay = 0.23,
+		},
 		-- SpawnEvents = { { FunctionName = "CreateTethers", Threaded = true, }, },
 		-- While Tethers are broken - enemy returns to nearest spawnpoint after attacking
 		DefaultAIData = {
