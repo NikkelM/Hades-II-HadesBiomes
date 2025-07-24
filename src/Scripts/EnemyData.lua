@@ -141,6 +141,16 @@ mod.ModifyEnemyTrapData(mod.EnemyData)
 
 -- Required modifications to the Hydra boss AIStages, so we can DeepCopyTable them onto the different Hydra heads, so the SelectPactLevelAIStage modifications can be done later on
 local hydraHeadAIStages = game.DeepCopyTable(mod.EnemyData.HydraHeadImmortal.AIStages) or {}
+for _, stage in ipairs(hydraHeadAIStages) do
+	-- Replace the animation with the one we can keep playing for longer than the default one
+	if stage.TransitionAnimation ~= nil then
+		stage.TransitionAnimation = "EnemyHydraRoarFire"
+		stage.TransitionEndAnimation = "EnemyHydraRoarReturnToIdle"
+	end
+	if stage.StartDelay ~= nil then
+		stage.StartDelay = 1.0
+	end
+end
 hydraHeadAIStages[2].SelectRandomAIStage = mod.NilValue
 hydraHeadAIStages[2].RandomSpawnEncounter = { "HydraHeads1", "HydraHeads3", "HydraHeads3" }
 hydraHeadAIStages[4].SelectRandomAIStage = mod.NilValue

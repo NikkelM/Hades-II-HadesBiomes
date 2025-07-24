@@ -648,6 +648,16 @@ local weaponModifications = {
 			MoveWithinRange = false,
 		},
 	},
+	HydraSlamFrenzy = {
+		AIData = {
+			PostAttackDuration = 0.5,
+		},
+	},
+	HydraSlamUntethered = {
+		AIData = {
+			PostAttackDuration = 0.5,
+		},
+	},
 	HydraDart = {
 		AIData = {
 			AIMoveWithinRangeTimeout = 1.0,

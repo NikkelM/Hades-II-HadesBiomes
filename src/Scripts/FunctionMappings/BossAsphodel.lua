@@ -45,11 +45,15 @@ function game.RoomEntranceBossHydra(currentRun, currentRoom)
 	game.thread(game.InCombatText, hydraId, "Alerted", 0.45, { SkipShadow = true })
 	game.wait(3.4)
 	if hydra.SwapAnimations ~= nil then
-		SetAnimation({ DestinationId = hydraId, Name = hydra.SwapAnimations["EnemyHydraTaunt"] or "EnemyHydraTaunt" })
+		SetAnimation({ DestinationId = hydraId, Name = hydra.SwapAnimations["EnemyHydraRoarFire"] or "EnemyHydraRoarFire" })
 	end
 
 	game.thread(game.HydraRoarPresentation)
-	game.wait(0.6)
+	game.wait(0.8)
+	if hydra.SwapAnimations ~= nil then
+		SetAnimation({ DestinationId = hydraId, Name = hydra.SwapAnimations["EnemyHydraRoarReturnToIdle"] or
+		"EnemyHydraRoarReturnToIdle" })
+	end
 	game.UnblockCombatUI("BossEntrance")
 end
 
@@ -123,6 +127,15 @@ function game.HydraStageTransition(boss, currentRun, aiStage)
 			DestinationId = bossId,
 			Name = boss.SwapAnimations[aiStage.TransitionAnimation] or
 					aiStage.TransitionAnimation
+		})
+	end
+	-- Custom addition, to be able to keep playing the animation for longer
+	if aiStage.TransitionEndAnimation then
+		game.wait(0.8)
+		SetAnimation({
+			DestinationId = bossId,
+			Name = boss.SwapAnimations[aiStage.TransitionEndAnimation] or
+					aiStage.TransitionEndAnimation
 		})
 	end
 	if aiStage.TransitionSound then
