@@ -1,6 +1,6 @@
 -- Applies modifications to base weapon objects, and then adds the new weapon objects to the game
 local function applyModificationsAndInheritWeaponData(base, modifications, replacements, weaponKeyReplacements,
-																											AIRequirements, SjsonToAIDataProperties)
+																											sjsonToAIDataPropertyMappings)
 	for oldName, newName in pairs(mod.EnemyWeaponMappings) do
 		mod.UpdatePropertyName(modifications, oldName, newName, {}, "WeaponDataHandler modifications")
 		mod.UpdatePropertyName(replacements, oldName, newName, {}, "WeaponDataHandler replacements")
@@ -22,22 +22,7 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 		mod.ApplyModifications(base[weaponName], weaponData)
 	end
 
-	-- Move weapon requirements/eligibility data to the Requirements table
 	for weaponName, weaponData in pairs(base) do
-		if weaponData.AIData then
-			local aiData = weaponData.AIData
-			for key, value in pairs(aiData) do
-				if game.Contains(AIRequirements, key) then
-					if not weaponData.Requirements then
-						weaponData.Requirements = {}
-					end
-					-- Respect existing override from modifications above
-					weaponData.Requirements[key] = weaponData.Requirements[key] or value
-				end
-			end
-		end
-
-		-- Copy properties to the WeaponData table according to the SjsonToAIDataProperties
 		if not weaponData.AIData then
 			weaponData.AIData = { DeepInheritance = true }
 		end
@@ -104,7 +89,7 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 					end
 				end
 			end
-			for key, value in pairs(SjsonToAIDataProperties) do
+			for key, value in pairs(sjsonToAIDataPropertyMappings) do
 				if sjsonWeaponData[key] and not weaponData.AIData[value] then
 					weaponData.AIData[value] = sjsonWeaponData[key]
 				else
@@ -999,22 +984,6 @@ local weaponKeyReplacements = {
 	},
 }
 
-local AIRequirements = {
-	"MaxConsecutiveUses",
-	"MinAttacksBetweenUse",
-	"MaxUses",
-	"MaxPlayerDistance",
-	"MinPlayerDistance",
-	"MaxAttackers",
-	"RequireTotalAttacks",
-	"RequiresNotCharmed",
-	"MaxActiveSpawns",
-	"RequiresNotEnraged",
-	"ForceUseIfReady",
-	"BlockAsFirstWeapon",
-	"ForceFirst",
-}
-
 local SjsonToAIDataPropertyMappings = {
 	SelfVelocity = "FireSelfVelocity",
 	SelfUpwardVelocity = "FireSelfUpwardVelocity",
@@ -1032,4 +1001,4 @@ local SjsonToAIDataPropertyMappings = {
 }
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponReplacements,
-	weaponKeyReplacements, AIRequirements, SjsonToAIDataPropertyMappings)
+	weaponKeyReplacements, SjsonToAIDataPropertyMappings)
