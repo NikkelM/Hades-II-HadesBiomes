@@ -740,6 +740,35 @@ local weaponModifications = {
 		},
 	},
 	-- #endregion
+	-- #region ASPHODEL - Hydra (Purple/Wavemaker)
+	HydraRoar = {
+		AIData = {
+			PreAttackDuration = 0.5,
+			PostAttackDuration = 1.2,
+		},
+	},
+	HydraRoarVolleyLeft = {
+		AIData = {
+			PreAttackDuration = 0.5,
+			PostAttackDuration = 1.2,
+			FireProjectileTowardTarget = true,
+		},
+	},
+	HydraRoarVolleyRight = {
+		AIData = {
+			PreAttackDuration = 0.5,
+			PostAttackDuration = 1.2,
+			FireProjectileTowardTarget = true,
+		},
+	},
+	HydraRoarVolleyInsideOut = {
+		AIData = {
+			PreAttackDuration = 0.5,
+			PostAttackDuration = 1.2,
+			FireProjectileTowardTarget = true,
+		},
+	},
+	-- #endregion
 	-- #endregion
 
 	-- #region ELYSIUM

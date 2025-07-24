@@ -309,6 +309,9 @@ mod.SjsonFileModifications = {
 		EnemyHydraBlueTaunt = {
 			ChainTo = "EnemyHydraBlueRoarReturnToIdle",
 		},
+		EnemyHydraPurpleTaunt = {
+			ChainTo = "EnemyHydraPurpleRoarReturnToIdle",
+		},
 	},
 }
 

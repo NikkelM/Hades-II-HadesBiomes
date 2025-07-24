@@ -30,7 +30,7 @@ local function applyModificationsAndInheritEnemyData(base, modifications, replac
 		-- Replace keys that were renamed between the games
 		mod.RenameKeys(enemyData, enemyKeyReplacements, enemyName)
 
-		-- Do replacements that can be done the same way for multiple enemies
+		-- Always use the Olympus dialogue elements for the bosses
 		if enemyData.Portrait then
 			enemyData.BoxAnimation = "DialogueSpeechBubbleLight"
 			enemyData.BoxExitAnimation = "DialogueSpeechBubbleLightOut"
