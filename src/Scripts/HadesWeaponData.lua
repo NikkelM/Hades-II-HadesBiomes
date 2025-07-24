@@ -9694,7 +9694,6 @@ mod.HadesWeaponData = {
 			MinAttacksBetweenUse = 2,
 			ForceUseIfReady = true,
 		},
-		-- TODO - Convert to OnFiredFunctionNames
 		OnFireCrowdReaction = { AnimationNames = { "StatusIconFear", "StatusIconOhBoy" }, Sound = "/SFX/TheseusCrowdCheer", ReactionChance = 0.05, Requirements = { RequiredRoom = "C_Boss01" }, Shake = true, RadialBlur = true },
 	},
 
