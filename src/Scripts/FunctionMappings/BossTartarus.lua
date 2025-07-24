@@ -338,7 +338,7 @@ function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
 		end
 
 		local meterAmount = 0.01
-		game.BuildRageMeter(currentRun, meterAmount, enemy)
+		game.BuildRageMeter(meterAmount, enemy)
 		if enemy.Enraged or IsInvulnerable({ Id = enemy.ObjectId }) then
 			enemy.HarpyBuildRageEarlyExit = true
 			if not enemy.Enraged then
@@ -362,7 +362,7 @@ function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
 	enemy.HarpyBuildRageEarlyExit = false
 end
 
-function game.BuildRageMeter(currentRun, meterAmount, enemy)
+function game.BuildRageMeter(meterAmount, enemy)
 	if enemy.Enraged then
 		return
 	end
@@ -379,7 +379,7 @@ function game.BuildRageMeter(currentRun, meterAmount, enemy)
 	end
 end
 
-function game.HandleHarpyRage(enemy, currentRun)
+function game.HandleHarpyRage(enemy)
 	if game.ScreenAnchors.BossRageFill == nil then
 		game.CreateBossRageMeter(enemy)
 	end
@@ -444,7 +444,7 @@ function game.CreateBossRageMeter(boss)
 	SetAlpha({ Id = game.ScreenAnchors.BossRageFill, Fraction = 1, Duration = 2.0 })
 end
 
-function game.EnrageHarpyPermanent(enemy, currentRun)
+function game.EnrageHarpyPermanent(enemy)
 	enemy.Enraged = true
 	enemy.PermanentEnraged = true
 	SetAnimationFrameTarget({
@@ -452,7 +452,7 @@ function game.EnrageHarpyPermanent(enemy, currentRun)
 		Fraction = 0.0,
 		DestinationId = game.ScreenAnchors.BossRageFill
 	})
-	EnrageUnit(enemy)
+	game.EnrageUnit(enemy)
 end
 
 function game.HarpyEnragedPresentation(enemy, currentRun)
@@ -476,11 +476,11 @@ function game.HarpyEnragedPresentation(enemy, currentRun)
 	end
 
 	if not enemy.PermanentEnraged then
-		game.thread(game.DrainHarpyRageMeter, enemy, game.CurrentRun, enemy.EnragedDuration)
+		game.thread(game.DrainHarpyRageMeter, enemy, enemy.EnragedDuration)
 	end
 end
 
-function game.DrainHarpyRageMeter(enemy, currentRun, duration)
+function game.DrainHarpyRageMeter(enemy, duration)
 	local tickDuration = duration * 0.01
 
 	local fraction = 0.00
@@ -498,8 +498,8 @@ function game.DrainHarpyRageMeter(enemy, currentRun, duration)
 	end
 end
 
-function game.Harpy3MapTransition(enemy, currentRun)
-	local currentRoom = currentRun.CurrentRoom
+function game.Harpy3MapTransition(enemy)
+	local currentRoom = game.CurrentRun.CurrentRoom
 	currentRoom.InStageTransition = true
 
 	if currentRoom.Name ~= "A_Boss03" then
@@ -545,7 +545,7 @@ function game.Harpy3MapTransition(enemy, currentRun)
 
 	PlaySound({ Name = "/SFX/A_Boss03_RoomTransitionSFX" })
 	game.wait(0.3)
-	Teleport({ Id = currentRun.Hero.ObjectId, DestinationId = 40012 })
+	Teleport({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = 40012 })
 	Teleport({ Id = enemy.ObjectId, DestinationId = 410021 })
 	-- Skelly Summon
 	local skellyId = GetIdsByType({ Name = "TrainingMeleeSummon" })
@@ -593,7 +593,7 @@ function game.Harpy3MapTransition(enemy, currentRun)
 	SetObstacleProperty({ Property = "Magnetism", Value = 3000, DestinationIds = ammoIds })
 	SetObstacleProperty({
 		Property = "MagnetismSpeedMax",
-		Value = currentRun.Hero.LeaveRoomAmmoMangetismSpeed,
+		Value = game.CurrentRun.Hero.LeaveRoomAmmoMangetismSpeed,
 		DestinationIds = ammoIds
 	})
 	StopAnimation({ DestinationIds = ammoIds, Name = "AmmoReturnTimer" })

@@ -1,11 +1,28 @@
 -- Applies modifications to base weapon objects, and then adds the new weapon objects to the game
-local function applyModificationsAndInheritWeaponData(base, modifications, weaponKeyReplacements)
+local function applyModificationsAndInheritWeaponData(base, modifications, weaponKeyReplacements, AIRequirements)
 	-- Apply modifications
 	for weaponName, weaponData in pairs(modifications) do
 		if not base[weaponName] then
 			base[weaponName] = {}
 		end
 		mod.ApplyModifications(base[weaponName], weaponData)
+	end
+
+	-- Move weapon requirements/eligibility data to the Requirements table
+	for weaponName, weaponData in pairs(base) do
+		if weaponData.AIData then
+			local aiData = weaponData.AIData
+			for key, value in pairs(aiData) do
+				if game.Contains(AIRequirements, key) then
+					if not weaponData.Requirements then
+						weaponData.Requirements = {}
+					end
+					-- Respect existing override from modifications above
+					weaponData.Requirements[key] = weaponData.Requirements[key] or value
+					aiData[key] = nil
+				end
+			end
+		end
 	end
 
 	-- Process data inheritance and add the new data to the game's global
@@ -24,14 +41,16 @@ end
 
 -- Some weapons exist in both Hades and Hades II, so we need to rename the Hades weapons
 for oldName, newName in pairs(mod.EnemyWeaponMappings) do
-	mod.UpdatePropertyName(mod.HadesWeaponData, oldName, newName, { }, "WeaponData")
+	mod.UpdatePropertyName(mod.HadesWeaponData, oldName, newName, {}, "WeaponData")
 	-- Inherit properties from this weapon
 	mod.UpdateField(mod.HadesWeaponData, oldName, newName, { "InheritFrom" }, "WeaponData")
 end
 
 -- Modify or add weapons
 local weaponModifications = {
-	-- TARTARUS
+	-- #region TARTARUS
+
+	-- #region Regular
 	HeavyRangedWeapon = {
 		AIData = {
 			ExpireProjectilesOnHitStun = true,
@@ -105,28 +124,10 @@ local weaponModifications = {
 			ExpireProjectilesOnPolymorph = true,
 		},
 	},
+	-- #endregion
 
-	-- TARTARUS - MEGAERA
-	HarpyLunge = {
-		Requirements = {
-			MaxConsecutiveUses = 2,
-		},
-	},
-	HarpyWhipWhirl = {
-		Requirements = {
-			MinAttacksBetweenUse = 2,
-			MaxPlayerDistance = 600,
-		},
-	},
-	HarpyBeam = {
-		Requirements = {
-			MinAttacksBetweenUse = 3,
-		},
-	},
+	-- #region TARTARUS - MEGAERA
 	HarpyLightning = {
-		Requirements = {
-			MinAttacksBetweenUse = 3,
-		},
 		AIData = {
 			AttackSlotInterval = 0.01,
 			ProjectileName = "HarpyLightning",
@@ -144,19 +145,15 @@ local weaponModifications = {
 			ProjectileInterval = 0.3,
 		},
 	},
-	-- TARTARUS - ALECTO
+	-- #endregion
+
+	-- #region TARTARUS - ALECTO
 	HarpyLungeAlecto = {
-		Requirements = {
-			MaxConsecutiveUses = 2,
-		},
 		AIData = {
 			PreAttackStop = true,
 		},
 	},
 	HarpyWhipArc = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-		},
 		AIData = {
 			PreAttackStop = true,
 		},
@@ -170,10 +167,7 @@ local weaponModifications = {
 	},
 	HarpyBuildRage = {
 		Requirements = {
-			MaxActiveSpawns = 1,
-			MinAttacksBetweenUse = 5,
-			RequiresNotEnraged = true,
-			ForceUseIfReady = true,
+			-- TODO: Check MaxActiveSpawns - was 1, in Hades 5
 			BlockAsFirstWeapon = true,
 		},
 		AIData = {
@@ -188,9 +182,6 @@ local weaponModifications = {
 		},
 	},
 	HarpyLightningChase = {
-		Requirements = {
-			MinAttacksBetweenUse = 5,
-		},
 		AIData = {
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
@@ -202,9 +193,6 @@ local weaponModifications = {
 		},
 	},
 	HarpyLightningChaseRage = {
-		Requirements = {
-			MinAttacksBetweenUse = 5,
-		},
 		AIData = {
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
@@ -225,17 +213,11 @@ local weaponModifications = {
 		},
 	},
 	HarpyWhipShot = {
-		Requirements = {
-			MaxConsecutiveUses = 3,
-		},
 		AIData = {
 			PreAttackStop = true,
 		},
 	},
 	HarpyWhipShotRage = {
-		Requirements = {
-			MaxConsecutiveUses = 3,
-		},
 		AIData = {
 			PreAttackStop = true,
 		},
@@ -250,12 +232,9 @@ local weaponModifications = {
 			ProjectileName = "HarpyLightningAlecto",
 		},
 	},
-	-- TARTARUS - TISIPHONE
-	HarpyWhipCombo1 = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-		},
-	},
+	-- #endregion
+
+	-- #region TARTARUS - TISIPHONE
 	HarpyLightningLine = {
 		Requirements = {
 			BlockAsFirstWeapon = true,
@@ -280,7 +259,6 @@ local weaponModifications = {
 	},
 	HarpySlowBeam360 = {
 		Requirements = {
-			MinAttacksBetweenUse = 2,
 			BlockAsFirstWeapon = true,
 		},
 		AIData = {
@@ -307,8 +285,12 @@ local weaponModifications = {
 			ProjectileName = "TisiphoneFog",
 		},
 	},
+	-- #endregion
+	-- #endregion
 
-	-- ASPHODEL
+	-- #region ASPHODEL
+
+	-- #region Regular
 	HadesLightSpawnerEliteSpawnerWeapon = {
 		Requirements = {
 			MaxActiveSpawns = 6,
@@ -336,7 +318,9 @@ local weaponModifications = {
 		},
 		ForceFirst = mod.NilValue,
 	},
-	-- ASPHODEL - Witches Circle
+	-- #endregion
+
+	-- #region ASPHODEL - Witches Circle
 	SpreadShotMinibossRadial = {
 		-- Fixing the animations and increasing the cooldown to scale with difficulty of not being able to destroy projectiles
 		-- Decreasing cooldown again if the shrine upgrade is active, to increase difficulty
@@ -384,17 +368,17 @@ local weaponModifications = {
 			PostAttackCooldownMax = 1.5,
 		},
 	},
-	-- ASPHODEL - HYDRA
+	-- #endregion
+
+	-- #region ASPHODEL - HYDRA
 	HydraCrusher = {
 		GameStateRequirements = {
-			-- Is broken
+			-- TODO: Is broken
 			Skip = true,
 		},
 	},
 	HydraLunge = {
 		Requirements = {
-			MinAttacksBetweenUse = 2,
-			MinPlayerDistance = 350,
 			MaxConsecutiveUses = 3,
 		},
 		AIData = {
@@ -404,143 +388,152 @@ local weaponModifications = {
 	},
 	HydraLungeUntethered = {
 		Requirements = {
-			MinAttacksBetweenUse = 0,
 			MaxConsecutiveUses = 3,
 		},
 	},
 	HydraSlam = {
-		Requirements = {
-			MaxPlayerDistance = 600,
-			MinAttacksBetweenUse = 2,
-			ForceUseIfReady = true,
-		},
 		AIData = {
 			PostAttackDuration = 0.5,
 			MoveWithinRange = false,
 		},
 	},
-	HydraSlamUntethered = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
-			ForceUseIfReady = false,
-			MaxPlayerDistance = 800,
-		},
-	},
-	HydraSlamScattered = {
-		Requirements = {
-			MaxPlayerDistance = 9999,
-		},
-	},
-	HydraSlamScatteredFrenzy = {
-		Requirements = {
-			MaxPlayerDistance = 9999,
-		},
-	},
-	HydraPull = {
-		Requirements = {
-			MinAttacksBetweenUse = 3,
-			ForceUseIfReady = true,
-		},
-	},
-	HydraLavaSpit = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
-			ForceUseIfReady = true,
-		},
-	},
-	HydraLavaSpit2 = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
-			MinPlayerDistance = 450,
-		},
-	},
-	HydraLavaSpitFrenzy = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-		},
-	},
-	HydraLavaSpitExterior = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
-			ForceUseIfReady = true,
-			MinPlayerDistance = 450,
-		},
-	},
-	HydraLavaSpitInterior = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
-			MaxPlayerDistance = 700,
-		},
-	},
 	HydraDart = {
-		Requirements = {
-			MinAttacksBetweenUse = 2,
-		},
 		AIData = {
 			AIMoveWithinRangeTimeout = 1.0,
 			PostAttackDuration = 0.5,
 		},
 	},
-	HydraDartVolley = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
+	-- #endregion
+
+	-- #endregion
+
+	-- #region ELYSIUM
+
+	-- #region Regular
+	ShadeSideDash = {
+		AIData = {
+			-- Causes an infinite loop, as this would be set to itself
+			AttackFailWeapon = mod.NilValue,
 		},
 	},
-	HydraRoar = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-			ForceUseIfReady = true,
+	ShadeBowSideDash = {
+		AIData = {
+			-- Causes an infinite loop, as this would be set to itself
+			AttackFailWeapon = mod.NilValue,
 		},
 	},
-	HydraRoarVolleyLeft = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-			ForceUseIfReady = true,
+	-- #endregion
+
+	-- #region ELYSIUM - MINOTAUR
+	Minotaur5AxeCombo3 = {
+		AIData = {
+			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
+			-- Applied after takeoff
+			FireSelfVelocity = 2000,
+			FireSelfUpwardVelocity = 1200,
+			-- Don't track during fire, but allow tracking during charge
+			StopBeforeFire = true,
+			-- If not set, Minotaur stays in one spot each leap
+			TrackTargetDuringCharge = true,
+			-- Can jump from anywhere
+			MoveWithinRange = false,
+			PreFireDuration = 0.0,
 		},
 	},
-	HydraRoarVolleyRight = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-			ForceUseIfReady = true,
+	Minotaur5AxeCombo4 = {
+		AIData = {
+			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
+			FireSelfVelocity = 2000,
+			FireSelfUpwardVelocity = 1200,
+			StopBeforeFire = true,
+			TrackTargetDuringCharge = true,
+			MoveWithinRange = false,
+			PreFireDuration = 0.0,
+			-- Comes down too quickly otherwise
+			FireDuration = 0.3,
 		},
 	},
-	HydraRoarVolleyInsideOut = {
-		Requirements = {
-			MaxConsecutiveUses = 1,
-			ForceUseIfReady = true,
+	Minotaur5AxeCombo5 = {
+		AIData = {
+			PostAttackDuration = 1.8,
 		},
 	},
-	HydraSummon = {
-		Requirements = {
-			MinAttacksBetweenUse = 3,
-			ForceUseIfReady = true,
-			MaxActiveSpawns = 10,
+	MinotaurLeapCombo5 = {
+		AIData = {
+			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
+			FireSelfVelocity = 2000,
+			FireSelfUpwardVelocity = 1200,
+			TrackTargetDuringCharge = true,
+			MoveWithinRange = false,
+			StopBeforeFire = true,
+			PreFireDuration = 0.0,
 		},
 	},
-	HydraSummon2 = {
-		Requirements = {
-			MinAttacksBetweenUse = 3,
-			ForceUseIfReady = true,
-			MaxActiveSpawns = 5,
-		},
+	MinotaurBullRush = {
+		AIData = {
+			-- ApplyEffectsOnPreAttackStart = {
+			-- 	-- {
+			-- 	-- 	EffectName = "BullRushSpeed",
+			-- 	-- 	DataProperties = {
+			-- 	-- 		Type = "SPEED",
+			-- 	-- 		-- ChangeType = "ADD",
+			-- 	-- 		Duration = 9.0,
+			-- 	-- 		Modifier = 1.75,
+			-- 	-- 		ClearOnCollision = true,
+			-- 	-- 		-- Active = true,
+			-- 	-- 		-- ExpiringTimeThreshold = 8.5,
+			-- 	-- 		-- ExpiringModifierFalloff = 50,
+			-- 	-- 	},
+			-- 	-- },
+			-- 	{
+			-- 		EffectName = "BullRushRotation",
+			-- 		DataProperties = {
+			-- 			Duration = 9.0,
+			-- 			RotationMultiplier = 0.8,
+			-- 			ClearOnCollision = true,
+			-- 			-- Active = true,
+			-- 		},
+			-- 	}
+			-- },
+			-- PreAttackSetUnitProperties =
+			-- {
+			-- 	Speed = 700,
+			-- 	-- RotationMultiplier doesn't work here
+			-- },
+			-- PostAttackResetUnitProperties = true,
+			PostAttackAnimation = "MinotaurBullRush_PreStrike",
+			ProjectileName = "MinotaurBullRushRam",
+			RamWeaponName = "MinotaurBullRush",
+			-- TODO: Doesn't yet work correctly - gets applied erratically, removed too soon or too late
+			RamEffectNames = { "BullRushSpeed", "BullRushRotation" },
+			RamRecoverTime = 2.0,
+			UseRamAILoop = true,
+			SetupDistance = 400,
+			SetupTimeout = 5.0,
+			RamDistance = 150,
+			RamTimeout = 9.0,
+			AttackDistanceBuffer = 0,
+			StopMoveWithinRange = false,
+			-- Comment the below out in the HadesWeaponData for testing
+			-- AIAttackDistance = 3000,
+			-- AILineOfSightBuffer = 200,
+			-- AILineOfSighEndBuffer = 80,
+			-- PostAttackAI = "MoveUntilEffectExpired",
+			-- PostAttackAICanOnlyMoveForward = true,
+			-- EffectExpiredName = "BullRushSpeed",
+			-- MoveSuccessDistance = 32,
+			-- PostAttackAIWait = 2.0,
+			-- PostAttackCooldown = 0.0,
+		}
 	},
-	HydraSummonSpread = {
-		Requirements = {
-			MinAttacksBetweenUse = 4,
-			ForceUseIfReady = true,
-			MaxActiveSpawns = 5,
-		},
-	},
-	HydraSpawns = {
-		Requirements = {
-			MaxActiveSpawns = 10,
-		},
-	},
-	HydraHeal = {
-		Requirements = {
-			MinAttacksBetweenUse = 1,
-		},
-	},
+	-- #endregion
+
+	-- #region ELYSIUM - THESEUS
+	-- #endregion
+	-- #endregion
+
+	-- #region STYX
+	-- #endregion
 }
 
 -- Modifications easier done in a loop
@@ -569,13 +562,13 @@ local weaponKeyReplacements = {
 		AIBufferDistance = "RetreatBufferDistance",
 		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
 		AILineOfSightBuffer = "LoSBuffer",
+		AILineOfSighEndBuffer = "LoSEndBuffer",
 		AIMoveWithinRangeTimeout = "MoveWithinRangeTimeout",
 		TargetFriends = "TargetRequiredKillEnemy",
 		AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
 		AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
 		AIRequireUnitLineOfSight = "RequireUnitLoS",
 		AIRequireProjectileLineOfSight = "RequireProjectileLoS",
-		AILineOfSighEndBuffer = "LoSEndBuffer",
 		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",
@@ -589,13 +582,13 @@ local weaponKeyReplacements = {
 		AIBufferDistance = "RetreatBufferDistance",
 		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
 		AILineOfSightBuffer = "LoSBuffer",
+		AILineOfSighEndBuffer = "LoSEndBuffer",
 		AIMoveWithinRangeTimeout = "MoveWithinRangeTimeout",
 		TargetFriends = "TargetRequiredKillEnemy",
 		AIMoveWithinRangeTimeoutMin = "MoveWithinRangeTimeoutMin",
 		AIMoveWithinRangeTimeoutMax = "MoveWithinRangeTimeoutMax",
 		AIRequireUnitLineOfSight = "RequireUnitLoS",
 		AIRequireProjectileLineOfSight = "RequireProjectileLoS",
-		AILineOfSighEndBuffer = "LoSEndBuffer",
 		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",
@@ -605,4 +598,20 @@ local weaponKeyReplacements = {
 	},
 }
 
-applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponKeyReplacements)
+local AIRequirements = {
+	"MaxConsecutiveUses",
+	"MinAttacksBetweenUse",
+	"MaxUses",
+	"MaxPlayerDistance",
+	"MinPlayerDistance",
+	"MaxAttackers",
+	"RequireTotalAttacks",
+	"RequiresNotCharmed",
+	"MaxActiveSpawns",
+	"RequiresNotEnraged",
+	"ForceUseIfReady",
+	"BlockAsFirstWeapon",
+	"ForceFirst",
+}
+
+applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponKeyReplacements, AIRequirements)

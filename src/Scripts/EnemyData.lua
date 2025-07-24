@@ -51,6 +51,11 @@ local function applyModificationsAndInheritEnemyData(base, modifications, replac
 			if enemyData[property] then
 				for key, textLineSet in pairs(enemyData[property]) do
 					textLineSet.Name = key
+					for _, entry in ipairs(textLineSet) do
+						if type(entry) == "table" and entry.Text then
+							entry.Text = string.gsub(entry.Text, "{#PreviousFormat}", "{#Prev}")
+						end
+					end
 				end
 			end
 		end
@@ -177,6 +182,9 @@ local enemyReplacements = {
 	HydraHeadImmortal = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
+
+	-- ELYSIUM
+	-- STYX
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
@@ -651,13 +659,126 @@ local enemyModifications = {
 		},
 	},
 
-	-- These enemies have not been implemented yet
-	-- Chariot = {
-	-- 	LargeUnitCap = mod.NilValue,
-	-- },
-	-- ChariotSuicide = {
-	-- 	LargeUnitCap = mod.NilValue,
-	-- },
+	-- ELYSIUM
+	ShadeNaked = {
+		StunAnimations = { Default = "ShadeNaked_Idle" },
+		-- Push the Shade away after spawning so it has to move to the pickupTarget
+		PostActivateEvents = {
+			{
+				FunctionName = "ModsNikkelMHadesBiomesShadeNakedPostActivate",
+				Args = { ForceMin = 3200, ForceMax = 3300, AngleOffsetMin = -60, AngleOffsetMax = 60, },
+			},
+		},
+		-- To prevent the first damage occurrence, which is duplicated from the killing blow
+		ModsNikkelMHadesBiomesIgnoreFirstDamage = true,
+		BlockRaiseDead = true,
+	},
+	ShadeSpearUnit = {
+		-- TODO: StopAnimationsOnDeath? for the glow animations
+		StunAnimations = { Default = "ShadeSpear_OnHit" },
+		ActivateAnimation = "EnemyActivationFadeInShadeSpearContainer",
+		SpawnUnitOnDeath = "ShadeNaked",
+		SkipActivatePresentationOnSpawns = true,
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "ShadeSpearTouchdown",
+		},
+	},
+	ShadeSpearUnitElite = {
+		SpawnUnitOnDeath = "ShadeNakedElite",
+	},
+	ShadeSpearUnitSuperElite = {
+		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+	},
+	ShadeBowUnit = {
+		StunAnimations = { Default = "ShadeBow_OnHit" },
+		ActivateAnimation = "EnemyActivationFadeInShadeBowContainer",
+		SpawnUnitOnDeath = "ShadeNaked",
+		SkipActivatePresentationOnSpawns = true,
+	},
+	ShadeBowUnitElite = {
+		SpawnUnitOnDeath = "ShadeNakedElite",
+	},
+	ShadeBowUnitSuperElite = {
+		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+	},
+	ShadeShieldUnit = {
+		StunAnimations = { Default = "ShadeShield_OnHit" },
+		ActivateAnimation = "EnemyActivationFadeInShadeShieldContainer",
+		SpawnUnitOnDeath = "ShadeNaked",
+		SkipActivatePresentationOnSpawns = true,
+		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
+		InvulnerableHitFx = "ShadeShieldBlock",
+	},
+	ShadeShieldUnitElite = {
+		SpawnUnitOnDeath = "ShadeNakedElite",
+	},
+	ShadeShieldUnitSuperElite = {
+		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+	},
+	ShadeSwordUnit = {
+		StunAnimations = { Default = "ShadeSword_OnHit" },
+		ActivateAnimation = "EnemyActivationFadeInShadeSwordContainer",
+		SpawnUnitOnDeath = "ShadeNaked",
+		SkipActivatePresentationOnSpawns = true,
+	},
+	ShadeSwordUnitElite = {
+		SpawnUnitOnDeath = "ShadeNakedElite",
+	},
+	ShadeSwordUnitSuperElite = {
+		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+	},
+	Chariot = {
+		LargeUnitCap = mod.NilValue,
+		StunAnimations = { Default = "ChariotOnHit" },
+		ActivateAnimation = "EnemyActivationFadeInChariotContainer",
+		DefaultAIData = {
+			PreAttackAngleTowardTarget = false,
+			AttackDistanceBuffer = 0,
+			StopMoveWithinRange = false,
+			ProjectileName = "ChariotRam",
+			-- Setup is the when it can start ramming instead of moving
+			SetupDistance = 500,
+			SetupTimeout = 7.0,
+			-- Longer time ramming before timing out and stopping
+			RamTimeout = 3.0,
+			RamDistance = 120,
+		},
+	},
+	ChariotSuicide = {
+		LargeUnitCap = mod.NilValue,
+		StunAnimations = { Default = "ChariotSuicideOnHit" },
+		ActivateAnimation = "EnemyActivationFadeInChariotSuicideContainer",
+		ActivateFx = "EnemySummonRuneMedium",
+		BlockRaiseDead = true,
+		DefaultAIData = {
+			PreAttackAngleTowardTarget = false,
+			AttackDistanceBuffer = 0,
+			StopMoveWithinRange = false,
+			ProjectileName = "ChariotRamSelfDestruct",
+			SetupDistance = 900,
+			SetupTimeout = 7.0,
+			RamDistance = 80,
+		},
+	},
+
+	-- ELYSIUM BOSS - THESEUS & MINOTAUR
+	Minotaur = {
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "MinotaurOverheadTouchdown",
+			-- Moves the damage cone in front of the Minotaur to line up with the Axe and not the character
+			SpawnDistance = 90,
+			CalcOffset = true,
+			CalcAngle = true,
+		},
+	},
+	Theseus = {
+		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
+		InvulnerableHitFx = "ShadeShieldBlock",
+	},
+
+	-- STYX
 	-- SatyrRanged = {
 	-- 	LargeUnitCap = mod.NilValue,
 	-- },
@@ -679,15 +800,9 @@ local enemyModifications = {
 				FunctionName = "RandomizeObject",
 				Args = {
 					RandomizeSets = {
-						{
-							Animation = { "ModsNikkelMHadesBiomesBreakableIdle1" },
-						},
-						{
-							Animation = { "ModsNikkelMHadesBiomesBreakableIdle2" },
-						},
-						{
-							Animation = { "ModsNikkelMHadesBiomesBreakableIdle3" },
-						},
+						{ Animation = { "ModsNikkelMHadesBiomesBreakableIdle1" }, },
+						{ Animation = { "ModsNikkelMHadesBiomesBreakableIdle2" }, },
+						{ Animation = { "ModsNikkelMHadesBiomesBreakableIdle3" }, },
 					},
 				},
 			},
@@ -708,15 +823,32 @@ local enemyModifications = {
 				FunctionName = "RandomizeObject",
 				Args = {
 					RandomizeSets = {
-						{
-							Animation = { "BreakableAsphodelIdle" },
-						},
-						{
-							Animation = { "BreakableAsphodelIdle2" },
-						},
-						{
-							Animation = { "BreakableAsphodelIdle3" },
-						},
+						{ Animation = { "BreakableAsphodelIdle" }, },
+						{ Animation = { "BreakableAsphodelIdle2" }, },
+						{ Animation = { "BreakableAsphodelIdle3" }, },
+					},
+				},
+			},
+		},
+		ValueOptions = {
+			[1] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[2] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+		},
+	},
+	BreakableElysium = {
+		CannotDieFromDamage = true,
+		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
+		DeathAnimation = "BreakableDeathAnim",
+		DeathSound = "/SFX/CeramicPotSmash",
+		SetupEvents = {
+			{
+				FunctionName = "RandomizeObject",
+				Args = {
+					RandomizeSets = {
+						{ Animation = { "BreakableElysiumIdle1" }, },
+						{ Animation = { "BreakableElysiumIdle2" }, },
+						{ Animation = { "BreakableElysiumIdle3" }, },
 					},
 				},
 			},
@@ -752,6 +884,8 @@ local enemyKeyReplacements = {
 	},
 	-- Key is only used for the four breakables
 	ValueOptions = "BreakableValueOptions",
+	-- For the ShadeNaked
+	AIPickupType = "AIPickupTypes",
 }
 
 -- Modifications to Hades II enemies

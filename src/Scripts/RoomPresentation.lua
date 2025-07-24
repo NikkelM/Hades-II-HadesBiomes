@@ -189,3 +189,11 @@ end
 -- Doesn't do anything, used to not play the invulnerable hit presentation when leaving the room and not being centered on the boat
 function game.AsphodelLeaveRoomPresentationDummyOnHitFunction(victim, triggerArgs, args)
 end
+
+function game.AngleIdsTowardPlayer(eventSource, args)
+	AngleTowardTarget({ Ids = args.Ids, DestinationId = game.CurrentRun.Hero.ObjectId })
+end
+
+function game.AngleIds(eventSource, args)
+	AngleTowardTarget({ Ids = args.Ids, DestinationId = args.DestinationId })
+end

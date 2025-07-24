@@ -20,6 +20,18 @@ local newData = {
 		DisplayName = "アスポデロス （凶夢）",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DisplayName = "エリュシオン （凶夢）",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DisplayName = "ステュクス （凶夢）",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
+		DisplayName = "ギリシア （凶夢）",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "ザグレウス",
 		Description = "冥界の王子",

@@ -20,6 +20,18 @@ local newData = {
 		DisplayName = "ASPHODEL (Albtraum)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DisplayName = "ELYSION (Albtraum)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DisplayName = "STYX (Albtraum)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
+		DisplayName = "GRIECHENLAND (Albtraum)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Zagreus",
 		Description = "Prinz der Unterwelt",

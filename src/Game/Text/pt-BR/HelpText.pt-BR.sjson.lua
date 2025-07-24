@@ -20,6 +20,18 @@ local newData = {
 		DisplayName = "ASFÓDELO (Pesadelo)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DisplayName = "ELÍSIO (Pesadelo)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DisplayName = "ESTIGE (Pesadelo)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
+		DisplayName = "GRÉCIA (Pesadelo)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Zagreu",
 		Description = "Príncipe do Submundo",

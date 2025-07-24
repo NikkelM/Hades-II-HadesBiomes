@@ -1,6 +1,5 @@
 -- Adds EncounterData for Tartarus from Hades to Hades II
-
-local encounterData = mod.LoadHadesEncounterData("EncounterData.lua")
+local encounterData = mod.LoadHadesEncounterData("EncounterData.lua") or {}
 local encounterDataTartarus = {
 	-- Generic encounters
 	-- This one is used by all biomes, we define it here

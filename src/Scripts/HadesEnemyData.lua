@@ -6126,7 +6126,6 @@ mod.EnemyData = {
 
 		AIOptions =
 		{
-			-- TODO
 			"PickupAI",
 		},
 

@@ -32,6 +32,7 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications, replaceme
 	end
 
 	-- Modify InspectPoint Storyteller voiceline identifiers
+	-- Do this before the inheritance processing
 	for roomName, roomData in pairs(base) do
 		if roomData.InspectPoints then
 			for inspectPointId, inspectPointData in pairs(roomData.InspectPoints) do

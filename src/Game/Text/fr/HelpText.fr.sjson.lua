@@ -20,6 +20,18 @@ local newData = {
 		DisplayName = "ASPHODÈLE (Cauchemar)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DisplayName = "ÉLYSÉE (Cauchemar)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DisplayName = "STYX (Cauchemar)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
+		DisplayName = "GRÈCE (Cauchemar)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Zagreus",
 		Description = "Prince des Enfers",

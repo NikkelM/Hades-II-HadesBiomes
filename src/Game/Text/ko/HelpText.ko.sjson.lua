@@ -20,6 +20,18 @@ local newData = {
 		DisplayName = "아스포델 (악몽)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DisplayName = "엘리시움 (악몽)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DisplayName = "스틱스 (악몽)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
+		DisplayName = "그리스 (악몽)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "자그레우스",
 		Description = "지하세계의 왕자",

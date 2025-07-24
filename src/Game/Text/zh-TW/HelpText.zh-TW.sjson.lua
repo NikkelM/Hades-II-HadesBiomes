@@ -20,6 +20,18 @@ local newData = {
 		DisplayName = "水仙花平原 （夢魘）",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DisplayName = "至福樂土 （夢魘）",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DisplayName = "冥河 （夢魘）",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
+		DisplayName = "地表 （夢魘）",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "扎格列欧斯",
 		Description = "冥界王子",

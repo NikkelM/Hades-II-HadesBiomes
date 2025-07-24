@@ -176,8 +176,10 @@ local function on_ready()
 		import "Game/Projectiles/Enemy_Traps_Projectiles.sjson.lua"
 
 		import "Game/Obstacles/Asphodel.sjson.lua"
-		import "Game/Obstacles/Tartarus.sjson.lua"
 		import "Game/Obstacles/Chaos.sjson.lua"
+		import "Game/Obstacles/Elysium.sjson.lua"
+		-- import "Game/Obstacles/Styx.sjson.lua"
+		import "Game/Obstacles/Tartarus.sjson.lua"
 
 		-- The ScreenText files depend on icons in here
 		import "Scripts/UIData.lua"
@@ -242,6 +244,8 @@ local function on_ready()
 		import "Scripts/EncounterSets.lua"
 		import "Scripts/EncounterDataTartarus.lua"
 		import "Scripts/EncounterDataAsphodel.lua"
+		import "Scripts/EncounterDataElysium.lua"
+		-- import "Scripts/EncounterDataStyx.lua"
 
 		-- Loads Room data
 		import "Scripts/RoomSets.lua"
@@ -251,6 +255,10 @@ local function on_ready()
 		import "Scripts/RoomDataTartarus.lua"
 		import "Scripts/HadesRoomDataAsphodel.lua"
 		import "Scripts/RoomDataAsphodel.lua"
+		import "Scripts/HadesRoomDataElysium.lua"
+		import "Scripts/RoomDataElysium.lua"
+		-- import "Scripts/HadesRoomDataStyx.lua"
+		-- import "Scripts/RoomDataStyx.lua"
 
 		-- Loads Weapon data
 		import "Scripts/HadesWeaponData.lua"
@@ -262,13 +270,16 @@ local function on_ready()
 		-- Function mappings between Hades and Hades II
 		import "Scripts/FunctionMappings/AsphodelWrapping.lua"
 		import "Scripts/FunctionMappings/BossAsphodel.lua"
+		import "Scripts/FunctionMappings/BossElysium.lua"
 		import "Scripts/FunctionMappings/BossTartarus.lua"
+		import "Scripts/FunctionMappings/Chariot.lua"
 		import "Scripts/FunctionMappings/CrawlerMiniboss.lua"
 		import "Scripts/FunctionMappings/CrusherUnit.lua"
 		import "Scripts/FunctionMappings/Environment.lua"
 		import "Scripts/FunctionMappings/HeavyRanged.lua"
 		import "Scripts/FunctionMappings/LightSpawner.lua"
 		import "Scripts/FunctionMappings/MiniBossTartarus.lua"
+		import "Scripts/FunctionMappings/ShadeNaked.lua"
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes

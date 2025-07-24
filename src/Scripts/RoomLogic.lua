@@ -63,9 +63,18 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 end)
 
 modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
+	currentRun = currentRun or game.CurrentRun
+	args = args or {}
+
+	-- If the unit is a ShadeNaked, we don't want a summon animation for the picked up enemy
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and currentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation then
+		currentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation = nil
+		unit.UseActivatePresentation = false
+	end
+
 	base(unit, currentRun, args)
 
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and unit.ModsNikkelMHadesBiomesIsModdedEnemy then
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and unit.ModsNikkelMHadesBiomesIsModdedEnemy then
 		-- Overwrite weapon/AI data if necessary due to a vow
 		local shrineLevel = game.GetNumShrineUpgrades(unit.ShrineMetaUpgradeName)
 		local requiredShrineLevel = unit.ShrineMetaUpgradeRequiredLevel or 1

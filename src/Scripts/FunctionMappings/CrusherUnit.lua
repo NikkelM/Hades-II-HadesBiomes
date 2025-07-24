@@ -4,13 +4,26 @@ function game.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
 	if args.Delay then
 		game.wait(args.Delay, unit.AIThreadName)
 	end
+
+	local offset = { X = 0, Y = 0 }
+	if args.CalcOffset then
+		offset = game.CalcOffset(math.rad(GetAngle({ Id = unit.ObjectId }) or 0), args.SpawnDistance or 0) or { X = 0, Y = 0 }
+	end
+	local angle = 0
+	if args.CalcAngle then
+		angle = GetAngle({ Id = unit.ObjectId }) or 0
+	end
 	-- For CrusherUnit: Make it vulnerable again after the Cast hack in the modded SkyAttackerAI
 	game.SetUnitVulnerable(unit, "ModsNikkelMHadesBiomesUnitTouchdownFlag")
+
 	CreateProjectileFromUnit({
 		Name = args.ProjectileName,
 		Id = unit.ObjectId,
 		DestinationId = unit.ObjectId,
-		FireFromTarget = true
+		FireFromTarget = args.FireFromTarget or true,
+		OffsetX = offset.X,
+		OffsetY = offset.Y,
+		Angle = angle,
 	})
 end
 

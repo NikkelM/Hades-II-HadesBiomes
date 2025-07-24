@@ -17,7 +17,19 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
-		DisplayName = "¿ASFÓDELOS (Pesadilla)",
+		DisplayName = "ASFÓDELOS (Pesadilla)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DisplayName = "ELÍSEO (Pesadilla)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DisplayName = "ESTIGIA (Pesadilla)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
+		DisplayName = "GRECIA (Pesadilla)",
 	},
 	{
 		Id = "CharProtag",

@@ -62,9 +62,7 @@ local hadesProjectilesModifications = {
 		},
 	},
 	LightRangedWeapon = {
-		CanBeProjectileDefenseDestroyed = false,
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
-		CanBeReflected = true,
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		-- It just disappears instead of exploding like in Hades
 		-- The explosion has a weird boxed brightness around it
 		DissipateFx = "EnemyProjectileDissipate",
@@ -87,9 +85,7 @@ local hadesProjectilesModifications = {
 	-- TARTARUS - BOSSES
 	HarpyBeam = {
 		Speed = 700,
-		CanBeProjectileDefenseDestroyed = false,
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
-		CanBeReflected = true,
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
 	},
 	HarpySlowBeam = {
 		UnpauseAnimation = mod.NilValue,
@@ -114,23 +110,48 @@ local hadesProjectilesModifications = {
 	},
 	-- ASPHODEL
 	RangedBurrowerWeapon = {
-		CanBeProjectileDefenseDestroyed = false,
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
-		CanBeReflected = true,
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
 	},
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
 	},
 	-- ASPHODEL - HYDRA
 	HydraDart = {
-		CanBeProjectileDefenseDestroyed = false,
-		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
-		CanBeReflected = true,
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
 	},
 	HydraSummon = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 		CheckObstacleImpact = true,
 		DetonateOnTouchdown = true,
+	},
+	-- ELYSIUM
+	SplitShotWeapon = {
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
+		ImpactFx = "EnemyProjectileImpact",
+		DissipateFx = "EnemyProjectileMultiBreak",
+		SpawnOnDeath = "null",
+		SpawnOnDissipate = "SplitShotWeaponSmall",
+		UnpauseResetLocation = true,
+		AffectsSelf = false,
+		Fuse = 1.65,
+	},
+	SplitShotWeaponSmall = {
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
+		DissipateFx = "EnemyProjectileDissipate",
+		UnpauseResetLocation = true,
+		AffectsSelf = false,
+		Thing = {
+			Graphic = "EnemyProjectileIn",
+		},
+	},
+	ChariotRamSelfDestruct = {
+		AffectsEnemies = true,
+	},
+	-- ELYSIUM - MINOTAUR
+	MinotaurOverheadTouchdown = {
+		AttachToOwner = false,
+		DamageRadius = 400,
+		DamageRadiusScaleY = 0.4,
 	},
 	-- STYX
 	StaggeredSatyrRangedWeapon = {
@@ -191,10 +212,18 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then
 		projectile.Effect.Name = "HeroOnHitStun"
 	end
+	if projectile.Effects then
+		for _, effect in ipairs(projectile.Effects) do
+			if effect.Name == "ZagreusOnHitStun" then
+				effect.Name = "HeroOnHitStun"
+			end
+		end
+	end
+
 	-- Hades uses DamageLow and DamageHigh properties, Hades II only has Damage
-	if projectile.DamageLow or projectile.DamageHigh then
+	if projectile.DamageLow or projectile.DamageHigh and not projectile.Damage then
 		local damageLow = projectile.DamageLow or 0
-		local damageHigh = projectile.DamageHigh or 0
+		local damageHigh = projectile.DamageHigh or damageLow
 		projectile.Damage = math.floor((damageLow + damageHigh) / 2)
 		projectile.DamageLow = nil
 		projectile.DamageHigh = nil

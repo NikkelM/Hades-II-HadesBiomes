@@ -36,19 +36,27 @@ function game.NikkelMHadesBiomesBossAIStageHandler(enemy, args)
 		enemy.RageWeapon = aiStage.SetRageWeapon
 	end
 
-	-- Transistion
+	-- Transition
 	if aiStage.ThreadedFunctions ~= nil then
 		for k, aiFunctionName in pairs(aiStage.ThreadedFunctions) do
-			game.thread(game.CallFunctionName, aiFunctionName, enemy, CurrentRun)
+			game.thread(game.CallFunctionName, aiFunctionName, enemy)
 		end
 	end
 
 	if aiStage.PermanentlyEnrage then
 		enemy.PermanentEnraged = true
-		game.thread(game.EnrageUnit, enemy, game.CurrentRun)
+		game.thread(game.EnrageUnit, enemy)
 	end
 
 	if aiStage.ClearObstacleTypes then
 		Destroy({ Ids = GetIdsByType({ Name = aiStage.ClearObstacleTypes }) })
 	end
 end
+
+-- If the enemy is the ShadeNaked, we don't want a summon animation for the picked up enemy
+modutil.mod.Path.Wrap("ProcessPickup", function(base, enemy, pickupTarget)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.GenusName == "ShadeNaked" then
+		game.CurrentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation = true
+	end
+	base(enemy, pickupTarget)
+end)

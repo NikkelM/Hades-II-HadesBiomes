@@ -65,11 +65,6 @@ Note: This is irrelevant with the current method of loading the data.
 - `RoomSetName` needs to be added to the base room file for the Biome, e.g. `RoomSetName = "A"` for Tartarus.
 - Each room needs a `Name` set to itself, this is handled already by the `mod.ApplyModificationsAndInherit()` function.
 
-#### Not figured out yet
-
-- Door reward previews have the Hades II format, should be possible to get the Hades format instead.
-- Interaction points on the maps that have the narrator voiceover often use different voicelines (i.e. same ID is used for a different voiceline in Hades II).
-
 ## Sjson files
 
 Part of this knowledge is needed when adding Hades enemy types to Hades II - more about that in the [Adding Hades enemies](#adding-hades-enemies) section.

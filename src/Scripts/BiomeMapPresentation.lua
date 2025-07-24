@@ -144,7 +144,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	for bountyName, v in pairs(game.CurrentRun.BountiesCompleted) do
 		local bountyData = game.BountyData[bountyName]
 		if bountyData ~= nil then
-			local prevRoom = game.GetPreviousRoom(CurrentRun)
+			local prevRoom = game.GetPreviousRoom(CurrentRun) or {}
 			if game.CurrentRun.CurrentRoom.Encounter.Name == bountyData.Encounter or
 					prevRoom.Encounter.Name == bountyData.Encounter then
 				-- Original - Alternative not implemented/checked if needed

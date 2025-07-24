@@ -17,7 +17,20 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
-		DisplayName = "ΑΣΦΟΔΕΛΑ ΛΙΒΑΔΙΑ (Εφιάλτης)",
+		DisplayName = "ΑΣΦΟΔΕΛΟΣ (Εφιάλτης)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DisplayName = "ΕΛΥΣΙΟΥΜ (Εφιάλτης)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DisplayName = "ΣΤΥΞ (Εφιάλτης)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
+		-- Means SURFACE, not GREECE
+		DisplayName = "ΕΠΙΦΑΝΕΙΑ (Εφιάλτης)",
 	},
 	{
 		Id = "CharProtag",

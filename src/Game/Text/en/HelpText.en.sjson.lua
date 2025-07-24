@@ -20,6 +20,18 @@ local newData = {
 		DisplayName = "ASPHODEL (Nightmare)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DisplayName = "ELYSIUM (Nightmare)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DisplayName = "STYX (Nightmare)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
+		DisplayName = "GREECE (Nightmare)",
+	},
+	{
 		-- Almost all textlines use CharProtag in Hades
 		Id = "CharProtag",
 		DisplayName = "Zagreus",

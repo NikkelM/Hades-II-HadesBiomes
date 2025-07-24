@@ -70,3 +70,8 @@ function game.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 		game.StartEncounterEffects(game.CurrentRun)
 	end
 end
+
+function game.ActivatePrePlacedByShrineLevel(eventSource, args)
+	local shrineLevel = game.GetNumShrineUpgrades(eventSource.ShrineMetaUpgradeName)
+	game.ActivatePrePlaced(eventSource, args[shrineLevel])
+end

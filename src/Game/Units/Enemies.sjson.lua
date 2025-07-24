@@ -24,6 +24,10 @@ local hadesEnemiesModifications = {
 	BaseMedusaHead = { InheritFrom = "1_BaseEnemy", },
 	HydraTooth = { InheritFrom = "1_BaseEnemy", },
 
+	-- ELYSIUM
+	BaseShade = { InheritFrom = "1_BaseEnemy", },
+	FlurrySpawner = { InheritFrom = "1_BaseEnemy", },
+
 	-- ENVIRONMENT
 	Breakable = { InheritFrom = "1_BaseDestructible", },
 }
@@ -89,6 +93,8 @@ local enemyAdditions = {
 		Name = "BloodlessNakedBerserkerElite",
 		InheritFrom = "BloodlessBerserker_Elite",
 	},
+	-- ELYSIUM
+	-- STYX
 }
 
 local enemyKeyReplacements = {

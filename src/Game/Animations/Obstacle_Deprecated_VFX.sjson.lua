@@ -8,22 +8,32 @@ local hadesTwoObstacleModifications = {
 	-- For the reaction animations, they cannot be set as a ChildAnimation, must be in CreateAnimations
 	["TartarusPillarBase04A-Fx"] = {
 		ChildAnimation = "null",
-		CreateAnimation = "TartarusPillarBase04A-Transition"
+		CreateAnimation = "TartarusPillarBase04A-Transition",
 	},
 	["TartarusPillarBase04B-Fx"] = {
 		ChildAnimation = "null",
-		CreateAnimation = "TartarusPillarBase04B-Transition"
+		CreateAnimation = "TartarusPillarBase04B-Transition",
 	},
 	["TartarusPillarBase04C-Fx"] = {
 		ChildAnimation = "null",
-		CreateAnimation = "TartarusPillarBase04C-Transition"
+		CreateAnimation = "TartarusPillarBase04C-Transition",
 	},
 	-- ASPHODEL
 	AsphodelBoatSunkUnlocked = {
-		ChildAnimation = "AsphodelRoomRewardAvailable-Back"
+		ChildAnimation = "AsphodelRoomRewardAvailable-Back",
 	},
 	HealthFountainEmptyAsphodel = {
 		ChildAnimation = "ModsNikkelMHadesBiomes-HealthFountainEmptyAsphodelWater",
+	},
+	-- ELYSIUM
+	-- For the reaction animations, they cannot be set as a ChildAnimation, must be in CreateAnimations
+	ElysiumPillarB = {
+		ChildAnimation = "null",
+		CreateAnimation = "Elysium_Pillar04TransitionA",
+	},
+	ElysiumPillarC = {
+		ChildAnimation = "null",
+		CreateAnimation = "Elysium_Pillar04TransitionB",
 	},
 }
 

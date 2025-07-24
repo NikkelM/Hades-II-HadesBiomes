@@ -20,6 +20,18 @@ local newData = {
 		DisplayName = "ASFODEL (Koszmar)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DisplayName = "ELIZJUM (Koszmar)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DisplayName = "STYKS (Koszmar)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
+		DisplayName = "GRECJA (Koszmar)",
+	},
+	{
 		Id = "CharProtag",
 		DisplayName = "Zagreus",
 		Description = "Książę Podziemi",
