@@ -1,4 +1,8 @@
 local function applyModificationsAndInheritProjectileData(base, modifications, projectileKeyReplacements)
+	for oldName, newName in pairs(mod.EnemyProjectileMappings) do
+		mod.UpdatePropertyName(modifications, oldName, newName, {}, "ProjectileDataHandler modifications")
+		-- mod.UpdatePropertyName(replacements, oldName, newName, {}, "ProjectileDataHandler replacements")
+	end
 	-- Apply modifications
 	for projectileName, projectileData in pairs(modifications) do
 		if not base[projectileName] then
@@ -33,15 +37,22 @@ end
 
 -- Also able to modify added projectiles here
 local projectileModifications = {
+	-- #region TARTARUS
 	HeavyRangedWeapon = {
 		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
 	},
 	HeavyRangedWeaponSplitter = {
 		InheritFrom = { "HeavyRangedWeapon", },
 	},
+	HeavyRangedSplitterFragment = {
+		InheritFrom = { "HeavyRangedWeaponSplitter", },
+		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedSplitterFragmentOnWeaponHit" },
+	},
 	HarpyLightning = {
 		InheritFrom = { "NoSlowFrameProjectile", },
 	},
+	-- #endregion
+	-- #region ENVIRONMENT
 	ModsNikkelMHadesBiomesRubbleFall = {
 		-- So it doesn't deal more damage to enemies than it should, and it doesn't destroy the rubble obstacles it spawns itself
 		OutgoingDamageModifiers = { { ObstacleMultiplier = 0.0, NonPlayerMultiplier = 3.0, }, }
@@ -49,6 +60,7 @@ local projectileModifications = {
 	ModsNikkelMHadesBiomesRubbleFallLarge = {
 		OutgoingDamageModifiers = { { ObstacleMultiplier = 0.0, NonPlayerMultiplier = 1.0, }, }
 	},
+	-- #endregion
 }
 
 local projectileKeyReplacements = {

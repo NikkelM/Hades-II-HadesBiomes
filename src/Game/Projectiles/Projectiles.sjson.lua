@@ -32,7 +32,6 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 
 end
 
-
 sjson.hook(hadesTwoProjectilesFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Projectiles, hadesProjectilesTable.Projectiles, "Name")
 end)

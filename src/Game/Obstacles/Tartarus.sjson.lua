@@ -6,9 +6,12 @@ local hadesTartarusObstacleTable = sjson.decode_file(hadesTartarusObstacleFile)
 local hadesTwoTartarusObstacleFile = rom.path.combine(rom.paths.Content(), "Game\\Obstacles\\Tartarus.sjson")
 -- local hadesTwoTartarusObstacleTable = sjson.decode_file(hadesTwoTartarusObstacleFile)
 
+-- These need to be added before the others, as they are inherited from
+local hadesObstacleAdditionsParents = {}
 local hadesObstacleAdditions = {}
 
 -- Add the added obstacles
+mod.AddTableKeysSkipDupes(hadesTartarusObstacleTable.Obstacles, hadesObstacleAdditionsParents, "Name")
 mod.AddTableKeysSkipDupes(hadesTartarusObstacleTable.Obstacles, hadesObstacleAdditions, "Name")
 
 -- Modifications for new obstacles copied from Hades
@@ -17,7 +20,7 @@ local obstacleModifications = {}
 -- Rename attached animations/Fx graphics
 for oldName, newName in pairs(mod.FxAnimationMappings) do
 	mod.UpdateField(hadesTartarusObstacleTable.Obstacles, oldName, newName, { "Thing", "Graphic" }, "Tartarus.sjson")
-	mod.UpdateField(hadesTartarusObstacleTable.Obstacles, oldName, newName, { "Thing", "AtachedAnim" }, "Tartarus.sjson")
+	mod.UpdateField(hadesTartarusObstacleTable.Obstacles, oldName, newName, { "Thing", "AttachedAnim" }, "Tartarus.sjson")
 end
 
 mod.ApplyNestedSjsonModifications(hadesTartarusObstacleTable.Obstacles, obstacleModifications)
@@ -69,6 +72,9 @@ local hadesTwoObstacleModifications = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
 	TartarusGable04 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TartarusPillarDecorative03 = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
 }

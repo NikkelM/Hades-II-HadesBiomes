@@ -23,9 +23,24 @@ hadesWeaponsTable.Weapons = mod.AddTableKeysSkipDupes(hadesTwoWeaponsTable.Weapo
 -- Hooking into the enemy file fails as the file size of the target is too small to insert the new data
 local hadesTwoPlayerWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\Weapons\\PlayerWeapons.sjson")
 
+local hadesWeaponAdditions = {
+	HarpyLungeAlectoRage = {
+		Name = "HarpyLungeAlectoRage",
+		InheritFrom = "HarpyLungeAlecto",
+	},
+	HarpyLassoLungeEM = {
+		Name = "HarpyLassoLungeEM",
+		InheritFrom = "HarpyLassoLunge",
+	},
+}
+-- Add the added weapons
+mod.AddTableKeysSkipDupes(hadesWeaponsTable.Weapons, hadesWeaponAdditions, "Name")
+
 local hadesWeaponsModifications = {
-	-- TARTARUS
-	-- ASPHODEL - HYDRA
+	-- #region TARTARUS
+	-- #endregion
+
+	-- #region ASPHODEL
 	HydraLunge = {
 		-- Needs to be lowered due to tethers not locking the head in place
 		-- It would otherwise fly over the whole map
@@ -34,29 +49,23 @@ local hadesWeaponsModifications = {
 	HydraSnap = {
 		SelfVelocity = 4000.0,
 	},
-	-- ELYSIUM
-	ChariotRam = {
-		Effect = {
-			-- The speedup during the ram - higher so it can't just be outsprinted
-			Modifier = 760,
-		},
+	-- #endregion
+
+	-- #region ELYSIUM
+	ShadeSpearLeap = {
+		SelfVelocity = mod.NilValue,
+		SelfUpwardVelocity = mod.NilValue,
 	},
+	-- TODO: Rework same as for ChariotRam
 	TheseusChariotRam = {
 		Effect = {
 			Modifier = 760,
 		},
 	},
-	ChariotRamElite = {
-		Effect = {
-			Modifier = 880,
-		},
-	},
-	ChariotRamSelfDestruct = {
-		Effect = {
-			Modifier = 680,
-		},
-	},
-	-- STYX
+	-- #endregion
+
+	-- #region STYX
+	-- #endregion
 }
 
 mod.ApplyNestedSjsonModifications(hadesWeaponsTable.Weapons, hadesWeaponsModifications)
@@ -64,3 +73,11 @@ mod.ApplyNestedSjsonModifications(hadesWeaponsTable.Weapons, hadesWeaponsModific
 sjson.hook(hadesTwoPlayerWeaponsFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Weapons, hadesWeaponsTable.Weapons, "Name")
 end)
+
+-- Assign to mod so we can get required properties in WeaponData.lua
+mod.HadesSjsonWeaponsTable = {}
+for _, weapon in ipairs(hadesWeaponsTable.Weapons) do
+	if weapon.Name then
+		mod.HadesSjsonWeaponsTable[weapon.Name] = weapon
+	end
+end

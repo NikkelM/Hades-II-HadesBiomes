@@ -8,6 +8,15 @@ modutil.mod.Path.Wrap("DestroyDoorRewardPresenation", function(base, door)
 	base(door)
 end)
 
+
+modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
+	if game.ScreenAnchors.BossRageTitle ~= nil then
+		local ids = { game.ScreenAnchors.BossRageTitle, game.ScreenAnchors.BossRageBack, game.ScreenAnchors.BossRageFill }
+		Destroy({ Ids = ids })
+	end
+	base(currentRun, killer, args)
+end)
+
 function game.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId, skipCameraLockOnEnd)
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or
 			0.8

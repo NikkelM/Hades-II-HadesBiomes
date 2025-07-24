@@ -55,7 +55,7 @@ function game.ModsNikkelMHadesBiomesHandleWrapping(encounter)
 					OffsetY = offset.Y
 				})
 				obstacleWrapData.WrapCount = 0
-				game.thread(game.WrapObstacle, id, obstacleWrapData, encounter, resetTargetId)
+				game.thread(game.WrapObstacle, id, obstacleWrapData, { ResetTargetId = resetTargetId, Angle = -155 })
 			end
 		end
 	end
@@ -136,7 +136,7 @@ function game.ModsNikkelMHadesBiomesHandleWrapping(encounter)
 end
 
 function game.BeginWrappingEncounter()
-	game.StartEncounterEffects(game.CurrentRun)
+	game.StartEncounterEffects()
 end
 
 function game.WrappingEncounterEndPresentation(eventSource)

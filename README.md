@@ -27,7 +27,7 @@ It is recommended to have both Hades and Hades II installed through the same pla
 > [!CAUTION]
 > To be able to use the mod, Hades must be installed at **ALL TIMES**.
 
-Read on at [Installation](#installation) for information on how to install the mod through r2modman.
+Read on at [Installation](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Installation-&-Uninstallation) for information on how to install the mod through r2modman.
 
 ## Features
 
@@ -35,46 +35,9 @@ Read on at [Installation](#installation) for information on how to install the m
 > This mod is a work in progress.
 > Not everything is working as expected or fully implemented.
 
-The following content from Hades is available in Hades II through this mod, allowing you to play as Melinoë, with her weapons and abilities.
+This mod adds all biomes, enemies and bosses from Hades to Hades II, as a third potential route to take each night.
 
-### Encounters/Rooms:
-
-| Encounter/Room Name | Status                |
-| ------------------- | --------------------- |
-| **Tartarus**        |                       |
-| Default combat      | Implemented           |
-| Miniboss encounters | Implemented           |
-| Fountain room       | Implemented           |
-| Shops               | Implemented           |
-| Bosses              | Implemented           |
-| Survival challenge  | Not implemented       |
-| Thanatos encounter  | Not implemented       |
-| **Asphodel**        |                       |
-| Default combat      | Implemented           |
-| Miniboss encounters | Implemented           |
-| Fountain room       | Implemented           |
-| Shops               | Implemented           |
-| Bosses              | Implemented           |
-| Thanatos encounter  | Not implemented       |
-| **Elysium**         | Not implemented       |
-| **Styx**            | Not implemented       |
-| **Surface**         | Not implemented       |
-
-### Enemies
-
-| Enemy                       |  Status          |
-| --------------------------- |  --------------- |
-| **Tartarus**                |                  |
-| Regular enemies             | Implemented      |
-| Minibosses                  | Implemented      |
-| Megaera, Alecto, Tisiphone  | Implemented      |
-| **Asphodel**                |                  |
-| Regular enemies             | Implemented      |
-| Minibosses                  | Implemented      |
-| Bone Hydra                  | Implemented      |
-| **Elysium**                 | Not implemented  |
-| **Styx**                    | Not implemented  |
-| **Surface**                 | Not implemented  |
+Experience the original Hades underworld as Melinoë and discover new ways to battle through Tartarus, Asphodel, Elysium and the Temple of Styx using her abilities and weapons from Hades II.
 
 ## Installation & Uninstallation
 

@@ -50,11 +50,14 @@ local projectilesToRemove = {
 	"LavaTileTriangle02Weapon",
 	"EnemyBombs",
 	"LightningAura",
+	"PoisonPuddle",
+	"PoisonPuddleSmall",
 }
 
 -- Modifications/overrides to the Hades enemy projectiles
 local hadesProjectilesModifications = {
-	-- TARTARUS
+	-- #region TARTARUS
+	-- #region TARTARUS - Regular
 	DisembodiedHandGrab = {
 		Effect = {
 			-- Don't play the ZagreusStun animation
@@ -82,7 +85,13 @@ local hadesProjectilesModifications = {
 	HeavyRangedSplitterFragment = {
 		DieWithOwner = true,
 	},
-	-- TARTARUS - BOSSES
+	-- #endregion
+	-- #region TARTARUS - Minibosses
+	WretchAssassinRanged = {
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
+	},
+	-- #endregion
+	-- #region TARTARUS - Harpies
 	HarpyBeam = {
 		Speed = 700,
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
@@ -108,23 +117,40 @@ local hadesProjectilesModifications = {
 			[1] = { StartAnimation = "MelinoeGetHit", },
 		},
 	},
-	-- ASPHODEL
+	HarpyWhipArc = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
+	SummonMegaeraWhipWhirl = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
+	-- #endregion
+	-- #endregion
+
+	-- #region ASPHODEL
+	-- #region ASPHODEL - Regular
 	RangedBurrowerWeapon = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
+		DissipateFx = "EnemyProjectileDissipate",
 	},
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
 	},
-	-- ASPHODEL - HYDRA
+	-- #endregion
+	-- #region ASPHODEL - Hydra
 	HydraDart = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
+		DissipateFx = "EnemyProjectileDissipate",
 	},
 	HydraSummon = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 		CheckObstacleImpact = true,
 		DetonateOnTouchdown = true,
 	},
-	-- ELYSIUM
+	-- #endregion
+	-- #endregion
+
+	-- #region ELYSIUM
+	-- #region ELYSIUM - Regular
 	SplitShotWeapon = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		ImpactFx = "EnemyProjectileImpact",
@@ -147,20 +173,46 @@ local hadesProjectilesModifications = {
 	ChariotRamSelfDestruct = {
 		AffectsEnemies = true,
 	},
-	-- ELYSIUM - MINOTAUR
+	-- #endregion
+	-- #region ELYSIUM - Minotaur
 	MinotaurOverheadTouchdown = {
 		AttachToOwner = false,
 		DamageRadius = 400,
 		DamageRadiusScaleY = 0.4,
 	},
-	-- STYX
+	-- #endregion
+	-- #endregion
+
+	-- #region STYX
 	StaggeredSatyrRangedWeapon = {
 		UnpauseAnimation = mod.NilValue,
 		Thing = {
 			Graphic = "SatyrDart",
 		},
 	},
+	-- #endregion
+
+	-- #region ENVIRONMENT
+	-- TODO: Still work in progress, as it is not aligned perfectly with the trap itself
+	SpikeTrapWeapon = {
+		Thing = {
+			Scale = 1.0,
+		},
+	},
+	-- #endregion
 }
+
+local renamedProjectileModifications = {}
+for oldName, newName in pairs(mod.EnemyProjectileMappings) do
+	if hadesProjectilesModifications[oldName] then
+		renamedProjectileModifications[newName] = hadesProjectilesModifications[oldName]
+		hadesProjectilesModifications[oldName] = nil
+		mod.DebugPrint("Renamed projectile modification: " .. oldName .. " to " .. newName .. " in EnemyProjectiles.sjson", 4)
+	end
+end
+for key, value in pairs(renamedProjectileModifications) do
+	hadesProjectilesModifications[key] = value
+end
 
 local projectileKeyReplacements = {
 	DissipateGraphic = "DissipateFx",
@@ -181,14 +233,15 @@ for oldName, newName in pairs(mod.FxAnimationMappings) do
 end
 
 -- Rename keys in the modifications
-for _, projectileMod in pairs(hadesProjectilesModifications) do
-	for oldKey, newKey in pairs(projectileKeyReplacements) do
-		if projectileMod[oldKey] then
-			projectileMod[newKey] = projectileMod[oldKey]
-			projectileMod[oldKey] = nil
-		end
-	end
+for modName, projectileMod in pairs(hadesProjectilesModifications) do
+	mod.RenameKeys(projectileMod, projectileKeyReplacements, "hadesProjectilesModifications[" .. tostring(modName) .. "]")
 end
+
+-- Replace the ZagreusOnHitStun effect with HeroOnHitStun
+mod.UpdateField(hadesProjectilesTable.Projectiles, "ZagreusOnHitStun", "HeroOnHitStun", { "Effect", "Name" },
+	"EnemyProjectiles.sjson")
+mod.UpdateField(hadesProjectilesTable.Projectiles, "ZagreusOnHitStun", "HeroOnHitStun", { "Effects", "*", "Name" },
+	"EnemyProjectiles.sjson")
 
 -- Iterating through all projectiles
 for i = #hadesProjectilesTable.Projectiles, 1, -1 do
@@ -201,13 +254,8 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	end
 
 	-- Modifications that should be made to all projectiles
-	-- Rename keys
-	for oldKey, newKey in pairs(projectileKeyReplacements) do
-		if projectile[oldKey] then
-			projectile[newKey] = projectile[oldKey]
-			projectile[oldKey] = nil
-		end
-	end
+	mod.RenameKeys(projectile, projectileKeyReplacements, "hadesProjectilesTable.Projectiles[" .. tostring(i) .. "]")
+
 	-- This property was renamed in Hades II
 	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then
 		projectile.Effect.Name = "HeroOnHitStun"
@@ -235,3 +283,11 @@ mod.ApplyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjec
 sjson.hook(hadesTwoProjectilesFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Projectiles, hadesProjectilesTable.Projectiles, "Name")
 end)
+
+-- Assign to mod so we can check if the projectile exists in WeaponData.lua
+mod.HadesSjsonProjectilesTable = {}
+for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
+	if projectile.Name then
+		mod.HadesSjsonProjectilesTable[projectile.Name] = true
+	end
+end

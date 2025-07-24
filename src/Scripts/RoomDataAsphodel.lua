@@ -40,6 +40,9 @@ local roomModifications = {
 		TimeChallengeEncounterOptions = { "TimeChallengeAsphodel" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeAsphodel" },
 		EliteChallengeEncounterOptions = { "EliteChallengeAsphodel" },
+
+		LocationAnimName = "LocationBackingIrisChaosIn",
+		LocationAnimOutName = "LocationBackingIrisChaosOut",
 	},
 
 	-- OPENING ROOMS
@@ -51,6 +54,9 @@ local roomModifications = {
 		StartUnthreadedEvents = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
+		},
+		ThreadedEvents = {
+			[1] = { Args = { AnimationName = "LocationBackingIrisChaosIn", AnimationOutName = "LocationBackingIrisChaosOut" }, },
 		},
 	},
 

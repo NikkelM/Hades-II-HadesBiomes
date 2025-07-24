@@ -141,7 +141,7 @@ function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.RegionClearedVoiceLines, true)
 
 	-- show completed bounties from previous region
-	for bountyName, v in pairs(game.CurrentRun.BountiesCompleted) do
+	for bountyName, v in pairs(game.CurrentRun.ShrineBountiesCompleted) do
 		local bountyData = game.BountyData[bountyName]
 		if bountyData ~= nil then
 			local prevRoom = game.GetPreviousRoom(CurrentRun) or {}

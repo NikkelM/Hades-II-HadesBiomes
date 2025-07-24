@@ -63,6 +63,21 @@ local encounterReplacements = {
 		-- The original from Hades is 11
 		DepthDifficultyRamp = 14,
 	},
+	OpeningGenerated = {
+		-- Blocks the LocationText from being shown an extra time in RoomEntranceDrop
+		BlockLocationText = true,
+		UnthreadedEvents = {
+			{
+				FunctionName = "SpawnRoomReward",
+				Args = { WaitUntilPickup = true, }
+			},
+			{ FunctionName = "EncounterAudio" },
+			{ FunctionName = "BeginOpeningEncounter" },
+			{ FunctionName = "HandleEnemySpawns" },
+			{ FunctionName = "CheckForAllEnemiesDead" },
+			{ FunctionName = "PostCombatAudio" },
+		},
+	},
 
 	PerfectClearChallengeTartarus = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedTartarus" },
@@ -88,6 +103,7 @@ local encounterModifications = {
 		PreSpawnEnemies = false,
 		NoFirstWaveStartDelay = true,
 		SpawnOverrides = { UseActivatePresentation = false, },
+		CanEncounterSkip = false,
 		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		RequiredTextLines = mod.NilValue,
 		WaveTemplate = {
@@ -104,7 +120,7 @@ local encounterModifications = {
 
 	-- MINIBOSSES
 	MiniBossGrenadier = {
-		LoadPackages = { "Asphodel" },
+		LoadPackages = { "BiomeB" },
 	},
 	MiniBossHeavyRangedSplitter = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
@@ -121,6 +137,7 @@ local encounterModifications = {
 
 	-- BOSSES
 	BossHarpy1 = {
+		DelayedStart = true,
 		WipeEnemiesOnKillAllTypes = { "Harpy" },
 		CancelSpawnsOnKillAllTypes = { "Harpy" },
 		PostUnthreadedEvents = mod.NilValue,

@@ -77,6 +77,8 @@ mod.FxAnimationMappings = {
 	EnemyProjectile = "HadesEnemyProjectile",
 	EnemyProjectileIn = "HadesEnemyProjectileIn",
 	EnemyProjectileLight = "HadesEnemyProjectileLight",
+
+	HydraTouchdownFx = "HadesHydraTouchdownFx",
 }
 mod.GUIAnimationMappings = {
 	ExitPreview = "HadesExitPreview",

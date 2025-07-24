@@ -75,8 +75,7 @@ function game.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimati
 				ApplyForce({
 					Id = id,
 					Speed = game.RandomFloat(victim.OnDeathTetherRandomForceMin, victim.OnDeathTetherRandomForceMax),
-					Angle =
-							game.RandomFloat(0, 360)
+					Angle = game.RandomFloat(0, 360)
 				})
 			end
 			if victim.DestroyTethersOnDeath then
@@ -97,7 +96,7 @@ function game.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimati
 	end
 end
 
--- Is called whenever HeavyRanged hits the player.
+-- Is called whenever HeavyRanged hits.
 function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimId, triggerArgs)
 	-- The first hit of each burst should not do anything, as it is the lock-on "hit"
 	if triggerArgs.Detonation == 0 then
@@ -106,6 +105,16 @@ function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victim
 	end
 	-- Suppress the damage presentation on the player (blood splatter etc.)
 	triggerArgs.SourceWeapon = "HeavyRangedWeapon"
+end
+
+function game.ModsNikkelMHadesBiomesHeavyRangedSplitterFragmentOnWeaponHit(victim, victimId, triggerArgs)
+	-- Don't deal damage to the miniboss itself
+	if victim.ObjectId ~= game.CurrentRun.Hero.ObjectId then
+		triggerArgs.DamageAmount = 0
+		triggerArgs.Silent = true
+	else
+		game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimId, triggerArgs)
+	end
 end
 
 -- Stops new fragments from spawning after the miniboss dies

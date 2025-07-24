@@ -84,6 +84,17 @@ end
 
 -- Creates a new helpTextFile for all given languages with any IDs that do not exist in the Hades II help text files
 local function copyHadesHelpTexts()
+	-- Load the Aliases.sjson file to get required aliases that need to be added as new entries to each language
+	local aliasesFilePath = rom.path.combine(mod.hadesGameFolder, 'Content\\Game\\Text\\Aliases.sjson')
+	local aliasesDataRaw = mod.DecodeSjsonFile(aliasesFilePath)
+	local aliasesData = {}
+	-- There's one set for each language. All are the same, so we can just use the first
+	if aliasesDataRaw and aliasesDataRaw.HelpTexts and aliasesDataRaw.HelpTexts[1] and aliasesDataRaw.HelpTexts[1].Texts then
+		aliasesData = aliasesDataRaw.HelpTexts[1].Texts
+	else
+		mod.DebugPrint("No aliases found in Aliases.sjson, skipping alias copying. This should not happen - please verify the game files!", 2)
+	end
+
 	for _, language in ipairs(mod.HelpTextLanguages) do
 		mod.DebugPrint("Copying help text for language: " .. language, 4)
 
@@ -125,6 +136,15 @@ local function copyHadesHelpTexts()
 				end
 			end
 
+			-- Add aliases
+			for _, alias in ipairs(aliasesData) do
+				if not existingIds[alias.Id] then
+					table.insert(hadesHelpTextData.Texts, alias)
+					existingIds[alias.Id] = true
+				else
+				end
+			end
+
 			-- Encode the hadesHelpTextFile to a new file in the Hades II folder
 			sjson.encode_file(hadesHelpTextFilePath, hadesHelpTextData)
 		end
@@ -163,7 +183,13 @@ local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 	end
 
 	for _, addition in ipairs(additions) do
-		table.insert(filteredAnimations, addition)
+		if addition.InheritFrom then
+			-- Add it at the end, as it needs to inherit from something else
+			table.insert(filteredAnimations, addition)
+		else
+			-- At to the beginning of the list in case we need to inherit from the addition
+			table.insert(filteredAnimations, 1, addition)
+		end
 	end
 
 	animationsTable.Animations = filteredAnimations

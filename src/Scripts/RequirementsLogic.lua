@@ -78,6 +78,103 @@ modutil.mod.Path.Wrap("IsTextLineEligible", function(base, currentRun, source, l
 	return isEligible
 end)
 
+function game.HasSeenEncounter(encounterName)
+	if game.GameState.EncountersOccurredCache[encounterName] ~= nil and game.GameState.EncountersOccurredCache[encounterName] > 0 then
+		return true
+	end
+	return false
+end
+
+function game.HasSeenRoom(roomName, excludeThisRun)
+	if game.GameState.RoomCountCache[roomName] ~= nil and game.GameState.RoomCountCache[roomName] > 0 then
+		return true
+	end
+	if not excludeThisRun and game.HasSeenRoomInRun(CurrentRun, roomName) then
+		return true
+	end
+	return false
+end
+
+function game.HasSeenRoomEarlierInRun(run, roomName)
+	if run.RoomCountCache[roomName] ~= nil and run.RoomCountCache[roomName] > 0 then
+		return true
+	end
+	return false
+end
+
+function game.HasSeenRoomInRun(run, roomName)
+	if run.CurrentRoom ~= nil and run.CurrentRoom.Name == roomName then
+		return true
+	end
+	if run.RoomCountCache ~= nil and run.RoomCountCache[roomName] ~= nil and run.RoomCountCache[roomName] > 0 then
+		return true
+	end
+	return false
+end
+
+function game.GetFastestRunClearTime(currentRun)
+	local fastestTime = 999999
+	if currentRun.Cleared then
+		fastestTime = currentRun.GameplayTime
+	end
+	for k, prevRun in pairs(game.GameState.RunHistory) do
+		if prevRun.Cleared and prevRun.GameplayTime ~= nil and prevRun.GameplayTime < fastestTime then
+			fastestTime = prevRun.GameplayTime
+		end
+	end
+	return fastestTime
+end
+
+function game.GetHighestShrinePointRunClear(currentRun, args)
+	args = args or {}
+	local highestPoints = 0
+	if currentRun ~= nil and currentRun.Cleared and currentRun.ShrinePointsCache ~= nil then
+		if args.RequiredBiome == nil or currentRun.BiomesReached[args.RequiredBiome] then
+			highestPoints = currentRun.ShrinePointsCache
+		end
+	end
+	for runIndex, prevRun in ipairs(game.GameState.RunHistory) do
+		if args.RequiredBiome == nil or (prevRun.BiomesReached ~= nil and prevRun.BiomesReached[args.RequiredBiome]) then
+			if prevRun.Cleared and prevRun.ShrinePointsCache ~= nil and prevRun.ShrinePointsCache > highestPoints then
+				highestPoints = prevRun.ShrinePointsCache
+			end
+		end
+	end
+	return highestPoints
+end
+
+function game.RunHasOneOfTraits(run, traits)
+	if run.TraitCache == nil then
+		return false
+	end
+	for k, traitName in pairs(traits) do
+		if run.TraitCache[traitName] then
+			return true
+		end
+	end
+	return false
+end
+
+function game.RunHasTraits(run, traits)
+	if run.TraitCache == nil then
+		return false
+	end
+	for k, traitName in pairs(traits) do
+		if not run.TraitCache[traitName] then
+			return false
+		end
+	end
+	return true
+end
+
+function game.IsMetaUpgradeActive(upgradeName, args)
+	args = args or {}
+	if game.Contains(game.ShrineUpgradeOrder, upgradeName) then
+		return true
+	end
+	return false
+end
+
 function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
 	if args == nil then
 		args = {}
@@ -142,7 +239,8 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	for roomRequirement, requirementType in pairs(roomRequirementOptions) do
 		if requirements[roomRequirement] then
 			if requirementType == "string" then
-				requirements[roomRequirement] = mod.AsphodelRoomNameMappings[requirements[roomRequirement]] or requirements[roomRequirement]
+				requirements[roomRequirement] = mod.AsphodelRoomNameMappings[requirements[roomRequirement]] or
+						requirements[roomRequirement]
 			elseif requirementType == "table" then
 				for i, roomName in ipairs(requirements[roomRequirement]) do
 					requirements[roomRequirement][i] = mod.AsphodelRoomNameMappings[roomName] or roomName
@@ -1049,7 +1147,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequiredCompletedRuns ~= nil then
 		local completedModdedRuns = 0
 		for i, run in pairs(game.GameState.RunHistory) do
-			if run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				completedModdedRuns = completedModdedRuns + 1
 			end
 		end
@@ -1061,7 +1159,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequiredFalseCompletedRuns ~= nil then
 		local completedModdedRuns = 0
 		for i, run in pairs(game.GameState.RunHistory) do
-			if run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				completedModdedRuns = completedModdedRuns + 1
 			end
 		end
@@ -1073,7 +1171,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequiredMinCompletedRuns ~= nil then
 		local completedModdedRuns = 0
 		for i, run in pairs(game.GameState.RunHistory) do
-			if run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				completedModdedRuns = completedModdedRuns + 1
 			end
 		end
@@ -1085,7 +1183,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequiredMaxCompletedRuns ~= nil then
 		local completedModdedRuns = 0
 		for i, run in pairs(game.GameState.RunHistory) do
-			if run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				completedModdedRuns = completedModdedRuns + 1
 			end
 		end
@@ -1157,7 +1255,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 		end
 	end
 
-	if requirements.RequiredMinBountiesEarned and game.TableLength(game.GameState.BountiesCompleted) < requirements.RequiredMinBountiesEarned then
+	if requirements.RequiredMinBountiesEarned and game.TableLength(game.GameState.ShrineBountiesCompleted) < requirements.RequiredMinBountiesEarned then
 		return false
 	end
 
@@ -1359,10 +1457,10 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	-- 	end
 	-- end
 
-	if requirements.RequiredInactiveMetaUpgrade ~= nil and GetNumMetaUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 or GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 then
+	if requirements.RequiredInactiveMetaUpgrade ~= nil and GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 then
 		return false
 	end
-	if requirements.RequiredActiveMetaUpgrade ~= nil and GetNumMetaUpgrades(requirements.RequiredActiveMetaUpgrade) < 1 and GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgrade) < 1 then
+	if requirements.RequiredActiveMetaUpgrade ~= nil and GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgrade) < 1 then
 		return false
 	end
 
@@ -1390,75 +1488,75 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	-- end
 
 	if requirements.RequiredMinActiveMetaUpgradeLevel ~= nil then
-		if GetNumMetaUpgrades(requirements.RequiredMinActiveMetaUpgradeLevel.Name) < requirements.RequiredMinActiveMetaUpgradeLevel.Count and GetNumShrineUpgrades(requirements.RequiredMinActiveMetaUpgradeLevel.Name) < requirements.RequiredMinActiveMetaUpgradeLevel.Count then
+		if GetNumShrineUpgrades(requirements.RequiredMinActiveMetaUpgradeLevel.Name) < requirements.RequiredMinActiveMetaUpgradeLevel.Count then
 			return false
 		end
 	end
 
 	if requirements.RequiredMaxActiveMetaUpgradeLevel ~= nil then
-		if GetNumMetaUpgrades(requirements.RequiredMaxActiveMetaUpgradeLevel.Name) > requirements.RequiredMaxActiveMetaUpgradeLevel.Count or GetNumShrineUpgrades(requirements.RequiredMaxActiveMetaUpgradeLevel.Name) > requirements.RequiredMaxActiveMetaUpgradeLevel.Count then
+		if GetNumShrineUpgrades(requirements.RequiredMaxActiveMetaUpgradeLevel.Name) > requirements.RequiredMaxActiveMetaUpgradeLevel.Count then
 			return false
 		end
 	end
 
 	if requirements.RequiredActiveMetaUpgradeLevel ~= nil then
-		if GetNumMetaUpgrades(requirements.RequiredActiveMetaUpgradeLevel.Name) ~= requirements.RequiredActiveMetaUpgradeLevel.Count and GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgradeLevel.Name) ~= requirements.RequiredActiveMetaUpgradeLevel.Count then
+		if GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgradeLevel.Name) ~= requirements.RequiredActiveMetaUpgradeLevel.Count then
 			return false
 		end
 	end
 
-	if requirements.RequiredAllMetaUpgradesInvestment ~= nil then
-		if not game.GameState.MetaUpgradeState then
-			return false
-		end
+	-- if requirements.RequiredAllMetaUpgradesInvestment ~= nil then
+	-- 	if not game.GameState.MetaUpgradeState then
+	-- 		return false
+	-- 	end
 
-		for metaupgradeName, data in pairs(game.MetaUpgradeData) do
-			-- for s, metaupgradeName in pairs(data) do
-			if not game.GameState.MetaUpgradeState[metaupgradeName] and not game.GameState.MetaUpgrades[metaupgradeName] then
-				return false
-			end
-			local investment = game.GameState.MetaUpgradeState[metaupgradeName] or 0
-			if IsMetaUpgradeActive(metaupgradeName) then
-				investment = game.GameState.MetaUpgrades[metaupgradeName] or 0
-			end
+	-- 	for metaupgradeName, data in pairs(game.MetaUpgradeData) do
+	-- 		-- for s, metaupgradeName in pairs(data) do
+	-- 		if not game.GameState.MetaUpgradeState[metaupgradeName] and not game.GameState.MetaUpgrades[metaupgradeName] then
+	-- 			return false
+	-- 		end
+	-- 		local investment = game.GameState.MetaUpgradeState[metaupgradeName] or 0
+	-- 		if IsMetaUpgradeActive(metaupgradeName) then
+	-- 			investment = game.GameState.MetaUpgrades[metaupgradeName] or 0
+	-- 		end
 
-			if investment < requirements.RequiredAllMetaUpgradesInvestment then
-				return false
-			end
-		end
-		-- end
-	end
+	-- 		if investment < requirements.RequiredAllMetaUpgradesInvestment then
+	-- 			return false
+	-- 		end
+	-- 	end
+	-- 	-- end
+	-- end
 
-	if requirements.RequiredAllMetaUpgradesMaxed ~= nil then
-		if not game.GameState.MetaUpgradeState then
-			return false
-		end
+	-- if requirements.RequiredAllMetaUpgradesMaxed ~= nil then
+	-- 	if not game.GameState.MetaUpgradeState then
+	-- 		return false
+	-- 	end
 
-		for metaupgradeName, data in pairs(game.MetaUpgradeData) do
-			-- for s, metaupgradeName in pairs(data) do
-			if not game.GameState.MetaUpgradeState[metaupgradeName] and not game.GameState.MetaUpgrades[metaupgradeName] then
-				return false
-			end
-			local investment = game.GameState.MetaUpgradeState[metaupgradeName] or 0
-			if IsMetaUpgradeActive(metaupgradeName) then
-				investment = game.GameState.MetaUpgrades[metaupgradeName] or 0
-			end
+	-- 	for metaupgradeName, data in pairs(game.MetaUpgradeData) do
+	-- 		-- for s, metaupgradeName in pairs(data) do
+	-- 		if not game.GameState.MetaUpgradeState[metaupgradeName] and not game.GameState.MetaUpgrades[metaupgradeName] then
+	-- 			return false
+	-- 		end
+	-- 		local investment = game.GameState.MetaUpgradeState[metaupgradeName] or 0
+	-- 		if IsMetaUpgradeActive(metaupgradeName) then
+	-- 			investment = game.GameState.MetaUpgrades[metaupgradeName] or 0
+	-- 		end
 
-			if MetaUpgradeData[metaupgradeName].MaxInvestment then
-				if investment < MetaUpgradeData[metaupgradeName].MaxInvestment then
-					return false
-				end
-			elseif MetaUpgradeData[metaupgradeName].CostTable then
-				if MetaUpgradeData[metaupgradeName].CostTable[investment + 1] then
-					return false
-				end
-			end
-		end
-		-- end
-	end
+	-- 		if MetaUpgradeData[metaupgradeName].MaxInvestment then
+	-- 			if investment < MetaUpgradeData[metaupgradeName].MaxInvestment then
+	-- 				return false
+	-- 			end
+	-- 		elseif MetaUpgradeData[metaupgradeName].CostTable then
+	-- 			if MetaUpgradeData[metaupgradeName].CostTable[investment + 1] then
+	-- 				return false
+	-- 			end
+	-- 		end
+	-- 	end
+	-- 	-- end
+	-- end
 
 	if requirements.RequiredTextLinesPerMetaUpgradeLevel ~= nil then
-		if GetNumMetaUpgrades(requirements.RequiredTextLinesPerMetaUpgradeLevel.MetaUpgradeName) >= requirements.RequiredTextLinesPerMetaUpgradeLevel.Count or GetNumShrineUpgrades(requirements.RequiredTextLinesPerMetaUpgradeLevel.MetaUpgradeName) >= requirements.RequiredTextLinesPerMetaUpgradeLevel.Count then
+		if GetNumShrineUpgrades(requirements.RequiredTextLinesPerMetaUpgradeLevel.MetaUpgradeName) >= requirements.RequiredTextLinesPerMetaUpgradeLevel.Count then
 			for k, textLineSet in pairs(requirements.RequiredTextLinesPerMetaUpgradeLevel.TextLines) do
 				if game.GameState.TextLinesRecord[textLineSet] == nil then
 					return false
@@ -1467,6 +1565,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 		end
 	end
 
+	game.CurrentRun.SupportAINames = game.CurrentRun.SupportAINames or {}
 	if requirements.RequiredSupportAINames ~= nil then
 		for k, requiredSupportAIName in pairs(requirements.RequiredSupportAINames) do
 			if not game.CurrentRun.SupportAINames[requiredSupportAIName] then
@@ -2151,7 +2250,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequiredMinConsecutiveClears ~= nil then
 		local consecutiveModdedClears = 0
 		for k, run in game.GameState.RunHistory do
-			if run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				if run.Cleared then
 					consecutiveModdedClears = consecutiveModdedClears + 1
 				else
@@ -2168,7 +2267,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequiredConsecutiveClears ~= nil then
 		local consecutiveModdedClears = 0
 		for k, run in game.GameState.RunHistory do
-			if run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				if run.Cleared then
 					consecutiveModdedClears = consecutiveModdedClears + 1
 				else
@@ -2727,14 +2826,16 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	end
 
 	if requirements.RequiredActiveMetaPointsMin ~= nil then
-		if GetTotalSpentMetaPoints() < requirements.RequiredActiveMetaPointsMin then
-			return false
-		end
+		return false
+		-- if GetTotalSpentMetaPoints() < requirements.RequiredActiveMetaPointsMin then
+		-- 	return false
+		-- end
 	end
 	if requirements.RequiredActiveMetaPointsMax ~= nil then
-		if GetTotalSpentMetaPoints() > requirements.RequiredActiveMetaPointsMax then
-			return false
-		end
+		return false
+		-- if GetTotalSpentMetaPoints() > requirements.RequiredActiveMetaPointsMax then
+		-- 	return false
+		-- end
 	end
 
 	if requirements.RequiredResourcesMin ~= nil then

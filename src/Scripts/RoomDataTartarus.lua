@@ -18,6 +18,8 @@ local roomReplacements = {
 		MusicActiveStems = { "Guitar", "Drums", "Bass", },
 		Music = mod.NilValue,
 		MusicRequirements = mod.NilValue,
+		-- Will be set in the encounter instead
+		UnthreadedEvents = mod.NilValue,
 	},
 
 	-- SHOPS
@@ -47,6 +49,9 @@ local roomModifications = {
 
 		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
 		ShrinePointDoorRequirements = { Skip = true },
+
+		LocationAnimName = "LocationBackingIrisChaosIn",
+		LocationAnimOutName = "LocationBackingIrisChaosOut",
 	},
 
 	-- OPENING ROOMS
@@ -56,6 +61,7 @@ local roomModifications = {
 		EntranceFunctionName = "RoomEntranceDrop",
 		EntranceFunctionArgs = { LandingAnimation = "Melinoe_HeroLanding", Sound = "/SFX/Player Sounds/MelWhooshDropIn", IntroHoldDuration = 2.34, StartZoomFraction = 0.65, ZoomDuration = 4 },
 		ThreadedEvents = {
+			[1] = { Args = { AnimationName = "LocationBackingIrisChaosIn", AnimationOutName = "LocationBackingIrisChaosOut" }, },
 			-- This will work with roomSetDataTartarus.RoomOpening.ThreadedEvents[3].Args.SpawnTypes = { "TartarusGhost01" }, but has the problem of spawning all Ghosts on the same ID
 			[3] = mod.NilValue
 		},
@@ -75,12 +81,6 @@ local roomModifications = {
 		{
 			{ FunctionName = "CheckBiomeStateStart" },
 			{ FunctionName = "ShadeMercManager",    Args = { StartingCountMin = 3, StartingCountMax = 12, ObjectNames = { "ShadeMerc" }, MaxActive = 12 } },
-		},
-		UnthreadedEvents = {
-			[1] = {
-				-- Requires AthenaFirstPickup voiceline, which is not implemented
-				GameStateRequirements = mod.NilValue,
-			},
 		},
 		InspectPoints = {
 			[410183] = {
@@ -130,6 +130,7 @@ local roomModifications = {
 						[2] = { Cue = "/VO/Megaera_0053", RequiredPlayed = { "/VO/Megaera_0061" }, },
 						[4] = { Cue = "/VO/Megaera_0057", },
 					},
+					DelayedStart = true,
 				},
 			},
 		},

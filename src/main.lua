@@ -74,6 +74,7 @@ local function on_ready()
 
 	-- File handling and other generic functions required at install time
 	import "Scripts/Meta/Utils.lua"
+	import "Scripts/UtilityLogic.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 
@@ -89,7 +90,7 @@ local function on_ready()
 	end
 
 	import "Scripts/Meta/AnimationDuplicatesDataFx.lua"
-	import "Scripts/Meta/AnimationDuplicatesDataGUI.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataGUIAnimations.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
 	import "Scripts/Meta/NameMappingData.lua"
@@ -162,6 +163,7 @@ local function on_ready()
 		import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
 		-- Must be loaded after CharacterAnimationsEnemies, as it inherits some animations from it
 		import "Game/Animations/EnemyAnimations.sjson.lua"
+		import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_Deprecated_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_General_VFX.sjson.lua"
@@ -173,6 +175,7 @@ local function on_ready()
 		-- Must be loaded before the other projectile files
 		import "Game/Projectiles/Projectiles.sjson.lua"
 		import "Game/Projectiles/EnemyProjectiles.sjson.lua"
+		import "Game/Projectiles/Enemy_BiomeN_Projectiles.sjson.lua"
 		import "Game/Projectiles/Enemy_Traps_Projectiles.sjson.lua"
 
 		import "Game/Obstacles/Asphodel.sjson.lua"
@@ -292,11 +295,13 @@ local function on_ready()
 		import "Scripts/CombatLogic.lua"
 		import "Scripts/CombatPresentation.lua"
 		import "Scripts/DeathLoopData.lua"
+		import "Scripts/DeathLoopLogic.lua"
 		import "Scripts/EnemyAILogic.lua"
 		import "Scripts/EncounterLogic.lua"
 		import "Scripts/HeroData.lua"
 		import "Scripts/HubPresentation.lua"
 		import "Scripts/MetaUpgradeData.lua"
+		import "Scripts/MusicData.lua"
 		import "Scripts/ObstacleData.lua"
 		import "Scripts/PowersLogic.lua"
 		import "Scripts/ProjectileData.lua"
@@ -305,6 +310,7 @@ local function on_ready()
 		import "Scripts/RoomEvents.lua"
 		import "Scripts/RoomLogic.lua"
 		import "Scripts/RoomPresentation.lua"
+		import "Scripts/RunHistoryData.lua"
 		import "Scripts/RunHistoryLogic.lua"
 		import "Scripts/RunLogic.lua"
 		import "Scripts/WeaponSets.lua"

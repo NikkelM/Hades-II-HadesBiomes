@@ -41,8 +41,12 @@ function mod.SpawnHadesRunStartDoor(source, args)
 		StartingBiome = "Tartarus",
 		-- Don't play a voiceline - we do this when entering the Chaos gate
 		-- We have to do it then, as otherwise MelinoeField is being onloaded in PreThingCreation
-		GlobalVoiceLines = "EmptyStartNewHadesRunVoiceLines"
+		GlobalVoiceLines = "EmptyStartNewHadesRunVoiceLines",
+		-- For the DirectionHintPresentation if LimitGraspShrineUpgradeEscapeDoorClosed is active
+		AltarId = 589766,
 	}
+	-- Used by LeaveRoomSecretDoorPresentation to determine the fade animation
+	chaosGate.Room = {}
 
 	game.SetupObstacle(chaosGate)
 	AddToGroup({ Id = chaosGate.ObjectId, Name = "ModsNikkelMHadesBiomes.RunStartDoor" })

@@ -67,7 +67,7 @@ function game.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
 	game.ShowCombatUI("BossIntro")
 	if args.DelayedStart then
-		game.StartEncounterEffects(game.CurrentRun)
+		game.StartEncounterEffects()
 	end
 end
 

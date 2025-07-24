@@ -41,6 +41,9 @@ local roomModifications = {
 		TimeChallengeEncounterOptions = { "TimeChallengeElysium" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeElysium" },
 		EliteChallengeEncounterOptions = { "EliteChallengeElysium" },
+
+		LocationAnimName = "LocationBackingIrisChaosIn",
+		LocationAnimOutName = "LocationBackingIrisChaosOut",
 	},
 
 	-- OPENING ROOMS
@@ -53,7 +56,12 @@ local roomModifications = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
 		},
-		EntranceDirection = "Right",
+		EntranceDirection = "LeftRight",
+		StrictLeftRight = true,
+		FlipHorizontalChance = 0.0,
+		ThreadedEvents = {
+			[1] = { Args = { AnimationName = "LocationBackingIrisChaosIn", AnimationOutName = "LocationBackingIrisChaosOut" }, },
+		},
 	},
 
 	-- SHOPS
@@ -85,6 +93,12 @@ local roomModifications = {
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		UnthreadedEvents = {
+			[1] = {
+				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
+				Args = { DelayedStart = true, },
+			},
+		},
 	},
 
 	-- OTHER

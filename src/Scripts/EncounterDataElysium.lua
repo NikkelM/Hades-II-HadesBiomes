@@ -73,6 +73,22 @@ local encounterModifications = {
 	},
 
 	-- MINIBOSSES
+	MiniBossNakedSpawners = {
+		-- Move the max enemies from 6 to 8 and add additional FlurrySpawners when the Vow of Shadows is active
+		EnemyCountShrineModifierName = "MinibossCountShrineUpgrade",
+		EnemyCountShineModifierAmount = 2,
+		ManualWaveTemplates = {
+			[1] = {
+				Spawns = {
+					[3] = {
+						Name = "FlurrySpawner",
+						TotalCount = 3,
+						RequiredMiniBossShrine = true,
+					},
+				},
+			},
+		},
+	},
 	MiniBossMinotaur = {
 		-- Without this, the Minotaur will not spawn if a save is loaded
 		-- TODO: Doesn't always work
@@ -82,6 +98,7 @@ local encounterModifications = {
 	},
 
 	-- BOSSES
+	-- DelayedStart = true,
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataElysium, encounterModifications, encounterReplacements)

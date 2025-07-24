@@ -1,4 +1,4 @@
--- Also used for Hydra in Asphodel
+-- Used for all modded units with touchdown behavior
 function game.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
 	args = args or {}
 	if args.Delay then
@@ -7,7 +7,8 @@ function game.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
 
 	local offset = { X = 0, Y = 0 }
 	if args.CalcOffset then
-		offset = game.CalcOffset(math.rad(GetAngle({ Id = unit.ObjectId }) or 0), args.SpawnDistance or 0) or { X = 0, Y = 0 }
+		offset = game.CalcOffset(math.rad(GetAngle({ Id = unit.ObjectId }) or 0), args.SpawnDistance or 0) or
+				{ X = 0, Y = 0 }
 	end
 	local angle = 0
 	if args.CalcAngle then
@@ -25,11 +26,25 @@ function game.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
 		OffsetY = offset.Y,
 		Angle = angle,
 	})
+
+	-- For the CrusherUnitElite, if the Vow of Shadows is active
+	if args.ShrineProjectileName and game.GetNumShrineUpgrades(args.ShrineMetaUpgradeName) >= args.ShrineMetaUpgradeRequiredLevel then
+		CreateProjectileFromUnit({
+			Name = args.ShrineProjectileName,
+			Id = unit.ObjectId,
+			DestinationId = unit.ObjectId,
+			FireFromTarget = args.FireFromTarget or true,
+			OffsetX = offset.X,
+			OffsetY = offset.Y,
+			Angle = angle,
+		})
+	end
 end
 
--- Same as in Hades II, but:
+-- Same as in Hades, but:
 -- More upward force to move the enemy off screen completely
 -- SetInvulnerable to prevent the airborne enemy from being affected by the Cast
+-- For some reason, even though the function no longer exists in Hades II, we still need to use another name
 function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 	currentRun = currentRun or game.CurrentRun
 	if enemy.WakeUpDelay ~= nil or (enemy.WakeUpDelayMin ~= nil and enemy.WakeUpDelayMax ~= nil) then
@@ -145,4 +160,15 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 			game.wait(game.CalcEnemyWait(enemy, enemy.NoTargetWanderDuration or 0.5), enemy.AIThreadName)
 		end
 	end
+end
+
+function game.IsLocationBlockedWithinDistance(source, distance)
+	for enemyId, enemy in pairs(game.ShallowCopyTable(game.ActiveEnemies)) do
+		if enemy.BlockingLocation and enemy.ObjectId ~= source.ObjectId then
+			if GetDistance({ Id = enemy.ObjectId, DestinationId = source.ObjectId }) < distance then
+				return true
+			end
+		end
+	end
+	return false
 end

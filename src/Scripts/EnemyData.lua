@@ -30,7 +30,7 @@ local function applyModificationsAndInheritEnemyData(base, modifications, replac
 		-- Replace keys that were renamed between the games
 		mod.RenameKeys(enemyData, enemyKeyReplacements, enemyName)
 
-		-- Do replacements that can be done the same way for multiple enemies
+		-- Always use the Olympus dialogue elements for the bosses
 		if enemyData.Portrait then
 			enemyData.BoxAnimation = "DialogueSpeechBubbleLight"
 			enemyData.BoxExitAnimation = "DialogueSpeechBubbleLightOut"
@@ -64,6 +64,20 @@ local function applyModificationsAndInheritEnemyData(base, modifications, replac
 		if enemyData.AIStages then
 			for _, aiStage in ipairs(enemyData.AIStages) do
 				aiStage.ThreadedEvents = { { FunctionName = "NikkelMHadesBiomesBossAIStageHandler", } }
+				-- For the Hydra, perform the mapping of the SelectPactLevelAIStage to EMStageDataOverrides
+				if aiStage.SelectPactLevelAIStage then
+					-- These are applied if the shrineLevel is not high enough/default behaviour for this AIStage
+					local defaultAIStageOverrides = enemyData[aiStage.SelectPactLevelAIStage].Default or {}
+					game.OverwriteTableKeys(aiStage, defaultAIStageOverrides)
+					-- These are applied if the shrineLevel is high enough, as defined by enemy.BossDifficultyShrineRequiredCount
+					-- Checking level 4 as all enemies with this property implement 4, but not necessarily the lower levels
+					local emStageDataOverrides = enemyData[aiStage.SelectPactLevelAIStage][4] or {}
+					-- Only add the property if it would not be empty
+					if game.TableLength(emStageDataOverrides) > 0 then
+						aiStage.EMStageDataOverrides = emStageDataOverrides
+					end
+					aiStage.SelectPactLevelAIStage = nil
+				end
 			end
 		end
 
@@ -77,10 +91,13 @@ local function applyModificationsAndInheritEnemyData(base, modifications, replac
 
 		-- Increase health and armour for slightly increased difficulty
 		if enemyData.MaxHealth then
-			enemyData.MaxHealth = enemyData.MaxHealth * 1.35
+			enemyData.MaxHealth = enemyData.MaxHealth * 1.5
+		end
+		if enemyData.ShrineDataOverwrites and enemyData.ShrineDataOverwrites.MaxHealth then
+			enemyData.ShrineDataOverwrites.MaxHealth = enemyData.ShrineDataOverwrites.MaxHealth * 1.5
 		end
 		if enemyData.HealthBuffer then
-			enemyData.HealthBuffer = enemyData.HealthBuffer * 1.2
+			enemyData.HealthBuffer = enemyData.HealthBuffer * 1.3
 		end
 
 		base[enemyName] = enemyData
@@ -122,9 +139,27 @@ end
 -- This is true for most traps
 mod.ModifyEnemyTrapData(mod.EnemyData)
 
+-- Required modifications to the Hydra boss AIStages, so we can DeepCopyTable them onto the different Hydra heads, so the SelectPactLevelAIStage modifications can be done later on
+local hydraHeadAIStages = game.DeepCopyTable(mod.EnemyData.HydraHeadImmortal.AIStages) or {}
+for _, stage in ipairs(hydraHeadAIStages) do
+	-- Replace the animation with the one we can keep playing for longer than the default one
+	if stage.TransitionAnimation ~= nil then
+		stage.TransitionAnimation = "EnemyHydraRoarFire"
+		stage.TransitionEndAnimation = "EnemyHydraRoarReturnToIdle"
+	end
+	if stage.StartDelay ~= nil then
+		stage.StartDelay = 1.0
+	end
+end
+hydraHeadAIStages[2].SelectRandomAIStage = mod.NilValue
+hydraHeadAIStages[2].RandomSpawnEncounter = { "HydraHeads1", "HydraHeads3", "HydraHeads3" }
+hydraHeadAIStages[4].SelectRandomAIStage = mod.NilValue
+hydraHeadAIStages[4].RandomSpawnEncounter = { "HydraHeads5", "HydraHeads6" }
+
 -- Replaces the key with the new value instead of modifying
 -- This is done AFTER data inheritance is processed
 local enemyReplacements = {
+	-- #region GENERAL
 	BaseVulnerableEnemy = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DestroyDelay = mod.NilValue,
@@ -151,18 +186,25 @@ local enemyReplacements = {
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 	},
+	-- #endregion
 
-	-- TARTARUS
+	-- #region TARTARUS
+	-- #region TARTARUS - Regular
 	BaseSpawner = {
 		-- SpawnerAI doesn't exist, spawn logic is in the weapon
 		AIOptions = { "AttackerAI", },
 	},
+	-- #endregion
+	-- #region TARTARUS - Megaera
 	-- Setting this to an empty table in the enemy doesn't work, so resetting the keys that break the animations here
 	Harpy = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
+	-- #endregion
+	-- #endregion
 
-	-- ASPHODEL
+	-- #region ASPHODEL
+	-- #region ASPHODEL - Regular
 	-- Copy pasting the enemy from Hades II, but replacing some animations and effects in modifications
 	-- The name here should be the name of the enemy we use in Hades, to make sure we don't accidentally change data for the Hades II enemy
 	HadesBloodlessNaked = game.DeepCopyTable(game.EnemyData.BloodlessNaked),
@@ -179,17 +221,54 @@ local enemyReplacements = {
 	HadesSpreadShotUnitElite = game.DeepCopyTable(game.EnemyData.SpreadShotUnit_Elite),
 	BloodlessNakedBerserker = game.DeepCopyTable(game.EnemyData.BloodlessBerserker),
 	BloodlessNakedBerserkerElite = game.DeepCopyTable(game.EnemyData.BloodlessBerserker_Elite),
+	-- #endregion
+	-- #region ASPHODEL - Hydra
 	HydraHeadImmortal = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+		AIStages = game.DeepCopyTable(hydraHeadAIStages),
 	},
+	-- These are all the same, but the SelectPactLevelAIStages are different and will be set accordingly in the modification handler
+	HydraHeadImmortalLavamaker = {
+		AIStages = game.DeepCopyTable(hydraHeadAIStages),
+	},
+	HydraHeadImmortalSummoner = {
+		AIStages = game.DeepCopyTable(hydraHeadAIStages),
+	},
+	HydraHeadImmortalSlammer = {
+		AIStages = game.DeepCopyTable(hydraHeadAIStages),
+	},
+	HydraHeadImmortalWavemaker = {
+		AIStages = game.DeepCopyTable(hydraHeadAIStages),
+	},
+	-- #endregion
+	-- #endregion
 
-	-- ELYSIUM
-	-- STYX
+	-- #region ELYSIUM
+	-- #region ELYSIUM - Minotaur
+	Minotaur = {
+		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+	},
+	-- #endregion
+	-- #region ELYSIUM - Theseus
+	Theseus = {
+		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+	},
+	-- #endregion
+	-- #endregion
+
+	-- #region STYX
+	-- #region STYX - Hades
+	Hades = {
+		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+	},
+	-- #endregion
+	-- #endregion
 }
 
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
 local enemyModifications = {
-	-- TARTARUS
+	-- #region TARTARUS
+	-- #region TARTARUS - Regular
 	BaseGlutton = {
 		LargeUnitCap = mod.NilValue,
 	},
@@ -239,8 +318,6 @@ local enemyModifications = {
 		-- The intro encounter is broken, there is nothing happening after the two enemies die
 		RequiredIntroEncounter = mod.NilValue,
 		DefaultAIData = {
-			AttackWhileBlendingIntervalMin = 2.0,
-			AttackWhileBlendingIntervalMax = 2.5,
 			PostAttackDuration = 0.75,
 		},
 		ActivateFx = "EnemySummonRuneSmall",
@@ -276,6 +353,32 @@ local enemyModifications = {
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
 	},
+	Swarmer = {
+		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
+		DeathAnimation = "EnemyWretchSwarmerDeathVFX",
+		DeathFx = "EnemyDeathFx_Small",
+		DestroyDelay = 0.9,
+		WeaponOptions = { "HadesSwarmerMelee" },
+		ActivateFx = "EnemySummonRuneSmall",
+		ActivateAnimation = "EnemyActivationFadeInWretchSwarmerContainer",
+		BlockAttributes = { "Orbit", "Vacuum", "Massive", },
+	},
+	SwarmerElite = {
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
+	},
+	LightSpawner = {
+		StunAnimations = { Default = "SpawnerAttackAnim", },
+		DeathFx = "BreakableDeathAnim",
+		DeathGraphic = "SpawnerDeath",
+		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon", },
+		DefaultAIData = { DeepInheritance = true, },
+		OnDamagedFunctionName = "AggroSpawns",
+		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
+		BlockRaiseDead = true,
+		EliteAttributeOptions = { "Fog", "HeavyArmor", "Orbit", "Radial", },
+	},
+	-- #endregion
+	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		DeathFx = "EnemyDeathFx",
@@ -301,6 +404,22 @@ local enemyModifications = {
 			MoveWithinRangeTimeoutMin = 1.5,
 			MoveWithinRangeTimeoutMax = 2.0,
 		},
+		OnDamagedFireProjectiles = {
+			{
+				ProjectileName = "SpawnSplitterFragment",
+				Requirements = { MaxUnitsByType = { HeavyRangedSplitterFragment = 12 } },
+			},
+		},
+		OnDamagedWeapons = mod.NilValue,
+	},
+	HeavyRangedSplitterMinibossSuperElite = {
+		OnDamagedFireProjectiles = {
+			{
+				ProjectileName = "SpawnSplitterFragmentSuperElite",
+				Requirements = { MaxUnitsByType = { HeavyRangedSplitterFragmentSuperElite = 12 } },
+			},
+		},
+		OnDamagedWeapons = mod.NilValue,
 	},
 	HeavyRangedSplitterFragment = {
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
@@ -308,43 +427,30 @@ local enemyModifications = {
 		DeathGraphic = "HeavyRangedSplitterFragmentDeath",
 		UseActivatePresentation = false,
 		BlockRaiseDead = true,
-	},
-	Swarmer = {
-		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
-		DeathAnimation = "EnemyWretchSwarmerDeathVFX",
-		DeathFx = "EnemyDeathFx_Small",
-		DestroyDelay = 0.9,
-		WeaponOptions = { "HadesSwarmerMelee" },
-		ActivateFx = "EnemySummonRuneSmall",
-		ActivateAnimation = "EnemyActivationFadeInWretchSwarmerContainer",
-		BlockAttributes = { "Orbit", "Vacuum", "Massive", },
-	},
-	SwarmerElite = {
-		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
-	},
-	LightSpawner = {
-		StunAnimations = { Default = "SpawnerAttackAnim", },
-		DeathFx = "BreakableDeathAnim",
-		DeathGraphic = "SpawnerDeath",
-		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon", },
-		DefaultAIData = { DeepInheritance = true, },
-		OnDamagedFunctionName = "AggroSpawns",
-		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
-		BlockRaiseDead = true,
-		EliteAttributeOptions = { "Fog", "HeavyArmor", "Orbit", "Radial", },
+		RunHistoryKilledByName = "HeavyRangedSplitterMiniboss",
 	},
 	WretchAssassin = {
 		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
 		ActivateAnimation = "EnemyActivate",
 		BlockRaiseDead = true
 	},
+	-- #endregion
+	-- #region TARTARUS - Bosses
 	HarpySupportUnit = {
 		AIOptions = { "HarpySupportAI" },
+		-- Otherwise, doesn't get cleaned up after boss kill as of the Unseen Update
+		RequiredKill = true,
 	},
 	Harpy = {
 		InvulnerableFx = "Invincibubble",
+		RunHistoryKilledByName = "NPC_FurySister_01",
+	},
+	Harpy2 = {
+		-- Gets overwritten by the Harpy value if not set
+		RunHistoryKilledByName = "Harpy2",
 	},
 	Harpy3 = {
+		RunHistoryKilledByName = "Harpy3",
 		BossPresentationTextLineSets = {
 			Fury3Encounter10 = {
 				EndVoiceLines = {
@@ -357,8 +463,11 @@ local enemyModifications = {
 		-- TODO: Maybe replace with fitting Melinoe voicelines?
 		MapTransitionReactionVoiceLines = mod.NilValue,
 	},
+	-- #endregion
+	-- #endregion
 
-	-- ASPHODEL
+	-- #region ASPHODEL
+	-- #region ASPHODEL - Regular
 	LightSpawnerElite = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
 		DeathFx = "BreakableDeathAnim",
@@ -519,14 +628,11 @@ local enemyModifications = {
 		DeathFx = "EnemyDeathFxBone",
 		DeathAnimation = "CrusherUnitDeathVFX",
 		DestroyDelay = 1.2,
-		PostAggroAI = "ModsNikkelMHadesBiomesSkyAttackerAI",
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
 		},
-	},
-	CrusherUnitElite = {
-		BlockAttributes = { "Blink", "Orbit", "Fog", "Frenzy", "ManaDrain", "Molten", "Unflinching", "Vacuuming", },
+		PostAggroAI = "ModsNikkelMHadesBiomesSkyAttackerAI",
 	},
 	ShieldRanged = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
@@ -545,6 +651,8 @@ local enemyModifications = {
 			},
 		},
 	},
+	-- #endregion
+	-- #region ASPHODEL - Minibosses
 	ShieldRangedMiniBoss = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
 		ActivateFx = "EnemySummonRuneExtraLarge",
@@ -555,6 +663,7 @@ local enemyModifications = {
 	SpreadShotUnitMiniboss = {
 		-- In Hades II, projectiles can't be destroyed by attacks by default
 		-- So we change the difficulty introduced by the shrine to have all four enemies attack at once, as the invulnerable projectiles are actually easier to dodge than the normal attacks
+		-- We also remove the ShrineWeaponOptionsOverwrite, so we don't use the invulnerable projectiles at all
 		-- As the default difficulty increases, the cooldowns for the attacks are increased slightly in the WeaponData
 		-- The typo is intentional
 		ShrineDefualtAIDataOverwrites = {
@@ -562,7 +671,23 @@ local enemyModifications = {
 		},
 		ShrineWeaponOptionsOverwrite = mod.NilValue,
 	},
-	-- ASPHODEL BOSS - HYDRA
+	HitAndRunUnit = {
+		BlockRaiseDead = true,
+	},
+	CrusherUnitElite = {
+		BlockAttributes = { "Blink", "Orbit", "Fog", "Frenzy", "ManaDrain", "Molten", "Unflinching", "Vacuuming", },
+		BlockRaiseDead = true,
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "CrusherUnitTouchdown",
+			-- Also fire this projectile if the Vow of Shadows is active
+			ShrineProjectileName = "CrusherUnitSlamUpgraded",
+			ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",
+			ShrineMetaUpgradeRequiredLevel = 1,
+		},
+	},
+	-- #endregion
+	-- #region ASPHODEL - Bosses
 	HydraHeadImmortal = {
 		AltHealthBarTextIds = {
 			[1] = {
@@ -571,28 +696,14 @@ local enemyModifications = {
 			},
 		},
 		InvulnerableFx = "HydraBubble",
-		AIStages = {
-			[2] = {
-				SelectRandomAIStage = mod.NilValue,
-				RandomSpawnEncounter = { "HydraHeads1", "HydraHeads3", "HydraHeads3" },
-			},
-			[4] = {
-				SelectRandomAIStage = mod.NilValue,
-				RandomSpawnEncounter = { "HydraHeads5", "HydraHeads6" },
-			},
-		},
+		BossDifficultyShrineRequiredCount = 2,
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "HydraTouchdown",
 			-- Lining up with when the head actually touches the ground
 			Delay = 0.23,
 		},
-		-- SpawnEvents = {
-		-- 	{
-		-- 		FunctionName = "CreateTethers",
-		-- 		Threaded = true,
-		-- 	},
-		-- },
+		-- SpawnEvents = { { FunctionName = "CreateTethers", Threaded = true, }, },
 		-- While Tethers are broken - enemy returns to spawnpoint after attacking
 		DefaultAIData = {
 			MoveToId = 480903,
@@ -608,14 +719,10 @@ local enemyModifications = {
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "HydraTouchdown",
+			-- Lining up with when the head actually touches the ground
 			Delay = 0.23,
 		},
-		-- SpawnEvents = {
-		-- 	{
-		-- 		FunctionName = "CreateTethers",
-		-- 		Threaded = true,
-		-- 	},
-		-- },
+		-- SpawnEvents = { { FunctionName = "CreateTethers", Threaded = true, }, },
 		-- While Tethers are broken - enemy returns to nearest spawnpoint after attacking
 		DefaultAIData = {
 			-- Is overwritten by the actual spawnpoint in ModsNikkelMHadesBiomesRememberHydraSpawnpoint
@@ -658,8 +765,11 @@ local enemyModifications = {
 			HatchDuration = 5,
 		},
 	},
+	-- #endregion
+	-- #endregion
 
-	-- ELYSIUM
+	-- #region ELYSIUM
+	-- #region ELYSIUM - Regular
 	ShadeNaked = {
 		StunAnimations = { Default = "ShadeNaked_Idle" },
 		-- Push the Shade away after spawning so it has to move to the pickupTarget
@@ -736,13 +846,33 @@ local enemyModifications = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
 			StopMoveWithinRange = false,
-			ProjectileName = "ChariotRam",
-			-- Setup is the when it can start ramming instead of moving
+			RamEffectName = mod.NilValue,
+			RamEffectProperties = {
+				Property = "Speed",
+				Value = 950,
+			},
+			RamEffectResetProperties = {
+				Property = "Speed",
+				Value = 300,
+			},
+			-- SetupDistance is when it can start ramming instead of moving
 			SetupDistance = 500,
 			SetupTimeout = 7.0,
 			-- Longer time ramming before timing out and stopping
 			RamTimeout = 3.0,
 			RamDistance = 120,
+		},
+	},
+	ChariotElite = {
+		DefaultAIData = {
+			RamEffectProperties = {
+				Property = "Speed",
+				Value = 1100,
+			},
+			RamEffectResetProperties = {
+				Property = "Speed",
+				Value = 400,
+			},
 		},
 	},
 	ChariotSuicide = {
@@ -755,14 +885,30 @@ local enemyModifications = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
 			StopMoveWithinRange = false,
-			ProjectileName = "ChariotRamSelfDestruct",
+			RamEffectName = mod.NilValue,
+			RamEffectProperties = {
+				Property = "Speed",
+				Value = 900,
+			},
+			RamEffectResetProperties = {
+				Property = "Speed",
+				Value = 200,
+			},
 			SetupDistance = 900,
 			SetupTimeout = 7.0,
 			RamDistance = 80,
+			OnFiredFunctionName = "SelfDestruct",
 		},
+		WeaponOptions = { "ChariotRamSelfDestruct" },
 	},
-
-	-- ELYSIUM BOSS - THESEUS & MINOTAUR
+	-- #endregion
+	-- #region ELYSIUM - Minibosses
+	FlurrySpawnerElite = {
+		-- The dash weapon does not work in Hades II, alternative difficulty was added through more enemies
+		ShrineWeaponOptionsOverwrite = mod.NilValue,
+	},
+	-- #endregion
+	-- #region ELYSIUM - Bosses
 	Minotaur = {
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
@@ -777,8 +923,11 @@ local enemyModifications = {
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
 	},
+	-- #endregion
+	-- #endregion
 
-	-- STYX
+	-- #region STYX
+	-- #region STYX - Regular
 	-- SatyrRanged = {
 	-- 	LargeUnitCap = mod.NilValue,
 	-- },
@@ -788,8 +937,17 @@ local enemyModifications = {
 	-- RatThug = {
 	-- 	LargeUnitCap = mod.NilValue,
 	-- },
+	-- #endregion
+	-- #region STYX - Minibosses
+	-- #endregion
+	-- #region STYX - Bosses
+	-- Hades = {
+	--   BossDifficultyShrineRequiredCount = 4,
+	-- },
+	-- #endregion
+	-- #endregion
 
-	-- ENVIRONMENT
+	-- #region ENVIRONMENT
 	Breakable = {
 		CannotDieFromDamage = true,
 		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
@@ -859,11 +1017,20 @@ local enemyModifications = {
 			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
 		},
 	},
+	BlastCubeFusedRegenerating = {
+		OnDeathFireWeapons = { "BlastCubeExplosionElysium" },
+		FuseWarningProjectileName = "ModsNikkelMHadesBiomesBlastWarningDecalElysium"
+	},
+	-- #endregion
 }
 
 -- Some keys were renamed in the DefaultAIData property
 local enemyKeyReplacements = {
 	RequiredIntroEncounter = "IntroEncounterName",
+	-- Key is only used for the four breakables
+	ValueOptions = "BreakableValueOptions",
+	-- For the ShadeNaked
+	AIPickupType = "AIPickupTypes",
 	DefaultAIData = {
 		AIAttackDistance = "AttackDistance",
 		AIBufferDistance = "RetreatBufferDistance",
@@ -882,10 +1049,6 @@ local enemyKeyReplacements = {
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
 	},
-	-- Key is only used for the four breakables
-	ValueOptions = "BreakableValueOptions",
-	-- For the ShadeNaked
-	AIPickupType = "AIPickupTypes",
 }
 
 -- Modifications to Hades II enemies
