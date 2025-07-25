@@ -779,6 +779,7 @@ local enemyModifications = {
 				Args = { ForceMin = 3200, ForceMax = 3300, AngleOffsetMin = -60, AngleOffsetMax = 60, },
 			},
 		},
+		OnDeathFunctionName = "ModsNikkelMHadesBiomesShadeNakedDeath",
 		-- To prevent the first damage occurrence, which is duplicated from the killing blow
 		ModsNikkelMHadesBiomesIgnoreFirstDamage = true,
 		BlockRaiseDead = true,

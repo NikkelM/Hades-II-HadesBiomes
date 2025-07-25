@@ -22,6 +22,11 @@ function game.PickupAI(enemy, currentRun)
 end
 
 function game.ModsNikkelMHadesBiomesShadeNakedPostActivate(source, args)
+	-- If there is an active challenge encounter, we need to add the unit to the active spawns
+	if game.CurrentRun.CurrentRoom.ChallengeEncounter ~= nil and game.CurrentRun.CurrentRoom.ChallengeEncounter.InProgress and game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns ~= nil then
+		game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns[source.ObjectId] = true
+	end
+
 	-- If the enemy spawned normally (in the Butterfly miniboss chamber), we don't want to apply the force
 	if source.UseActivatePresentation then
 		return
@@ -30,6 +35,14 @@ function game.ModsNikkelMHadesBiomesShadeNakedPostActivate(source, args)
 			game.RandomFloat(args.AngleOffsetMin, args.AngleOffsetMax)
 	local force = game.RandomFloat(args.ForceMin, args.ForceMax)
 	ApplyForce({ Id = source.ObjectId, Speed = force, Angle = angle, SelfApplied = true })
+end
+
+function game.ModsNikkelMHadesBiomesShadeNakedDeath(unit, args)
+	-- If there is an active challenge encounter, remove the unit from the active spawns correctly
+	if game.CurrentRun.CurrentRoom.ChallengeEncounter ~= nil and game.CurrentRun.CurrentRoom.ChallengeEncounter.InProgress and game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns ~= nil then
+		game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns[unit.ObjectId] = nil
+		unit.Encounter = unit.Encounter or game.CurrentRun.CurrentRoom.ChallengeEncounter
+	end
 end
 
 function game.DoPickup(enemy, aiData, pickupTarget)
@@ -190,6 +203,13 @@ function game.ProcessPickup(enemy, pickupTarget)
 		local newEnemy = game.DeepCopyTable(EnemyData[newEnemyName]) or {}
 		newEnemy.ObjectId = SpawnUnit({ Name = newEnemyName, InheritGroupNames = true, DestinationId = oldEnemy.ObjectId })
 		game.thread(game.SetupUnit, newEnemy, game.CurrentRun)
+
+		-- If the enemy respawns in a challenge encounter, we need to add it to the active spawns
+		if game.CurrentRun.CurrentRoom.ChallengeEncounter ~= nil and game.CurrentRun.CurrentRoom.ChallengeEncounter.InProgress and game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns ~= nil then
+			game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns[newEnemy.ObjectId] = true
+			newEnemy.Encounter = newEnemy.Encounter or game.CurrentRun.CurrentRoom.ChallengeEncounter
+		end
+
 		local charmDuration = GetCharmDuration({ Id = oldEnemy.ObjectId })
 		if charmDuration > 0 then
 			ApplyEffect({
