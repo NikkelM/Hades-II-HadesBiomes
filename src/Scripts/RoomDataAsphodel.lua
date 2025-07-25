@@ -95,6 +95,8 @@ local roomModifications = {
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		-- To not have the preview be created while the boat is still moving
+		UnlockExitsWait = 1.5,
 	},
 	X_Boss02 = {
 		GameStateRequirements = {

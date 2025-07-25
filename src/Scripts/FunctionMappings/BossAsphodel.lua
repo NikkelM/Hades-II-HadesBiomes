@@ -179,6 +179,7 @@ function game.HydraKillPresentation(unit, args)
 
 	game.HarpyKillPresentation(unit, args)
 
+	-- This moves the exit barge into view
 	local currentRoom = game.CurrentRun.CurrentRoom
 	for k, id in pairs(GetIds({ Name = currentRoom.ExitGroupName }) or {}) do
 		local offset = game.CalcOffset(math.rad(-30), 1000) or { X = 0, Y = 0 }
