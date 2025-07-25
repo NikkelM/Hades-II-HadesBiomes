@@ -59,11 +59,19 @@ local obstacleModifications = {
 
 	-- #region ASPHODEL
 	AsphodelTerrainRock01 = {
-		DeathFx = "RubbleFall",
+		DeathFx = "AsphodelTerrainRockCollapse",
+		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
+	},
+	AsphodelTerrainRock02 = {
+		DeathFx = "AsphodelTerrainRockCollapse",
+		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
+	},
+	AsphodelTerrainRock03 = {
+		DeathFx = "AsphodelTerrainRockCollapse",
 		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
 	},
 	AsphodelSkull = {
-		DeathFx = "RubbleFall",
+		DeathFx = "AsphodelTerrainRockCollapse",
 		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFallLarge", },
 	},
 	HealthFountainAsphodel = {
