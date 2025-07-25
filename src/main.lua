@@ -305,6 +305,7 @@ local function on_ready()
 		import "Scripts/ObstacleData.lua"
 		import "Scripts/PowersLogic.lua"
 		import "Scripts/ProjectileData.lua"
+		import "Scripts/RequirementsData.lua"
 		import "Scripts/RequirementsLogic.lua"
 		import "Scripts/RewardPresentation.lua"
 		import "Scripts/RoomEvents.lua"
