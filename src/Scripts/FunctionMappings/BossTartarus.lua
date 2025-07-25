@@ -426,6 +426,10 @@ function game.CreateBossRageMeter(boss)
 		Y = 152,
 		Scale = 0.5
 	})
+	-- Custom: To destroy these on death
+	table.insert(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath, game.ScreenAnchors.BossRageTitle)
+	table.insert(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath, game.ScreenAnchors.BossRageBack)
+	table.insert(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath, game.ScreenAnchors.BossRageFill)
 
 	CreateTextBox({
 		Id = game.ScreenAnchors.BossRageTitle,

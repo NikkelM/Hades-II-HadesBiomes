@@ -26,6 +26,8 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	}
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and moddedRoomSets[currentRoom.RoomSetName] then
+		currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
+
 		-- Some packages introduce artifacts
 		UnloadPackages({ Name = "DeathArea" })
 		UnloadPackages({ Name = "Chaos" })

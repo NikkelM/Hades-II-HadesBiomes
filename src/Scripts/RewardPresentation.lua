@@ -150,6 +150,8 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				Group = "Combat_Menu_Backing"
 			})
 			table.insert(exitDoor.AdditionalAttractIds, exitDoor.DoorIconFront)
+			-- Custom: To destroy it on death (would otherwise overlay on the blacked out screen)
+			table.insert(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath, exitDoor.DoorIconFront)
 			Attach({ Id = exitDoor.DoorIconFront, DestinationId = exitDoor.ObjectId, DynamicScaleOffset = true })
 			SetThingProperty({
 				Property = "SortMode",
