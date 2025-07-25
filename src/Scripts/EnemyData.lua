@@ -781,7 +781,7 @@ local enemyModifications = {
 		},
 		OnDeathFunctionName = "ModsNikkelMHadesBiomesShadeNakedDeath",
 		-- To prevent the first damage occurrence, which is duplicated from the killing blow
-		ModsNikkelMHadesBiomesIgnoreFirstDamage = true,
+		ModsNikkelMHadesBiomesIgnoreFirstRapidDamage = true,
 		BlockRaiseDead = true,
 	},
 	ShadeSpearUnit = {

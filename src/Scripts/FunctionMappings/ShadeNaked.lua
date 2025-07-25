@@ -22,6 +22,9 @@ function game.PickupAI(enemy, currentRun)
 end
 
 function game.ModsNikkelMHadesBiomesShadeNakedPostActivate(source, args)
+	-- Save the time the unit was activated to be able to ignore the first rapid damage
+	source.ModsNikkelMHadesBiomesActivatedTime = game._worldTime
+
 	-- If there is an active challenge encounter, we need to add the unit to the active spawns
 	if game.CurrentRun.CurrentRoom.ChallengeEncounter ~= nil and game.CurrentRun.CurrentRoom.ChallengeEncounter.InProgress and game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns ~= nil then
 		game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns[source.ObjectId] = true
