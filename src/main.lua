@@ -73,6 +73,7 @@ local function on_ready()
 	local startTime = os.clock()
 
 	-- File handling and other generic functions required at install time
+	import "Scripts/Meta/Constants.lua"
 	import "Scripts/Meta/Utils.lua"
 	import "Scripts/UtilityLogic.lua"
 	import "Scripts/Meta/RequiredFileData.lua"

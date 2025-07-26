@@ -1,5 +1,5 @@
 mod.RoomData = mod.RoomData or {}
-mod.RoomData.Tartarus = {
+mod.RoomData.Tartarus = mod.RoomData.Tartarus or {
 	BaseTartarus =
 	{
 		DebugOnly = true,

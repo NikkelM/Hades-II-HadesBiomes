@@ -1,8 +1,3 @@
--- Utility functions
-
-mod.NilValue = {}
-mod.TableValue = {}
-
 ---Logs a message at the specified log level with colour coding.
 ---@param t any The message to log.
 ---@param level number|nil The log level. 0 = Off, 1 = Errors, 2 = Warnings, 3 = Info, 4 = Debug. nil omits the level display.

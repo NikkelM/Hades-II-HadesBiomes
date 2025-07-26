@@ -1,5 +1,5 @@
 mod.RoomData = mod.RoomData or {}
-mod.RoomData.Asphodel = {
+mod.RoomData.Asphodel = mod.RoomData.Asphodel or {
 	BaseAsphodel = {
 		DebugOnly = true,
 

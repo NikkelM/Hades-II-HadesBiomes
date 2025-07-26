@@ -68,13 +68,13 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 	currentRun = currentRun or game.CurrentRun
 	args = args or {}
 
-	-- If the unit is a ShadeNaked, we don't want a summon animation for the picked up enemy
-	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and currentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation then
-		currentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation = nil
-		unit.UseActivatePresentation = false
-	end
-
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and unit.ModsNikkelMHadesBiomesIsModdedEnemy then
+		-- If the unit is a ShadeNaked, we don't want a summon animation for the picked up enemy
+		if currentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation then
+			currentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation = nil
+			unit.UseActivatePresentation = false
+		end
+
 		-- Overwrite weapon/AI data if necessary due to a vow
 		local shrineLevel = game.GetNumShrineUpgrades(unit.ShrineMetaUpgradeName)
 		local requiredShrineLevel = unit.ShrineMetaUpgradeRequiredLevel or 1
@@ -89,6 +89,18 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 		end
 		if unit.ShrineWeaponOptionsOverwrite ~= nil and shrineLevel > 0 then
 			unit.WeaponOptions = unit.ShrineWeaponOptionsOverwrite
+		end
+
+		-- Increase the unit's health and armour
+		if unit.HealthBufferMultiplier ~= nil then
+			unit.HealthBufferMultiplier = unit.HealthBufferMultiplier + mod.ModdedUnitHealthBufferMultiplierBonus
+		else
+			unit.HealthBufferMultiplier = 1 + mod.ModdedUnitHealthBufferMultiplierBonus
+		end
+		if unit.HealthMultiplier ~= nil then
+			unit.HealthMultiplier = unit.HealthMultiplier * mod.ModdedUnitMaxHealthMultiplierBonus
+		else
+			unit.HealthMultiplier = 1 + mod.ModdedUnitMaxHealthMultiplierBonus
 		end
 	end
 

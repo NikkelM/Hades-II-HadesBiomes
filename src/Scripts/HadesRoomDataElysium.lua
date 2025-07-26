@@ -1,5 +1,5 @@
 mod.RoomData = mod.RoomData or {}
-mod.RoomData.Elysium = {
+mod.RoomData.Elysium = mod.RoomData.Elysium or {
 	BaseElysium =
 	{
 		DebugOnly = true,

@@ -1,7 +1,4 @@
 function mod.ConfirmHadesInstallation()
-	-- First, set up the folder in which the Hades installation is located
-	mod.hadesGameFolder = config.hadesGameFolder
-
 	-- "root" means we look for the Hades folder in the same parent directory as Hades II
 	if mod.hadesGameFolder == "root" or mod.hadesGameFolder == "" then
 		local hadesTwoContentFolder = rom.paths.Content()

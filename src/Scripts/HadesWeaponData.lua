@@ -1,4 +1,4 @@
-mod.HadesWeaponData = {
+mod.HadesWeaponData = mod.HadesWeaponData or {
 	BaseUnlockableWeapon =
 	{
 		UsePromptOffsetX = 64,
@@ -16329,8 +16329,7 @@ mod.HadesWeaponData = {
 	},
 }
 
-mod.HadesProjectileData =
-{
+mod.HadesProjectileData = mod.HadesProjectileData or {
 	NoShakeProjectile =
 	{
 		CancelCameraShake = true,
@@ -16916,8 +16915,7 @@ mod.HadesProjectileData =
 	},
 }
 
--- mod.EffectData =
--- {
+-- mod.EffectData = mod.EffectData or {
 -- 	NoShakeEffect =
 -- 	{
 -- 		CancelCameraShake = true,
