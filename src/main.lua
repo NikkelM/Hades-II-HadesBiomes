@@ -134,11 +134,17 @@ local function on_ready()
 
 		if uninstallSuccessful and not config.firstTimeSetup then
 			mod.DebugPrint(
-				"The mod was uninstalled successfully, but the \"firstTimeSetup\" flag is set to false, disabling mod.", 3)
+				"The mod was uninstalled successfully, and the \"firstTimeSetup\" flag is set to false, disabling mod.", 2)
 			config.enabled = false
 			-- Set to true to install the next time the mod is enabled
 			config.firstTimeSetup = true
 			return
+		elseif not uninstallSuccessful then
+			mod.DebugPrint(
+				"The mod was not uninstalled successfully, validating Hades installation to ensure we can proceed...", 2)
+			if not mod.ConfirmHadesInstallation() then
+				return
+			end
 		end
 	elseif config.uninstall ~= "false" then
 		mod.DebugPrint(

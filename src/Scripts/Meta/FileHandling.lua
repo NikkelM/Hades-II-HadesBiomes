@@ -1,4 +1,6 @@
 function mod.ConfirmHadesInstallation()
+	mod.hadesGameFolder = config.hadesGameFolder
+
 	-- "root" means we look for the Hades folder in the same parent directory as Hades II
 	if mod.hadesGameFolder == "root" or mod.hadesGameFolder == "" then
 		local hadesTwoContentFolder = rom.paths.Content()
@@ -8,9 +10,10 @@ function mod.ConfirmHadesInstallation()
 	-- Check if the Hades installation is valid (by just confirming the .exe exists)
 	local exePath = rom.path.combine(mod.hadesGameFolder, "x64\\Hades.exe")
 	if not rom.path.exists(exePath) then
-		error("Hades installation not found at \"" ..
+		mod.DebugPrint("Hades installation not found at \"" ..
 			exePath ..
-			"\". Please set the correct path in the config file. Use \"root\" if the Hades folder is in the same parent directory as Hades II.")
+			"\". Please set the correct path in the config file. Use \"root\" if the Hades folder is in the same parent directory as Hades II.",
+			1)
 		return false
 	end
 
@@ -102,11 +105,6 @@ function mod.CheckRequiredFiles(failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\1080p\\", ".pkg_manifest", failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\720p\\", ".pkg", failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\720p\\", ".pkg_manifest", failFast)
-
-	missingFiles = missingFiles + checkFilesExist(mod.CustomPackageFileNames, "Packages\\1080p\\", ".pkg", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomPackageFileNames, "Packages\\1080p\\", ".pkg_manifest", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomPackageFileNames, "Packages\\720p\\", ".pkg", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomPackageFileNames, "Packages\\720p\\", ".pkg_manifest", failFast)
 
 	missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\1080p\\", ".bik", failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\1080p\\", ".bik_atlas", failFast)

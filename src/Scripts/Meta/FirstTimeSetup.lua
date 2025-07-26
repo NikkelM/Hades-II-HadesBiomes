@@ -92,7 +92,9 @@ local function copyHadesHelpTexts()
 	if aliasesDataRaw and aliasesDataRaw.HelpTexts and aliasesDataRaw.HelpTexts[1] and aliasesDataRaw.HelpTexts[1].Texts then
 		aliasesData = aliasesDataRaw.HelpTexts[1].Texts
 	else
-		mod.DebugPrint("No aliases found in Aliases.sjson, skipping alias copying. This should not happen - please verify the game files!", 2)
+		mod.DebugPrint(
+			"No aliases found in Aliases.sjson, skipping alias copying. This should not happen - please verify the game files!",
+			2)
 	end
 
 	for _, language in ipairs(mod.HelpTextLanguages) do
@@ -242,11 +244,6 @@ function mod.FirstTimeSetup()
 	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", "1080p Hades ")
 	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg", "720p Hades ")
 	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg_manifest", "720p Hades ")
-
-	copyFiles(mod.CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg", "1080p Mod ", true)
-	copyFiles(mod.CustomPackageFileNames, "Content\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", "1080p Mod ", true)
-	copyFiles(mod.CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg", "720p Mod ", true)
-	copyFiles(mod.CustomPackageFileNames, "Content\\Packages\\", "Packages\\720p\\", ".pkg_manifest", "720p Mod ", true)
 
 	copyFiles(mod.BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Animation ")
 	copyFiles(mod.BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas", "1080p Animation ")

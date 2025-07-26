@@ -52,11 +52,6 @@ function mod.Uninstall()
 	removeFiles(mod.PackageFileMappings, "Packages\\720p\\", ".pkg")
 	removeFiles(mod.PackageFileMappings, "Packages\\720p\\", ".pkg_manifest")
 
-	removeFiles(mod.CustomPackageFileNames, "Packages\\1080p\\", ".pkg")
-	removeFiles(mod.CustomPackageFileNames, "Packages\\1080p\\", ".pkg_manifest")
-	removeFiles(mod.CustomPackageFileNames, "Packages\\720p\\", ".pkg")
-	removeFiles(mod.CustomPackageFileNames, "Packages\\720p\\", ".pkg_manifest")
-
 	removeFiles(mod.BikFileMappings, "Movies\\1080p\\", ".bik")
 	removeFiles(mod.BikFileMappings, "Movies\\1080p\\", ".bik_atlas")
 	removeFiles(mod.BikFileMappings, "Movies\\720p\\", ".bik")
@@ -93,7 +88,6 @@ function mod.Uninstall()
 	checksumsFile:close()
 
 	config.uninstall = "false"
-
 	mod.DebugPrint("Uninstallation complete.", 3)
 
 	return true

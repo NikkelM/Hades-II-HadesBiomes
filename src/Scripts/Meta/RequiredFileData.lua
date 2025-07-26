@@ -1,4 +1,4 @@
--- Contains file names/patterns required for copying over files from the Hades installation, and for uninstalling the mod
+-- Audio .bank files, copied from Hades to Hades II
 mod.AudioFileMappings = {
 	Enemies = "EnemiesModsNikkelMHadesBiomes",
 	Sounds = "SoundsModsNikkelMHadesBiomes",
@@ -30,13 +30,6 @@ mod.PackageFileMappings = {
 	RoomManager = "RoomManagerModsNikkelMHadesBiomes",
 	Fx = "FxModsNikkelMHadesBiomes",
 	GUI = "GUIModsNikkelMHadesBiomes",
-}
-
--- These will be copied from the plugins_data folder
-mod.CustomPackageFileNames = {
-	"ModsNikkelMHadesBiomesPortraits",
-	-- Contains e.g. the renamed RoomRewardPreview-Front effects
-	"ModsNikkelMHadesBiomesFxModded",
 }
 
 mod.BikFileMappings = {

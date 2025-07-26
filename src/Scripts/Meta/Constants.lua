@@ -1,5 +1,3 @@
-mod.hadesGameFolder = config.hadesGameFolder
-
 mod.NilValue = {}
 mod.TableValue = {}
 
