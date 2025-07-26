@@ -837,9 +837,9 @@ local weaponModifications = {
 	Minotaur5AxeCombo3 = {
 		AIData = {
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
-			-- Applied after takeoff
-			FireSelfVelocity = 2000,
-			FireSelfUpwardVelocity = 1200,
+			-- Increased velocity to allow him to go further, but not too high
+			FireSelfVelocity = 2500,
+			FireSelfUpwardVelocity = 2000,
 			-- Don't track during fire, but allow tracking during charge
 			StopBeforeFire = true,
 			-- If not set, Minotaur stays in one spot each leap
@@ -847,19 +847,8 @@ local weaponModifications = {
 			-- Can jump from anywhere
 			MoveWithinRange = false,
 			PreFireDuration = 0.0,
-		},
-	},
-	Minotaur5AxeCombo4 = {
-		AIData = {
-			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
-			FireSelfVelocity = 2000,
-			FireSelfUpwardVelocity = 1200,
-			StopBeforeFire = true,
-			TrackTargetDuringCharge = true,
-			MoveWithinRange = false,
-			PreFireDuration = 0.0,
-			-- Comes down too quickly otherwise
-			FireDuration = 0.3,
+			-- Slightly adjusted so he doesn't hover at the end before the touchdown
+			FireDuration = 0.28,
 		},
 	},
 	Minotaur5AxeCombo5 = {
@@ -867,15 +856,33 @@ local weaponModifications = {
 			PostAttackDuration = 1.8,
 		},
 	},
+	MinotaurLeapCombo3 = {
+		AIData = {
+			-- Should be the same as Minotaur5AxeCombo3
+			FireSelfVelocity = 2500,
+			FireSelfUpwardVelocity = 2000,
+			FireDuration = 0.28,
+		},
+	},
+	MinotaurLeapCombo4 = {
+		AIData = {
+			-- Should be the same as Minotaur5AxeCombo3
+			FireSelfVelocity = 2500,
+			FireSelfUpwardVelocity = 2000,
+			FireDuration = 0.28,
+		},
+	},
 	MinotaurLeapCombo5 = {
 		AIData = {
+			-- Should be the same as Minotaur5AxeCombo3
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
-			FireSelfVelocity = 2000,
-			FireSelfUpwardVelocity = 1200,
+			FireSelfVelocity = 2500,
+			FireSelfUpwardVelocity = 2000,
+			StopBeforeFire = true,
 			TrackTargetDuringCharge = true,
 			MoveWithinRange = false,
-			StopBeforeFire = true,
 			PreFireDuration = 0.0,
+			FireDuration = 0.28,
 		},
 	},
 	MinotaurBullRush = {
