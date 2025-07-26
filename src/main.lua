@@ -98,7 +98,7 @@ local function on_ready()
 
 	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
 	local shouldProceed = config.enabled and
-			((config.uninstall ~= "true" and config.uninstall ~= "I AM SURE - UNINSTALL") or config.firstTimeSetup)
+			((string.lower(config.uninstall) ~= "true" and string.lower(config.uninstall) ~= "i am sure - uninstall") or config.firstTimeSetup)
 	if shouldProceed and not mod.ConfirmHadesInstallation() then return end
 
 	import "Scripts/Meta/FirstTimeSetup.lua"
@@ -110,7 +110,7 @@ local function on_ready()
 	mod.CompareChecksums()
 
 	-- If the mod is disabled, we also want to uninstall it and set the firstTimeSetup flag to true for the next time the mod is enabled again
-	if not config.enabled or config.uninstall == "true" or config.uninstall == "I AM SURE - UNINSTALL" then
+	if not config.enabled or string.lower(config.uninstall) == "true" or string.lower(config.uninstall) == "i am sure - uninstall" then
 		local uninstallSuccessful = mod.Uninstall()
 
 		if not config.enabled then
@@ -146,7 +146,7 @@ local function on_ready()
 				return
 			end
 		end
-	elseif config.uninstall ~= "false" then
+	elseif string.lower(config.uninstall) ~= "false" then
 		mod.DebugPrint(
 			"Invalid value for \"uninstall\" in the config file (\"" ..
 			config.uninstall ..

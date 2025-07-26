@@ -26,7 +26,7 @@ end
 function mod.Uninstall()
 	-- Check if any savegame has a modded run as the most recent one - block uninstallation if so, as it would corrupt the save file
 	local cachedRuns = mod.LoadCachedRunsFile()
-	if config.uninstall == "I AM SURE - UNINSTALL" then
+	if string.lower(config.uninstall) == "i am sure - uninstall" then
 		mod.DebugPrint(
 			"Uninstalling mod - forced uninstallation! Savegames may corrupt. Re-install the mod to try and restore them.", 2)
 		-- Empty the list of cached runs - as the user thinks it is wrong
