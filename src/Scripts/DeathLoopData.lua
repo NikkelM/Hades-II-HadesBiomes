@@ -40,7 +40,7 @@ function mod.SpawnHadesRunStartDoor(source, args)
 		-- TODO: For debugging, change to currently worked on biome
 		StartingBiome = "Tartarus",
 		-- Don't play a voiceline - we do this when entering the Chaos gate
-		-- We have to do it then, as otherwise MelinoeField is being onloaded in PreThingCreation
+		-- We have to do it then, as otherwise MelinoeField is being loaded in PreThingCreation
 		GlobalVoiceLines = "EmptyStartNewHadesRunVoiceLines",
 		-- For the DirectionHintPresentation if LimitGraspShrineUpgradeEscapeDoorClosed is active
 		AltarId = 589766,

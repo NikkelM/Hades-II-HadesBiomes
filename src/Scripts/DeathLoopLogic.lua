@@ -19,3 +19,10 @@ modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 	end
 	base(victim, triggerArgs)
 end)
+
+modutil.mod.Path.Wrap("DeathAreaRoomTransition", function(base, source, args)
+	-- Reset the modified game objects when returning to the Crossroads
+	mod.ApplyGlobalGameObjectModifications(false)
+
+	base(source, args)
+end)

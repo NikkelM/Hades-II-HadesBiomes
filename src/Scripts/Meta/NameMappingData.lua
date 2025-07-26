@@ -179,3 +179,15 @@ mod.HadesHelpTextModifications = {
 	},
 	["zh-TW"] = {},
 }
+
+-- Mappings for various game object modifications that need to be applied when the run is started/ended
+mod.ModdedGameObjectModifications = {
+	EffectData = {
+		DamageEchoEffect = {
+			Vfx = {
+				Default = "ZeusEchoDebuff",
+				Modded = "ModsNikkelMHadesBiomesZeusEchoDebuff",
+			},
+		},
+	},
+}

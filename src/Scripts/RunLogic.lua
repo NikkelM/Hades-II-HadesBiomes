@@ -1,7 +1,15 @@
--- Functions that ensure the run logic works as intended
 modutil.mod.Path.Wrap("RunStateInit", function(base)
 	base()
+
+	-- The custom logic is always called, even if the run is already ongoing
 	game.CurrentRun.SupportAINames = game.CurrentRun.SupportAINames or {}
+
+	-- Only do this if we haven't done it yet for this global instance
+	-- This key is not included in the save file, so it will always be null when the game is started and a new global is instantiated
+	if game.ModsNikkelMHadesBiomesCompletedGlobalsModifications == nil or not game.CurrentRun then
+		mod.ApplyGlobalGameObjectModifications(game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun)
+		game.ModsNikkelMHadesBiomesCompletedGlobalsModifications = true
+	end
 end)
 
 -- Displays the biome's name as a banner at the top when entering the first room

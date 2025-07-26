@@ -393,3 +393,21 @@ function mod.RemoveSjsonEntries(tableToModify, mappings, key, filename)
 		end
 	end
 end
+
+---Applies modifications from mod.ModdedGameObjectModifications to the game's globals.
+---@param useModded boolean If true, will apply the "Modded" values, otherwise the "Default" values.
+---@param target table|nil On first invocation, will be set to the game's global. Afterwards, the sub-tables as defined in the modifications.
+---@param modifications table|nil The modifications to apply. Must be a hierarchical table as in the game's global, with "Default" and "Modded" leaf keys.
+function mod.ApplyGlobalGameObjectModifications(useModded, target, modifications)
+	target = target or game
+	modifications = modifications or mod.ModdedGameObjectModifications
+	for key, value in pairs(modifications) do
+		if type(value) == "table" and value.Default ~= nil and value.Modded ~= nil then
+			-- Set to Modded or Default based on parameter
+			target[key] = useModded and value.Modded or value.Default
+			mod.DebugPrint("Applying modification to leaf key: " .. key .. " with new value: " .. tostring(target[key]), 4)
+		elseif type(value) == "table" and target[key] ~= nil and type(target[key]) == "table" then
+			mod.ApplyGlobalGameObjectModifications(useModded, target[key], value)
+		end
+	end
+end
