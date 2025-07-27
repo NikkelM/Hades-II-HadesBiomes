@@ -887,7 +887,6 @@ local weaponModifications = {
 	},
 	MinotaurBullRush = {
 		AIData = {
-			-- TODO: Rotation multiplier on attack
 			PostAttackAnimation = "MinotaurBullRush_PreStrike",
 			ProjectileName = "MinotaurBullRushRam",
 			RamWeaponName = "MinotaurBullRush",
@@ -895,11 +894,21 @@ local weaponModifications = {
 			UseRamAILoop = true,
 			SetupDistance = 3000,
 			SetupTimeout = 5.0,
-			RamDistance = 150,
+			RamDistance = 120,
 			RamTimeout = 9.0,
 			AttackDistanceBuffer = 0,
 			StopMoveWithinRange = true,
-			
+			ApplyEffectsOnWeaponFire = {
+				{
+					EffectName = "BullRushRotation",
+					DataProperties = {
+						Duration = 99.0,
+						RotationMultiplier = 0.5,
+					},
+				},
+			},
+			ClearWeaponFireEffectsOnFireEnd = true,
+
 			AIAttackDistance = mod.NilValue,
 			AILineOfSightBuffer = mod.NilValue,
 			AILineOfSighEndBuffer = mod.NilValue,

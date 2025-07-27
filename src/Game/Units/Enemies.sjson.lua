@@ -8,7 +8,7 @@ local hadesTwoEnemiesFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\
 -- Modifications/overrides to the Hades enemies
 -- Use the original names from the Hades file here, as modifications are applied before renaming
 local hadesEnemiesModifications = {
-	-- TARTARUS
+	-- #region TARTARUS
 	BaseGlutton = { InheritFrom = "1_BaseEnemy", },
 	LightSpawner = { InheritFrom = "1_BaseEnemy", },
 	BaseThug = { InheritFrom = "1_BaseEnemy", },
@@ -19,17 +19,21 @@ local hadesEnemiesModifications = {
 	BaseThief = { InheritFrom = "1_BaseEnemy", },
 	WretchAssassin = { InheritFrom = "1_BaseEnemy", },
 	Harpy = { InheritFrom = "1_BaseEnemy", },
+	-- #endregion
 
-	-- ASPHODEL
+	-- #region ASPHODEL
 	BaseMedusaHead = { InheritFrom = "1_BaseEnemy", },
 	HydraTooth = { InheritFrom = "1_BaseEnemy", },
+	-- #endregion
 
-	-- ELYSIUM
+	-- #region ELYSIUM
 	BaseShade = { InheritFrom = "1_BaseEnemy", },
 	FlurrySpawner = { InheritFrom = "1_BaseEnemy", },
+	-- #endregion
 
-	-- ENVIRONMENT
+	-- #region ENVIRONMENT
 	Breakable = { InheritFrom = "1_BaseDestructible", },
+	-- #endregion
 }
 
 -- Copy an enemy from Hades II as a Hades enemy

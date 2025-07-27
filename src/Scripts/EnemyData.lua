@@ -924,13 +924,21 @@ local enemyModifications = {
 			RamEffectProperties = {
 				{
 					Property = "Speed",
-					Value = 700,
+					Value = 1200,
+				},
+				{
+					Property = "CanOnlyMoveForward",
+					Value = "true",
 				},
 			},
 			RamEffectResetProperties = {
 				{
 					Property = "Speed",
 					Value = 475,
+				},
+				{
+					Property = "CanOnlyMoveForward",
+					Value = "false",
 				},
 			},
 		},
