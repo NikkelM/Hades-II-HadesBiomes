@@ -180,6 +180,15 @@ local hadesProjectilesModifications = {
 		DamageRadius = 400,
 		DamageRadiusScaleY = 0.4,
 	},
+	MinotaurBullRushRam = {
+		InheritFrom = "1_BaseEnemyProjectile",
+		RotateWithOwner = true,
+		ImpactLineOfSight = true,
+		Fuse = 9.0,
+		NumPenetrations = "null",
+		UnlimitedUnitPenetration = false,
+		DieWithOwner = true,
+	},
 	-- #endregion
 	-- #endregion
 

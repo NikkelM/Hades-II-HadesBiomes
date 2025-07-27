@@ -56,7 +56,10 @@ local hadesWeaponsModifications = {
 		SelfVelocity = mod.NilValue,
 		SelfUpwardVelocity = mod.NilValue,
 	},
-	-- TODO: Rework same as for ChariotRam
+	MinotaurBullRush = {
+		Effects = mod.NilValue,
+	},
+	-- TODO: Rework same as for MinotaurBullRush (in WeaponData.lua)
 	TheseusChariotRam = {
 		Effect = {
 			Modifier = 760,

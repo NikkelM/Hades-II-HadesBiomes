@@ -887,37 +887,27 @@ local weaponModifications = {
 	},
 	MinotaurBullRush = {
 		AIData = {
-			PostAttackAnimation = "MinotaurBullRush_PreStrike",
 			ProjectileName = "MinotaurBullRushRam",
-			RamWeaponName = "MinotaurBullRush",
-			RamRecoverTime = 2.0,
-			UseRamAILoop = true,
-			SetupDistance = 3000,
-			SetupTimeout = 5.0,
-			RamDistance = 120,
-			RamTimeout = 9.0,
-			AttackDistanceBuffer = 0,
-			StopMoveWithinRange = true,
-			ApplyEffectsOnWeaponFire = {
-				{
-					EffectName = "BullRushRotation",
-					DataProperties = {
-						Duration = 99.0,
-						RotationMultiplier = 0.5,
-					},
-				},
+			WaitUntilProjectileDeath = "MinotaurBullRushRam",
+			PreAttackSetUnitProperties = {
+				Speed = 1200,
+				CanOnlyMoveForward = "true",
 			},
-			ClearWeaponFireEffectsOnFireEnd = true,
+			PostAttackResetUnitProperties = true,
+			TrackTargetDuringCharge = true,
+			FireMoveTowardTarget = true,
+			FireRotationDampening = 0.6,
+			MoveWithinRange = true,
+			-- A lower value causes consistent crashes
+			MoveSuccessDistance = 35,
+			PostAttackStop = true,
+			PostAttackDuration = 1.2,
+			PostAttackFx = "MinotaurBullRushHornStrike",
+			PostAttackAnimation = "MinotaurBullRush_PreStrike",
 
-			AIAttackDistance = mod.NilValue,
-			AILineOfSightBuffer = mod.NilValue,
-			AILineOfSighEndBuffer = mod.NilValue,
 			PostAttackAI = mod.NilValue,
 			PostAttackAICanOnlyMoveForward = mod.NilValue,
 			EffectExpiredName = mod.NilValue,
-			MoveSuccessDistance = mod.NilValue,
-			PostAttackAIWait = mod.NilValue,
-			PostAttackCooldown = mod.NilValue,
 		}
 	},
 	-- #endregion

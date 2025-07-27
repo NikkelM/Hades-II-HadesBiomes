@@ -920,28 +920,6 @@ local enemyModifications = {
 			CalcOffset = true,
 			CalcAngle = true,
 		},
-		DefaultAIData = {
-			RamEffectProperties = {
-				{
-					Property = "Speed",
-					Value = 1200,
-				},
-				{
-					Property = "CanOnlyMoveForward",
-					Value = "true",
-				},
-			},
-			RamEffectResetProperties = {
-				{
-					Property = "Speed",
-					Value = 475,
-				},
-				{
-					Property = "CanOnlyMoveForward",
-					Value = "false",
-				},
-			},
-		},
 	},
 	Theseus = {
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
