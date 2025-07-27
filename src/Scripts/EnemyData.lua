@@ -838,12 +838,16 @@ local enemyModifications = {
 			StopMoveWithinRange = false,
 			RamEffectName = mod.NilValue,
 			RamEffectProperties = {
-				Property = "Speed",
-				Value = 950,
+				{
+					Property = "Speed",
+					Value = 950,
+				},
 			},
 			RamEffectResetProperties = {
-				Property = "Speed",
-				Value = 300,
+				{
+					Property = "Speed",
+					Value = 300,
+				},
 			},
 			-- SetupDistance is when it can start ramming instead of moving
 			SetupDistance = 500,
@@ -856,12 +860,16 @@ local enemyModifications = {
 	ChariotElite = {
 		DefaultAIData = {
 			RamEffectProperties = {
-				Property = "Speed",
-				Value = 1100,
+				{
+					Property = "Speed",
+					Value = 1100,
+				},
 			},
 			RamEffectResetProperties = {
-				Property = "Speed",
-				Value = 400,
+				{
+					Property = "Speed",
+					Value = 400,
+				},
 			},
 		},
 	},
@@ -877,12 +885,16 @@ local enemyModifications = {
 			StopMoveWithinRange = false,
 			RamEffectName = mod.NilValue,
 			RamEffectProperties = {
-				Property = "Speed",
-				Value = 900,
+				{
+					Property = "Speed",
+					Value = 900,
+				},
 			},
 			RamEffectResetProperties = {
-				Property = "Speed",
-				Value = 200,
+				{
+					Property = "Speed",
+					Value = 200,
+				},
 			},
 			SetupDistance = 900,
 			SetupTimeout = 7.0,
@@ -907,6 +919,20 @@ local enemyModifications = {
 			SpawnDistance = 90,
 			CalcOffset = true,
 			CalcAngle = true,
+		},
+		DefaultAIData = {
+			RamEffectProperties = {
+				{
+					Property = "Speed",
+					Value = 700,
+				},
+			},
+			RamEffectResetProperties = {
+				{
+					Property = "Speed",
+					Value = 475,
+				},
+			},
 		},
 	},
 	Theseus = {

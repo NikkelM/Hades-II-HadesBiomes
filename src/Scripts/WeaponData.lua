@@ -887,60 +887,28 @@ local weaponModifications = {
 	},
 	MinotaurBullRush = {
 		AIData = {
-			-- ApplyEffectsOnPreAttackStart = {
-			-- 	-- {
-			-- 	-- 	EffectName = "BullRushSpeed",
-			-- 	-- 	DataProperties = {
-			-- 	-- 		Type = "SPEED",
-			-- 	-- 		-- ChangeType = "ADD",
-			-- 	-- 		Duration = 9.0,
-			-- 	-- 		Modifier = 1.75,
-			-- 	-- 		ClearOnCollision = true,
-			-- 	-- 		-- Active = true,
-			-- 	-- 		-- ExpiringTimeThreshold = 8.5,
-			-- 	-- 		-- ExpiringModifierFalloff = 50,
-			-- 	-- 	},
-			-- 	-- },
-			-- 	{
-			-- 		EffectName = "BullRushRotation",
-			-- 		DataProperties = {
-			-- 			Duration = 9.0,
-			-- 			RotationMultiplier = 0.8,
-			-- 			ClearOnCollision = true,
-			-- 			-- Active = true,
-			-- 		},
-			-- 	}
-			-- },
-			-- PreAttackSetUnitProperties =
-			-- {
-			-- 	Speed = 700,
-			-- 	-- RotationMultiplier doesn't work here
-			-- },
-			-- PostAttackResetUnitProperties = true,
+			-- TODO: Rotation multiplier on attack
 			PostAttackAnimation = "MinotaurBullRush_PreStrike",
-			-- TODO: Check if needed - related to #139?
 			ProjectileName = "MinotaurBullRushRam",
 			RamWeaponName = "MinotaurBullRush",
-			-- TODO: Doesn't yet work correctly - gets applied erratically, removed too soon or too late
-			RamEffectNames = { "BullRushSpeed", "BullRushRotation" },
 			RamRecoverTime = 2.0,
 			UseRamAILoop = true,
-			SetupDistance = 400,
+			SetupDistance = 3000,
 			SetupTimeout = 5.0,
 			RamDistance = 150,
 			RamTimeout = 9.0,
 			AttackDistanceBuffer = 0,
-			StopMoveWithinRange = false,
-			-- Comment the below out in the HadesWeaponData for testing
-			-- AIAttackDistance = 3000,
-			-- AILineOfSightBuffer = 200,
-			-- AILineOfSighEndBuffer = 80,
-			-- PostAttackAI = "MoveUntilEffectExpired",
-			-- PostAttackAICanOnlyMoveForward = true,
-			-- EffectExpiredName = "BullRushSpeed",
-			-- MoveSuccessDistance = 32,
-			-- PostAttackAIWait = 2.0,
-			-- PostAttackCooldown = 0.0,
+			StopMoveWithinRange = true,
+			
+			AIAttackDistance = mod.NilValue,
+			AILineOfSightBuffer = mod.NilValue,
+			AILineOfSighEndBuffer = mod.NilValue,
+			PostAttackAI = mod.NilValue,
+			PostAttackAICanOnlyMoveForward = mod.NilValue,
+			EffectExpiredName = mod.NilValue,
+			MoveSuccessDistance = mod.NilValue,
+			PostAttackAIWait = mod.NilValue,
+			PostAttackCooldown = mod.NilValue,
 		}
 	},
 	-- #endregion
