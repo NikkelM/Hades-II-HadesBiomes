@@ -893,7 +893,11 @@ local weaponModifications = {
 				Speed = 1200,
 				CanOnlyMoveForward = "true",
 			},
-			PostAttackResetUnitProperties = true,
+			-- Setting explicitly to not break when inferring the reset values as CanOnlyMoveForward will be a boolean instead of string
+			PostAttackSetUnitProperties = {
+				Speed = 475,
+				CanOnlyMoveForward = "false",
+			},
 			TrackTargetDuringCharge = true,
 			FireMoveTowardTarget = true,
 			FireRotationDampening = 0.6,
