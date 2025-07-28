@@ -51,11 +51,14 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 				game.thread(game.EnrageUnit, game.ActiveEnemies[unitIdToEnrage], game.CurrentRun, victim.EnrageOnDeathStartDelay)
 			end
 		end
+	end
 
+	base(victim, triggerArgs)
+
+	-- These were originally called in Kill() instead of KillEnemy()
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy and victim.ObjectId ~= nil then
 		if victim.OnDeathCrowdReaction ~= nil then
 			game.thread(game.CrowdReactionPresentation, victim.OnDeathCrowdReaction)
 		end
 	end
-
-	base(victim, triggerArgs)
 end)
