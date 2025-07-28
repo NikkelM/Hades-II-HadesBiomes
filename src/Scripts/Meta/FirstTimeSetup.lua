@@ -88,13 +88,21 @@ local function copyHadesHelpTexts()
 	local aliasesFilePath = rom.path.combine(mod.hadesGameFolder, 'Content\\Game\\Text\\Aliases.sjson')
 	local aliasesDataRaw = mod.DecodeSjsonFile(aliasesFilePath)
 	local aliasesData = {}
-	-- There's one set for each language. All are the same, so we can just use the first
-	if aliasesDataRaw and aliasesDataRaw.HelpTexts and aliasesDataRaw.HelpTexts[1] and aliasesDataRaw.HelpTexts[1].Texts then
-		aliasesData = aliasesDataRaw.HelpTexts[1].Texts
-	else
+	if not (aliasesDataRaw and aliasesDataRaw.HelpTexts and aliasesDataRaw.HelpTexts[1] and aliasesDataRaw.HelpTexts[1].Texts) then
 		mod.DebugPrint(
 			"No aliases found in Aliases.sjson, skipping alias copying. This should not happen - please verify the game files!",
 			2)
+	else
+		aliasesData = aliasesDataRaw.HelpTexts[1].Texts
+		-- We don't want to copy these aliases
+		local aliasesIdBlacklist = { CharProtag = true }
+		local filtered = {}
+		for _, alias in ipairs(aliasesData) do
+			if not aliasesIdBlacklist[alias.Id] then
+				table.insert(filtered, alias)
+			end
+		end
+		aliasesData = filtered
 	end
 
 	for _, language in ipairs(mod.HelpTextLanguages) do
