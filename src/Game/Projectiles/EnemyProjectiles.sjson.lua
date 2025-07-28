@@ -57,7 +57,6 @@ local projectilesToRemove = {
 -- Modifications/overrides to the Hades enemy projectiles
 local hadesProjectilesModifications = {
 	-- #region TARTARUS
-	-- #region TARTARUS - Regular
 	DisembodiedHandGrab = {
 		Effect = {
 			-- Don't play the ZagreusStun animation
@@ -85,13 +84,9 @@ local hadesProjectilesModifications = {
 	HeavyRangedSplitterFragment = {
 		DieWithOwner = true,
 	},
-	-- #endregion
-	-- #region TARTARUS - Minibosses
 	WretchAssassinRanged = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 	},
-	-- #endregion
-	-- #region TARTARUS - Harpies
 	HarpyBeam = {
 		Speed = 700,
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
@@ -124,10 +119,8 @@ local hadesProjectilesModifications = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 	},
 	-- #endregion
-	-- #endregion
 
 	-- #region ASPHODEL
-	-- #region ASPHODEL - Regular
 	RangedBurrowerWeapon = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
@@ -135,8 +128,6 @@ local hadesProjectilesModifications = {
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
 	},
-	-- #endregion
-	-- #region ASPHODEL - Hydra
 	HydraDart = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
@@ -147,10 +138,8 @@ local hadesProjectilesModifications = {
 		DetonateOnTouchdown = true,
 	},
 	-- #endregion
-	-- #endregion
 
 	-- #region ELYSIUM
-	-- #region ELYSIUM - Regular
 	SplitShotWeapon = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		ImpactFx = "EnemyProjectileImpact",
@@ -173,8 +162,6 @@ local hadesProjectilesModifications = {
 	ChariotRamSelfDestruct = {
 		AffectsEnemies = true,
 	},
-	-- #endregion
-	-- #region ELYSIUM - Minotaur
 	MinotaurOverheadTouchdown = {
 		AttachToOwner = false,
 		DamageRadius = 400,
@@ -189,7 +176,6 @@ local hadesProjectilesModifications = {
 		UnlimitedUnitPenetration = false,
 		DieWithOwner = true,
 	},
-	-- #endregion
 	-- #endregion
 
 	-- #region STYX

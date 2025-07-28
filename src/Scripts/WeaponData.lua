@@ -89,16 +89,24 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 					end
 				end
 			end
+
+			-- Move properties from the sjson to the AIData table
 			for key, value in pairs(sjsonToAIDataPropertyMappings) do
-				if sjsonWeaponData[key] and not weaponData.AIData[value] then
-					weaponData.AIData[value] = sjsonWeaponData[key]
-				else
-					if alternativeSjsonWeaponData and alternativeSjsonWeaponData[key] and not weaponData.AIData[value] then
+				-- Check if parent or grandparent have modifications for this property defined already
+				local skipProperty = false
+				if parentWeaponName and modifications[parentWeaponName] and modifications[parentWeaponName].AIData and modifications[parentWeaponName].AIData[value] then
+					skipProperty = true
+				elseif grandParentWeaponName and modifications[grandParentWeaponName] and modifications[grandParentWeaponName].AIData and modifications[grandParentWeaponName].AIData[value] then
+					skipProperty = true
+				end
+
+				if not skipProperty then
+					if sjsonWeaponData[key] and not weaponData.AIData[value] then
+						weaponData.AIData[value] = sjsonWeaponData[key]
+					elseif alternativeSjsonWeaponData and alternativeSjsonWeaponData[key] and not weaponData.AIData[value] then
 						weaponData.AIData[value] = alternativeSjsonWeaponData[key]
-					else
-						if secondAlternativeSjsonWeaponData and secondAlternativeSjsonWeaponData[key] and not weaponData.AIData[value] then
-							weaponData.AIData[value] = secondAlternativeSjsonWeaponData[key]
-						end
+					elseif secondAlternativeSjsonWeaponData and secondAlternativeSjsonWeaponData[key] and not weaponData.AIData[value] then
+						weaponData.AIData[value] = secondAlternativeSjsonWeaponData[key]
 					end
 				end
 			end
@@ -865,6 +873,11 @@ local weaponModifications = {
 			FireDuration = 0.28,
 		},
 	},
+	MinotaurArmored5AxeCombo3 = {
+		AIData = {
+			PostAttackAnimation = "MinotaurArmoredAttackSwings_AttackLeap",
+		},
+	},
 	Minotaur5AxeCombo5 = {
 		AIData = {
 			PostAttackDuration = 1.8,
@@ -899,6 +912,11 @@ local weaponModifications = {
 			FireDuration = 0.28,
 		},
 	},
+	MinotaurArmoredLeapCombo5 = {
+		AIData = {
+			PostAttackAnimation = "MinotaurArmoredAttackSwings_AttackLeap",
+		},
+	},
 	MinotaurAxeOverhead = {
 		AIData = {
 			-- Should be the same as Minotaur5AxeCombo3
@@ -910,6 +928,11 @@ local weaponModifications = {
 			MoveWithinRange = false,
 			PreFireDuration = 0.0,
 			FireDuration = 0.28,
+		},
+	},
+	MinotaurArmoredAxeOverhead = {
+		AIData = {
+			PostAttackAnimation = "MinotaurArmoredAttackSwings_AttackLeap",
 		},
 	},
 	MinotaurCrescentCombo3 = {
@@ -946,6 +969,19 @@ local weaponModifications = {
 			EffectExpiredName = mod.NilValue,
 		}
 	},
+	MinotaurArmoredBullRush = {
+		AIData = {
+			ProjectileName = "MinotaurArmoredBullRushRam",
+			WaitUntilProjectileDeath = "MinotaurArmoredBullRushRam",
+			PreAttackSetUnitProperties = {
+				Speed = 1300,
+				CanOnlyMoveForward = "true",
+			},
+			PostAttackAnimation = "MinotaurArmoredBullRush_PreStrike",
+			FireRotationDampening = 0.7,
+			EffectExpiredName = mod.NilValue,
+		},
+	},
 	MinotaurBullRush2 = {
 		AIData = {
 			ProjectileName = "MinotaurBullRushRam",
@@ -973,6 +1009,24 @@ local weaponModifications = {
 			PostAttackAICanOnlyMoveForward = mod.NilValue,
 			EffectExpiredName = mod.NilValue,
 		}
+	},
+	MinotaurArmoredBullRush2 = {
+		AIData = {
+			ProjectileName = "MinotaurArmoredBullRushRam",
+			WaitUntilProjectileDeath = "MinotaurArmoredBullRushRam",
+			PreAttackSetUnitProperties = {
+				Speed = 1300,
+				CanOnlyMoveForward = "true",
+			},
+			PostAttackAnimation = "MinotaurArmoredBullRush_PreStrike",
+			FireRotationDampening = 0.7,
+			EffectExpiredName = mod.NilValue,
+		},
+	},
+	MinotaurArmoredAxeSpin = {
+		AIData = {
+			FireSelfVelocity = 600,
+		},
 	},
 	-- #endregion
 	-- #region ELYSIUM - Theseus

@@ -921,6 +921,14 @@ local enemyModifications = {
 			CalcAngle = true,
 		},
 	},
+	Minotaur2 = {
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "MinotaurArmoredOverheadTouchdown",
+			SpawnDistance = 90,
+			CalcOffset = true,
+			CalcAngle = true,
+		},
+	},
 	Theseus = {
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
