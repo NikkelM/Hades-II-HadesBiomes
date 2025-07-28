@@ -946,6 +946,34 @@ local weaponModifications = {
 			EffectExpiredName = mod.NilValue,
 		}
 	},
+	MinotaurBullRush2 = {
+		AIData = {
+			ProjectileName = "MinotaurBullRushRam",
+			WaitUntilProjectileDeath = "MinotaurBullRushRam",
+			PreAttackSetUnitProperties = {
+				Speed = 1200,
+				CanOnlyMoveForward = "true",
+			},
+			PostAttackSetUnitProperties = {
+				Speed = 475,
+				CanOnlyMoveForward = "false",
+			},
+			TrackTargetDuringCharge = true,
+			FireMoveTowardTarget = true,
+			FireRotationDampening = 0.7,
+			MoveWithinRange = true,
+			MoveSuccessDistance = 35,
+			PostAttackStop = true,
+			-- To immediately start the CrescentStrike follow-up
+			PostAttackDuration = 0.0,
+			PostAttackFx = "MinotaurBullRushHornStrike",
+			PostAttackAnimation = "MinotaurBullRush_PreStrike",
+
+			PostAttackAI = mod.NilValue,
+			PostAttackAICanOnlyMoveForward = mod.NilValue,
+			EffectExpiredName = mod.NilValue,
+		}
+	},
 	-- #endregion
 	-- #region ELYSIUM - Theseus
 	-- #endregion

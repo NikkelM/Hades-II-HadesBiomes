@@ -21368,7 +21368,6 @@ mod.EnemyData = {
 		SpeechCooldownTime = 12,
 		AnimOffsetZ = 240,
 
-		-- TODO: Needs implementation
 		OnDeathCrowdReaction = { AnimationNames = { "StatusIconGrief", "StatusIconOhBoy", "StatusIconDisgruntled" }, Sound = "/SFX/TheseusCrowdBoo", ReactionChance = 0.15, Delay = 1.8, Requirements = { RequiredRoom = "C_Boss01" }, Shake = true, RadialBlur = true },
 
 		GenusName = "Minotaur",
@@ -21377,7 +21376,6 @@ mod.EnemyData = {
 		AISetupDelay = 1.5,
 		StopBiomeTimerIfComboPartnerDead = true,
 
-		-- TODO: Needs implementation
 		EndThreadWaitsOnDeath = "TheseusMinotaurSpawns",
 		EnrageOnDeath = "Theseus",
 		EnrageOnDeathStartDelay = 1.0,
@@ -21385,7 +21383,6 @@ mod.EnemyData = {
 		ComboPartnerName = "Theseus",
 		ExpireEffectOnThreshold = "BullRushSpeed",
 
-		-- TODO: Needs implementation
 		PreDamageIfEncounterCompleted = "MiniBossMinotaur",
 		PreDamagePercent = 0.80,
 
@@ -21413,9 +21410,12 @@ mod.EnemyData = {
 		{
 			-- "Minotaur5AxeCombo1", -- works
 			-- "MinotaurLeapCombo1", -- works
-			"MinotaurBullRush",
+			-- "MinotaurBullRush", -- works
+			-- "MinotaurAxeOverhead", -- works
+			-- "MinotaurBullRush2", -- works
+			-- "MinotaurCrescentCombo1" -- works
 			-- "MinotaurTheseusThrow_Minotaur",
-			-- "MinotaurTheseusSlam_Minotaur" --, "MinotaurTheseusXStrike_Minotaur"
+			-- "MinotaurTheseusSlam_Minotaur" --, "MinotaurTheseusXStrike_Minotaur" (commented in original as well)
 		},
 
 		AIEndHealthThreshold = 0.5,
@@ -21427,6 +21427,7 @@ mod.EnemyData = {
 				{
 					AIEndHealthThreshold = 0.5,
 				},
+				PermanentlyEnrage = true,
 			},
 			{
 				RandomAIFunctionNames = { "AttackerAI" },
