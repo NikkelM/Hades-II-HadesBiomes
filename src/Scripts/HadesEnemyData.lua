@@ -21408,14 +21408,8 @@ mod.EnemyData = {
 
 		WeaponOptions =
 		{
-			-- "Minotaur5AxeCombo1", -- works
-			-- "MinotaurLeapCombo1", -- works
-			-- "MinotaurBullRush", -- works
-			-- "MinotaurAxeOverhead", -- works
-			-- "MinotaurBullRush2", -- works
-			-- "MinotaurCrescentCombo1" -- works
-			-- "MinotaurTheseusThrow_Minotaur",
-			-- "MinotaurTheseusSlam_Minotaur" --, "MinotaurTheseusXStrike_Minotaur" (commented in original as well)
+			"Minotaur5AxeCombo1", "MinotaurLeapCombo1", "MinotaurBullRush",
+			"MinotaurTheseusThrow_Minotaur", "MinotaurTheseusSlam_Minotaur" --, "MinotaurTheseusXStrike_Minotaur"
 		},
 
 		AIEndHealthThreshold = 0.5,
@@ -21427,7 +21421,6 @@ mod.EnemyData = {
 				{
 					AIEndHealthThreshold = 0.5,
 				},
-				PermanentlyEnrage = true,
 			},
 			{
 				RandomAIFunctionNames = { "AttackerAI" },
