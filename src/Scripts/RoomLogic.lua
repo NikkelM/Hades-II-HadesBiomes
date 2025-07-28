@@ -105,6 +105,12 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 	end
 
 	base(unit, currentRun, args)
+
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and unit.ModsNikkelMHadesBiomesIsModdedEnemy then
+		if unit.PreDamageIfEncounterCompleted ~= nil and game.HasEncounterOccurred(currentRun, unit.PreDamageIfEncounterCompleted, true) then
+			unit.Health = unit.MaxHealth * unit.PreDamagePercent
+		end
+	end
 end)
 
 modutil.mod.Path.Wrap("SetupAI", function(base, enemy, args)

@@ -23,3 +23,39 @@ modutil.mod.Path.Wrap("Damage", function(base, victim, triggerArgs)
 
 	base(victim, triggerArgs)
 end)
+
+modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy then
+		if victim.SupportAIUnitId ~= nil then
+			game.thread(game.Kill, game.ActiveEnemies[victim.SupportAIUnitId])
+		end
+
+		if victim.EndThreadWaitsOnDeath ~= nil then
+			game.SetThreadWait(victim.EndThreadWaitsOnDeath, 0.01)
+		end
+
+		if victim.ComboPartnerId ~= nil and game.ActiveEnemies[victim.ComboPartnerId] ~= nil and not game.ActiveEnemies[victim.ComboPartnerId].IsDead then
+			if game.ActiveEnemies[victim.ComboPartnerId].WaitingForPartner then
+				game.SetThreadWait(game.ActiveEnemies[victim.ComboPartnerId].AIThreadName, 0.0)
+			end
+		end
+
+		if victim.FuseSpawnsOnDeath then
+			game.thread(game.FuseSpawns, victim)
+		end
+
+		if victim.EnrageOnDeath ~= nil then
+			local unitIdToEnrage = GetClosestUnitOfType({ Id = victim.ObjectId, DestinationName = victim.EnrageOnDeath })
+			if unitIdToEnrage ~= 0 and game.ActiveEnemies[unitIdToEnrage] ~= nil then
+				game.ActiveEnemies[unitIdToEnrage].PermanentEnraged = true
+				game.thread(game.EnrageUnit, game.ActiveEnemies[unitIdToEnrage], game.CurrentRun, victim.EnrageOnDeathStartDelay)
+			end
+		end
+
+		if victim.OnDeathCrowdReaction ~= nil then
+			game.thread(game.CrowdReactionPresentation, victim.OnDeathCrowdReaction)
+		end
+	end
+
+	base(victim, triggerArgs)
+end)

@@ -108,19 +108,33 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 		if not weaponData.Sounds or not weaponData.Sounds.FireSounds then
 			weaponData.Sounds = weaponData.Sounds or {}
 			weaponData.Sounds.FireSounds = weaponData.Sounds.FireSounds or {}
-			if mod.HadesSjsonWeaponsTable[weaponName] and mod.HadesSjsonWeaponsTable[weaponName].FireSound then
-				if mod.HadesSjsonWeaponsTable[weaponName].FireSound ~= "null" then
-					table.insert(weaponData.Sounds.FireSounds, { Name = mod.HadesSjsonWeaponsTable[weaponName].FireSound })
+
+			if parentWeaponName and base[parentWeaponName] and base[parentWeaponName].Sounds and base[parentWeaponName].Sounds.FireSounds then
+				weaponData.Sounds.FireSounds = base[parentWeaponName].Sounds.FireSounds
+			elseif grandParentWeaponName and base[grandParentWeaponName] and base[grandParentWeaponName].Sounds and base[grandParentWeaponName].Sounds.FireSounds then
+				weaponData.Sounds.FireSounds = base[grandParentWeaponName].Sounds.FireSounds
+			end
+
+			-- If still no sounds exist, use the ones from the sjson
+			if not weaponData.Sounds or not weaponData.Sounds.FireSounds or #weaponData.Sounds.FireSounds == 0 then
+				if mod.HadesSjsonWeaponsTable[weaponName] and mod.HadesSjsonWeaponsTable[weaponName].FireSound then
+					if mod.HadesSjsonWeaponsTable[weaponName].FireSound ~= "null" then
+						table.insert(weaponData.Sounds.FireSounds, { Name = mod.HadesSjsonWeaponsTable[weaponName].FireSound })
+					end
+				elseif parentWeaponName and mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound then
+					if mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound ~= "null" then
+						table.insert(weaponData.Sounds.FireSounds, { Name = mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound })
+					end
+				elseif grandParentWeaponName and mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound then
+					if mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound ~= "null" then
+						table.insert(weaponData.Sounds.FireSounds,
+							{ Name = mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound })
+					end
 				end
-			elseif parentWeaponName and mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound then
-				if mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound ~= "null" then
-					table.insert(weaponData.Sounds.FireSounds, { Name = mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound })
-				end
-			elseif grandParentWeaponName and mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound then
-				if mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound ~= "null" then
-					table.insert(weaponData.Sounds.FireSounds,
-						{ Name = mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound })
-				end
+			end
+
+			if #weaponData.Sounds.FireSounds == 0 then
+				weaponData.Sounds = nil
 			end
 		end
 	end
@@ -883,6 +897,24 @@ local weaponModifications = {
 			MoveWithinRange = false,
 			PreFireDuration = 0.0,
 			FireDuration = 0.28,
+		},
+	},
+	MinotaurAxeOverhead = {
+		AIData = {
+			-- Should be the same as Minotaur5AxeCombo3
+			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
+			FireSelfVelocity = 2500,
+			FireSelfUpwardVelocity = 2000,
+			StopBeforeFire = true,
+			TrackTargetDuringCharge = true,
+			MoveWithinRange = false,
+			PreFireDuration = 0.0,
+			FireDuration = 0.28,
+		},
+	},
+	MinotaurCrescentCombo3 = {
+		AIData = {
+			PreAttackDuration = 0.0,
 		},
 	},
 	MinotaurBullRush = {
