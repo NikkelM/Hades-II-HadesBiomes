@@ -90,11 +90,10 @@ local encounterModifications = {
 		},
 	},
 	MiniBossMinotaur = {
-		-- Without this, the Minotaur will not spawn if a save is loaded
-		-- TODO: Doesn't always work
-		-- For more consistency, either on the room itself or here invalidate the checkpoint
-		-- Or on room enter, run the preplaced function
-		PreSpawnEnemies = false,
+		InheritFrom = { "MinibossEncounter" },
+		DelayedStart = true,
+		-- Without this, the room exits will immediately unlock after the conversation
+		UnthreadedEvents = EncounterSets.EncounterEventsDefault,
 	},
 
 	-- BOSSES
