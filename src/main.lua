@@ -189,7 +189,7 @@ local function on_ready()
 		import "Game/Obstacles/Asphodel.sjson.lua"
 		import "Game/Obstacles/Chaos.sjson.lua"
 		import "Game/Obstacles/Elysium.sjson.lua"
-		-- import "Game/Obstacles/Styx.sjson.lua"
+		import "Game/Obstacles/Styx.sjson.lua"
 		import "Game/Obstacles/Tartarus.sjson.lua"
 
 		-- The ScreenText files depend on icons in here
@@ -304,6 +304,7 @@ local function on_ready()
 		import "Scripts/CombatPresentation.lua"
 		import "Scripts/DeathLoopData.lua"
 		import "Scripts/DeathLoopLogic.lua"
+		import "Scripts/EffectLogic.lua"
 		import "Scripts/EnemyAILogic.lua"
 		import "Scripts/EncounterLogic.lua"
 		import "Scripts/HeroData.lua"

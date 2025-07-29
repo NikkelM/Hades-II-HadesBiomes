@@ -920,6 +920,7 @@ local enemyModifications = {
 			CalcOffset = true,
 			CalcAngle = true,
 		},
+		ManualDeathAnimation = false,
 	},
 	Minotaur2 = {
 		OnTouchdownFunctionArgs = {
@@ -932,6 +933,7 @@ local enemyModifications = {
 	Theseus = {
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
+		ManualDeathAnimation = false,
 	},
 	-- #endregion
 	-- #endregion

@@ -10,6 +10,23 @@ modutil.mod.Path.Wrap("GetWeaponAIData", function(base, enemy, weaponName)
 	return aiData
 end)
 
+modutil.mod.Path.Wrap("AIFireProjectile", function(base, enemy, aiData, projectileData)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.ModsNikkelMHadesBiomesIsModdedEnemy then
+		-- For Theseus' SpearThrow and Hades' BidentThrow
+		if aiData.ModsNikkelMHadesBiomesFireFromObstacle then
+			aiData.FireFromId = GetIdsByType({ Name = aiData.ModsNikkelMHadesBiomesFireFromObstacle })[1] or nil
+		end
+		if aiData.ModsNikkelMHadesBiomesDestroyObstacleOnFire then
+			Destroy({ Ids = GetIdsByType({ Name = aiData.ModsNikkelMHadesBiomesDestroyObstacleOnFire }), })
+		end
+		if aiData.ModsNikkelMHadesBiomesFireAtSelf then
+			aiData.TargetId = enemy.ObjectId
+		end
+	end
+
+	base(enemy, aiData, projectileData)
+end)
+
 -- Gets called in a ThreadedEvents function in each boss's AIStage.
 -- This re-implements some of the logic from Hades' StagedAI that was removed in Hades II
 function game.NikkelMHadesBiomesBossAIStageHandler(enemy, args)

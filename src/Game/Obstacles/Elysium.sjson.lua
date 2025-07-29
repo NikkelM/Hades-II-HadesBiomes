@@ -27,6 +27,7 @@ local hadesObstacleAdditionsParents = {
 	},
 }
 local hadesObstacleAdditions = {
+	-- These are imported from the Hades Gameplay.sjson
 	EnemySpear = {
 		Name = "EnemySpear",
 		InheritFrom = "EnemyShadeWeapon",
@@ -65,6 +66,26 @@ local hadesObstacleAdditions = {
 			AttachedAnim = "EnemyShadeWeaponShadow",
 			EditorOutlineDrawBounds = false,
 			Graphic = "EnemySwordIdleContainer",
+		},
+	},
+	TheseusSpearReturnPoint = {
+		Name = "TheseusSpearReturnPoint",
+		DisplayInEditor = true,
+		Life = {
+			Invulnerable = true,
+		},
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "TheseusSpearReturnPoint",
+			StopsProjectiles = false,
+			StopsUnits = false,
+			Tallness = 227.0,
+			Points = {
+				{ X = 0,   Y = 10 },
+				{ X = 10,  Y = 5 },
+				{ X = 0,   Y = 0 },
+				{ X = -10, Y = 5 },
+			},
 		},
 	},
 }

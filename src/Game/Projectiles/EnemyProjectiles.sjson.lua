@@ -144,6 +144,7 @@ local hadesProjectilesModifications = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		ImpactFx = "EnemyProjectileImpact",
 		DissipateFx = "EnemyProjectileMultiBreak",
+		-- TODO: Test behaviour when hitting a wall, see TheseusSpearThrow
 		SpawnOnDeath = "null",
 		SpawnOnDissipate = "SplitShotWeaponSmall",
 		UnpauseResetLocation = true,
@@ -175,6 +176,13 @@ local hadesProjectilesModifications = {
 		NumPenetrations = "null",
 		UnlimitedUnitPenetration = false,
 		DieWithOwner = true,
+	},
+	TheseusSpearThrow = {
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
+		SpawnOnDissipate = "TheseusSpearReturnPoint",
+	},
+	TheseusSpearThrowReturn = {
+		SpawnOnDissipate = "null",
 	},
 	-- #endregion
 

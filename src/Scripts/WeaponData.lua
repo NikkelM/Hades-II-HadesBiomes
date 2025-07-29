@@ -1030,6 +1030,14 @@ local weaponModifications = {
 	},
 	-- #endregion
 	-- #region ELYSIUM - Theseus
+	TheseusSpearThrowReturn = {
+		AIData = {
+			FireProjectileTowardTarget = true,
+			ModsNikkelMHadesBiomesFireAtSelf = true,
+			ModsNikkelMHadesBiomesFireFromObstacle = "TheseusSpearReturnPoint",
+			ModsNikkelMHadesBiomesDestroyObstacleOnFire = "TheseusSpearReturnPoint",
+		},
+	},
 	-- #endregion
 	-- #endregion
 
