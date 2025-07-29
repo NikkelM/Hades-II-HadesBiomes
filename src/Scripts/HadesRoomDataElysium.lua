@@ -908,10 +908,6 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		ResetBinksOnExit = true,
 
 		MaxCreationsThisRun = 1,
-		-- TODO: For debugging
-		-- ForceAtBiomeDepthMin = 0,
-		-- ForceAtBiomeDepthMax = 0,
-		-- Starting = true,
 		ForceAtBiomeDepthMin = 4,
 		ForceAtBiomeDepthMax = 7,
 		MaxAppearancesThisBiome = 1,

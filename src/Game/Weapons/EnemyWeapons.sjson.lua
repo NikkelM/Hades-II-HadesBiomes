@@ -62,6 +62,9 @@ local hadesWeaponsModifications = {
 	MinotaurArmoredBullRush = {
 		Effects = mod.NilValue,
 	},
+	MinotaurOverheadShockwave = {
+		ProjectileAngleOffset = 90,
+	},
 	-- TODO: Rework same as for MinotaurBullRush (in WeaponData.lua)
 	TheseusChariotRam = {
 		Effect = {
