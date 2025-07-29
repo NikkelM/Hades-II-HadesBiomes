@@ -63,19 +63,6 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 				end
 			end
 
-			if aiData.ApplyEffectsOnWeaponFire ~= nil then
-				for k, effectData in pairs(aiData.ApplyEffectsOnWeaponFire) do
-					effectData.Id = enemy.ObjectId
-					effectData.DestinationId = enemy.ObjectId
-					if effectData.DataProperties and not effectData.DataProperties.TimeModifierFraction then
-						effectData.DataProperties.TimeModifierFraction = 1
-					end
-					ApplyEffect(effectData)
-					if effectData.ClearEffectOnHit then
-						table.insert(enemy.ClearEffectsOnHitStun, effectData.EffectName)
-					end
-				end
-			end
 			-- Adds the speedup during ram
 			if aiData.RamEffectProperties ~= nil and aiData.RamEffectResetProperties ~= nil then
 				for _, property in ipairs(aiData.RamEffectProperties) do
@@ -119,12 +106,7 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 					game.CallFunctionName(aiData.OnFiredFunctionName, enemy, aiData)
 				end
 			end
-			if aiData.ApplyEffectsOnWeaponFire ~= nil and aiData.ClearWeaponFireEffectsOnFireEnd then
-				for k, effectData in pairs(aiData.ApplyEffectsOnWeaponFire) do
-					print("Clearing effect: " .. effectData.EffectName .. " for enemy: " .. enemy.ObjectId)
-					ClearEffect({ Id = enemy.ObjectId, Name = effectData.EffectName })
-				end
-			end
+
 			Stop({ Id = enemy.ObjectId })
 			if aiData.PostAttackAnimation ~= nil then
 				SetAnimation({ Name = aiData.PostAttackAnimation, DestinationId = enemy.ObjectId })
