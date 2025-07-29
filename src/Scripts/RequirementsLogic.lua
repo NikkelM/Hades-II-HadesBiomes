@@ -72,7 +72,19 @@ modutil.mod.Path.Wrap("IsTextLineEligible", function(base, currentRun, source, l
 	local isEligible = base(currentRun, source, line, prevLine, parentLine, args)
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
-		return game.ModsNikkelMHadesBiomesIsGameStateEligible(source, line, args)
+		-- Check if the whole line is eligible
+		if not game.ModsNikkelMHadesBiomesIsGameStateEligible(source, line, args) then
+			return false
+		end
+		-- But also check if the inner cues are eligible, as in Hades I, there can be requirements in there sometimes
+		for _, cue in ipairs(line) do
+			if type(cue) == "table" then
+				if not game.ModsNikkelMHadesBiomesIsGameStateEligible(source, cue, args) then
+					return false
+				end
+			end
+		end
+		return true
 	end
 
 	return isEligible

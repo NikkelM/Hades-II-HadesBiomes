@@ -93,7 +93,17 @@ local encounterModifications = {
 		InheritFrom = { "MinibossEncounter" },
 		DelayedStart = true,
 		-- Without this, the room exits will immediately unlock after the conversation
-		UnthreadedEvents = EncounterSets.EncounterEventsDefault,
+		UnthreadedEvents = {
+			{
+				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
+				Args = { DelayedStart = true, },
+			},
+			{ FunctionName = "EncounterAudio" },
+			{ FunctionName = "HandleEnemySpawns" },
+			{ FunctionName = "CheckForAllEnemiesDead" },
+			{ FunctionName = "PostCombatAudio" },
+			{ FunctionName = "SpawnRoomReward" },
+		},
 	},
 
 	-- BOSSES
