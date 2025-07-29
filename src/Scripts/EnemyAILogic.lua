@@ -46,7 +46,7 @@ function game.NikkelMHadesBiomesBossAIStageHandler(enemy, args)
 
 	if aiStage.PermanentlyEnrage then
 		enemy.PermanentEnraged = true
-		game.thread(game.EnrageUnit, enemy)
+		game.thread(game.EnrageUnit, enemy, game.CurrentRun)
 	end
 
 	if aiStage.ClearObstacleTypes then

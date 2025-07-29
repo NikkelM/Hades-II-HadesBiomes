@@ -38,6 +38,10 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 			if game.ActiveEnemies[victim.ComboPartnerId].WaitingForPartner then
 				game.SetThreadWait(game.ActiveEnemies[victim.ComboPartnerId].AIThreadName, 0.0)
 			end
+
+			if victim.ExpireComboPartnerEffectOnDeath ~= nil then
+				ClearEffect({ Id = victim.ComboPartnerId, Name = victim.ExpireComboPartnerEffectOnDeath })
+			end
 		end
 
 		if victim.FuseSpawnsOnDeath then
@@ -55,10 +59,18 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 
 	base(victim, triggerArgs)
 
-	-- These were originally called in Kill() instead of KillEnemy()
+	-- These were originally called in Kill() instead of KillEnemy(), so we're moving it past the base call
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy and victim.ObjectId ~= nil then
 		if victim.OnDeathCrowdReaction ~= nil then
 			game.thread(game.CrowdReactionPresentation, victim.OnDeathCrowdReaction)
+		end
+
+		if victim.StopBiomeTimerIfComboPartnerDead and not victim.CannotDieFromDamage then
+			local bothBossesDead = false
+			local partnerId = GetClosestUnitOfType({ Id = victim.ObjectId, DestinationName = victim.ComboPartnerName })
+			if partnerId == 0 or game.RequiredKillEnemies[partnerId] == nil or game.RequiredKillEnemies[partnerId].IsDead or game.RequiredKillEnemies[partnerId].Health <= 0 then
+				bothBossesDead = true
+			end
 		end
 	end
 end)

@@ -12,6 +12,7 @@ local encounterDataElysium = {
 	-- MiniBossShadeMagic = encounterData.MiniBossShadeMagic,
 
 	-- Bosses
+	BossTheseusAndMinotaur = encounterData.BossTheseusAndMinotaur,
 
 	-- Challenge encounters within a room
 	TimeChallengeElysium = encounterData.TimeChallengeElysium,
@@ -107,7 +108,9 @@ local encounterModifications = {
 	},
 
 	-- BOSSES
-	-- DelayedStart = true,
+	BossTheseusAndMinotaur = {
+		PostUnthreadedEvents = mod.NilValue,
+	},
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataElysium, encounterModifications, encounterReplacements)

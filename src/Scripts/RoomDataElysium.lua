@@ -87,18 +87,13 @@ local roomModifications = {
 
 	-- BOSSES
 	C_Boss01 = {
+		LoadModdedVoiceBanks = { "Minotaur", "Theseus", "ZagreusField" },
 		ForcedReward = "MixerHBossDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
-		UnthreadedEvents = {
-			[1] = {
-				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
-				Args = { DelayedStart = true, },
-			},
-		},
 	},
 
 	-- OTHER
