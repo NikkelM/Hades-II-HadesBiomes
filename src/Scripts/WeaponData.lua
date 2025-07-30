@@ -1033,11 +1033,23 @@ local weaponModifications = {
 	TheseusSpearThrowReturn = {
 		AIData = {
 			FireProjectileTowardTarget = true,
+			-- Modded properties, to make sure the spear is fired from the obstacle and towards Theseus
 			ModsNikkelMHadesBiomesFireAtSelf = true,
 			ModsNikkelMHadesBiomesFireFromObstacle = "TheseusSpearReturnPoint",
 			ModsNikkelMHadesBiomesDestroyObstacleOnFire = "TheseusSpearReturnPoint",
 		},
 	},
+	TheseusSpearSpin = {
+		AIData = {
+			FireSelfVelocity = 2000,
+			-- So there are some opportunities to attack him without him blocking everything
+			PostAttackStop = true,
+			-- Also for this, removing the cooldown to not make it too easy
+			PostAttackCooldownMin = 0.75,
+			PostAttackCooldownMax = 1.25,
+		},
+	},
+	-- TODO: Beware: Combo attacks require TheseusAboutFraternalBonds06_A/B to have run, which require PersephoneFirstMeeting at the root
 	-- #endregion
 	-- #endregion
 
