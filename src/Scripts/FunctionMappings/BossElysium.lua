@@ -177,3 +177,169 @@ end
 
 function game.Theseus2Damaged(victim, attacker)
 end
+
+function game.SelectTheseusGod(enemy, run, args)
+	enemy.TheseusGodName = game.GetUninteractedGodThisRunForTheseus() or "Artemis"
+	LoadPackages({ Names = enemy.TheseusGodName })
+end
+
+function game.GetUninteractedGodThisRunForTheseus()
+	-- These are all the gods that can be selected by Theseus, but with the LootData names from Hades II
+	local eligibleTheseusGods = {
+		AphroditeUpgrade = true,
+		AresUpgrade = true,
+		NPC_Artemis_Field_01 = true, -- ArtemisUpgrade = true, -- not in Hades II as a normal god
+		NPC_Athena_01 = true, -- AthenaUpgrade = true, -- not in Hades II as a normal god - shows as NPC_Athena_01 in LootTypeHistory
+		DemeterUpgrade = true,
+		NPC_Dionysus_01 = true, -- DionysusUpgrade = true, -- not in Hades II as a normal god, and not possible to get in modded run
+		PoseidonUpgrade = true,
+		ZeusUpgrade = true,
+		-- TODO: Other gods from H2 not available for Theseus: Hestia, Hephaestus, Apollo, Hera
+		-- Map the unavailable gods from H1 to these?
+		-- Get an OlympusExtra crossover for these? All are implemented there - need checking if for Theseus as well
+	}
+	local nonLootDataGods = {
+		-- TODO: Might implement Artemis encounters as in Hades II Erebus
+		NPC_Artemis_Field_01 = {
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "UseRecord", "NPC_Artemis_Field_01", },
+				},
+			},
+		},
+		-- She can be summoned through the Keepsake
+		NPC_Athena_01 = {
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "UseRecord", "NPC_Athena_01", },
+				},
+			},
+		},
+		-- He cannot be met in a modded run
+		NPC_Dionysus_01 = {
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "UseRecord", "NPC_Dionysus_01", },
+				},
+			},
+		}
+	}
+
+	local notInteractedGods = {}
+	for godName, godData in pairs(game.LootData) do
+		if eligibleTheseusGods[godName] and game.CurrentRun.LootTypeHistory[godName] == nil and game.IsGameStateEligible(game.CurrentRun, godData) then
+			table.insert(notInteractedGods, godData.Name)
+		end
+	end
+	for godName, godData in pairs(nonLootDataGods) do
+		if game.CurrentRun.LootTypeHistory[godName] == nil and game.IsGameStateEligible(game.CurrentRun, godData.GameStateRequirements) then
+			table.insert(notInteractedGods, godName)
+		end
+	end
+
+	local randomGod = game.GetRandomValue(notInteractedGods)
+	-- Mapping the god names to the .pkg names used in Hades II
+	local randomGodMap = {
+		AphroditeUpgrade = "Aphrodite",
+		AresUpgrade = "Ares",
+		NPC_Artemis_Field_01 = "Artemis",
+		NPC_Athena_01 = "Athena",
+		DemeterUpgrade = "Demeter",
+		NPC_Dionysus_01 = "Dionysus",
+		PoseidonUpgrade = "Poseidon",
+		ZeusUpgrade = "Zeus",
+	}
+	return randomGodMap[randomGod] or randomGod
+end
+
+function game.TheseusGodAI(enemy, currentRun)
+	local theseusGodName = enemy.TheseusGodName
+	enemy.WeaponName = "Theseus" .. theseusGodName .. "UpgradeWrath"
+	enemy.GodUpgrade = theseusGodName
+
+	-- Fire Wrath
+	local weaponAIData = game.GetWeaponAIData(enemy) or {}
+
+	game.thread(game.DoTheseusSuperPresentation, enemy, weaponAIData)
+
+	game.wait(0.1)
+	-- Updated to use Hades II function
+	-- AttackOnce(enemy, currentRun, GetTargetId(enemy, weaponAIData), weaponAIData)
+	weaponAIData.TargetId = GetTargetId(enemy, weaponAIData)
+	game.DoAttack(enemy, weaponAIData)
+	game.wait(3.0)
+	-- Fire passive god weapon
+	enemy.DumbFireWeapons = enemy.DumbFireWeapons or {}
+	local dumbFireWeaponName = "Theseus" .. theseusGodName .. "Passive"
+	table.insert(enemy.DumbFireWeapons, dumbFireWeaponName)
+	game.ActivateDumbFireWeapons(currentRun, enemy)
+
+	-- Switch back to regular AI
+	game.SetAI(game.AttackerAI, enemy, currentRun)
+end
+
+function game.DoTheseusSuperPresentation(enemy, weaponAIData)
+	local currentRun = game.CurrentRun
+
+	PlaySound({ Name = "/Leftovers/SFX/MeteorStrikeShort", Id = enemy.ObjectId })
+
+	CreateAnimation({ Name = "TheseusWrathFire", DestinationId = enemy.ObjectId, Color = { 1.0, 0.9, 0.2, 1.0 } })
+
+	-- Rumble({ RightFraction = 0.7, Duration = 0.3 })
+	AdjustZoom({ Fraction = 0.9, LerpTime = 0.02 })
+	AdjustFullscreenBloom({ Name = "LightningStrike", Duration = 0 })
+	AdjustFullscreenBloom({ Name = "WrathPhase2", Duration = 0.1, Delay = 0 })
+	AdjustRadialBlurStrength({ Fraction = 1.5, Duration = 0 })
+	AdjustRadialBlurDistance({ Fraction = 0.125, Duration = 0 })
+	AdjustRadialBlurStrength({ Fraction = 0, Duration = 0.03, Delay = 0 })
+
+	game.AudioState.TheseusShoutEffectSoundId = PlaySound({
+		Name = "/SFX/Enemy Sounds/Theseus/EmotePoweringUp",
+		Id = enemy.ObjectId
+	})
+
+	game.thread(game.ShoutSlow)
+
+	game.ScreenAnchors.FullscreenAlertFxAnchor = CreateScreenObstacle({
+		Name = "BlankObstacle",
+		Group = "Scripting",
+		X = ScreenCenterX,
+		Y = ScreenCenterY
+	})
+
+	local fullscreenAlertDisplacementFx = SpawnObstacle({
+		Name = "FullscreenAlertDisplace",
+		Group = "FX_Displacement",
+		DestinationId = game.ScreenAnchors.FullscreenAlertFxAnchor
+	})
+	DrawScreenRelative({ Id = fullscreenAlertDisplacementFx })
+
+	if weaponAIData.WrathVoiceLines ~= nil then
+		game.thread(game.PlayVoiceLines, weaponAIData.WrathVoiceLines, nil, enemy)
+	end
+
+	game.thread(game.CrowdReactionPresentation,
+		{ AnimationNames = { "StatusIconOhBoy", "StatusIconSmile", "StatusIconFear" }, Sound = "/SFX/TheseusCrowdChant", ReactionChance = 0.1, Requirements = { RequiredRoom = "C_Boss01" }, Delay = 1, Shake = true, RadialBlur = true })
+
+	-- Changed as this function no longer exists
+	-- waitScreenTime(1.5)
+	game.waitUnmodified(1.5)
+
+	AdjustFullscreenBloom({ Name = "Off", Duration = 0.1, Delay = 0 })
+	AdjustZoom({ Fraction = currentRun.CurrentRoom.ZoomFraction or 0.75, LerpTime = 0.25 })
+	PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal3" })
+
+	game.thread(game.CleanUpShoutPresentation, nil, nil, { fullscreenAlertDisplacementFx })
+end
+
+function game.ShoutSlow()
+	for k, simData in ipairs(game.CurrentRun.Hero.ShoutSlowParameters) do
+		-- waitScreenTime(  simData.ScreenPreWait )
+		game.waitUnmodified(simData.ScreenPreWait)
+		if simData.Fraction < 1.0 then
+			game.AddSimSpeedChange("WeaponHit", { Fraction = simData.Fraction, LerpTime = simData.LerpTime })
+		else
+			game.RemoveSimSpeedChange("WeaponHit", { LerpTime = simData.LerpTime })
+		end
+	end
+end

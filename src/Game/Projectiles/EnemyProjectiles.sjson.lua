@@ -144,7 +144,7 @@ local hadesProjectilesModifications = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		ImpactFx = "EnemyProjectileImpact",
 		DissipateFx = "EnemyProjectileMultiBreak",
-		-- TODO: Test behaviour when hitting a wall, see TheseusSpearThrow
+		-- Removing this, as otherwise the small projectiles all hit the player when spawning
 		SpawnOnDeath = "null",
 		SpawnOnDissipate = "SplitShotWeaponSmall",
 		UnpauseResetLocation = true,
