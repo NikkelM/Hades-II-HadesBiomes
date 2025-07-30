@@ -181,16 +181,17 @@ end
 function game.SelectTheseusGod(enemy, run, args)
 	enemy.TheseusGodName = game.GetUninteractedGodThisRunForTheseus() or "Artemis"
 	LoadPackages({ Names = enemy.TheseusGodName })
+	-- Contains some necessary Fx that were in various GodUpgrade packages in Hades
+	LoadPackages({ Names = "ModsNikkelMHadesBiomesTheseusGodFxModded" })
 end
 
 function game.GetUninteractedGodThisRunForTheseus()
 	-- These are all the gods that can be selected by Theseus, but with the LootData names from Hades II
 	local eligibleTheseusGods = {
-		-- TODO: Test all gods
 		AphroditeUpgrade = true,
 		AresUpgrade = true,
 		NPC_Artemis_Field_01 = true, -- ArtemisUpgrade = true, -- not in Hades II as a normal god
-		NPC_Athena_01 = true,      -- AthenaUpgrade = true, -- not in Hades II as a normal god - shows as NPC_Athena_01 in LootTypeHistory
+		NPC_Athena_01 = true,      -- AthenaUpgrade = true, -- not in Hades II as a normal god
 		DemeterUpgrade = true,
 		NPC_Dionysus_01 = true,    -- DionysusUpgrade = true, -- not in Hades II as a normal god, and not possible to get in modded run
 		PoseidonUpgrade = true,
