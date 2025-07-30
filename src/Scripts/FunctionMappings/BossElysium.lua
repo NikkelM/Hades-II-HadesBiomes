@@ -3,6 +3,12 @@ function game.BossIntroElysium(eventSource, args)
 	game.ModsNikkelMHadesBiomesBossIntro(eventSource, args[shrineLevel])
 end
 
+function game.PlayPreLineTauntAnimFromSource(source, args)
+	if source ~= nil and source.TauntAnimation ~= nil then
+		SetAnimation({ Name = source.TauntAnimation, DestinationId = source.ObjectId })
+	end
+end
+
 function game.TheseusMinotaurKillPresentation(unit, args)
 	game.SetPlayerInvulnerable("TheseusMinotaurKillPresentation")
 
