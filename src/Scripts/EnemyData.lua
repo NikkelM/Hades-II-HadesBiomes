@@ -921,6 +921,13 @@ local enemyModifications = {
 			CalcAngle = true,
 		},
 		ManualDeathAnimation = false,
+		-- TODO: Workaround, removing the ZagreusField reactions after the Minotaur is killed, can be added again if #130 is implemented
+		DeathVoicelines = {
+			[4] = mod.NilValue,
+		},
+		OnKillVoiceLines = {
+			[2] = mod.NilValue,
+		},
 	},
 	Minotaur2 = {
 		OnTouchdownFunctionArgs = {
@@ -931,9 +938,17 @@ local enemyModifications = {
 		},
 	},
 	Theseus = {
+		-- TODO: OnTouchdownFunctionName
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
 		ManualDeathAnimation = false,
+		-- TODO: Workaround, removing the ZagreusField reactions after the Minotaur is killed, can be added again if #130 is implemented
+		OnKillVoiceLines = {
+			[2] = mod.NilValue,
+		},
+		DeathVoiceLines = {
+			[5] = mod.NilValue,
+		},
 	},
 	-- #endregion
 	-- #endregion
