@@ -28,6 +28,11 @@ local function applyModificationsAndInheritEnemyData(base, modifications, replac
 
 	for enemyName, enemyData in pairs(base) do
 		-- Replace keys that were renamed between the games
+		-- Need to replace this property first, as others might change other properties to FireInterval
+		if enemyData.DefaultAIData and enemyData.DefaultAIData.FireInterval then
+			enemyData.DefaultAIData.DumbFireInterval = enemyData.DefaultAIData.FireInterval
+			enemyData.DefaultAIData.FireInterval = nil
+		end
 		mod.RenameKeys(enemyData, enemyKeyReplacements, enemyName)
 
 		-- Always use the Olympus dialogue elements for the bosses
@@ -236,11 +241,25 @@ local enemyReplacements = {
 	-- #region ELYSIUM - Minotaur
 	Minotaur = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+		-- TODO: Workaround, removing the ZagreusField reactions after the Minotaur is killed, can be added again if #130 is implemented
+		DeathVoiceLines = {
+			[4] = mod.NilValue,
+		},
+		OnKillVoiceLines = {
+			[2] = mod.NilValue,
+		},
 	},
 	-- #endregion
 	-- #region ELYSIUM - Theseus
 	Theseus = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+		-- TODO: Workaround, removing the ZagreusField reactions after the Minotaur is killed, can be added again if #130 is implemented
+		DeathVoiceLines = {
+			[5] = mod.NilValue,
+		},
+		OnKillVoiceLines = {
+			[2] = mod.NilValue,
+		},
 	},
 	-- #endregion
 	-- #endregion
@@ -921,13 +940,6 @@ local enemyModifications = {
 			CalcAngle = true,
 		},
 		ManualDeathAnimation = false,
-		-- TODO: Workaround, removing the ZagreusField reactions after the Minotaur is killed, can be added again if #130 is implemented
-		DeathVoicelines = {
-			[4] = mod.NilValue,
-		},
-		OnKillVoiceLines = {
-			[2] = mod.NilValue,
-		},
 	},
 	Minotaur2 = {
 		OnTouchdownFunctionArgs = {
@@ -942,13 +954,6 @@ local enemyModifications = {
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
 		ManualDeathAnimation = false,
-		-- TODO: Workaround, removing the ZagreusField reactions after the Minotaur is killed, can be added again if #130 is implemented
-		OnKillVoiceLines = {
-			[2] = mod.NilValue,
-		},
-		DeathVoiceLines = {
-			[5] = mod.NilValue,
-		},
 	},
 	-- #endregion
 	-- #endregion
@@ -1073,6 +1078,8 @@ local enemyKeyReplacements = {
 		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",
+		-- Done manually, to make sure it's done before others
+		-- FireInterval = "DumbFireInterval",
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
 	},

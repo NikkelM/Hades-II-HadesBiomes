@@ -151,6 +151,15 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 	base = mod.AddTableKeysSkipDupes(game.WeaponData, base, nil)
 	for weaponName, weaponData in pairs(base) do
 		-- Replace keys that were renamed between the games
+		-- Need to replace this property first, as others might change other properties to FireInterval
+		if weaponData.AIData and weaponData.AIData.FireInterval then
+			weaponData.AIData.DumbFireInterval = weaponData.AIData.FireInterval
+			weaponData.AIData.FireInterval = nil
+		end
+		if weaponData.ShrineAIDataOverwrites and weaponData.ShrineAIDataOverwrites.FireInterval then
+			weaponData.ShrineAIDataOverwrites.DumbFireInterval = weaponData.ShrineAIDataOverwrites.FireInterval
+			weaponData.ShrineAIDataOverwrites.FireInterval = nil
+		end
 		mod.RenameKeys(weaponData, weaponKeyReplacements, weaponName)
 
 		game.ProcessDataInheritance(weaponData, game.WeaponData)
@@ -1049,7 +1058,18 @@ local weaponModifications = {
 			PostAttackCooldownMax = 1.25,
 		},
 	},
-	-- TODO: Beware: Combo attacks require TheseusAboutFraternalBonds06_A/B to have run, which require PersephoneFirstMeeting at the root
+	-- Has it's properties in the root instead of in AIData
+	TheseusZeusUpgradePassive = {
+		AIData = {
+			FireTicks = 7,
+			FireCooldown = 0.15,
+			FireInterval = 5.0,
+		},
+		FireTicks = mod.NilValue,
+		FireCooldown = mod.NilValue,
+		FireInterval = mod.NilValue,
+	},
+	-- TODO: Beware: Combo attacks require TheseusAboutFraternalBonds06_A/B to have run, which requires PersephoneFirstMeeting at the root
 	-- #endregion
 	-- #endregion
 
@@ -1105,6 +1125,8 @@ local weaponKeyReplacements = {
 		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",
+		-- Done manually, to make sure it's done before others
+		-- FireInterval = "DumbFireInterval",
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
 		FireCooldown = "FireInterval",
@@ -1127,6 +1149,8 @@ local weaponKeyReplacements = {
 		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",
+		-- Done manually, to make sure it's done before others
+		-- FireInterval = "DumbFireInterval",
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
 		FireCooldown = "FireInterval",

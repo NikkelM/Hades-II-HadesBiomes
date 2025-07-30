@@ -186,12 +186,13 @@ end
 function game.GetUninteractedGodThisRunForTheseus()
 	-- These are all the gods that can be selected by Theseus, but with the LootData names from Hades II
 	local eligibleTheseusGods = {
+		-- TODO: Test all gods
 		AphroditeUpgrade = true,
 		AresUpgrade = true,
 		NPC_Artemis_Field_01 = true, -- ArtemisUpgrade = true, -- not in Hades II as a normal god
-		NPC_Athena_01 = true, -- AthenaUpgrade = true, -- not in Hades II as a normal god - shows as NPC_Athena_01 in LootTypeHistory
+		NPC_Athena_01 = true,      -- AthenaUpgrade = true, -- not in Hades II as a normal god - shows as NPC_Athena_01 in LootTypeHistory
 		DemeterUpgrade = true,
-		NPC_Dionysus_01 = true, -- DionysusUpgrade = true, -- not in Hades II as a normal god, and not possible to get in modded run
+		NPC_Dionysus_01 = true,    -- DionysusUpgrade = true, -- not in Hades II as a normal god, and not possible to get in modded run
 		PoseidonUpgrade = true,
 		ZeusUpgrade = true,
 		-- TODO: Other gods from H2 not available for Theseus: Hestia, Hephaestus, Apollo, Hera
@@ -253,8 +254,10 @@ function game.GetUninteractedGodThisRunForTheseus()
 end
 
 function game.TheseusGodAI(enemy, currentRun)
-	local theseusGodName = enemy.TheseusGodName
-	enemy.WeaponName = "Theseus" .. theseusGodName .. "UpgradeWrath"
+	-- In the selection function, we removed the "Upgrade" suffix from the god name to be able to load the correct packages
+	local theseusGodName = enemy.TheseusGodName .. "Upgrade"
+	-- Set current weapon name to fire the intro wrath attack
+	enemy.WeaponName = "Theseus" .. theseusGodName .. "Wrath"
 	enemy.GodUpgrade = theseusGodName
 
 	-- Fire Wrath
@@ -268,6 +271,7 @@ function game.TheseusGodAI(enemy, currentRun)
 	weaponAIData.TargetId = GetTargetId(enemy, weaponAIData)
 	game.DoAttack(enemy, weaponAIData)
 	game.wait(3.0)
+
 	-- Fire passive god weapon
 	enemy.DumbFireWeapons = enemy.DumbFireWeapons or {}
 	local dumbFireWeaponName = "Theseus" .. theseusGodName .. "Passive"
