@@ -333,3 +333,152 @@ function game.ShoutSlow()
 		end
 	end
 end
+
+function game.TheseusChariotDismount(boss, currentRun, aiStage)
+	Stop({ Id = boss.ObjectId })
+	boss.AIDisabled = true
+	if boss.PreAttackLoopingSoundId ~= nil then
+		StopSound({ Id = boss.PreAttackLoopingSoundId, Duration = 0.2 })
+	end
+	SetUnitProperty({ Property = "MoveGraphic", Value = "Theseus_Walk", DestinationId = boss.ObjectId })
+	SetUnitProperty({ Property = "CanOnlyMoveForward", Value = false, DestinationId = boss.ObjectId })
+	SetUnitProperty({ Property = "CollisionWeaponRequiredVelocity", Value = "500", DestinationId = boss.ObjectId })
+	SetUnitProperty({ Property = "HaltOnSlowMovement", Value = true, DestinationId = boss.ObjectId })
+	SetUnitProperty({ Property = "InitiatedCollisionWeapon", Value = "null", DestinationId = boss.ObjectId })
+	SetUnitProperty({ Property = "RotationSpeed", Value = "1500", DestinationId = boss.ObjectId })
+	SetUnitProperty({ Property = "Speed", Value = "300", DestinationId = boss.ObjectId })
+	SetLifeProperty({ Property = "InvulnerableCoverage", Value = math.rad(140), DestinationId = boss.ObjectId, DataValue = false })
+	SetLifeProperty({ Property = "HitSound", Value = "/SFX/Enemy Sounds/Theseus/EmoteHurt", DestinationId = boss.ObjectId })
+	SetThingProperty({ Property = "Graphic", Value = "Theseus_Idle", DestinationId = boss.ObjectId })
+	boss.Material = "Organic"
+	SetAnimation({ DestinationId = boss.ObjectId, Name = "TheseusChariot_Fall" })
+	local dismountLocation = SpawnObstacle({ DestinationId = boss.ObjectId, Name = "BlankObstacle", Group = "Standing" })
+	CreateAnimation({ DestinationId = dismountLocation, Name = "GrenadeExplosion" })
+	ApplyForce({
+		Id = boss.ObjectId,
+		Speed = GetVelocity({ Id = boss.ObjectId }) * boss.DismountSpeedMultiplier,
+		Angle = GetAngle({ Id = boss.ObjectId })
+	})
+	boss.Dismounted = true
+	boss.ChainedWeapon = nil
+	game.thread(game.LastKillPresentation, boss)
+	-- TODO: Get voicelines
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines, true)
+
+	game.thread(game.CrowdReactionPresentation,
+		{ AnimationNames = { "StatusIconEmbarrassed", "StatusIconOhBoy" }, Sound = "/SFX/TheseusCrowdBoo", ReactionChance = 0.1, Delay = 1, Requirements = { RequiredRoom = "C_Boss01" } })
+
+	game.wait(boss.DismountWaitDuration)
+
+	boss.AIDisabled = false
+	game.BossStageTransition(boss, currentRun, aiStage)
+
+	Destroy({ Id = dismountLocation })
+end
+
+function game.TheseusChariotAI(enemy)
+	while game.IsAIActive(enemy) do
+		if not CanAttack({ Id = enemy.ObjectId }) then
+			enemy.AINotifyName = "CanAttack" .. enemy.ObjectId
+			NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 9.0 })
+			game.waitUntil(enemy.AINotifyName)
+		end
+
+		enemy.WeaponName = game.SelectWeapon(enemy)
+		--DebugAssert({ Condition = enemy.WeaponName ~= nil, Text = "Enemy has no weapon!" })
+		table.insert(enemy.WeaponHistory, enemy.WeaponName)
+
+		local weaponAIData = game.GetWeaponAIData(enemy) or {}
+
+		if weaponAIData.ChainedWeapon ~= nil then
+			enemy.ChainedWeapon = weaponAIData.ChainedWeapon
+		end
+
+		if weaponAIData.PathWeapon then
+			game.thread(game.TheseusChariotAIMovement, enemy, weaponAIData)
+			enemy.FollowingPath = true
+
+			local hasAttacked = false
+			while enemy.FollowingPath do
+				if weaponAIData.FireAfterPatrolIndex == nil or weaponAIData.ReachedAttackPatrolId then
+					if not weaponAIData.FireOncePerPatrol or not hasAttacked then
+						local targetId = game.GetTargetId(enemy, weaponAIData)
+						if targetId ~= nil and targetId ~= 0 then
+							local attackSuccess = game.DoAttack(enemy, weaponAIData) or false
+							hasAttacked = attackSuccess
+							if weaponAIData.ForcedEarlyExit then
+								game.killWaitUntilThreads(enemy.AIThreadName)
+								game.SetThreadWait(enemy.AIThreadName, 0.05)
+								break
+							end
+							if not attackSuccess and not CanAttack({ Id = enemy.ObjectId }) then
+								enemy.AINotifyName = "CanAttack" .. enemy.ObjectId
+								NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 0.3 })
+								game.waitUntil(enemy.AINotifyName)
+							end
+						else
+							game.wait(0.1, enemy.AIThreadName)
+						end
+					else
+						game.wait(0.1, enemy.AIThreadName)
+					end
+				else
+					game.wait(0.1, enemy.AIThreadName)
+				end
+			end
+		else
+			game.DoAttack(enemy, weaponAIData)
+		end
+
+		if weaponAIData.MovementEffectName ~= nil then
+			ClearEffect({ Id = enemy.ObjectId, Name = weaponAIData.MovementEffectName })
+		end
+	end
+end
+
+function game.TheseusChariotAIMovement(enemy, weaponAIData)
+	local pathIds = weaponAIData.PatrolPathIds
+
+	if weaponAIData.PatrolPaths ~= nil then
+		if weaponAIData.PatrolNearestStartId then
+			local closestIndex = 1
+			local closestDistance = 99999
+			for i, pathIds in pairs(weaponAIData.PatrolPaths) do
+				local distance = GetDistance({ Id = enemy.ObjectId, DestinationId = pathIds[1] }) or 99999
+				if distance < closestDistance then
+					closestIndex = i
+					closestDistance = distance
+				end
+			end
+			pathIds = weaponAIData.PatrolPaths[closestIndex]
+		else
+			pathIds = game.GetRandomValue(weaponAIData.PatrolPaths)
+		end
+	end
+
+	if pathIds == nil then
+		return
+	end
+
+	local pathIndex = 1
+
+	weaponAIData.ReachedAttackPatrolId = false
+	enemy.FollowingPath = true
+	while pathIndex <= #pathIds + 1 do
+		local targetId = pathIds[pathIndex]
+		if targetId ~= nil and targetId ~= 0 then
+			game.MoveWithinRange(enemy, targetId, weaponAIData)
+
+			if weaponAIData.FireAfterPatrolIndex and pathIndex == weaponAIData.FireAfterPatrolIndex then
+				weaponAIData.ReachedAttackPatrolId = true
+			end
+
+			if enemy.ForcedWeaponInterrupt ~= nil or weaponAIData.ForcedEarlyExit then
+				break
+			end
+		end
+
+		pathIndex = pathIndex + 1
+	end
+	enemy.FollowingPath = false
+end

@@ -950,7 +950,7 @@ local enemyModifications = {
 		},
 	},
 	Theseus = {
-		-- TODO: OnTouchdownFunctionName
+		-- TODO: OnTouchdownFunctionName (One of the Combo attacks)
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
 		ManualDeathAnimation = false,
