@@ -17,3 +17,11 @@ modutil.mod.Path.Wrap("PlayerLastStandPresentationEnd", function(base)
 		AdjustColorGrading({ Name = colorGrade, Duration = 4, Delay = 0 })
 	end
 end)
+
+modutil.mod.Path.Wrap("UnitInvulnerableHitPresentation", function(base, blocker, args)
+	if blocker.ProjectileBlockSoundName then
+		PlaySound({ Name = blocker.ProjectileBlockSoundName, Id = blocker.ObjectId })
+	end
+
+	base(blocker, args)
+end)

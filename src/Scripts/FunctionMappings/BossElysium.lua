@@ -156,21 +156,6 @@ function game.MinotaurEnragedPresentation(enemy, currentRun)
 	game.TheseusEnragedPresentation(enemy, currentRun)
 end
 
-function game.ShadeBlockPresentation(unitId, unitData)
-	if unitData and unitData.IsDead then
-		return
-	end
-
-	Flash({ Id = unitId, Speed = 0.85, MinFraction = 0.7, MaxFraction = 0.0, Color = game.Color.White, Duration = 0.15, ExpireAfterCycle = true })
-	CreateAnimation({ Name = "ShadeShieldBlock", DestinationId = unitId })
-	PlaySound({ Name = "/SFX/Enemy Sounds/Exalted/EnemyShieldBlock", Id = unitId })
-
-	if game.CheckCooldown("BlockHint" .. unitId, 0.2) then
-		game.thread(game.InCombatText, unitId, "BlockHit", 0.4, { SkipShadow = true })
-	end
-	game.wait(0.15)
-end
-
 function game.TheseusDamaged(victim, attacker)
 	PlaySound({ Name = "/SFX/Enemy Sounds/Theseus/EmoteHurt", Id = victim.ObjectId })
 end
