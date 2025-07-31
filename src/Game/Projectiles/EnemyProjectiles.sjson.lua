@@ -184,7 +184,6 @@ local hadesProjectilesModifications = {
 	TheseusSpearThrowReturn = {
 		SpawnOnDissipate = "null",
 	},
-	-- TODO: Add the Hades GunGrenade graphics to the Theseus package
 	TheseusChariotMortar = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 		Thing = {

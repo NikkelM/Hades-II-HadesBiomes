@@ -27,6 +27,11 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 			weaponData.AIData = { DeepInheritance = true }
 		end
 
+		if weaponData.OnFireCrowdReaction then
+			weaponData.AIData.OnFireCrowdReaction = weaponData.OnFireCrowdReaction
+			weaponData.OnFireCrowdReaction = nil
+		end
+
 		-- If the weapon defines a projectile to use, it might be different from the weapon name, so use it instead
 		local sjsonWeaponProjectileName = (mod.HadesSjsonWeaponsTable[weaponName] and
 			mod.HadesSjsonWeaponsTable[weaponName].Projectile) or weaponName
@@ -363,15 +368,13 @@ local weaponModifications = {
 	-- #endregion
 	-- #region TARTARUS - Alecto
 	HarpyLungeAlecto = {
-		Requirements = {
-			ForceFirst = true,
-		},
 		AIData = {
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			PreAttackStop = true,
 			-- So the Rage version works correctly
 			DeepInheritance = true,
 			EnragedWeaponSwap = "HarpyLungeAlectoRage",
+			ForceFirst = true,
 		},
 	},
 	HarpyWhipArc = {
@@ -380,10 +383,6 @@ local weaponModifications = {
 		},
 	},
 	HarpyBuildRage = {
-		Requirements = {
-			-- TODO: Check MaxActiveSpawns - was 1, in Hades 5
-			BlockAsFirstWeapon = true,
-		},
 		BlockInterrupt = true,
 		AIData = {
 			PreAttackStop = true,
@@ -392,8 +391,10 @@ local weaponModifications = {
 			StopMoveWithinRange = true,
 			MoveSuccessDistance = 25,
 			FireStartFunctionName = "ModsNikkelMHadesBiomesHarpyBuildRageStart",
-			-- Zagreus voicelines
+			-- TODO: Replace with fitting Melinoe voice lines?
 			PreAttackVoiceLines = mod.NilValue,
+			-- TODO: Check MaxActiveSpawns - was 1, in Hades 5
+			BlockAsFirstWeapon = true,
 		},
 	},
 	HarpyLightningChase = {
@@ -438,9 +439,6 @@ local weaponModifications = {
 	-- #endregion
 	-- #region TARTARUS - Tisiphone
 	HarpyLightningLine = {
-		Requirements = {
-			BlockAsFirstWeapon = true,
-		},
 		AIData = {
 			AttackSlotInterval = 0.01,
 			PreAttackAngleTowardTarget = true,
@@ -452,15 +450,14 @@ local weaponModifications = {
 				{ OffsetDistance = 1200, OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
 				{ OffsetDistance = 1500, OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
 			},
+			BlockAsFirstWeapon = true,
 		},
 	},
 	HarpyWhipLasso = {
-		Requirements = {
-			ForceFirst = true,
-		},
 		AIData = {
 			ChainedWeaponOptions = { "HarpyLassoLunge", "HarpyLassoLungeEM" },
 			ChainedWeapon = mod.NilValue,
+			ForceFirst = true,
 		},
 	},
 	-- Chained from HarpyWhipLasso
@@ -513,11 +510,9 @@ local weaponModifications = {
 		},
 	},
 	HarpySlowBeam360 = {
-		Requirements = {
-			BlockAsFirstWeapon = true,
-		},
 		AIData = {
 			ProjectileAngleEvenlySpaced = true,
+			BlockAsFirstWeapon = true,
 		},
 		Sounds = {
 			-- Otherwise the sound is terribly loud and overlayed
@@ -544,11 +539,9 @@ local weaponModifications = {
 		},
 	},
 	HarpyWhipCombo1 = {
-		Requirements = {
-			BlockAsFirstWeapon = true,
-		},
 		AIData = {
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+			BlockAsFirstWeapon = true,
 		},
 	},
 	HarpyWhipCombo2 = {
@@ -572,10 +565,6 @@ local weaponModifications = {
 	-- #region ASPHODEL
 	-- #region ASPHODEL - Regular
 	HadesLightSpawnerEliteSpawnerWeapon = {
-		Requirements = {
-			MaxActiveSpawns = 6,
-			RequiresNotCharmed = true,
-		},
 		AIData = {
 			SpawnBurstDelay = 4.5,
 			SpawnsPerBurst = 3,
@@ -587,8 +576,9 @@ local weaponModifications = {
 			SpawnerOptions = { "SwarmerElite" },
 			NoProjectile = true,
 			SpawnBurstOnFire = true,
-			MaxActiveSpawns = 6,
 			SpawnsSkipActivatePresentation = true,
+			MaxActiveSpawns = 6,
+			RequiresNotCharmed = true,
 		},
 	},
 	RangedBurrowerWeapon = {
@@ -657,20 +647,16 @@ local weaponModifications = {
 	-- #endregion
 	-- #region ASPHODEL - Hydra (Basic)
 	HydraLunge = {
-		Requirements = {
-			MaxConsecutiveUses = 3,
-		},
 		AIData = {
 			PreAttackDuration = 0.8,
 			MoveWithinRangeTimeout = 0.5,
+			MaxConsecutiveUses = 3,
 		},
 	},
 	HydraLungeUntethered = {
-		Requirements = {
-			MaxConsecutiveUses = 3,
-		},
 		AIData = {
 			PreAttackDuration = 0.8,
+			MaxConsecutiveUses = 3,
 		},
 	},
 	HydraSlam = {
@@ -827,10 +813,6 @@ local weaponModifications = {
 		},
 	},
 	ShadeSpearLeap = {
-		Requirements = {
-			MinAttacksBetweenUse = 2,
-			MaxPlayerDistance = 800,
-		},
 		AIData = {
 			DeepInheritance = true,
 			PreAttackAnimation = mod.NilValue,
@@ -849,6 +831,8 @@ local weaponModifications = {
 			TrackTargetDuringCharge = true,
 			StopBeforeFire = true,
 			PostAttackStop = true,
+			MinAttacksBetweenUse = 2,
+			MaxPlayerDistance = 800,
 		},
 	},
 	ShieldAlliesAoE = {
@@ -1070,6 +1054,57 @@ local weaponModifications = {
 		FireInterval = mod.NilValue,
 	},
 	-- TODO: Beware: Combo attacks require TheseusAboutFraternalBonds06_A/B to have run, which requires PersephoneFirstMeeting at the root
+	TheseusChariotWait = {
+		AIData = {
+			BlockAsFirstWeapon = true,
+		},
+	},
+	TheseusChariotExteriorPatrol = {
+		AIData = {
+			ApplyEffectsOnMove = {
+				{
+					EffectName = "SpeedIncrease",
+					DataProperties = {
+						Type = "Speed",
+						Duration = 9999,
+						Modifier = 1.6,
+					},
+				},
+			},
+		},
+	},
+	TheseusChariotCenterDive = {
+		AIData = {
+			ProjectileName = "TheseusChariotTurrets",
+			ApplyEffectsOnMove = {
+				{
+					EffectName = "SpeedIncrease",
+					DataProperties = {
+						Type = "Speed",
+						Duration = 9999,
+						Modifier = 1.6,
+					},
+				},
+			},
+			Spread = 40,
+		},
+	},
+	TheseusChariotCenterDive2 = {
+		AIData = {
+			ProjectileName = "TheseusChariotTurrets",
+			ApplyEffectsOnMove = {
+				{
+					EffectName = "SpeedIncrease",
+					DataProperties = {
+						Type = "Speed",
+						Duration = 9999,
+						Modifier = 1.6,
+					},
+				},
+			},
+			Spread = 40,
+		},
+	},
 	-- #endregion
 	-- #endregion
 

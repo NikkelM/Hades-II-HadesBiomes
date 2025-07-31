@@ -111,7 +111,6 @@ local encounterModifications = {
 	BossTheseusAndMinotaur = {
 		PostUnthreadedEvents = mod.NilValue,
 		-- For the Grenade graphics of EM Theseus
-		-- TODO: Can be removed if original GunGrenade graphics are added to the Theseus package
 		LoadPackages = { "BiomeOBoss" },
 	},
 }
