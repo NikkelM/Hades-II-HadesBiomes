@@ -482,3 +482,10 @@ function game.TheseusChariotAIMovement(enemy, weaponAIData)
 	end
 	enemy.FollowingPath = false
 end
+
+-- Setting the ThreadWait on Theseus to 0 to allow him to break out of the wait animation 
+function game.ModsNikkelMHadesBiomesStopTheseusSlamWait(enemy, aiData, currentRun, args)
+	if enemy.ComboPartnerId ~= nil and game.ActiveEnemies[enemy.ComboPartnerId] ~= nil and not game.ActiveEnemies[enemy.ComboPartnerId].IsDead then
+		game.SetThreadWait(game.ActiveEnemies[enemy.ComboPartnerId].AIThreadName, 0.01)
+	end
+end

@@ -940,6 +940,7 @@ local enemyModifications = {
 			CalcAngle = true,
 		},
 		ManualDeathAnimation = false,
+		PreBossAISetupFunctionName = "SetupComboPartners",
 	},
 	Minotaur2 = {
 		OnTouchdownFunctionArgs = {
@@ -950,10 +951,19 @@ local enemyModifications = {
 		},
 	},
 	Theseus = {
-		-- TODO: OnTouchdownFunctionName (One of the Combo attacks)
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "TheseusSpearTouchdown",
+			-- TODO: Figure out what is needed
+			-- Moves the damage cone in front of the Minotaur to line up with the Axe and not the character
+			-- SpawnDistance = 90,
+			-- CalcOffset = true,
+			-- CalcAngle = true,
+		},
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
 		ManualDeathAnimation = false,
+		PreBossAISetupFunctionName = "SetupComboPartners",
 	},
 	-- #endregion
 	-- #endregion

@@ -190,6 +190,22 @@ local hadesProjectilesModifications = {
 			Scale = 1.0,
 		},
 	},
+	TheseusChariotTurrets = {
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
+		Thing = {
+			Scale = 1.0,
+		},
+	},
+	-- Not used?
+	TheseusChariotRam = {
+		InheritFrom = "1_BaseEnemyProjectile",
+		RotateWithOwner = true,
+		ImpactLineOfSight = true,
+		Fuse = 9.0,
+		NumPenetrations = "null",
+		UnlimitedUnitPenetration = false,
+		DieWithOwner = true,
+	},
 	-- #endregion
 
 	-- #region STYX

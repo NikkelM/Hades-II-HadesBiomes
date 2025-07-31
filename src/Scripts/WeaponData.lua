@@ -962,6 +962,45 @@ local weaponModifications = {
 			EffectExpiredName = mod.NilValue,
 		}
 	},
+	MinotaurTheseusSlam_Minotaur = {
+		AIData = {
+			ProjectileName = "MinotaurBullRushRam",
+			WaitUntilProjectileDeath = "MinotaurBullRushRam",
+			PreAttackSetUnitProperties = {
+				Speed = 1000,
+				CanOnlyMoveForward = "true",
+			},
+			-- Setting explicitly to not break when inferring the reset values as CanOnlyMoveForward will be a boolean instead of string
+			PostAttackSetUnitProperties = {
+				Speed = 475,
+				CanOnlyMoveForward = "false",
+			},
+			TrackTargetDuringCharge = true,
+			FireMoveTowardTarget = true,
+			FireRotationDampening = 0.8,
+			MoveWithinRange = true,
+			-- A lower value causes consistent crashes
+			MoveSuccessDistance = 35,
+			PostAttackStop = true,
+			PostAttackDuration = 1.2,
+			PostAttackFx = "MinotaurBullRushHornStrike",
+			PostAttackAnimation = "MinotaurBullRush_PreStrike",
+
+			PostAttackAI = mod.NilValue,
+			PostAttackAICanOnlyMoveForward = mod.NilValue,
+			EffectExpiredName = mod.NilValue,
+
+			RequireComboPartnerNotifyName = "MinotaurTheseusSlam_Minotaur",
+			ForceIfComboPartnerNotifyName = "MinotaurTheseusSlam_Minotaur",
+
+			PostAttackThreadedFunctionName = "ModsNikkelMHadesBiomesStopTheseusSlamWait",
+		},
+	},
+	MinotaurTheseusSlamNova = {
+		AIData = {
+			CancelOutsideDistanceFromComboPartner = 300,
+		},
+	},
 	MinotaurArmoredBullRush = {
 		AIData = {
 			ProjectileName = "MinotaurArmoredBullRushRam",
@@ -1105,6 +1144,16 @@ local weaponModifications = {
 			Spread = 40,
 		},
 	},
+	MinotaurTheseusSlam_Theseus = {
+		AIData = {
+			PartnerForceWeaponInterrupt = "MinotaurTheseusSlam_Minotaur",
+			WaitDurationForComboPartnerMove = mod.NilValue,
+			PreAttackAnimation = mod.NilValue,
+			PreAttackDuration = 0,
+			-- Will be set to 0 as soon as the Minotaur has ended the rush attack
+			FireDuration = 9,
+		},
+	},
 	-- #endregion
 	-- #endregion
 
@@ -1167,6 +1216,8 @@ local weaponKeyReplacements = {
 		FireCooldown = "FireInterval",
 		TeleportToSpawnPoints = "PreMoveTeleport",
 		PostAttackTeleportToSpawnPoints = "PostAttackEndTeleport",
+		PostAttackAIDumbFireWeapons = "PostAttackDumbFireWeapons",
+		SkipAttackAfterMoveTimeout = "SkipAttackIfMoveTimeout",
 	},
 	-- Same as above
 	ShrineAIDataOverwrites = {
@@ -1191,6 +1242,8 @@ local weaponKeyReplacements = {
 		FireCooldown = "FireInterval",
 		TeleportToSpawnPoints = "PreMoveTeleport",
 		PostAttackTeleportToSpawnPoints = "PostAttackEndTeleport",
+		PostAttackAIDumbFireWeapons = "PostAttackDumbFireWeapons",
+		SkipAttackAfterMoveTimeout = "SkipAttackIfMoveTimeout",
 	},
 }
 

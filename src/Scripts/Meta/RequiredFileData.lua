@@ -33,7 +33,7 @@ mod.PackageFileMappings = {
 }
 
 mod.BikFileMappings = {
-	-- TARTARUS
+	-- #region TARTARUS
 	-- Wretch Glutton/PunchingBagUnit
 	"EnemyWretchGluttonAttack_Bink",
 	"EnemyWretchGluttonDeathVFX_Bink",
@@ -126,7 +126,8 @@ mod.BikFileMappings = {
 	"Enemy_TisiphoneMultiFuryHover_Bink",
 	"Enemy_TisiphoneMultiFuryTakeOff_Bink",
 	"Enemy_TisiphoneMultiFurySkyDive_Bink",
-	-- ASPHODEL
+	-- #endregion
+	-- #region ASPHODEL
 	-- RangedBurrower
 	"Enemy_BoneDracon_Idle_Bink",
 	"Enemy_BoneDracon_OnHit_Bink",
@@ -175,7 +176,8 @@ mod.BikFileMappings = {
 	"Enemy_HydraBlue_Ranged_Bink",
 	"Enemy_HydraBlue_Lunge_Bink",
 	"Enemy_HydraBlue_Sleep_Bink",
-	-- ELYSIUM
+	-- #endregion
+	-- #region ELYSIUM
 	-- ShadeUnits generic
 	"ShadeOnHit_Bink",
 	"ShadeDeathVFX_Bink",
@@ -259,7 +261,9 @@ mod.BikFileMappings = {
 	"MinotaurArmoredAttackSwings_Bink",
 	"MinotaurArmoredTaunt_Bink",
 	"MinotaurArmoredDeathVFX_Bink",
-	-- STYX
+	-- #endregion
+	-- #region STYX
+	-- #endregion
 }
 
 mod.SjsonFileMappings = {
