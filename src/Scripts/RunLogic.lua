@@ -32,9 +32,8 @@ modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle, replaceOnlyNull,
 	end
 end)
 
-modutil.mod.Path.Wrap("StartNewRun", function(base, prevRun, args)
-	local currentRun = base(prevRun, args)
-
+-- Doing this here instead of in StartNewRun, as StartNewRun creates the first encounter before we can set the modded flag
+modutil.mod.Path.Wrap("ChooseStartingRoom", function(base, currentRun, args)
 	local cachedRuns = mod.LoadCachedRunsFile()
 
 	-- Only set the flag if we are starting a Hades run
@@ -55,7 +54,7 @@ modutil.mod.Path.Wrap("StartNewRun", function(base, prevRun, args)
 		sjson.encode_file(mod.CachedRunsFilePath, cachedRuns)
 	end
 
-	return currentRun
+	return base(currentRun, args)
 end)
 
 -- Recording stats after a run

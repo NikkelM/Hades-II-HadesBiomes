@@ -71,6 +71,8 @@ local roomModifications = {
 			-- Don't play the standard music event, it won't be able to get changed later
 			[3] = mod.NilValue,
 		},
+		-- Requires AthenaFirstPickup voiceline, which is not implemented
+		ChooseRewardRequirements = mod.NilValue,
 		ForcedRewards = mod.NilValue,
 		IneligibleRewards = game.RewardSets.OpeningRoomBans,
 		MaxAppearancesThisBiome = 1,
