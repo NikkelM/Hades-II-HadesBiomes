@@ -1347,7 +1347,6 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		RemoveTimerBlock = "InterBiome",
 		EntranceDirection = "Left",
 
-		-- TODO: For debugging, comment out
 		ForceAtBiomeDepthMin = 0,
 		ForceAtBiomeDepthMax = 1,
 		MaxAppearancesThisBiome = 1,

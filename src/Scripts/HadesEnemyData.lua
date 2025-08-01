@@ -3449,7 +3449,6 @@ mod.EnemyData = {
 		},
 		AIOptions =
 		{
-			-- TODO
 			"AttackAllies",
 		},
 		AggroMinimumDistance = 500,
@@ -3971,7 +3970,6 @@ mod.EnemyData = {
 
 		AIOptions =
 		{
-			-- TODO
 			"UnstableGeneratorAI",
 		},
 
@@ -5207,7 +5205,6 @@ mod.EnemyData = {
 
 		AIOptions =
 		{
-			-- TODO
 			"RetreatThenDieAI",
 		},
 	},
@@ -23890,7 +23887,6 @@ mod.EnemyData = {
 
 		AIOptions =
 		{
-			-- TODO
 			"CerberusAssistAI",
 		},
 	},

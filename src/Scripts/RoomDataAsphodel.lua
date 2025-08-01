@@ -50,7 +50,7 @@ local roomModifications = {
 		InheritFrom = { "BaseAsphodel", "BiomeStartRoom", },
 		Starting = true,
 		BlockRunProgressUI = true,
-		-- TODO: Need to add for the other start rooms as well (except Tartarus)
+		-- TODO: Need to add for the Styx start room as well
 		StartUnthreadedEvents = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },

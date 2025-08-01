@@ -204,6 +204,12 @@ local enemyReplacements = {
 	Harpy = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
+	Harpy3 = {
+		MapTransitionReactionVoiceLines = {
+			-- Removing the Zagreus voicelines that are still in the VO file
+			[2] = mod.NilValue,
+		}
+	},
 	-- #endregion
 	-- #endregion
 
@@ -478,8 +484,6 @@ local enemyModifications = {
 				},
 			},
 		},
-		-- TODO: Maybe replace with fitting Melinoe voicelines?
-		MapTransitionReactionVoiceLines = mod.NilValue,
 	},
 	-- #endregion
 	-- #endregion
