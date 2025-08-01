@@ -391,9 +391,7 @@ local weaponModifications = {
 			StopMoveWithinRange = true,
 			MoveSuccessDistance = 25,
 			FireStartFunctionName = "ModsNikkelMHadesBiomesHarpyBuildRageStart",
-			-- TODO: Replace with fitting Melinoe voice lines?
 			PreAttackVoiceLines = mod.NilValue,
-			-- TODO: Check MaxActiveSpawns - was 1, in Hades 5
 			BlockAsFirstWeapon = true,
 		},
 	},
