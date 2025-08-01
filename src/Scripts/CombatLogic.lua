@@ -45,7 +45,7 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 		end
 
 		if victim.FuseSpawnsOnDeath then
-			game.thread(game.FuseSpawns, victim)
+			game.thread(game.FuseSpawns, victim, { Interval = victim.FuseSpawnsInterval or nil })
 		end
 
 		if victim.EnrageOnDeath ~= nil then

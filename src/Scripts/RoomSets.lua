@@ -19,6 +19,7 @@ local newRoomSets = {
 		"A_MiniBoss04",
 
 		"A_Reprieve01",
+		"A_Story01",
 
 		"A_Combat01",
 		"A_Combat02",
@@ -44,9 +45,6 @@ local newRoomSets = {
 		"A_Combat20",
 		"A_Combat21",
 		"A_Combat24",
-
-		-- Sisyphus NPC cannot be activated, ID is not found
-		-- "A_Story01",
 	},
 	Asphodel = {
 		"X_Intro",

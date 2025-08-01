@@ -161,6 +161,11 @@ local roomModifications = {
 	},
 
 	-- OTHER
+	A_Story01 = {
+		ThreadedEvents = {
+			[1] = mod.NilValue
+		},
+	},
 	A_Reprieve01 = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,

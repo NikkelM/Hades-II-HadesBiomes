@@ -126,6 +126,11 @@ mod.BikFileMappings = {
 	"Enemy_TisiphoneMultiFuryHover_Bink",
 	"Enemy_TisiphoneMultiFuryTakeOff_Bink",
 	"Enemy_TisiphoneMultiFurySkyDive_Bink",
+	-- Sisyphus
+	"NPC_SisyphusIdle_Bink",
+	"NPC_SisyphusIdleGreeting_Bink",
+	"NPC_SisyphusElbowing_Bink",
+	"NPC_SisyphusExplaining_Bink",
 	-- #endregion
 	-- #region ASPHODEL
 	-- RangedBurrower
@@ -287,6 +292,7 @@ mod.SjsonFileMappings = {
 	"Animations\\CharacterAnim_EnemiesBosses_Minotaur",
 	"Animations\\CharacterAnim_EnemiesBosses_Theseus",
 	-- NPCs
+	-- "Animations\\CharacterAnimationsNPCs", -- This file is copied directly
 	-- "Animations\\CharacterAnimationsNPC_Persephone",
 	"Animations\\CharacterAnimationsNPC_Thanatos",
 }

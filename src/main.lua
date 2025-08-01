@@ -177,6 +177,7 @@ local function on_ready()
 		import "Game/Animations/Obstacle_General_VFX.sjson.lua"
 
 		import "Game/Units/Enemies.sjson.lua"
+		import "Game/Units/NPCs.sjson.lua"
 
 		import "Game/Weapons/EnemyWeapons.sjson.lua"
 
@@ -246,6 +247,7 @@ local function on_ready()
 
 		import "Scripts/Meta/EnemyTrapDataHandler.lua"
 		import "Scripts/HadesEnemyData.lua"
+		import "Scripts/NPCData.lua"
 		import "Scripts/EnemyData.lua"
 		import "Scripts/Meta/EncounterDataHandler.lua"
 		import "Scripts/Meta/RoomDataHandler.lua"
@@ -290,6 +292,7 @@ local function on_ready()
 		import "Scripts/FunctionMappings/HeavyRanged.lua"
 		import "Scripts/FunctionMappings/LightSpawner.lua"
 		import "Scripts/FunctionMappings/MiniBossTartarus.lua"
+		import "Scripts/FunctionMappings/NPCLogic.lua"
 		import "Scripts/FunctionMappings/ShadeNaked.lua"
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
@@ -309,6 +312,7 @@ local function on_ready()
 		import "Scripts/HeroData.lua"
 		import "Scripts/HubPresentation.lua"
 		import "Scripts/MetaUpgradeData.lua"
+		import "Scripts/NarrativeData.lua"
 		import "Scripts/ObstacleData.lua"
 		import "Scripts/PowersLogic.lua"
 		import "Scripts/ProjectileData.lua"

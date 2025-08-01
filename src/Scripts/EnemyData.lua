@@ -1120,3 +1120,4 @@ game.EnemyData.Elite.EliteAttributeData.ModsNikkelMHadesBiomesStasisDeath = {
 }
 
 applyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
+applyModificationsAndInheritEnemyData(mod.NPCData, {}, {}, {})

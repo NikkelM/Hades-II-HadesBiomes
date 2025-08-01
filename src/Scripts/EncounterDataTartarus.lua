@@ -5,6 +5,7 @@ local encounterDataTartarus = {
 	-- This one is used by all biomes, we define it here
 	ModsNikkelMHadesBiomesGenerated = encounterData.Generated,
 
+	Story_Sisyphus_01 = encounterData.Story_Sisyphus_01,
 	GeneratedTartarus = encounterData.GeneratedTartarus,
 	OpeningGenerated = encounterData.OpeningGenerated,
 	DevotionTestTartarus = encounterData.DevotionTestTartarus,

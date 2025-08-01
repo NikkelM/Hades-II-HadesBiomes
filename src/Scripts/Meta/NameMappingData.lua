@@ -46,6 +46,9 @@ mod.EnemyNameRemovals = {
 	"BloodlessNakedBerserkerElite",
 }
 
+mod.NPCNameMappings = {}
+mod.NPCNameRemovals = {}
+
 mod.EnemyProjectileMappings = {
 	-- Not currently used by Hades II
 	-- LightRangedWeapon = "HadesLightRangedWeapon",
