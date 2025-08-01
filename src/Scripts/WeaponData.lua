@@ -996,6 +996,16 @@ local weaponModifications = {
 			PostAttackThreadedFunctionName = "ModsNikkelMHadesBiomesStopTheseusSlamWait",
 		},
 	},
+	MinotaurTheseusThrow_Minotaur = {
+		GameStateRequirements = {
+			RequiredAnyTextLines = { "TheseusAboutFraternalBonds06_A", "TheseusAboutFraternalBonds06_B" },
+		},
+		AIData = {
+			PartnerForceWeaponInterrupt = "MinotaurTheseusThrow_Theseus",
+			WaitForComboPartnerMoveAnimation = "Minotaur_Crouch",
+			MaxDistanceFromComboPartner = 500,
+		},
+	},
 	MinotaurTheseusSlamNova = {
 		AIData = {
 			CancelOutsideDistanceFromComboPartner = 300,
@@ -1092,7 +1102,28 @@ local weaponModifications = {
 		FireCooldown = mod.NilValue,
 		FireInterval = mod.NilValue,
 	},
-	-- TODO: Beware: Combo attacks require TheseusAboutFraternalBonds06_A/B to have run, which requires PersephoneFirstMeeting at the root
+	-- Combo attacks require TheseusAboutFraternalBonds06_A/B to have run, which requires PersephoneFirstMeeting at the root
+	MinotaurTheseusSlam_Theseus = {
+		AIData = {
+			PartnerForceWeaponInterrupt = "MinotaurTheseusSlam_Minotaur",
+			WaitDurationForComboPartnerMove = mod.NilValue,
+			PreAttackAnimation = mod.NilValue,
+			PreAttackDuration = 0,
+			-- Will be set to 0 as soon as the Minotaur has ended the rush attack
+			FireDuration = 9,
+		},
+	},
+	MinotaurTheseusThrow_Theseus = {
+		GameStateRequirements = {
+			RequiredAnyTextLines = { "TheseusAboutFraternalBonds06_A", "TheseusAboutFraternalBonds06_B" },
+		},
+		AIData = {
+			RequireComboPartnerNotifyName = "MinotaurTheseusThrow_Theseus",
+			ForceIfComboPartnerNotifyName = "MinotaurTheseusThrow_Theseus",
+			MoveSuccessDistance = 32,
+			MoveWithinRange = true,
+		},
+	},
 	TheseusChariotWait = {
 		AIData = {
 			BlockAsFirstWeapon = true,
@@ -1142,16 +1173,6 @@ local weaponModifications = {
 				},
 			},
 			Spread = 40,
-		},
-	},
-	MinotaurTheseusSlam_Theseus = {
-		AIData = {
-			PartnerForceWeaponInterrupt = "MinotaurTheseusSlam_Minotaur",
-			WaitDurationForComboPartnerMove = mod.NilValue,
-			PreAttackAnimation = mod.NilValue,
-			PreAttackDuration = 0,
-			-- Will be set to 0 as soon as the Minotaur has ended the rush attack
-			FireDuration = 9,
 		},
 	},
 	-- #endregion
