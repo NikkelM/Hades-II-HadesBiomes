@@ -8411,7 +8411,6 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 		},
 		GameStateRequirements =
 		{
-			-- TODO: Implement SetFlagTrue/SetFlagFalse on textlines
 			RequiredFalseFlags = { "HeroesMuted" },
 		},
 
