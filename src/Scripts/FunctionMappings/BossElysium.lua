@@ -1,3 +1,8 @@
+function game.ModsNikkelMHadesBiomesSetFlag(source, args)
+	args = args or {}
+	game.GameState.Flags[args.flagName] = args.value
+end
+
 function game.BossIntroElysium(eventSource, args)
 	local shrineLevel = game.GetNumShrineUpgrades(eventSource.ShrineMetaUpgradeName)
 	game.ModsNikkelMHadesBiomesBossIntro(eventSource, args[shrineLevel])
@@ -181,12 +186,8 @@ function game.GetUninteractedGodThisRunForTheseus()
 		NPC_Dionysus_01 = true,    -- DionysusUpgrade = true, -- not in Hades II as a normal god, and not possible to get in modded run
 		PoseidonUpgrade = true,
 		ZeusUpgrade = true,
-		-- TODO: Other gods from H2 not available for Theseus: Hestia, Hephaestus, Apollo, Hera
-		-- Map the unavailable gods from H1 to these?
-		-- Get an OlympusExtra crossover for these? All are implemented there - need checking if for Theseus as well
 	}
 	local nonLootDataGods = {
-		-- TODO: Might implement Artemis encounters as in Hades II Erebus
 		NPC_Artemis_Field_01 = {
 			GameStateRequirements = {
 				{
@@ -362,7 +363,6 @@ function game.TheseusChariotDismount(boss, currentRun, aiStage)
 	boss.Dismounted = true
 	boss.ChainedWeapon = nil
 	game.thread(game.LastKillPresentation, boss)
-	-- TODO: Get voicelines
 	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines, true)
 
 	game.thread(game.CrowdReactionPresentation,
@@ -483,7 +483,7 @@ function game.TheseusChariotAIMovement(enemy, weaponAIData)
 	enemy.FollowingPath = false
 end
 
--- Setting the ThreadWait on Theseus to 0 to allow him to break out of the wait animation 
+-- Setting the ThreadWait on Theseus to 0 to allow him to break out of the wait animation
 function game.ModsNikkelMHadesBiomesStopTheseusSlamWait(enemy, aiData, currentRun, args)
 	if enemy.ComboPartnerId ~= nil and game.ActiveEnemies[enemy.ComboPartnerId] ~= nil and not game.ActiveEnemies[enemy.ComboPartnerId].IsDead then
 		game.SetThreadWait(game.ActiveEnemies[enemy.ComboPartnerId].AIThreadName, 0.01)

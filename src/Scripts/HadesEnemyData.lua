@@ -25419,6 +25419,7 @@ mod.EnemyData = {
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
 					PostLineAnimTarget = "Hero",
 					Emote = "PortraitEmoteSurprise",
+					-- TODO: This flag needs to be set back to true for Persephone NPC
 					SetFlagFalse = "HadesEndingFlag",
 					-- PostLineThreadedFunctionName = "UnlockRoomExitsEvent",
 					Text =

@@ -57,8 +57,18 @@ local function applyModificationsAndInheritEnemyData(base, modifications, replac
 				for key, textLineSet in pairs(enemyData[property]) do
 					textLineSet.Name = key
 					for _, entry in ipairs(textLineSet) do
-						if type(entry) == "table" and entry.Text then
-							entry.Text = string.gsub(entry.Text, "{#PreviousFormat}", "{#Prev}")
+						if type(entry) == "table" then
+							if entry.Text then
+								entry.Text = string.gsub(entry.Text, "{#PreviousFormat}", "{#Prev}")
+							end
+							if entry.SetFlagTrue then
+								entry.PostLineFunctionName = "ModsNikkelMHadesBiomesSetFlag"
+								entry.PostLineFunctionArgs = { FlagName = entry.SetFlagTrue, Value = true }
+							end
+							if entry.SetFlagFalse then
+								entry.PostLineFunctionName = "ModsNikkelMHadesBiomesSetFlag"
+								entry.PostLineFunctionArgs = { FlagName = entry.SetFlagFalse, Value = false }
+							end
 						end
 					end
 				end
@@ -951,14 +961,10 @@ local enemyModifications = {
 		},
 	},
 	Theseus = {
+		-- Doesn't seem to be used
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "TheseusSpearTouchdown",
-			-- TODO: Figure out what is needed
-			-- Moves the damage cone in front of the Minotaur to line up with the Axe and not the character
-			-- SpawnDistance = 90,
-			-- CalcOffset = true,
-			-- CalcAngle = true,
 		},
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
