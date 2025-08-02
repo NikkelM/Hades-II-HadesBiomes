@@ -326,6 +326,7 @@ local function on_ready()
 		import "Scripts/RunHistoryData.lua"
 		import "Scripts/RunHistoryLogic.lua"
 		import "Scripts/RunLogic.lua"
+		import "Scripts/TraitDataNPCs.lua"
 		import "Scripts/WeaponSets.lua"
 
 		mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)
