@@ -1,336 +1,336 @@
 -- Selected NPC data from Hades, loaded alongside other enemies in EnemyData.lua
 -- Make modifications in EnemyData.lua, not here!
 mod.PresetEventArgs = mod.PresetEventArgs or {
-	PatroclusMuttering = {
-		StatusAnimation = "StatusIconWantsToTalk",
-		DistanceTrigger =
-		{
-			WithinDistance = 450,
-			VoiceLines = GlobalVoiceLines.PatroclusGreetingLines,
-		},
-		VoiceLines =
-		{
-			[1] = GlobalVoiceLines.PatroclusMutteringLines,
-		},
-	},
-	PatroclusMutteringRepeatable = {
-		DistanceTrigger =
-		{
-			WithinDistance = 450,
-			VoiceLines = GlobalVoiceLines.PatroclusGreetingLines,
-		},
-		VoiceLines =
-		{
-			[1] = GlobalVoiceLines.PatroclusMutteringLines,
-		},
-	},
-	PatroclusGreetings = {
-		DistanceTrigger =
-		{
-			WithinDistance = 350,
-			VoiceLines =
-			{
-				RandomRemaining = true,
-				Queue = "Interrupt",
-				CooldownTime = "30",
-				CooldownName = "PatroclusGreetedRecently",
-				SuccessiveChanceToPlay = 0.5,
+	-- PatroclusMuttering = {
+	-- 	StatusAnimation = "StatusIconWantsToTalk",
+	-- 	DistanceTrigger =
+	-- 	{
+	-- 		WithinDistance = 450,
+	-- 		VoiceLines = GlobalVoiceLines.PatroclusGreetingLines,
+	-- 	},
+	-- 	VoiceLines =
+	-- 	{
+	-- 		[1] = GlobalVoiceLines.PatroclusMutteringLines,
+	-- 	},
+	-- },
+	-- PatroclusMutteringRepeatable = {
+	-- 	DistanceTrigger =
+	-- 	{
+	-- 		WithinDistance = 450,
+	-- 		VoiceLines = GlobalVoiceLines.PatroclusGreetingLines,
+	-- 	},
+	-- 	VoiceLines =
+	-- 	{
+	-- 		[1] = GlobalVoiceLines.PatroclusMutteringLines,
+	-- 	},
+	-- },
+	-- PatroclusGreetings = {
+	-- 	DistanceTrigger =
+	-- 	{
+	-- 		WithinDistance = 350,
+	-- 		VoiceLines =
+	-- 		{
+	-- 			RandomRemaining = true,
+	-- 			Queue = "Interrupt",
+	-- 			CooldownTime = "30",
+	-- 			CooldownName = "PatroclusGreetedRecently",
+	-- 			SuccessiveChanceToPlay = 0.5,
 
-				-- What is it?
-				{ Cue = "/VO/Patroclus_0043" },
-				-- What is it, stranger.
-				{ Cue = "/VO/Patroclus_0044" },
-				-- Stranger...
-				{ Cue = "/VO/Patroclus_0080", RequiredTextLines = { "PatroclusGift03" }, },
-				-- You.
-				{ Cue = "/VO/Patroclus_0082", RequiredTextLines = { "PatroclusGift03" }, },
-				-- You again.
-				{ Cue = "/VO/Patroclus_0083", RequiredTextLines = { "PatroclusGift03" }, },
-				-- You're back.
-				{ Cue = "/VO/Patroclus_0085" },
-				-- Oh.
-				{ Cue = "/VO/Patroclus_0087", RequiredFalseTextLines = { "PatroclusGift03" }, },
-			},
-		},
-	},
-	ThanatosFarewells = {
-		PostTriggerFunctionName = "ThanatosExit",
-		PostTriggerFunctionArgs = { WaitTime = 4 },
-		WithinDistance = 750,
-		PreTriggerAnimation = "ThanatosTalkDismissal_Start",
-		VoiceLines =
-		{
-			BreakIfPlayed = true,
-			RandomRemaining = true,
-			SuccessiveChanceToPlay = 0.9,
-			PreLineWait = 0.75,
-			Queue = "Always",
+	-- 			-- What is it?
+	-- 			{ Cue = "/VO/Patroclus_0043" },
+	-- 			-- What is it, stranger.
+	-- 			{ Cue = "/VO/Patroclus_0044" },
+	-- 			-- Stranger...
+	-- 			{ Cue = "/VO/Patroclus_0080", RequiredTextLines = { "PatroclusGift03" }, },
+	-- 			-- You.
+	-- 			{ Cue = "/VO/Patroclus_0082", RequiredTextLines = { "PatroclusGift03" }, },
+	-- 			-- You again.
+	-- 			{ Cue = "/VO/Patroclus_0083", RequiredTextLines = { "PatroclusGift03" }, },
+	-- 			-- You're back.
+	-- 			{ Cue = "/VO/Patroclus_0085" },
+	-- 			-- Oh.
+	-- 			{ Cue = "/VO/Patroclus_0087", RequiredFalseTextLines = { "PatroclusGift03" }, },
+	-- 		},
+	-- 	},
+	-- },
+	-- ThanatosFarewells = {
+	-- 	PostTriggerFunctionName = "ThanatosExit",
+	-- 	PostTriggerFunctionArgs = { WaitTime = 4 },
+	-- 	WithinDistance = 750,
+	-- 	PreTriggerAnimation = "ThanatosTalkDismissal_Start",
+	-- 	VoiceLines =
+	-- 	{
+	-- 		BreakIfPlayed = true,
+	-- 		RandomRemaining = true,
+	-- 		SuccessiveChanceToPlay = 0.9,
+	-- 		PreLineWait = 0.75,
+	-- 		Queue = "Always",
 
-			-- It's clear. Go.
-			{ Cue = "/VO/Thanatos_0051" },
-			-- I have to get back.
-			{ Cue = "/VO/Thanatos_0052" },
-			-- Go on.
-			{ Cue = "/VO/Thanatos_0053" },
-			-- Keep going.
-			{ Cue = "/VO/Thanatos_0054",      RequiredTextLines = { "ThanatosFieldBuildingTrust01" } },
-			-- Keep fighting.
-			{ Cue = "/VO/Thanatos_0055",      RequiredTextLines = { "ThanatosFieldBuildingTrust01" } },
-			-- Nice running into you.
-			{ Cue = "/VO/Thanatos_0056",      RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" } },
-			-- Take care, Zagreus.
-			{ Cue = "/VO/Thanatos_0057",      RequiredTextLines = { "ThanatosGift08" } },
-			-- I'm going.
-			{ Cue = "/VO/Thanatos_0058" },
-			-- That's that.
-			{ Cue = "/VO/Thanatos_0059" },
-			-- Be seeing you.
-			{ Cue = "/VO/Thanatos_0060",      RequiredTextLines = { "ThanatosGift05" } },
-			-- I've got to go.
-			{ Cue = "/VO/Thanatos_0061",      RequiredTextLines = { "ThanatosGift05" } },
-			-- See you.
-			{ Cue = "/VO/Thanatos_0062",      RequiredTextLines = { "ThanatosGift06" } },
-			-- Not a word of this.
-			{ Cue = "/VO/Thanatos_0063" },
-			-- Let's keep this between us.
-			{ Cue = "/VO/Thanatos_0064",      RequiredTextLines = { "ThanatosGift06" } },
-			-- You had your hands full.
-			{ Cue = "/VO/Thanatos_0065" },
-			-- You're welcome. Go.
-			{ Cue = "/VO/Thanatos_0066",      RequiredFalseTextLines = { "ThanatosGift10" } },
-			-- Should be clear.
-			{ Cue = "/VO/Thanatos_0067",      RequiredTextLines = { "ThanatosGift01" } },
-			-- You never saw me.
-			{ Cue = "/VO/Thanatos_0068" },
-			-- Don't die, Zag.
-			{ Cue = "/VO/Thanatos_0069",      RequiredTextLines = { "ThanatosGift08" } },
-			-- Stay alive.
-			{ Cue = "/VO/Thanatos_0070",      RequiredTextLines = { "ThanatosGift07_A" } },
-			-- Bye, Zag.
-			{ Cue = "/VO/ThanatosField_0236", RequiredTextLines = { "ThanatosGift10" }, },
-			-- I'm off.
-			{ Cue = "/VO/ThanatosField_0237", RequiredTextLines = { "ThanatosGift06" }, },
-			-- Well, I'm off.
-			{ Cue = "/VO/ThanatosField_0238" },
-			-- Pleasure doing business.
-			{ Cue = "/VO/ThanatosField_0239", RequiredTextLines = { "ThanatosGift10" }, },
-			-- I should be getting back.
-			{ Cue = "/VO/ThanatosField_0240", RequiredTextLines = { "ThanatosGift08" }, },
-			-- You have this.
-			{ Cue = "/VO/ThanatosField_0241", RequiredTextLines = { "ThanatosGift09" }, },
-			-- See you at home.
-			{ Cue = "/VO/ThanatosField_0242", RequiredTextLines = { "ThanatosGift10" }, },
-			-- On to my next one.
-			{ Cue = "/VO/ThanatosField_0243", RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" }, },
-			-- Ungh, I'm late.
-			{ Cue = "/VO/ThanatosField_0244", RequiredTextLines = { "ThanatosGift03" }, },
-			-- I'm gone.
-			{ Cue = "/VO/ThanatosField_0245" },
-			-- Till next time.
-			{ Cue = "/VO/ThanatosField_0180", RequiredAnyTextLines = { "ThanatosGift09" } },
-			-- We should do this again.
-			{ Cue = "/VO/ThanatosField_0181", RequiredTextLines = { "ThanatosGift10" } },
-			-- You have this.
-			{ Cue = "/VO/ThanatosField_0182", RequiredAnyTextLines = { "ThanatosGift10" } },
-			-- Till we meet again.
-			{ Cue = "/VO/ThanatosField_0183", RequiredAnyTextLines = { "ThanatosGift09" } },
-			-- That takes care of that, I guess. See you.
-			{ Cue = "/VO/ThanatosField_0184", RequiredAnyTextLines = { "ThanatosGift10" } },
-		},
-	},
-	PersephoneGardenFirstGreeting = {
-		WithinDistance = 1200,
-		StatusAnimation = "StatusIconWantsToTalk",
-		-- PostTriggerAngleTowardTarget = true,
-		VoiceLines =
-		{
-			{
-				-- PreLineAnim = "SisyphusIdleGreeting",
+	-- 		-- It's clear. Go.
+	-- 		{ Cue = "/VO/Thanatos_0051" },
+	-- 		-- I have to get back.
+	-- 		{ Cue = "/VO/Thanatos_0052" },
+	-- 		-- Go on.
+	-- 		{ Cue = "/VO/Thanatos_0053" },
+	-- 		-- Keep going.
+	-- 		{ Cue = "/VO/Thanatos_0054",      RequiredTextLines = { "ThanatosFieldBuildingTrust01" } },
+	-- 		-- Keep fighting.
+	-- 		{ Cue = "/VO/Thanatos_0055",      RequiredTextLines = { "ThanatosFieldBuildingTrust01" } },
+	-- 		-- Nice running into you.
+	-- 		{ Cue = "/VO/Thanatos_0056",      RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" } },
+	-- 		-- Take care, Zagreus.
+	-- 		{ Cue = "/VO/Thanatos_0057",      RequiredTextLines = { "ThanatosGift08" } },
+	-- 		-- I'm going.
+	-- 		{ Cue = "/VO/Thanatos_0058" },
+	-- 		-- That's that.
+	-- 		{ Cue = "/VO/Thanatos_0059" },
+	-- 		-- Be seeing you.
+	-- 		{ Cue = "/VO/Thanatos_0060",      RequiredTextLines = { "ThanatosGift05" } },
+	-- 		-- I've got to go.
+	-- 		{ Cue = "/VO/Thanatos_0061",      RequiredTextLines = { "ThanatosGift05" } },
+	-- 		-- See you.
+	-- 		{ Cue = "/VO/Thanatos_0062",      RequiredTextLines = { "ThanatosGift06" } },
+	-- 		-- Not a word of this.
+	-- 		{ Cue = "/VO/Thanatos_0063" },
+	-- 		-- Let's keep this between us.
+	-- 		{ Cue = "/VO/Thanatos_0064",      RequiredTextLines = { "ThanatosGift06" } },
+	-- 		-- You had your hands full.
+	-- 		{ Cue = "/VO/Thanatos_0065" },
+	-- 		-- You're welcome. Go.
+	-- 		{ Cue = "/VO/Thanatos_0066",      RequiredFalseTextLines = { "ThanatosGift10" } },
+	-- 		-- Should be clear.
+	-- 		{ Cue = "/VO/Thanatos_0067",      RequiredTextLines = { "ThanatosGift01" } },
+	-- 		-- You never saw me.
+	-- 		{ Cue = "/VO/Thanatos_0068" },
+	-- 		-- Don't die, Zag.
+	-- 		{ Cue = "/VO/Thanatos_0069",      RequiredTextLines = { "ThanatosGift08" } },
+	-- 		-- Stay alive.
+	-- 		{ Cue = "/VO/Thanatos_0070",      RequiredTextLines = { "ThanatosGift07_A" } },
+	-- 		-- Bye, Zag.
+	-- 		{ Cue = "/VO/ThanatosField_0236", RequiredTextLines = { "ThanatosGift10" }, },
+	-- 		-- I'm off.
+	-- 		{ Cue = "/VO/ThanatosField_0237", RequiredTextLines = { "ThanatosGift06" }, },
+	-- 		-- Well, I'm off.
+	-- 		{ Cue = "/VO/ThanatosField_0238" },
+	-- 		-- Pleasure doing business.
+	-- 		{ Cue = "/VO/ThanatosField_0239", RequiredTextLines = { "ThanatosGift10" }, },
+	-- 		-- I should be getting back.
+	-- 		{ Cue = "/VO/ThanatosField_0240", RequiredTextLines = { "ThanatosGift08" }, },
+	-- 		-- You have this.
+	-- 		{ Cue = "/VO/ThanatosField_0241", RequiredTextLines = { "ThanatosGift09" }, },
+	-- 		-- See you at home.
+	-- 		{ Cue = "/VO/ThanatosField_0242", RequiredTextLines = { "ThanatosGift10" }, },
+	-- 		-- On to my next one.
+	-- 		{ Cue = "/VO/ThanatosField_0243", RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" }, },
+	-- 		-- Ungh, I'm late.
+	-- 		{ Cue = "/VO/ThanatosField_0244", RequiredTextLines = { "ThanatosGift03" }, },
+	-- 		-- I'm gone.
+	-- 		{ Cue = "/VO/ThanatosField_0245" },
+	-- 		-- Till next time.
+	-- 		{ Cue = "/VO/ThanatosField_0180", RequiredAnyTextLines = { "ThanatosGift09" } },
+	-- 		-- We should do this again.
+	-- 		{ Cue = "/VO/ThanatosField_0181", RequiredTextLines = { "ThanatosGift10" } },
+	-- 		-- You have this.
+	-- 		{ Cue = "/VO/ThanatosField_0182", RequiredAnyTextLines = { "ThanatosGift10" } },
+	-- 		-- Till we meet again.
+	-- 		{ Cue = "/VO/ThanatosField_0183", RequiredAnyTextLines = { "ThanatosGift09" } },
+	-- 		-- That takes care of that, I guess. See you.
+	-- 		{ Cue = "/VO/ThanatosField_0184", RequiredAnyTextLines = { "ThanatosGift10" } },
+	-- 	},
+	-- },
+	-- PersephoneGardenFirstGreeting = {
+	-- 	WithinDistance = 1200,
+	-- 	StatusAnimation = "StatusIconWantsToTalk",
+	-- 	-- PostTriggerAngleTowardTarget = true,
+	-- 	VoiceLines =
+	-- 	{
+	-- 		{
+	-- 			-- PreLineAnim = "SisyphusIdleGreeting",
 
-				-- Who's there?
-				{ Cue = "/VO/Persephone_0019" },
-			},
-			{
-				PreLineWait = 0.5,
-				UsePlayerSource = true,
+	-- 			-- Who's there?
+	-- 			{ Cue = "/VO/Persephone_0019" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.5,
+	-- 			UsePlayerSource = true,
 
-				-- Um... hello...?
-				{ Cue = "/VO/ZagreusField_3600" },
-			},
-			{
-				PreLineWait = 0.5,
-				BreakIfPlayed = true,
+	-- 			-- Um... hello...?
+	-- 			{ Cue = "/VO/ZagreusField_3600" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.5,
+	-- 			BreakIfPlayed = true,
 
-				-- Hello, indeed!
-				{ Cue = "/VO/Persephone_0327" },
-			},
-			{
-				PreLineWait = 0.3,
-				UsePlayerSource = true,
+	-- 			-- Hello, indeed!
+	-- 			{ Cue = "/VO/Persephone_0327" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.3,
+	-- 			UsePlayerSource = true,
 
-				-- Wait, can, can we just...?
-				{ Cue = "/VO/ZagreusField_3601" },
-			},
-		},
-	},
-	PersephoneGardenGreeting = {
-		WithinDistance = 1250,
-		-- PostTriggerAngleTowardTarget = true,
-		VoiceLines =
-		{
-			RequiredTextLines = { "PersephoneFirstMeeting" },
-			{
-				RequiredQueuedTextLines = "PersephoneMeeting07",
-				PreLineAnim = "PersephoneGarden_Vulnerable",
-				ObjectType = "NPC_Persephone_01",
+	-- 			-- Wait, can, can we just...?
+	-- 			{ Cue = "/VO/ZagreusField_3601" },
+	-- 		},
+	-- 	},
+	-- },
+	-- PersephoneGardenGreeting = {
+	-- 	WithinDistance = 1250,
+	-- 	-- PostTriggerAngleTowardTarget = true,
+	-- 	VoiceLines =
+	-- 	{
+	-- 		RequiredTextLines = { "PersephoneFirstMeeting" },
+	-- 		{
+	-- 			RequiredQueuedTextLines = "PersephoneMeeting07",
+	-- 			PreLineAnim = "PersephoneGarden_Vulnerable",
+	-- 			ObjectType = "NPC_Persephone_01",
 
-				-- Zagreus...
-				{ Cue = "/VO/Persephone_0031" },
-			},
-			{
-				{
-					RequiredQueuedTextLines = "PersephoneMeeting08",
-					PreLineAnim = "PersephoneGarden_Vulnerable",
-					ObjectType = "NPC_Persephone_01",
+	-- 			-- Zagreus...
+	-- 			{ Cue = "/VO/Persephone_0031" },
+	-- 		},
+	-- 		{
+	-- 			{
+	-- 				RequiredQueuedTextLines = "PersephoneMeeting08",
+	-- 				PreLineAnim = "PersephoneGarden_Vulnerable",
+	-- 				ObjectType = "NPC_Persephone_01",
 
-					-- You're back...?
-					{ Cue = "/VO/Persephone_0034" },
-				},
-				{
-					RequiredQueuedTextLines = "PersephoneMeeting08",
-					PreLineWait = 0.5,
-					UsePlayerSource = true,
-					BreakIfPlayed = true,
+	-- 				-- You're back...?
+	-- 				{ Cue = "/VO/Persephone_0034" },
+	-- 			},
+	-- 			{
+	-- 				RequiredQueuedTextLines = "PersephoneMeeting08",
+	-- 				PreLineWait = 0.5,
+	-- 				UsePlayerSource = true,
+	-- 				BreakIfPlayed = true,
 
-					-- Mother!
-					{ Cue = "/VO/ZagreusField_3612" },
-				},
-			},
-			{
-				RequiredFalseQueuedTextLines = { "PersephoneMeeting07", "PersephoneMeeting08" },
-				PreLineAnim = "PersephoneGarden_Greeting",
-				ObjectType = "NPC_Persephone_01",
-				RandomRemaining = true,
+	-- 				-- Mother!
+	-- 				{ Cue = "/VO/ZagreusField_3612" },
+	-- 			},
+	-- 		},
+	-- 		{
+	-- 			RequiredFalseQueuedTextLines = { "PersephoneMeeting07", "PersephoneMeeting08" },
+	-- 			PreLineAnim = "PersephoneGarden_Greeting",
+	-- 			ObjectType = "NPC_Persephone_01",
+	-- 			RandomRemaining = true,
 
-				-- Zagreus!
-				{ Cue = "/VO/Persephone_0030", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
-				-- Zagreus?
-				{ Cue = "/VO/Persephone_0032", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
-				-- You're back!
-				{ Cue = "/VO/Persephone_0033" },
-				-- Ah, you're back.
-				{ Cue = "/VO/Persephone_0035" },
-				-- My son!
-				{ Cue = "/VO/Persephone_0036" },
-				-- Is that you, Zagreus?
-				{ Cue = "/VO/Persephone_0037", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
-				-- Oh, it's you!
-				{ Cue = "/VO/Persephone_0038" },
-				-- Is that you?
-				{ Cue = "/VO/Persephone_0039" },
-				-- Zagreus, you're back!
-				{ Cue = "/VO/Persephone_0040", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
-				-- Welcome back, my son.
-				{ Cue = "/VO/Persephone_0041" },
-			},
-			{
-				PreLineWait = 0.5,
-				UsePlayerSource = true,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				RequiredQueuedTextLines = "PersephoneReturnsHome01",
+	-- 			-- Zagreus!
+	-- 			{ Cue = "/VO/Persephone_0030", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
+	-- 			-- Zagreus?
+	-- 			{ Cue = "/VO/Persephone_0032", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
+	-- 			-- You're back!
+	-- 			{ Cue = "/VO/Persephone_0033" },
+	-- 			-- Ah, you're back.
+	-- 			{ Cue = "/VO/Persephone_0035" },
+	-- 			-- My son!
+	-- 			{ Cue = "/VO/Persephone_0036" },
+	-- 			-- Is that you, Zagreus?
+	-- 			{ Cue = "/VO/Persephone_0037", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
+	-- 			-- Oh, it's you!
+	-- 			{ Cue = "/VO/Persephone_0038" },
+	-- 			-- Is that you?
+	-- 			{ Cue = "/VO/Persephone_0039" },
+	-- 			-- Zagreus, you're back!
+	-- 			{ Cue = "/VO/Persephone_0040", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
+	-- 			-- Welcome back, my son.
+	-- 			{ Cue = "/VO/Persephone_0041" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.5,
+	-- 			UsePlayerSource = true,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			RequiredQueuedTextLines = "PersephoneReturnsHome01",
 
-				-- Mother...?
-				{ Cue = "/VO/ZagreusField_3619" },
-			},
-			{
-				PreLineWait = 0.5,
-				UsePlayerSource = true,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				RequiredFalseQueuedTextLines = { "PersephoneReturnsHome01", "PersephoneMeeting08" },
+	-- 			-- Mother...?
+	-- 			{ Cue = "/VO/ZagreusField_3619" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.5,
+	-- 			UsePlayerSource = true,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			RequiredFalseQueuedTextLines = { "PersephoneReturnsHome01", "PersephoneMeeting08" },
 
-				-- It's me.
-				{ Cue = "/VO/ZagreusField_3613" },
-				-- I'm back.
-				{ Cue = "/VO/ZagreusField_3614" },
-				-- I'm back, Mother!
-				{ Cue = "/VO/ZagreusField_3615" },
-				-- It's only me.
-				{ Cue = "/VO/ZagreusField_3616" },
-				-- I made it, Mother.
-				{ Cue = "/VO/ZagreusField_3617" },
-				-- Hello, Mother!
-				{ Cue = "/VO/ZagreusField_3618" },
-				-- Mother...?
-				{ Cue = "/VO/ZagreusField_3619", RequiredFalseQueuedTextLines = { "PersephoneMeeting09" }, },
-				-- I'm here, Mother.
-				{ Cue = "/VO/ZagreusField_3620" },
-			},
-		},
-	},
-	PersephoneGuaranteedGreeting = {
-		WithinDistance = 580,
-		PostTriggerAnimation = "PersephoneUnderworld_Greeting",
-		VoiceLines =
-		{
-			[1] = GlobalVoiceLines.PersephoneHomeGreetingVoiceLines,
-		},
-	},
-	PersephoneGreeting = {
-		ChanceToTrigger = 0.75,
-		WithinDistance = 580,
-		PostTriggerAnimation = "PersephoneUnderworld_Greeting",
-		GameStateRequirements =
-		{
-			RequiredFalsePrevRooms = { "DeathAreaBedroom", "DeathAreaOffice", "DeathAreaBedroomHades" },
-			RequiresFalseHadesProcession = true,
-		},
-		VoiceLines =
-		{
-			[1] = GlobalVoiceLines.PersephoneHomeGreetingVoiceLines,
-		},
-	},
-	SingingEurydiceSong01_Eurydice_SongFromStart = {
-		TrackName = "/Music/EurydiceSong1_Eurydice",
-		Restore = true,
-	},
-	SingingEurydiceSong01_Eurydice = {
-		TrackName = "/Music/EurydiceSong1_Eurydice",
-		Restore = true,
-		TrackOffsetMin = 10.0,
-		TrackOffsetMax = 120.0,
-	},
-	SingingEurydiceSong01_Orpheus_SongFromStart = {
-		TrackName = "/Music/EurydiceSong1_Orpheus",
-		Restore = true,
-	},
-	SingingEurydiceSong01_Orpheus = {
-		TrackName = "/Music/EurydiceSong1_Orpheus",
-		Restore = true,
-		TrackOffsetMin = 10.0,
-		TrackOffsetMax = 120.0,
-	},
-	SingingEurydiceSong01_Duet_SongFromStart = {
-		TrackName = "/Music/EurydiceSong1_Duet",
-		Restore = true,
-	},
-	SingingEurydiceSong01_Duet = {
-		TrackName = "/Music/EurydiceSong1_Duet",
-		Restore = true,
-		TrackOffsetMin = 10.0,
-		TrackOffsetMax = 120.0,
-	},
-	SingingEndTheme_Duet_SongFromStart = {
-		TrackName = "/Music/EndThemeACOUSTIC",
-		Restore = true,
-	},
-	SingingEndTheme_Duet = {
-		TrackName = "/Music/EndThemeACOUSTIC",
-		Restore = true,
-		TrackOffsetMin = 10.0,
-		TrackOffsetMax = 120.0,
-	},
+	-- 			-- It's me.
+	-- 			{ Cue = "/VO/ZagreusField_3613" },
+	-- 			-- I'm back.
+	-- 			{ Cue = "/VO/ZagreusField_3614" },
+	-- 			-- I'm back, Mother!
+	-- 			{ Cue = "/VO/ZagreusField_3615" },
+	-- 			-- It's only me.
+	-- 			{ Cue = "/VO/ZagreusField_3616" },
+	-- 			-- I made it, Mother.
+	-- 			{ Cue = "/VO/ZagreusField_3617" },
+	-- 			-- Hello, Mother!
+	-- 			{ Cue = "/VO/ZagreusField_3618" },
+	-- 			-- Mother...?
+	-- 			{ Cue = "/VO/ZagreusField_3619", RequiredFalseQueuedTextLines = { "PersephoneMeeting09" }, },
+	-- 			-- I'm here, Mother.
+	-- 			{ Cue = "/VO/ZagreusField_3620" },
+	-- 		},
+	-- 	},
+	-- },
+	-- PersephoneGuaranteedGreeting = {
+	-- 	WithinDistance = 580,
+	-- 	PostTriggerAnimation = "PersephoneUnderworld_Greeting",
+	-- 	VoiceLines =
+	-- 	{
+	-- 		[1] = GlobalVoiceLines.PersephoneHomeGreetingVoiceLines,
+	-- 	},
+	-- },
+	-- PersephoneGreeting = {
+	-- 	ChanceToTrigger = 0.75,
+	-- 	WithinDistance = 580,
+	-- 	PostTriggerAnimation = "PersephoneUnderworld_Greeting",
+	-- 	GameStateRequirements =
+	-- 	{
+	-- 		RequiredFalsePrevRooms = { "DeathAreaBedroom", "DeathAreaOffice", "DeathAreaBedroomHades" },
+	-- 		RequiresFalseHadesProcession = true,
+	-- 	},
+	-- 	VoiceLines =
+	-- 	{
+	-- 		[1] = GlobalVoiceLines.PersephoneHomeGreetingVoiceLines,
+	-- 	},
+	-- },
+	-- SingingEurydiceSong01_Eurydice_SongFromStart = {
+	-- 	TrackName = "/Music/EurydiceSong1_Eurydice",
+	-- 	Restore = true,
+	-- },
+	-- SingingEurydiceSong01_Eurydice = {
+	-- 	TrackName = "/Music/EurydiceSong1_Eurydice",
+	-- 	Restore = true,
+	-- 	TrackOffsetMin = 10.0,
+	-- 	TrackOffsetMax = 120.0,
+	-- },
+	-- SingingEurydiceSong01_Orpheus_SongFromStart = {
+	-- 	TrackName = "/Music/EurydiceSong1_Orpheus",
+	-- 	Restore = true,
+	-- },
+	-- SingingEurydiceSong01_Orpheus = {
+	-- 	TrackName = "/Music/EurydiceSong1_Orpheus",
+	-- 	Restore = true,
+	-- 	TrackOffsetMin = 10.0,
+	-- 	TrackOffsetMax = 120.0,
+	-- },
+	-- SingingEurydiceSong01_Duet_SongFromStart = {
+	-- 	TrackName = "/Music/EurydiceSong1_Duet",
+	-- 	Restore = true,
+	-- },
+	-- SingingEurydiceSong01_Duet = {
+	-- 	TrackName = "/Music/EurydiceSong1_Duet",
+	-- 	Restore = true,
+	-- 	TrackOffsetMin = 10.0,
+	-- 	TrackOffsetMax = 120.0,
+	-- },
+	-- SingingEndTheme_Duet_SongFromStart = {
+	-- 	TrackName = "/Music/EndThemeACOUSTIC",
+	-- 	Restore = true,
+	-- },
+	-- SingingEndTheme_Duet = {
+	-- 	TrackName = "/Music/EndThemeACOUSTIC",
+	-- 	Restore = true,
+	-- 	TrackOffsetMin = 10.0,
+	-- 	TrackOffsetMax = 120.0,
+	-- },
 	SisyphusBenefitChoices = {
 		SkipComponents =
 		{
@@ -380,71 +380,66 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		-- 	{ PostLineFunctionName = "SisyphusMoney", },
 		-- },
 	},
-	BouldyRandomBlessings = {
-		"BouldyBlessing_Armor",
-		"BouldyBlessing_Attack",
-		"BouldyBlessing_Special",
-		"BouldyBlessing_Ranged",
-		"BouldyBlessing_Speed",
-		"BouldyBlessing_Money",
-		"BouldyBlessing_None",
-	},
-	PatroclusBenefitChoices = {
-		{
-			RequiredActiveMetaUpgrade = "ExtraChanceMetaUpgrade",
-			ChoiceText = "ChoiceText_BuffExtraChance",
-			{
-				PostLineThreadedFunctionName = "PatroclusBuff",
-				PostLineFunctionArgs = {
-					LastStand = {
-						Count = 100,
-						Icon = "ExtraLifeStyx",
-						WeaponName = "LastStandMetaUpgradeShield",
-						HealFraction = 0.5
-					}
-				}
-			},
-		},
-		{
-			RequiredActiveMetaUpgrade = "ExtraChanceReplenishMetaUpgrade",
-			ChoiceText = "ChoiceText_BuffExtraChanceReplenish",
-			{
-				PostLineThreadedFunctionName = "PatroclusBuff",
-				PostLineFunctionArgs =
-				{
-					TraitName = "UpgradedTemporaryLastStandHealTrait",
-				}
-			},
-		},
-		{
-			ChoiceText = "ChoiceText_BuffHealing",
-			{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryDoorHealTrait_Patroclus", } },
-		},
-		{
-			ChoiceText = "ChoiceText_BuffWeapon",
-			{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryImprovedWeaponTrait_Patroclus", } },
-		},
-	},
-	EurydiceBenefitChoices = {
-		{
-			ChoiceText = "ChoiceText_BuffSlottedBoonRarity",
-			{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { BoonRarity = true } },
-		},
-		{
-			ChoiceText = "ChoiceText_BuffMegaPom",
-			{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { StackTraits = true } },
-		},
-		{
-			ChoiceText = "ChoiceText_BuffFutureBoonRarity",
-			{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { BuffFutureRarity = true } },
-		},
-	},
+	-- BouldyRandomBlessings = {
+	-- 	"BouldyBlessing_Armor",
+	-- 	"BouldyBlessing_Attack",
+	-- 	"BouldyBlessing_Special",
+	-- 	"BouldyBlessing_Ranged",
+	-- 	"BouldyBlessing_Speed",
+	-- 	"BouldyBlessing_Money",
+	-- 	"BouldyBlessing_None",
+	-- },
+	-- PatroclusBenefitChoices = {
+	-- 	{
+	-- 		RequiredActiveMetaUpgrade = "ExtraChanceMetaUpgrade",
+	-- 		ChoiceText = "ChoiceText_BuffExtraChance",
+	-- 		{
+	-- 			PostLineThreadedFunctionName = "PatroclusBuff",
+	-- 			PostLineFunctionArgs = {
+	-- 				LastStand = {
+	-- 					Count = 100,
+	-- 					Icon = "ExtraLifeStyx",
+	-- 					WeaponName = "LastStandMetaUpgradeShield",
+	-- 					HealFraction = 0.5
+	-- 				}
+	-- 			}
+	-- 		},
+	-- 	},
+	-- 	{
+	-- 		RequiredActiveMetaUpgrade = "ExtraChanceReplenishMetaUpgrade",
+	-- 		ChoiceText = "ChoiceText_BuffExtraChanceReplenish",
+	-- 		{
+	-- 			PostLineThreadedFunctionName = "PatroclusBuff",
+	-- 			PostLineFunctionArgs =
+	-- 			{
+	-- 				TraitName = "UpgradedTemporaryLastStandHealTrait",
+	-- 			}
+	-- 		},
+	-- 	},
+	-- 	{
+	-- 		ChoiceText = "ChoiceText_BuffHealing",
+	-- 		{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryDoorHealTrait_Patroclus", } },
+	-- 	},
+	-- 	{
+	-- 		ChoiceText = "ChoiceText_BuffWeapon",
+	-- 		{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryImprovedWeaponTrait_Patroclus", } },
+	-- 	},
+	-- },
+	-- EurydiceBenefitChoices = {
+	-- 	{
+	-- 		ChoiceText = "ChoiceText_BuffSlottedBoonRarity",
+	-- 		{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { BoonRarity = true } },
+	-- 	},
+	-- 	{
+	-- 		ChoiceText = "ChoiceText_BuffMegaPom",
+	-- 		{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { StackTraits = true } },
+	-- 	},
+	-- 	{
+	-- 		ChoiceText = "ChoiceText_BuffFutureBoonRarity",
+	-- 		{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { BuffFutureRarity = true } },
+	-- 	},
+	-- },
 }
-
--- TODO: Move to separate file
--- This needs to be assigned before the NPCData table is loaded, so the arguments are not nil
--- Currently have this here, might be better to move if we need to make modifications
-mod.AddTableKeysSkipDupes(game.PresetEventArgs, mod.PresetEventArgs, nil)
 
 mod.NPCData = mod.NPCData or {
 	NPC_Sisyphus_01 = {
@@ -536,15 +531,13 @@ mod.NPCData = mod.NPCData or {
 					Cue = "/VO/Sisyphus_0180",
 					PreLineAnim = "SisyphusElbowing",
 					Text =
-					"Well I am grateful for it, I and the old boulder there, in turn. I'm used to going lengthy stretches on my own, but having visitors from time to time would do me well!",
+					"Well I am grateful for it, I and the old boulder there, in turn. I'm used to going lengthy stretches on my own, but having visitors from time to time would do me well!"
 				},
-				PrePortraitExitFunctionName = "SisyphusBenefitChoice",
-				PrePortraitExitFunctionArgs = PresetEventArgs.SisyphusBenefitChoices,
-				-- {
-				-- Text = "Sisyphus_OfferText01",
-				-- Choices = PresetEventArgs.SisyphusBenefitChoices,
-				-- PreLineFunctionName = "ShowUIForDecision",
-				-- },
+				{
+					Text = "Sisyphus_OfferText01",
+					Choices = PresetEventArgs.SisyphusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
 			},
 			SisyphusMeeting02 =
 			{

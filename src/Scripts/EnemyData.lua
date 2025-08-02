@@ -1,7 +1,7 @@
 -- Contains generic functions to handle migrating enemy data from Hades to Hades II
 
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
-local function applyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
+function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
 	for oldName, newName in pairs(mod.EnemyNameMappings) do
 		mod.UpdatePropertyName(modifications, oldName, newName, {}, "EnemyDataHandler modifications")
 		mod.UpdatePropertyName(replacements, oldName, newName, {}, "EnemyDataHandler replacements")
@@ -1105,13 +1105,4 @@ game.EnemyData.Elite.EliteAttributeData.ModsNikkelMHadesBiomesStasisDeath = {
 	AddDeathWeapons = { "EliteStasisDeath" },
 }
 
-applyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
-
-local npcModifications = {
-	NPC_Sisyphus_01 = {
-		RequiredRoomInteraction = true,
-		BlockedLootInteractionText = "NPCUseTextTalkLocked",
-	},
-}
-
-applyModificationsAndInheritEnemyData(mod.NPCData, npcModifications, {}, {})
+mod.ApplyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)

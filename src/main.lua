@@ -241,6 +241,22 @@ local function on_ready()
 		import "Game/Text/zh-CN/ScreenText.zh-CN.sjson.lua"
 		import "Game/Text/zh-TW/ScreenText.zh-TW.sjson.lua"
 
+		-- import "Game/Text/de/TraitText.de.sjson.lua"
+		-- import "Game/Text/el/TraitText.el.sjson.lua"
+		import "Game/Text/en/TraitText.en.sjson.lua"
+		-- import "Game/Text/es/TraitText.es.sjson.lua"
+		-- import "Game/Text/fr/TraitText.fr.sjson.lua"
+		-- import "Game/Text/it/TraitText.it.sjson.lua"
+		-- import "Game/Text/ja/TraitText.ja.sjson.lua"
+		-- import "Game/Text/ko/TraitText.ko.sjson.lua"
+		-- import "Game/Text/pl/TraitText.pl.sjson.lua"
+		-- import "Game/Text/pt-BR/TraitText.pt-BR.sjson.lua"
+		-- import "Game/Text/ru/TraitText.ru.sjson.lua"
+		-- import "Game/Text/tr/TraitText.tr.sjson.lua"
+		-- import "Game/Text/uk/TraitText.uk.sjson.lua"
+		-- import "Game/Text/zh-CN/TraitText.zh-CN.sjson.lua"
+		-- import "Game/Text/zh-TW/TraitText.zh-TW.sjson.lua"
+
 		-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 		-- Done first, as the EncounterData depends on the EnemySets
 		import "Scripts/EnemySets.lua"
@@ -249,6 +265,7 @@ local function on_ready()
 		import "Scripts/HadesEnemyData.lua"
 		import "Scripts/HadesNPCData.lua"
 		import "Scripts/EnemyData.lua"
+		import "Scripts/NPCData.lua"
 		import "Scripts/Meta/EncounterDataHandler.lua"
 		import "Scripts/Meta/RoomDataHandler.lua"
 
