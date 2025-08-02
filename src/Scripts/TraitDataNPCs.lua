@@ -1,11 +1,51 @@
 -- Contains the upgrade choices the player can choose from NPCs like Sisyphus
 local newTraitData = {
-	SisyphusHealing = {
+	SisyphusMoney = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
-		-- TODO
-		Icon = "Boon_Narcissus_01",
+		Icon = "Boon_No_Choice_Money",
 		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionArgs = {
+			Delay = 0.5,
+			DropFunctionName = "SisyphusDropPresentation",
+			LootOptions = {
+				{
+					Name = "Currency",
+					MinAmount = 101,
+					MaxAmount = 115,
+				},
+			}
+		},
+	},
+	SisyphusHealing = {
+		InheritFrom = { "SisyphusMoney", },
+		Icon = "Boon_Narcissus_01",
+		AcquireFunctionArgs = {
+			Delay = 0.5,
+			NotRequiredPickup = true,
+			ForceToValidLocation = true,
+			DestinationId = 370001,
+			Range = 0,
+			Force = 350,
+			UpwardForce = 600,
+			Angle = -20,
+			DropFunctionName = "SisyphusDropPresentation",
+			LootOptions = {
+				{
+					Name = "RoomRewardHealDrop",
+				},
+			}
+		},
+		CustomStatLinesWithShrineUpgrade = {
+			ShrineUpgradeName = "HealingReductionShrineUpgrade",
+			StatLines = {
+				"HealingReductionNotice",
+			},
+		},
+	},
+	SisyphusMetapoints = {
+		InheritFrom = { "SisyphusMoney", },
+		Icon = "Boon_Narcissus_03",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
 			NotRequiredPickup = true,
@@ -19,18 +59,15 @@ local newTraitData = {
 			DropFunctionName = "SisyphusDropPresentation",
 			LootOptions = {
 				{
-					Name = "RoomRewardHealDrop",
+					Name = "MetaCurrencyDrop",
+					Overrides = {
+						AddResources = {
+							MetaCurrency = 30,
+						},
+					},
 				},
 			}
 		},
-	},
-	SisyphusMoney =
-	{
-		InheritFrom = { "SisyphusHealing", },
-	},
-	SisyphusMetapoints =
-	{
-		InheritFrom = { "SisyphusHealing", },
 	},
 }
 
