@@ -1723,11 +1723,11 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 		end
 	end
 
-	if requirements.RequiredPlayedThisRoom ~= nil and not ContainsAny(requirements.RequiredPlayedThisRoom, game.CurrentRun.CurrentRoom.VoiceLinesPlayed) then
+	if requirements.RequiredPlayedThisRoom ~= nil and not ContainsAny(requirements.RequiredPlayedThisRoom, game.CurrentRun.CurrentRoom.SpeechRecord) then
 		return false
 	end
 
-	if requirements.RequiredFalsePlayedThisRoom ~= nil and ContainsAny(requirements.RequiredFalsePlayedThisRoom, game.CurrentRun.CurrentRoom.VoiceLinesPlayed) then
+	if requirements.RequiredFalsePlayedThisRoom ~= nil and ContainsAny(requirements.RequiredFalsePlayedThisRoom, game.CurrentRun.CurrentRoom.SpeechRecord) then
 		return false
 	end
 
