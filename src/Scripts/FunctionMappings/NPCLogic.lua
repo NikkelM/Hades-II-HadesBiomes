@@ -1,4 +1,4 @@
--- Functions for Story NPCs
+-- #region Sisyphus
 modutil.mod.Path.Wrap("BouldyHitPresentation", function(base, victim)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		local source = game.ActiveEnemies
@@ -12,7 +12,6 @@ modutil.mod.Path.Wrap("BouldyHitPresentation", function(base, victim)
 end)
 
 function game.SisyphusBenefitChoice(source, args, screen)
-	print("SisyphusBenefitChoice")
 	RemoveInputBlock({ Name = "PlayTextLines" })
 
 	RandomSynchronize(9)
@@ -56,3 +55,11 @@ function game.SisyphusBenefitChoice(source, args, screen)
 
 	AddInputBlock({ Name = "PlayTextLines" })
 end
+
+function game.SisyphusDropPresentation(consumable, args)
+	local source = game.ActiveEnemies
+			[GetClosestUnitOfType({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "NPC_Sisyphus_01", Distance = 9999 })]
+	SetAnimation({ DestinationId = source.ObjectId, Name = "SisyphusElbowing" })
+end
+
+-- #endregion

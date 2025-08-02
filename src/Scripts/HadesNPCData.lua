@@ -442,6 +442,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 }
 
 mod.NPCData = mod.NPCData or {
+	-- Id 370001
 	NPC_Sisyphus_01 = {
 		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
 
