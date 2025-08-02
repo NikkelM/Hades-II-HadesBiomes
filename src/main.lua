@@ -247,7 +247,7 @@ local function on_ready()
 
 		import "Scripts/Meta/EnemyTrapDataHandler.lua"
 		import "Scripts/HadesEnemyData.lua"
-		import "Scripts/NPCData.lua"
+		import "Scripts/HadesNPCData.lua"
 		import "Scripts/EnemyData.lua"
 		import "Scripts/Meta/EncounterDataHandler.lua"
 		import "Scripts/Meta/RoomDataHandler.lua"
