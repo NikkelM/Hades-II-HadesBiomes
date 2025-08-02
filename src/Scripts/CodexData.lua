@@ -23,19 +23,19 @@ local function loadHadesCodexData(fileName)
 	end
 end
 
+local storyNPCNames = {
+	"NPC_Sisyphus_01",
+	"NPC_Eurydice_01",
+	"NPC_Patroclus_01",
+}
+
 local hadesCodexOrdering = {
-	-- ModsNikkelMHadesBiomesChthonicGods = {
-	-- TODO: Move to standard Chthonic gods? Will probably clash with the actual Zagreus being added at some point
-	-- 	"PlayerUnit",
-	-- },
-	-- TODO: Add when the story rooms are fixed
-	-- ModsNikkelMHadesBiomesOtherDenizens = {
-	-- 	"NPC_Sisyphus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Persephone_Home_01",
-	-- },
 	-- Moved NPC_FurySister_01, Harpy2, Harpy3, Theseus, Minotaur, NPC_Hades_01 here from ChthonicGods
 	ModsNikkelMHadesBiomesCodexEntry = {
 		-- Locations
 		"Tartarus", "Asphodel", "Elysium", "Styx", "Challenge", "Surface",
+		-- NPCs
+		"NPC_Sisyphus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", -- "NPC_Persephone_Home_01",
 		-- Enemies
 		"HeavyMelee", "LightRanged", "PunchingBagUnit", "ThiefMineLayer", "WretchAssassinMiniboss", "Swarmer", "LightSpawner",
 		"DisembodiedHand", "HeavyRanged", "HeavyRangedSplitterMiniboss", "NPC_FurySister_01", "Harpy2", "Harpy3",
@@ -51,8 +51,9 @@ local hadesCodexOrdering = {
 local codexGroupNameMappings = {
 	-- Used as the base category we create the new one from
 	Enemies = "ModsNikkelMHadesBiomesCodexEntry",
-	-- Will be moved into Enemies after the mapping
+	-- These will be moved into Enemies after the mapping
 	Biomes = "ModsNikkelMHadesBiomesBiomes",
+	OtherDenizens = "ModsNikkelMHadesBiomesOtherDenizens",
 }
 
 -- Defines which enemies correspond to a Genus group
@@ -205,10 +206,33 @@ for groupName, groupData in pairs(hadesCodexData) do
 					end
 				end
 			end
+		elseif groupData.UnlockType == "Interact" then
+			for characterName, characterCollection in pairs(groupData.Entries) do
+				for _, entry in ipairs(characterCollection.Entries) do
+					if entry.UnlockThreshold then
+						entry.UnlockGameStateRequirements =
+						{
+							{
+								Path = { "GameState", "UseRecord", characterName },
+								Comparison = ">=",
+								Value = entry.UnlockThreshold,
+							},
+						}
+						entry.UnlockThreshold = nil
+					end
+				end
+			end
 		else
 			mod.DebugPrint("Unknown unlock type: " .. groupData.UnlockType, 1)
 		end
 		groupData.UnlockType = nil
+
+		-- For the NPCs, add the NoRequirements flag to the top-level, to allow to always view their boons, even if the codex entry has not been unlocked yet
+		for name, data in pairs(groupData.Entries) do
+			if game.Contains(storyNPCNames, name) then
+				data.NoRequirements = true
+			end
+		end
 
 		-- Update portraits if needed
 		if duplicateCodexPortraits[groupName] then
@@ -241,11 +265,18 @@ for entryName, entry in pairs(updatedCodexData.SavedEntries) do
 end
 updatedCodexData.SavedEntries = nil
 
--- Move the biome entries to the enemies group, so they are all in one tab
+-- Move the Biome and OtherDenizens entries to the enemies group, so they are all in one tab
 for entryName, entry in pairs(updatedCodexData[codexGroupNameMappings.Biomes].Entries) do
 	updatedCodexData[codexGroupNameMappings.Enemies].Entries[entryName] = entry
 end
 updatedCodexData[codexGroupNameMappings.Biomes] = nil
+-- We don't have all OtherDenizens in the mod, so we only add the ones that are in the hadesCodexOrdering
+for entryName, entry in pairs(updatedCodexData[codexGroupNameMappings.OtherDenizens].Entries) do
+	if game.Contains(storyNPCNames, entryName) then
+		updatedCodexData[codexGroupNameMappings.Enemies].Entries[entryName] = entry
+	end
+end
+updatedCodexData[codexGroupNameMappings.OtherDenizens] = nil
 
 -- Add some additional mappings for the run history screen
 -- E.g. for the Bloodmine mapping to the image of the ThiefMineLayer
