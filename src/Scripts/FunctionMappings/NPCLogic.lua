@@ -1,5 +1,4 @@
 -- Functions for Story NPCs
-
 modutil.mod.Path.Wrap("BouldyHitPresentation", function(base, victim)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		local source = game.ActiveEnemies

@@ -167,6 +167,7 @@ local roomModifications = {
 		ThreadedEvents = {
 			[1] = mod.NilValue
 		},
+		LoadModdedVoiceBanks = { "Sisyphus", "ZagreusField" },
 	},
 	A_Reprieve01 = {
 		GameStateRequirements = {
