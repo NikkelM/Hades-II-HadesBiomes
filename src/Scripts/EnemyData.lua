@@ -257,25 +257,11 @@ local enemyReplacements = {
 	-- #region ELYSIUM - Minotaur
 	Minotaur = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
-		-- TODO: Workaround, removing the ZagreusField reactions after the Minotaur is killed, can be added again if #130 is implemented
-		DeathVoiceLines = {
-			[4] = mod.NilValue,
-		},
-		OnKillVoiceLines = {
-			[2] = mod.NilValue,
-		},
 	},
 	-- #endregion
 	-- #region ELYSIUM - Theseus
 	Theseus = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
-		-- TODO: Workaround, removing the ZagreusField reactions after the Minotaur is killed, can be added again if #130 is implemented
-		DeathVoiceLines = {
-			[5] = mod.NilValue,
-		},
-		OnKillVoiceLines = {
-			[2] = mod.NilValue,
-		},
 	},
 	-- #endregion
 	-- #endregion
@@ -1120,4 +1106,12 @@ game.EnemyData.Elite.EliteAttributeData.ModsNikkelMHadesBiomesStasisDeath = {
 }
 
 applyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
-applyModificationsAndInheritEnemyData(mod.NPCData, {}, {}, {})
+
+local npcModifications = {
+	NPC_Sisyphus_01 = {
+		RequiredRoomInteraction = true,
+		BlockedLootInteractionText = "NPCUseTextTalkLocked",
+	},
+}
+
+applyModificationsAndInheritEnemyData(mod.NPCData, npcModifications, {}, {})
