@@ -297,6 +297,7 @@ local function on_ready()
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes
+		import "Scripts/HadesAudioData.lua"
 		import "Scripts/AudioData.lua"
 		import "Scripts/AudioLogic.lua"
 		import "Scripts/BiomeMapPresentation.lua"

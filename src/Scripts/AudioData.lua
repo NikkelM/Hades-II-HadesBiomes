@@ -89,55 +89,21 @@ game.MusicTrackData.Styx = {
 	{ Name = "/Music/MusicStyx1_MC", },
 }
 
--- Loads AuioData from a file in Hades
-mod.CachedHadesAudioData = nil
-function mod.LoadHadesAudioData(fileName)
-	if mod.CachedHadesAudioData then
-		return game.DeepCopyTable(mod.CachedHadesAudioData)
-	end
-	local originalAmbienceTracks = game.DeepCopyTable(game.AmbienceTracks) or {}
-	local originalMusicPlayerTrackOrderData = game.DeepCopyTable(game.MusicPlayerTrackOrderData) or {}
-	local originalMusicPlayerTrackData = game.DeepCopyTable(game.MusicPlayerTrackData) or {}
-	local originalMusicTrackData = game.DeepCopyTable(game.MusicTrackData) or {}
-	local originalRoomStartMusicEvents = game.DeepCopyTable(game.RoomStartMusicEvents) or {}
-	local originalCombatOverMusicEvents = game.DeepCopyTable(game.CombatOverMusicEvents) or {}
-	local originalGlobalVoiceLines = game.DeepCopyTable(game.GlobalVoiceLines) or {}
-	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
-	local chunk, err = loadfile(pathName)
-	if chunk then
-		chunk()
-		-- No worries if this is marked as undefined, it comes from the loaded file
-		---@diagnostic disable-next-line: undefined-global
-		mod.CachedHadesAudioData = game.DeepCopyTable(GlobalVoiceLines)
-		game.GlobalVoiceLines = originalGlobalVoiceLines
-		game.CombatOverMusicEvents = originalCombatOverMusicEvents
-		game.RoomStartMusicEvents = originalRoomStartMusicEvents
-		game.MusicTrackData = originalMusicTrackData
-		game.MusicPlayerTrackData = originalMusicPlayerTrackData
-		game.MusicPlayerTrackOrderData = originalMusicPlayerTrackOrderData
-		game.AmbienceTracks = originalAmbienceTracks
-		return game.DeepCopyTable(mod.CachedHadesAudioData)
-	else
-		mod.DebugPrint("Error loading audioData: " .. err, 1)
-	end
-end
-
-local audioDataRaw = mod.LoadHadesAudioData("AudioData.lua") or {}
 -- Add required GlobalVoiceLines
-game.GlobalVoiceLines.HadesDeathTauntVoiceLines = audioDataRaw.HadesDeathTauntVoiceLines
-game.GlobalVoiceLines.HadesPostBossVoiceLines = audioDataRaw.HadesPostBossVoiceLines
-game.GlobalVoiceLines.HadesWrathAttackVoiceLines = audioDataRaw.HadesWrathAttackVoiceLines
-game.GlobalVoiceLines.HadesBeamAttackVoiceLines = audioDataRaw.HadesBeamAttackVoiceLines
-game.GlobalVoiceLines.FatherSonArgumentVoiceLines = audioDataRaw.FatherSonArgumentVoiceLines
+game.GlobalVoiceLines.HadesDeathTauntVoiceLines = mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
+game.GlobalVoiceLines.HadesPostBossVoiceLines = mod.GlobalVoiceLines.HadesPostBossVoiceLines
+game.GlobalVoiceLines.HadesWrathAttackVoiceLines = mod.GlobalVoiceLines.HadesWrathAttackVoiceLines
+game.GlobalVoiceLines.HadesBeamAttackVoiceLines = mod.GlobalVoiceLines.HadesBeamAttackVoiceLines
+game.GlobalVoiceLines.FatherSonArgumentVoiceLines = mod.GlobalVoiceLines.FatherSonArgumentVoiceLines
 
-game.GlobalVoiceLines.MultiFuryFightStartVoiceLines = audioDataRaw.MultiFuryFightStartVoiceLines
+game.GlobalVoiceLines.MultiFuryFightStartVoiceLines = mod.GlobalVoiceLines.MultiFuryFightStartVoiceLines
 
-game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines = audioDataRaw.ThanatosDeathTauntVoiceLines
+game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines = mod.GlobalVoiceLines.ThanatosDeathTauntVoiceLines
 
-game.GlobalVoiceLines.PatroclusGreetingLines = audioDataRaw.PatroclusGreetingLines
-game.GlobalVoiceLines.PatroclusMutteringLines = audioDataRaw.PatroclusMutteringLines
+game.GlobalVoiceLines.PatroclusGreetingLines = mod.GlobalVoiceLines.PatroclusGreetingLines
+game.GlobalVoiceLines.PatroclusMutteringLines = mod.GlobalVoiceLines.PatroclusMutteringLines
 
-game.GlobalVoiceLines.TheseusWrathActivationVoiceLines = audioDataRaw.TheseusWrathActivationVoiceLines
-game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines = audioDataRaw.TheseusChariotRuinedVoiceLines
+game.GlobalVoiceLines.TheseusWrathActivationVoiceLines = mod.GlobalVoiceLines.TheseusWrathActivationVoiceLines
+game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines = mod.GlobalVoiceLines.TheseusChariotRuinedVoiceLines
 
-game.GlobalVoiceLines.CharonSurprisedVoiceLines = audioDataRaw.CharonSurprisedVoiceLines
+game.GlobalVoiceLines.CharonSurprisedVoiceLines = mod.GlobalVoiceLines.CharonSurprisedVoiceLines
