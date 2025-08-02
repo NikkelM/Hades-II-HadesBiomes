@@ -214,6 +214,7 @@ local function on_ready()
 		import "Game/Text/zh-TW/HelpText.zh-TW.sjson.lua"
 
 		import "Game/Text/de/CodexText.de.sjson.lua"
+		-- import "Game/Text/el/CodexText.el.sjson.lua"
 		import "Game/Text/en/CodexText.en.sjson.lua"
 		import "Game/Text/es/CodexText.es.sjson.lua"
 		import "Game/Text/fr/CodexText.fr.sjson.lua"
@@ -223,7 +224,10 @@ local function on_ready()
 		import "Game/Text/pl/CodexText.pl.sjson.lua"
 		import "Game/Text/pt-BR/CodexText.pt-BR.sjson.lua"
 		import "Game/Text/ru/CodexText.ru.sjson.lua"
+		-- import "Game/Text/tr/CodexText.tr.sjson.lua"
+		-- import "Game/Text/uk/CodexText.uk.sjson.lua"
 		import "Game/Text/zh-CN/CodexText.zh-CN.sjson.lua"
+		-- import "Game/Text/zh-TW/CodexText.zh-TW.sjson.lua"
 
 		import "Game/Text/de/ScreenText.de.sjson.lua"
 		import "Game/Text/el/ScreenText.el.sjson.lua"
@@ -256,6 +260,22 @@ local function on_ready()
 		-- import "Game/Text/uk/TraitText.uk.sjson.lua"
 		-- import "Game/Text/zh-CN/TraitText.zh-CN.sjson.lua"
 		-- import "Game/Text/zh-TW/TraitText.zh-TW.sjson.lua"
+
+		import "Game/Text/de/MiscText.de.sjson.lua"
+		-- import "Game/Text/el/MiscText.el.sjson.lua"
+		import "Game/Text/en/MiscText.en.sjson.lua"
+		import "Game/Text/es/MiscText.es.sjson.lua"
+		import "Game/Text/fr/MiscText.fr.sjson.lua"
+		import "Game/Text/it/MiscText.it.sjson.lua"
+		import "Game/Text/ja/MiscText.ja.sjson.lua"
+		import "Game/Text/ko/MiscText.ko.sjson.lua"
+		import "Game/Text/pl/MiscText.pl.sjson.lua"
+		import "Game/Text/pt-BR/MiscText.pt-BR.sjson.lua"
+		import "Game/Text/ru/MiscText.ru.sjson.lua"
+		-- import "Game/Text/tr/MiscText.tr.sjson.lua"
+		-- import "Game/Text/uk/MiscText.uk.sjson.lua"
+		import "Game/Text/zh-CN/MiscText.zh-CN.sjson.lua"
+		-- import "Game/Text/zh-TW/MiscText.zh-TW.sjson.lua"
 
 		-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 		-- Done first, as the EncounterData depends on the EnemySets
@@ -293,6 +313,9 @@ local function on_ready()
 		-- Loads Weapon data
 		import "Scripts/HadesWeaponData.lua"
 		import "Scripts/WeaponData.lua"
+
+		-- Add new Trait data
+		import "Scripts/TraitDataNPCs.lua"
 
 		-- Applies modifications to the rooms, such as LegalEncounterDictionary
 		game.SetupRunData()
@@ -343,7 +366,6 @@ local function on_ready()
 		import "Scripts/RunHistoryData.lua"
 		import "Scripts/RunHistoryLogic.lua"
 		import "Scripts/RunLogic.lua"
-		import "Scripts/TraitDataNPCs.lua"
 		import "Scripts/WeaponSets.lua"
 
 		mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)
