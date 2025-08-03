@@ -3661,7 +3661,6 @@ mod.NPCData = mod.NPCData or {
 
 		UseText = "UseTalkToEurydice",
 		Portrait = "Portrait_Eurydice_Default_01",
-		-- TODO
 		SingingAnimation = "EurydiceIdleSinging_Start",
 		SingingFx = "StatusSinging_Eurydice",
 		SingingAnimOffsetX = 30,

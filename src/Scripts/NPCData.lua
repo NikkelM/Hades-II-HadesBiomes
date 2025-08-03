@@ -90,7 +90,7 @@ local npcChoiceMappings = {
 		PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
 
 		AlwaysReplaceIfExist = {
-			OnQueuedFunctionName = "MusicianMusicHades",
+			OnQueuedFunctionName = "ModsNikkelMHadesBiomesMusicianMusic",
 		}
 	},
 }

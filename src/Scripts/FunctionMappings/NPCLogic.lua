@@ -79,3 +79,53 @@ function game.SisyphusDropPresentation(consumable, args)
 end
 
 -- #endregion
+-- #region Eurydice
+function game.ModsNikkelMHadesBiomesSingingPresentation(source, ars)
+	if source.SingingFx ~= nil then
+		CreateAnimation({
+			Name = source.SingingFx,
+			DestinationId = source.ObjectId,
+			OffsetX = source.SingingAnimOffsetX or source.AnimOffsetX,
+			OffsetZ = source.AnimOffsetZ,
+			Group = "Combat_UI_World"
+		})
+	end
+	if source.SingingAnimation ~= nil then
+		SetAnimation({ Name = source.SingingAnimation, DestinationId = source.ObjectId })
+	end
+	if source.PartnerSingingAnimation ~= nil and source.PartnerObjectId ~= nil then
+		SetAnimation({ Name = source.PartnerSingingAnimation, DestinationId = source.PartnerObjectId })
+	end
+end
+
+function game.ModsNikkelMHadesBiomesMusicianMusic(source, args)
+	game.CurrentRun.EventState[source.ObjectId] = { FunctionName = "ModsNikkelMHadesBiomesSingingPresentation", Args = args }
+	game.ModsNikkelMHadesBiomesSingingPresentation(source, args)
+
+	if game.AudioState.AmbientMusicId ~= nil then
+		-- Quick cut the previously playing id
+		StopSound({ Id = game.AudioState.AmbientMusicId, Duration = 0.25 })
+		game.AudioState.AmbientMusicId = nil
+	end
+
+	game.AudioState.AmbientMusicId = PlaySound({ Name = args.TrackName, Id = source.ObjectId })
+	SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.AmbientMusicId, Value = 1 })
+	game.AudioState.AmbientTrackName = args.TrackName
+	SetVolume({ Id = game.AudioState.AmbientMusicId, Value = 1 })
+	if args.TrackOffsetMin ~= nil then
+		SetSoundPosition({
+			Id = game.AudioState.AmbientMusicId,
+			Position = game.RandomFloat(args.TrackOffsetMin, args.TrackOffsetMax)
+		})
+	end
+	game.thread(game.ModsNikkelMHadesBiomesPauseUnpauseSoundWorkaround, game.AudioState.AmbientMusicId)
+end
+
+-- Workaround for FMOD bug, after a long play-session VO played in 2D can become inaudible. Pausing and unpausing the sound fixes it.
+function game.ModsNikkelMHadesBiomesPauseUnpauseSoundWorkaround(soundId)
+	game.wait(0.03)
+	PauseSound({ Id = soundId, Duration = 0 })
+	ResumeSound({ Id = soundId, Duration = 0 })
+end
+
+-- #endregion
