@@ -31,7 +31,7 @@ local newTraitData = {
 			DropFunctionName = "SisyphusDropPresentation",
 			LootOptions = {
 				{
-					Name = "HealDropMajor",
+					Name = "HealDrop",
 				},
 			},
 		},
@@ -39,7 +39,7 @@ local newTraitData = {
 			{
 				External = true,
 				BaseType = "ConsumableData",
-				BaseName = "HealDropMajor",
+				BaseName = "HealDrop",
 				Format = "FlatHeal",
 				BaseProperty = "HealFixed",
 				ExtractAs = "HealDropAmount"
