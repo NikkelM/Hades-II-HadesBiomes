@@ -58,6 +58,13 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 			end
 		end
 
+		if currentRoom.LoadCustomModdedAudioBanks ~= nil then
+			for _, bank in ipairs(currentRoom.LoadCustomModdedAudioBanks) do
+				rom.audio.load_bank(rom.path.combine(_PLUGIN.plugins_data_mod_folder_path,
+					"Content\\Audio\\Desktop\\" .. bank .. ".bank"))
+			end
+		end
+
 		if currentRoom.LoadModdedVoiceBanks ~= nil then
 			game.LoadVoiceBanks(currentRoom.LoadModdedVoiceBanks)
 		end

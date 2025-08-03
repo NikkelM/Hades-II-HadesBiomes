@@ -110,7 +110,10 @@ local roomModifications = {
 
 	-- OTHER
 	X_Story01 = {
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusic", },
 		LoadModdedVoiceBanks = { "Eurydice", "ZagreusField" },
+		-- We play our own music in this room, don't play any by default
+		IgnoreMusic = true,
 	},
 	X_Reprieve01 = {
 		GameStateRequirements = {

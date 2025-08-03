@@ -53,6 +53,8 @@ local npcModifications = {
 		},
 	},
 	NPC_Eurydice_01 = {
+		TextLinesPauseAmbientMusicVocals = mod.NilValue,
+		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
 		-- TODO Narcissus?
@@ -90,7 +92,7 @@ local npcChoiceMappings = {
 		PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
 
 		AlwaysReplaceIfExist = {
-			OnQueuedFunctionName = "ModsNikkelMHadesBiomesMusicianMusic",
+			OnQueuedFunctionName = "ModsNikkelMHadesBiomesEurydiceMusic",
 		}
 	},
 }

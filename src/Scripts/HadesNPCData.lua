@@ -291,11 +291,11 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- 	},
 	-- },
 	SingingEurydiceSong01_Eurydice_SongFromStart = {
-		TrackName = "/Music/EurydiceSong1_Eurydice",
+		TrackName = "{5d99eb67-025b-4ae2-a8fa-bc9a1f52e5ec}",
 		Restore = true,
 	},
 	SingingEurydiceSong01_Eurydice = {
-		TrackName = "/Music/EurydiceSong1_Eurydice",
+		TrackName = "{5d99eb67-025b-4ae2-a8fa-bc9a1f52e5ec}",
 		Restore = true,
 		TrackOffsetMin = 10.0,
 		TrackOffsetMax = 120.0,
@@ -3655,8 +3655,7 @@ mod.NPCData = mod.NPCData or {
 	-- Manually replace PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] with mod.PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] to make it easier
 	-- FunctionName is still replaced in NPCData.lua
 	-- Eurydice, Id = 514436
-	NPC_Eurydice_01 =
-	{
+	NPC_Eurydice_01 = {
 		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
 
 		UseText = "UseTalkToEurydice",
