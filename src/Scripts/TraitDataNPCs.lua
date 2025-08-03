@@ -1,5 +1,6 @@
 -- Contains the upgrade choices the player can choose from NPCs like Sisyphus
 local newTraitData = {
+	-- #region Sisyphus
 	SisyphusMoney = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
@@ -85,6 +86,9 @@ local newTraitData = {
 			},
 		},
 	},
+	-- #endregion
+	-- #region Eurydice
+	-- #endregion
 }
 
 game.OverwriteTableKeys(game.TraitData, newTraitData)

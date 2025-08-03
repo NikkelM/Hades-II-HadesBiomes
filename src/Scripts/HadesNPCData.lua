@@ -1,5 +1,4 @@
--- Selected NPC data from Hades, loaded alongside other enemies in EnemyData.lua
--- Make modifications in EnemyData.lua, not here!
+-- For these, make the modifications directly here, as larger changes are often needed
 mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- PatroclusMuttering = {
 	-- 	StatusAnimation = "StatusIconWantsToTalk",
@@ -291,65 +290,28 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- 		[1] = GlobalVoiceLines.PersephoneHomeGreetingVoiceLines,
 	-- 	},
 	-- },
-	-- SingingEurydiceSong01_Eurydice_SongFromStart = {
-	-- 	TrackName = "/Music/EurydiceSong1_Eurydice",
-	-- 	Restore = true,
-	-- },
-	-- SingingEurydiceSong01_Eurydice = {
-	-- 	TrackName = "/Music/EurydiceSong1_Eurydice",
-	-- 	Restore = true,
-	-- 	TrackOffsetMin = 10.0,
-	-- 	TrackOffsetMax = 120.0,
-	-- },
-	-- SingingEurydiceSong01_Orpheus_SongFromStart = {
-	-- 	TrackName = "/Music/EurydiceSong1_Orpheus",
-	-- 	Restore = true,
-	-- },
-	-- SingingEurydiceSong01_Orpheus = {
-	-- 	TrackName = "/Music/EurydiceSong1_Orpheus",
-	-- 	Restore = true,
-	-- 	TrackOffsetMin = 10.0,
-	-- 	TrackOffsetMax = 120.0,
-	-- },
-	-- SingingEurydiceSong01_Duet_SongFromStart = {
-	-- 	TrackName = "/Music/EurydiceSong1_Duet",
-	-- 	Restore = true,
-	-- },
-	-- SingingEurydiceSong01_Duet = {
-	-- 	TrackName = "/Music/EurydiceSong1_Duet",
-	-- 	Restore = true,
-	-- 	TrackOffsetMin = 10.0,
-	-- 	TrackOffsetMax = 120.0,
-	-- },
-	-- SingingEndTheme_Duet_SongFromStart = {
-	-- 	TrackName = "/Music/EndThemeACOUSTIC",
-	-- 	Restore = true,
-	-- },
-	-- SingingEndTheme_Duet = {
-	-- 	TrackName = "/Music/EndThemeACOUSTIC",
-	-- 	Restore = true,
-	-- 	TrackOffsetMin = 10.0,
-	-- 	TrackOffsetMax = 120.0,
-	-- },
+	SingingEurydiceSong01_Eurydice_SongFromStart = {
+		TrackName = "/Music/EurydiceSong1_Eurydice",
+		Restore = true,
+	},
+	SingingEurydiceSong01_Eurydice = {
+		TrackName = "/Music/EurydiceSong1_Eurydice",
+		Restore = true,
+		TrackOffsetMin = 10.0,
+		TrackOffsetMax = 120.0,
+	},
 	SisyphusBenefitChoices = {
-		SkipComponents =
-		{
+		SkipComponents = {
 			"OlympusBackground",
 			"ShopBackground",
 			"ShopLighting",
 		},
-
 		DefaultGroup = "Combat_Menu_Overlay_Backing",
 		ButtonGroupName = "Combat_Menu_Overlay_Backing",
 		PurchaseAnimationGroupName = "Combat_Menu_Overlay_Additive",
-
 		PortraitShift = { Distance = 250, Angle = 180, Duration = 0.3, EaseIn = 0.5, EaseOut = 1.0, },
-
-		OverwriteTableKeys =
-		{
-			SkipUpgradePresentationAndExitUnlock = true,
-		},
-
+		OverwriteTableKeys = { SkipUpgradePresentationAndExitUnlock = true, },
+		OnCloseFinishedFunctionName = "SisyphusPostChoicePresentation",
 		UpgradeOptions = {
 			{
 				Type = "Trait",
@@ -367,18 +329,6 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 				Rarity = "Common",
 			},
 		},
-		-- {
-		-- 	ChoiceText = "ChoiceText_Healing",
-		-- 	{ PostLineFunctionName = "SisyphusHealing", },
-		-- },
-		-- {
-		-- 	ChoiceText = "ChoiceText_Darkness",
-		-- 	{ PostLineFunctionName = "SisyphusMetaPoints", },
-		-- },
-		-- {
-		-- 	ChoiceText = "ChoiceText_Money",
-		-- 	{ PostLineFunctionName = "SisyphusMoney", },
-		-- },
 	},
 	-- BouldyRandomBlessings = {
 	-- 	"BouldyBlessing_Armor",
@@ -425,22 +375,52 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- 		{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryImprovedWeaponTrait_Patroclus", } },
 	-- 	},
 	-- },
-	-- EurydiceBenefitChoices = {
-	-- 	{
-	-- 		ChoiceText = "ChoiceText_BuffSlottedBoonRarity",
-	-- 		{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { BoonRarity = true } },
-	-- 	},
-	-- 	{
-	-- 		ChoiceText = "ChoiceText_BuffMegaPom",
-	-- 		{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { StackTraits = true } },
-	-- 	},
-	-- 	{
-	-- 		ChoiceText = "ChoiceText_BuffFutureBoonRarity",
-	-- 		{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { BuffFutureRarity = true } },
-	-- 	},
-	-- },
+	EurydiceBenefitChoices = {
+		SkipComponents = {
+			"OlympusBackground",
+			"ShopBackground",
+			"ShopLighting",
+		},
+		DefaultGroup = "Combat_Menu_Overlay_Backing",
+		ButtonGroupName = "Combat_Menu_Overlay_Backing",
+		PurchaseAnimationGroupName = "Combat_Menu_Overlay_Additive",
+		PortraitShift = { Distance = 250, Angle = 180, Duration = 0.3, EaseIn = 0.5, EaseOut = 1.0, },
+		OverwriteTableKeys = { SkipUpgradePresentationAndExitUnlock = true, },
+		-- OnCloseFinishedFunctionName = "EurydicePostChoicePresentation",
+		UpgradeOptions = {
+			{
+				Type = "Trait",
+				ItemName = "SisyphusHealing",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
+				ItemName = "SisyphusMoney",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
+				ItemName = "SisyphusMetapoints",
+				Rarity = "Common",
+			},
+		},
+		-- {
+		-- 	ChoiceText = "ChoiceText_BuffSlottedBoonRarity",
+		-- 	{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { BoonRarity = true } },
+		-- },
+		-- {
+		-- 	ChoiceText = "ChoiceText_BuffMegaPom",
+		-- 	{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { StackTraits = true } },
+		-- },
+		-- {
+		-- 	ChoiceText = "ChoiceText_BuffFutureBoonRarity",
+		-- 	{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { BuffFutureRarity = true } },
+		-- },
+	},
 }
 
+-- Selected NPC data from Hades, loaded alongside other enemies in EnemyData.lua
+-- Make modifications in EnemyData.lua, not here!
 mod.NPCData = mod.NPCData or {
 	-- Id 370001
 	NPC_Sisyphus_01 = {
@@ -3670,6 +3650,2956 @@ mod.NPCData = mod.NPCData or {
 			{ Cue = "/VO/Sisyphus_0266" },
 			-- Oh what did Bouldy ever do to you?
 			{ Cue = "/VO/Sisyphus_0267", RequiredTextLines = { "SisyphusMeeting06" } },
+		},
+	},
+	-- Manually replace PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] with mod.PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] to make it easier
+	-- FunctionName is still replaced in NPCData.lua
+	-- Eurydice, Id = 514436
+	NPC_Eurydice_01 =
+	{
+		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
+
+		UseText = "UseTalkToEurydice",
+		Portrait = "Portrait_Eurydice_Default_01",
+		-- TODO
+		SingingAnimation = "EurydiceIdleSinging_Start",
+		SingingFx = "StatusSinging_Eurydice",
+		SingingAnimOffsetX = 30,
+		TextLinesPauseAmbientMusicVocals = true,
+		TextLinesPauseSingingFx = true,
+		AnimOffsetZ = 223,
+		Groups = { "NPCs" },
+		StartTextLinesAnimation = "EurydiceIdleSinging_SingingLoop_End",
+		EndTextLinesAnimation = "EurydiceIdleSinging_Start",
+
+		ActivateRequirements =
+		{
+			RequiredMinCompletedRuns = 1,
+		},
+
+		InteractTextLineSets =
+		{
+			-- not learned of her through orpheus, not met hydra
+			EurydiceFirstMeeting01_A =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredFalseSeenRooms = { "B_Boss01" },
+				RequiredFalseTextLines = { "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C", },
+				{
+					Cue = "/VO/Eurydice_0002",
+					Text =
+					"Hey, you must be the Hades kid! How's it going, then, Your Royal Majesty? Nice to meet you, I'm Eurydice. What brings a big important guy like you up to a place like this?"
+				},
+				{
+					Cue = "/VO/ZagreusField_2469",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hi there! No need for formalities, I'm Zagreus. Just heading out on some official business! Surveying the magma situation firsthand. Don't mean to be rude, though I'm in a bit of a rush."
+				},
+				{
+					Cue = "/VO/Eurydice_0003",
+					Text =
+					"Well don't you have your hands full, hon! I'll let you go, but there's one rule in my place, which is: Nobody leaves here empty-handed, you got that? So take your pick, my treat!"
+				},
+				{
+					Text = "Eurydice_OfferText01",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			-- not learned of her through orpheus, met hydra
+			EurydiceFirstMeeting01_B =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredSeenRooms = { "B_Boss01" },
+				RequiredFalseTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_C" },
+				{
+					Cue = "/VO/Eurydice_0172",
+					Text =
+					"Hey you must be the Hades kid! How's it going, then, Your Royal Majesty? Nice to meet you, I'm Eurydice. What brings a big important guy like you up to a place like this?"
+				},
+				{
+					Cue = "/VO/ZagreusField_2468",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hi there! No need for formalities, I'm Zagreus. Just heading out on some official business. Past the menacing Bone Hydra. Don't mean to be rude, though I'm in a bit of a rush."
+				},
+				{
+					Cue = "/VO/Eurydice_0173",
+					Text =
+					"Well don't you have your hands full, hon! I'll let you go, but there's one rule in my place, which is: Nobody leaves here empty-handed, you got that? So take your pick, my treat!"
+				},
+				{
+					Text = "Eurydice_OfferText01",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			-- learned of her through orpheus, met hydra
+			EurydiceFirstMeeting01_C =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusMiscMeeting06" },
+
+				RequiredFalseTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B" },
+				{
+					Cue = "/VO/Eurydice_0172",
+					Text =
+					"Hey you must be the Hades kid! How's it going, then, Your Royal Majesty? Nice to meet you, I'm Eurydice. What brings a big important guy like you up to a place like this?"
+				},
+				{
+					Cue = "/VO/ZagreusField_2470",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hi there! No need for formalities, I'm Zagreus. Just heading out on some official business. Say, if your name's Eurydice, I don't suppose you know an Orpheus, do you? Quite musically inclined, a little dour, impressive hair?"
+				},
+				{
+					Cue = "/VO/Eurydice_0174",
+					Text =
+					"{#DialogueItalicFormat}He {#PreviousFormat}put you up to this? Look, hon, why don't you get on with your business, then. But you can't leave empty-handed, that's the rule, so take your pick, my treat! Nothing for him, though."
+				},
+				{
+					Text = "Eurydice_OfferText01",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+
+			-- If you didn't immediately mention Orpheus
+			EurydiceAboutOrpheus01 =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusMiscMeeting06", "OrpheusMiscMeeting06_B" },
+				RequiredAnyOtherTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B" },
+				RequiredFalseTextLines = { "EurydiceFirstMeeting01_C", "EurydiceAboutOrpheus01_B", "EurydiceAboutOrpheus04", },
+				{
+					Cue = "/VO/Eurydice_0074",
+					Text = "Hey, hon, what's going on, speak up! I know when something's up down to my roots, and something's up."
+				},
+				{
+					Cue = "/VO/ZagreusField_2471",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well it's just, I think that you may know an Orpheus, don't you? Quite musically inclined, a little dour, impressive hair? He's court musician in my father's house. Calls you his muse. Says he misses you terribly. I... thought you should know."
+				},
+				{
+					Cue = "/VO/Eurydice_0075",
+					Text =
+					"Orpheus said all that, huh? Tell you what, the next time you run into him, you ask him about the time that he came all this way to try and save me, even though I was already dead. Can you guess how that turned out?"
+				},
+				{
+					Cue = "/VO/ZagreusField_2473",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Erm{#PreviousFormat}... yes, I do believe I can. Look, I didn't mean to upset you."
+				},
+				{
+					Cue = "/VO/Eurydice_0076",
+					Text =
+					"Yeah, well, neither did he! But you know what? Actions beat intentions, hon. Now, here, how about a treat and you can be on your way."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			-- If you immediately mentioned Orpheus
+			EurydiceAboutOrpheus01_B =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_C", "OrpheusAboutEurydice01" },
+				RequiredFalseTextLines = { "EurydiceAboutOrpheus01", "EurydiceAboutOrpheus04" },
+				{
+					Cue = "/VO/Eurydice_0074",
+					Text = "Hey, hon, what's going on, speak up! I know when something's up down to my roots, and something's up."
+				},
+				{
+					Cue = "/VO/ZagreusField_2472",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well it's just, I think I wanted to tell you more of Orpheus, since... he's court musician in my father's house. Calls you his muse. Says he misses you terribly. I... thought you should know."
+				},
+				{
+					Cue = "/VO/Eurydice_0075",
+					Text =
+					"Orpheus said all that, huh? Tell you what, the next time you run into him, you ask him about the time that he came all this way to try and save me, even though I was already dead. Can you guess how that turned out?"
+				},
+				{
+					Cue = "/VO/ZagreusField_2473",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Erm{#PreviousFormat}... yes, I do believe I can. Look, I didn't mean to upset you."
+				},
+				{
+					Cue = "/VO/Eurydice_0076",
+					Text =
+					"Yeah, well, neither did he! But you know what? Actions beat intentions, hon. Now, here, how about a treat and you can be on your way."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			-- this is where Eurydice gets mad / Eurydice mad
+			EurydiceAboutOrpheus02 =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusAboutEurydice01", "OrpheusAboutEurydice01_B" },
+				RequiredAnyOtherTextLines = { "EurydiceAboutOrpheus01", "EurydiceAboutOrpheus01_B" },
+
+				{
+					Cue = "/VO/Eurydice_0079",
+					Text =
+					"What is it, hon? Oh no, don't tell me you've come all the way from Tartarus to ask me more about your good-for-nothing court musician friend."
+				},
+				{
+					Cue = "/VO/ZagreusField_2475",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Certainly not! I'm merely here for your wonderful singing, cooking, or conversational ability. Though, since you mentioned it, you... seem to have a lot to say to him. Is there anything I can do?"
+				},
+				{
+					Cue = "/VO/Eurydice_0080",
+					Text =
+					"So let me see if I understand. Orpheus blew it with me like an idiot, but now I'm supposed to be reaching out to {#DialogueItalicFormat}him{#PreviousFormat}? Sorry, hon, but that's not happening. The two of us are finished. And, you know what? I think we're finished here, too. If you'll excuse me!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceAboutOrpheus03 =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusAboutEurydice02", "OrpheusAboutEurydice02_B" },
+				{
+					Cue = "/VO/Eurydice_0081",
+					Text =
+					"Hey there, hon! So what do you think, pretty good tune, right? Don't know how come everybody doesn't sing. Lightens the mood, passes the time. What's not to like?"
+				},
+				{
+					Cue = "/VO/ZagreusField_2476",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's a beautiful song. Even though you're angry with him... Orpheus, I mean... you're always singing, still?"
+				},
+				{
+					Cue = "/VO/Eurydice_0082",
+					Text =
+					"Oh it's not Orpheus' song, you kidding me? This one's all mine. He always did like going on about how I'm his muse, well, that's 'cause I wrote half his songs for him! Bet he didn't mention that, did he."
+				},
+				{
+					Cue = "/VO/ZagreusField_2477",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Well, not exactly in those words, but... Orpheus can be a little hard to parse."
+				},
+				{
+					Cue = "/VO/Eurydice_0083",
+					Text =
+					"He can be a little hard to tolerate. A quality I hope isn't going to rub off on any of his mates. I should get back to practicing, see you."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			-- no longer mad after this
+			EurydiceAboutOrpheus04 =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusAboutEurydice03" },
+				{
+					Cue = "/VO/ZagreusField_2478",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Look, Eurydice, I promise not to bother you with this each time, but... you should know your husband's shattered by what happened with the two of you. He's genuinely sorry, and he loves you very deeply, still, I'm sure of it."
+				},
+				{
+					Cue = "/VO/Eurydice_0084",
+					Text =
+					"{#DialogueItalicFormat}Tsk{#PreviousFormat}... and what am I supposed to do with that, Your Royal Majesty...?"
+				},
+				{
+					Cue = "/VO/ZagreusField_2479",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "I... I don't know yet. Though, you know what? You shouldn't take my word for it. You should take his."
+				},
+				{
+					Cue = "/VO/Eurydice_0085",
+					Text =
+					"Don't think I will be running into him anytime soon from what I understand. But you're the Hades kid! You want to pull some strings on our behalf, go right ahead, I guess. But I won't hold my breath. Even if I could."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceProgressWithOrpheus01 =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusProgressWithEurydice02", },
+				RequiredFalseTextLines = { "OrpheusWithEurydice01" },
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				{
+					Cue = "/VO/Eurydice_0086",
+					Text =
+					"So, {#DialogueItalicFormat}uh{#PreviousFormat}, how's Orpheus been doing lately, anyway? Still keeping his hair in those neat little curls? I guess his tan must have faded by now."
+				},
+				{
+					Cue = "/VO/ZagreusField_2480",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Curls? {#DialogueItalicFormat}Erm{#PreviousFormat}, not exactly, no. But he's doing all right! For him. He's started singing again, lately, which was a big step. He never used to, before. Would go on about how he'd lost his muse."
+				},
+				{
+					Cue = "/VO/Eurydice_0087",
+					Text =
+					"And now he knows I'm out there, still, huh. That's... well, thank you for the update, hon. Music's his gift. Good to know he's not thrown everything away."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+
+			-- song request / eurydice gives song / eurydicesong
+			EurydiceProgressWithOrpheus02 =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusProgressWithEurydice01", },
+				{
+					Cue = "/VO/ZagreusField_2481",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Eurydice, can I ask you for a favor here? Not that you owe me anything, but, would you hear me out?"
+				},
+				{
+					Cue = "/VO/Eurydice_0088",
+					Text =
+					"Yeah, sure, hon, what is it? Though you had better not be asking for my recipes. Closely guarded family secret! I'd say I'd take them to my grave, but... yeah."
+				},
+				{
+					Cue = "/VO/ZagreusField_2482",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's not your recipes, though they are wonderful. It's your song. I'm sure it'd be a hit around the House! And, I know someone who really needs to hear it. Don't suppose you've got a parchment-copy I could have?"
+				},
+				{
+					Cue = "/VO/Eurydice_0089",
+					PostLineAnim = "ZagreusInteractEquip",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Your Royal Majesty, you want my {#DialogueItalicFormat}song{#PreviousFormat}? You are aware it's called {#DialogueItalicFormat}'Good Riddance'{#PreviousFormat}, right? {#DialogueItalicFormat}Tsk{#PreviousFormat}, but sure, why not. If music's going to be playing in your House, it might as well be great. And let me give you something to go with it."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceProgressWithOrpheus_SongReaction01 =
+			{
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+
+				-- [location: west hall north corner]
+				TeleportToId = 514436,
+				TeleportOffsetX = -60,
+				TeleportOffsetY = -30,
+				AngleTowardTargetId = 546960,
+				RequiredAnyTextLines = { "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				{
+					Cue = "/VO/Eurydice_0090",
+					PreLineWait = 0.3,
+					Text =
+					"...What'd he say, hon? I mean about the song. Bet he loved it, didn't he! But, I don't know for sure. And I've been wondering, kind of a lot, I guess."
+				},
+				{
+					Cue = "/VO/ZagreusField_2483",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"No need to wonder any longer. He sings it beautifully, around the House sometimes. It... has a sadder sound to it than when you sing, but... you've inspired him again. As you've done many times before, from what I know."
+				},
+				{
+					Cue = "/VO/Eurydice_0091",
+					Text =
+					"Huh. So it's a hit, is what you're saying, then. I had a feeling about that one. Sometimes you put some words together and right then and there, you know that you've got something special."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			-- not singing; used RequiresFalseAmbientTrackName //
+			EurydiceProgressWithOrpheus03 =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceProgressWithOrpheus_SongReaction01", "EurydiceProgressWithOrpheus01" },
+				IgnoreSourceStartEndAnimations = true,
+				{
+					Cue = "/VO/Eurydice_0092",
+					Text =
+					"What happens now, hon...? What I mean is... now you got me thinking about Orpheus again, so... what am I supposed to do with that?"
+				},
+				{
+					Cue = "/VO/ZagreusField_2484",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Even if you can't be together right now, I hope it feels better knowing how much he cares for you. And I will try to pull some strings, like you said. I can't make promises where my father's concerned, but... I'll do everything I can."
+				},
+				{
+					Cue = "/VO/Eurydice_0093",
+					Text =
+					"Well, what can I tell you? Thanks, Your Royal Majesty. That means a lot. No pressure, though. I've been all right without him all this time, and I will be all right, no matter what. If only he could say the same."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+			},
+
+			EurydiceAboutSingersReunionQuestComplete01 =
+			{
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusWithEurydice01" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0097",
+					Text =
+					"Hey, listen here a moment, Hades kid. Look, I... Thank you. From the bottom of my heart. For bringing Orphy back to me again, and everything."
+				},
+				{
+					Cue = "/VO/ZagreusField_2488",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Eurydice, you're more than welcome, really. You've helped me through the flames of hell, time after time. Least I could do is coax old Orpheus out of his private pit of despair so you and he could set things right between the two of you."
+				},
+				{
+					Cue = "/VO/Eurydice_0098",
+					Text =
+					"Well, you're a real sweetheart, hon. You'll still be seeing Orphy all the time around your House, but now, I get to see him, too. Nice having something to look forward to, you know? Bet someone out there feels that about you."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceAboutSingersReunionQuestComplete02 =
+			{
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceAboutSingersReunionQuestComplete01", "ThanatosAboutSingersReunionQuestComplete01" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0181",
+					Text =
+					"Hey! What's the matter, Your Royal Majesty? You're looking kind of down. Normally you're all smiles, for whatever reason!"
+				},
+				{
+					Cue = "/VO/ZagreusField_4279",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Oh, I... well, looking back, all this stuff between you and Orpheus, I realized... well, I hope I wasn't too pushy about the whole thing. It wasn't any of my business to pry into your personal life. I should have asked."
+				},
+				{
+					Cue = "/VO/Eurydice_0182",
+					Text =
+					"Oh, that? {#DialogueItalicFormat}Pff{#PreviousFormat}, come on, don't even worry about it. If you were being too pushy, you better believe I would have put you back in your place, royalty or not. But hey, can't ever be too careful when it comes to people's past and feelings and stuff, right?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceAboutSingersReunionQuestComplete03 =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusWithEurydice01" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0233",
+					Text =
+					"Got to tell you, hon. Orpheus sure is different since last he and I met. You know, back when he was still living and breathing and all."
+				},
+				{
+					Cue = "/VO/ZagreusField_4287",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I think the experience of trying to rescue you, failing, dying, becoming court musician, refusing to sing, then being locked in solitary confinement, then finding out about you probably did a number on him. Why, is everything all right? You seemed to be getting along last I saw."
+				},
+				{
+					Cue = "/VO/Eurydice_0234",
+					Text =
+					"Oh, we're getting along great! Better than ever. He used to be a bit more of a hotshot, but now it's like, he's a little more... what's the word... sensitive? Now I can always tell exactly what's on his mind."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceAboutSingersReunionQuestComplete04 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceAboutSingersReunionQuestComplete01", "OrpheusTallTale06" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0235",
+					Text =
+					"Hey, Your Royal Majesty! I must say you've accomplished some truly amazing feats, according to Orphy at least! But don't worry. Your secret's safe with me."
+				},
+				{
+					Cue = "/VO/ZagreusField_4288",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Oh, no, he's been boasting of my fabricated exploits to you? I've tried to tell him I was only joking with him but now he just thinks I'm being modest."
+				},
+				{
+					Cue = "/VO/Eurydice_0236",
+					Text =
+					"That modesty won't get you anywhere with me, either, hon, Your Greatness. I'm honored to merely be in the presence of one with so many wild exploits to sing or speak of!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceAboutSingersReunionQuestComplete05 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceAboutSingersReunionQuestComplete01", "EurydiceGift08", "OrpheusGift08" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/ZagreusField_4293",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey did Orpheus really use to have curls, and... something called a tan? I've only ever seen him looking... well, how he does now."
+				},
+				{
+					Cue = "/VO/Eurydice_0267",
+					Text =
+					"He did! And a tan is like... well, when you stay out in the hot sun up there long enough, your skin kind of starts to bake a little bit. But nicer than that sounds! Got to say, though, the years have been kind to Orphy, don't you think?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			-- if Orpheus hasn't mentioned her yet
+			EurydiceMentionsOrpheus01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+				RequiredAnyOtherTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B" },
+				MinRunsSinceAnyTextLines = { TextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" }, Count = 8 },
+				RequiredFalseTextLines = { "EurydiceAboutOrpheus01", "EurydiceFirstMeeting01_C", "OrpheusMiscMeeting06", "OrpheusMiscMeeting06_B" },
+				{
+					Cue = "/VO/Eurydice_0077",
+					Text =
+					"Say, tell me something, there, Your Royal Majesty. You know a lot of shades. You wouldn't happen to know an Orpheus, would you? Spindly little thing, whiny voice? Heard he's officially serving in your court. Making music!"
+				},
+				{
+					Cue = "/VO/ZagreusField_2474",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Of course I know Orpheus, we're mates! Wait, why do you ask?"
+				},
+				{
+					Cue = "/VO/Eurydice_0078",
+					Text =
+					"You're mates, huh. Just as long as you don't count on him for anything. Hasn't even mentioned me, has he. Well if he ever does, you tell him I am doing great! I'm great."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceMentionsOrpheus01_B =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceMentionsOrpheus01" },
+				RequiredFalseTextLines = { "EurydiceAboutOrpheus02" },
+				{
+					Cue = "/VO/Eurydice_0179",
+					Text = "What's the latest, hon, anything been happening down in your fancy House lately?"
+				},
+				{
+					Cue = "/VO/ZagreusField_4278",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, you mentioned Orpheus... my father had him locked up for a little while for refusing to sing. Being court musician and all. But he's out now, and doing OK! I think."
+				},
+				{
+					Cue = "/VO/Eurydice_0180",
+					Text =
+					"Not following instructions, huh. Sounds like Orpheus, all right. Well, if that's the most exciting thing you've got going on, then I haven't missed much being out here."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceAboutHermes01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift03", "HermesAboutEurydice01" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0175",
+					Text = "Hey, what's up, hon? Say, you must know a lot of big shots, don't you? Other gods and all that?"
+				},
+				{
+					Cue = "/VO/ZagreusField_4276",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I know a few. As a matter of fact, I heard recently from Hermes, wanted you to know he felt sorry for how things ended up. That something to do with when Orpheus went in here after you?"
+				},
+				{
+					Cue = "/VO/Eurydice_0176",
+					Text =
+					"Oh, that's sweet of him! Nice enough guy, for an Olympian. Yeah, he was the one who dropped me off here in the first place. No hard feelings here, he was just doing his job. It was Orpheus who messed everything up."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceAboutNymphs01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceMiscMeeting04", "EurydiceGift03", "ArtemisAboutCallisto02" },
+				{
+					Cue = "/VO/Eurydice_0206",
+					Text =
+					"Sure don't see a lot of other nymphs around here, huh! We don't die too easy, most of us. Makes me feel all special!"
+				},
+				{
+					Cue = "/VO/ZagreusField_4281",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I've never met another nymph, now that you mention it. Heard of a few! The goddess Artemis, sounds like she spends more time with nymphs than the other Olympians."
+				},
+				{
+					Cue = "/VO/Eurydice_0207",
+					Text =
+					"That's what I heard! Though it's not like we all hang out, I mean, you've got the dryads, and the naiads, and the nereids, and the oceanids... pretty much every type of terrain up top, there's a kind of nymph who loves it! Maybe we need a name for Underworld nymphs, too."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			-- if you haven't discussed the SingersReunionQuest resolution w/ Persephone
+			EurydiceAboutPersephone01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceAboutOrpheus02", "PersephoneMeeting02", "EurydiceGift06" },
+				RequiredFalseTextLines = { "Ending01", "EurydiceAboutPersephone01_B", "EurydicePostEpilogue01" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/ZagreusField_4283",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Eurydice, did you by any chance ever meet a {#DialogueItalicFormat}Persephone {#PreviousFormat}during the whole thing when Orpheus came down to try to get you?"
+				},
+				{
+					Cue = "/VO/Eurydice_0213",
+					PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
+					PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteSurprise", WaitTime = 4.7 },
+					Text =
+					"Oh, her? Yeah, she was with Hades Senior, why? Wait. {#DialogueItalicFormat}Whoa{#PreviousFormat}. Are you...? I thought..."
+				},
+				{
+					Cue = "/VO/ZagreusField_4284",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "It's complicated. And, please keep it quiet. I was just wondering... what was she like? If you recall."
+				},
+				{
+					Cue = "/VO/Eurydice_0214",
+					Text =
+					"Didn't get much of an impression, but I can tell you this: She had good taste in music! Orpheus and I, think we won her over with our little duet. Haven't seen or heard from her lately, though. Look, I hope everything's OK."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			-- if you have discussed the SingersReunionQuest resolution w/ Persephone
+			EurydiceAboutPersephone01_B =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PersephoneAboutSingersReunionQuest01", "Ending01" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "OlympianReunionQuestComplete" }, Count = 20 },
+				RequiredFalseTextLines = { "EurydiceAboutPersephone01", "EurydicePostEpilogue01" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/ZagreusField_4283",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Eurydice, did you by any chance ever meet a {#DialogueItalicFormat}Persephone {#PreviousFormat}during the whole thing when Orpheus came down to try to get you?"
+				},
+				{
+					Cue = "/VO/Eurydice_0213",
+					PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
+					PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteSurprise", WaitTime = 4.7 },
+					Text =
+					"Oh, her? Yeah, she was with Hades Senior, why? Wait. {#DialogueItalicFormat}Whoa{#PreviousFormat}. Are you...? I thought..."
+				},
+				{
+					Cue = "/VO/ZagreusField_4284",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "It's complicated. And, please keep it quiet. I was just wondering... what was she like? If you recall."
+				},
+				{
+					Cue = "/VO/Eurydice_0268",
+					Text =
+					"Didn't get much of an impression, but I can tell you this: She had good taste in music! Orpheus and I, think we won her over with our little duet. Haven't seen or heard from her lately, though."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydicePostEpilogue01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OlympianReunionQuestComplete", "OrpheusWithEurydice01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "OlympianReunionQuestComplete" }, Count = 3 },
+				{
+					Cue = "/VO/Eurydice_0215",
+					Text =
+					"Hey, everybody's saying Persephone... she's back? That sounds like a bit of good news, there, isn't that right, hon?"
+				},
+				{
+					Cue = "/VO/ZagreusField_4285",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, she is back, and yes, it is good news, thank you. She and I have a lot of making up for lost time left to do, though I think we're off to a pretty decent start."
+				},
+				{
+					Cue = "/VO/Eurydice_0216",
+					Text =
+					"Well, that's a relief. And, you're still here! So I guess you've got more official business to take care of, which means I've still got somebody to taste-test for me every now and then!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydicePostEpilogue02 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydicePostEpilogue01", "OrpheusWithEurydice01" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0217",
+					Text =
+					"Orphy tells me the Queen, she's been settling in just fine down at your House! Must be different having a lady like that around. How's Hades Senior taking it, if I may ask?"
+				},
+				{
+					Cue = "/VO/ZagreusField_4286",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Oh, he's taking it... about as well as he's taken anything ever, now that you mention it. Still very much himself, mind you, but still... it's been a welcome change."
+				},
+				{
+					Cue = "/VO/Eurydice_0218",
+					Text =
+					"Glad to hear it! Orphy always liked singing for an audience more than I did, and it sounds like she's a good one."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceAboutMusic01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusWithEurydice01", "OrpheusMusicProgress03", "EurydiceGift07" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0265",
+					Text = "You ever play any music, or sing or anything yourself, Hades kid? It's good for you, you know!"
+				},
+				{
+					Cue = "/VO/ZagreusField_4292",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I play a bit of the lyre, as a matter of fact! Orpheus himself gave me some pointers on it. Never really tried singing, though. I can't even imagine it, really."
+				},
+				{
+					Cue = "/VO/Eurydice_0266",
+					Text = "Well, might I recommend giving it a shot at some point? Who knows, you might be the next Orpheus!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceAboutOnions01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift04" },
+				RequiredConsumablesThisRun =
+				{
+					Count = 1,
+					Names =
+					{
+						"RoomRewardConsolationPrize",
+					},
+				},
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0195",
+					Text =
+					"You been snacking on {#DialogueItalicFormat}onions {#PreviousFormat}or something, there, hon? No offense or anything, but you smell like you ate a whole one of them raw."
+				},
+				{
+					Cue = "/VO/ZagreusField_4280",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Erm{#PreviousFormat}, yes, but... wait. How else are you supposed to eat those things?"
+				},
+				{
+					Cue = "/VO/Eurydice_0196",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"What, are you kidding me? You can grill them, sauté them, fry them, boil them, pickle them, roast them! Oh, hon. You've been missing out."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceAboutLove01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift08" },
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim", "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0263",
+					Text =
+					"You got anyone special in your life, by the way, hon? You seem like you'd be good for somebody out here."
+				},
+				{
+					Cue = "/VO/ZagreusField_4291",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You know what, yes, I do, Eurydice. Things have moved so fast for me lately I barely stopped to think about it, though. It helps not having to go through everything alone... just knowing I'll see them again soon."
+				},
+				{
+					Cue = "/VO/Eurydice_0264",
+					Text =
+					"Know what you mean. And hey, that's great! Long as you can still be yourself. I've known too many nymphs, their whole lives revolved around somebody they loved. I bet whoever it is that loves you... it's because of who you are."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceMiscMeeting01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift01" },
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C" },
+				{
+					Cue = "/VO/ZagreusField_2491",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Eurydice, how long have you been down here, anyway, if you don't mind my asking? Seems like you're pretty settled in. It's quite a lovely place!"
+				},
+				{
+					Cue = "/VO/Eurydice_0101",
+					Text =
+					"How long have I been down here, hon? {#DialogueItalicFormat}Huh{#PreviousFormat}! I don't have the faintest. You lose your sense of time once you're a shade, or maybe once there's not a sun or moon over your head. But yeah, I found myself a decent spot and fixed it up a bit!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceMiscMeeting02 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift01" },
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C" },
+				{
+					Cue = "/VO/Eurydice_0102",
+					Text =
+					"You're just in time, Your Royal Majesty! Got something real good cooking right here that you are going to love. You hungry, yeah?"
+				},
+				{
+					Cue = "/VO/ZagreusField_2492",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Am I ever. You're always so generous. And you're always cooking! And singing. Do you have many guests come by? Your place seems... somewhat off the beaten path."
+				},
+				{
+					Cue = "/VO/Eurydice_0103",
+					Text =
+					"What, you think I get a lot of guests, here? {#DialogueItalicFormat}Haha{#PreviousFormat}, no, but I like cooking anyway! It's like singing, in a way. Keep getting better the more you try, turns out a bit different each time."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceMiscMeeting03 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift01" },
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C" },
+				{
+					Cue = "/VO/ZagreusField_2493",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Eurydice, how can you cook so much with all the searing heat around these parts? Has it been magma-flooded like this all the time?"
+				},
+				{
+					Cue = "/VO/Eurydice_0104",
+					Text =
+					"The searing heat? {#DialogueItalicFormat}Haha{#PreviousFormat}, I am dead, Your Royal Majesty! Searing's just a cooking technique to me. Don't need to sleep, either! I can just keep cooking up a storm. It's not so bad!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceMiscMeeting04 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift01" },
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C" },
+				{
+					Cue = "/VO/ZagreusField_2494",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You know, I've never met a nymph before. You're closer to the gods than mortals, right?"
+				},
+				{
+					Cue = "/VO/Eurydice_0105",
+					Text =
+					"Yeah, gods that can {#DialogueItalicFormat}die{#PreviousFormat}! How is that fair? Was just a stupid snake bite in my case, can you imagine something more embarrassing? You're just minding your business, and then {#DialogueItalicFormat}snap{#PreviousFormat}! You're dead, and on your way down here."
+				},
+				{
+					Cue = "/VO/ZagreusField_2495",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "I... know the feeling better than you might expect."
+				},
+				{
+					Cue = "/VO/Eurydice_0106",
+					Text =
+					"Well, I was going to end up here sooner or later. Might as well while I'm still looking good. Though, I guess you do kind of get to lock in whatever age when you register. Bet everybody dying of old age pushed that one through."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceMiscMeeting05 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift01" },
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C" },
+				RequiredFalseTextLines = { "Ending01" },
+				{
+					Cue = "/VO/Eurydice_0107",
+					Text =
+					"What's your official business, anyway, Your Royal Majesty? Seems like it's bringing you through Asphodel an awful lot lately."
+				},
+				{
+					Cue = "/VO/ZagreusField_2496",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's... look, the truth is, I am trying to get out of here. I've hit some stumbling blocks along the way, but, I think I will make it there, eventually."
+				},
+				{
+					Cue = "/VO/Eurydice_0108",
+					Text =
+					"Oh really! Say no more, I know how that is. Hope the Fates will look the other way for you. Getting out of here, huh. Not thought of that myself in I don't know how long..."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceMiscMeeting06 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift01" },
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C" },
+				{
+					Cue = "/VO/Eurydice_0109",
+					Text =
+					"Of all the lava rocks in Asphodel, the Hades kid found this one once again, wouldn't you know! You got a map or something to this place, or what?"
+				},
+				{
+					Cue = "/VO/ZagreusField_2497",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Don't know that a map would help me much since things keep shifting out here every single time. Though it is an interesting coincidence how I keep running into you."
+				},
+				{
+					Cue = "/VO/Eurydice_0110",
+					Text =
+					"Coincidence? Come on, hon, you're a god. Someone out there is sending you my way. Maybe it's just the Fates. Ah well! I sure don't mind a little company. And I have lots to eat!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceAboutAcorn01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredKeepsake = "ShieldBossTrait",
+				-- RequiresMaxKeepsake = true,
+				{
+					Cue = "/VO/ZagreusField_2489",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Eurydice, wanted to thank you once again for this enchanted acorn that you gave me. So this is what plants and things grow from, up on the surface?"
+				},
+				{
+					Cue = "/VO/Eurydice_0099",
+					Text =
+					"Oh, not just any plants, hon! Trees! Big gnarled oaks and things. Some of them live hundreds of years! Way up there as mortals go. You take good care of it like that, maybe it'll grow to be something special for you, too!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceAboutAcorn02 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceAboutAcorn01" },
+				RequiredKeepsake = "ShieldBossTrait",
+				RequiresMaxKeepsake = true,
+				{
+					Cue = "/VO/ZagreusField_2490",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, this is sort of a weird question, but... this Evergreen Acorn, it's not... related to you, is it? Since, you know, you're... partly oak, aren't you?"
+				},
+				{
+					Cue = "/VO/Eurydice_0100",
+					PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
+					PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteCheerful", DoShake = true, WaitTime = 8.4 },
+					Text =
+					"Yeah, I'm part oak, that's right. But maybe not the part you're thinking of, I mean, you think I would just hand you one of my babies or something? {#DialogueItalicFormat}Hahahaha{#PreviousFormat}, that's disgusting!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceAboutDistantMemory01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTrait = "DistanceDamageTrait",
+				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0177",
+					Text =
+					"Hold on, hon, is that... {#DialogueItalicFormat}huh{#PreviousFormat}! Almost felt like Orpheus was with you there. Would you listen to me? Must have been singing too many high notes, or something."
+				},
+				{
+					Cue = "/VO/ZagreusField_4277",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"No, wait, you're onto something... I think you must have sensed Orpheus' Distant Memory! He gave it to me as a keepsake of our friendship. Though, something like this... I feel like it should belong to you."
+				},
+				{
+					Cue = "/VO/Eurydice_0178",
+					Text =
+					"Oh, that's him in there all right! See, I never should have second-guessed myself. Well, you hang onto that, as I've got plenty memories of him already, thanks!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceLowHealth01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift03" },
+				AreIdsNotAlive = { 554419 },
+				RequiredMaxHealthFraction = 0.25,
+				RequiredMaxLastStands = 1,
+				{
+					Cue = "/VO/Eurydice_0202",
+					Text =
+					"Oh, hon, you look awful. What did you get yourself into? Here, one of these should make you feel a little better."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceLowHealth02 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift01" },
+				AreIdsNotAlive = { 554419 },
+				RequiredMaxHealthFraction = 0.25,
+				RequiredMaxLastStands = 1,
+				{
+					Cue = "/VO/Eurydice_0203",
+					Text = "Oh, you look like you've been through a lot, Hades kid. Maybe a decent bite to eat will help!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceLowHealth03 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift01" },
+				AreIdsNotAlive = { 554419 },
+				RequiredMaxHealthFraction = 0.25,
+				RequiredMaxLastStands = 1,
+				{
+					Cue = "/VO/Eurydice_0204",
+					Text =
+					"{#DialogueItalicFormat}Oof{#PreviousFormat}, you're a mess, there, hon. You save your strength and see if this will do you any good."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceLowHealth04 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift01" },
+				AreIdsNotAlive = { 554419 },
+				RequiredMaxHealthFraction = 0.25,
+				RequiredMaxLastStands = 1,
+				{
+					Cue = "/VO/Eurydice_0205",
+					Text =
+					"Hey, don't go bleeding on my floor, hon. I just cleaned the place! Take one of these, maybe it'll tide you over."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			OrpheusWithEurydice01 =
+			{
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydice02 =
+			{
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydice03 =
+			{
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceEndTheme01 =
+			{
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat01 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat02 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat03 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat04 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat05 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat06 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat07 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat08 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat09 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat10 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat11 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat12 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat13 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat14 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat15 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat16 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat17 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat18 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat19 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat20 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat21 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat22 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat23 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat24 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat25 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceInTheBloodChat01 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceInTheBloodChat02 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceInTheBloodChat03 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceInTheBloodChat04 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceInTheBloodChat05 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceInTheBloodChat06 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceInTheBloodChat07 =
+			{
+				Skip = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+			},
+		},
+
+		RepeatableTextLineSets =
+		{
+			EurydiceChat01 =
+			{
+				UseableOffSource = true,
+				TeleportId = 514436,
+				TeleportToId = 545534,
+				TeleportOffsetX = 100,
+				-- TeleportOffsetY = 50,
+				AngleId = 514436,
+				-- AngleTowardTargetId = 514554,
+				{
+					Cue = "/VO/Eurydice_0005",
+					Text = "Why not have a quick bite of something to eat before you head on out, hon?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChat02 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0006",
+					Text = "Sing when you're happy, sing when you're not, Your Royal Majesty."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceChat03 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0007",
+					Text = "Hey, it's the Hades kid! So what's it going to be this time, Your Royal Majesty?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChat04 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0008",
+					Text = "I'd say make yourself at home, hon, but you look like you got cooler places to be!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChat05 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0009",
+					Text = "You are just in time, Your Royal Majesty! Cooked up something special just for you."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChat06 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0010",
+					Text = "Why, Your Royal Majesty, you're back! Well, see you later!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChat07 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0011",
+					Text = "And here I was just thinking it's been too long since the Hades kid stopped by!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceChat08 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0012",
+					Text = "So what'll it be this time, Your Royal Majesty, hmm?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChat09 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0013",
+					Text = "Oh you look positively famished, hon! Here let me help with that."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChat11 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0014",
+					Text = "You must be hungry, hon. Got something ought to keep you going!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChat12 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0015",
+					Text = "How nice of you to stop on by, Your Royal Highness! Here!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChat13 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0016",
+					Text = "How's it going lately, hon, you eating well and everything?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChat14 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0017",
+					Text = "Just singing to myself and cooking up a storm. You know me, hon."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceChat15 =
+			{
+				UseableOffSource = true,
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0018",
+					Text = "Eat up, hon! Not like I got other mouths to feed!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceChatExtra01 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift06" },
+				{
+					Cue = "/VO/Eurydice_0238",
+					Text = "All's well in Asphodel, Your Royal Majesty! You take care of yourself. I'll be here."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChatExtra02 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift03" },
+				{
+					Cue = "/VO/Eurydice_0240",
+					Text = "You want the best cooking in all of Asphodel, you know where to go!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChatExtra03 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0241",
+					Text = "Hey, it's the Hades kid! What's it going to be this time, hm?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChatExtra04 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0242",
+					Text = "Take care of yourself out there, all right, Your Royal Majesty?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChatExtra05 =
+			{
+				UseableOffSource = true,
+				RequiresLastRunNotCleared = true,
+				RequiredTextLines = { "EurydiceGift04" },
+				{
+					Cue = "/VO/Eurydice_0243",
+					Text = "Don't let Hades Senior get you down, hon. Here."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChatExtra06 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceGift02" },
+				{
+					Cue = "/VO/Eurydice_0244",
+					Text = "I know you've got important business to attend to, so thanks for checking in, Your Royal Majesty."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChatExtra07 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0245",
+					Text = "You look like you're in a rush, though there's always time for a quick snack, right?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChatExtra08 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0246",
+					Text = "Hey, welcome back, Your Royal Majesty, you're just in time!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChatExtra09 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0247",
+					Text = "Been trying to perfect these recipes for I don't know how long!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChatExtra10 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0138",
+					Text = "You look like you haven't eaten since you were here last!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChatExtra11 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0136",
+					Text = "You're always welcome here Your Royal Majesty."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChatExtra12 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0135",
+					Text = "I get you something for the road there, hon?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceChatExtra13 =
+			{
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Eurydice_0134",
+					Text = "What's it going to be, Your Royal Majesty?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			-- mad at orpheus
+			EurydiceMadChat01 =
+			{
+				Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_C", "EurydiceAboutOrpheus01", "EurydiceAboutOrpheus01_B" },
+				RequiredFalseTextLines = { "EurydiceAboutOrpheus04" },
+
+				{
+					Cue = "/VO/Eurydice_0019",
+					Text = "You just be sure to tell that good-for-nothing Orpheus I'm looking good."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceMadChat02 =
+			{
+				Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_C", "EurydiceAboutOrpheus01", "EurydiceAboutOrpheus01_B" },
+				RequiredFalseTextLines = { "EurydiceAboutOrpheus04" },
+
+				{
+					Cue = "/VO/Eurydice_0020",
+					Text = "Hon, I'd ask how old what's-his-name is doing, but I don't even care!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceMadChat03 =
+			{
+				Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_C", "EurydiceAboutOrpheus01", "EurydiceAboutOrpheus01_B" },
+				RequiredFalseTextLines = { "EurydiceAboutOrpheus04" },
+
+				{
+					Cue = "/VO/Eurydice_0021",
+					Text = "Bet you Orpheus hasn't had any strokes of musical genius lately, now, has he?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceMadChat05 =
+			{
+				Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_C", "EurydiceAboutOrpheus01", "EurydiceAboutOrpheus01_B" },
+				RequiredFalseTextLines = { "EurydiceAboutOrpheus04" },
+
+				{
+					Cue = "/VO/Eurydice_0022",
+					Text = "Better not be Orpheus putting you up to visiting here all the time like this."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceMadChat06 =
+			{
+				Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_C", "EurydiceAboutOrpheus01", "EurydiceAboutOrpheus01_B" },
+				RequiredFalseTextLines = { "EurydiceAboutOrpheus04" },
+
+				{
+					Cue = "/VO/Eurydice_0023",
+					Text = "This song's better than anything Orpheus ever came up with I can tell you that."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceMadChat07 =
+			{
+				Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_C", "EurydiceAboutOrpheus01", "EurydiceAboutOrpheus01_B" },
+				RequiredFalseTextLines = { "EurydiceAboutOrpheus04" },
+
+				{
+					Cue = "/VO/Eurydice_0024",
+					Text = "If you'll excuse me, Your Royal Majesty, I'm not exactly in the mood for an extended chat."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceMadChat09 =
+			{
+				Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_C", "EurydiceAboutOrpheus01", "EurydiceAboutOrpheus01_B" },
+				RequiredFalseTextLines = { "EurydiceAboutOrpheus04" },
+
+				{
+					Cue = "/VO/Eurydice_0025",
+					Text = "You best have no more messages from no-good Orpheus this time."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceMadChat10 =
+			{
+				Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_C", "EurydiceAboutOrpheus01", "EurydiceAboutOrpheus01_B" },
+				RequiredFalseTextLines = { "EurydiceAboutOrpheus04" },
+
+				{
+					Cue = "/VO/Eurydice_0026",
+					Text = "Here, have a snack, hon, and tell Orpheus it was delicious."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			-- caring for Orpheus again
+			EurydiceAintEvenMadChat01 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
+				{
+					Cue = "/VO/Eurydice_0027",
+					Text = "You keep an eye on Orpheus for me, all right, hon?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceAintEvenMadChat02 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
+				RequiredFalseTextLines = { "OrpheusWithEurydice01" },
+				{
+					Cue = "/VO/Eurydice_0028",
+					Text = "Do one thing for me, hon. Make sure Orpheus knows I'll be right here."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceAintEvenMadChat03 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
+				RequiredFalseTextLines = { "OrpheusWithEurydice01" },
+				{
+					Cue = "/VO/Eurydice_0029",
+					Text = "I've got to be honest with you, hon. Sometimes I kind of miss him."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceAintEvenMadChat04 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
+				MinRunsSinceAnyTextLines = { TextLines = { "EurydiceProgressWithOrpheus03" }, Count = 3 },
+				RequiredFalseTextLines = { "OrpheusWithEurydice01" },
+				{
+					Cue = "/VO/Eurydice_0030",
+					Text = "Sometime you'll visit me like this and Orpheus is going to be here too."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+
+			EurydiceAintEvenMadChat05 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
+				{
+					Cue = "/VO/Eurydice_0031",
+					Text = "Don't let Orpheus get into too much trouble, won't you, hon?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
+			},
+			EurydiceAintEvenMadChat06 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0032",
+					Text = "I'm fine here on my own, hon. But, I wouldn't mind if he was here."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceAintEvenMadChat07 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0197",
+					Text = "Hope Orpheus is on the up-and-up down where you live."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceAintEvenMadChat08 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0198",
+					Text = "I'd ask you to bring one of these to Orpheus, but they're no good unless they're perfectly fresh."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceAintEvenMadChat09 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusWithEurydice01" },
+				{
+					Cue = "/VO/Eurydice_0199",
+					Text = "Orpheus tells me you've been a good friend. Thanks, hon."
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceAintEvenMadChat10 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusWithEurydice01" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0200",
+					Text = "I love Orpheus and all, hon, but it's nice having a little time here to myself!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceAintEvenMadChat10 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
+				{
+					Cue = "/VO/Eurydice_0201",
+					Text = "I know you can't stay long, hon, so eat up and stay safe out there, all right?"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+			EurydiceAintEvenMadChat11 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusWithEurydice01" },
+				AreIdsNotAlive = { 554419 },
+				{
+					Cue = "/VO/Eurydice_0239",
+					Text = "I sing when Orpheus is here, I sing when he isn't. Simple!"
+				},
+				{
+					Text = "Eurydice_OfferText02",
+					Choices = PresetEventArgs.EurydiceBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
+			},
+
+			OrpheusWithEurydiceMiscChat01 =
+			{
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat02 =
+			{
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat03 =
+			{
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat04 =
+			{
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat05 =
+			{
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat06 =
+			{
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat07 =
+			{
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat08 =
+			{
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			OrpheusWithEurydiceMiscChat09 =
+			{
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+
+		},
+
+		GiftTextLineSets =
+		{
+			EurydiceGift01 =
+			{
+				PlayOnce = true,
+				{
+					Cue = "/VO/ZagreusField_2498",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Eurydice, thank you for making me feel welcome in your pleasant home. Can't say the same for most places I've been lately. I've a small gift I wanted you to have."
+				},
+				{
+					Cue = "/VO/Eurydice_0049",
+					Text =
+					"{#DialogueItalicFormat}Aw{#PreviousFormat}, that's awful sweet of you, Your Royal Majesty. Bringing me fresh ingredients like this! Know what, here's something for you, too, help keep you safe out there!"
+				},
+			},
+			EurydiceGift02 =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "EurydiceGift01" },
+				{
+					Cue = "/VO/Eurydice_0042",
+					Text = "Just the ingredient I needed, hon, thank you so much! You know, you aren't near as bad as I'd heard!"
+				},
+				{
+					Cue = "/VO/ZagreusField_2499",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, don't worry, we're still getting to know each other! Plenty of time for me to live up to my notorious reputation. Though I'm surprised you've heard of me at all."
+				},
+			},
+			EurydiceGift03 =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "EurydiceGift02" },
+				{
+					Cue = "/VO/Eurydice_0043",
+					Text =
+					"{#DialogueItalicFormat}Aw{#PreviousFormat}, for me, really, Your Majesty? This will be perfect for my latest recipes."
+				},
+				{
+					Cue = "/VO/ZagreusField_2500",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You know, of all the souls I've ever met, I feel like you put this stuff to the best possible use."
+				},
+			},
+			EurydiceGift04 =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "EurydiceGift03" },
+				{
+					Cue = "/VO/Eurydice_0044",
+					Text = "You read my mind, hon! I go through this stuff awful fast sometimes."
+				},
+				{
+					Cue = "/VO/ZagreusField_2501",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "And I, in turn, shall go through your incredible cooking awful fast, given the opportunity."
+				},
+			},
+			EurydiceGift05 =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "EurydiceGift04" },
+				{
+					Cue = "/VO/Eurydice_0045",
+					Text = "Hey, mighty generous of you to keep me stocked up on this stuff, Your Royal Majesty!"
+				},
+				{
+					Cue = "/VO/ZagreusField_2502",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"My pleasure! I'm always pleased to see you during my otherwise generally unfortunate travels in Asphodel."
+				},
+			},
+
+			EurydiceGift06 =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "EurydiceGift05" },
+				{
+					Cue = "/VO/Eurydice_0046",
+					Text = "Thanks, Your Majesty! Though you're not going to get in trouble bringing me this stuff, are you?"
+				},
+				{
+					Cue = "/VO/ZagreusField_2503",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Hah{#PreviousFormat}, no! I don't think I can get into more trouble at the moment. May this make your dishes that much more delectable!"
+				},
+			},
+			EurydiceGift07 =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "EurydiceGift06" },
+				{
+					Cue = "/VO/ZagreusField_4289",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Eurydice, I was thinking maybe this would benefit your culinary practice. Here, please."
+				},
+				{
+					Cue = "/VO/Eurydice_0237",
+					Emote = "PortraitEmoteSurprise",
+					Text = "Whoa, this is Ambrosia! Hard to come by this stuff around here. You sure I can have this?"
+				},
+				{
+					Cue = "/VO/ZagreusField_4290",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Absolutely! Least I could do for all your friendship and support. Always happy to hear your voice when I'm out here."
+				},
+			},
+			EurydiceGift08 =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "EurydiceGift07" },
+				{
+					Cue = "/VO/Eurydice_0048",
+					Text =
+					"I ever tell you you're a real sweetheart, hon? Because, if not, I'm telling you right now. Where would my culinary practice be if not for you?"
+				},
+				{
+					Cue = "/VO/ZagreusField_2505",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I think your culinary practice would be every bit as extraordinary, though I'm pleased to have done small service to you in this great pursuit."
+				},
+				{
+					Cue = "/VO/Eurydice_0208",
+					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
+					PostLineFunctionArgs = { Text = "NPC_Eurydice_01", Icon = "Keepsake_EurydiceSticker_Max" },
+					Text =
+					"Well, we both know you've done a lot more for me than that. I wasn't expecting to make any new friends here anytime soon, so all the more reason it's been a real treat to get to know you. If I may say? You're a hell of a guy, Your Royal Majesty."
+				},
+			},
+
+		},
+
+		GiftGivenVoiceLines =
+		{
+			BreakIfPlayed = true,
+			PreLineWait = 1.0,
+			PlayFromTarget = true,
+
+			-- Thanks so much!
+			{ Cue = "/VO/ZagreusField_2514" },
+		},
+
+		CharacterInteractions = {
+			Rescue =
+			{
+				VoiceLines =
+				{
+
+					{
+						RandomRemaining = true,
+						PreLineWait = 0.35,
+						RequiredFalseTextLinesThisRun = { "EurydiceFirstMeeting01_C", "EurydiceAboutOrpheus02" },
+						-- SuccessiveChanceToPlayAll = 0.33,
+						RequiredFalsePlayedThisRoom = { "/VO/Eurydice_0080" },
+						RequiresAmbientMusicId = true,
+
+						-- Enjoy!
+						{ Cue = "/VO/Eurydice_0123" },
+						-- That one's on me!
+						{ Cue = "/VO/Eurydice_0124" },
+						-- Here you go!
+						{ Cue = "/VO/Eurydice_0125" },
+						-- All yours!
+						{ Cue = "/VO/Eurydice_0126" },
+						-- Freshly made!
+						{ Cue = "/VO/Eurydice_0127" },
+						-- You got it!
+						{ Cue = "/VO/Eurydice_0128" },
+						-- Sure thing!
+						{ Cue = "/VO/Eurydice_0129" },
+						-- Sounds good!
+						{ Cue = "/VO/Eurydice_0130" },
+						-- For you!
+						{ Cue = "/VO/Eurydice_0131" },
+						-- You got it, hon!
+						{ Cue = "/VO/Eurydice_0140" },
+						-- Coming right up!
+						{ Cue = "/VO/Eurydice_0141" },
+						-- Sure thing, hon.
+						{ Cue = "/VO/Eurydice_0142" },
+						-- It'll be my pleasure.
+						{ Cue = "/VO/Eurydice_0143" },
+						-- Hah, I knew it!
+						{ Cue = "/VO/Eurydice_0144" },
+						-- Oh good choice there, hon.
+						{ Cue = "/VO/Eurydice_0145" },
+						-- You bet!
+						{ Cue = "/VO/Eurydice_0146" },
+						-- As you wish, Your Royal Majesty.
+						{ Cue = "/VO/Eurydice_0147" },
+						-- That can be arranged.
+						{ Cue = "/VO/Eurydice_0148" },
+						-- Sounds good, no problem!
+						{ Cue = "/VO/Eurydice_0149" },
+						-- Good choice!
+						{ Cue = "/VO/Eurydice_0225" },
+						-- Excellent.
+						{ Cue = "/VO/Eurydice_0226" },
+						-- Coming right up!
+						{ Cue = "/VO/Eurydice_0227" },
+						-- Try this!
+						{ Cue = "/VO/Eurydice_0228" },
+						-- Sure, here!
+						{ Cue = "/VO/Eurydice_0229" },
+						-- Careful, it's hot!
+						{ Cue = "/VO/Eurydice_0230" },
+						-- Here, enjoy!
+						{ Cue = "/VO/Eurydice_0231" },
+						-- Hope you like it!
+						{ Cue = "/VO/Eurydice_0232" },
+					},
+					{
+						RandomRemaining = true,
+						UsePlayerSource = true,
+						PreLineWait = 1,
+						RequiresAmbientMusicId = true,
+						-- SuccessiveChanceToPlay = 0.85,
+
+						-- Why thank you!
+						{ Cue = "/VO/ZagreusField_2513" },
+						-- Thanks so much!
+						{ Cue = "/VO/ZagreusField_2514" },
+						-- Ooh thank you!
+						-- { Cue = "/VO/ZagreusField_2515" },
+						-- Mm really hit the spot.
+						{ Cue = "/VO/ZagreusField_2516" },
+						-- Feeling better already!
+						{ Cue = "/VO/ZagreusField_2517" },
+						-- Whew, that's good!
+						{ Cue = "/VO/ZagreusField_2518" },
+						-- Mmph, cheers!
+						{ Cue = "/VO/ZagreusField_2519" },
+						-- Ooh that's good.
+						{ Cue = "/VO/ZagreusField_2520" },
+						-- Wow that's good.
+						{ Cue = "/VO/ZagreusField_2521" },
+						-- So good.
+						{ Cue = "/VO/ZagreusField_2522" },
+					},
+				},
+			},
+		},
+
+		RepulseOnMeleeInvulnerableHit = 250,
+		OnHitVoiceLines =
+		{
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.25,
+				PlayFromTarget = true,
+				SuccessiveChanceToPlay = 0.25,
+				CooldownTime = 10,
+				RequiresAmbientMusicId = true,
+
+				-- <Chuckle>
+				{ Cue = "/VO/Eurydice_0166", PlayOnceThisRun = true },
+				-- <Chuckle>
+				{ Cue = "/VO/Eurydice_0167", PlayOnceThisRun = true },
+			},
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.25,
+				PlayFromTarget = true,
+				SuccessiveChanceToPlay = 0.25,
+				CooldownTime = 10,
+
+				-- Come on.
+				{ Cue = "/VO/Eurydice_0183", RequiredPlayedThisRoom = { "/VO/Eurydice_0166", "/VO/Eurydice_0167", "/VO/Eurydice_0183", "/VO/Eurydice_0184", "/VO/Eurydice_0189", "/VO/Eurydice_0191" }, },
+				-- Come on, now.
+				{ Cue = "/VO/Eurydice_0184" },
+				-- Not now.
+				{ Cue = "/VO/Eurydice_0185", RequiredPlayedThisRoom = { "/VO/Eurydice_0166", "/VO/Eurydice_0167", "/VO/Eurydice_0183", "/VO/Eurydice_0184", "/VO/Eurydice_0189", "/VO/Eurydice_0191" }, },
+				-- Hey!
+				{ Cue = "/VO/Eurydice_0186", RequiredPlayedThisRoom = { "/VO/Eurydice_0166", "/VO/Eurydice_0167", "/VO/Eurydice_0183", "/VO/Eurydice_0184", "/VO/Eurydice_0189", "/VO/Eurydice_0191" }, },
+				-- Please.
+				{ Cue = "/VO/Eurydice_0187", RequiredPlayedThisRoom = { "/VO/Eurydice_0166", "/VO/Eurydice_0167", "/VO/Eurydice_0183", "/VO/Eurydice_0184", "/VO/Eurydice_0189", "/VO/Eurydice_0191" }, },
+				-- Let me sing.
+				{ Cue = "/VO/Eurydice_0188", RequiredPlayedThisRoom = { "/VO/Eurydice_0166", "/VO/Eurydice_0167", "/VO/Eurydice_0183", "/VO/Eurydice_0184", "/VO/Eurydice_0189", "/VO/Eurydice_0191" }, },
+				-- Excuse me!
+				{ Cue = "/VO/Eurydice_0189", RequiredPlayedThisRoom = { "/VO/Eurydice_0166", "/VO/Eurydice_0167", "/VO/Eurydice_0187" }, },
+				-- Eh!
+				{ Cue = "/VO/Eurydice_0190", RequiredPlayedThisRoom = { "/VO/Eurydice_0166", "/VO/Eurydice_0167", "/VO/Eurydice_0183", "/VO/Eurydice_0184", "/VO/Eurydice_0189", "/VO/Eurydice_0191" }, },
+				-- Whatever!
+				{ Cue = "/VO/Eurydice_0191", RequiredPlayedThisRoom = { "/VO/Eurydice_0166", "/VO/Eurydice_0167", "/VO/Eurydice_0183", "/VO/Eurydice_0184", "/VO/Eurydice_0189", "/VO/Eurydice_0191" }, },
+				-- Sorry, singing!
+				{ Cue = "/VO/Eurydice_0192", RequiredPlayedThisRoom = { "/VO/Eurydice_0166", "/VO/Eurydice_0167", "/VO/Eurydice_0183", "/VO/Eurydice_0184", "/VO/Eurydice_0189", "/VO/Eurydice_0191" }, },
+				-- Really, hon?
+				{ Cue = "/VO/Eurydice_0193", RequiredPlayedThisRoom = { "/VO/Eurydice_0166", "/VO/Eurydice_0167", "/VO/Eurydice_0183", "/VO/Eurydice_0184", "/VO/Eurydice_0189", "/VO/Eurydice_0191" }, },
+				-- Having fun?
+				{ Cue = "/VO/Eurydice_0194", RequiredPlayedThisRoom = { "/VO/Eurydice_0166", "/VO/Eurydice_0167", "/VO/Eurydice_0183", "/VO/Eurydice_0184", "/VO/Eurydice_0189", "/VO/Eurydice_0191" }, },
+			}
 		},
 	},
 }

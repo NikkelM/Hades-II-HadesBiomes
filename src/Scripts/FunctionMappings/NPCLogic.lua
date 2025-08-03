@@ -11,7 +11,7 @@ modutil.mod.Path.Wrap("BouldyHitPresentation", function(base, victim)
 	end
 end)
 
-function game.SisyphusBenefitChoice(source, args, screen)
+function game.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	RemoveInputBlock({ Name = "PlayTextLines" })
 
 	RandomSynchronize(9)
@@ -49,7 +49,9 @@ function game.SisyphusBenefitChoice(source, args, screen)
 	end
 
 	game.OpenUpgradeChoiceMenu(source, args)
-	screen.OnCloseFinishedFunctionName = "SisyphusPostChoicePresentation"
+	if args.OnCloseFinishedFunctionName then
+		screen.OnCloseFinishedFunctionName = args.OnCloseFinishedFunctionName
+	end
 
 	AddInputBlock({ Name = "PlayTextLines" })
 end

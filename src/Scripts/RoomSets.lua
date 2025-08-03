@@ -63,6 +63,7 @@ local newRoomSets = {
 		"X_MiniBoss02",
 
 		"X_Reprieve01",
+		"X_Story01",
 
 		"X_Combat01",
 		"X_Combat02",
@@ -76,8 +77,6 @@ local newRoomSets = {
 		"X_Combat10",
 		"X_Combat21",
 		"X_Combat22",
-
-		-- "X_Story01",
 	},
 	Elysium = {
 		"C_Intro",

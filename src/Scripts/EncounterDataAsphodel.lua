@@ -4,6 +4,7 @@ local encounterDataAsphodel = {
 	-- Generic encounters
 	GeneratedAsphodel = encounterData.GeneratedAsphodel,
 	DevotionTestAsphodel = encounterData.DevotionTestAsphodel,
+	Story_Eurydice_01 = encounterData.Story_Eurydice_01,
 
 	-- Minibosses
 	WrappingAsphodel = encounterData.WrappingAsphodel,

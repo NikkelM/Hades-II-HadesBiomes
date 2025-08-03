@@ -12,11 +12,19 @@ local function applyNPCChoiceMappings(npcData, mappings)
 								"Skipping generalized modification of textline " ..
 								textlineSetName .. " because it is in the ExcludeNamedTextLines list.", 4)
 						else
+							-- Replace the choice mappings
 							local last = textLineSet[#textLineSet]
 							if last and last.Text == mappingData.TextToMatch then
 								table.remove(textLineSet, #textLineSet)
 								textLineSet.PrePortraitExitFunctionName = mappingData.PrePortraitExitFunctionName
 								textLineSet.PrePortraitExitFunctionArgs = mappingData.PrePortraitExitFunctionArgs
+							end
+
+							-- Do other replacements to each of the textlines in the group
+							for property, replacement in pairs(mappingData.AlwaysReplaceIfExist or {}) do
+								if textLineSet[property] then
+									textLineSet[property] = replacement
+								end
 							end
 						end
 					end
@@ -44,6 +52,24 @@ local npcModifications = {
 			"SisyphusMetapoints",
 		},
 	},
+	NPC_Eurydice_01 = {
+		RequiredRoomInteraction = true,
+		BlockedLootInteractionText = "NPCUseTextTalkLocked",
+		-- TODO Narcissus?
+		UpgradeScreenOpenSound = "/Leftovers/Menu Sounds/InfoPanelInURSA",
+		UpgradeSelectedSound = "/SFX/ArtemisBoonChoice",
+		MenuTitle = "NPC_Eurydice_01",
+		FlavorTextIds = {
+			"Eurydice_OfferText01",
+		},
+		-- "Blessings of Eurydice",
+		BoonInfoTitleText = "Codex_BoonInfo_Echo",
+		Traits = {
+			"SisyphusHealing",
+			"SisyphusMoney",
+			"SisyphusMetapoints",
+		},
+	},
 }
 
 -- Before adding them to the game, we need to apply some additional modifications to NPCs
@@ -54,9 +80,19 @@ local npcChoiceMappings = {
 		ExcludeNamedTextLines = {
 			"SisyphusLiberationQuestComplete",
 		},
-		PrePortraitExitFunctionName = "SisyphusBenefitChoice",
+		PrePortraitExitFunctionName = "ModsNikkelMHadesBiomesBenefitChoice",
 		PrePortraitExitFunctionArgs = mod.PresetEventArgs.SisyphusBenefitChoices,
-	}
+	},
+	NPC_Eurydice_01 = {
+		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
+		TextToMatch = "Eurydice_OfferText01",
+		PrePortraitExitFunctionName = "ModsNikkelMHadesBiomesBenefitChoice",
+		PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
+
+		AlwaysReplaceIfExist = {
+			OnQueuedFunctionName = "MusicianMusicHades",
+		}
+	},
 }
 
 applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)

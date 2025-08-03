@@ -13,6 +13,7 @@ mod.AudioFileMappings = {
 -- Some speaker names do not work (e.g. MegaeraHome)!
 mod.VoiceoverFileNames = {
 	Alecto = "Alecto",
+	Eurydice = "Eurydice",
 	HadesField = "HadesField",
 	Megaera = "Megaera",
 	MegaeraField = "MegaeraField",
@@ -182,6 +183,9 @@ mod.BikFileMappings = {
 	"Enemy_HydraBlue_Ranged_Bink",
 	"Enemy_HydraBlue_Lunge_Bink",
 	"Enemy_HydraBlue_Sleep_Bink",
+	-- Eurydice
+	"NPC_EurydiceIdle_Bink",
+	"NPC_EurydiceIdleSinging_Bink",
 	-- #endregion
 	-- #region ELYSIUM
 	-- ShadeUnits generic
@@ -267,6 +271,9 @@ mod.BikFileMappings = {
 	"MinotaurArmoredAttackSwings_Bink",
 	"MinotaurArmoredTaunt_Bink",
 	"MinotaurArmoredDeathVFX_Bink",
+	-- Patroclus
+	"NPC_PatroclusIdleSitting_Bink",
+	"NPC_PatroclusIdleStanding_Bink",
 	-- #endregion
 	-- #region STYX
 	-- #endregion
