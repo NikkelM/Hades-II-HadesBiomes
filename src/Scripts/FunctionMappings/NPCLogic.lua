@@ -43,6 +43,14 @@ function game.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 			table.insert(source.UpgradeOptions, option)
 		end
 	end
+
+	-- Custom: Sort the source.UpgradeOptions by their order in source.Traits
+	if source.Traits then
+		table.sort(source.UpgradeOptions, function(a, b)
+			return game.GetIndex(source.Traits, a.ItemName) < game.GetIndex(source.Traits, b.ItemName)
+		end)
+	end
+
 	if args.PortraitShift ~= nil then
 		args.PortraitShift.Id = screen.PortraitId
 		Move(args.PortraitShift)

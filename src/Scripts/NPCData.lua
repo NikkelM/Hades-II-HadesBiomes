@@ -57,9 +57,8 @@ local npcModifications = {
 		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
-		-- TODO Narcissus?
-		UpgradeScreenOpenSound = "/Leftovers/Menu Sounds/InfoPanelInURSA",
-		UpgradeSelectedSound = "/SFX/ArtemisBoonChoice",
+		UpgradeScreenOpenSound = "/SFX/Menu Sounds/PortraitEmoteCheerfulSFX",
+		UpgradeSelectedSound = "/Leftovers/Menu Sounds/TalismanPaperEquipLEGENDARY",
 		MenuTitle = "NPC_Eurydice_01",
 		FlavorTextIds = {
 			"Eurydice_OfferText01",
