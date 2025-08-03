@@ -30,16 +30,19 @@ local npcModifications = {
 	NPC_Sisyphus_01 = {
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
-		-- TODO
-		UpgradeScreenOpenSound = "/SFX/Menu Sounds/PortraitEmoteCheerfulSFX",
-		-- TODO
-		UpgradeSelectedSound = "/Leftovers/Menu Sounds/TalismanPaperEquipLEGENDARY",
+		UpgradeScreenOpenSound = "/Leftovers/Menu Sounds/InfoPanelInURSA",
+		UpgradeSelectedSound = "/SFX/ArtemisBoonChoice",
 		MenuTitle = "NPC_SisyphusAndBouldy_01",
 		FlavorTextIds = {
 			"Sisyphus_OfferText01",
 		},
 		-- "Gifts of Sisyphus",
 		BoonInfoTitleText = "Codex_BoonInfo_Narcissus",
+		Traits = {
+			"SisyphusHealing",
+			"SisyphusMoney",
+			"SisyphusMetapoints",
+		},
 	},
 }
 

@@ -456,11 +456,6 @@ mod.NPCData = mod.NPCData or {
 			RequiredMinCompletedRuns = 1,
 		},
 
-		Traits = {
-			"SisyphusHealing",
-			"SisyphusMoney",
-			"SisyphusMetapoints",
-		},
 		MetaPointMin = 50,
 		MetaPointMax = 60,
 
