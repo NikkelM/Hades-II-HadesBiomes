@@ -11,8 +11,7 @@ local newTraitData = {
 			LootOptions = {
 				{
 					Name = "Currency",
-					MinAmount = 101,
-					MaxAmount = 115,
+					Amount = 110,
 				},
 			}
 		},
@@ -32,9 +31,19 @@ local newTraitData = {
 			DropFunctionName = "SisyphusDropPresentation",
 			LootOptions = {
 				{
-					Name = "RoomRewardHealDrop",
+					Name = "HealDropMajor",
 				},
-			}
+			},
+		},
+		ExtractValues = {
+			{
+				External = true,
+				BaseType = "ConsumableData",
+				BaseName = "HealDropMajor",
+				Format = "FlatHeal",
+				BaseProperty = "HealFixed",
+				ExtractAs = "HealDropAmount"
+			},
 		},
 		CustomStatLinesWithShrineUpgrade = {
 			ShrineUpgradeName = "HealingReductionShrineUpgrade",
@@ -66,7 +75,14 @@ local newTraitData = {
 						},
 					},
 				},
-			}
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "MetaCurrency",
+				Format = "ResourceAmount",
+				ExtractAs = "TotalMetaCurrency",
+			},
 		},
 	},
 }

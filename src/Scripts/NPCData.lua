@@ -38,8 +38,8 @@ local npcModifications = {
 		FlavorTextIds = {
 			"Sisyphus_OfferText01",
 		},
-		-- "Blessings of Sisyphus",
-		BoonInfoTitleText = "Codex_BoonInfo_Echo",
+		-- "Gifts of Sisyphus",
+		BoonInfoTitleText = "Codex_BoonInfo_Narcissus",
 	},
 }
 

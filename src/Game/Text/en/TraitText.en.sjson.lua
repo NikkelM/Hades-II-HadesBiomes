@@ -12,17 +12,17 @@ local newData = {
 	{
 		Id = "SisyphusHealing",
 		DisplayName = "Warm Embrace",
-		Description = "Receive some {!Icons.HealthRestore} Healing",
+		Description = "Receive a gift of {#UpgradeFormat}+{$TooltipData.ExtractData.HealDropAmount}{#Prev}{!Icons.HealthRestore} Healing",
 	},
 	{
 		Id = "SisyphusMetapoints",
 		DisplayName = "Crushed Dreams",
-		Description = "Receive some {!Icons.MetaCurrency} Bones",
+		Description = "Receive a gift of {#UpgradeFormat}+{$TraitData.SisyphusMetapoints.AcquireFunctionArgs.LootOptions.[1].Overrides.AddResources.MetaCurrency}{#Prev}{!Icons.MetaCurrencyIconAlt} Bones",
 	},
 	{
 		Id = "SisyphusMoney",
 		DisplayName = "Spare Change",
-		Description = "Receive some {!Icons.Currency} Gold Crowns",
+		Description = "Receive a gift of {#MoneyFormatBold}+{$TraitData.SisyphusMoney.AcquireFunctionArgs.LootOptions.[1].Amount}{#Prev}{!Icons.Currency} Gold Crowns",
 	},
 }
 
