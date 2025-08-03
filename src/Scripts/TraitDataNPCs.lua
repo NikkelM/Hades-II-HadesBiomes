@@ -88,6 +88,33 @@ local newTraitData = {
 	},
 	-- #endregion
 	-- #region Eurydice
+	BuffSlottedBoonRarity = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Icon = "Boon_Circe_05",
+		AcquireFunctionName = "EurydiceBuff",
+		AcquireFunctionArgs = {
+			BoonRarity = true,
+		},
+	},
+	BuffMegaPom = {
+		InheritFrom = { "BuffSlottedBoonRarity", },
+		Icon = "Boon_Circe_08",
+		AcquireFunctionArgs = {
+			StackTraits = true,
+		},
+	},
+	BuffFutureBoonRarity = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Icon = "Boon_Circe_06",
+		RarityBonus = {
+			RareBonus = 1,
+			EpicBonus = 0.25,
+			LegendaryBonus = 0.1,
+		},
+		RemainingUses = 3,
+	},
 	-- #endregion
 }
 

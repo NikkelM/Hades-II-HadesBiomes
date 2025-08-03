@@ -67,9 +67,9 @@ local npcModifications = {
 		-- "Blessings of Eurydice",
 		BoonInfoTitleText = "Codex_BoonInfo_Echo",
 		Traits = {
-			"SisyphusHealing",
-			"SisyphusMoney",
-			"SisyphusMetapoints",
+			"BuffSlottedBoonRarity",
+			"BuffMegaPom",
+			"BuffFutureBoonRarity",
 		},
 	},
 }

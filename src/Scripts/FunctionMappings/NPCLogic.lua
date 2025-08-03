@@ -56,11 +56,11 @@ function game.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	AddInputBlock({ Name = "PlayTextLines" })
 end
 
-function game.SisyphusPostChoicePresentation(screen, args)
+function game.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
 	args = args or {}
 	local heroId = game.CurrentRun.Hero.ObjectId
 	local npcId = screen.Source.ObjectId
-	game.FreezePlayerUnit("SisyphusPostChoicePresentation")
+	game.FreezePlayerUnit("ModsNikkelMHadesBiomesNPCPostChoicePresentation")
 	AngleTowardTarget({ Id = heroId, DestinationId = npcId })
 	game.wait(0.25)
 	SetAnimation({ Name = "MelinoeSaluteToEquip", DestinationId = heroId })
@@ -69,7 +69,7 @@ function game.SisyphusPostChoicePresentation(screen, args)
 	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteExcitement" })
 
 	game.wait(0.1)
-	game.UnfreezePlayerUnit("SisyphusPostChoicePresentation")
+	game.UnfreezePlayerUnit("ModsNikkelMHadesBiomesNPCPostChoicePresentation")
 end
 
 function game.SisyphusDropPresentation(consumable, args)
@@ -127,6 +127,23 @@ function game.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 	end
 
 	SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
+end
+
+function game.EurydiceBuff(args, source)
+	game.EurydicePreBuffPresentation(source, args)
+	if args.BoonRarity ~= nil then
+		game.AddRarityToTraits(source, { NumTraits = 2 })
+	end
+	if args.StackTraits ~= nil then
+		game.AddStackToTraits(source, { NumTraits = 4, NumStacks = 1 })
+	end
+end
+
+function game.EurydicePreBuffPresentation(source, args)
+	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteExcitement" })
+	game.wait(1.6)
+	PlaySound({ Name = "/SFX/GyroHealthPickupMunch", Id = game.CurrentRun.Hero.ObjectId })
+	CreateAnimation({ Name = "HealthSparkleBurst", DestinationId = game.CurrentRun.Hero.ObjectId, OffsetZ = 50 })
 end
 
 -- #endregion
