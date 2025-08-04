@@ -178,13 +178,6 @@ end
 function game.PatroclusBuff(source, args)
 	game.wait(1.0)
 	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteExcitement" })
-	if args.TraitName ~= nil then
-		local traitData = TraitData[args.TraitName]
-		if traitData.LastStandWeapon ~= nil then
-			game.GainLastStandPresentation()
-			game.thread(game.InCombatText, game.CurrentRun.Hero.ObjectId, "GainedExtraChance")
-		end
-	end
 end
 
 -- For some reason, if the player is too fast exiting this room, the game crashes

@@ -48,9 +48,9 @@ local npcModifications = {
 		-- "Gifts of Sisyphus",
 		BoonInfoTitleText = "Codex_BoonInfo_Narcissus",
 		Traits = {
-			"SisyphusHealing",
-			"SisyphusMoney",
-			"SisyphusMetapoints",
+			"ModsNikkelMHadesBiomesSisyphusHealing",
+			"ModsNikkelMHadesBiomesSisyphusMoney",
+			"ModsNikkelMHadesBiomesSisyphusMetapoints",
 		},
 	},
 	NPC_Eurydice_01 = {
@@ -67,9 +67,9 @@ local npcModifications = {
 		-- "Blessings of Eurydice",
 		BoonInfoTitleText = "Codex_BoonInfo_Echo",
 		Traits = {
-			"BuffSlottedBoonRarity",
-			"BuffMegaPom",
-			"BuffFutureBoonRarity",
+			"ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
+			"ModsNikkelMHadesBiomesBuffMegaPom",
+			"ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		},
 	},
 	NPC_Patroclus_01 = {
@@ -84,9 +84,9 @@ local npcModifications = {
 		-- "Gifts of Patroclus",
 		BoonInfoTitleText = "Codex_BoonInfo_Narcissus",
 		Traits = {
-			"TemporaryDoorHealTrait_Patroclus",
-			"TemporaryImprovedWeaponTrait_Patroclus",
-			"BuffExtraChance",
+			"ModsNikkelMHadesBiomesTemporaryDoorHealTrait_Patroclus",
+			"ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
+			"ModsNikkelMHadesBiomesBuffExtraChance",
 		},
 	},
 }

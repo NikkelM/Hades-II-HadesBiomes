@@ -11,39 +11,39 @@ local order = {
 local newData = {
 	-- Sisyphus
 	{
-		Id = "SisyphusHealing",
+		Id = "ModsNikkelMHadesBiomesSisyphusHealing",
 		DisplayName = "Warm Embrace",
 		Description =
 		"Receive a gift of {#UpgradeFormat}+{$TooltipData.ExtractData.HealDropAmount}{#Prev}{!Icons.HealthRestore} Healing",
 	},
 	{
-		Id = "SisyphusMetapoints",
+		Id = "ModsNikkelMHadesBiomesSisyphusMetapoints",
 		DisplayName = "Crushed Dreams",
 		Description =
-		"Receive a gift of {#UpgradeFormat}+{$TraitData.SisyphusMetapoints.AcquireFunctionArgs.LootOptions.[1].Overrides.AddResources.MetaCurrency}{#Prev}{!Icons.MetaCurrencyIconAlt} Bones",
+		"Receive a gift of {#UpgradeFormat}+{$TraitData.ModsNikkelMHadesBiomesSisyphusMetapoints.AcquireFunctionArgs.LootOptions.[1].Overrides.AddResources.MetaCurrency}{#Prev}{!Icons.MetaCurrencyIconAlt} Bones",
 	},
 	{
-		Id = "SisyphusMoney",
+		Id = "ModsNikkelMHadesBiomesSisyphusMoney",
 		DisplayName = "Spare Change",
 		Description =
-		"Receive a gift of {#MoneyFormatBold}+{$TraitData.SisyphusMoney.AcquireFunctionArgs.LootOptions.[1].Amount}{#Prev}{!Icons.Currency} Gold Crowns",
+		"Receive a gift of {#MoneyFormatBold}+{$TraitData.ModsNikkelMHadesBiomesSisyphusMoney.AcquireFunctionArgs.LootOptions.[1].Amount}{#Prev}{!Icons.Currency} Gold Crowns",
 	},
 	-- Eurydice
 	-- TODO: Get from Helptext for other languages?
 	{
-		Id = "BuffSlottedBoonRarity",
+		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Ambrosia Delight",
 		Description =
 		"Loved by the gods; up to {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}random {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}of yours are upgraded to the next {$Keywords.Rarity}.",
 	},
 	{
-		Id = "BuffMegaPom",
+		Id = "ModsNikkelMHadesBiomesBuffMegaPom",
 		DisplayName = "Pom Porridge",
 		Description =
 		"An Underworld delicacy; up to {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}random {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}of yours gain {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} Lv{#Prev}.",
 	},
 	{
-		Id = "BuffFutureBoonRarity",
+		Id = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		DisplayName = "Refreshing Nectar",
 		Description =
 		"A rare and fragrant beverage; the next {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}you find have upgraded {$Keywords.Rarity}.",
@@ -51,20 +51,21 @@ local newData = {
 	-- Patroclus
 	-- Some of them are in the HelpText files
 	{
-		Id = "TemporaryImprovedWeaponTrait_Patroclus",
+		Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 		DisplayName = "Cyclops Jerky Select",
 		Description =
 		"Your {$Keywords.AttackSet} and {$Keywords.SpecialSet} deals {#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageBonus:P} {#Prev}damage.",
 	},
 	{
-		Id = "TemporaryDoorHealTrait_Patroclus",
+		Id = "ModsNikkelMHadesBiomesTemporaryDoorHealTrait_Patroclus",
 		InheritFrom = "TemporaryDoorHealTrait",
 		DisplayName = "HydraLite Gold",
 	},
 	{
-		Id = "BuffExtraChance",
+		Id = "ModsNikkelMHadesBiomesBuffExtraChance",
 		DisplayName = "Kiss of Styx Premium",
-		Description = "Replenish {#UpgradeFormat}all {#Prev}uses of {#BoldFormatGraft}{$Keywords.ExtraChance} {#Prev}with ones that restore {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipInitialHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}.",
+		Description =
+		"Replenish {#UpgradeFormat}all {#Prev}uses of {#BoldFormatGraft}{$Keywords.ExtraChance} {#Prev}with ones that restore {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipInitialHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}.",
 	},
 }
 

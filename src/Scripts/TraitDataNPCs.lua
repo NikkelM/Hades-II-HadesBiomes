@@ -1,7 +1,7 @@
 -- Contains the upgrade choices the player can choose from NPCs like Sisyphus
 local newTraitData = {
 	-- #region Sisyphus
-	SisyphusMoney = {
+	ModsNikkelMHadesBiomesSisyphusMoney = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		Hidden = true,
@@ -18,8 +18,8 @@ local newTraitData = {
 			}
 		},
 	},
-	SisyphusHealing = {
-		InheritFrom = { "SisyphusMoney", },
+	ModsNikkelMHadesBiomesSisyphusHealing = {
+		InheritFrom = { "ModsNikkelMHadesBiomesSisyphusMoney", },
 		Icon = "Boon_Narcissus_01",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
@@ -54,8 +54,8 @@ local newTraitData = {
 			},
 		},
 	},
-	SisyphusMetapoints = {
-		InheritFrom = { "SisyphusMoney", },
+	ModsNikkelMHadesBiomesSisyphusMetapoints = {
+		InheritFrom = { "ModsNikkelMHadesBiomesSisyphusMoney", },
 		Icon = "Boon_Narcissus_03",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
@@ -89,7 +89,7 @@ local newTraitData = {
 	},
 	-- #endregion
 	-- #region Eurydice
-	BuffSlottedBoonRarity = {
+	ModsNikkelMHadesBiomesBuffSlottedBoonRarity = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		Icon = "Boon_Circe_05",
@@ -108,8 +108,8 @@ local newTraitData = {
 			},
 		},
 	},
-	BuffMegaPom = {
-		InheritFrom = { "BuffSlottedBoonRarity", },
+	ModsNikkelMHadesBiomesBuffMegaPom = {
+		InheritFrom = { "ModsNikkelMHadesBiomesBuffSlottedBoonRarity", },
 		Icon = "Boon_Circe_08",
 		GameStateRequirements = {
 			NamedRequirements = { "StackUpgradeLegal", },
@@ -134,7 +134,7 @@ local newTraitData = {
 			}
 		},
 	},
-	BuffFutureBoonRarity = {
+	ModsNikkelMHadesBiomesBuffFutureBoonRarity = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		Icon = "Boon_Circe_06",
@@ -147,7 +147,7 @@ local newTraitData = {
 	},
 	-- #endregion
 	-- #region Patroclus
-	TemporaryDoorHealTrait_Patroclus = {
+	ModsNikkelMHadesBiomesTemporaryDoorHealTrait_Patroclus = {
 		InheritFrom = { "TemporaryDoorHealTrait" },
 		BlockStacking = true,
 		BlockInRunRarify = true,
@@ -163,7 +163,7 @@ local newTraitData = {
 			},
 		},
 	},
-	TemporaryImprovedWeaponTrait_Patroclus = {
+	ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus = {
 		InheritFrom = { "ShopTrait" },
 		BlockStacking = true,
 		BlockInRunRarify = true,
@@ -188,7 +188,7 @@ local newTraitData = {
 			"StoreUsesRemainingDisplay1",
 		},
 	},
-	BuffExtraChance = {
+	ModsNikkelMHadesBiomesBuffExtraChance = {
 		-- Adapted from EchoDeathDefianceRefill
 		Icon = "Boon_Medea_02",
 		Hidden = true,

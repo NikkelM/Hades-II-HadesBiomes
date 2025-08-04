@@ -201,10 +201,6 @@ mod.HadesHelpTextFileRemovals = {
 	HelpText = {
 		-- Also defined in TraitText
 		TemporaryDoorHealTrait = true,
-		-- Redefined in TraitText in the mod
-		TemporaryImprovedWeaponTrait_Patroclus = true,
-		TemporaryDoorHealTrait_Patroclus = true,
-		BuffExtraChance = true,
 	},
 }
 

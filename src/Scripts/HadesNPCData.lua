@@ -315,17 +315,17 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		UpgradeOptions = {
 			{
 				Type = "Trait",
-				ItemName = "SisyphusHealing",
+				ItemName = "ModsNikkelMHadesBiomesSisyphusHealing",
 				Rarity = "Common",
 			},
 			{
 				Type = "Trait",
-				ItemName = "SisyphusMoney",
+				ItemName = "ModsNikkelMHadesBiomesSisyphusMoney",
 				Rarity = "Common",
 			},
 			{
 				Type = "Trait",
-				ItemName = "SisyphusMetapoints",
+				ItemName = "ModsNikkelMHadesBiomesSisyphusMetapoints",
 				Rarity = "Common",
 			},
 		},
@@ -354,61 +354,26 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		UpgradeOptions = {
 			{
 				Type = "Trait",
-				ItemName = "TemporaryDoorHealTrait_Patroclus",
+				ItemName = "ModsNikkelMHadesBiomesTemporaryDoorHealTrait_Patroclus",
 				Rarity = "Common",
 			},
 			{
 				Type = "Trait",
-				ItemName = "TemporaryImprovedWeaponTrait_Patroclus",
+				ItemName = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 				Rarity = "Common",
 			},
 			{
 				Type = "Trait",
-				ItemName = "BuffExtraChance",
+				ItemName = "ModsNikkelMHadesBiomesBuffExtraChance",
 				Rarity = "Common",
 				PrioritySlotEntranceAnimation = "BoonEntranceLegendary",
 				PriorityRequirements = {
 					{
-						PathFalse = { "GameState", "TraitsTaken", "BuffExtraChance" },
+						PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesBuffExtraChance" },
 					},
 				},
 			},
 		},
-
-		-- {
-		-- 	RequiredActiveMetaUpgrade = "ExtraChanceMetaUpgrade",
-		-- 	ChoiceText = "ChoiceText_BuffExtraChance",
-		-- 	{
-		-- 		PostLineThreadedFunctionName = "PatroclusBuff",
-		-- 		PostLineFunctionArgs = {
-		-- 			LastStand = {
-		-- 				Count = 100,
-		-- 				Icon = "ExtraLifeStyx",
-		-- 				WeaponName = "LastStandMetaUpgradeShield",
-		-- 				HealFraction = 0.5
-		-- 			}
-		-- 		}
-		-- 	},
-		-- },
-		-- {
-		-- 	RequiredActiveMetaUpgrade = "ExtraChanceReplenishMetaUpgrade",
-		-- 	ChoiceText = "ChoiceText_BuffExtraChanceReplenish",
-		-- 	{
-		-- 		PostLineThreadedFunctionName = "PatroclusBuff",
-		-- 		PostLineFunctionArgs =
-		-- 		{
-		-- 			TraitName = "UpgradedTemporaryLastStandHealTrait",
-		-- 		}
-		-- 	},
-		-- },
-		-- {
-		-- 	ChoiceText = "ChoiceText_BuffHealing",
-		-- 	{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryDoorHealTrait_Patroclus", } },
-		-- },
-		-- {
-		-- 	ChoiceText = "ChoiceText_BuffWeapon",
-		-- 	{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryImprovedWeaponTrait_Patroclus", } },
-		-- },
 	},
 	EurydiceBenefitChoices = {
 		SkipComponents = {
@@ -425,17 +390,17 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		UpgradeOptions = {
 			{
 				Type = "Trait",
-				ItemName = "BuffSlottedBoonRarity",
+				ItemName = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 				Rarity = "Common",
 			},
 			{
 				Type = "Trait",
-				ItemName = "BuffMegaPom",
+				ItemName = "ModsNikkelMHadesBiomesBuffMegaPom",
 				Rarity = "Common",
 			},
 			{
 				Type = "Trait",
-				ItemName = "BuffFutureBoonRarity",
+				ItemName = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 				Rarity = "Common",
 			},
 		},
