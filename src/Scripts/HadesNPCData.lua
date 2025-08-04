@@ -1,57 +1,57 @@
 -- For these, make the modifications directly here, as larger changes are often needed
 mod.PresetEventArgs = mod.PresetEventArgs or {
-	-- PatroclusMuttering = {
-	-- 	StatusAnimation = "StatusIconWantsToTalk",
-	-- 	DistanceTrigger =
-	-- 	{
-	-- 		WithinDistance = 450,
-	-- 		VoiceLines = GlobalVoiceLines.PatroclusGreetingLines,
-	-- 	},
-	-- 	VoiceLines =
-	-- 	{
-	-- 		[1] = GlobalVoiceLines.PatroclusMutteringLines,
-	-- 	},
-	-- },
-	-- PatroclusMutteringRepeatable = {
-	-- 	DistanceTrigger =
-	-- 	{
-	-- 		WithinDistance = 450,
-	-- 		VoiceLines = GlobalVoiceLines.PatroclusGreetingLines,
-	-- 	},
-	-- 	VoiceLines =
-	-- 	{
-	-- 		[1] = GlobalVoiceLines.PatroclusMutteringLines,
-	-- 	},
-	-- },
-	-- PatroclusGreetings = {
-	-- 	DistanceTrigger =
-	-- 	{
-	-- 		WithinDistance = 350,
-	-- 		VoiceLines =
-	-- 		{
-	-- 			RandomRemaining = true,
-	-- 			Queue = "Interrupt",
-	-- 			CooldownTime = "30",
-	-- 			CooldownName = "PatroclusGreetedRecently",
-	-- 			SuccessiveChanceToPlay = 0.5,
+	PatroclusMuttering = {
+		StatusAnimation = "StatusIconWantsToTalk",
+		DistanceTrigger =
+		{
+			WithinDistance = 450,
+			VoiceLines = { GlobalVoiceLines = "PatroclusGreetingLines" }, --game.GlobalVoiceLines.PatroclusGreetingLines,
+		},
+		VoiceLines =
+		{
+			[1] = { GlobalVoiceLines = "PatroclusMutteringLines" }, --game.GlobalVoiceLines.PatroclusMutteringLines,
+		},
+	},
+	PatroclusMutteringRepeatable = {
+		DistanceTrigger =
+		{
+			WithinDistance = 450,
+			VoiceLines = game.GlobalVoiceLines.PatroclusGreetingLines,
+		},
+		VoiceLines =
+		{
+			[1] = game.GlobalVoiceLines.PatroclusMutteringLines,
+		},
+	},
+	PatroclusGreetings = {
+		DistanceTrigger =
+		{
+			WithinDistance = 350,
+			VoiceLines =
+			{
+				RandomRemaining = true,
+				Queue = "Interrupt",
+				CooldownTime = "30",
+				CooldownName = "PatroclusGreetedRecently",
+				SuccessiveChanceToPlay = 0.5,
 
-	-- 			-- What is it?
-	-- 			{ Cue = "/VO/Patroclus_0043" },
-	-- 			-- What is it, stranger.
-	-- 			{ Cue = "/VO/Patroclus_0044" },
-	-- 			-- Stranger...
-	-- 			{ Cue = "/VO/Patroclus_0080", RequiredTextLines = { "PatroclusGift03" }, },
-	-- 			-- You.
-	-- 			{ Cue = "/VO/Patroclus_0082", RequiredTextLines = { "PatroclusGift03" }, },
-	-- 			-- You again.
-	-- 			{ Cue = "/VO/Patroclus_0083", RequiredTextLines = { "PatroclusGift03" }, },
-	-- 			-- You're back.
-	-- 			{ Cue = "/VO/Patroclus_0085" },
-	-- 			-- Oh.
-	-- 			{ Cue = "/VO/Patroclus_0087", RequiredFalseTextLines = { "PatroclusGift03" }, },
-	-- 		},
-	-- 	},
-	-- },
+				-- What is it?
+				{ Cue = "/VO/Patroclus_0043" },
+				-- What is it, stranger.
+				{ Cue = "/VO/Patroclus_0044" },
+				-- Stranger...
+				{ Cue = "/VO/Patroclus_0080", RequiredTextLines = { "PatroclusGift03" }, },
+				-- You.
+				{ Cue = "/VO/Patroclus_0082", RequiredTextLines = { "PatroclusGift03" }, },
+				-- You again.
+				{ Cue = "/VO/Patroclus_0083", RequiredTextLines = { "PatroclusGift03" }, },
+				-- You're back.
+				{ Cue = "/VO/Patroclus_0085" },
+				-- Oh.
+				{ Cue = "/VO/Patroclus_0087", RequiredFalseTextLines = { "PatroclusGift03" }, },
+			},
+		},
+	},
 	-- ThanatosFarewells = {
 	-- 	PostTriggerFunctionName = "ThanatosExit",
 	-- 	PostTriggerFunctionArgs = { WaitTime = 4 },
@@ -273,7 +273,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- 	PostTriggerAnimation = "PersephoneUnderworld_Greeting",
 	-- 	VoiceLines =
 	-- 	{
-	-- 		[1] = GlobalVoiceLines.PersephoneHomeGreetingVoiceLines,
+	-- 		[1] = { GlobalVoiceLines = "PersephoneHomeGreetingVoiceLines" }, --GlobalVoiceLines.PersephoneHomeGreetingVoiceLines,
 	-- 	},
 	-- },
 	-- PersephoneGreeting = {
@@ -287,7 +287,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- 	},
 	-- 	VoiceLines =
 	-- 	{
-	-- 		[1] = GlobalVoiceLines.PersephoneHomeGreetingVoiceLines,
+	-- 		[1] = { GlobalVoiceLines = "PersephoneHomeGreetingVoiceLines" }, --GlobalVoiceLines.PersephoneHomeGreetingVoiceLines,
 	-- 	},
 	-- },
 	SingingEurydiceSong01_Eurydice_SongFromStart = {
@@ -339,42 +339,71 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- 	"BouldyBlessing_Money",
 	-- 	"BouldyBlessing_None",
 	-- },
-	-- PatroclusBenefitChoices = {
-	-- 	{
-	-- 		RequiredActiveMetaUpgrade = "ExtraChanceMetaUpgrade",
-	-- 		ChoiceText = "ChoiceText_BuffExtraChance",
-	-- 		{
-	-- 			PostLineThreadedFunctionName = "PatroclusBuff",
-	-- 			PostLineFunctionArgs = {
-	-- 				LastStand = {
-	-- 					Count = 100,
-	-- 					Icon = "ExtraLifeStyx",
-	-- 					WeaponName = "LastStandMetaUpgradeShield",
-	-- 					HealFraction = 0.5
-	-- 				}
-	-- 			}
-	-- 		},
-	-- 	},
-	-- 	{
-	-- 		RequiredActiveMetaUpgrade = "ExtraChanceReplenishMetaUpgrade",
-	-- 		ChoiceText = "ChoiceText_BuffExtraChanceReplenish",
-	-- 		{
-	-- 			PostLineThreadedFunctionName = "PatroclusBuff",
-	-- 			PostLineFunctionArgs =
-	-- 			{
-	-- 				TraitName = "UpgradedTemporaryLastStandHealTrait",
-	-- 			}
-	-- 		},
-	-- 	},
-	-- 	{
-	-- 		ChoiceText = "ChoiceText_BuffHealing",
-	-- 		{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryDoorHealTrait_Patroclus", } },
-	-- 	},
-	-- 	{
-	-- 		ChoiceText = "ChoiceText_BuffWeapon",
-	-- 		{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryImprovedWeaponTrait_Patroclus", } },
-	-- 	},
-	-- },
+	PatroclusBenefitChoices = {
+		SkipComponents = {
+			"OlympusBackground",
+			"ShopBackground",
+			"ShopLighting",
+		},
+		DefaultGroup = "Combat_Menu_Overlay_Backing",
+		ButtonGroupName = "Combat_Menu_Overlay_Backing",
+		PurchaseAnimationGroupName = "Combat_Menu_Overlay_Additive",
+		PortraitShift = { Distance = 250, Angle = 180, Duration = 0.3, EaseIn = 0.5, EaseOut = 1.0, },
+		OverwriteTableKeys = { SkipUpgradePresentationAndExitUnlock = true, },
+		OnCloseFinishedFunctionName = "ModsNikkelMHadesBiomesNPCPostChoicePresentation",
+		UpgradeOptions = {
+			{
+				Type = "Trait",
+				ItemName = "BuffSlottedBoonRarity",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
+				ItemName = "BuffMegaPom",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
+				ItemName = "BuffFutureBoonRarity",
+				Rarity = "Common",
+			},
+		},
+
+		-- {
+		-- 	RequiredActiveMetaUpgrade = "ExtraChanceMetaUpgrade",
+		-- 	ChoiceText = "ChoiceText_BuffExtraChance",
+		-- 	{
+		-- 		PostLineThreadedFunctionName = "PatroclusBuff",
+		-- 		PostLineFunctionArgs = {
+		-- 			LastStand = {
+		-- 				Count = 100,
+		-- 				Icon = "ExtraLifeStyx",
+		-- 				WeaponName = "LastStandMetaUpgradeShield",
+		-- 				HealFraction = 0.5
+		-- 			}
+		-- 		}
+		-- 	},
+		-- },
+		-- {
+		-- 	RequiredActiveMetaUpgrade = "ExtraChanceReplenishMetaUpgrade",
+		-- 	ChoiceText = "ChoiceText_BuffExtraChanceReplenish",
+		-- 	{
+		-- 		PostLineThreadedFunctionName = "PatroclusBuff",
+		-- 		PostLineFunctionArgs =
+		-- 		{
+		-- 			TraitName = "UpgradedTemporaryLastStandHealTrait",
+		-- 		}
+		-- 	},
+		-- },
+		-- {
+		-- 	ChoiceText = "ChoiceText_BuffHealing",
+		-- 	{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryDoorHealTrait_Patroclus", } },
+		-- },
+		-- {
+		-- 	ChoiceText = "ChoiceText_BuffWeapon",
+		-- 	{ PostLineThreadedFunctionName = "PatroclusBuff", PostLineFunctionArgs = { TraitName = "TemporaryImprovedWeaponTrait_Patroclus", } },
+		-- },
+	},
 	EurydiceBenefitChoices = {
 		SkipComponents = {
 			"OlympusBackground",
@@ -404,18 +433,6 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 				Rarity = "Common",
 			},
 		},
-		-- {
-		-- 	ChoiceText = "ChoiceText_BuffSlottedBoonRarity",
-		-- 	{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { BoonRarity = true } },
-		-- },
-		-- {
-		-- 	ChoiceText = "ChoiceText_BuffMegaPom",
-		-- 	{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { StackTraits = true } },
-		-- },
-		-- {
-		-- 	ChoiceText = "ChoiceText_BuffFutureBoonRarity",
-		-- 	{ PostLineThreadedFunctionName = "EurydiceBuff", PostLineFunctionArgs = { BuffFutureRarity = true } },
-		-- },
 	},
 }
 
@@ -3652,7 +3669,7 @@ mod.NPCData = mod.NPCData or {
 			{ Cue = "/VO/Sisyphus_0267", RequiredTextLines = { "SisyphusMeeting06" } },
 		},
 	},
-	-- Manually replace PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] with mod.PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] to make it easier
+	-- Manually replaced PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] with mod.PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] to make it easier
 	-- FunctionName is still replaced in NPCData.lua
 	-- Eurydice, Id = 514436
 	NPC_Eurydice_01 = {
@@ -6598,6 +6615,3949 @@ mod.NPCData = mod.NPCData or {
 				-- Having fun?
 				{ Cue = "/VO/Eurydice_0194", RequiredPlayedThisRoom = { "/VO/Eurydice_0166", "/VO/Eurydice_0167", "/VO/Eurydice_0183", "/VO/Eurydice_0184", "/VO/Eurydice_0189", "/VO/Eurydice_0191" }, },
 			}
+		},
+	},
+	-- Manually replaced PresetEventArgs.PatroclusGreeting/Muttering etc. with mod.PresetEventArgs.___ to make it easier
+	-- Patroclus
+	NPC_Patroclus_01 =
+	{
+		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
+
+		UseText = "UseTalkToPatroclus",
+		AnimOffsetZ = 160,
+		EmoteOffsetX = -70,
+		EmoteOffsetY = -160,
+		Portrait = "Portrait_Patroclus_Default_01",
+		Groups = { "NPCs" },
+
+		ActivateRequirements =
+		{
+			RequiredMinCompletedRuns = 1,
+		},
+
+		SpawnUnthreadedEvents =
+		{
+			{
+				-- Standup after question completion
+				FunctionName = "GenericPresentation",
+				Args =
+				{
+					SetAnimation = "PatroclusIdleStanding",
+					OverwriteSourceKeys =
+					{
+						AnimOffsetZ = 205,
+						Portrait = "Portrait_Patroclus_Neutral_01",
+					},
+					ActivateIds = { 563040 },
+				},
+				GameStateRequirements =
+				{
+					RequiredTextLines = { "MyrmidonReunionQuestComplete" },
+				},
+			},
+		},
+
+		InteractTextLineSets =
+		{
+			PatroclusFirstMeeting =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				{
+					Cue = "/VO/Patroclus_0002",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					PreLineWait = 0.35,
+					Text = "...Go on, stranger. Plenty more shades looking to fight with you out there."
+				},
+				{
+					Cue = "/VO/ZagreusField_1704",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "I'm just passing through. You seem less warlike than the rest. May I ask your name, sir? I'm Zagreus."
+				},
+				{
+					Cue = "/VO/Patroclus_0004",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Text =
+					"Names are there to be forgotten, stranger. You shouldn't be here. May the Fates favor your journey. But just in case they don't, here. Why don't you take this?"
+				},
+				{
+					Text = "Patroclus_OfferText03",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			-- alt below
+			PatroclusMeeting02 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusFirstMeeting" },
+				RequiredFalseTextLines = { "PatroclusAboutAchilles01B", "PatroclusMeeting02B" },
+				RequiredCodexEntry =
+				{
+					EntryName = "NPC_Patroclus_01",
+					EntryIndex = 1,
+				},
+				{
+					Cue = "/VO/ZagreusField_1705",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Is something wrong, there, sir? I mean, shouldn't you be up and about, competing for eternal pride and glory and all that?"
+				},
+				{
+					Cue = "/VO/Patroclus_0105",
+					Text =
+					"What's the use? Let's say we fought, if anybody asks. Now, go. I've no quarrel with you, besides. I'll just remain here, comfortably at rest, for some untold millennia, I guess. Have a nice... whatever time it is."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusMeeting02B =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				RequiredFalseTextLines = { "PatroclusAboutAchilles01B", "PatroclusMeeting02" },
+				{
+					Cue = "/VO/ZagreusField_1705",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Is something wrong, there, sir? I mean, shouldn't you be up and about, competing for eternal pride and glory and all that?"
+				},
+				{
+					Cue = "/VO/Patroclus_0105",
+					Text =
+					"What's the use? Let's say we fought, if anybody asks, now go. I've no quarrel with you, besides. I'll just remain here, comfortably at rest, for some untold millennia, I guess. Have a nice... whatever time it is."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusMeeting03 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B" },
+				RequiredFalseTextLines = { "PatroclusAboutAchilles01B", "PatroclusAboutMyrmidonReunionQuest01" },
+				{
+					Cue = "/VO/Patroclus_0106",
+					Text = "Still toiling around within Elysium, I see. Battling my brethren, in the name of glory, is that it?"
+				},
+				{
+					Cue = "/VO/ZagreusField_1706",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'm heading for the surface. Though your brethren are slowing me down. Whether for glory or at my father's behest."
+				},
+				{
+					Cue = "/VO/Patroclus_0107",
+					Text =
+					"Your father...? {#DialogueItalicFormat}Ah{#PreviousFormat}, that's right, but you're the Prince, aren't you. You must see plainly, then, what your birthright amounts to: You're no better off than any of us here. Now, go."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusMeeting04 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusAboutAchilles01B", "PatroclusAboutAchilles01C_01", "PatroclusAboutAchilles01C_02" },
+				RequiredFalseTextLines = { "PatroclusAboutAchilles01A", "PatroclusAboutAchilles06", "PatroclusMeeting06B" },
+				{
+					Cue = "/VO/Patroclus_0108",
+					Text =
+					"You again. I told you to stay clear of me. Your father's quite the big shot around here, but that means nothing to me, understand? Go, and tell him he can cast me in the pits of Tartarus, for all I care. It'd be a welcome change of pace from being put to pasture here."
+				},
+				{
+					Text = "Patroclus_OfferText05",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusMeeting05 =
+			{
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusMeeting04" },
+				RequiredFalseTextLines = { "PatroclusAboutAchilles06", "PatroclusMeeting06B" },
+				{
+					Cue = "/VO/Patroclus_0109",
+					Text = "I was unkind last time, stranger. Forgive my indiscretions there. Or don't. But I wished to apologize."
+				},
+				{
+					Cue = "/VO/ZagreusField_1713",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Think nothing of it, sir. Though if there's something I could do to help, you'd tell me, wouldn't you?"
+				},
+				{
+					Cue = "/VO/Patroclus_0110",
+					Text =
+					"You have no power to release me from this coil, I'm afraid. So just go on about your business, and leave me to mine."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			-- alt below
+			PatroclusMeeting06 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusMeeting05" },
+				RequiredFalseTextLines = { "PatroclusMeeting06B", "PatroclusGift08_A" },
+				{
+					Cue = "/VO/Patroclus_0111",
+					Text =
+					"Stranger, I am warning you: If you keep showing up like this, I'm going to have to find a new nickname for you."
+				},
+				{
+					Cue = "/VO/ZagreusField_1714",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"No need to go out of your way, there, sir. We're just acquaintances. I don't know anything about you, either."
+				},
+				{
+					Cue = "/VO/Patroclus_0112",
+					Text =
+					"And you are better off. This place is for the greatest of the Greeks. Do I seem like the sort to fit in, here? Go on and chat with Theseus, or someone of that sort."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusMeeting06B =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusAboutAchilles03A", "PatroclusAboutAchilles03B" },
+				RequiredFalseTextLines = { "PatroclusMeeting06", "PatroclusGift08_A" },
+				{
+					Cue = "/VO/Patroclus_0111",
+					Text =
+					"Stranger, I am warning you: If you keep showing up like this, I'm going to have to find a new nickname for you."
+				},
+				{
+					Cue = "/VO/ZagreusField_1921",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"No need to go out of your way, there, sir. I rather feel like a stranger around here. I have no plans to extend my stay."
+				},
+				{
+					Cue = "/VO/Patroclus_0112",
+					Text =
+					"And you are better off. This place is for the greatest of the Greeks. Do I seem like the sort to fit in, here? Go on and chat with Theseus, or someone of that sort."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			-- alt below
+			PatroclusMeeting07 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting06", "PatroclusMeeting06B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete", "PatroclusMeeting07B" },
+				{
+					Cue = "/VO/Patroclus_0113",
+					Text =
+					"Tell me, stranger, if it pleases you. How is it you keep running into me...? I thought this the remotest corner of Elysium."
+				},
+				{
+					Cue = "/VO/ZagreusField_1715",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"The ever-shifting chambers of the Underworld leave quite a bit to chance. I took our meetings merely for coincidence."
+				},
+				{
+					Cue = "/VO/Patroclus_0114",
+					Text =
+					"When chance is too far-fetched to be believed, then it's the Fates at play. Or something else. I don't know whether to believe you, but I know that I want you to leave me, now."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusMeeting07B =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MyrmidonReunionQuestComplete" },
+				RequiredFalseTextLines = { "PatroclusMeeting07" },
+				{
+					Cue = "/VO/Patroclus_0113",
+					Text =
+					"Tell me, stranger, if it pleases you. How is it you keep running into me...? I thought this the remotest corner of Elysium."
+				},
+				{
+					Cue = "/VO/ZagreusField_1715",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"The ever-shifting chambers of the Underworld leave quite a bit to chance. I took our meetings merely for coincidence."
+				},
+				{
+					Cue = "/VO/Patroclus_0422",
+					Text = "When chance is too far-fetched to be believed, then it's the Fates at play. Or something else."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusMeeting08 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting06", "PatroclusMeeting06B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				{
+					Cue = "/VO/Patroclus_0131",
+					Text =
+					"What is it this time, stranger? You're quite effective at locating me, but not so good at leaving me in peace."
+				},
+				{
+					Cue = "/VO/ZagreusField_1729",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Just on one of my little jaunts through paradise is all, sir. Happened to be on the way toward my destination."
+				},
+				{
+					Cue = "/VO/Patroclus_0132",
+					Text =
+					"You think this place a paradise? At least down in the depths, there are so many other souls with whom to share one's misery. No offense... I know that you're just passing through."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusMeeting09 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting06", "PatroclusMeeting06B" },
+				{
+					Cue = "/VO/Patroclus_0133",
+					Text =
+					"So, stranger. How goes willful disobedience of late? Would that I, too, had it within me to defy the gods."
+				},
+				{
+					Cue = "/VO/ZagreusField_1730",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, you know, it's going. That I've been able to make it this far means I am getting somewhere, I suppose. No thanks to all your brethren in Elysium."
+				},
+				{
+					Cue = "/VO/Patroclus_0134",
+					Text =
+					"No use trying to reason with my brethren here. Many of the shades whom you've encountered, why, I watched them throw away their lives when they were men. Yet still they seek to prove to one another and themselves that they are great warriors."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusMeeting10 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusAboutAchilles01A", "PatroclusAboutAchilles01B", "PatroclusAboutAchilles01C_01", "PatroclusAboutAchilles01C_02" },
+				RequiredFalseTextLines = { "PatroclusAboutMyrmidonReunionQuest01" },
+				{
+					Cue = "/VO/ZagreusField_3504",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Say, isn't that the Lethe right nearby? You've been through so much, don't you ever... you could just drink deeply of the River of Forgetfulness, and be done with, no?"
+				},
+				{
+					Cue = "/VO/Patroclus_0219",
+					Text =
+					"It has been rather tempting, yes. And I have taken sips, from time to time. But I've some memories I'm not quite ready to give up on, yet."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusMeeting11 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift04" },
+				RequiredAnyTextLines = { "PatroclusMeeting06", "PatroclusMeeting06B", "PatroclusAboutMyrmidonReunionQuest01" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/ZagreusField_3510",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You ever want to travel past this glade, sir? Elysium in all its splendors... there's a lot to see. Sure you're all right?"
+				},
+				{
+					Cue = "/VO/Patroclus_0409",
+					Text =
+					"I'm sure enough, stranger. I traveled far and wide whilst I drew breath. That got me rid of any wanderlust. This little corner suits me well, I think. I have the statue there, the river... it's quite nice."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+
+			-- if you know patroclus' name but don't know his connection to achilles
+			PatroclusAboutBracer01A =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusFirstMeeting" },
+				RequiredFalseTextLines = { "AchillesGift08", "AchillesGift06_A", "PatroclusAboutBracer01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D", "PatroclusAboutBracer01E", "PatroclusAboutAchilles02", "MyrmidonReunionQuestComplete" },
+				RequiredTrait = "DirectionalArmorTrait",
+				RequiredCodexEntry =
+				{
+					EntryName = "NPC_Patroclus_01",
+					EntryIndex = 1,
+				},
+				{
+					Cue = "/VO/Patroclus_0128",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"What is that on your wrist, there, stranger? Let me see, is that... a bracer of the myrmidons. But, then..."
+				},
+				{
+					Cue = "/VO/ZagreusField_1727",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Wait, this? How did you know? It's just a keepsake from a friend."
+				},
+				{
+					Cue = "/VO/Patroclus_0129",
+					Text =
+					"A keepsake? From a friend...? You tell your friend, then, that Patroclus waits for him, and that he holds no grudge, should he return to him."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			-- if you know patroclus' name and know his connection to achilles
+			PatroclusAboutBracer01B =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusFirstMeeting", "AchillesGift08", "AchillesGift06_A" },
+				RequiredFalseTextLines = { "PatroclusAboutAchilles01B", "PatroclusAboutBracer01A", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D", "PatroclusAboutBracer01E", "MyrmidonReunionQuestComplete" },
+				RequiredTrait = "DirectionalArmorTrait",
+				RequiredCodexEntry =
+				{
+					EntryName = "NPC_Patroclus_01",
+					EntryIndex = 1,
+				},
+				{
+					Cue = "/VO/Patroclus_0128",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"What is that on your wrist, there, stranger? Let me see, is that... a bracer of the myrmidons. But, then..."
+				},
+				{
+					Cue = "/VO/ZagreusField_1728",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You recognize it, then. Of course. It's from Achilles, sir. He gifted it to me. He trained me."
+				},
+				{
+					Cue = "/VO/Patroclus_0130",
+					Text =
+					"I see... a gift. Well, then, you let Achilles know Patroclus waits for him, and holds no grudge, should he return to him."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			-- if you don't know patroclus' name and don't know his connection to achilles
+			PatroclusAboutBracer01C =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "PatroclusFirstMeeting" },
+				RequiredFalseTextLines = { "PatroclusAboutAchilles01B", "PatroclusMeeting02", "PatroclusAboutBracer01A", "PatroclusAboutBracer01B", "PatroclusAboutBracer01D", "PatroclusAboutBracer01E", "MyrmidonReunionQuestComplete" },
+				RequiredTrait = "DirectionalArmorTrait",
+				{
+					Cue = "/VO/Patroclus_0128",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"What is that on your wrist, there, stranger? Let me see, is that... a bracer of the myrmidons. But, then..."
+				},
+				{
+					Cue = "/VO/ZagreusField_1727",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Wait, this? How did you know? It's just a keepsake from a friend."
+				},
+				{
+					Cue = "/VO/Patroclus_0129",
+					Text =
+					"A keepsake? From a friend...? You tell your friend, then, that Patroclus waits for him, and that he holds no grudge, should he return to him."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			-- if you don't know patroclus' name but know his connection to achilles
+			PatroclusAboutBracer01D =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "PatroclusFirstMeeting" },
+				RequiredAnyTextLines = { "AchillesGift08", "AchillesGift06_A" },
+				RequiredFalseTextLines = { "PatroclusAboutAchilles01B", "PatroclusMeeting02", "PatroclusAboutBracer01A", "PatroclusAboutBracer01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01E", "MyrmidonReunionQuestComplete" },
+				RequiredTrait = "DirectionalArmorTrait",
+				{
+					Cue = "/VO/Patroclus_0128",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Text =
+					"What is that on your wrist, there, stranger? Let me see, is that... a bracer of the myrmidons. But, then..."
+				},
+				{
+					Cue = "/VO/ZagreusField_1728",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You recognize it, then. Of course. It's from Achilles, sir. He gifted it to me. He trained me."
+				},
+				{
+					Cue = "/VO/Patroclus_0130",
+					Text =
+					"I see... a gift. Well, then, you let Achilles know Patroclus waits for him, and holds no grudge, should he return to him."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			-- if you know patroclus' name, and have discussed achilles already
+			PatroclusAboutBracer01E =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusAboutAchilles01A", "PatroclusAboutAchilles01B", "PatroclusAboutAchilles01C_01", "PatroclusAboutAchilles01C_02" },
+				RequiredFalseTextLines = { "PatroclusAboutBracer01A", "PatroclusAboutBracer01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D", "MyrmidonReunionQuestComplete" },
+				RequiredTrait = "DirectionalArmorTrait",
+				{
+					Cue = "/VO/Patroclus_0171",
+					Text =
+					"What is that on your wrist, there, stranger? Let me see, is that... a bracer of the myrmidons. Achilles..."
+				},
+				{
+					Cue = "/VO/ZagreusField_3472",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"This is his bracer, yes. You recognize it, then. Were you a myrmidon, yourself? I heard they were unstoppable."
+				},
+				{
+					Cue = "/VO/Patroclus_0172",
+					Text =
+					"Well, now... if we were so unstoppable, we'd not be here, would we? May that bracer protect you more than its like protected our phalanxes."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutAchillesAspect01 =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAboutAchilles02" },
+				RequiredTrait = "SpearTeleportTrait",
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0173",
+					Text =
+					"Must say that's an impressive spear you've got, there, stranger. Rather like the one Achilles held. He gave it to you, then? Followed him beyond the grave, only to be handed off."
+				},
+				{
+					Cue = "/VO/ZagreusField_3473",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's... a bit more complicated than that, sir, though yes. This is the very same as he once wielded. I am honored to carry it now."
+				},
+				{
+					Cue = "/VO/Patroclus_0174",
+					Text =
+					"I'll bet. Perhaps you'll even come to surpass the body count Achilles piled up with it back in his day, seeing as you seem to have limitless opportunity to use it."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutAchillesAspect02 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAboutAchillesAspect01" },
+				RequiredTrait = "SpearTeleportTrait",
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0175",
+					Text =
+					"You know, stranger, there was a time Achilles would have killed someone for taking up his spear. But there you are, like you own it."
+				},
+				{
+					Cue = "/VO/ZagreusField_3474",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I don't think anybody owns this spear, sir. I'm hanging onto it for the time being. Though I don't think I'll be the last to do so."
+				},
+				{
+					Cue = "/VO/Patroclus_0176",
+					Text = "Oh, there's no need to get all philosophical about it. It's a killing weapon. Nothing more."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+
+			-- if you don't know his connection to achilles already
+			PatroclusAboutAchilles01A =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusMeeting06" },
+				RequiredFalseTextLines = { "AchillesAboutPatroclus01A", "PatroclusAboutAchilles01B", "PatroclusAboutAchilles01C_01", "PatroclusAboutAchilles01C_02", "PatroclusAboutAchilles02" },
+				{
+					Cue = "/VO/Patroclus_0115",
+					Text = "You mentioned something of your parentage, stranger. I have a question on that subject, if you please."
+				},
+				{
+					Cue = "/VO/ZagreusField_1716",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "I please, sir. What's your question? Ask away."
+				},
+				{
+					Cue = "/VO/Patroclus_0116",
+					Text =
+					"Your father must have records of the dead. So I was wondering if you might do for me a favor, and look up the whereabouts of someone I once knew."
+				},
+				{
+					Cue = "/VO/ZagreusField_1717",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenial_Full",
+					PreLineAnimTarget = "Hero",
+					Text = "You've done a lot for me. The least I can do is ask around. Who is it that you're looking for?"
+				},
+				{
+					Cue = "/VO/Patroclus_0117",
+					Text =
+					"I seek one called Achilles. Was rather famous once among the living, but among the dead, who knows. I thought he would be here, but he is not."
+				},
+				{
+					Cue = "/VO/ZagreusField_1718",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineWait = 0.35,
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"...Achilles... I've heard the name before. And, {#DialogueItalicFormat}erm{#PreviousFormat}, can I ask why you wish to know of him? In case it happens to come up."
+				},
+				{
+					Cue = "/VO/Patroclus_0118",
+					Text = "It's just... I simply miss him, stranger. That is all."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			-- if you do know his connection to achilles
+			PatroclusAboutAchilles01B =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusFirstMeeting" },
+				RequiredAnyTextLines = { "AchillesAboutPatroclus01A", "AchillesAboutPatroclus01B", "AchillesAboutPatroclus01C", "AchillesAboutPatroclus01D" },
+				RequiredFalseTextLines = { "PatroclusAboutAchilles01C_01", "PatroclusAboutAchilles01C_02", "PatroclusAboutBracer01A", "PatroclusAboutBracer01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D", "PatroclusAboutAchilles02" },
+				{
+					Cue = "/VO/Patroclus_0119",
+					Text = "Something the matter, there, stranger? Or have you come to torment me some more with idle chat?"
+				},
+				{
+					Cue = "/VO/ZagreusField_1720",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You know Achilles, don't you, sir. You're Patroclus. Achilles... serves us at my home. He trained me. He sends you his regards and love. He says to tell you he is thinking of you always."
+				},
+				{
+					Cue = "/VO/Patroclus_0120",
+					Text =
+					"...That name. So then you've seen him, have you. In your father's house. And want me to believe he said all that? {#DialogueItalicFormat}Tsk{#PreviousFormat}. You'll forgive me if I am a little skeptical. In life, I left Achilles. And in death, he left me. We're even. And we've nothing left to say to one another, now."
+				},
+				{
+					Cue = "/VO/ZagreusField_1721",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"But, that can't possibly be true. There must be some misunderstanding here. You haven't spoken since you died?"
+				},
+				{
+					Cue = "/VO/Patroclus_0121",
+					Text =
+					"We haven't, no. And I don't think we shall. But, you can humor him for me, I guess. Tell him I'm doing perfectly all right, won't you?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+
+			-- if you do know his connection to achilles, specifically via the bracer conv with patroclus
+			-- there is a near-copy of this below due to very similar but mutually exclusive requirements
+			PatroclusAboutAchilles01C_01 =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusFirstMeeting" },
+				-- Bracer Requirements Here
+				RequiredAnyTextLines = { "AchillesAboutPatroclus01C", "AchillesAboutPatroclus01D" },
+				RequiredAnyOtherTextLines = { "PatroclusAboutBracer01A", "PatroclusAboutBracer01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				-- note: PatroclusAboutAchilles01C no longer exists but is noted here for backward compatibility
+				RequiredFalseTextLines = { "PatroclusAboutAchilles01B", "PatroclusAboutAchilles01C_02", "PatroclusAboutAchilles01C", "PatroclusAboutAchilles02" },
+				{
+					Cue = "/VO/Patroclus_0119",
+					Text = "Something the matter, there, stranger? Or have you come to torment me some more with idle chat?"
+				},
+				{
+					Cue = "/VO/ZagreusField_1910",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Patroclus. I know who you are, sir. And, you know Achilles. He serves us at my home. He trained me. He sends you his regards and love. He says to tell you he is thinking of you always."
+				},
+				{
+					Cue = "/VO/Patroclus_0159",
+					PreLineWait = 0.35,
+					Text =
+					"...{#DialogueItalicFormat}Ah{#PreviousFormat}. So then you've seen him, have you. In your father's house. And want me to believe he said all that? {#DialogueItalicFormat}Tsk{#PreviousFormat}. You'll forgive me if I am a little skeptical. In life, I left Achilles. And in death, he left me. We're even. And we've nothing left to say to one another, now."
+				},
+				{
+					Cue = "/VO/ZagreusField_1721",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"But, that can't possibly be true. There must be some misunderstanding here. You haven't spoken since you died?"
+				},
+				{
+					Cue = "/VO/Patroclus_0121",
+					Text =
+					"We haven't, no. And I don't think we shall. But, you can humor him for me, I guess. Tell him I'm doing perfectly all right, won't you?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			-- very similar to the above but with a variant of the requirements
+			PatroclusAboutAchilles01C_02 =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				-- Bracer Requirements Here
+				RequiredTextLines = { "PatroclusFirstMeeting", "AchillesAboutPatroclus01B", },
+				RequiredAnyTextLines = { "AchillesAboutPatroclus01C", "PatroclusAboutBracer01A", "PatroclusAboutBracer01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				RequiredAnyOtherTextLines = { "PatroclusAboutBracer01A", "PatroclusAboutBracer01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				RequiredFalseTextLines = { "PatroclusAboutAchilles01B", "PatroclusAboutAchilles01C_01", "PatroclusAboutAchilles01C", "PatroclusAboutAchilles02" },
+				{
+					Cue = "/VO/Patroclus_0119",
+					Text = "Something the matter, there, stranger? Or have you come to torment me some more with idle chat?"
+				},
+				{
+					Cue = "/VO/ZagreusField_1910",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Patroclus. I know who you are, sir. And, you know Achilles. He serves us at my home. He trained me. He sends you his regards and love. He says to tell you he is thinking of you always."
+				},
+				{
+					Cue = "/VO/Patroclus_0159",
+					PreLineWait = 0.35,
+					Text =
+					"...{#DialogueItalicFormat}Ah{#PreviousFormat}. So then you've seen him, have you. In your father's house. And want me to believe he said all that? {#DialogueItalicFormat}Tsk{#PreviousFormat}. You'll forgive me if I am a little skeptical. In life, I left Achilles. And in death, he left me. We're even. And we've nothing left to say to one another, now."
+				},
+				{
+					Cue = "/VO/ZagreusField_1721",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"But, that can't possibly be true. There must be some misunderstanding here. You haven't spoken since you died?"
+				},
+				{
+					Cue = "/VO/Patroclus_0121",
+					Text =
+					"We haven't, no. And I don't think we shall. But, you can humor him for me, I guess. Tell him I'm doing perfectly all right, won't you?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+
+			PatroclusAboutAchilles02 =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "AchillesAboutPatroclus02", "AchillesAboutPatroclus02B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				{
+					Cue = "/VO/Patroclus_0122",
+					Text =
+					"So, how's Achilles doing lately, stranger? I figured you could tell me since you've all this access to him, and I don't."
+				},
+				{
+					Cue = "/VO/ZagreusField_1722",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"He's forced to do my father's bidding. And sworn to secrecy, apparently. I don't pretend to fully understand. But, all in all, I think he's doing well. I hope... you'll see him for yourself."
+				},
+				{
+					Cue = "/VO/Patroclus_0123",
+					Text =
+					"You don't fully understand, but hope. I see. Well, if you do get to the bottom of this little mystery at some point, you'll indulge me, won't you?"
+				},
+				{
+					Cue = "/VO/ZagreusField_1723",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					Text = "I'll... see what I can do about it, sir."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+
+			-- alt below
+			PatroclusAboutAchilles03A =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesAboutPatroclus03" },
+				RequiredFalseTextLines = { "PatroclusAboutAchilles03B", "PatroclusGift04" },
+				{
+					Cue = "/VO/Patroclus_0124",
+					Text =
+					"He's never going to return to me, is he. He's in your father's service now. He's never getting out. Neither are you."
+				},
+				{
+					Cue = "/VO/ZagreusField_1724",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "No. That's not acceptable to me. None of it."
+				},
+				{
+					Cue = "/VO/Patroclus_0125",
+					Text = "How bold. So what do you intend to do? You're leaving, anyway."
+				},
+				{
+					Cue = "/VO/ZagreusField_1725",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					Text =
+					"I'll figure something out. But you do something for me, in the mean time: Don't give in to what you're feeling now, all right? Achilles loves you still, like you don't know."
+				},
+				{
+					Cue = "/VO/Patroclus_0126",
+					Text =
+					"Does he? I'm past the point of making promises, but... I pray the Fates help you in your endeavors, there."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutAchilles03B =
+			{
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesAboutPatroclus03", "PatroclusGift04" },
+				RequiredFalseTextLines = { "PatroclusAboutAchilles03A" },
+				{
+					Cue = "/VO/Patroclus_0124",
+					Text =
+					"He's never going to return to me, is he. He's in your father's service now. He's never getting out. Neither are you."
+				},
+				{
+					Cue = "/VO/ZagreusField_1724",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "No. That's not acceptable to me. None of it."
+				},
+				{
+					Cue = "/VO/Patroclus_0125",
+					Text = "How bold. So what do you intend to do? You're leaving, anyway."
+				},
+				{
+					Cue = "/VO/ZagreusField_1725",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					Text =
+					"I'll figure something out. But you do something for me, in the meantime: Don't give in to what you're feeling now, all right? Achilles loves you still, like you don't know."
+				},
+				{
+					Cue = "/VO/Patroclus_0127",
+					Text =
+					"I'm past the point of making promises, but... thank you for your words. I love him still, in turn. I pray the Fates help you in your endeavors, there."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+
+			PatroclusAboutAchilles04 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesAboutPatroclus04" },
+				{
+					Cue = "/VO/Patroclus_0177",
+					Text =
+					"He's just as obstinate as ever, isn't he? Always refused to budge. He ever tell you of the war in which we fought? {#DialogueItalicFormat}I {#PreviousFormat}fought, I should say. He could have ended it. But he refused to take up arms."
+				},
+				{
+					Cue = "/VO/ZagreusField_3475",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles hasn't been particularly forthcoming about his mortal days, no. So he wouldn't fight? I've heard that mortals sometimes frown on that, but... why should he have fought if he didn't believe in the cause?"
+				},
+				{
+					Cue = "/VO/Patroclus_0178",
+					Text =
+					"He {#DialogueItalicFormat}shared {#PreviousFormat}our cause! So what if it was not completely his? If not for his stubbornness, I... well... I would have come here just a bit later, I think."
+				},
+				{
+					Cue = "/VO/ZagreusField_3476",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"He blames himself for what happened to you, you know. I figured he failed to defend you or something, not that... he didn't fight at all. Although, he said something about how, once you died, he shortly followed in a rage..."
+				},
+				{
+					Cue = "/VO/Patroclus_0179",
+					Text =
+					"I wouldn't know a thing about that, stranger, for you see... I was already dead. Getting my place here in the afterlife all sorted out. Took quite some time, getting accustomed to all this."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutAchilles05 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesAboutPatroclusBackstory01", "PatroclusGift04" },
+				{
+					Cue = "/VO/Patroclus_0180",
+					Text =
+					"A question, if you don't mind, stranger? Because, I've had one nagging at me since we last discussed the subject. What, exactly, happened to Achilles, can you say? After I died, that is. I've heard the rumors, but... I don't trust any of this boastful lot."
+				},
+				{
+					Cue = "/VO/ZagreusField_3477",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, from what I gathered, sir... after you fell, he was overcome with grief. And anger. He joined the war, just like you urged. And, single-handedly, he almost ended it."
+				},
+				{
+					Cue = "/VO/Patroclus_0181",
+					Text =
+					"So then, he threw away his life. Soon enough after I lost mine. Yet, despite vanquishing an army on his own, he wound up in the lowest pits of Tartarus? Instead of here, among the great?"
+				},
+				{
+					Cue = "/VO/ZagreusField_3478",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"You should know, sir. You were buried together. Your ashes, that is. It was his final request. As for how he came to be at my father's house, that's something I think he can best explain. And I will do everything I can to make sure that he has the opportunity."
+				},
+				{
+					Cue = "/VO/Patroclus_0182",
+					PreLineWait = 0.35,
+					Text =
+					"...Our ashes, you say. Together? {#DialogueItalicFormat}Tsk. {#PreviousFormat}The fool. We could have lived! Not been reduced to meal for the worms. But... I appreciate the information, stranger. Now... please, go."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutAchilles06 =
+			{
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAboutAchilles05" },
+				{
+					Cue = "/VO/Patroclus_0183",
+					PreLineWait = 0.35,
+					Text =
+					"...Forgive me, stranger. For, in retrospect, I was too terse after you told me what became of my Achilles. Tales of his climactic battle, I had heard. The stuff about... his ashes, and my own... that was all new."
+				},
+				{
+					Cue = "/VO/ZagreusField_3479",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"No need to even ask forgiveness, sir. Achilles is one of my closest friends, but.. he doesn't care to talk about himself. About those times. It must be very painful. For the both of you."
+				},
+				{
+					Cue = "/VO/Patroclus_0184",
+					Text =
+					"Oh, we've all seen our share of pain, by now. But... knowing that he cared for me, in the end... {#DialogueItalicFormat}after {#PreviousFormat}the end... it dulls the feeling of it, for a bit. As do these conversations, I guess."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutMyrmidonReunionQuest01 =
+			{
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalkImportant",
+				RequiredTextLines = { "AchillesAboutPatroclus05", "PatroclusAboutAchilles06", "PatroclusGift06" },
+				{
+					Cue = "/VO/Patroclus_0185",
+					PreLineWait = 0.35,
+					Text =
+					"I've meant to ask you something, stranger. Would you mind doing me a favor, please? If it happens to come up along your path. Suppose I ought to tell it to you first, prior to asking a response."
+				},
+				{
+					Cue = "/VO/ZagreusField_3480",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "No, of course, sir, what is it? What's on your mind?"
+				},
+				{
+					Cue = "/VO/Patroclus_0186",
+					Text =
+					"If I know my Achilles, then he's being rather guarded, when it comes to this predicament we're in. How can somebody be so brash yet hate to take unnecessary risks? Just let him know I said to risk it all."
+				},
+				{
+					Cue = "/VO/ZagreusField_3481",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Risk it all? Risk {#DialogueItalicFormat}what {#PreviousFormat}all? He wants what's best for you. He wouldn't want anything to happen."
+				},
+				{
+					Cue = "/VO/Patroclus_0187",
+					Text =
+					"It's already long since happened. I daresay that, right now, provided what you've said is true, then... it appears we've more to gain than lose. Isn't fear for the weak?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+
+			PatroclusWithAchilles01 =
+			{
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "MyrmidonReunionQuestComplete" },
+				IsIdAlive = 563036,
+				{
+					Cue = "/VO/Achilles_0219",
+					Speaker = "NPC_Achilles_Story_01",
+					Portrait = "Portrait_MaleGhost_Default_01",
+					SetFlagFalse = "AchillesReunionInProgress",
+					Text =
+					"I thought we might run into you, but... how strange to see you face-to-face out here, lad. To see this place myself. I still can't quite believe any of this..."
+				},
+				{
+					Cue = "/VO/Patroclus_0188",
+					Text =
+					"He really can't. Though I keep telling him, it's true. Nothing's accomplished without risk, isn't that so? But, we of course have you to thank, stranger. Our troubles needn't have been your concern."
+				},
+				{
+					Cue = "/VO/ZagreusField_3482",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Nonsense, sir. You're my friend. And Achilles... I don't know where I would even be, if not for you."
+				},
+				{
+					Cue = "/VO/Patroclus_0189",
+					Text =
+					"Well, no need to get emotional, is there? We myrmidons, we're not the sentimental type. Achilles is simply on break, is all. From a demanding job. You've a demanding job as well, so here! My customary gift."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusWithAchilles02 =
+			{
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0190",
+					Text =
+					"Well if it isn't the ward of Achilles, come to visit us. I don't know how I can ever repay you, stranger. I'm quite sure that it isn't possible."
+				},
+				{
+					Cue = "/VO/Achilles_0220",
+					Speaker = "NPC_Achilles_Story_01",
+					Portrait = "Portrait_MaleGhost_Default_01",
+					Text = "I reached more or less the same conclusion, Pat."
+				},
+				{
+					Cue = "/VO/ZagreusField_3483",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"How about you just keep offering me those premium goods you have no interest in when I pass through, and we can call it even, sir?"
+				},
+				{
+					Cue = "/VO/Patroclus_0191",
+					Text =
+					"That I had plans to do, regardless, though... if you should think of something else at any point, please do let either of us know."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusWithAchilles03 =
+			{
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles02" },
+				RequiredSeenRooms = { "C_Boss01" },
+				IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0192",
+					Text =
+					"Good, there you are, stranger. Settle something for us quickly, hm? Would Achilles not make for the perfect Champion of Elysium? For I think almost anybody would be better than the current one."
+				},
+				{
+					Cue = "/VO/Achilles_0221",
+					Speaker = "NPC_Achilles_Story_01",
+					Portrait = "Portrait_MaleGhost_Default_01",
+					Text =
+					"I think I'd rather maintain watch over a nearly empty hall than battle all the shades around here, Pat."
+				},
+				{
+					Cue = "/VO/ZagreusField_3484",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I, too, would vastly prefer having to contend with Theseus rather than yourself, Achilles. Although, that's not to say I disagree that almost anybody would be better in the role than him."
+				},
+				{
+					Cue = "/VO/Patroclus_0193",
+					Text = "It seems, then, I am overruled. But I know Champion material when I see it, and I see it now."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+
+			PatroclusAfterMyrmidonReunionQuest01 =
+			{
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0194",
+					Text =
+					"Achilles is returned to work for now... but, waiting for him, knowing he'll return... rather than waiting for the sake of it, for nothing... such a different feeling, stranger. I'd forgotten it entirely, I think."
+				},
+				{
+					Cue = "/VO/ZagreusField_3485",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'm happy for the both of you. So, is everything all right, then? The circumstances under which you were separated in life... it's unimaginable, really. How does one move on from a thing like that?"
+				},
+				{
+					Cue = "/VO/Patroclus_0195",
+					Text =
+					"Anger fades, I guess, stranger. Even the famous anger of Achilles. Anger burns hot, then burns out. What's left is a dull ache, but... underneath it, there was something else. It felt as though... well, I was still alive. That feeling... it's worth holding onto."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAfterMyrmidonReunionQuest02 =
+			{
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAfterMyrmidonReunionQuest01" },
+				RequiredAnyTextLines = { "PatroclusMeeting06", "PatroclusMeeting06B" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0196",
+					Text =
+					"It's good to see you again, stranger. You don't mind if I keep calling you that, no? Couldn't find a better nickname for you, after all. Besides... I don't want to cause you any trouble."
+				},
+				{
+					Cue = "/VO/ZagreusField_3486",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Don't mind at all, Patroclus, sir. Coming from you I consider it a term of endearment."
+				},
+				{
+					Cue = "/VO/Patroclus_0393",
+					Text = "You have my thanks for that..."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+
+			PatroclusPostEnding01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAfterMyrmidonReunionQuest01", "Ending01" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0413",
+					Text =
+					"Achilles tells me that you're here to stay, at least for now, stranger. A welcome bit of news. Assuming, of course, that it's for the best, for you?"
+				},
+				{
+					Cue = "/VO/ZagreusField_4294",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I think so, sir. I'll still be passing through, and visiting the surface every opportunity I get. But it seems my place really is here. Besides, it means getting to see you every now and then, like this."
+				},
+				{
+					Cue = "/VO/Patroclus_0414",
+					Text = "That sounds agreeable to me. Then, you take care."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+
+			PatroclusPostEpilogue01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OlympianReunionQuestComplete" },
+				RequiredAnyTextLines = { "PatroclusAboutMyrmidonReunionQuest01", "PatroclusGift05" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0415",
+					Text =
+					"There's been considerable talk of late about the Queen Persephone, stranger. Your mother, it would seem? Sounds to me your tale's almost as complicated as my own."
+				},
+				{
+					Cue = "/VO/ZagreusField_4295",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's a long story, at this point, indeed. But yes. The Queen... my mother... she's returned. And, it's been really good, having her back."
+				},
+				{
+					Cue = "/VO/Patroclus_0416",
+					Text = "I can only begin to imagine. May she help govern all of this with wisdom and with grace."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+
+			PatroclusAboutKeepsake01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift01" },
+				RequiredTrait = "ShieldAfterHitTrait",
+				{
+					Cue = "/VO/ZagreusField_3499",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"This spearpoint that you gave me, sir. It's been quite useful, though I have to ask you... is there any particular significance to it? Most spearpoints aren't imbued with power such as this."
+				},
+				{
+					Cue = "/VO/Patroclus_0213",
+					Text =
+					"Oh, that. Just something I'd been meaning to get rid of, but... it can be difficult, discarding trifles from the past. Knowing it's provided you some benefit is welcome news."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutKeepsake02 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAboutKeepsake01" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				{
+					Cue = "/VO/ZagreusField_3500",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Did you once wield a spear yourself, sir? In your fighting days?"
+				},
+				{
+					Cue = "/VO/Patroclus_0214",
+					Text =
+					"Did I once wield a spear? You could say that I did. I had my moments with it, anyway. Even once slew a demigod! He's probably somewhere about. Quite awkward, running into those you killed. But in Elysium it's all taken in stride."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutWar01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAboutAchilles04" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/ZagreusField_3494",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Whatever happened with that war you mentioned, sir? If you don't mind my asking."
+				},
+				{
+					Cue = "/VO/Patroclus_0205",
+					Text =
+					"Well, truth be told, here, stranger... I do mind. You speak as one who's not experienced a war. Those of us who survived... or, you know what I mean... we do bear some responsibility to history. But, all the same, it's not a time and place to which I would return. I trust you'll understand."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutYoungAchilles01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAboutMyrmidonReunionQuest01" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/ZagreusField_3495",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "I always wondered, sir. What was Achilles like...? During his youth, I mean. If you can say."
+				},
+				{
+					Cue = "/VO/Patroclus_0206",
+					FontSize = 24,
+					Text =
+					"{#DialogueItalicFormat}Hah{#PreviousFormat}. How to describe what somebody was like? Everyone who saw him on the battlefield agreed he was magnificent, stranger. His allies and his enemies alike. But, there was more to him, I think. A certain outlook. A sense of justice. I knew him before he was a warrior. Only reason I suppose I liked him."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutTheseus01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift03" },
+				RequiredKillsLastRun = { "Theseus" },
+				RequiredKills = { Theseus = 15, Theseus2 = 1 },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0207",
+					Text =
+					"I heard you've vanquished Theseus however many times of late. Or... someone matching your description has, stranger. Almost had to laugh when I heard that. Though, I suspect he hasn't learnt a thing."
+				},
+				{
+					Cue = "/VO/ZagreusField_3496",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"What, you know him? Though, yes, he does seem rather set in his ways. Convinced himself that I'm some sort of demon from the lowest depths. Which... well, it's partly true, I guess."
+				},
+				{
+					Cue = "/VO/Patroclus_0208",
+					Text =
+					"You're quite notorious, around these parts. The tales of your father's monstrous son, kept under lock and key within his House. Fear and ignorance make for great stories, no?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusAboutTheseus02 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift01", "TheseusExtremeMeasures01" },
+				RequiredMinActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 3 },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0209",
+					Text =
+					"Couldn't help but hear the rattling of battle chariots of late. Raucous laughter and the like. You've really riled up the locals this time, stranger."
+				},
+				{
+					Cue = "/VO/ZagreusField_3497",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "Must be Theseus and his fancy Macedonian. So he's been joyriding about in that thing? Showing it off?"
+				},
+				{
+					Cue = "/VO/Patroclus_0210",
+					Text =
+					"Your arrivals are becoming a bit of an event, I'd say. And, yes, the Champion and his bull friend are likely at the center of it. You'll have to forgive me that I've no intent on attending your contests, but... well, here."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusAboutTheseus03 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAboutTheseus01", "PatroclusAboutMinotaur01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "PatroclusAboutTheseus01", "PatroclusAboutTheseus02" }, Count = 2 },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/ZagreusField_3506",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You know, for such a loudmouth obnoxious braggart, Theseus does seem to have formed a strong kinship with the Bull of Minos, hasn't he. Are they truly as inseparable as they seem? I feel bad for the Bull."
+				},
+				{
+					Cue = "/VO/Patroclus_0403",
+					Text =
+					"Sometimes it's our differences that make us drawn to one another, no? And, at other times, there's no accounting for taste. I often don't know which is which, and they can have each other, far as I'm concerned."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutMinotaur01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift03" },
+				RequiredKillsThisRun = { "Minotaur" },
+				RequiredKills = { Minotaur = 5 },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0211",
+					Text =
+					"Even the Bull of Minos couldn't stop you, huh. That's one whose way I would stay out of if I could, but... well, you'd not be here if you couldn't handle yourself, I guess."
+				},
+				{
+					Cue = "/VO/ZagreusField_3498",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You heard I battled with Asterius, here, sir? I thought you kept more to your own devices. Weren't much for conversation with the other shades."
+				},
+				{
+					Cue = "/VO/Patroclus_0212",
+					Text =
+					"Oh, you're correct in that assessment, stranger. But, as you've seen, I've no ability to stop others from coming and going as they please. So I do tend to hear a thing or two from passersby."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+
+			PatroclusAboutHeroes01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusAboutAchilles01A", "PatroclusAboutAchilles01B", "PatroclusAboutAchilles01C_01", "PatroclusAboutAchilles01C_02" },
+				RequiredTextLines = { "PatroclusGift05" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/ZagreusField_3505",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You must have met so many great heroes in your day, having fought alongside Achilles... do you still keep in touch with any of them, here?"
+				},
+				{
+					Cue = "/VO/Patroclus_0402",
+					Text =
+					"Great heroes... haven't you seen, by now, what they are like, stranger? Not all entirely what they're cracked up to be. But, there were good ones, yes. Suppose they're mostly keeping to themselves. Like I am here. Perhaps we'll run into each other, down the line."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutGods01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift06" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0404",
+					Text =
+					"Never quite considered... you're related to the gods upon Olympus, aren't you, stranger...? I should be far more careful around you."
+				},
+				{
+					Cue = "/VO/ZagreusField_3507",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"What do you mean by that, sir? Though, yes, my father being who he is, it means I have a lot of uncles, cousins, and the like, up on the surface, there."
+				},
+				{
+					Cue = "/VO/Patroclus_0405",
+					Text =
+					"Well... you would be wise to watch yourself, with some of them, I think. Don't get on anyone's bad side, if you can help it. Which, when I yet lived, none of us could."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			-- alt below
+			PatroclusAboutLove01_A =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim", "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
+				RequiredAnyOtherTextLines = { "PatroclusGift08", "PatroclusGift08_A" },
+				RequiredFalseTextLines = { "PatroclusAboutLove01_B" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0406",
+					Text =
+					"You ever been in love with someone, stranger? Might be a mortals-only thing, for all I know. You gods have strange relationships, I hear."
+				},
+				{
+					Cue = "/VO/ZagreusField_3508",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "I have been, sir. Or, I should say, I am."
+				},
+				{
+					Cue = "/VO/Patroclus_0407",
+					Text =
+					"Ah, that's good. Cling to the feeling, then. And if you lose it... reach for it. Search for it, no matter what, all right? Because, without it... well, there isn't much of a comparison, I think."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutLove01_B =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				RequiredAnyOtherTextLines = { "PatroclusGift08", "PatroclusGift08_A" },
+				RequiredFalseTextLines = { "PatroclusAboutLove01_A", "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim", "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0406",
+					Text =
+					"You ever been in love with someone, stranger? Might be a mortals-only thing, for all I know. You gods have strange relationships, I hear."
+				},
+				{
+					Cue = "/VO/ZagreusField_3509",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Not sure that I have been, sir. I understand it's one of those things where, you'll know it when it happens."
+				},
+				{
+					Cue = "/VO/Patroclus_0408",
+					Text =
+					"Perhaps you shall, someday or night down here. The feeling comes with pain, and plenty of it, but... the pain is worth it, in my limited experience. And once you find that feeling, cling to it. As tightly as you can. If you don't mind my saying."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+
+			PatroclusAboutTrinkets01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift05" },
+				RequiredInactiveMetaUpgrade = "ExtraChanceReplenishMetaUpgrade",
+				{
+					Cue = "/VO/Patroclus_0215",
+					Text = "Well, what's it going to be this time, stranger? The HydraLite? Maybe the Kiss of Styx?"
+				},
+				{
+					Cue = "/VO/ZagreusField_3501",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You sure you don't need any of this stuff, sir? I really appreciate it, but... I don't want to take it for granted."
+				},
+				{
+					Cue = "/VO/Patroclus_0216",
+					Text =
+					"Oh, come, this is Elysium. Taking such things for granted is the point. We gloried shades receive our stipend of the finest goods, so we can battle till we've had our fill. But I've already had my fill, I think."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutFishing01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusFirstMeeting", "PatroclusGift04" },
+				RequiredHasFish = true,
+				RequiresFishingPointInRoom = true,
+				{
+					Cue = "/VO/Patroclus_0203",
+					Text =
+					"You've ample time for fishing, have you, stranger? And here I thought you'd more important business to attend to, though it's not for me to judge, I guess."
+				},
+				{
+					Cue = "/VO/ZagreusField_3493",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'll have you know some of us take matters of fishing very seriously, sir! Besides... helps take my mind off having to fight your Elysian brethren nonstop."
+				},
+				{
+					Cue = "/VO/Patroclus_0204",
+					Text =
+					"Oh I'd not take your mind off this fight if it's one that you hope to win, stranger. I once took my mind off a fight, and, well... I wound up here."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
+			},
+			PatroclusAboutLegendary01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGift07_A" },
+				RequiredPlayed = { "/VO/ZagreusField_3584" },
+				RequiredTrait = "AchillesPatroclusAssistTrait",
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/ZagreusField_3502",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I have to tell you, sir, it was a real sight to see you fighting alongside Achilles. You two were amazing!"
+				},
+				{
+					Cue = "/VO/Patroclus_0217",
+					Text =
+					"Oh, I'm a little rusty. But he's not. Still very much in tiptop shape, except more able to control his temper, I should think."
+				},
+				{
+					Cue = "/VO/ZagreusField_3503",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Don't sell yourself so short! Though, I thought you laid down your spear forever. Why choose to fight again?"
+				},
+				{
+					Cue = "/VO/Patroclus_0218",
+					Text =
+					"Achilles swayed me into realizing some activity may be quite good for me. And besides... if we can aid you in a pinch, that's worth my while."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusLowHealth01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusFirstMeeting", "PatroclusGift01" },
+				RequiredFalseTextLines = { "PatroclusWithAchilles01" },
+				RequiredMaxHealthFraction = 0.25,
+				RequiredMaxLastStands = 1,
+				{
+					Cue = "/VO/Patroclus_0410",
+					Text =
+					"You look positively beaten, there, stranger. Let's see if we can't get you on your feet. For I can do the listless sitting for the both of us."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusLowHealth02 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusFirstMeeting", "PatroclusGift01" },
+				RequiredMaxHealthFraction = 0.25,
+				RequiredMaxLastStands = 1,
+				{
+					Cue = "/VO/Patroclus_0411",
+					Text =
+					"Oh, you look terrible, if I may say, stranger. Perhaps one of these trinkets can be of some small help."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+
+		},
+
+		RepeatableTextLineSets =
+		{
+			PatroclusChat01 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0005",
+					Text = "You again? Then, here. Fates know I'll not be needing this."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat02 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0006",
+					Text = "Move right along, stranger. Let's skip the pleasantries."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusChat03 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0007",
+					Text = "And here I thought you must have given up already."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat04 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				{
+					Cue = "/VO/Patroclus_0008",
+					Text = "Enjoying the splendors of Elysium, yet, stranger?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat05 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0009",
+					Text = "Don't let me interrupt your stay in paradise, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusChat06 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				{
+					Cue = "/VO/Patroclus_0010",
+					Text = "Returned to take more of these trinkets off my hands, have you?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat07 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				{
+					Cue = "/VO/Patroclus_0011",
+					Text = "Oh, it's only you again, stranger. It's only me, as well."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat08 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0012",
+					Text = "Take one of these and then just leave me be, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusChat09 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0013",
+					Text = "I'd like to be alone again, stranger, so you go on ahead."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusChat10 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0014",
+					Text = "No need to linger with me, stranger. Go."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusChat11 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				{
+					Cue = "/VO/Patroclus_0015",
+					Text = "Why your path keeps on crossing mine, I've not the slightest clue."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat12 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0016",
+					Text = "Some other time, stranger. Right now I'm preoccupied with sitting here."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat13 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "PatroclusAboutMyrmidonReunionQuest01" },
+				{
+					Cue = "/VO/Patroclus_0017",
+					Text = "There's nothing you can do to help me, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusChat14 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0018",
+					Text = "Can't you see I'm busy whiling away for all eternity?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusChat15 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				{
+					Cue = "/VO/Patroclus_0019",
+					Text = "A fine whatever time it is to you, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat16 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0020",
+					Text = "You haven't lost your will just yet, I see."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusChat17 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0021",
+					Text = "Expecting I'll still be right here next time, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat18 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0022",
+					Text = "Just go, already, towards your next death or whatever else awaits."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusChat19 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0023",
+					Text = "You're back again, I see. And just in time to take one of these blasted things from me."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			-- relationship improved
+			PatroclusChat19 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift03" },
+				RequiredAnyTextLines = { "PatroclusAboutAchilles03A", "PatroclusAboutAchilles03B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0038",
+					Text = "I'll wait for him, however long it takes. You tell him that."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat20 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift04", "PatroclusAboutAchilles02" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0039",
+					Text = "I pray Achilles is surviving well. And same for you."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat21 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift03" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0040",
+					Text = "It's good of you to visit, though there's little I can offer in return."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat22 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift02" },
+				{
+					Cue = "/VO/Patroclus_0041",
+					Text = "Please make yourself at home here in this corner of eternal paradise."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat23 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAboutMyrmidonReunionQuest01" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0042",
+					Text = "Do let Achilles know I'm doing well, and I'll be ever patient, here."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			-- additional chat
+			PatroclusChat24 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0048",
+					Text = "I doubt there's much that I can do for you."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat25 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0051",
+					Text = "You're interfering with my quiet time, you know."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat26 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0052",
+					Text = "Yes, what is it, this time?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat27 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0053",
+					Text = "Here's what I have that I can spare right now."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat27 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				{
+					Cue = "/VO/Patroclus_0054",
+					Text = "Might I somehow assist you, then?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat28 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting05", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles06" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0003",
+					Text = "Oh good, somebody's here to save me from myself."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat29 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting05", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles06" },
+				{
+					Cue = "/VO/Patroclus_0055",
+					Text = "How can I be of use to you, stranger?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat30 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting05", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles06" },
+				{
+					Cue = "/VO/Patroclus_0050",
+					Text = "I've no shortage of time to spare, I guess."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat31 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				{
+					Cue = "/VO/Patroclus_0160",
+					Text = "Ah, just a stranger passing through, I see."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat32 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0161",
+					Text = "Not in the mood for conversation now, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat33 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0162",
+					Text = "Go on about your business, there, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat34 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				{
+					Cue = "/VO/Patroclus_0163",
+					Text = "Good fortune getting out of here, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat35 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusGift04" },
+				{
+					Cue = "/VO/Patroclus_0164",
+					Text = "Here's something for the journey still to come."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat36 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusAboutTheseus01" },
+				RequiredSeenRooms = { "C_Boss01" },
+				{
+					Cue = "/VO/Patroclus_0165",
+					Text = "Prepared to face the champion, soon, stranger?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat37 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusAboutTheseus01" },
+				RequiredSeenRooms = { "C_Boss01" },
+				{
+					Cue = "/VO/Patroclus_0166",
+					Text = "May this aid you against the champion, out there."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat38 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift04" },
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredSeenRooms = { "C_Boss01" },
+				{
+					Cue = "/VO/Patroclus_0167",
+					Text = "Be careful with my brethren out there, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat39 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredSeenRooms = { "C_Boss01" },
+				{
+					Cue = "/VO/Patroclus_0168",
+					Text = "Battle with glory and all that, all right, stranger?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat40 =
+			{
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredSeenRooms = { "C_Boss01" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 563036 },
+				{
+					Cue = "/VO/Patroclus_0169",
+					Text = "I would prefer to be alone for now, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusChat41 =
+			{
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
+				RequiredSeenRooms = { "C_Boss01" },
+				{
+					Cue = "/VO/Patroclus_0170",
+					Text = "Just don't go starting any wars you don't intend to finish, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+
+			-- lines that play if you haven't revealed
+			PatroclusStandoffish01 =
+			{
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredFalseTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				{
+					Cue = "/VO/Patroclus_0024",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Text = "Leave me be to my eternal paradise, damn you."
+				},
+				{
+					Text = "Patroclus_OfferText03",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusStandoffish02 =
+			{
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredFalseTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				{
+					Cue = "/VO/Patroclus_0025",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Text = "I shall not take up arms again, stranger, not even against you."
+				},
+				{
+					Text = "Patroclus_OfferText03",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusStandoffish03 =
+			{
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredFalseTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				{
+					Cue = "/VO/Patroclus_0026",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Text = "Begone from here, we've nothing to discuss."
+				},
+				{
+					Text = "Patroclus_OfferText03",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusStandoffish04 =
+			{
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredFalseTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				{
+					Cue = "/VO/Patroclus_0027",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Text = "Go haunt some other corner of this realm; this one is mine."
+				},
+				{
+					Text = "Patroclus_OfferText03",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusStandoffish05 =
+			{
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredFalseTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				{
+					Cue = "/VO/Patroclus_0028",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Text = "I thought I told you to leave me alone?"
+				},
+				{
+					Text = "Patroclus_OfferText04",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusStandoffish06 =
+			{
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredFalseTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				{
+					Cue = "/VO/Patroclus_0029",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Text = "Do I look like I want to talk to you?"
+				},
+				{
+					Text = "Patroclus_OfferText04",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusStandoffish07 =
+			{
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredFalseTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				{
+					Cue = "/VO/Patroclus_0045",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Text = "What is it that you want from me this time?"
+				},
+				{
+					Text = "Patroclus_OfferText04",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusStandoffish08 =
+			{
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredFalseTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				{
+					Cue = "/VO/Patroclus_0046",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Text = "What would it take for you to leave me be?"
+				},
+				{
+					Text = "Patroclus_OfferText04",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusStandoffish09 =
+			{
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredFalseTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				{
+					Cue = "/VO/Patroclus_0052",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Text = "Yes, what is it this time?"
+				},
+				{
+					Text = "Patroclus_OfferText04",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+			PatroclusStandoffish10 =
+			{
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredFalseTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
+				{
+					Cue = "/VO/Patroclus_0049",
+					Speaker = "NPC_Patroclus_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Text = "What would you have me do?"
+				},
+				{
+					Text = "Patroclus_OfferText04",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
+			},
+
+			PatroclusReunionChat01 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0315",
+					Text = "It's good to see you once again, stranger. Now, here."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat02 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0316",
+					Text = "We're faring well enough, and may you fare the same."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat03 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0317",
+					Text = "You've come to be a welcome sight, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat04 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0318",
+					Text = "May you prevail in your battles still to come, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			-- renamed, was 5
+			PatroclusReunionChat05A =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0319",
+					Text = "We were just wondering when you'd arrive, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat05 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0320",
+					Text = "Achilles and I were just passing the time I guess."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat06 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0321",
+					Text = "I and Achilles here still have a lot of catching up to do."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat07 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0322",
+					Text = "Fight like my friend here used to fight, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat08 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0323",
+					Text = "May all your fears leave you behind once you walk past that door."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat09 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusAboutTheseus01" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0324",
+					Text = "You'll show that champion of ours, won't you, stranger?"
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat10 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift06" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0325",
+					Text = "I'm pleased to be of any help at all."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat11 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0326",
+					Text = "First a visit from Achilles, and now you."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat12 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0327",
+					Text = "Please stay as long as you would like here in our little glade."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat13 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0328",
+					Text = "Take caution with our battle-loving brethren around here."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat14 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift05" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0329",
+					Text = "If you can make yourself at home in such a place, please do, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			-- renamed, was 15
+			PatroclusReunionChat15A =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift05" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0330",
+					Text = "Just restocked on these battle-trinkets, if you'd like one, stranger."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			-- renamed, was 15
+			PatroclusReunionChat15B =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift05" },
+				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusAboutTheseus01" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0331",
+					Text = "You've become quite the talk of all Elysium of late."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat15 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusGift07_A" },
+				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusAboutTheseus01" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0332",
+					Text = "Our so-called champion isn't as popular around here as he used to be."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat16 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0419",
+					Text = "I'm grateful for everything you've done."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			-- renamed, was 17
+			PatroclusReunionChat17A =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0420",
+					Text = "For all your patience and your kindness."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+			PatroclusReunionChat17 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				-- IsIdAlive = 563036,
+				{
+					Cue = "/VO/Patroclus_0421",
+					Text = "I want you to have this."
+				},
+				{
+					Text = "Patroclus_OfferText02",
+					Choices = PresetEventArgs.PatroclusBenefitChoices,
+					PreLineFunctionName = "ShowUIForDecision",
+				},
+				OnQueuedThreadedFunctionName = "AmbientChatting",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
+			},
+		},
+
+		GiftTextLineSets =
+		{
+			PatroclusGift01 =
+			{
+				PlayOnce = true,
+				{
+					Cue = "/VO/ZagreusField_1731",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, look, I can tell you're struggling right now, and... maybe this isn't the way to help you through it all, but... I want you to have this."
+				},
+				{
+					Cue = "/VO/Patroclus_0142",
+					Text =
+					"{#DialogueItalicFormat}Ahh{#PreviousFormat}, so you are taking pity on me, then? Well, I've no pride like many others here, so I shall take it. Though, let's make it a fair exchange, shall we?"
+				},
+			},
+			PatroclusGift02 =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "PatroclusGift01" },
+				{
+					Cue = "/VO/Patroclus_0135",
+					Text =
+					"Why would you waste a proper vintage on the likes of me? Questions that are better left unanswered, I would guess."
+				},
+				{
+					Cue = "/VO/ZagreusField_1733",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "If this eases your burden even for a little while, then it's in good hands, as far as I'm concerned."
+				},
+			},
+			PatroclusGift03 =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "PatroclusGift02" },
+				{
+					Cue = "/VO/Patroclus_0136",
+					Text =
+					"{#DialogueItalicFormat}Ah{#PreviousFormat}, a means to drown my sorrows temporarily. That's good. And rather kind of you, I have to say."
+				},
+				{
+					Cue = "/VO/ZagreusField_1734",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's nothing. Thank you for not trying to slay me where I stand and boast about it, like seemingly everyone else around here."
+				},
+			},
+			PatroclusGift04 =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "PatroclusGift03" },
+				{
+					Cue = "/VO/Patroclus_0137",
+					Text = "Oh. Here in Elysium you have to win this stuff, so I have rarely had occasion to enjoy it. Thanks."
+				},
+				{
+					Cue = "/VO/ZagreusField_1735",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'd say you earned it more than anybody else I've seen around here, lately. Though I don't make the rules."
+				},
+			},
+			PatroclusGift05 =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "PatroclusGift04" },
+				{
+					Cue = "/VO/Patroclus_0140",
+					Text =
+					"You owe me neither time nor generosity, and certainly not this. But if you truly have no better use for it..."
+				},
+				{
+					Cue = "/VO/ZagreusField_1738",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's not a matter of owe, sir. Please open your mind to the possibility, nay the fact, that there are those who care about your wellbeing."
+				},
+			},
+			PatroclusGift06 =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "PatroclusGift05" },
+				{
+					Cue = "/VO/Patroclus_0139",
+					Text =
+					"Just the relief from misery that I was looking for. A fleeting feeling, really, but I'll take a fleeting feeling over none."
+				},
+				{
+					Cue = "/VO/ZagreusField_1737",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "That's both very dejected and very astute of you to say. Take care of yourself, will you?"
+				},
+			},
+			PatroclusGift07_A =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "PatroclusGift06" },
+				{
+					Cue = "/VO/ZagreusField_3487",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Here, sir. The drink of the gods, themselves. Thought maybe you would like to try it! Just a small token of my appreciation for your selflessness with me, time after time."
+				},
+				{
+					Cue = "/VO/Patroclus_0197",
+					Text =
+					"You'd give the precious gift of Ambrosia to someone like me, stranger? A gloried thing like that. Why bother...? I should be just another shade to you."
+				},
+				{
+					Cue = "/VO/ZagreusField_3488",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, you're not. You're someone I look forward to seeing here in Elysium, which is more than I can say for just about anybody else around here, so... please, enjoy it. Perhaps with Achilles."
+				},
+				{
+					Cue = "/VO/Patroclus_0199",
+					Text =
+					"Well... perhaps I'll try. You're not so bad, you know that, stranger? Careful with that, or you'll undermine the ruthless reputation that you have."
+				},
+			},
+			PatroclusGift08_A =
+			{
+				PlayOnce = true,
+				RequiredTextLines = { "PatroclusGift07_A" },
+				{
+					Cue = "/VO/ZagreusField_3489",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I don't see that last bottle of Ambrosia anywhere, which I can only take to mean... you need another. Here, sir. Thanks for seeing me through all of this, time after time."
+				},
+				{
+					Cue = "/VO/Patroclus_0200",
+					Text =
+					"You're thanking {#DialogueItalicFormat}me{#PreviousFormat}, stranger? I've been here for some time, I think, and yet... some of your customs I'll admit remain quite strange to me. You've done more for me than I've any right to expect, from anyone."
+				},
+				{
+					Cue = "/VO/ZagreusField_3490",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's just a bottle of Ambrosia, sir, it's really no big deal. OK, fine, it's rather difficult to come by, but still!"
+				},
+				{
+					Cue = "/VO/Patroclus_0201",
+					Text = "You jest, but I do not. I'd offer you my lifelong gratitude, but... well, you know."
+				},
+				{
+					Cue = "/VO/ZagreusField_3492",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"You've got the rest of your life ahead of you, as far as I'm concerned. Here's to starting anew, right? You can call me Zagreus, or stranger, whatever suits you."
+				},
+				{
+					Cue = "/VO/Patroclus_0202",
+					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
+					PostLineFunctionArgs = { Text = "NPC_Patroclus_01", Icon = "Keepsake_PatroclusSticker_Max" },
+					Text =
+					"And... I'm Patroclus, by the way. I'm realizing now... we've not officially met. It's good to know you, Zagreus. Stranger."
+				},
+			},
+
+			-- below: old conversations from before the Welcome to Hell update
+			PatroclusGift07 =
+			{
+				Skip = true,
+				PlayOnce = true,
+				RequiredTextLines = { "PatroclusGift06" },
+				{
+					Cue = "/VO/Patroclus_0138",
+					Text = "You're much too kind to such a wretched shade, you know. But I'll not turn away this type of thing."
+				},
+				{
+					Cue = "/VO/ZagreusField_2867",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You don't attack me indiscriminately, I give you Nectar. I don't think I'm being over-generous!"
+				},
+			},
+			PatroclusGift08 =
+			{
+				Skip = true,
+				PlayOnce = true,
+				RequiredTextLines = { "PatroclusGift07" },
+				{
+					Cue = "/VO/Patroclus_0141",
+					Text = "Forgive my bluntness, but, why go out of your way for me like this...?"
+				},
+				{
+					Cue = "/VO/ZagreusField_1739",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'm not going out of my way, sir. Look, I don't pretend to know the depths of your despair. But when I look at you, I'm reminded of how I've often felt. When I was in that dark place, someone said to me: Don't give up. If nothing else... it gives you something to do."
+				},
+			},
+		},
+
+		GiftGivenVoiceLines =
+		{
+			BreakIfPlayed = true,
+			PreLineWait = 1.0,
+			PlayFromTarget = true,
+
+			-- I am most grateful to you, sir.
+			{ Cue = "/VO/ZagreusField_1732" },
+		},
+
+		CharacterInteractions =
+		{
+			Rescue =
+			{
+				VoiceLines =
+				{
+					{
+						RandomRemaining = true,
+						PreLineWait = 0.65,
+						SuccessiveChanceToPlay = 0.5,
+						RequiredTextLines = { "MyrmidonReunionQuestComplete" },
+
+						-- Help yourself.
+						{ Cue = "/VO/Patroclus_0279" },
+						-- Here.
+						{ Cue = "/VO/Patroclus_0280" },
+						-- Here, then.
+						{ Cue = "/VO/Patroclus_0281" },
+						-- Take it.
+						{ Cue = "/VO/Patroclus_0282" },
+						-- It's yours.
+						{ Cue = "/VO/Patroclus_0283" },
+						-- All yours.
+						{ Cue = "/VO/Patroclus_0284" },
+						-- Certainly.
+						{ Cue = "/VO/Patroclus_0285" },
+						-- Of course.
+						{ Cue = "/VO/Patroclus_0286" },
+						-- Very well.
+						{ Cue = "/VO/Patroclus_0287" },
+						-- Don't need it anyway.
+						{ Cue = "/VO/Patroclus_0288" },
+					},
+					{
+						RandomRemaining = true,
+						SuccessiveChanceToPlay = 0.85,
+						UsePlayerSource = true,
+						RequiredFalseTextLinesThisRun = { "PatroclusMeeting04", "PatroclusAboutAchilles01A", "PatroclusAboutAchilles01B", "PatroclusAboutAchilles01C_01", "PatroclusAboutAchilles01C_02" },
+						-- Thank you.
+						{ Cue = "/VO/ZagreusField_1740" },
+						-- Thanks.
+						{ Cue = "/VO/ZagreusField_1741" },
+						-- Thanks a lot.
+						{ Cue = "/VO/ZagreusField_1742" },
+						-- Thank you sir.
+						{ Cue = "/VO/ZagreusField_1743" },
+						-- Thanks for this.
+						{ Cue = "/VO/ZagreusField_1744" },
+						-- Thanks, sir.
+						{ Cue = "/VO/ZagreusField_1745" },
+						-- Just checking up on you, sir.
+						{ Cue = "/VO/ZagreusField_1707", RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" }, },
+						-- Take care, then.
+						{ Cue = "/VO/ZagreusField_1709" },
+					},
+					{
+						{
+							RandomRemaining = true,
+							PreLineWait = 0.65,
+							SuccessiveChanceToPlay = 0.33,
+							RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+
+							-- Makes little difference I should think.
+							{ Cue = "/VO/Patroclus_0056" },
+							-- If that's your choice, then.
+							{ Cue = "/VO/Patroclus_0057" },
+							-- Certainly, stranger.
+							{ Cue = "/VO/Patroclus_0058" },
+							-- So be it.
+							{ Cue = "/VO/Patroclus_0059" },
+							-- It's all the same to me.
+							{ Cue = "/VO/Patroclus_0060" },
+							-- Whatever suits you.
+							{ Cue = "/VO/Patroclus_0061" },
+							-- Well then, it's yours.
+							{ Cue = "/VO/Patroclus_0062" },
+							-- Then, very well.
+							{ Cue = "/VO/Patroclus_0063" },
+							-- There, now leave me be.
+							{ Cue = "/VO/Patroclus_0064" },
+							-- Now go.
+							{ Cue = "/VO/Patroclus_0065" },
+							-- I won't be needing that.
+							{ Cue = "/VO/Patroclus_0066" },
+							-- All yours.
+							{ Cue = "/VO/Patroclus_0067" },
+							-- I doubt it'll be of much help.
+							{ Cue = "/VO/Patroclus_0068" },
+							-- It's something, right?
+							{ Cue = "/VO/Patroclus_0069" },
+						},
+					},
+				},
+			},
+		},
+
+		RepulseOnMeleeInvulnerableHit = 250,
+		OnHitVoiceLines =
+		{
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.25,
+				PlayFromTarget = true,
+				CooldownTime = 7,
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+
+				-- It's no use...
+				{ Cue = "/VO/Patroclus_0088" },
+				-- Nice try.
+				{ Cue = "/VO/Patroclus_0089" },
+				-- I only wish.
+				{ Cue = "/VO/Patroclus_0090" },
+				-- I'm already dead.
+				{ Cue = "/VO/Patroclus_0091" },
+				-- Doesn't work like that.
+				{ Cue = "/VO/Patroclus_0092" },
+				-- I'm beyond that.
+				{ Cue = "/VO/Patroclus_0093" },
+				-- Happens every time.
+				{ Cue = "/VO/Patroclus_0094" },
+				-- I'm afraid not.
+				{ Cue = "/VO/Patroclus_0095" },
+				-- See?
+				{ Cue = "/VO/Patroclus_0096" },
+				-- Nothing.
+				{ Cue = "/VO/Patroclus_0097" },
+				-- I felt nothing.
+				{ Cue = "/VO/Patroclus_0098" },
+				-- I've died already, thanks.
+				{ Cue = "/VO/Patroclus_0099" },
+				-- Don't waste your time.
+				{ Cue = "/VO/Patroclus_0100" },
+				-- Leave me.
+				{ Cue = "/VO/Patroclus_0101" },
+				-- Come off it.
+				{ Cue = "/VO/Patroclus_0102" },
+				-- If only.
+				{ Cue = "/VO/Patroclus_0103" },
+				-- You're hopeless.
+				{ Cue = "/VO/Patroclus_0104" },
+			},
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.25,
+				PlayFromTarget = true,
+				CooldownTime = 7,
+				RequiredTextLines = { "MyrmidonReunionQuestComplete" },
+
+				-- <Chuckle>
+				{ Cue = "/VO/Patroclus_0234" },
+				-- Come, now.
+				{ Cue = "/VO/Patroclus_0235" },
+				-- Not in the mood, stranger.
+				{ Cue = "/VO/Patroclus_0236" },
+				-- Oh, come now.
+				{ Cue = "/VO/Patroclus_0237" },
+				-- Do as you like, then.
+				{ Cue = "/VO/Patroclus_0238" },
+				-- Not in a fighting mood.
+				{ Cue = "/VO/Patroclus_0239" },
+				-- Oh please have mercy, stranger.
+				{ Cue = "/VO/Patroclus_0240" },
+				-- Spare me, stranger, please.
+				{ Cue = "/VO/Patroclus_0241" },
+				-- I won't be fighting here.
+				{ Cue = "/VO/Patroclus_0242" },
+			},
 		},
 	},
 }

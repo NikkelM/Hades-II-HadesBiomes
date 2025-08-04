@@ -56,6 +56,16 @@ function game.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 		Move(args.PortraitShift)
 	end
 
+	-- In some special cases, show a different menu title above the boon selection
+	-- E.g. for when you don't yet know Patroclus name
+	local offerTextMenuTitleMappings = {
+		Patroclus_OfferText03 = "NPC_Patroclus_Unnamed_01",
+		Patroclus_OfferText04 = "NPC_Patroclus_Unnamed_01",
+	}
+	if source.NextInteractLines ~= nil and source.NextInteractLines.ModsNikkelMHadesBiomesPreviousOfferText ~= nil and offerTextMenuTitleMappings[source.NextInteractLines.ModsNikkelMHadesBiomesPreviousOfferText] then
+		source.MenuTitle = offerTextMenuTitleMappings[source.NextInteractLines.ModsNikkelMHadesBiomesPreviousOfferText]
+	end
+
 	game.OpenUpgradeChoiceMenu(source, args)
 	if args.OnCloseFinishedFunctionName then
 		screen.OnCloseFinishedFunctionName = args.OnCloseFinishedFunctionName

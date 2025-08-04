@@ -14,10 +14,11 @@ local function applyNPCChoiceMappings(npcData, mappings)
 						else
 							-- Replace the choice mappings
 							local last = textLineSet[#textLineSet]
-							if last and last.Text == mappingData.TextToMatch then
-								table.remove(textLineSet, #textLineSet)
+							if last and game.Contains(mappingData.TextToMatch, last.Text) then
+								textLineSet.ModsNikkelMHadesBiomesPreviousOfferText = last.Text
 								textLineSet.PrePortraitExitFunctionName = mappingData.PrePortraitExitFunctionName
 								textLineSet.PrePortraitExitFunctionArgs = mappingData.PrePortraitExitFunctionArgs
+								table.remove(textLineSet, #textLineSet)
 							end
 
 							-- Do other replacements to each of the textlines in the group
@@ -71,13 +72,31 @@ local npcModifications = {
 			"BuffFutureBoonRarity",
 		},
 	},
+	NPC_Patroclus_01 = {
+		RequiredRoomInteraction = true,
+		BlockedLootInteractionText = "NPCUseTextTalkLocked",
+		-- TODO
+		UpgradeScreenOpenSound = "/Leftovers/Menu Sounds/InfoPanelInURSA",
+		UpgradeSelectedSound = "/SFX/ArtemisBoonChoice",
+		MenuTitle = "NPC_Patroclus_01",
+		FlavorTextIds = {
+			"Patroclus_OfferText03",
+		},
+		-- "Gifts of Patroclus",
+		BoonInfoTitleText = "Codex_BoonInfo_Narcissus",
+		Traits = {
+			"BuffSlottedBoonRarity",
+			"BuffMegaPom",
+			"BuffFutureBoonRarity",
+		},
+	},
 }
 
 -- Before adding them to the game, we need to apply some additional modifications to NPCs
 local npcChoiceMappings = {
 	NPC_Sisyphus_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
-		TextToMatch = "Sisyphus_OfferText01",
+		TextToMatch = { "Sisyphus_OfferText01", },
 		ExcludeNamedTextLines = {
 			"SisyphusLiberationQuestComplete",
 		},
@@ -86,14 +105,19 @@ local npcChoiceMappings = {
 	},
 	NPC_Eurydice_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
-		TextToMatch = "Eurydice_OfferText01",
+		TextToMatch = { "Eurydice_OfferText01", "Eurydice_OfferText02", },
 		PrePortraitExitFunctionName = "ModsNikkelMHadesBiomesBenefitChoice",
 		PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
-
 		AlwaysReplaceIfExist = {
 			OnQueuedFunctionName = "ModsNikkelMHadesBiomesEurydiceMusic",
-		}
+		},
 	},
+	NPC_Patroclus_01 = {
+		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
+		TextToMatch = { "Patroclus_OfferText02", "Patroclus_OfferText03", "Patroclus_OfferText04", "Patroclus_OfferText05" },
+		PrePortraitExitFunctionName = "ModsNikkelMHadesBiomesBenefitChoice",
+		PrePortraitExitFunctionArgs = mod.PresetEventArgs.PatroclusBenefitChoices,
+	}
 }
 
 applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)

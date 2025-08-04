@@ -96,6 +96,9 @@ local roomModifications = {
 	},
 
 	-- OTHER
+	C_Story01 = {
+		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
+	},
 	C_Reprieve01 = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,

@@ -18,6 +18,7 @@ mod.VoiceoverFileNames = {
 	Megaera = "Megaera",
 	MegaeraField = "MegaeraField",
 	Minotaur = "Minotaur",
+	Patroclus = "Patroclus",
 	Sisyphus = "Sisyphus",
 	Theseus = "Theseus",
 	Tisiphone = "Tisiphone",

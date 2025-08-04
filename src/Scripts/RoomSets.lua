@@ -94,6 +94,7 @@ local newRoomSets = {
 		-- "C_MiniBoss03",
 
 		"C_Reprieve01",
+		"C_Story01",
 
 		"C_Combat01",
 		"C_Combat02",
@@ -110,8 +111,6 @@ local newRoomSets = {
 		"C_Combat13",
 		"C_Combat14",
 		"C_Combat15",
-
-		-- "C_Story01",
 	},
 }
 
