@@ -127,7 +127,6 @@ function game.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 	game.AudioState.SecretMusicId = PlaySound({ Name = game.AudioState.SecretMusicName, AddCallbacks = true })
 	game.SetDefaultMusicParams(game.AudioState.SecretMusicName, game.AudioState.SecretMusicId, args)
 	if args.TrackOffsetMin ~= nil then
-		print("Offsetting")
 		SetSoundPosition({
 			Id = game.AudioState.SecretMusicId,
 			Position = game.RandomFloat(args.TrackOffsetMin, args.TrackOffsetMax)
