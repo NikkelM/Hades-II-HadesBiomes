@@ -130,16 +130,14 @@ local newTraitData = {
 			}
 		},
 	},
-	-- TODO: Is it actually working?
 	BuffFutureBoonRarity = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		Icon = "Boon_Circe_06",
 		RarityBonus = {
-			GodLootOnly = true,
-			RareBonus = 1,
-			EpicBonus = 0.25,
-			LegendaryBonus = 0.1,
+			Rare = 1,
+			Epic = 0.25,
+			Legendary = 0.1,
 		},
 		RemainingUses = 3,
 	},
