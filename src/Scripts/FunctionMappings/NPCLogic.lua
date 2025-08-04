@@ -21,15 +21,22 @@ function game.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	local options = ShallowCopyTable(args.UpgradeOptions) or {}
 	local eligibleOptions = {}
 	local priorityOptions = {}
+
 	for i, option in pairs(options) do
+		-- Is the UpgradeOption itself eligible?
 		if option.GameStateRequirements == nil or game.IsGameStateEligible(source, option.GameStateRequirements) then
-			if option.PriorityRequirements ~= nil and game.IsGameStateEligible(source, option.PriorityRequirements) then
-				table.insert(priorityOptions, option)
-			else
-				table.insert(eligibleOptions, option)
+			-- Does this UpgradeOption have a TraitData entry, and if so, is it eligible?
+			if game.TraitData[option.ItemName] and game.IsTraitEligible(game.TraitData[option.ItemName]) then
+				-- Should this UpgradeOption be prioritized?
+				if option.PriorityRequirements ~= nil and game.IsGameStateEligible(source, option.PriorityRequirements) then
+					table.insert(priorityOptions, option)
+				else
+					table.insert(eligibleOptions, option)
+				end
 			end
 		end
 	end
+
 	for i = 1, 3 do
 		if not game.IsEmpty(priorityOptions) then
 			local option = game.RemoveRandomValue(priorityOptions) or {}
@@ -184,6 +191,32 @@ end
 function game.ModsNikkelMHadesBiomesPatroclusExitFunctionName(currentRun, exitDoor, args)
 	SetUnitProperty({ Property = "Speed", Value = args.Speed, DestinationId = game.CurrentRun.Hero.ObjectId })
 	game.LeaveRoomPresentation(currentRun, exitDoor)
+end
+
+function game.PatroclusRefillLastStands(args)
+	if not game.CurrentRun.Hero.MaxLastStands then
+		return
+	end
+	args = args or {}
+	local numLastStands = game.CurrentRun.Hero.MaxLastStands - game.TableLength(game.CurrentRun.Hero.LastStands)
+	local hadLastStands = game.HasLastStand(game.CurrentRun.Hero)
+	if numLastStands > 0 then
+		local healFraction = args.HealFraction or 0.4
+		while numLastStands > 0 do
+			game.AddLastStand({
+				Name = "Patroclus",
+				Icon = "ExtraLifeStyx",
+				ManaFraction = healFraction,
+				HealFraction = healFraction,
+				Silent = true,
+			})
+			numLastStands = numLastStands - 1
+		end
+		if not hadLastStands then
+			game.thread(game.LowHealthBonusBuffStatePresentation, 0.5)
+		end
+		game.RecreateLifePips()
+	end
 end
 
 -- #endregion

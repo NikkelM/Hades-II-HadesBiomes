@@ -4,6 +4,7 @@ local newTraitData = {
 	SisyphusMoney = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
+		Hidden = true,
 		Icon = "Boon_No_Choice_Money",
 		AcquireFunctionName = "GiveRandomConsumables",
 		AcquireFunctionArgs = {
@@ -110,6 +111,9 @@ local newTraitData = {
 	BuffMegaPom = {
 		InheritFrom = { "BuffSlottedBoonRarity", },
 		Icon = "Boon_Circe_08",
+		GameStateRequirements = {
+			NamedRequirements = { "StackUpgradeLegal", },
+		},
 		AcquireFunctionArgs = {
 			FunctionName = "AddStackToTraits",
 			NumTraits = 4,
@@ -183,6 +187,37 @@ local newTraitData = {
 		StatLines = {
 			"StoreUsesRemainingDisplay1",
 		},
+	},
+	BuffExtraChance = {
+		-- Adapted from EchoDeathDefianceRefill
+		Icon = "Boon_Circe_06",
+		Hidden = true,
+		GameStateRequirements = {
+			NamedRequirements = { "MissingLastStand", },
+		},
+		AcquireFunctionName = "PatroclusRefillLastStands",
+		AcquireFunctionArgs = {
+			HealFraction = 0.5,
+			ReportValues = {
+				ReportedHealFraction = "HealFraction"
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedHealFraction",
+				ExtractAs = "TooltipInitialHeal",
+				Format = "Percent"
+			},
+			{
+				External = true,
+				BaseType = "HeroData",
+				BaseName = "LastStandData",
+				BaseProperty = "Heal",
+				Format = "Percent",
+				ExtractAs = "LastStandHeal",
+				SkipAutoExtract = true,
+			},
+		}
 	},
 	-- #endregion
 }

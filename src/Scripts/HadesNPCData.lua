@@ -364,8 +364,14 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			},
 			{
 				Type = "Trait",
-				ItemName = "BuffFutureBoonRarity",
+				ItemName = "BuffExtraChance",
 				Rarity = "Common",
+				PrioritySlotEntranceAnimation = "BoonEntranceLegendary",
+				PriorityRequirements = {
+					{
+						PathFalse = { "GameState", "TraitsTaken", "BuffExtraChance" },
+					},
+				},
 			},
 		},
 

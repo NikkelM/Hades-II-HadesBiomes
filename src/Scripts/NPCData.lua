@@ -86,7 +86,7 @@ local npcModifications = {
 		Traits = {
 			"TemporaryDoorHealTrait_Patroclus",
 			"TemporaryImprovedWeaponTrait_Patroclus",
-			"BuffFutureBoonRarity",
+			"BuffExtraChance",
 		},
 	},
 }

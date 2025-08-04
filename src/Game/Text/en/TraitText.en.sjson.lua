@@ -61,6 +61,11 @@ local newData = {
 		InheritFrom = "TemporaryDoorHealTrait",
 		DisplayName = "HydraLite Gold",
 	},
+	{
+		Id = "BuffExtraChance",
+		DisplayName = "Kiss of Styx Premium",
+		Description = "Replenish {#UpgradeFormat}all {#Prev}uses of {#BoldFormatGraft}{$Keywords.ExtraChance} {#Prev}with ones that restore {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipInitialHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}.",
+	},
 }
 
 sjson.hook(traitTextFile, function(data)
