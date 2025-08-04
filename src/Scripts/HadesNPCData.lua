@@ -354,12 +354,12 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		UpgradeOptions = {
 			{
 				Type = "Trait",
-				ItemName = "BuffSlottedBoonRarity",
+				ItemName = "TemporaryDoorHealTrait_Patroclus",
 				Rarity = "Common",
 			},
 			{
 				Type = "Trait",
-				ItemName = "BuffMegaPom",
+				ItemName = "TemporaryImprovedWeaponTrait_Patroclus",
 				Rarity = "Common",
 			},
 			{

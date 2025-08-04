@@ -131,6 +131,7 @@ local function copyHadesHelpTexts(fileNames, fileSkipMap)
 					end
 
 					local languageModifications = mod.HadesHelpTextFileModifications[fileName][language] or {}
+					local globalRemovals = mod.HadesHelpTextFileRemovals[fileName] or {}
 
 					-- Remove all existingIds from hadesHelpTextData - we don't want to overwrite something that already exists in Hades II
 					for i = #hadesHelpTextData.Texts, 1, -1 do
@@ -140,12 +141,16 @@ local function copyHadesHelpTexts(fileNames, fileSkipMap)
 						if mod.EnemyNameMappings[entry.Id] then
 							entry.Id = mod.EnemyNameMappings[entry.Id]
 						end
-						if existingIds[entry.Id] then
+						if existingIds[entry.Id] or globalRemovals[entry.Id] then
 							table.remove(hadesHelpTextData.Texts, i)
 						elseif languageModifications[entry.Id] then
 							for key, value in pairs(languageModifications[entry.Id]) do
 								entry[key] = value
 							end
+						end
+						-- In all Descriptions, replace {#PreviousFormat} with {#Prev}
+						if entry.Description then
+							entry.Description = entry.Description:gsub("{#PreviousFormat}", "{#Prev}")
 						end
 					end
 

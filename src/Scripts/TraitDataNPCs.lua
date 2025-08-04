@@ -94,26 +94,97 @@ local newTraitData = {
 		Icon = "Boon_Circe_05",
 		AcquireFunctionName = "EurydiceBuff",
 		AcquireFunctionArgs = {
-			BoonRarity = true,
+			FunctionName = "AddRarityToTraits",
+			NumTraits = 2,
+			ReportValues = {
+				ReportedNumTraits = "NumTraits",
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedNumTraits",
+				ExtractAs = "NumTraits",
+			},
 		},
 	},
 	BuffMegaPom = {
 		InheritFrom = { "BuffSlottedBoonRarity", },
 		Icon = "Boon_Circe_08",
 		AcquireFunctionArgs = {
-			StackTraits = true,
+			FunctionName = "AddStackToTraits",
+			NumTraits = 4,
+			NumStacks = 1,
+			ReportValues = {
+				ReportedNumTraits = "NumTraits",
+				ReportedNumStacks = "NumStacks",
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedNumTraits",
+				ExtractAs = "NumTraits",
+			},
+			{
+				Key = "ReportedNumStacks",
+				ExtractAs = "NumStacks",
+			}
 		},
 	},
+	-- TODO: Is it actually working?
 	BuffFutureBoonRarity = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		Icon = "Boon_Circe_06",
 		RarityBonus = {
+			GodLootOnly = true,
 			RareBonus = 1,
 			EpicBonus = 0.25,
 			LegendaryBonus = 0.1,
 		},
 		RemainingUses = 3,
+	},
+	-- #endregion
+	-- #region Patroclus
+	TemporaryDoorHealTrait_Patroclus = {
+		InheritFrom = { "TemporaryDoorHealTrait" },
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		NoFrame = false,
+		Icon = "Boon_Circe_06",
+		RemainingUses = 5,
+		DoorHeal = 0.3,
+		AcquireFunctionName = "PatroclusBuff",
+		CustomStatLinesWithShrineUpgrade = {
+			ShrineUpgradeName = "HealingReductionShrineUpgrade",
+			StatLines = {
+				"HealingReductionNotice",
+			},
+		},
+	},
+	TemporaryImprovedWeaponTrait_Patroclus = {
+		InheritFrom = { "ShopTrait" },
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		NoFrame = false,
+		AcquireFunctionName = "PatroclusBuff",
+		Icon = "Boon_Circe_06",
+		RemainingUses = 10,
+		UsesAsEncounters = true,
+		AddOutgoingDamageModifiers = {
+			ValidWeaponMultiplier = 1.6,
+			ValidWeapons = game.WeaponSets.HeroPrimarySecondaryWeapons,
+			ReportValues = { ReportedMultiplier = "ValidWeaponMultiplier" },
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMultiplier",
+				ExtractAs = "TooltipDamageBonus",
+				Format = "PercentDelta",
+			},
+		},
+		StatLines = {
+			"StoreUsesRemainingDisplay1",
+		},
 	},
 	-- #endregion
 }

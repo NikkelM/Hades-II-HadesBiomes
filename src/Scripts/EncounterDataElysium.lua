@@ -58,6 +58,10 @@ local encounterReplacements = {
 		},
 	},
 
+	Story_Patroclus_01 = {
+		UnthreadedEvents = {},
+	},
+
 	PerfectClearChallengeElysium = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedElysium" },
 		EnemySet = EnemySets.EnemiesBiome3,
@@ -72,6 +76,11 @@ local encounterModifications = {
 	-- GENERIC
 	DevotionTestElysium = {
 		CanEncounterSkip = false,
+	},
+	Story_Patroclus_01 = {
+		ExitVoiceLines = {
+			ObjectType = "NPC_Patroclus_01",
+		},
 	},
 
 	-- MINIBOSSES

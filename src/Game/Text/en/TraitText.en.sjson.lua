@@ -29,23 +29,37 @@ local newData = {
 		"Receive a gift of {#MoneyFormatBold}+{$TraitData.SisyphusMoney.AcquireFunctionArgs.LootOptions.[1].Amount}{#Prev}{!Icons.Currency} Gold Crowns",
 	},
 	-- Eurydice
+	-- TODO: Get from Helptext for other languages?
 	{
 		Id = "BuffSlottedBoonRarity",
 		DisplayName = "Ambrosia Delight",
 		Description =
-		"Loved by the gods; up to {#UpgradeFormat}2 {#Prev}random {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}of yours are upgraded to the next {$Keywords.Rarity}.",
+		"Loved by the gods; up to {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}random {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}of yours are upgraded to the next {$Keywords.Rarity}.",
 	},
 	{
 		Id = "BuffMegaPom",
 		DisplayName = "Pom Porridge",
 		Description =
-		"An Underworld delicacy; up to {#UpgradeFormat}4 {#Prev}random {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}of yours gain {#AltUpgradeFormat}+1 Lv{#Prev}.",
+		"An Underworld delicacy; up to {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}random {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}of yours gain {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} Lv{#Prev}.",
 	},
 	{
 		Id = "BuffFutureBoonRarity",
 		DisplayName = "Refreshing Nectar",
 		Description =
-		"A rare and fragrant beverage; the next {#AltUpgradeFormat}3 {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}you find have upgraded {$Keywords.Rarity}.",
+		"A rare and fragrant beverage; the next {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}you find have upgraded {$Keywords.Rarity}.",
+	},
+	-- Patroclus
+	-- Some of them are in the HelpText files
+	{
+		Id = "TemporaryImprovedWeaponTrait_Patroclus",
+		DisplayName = "Cyclops Jerky Select",
+		Description =
+		"Your {$Keywords.AttackSet} and {$Keywords.SpecialSet} deals {#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageBonus:P} {#Prev}damage.",
+	},
+	{
+		Id = "TemporaryDoorHealTrait_Patroclus",
+		InheritFrom = "TemporaryDoorHealTrait",
+		DisplayName = "HydraLite Gold",
 	},
 }
 

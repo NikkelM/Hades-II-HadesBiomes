@@ -56,6 +56,9 @@ function mod.ApplyModificationsAndInheritEncounterData(base, modifications, repl
 	-- Process data inheritance and add the new data to the game's global
 	base = mod.AddTableKeysSkipDupes(game.EncounterData, base, nil)
 	for encounterName, encounterData in pairs(base) do
+		-- Add a name key
+		encounterData.Name = encounterName
+
 		game.ProcessDataInheritance(encounterData, game.EncounterData)
 		base[encounterName] = encounterData
 	end

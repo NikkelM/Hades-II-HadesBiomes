@@ -98,6 +98,10 @@ local roomModifications = {
 	-- OTHER
 	C_Story01 = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
+		ExitFunctionName = "ModsNikkelMHadesBiomesPatroclusExitFunctionName",
+		ExitFunctionArgs = {
+			Speed = 300,
+		},
 	},
 	C_Reprieve01 = {
 		GameStateRequirements = {

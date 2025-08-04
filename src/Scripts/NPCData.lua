@@ -75,7 +75,6 @@ local npcModifications = {
 	NPC_Patroclus_01 = {
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
-		-- TODO
 		UpgradeScreenOpenSound = "/Leftovers/Menu Sounds/InfoPanelInURSA",
 		UpgradeSelectedSound = "/SFX/ArtemisBoonChoice",
 		MenuTitle = "NPC_Patroclus_01",
@@ -85,8 +84,8 @@ local npcModifications = {
 		-- "Gifts of Patroclus",
 		BoonInfoTitleText = "Codex_BoonInfo_Narcissus",
 		Traits = {
-			"BuffSlottedBoonRarity",
-			"BuffMegaPom",
+			"TemporaryDoorHealTrait_Patroclus",
+			"TemporaryImprovedWeaponTrait_Patroclus",
 			"BuffFutureBoonRarity",
 		},
 	},

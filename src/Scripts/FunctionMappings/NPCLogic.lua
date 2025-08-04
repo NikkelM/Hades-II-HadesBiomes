@@ -148,11 +148,11 @@ end
 
 function game.EurydiceBuff(args, source)
 	game.EurydicePreBuffPresentation(source, args)
-	if args.BoonRarity ~= nil then
-		game.AddRarityToTraits(source, { NumTraits = 2 })
+	if args.FunctionName == "AddRarityToTraits" then
+		game.AddRarityToTraits(source, { NumTraits = args.NumTraits })
 	end
-	if args.StackTraits ~= nil then
-		game.AddStackToTraits(source, { NumTraits = 4, NumStacks = 1 })
+	if args.FunctionName == "AddStackToTraits" then
+		game.AddStackToTraits(source, { NumTraits = args.NumTraits, NumStacks = args.NumStacks })
 	end
 end
 
@@ -161,6 +161,27 @@ function game.EurydicePreBuffPresentation(source, args)
 	game.wait(1.6)
 	PlaySound({ Name = "/SFX/GyroHealthPickupMunch", Id = game.CurrentRun.Hero.ObjectId })
 	CreateAnimation({ Name = "HealthSparkleBurst", DestinationId = game.CurrentRun.Hero.ObjectId, OffsetZ = 50 })
+end
+
+-- #endregion
+
+-- #region Patroclus
+function game.PatroclusBuff(source, args)
+	game.wait(1.0)
+	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteExcitement" })
+	if args.TraitName ~= nil then
+		local traitData = TraitData[args.TraitName]
+		if traitData.LastStandWeapon ~= nil then
+			game.GainLastStandPresentation()
+			game.thread(game.InCombatText, game.CurrentRun.Hero.ObjectId, "GainedExtraChance")
+		end
+	end
+end
+
+-- For some reason, if the player is too fast exiting this room, the game crashes
+function game.ModsNikkelMHadesBiomesPatroclusExitFunctionName(currentRun, exitDoor, args)
+	SetUnitProperty({ Property = "Speed", Value = args.Speed, DestinationId = game.CurrentRun.Hero.ObjectId })
+	game.LeaveRoomPresentation(currentRun, exitDoor)
 end
 
 -- #endregion
