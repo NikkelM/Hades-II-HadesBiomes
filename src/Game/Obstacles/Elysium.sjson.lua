@@ -141,6 +141,36 @@ local hadesTwoObstacleModifications = {
 	ElysiumTable02 = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
+	ElysiumSword01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumSword02 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumBrazier01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumBanner01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumFencePost01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumFencePost02 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumFence03 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumFence03a = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumFence03b = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumCandle01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
 }
 
 sjson.hook(hadesTwoElysiumObstacleFile, function(data)
