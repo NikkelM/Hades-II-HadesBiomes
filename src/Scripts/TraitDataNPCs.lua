@@ -152,7 +152,7 @@ local newTraitData = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		NoFrame = false,
-		Icon = "Boon_Circe_06",
+		Icon = "Boon_Medea_06",
 		RemainingUses = 5,
 		DoorHeal = 0.3,
 		AcquireFunctionName = "PatroclusBuff",
@@ -169,7 +169,7 @@ local newTraitData = {
 		BlockInRunRarify = true,
 		NoFrame = false,
 		AcquireFunctionName = "PatroclusBuff",
-		Icon = "Boon_Circe_06",
+		Icon = "Boon_Medea_08",
 		RemainingUses = 10,
 		UsesAsEncounters = true,
 		AddOutgoingDamageModifiers = {
@@ -190,7 +190,7 @@ local newTraitData = {
 	},
 	BuffExtraChance = {
 		-- Adapted from EchoDeathDefianceRefill
-		Icon = "Boon_Circe_06",
+		Icon = "Boon_Medea_02",
 		Hidden = true,
 		GameStateRequirements = {
 			NamedRequirements = { "MissingLastStand", },
