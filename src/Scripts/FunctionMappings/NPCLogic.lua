@@ -157,17 +157,25 @@ end
 
 function game.EurydiceBuff(args, source)
 	game.EurydicePreBuffPresentation(source, args)
-	if args.FunctionName == "AddRarityToTraits" then
-		game.AddRarityToTraits(source, { NumTraits = args.NumTraits })
+	-- TODO: Test
+	if args.FunctionName then
+		game.CallFunctionName(args.FunctionName, source, args)
 	end
-	if args.FunctionName == "AddStackToTraits" then
-		game.AddStackToTraits(source, { NumTraits = args.NumTraits, NumStacks = args.NumStacks })
-	end
+	-- if args.FunctionName == "AddRarityToTraits" then
+	-- 	game.AddRarityToTraits(source, { NumTraits = args.NumTraits })
+	-- end
+	-- if args.FunctionName == "AddStackToTraits" then
+	-- 	game.AddStackToTraits(source, { NumTraits = args.NumTraits, NumStacks = args.NumStacks })
+	-- end
+	game.EurydicePostBuffPresentation(source, args)
 end
 
 function game.EurydicePreBuffPresentation(source, args)
 	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteExcitement" })
 	game.wait(1.6)
+end
+
+function game.EurydicePostBuffPresentation(source, args)
 	PlaySound({ Name = "/SFX/GyroHealthPickupMunch", Id = game.CurrentRun.Hero.ObjectId })
 	CreateAnimation({ Name = "HealthSparkleBurst", DestinationId = game.CurrentRun.Hero.ObjectId, OffsetZ = 50 })
 end
@@ -175,7 +183,10 @@ end
 -- #endregion
 
 -- #region Patroclus
-function game.PatroclusBuff(source, args)
+function game.PatroclusBuff(args, source)
+	if args.FunctionName then
+		game.CallFunctionName(args.FunctionName, source, args)
+	end
 	game.wait(1.0)
 	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteExcitement" })
 end
@@ -210,6 +221,14 @@ function game.PatroclusRefillLastStands(args)
 		end
 		game.RecreateLifePips()
 	end
+end
+
+function game.PatroclusAddMaxHealthMana(source, args)
+	local healthGained = args.AddMaxHealth or 30
+	local manaGained = args.AddMaxMana or 30
+	game.AddMaxHealth(healthGained, "ResourceMaxHealth", { Silent = true })
+	game.AddMaxMana(manaGained, "ResourceMaxMana", { Silent = true })
+	game.thread(game.BonusHealthAndManaPresentation, healthGained, manaGained, 0.5)
 end
 
 -- #endregion

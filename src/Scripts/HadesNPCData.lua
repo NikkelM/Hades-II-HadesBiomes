@@ -339,6 +339,36 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- 	"BouldyBlessing_Money",
 	-- 	"BouldyBlessing_None",
 	-- },
+	EurydiceBenefitChoices = {
+		SkipComponents = {
+			"OlympusBackground",
+			"ShopBackground",
+			"ShopLighting",
+		},
+		DefaultGroup = "Combat_Menu_Overlay_Backing",
+		ButtonGroupName = "Combat_Menu_Overlay_Backing",
+		PurchaseAnimationGroupName = "Combat_Menu_Overlay_Additive",
+		PortraitShift = { Distance = 250, Angle = 180, Duration = 0.3, EaseIn = 0.5, EaseOut = 1.0, },
+		OverwriteTableKeys = { SkipUpgradePresentationAndExitUnlock = true, },
+		OnCloseFinishedFunctionName = "ModsNikkelMHadesBiomesNPCPostChoicePresentation",
+		UpgradeOptions = {
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesBuffMegaPom",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
+				Rarity = "Common",
+			},
+		},
+	},
 	PatroclusBenefitChoices = {
 		SkipComponents = {
 			"OlympusBackground",
@@ -373,35 +403,30 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 					},
 				},
 			},
-		},
-	},
-	EurydiceBenefitChoices = {
-		SkipComponents = {
-			"OlympusBackground",
-			"ShopBackground",
-			"ShopLighting",
-		},
-		DefaultGroup = "Combat_Menu_Overlay_Backing",
-		ButtonGroupName = "Combat_Menu_Overlay_Backing",
-		PurchaseAnimationGroupName = "Combat_Menu_Overlay_Additive",
-		PortraitShift = { Distance = 250, Angle = 180, Duration = 0.3, EaseIn = 0.5, EaseOut = 1.0, },
-		OverwriteTableKeys = { SkipUpgradePresentationAndExitUnlock = true, },
-		OnCloseFinishedFunctionName = "ModsNikkelMHadesBiomesNPCPostChoicePresentation",
-		UpgradeOptions = {
+			-- Gain more health if MaxMana is currently higher than MaxHealth, or vice versa
 			{
 				Type = "Trait",
-				ItemName = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
+				ItemName = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 				Rarity = "Common",
+				GameStateRequirements = {
+					{
+						Path = { "CurrentRun", "Hero", "MaxHealth" },
+						Comparison = "<=",
+						ValuePath = { "CurrentRun", "Hero", "MaxMana" },
+					},
+				},
 			},
 			{
 				Type = "Trait",
-				ItemName = "ModsNikkelMHadesBiomesBuffMegaPom",
+				ItemName = "ModsNikkelMHadesBiomesGainMinHealthMaxMana",
 				Rarity = "Common",
-			},
-			{
-				Type = "Trait",
-				ItemName = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
-				Rarity = "Common",
+				GameStateRequirements = {
+					{
+						Path = { "CurrentRun", "Hero", "MaxHealth" },
+						Comparison = ">",
+						ValuePath = { "CurrentRun", "Hero", "MaxMana" },
+					},
+				},
 			},
 		},
 	},

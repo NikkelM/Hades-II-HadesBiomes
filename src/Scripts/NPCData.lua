@@ -87,6 +87,8 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesTemporaryDoorHealTrait_Patroclus",
 			"ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 			"ModsNikkelMHadesBiomesBuffExtraChance",
+			"ModsNikkelMHadesBiomesGainMaxHealthMinMana",
+			"ModsNikkelMHadesBiomesGainMinHealthMaxMana",
 		},
 	},
 }

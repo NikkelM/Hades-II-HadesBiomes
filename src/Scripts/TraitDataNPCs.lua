@@ -88,6 +88,7 @@ local newTraitData = {
 		},
 	},
 	-- #endregion
+
 	-- #region Eurydice
 	ModsNikkelMHadesBiomesBuffSlottedBoonRarity = {
 		BlockStacking = true,
@@ -146,6 +147,7 @@ local newTraitData = {
 		RemainingUses = 3,
 	},
 	-- #endregion
+
 	-- #region Patroclus
 	ModsNikkelMHadesBiomesTemporaryDoorHealTrait_Patroclus = {
 		InheritFrom = { "TemporaryDoorHealTrait" },
@@ -195,8 +197,9 @@ local newTraitData = {
 		GameStateRequirements = {
 			NamedRequirements = { "MissingLastStand", },
 		},
-		AcquireFunctionName = "PatroclusRefillLastStands",
+		AcquireFunctionName = "PatroclusBuff",
 		AcquireFunctionArgs = {
+			FunctionName = "PatroclusRefillLastStands",
 			HealFraction = 0.5,
 			ReportValues = {
 				ReportedHealFraction = "HealFraction"
@@ -218,6 +221,45 @@ local newTraitData = {
 				SkipAutoExtract = true,
 			},
 		}
+	},
+	-- More Max Health than Mana
+	ModsNikkelMHadesBiomesGainMaxHealthMinMana = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Icon = "Boon_Medea_02",
+		AcquireFunctionName = "PatroclusBuff",
+		AcquireFunctionArgs = {
+			FunctionName = "PatroclusAddMaxHealthMana",
+			AddMaxHealth = 40,
+			AddMaxMana = 15,
+			ReportValues = {
+				ReportedMaxHealth = "AddMaxHealth",
+				ReportedMaxMana = "AddMaxMana",
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMaxHealth",
+				ExtractAs = "TooltipMaxHealth",
+			},
+			{
+				Key = "ReportedMaxMana",
+				ExtractAs = "TooltipMaxMana",
+			},
+		},
+	},
+	-- More Max Mana than Health
+	ModsNikkelMHadesBiomesGainMinHealthMaxMana = {
+		InheritFrom = { "ModsNikkelMHadesBiomesGainMaxHealthMinMana", },
+		AcquireFunctionArgs = {
+			FunctionName = "PatroclusAddMaxHealthMana",
+			AddMaxHealth = 15,
+			AddMaxMana = 40,
+			ReportValues = {
+				ReportedMaxHealth = "AddMaxHealth",
+				ReportedMaxMana = "AddMaxMana",
+			},
+		},
 	},
 	-- #endregion
 }

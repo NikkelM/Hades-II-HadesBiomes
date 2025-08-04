@@ -67,6 +67,20 @@ local newData = {
 		Description =
 		"Replenish {#UpgradeFormat}all {#Prev}uses of {#BoldFormatGraft}{$Keywords.ExtraChance} {#Prev}with ones that restore {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipInitialHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}.",
 	},
+	{
+		-- More Max Health than Mana
+		Id = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
+		-- Mix of the Centaur Heart and Soul Tonic shop item names, with the larger gain being the second part
+		DisplayName = "Soul Heart",
+		Description =
+		"Gain {#UpgradeFormat}+{$TooltipData.ExtractData.TooltipMaxHealth}{#Prev}{!Icons.HealthUp} and {#UpgradeFormat}+{$TooltipData.ExtractData.TooltipMaxMana}{#Prev}{!Icons.ManaUp}.",
+	},
+	{
+		-- More Max Mana than Health
+		Id = "ModsNikkelMHadesBiomesGainMinHealthMaxMana",
+		InheritFrom = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
+		DisplayName = "Centaur Tonic",
+	}
 }
 
 sjson.hook(traitTextFile, function(data)
