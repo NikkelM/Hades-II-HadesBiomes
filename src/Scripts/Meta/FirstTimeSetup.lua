@@ -150,7 +150,7 @@ local function copyHadesHelpTexts(fileNames, fileSkipMap)
 						end
 						-- In all Descriptions, replace {#PreviousFormat} with {#Prev}
 						if entry.Description then
-							entry.Description = entry.Description:gsub("{#PreviousFormat}", "{#Prev}")
+							entry.Description = string.gsub(entry.Description, "{#PreviousFormat}", "{#Prev}")
 						end
 					end
 
