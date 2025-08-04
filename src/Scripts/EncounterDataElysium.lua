@@ -81,6 +81,8 @@ local encounterModifications = {
 		ExitVoiceLines = {
 			ObjectType = "NPC_Patroclus_01",
 		},
+		-- Save after the conversation
+		SkipExitReadyCheckpoint = false,
 	},
 
 	-- MINIBOSSES

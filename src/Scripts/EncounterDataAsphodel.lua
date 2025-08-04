@@ -84,6 +84,10 @@ local encounterModifications = {
 	DevotionTestAsphodel = {
 		CanEncounterSkip = false,
 	},
+	Story_Eurydice_01 = {
+		-- Save after the conversation
+		SkipExitReadyCheckpoint = false,
+	},
 
 	-- MINIBOSSES
 	MiniBossHitAndRun = {

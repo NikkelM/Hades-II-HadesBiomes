@@ -114,6 +114,10 @@ local roomModifications = {
 		LoadModdedVoiceBanks = { "Eurydice", "ZagreusField" },
 		-- We play our own music in this room, don't play any by default
 		IgnoreMusic = true,
+		ModsNikkelMHadesBiomesOnReloadRunStartRoomUnthreadedEvents = true,
+		ModsNikkelMHadesBiomesOnReloadUnthreadedEvents = {
+			{ FunctionName = "ModsNikkelMHadesBiomesEurydiceMusic", Args = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice },
+		},
 	},
 	X_Reprieve01 = {
 		GameStateRequirements = {

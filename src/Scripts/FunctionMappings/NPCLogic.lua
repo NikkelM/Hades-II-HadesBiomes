@@ -91,7 +91,7 @@ function game.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
 end
 
 function game.SisyphusDropPresentation(consumable, args)
-	local source = game.ActiveEnemies
+	local source = game.ActiveEnemies[370001] or game.ActiveEnemies
 			[GetClosestUnitOfType({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "NPC_Sisyphus_01", Distance = 9999 })]
 	SetAnimation({ DestinationId = source.ObjectId, Name = "SisyphusElbowing" })
 end
@@ -117,6 +117,8 @@ function game.ModsNikkelMHadesBiomesSingingPresentation(source, ars)
 end
 
 function game.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
+	source = source or game.ActiveEnemies[514436]
+
 	game.CurrentRun.EventState[source.ObjectId] = { FunctionName = "ModsNikkelMHadesBiomesSingingPresentation", Args = args }
 	game.ModsNikkelMHadesBiomesSingingPresentation(source, args)
 

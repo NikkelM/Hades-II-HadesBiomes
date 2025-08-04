@@ -102,6 +102,7 @@ local roomModifications = {
 		ExitFunctionArgs = {
 			Speed = 300,
 		},
+		ModsNikkelMHadesBiomesOnReloadRunStartRoomUnthreadedEvents = true,
 	},
 	C_Reprieve01 = {
 		GameStateRequirements = {

@@ -71,6 +71,18 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	end
 end)
 
+-- To restore ActivatePrePlaced enemies in story rooms
+modutil.mod.Path.Wrap("RestoreUnlockRoomExits", function(base, currentRun, currentRoom)
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		if currentRoom.ModsNikkelMHadesBiomesOnReloadRunStartRoomUnthreadedEvents then
+			game.RunEventsGeneric(currentRoom.Encounter.StartRoomUnthreadedEvents, currentRoom.Encounter)
+			game.RunEventsGeneric(currentRoom.ModsNikkelMHadesBiomesOnReloadUnthreadedEvents)
+		end
+	end
+
+	base(currentRun, currentRoom)
+end)
+
 modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 	currentRun = currentRun or game.CurrentRun
 	args = args or {}
