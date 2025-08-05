@@ -14,22 +14,22 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesSisyphusHealing",
 		DisplayName = "Warm Embrace",
 		Description =
-		"Receive a gift of {#UpgradeFormat}+{$TooltipData.ExtractData.HealDropAmount}{#Prev}{!Icons.HealthRestore} Healing",
+		"Receive a gift of {#UpgradeFormat}+{$TooltipData.ExtractData.HealDropAmount}{#Prev}{!Icons.HealthRestore} Healing.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesSisyphusMetapoints",
 		DisplayName = "Crushed Dreams",
 		Description =
-		"Receive a gift of {#UpgradeFormat}+{$TraitData.ModsNikkelMHadesBiomesSisyphusMetapoints.AcquireFunctionArgs.LootOptions.[1].Overrides.AddResources.MetaCurrency}{#Prev}{!Icons.MetaCurrencyIconAlt} Bones",
+		"Receive a gift of {#UpgradeFormat}+{$TraitData.ModsNikkelMHadesBiomesSisyphusMetapoints.AcquireFunctionArgs.LootOptions.[1].Overrides.AddResources.MetaCurrency}{#Prev}{!Icons.MetaCurrencyIconAlt} Bones.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesSisyphusMoney",
 		DisplayName = "Spare Change",
 		Description =
-		"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency} Gold Crowns",
+		"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
 	},
 	-- Eurydice
-	-- TODO: Get from Helptext for other languages?
+	-- TODO: Get the next three from Helptext for other languages
 	{
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Ambrosia Delight",
@@ -53,8 +53,9 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 		DisplayName = "Cyclops Jerky Select",
+		-- Plural form  - "Attacks and Specials"
 		Description =
-		"Your {$Keywords.AttackSet} and {$Keywords.SpecialSet} deals {#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageBonus:P} {#Prev}damage.",
+		"Your {$Keywords.AttackSet} and {$Keywords.SpecialSet} deal {#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageBonus:P} {#Prev}damage.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesTemporaryDoorHealTrait_Patroclus",
@@ -68,7 +69,6 @@ local newData = {
 		"Replenish {#UpgradeFormat}all {#Prev}uses of {#BoldFormatGraft}{$Keywords.ExtraChance} {#Prev}with ones that restore {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipInitialHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}.",
 	},
 	{
-		-- More Max Health than Mana
 		Id = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 		-- Mix of the Centaur Heart and Soul Tonic shop item names, with the larger gain being the second part
 		DisplayName = "Soul Heart",
@@ -76,7 +76,6 @@ local newData = {
 		"Gain {#UpgradeFormat}+{$TooltipData.ExtractData.TooltipMaxHealth}{#Prev}{!Icons.HealthUp} and {#UpgradeFormat}+{$TooltipData.ExtractData.TooltipMaxMana}{#Prev}{!Icons.ManaUp}.",
 	},
 	{
-		-- More Max Mana than Health
 		Id = "ModsNikkelMHadesBiomesGainMinHealthMaxMana",
 		InheritFrom = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 		DisplayName = "Centaur Tonic",
