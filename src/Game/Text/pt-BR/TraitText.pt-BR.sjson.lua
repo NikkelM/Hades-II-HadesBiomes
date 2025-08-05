@@ -33,19 +33,19 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Deleite de Ambrósia",
 		Description =
-		"Amado pelos deuses; até {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat} {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}aleatórias suas são melhoradas para a próxima {$Keywords.Rarity}.",
+		"Amado pelos deuses; até {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev} {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}aleatórias suas são melhoradas para a próxima {$Keywords.Rarity}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffMegaPom",
 		DisplayName = "Mingau de Romã",
 		Description =
-		"Uma iguaria do Submundo; até {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat} {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}aleatórias suas ganham {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} Nv{#PreviousFormat}.",
+		"Uma iguaria do Submundo; até {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev} {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}aleatórias suas ganham {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} Nv{#Prev}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		DisplayName = "Néctar Refrescante",
 		Description =
-		"Uma bebida rara e aromática; as próximas {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#PreviousFormat}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}que você encontrar têm {$Keywords.Rarity} melhorada.",
+		"Uma bebida rara e aromática; as próximas {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}que você encontrar têm {$Keywords.Rarity} melhorada.",
 	},
 	-- Patroclus
 	-- {

@@ -33,19 +33,19 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "悦人仙酒",
 		Description =
-		"天国诸神的最爱；随机选取你的{#BoldFormatGraft}{$Keywords.GodBoonPlural}{#PreviousFormat}里的 {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} 个{#PreviousFormat}，使它们的{$Keywords.Rarity}提升一级。",
+		"天国诸神的最爱；随机选取你的{#BoldFormatGraft}{$Keywords.GodBoonPlural}{#Prev}里的 {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} 个{#Prev}，使它们的{$Keywords.Rarity}提升一级。",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffMegaPom",
 		DisplayName = "石榴杂酿",
 		Description =
-		"一种冥界美食；随机选取你的{#BoldFormatGraft}{$Keywords.GodBoonPlural}{#PreviousFormat}里的 {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} 个{#PreviousFormat}，使它们各升 {#AltUpgradeFormat}{$TooltipData.ExtractData.NumStacks} 级{#PreviousFormat}。",
+		"一种冥界美食；随机选取你的{#BoldFormatGraft}{$Keywords.GodBoonPlural}{#Prev}里的 {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} 个{#Prev}，使它们各升 {#AltUpgradeFormat}{$TooltipData.ExtractData.NumStacks} 级{#Prev}。",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		DisplayName = "提神蜜露",
 		Description =
-		"一种稀有且醇香的美味饮料；你找到的下 {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#PreviousFormat}{#BoldFormatGraft}{#PreviousFormat}个{$Keywords.GodBoonPlural}会提升{$Keywords.Rarity}。",
+		"一种稀有且醇香的美味饮料；你找到的下 {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{#Prev}个{$Keywords.GodBoonPlural}会提升{$Keywords.Rarity}。",
 	},
 	-- Patroclus
 	-- {

@@ -33,19 +33,19 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "アンブロシア・ディライト",
 		Description =
-		"神々の好物。取得済みの{#BoldFormatGraft}{$Keywords.GodBoonPlural}{#PreviousFormat}のうち、\nランダムで選ばれた最大{#UpgradeFormat}{$TooltipData.ExtractData.NumTraits}{#PreviousFormat}個の{$Keywords.Rarity}が一段階上がる。",
+		"神々の好物。取得済みの{#BoldFormatGraft}{$Keywords.GodBoonPlural}{#Prev}のうち、\nランダムで選ばれた最大{#UpgradeFormat}{$TooltipData.ExtractData.NumTraits}{#Prev}個の{$Keywords.Rarity}が一段階上がる。",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffMegaPom",
 		DisplayName = "石榴がゆ",
 		Description =
-		"冥界の珍味。取得済みの{#BoldFormatGraft}{$Keywords.GodBoonPlural}{#PreviousFormat}のうち、\nランダムで選ばれた最大{#UpgradeFormat}{$TooltipData.ExtractData.NumTraits}{#PreviousFormat}個のLv.が{#AltUpgradeFormat}{$TooltipData.ExtractData.NumStacks}{#PreviousFormat}\n上がる。",
+		"冥界の珍味。取得済みの{#BoldFormatGraft}{$Keywords.GodBoonPlural}{#Prev}のうち、\nランダムで選ばれた最大{#UpgradeFormat}{$TooltipData.ExtractData.NumTraits}{#Prev}個のLv.が{#AltUpgradeFormat}{$TooltipData.ExtractData.NumStacks}{#Prev}\n上がる。",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		DisplayName = "フレッシュ・ネクタル",
 		Description =
-		"きわめて希少な、香りのよい飲料。\nこの先発見する{#BoldFormatGraft}{$Keywords.GodBoonPlural}{#PreviousFormat}{#AltUpgradeFormat}{$TooltipData.RemainingUses}{#PreviousFormat}つの{$Keywords.Rarity}が\n上がる。",
+		"きわめて希少な、香りのよい飲料。\nこの先発見する{#BoldFormatGraft}{$Keywords.GodBoonPlural}{#Prev}{#AltUpgradeFormat}{$TooltipData.RemainingUses}{#Prev}つの{$Keywords.Rarity}が\n上がる。",
 	},
 	-- Patroclus
 	-- {

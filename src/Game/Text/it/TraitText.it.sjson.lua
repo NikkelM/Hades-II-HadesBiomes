@@ -33,19 +33,19 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Delizia d'Ambrosia",
 		Description =
-		"Amato dagli dèi; fino a {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat}a caso fra i tuoi {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}salgono al livello di {$Keywords.Rarity} successivo.",
+		"Amato dagli dèi; fino a {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}a caso fra i tuoi {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}salgono al livello di {$Keywords.Rarity} successivo.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffMegaPom",
 		DisplayName = "Pasticcio di Pomi",
 		Description =
-		"Una prelibatezza degli Inferi; fino a {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} a caso ottengono {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} Lv{#PreviousFormat}.",
+		"Una prelibatezza degli Inferi; fino a {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev} a caso ottengono {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} Lv{#Prev}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		DisplayName = "Nettare Rinfrescante",
 		Description =
-		"Una rara e fragrante libagione; i prossimi {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#PreviousFormat}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}che ricevi avranno {$Keywords.Rarity} superiore.",
+		"Una rara e fragrante libagione; i prossimi {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}che ricevi avranno {$Keywords.Rarity} superiore.",
 	},
 	-- Patroclus
 	-- {

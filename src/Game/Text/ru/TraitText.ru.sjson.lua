@@ -33,19 +33,19 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Сладости из амброзии",
 		Description =
-		"Боги от них без ума; до {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat}твоих случайных {#BoldFormatGraft}[даров]{$Keywords.GodBoonPlural} {#PreviousFormat}будут улучшены до следующего уровня [редкости]{$Keywords.Rarity}.",
+		"Боги от них без ума; до {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}твоих случайных {#BoldFormatGraft}[даров]{$Keywords.GodBoonPlural} {#Prev}будут улучшены до следующего уровня [редкости]{$Keywords.Rarity}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffMegaPom",
 		DisplayName = "Каша из граната",
 		Description =
-		"Деликатес Подземного мира; до {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat}твоих случайных {#BoldFormatGraft}[даров]{$Keywords.GodBoonPlural} {#PreviousFormat}получат {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} ур.{#PreviousFormat}",
+		"Деликатес Подземного мира; до {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}твоих случайных {#BoldFormatGraft}[даров]{$Keywords.GodBoonPlural} {#Prev}получат {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} ур.{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		DisplayName = "Освежающий нектар",
 		Description =
-		"Редкий и ароматный напиток; следующие {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#PreviousFormat}{#BoldFormatGraft}[дара]{$Keywords.GodBoonPlural}{#PreviousFormat}, которые ты найдёшь, будут обладать улучшенной [редкостью]{$Keywords.Rarity}.",
+		"Редкий и ароматный напиток; следующие {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}[дара]{$Keywords.GodBoonPlural}{#Prev}, которые ты найдёшь, будут обладать улучшенной [редкостью]{$Keywords.Rarity}.",
 	},
 	-- Patroclus
 	-- {

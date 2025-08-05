@@ -33,19 +33,19 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Rozkosz Ambrozji",
 		Description =
-		"Uwielbiana przez bogów; {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat}losowe {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} zyskują większą {$Keywords.Rarity}.",
+		"Uwielbiana przez bogów; {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}losowe {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev} zyskują większą {$Keywords.Rarity}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffMegaPom",
 		DisplayName = "Kaszka z Granatem",
 		Description =
-		"Rarytas Podziemi; {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat}losowe {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}zyskują {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} poziom{#PreviousFormat}.",
+		"Rarytas Podziemi; {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}losowe {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}zyskują {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} poziom{#Prev}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		DisplayName = "Orzeźwiający Nektar",
 		Description =
-		"Rzadki i smakowity napój; następne {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#PreviousFormat}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} odnalezione przez ciebie mają podwyższoną {$Keywords.Rarity}.",
+		"Rzadki i smakowity napój; następne {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev} odnalezione przez ciebie mają podwyższoną {$Keywords.Rarity}.",
 	},
 	-- Patroclus
 	-- {

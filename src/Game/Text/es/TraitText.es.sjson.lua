@@ -33,19 +33,19 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Delicia de ambrosía",
 		Description =
-		"Adorada por los dioses. Mejora hasta {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}aleatorias hasta el siguiente nivel de {$Keywords.Rarity}.",
+		"Adorada por los dioses. Mejora hasta {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}aleatorias hasta el siguiente nivel de {$Keywords.Rarity}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffMegaPom",
 		DisplayName = "Mermelada de granada",
 		Description =
-		"Este manjar del Inframundo hace que hasta {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}cualesquiera aumenten {#AltUpgradeFormat}{$TooltipData.ExtractData.NumStacks} nivel {#PreviousFormat}.",
+		"Este manjar del Inframundo hace que hasta {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}cualesquiera aumenten {#AltUpgradeFormat}{$TooltipData.ExtractData.NumStacks} nivel {#Prev}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		DisplayName = "Néctar refrescante",
 		Description =
-		"Con esta aromática y excepcional bebida, las próximas {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#PreviousFormat}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}que encuentres tendrán una {$Keywords.Rarity} mejorada.",
+		"Con esta aromática y excepcional bebida, las próximas {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}que encuentres tendrán una {$Keywords.Rarity} mejorada.",
 	},
 	-- Patroclus
 	-- {

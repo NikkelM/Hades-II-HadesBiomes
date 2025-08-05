@@ -33,19 +33,19 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Délice d’Ambroisie",
 		Description =
-		"Adoré des dieux ; jusqu’à {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat}de vos {#BoldFormatGraft}[Bienfaits]{$Keywords.GodBoonPlural} {#PreviousFormat} sont choisis aléatoirement pour passer à la [Qualité]{$Keywords.Rarity} supérieure.",
+		"Adoré des dieux ; jusqu’à {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}de vos {#BoldFormatGraft}[Bienfaits]{$Keywords.GodBoonPlural} {#Prev} sont choisis aléatoirement pour passer à la [Qualité]{$Keywords.Rarity} supérieure.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffMegaPom",
 		DisplayName = "Bouillie de Grenades",
 		Description =
-		"Spécialité des Enfers ; jusqu’à {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat}de vos {#BoldFormatGraft}[Bienfaits]{$Keywords.GodBoonPlural} {#PreviousFormat}sont choisis aléatoirement pour gagner {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} Niv{#PreviousFormat}.",
+		"Spécialité des Enfers ; jusqu’à {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}de vos {#BoldFormatGraft}[Bienfaits]{$Keywords.GodBoonPlural} {#Prev}sont choisis aléatoirement pour gagner {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} Niv{#Prev}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		DisplayName = "Nectar Rafraîchissant",
 		Description =
-		"Boisson rare et parfumée ; les {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#PreviousFormat} prochains {#BoldFormatGraft}[Bienfaits]{$Keywords.GodBoonPlural} {#PreviousFormat}que vous trouvez seront de [Qualité]{$Keywords.Rarity} supérieure.",
+		"Boisson rare et parfumée ; les {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev} prochains {#BoldFormatGraft}[Bienfaits]{$Keywords.GodBoonPlural} {#Prev}que vous trouvez seront de [Qualité]{$Keywords.Rarity} supérieure.",
 	},
 	-- Patroclus
 	-- {

@@ -33,19 +33,19 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "암브로시아 딜라이트",
 		Description =
-		"신들의 사랑을 받는 음식입니다. 얻은 {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} 중 무작위 {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits}{#PreviousFormat}개의 {$Keywords.Rarity}가 상승합니다.",
+		"신들의 사랑을 받는 음식입니다. 얻은 {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev} 중 무작위 {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits}{#Prev}개의 {$Keywords.Rarity}가 상승합니다.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffMegaPom",
 		DisplayName = "석류죽",
 		Description =
-		"지하세계의 진미입니다. 얻은 {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat} 중 무작위 {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits}{#PreviousFormat}개의 레벨이 {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks}{#PreviousFormat} 상승합니다.",
+		"지하세계의 진미입니다. 얻은 {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev} 중 무작위 {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits}{#Prev}개의 레벨이 {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks}{#Prev} 상승합니다.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		DisplayName = "신선한 넥타르",
 		Description =
-		"희귀하고 향기로운 음료입니다. 이후 얻는 {#AltUpgradeFormat}{$TooltipData.RemainingUses}{#PreviousFormat}개의 {#BoldFormatGraft}{$Keywords.GodBoonPlural}{#PreviousFormat}의 {$Keywords.Rarity}가 상승합니다.",
+		"희귀하고 향기로운 음료입니다. 이후 얻는 {#AltUpgradeFormat}{$TooltipData.RemainingUses}{#Prev}개의 {#BoldFormatGraft}{$Keywords.GodBoonPlural}{#Prev}의 {$Keywords.Rarity}가 상승합니다.",
 	},
 	-- Patroclus
 	-- {

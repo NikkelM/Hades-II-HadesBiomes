@@ -33,19 +33,19 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Ambrosia-Traum",
 		Description =
-		"Beliebt bei den Göttern. Bis zu {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat}beliebige deiner {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}werden auf die nächste {$Keywords.Rarity} höhergestuft.",
+		"Beliebt bei den Göttern. Bis zu {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}beliebige deiner {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}werden auf die nächste {$Keywords.Rarity} höhergestuft.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffMegaPom",
 		DisplayName = "Apfelbrei",
 		Description =
-		"Eine Unterwelt-Delikatesse. Bis zu {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#PreviousFormat}beliebige deiner {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}erhalten {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} Lvl{#PreviousFormat}.",
+		"Eine Unterwelt-Delikatesse. Bis zu {#UpgradeFormat}{$TooltipData.ExtractData.NumTraits} {#Prev}beliebige deiner {#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}erhalten {#AltUpgradeFormat}+{$TooltipData.ExtractData.NumStacks} Lvl{#Prev}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		DisplayName = "Erfrischender Nektar",
 		Description =
-		"Ein seltener und aromatischer Trank. Die nächsten {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#PreviousFormat}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#PreviousFormat}, die du findest, haben eine höhere {$Keywords.Rarity}.",
+		"Ein seltener und aromatischer Trank. Die nächsten {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}, die du findest, haben eine höhere {$Keywords.Rarity}.",
 	},
 	-- Patroclus
 	-- {
