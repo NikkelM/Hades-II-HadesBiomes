@@ -155,8 +155,8 @@ function game.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 	SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
 end
 
-function game.EurydiceBuff(args, source)
-	game.EurydicePreBuffPresentation(source, args)
+function game.ModsNikkelMHadesBiomesEurydiceBuff(args, source)
+	game.ModsNikkelMHadesBiomesEurydicePreBuffPresentation(source, args)
 	-- TODO: Test
 	if args.FunctionName then
 		game.CallFunctionName(args.FunctionName, source, args)
@@ -167,15 +167,15 @@ function game.EurydiceBuff(args, source)
 	-- if args.FunctionName == "AddStackToTraits" then
 	-- 	game.AddStackToTraits(source, { NumTraits = args.NumTraits, NumStacks = args.NumStacks })
 	-- end
-	game.EurydicePostBuffPresentation(source, args)
+	game.ModsNikkelMHadesBiomesEurydicePostBuffPresentation(source, args)
 end
 
-function game.EurydicePreBuffPresentation(source, args)
+function game.ModsNikkelMHadesBiomesEurydicePreBuffPresentation(source, args)
 	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteExcitement" })
 	game.wait(1.6)
 end
 
-function game.EurydicePostBuffPresentation(source, args)
+function game.ModsNikkelMHadesBiomesEurydicePostBuffPresentation(source, args)
 	PlaySound({ Name = "/SFX/GyroHealthPickupMunch", Id = game.CurrentRun.Hero.ObjectId })
 	CreateAnimation({ Name = "HealthSparkleBurst", DestinationId = game.CurrentRun.Hero.ObjectId, OffsetZ = 50 })
 end
@@ -183,7 +183,7 @@ end
 -- #endregion
 
 -- #region Patroclus
-function game.PatroclusBuff(args, source)
+function game.ModsNikkelMHadesBiomesPatroclusBuff(args, source)
 	if args.FunctionName then
 		game.CallFunctionName(args.FunctionName, source, args)
 	end
@@ -197,7 +197,7 @@ function game.ModsNikkelMHadesBiomesPatroclusExitFunctionName(currentRun, exitDo
 	game.LeaveRoomPresentation(currentRun, exitDoor)
 end
 
-function game.PatroclusRefillLastStands(args)
+function game.ModsNikkelMHadesBiomesPatroclusRefillLastStands(args)
 	if not game.CurrentRun.Hero.MaxLastStands then
 		return
 	end
@@ -223,7 +223,7 @@ function game.PatroclusRefillLastStands(args)
 	end
 end
 
-function game.PatroclusAddMaxHealthMana(source, args)
+function game.ModsNikkelMHadesBiomesPatroclusAddMaxHealthMana(source, args)
 	local healthGained = args.AddMaxHealth or 30
 	local manaGained = args.AddMaxMana or 30
 	game.AddMaxHealth(healthGained, "ResourceMaxHealth", { Silent = true })
