@@ -29,7 +29,6 @@ local newData = {
 		"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
 	},
 	-- Eurydice
-	-- TODO: Get the next three from Helptext for other languages
 	{
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Ambrosia Delight",
