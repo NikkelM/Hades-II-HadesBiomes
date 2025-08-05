@@ -38,6 +38,8 @@ end
 local npcModifications = {
 	NPC_Sisyphus_01 = {
 		RequiredRoomInteraction = true,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		RepulseOnMeleeInvulnerableHit = 200,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
 		UpgradeScreenOpenSound = "/Leftovers/Menu Sounds/InfoPanelInURSA",
 		UpgradeSelectedSound = "/SFX/ArtemisBoonChoice",
@@ -57,6 +59,8 @@ local npcModifications = {
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
 		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
 		RequiredRoomInteraction = true,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		RepulseOnMeleeInvulnerableHit = 150,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
 		UpgradeScreenOpenSound = "/SFX/Menu Sounds/PortraitEmoteCheerfulSFX",
 		UpgradeSelectedSound = "/Leftovers/Menu Sounds/TalismanPaperEquipLEGENDARY",
@@ -74,6 +78,8 @@ local npcModifications = {
 	},
 	NPC_Patroclus_01 = {
 		RequiredRoomInteraction = true,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		RepulseOnMeleeInvulnerableHit = 200,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
 		UpgradeScreenOpenSound = "/Leftovers/Menu Sounds/InfoPanelInURSA",
 		UpgradeSelectedSound = "/SFX/ArtemisBoonChoice",
