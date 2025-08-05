@@ -26,7 +26,7 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesSisyphusMoney",
 		DisplayName = "Spare Change",
 		Description =
-		"Receive a gift of {#MoneyFormatBold}+{$TraitData.ModsNikkelMHadesBiomesSisyphusMoney.AcquireFunctionArgs.LootOptions.[1].Amount}{#Prev}{!Icons.Currency} Gold Crowns",
+		"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency} Gold Crowns",
 	},
 	-- Eurydice
 	-- TODO: Get from Helptext for other languages?

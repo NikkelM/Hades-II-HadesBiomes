@@ -6,21 +6,34 @@ local newTraitData = {
 		BlockInRunRarify = true,
 		Hidden = true,
 		Icon = "Boon_No_Choice_Money",
-		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionName = "ModsNikkelMHadesBiomesSisyphusBuff",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
-			DropFunctionName = "SisyphusDropPresentation",
-			LootOptions = {
-				{
-					Name = "Currency",
-					Amount = 110,
-				},
-			}
+			FunctionName = "GiveRandomConsumables",
+			DropFunctionName = "ModsNikkelMHadesBiomesSisyphusDropPresentation",
+			Currency = {
+				BaseMin = 101,
+				BaseMax = 115,
+				AsInt = true,
+			},
+			ReportValues = {
+				ReportedCurrency = "Currency",
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedCurrency",
+				Format = "MoneyAmount",
+				ExtractAs = "TooltipMoneyAmount",
+			},
 		},
 	},
 	ModsNikkelMHadesBiomesSisyphusHealing = {
-		InheritFrom = { "ModsNikkelMHadesBiomesSisyphusMoney", },
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Hidden = true,
 		Icon = "Boon_Narcissus_01",
+		AcquireFunctionName = "GiveRandomConsumables",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
 			NotRequiredPickup = true,
@@ -30,7 +43,7 @@ local newTraitData = {
 			Force = 350,
 			UpwardForce = 600,
 			Angle = -20,
-			DropFunctionName = "SisyphusDropPresentation",
+			DropFunctionName = "ModsNikkelMHadesBiomesSisyphusDropPresentation",
 			LootOptions = {
 				{
 					Name = "HealDrop",
@@ -55,10 +68,14 @@ local newTraitData = {
 		},
 	},
 	ModsNikkelMHadesBiomesSisyphusMetapoints = {
-		InheritFrom = { "ModsNikkelMHadesBiomesSisyphusMoney", },
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Hidden = true,
 		Icon = "Boon_Narcissus_03",
+		AcquireFunctionName = "GiveRandomConsumables",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
+			DropFunctionName = "ModsNikkelMHadesBiomesSisyphusDropPresentation",
 			NotRequiredPickup = true,
 			ForceToValidLocation = true,
 			RunProgressUpgradeEligible = true,
@@ -67,13 +84,12 @@ local newTraitData = {
 			Force = 350,
 			UpwardForce = 600,
 			Angle = -20,
-			DropFunctionName = "SisyphusDropPresentation",
 			LootOptions = {
 				{
 					Name = "MetaCurrencyDrop",
 					Overrides = {
 						AddResources = {
-							MetaCurrency = 30,
+							MetaCurrency = 50,
 						},
 					},
 				},

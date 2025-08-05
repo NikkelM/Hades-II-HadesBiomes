@@ -452,6 +452,7 @@ mod.NPCData = mod.NPCData or {
 		MetaPointMin = 50,
 		MetaPointMax = 60,
 
+		-- Moved to Trait
 		MoneyMin = 101,
 		MoneyMax = 115,
 

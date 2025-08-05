@@ -1,16 +1,3 @@
--- #region Sisyphus
-modutil.mod.Path.Wrap("BouldyHitPresentation", function(base, victim)
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		local source = game.ActiveEnemies
-				[GetClosestUnitOfType({ Id = victim.ObjectId, DestinationName = "NPC_Sisyphus_01", Distance = 9999 })]
-		if source ~= nil then
-			game.thread(game.PlayVoiceLines, source.BouldyAttackReactionVoiceLines, true, source)
-		end
-	else
-		base(victim)
-	end
-end)
-
 function game.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	RemoveInputBlock({ Name = "PlayTextLines" })
 
@@ -97,7 +84,34 @@ function game.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
 	game.UnfreezePlayerUnit("ModsNikkelMHadesBiomesNPCPostChoicePresentation")
 end
 
-function game.SisyphusDropPresentation(consumable, args)
+-- #region Sisyphus
+modutil.mod.Path.Wrap("BouldyHitPresentation", function(base, victim)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		local source = game.ActiveEnemies
+				[GetClosestUnitOfType({ Id = victim.ObjectId, DestinationName = "NPC_Sisyphus_01", Distance = 9999 })]
+		if source ~= nil then
+			game.thread(game.PlayVoiceLines, source.BouldyAttackReactionVoiceLines, true, source)
+		end
+	else
+		base(victim)
+	end
+end)
+
+function game.ModsNikkelMHadesBiomesSisyphusBuff(args, source)
+	if args.FunctionName == "GiveRandomConsumables" then
+		if args.Currency ~= nil then
+			args.LootOptions = {
+				{
+					Name = "Currency",
+					Amount = args.Currency,
+				},
+			}
+		end
+		game.CallFunctionName(args.FunctionName, args)
+	end
+end
+
+function game.ModsNikkelMHadesBiomesSisyphusDropPresentation(consumable, args)
 	local source = game.ActiveEnemies[370001] or game.ActiveEnemies
 			[GetClosestUnitOfType({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "NPC_Sisyphus_01", Distance = 9999 })]
 	SetAnimation({ DestinationId = source.ObjectId, Name = "SisyphusElbowing" })
