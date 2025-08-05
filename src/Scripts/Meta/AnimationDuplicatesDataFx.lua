@@ -4,7 +4,7 @@
 mod.HadesFxDestinationFilename = "Game\\Animations\\Z_ModsNikkelmHadesBiomesFx.sjson"
 
 mod.HadesFxAnimationModifications = {
-	-- TARTARUS
+	-- #region TARTARUS
 	TisiphoneFogIn = {
 		EndAlpha = 0.899,
 	},
@@ -14,7 +14,9 @@ mod.HadesFxAnimationModifications = {
 	TisiphoneFogLoopDissipate = {
 		EndAlpha = 0.899,
 	},
-	-- ASPHODEL
+	-- #endregion
+
+	-- #region ASPHODEL
 	["AsphodelRoomRewardAvailable-Back"] = {
 		OffsetY = -407.0,
 	},
@@ -25,7 +27,8 @@ mod.HadesFxAnimationModifications = {
 	RubbleFallImpactDecalMedusaHeadDeathFade = {
 		OffsetY = 0.0,
 	},
-	-- ASPHODEL BOSS - HYDRA
+	-- #endregion
+	-- #region ASPHODEL BOSS - HYDRA
 	HydraBubble = {
 		OffsetY = -70.0,
 	},
@@ -37,9 +40,19 @@ mod.HadesFxAnimationModifications = {
 		NumFrames = "null",
 		StartFrame = "null",
 	},
-	-- ELYSIUM
-	-- STYX
-	-- ENVIRONMENT
+	-- #endregion
+	-- #endregion
+
+	-- #region ELYSIUM
+	MinotaurAxeSpinSwipe = {
+		ScaleRadius = "null",
+	},
+	-- #endregion
+
+	-- #region STYX
+	-- #endregion
+
+	-- #region ENVIRONMENT
 	-- Used by the HydraSlamScattered attack
 	RadialNovaRubble = {
 		-- Updating the third value, but need to include the others to not set them to null
@@ -49,6 +62,7 @@ mod.HadesFxAnimationModifications = {
 			{ Name = "ModsNikkelMHadesBiomesRubbleFallImpactDecal" },
 		},
 	},
+	-- #endregion
 }
 
 -- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly

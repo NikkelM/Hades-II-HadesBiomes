@@ -50,7 +50,7 @@ local roomModifications = {
 		InheritFrom = { "BaseAsphodel", "BiomeStartRoom", },
 		Starting = true,
 		BlockRunProgressUI = true,
-		-- TODO: Need to add for the other start rooms as well (except Tartarus)
+		-- TODO: Need to add for the Styx start room as well
 		StartUnthreadedEvents = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
@@ -109,6 +109,16 @@ local roomModifications = {
 	},
 
 	-- OTHER
+	X_Story01 = {
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusic", },
+		LoadModdedVoiceBanks = { "Eurydice", "ZagreusField" },
+		-- We play our own music in this room, don't play any by default
+		IgnoreMusic = true,
+		ModsNikkelMHadesBiomesOnReloadRunStartRoomUnthreadedEvents = true,
+		ModsNikkelMHadesBiomesOnReloadUnthreadedEvents = {
+			{ FunctionName = "ModsNikkelMHadesBiomesEurydiceMusic", Args = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice },
+		},
+	},
 	X_Reprieve01 = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,

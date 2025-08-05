@@ -4,6 +4,7 @@ local encounterDataAsphodel = {
 	-- Generic encounters
 	GeneratedAsphodel = encounterData.GeneratedAsphodel,
 	DevotionTestAsphodel = encounterData.DevotionTestAsphodel,
+	Story_Eurydice_01 = encounterData.Story_Eurydice_01,
 
 	-- Minibosses
 	WrappingAsphodel = encounterData.WrappingAsphodel,
@@ -82,6 +83,10 @@ local encounterModifications = {
 	-- GENERIC
 	DevotionTestAsphodel = {
 		CanEncounterSkip = false,
+	},
+	Story_Eurydice_01 = {
+		-- Save after the conversation
+		SkipExitReadyCheckpoint = false,
 	},
 
 	-- MINIBOSSES

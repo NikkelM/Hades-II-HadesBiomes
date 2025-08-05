@@ -17,19 +17,19 @@ function game.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 				end
 				PanCamera({ Ids = id, Duration = args.DurationIn or 1.5, EaseIn = 0.05, EaseOut = 0.3 })
 				didPan = true
-				if args.UsePanSound then --
+				if args.UsePanSound then
 					PlaySound({ Name = "/Leftovers/World Sounds/MapZoomSlow" })
 				end
-				ProcessTextLines(enemy.BossPresentationSuperPriorityIntroTextLineSets)
-				ProcessTextLines(enemy.BossPresentationPriorityIntroTextLineSets)
-				ProcessTextLines(enemy.BossPresentationIntroTextLineSets)
-				ProcessTextLines(enemy.BossPresentationTextLineSets)
-				ProcessTextLines(enemy.BossPresentationRepeatableTextLineSets)
-				if not PlayRandomRemainingTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets) then
-					if not PlayRandomRemainingTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets) then
-						if not PlayRandomRemainingTextLines(enemy, enemy.BossPresentationIntroTextLineSets) then
-							if not PlayRandomRemainingTextLines(enemy, enemy.BossPresentationTextLineSets) then
-								PlayRandomRemainingTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
+				game.ProcessTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets)
+				game.ProcessTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets)
+				game.ProcessTextLines(enemy, enemy.BossPresentationIntroTextLineSets)
+				game.ProcessTextLines(enemy, enemy.BossPresentationTextLineSets)
+				game.ProcessTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
+				if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets) then
+					if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets) then
+						if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationIntroTextLineSets) then
+							if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationTextLineSets) then
+								game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
 							end
 						end
 					end

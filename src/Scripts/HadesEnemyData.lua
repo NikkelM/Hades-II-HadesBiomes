@@ -3449,7 +3449,6 @@ mod.EnemyData = {
 		},
 		AIOptions =
 		{
-			-- TODO
 			"AttackAllies",
 		},
 		AggroMinimumDistance = 500,
@@ -3971,7 +3970,6 @@ mod.EnemyData = {
 
 		AIOptions =
 		{
-			-- TODO
 			"UnstableGeneratorAI",
 		},
 
@@ -5207,7 +5205,6 @@ mod.EnemyData = {
 
 		AIOptions =
 		{
-			-- TODO
 			"RetreatThenDieAI",
 		},
 	},
@@ -23890,7 +23887,6 @@ mod.EnemyData = {
 
 		AIOptions =
 		{
-			-- TODO
 			"CerberusAssistAI",
 		},
 	},
@@ -25419,6 +25415,7 @@ mod.EnemyData = {
 					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
 					PostLineAnimTarget = "Hero",
 					Emote = "PortraitEmoteSurprise",
+					-- TODO: This flag needs to be set back to true for Persephone NPC
 					SetFlagFalse = "HadesEndingFlag",
 					-- PostLineThreadedFunctionName = "UnlockRoomExitsEvent",
 					Text =

@@ -48,7 +48,6 @@ local roomModifications = {
 
 	-- OPENING ROOMS
 	C_Intro = {
-		-- TODO: Comment next two out for Minotaur as first room testing
 		InheritFrom = { "BaseElysium", "BiomeStartRoom", },
 		Starting = true,
 		BlockRunProgressUI = true,
@@ -87,21 +86,24 @@ local roomModifications = {
 
 	-- BOSSES
 	C_Boss01 = {
+		LoadModdedVoiceBanks = { "Minotaur", "Theseus", "ZagreusField" },
 		ForcedReward = "MixerHBossDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
-		UnthreadedEvents = {
-			[1] = {
-				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
-				Args = { DelayedStart = true, },
-			},
-		},
 	},
 
 	-- OTHER
+	C_Story01 = {
+		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
+		ExitFunctionName = "ModsNikkelMHadesBiomesPatroclusExitFunctionName",
+		ExitFunctionArgs = {
+			Speed = 300,
+		},
+		ModsNikkelMHadesBiomesOnReloadRunStartRoomUnthreadedEvents = true,
+	},
 	C_Reprieve01 = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,

@@ -62,13 +62,16 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 					game.CallFunctionName(data.FunctionName, enemy, data.Args)
 				end
 			end
+
 			-- Adds the speedup during ram
 			if aiData.RamEffectProperties ~= nil and aiData.RamEffectResetProperties ~= nil then
-				SetUnitProperty({
-					DestinationId = enemy.ObjectId,
-					Value = aiData.RamEffectProperties.Value,
-					Property = aiData.RamEffectProperties.Property,
-				})
+				for _, property in ipairs(aiData.RamEffectProperties) do
+					SetUnitProperty({
+						DestinationId = enemy.ObjectId,
+						Value = property.Value,
+						Property = property.Property,
+					})
+				end
 			end
 			if aiData.FireSound ~= nil then
 				PlaySound({ Name = aiData.FireSound, Id = enemy.ObjectId })
@@ -87,11 +90,13 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 			aiData.MoveWithinRangeTimeout = aiData.RamTimeout
 			local moveSuccess = game.MoveWithinRange(enemy, aiData.TargetId, aiData)
 			if aiData.RamEffectProperties ~= nil and aiData.RamEffectResetProperties ~= nil then
-				SetUnitProperty({
-					DestinationId = enemy.ObjectId,
-					Value = aiData.RamEffectResetProperties.Value,
-					Property = aiData.RamEffectResetProperties.Property,
-				})
+				for _, property in ipairs(aiData.RamEffectResetProperties) do
+					SetUnitProperty({
+						DestinationId = enemy.ObjectId,
+						Value = property.Value,
+						Property = property.Property,
+					})
+				end
 			end
 			-- Added: Fires the weapon after a successful ram
 			if moveSuccess ~= false then
@@ -101,6 +106,7 @@ function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 					game.CallFunctionName(aiData.OnFiredFunctionName, enemy, aiData)
 				end
 			end
+
 			Stop({ Id = enemy.ObjectId })
 			if aiData.PostAttackAnimation ~= nil then
 				SetAnimation({ Name = aiData.PostAttackAnimation, DestinationId = enemy.ObjectId })

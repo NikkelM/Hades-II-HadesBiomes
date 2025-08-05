@@ -13,10 +13,13 @@ mod.AudioFileMappings = {
 -- Some speaker names do not work (e.g. MegaeraHome)!
 mod.VoiceoverFileNames = {
 	Alecto = "Alecto",
+	Eurydice = "Eurydice",
 	HadesField = "HadesField",
 	Megaera = "Megaera",
 	MegaeraField = "MegaeraField",
 	Minotaur = "Minotaur",
+	Patroclus = "Patroclus",
+	Sisyphus = "Sisyphus",
 	Theseus = "Theseus",
 	Tisiphone = "Tisiphone",
 	ZagreusField = "ZagreusField",
@@ -33,7 +36,7 @@ mod.PackageFileMappings = {
 }
 
 mod.BikFileMappings = {
-	-- TARTARUS
+	-- #region TARTARUS
 	-- Wretch Glutton/PunchingBagUnit
 	"EnemyWretchGluttonAttack_Bink",
 	"EnemyWretchGluttonDeathVFX_Bink",
@@ -126,7 +129,13 @@ mod.BikFileMappings = {
 	"Enemy_TisiphoneMultiFuryHover_Bink",
 	"Enemy_TisiphoneMultiFuryTakeOff_Bink",
 	"Enemy_TisiphoneMultiFurySkyDive_Bink",
-	-- ASPHODEL
+	-- Sisyphus
+	"NPC_SisyphusIdle_Bink",
+	"NPC_SisyphusIdleGreeting_Bink",
+	"NPC_SisyphusElbowing_Bink",
+	"NPC_SisyphusExplaining_Bink",
+	-- #endregion
+	-- #region ASPHODEL
 	-- RangedBurrower
 	"Enemy_BoneDracon_Idle_Bink",
 	"Enemy_BoneDracon_OnHit_Bink",
@@ -175,7 +184,11 @@ mod.BikFileMappings = {
 	"Enemy_HydraBlue_Ranged_Bink",
 	"Enemy_HydraBlue_Lunge_Bink",
 	"Enemy_HydraBlue_Sleep_Bink",
-	-- ELYSIUM
+	-- Eurydice
+	"NPC_EurydiceIdle_Bink",
+	"NPC_EurydiceIdleSinging_Bink",
+	-- #endregion
+	-- #region ELYSIUM
 	-- ShadeUnits generic
 	"ShadeOnHit_Bink",
 	"ShadeDeathVFX_Bink",
@@ -259,7 +272,12 @@ mod.BikFileMappings = {
 	"MinotaurArmoredAttackSwings_Bink",
 	"MinotaurArmoredTaunt_Bink",
 	"MinotaurArmoredDeathVFX_Bink",
-	-- STYX
+	-- Patroclus
+	"NPC_PatroclusIdleSitting_Bink",
+	"NPC_PatroclusIdleStanding_Bink",
+	-- #endregion
+	-- #region STYX
+	-- #endregion
 }
 
 mod.SjsonFileMappings = {
@@ -283,6 +301,7 @@ mod.SjsonFileMappings = {
 	"Animations\\CharacterAnim_EnemiesBosses_Minotaur",
 	"Animations\\CharacterAnim_EnemiesBosses_Theseus",
 	-- NPCs
+	-- "Animations\\CharacterAnimationsNPCs", -- This file is copied directly
 	-- "Animations\\CharacterAnimationsNPC_Persephone",
 	"Animations\\CharacterAnimationsNPC_Thanatos",
 }

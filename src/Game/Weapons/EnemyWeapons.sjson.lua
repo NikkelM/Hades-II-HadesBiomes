@@ -56,11 +56,18 @@ local hadesWeaponsModifications = {
 		SelfVelocity = mod.NilValue,
 		SelfUpwardVelocity = mod.NilValue,
 	},
-	-- TODO: Rework same as for ChariotRam
+	MinotaurBullRush = {
+		Effects = mod.NilValue,
+	},
+	MinotaurArmoredBullRush = {
+		Effects = mod.NilValue,
+	},
+	MinotaurOverheadShockwave = {
+		ProjectileAngleOffset = 90,
+	},
+	-- Not used?
 	TheseusChariotRam = {
-		Effect = {
-			Modifier = 760,
-		},
+		Effect = mod.NilValue,
 	},
 	-- #endregion
 

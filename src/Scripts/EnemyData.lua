@@ -1,7 +1,7 @@
 -- Contains generic functions to handle migrating enemy data from Hades to Hades II
 
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
-local function applyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
+function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
 	for oldName, newName in pairs(mod.EnemyNameMappings) do
 		mod.UpdatePropertyName(modifications, oldName, newName, {}, "EnemyDataHandler modifications")
 		mod.UpdatePropertyName(replacements, oldName, newName, {}, "EnemyDataHandler replacements")
@@ -28,6 +28,11 @@ local function applyModificationsAndInheritEnemyData(base, modifications, replac
 
 	for enemyName, enemyData in pairs(base) do
 		-- Replace keys that were renamed between the games
+		-- Need to replace this property first, as others might change other properties to FireInterval
+		if enemyData.DefaultAIData and enemyData.DefaultAIData.FireInterval then
+			enemyData.DefaultAIData.DumbFireInterval = enemyData.DefaultAIData.FireInterval
+			enemyData.DefaultAIData.FireInterval = nil
+		end
 		mod.RenameKeys(enemyData, enemyKeyReplacements, enemyName)
 
 		-- Always use the Olympus dialogue elements for the bosses
@@ -52,8 +57,18 @@ local function applyModificationsAndInheritEnemyData(base, modifications, replac
 				for key, textLineSet in pairs(enemyData[property]) do
 					textLineSet.Name = key
 					for _, entry in ipairs(textLineSet) do
-						if type(entry) == "table" and entry.Text then
-							entry.Text = string.gsub(entry.Text, "{#PreviousFormat}", "{#Prev}")
+						if type(entry) == "table" then
+							if entry.Text then
+								entry.Text = string.gsub(entry.Text, "{#PreviousFormat}", "{#Prev}")
+							end
+							if entry.SetFlagTrue then
+								entry.PostLineFunctionName = "ModsNikkelMHadesBiomesSetFlag"
+								entry.PostLineFunctionArgs = { FlagName = entry.SetFlagTrue, Value = true }
+							end
+							if entry.SetFlagFalse then
+								entry.PostLineFunctionName = "ModsNikkelMHadesBiomesSetFlag"
+								entry.PostLineFunctionArgs = { FlagName = entry.SetFlagFalse, Value = false }
+							end
 						end
 					end
 				end
@@ -188,6 +203,12 @@ local enemyReplacements = {
 	-- Setting this to an empty table in the enemy doesn't work, so resetting the keys that break the animations here
 	Harpy = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+	},
+	Harpy3 = {
+		MapTransitionReactionVoiceLines = {
+			-- Removing the Zagreus voicelines that are still in the VO file
+			[2] = mod.NilValue,
+		}
 	},
 	-- #endregion
 	-- #endregion
@@ -449,8 +470,6 @@ local enemyModifications = {
 				},
 			},
 		},
-		-- TODO: Maybe replace with fitting Melinoe voicelines?
-		MapTransitionReactionVoiceLines = mod.NilValue,
 	},
 	-- #endregion
 	-- #endregion
@@ -774,7 +793,6 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 	},
 	ShadeSpearUnit = {
-		-- TODO: StopAnimationsOnDeath? for the glow animations
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeSpearContainer",
 		SpawnUnitOnDeath = "ShadeNaked",
@@ -838,12 +856,16 @@ local enemyModifications = {
 			StopMoveWithinRange = false,
 			RamEffectName = mod.NilValue,
 			RamEffectProperties = {
-				Property = "Speed",
-				Value = 950,
+				{
+					Property = "Speed",
+					Value = 950,
+				},
 			},
 			RamEffectResetProperties = {
-				Property = "Speed",
-				Value = 300,
+				{
+					Property = "Speed",
+					Value = 300,
+				},
 			},
 			-- SetupDistance is when it can start ramming instead of moving
 			SetupDistance = 500,
@@ -856,12 +878,16 @@ local enemyModifications = {
 	ChariotElite = {
 		DefaultAIData = {
 			RamEffectProperties = {
-				Property = "Speed",
-				Value = 1100,
+				{
+					Property = "Speed",
+					Value = 1100,
+				},
 			},
 			RamEffectResetProperties = {
-				Property = "Speed",
-				Value = 400,
+				{
+					Property = "Speed",
+					Value = 400,
+				},
 			},
 		},
 	},
@@ -877,12 +903,16 @@ local enemyModifications = {
 			StopMoveWithinRange = false,
 			RamEffectName = mod.NilValue,
 			RamEffectProperties = {
-				Property = "Speed",
-				Value = 900,
+				{
+					Property = "Speed",
+					Value = 900,
+				},
 			},
 			RamEffectResetProperties = {
-				Property = "Speed",
-				Value = 200,
+				{
+					Property = "Speed",
+					Value = 200,
+				},
 			},
 			SetupDistance = 900,
 			SetupTimeout = 7.0,
@@ -908,10 +938,27 @@ local enemyModifications = {
 			CalcOffset = true,
 			CalcAngle = true,
 		},
+		ManualDeathAnimation = false,
+		PreBossAISetupFunctionName = "SetupComboPartners",
+	},
+	Minotaur2 = {
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "MinotaurArmoredOverheadTouchdown",
+			SpawnDistance = 90,
+			CalcOffset = true,
+			CalcAngle = true,
+		},
 	},
 	Theseus = {
+		-- Doesn't seem to be used
+		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "TheseusSpearTouchdown",
+		},
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
+		ManualDeathAnimation = false,
+		PreBossAISetupFunctionName = "SetupComboPartners",
 	},
 	-- #endregion
 	-- #endregion
@@ -1036,6 +1083,8 @@ local enemyKeyReplacements = {
 		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",
+		-- Done manually, to make sure it's done before others
+		-- FireInterval = "DumbFireInterval",
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
 	},
@@ -1055,4 +1104,4 @@ game.EnemyData.Elite.EliteAttributeData.ModsNikkelMHadesBiomesStasisDeath = {
 	AddDeathWeapons = { "EliteStasisDeath" },
 }
 
-applyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
+mod.ApplyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)

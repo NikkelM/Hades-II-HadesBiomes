@@ -57,7 +57,6 @@ local projectilesToRemove = {
 -- Modifications/overrides to the Hades enemy projectiles
 local hadesProjectilesModifications = {
 	-- #region TARTARUS
-	-- #region TARTARUS - Regular
 	DisembodiedHandGrab = {
 		Effect = {
 			-- Don't play the ZagreusStun animation
@@ -85,13 +84,9 @@ local hadesProjectilesModifications = {
 	HeavyRangedSplitterFragment = {
 		DieWithOwner = true,
 	},
-	-- #endregion
-	-- #region TARTARUS - Minibosses
 	WretchAssassinRanged = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 	},
-	-- #endregion
-	-- #region TARTARUS - Harpies
 	HarpyBeam = {
 		Speed = 700,
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
@@ -124,10 +119,8 @@ local hadesProjectilesModifications = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 	},
 	-- #endregion
-	-- #endregion
 
 	-- #region ASPHODEL
-	-- #region ASPHODEL - Regular
 	RangedBurrowerWeapon = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
@@ -135,8 +128,6 @@ local hadesProjectilesModifications = {
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
 	},
-	-- #endregion
-	-- #region ASPHODEL - Hydra
 	HydraDart = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
@@ -147,14 +138,13 @@ local hadesProjectilesModifications = {
 		DetonateOnTouchdown = true,
 	},
 	-- #endregion
-	-- #endregion
 
 	-- #region ELYSIUM
-	-- #region ELYSIUM - Regular
 	SplitShotWeapon = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		ImpactFx = "EnemyProjectileImpact",
 		DissipateFx = "EnemyProjectileMultiBreak",
+		-- Removing this, as otherwise the small projectiles all hit the player when spawning
 		SpawnOnDeath = "null",
 		SpawnOnDissipate = "SplitShotWeaponSmall",
 		UnpauseResetLocation = true,
@@ -173,14 +163,49 @@ local hadesProjectilesModifications = {
 	ChariotRamSelfDestruct = {
 		AffectsEnemies = true,
 	},
-	-- #endregion
-	-- #region ELYSIUM - Minotaur
 	MinotaurOverheadTouchdown = {
 		AttachToOwner = false,
 		DamageRadius = 400,
 		DamageRadiusScaleY = 0.4,
 	},
-	-- #endregion
+	MinotaurBullRushRam = {
+		InheritFrom = "1_BaseEnemyProjectile",
+		RotateWithOwner = true,
+		ImpactLineOfSight = true,
+		Fuse = 9.0,
+		NumPenetrations = "null",
+		UnlimitedUnitPenetration = false,
+		DieWithOwner = true,
+	},
+	TheseusSpearThrow = {
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
+		SpawnOnDissipate = "TheseusSpearReturnPoint",
+	},
+	TheseusSpearThrowReturn = {
+		SpawnOnDissipate = "null",
+	},
+	TheseusChariotMortar = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+		Thing = {
+			Scale = 1.0,
+		},
+	},
+	TheseusChariotTurrets = {
+		InheritFrom = "1_BaseEnemyProjectileReflectable",
+		Thing = {
+			Scale = 1.0,
+		},
+	},
+	-- Not used?
+	TheseusChariotRam = {
+		InheritFrom = "1_BaseEnemyProjectile",
+		RotateWithOwner = true,
+		ImpactLineOfSight = true,
+		Fuse = 9.0,
+		NumPenetrations = "null",
+		UnlimitedUnitPenetration = false,
+		DieWithOwner = true,
+	},
 	-- #endregion
 
 	-- #region STYX

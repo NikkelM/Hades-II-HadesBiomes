@@ -177,6 +177,7 @@ local function on_ready()
 		import "Game/Animations/Obstacle_General_VFX.sjson.lua"
 
 		import "Game/Units/Enemies.sjson.lua"
+		import "Game/Units/NPCs.sjson.lua"
 
 		import "Game/Weapons/EnemyWeapons.sjson.lua"
 
@@ -189,7 +190,7 @@ local function on_ready()
 		import "Game/Obstacles/Asphodel.sjson.lua"
 		import "Game/Obstacles/Chaos.sjson.lua"
 		import "Game/Obstacles/Elysium.sjson.lua"
-		-- import "Game/Obstacles/Styx.sjson.lua"
+		import "Game/Obstacles/Styx.sjson.lua"
 		import "Game/Obstacles/Tartarus.sjson.lua"
 
 		-- The ScreenText files depend on icons in here
@@ -213,6 +214,7 @@ local function on_ready()
 		import "Game/Text/zh-TW/HelpText.zh-TW.sjson.lua"
 
 		import "Game/Text/de/CodexText.de.sjson.lua"
+		-- import "Game/Text/el/CodexText.el.sjson.lua"
 		import "Game/Text/en/CodexText.en.sjson.lua"
 		import "Game/Text/es/CodexText.es.sjson.lua"
 		import "Game/Text/fr/CodexText.fr.sjson.lua"
@@ -222,7 +224,10 @@ local function on_ready()
 		import "Game/Text/pl/CodexText.pl.sjson.lua"
 		import "Game/Text/pt-BR/CodexText.pt-BR.sjson.lua"
 		import "Game/Text/ru/CodexText.ru.sjson.lua"
+		-- import "Game/Text/tr/CodexText.tr.sjson.lua"
+		-- import "Game/Text/uk/CodexText.uk.sjson.lua"
 		import "Game/Text/zh-CN/CodexText.zh-CN.sjson.lua"
+		-- import "Game/Text/zh-TW/CodexText.zh-TW.sjson.lua"
 
 		import "Game/Text/de/ScreenText.de.sjson.lua"
 		import "Game/Text/el/ScreenText.el.sjson.lua"
@@ -240,13 +245,47 @@ local function on_ready()
 		import "Game/Text/zh-CN/ScreenText.zh-CN.sjson.lua"
 		import "Game/Text/zh-TW/ScreenText.zh-TW.sjson.lua"
 
+		import "Game/Text/de/TraitText.de.sjson.lua"
+		-- import "Game/Text/el/TraitText.el.sjson.lua"
+		import "Game/Text/en/TraitText.en.sjson.lua"
+		import "Game/Text/es/TraitText.es.sjson.lua"
+		import "Game/Text/fr/TraitText.fr.sjson.lua"
+		import "Game/Text/it/TraitText.it.sjson.lua"
+		import "Game/Text/ja/TraitText.ja.sjson.lua"
+		import "Game/Text/ko/TraitText.ko.sjson.lua"
+		import "Game/Text/pl/TraitText.pl.sjson.lua"
+		import "Game/Text/pt-BR/TraitText.pt-BR.sjson.lua"
+		import "Game/Text/ru/TraitText.ru.sjson.lua"
+		-- import "Game/Text/tr/TraitText.tr.sjson.lua"
+		-- import "Game/Text/uk/TraitText.uk.sjson.lua"
+		import "Game/Text/zh-CN/TraitText.zh-CN.sjson.lua"
+		-- import "Game/Text/zh-TW/TraitText.zh-TW.sjson.lua"
+
+		import "Game/Text/de/MiscText.de.sjson.lua"
+		-- import "Game/Text/el/MiscText.el.sjson.lua"
+		import "Game/Text/en/MiscText.en.sjson.lua"
+		import "Game/Text/es/MiscText.es.sjson.lua"
+		import "Game/Text/fr/MiscText.fr.sjson.lua"
+		import "Game/Text/it/MiscText.it.sjson.lua"
+		import "Game/Text/ja/MiscText.ja.sjson.lua"
+		import "Game/Text/ko/MiscText.ko.sjson.lua"
+		import "Game/Text/pl/MiscText.pl.sjson.lua"
+		import "Game/Text/pt-BR/MiscText.pt-BR.sjson.lua"
+		import "Game/Text/ru/MiscText.ru.sjson.lua"
+		-- import "Game/Text/tr/MiscText.tr.sjson.lua"
+		-- import "Game/Text/uk/MiscText.uk.sjson.lua"
+		import "Game/Text/zh-CN/MiscText.zh-CN.sjson.lua"
+		-- import "Game/Text/zh-TW/MiscText.zh-TW.sjson.lua"
+
 		-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 		-- Done first, as the EncounterData depends on the EnemySets
 		import "Scripts/EnemySets.lua"
 
 		import "Scripts/Meta/EnemyTrapDataHandler.lua"
 		import "Scripts/HadesEnemyData.lua"
+		import "Scripts/HadesNPCData.lua"
 		import "Scripts/EnemyData.lua"
+		import "Scripts/NPCData.lua"
 		import "Scripts/Meta/EncounterDataHandler.lua"
 		import "Scripts/Meta/RoomDataHandler.lua"
 
@@ -275,6 +314,9 @@ local function on_ready()
 		import "Scripts/HadesWeaponData.lua"
 		import "Scripts/WeaponData.lua"
 
+		-- Add new Trait data
+		import "Scripts/TraitDataNPCs.lua"
+
 		-- Applies modifications to the rooms, such as LegalEncounterDictionary
 		game.SetupRunData()
 
@@ -290,10 +332,12 @@ local function on_ready()
 		import "Scripts/FunctionMappings/HeavyRanged.lua"
 		import "Scripts/FunctionMappings/LightSpawner.lua"
 		import "Scripts/FunctionMappings/MiniBossTartarus.lua"
+		import "Scripts/FunctionMappings/NPCLogic.lua"
 		import "Scripts/FunctionMappings/ShadeNaked.lua"
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes
+		import "Scripts/HadesAudioData.lua"
 		import "Scripts/AudioData.lua"
 		import "Scripts/AudioLogic.lua"
 		import "Scripts/BiomeMapPresentation.lua"
@@ -306,10 +350,11 @@ local function on_ready()
 		import "Scripts/DeathLoopLogic.lua"
 		import "Scripts/EnemyAILogic.lua"
 		import "Scripts/EncounterLogic.lua"
+		import "Scripts/EventPresentation.lua"
 		import "Scripts/HeroData.lua"
 		import "Scripts/HubPresentation.lua"
 		import "Scripts/MetaUpgradeData.lua"
-		import "Scripts/MusicData.lua"
+		import "Scripts/NarrativeData.lua"
 		import "Scripts/ObstacleData.lua"
 		import "Scripts/PowersLogic.lua"
 		import "Scripts/ProjectileData.lua"

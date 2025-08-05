@@ -19,6 +19,7 @@ local newRoomSets = {
 		"A_MiniBoss04",
 
 		"A_Reprieve01",
+		"A_Story01",
 
 		"A_Combat01",
 		"A_Combat02",
@@ -44,9 +45,6 @@ local newRoomSets = {
 		"A_Combat20",
 		"A_Combat21",
 		"A_Combat24",
-
-		-- Sisyphus NPC cannot be activated, ID is not found
-		-- "A_Story01",
 	},
 	Asphodel = {
 		"X_Intro",
@@ -65,6 +63,7 @@ local newRoomSets = {
 		"X_MiniBoss02",
 
 		"X_Reprieve01",
+		"X_Story01",
 
 		"X_Combat01",
 		"X_Combat02",
@@ -78,8 +77,6 @@ local newRoomSets = {
 		"X_Combat10",
 		"X_Combat21",
 		"X_Combat22",
-
-		-- "X_Story01",
 	},
 	Elysium = {
 		"C_Intro",
@@ -97,6 +94,7 @@ local newRoomSets = {
 		-- "C_MiniBoss03",
 
 		"C_Reprieve01",
+		"C_Story01",
 
 		"C_Combat01",
 		"C_Combat02",
@@ -113,8 +111,6 @@ local newRoomSets = {
 		"C_Combat13",
 		"C_Combat14",
 		"C_Combat15",
-
-		-- "C_Story01",
 	},
 }
 

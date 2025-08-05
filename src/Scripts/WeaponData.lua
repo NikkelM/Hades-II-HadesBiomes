@@ -27,6 +27,11 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 			weaponData.AIData = { DeepInheritance = true }
 		end
 
+		if weaponData.OnFireCrowdReaction then
+			weaponData.AIData.OnFireCrowdReaction = weaponData.OnFireCrowdReaction
+			weaponData.OnFireCrowdReaction = nil
+		end
+
 		-- If the weapon defines a projectile to use, it might be different from the weapon name, so use it instead
 		local sjsonWeaponProjectileName = (mod.HadesSjsonWeaponsTable[weaponName] and
 			mod.HadesSjsonWeaponsTable[weaponName].Projectile) or weaponName
@@ -89,16 +94,24 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 					end
 				end
 			end
+
+			-- Move properties from the sjson to the AIData table
 			for key, value in pairs(sjsonToAIDataPropertyMappings) do
-				if sjsonWeaponData[key] and not weaponData.AIData[value] then
-					weaponData.AIData[value] = sjsonWeaponData[key]
-				else
-					if alternativeSjsonWeaponData and alternativeSjsonWeaponData[key] and not weaponData.AIData[value] then
+				-- Check if parent or grandparent have modifications for this property defined already
+				local skipProperty = false
+				if parentWeaponName and modifications[parentWeaponName] and modifications[parentWeaponName].AIData and modifications[parentWeaponName].AIData[value] then
+					skipProperty = true
+				elseif grandParentWeaponName and modifications[grandParentWeaponName] and modifications[grandParentWeaponName].AIData and modifications[grandParentWeaponName].AIData[value] then
+					skipProperty = true
+				end
+
+				if not skipProperty then
+					if sjsonWeaponData[key] and not weaponData.AIData[value] then
+						weaponData.AIData[value] = sjsonWeaponData[key]
+					elseif alternativeSjsonWeaponData and alternativeSjsonWeaponData[key] and not weaponData.AIData[value] then
 						weaponData.AIData[value] = alternativeSjsonWeaponData[key]
-					else
-						if secondAlternativeSjsonWeaponData and secondAlternativeSjsonWeaponData[key] and not weaponData.AIData[value] then
-							weaponData.AIData[value] = secondAlternativeSjsonWeaponData[key]
-						end
+					elseif secondAlternativeSjsonWeaponData and secondAlternativeSjsonWeaponData[key] and not weaponData.AIData[value] then
+						weaponData.AIData[value] = secondAlternativeSjsonWeaponData[key]
 					end
 				end
 			end
@@ -108,19 +121,33 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 		if not weaponData.Sounds or not weaponData.Sounds.FireSounds then
 			weaponData.Sounds = weaponData.Sounds or {}
 			weaponData.Sounds.FireSounds = weaponData.Sounds.FireSounds or {}
-			if mod.HadesSjsonWeaponsTable[weaponName] and mod.HadesSjsonWeaponsTable[weaponName].FireSound then
-				if mod.HadesSjsonWeaponsTable[weaponName].FireSound ~= "null" then
-					table.insert(weaponData.Sounds.FireSounds, { Name = mod.HadesSjsonWeaponsTable[weaponName].FireSound })
+
+			if parentWeaponName and base[parentWeaponName] and base[parentWeaponName].Sounds and base[parentWeaponName].Sounds.FireSounds then
+				weaponData.Sounds.FireSounds = base[parentWeaponName].Sounds.FireSounds
+			elseif grandParentWeaponName and base[grandParentWeaponName] and base[grandParentWeaponName].Sounds and base[grandParentWeaponName].Sounds.FireSounds then
+				weaponData.Sounds.FireSounds = base[grandParentWeaponName].Sounds.FireSounds
+			end
+
+			-- If still no sounds exist, use the ones from the sjson
+			if not weaponData.Sounds or not weaponData.Sounds.FireSounds or #weaponData.Sounds.FireSounds == 0 then
+				if mod.HadesSjsonWeaponsTable[weaponName] and mod.HadesSjsonWeaponsTable[weaponName].FireSound then
+					if mod.HadesSjsonWeaponsTable[weaponName].FireSound ~= "null" then
+						table.insert(weaponData.Sounds.FireSounds, { Name = mod.HadesSjsonWeaponsTable[weaponName].FireSound })
+					end
+				elseif parentWeaponName and mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound then
+					if mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound ~= "null" then
+						table.insert(weaponData.Sounds.FireSounds, { Name = mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound })
+					end
+				elseif grandParentWeaponName and mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound then
+					if mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound ~= "null" then
+						table.insert(weaponData.Sounds.FireSounds,
+							{ Name = mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound })
+					end
 				end
-			elseif parentWeaponName and mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound then
-				if mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound ~= "null" then
-					table.insert(weaponData.Sounds.FireSounds, { Name = mod.HadesSjsonWeaponsTable[parentWeaponName].FireSound })
-				end
-			elseif grandParentWeaponName and mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound then
-				if mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound ~= "null" then
-					table.insert(weaponData.Sounds.FireSounds,
-						{ Name = mod.HadesSjsonWeaponsTable[grandParentWeaponName].FireSound })
-				end
+			end
+
+			if #weaponData.Sounds.FireSounds == 0 then
+				weaponData.Sounds = nil
 			end
 		end
 	end
@@ -129,6 +156,15 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 	base = mod.AddTableKeysSkipDupes(game.WeaponData, base, nil)
 	for weaponName, weaponData in pairs(base) do
 		-- Replace keys that were renamed between the games
+		-- Need to replace this property first, as others might change other properties to FireInterval
+		if weaponData.AIData and weaponData.AIData.FireInterval then
+			weaponData.AIData.DumbFireInterval = weaponData.AIData.FireInterval
+			weaponData.AIData.FireInterval = nil
+		end
+		if weaponData.ShrineAIDataOverwrites and weaponData.ShrineAIDataOverwrites.FireInterval then
+			weaponData.ShrineAIDataOverwrites.DumbFireInterval = weaponData.ShrineAIDataOverwrites.FireInterval
+			weaponData.ShrineAIDataOverwrites.FireInterval = nil
+		end
 		mod.RenameKeys(weaponData, weaponKeyReplacements, weaponName)
 
 		game.ProcessDataInheritance(weaponData, game.WeaponData)
@@ -332,15 +368,13 @@ local weaponModifications = {
 	-- #endregion
 	-- #region TARTARUS - Alecto
 	HarpyLungeAlecto = {
-		Requirements = {
-			ForceFirst = true,
-		},
 		AIData = {
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			PreAttackStop = true,
 			-- So the Rage version works correctly
 			DeepInheritance = true,
 			EnragedWeaponSwap = "HarpyLungeAlectoRage",
+			ForceFirst = true,
 		},
 	},
 	HarpyWhipArc = {
@@ -349,10 +383,6 @@ local weaponModifications = {
 		},
 	},
 	HarpyBuildRage = {
-		Requirements = {
-			-- TODO: Check MaxActiveSpawns - was 1, in Hades 5
-			BlockAsFirstWeapon = true,
-		},
 		BlockInterrupt = true,
 		AIData = {
 			PreAttackStop = true,
@@ -361,8 +391,8 @@ local weaponModifications = {
 			StopMoveWithinRange = true,
 			MoveSuccessDistance = 25,
 			FireStartFunctionName = "ModsNikkelMHadesBiomesHarpyBuildRageStart",
-			-- Zagreus voicelines
 			PreAttackVoiceLines = mod.NilValue,
+			BlockAsFirstWeapon = true,
 		},
 	},
 	HarpyLightningChase = {
@@ -407,9 +437,6 @@ local weaponModifications = {
 	-- #endregion
 	-- #region TARTARUS - Tisiphone
 	HarpyLightningLine = {
-		Requirements = {
-			BlockAsFirstWeapon = true,
-		},
 		AIData = {
 			AttackSlotInterval = 0.01,
 			PreAttackAngleTowardTarget = true,
@@ -421,15 +448,14 @@ local weaponModifications = {
 				{ OffsetDistance = 1200, OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
 				{ OffsetDistance = 1500, OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
 			},
+			BlockAsFirstWeapon = true,
 		},
 	},
 	HarpyWhipLasso = {
-		Requirements = {
-			ForceFirst = true,
-		},
 		AIData = {
 			ChainedWeaponOptions = { "HarpyLassoLunge", "HarpyLassoLungeEM" },
 			ChainedWeapon = mod.NilValue,
+			ForceFirst = true,
 		},
 	},
 	-- Chained from HarpyWhipLasso
@@ -482,11 +508,9 @@ local weaponModifications = {
 		},
 	},
 	HarpySlowBeam360 = {
-		Requirements = {
-			BlockAsFirstWeapon = true,
-		},
 		AIData = {
 			ProjectileAngleEvenlySpaced = true,
+			BlockAsFirstWeapon = true,
 		},
 		Sounds = {
 			-- Otherwise the sound is terribly loud and overlayed
@@ -513,11 +537,9 @@ local weaponModifications = {
 		},
 	},
 	HarpyWhipCombo1 = {
-		Requirements = {
-			BlockAsFirstWeapon = true,
-		},
 		AIData = {
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+			BlockAsFirstWeapon = true,
 		},
 	},
 	HarpyWhipCombo2 = {
@@ -541,10 +563,6 @@ local weaponModifications = {
 	-- #region ASPHODEL
 	-- #region ASPHODEL - Regular
 	HadesLightSpawnerEliteSpawnerWeapon = {
-		Requirements = {
-			MaxActiveSpawns = 6,
-			RequiresNotCharmed = true,
-		},
 		AIData = {
 			SpawnBurstDelay = 4.5,
 			SpawnsPerBurst = 3,
@@ -556,8 +574,9 @@ local weaponModifications = {
 			SpawnerOptions = { "SwarmerElite" },
 			NoProjectile = true,
 			SpawnBurstOnFire = true,
-			MaxActiveSpawns = 6,
 			SpawnsSkipActivatePresentation = true,
+			MaxActiveSpawns = 6,
+			RequiresNotCharmed = true,
 		},
 	},
 	RangedBurrowerWeapon = {
@@ -626,20 +645,16 @@ local weaponModifications = {
 	-- #endregion
 	-- #region ASPHODEL - Hydra (Basic)
 	HydraLunge = {
-		Requirements = {
-			MaxConsecutiveUses = 3,
-		},
 		AIData = {
 			PreAttackDuration = 0.8,
 			MoveWithinRangeTimeout = 0.5,
+			MaxConsecutiveUses = 3,
 		},
 	},
 	HydraLungeUntethered = {
-		Requirements = {
-			MaxConsecutiveUses = 3,
-		},
 		AIData = {
 			PreAttackDuration = 0.8,
+			MaxConsecutiveUses = 3,
 		},
 	},
 	HydraSlam = {
@@ -796,10 +811,6 @@ local weaponModifications = {
 		},
 	},
 	ShadeSpearLeap = {
-		Requirements = {
-			MinAttacksBetweenUse = 2,
-			MaxPlayerDistance = 800,
-		},
 		AIData = {
 			DeepInheritance = true,
 			PreAttackAnimation = mod.NilValue,
@@ -818,6 +829,8 @@ local weaponModifications = {
 			TrackTargetDuringCharge = true,
 			StopBeforeFire = true,
 			PostAttackStop = true,
+			MinAttacksBetweenUse = 2,
+			MaxPlayerDistance = 800,
 		},
 	},
 	ShieldAlliesAoE = {
@@ -837,9 +850,9 @@ local weaponModifications = {
 	Minotaur5AxeCombo3 = {
 		AIData = {
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
-			-- Applied after takeoff
-			FireSelfVelocity = 2000,
-			FireSelfUpwardVelocity = 1200,
+			-- Increased velocity to allow him to go further, but not too high
+			FireSelfVelocity = 2500,
+			FireSelfUpwardVelocity = 2000,
 			-- Don't track during fire, but allow tracking during charge
 			StopBeforeFire = true,
 			-- If not set, Minotaur stays in one spot each leap
@@ -847,19 +860,13 @@ local weaponModifications = {
 			-- Can jump from anywhere
 			MoveWithinRange = false,
 			PreFireDuration = 0.0,
+			-- Slightly adjusted so he doesn't hover at the end before the touchdown
+			FireDuration = 0.28,
 		},
 	},
-	Minotaur5AxeCombo4 = {
+	MinotaurArmored5AxeCombo3 = {
 		AIData = {
-			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
-			FireSelfVelocity = 2000,
-			FireSelfUpwardVelocity = 1200,
-			StopBeforeFire = true,
-			TrackTargetDuringCharge = true,
-			MoveWithinRange = false,
-			PreFireDuration = 0.0,
-			-- Comes down too quickly otherwise
-			FireDuration = 0.3,
+			PostAttackAnimation = "MinotaurArmoredAttackSwings_AttackLeap",
 		},
 	},
 	Minotaur5AxeCombo5 = {
@@ -867,77 +874,305 @@ local weaponModifications = {
 			PostAttackDuration = 1.8,
 		},
 	},
+	MinotaurLeapCombo3 = {
+		AIData = {
+			-- Should be the same as Minotaur5AxeCombo3
+			FireSelfVelocity = 2500,
+			FireSelfUpwardVelocity = 2000,
+			FireDuration = 0.28,
+		},
+	},
+	MinotaurLeapCombo4 = {
+		AIData = {
+			-- Should be the same as Minotaur5AxeCombo3
+			FireSelfVelocity = 2500,
+			FireSelfUpwardVelocity = 2000,
+			FireDuration = 0.28,
+		},
+	},
 	MinotaurLeapCombo5 = {
 		AIData = {
+			-- Should be the same as Minotaur5AxeCombo3
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
-			FireSelfVelocity = 2000,
-			FireSelfUpwardVelocity = 1200,
+			FireSelfVelocity = 2500,
+			FireSelfUpwardVelocity = 2000,
+			StopBeforeFire = true,
 			TrackTargetDuringCharge = true,
 			MoveWithinRange = false,
-			StopBeforeFire = true,
 			PreFireDuration = 0.0,
+			FireDuration = 0.28,
+		},
+	},
+	MinotaurArmoredLeapCombo5 = {
+		AIData = {
+			PostAttackAnimation = "MinotaurArmoredAttackSwings_AttackLeap",
+		},
+	},
+	MinotaurAxeOverhead = {
+		AIData = {
+			-- Should be the same as Minotaur5AxeCombo3
+			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
+			FireSelfVelocity = 2500,
+			FireSelfUpwardVelocity = 2000,
+			StopBeforeFire = true,
+			TrackTargetDuringCharge = true,
+			MoveWithinRange = false,
+			PreFireDuration = 0.0,
+			FireDuration = 0.28,
+		},
+	},
+	MinotaurArmoredAxeOverhead = {
+		AIData = {
+			PostAttackAnimation = "MinotaurArmoredAttackSwings_AttackLeap",
+		},
+	},
+	MinotaurCrescentCombo3 = {
+		AIData = {
+			PreAttackDuration = 0.0,
 		},
 	},
 	MinotaurBullRush = {
 		AIData = {
-			-- ApplyEffectsOnPreAttackStart = {
-			-- 	-- {
-			-- 	-- 	EffectName = "BullRushSpeed",
-			-- 	-- 	DataProperties = {
-			-- 	-- 		Type = "SPEED",
-			-- 	-- 		-- ChangeType = "ADD",
-			-- 	-- 		Duration = 9.0,
-			-- 	-- 		Modifier = 1.75,
-			-- 	-- 		ClearOnCollision = true,
-			-- 	-- 		-- Active = true,
-			-- 	-- 		-- ExpiringTimeThreshold = 8.5,
-			-- 	-- 		-- ExpiringModifierFalloff = 50,
-			-- 	-- 	},
-			-- 	-- },
-			-- 	{
-			-- 		EffectName = "BullRushRotation",
-			-- 		DataProperties = {
-			-- 			Duration = 9.0,
-			-- 			RotationMultiplier = 0.8,
-			-- 			ClearOnCollision = true,
-			-- 			-- Active = true,
-			-- 		},
-			-- 	}
-			-- },
-			-- PreAttackSetUnitProperties =
-			-- {
-			-- 	Speed = 700,
-			-- 	-- RotationMultiplier doesn't work here
-			-- },
-			-- PostAttackResetUnitProperties = true,
-			PostAttackAnimation = "MinotaurBullRush_PreStrike",
-			-- TODO: Check if needed - related to #139?
 			ProjectileName = "MinotaurBullRushRam",
-			RamWeaponName = "MinotaurBullRush",
-			-- TODO: Doesn't yet work correctly - gets applied erratically, removed too soon or too late
-			RamEffectNames = { "BullRushSpeed", "BullRushRotation" },
-			RamRecoverTime = 2.0,
-			UseRamAILoop = true,
-			SetupDistance = 400,
-			SetupTimeout = 5.0,
-			RamDistance = 150,
-			RamTimeout = 9.0,
-			AttackDistanceBuffer = 0,
-			StopMoveWithinRange = false,
-			-- Comment the below out in the HadesWeaponData for testing
-			-- AIAttackDistance = 3000,
-			-- AILineOfSightBuffer = 200,
-			-- AILineOfSighEndBuffer = 80,
-			-- PostAttackAI = "MoveUntilEffectExpired",
-			-- PostAttackAICanOnlyMoveForward = true,
-			-- EffectExpiredName = "BullRushSpeed",
-			-- MoveSuccessDistance = 32,
-			-- PostAttackAIWait = 2.0,
-			-- PostAttackCooldown = 0.0,
+			WaitUntilProjectileDeath = "MinotaurBullRushRam",
+			PreAttackSetUnitProperties = {
+				Speed = 1200,
+				CanOnlyMoveForward = "true",
+			},
+			-- Setting explicitly to not break when inferring the reset values as CanOnlyMoveForward will be a boolean instead of string
+			PostAttackSetUnitProperties = {
+				Speed = 475,
+				CanOnlyMoveForward = "false",
+			},
+			TrackTargetDuringCharge = true,
+			FireMoveTowardTarget = true,
+			FireRotationDampening = 0.6,
+			MoveWithinRange = true,
+			-- A lower value causes consistent crashes
+			MoveSuccessDistance = 35,
+			PostAttackStop = true,
+			PostAttackDuration = 1.2,
+			PostAttackFx = "MinotaurBullRushHornStrike",
+			PostAttackAnimation = "MinotaurBullRush_PreStrike",
+
+			PostAttackAI = mod.NilValue,
+			PostAttackAICanOnlyMoveForward = mod.NilValue,
+			EffectExpiredName = mod.NilValue,
 		}
+	},
+	MinotaurTheseusSlam_Minotaur = {
+		AIData = {
+			ProjectileName = "MinotaurBullRushRam",
+			WaitUntilProjectileDeath = "MinotaurBullRushRam",
+			PreAttackSetUnitProperties = {
+				Speed = 1000,
+				CanOnlyMoveForward = "true",
+			},
+			-- Setting explicitly to not break when inferring the reset values as CanOnlyMoveForward will be a boolean instead of string
+			PostAttackSetUnitProperties = {
+				Speed = 475,
+				CanOnlyMoveForward = "false",
+			},
+			TrackTargetDuringCharge = true,
+			FireMoveTowardTarget = true,
+			FireRotationDampening = 0.8,
+			MoveWithinRange = true,
+			-- A lower value causes consistent crashes
+			MoveSuccessDistance = 35,
+			PostAttackStop = true,
+			PostAttackDuration = 1.2,
+			PostAttackFx = "MinotaurBullRushHornStrike",
+			PostAttackAnimation = "MinotaurBullRush_PreStrike",
+
+			PostAttackAI = mod.NilValue,
+			PostAttackAICanOnlyMoveForward = mod.NilValue,
+			EffectExpiredName = mod.NilValue,
+
+			RequireComboPartnerNotifyName = "MinotaurTheseusSlam_Minotaur",
+			ForceIfComboPartnerNotifyName = "MinotaurTheseusSlam_Minotaur",
+
+			PostAttackThreadedFunctionName = "ModsNikkelMHadesBiomesStopTheseusSlamWait",
+		},
+	},
+	MinotaurTheseusThrow_Minotaur = {
+		GameStateRequirements = {
+			RequiredAnyTextLines = { "TheseusAboutFraternalBonds06_A", "TheseusAboutFraternalBonds06_B" },
+		},
+		AIData = {
+			PartnerForceWeaponInterrupt = "MinotaurTheseusThrow_Theseus",
+			WaitForComboPartnerMoveAnimation = "Minotaur_Crouch",
+			MaxDistanceFromComboPartner = 500,
+		},
+	},
+	MinotaurTheseusSlamNova = {
+		AIData = {
+			CancelOutsideDistanceFromComboPartner = 300,
+		},
+	},
+	MinotaurArmoredBullRush = {
+		AIData = {
+			ProjectileName = "MinotaurArmoredBullRushRam",
+			WaitUntilProjectileDeath = "MinotaurArmoredBullRushRam",
+			PreAttackSetUnitProperties = {
+				Speed = 1300,
+				CanOnlyMoveForward = "true",
+			},
+			PostAttackAnimation = "MinotaurArmoredBullRush_PreStrike",
+			FireRotationDampening = 0.7,
+			EffectExpiredName = mod.NilValue,
+		},
+	},
+	MinotaurBullRush2 = {
+		AIData = {
+			ProjectileName = "MinotaurBullRushRam",
+			WaitUntilProjectileDeath = "MinotaurBullRushRam",
+			PreAttackSetUnitProperties = {
+				Speed = 1200,
+				CanOnlyMoveForward = "true",
+			},
+			PostAttackSetUnitProperties = {
+				Speed = 475,
+				CanOnlyMoveForward = "false",
+			},
+			TrackTargetDuringCharge = true,
+			FireMoveTowardTarget = true,
+			FireRotationDampening = 0.7,
+			MoveWithinRange = true,
+			MoveSuccessDistance = 35,
+			PostAttackStop = true,
+			-- To immediately start the CrescentStrike follow-up
+			PostAttackDuration = 0.0,
+			PostAttackFx = "MinotaurBullRushHornStrike",
+			PostAttackAnimation = "MinotaurBullRush_PreStrike",
+
+			PostAttackAI = mod.NilValue,
+			PostAttackAICanOnlyMoveForward = mod.NilValue,
+			EffectExpiredName = mod.NilValue,
+		}
+	},
+	MinotaurArmoredBullRush2 = {
+		AIData = {
+			ProjectileName = "MinotaurArmoredBullRushRam",
+			WaitUntilProjectileDeath = "MinotaurArmoredBullRushRam",
+			PreAttackSetUnitProperties = {
+				Speed = 1300,
+				CanOnlyMoveForward = "true",
+			},
+			PostAttackAnimation = "MinotaurArmoredBullRush_PreStrike",
+			FireRotationDampening = 0.7,
+			EffectExpiredName = mod.NilValue,
+		},
+	},
+	MinotaurArmoredAxeSpin = {
+		AIData = {
+			FireSelfVelocity = 600,
+		},
 	},
 	-- #endregion
 	-- #region ELYSIUM - Theseus
+	TheseusSpearThrowReturn = {
+		AIData = {
+			FireProjectileTowardTarget = true,
+			-- Modded properties, to make sure the spear is fired from the obstacle and towards Theseus
+			ModsNikkelMHadesBiomesFireAtSelf = true,
+			ModsNikkelMHadesBiomesFireFromObstacle = "TheseusSpearReturnPoint",
+			ModsNikkelMHadesBiomesDestroyObstacleOnFire = "TheseusSpearReturnPoint",
+		},
+	},
+	TheseusSpearSpin = {
+		AIData = {
+			FireSelfVelocity = 2000,
+			-- So there are some opportunities to attack him without him blocking everything
+			PostAttackStop = true,
+			-- Also for this, removing the cooldown to not make it too easy
+			PostAttackCooldownMin = 0.75,
+			PostAttackCooldownMax = 1.25,
+		},
+	},
+	-- Has it's properties in the root instead of in AIData
+	TheseusZeusUpgradePassive = {
+		AIData = {
+			FireTicks = 7,
+			FireCooldown = 0.15,
+			FireInterval = 5.0,
+		},
+		FireTicks = mod.NilValue,
+		FireCooldown = mod.NilValue,
+		FireInterval = mod.NilValue,
+	},
+	-- Combo attacks require TheseusAboutFraternalBonds06_A/B to have run, which requires PersephoneFirstMeeting at the root
+	MinotaurTheseusSlam_Theseus = {
+		AIData = {
+			PartnerForceWeaponInterrupt = "MinotaurTheseusSlam_Minotaur",
+			WaitDurationForComboPartnerMove = mod.NilValue,
+			PreAttackAnimation = mod.NilValue,
+			PreAttackDuration = 0,
+			-- Will be set to 0 as soon as the Minotaur has ended the rush attack
+			FireDuration = 9,
+		},
+	},
+	MinotaurTheseusThrow_Theseus = {
+		GameStateRequirements = {
+			RequiredAnyTextLines = { "TheseusAboutFraternalBonds06_A", "TheseusAboutFraternalBonds06_B" },
+		},
+		AIData = {
+			RequireComboPartnerNotifyName = "MinotaurTheseusThrow_Theseus",
+			ForceIfComboPartnerNotifyName = "MinotaurTheseusThrow_Theseus",
+			MoveSuccessDistance = 32,
+			MoveWithinRange = true,
+		},
+	},
+	TheseusChariotWait = {
+		AIData = {
+			BlockAsFirstWeapon = true,
+		},
+	},
+	TheseusChariotExteriorPatrol = {
+		AIData = {
+			ApplyEffectsOnMove = {
+				{
+					EffectName = "SpeedIncrease",
+					DataProperties = {
+						Type = "Speed",
+						Duration = 9999,
+						Modifier = 1.6,
+					},
+				},
+			},
+		},
+	},
+	TheseusChariotCenterDive = {
+		AIData = {
+			ProjectileName = "TheseusChariotTurrets",
+			ApplyEffectsOnMove = {
+				{
+					EffectName = "SpeedIncrease",
+					DataProperties = {
+						Type = "Speed",
+						Duration = 9999,
+						Modifier = 1.6,
+					},
+				},
+			},
+			Spread = 40,
+		},
+	},
+	TheseusChariotCenterDive2 = {
+		AIData = {
+			ProjectileName = "TheseusChariotTurrets",
+			ApplyEffectsOnMove = {
+				{
+					EffectName = "SpeedIncrease",
+					DataProperties = {
+						Type = "Speed",
+						Duration = 9999,
+						Modifier = 1.6,
+					},
+				},
+			},
+			Spread = 40,
+		},
+	},
 	-- #endregion
 	-- #endregion
 
@@ -993,11 +1228,15 @@ local weaponKeyReplacements = {
 		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",
+		-- Done manually, to make sure it's done before others
+		-- FireInterval = "DumbFireInterval",
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
 		FireCooldown = "FireInterval",
 		TeleportToSpawnPoints = "PreMoveTeleport",
 		PostAttackTeleportToSpawnPoints = "PostAttackEndTeleport",
+		PostAttackAIDumbFireWeapons = "PostAttackDumbFireWeapons",
+		SkipAttackAfterMoveTimeout = "SkipAttackIfMoveTimeout",
 	},
 	-- Same as above
 	ShrineAIDataOverwrites = {
@@ -1015,11 +1254,15 @@ local weaponKeyReplacements = {
 		AIAngleTowardsPlayerWhileFiring = "AngleTowardsTargetWhileFiring",
 		AIFireTicksMin = "FireTicksMin",
 		AIFireTicksMax = "FireTicksMax",
+		-- Done manually, to make sure it's done before others
+		-- FireInterval = "DumbFireInterval",
 		AIFireTicksCooldown = "FireInterval",
 		StandOffTime = "SurroundRefreshInterval",
 		FireCooldown = "FireInterval",
 		TeleportToSpawnPoints = "PreMoveTeleport",
 		PostAttackTeleportToSpawnPoints = "PostAttackEndTeleport",
+		PostAttackAIDumbFireWeapons = "PostAttackDumbFireWeapons",
+		SkipAttackAfterMoveTimeout = "SkipAttackIfMoveTimeout",
 	},
 }
 

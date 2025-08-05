@@ -71,10 +71,15 @@ function mod.Uninstall()
 	removeFiles(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb")
 
 	mod.DebugPrint("Removing help text files...", 3)
-	for _, language in ipairs(mod.HelpTextLanguages) do
-		local helpTextFile = rom.path.combine(rom.paths.Content(),
-			"Game\\Text\\" .. language .. "\\HelpTextHades." .. language)
-		removeFile(helpTextFile, ".sjson")
+	for _, fileName in ipairs(mod.HadesHelpTextFileNames) do
+		for _, language in ipairs(mod.HelpTextLanguages) do
+			-- Skip files that are in the skip map for the current language, as they don't exist
+			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
+				local helpTextFile = rom.path.combine(rom.paths.Content(),
+					"Game\\Text\\" .. language .. "\\" .. fileName .. "Hades." .. language)
+				removeFile(helpTextFile, ".sjson")
+			end
+		end
 	end
 
 	-- Set the content of checksumsDest to an empty string to prompt an installation on the next start if the mod is enabled again

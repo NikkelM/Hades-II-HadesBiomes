@@ -376,7 +376,7 @@ function game.BuildRageMeter(meterAmount, enemy)
 	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 1 - enemy.RageFraction, DestinationId = screenId })
 	if enemy.RageFraction >= 1 then
 		enemy.RageFraction = 0
-		thread(game.EnrageUnit, enemy)
+		thread(game.EnrageUnit, enemy, game.CurrentRun)
 	end
 end
 
@@ -469,7 +469,7 @@ function game.EnrageHarpyPermanent(enemy)
 		Fraction = 0.0,
 		DestinationId = game.ScreenAnchors.BossRageFill
 	})
-	game.EnrageUnit(enemy)
+	game.EnrageUnit(enemy, game.CurrentRun)
 end
 
 function game.HarpyEnragedPresentation(enemy, currentRun)
@@ -680,7 +680,7 @@ function game.Harpy3MapRestore()
 	end
 end
 
-function game.EnrageUnit(enemy, startDelay)
+function game.EnrageUnit(enemy, currentRun, startDelay)
 	game.wait(startDelay)
 	if not IsAlive({ Id = enemy.ObjectId }) then
 		return
@@ -706,11 +706,11 @@ function game.EnrageUnit(enemy, startDelay)
 		game.waitUntil(notifyName)
 		AdjustColorGrading({ Name = "Off", Duration = 0.45 })
 	else
-		game.EndEnemyEnrage(enemy, game.CurrentRun)
+		game.EndEnemyEnrage(enemy, currentRun)
 	end
 end
 
-function game.EndEnemyEnrage(enemy)
+function game.EndEnemyEnrage(enemy, currentRun)
 	local screenId = game.ScreenAnchors.BossRageFill
 	enemy.Enraged = false
 	StopFlashing({ Id = screenId })

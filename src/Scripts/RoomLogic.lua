@@ -58,10 +58,29 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 			end
 		end
 
+		if currentRoom.LoadCustomModdedAudioBanks ~= nil then
+			for _, bank in ipairs(currentRoom.LoadCustomModdedAudioBanks) do
+				rom.audio.load_bank(rom.path.combine(_PLUGIN.plugins_data_mod_folder_path,
+					"Content\\Audio\\Desktop\\" .. bank .. ".bank"))
+			end
+		end
+
 		if currentRoom.LoadModdedVoiceBanks ~= nil then
 			game.LoadVoiceBanks(currentRoom.LoadModdedVoiceBanks)
 		end
 	end
+end)
+
+-- To restore ActivatePrePlaced enemies in story rooms
+modutil.mod.Path.Wrap("RestoreUnlockRoomExits", function(base, currentRun, currentRoom)
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		if currentRoom.ModsNikkelMHadesBiomesOnReloadRunStartRoomUnthreadedEvents then
+			game.RunEventsGeneric(currentRoom.Encounter.StartRoomUnthreadedEvents, currentRoom.Encounter)
+			game.RunEventsGeneric(currentRoom.ModsNikkelMHadesBiomesOnReloadUnthreadedEvents)
+		end
+	end
+
+	base(currentRun, currentRoom)
 end)
 
 modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
@@ -105,6 +124,12 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 	end
 
 	base(unit, currentRun, args)
+
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and unit.ModsNikkelMHadesBiomesIsModdedEnemy then
+		if unit.PreDamageIfEncounterCompleted ~= nil and game.HasEncounterOccurred(currentRun, unit.PreDamageIfEncounterCompleted, true) then
+			unit.Health = unit.MaxHealth * unit.PreDamagePercent
+		end
+	end
 end)
 
 modutil.mod.Path.Wrap("SetupAI", function(base, enemy, args)

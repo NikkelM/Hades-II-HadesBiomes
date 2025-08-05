@@ -4,6 +4,7 @@ local encounterDataElysium = {
 	-- Generic encounters
 	GeneratedElysium = encounterData.GeneratedElysium,
 	DevotionTestElysium = encounterData.DevotionTestElysium,
+	Story_Patroclus_01 = encounterData.Story_Patroclus_01,
 
 	-- Minibosses
 	MiniBossMinotaur = encounterData.MiniBossMinotaur,
@@ -12,6 +13,7 @@ local encounterDataElysium = {
 	-- MiniBossShadeMagic = encounterData.MiniBossShadeMagic,
 
 	-- Bosses
+	BossTheseusAndMinotaur = encounterData.BossTheseusAndMinotaur,
 
 	-- Challenge encounters within a room
 	TimeChallengeElysium = encounterData.TimeChallengeElysium,
@@ -56,6 +58,10 @@ local encounterReplacements = {
 		},
 	},
 
+	Story_Patroclus_01 = {
+		UnthreadedEvents = {},
+	},
+
 	PerfectClearChallengeElysium = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedElysium" },
 		EnemySet = EnemySets.EnemiesBiome3,
@@ -70,6 +76,13 @@ local encounterModifications = {
 	-- GENERIC
 	DevotionTestElysium = {
 		CanEncounterSkip = false,
+	},
+	Story_Patroclus_01 = {
+		ExitVoiceLines = {
+			ObjectType = "NPC_Patroclus_01",
+		},
+		-- Save after the conversation
+		SkipExitReadyCheckpoint = false,
 	},
 
 	-- MINIBOSSES
@@ -90,15 +103,28 @@ local encounterModifications = {
 		},
 	},
 	MiniBossMinotaur = {
-		-- Without this, the Minotaur will not spawn if a save is loaded
-		-- TODO: Doesn't always work
-		-- For more consistency, either on the room itself or here invalidate the checkpoint
-		-- Or on room enter, run the preplaced function
-		PreSpawnEnemies = false,
+		InheritFrom = { "MinibossEncounter" },
+		DelayedStart = true,
+		-- Without this, the room exits will immediately unlock after the conversation
+		UnthreadedEvents = {
+			{
+				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
+				Args = { DelayedStart = true, },
+			},
+			{ FunctionName = "EncounterAudio" },
+			{ FunctionName = "HandleEnemySpawns" },
+			{ FunctionName = "CheckForAllEnemiesDead" },
+			{ FunctionName = "PostCombatAudio" },
+			{ FunctionName = "SpawnRoomReward" },
+		},
 	},
 
 	-- BOSSES
-	-- DelayedStart = true,
+	BossTheseusAndMinotaur = {
+		PostUnthreadedEvents = mod.NilValue,
+		-- For the Grenade graphics of EM Theseus
+		LoadPackages = { "BiomeOBoss" },
+	},
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataElysium, encounterModifications, encounterReplacements)

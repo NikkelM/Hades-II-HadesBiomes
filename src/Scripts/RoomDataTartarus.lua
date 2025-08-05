@@ -71,6 +71,8 @@ local roomModifications = {
 			-- Don't play the standard music event, it won't be able to get changed later
 			[3] = mod.NilValue,
 		},
+		-- Requires AthenaFirstPickup voiceline, which is not implemented
+		ChooseRewardRequirements = mod.NilValue,
 		ForcedRewards = mod.NilValue,
 		IneligibleRewards = game.RewardSets.OpeningRoomBans,
 		MaxAppearancesThisBiome = 1,
@@ -161,6 +163,13 @@ local roomModifications = {
 	},
 
 	-- OTHER
+	A_Story01 = {
+		ThreadedEvents = {
+			[1] = mod.NilValue
+		},
+		LoadModdedVoiceBanks = { "Sisyphus", "ZagreusField" },
+		ModsNikkelMHadesBiomesOnReloadRunStartRoomUnthreadedEvents = true,
+	},
 	A_Reprieve01 = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,

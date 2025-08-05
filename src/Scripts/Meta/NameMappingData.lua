@@ -46,6 +46,9 @@ mod.EnemyNameRemovals = {
 	"BloodlessNakedBerserkerElite",
 }
 
+mod.NPCNameMappings = {}
+mod.NPCNameRemovals = {}
+
 mod.EnemyProjectileMappings = {
 	-- Not currently used by Hades II
 	-- LightRangedWeapon = "HadesLightRangedWeapon",
@@ -116,68 +119,89 @@ mod.AsphodelRoomNameMappings = {
 	["B_Story01"] = "X_Story01",
 }
 
+mod.HadesHelpTextFileNames = {
+	"HelpText",
+	"_NPCData"
+}
+mod.HadesHelpTextFileSkipMap = {
+	_NPCData = {
+		en = true,
+	},
+}
+
 -- Modifications for Hades HelpText files
 -- Format is ID = { ReplacementKey = "ReplacementValue" }
-mod.HadesHelpTextModifications = {
-	de = {
-		UseLeaveRoomAsphodel_Reroll = {
-			DisplayName = "{I} Embark \n {G} Alter {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-		}
+-- Contains a subkey for each file type we are copying
+mod.HadesHelpTextFileModifications = {
+	HelpText = {
+		de = {
+			UseLeaveRoomAsphodel_Reroll = {
+				DisplayName = "{I} Embark \n {G} Alter {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
+			},
+		},
+		el = {},
+		en = {
+			UseLeaveRoomAsphodel_Reroll = {
+				DisplayName = "{I} Embark \n {G} Alter {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
+			},
+		},
+		es = {
+			UseLeaveRoomAsphodel_Reroll = {
+				DisplayName = "{I} Embarcar \n {G} Cambiar {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
+			},
+		},
+		fr = {
+			UseLeaveRoomAsphodel_Reroll = {
+				DisplayName = "{I} Embarquer \n {G} Altérer {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
+			},
+		},
+		it = {
+			UseLeaveRoomAsphodel_Reroll = {
+				DisplayName = "{I} Imbarcati \n {G} Altera {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
+			},
+		},
+		ja = {
+			UseLeaveRoomAsphodel_Reroll = {
+				DisplayName = "{I} 乗る \n {G} 干渉する{#UseGiftPointFormat}（-1{!Icons.ReRoll}）"
+			},
+		},
+		ko = {
+			UseLeaveRoomAsphodel_Reroll = {
+				DisplayName = "{I} 탑승 \n {G} 변경 {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
+			},
+		},
+		pl = {
+			UseLeaveRoomAsphodel_Reroll = {
+				DisplayName = "{I} Ruszaj \n {G} Zmień {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
+			},
+		},
+		["pt-BR"] = {
+			UseLeaveRoomAsphodel_Reroll = {
+				DisplayName = "{I} Embarcar \n {G} Alterar {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
+			},
+		},
+		ru = {
+			UseLeaveRoomAsphodel_Reroll = {
+				DisplayName = "{I} Отплыть \n {G} Изменить {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
+			},
+		},
+		tr = {},
+		uk = {},
+		["zh-CN"] = {
+			UseLeaveRoomAsphodel_Reroll = {
+				DisplayName = "{I} 上船 \n {G} 重置 {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
+			},
+		},
+		["zh-TW"] = {},
 	},
-	el = {},
-	en = {
-		UseLeaveRoomAsphodel_Reroll = {
-			DisplayName = "{I} Embark \n {G} Alter {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-		}
+	_NPCData = {},
+}
+
+mod.HadesHelpTextFileRemovals = {
+	HelpText = {
+		-- Also defined in TraitText
+		TemporaryDoorHealTrait = true,
 	},
-	es = {
-		UseLeaveRoomAsphodel_Reroll = {
-			DisplayName = "{I} Embarcar \n {G} Cambiar {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-		}
-	},
-	fr = {
-		UseLeaveRoomAsphodel_Reroll = {
-			DisplayName = "{I} Embarquer \n {G} Altérer {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-		}
-	},
-	it = {
-		UseLeaveRoomAsphodel_Reroll = {
-			DisplayName = "{I} Imbarcati \n {G} Altera {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-		}
-	},
-	ja = {
-		UseLeaveRoomAsphodel_Reroll = {
-			DisplayName = "{I} 乗る \n {G} 干渉する{#UseGiftPointFormat}（-1{!Icons.ReRoll}）"
-		}
-	},
-	ko = {
-		UseLeaveRoomAsphodel_Reroll = {
-			DisplayName = "{I} 탑승 \n {G} 변경 {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-		}
-	},
-	pl = {
-		UseLeaveRoomAsphodel_Reroll = {
-			DisplayName = "{I} Ruszaj \n {G} Zmień {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-		}
-	},
-	["pt-BR"] = {
-		UseLeaveRoomAsphodel_Reroll = {
-			DisplayName = "{I} Embarcar \n {G} Alterar {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-		}
-	},
-	ru = {
-		UseLeaveRoomAsphodel_Reroll = {
-			DisplayName = "{I} Отплыть \n {G} Изменить {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-		}
-	},
-	tr = {},
-	uk = {},
-	["zh-CN"] = {
-		UseLeaveRoomAsphodel_Reroll = {
-			DisplayName = "{I} 上船 \n {G} 重置 {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-		}
-	},
-	["zh-TW"] = {},
 }
 
 -- Mappings for various game object modifications that need to be applied when the run is started/ended

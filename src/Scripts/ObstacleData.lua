@@ -89,6 +89,10 @@ local obstacleModifications = {
 		DeathFx = "RubbleFall",
 		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
 	},
+	-- Red pillars in the boss room
+	ElysiumPillar06 = {
+		OnHitShake = mod.NilValue,
+	},
 	-- #endregion
 
 	-- #region STYX

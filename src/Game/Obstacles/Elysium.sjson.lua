@@ -27,6 +27,7 @@ local hadesObstacleAdditionsParents = {
 	},
 }
 local hadesObstacleAdditions = {
+	-- These are imported from the Hades Gameplay.sjson
 	EnemySpear = {
 		Name = "EnemySpear",
 		InheritFrom = "EnemyShadeWeapon",
@@ -65,6 +66,26 @@ local hadesObstacleAdditions = {
 			AttachedAnim = "EnemyShadeWeaponShadow",
 			EditorOutlineDrawBounds = false,
 			Graphic = "EnemySwordIdleContainer",
+		},
+	},
+	TheseusSpearReturnPoint = {
+		Name = "TheseusSpearReturnPoint",
+		DisplayInEditor = true,
+		Life = {
+			Invulnerable = true,
+		},
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "TheseusSpearReturnPoint",
+			StopsProjectiles = false,
+			StopsUnits = false,
+			Tallness = 227.0,
+			Points = {
+				{ X = 0,   Y = 10 },
+				{ X = 10,  Y = 5 },
+				{ X = 0,   Y = 0 },
+				{ X = -10, Y = 5 },
+			},
 		},
 	},
 }
@@ -118,6 +139,36 @@ local hadesTwoObstacleModifications = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
 	ElysiumTable02 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumSword01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumSword02 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumBrazier01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumBanner01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumFencePost01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumFencePost02 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumFence03 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumFence03a = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumFence03b = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	ElysiumCandle01 = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
 }
