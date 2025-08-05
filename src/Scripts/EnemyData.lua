@@ -793,7 +793,6 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 	},
 	ShadeSpearUnit = {
-		-- TODO: StopAnimationsOnDeath? for the glow animations
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
 		ActivateAnimation = "EnemyActivationFadeInShadeSpearContainer",
 		SpawnUnitOnDeath = "ShadeNaked",
