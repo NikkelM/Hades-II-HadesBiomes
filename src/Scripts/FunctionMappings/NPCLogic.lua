@@ -171,16 +171,9 @@ end
 
 function game.ModsNikkelMHadesBiomesEurydiceBuff(args, source)
 	game.ModsNikkelMHadesBiomesEurydicePreBuffPresentation(source, args)
-	-- TODO: Test
 	if args.FunctionName then
 		game.CallFunctionName(args.FunctionName, source, args)
 	end
-	-- if args.FunctionName == "AddRarityToTraits" then
-	-- 	game.AddRarityToTraits(source, { NumTraits = args.NumTraits })
-	-- end
-	-- if args.FunctionName == "AddStackToTraits" then
-	-- 	game.AddStackToTraits(source, { NumTraits = args.NumTraits, NumStacks = args.NumStacks })
-	-- end
 	game.ModsNikkelMHadesBiomesEurydicePostBuffPresentation(source, args)
 end
 

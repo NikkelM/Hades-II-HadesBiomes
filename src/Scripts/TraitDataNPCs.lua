@@ -109,7 +109,17 @@ local newTraitData = {
 	ModsNikkelMHadesBiomesBuffSlottedBoonRarity = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
+		Hidden = true,
 		Icon = "Boon_Circe_05",
+		-- At least one upgradeable boon available (not counting Heroic -> Perfect)
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "Hero", "GodBoonRarities" },
+				SumOf = { "Common", "Rare", "Epic" },
+				Comparison = ">=",
+				Value = 1,
+			},
+		},
 		AcquireFunctionName = "ModsNikkelMHadesBiomesEurydiceBuff",
 		AcquireFunctionArgs = {
 			FunctionName = "AddRarityToTraits",
