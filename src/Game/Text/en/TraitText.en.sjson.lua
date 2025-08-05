@@ -49,11 +49,9 @@ local newData = {
 		"A rare and fragrant beverage; the next {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}you find have upgraded {$Keywords.Rarity}.",
 	},
 	-- Patroclus
-	-- Some of them are in the HelpText files
 	{
 		Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 		DisplayName = "Cyclops Jerky Select",
-		-- Plural form  - "Attacks and Specials"
 		Description =
 		"Your {$Keywords.AttackSet} and {$Keywords.SpecialSet} deal {#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageBonus:P} {#Prev}damage.",
 	},
@@ -68,9 +66,9 @@ local newData = {
 		Description =
 		"Replenish {#UpgradeFormat}all {#Prev}uses of {#BoldFormatGraft}{$Keywords.ExtraChance} {#Prev}with ones that restore {#AltUpgradeFormat}{$TooltipData.ExtractData.TooltipInitialHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}.",
 	},
+	-- Mix of the Centaur Heart and Soul Tonic shop item names, with the larger gain being the second part
 	{
 		Id = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
-		-- Mix of the Centaur Heart and Soul Tonic shop item names, with the larger gain being the second part
 		DisplayName = "Soul Heart",
 		Description =
 		"Gain {#UpgradeFormat}+{$TooltipData.ExtractData.TooltipMaxHealth}{#Prev}{!Icons.HealthUp} and {#UpgradeFormat}+{$TooltipData.ExtractData.TooltipMaxMana}{#Prev}{!Icons.ManaUp}.",
