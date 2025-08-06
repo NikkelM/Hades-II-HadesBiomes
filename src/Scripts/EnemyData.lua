@@ -1058,6 +1058,10 @@ local enemyModifications = {
 		OnDeathFireWeapons = { "BlastCubeExplosionElysium" },
 		FuseWarningProjectileName = "ModsNikkelMHadesBiomesBlastWarningDecalElysium"
 	},
+	PhalanxTrap = {
+		ProjectileName = "PhalanxTrapWeapon",
+		OutgoingDamageModifiers = { { NonPlayerMultiplier = 15.0, }, },
+	}
 	-- #endregion
 }
 

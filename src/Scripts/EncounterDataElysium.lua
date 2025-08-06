@@ -54,7 +54,6 @@ local encounterReplacements = {
 		-- Original is missing HandleEncounterPreSpawns
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
-			{ FunctionName = "DisableRoomTraps" },
 		},
 	},
 

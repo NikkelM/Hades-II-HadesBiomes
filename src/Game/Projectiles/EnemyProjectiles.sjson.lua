@@ -224,6 +224,9 @@ local hadesProjectilesModifications = {
 			Scale = 1.0,
 		},
 	},
+	PhalanxTrapWeapon = {
+		Range = 200,
+	},
 	-- #endregion
 }
 
