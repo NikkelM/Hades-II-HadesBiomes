@@ -92,6 +92,7 @@ function mod.ModifyEnemyTrapData(enemyData)
 	game.ProjectileData.BlastCubeExplosion.OutgoingDamageModifiers = { { NonPlayerMultiplier = 50, }, }
 end
 
+-- For the PhalanxTrap/SpearTrap in Elysium
 function game.AttackOnlyGroups(enemy, currentRun)
 	if enemy.IdleAnimation ~= nil then
 		SetAnimation({ Name = enemy.IdleAnimation, DestinationId = enemy.ObjectId })
@@ -251,5 +252,168 @@ function game.AttackOnlyGroups(enemy, currentRun)
 
 	if searchOffsetId ~= nil then
 		Destroy({ Id = searchOffsetId })
+	end
+end
+
+-- For the ArcherTrap in Elysium among others
+function game.PassiveAttack(enemy, currentRun)
+	enemy.WeaponName = enemy.WeaponName or game.SelectWeapon(enemy)
+	local weaponAIData = game.GetWeaponAIData(enemy) or {}
+
+	if weaponAIData.PreAttackAnimation ~= nil then
+		SetAnimation({ Name = weaponAIData.PreAttackAnimation, DestinationId = enemy.ObjectId })
+	end
+	if enemy.WakeUpDelay ~= nil or (enemy.WakeUpDelayMin ~= nil and enemy.WakeUpDelayMax ~= nil) then
+		local wakeUpDelay = enemy.WakeUpDelay or game.RandomFloat(enemy.WakeUpDelayMin, enemy.WakeUpDelayMax)
+		game.wait(game.CalcEnemyWait(enemy, wakeUpDelay), enemy.AIThreadName)
+	end
+
+	while game.IsAIActive(enemy) do
+		if weaponAIData.AIResetDistance ~= nil then
+			-- Check if target within range
+			enemy.AINotifyName = "WithinDistance" .. enemy.ObjectId
+
+			NotifyWithinDistanceAny({
+				Ids = { enemy.ObjectId },
+				DestinationNames = weaponAIData.TargetGroups,
+				Distance = weaponAIData.AIAttackDistance,
+				ScaleY = 0.5,
+				Notify = enemy.AINotifyName,
+				Timeout = 0.1
+			})
+			game.waitUntil(enemy.AINotifyName)
+			local nearbyTargetId = game.NotifyResultsTable[enemy.AINotifyName]
+			local targetId = nil
+			if nearbyTargetId ~= nil and targetId ~= 0 then
+				-- Wait until target leaves before resetting
+				enemy.AINotifyName = "OutsideDistance" .. enemy.ObjectId
+
+				NotifyOutsideDistance({
+					Id = enemy.ObjectId,
+					DestinationId = nearbyTargetId,
+					Distance = weaponAIData.AIResetDistance,
+					Notify = enemy.AINotifyName
+				})
+				game.waitUntil(enemy.AINotifyName)
+				if weaponAIData.IdleAnimation ~= nil then
+					SetAnimation({ Name = weaponAIData.IdleAnimation, DestinationId = enemy.ObjectId })
+				end
+				if weaponAIData.ReloadedSound ~= nil then
+					PlaySound({ Name = weaponAIData.ReloadedSound, Id = enemy.ObjectId })
+				end
+			end
+		end
+
+		local preAttackDuration = weaponAIData.PreAttackDuration or 0.5
+		if weaponAIData.PreAttackDuration == nil and weaponAIData.PreAttackDurationMin ~= nil and weaponAIData.PreAttackDurationMax ~= nil then
+			preAttackDuration = game.RandomFloat(weaponAIData.PreAttackDurationMin, weaponAIData.PreAttackDurationMax) or 0.5
+		end
+
+		local preAttackEndDuration = weaponAIData.PreAttackEndDuration or math.min(0.5, preAttackDuration)
+		local preAttackStartDuration = math.max(preAttackDuration - preAttackEndDuration, 0)
+
+		-- Prepare to attack
+		if weaponAIData.PreAttackAnimation ~= nil then
+			SetAnimation({ Name = weaponAIData.PreAttackAnimation, DestinationId = weaponAIData.ObjectId })
+		end
+		if weaponAIData.AttackWarningAnimation ~= nil then
+			CreateAnimation({
+				Name = weaponAIData.AttackWarningAnimation,
+				DestinationId = enemy.ObjectId,
+				ScaleRadius = weaponAIData.AttackWarningAnimationRadius
+			})
+		end
+		if weaponAIData.PreAttackSound ~= nil then
+			PlaySound({ Name = weaponAIData.PreAttackSound, Id = weaponAIData.ObjectId })
+		end
+
+		local originalColor = weaponAIData.Color
+		if weaponAIData.PreAttackColor ~= nil then
+			SetColor({ Color = weaponAIData.PreAttackColor, Id = enemy.ObjectId, Duration = weaponAIData.PreAttackDuration })
+		end
+		game.wait(game.CalcEnemyWait(enemy, preAttackStartDuration), enemy.AIThreadName)
+
+		if weaponAIData.PreAttackEndShake then
+			Shake({ Id = enemy.ObjectId, Speed = 400, Distance = 3, Duration = preAttackEndDuration })
+			Flash({
+				Id = enemy.ObjectId,
+				Speed = 1,
+				MinFraction = 0,
+				MaxFraction = 0.8,
+				Color = game.Color.White,
+				Duration = preAttackEndDuration
+			})
+		end
+		if weaponAIData.PreAttackEndShakeSound ~= nil then
+			PlaySound({ Name = weaponAIData.PreAttackEndShakeSound, Id = enemy.ObjectId })
+		end
+
+		game.wait(game.CalcEnemyWait(enemy, preAttackEndDuration), enemy.AIThreadName)
+
+		local targetId = nil
+		if weaponAIData.TargetSelf then
+			targetId = enemy.ObjectId
+		end
+		if weaponAIData.TargetOffsetForward then
+			local offset = game.CalcOffset(math.rad(GetAngle({ Id = enemy.ObjectId }) or 0), weaponAIData.TargetOffsetForward) or
+					{ X = 0, Y = 0 }
+			targetId = SpawnObstacle({
+				Name = "InvisibleTarget",
+				Group = "Scripting",
+				DestinationId = targetId,
+				OffsetX = offset.X,
+				OffsetY = offset.Y
+			})
+		end
+
+		if weaponAIData.AttackWarningAnimation ~= nil then
+			StopAnimation({ Name = weaponAIData.AttackWarningAnimation, DestinationId = enemy.ObjectId })
+		end
+
+		if not enemy.DisableAIWhenReady then
+			-- Attack
+			if weaponAIData.FireAnimation ~= nil then
+				SetAnimation({ Name = weaponAIData.FireAnimation, DestinationId = enemy.ObjectId })
+			end
+			weaponAIData.WeaponName = game.SelectWeapon(enemy)
+			game.AIFireWeapon(enemy, weaponAIData)
+			-- FireWeaponFromUnit({ Weapon = enemy.WeaponName, Id = enemy.ObjectId, DestinationId = targetId })
+
+			-- Post-attack recover window
+			if weaponAIData.PreAttackColor ~= nil then
+				SetColor({ Color = originalColor, Id = enemy.ObjectId, Duration = weaponAIData.PostAttackCooldown })
+			end
+			if weaponAIData.PostAttackFlash then
+				Flash({
+					Id = enemy.ObjectId,
+					Speed = 2,
+					MinFraction = 0,
+					MaxFraction = 0.8,
+					Color = game.Color.White,
+					Duration = weaponAIData.PostAttackCooldown
+				})
+			end
+			if weaponAIData.PostAttackAnimation ~= nil then
+				SetAnimation({ Name = weaponAIData.PostAttackAnimation, DestinationId = enemy.ObjectId })
+			end
+			if weaponAIData.ReloadingLoopSound ~= nil then
+				enemy.ReloadSoundId = PlaySound({ Name = weaponAIData.ReloadingLoopSound, Id = enemy.ObjectId })
+			end
+
+			local postAttackCooldown = weaponAIData.PostAttackCooldown
+			if weaponAIData.PostAttackCooldown == nil and weaponAIData.PostAttackCooldownMin ~= nil and weaponAIData.PostAttackCooldownMax ~= nil then
+				postAttackCooldown = game.RandomFloat(weaponAIData.PostAttackCooldownMin, weaponAIData.PostAttackCooldownMax)
+			end
+			game.wait(game.CalcEnemyWait(enemy, postAttackCooldown), enemy.AIThreadName)
+
+			StopSound({ Id = weaponAIData.ReloadSoundId, Duration = 0.2 })
+			if weaponAIData.ReloadedSound ~= nil then
+				PlaySound({ Name = weaponAIData.ReloadedSound, Id = enemy.ObjectId })
+			end
+		end
+
+		if weaponAIData.TargetOffsetForward then
+			Destroy({ Id = targetId })
+		end
 	end
 end

@@ -1210,10 +1210,9 @@ for key, value in pairs(renamedWeaponModifications) do
 end
 
 local weaponKeyReplacements = {
+	-- Should be the same as for DefaultAIData in in EnemyData.lua
 	AIData = {
-		AttackSlots = {
-			TeleportToId = "InstantTeleportToId",
-		},
+		AttackSlots = { TeleportToId = "InstantTeleportToId", },
 		AIAttackDistance = "AttackDistance",
 		AIBufferDistance = "RetreatBufferDistance",
 		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
@@ -1240,6 +1239,7 @@ local weaponKeyReplacements = {
 	},
 	-- Same as above
 	ShrineAIDataOverwrites = {
+		AttackSlots = { TeleportToId = "InstantTeleportToId", },
 		AIAttackDistance = "AttackDistance",
 		AIBufferDistance = "RetreatBufferDistance",
 		AITrackTargetDuringCharge = "TrackTargetDuringCharge",
