@@ -44,13 +44,15 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			enemyData.NameplateDescriptionColor = { 145, 45, 90, 255 }
 		end
 
-		-- Dialogues playing before boss fights
+		-- Dialogues playing before boss fights or when meetting NPCs
 		local bossPresentationProperties = {
 			"BossPresentationSuperPriorityIntroTextLineSets",
 			"BossPresentationPriorityIntroTextLineSets",
 			"BossPresentationIntroTextLineSets",
 			"BossPresentationTextLineSets",
-			"BossPresentationRepeatableTextLineSets"
+			"BossPresentationRepeatableTextLineSets",
+			"InteractTextLineSets",
+			"RepeatableTextLineSets"
 		}
 		for _, property in ipairs(bossPresentationProperties) do
 			if enemyData[property] then
@@ -73,6 +75,14 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 					end
 				end
 			end
+		end
+
+		-- For NPCs, move all text lines into the InteractTextLineSets, out of the RepeatableTextLineSets
+		if enemyData.InteractTextLineSets and enemyData.RepeatableTextLineSets then
+			for key, textLineSet in pairs(enemyData.RepeatableTextLineSets) do
+				enemyData.InteractTextLineSets[key] = textLineSet
+			end
+			enemyData.RepeatableTextLineSets = nil
 		end
 
 		-- AIStage functionality has been changed, so we need to call a modded handler

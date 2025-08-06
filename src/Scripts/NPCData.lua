@@ -37,6 +37,7 @@ end
 
 local npcModifications = {
 	NPC_Sisyphus_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		RequiredRoomInteraction = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		RepulseOnMeleeInvulnerableHit = 200,
@@ -56,6 +57,7 @@ local npcModifications = {
 		},
 	},
 	NPC_Eurydice_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
 		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
 		RequiredRoomInteraction = true,
@@ -77,6 +79,7 @@ local npcModifications = {
 		},
 	},
 	NPC_Patroclus_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		RequiredRoomInteraction = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		RepulseOnMeleeInvulnerableHit = 200,
