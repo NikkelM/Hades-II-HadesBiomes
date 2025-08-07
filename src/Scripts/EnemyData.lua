@@ -52,7 +52,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			"BossPresentationTextLineSets",
 			"BossPresentationRepeatableTextLineSets",
 			"InteractTextLineSets",
-			"RepeatableTextLineSets"
+			"RepeatableTextLineSets",
+			"GiftTextLineSets",
 		}
 		for _, property in ipairs(bossPresentationProperties) do
 			if enemyData[property] then
@@ -75,14 +76,6 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 					end
 				end
 			end
-		end
-
-		-- For NPCs, move all text lines into the InteractTextLineSets, out of the RepeatableTextLineSets
-		if enemyData.InteractTextLineSets and enemyData.RepeatableTextLineSets then
-			for key, textLineSet in pairs(enemyData.RepeatableTextLineSets) do
-				enemyData.InteractTextLineSets[key] = textLineSet
-			end
-			enemyData.RepeatableTextLineSets = nil
 		end
 
 		-- AIStage functionality has been changed, so we need to call a modded handler

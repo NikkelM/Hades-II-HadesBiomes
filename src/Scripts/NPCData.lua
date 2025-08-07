@@ -35,6 +35,24 @@ local function applyNPCChoiceMappings(npcData, mappings)
 	end
 end
 
+local function applyNPCGlobalModifications(base)
+	for npcName, npcData in pairs(base) do
+		-- Hades II has more gift options, make every gift cost 1 Nectar
+		for textlineName, textline in pairs(npcData.GiftTextLineSets) do
+			textline.Cost = { GiftPoints = 1, }
+			textline.OnGiftTrack = true
+		end
+
+		-- Move all interaction textlines into the InteractTextLineSets, out of the RepeatableTextLineSets
+		if npcData.InteractTextLineSets and npcData.RepeatableTextLineSets then
+			for key, textLineSet in pairs(npcData.RepeatableTextLineSets) do
+				npcData.InteractTextLineSets[key] = textLineSet
+			end
+			npcData.RepeatableTextLineSets = nil
+		end
+	end
+end
+
 local npcModifications = {
 	NPC_Sisyphus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -54,6 +72,11 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesSisyphusHealing",
 			"ModsNikkelMHadesBiomesSisyphusMoney",
 			"ModsNikkelMHadesBiomesSisyphusMetapoints",
+		},
+		-- From Hades GiftData.lua
+		GiftTextLineSets = {
+			SisyphusGift08 = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+			SisyphusGift09 = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
 		},
 	},
 	NPC_Eurydice_01 = {
@@ -77,6 +100,11 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesBuffMegaPom",
 			"ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		},
+		-- From Hades GiftData.lua
+		GiftTextLineSets = {
+			EurydiceGift07 = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+			EurydiceGift08 = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+		},
 	},
 	NPC_Patroclus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -98,6 +126,11 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesBuffExtraChance",
 			"ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 			"ModsNikkelMHadesBiomesGainMinHealthMaxMana",
+		},
+		-- From Hades GiftData.lua
+		GiftTextLineSets = {
+			PatroclusGift07 = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+			PatroclusGift08 = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
 		},
 	},
 }
@@ -127,9 +160,16 @@ local npcChoiceMappings = {
 		TextToMatch = { "Patroclus_OfferText02", "Patroclus_OfferText03", "Patroclus_OfferText04", "Patroclus_OfferText05" },
 		PrePortraitExitFunctionName = "ModsNikkelMHadesBiomesBenefitChoice",
 		PrePortraitExitFunctionArgs = mod.PresetEventArgs.PatroclusBenefitChoices,
-	}
+	},
 }
 
 applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)
 
+applyNPCGlobalModifications(mod.NPCData)
+
 mod.ApplyModificationsAndInheritEnemyData(mod.NPCData, npcModifications, {}, {})
+mod.PrintTable(game.EnemyData.NPC_Eurydice_01.GiftTextLineSets)
+mod.PrintTable(game.EnemyData.NPC_Sisyphus_01.GiftTextLineSets)
+
+mod.PrintTable(game.EnemyData.NPC_Patroclus_01.GiftTextLineSets)
+
