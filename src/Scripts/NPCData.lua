@@ -169,8 +169,3 @@ applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)
 applyNPCGlobalModifications(mod.NPCData)
 
 mod.ApplyModificationsAndInheritEnemyData(mod.NPCData, npcModifications, {}, {})
-mod.PrintTable(game.EnemyData.NPC_Eurydice_01.GiftTextLineSets)
-mod.PrintTable(game.EnemyData.NPC_Sisyphus_01.GiftTextLineSets)
-
-mod.PrintTable(game.EnemyData.NPC_Patroclus_01.GiftTextLineSets)
-
