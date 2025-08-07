@@ -75,8 +75,9 @@ local npcModifications = {
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
-			SisyphusGift08 = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
-			SisyphusGift09 = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+			SisyphusGift08_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+			SisyphusGift08_B = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+			SisyphusGift09_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
 		},
 	},
 	NPC_Eurydice_01 = {
@@ -129,8 +130,8 @@ local npcModifications = {
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
-			PatroclusGift07 = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
-			PatroclusGift08 = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+			PatroclusGift07_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+			PatroclusGift08_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
 		},
 	},
 }
