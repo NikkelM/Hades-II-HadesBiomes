@@ -5,7 +5,6 @@ mod.HadesPortraitAnimationsDestinationFilename = "Game\\Animations\\Z_ModsNikkel
 
 mod.HadesPortraitAnimationModifications = {
 	-- Replacing Zagreus solo portraits with ones where Melinoe is also present as a ghostly version behind him
-	-- Trying to align so the player can be seen behind the portrait/in the space between Mel and Zag
 	Portrait_Zag_Default_01 = {
 		FilePath = "Portraits\\MelAndZagDefault",
 		OffsetY = 32,
@@ -58,6 +57,7 @@ mod.HadesPortraitAnimationModifications = {
 	},
 }
 
+-- TODO: Re-check on 1.0 release if any new ones have been added (e.g. Persephone, Nyx)
 mod.HadesPortraitAnimationAdditions = {
 	-- Codex portraits where the names are duplicate between the games
 	{
@@ -74,6 +74,26 @@ mod.HadesPortraitAnimationAdditions = {
 		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_TartarusBiome",
 		InheritFrom = "Codex_Portrait_Base_01",
 		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BiomeTartarus",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_ChaosBiome",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BiomeChaos",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Cerberus",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Cerberus",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Charon",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Charon",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Skelly",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Skelly",
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_BloodlessBerserker",
