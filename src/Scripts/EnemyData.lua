@@ -388,6 +388,8 @@ local enemyModifications = {
 		OnDamagedFunctionName = "AggroSpawns",
 		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
 		BlockRaiseDead = true,
+		BlockCharm = true,
+		BlockRespawnShrineUpgrade = true,
 		EliteAttributeOptions = { "Fog", "HeavyArmor", "Orbit", "Radial", },
 	},
 	-- #endregion

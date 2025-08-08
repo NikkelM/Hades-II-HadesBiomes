@@ -10,7 +10,13 @@ local hadesTwoEnemiesFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\
 local hadesEnemiesModifications = {
 	-- #region TARTARUS
 	BaseGlutton = { InheritFrom = "1_BaseEnemy", },
-	LightSpawner = { InheritFrom = "1_BaseEnemy", },
+	LightSpawner = {
+		InheritFrom = "1_BaseEnemy",
+		Thing = {
+			-- Prevent it from being pushed
+			ExternalForceMultiplier = 0.0,
+		},
+	},
 	BaseThug = { InheritFrom = "1_BaseEnemy", },
 	SmallEnemy = { InheritFrom = "1_BaseEnemy", },
 	BaseCaster = { InheritFrom = "1_BaseEnemy", },
@@ -18,7 +24,6 @@ local hadesEnemiesModifications = {
 	BaseSpawner = { InheritFrom = "1_BaseEnemy", },
 	BaseThief = { InheritFrom = "1_BaseEnemy", },
 	WretchAssassin = { InheritFrom = "1_BaseEnemy", },
-	Harpy = { InheritFrom = "1_BaseEnemy", },
 	-- #endregion
 
 	-- #region ASPHODEL
