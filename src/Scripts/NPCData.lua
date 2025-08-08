@@ -78,6 +78,16 @@ local npcModifications = {
 			SisyphusGift08_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
 			SisyphusGift08_B = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
 			SisyphusGift09_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+			-- Need to rename ZagreusHome to ZagreusField voicelines
+			SisyphusGift01 = {
+				[1] = { Cue = "/VO/ZagreusField_00120", }
+			},
+			SisyphusGift05 = {
+				[2] = { Cue = "/VO/ZagreusField_00523", }
+			},
+			SisyphusGift06 = {
+				[2] = { Cue = "/VO/ZagreusField_00524", }
+			},
 		},
 	},
 	NPC_Eurydice_01 = {
