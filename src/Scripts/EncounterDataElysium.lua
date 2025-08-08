@@ -77,11 +77,7 @@ local encounterModifications = {
 		CanEncounterSkip = false,
 	},
 	Story_Patroclus_01 = {
-		ExitVoiceLines = {
-			ObjectType = "NPC_Patroclus_01",
-		},
-		-- Save after the conversation
-		SkipExitReadyCheckpoint = false,
+		ExitVoiceLines = { ObjectType = "NPC_Patroclus_01", },
 	},
 
 	-- MINIBOSSES

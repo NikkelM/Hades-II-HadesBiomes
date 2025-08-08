@@ -118,10 +118,6 @@ local encounterModifications = {
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,
 	},
-	Story_Sisyphus_01 = {
-		-- Save after the conversation
-		SkipExitReadyCheckpoint = false,
-	},
 
 	-- MINIBOSSES
 	MiniBossGrenadier = {

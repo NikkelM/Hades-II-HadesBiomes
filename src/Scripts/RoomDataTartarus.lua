@@ -168,7 +168,6 @@ local roomModifications = {
 			[1] = mod.NilValue
 		},
 		LoadModdedVoiceBanks = { "Sisyphus", "ZagreusField" },
-		ModsNikkelMHadesBiomesOnReloadRunStartRoomUnthreadedEvents = true,
 	},
 	A_Reprieve01 = {
 		GameStateRequirements = {
