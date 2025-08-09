@@ -66,7 +66,13 @@ for i = #hadesEnemyAnimationsTable.Animations, 1, -1 do
 end
 
 -- Modifications/overrides to the animations
-local hadesEnemyAnimationsModifications = {}
+local hadesEnemyAnimationsModifications = {
+	-- #region TARTARUS
+	BaseThiefDeath = {
+		SortMode = "Isometric",
+	},
+	-- #endregion
+}
 
 -- Rename duplicate animation names using mod.EnemyAnimationMappings
 mod.RenameSjsonEntries(hadesEnemyAnimationsTable.Animations, mod.EnemyAnimationMappings, "Name", "EnemyAnimations.sjson")

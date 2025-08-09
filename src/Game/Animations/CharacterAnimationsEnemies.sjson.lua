@@ -42,14 +42,49 @@ for i = #hadesEnemyAnimationsTable.Animations, 1, -1 do
 end
 
 local modifications = {
+	-- #region TARTARUS
+	EnemyWretchSwarmerDeathVFX = {
+		Scale = 0.8,
+		SortMode = "Isometric",
+	},
+	SpawnerDeath = {
+		OffsetY = -50.0,
+		Scale = 1.1,
+		SortMode = "Isometric",
+	},
+	EnemyWretchGluttonDeathVFX = {
+		SortMode = "Isometric",
+	},
+	EnemyWretchCasterDeath = {
+		Scale = 0.8,
+		SortMode = "Isometric",
+	},
+	HeavyRangedCrystal1Shatter = {
+		SortMode = "Isometric",
+	},
+	HeavyRangedCrystal4Shatter = {
+		OffsetY = -70,
+	},
+	-- #endregion
+
+	-- #region ASPHODEL
 	EnemyMedusaHeadDeath = {
-		OffsetY = 0.0,
 		BlockNewOwnerAnims = true,
 		OwnerInvulnerable = true,
 		OwnerUntargetable = true,
 		OwnerHasNoCollision = true,
 		OwnerImmobile = true,
 	},
+	HealRangedDeath = {
+		OffsetY = -40,
+	},
+	-- #endregion
+
+	-- #region ELYSIUM
+	-- #endregion
+
+	-- #region STYX
+	-- #endregion
 }
 
 mod.ApplyNestedSjsonModifications(hadesEnemyAnimationsTable.Animations, modifications)

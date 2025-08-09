@@ -106,9 +106,7 @@ local enemyAdditions = {
 	-- STYX
 }
 
-local enemyKeyReplacements = {
-	Life = { DeathGraphic = "DeathFx", }
-}
+local enemyKeyReplacements = {}
 
 mod.ApplyNestedSjsonModifications(hadesEnemiesTable.Units, hadesEnemiesModifications)
 
@@ -149,3 +147,15 @@ end
 sjson.hook(hadesTwoEnemiesFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Units, hadesEnemiesTable.Units, "Name")
 end)
+
+-- Assign to mod so we can get required properties in EnemyData.lua
+-- TODO: These and the other "caches" don't work, it gets reloaded with the rest of the lua - probably can't get around it
+mod.HadesSjsonEnemiesTable = mod.HadesSjsonEnemiesTable or nil
+if mod.HadesSjsonEnemiesTable == nil then
+	mod.HadesSjsonEnemiesTable = {}
+	for _, enemy in ipairs(hadesEnemiesTable.Units) do
+		if enemy.Name then
+			mod.HadesSjsonEnemiesTable[enemy.Name] = enemy
+		end
+	end
+end

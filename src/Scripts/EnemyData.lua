@@ -35,6 +35,68 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		end
 		mod.RenameKeys(enemyData, enemyKeyReplacements, enemyName)
 
+		enemyData.Name = enemyName
+
+		-- All properties will be moved to the top level in the enemy data
+		local sjsonToEnemyDataMappings = {
+			Life = {
+				DeathGraphic = "DeathAnimation",
+				DeathFx = "DeathFx",
+				DeathSound = "DeathSound",
+				InvulnerableFx = "InvulnerableFx",
+			},
+			Thing = {
+				ActivateFx = "ActivateFx",
+				ActivateGraphic = "ActivateAnimation",
+			},
+		}
+
+		-- Move properties from SJSON to the enemy data
+		local sjsonEnemyData = mod.HadesSjsonEnemiesTable[enemyName]
+		if sjsonEnemyData ~= nil then
+			for parentKey, replacementKeys in pairs(sjsonToEnemyDataMappings) do
+				-- Process each property within the parent key (Life/Thing)
+				for oldName, newName in pairs(replacementKeys) do
+					local dataSource = sjsonEnemyData
+					local sourceName = enemyName
+					local foundData = false
+
+					-- Check if current enemy has the specific property
+					if dataSource[parentKey] and dataSource[parentKey][oldName] ~= nil then
+						foundData = true
+					else
+						-- Look for the property in parent enemy
+						local parentEnemyName = sjsonEnemyData.InheritFrom
+						if parentEnemyName and mod.HadesSjsonEnemiesTable[parentEnemyName] then
+							dataSource = mod.HadesSjsonEnemiesTable[parentEnemyName]
+							sourceName = parentEnemyName
+							if dataSource[parentKey] and dataSource[parentKey][oldName] ~= nil then
+								foundData = true
+							else
+								-- Look for the property in grandparent enemy
+								local grandParentEnemyName = dataSource.InheritFrom
+								if grandParentEnemyName and mod.HadesSjsonEnemiesTable[grandParentEnemyName] then
+									dataSource = mod.HadesSjsonEnemiesTable[grandParentEnemyName]
+									sourceName = grandParentEnemyName
+									if dataSource[parentKey] and dataSource[parentKey][oldName] ~= nil then
+										foundData = true
+									end
+								end
+							end
+						end
+					end
+
+					-- Process the found data
+					if foundData and not enemyData[newName] then
+						enemyData[newName] = dataSource[parentKey][oldName]
+						mod.DebugPrint("Moved " .. parentKey .. "." .. oldName
+							.. " from sjson " .. sourceName .. " into " .. newName .. " for " .. enemyName, 4)
+					end
+				end
+			end
+		end
+		-- ...existing code...
+
 		-- Always use the Olympus dialogue elements for the bosses
 		if enemyData.Portrait then
 			enemyData.BoxAnimation = "DialogueSpeechBubbleLight"
@@ -170,6 +232,8 @@ local enemyReplacements = {
 	BaseVulnerableEnemy = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DestroyDelay = mod.NilValue,
+		-- We always create the death animation on a new blank obstacle, so we don't have to time the DestroyDelay
+		ManualDeathAnimation = true,
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -287,25 +351,21 @@ local enemyModifications = {
 	},
 	PunchingBagUnit = {
 		StunAnimations = { Default = "EnemyWretchGluttonOnHit" },
-		ActivateAnimation = "EnemyActivationFadeInWretchGluttonContainer",
 	},
 	PunchingBagUnitElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
 	},
 	BaseThug = {
 		LargeUnitCap = mod.NilValue,
-		ActivateAnimation = "EnemyActivationFadeInWretchThugContainer",
 	},
 	HeavyMelee = {
 		StunAnimations = { Default = "EnemyWretchThugOnHit" },
-		ActivateAnimation = "EnemyActivationFadeInWretchThugContainer",
 	},
 	HeavyMeleeElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
 	},
 	DisembodiedHand = {
 		StunAnimations = { Default = "EnemyWringerOnHit" },
-		ActivateAnimation = "EnemyActivationFadeInDisembodiedHandContainer",
 	},
 	DisembodiedHandElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
@@ -313,18 +373,10 @@ local enemyModifications = {
 	BaseCaster = {
 		AIAggroRange = 1250,
 		LargeUnitCap = mod.NilValue,
-		ActivateFx = "EnemySummonRuneMedium",
-		ActivateAnimation = "EnemyActivationFadeInWretchCasterContainer",
 	},
 	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
 		DefaultAIData = game.DeepCopyTable(game.EnemyData.LightRanged.DefaultAIData),
-		ActivateFx = "EnemySummonRuneMedium",
-		ActivateAnimation = "EnemyActivationFadeInWretchCasterContainer",
-	},
-	BaseThief = {
-		ActivateFx = "EnemySummonRuneSmall",
-		ActivateAnimation = "EnemyActivationFadeInThiefMineLayerContainer",
 	},
 	ThiefMineLayer = {
 		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
@@ -333,8 +385,6 @@ local enemyModifications = {
 		DefaultAIData = {
 			PostAttackDuration = 0.75,
 		},
-		ActivateFx = "EnemySummonRuneSmall",
-		ActivateAnimation = "EnemyActivationFadeInThiefMineLayerContainer",
 	},
 	ThiefMineLayerElite = {
 		DefaultAIData = {
@@ -342,8 +392,6 @@ local enemyModifications = {
 			AttackWhileBlendingIntervalMax = 2.0,
 			PostAttackDuration = 0.5,
 		},
-		ActivateFx = "EnemySummonRuneSmall",
-		ActivateAnimation = "EnemyActivationFadeInThiefMineLayerContainer",
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
 	},
 	HeavyRanged = {
@@ -361,19 +409,13 @@ local enemyModifications = {
 				Threaded = true,
 			},
 		},
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
 		-- SpawnObstaclesOnDeath = { ... }
-		ActivateFx = "EnemySummonRuneMedium",
-		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
 	},
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
-		DeathAnimation = "EnemyWretchSwarmerDeathVFX",
-		DeathFx = "EnemyDeathFx_Small",
-		DestroyDelay = 0.9,
 		WeaponOptions = { "HadesSwarmerMelee" },
-		ActivateFx = "EnemySummonRuneSmall",
-		ActivateAnimation = "EnemyActivationFadeInWretchSwarmerContainer",
 		BlockAttributes = { "Orbit", "Vacuum", "Massive", },
 	},
 	SwarmerElite = {
@@ -381,12 +423,10 @@ local enemyModifications = {
 	},
 	LightSpawner = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
-		DeathFx = "BreakableDeathAnim",
-		DeathGraphic = "SpawnerDeath",
 		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon", },
 		DefaultAIData = { DeepInheritance = true, },
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		OnDamagedFunctionName = "AggroSpawns",
-		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		BlockRespawnShrineUpgrade = true,
@@ -396,10 +436,6 @@ local enemyModifications = {
 	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
-		DeathFx = "EnemyDeathFx",
-		DeathGraphic = "HeavyRangedSplitterCrystalDeath",
-		ActivateFx = "EnemySummonRuneExtraLarge",
-		ActivateAnimation = "EnemyActivationFadeInHeavyRangedSplitterContainer",
 		SpawnEvents = {
 			{
 				FunctionName = "CreateTethers",
@@ -408,6 +444,7 @@ local enemyModifications = {
 		},
 		OnDeathFunctionName = "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
 		-- From 1325
 		HealthBuffer = 2200,
 		-- From 850
@@ -438,16 +475,16 @@ local enemyModifications = {
 	},
 	HeavyRangedSplitterFragment = {
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
-		DeathFx = "HeavyRangedSplitterFragmentDeath",
-		DeathGraphic = "HeavyRangedSplitterFragmentDeath",
 		UseActivatePresentation = false,
 		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
 		RunHistoryKilledByName = "HeavyRangedSplitterMiniboss",
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 	},
 	WretchAssassin = {
 		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
-		ActivateAnimation = "EnemyActivate",
-		BlockRaiseDead = true
+		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
 	},
 	-- #endregion
 	-- #region TARTARUS - Bosses
@@ -457,7 +494,6 @@ local enemyModifications = {
 		RequiredKill = true,
 	},
 	Harpy = {
-		InvulnerableFx = "Invincibubble",
 		RunHistoryKilledByName = "NPC_FurySister_01",
 	},
 	Harpy2 = {
@@ -483,12 +519,9 @@ local enemyModifications = {
 	-- #region ASPHODEL - Regular
 	LightSpawnerElite = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
-		DeathFx = "BreakableDeathAnim",
-		DeathGraphic = "SpawnerDeath",
 		WeaponOptions = { "HadesLightSpawnerEliteSpawnerWeapon", },
 		DefaultAIData = { DeepInheritance = true, },
 		OnDamagedFunctionName = "AggroSpawns",
-		ActivateAnimation = "EnemyActivationFadeInLightSpawnerContainer",
 		BlockRaiseDead = true,
 	},
 	-- Need to manually modify these fields, as the enemies are DeepCopyTable'd from Hades II above
@@ -620,9 +653,7 @@ local enemyModifications = {
 	-- Normal/new Hades enemies for Asphodel
 	FreezeShotUnit = {
 		StunAnimations = { Default = "EnemyMedusaOnHit" },
-		ActivateFx = "EnemySummonRuneMedium",
-		ActivateAnimation = "EnemyActivationFadeInMedusaHeadContainer",
-		DeathAnimation = "EnemyMedusaHeadDeath",
+		ManualDeathAnimation = false,
 		DestroyDelay = 3.0,
 	},
 	FreezeShotUnitElite = {
@@ -637,9 +668,8 @@ local enemyModifications = {
 	},
 	CrusherUnit = {
 		StunAnimations = { Default = "CrusherUnitOnHit" },
-		ActivateAnimation = "EnemyActivationFadeInCrusherUnitContainer",
-		DeathFx = "EnemyDeathFxBone",
-		DeathAnimation = "CrusherUnitDeathVFX",
+		-- Don't create a new blank obstacle for this enemy, as the flipping logic would be hard to get right
+		ManualDeathAnimation = false,
 		DestroyDelay = 1.2,
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
@@ -649,9 +679,20 @@ local enemyModifications = {
 	},
 	ShieldRanged = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
-		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
-		DeathAnimation = "HealRangedDeath",
-		DeathFx = "HealRangedDeath",
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		Tethers = {
+			[1] = { Distance = 20 },
+			[2] = { Distance = 20 },
+			[3] = { Distance = 20 }
+		},
+		SpawnEvents = {
+			{
+				FunctionName = "CreateTethers",
+				Threaded = true,
+			},
+		},
+	},
+	ShieldRangedSuperElite = {
 		Tethers = {
 			[1] = { Distance = 20 },
 			[2] = { Distance = 20 },
@@ -668,10 +709,20 @@ local enemyModifications = {
 	-- #region ASPHODEL - Minibosses
 	ShieldRangedMiniBoss = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
-		ActivateFx = "EnemySummonRuneExtraLarge",
-		ActivateAnimation = "EnemyActivationFadeInHeavyRangedContainer",
+		DeathFx = "null",
 		DeathAnimation = "HealRangedDeathMiniBoss",
-		DeathFx = "HealRangedDeathMiniBoss",
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		Tethers = {
+			[1] = { Distance = 30 },
+			[2] = { Distance = 30 },
+			[3] = { Distance = 30 }
+		},
+		SpawnEvents = {
+			{
+				FunctionName = "CreateTethers",
+				Threaded = true,
+			},
+		},
 	},
 	SpreadShotUnitMiniboss = {
 		-- In Hades II, projectiles can't be destroyed by attacks by default
@@ -685,11 +736,19 @@ local enemyModifications = {
 		ShrineWeaponOptionsOverwrite = mod.NilValue,
 	},
 	HitAndRunUnit = {
+		ManualDeathAnimation = false,
+		DestroyDelay = 3.0,
 		BlockRaiseDead = true,
+		BlockCharm = true,
+		ImmuneToPolymorph = true,
+		BlockRespawnShrineUpgrade = true,
 	},
 	CrusherUnitElite = {
 		BlockAttributes = { "Blink", "Orbit", "Fog", "Frenzy", "ManaDrain", "Molten", "Unflinching", "Vacuuming", },
 		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
+		ImmuneToPolymorph = true,
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
@@ -708,7 +767,6 @@ local enemyModifications = {
 				Requirements = mod.NilValue,
 			},
 		},
-		InvulnerableFx = "HydraBubble",
 		BossDifficultyShrineRequiredCount = 2,
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
@@ -727,8 +785,7 @@ local enemyModifications = {
 	-- Spawned heads
 	BaseHydraHead = {
 		StunAnimations = { Default = "EnemyHydraOnHit" },
-		ActivateFx = "nil",
-		ActivateAnimation = "HydraHeadLavaBubbles",
+		ManualDeathAnimation = false,
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "HydraTouchdown",
@@ -748,6 +805,7 @@ local enemyModifications = {
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
 		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
 	},
 	HydraTooth = {
 		StunAnimations = { Default = "HydraToothLanded" },
@@ -760,6 +818,7 @@ local enemyModifications = {
 		UseActivatePresentation = false,
 		HealthBarType = "Small",
 		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
 		OnHitShake = { Distance = 3, Speed = 300, Duration = 0.15 },
 		DefaultAIData = {
 			DeepInheritance = true,
@@ -796,10 +855,10 @@ local enemyModifications = {
 		-- To prevent the first damage occurrence, which is duplicated from the killing blow
 		ModsNikkelMHadesBiomesIgnoreFirstRapidDamage = true,
 		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
 	},
 	ShadeSpearUnit = {
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
-		ActivateAnimation = "EnemyActivationFadeInShadeSpearContainer",
 		SpawnUnitOnDeath = "ShadeNaked",
 		SkipActivatePresentationOnSpawns = true,
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
@@ -815,7 +874,6 @@ local enemyModifications = {
 	},
 	ShadeBowUnit = {
 		StunAnimations = { Default = "ShadeBow_OnHit" },
-		ActivateAnimation = "EnemyActivationFadeInShadeBowContainer",
 		SpawnUnitOnDeath = "ShadeNaked",
 		SkipActivatePresentationOnSpawns = true,
 	},
@@ -827,7 +885,6 @@ local enemyModifications = {
 	},
 	ShadeShieldUnit = {
 		StunAnimations = { Default = "ShadeShield_OnHit" },
-		ActivateAnimation = "EnemyActivationFadeInShadeShieldContainer",
 		SpawnUnitOnDeath = "ShadeNaked",
 		SkipActivatePresentationOnSpawns = true,
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
@@ -841,7 +898,6 @@ local enemyModifications = {
 	},
 	ShadeSwordUnit = {
 		StunAnimations = { Default = "ShadeSword_OnHit" },
-		ActivateAnimation = "EnemyActivationFadeInShadeSwordContainer",
 		SpawnUnitOnDeath = "ShadeNaked",
 		SkipActivatePresentationOnSpawns = true,
 	},
@@ -854,7 +910,6 @@ local enemyModifications = {
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotOnHit" },
-		ActivateAnimation = "EnemyActivationFadeInChariotContainer",
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
@@ -899,9 +954,8 @@ local enemyModifications = {
 	ChariotSuicide = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotSuicideOnHit" },
-		ActivateAnimation = "EnemyActivationFadeInChariotSuicideContainer",
-		ActivateFx = "EnemySummonRuneMedium",
 		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,

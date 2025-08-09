@@ -137,6 +137,9 @@ local hadesProjectilesModifications = {
 		CheckObstacleImpact = true,
 		DetonateOnTouchdown = true,
 	},
+	CrusherUnitSlamUpgraded = {
+		Fuse = 0.1,
+	},
 	-- #endregion
 
 	-- #region ELYSIUM

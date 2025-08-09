@@ -308,6 +308,16 @@ mod.SjsonFileMappings = {
 
 -- Modifications to animations in the above files, before they are copied over
 mod.SjsonFileModifications = {
+	["Animations\\CharacterAnim_Enemies_WretchThug"] = {
+		EnemyWretchThugDeath = {
+			SortMode = "Isometric",
+		},
+	},
+	["Animations\\CharacterAnim_Enemies_Wringer"] = {
+		EnemyWringerDeathVFX = {
+			SortMode = "Isometric",
+		},
+	},
 	["Animations\\CharacterAnim_EnemiesBosses_Hydra"] = {
 		EnemyHydraTaunt = {
 			ChainTo = "EnemyHydraRoarReturnToIdle",

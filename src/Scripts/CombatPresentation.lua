@@ -1,6 +1,31 @@
 -- Wrap around KillPresentation to call HandleTetherParentDeath() before the victim is destroyed in Kill()
 modutil.mod.Path.Wrap("KillPresentation", function(base, victim, killer, args)
-	game.thread(game.HandleTetherParentDeath, victim)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy then
+		game.thread(game.HandleTetherParentDeath, victim)
+
+		if victim.DeathAnimation ~= nil and victim.ManualDeathAnimation then
+			-- Set the death animation manually on a new obstacles, to not have to time the DestroyDelay
+			local deathAnimationObstacle = SpawnObstacle({
+				Name = "BlankObstacle",
+				DestinationId = victim.ObjectId,
+				-- Need to set SortMode on the DeathAnimation to Isometric to make sure it is rendered behind/in front correctly
+				Group = "Standing",
+			})
+			local angle = GetAngle({ Id = victim.ObjectId })
+			if not victim.ModsNikkelMHadesBiomesIgnoreDeathAngle then
+				CreateAnimation({ Name = victim.DeathAnimation, DestinationId = deathAnimationObstacle, Angle = angle })
+			else
+				CreateAnimation({ Name = victim.DeathAnimation, DestinationId = deathAnimationObstacle })
+			end
+
+			-- After 5 seconds, destroy the death animation obstacle
+			game.thread(function()
+				game.wait(5)
+				Destroy({ Id = deathAnimationObstacle })
+			end)
+		end
+	end
+
 	base(victim, killer, args)
 end)
 

@@ -96,6 +96,12 @@ local encounterModifications = {
 		MinWaves = 1,
 		MaxWaves = 1,
 	},
+	WrappingAsphodel = {
+		BlockAthenaEncounterKeepsake = true,
+	},
+	WrappingAsphodel2 = {
+		BlockAthenaEncounterKeepsake = true,
+	},
 
 	-- BOSSES
 	BossHydra = {
