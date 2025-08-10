@@ -55,6 +55,15 @@ local encounterReplacements = {
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
 		},
+		-- The normal events, plus disabling room traps in the end
+		UnthreadedEvents = {
+			{ FunctionName = "EncounterAudio" },
+			{ FunctionName = "HandleEnemySpawns" },
+			{ FunctionName = "CheckForAllEnemiesDead" },
+			{ FunctionName = "DisableRoomTraps" },
+			{ FunctionName = "PostCombatAudio" },
+			{ FunctionName = "SpawnRoomReward" },
+		},
 	},
 
 	Story_Patroclus_01 = {
