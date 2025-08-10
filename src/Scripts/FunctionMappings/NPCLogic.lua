@@ -98,6 +98,7 @@ modutil.mod.Path.Wrap("BouldyHitPresentation", function(base, victim)
 end)
 
 function game.ModsNikkelMHadesBiomesSisyphusBuff(args, source)
+	args = args or {}
 	if args.FunctionName == "GiveRandomConsumables" then
 		if args.Currency ~= nil then
 			args.LootOptions = {
@@ -170,6 +171,7 @@ function game.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 end
 
 function game.ModsNikkelMHadesBiomesEurydiceBuff(args, source)
+	args = args or {}
 	game.ModsNikkelMHadesBiomesEurydicePreBuffPresentation(source, args)
 	if args.FunctionName then
 		game.CallFunctionName(args.FunctionName, source, args)
@@ -191,6 +193,7 @@ end
 
 -- #region Patroclus
 function game.ModsNikkelMHadesBiomesPatroclusBuff(args, source)
+	args = args or {}
 	if args.FunctionName then
 		game.CallFunctionName(args.FunctionName, source, args)
 	end

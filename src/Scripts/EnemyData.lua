@@ -91,11 +91,16 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 						enemyData[newName] = dataSource[parentKey][oldName]
 						mod.DebugPrint("Moved " .. parentKey .. "." .. oldName
 							.. " from sjson " .. sourceName .. " into " .. newName .. " for " .. enemyName, 4)
+					elseif not foundData then
+						mod.DebugPrint("Could not find " .. parentKey .. "." .. oldName
+							.. " in sjson for " .. enemyName .. " or its parents", 4)
+					else
+						mod.DebugPrint("Property " .. newName .. " already exists in " .. enemyName
+							.. ", not overwriting it", 4)
 					end
 				end
 			end
 		end
-		-- ...existing code...
 
 		-- Always use the Olympus dialogue elements for the bosses
 		if enemyData.Portrait then
@@ -924,6 +929,7 @@ local enemyModifications = {
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotOnHit" },
+		DeathAnimation = "ChariotDeathVFX",
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
@@ -968,6 +974,7 @@ local enemyModifications = {
 	ChariotSuicide = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotSuicideOnHit" },
+		DeathAnimation = "ChariotSuicideDeathVFX",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		DefaultAIData = {
@@ -989,10 +996,10 @@ local enemyModifications = {
 			},
 			SetupDistance = 900,
 			SetupTimeout = 7.0,
-			RamDistance = 80,
+			RamDistance = 120,
 			OnFiredFunctionName = "SelfDestruct",
 		},
-		WeaponOptions = { "ChariotRamSelfDestruct" },
+		WeaponOptions = { "ChariotRamDeathWeapon" },
 	},
 	FlurrySpawner = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,

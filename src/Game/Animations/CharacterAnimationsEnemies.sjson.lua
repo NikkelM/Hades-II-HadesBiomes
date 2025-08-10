@@ -44,31 +44,36 @@ end
 local modifications = {
 	-- #region TARTARUS
 	EnemyWretchSwarmerDeathVFX = {
-		Scale = 0.8,
 		SortMode = "Isometric",
+		Scale = 0.8,
 	},
 	SpawnerDeath = {
+		SortMode = "Isometric",
 		OffsetY = -50.0,
 		Scale = 1.1,
-		SortMode = "Isometric",
 	},
 	EnemyWretchGluttonDeathVFX = {
 		SortMode = "Isometric",
 	},
 	EnemyWretchCasterDeath = {
-		Scale = 0.8,
 		SortMode = "Isometric",
+		Scale = 0.8,
 	},
 	HeavyRangedCrystal1Shatter = {
 		SortMode = "Isometric",
 	},
 	HeavyRangedCrystal4Shatter = {
+		SortMode = "Isometric",
 		OffsetY = -70,
 	},
 	-- #endregion
 
 	-- #region ASPHODEL
+	CrusherUnitDeathVFX = {
+		SortMode = "Isometric",
+	},
 	EnemyMedusaHeadDeath = {
+		SortMode = "Isometric",
 		BlockNewOwnerAnims = true,
 		OwnerInvulnerable = true,
 		OwnerUntargetable = true,
@@ -76,12 +81,17 @@ local modifications = {
 		OwnerImmobile = true,
 	},
 	HealRangedDeath = {
+		SortMode = "Isometric",
 		OffsetY = -40,
 	},
 	-- #endregion
 
 	-- #region ELYSIUM
+	EnemyWretchCasterDeath_SplitShot = {
+		SortMode = "Isometric",
+	},
 	SoulSpawnerDeath = {
+		SortMode = "Isometric",
 		OffsetY = -100.0,
 	},
 	-- #endregion

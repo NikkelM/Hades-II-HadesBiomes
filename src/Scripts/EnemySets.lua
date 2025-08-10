@@ -8,14 +8,14 @@ local additionalEnemySets = {
 		"ThiefMineLayer",
 		"ThiefMineLayerElite",
 		"PunchingBagUnit",
+		"PunchingBagUnitElite",
 		"HeavyMelee",
+		"HeavyMeleeElite",
 		"DisembodiedHand",
 		"DisembodiedHandElite",
 		"LightRanged",
-		"HeavyRanged",
-		"HeavyMeleeElite",
 		"LightRangedElite",
-		"PunchingBagUnitElite",
+		"HeavyRanged",
 		"HeavyRangedElite",
 	},
 	EnemiesBiome1Devotion = {
@@ -225,10 +225,8 @@ local additionalEnemySets = {
 		"ShadeShieldUnitElite",
 		"ShadeSwordUnit",
 		"ShadeSwordUnitElite",
-
 		"ShieldRangedElite",
 		"ShieldRangedElite",
-
 		"SplitShotUnit",
 		"SplitShotUnitElite",
 		"Chariot",
@@ -273,6 +271,7 @@ local additionalEnemySets = {
 	},
 	-- #endregion
 
+	-- TODO: Confirm death animations, remember to set SortMode to "Isometric" for all death animations
 	-- #region STYX
 	-- #endregion
 

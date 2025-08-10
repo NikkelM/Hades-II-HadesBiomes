@@ -308,6 +308,29 @@ mod.SjsonFileMappings = {
 
 -- Modifications to animations in the above files, before they are copied over
 mod.SjsonFileModifications = {
+	["Animations\\CharacterAnim_Enemies_BoneDracon"] = {
+		EnemyBoneDraconDeathVFX = {
+			SortMode = "Isometric",
+		},
+	},
+	["Animations\\CharacterAnim_Enemies_Chariot"] = {
+		ChariotDeathVFX = {
+			SortMode = "Isometric",
+		},
+		ChariotSuicideDeathVFX = {
+			SortMode = "Isometric",
+			Scale = 0.5,
+		},
+	},
+	["Animations\\CharacterAnim_Enemies_Shades"] = {
+		ShadeDeathVFX = {
+			SortMode = "Isometric",
+		},
+		ShadeNakedDeathVFX = {
+			SortMode = "Isometric",
+			OffsetY = -70.0,
+		},
+	},
 	["Animations\\CharacterAnim_Enemies_WretchThug"] = {
 		EnemyWretchThugDeath = {
 			SortMode = "Isometric",
@@ -318,12 +341,10 @@ mod.SjsonFileModifications = {
 			SortMode = "Isometric",
 		},
 	},
-	["Animations\\CharacterAnim_Enemies_Shades"] = {
-		ShadeNakedDeathVFX = {
-			OffsetY = -70.0,
-		},
-	},
 	["Animations\\CharacterAnim_EnemiesBosses_Hydra"] = {
+		EnemyHydraDeathVFX = {
+			SortMode = "Isometric",
+		},
 		EnemyHydraTaunt = {
 			ChainTo = "EnemyHydraRoarReturnToIdle",
 		},
