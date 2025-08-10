@@ -378,6 +378,9 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
 		DefaultAIData = game.DeepCopyTable(game.EnemyData.LightRanged.DefaultAIData),
 	},
+	BaseThief = {
+		DestroyDelay = 0.0,
+	},
 	ThiefMineLayer = {
 		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
 		-- The intro encounter is broken, there is nothing happening after the two enemies die
@@ -842,6 +845,9 @@ local enemyModifications = {
 
 	-- #region ELYSIUM
 	-- #region ELYSIUM - Regular
+	BaseShade = {
+		DestroyDelay = 0.0,
+	},
 	ShadeNaked = {
 		StunAnimations = { Default = "ShadeNaked_Idle" },
 		-- Push the Shade away after spawning so it has to move to the pickupTarget
@@ -851,11 +857,19 @@ local enemyModifications = {
 				Args = { ForceMin = 3200, ForceMax = 3300, AngleOffsetMin = -60, AngleOffsetMax = 60, },
 			},
 		},
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DeathAnimation = "ShadeNakedDeathVFX",
+		DeathFx = "null",
 		OnDeathFunctionName = "ModsNikkelMHadesBiomesShadeNakedDeath",
 		-- To prevent the first damage occurrence, which is duplicated from the killing blow
 		ModsNikkelMHadesBiomesIgnoreFirstRapidDamage = true,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
+	},
+	ShadeNakedElite = {
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DeathAnimation = "ShadeNakedDeathVFX",
+		DeathFx = "null",
 	},
 	ShadeSpearUnit = {
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
@@ -980,11 +994,17 @@ local enemyModifications = {
 		},
 		WeaponOptions = { "ChariotRamSelfDestruct" },
 	},
+	FlurrySpawner = {
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DestroyDelay = mod.NilValue,
+		DeathAnimation = "SoulSpawnerDeath"
+	},
 	-- #endregion
 	-- #region ELYSIUM - Minibosses
 	FlurrySpawnerElite = {
 		-- The dash weapon does not work in Hades II, alternative difficulty was added through more enemies
 		ShrineWeaponOptionsOverwrite = mod.NilValue,
+		DeathAnimation = "SoulSpawnerDeathMiniboss",
 	},
 	-- #endregion
 	-- #region ELYSIUM - Bosses

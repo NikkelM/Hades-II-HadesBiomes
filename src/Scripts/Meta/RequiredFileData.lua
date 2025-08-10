@@ -318,6 +318,11 @@ mod.SjsonFileModifications = {
 			SortMode = "Isometric",
 		},
 	},
+	["Animations\\CharacterAnim_Enemies_Shades"] = {
+		ShadeNakedDeathVFX = {
+			OffsetY = -70.0,
+		},
+	},
 	["Animations\\CharacterAnim_EnemiesBosses_Hydra"] = {
 		EnemyHydraTaunt = {
 			ChainTo = "EnemyHydraRoarReturnToIdle",

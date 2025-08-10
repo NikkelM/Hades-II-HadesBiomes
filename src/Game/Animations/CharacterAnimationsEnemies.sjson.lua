@@ -81,14 +81,31 @@ local modifications = {
 	-- #endregion
 
 	-- #region ELYSIUM
+	SoulSpawnerDeath = {
+		OffsetY = -100.0,
+	},
 	-- #endregion
 
 	-- #region STYX
 	-- #endregion
 }
 
+local addAnimations = {
+	SoulSpawnerDeathMiniboss = {
+		Name = "SoulSpawnerDeathMiniboss",
+		InheritFrom = "SoulSpawnerIdle",
+		FilePath = "Animations\\SoulSpawner\\SoulSpawnerDeath\\SoulSpawnerDeath",
+		Sound = "/SFX/Enemy Sounds/EnemyDeathExplode",
+		NumFrames = 30,
+		Loop = false,
+		OffsetY = -100.0,
+		Scale = 1.0
+	},
+}
+
 mod.ApplyNestedSjsonModifications(hadesEnemyAnimationsTable.Animations, modifications)
 
 sjson.hook(hadesTwoEnemyAnimationsFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Animations, hadesEnemyAnimationsTable.Animations, "Name")
+	mod.AddTableKeysSkipDupes(data.Animations, addAnimations, "Name")
 end)
