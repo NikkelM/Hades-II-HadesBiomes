@@ -43,7 +43,6 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 				DeathGraphic = "DeathAnimation",
 				DeathFx = "DeathFx",
 				DeathSound = "DeathSound",
-				InvulnerableFx = "InvulnerableFx",
 			},
 			Thing = {
 				ActivateFx = "ActivateFx",
@@ -502,6 +501,7 @@ local enemyModifications = {
 		RequiredKill = true,
 	},
 	Harpy = {
+		InvulnerableFx = "Invincibubble",
 		RunHistoryKilledByName = "NPC_FurySister_01",
 	},
 	Harpy2 = {
@@ -775,6 +775,7 @@ local enemyModifications = {
 				Requirements = mod.NilValue,
 			},
 		},
+		InvulnerableFx = "HydraBubble",
 		BossDifficultyShrineRequiredCount = 2,
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {

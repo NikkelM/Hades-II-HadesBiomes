@@ -14,7 +14,7 @@ local hadesEnemiesModifications = {
 		InheritFrom = "1_BaseEnemy",
 		Thing = {
 			-- Prevent it from being pushed
-			ExternalForceMultiplier = 0.0,
+			ImmuneToForce = true,
 		},
 	},
 	BaseThug = { InheritFrom = "1_BaseEnemy", },
@@ -34,6 +34,11 @@ local hadesEnemiesModifications = {
 	-- #region ELYSIUM
 	BaseShade = { InheritFrom = "1_BaseEnemy", },
 	FlurrySpawner = { InheritFrom = "1_BaseEnemy", },
+	Chariot = {
+		Thing = {
+			ExternalForceMultiplier = 0.5,
+		},
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
