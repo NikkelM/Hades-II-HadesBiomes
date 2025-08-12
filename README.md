@@ -46,7 +46,3 @@ Experience the original Hades underworld as Melinoë and discover new ways to ba
 ## Configuration
 
 [See this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration)
-
-## Notes for other developers
-
-Some of the knowledge I gathered during development can be found in the [knowledge.md](docs/knowledge.md) file - though this is a living document and may not be comprehensive or up to date.
