@@ -54,6 +54,9 @@ modutil.mod.Path.Wrap("ChooseStartingRoom", function(base, currentRun, args)
 		sjson.encode_file(mod.CachedRunsFilePath, cachedRuns)
 	end
 
+	-- Edge case: We also need to do these modifications for the first room of a run, as the IsModdedRun flag only gets set after RunStateInit is called
+	mod.ApplyGlobalGameObjectModifications(game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun)
+
 	return base(currentRun, args)
 end)
 
