@@ -452,6 +452,7 @@ local enemyModifications = {
 		OnDeathFunctionName = "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
 		-- From 1325
 		HealthBuffer = 2200,
 		-- From 850
@@ -485,6 +486,7 @@ local enemyModifications = {
 		UseActivatePresentation = false,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
 		RunHistoryKilledByName = "HeavyRangedSplitterMiniboss",
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 	},
@@ -492,6 +494,7 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
 	},
 	-- #endregion
 	-- #region TARTARUS - Bosses
@@ -679,6 +682,8 @@ local enemyModifications = {
 		-- Don't create a new blank obstacle for this enemy, as the flipping logic would be hard to get right
 		ManualDeathAnimation = false,
 		DestroyDelay = 1.2,
+		BlockRaiseDead = true,
+		BlockCharm = true,
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
@@ -688,6 +693,7 @@ local enemyModifications = {
 	ShieldRanged = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		BlockCharm = true,
 		Tethers = {
 			[1] = { Distance = 20 },
 			[2] = { Distance = 20 },
@@ -720,6 +726,7 @@ local enemyModifications = {
 		DeathFx = "null",
 		DeathAnimation = "HealRangedDeathMiniBoss",
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		BlockCharm = true,
 		Tethers = {
 			[1] = { Distance = 30 },
 			[2] = { Distance = 30 },
@@ -828,6 +835,7 @@ local enemyModifications = {
 		HealthBarType = "Small",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
 		OnHitShake = { Distance = 3, Speed = 300, Duration = 0.15 },
 		DefaultAIData = {
 			DeepInheritance = true,
@@ -871,6 +879,7 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesIgnoreFirstRapidDamage = true,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
 	},
 	ShadeNakedElite = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -978,6 +987,7 @@ local enemyModifications = {
 		DeathAnimation = "ChariotSuicideDeathVFX",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
