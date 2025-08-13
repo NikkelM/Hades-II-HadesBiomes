@@ -43,6 +43,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 				DeathGraphic = "DeathAnimation",
 				DeathFx = "DeathFx",
 				DeathSound = "DeathSound",
+				InvulnerableFx = "InvulnerableFx",
 			},
 			Thing = {
 				ActivateFx = "ActivateFx",
@@ -88,8 +89,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 					-- Process the found data
 					if foundData and not enemyData[newName] then
 						enemyData[newName] = dataSource[parentKey][oldName]
-						mod.DebugPrint("Moved " .. parentKey .. "." .. oldName
-							.. " from sjson " .. sourceName .. " into " .. newName .. " for " .. enemyName, 4)
+						mod.DebugPrint("Moved " .. parentKey .. "." .. oldName .. " from sjson " .. sourceName ..
+							" into " .. newName .. " for " .. enemyName .. " with value " .. dataSource[parentKey][oldName], 4)
 					elseif not foundData then
 						mod.DebugPrint("Could not find " .. parentKey .. "." .. oldName
 							.. " in sjson for " .. enemyName .. " or its parents", 4)
@@ -170,11 +171,14 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			enemyData.SpawnEvents = { { FunctionName = enemyData.AdditionalEnemySetupFunctionName, } }
 			enemyData.AdditionalEnemySetupFunctionName = nil
 		end
+	end
 
+	-- Modify all enemies completely before processing inheritance, as that can mess up not-yet-modified parent enemies
+	for enemyName, enemyData in pairs(base) do
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
-
 		base[enemyName] = enemyData
 	end
+
 	-- Don't skip duplicates, since we have already added all the new data before
 	-- AddTableKeysSkipDupes also removed duplicates from base, so overwriting here will only overwrite keys we added ourselves
 	game.OverwriteTableKeys(game.EnemyData, base)
@@ -403,8 +407,6 @@ local enemyModifications = {
 	},
 	HeavyRanged = {
 		StunAnimations = { Default = "HeavyRangedCrystal4" },
-		DeathAnimation = "HeavyRangedCrystal4Shatter",
-		DeathFx = "HeavyRangedCrystal4Shatter",
 		Tethers = {
 			[1] = { Distance = 20 },
 			[2] = { Distance = 20 },
@@ -503,7 +505,6 @@ local enemyModifications = {
 		RequiredKill = true,
 	},
 	Harpy = {
-		InvulnerableFx = "Invincibubble",
 		RunHistoryKilledByName = "NPC_FurySister_01",
 		ImmuneToPolymorph = true,
 	},
@@ -724,8 +725,8 @@ local enemyModifications = {
 	-- #region ASPHODEL - Minibosses
 	ShieldRangedMiniBoss = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
-		DeathFx = "null",
 		DeathAnimation = "HealRangedDeathMiniBoss",
+		DeathFx = "null",
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		BlockRaiseDead = true,
 		BlockCharm = true,
@@ -785,7 +786,6 @@ local enemyModifications = {
 				Requirements = mod.NilValue,
 			},
 		},
-		InvulnerableFx = "HydraBubble",
 		BossDifficultyShrineRequiredCount = 2,
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
@@ -942,7 +942,6 @@ local enemyModifications = {
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotOnHit" },
-		DeathAnimation = "ChariotDeathVFX",
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
@@ -987,7 +986,6 @@ local enemyModifications = {
 	ChariotSuicide = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotSuicideOnHit" },
-		DeathAnimation = "ChariotSuicideDeathVFX",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
@@ -1018,7 +1016,6 @@ local enemyModifications = {
 	FlurrySpawner = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		DestroyDelay = mod.NilValue,
-		DeathAnimation = "SoulSpawnerDeath"
 	},
 	-- #endregion
 	-- #region ELYSIUM - Minibosses
