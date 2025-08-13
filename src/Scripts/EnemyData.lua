@@ -453,10 +453,9 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		ImmuneToPolymorph = true,
 		-- From 1325
-		HealthBuffer = 2200,
-		-- From 850
-		MaxHealth = 500,
+		HealthBuffer = 1800,
 		DefaultAIData = {
 			-- How long it waits before moving again while firing the beams
 			FireDuration = 5.75,
@@ -506,6 +505,7 @@ local enemyModifications = {
 	Harpy = {
 		InvulnerableFx = "Invincibubble",
 		RunHistoryKilledByName = "NPC_FurySister_01",
+		ImmuneToPolymorph = true,
 	},
 	Harpy2 = {
 		-- Gets overwritten by the Harpy value if not set
@@ -533,7 +533,6 @@ local enemyModifications = {
 		WeaponOptions = { "HadesLightSpawnerEliteSpawnerWeapon", },
 		DefaultAIData = { DeepInheritance = true, },
 		OnDamagedFunctionName = "AggroSpawns",
-		BlockRaiseDead = true,
 	},
 	-- Need to manually modify these fields, as the enemies are DeepCopyTable'd from Hades II above
 	HadesBloodlessNaked = {
@@ -684,6 +683,7 @@ local enemyModifications = {
 		DestroyDelay = 1.2,
 		BlockRaiseDead = true,
 		BlockCharm = true,
+		IgnoreSpeedShrine = true,
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
@@ -693,6 +693,7 @@ local enemyModifications = {
 	ShieldRanged = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		BlockRaiseDead = true,
 		BlockCharm = true,
 		Tethers = {
 			[1] = { Distance = 20 },
@@ -726,6 +727,7 @@ local enemyModifications = {
 		DeathFx = "null",
 		DeathAnimation = "HealRangedDeathMiniBoss",
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		BlockRaiseDead = true,
 		BlockCharm = true,
 		Tethers = {
 			[1] = { Distance = 30 },
@@ -749,6 +751,7 @@ local enemyModifications = {
 			MaxAttackers = 4,
 		},
 		ShrineWeaponOptionsOverwrite = mod.NilValue,
+		BlockRaiseDead = true,
 	},
 	HitAndRunUnit = {
 		ManualDeathAnimation = false,
@@ -790,6 +793,7 @@ local enemyModifications = {
 			-- Lining up with when the head actually touches the ground
 			Delay = 0.23,
 		},
+		ImmuneToPolymorph = true,
 		-- SpawnEvents = { { FunctionName = "CreateTethers", Threaded = true, }, },
 		-- While Tethers are broken - enemy returns to spawnpoint after attacking
 		DefaultAIData = {
@@ -819,7 +823,6 @@ local enemyModifications = {
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
 		BlockCharm = true,
-		ImmuneToPolymorph = true,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 	},
@@ -827,7 +830,6 @@ local enemyModifications = {
 		StunAnimations = { Default = "HydraToothLanded" },
 		ActivateFx = "nil",
 		ActivateAnimation = "nil",
-
 		WeaponOptions = mod.NilValue,
 		-- Adapted from TyphonHeadEgg
 		Groups = { "EnemyTeam", "GroundEnemies" },
@@ -836,6 +838,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		ImmuneToPolymorph = true,
 		OnHitShake = { Distance = 3, Speed = 300, Duration = 0.15 },
 		DefaultAIData = {
 			DeepInheritance = true,
@@ -1023,6 +1026,9 @@ local enemyModifications = {
 		-- The dash weapon does not work in Hades II, alternative difficulty was added through more enemies
 		ShrineWeaponOptionsOverwrite = mod.NilValue,
 		DeathAnimation = "SoulSpawnerDeathMiniboss",
+		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
 	},
 	-- #endregion
 	-- #region ELYSIUM - Bosses
@@ -1037,6 +1043,7 @@ local enemyModifications = {
 		},
 		ManualDeathAnimation = false,
 		PreBossAISetupFunctionName = "SetupComboPartners",
+		ImmuneToPolymorph = true,
 	},
 	Minotaur2 = {
 		OnTouchdownFunctionArgs = {
@@ -1056,6 +1063,7 @@ local enemyModifications = {
 		InvulnerableHitFx = "ShadeShieldBlock",
 		ManualDeathAnimation = false,
 		PreBossAISetupFunctionName = "SetupComboPartners",
+		ImmuneToPolymorph = true,
 	},
 	-- #endregion
 	-- #endregion
