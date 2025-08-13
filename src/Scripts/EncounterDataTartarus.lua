@@ -78,6 +78,7 @@ local encounterReplacements = {
 			{ FunctionName = "CheckForAllEnemiesDead" },
 			{ FunctionName = "PostCombatAudio" },
 		},
+		CanEncounterSkip = false,
 	},
 
 	PerfectClearChallengeTartarus = {
@@ -114,6 +115,7 @@ local encounterModifications = {
 		},
 		-- Sometimes these can move around when spawning, so we blacklist them
 		Blacklist = { LightSpawner = true, },
+		BlockAthenaEncounterKeepsake = true,
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,
@@ -122,18 +124,22 @@ local encounterModifications = {
 	-- MINIBOSSES
 	MiniBossGrenadier = {
 		LoadPackages = { "BiomeB" },
+		CanEncounterSkip = false,
 	},
 	MiniBossHeavyRangedSplitter = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
+		CanEncounterSkip = false,
 	},
 	MiniBossHeavyRangedSplitter2 = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
+		CanEncounterSkip = false,
 	},
 	MiniBossWretchAssassin = {
 		WipeEnemiesOnKillAllTypes = { "WretchAssassinMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "WretchAssassinMiniboss" },
+		CanEncounterSkip = false,
 	},
 
 	-- BOSSES

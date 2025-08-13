@@ -90,17 +90,21 @@ local encounterModifications = {
 		InheritFrom = { "MinibossEncounter", "GeneratedAsphodel" },
 		MinWaves = 1,
 		MaxWaves = 1,
+		CanEncounterSkip = false,
 	},
 	MiniBossSpreadShot = {
 		InheritFrom = { "MinibossEncounter", "GeneratedAsphodel" },
 		MinWaves = 1,
 		MaxWaves = 1,
+		CanEncounterSkip = false,
 	},
 	WrappingAsphodel = {
 		BlockAthenaEncounterKeepsake = true,
+		CanEncounterSkip = false,
 	},
 	WrappingAsphodel2 = {
 		BlockAthenaEncounterKeepsake = true,
+		CanEncounterSkip = false,
 	},
 
 	-- BOSSES

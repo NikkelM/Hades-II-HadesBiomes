@@ -9,8 +9,6 @@ local encounterDataElysium = {
 	-- Minibosses
 	MiniBossMinotaur = encounterData.MiniBossMinotaur,
 	MiniBossNakedSpawners = encounterData.MiniBossNakedSpawners,
-	-- Not implemented in Hades
-	-- MiniBossShadeMagic = encounterData.MiniBossShadeMagic,
 
 	-- Bosses
 	BossTheseusAndMinotaur = encounterData.BossTheseusAndMinotaur,
@@ -105,9 +103,13 @@ local encounterModifications = {
 				},
 			},
 		},
+		CanEncounterSkip = false,
 	},
 	MiniBossMinotaur = {
 		InheritFrom = { "MinibossEncounter" },
+		BlockAthenaEncounterKeepsake = true,
+		CanEncounterSkip = false,
+		BlockRespawnShrineUpgrade = true,
 		DelayedStart = true,
 		-- Without this, the room exits will immediately unlock after the conversation
 		UnthreadedEvents = {
