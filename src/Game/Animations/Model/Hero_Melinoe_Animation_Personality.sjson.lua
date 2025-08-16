@@ -22,6 +22,10 @@ local newData = {
 		InheritFrom = "MelTalkBrooding01",
 	},
 	{
+		Name = "ZagreusTalkDenial_Full",
+		InheritFrom = "MelTalkBroodingFull01",
+	},
+	{
 		Name = "ZagreusTalkDenialReturnToIdle",
 		InheritFrom = "MelTalkBrooding01ReturnToIdle",
 	},

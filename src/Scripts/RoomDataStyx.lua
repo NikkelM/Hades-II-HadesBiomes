@@ -14,7 +14,7 @@ local roomReplacements = {
 	},
 
 	D_Hub = {
-		Binks = mod.NilValue,
+		Binks = { "Cerberus_HubIdle_Bink", },
 	},
 }
 
@@ -54,7 +54,21 @@ local roomModifications = {
 		},
 	},
 	D_Hub = {
-		LoadModdedVoiceBanks = { "ZagreusField" },
+		-- Megaera for Storyteller
+		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		UnthreadedEvents = {
+			[1] = {
+				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
+			},
+		},
+		DistanceTriggers = {
+			[1] = {
+				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
+			},
+			[2] = {
+				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
+			},
+		},
 	},
 
 	-- MINIBOSSES

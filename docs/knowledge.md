@@ -285,6 +285,12 @@ The above makes sure that `Terrain_04` is rendered above `Terrain_03` and below 
 ...
 ```
 
+#### D_Hub
+
+In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II.
+
+For ID `547487`, change the `Name` property from `NPC_Cerberus_Field_01` to `ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01`.
+
 ## Map packages
 
 In Hades, `.pkg` files are in `Content/Win/Packages`, and in Hades II they are in `Content/Packages/<resolution>`.

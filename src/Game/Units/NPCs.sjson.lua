@@ -8,6 +8,58 @@ local hadesTwoNPCFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\NPCs
 -- Modifications/overrides to the Hades NPCs
 -- Use the original names from the Hades file here, as modifications are applied before renaming
 local hadesNPCModifications = {}
+local hadesNPCAdditions = {
+	{
+		Name = "ModsNikkelMHadesBiomes_NPC_Cerberus_01",
+		InheritFrom = "BaseNPC",
+		DisplayInEditor = true,
+		Thing = {
+			AmbientSound = "/SFX/NPCLoops/CerberusGrowlLoop",
+			EditorOutlineDrawBounds = false,
+			Graphic = "Cerberus_HouseIdle",
+			Interact = {
+				Distance = 180.0,
+				OffsetX = -125.0,
+				OffsetY = 50.0,
+			},
+			Offset = { X = 0, Y = -111 },
+			Points = {
+				{ X = 273,  Y = -128 },
+				{ X = 269,  Y = -181 },
+				{ X = 73,   Y = -250 },
+				{ X = -282, Y = -77 },
+				{ X = -289, Y = 23 },
+				{ X = -160, Y = 78 },
+				{ X = -48,  Y = 76 },
+				{ X = 106,  Y = 7 },
+			},
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
+		InheritFrom = "ModsNikkelMHadesBiomes_NPC_Cerberus_01",
+		DisplayInEditor = true,
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "Cerberus_HubIdle",
+			Interact = {
+				Distance = 320.0,
+				OffsetX = -110.0,
+				OffsetY = 0.0,
+			},
+			Points = {
+				{ X = 195,  Y = -81 },
+				{ X = 122,  Y = -114 },
+				{ X = -17,  Y = -126 },
+				{ X = -271, Y = -36 },
+				{ X = -289, Y = 23 },
+				{ X = -160, Y = 78 },
+				{ X = -48,  Y = 76 },
+				{ X = 106,  Y = 7 },
+			},
+		},
+	},
+}
 
 local NPCKeyReplacements = {}
 
@@ -40,6 +92,11 @@ for i = #hadesNPCTable.Units, 1, -1 do
 			end
 		end
 	end
+end
+
+-- Add new NPCs
+for _, npcData in pairs(hadesNPCAdditions) do
+	table.insert(hadesNPCTable.Units, npcData)
 end
 
 sjson.hook(hadesTwoNPCFile, function(data)
