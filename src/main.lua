@@ -170,6 +170,7 @@ local function on_ready()
 		import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
 		-- Must be loaded after CharacterAnimationsEnemies, as it inherits some animations from it
 		import "Game/Animations/EnemyAnimations.sjson.lua"
+		import "Game/Animations/GUI_VFX.sjson.lua"
 		import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"

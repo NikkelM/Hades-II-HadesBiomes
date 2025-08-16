@@ -17,7 +17,7 @@ Run `deppth pk -s <packageName> -t <packageName>.pkg` to create the package file
 
 Copy the resulting `.pkg` and `.pkg_manifest` files to the `data/Content/Packages` folder.
 
-Add the package name to `CustomPackageFileNames` in `RequiredFileData.lua` (this step is deprecated).
+<!-- DEPRECATED: Add the package name to `CustomPackageFileNames` in `RequiredFileData.lua`. -->
 
 Load the new package in `game.RoomData.ModsNikkelMHadesBiomesBaseRoom`, or wherever else it needs to be loaded.
 
