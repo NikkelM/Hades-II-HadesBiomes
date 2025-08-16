@@ -23,6 +23,8 @@ local roomModifications = {
 	BaseStyx = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
+		-- BiomeN in addition to the others
+		LoadModdedPackages = { "BiomeN", "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "GUIModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "ModsNikkelMHadesBiomesFxModded", "ModsNikkelMHadesBiomesGUIModded", },
 
 		Ambience = "/Leftovers/Object Ambiences/CreepyIslandAmbience",
 		ReverbValue = 2.0,
@@ -54,7 +56,7 @@ local roomModifications = {
 		},
 	},
 	D_Hub = {
-		-- Megaera for Storyteller
+		-- Megaera for Storyteller for Cerberus
 		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
 		UnthreadedEvents = {
 			[1] = {

@@ -335,18 +335,43 @@ end
 ---@param destinationTable table The table to modify.
 ---@param modifications table The modifications to apply. The key must match a Name key in the destinationTable entry.
 function mod.ApplyNestedSjsonModifications(destinationTable, modifications)
+	-- Collect names to remove to avoid issues with removing during iteration
+	local namesToRemove = {}
 	for _, entry in ipairs(destinationTable) do
 		local modification = modifications[entry.Name]
 		if modification then
-			for key, value in pairs(modification) do
-				if type(value) == "table" then
-					entry[key] = entry[key] or {}
-					for subKey, subValue in pairs(value) do
-						entry[key][subKey] = subValue
+			if modification == mod.NilValue then
+				table.insert(namesToRemove, entry.Name)
+			else
+				for key, value in pairs(modification) do
+					if value == mod.NilValue then
+						entry[key] = nil
+					elseif type(value) == "table" then
+						entry[key] = entry[key] or {}
+						for subKey, subValue in pairs(value) do
+							if subValue == mod.NilValue then
+								entry[key][subKey] = nil
+							else
+								entry[key][subKey] = subValue
+							end
+						end
+					else
+						entry[key] = value
 					end
-				else
-					entry[key] = value
 				end
+			end
+		end
+	end
+	-- Remove entries after iteration for safety
+	if #namesToRemove > 0 then
+		local nameSet = {}
+		for _, name in ipairs(namesToRemove) do
+			nameSet[name] = true
+		end
+		for i = #destinationTable, 1, -1 do
+			local entry = destinationTable[i]
+			if entry.Name and nameSet[entry.Name] then
+				table.remove(destinationTable, i)
 			end
 		end
 	end

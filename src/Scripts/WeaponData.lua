@@ -1193,6 +1193,22 @@ local weaponModifications = {
 			PostAttackAnimation = "BlastCubeFusedRegeneratingExplode",
 		},
 	},
+	AxeTrapWeapon = {
+		Sounds = {
+			ImpactSounds = {
+				Invulnerable = "/SFX/SwordWallHitClank",
+				Armored = "/SFX/Player Sounds/ZagreusShieldRicochet",
+				Bone = "/SFX/MetalBoneSmash",
+				Brick = "/SFX/MetalStoneClang",
+				Stone = "/SFX/MetalStoneClang",
+				Organic = "/SFX/StabSplatterSmall",
+				StoneObstacle = "/SFX/SwordWallHitClank",
+				BrickObstacle = "/SFX/SwordWallHitClank",
+				MetalObstacle = "/SFX/SwordWallHitClank",
+				BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
+			},
+		},
+	},
 	-- #endregion
 }
 

@@ -145,7 +145,8 @@ local addedObstacles = {
 		InheritFrom = { "ExitDoor", },
 		ExitThroughCenter = true,
 		RewardPreviewOffsetZ = 642,
-		RewardPreviewOffsetY = 0,
+		-- Custom modification
+		RewardPreviewOffsetY = 270,
 		RewardPreviewOffsetX = 0,
 		UnlockedUseTextCannotReroll = "UseLeaveRoom_CannotReroll",
 		UnlockedAnimation = "StyxDoorUnlocked",
@@ -341,6 +342,89 @@ local addedObstacles = {
 		UnlockedAnimation = "FinalBossExitDoorLinesUnlocked",
 		ExitDoorOpenAnimation = "FinalBossExitDoorLinesOpen",
 		ExitDoorCloseAnimation = "FinalBossExitDoorLinesUsed",
+	},
+	PoisonCureFountainStyx = {
+		UseText = "UsePoisonCure",
+		UseSound = "/SFX/PoisonCureFountainDrink",
+		CooldownNamePrefix = "PoisonCureFountain",
+		CooldownDuration = 3.0,
+		OnCooldownAnimation = "PoisonCureFountainEmpty",
+		IdleAnimation = "PoisonCureFountainFull",
+		OnUsedFunctionName = "UsePoisonCure",
+		OnUsedVoiceLines = {
+			Cooldowns =
+			{
+				{ Name = "ZagreusAnyQuipSpeech" },
+				{ Name = "ZagCuredPoisonSpeech", Time = 15 }
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 0.45,
+				RequiredHasEffect = "StyxPoison",
+				SuccessiveChanceToPlay = 0.5,
+
+				-- Whew.
+				{ Cue = "/VO/ZagreusField_2131", },
+				-- Better.
+				{ Cue = "/VO/ZagreusField_2132", },
+				-- There.
+				{ Cue = "/VO/ZagreusField_2133", },
+				-- Cured.
+				{ Cue = "/VO/ZagreusField_2134", },
+				-- Good.
+				{ Cue = "/VO/ZagreusField_2135", },
+				-- OK.
+				{ Cue = "/VO/ZagreusField_2136", },
+				-- Mmm.
+				{ Cue = "/VO/ZagreusField_2137", },
+				-- Clean.
+				{ Cue = "/VO/ZagreusField_2138", },
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 0.45,
+				RequiredFalseHasEffect = "StyxPoison",
+				RequiredKillEnemiesFound = true,
+
+				-- No effect.
+				{ Cue = "/VO/ZagreusField_2139", RequiredPlayed = { "/VO/ZagreusField_2143" }, },
+				-- Nothing.
+				{ Cue = "/VO/ZagreusField_2140", RequiredPlayed = { "/VO/ZagreusField_2143" }, },
+				-- No need.
+				{ Cue = "/VO/ZagreusField_2141", RequiredPlayed = { "/VO/ZagreusField_2143" }, },
+				-- Don't need a cure.
+				{ Cue = "/VO/ZagreusField_2142", RequiredPlayed = { "/VO/ZagreusField_2143" }, },
+				-- A poison cure.
+				{ Cue = "/VO/ZagreusField_2143" },
+				-- Curing water.
+				{ Cue = "/VO/ZagreusField_2144", RequiredPlayed = { "/VO/ZagreusField_2143" }, },
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 0.45,
+				CooldownTime = 15,
+				RequiredFalseHasEffect = "StyxPoison",
+				RequiredKillEnemiesNotFound = true,
+
+				-- Not bad.
+				{ Cue = "/VO/ZagreusField_2436", RequiredPlayed = { "/VO/ZagreusField_2437" }, },
+				-- Not poisoned at the moment, thanks.
+				{ Cue = "/VO/ZagreusField_2437" },
+				-- Doesn't taste like anything.
+				{ Cue = "/VO/ZagreusField_2438", RequiredPlayed = { "/VO/ZagreusField_2437" }, },
+				-- What is this stuff.
+				{ Cue = "/VO/ZagreusField_2439", RequiredPlayed = { "/VO/ZagreusField_2437" }, },
+				-- Tasty.
+				{ Cue = "/VO/ZagreusField_2440", RequiredPlayed = { "/VO/ZagreusField_2437" }, },
+				-- Tasty. Sort of.
+				{ Cue = "/VO/ZagreusField_2441", RequiredPlayed = { "/VO/ZagreusField_2437" }, },
+				-- No thanks.
+				{ Cue = "/VO/ZagreusField_2442", RequiredPlayed = { "/VO/ZagreusField_2437" }, },
+			},
+		},
 	},
 	-- #endregion
 }

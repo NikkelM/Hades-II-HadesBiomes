@@ -41,6 +41,11 @@ local hadesEnemiesModifications = {
 	},
 	-- #endregion
 
+	-- #region STYX
+	RatThug = { InheritFrom = "1_BaseEnemy", },
+	BaseSatyr = { InheritFrom = "1_BaseEnemy", },
+	-- #endregion
+
 	-- #region ENVIRONMENT
 	Breakable = { InheritFrom = "1_BaseDestructible", },
 	-- #endregion
@@ -107,8 +112,6 @@ local enemyAdditions = {
 		Name = "BloodlessNakedBerserkerElite",
 		InheritFrom = "BloodlessBerserker_Elite",
 	},
-	-- ELYSIUM
-	-- STYX
 }
 
 local enemyKeyReplacements = {}

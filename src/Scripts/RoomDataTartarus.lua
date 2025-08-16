@@ -236,6 +236,7 @@ local roomModifications = {
 
 -- Assign separately so we don't get a circular reference
 game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
+	-- Update in BaseStyx if anything is being changed here
 	LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "GUIModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "ModsNikkelMHadesBiomesFxModded", "ModsNikkelMHadesBiomesGUIModded", },
 }
 

@@ -1090,15 +1090,16 @@ local enemyModifications = {
 
 	-- #region STYX
 	-- #region STYX - Regular
-	-- SatyrRanged = {
-	-- 	LargeUnitCap = mod.NilValue,
-	-- },
-	-- SatyrRangedMiniboss = {
-	-- 	LargeUnitCap = mod.NilValue,
-	-- },
-	-- RatThug = {
-	-- 	LargeUnitCap = mod.NilValue,
-	-- },
+	SatyrRanged = {
+		LargeUnitCap = mod.NilValue,
+	},
+	SatyrRangedMiniboss = {
+		LargeUnitCap = mod.NilValue,
+	},
+	RatThug = {
+		LargeUnitCap = mod.NilValue,
+		StunAnimations = { Default = "EnemyRatThugOnHit" },
+	},
 	-- #endregion
 	-- #region STYX - Minibosses
 	-- #endregion
@@ -1304,6 +1305,37 @@ local enemyModifications = {
 			TargetSelf = true,
 			TargetOffsetForward = 100,
 		},
+	},
+	AxeTrap = {
+		DefaultAIData = {
+			ProjectileName = "AxeTrapWeapon",
+			DisabledAnimation = "AxeTrapReset",
+		},
+		WeaponName = "AxeTrapWeapon",
+	},
+	AxeTrapTrigger = {
+		DefaultAIData = {
+			ProjectileName = "AxeTrapWeapon",
+			-- Moved in here from the normal Enemy data
+			AIAttackDistance = 100,
+			AIResetDistance = 110,
+			PreAttackDuration = 0.2,
+			PostAttackCooldown = 2.0,
+			LinkedEnemy = "DartTrapEmitter",
+			IdleAnimation = "DartTrapIdle",
+			PreAttackAnimation = "DartTrapPreFire",
+			PreAttackSound = "/SFX/TrapSet",
+			PostAttackAnimation = "DartTrapPressed",
+			ReloadingLoopSound = "/SFX/TrapSettingLoop",
+			ReloadedSound = "/Leftovers/Menu Sounds/TalismanMetalClankDown",
+			SkipAngleTowardTarget = true,
+			DisabledAnimation = "DartTrapDeactivated",
+		},
+		AIOptions = {
+			-- RemoteAttack
+			"RemoteAttackModsNikkelMHadesBiomes"
+		},
+		WeaponName = "AxeTrapWeapon",
 	},
 	-- #endregion
 }

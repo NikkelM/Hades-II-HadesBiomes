@@ -31,7 +31,7 @@ function mod.ModifyEnemyTrapData(enemyData)
 		},
 		AIOptions =
 		{
-			-- RemoteAI
+			-- RemoteAttack
 			"RemoteAttackModsNikkelMHadesBiomes"
 		},
 		ToggleTrap = true,

@@ -280,7 +280,64 @@ mod.BikFileMappings = {
 	-- Cerberus
 	"Cerberus_HubIdle_Bink",
 	"Cerberus_HappyGreeting_Bink",
+	-- RatThug
+	"Enemy_RatThugIdle_Bink",
+	"Enemy_RatThugMove_Bink",
+	"Enemy_RatThugShake_Bink",
+	"Enemy_RatThugAttackBite_Bink",
+	"Enemy_RatThugOnHit_Bink",
+	"Enemy_RatThugBurrow_Bink",
+	-- SatyrRanged
+	"Enemy_SatyrRangedAttack_Bink",
+	"Enemy_SatyrOnHit_Bink",
+	"Enemy_SatyrIdle_Bink",
+	"Enemy_SatyrMove_Bink",
+	"Enemy_SatyrMoveStop_Bink",
+	-- SatyrRangedMiniboss
+	"Enemy_SatyrMinibossRangedAttack_Bink",
+	"Enemy_SatyrMinibossOnHit_Bink",
+	"Enemy_SatyrMinibossIdle_Bink",
+	"Enemy_SatyrMinibossMove_Bink",
+	"Enemy_SatyrMinibossMoveStop_Bink",
+	-- Hades
+	"HadesBattleIdle_Bink",
+	"HadesBattleIntro_Bink",
+	"HadesBattleIntroIdle_Bink",
+	"HadesBattleRun_Bink",
+	"HadesBattleDash_Bink",
+	"HadesBattleAttackSpin_Bink",
+	"HadesBattleBidentFlurry_Bink",
+	"HadesBattleAttackRange_Bink",
+	"HadesBattleSpawn_Bink",
+	"HadesBattleWrathTwo_Bink",
+	"HadesBattleKnockDown_Bink",
+	"HadesBattleInvisibility_Bink",
+	"HadesBattleCastBeam_Bink",
+	"HadesBattleAttackArcOne_Bink",
+	"HadesBattleAttackArcTwo_Bink",
+	"HadesDeathFullscreen",
+	"HadesBattleKnockDownTwo_Bink",
+	"HadesBattleDeath_Bink",
+	"HadesBattleKnockDownRecover_Bink",
+	"HadesBattleAttackSpin2_Bink",
+	"HadesBattleBidentThrow_Bink",
+	"HadesBattleBidentDashRecover_Bink",
+	"HadesBattleHeal_Bink",
+	"HadesBattleKnockDownPreRecover_Bink",
+	"Cerberus_HadesAssistJumpIn_Bink",
+	"Cerberus_HadesAssistRun_Bink",
+	"Cerberus_HadesAssistJumpFromRun_Bink",
 	-- #endregion
+	-- Charon
+	"CharonIdleBattle_Bink",
+	"CharonMove_Bink",
+	"CharonMeleeFront_Bink",
+	"CharonMeleeFrontLRTI_Bink",
+	"CharonMeleeBackSwing_Bink",
+	"CharonCast_Bink",
+	"CharonRadialPush_Bink",
+	"CharonGhostCharge_Bink",
+	"CharonTaunt_Bink",
 }
 
 mod.SjsonFileMappings = {
@@ -289,9 +346,9 @@ mod.SjsonFileMappings = {
 	-- Normal enemies
 	"Animations\\CharacterAnim_Enemies_BoneDracon",
 	"Animations\\CharacterAnim_Enemies_Chariot",
-	-- "Animations\\CharacterAnim_Enemies_Crawler",
-	-- "Animations\\CharacterAnim_Enemies_Rat",
-	-- "Animations\\CharacterAnim_Enemies_Satyr",
+	"Animations\\CharacterAnim_Enemies_Crawler",
+	"Animations\\CharacterAnim_Enemies_Rat",
+	"Animations\\CharacterAnim_Enemies_Satyr",
 	"Animations\\CharacterAnim_Enemies_Shades",
 	"Animations\\CharacterAnim_Enemies_WretchAssassin",
 	"Animations\\CharacterAnim_Enemies_WretchThug",
@@ -299,7 +356,7 @@ mod.SjsonFileMappings = {
 	-- Bosses
 	-- "Animations\\CharacterAnim_EnemiesBosses_Charon",
 	"Animations\\CharacterAnim_EnemiesBosses_Furies",
-	-- "Animations\\CharacterAnim_EnemiesBosses_Hades",
+	"Animations\\CharacterAnim_EnemiesBosses_Hades",
 	"Animations\\CharacterAnim_EnemiesBosses_Hydra",
 	"Animations\\CharacterAnim_EnemiesBosses_Minotaur",
 	"Animations\\CharacterAnim_EnemiesBosses_Theseus",
@@ -364,6 +421,10 @@ mod.SjsonFileModifications = {
 			ChainTo = "EnemyHydraPurpleRoarReturnToIdle",
 		},
 	},
+	["Animations\\CharacterAnim_EnemiesBosses_Hades"] = {
+		HadesBattleDashStreaks = mod.NilValue,
+		HadesBattleDashStreaksDark = mod.NilValue,
+	}
 }
 
 -- map_text and thing_bin file names
