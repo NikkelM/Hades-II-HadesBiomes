@@ -89,7 +89,7 @@ local newTraitData = {
 					Name = "MetaCurrencyDrop",
 					Overrides = {
 						AddResources = {
-							MetaCurrency = 50,
+							MetaCurrency = 120,
 						},
 					},
 				},

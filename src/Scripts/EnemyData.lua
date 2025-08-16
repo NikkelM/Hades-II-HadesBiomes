@@ -537,6 +537,9 @@ local enemyModifications = {
 	},
 	-- Need to manually modify these fields, as the enemies are DeepCopyTable'd from Hades II above
 	HadesBloodlessNaked = {
+		-- Flag that indicates the enemy is originally from Hades II, and we are just overwriting some properties
+		-- Used e.g. for the Zeus Blitz effect location
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -545,6 +548,7 @@ local enemyModifications = {
 		},
 	},
 	HadesBloodlessNakedElite = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -555,6 +559,7 @@ local enemyModifications = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
 	BloodlessNakedBerserker = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		RequiredIntroEncounter = "BerserkerIntro",
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
@@ -564,6 +569,7 @@ local enemyModifications = {
 		},
 	},
 	BloodlessNakedBerserkerElite = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -574,6 +580,7 @@ local enemyModifications = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
 	},
 	HadesBloodlessWaveFist = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		RequiredIntroEncounter = "WaveFistIntro",
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -583,6 +590,7 @@ local enemyModifications = {
 		},
 	},
 	HadesBloodlessWaveFistElite = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -592,6 +600,7 @@ local enemyModifications = {
 		BlockAttributes = { "Blink", "Orbit", "Massive", },
 	},
 	HadesBloodlessGrenadier = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -600,6 +609,7 @@ local enemyModifications = {
 		},
 	},
 	HadesBloodlessGrenadierElite = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -609,6 +619,7 @@ local enemyModifications = {
 		BlockAttributes = { "Blink", "Orbit", "Massive", },
 	},
 	HadesBloodlessSelfDestruct = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		RequiredIntroEncounter = "SelfDestructIntro",
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -618,6 +629,7 @@ local enemyModifications = {
 		},
 	},
 	HadesBloodlessSelfDestructElite = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -627,6 +639,7 @@ local enemyModifications = {
 		BlockAttributes = { "Blink", "Orbit", "Massive", },
 	},
 	HadesBloodlessPitcher = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		RequiredIntroEncounter = "PitcherIntro",
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -636,6 +649,7 @@ local enemyModifications = {
 		},
 	},
 	HadesBloodlessPitcherElite = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -646,6 +660,7 @@ local enemyModifications = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
 	HadesSpreadShotUnit = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -654,6 +669,7 @@ local enemyModifications = {
 		},
 	},
 	HadesSpreadShotUnitElite = {
+		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -688,8 +704,12 @@ local enemyModifications = {
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
+			PostTouchdownMakeVulnerable = true,
 		},
 		PostAggroAI = "ModsNikkelMHadesBiomesSkyAttackerAI",
+		DefaultAIData = {
+			PostTouchdownMinDuration = 1.2,
+		},
 	},
 	ShieldRanged = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
@@ -771,6 +791,7 @@ local enemyModifications = {
 		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
+			PostTouchdownMakeVulnerable = true,
 			-- Also fire this projectile if the Vow of Shadows is active
 			ShrineProjectileName = "CrusherUnitSlamUpgraded",
 			ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",

@@ -14,8 +14,11 @@ function game.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
 	if args.CalcAngle then
 		angle = GetAngle({ Id = unit.ObjectId }) or 0
 	end
-	-- For CrusherUnit: Make it vulnerable again after the Cast hack in the modded SkyAttackerAI
-	game.SetUnitVulnerable(unit, "ModsNikkelMHadesBiomesUnitTouchdownFlag")
+
+	if args.PostTouchdownMakeVulnerable then
+		-- For CrusherUnit: Make it vulnerable again after the Cast hack in the modded SkyAttackerAI
+		game.SetUnitVulnerable(unit, "ModsNikkelMHadesBiomesUnitTouchdownFlag")
+	end
 
 	CreateProjectileFromUnit({
 		Name = args.ProjectileName,
@@ -67,6 +70,9 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 
 		if aiData.TargetId ~= nil and aiData.TargetId ~= 0 then
 			ClearEffect({ Id = enemy.ObjectId, Name = "HermesSlow" })
+			-- Immediately trigger the DamageEchoEffect, as the upward force doesn't take the effect with it and it looks weird
+			ClearEffect({ Id = enemy.ObjectId, Name = "DamageEchoEffect" })
+
 			if aiData.ResetSkyAttackSound ~= nil then
 				PlaySound({ Name = aiData.ResetSkyAttackSound, Id = enemy.ObjectId })
 			end
@@ -95,7 +101,7 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 			SetThingProperty({ DestinationId = enemy.ObjectId, Property = "StopsUnits", Value = false })
 			SetThingProperty({ DestinationId = enemy.ObjectId, Property = "StopsProjectiles", Value = false })
 
-			-- Disapear
+			-- Disappear
 			local hideDuration = aiData.PostLaunchHideDuration or
 					game.RandomFloat(aiData.PostLaunchHideDurationMin, aiData.PostLaunchHideDurationMax)
 			game.wait(game.CalcEnemyWait(enemy, hideDuration, { IgnoreSpeedMultiplier = true }),
@@ -152,6 +158,16 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 					NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 9.0 })
 					game.waitUntil(enemy.AINotifyName)
 				end
+			end
+
+			-- Post-Attack wait
+			if enemy.IsAggroed and aiData.PostTouchdownMinDuration ~= nil then
+				-- Hacky: Attacking the enemy would break the wait, so we use a notify instead which never resolves
+				-- The timeout is the actual wait time
+				-- This can be seen as a minimum PostAttackDuration
+				enemy.AINotifyName = "ModsNikkelMHadesBiomesNeverResolveNotifyName" .. enemy.ObjectId
+				NotifyOutsideDistance({ Id = enemy.ObjectId, DestinationId = currentRun.Hero.ObjectId, Distance = 99999, Notify = enemy.AINotifyName, Timeout = game.CalcEnemyWait(enemy, aiData.PostTouchdownMinDuration) })
+				game.waitUntil(enemy.AINotifyName)
 			end
 		else
 			if enemy.NoTargetMoveTowardsPlayer then

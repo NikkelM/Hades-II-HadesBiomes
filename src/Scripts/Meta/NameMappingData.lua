@@ -205,7 +205,8 @@ mod.HadesHelpTextFileRemovals = {
 }
 
 -- Mappings for various game object modifications that need to be applied when the run is started/ended
-mod.ModdedGameObjectModifications = {
+--[[
+	Format is, for example:
 	EffectData = {
 		DamageEchoEffect = {
 			Vfx = {
@@ -214,4 +215,10 @@ mod.ModdedGameObjectModifications = {
 			},
 		},
 	},
+]]
+mod.ModdedGameObjectModifications = {}
+
+-- Mappings for Effect VFX to be swapped out, used in EffectPresentation.lua
+mod.EffectVfxMappings = {
+	ZeusEchoDebuff = "ModsNikkelMHadesBiomesZeusEchoDebuff",
 }
