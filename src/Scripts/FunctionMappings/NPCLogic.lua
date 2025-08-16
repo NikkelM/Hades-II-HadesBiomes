@@ -82,6 +82,13 @@ function game.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
 
 	game.wait(0.1)
 	game.UnfreezePlayerUnit("ModsNikkelMHadesBiomesNPCPostChoicePresentation")
+
+	-- Check if a new entry for this NPC should be added to the Codex
+	for chapterName, chapterData in pairs(game.CodexData) do
+		for entryName, entryData in pairs(chapterData.Entries) do
+			game.CheckCodexUnlock(chapterName, entryName)
+		end
+	end
 end
 
 -- #region Sisyphus
