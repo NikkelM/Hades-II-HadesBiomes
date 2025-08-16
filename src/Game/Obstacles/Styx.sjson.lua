@@ -7,7 +7,6 @@ local hadesTwoStyxObstacleFile = rom.path.combine(rom.paths.Content(), "Game\\Ob
 
 -- These need to be added before the others, as they are inherited from
 local hadesObstacleAdditionsParents = {}
-
 local hadesObstacleAdditions = {
 	-- These are imported from the Hades Gameplay.sjson
 	HadesBidentReturnPoint = {
@@ -47,7 +46,12 @@ end
 mod.ApplyNestedSjsonModifications(hadesStyxObstacleTable.Obstacles, obstacleModifications)
 
 -- Modifications to existing obstacles in Hades II
-local hadesTwoObstacleModifications = {}
+local hadesTwoObstacleModifications = {
+	-- Obstacles that shouldn't be passable
+	StyxPillar01 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+}
 
 sjson.hook(hadesTwoStyxObstacleFile, function(data)
 	-- Add new obstacles

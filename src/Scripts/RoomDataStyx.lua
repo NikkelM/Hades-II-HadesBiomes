@@ -69,6 +69,9 @@ local roomModifications = {
 				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
 			},
 		},
+		-- TODO: Custom store contents
+		StoreDataName = "Q_WorldShop",
+		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 	},
 
 	-- MINIBOSSES

@@ -1,4 +1,4 @@
--- Adds Travel obstacles from Hades to Hades II
+-- Adds Travel (D_Hub) obstacles from Hades to Hades II
 
 local hadesTravelObstacleFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Obstacles\\Travel.sjson")
 local hadesTravelObstacleTable = sjson.decode_file(hadesTravelObstacleFile)
@@ -14,7 +14,18 @@ mod.AddTableKeysSkipDupes(hadesTravelObstacleTable.Obstacles, hadesObstacleAddit
 mod.AddTableKeysSkipDupes(hadesTravelObstacleTable.Obstacles, hadesObstacleAdditions, "Name")
 
 -- Modifications for new obstacles copied from Hades
-local obstacleModifications = {}
+local obstacleModifications = {
+	TravelPillarBase05b = {
+		Thing = {
+			-- Need to decrease Tallness as otherwise boons clip under it
+			Tallness = 140.0,
+		},
+	},
+	-- Obstacles that shouldn't be passable
+	TravelDoor03 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+}
 
 -- Rename attached animations/Fx graphics
 for oldName, newName in pairs(mod.FxAnimationMappings) do
