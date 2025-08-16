@@ -57,3 +57,15 @@ function game.RoomEntranceD_Hub(currentRun, currentRoom, args)
 		LockCamera({ Id = currentRun.Hero.ObjectId, Duration = 2.0 })
 	end
 end
+
+function game.UseStyxFountain(usee, args)
+	local fountain = usee
+	if game.CheckCooldown(fountain.CooldownNamePrefix .. fountain.ObjectId, fountain.CooldownDuration) then
+		ClearEffect({ Id = game.CurrentRun.Hero.ObjectId, Name = "MedeaPoison" })
+		ClearEffect({ Id = game.CurrentRun.Hero.ObjectId, Name = "StyxPoison" })
+		-- BlockEffect({ Id = CurrentRun.Hero.ObjectId, Name = "StyxPoison", Duration = 0.75 })
+		SetAnimation({ DestinationId = fountain.ObjectId, Name = fountain.OnCooldownAnimation })
+		UseableOff({ Id = fountain.ObjectId })
+		game.PoisonCureReady(fountain)
+	end
+end

@@ -350,7 +350,7 @@ local addedObstacles = {
 		CooldownDuration = 3.0,
 		OnCooldownAnimation = "PoisonCureFountainEmpty",
 		IdleAnimation = "PoisonCureFountainFull",
-		OnUsedFunctionName = "UsePoisonCure",
+		OnUsedFunctionName = "UseStyxFountain",
 		OnUsedVoiceLines = {
 			Cooldowns =
 			{
