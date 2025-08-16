@@ -1,5 +1,5 @@
 function game.RoomEntranceD_Hub(currentRun, currentRoom, args)
-	if game.GameState.TextLinesRecord["CerberusStyxMeeting01"] == nil then
+	if game.GameState.TextLinesRecord["CerberusStyxMeeting01"] == nil and false then
 		local cerberusId = 547487
 
 		LockCamera({ Id = cerberusId, Duration = 0, OffsetX = -1400, OffsetY = 750 })

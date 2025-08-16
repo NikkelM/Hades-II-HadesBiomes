@@ -336,7 +336,7 @@ local function on_ready()
 		import "Scripts/FunctionMappings/MiniBossTartarus.lua"
 		import "Scripts/FunctionMappings/NPCLogic.lua"
 		import "Scripts/FunctionMappings/ShadeNaked.lua"
-		import "Scripts/FunctionMappings/Styx.lua"
+		import "Scripts/FunctionMappings/StyxLogic.lua"
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes

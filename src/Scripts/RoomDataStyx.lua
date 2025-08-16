@@ -72,6 +72,16 @@ local roomModifications = {
 		-- TODO: Custom store contents
 		StoreDataName = "Q_WorldShop",
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
+		SaveWhitelist = {
+			ObjectStates = true,
+			DoorsChosen = true,
+		},
+		FamiliarsPreferSpawnPointMovement = true,
+		FrogFamiliarMaxLeapDistance = 800,
+		HoundFamiliarIgnoreUnitsForPathfinding = true,
+		StartRoomPresentationOnReload = true,
+		EncounterCompleteWait = 0.02,
+		UnlockExitsWait = 0.02,
 	},
 
 	-- MINIBOSSES
