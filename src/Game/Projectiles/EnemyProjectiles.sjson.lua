@@ -209,6 +209,34 @@ local hadesProjectilesModifications = {
 		UnlimitedUnitPenetration = false,
 		DieWithOwner = true,
 	},
+	-- Theseus God Wrath attacks
+	TheseusArtemisBolt = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
+	TheseusAresBolt = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
+	TheseusDionysusBolt = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
+	TheseusDemeterBolt = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
+	TheseusAphroditeBolt = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
+	TheseusAthenaBolt = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
+	TheseusPoseidonBolt = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
+	TheseusZeusStormBolt = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
+	TheseusLightningBolt = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
 	-- #endregion
 
 	-- #region STYX
