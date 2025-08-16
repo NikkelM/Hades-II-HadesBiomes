@@ -141,6 +141,207 @@ local addedObstacles = {
 	-- #endregion
 
 	-- #region STYX
+	StyxDoor01 = {
+		InheritFrom = { "ExitDoor", },
+		ExitThroughCenter = true,
+		RewardPreviewOffsetZ = 642,
+		RewardPreviewOffsetY = 0,
+		RewardPreviewOffsetX = 0,
+		UnlockedUseTextCannotReroll = "UseLeaveRoom_CannotReroll",
+		UnlockedAnimation = "StyxDoorUnlocked",
+		ExitDoorOpenAnimation = "StyxDoorOpen",
+		ExitDoorCloseAnimation = "StyxDoorClose",
+		-- intentionally blank, on the anim
+		UnlockedUseSound = "",
+	},
+	-- Styx: Doors to Wings from D_Hub
+	TravelDoor03 = {
+		InheritFrom = { "ExitDoor", },
+		ExitThroughCenter = true,
+		RewardPreviewOffsetZ = 0,
+		-- Custom modification
+		RewardPreviewOffsetY = -285,
+		RewardPreviewOffsetX = 0,
+		UnlockedUseTextCannotReroll = "UseLeaveRoom_CannotReroll",
+		LockedUseText = "UseExitDoorWhileLocked",
+		UnlockedAnimation = "TravelDoor03Unlocked",
+		UnlockedSound = "/EmptyCue",
+		ExitDoorOpenAnimation = "TravelDoor03Open",
+		ExitDoorCloseAnimation = "TravelDoor03Close",
+		ExitVoiceLines = {
+			PreLineWait = 0.25,
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			SuccessiveChanceToPlay = 0.33,
+
+			-- Let's see what's in here.
+			{ Cue = "/VO/ZagreusField_2054" },
+			-- This one I guess.
+			{ Cue = "/VO/ZagreusField_2268" },
+			-- Here goes.
+			{ Cue = "/VO/ZagreusField_2269" },
+			-- Maybe it's in here.
+			{ Cue = "/VO/ZagreusField_2270", RequiredFalseSeenRoomThisRun = "D_Reprieve01", RequiredMinDoorsClosedInRoom = 1, RequiredFalsePrevRooms = { "D_Intro" } },
+			-- Should check this way.
+			{ Cue = "/VO/ZagreusField_2271" },
+			-- I bet it's in here.
+			{ Cue = "/VO/ZagreusField_2272", RequiredFalseSeenRoomThisRun = "D_Reprieve01", RequiredMinDoorsClosedInRoom = 1, RequiredFalsePrevRooms = { "D_Intro" } },
+			-- Try this way.
+			{ Cue = "/VO/ZagreusField_2273" },
+			-- Maybe this way.
+			{ Cue = "/VO/ZagreusField_2274" },
+		},
+		ExitBlockedVoiceLines = {
+			PreLineWait = 0.35,
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			Cooldowns =
+			{
+				--{ Name = "ZagreusAnyQuipSpeech", Time = CurrentRun.Hero.VoiceLineBufferTime },
+				{ Name = "ZagreusAnyQuipSpeech", Time = 9 },
+			},
+			-- Shut.
+			{ Cue = "/VO/ZagreusField_2322" },
+			-- It's shut.
+			{ Cue = "/VO/ZagreusField_2323" },
+			-- Locked.
+			{ Cue = "/VO/ZagreusField_2324" },
+			-- It's locked.
+			{ Cue = "/VO/ZagreusField_2325" },
+			-- Cleared it out.
+			{ Cue = "/VO/ZagreusField_2326" },
+			-- Nothing else back there.
+			{ Cue = "/VO/ZagreusField_2327" },
+			-- Done with that.
+			{ Cue = "/VO/ZagreusField_2328" },
+			-- Done back there.
+			{ Cue = "/VO/ZagreusField_2329" },
+		},
+		-- intentionally blank, on the anim
+		UnlockedUseSound = "",
+	},
+	-- Styx: Warps from D_Combat rooms back to D_Hub
+	StyxWarpDoor = {
+		InheritFrom = { "ExitDoor", },
+		HideRewardPreview = true,
+		UsePromptOffsetY = -5,
+		UsePromptOffsetX = 60,
+		UnlockedUseTextCannotReroll = "UseLeaveRoom_CannotReroll",
+		UnlockedUseText = "UseStyxWarpDoor",
+		LockedUseSound = "/Leftovers/SFX/OutOfAmmo2",
+		UnlockedUseSound = "/Leftovers/SFX/NomadSprint",
+		ExitFunctionName = "ExitSecretRoomPresentation",
+		ExitDoorOpenAnimation = "StyxWarpDoor_Revealed",
+		ExitDoorCloseAnimation = "StyxWarpDoor_Revealed",
+		UnlockedAnimation = "StyxWarpDoor_Revealed",
+		UnlockedSound = "/Leftovers/Menu Sounds/TitanToggleShort",
+		ExitVoiceLines = {
+			PreLineWait = 0.35,
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			SuccessiveChanceToPlay = 0.33,
+			-- Hope this can get me out of here.
+			{ Cue = "/VO/ZagreusField_2282", SuccessiveChanceToPlay = 0.02 },
+			-- Should be able to get back through here.
+			{ Cue = "/VO/ZagreusField_2283", RequiredPlayed = { "/VO/ZagreusField_2282" } },
+			-- Let's just go down this Satyr hole.
+			{ Cue = "/VO/ZagreusField_2284", RequiredPlayed = { "/VO/ZagreusField_2282" } },
+			-- Back I go.
+			{ Cue = "/VO/ZagreusField_2285", RequiredPlayed = { "/VO/ZagreusField_2282" } },
+			-- Enough of this place.
+			{ Cue = "/VO/ZagreusField_2286", RequiredPlayed = { "/VO/ZagreusField_2282" } },
+			-- Going back.
+			{ Cue = "/VO/ZagreusField_2287", RequiredPlayed = { "/VO/ZagreusField_2282" } },
+			-- Heading back.
+			{ Cue = "/VO/ZagreusField_2288", RequiredPlayed = { "/VO/ZagreusField_2282" } },
+			-- Had quite enough here, thanks.
+			{ Cue = "/VO/ZagreusField_2289", RequiredPlayed = { "/VO/ZagreusField_2282" } },
+			-- Down the chute.
+			{ Cue = "/VO/ZagreusField_2290", RequiredPlayed = { "/VO/ZagreusField_2282" } },
+		},
+	},
+	-- Styx: Exit from Underworld / Exit to D_Boss01
+	TravelDoor01 = {
+		InheritFrom = { "ExitDoor", },
+		UnlockedAnimation = "TravelDoor01Unlocked",
+		UnlockedUseText = "UseCerberusDoor",
+		UnlockedUseTextCannotReroll = "UseCerberusDoor",
+		UnlockedUseSound = "/EmptyCue",
+		HideRewardPreview = true,
+		AvailableRequirements = {
+			RequiredRoomThisRun = "D_Reprieve01",
+			RequiredAnyTextLines = { "CerberusBossDoorUnlock", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02", "CerberusBossDoorUnlockRepeatable03", "CerberusBossDoorUnlockRepeatable04", "CerberusBossDoorUnlockRepeatable05", "CerberusBossDoorUnlockRepeatable06", "CerberusBossDoorUnlockRepeatable07" },
+		},
+		ForceRoomName = "D_Boss01",
+		ExitFunctionName = "ExitToHadesPresentation",
+		ExitDoorOpenAnimation = "HubBossDoorOpen",
+		OnUsedVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				SuccessiveChanceToPlay = 0.33,
+
+				-- I did it...
+				{ Cue = "/VO/ZagreusField_2086" },
+				-- I made it...
+				{ Cue = "/VO/ZagreusField_2087", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- Made it.
+				{ Cue = "/VO/ZagreusField_2088", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- Now...
+				{ Cue = "/VO/ZagreusField_2089", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- Bye.
+				{ Cue = "/VO/ZagreusField_2090", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- Heading out.
+				{ Cue = "/VO/ZagreusField_2091", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- Be right with you, Father.
+				{ Cue = "/VO/ZagreusField_3546", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- Get you for last time, Father.
+				{ Cue = "/VO/ZagreusField_3547", RequiredPlayed = { "/VO/ZagreusField_2086" }, ConsecutiveDeathsInRoom = { Name = "D_Boss01", Count = 1, }, RequiredRoomLastRun = "D_Boss01" },
+				-- Made it again.
+				{ Cue = "/VO/ZagreusField_3548", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- Time to go.
+				{ Cue = "/VO/ZagreusField_3549", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- Cold out there.
+				{ Cue = "/VO/ZagreusField_3550", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- I'm leaving, Father. Try and stop me.
+				{ Cue = "/VO/ZagreusField_3551", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- To hell with this place.
+				{ Cue = "/VO/ZagreusField_3552", RequiredPlayed = { "/VO/ZagreusField_2086" }, RequiredFalseTextLines = { "PersephoneMeeting07" }, },
+				-- I'll find you, Mother.
+				{ Cue = "/VO/ZagreusField_3553", RequiredPlayed = { "/VO/ZagreusField_2086" }, RequiredFalseTextLines = { "Ending01" }, },
+				-- I'm out.
+				{ Cue = "/VO/ZagreusField_4196", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- I'm out of here.
+				{ Cue = "/VO/ZagreusField_4197", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- Here goes.
+				{ Cue = "/VO/ZagreusField_4198", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- All right, Father.
+				{ Cue = "/VO/ZagreusField_4199", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- Into the cold.
+				{ Cue = "/VO/ZagreusField_4200", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- I can do this.
+				{ Cue = "/VO/ZagreusField_4201", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+				-- Have to do this.
+				{ Cue = "/VO/ZagreusField_4202", RequiredPlayed = { "/VO/ZagreusField_2086" }, RequiredFalseTextLines = { "Ending01" }, },
+				-- Got this far.
+				{ Cue = "/VO/ZagreusField_4203", RequiredPlayed = { "/VO/ZagreusField_2086" } },
+			},
+		},
+	},
+	-- Styx: Exit from D_Boss01 to end
+	FinalBossExitDoor = {
+		InheritFrom = { "ExitDoor", },
+		HideRewardPreview = true,
+		AllowReroll = false,
+		UnlockedUseText = "UseFinalBossDoor",
+		UnlockedUseTextCannotReroll = "UseFinalBossDoor",
+		LockedUseSound = "/Leftovers/SFX/OutOfAmmo",
+		UnlockedUseSound = "/Leftovers/Menu Sounds/EmoteThoughtful",
+		UnlockedAnimation = "FinalBossExitDoorLinesUnlocked",
+		ExitDoorOpenAnimation = "FinalBossExitDoorLinesOpen",
+		ExitDoorCloseAnimation = "FinalBossExitDoorLinesUsed",
+	},
 	-- #endregion
 }
 
@@ -148,6 +349,11 @@ local addedObstacles = {
 local needInheritanceProcessing = {
 	"HealthFountainAsphodel",
 	"HealthFountainElysium",
+	"StyxDoor01",
+	"TravelDoor03",
+	"StyxWarpDoor",
+	"TravelDoor01",
+	"FinalBossExitDoor",
 }
 
 applyModificationsAndInheritObstacleData(game.ObstacleData, obstacleModifications, addedObstacles,
