@@ -8,8 +8,6 @@ local roomReplacements = {
 		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Asphodel",
-		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
-		BreakableOptions = { "BreakableAsphodelIdle", "BreakableAsphodelIdle2", "BreakableAsphodelIdle3" },
 
 		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
 		ShrinePointDoorRequirements = { Skip = true },
@@ -122,7 +120,6 @@ local roomModifications = {
 	},
 	X_PostBoss01 = {
 		ExitPreviewAnim = "HadesExitPreview",
-		NextRoomSet = { "Elysium" },
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
 			{

@@ -38,14 +38,14 @@ end
 local function applyNPCGlobalModifications(base)
 	for npcName, npcData in pairs(base) do
 		-- Hades II has more gift options, make every gift cost 1 Nectar
-		for textlineName, textline in pairs(npcData.GiftTextLineSets) do
+		for textlineName, textline in pairs(npcData.GiftTextLineSets or {}) do
 			textline.Cost = { GiftPoints = 1, }
 			textline.OnGiftTrack = true
 		end
 
 		-- Move all interaction textlines into the InteractTextLineSets, out of the RepeatableTextLineSets
 		if npcData.InteractTextLineSets and npcData.RepeatableTextLineSets then
-			for key, textLineSet in pairs(npcData.RepeatableTextLineSets) do
+			for key, textLineSet in pairs(npcData.RepeatableTextLineSets or {}) do
 				npcData.InteractTextLineSets[key] = textLineSet
 			end
 			npcData.RepeatableTextLineSets = nil
@@ -144,6 +144,10 @@ local npcModifications = {
 			PatroclusGift08_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
 		},
 	},
+	ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01 = {
+		-- TODO: Add Hades Cerberus portrait to custom package and load it instead
+		LoadPackages = { "Cerberus" },
+	}
 }
 
 -- Before adding them to the game, we need to apply some additional modifications to NPCs

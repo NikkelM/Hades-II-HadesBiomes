@@ -1179,6 +1179,29 @@ local enemyModifications = {
 			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
 		},
 	},
+	BreakableStyx = {
+		CannotDieFromDamage = true,
+		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
+		DeathAnimation = "BreakableDeathAnim",
+		DeathSound = "/SFX/CeramicPotSmash",
+		SetupEvents = {
+			{
+				FunctionName = "RandomizeObject",
+				Args = {
+					RandomizeSets = {
+						{ Animation = { "BreakableStyxIdle1" }, },
+						{ Animation = { "BreakableStyxIdle2" }, },
+						{ Animation = { "BreakableStyxIdle3" }, },
+					},
+				},
+			},
+		},
+		ValueOptions = {
+			[1] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[2] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+		},
+	},
 	BlastCubeFusedRegenerating = {
 		OnDeathFireWeapons = { "BlastCubeExplosionElysium" },
 		FuseWarningProjectileName = "ModsNikkelMHadesBiomesBlastWarningDecalElysium"
