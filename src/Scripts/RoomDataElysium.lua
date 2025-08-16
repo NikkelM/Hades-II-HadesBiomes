@@ -8,8 +8,6 @@ local roomReplacements = {
 		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Elysium",
-		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
-		BreakableOptions = { "BreakableElysiumIdle1", "BreakableElysiumIdle2", "BreakableElysiumIdle3" },
 
 		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
 		ShrinePointDoorRequirements = { Skip = true },
@@ -30,7 +28,6 @@ local roomModifications = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
 
-		-- TODO: Styx: { Name = "/Leftovers/Object Ambiences/CreepyIslandAmbience", ReverbValue = 2.0 },
 		Ambience = "/Leftovers/ElysiumAmbientLoop",
 		ReverbValue = 1.5,
 		-- Always play Bass
@@ -121,7 +118,6 @@ local roomModifications = {
 	},
 	C_PostBoss01 = {
 		ExitPreviewAnim = "HadesExitPreview",
-		NextRoomSet = { "Styx" },
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
 			{
@@ -145,6 +141,8 @@ local roomModifications = {
 				},
 			},
 			-- Makes the exit door interactable
+			-- TODO: It doesn't work - but it is the correct ID
+			-- Test if there is an uninteractable prompt before fountain is used in this and the other postboss rooms to find the issue.
 			[430000] = {
 				ActivateIds = { 430000, },
 			},
