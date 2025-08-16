@@ -93,6 +93,17 @@ local roomModifications = {
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		UnthreadedEvents = {
+			[1] = {
+				Args = {
+					[0] = { DelayedStart = true, },
+					[1] = { DelayedStart = true, },
+					[2] = { DelayedStart = true, },
+					[3] = { DelayedStart = true, },
+					[4] = { DelayedStart = true, },
+				},
+			},
+		},
 	},
 
 	-- OTHER
@@ -153,7 +164,7 @@ local roomModifications = {
 					FamiliarMoveOffsetX = -80,
 					FamiliarMoveOffsetY = -430,
 					FamiliarMoveDuration = 2.0,
-					CameraMoveOffsetY = -390,
+					CameraMoveOffsetY = -400,
 
 					MoveEaseIn = 0.5,
 					MoveEaseOut = 1.0,

@@ -127,6 +127,7 @@ local encounterModifications = {
 
 	-- BOSSES
 	BossTheseusAndMinotaur = {
+		DelayedStart = true,
 		PostUnthreadedEvents = mod.NilValue,
 		-- For the Grenade graphics of EM Theseus
 		LoadPackages = { "BiomeOBoss" },
