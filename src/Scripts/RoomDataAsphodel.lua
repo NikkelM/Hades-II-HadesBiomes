@@ -39,8 +39,8 @@ local roomModifications = {
 		PerfectClearEncounterOptions = { "PerfectClearChallengeAsphodel" },
 		EliteChallengeEncounterOptions = { "EliteChallengeAsphodel" },
 
-		LocationAnimName = "LocationBackingIrisChaosIn",
-		LocationAnimOutName = "LocationBackingIrisChaosOut",
+		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn",
+		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut",
 	},
 
 	-- OPENING ROOMS
@@ -54,7 +54,7 @@ local roomModifications = {
 			{ FunctionName = "EndAllBiomeStates" },
 		},
 		ThreadedEvents = {
-			[1] = { Args = { AnimationName = "LocationBackingIrisChaosIn", AnimationOutName = "LocationBackingIrisChaosOut" }, },
+			[1] = { Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut" }, },
 		},
 	},
 

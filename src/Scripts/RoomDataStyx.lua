@@ -35,8 +35,8 @@ local roomModifications = {
 		PerfectClearEncounterOptions = { "PerfectClearChallengeStyx" },
 		EliteChallengeEncounterOptions = { "EliteChallengeStyx" },
 
-		LocationAnimName = "LocationBackingIrisChaosIn",
-		LocationAnimOutName = "LocationBackingIrisChaosOut",
+		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerStyxIn",
+		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerStyxOut",
 	},
 
 	-- OPENING ROOMS
@@ -52,7 +52,7 @@ local roomModifications = {
 		StrictLeftRight = true,
 		FlipHorizontalChance = 0.0,
 		ThreadedEvents = {
-			[1] = { Args = { AnimationName = "LocationBackingIrisChaosIn", AnimationOutName = "LocationBackingIrisChaosOut" }, },
+			[1] = { Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerStyxIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerStyxOut" }, },
 		},
 	},
 	D_Hub = {

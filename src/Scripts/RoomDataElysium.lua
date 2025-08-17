@@ -39,8 +39,8 @@ local roomModifications = {
 		PerfectClearEncounterOptions = { "PerfectClearChallengeElysium" },
 		EliteChallengeEncounterOptions = { "EliteChallengeElysium" },
 
-		LocationAnimName = "LocationBackingIrisChaosIn",
-		LocationAnimOutName = "LocationBackingIrisChaosOut",
+		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn",
+		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut",
 	},
 
 	-- OPENING ROOMS
@@ -56,7 +56,7 @@ local roomModifications = {
 		StrictLeftRight = true,
 		FlipHorizontalChance = 0.0,
 		ThreadedEvents = {
-			[1] = { Args = { AnimationName = "LocationBackingIrisChaosIn", AnimationOutName = "LocationBackingIrisChaosOut" }, },
+			[1] = { Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut" }, },
 		},
 	},
 
