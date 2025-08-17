@@ -170,6 +170,7 @@ local function on_ready()
 		import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
 		-- Must be loaded after CharacterAnimationsEnemies, as it inherits some animations from it
 		import "Game/Animations/EnemyAnimations.sjson.lua"
+		import "Game/Animations/GUI_Boons_VFX.sjson.lua"
 		import "Game/Animations/GUI_VFX.sjson.lua"
 		import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"
@@ -372,7 +373,7 @@ local function on_ready()
 		import "Scripts/RunHistoryData.lua"
 		import "Scripts/RunHistoryLogic.lua"
 		import "Scripts/RunLogic.lua"
-		import "Scripts/StoreScripts.lua"
+		import "Scripts/StoreLogic.lua"
 		import "Scripts/WeaponSets.lua"
 
 		mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)
