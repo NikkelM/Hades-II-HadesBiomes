@@ -1,4 +1,5 @@
 game.ConsumableData.CerberusKey = {
+	Name = "CerberusKey",
 	BlockExitText = "ExitBlockedByHeal",
 	CanDuplicate = false,
 	UsePromptOffsetX = 65,

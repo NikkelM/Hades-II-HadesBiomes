@@ -32,7 +32,11 @@ local newData = {
 	{
 		Name = "ZagreusInteractionThoughtful",
 		InheritFrom = "MelTalkBrooding01",
-	}
+	},
+	{
+		Name = "ZagreusInteractEquip",
+		InheritFrom = "MelTalkGifting01",
+	},
 }
 
 sjson.hook(animationsFile, function(data)

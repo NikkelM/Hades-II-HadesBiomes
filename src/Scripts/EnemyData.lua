@@ -139,6 +139,9 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 								entry.PostLineFunctionName = "ModsNikkelMHadesBiomesSetFlag"
 								entry.PostLineFunctionArgs = { FlagName = entry.SetFlagFalse, Value = false }
 							end
+							if entry.Cue and entry.Cue:find("^/VO/Storyteller_") then
+								entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+							end
 						end
 					end
 				end

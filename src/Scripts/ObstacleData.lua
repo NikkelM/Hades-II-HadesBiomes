@@ -106,9 +106,6 @@ local addedObstacles = {
 	MultiFuryTisiphoneIntro = { ExitAnimation = "TisiphoneMultiFuryTakeOff", },
 	-- #endregion
 
-	-- #region ASPHODEL
-	-- #endregion
-
 	-- #region ELYSIUM
 	EnemyShield = {
 		IsEnemyWeapon = true,
@@ -145,8 +142,6 @@ local addedObstacles = {
 		InheritFrom = { "ExitDoor", },
 		ExitThroughCenter = true,
 		RewardPreviewOffsetZ = 642,
-		-- Custom modification
-		RewardPreviewOffsetY = 270,
 		RewardPreviewOffsetX = 0,
 		UnlockedUseTextCannotReroll = "UseLeaveRoom_CannotReroll",
 		UnlockedAnimation = "StyxDoorUnlocked",
@@ -154,14 +149,14 @@ local addedObstacles = {
 		ExitDoorCloseAnimation = "StyxDoorClose",
 		-- intentionally blank, on the anim
 		UnlockedUseSound = "",
+		-- Custom
+		RewardPreviewOffsetY = 270,
 	},
 	-- Styx: Doors to Wings from D_Hub
 	TravelDoor03 = {
 		InheritFrom = { "ExitDoor", },
 		ExitThroughCenter = true,
 		RewardPreviewOffsetZ = 0,
-		-- Custom modification
-		RewardPreviewOffsetY = -285,
 		RewardPreviewOffsetX = 0,
 		UnlockedUseTextCannotReroll = "UseLeaveRoom_CannotReroll",
 		LockedUseText = "UseExitDoorWhileLocked",
@@ -220,6 +215,8 @@ local addedObstacles = {
 		},
 		-- intentionally blank, on the anim
 		UnlockedUseSound = "",
+		-- Custom
+		RewardPreviewOffsetY = -285,
 	},
 	-- Styx: Warps from D_Combat rooms back to D_Hub
 	StyxWarpDoor = {
@@ -231,7 +228,6 @@ local addedObstacles = {
 		UnlockedUseText = "UseStyxWarpDoor",
 		LockedUseSound = "/Leftovers/SFX/OutOfAmmo2",
 		UnlockedUseSound = "/Leftovers/SFX/NomadSprint",
-		ExitFunctionName = "ExitSecretRoomPresentation",
 		ExitDoorOpenAnimation = "StyxWarpDoor_Revealed",
 		ExitDoorCloseAnimation = "StyxWarpDoor_Revealed",
 		UnlockedAnimation = "StyxWarpDoor_Revealed",
@@ -260,6 +256,8 @@ local addedObstacles = {
 			-- Down the chute.
 			{ Cue = "/VO/ZagreusField_2290", RequiredPlayed = { "/VO/ZagreusField_2282" } },
 		},
+		-- Custom
+		ExitFunctionName = "AnomalyExitPresentation",
 	},
 	-- Styx: Exit from Underworld / Exit to D_Boss01
 	TravelDoor01 = {

@@ -145,6 +145,8 @@ local npcModifications = {
 		},
 	},
 	ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		-- TODO: Add Hades Cerberus portrait to custom package and load it instead
 		LoadPackages = { "Cerberus" },
 	}
