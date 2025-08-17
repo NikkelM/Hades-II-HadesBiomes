@@ -1,0 +1,67 @@
+modutil.mod.Path.Wrap("FillInShopOptions", function(base, args)
+	if args == nil then
+		args = {}
+	end
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		-- In Hades II RunShopGeneration(), the room name is set to the previous room's name by accident
+		args.RoomName = game.CurrentRun.CurrentRoom.Name
+
+		if args.RoomName and game.RoomData[args.RoomName] and game.RoomData[args.RoomName].PersistentStore then
+			local store = game.GetPreviousStore(args)
+			if store ~= nil then
+				return store
+			end
+		end
+	end
+	return base(args)
+end)
+
+function game.GetPreviousStore(args)
+	if game.CurrentRun.RoomCreations[args.RoomName] == nil then
+		return nil
+	end
+
+	for roomIndex = game.TableLength(game.CurrentRun.RoomHistory), 1, -1 do
+		local room = game.CurrentRun.RoomHistory[roomIndex]
+		if room.Name == args.RoomName then
+			return { StoreOptions = game.DeepCopyTable(room.Store.StoreOptions) }
+		end
+	end
+	return nil
+end
+
+modutil.mod.Path.Wrap("RemoveStoreItem", function(base, args)
+	base(args)
+
+	local roomName = game.CurrentRun.CurrentRoom.Name
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and roomName and game.RoomData[roomName] and game.RoomData[roomName].PersistentStore and game.CurrentRun.CurrentRoom.FirstPurchase then
+		game.CurrentRun.ModsNikkelMHadesBiomesDHubFirstPurchaseDone = true
+	end
+end)
+
+modutil.mod.Path.Wrap("GetShopCostMultiplier", function(base)
+	local roomName = game.CurrentRun.CurrentRoom.Name
+	-- The FirstPurchase property is not correctly saved in the room, so we need to manually set it in case there already was a first purchase in the room
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and roomName and game.RoomData[roomName] and game.RoomData[roomName].PersistentStore and game.CurrentRun.ModsNikkelMHadesBiomesDHubFirstPurchaseDone then
+		game.CurrentRun.CurrentRoom.FirstPurchase = true
+	end
+	return base()
+end)
+
+modutil.mod.Path.Wrap("RestockWorldItem", function(base, itemData, kitId, waitForScreenName)
+	base(itemData, kitId, waitForScreenName)
+
+	local room = game.CurrentRun.CurrentRoom
+	-- Store the new item in the same index in the StoreOptions as the previous one
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and room.Name and game.RoomData[room.Name] and game.RoomData[room.Name].PersistentStore then
+		local nextIndex = 1
+		while nextIndex <= game.TableLength(room.Store.StoreOptions) do
+			if room.Store.StoreOptions[nextIndex] == nil then
+				room.Store.StoreOptions[nextIndex] = itemData
+				break
+			end
+			nextIndex = nextIndex + 1
+		end
+	end
+end)

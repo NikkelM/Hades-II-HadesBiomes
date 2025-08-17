@@ -77,6 +77,9 @@ local roomModifications = {
 		SaveWhitelist = {
 			ObjectStates = true,
 			DoorsChosen = true,
+			Store = true,
+			FirstPurchase = true,
+			StoreItemsPurchased = true,
 		},
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,

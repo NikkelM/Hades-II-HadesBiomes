@@ -16,6 +16,7 @@ mod.AddTableKeysSkipDupes(hadesTravelObstacleTable.Obstacles, hadesObstacleAddit
 -- Modifications for new obstacles copied from Hades
 local obstacleModifications = {
 	TravelPillarBase05b = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 		Thing = {
 			-- Need to decrease Tallness as otherwise boons clip under it
 			Tallness = 140.0,
@@ -23,6 +24,12 @@ local obstacleModifications = {
 	},
 	-- Obstacles that shouldn't be passable
 	TravelDoor03 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TravelPillarBase05 = {
+		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
+	},
+	TravelPillar03 = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
 }
