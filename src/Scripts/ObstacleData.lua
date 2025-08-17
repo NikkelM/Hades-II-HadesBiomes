@@ -426,6 +426,48 @@ local addedObstacles = {
 			},
 		},
 	},
+	HealthFountainStyx = {
+		InheritFrom = { "HealthFountain" },
+		HealingSpentAnimation = "HealthFountainEmptyStyx",
+	},
+	CerberusKey = {
+		UseSound = "/Leftovers/World Sounds/Unmask",
+		ConsumeSound = "/SFX/Enemy Sounds/RatThug/PoisonShake",
+		OnUsedVoiceLines = {
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.65,
+
+			-- Disgusting. Cerberus will love it!
+			{ Cue = "/VO/ZagreusField_2107" },
+			-- Something for Cerberus.
+			{ Cue = "/VO/ZagreusField_2108", RequiredPlayed = { "/VO/ZagreusField_2107" } },
+			-- Eugh, what is this stuff?
+			{ Cue = "/VO/ZagreusField_2109", RequiredPlayed = { "/VO/ZagreusField_2107" } },
+			-- Now back to Cerberus.
+			{ Cue = "/VO/ZagreusField_2110", RequiredPlayed = { "/VO/ZagreusField_2107" } },
+			-- A Satyr sack for my boy Cerberus.
+			{ Cue = "/VO/ZagreusField_2111", RequiredPlayed = { "/VO/ZagreusField_2107" }, CooldownName = "SaidSatyrSackRecently", CooldownTime = 30, },
+			-- Cerberus just loves... whatever this stuff is.
+			{ Cue = "/VO/ZagreusField_2112", RequiredPlayed = { "/VO/ZagreusField_2107" } },
+			-- A whole entire sack of something!
+			{ Cue = "/VO/ZagreusField_2113", RequiredPlayed = { "/VO/ZagreusField_2107" } },
+			-- A sack fit for a huge three-headed hound.
+			{ Cue = "/VO/ZagreusField_2114", RequiredPlayed = { "/VO/ZagreusField_2107" } },
+			-- A special treat for Cerberus.
+			{ Cue = "/VO/ZagreusField_2115", RequiredPlayed = { "/VO/ZagreusField_2107" } },
+			-- Ah good, it's still fresh!
+			{ Cue = "/VO/ZagreusField_2116", RequiredPlayed = { "/VO/ZagreusField_2107" } },
+			-- Just what I need, a foul sack!
+			{ Cue = "/VO/ZagreusField_2117", RequiredPlayed = { "/VO/ZagreusField_2107" }, CooldownName = "SaidSatyrSackRecently", CooldownTime = 30, },
+			-- Just the foul sack I need.
+			{ Cue = "/VO/ZagreusField_2118", RequiredPlayed = { "/VO/ZagreusField_2107" } },
+			-- Cerberus can never get enough of this stuff.
+			{ Cue = "/VO/ZagreusField_2119", RequiredPlayed = { "/VO/ZagreusField_2107" } },
+			-- I'll just tuck that away.
+			{ Cue = "/VO/ZagreusField_2120", RequiredPlayed = { "/VO/ZagreusField_2107" } },
+		},
+	},
 	-- #endregion
 }
 

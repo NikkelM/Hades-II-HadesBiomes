@@ -69,3 +69,17 @@ function game.UseStyxFountain(usee, args)
 		game.PoisonCureReady(fountain)
 	end
 end
+
+-- For Reprieve room spawning the Satyr sack
+function game.SpawnConsumables(eventSource, args)
+	mod.PrintTable(args)
+	for k, spawnData in pairs(args.Spawns) do
+		local consumableId = SpawnObstacle({
+			Name = spawnData.ConsumableName,
+			DestinationId = spawnData.DestinationId,
+			Group = "Standing",
+		})
+		local consumable = game.CreateConsumableItem(consumableId, spawnData.ConsumableName, 0) or {}
+		game.MapState.RoomRequiredObjects[consumable.ObjectId] = consumable
+	end
+end

@@ -135,6 +135,21 @@ modutil.mod.Path.Wrap("SetupInspectPoint", function(base, inspectPointData)
 	base(inspectPointData)
 end)
 
+modutil.mod.Path.Wrap("StartRoom", function(base, currentRun, currentRoom)
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		if currentRoom.WingRoom then
+			currentRun.WingDepth = (currentRun.WingDepth or 0) + 1
+		else
+			currentRun.WingDepth = 0
+		end
+		if currentRoom.WingEndRoom then
+			currentRun.CompletedStyxWings = currentRun.CompletedStyxWings + 1
+		end
+	end
+
+	base(currentRun, currentRoom)
+end)
+
 -- Overriding to add in the logic for the Styx exit doors always having two minibosses
 modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
 	if run.ModsNikkelMHadesBiomesIsModdedRun and room.Name == "D_Hub" then

@@ -16,6 +16,7 @@ local encounterDataStyx = {
 
 	-- Bosses
 	BossHades = encounterData.BossHades,
+	BossHadesPeaceful = encounterData.BossHadesPeaceful,
 
 	-- Challenge encounters within a room
 	TimeChallengeStyx = encounterData.TimeChallengeStyx,
@@ -59,6 +60,10 @@ local encounterReplacements = {
 			{ FunctionName = "SpawnRoomReward" },
 		},
 	},
+
+	-- TODO: GeneratedStyxMini difficulty
+	-- TODO: GeneratedStyxMiniSingle difficulty
+	-- TODO: BaseStyxMiniboss difficulty
 
 	PerfectClearChallengeStyx = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedStyx" },

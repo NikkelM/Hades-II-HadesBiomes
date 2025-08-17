@@ -125,6 +125,19 @@ local hadesObstacleAdditions = {
 			},
 		},
 	},
+	CerberusKey = {
+		Name = "CerberusKey",
+		InheritFrom = "BaseLoot",
+		DisplayInEditor = true,
+		Life = {
+			DeathFx = "CerberusKeyPickup",
+		},
+		Thing = {
+			AttachedAnim = "LootShadowCerberusKey",
+			EditorOutlineDrawBounds = false,
+			Graphic = "CerberusKey",
+		},
+	},
 }
 -- Add the added obstacles
 mod.AddTableKeysSkipDupes(hadesStyxObstacleTable.Obstacles, hadesObstacleAdditionsParents, "Name")
