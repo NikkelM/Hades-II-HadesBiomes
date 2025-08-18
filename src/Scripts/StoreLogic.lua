@@ -14,7 +14,14 @@ modutil.mod.Path.Wrap("FillInShopOptions", function(base, args)
 			end
 		end
 	end
-	return base(args)
+	local store = base(args)
+
+	-- Save the store manually for the next time we need it
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and args.RoomName and game.RoomData[args.RoomName] and game.RoomData[args.RoomName].PersistentStore then
+		game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore = store
+	end
+
+	return store
 end)
 
 function game.GetPreviousStore(args)
@@ -25,7 +32,7 @@ function game.GetPreviousStore(args)
 	for roomIndex = game.TableLength(game.CurrentRun.RoomHistory), 1, -1 do
 		local room = game.CurrentRun.RoomHistory[roomIndex]
 		if room.Name == args.RoomName then
-			return { StoreOptions = game.DeepCopyTable(room.Store.StoreOptions) }
+			return { StoreOptions = game.DeepCopyTable(game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore.StoreOptions) }
 		end
 	end
 	return nil
@@ -35,8 +42,13 @@ modutil.mod.Path.Wrap("RemoveStoreItem", function(base, args)
 	base(args)
 
 	local roomName = game.CurrentRun.CurrentRoom.Name
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and roomName and game.RoomData[roomName] and game.RoomData[roomName].PersistentStore and game.CurrentRun.CurrentRoom.FirstPurchase then
-		game.CurrentRun.ModsNikkelMHadesBiomesDHubFirstPurchaseDone = true
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and roomName and game.RoomData[roomName] and game.RoomData[roomName].PersistentStore then
+		if game.CurrentRun.CurrentRoom.FirstPurchase then
+			game.CurrentRun.ModsNikkelMHadesBiomesDHubFirstPurchaseDone = true
+		end
+
+		-- Ensure the persisted store is always up to date
+		game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore.StoreOptions = game.CurrentRun.CurrentRoom.Store.StoreOptions
 	end
 end)
 

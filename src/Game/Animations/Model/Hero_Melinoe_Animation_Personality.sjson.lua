@@ -36,6 +36,8 @@ local newData = {
 	{
 		Name = "ZagreusInteractEquip",
 		InheritFrom = "MelTalkGifting01",
+		HoldLastFrame = false,
+		ChainTo = "MelTalkGifting01ReturnToIdle"
 	},
 }
 

@@ -8,6 +8,14 @@ modutil.mod.Path.Wrap("DestroyDoorRewardPresenation", function(base, door)
 	base(door)
 end)
 
+modutil.mod.Path.Wrap("StartRoomPresentation", function(base, currentRun, currentRoom)
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and currentRoom.StartRoomPresentationOnReload and currentRoom.ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub then
+		game.RunThreadedEvents(game.RoomData[currentRoom.Name].ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub, currentRoom)
+	end
+
+	base(currentRun, currentRoom)
+end)
+
 -- Currently disabled, as the music gets hidden too much by the Mel voicelines
 -- modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
 -- 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then

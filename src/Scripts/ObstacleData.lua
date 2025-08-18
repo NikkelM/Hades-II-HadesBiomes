@@ -258,6 +258,7 @@ local addedObstacles = {
 		},
 		-- Custom
 		ExitFunctionName = "AnomalyExitPresentation",
+		ReturnToPreviousRoomName = "D_Hub",
 	},
 	-- Styx: Exit from Underworld / Exit to D_Boss01
 	TravelDoor01 = {

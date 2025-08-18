@@ -83,3 +83,103 @@ function game.SpawnConsumables(eventSource, args)
 		game.MapState.RoomRequiredObjects[consumable.ObjectId] = consumable
 	end
 end
+
+-- After talking to Cerberus, the exit door unlocks
+function game.UnlockDoor(source, args)
+	if args.RelockAllDoors then
+		game.RelockAllDoors(source, args)
+	end
+	local door = game.MapState.ActiveObstacles[args.DoorId]
+	local roomForDoorData = nil
+	if door.ForceRoomName ~= nil then
+		roomForDoorData = RoomData[door.ForceRoomName]
+	else
+		roomForDoorData = game.ChooseNextRoomData(CurrentRun)
+	end
+	local roomForDoor = game.CreateRoom(roomForDoorData)
+	game.AssignRoomToExitDoor(door, roomForDoor)
+	game.CreateDoorRewardPreview(door)
+	game.thread(game.ExitDoorUnlockedPresentation, door)
+	door.ReadyToUse = true
+end
+
+function game.RelockAllDoors(source, args)
+	for id, door in pairs(game.MapState.OfferedExitDoors) do
+		if id ~= args.DoorId then
+			game.DestroyDoorRewardPresenation(door)
+			SetAnimation({ DestinationId = id, Name = GetThingDataValue({ Id = id, Property = "Graphic" }) })
+			door.UseText = door.LockedUseText
+			door.ReadyToUse = false
+		end
+	end
+	game.MapState.OfferedExitDoors = {}
+end
+
+function game.ExitNPCPresentation(source, args)
+	AddInputBlock({ Name = "NPCExit" })
+	game.wait(args.InitialWaitTime or 0)
+	FadeOut({ Color = Color.Black, Duration = args.FadeOutTime or 0.5 })
+	PlaySound({ Name = args.InitialExitSound or "/EmptyCue", Delay = 0.7 })
+	game.wait((args.FadeOutTime or 0.5) + 0.3)
+	if args.DeleteId ~= nil then
+		Destroy({ Id = args.DeleteId })
+	end
+
+	PlaySound({ Name = args.FootstepSound or "/Leftovers/SFX/FootstepsConcreteMedium" })
+	PlaySound({ Name = args.FootstepSound or "/Leftovers/SFX/FootstepsConcreteMedium", Delay = 0.3 })
+	PlaySound({ Name = args.MoveSound or "/SFX/Enemy Sounds/Megaera/MegaeraWingFlap", Delay = 0.4 })
+	PlaySound({ Name = args.FootstepSound or "/Leftovers/SFX/FootstepsConcreteMedium", Delay = 0.6 })
+	PlaySound({ Name = args.FootstepSound or "/Leftovers/SFX/FootstepsConcreteMedium", Delay = 0.9 })
+	PlaySound({ Name = args.MoveSound or "/SFX/Enemy Sounds/Megaera/MegaeraWingFlap", Delay = 1.0 })
+	if args.UseAdditionalFootstepSounds then
+		PlaySound({ Name = args.FootstepSound or "/Leftovers/SFX/FootstepsConcreteMedium", Delay = 1.2 })
+		PlaySound({ Name = args.FootstepSound or "/Leftovers/SFX/FootstepsConcreteMedium", Delay = 1.5 })
+	end
+
+	if args.UseThanatosExitSound then
+		-- TODO: Thanatos voicelines
+		game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines or {}, true)
+		PlaySound({ Name = "/Leftovers/SFX/BeaconTeleportSFX2", Delay = 2.2 })
+	end
+
+	LockCamera({ Id = CurrentRun.Hero.ObjectId })
+	Teleport({ Id = args.ObjectId or source.ObjectId, DestinationId = args.TeleportToId })
+	if args.AltObjectId ~= nil then
+		Teleport({ Id = args.AltObjectId, DestinationId = args.TeleportToId })
+	end
+
+	game.wait(args.FullFadeTime or 1.5)
+	game.thread(game.PlayVoiceLines, HeroVoiceLines[args.HeroVoiceLines])
+	FadeIn({ Duration = args.FadeInTime or 1.0 })
+	RemoveInputBlock({ Name = "NPCExit" })
+	PlaySound({ Name = args.EndSound or "/EmptyCue", Delay = 0.3 })
+
+	if args.EndUnlockText ~= nil then
+		game.thread(game.DisplayInfoBanner, nil,
+			{
+				TitleText = args.EndUnlockText .. "_Title",
+				SubtitleText = args.EndUnlockText .. "_Subtitle",
+				AnimationName = args.AnimationName or "LocationTextBGGeneric",
+				AnimationOutName = args.AnimationOutName or "LocationTextBGGenericOut",
+				FontScale = args.FontScale or 1.0,
+				TextOffsetY = -45,
+				SubtitleOffsetY = -30,
+				SubtitleData = { LuaKey = "TempTextData", LuaValue = { Name = game.CurrentRun.CurrentRoom.EndUnlockText } },
+				Delay = 0.6,
+			})
+	elseif args.EndUnlockTextTable ~= nil then
+		local text = game.GetRandomValue(args.EndUnlockTextTable)
+		game.thread(game.DisplayInfoBanner, nil,
+			{
+				TitleText = text .. "_Title",
+				SubtitleText = text .. "_Subtitle",
+				AnimationName = args.AnimationName or "LocationTextBGGeneric",
+				AnimationOutName = args.AnimationOutName or "LocationTextBGGenericOut",
+				FontScale = args.FontScale or 1.0,
+				TextOffsetY = -45,
+				SubtitleOffsetY = -30,
+				SubtitleData = { LuaKey = "TempTextData", LuaValue = { Name = game.CurrentRun.CurrentRoom.EndUnlockText } },
+				Delay = 0.6,
+			})
+	end
+end

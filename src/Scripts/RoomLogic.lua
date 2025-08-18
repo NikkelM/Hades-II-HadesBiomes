@@ -150,6 +150,16 @@ modutil.mod.Path.Wrap("StartRoom", function(base, currentRun, currentRoom)
 	base(currentRun, currentRoom)
 end)
 
+modutil.mod.Path.Wrap("LeaveRoom", function(base, currentRun, door)
+	-- For Styx D_Hub, we need to regenerate the Shop encounter when re-entering the room
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and door.Room ~= nil and door.Room.ModsNikkelMHadesBiomesOnReloadStripEncounter and door.Room.TimesVisited ~= nil and door.Room.TimesVisited > 0 then
+		door.Room.Encounter = nil
+		door.Room.EncountersOccurredCache = nil
+	end
+
+	base(currentRun, door)
+end)
+
 -- Overriding to add in the logic for the Styx exit doors always having two minibosses
 modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
 	if run.ModsNikkelMHadesBiomesIsModdedRun and room.Name == "D_Hub" then

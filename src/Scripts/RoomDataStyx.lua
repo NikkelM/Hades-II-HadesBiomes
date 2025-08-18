@@ -71,16 +71,19 @@ local roomModifications = {
 				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
 			},
 		},
-		-- TODO: Custom store contents
+		-- TODO: Custom store contents?
 		StoreDataName = "Q_WorldShop",
+		PostCombatReloadThreadedEvents = { { FunctionName = "CheckConversations" } },
+		-- We need to call this before the PostCombatReloadThreadedEvents as by then the room is already visible and the items would pop in
+		ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub = game.EncounterSets.ShopRoomEvents,
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		SaveWhitelist = {
 			ObjectStates = true,
 			DoorsChosen = true,
-			Store = true,
 			FirstPurchase = true,
-			StoreItemsPurchased = true,
 		},
+		-- To make sure the shop is set up correctly when re-entering the room
+		ModsNikkelMHadesBiomesOnReloadStripEncounter = true,
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 		HoundFamiliarIgnoreUnitsForPathfinding = true,
