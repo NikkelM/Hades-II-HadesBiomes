@@ -138,6 +138,7 @@ local addedObstacles = {
 	-- #endregion
 
 	-- #region STYX
+	-- Doors out of Styx mini rooms
 	StyxDoor01 = {
 		InheritFrom = { "ExitDoor", },
 		ExitThroughCenter = true,
@@ -150,7 +151,7 @@ local addedObstacles = {
 		-- intentionally blank, on the anim
 		UnlockedUseSound = "",
 		-- Custom
-		RewardPreviewOffsetY = 270,
+		RewardPreviewOffsetY = 290,
 	},
 	-- Styx: Doors to Wings from D_Hub
 	TravelDoor03 = {

@@ -330,6 +330,7 @@ local function on_ready()
 		import "Scripts/FunctionMappings/AsphodelWrapping.lua"
 		import "Scripts/FunctionMappings/BossAsphodel.lua"
 		import "Scripts/FunctionMappings/BossElysium.lua"
+		import "Scripts/FunctionMappings/BossStyx.lua"
 		import "Scripts/FunctionMappings/BossTartarus.lua"
 		import "Scripts/FunctionMappings/Chariot.lua"
 		import "Scripts/FunctionMappings/CrawlerMiniboss.lua"

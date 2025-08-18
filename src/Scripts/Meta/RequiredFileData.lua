@@ -300,6 +300,7 @@ mod.BikFileMappings = {
 	"Enemy_SatyrMinibossMove_Bink",
 	"Enemy_SatyrMinibossMoveStop_Bink",
 	-- Hades
+	"HubBossDoorOpen",
 	"HadesBattleIdle_Bink",
 	"HadesBattleIntro_Bink",
 	"HadesBattleIntroIdle_Bink",

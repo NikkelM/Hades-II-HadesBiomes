@@ -76,7 +76,6 @@ local roomModifications = {
 		PostCombatReloadThreadedEvents = { { FunctionName = "CheckConversations" } },
 		-- We need to call this before the PostCombatReloadThreadedEvents as by then the room is already visible and the items would pop in
 		ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub = game.EncounterSets.ShopRoomEvents,
-		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		SaveWhitelist = {
 			ObjectStates = true,
 			DoorsChosen = true,
