@@ -24,7 +24,6 @@ function game.ExitToHadesPresentation(currentRun, exitDoor)
 		end
 	end
 
-	-- TODO
 	OutdoorAmbientSoundId = PlaySound({ Name = "/Leftovers/Ambience/WhippingWindLoop" })
 	SetVolume({ Id = OutdoorAmbientSoundId, Value = 0.1 })
 	SetVolume({ Id = OutdoorAmbientSoundId, Value = 1.0, Duration = 8 })
@@ -39,7 +38,6 @@ function game.ExitToHadesPresentation(currentRun, exitDoor)
 		Group = "Standing"
 	})
 
-	-- TODO: Duration 1.25 or 10
 	LockCamera({ Id = cameraId, EaseIn = 0.04, EaseOut = 0.275, Duration = 10 })
 	game.wait(1.75)
 	FadeOut({ Color = Color.White, Duration = 2 })
@@ -83,7 +81,6 @@ function game.RoomEntranceHades(currentRun, currentRoom)
 	AdjustRadialBlurDistance({ Fraction = 0, Duration = 0.03, Delay = 0 })
 	AdjustFullscreenBloom({ Name = "Off", Duration = 5.0, Delay = 0.1 })
 
-	-- TODO
 	SetVolume({ Id = OutdoorAmbientSoundId, Value = 0.0, Duration = 5 })
 	OutdoorAmbientSoundId = nil
 	game.wait(0.03)
