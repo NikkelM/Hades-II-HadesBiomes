@@ -292,7 +292,7 @@ updatedCodexData.ModsNikkelMHadesBiomesHiddenCodexEntries = {
 }
 
 -- Set metadata for the new group
-updatedCodexData[codexGroupNameMappings.Enemies].Icon = "GUI\\Icons\\Critical"
+updatedCodexData[codexGroupNameMappings.Enemies].Icon = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_72x72"
 updatedCodexData[codexGroupNameMappings.Enemies].TitleText = "ModsNikkelMHadesBiomesCodexEntryTitleText"
 
 hadesCodexData = updatedCodexData

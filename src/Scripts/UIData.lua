@@ -5,6 +5,6 @@ local superIcon = {
 }
 game.IconData.Super = game.IconData.Super or superIcon
 
-game.IconData.ModsNikkelMHadesBiomesIcon = {
-	TexturePath = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistoryRouteIcon",
+game.IconData.ModsNikkelMHadesBiomesRunHistoryDoor = {
+	TexturePath = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_64x64",
 }
