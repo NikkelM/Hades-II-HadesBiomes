@@ -317,8 +317,11 @@ local function on_ready()
 		import "Scripts/HadesWeaponData.lua"
 		import "Scripts/WeaponData.lua"
 
-		-- Add new Trait data
+		-- Other data that must be loaded before SetupRunData()
+		import "Scripts/ConsumableData.lua"
+		import "Scripts/MetaUpgradeData.lua"
 		import "Scripts/TraitDataNPCs.lua"
+		import "Scripts/ObstacleData.lua"
 
 		-- Applies modifications to the rooms, such as LegalEncounterDictionary
 		game.SetupRunData()
@@ -350,7 +353,6 @@ local function on_ready()
 		import "Scripts/Combat.lua"
 		import "Scripts/CombatLogic.lua"
 		import "Scripts/CombatPresentation.lua"
-		import "Scripts/ConsumableData.lua"
 		import "Scripts/DeathLoopData.lua"
 		import "Scripts/DeathLoopLogic.lua"
 		import "Scripts/EffectLogic.lua"
@@ -360,9 +362,7 @@ local function on_ready()
 		import "Scripts/EventPresentation.lua"
 		import "Scripts/HeroData.lua"
 		import "Scripts/HubPresentation.lua"
-		import "Scripts/MetaUpgradeData.lua"
 		import "Scripts/NarrativeData.lua"
-		import "Scripts/ObstacleData.lua"
 		import "Scripts/PowersLogic.lua"
 		import "Scripts/ProjectileData.lua"
 		import "Scripts/RequirementsData.lua"
