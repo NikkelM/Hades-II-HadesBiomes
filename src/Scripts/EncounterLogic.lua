@@ -21,3 +21,11 @@ modutil.mod.Path.Wrap("CalculateActiveEnemyCap", function(base, currentRun, curr
 
 	return enemyCap
 end)
+
+modutil.mod.Path.Wrap("OnAllEnemiesDead", function(base, currentRoom, currentEncounter)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "MedeaPoison" })
+	end
+
+	base(currentRoom, currentEncounter)
+end)
