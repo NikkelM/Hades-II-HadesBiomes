@@ -34,9 +34,15 @@ local roomModifications = {
 
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerStyxIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerStyxOut",
+		-- Devotion rewards are not available in Styx
+		IneligibleRewards = { "Devotion" },
+		OptionalOverrides = {
+			IneligibleRewards = { "WeaponUpgrade", "Devotion" },
+		},
 	},
 	BaseStyxWingEnd = {
 		NextRoomEntranceFunctionName = "ModsNikkelMHadesBiomesReturnToStyxHubPresentation",
+		IneligibleRewards = { "Devotion" },
 	},
 
 	-- OPENING ROOMS
