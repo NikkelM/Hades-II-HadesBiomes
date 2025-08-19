@@ -155,6 +155,8 @@ modutil.mod.Path.Wrap("LeaveRoom", function(base, currentRun, door)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and door.Room ~= nil and door.Room.ModsNikkelMHadesBiomesOnReloadStripEncounter and door.Room.TimesVisited ~= nil and door.Room.TimesVisited > 0 then
 		door.Room.Encounter = nil
 		door.Room.EncountersOccurredCache = nil
+		-- Also reset the WingDepth, so that the offered exits all generate mini rooms first
+		currentRun.WingDepth = 0
 	end
 
 	base(currentRun, door)
