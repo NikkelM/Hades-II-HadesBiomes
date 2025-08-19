@@ -183,3 +183,55 @@ function game.ExitNPCPresentation(source, args)
 			})
 	end
 end
+
+function game.ModsNikkelMHadesBiomesReturnToStyxHubPresentation(currentRun, currentRoom, args)
+	print("Modded entrance function")
+	AddInputBlock({ Name = "ModsNikkelMHadesBiomesReturnToStyxHubPresentation" })
+	local roomData = game.RoomData[currentRoom.Name] or currentRoom
+	local roomIntroSequenceDuration = roomData.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or 0.0
+
+	SetAnimation({ Name = "MelinoeDeathReEnterHeadUp", DestinationId = currentRun.Hero.ObjectId })
+	SetAlpha({ Id = currentRun.Hero.ObjectId, Fraction = 0.0, Duration = 0 })
+	SetAlpha({ Id = currentRun.Hero.ObjectId, Fraction = 1.0, Duration = 1.0 })
+
+	if currentRoom.HeroEndPoint ~= nil then
+		AngleTowardTarget({ Id = currentRun.Hero.ObjectId, DestinationId = currentRoom.HeroEndPoint })
+		Teleport({ Id = currentRun.Hero.ObjectId, DestinationId = currentRoom.HeroEndPoint })
+		PanCamera({ Id = currentRoom.HeroEndPoint, Duration = 0 })
+	end
+	game.wait(0.03)
+
+	FadeIn({ Duration = 0.0 })
+	game.FullScreenFadeInAnimation()
+
+	if roomData.DoorEntranceAnimation ~= nil then
+		game.thread(game.DoorEntranceAnimation, roomData.DoorEntranceAnimation)
+	end
+	if currentRoom.CameraEndPoint ~= nil then
+		PanCamera({ Id = currentRoom.CameraEndPoint, Duration = roomData.IntroPanDuration or roomIntroSequenceDuration })
+	end
+
+	if currentRoom.LocationText and not currentRoom.Encounter.BlockLocationText then
+		game.thread(game.DisplayInfoBanner, nil,
+			{
+				Text = currentRoom.LocationText,
+				Delay = 0.65,
+				FadeColor = currentRoom.LocationTextColor or { 255, 0, 0, 255 },
+				Duration = 2.0,
+				AnimationName = currentRoom.LocationAnimName,
+				AnimationOutName = currentRoom.LocationAnimOutName,
+				IconBackingAnimationName = currentRoom.LocationTextAnimName,
+				IconBackingAnimationOutName = currentRoom.LocationTextAnimOutName,
+			})
+	end
+	game.wait(roomIntroSequenceDuration)
+
+	waitUnmodified(1.0)
+	SetAnimation({ DestinationId = currentRun.Hero.ObjectId, Name = "Melinoe_Combat_Return_ReEnter" })
+
+	LockCamera({ Id = currentRun.Hero.ObjectId, Duration = 2.0 })
+	RemoveInputBlock({ Name = "ModsNikkelMHadesBiomesReturnToStyxHubPresentation" })
+
+	-- For the familiar spawn presentation - this gives the good-looking one, instead of the sudden spawn
+	game.RunEventsGeneric(game.RoomEventData.GlobalRoomInputUnblockedEvents, currentRoom)
+end

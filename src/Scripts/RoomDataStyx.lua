@@ -23,9 +23,6 @@ local roomModifications = {
 	BaseStyx = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
-		-- BiomeN in addition to the others
-		LoadModdedPackages = { "BiomeN", "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "GUIModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "ModsNikkelMHadesBiomesFxModded", "ModsNikkelMHadesBiomesGUIModded", },
-
 		Ambience = "/Leftovers/Object Ambiences/CreepyIslandAmbience",
 		ReverbValue = 2.0,
 
@@ -37,6 +34,9 @@ local roomModifications = {
 
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerStyxIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerStyxOut",
+	},
+	BaseStyxWingEnd = {
+		NextRoomEntranceFunctionName = "ModsNikkelMHadesBiomesReturnToStyxHubPresentation",
 	},
 
 	-- OPENING ROOMS
