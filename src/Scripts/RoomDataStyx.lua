@@ -63,6 +63,8 @@ local roomModifications = {
 				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
 			},
 		},
+		-- Shorter as we add more wait time after the animation starts
+		IntroSequenceDuration = 0.3,
 		DistanceTriggers = {
 			[1] = {
 				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",

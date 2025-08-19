@@ -226,7 +226,16 @@ function game.ModsNikkelMHadesBiomesReturnToStyxHubPresentation(currentRun, curr
 	end
 	game.wait(roomIntroSequenceDuration)
 
-	waitUnmodified(1.0)
+	-- Allow cancelling the animation the same way you can after returning from a run
+	game.ToggleCombatControl({ "Rush" }, true, "DeathLoopStart")
+	local notifyName = "MelAwake"
+	NotifyOnControlPressed({ Names = { "Rush" }, Notify = notifyName, Timeout = 2.5 })
+	game.waitUntil(notifyName)
+	local didSkip = not _eventTimeoutRecord[notifyName]
+	if didSkip then
+		FireWeaponFromUnit({ Weapon = "WeaponBlink", Id = currentRun.Hero.ObjectId })
+	end
+
 	SetAnimation({ DestinationId = currentRun.Hero.ObjectId, Name = "Melinoe_Combat_Return_ReEnter" })
 
 	LockCamera({ Id = currentRun.Hero.ObjectId, Duration = 2.0 })
