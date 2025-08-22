@@ -40,7 +40,7 @@ function game.ExitToHadesPresentation(currentRun, exitDoor)
 
 	LockCamera({ Id = cameraId, EaseIn = 0.04, EaseOut = 0.275, Duration = 10 })
 	game.wait(1.75)
-	FadeOut({ Color = Color.White, Duration = 2 })
+	FadeOut({ Color = game.Color.White, Duration = 2 })
 	game.wait(1.1)
 
 	SetUnitProperty({ Property = "StartGraphic", Value = nil, DestinationId = currentRun.Hero.ObjectId })
@@ -72,7 +72,7 @@ function game.RoomEntranceHades(currentRun, currentRoom)
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or
 			0.0
 
-	FadeOut({ Color = Color.White, Duration = 0 })
+	FadeOut({ Color = game.Color.White, Duration = 0 })
 	AdjustFullscreenBloom({ Name = "LightningStrike", Duration = 0 })
 	AdjustFullscreenBloom({ Name = "WrathPhase2", Duration = 0.1, Delay = 0 })
 	AdjustRadialBlurStrength({ Fraction = 1.5, Duration = 0 })
