@@ -1163,7 +1163,7 @@ local enemyModifications = {
 	BreakableElysium = {
 		CannotDieFromDamage = true,
 		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
-		DeathAnimation = "BreakableDeathAnim",
+		DeathAnimation = "BreakableDeathElysium",
 		DeathSound = "/SFX/CeramicPotSmash",
 		SetupEvents = {
 			{
@@ -1186,7 +1186,7 @@ local enemyModifications = {
 	BreakableStyx = {
 		CannotDieFromDamage = true,
 		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
-		DeathAnimation = "BreakableDeathAnim",
+		DeathAnimation = "BreakableDeathStyx",
 		DeathSound = "/SFX/CeramicPotSmash",
 		SetupEvents = {
 			{
