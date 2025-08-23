@@ -141,9 +141,9 @@ local roomModifications = {
 				},
 			},
 			-- Makes the exit door interactable
-			-- TODO: It doesn't work - but it is the correct ID
-			-- Test if there is an uninteractable prompt before fountain is used in this and the other postboss rooms to find the issue.
 			[430000] = {
+				Template = "ExitDoor",
+				InteractDistance = 500,
 				ActivateIds = { 430000, },
 			},
 		},
@@ -162,7 +162,7 @@ local roomModifications = {
 					FamiliarMoveOffsetX = -80,
 					FamiliarMoveOffsetY = -430,
 					FamiliarMoveDuration = 2.0,
-					CameraMoveOffsetY = -400,
+					CameraMoveOffsetY = -450,
 
 					MoveEaseIn = 0.5,
 					MoveEaseOut = 1.0,
