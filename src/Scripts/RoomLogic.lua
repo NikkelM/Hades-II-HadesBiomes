@@ -171,6 +171,29 @@ modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
 	end
 end)
 
+modutil.mod.Path.Wrap("DisableTrap", function(base, enemy)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.ModsNikkelMHadesBiomesIsModdedEnemy then
+		if enemy.ToggleTrap then
+			if enemy.DisableImmediately then
+				game.killTaggedThreads(enemy.AIThreadName)
+				enemy.AIDisabled = true
+			else
+				enemy.DisableAIWhenReady = true
+			end
+			-- This is the modification - some of our modded traps have separate animations depending on if they are currently "active" or not
+			if enemy.DefaultAIData and enemy.DefaultAIData.UseResetAnimationIfActive and enemy.DefaultAIData.ResetAnimation ~= nil and enemy.ModsNikkelMHadesBiomesCurrentlyActive then
+				SetAnimation({ DestinationId = enemy.ObjectId, Name = enemy.DefaultAIData.ResetAnimation })
+			elseif enemy.DefaultAIData and enemy.DefaultAIData.DisabledAnimation ~= nil then
+				SetAnimation({ DestinationId = enemy.ObjectId, Name = enemy.DefaultAIData.DisabledAnimation })
+			end
+		elseif enemy.DestroyOnTrapDisable then
+			game.Kill(enemy)
+		end
+	else
+		base(enemy)
+	end
+end)
+
 function game.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	-- Synchronize the RNG to its initial state. Makes room reward choices deterministic on save/load
 	RandomSynchronize()

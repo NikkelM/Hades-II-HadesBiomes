@@ -417,3 +417,11 @@ function game.PassiveAttack(enemy, currentRun)
 		end
 	end
 end
+
+function game.ModsNikkelMHadesBiomesToggleTrapState(enemy, aiData)
+	if enemy.ModsNikkelMHadesBiomesCurrentlyActive then
+		enemy.ModsNikkelMHadesBiomesCurrentlyActive = false
+	else
+		enemy.ModsNikkelMHadesBiomesCurrentlyActive = true
+	end
+end

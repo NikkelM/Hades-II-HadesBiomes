@@ -431,3 +431,9 @@ function mod.ApplyGlobalGameObjectModifications(useModded, target, modifications
 		end
 	end
 end
+
+-- TODO: Remove when releasing
+modutil.mod.Path.Wrap("DebugPrint", function(base, args)
+	mod.DebugPrint(args.Text, 4)
+	base(args)
+end)

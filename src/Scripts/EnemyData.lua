@@ -1207,15 +1207,19 @@ local enemyModifications = {
 		},
 	},
 	BlastCubeFusedRegenerating = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		OnDeathFireWeapons = { "BlastCubeExplosionElysium" },
 		FuseWarningProjectileName = "ModsNikkelMHadesBiomesBlastWarningDecalElysium"
 	},
+	-- TODO: Check using the modded ResetAnimation as for AxeTrap
 	PhalanxTrap = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		ProjectileName = "PhalanxTrapWeapon",
 		AIAttackDistance = 150,
 		OutgoingDamageModifiers = { { NonPlayerMultiplier = 15.0, }, },
 	},
 	PhalanxTrapPassive = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
 			ProjectileName = "PhalanxTrapWeaponPassive",
 			-- Moved in here from the normal Enemy data
@@ -1235,6 +1239,7 @@ local enemyModifications = {
 		},
 	},
 	ArcherTrap = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
 			ProjectileName = "ArcherTrapWeapon",
 			-- Moved in here from the normal Enemy data
@@ -1257,6 +1262,7 @@ local enemyModifications = {
 		},
 	},
 	GasTrapPassive = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
 			ProjectileName = "GasTrapWeaponPassive",
 			-- Moved in here from the normal Enemy data
@@ -1275,6 +1281,7 @@ local enemyModifications = {
 		},
 	},
 	PoisonTrap = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
 			ProjectileName = "PoisonTrapWeapon",
 			-- Moved in here from the normal Enemy data
@@ -1290,6 +1297,7 @@ local enemyModifications = {
 		},
 	},
 	SawTrap = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
 			ProjectileName = "SawTrapWeapon",
 			-- Moved in here from the normal Enemy data
@@ -1310,13 +1318,18 @@ local enemyModifications = {
 		},
 	},
 	AxeTrap = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
 			ProjectileName = "AxeTrapWeapon",
-			DisabledAnimation = "AxeTrapReset",
+			UseResetAnimationIfActive = true,
+			ResetAnimation = "AxeTrapReset",
+			PreAttackFunctionName = "ModsNikkelMHadesBiomesToggleTrapState",
+			PostAttackEndFunctionName = "ModsNikkelMHadesBiomesToggleTrapState",
 		},
 		WeaponName = "AxeTrapWeapon",
 	},
 	AxeTrapTrigger = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
 			ProjectileName = "AxeTrapWeapon",
 			-- Moved in here from the normal Enemy data
