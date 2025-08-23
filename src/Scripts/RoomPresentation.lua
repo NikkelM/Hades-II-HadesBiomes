@@ -10,7 +10,8 @@ end)
 
 modutil.mod.Path.Wrap("StartRoomPresentation", function(base, currentRun, currentRoom)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and currentRoom.StartRoomPresentationOnReload and currentRoom.ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub then
-		game.RunThreadedEvents(game.RoomData[currentRoom.Name].ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub, currentRoom)
+		game.RunThreadedEvents(game.RoomData[currentRoom.Name].ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub,
+			currentRoom)
 	end
 
 	base(currentRun, currentRoom)
@@ -222,4 +223,10 @@ end
 
 function game.AngleIds(eventSource, args)
 	AngleTowardTarget({ Ids = args.Ids, DestinationId = args.DestinationId })
+end
+
+-- For D_Intro, to allow the cog wheels to place themselves correctly before the fade in
+function game.ModsNikkelMHadesBiomesDelayedRoomEntranceStandard(currentRun, currentRoom)
+	game.wait(2.0)
+	game.RoomEntranceStandard(currentRun, currentRoom)
 end
