@@ -109,10 +109,12 @@ function game.RoomEntranceHades(currentRun, currentRoom)
 		NotifyWithinDistance({
 			Id = currentRun.Hero.ObjectId,
 			DestinationId = currentRoom.HeroEndPoint,
-			Distance = 30,
+			Distance = 80,
 			Notify = notifyName
 		})
 		game.waitUntil(notifyName)
+		-- Slight extra wait to account for the withinDistance not being very precise 
+		game.wait(0.3)
 	end
 	Stop({ Id = currentRun.Hero.ObjectId })
 
@@ -125,4 +127,46 @@ function game.RoomEntranceHades(currentRun, currentRoom)
 	game.wait(0.3)
 	game.UnzeroMouseTether("BossEntrance")
 	game.UnblockCombatUI("BossEntrance")
+end
+
+function game.BossIntroHades(eventSource, args)
+	if eventSource.Encounter.Name == "BossHadesPeaceful" then
+		args.ProcessTextLinesIds = { 552710 }
+		args.UnlockDelay = 0.0
+		args.SetupBossIds = nil
+		args.ResetRoomZoom = nil
+		eventSource.SpawnRewardDelay = 1.32
+	end
+
+	if game.GameState.TextLinesRecord["HadesAllowsLegendaryKeepsakes01"] ~= nil then
+		eventSource.BlockHadesAssistTraits = false
+	else
+		eventSource.BlockHadesAssistTraits = true
+	end
+
+	game.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
+
+	if eventSource.Encounter.Name == "BossHadesPeaceful" then
+		game.CurrentRun.ActiveBiomeTimer = false
+	end
+end
+
+function game.CheckRunEndPresentation(currentRun, door)
+	AddInputBlock({ Name = "CheckRunEndPresentation" })
+	-- TODO: Check?
+	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
+		currentRun.CurrentRoom.SkipLoadNextMap = true
+		game.EndEarlyAccessPresentation()
+	else
+		local heroExitPointId = GetClosest({ Id = door.ObjectId, DestinationIds = GetIdsByType({ Name = "HeroExit" }), Distance = 600 })
+		game.thread(game.MoveHeroToRoomPosition,
+			{ DestinationId = heroExitPointId, DisableCollision = true, UseDefaultSpeed = true })
+		game.FullScreenFadeOutAnimation()
+		if game.GameState.TextLinesRecord["LordHadesBeforePersephoneReturn01"] ~= nil then
+			-- TODO
+			game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.BossHadesPeacefulExitVoiceLines)
+		end
+		game.wait(3.5)
+	end
+	RemoveInputBlock({ Name = "CheckRunEndPresentation" })
 end
