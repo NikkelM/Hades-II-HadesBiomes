@@ -109,6 +109,11 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 		else
 			unit.HealthMultiplier = 1 + mod.ModdedUnitMaxHealthMultiplierBonus
 		end
+
+		-- For Hades
+		if unit.SelectCustomSpawnOptions ~= nil then
+			game.CallFunctionName(unit.SelectCustomSpawnOptions, unit)
+		end
 	end
 
 	base(unit, currentRun, args)
