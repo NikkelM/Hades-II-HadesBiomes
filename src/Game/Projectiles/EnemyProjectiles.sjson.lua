@@ -258,6 +258,9 @@ local hadesProjectilesModifications = {
 	PhalanxTrapWeapon = {
 		Range = 200,
 	},
+	SawTrapWeapon = {
+		ImpactFx = "SawTrapProjectileEnd",
+	},
 	-- #endregion
 }
 
