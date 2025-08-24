@@ -36,6 +36,9 @@ mod.PackageFileMappings = {
 }
 
 mod.BikFileMappings = {
+	-- #region GENERAL
+	"RoomTransition",
+	-- #endregion
 	-- #region TARTARUS
 	-- Wretch Glutton/PunchingBagUnit
 	"EnemyWretchGluttonAttack_Bink",

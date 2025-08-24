@@ -6,7 +6,7 @@ local hadesTwoGuiVfxModifications = {}
 
 -- These need to be added before the others, as they are inherited from
 local addParentAnimations = {
-	-- Location intros
+	-- #region Location intros
 	ModsNikkelMHadesBiomesInfoBannerTartarusIn = {
 		Name = "ModsNikkelMHadesBiomesInfoBannerTartarusIn",
 		FilePath = "GUIModded\\LocationBackings\\TartarusBacking\\TartarusBacking",
@@ -43,9 +43,23 @@ local addParentAnimations = {
 		Duration = 1.0,
 		HoldLastFrame = true,
 	},
+	-- #endregion
+	ModsNikkelMHadesBiomesRoomTransitionIn = {
+		Name = "ModsNikkelMHadesBiomesRoomTransitionIn",
+		FilePath = "Screens\\RoomTransition\\RoomTransition",
+		Type = "Book",
+		VideoTexture = "RoomTransition",
+		EndFrame = 20,
+		HoldLastFrame = true,
+		NumFrames = 20,
+		PlaySpeed = 30.0,
+		StartFrame = 1,
+		Material = "Unlit",
+		OnlyWhenVisible = true,
+	},
 }
 local addAnimations = {
-	-- Location intros
+	-- #region Location intros
 	ModsNikkelMHadesBiomesInfoBannerTartarusOut = {
 		Name = "ModsNikkelMHadesBiomesInfoBannerTartarusOut",
 		InheritFrom = "ModsNikkelMHadesBiomesInfoBannerTartarusIn",
@@ -73,6 +87,15 @@ local addAnimations = {
 		StartAlpha = 1.0,
 		EndAlpha = 0.0,
 		Duration = 0.5,
+	},
+	-- #endregion
+	ModsNikkelMHadesBiomesRoomTransitionOut = {
+		Name = "ModsNikkelMHadesBiomesRoomTransitionOut",
+		InheritFrom = "ModsNikkelMHadesBiomesRoomTransitionIn",
+		EndFrame = 20,
+		HoldLastFrame = false,
+		PlayBackwards = true,
+		StartFrame = 1,
 	},
 }
 
