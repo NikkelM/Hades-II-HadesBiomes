@@ -42,15 +42,23 @@ local hadesTwoObstacleModifications = {
 	-- #endregion
 
 	-- #region STYX
-	["StyxPillarB"] = {
+	StyxDoorOpen = {
+		ChildAnimation = "null",
+		CreateAnimation = "StyxDoorOpenAnim",
+	},
+	StyxDoorClose = {
+		ChildAnimation = "null",
+		CreateAnimation = "StyxDoorCloseAnim",
+	},
+	StyxPillarB = {
 		ChildAnimation = "null",
 		CreateAnimation = "Styx_Pillar03TransitionA",
 	},
-	["StyxPillarC"] = {
+	StyxPillarC = {
 		ChildAnimation = "null",
 		CreateAnimation = "Styx_Pillar03TransitionB",
 	},
-	["StyxPillarD"] = {
+	StyxPillarD = {
 		ChildAnimation = "null",
 		CreateAnimation = "Styx_Pillar03TransitionC",
 	},
