@@ -143,7 +143,6 @@ local addedObstacles = {
 		InheritFrom = { "ExitDoor", },
 		ExitThroughCenter = true,
 		RewardPreviewOffsetZ = 642,
-		RewardPreviewOffsetX = 0,
 		UnlockedUseTextCannotReroll = "UseLeaveRoom_CannotReroll",
 		UnlockedAnimation = "StyxDoorUnlocked",
 		ExitDoorOpenAnimation = "StyxDoorOpen",
@@ -152,6 +151,7 @@ local addedObstacles = {
 		UnlockedUseSound = "",
 		-- Custom
 		RewardPreviewOffsetY = 290,
+		RewardPreviewOffsetX = 10,
 	},
 	-- Styx: Doors to Wings from D_Hub
 	TravelDoor03 = {
