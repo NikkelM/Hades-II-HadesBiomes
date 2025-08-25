@@ -333,7 +333,7 @@ local function on_ready()
 		import "Scripts/FunctionMappings/BossStyx.lua"
 		import "Scripts/FunctionMappings/BossTartarus.lua"
 		import "Scripts/FunctionMappings/Chariot.lua"
-		import "Scripts/FunctionMappings/CrawlerMiniboss.lua"
+		import "Scripts/FunctionMappings/Crawler.lua"
 		import "Scripts/FunctionMappings/CrusherUnit.lua"
 		import "Scripts/FunctionMappings/Environment.lua"
 		import "Scripts/FunctionMappings/HeavyRanged.lua"

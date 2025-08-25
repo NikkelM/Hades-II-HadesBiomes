@@ -102,6 +102,11 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			end
 		end
 
+		if enemyData.FireWeaponOnActivationFinished ~= nil then
+			enemyData.CreateProjectileOnActivationFinished = enemyData.FireWeaponOnActivationFinished
+			enemyData.FireWeaponOnActivationFinished = nil
+		end
+
 		-- Always use the Olympus dialogue elements for the bosses
 		if enemyData.Portrait then
 			enemyData.BoxAnimation = "DialogueSpeechBubbleLight"
