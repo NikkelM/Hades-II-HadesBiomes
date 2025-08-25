@@ -319,6 +319,7 @@ local function on_ready()
 
 		-- Other data that must be loaded before SetupRunData()
 		import "Scripts/ConsumableData.lua"
+		import "Scripts/EffectData.lua"
 		import "Scripts/MetaUpgradeData.lua"
 		import "Scripts/TraitDataNPCs.lua"
 		import "Scripts/ObstacleData.lua"

@@ -246,6 +246,28 @@ local hadesProjectilesModifications = {
 			Graphic = "SatyrDart",
 		},
 	},
+	RatPoisonShake = {
+		SpawnOnDetonate = "HadesPoisonPuddleSmall"
+	},
+	SatyrRangedWeapon = {
+		Effects = {
+			[2] = {
+				Name = "StyxPoison",
+				Type = "DAMAGE_OVER_TIME",
+				Amount = 1,
+				Cooldown = 0.13,
+				InitialDelay = 0.5,
+				Duration = 8,
+				Stacks = true,
+				MaxStacks = 10,
+				ExtendDurationOnReapply = false,
+				SilentImpact = true,
+				FrontFx = "PoisonStatusFx",
+				Active = true,
+				OnlyAffectName = "_PlayerUnit",
+			},
+		},
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
@@ -261,6 +283,11 @@ local hadesProjectilesModifications = {
 	SawTrapWeapon = {
 		ImpactFx = "SawTrapProjectileEnd",
 	},
+	PoisonTrapWeapon = {
+		Effect = {
+			OnlyAffectName = "_PlayerUnit",
+		}
+	}
 	-- #endregion
 }
 
@@ -269,6 +296,28 @@ local addProjectiles = {
 		Name = "HadesCrawlerRush",
 		InheritFrom = "CrawlerRush",
 		Damage = 3,
+	},
+	{
+		Name = "HadesPoisonPuddleSmall",
+		InheritFrom = "PoisonPuddleSmall",
+		DamageRadius = 80,
+		Effects = {
+			{
+				Name = "StyxPoison",
+				Type = "DAMAGE_OVER_TIME",
+				Amount = 1,
+				Cooldown = 0.13,
+				InitialDelay = 0.85,
+				Duration = 8,
+				Stacks = true,
+				MaxStacks = 10,
+				ExtendDurationOnReapply = false,
+				SilentImpact = true,
+				FrontFx = "PoisonStatusFx",
+				Active = true,
+				OnlyAffectName = "_PlayerUnit",
+			},
+		},
 	},
 }
 

@@ -1106,6 +1106,7 @@ local enemyModifications = {
 	-- #region STYX - Regular
 	SatyrRanged = {
 		LargeUnitCap = mod.NilValue,
+		StunAnimations = { Default = "SatyrOnHit" },
 	},
 	SatyrRangedMiniboss = {
 		LargeUnitCap = mod.NilValue,
