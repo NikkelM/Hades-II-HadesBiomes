@@ -170,6 +170,8 @@ local function on_ready()
 		import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
 		-- Must be loaded after CharacterAnimationsEnemies, as it inherits some animations from it
 		import "Game/Animations/EnemyAnimations.sjson.lua"
+		import "Game/Animations/GUI_Boons_VFX.sjson.lua"
+		import "Game/Animations/GUI_VFX.sjson.lua"
 		import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
@@ -192,6 +194,7 @@ local function on_ready()
 		import "Game/Obstacles/Elysium.sjson.lua"
 		import "Game/Obstacles/Styx.sjson.lua"
 		import "Game/Obstacles/Tartarus.sjson.lua"
+		import "Game/Obstacles/Travel.sjson.lua"
 
 		-- The ScreenText files depend on icons in here
 		import "Scripts/UIData.lua"
@@ -295,7 +298,7 @@ local function on_ready()
 		import "Scripts/EncounterDataTartarus.lua"
 		import "Scripts/EncounterDataAsphodel.lua"
 		import "Scripts/EncounterDataElysium.lua"
-		-- import "Scripts/EncounterDataStyx.lua"
+		import "Scripts/EncounterDataStyx.lua"
 
 		-- Loads Room data
 		import "Scripts/RoomSets.lua"
@@ -307,15 +310,19 @@ local function on_ready()
 		import "Scripts/RoomDataAsphodel.lua"
 		import "Scripts/HadesRoomDataElysium.lua"
 		import "Scripts/RoomDataElysium.lua"
-		-- import "Scripts/HadesRoomDataStyx.lua"
-		-- import "Scripts/RoomDataStyx.lua"
+		import "Scripts/HadesRoomDataStyx.lua"
+		import "Scripts/RoomDataStyx.lua"
 
 		-- Loads Weapon data
 		import "Scripts/HadesWeaponData.lua"
 		import "Scripts/WeaponData.lua"
 
-		-- Add new Trait data
+		-- Other data that must be loaded before SetupRunData()
+		import "Scripts/ConsumableData.lua"
+		import "Scripts/EffectData.lua"
+		import "Scripts/MetaUpgradeData.lua"
 		import "Scripts/TraitDataNPCs.lua"
+		import "Scripts/ObstacleData.lua"
 
 		-- Applies modifications to the rooms, such as LegalEncounterDictionary
 		game.SetupRunData()
@@ -324,9 +331,10 @@ local function on_ready()
 		import "Scripts/FunctionMappings/AsphodelWrapping.lua"
 		import "Scripts/FunctionMappings/BossAsphodel.lua"
 		import "Scripts/FunctionMappings/BossElysium.lua"
+		import "Scripts/FunctionMappings/BossStyx.lua"
 		import "Scripts/FunctionMappings/BossTartarus.lua"
 		import "Scripts/FunctionMappings/Chariot.lua"
-		import "Scripts/FunctionMappings/CrawlerMiniboss.lua"
+		import "Scripts/FunctionMappings/Crawler.lua"
 		import "Scripts/FunctionMappings/CrusherUnit.lua"
 		import "Scripts/FunctionMappings/Environment.lua"
 		import "Scripts/FunctionMappings/HeavyRanged.lua"
@@ -334,6 +342,7 @@ local function on_ready()
 		import "Scripts/FunctionMappings/MiniBossTartarus.lua"
 		import "Scripts/FunctionMappings/NPCLogic.lua"
 		import "Scripts/FunctionMappings/ShadeNaked.lua"
+		import "Scripts/FunctionMappings/StyxLogic.lua"
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes
@@ -355,9 +364,7 @@ local function on_ready()
 		import "Scripts/EventPresentation.lua"
 		import "Scripts/HeroData.lua"
 		import "Scripts/HubPresentation.lua"
-		import "Scripts/MetaUpgradeData.lua"
 		import "Scripts/NarrativeData.lua"
-		import "Scripts/ObstacleData.lua"
 		import "Scripts/PowersLogic.lua"
 		import "Scripts/ProjectileData.lua"
 		import "Scripts/RequirementsData.lua"
@@ -369,6 +376,7 @@ local function on_ready()
 		import "Scripts/RunHistoryData.lua"
 		import "Scripts/RunHistoryLogic.lua"
 		import "Scripts/RunLogic.lua"
+		import "Scripts/StoreLogic.lua"
 		import "Scripts/WeaponSets.lua"
 
 		mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)

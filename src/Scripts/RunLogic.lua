@@ -3,6 +3,8 @@ modutil.mod.Path.Wrap("RunStateInit", function(base)
 
 	-- The custom logic is always called, even if the run is already ongoing
 	game.CurrentRun.SupportAINames = game.CurrentRun.SupportAINames or {}
+	game.CurrentRun.CompletedStyxWings = game.CurrentRun.CompletedStyxWings or 0
+	game.CurrentRun.ThanatosSpawns = game.CurrentRun.ThanatosSpawns or 0
 
 	-- Only do this if we haven't done it yet for this global instance
 	-- This key is not included in the save file, so it will always be null when the game is started and a new global is instantiated
@@ -196,4 +198,23 @@ end)
 -- We want our modded runs to be considered a bounty run for the RunHistoryScreen
 modutil.mod.Path.Wrap("WasBountyRun", function(base, run)
 	return (run.BiomesReached ~= nil and run.BiomesReached.Tartarus) or base(run)
+end)
+
+modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, nextRoomData, args, otherDoors)
+	local isForced = base(currentRun, currentRoom, nextRoomData, args, otherDoors)
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isForced then
+		if currentRoom ~= nil and currentRoom.ForceWingEndMiniBoss and nextRoomData.WingEndMiniBoss and (currentRun.CompletedStyxWings < 4 or game.HasSeenRoomInRun(currentRun, "D_Reprieve01")) then
+			return true
+		end
+
+		if nextRoomData.ForceChanceByRemainingWings then
+			local chance = 1 / (5 - currentRun.CompletedStyxWings)
+			if game.RandomChance(chance) then
+				return true
+			end
+		end
+	end
+
+	return isForced
 end)

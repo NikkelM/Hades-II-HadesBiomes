@@ -30,7 +30,7 @@ local newData = {
 	},
 	{
 		Id = "RunHistoryScreen_RouteModsNikkelMHadesBiomes",
-		DisplayName = "{!Icons.ModsNikkelMHadesBiomesIcon}",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor}",
 		-- Icon only, no localization needed
 		OverwriteLocalization = true,
 	},

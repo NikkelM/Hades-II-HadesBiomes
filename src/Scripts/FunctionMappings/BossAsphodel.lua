@@ -221,7 +221,7 @@ function game.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 		local totalDifficultyRating = 0
 		while totalDifficultyRating < difficultyRating do
 			local spawnName = game.GetRandomValue(spawnOptions)
-			local enemyData = EnemyData[spawnName]
+			local enemyData = game.EnemyData[spawnName]
 			local enemyDifficultyRating = enemyData.GeneratorData.DifficultyRating or 1
 
 			if totalDifficultyRating + enemyDifficultyRating > difficultyRating then

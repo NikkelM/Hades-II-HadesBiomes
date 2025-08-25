@@ -1177,6 +1177,31 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region STYX
+	-- From Hades II CrawlerRush, but using Hades animations
+	HadesCrawlerRush = {
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "HadesCrawlerRush",
+			FireSelfVelocity = 2600,
+			FireProjectileStartDelay = 0.03,
+			PreAttackSound = "/SFX/Enemy Sounds/RatThug/EmoteCharging",
+			PreAttackAnimation = "EnemyCrawlerIdle",
+			FireAnimation = "EnemyCrawlerRun",
+			PostAttackAnimation = "EnemyCrawlerIdle",
+			PreAttackDuration = 0.7,
+			PreAttackEndShake = true,
+			FireDuration = 0.3,
+			PostAttackDuration = 0.0,
+			WaitForAngleTowardTarget = false,
+			AttackDistance = 300,
+			RetreatBufferDistance = 650,
+			RetreatAfterAttack = true,
+			RequireUnitLoS = true,
+			LoSBuffer = 80,
+			LoSEndBuffer = 32,
+		},
+		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/RatThug/EmoteAttacking" }, }, },
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
@@ -1191,6 +1216,22 @@ local weaponModifications = {
 			MoveWithinRange = false,
 			AttackDistance = 9999999,
 			PostAttackAnimation = "BlastCubeFusedRegeneratingExplode",
+		},
+	},
+	AxeTrapWeapon = {
+		Sounds = {
+			ImpactSounds = {
+				Invulnerable = "/SFX/SwordWallHitClank",
+				Armored = "/SFX/Player Sounds/ZagreusShieldRicochet",
+				Bone = "/SFX/MetalBoneSmash",
+				Brick = "/SFX/MetalStoneClang",
+				Stone = "/SFX/MetalStoneClang",
+				Organic = "/SFX/StabSplatterSmall",
+				StoneObstacle = "/SFX/SwordWallHitClank",
+				BrickObstacle = "/SFX/SwordWallHitClank",
+				MetalObstacle = "/SFX/SwordWallHitClank",
+				BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
+			},
 		},
 	},
 	-- #endregion

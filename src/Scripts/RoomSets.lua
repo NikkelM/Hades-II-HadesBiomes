@@ -112,6 +112,42 @@ local newRoomSets = {
 		"C_Combat14",
 		"C_Combat15",
 	},
+
+	Styx = {
+		"D_Intro",
+		"D_Hub",
+
+		"D_Boss01",
+
+		"D_Reprieve01",
+
+		"D_MiniBoss01",
+		"D_MiniBoss02",
+		"D_MiniBoss03",
+		"D_MiniBoss04",
+
+		"D_Combat01",
+		"D_Combat02",
+		"D_Combat03",
+		"D_Combat04",
+		"D_Combat05",
+		"D_Combat06",
+
+		"D_Mini01",
+		"D_Mini02",
+		"D_Mini03",
+		"D_Mini04",
+		"D_Mini05",
+		"D_Mini06",
+		"D_Mini07",
+		"D_Mini08",
+		"D_Mini09",
+		"D_Mini10",
+		"D_Mini11",
+		"D_Mini12",
+		"D_Mini13",
+		"D_Mini14",
+	}
 }
 
 for key, newRoomSet in pairs(newRoomSets) do

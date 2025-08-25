@@ -22,13 +22,39 @@ local newData = {
 		InheritFrom = "MelTalkBrooding01",
 	},
 	{
+		Name = "ZagreusTalkDenial_Full",
+		InheritFrom = "MelTalkBroodingFull01",
+	},
+	{
 		Name = "ZagreusTalkDenialReturnToIdle",
 		InheritFrom = "MelTalkBrooding01ReturnToIdle",
 	},
 	{
 		Name = "ZagreusInteractionThoughtful",
 		InheritFrom = "MelTalkBrooding01",
-	}
+	},
+	{
+		Name = "ZagreusInteractEquip",
+		InheritFrom = "MelTalkGifting01",
+		HoldLastFrame = false,
+		ChainTo = "MelTalkGifting01ReturnToIdle"
+	},
+	{
+		Name = "ZagreusRun",
+		InheritFrom = "MelinoeRun",
+	},
+	{
+		Name = "ZagreusStop",
+		InheritFrom = "MelinoeStop",
+	},
+	{
+		Name = "ZagreusStart",
+		InheritFrom = "MelinoeStart",
+	},
+	{
+		Name = "ZagreusWalk",
+		InheritFrom = "MelinoeWalk",
+	},
 }
 
 sjson.hook(animationsFile, function(data)
