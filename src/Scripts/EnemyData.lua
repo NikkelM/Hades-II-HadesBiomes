@@ -354,11 +354,13 @@ local enemyReplacements = {
 	-- #endregion
 
 	-- #region STYX
-	-- #region STYX - Hades
+	Crawler = {
+		DefaultAIData = { DeepInheritance = true, },
+		WeaponOptions = { "HadesCrawlerRush" },
+	},
 	Hades = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
-	-- #endregion
 	-- #endregion
 }
 
@@ -1111,6 +1113,15 @@ local enemyModifications = {
 	RatThug = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "EnemyRatThugOnHit" },
+	},
+	Crawler = {
+		IgnoreSpeedShrine = true,
+		SpellSummonDataOverrides = {
+			DeepInheritance = true,
+			OutgoingDamageModifiers = { { NonPlayerMultiplier = 25, }, },
+			MaxHealth = 150,
+			HealthBarOffsetY = -200,
+		},
 	},
 	-- #endregion
 	-- #region STYX - Minibosses

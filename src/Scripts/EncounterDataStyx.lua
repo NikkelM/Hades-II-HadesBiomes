@@ -60,9 +60,18 @@ local encounterReplacements = {
 			{ FunctionName = "SpawnRoomReward" },
 		},
 	},
-
 	-- TODO: GeneratedStyxMini difficulty
+	GeneratedStyxMini = {
+		-- Only allow skipping the encounters at the end of a path
+		CanEncounterSkip = false,
+		BlockAthenaEncounterKeepsake = true,
+	},
 	-- TODO: GeneratedStyxMiniSingle difficulty
+	GeneratedStyxMiniSingle = {
+		CanEncounterSkip = false,
+		BlockAthenaEncounterKeepsake = true,
+	},
+
 	-- TODO: BaseStyxMiniboss difficulty
 
 	PerfectClearChallengeStyx = {

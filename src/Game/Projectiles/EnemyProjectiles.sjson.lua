@@ -264,6 +264,14 @@ local hadesProjectilesModifications = {
 	-- #endregion
 }
 
+local addProjectiles = {
+	{
+		Name = "HadesCrawlerRush",
+		InheritFrom = "CrawlerRush",
+		Damage = 3,
+	},
+}
+
 local renamedProjectileModifications = {}
 for oldName, newName in pairs(mod.EnemyProjectileMappings) do
 	if hadesProjectilesModifications[oldName] then
@@ -344,6 +352,7 @@ mod.ApplyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjec
 
 sjson.hook(hadesTwoProjectilesFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Projectiles, hadesProjectilesTable.Projectiles, "Name")
+	mod.AddTableKeysSkipDupes(data.Projectiles, addProjectiles, "Name")
 end)
 
 -- Assign to mod so we can check if the projectile exists in WeaponData.lua

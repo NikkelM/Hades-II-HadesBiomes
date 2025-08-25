@@ -54,7 +54,7 @@ local hadesEnemiesModifications = {
 -- Copy an enemy from Hades II as a Hades enemy
 -- Needed if the replaced name is skipped in mod.EnemyNameRemovals
 local enemyAdditions = {
-	-- ASPHODEL
+	-- #region ASPHODEL
 	{
 		Name = "HadesBloodlessNaked",
 		InheritFrom = "BloodlessNaked",
@@ -112,6 +112,7 @@ local enemyAdditions = {
 		Name = "BloodlessNakedBerserkerElite",
 		InheritFrom = "BloodlessBerserker_Elite",
 	},
+	-- #endregion
 }
 
 local enemyKeyReplacements = {}
