@@ -433,6 +433,7 @@ local enemyModifications = {
 			},
 		},
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		-- TODO: Check the below
 		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
 		-- SpawnObstaclesOnDeath = { ... }
 	},
@@ -1124,10 +1125,15 @@ local enemyModifications = {
 			HealthBarOffsetY = -200,
 		},
 	},
-	-- TODO: Death animation is broken
 	HeavyRangedForked = {
 		StunAnimations = { Default = "HeavyRangedForkedCrystal4" },
+		DeathAnimation = "HeavyRangedForkedDeath",
+		-- This plops a large model of the enemy on the ground which doesn't disappear
+		SpawnObstaclesOnDeath = mod.NilValue,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+	},
+	HeavyRangedForkedElite = {
+		DeathAnimation = "HeavyRangedForkedDeath",
 	},
 	-- #endregion
 	-- #region STYX - Minibosses

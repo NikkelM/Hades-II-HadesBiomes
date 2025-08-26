@@ -1205,7 +1205,13 @@ local weaponModifications = {
 	HeavyRangedWeaponFork = {
 		AIData = {
 			ProjectileAngleInterval = 45,
-			ProjectileInterval = 0.1,
+			ProjectileInterval = 0.05,
+		},
+	},
+	HeavyRangedWeaponForkElite = {
+		AIData = {
+			ProjectileAngleInterval = 45,
+			ProjectileInterval = 0.05,
 		},
 	},
 	-- #endregion

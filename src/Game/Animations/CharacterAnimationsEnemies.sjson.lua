@@ -97,6 +97,13 @@ local modifications = {
 	-- #endregion
 
 	-- #region STYX
+	HeavyRangedForkedBurrow = {
+		AngleFromOwner = "Ignore",
+	},
+	HeavyRangedForkedDeath = {
+		SortMode = "Isometric",
+		OffsetY = -70,
+	},
 	-- #endregion
 }
 
