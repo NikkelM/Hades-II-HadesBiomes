@@ -1202,6 +1202,12 @@ local weaponModifications = {
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/RatThug/EmoteAttacking" }, }, },
 	},
+	HeavyRangedWeaponFork = {
+		AIData = {
+			ProjectileAngleInterval = 45,
+			ProjectileInterval = 0.1,
+		},
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
@@ -1319,9 +1325,12 @@ local SjsonToAIDataPropertyMappings = {
 	ProjectileStartAngleOffset = "ProjectileStartAngleOffset",
 	ProjectileStartAngleOffsetMin = "ProjectileStartAngleOffsetMin",
 	ProjectileStartAngleOffsetMax = "ProjectileStartAngleOffsetMax",
+	ProjectileOffset = "ProjectileOffsetDistance",
 	FireFx = "FireFx",
 	UseTargetAngle = "UseTargetAngle",
 }
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponReplacements,
 	weaponKeyReplacements, SjsonToAIDataPropertyMappings)
+
+mod.PrintTable(game.WeaponData.HeavyRangedWeaponFork)

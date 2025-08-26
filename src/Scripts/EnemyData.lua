@@ -1124,6 +1124,11 @@ local enemyModifications = {
 			HealthBarOffsetY = -200,
 		},
 	},
+	-- TODO: Death animation is broken
+	HeavyRangedForked = {
+		StunAnimations = { Default = "HeavyRangedForkedCrystal4" },
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+	},
 	-- #endregion
 	-- #region STYX - Minibosses
 	-- #endregion

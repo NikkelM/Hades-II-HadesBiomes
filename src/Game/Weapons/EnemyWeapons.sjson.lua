@@ -70,9 +70,6 @@ local hadesWeaponsModifications = {
 		Effect = mod.NilValue,
 	},
 	-- #endregion
-
-	-- #region STYX
-	-- #endregion
 }
 
 mod.ApplyNestedSjsonModifications(hadesWeaponsTable.Weapons, hadesWeaponsModifications)
