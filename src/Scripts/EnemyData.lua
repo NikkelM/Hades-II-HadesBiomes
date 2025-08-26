@@ -1137,6 +1137,22 @@ local enemyModifications = {
 	},
 	ThiefImpulseMineLayer = {
 		StunAnimations = { Default = "EnemyStyxThiefOnHit" },
+		DefaultAIData = {
+			BlendTimeoutMin = 0.5,
+			BlendTimeoutMax = 1.0,
+			AttackWhileBlendingIntervalMin = 0.5,
+			AttackWhileBlendingIntervalMax = 1.0,
+			AttackWhileMovingIntervalMin = 0.5,
+			AttackWhileMovingIntervalMax = 1.0,
+		},
+	},
+	ThiefImpulseMineLayerElite = {
+		DefaultAIData = {
+			AttackWhileBlendingIntervalMin = 0,
+			AttackWhileBlendingIntervalMax = 0.5,
+			AttackWhileMovingIntervalMin = 0,
+			AttackWhileMovingIntervalMax = 0.5,
+		},
 	},
 	-- #endregion
 	-- #region STYX - Minibosses

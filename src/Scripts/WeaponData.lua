@@ -1219,6 +1219,8 @@ local weaponModifications = {
 			DeepInheritance = true,
 			ApplyEffectsOnWeaponFire = { WeaponEffectData.RootedAttacker, },
 			ProjectileName = "GrenadierWeapon",
+			-- Custom addition to make the spread a little more random
+			Spread = 50,
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
 	},
