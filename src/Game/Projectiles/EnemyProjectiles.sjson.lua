@@ -268,6 +268,11 @@ local hadesProjectilesModifications = {
 			},
 		},
 	},
+	GrenadierWeapon = {
+		Thing = {
+			Scale = 1.0,
+		},
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT

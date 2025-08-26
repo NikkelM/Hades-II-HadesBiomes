@@ -1135,6 +1135,9 @@ local enemyModifications = {
 	HeavyRangedForkedElite = {
 		DeathAnimation = "HeavyRangedForkedDeath",
 	},
+	ThiefImpulseMineLayer = {
+		StunAnimations = { Default = "EnemyStyxThiefOnHit" },
+	},
 	-- #endregion
 	-- #region STYX - Minibosses
 	-- #endregion

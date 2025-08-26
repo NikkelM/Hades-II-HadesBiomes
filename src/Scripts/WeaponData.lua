@@ -1214,6 +1214,14 @@ local weaponModifications = {
 			ProjectileInterval = 0.05,
 		},
 	},
+	GrenadierWeapon = {
+		AIData = {
+			DeepInheritance = true,
+			ApplyEffectsOnWeaponFire = { WeaponEffectData.RootedAttacker, },
+			ProjectileName = "GrenadierWeapon",
+		},
+		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
@@ -1338,5 +1346,3 @@ local SjsonToAIDataPropertyMappings = {
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponReplacements,
 	weaponKeyReplacements, SjsonToAIDataPropertyMappings)
-
-mod.PrintTable(game.WeaponData.HeavyRangedWeaponFork)
