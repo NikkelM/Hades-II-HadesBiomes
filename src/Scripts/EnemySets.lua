@@ -323,7 +323,7 @@ local additionalEnemySets = {
 		"SatyrRangedElite",
 		"HeavyRangedForkedElite",
 	},
-	-- TODO: Decide on good enemies
+	-- TODO: Decide on good enemies - are these challenges even possible in Styx?
 	-- Custom
 	EnemiesBiome4_EliteChallenge = {
 		"RatThugElite",
