@@ -303,6 +303,27 @@ local addProjectiles = {
 		Damage = 3,
 	},
 	{
+		Name = "HadesPoisonPuddle",
+		InheritFrom = "PoisonPuddle",
+		Effects = {
+			{
+				Name = "StyxPoison",
+				Type = "DAMAGE_OVER_TIME",
+				Amount = 1,
+				Cooldown = 0.13,
+				InitialDelay = 0.85,
+				Duration = 8,
+				Stacks = true,
+				MaxStacks = 10,
+				ExtendDurationOnReapply = false,
+				SilentImpact = true,
+				FrontFx = "PoisonStatusFx",
+				Active = true,
+				OnlyAffectName = "_PlayerUnit",
+			},
+		},
+	},
+	{
 		Name = "HadesPoisonPuddleSmall",
 		InheritFrom = "PoisonPuddleSmall",
 		DamageRadius = 80,

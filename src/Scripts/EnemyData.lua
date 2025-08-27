@@ -1115,6 +1115,10 @@ local enemyModifications = {
 	RatThug = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "EnemyRatThugOnHit" },
+		OnDeathThreadedFunctionName = "ModsNikkelMHadesBiomesOnDeathFireProjectile",
+		OnDeathFunctionArgs = {
+			ProjectileName = "HadesPoisonPuddle",
+		},
 	},
 	Crawler = {
 		IgnoreSpeedShrine = true,
