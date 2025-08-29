@@ -75,7 +75,7 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 	currentRun = currentRun or game.CurrentRun
 	args = args or {}
 
-	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and unit.ModsNikkelMHadesBiomesIsModdedEnemy then
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and (unit.ModsNikkelMHadesBiomesIsModdedEnemy or unit.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy) then
 		-- If the unit is a ShadeNaked, we don't want a summon animation for the picked up enemy
 		if currentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation then
 			currentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation = nil
