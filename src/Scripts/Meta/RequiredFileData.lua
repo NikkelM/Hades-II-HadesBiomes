@@ -37,7 +37,8 @@ mod.PackageFileMappings = {
 
 mod.BikFileMappings = {
 	-- #region GENERAL
-	"RoomTransition",
+	-- TODO: Renaming doesn't work, as the metadata in probably the .bik_atlas is not updated
+	-- RoomTransition = "ModsNikkelMHadesBiomesRoomTransition",
 	-- #endregion
 	-- #region TARTARUS
 	-- Wretch Glutton/PunchingBagUnit
