@@ -83,6 +83,7 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, de
 end
 
 -- Creates a new helpTextFile for all given languages with any IDs that do not exist in the Hades II help text files
+-- TODO: Currently not in use at all
 local function copyHadesHelpTexts()
 	-- Load the Aliases.sjson file to get required aliases that need to be added as new entries to each language
 	local aliasesFilePath = rom.path.combine(mod.hadesGameFolder, 'Content\\Game\\Text\\Aliases.sjson')
@@ -130,9 +131,6 @@ local function copyHadesHelpTexts()
 						existingIds[entry.Id] = true
 					end
 
-					local languageModifications = mod.HadesHelpTextFileModifications[fileName][language] or {}
-					local globalRemovals = mod.HadesHelpTextFileRemovals[fileName] or {}
-
 					-- Remove all existingIds from hadesHelpTextData - we don't want to overwrite something that already exists in Hades II
 					for i = #hadesHelpTextData.Texts, 1, -1 do
 						local entry = hadesHelpTextData.Texts[i]
@@ -140,13 +138,6 @@ local function copyHadesHelpTexts()
 						-- Merge these tables if there are multiple types of replacements
 						if mod.EnemyNameMappings[entry.Id] then
 							entry.Id = mod.EnemyNameMappings[entry.Id]
-						end
-						if existingIds[entry.Id] or globalRemovals[entry.Id] then
-							table.remove(hadesHelpTextData.Texts, i)
-						elseif languageModifications[entry.Id] then
-							for key, value in pairs(languageModifications[entry.Id]) do
-								entry[key] = value
-							end
 						end
 						-- In all Descriptions, replace {#PreviousFormat} with {#Prev}
 						if entry.Description then

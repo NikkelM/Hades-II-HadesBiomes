@@ -125,12 +125,16 @@ function mod.CheckRequiredFiles(failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb", failFast)
 
 	-- The helpText files in the different languages
-	for _, language in ipairs(mod.HelpTextLanguages) do
-		local helpTextFile = rom.path.combine(rom.paths.Content(),
-			'Game\\Text\\' .. language .. '\\HelpTextHades.' .. language .. '.sjson')
-		if not checkFileExistsWithRetry(helpTextFile, 3, 1) then
-			mod.DebugPrint("Missing file: " .. helpTextFile, 1)
-			missingFiles = missingFiles + 1
+	for _, fileName in ipairs(mod.HadesHelpTextFileNames) do
+		for _, language in ipairs(mod.HelpTextLanguages) do
+			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
+				local helpTextFile = rom.path.combine(rom.paths.Content(),
+					'Game\\Text\\' .. language .. '\\' .. fileName .. 'Hades.' .. language .. '.sjson')
+				if not checkFileExistsWithRetry(helpTextFile, 3, 1) then
+					mod.DebugPrint("Missing file: " .. helpTextFile, 1)
+					missingFiles = missingFiles + 1
+				end
+			end
 		end
 	end
 

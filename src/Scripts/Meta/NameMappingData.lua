@@ -8,6 +8,7 @@ mod.EnemyNameMappings = {
 	LightRanged = "HadesLightRanged",
 	Swarmer = "HadesSwarmer",
 	ThiefMineLayer = "HadesThiefMineLayer",
+	ThiefMineLayerElite = "HadesThiefMineLayerElite",
 	-- ASPHODEL
 	-- Most of these already exist in Hades II, so we copy them and do some minor modifications, such as for spawn FX
 	BloodlessNaked = "HadesBloodlessNaked",
@@ -123,88 +124,460 @@ mod.AsphodelRoomNameMappings = {
 }
 
 mod.HadesHelpTextFileNames = {
-	"HelpText",
-	"_NPCData"
+	-- TODO: Not loading any at the moment - need to rework to only add actually required keys
+	-- This might end up allowing us to hook into the existing HelpText file as well instead of requiring to copy the whole file
+	-- Related to #196 and #153
+	-- "HelpText",
+	-- "_NPCData"
 }
+-- These files do not exist
 mod.HadesHelpTextFileSkipMap = {
 	_NPCData = {
 		en = true,
 	},
 }
 
--- Modifications for Hades HelpText files
--- Format is ID = { ReplacementKey = "ReplacementValue" }
--- Contains a subkey for each file type we are copying
-mod.HadesHelpTextFileModifications = {
-	HelpText = {
-		de = {
-			UseLeaveRoomAsphodel_Reroll = {
-				DisplayName = "{I} Embark \n {G} Alter {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-			},
-		},
-		el = {},
-		en = {
-			UseLeaveRoomAsphodel_Reroll = {
-				DisplayName = "{I} Embark \n {G} Alter {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-			},
-		},
-		es = {
-			UseLeaveRoomAsphodel_Reroll = {
-				DisplayName = "{I} Embarcar \n {G} Cambiar {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-			},
-		},
-		fr = {
-			UseLeaveRoomAsphodel_Reroll = {
-				DisplayName = "{I} Embarquer \n {G} Altérer {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-			},
-		},
-		it = {
-			UseLeaveRoomAsphodel_Reroll = {
-				DisplayName = "{I} Imbarcati \n {G} Altera {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-			},
-		},
-		ja = {
-			UseLeaveRoomAsphodel_Reroll = {
-				DisplayName = "{I} 乗る \n {G} 干渉する{#UseGiftPointFormat}（-1{!Icons.ReRoll}）"
-			},
-		},
-		ko = {
-			UseLeaveRoomAsphodel_Reroll = {
-				DisplayName = "{I} 탑승 \n {G} 변경 {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-			},
-		},
-		pl = {
-			UseLeaveRoomAsphodel_Reroll = {
-				DisplayName = "{I} Ruszaj \n {G} Zmień {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-			},
-		},
-		["pt-BR"] = {
-			UseLeaveRoomAsphodel_Reroll = {
-				DisplayName = "{I} Embarcar \n {G} Alterar {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-			},
-		},
-		ru = {
-			UseLeaveRoomAsphodel_Reroll = {
-				DisplayName = "{I} Отплыть \n {G} Изменить {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-			},
-		},
-		tr = {},
-		uk = {},
-		["zh-CN"] = {
-			UseLeaveRoomAsphodel_Reroll = {
-				DisplayName = "{I} 上船 \n {G} 重置 {#UseGiftPointFormat}(-1{!Icons.ReRoll})"
-			},
-		},
-		["zh-TW"] = {},
-	},
-	_NPCData = {},
-}
-
-mod.HadesHelpTextFileRemovals = {
-	HelpText = {
-		-- Also defined in TraitText
-		TemporaryDoorHealTrait = true,
-	},
+mod.HadesHelpTextCopyKeys = {
+	-- #region Combat Actions
+	WallSlamHit = true,
+	PitSlamHit = true,
+	RubbleSlamHit = true,
+	UnitFrozen = true,
+	Combat_Enraged = true,
+	Combat_PermanentEnraged = true,
+	-- AssistNotAvailable = true, -- Duplicate
+	Pierced = true,
+	Escaped = true,
+	PerfectLanding = true,
+	-- AssistAvailableHint = true, -- Duplicate
+	PoisonStack = true,
+	-- DevotionMessage = true, -- Duplicate
+	-- #endregion
+	-- #region Interaction prompts
+	UseLeaveRoomAsphodel = true,
+	UseLeaveRoomAsphodel_Reroll = true, -- TODO: Modification from above
+	UseLeaveRoomAsphodel_CannotReroll = true,
+	-- UseCharonStoreDiscount = true, -- Duplicate
+	DiscountTrait = true,
+	-- UseForbiddenItem = true, -- Duplicate
+	GiftBouldyUseText = true,
+	UseTalkToSisyphus = true,
+	UseTalkToBouldy = true,
+	UseTalkToThanatos = true,
+	UseTalkToPatroclus = true,
+	UseTalkToEurydice = true,
+	UseFinalBossDoor = true,
+	UseCerberusDoor = true,
+	UseStyxWarpDoor = true,
+	-- #endregion
+	-- #region Cerberus Messages
+	ClearedCerberus_Title = true,
+	ClearedCerberus_Subtitle = true,
+	ClearedCerberus_Alt1_Title = true,
+	ClearedCerberus_Alt1_Subtitle = true,
+	ClearedCerberus_Alt2_Title = true,
+	ClearedCerberus_Alt2_Subtitle = true,
+	ClearedCerberus_A_Title = true,
+	ClearedCerberus_A_Subtitle = true,
+	ClearedCerberus_B_Title = true,
+	ClearedCerberus_B_Subtitle = true,
+	ClearedCerberus_C_Title = true,
+	ClearedCerberus_C_Subtitle = true,
+	ClearedCerberus_D_Title = true,
+	ClearedCerberus_D_Subtitle = true,
+	ClearedCerberus_E_Title = true,
+	ClearedCerberus_E_Subtitle = true,
+	ClearedCerberus_F_Title = true,
+	ClearedCerberus_F_Subtitle = true,
+	ClearedCerberus_G_Title = true,
+	ClearedCerberus_G_Subtitle = true,
+	ClearedCerberus_H_Title = true,
+	ClearedCerberus_H_Subtitle = true,
+	ClearedCerberus_I_Title = true,
+	ClearedCerberus_I_Subtitle = true,
+	ClearedCerberus_J_Title = true,
+	ClearedCerberus_J_Subtitle = true,
+	ClearedCerberus_K_Title = true,
+	ClearedCerberus_K_Subtitle = true,
+	ClearedCerberus_L_Title = true,
+	ClearedCerberus_L_Subtitle = true,
+	ClearedCerberus_M_Title = true,
+	ClearedCerberus_M_Subtitle = true,
+	ClearedCerberus_N_Title = true,
+	ClearedCerberus_N_Subtitle = true,
+	ClearedCerberus_O_Title = true,
+	ClearedCerberus_O_Subtitle = true,
+	ClearedCerberus_P_Title = true,
+	ClearedCerberus_P_Subtitle = true,
+	ClearedCerberus_Q_Title = true,
+	ClearedCerberus_Q_Subtitle = true,
+	-- #endregion
+	-- #region Bouldy Blessings
+	-- GainedBouldyBlessing = true, -- Duplicate
+	BouldyBlessing_Armor = true,
+	BouldyBlessing_Attack = true,
+	BouldyBlessing_Special = true,
+	BouldyBlessing_Ranged = true,
+	BouldyBlessing_Speed = true,
+	BouldyBlessing_Money = true,
+	BouldyBlessing_None = true,
+	-- #endregion
+	-- #region ShrinePointDoor
+	ShrinePointGate = true,
+	UseShrinePointDoor_Locked_PreReward = true,
+	UseShrinePointDoor_Locked_PostReward = true,
+	UseShrinePointDoor_Unlocked = true,
+	UseShrinePointDoor_Unlocked_Reroll = true,
+	UseShrinePointDoor_Unlocked_CannotReroll = true,
+	ShrinePointDoorEnterRequirement = true,
+	-- #endregion
+	-- #region Combat Objectives
+	Objective_ThanatosKills = true,
+	-- Objective_PlayerKills = true, -- Duplicate
+	Objective_SurvivalTimer = true,
+	-- #endregion
+	-- TODO: Do EnemyNameMappings and duplicate removals before hooking
+	-- #region Enemies
+	Swarmer = true,
+	SwarmerElite = true,
+	LightSpawner = true,
+	LightSpawnerElite = true,
+	DisembodiedHand = true,
+	HeavyMeleeElite = true,
+	LightRanged = true,
+	LightRangedElite = true,
+	PunchingBagUnit = true,
+	PunchingBagUnitElite = true,
+	ThiefMineLayer = true,
+	ThiefMineLayerElite = true,
+	HeavyMelee = true,
+	WretchAssassinMiniboss = true,
+	HeavyRanged = true,
+	HeavyRangedElite = true,
+	HeavyRangedSplitterMiniboss = true,
+	ShieldRanged = true,
+	ShieldRangedElite = true,
+	RangedBurrower = true,
+	BloodlessNaked = true,
+	BloodlessNakedBerserker = true,
+	BloodlessGrenadier = true,
+	BloodlessGrenadierElite = true,
+	BloodlessSelfDestruct = true,
+	BloodlessWaveFist = true,
+	BloodlessWaveFistElite = true,
+	BloodlessPitcher = true,
+	BloodlessPitcherElite = true,
+	SpreadShotUnit = true,
+	SpreadShotUnitMiniboss = true,
+	CrusherUnit = true,
+	CrusherUnitElite = true,
+	FreezeShotUnit = true,
+	HitAndRunUnit = true,
+	ShadeNaked = true,
+	ShadeSwordUnit = true,
+	ShadeSpearUnit = true,
+	ShadeBowUnit = true,
+	ShadeShieldUnit = true,
+	SplitShotUnit = true,
+	FlurrySpawner = true,
+	FlurrySpawnerElite = true,
+	ChariotSuicide = true,
+	Chariot = true,
+	Crawler = true,
+	RatThug = true,
+	RatThugMiniboss = true,
+	ThiefImpulseMineLayer = true,
+	ThiefImpulseMineLayerMiniboss = true,
+	HeavyRangedForked = true,
+	HeavyRangedForkedMiniboss = true,
+	SatyrRanged = true,
+	SatyrRangedMiniboss = true,
+	CrawlerMiniBoss = true,
+	CrawlerMiniBoss_Full = true,
+	SpikeTrap = true,
+	DartTrap = true,
+	BlastCubeFused = true,
+	GasTrapPassive = true,
+	-- #endregion
+	-- #region Bosses
+	HydraHeadImmortal = true,
+	HydraHeadImmortal_Full = true,
+	HydraHeadImmortal_NickName = true,
+	Theseus = true,
+	Minotaur = true,
+	Minotaur_Full = true,
+	Minotaur_NickName = true,
+	Hades_Full = true,
+	-- #endregion
+	-- #region Characters
+	-- NPC_Hades_01 = true, -- TODO: Duplicate/Map name for boss subtitle
+	NPC_Hades_Story_02 = true,
+	NPC_FurySister_01 = true,
+	Harpy = true,
+	NPC_FurySister_02 = true,
+	NPC_FurySister_Unnamed_02 = true,
+	Harpy2 = true,
+	Harpy2_Full = true,
+	NPC_FurySister_03 = true,
+	NPC_FurySister_Unnamed_03 = true,
+	Harpy3 = true,
+	Harpy3_Full = true,
+	NPC_Orpheus_01 = true,
+	NPC_Orpheus_Story_01 = true,
+	Orpheus = true,
+	NPC_Sisyphus_01 = true,
+	NPC_SisyphusAndBouldy_01 = true,
+	Sisyphus = true,
+	-- NPC_Bouldy_01 = true, -- TODO: Duplicate
+	NPC_Patroclus_01 = true,
+	NPC_Patroclus_Unnamed_01 = true,
+	NPC_Eurydice_01 = true,
+	NPC_Eurydice_Unnamed_01 = true,
+	NPC_ThanatosUnnamed_01 = true,
+	NPC_Thanatos_01 = true,
+	Thanatos = true,
+	NPC_Persephone_01 = true,
+	NPC_Persephone_01A = true,
+	NPC_Persephone_Unnamed_01 = true,
+	NPC_Persephone_Home_01 = true,
+	EndingComplete = true,
+	EpilogueComplete = true,
+	-- #endregion
+	-- #region Remembrances
+	Remembrance_Hades = true,
+	Remembrance_Family = true,
+	Remembrance_Death = true,
+	Remembrance_Nobody = true,
+	Remembrance_Dog = true,
+	Remembrance_Weakling = true,
+	Remembrance_Oaf = true,
+	Remembrance_Mortal = true,
+	Remembrance_Brat = true,
+	Remembrance_Fear = true,
+	Remembrance_Dare = true,
+	Remembrance_Questions = true,
+	Remembrance_Olympus = true,
+	Remembrance_Curse = true,
+	Remembrance_Bearing = true,
+	Remembrance_Domain = true,
+	Remembrance_Zeus = true,
+	Remembrance_Place = true,
+	Remembrance_Belong = true,
+	Remembrance_Fury = true,
+	Remembrance_Judged = true,
+	Remembrance_You = true,
+	Remembrance_Here = true,
+	Remembrance_Poseidon = true,
+	Remembrance_Elysium = true,
+	Remembrance_Mistakes = true,
+	Remembrance_Explain = true,
+	Remembrance_Disrespect = true,
+	Remembrance_Asphodel = true,
+	Remembrance_Lack = true,
+	Remembrance_Mess = true,
+	Remembrance_Stray = true,
+	Remembrance_Sulk = true,
+	Remembrance_Bleed = true,
+	Remembrance_Eyes = true,
+	Remembrance_Disgusting = true,
+	Remembrance_Forbidden = true,
+	Remembrance_Breeze = true,
+	Remembrance_Immortal = true,
+	Remembrance_Divide = true,
+	Remembrance_Limits = true,
+	Remembrance_Arms = true,
+	Remembrance_Heroes = true,
+	Remembrance_Rivers = true,
+	Remembrance_Boatman = true,
+	Remembrance_Anger = true,
+	Remembrance_Spear = true,
+	Remembrance_Darkness = true,
+	Remembrance_Gemstones = true,
+	Remembrance_Vermin = true,
+	Remembrance_Obscurity = true,
+	Remembrance_Sturdy = true,
+	Remembrance_Differences = true,
+	Remembrance_Time = true,
+	Remembrance_Titans = true,
+	Remembrance_Boundaries = true,
+	Remembrance_Learn = true,
+	Remembrance_Sigil = true,
+	Remembrance_Shouting = true,
+	Remembrance_Standard = true,
+	Remembrance_Surface = true,
+	Remembrance_Failure = true,
+	Remembrance_Nyx = true,
+	Remembrance_Mortals = true,
+	Remembrance_Pride = true,
+	-- #endregion
+	-- #region Locations
+	Location_Tartarus = true,
+	Location_Tartarus_Short = true,
+	Tartarus = true,
+	Location_Asphodel = true,
+	Location_Asphodel_Short = true,
+	Asphodel = true,
+	Location_Elysium = true,
+	Location_Elysium_Short = true,
+	Elysium = true,
+	Location_Styx = true,
+	Location_Styx_Short = true,
+	Styx = true,
+	Location_Challenge = true,
+	Challenge = true,
+	Location_Surface = true,
+	Surface = true,
+	Location_Surface_Alt = true,
+	Surface_Alt = true,
+	-- #endregion
+	-- #region Death
+	-- DeathMessage = true, -- TODO: Duplicate
+	OutroDeathMessage = true,
+	-- OutroDeathMessageAlt = true, -- TODO: Duplicate
+	PostEndingDeathMessage = true,
+	PostEndingDeathMessageAlt = true,
+	-- #endregion
+	-- #region Vanquished Messages
+	BiomeClearedMessage = true,
+	HarpyDefeatedMessage = true,
+	HarpiesDefeatedMessage = true,
+	HydraDefeatedMessage = true,
+	HydraDefeatedMessage02 = true,
+	TheseusDefeatedMessage = true,
+	MinotaurDefeatedMessage = true,
+	HadesDefeatedMessage = true,
+	-- CrawlerDefeatedMessage = true, -- Duplicate
+	ThanatosMessage = true,
+	-- #endregion
+	-- #region Keepsake/Pet messages
+	AchillesPatroclusSignoff = true,
+	AchillesPatroclusSignoff_AssistMax = true,
+	MegaeraSignoff = true,
+	MegaeraSignoff_AssistMax_A = true,
+	MegaeraSignoff_AssistMax_B = true,
+	ThanatosSignoff = true,
+	ThanatosSignoff_AssistMax_A = true,
+	ThanatosSignoff_AssistMax_B = true,
+	DusaSignoff = true,
+	DusaSignoff_AssistMax = true,
+	SkellySignoff = true,
+	SkellySignoff_AssistMax = true,
+	SisyphusSignoff = true,
+	SisyphusSignoff_Max = true,
+	SisyphusBouldySignoff = true,
+	SisyphusBouldySignoff_AssistMax = true,
+	EurydiceSignoff = true,
+	EurydiceSignoff_Max = true,
+	PatroclusSignoff = true,
+	PatroclusSignoff_Max = true,
+	PersephoneSignoff = true,
+	Persephone_SignoffMax = true,
+	HadesSignoff = true,
+	Hades_SignoffMax = true,
+	-- #endregion
+	-- #region Pet traits/descriptions
+	FuryAssistTrait_Rack = true,
+	FuryAssistTrait_Delta = true,
+	FuryAssistTrait = true,
+	ThanatosAssistTrait_Rack = true,
+	ThanatosAssistTrait_Delta = true,
+	ThanatosAssistTrait = true,
+	SisyphusAssistTrait_Rack = true,
+	SisyphusAssistTrait_Delta = true,
+	SisyphusAssistTrait = true,
+	SkellyAssistTrait_Rack = true,
+	SkellyAssistTrait_Delta = true,
+	SkellyAssistTrait = true,
+	DusaAssistTrait_Rack = true,
+	DusaAssistTrait_Delta = true,
+	DusaAssistTrait = true,
+	AchillesPatroclusAssistTrait_Rack = true,
+	AchillesPatroclusAssistTrait_Delta = true,
+	AchillesPatroclusAssistTrait = true,
+	-- #endregion
+	-- #region RunHistory
+	RunHistoryScreenResult_Tartarus = true,
+	RunHistoryScreenResult_A_MiniBoss01 = true,
+	RunHistoryScreenResult_A_MiniBoss02 = true,
+	RunHistoryScreenResult_A_MiniBoss03 = true,
+	RunHistoryScreenResult_A_Boss01 = true,
+	RunHistoryScreenResult_A_Boss02 = true,
+	RunHistoryScreenResult_A_Boss03 = true,
+	RunHistoryScreenResult_Asphodel = true,
+	RunHistoryScreenResult_B_Wrapping01 = true,
+	RunHistoryScreenResult_B_MiniBoss01 = true,
+	RunHistoryScreenResult_B_MiniBoss02 = true,
+	RunHistoryScreenResult_B_Boss01 = true,
+	RunHistoryScreenResult_Elysium = true,
+	RunHistoryScreenResult_C_MiniBoss01 = true,
+	RunHistoryScreenResult_C_MiniBoss02 = true,
+	RunHistoryScreenResult_C_Boss01 = true,
+	RunHistoryScreenResult_Styx = true,
+	RunHistoryScreenResult_D_Boss01 = true,
+	RunHistoryScreenResult_CharonFight01 = true,
+	RunHistoryScreenResult_Challenge = true,
+	RunHistoryScreen_Assist = true,
+	-- #endregion
+	-- #region Victory Screen messages
+	-- TODO: Will have some duplicates
+	ClearNumOne = true,
+	ClearNumTen = true,
+	ClearNumFifty = true,
+	ClearNumOneHundred = true,
+	ClearNumTwoFifty = true,
+	ClearNumFiveHundred = true,
+	ClearNearDeath = true,
+	ClearFullHealth = true,
+	ClearTimeFast = true,
+	ClearTimeVeryFast = true,
+	ClearTimeSlow = true,
+	ClearMoneyNone = true,
+	ClearMoneyHigh = true,
+	ClearMetaPointsInvestedNone = true,
+	ClearNoOlympianBoons = true,
+	ClearAllStoryRooms = true,
+	ClearAllReprieveRooms = true,
+	ClearAllShopRooms = true,
+	ClearRequiredTraitsZeus = true,
+	ClearRequiredTraitsPoseidon = true,
+	ClearRequiredTraitsAthena = true,
+	ClearRequiredTraitsAres = true,
+	ClearRequiredTraitsArtemis = true,
+	ClearRequiredTraitsAphrodite = true,
+	ClearRequiredTraitsDionysus = true,
+	ClearRequiredTraitsHermes = true,
+	ClearRequiredTraitsDemeter = true,
+	ClearRequiredTraitsChaos = true,
+	ClearHighMaxHealth = true,
+	ClearChallengeSwitches = true,
+	ClearDevotionEncounters = true,
+	ClearShrineChallengeEncounters = true,
+	ClearMiniBossEncounters = true,
+	ClearWeaponsFiredWrath = true,
+	ClearWeaponsFiredRanged = true,
+	ClearSynergyTraits = true,
+	ClearLegendaryTraits = true,
+	ClearFishCaught = true,
+	ClearConsecutiveLow = true,
+	ClearConsecutiveHigh = true,
+	ClearHealItems = true,
+	ClearStackUpgrades = true,
+	ClearGiftDrops = true,
+	ClearLockKeyDrops = true,
+	ClearConsolationPrizes = true,
+	ClearManyLastStands = true,
+	ClearShutDownThanatos = true,
+	ClearManyTraitsSold = true,
+	-- #endregion
+	-- #region Misc
+	PassiveItem = true,
+	Assist = true, -- NPC pets
+	RageMeter = true,
+	_PlayerUnit = true,
+	AssistTraitsPermitted_Title = true,
+	AssistTraitsPermitted_Subtitle = true,
+	Codex_Summon_Locked = true,
+	-- #endregion
 }
 
 -- Keys to be removed from the CodexText files before hooking them into Hades II

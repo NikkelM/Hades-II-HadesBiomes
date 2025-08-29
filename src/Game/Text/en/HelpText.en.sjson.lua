@@ -1,4 +1,7 @@
-local helpTextFile = rom.path.combine(rom.paths.Content(), 'Game/Text/en/HelpText.en.sjson')
+local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Text\\en\\HelpText.en.sjson")
+local hadesHelpTextTable = mod.DecodeSjsonFile(hadesHelpTextFile)
+
+local hadesTwoHelpTextFile = rom.path.combine(rom.paths.Content(), 'Game/Text/en/HelpText.en.sjson')
 
 local order = {
 	"Id",
@@ -6,6 +9,7 @@ local order = {
 	"OverwriteLocalization"
 }
 
+-- Entirely new, custom entries
 local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText",
@@ -39,8 +43,23 @@ local newData = {
 	},
 }
 
-sjson.hook(helpTextFile, function(data)
+local hadesHelpTextCopiedEntries = {}
+for _, entry in ipairs(hadesHelpTextTable.Texts) do
+	if mod.HadesHelpTextCopyKeys[entry.Id] then
+		if mod.EnemyNameMappings[entry.Id] then
+			entry.Id = mod.EnemyNameMappings[entry.Id]
+		end
+		if entry.DisplayName then
+			-- Fix icons
+			entry.DisplayName = string.gsub(entry.DisplayName, "{!Icons.ReRoll_Small}", "{!Icons.ReRoll}")
+		end
+		table.insert(hadesHelpTextCopiedEntries, entry)
+	end
+end
+
+sjson.hook(hadesTwoHelpTextFile, function(data)
 	for _, newValue in ipairs(newData) do
 		table.insert(data.Texts, sjson.to_object(newValue, order))
 	end
+	mod.AddTableKeysSkipDupes(data.Texts, hadesHelpTextCopiedEntries, "Id")
 end)
