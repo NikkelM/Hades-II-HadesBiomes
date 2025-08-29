@@ -63,7 +63,7 @@ mod.CachedRunsFilePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid
 ---@return table
 function mod.LoadCachedRunsFile()
 	if rom.path.exists(mod.CachedRunsFilePath) then
-		return sjson.decode_file(mod.CachedRunsFilePath)
+		return mod.DecodeSjsonFile(mod.CachedRunsFilePath)
 	else
 		error(
 			"\"cachedRuns.sjson\" not found! Please re-install the mod by setting both \"uninstall\" and \"firstTimeSetup\" in the config to \"true\".")
@@ -430,6 +430,19 @@ function mod.ApplyGlobalGameObjectModifications(useModded, target, modifications
 			mod.ApplyGlobalGameObjectModifications(useModded, target[key], value)
 		end
 	end
+end
+
+---Returns if a given entry should be removed from a table based on a list of entries to remove.
+---@param entryName string The name, ID or other identifier of the entry to check. This will most times be passed in as table.Name or table.Id.
+---@param entriesToRemove table A list of names, IDs or other identifiers to remove.
+---@return boolean shouldRemove True if the entry should be removed, false otherwise.
+function mod.ShouldRemoveEntry(entryName, entriesToRemove)
+	for _, removeName in ipairs(entriesToRemove) do
+		if entryName == removeName then
+			return true
+		end
+	end
+	return false
 end
 
 -- TODO: Remove when releasing

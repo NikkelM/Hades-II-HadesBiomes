@@ -11,7 +11,7 @@ end
 
 local hadesEnemyAnimationsFile = rom.path.combine(mod.hadesGameFolder,
 	"Content\\Game\\Animations\\CharacterAnimationsEnemies.sjson")
-local hadesEnemyAnimationsTable = sjson.decode_file(hadesEnemyAnimationsFile)
+local hadesEnemyAnimationsTable = mod.DecodeSjsonFile(hadesEnemyAnimationsFile)
 
 -- This is the largest file, so we don't run into issues with the hooking
 local hadesTwoEnemyAnimationsFile = rom.path.combine(rom.paths.Content(), "Game\\Animations\\Enemy_Olympus_VFX.sjson")

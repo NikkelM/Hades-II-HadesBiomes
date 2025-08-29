@@ -1,10 +1,10 @@
 -- Adds weapon data for enemies from Hades to Hades II
 
 local hadesWeaponsFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Weapons\\EnemyWeapons.sjson")
-local hadesWeaponsTable = sjson.decode_file(hadesWeaponsFile)
+local hadesWeaponsTable = mod.DecodeSjsonFile(hadesWeaponsFile)
 
 local hadesTwoWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\Weapons\\Weapons.sjson")
-local hadesTwoWeaponsTable = sjson.decode_file(hadesTwoWeaponsFile)
+local hadesTwoWeaponsTable = mod.DecodeSjsonFile(hadesTwoWeaponsFile)
 
 -- Rename duplicate enemy names using mod.EnemyWeaponMappings
 mod.RenameSjsonEntries(hadesWeaponsTable.Weapons, mod.EnemyWeaponMappings, "Name", "EnemyWeapons.sjson")

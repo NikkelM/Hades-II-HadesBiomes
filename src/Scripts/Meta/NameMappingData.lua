@@ -207,6 +207,19 @@ mod.HadesHelpTextFileRemovals = {
 	},
 }
 
+-- Keys to be removed from the CodexText files before hooking them into Hades II
+-- These keys are not required (e.g. Gods)
+mod.HadesCodexTextKeyRemovals = {
+	"CodexData_Chaos_01",
+	"CodexData_Demeter_01",
+	"CodexData_Skelly_01",
+}
+-- Mappings for Codex entries that exist in both games, but need to be renamed to avoid conflicts
+mod.HadesCodexTextNameMappings = {
+	CodexData_BloodlessBerserker_01 = "CodexData_BloodlessBerserker_01_Hades",
+	CodexData_Hades_01 = "CodexData_Hades_01_Hades",
+}
+
 -- Mappings for various game object modifications that need to be applied when the run is started/ended
 --[[
 	Format is, for example:

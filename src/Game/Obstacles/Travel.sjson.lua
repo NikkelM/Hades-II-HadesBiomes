@@ -1,7 +1,7 @@
 -- Adds Travel (D_Hub) obstacles from Hades to Hades II
 
 local hadesTravelObstacleFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Obstacles\\Travel.sjson")
-local hadesTravelObstacleTable = sjson.decode_file(hadesTravelObstacleFile)
+local hadesTravelObstacleTable = mod.DecodeSjsonFile(hadesTravelObstacleFile)
 
 local hadesTwoTravelObstacleFile = rom.path.combine(rom.paths.Content(), "Game\\Obstacles\\Travel.sjson")
 

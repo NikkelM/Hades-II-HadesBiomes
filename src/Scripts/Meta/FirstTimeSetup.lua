@@ -174,7 +174,7 @@ end
 
 -- Common function to copy and filter animations
 local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, modifications, additions, animationType)
-	local animationsTable = sjson.decode_file(srcPath)
+	local animationsTable = mod.DecodeSjsonFile(srcPath)
 
 	if rom.path.exists(destPath) then
 		mod.DebugPrint("File already exists and will not be overwritten: " .. destPath, 2)

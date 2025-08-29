@@ -1,7 +1,7 @@
 -- Adds NPCs from Hades to Hades II
 
 local hadesNPCFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Units\\NPCs.sjson")
-local hadesNPCTable = sjson.decode_file(hadesNPCFile)
+local hadesNPCTable = mod.DecodeSjsonFile(hadesNPCFile)
 
 local hadesTwoNPCFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\NPCs.sjson")
 

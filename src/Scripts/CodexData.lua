@@ -140,6 +140,10 @@ for oldName, newName in pairs(mod.EnemyNameMappings) do
 	mod.UpdateField(duplicateCodexPortraits, oldName, newName, { "*" }, "duplicateCodexPortraits")
 end
 
+for oldName, newName in pairs(mod.HadesCodexTextNameMappings) do
+	mod.UpdateField(hadesCodexData, oldName, newName, { "Entries", "*", "Entries", "*", "Text" }, "CodexData entries")
+end
+
 local updatedCodexData = {}
 -- Manually copy some entries from other groups
 updatedCodexData.SavedEntries = {}

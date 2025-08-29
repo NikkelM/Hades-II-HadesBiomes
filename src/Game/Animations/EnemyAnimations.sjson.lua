@@ -2,7 +2,7 @@
 
 local hadesEnemyAnimationsFile = rom.path.combine(mod.hadesGameFolder,
 	"Content\\Game\\Animations\\EnemyAnimations.sjson")
-local hadesEnemyAnimationsTable = sjson.decode_file(hadesEnemyAnimationsFile)
+local hadesEnemyAnimationsTable = mod.DecodeSjsonFile(hadesEnemyAnimationsFile)
 
 -- These animations depend on some animations in various other files, so we hook into our own FX file, which is loaded last due to the Z_ prefix
 local hadesTwoEnemyAnimationsFile = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)

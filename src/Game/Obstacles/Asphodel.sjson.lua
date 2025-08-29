@@ -1,10 +1,10 @@
 -- Adds obstacles for the Asphodel biome from Hades to Hades II
 
 local hadesAsphodelObstacleFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Obstacles\\Asphodel.sjson")
-local hadesAsphodelObstacleTable = sjson.decode_file(hadesAsphodelObstacleFile)
+local hadesAsphodelObstacleTable = mod.DecodeSjsonFile(hadesAsphodelObstacleFile)
 
 local hadesTwoAsphodelObstacleFile = rom.path.combine(rom.paths.Content(), "Game\\Obstacles\\Asphodel.sjson")
--- local hadesTwoAsphodelObstacleTable = sjson.decode_file(hadesTwoAsphodelObstacleFile)
+-- local hadesTwoAsphodelObstacleTable = mod.DecodeSjsonFile(hadesTwoAsphodelObstacleFile)
 
 -- These need to be added before the others, as they are inherited from
 local hadesObstacleAdditionsParents = {}

@@ -1,7 +1,7 @@
 -- Adds obstacles for the Styx biome from Hades to Hades II
 
 local hadesStyxObstacleFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Obstacles\\Styx.sjson")
-local hadesStyxObstacleTable = sjson.decode_file(hadesStyxObstacleFile)
+local hadesStyxObstacleTable = mod.DecodeSjsonFile(hadesStyxObstacleFile)
 
 local hadesTwoStyxObstacleFile = rom.path.combine(rom.paths.Content(), "Game\\Obstacles\\Styx.sjson")
 

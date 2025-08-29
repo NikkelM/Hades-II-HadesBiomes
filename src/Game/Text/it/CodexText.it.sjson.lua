@@ -1,9 +1,22 @@
 local hadesCodexTextFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Text\\it\\CodexText.it.sjson")
 local hadesCodexTextTable = mod.DecodeSjsonFile(hadesCodexTextFile)
 
--- Hooking into our own file, as it is very large
--- The H2 CodexText file is not large enough to handle the hook
-local screenTextFile = rom.path.combine(rom.paths.Content(), 'Game\\Text\\it\\HelpTextHades.it.sjson')
+-- Remove unneeded keys from the CodexText file
+for i = #hadesCodexTextTable.Texts, 1, -1 do
+	local codexEntry = hadesCodexTextTable.Texts[i]
+	if mod.ShouldRemoveEntry(codexEntry.Id, mod.HadesCodexTextKeyRemovals) then
+		table.remove(hadesCodexTextTable.Texts, i)
+	end
+end
+
+-- Rename duplicate codex entries
+for oldName, newName in pairs(mod.HadesCodexTextNameMappings) do
+	mod.UpdateField(hadesCodexTextTable.Texts, oldName, newName, { "Id" }, "CodexText.it.sjson")
+end
+
+-- The Hades II CodexText file is not large enough to handle the hook
+local screenTextFile = rom.path.combine(rom.paths.Content(), 'Game\\Text\\it\\HelpText.it.sjson')
 sjson.hook(screenTextFile, function(data)
-	data.Texts = game.MergeTables(data.Texts, hadesCodexTextTable.Texts)
+	-- Shouldn't be finding any duplicates, as we are not hooking into the Hades II Codex file
+	mod.AddTableKeysSkipDupes(data.Texts, hadesCodexTextTable.Texts, "Id")
 end)

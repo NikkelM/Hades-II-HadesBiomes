@@ -565,16 +565,19 @@ mod.MapTextFileNames = {
 }
 
 -- Languages supported by Hades
+-- TODO: Not loading any at the moment - need to rework to only add actually required keys
+-- This might end up allowing us to hook into the existing HelpText file as well instead of requiring to copy the whole file
+-- Related to #196 and #153
 mod.HelpTextLanguages = {
-	"de",
-	"en",
-	"es",
-	"fr",
-	"it",
-	"ja",
-	"ko",
-	"pl",
-	"pt-BR",
-	"ru",
-	"zh-CN"
+	-- "de",
+	-- "en",
+	-- "es",
+	-- "fr",
+	-- "it",
+	-- "ja",
+	-- "ko",
+	-- "pl",
+	-- "pt-BR",
+	-- "ru",
+	-- "zh-CN"
 }

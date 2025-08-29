@@ -10,7 +10,7 @@ local function shouldRemoveProjectile(name, projectilesToRemove)
 end
 
 local hadesProjectilesFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Projectiles\\Projectiles.sjson")
-local hadesProjectilesTable = sjson.decode_file(hadesProjectilesFile)
+local hadesProjectilesTable = mod.DecodeSjsonFile(hadesProjectilesFile)
 
 local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Projectiles\\PlayerProjectiles.sjson")
 
@@ -29,7 +29,6 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 		table.remove(hadesProjectilesTable.Projectiles, i)
 		mod.DebugPrint("Removed projectile: " .. projectile.Name .. " from EnemyProjectiles.sjson", 4)
 	end
-
 end
 
 sjson.hook(hadesTwoProjectilesFile, function(data)
