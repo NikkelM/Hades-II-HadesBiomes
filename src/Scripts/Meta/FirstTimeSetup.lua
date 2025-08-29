@@ -83,7 +83,7 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, de
 end
 
 -- Creates a new helpTextFile for all given languages with any IDs that do not exist in the Hades II help text files
-local function copyHadesHelpTexts(fileNames, fileSkipMap)
+local function copyHadesHelpTexts()
 	-- Load the Aliases.sjson file to get required aliases that need to be added as new entries to each language
 	local aliasesFilePath = rom.path.combine(mod.hadesGameFolder, 'Content\\Game\\Text\\Aliases.sjson')
 	local aliasesDataRaw = mod.DecodeSjsonFile(aliasesFilePath)
@@ -105,10 +105,10 @@ local function copyHadesHelpTexts(fileNames, fileSkipMap)
 		aliasesData = filtered
 	end
 
-	for _, fileName in ipairs(fileNames) do
+	for _, fileName in ipairs(mod.HadesHelpTextFileNames) do
 		-- A HelpText language/file is any of the copied files, not just HelpText.xx.sjson
 		for _, language in ipairs(mod.HelpTextLanguages) do
-			if not (fileSkipMap[fileName] and fileSkipMap[fileName][language]) then
+			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
 
 				local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
@@ -291,7 +291,7 @@ function mod.FirstTimeSetup()
 	copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", "Voiceline ", true)
 
 	mod.DebugPrint("Copying text files...", 3)
-	copyHadesHelpTexts(mod.HadesHelpTextFileNames, mod.HadesHelpTextFileSkipMap)
+	copyHadesHelpTexts()
 
 	mod.DebugPrint("Copying Fx animations...", 3)
 	copyHadesFxAnimations()
