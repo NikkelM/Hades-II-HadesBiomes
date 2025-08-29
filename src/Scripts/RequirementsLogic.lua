@@ -458,20 +458,22 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	end
 
 	if requirements.RequiredCodexEntry ~= nil then
-		local requiredEntryName = requirements.RequiredCodexEntry.EntryName
-		local requiredEntryIndex = requirements.RequiredCodexEntry.EntryIndex or 1
-		local requiredCodexEntryFound = HasCodexEntryBeenFound(requiredEntryName, requiredEntryIndex)
-		if not requiredCodexEntryFound then
-			return false
-		end
+		-- local requiredEntryName = requirements.RequiredCodexEntry.EntryName
+		-- local requiredEntryIndex = requirements.RequiredCodexEntry.EntryIndex or 1
+		-- local requiredCodexEntryFound = HasCodexEntryBeenFound(requiredEntryName, requiredEntryIndex)
+		-- if not requiredCodexEntryFound then
+		-- 	return false
+		-- end
+		return false
 	end
 
 	if requirements.RequiredCodexEntries ~= nil then
-		for requiredEntryName, requiredEntryIndex in pairs(requirements.RequiredCodexEntries) do
-			if not HasCodexEntryBeenFound(requiredEntryName, requiredEntryIndex) then
-				return false
-			end
-		end
+		-- for requiredEntryName, requiredEntryIndex in pairs(requirements.RequiredCodexEntries) do
+		-- 	if not HasCodexEntryBeenFound(requiredEntryName, requiredEntryIndex) then
+		-- 		return false
+		-- 	end
+		-- end
+		return false
 	end
 
 	if requirements.RequiredCodexEntriesMin ~= nil then -- not implemented in mod

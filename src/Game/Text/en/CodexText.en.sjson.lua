@@ -6,6 +6,12 @@ for i = #hadesCodexTextTable.Texts, 1, -1 do
 	local codexEntry = hadesCodexTextTable.Texts[i]
 	if mod.ShouldRemoveEntry(codexEntry.Id, mod.HadesCodexTextKeyRemovals) then
 		table.remove(hadesCodexTextTable.Texts, i)
+	else
+		if codexEntry.DisplayName then
+			-- Don't bold the last entry sections, we need more space
+			codexEntry.DisplayName = string.gsub(codexEntry.DisplayName, "{#CodexBoldFormat}", "")
+			codexEntry.DisplayName = string.gsub(codexEntry.DisplayName, "{#PreviousFormat}", "{#Prev}")
+		end
 	end
 end
 
