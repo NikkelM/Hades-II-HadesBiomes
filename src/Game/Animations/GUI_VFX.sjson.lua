@@ -90,14 +90,14 @@ local addAnimations = {
 		Duration = 0.5,
 	},
 	-- #endregion
-	ModsNikkelMHadesBiomesRoomTransitionOut = {
-		Name = "ModsNikkelMHadesBiomesRoomTransitionOut",
-		InheritFrom = "ModsNikkelMHadesBiomesRoomTransitionIn",
-		EndFrame = 20,
-		HoldLastFrame = false,
-		PlayBackwards = true,
-		StartFrame = 1,
-	},
+	-- ModsNikkelMHadesBiomesRoomTransitionOut = {
+	-- 	Name = "ModsNikkelMHadesBiomesRoomTransitionOut",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomesRoomTransitionIn",
+	-- 	EndFrame = 20,
+	-- 	HoldLastFrame = false,
+	-- 	PlayBackwards = true,
+	-- 	StartFrame = 1,
+	-- },
 }
 
 sjson.hook(hadesTwoGuiVfxFile, function(data)
