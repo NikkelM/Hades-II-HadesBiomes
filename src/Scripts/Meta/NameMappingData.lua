@@ -145,21 +145,18 @@ mod.HadesHelpTextCopyKeys = {
 	UnitFrozen = true,
 	Combat_Enraged = true,
 	Combat_PermanentEnraged = true,
-	-- AssistNotAvailable = true, -- Duplicate
 	Pierced = true,
 	Escaped = true,
-	PerfectLanding = true,
+	-- AssistNotAvailable = true, -- Duplicate
 	-- AssistAvailableHint = true, -- Duplicate
 	PoisonStack = true,
 	-- DevotionMessage = true, -- Duplicate
 	-- #endregion
 	-- #region Interaction prompts
 	UseLeaveRoomAsphodel = true,
-	UseLeaveRoomAsphodel_Reroll = true, -- TODO: Modification from above
+	UseLeaveRoomAsphodel_Reroll = true,
 	UseLeaveRoomAsphodel_CannotReroll = true,
-	-- UseCharonStoreDiscount = true, -- Duplicate
 	DiscountTrait = true,
-	-- UseForbiddenItem = true, -- Duplicate
 	GiftBouldyUseText = true,
 	UseTalkToSisyphus = true,
 	UseTalkToBouldy = true,
@@ -169,6 +166,8 @@ mod.HadesHelpTextCopyKeys = {
 	UseFinalBossDoor = true,
 	UseCerberusDoor = true,
 	UseStyxWarpDoor = true,
+	-- UseForbiddenItem = true, -- Duplicate
+	-- UseCharonStoreDiscount = true, -- Duplicate
 	-- #endregion
 	-- #region Cerberus Messages
 	ClearedCerberus_Title = true,
@@ -213,7 +212,6 @@ mod.HadesHelpTextCopyKeys = {
 	ClearedCerberus_Q_Subtitle = true,
 	-- #endregion
 	-- #region Bouldy Blessings
-	-- GainedBouldyBlessing = true, -- Duplicate
 	BouldyBlessing_Armor = true,
 	BouldyBlessing_Attack = true,
 	BouldyBlessing_Special = true,
@@ -221,6 +219,7 @@ mod.HadesHelpTextCopyKeys = {
 	BouldyBlessing_Speed = true,
 	BouldyBlessing_Money = true,
 	BouldyBlessing_None = true,
+	-- GainedBouldyBlessing = true, -- Duplicate
 	-- #endregion
 	-- #region ShrinePointDoor
 	ShrinePointGate = true,
@@ -233,10 +232,9 @@ mod.HadesHelpTextCopyKeys = {
 	-- #endregion
 	-- #region Combat Objectives
 	Objective_ThanatosKills = true,
-	-- Objective_PlayerKills = true, -- Duplicate
 	Objective_SurvivalTimer = true,
+	-- Objective_PlayerKills = true, -- Duplicate
 	-- #endregion
-	-- TODO: Do EnemyNameMappings and duplicate removals before hooking
 	-- #region Enemies
 	Swarmer = true,
 	SwarmerElite = true,
@@ -431,11 +429,11 @@ mod.HadesHelpTextCopyKeys = {
 	Surface_Alt = true,
 	-- #endregion
 	-- #region Death
-	-- DeathMessage = true, -- TODO: Duplicate
 	OutroDeathMessage = true,
-	-- OutroDeathMessageAlt = true, -- TODO: Duplicate
 	PostEndingDeathMessage = true,
 	PostEndingDeathMessageAlt = true,
+	-- DeathMessage = true, -- TODO: Duplicate
+	-- OutroDeathMessageAlt = true, -- TODO: Duplicate
 	-- #endregion
 	-- #region Vanquished Messages
 	BiomeClearedMessage = true,
@@ -446,8 +444,8 @@ mod.HadesHelpTextCopyKeys = {
 	TheseusDefeatedMessage = true,
 	MinotaurDefeatedMessage = true,
 	HadesDefeatedMessage = true,
-	-- CrawlerDefeatedMessage = true, -- Duplicate
 	ThanatosMessage = true,
+	-- CrawlerDefeatedMessage = true, -- Duplicate
 	-- #endregion
 	-- #region Keepsake/Pet messages
 	AchillesPatroclusSignoff = true,
@@ -519,44 +517,26 @@ mod.HadesHelpTextCopyKeys = {
 	RunHistoryScreen_Assist = true,
 	-- #endregion
 	-- #region Victory Screen messages
-	-- TODO: Will have some duplicates
 	ClearNumOne = true,
 	ClearNumTen = true,
 	ClearNumFifty = true,
 	ClearNumOneHundred = true,
 	ClearNumTwoFifty = true,
 	ClearNumFiveHundred = true,
-	ClearNearDeath = true,
-	ClearFullHealth = true,
-	ClearTimeFast = true,
-	ClearTimeVeryFast = true,
-	ClearTimeSlow = true,
-	ClearMoneyNone = true,
-	ClearMoneyHigh = true,
 	ClearMetaPointsInvestedNone = true,
 	ClearNoOlympianBoons = true,
 	ClearAllStoryRooms = true,
 	ClearAllReprieveRooms = true,
 	ClearAllShopRooms = true,
-	ClearRequiredTraitsZeus = true,
-	ClearRequiredTraitsPoseidon = true,
 	ClearRequiredTraitsAthena = true,
-	ClearRequiredTraitsAres = true,
 	ClearRequiredTraitsArtemis = true,
-	ClearRequiredTraitsAphrodite = true,
 	ClearRequiredTraitsDionysus = true,
-	ClearRequiredTraitsHermes = true,
-	ClearRequiredTraitsDemeter = true,
-	ClearRequiredTraitsChaos = true,
-	ClearHighMaxHealth = true,
 	ClearChallengeSwitches = true,
 	ClearDevotionEncounters = true,
 	ClearShrineChallengeEncounters = true,
 	ClearMiniBossEncounters = true,
 	ClearWeaponsFiredWrath = true,
 	ClearWeaponsFiredRanged = true,
-	ClearSynergyTraits = true,
-	ClearLegendaryTraits = true,
 	ClearFishCaught = true,
 	ClearConsecutiveLow = true,
 	ClearConsecutiveHigh = true,
@@ -568,10 +548,28 @@ mod.HadesHelpTextCopyKeys = {
 	ClearManyLastStands = true,
 	ClearShutDownThanatos = true,
 	ClearManyTraitsSold = true,
+	-- Duplicates
+	-- ClearNearDeath = true,
+	-- ClearFullHealth = true,
+	-- ClearTimeFast = true,
+	-- ClearTimeVeryFast = true,
+	-- ClearTimeSlow = true,
+	-- ClearMoneyNone = true,
+	-- ClearMoneyHigh = true,
+	-- ClearRequiredTraitsZeus = true,
+	-- ClearRequiredTraitsPoseidon = true,
+	-- ClearRequiredTraitsAres = true,
+	-- ClearRequiredTraitsAphrodite = true,
+	-- ClearRequiredTraitsHermes = true,
+	-- ClearRequiredTraitsDemeter = true,
+	-- ClearRequiredTraitsChaos = true,
+	-- ClearHighMaxHealth = true,
+	-- ClearSynergyTraits = true,
+	-- ClearLegendaryTraits = true,
 	-- #endregion
 	-- #region Misc
 	PassiveItem = true,
-	Assist = true, -- NPC pets
+	Assist = true,
 	RageMeter = true,
 	_PlayerUnit = true,
 	AssistTraitsPermitted_Title = true,
