@@ -1,4 +1,4 @@
-local traitTextFile = rom.path.combine(rom.paths.Content(), 'Game/Text/ru/TraitText.ru.sjson')
+local traitTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/ru/TraitText.ru.sjson")
 
 local order = {
 	"Id",

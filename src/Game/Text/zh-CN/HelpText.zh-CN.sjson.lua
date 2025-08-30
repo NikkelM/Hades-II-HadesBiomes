@@ -1,7 +1,7 @@
 local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Text\\zh-CN\\HelpText.zh-CN.sjson")
 local hadesHelpTextTable = mod.DecodeSjsonFile(hadesHelpTextFile)
 
-local hadesTwoHelpTextFile = rom.path.combine(rom.paths.Content(), 'Game/Text/zh-CN/HelpText.zh-CN.sjson')
+local hadesTwoHelpTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/zh-CN/HelpText.zh-CN.sjson")
 
 local order = {
 	"Id",

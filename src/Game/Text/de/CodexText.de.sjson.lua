@@ -21,7 +21,7 @@ for oldName, newName in pairs(mod.HadesCodexTextNameMappings) do
 end
 
 -- The Hades II CodexText file is not large enough to handle the hook
-local screenTextFile = rom.path.combine(rom.paths.Content(), 'Game\\Text\\de\\HelpText.de.sjson')
+local screenTextFile = rom.path.combine(rom.paths.Content(), "Game\\Text\\de\\HelpText.de.sjson")
 sjson.hook(screenTextFile, function(data)
 	-- Shouldn't be finding any duplicates, as we are not hooking into the Hades II Codex file
 	mod.AddTableKeysSkipDupes(data.Texts, hadesCodexTextTable.Texts, "Id")

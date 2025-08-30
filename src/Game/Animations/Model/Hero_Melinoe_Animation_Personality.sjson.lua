@@ -1,7 +1,7 @@
 -- Map conversation animations for Zagreus to animations that exist for Melinoe
 
 local animationsFile = rom.path.combine(rom.paths.Content(),
-	'Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson')
+	"Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson")
 
 local order = {
 	"Name",

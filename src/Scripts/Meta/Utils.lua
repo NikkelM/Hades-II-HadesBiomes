@@ -189,7 +189,7 @@ function mod.UpdateField(tableToModify, find, replaceWith, propertyPath, tableNa
 			return data, replaced
 		else
 			local key = table.remove(path, 1)
-			if key == '*' then
+			if key == "*" then
 				if type(data) == "table" then
 					for k, v in pairs(data) do
 						data[k], replaced = updateField(v, { table.unpack(path) })

@@ -79,7 +79,7 @@ function mod.Uninstall()
 			-- Skip files that are in the skip map for the current language, as they don't exist
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				local helpTextFile = rom.path.combine(rom.paths.Content(),
-					"Game\\Text\\" .. language .. "\\" .. fileName .. "Hades." .. language)
+					"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language)
 				removeFile(helpTextFile, ".sjson")
 			end
 		end

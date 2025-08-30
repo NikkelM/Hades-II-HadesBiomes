@@ -132,7 +132,7 @@ function mod.CheckRequiredFiles(failFast)
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				local helpTextFile = rom.path.combine(rom.paths.Content(),
-					'Game\\Text\\' .. language .. '\\' .. fileName .. 'Hades.' .. language .. '.sjson')
+					"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
 				if not checkFileExistsWithRetry(helpTextFile, 3, 1) then
 					mod.DebugPrint("Missing file: " .. helpTextFile, 1)
 					missingFiles = missingFiles + 1
