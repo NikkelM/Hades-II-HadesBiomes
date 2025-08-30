@@ -1177,6 +1177,53 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region STYX
+	-- From Hades II CrawlerRush, but using Hades animations
+	HadesCrawlerRush = {
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "HadesCrawlerRush",
+			FireSelfVelocity = 2600,
+			FireProjectileStartDelay = 0.03,
+			PreAttackSound = "/SFX/Enemy Sounds/RatThug/EmoteCharging",
+			PreAttackAnimation = "EnemyCrawlerIdle",
+			FireAnimation = "EnemyCrawlerRun",
+			PostAttackAnimation = "EnemyCrawlerIdle",
+			PreAttackDuration = 0.7,
+			PreAttackEndShake = true,
+			FireDuration = 0.3,
+			PostAttackDuration = 0.0,
+			WaitForAngleTowardTarget = false,
+			AttackDistance = 300,
+			RetreatBufferDistance = 650,
+			RetreatAfterAttack = true,
+			RequireUnitLoS = true,
+			LoSBuffer = 80,
+			LoSEndBuffer = 32,
+		},
+		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/RatThug/EmoteAttacking" }, }, },
+	},
+	HeavyRangedWeaponFork = {
+		AIData = {
+			ProjectileAngleInterval = 45,
+			ProjectileInterval = 0.05,
+		},
+	},
+	HeavyRangedWeaponForkElite = {
+		AIData = {
+			ProjectileAngleInterval = 45,
+			ProjectileInterval = 0.05,
+		},
+	},
+	GrenadierWeapon = {
+		AIData = {
+			DeepInheritance = true,
+			ApplyEffectsOnWeaponFire = { WeaponEffectData.RootedAttacker, },
+			ProjectileName = "GrenadierWeapon",
+			-- Custom addition to make the spread a little more random
+			Spread = 50,
+		},
+		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
@@ -1191,6 +1238,22 @@ local weaponModifications = {
 			MoveWithinRange = false,
 			AttackDistance = 9999999,
 			PostAttackAnimation = "BlastCubeFusedRegeneratingExplode",
+		},
+	},
+	AxeTrapWeapon = {
+		Sounds = {
+			ImpactSounds = {
+				Invulnerable = "/SFX/SwordWallHitClank",
+				Armored = "/SFX/Player Sounds/ZagreusShieldRicochet",
+				Bone = "/SFX/MetalBoneSmash",
+				Brick = "/SFX/MetalStoneClang",
+				Stone = "/SFX/MetalStoneClang",
+				Organic = "/SFX/StabSplatterSmall",
+				StoneObstacle = "/SFX/SwordWallHitClank",
+				BrickObstacle = "/SFX/SwordWallHitClank",
+				MetalObstacle = "/SFX/SwordWallHitClank",
+				BushObstacle = "/Leftovers/World Sounds/LeavesRustle",
+			},
 		},
 	},
 	-- #endregion
@@ -1278,6 +1341,7 @@ local SjsonToAIDataPropertyMappings = {
 	ProjectileStartAngleOffset = "ProjectileStartAngleOffset",
 	ProjectileStartAngleOffsetMin = "ProjectileStartAngleOffsetMin",
 	ProjectileStartAngleOffsetMax = "ProjectileStartAngleOffsetMax",
+	ProjectileOffset = "ProjectileOffsetDistance",
 	FireFx = "FireFx",
 	UseTargetAngle = "UseTargetAngle",
 }

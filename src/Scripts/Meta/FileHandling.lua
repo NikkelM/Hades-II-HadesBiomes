@@ -125,12 +125,19 @@ function mod.CheckRequiredFiles(failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb", failFast)
 
 	-- The helpText files in the different languages
-	for _, language in ipairs(mod.HelpTextLanguages) do
-		local helpTextFile = rom.path.combine(rom.paths.Content(),
-			'Game\\Text\\' .. language .. '\\HelpTextHades.' .. language .. '.sjson')
-		if not checkFileExistsWithRetry(helpTextFile, 3, 1) then
-			mod.DebugPrint("Missing file: " .. helpTextFile, 1)
-			missingFiles = missingFiles + 1
+	-- _NPCData files are installed differently, so not part of this table by default
+	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames)
+	table.insert(allHelpTextFileNames, "_NPCData")
+	for _, fileName in ipairs(allHelpTextFileNames) do
+		for _, language in ipairs(mod.HelpTextLanguages) do
+			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
+				local helpTextFile = rom.path.combine(rom.paths.Content(),
+					"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
+				if not checkFileExistsWithRetry(helpTextFile, 3, 1) then
+					mod.DebugPrint("Missing file: " .. helpTextFile, 1)
+					missingFiles = missingFiles + 1
+				end
+			end
 		end
 	end
 

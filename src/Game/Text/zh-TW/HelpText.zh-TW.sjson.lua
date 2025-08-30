@@ -1,4 +1,4 @@
-local helpTextFile = rom.path.combine(rom.paths.Content(), 'Game/Text/zh-TW/HelpText.zh-TW.sjson')
+local helpTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/zh-TW/HelpText.zh-TW.sjson")
 
 local order = {
 	"Id",

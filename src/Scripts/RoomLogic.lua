@@ -75,7 +75,7 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 	currentRun = currentRun or game.CurrentRun
 	args = args or {}
 
-	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and unit.ModsNikkelMHadesBiomesIsModdedEnemy then
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and (unit.ModsNikkelMHadesBiomesIsModdedEnemy or unit.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy) then
 		-- If the unit is a ShadeNaked, we don't want a summon animation for the picked up enemy
 		if currentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation then
 			currentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation = nil
@@ -109,6 +109,11 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 		else
 			unit.HealthMultiplier = 1 + mod.ModdedUnitMaxHealthMultiplierBonus
 		end
+
+		-- For Hades
+		if unit.SelectCustomSpawnOptions ~= nil then
+			game.CallFunctionName(unit.SelectCustomSpawnOptions, unit)
+		end
 	end
 
 	base(unit, currentRun, args)
@@ -134,3 +139,302 @@ modutil.mod.Path.Wrap("SetupInspectPoint", function(base, inspectPointData)
 	end
 	base(inspectPointData)
 end)
+
+modutil.mod.Path.Wrap("StartRoom", function(base, currentRun, currentRoom)
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		if currentRoom.WingRoom then
+			currentRun.WingDepth = (currentRun.WingDepth or 0) + 1
+		else
+			currentRun.WingDepth = 0
+		end
+		if currentRoom.WingEndRoom then
+			currentRun.CompletedStyxWings = currentRun.CompletedStyxWings + 1
+		end
+	end
+
+	base(currentRun, currentRoom)
+end)
+
+modutil.mod.Path.Wrap("LeaveRoom", function(base, currentRun, door)
+	-- For Styx D_Hub, we need to regenerate the Shop encounter when re-entering the room
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and door.Room ~= nil and door.Room.ModsNikkelMHadesBiomesOnReloadStripEncounter and door.Room.TimesVisited ~= nil and door.Room.TimesVisited > 0 then
+		door.Room.Encounter = nil
+		door.Room.EncountersOccurredCache = nil
+		-- Also reset the WingDepth, so that the offered exits all generate mini rooms first
+		currentRun.WingDepth = 0
+	end
+
+	base(currentRun, door)
+end)
+
+-- Overriding to add in the logic for the Styx exit doors always having two minibosses
+modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
+	if run.ModsNikkelMHadesBiomesIsModdedRun and room.Name == "D_Hub" then
+		game.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
+	else
+		base(run, room)
+	end
+end)
+
+modutil.mod.Path.Wrap("DisableTrap", function(base, enemy)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.ModsNikkelMHadesBiomesIsModdedEnemy then
+		if enemy.ToggleTrap then
+			if enemy.DisableImmediately then
+				game.killTaggedThreads(enemy.AIThreadName)
+				enemy.AIDisabled = true
+			else
+				enemy.DisableAIWhenReady = true
+			end
+			-- This is the modification - some of our modded traps have separate animations depending on if they are currently "active" or not
+			if enemy.DefaultAIData and enemy.DefaultAIData.UseResetAnimationIfActive and enemy.DefaultAIData.ResetAnimation ~= nil and enemy.ModsNikkelMHadesBiomesCurrentlyActive then
+				SetAnimation({ DestinationId = enemy.ObjectId, Name = enemy.DefaultAIData.ResetAnimation })
+			elseif enemy.DefaultAIData and enemy.DefaultAIData.DisabledAnimation ~= nil then
+				SetAnimation({ DestinationId = enemy.ObjectId, Name = enemy.DefaultAIData.DisabledAnimation })
+			end
+		elseif enemy.DestroyOnTrapDisable then
+			game.Kill(enemy)
+		end
+	else
+		base(enemy)
+	end
+end)
+
+function game.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
+	-- Synchronize the RNG to its initial state. Makes room reward choices deterministic on save/load
+	RandomSynchronize()
+
+	local roomData = RoomData[room.Name] or room
+	local encounterData = EncounterData[room.Encounter.Name] or room.Encounter
+
+	local rewardsChosen = {}
+	local rewardStoreName = run.NextRewardStoreName or ChooseNextRewardStore(run)
+	local rewardStoreOverrides = {}
+	local exitDoorsIPairs = CollapseTableOrdered(MapState.OfferedExitDoors) or {}
+
+	if room.UnavailableDoorIds ~= nil then
+		for k, doorId in pairs(room.UnavailableDoorIds) do
+			exitDoorsIPairs[doorId] = nil
+		end
+	end
+
+	for index, door in ipairs(exitDoorsIPairs) do
+		if room.PersistentRoomForDoors and room.DoorRoomHistory ~= nil and room.DoorRoomHistory[door.ObjectId] ~= nil then
+			door.Room = ShallowCopyTable(run.RoomHistory[room.DoorRoomHistory[door.ObjectId]]) or {}
+			-- Restore any missing data that may have been stripped for saving
+			local originalRoomData = RoomData[door.Room.Name]
+			if originalRoomData ~= nil then
+				for roomKey, roomValue in pairs(originalRoomData) do
+					if door.Room[roomKey] == nil then
+						door.Room[roomKey] = roomValue
+					end
+				end
+			end
+		end
+
+		if door.Room == nil then
+			if roomData.PredeterminedDoorRooms ~= nil and roomData.PredeterminedDoorRooms[door.ObjectId] ~= nil then
+				door.ForceRoomName = roomData.PredeterminedDoorRooms[door.ObjectId]
+			elseif room.PersistentRoomForDoors and room.ExitDoorRooms[door.ObjectId] ~= nil then
+				door.ForceRoomName = room.ExitDoorRooms[door.ObjectId]
+			end
+			local roomForDoorData = nil
+			if door.ForceRoomName ~= nil then
+				roomForDoorData = RoomData[door.ForceRoomName]
+			else
+				roomForDoorData = ChooseNextRoomData(run, door.ChooseRoomArgs, exitDoorsIPairs)
+			end
+			local roomForDoor = CreateRoom(roomForDoorData,
+				{ SkipChooseReward = true, SkipChooseEncounter = true, RoomOverrides = room.NextRoomOverrides }) or {}
+			roomForDoor.NeedsReward = true
+			door.Room = roomForDoor
+		end
+
+		local roomForDoorName = door.Room.GenusName or door.Room.Name
+		if door.Room.ForcedRewardStore ~= nil then
+			rewardStoreOverrides[index] = door.Room.ForcedRewardStore
+		end
+		if rewardStoreOverrides[index] and not Contains(RewardStoreData.InvalidOverrides, rewardStoreOverrides[index]) then
+			rewardStoreName = rewardStoreOverrides[index]
+		end
+		wait(0.02) -- Distribute workload
+	end
+
+	if run.CurrentRoom.FirstAppearanceNumExitOverrides ~= nil and not HasSeenRoomEarlierInRun(run, run.CurrentRoom.Name) then
+		local randomDoors = ShallowCopyTable(exitDoorsIPairs)
+		for i = 1, run.CurrentRoom.FirstAppearanceNumExitOverrides do
+			local randomDoor = RemoveRandomValue(randomDoors)
+			if randomDoor ~= nil and randomDoor.Room ~= nil then
+				randomDoor.Room.UseOptionalOverrides = true
+				for key, value in pairs(randomDoor.Room.OptionalOverrides) do
+					randomDoor.Room[key] = value
+				end
+			end
+		end
+	end
+	--DebugAssert({ Condition = #exitDoorsIPairs == run.CurrentRoom.NumExits, Text = "NumExits data mismatched to actual exits for "..run.CurrentRoom.Name })
+
+	if roomData.MinDoorCageRewards ~= nil and roomData.MaxDoorCageRewards ~= nil then
+		local smallestCageAmount = roomData.MaxDoorCageRewards
+		for index, door in ipairs(exitDoorsIPairs) do
+			if door.Room.MaxCageRewards ~= nil then
+				smallestCageAmount = math.min(smallestCageAmount, door.Room.MaxCageRewards)
+			end
+		end
+		room.MaxDoorCageRewards = smallestCageAmount
+		if room.MaxDoorDepthChanceTable then
+			room.NumDoorCageRewards = SelectFieldsDoorCageCount(run, room)
+		else
+			room.NumDoorCageRewards = RandomInt(room.MinDoorCageRewards, room.MaxDoorCageRewards)
+		end
+	end
+
+	for index, door in ipairs(exitDoorsIPairs) do
+		local doorRoom = door.Room
+		if doorRoom ~= nil and doorRoom.NeedsReward then
+			if doorRoom.IndividualRewardStore ~= nil then
+				doorRoom.RewardStoreName = doorRoom.IndividualRewardStore
+			elseif rewardStoreOverrides[index] ~= nil and not Contains(RewardStoreData.InvalidOverrides, rewardStoreOverrides[index]) then
+				doorRoom.RewardStoreName = rewardStoreOverrides[index]
+			else
+				doorRoom.RewardStoreName = rewardStoreName
+			end
+			doorRoom.ChosenRewardType = ChooseRoomReward(CurrentRun, doorRoom, doorRoom.RewardStoreName, rewardsChosen,
+				{ Door = door })
+			if doorRoom.ChosenRewardType ~= nil then
+				SetupRoomReward(CurrentRun, doorRoom, rewardsChosen,
+					{ Door = door, IgnoreForceLootName = doorRoom.IgnoreForceLootName })
+				table.insert(rewardsChosen, { RewardType = doorRoom.ChosenRewardType, ForceLootName = doorRoom.ForceLootName, })
+			end
+			doorRoom.NeedsReward = false
+
+			if doorRoom.MaxCageRewards ~= nil then
+				doorRoom.CageRewards = {}
+				for i = 1, room.NumDoorCageRewards or 2 do
+					local cageRoom = DeepCopyTable(doorRoom) or {}
+					cageRoom.NeedsReward = true
+					cageRoom.NoReward = false
+					cageRoom.ChosenRewardType = ChooseRoomReward(CurrentRun, cageRoom, cageRoom.RewardStoreName, rewardsChosen)
+					SetupRoomReward(CurrentRun, cageRoom, rewardsChosen,
+						{ Door = door, IgnoreForceLootName = cageRoom.IgnoreForceLootName })
+					local reward = { RewardType = cageRoom.ChosenRewardType, ForceLootName = cageRoom.ForceLootName, }
+					table.insert(rewardsChosen, reward)
+					table.insert(doorRoom.CageRewards, reward)
+				end
+			end
+			--DebugPrint({ Text = "Door Cage Rewards:" })
+			--DebugPrintTable( doorRoom.CageRewards, true )
+
+			if doorRoom.UseOptionalOverrides then
+				for key, value in pairs(doorRoom.OptionalOverrides) do
+					doorRoom[key] = value
+				end
+			end
+			AssignRoomToExitDoor(door, doorRoom)
+			wait(0.02) -- Distribute workload
+		end
+	end
+
+	wait(0.02) -- Distribute workload
+
+	RandomSynchronize(#exitDoorsIPairs)
+
+	for index, door in ipairs(exitDoorsIPairs) do
+		if door.PreExitsUnlockedFunctionName ~= nil then
+			thread(CallFunctionName, door.PreExitsUnlockedFunctionName, door, door.PreExitsUnlockedFunctionArgs)
+		end
+	end
+
+	for index, door in ipairs(exitDoorsIPairs) do
+		if not door.SkipUnlock then
+			CreateDoorRewardPreview(door)
+			thread(ExitDoorUnlockedPresentation, door)
+			door.ReadyToUse = true
+			if door.OnUnlockThreadedFunctionName ~= nil then
+				thread(CallFunctionName, door.OnUnlockThreadedFunctionName, door, door.OnUnlockThreadedFunctionArgs)
+			end
+		end
+	end
+
+	MapState.OfferedRewards = {}
+	for i, doorData in pairs(MapState.OfferedExitDoors) do
+		if doorData and doorData.Room then
+			local room = doorData.Room
+			if room.CageRewards then
+				for _, cageReward in pairs(room.CageRewards) do
+					if cageReward.RewardType then
+						MapState.OfferedRewards[cageReward.RewardType] = true
+					end
+				end
+			end
+			if room.ChosenRewardType then
+				MapState.OfferedRewards[room.ChosenRewardType] = true
+			end
+		end
+	end
+
+	for id, obstacle in pairs(ShallowCopyTable(MapState.ActiveObstacles) or {}) do
+		if obstacle.ExitsUnlockedFunctionName ~= nil then
+			thread(CallFunctionName, obstacle.ExitsUnlockedFunctionName, obstacle, obstacle.ExitsUnlockedFunctionArgs)
+		end
+	end
+
+	if CurrentRun.CurrentRoom.ChallengeSwitch ~= nil then
+		local challengeSwitch = CurrentRun.CurrentRoom.ChallengeSwitch
+		local startingValue = challengeSwitch.StartingValue or 0
+		if challengeSwitch.RewardType == "Health" then
+			startingValue = startingValue * CalculateHealingMultiplier()
+		end
+		if challengeSwitch.RewardType == "Money" and HasHeroTraitValue("BlockMoney") then
+			startingValue = 0
+		end
+		challengeSwitch.StartingValue = round(startingValue)
+		challengeSwitch.ReadyToUse = true
+		challengeSwitch.UseText = challengeSwitch.ChallengeAvailableUseText
+		RefreshUseButton(challengeSwitch.ObjectId, challengeSwitch)
+		SetAnimation({ Name = challengeSwitch.UnlockedAnimationName, DestinationId = challengeSwitch.ObjectId })
+		if challengeSwitch.UnlockedFxAnimationName ~= nil then
+			CreateAnimation({ DestinationId = challengeSwitch.ObjectId, Name = challengeSwitch.UnlockedFxAnimationName })
+		end
+		PlaySound({ Name = "/SFX/ChallengeChestUnlocked", Id = challengeSwitch.ObjectId })
+	end
+
+	if CurrentRun.CurrentRoom.WellShop ~= nil then
+		CurrentRun.CurrentRoom.WellShop.ReadyToUse = true
+		CurrentRun.CurrentRoom.WellShop.UseText = CurrentRun.CurrentRoom.WellShop.AvailableUseText
+		RefreshUseButton(CurrentRun.CurrentRoom.WellShop.ObjectId, CurrentRun.CurrentRoom.WellShop)
+		SetAnimation({ Name = "WellShopUnlocked", DestinationId = CurrentRun.CurrentRoom.WellShop.ObjectId })
+		PlaySound({ Name = "/SFX/WellShopUnlocked", Id = CurrentRun.CurrentRoom.WellShop.ObjectId })
+	end
+
+	if CurrentRun.CurrentRoom.SellTraitShop ~= nil and not CurrentRun.CurrentRoom.SellTraitShop.BlockedByRequirements then
+		CurrentRun.CurrentRoom.SellTraitShop.ReadyToUse = true
+		CurrentRun.CurrentRoom.SellTraitShop.UseText = CurrentRun.CurrentRoom.SellTraitShop.AvailableUseText
+		RefreshUseButton(CurrentRun.CurrentRoom.SellTraitShop.ObjectId, CurrentRun.CurrentRoom.SellTraitShop)
+		SetAnimation({ Name = "SellTraitShopUnlocked", DestinationId = CurrentRun.CurrentRoom.SellTraitShop.ObjectId })
+		PlaySound({ Name = "/SFX/WellShopUnlocked", Id = CurrentRun.CurrentRoom.SellTraitShop.ObjectId })
+	end
+
+	if CurrentRun.CurrentRoom.SurfaceShop ~= nil then
+		CurrentRun.CurrentRoom.SurfaceShop.ReadyToUse = true
+		CurrentRun.CurrentRoom.SurfaceShop.UseText = CurrentRun.CurrentRoom.SurfaceShop.AvailableUseText
+		RefreshUseButton(CurrentRun.CurrentRoom.SurfaceShop.ObjectId, CurrentRun.CurrentRoom.SurfaceShop)
+		SetAnimation({ Name = "SurfaceShopUnlocked", DestinationId = CurrentRun.CurrentRoom.SurfaceShop.ObjectId })
+		PlaySound({ Name = "/SFX/Menu Sounds/KeepsakeHermesFastClear", Id = CurrentRun.CurrentRoom.SurfaceShop.ObjectId })
+	end
+
+	if CurrentRun.CurrentRoom.MetaRewardStand ~= nil then
+		if GameState.SpentShrinePointsCache >= CurrentRun.CurrentRoom.MetaRewardStand.RequiredShrinePoints then
+			CurrentRun.CurrentRoom.MetaRewardStand.ReadyToUse = true
+			CurrentRun.CurrentRoom.MetaRewardStand.UseText = CurrentRun.CurrentRoom.MetaRewardStand.AvailableUseText
+			RefreshUseButton(CurrentRun.CurrentRoom.MetaRewardStand.ObjectId, CurrentRun.CurrentRoom.MetaRewardStand)
+			StopAnimation({ Name = "MetaRewardStandLockedFx", DestinationId = CurrentRun.CurrentRoom.MetaRewardStand.ObjectId })
+			SetAnimation({ Name = "MetaRewardStandUnlocked", DestinationId = CurrentRun.CurrentRoom.MetaRewardStand.ObjectId })
+			PlaySound({ Name = "/SFX/WellShopUnlocked", Id = CurrentRun.CurrentRoom.MetaRewardStand.ObjectId })
+		end
+	end
+
+	StartTriggers(CurrentRun.CurrentRoom, roomData.ExitsUnlockedDistanceTriggers)
+
+	RunThreadedEvents(encounterData.ExitsUnlockedThreadedEvents, room.Encounter)
+	RunThreadedEvents(roomData.ExitsUnlockedThreadedEvents, room)
+end

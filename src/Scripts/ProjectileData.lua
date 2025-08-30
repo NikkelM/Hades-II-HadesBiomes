@@ -52,6 +52,13 @@ local projectileModifications = {
 		InheritFrom = { "NoSlowFrameProjectile", },
 	},
 	-- #endregion
+
+	-- #region STYX
+	HeavyRangedWeaponFork = {
+		InheritFrom = { "HeavyRangedWeapon", },
+	},
+	-- #endregion
+
 	-- #region ENVIRONMENT
 	ModsNikkelMHadesBiomesRubbleFall = {
 		-- So it doesn't deal more damage to enemies than it should, and it doesn't destroy the rubble obstacles it spawns itself

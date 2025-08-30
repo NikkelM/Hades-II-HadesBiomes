@@ -1,16 +1,6 @@
 -- Adds projectile data for enemies from Hades to Hades II
-
-local function shouldRemoveProjectile(name, projectilesToRemove)
-	for _, removeName in ipairs(projectilesToRemove) do
-		if name == removeName then
-			return true
-		end
-	end
-	return false
-end
-
 local hadesProjectilesFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Projectiles\\EnemyProjectiles.sjson")
-local hadesProjectilesTable = sjson.decode_file(hadesProjectilesFile)
+local hadesProjectilesTable = mod.DecodeSjsonFile(hadesProjectilesFile)
 
 local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Projectiles\\PlayerProjectiles.sjson")
 
@@ -246,6 +236,33 @@ local hadesProjectilesModifications = {
 			Graphic = "SatyrDart",
 		},
 	},
+	RatPoisonShake = {
+		SpawnOnDetonate = "HadesPoisonPuddleSmall"
+	},
+	SatyrRangedWeapon = {
+		Effects = {
+			[2] = {
+				Name = "StyxPoison",
+				Type = "DAMAGE_OVER_TIME",
+				Amount = 1,
+				Cooldown = 0.13,
+				InitialDelay = 0.5,
+				Duration = 8,
+				Stacks = true,
+				MaxStacks = 10,
+				ExtendDurationOnReapply = false,
+				SilentImpact = true,
+				FrontFx = "PoisonStatusFx",
+				Active = true,
+				OnlyAffectName = "_PlayerUnit",
+			},
+		},
+	},
+	GrenadierWeapon = {
+		Thing = {
+			Scale = 1.0,
+		},
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
@@ -258,7 +275,66 @@ local hadesProjectilesModifications = {
 	PhalanxTrapWeapon = {
 		Range = 200,
 	},
+	SawTrapWeapon = {
+		ImpactFx = "SawTrapProjectileEnd",
+	},
+	PoisonTrapWeapon = {
+		Effect = {
+			OnlyAffectName = "_PlayerUnit",
+		}
+	}
 	-- #endregion
+}
+
+local addProjectiles = {
+	{
+		Name = "HadesCrawlerRush",
+		InheritFrom = "CrawlerRush",
+		Damage = 3,
+	},
+	{
+		Name = "HadesPoisonPuddle",
+		InheritFrom = "PoisonPuddle",
+		Effects = {
+			{
+				Name = "StyxPoison",
+				Type = "DAMAGE_OVER_TIME",
+				Amount = 1,
+				Cooldown = 0.13,
+				InitialDelay = 0.85,
+				Duration = 8,
+				Stacks = true,
+				MaxStacks = 10,
+				ExtendDurationOnReapply = false,
+				SilentImpact = true,
+				FrontFx = "PoisonStatusFx",
+				Active = true,
+				OnlyAffectName = "_PlayerUnit",
+			},
+		},
+	},
+	{
+		Name = "HadesPoisonPuddleSmall",
+		InheritFrom = "PoisonPuddleSmall",
+		DamageRadius = 80,
+		Effects = {
+			{
+				Name = "StyxPoison",
+				Type = "DAMAGE_OVER_TIME",
+				Amount = 1,
+				Cooldown = 0.13,
+				InitialDelay = 0.85,
+				Duration = 8,
+				Stacks = true,
+				MaxStacks = 10,
+				ExtendDurationOnReapply = false,
+				SilentImpact = true,
+				FrontFx = "PoisonStatusFx",
+				Active = true,
+				OnlyAffectName = "_PlayerUnit",
+			},
+		},
+	},
 }
 
 local renamedProjectileModifications = {}
@@ -307,7 +383,7 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	local projectile = hadesProjectilesTable.Projectiles[i]
 
 	-- Projectiles that should be removed completely, likely as they already exist in Hades II
-	if shouldRemoveProjectile(projectile.Name, projectilesToRemove) then
+	if mod.ShouldRemoveEntry(projectile.Name, projectilesToRemove) then
 		table.remove(hadesProjectilesTable.Projectiles, i)
 		mod.DebugPrint("Removed projectile: " .. projectile.Name .. " from EnemyProjectiles.sjson", 4)
 	end
@@ -341,6 +417,7 @@ mod.ApplyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjec
 
 sjson.hook(hadesTwoProjectilesFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Projectiles, hadesProjectilesTable.Projectiles, "Name")
+	mod.AddTableKeysSkipDupes(data.Projectiles, addProjectiles, "Name")
 end)
 
 -- Assign to mod so we can check if the projectile exists in WeaponData.lua

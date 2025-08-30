@@ -17,7 +17,7 @@ local newData = {
 	}
 }
 
-local chaosObstaclesFile = rom.path.combine(rom.paths.Content(), 'Game/Obstacles/Chaos.sjson')
+local chaosObstaclesFile = rom.path.combine(rom.paths.Content(), "Game/Obstacles/Chaos.sjson")
 
 sjson.hook(chaosObstaclesFile, function(data)
 	for _, newValue in ipairs(newData) do

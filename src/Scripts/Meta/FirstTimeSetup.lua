@@ -83,55 +83,37 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, de
 end
 
 -- Creates a new helpTextFile for all given languages with any IDs that do not exist in the Hades II help text files
-local function copyHadesHelpTexts(fileNames, fileSkipMap)
-	-- Load the Aliases.sjson file to get required aliases that need to be added as new entries to each language
-	local aliasesFilePath = rom.path.combine(mod.hadesGameFolder, 'Content\\Game\\Text\\Aliases.sjson')
-	local aliasesDataRaw = mod.DecodeSjsonFile(aliasesFilePath)
-	local aliasesData = {}
-	if not (aliasesDataRaw and aliasesDataRaw.HelpTexts and aliasesDataRaw.HelpTexts[1] and aliasesDataRaw.HelpTexts[1].Texts) then
-		mod.DebugPrint(
-			"No aliases found in Aliases.sjson, skipping alias copying. This should not happen - please verify the game files!",
-			2)
-	else
-		aliasesData = aliasesDataRaw.HelpTexts[1].Texts
-		-- We don't want to copy these aliases
-		local aliasesIdBlacklist = { CharProtag = true }
-		local filtered = {}
-		for _, alias in ipairs(aliasesData) do
-			if not aliasesIdBlacklist[alias.Id] then
-				table.insert(filtered, alias)
-			end
-		end
-		aliasesData = filtered
-	end
-
-	for _, fileName in ipairs(fileNames) do
+local function copyHadesHelpTexts()
+	for _, fileName in ipairs(mod.HadesHelpTextFileNames) do
 		-- A HelpText language/file is any of the copied files, not just HelpText.xx.sjson
 		for _, language in ipairs(mod.HelpTextLanguages) do
-			if not (fileSkipMap[fileName] and fileSkipMap[fileName][language]) then
+			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
 
 				local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
-					'Game\\Text\\' .. language .. '\\' .. fileName .. 'Hades.' .. language .. '.sjson')
+					"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
 
 				if rom.path.exists(hadesTwoHelpTextFilePath) then
 					mod.DebugPrint("File already exists and will not be overwritten: " .. hadesTwoHelpTextFilePath, 2)
 				else
 					local helpTextFile = rom.path.combine(rom.paths.Content(),
-						'Game\\Text\\' .. language .. '\\' .. fileName .. '.' .. language .. '.sjson')
-					local helpTextData = mod.DecodeSjsonFile(helpTextFile)
+						"Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
+					-- Check if this file exists first
+					local helpTextData = {}
+					if rom.path.exists(helpTextFile) then
+						helpTextData = mod.DecodeSjsonFile(helpTextFile)
+					else
+						helpTextData.Texts = {}
+					end
 
 					local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder,
-						'Content\\Game\\Text\\' .. language .. '\\' .. fileName .. '.' .. language .. '.sjson')
+						"Content\\Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
 					local hadesHelpTextData = mod.DecodeSjsonFile(hadesHelpTextFile)
 
 					local existingIds = {}
 					for _, entry in ipairs(helpTextData.Texts) do
 						existingIds[entry.Id] = true
 					end
-
-					local languageModifications = mod.HadesHelpTextFileModifications[fileName][language] or {}
-					local globalRemovals = mod.HadesHelpTextFileRemovals[fileName] or {}
 
 					-- Remove all existingIds from hadesHelpTextData - we don't want to overwrite something that already exists in Hades II
 					for i = #hadesHelpTextData.Texts, 1, -1 do
@@ -141,26 +123,16 @@ local function copyHadesHelpTexts(fileNames, fileSkipMap)
 						if mod.EnemyNameMappings[entry.Id] then
 							entry.Id = mod.EnemyNameMappings[entry.Id]
 						end
-						if existingIds[entry.Id] or globalRemovals[entry.Id] then
+						if existingIds[entry.Id] then
 							table.remove(hadesHelpTextData.Texts, i)
-						elseif languageModifications[entry.Id] then
-							for key, value in pairs(languageModifications[entry.Id]) do
-								entry[key] = value
-							end
+						end
+						-- If the Id starts with Storyteller_, replace with Megaera_0, to make sure they are correctly picked up for the InspectPoints
+						if entry.Id then
+							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
 						end
 						-- In all Descriptions, replace {#PreviousFormat} with {#Prev}
 						if entry.Description then
 							entry.Description = string.gsub(entry.Description, "{#PreviousFormat}", "{#Prev}")
-						end
-					end
-
-					-- Add aliases only for HelpText files (not other specialized text files)
-					if fileName == "HelpText" then
-						for _, alias in ipairs(aliasesData) do
-							if not existingIds[alias.Id] then
-								table.insert(hadesHelpTextData.Texts, alias)
-								existingIds[alias.Id] = true
-							end
 						end
 					end
 
@@ -172,9 +144,47 @@ local function copyHadesHelpTexts(fileNames, fileSkipMap)
 	end
 end
 
+-- Similar to copyHadesHelpTexts, but only copies entries for specific NPCs and voicelines
+local function copyHadesNPCTexts()
+	local fileName = "_NPCData"
+	for _, language in ipairs(mod.HelpTextLanguages) do
+		if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
+			mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
+			local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
+				"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
+
+			if rom.path.exists(hadesTwoHelpTextFilePath) then
+				mod.DebugPrint("File already exists and will not be overwritten: " .. hadesTwoHelpTextFilePath, 2)
+			else
+				local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder,
+					"Content\\Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
+				local hadesHelpTextDataRaw = mod.DecodeSjsonFile(hadesHelpTextFile)
+
+				-- Filter the Texts array in place, keeping only entries we care about
+				-- Need to do in-place to ensure the lang key is before the Texts key, otherwise the file is not loaded correctly by the game
+				local filteredTexts = {}
+				for _, entry in ipairs(hadesHelpTextDataRaw.Texts) do
+					if (entry.Speaker and mod.HadesNPCTextSpeakers[entry.Speaker]) or
+							(entry.Id and (mod.StorytellerVoicelines[entry.Id] or mod.ZagreusFieldVoicelines[entry.Id])) then
+						if entry.Id then
+							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
+						end
+						table.insert(filteredTexts, entry)
+					end
+				end
+
+				-- Replace the Texts array with the filtered version
+				hadesHelpTextDataRaw.Texts = filteredTexts
+
+				sjson.encode_file(hadesTwoHelpTextFilePath, hadesHelpTextDataRaw)
+			end
+		end
+	end
+end
+
 -- Common function to copy and filter animations
 local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, modifications, additions, animationType)
-	local animationsTable = sjson.decode_file(srcPath)
+	local animationsTable = mod.DecodeSjsonFile(srcPath)
 
 	if rom.path.exists(destPath) then
 		mod.DebugPrint("File already exists and will not be overwritten: " .. destPath, 2)
@@ -291,7 +301,8 @@ function mod.FirstTimeSetup()
 	copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", "Voiceline ", true)
 
 	mod.DebugPrint("Copying text files...", 3)
-	copyHadesHelpTexts(mod.HadesHelpTextFileNames, mod.HadesHelpTextFileSkipMap)
+	copyHadesHelpTexts()
+	copyHadesNPCTexts()
 
 	mod.DebugPrint("Copying Fx animations...", 3)
 	copyHadesFxAnimations()

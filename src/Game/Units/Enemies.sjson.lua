@@ -1,7 +1,7 @@
 -- Adds enemies from Hades to Hades II
 
 local hadesEnemiesFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Units\\Enemies.sjson")
-local hadesEnemiesTable = sjson.decode_file(hadesEnemiesFile)
+local hadesEnemiesTable = mod.DecodeSjsonFile(hadesEnemiesFile)
 
 local hadesTwoEnemiesFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\Enemies.sjson")
 
@@ -41,6 +41,11 @@ local hadesEnemiesModifications = {
 	},
 	-- #endregion
 
+	-- #region STYX
+	RatThug = { InheritFrom = "1_BaseEnemy", },
+	BaseSatyr = { InheritFrom = "1_BaseEnemy", },
+	-- #endregion
+
 	-- #region ENVIRONMENT
 	Breakable = { InheritFrom = "1_BaseDestructible", },
 	-- #endregion
@@ -49,7 +54,7 @@ local hadesEnemiesModifications = {
 -- Copy an enemy from Hades II as a Hades enemy
 -- Needed if the replaced name is skipped in mod.EnemyNameRemovals
 local enemyAdditions = {
-	-- ASPHODEL
+	-- #region ASPHODEL
 	{
 		Name = "HadesBloodlessNaked",
 		InheritFrom = "BloodlessNaked",
@@ -107,8 +112,7 @@ local enemyAdditions = {
 		Name = "BloodlessNakedBerserkerElite",
 		InheritFrom = "BloodlessBerserker_Elite",
 	},
-	-- ELYSIUM
-	-- STYX
+	-- #endregion
 }
 
 local enemyKeyReplacements = {}

@@ -1,7 +1,7 @@
 -- Adds obstacles for the Elysium biome from Hades to Hades II
 
 local hadesElysiumObstacleFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Obstacles\\Elysium.sjson")
-local hadesElysiumObstacleTable = sjson.decode_file(hadesElysiumObstacleFile)
+local hadesElysiumObstacleTable = mod.DecodeSjsonFile(hadesElysiumObstacleFile)
 
 local hadesTwoElysiumObstacleFile = rom.path.combine(rom.paths.Content(), "Game\\Obstacles\\Elysium.sjson")
 

@@ -224,7 +224,7 @@ local newMapGroups = {
   },
 }
 
-local mapGroupsFile = rom.path.combine(rom.paths.Content(), 'Game/MapGroups.sjson')
+local mapGroupsFile = rom.path.combine(rom.paths.Content(), "Game/MapGroups.sjson")
 
 sjson.hook(mapGroupsFile, function(data)
   for _, newValue in ipairs(newMapGroups) do

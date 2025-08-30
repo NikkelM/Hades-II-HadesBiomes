@@ -1,4 +1,4 @@
-local traitTextFile = rom.path.combine(rom.paths.Content(), 'Game/Text/en/TraitText.en.sjson')
+local traitTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/en/TraitText.en.sjson")
 
 local order = {
 	"Id",
@@ -24,6 +24,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesSisyphusMoney",
+		-- TODO: InheritFrom FallbackMoneyDrop in Hades for DisplayName
 		DisplayName = "Spare Change",
 		Description =
 		"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",

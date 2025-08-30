@@ -10557,4 +10557,731 @@ mod.NPCData = mod.NPCData or {
 			},
 		},
 	},
+
+	-- Cerberus in D_Hub, Id = 547487
+	ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01 = {
+		InheritFrom = { "NPC_Neutral" },
+		GenusName = "NPC_Cerberus_01",
+		UseText = "UseTalkToCerberus",
+		Portrait = "Portrait_Cerberus_Default_01",
+		AnimOffsetZ = 525,
+		Groups = { "NPCs" },
+
+		Binks = {
+			"Cerberus_HubIdle_Bink",
+			"Cerberus_HappyGreeting_Bink",
+		},
+
+		BossPresentationIntroTextLineSets =
+		{
+			CerberusStyxMeeting01 =
+			{
+				PlayOnce = true,
+				EndVoiceLines =
+				{
+					PreLineWait = 0.6,
+					UsePlayerSource = true,
+					TriggerCooldowns = { "ZagreusForkingPathVoiceLinesPlayed" },
+					-- Good! Now I just need to head off the beaten path here and see what I can find.
+					{ Cue = "/VO/ZagreusField_2065" },
+				},
+				{
+					Cue = "/VO/Storyteller_0242",
+					PortraitExitAnimation = "Portrait_Cerberus_Default_01_Exit",
+					IsNarration = true,
+					PreLineWait = 1.8,
+					StartSound = "/VO/CerberusLongGrowl",
+					Text =
+					"{#DialogueItalicFormat}The multi-headed Cerberus stands vigilant before the Underworld's entryway; the tales of what happens to those foolish enough to attempt to pass are far too graphic to describe.",
+				},
+				{
+					Cue = "/VO/ZagreusField_2063",
+					Portrait = "Portrait_Zag_Serious_01",
+					PortraitExitAnimation = "Portrait_Zag_Serious_01_Exit",
+					Speaker = "CharProtag",
+					StartSound = "/VO/CerberusGrowl",
+					PreLineWait = 1.0,
+					PreLineAnim = "ZagreusTalkDenial_Full",
+					PreLineAnimTarget = "Hero",
+					PreContentSound = "/Leftovers/Menu Sounds/TextReveal3",
+					Text =
+					"So it's really come to this, boy? After everything we've been through. Well then, if this is how it has to be, there's nothing left to say. Except for: {#DialogueItalicFormat}On your guard{#PreviousFormat}!!"
+				},
+				{
+					Cue = "/VO/ZagreusField_2064",
+					Portrait = "Portrait_Zag_Default_01",
+					PortraitExitAnimation = "Portrait_Zag_Default_01_Exit",
+					Speaker = "CharProtag",
+					PreLineWait = 2.0,
+					StartSound = "/VO/CerberusBarks",
+					EndSecretMusic = true,
+					Emote = "PortraitEmoteSparkly",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Hahaha{#PreviousFormat}, no, but seriously, boy. I know why you're here. There has to be a way to make you look the other way. What if I help you with the Satyr problem, would you let me go? Please. I have to find Persephone... my mother. You know what this means to me."
+				},
+				{
+					Cue = "/VO/Storyteller_0243",
+					PreLineFunctionName = "ResumeStyxMusic",
+					IsNarration = true,
+					PreLineWait = 1.0,
+					StartSound = "/VO/CerberusWhineSad",
+					Text =
+					"{#DialogueItalicFormat}After a moment's hesitation and deliberation, the voracious hound of hell barks once, affirmatively, toward the Prince, who sets off in search of something that can sate the monster's appetites.",
+				},
+			},
+		},
+
+		InteractTextLineSets =
+		{
+			-- key item delivered / boss door unlock events
+			CerberusBossDoorUnlock01 =
+			{
+				PlayOnce = true,
+				UseableOff = true,
+				RequiredRoomThisRun = "D_Reprieve01",
+				Priority = true,
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/ZagreusField_2066",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PostLineFunctionName = "UnlockDoor",
+					PostLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					Text =
+					"All right, boy, I got your favorite treat. But you have to promise to let me pass if I hand it over, OK?"
+				},
+				{
+					Cue = "/VO/Storyteller_0244",
+					PreLineWait = 1.0,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockText = "ClearedCerberus",
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text =
+					"{#DialogueItalicFormat}Terrifying Cerberus accepts the fetid sack, and scans the darkened hall for where best to consume the stomach-turning contents."
+				},
+			},
+
+			CerberusBossDoorUnlockRepeatable01 =
+			{
+				PlayOnce = true,
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0245",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						UseAdditionalFootstepSounds = true,
+						EndUnlockText = "ClearedCerberus_Alt1",
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Cerberus again accepts the sack."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable01_Alt =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02", "CerberusBossDoorUnlockRepeatable03", "CerberusBossDoorUnlockRepeatable04", "CerberusBossDoorUnlockRepeatable05", "CerberusBossDoorUnlockRepeatable06", "CerberusBossDoorUnlockRepeatable07" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0245",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						UseAdditionalFootstepSounds = true,
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Cerberus again accepts the sack."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable02 =
+			{
+				PlayOnce = true,
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0253",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockText = "ClearedCerberus_Alt2",
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Gigantic Cerberus accepts the Prince's foul offering."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable02_Alt =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02", "CerberusBossDoorUnlockRepeatable03", "CerberusBossDoorUnlockRepeatable04", "CerberusBossDoorUnlockRepeatable05", "CerberusBossDoorUnlockRepeatable06", "CerberusBossDoorUnlockRepeatable07" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0253",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt2", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Gigantic Cerberus accepts the Prince's foul offering."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable03 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0254",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt2", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						EndUnlockTextTable = { "ClearedCerberus_Alt2" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}The fearsome Cerberus accepts the Satyr sack."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable04 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0255",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}The Prince persuades the Underworld's ferocious guardian to move aside."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable05 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0256",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}The Prince compels the multi-headed hound to let him pass."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable06 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0257",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Thus has the Prince again persuaded fearsome Cerberus to get out of his way."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable07 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0258",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Joyfully the hound of hell accepts another Satyr sack."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable08 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0396",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text =
+					"{#DialogueItalicFormat}The monster's solitary weakness, Satyr sacks, prove terribly effective, once again."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable09 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0397",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text =
+					"{#DialogueItalicFormat}Fang-bearing Cerberus directs all three of his attentions toward the Satyr sack."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable10 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0398",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text =
+					"{#DialogueItalicFormat}The guardian of hell itself decides the time has come for a short break and snack."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable11 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0399",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Prince Zagreus once more offers to Cerberus one of his favored sacks."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable12 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0400",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Cerberus moves for no one, but for Satyr sacks, he can make an exception."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable13 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0401",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Vigilant Cerberus decides to look the other way, this once."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable14 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0402",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Each violent countenance of Cerberus agrees the Satyr sack must be destroyed."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable15 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0403",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text =
+					"{#DialogueItalicFormat}After deliberating briefly, Cerberus concludes that, yes, he shall accept the sack."
+				},
+			},
+		},
+
+		RepulseOnMeleeInvulnerableHit = 250,
+		InvincibubbleScale = 2.5,
+		InvulnerableHitSound = "/VO/CerberusBarks",
+		OnHitVoiceLines =
+		{
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.35,
+			UsePlayerSource = true,
+			CooldownTime = 8,
+
+			-- Just playing with you, boy.
+			{ Cue = "/VO/ZagreusField_2157" },
+			-- There's a good boy.
+			{ Cue = "/VO/ZagreusField_2158" },
+			-- No time for play, huh?
+			{ Cue = "/VO/ZagreusField_2159" },
+			-- So serious on guard duty.
+			{ Cue = "/VO/ZagreusField_2160" },
+			-- Not going to budge, are you?
+			{ Cue = "/VO/ZagreusField_2161" },
+			-- Cerberus puts up with so much.
+			{ Cue = "/VO/ZagreusField_2162" },
+			-- Just playing!
+			{ Cue = "/VO/ZagreusField_2163" },
+			-- You wouldn't fight me, would you?
+			{ Cue = "/VO/ZagreusField_2164" },
+			-- Won't even lift a paw, will you.
+			{ Cue = "/VO/ZagreusField_2165" },
+			-- I ought to be ashamed of myself.
+			{ Cue = "/VO/ZagreusField_2166" },
+		},
+	},
 }

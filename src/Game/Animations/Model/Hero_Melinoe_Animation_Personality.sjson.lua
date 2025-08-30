@@ -1,7 +1,7 @@
 -- Map conversation animations for Zagreus to animations that exist for Melinoe
 
 local animationsFile = rom.path.combine(rom.paths.Content(),
-	'Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson')
+	"Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson")
 
 local order = {
 	"Name",
@@ -22,13 +22,23 @@ local newData = {
 		InheritFrom = "MelTalkBrooding01",
 	},
 	{
+		Name = "ZagreusTalkDenial_Full",
+		InheritFrom = "MelTalkBroodingFull01",
+	},
+	{
 		Name = "ZagreusTalkDenialReturnToIdle",
 		InheritFrom = "MelTalkBrooding01ReturnToIdle",
 	},
 	{
 		Name = "ZagreusInteractionThoughtful",
 		InheritFrom = "MelTalkBrooding01",
-	}
+	},
+	{
+		Name = "ZagreusInteractEquip",
+		InheritFrom = "MelTalkGifting01",
+		HoldLastFrame = false,
+		ChainTo = "MelTalkGifting01ReturnToIdle"
+	},
 }
 
 sjson.hook(animationsFile, function(data)

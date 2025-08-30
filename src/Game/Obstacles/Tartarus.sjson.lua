@@ -1,10 +1,10 @@
 -- Adds obstacles for the Tartarus biome from Hades to Hades II
 
 local hadesTartarusObstacleFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Obstacles\\Tartarus.sjson")
-local hadesTartarusObstacleTable = sjson.decode_file(hadesTartarusObstacleFile)
+local hadesTartarusObstacleTable = mod.DecodeSjsonFile(hadesTartarusObstacleFile)
 
 local hadesTwoTartarusObstacleFile = rom.path.combine(rom.paths.Content(), "Game\\Obstacles\\Tartarus.sjson")
--- local hadesTwoTartarusObstacleTable = sjson.decode_file(hadesTwoTartarusObstacleFile)
+-- local hadesTwoTartarusObstacleTable = mod.DecodeSjsonFile(hadesTwoTartarusObstacleFile)
 
 -- These need to be added before the others, as they are inherited from
 local hadesObstacleAdditionsParents = {}
