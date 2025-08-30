@@ -283,18 +283,6 @@ for entryName, entry in pairs(updatedCodexData[codexGroupNameMappings.OtherDeniz
 end
 updatedCodexData[codexGroupNameMappings.OtherDenizens] = nil
 
--- Add some additional mappings for the run history screen
--- E.g. for the Bloodmine mapping to the image of the ThiefMineLayer
-updatedCodexData.ModsNikkelMHadesBiomesHiddenCodexEntries = {
-	TitleText = "Codex_EnemiesChapter",
-	Entries = {
-		BloodMine = {
-			Entries = {},
-			Image = "Codex_Portrait_Thief",
-		},
-	},
-}
-
 -- Set metadata for the new group
 updatedCodexData[codexGroupNameMappings.Enemies].Icon = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_72x72"
 updatedCodexData[codexGroupNameMappings.Enemies].TitleText = "ModsNikkelMHadesBiomesCodexEntryTitleText"

@@ -12,14 +12,20 @@ modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 		if game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.Encounter then
 			game.CurrentRun.CurrentRoom.Encounter.InProgress = false
 		end
-		if killer and killer.Name == "HarpySupportUnit" then
-			local resultText = game.CurrentRun.CurrentRoom.ResultText
-			if resultText == "RunHistoryScreenResult_A_Boss01" then
-				killer.Name = "Harpy"
-			elseif resultText == "RunHistoryScreenResult_A_Boss02" then
-				killer.Name = "Harpy2"
-			elseif resultText == "RunHistoryScreenResult_A_Boss03" then
-				killer.Name = "Harpy3"
+		if killer then
+			if killer.Name == "HarpySupportUnit" then
+				local resultText = game.CurrentRun.CurrentRoom.ResultText
+				if resultText == "RunHistoryScreenResult_A_Boss01" then
+					killer.Name = "Harpy"
+				elseif resultText == "RunHistoryScreenResult_A_Boss02" then
+					killer.Name = "Harpy2"
+				elseif resultText == "RunHistoryScreenResult_A_Boss03" then
+					killer.Name = "Harpy3"
+				end
+			elseif killer.Name == "Hades" then
+				killer.Name = "NPC_Hades_01"
+			elseif killer.Name == "BloodMine" then
+				killer.Name = "HadesThiefMineLayer"
 			end
 		end
 
