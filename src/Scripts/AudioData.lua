@@ -87,3 +87,11 @@ game.GlobalVoiceLines.TheseusWrathActivationVoiceLines = mod.GlobalVoiceLines.Th
 game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines = mod.GlobalVoiceLines.TheseusChariotRuinedVoiceLines
 
 game.GlobalVoiceLines.CharonSurprisedVoiceLines = mod.GlobalVoiceLines.CharonSurprisedVoiceLines
+game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines = {
+	RandomRemaining = true,
+	BreakIfPlayed = true,
+	PreLineWait = 1.5,
+	Source = { SubtitleColor = game.Color.ThanatosVoice },
+	AllowTalkOverTextLines = true,
+	{ Cue = "/VO/ThanatosField_0236" }, -- Bye, Zag.
+}

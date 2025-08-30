@@ -1266,7 +1266,6 @@ local enemyModifications = {
 		OnDeathFireWeapons = { "BlastCubeExplosionElysium" },
 		FuseWarningProjectileName = "ModsNikkelMHadesBiomesBlastWarningDecalElysium"
 	},
-	-- TODO: Check using the modded ResetAnimation as for AxeTrap
 	PhalanxTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		ProjectileName = "PhalanxTrapWeapon",

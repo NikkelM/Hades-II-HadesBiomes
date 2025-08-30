@@ -18,7 +18,6 @@ function game.RoomEntranceD_Hub(currentRun, currentRoom, args)
 			{ DestinationId = 557124, DisableCollision = true, UseDefaultSpeed = true, Timeout = 5.0 })
 		PanCamera({ Id = cerberusId, Duration = 5.3, EaseIn = 0.0, EaseOut = 0, OffsetX = -410, OffsetY = 110, Retarget = true })
 
-		-- TODO: Do we have these voice lines?
 		game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
 		game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
 

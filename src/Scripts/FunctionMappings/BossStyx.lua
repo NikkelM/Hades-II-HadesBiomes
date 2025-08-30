@@ -100,7 +100,6 @@ function game.RoomEntranceHades(currentRun, currentRoom)
 	SetUnitProperty({ Property = "Speed", Value = 130, DestinationId = currentRun.Hero.ObjectId })
 
 	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
-	-- TODO
 	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
 
 	if currentRoom.HeroEndPoint ~= nil then

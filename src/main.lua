@@ -278,6 +278,7 @@ local function on_ready()
 		import "Scripts/BiomeMapPresentation.lua"
 		import "Scripts/CodexData.lua"
 		import "Scripts/CodexLogic.lua"
+		import "Scripts/Color.lua"
 		import "Scripts/Combat.lua"
 		import "Scripts/CombatLogic.lua"
 		import "Scripts/CombatPresentation.lua"
