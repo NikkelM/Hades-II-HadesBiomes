@@ -182,12 +182,6 @@ local hadesTwoObstacleModifications = {
 	StyxRubble02 = {
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 	},
-	SurfaceGravemarker07 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	SurfaceGravemarker07a = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
 }
 
 sjson.hook(hadesTwoStyxObstacleFile, function(data)

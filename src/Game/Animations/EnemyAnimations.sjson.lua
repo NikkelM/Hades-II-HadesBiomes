@@ -48,18 +48,9 @@ local animationsToRemove = {
 	-- "SpikeTrapDeactivated"
 }
 
-local function shouldRemoveAnimation(name)
-	for _, removeName in ipairs(animationsToRemove) do
-		if name == removeName then
-			return true
-		end
-	end
-	return false
-end
-
 for i = #hadesEnemyAnimationsTable.Animations, 1, -1 do
 	local animation = hadesEnemyAnimationsTable.Animations[i]
-	if shouldRemoveAnimation(animation.Name) then
+	if mod.ShouldRemoveEntry(animation.Name, animationsToRemove) then
 		table.remove(hadesEnemyAnimationsTable.Animations, i)
 		mod.DebugPrint("Removed animation: " .. animation.Name .. " from EnemyAnimations.sjson", 4)
 	end
