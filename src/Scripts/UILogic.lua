@@ -20,5 +20,12 @@ modutil.mod.Path.Wrap("OnLanguageChanged", function(base, args)
 	tryImportLanguageFile("TraitText", currentLanguage)
 	tryImportLanguageFile("MiscText", currentLanguage)
 
+	-- Also always import english files with custom strings in case we are missing localizations
+	if currentLanguage ~= "en" then
+		tryImportLanguageFile("HelpText", "en")
+		tryImportLanguageFile("ScreenText", "en")
+		tryImportLanguageFile("TraitText", "en")
+	end
+
 	base(args)
 end)

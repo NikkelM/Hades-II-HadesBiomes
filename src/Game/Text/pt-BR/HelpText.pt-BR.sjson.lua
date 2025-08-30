@@ -55,9 +55,18 @@ for _, entry in ipairs(hadesHelpTextTable.Texts) do
 	end
 end
 
+for aliasId, aliasInheritFrom in pairs(mod.HadesHelpTextAliases) do
+	table.insert(hadesHelpTextCopiedEntries, {
+		Id = aliasId,
+		InheritFrom = aliasInheritFrom,
+	})
+end
+
 sjson.hook(hadesTwoHelpTextFile, function(data)
 	for _, newValue in ipairs(newData) do
 		table.insert(data.Texts, sjson.to_object(newValue, order))
 	end
-	mod.AddTableKeysSkipDupes(data.Texts, hadesHelpTextCopiedEntries, "Id")
+	for _, newValue in ipairs(hadesHelpTextCopiedEntries) do
+		table.insert(data.Texts, sjson.to_object(newValue, order))
+	end
 end)

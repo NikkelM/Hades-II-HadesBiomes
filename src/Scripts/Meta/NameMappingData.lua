@@ -127,12 +127,43 @@ mod.HadesHelpTextFileNames = {
 	-- TODO: Not loading any at the moment - need to rework to only add actually required keys
 	-- This might end up allowing us to hook into the existing HelpText file as well instead of requiring to copy the whole file
 	-- Related to #196 and #153
-	-- "HelpText",
-	-- "_NPCData"
+	-- "_NPCData",
+	"_EnemyData",
+	"_EncounterData",
+	"_RoomData",
+	"_RoomDataAsphodel",
+	"_RoomDataElysium",
+	"_RoomDataStyx",
+	"_RoomDataSurface",
+	"_RoomDataTartarus",
 }
 -- These files do not exist
 mod.HadesHelpTextFileSkipMap = {
 	_NPCData = {
+		en = true,
+	},
+	_EnemyData = {
+		en = true,
+	},
+	_EncounterData = {
+		en = true,
+	},
+	_RoomData = {
+		en = true,
+	},
+	_RoomDataAsphodel = {
+		en = true,
+	},
+	_RoomDataElysium = {
+		en = true,
+	},
+	_RoomDataStyx = {
+		en = true,
+	},
+	_RoomDataSurface = {
+		en = true,
+	},
+	_RoomDataTartarus = {
 		en = true,
 	},
 }
@@ -162,6 +193,7 @@ mod.HadesHelpTextCopyKeys = {
 	UseTalkToBouldy = true,
 	UseTalkToThanatos = true,
 	UseTalkToPatroclus = true,
+	UseTalkToCerberus = true,
 	UseTalkToEurydice = true,
 	UseFinalBossDoor = true,
 	UseCerberusDoor = true,
@@ -308,8 +340,6 @@ mod.HadesHelpTextCopyKeys = {
 	Hades_Full = true,
 	-- #endregion
 	-- #region Characters
-	-- NPC_Hades_01 = true, -- TODO: Duplicate/Map name for boss subtitle
-	NPC_Hades_Story_02 = true,
 	NPC_FurySister_01 = true,
 	Harpy = true,
 	NPC_FurySister_02 = true,
@@ -340,6 +370,8 @@ mod.HadesHelpTextCopyKeys = {
 	NPC_Persephone_Home_01 = true,
 	EndingComplete = true,
 	EpilogueComplete = true,
+	-- NPC_Hades_01 = true, -- Duplicate
+	-- NPC_Hades_Story_02 = true, -- Using alias
 	-- #endregion
 	-- #region Remembrances
 	Remembrance_Hades = true,
@@ -576,6 +608,23 @@ mod.HadesHelpTextCopyKeys = {
 	AssistTraitsPermitted_Subtitle = true,
 	Codex_Summon_Locked = true,
 	-- #endregion
+}
+-- These are aliases that should be added to all HelpText files
+-- The key is the Id, the value is the InheritFrom
+mod.HadesHelpTextAliases = {
+	Theseus2 = "Theseus",
+	Minotaur2 = "Minotaur",
+	Hades = "NPC_LordHades_01",
+	NPC_Hades_Story_02 = "NPC_LordHades_01",
+	NPC_Thanatos_Field_01 = "NPC_Thanatos_01",
+	NPC_Orpheus_Story_01 = "NPC_Orpheus_01",
+	NPC_Achilles_Story_01 = "NPC_Achilles_01",
+	AchillesPatroclusReunion_B = "AchillesPatroclusReunion_A",
+	AchillesPatroclusReunion_C = "AchillesPatroclusReunion_A",
+	NPC_Patroclus_Standing_01 = "NPC_Patroclus_01",
+	Charon = "NPC_Charon_01",
+	ClearedCerberus_Alt1_Title = "ClearedCerberus_Title",
+	ClearedCerberus_Alt2_Title = "ClearedCerberus_Title",
 }
 
 -- Keys to be removed from the CodexText files before hooking them into Hades II
