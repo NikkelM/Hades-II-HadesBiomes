@@ -153,7 +153,6 @@ end
 
 -- TODO: Stop Hexes
 function game.HadesPhaseTransition(boss, currentRun, aiStage)
-	print("HadesStageTransition")
 	-- TODO: Called very late?
 	boss.InTransition = true
 	if boss.IsInvisible then

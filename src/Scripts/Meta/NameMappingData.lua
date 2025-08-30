@@ -124,10 +124,6 @@ mod.AsphodelRoomNameMappings = {
 }
 
 mod.HadesHelpTextFileNames = {
-	-- TODO: Not loading any at the moment - need to rework to only add actually required keys
-	-- This might end up allowing us to hook into the existing HelpText file as well instead of requiring to copy the whole file
-	-- Related to #196 and #153
-	-- "_NPCData",
 	"_EnemyData",
 	"_EncounterData",
 	"_RoomData",
