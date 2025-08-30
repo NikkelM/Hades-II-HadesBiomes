@@ -125,7 +125,10 @@ function mod.CheckRequiredFiles(failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb", failFast)
 
 	-- The helpText files in the different languages
-	for _, fileName in ipairs(mod.HadesHelpTextFileNames) do
+	-- _NPCData files are installed differently, so not part of this table by default
+	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames)
+	table.insert(allHelpTextFileNames, "_NPCData")
+	for _, fileName in ipairs(allHelpTextFileNames) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				local helpTextFile = rom.path.combine(rom.paths.Content(),

@@ -95,6 +95,8 @@ local function on_ready()
 	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
 	import "Scripts/Meta/NameMappingData.lua"
+	import "Scripts/Meta/StorytellerVoicelines.lua"
+	import "Scripts/Meta/ZagreusFieldVoicelines.lua"
 
 	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
 	local shouldProceed = config.enabled and

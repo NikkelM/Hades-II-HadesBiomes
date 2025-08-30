@@ -123,6 +123,9 @@ local function copyHadesHelpTexts()
 						if mod.EnemyNameMappings[entry.Id] then
 							entry.Id = mod.EnemyNameMappings[entry.Id]
 						end
+						if existingIds[entry.Id] then
+							table.remove(hadesHelpTextData.Texts, i)
+						end
 						-- If the Id starts with Storyteller_, replace with Megaera_0, to make sure they are correctly picked up for the InspectPoints
 						if entry.Id then
 							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
@@ -136,6 +139,45 @@ local function copyHadesHelpTexts()
 					-- Encode the hadesHelpTextFile to a new file in the Hades II folder
 					sjson.encode_file(hadesTwoHelpTextFilePath, hadesHelpTextData)
 				end
+			end
+		end
+	end
+end
+
+-- Similar to copyHadesHelpTexts, but only copies entries for specific NPCs and voicelines
+local function copyHadesNPCTexts()
+	local fileName = "_NPCData"
+	for _, language in ipairs(mod.HelpTextLanguages) do
+		if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
+			mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
+			local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
+				'Game\\Text\\' .. language .. '\\' .. fileName .. 'Hades.' .. language .. '.sjson')
+
+			if rom.path.exists(hadesTwoHelpTextFilePath) then
+				mod.DebugPrint("File already exists and will not be overwritten: " .. hadesTwoHelpTextFilePath, 2)
+			else
+				local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder,
+					'Content\\Game\\Text\\' .. language .. '\\' .. fileName .. '.' .. language .. '.sjson')
+				local hadesHelpTextDataRaw = mod.DecodeSjsonFile(hadesHelpTextFile)
+				-- This will get assigned the entries we care about
+				-- Need to keep the formatting like this to ensure lang is in front of Texts, otherwise the file isn't loaded correctly by the game
+				local hadesHelpTextData = {}
+				hadesHelpTextData.lang = language
+				hadesHelpTextData.Texts = {}
+
+				-- Go through all entries. Copy it to hadesHelpTextData if the Speaker property is in mod.HadesNPCTextSpeakers
+				-- Or if the Id is in either mod.StorytellerVoicelines or mod.ZagreusFieldVoicelines
+				for _, entry in ipairs(hadesHelpTextDataRaw.Texts) do
+					if (entry.Speaker and mod.HadesNPCTextSpeakers[entry.Speaker]) or
+							(entry.Id and (mod.StorytellerVoicelines[entry.Id] or mod.ZagreusFieldVoicelines[entry.Id])) then
+						if entry.Id then
+							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
+						end
+						table.insert(hadesHelpTextData.Texts, entry)
+					end
+				end
+
+				sjson.encode_file(hadesTwoHelpTextFilePath, hadesHelpTextData)
 			end
 		end
 	end
@@ -261,6 +303,7 @@ function mod.FirstTimeSetup()
 
 	mod.DebugPrint("Copying text files...", 3)
 	copyHadesHelpTexts()
+	copyHadesNPCTexts()
 
 	mod.DebugPrint("Copying Fx animations...", 3)
 	copyHadesFxAnimations()
