@@ -140,6 +140,16 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 							if entry.Text then
 								entry.Text = string.gsub(entry.Text, "{#PreviousFormat}", "{#Prev}")
 							end
+							if entry.Speaker then
+								if entry.Speaker == "NPC_Bouldy_01" then
+									entry.Speaker = "ModsNikkelMHadesBiomes_NPC_Bouldy_01"
+								end
+							end
+							if entry.Portrait then
+								if entry.Portrait == "Portrait_Bouldy_Default_01" then
+									entry.Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy"
+								end
+							end
 							if entry.SetFlagTrue then
 								entry.PostLineFunctionName = "ModsNikkelMHadesBiomesSetFlag"
 								entry.PostLineFunctionArgs = { FlagName = entry.SetFlagTrue, Value = true }

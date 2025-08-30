@@ -90,6 +90,12 @@ local npcModifications = {
 			},
 		},
 	},
+	ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		RepulseOnMeleeInvulnerableHit = 200,
+		Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy",
+	},
 	NPC_Eurydice_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
@@ -147,9 +153,13 @@ local npcModifications = {
 	ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
-		-- TODO: Add Hades Cerberus portrait to custom package and load it instead
-		LoadPackages = { "Cerberus" },
-	}
+		Portrait = "ModsNikkelMHadesBiomes_Portrait_Cerberus",
+		BossPresentationIntroTextLineSets = {
+			CerberusStyxMeeting01 = {
+				[2] = { PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Cerberus_Exit", },
+			},
+		},
+	},
 }
 
 -- Before adding them to the game, we need to apply some additional modifications to NPCs
@@ -181,7 +191,6 @@ local npcChoiceMappings = {
 }
 
 applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)
-
 applyNPCGlobalModifications(mod.NPCData)
 
 mod.ApplyModificationsAndInheritEnemyData(mod.NPCData, npcModifications, {}, {})

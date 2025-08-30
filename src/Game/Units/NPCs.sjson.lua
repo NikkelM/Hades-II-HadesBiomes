@@ -59,6 +59,28 @@ local hadesNPCAdditions = {
 			},
 		},
 	},
+	{
+		Name = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
+		InheritFrom = "BaseNPC",
+		DisplayInEditor = true,
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "BouldyIdle",
+			Tallness = 1150.0,
+			Interact = {
+				Distance = 210.0,
+				OffsetX = -15.0,
+				OffsetY = 130.0,
+			},
+			Offset = { X = 0, Y = -445, },
+			Points = {
+				{ X = -716, Y = 51, },
+				{ X = 12,   Y = 404, },
+				{ X = 728,  Y = 42, },
+				{ X = 6,    Y = -328, },
+			},
+		},
+	},
 }
 
 local NPCKeyReplacements = {}

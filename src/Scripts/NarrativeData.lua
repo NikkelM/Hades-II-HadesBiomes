@@ -3,6 +3,7 @@ local hadesNPCNames = {
 	"NPC_Sisyphus_01",
 	"NPC_Eurydice_01",
 	"NPC_Patroclus_01",
+	"ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 	"ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
 }
 
@@ -21,6 +22,7 @@ local hadesNPCGiftLinePriorities = {
 		"SisyphusGift08_B",
 		"SisyphusGift09_A",
 	},
+	-- ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {},
 	NPC_Eurydice_01 = {
 		"EurydiceGift01",
 		"EurydiceGift02",

@@ -57,9 +57,38 @@ mod.HadesPortraitAnimationModifications = {
 	},
 }
 
--- TODO: Re-check on 1.0 release if any new ones have been added (e.g. Persephone, Nyx)
 mod.HadesPortraitAnimationAdditions = {
-	-- Codex portraits where the names are duplicate between the games
+	-- #region Character Dialogue portraits that are duplicates between the games
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Bouldy",
+		InheritFrom = "Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesPortraits\\Portraits_Bouldy_01",
+		Scale = 1.0,
+		OffsetY = -117,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Bouldy_Exit",
+		InheritFrom = "Portrait_Base_01_Exit",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesPortraits\\Portraits_Bouldy_01",
+		Scale = 1.0,
+		OffsetY = -117,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Cerberus",
+		InheritFrom = "Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesPortraits\\Portraits_Cerberus_01",
+		Scale = 1.0,
+		OffsetY = -117,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Cerberus_Exit",
+		InheritFrom = "Portrait_Base_01_Exit",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesPortraits\\Portraits_Cerberus_01",
+		Scale = 1.0,
+		OffsetY = -117,
+	},
+	-- TODO: Re-check on 1.0 release if any new ones have been added (e.g. Persephone, Nyx)
+	-- #region Codex portraits that are duplicates between the games
 	{
 		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_AsphodelBiome",
 		InheritFrom = "Codex_Portrait_Base_01",
@@ -140,6 +169,7 @@ mod.HadesPortraitAnimationAdditions = {
 		InheritFrom = "Codex_Portrait_Base_01",
 		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Zagreus",
 	},
+	-- #endregion
 }
 
 -- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly

@@ -285,6 +285,12 @@ The above makes sure that `Terrain_04` is rendered above `Terrain_03` and below 
 ...
 ```
 
+#### A_Story01
+
+In this map, we need to change the name for the Bouldy NPC, as it is used in both Hades and Hades II.
+
+For ID `506340`, change the `Name` property from `NPC_Bouldy_01` to `ModsNikkelMHadesBiomes_NPC_Bouldy_01`.
+
 #### D_Hub
 
 In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II.

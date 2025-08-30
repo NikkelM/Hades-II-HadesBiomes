@@ -352,7 +352,6 @@ mod.HadesHelpTextCopyKeys = {
 	NPC_Sisyphus_01 = true,
 	NPC_SisyphusAndBouldy_01 = true,
 	Sisyphus = true,
-	-- NPC_Bouldy_01 = true, -- TODO: Duplicate
 	NPC_Patroclus_01 = true,
 	NPC_Patroclus_Unnamed_01 = true,
 	NPC_Eurydice_01 = true,
@@ -366,6 +365,7 @@ mod.HadesHelpTextCopyKeys = {
 	NPC_Persephone_Home_01 = true,
 	EndingComplete = true,
 	EpilogueComplete = true,
+	-- NPC_Bouldy_01 = true, -- Duplicate
 	-- NPC_Hades_01 = true, -- Duplicate
 	-- NPC_Hades_Story_02 = true, -- Using alias
 	-- #endregion

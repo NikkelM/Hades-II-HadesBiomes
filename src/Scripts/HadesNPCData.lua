@@ -860,6 +860,7 @@ mod.NPCData = mod.NPCData or {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "SisyphusAboutBouldy02" },
+				-- TODO
 				RequiredMinAnyTextLines = { TextLines = GameData.BouldyRepeatableTextLines, Count = 10 },
 				{
 					Cue = "/VO/Sisyphus_0441",
@@ -3666,6 +3667,817 @@ mod.NPCData = mod.NPCData or {
 			{ Cue = "/VO/Sisyphus_0267", RequiredTextLines = { "SisyphusMeeting06" } },
 		},
 	},
+	-- TODO: Zagreus and Sisyphus voicelines
+	-- Bouldy, Id = 506340
+	ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {
+		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
+		UseText = "UseTalkToBouldy",
+		AnimOffsetZ = 235,
+		Portrait = "Portrait_Bouldy_Default_01",
+		BlockStatusAnimations = true,
+		Groups = { "NPCs" },
+		GiftText = "GiftBouldyUseText",
+
+		ActivateRequirements = {
+			RequiredMinCompletedRuns = 1,
+		},
+
+		InteractTextLineSets =
+		{
+			BouldyFirstMeeting =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "SisyphusAboutBouldy01" },
+				EndVoiceLines =
+				{
+					{
+						RandomRemaining = true,
+						PreLineWait = 0.73,
+						UsePlayerSource = true,
+
+						-- I, uh... OK!
+						{ Cue = "/VO/ZagreusField_2808" },
+					},
+					{
+						ObjectType = "NPC_Sisyphus_01",
+						RequiredUnitAlive = "NPC_Sisyphus_01",
+						PreLineWait = 0.45,
+						-- I think he likes you!
+						{ Cue = "/VO/Sisyphus_0361" },
+					},
+				},
+				{
+					Cue = "/VO/ZagreusField_2785",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Erm{#PreviousFormat}, Bouldy...? I'm Zagreus, good to make your acquaintance. I know that friends are difficult to come by here in Tartarus, and so, I'm grateful that you seem to be a trusty one."
+				},
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   ."
+				},
+			},
+			BouldyMiscMeeting01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "BouldyFirstMeeting" },
+				{
+					Cue = "/VO/ZagreusField_2786",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Bouldy, while on one hand I know that making offerings to you won't really help get me out of here, on the other hand... maybe it will?"
+				},
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   ."
+				},
+			},
+			BouldyMiscMeeting02 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "BouldyFirstMeeting" },
+				{
+					Cue = "/VO/ZagreusField_2787",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Bouldy, how do you handle being trapped in Tartarus for all eternity, doomed to be pushed up and down a hill repeatedly for no good reason?"
+				},
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   ."
+				},
+			},
+			BouldyMiscMeeting03 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				-- TODO: Doesn't gate correctly? Maybe this textline exists in H2 as well
+				RequiredTextLines = { "BouldyFirstMeeting" },
+				{
+					Cue = "/VO/ZagreusField_2788",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"So, {#DialogueItalicFormat}erm{#PreviousFormat}, there something you like to do for entertainment out here, Bouldy? Or just, I don't know, take it all in, I guess?"
+				},
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   ."
+				},
+			},
+		},
+
+		RepeatableTextLineSets =
+		{
+			BouldyChat01 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "BouldyFirstMeeting" },
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   ."
+				},
+			},
+		},
+
+		GiftTextLineSets =
+		{
+			BouldyGiftRepeatable01 =
+			{
+				{
+					Cue = "/VO/ZagreusField_2789",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "What's the latest, Bouldy? Had any good tumbles down that hill of late?"
+				},
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   .",
+					-- TODO
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					-- TODO
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					-- TODO
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable02 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01" },
+				{
+					Cue = "/VO/ZagreusField_2790",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You know, I think I'm growing more accustomed to relating to a giant stone."
+				},
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable03 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2791",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "Don't know why I keep doing this, Bouldy, yet here we are."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable04 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2792",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You take good care of Sisyphus, there, won't you, Bouldy?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable05 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2793",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Sometimes a conversation with a friend is its own reward, isn't that right, Bouldy?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable06 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2794",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You're looking as stately as ever, there, Bouldy."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable07 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2795",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "A tribute to the greatest boulder of all time."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable08 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2796",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "To our most famous boulder!"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable09 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2797",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "May you roll smoothly for eternity."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable10 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2798",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Thank you for keeping my friend company."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable11 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2799",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "This is for you, Bouldy."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable12 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2800",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Bouldy, please accept this humble offering."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable13 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03" },
+				{
+					Cue = "/VO/ZagreusField_2801",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Bouldy, lend your favor to me, won't you?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable14 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2802",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "An offering to the finest boulder in all of Tartarus."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable15 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2803",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Cheers, Bouldy! Thank you for brightening my day or night."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable16 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				RequiredTextLines = { "BouldyGiftRepeatable12" },
+				{
+					Cue = "/VO/ZagreusField_2804",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Bouldy, ever get the feeling that we've had this conversation in the past?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable17 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
+				{
+					Cue = "/VO/ZagreusField_2805",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Let's be sure to do this again sometime, Bouldy my friend."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable18 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
+				{
+					Cue = "/VO/ZagreusField_2806",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Any advice for me on this occasion, Bouldy?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable19 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
+				{
+					Cue = "/VO/ZagreusField_2807",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Bouldy, you can speak up if there's something on your mind, you know."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable20 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_4215",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You're always here for me, Bouldy! Cheers."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable21 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
+				{
+					Cue = "/VO/ZagreusField_4216",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "How's everything going lately, there, Bouldy?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable22 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03" },
+				{
+					Cue = "/VO/ZagreusField_4217",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Looks like you and Sisyphus are doing just fine, Bouldy."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable23 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03" },
+				{
+					Cue = "/VO/ZagreusField_4218",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Good seeing you as ever, there, Bouldy."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable24 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
+				{
+					Cue = "/VO/ZagreusField_4219",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You're a good friend, Bouldy. I'm glad you're here."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable25 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
+				{
+					Cue = "/VO/ZagreusField_4220",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You'd tell me if anything was on your mind, right, Bouldy?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable26 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05", "BouldyGiftRepeatable06", "BouldyGiftRepeatable07", "BouldyGiftRepeatable08", "BouldyGiftRepeatable09", "BouldyGiftRepeatable10" },
+				{
+					Cue = "/VO/ZagreusField_4221",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey Bouldy, what's your favorite color?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable27 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05", "BouldyGiftRepeatable06", "BouldyGiftRepeatable07", "BouldyGiftRepeatable08", "BouldyGiftRepeatable09", "BouldyGiftRepeatable10" },
+				{
+					Cue = "/VO/ZagreusField_4222",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey Bouldy, what's your favorite form of sustenance?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable28 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05", "BouldyGiftRepeatable06", "BouldyGiftRepeatable07", "BouldyGiftRepeatable08", "BouldyGiftRepeatable09", "BouldyGiftRepeatable10" },
+				{
+					Cue = "/VO/ZagreusField_4223",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey Bouldy, what do you like to do in your spare time?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable29 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03" },
+				{
+					Cue = "/VO/ZagreusField_4224",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey Bouldy, how's everything of late?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+		},
+
+		GiftGivenVoiceLines =
+		{
+			BreakIfPlayed = true,
+			PreLineWait = 1.0,
+			PlayFromTarget = true,
+
+			-- Thanks for that, sir.
+			-- { Cue = "/VO/ZagreusHome_0320" },
+		},
+
+		--[[
+		CharacterInteractions =
+		{
+			Rescue =
+			{
+				VoiceLines =
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					PreLineWait = 0.4,
+
+					-- Sure thing!
+					-- { Cue = "/VO/Sisyphus_0038" },
+				},
+			},
+		},
+		]] --
+
+		OnHitFunctionName = "BouldyHitPresentation",
+		OnHitVoiceLines =
+		{
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.25,
+			ObjectType = "NPC_Sisyphus_01",
+			Cooldowns =
+			{
+				{ Name = "SisyphusAnyQuipSpeech", Time = 7 },
+			},
+
+			-- No use in that.
+			{ Cue = "/VO/Sisyphus_0066" },
+			-- Don't bother, Prince.
+			{ Cue = "/VO/Sisyphus_0068" },
+			-- Come on, now.
+			{ Cue = "/VO/Sisyphus_0069" },
+			-- Oh come now.
+			{ Cue = "/VO/Sisyphus_0070" },
+			-- Why bother.
+			{ Cue = "/VO/Sisyphus_0071" },
+			-- Very funny, Prince.
+			{ Cue = "/VO/Sisyphus_0073" },
+		},
+	},
+
 	-- Manually replaced PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] with mod.PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] to make it easier
 	-- FunctionName is still replaced in NPCData.lua
 	-- Eurydice, Id = 514436
