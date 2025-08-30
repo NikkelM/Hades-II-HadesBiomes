@@ -83,7 +83,6 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, de
 end
 
 -- Creates a new helpTextFile for all given languages with any IDs that do not exist in the Hades II help text files
--- TODO: Currently not in use at all
 local function copyHadesHelpTexts()
 	for _, fileName in ipairs(mod.HadesHelpTextFileNames) do
 		-- A HelpText language/file is any of the copied files, not just HelpText.xx.sjson
