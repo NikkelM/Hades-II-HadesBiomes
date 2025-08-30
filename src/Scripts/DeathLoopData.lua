@@ -2,7 +2,7 @@
 
 -- Add the setup function to the Hub room
 table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
-	FunctionName = _PLUGIN.guid .. '.' .. 'SpawnHadesRunStartDoor',
+	FunctionName = _PLUGIN.guid .. "." .. "SpawnHadesRunStartDoor",
 })
 
 function mod.SpawnHadesRunStartDoor(source, args)

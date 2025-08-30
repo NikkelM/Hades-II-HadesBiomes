@@ -39,22 +39,6 @@ local newData = {
 		HoldLastFrame = false,
 		ChainTo = "MelTalkGifting01ReturnToIdle"
 	},
-	{
-		Name = "ZagreusRun",
-		InheritFrom = "MelinoeRun",
-	},
-	{
-		Name = "ZagreusStop",
-		InheritFrom = "MelinoeStop",
-	},
-	{
-		Name = "ZagreusStart",
-		InheritFrom = "MelinoeStart",
-	},
-	{
-		Name = "ZagreusWalk",
-		InheritFrom = "MelinoeWalk",
-	},
 }
 
 sjson.hook(animationsFile, function(data)
