@@ -39,6 +39,11 @@ local newData = {
 		DisplayName = "자그레우스",
 		Description = "지하세계의 왕자",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
+		DisplayName = "돌덩이",
+		Description = "",
+	},
 }
 
 local hadesHelpTextCopiedEntries = {}

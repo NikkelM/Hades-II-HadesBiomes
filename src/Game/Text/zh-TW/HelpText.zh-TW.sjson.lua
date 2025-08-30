@@ -36,6 +36,11 @@ local newData = {
 		DisplayName = "扎格列欧斯",
 		Description = "冥界王子",
 	},
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
+	-- 	DisplayName = "Bouldy",
+	-- 	Description = "",
+	-- },
 }
 
 sjson.hook(helpTextFile, function(data)

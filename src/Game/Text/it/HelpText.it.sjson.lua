@@ -39,6 +39,11 @@ local newData = {
 		DisplayName = "Zagreus",
 		Description = "Principe dell'Oltretomba",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
+		DisplayName = "Pietro",
+		Description = "",
+	},
 }
 
 local hadesHelpTextCopiedEntries = {}

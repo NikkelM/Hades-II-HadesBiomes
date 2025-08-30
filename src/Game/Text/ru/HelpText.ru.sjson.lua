@@ -39,6 +39,11 @@ local newData = {
 		DisplayName = "Загрей",
 		Description = "Принц Подземного мира",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
+		DisplayName = "Валунок",
+		Description = "",
+	},
 }
 
 local hadesHelpTextCopiedEntries = {}

@@ -37,6 +37,11 @@ local newData = {
 		DisplayName = "Ζαγρεύς",
 		Description = "Πρίγκιπας του Κάτω Κόσμου",
 	},
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
+	-- 	DisplayName = "Bouldy",
+	-- 	Description = "",
+	-- },
 }
 
 sjson.hook(helpTextFile, function(data)

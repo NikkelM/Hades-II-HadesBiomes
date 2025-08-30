@@ -39,6 +39,11 @@ local newData = {
 		DisplayName = "Zagreus",
 		Description = "Książę Podziemi",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
+		DisplayName = "Głazik",
+		Description = "",
+	},
 }
 
 local hadesHelpTextCopiedEntries = {}
