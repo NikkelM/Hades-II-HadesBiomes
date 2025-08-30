@@ -17,7 +17,7 @@ end
 
 -- Rename duplicate codex entries
 for oldName, newName in pairs(mod.HadesCodexTextNameMappings) do
-	mod.UpdateField(hadesCodexTextTable.Texts, oldName, newName, { "Id" }, "CodexText.en.sjson")
+	mod.UpdateField(hadesCodexTextTable.Texts, oldName, newName, { "Id" }, "CodexText.es.sjson")
 end
 
 -- The Hades II CodexText file is not large enough to handle the hook
