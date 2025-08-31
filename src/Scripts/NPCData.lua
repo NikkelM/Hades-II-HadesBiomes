@@ -218,4 +218,3 @@ applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)
 applyNPCGlobalModifications(mod.NPCData)
 
 mod.ApplyModificationsAndInheritEnemyData(mod.NPCData, npcModifications, {}, {})
-mod.PrintTable(game.EnemyData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets)
