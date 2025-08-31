@@ -3675,7 +3675,6 @@ mod.NPCData = mod.NPCData or {
 		Portrait = "Portrait_Bouldy_Default_01",
 		BlockStatusAnimations = true,
 		Groups = { "NPCs" },
-		-- TODO: Check when gifting is possible and when not
 		GiftText = "GiftBouldyUseText",
 
 		ActivateRequirements = {
