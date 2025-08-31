@@ -443,9 +443,6 @@ local enemyModifications = {
 			},
 		},
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
-		-- TODO: Check the below
-		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
-		-- SpawnObstaclesOnDeath = { ... }
 	},
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
