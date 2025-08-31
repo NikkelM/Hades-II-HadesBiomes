@@ -128,6 +128,7 @@ local function copyHadesHelpTexts()
 						end
 						if entry.Id then
 							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
+							entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
 						end
 						if entry.Description then
 							entry.Description = string.gsub(entry.Description, "{#PreviousFormat}", "{#Prev}")
@@ -168,6 +169,7 @@ local function copyHadesNPCTexts()
 							(entry.Id and (mod.StorytellerVoicelines[entry.Id] or mod.ZagreusFieldVoicelines[entry.Id])) then
 						if entry.Id then
 							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
+							entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
 						end
 						table.insert(filteredTexts, entry)
 					end
