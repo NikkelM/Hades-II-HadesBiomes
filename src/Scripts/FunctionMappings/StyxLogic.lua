@@ -136,7 +136,6 @@ function game.ExitNPCPresentation(source, args)
 	end
 
 	if args.UseThanatosExitSound then
-		-- TODO: Thanatos voicelines
 		game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines or {}, true)
 		PlaySound({ Name = "/Leftovers/SFX/BeaconTeleportSFX2", Delay = 2.2 })
 	end
