@@ -444,8 +444,7 @@ mod.NPCData = mod.NPCData or {
 		Portrait = "Portrait_Sisyphus_Default_01",
 		Groups = { "NPCs" },
 
-		ActivateRequirements =
-		{
+		ActivateRequirements = {
 			RequiredMinCompletedRuns = 1,
 		},
 
@@ -7427,8 +7426,7 @@ mod.NPCData = mod.NPCData or {
 	},
 	-- Manually replaced PresetEventArgs.PatroclusGreeting/Muttering etc. with mod.PresetEventArgs.___ to make it easier
 	-- Patroclus
-	NPC_Patroclus_01 =
-	{
+	NPC_Patroclus_01 = {
 		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
 
 		UseText = "UseTalkToPatroclus",

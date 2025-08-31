@@ -55,8 +55,10 @@ for _, entry in ipairs(hadesHelpTextTable.Texts) do
 			entry.Id = mod.EnemyNameMappings[entry.Id]
 		end
 		if entry.DisplayName then
-			-- Fix icons
 			entry.DisplayName = string.gsub(entry.DisplayName, "{!Icons.ReRoll_Small}", "{!Icons.ReRoll}")
+		end
+		if entry.Description then
+			entry.DisplayName = string.gsub(entry.DisplayName, "{#PreviousFormat}", "{#Prev}")
 		end
 		table.insert(hadesHelpTextCopiedEntries, entry)
 	end

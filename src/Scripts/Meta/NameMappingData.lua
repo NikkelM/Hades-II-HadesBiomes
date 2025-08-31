@@ -501,7 +501,7 @@ mod.HadesHelpTextCopyKeys = {
 	HadesSignoff = true,
 	Hades_SignoffMax = true,
 	-- #endregion
-	-- #region Pet traits/descriptions
+	-- #region Traits
 	FuryAssistTrait_Rack = true,
 	FuryAssistTrait_Delta = true,
 	FuryAssistTrait = true,

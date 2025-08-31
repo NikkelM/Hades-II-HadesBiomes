@@ -56,6 +56,7 @@ end
 local npcModifications = {
 	NPC_Sisyphus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		ActivateRequirements = mod.NilValue,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
@@ -92,12 +93,14 @@ local npcModifications = {
 	},
 	ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		ActivateRequirements = mod.NilValue,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		RepulseOnMeleeInvulnerableHit = 200,
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy",
 	},
 	NPC_Eurydice_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		ActivateRequirements = mod.NilValue,
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
 		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
 		RequiredRoomInteraction = true,
@@ -125,6 +128,7 @@ local npcModifications = {
 	},
 	NPC_Patroclus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		ActivateRequirements = mod.NilValue,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
