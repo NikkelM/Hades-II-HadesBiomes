@@ -59,6 +59,7 @@ local additionalEnemySets = {
 		"PunchingBagUnitElite",
 		"HeavyRangedElite",
 	},
+	-- Custom
 	EnemiesBiome1_EliteChallenge = {
 		"HeavyMeleeElite",
 		"PunchingBagUnitElite",
@@ -134,6 +135,7 @@ local additionalEnemySets = {
 		"RangedBurrower",
 		"RangedBurrowerElite",
 	},
+	-- Custom
 	EnemiesBiome2_EliteChallenge = {
 		"BloodlessSelfDestructElite",
 		"BloodlessNakedBerserkerElite",
@@ -269,10 +271,91 @@ local additionalEnemySets = {
 		"SplitShotUnitElite",
 		"ChariotElite",
 	},
+	-- Custom
+	EnemiesBiome3_EliteChallenge = {
+		"ShadeSpearUnitElite",
+		"ShadeShieldUnitElite",
+		"ShadeSwordUnitElite",
+	},
 	-- #endregion
 
 	-- TODO: Confirm death animations, remember to set SortMode to "Isometric" for all death animations
 	-- #region STYX
+	EnemiesBiome4 = {
+		"Crawler",
+		"RatThug",
+		"RatThugElite",
+		"SatyrRanged",
+		"SatyrRangedElite",
+		"HeavyRangedForked",
+		"HeavyRangedForkedElite",
+		"ThiefImpulseMineLayer",
+		"ThiefImpulseMineLayerElite",
+	},
+	EnemiesBiome4MiniBoss = {
+		"SatyrRangedMiniboss",
+		"RatThugMiniboss",
+		"ThiefImpulseMineLayerMiniboss",
+		"HeavyRangedForkedMiniboss"
+	},
+	EnemiesBiome4MiniBossFodder = {
+		"Crawler",
+		"RatThug",
+		"SatyrRanged",
+		"HeavyRangedForked",
+		"ThiefImpulseMineLayer",
+	},
+	EnemiesBiome4Mini = {
+		"Crawler",
+		"RatThug",
+		"SatyrRanged",
+		"HeavyRangedForked",
+		"ThiefImpulseMineLayer",
+	},
+	EnemiesBiome4MiniHard = {
+		"RatThugElite",
+		"SatyrRangedElite",
+		"HeavyRangedForkedElite",
+		"ThiefImpulseMineLayerElite",
+	},
+	EnemiesBiome4MiniSingle = {
+		"RatThugElite",
+		"SatyrRangedElite",
+		"HeavyRangedForkedElite",
+	},
+	-- Custom
+	EnemiesBiome4_EliteChallenge = {
+		"RatThugElite",
+		"SatyrRangedElite",
+		"HeavyRangedForkedElite",
+	},
+	-- Hades
+	EnemiesHadesLarge = {
+		"BloodlessPitcherSuperElite",
+		"ShadeShieldUnitSuperElite",
+		"ShadeSpearUnitSuperElite",
+		"ShadeSwordUnitSuperElite",
+		"ShieldRangedSuperElite",
+	},
+	EnemiesHadesSmall = {
+		"ShadeBowUnitSuperElite",
+		"PunchingBagUnitSuperElite",
+		"LightRangedSuperElite",
+		"BloodlessNakedSuperElite",
+		"ChariotSuperElite",
+		"SwarmerSuperElite",
+		"RangedBurrowerSuperElite",
+		"DisembodiedHandSuperElite",
+	},
+	EnemiesHadesEMLarge = {
+		"WretchAssassinMinibossSuperElite",
+		"HitAndRunUnitSuperElite",
+	},
+	EnemiesHadesEMSmall = {
+		"HeavyRangedSplitterMinibossSuperElite",
+		"CrusherUnitSuperElite",
+		"FlurrySpawnerSuperElite",
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT

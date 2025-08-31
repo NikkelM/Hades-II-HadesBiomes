@@ -1,17 +1,7 @@
 -- Adds enemy animations from Hades to Hades II
-
-local function shouldRemoveAnimation(name, animationsToRemove)
-	for _, removeName in ipairs(animationsToRemove) do
-		if name == removeName then
-			return true
-		end
-	end
-	return false
-end
-
 local hadesEnemyAnimationsFile = rom.path.combine(mod.hadesGameFolder,
 	"Content\\Game\\Animations\\CharacterAnimationsEnemies.sjson")
-local hadesEnemyAnimationsTable = sjson.decode_file(hadesEnemyAnimationsFile)
+local hadesEnemyAnimationsTable = mod.DecodeSjsonFile(hadesEnemyAnimationsFile)
 
 -- This is the largest file, so we don't run into issues with the hooking
 local hadesTwoEnemyAnimationsFile = rom.path.combine(rom.paths.Content(), "Game\\Animations\\Enemy_Olympus_VFX.sjson")
@@ -35,7 +25,7 @@ local animationsToRemove = {
 
 for i = #hadesEnemyAnimationsTable.Animations, 1, -1 do
 	local animation = hadesEnemyAnimationsTable.Animations[i]
-	if shouldRemoveAnimation(animation.Name, animationsToRemove) then
+	if mod.ShouldRemoveEntry(animation.Name, animationsToRemove) then
 		table.remove(hadesEnemyAnimationsTable.Animations, i)
 		mod.DebugPrint("Removed animation: " .. animation.Name .. " from CharacterAnimationsEnemies.sjson", 4)
 	end
@@ -97,6 +87,13 @@ local modifications = {
 	-- #endregion
 
 	-- #region STYX
+	HeavyRangedForkedBurrow = {
+		AngleFromOwner = "Ignore",
+	},
+	HeavyRangedForkedDeath = {
+		SortMode = "Isometric",
+		OffsetY = -70,
+	},
 	-- #endregion
 }
 

@@ -2,10 +2,10 @@
 
 -- Mixes functionality from the original Hades RemoteAttack and the Hades II replacement, RemoteAI, to work with the Dart trap
 function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
-	while IsAIActive(enemy) do
-		enemy.WeaponName = SelectWeapon(enemy)
+	while game.IsAIActive(enemy) do
+		enemy.WeaponName = game.SelectWeapon(enemy)
 		table.insert(enemy.WeaponHistory, enemy.WeaponName)
-		local aiData = GetWeaponAIData(enemy) or {}
+		local aiData = game.GetWeaponAIData(enemy) or {}
 
 		if aiData.IdleAnimation ~= nil then
 			SetAnimation({ Name = aiData.IdleAnimation, DestinationId = enemy.ObjectId })
@@ -16,17 +16,16 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 		NotifyWithinDistanceAny({
 			Ids = { enemy.ObjectId },
 			DestinationNames = enemy.TargetGroups,
-			Distance = aiData
-					.AttackDistance,
+			Distance = aiData.AttackDistance,
 			ScaleY = 0.5,
 			MaxZ = aiData.MaxVictimZ,
 			Notify = enemy.AINotifyName
 		})
-		waitUntil(enemy.AINotifyName)
-		aiData.TargetId = NotifyResultsTable[enemy.AINotifyName]
+		game.waitUntil(enemy.AINotifyName)
+		aiData.TargetId = game.NotifyResultsTable[enemy.AINotifyName]
 
 		-- If disabled while waiting
-		if not IsAIActive(enemy) then
+		if not game.IsAIActive(enemy) then
 			SetAnimation({ DestinationId = enemy.ObjectId, Name = aiData.DisabledAnimation })
 			return
 		end
@@ -35,8 +34,8 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 				[GetClosestUnitOfType({ Id = enemy.ObjectId, DestinationName = aiData.LinkedEnemy, Distance = 2000 })]
 
 		local trapChainData = nil
-		if CurrentRun.CurrentRoom.RemoteTrapChains ~= nil then
-			trapChainData = CurrentRun.CurrentRoom.RemoteTrapChains[enemy.ObjectId]
+		if game.CurrentRun.CurrentRoom.RemoteTrapChains ~= nil then
+			trapChainData = game.CurrentRun.CurrentRoom.RemoteTrapChains[enemy.ObjectId]
 		end
 
 		-- For rooms where more than one trap is triggered by a plate
@@ -64,7 +63,7 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 		if aiData.PreAttackSound ~= nil then
 			PlaySound({ Name = enemy.PreAttackSound, Id = enemy.ObjectId })
 		end
-		wait(CalcEnemyWait(enemy, aiData.PreAttackDuration), enemy.AIThreadName)
+		game.wait(game.CalcEnemyWait(enemy, aiData.PreAttackDuration), enemy.AIThreadName)
 
 		-- Not called in Hades
 		-- DoAttack(enemy, aiData)
@@ -72,39 +71,39 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 		if trapChainData ~= nil then
 			for i, chain in ipairs(trapChainData.Chains) do
 				for j, chainedEnemyId in ipairs(chain) do
-					notifyExistingWaiters("WithinDistance" .. chainedEnemyId)
+					game.notifyExistingWaiters("WithinDistance" .. chainedEnemyId)
 					local chainedEnemy = game.ActiveEnemies[chainedEnemyId]
 					if chainedEnemy ~= nil then
-						local chainedWeaponAIData = ShallowCopyTable(chainedEnemy.DefaultAIData) or chainedEnemy
-						if WeaponData[chainedEnemy.WeaponName] ~= nil and WeaponData[chainedEnemy.WeaponName].AIData ~= nil then
-							OverwriteTableKeys(chainedWeaponAIData, WeaponData[chainedEnemy.WeaponName].AIData)
+						local chainedWeaponAIData = game.ShallowCopyTable(chainedEnemy.DefaultAIData) or chainedEnemy
+						if game.WeaponData[chainedEnemy.WeaponName] ~= nil and game.WeaponData[chainedEnemy.WeaponName].AIData ~= nil then
+							game.OverwriteTableKeys(chainedWeaponAIData, game.WeaponData[chainedEnemy.WeaponName].AIData)
 						end
 						chainedWeaponAIData.WeaponName = chainedEnemy.WeaponName
 
-						thread(DoAttack, chainedEnemy, chainedWeaponAIData)
+						game.thread(game.DoAttack, chainedEnemy, chainedWeaponAIData)
 					end
 				end
-				wait(CalcEnemyWait(enemy, trapChainData.ChainInterval), enemy.AIThreadName)
+				game.wait(game.CalcEnemyWait(enemy, trapChainData.ChainInterval), enemy.AIThreadName)
 			end
 		end
 
 		if linkedEnemy ~= nil then
-			local linkedWeaponAIData = ShallowCopyTable(linkedEnemy.DefaultAIData) or linkedEnemy
-			if WeaponData[linkedEnemy.WeaponName] ~= nil and WeaponData[linkedEnemy.WeaponName].AIData ~= nil then
-				OverwriteTableKeys(linkedWeaponAIData, WeaponData[linkedEnemy.WeaponName].AIData)
+			local linkedWeaponAIData = game.ShallowCopyTable(linkedEnemy.DefaultAIData) or linkedEnemy
+			if game.WeaponData[linkedEnemy.WeaponName] ~= nil and game.WeaponData[linkedEnemy.WeaponName].AIData ~= nil then
+				game.OverwriteTableKeys(linkedWeaponAIData, game.WeaponData[linkedEnemy.WeaponName].AIData)
 			end
 			linkedWeaponAIData.WeaponName = linkedEnemy.WeaponName
 
 			if not linkedWeaponAIData.SkipAngleTowardTargetWait then
 				linkedEnemy.AINotifyName = "WaitForRotation" .. linkedEnemy.ObjectId
 				NotifyOnRotationComplete({ Id = linkedEnemy.ObjectId, Cosmetic = true, Notify = linkedEnemy.AINotifyName, Timeout = 9.0 })
-				waitUntil(linkedEnemy.AINotifyName)
+				game.waitUntil(linkedEnemy.AINotifyName)
 			end
 
-			thread(DoAttack, linkedEnemy, linkedWeaponAIData)
+			game.thread(game.DoAttack, linkedEnemy, linkedWeaponAIData)
 		end
 
-		if not IsAIActive(enemy) then
+		if not game.IsAIActive(enemy) then
 			break
 		end
 
@@ -120,7 +119,7 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 		if aiData.ReloadingLoopSound ~= nil then
 			enemy.ReloadSoundId = PlaySound({ Name = enemy.ReloadingLoopSound, Id = enemy.ObjectId })
 		end
-		wait(CalcEnemyWait(enemy, aiData.PostAttackCooldown), enemy.AIThreadName)
+		game.wait(game.CalcEnemyWait(enemy, aiData.PostAttackCooldown), enemy.AIThreadName)
 		StopSound({ Id = aiData.ReloadSoundId, Duration = 0.2 })
 
 		-- Wait until target leaves before resetting
@@ -130,12 +129,11 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 				Id = enemy.ObjectId,
 				DestinationId = aiData.TargetId,
 				Distance = aiData.AIResetDistance,
-				Notify =
-						enemy.AINotifyName
+				Notify = enemy.AINotifyName
 			})
-			waitUntil(enemy.AINotifyName)
+			game.waitUntil(enemy.AINotifyName)
 
-			if not IsAIActive(enemy) then
+			if not game.IsAIActive(enemy) then
 				break
 			end
 

@@ -1,4 +1,4 @@
--- Contains on the GlobalVoiceLines from Hades AudioData.lua
+-- Contains some of the GlobalVoiceLines from Hades AudioData.lua
 mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	HadesDeathTauntVoiceLines = {
 		RandomRemaining = true,
@@ -2151,11 +2151,13 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Theseus_0328" },
 		},
 	},
+	-- Custom: Replaced Charon_ with Megaera_1
 	CharonSurprisedVoiceLines = {
 		Queue = "Interrupt",
 		{
 			RandomRemaining = true,
 			BreakIfPlayed = true,
+			-- TODO: This might need to be changed to ModsNikkelMHadesBiomes_NPC_Charon_01
 			ObjectType = "NPC_Charon_01",
 			PreLineWait = 0.1,
 			Cooldowns =
@@ -2164,23 +2166,142 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			},
 
 			-- Hoh?
-			{ Cue = "/VO/Charon_0052" },
+			{ Cue = "/VO/Megaera_10052" },
 			-- Hrn?
-			{ Cue = "/VO/Charon_0053" },
+			{ Cue = "/VO/Megaera_10053" },
 			-- Hehh?
-			{ Cue = "/VO/Charon_0054" },
+			{ Cue = "/VO/Megaera_10054" },
 			-- Hraugh!
-			{ Cue = "/VO/Charon_0055" },
+			{ Cue = "/VO/Megaera_10055" },
 			-- Nrraugh?!
-			{ Cue = "/VO/Charon_0068" },
+			{ Cue = "/VO/Megaera_10068" },
 			-- Hrrngh?!
-			{ Cue = "/VO/Charon_0069" },
+			{ Cue = "/VO/Megaera_10069" },
 			-- Haaah?!
-			{ Cue = "/VO/Charon_0070" },
+			{ Cue = "/VO/Megaera_10070" },
 			-- Rraah!!
-			{ Cue = "/VO/Charon_0071" },
+			{ Cue = "/VO/Megaera_10071" },
 			-- Hrrnn!!
-			{ Cue = "/VO/Charon_0072" },
+			{ Cue = "/VO/Megaera_10072" },
+		},
+	},
+	ThanatosSpecialExitVoiceLines = {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 1.5,
+		Source = { SubtitleColor = game.Color.ThanatosVoice },
+		AllowTalkOverTextLines = true,
+		-- Bye, Zag.
+		{ Cue = "/VO/ThanatosField_0236" },
+	},
+	BlessedByBouldyVoiceLines = {
+		{
+			RandomRemaining = true,
+			PreLineWait = 1.13,
+			UsePlayerSource = true,
+			SuccessiveChanceToPlayAll = 0.8,
+
+			-- I, uh... OK!
+			{ Cue = "/VO/ZagreusField_2808" },
+			-- Well then!
+			{ Cue = "/VO/ZagreusField_2809" },
+			-- I see!
+			{ Cue = "/VO/ZagreusField_2810" },
+			-- Well, cheers!
+			{ Cue = "/VO/ZagreusField_2811" },
+			-- Enlightening!
+			{ Cue = "/VO/ZagreusField_2812" },
+			-- All right!
+			{ Cue = "/VO/ZagreusField_2813", RequiredFalsePlayedThisRoom = { "/VO/ZagreusField_2813" }, },
+			-- Fair enough!
+			{ Cue = "/VO/ZagreusField_2814" },
+			-- OK!
+			{ Cue = "/VO/ZagreusField_2951" },
+			-- OK?
+			{ Cue = "/VO/ZagreusField_2952" },
+			-- Indeed.
+			{ Cue = "/VO/ZagreusField_2953" },
+			-- Well...?
+			{ Cue = "/VO/ZagreusField_2954" },
+			-- Good chat!
+			{ Cue = "/VO/ZagreusField_2955" },
+			-- Pleasure!
+			{ Cue = "/VO/ZagreusField_2956" },
+			-- Huh.
+			{ Cue = "/VO/ZagreusField_2957" },
+			-- Thanks?
+			{ Cue = "/VO/ZagreusField_2958" },
+			-- Thanks!
+			{ Cue = "/VO/ZagreusField_2959", RequiredFalsePlayedThisRoom = { "/VO/ZagreusField_2959" }, },
+			-- Cheers?
+			{ Cue = "/VO/ZagreusField_2960" },
+			-- Cheers!
+			{ Cue = "/VO/ZagreusField_2961" },
+			-- A pleasure!
+			{ Cue = "/VO/ZagreusField_4225", RequiredFalsePlayedThisRoom = { "/VO/ZagreusField_4225" }, },
+			-- Well, see you!
+			{ Cue = "/VO/ZagreusField_4226" },
+			-- Good chat!
+			{ Cue = "/VO/ZagreusField_4227" },
+			-- Brilliant!
+			{ Cue = "/VO/ZagreusField_4228" },
+			-- That's that!
+			{ Cue = "/VO/ZagreusField_4229" },
+		},
+		{
+			ObjectType = "NPC_Sisyphus_01",
+			RequiredUnitAlive = "NPC_Sisyphus_01",
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.45,
+			SuccessiveChanceToPlay = 0.65,
+			RequiresInRun = true,
+			RequiredKillEnemiesNotFound = true,
+			-- Custom!
+			RequiredFalseTextLinesThisRun = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting" },
+
+			-- Bouldy is much obliged!
+			{ Cue = "/VO/Sisyphus_0356" },
+			-- Thanks on behalf of Bouldy there!
+			{ Cue = "/VO/Sisyphus_0357" },
+			-- Look how happy Bouldy is!
+			{ Cue = "/VO/Sisyphus_0358" },
+			-- That's one good rock, isn't he, Prince!
+			{ Cue = "/VO/Sisyphus_0359", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- You've Bouldy's favor, Prince!
+			{ Cue = "/VO/Sisyphus_0360", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- I think he likes you!
+			{ Cue = "/VO/Sisyphus_0361" },
+			-- Bouldy is grateful.
+			{ Cue = "/VO/Sisyphus_0362" },
+			-- Your offering has been accepted, Prince!
+			{ Cue = "/VO/Sisyphus_0363", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- I'm sure he's grateful, Prince.
+			{ Cue = "/VO/Sisyphus_0364", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- That's good of you, Prince Z.!
+			{ Cue = "/VO/Sisyphus_0365", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- Bouldy has got you covered!
+			{ Cue = "/VO/Sisyphus_0366" },
+			-- See that, Bouldy?
+			{ Cue = "/VO/Sisyphus_0367" },
+			-- Think Bouldy's warming up to you!
+			{ Cue = "/VO/Sisyphus_0368" },
+			-- Bouldy's a good listener isn't he!
+			{ Cue = "/VO/Sisyphus_0369" },
+			-- You have been blessed by Bouldy!
+			{ Cue = "/VO/Sisyphus_0370" },
+			-- Bouldy appreciated that!
+			{ Cue = "/VO/Sisyphus_0463" },
+			-- Oh, look how happy Bouldy is!
+			{ Cue = "/VO/Sisyphus_0464" },
+			-- You're most gracious, Prince Z.
+			{ Cue = "/VO/Sisyphus_0465" },
+			-- You see that, Bouldy?
+			{ Cue = "/VO/Sisyphus_0466" },
+			-- You two have a real thing going!
+			{ Cue = "/VO/Sisyphus_0467" },
+			-- Bouldy's got your back.
+			{ Cue = "/VO/Sisyphus_0468" },
 		},
 	},
 }

@@ -1,4 +1,4 @@
-local helpTextFile = rom.path.combine(rom.paths.Content(), 'Game/Text/tr/HelpText.tr.sjson')
+local helpTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/tr/HelpText.tr.sjson")
 
 local order = {
 	"Id",
@@ -36,6 +36,11 @@ local newData = {
 		DisplayName = "Zagreus",
 		Description = "Yeraltı Dünyasının Prensi",
 	},
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
+	-- 	DisplayName = "Bouldy",
+	-- 	Description = "",
+	-- },
 }
 
 sjson.hook(helpTextFile, function(data)

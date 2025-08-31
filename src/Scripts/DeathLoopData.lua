@@ -2,7 +2,7 @@
 
 -- Add the setup function to the Hub room
 table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
-	FunctionName = _PLUGIN.guid .. '.' .. 'SpawnHadesRunStartDoor',
+	FunctionName = _PLUGIN.guid .. "." .. "SpawnHadesRunStartDoor",
 })
 
 function mod.SpawnHadesRunStartDoor(source, args)
@@ -71,18 +71,66 @@ function mod.StartHadesRun(source, args)
 			game.GameState.ModsNikkelMHadesBiomesSaveFileIndex, 4)
 	end
 
-	-- Replace the voicelines that can play when entering the Chaos gate
-	local originalSecretUnlockedVoiceLines = game.DeepCopyTable(game.HeroVoiceLines.SecretUnlockedVoiceLines)
-	game.HeroVoiceLines.SecretUnlockedVoiceLines = game.GlobalVoiceLines.StartNewHadesRunVoiceLines
-
-	-- Don't show the healing text you normally get when exiting rooms with the Arcana activated
-	local originalConfigDamageOption = game.ConfigOptionCache.ShowDamageNumbers
-	game.ConfigOptionCache.ShowDamageNumbers = false
-
-	game.LeaveRoomSecretDoorPresentation(game.CurrentRun, source)
-
-	game.HeroVoiceLines.SecretUnlockedVoiceLines = originalSecretUnlockedVoiceLines
-	game.ConfigOptionCache.ShowDamageNumbers = originalConfigDamageOption
+	mod.StartHadesRunSecretDoorPresentation(game.CurrentRun, source)
 
 	game.UseEscapeDoor(source, args)
+end
+
+function mod.StartHadesRunSecretDoorPresentation(currentRun, secretDoor)
+	game.HideCombatUI("StartHadesRunSecretDoorPresentation")
+	AddInputBlock({ Name = "StartHadesRunSecretDoorPresentation" })
+	game.ToggleCombatControl({ "AdvancedTooltip" }, false, "LeaveRoom")
+
+	-- preserve audio/VO presentation
+	game.CleanupCustomRoomSounds()
+	PlaySound({ Name = "/SFX/Menu Sounds/ChaosRoomEnterExit" })
+	game.thread(game.PlayVoiceLines, mod.StartNewHadesRunVoiceLines)
+	-- game.thread(game.InCombatText, secretDoor.ObjectId, "SecretPassageOpened", 1)
+	Stop({ Id = game.CurrentRun.Hero.ObjectId })
+
+	local unequipAnimation = game.GetEquippedWeaponValue("UnequipAnimation") or "MelinoeIdleWeaponless"
+	SetAnimation({ Name = unequipAnimation, DestinationId = game.CurrentRun.Hero.ObjectId, SpeedMultiplier = 2 })
+	game.wait(0.5)
+	SetAnimation({ Name = "Melinoe_Witchcraft_Start", DestinationId = game.CurrentRun.Hero.ObjectId, })
+
+	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, Fraction = 0.15, Duration = 0.7 }, })
+	Flash({ Id = game.CurrentRun.Hero.ObjectId, Speed = 0.5, MinFraction = 0, MaxFraction = 1.0, Color = Color.White, Duration = 1.0, ExpireAfterCycle = false })
+	AdjustColorGrading({ Name = "WeatherSnowCinders", Duration = 0.7 })
+
+	game.wait(0.6)
+	AdjustFullscreenBloom({ Name = "NewType09", Duration = 0.1 })
+	game.wait(0.2)
+
+	SetAnimation({ Name = "Melinoe_Witchcraft_End", DestinationId = game.CurrentRun.Hero.ObjectId, })
+	AdjustFullscreenBloom({ Name = "Off", Duration = 0.3 })
+	PlaySound({ Name = "/Leftovers/SFX/PlayerRespawn" })
+
+	-- She goes through the Oceanus-style sequence of jumping up and in
+	PanCamera({ Id = secretDoor.ObjectId, Duration = 1.1, OffsetY = -50, EaseOut = 0 })
+	game.wait(0.5)
+	SetAnimation({ Name = "Melinoe_Drop_Exit_Start", DestinationId = game.CurrentRun.Hero.ObjectId, SpeedMultiplier = 0.5 })
+	AdjustColorGrading({ Name = "RainSubtle", Duration = 0.4 })
+	game.wait(0.35)
+
+	PlaySound({ Name = "/VO/MelinoeEmotes/EmoteEvading" })
+	local args = {}
+	args.SuccessDistance = 20
+	args.DisableCollision = true
+	local exitPath = {}
+	table.insert(exitPath, secretDoor.ObjectId)
+	game.thread(game.MoveHeroAlongPath, exitPath, args)
+
+	game.wait(0.2)
+	PanCamera({ Id = secretDoor.ObjectId, Duration = 1.2, OffsetY = 85, Retarget = true })
+	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, Fraction = 0.15, Duration = 0.25 }, })
+	game.thread(game.SlightDescent)
+
+	-- Custom wait amount
+	game.wait(0.3)
+	FadeOut({ Duration = 0.3, Color = game.Color.Black })
+
+	game.WaitForSpeechFinished()
+
+	RemoveInputBlock({ Name = "StartHadesRunSecretDoorPresentation" })
+	game.ToggleCombatControl({ "AdvancedTooltip" }, true, "LeaveRoom")
 end

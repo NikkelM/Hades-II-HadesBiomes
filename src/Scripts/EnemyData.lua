@@ -102,6 +102,11 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			end
 		end
 
+		if enemyData.FireWeaponOnActivationFinished ~= nil then
+			enemyData.CreateProjectileOnActivationFinished = enemyData.FireWeaponOnActivationFinished
+			enemyData.FireWeaponOnActivationFinished = nil
+		end
+
 		-- Always use the Olympus dialogue elements for the bosses
 		if enemyData.Portrait then
 			enemyData.BoxAnimation = "DialogueSpeechBubbleLight"
@@ -118,6 +123,10 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			"BossPresentationIntroTextLineSets",
 			"BossPresentationTextLineSets",
 			"BossPresentationRepeatableTextLineSets",
+			"BossPresentationNextStageTextLineSets",
+			"BossPresentationNextStageRepeatableTextLineSets",
+			"BossPresentationOutroTextLineSets",
+			"BossPresentationOutroRepeatableTextLineSets",
 			"InteractTextLineSets",
 			"RepeatableTextLineSets",
 			"GiftTextLineSets",
@@ -131,6 +140,16 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 							if entry.Text then
 								entry.Text = string.gsub(entry.Text, "{#PreviousFormat}", "{#Prev}")
 							end
+							if entry.Speaker then
+								if entry.Speaker == "NPC_Bouldy_01" then
+									entry.Speaker = "ModsNikkelMHadesBiomes_NPC_Bouldy_01"
+								end
+							end
+							if entry.Portrait then
+								if entry.Portrait == "Portrait_Bouldy_Default_01" then
+									entry.Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy"
+								end
+							end
 							if entry.SetFlagTrue then
 								entry.PostLineFunctionName = "ModsNikkelMHadesBiomesSetFlag"
 								entry.PostLineFunctionArgs = { FlagName = entry.SetFlagTrue, Value = true }
@@ -138,6 +157,13 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 							if entry.SetFlagFalse then
 								entry.PostLineFunctionName = "ModsNikkelMHadesBiomesSetFlag"
 								entry.PostLineFunctionArgs = { FlagName = entry.SetFlagFalse, Value = false }
+							end
+							if entry.Cue then
+								if entry.Cue:find("^/VO/Storyteller_") then
+									entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+								elseif entry.Cue:find("^/VO/Charon_") then
+									entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+								end
 							end
 						end
 					end
@@ -342,11 +368,13 @@ local enemyReplacements = {
 	-- #endregion
 
 	-- #region STYX
-	-- #region STYX - Hades
+	Crawler = {
+		DefaultAIData = { DeepInheritance = true, },
+		WeaponOptions = { "HadesCrawlerRush" },
+	},
 	Hades = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
-	-- #endregion
 	-- #endregion
 }
 
@@ -419,8 +447,6 @@ local enemyModifications = {
 			},
 		},
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
-		-- This doesn't work, as there is no (correct) obstacle/animation in ObstacleData
-		-- SpawnObstaclesOnDeath = { ... }
 	},
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
@@ -1090,15 +1116,59 @@ local enemyModifications = {
 
 	-- #region STYX
 	-- #region STYX - Regular
-	-- SatyrRanged = {
-	-- 	LargeUnitCap = mod.NilValue,
-	-- },
-	-- SatyrRangedMiniboss = {
-	-- 	LargeUnitCap = mod.NilValue,
-	-- },
-	-- RatThug = {
-	-- 	LargeUnitCap = mod.NilValue,
-	-- },
+	SatyrRanged = {
+		LargeUnitCap = mod.NilValue,
+		StunAnimations = { Default = "SatyrOnHit" },
+	},
+	SatyrRangedMiniboss = {
+		LargeUnitCap = mod.NilValue,
+	},
+	RatThug = {
+		LargeUnitCap = mod.NilValue,
+		StunAnimations = { Default = "EnemyRatThugOnHit" },
+		OnDeathThreadedFunctionName = "ModsNikkelMHadesBiomesOnDeathFireProjectile",
+		OnDeathFunctionArgs = {
+			ProjectileName = "HadesPoisonPuddle",
+		},
+	},
+	Crawler = {
+		IgnoreSpeedShrine = true,
+		SpellSummonDataOverrides = {
+			DeepInheritance = true,
+			OutgoingDamageModifiers = { { NonPlayerMultiplier = 25, }, },
+			MaxHealth = 150,
+			HealthBarOffsetY = -200,
+		},
+	},
+	HeavyRangedForked = {
+		StunAnimations = { Default = "HeavyRangedForkedCrystal4" },
+		DeathAnimation = "HeavyRangedForkedDeath",
+		-- This plops a large model of the enemy on the ground which doesn't disappear
+		SpawnObstaclesOnDeath = mod.NilValue,
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+	},
+	HeavyRangedForkedElite = {
+		DeathAnimation = "HeavyRangedForkedDeath",
+	},
+	ThiefImpulseMineLayer = {
+		StunAnimations = { Default = "EnemyStyxThiefOnHit" },
+		DefaultAIData = {
+			BlendTimeoutMin = 0.5,
+			BlendTimeoutMax = 1.0,
+			AttackWhileBlendingIntervalMin = 0.5,
+			AttackWhileBlendingIntervalMax = 1.0,
+			AttackWhileMovingIntervalMin = 0.5,
+			AttackWhileMovingIntervalMax = 1.0,
+		},
+	},
+	ThiefImpulseMineLayerElite = {
+		DefaultAIData = {
+			AttackWhileBlendingIntervalMin = 0,
+			AttackWhileBlendingIntervalMax = 0.5,
+			AttackWhileMovingIntervalMin = 0,
+			AttackWhileMovingIntervalMax = 0.5,
+		},
+	},
 	-- #endregion
 	-- #region STYX - Minibosses
 	-- #endregion
@@ -1159,7 +1229,7 @@ local enemyModifications = {
 	BreakableElysium = {
 		CannotDieFromDamage = true,
 		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
-		DeathAnimation = "BreakableDeathAnim",
+		DeathAnimation = "BreakableDeathElysium",
 		DeathSound = "/SFX/CeramicPotSmash",
 		SetupEvents = {
 			{
@@ -1179,16 +1249,42 @@ local enemyModifications = {
 			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
 		},
 	},
+	BreakableStyx = {
+		CannotDieFromDamage = true,
+		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
+		DeathAnimation = "BreakableDeathStyx",
+		DeathSound = "/SFX/CeramicPotSmash",
+		SetupEvents = {
+			{
+				FunctionName = "RandomizeObject",
+				Args = {
+					RandomizeSets = {
+						{ Animation = { "BreakableStyxIdle1" }, },
+						{ Animation = { "BreakableStyxIdle2" }, },
+						{ Animation = { "BreakableStyxIdle3" }, },
+					},
+				},
+			},
+		},
+		ValueOptions = {
+			[1] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[2] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+		},
+	},
 	BlastCubeFusedRegenerating = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		OnDeathFireWeapons = { "BlastCubeExplosionElysium" },
 		FuseWarningProjectileName = "ModsNikkelMHadesBiomesBlastWarningDecalElysium"
 	},
 	PhalanxTrap = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		ProjectileName = "PhalanxTrapWeapon",
 		AIAttackDistance = 150,
 		OutgoingDamageModifiers = { { NonPlayerMultiplier = 15.0, }, },
 	},
 	PhalanxTrapPassive = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
 			ProjectileName = "PhalanxTrapWeaponPassive",
 			-- Moved in here from the normal Enemy data
@@ -1208,6 +1304,7 @@ local enemyModifications = {
 		},
 	},
 	ArcherTrap = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
 			ProjectileName = "ArcherTrapWeapon",
 			-- Moved in here from the normal Enemy data
@@ -1230,6 +1327,7 @@ local enemyModifications = {
 		},
 	},
 	GasTrapPassive = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
 			ProjectileName = "GasTrapWeaponPassive",
 			-- Moved in here from the normal Enemy data
@@ -1248,6 +1346,7 @@ local enemyModifications = {
 		},
 	},
 	PoisonTrap = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
 			ProjectileName = "PoisonTrapWeapon",
 			-- Moved in here from the normal Enemy data
@@ -1263,6 +1362,7 @@ local enemyModifications = {
 		},
 	},
 	SawTrap = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
 			ProjectileName = "SawTrapWeapon",
 			-- Moved in here from the normal Enemy data
@@ -1281,6 +1381,42 @@ local enemyModifications = {
 			TargetSelf = true,
 			TargetOffsetForward = 100,
 		},
+	},
+	AxeTrap = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		DefaultAIData = {
+			ProjectileName = "AxeTrapWeapon",
+			UseResetAnimationIfActive = true,
+			ResetAnimation = "AxeTrapReset",
+			PreAttackFunctionName = "ModsNikkelMHadesBiomesToggleTrapState",
+			PostAttackEndFunctionName = "ModsNikkelMHadesBiomesToggleTrapState",
+		},
+		WeaponName = "AxeTrapWeapon",
+	},
+	AxeTrapTrigger = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		DefaultAIData = {
+			ProjectileName = "AxeTrapWeapon",
+			-- Moved in here from the normal Enemy data
+			AIAttackDistance = 100,
+			AIResetDistance = 110,
+			PreAttackDuration = 0.2,
+			PostAttackCooldown = 2.0,
+			LinkedEnemy = "DartTrapEmitter",
+			IdleAnimation = "DartTrapIdle",
+			PreAttackAnimation = "DartTrapPreFire",
+			PreAttackSound = "/SFX/TrapSet",
+			PostAttackAnimation = "DartTrapPressed",
+			ReloadingLoopSound = "/SFX/TrapSettingLoop",
+			ReloadedSound = "/Leftovers/Menu Sounds/TalismanMetalClankDown",
+			SkipAngleTowardTarget = true,
+			DisabledAnimation = "DartTrapDeactivated",
+		},
+		AIOptions = {
+			-- RemoteAttack
+			"RemoteAttackModsNikkelMHadesBiomes"
+		},
+		WeaponName = "AxeTrapWeapon",
 	},
 	-- #endregion
 }

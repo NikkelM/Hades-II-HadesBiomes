@@ -5,7 +5,7 @@ mod.AudioFileMappings = {
 	Tartarus = "TartarusModsNikkelMHadesBiomes",
 	Asphodel = "AsphodelModsNikkelMHadesBiomes",
 	Elysium = "ElysiumModsNikkelMHadesBiomes",
-	-- Styx = "StyxModsNikkelMHadesBiomes",
+	-- Styx = "StyxModsNikkelMHadesBiomes", -- There actually is no Styx audio bank
 }
 
 -- Voiceover .txt and .fsb file names
@@ -29,13 +29,17 @@ mod.PackageFileMappings = {
 	Tartarus = "TartarusModsNikkelMHadesBiomes",
 	Asphodel = "AsphodelModsNikkelMHadesBiomes",
 	Elysium = "ElysiumModsNikkelMHadesBiomes",
-	-- Styx = "StyxModsNikkelMHadesBiomes",
+	Styx = "StyxModsNikkelMHadesBiomes",
 	RoomManager = "RoomManagerModsNikkelMHadesBiomes",
 	Fx = "FxModsNikkelMHadesBiomes",
 	GUI = "GUIModsNikkelMHadesBiomes",
 }
 
 mod.BikFileMappings = {
+	-- #region GENERAL
+	-- TODO: Renaming doesn't work, as the metadata in probably the .bik_atlas is not updated
+	-- RoomTransition = "ModsNikkelMHadesBiomesRoomTransition",
+	-- #endregion
 	-- #region TARTARUS
 	-- Wretch Glutton/PunchingBagUnit
 	"EnemyWretchGluttonAttack_Bink",
@@ -277,7 +281,68 @@ mod.BikFileMappings = {
 	"NPC_PatroclusIdleStanding_Bink",
 	-- #endregion
 	-- #region STYX
+	-- Cerberus
+	"Cerberus_HubIdle_Bink",
+	"Cerberus_HappyGreeting_Bink",
+	-- RatThug
+	"Enemy_RatThugIdle_Bink",
+	"Enemy_RatThugMove_Bink",
+	"Enemy_RatThugShake_Bink",
+	"Enemy_RatThugAttackBite_Bink",
+	"Enemy_RatThugOnHit_Bink",
+	"Enemy_RatThugBurrow_Bink",
+	-- SatyrRanged
+	"Enemy_SatyrRangedAttack_Bink",
+	"Enemy_SatyrOnHit_Bink",
+	"Enemy_SatyrIdle_Bink",
+	"Enemy_SatyrMove_Bink",
+	"Enemy_SatyrMoveStop_Bink",
+	-- SatyrRangedMiniboss
+	"Enemy_SatyrMinibossRangedAttack_Bink",
+	"Enemy_SatyrMinibossOnHit_Bink",
+	"Enemy_SatyrMinibossIdle_Bink",
+	"Enemy_SatyrMinibossMove_Bink",
+	"Enemy_SatyrMinibossMoveStop_Bink",
+	-- Hades
+	"HubBossDoorOpen",
+	"HadesBattleIdle_Bink",
+	"HadesBattleIntro_Bink",
+	"HadesBattleIntroIdle_Bink",
+	"HadesBattleRun_Bink",
+	"HadesBattleDash_Bink",
+	"HadesBattleAttackSpin_Bink",
+	"HadesBattleBidentFlurry_Bink",
+	"HadesBattleAttackRange_Bink",
+	"HadesBattleSpawn_Bink",
+	"HadesBattleWrathTwo_Bink",
+	"HadesBattleKnockDown_Bink",
+	"HadesBattleInvisibility_Bink",
+	"HadesBattleCastBeam_Bink",
+	"HadesBattleAttackArcOne_Bink",
+	"HadesBattleAttackArcTwo_Bink",
+	"HadesDeathFullscreen",
+	"HadesBattleKnockDownTwo_Bink",
+	"HadesBattleDeath_Bink",
+	"HadesBattleKnockDownRecover_Bink",
+	"HadesBattleAttackSpin2_Bink",
+	"HadesBattleBidentThrow_Bink",
+	"HadesBattleBidentDashRecover_Bink",
+	"HadesBattleHeal_Bink",
+	"HadesBattleKnockDownPreRecover_Bink",
+	"Cerberus_HadesAssistJumpIn_Bink",
+	"Cerberus_HadesAssistRun_Bink",
+	"Cerberus_HadesAssistJumpFromRun_Bink",
 	-- #endregion
+	-- Charon
+	"CharonIdleBattle_Bink",
+	"CharonMove_Bink",
+	"CharonMeleeFront_Bink",
+	"CharonMeleeFrontLRTI_Bink",
+	"CharonMeleeBackSwing_Bink",
+	"CharonCast_Bink",
+	"CharonRadialPush_Bink",
+	"CharonGhostCharge_Bink",
+	"CharonTaunt_Bink",
 }
 
 mod.SjsonFileMappings = {
@@ -286,9 +351,9 @@ mod.SjsonFileMappings = {
 	-- Normal enemies
 	"Animations\\CharacterAnim_Enemies_BoneDracon",
 	"Animations\\CharacterAnim_Enemies_Chariot",
-	-- "Animations\\CharacterAnim_Enemies_Crawler",
-	-- "Animations\\CharacterAnim_Enemies_Rat",
-	-- "Animations\\CharacterAnim_Enemies_Satyr",
+	"Animations\\CharacterAnim_Enemies_Crawler",
+	"Animations\\CharacterAnim_Enemies_Rat",
+	"Animations\\CharacterAnim_Enemies_Satyr",
 	"Animations\\CharacterAnim_Enemies_Shades",
 	"Animations\\CharacterAnim_Enemies_WretchAssassin",
 	"Animations\\CharacterAnim_Enemies_WretchThug",
@@ -296,7 +361,7 @@ mod.SjsonFileMappings = {
 	-- Bosses
 	-- "Animations\\CharacterAnim_EnemiesBosses_Charon",
 	"Animations\\CharacterAnim_EnemiesBosses_Furies",
-	-- "Animations\\CharacterAnim_EnemiesBosses_Hades",
+	"Animations\\CharacterAnim_EnemiesBosses_Hades",
 	"Animations\\CharacterAnim_EnemiesBosses_Hydra",
 	"Animations\\CharacterAnim_EnemiesBosses_Minotaur",
 	"Animations\\CharacterAnim_EnemiesBosses_Theseus",
@@ -361,6 +426,10 @@ mod.SjsonFileModifications = {
 			ChainTo = "EnemyHydraPurpleRoarReturnToIdle",
 		},
 	},
+	["Animations\\CharacterAnim_EnemiesBosses_Hades"] = {
+		HadesBattleDashStreaks = mod.NilValue,
+		HadesBattleDashStreaksDark = mod.NilValue,
+	}
 }
 
 -- map_text and thing_bin file names
@@ -455,40 +524,34 @@ mod.MapFileMappings = {
 	["C_Combat14"] = "C_Combat14",
 	["C_Combat15"] = "C_Combat15",
 	-- Styx
-	-- ["D_Intro"] = "D_Intro",
-	-- ["D_Hub"] = "D_Hub",
-	-- ["D_Boss01"] = "D_Boss01",
-	-- ["D_MiniBoss01"] = "D_MiniBoss01",
-	-- ["D_MiniBoss02"] = "D_MiniBoss02",
-	-- ["D_MiniBoss03"] = "D_MiniBoss03",
-	-- ["D_MiniBoss04"] = "D_MiniBoss04",
-	-- ["D_Reprieve01"] = "D_Reprieve01",
-	-- ["D_Combat01"] = "D_Combat01",
-	-- ["D_Combat02"] = "D_Combat02",
-	-- ["D_Combat03"] = "D_Combat03",
-	-- ["D_Combat04"] = "D_Combat04",
-	-- ["D_Combat05"] = "D_Combat05",
-	-- ["D_Combat06"] = "D_Combat06",
-	-- ["D_Mini01"] = "D_Mini01",
-	-- ["D_Mini02"] = "D_Mini02",
-	-- ["D_Mini03"] = "D_Mini03",
-	-- ["D_Mini04"] = "D_Mini04",
-	-- ["D_Mini05"] = "D_Mini05",
-	-- ["D_Mini06"] = "D_Mini06",
-	-- ["D_Mini07"] = "D_Mini07",
-	-- ["D_Mini08"] = "D_Mini08",
-	-- ["D_Mini09"] = "D_Mini09",
-	-- ["D_Mini10"] = "D_Mini10",
-	-- ["D_Mini11"] = "D_Mini11",
-	-- ["D_Mini12"] = "D_Mini12",
-	-- ["D_Mini13"] = "D_Mini13",
-	-- ["D_Mini14"] = "D_Mini14",
-	-- ["D_Traversal01"] = "D_Traversal01",
-	-- ["D_Traversal02"] = "D_Traversal02",
-	-- ["D_Traversal03"] = "D_Traversal03",
-	-- ["D_Traversal04"] = "D_Traversal04",
-	-- ["D_Traversal05"] = "D_Traversal05",
-	-- ["D_Traversal06"] = "D_Traversal06",
+	["D_Intro"] = "D_Intro",
+	["D_Hub"] = "D_Hub",
+	["D_Boss01"] = "D_Boss01",
+	["D_MiniBoss01"] = "D_MiniBoss01",
+	["D_MiniBoss02"] = "D_MiniBoss02",
+	["D_MiniBoss03"] = "D_MiniBoss03",
+	["D_MiniBoss04"] = "D_MiniBoss04",
+	["D_Reprieve01"] = "D_Reprieve01",
+	["D_Combat01"] = "D_Combat01",
+	["D_Combat02"] = "D_Combat02",
+	["D_Combat03"] = "D_Combat03",
+	["D_Combat04"] = "D_Combat04",
+	["D_Combat05"] = "D_Combat05",
+	["D_Combat06"] = "D_Combat06",
+	["D_Mini01"] = "D_Mini01",
+	["D_Mini02"] = "D_Mini02",
+	["D_Mini03"] = "D_Mini03",
+	["D_Mini04"] = "D_Mini04",
+	["D_Mini05"] = "D_Mini05",
+	["D_Mini06"] = "D_Mini06",
+	["D_Mini07"] = "D_Mini07",
+	["D_Mini08"] = "D_Mini08",
+	["D_Mini09"] = "D_Mini09",
+	["D_Mini10"] = "D_Mini10",
+	["D_Mini11"] = "D_Mini11",
+	["D_Mini12"] = "D_Mini12",
+	["D_Mini13"] = "D_Mini13",
+	["D_Mini14"] = "D_Mini14",
 	-- -- Surface
 	-- ["E_Intro"] = "E_Intro",
 	-- ["E_Story01"] = "E_Story01",

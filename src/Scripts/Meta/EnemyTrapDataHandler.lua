@@ -31,7 +31,7 @@ function mod.ModifyEnemyTrapData(enemyData)
 		},
 		AIOptions =
 		{
-			-- RemoteAI
+			-- RemoteAttack
 			"RemoteAttackModsNikkelMHadesBiomes"
 		},
 		ToggleTrap = true,
@@ -415,5 +415,13 @@ function game.PassiveAttack(enemy, currentRun)
 		if weaponAIData.TargetOffsetForward then
 			Destroy({ Id = targetId })
 		end
+	end
+end
+
+function game.ModsNikkelMHadesBiomesToggleTrapState(enemy, aiData)
+	if enemy.ModsNikkelMHadesBiomesCurrentlyActive then
+		enemy.ModsNikkelMHadesBiomesCurrentlyActive = false
+	else
+		enemy.ModsNikkelMHadesBiomesCurrentlyActive = true
 	end
 end

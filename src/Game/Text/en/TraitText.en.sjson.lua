@@ -1,4 +1,4 @@
-local traitTextFile = rom.path.combine(rom.paths.Content(), 'Game/Text/en/TraitText.en.sjson')
+local traitTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/en/TraitText.en.sjson")
 
 local order = {
 	"Id",
@@ -9,7 +9,7 @@ local order = {
 }
 
 local newData = {
-	-- Sisyphus
+	-- #region Sisyphus
 	{
 		Id = "ModsNikkelMHadesBiomesSisyphusHealing",
 		DisplayName = "Warm Embrace",
@@ -28,7 +28,9 @@ local newData = {
 		Description =
 		"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
 	},
-	-- Eurydice
+	-- #endregion
+
+	-- #region Eurydice
 	{
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Ambrosia Delight",
@@ -47,7 +49,9 @@ local newData = {
 		Description =
 		"A rare and fragrant beverage; the next {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}you find have upgraded {$Keywords.Rarity}.",
 	},
-	-- Patroclus
+	-- #endregion
+
+	-- #region Patroclus
 	{
 		Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 		DisplayName = "Cyclops Jerky Select",
@@ -76,7 +80,47 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesGainMinHealthMaxMana",
 		InheritFrom = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 		DisplayName = "Centaur Tonic",
-	}
+	},
+	-- #endregion
+
+	-- #region Bouldy
+	{
+		Id = "BouldyBlessing_Armor",
+		DisplayName = "Heart of Stone",
+		Description =
+		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}Damage Reduction: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Attack",
+		DisplayName = "Heart of Stone",
+		Description =
+		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet} Damage Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Special",
+		DisplayName = "Heart of Stone",
+		Description =
+		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet} Damage Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Ranged",
+		DisplayName = "Heart of Stone",
+		Description =
+		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet} Damage Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Speed",
+		DisplayName = "Heart of Stone",
+		Description =
+		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}Move Speed Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Money",
+		DisplayName = "Heart of Stone",
+		Description =
+		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency} Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

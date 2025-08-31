@@ -1,15 +1,21 @@
 -- Contains the upgrade choices the player can choose from NPCs like Sisyphus
+local DepthDamageMultiplier = 0.0
+local DuplicateMultiplier = -0.60
+local DuplicateStrongMultiplier = -0.40
+local DuplicateVeryStrongMultiplier = -0.20
+
 local newTraitData = {
 	-- #region Sisyphus
 	ModsNikkelMHadesBiomesSisyphusMoney = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		Hidden = true,
-		Icon = "Boon_No_Choice_Money",
+		Icon = "Boon_Sisyphus_02",
 		AcquireFunctionName = "ModsNikkelMHadesBiomesSisyphusBuff",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
 			FunctionName = "GiveRandomConsumables",
+			MultiplyMoney = true,
 			DropFunctionName = "ModsNikkelMHadesBiomesSisyphusDropPresentation",
 			Currency = {
 				BaseMin = 101,
@@ -32,7 +38,7 @@ local newTraitData = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		Hidden = true,
-		Icon = "Boon_Narcissus_01",
+		Icon = "Boon_Sisyphus_01",
 		AcquireFunctionName = "GiveRandomConsumables",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
@@ -71,7 +77,7 @@ local newTraitData = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		Hidden = true,
-		Icon = "Boon_Narcissus_03",
+		Icon = "Boon_Sisyphus_03",
 		AcquireFunctionName = "GiveRandomConsumables",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
@@ -110,7 +116,7 @@ local newTraitData = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		Hidden = true,
-		Icon = "Boon_Circe_05",
+		Icon = "Boon_Eurydice_01",
 		-- At least one upgradeable boon available (not counting Heroic -> Perfect)
 		GameStateRequirements = {
 			{
@@ -137,7 +143,7 @@ local newTraitData = {
 	},
 	ModsNikkelMHadesBiomesBuffMegaPom = {
 		InheritFrom = { "ModsNikkelMHadesBiomesBuffSlottedBoonRarity", },
-		Icon = "Boon_Circe_08",
+		Icon = "Boon_Eurydice_02",
 		GameStateRequirements = {
 			NamedRequirements = { "StackUpgradeLegal", },
 		},
@@ -164,7 +170,7 @@ local newTraitData = {
 	ModsNikkelMHadesBiomesBuffFutureBoonRarity = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
-		Icon = "Boon_Circe_06",
+		Icon = "Boon_Eurydice_03",
 		RarityBonus = {
 			Rare = 1,
 			Epic = 0.25,
@@ -180,7 +186,7 @@ local newTraitData = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		NoFrame = false,
-		Icon = "Boon_Medea_06",
+		Icon = "Boon_Patroclus_02",
 		RemainingUses = 5,
 		DoorHeal = 0.3,
 		AcquireFunctionName = "ModsNikkelMHadesBiomesPatroclusBuff",
@@ -197,7 +203,7 @@ local newTraitData = {
 		BlockInRunRarify = true,
 		NoFrame = false,
 		AcquireFunctionName = "ModsNikkelMHadesBiomesPatroclusBuff",
-		Icon = "Boon_Medea_08",
+		Icon = "Boon_Patroclus_01",
 		RemainingUses = 10,
 		UsesAsEncounters = true,
 		AddOutgoingDamageModifiers = {
@@ -218,7 +224,7 @@ local newTraitData = {
 	},
 	ModsNikkelMHadesBiomesBuffExtraChance = {
 		-- Adapted from EchoDeathDefianceRefill
-		Icon = "Boon_Medea_02",
+		Icon = "Boon_Patroclus_03",
 		Hidden = true,
 		GameStateRequirements = {
 			NamedRequirements = { "MissingLastStand", },
@@ -252,7 +258,7 @@ local newTraitData = {
 	ModsNikkelMHadesBiomesGainMaxHealthMinMana = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
-		Icon = "Shop_Soul",
+		Icon = "Boon_Patroclus_04",
 		AcquireFunctionName = "ModsNikkelMHadesBiomesPatroclusBuff",
 		AcquireFunctionArgs = {
 			FunctionName = "ModsNikkelMHadesBiomesPatroclusAddMaxHealthMana",
@@ -277,6 +283,7 @@ local newTraitData = {
 	-- More Max Mana than Health
 	ModsNikkelMHadesBiomesGainMinHealthMaxMana = {
 		InheritFrom = { "ModsNikkelMHadesBiomesGainMaxHealthMinMana", },
+		Icon = "Boon_Patroclus_05",
 		AcquireFunctionArgs = {
 			FunctionName = "ModsNikkelMHadesBiomesPatroclusAddMaxHealthMana",
 			AddMaxHealth = 15,
@@ -286,6 +293,154 @@ local newTraitData = {
 				ReportedMaxMana = "AddMaxMana",
 			},
 		},
+	},
+	-- #endregion
+
+	-- #region Bouldy
+	BouldyBlessing = {
+		-- TODO: Rework the artwork for the H2 style (@burn)
+		Icon = "Boon_Echo_01",
+		BlockInRunRarify = true,
+		BlockStacking = true,
+	},
+	BouldyBlessing_Armor = {
+		InheritFrom = { "BouldyBlessing" },
+		AddIncomingDamageModifiers = {
+			NonTrapDamageTakenMultiplier = {
+				BaseMin = 0.95,
+				BaseMax = 0.99,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier = {
+					Value = DuplicateMultiplier,
+				},
+			},
+			ReportValues = {
+				ReportedMultiplier = "NonTrapDamageTakenMultiplier"
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMultiplier",
+				ExtractAs = "TooltipDamageReduction",
+				Format = "NegativePercentDelta",
+			},
+		},
+	},
+	BouldyBlessing_Attack = {
+		InheritFrom = { "BouldyBlessing" },
+		AddOutgoingDamageModifiers = {
+			ValidWeaponMultiplier = {
+				BaseMin = 1.01,
+				BaseMax = 1.05,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier = {
+					Value = DuplicateMultiplier,
+				},
+			},
+			ReportValues = {
+				ReportedMultiplier = "ValidWeaponMultiplier"
+			},
+			ValidWeapons = WeaponSets.HeroPrimaryWeapons,
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMultiplier",
+				ExtractAs = "TooltipDamage",
+				Format = "PercentDelta",
+			},
+		},
+	},
+	BouldyBlessing_Special = {
+		InheritFrom = { "BouldyBlessing" },
+		AddOutgoingDamageModifiers = {
+			ValidWeaponMultiplier = {
+				BaseMin = 10.01,
+				BaseMax = 10.05,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			ReportValues = {
+				ReportedMultiplier = "ValidWeaponMultiplier"
+			},
+			ValidWeapons = WeaponSets.HeroSecondaryWeapons,
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMultiplier",
+				ExtractAs = "TooltipDamage",
+				Format = "PercentDelta",
+			},
+		},
+	},
+	BouldyBlessing_Ranged = {
+		InheritFrom = { "BouldyBlessing" },
+		AddOutgoingDamageModifiers =
+		{
+			ValidWeaponMultiplier =
+			{
+				BaseMin = 1.01,
+				BaseMax = 1.10,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			ReportValues = {
+				ReportedMultiplier = "ValidWeaponMultiplier"
+			},
+			ValidWeapons = WeaponSets.HeroRangedWeapons,
+			ValidProjectiles = WeaponSets.CastProjectileNames,
+			WeaponOrProjectileRequirement = true,
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMultiplier",
+				ExtractAs = "TooltipDamage",
+				Format = "PercentDelta",
+			},
+		}
+	},
+	BouldyBlessing_Speed = {
+		InheritFrom = { "BouldyBlessing" },
+		PropertyChanges = {
+			{
+				UnitProperty = "Speed",
+				BaseMin = 1.01,
+				BaseMax = 1.1,
+				ChangeType = "Multiply",
+				ReportValues = { ReportedBaseSpeed = "ChangeValue" },
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedBaseSpeed",
+				ExtractAs = "TooltipSpeed",
+				Format = "PercentDelta",
+			},
+		},
+	},
+	BouldyBlessing_Money = {
+		InheritFrom = { "BouldyBlessing" },
+		MoneyMultiplier = {
+			BaseMin = 1.01,
+			BaseMax = 1.10,
+			ToNearest = 0.01,
+			SourceIsMultiplier = true,
+		},
+		ExtractValues = {
+			{
+				Key = "MoneyMultiplier",
+				ExtractAs = "TooltipMoneyRewardIncrease",
+				Format = "PercentDelta",
+			},
+		},
+	},
+	BouldyBlessing_None = {
+		InheritFrom = { "BouldyBlessing" },
 	},
 	-- #endregion
 }

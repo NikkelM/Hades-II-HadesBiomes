@@ -46,3 +46,9 @@ Experience the original Hades underworld as Melinoë and discover new ways to ba
 ## Configuration
 
 [See this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration)
+
+## Contributors
+
+- NikkelM ([GitHub](https://github.com/NikkelM), @NikkelM on [Discord](https://discord.gg/bKvJTAJj)), mod creator
+- iDeathHD ([GitHub](https://github.com/xiaoxiao921), @iDeathHD on [Discord](https://discord.gg/bKvJTAJj)), for changes to Hell2Modding to support this mod
+- @burn on [Discord](https://discord.gg/bKvJTAJj), additional art

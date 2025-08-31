@@ -120,6 +120,11 @@ local encounterModifications = {
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,
 	},
+	Story_Sisyphus_01 = {
+		StartRoomUnthreadedEvents = {
+			[1] = { FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" }, } },
+		},
+	},
 
 	-- MINIBOSSES
 	MiniBossGrenadier = {

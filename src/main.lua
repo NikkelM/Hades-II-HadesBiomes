@@ -95,6 +95,8 @@ local function on_ready()
 	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
 	import "Scripts/Meta/NameMappingData.lua"
+	import "Scripts/Meta/StorytellerVoicelines.lua"
+	import "Scripts/Meta/ZagreusFieldVoicelines.lua"
 
 	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
 	local shouldProceed = config.enabled and
@@ -170,6 +172,8 @@ local function on_ready()
 		import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
 		-- Must be loaded after CharacterAnimationsEnemies, as it inherits some animations from it
 		import "Game/Animations/EnemyAnimations.sjson.lua"
+		import "Game/Animations/GUI_Boons_VFX.sjson.lua"
+		import "Game/Animations/GUI_VFX.sjson.lua"
 		import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
@@ -191,91 +195,16 @@ local function on_ready()
 		import "Game/Obstacles/Chaos.sjson.lua"
 		import "Game/Obstacles/Elysium.sjson.lua"
 		import "Game/Obstacles/Styx.sjson.lua"
+		import "Game/Obstacles/Surface.sjson.lua"
 		import "Game/Obstacles/Tartarus.sjson.lua"
+		import "Game/Obstacles/Travel.sjson.lua"
 
 		-- The ScreenText files depend on icons in here
 		import "Scripts/UIData.lua"
-
-		-- Localizations, custom texts
-		import "Game/Text/de/HelpText.de.sjson.lua"
-		import "Game/Text/el/HelpText.el.sjson.lua"
-		import "Game/Text/en/HelpText.en.sjson.lua"
-		import "Game/Text/es/HelpText.es.sjson.lua"
-		import "Game/Text/fr/HelpText.fr.sjson.lua"
-		import "Game/Text/it/HelpText.it.sjson.lua"
-		import "Game/Text/ja/HelpText.ja.sjson.lua"
-		import "Game/Text/ko/HelpText.ko.sjson.lua"
-		import "Game/Text/pl/HelpText.pl.sjson.lua"
-		import "Game/Text/pt-BR/HelpText.pt-BR.sjson.lua"
-		import "Game/Text/ru/HelpText.ru.sjson.lua"
-		import "Game/Text/tr/HelpText.tr.sjson.lua"
-		import "Game/Text/uk/HelpText.uk.sjson.lua"
-		import "Game/Text/zh-CN/HelpText.zh-CN.sjson.lua"
-		import "Game/Text/zh-TW/HelpText.zh-TW.sjson.lua"
-
-		import "Game/Text/de/CodexText.de.sjson.lua"
-		-- import "Game/Text/el/CodexText.el.sjson.lua"
-		import "Game/Text/en/CodexText.en.sjson.lua"
-		import "Game/Text/es/CodexText.es.sjson.lua"
-		import "Game/Text/fr/CodexText.fr.sjson.lua"
-		import "Game/Text/it/CodexText.it.sjson.lua"
-		import "Game/Text/ja/CodexText.ja.sjson.lua"
-		import "Game/Text/ko/CodexText.ko.sjson.lua"
-		import "Game/Text/pl/CodexText.pl.sjson.lua"
-		import "Game/Text/pt-BR/CodexText.pt-BR.sjson.lua"
-		import "Game/Text/ru/CodexText.ru.sjson.lua"
-		-- import "Game/Text/tr/CodexText.tr.sjson.lua"
-		-- import "Game/Text/uk/CodexText.uk.sjson.lua"
-		import "Game/Text/zh-CN/CodexText.zh-CN.sjson.lua"
-		-- import "Game/Text/zh-TW/CodexText.zh-TW.sjson.lua"
-
-		import "Game/Text/de/ScreenText.de.sjson.lua"
-		import "Game/Text/el/ScreenText.el.sjson.lua"
-		import "Game/Text/en/ScreenText.en.sjson.lua"
-		import "Game/Text/es/ScreenText.es.sjson.lua"
-		import "Game/Text/fr/ScreenText.fr.sjson.lua"
-		import "Game/Text/it/ScreenText.it.sjson.lua"
-		import "Game/Text/ja/ScreenText.ja.sjson.lua"
-		import "Game/Text/ko/ScreenText.ko.sjson.lua"
-		import "Game/Text/pl/ScreenText.pl.sjson.lua"
-		import "Game/Text/pt-BR/ScreenText.pt-BR.sjson.lua"
-		import "Game/Text/ru/ScreenText.ru.sjson.lua"
-		import "Game/Text/tr/ScreenText.tr.sjson.lua"
-		import "Game/Text/uk/ScreenText.uk.sjson.lua"
-		import "Game/Text/zh-CN/ScreenText.zh-CN.sjson.lua"
-		import "Game/Text/zh-TW/ScreenText.zh-TW.sjson.lua"
-
-		import "Game/Text/de/TraitText.de.sjson.lua"
-		-- import "Game/Text/el/TraitText.el.sjson.lua"
-		import "Game/Text/en/TraitText.en.sjson.lua"
-		import "Game/Text/es/TraitText.es.sjson.lua"
-		import "Game/Text/fr/TraitText.fr.sjson.lua"
-		import "Game/Text/it/TraitText.it.sjson.lua"
-		import "Game/Text/ja/TraitText.ja.sjson.lua"
-		import "Game/Text/ko/TraitText.ko.sjson.lua"
-		import "Game/Text/pl/TraitText.pl.sjson.lua"
-		import "Game/Text/pt-BR/TraitText.pt-BR.sjson.lua"
-		import "Game/Text/ru/TraitText.ru.sjson.lua"
-		-- import "Game/Text/tr/TraitText.tr.sjson.lua"
-		-- import "Game/Text/uk/TraitText.uk.sjson.lua"
-		import "Game/Text/zh-CN/TraitText.zh-CN.sjson.lua"
-		-- import "Game/Text/zh-TW/TraitText.zh-TW.sjson.lua"
-
-		import "Game/Text/de/MiscText.de.sjson.lua"
-		-- import "Game/Text/el/MiscText.el.sjson.lua"
-		import "Game/Text/en/MiscText.en.sjson.lua"
-		import "Game/Text/es/MiscText.es.sjson.lua"
-		import "Game/Text/fr/MiscText.fr.sjson.lua"
-		import "Game/Text/it/MiscText.it.sjson.lua"
-		import "Game/Text/ja/MiscText.ja.sjson.lua"
-		import "Game/Text/ko/MiscText.ko.sjson.lua"
-		import "Game/Text/pl/MiscText.pl.sjson.lua"
-		import "Game/Text/pt-BR/MiscText.pt-BR.sjson.lua"
-		import "Game/Text/ru/MiscText.ru.sjson.lua"
-		-- import "Game/Text/tr/MiscText.tr.sjson.lua"
-		-- import "Game/Text/uk/MiscText.uk.sjson.lua"
-		import "Game/Text/zh-CN/MiscText.zh-CN.sjson.lua"
-		-- import "Game/Text/zh-TW/MiscText.zh-TW.sjson.lua"
+		-- We need to wrap OnLanguageChanged before calling it
+		import "Scripts/UILogic.lua"
+		-- Load the initial set of language sjson files
+		game.OnLanguageChanged()
 
 		-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 		-- Done first, as the EncounterData depends on the EnemySets
@@ -295,7 +224,7 @@ local function on_ready()
 		import "Scripts/EncounterDataTartarus.lua"
 		import "Scripts/EncounterDataAsphodel.lua"
 		import "Scripts/EncounterDataElysium.lua"
-		-- import "Scripts/EncounterDataStyx.lua"
+		import "Scripts/EncounterDataStyx.lua"
 
 		-- Loads Room data
 		import "Scripts/RoomSets.lua"
@@ -307,15 +236,19 @@ local function on_ready()
 		import "Scripts/RoomDataAsphodel.lua"
 		import "Scripts/HadesRoomDataElysium.lua"
 		import "Scripts/RoomDataElysium.lua"
-		-- import "Scripts/HadesRoomDataStyx.lua"
-		-- import "Scripts/RoomDataStyx.lua"
+		import "Scripts/HadesRoomDataStyx.lua"
+		import "Scripts/RoomDataStyx.lua"
 
 		-- Loads Weapon data
 		import "Scripts/HadesWeaponData.lua"
 		import "Scripts/WeaponData.lua"
 
-		-- Add new Trait data
+		-- Other data that must be loaded before SetupRunData()
+		import "Scripts/ConsumableData.lua"
+		import "Scripts/EffectData.lua"
+		import "Scripts/MetaUpgradeData.lua"
 		import "Scripts/TraitDataNPCs.lua"
+		import "Scripts/ObstacleData.lua"
 
 		-- Applies modifications to the rooms, such as LegalEncounterDictionary
 		game.SetupRunData()
@@ -324,9 +257,10 @@ local function on_ready()
 		import "Scripts/FunctionMappings/AsphodelWrapping.lua"
 		import "Scripts/FunctionMappings/BossAsphodel.lua"
 		import "Scripts/FunctionMappings/BossElysium.lua"
+		import "Scripts/FunctionMappings/BossStyx.lua"
 		import "Scripts/FunctionMappings/BossTartarus.lua"
 		import "Scripts/FunctionMappings/Chariot.lua"
-		import "Scripts/FunctionMappings/CrawlerMiniboss.lua"
+		import "Scripts/FunctionMappings/Crawler.lua"
 		import "Scripts/FunctionMappings/CrusherUnit.lua"
 		import "Scripts/FunctionMappings/Environment.lua"
 		import "Scripts/FunctionMappings/HeavyRanged.lua"
@@ -334,6 +268,7 @@ local function on_ready()
 		import "Scripts/FunctionMappings/MiniBossTartarus.lua"
 		import "Scripts/FunctionMappings/NPCLogic.lua"
 		import "Scripts/FunctionMappings/ShadeNaked.lua"
+		import "Scripts/FunctionMappings/StyxLogic.lua"
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes
@@ -343,6 +278,7 @@ local function on_ready()
 		import "Scripts/BiomeMapPresentation.lua"
 		import "Scripts/CodexData.lua"
 		import "Scripts/CodexLogic.lua"
+		import "Scripts/Color.lua"
 		import "Scripts/Combat.lua"
 		import "Scripts/CombatLogic.lua"
 		import "Scripts/CombatPresentation.lua"
@@ -355,9 +291,7 @@ local function on_ready()
 		import "Scripts/EventPresentation.lua"
 		import "Scripts/HeroData.lua"
 		import "Scripts/HubPresentation.lua"
-		import "Scripts/MetaUpgradeData.lua"
 		import "Scripts/NarrativeData.lua"
-		import "Scripts/ObstacleData.lua"
 		import "Scripts/PowersLogic.lua"
 		import "Scripts/ProjectileData.lua"
 		import "Scripts/RequirementsData.lua"
@@ -369,6 +303,7 @@ local function on_ready()
 		import "Scripts/RunHistoryData.lua"
 		import "Scripts/RunHistoryLogic.lua"
 		import "Scripts/RunLogic.lua"
+		import "Scripts/StoreLogic.lua"
 		import "Scripts/WeaponSets.lua"
 
 		mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)

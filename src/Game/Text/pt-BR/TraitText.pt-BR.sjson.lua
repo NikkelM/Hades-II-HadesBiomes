@@ -1,4 +1,4 @@
-local traitTextFile = rom.path.combine(rom.paths.Content(), 'Game/Text/pt-BR/TraitText.pt-BR.sjson')
+local traitTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/pt-BR/TraitText.pt-BR.sjson")
 
 local order = {
 	"Id",
@@ -9,7 +9,7 @@ local order = {
 }
 
 local newData = {
-	-- Sisyphus
+	-- #region Sisyphus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesSisyphusHealing",
 	-- 	DisplayName = "Warm Embrace",
@@ -28,7 +28,9 @@ local newData = {
 	-- 	Description =
 	-- 	"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
 	-- },
-	-- Eurydice
+	-- #endregion
+
+	-- #region Eurydice
 	{
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Deleite de Ambrósia",
@@ -47,7 +49,9 @@ local newData = {
 		Description =
 		"Uma bebida rara e aromática; as próximas {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}que você encontrar têm {$Keywords.Rarity} melhorada.",
 	},
-	-- Patroclus
+	-- #endregion
+
+	-- #region Patroclus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 	-- 	DisplayName = "Carne-Seca de Ciclope Exclusiva",
@@ -77,6 +81,46 @@ local newData = {
 	-- 	InheritFrom = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 	-- 	DisplayName = "Centaur Tonic",
 	-- }
+	-- #endregion
+
+	-- #region Bouldy
+	{
+		Id = "BouldyBlessing_Armor",
+		DisplayName = "Coração de Pedra",
+		Description =
+		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Redução de Dano: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Attack",
+		DisplayName = "Coração de Pedra",
+		Description =
+		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Dano Extra do [ataques]{$Keywords.AttackSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Special",
+		DisplayName = "Coração de Pedra",
+		Description =
+		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Dano Extra do [especiais]{$Keywords.SpecialSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Ranged",
+		DisplayName = "Coração de Pedra",
+		Description =
+		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Dano Extra do [conjurações]{$Keywords.CastSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Speed",
+		DisplayName = "Coração de Pedra",
+		Description =
+		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Bônus de Velocidade: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Money",
+		DisplayName = "Coração de Pedra",
+		Description =
+		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Bônus de {!Icons.Currency}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

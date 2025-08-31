@@ -134,20 +134,48 @@ They are located in the following paths:
 `Hades/Content/Win/Maps` -> `Hades II/Content/Maps/bin`
 
 The following tool developed by the Hades modding community can be used: [HadesMapper](https://github.com/SGG-Modding/HadesMapper).
-First, decode a `.thing_bin` file from Hades (don't use file extensions):
+A `.cmd` file that automatically performs the necessary steps is below:
 
-```bash
-HadesMapper dc -i Hades/Content/Win/Maps/<MapName> -o Hades/Content/Win/Maps/<MapName_dc>
+```cmd
+@echo off
+setlocal
+
+rem This script is used to decode and encode the Hades map files using the HadesMapper tool
+rem Define paths
+set DECOMPILE_OUTPUT=xxx
+set HADES_MAPPER=xxx
+set HADES_CONTENT=xxx
+set HADES_TWO_CONTENT=xxx
+set OUTPUT_DIR_MOD=xxx
+set OUTPUT_DIR_PLUGINS=xxx
+
+rem Define the list of files to process  separated by spaces
+set FILES=D_Intro D_Hub
+
+rem Loop through each file and process it
+(for %%f in (%FILES%) do (
+    echo Processing file: %%f
+
+    rem Decode the file
+    %HADES_MAPPER% dc -i "%HADES_CONTENT%\%%f" -o "%DECOMPILE_OUTPUT%\%%f_DECOMPILED"
+
+    rem Decode the file (from Hades II)
+    @REM %HADES_MAPPER% dc -s -i "%HADES_TWO_CONTENT%\%%f" -o "%DECOMPILE_OUTPUT%\%%f_DECOMPILED"
+    
+    rem Encode the file in the output directories
+    %HADES_MAPPER% ec -s -i "%DECOMPILE_OUTPUT%\%%f_DECOMPILED" -o "%OUTPUT_DIR_MOD%\%%f"
+    %HADES_MAPPER% ec -s -i "%DECOMPILE_OUTPUT%\%%f_DECOMPILED" -o "%OUTPUT_DIR_PLUGINS%\%%f"
+    %HADES_MAPPER% ec -s -i "%DECOMPILE_OUTPUT%\%%f_DECOMPILED" -o "%HADES_TWO_CONTENT%\%%f"
+    
+    rem Remove the intermediate file
+    del "%DECOMPILE_OUTPUT%\%%f_DECOMPILED.thing_text"
+))
+
+echo Finished processing files.
+endlocal
 ```
 
-Then, encode it for Hades II. The `-s` flag stands for `sequel`, meaning Hades II.
-We place the encoded file in the `data` folder of the mod, so it gets added to `plugins_data`:
-
-```bash
-HadesMapper ec -s -i Hades/Content/Maps/<MapName_dc> -o <Modroot>/data/<MapName>
-```
-
-In the end, for each map, there should be a `.map_text` and a `.thing_bin` file in the `Hades II/Content/Maps` and `Hades II/Content/Maps/bin` directories, respectively.
+In the end, for each map, there should be a `.thing_bin` file for each map in the `Hades II/Content/Maps` and `Hades II/Content/Maps/bin` directories, respectively.
 
 ### Special maps
 
@@ -256,6 +284,18 @@ The above makes sure that `Terrain_04` is rendered above `Terrain_03` and below 
 },
 ...
 ```
+
+#### A_Story01
+
+In this map, we need to change the name for the Bouldy NPC, as it is used in both Hades and Hades II.
+
+For ID `506340`, change the `Name` property from `NPC_Bouldy_01` to `ModsNikkelMHadesBiomes_NPC_Bouldy_01`.
+
+#### D_Hub
+
+In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II.
+
+For ID `547487`, change the `Name` property from `NPC_Cerberus_Field_01` to `ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01`.
 
 ## Map packages
 

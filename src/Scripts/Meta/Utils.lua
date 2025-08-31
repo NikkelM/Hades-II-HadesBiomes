@@ -63,7 +63,7 @@ mod.CachedRunsFilePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid
 ---@return table
 function mod.LoadCachedRunsFile()
 	if rom.path.exists(mod.CachedRunsFilePath) then
-		return sjson.decode_file(mod.CachedRunsFilePath)
+		return mod.DecodeSjsonFile(mod.CachedRunsFilePath)
 	else
 		error(
 			"\"cachedRuns.sjson\" not found! Please re-install the mod by setting both \"uninstall\" and \"firstTimeSetup\" in the config to \"true\".")
@@ -189,7 +189,7 @@ function mod.UpdateField(tableToModify, find, replaceWith, propertyPath, tableNa
 			return data, replaced
 		else
 			local key = table.remove(path, 1)
-			if key == '*' then
+			if key == "*" then
 				if type(data) == "table" then
 					for k, v in pairs(data) do
 						data[k], replaced = updateField(v, { table.unpack(path) })
@@ -335,18 +335,43 @@ end
 ---@param destinationTable table The table to modify.
 ---@param modifications table The modifications to apply. The key must match a Name key in the destinationTable entry.
 function mod.ApplyNestedSjsonModifications(destinationTable, modifications)
+	-- Collect names to remove to avoid issues with removing during iteration
+	local namesToRemove = {}
 	for _, entry in ipairs(destinationTable) do
 		local modification = modifications[entry.Name]
 		if modification then
-			for key, value in pairs(modification) do
-				if type(value) == "table" then
-					entry[key] = entry[key] or {}
-					for subKey, subValue in pairs(value) do
-						entry[key][subKey] = subValue
+			if modification == mod.NilValue then
+				table.insert(namesToRemove, entry.Name)
+			else
+				for key, value in pairs(modification) do
+					if value == mod.NilValue then
+						entry[key] = nil
+					elseif type(value) == "table" then
+						entry[key] = entry[key] or {}
+						for subKey, subValue in pairs(value) do
+							if subValue == mod.NilValue then
+								entry[key][subKey] = nil
+							else
+								entry[key][subKey] = subValue
+							end
+						end
+					else
+						entry[key] = value
 					end
-				else
-					entry[key] = value
 				end
+			end
+		end
+	end
+	-- Remove entries after iteration for safety
+	if #namesToRemove > 0 then
+		local nameSet = {}
+		for _, name in ipairs(namesToRemove) do
+			nameSet[name] = true
+		end
+		for i = #destinationTable, 1, -1 do
+			local entry = destinationTable[i]
+			if entry.Name and nameSet[entry.Name] then
+				table.remove(destinationTable, i)
 			end
 		end
 	end
@@ -406,3 +431,22 @@ function mod.ApplyGlobalGameObjectModifications(useModded, target, modifications
 		end
 	end
 end
+
+---Returns if a given entry should be removed from a table based on a list of entries to remove.
+---@param entryName string The name, ID or other identifier of the entry to check. This will most times be passed in as table.Name or table.Id.
+---@param entriesToRemove table A list of names, IDs or other identifiers to remove.
+---@return boolean shouldRemove True if the entry should be removed, false otherwise.
+function mod.ShouldRemoveEntry(entryName, entriesToRemove)
+	for _, removeName in ipairs(entriesToRemove) do
+		if entryName == removeName then
+			return true
+		end
+	end
+	return false
+end
+
+-- TODO: Remove when releasing
+modutil.mod.Path.Wrap("DebugPrint", function(base, args)
+	mod.DebugPrint(args.Text, 4)
+	base(args)
+end)

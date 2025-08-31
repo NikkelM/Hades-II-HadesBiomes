@@ -1,4 +1,4 @@
-local screenTextFile = rom.path.combine(rom.paths.Content(), 'Game\\Text\\en\\ScreenText.en.sjson')
+local screenTextFile = rom.path.combine(rom.paths.Content(), "Game\\Text\\en\\ScreenText.en.sjson")
 
 local order = {
 	"Id",
@@ -30,7 +30,7 @@ local newData = {
 	},
 	{
 		Id = "RunHistoryScreen_RouteModsNikkelMHadesBiomes",
-		DisplayName = "{!Icons.ModsNikkelMHadesBiomesIcon}",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor}",
 		-- Icon only, no localization needed
 		OverwriteLocalization = true,
 	},

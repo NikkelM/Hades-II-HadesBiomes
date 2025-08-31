@@ -1,5 +1,5 @@
 -- Hooking CodexText for this language, as ScreenText has """" which sjson.hook doesn't handle correctly
-local screenTextFile = rom.path.combine(rom.paths.Content(), 'Game\\Text\\it\\CodexText.it.sjson')
+local screenTextFile = rom.path.combine(rom.paths.Content(), "Game\\Text\\it\\CodexText.it.sjson")
 
 local order = {
 	"Id",

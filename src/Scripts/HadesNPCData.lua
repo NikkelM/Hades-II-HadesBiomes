@@ -330,15 +330,15 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			},
 		},
 	},
-	-- BouldyRandomBlessings = {
-	-- 	"BouldyBlessing_Armor",
-	-- 	"BouldyBlessing_Attack",
-	-- 	"BouldyBlessing_Special",
-	-- 	"BouldyBlessing_Ranged",
-	-- 	"BouldyBlessing_Speed",
-	-- 	"BouldyBlessing_Money",
-	-- 	"BouldyBlessing_None",
-	-- },
+	BouldyRandomBlessings = {
+		"BouldyBlessing_Armor",
+		"BouldyBlessing_Attack",
+		"BouldyBlessing_Special",
+		"BouldyBlessing_Ranged",
+		"BouldyBlessing_Speed",
+		"BouldyBlessing_Money",
+		"BouldyBlessing_None",
+	},
 	EurydiceBenefitChoices = {
 		SkipComponents = {
 			"OlympusBackground",
@@ -444,8 +444,7 @@ mod.NPCData = mod.NPCData or {
 		Portrait = "Portrait_Sisyphus_Default_01",
 		Groups = { "NPCs" },
 
-		ActivateRequirements =
-		{
+		ActivateRequirements = {
 			RequiredMinCompletedRuns = 1,
 		},
 
@@ -3666,6 +3665,814 @@ mod.NPCData = mod.NPCData or {
 			{ Cue = "/VO/Sisyphus_0267", RequiredTextLines = { "SisyphusMeeting06" } },
 		},
 	},
+
+	-- Manually replaced PresetEventArgs.BouldyRandomBlessings with mod.PresetEventArgs.BouldyRandomBlessings for simplicity
+	-- Bouldy, Id = 506340
+	ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {
+		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
+		UseText = "UseTalkToBouldy",
+		AnimOffsetZ = 235,
+		Portrait = "Portrait_Bouldy_Default_01",
+		BlockStatusAnimations = true,
+		Groups = { "NPCs" },
+		GiftText = "GiftBouldyUseText",
+
+		ActivateRequirements = {
+			RequiredMinCompletedRuns = 1,
+		},
+
+		InteractTextLineSets =
+		{
+			BouldyFirstMeeting =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "SisyphusAboutBouldy01" },
+				EndVoiceLines =
+				{
+					{
+						RandomRemaining = true,
+						PreLineWait = 0.73,
+						UsePlayerSource = true,
+
+						-- I, uh... OK!
+						{ Cue = "/VO/ZagreusField_2808" },
+					},
+					{
+						ObjectType = "NPC_Sisyphus_01",
+						RequiredUnitAlive = "NPC_Sisyphus_01",
+						PreLineWait = 0.45,
+						-- I think he likes you!
+						{ Cue = "/VO/Sisyphus_0361" },
+					},
+				},
+				{
+					Cue = "/VO/ZagreusField_2785",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Erm{#PreviousFormat}, Bouldy...? I'm Zagreus, good to make your acquaintance. I know that friends are difficult to come by here in Tartarus, and so, I'm grateful that you seem to be a trusty one."
+				},
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   ."
+				},
+			},
+			BouldyMiscMeeting01 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "BouldyFirstMeeting" },
+				{
+					Cue = "/VO/ZagreusField_2786",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Bouldy, while on one hand I know that making offerings to you won't really help get me out of here, on the other hand... maybe it will?"
+				},
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   ."
+				},
+			},
+			BouldyMiscMeeting02 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "BouldyFirstMeeting" },
+				{
+					Cue = "/VO/ZagreusField_2787",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Bouldy, how do you handle being trapped in Tartarus for all eternity, doomed to be pushed up and down a hill repeatedly for no good reason?"
+				},
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   ."
+				},
+			},
+			BouldyMiscMeeting03 =
+			{
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "BouldyFirstMeeting" },
+				{
+					Cue = "/VO/ZagreusField_2788",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"So, {#DialogueItalicFormat}erm{#PreviousFormat}, there something you like to do for entertainment out here, Bouldy? Or just, I don't know, take it all in, I guess?"
+				},
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   ."
+				},
+			},
+		},
+
+		RepeatableTextLineSets =
+		{
+			BouldyChat01 =
+			{
+				UseableOffSource = true,
+				RequiredTextLines = { "BouldyFirstMeeting" },
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   ."
+				},
+			},
+		},
+
+		GiftTextLineSets =
+		{
+			BouldyGiftRepeatable01 =
+			{
+				{
+					Cue = "/VO/ZagreusField_2789",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "What's the latest, Bouldy? Had any good tumbles down that hill of late?"
+				},
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable02 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01" },
+				{
+					Cue = "/VO/ZagreusField_2790",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You know, I think I'm growing more accustomed to relating to a giant stone."
+				},
+				{
+					Cue = "",
+					SpeakerLabelOffsetY = 18,
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable03 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2791",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "Don't know why I keep doing this, Bouldy, yet here we are."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable04 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2792",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You take good care of Sisyphus, there, won't you, Bouldy?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable05 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2793",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Sometimes a conversation with a friend is its own reward, isn't that right, Bouldy?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable06 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2794",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You're looking as stately as ever, there, Bouldy."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable07 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2795",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "A tribute to the greatest boulder of all time."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable08 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2796",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "To our most famous boulder!"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable09 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2797",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "May you roll smoothly for eternity."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable10 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2798",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Thank you for keeping my friend company."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable11 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2799",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "This is for you, Bouldy."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable12 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2800",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Bouldy, please accept this humble offering."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable13 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03" },
+				{
+					Cue = "/VO/ZagreusField_2801",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Bouldy, lend your favor to me, won't you?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable14 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2802",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "An offering to the finest boulder in all of Tartarus."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable15 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_2803",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Cheers, Bouldy! Thank you for brightening my day or night."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable16 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				RequiredTextLines = { "BouldyGiftRepeatable12" },
+				{
+					Cue = "/VO/ZagreusField_2804",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Bouldy, ever get the feeling that we've had this conversation in the past?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable17 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
+				{
+					Cue = "/VO/ZagreusField_2805",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Let's be sure to do this again sometime, Bouldy my friend."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable18 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
+				{
+					Cue = "/VO/ZagreusField_2806",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Any advice for me on this occasion, Bouldy?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable19 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
+				{
+					Cue = "/VO/ZagreusField_2807",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Bouldy, you can speak up if there's something on your mind, you know."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable20 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
+				{
+					Cue = "/VO/ZagreusField_4215",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You're always here for me, Bouldy! Cheers."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable21 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
+				{
+					Cue = "/VO/ZagreusField_4216",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "How's everything going lately, there, Bouldy?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable22 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03" },
+				{
+					Cue = "/VO/ZagreusField_4217",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Looks like you and Sisyphus are doing just fine, Bouldy."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable23 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03" },
+				{
+					Cue = "/VO/ZagreusField_4218",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Good seeing you as ever, there, Bouldy."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable24 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
+				{
+					Cue = "/VO/ZagreusField_4219",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You're a good friend, Bouldy. I'm glad you're here."
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable25 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
+				{
+					Cue = "/VO/ZagreusField_4220",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You'd tell me if anything was on your mind, right, Bouldy?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable26 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05", "BouldyGiftRepeatable06", "BouldyGiftRepeatable07", "BouldyGiftRepeatable08", "BouldyGiftRepeatable09", "BouldyGiftRepeatable10" },
+				{
+					Cue = "/VO/ZagreusField_4221",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey Bouldy, what's your favorite color?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable27 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05", "BouldyGiftRepeatable06", "BouldyGiftRepeatable07", "BouldyGiftRepeatable08", "BouldyGiftRepeatable09", "BouldyGiftRepeatable10" },
+				{
+					Cue = "/VO/ZagreusField_4222",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey Bouldy, what's your favorite form of sustenance?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable28 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05", "BouldyGiftRepeatable06", "BouldyGiftRepeatable07", "BouldyGiftRepeatable08", "BouldyGiftRepeatable09", "BouldyGiftRepeatable10" },
+				{
+					Cue = "/VO/ZagreusField_4223",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey Bouldy, what do you like to do in your spare time?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+			BouldyGiftRepeatable29 =
+			{
+				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03" },
+				{
+					Cue = "/VO/ZagreusField_4224",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey Bouldy, how's everything of late?"
+				},
+				{
+					Cue = "",
+					Text = ".   .   .   .",
+					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
+					PostLineFunctionName = "AddRandomBouldyBlessing",
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
+				},
+			},
+		},
+
+		GiftGivenVoiceLines =
+		{
+			BreakIfPlayed = true,
+			PreLineWait = 1.0,
+			PlayFromTarget = true,
+
+			-- Thanks for that, sir.
+			-- { Cue = "/VO/ZagreusHome_0320" },
+		},
+
+		--[[
+		CharacterInteractions =
+		{
+			Rescue =
+			{
+				VoiceLines =
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					PreLineWait = 0.4,
+
+					-- Sure thing!
+					-- { Cue = "/VO/Sisyphus_0038" },
+				},
+			},
+		},
+		]] --
+
+		OnHitFunctionName = "BouldyHitPresentation",
+		OnHitVoiceLines =
+		{
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.25,
+			ObjectType = "NPC_Sisyphus_01",
+			Cooldowns =
+			{
+				{ Name = "SisyphusAnyQuipSpeech", Time = 7 },
+			},
+
+			-- No use in that.
+			{ Cue = "/VO/Sisyphus_0066" },
+			-- Don't bother, Prince.
+			{ Cue = "/VO/Sisyphus_0068" },
+			-- Come on, now.
+			{ Cue = "/VO/Sisyphus_0069" },
+			-- Oh come now.
+			{ Cue = "/VO/Sisyphus_0070" },
+			-- Why bother.
+			{ Cue = "/VO/Sisyphus_0071" },
+			-- Very funny, Prince.
+			{ Cue = "/VO/Sisyphus_0073" },
+		},
+	},
+
 	-- Manually replaced PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] with mod.PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] to make it easier
 	-- FunctionName is still replaced in NPCData.lua
 	-- Eurydice, Id = 514436
@@ -6616,8 +7423,7 @@ mod.NPCData = mod.NPCData or {
 	},
 	-- Manually replaced PresetEventArgs.PatroclusGreeting/Muttering etc. with mod.PresetEventArgs.___ to make it easier
 	-- Patroclus
-	NPC_Patroclus_01 =
-	{
+	NPC_Patroclus_01 = {
 		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
 
 		UseText = "UseTalkToPatroclus",
@@ -10555,6 +11361,733 @@ mod.NPCData = mod.NPCData or {
 				-- I won't be fighting here.
 				{ Cue = "/VO/Patroclus_0242" },
 			},
+		},
+	},
+
+	-- Cerberus in D_Hub, Id = 547487
+	ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01 = {
+		InheritFrom = { "NPC_Neutral" },
+		GenusName = "NPC_Cerberus_01",
+		UseText = "UseTalkToCerberus",
+		Portrait = "Portrait_Cerberus_Default_01",
+		AnimOffsetZ = 525,
+		Groups = { "NPCs" },
+
+		Binks = {
+			"Cerberus_HubIdle_Bink",
+			"Cerberus_HappyGreeting_Bink",
+		},
+
+		BossPresentationIntroTextLineSets =
+		{
+			CerberusStyxMeeting01 =
+			{
+				PlayOnce = true,
+				EndVoiceLines =
+				{
+					PreLineWait = 0.6,
+					UsePlayerSource = true,
+					TriggerCooldowns = { "ZagreusForkingPathVoiceLinesPlayed" },
+					-- Good! Now I just need to head off the beaten path here and see what I can find.
+					{ Cue = "/VO/ZagreusField_2065" },
+				},
+				{
+					Cue = "/VO/Storyteller_0242",
+					PortraitExitAnimation = "Portrait_Cerberus_Default_01_Exit",
+					IsNarration = true,
+					PreLineWait = 1.8,
+					StartSound = "/VO/CerberusLongGrowl",
+					Text =
+					"{#DialogueItalicFormat}The multi-headed Cerberus stands vigilant before the Underworld's entryway; the tales of what happens to those foolish enough to attempt to pass are far too graphic to describe.",
+				},
+				{
+					Cue = "/VO/ZagreusField_2063",
+					Portrait = "Portrait_Zag_Serious_01",
+					PortraitExitAnimation = "Portrait_Zag_Serious_01_Exit",
+					Speaker = "CharProtag",
+					StartSound = "/VO/CerberusGrowl",
+					PreLineWait = 1.0,
+					PreLineAnim = "ZagreusTalkDenial_Full",
+					PreLineAnimTarget = "Hero",
+					PreContentSound = "/Leftovers/Menu Sounds/TextReveal3",
+					Text =
+					"So it's really come to this, boy? After everything we've been through. Well then, if this is how it has to be, there's nothing left to say. Except for: {#DialogueItalicFormat}On your guard{#PreviousFormat}!!"
+				},
+				{
+					Cue = "/VO/ZagreusField_2064",
+					Portrait = "Portrait_Zag_Default_01",
+					PortraitExitAnimation = "Portrait_Zag_Default_01_Exit",
+					Speaker = "CharProtag",
+					PreLineWait = 2.0,
+					StartSound = "/VO/CerberusBarks",
+					EndSecretMusic = true,
+					Emote = "PortraitEmoteSparkly",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Hahaha{#PreviousFormat}, no, but seriously, boy. I know why you're here. There has to be a way to make you look the other way. What if I help you with the Satyr problem, would you let me go? Please. I have to find Persephone... my mother. You know what this means to me."
+				},
+				{
+					Cue = "/VO/Storyteller_0243",
+					PreLineFunctionName = "ResumeStyxMusic",
+					IsNarration = true,
+					PreLineWait = 1.0,
+					StartSound = "/VO/CerberusWhineSad",
+					Text =
+					"{#DialogueItalicFormat}After a moment's hesitation and deliberation, the voracious hound of hell barks once, affirmatively, toward the Prince, who sets off in search of something that can sate the monster's appetites.",
+				},
+			},
+		},
+
+		InteractTextLineSets =
+		{
+			-- key item delivered / boss door unlock events
+			CerberusBossDoorUnlock01 =
+			{
+				PlayOnce = true,
+				UseableOff = true,
+				RequiredRoomThisRun = "D_Reprieve01",
+				Priority = true,
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/ZagreusField_2066",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PostLineFunctionName = "UnlockDoor",
+					PostLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					Text =
+					"All right, boy, I got your favorite treat. But you have to promise to let me pass if I hand it over, OK?"
+				},
+				{
+					Cue = "/VO/Storyteller_0244",
+					PreLineWait = 1.0,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockText = "ClearedCerberus",
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text =
+					"{#DialogueItalicFormat}Terrifying Cerberus accepts the fetid sack, and scans the darkened hall for where best to consume the stomach-turning contents."
+				},
+			},
+
+			CerberusBossDoorUnlockRepeatable01 =
+			{
+				PlayOnce = true,
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0245",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						UseAdditionalFootstepSounds = true,
+						EndUnlockText = "ClearedCerberus_Alt1",
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Cerberus again accepts the sack."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable01_Alt =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02", "CerberusBossDoorUnlockRepeatable03", "CerberusBossDoorUnlockRepeatable04", "CerberusBossDoorUnlockRepeatable05", "CerberusBossDoorUnlockRepeatable06", "CerberusBossDoorUnlockRepeatable07" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0245",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						UseAdditionalFootstepSounds = true,
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Cerberus again accepts the sack."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable02 =
+			{
+				PlayOnce = true,
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0253",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockText = "ClearedCerberus_Alt2",
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Gigantic Cerberus accepts the Prince's foul offering."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable02_Alt =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02", "CerberusBossDoorUnlockRepeatable03", "CerberusBossDoorUnlockRepeatable04", "CerberusBossDoorUnlockRepeatable05", "CerberusBossDoorUnlockRepeatable06", "CerberusBossDoorUnlockRepeatable07" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0253",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt2", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Gigantic Cerberus accepts the Prince's foul offering."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable03 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0254",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt2", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						EndUnlockTextTable = { "ClearedCerberus_Alt2" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}The fearsome Cerberus accepts the Satyr sack."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable04 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0255",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}The Prince persuades the Underworld's ferocious guardian to move aside."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable05 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0256",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}The Prince compels the multi-headed hound to let him pass."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable06 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0257",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Thus has the Prince again persuaded fearsome Cerberus to get out of his way."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable07 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0258",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Joyfully the hound of hell accepts another Satyr sack."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable08 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0396",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text =
+					"{#DialogueItalicFormat}The monster's solitary weakness, Satyr sacks, prove terribly effective, once again."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable09 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0397",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text =
+					"{#DialogueItalicFormat}Fang-bearing Cerberus directs all three of his attentions toward the Satyr sack."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable10 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0398",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text =
+					"{#DialogueItalicFormat}The guardian of hell itself decides the time has come for a short break and snack."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable11 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0399",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Prince Zagreus once more offers to Cerberus one of his favored sacks."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable12 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0400",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Cerberus moves for no one, but for Satyr sacks, he can make an exception."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable13 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0401",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Vigilant Cerberus decides to look the other way, this once."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable14 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0402",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text = "{#DialogueItalicFormat}Each violent countenance of Cerberus agrees the Satyr sack must be destroyed."
+				},
+			},
+			CerberusBossDoorUnlockRepeatable15 =
+			{
+				UseableOff = true,
+				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
+				RequiredRoomThisRun = "D_Reprieve01",
+				-- PreEventFunctionName = "PetCerberus",
+				{
+					Cue = "/VO/Storyteller_0403",
+					PreLineWait = 0.75,
+					StartSound = "/VO/CerberusSnarls",
+					IsNarration = true,
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
+						UseAdditionalFootstepSounds = true,
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines"
+					},
+					Text =
+					"{#DialogueItalicFormat}After deliberating briefly, Cerberus concludes that, yes, he shall accept the sack."
+				},
+			},
+		},
+
+		RepulseOnMeleeInvulnerableHit = 250,
+		InvincibubbleScale = 2.5,
+		InvulnerableHitSound = "/VO/CerberusBarks",
+		OnHitVoiceLines =
+		{
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.35,
+			UsePlayerSource = true,
+			CooldownTime = 8,
+
+			-- Just playing with you, boy.
+			{ Cue = "/VO/ZagreusField_2157" },
+			-- There's a good boy.
+			{ Cue = "/VO/ZagreusField_2158" },
+			-- No time for play, huh?
+			{ Cue = "/VO/ZagreusField_2159" },
+			-- So serious on guard duty.
+			{ Cue = "/VO/ZagreusField_2160" },
+			-- Not going to budge, are you?
+			{ Cue = "/VO/ZagreusField_2161" },
+			-- Cerberus puts up with so much.
+			{ Cue = "/VO/ZagreusField_2162" },
+			-- Just playing!
+			{ Cue = "/VO/ZagreusField_2163" },
+			-- You wouldn't fight me, would you?
+			{ Cue = "/VO/ZagreusField_2164" },
+			-- Won't even lift a paw, will you.
+			{ Cue = "/VO/ZagreusField_2165" },
+			-- I ought to be ashamed of myself.
+			{ Cue = "/VO/ZagreusField_2166" },
 		},
 	},
 }

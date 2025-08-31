@@ -50,8 +50,8 @@ local roomModifications = {
 		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
 		ShrinePointDoorRequirements = { Skip = true },
 
-		LocationAnimName = "LocationBackingIrisChaosIn",
-		LocationAnimOutName = "LocationBackingIrisChaosOut",
+		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn",
+		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut",
 	},
 
 	-- OPENING ROOMS
@@ -61,7 +61,7 @@ local roomModifications = {
 		EntranceFunctionName = "RoomEntranceDrop",
 		EntranceFunctionArgs = { LandingAnimation = "Melinoe_HeroLanding", Sound = "/SFX/Player Sounds/MelWhooshDropIn", IntroHoldDuration = 2.34, StartZoomFraction = 0.65, ZoomDuration = 4 },
 		ThreadedEvents = {
-			[1] = { Args = { AnimationName = "LocationBackingIrisChaosIn", AnimationOutName = "LocationBackingIrisChaosOut" }, },
+			[1] = { Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut" }, },
 			-- This will work with roomSetDataTartarus.RoomOpening.ThreadedEvents[3].Args.SpawnTypes = { "TartarusGhost01" }, but has the problem of spawning all Ghosts on the same ID
 			[3] = mod.NilValue
 		},
@@ -75,6 +75,7 @@ local roomModifications = {
 		ChooseRewardRequirements = mod.NilValue,
 		ForcedRewards = mod.NilValue,
 		IneligibleRewards = game.RewardSets.OpeningRoomBans,
+		BlockGiftBoons = true,
 		MaxAppearancesThisBiome = 1,
 		BlockRunProgressUI = true,
 		DisableRewardMagnetisim = true,
@@ -236,7 +237,8 @@ local roomModifications = {
 
 -- Assign separately so we don't get a circular reference
 game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
-	LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "GUIModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "ModsNikkelMHadesBiomesFxModded", },
+	-- Update in BaseStyx if anything is being changed here
+	LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "GUIModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "ModsNikkelMHadesBiomesFxModded", "ModsNikkelMHadesBiomesGUIModded", },
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Tartarus, roomModifications, roomReplacements, "Tartarus")

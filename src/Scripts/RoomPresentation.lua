@@ -8,6 +8,30 @@ modutil.mod.Path.Wrap("DestroyDoorRewardPresenation", function(base, door)
 	base(door)
 end)
 
+modutil.mod.Path.Wrap("StartRoomPresentation", function(base, currentRun, currentRoom)
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and currentRoom.StartRoomPresentationOnReload and currentRoom.ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub then
+		game.RunThreadedEvents(game.RoomData[currentRoom.Name].ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub,
+			currentRoom)
+	end
+
+	base(currentRun, currentRoom)
+end)
+
+-- TODO: We currently don't have the custom bink file available that is required for this to work
+-- modutil.mod.Path.Wrap("FullScreenFadeInAnimation", function(base, animationName, colorGradeName)
+-- 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentHubRoom == nil then
+-- 		animationName = "ModsNikkelMHadesBiomesRoomTransitionOut"
+-- 	end
+-- 	base(animationName, colorGradeName)
+-- end)
+
+-- modutil.mod.Path.Wrap("FullScreenFadeOutAnimation", function(base, animationName, colorGradeName)
+-- 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentHubRoom == nil then
+-- 		animationName = "ModsNikkelMHadesBiomesRoomTransitionIn"
+-- 	end
+-- 	base(animationName, colorGradeName)
+-- end)
+
 -- Currently disabled, as the music gets hidden too much by the Mel voicelines
 -- modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
 -- 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
@@ -15,14 +39,12 @@ end)
 -- 			"Content\\Audio\\Desktop\\ModsNikkelMHadesBiomesMusic.bank"))
 -- 		-- Overwrite the DeathStinger for this room - we always want to play the custom event if it is a modded run
 -- 		currentRun.CurrentRoom.Encounter.DeathStinger = "{84435f74-4111-43c5-8246-8b3e2736794d}"
-
 -- 		-- Destroy any IDs that we marked as such. E.g. Alecto rage meter or Asphodel door reward front animation
 -- 		local destroyIdsOnDeath = currentRun.CurrentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
 -- 		if not game.IsEmpty(destroyIdsOnDeath) then
 -- 			Destroy({ Ids = destroyIdsOnDeath })
 -- 		end
 -- 	end
-
 -- 	base(currentRun, killer, args)
 -- end)
 
@@ -214,4 +236,10 @@ end
 
 function game.AngleIds(eventSource, args)
 	AngleTowardTarget({ Ids = args.Ids, DestinationId = args.DestinationId })
+end
+
+-- For D_Intro, to allow the cog wheels to place themselves correctly before the fade in
+function game.ModsNikkelMHadesBiomesDelayedRoomEntranceStandard(currentRun, currentRoom)
+	game.wait(2.0)
+	game.RoomEntranceStandard(currentRun, currentRoom)
 end

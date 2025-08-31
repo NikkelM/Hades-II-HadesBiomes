@@ -50,6 +50,14 @@ mod.HadesFxAnimationModifications = {
 	-- #endregion
 
 	-- #region STYX
+	TravelDoor03Open = {
+		ChildAnimation = "null",
+		CreateAnimation = "TravelDoor03OpenAnim",
+	},
+	TravelDoor03Close = {
+		ChildAnimation = "null",
+		CreateAnimation = "TravelDoor03CloseAnim",
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT

@@ -38,14 +38,14 @@ end
 local function applyNPCGlobalModifications(base)
 	for npcName, npcData in pairs(base) do
 		-- Hades II has more gift options, make every gift cost 1 Nectar
-		for textlineName, textline in pairs(npcData.GiftTextLineSets) do
+		for textlineName, textline in pairs(npcData.GiftTextLineSets or {}) do
 			textline.Cost = { GiftPoints = 1, }
 			textline.OnGiftTrack = true
 		end
 
 		-- Move all interaction textlines into the InteractTextLineSets, out of the RepeatableTextLineSets
 		if npcData.InteractTextLineSets and npcData.RepeatableTextLineSets then
-			for key, textLineSet in pairs(npcData.RepeatableTextLineSets) do
+			for key, textLineSet in pairs(npcData.RepeatableTextLineSets or {}) do
 				npcData.InteractTextLineSets[key] = textLineSet
 			end
 			npcData.RepeatableTextLineSets = nil
@@ -56,6 +56,7 @@ end
 local npcModifications = {
 	NPC_Sisyphus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		ActivateRequirements = mod.NilValue,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
@@ -72,6 +73,10 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesSisyphusHealing",
 			"ModsNikkelMHadesBiomesSisyphusMoney",
 			"ModsNikkelMHadesBiomesSisyphusMetapoints",
+		},
+		InteractTextLineSets = {
+			SisyphusAboutBouldy02 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
+			SisyphusLiberationQuest_Beginning_01 = { RequiredTextLines = { "SisyphusBackstory03", "SisyphusMeeting06", "SisyphusGift06", "ModsNikkelMHadesBiomes_BouldyFirstMeeting" }, },
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
@@ -90,8 +95,21 @@ local npcModifications = {
 			},
 		},
 	},
+	ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		ActivateRequirements = mod.NilValue,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		RepulseOnMeleeInvulnerableHit = 200,
+		Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy",
+		InteractTextLineSets = {
+			BouldyMiscMeeting01 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
+			BouldyMiscMeeting02 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
+			BouldyMiscMeeting03 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
+		},
+	},
 	NPC_Eurydice_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		ActivateRequirements = mod.NilValue,
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
 		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
 		RequiredRoomInteraction = true,
@@ -119,6 +137,7 @@ local npcModifications = {
 	},
 	NPC_Patroclus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		ActivateRequirements = mod.NilValue,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
@@ -142,6 +161,16 @@ local npcModifications = {
 		GiftTextLineSets = {
 			PatroclusGift07_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
 			PatroclusGift08_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+		},
+	},
+	ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		Portrait = "ModsNikkelMHadesBiomes_Portrait_Cerberus",
+		BossPresentationIntroTextLineSets = {
+			CerberusStyxMeeting01 = {
+				[2] = { PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Cerberus_Exit", },
+			},
 		},
 	},
 }
@@ -174,8 +203,18 @@ local npcChoiceMappings = {
 	},
 }
 
-applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)
+-- Custom, more complicated changes before anything else
+-- Replace duplicated Bouldy conversations
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.ModsNikkelMHadesBiomes_BouldyFirstMeeting = game
+		.DeepCopyTable(mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.BouldyFirstMeeting)
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.BouldyFirstMeeting = nil
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikkelMHadesBiomes_BouldyChat01 = game
+		.DeepCopyTable(mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.BouldyChat01)
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikkelMHadesBiomes_BouldyChat01.RequiredTextLines = {
+	"ModsNikkelMHadesBiomes_BouldyFirstMeeting", }
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.BouldyChat01 = nil
 
+applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)
 applyNPCGlobalModifications(mod.NPCData)
 
 mod.ApplyModificationsAndInheritEnemyData(mod.NPCData, npcModifications, {}, {})
