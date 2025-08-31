@@ -75,6 +75,7 @@ local roomModifications = {
 		ChooseRewardRequirements = mod.NilValue,
 		ForcedRewards = mod.NilValue,
 		IneligibleRewards = game.RewardSets.OpeningRoomBans,
+		BlockGiftBoons = true,
 		MaxAppearancesThisBiome = 1,
 		BlockRunProgressUI = true,
 		DisableRewardMagnetisim = true,

@@ -240,12 +240,6 @@ mod.HadesHelpTextCopyKeys = {
 	ClearedCerberus_Q_Subtitle = true,
 	-- #endregion
 	-- #region Bouldy Blessings
-	BouldyBlessing_Armor = true,
-	BouldyBlessing_Attack = true,
-	BouldyBlessing_Special = true,
-	BouldyBlessing_Ranged = true,
-	BouldyBlessing_Speed = true,
-	BouldyBlessing_Money = true,
 	BouldyBlessing_None = true,
 	-- GainedBouldyBlessing = true, -- Duplicate
 	-- #endregion

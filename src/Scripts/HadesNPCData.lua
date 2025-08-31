@@ -330,15 +330,15 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			},
 		},
 	},
-	-- BouldyRandomBlessings = {
-	-- 	"BouldyBlessing_Armor",
-	-- 	"BouldyBlessing_Attack",
-	-- 	"BouldyBlessing_Special",
-	-- 	"BouldyBlessing_Ranged",
-	-- 	"BouldyBlessing_Speed",
-	-- 	"BouldyBlessing_Money",
-	-- 	"BouldyBlessing_None",
-	-- },
+	BouldyRandomBlessings = {
+		"BouldyBlessing_Armor",
+		"BouldyBlessing_Attack",
+		"BouldyBlessing_Special",
+		"BouldyBlessing_Ranged",
+		"BouldyBlessing_Speed",
+		"BouldyBlessing_Money",
+		"BouldyBlessing_None",
+	},
 	EurydiceBenefitChoices = {
 		SkipComponents = {
 			"OlympusBackground",
@@ -3665,6 +3665,8 @@ mod.NPCData = mod.NPCData or {
 			{ Cue = "/VO/Sisyphus_0267", RequiredTextLines = { "SisyphusMeeting06" } },
 		},
 	},
+
+	-- Manually replaced PresetEventArgs.BouldyRandomBlessings with mod.PresetEventArgs.BouldyRandomBlessings for simplicity
 	-- Bouldy, Id = 506340
 	ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {
 		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
@@ -3822,12 +3824,9 @@ mod.NPCData = mod.NPCData or {
 					Cue = "",
 					SpeakerLabelOffsetY = 18,
 					Text = ".   .   .   .",
-					-- TODO
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
-					-- TODO
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					-- TODO
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable02 =
@@ -3849,7 +3848,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable03 =
@@ -3868,7 +3867,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable04 =
@@ -3889,7 +3888,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable05 =
@@ -3910,7 +3909,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable06 =
@@ -3931,7 +3930,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable07 =
@@ -3952,7 +3951,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable08 =
@@ -3973,7 +3972,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable09 =
@@ -3994,7 +3993,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable10 =
@@ -4015,7 +4014,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable11 =
@@ -4036,7 +4035,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable12 =
@@ -4057,7 +4056,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable13 =
@@ -4078,7 +4077,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable14 =
@@ -4099,7 +4098,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable15 =
@@ -4120,7 +4119,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable16 =
@@ -4142,7 +4141,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable17 =
@@ -4163,7 +4162,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable18 =
@@ -4184,7 +4183,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable19 =
@@ -4205,7 +4204,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable20 =
@@ -4226,7 +4225,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable21 =
@@ -4247,7 +4246,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable22 =
@@ -4268,7 +4267,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable23 =
@@ -4289,7 +4288,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable24 =
@@ -4310,7 +4309,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable25 =
@@ -4331,7 +4330,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable26 =
@@ -4352,7 +4351,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable27 =
@@ -4373,7 +4372,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable28 =
@@ -4394,7 +4393,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 			BouldyGiftRepeatable29 =
@@ -4415,7 +4414,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   .",
 					PostLineGlobalVoiceLines = "BlessedByBouldyVoiceLines",
 					PostLineFunctionName = "AddRandomBouldyBlessing",
-					PostLineFunctionArgs = PresetEventArgs.BouldyRandomBlessings
+					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
 		},

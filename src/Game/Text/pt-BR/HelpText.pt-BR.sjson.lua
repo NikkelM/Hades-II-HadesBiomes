@@ -57,6 +57,8 @@ for _, entry in ipairs(hadesHelpTextTable.Texts) do
 		end
 		if entry.Description then
 			entry.Description = string.gsub(entry.Description, "{#PreviousFormat}", "{#Prev}")
+			entry.Description = string.gsub(entry.Description, " \\Column 380", "")
+			entry.Description = string.gsub(entry.Description, "{!Icons.Currency_Small}", "{!Icons.Currency}")
 		end
 		table.insert(hadesHelpTextCopiedEntries, entry)
 	end

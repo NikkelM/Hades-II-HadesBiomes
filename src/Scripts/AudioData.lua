@@ -82,16 +82,10 @@ game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines = mod.GlobalVoiceLines.Thanat
 
 game.GlobalVoiceLines.PatroclusGreetingLines = mod.GlobalVoiceLines.PatroclusGreetingLines
 game.GlobalVoiceLines.PatroclusMutteringLines = mod.GlobalVoiceLines.PatroclusMutteringLines
+game.GlobalVoiceLines.BlessedByBouldyVoiceLines = mod.GlobalVoiceLines.BlessedByBouldyVoiceLines
 
 game.GlobalVoiceLines.TheseusWrathActivationVoiceLines = mod.GlobalVoiceLines.TheseusWrathActivationVoiceLines
 game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines = mod.GlobalVoiceLines.TheseusChariotRuinedVoiceLines
 
 game.GlobalVoiceLines.CharonSurprisedVoiceLines = mod.GlobalVoiceLines.CharonSurprisedVoiceLines
-game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines = {
-	RandomRemaining = true,
-	BreakIfPlayed = true,
-	PreLineWait = 1.5,
-	Source = { SubtitleColor = game.Color.ThanatosVoice },
-	AllowTalkOverTextLines = true,
-	{ Cue = "/VO/ThanatosField_0236" }, -- Bye, Zag.
-}
+game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines = mod.GlobalVoiceLines.ThanatosSpecialExitVoiceLines

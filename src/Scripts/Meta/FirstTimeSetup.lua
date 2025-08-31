@@ -126,13 +126,13 @@ local function copyHadesHelpTexts()
 						if existingIds[entry.Id] then
 							table.remove(hadesHelpTextData.Texts, i)
 						end
-						-- If the Id starts with Storyteller_, replace with Megaera_0, to make sure they are correctly picked up for the InspectPoints
 						if entry.Id then
 							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
 						end
-						-- In all Descriptions, replace {#PreviousFormat} with {#Prev}
 						if entry.Description then
 							entry.Description = string.gsub(entry.Description, "{#PreviousFormat}", "{#Prev}")
+							entry.Description = string.gsub(entry.Description, " \\Column 380", "")
+							entry.Description = string.gsub(entry.Description, "{!Icons.Currency_Small}", "{!Icons.Currency}")
 						end
 					end
 

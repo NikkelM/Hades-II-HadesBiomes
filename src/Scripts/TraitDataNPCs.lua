@@ -1,4 +1,9 @@
 -- Contains the upgrade choices the player can choose from NPCs like Sisyphus
+local DepthDamageMultiplier = 0.0
+local DuplicateMultiplier = -0.60
+local DuplicateStrongMultiplier = -0.40
+local DuplicateVeryStrongMultiplier = -0.20
+
 local newTraitData = {
 	-- #region Sisyphus
 	ModsNikkelMHadesBiomesSisyphusMoney = {
@@ -10,6 +15,7 @@ local newTraitData = {
 		AcquireFunctionArgs = {
 			Delay = 0.5,
 			FunctionName = "GiveRandomConsumables",
+			MultiplyMoney = true,
 			DropFunctionName = "ModsNikkelMHadesBiomesSisyphusDropPresentation",
 			Currency = {
 				BaseMin = 101,
@@ -287,6 +293,154 @@ local newTraitData = {
 				ReportedMaxMana = "AddMaxMana",
 			},
 		},
+	},
+	-- #endregion
+
+	-- #region Bouldy
+	BouldyBlessing = {
+		-- TODO: Rework the artwork for the H2 style (@burn)
+		Icon = "Boon_Echo_01",
+		BlockInRunRarify = true,
+		BlockStacking = true,
+	},
+	BouldyBlessing_Armor = {
+		InheritFrom = { "BouldyBlessing" },
+		AddIncomingDamageModifiers = {
+			NonTrapDamageTakenMultiplier = {
+				BaseMin = 0.95,
+				BaseMax = 0.99,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier = {
+					Value = DuplicateMultiplier,
+				},
+			},
+			ReportValues = {
+				ReportedMultiplier = "NonTrapDamageTakenMultiplier"
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMultiplier",
+				ExtractAs = "TooltipDamageReduction",
+				Format = "NegativePercentDelta",
+			},
+		},
+	},
+	BouldyBlessing_Attack = {
+		InheritFrom = { "BouldyBlessing" },
+		AddOutgoingDamageModifiers = {
+			ValidWeaponMultiplier = {
+				BaseMin = 1.01,
+				BaseMax = 1.05,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier = {
+					Value = DuplicateMultiplier,
+				},
+			},
+			ReportValues = {
+				ReportedMultiplier = "ValidWeaponMultiplier"
+			},
+			ValidWeapons = WeaponSets.HeroPrimaryWeapons,
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMultiplier",
+				ExtractAs = "TooltipDamage",
+				Format = "PercentDelta",
+			},
+		},
+	},
+	BouldyBlessing_Special = {
+		InheritFrom = { "BouldyBlessing" },
+		AddOutgoingDamageModifiers = {
+			ValidWeaponMultiplier = {
+				BaseMin = 10.01,
+				BaseMax = 10.05,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			ReportValues = {
+				ReportedMultiplier = "ValidWeaponMultiplier"
+			},
+			ValidWeapons = WeaponSets.HeroSecondaryWeapons,
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMultiplier",
+				ExtractAs = "TooltipDamage",
+				Format = "PercentDelta",
+			},
+		},
+	},
+	BouldyBlessing_Ranged = {
+		InheritFrom = { "BouldyBlessing" },
+		AddOutgoingDamageModifiers =
+		{
+			ValidWeaponMultiplier =
+			{
+				BaseMin = 1.01,
+				BaseMax = 1.10,
+				SourceIsMultiplier = true,
+				IdenticalMultiplier =
+				{
+					Value = DuplicateMultiplier,
+				},
+			},
+			ReportValues = {
+				ReportedMultiplier = "ValidWeaponMultiplier"
+			},
+			ValidWeapons = WeaponSets.HeroRangedWeapons,
+			ValidProjectiles = WeaponSets.CastProjectileNames,
+			WeaponOrProjectileRequirement = true,
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMultiplier",
+				ExtractAs = "TooltipDamage",
+				Format = "PercentDelta",
+			},
+		}
+	},
+	BouldyBlessing_Speed = {
+		InheritFrom = { "BouldyBlessing" },
+		PropertyChanges = {
+			{
+				UnitProperty = "Speed",
+				BaseMin = 1.01,
+				BaseMax = 1.1,
+				ChangeType = "Multiply",
+				ReportValues = { ReportedBaseSpeed = "ChangeValue" },
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedBaseSpeed",
+				ExtractAs = "TooltipSpeed",
+				Format = "PercentDelta",
+			},
+		},
+	},
+	BouldyBlessing_Money = {
+		InheritFrom = { "BouldyBlessing" },
+		MoneyMultiplier = {
+			BaseMin = 1.01,
+			BaseMax = 1.10,
+			ToNearest = 0.01,
+			SourceIsMultiplier = true,
+		},
+		ExtractValues = {
+			{
+				Key = "MoneyMultiplier",
+				ExtractAs = "TooltipMoneyRewardIncrease",
+				Format = "PercentDelta",
+			},
+		},
+	},
+	BouldyBlessing_None = {
+		InheritFrom = { "BouldyBlessing" },
 	},
 	-- #endregion
 }
