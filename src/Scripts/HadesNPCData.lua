@@ -859,7 +859,6 @@ mod.NPCData = mod.NPCData or {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "SisyphusAboutBouldy02" },
-				-- TODO
 				RequiredMinAnyTextLines = { TextLines = GameData.BouldyRepeatableTextLines, Count = 10 },
 				{
 					Cue = "/VO/Sisyphus_0441",
