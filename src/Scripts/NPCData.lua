@@ -74,6 +74,10 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesSisyphusMoney",
 			"ModsNikkelMHadesBiomesSisyphusMetapoints",
 		},
+		InteractTextLineSets = {
+			SisyphusAboutBouldy02 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
+			SisyphusLiberationQuest_Beginning_01 = { RequiredTextLines = { "SisyphusBackstory03", "SisyphusMeeting06", "SisyphusGift06", "ModsNikkelMHadesBiomes_BouldyFirstMeeting" }, },
+		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
 			SisyphusGift08_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
@@ -97,6 +101,11 @@ local npcModifications = {
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		RepulseOnMeleeInvulnerableHit = 200,
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy",
+		InteractTextLineSets = {
+			BouldyMiscMeeting01 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
+			BouldyMiscMeeting02 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
+			BouldyMiscMeeting03 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
+		},
 	},
 	NPC_Eurydice_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -194,7 +203,19 @@ local npcChoiceMappings = {
 	},
 }
 
+-- Custom, more complicated changes before anything else
+-- Replace duplicated Bouldy conversations
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.ModsNikkelMHadesBiomes_BouldyFirstMeeting = game
+		.DeepCopyTable(mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.BouldyFirstMeeting)
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.BouldyFirstMeeting = nil
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikkelMHadesBiomes_BouldyChat01 = game
+		.DeepCopyTable(mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.BouldyChat01)
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikkelMHadesBiomes_BouldyChat01.RequiredTextLines = {
+	"ModsNikkelMHadesBiomes_BouldyFirstMeeting", }
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.BouldyChat01 = nil
+
 applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)
 applyNPCGlobalModifications(mod.NPCData)
 
 mod.ApplyModificationsAndInheritEnemyData(mod.NPCData, npcModifications, {}, {})
+mod.PrintTable(game.EnemyData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets)

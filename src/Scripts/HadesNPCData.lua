@@ -3673,6 +3673,7 @@ mod.NPCData = mod.NPCData or {
 		Portrait = "Portrait_Bouldy_Default_01",
 		BlockStatusAnimations = true,
 		Groups = { "NPCs" },
+		-- TODO: Check when gifting is possible and when not
 		GiftText = "GiftBouldyUseText",
 
 		ActivateRequirements = {
@@ -3769,7 +3770,6 @@ mod.NPCData = mod.NPCData or {
 			{
 				PlayOnce = true,
 				UseableOffSource = true,
-				-- TODO: Doesn't gate correctly, this textline exists in H2 as well
 				RequiredTextLines = { "BouldyFirstMeeting" },
 				{
 					Cue = "/VO/ZagreusField_2788",
