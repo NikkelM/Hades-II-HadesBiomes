@@ -3667,7 +3667,6 @@ mod.NPCData = mod.NPCData or {
 			{ Cue = "/VO/Sisyphus_0267", RequiredTextLines = { "SisyphusMeeting06" } },
 		},
 	},
-	-- TODO: Zagreus and Sisyphus voicelines
 	-- Bouldy, Id = 506340
 	ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {
 		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
@@ -3772,7 +3771,7 @@ mod.NPCData = mod.NPCData or {
 			{
 				PlayOnce = true,
 				UseableOffSource = true,
-				-- TODO: Doesn't gate correctly? Maybe this textline exists in H2 as well
+				-- TODO: Doesn't gate correctly, this textline exists in H2 as well
 				RequiredTextLines = { "BouldyFirstMeeting" },
 				{
 					Cue = "/VO/ZagreusField_2788",
