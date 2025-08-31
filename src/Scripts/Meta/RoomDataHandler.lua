@@ -39,12 +39,8 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications, replaceme
 				if inspectPointData.InteractTextLineSets then
 					for setName, setData in pairs(inspectPointData.InteractTextLineSets) do
 						for _, line in ipairs(setData) do
-							if line.Cue then
-								if line.Cue:find("^/VO/Storyteller_") then
-									line.Cue = line.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
-								elseif line.Cue:find("^/VO/Charon_") then
-									line.Cue = line.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
-								end
+							if line.Cue and line.Cue:find("^/VO/Storyteller_") then
+								line.Cue = line.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
 							end
 						end
 					end
