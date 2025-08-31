@@ -357,21 +357,22 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4668 = true,
 	ZagreusField_4675 = true,
 
-	-- TODO: Needs Charon's own fight voicelines
 	-- Charon fight
 	-- EndVoicelines
 	-- ZagreusField_3749 = true,
 
+	-- EarlyExitVoicelines
+	-- ZagreusField_3758 = true,
+	-- ZagreusField_3759 = true,
+	-- ZagreusField_3760 = true,
+	-- ZagreusField_3761 = true,
+	-- ZagreusField_3762 = true,
+	-- ZagreusField_3763 = true,
+	-- ZagreusField_3764 = true,
+	-- ZagreusField_3765 = true,
+
 	ZagreusField_3747 = true,
 	ZagreusField_3748 = true,
-	ZagreusField_3758 = true,
-	ZagreusField_3759 = true,
-	ZagreusField_3760 = true,
-	ZagreusField_3761 = true,
-	ZagreusField_3762 = true,
-	ZagreusField_3763 = true,
-	ZagreusField_3764 = true,
-	ZagreusField_3765 = true,
 	ZagreusField_3847 = true,
 	ZagreusField_3848 = true,
 	ZagreusField_3849 = true,
