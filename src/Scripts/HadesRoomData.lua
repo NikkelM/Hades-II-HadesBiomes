@@ -459,7 +459,8 @@ mod.RoomData.Base = {
 								PreLineWait = 0.2,
 								ObjectType = "Charon",
 								-- Mmmrrrrnnn....
-								{ Cue = "/VO/Charon_0011", RequiredPlayed = { "/VO/ZagreusField_3903" } },
+								-- Custom: Replaced with Megaera_1
+								{ Cue = "/VO/Megaera_10011", RequiredPlayed = { "/VO/ZagreusField_3903" } },
 							},
 						},
 						{

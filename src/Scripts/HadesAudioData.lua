@@ -2151,11 +2151,13 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Theseus_0328" },
 		},
 	},
+	-- Custom: Replaced Charon_ with Megaera_1
 	CharonSurprisedVoiceLines = {
 		Queue = "Interrupt",
 		{
 			RandomRemaining = true,
 			BreakIfPlayed = true,
+			-- TODO: This might need to be changed to ModsNikkelMHadesBiomes_NPC_Charon_01
 			ObjectType = "NPC_Charon_01",
 			PreLineWait = 0.1,
 			Cooldowns =
@@ -2164,23 +2166,23 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			},
 
 			-- Hoh?
-			{ Cue = "/VO/Charon_0052" },
+			{ Cue = "/VO/Megaera_10052" },
 			-- Hrn?
-			{ Cue = "/VO/Charon_0053" },
+			{ Cue = "/VO/Megaera_10053" },
 			-- Hehh?
-			{ Cue = "/VO/Charon_0054" },
+			{ Cue = "/VO/Megaera_10054" },
 			-- Hraugh!
-			{ Cue = "/VO/Charon_0055" },
+			{ Cue = "/VO/Megaera_10055" },
 			-- Nrraugh?!
-			{ Cue = "/VO/Charon_0068" },
+			{ Cue = "/VO/Megaera_10068" },
 			-- Hrrngh?!
-			{ Cue = "/VO/Charon_0069" },
+			{ Cue = "/VO/Megaera_10069" },
 			-- Haaah?!
-			{ Cue = "/VO/Charon_0070" },
+			{ Cue = "/VO/Megaera_10070" },
 			-- Rraah!!
-			{ Cue = "/VO/Charon_0071" },
+			{ Cue = "/VO/Megaera_10071" },
 			-- Hrrnn!!
-			{ Cue = "/VO/Charon_0072" },
+			{ Cue = "/VO/Megaera_10072" },
 		},
 	},
 	ThanatosSpecialExitVoiceLines = {

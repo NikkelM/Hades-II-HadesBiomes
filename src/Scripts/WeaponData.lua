@@ -256,6 +256,29 @@ local weaponReplacements = {
 	},
 	-- #endregion
 	-- #endregion
+
+	-- #region CHARON
+	CharonGhostChargeLeft = {
+		Sounds = { FireSounds = { { Name = "/VO/Megaera_10026" }, }, },
+	},
+	CharonGhostChargeTopAndBot = {
+		Sounds = { FireSounds = { { Name = "/VO/Megaera_10026" }, }, },
+	},
+	CharonGhostChargeLeftAndRight = {
+		Sounds = { FireSounds = { { Name = "/VO/Megaera_10026" }, }, },
+	},
+	CharonGhostCharge360 = {
+		Sounds = { FireSounds = { { Name = "/VO/Megaera_10026" }, }, },
+	},
+	CharonWaveStraight = {
+		Sounds = {
+			FireSounds = {
+				{ Name = "/SFX/Enemy Sounds/Charon/CharonGroundBlastFire" },
+				{ Name = "/VO/Megaera_10005" },
+			},
+		},
+	},
+	-- #endregion
 }
 
 -- Modify or add weapons
