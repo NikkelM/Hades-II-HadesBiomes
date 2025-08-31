@@ -9,7 +9,7 @@ local order = {
 }
 
 local newData = {
-	-- Sisyphus
+	-- #region Sisyphus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesSisyphusHealing",
 	-- 	DisplayName = "Warm Embrace",
@@ -28,7 +28,9 @@ local newData = {
 	-- 	Description =
 	-- 	"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
 	-- },
-	-- Eurydice
+	-- #endregion
+
+	-- #region Eurydice
 	{
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Rozkosz Ambrozji",
@@ -47,7 +49,9 @@ local newData = {
 		Description =
 		"Rzadki i smakowity napój; następne {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev} odnalezione przez ciebie mają podwyższoną {$Keywords.Rarity}.",
 	},
-	-- Patroclus
+	-- #endregion
+
+	-- #region Patroclus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 	-- 	DisplayName = "Wyborny Bekon z Cyklopa",
@@ -77,6 +81,46 @@ local newData = {
 	-- 	InheritFrom = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 	-- 	DisplayName = "Centaur Tonic",
 	-- }
+	-- #endregion
+
+	-- #region Bouldy
+	{
+		Id = "BouldyBlessing_Armor",
+		DisplayName = "Serce z Kamienia",
+		Description =
+		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}Redukcja obrażeń: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Attack",
+		DisplayName = "Serce z Kamienia",
+		Description =
+		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet} Bonusowe obrażenia: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Special",
+		DisplayName = "Serce z Kamienia",
+		Description =
+		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet} Bonusowe obrażenia: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Ranged",
+		DisplayName = "Serce z Kamienia",
+		Description =
+		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet} Bonusowe obrażenia: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Speed",
+		DisplayName = "Serce z Kamienia",
+		Description =
+		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}Bonusowa szybkość ruchu: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Money",
+		DisplayName = "Serce z Kamienia",
+		Description =
+		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency} Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

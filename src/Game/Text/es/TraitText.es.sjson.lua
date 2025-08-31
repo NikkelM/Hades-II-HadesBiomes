@@ -9,7 +9,7 @@ local order = {
 }
 
 local newData = {
-	-- Sisyphus
+	-- #region Sisyphus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesSisyphusHealing",
 	-- 	DisplayName = "Warm Embrace",
@@ -28,7 +28,9 @@ local newData = {
 	-- 	Description =
 	-- 	"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
 	-- },
-	-- Eurydice
+	-- #endregion
+
+	-- #region Eurydice
 	{
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Delicia de ambrosía",
@@ -47,7 +49,9 @@ local newData = {
 		Description =
 		"Con esta aromática y excepcional bebida, las próximas {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}que encuentres tendrán una {$Keywords.Rarity} mejorada.",
 	},
-	-- Patroclus
+	-- #endregion
+
+	-- #region Patroclus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 	-- 	DisplayName = "Panceta de cíclope de gran calidad",
@@ -77,6 +81,46 @@ local newData = {
 	-- 	InheritFrom = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 	-- 	DisplayName = "Centaur Tonic",
 	-- }
+	-- #endregion
+
+	-- #region Bouldy
+	{
+		Id = "BouldyBlessing_Armor",
+		DisplayName = "Corazón de Piedra",
+		Description =
+		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Reducción de daño: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Attack",
+		DisplayName = "Corazón de Piedra",
+		Description =
+		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonif. de daño de ataque {$Keywords.AttackSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Special",
+		DisplayName = "Corazón de Piedra",
+		Description =
+		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonif. de daño de ataque {$Keywords.SpecialSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Ranged",
+		DisplayName = "Corazón de Piedra",
+		Description =
+		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonificación de daño de ataque {$Keywords.CastSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Speed",
+		DisplayName = "Corazón de Piedra",
+		Description =
+		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonificación de velocidad: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Money",
+		DisplayName = "Corazón de Piedra",
+		Description =
+		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonificación de {!Icons.Currency}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

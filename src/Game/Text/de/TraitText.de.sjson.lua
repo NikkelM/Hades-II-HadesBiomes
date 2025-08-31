@@ -9,7 +9,7 @@ local order = {
 }
 
 local newData = {
-	-- Sisyphus
+	-- #region Sisyphus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesSisyphusHealing",
 	-- 	DisplayName = "Warm Embrace",
@@ -28,7 +28,9 @@ local newData = {
 	-- 	Description =
 	-- 	"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
 	-- },
-	-- Eurydice
+	-- #endregion
+
+	-- #region Eurydice
 	{
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Ambrosia-Traum",
@@ -47,7 +49,9 @@ local newData = {
 		Description =
 		"Ein seltener und aromatischer Trank. Die nächsten {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}, die du findest, haben eine höhere {$Keywords.Rarity}.",
 	},
-	-- Patroclus
+	-- #endregion
+
+	-- #region Patroclus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 	-- 	DisplayName = "Kyklopen-Happen Extra",
@@ -77,6 +81,46 @@ local newData = {
 	-- 	InheritFrom = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 	-- 	DisplayName = "Centaur Tonic",
 	-- }
+	-- #endregion
+
+	-- #region Bouldy
+	{
+		Id = "BouldyBlessing_Armor",
+		DisplayName = "Herz aus Stein",
+		Description =
+		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}Schadensminderung: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Attack",
+		DisplayName = "Herz aus Stein",
+		Description =
+		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet}-Schaden-Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Special",
+		DisplayName = "Herz aus Stein",
+		Description =
+		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet}-Schaden-Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Ranged",
+		DisplayName = "Herz aus Stein",
+		Description =
+		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet}-Schaden-Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Speed",
+		DisplayName = "Herz aus Stein",
+		Description =
+		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}Bonus Bewegungsgeschwindigkeit: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Money",
+		DisplayName = "Herz aus Stein",
+		Description =
+		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency} Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

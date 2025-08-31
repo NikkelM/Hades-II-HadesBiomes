@@ -9,7 +9,7 @@ local order = {
 }
 
 local newData = {
-	-- Sisyphus
+	-- #region Sisyphus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesSisyphusHealing",
 	-- 	DisplayName = "Warm Embrace",
@@ -28,7 +28,9 @@ local newData = {
 	-- 	Description =
 	-- 	"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
 	-- },
-	-- Eurydice
+	-- #endregion
+
+	-- #region Eurydice
 	{
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Delizia d'Ambrosia",
@@ -47,7 +49,9 @@ local newData = {
 		Description =
 		"Una rara e fragrante libagione; i prossimi {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}{$Keywords.GodBoonPlural} {#Prev}che ricevi avranno {$Keywords.Rarity} superiore.",
 	},
-	-- Patroclus
+	-- #endregion
+
+	-- #region Patroclus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 	-- 	DisplayName = "Straccetti di Ciclope Deluxe",
@@ -77,6 +81,46 @@ local newData = {
 	-- 	InheritFrom = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 	-- 	DisplayName = "Centaur Tonic",
 	-- }
+	-- #endregion
+
+	-- #region Bouldy
+	{
+		Id = "BouldyBlessing_Armor",
+		DisplayName = "Cuore di Pietra",
+		Description =
+		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Riduzione Danni: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Attack",
+		DisplayName = "Cuore di Pietra",
+		Description =
+		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus Danni {$Keywords.AttackSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Special",
+		DisplayName = "Cuore di Pietra",
+		Description =
+		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus Danni {$Keywords.SpecialSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Ranged",
+		DisplayName = "Cuore di Pietra",
+		Description =
+		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus Danni {$Keywords.CastSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Speed",
+		DisplayName = "Cuore di Pietra",
+		Description =
+		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus Velocità di Movimento: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Money",
+		DisplayName = "Cuore di Pietra",
+		Description =
+		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

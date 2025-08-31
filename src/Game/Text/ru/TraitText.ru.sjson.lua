@@ -9,7 +9,7 @@ local order = {
 }
 
 local newData = {
-	-- Sisyphus
+	-- #region Sisyphus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesSisyphusHealing",
 	-- 	DisplayName = "Warm Embrace",
@@ -28,7 +28,9 @@ local newData = {
 	-- 	Description =
 	-- 	"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
 	-- },
-	-- Eurydice
+	-- #endregion
+
+	-- #region Eurydice
 	{
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Сладости из амброзии",
@@ -47,7 +49,9 @@ local newData = {
 		Description =
 		"Редкий и ароматный напиток; следующие {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev}{#BoldFormatGraft}[дара]{$Keywords.GodBoonPlural}{#Prev}, которые ты найдёшь, будут обладать улучшенной [редкостью]{$Keywords.Rarity}.",
 	},
-	-- Patroclus
+	-- #endregion
+
+	-- #region Patroclus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 	-- 	DisplayName = "Отборное вяленое мясо циклопа",
@@ -77,6 +81,46 @@ local newData = {
 	-- 	InheritFrom = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 	-- 	DisplayName = "Centaur Tonic",
 	-- }
+	-- #endregion
+	
+	-- #region Bouldy
+	{
+		Id = "BouldyBlessing_Armor",
+		DisplayName = "Каменное сердце",
+		Description =
+		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Снижение урона: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Attack",
+		DisplayName = "Каменное сердце",
+		Description =
+		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к урону от [атаки]{$Keywords.AttackSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Special",
+		DisplayName = "Каменное сердце",
+		Description =
+		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к урону от [особые атаки]{$Keywords.SpecialSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Ranged",
+		DisplayName = "Каменное сердце",
+		Description =
+		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к урону от [сигилы]{$Keywords.CastSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Speed",
+		DisplayName = "Каменное сердце",
+		Description =
+		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к скорости передвижения: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Money",
+		DisplayName = "Каменное сердце",
+		Description =
+		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к {!Icons.Currency}! {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

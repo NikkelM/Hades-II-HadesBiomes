@@ -9,7 +9,7 @@ local order = {
 }
 
 local newData = {
-	-- Sisyphus
+	-- #region Sisyphus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesSisyphusHealing",
 	-- 	DisplayName = "Warm Embrace",
@@ -28,7 +28,9 @@ local newData = {
 	-- 	Description =
 	-- 	"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
 	-- },
-	-- Eurydice
+	-- #endregion
+
+	-- #region Eurydice
 	{
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "암브로시아 딜라이트",
@@ -47,7 +49,9 @@ local newData = {
 		Description =
 		"희귀하고 향기로운 음료입니다. 이후 얻는 {#AltUpgradeFormat}{$TooltipData.RemainingUses}{#Prev}개의 {#BoldFormatGraft}{$Keywords.GodBoonPlural}{#Prev}의 {$Keywords.Rarity}가 상승합니다.",
 	},
-	-- Patroclus
+	-- #endregion
+
+	-- #region Patroclus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 	-- 	DisplayName = "키클롭스 특선 육포",
@@ -77,6 +81,46 @@ local newData = {
 	-- 	InheritFrom = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 	-- 	DisplayName = "Centaur Tonic",
 	-- }
+	-- #endregion
+
+	-- #region Bouldy
+	{
+		Id = "BouldyBlessing_Armor",
+		DisplayName = "돌의 심장",
+		Description =
+		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}피해량 감소: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Attack",
+		DisplayName = "돌의 심장",
+		Description =
+		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {$Keywords.AttackSet} 피해: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Special",
+		DisplayName = "돌의 심장",
+		Description =
+		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {$Keywords.SpecialSet} 피해: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Ranged",
+		DisplayName = "돌의 심장",
+		Description =
+		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {$Keywords.CastSet} 피해: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Speed",
+		DisplayName = "돌의 심장",
+		Description =
+		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 이동 속도: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Money",
+		DisplayName = "돌의 심장",
+		Description =
+		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {!Icons.Currency}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

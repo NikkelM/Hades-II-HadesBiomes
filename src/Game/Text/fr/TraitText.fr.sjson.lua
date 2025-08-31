@@ -9,7 +9,7 @@ local order = {
 }
 
 local newData = {
-	-- Sisyphus
+	-- #region Sisyphus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesSisyphusHealing",
 	-- 	DisplayName = "Warm Embrace",
@@ -28,7 +28,9 @@ local newData = {
 	-- 	Description =
 	-- 	"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
 	-- },
-	-- Eurydice
+	-- #endregion
+
+	-- #region Eurydice
 	{
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "Délice d’Ambroisie",
@@ -47,7 +49,9 @@ local newData = {
 		Description =
 		"Boisson rare et parfumée ; les {#AltUpgradeFormat}{$TooltipData.RemainingUses} {#Prev} prochains {#BoldFormatGraft}[Bienfaits]{$Keywords.GodBoonPlural} {#Prev}que vous trouvez seront de [Qualité]{$Keywords.Rarity} supérieure.",
 	},
-	-- Patroclus
+	-- #endregion
+
+	-- #region Patroclus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 	-- 	DisplayName = "Émincé de Cyclope de Choix",
@@ -77,6 +81,46 @@ local newData = {
 	-- 	InheritFrom = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 	-- 	DisplayName = "Centaur Tonic",
 	-- }
+	-- #endregion
+
+	-- #region Bouldy
+	{
+		Id = "BouldyBlessing_Armor",
+		DisplayName = "Cœur de Pierre",
+		Description =
+		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Résistance aux Dégâts : {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Attack",
+		DisplayName = "Cœur de Pierre",
+		Description =
+		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat} Dégâts d'[Attaque]{$Keywords.AttackSet} : {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Special",
+		DisplayName = "Cœur de Pierre",
+		Description =
+		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat} Dégâts de [Technique]{$Keywords.SpecialSet} : {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Ranged",
+		DisplayName = "Cœur de Pierre",
+		Description =
+		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Dégâts de [Lancer]{$Keywords.CastSet} : {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Speed",
+		DisplayName = "Cœur de Pierre",
+		Description =
+		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Vitesse de Déplacement : {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Money",
+		DisplayName = "Cœur de Pierre",
+		Description =
+		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Valeur des {!Icons.Currency} : {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

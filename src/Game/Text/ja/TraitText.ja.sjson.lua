@@ -9,7 +9,7 @@ local order = {
 }
 
 local newData = {
-	-- Sisyphus
+	-- #region Sisyphus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesSisyphusHealing",
 	-- 	DisplayName = "Warm Embrace",
@@ -28,7 +28,9 @@ local newData = {
 	-- 	Description =
 	-- 	"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
 	-- },
-	-- Eurydice
+	-- #endregion
+
+	-- #region Eurydice
 	{
 		Id = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 		DisplayName = "アンブロシア・ディライト",
@@ -47,7 +49,9 @@ local newData = {
 		Description =
 		"きわめて希少な、香りのよい飲料。\nこの先発見する{#BoldFormatGraft}{$Keywords.GodBoonPlural}{#Prev}{#AltUpgradeFormat}{$TooltipData.RemainingUses}{#Prev}つの{$Keywords.Rarity}が\n上がる。",
 	},
-	-- Patroclus
+	-- #endregion
+
+	-- #region Patroclus
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
 	-- 	DisplayName = "サイクロプスの高級干し肉",
@@ -77,6 +81,46 @@ local newData = {
 	-- 	InheritFrom = "ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 	-- 	DisplayName = "Centaur Tonic",
 	-- }
+	-- #endregion
+
+	-- #region Bouldy
+	{
+		Id = "BouldyBlessing_Armor",
+		DisplayName = "石の心",
+		Description =
+		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}ダメージ軽減： {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Attack",
+		DisplayName = "石の心",
+		Description =
+		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet}ダメージボーナス： {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Special",
+		DisplayName = "石の心",
+		Description =
+		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet}ダメージボーナス： {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Ranged",
+		DisplayName = "石の心",
+		Description =
+		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet}ダメージボーナス： {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Speed",
+		DisplayName = "石の心",
+		Description =
+		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}移動速度ボーナス： {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+	},
+	{
+		Id = "BouldyBlessing_Money",
+		DisplayName = "石の心",
+		Description =
+		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency}ボーナス： {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)
