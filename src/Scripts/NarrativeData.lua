@@ -162,6 +162,6 @@ for property, textLines in pairs(newGameData) do
 	if game.GameData[property] == nil then
 		game.GameData[property] = textLines
 	else
-		mod.DebugPrint("GameData property " .. property .. " already exists, not overwriting", 1)
+		mod.DebugPrint("GameData property " .. property .. " already exists, not overwriting", 2)
 	end
 end
