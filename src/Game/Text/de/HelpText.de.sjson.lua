@@ -56,7 +56,7 @@ for _, entry in ipairs(hadesHelpTextTable.Texts) do
 			entry.DisplayName = string.gsub(entry.DisplayName, "{!Icons.ReRoll_Small}", "{!Icons.ReRoll}")
 		end
 		if entry.Description then
-			entry.DisplayName = string.gsub(entry.DisplayName, "{#PreviousFormat}", "{#Prev}")
+			entry.Description = string.gsub(entry.Description, "{#PreviousFormat}", "{#Prev}")
 		end
 		table.insert(hadesHelpTextCopiedEntries, entry)
 	end
