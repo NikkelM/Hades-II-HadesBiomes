@@ -88,37 +88,37 @@ local newData = {
 		Id = "BouldyBlessing_Armor",
 		DisplayName = "Serce z Kamienia",
 		Description =
-		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}Redukcja obrażeń: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}Redukcja obrażeń: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Attack",
 		DisplayName = "Serce z Kamienia",
 		Description =
-		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet} Bonusowe obrażenia: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet} Bonusowe obrażenia: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Special",
 		DisplayName = "Serce z Kamienia",
 		Description =
-		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet} Bonusowe obrażenia: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet} Bonusowe obrażenia: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Ranged",
 		DisplayName = "Serce z Kamienia",
 		Description =
-		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet} Bonusowe obrażenia: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet} Bonusowe obrażenia: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Speed",
 		DisplayName = "Serce z Kamienia",
 		Description =
-		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}Bonusowa szybkość ruchu: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}Bonusowa szybkość ruchu: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Money",
 		DisplayName = "Serce z Kamienia",
 		Description =
-		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency} Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+		"Wierzysz w Głazika, a Głazik wierzy w ciebie. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency} Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
 }

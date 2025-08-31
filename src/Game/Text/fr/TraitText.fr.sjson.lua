@@ -88,37 +88,37 @@ local newData = {
 		Id = "BouldyBlessing_Armor",
 		DisplayName = "Cœur de Pierre",
 		Description =
-		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Résistance aux Dégâts : {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Résistance aux Dégâts : {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Attack",
 		DisplayName = "Cœur de Pierre",
 		Description =
-		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat} Dégâts d'[Attaque]{$Keywords.AttackSet} : {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat} Dégâts d'[Attaque]{$Keywords.AttackSet} : {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Special",
 		DisplayName = "Cœur de Pierre",
 		Description =
-		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat} Dégâts de [Technique]{$Keywords.SpecialSet} : {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat} Dégâts de [Technique]{$Keywords.SpecialSet} : {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Ranged",
 		DisplayName = "Cœur de Pierre",
 		Description =
-		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Dégâts de [Lancer]{$Keywords.CastSet} : {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Dégâts de [Lancer]{$Keywords.CastSet} : {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Speed",
 		DisplayName = "Cœur de Pierre",
 		Description =
-		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Vitesse de Déplacement : {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Vitesse de Déplacement : {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Money",
 		DisplayName = "Cœur de Pierre",
 		Description =
-		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Valeur des {!Icons.Currency} : {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Valeur des {!Icons.Currency} : {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
 }

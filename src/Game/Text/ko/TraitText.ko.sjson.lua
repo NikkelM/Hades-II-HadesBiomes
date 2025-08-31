@@ -88,37 +88,37 @@ local newData = {
 		Id = "BouldyBlessing_Armor",
 		DisplayName = "돌의 심장",
 		Description =
-		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}피해량 감소: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}피해량 감소: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Attack",
 		DisplayName = "돌의 심장",
 		Description =
-		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {$Keywords.AttackSet} 피해: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {$Keywords.AttackSet} 피해: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Special",
 		DisplayName = "돌의 심장",
 		Description =
-		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {$Keywords.SpecialSet} 피해: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {$Keywords.SpecialSet} 피해: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Ranged",
 		DisplayName = "돌의 심장",
 		Description =
-		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {$Keywords.CastSet} 피해: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {$Keywords.CastSet} 피해: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Speed",
 		DisplayName = "돌의 심장",
 		Description =
-		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 이동 속도: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 이동 속도: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Money",
 		DisplayName = "돌의 심장",
 		Description =
-		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {!Icons.Currency}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {!Icons.Currency}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
 }

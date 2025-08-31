@@ -82,43 +82,43 @@ local newData = {
 	-- 	DisplayName = "Centaur Tonic",
 	-- }
 	-- #endregion
-	
+
 	-- #region Bouldy
 	{
 		Id = "BouldyBlessing_Armor",
 		DisplayName = "Каменное сердце",
 		Description =
-		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Снижение урона: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Снижение урона: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Attack",
 		DisplayName = "Каменное сердце",
 		Description =
-		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к урону от [атаки]{$Keywords.AttackSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к урону от [атаки]{$Keywords.AttackSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Special",
 		DisplayName = "Каменное сердце",
 		Description =
-		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к урону от [особые атаки]{$Keywords.SpecialSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к урону от [особые атаки]{$Keywords.SpecialSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Ranged",
 		DisplayName = "Каменное сердце",
 		Description =
-		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к урону от [сигилы]{$Keywords.CastSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к урону от [сигилы]{$Keywords.CastSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Speed",
 		DisplayName = "Каменное сердце",
 		Description =
-		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к скорости передвижения: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к скорости передвижения: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Money",
 		DisplayName = "Каменное сердце",
 		Description =
-		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к {!Icons.Currency}! {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к {!Icons.Currency}! {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
 }

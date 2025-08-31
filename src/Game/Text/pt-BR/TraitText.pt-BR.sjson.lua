@@ -88,37 +88,37 @@ local newData = {
 		Id = "BouldyBlessing_Armor",
 		DisplayName = "Coração de Pedra",
 		Description =
-		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Redução de Dano: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Redução de Dano: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Attack",
 		DisplayName = "Coração de Pedra",
 		Description =
-		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Dano Extra do [ataques]{$Keywords.AttackSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Dano Extra do [ataques]{$Keywords.AttackSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Special",
 		DisplayName = "Coração de Pedra",
 		Description =
-		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Dano Extra do [especiais]{$Keywords.SpecialSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Dano Extra do [especiais]{$Keywords.SpecialSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Ranged",
 		DisplayName = "Coração de Pedra",
 		Description =
-		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Dano Extra do [conjurações]{$Keywords.CastSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Dano Extra do [conjurações]{$Keywords.CastSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Speed",
 		DisplayName = "Coração de Pedra",
 		Description =
-		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Bônus de Velocidade: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Bônus de Velocidade: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Money",
 		DisplayName = "Coração de Pedra",
 		Description =
-		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Bônus de {!Icons.Currency}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+		"Você acredita em Pedro, e Pedro acredita em você. \n {!Icons.Bullet}{#PropertyFormat}Bônus de {!Icons.Currency}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
 }

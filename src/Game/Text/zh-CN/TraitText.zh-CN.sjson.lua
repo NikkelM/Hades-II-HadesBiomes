@@ -87,37 +87,38 @@ local newData = {
 	{
 		Id = "BouldyBlessing_Armor",
 		DisplayName = "石之心",
-		Description = "你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}伤害减免：{#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+		Description =
+		"你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}伤害减免：{#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Attack",
 		DisplayName = "石之心",
 		Description =
-		"你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet} 伤害奖励：{#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet} 伤害奖励：{#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Special",
 		DisplayName = "石之心",
 		Description =
-		"你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet} 伤害奖励：{#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet} 伤害奖励：{#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Ranged",
 		DisplayName = "石之心",
 		Description =
-		"你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet} 伤害奖励：{#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet} 伤害奖励：{#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Speed",
 		DisplayName = "石之心",
 		Description =
-		"你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}移动速度奖励：{#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+		"你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}移动速度奖励：{#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Money",
 		DisplayName = "石之心",
 		Description =
-		"你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency} 奖励：{#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+		"你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency} 奖励：{#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
 }

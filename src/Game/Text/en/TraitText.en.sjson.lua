@@ -88,37 +88,37 @@ local newData = {
 		Id = "BouldyBlessing_Armor",
 		DisplayName = "Heart of Stone",
 		Description =
-		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}Damage Reduction: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}Damage Reduction: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Attack",
 		DisplayName = "Heart of Stone",
 		Description =
-		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet} Damage Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet} Damage Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Special",
 		DisplayName = "Heart of Stone",
 		Description =
-		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet} Damage Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet} Damage Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Ranged",
 		DisplayName = "Heart of Stone",
 		Description =
-		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet} Damage Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet} Damage Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Speed",
 		DisplayName = "Heart of Stone",
 		Description =
-		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}Move Speed Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}Move Speed Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Money",
 		DisplayName = "Heart of Stone",
 		Description =
-		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency} Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+		"You believe in Bouldy, and Bouldy believes in you. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency} Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
 }

@@ -88,37 +88,37 @@ local newData = {
 		Id = "BouldyBlessing_Armor",
 		DisplayName = "Corazón de Piedra",
 		Description =
-		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Reducción de daño: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Reducción de daño: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Attack",
 		DisplayName = "Corazón de Piedra",
 		Description =
-		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonif. de daño de ataque {$Keywords.AttackSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonif. de daño de ataque {$Keywords.AttackSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Special",
 		DisplayName = "Corazón de Piedra",
 		Description =
-		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonif. de daño de ataque {$Keywords.SpecialSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonif. de daño de ataque {$Keywords.SpecialSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Ranged",
 		DisplayName = "Corazón de Piedra",
 		Description =
-		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonificación de daño de ataque {$Keywords.CastSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonificación de daño de ataque {$Keywords.CastSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Speed",
 		DisplayName = "Corazón de Piedra",
 		Description =
-		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonificación de velocidad: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonificación de velocidad: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Money",
 		DisplayName = "Corazón de Piedra",
 		Description =
-		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonificación de {!Icons.Currency}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+		"Tienes fe en Roquita. Y Roquita tiene fe en ti. \n {!Icons.Bullet}{#PropertyFormat}Bonificación de {!Icons.Currency}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
 }

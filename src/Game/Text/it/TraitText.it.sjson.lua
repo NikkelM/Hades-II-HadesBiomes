@@ -88,37 +88,37 @@ local newData = {
 		Id = "BouldyBlessing_Armor",
 		DisplayName = "Cuore di Pietra",
 		Description =
-		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Riduzione Danni: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Riduzione Danni: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Attack",
 		DisplayName = "Cuore di Pietra",
 		Description =
-		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus Danni {$Keywords.AttackSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus Danni {$Keywords.AttackSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Special",
 		DisplayName = "Cuore di Pietra",
 		Description =
-		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus Danni {$Keywords.SpecialSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus Danni {$Keywords.SpecialSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Ranged",
 		DisplayName = "Cuore di Pietra",
 		Description =
-		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus Danni {$Keywords.CastSet}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus Danni {$Keywords.CastSet}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Speed",
 		DisplayName = "Cuore di Pietra",
 		Description =
-		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus Velocità di Movimento: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus Velocità di Movimento: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Money",
 		DisplayName = "Cuore di Pietra",
 		Description =
-		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency}: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+		"Credi in Pietro, e Pietro crederà in te. \n {!Icons.Bullet}{#PropertyFormat}Bonus {!Icons.Currency}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
 }

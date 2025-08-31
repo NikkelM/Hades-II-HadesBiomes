@@ -88,37 +88,37 @@ local newData = {
 		Id = "BouldyBlessing_Armor",
 		DisplayName = "Herz aus Stein",
 		Description =
-		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}Schadensminderung: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}Schadensminderung: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Attack",
 		DisplayName = "Herz aus Stein",
 		Description =
-		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet}-Schaden-Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet}-Schaden-Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Special",
 		DisplayName = "Herz aus Stein",
 		Description =
-		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet}-Schaden-Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet}-Schaden-Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Ranged",
 		DisplayName = "Herz aus Stein",
 		Description =
-		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet}-Schaden-Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet}-Schaden-Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Speed",
 		DisplayName = "Herz aus Stein",
 		Description =
-		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}Bonus Bewegungsgeschwindigkeit: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}Bonus Bewegungsgeschwindigkeit: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Money",
 		DisplayName = "Herz aus Stein",
 		Description =
-		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency} Bonus: {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+		"Du glaubst an Steinchen und Steinchen glaubt an dich. \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency} Bonus: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
 }

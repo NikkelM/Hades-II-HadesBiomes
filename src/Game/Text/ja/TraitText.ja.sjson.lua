@@ -88,37 +88,37 @@ local newData = {
 		Id = "BouldyBlessing_Armor",
 		DisplayName = "石の心",
 		Description =
-		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}ダメージ軽減： {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
+		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}ダメージ軽減： {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamageReduction:F}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Attack",
 		DisplayName = "石の心",
 		Description =
-		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet}ダメージボーナス： {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.AttackSet}ダメージボーナス： {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Special",
 		DisplayName = "石の心",
 		Description =
-		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet}ダメージボーナス： {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.SpecialSet}ダメージボーナス： {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Ranged",
 		DisplayName = "石の心",
 		Description =
-		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet}ダメージボーナス： {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
+		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{$Keywords.CastSet}ダメージボーナス： {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDamage:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Speed",
 		DisplayName = "石の心",
 		Description =
-		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}移動速度ボーナス： {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
+		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}移動速度ボーナス： {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipSpeed:P}{#Prev}"
 	},
 	{
 		Id = "BouldyBlessing_Money",
 		DisplayName = "石の心",
 		Description =
-		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency}ボーナス： {#PreviousFormat}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
+		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency}ボーナス： {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
 }
