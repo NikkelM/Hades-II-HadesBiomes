@@ -298,8 +298,7 @@ local newTraitData = {
 
 	-- #region Bouldy
 	BouldyBlessing = {
-		-- TODO: Rework the artwork for the H2 style (@burn)
-		Icon = "Boon_Echo_01",
+		Icon = "Boon_Bouldy_01",
 		BlockInRunRarify = true,
 		BlockStacking = true,
 	},

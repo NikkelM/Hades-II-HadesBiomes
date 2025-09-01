@@ -66,6 +66,13 @@ local addAnimations = {
 		FilePath = "GUIModded\\Screens\\BoonIcons\\Sisyphus_03",
 	},
 	-- #endregion
+	-- #region Bouldy
+	Boon_Bouldy_01 = {
+		Name = "Boon_Bouldy_01",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Bouldy_01",
+	},
+	-- #endregion
 }
 
 sjson.hook(hadesTwoBoonFile, function(data)
