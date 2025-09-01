@@ -39,7 +39,8 @@ mod.BikFileMappings = {
 	-- #region GENERAL
 	-- TODO: Renaming doesn't work, as the metadata in probably the .bik_atlas is not updated
 	-- RoomTransition = "ModsNikkelMHadesBiomesRoomTransition",
-	"ZagreusDeathFullscreen",
+	-- Currently not using - enable if custom logic in DeathPresentation is used
+	-- "ZagreusDeathFullscreen",
 	-- #endregion
 	-- #region TARTARUS
 	-- Wretch Glutton/PunchingBagUnit
