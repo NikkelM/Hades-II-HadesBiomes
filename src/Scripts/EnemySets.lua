@@ -1,5 +1,21 @@
 -- Adds enemy sets for the new regions
 local additionalEnemySets = {
+	-- #region ELITE ATTRIBUTES
+	RangedOnlyEliteAttributes = {
+		"Homing",
+		"Homing",
+		"Homing",
+		"Homing",
+		"Homing",
+	},
+	ShadeOnlyEliteAttributes = {
+		-- TODO: Implement MultiEgg
+		-- "MultiEgg",
+		-- "MultiEgg",
+		-- "MultiEgg",
+		-- "MultiEgg",
+	},
+	-- #endregion
 	-- #region TARTARUS
 	EnemiesBiome1 = {
 		"Swarmer",

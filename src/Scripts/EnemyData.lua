@@ -174,7 +174,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		-- AIStage functionality has been changed, so we need to call a modded handler
 		if enemyData.AIStages then
 			for _, aiStage in ipairs(enemyData.AIStages) do
-				aiStage.ThreadedEvents = { { FunctionName = "NikkelMHadesBiomesBossAIStageHandler", } }
+				aiStage.ThreadedEvents = { { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossAIStageHandler", } }
 				-- For the Hydra, perform the mapping of the SelectPactLevelAIStage to EMStageDataOverrides
 				if aiStage.SelectPactLevelAIStage then
 					-- These are applied if the shrineLevel is not high enough/default behaviour for this AIStage
@@ -947,6 +947,10 @@ local enemyModifications = {
 	},
 	ShadeSpearUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
+		EliteAttributeOptions = mod.CombineTables(
+			game.EnemySets.GenericEliteAttributes,
+			game.EnemySets.ShadeOnlyEliteAttributes
+		),
 	},
 	ShadeSpearUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
@@ -958,6 +962,11 @@ local enemyModifications = {
 	},
 	ShadeBowUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
+		EliteAttributeOptions = mod.CombineTables(
+			game.EnemySets.GenericEliteAttributes,
+			game.EnemySets.RangedOnlyEliteAttributes,
+			game.EnemySets.ShadeOnlyEliteAttributes
+		),
 	},
 	ShadeBowUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
@@ -971,6 +980,10 @@ local enemyModifications = {
 	},
 	ShadeShieldUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
+		EliteAttributeOptions = mod.CombineTables(
+			game.EnemySets.GenericEliteAttributes,
+			game.EnemySets.ShadeOnlyEliteAttributes
+		),
 	},
 	ShadeShieldUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
@@ -982,6 +995,10 @@ local enemyModifications = {
 	},
 	ShadeSwordUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
+		EliteAttributeOptions = mod.CombineTables(
+			game.EnemySets.GenericEliteAttributes,
+			game.EnemySets.ShadeOnlyEliteAttributes
+		),
 	},
 	ShadeSwordUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
