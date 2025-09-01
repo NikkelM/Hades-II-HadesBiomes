@@ -169,7 +169,7 @@ local npcModifications = {
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Cerberus",
 		BossPresentationIntroTextLineSets = {
 			CerberusStyxMeeting01 = {
-				[2] = { PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Cerberus_Exit", },
+				[1] = { PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Cerberus_Exit", },
 			},
 		},
 	},

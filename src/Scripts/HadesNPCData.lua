@@ -11431,6 +11431,7 @@ mod.NPCData = mod.NPCData or {
 				},
 				{
 					Cue = "/VO/Storyteller_0243",
+					-- TODO
 					PreLineFunctionName = "ResumeStyxMusic",
 					IsNarration = true,
 					PreLineWait = 1.0,
