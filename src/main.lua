@@ -199,6 +199,9 @@ local function on_ready()
 		import "Game/Obstacles/Tartarus.sjson.lua"
 		import "Game/Obstacles/Travel.sjson.lua"
 
+		-- Helper functions to deduplicate code in the localization files
+		import "Game/Text/HadesTextUtils.lua"
+
 		-- The ScreenText files depend on icons in here
 		import "Scripts/UIData.lua"
 		-- We need to wrap OnLanguageChanged before calling it

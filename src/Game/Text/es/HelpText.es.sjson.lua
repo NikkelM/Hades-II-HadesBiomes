@@ -46,30 +46,7 @@ local newData = {
 	},
 }
 
-local hadesHelpTextCopiedEntries = {}
-for _, entry in ipairs(hadesHelpTextTable.Texts) do
-	if mod.HadesHelpTextCopyKeys[entry.Id] then
-		if mod.EnemyNameMappings[entry.Id] then
-			entry.Id = mod.EnemyNameMappings[entry.Id]
-		end
-		if entry.DisplayName then
-			entry.DisplayName = string.gsub(entry.DisplayName, "{!Icons.ReRoll_Small}", "{!Icons.ReRoll}")
-		end
-		if entry.Description then
-			entry.Description = string.gsub(entry.Description, "{#PreviousFormat}", "{#Prev}")
-			entry.Description = string.gsub(entry.Description, " \\Column 380", "")
-			entry.Description = string.gsub(entry.Description, "{!Icons.Currency_Small}", "{!Icons.Currency}")
-		end
-		table.insert(hadesHelpTextCopiedEntries, entry)
-	end
-end
-
-for aliasId, aliasInheritFrom in pairs(mod.HadesHelpTextAliases) do
-	table.insert(hadesHelpTextCopiedEntries, {
-		Id = aliasId,
-		InheritFrom = aliasInheritFrom,
-	})
-end
+local hadesHelpTextCopiedEntries = mod.ModifyHadesHelpTextEntries(hadesHelpTextTable)
 
 sjson.hook(hadesTwoHelpTextFile, function(data)
 	for _, newValue in ipairs(newData) do
