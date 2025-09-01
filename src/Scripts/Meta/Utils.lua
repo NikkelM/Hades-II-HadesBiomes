@@ -450,3 +450,28 @@ modutil.mod.Path.Wrap("DebugPrint", function(base, args)
 	mod.DebugPrint(args.Text, 4)
 	base(args)
 end)
+
+-- TODO: Remove when releasing
+function game.printTable(t, maxDepth, indent)
+	if type(t) ~= "table" then
+		print(t)
+		return
+	end
+
+	indent = indent or 0
+	maxDepth = maxDepth or 20
+	if indent > maxDepth then
+		print(string.rep("  ", indent) .. "...")
+		return
+	end
+
+	local formatting = string.rep("  ", indent)
+	for k, v in pairs(t) do
+		if type(v) == "table" then
+			print(formatting .. k .. ":")
+			game.printTable(v, maxDepth, indent + 1)
+		else
+			print(formatting .. k .. ": " .. tostring(v))
+		end
+	end
+end
