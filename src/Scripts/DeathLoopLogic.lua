@@ -32,7 +32,7 @@ modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 		-- TODO: Just setting the name is not enough for the RunHistoryScreen
 		-- TODO: Need to differentiate between PoisonTrap, SatyrRanged and RatThug
 		if killer == nil or game.TableLength(killer) == 0 then
-			if triggerArgs.Victim.CurrentlyPoisoned and triggerArgs.EffectName == "StyxPoison" then
+			if triggerArgs.Victim and triggerArgs.Victim.CurrentlyPoisoned and triggerArgs.EffectName == "StyxPoison" then
 				killer = {}
 				killer.Name = "RatThug"
 			end
