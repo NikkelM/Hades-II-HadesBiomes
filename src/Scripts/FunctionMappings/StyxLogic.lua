@@ -1,5 +1,5 @@
 function game.RoomEntranceD_Hub(currentRun, currentRoom, args)
-	if game.GameState.TextLinesRecord["CerberusStyxMeeting01"] == nil and false then
+	if game.GameState.TextLinesRecord["CerberusStyxMeeting01"] == nil then
 		local cerberusId = 547487
 
 		LockCamera({ Id = cerberusId, Duration = 0, OffsetX = -1400, OffsetY = 750 })
@@ -67,6 +67,55 @@ function game.UseStyxFountain(usee, args)
 		UseableOff({ Id = fountain.ObjectId })
 		game.PoisonCureReady(fountain)
 	end
+end
+
+function game.StyxPoisonApply(triggerArgs)
+	local unit = triggerArgs.Victim
+	if unit == game.CurrentRun.Hero then
+		if not game.CurrentRun.Hero.IsDead then
+			game.StartStyxPoisonPresentation(unit)
+		end
+	end
+end
+
+function game.StyxPoisonClear(triggerArgs)
+	game.EndStyxPoisonPresentation()
+end
+
+function game.StartStyxPoisonPresentation(unit)
+	-- This is from Hades II, but we change the name of the PoisonFountain
+	if game.ScreenAnchors.PoisonVignetteId == nil then
+		game.ScreenAnchors.PoisonVignetteId = game.CreateScreenObstacle({
+			Name = "BlankObstacle",
+			Group = "Combat_Menu_Additive",
+			Animation = "PoisonVignette",
+			X = game.ScreenCenterX,
+			Y = game.ScreenCenterY,
+			ScaleX = game.ScreenScaleX,
+			ScaleY = game.ScreenScaleY
+		})
+	end
+	unit.CurrentlyPoisoned = true
+	unit.TimesPoisoned = unit.TimesPoisoned or 0
+	unit.TimesPoisoned = unit.TimesPoisoned + 1
+	if game.CheckCooldown("PoisonAppliedTextCooldown", 1.5) then
+		game.thread(game.InCombatText, unit.ObjectId, "DebuffPoisoned", 1.2)
+	end
+	PlaySound({ Name = "/SFX/Player Sounds/DionysusShieldDash", Id = game.CurrentRun.Hero.ObjectId })
+	PlaySound({ Name = "/Leftovers/Menu Sounds/TitanToggleLong", Id = game.CurrentRun.Hero.ObjectId })
+	game.PlayVoiceLines(game.HeroVoiceLines.PoisonAppliedVoiceLines, true)
+	if unit.TimesPoisoned == 1 then
+		game.wait(0.3)
+		local fountains = GetIdsByType({ Name = "PoisonCureFountainStyx" })
+		for k, fountainId in pairs(fountains) do
+			game.thread(game.DirectionHintPresentation, { ObjectId = fountainId }, { Cooldown = 0 })
+			game.thread(game.InCombatText, fountainId, "UsePoisonCure", 1.75)
+		end
+	end
+end
+
+function game.EndStyxPoisonPresentation()
+	game.EndPoisonPresentation()
 end
 
 -- For Reprieve room spawning the Satyr sack
@@ -183,7 +232,6 @@ function game.ExitNPCPresentation(source, args)
 end
 
 function game.ModsNikkelMHadesBiomesReturnToStyxHubPresentation(currentRun, currentRoom, args)
-	print("Modded entrance function")
 	AddInputBlock({ Name = "ModsNikkelMHadesBiomesReturnToStyxHubPresentation" })
 	local roomData = game.RoomData[currentRoom.Name] or currentRoom
 	local roomIntroSequenceDuration = roomData.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or 0.0

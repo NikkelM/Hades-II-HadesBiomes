@@ -315,8 +315,35 @@ local addProjectiles = {
 	},
 	{
 		Name = "HadesPoisonPuddleSmall",
-		InheritFrom = "PoisonPuddleSmall",
+		-- Cant inherit from PoisonPuddleSmall as that causes MedeaPoison to also be applied
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+		Type = "INSTANT",
+		GroupName = "FX_Terrain",
+		Range = 0,
+		CheckObstacleImpact = false,
+		UnlimitedUnitPenetration = true,
+		AffectsFriends = true,
+		DamageRadiusScaleX = 1.0,
+		DamageRadiusScaleY = 0.6,
+		TotalFuse = 5.0,
+		Fuse = 0.5,
+		InflictedDamageSound = "/SFX/BurnDamageSizzle",
+		InflictedDamageFx = "Immolation",
+		ImmunityKey = "PoisonPuddle",
+		-- For how long the player can be in the puddle before being poisoned, lowering from Hades II default of 0.18
+		ImmunityDuration = 0.12,
+		CanHitWithoutDamage = true,
+		Damage = 0,
+		MoveInterval = 0.19,
+		MaxVictimZ = 1,
+		MultiDetonate = true,
+		CanBeReflected = true,
+		CanBeProjectileDefenseDestroyedByName = "ZombieHRFire",
 		DamageRadius = 80,
+		DissipateFx = "PoisonPoolSmallOut",
+		Thing = {
+			Graphic = "PoisonPoolSmall",
+		},
 		Effects = {
 			{
 				Name = "StyxPoison",
