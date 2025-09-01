@@ -33,20 +33,20 @@ end)
 -- end)
 
 -- Currently disabled, as the music gets hidden too much by the Mel voicelines
--- modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
--- 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
--- 		rom.audio.load_bank(rom.path.combine(_PLUGIN.plugins_data_mod_folder_path,
--- 			"Content\\Audio\\Desktop\\ModsNikkelMHadesBiomesMusic.bank"))
--- 		-- Overwrite the DeathStinger for this room - we always want to play the custom event if it is a modded run
--- 		currentRun.CurrentRoom.Encounter.DeathStinger = "{84435f74-4111-43c5-8246-8b3e2736794d}"
--- 		-- Destroy any IDs that we marked as such. E.g. Alecto rage meter or Asphodel door reward front animation
--- 		local destroyIdsOnDeath = currentRun.CurrentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
--- 		if not game.IsEmpty(destroyIdsOnDeath) then
--- 			Destroy({ Ids = destroyIdsOnDeath })
--- 		end
--- 	end
--- 	base(currentRun, killer, args)
--- end)
+modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		-- rom.audio.load_bank(rom.path.combine(_PLUGIN.plugins_data_mod_folder_path,
+		-- 	"Content\\Audio\\Desktop\\ModsNikkelMHadesBiomesMusicModded.bank"))
+		-- -- Overwrite the DeathStinger for this room - we always want to play the custom event if it is a modded run
+		-- currentRun.CurrentRoom.Encounter.DeathStinger = "{84435f74-4111-43c5-8246-8b3e2736794d}"
+		-- Destroy any IDs that we marked as such. E.g. Alecto rage meter or Asphodel door reward front animation
+		local destroyIdsOnDeath = currentRun.CurrentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
+		if not game.IsEmpty(destroyIdsOnDeath) then
+			Destroy({ Ids = destroyIdsOnDeath })
+		end
+	end
+	base(currentRun, killer, args)
+end)
 
 function game.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId, skipCameraLockOnEnd)
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or
