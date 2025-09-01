@@ -454,8 +454,8 @@ mod.HadesHelpTextCopyKeys = {
 	OutroDeathMessage = true,
 	PostEndingDeathMessage = true,
 	PostEndingDeathMessageAlt = true,
-	-- DeathMessage = true, -- TODO: Duplicate
-	-- OutroDeathMessageAlt = true, -- TODO: Duplicate
+	DeathMessage = "ModsNikkelMHadesBiomes_DeathMessage",
+	OutroDeathMessageAlt = "ModsNikkelMHadesBiomes_OutroDeathMessageAlt",
 	-- #endregion
 	-- #region Vanquished Messages
 	BiomeClearedMessage = true,
