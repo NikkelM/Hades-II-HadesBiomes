@@ -132,7 +132,6 @@ function mod.SpawnConsumables(eventSource, args)
 end
 
 -- After talking to Cerberus, the exit door unlocks
--- TODO: Move to mod.
 function game.UnlockDoor(source, args)
 	if args.RelockAllDoors then
 		game.RelockAllDoors(source, args)
@@ -151,7 +150,6 @@ function game.UnlockDoor(source, args)
 	door.ReadyToUse = true
 end
 
--- TODO: Move to mod.
 function game.RelockAllDoors(source, args)
 	for id, door in pairs(game.MapState.OfferedExitDoors) do
 		if id ~= args.DoorId then
@@ -164,7 +162,6 @@ function game.RelockAllDoors(source, args)
 	game.MapState.OfferedExitDoors = {}
 end
 
--- TODO: Move to mod.
 function game.ExitNPCPresentation(source, args)
 	AddInputBlock({ Name = "NPCExit" })
 	game.wait(args.InitialWaitTime or 0)
