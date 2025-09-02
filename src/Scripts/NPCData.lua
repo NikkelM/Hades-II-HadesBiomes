@@ -183,22 +183,22 @@ local npcChoiceMappings = {
 		ExcludeNamedTextLines = {
 			"SisyphusLiberationQuestComplete",
 		},
-		PrePortraitExitFunctionName = "ModsNikkelMHadesBiomesBenefitChoice",
+		PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
 		PrePortraitExitFunctionArgs = mod.PresetEventArgs.SisyphusBenefitChoices,
 	},
 	NPC_Eurydice_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
 		TextToMatch = { "Eurydice_OfferText01", "Eurydice_OfferText02", },
-		PrePortraitExitFunctionName = "ModsNikkelMHadesBiomesBenefitChoice",
+		PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
 		PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
 		AlwaysReplaceIfExist = {
-			OnQueuedFunctionName = "ModsNikkelMHadesBiomesEurydiceMusic",
+			OnQueuedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
 		},
 	},
 	NPC_Patroclus_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
 		TextToMatch = { "Patroclus_OfferText02", "Patroclus_OfferText03", "Patroclus_OfferText04", "Patroclus_OfferText05" },
-		PrePortraitExitFunctionName = "ModsNikkelMHadesBiomesBenefitChoice",
+		PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
 		PrePortraitExitFunctionArgs = mod.PresetEventArgs.PatroclusBenefitChoices,
 	},
 }

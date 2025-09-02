@@ -1,12 +1,12 @@
 modutil.mod.Path.Wrap("RamAILoop", function(base, enemy, aiData)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.ModsNikkelMHadesBiomesIsModdedEnemy then
-		game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
+		mod.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 	else
 		base(enemy, aiData)
 	end
 end)
 
-function game.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
+function mod.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 	if not CanAttack({ Id = enemy.ObjectId }) then
 		enemy.AINotifyName = "CanAttack" .. enemy.ObjectId
 		NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 9.0 })

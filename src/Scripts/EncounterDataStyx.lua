@@ -86,6 +86,11 @@ local encounterReplacements = {
 
 local encounterModifications = {
 	-- MINIBOSSES
+	MiniBossCrawler = {
+		StartRoomUnthreadedEvents = {
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "AngleIds", },
+		},
+	},
 
 	-- BOSSES
 	BossHades = {

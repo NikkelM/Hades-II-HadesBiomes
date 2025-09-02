@@ -37,7 +37,7 @@ end)
 
 -- Gets called in a ThreadedEvents function in each boss's AIStage.
 -- This re-implements some of the logic from Hades' StagedAI that was removed in Hades II
-function game.NikkelMHadesBiomesBossAIStageHandler(enemy, args)
+function mod.ModsNikkelMHadesBiomesBossAIStageHandler(enemy, args)
 	local aiStage = enemy.AIStages[enemy.AIStageActive]
 
 	if aiStage.UnequipWeapons ~= nil then
@@ -71,7 +71,7 @@ function game.NikkelMHadesBiomesBossAIStageHandler(enemy, args)
 
 	if aiStage.PermanentlyEnrage then
 		enemy.PermanentEnraged = true
-		game.thread(game.EnrageUnit, enemy, game.CurrentRun)
+		game.thread(mod.EnrageUnit, enemy, game.CurrentRun)
 	end
 
 	if aiStage.ClearObstacleTypes then

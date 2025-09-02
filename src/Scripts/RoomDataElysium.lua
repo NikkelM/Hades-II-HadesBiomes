@@ -56,7 +56,7 @@ local roomModifications = {
 		StrictLeftRight = true,
 		FlipHorizontalChance = 0.0,
 		ThreadedEvents = {
-			[1] = { Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut" }, },
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut" }, },
 		},
 	},
 
@@ -79,6 +79,9 @@ local roomModifications = {
 	C_MiniBoss01 = {
 		LoadModdedVoiceBanks = { "Minotaur", "ZagreusField" },
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+		UnthreadedEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium", },
+		},
 	},
 
 	-- BOSSES
@@ -92,6 +95,7 @@ local roomModifications = {
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		UnthreadedEvents = {
 			[1] = {
+				FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium",
 				Args = {
 					[0] = { DelayedStart = true, },
 					[1] = { DelayedStart = true, },
@@ -106,7 +110,7 @@ local roomModifications = {
 	-- OTHER
 	C_Story01 = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
-		ExitFunctionName = "ModsNikkelMHadesBiomesPatroclusExitFunctionName",
+		ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusExitFunctionName",
 		ExitFunctionArgs = {
 			Speed = 300,
 		},
@@ -149,7 +153,7 @@ local roomModifications = {
 		},
 		LeavePostPresentationEvents = {
 			{
-				FunctionName = "ModsNikkelMHadesBiomesBiomeMapPresentation",
+				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBiomeMapPresentation",
 				Args = {
 					HeroStartOffsetX = 120,
 					HeroStartOffsetY = -1370,

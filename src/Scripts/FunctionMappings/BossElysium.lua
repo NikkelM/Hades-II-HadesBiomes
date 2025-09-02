@@ -1,20 +1,20 @@
-function game.ModsNikkelMHadesBiomesSetFlag(source, args)
+function mod.ModsNikkelMHadesBiomesSetFlag(source, args)
 	args = args or {}
 	game.GameState.Flags[args.flagName] = args.value
 end
 
-function game.BossIntroElysium(eventSource, args)
+function mod.BossIntroElysium(eventSource, args)
 	local shrineLevel = game.GetNumShrineUpgrades(eventSource.ShrineMetaUpgradeName)
-	game.ModsNikkelMHadesBiomesBossIntro(eventSource, args[shrineLevel])
+	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args[shrineLevel])
 end
 
-function game.PlayPreLineTauntAnimFromSource(source, args)
+function mod.PlayPreLineTauntAnimFromSource(source, args)
 	if source ~= nil and source.TauntAnimation ~= nil then
 		SetAnimation({ Name = source.TauntAnimation, DestinationId = source.ObjectId })
 	end
 end
 
-function game.TheseusMinotaurKillPresentation(unit, args)
+function mod.TheseusMinotaurKillPresentation(unit, args)
 	game.SetPlayerInvulnerable("TheseusMinotaurKillPresentation")
 
 	local bothBossesDead = false
@@ -32,12 +32,12 @@ function game.TheseusMinotaurKillPresentation(unit, args)
 	end
 
 	if bothBossesDead then
-		game.AddTimerBlock(CurrentRun, "TheseusMinotaurKillPresentation")
+		game.AddTimerBlock(game.CurrentRun, "TheseusMinotaurKillPresentation")
 		PlaySound({ Name = "/SFX/StabSplatterEndSequence" })
 		game.DestroyRequiredKills({ BlockLoot = true })
 		unit.DestroyDelay = 0.5
-		game.HarpyKillPresentation(unit, args)
-		game.RemoveTimerBlock(CurrentRun, "TheseusMinotaurKillPresentation")
+		mod.HarpyKillPresentation(unit, args)
+		game.RemoveTimerBlock(game.CurrentRun, "TheseusMinotaurKillPresentation")
 	else
 		game.LastKillPresentation(unit)
 	end
@@ -55,24 +55,19 @@ function game.TheseusMinotaurKillPresentation(unit, args)
 		})
 end
 
-function game.MinotaurFinalStageTransition(boss, currentRun, aiStage)
+function mod.MinotaurFinalStageTransition(boss, currentRun, aiStage)
 	if boss.CannotDieFromDamage then
 		currentRun.CurrentRoom.Encounter.CancelSpawns = true
 		boss.SkipOnDeathSpawnEncounter = true
 		game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId } })
-		game.MinotaurEarlyExitPresentation(boss, currentRun)
+		mod.MinotaurEarlyExitPresentation(boss, currentRun)
 		game.Kill(boss, { SkipOnDeathFunction = true, Silent = true, SkipDestroyDelay = true, })
 	else
 		game.BossStageTransition(boss, currentRun, aiStage)
 	end
 end
 
-function game.MinotaurArmorBreak(boss, currentRun, aiStage)
-	SetHSV({ Id = boss.ObjectId, HSV = { 0, 0, 0 }, ValueChangeType = "Absolute" })
-	game.BossStageTransition(boss, currentRun, aiStage)
-end
-
-function game.MinotaurEarlyExitPresentation(boss, currentRun)
+function mod.MinotaurEarlyExitPresentation(boss, currentRun)
 	game.HideCombatUI("MinotaurEarlyExit")
 	boss.CanStoreAmmo = false
 	boss.EarlyExit = true
@@ -143,7 +138,7 @@ function game.MinotaurEarlyExitPresentation(boss, currentRun)
 	game.ShowCombatUI("MinotaurEarlyExit")
 end
 
-function game.TheseusEnragedPresentation(enemy, currentRun)
+function mod.TheseusEnragedPresentation(enemy, currentRun)
 	local screenId = ScreenAnchors.BossRageFill
 
 	ShakeScreen({ Speed = 600, Distance = 6, FalloffSpeed = 2000, Duration = 1.0 })
@@ -157,25 +152,18 @@ function game.TheseusEnragedPresentation(enemy, currentRun)
 	end
 end
 
-function game.MinotaurEnragedPresentation(enemy, currentRun)
-	game.TheseusEnragedPresentation(enemy, currentRun)
+function mod.MinotaurEnragedPresentation(enemy, currentRun)
+	mod.TheseusEnragedPresentation(enemy, currentRun)
 end
 
-function game.TheseusDamaged(victim, attacker)
+function mod.TheseusDamaged(victim, attacker)
 	PlaySound({ Name = "/SFX/Enemy Sounds/Theseus/EmoteHurt", Id = victim.ObjectId })
 end
 
-function game.Theseus2Damaged(victim, attacker)
+function mod.Theseus2Damaged(victim, attacker)
 end
 
-function game.SelectTheseusGod(enemy, run, args)
-	enemy.TheseusGodName = game.GetUninteractedGodThisRunForTheseus() or "Artemis"
-	LoadPackages({ Names = enemy.TheseusGodName })
-	-- Contains some necessary Fx that were in various GodUpgrade packages in Hades
-	LoadPackages({ Names = "ModsNikkelMHadesBiomesTheseusGodFxModded" })
-end
-
-function game.GetUninteractedGodThisRunForTheseus()
+function mod.GetUninteractedGodThisRunForTheseus()
 	-- These are all the gods that can be selected by Theseus, but with the LootData names from Hades II
 	local eligibleTheseusGods = {
 		AphroditeUpgrade = true,
@@ -240,7 +228,14 @@ function game.GetUninteractedGodThisRunForTheseus()
 	return randomGodMap[randomGod] or randomGod
 end
 
-function game.TheseusGodAI(enemy, currentRun)
+function mod.SelectTheseusGod(enemy, run, args)
+	enemy.TheseusGodName = mod.GetUninteractedGodThisRunForTheseus() or "Artemis"
+	LoadPackages({ Names = enemy.TheseusGodName })
+	-- Contains some necessary Fx that were in various GodUpgrade packages in Hades
+	LoadPackages({ Names = "ModsNikkelMHadesBiomesTheseusGodFxModded" })
+end
+
+function mod.TheseusGodAI(enemy, currentRun)
 	-- In the selection function, we removed the "Upgrade" suffix from the god name to be able to load the correct packages
 	local theseusGodName = enemy.TheseusGodName .. "Upgrade"
 	-- Set current weapon name to fire the intro wrath attack
@@ -250,7 +245,7 @@ function game.TheseusGodAI(enemy, currentRun)
 	-- Fire Wrath
 	local weaponAIData = game.GetWeaponAIData(enemy) or {}
 
-	game.thread(game.DoTheseusSuperPresentation, enemy, weaponAIData)
+	game.thread(mod.DoTheseusSuperPresentation, enemy, weaponAIData)
 
 	game.wait(0.1)
 	-- Updated to use Hades II function
@@ -269,7 +264,7 @@ function game.TheseusGodAI(enemy, currentRun)
 	game.SetAI(game.AttackerAI, enemy, currentRun)
 end
 
-function game.DoTheseusSuperPresentation(enemy, weaponAIData)
+function mod.DoTheseusSuperPresentation(enemy, weaponAIData)
 	local currentRun = game.CurrentRun
 
 	PlaySound({ Name = "/Leftovers/SFX/MeteorStrikeShort", Id = enemy.ObjectId })
@@ -289,7 +284,7 @@ function game.DoTheseusSuperPresentation(enemy, weaponAIData)
 		Id = enemy.ObjectId
 	})
 
-	game.thread(game.ShoutSlow)
+	game.thread(mod.ShoutSlow)
 
 	game.ScreenAnchors.FullscreenAlertFxAnchor = CreateScreenObstacle({
 		Name = "BlankObstacle",
@@ -323,7 +318,7 @@ function game.DoTheseusSuperPresentation(enemy, weaponAIData)
 	game.thread(game.CleanUpShoutPresentation, nil, nil, { fullscreenAlertDisplacementFx })
 end
 
-function game.ShoutSlow()
+function mod.ShoutSlow()
 	for k, simData in ipairs(game.CurrentRun.Hero.ShoutSlowParameters) do
 		-- waitScreenTime(  simData.ScreenPreWait )
 		game.waitUnmodified(simData.ScreenPreWait)
@@ -335,7 +330,7 @@ function game.ShoutSlow()
 	end
 end
 
-function game.TheseusChariotDismount(boss, currentRun, aiStage)
+function mod.TheseusChariotDismount(boss, currentRun, aiStage)
 	Stop({ Id = boss.ObjectId })
 	boss.AIDisabled = true
 	if boss.PreAttackLoopingSoundId ~= nil then
@@ -376,67 +371,7 @@ function game.TheseusChariotDismount(boss, currentRun, aiStage)
 	Destroy({ Id = dismountLocation })
 end
 
-function game.TheseusChariotAI(enemy)
-	while game.IsAIActive(enemy) do
-		if not CanAttack({ Id = enemy.ObjectId }) then
-			enemy.AINotifyName = "CanAttack" .. enemy.ObjectId
-			NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 9.0 })
-			game.waitUntil(enemy.AINotifyName)
-		end
-
-		enemy.WeaponName = game.SelectWeapon(enemy)
-		--DebugAssert({ Condition = enemy.WeaponName ~= nil, Text = "Enemy has no weapon!" })
-		table.insert(enemy.WeaponHistory, enemy.WeaponName)
-
-		local weaponAIData = game.GetWeaponAIData(enemy) or {}
-
-		if weaponAIData.ChainedWeapon ~= nil then
-			enemy.ChainedWeapon = weaponAIData.ChainedWeapon
-		end
-
-		if weaponAIData.PathWeapon then
-			game.thread(game.TheseusChariotAIMovement, enemy, weaponAIData)
-			enemy.FollowingPath = true
-
-			local hasAttacked = false
-			while enemy.FollowingPath do
-				if weaponAIData.FireAfterPatrolIndex == nil or weaponAIData.ReachedAttackPatrolId then
-					if not weaponAIData.FireOncePerPatrol or not hasAttacked then
-						local targetId = game.GetTargetId(enemy, weaponAIData)
-						if targetId ~= nil and targetId ~= 0 then
-							local attackSuccess = game.DoAttack(enemy, weaponAIData) or false
-							hasAttacked = attackSuccess
-							if weaponAIData.ForcedEarlyExit then
-								game.killWaitUntilThreads(enemy.AIThreadName)
-								game.SetThreadWait(enemy.AIThreadName, 0.05)
-								break
-							end
-							if not attackSuccess and not CanAttack({ Id = enemy.ObjectId }) then
-								enemy.AINotifyName = "CanAttack" .. enemy.ObjectId
-								NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 0.3 })
-								game.waitUntil(enemy.AINotifyName)
-							end
-						else
-							game.wait(0.1, enemy.AIThreadName)
-						end
-					else
-						game.wait(0.1, enemy.AIThreadName)
-					end
-				else
-					game.wait(0.1, enemy.AIThreadName)
-				end
-			end
-		else
-			game.DoAttack(enemy, weaponAIData)
-		end
-
-		if weaponAIData.MovementEffectName ~= nil then
-			ClearEffect({ Id = enemy.ObjectId, Name = weaponAIData.MovementEffectName })
-		end
-	end
-end
-
-function game.TheseusChariotAIMovement(enemy, weaponAIData)
+function mod.TheseusChariotAIMovement(enemy, weaponAIData)
 	local pathIds = weaponAIData.PatrolPathIds
 
 	if weaponAIData.PatrolPaths ~= nil then
@@ -483,8 +418,68 @@ function game.TheseusChariotAIMovement(enemy, weaponAIData)
 	enemy.FollowingPath = false
 end
 
+function mod.TheseusChariotAI(enemy)
+	while game.IsAIActive(enemy) do
+		if not CanAttack({ Id = enemy.ObjectId }) then
+			enemy.AINotifyName = "CanAttack" .. enemy.ObjectId
+			NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 9.0 })
+			game.waitUntil(enemy.AINotifyName)
+		end
+
+		enemy.WeaponName = game.SelectWeapon(enemy)
+		--DebugAssert({ Condition = enemy.WeaponName ~= nil, Text = "Enemy has no weapon!" })
+		table.insert(enemy.WeaponHistory, enemy.WeaponName)
+
+		local weaponAIData = game.GetWeaponAIData(enemy) or {}
+
+		if weaponAIData.ChainedWeapon ~= nil then
+			enemy.ChainedWeapon = weaponAIData.ChainedWeapon
+		end
+
+		if weaponAIData.PathWeapon then
+			game.thread(mod.TheseusChariotAIMovement, enemy, weaponAIData)
+			enemy.FollowingPath = true
+
+			local hasAttacked = false
+			while enemy.FollowingPath do
+				if weaponAIData.FireAfterPatrolIndex == nil or weaponAIData.ReachedAttackPatrolId then
+					if not weaponAIData.FireOncePerPatrol or not hasAttacked then
+						local targetId = game.GetTargetId(enemy, weaponAIData)
+						if targetId ~= nil and targetId ~= 0 then
+							local attackSuccess = game.DoAttack(enemy, weaponAIData) or false
+							hasAttacked = attackSuccess
+							if weaponAIData.ForcedEarlyExit then
+								game.killWaitUntilThreads(enemy.AIThreadName)
+								game.SetThreadWait(enemy.AIThreadName, 0.05)
+								break
+							end
+							if not attackSuccess and not CanAttack({ Id = enemy.ObjectId }) then
+								enemy.AINotifyName = "CanAttack" .. enemy.ObjectId
+								NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 0.3 })
+								game.waitUntil(enemy.AINotifyName)
+							end
+						else
+							game.wait(0.1, enemy.AIThreadName)
+						end
+					else
+						game.wait(0.1, enemy.AIThreadName)
+					end
+				else
+					game.wait(0.1, enemy.AIThreadName)
+				end
+			end
+		else
+			game.DoAttack(enemy, weaponAIData)
+		end
+
+		if weaponAIData.MovementEffectName ~= nil then
+			ClearEffect({ Id = enemy.ObjectId, Name = weaponAIData.MovementEffectName })
+		end
+	end
+end
+
 -- Setting the ThreadWait on Theseus to 0 to allow him to break out of the wait animation
-function game.ModsNikkelMHadesBiomesStopTheseusSlamWait(enemy, aiData, currentRun, args)
+function mod.ModsNikkelMHadesBiomesStopTheseusSlamWait(enemy, aiData, currentRun, args)
 	if enemy.ComboPartnerId ~= nil and game.ActiveEnemies[enemy.ComboPartnerId] ~= nil and not game.ActiveEnemies[enemy.ComboPartnerId].IsDead then
 		game.SetThreadWait(game.ActiveEnemies[enemy.ComboPartnerId].AIThreadName, 0.01)
 	end

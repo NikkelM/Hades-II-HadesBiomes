@@ -1,4 +1,4 @@
-function game.ExitToHadesPresentation(currentRun, exitDoor)
+function mod.ExitToHadesPresentation(currentRun, exitDoor)
 	local exitDoorId = exitDoor.ObjectId
 	AddInputBlock({ Name = "ExitToHadesPresentation" })
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
@@ -61,7 +61,7 @@ function game.ExitToHadesPresentation(currentRun, exitDoor)
 	game.UnblockCombatUI("ExitToHadesPresentation")
 end
 
-function game.RoomEntranceHades(currentRun, currentRoom)
+function mod.RoomEntranceHades(currentRun, currentRoom)
 	local hadesId = 510857
 	if currentRoom.Encounter.Name == "BossHadesPeaceful" then
 		hadesId = 552710
@@ -128,7 +128,7 @@ function game.RoomEntranceHades(currentRun, currentRoom)
 	game.UnblockCombatUI("BossEntrance")
 end
 
-function game.BossIntroHades(eventSource, args)
+function mod.BossIntroHades(eventSource, args)
 	if eventSource.Encounter.Name == "BossHadesPeaceful" then
 		args.ProcessTextLinesIds = { 552710 }
 		args.UnlockDelay = 0.0
@@ -143,15 +143,35 @@ function game.BossIntroHades(eventSource, args)
 		eventSource.BlockHadesAssistTraits = true
 	end
 
-	game.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
+	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 
 	if eventSource.Encounter.Name == "BossHadesPeaceful" then
 		game.CurrentRun.ActiveBiomeTimer = false
 	end
 end
 
+function mod.ClearShadeWeapons()
+	local weaponIds = GetIdsByType({ Names = game.EnemyData.ShadeNaked.AIPickupType })
+	Destroy({ Ids = weaponIds })
+end
+
+function mod.HadesBattleKnockDownPreRecoverPresentation(boss)
+	SetAnimation({ Name = "HadesBattleKnockDown_PreRecover", DestinationId = boss.ObjectId })
+	game.wait(0.25)
+	ShakeScreen({ Speed = 600, Distance = 2, Duration = 0.8, FalloffSpeed = 2000 })
+end
+
+function mod.DestroyHadesFightObstacles()
+	for k, enemy in pairs(game.ActiveEnemies) do
+		if enemy.Name == "HadesAmmo" or enemy.Name == "HadesTombstone" then
+			SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = enemy.ObjectId })
+			game.thread(game.Kill, enemy)
+		end
+	end
+end
+
 -- TODO: Stop Hexes
-function game.HadesPhaseTransition(boss, currentRun, aiStage)
+function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	-- TODO: Called very late?
 	boss.InTransition = true
 	if boss.IsInvisible then
@@ -175,13 +195,13 @@ function game.HadesPhaseTransition(boss, currentRun, aiStage)
 
 	game.SetPlayerInvulnerable("HadesPhaseTransition")
 	-- ClearStoredAmmoHero()
-	game.DestroyHadesFightObstacles()
+	mod.DestroyHadesFightObstacles()
 	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId }, BlockDeathWeapons = true })
 	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking" }, ExcludeNames = { "HadesCerberusAssist" } })
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 	SetAnimation({ Name = "HadesBattleKnockDown", DestinationId = boss.ObjectId })
 	SetGoalAngle({ Id = boss.ObjectId, Angle = 270 })
-	game.ClearShadeWeapons()
+	mod.ClearShadeWeapons()
 	game.thread(game.LastKillPresentation, boss)
 
 	local ammoIds = GetIdsByType({ Name = "AmmoPack" })
@@ -223,7 +243,7 @@ function game.HadesPhaseTransition(boss, currentRun, aiStage)
 	game.thread(game.PlayVoiceLines, boss.NextPhaseVoiceLines, nil, boss)
 
 	if boss.CurrentPhase == 2 then
-		game.thread(game.HadesBattleKnockDownPreRecoverPresentation, boss)
+		game.thread(mod.HadesBattleKnockDownPreRecoverPresentation, boss)
 	else
 		SetAnimation({ Name = "HadesBattleKnockDownRecover", DestinationId = boss.ObjectId })
 	end
@@ -280,7 +300,7 @@ function game.HadesPhaseTransition(boss, currentRun, aiStage)
 	boss.InTransition = false
 end
 
-function game.HadesKillPresentation(unit, args)
+function mod.HadesKillPresentation(unit, args)
 	DebugPrint({ Text = "Hades Kill Presentation: " })
 	unit.InTransition = true
 	game.CurrentRun.CurrentRoom.Encounter.BossKillPresentation = true
@@ -290,7 +310,7 @@ function game.HadesKillPresentation(unit, args)
 	ClearEffect({ Ids = { victimId, killerId }, All = true, BlockAll = true, })
 	-- StopSuper()
 	-- ClearStoredAmmoHero()
-	game.DestroyHadesFightObstacles()
+	mod.DestroyHadesFightObstacles()
 	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking" } })
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignetteHold" })
@@ -361,7 +381,7 @@ function game.HadesKillPresentation(unit, args)
 	game.SetMusicSection(10)
 	-- ZeroSuperMeter()
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
-	game.HarpyKillPresentation(unit, args)
+	mod.HarpyKillPresentation(unit, args)
 	game.wait(1.0, game.RoomThreadName)
 	RemoveInputBlock({ Name = "HadesKillPresentation" })
 	-- TODO: Show Modded screen
@@ -371,31 +391,11 @@ function game.HadesKillPresentation(unit, args)
 	game.thread(game.CheckQuestStatus, { Silent = true })
 end
 
-function game.ClearShadeWeapons()
-	local weaponIds = GetIdsByType({ Names = game.EnemyData.ShadeNaked.AIPickupType })
-	Destroy({ Ids = weaponIds })
-end
-
-function game.HadesBattleKnockDownPreRecoverPresentation(boss)
-	SetAnimation({ Name = "HadesBattleKnockDown_PreRecover", DestinationId = boss.ObjectId })
-	game.wait(0.25)
-	ShakeScreen({ Speed = 600, Distance = 2, Duration = 0.8, FalloffSpeed = 2000 })
-end
-
-function game.DestroyHadesFightObstacles()
-	for k, enemy in pairs(game.ActiveEnemies) do
-		if enemy.Name == "HadesAmmo" or enemy.Name == "HadesTombstone" then
-			SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = enemy.ObjectId })
-			game.thread(game.Kill, enemy)
-		end
-	end
-end
-
-function game.CheckRunEndPresentation(currentRun, door)
+function mod.CheckRunEndPresentation(currentRun, door)
 	AddInputBlock({ Name = "CheckRunEndPresentation" })
 	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
 		currentRun.CurrentRoom.SkipLoadNextMap = true
-	-- TODO: Check?
+		-- TODO: Check?
 		game.EndEarlyAccessPresentation()
 	else
 		local heroExitPointId = GetClosest({ Id = door.ObjectId, DestinationIds = GetIdsByType({ Name = "HeroExit" }), Distance = 600 })
@@ -411,7 +411,7 @@ function game.CheckRunEndPresentation(currentRun, door)
 	RemoveInputBlock({ Name = "CheckRunEndPresentation" })
 end
 
-function game.SetupHadesSpawnOptions(enemy)
+function mod.SetupHadesSpawnOptions(enemy)
 	local enemySetPrefix = "EnemiesHades"
 	-- If the BossDifficultShrine is at EM4, use the harder enemies
 	if game.GetNumShrineUpgrades(enemy.ShrineMetaUpgradeName) >= 4 then

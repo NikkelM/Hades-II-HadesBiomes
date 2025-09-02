@@ -388,6 +388,11 @@ local weaponModifications = {
 			AttackSlotInterval = 0.01,
 		},
 	},
+	HarpySpawns = {
+		AIData = {
+			FireFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
+		},
+	},
 	-- #endregion
 	-- #region TARTARUS - Alecto
 	HarpyLungeAlecto = {
@@ -408,12 +413,13 @@ local weaponModifications = {
 	HarpyBuildRage = {
 		BlockInterrupt = true,
 		AIData = {
+			FireFunctionName = _PLUGIN.guid .. "." .. "HarpyBuildRage",
+			FireStartFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHarpyBuildRageStart",
 			PreAttackStop = true,
 			PreAttackDuration = 1.5,
 			FireMoveTowardTarget = true,
 			StopMoveWithinRange = true,
 			MoveSuccessDistance = 25,
-			FireStartFunctionName = "ModsNikkelMHadesBiomesHarpyBuildRageStart",
 			PreAttackVoiceLines = mod.NilValue,
 			BlockAsFirstWeapon = true,
 		},
@@ -738,6 +744,11 @@ local weaponModifications = {
 	},
 	-- #endregion
 	-- #region ASPHODEL - Hydra (Green/Summoner)
+	HydraSpawns = {
+		AIData = {
+			FireFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
+		},
+	},
 	HydraSummon = {
 		AIData = {
 			PreAttackDuration = 0.2,
@@ -1014,7 +1025,7 @@ local weaponModifications = {
 			RequireComboPartnerNotifyName = "MinotaurTheseusSlam_Minotaur",
 			ForceIfComboPartnerNotifyName = "MinotaurTheseusSlam_Minotaur",
 
-			PostAttackThreadedFunctionName = "ModsNikkelMHadesBiomesStopTheseusSlamWait",
+			PostAttackThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesStopTheseusSlamWait",
 		},
 	},
 	MinotaurTheseusThrow_Minotaur = {
@@ -1200,6 +1211,7 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region STYX
+	-- #STYX - Regular
 	-- From Hades II CrawlerRush, but using Hades animations
 	HadesCrawlerRush = {
 		AIData = {
@@ -1247,6 +1259,28 @@ local weaponModifications = {
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
 	},
+	-- #endregion
+	-- #region STYX - Minibosses
+	CrawlerSpawns = {
+		AIData = {
+			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
+		},
+	},
+	-- #endregion
+	-- #region HADES
+	HadesSpawns = {
+		AIData = {
+			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
+		},
+	},
+	HadesSpawns2 = {
+		AIData = {
+			SpawnDefaultAIDataOverrides = {
+				PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
+			}
+		},
+	},
+	-- #endregion
 	-- #endregion
 
 	-- #region ENVIRONMENT

@@ -8,7 +8,7 @@ modutil.mod.Path.Wrap("FillInShopOptions", function(base, args)
 		args.RoomName = game.CurrentRun.CurrentRoom.Name
 
 		if args.RoomName and game.RoomData[args.RoomName] and game.RoomData[args.RoomName].PersistentStore then
-			local store = game.GetPreviousStore(args)
+			local store = mod.GetPreviousStore(args)
 			if store ~= nil then
 				return store
 			end
@@ -24,7 +24,7 @@ modutil.mod.Path.Wrap("FillInShopOptions", function(base, args)
 	return store
 end)
 
-function game.GetPreviousStore(args)
+function mod.GetPreviousStore(args)
 	if game.CurrentRun.RoomCreations[args.RoomName] == nil then
 		return nil
 	end

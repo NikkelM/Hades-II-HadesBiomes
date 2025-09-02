@@ -1,4 +1,4 @@
-function game.PickupAI(enemy, currentRun)
+function mod.PickupAI(enemy, currentRun)
 	if currentRun == nil then
 		currentRun = game.CurrentRun
 	end
@@ -10,7 +10,7 @@ function game.PickupAI(enemy, currentRun)
 			game.Retreat(enemy, enemy, currentRun.Hero.ObjectId)
 		end
 
-		local pickupSuccess = game.DoPickup(enemy)
+		local pickupSuccess = mod.DoPickup(enemy)
 
 		if pickupSuccess then
 			return
@@ -21,7 +21,7 @@ function game.PickupAI(enemy, currentRun)
 	end
 end
 
-function game.ModsNikkelMHadesBiomesShadeNakedPostActivate(source, args)
+function mod.ModsNikkelMHadesBiomesShadeNakedPostActivate(source, args)
 	-- Save the time the unit was activated to be able to ignore the first rapid damage
 	source.ModsNikkelMHadesBiomesActivatedTime = game._worldTime
 
@@ -40,7 +40,7 @@ function game.ModsNikkelMHadesBiomesShadeNakedPostActivate(source, args)
 	ApplyForce({ Id = source.ObjectId, Speed = force, Angle = angle, SelfApplied = true })
 end
 
-function game.ModsNikkelMHadesBiomesShadeNakedDeath(unit, args)
+function mod.ModsNikkelMHadesBiomesShadeNakedDeath(unit, args)
 	-- If there is an active challenge encounter, remove the unit from the active spawns correctly
 	if game.CurrentRun.CurrentRoom.ChallengeEncounter ~= nil and game.CurrentRun.CurrentRoom.ChallengeEncounter.InProgress and game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns ~= nil then
 		game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns[unit.ObjectId] = nil
@@ -48,7 +48,7 @@ function game.ModsNikkelMHadesBiomesShadeNakedDeath(unit, args)
 	end
 end
 
-function game.DoPickup(enemy, aiData, pickupTarget)
+function mod.DoPickup(enemy, aiData, pickupTarget)
 	aiData = aiData or enemy
 	local pickupRange = aiData.AIPickupRange or 100
 	enemy.Pickups = enemy.Pickups or 0
@@ -157,7 +157,7 @@ function game.DoPickup(enemy, aiData, pickupTarget)
 				end
 				Flash({ Id = enemy.ObjectId, Speed = 0.65, MinFraction = 1.0, MaxFraction = 0, Color = Color.Gold, ExpireAfterCycle = true })
 
-				game.ProcessPickup(enemy, pickupTarget)
+				mod.ProcessPickup(enemy, pickupTarget)
 				Destroy({ Id = pickupTarget })
 				enemy.Pickups = enemy.Pickups + 1
 				enemy.PickupTarget = nil
@@ -177,7 +177,7 @@ function game.DoPickup(enemy, aiData, pickupTarget)
 	return false
 end
 
-function game.ProcessPickup(enemy, pickupTarget)
+function mod.ProcessPickup(enemy, pickupTarget)
 	if game.MapState.ActiveObstacles[pickupTarget] == nil then
 		return
 	end
@@ -229,7 +229,7 @@ function game.ProcessPickup(enemy, pickupTarget)
 			})
 		end
 		game.thread(game.PlayVoiceLines, oldEnemy.RespawnedVoiceLines, true)
-		game.RemoveOnDeathWeapons(oldEnemy)
+		mod.RemoveOnDeathWeapons(oldEnemy)
 		game.Kill(oldEnemy)
 	end
 
@@ -249,6 +249,6 @@ function game.ProcessPickup(enemy, pickupTarget)
 	end
 end
 
-function game.RemoveOnDeathWeapons(unit)
+function mod.RemoveOnDeathWeapons(unit)
 	unit.OnDeathWeapons = nil
 end

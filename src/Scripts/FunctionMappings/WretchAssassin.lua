@@ -1,4 +1,4 @@
-function game.EnemyHandleInvisibleAttack(enemy, weaponAIData, currentRun, args)
+function mod.EnemyHandleInvisibleAttack(enemy, weaponAIData, currentRun, args)
 	args = args or {}
 	if enemy.IsInvisible and not weaponAIData.KeepInvisibility then
 		if enemy.CurrentPhase ~= nil and enemy.CurrentPhase >= 2 and enemy.Phase2VFX ~= nil then

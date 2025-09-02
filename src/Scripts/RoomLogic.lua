@@ -127,7 +127,7 @@ end)
 
 modutil.mod.Path.Wrap("SetupAI", function(base, enemy, args)
 	if enemy.SupportUnitName ~= nil then
-		game.SpawnSupportAI(enemy)
+		mod.SpawnSupportAI(enemy)
 	end
 	base(enemy, args)
 end)
@@ -170,7 +170,7 @@ end)
 -- Overriding to add in the logic for the Styx exit doors always having two minibosses
 modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
 	if run.ModsNikkelMHadesBiomesIsModdedRun and room.Name == "D_Hub" then
-		game.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
+		mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	else
 		base(run, room)
 	end
@@ -199,7 +199,7 @@ modutil.mod.Path.Wrap("DisableTrap", function(base, enemy)
 	end
 end)
 
-function game.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
+function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	-- Synchronize the RNG to its initial state. Makes room reward choices deterministic on save/load
 	RandomSynchronize()
 
@@ -259,7 +259,7 @@ function game.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 		wait(0.02) -- Distribute workload
 	end
 
-	if run.CurrentRoom.FirstAppearanceNumExitOverrides ~= nil and not HasSeenRoomEarlierInRun(run, run.CurrentRoom.Name) then
+	if run.CurrentRoom.FirstAppearanceNumExitOverrides ~= nil and not mod.HasSeenRoomEarlierInRun(run, run.CurrentRoom.Name) then
 		local randomDoors = ShallowCopyTable(exitDoorsIPairs)
 		for i = 1, run.CurrentRoom.FirstAppearanceNumExitOverrides do
 			local randomDoor = RemoveRandomValue(randomDoors)

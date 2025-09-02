@@ -6370,8 +6370,9 @@ mod.EnemyData = {
 	ShadeBowUnitElite =
 	{
 		InheritFrom = { "Elite", "ShadeBowUnit" },
-		EliteAttributeOptions = CombineAllValues({ EnemySets.AllEliteAttributes, EnemySets.RangedOnlyEliteAttributes,
-			EnemySets.ShadeOnlyEliteAttributes }),
+		-- Custom: Removed as CombineAllValues no longer exists, manually adding these
+		-- EliteAttributeOptions = CombineAllValues({ EnemySets.AllEliteAttributes, EnemySets.RangedOnlyEliteAttributes,
+		-- 	EnemySets.ShadeOnlyEliteAttributes }),
 
 		RequiredMinBiomeDepth = 3,
 		HealthBuffer = 350,
@@ -6539,7 +6540,8 @@ mod.EnemyData = {
 	ShadeSpearUnitElite =
 	{
 		InheritFrom = { "Elite", "ShadeSpearUnit" },
-		EliteAttributeOptions = CombineAllValues({ EnemySets.AllEliteAttributes, EnemySets.ShadeOnlyEliteAttributes }),
+		-- Custom: Removed as CombineAllValues no longer exists, manually adding these
+		-- EliteAttributeOptions = CombineAllValues({ EnemySets.AllEliteAttributes, EnemySets.ShadeOnlyEliteAttributes }),
 
 		RequiredMinBiomeDepth = 3,
 		HealthBuffer = 500,
@@ -6690,7 +6692,8 @@ mod.EnemyData = {
 	ShadeShieldUnitElite =
 	{
 		InheritFrom = { "Elite", "ShadeShieldUnit" },
-		EliteAttributeOptions = CombineAllValues({ EnemySets.AllEliteAttributes, EnemySets.ShadeOnlyEliteAttributes }),
+		-- Custom: Removed as CombineAllValues no longer exists, manually adding these
+		-- EliteAttributeOptions = CombineAllValues({ EnemySets.AllEliteAttributes, EnemySets.ShadeOnlyEliteAttributes }),
 
 		RequiredMinBiomeDepth = 3,
 		HealthBuffer = 550,
@@ -6857,7 +6860,8 @@ mod.EnemyData = {
 	ShadeSwordUnitElite =
 	{
 		InheritFrom = { "Elite", "ShadeSwordUnit" },
-		EliteAttributeOptions = CombineAllValues({ EnemySets.AllEliteAttributes, EnemySets.ShadeOnlyEliteAttributes }),
+		-- Custom: Removed as CombineAllValues no longer exists, manually adding these
+		-- EliteAttributeOptions = CombineAllValues({ EnemySets.AllEliteAttributes, EnemySets.ShadeOnlyEliteAttributes }),
 
 		RequiredMinBiomeDepth = 3,
 		HealthBuffer = 400,

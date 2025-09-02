@@ -1,7 +1,7 @@
 -- Functions required for Traps to work
 
 -- Mixes functionality from the original Hades RemoteAttack and the Hades II replacement, RemoteAI, to work with the Dart trap
-function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
+function mod.RemoteAttackModsNikkelMHadesBiomes(enemy)
 	while game.IsAIActive(enemy) do
 		enemy.WeaponName = game.SelectWeapon(enemy)
 		table.insert(enemy.WeaponHistory, enemy.WeaponName)
@@ -148,7 +148,7 @@ function game.RemoteAttackModsNikkelMHadesBiomes(enemy)
 end
 
 -- Triggered when a breakable is hit
-function game.BreakableOnHitModsNikkelMHadesBiomes(victim, attacker, triggerArgs)
+function mod.BreakableOnHitModsNikkelMHadesBiomes(victim, attacker, triggerArgs)
 	triggerArgs = triggerArgs or {}
 	game.CheckMoneyDrop(victim, victim.MoneyDropOnDeath, attacker)
 	game.KillPresentation(victim, attacker, triggerArgs)

@@ -1,6 +1,6 @@
 game.EffectData.StyxPoison = {
 	InheritFrom = { "MedeaPoison" },
 	EffectName = "StyxPoison",
-	OnApplyFunctionName = "StyxPoisonApply",
-	OnClearFunctionName = "StyxPoisonClear",
+	OnApplyFunctionName = _PLUGIN.guid .. "." .. "StyxPoisonApply",
+	OnClearFunctionName = _PLUGIN.guid .. "." .. "StyxPoisonClear",
 }

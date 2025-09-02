@@ -111,10 +111,14 @@ local encounterModifications = {
 		CanEncounterSkip = false,
 		BlockRespawnShrineUpgrade = true,
 		DelayedStart = true,
+		StartRoomUnthreadedEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedByShrineLevel", },
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "AngleIdsTowardPlayer", },
+		},
 		-- Without this, the room exits will immediately unlock after the conversation
 		UnthreadedEvents = {
 			{
-				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
+				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
 				Args = { DelayedStart = true, },
 			},
 			{ FunctionName = "EncounterAudio" },
@@ -131,6 +135,9 @@ local encounterModifications = {
 		PostUnthreadedEvents = mod.NilValue,
 		-- For the Grenade graphics of EM Theseus
 		LoadPackages = { "BiomeOBoss" },
+		StartRoomUnthreadedEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedByShrineLevel", },
+		},
 	},
 }
 

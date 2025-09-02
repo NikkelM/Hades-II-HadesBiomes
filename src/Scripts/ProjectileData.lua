@@ -39,14 +39,14 @@ end
 local projectileModifications = {
 	-- #region TARTARUS
 	HeavyRangedWeapon = {
-		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
+		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
 	},
 	HeavyRangedWeaponSplitter = {
 		InheritFrom = { "HeavyRangedWeapon", },
 	},
 	HeavyRangedSplitterFragment = {
 		InheritFrom = { "HeavyRangedWeaponSplitter", },
-		OnHitFunctionNames = { "ModsNikkelMHadesBiomesHeavyRangedSplitterFragmentOnWeaponHit" },
+		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedSplitterFragmentOnWeaponHit" },
 	},
 	HarpyLightning = {
 		InheritFrom = { "NoSlowFrameProjectile", },
