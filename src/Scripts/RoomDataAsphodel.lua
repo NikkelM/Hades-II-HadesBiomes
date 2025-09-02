@@ -41,6 +41,8 @@ local roomModifications = {
 
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut",
+
+		EntranceFunctionName = _PLUGIN.guid .. "." .. "AsphodelEnterRoomPresentation",
 	},
 
 	-- OPENING ROOMS
@@ -53,7 +55,7 @@ local roomModifications = {
 			{ FunctionName = "EndAllBiomeStates" },
 		},
 		ThreadedEvents = {
-			[1] = { Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut" }, },
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut" }, },
 		},
 	},
 
@@ -76,6 +78,13 @@ local roomModifications = {
 		LinkedRooms = { "X_Boss01", "X_Boss02" },
 	},
 
+	-- MINIBOSSES
+	X_Wrapping01 = {
+		PostCombatReloadEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "WrappingPostCombatReloadPresentation", },
+		},
+	},
+
 	-- BOSSES
 	-- GameStateRequirements to choose the correct arena depending on the EM level
 	X_Boss01 = {
@@ -86,6 +95,10 @@ local roomModifications = {
 				Value = 2,
 			},
 		},
+		UnthreadedEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroHydra", },
+		},
+		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceBossHydra",
 		ForcedReward = "MixerGBossDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,
@@ -113,6 +126,7 @@ local roomModifications = {
 		IgnoreMusic = true,
 	},
 	X_Reprieve01 = {
+		EntranceFunctionName = _PLUGIN.guid .. "." .. "AsphodelEnterRoomPresentation",
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,
 		},
@@ -148,7 +162,7 @@ local roomModifications = {
 		},
 		LeavePostPresentationEvents = {
 			{
-				FunctionName = "ModsNikkelMHadesBiomesBiomeMapPresentation",
+				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBiomeMapPresentation",
 				Args = {
 					HeroStartOffsetX = 230,
 					HeroStartOffsetY = -320,

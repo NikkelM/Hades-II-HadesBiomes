@@ -150,12 +150,17 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 									entry.Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy"
 								end
 							end
+							if entry.PreLineThreadedFunctionName then
+								if entry.PreLineThreadedFunctionName == "PlayPreLineTauntAnimFromSource" then
+									entry.PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayPreLineTauntAnimFromSource"
+								end
+							end
 							if entry.SetFlagTrue then
-								entry.PostLineFunctionName = "ModsNikkelMHadesBiomesSetFlag"
+								entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSetFlag"
 								entry.PostLineFunctionArgs = { FlagName = entry.SetFlagTrue, Value = true }
 							end
 							if entry.SetFlagFalse then
-								entry.PostLineFunctionName = "ModsNikkelMHadesBiomesSetFlag"
+								entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSetFlag"
 								entry.PostLineFunctionArgs = { FlagName = entry.SetFlagFalse, Value = false }
 							end
 							if entry.Cue then
@@ -175,7 +180,18 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		if enemyData.AIStages then
 			for _, aiStage in ipairs(enemyData.AIStages) do
 				aiStage.ThreadedEvents = { { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossAIStageHandler", } }
-				-- For the Hydra, perform the mapping of the SelectPactLevelAIStage to EMStageDataOverrides
+				-- Make sure to call the modded functions
+				local moddedTransitionFunctions = {
+					"HydraStageTransition",
+					"MinotaurFinalStageTransition",
+					"TheseusChariotDismount",
+					"HadesPhaseTransition",
+				}
+				if game.Contains(moddedTransitionFunctions, aiStage.TransitionFunction) then
+					aiStage.TransitionFunction = _PLUGIN.guid .. "." .. aiStage.TransitionFunction
+				end
+				-- #region HYDRA
+				-- Perform the mapping of the SelectPactLevelAIStage to EMStageDataOverrides
 				if aiStage.SelectPactLevelAIStage then
 					-- These are applied if the shrineLevel is not high enough/default behaviour for this AIStage
 					local defaultAIStageOverrides = enemyData[aiStage.SelectPactLevelAIStage].Default or {}
@@ -189,6 +205,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 					end
 					aiStage.SelectPactLevelAIStage = nil
 				end
+				-- #endregion
 			end
 		end
 
@@ -442,7 +459,7 @@ local enemyModifications = {
 		},
 		SpawnEvents = {
 			{
-				FunctionName = "CreateTethers",
+				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
 				Threaded = true,
 			},
 		},
@@ -473,11 +490,11 @@ local enemyModifications = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		SpawnEvents = {
 			{
-				FunctionName = "CreateTethers",
+				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
 				Threaded = true,
 			},
 		},
-		OnDeathFunctionName = "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
@@ -522,24 +539,36 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		DefaultAIData = {
+			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
+		},
 	},
 	-- #endregion
 	-- #region TARTARUS - Bosses
 	HarpySupportUnit = {
-		AIOptions = { "HarpySupportAI" },
+		AIOptions = { _PLUGIN.guid .. "." .. "HarpySupportAI" },
 		-- Otherwise, doesn't get cleaned up after boss kill as of the Unseen Update
 		RequiredKill = true,
 	},
 	Harpy = {
 		RunHistoryKilledByName = "NPC_FurySister_01",
 		ImmuneToPolymorph = true,
+		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HarpyKillPresentation",
 	},
 	Harpy2 = {
 		-- Gets overwritten by the Harpy value if not set
 		RunHistoryKilledByName = "Harpy2",
+		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
+		EnragedPresentation = _PLUGIN.guid .. "." .. "HarpyEnragedPresentation",
+		AIStages = {
+			[1] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "HandleHarpyRage", }, },
+			[4] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "EnrageHarpyPermanent", }, },
+		},
 	},
 	Harpy3 = {
 		RunHistoryKilledByName = "Harpy3",
+		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
 		BossPresentationTextLineSets = {
 			Fury3Encounter10 = {
 				EndVoiceLines = {
@@ -548,6 +577,10 @@ local enemyModifications = {
 					},
 				},
 			},
+		},
+		AIStages = {
+			[2] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", }, },
+			[3] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", }, },
 		},
 	},
 	-- #endregion
@@ -727,12 +760,12 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		IgnoreSpeedShrine = true,
-		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
 			PostTouchdownMakeVulnerable = true,
 		},
-		PostAggroAI = "ModsNikkelMHadesBiomesSkyAttackerAI",
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSkyAttackerAI",
 		DefaultAIData = {
 			PostTouchdownMinDuration = 1.2,
 		},
@@ -749,7 +782,7 @@ local enemyModifications = {
 		},
 		SpawnEvents = {
 			{
-				FunctionName = "CreateTethers",
+				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
 				Threaded = true,
 			},
 		},
@@ -762,7 +795,7 @@ local enemyModifications = {
 		},
 		SpawnEvents = {
 			{
-				FunctionName = "CreateTethers",
+				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
 				Threaded = true,
 			},
 		},
@@ -783,7 +816,7 @@ local enemyModifications = {
 		},
 		SpawnEvents = {
 			{
-				FunctionName = "CreateTethers",
+				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
 				Threaded = true,
 			},
 		},
@@ -814,7 +847,7 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
-		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
 			PostTouchdownMakeVulnerable = true,
@@ -834,32 +867,66 @@ local enemyModifications = {
 			},
 		},
 		BossDifficultyShrineRequiredCount = 2,
-		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "HydraTouchdown",
 			-- Lining up with when the head actually touches the ground
 			Delay = 0.23,
 		},
 		ImmuneToPolymorph = true,
-		-- SpawnEvents = { { FunctionName = "CreateTethers", Threaded = true, }, },
+		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		-- While Tethers are broken - enemy returns to spawnpoint after attacking
 		DefaultAIData = {
 			MoveToId = 480903,
 			MoveWithinRange = true,
 			MoveWithinRangeTimeout = 1.0,
 		},
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HydraKillPresentation",
+		PactDataStage2 = {
+			[2] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+			[3] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+			[4] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+		},
+	},
+	HydraHeadImmortalLavamaker = {
+		PactDataStage2 = {
+			[2] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+			[3] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+			[4] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+		},
+	},
+	HydraHeadImmortalSummoner = {
+		PactDataStage2 = {
+			[2] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+			[3] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+			[4] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+		},
+	},
+	HydraHeadImmortalSlammer = {
+		PactDataStage2 = {
+			[2] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+			[3] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+			[4] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+		},
+	},
+	HydraHeadImmortalWavemaker = {
+		PactDataStage2 = {
+			[2] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+			[3] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+			[4] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
+		},
 	},
 	-- Spawned heads
 	BaseHydraHead = {
 		StunAnimations = { Default = "EnemyHydraOnHit" },
 		ManualDeathAnimation = false,
-		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "HydraTouchdown",
 			-- Lining up with when the head actually touches the ground
 			Delay = 0.23,
 		},
-		-- SpawnEvents = { { FunctionName = "CreateTethers", Threaded = true, }, },
+		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		-- While Tethers are broken - enemy returns to nearest spawnpoint after attacking
 		DefaultAIData = {
 			-- Is overwritten by the actual spawnpoint in ModsNikkelMHadesBiomesRememberHydraSpawnpoint
@@ -895,7 +962,7 @@ local enemyModifications = {
 		TriggerGroups = { "HeroTeam" },
 		StartCharmedDataOverrides = { TriggerGroups = { "EnemyTeam" }, },
 		IncomingDamageModifiers = { { NonPlayerMultiplier = 0.0, }, },
-		AIOptions = { "ModsNikkelMHadesBiomesHydraToothAI", },
+		AIOptions = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHydraToothAI", },
 	},
 	HydraTooth2 = {
 		DefaultAIData = {
@@ -917,19 +984,20 @@ local enemyModifications = {
 		-- Push the Shade away after spawning so it has to move to the pickupTarget
 		PostActivateEvents = {
 			{
-				FunctionName = "ModsNikkelMHadesBiomesShadeNakedPostActivate",
+				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesShadeNakedPostActivate",
 				Args = { ForceMin = 3200, ForceMax = 3300, AngleOffsetMin = -60, AngleOffsetMax = 60, },
 			},
 		},
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		DeathAnimation = "ShadeNakedDeathVFX",
 		DeathFx = "null",
-		OnDeathFunctionName = "ModsNikkelMHadesBiomesShadeNakedDeath",
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesShadeNakedDeath",
 		-- To prevent the first damage occurrence, which is duplicated from the killing blow
 		ModsNikkelMHadesBiomesIgnoreFirstRapidDamage = true,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		AIOptions = { _PLUGIN.guid .. "." .. "PickupAI", },
 	},
 	ShadeNakedElite = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -940,14 +1008,14 @@ local enemyModifications = {
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
 		SpawnUnitOnDeath = "ShadeNaked",
 		SkipActivatePresentationOnSpawns = true,
-		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "ShadeSpearTouchdown",
 		},
 	},
 	ShadeSpearUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
-		EliteAttributeOptions = mod.CombineTables(
+		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
@@ -962,7 +1030,7 @@ local enemyModifications = {
 	},
 	ShadeBowUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
-		EliteAttributeOptions = mod.CombineTables(
+		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.RangedOnlyEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
@@ -980,7 +1048,7 @@ local enemyModifications = {
 	},
 	ShadeShieldUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
-		EliteAttributeOptions = mod.CombineTables(
+		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
@@ -995,7 +1063,7 @@ local enemyModifications = {
 	},
 	ShadeSwordUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
-		EliteAttributeOptions = mod.CombineTables(
+		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
@@ -1096,7 +1164,7 @@ local enemyModifications = {
 	-- #endregion
 	-- #region ELYSIUM - Bosses
 	Minotaur = {
-		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "MinotaurOverheadTouchdown",
 			-- Moves the damage cone in front of the Minotaur to line up with the Axe and not the character
@@ -1104,9 +1172,11 @@ local enemyModifications = {
 			CalcOffset = true,
 			CalcAngle = true,
 		},
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
 		ManualDeathAnimation = false,
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
+		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
 	},
 	Minotaur2 = {
 		OnTouchdownFunctionArgs = {
@@ -1115,18 +1185,35 @@ local enemyModifications = {
 			CalcOffset = true,
 			CalcAngle = true,
 		},
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
+		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
 	},
 	Theseus = {
 		-- Doesn't seem to be used
-		OnTouchdownFunctionName = "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "TheseusSpearTouchdown",
 		},
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
 		ManualDeathAnimation = false,
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
+		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectTheseusGod",
+		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
+		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "TheseusDamaged",
+		AIStages = {
+			[2] = { RandomAIFunctionNames = { _PLUGIN.guid .. "." .. "TheseusGodAI" }, },
+		},
+	},
+	Theseus2 = {
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
+		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "Theseus2Damaged",
+		AIStages = {
+			[1] = { RandomAIFunctionNames = { _PLUGIN.guid .. "." .. "TheseusChariotAI" }, },
+			[2] = { RandomAIFunctionNames = { _PLUGIN.guid .. "." .. "TheseusGodAI" }, },
+		},
 	},
 	-- #endregion
 	-- #endregion
@@ -1143,7 +1230,7 @@ local enemyModifications = {
 	RatThug = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "EnemyRatThugOnHit" },
-		OnDeathThreadedFunctionName = "ModsNikkelMHadesBiomesOnDeathFireProjectile",
+		OnDeathThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOnDeathFireProjectile",
 		OnDeathFunctionArgs = {
 			ProjectileName = "HadesPoisonPuddle",
 		},
@@ -1190,16 +1277,21 @@ local enemyModifications = {
 	-- #region STYX - Minibosses
 	-- #endregion
 	-- #region STYX - Bosses
-	-- Hades = {
-	--   BossDifficultyShrineRequiredCount = 4,
-	-- },
+	Hades = {
+		BossDifficultyShrineRequiredCount = 4,
+		SelectCustomSpawnOptions = _PLUGIN.guid .. "." .. "SetupHadesSpawnOptions",
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HadesKillPresentation",
+		DefaultAIData = {
+			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
+		},
+	},
 	-- #endregion
 	-- #endregion
 
 	-- #region ENVIRONMENT
 	Breakable = {
 		CannotDieFromDamage = true,
-		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
+		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "BreakableOnHitModsNikkelMHadesBiomes",
 		DeathAnimation = "BreakableDeathAnim",
 		DeathSound = "/SFX/CeramicPotSmash",
 		SetupEvents = {
@@ -1222,7 +1314,7 @@ local enemyModifications = {
 	},
 	BreakableAsphodel = {
 		CannotDieFromDamage = true,
-		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
+		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "BreakableOnHitModsNikkelMHadesBiomes",
 		DeathAnimation = "BreakableDeathAnim",
 		DeathSound = "/SFX/CeramicPotSmash",
 		SetupEvents = {
@@ -1245,7 +1337,7 @@ local enemyModifications = {
 	},
 	BreakableElysium = {
 		CannotDieFromDamage = true,
-		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
+		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "BreakableOnHitModsNikkelMHadesBiomes",
 		DeathAnimation = "BreakableDeathElysium",
 		DeathSound = "/SFX/CeramicPotSmash",
 		SetupEvents = {
@@ -1268,7 +1360,7 @@ local enemyModifications = {
 	},
 	BreakableStyx = {
 		CannotDieFromDamage = true,
-		OnDamagedFunctionName = "BreakableOnHitModsNikkelMHadesBiomes",
+		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "BreakableOnHitModsNikkelMHadesBiomes",
 		DeathAnimation = "BreakableDeathStyx",
 		DeathSound = "/SFX/CeramicPotSmash",
 		SetupEvents = {
@@ -1299,6 +1391,7 @@ local enemyModifications = {
 		ProjectileName = "PhalanxTrapWeapon",
 		AIAttackDistance = 150,
 		OutgoingDamageModifiers = { { NonPlayerMultiplier = 15.0, }, },
+		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
 	},
 	PhalanxTrapPassive = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -1319,6 +1412,7 @@ local enemyModifications = {
 			TargetSelf = true,
 			TargetOffsetForward = 100,
 		},
+		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
 	},
 	ArcherTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -1342,6 +1436,7 @@ local enemyModifications = {
 			TargetOffsetForward = 100,
 			IdleAnimation = "ArcherTrapIdle",
 		},
+		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
 	},
 	GasTrapPassive = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -1361,6 +1456,7 @@ local enemyModifications = {
 			WakeUpDelayMax = 15.0,
 			PostAttackFlash = false,
 		},
+		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
 	},
 	PoisonTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -1377,6 +1473,7 @@ local enemyModifications = {
 			WakeUpDelayMax = 15.0,
 			PostAttackFlash = false,
 		},
+		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
 	},
 	SawTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -1398,6 +1495,7 @@ local enemyModifications = {
 			TargetSelf = true,
 			TargetOffsetForward = 100,
 		},
+		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
 	},
 	AxeTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -1405,8 +1503,8 @@ local enemyModifications = {
 			ProjectileName = "AxeTrapWeapon",
 			UseResetAnimationIfActive = true,
 			ResetAnimation = "AxeTrapReset",
-			PreAttackFunctionName = "ModsNikkelMHadesBiomesToggleTrapState",
-			PostAttackEndFunctionName = "ModsNikkelMHadesBiomesToggleTrapState",
+			PreAttackFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesToggleTrapState",
+			PostAttackEndFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesToggleTrapState",
 		},
 		WeaponName = "AxeTrapWeapon",
 	},
@@ -1429,10 +1527,7 @@ local enemyModifications = {
 			SkipAngleTowardTarget = true,
 			DisabledAnimation = "DartTrapDeactivated",
 		},
-		AIOptions = {
-			-- RemoteAttack
-			"RemoteAttackModsNikkelMHadesBiomes"
-		},
+		AIOptions = { _PLUGIN.guid .. "." .. "RemoteAttackModsNikkelMHadesBiomes" },
 		WeaponName = "AxeTrapWeapon",
 	},
 	-- #endregion
@@ -1503,6 +1598,7 @@ local enemyKeyReplacements = {
 -- Only modify enemies that are not being used in Hades II in this way!
 -- Needs to be done before the enemy data is added to the game
 game.EnemyData.SpikeTrap.DefaultAIData.TargetGroups = { "GroundEnemies", "HeroTeam", }
+game.EnemyData.SpikeTrap.AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", }
 game.EnemyData.Elite.EliteAttributeData.ModsNikkelMHadesBiomesStasisDeath = {
 	GameStateRequirements = {
 		{

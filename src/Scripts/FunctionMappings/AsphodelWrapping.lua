@@ -1,10 +1,10 @@
-function game.WrappingEncounterStartPresentation(eventSource)
+function mod.WrappingEncounterStartPresentation(eventSource)
 	if GetConfigOptionValue({ Name = "EditingMode" }) then
 		return
 	end
 
 	-- Using a modified version/original Hades version, as it has a game.wait() call that feels more natural when starting the level
-	game.thread(game.ModsNikkelMHadesBiomesHandleWrapping, eventSource)
+	game.thread(mod.ModsNikkelMHadesBiomesHandleWrapping, eventSource)
 	game.wait(2.0, game.RoomThreadName)
 	Activate({ Ids = { 548133, 548134 } })
 
@@ -20,7 +20,7 @@ function game.WrappingEncounterStartPresentation(eventSource)
 end
 
 -- Already exists
-function game.ModsNikkelMHadesBiomesHandleWrapping(encounter)
+function mod.ModsNikkelMHadesBiomesHandleWrapping(encounter)
 	local wrappingData = encounter.WrappingData
 	wrappingData.StartingIds = GetIds({ Name = wrappingData.StartingGroupName })
 	wrappingData.EndingIds = GetIds({ Name = wrappingData.EndingGroupName })
@@ -135,11 +135,11 @@ function game.ModsNikkelMHadesBiomesHandleWrapping(encounter)
 	end
 end
 
-function game.BeginWrappingEncounter()
+function mod.BeginWrappingEncounter()
 	game.StartEncounterEffects()
 end
 
-function game.WrappingEncounterEndPresentation(eventSource)
+function mod.WrappingEncounterEndPresentation(eventSource)
 	ShakeScreen({ Speed = 100, Distance = 2, FalloffSpeed = 2000, Duration = 4.0 })
 	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, Fraction = 0.17, Duration = 1.0 }, })
 	PlaySound({ Name = "/Leftovers/SFX/AnnouncementThunder" })
@@ -169,7 +169,7 @@ function game.WrappingEncounterEndPresentation(eventSource)
 	SetAnimation({ DestinationId = 548134, Name = "MurderBoatGateReverse" })
 end
 
-function game.WrappingPostCombatReloadPresentation(eventSource)
+function mod.WrappingPostCombatReloadPresentation(eventSource)
 	local encounter = eventSource.Encounter
 	Destroy({ Ids = GetIds({ Name = encounter.WrappingData.StartingGroupName }) })
 end

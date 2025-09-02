@@ -11,7 +11,8 @@ local roomModifications = {}
 mod.ApplyModificationsAndInheritRoomData(roomData, roomModifications, roomReplacements, "Base")
 
 -- For Styx Hub, allow the custom entrance function, and don't spawn familiars in the reload-room fashion, as we do it custom to ensure a proper animation
-table.insert(game.RoomEventData.EntranceFunctionNamePriorities, "ModsNikkelMHadesBiomesReturnToStyxHubPresentation")
+table.insert(game.RoomEventData.EntranceFunctionNamePriorities,
+	_PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesReturnToStyxHubPresentation")
 local blockWeirdFamiliarSpawnStyxHub = {
 	Path = { "CurrentRun", "CurrentRoom", "Name" },
 	IsNone = { "D_Hub" }

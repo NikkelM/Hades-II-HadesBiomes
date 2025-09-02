@@ -110,6 +110,10 @@ local encounterModifications = {
 	-- BOSSES
 	BossHydra = {
 		LoadPackages = { "BiomeB" },
+		StartRoomUnthreadedEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "PickHydraVariant" },
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "ActivateHydra" },
+		},
 		WipeEnemiesOnKillAllTypes = { "HydraHeadImmortal", "HydraHeadImmortalLavamaker", "HydraHeadImmortalSummoner", "HydraHeadImmortalSlammer", "HydraHeadImmortalWavemaker", },
 		CancelSpawnsOnKillAllTypes = { "HydraHeadImmortal", "HydraHeadImmortalLavamaker", "HydraHeadImmortalSummoner", "HydraHeadImmortalSlammer", "HydraHeadImmortalWavemaker", },
 		CancelSpawnsOnKill = mod.NilValue,

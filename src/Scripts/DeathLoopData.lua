@@ -22,7 +22,7 @@ function mod.SpawnHadesRunStartDoor(source, args)
 	})
 	chaosGate.ActivateIds = { chaosGate.ObjectId }
 
-	chaosGate.SetupEvents = { { FunctionName = "ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade", }, }
+	chaosGate.SetupEvents = { { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade", }, }
 	chaosGate.SpeakerName = nil
 	chaosGate.DistanceTrigger = {}
 	chaosGate.UnlockedSound = nil

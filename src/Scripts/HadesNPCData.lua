@@ -311,7 +311,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		PurchaseAnimationGroupName = "Combat_Menu_Overlay_Additive",
 		PortraitShift = { Distance = 250, Angle = 180, Duration = 0.3, EaseIn = 0.5, EaseOut = 1.0, },
 		OverwriteTableKeys = { SkipUpgradePresentationAndExitUnlock = true, },
-		OnCloseFinishedFunctionName = "ModsNikkelMHadesBiomesNPCPostChoicePresentation",
+		OnCloseFinishedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesNPCPostChoicePresentation",
 		UpgradeOptions = {
 			{
 				Type = "Trait",
@@ -350,7 +350,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		PurchaseAnimationGroupName = "Combat_Menu_Overlay_Additive",
 		PortraitShift = { Distance = 250, Angle = 180, Duration = 0.3, EaseIn = 0.5, EaseOut = 1.0, },
 		OverwriteTableKeys = { SkipUpgradePresentationAndExitUnlock = true, },
-		OnCloseFinishedFunctionName = "ModsNikkelMHadesBiomesNPCPostChoicePresentation",
+		OnCloseFinishedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesNPCPostChoicePresentation",
 		UpgradeOptions = {
 			{
 				Type = "Trait",
@@ -380,7 +380,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		PurchaseAnimationGroupName = "Combat_Menu_Overlay_Additive",
 		PortraitShift = { Distance = 250, Angle = 180, Duration = 0.3, EaseIn = 0.5, EaseOut = 1.0, },
 		OverwriteTableKeys = { SkipUpgradePresentationAndExitUnlock = true, },
-		OnCloseFinishedFunctionName = "ModsNikkelMHadesBiomesNPCPostChoicePresentation",
+		OnCloseFinishedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesNPCPostChoicePresentation",
 		UpgradeOptions = {
 			{
 				Type = "Trait",

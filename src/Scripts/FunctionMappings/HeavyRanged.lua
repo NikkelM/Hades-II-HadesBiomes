@@ -1,7 +1,7 @@
 -- Functions required by the HeavyRanged enemy
 
 -- Creates "Tethers", which are floating parts of the enemy (e.g. the small crystals for HeavyRanged or the neck for the Hydra heads)
-function game.CreateTethers(newEnemy, args)
+function mod.CreateTethers(newEnemy, args)
 	if newEnemy == nil or newEnemy.Tethers == nil or newEnemy.TetherIds ~= nil then
 		return
 	end
@@ -60,7 +60,7 @@ function game.CreateTethers(newEnemy, args)
 	end
 end
 
-function game.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimation)
+function mod.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimation)
 	if victim.TetherIds == nil then
 		return
 	end
@@ -97,7 +97,7 @@ function game.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimati
 end
 
 -- Is called whenever HeavyRanged hits.
-function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimId, triggerArgs)
+function mod.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimId, triggerArgs)
 	-- The first hit of each burst should not do anything, as it is the lock-on "hit"
 	if triggerArgs.Detonation == 0 then
 		triggerArgs.DamageAmount = 0
@@ -107,18 +107,18 @@ function game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victim
 	triggerArgs.SourceWeapon = "HeavyRangedWeapon"
 end
 
-function game.ModsNikkelMHadesBiomesHeavyRangedSplitterFragmentOnWeaponHit(victim, victimId, triggerArgs)
+function mod.ModsNikkelMHadesBiomesHeavyRangedSplitterFragmentOnWeaponHit(victim, victimId, triggerArgs)
 	-- Don't deal damage to the miniboss itself
 	if victim.ObjectId ~= game.CurrentRun.Hero.ObjectId then
 		triggerArgs.DamageAmount = 0
 		triggerArgs.Silent = true
 	else
-		game.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimId, triggerArgs)
+		mod.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimId, triggerArgs)
 	end
 end
 
 -- Stops new fragments from spawning after the miniboss dies
-function game.ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath(victim, victimId, triggerArgs)
+function mod.ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath(victim, victimId, triggerArgs)
 	CancelWeaponFireRequests({ Id = victim.ObjectId })
 	ExpireProjectiles({ Names = { "SpawnSplitterFragment" } })
 end

@@ -52,7 +52,7 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 			local unitIdToEnrage = GetClosestUnitOfType({ Id = victim.ObjectId, DestinationName = victim.EnrageOnDeath })
 			if unitIdToEnrage ~= 0 and game.ActiveEnemies[unitIdToEnrage] ~= nil then
 				game.ActiveEnemies[unitIdToEnrage].PermanentEnraged = true
-				game.thread(game.EnrageUnit, game.ActiveEnemies[unitIdToEnrage], game.CurrentRun, victim.EnrageOnDeathStartDelay)
+				game.thread(mod.EnrageUnit, game.ActiveEnemies[unitIdToEnrage], game.CurrentRun, victim.EnrageOnDeathStartDelay)
 			end
 		end
 	end

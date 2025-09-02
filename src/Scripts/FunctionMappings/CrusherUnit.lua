@@ -1,5 +1,5 @@
 -- Used for all modded units with touchdown behavior
-function game.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
+function mod.ModsNikkelMHadesBiomesUnitTouchdown(unit, args)
 	args = args or {}
 	if args.Delay then
 		game.wait(args.Delay, unit.AIThreadName)
@@ -48,7 +48,7 @@ end
 -- More upward force to move the enemy off screen completely
 -- SetInvulnerable to prevent the airborne enemy from being affected by the Cast
 -- For some reason, even though the function no longer exists in Hades II, we still need to use another name
-function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
+function mod.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 	currentRun = currentRun or game.CurrentRun
 	if enemy.WakeUpDelay ~= nil or (enemy.WakeUpDelayMin ~= nil and enemy.WakeUpDelayMax ~= nil) then
 		local wakeUpDelay = enemy.WakeUpDelay or game.RandomFloat(enemy.WakeUpDelayMin, enemy.WakeUpDelayMax)
@@ -120,7 +120,7 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 			-- Movement
 			game.MoveWithinRange(enemy, aiData.MoveToId or aiData.TargetId, aiData)
 
-			while aiData.WaitIfBlockedDistance ~= nil and game.IsLocationBlockedWithinDistance(enemy, aiData.WaitIfBlockedDistance) do
+			while aiData.WaitIfBlockedDistance ~= nil and mod.IsLocationBlockedWithinDistance(enemy, aiData.WaitIfBlockedDistance) do
 				game.Retreat(enemy, aiData, aiData.TargetId)
 				game.wait(game.CalcEnemyWait(enemy,
 						game.RandomFloat(aiData.WaitIfBlockedDurationMin or 0.5, aiData.WaitIfBlockedDurationMax or 5.0)),
@@ -178,7 +178,7 @@ function game.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 	end
 end
 
-function game.IsLocationBlockedWithinDistance(source, distance)
+function mod.IsLocationBlockedWithinDistance(source, distance)
 	for enemyId, enemy in pairs(game.ShallowCopyTable(game.ActiveEnemies)) do
 		if enemy.BlockingLocation and enemy.ObjectId ~= source.ObjectId then
 			if GetDistance({ Id = enemy.ObjectId, DestinationId = source.ObjectId }) < distance then

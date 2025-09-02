@@ -29,11 +29,7 @@ function mod.ModifyEnemyTrapData(enemyData)
 			AIResetDistance = 110,
 			MaxVictimZ = 1,
 		},
-		AIOptions =
-		{
-			-- RemoteAttack
-			"RemoteAttackModsNikkelMHadesBiomes"
-		},
+		AIOptions = { _PLUGIN.guid .. "." .. "RemoteAttackModsNikkelMHadesBiomes" },
 		ToggleTrap = true,
 	}
 	-- Fires when the player steps on a Dart trap plate
@@ -93,7 +89,7 @@ function mod.ModifyEnemyTrapData(enemyData)
 end
 
 -- For the PhalanxTrap/SpearTrap in Elysium
-function game.AttackOnlyGroups(enemy, currentRun)
+function mod.AttackOnlyGroups(enemy, currentRun)
 	if enemy.IdleAnimation ~= nil then
 		SetAnimation({ Name = enemy.IdleAnimation, DestinationId = enemy.ObjectId })
 	end
@@ -256,7 +252,7 @@ function game.AttackOnlyGroups(enemy, currentRun)
 end
 
 -- For the ArcherTrap in Elysium among others
-function game.PassiveAttack(enemy, currentRun)
+function mod.PassiveAttack(enemy, currentRun)
 	enemy.WeaponName = enemy.WeaponName or game.SelectWeapon(enemy)
 	local weaponAIData = game.GetWeaponAIData(enemy) or {}
 
@@ -418,7 +414,7 @@ function game.PassiveAttack(enemy, currentRun)
 	end
 end
 
-function game.ModsNikkelMHadesBiomesToggleTrapState(enemy, aiData)
+function mod.ModsNikkelMHadesBiomesToggleTrapState(enemy, aiData)
 	if enemy.ModsNikkelMHadesBiomesCurrentlyActive then
 		enemy.ModsNikkelMHadesBiomesCurrentlyActive = false
 	else

@@ -1,5 +1,5 @@
 -- Lock the escape chaos gate if the shrine upgrade does not allow starting a run yet
-function game.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(source, args)
+function mod.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(source, args)
 	args = args or {}
 
 	local shouldLock = false
@@ -41,7 +41,7 @@ modutil.mod.Path.Wrap("UpdateEscapeDoorForLimitGraspShrineUpgrade", function(bas
 			return
 		end
 
-		game.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(nil, { EscapeDoorIds = { moddedEscapeDoorId } })
+		mod.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(nil, { EscapeDoorIds = { moddedEscapeDoorId } })
 	end
 	base(source, args)
 end)

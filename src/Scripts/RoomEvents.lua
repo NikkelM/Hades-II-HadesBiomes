@@ -1,4 +1,4 @@
-function game.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
+function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 	game.HideCombatUI("BossIntro")
 	AddInputBlock({ Name = "BossIntro" })
 	game.AddTimerBlock(game.CurrentRun, "BossIntro")
@@ -71,7 +71,7 @@ function game.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 	end
 end
 
-function game.ActivatePrePlacedByShrineLevel(eventSource, args)
+function mod.ActivatePrePlacedByShrineLevel(eventSource, args)
 	local shrineLevel = game.GetNumShrineUpgrades(eventSource.ShrineMetaUpgradeName)
 	game.ActivatePrePlaced(eventSource, args[shrineLevel])
 end

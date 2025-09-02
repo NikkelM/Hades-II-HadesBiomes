@@ -1,5 +1,5 @@
 -- Exact same as the original, but with a different trigger animation (for the Z-Offset)
-function game.ModsNikkelMHadesBiomesDamageEchoTrigger(enemy, effectName, damageMultiplier, additiveDamageMultiplier,
+function mod.ModsNikkelMHadesBiomesDamageEchoTrigger(enemy, effectName, damageMultiplier, additiveDamageMultiplier,
 																											cooldown)
 	if enemy and not enemy.IsDead and game.IsEmpty(enemy.InvulnerableFlags) then
 		CreateAnimation({
@@ -38,7 +38,7 @@ end
 modutil.mod.Path.Wrap("DamageEchoTrigger",
 	function(base, enemy, effectName, damageMultiplier, additiveDamageMultiplier, cooldown)
 		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.ModsNikkelMHadesBiomesIsModdedEnemy and not enemy.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy then
-			game.ModsNikkelMHadesBiomesDamageEchoTrigger(enemy, effectName, damageMultiplier, additiveDamageMultiplier,
+			mod.ModsNikkelMHadesBiomesDamageEchoTrigger(enemy, effectName, damageMultiplier, additiveDamageMultiplier,
 				cooldown)
 		else
 			base(enemy, effectName, damageMultiplier, additiveDamageMultiplier, cooldown)

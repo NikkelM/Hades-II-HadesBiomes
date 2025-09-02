@@ -1,4 +1,4 @@
-function game.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
+function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	RemoveInputBlock({ Name = "PlayTextLines" })
 
 	RandomSynchronize(9)
@@ -68,7 +68,7 @@ function game.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	AddInputBlock({ Name = "PlayTextLines" })
 end
 
-function game.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
+function mod.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
 	args = args or {}
 	local heroId = game.CurrentRun.Hero.ObjectId
 	local npcId = screen.Source.ObjectId
@@ -104,7 +104,7 @@ modutil.mod.Path.Wrap("BouldyHitPresentation", function(base, victim)
 	end
 end)
 
-function game.ModsNikkelMHadesBiomesSisyphusBuff(args, source)
+function mod.ModsNikkelMHadesBiomesSisyphusBuff(args, source)
 	args = args or {}
 	if args.FunctionName == "GiveRandomConsumables" then
 		if args.Currency ~= nil then
@@ -119,7 +119,7 @@ function game.ModsNikkelMHadesBiomesSisyphusBuff(args, source)
 	end
 end
 
-function game.ModsNikkelMHadesBiomesSisyphusDropPresentation(consumable, args)
+function mod.ModsNikkelMHadesBiomesSisyphusDropPresentation(consumable, args)
 	local source = game.ActiveEnemies[370001] or game.ActiveEnemies
 			[GetClosestUnitOfType({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "NPC_Sisyphus_01", Distance = 9999 })]
 	SetAnimation({ DestinationId = source.ObjectId, Name = "SisyphusElbowing" })
@@ -127,7 +127,7 @@ end
 
 -- #endregion
 -- #region Eurydice
-function game.ModsNikkelMHadesBiomesSingingPresentation(source, ars)
+function mod.ModsNikkelMHadesBiomesSingingPresentation(source, ars)
 	if source.SingingFx ~= nil then
 		CreateAnimation({
 			Name = source.SingingFx,
@@ -145,11 +145,12 @@ function game.ModsNikkelMHadesBiomesSingingPresentation(source, ars)
 	end
 end
 
-function game.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
+function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 	source = source or game.ActiveEnemies[514436]
 
-	game.CurrentRun.EventState[source.ObjectId] = { FunctionName = "ModsNikkelMHadesBiomesSingingPresentation", Args = args }
-	game.ModsNikkelMHadesBiomesSingingPresentation(source, args)
+	game.CurrentRun.EventState[source.ObjectId] = { FunctionName = _PLUGIN.guid ..
+	"." .. "ModsNikkelMHadesBiomesSingingPresentation", Args = args }
+	mod.ModsNikkelMHadesBiomesSingingPresentation(source, args)
 
 	-- Taken from game.SecretMusicPlayer
 	-- Only thing this doesn't do is having Eurydice be the source of the music
@@ -177,21 +178,21 @@ function game.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 	SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
 end
 
-function game.ModsNikkelMHadesBiomesEurydiceBuff(args, source)
+function mod.ModsNikkelMHadesBiomesEurydiceBuff(args, source)
 	args = args or {}
-	game.ModsNikkelMHadesBiomesEurydicePreBuffPresentation(source, args)
+	mod.ModsNikkelMHadesBiomesEurydicePreBuffPresentation(source, args)
 	if args.FunctionName then
 		game.CallFunctionName(args.FunctionName, source, args)
 	end
-	game.ModsNikkelMHadesBiomesEurydicePostBuffPresentation(source, args)
+	mod.ModsNikkelMHadesBiomesEurydicePostBuffPresentation(source, args)
 end
 
-function game.ModsNikkelMHadesBiomesEurydicePreBuffPresentation(source, args)
+function mod.ModsNikkelMHadesBiomesEurydicePreBuffPresentation(source, args)
 	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteExcitement" })
 	game.wait(1.6)
 end
 
-function game.ModsNikkelMHadesBiomesEurydicePostBuffPresentation(source, args)
+function mod.ModsNikkelMHadesBiomesEurydicePostBuffPresentation(source, args)
 	PlaySound({ Name = "/SFX/GyroHealthPickupMunch", Id = game.CurrentRun.Hero.ObjectId })
 	CreateAnimation({ Name = "HealthSparkleBurst", DestinationId = game.CurrentRun.Hero.ObjectId, OffsetZ = 50 })
 end
@@ -199,7 +200,7 @@ end
 -- #endregion
 
 -- #region Patroclus
-function game.ModsNikkelMHadesBiomesPatroclusBuff(args, source)
+function mod.ModsNikkelMHadesBiomesPatroclusBuff(args, source)
 	args = args or {}
 	if args.FunctionName then
 		game.CallFunctionName(args.FunctionName, source, args)
@@ -209,12 +210,12 @@ function game.ModsNikkelMHadesBiomesPatroclusBuff(args, source)
 end
 
 -- For some reason, if the player is too fast exiting this room, the game crashes
-function game.ModsNikkelMHadesBiomesPatroclusExitFunctionName(currentRun, exitDoor, args)
+function mod.ModsNikkelMHadesBiomesPatroclusExitFunctionName(currentRun, exitDoor, args)
 	SetUnitProperty({ Property = "Speed", Value = args.Speed, DestinationId = game.CurrentRun.Hero.ObjectId })
 	game.LeaveRoomPresentation(currentRun, exitDoor)
 end
 
-function game.ModsNikkelMHadesBiomesPatroclusRefillLastStands(args)
+function mod.ModsNikkelMHadesBiomesPatroclusRefillLastStands(args)
 	if not game.CurrentRun.Hero.MaxLastStands then
 		return
 	end
@@ -240,7 +241,7 @@ function game.ModsNikkelMHadesBiomesPatroclusRefillLastStands(args)
 	end
 end
 
-function game.ModsNikkelMHadesBiomesPatroclusAddMaxHealthMana(source, args)
+function mod.ModsNikkelMHadesBiomesPatroclusAddMaxHealthMana(source, args)
 	local healthGained = args.AddMaxHealth or 30
 	local manaGained = args.AddMaxMana or 30
 	game.AddMaxHealth(healthGained, "ResourceMaxHealth", { Silent = true })

@@ -153,14 +153,23 @@ local encounterModifications = {
 		WipeEnemiesOnKillAllTypes = { "Harpy" },
 		CancelSpawnsOnKillAllTypes = { "Harpy" },
 		PostUnthreadedEvents = mod.NilValue,
+		StartRoomUnthreadedEvents = {
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryActivations" },
+		},
 	},
 	BossHarpy2 = {
 		WipeEnemiesOnKillAllTypes = { "Harpy2" },
 		CancelSpawnsOnKillAllTypes = { "Harpy2" },
+		StartRoomUnthreadedEvents = {
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryActivations" },
+		},
 	},
 	BossHarpy3 = {
 		WipeEnemiesOnKillAllTypes = { "Harpy3" },
 		CancelSpawnsOnKillAllTypes = { "Harpy3" },
+		StartRoomUnthreadedEvents = {
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryActivations" },
+		},
 	},
 }
 

@@ -392,7 +392,7 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 	end
 end)
 
-function game.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId, skipCameraLockOnEnd)
+function mod.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId, skipCameraLockOnEnd)
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or
 			0.8
 
@@ -475,7 +475,7 @@ function game.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId
 	game.ShowCombatUI("LeaveRoomPresentation")
 end
 
-function game.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
+function mod.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
 	local exitDoorId = exitDoor.ObjectId
 	AddInputBlock({ Name = "LeaveRoomPresentation" })
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
@@ -484,7 +484,7 @@ function game.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
 
 	-- Custom: Prevent the invulnerable hit presentation from playing when leaving the room and not being centered on the boat
 	local originalExclusiveOnHitFunctionName = currentRun.Hero.ExclusiveOnHitFunctionName
-	currentRun.Hero.ExclusiveOnHitFunctionName = game.AsphodelLeaveRoomPresentationDummyOnHitFunction
+	currentRun.Hero.ExclusiveOnHitFunctionName = mod.AsphodelLeaveRoomPresentationDummyOnHitFunction
 
 	local door = game.MapState.OfferedExitDoors[exitDoorId]
 	local boatId = exitDoorId
@@ -571,19 +571,19 @@ function game.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
 end
 
 -- Doesn't do anything, used to not play the invulnerable hit presentation when leaving the room and not being centered on the boat
-function game.AsphodelLeaveRoomPresentationDummyOnHitFunction(victim, triggerArgs, args)
+function mod.AsphodelLeaveRoomPresentationDummyOnHitFunction(victim, triggerArgs, args)
 end
 
-function game.AngleIdsTowardPlayer(eventSource, args)
+function mod.AngleIdsTowardPlayer(eventSource, args)
 	AngleTowardTarget({ Ids = args.Ids, DestinationId = game.CurrentRun.Hero.ObjectId })
 end
 
-function game.AngleIds(eventSource, args)
+function mod.AngleIds(eventSource, args)
 	AngleTowardTarget({ Ids = args.Ids, DestinationId = args.DestinationId })
 end
 
 -- For D_Intro, to allow the cog wheels to place themselves correctly before the fade in
-function game.ModsNikkelMHadesBiomesDelayedRoomEntranceStandard(currentRun, currentRoom)
+function mod.ModsNikkelMHadesBiomesDelayedRoomEntranceStandard(currentRun, currentRoom)
 	game.wait(2.0)
 	game.RoomEntranceStandard(currentRun, currentRoom)
 end

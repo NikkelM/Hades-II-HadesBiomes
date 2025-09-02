@@ -1,10 +1,10 @@
-function game.CrawlerMiniBossEndPresentation(eventSource)
+function mod.CrawlerMiniBossEndPresentation(eventSource)
 	SetSoundCueValue({ Names = { "Section", }, Id = game.AudioState.SecretMusicId, Value = 10 })
 	game.AudioState.SecretMusicId = nil
 	game.AudioState.SecretMusicName = nil
 end
 
-function game.ModsNikkelMHadesBiomesOnDeathFireProjectile(unit, args)
+function mod.ModsNikkelMHadesBiomesOnDeathFireProjectile(unit, args)
 	CreateProjectileFromUnit({
 		Name = args.ProjectileName,
 		Id = unit.ObjectId,

@@ -1,17 +1,17 @@
-function game.BossIntroHydra(eventSource, args)
+function mod.BossIntroHydra(eventSource, args)
 	args.ProcessTextLinesIds = { eventSource.Encounter.BossId }
 	args.SetupBossIds = { eventSource.Encounter.BossId }
-	game.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
+	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 end
 
-function game.RoomEntranceBossHydra(currentRun, currentRoom)
+function mod.RoomEntranceBossHydra(currentRun, currentRoom)
 	local hydraId = currentRoom.Encounter.BossId
 	local hydra = game.ActiveEnemies[hydraId] or {}
 	game.HideCombatUI("BossEntrance")
 
 	-- Custom: Prevent the invulnerable hit presentation from playing when leaving the room and not being centered on the boat
 	local originalExclusiveOnHitFunctionName = currentRun.Hero.ExclusiveOnHitFunctionName
-	currentRun.Hero.ExclusiveOnHitFunctionName = game.AsphodelLeaveRoomPresentationDummyOnHitFunction
+	currentRun.Hero.ExclusiveOnHitFunctionName = mod.AsphodelLeaveRoomPresentationDummyOnHitFunction
 	game.SetPlayerInvulnerable("EnterRoomPresentation")
 
 	for k, id in pairs(GetIds({ Name = currentRoom.ExitGroupName }) or {}) do
@@ -31,7 +31,7 @@ function game.RoomEntranceBossHydra(currentRun, currentRoom)
 	if hydra.SwapAnimations ~= nil then
 		SetAnimation({ Name = hydra.SwapAnimations["EnemyHydraSleep_Loop"] or "EnemyHydraSleep_Loop", DestinationId = hydraId })
 	end
-	game.thread(game.AsphodelEnterRoomPresentation, currentRun, currentRoom, hydraId, true)
+	game.thread(mod.AsphodelEnterRoomPresentation, currentRun, currentRoom, hydraId, true)
 
 	currentRun.Hero.ExclusiveOnHitFunctionName = originalExclusiveOnHitFunctionName
 
@@ -48,7 +48,7 @@ function game.RoomEntranceBossHydra(currentRun, currentRoom)
 		SetAnimation({ DestinationId = hydraId, Name = hydra.SwapAnimations["EnemyHydraRoarFire"] or "EnemyHydraRoarFire" })
 	end
 
-	game.thread(game.HydraRoarPresentation)
+	game.thread(mod.HydraRoarPresentation)
 	game.wait(0.8)
 	if hydra.SwapAnimations ~= nil then
 		SetAnimation({ DestinationId = hydraId, Name = hydra.SwapAnimations["EnemyHydraRoarReturnToIdle"] or
@@ -57,7 +57,7 @@ function game.RoomEntranceBossHydra(currentRun, currentRoom)
 	game.UnblockCombatUI("BossEntrance")
 end
 
-function game.HydraRoarPresentation()
+function mod.HydraRoarPresentation()
 	game.wait(0.30)
 	AdjustRadialBlurDistance({ Fraction = 2.0, Duration = 0.3 })
 	AdjustRadialBlurStrength({ Fraction = 1.0, Duration = 0.3 })
@@ -70,7 +70,7 @@ function game.HydraRoarPresentation()
 	AdjustRadialBlurStrength({ Fraction = 0.0, Duration = 0.75 })
 end
 
-function game.PickHydraVariant(eventSource, args)
+function mod.PickHydraVariant(eventSource, args)
 	local eligibleOptions = {}
 	for k, variantName in pairs(args.Options) do
 		if game.IsEnemyEligible(variantName, eventSource) then
@@ -92,29 +92,13 @@ function game.PickHydraVariant(eventSource, args)
 	end
 end
 
-function game.ActivateHydra(eventSource, args)
+function mod.ActivateHydra(eventSource, args)
 	args.LegalTypes = { eventSource.HydraVariant }
 	eventSource.BossId = game.GetFirstValue(GetInactiveIdsByType({ Name = eventSource.HydraVariant }))
 	game.ActivatePrePlaced(eventSource, args)
 end
 
-function game.HydraHeadSpawn(enemy)
-	local encounter = game.CurrentRun.CurrentRoom.Encounter
-	table.insert(encounter.HydraHeads, enemy.ObjectId)
-	SetUnitInvulnerable(game.ActiveEnemies
-		[GetClosestUnitOfType({ Id = enemy.ObjectId, DestinationName = "HydraHeadImmortal" })])
-end
-
-function game.HydraHeadDeath(enemy)
-	local encounter = game.CurrentRun.CurrentRoom.Encounter
-	game.RemoveValue(encounter.HydraHeads, enemy.ObjectId)
-	if game.IsEmpty(encounter.HydraHeads) then
-		SetUnitVulnerable(game.ActiveEnemies
-			[GetClosestUnitOfType({ Id = enemy.ObjectId, DestinationName = "HydraHeadImmortal" })])
-	end
-end
-
-function game.HydraStageTransition(boss, currentRun, aiStage)
+function mod.HydraStageTransition(boss, currentRun, aiStage)
 	local bossId = boss.ObjectId
 
 	Move({ Id = boss.ObjectId, DestinationId = boss.ResetPositionId, SuccessDistance = 100, Mode = "Default" })
@@ -156,13 +140,13 @@ function game.HydraStageTransition(boss, currentRun, aiStage)
 	game.SetAI(game.AttackerAI, boss, currentRun)
 end
 
-function game.HydraFinalStageTransition(boss, currentRun, aiStage)
-	game.HandleTetherParentDeath(boss, boss.DetachedNeckCount, boss.DetachedNeckAnimation)
+function mod.HydraFinalStageTransition(boss, currentRun, aiStage)
+	mod.HandleTetherParentDeath(boss, boss.DetachedNeckCount, boss.DetachedNeckAnimation)
 	SetUnitProperty({ Property = "Speed", Value = boss.DetachedMoveSpeed, DestinationId = boss.ObjectId })
-	game.HydraStageTransition(boss, currentRun, aiStage)
+	mod.HydraStageTransition(boss, currentRun, aiStage)
 end
 
-function game.HydraKillPresentation(unit, args)
+function mod.HydraKillPresentation(unit, args)
 	game.AddTimerBlock(CurrentRun, "HydraKillPresentation")
 	game.SetPlayerInvulnerable("HydraKillPresentation")
 	PlaySound({ Name = "/SFX/StabSplatterEndSequence" })
@@ -177,7 +161,7 @@ function game.HydraKillPresentation(unit, args)
 		end
 	end
 
-	game.HarpyKillPresentation(unit, args)
+	mod.HarpyKillPresentation(unit, args)
 
 	-- This moves the exit barge into view
 	local currentRoom = game.CurrentRun.CurrentRoom
@@ -190,7 +174,7 @@ function game.HydraKillPresentation(unit, args)
 	game.SetPlayerVulnerable("HydraKillPresentation")
 end
 
-function game.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
+function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 	local enemyId = enemy.ObjectId
 	local spawnGroupName = weaponAIData.SpawnGroupName or ("Spawner" .. enemyId)
 	local spawnRadius = weaponAIData.SpawnRadius or 100
@@ -321,7 +305,7 @@ function game.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 end
 
 -- Adapted from TyphonHeadEggAI
-function game.ModsNikkelMHadesBiomesHydraToothAI(enemy)
+function mod.ModsNikkelMHadesBiomesHydraToothAI(enemy)
 	local duration = enemy.DefaultAIData.HatchDuration or 8
 	for i = 1, duration do
 		game.thread(game.InCombatText, enemy.ObjectId, duration + 1 - i, 0.5,

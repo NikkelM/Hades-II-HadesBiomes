@@ -1,4 +1,4 @@
-function game.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
+function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	local dataTable = {
 		Tartarus = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Tartarus",

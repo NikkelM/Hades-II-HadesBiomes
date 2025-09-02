@@ -1,4 +1,4 @@
-function game.RoomEntranceD_Hub(currentRun, currentRoom, args)
+function mod.RoomEntranceD_Hub(currentRun, currentRoom, args)
 	if game.GameState.TextLinesRecord["CerberusStyxMeeting01"] == nil then
 		local cerberusId = 547487
 
@@ -57,7 +57,7 @@ function game.RoomEntranceD_Hub(currentRun, currentRoom, args)
 	end
 end
 
-function game.UseStyxFountain(usee, args)
+function mod.UseStyxFountain(usee, args)
 	local fountain = usee
 	if game.CheckCooldown(fountain.CooldownNamePrefix .. fountain.ObjectId, fountain.CooldownDuration) then
 		ClearEffect({ Id = game.CurrentRun.Hero.ObjectId, Name = "MedeaPoison" })
@@ -69,20 +69,20 @@ function game.UseStyxFountain(usee, args)
 	end
 end
 
-function game.StyxPoisonApply(triggerArgs)
+function mod.StyxPoisonApply(triggerArgs)
 	local unit = triggerArgs.Victim
 	if unit == game.CurrentRun.Hero then
 		if not game.CurrentRun.Hero.IsDead then
-			game.StartStyxPoisonPresentation(unit)
+			mod.StartStyxPoisonPresentation(unit)
 		end
 	end
 end
 
-function game.StyxPoisonClear(triggerArgs)
-	game.EndStyxPoisonPresentation()
+function mod.StyxPoisonClear(triggerArgs)
+	mod.EndStyxPoisonPresentation()
 end
 
-function game.StartStyxPoisonPresentation(unit)
+function mod.StartStyxPoisonPresentation(unit)
 	-- This is from Hades II, but we change the name of the PoisonFountain
 	if game.ScreenAnchors.PoisonVignetteId == nil then
 		game.ScreenAnchors.PoisonVignetteId = game.CreateScreenObstacle({
@@ -114,13 +114,12 @@ function game.StartStyxPoisonPresentation(unit)
 	end
 end
 
-function game.EndStyxPoisonPresentation()
+function mod.EndStyxPoisonPresentation()
 	game.EndPoisonPresentation()
 end
 
 -- For Reprieve room spawning the Satyr sack
-function game.SpawnConsumables(eventSource, args)
-	mod.PrintTable(args)
+function mod.SpawnConsumables(eventSource, args)
 	for k, spawnData in pairs(args.Spawns) do
 		local consumableId = SpawnObstacle({
 			Name = spawnData.ConsumableName,
@@ -133,6 +132,7 @@ function game.SpawnConsumables(eventSource, args)
 end
 
 -- After talking to Cerberus, the exit door unlocks
+-- TODO: Move to mod.
 function game.UnlockDoor(source, args)
 	if args.RelockAllDoors then
 		game.RelockAllDoors(source, args)
@@ -151,6 +151,7 @@ function game.UnlockDoor(source, args)
 	door.ReadyToUse = true
 end
 
+-- TODO: Move to mod.
 function game.RelockAllDoors(source, args)
 	for id, door in pairs(game.MapState.OfferedExitDoors) do
 		if id ~= args.DoorId then
@@ -163,6 +164,7 @@ function game.RelockAllDoors(source, args)
 	game.MapState.OfferedExitDoors = {}
 end
 
+-- TODO: Move to mod.
 function game.ExitNPCPresentation(source, args)
 	AddInputBlock({ Name = "NPCExit" })
 	game.wait(args.InitialWaitTime or 0)
@@ -231,7 +233,7 @@ function game.ExitNPCPresentation(source, args)
 	end
 end
 
-function game.ModsNikkelMHadesBiomesReturnToStyxHubPresentation(currentRun, currentRoom, args)
+function mod.ModsNikkelMHadesBiomesReturnToStyxHubPresentation(currentRun, currentRoom, args)
 	AddInputBlock({ Name = "ModsNikkelMHadesBiomesReturnToStyxHubPresentation" })
 	local roomData = game.RoomData[currentRoom.Name] or currentRoom
 	local roomIntroSequenceDuration = roomData.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or 0.0

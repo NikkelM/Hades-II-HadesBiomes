@@ -3,7 +3,7 @@ modutil.mod.Path.Wrap("IsGameStateEligible", function(base, source, requirements
 
 	-- If it's a modded run and the already existing requirements are met, also check the Hades requirements
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
-		isEligible = game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
+		isEligible = mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
 		if not isEligible then
 			-- TODO: Debugging only
 			mod.DebugPrint(requirements)
@@ -18,7 +18,7 @@ modutil.mod.Path.Wrap("IsVoiceLineEligible", function(base, line, prevLine, pare
 	local isEligible = base(line, prevLine, parentLine, source, args)
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
-		return game.ModsNikkelMHadesBiomesIsGameStateEligible(source, line, args)
+		return mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, line, args)
 	end
 
 	return isEligible
@@ -32,7 +32,7 @@ modutil.mod.Path.Wrap("IsEnemyEligible", function(base, enemyName, encounter, wa
 		if game.EnemyData[enemyName].IsElite and game.GetNumShrineUpgrades("EnemyEliteShrineUpgrade") > 0 then
 			args.SkipMinBiomeDepth = true
 		end
-		return game.ModsNikkelMHadesBiomesIsGameStateEligible(game.EnemyData[enemyName], game.EnemyData[enemyName], args)
+		return mod.ModsNikkelMHadesBiomesIsGameStateEligible(game.EnemyData[enemyName], game.EnemyData[enemyName], args)
 	end
 
 	return isEligible
@@ -42,7 +42,7 @@ modutil.mod.Path.Wrap("IsRoomEligible", function(base, currentRun, currentRoom, 
 	local isEligible = base(currentRun, currentRoom, nextRoomData, args)
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
-		return game.ModsNikkelMHadesBiomesIsGameStateEligible(nextRoomData, nextRoomData, args)
+		return mod.ModsNikkelMHadesBiomesIsGameStateEligible(nextRoomData, nextRoomData, args)
 	end
 
 	return isEligible
@@ -52,7 +52,7 @@ modutil.mod.Path.Wrap("IsEncounterEligible", function(base, currentRun, room, ne
 	local isEligible = base(currentRun, room, nextEncounterData, args)
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
-		return game.ModsNikkelMHadesBiomesIsGameStateEligible(nextEncounterData, nextEncounterData, args)
+		return mod.ModsNikkelMHadesBiomesIsGameStateEligible(nextEncounterData, nextEncounterData, args)
 	end
 
 	return isEligible
@@ -62,7 +62,7 @@ modutil.mod.Path.Wrap("IsInspectPointEligible", function(base, currentRun, sourc
 	local isEligible = base(currentRun, source, inspectPointData)
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
-		return game.ModsNikkelMHadesBiomesIsGameStateEligible(source, inspectPointData)
+		return mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, inspectPointData)
 	end
 
 	return isEligible
@@ -73,13 +73,13 @@ modutil.mod.Path.Wrap("IsTextLineEligible", function(base, currentRun, source, l
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
 		-- Check if the whole line is eligible
-		if not game.ModsNikkelMHadesBiomesIsGameStateEligible(source, line, args) then
+		if not mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, line, args) then
 			return false
 		end
 		-- But also check if the inner cues are eligible, as in Hades I, there can be requirements in there sometimes
 		for _, cue in ipairs(line) do
 			if type(cue) == "table" then
-				if not game.ModsNikkelMHadesBiomesIsGameStateEligible(source, cue, args) then
+				if not mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, cue, args) then
 					return false
 				end
 			end
@@ -90,31 +90,31 @@ modutil.mod.Path.Wrap("IsTextLineEligible", function(base, currentRun, source, l
 	return isEligible
 end)
 
-function game.HasSeenEncounter(encounterName)
+function mod.HasSeenEncounter(encounterName)
 	if game.GameState.EncountersOccurredCache[encounterName] ~= nil and game.GameState.EncountersOccurredCache[encounterName] > 0 then
 		return true
 	end
 	return false
 end
 
-function game.HasSeenRoom(roomName, excludeThisRun)
+function mod.HasSeenRoom(roomName, excludeThisRun)
 	if game.GameState.RoomCountCache[roomName] ~= nil and game.GameState.RoomCountCache[roomName] > 0 then
 		return true
 	end
-	if not excludeThisRun and game.HasSeenRoomInRun(CurrentRun, roomName) then
+	if not excludeThisRun and mod.HasSeenRoomInRun(CurrentRun, roomName) then
 		return true
 	end
 	return false
 end
 
-function game.HasSeenRoomEarlierInRun(run, roomName)
+function mod.HasSeenRoomEarlierInRun(run, roomName)
 	if run.RoomCountCache[roomName] ~= nil and run.RoomCountCache[roomName] > 0 then
 		return true
 	end
 	return false
 end
 
-function game.HasSeenRoomInRun(run, roomName)
+function mod.HasSeenRoomInRun(run, roomName)
 	if run.CurrentRoom ~= nil and run.CurrentRoom.Name == roomName then
 		return true
 	end
@@ -124,7 +124,7 @@ function game.HasSeenRoomInRun(run, roomName)
 	return false
 end
 
-function game.GetFastestRunClearTime(currentRun)
+function mod.GetFastestRunClearTime(currentRun)
 	local fastestTime = 999999
 	if currentRun.Cleared then
 		fastestTime = currentRun.GameplayTime
@@ -137,7 +137,7 @@ function game.GetFastestRunClearTime(currentRun)
 	return fastestTime
 end
 
-function game.GetHighestShrinePointRunClear(currentRun, args)
+function mod.GetHighestShrinePointRunClear(currentRun, args)
 	args = args or {}
 	local highestPoints = 0
 	if currentRun ~= nil and currentRun.Cleared and currentRun.ShrinePointsCache ~= nil then
@@ -155,7 +155,7 @@ function game.GetHighestShrinePointRunClear(currentRun, args)
 	return highestPoints
 end
 
-function game.RunHasOneOfTraits(run, traits)
+function mod.RunHasOneOfTraits(run, traits)
 	if run.TraitCache == nil then
 		return false
 	end
@@ -167,7 +167,7 @@ function game.RunHasOneOfTraits(run, traits)
 	return false
 end
 
-function game.RunHasTraits(run, traits)
+function mod.RunHasTraits(run, traits)
 	if run.TraitCache == nil then
 		return false
 	end
@@ -179,7 +179,7 @@ function game.RunHasTraits(run, traits)
 	return true
 end
 
-function game.IsMetaUpgradeActive(upgradeName, args)
+function mod.IsMetaUpgradeActive(upgradeName, args)
 	args = args or {}
 	if game.Contains(game.ShrineUpgradeOrder, upgradeName) then
 		return true
@@ -187,7 +187,7 @@ function game.IsMetaUpgradeActive(upgradeName, args)
 	return false
 end
 
-function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
+function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
 	if args == nil then
 		args = {}
 	end
@@ -585,7 +585,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 
 	if requirements.ConsecutiveDeathsInRoom ~= nil then --
 		local consecutiveDeathsInRoom = 0
-		if HasSeenRoomEarlierInRun(game.CurrentRun, requirements.ConsecutiveDeathsInRoom.Name) then
+		if mod.HasSeenRoomEarlierInRun(game.CurrentRun, requirements.ConsecutiveDeathsInRoom.Name) then
 			if not game.CurrentRun.Cleared and game.CurrentRun.EndingRoomName == requirements.ConsecutiveDeathsInRoom.Name then
 				-- Saw the room this run and died in it, streak continues
 				consecutiveDeathsInRoom = consecutiveDeathsInRoom + 1
@@ -596,7 +596,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 		end
 		for i = #game.GameState.RunHistory, 1, -1 do
 			local run = game.GameState.RunHistory[i]
-			if HasSeenRoomInRun(run, requirements.ConsecutiveDeathsInRoom.Name) then
+			if mod.HasSeenRoomInRun(run, requirements.ConsecutiveDeathsInRoom.Name) then
 				if not run.Cleared and run.EndingRoomName == requirements.ConsecutiveDeathsInRoom.Name then
 					-- Saw the room this run and died in it, streak continues
 					consecutiveDeathsInRoom = consecutiveDeathsInRoom + 1
@@ -614,7 +614,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 
 	if requirements.ConsecutiveClearsOfRoom ~= nil then --
 		local consecutiveClearsOfRoom = 0
-		if HasSeenRoomEarlierInRun(game.CurrentRun, requirements.ConsecutiveClearsOfRoom.Name) then
+		if mod.HasSeenRoomEarlierInRun(game.CurrentRun, requirements.ConsecutiveClearsOfRoom.Name) then
 			if game.CurrentRun.Cleared or game.CurrentRun.EndingRoomName ~= requirements.ConsecutiveClearsOfRoom.Name then
 				-- Saw the room this run and didn't die in it, streak continues
 				consecutiveClearsOfRoom = consecutiveClearsOfRoom + 1
@@ -625,7 +625,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 		end
 		for i = #game.GameState.RunHistory, 1, -1 do
 			local run = game.GameState.RunHistory[i]
-			if HasSeenRoomInRun(run, requirements.ConsecutiveClearsOfRoom.Name) then
+			if mod.HasSeenRoomInRun(run, requirements.ConsecutiveClearsOfRoom.Name) then
 				if run.Cleared or run.EndingRoomName ~= requirements.ConsecutiveClearsOfRoom.Name then
 					-- Saw the room this run and didn't die in it, streak continues
 					consecutiveClearsOfRoom = consecutiveClearsOfRoom + 1
@@ -641,14 +641,14 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	end
 
 	if requirements.RequiredFalseSeenRoomThisRun ~= nil then --
-		if HasSeenRoomInRun(game.CurrentRun, requirements.RequiredFalseSeenRoomThisRun) then
+		if mod.HasSeenRoomInRun(game.CurrentRun, requirements.RequiredFalseSeenRoomThisRun) then
 			return false
 		end
 	end
 
 	if requirements.RequiredFalseSeenRoomsThisRun ~= nil then --
 		for k, roomName in pairs(requirements.RequiredFalseSeenRoomsThisRun) do
-			if HasSeenRoomInRun(game.CurrentRun, roomName) then
+			if mod.HasSeenRoomInRun(game.CurrentRun, roomName) then
 				return false
 			end
 		end
@@ -780,17 +780,17 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 			end
 		end
 	end
-	if requirements.RequiredRunHasOneOfTraits ~= nil and not RunHasOneOfTraits(requirements.RequiredRunHasOneOfTraits) then --
+	if requirements.RequiredRunHasOneOfTraits ~= nil and not mod.RunHasOneOfTraits(requirements.RequiredRunHasOneOfTraits) then --
 		return false
 	end
 
 	if requirements.RequiredClearedWithTraits ~= nil then -- not used anywhere
 		local hasClear = false
-		if game.CurrentRun.Cleared and RunHasTraits(game.CurrentRun, requirements.RequiredClearedWithTraits) then
+		if game.CurrentRun.Cleared and mod.RunHasTraits(game.CurrentRun, requirements.RequiredClearedWithTraits) then
 			hasClear = true
 		else
 			for k, prevRun in pairs(game.GameState.RunHistory) do
-				if prevRun.Cleared and RunHasTraits(prevRun, requirements.RequiredClearedWithTraits) then
+				if prevRun.Cleared and mod.RunHasTraits(prevRun, requirements.RequiredClearedWithTraits) then
 					hasClear = true
 					break
 				end
@@ -878,28 +878,28 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	end
 	if requirements.RequiredSeenRooms ~= nil then
 		for k, roomName in pairs(requirements.RequiredSeenRooms) do
-			if not HasSeenRoom(roomName) then
+			if not mod.HasSeenRoom(roomName) then
 				return false
 			end
 		end
 	end
 	if requirements.RequiredFalseSeenRooms ~= nil then
 		for k, roomName in pairs(requirements.RequiredFalseSeenRooms) do
-			if HasSeenRoom(roomName) then
+			if mod.HasSeenRoom(roomName) then
 				return false
 			end
 		end
 	end
 	if requirements.RequiredSeenRoomsBeforeThisRun ~= nil then
 		for k, roomName in pairs(requirements.RequiredSeenRoomsBeforeThisRun) do
-			if not HasSeenRoom(roomName, true) then
+			if not mod.HasSeenRoom(roomName, true) then
 				return false
 			end
 		end
 	end
 	if requirements.RequiredFalseSeenRoomsBeforeThisRun ~= nil then
 		for k, roomName in pairs(requirements.RequiredFalseSeenRoomsBeforeThisRun) do
-			if HasSeenRoom(roomName, true) then
+			if mod.HasSeenRoom(roomName, true) then
 				return false
 			end
 		end
@@ -1039,7 +1039,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	if requirements.RequireOneOfEncountersSeen ~= nil then
 		local hasEncounter = false
 		for i, name in pairs(requirements.RequireOneOfEncountersSeen) do
-			if HasSeenEncounter(name) then
+			if mod.HasSeenEncounter(name) then
 				hasEncounter = true
 				break
 			end
@@ -1220,20 +1220,20 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	end
 
 	if requirements.RequiresBestClearTime and game.CurrentRun.Cleared then
-		local recordTime = GetFastestRunClearTime(game.CurrentRun)
+		local recordTime = mod.GetFastestRunClearTime(game.CurrentRun)
 		if game.CurrentRun.GameplayTime > recordTime then
 			return false
 		end
 	end
 
 	if requirements.RequiresBestClearTimeLastRun and prevRun ~= nil and prevRun.Cleared then
-		local recordTime = GetFastestRunClearTime(prevRun)
+		local recordTime = mod.GetFastestRunClearTime(prevRun)
 		if prevRun.GameplayTime > recordTime then
 			return false
 		end
 	end
 
-	if requirements.RequiredMinClearTime ~= nil and GetFastestRunClearTime(game.CurrentRun) > requirements.RequiredMinClearTime then
+	if requirements.RequiredMinClearTime ~= nil and mod.GetFastestRunClearTime(game.CurrentRun) > requirements.RequiredMinClearTime then
 		return false
 	end
 
@@ -1340,11 +1340,11 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 		return false
 	end
 
-	if requirements.RequiredAtLeastShrinePointClear ~= nil and GetHighestShrinePointRunClear(game.CurrentRun) < requirements.RequiredAtLeastShrinePointClear then
+	if requirements.RequiredAtLeastShrinePointClear ~= nil and mod.GetHighestShrinePointRunClear(game.CurrentRun) < requirements.RequiredAtLeastShrinePointClear then
 		return false
 	end
 
-	if requirements.RequiredAtMostShrinePointClear ~= nil and GetHighestShrinePointRunClear(game.CurrentRun) > requirements.RequiredAtMostShrinePointClear then
+	if requirements.RequiredAtMostShrinePointClear ~= nil and mod.GetHighestShrinePointRunClear(game.CurrentRun) > requirements.RequiredAtMostShrinePointClear then
 		return false
 	end
 
@@ -1530,7 +1530,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	-- 			return false
 	-- 		end
 	-- 		local investment = game.GameState.MetaUpgradeState[metaupgradeName] or 0
-	-- 		if IsMetaUpgradeActive(metaupgradeName) then
+	-- 		if mod.IsMetaUpgradeActive(metaupgradeName) then
 	-- 			investment = game.GameState.MetaUpgrades[metaupgradeName] or 0
 	-- 		end
 
@@ -1552,7 +1552,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	-- 			return false
 	-- 		end
 	-- 		local investment = game.GameState.MetaUpgradeState[metaupgradeName] or 0
-	-- 		if IsMetaUpgradeActive(metaupgradeName) then
+	-- 		if mod.IsMetaUpgradeActive(metaupgradeName) then
 	-- 			investment = game.GameState.MetaUpgrades[metaupgradeName] or 0
 	-- 		end
 
@@ -1815,7 +1815,7 @@ function game.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, ar
 	end
 
 	if requirements.RequiredSeenEncounter ~= nil then
-		if not HasSeenEncounter(requirements.RequiredSeenEncounter) then
+		if not mod.HasSeenEncounter(requirements.RequiredSeenEncounter) then
 			return false
 		end
 	end

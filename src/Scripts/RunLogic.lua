@@ -15,7 +15,7 @@ modutil.mod.Path.Wrap("RunStateInit", function(base)
 end)
 
 -- Displays the biome's name as a banner at the top when entering the first room
-function game.DisplayLocationText(source, args)
+function mod.DisplayLocationText(source, args)
 	if not args.Delay then
 		args.Delay = 1.5
 	end
@@ -204,7 +204,7 @@ modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, ne
 	local isForced = base(currentRun, currentRoom, nextRoomData, args, otherDoors)
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isForced then
-		if currentRoom ~= nil and currentRoom.ForceWingEndMiniBoss and nextRoomData.WingEndMiniBoss and (currentRun.CompletedStyxWings < 4 or game.HasSeenRoomInRun(currentRun, "D_Reprieve01")) then
+		if currentRoom ~= nil and currentRoom.ForceWingEndMiniBoss and nextRoomData.WingEndMiniBoss and (currentRun.CompletedStyxWings < 4 or mod.HasSeenRoomInRun(currentRun, "D_Reprieve01")) then
 			return true
 		end
 

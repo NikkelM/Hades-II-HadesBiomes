@@ -1,4 +1,4 @@
-function game.MultiFuryIntro(eventSource, args)
+function mod.MultiFuryIntro(eventSource, args)
 	local boss = game.ActiveEnemies[args.BossId]
 	for k, supportAIName in pairs(boss.SupportAINames) do
 		local obstacleName = "MultiFury" .. supportAIName .. "Intro"
@@ -10,7 +10,7 @@ function game.MultiFuryIntro(eventSource, args)
 	end
 end
 
-function game.SelectHarpySupportAIs(enemy)
+function mod.SelectHarpySupportAIs(enemy)
 	local shrineLevel = game.GetNumShrineUpgrades(enemy.ShrineMetaUpgradeName)
 	enemy.SupportAINames = enemy.SupportAINames or {}
 
@@ -27,7 +27,7 @@ function game.SelectHarpySupportAIs(enemy)
 	end
 end
 
-function game.MultiFuryActivations(eventSource, args)
+function mod.MultiFuryActivations(eventSource, args)
 	local boss = game.ActiveEnemies[args.BossId]
 	boss.MultiFuryObstacleIds = {}
 
@@ -37,7 +37,7 @@ function game.MultiFuryActivations(eventSource, args)
 	end
 end
 
-function game.HarpySupportAI(enemy)
+function mod.HarpySupportAI(enemy)
 	-- Wake up delay
 	if enemy.WakeUpDelayMin ~= nil and enemy.WakeUpDelayMax ~= nil then
 		enemy.WakeUpDelay = game.RandomFloat(enemy.WakeUpDelayMin, enemy.WakeUpDelayMax)
@@ -80,7 +80,7 @@ function game.HarpySupportAI(enemy)
 	end
 end
 
-function game.HarpyKillPresentation(unit, args)
+function mod.HarpyKillPresentation(unit, args)
 	DebugPrint({ Text = "Harpy Kill Presentation: " })
 
 	if game.CurrentRun.CurrentRoom.Encounter and game.CurrentRun.CurrentRoom.Encounter.StartTime then
@@ -301,7 +301,7 @@ function game.HarpyKillPresentation(unit, args)
 
 	game.wait(1.0)
 	RemoveInputBlock({ Name = "HarpyKillPresentation" })
-	RemoveTimerBlock(CurrentRun, "HarpyKillPresentation")
+	RemoveTimerBlock(game.CurrentRun, "HarpyKillPresentation")
 	SetConfigOption({ Name = "UseOcclusion", Value = true })
 	game.SetPlayerVulnerable("HarpyKillPresentation")
 	game.ShowCombatUI("BossKill")
@@ -313,7 +313,7 @@ function game.HarpyKillPresentation(unit, args)
 	SetThingProperty({ Property = "AllowAnyFire", Value = true, DestinationId = game.CurrentRun.Hero.ObjectId, DataValue = false })
 end
 
-function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
+function mod.HarpyBuildRage(enemy, weaponAIData, currentRun)
 	if enemy.Enraged or IsInvulnerable({ Id = enemy.ObjectId }) then
 		return
 	end
@@ -341,7 +341,7 @@ function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
 		end
 
 		local meterAmount = 0.01
-		game.BuildRageMeter(meterAmount, enemy)
+		mod.BuildRageMeter(meterAmount, enemy)
 		if enemy.Enraged or IsInvulnerable({ Id = enemy.ObjectId }) then
 			enemy.HarpyBuildRageEarlyExit = true
 			if not enemy.Enraged then
@@ -363,7 +363,37 @@ function game.HarpyBuildRage(enemy, weaponAIData, currentRun)
 	game.wait(game.CalcEnemyWait(enemy, weaponAIData.BuildRageEndDuration), enemy.AIThreadName)
 end
 
-function game.BuildRageMeter(meterAmount, enemy)
+function mod.EnrageUnit(enemy, currentRun, startDelay)
+	game.wait(startDelay)
+	if not IsAlive({ Id = enemy.ObjectId }) then
+		return
+	end
+
+	DebugPrint({ Text = "Enraging: " .. enemy.Name })
+	if enemy.EnragedMoveSpeedBonus ~= nil then
+		enemy.MoveSpeedReset = GetUnitDataValue({ Id = enemy.ObjectId, Property = "Speed" })
+		local enragedMoveSpeed = enemy.EnragedMoveSpeedBonus + enemy.MoveSpeedReset
+		SetUnitProperty({ DestinationId = enemy.ObjectId, Property = "Speed", Value = enragedMoveSpeed })
+	end
+
+	enemy.Enraged = true
+	if enemy.EnragedPresentation ~= nil then
+		game.CallFunctionName(enemy.EnragedPresentation, enemy, game.CurrentRun)
+	end
+
+	game.wait(enemy.EnragedDuration)
+
+	if enemy.PermanentEnraged then
+		local notifyName = "AllRequiredKillEnemiesDead"
+		-- NotifyOnAllDead({ Ids = { enemy.ObjectId }, Notify = notifyName })
+		game.waitUntil(notifyName)
+		AdjustColorGrading({ Name = "Off", Duration = 0.45 })
+	else
+		mod.EndEnemyEnrage(enemy, currentRun)
+	end
+end
+
+function mod.BuildRageMeter(meterAmount, enemy)
 	if enemy.Enraged then
 		return
 	end
@@ -376,13 +406,13 @@ function game.BuildRageMeter(meterAmount, enemy)
 	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 1 - enemy.RageFraction, DestinationId = screenId })
 	if enemy.RageFraction >= 1 then
 		enemy.RageFraction = 0
-		thread(game.EnrageUnit, enemy, game.CurrentRun)
+		thread(mod.EnrageUnit, enemy, game.CurrentRun)
 	end
 end
 
-function game.HandleHarpyRage(enemy)
+function mod.HandleHarpyRage(enemy)
 	if game.ScreenAnchors.BossRageFill == nil then
-		game.CreateBossRageMeter(enemy)
+		mod.CreateBossRageMeter(enemy)
 	end
 	local screenId = game.ScreenAnchors.BossRageFill
 	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 1.0, DestinationId = screenId })
@@ -404,7 +434,7 @@ function game.HandleHarpyRage(enemy)
 	end
 end
 
-function game.CreateBossRageMeter(boss)
+function mod.CreateBossRageMeter(boss)
 	game.ScreenAnchors.BossRageTitle = CreateScreenObstacle({
 		Name = "BlankObstacle",
 		Group = "Combat_UI",
@@ -461,7 +491,7 @@ function game.CreateBossRageMeter(boss)
 	SetAlpha({ Id = game.ScreenAnchors.BossRageFill, Fraction = 1, Duration = 2.0 })
 end
 
-function game.EnrageHarpyPermanent(enemy)
+function mod.EnrageHarpyPermanent(enemy)
 	enemy.Enraged = true
 	enemy.PermanentEnraged = true
 	SetAnimationFrameTarget({
@@ -469,10 +499,10 @@ function game.EnrageHarpyPermanent(enemy)
 		Fraction = 0.0,
 		DestinationId = game.ScreenAnchors.BossRageFill
 	})
-	game.EnrageUnit(enemy, game.CurrentRun)
+	mod.EnrageUnit(enemy, game.CurrentRun)
 end
 
-function game.HarpyEnragedPresentation(enemy, currentRun)
+function mod.HarpyEnragedPresentation(enemy, currentRun)
 	local screenId = ScreenAnchors.BossRageFill
 
 	if enemy.PermanentEnraged then
@@ -493,11 +523,11 @@ function game.HarpyEnragedPresentation(enemy, currentRun)
 	end
 
 	if not enemy.PermanentEnraged then
-		game.thread(game.DrainHarpyRageMeter, enemy, enemy.EnragedDuration)
+		game.thread(mod.DrainHarpyRageMeter, enemy, enemy.EnragedDuration)
 	end
 end
 
-function game.DrainHarpyRageMeter(enemy, duration)
+function mod.DrainHarpyRageMeter(enemy, duration)
 	local tickDuration = duration * 0.01
 
 	local fraction = 0.00
@@ -515,7 +545,48 @@ function game.DrainHarpyRageMeter(enemy, duration)
 	end
 end
 
-function game.Harpy3MapTransition(enemy)
+function mod.Harpy3MapRubbleFall()
+	local rubbleLimit = 15
+	for index = 1, rubbleLimit, 1 do
+		local offsetX = game.RandomFloat(-400, 400)
+		local offsetY = game.RandomFloat(-400, 400)
+		local targetId = SpawnObstacle({
+			Name = "BlankObstacle",
+			DestinationId = game.CurrentRun.Hero.ObjectId,
+			OffsetX = offsetX,
+			OffsetY = offsetY
+		})
+		CreateProjectileFromUnit({ Name = "RubbleFall", Id = game.CurrentRun.Hero.ObjectId, DestinationId = targetId, FireFromTarget = true })
+		local rubbleWait = game.RandomFloat(0.06, 0.12)
+		game.wait(rubbleWait)
+	end
+end
+
+function mod.Harpy3MapReturnSmoke(currentPhase)
+	local phaseSmokeObstacles = {
+		[3] = { 519116, 520677, 519118, 518995, 519033, 519037, 519220, 519970, 519010, 519097, 519039, 519074, 519123, 519124, 520676, 519126, 520128, 519020, 519104, 519052, 519082, 511073 },
+		[4] = { 518874, 518857, 518880, 518890, 518896, 518902, 518906, 518910, 518914, 520866, 520862, 518948, 518870, 520872, 518894, 518892, 520866, 518864, 518885, 518862 },
+	}
+	if currentPhase == nil then
+		return
+	end
+	DebugPrint({ Text = tostring(currentPhase) })
+	game.wait(0.1)
+	local smokeTable = phaseSmokeObstacles[currentPhase]
+	if smokeTable ~= nil then
+		for k, obstacleId in pairs(smokeTable) do
+			local randomScale = game.RandomFloat(0.8, 1.2)
+			CreateAnimation({
+				Name = "SmokeTrapLoopDissipate",
+				DestinationId = obstacleId,
+				Group = "FX_Standing_Top",
+				Scale = randomScale
+			})
+		end
+	end
+end
+
+function mod.Harpy3MapTransition(enemy)
 	local currentRoom = game.CurrentRun.CurrentRoom
 	currentRoom.InStageTransition = true
 
@@ -534,7 +605,7 @@ function game.Harpy3MapTransition(enemy)
 	AdjustRadialBlurDistance({ Fraction = 2.0, Duration = 2.0 })
 	AdjustRadialBlurStrength({ Fraction = 1.5, Duration = 2.0 })
 	game.thread(game.DoRumble, { { ScreenPreWait = 0.04, RightFraction = 0.17, Duration = 1.5 } })
-	game.thread(game.Harpy3MapRubbleFall)
+	game.thread(mod.Harpy3MapRubbleFall)
 
 	for k, simData in ipairs(game.CurrentRun.Hero.FinalHitSlowParameters) do
 		if simData.Fraction < 1.0 then
@@ -602,7 +673,7 @@ function game.Harpy3MapTransition(enemy)
 
 	currentRoom.CurrentPhase = currentRoom.CurrentPhase + 1
 	if currentRoom.CurrentPhase ~= nil then
-		game.thread(game.Harpy3MapReturnSmoke, currentRoom.CurrentPhase)
+		game.thread(mod.Harpy3MapReturnSmoke, currentRoom.CurrentPhase)
 	end
 	game.wait(0.1)
 
@@ -628,48 +699,7 @@ function game.Harpy3MapTransition(enemy)
 	currentRoom.InStageTransition = false
 end
 
-function game.Harpy3MapRubbleFall()
-	local rubbleLimit = 15
-	for index = 1, rubbleLimit, 1 do
-		local offsetX = game.RandomFloat(-400, 400)
-		local offsetY = game.RandomFloat(-400, 400)
-		local targetId = SpawnObstacle({
-			Name = "BlankObstacle",
-			DestinationId = game.CurrentRun.Hero.ObjectId,
-			OffsetX = offsetX,
-			OffsetY = offsetY
-		})
-		CreateProjectileFromUnit({ Name = "RubbleFall", Id = game.CurrentRun.Hero.ObjectId, DestinationId = targetId, FireFromTarget = true })
-		local rubbleWait = game.RandomFloat(0.06, 0.12)
-		game.wait(rubbleWait)
-	end
-end
-
-function game.Harpy3MapReturnSmoke(currentPhase)
-	local phaseSmokeObstacles = {
-		[3] = { 519116, 520677, 519118, 518995, 519033, 519037, 519220, 519970, 519010, 519097, 519039, 519074, 519123, 519124, 520676, 519126, 520128, 519020, 519104, 519052, 519082, 511073 },
-		[4] = { 518874, 518857, 518880, 518890, 518896, 518902, 518906, 518910, 518914, 520866, 520862, 518948, 518870, 520872, 518894, 518892, 520866, 518864, 518885, 518862 },
-	}
-	if currentPhase == nil then
-		return
-	end
-	DebugPrint({ Text = tostring(currentPhase) })
-	game.wait(0.1)
-	local smokeTable = phaseSmokeObstacles[currentPhase]
-	if smokeTable ~= nil then
-		for k, obstacleId in pairs(smokeTable) do
-			local randomScale = game.RandomFloat(0.8, 1.2)
-			CreateAnimation({
-				Name = "SmokeTrapLoopDissipate",
-				DestinationId = obstacleId,
-				Group = "FX_Standing_Top",
-				Scale = randomScale
-			})
-		end
-	end
-end
-
-function game.Harpy3MapRestore()
+function mod.Harpy3MapRestore()
 	local activateObstacles = GetInactiveIds({ Names = { "Phase2Add", "Phase3Add", "Phase4Add", } }) or {}
 	local deactivateObstacles = GetIds({ Names = { "Phase2Remove", "Phase3Remove", "Phase4Remove", } }) or {}
 	for k, id in pairs(activateObstacles) do
@@ -680,37 +710,7 @@ function game.Harpy3MapRestore()
 	end
 end
 
-function game.EnrageUnit(enemy, currentRun, startDelay)
-	game.wait(startDelay)
-	if not IsAlive({ Id = enemy.ObjectId }) then
-		return
-	end
-
-	DebugPrint({ Text = "Enraging: " .. enemy.Name })
-	if enemy.EnragedMoveSpeedBonus ~= nil then
-		enemy.MoveSpeedReset = GetUnitDataValue({ Id = enemy.ObjectId, Property = "Speed" })
-		local enragedMoveSpeed = enemy.EnragedMoveSpeedBonus + enemy.MoveSpeedReset
-		SetUnitProperty({ DestinationId = enemy.ObjectId, Property = "Speed", Value = enragedMoveSpeed })
-	end
-
-	enemy.Enraged = true
-	if enemy.EnragedPresentation ~= nil then
-		game.CallFunctionName(enemy.EnragedPresentation, enemy, game.CurrentRun)
-	end
-
-	game.wait(enemy.EnragedDuration)
-
-	if enemy.PermanentEnraged then
-		local notifyName = "AllRequiredKillEnemiesDead"
-		-- NotifyOnAllDead({ Ids = { enemy.ObjectId }, Notify = notifyName })
-		game.waitUntil(notifyName)
-		AdjustColorGrading({ Name = "Off", Duration = 0.45 })
-	else
-		game.EndEnemyEnrage(enemy, currentRun)
-	end
-end
-
-function game.EndEnemyEnrage(enemy, currentRun)
+function mod.EndEnemyEnrage(enemy, currentRun)
 	local screenId = game.ScreenAnchors.BossRageFill
 	enemy.Enraged = false
 	StopFlashing({ Id = screenId })
@@ -727,7 +727,7 @@ function game.EndEnemyEnrage(enemy, currentRun)
 	end
 end
 
-function game.SpawnSupportAI(enemy)
+function mod.SpawnSupportAI(enemy)
 	if game.IsEmpty(enemy.SupportAINames) then
 		return
 	end
@@ -744,6 +744,6 @@ function game.SpawnSupportAI(enemy)
 end
 
 -- We need to reset this before the FireFunction, as the DumbFireAttack is called before it and would get cancelled otherwise
-function game.ModsNikkelMHadesBiomesHarpyBuildRageStart(enemy, aiData)
+function mod.ModsNikkelMHadesBiomesHarpyBuildRageStart(enemy, aiData)
 	enemy.HarpyBuildRageEarlyExit = false
 end

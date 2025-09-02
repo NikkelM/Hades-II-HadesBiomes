@@ -13,20 +13,20 @@ game.EncounterSets.AsphodelEncountersDefault = {
 	"GeneratedAsphodel", "GeneratedAsphodel", "GeneratedAsphodel", --"ThanatosAsphodel"
 }
 game.EncounterSets.EncounterEventsWrapping = {
-	{ FunctionName = "WrappingEncounterStartPresentation" },
+	{ FunctionName = _PLUGIN.guid .. "." .. "WrappingEncounterStartPresentation" },
 	{ FunctionName = "EncounterAudio" },
-	{ FunctionName = "BeginWrappingEncounter" },
+	{ FunctionName = _PLUGIN.guid .. "." .. "BeginWrappingEncounter" },
 	{ FunctionName = "HandleEnemySpawns" },
 	{ FunctionName = "CheckForAllEnemiesDead" },
 	{ FunctionName = "DisableRoomTraps" },
 	{ FunctionName = "PostCombatAudio" },
-	{ FunctionName = "WrappingEncounterEndPresentation" },
+	{ FunctionName = _PLUGIN.guid .. "." .. "WrappingEncounterEndPresentation" },
 	{ FunctionName = "SpawnRoomReward" },
 }
 game.EncounterSets.EncounterEventsHydraPhase = {
 	{ FunctionName = "HandleEnemySpawns" },
 	-- Added to set the spawn point the heads return to before attacking. Needed while Tethers do not work
-	{ FunctionName = "ModsNikkelMHadesBiomesRememberHydraSpawnpoint" },
+	{ FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesRememberHydraSpawnpoint" },
 	{ FunctionName = "CheckForEncounterEnemiesDead" },
 }
 
@@ -68,7 +68,7 @@ game.EncounterSets.EncounterEventsCrawlerMiniBoss = {
 	{ FunctionName = "HandleTrapChains" },
 	{ FunctionName = "HandleEnemySpawns" },
 	{ FunctionName = "CheckForAllEnemiesDead" },
-	{ FunctionName = "CrawlerMiniBossEndPresentation" },
+	{ FunctionName = _PLUGIN.guid .. "." .. "CrawlerMiniBossEndPresentation" },
 	{ FunctionName = "PostCombatAudio" },
 	{ FunctionName = "SpawnRoomReward" },
 }

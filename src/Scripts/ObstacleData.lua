@@ -58,6 +58,9 @@ local obstacleModifications = {
 	-- #endregion
 
 	-- #region ASPHODEL
+	AsphodelBoat01b = {
+		ExitFunctionName = _PLUGIN.guid .. "." .. "AsphodelLeaveRoomPresentation",
+	},
 	AsphodelTerrainRock01 = {
 		DeathFx = "AsphodelTerrainRockCollapse",
 		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFall", },
@@ -274,7 +277,7 @@ local addedObstacles = {
 			RequiredAnyTextLines = { "CerberusBossDoorUnlock", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02", "CerberusBossDoorUnlockRepeatable03", "CerberusBossDoorUnlockRepeatable04", "CerberusBossDoorUnlockRepeatable05", "CerberusBossDoorUnlockRepeatable06", "CerberusBossDoorUnlockRepeatable07" },
 		},
 		ForceRoomName = "D_Boss01",
-		ExitFunctionName = "ExitToHadesPresentation",
+		ExitFunctionName = _PLUGIN.guid .. "." .. "ExitToHadesPresentation",
 		ExitDoorOpenAnimation = "HubBossDoorOpen",
 		OnUsedVoiceLines = {
 			{
@@ -350,7 +353,7 @@ local addedObstacles = {
 		CooldownDuration = 3.0,
 		OnCooldownAnimation = "PoisonCureFountainEmpty",
 		IdleAnimation = "PoisonCureFountainFull",
-		OnUsedFunctionName = "UseStyxFountain",
+		OnUsedFunctionName = _PLUGIN.guid .. "." .. "UseStyxFountain",
 		OnUsedVoiceLines = {
 			Cooldowns =
 			{

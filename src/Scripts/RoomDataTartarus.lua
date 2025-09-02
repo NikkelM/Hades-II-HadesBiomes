@@ -61,7 +61,7 @@ local roomModifications = {
 		EntranceFunctionName = "RoomEntranceDrop",
 		EntranceFunctionArgs = { LandingAnimation = "Melinoe_HeroLanding", Sound = "/SFX/Player Sounds/MelWhooshDropIn", IntroHoldDuration = 2.34, StartZoomFraction = 0.65, ZoomDuration = 4 },
 		ThreadedEvents = {
-			[1] = { Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut" }, },
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut" }, },
 			-- This will work with roomSetDataTartarus.RoomOpening.ThreadedEvents[3].Args.SpawnTypes = { "TartarusGhost01" }, but has the problem of spawning all Ghosts on the same ID
 			[3] = mod.NilValue
 		},
@@ -80,8 +80,7 @@ local roomModifications = {
 		BlockRunProgressUI = true,
 		DisableRewardMagnetisim = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,
-		StartThreadedEvents =
-		{
+		StartThreadedEvents = {
 			{ FunctionName = "CheckBiomeStateStart" },
 			{ FunctionName = "ShadeMercManager",    Args = { StartingCountMin = 3, StartingCountMax = 12, ObjectNames = { "ShadeMerc" }, MaxActive = 12 } },
 		},
@@ -118,6 +117,9 @@ local roomModifications = {
 	-- Other miniboss rooms inherit from this
 	A_MiniBoss01 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+		ThreadedEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "MiniBossRoomPresentation" },
+		},
 	},
 
 	-- BOSSES
@@ -126,7 +128,7 @@ local roomModifications = {
 		-- Replaces MegaeraHome with Megaera voicelines
 		UnthreadedEvents = {
 			[1] = {
-				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
+				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
 				Args = {
 					VoiceLines = {
 						[1] = { Cue = "/VO/Megaera_0061" },
@@ -136,6 +138,7 @@ local roomModifications = {
 					DelayedStart = true,
 				},
 			},
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
 		ForcedReward = "MixerFBossDrop",
 		FirstClearRewardStore = mod.NilValue,
@@ -146,19 +149,17 @@ local roomModifications = {
 	},
 	A_Boss02 = {
 		UnthreadedEvents = {
-			[1] = {
-				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
-			},
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
 	},
 	A_Boss03 = {
 		UnthreadedEvents = {
-			[1] = {
-				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
-			},
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
 		PostCombatReloadEvents = {
-			{ FunctionName = "Harpy3MapRestore" },
+			{ FunctionName = _PLUGIN.guid .. "." .. "Harpy3MapRestore" },
 		},
 		RestorePresentationFunction = mod.NilValue,
 	},
@@ -207,7 +208,7 @@ local roomModifications = {
 		},
 		LeavePostPresentationEvents = {
 			{
-				FunctionName = "ModsNikkelMHadesBiomesBiomeMapPresentation",
+				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBiomeMapPresentation",
 				Args = {
 					HeroStartOffsetX = -100,
 					HeroStartOffsetY = 500,

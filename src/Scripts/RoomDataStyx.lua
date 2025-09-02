@@ -41,7 +41,7 @@ local roomModifications = {
 		},
 	},
 	BaseStyxWingEnd = {
-		NextRoomEntranceFunctionName = "ModsNikkelMHadesBiomesReturnToStyxHubPresentation",
+		NextRoomEntranceFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesReturnToStyxHubPresentation",
 		IneligibleRewards = { "Devotion" },
 	},
 
@@ -50,7 +50,7 @@ local roomModifications = {
 		InheritFrom = { "BaseStyx", "BiomeStartRoom", },
 		Starting = true,
 		BlockRunProgressUI = true,
-		EntranceFunctionName = "ModsNikkelMHadesBiomesDelayedRoomEntranceStandard",
+		EntranceFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesDelayedRoomEntranceStandard",
 		StartUnthreadedEvents = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
@@ -59,7 +59,7 @@ local roomModifications = {
 		StrictLeftRight = true,
 		FlipHorizontalChance = 0.0,
 		ThreadedEvents = {
-			[1] = { Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerStyxIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerStyxOut" }, },
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerStyxIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerStyxOut" }, },
 		},
 	},
 	D_Hub = {
@@ -67,11 +67,12 @@ local roomModifications = {
 		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
 		UnthreadedEvents = {
 			[1] = {
-				FunctionName = "ModsNikkelMHadesBiomesBossIntro",
+				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
 			},
 		},
 		-- Shorter as we add more wait time after the animation starts
 		IntroSequenceDuration = 0.3,
+		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceD_Hub",
 		DistanceTriggers = {
 			[1] = {
 				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
@@ -116,11 +117,12 @@ local roomModifications = {
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		UnthreadedEvents = {
 			[1] = {
-				Args = {
-					DelayedStart = true,
-				},
+				FunctionName = _PLUGIN.guid .. "." .. "BossIntroHades",
+				Args = { DelayedStart = true, },
 			},
 		},
+		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceHades",
+		ExitFunctionName = _PLUGIN.guid .. "." .. "CheckRunEndPresentation",
 	},
 
 	-- OTHER
@@ -128,6 +130,9 @@ local roomModifications = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,
 		},
+		StartUnthreadedEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "SpawnConsumables", },
+		}
 	},
 }
 
