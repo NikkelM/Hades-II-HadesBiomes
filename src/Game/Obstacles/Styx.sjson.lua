@@ -168,6 +168,7 @@ local hadesTwoObstacleModifications = {
 	StyxRubble02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxTerrainBrick03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxTable01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxTable02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxChair01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxWallBrick01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxWallBrick01a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },

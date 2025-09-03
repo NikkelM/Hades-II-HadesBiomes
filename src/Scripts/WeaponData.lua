@@ -1293,6 +1293,11 @@ local weaponModifications = {
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
 	},
+	SatyrMinigun = {
+		AIData = {
+			Spread = 0,
+		},
+	},
 	-- #endregion
 	-- #region HADES
 	HadesSpawns = {
@@ -1305,6 +1310,12 @@ local weaponModifications = {
 			SpawnDefaultAIDataOverrides = {
 				PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 			}
+		},
+	},
+	HadesSideDash = {
+		AIData = {
+			-- Causes an infinite loop, as this would be set to itself
+			AttackFailWeapon = mod.NilValue,
 		},
 	},
 	-- #endregion

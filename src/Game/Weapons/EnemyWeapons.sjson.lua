@@ -37,9 +37,6 @@ local hadesWeaponAdditions = {
 mod.AddTableKeysSkipDupes(hadesWeaponsTable.Weapons, hadesWeaponAdditions, "Name")
 
 local hadesWeaponsModifications = {
-	-- #region TARTARUS
-	-- #endregion
-
 	-- #region ASPHODEL
 	HydraLunge = {
 		-- Needs to be lowered due to tethers not locking the head in place
@@ -56,6 +53,12 @@ local hadesWeaponsModifications = {
 		SelfVelocity = mod.NilValue,
 		SelfUpwardVelocity = mod.NilValue,
 	},
+	-- TODO: Test good values/can it dash over the gaps? Remove other Vow override if this works
+	-- TODO: How are the ranges determined in Hades I? Use that to scale the different dash weapons
+	FlurrySpawnerDash = {
+		SelfVelocity = 4000,
+		SelfVelocityCap = 4000,
+	},
 	MinotaurBullRush = {
 		Effects = mod.NilValue,
 	},
@@ -68,6 +71,18 @@ local hadesWeaponsModifications = {
 	-- Not used?
 	TheseusChariotRam = {
 		Effect = mod.NilValue,
+	},
+	-- #endregion
+
+	-- #region STYX
+	SatyrDash = {
+		SelfVelocity = 2500,
+		SelfVelocityCap = 2500,
+	},
+	-- TODO: Figure out good value
+	HadesDash = {
+		SelfVelocity = 3000,
+		SelfVelocityCap = 3000,
 	},
 	-- #endregion
 }
