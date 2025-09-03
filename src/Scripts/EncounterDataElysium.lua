@@ -39,6 +39,8 @@ mod.UpdateField(encounterDataElysium, "Challenge", "TimeChallenge", { "InheritFr
 -- Can still use modifications if the modified table did not exist beforehand
 local encounterReplacements = {
 	GeneratedElysium = {
+		-- To ensure we are not attacked while still running the entrance animation
+		PreSpawnAIWakeDelay = 0.5,
 		-- The original from Hades is 2.3 - inherited from Generated
 		ActiveEnemyCapBase = 3.9,
 		-- The original from Hades is 220

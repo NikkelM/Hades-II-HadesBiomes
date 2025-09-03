@@ -35,18 +35,11 @@ mod.UpdateField(encounterDataStyx, "Challenge", "TimeChallenge", { "InheritFrom"
 local encounterReplacements = {
 	GeneratedStyx = {
 		-- The original from Hades is 5
-		ActiveEnemyCapBase = 7,
+		ActiveEnemyCapBase = 8,
 		-- The original from Hades is 8
-		ActiveEnemyCapMax = 10,
+		ActiveEnemyCapMax = 11,
 		-- The original from Hades is 900
-		BaseDifficulty = 1150,
-		-- The original from Hades is 0
-		-- ActiveEnemyCapDepthRamp = 0,
-		-- The original from Hades is 0
-		-- TypeCountDepthRamp = 0,
-		-- The original from Hades is 0
-		-- DepthDifficultyRamp = 0,
-		-- Original is missing HandleEncounterPreSpawns
+		BaseDifficulty = 1200,
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
 		},
@@ -60,19 +53,34 @@ local encounterReplacements = {
 			{ FunctionName = "SpawnRoomReward" },
 		},
 	},
-	-- TODO: GeneratedStyxMini difficulty
 	GeneratedStyxMini = {
-		-- Only allow skipping the encounters at the end of a path
+		-- The original from Hades is 130
+		BaseDifficultyMin = 170,
+		-- The original from Hades is 230
+		BaseDifficultyMax = 270,
+		-- The original from Hades is 3
+		ActiveEnemyCapBase = 4,
+		-- The original from Hades is 3
+		ActiveEnemyCapMin = 4,
+		-- The original from Hades is 3
+		ActiveEnemyCapMax = 4,
 		CanEncounterSkip = false,
 		BlockAthenaEncounterKeepsake = true,
 	},
-	-- TODO: GeneratedStyxMiniSingle difficulty
 	GeneratedStyxMiniSingle = {
 		CanEncounterSkip = false,
 		BlockAthenaEncounterKeepsake = true,
+		-- The original from Hades is 10
+		BaseDifficultyMax = 30,
 	},
-
-	-- TODO: BaseStyxMiniboss difficulty
+	BaseStyxMiniboss = {
+		-- The original from Hades is 3
+		ActiveEnemyCapBase = 5,
+		-- The original from Hades is 8
+		ActiveEnemyCapMax = 12,
+		CanEncounterSkip = false,
+		BlockAthenaEncounterKeepsake = true,
+	},
 
 	PerfectClearChallengeStyx = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedStyx" },
