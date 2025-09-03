@@ -44,6 +44,10 @@ local hadesEnemiesModifications = {
 	-- #region STYX
 	RatThug = { InheritFrom = "1_BaseEnemy", },
 	BaseSatyr = { InheritFrom = "1_BaseEnemy", },
+	HeavyRangedForkedMiniboss = {
+		-- For the player tracking
+		RotationSpeed = 20.0,
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT

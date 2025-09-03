@@ -1227,9 +1227,6 @@ local enemyModifications = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "SatyrOnHit" },
 	},
-	SatyrRangedMiniboss = {
-		LargeUnitCap = mod.NilValue,
-	},
 	RatThug = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "EnemyRatThugOnHit" },
@@ -1278,6 +1275,21 @@ local enemyModifications = {
 	},
 	-- #endregion
 	-- #region STYX - Minibosses
+	SatyrRangedMiniboss = {
+		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
+	},
+	RatThugMiniboss = {
+		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
+	},
+	HeavyRangedForkedMiniboss = {
+		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
+	},
 	-- #endregion
 	-- #region STYX - Bosses
 	Hades = {

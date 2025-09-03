@@ -1223,7 +1223,7 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region STYX
-	-- #STYX - Regular
+	-- #region STYX - Regular
 	-- From Hades II CrawlerRush, but using Hades animations
 	HadesCrawlerRush = {
 		AIData = {
