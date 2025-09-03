@@ -106,6 +106,9 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			enemyData.CreateProjectileOnActivationFinished = enemyData.FireWeaponOnActivationFinished
 			enemyData.FireWeaponOnActivationFinished = nil
 		end
+		if enemyData.HitSparkScale ~= nil then
+			enemyData.HitSparkScale = nil
+		end
 
 		-- Always use the Olympus dialogue elements for the bosses
 		if enemyData.Portrait then
@@ -1412,7 +1415,7 @@ local enemyModifications = {
 			TargetSelf = true,
 			TargetOffsetForward = 100,
 		},
-		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
+		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
 	},
 	ArcherTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -1436,7 +1439,7 @@ local enemyModifications = {
 			TargetOffsetForward = 100,
 			IdleAnimation = "ArcherTrapIdle",
 		},
-		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
+		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
 	},
 	GasTrapPassive = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -1456,7 +1459,7 @@ local enemyModifications = {
 			WakeUpDelayMax = 15.0,
 			PostAttackFlash = false,
 		},
-		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
+		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
 	},
 	PoisonTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -1473,7 +1476,7 @@ local enemyModifications = {
 			WakeUpDelayMax = 15.0,
 			PostAttackFlash = false,
 		},
-		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
+		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
 	},
 	SawTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -1495,7 +1498,7 @@ local enemyModifications = {
 			TargetSelf = true,
 			TargetOffsetForward = 100,
 		},
-		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
+		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
 	},
 	AxeTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
