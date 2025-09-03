@@ -23,15 +23,9 @@ local obstacleModifications = {
 		},
 	},
 	-- Obstacles that shouldn't be passable
-	TravelDoor03 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TravelPillarBase05 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TravelPillar03 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
+	TravelDoor03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TravelPillarBase05 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TravelPillar03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 }
 
 -- Rename attached animations/Fx graphics

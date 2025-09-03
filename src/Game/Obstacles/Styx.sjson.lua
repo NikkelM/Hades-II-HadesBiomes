@@ -157,31 +157,18 @@ mod.ApplyNestedSjsonModifications(hadesStyxObstacleTable.Obstacles, obstacleModi
 -- Modifications to existing obstacles in Hades II
 local hadesTwoObstacleModifications = {
 	-- Destructible pillars that crumble when hit
-	StyxDestructiblePillar = {
-		InheritFrom = "1_BaseVulnerableObstacle",
-	},
+	StyxDestructiblePillar = { InheritFrom = "1_BaseVulnerableObstacle", },
 	-- Obstacles that shouldn't be passable
-	StyxPillar01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	StyxPillarBase02 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	StyxPillarBase01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	StyxTent01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	StyxShrine01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	StyxRubble01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	StyxRubble02 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
+	StyxPillar01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxPillarBase02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxPillarBase01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxTent01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxShrine01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxRubble01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxRubble02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxTerrainBrick03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxTable01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxChair01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 }
 
 sjson.hook(hadesTwoStyxObstacleFile, function(data)

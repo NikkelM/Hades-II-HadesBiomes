@@ -41,12 +41,8 @@ mod.ApplyNestedSjsonModifications(hadesSurfaceObstacleTable.Obstacles, obstacleM
 -- Modifications to existing obstacles in Hades II
 local hadesTwoObstacleModifications = {
 	-- Obstacles that shouldn't be passable
-	SurfaceGravemarker07 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	SurfaceGravemarker07a = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
+	SurfaceGravemarker07 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	SurfaceGravemarker07a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 }
 
 sjson.hook(hadesTwoSurfaceObstacleFile, function(data)

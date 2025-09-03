@@ -107,70 +107,28 @@ mod.ApplyNestedSjsonModifications(hadesElysiumObstacleTable.Obstacles, obstacleM
 -- Modifications to existing obstacles in Hades II
 local hadesTwoObstacleModifications = {
 	-- Destructible pillars that crumble when hit
-	ElysiumDestructiblePillar = {
-		InheritFrom = "1_BaseVulnerableObstacle",
-	},
-	ElysiumDestructiblePillarB = {
-		InheritFrom = "1_BaseVulnerableObstacle",
-	},
-	ElysiumDestructiblePillarC = {
-		InheritFrom = "1_BaseVulnerableObstacle",
-	},
-	ElysiumPillar06 = {
-		InheritFrom = "1_BaseVulnerableObstacle",
-	},
-	ElysiumPillar06a = {
-		InheritFrom = "1_BaseVulnerableObstacle",
-	},
+	ElysiumDestructiblePillar = { InheritFrom = "1_BaseVulnerableObstacle", },
+	ElysiumDestructiblePillarB = { InheritFrom = "1_BaseVulnerableObstacle", },
+	ElysiumDestructiblePillarC = { InheritFrom = "1_BaseVulnerableObstacle", },
+	ElysiumPillar06 = { InheritFrom = "1_BaseVulnerableObstacle", },
+	ElysiumPillar06a = { InheritFrom = "1_BaseVulnerableObstacle", },
 	-- Obstacles that should not be passable, but are for some reason
-	ElysiumPlanter01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumPlanter02 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumBush01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumFence05 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumTable01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumTable02 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumSword01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumSword02 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumBrazier01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumBanner01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumFencePost01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumFencePost02 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumFence03 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumFence03a = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumFence03b = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	ElysiumCandle01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
+	ElysiumPlanter01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumPlanter02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumBush01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumFence05 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumTable01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumTable02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumSword01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumSword02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumBrazier01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumBanner01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumFencePost01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumFencePost02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumFence03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumFence03a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumFence03b = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	ElysiumCandle01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 }
 
 sjson.hook(hadesTwoElysiumObstacleFile, function(data)

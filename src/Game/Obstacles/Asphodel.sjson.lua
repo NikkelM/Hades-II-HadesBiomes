@@ -28,25 +28,13 @@ mod.ApplyNestedSjsonModifications(hadesAsphodelObstacleTable.Obstacles, obstacle
 -- Modifications to existing obstacles in Hades II
 local hadesTwoObstacleModifications = {
 	-- Destructible pillars that crumble when hit
-	AsphodelPillar06 = {
-		InheritFrom = "1_BaseVulnerableObstacle",
-	},
+	AsphodelPillar06 = { InheritFrom = "1_BaseVulnerableObstacle", },
 	-- Obstacles that shouldn't be passable
-	AsphodelHydraRock01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	AsphodelHydraRock02 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	AsphodelHydraRock02a = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	AsphodelHydraRock03 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	AsphodelHydraRock03a = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
+	AsphodelHydraRock01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	AsphodelHydraRock02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	AsphodelHydraRock02a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	AsphodelHydraRock03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	AsphodelHydraRock03a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 }
 
 sjson.hook(hadesTwoAsphodelObstacleFile, function(data)

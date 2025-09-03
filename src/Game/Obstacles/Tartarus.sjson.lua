@@ -28,55 +28,23 @@ mod.ApplyNestedSjsonModifications(hadesTartarusObstacleTable.Obstacles, obstacle
 -- Modifications to existing obstacles in Hades II
 local hadesTwoObstacleModifications = {
 	-- Destructible pillars that crumble when hit
-	TartarusPillarBase04 = {
-		InheritFrom = "1_BaseVulnerableObstacle",
-	},
+	TartarusPillarBase04 = { InheritFrom = "1_BaseVulnerableObstacle", },
 	-- Obstacles that shouldn't be passable
-	TartarusWallBrick11 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusPillarBase03 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusPillarBase08b = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusPillarBase12 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusPillarBase13 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusArchitrave01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusCornice01 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusCornice01A = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusCornice03 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusCornice04 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusCornice04b = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusCornice05 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusFencePost03 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusGable04 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
-	TartarusPillarDecorative03 = {
-		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
-	},
+	TartarusWallBrick11 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusPillarBase03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusPillarBase08b = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusPillarBase12 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusPillarBase13 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusArchitrave01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusCornice01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusCornice01A = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusCornice03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusCornice04 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusCornice04b = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusCornice05 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusFencePost03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusGable04 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TartarusPillarDecorative03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 }
 
 sjson.hook(hadesTwoTartarusObstacleFile, function(data)
