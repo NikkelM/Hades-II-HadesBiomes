@@ -6,6 +6,17 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 		mod.UpdatePropertyName(replacements, oldName, newName, {}, "WeaponDataHandler replacements")
 	end
 
+	-- Assign the AIData before replacements and modifications, to make sure we take the parent's table if we need to
+	for _, weaponData in pairs(base) do
+		if not weaponData.AIData then
+			if game.TableLength(weaponData.InheritFrom) == 1 and base[weaponData.InheritFrom[1]] and base[weaponData.InheritFrom[1]].AIData then
+				weaponData.AIData = game.DeepCopyTable(base[weaponData.InheritFrom[1]].AIData) or {}
+			else
+				weaponData.AIData = {}
+			end
+		end
+	end
+
 	-- Apply replacements/additions
 	for weaponName, weaponData in pairs(replacements) do
 		if not base[weaponName] then
@@ -23,8 +34,9 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 	end
 
 	for weaponName, weaponData in pairs(base) do
+		-- For weapons added through the modifications or replacements (didn't exist in HadesWeaponData), ensure they have an AIData table
 		if not weaponData.AIData then
-			weaponData.AIData = { DeepInheritance = true }
+			weaponData.AIData = {}
 		end
 
 		if weaponData.OnFireCrowdReaction then
@@ -1264,6 +1276,12 @@ local weaponModifications = {
 	CrawlerSpawns = {
 		AIData = {
 			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
+		},
+	},
+	RatThugMeleeMiniboss = {
+		AIData = {
+			AIAttackDistance = 500,
+			AIBufferDistance = 50,
 		},
 	},
 	-- #endregion
