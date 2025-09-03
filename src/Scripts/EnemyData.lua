@@ -1290,6 +1290,19 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 	},
+	ThiefImpulseMineLayerMiniboss = {
+		DefaultAIData = {
+			BlendTimeoutMin = 0.5,
+			BlendTimeoutMax = 1.0,
+			AttackWhileBlendingIntervalMin = 0.5,
+			AttackWhileBlendingIntervalMax = 1.0,
+			AttackWhileMovingIntervalMin = 0.5,
+			AttackWhileMovingIntervalMax = 1.0,
+		},
+		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
+	},
 	-- #endregion
 	-- #region STYX - Bosses
 	Hades = {

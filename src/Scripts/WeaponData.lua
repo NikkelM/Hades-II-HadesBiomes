@@ -1284,6 +1284,15 @@ local weaponModifications = {
 			AIBufferDistance = 50,
 		},
 	},
+	GrenadierWeaponMiniboss = {
+		AIData = {
+			DeepInheritance = true,
+			ApplyEffectsOnWeaponFire = { WeaponEffectData.RootedAttacker, },
+			ProjectileName = "GrenadierWeapon",
+			Spread = 40,
+		},
+		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
+	},
 	-- #endregion
 	-- #region HADES
 	HadesSpawns = {
