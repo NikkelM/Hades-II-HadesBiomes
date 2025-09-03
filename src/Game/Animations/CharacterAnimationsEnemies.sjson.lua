@@ -108,6 +108,12 @@ local addAnimations = {
 		OffsetY = -100.0,
 		Scale = 1.0
 	},
+	HeavyRangedForkedMinibossDeath = {
+		Name = "HeavyRangedForkedMinibossDeath",
+		InheritFrom = "HeavyRangedForkedDeath",
+		Hue = 0.4,
+		Saturation = -0.3,
+	},
 }
 
 mod.ApplyNestedSjsonModifications(hadesEnemyAnimationsTable.Animations, modifications)

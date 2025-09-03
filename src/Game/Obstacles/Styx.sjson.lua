@@ -169,6 +169,11 @@ local hadesTwoObstacleModifications = {
 	StyxTerrainBrick03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxTable01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxChair01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallBrick01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallBrick01a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallBrick01b = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallBrick01c = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallBrick01d = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 }
 
 sjson.hook(hadesTwoStyxObstacleFile, function(data)

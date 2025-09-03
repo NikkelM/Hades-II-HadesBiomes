@@ -1286,6 +1286,9 @@ local enemyModifications = {
 		BlockCharm = true,
 	},
 	HeavyRangedForkedMiniboss = {
+		DeathAnimation = "HeavyRangedForkedMinibossDeath",
+		SpawnObstaclesOnDeath = mod.NilValue,
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
