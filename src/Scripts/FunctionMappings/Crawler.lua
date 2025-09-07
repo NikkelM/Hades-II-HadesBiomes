@@ -18,7 +18,8 @@ function mod.RoomEntranceCrawlerMiniBoss(currentRun, currentRoom, args)
 			{ DestinationId = currentRoom.HeroEndPoint, DisableCollision = true, UseDefaultSpeed = true })
 	end
 
-	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.CrawlerMiniBossEncounterStartVoiceLines, true)
+	-- TODO: These voicelines are duplicates
+	-- game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.CrawlerMiniBossEncounterStartVoiceLines, true)
 	game.wait(roomIntroSequenceDuration)
 	game.wait(0.5)
 	game.SecretMusicPlayer("/EmptyCue")

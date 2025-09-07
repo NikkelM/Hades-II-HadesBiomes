@@ -105,24 +105,25 @@ local roomModifications = {
 		LegalEncounters = { "ModsNikkelMHadesBiomesMiniBossCrawler", "MiniBossHeavyRangedForked", },
 		-- Need to always call this, as overwriting it in the overrides is too late. The function will skip itself if it's not the correct encounter
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceCrawlerMiniBoss",
+		-- Moved here from overrides, as those are applied after the local roomData variable is set which is used to determine the UnthreadedEvents to run
+		UnthreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
+				Args = {
+					ProcessTextLinesIds = { 552394 },
+					SetupBossIds = { 552394 },
+				},
+			},
+			{
+				FunctionName = "CheckAssistHint",
+				Args = {
+					Delay = 10.0,
+				}
+			},
+		},
 		EncounterSpecificDataOverwrites = {
 			MiniBossCrawler = mod.NilValue,
 			ModsNikkelMHadesBiomesMiniBossCrawler = {
-				UnthreadedEvents = {
-					{
-						FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
-						Args = {
-							ProcessTextLinesIds = { 552394 },
-							SetupBossIds = { 552394 },
-						},
-					},
-					{
-						FunctionName = "CheckAssistHint",
-						Args = {
-							Delay = 10.0,
-						}
-					},
-				},
 				SkipLastKillSound = true,
 			},
 		},

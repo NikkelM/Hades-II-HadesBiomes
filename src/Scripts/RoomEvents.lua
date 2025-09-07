@@ -61,7 +61,7 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 		LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = args.DurationOut or 1.25, EaseIn = 0.04, EaseOut = 0.275 })
 	end
 
-	SetAnimation({ Name = "MelinoeEquip", DestinationId = CurrentRun.Hero.ObjectId })
+	SetAnimation({ Name = "MelinoeEquip", DestinationId = game.CurrentRun.Hero.ObjectId })
 	RemoveInputBlock({ Name = "BossIntro" })
 	game.RemoveTimerBlock(game.CurrentRun, "BossIntro")
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })

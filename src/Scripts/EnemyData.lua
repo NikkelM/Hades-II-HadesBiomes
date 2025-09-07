@@ -397,6 +397,9 @@ local enemyReplacements = {
 		DefaultAIData = { DeepInheritance = true, },
 		WeaponOptions = { "HadesCrawlerRush" },
 	},
+	CrawlerMiniBoss = {
+		DefaultAIData = { DeepInheritance = true, },
+	},
 	Hades = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 	},
