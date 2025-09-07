@@ -291,7 +291,12 @@ local enemyReplacements = {
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
+		-- TODO: Test on all enemies
+		ActivateFadeIn = false,
+		ActivateTint = false,
+		ActivateStartAlpha = 1.0,
 		-- The projectile scaling this is supposed to do doesn't work for H1 enemies it seems
+		-- TODO: Test this since the projectile stuff was reworked
 		BlockAttributes = { "Massive" },
 	},
 	HadesBossBaseVulnerableEnemy = {
@@ -1226,6 +1231,7 @@ local enemyModifications = {
 	SatyrRanged = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "SatyrOnHit" },
+		ActivateDuration = 0.4,
 	},
 	RatThug = {
 		LargeUnitCap = mod.NilValue,
@@ -1256,6 +1262,7 @@ local enemyModifications = {
 	},
 	ThiefImpulseMineLayer = {
 		StunAnimations = { Default = "EnemyStyxThiefOnHit" },
+		ActivateDuration = 0.5,
 		DefaultAIData = {
 			BlendTimeoutMin = 0.5,
 			BlendTimeoutMax = 1.0,
@@ -1266,6 +1273,7 @@ local enemyModifications = {
 		},
 	},
 	ThiefImpulseMineLayerElite = {
+		ActivateDuration = 0.5,
 		DefaultAIData = {
 			AttackWhileBlendingIntervalMin = 0,
 			AttackWhileBlendingIntervalMax = 0.5,
@@ -1276,6 +1284,7 @@ local enemyModifications = {
 	-- #endregion
 	-- #region STYX - Minibosses
 	SatyrRangedMiniboss = {
+		ActivateDuration = 0.4,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
@@ -1294,6 +1303,7 @@ local enemyModifications = {
 		BlockCharm = true,
 	},
 	ThiefImpulseMineLayerMiniboss = {
+		ActivateDuration = 0.7,
 		DefaultAIData = {
 			BlendTimeoutMin = 0.5,
 			BlendTimeoutMax = 1.0,

@@ -296,6 +296,8 @@ local additionalEnemySets = {
 	-- #endregion
 
 	-- TODO: Confirm death animations, remember to set SortMode to "Isometric" for all death animations
+	-- TODO: Test ActivateDuration on ALL enemies, from all biomes
+	-- Tested Biomes: Styx
 	-- #region STYX
 	EnemiesBiome4 = {
 		"Crawler",

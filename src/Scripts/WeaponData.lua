@@ -1293,11 +1293,6 @@ local weaponModifications = {
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
 	},
-	SatyrMinigun = {
-		AIData = {
-			Spread = 0,
-		},
-	},
 	-- #endregion
 	-- #region HADES
 	HadesSpawns = {

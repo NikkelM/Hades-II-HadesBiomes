@@ -89,6 +89,13 @@ local hadesWeaponsModifications = {
 
 mod.ApplyNestedSjsonModifications(hadesWeaponsTable.Weapons, hadesWeaponsModifications)
 
+-- Hades II uses NumProjectiles instead of ClipSize
+for _, weapon in ipairs(hadesWeaponsTable.Weapons) do
+	if weapon.ClipSize and not weapon.NumProjectiles then
+		weapon.NumProjectiles = weapon.ClipSize
+	end
+end
+
 sjson.hook(hadesTwoPlayerWeaponsFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Weapons, hadesWeaponsTable.Weapons, "Name")
 end)
