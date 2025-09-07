@@ -101,10 +101,32 @@ local roomModifications = {
 	},
 
 	-- MINIBOSSES
-	-- C_MiniBoss01 = {
-	-- 	LoadModdedVoiceBanks = { "Minotaur", "ZagreusField" },
-	-- 	RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
-	-- },
+	D_MiniBoss03 = {
+		LegalEncounters = { "ModsNikkelMHadesBiomesMiniBossCrawler", "MiniBossHeavyRangedForked", },
+		-- Need to always call this, as overwriting it in the overrides is too late. The function will skip itself if it's not the correct encounter
+		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceCrawlerMiniBoss",
+		EncounterSpecificDataOverwrites = {
+			MiniBossCrawler = mod.NilValue,
+			ModsNikkelMHadesBiomesMiniBossCrawler = {
+				UnthreadedEvents = {
+					{
+						FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
+						Args = {
+							ProcessTextLinesIds = { 552394 },
+							SetupBossIds = { 552394 },
+						},
+					},
+					{
+						FunctionName = "CheckAssistHint",
+						Args = {
+							Delay = 10.0,
+						}
+					},
+				},
+				SkipLastKillSound = true,
+			},
+		},
+	},
 
 	-- BOSSES
 	D_Boss01 = {

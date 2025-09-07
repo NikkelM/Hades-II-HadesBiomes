@@ -25,6 +25,7 @@ mod.EnemyNameMappings = {
 	SpreadShotUnitElite = "HadesSpreadShotUnitElite",
 	-- STYX
 	Crawler = "HadesCrawler",
+	CrawlerMiniBoss = "HadesCrawlerMiniBoss",
 }
 
 -- Enemies that should be removed from the Hades enemy data, as they already exist in Hades II. Also applies to Enemies.sjson

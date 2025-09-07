@@ -12,7 +12,7 @@ local encounterDataStyx = {
 	MiniBossMineLayer = encounterData.MiniBossMineLayer,
 	MiniBossSatyr = encounterData.MiniBossSatyr,
 	MiniBossHeavyRangedForked = encounterData.MiniBossHeavyRangedForked,
-	MiniBossCrawler = encounterData.MiniBossCrawler,
+	ModsNikkelMHadesBiomesMiniBossCrawler = encounterData.MiniBossCrawler,
 
 	-- Bosses
 	BossHades = encounterData.BossHades,
@@ -94,8 +94,9 @@ local encounterReplacements = {
 
 local encounterModifications = {
 	-- MINIBOSSES
-	MiniBossCrawler = {
+	ModsNikkelMHadesBiomesMiniBossCrawler = {
 		StartRoomUnthreadedEvents = {
+			[1] = { Args = { LegalTypes = { "HadesCrawlerMiniBoss" }, }, },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "AngleIds", },
 		},
 	},
