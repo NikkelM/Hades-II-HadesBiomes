@@ -16,6 +16,10 @@ local roomReplacements = {
 	D_Hub = {
 		Binks = { "Cerberus_HubIdle_Bink", },
 	},
+
+	D_MiniBoss03 = {
+		LegalEncounters = { "ModsNikkelMHadesBiomesMiniBossCrawler", "MiniBossHeavyRangedForked" },
+	},
 }
 
 local roomModifications = {
@@ -102,7 +106,6 @@ local roomModifications = {
 
 	-- MINIBOSSES
 	D_MiniBoss03 = {
-		LegalEncounters = { "ModsNikkelMHadesBiomesMiniBossCrawler", "MiniBossHeavyRangedForked", },
 		-- Need to always call this, as overwriting it in the overrides is too late. The function will skip itself if it's not the correct encounter
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceCrawlerMiniBoss",
 		-- Moved here from overrides, as those are applied after the local roomData variable is set which is used to determine the UnthreadedEvents to run
