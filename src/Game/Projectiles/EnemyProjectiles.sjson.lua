@@ -293,6 +293,11 @@ local addProjectiles = {
 		Damage = 3,
 	},
 	{
+		Name = "CrawlerRushMiniBoss",
+		InheritFrom = "CrawlerRush",
+		Damage = 22,
+	},
+	{
 		Name = "HadesPoisonPuddle",
 		InheritFrom = "PoisonPuddle",
 		Effects = {

@@ -269,6 +269,37 @@ local weaponReplacements = {
 	-- #endregion
 	-- #endregion
 
+	-- #region STYX
+	-- From Hades II CrawlerRush_Miniboss, but using Hades animations
+	CrawlerRushMiniBoss = {
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "CrawlerRushMiniBoss",
+			FireSelfVelocity = 3250,
+			FireProjectileStartDelay = 0.03,
+			LoSBuffer = 25,
+			LoSEndBuffer = 32,
+			RequireUnitLoS = true,
+			AttackDistance = 750,
+			WaitForAngleTowardTarget = true,
+			WaitForAngleTowardTargetTimeOut = 0.8,
+			TrackTargetDuringCharge = true,
+			StopBeforeFire = true,
+			PreAttackDuration = 0.675,
+			PreAttackEndShake = true,
+			FireDuration = 0.27,
+			PostAttackDuration = 0.4,
+			RetreatAfterAttack = true,
+			RetreatBufferDistance = 450,
+			RetreatTimeout = 1.0,
+			PreAttackSound = "/SFX/Enemy Sounds/RatThug/EmoteCharging",
+			PreAttackAnimation = "EnemyCrawlerIdle",
+			FireAnimation = "EnemyCrawlerRun",
+			PostAttackAnimation = "EnemyCrawlerIdle",
+		},
+	},
+	-- #endregion
+
 	-- #region CHARON
 	CharonGhostChargeLeft = {
 		Sounds = { FireSounds = { { Name = "/VO/Megaera_10026" }, }, },
@@ -1438,3 +1469,6 @@ local SjsonToAIDataPropertyMappings = {
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponReplacements,
 	weaponKeyReplacements, SjsonToAIDataPropertyMappings)
+mod.PrintTable(game.WeaponData.CrawlerRushMiniBoss)
+print()
+mod.PrintTable(game.EnemyData.HadesCrawlerMiniBoss)

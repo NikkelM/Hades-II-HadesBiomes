@@ -24,12 +24,13 @@ function mod.RoomEntranceCrawlerMiniBoss(currentRun, currentRoom, args)
 	game.wait(0.5)
 	game.SecretMusicPlayer("/EmptyCue")
 
-	if game.GameState.EncountersOccurredCache.ModsNikkelMHadesBiomesMiniBossCrawler > 1 then
-		game.wait(0.5)
-	else
-		SetAnimation({ Name = "ZagreusInteractionThoughtful", DestinationId = game.CurrentRun.Hero.ObjectId })
-		game.wait(2.5)
-	end
+	-- This used to be to give enough time for the intro voicelines on the first encounter
+	-- if game.GameState.EncountersOccurredCache.ModsNikkelMHadesBiomesMiniBossCrawler > 1 then
+	game.wait(0.5)
+	-- else
+	-- SetAnimation({ Name = "ZagreusInteractionThoughtful", DestinationId = game.CurrentRun.Hero.ObjectId })
+	-- game.wait(2.5)
+	-- end
 
 	AngleTowardTarget({ Id = crawlerId, DestinationId = game.CurrentRun.Hero.ObjectId })
 	PlaySound({ Name = "/SFX/QuickSnap", Id = crawlerId })
