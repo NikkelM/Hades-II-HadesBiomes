@@ -65,6 +65,8 @@ function mod.RoomEntranceCrawlerMiniBoss(currentRun, currentRoom, args)
 		game.wait(2.0)
 	end
 
+	-- Otherwise the Crawler is stuck in the howling animation
+	SetAnimation({ Name = "EnemyCrawlerIdle", DestinationId = crawlerId })
 	game.UnblockCombatUI("BossEntrance")
 end
 
