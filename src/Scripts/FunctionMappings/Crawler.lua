@@ -71,6 +71,18 @@ function mod.RoomEntranceCrawlerMiniBoss(currentRun, currentRoom, args)
 	game.UnblockCombatUI("BossEntrance")
 end
 
+function mod.ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation(unit, args)
+	game.AddTimerBlock(game.CurrentRun, "CrawlerMiniBossKillPresentation")
+	game.SetPlayerInvulnerable("CrawlerMiniBossKillPresentation")
+	PlaySound({ Name = "/SFX/StabSplatterEndSequence" })
+	PlaySound({ Name = "/SFX/Enemy Sounds/HydraHead/EmoteFinalDying1", Id = unit.ObjectId })
+
+	mod.HarpyKillPresentation(unit, args)
+
+	game.RemoveTimerBlock(game.CurrentRun, "CrawlerMiniBossKillPresentation")
+	game.SetPlayerVulnerable("CrawlerMiniBossKillPresentation")
+end
+
 function mod.CrawlerMiniBossEndPresentation(eventSource)
 	SetSoundCueValue({ Names = { "Section", }, Id = game.AudioState.SecretMusicId, Value = 10 })
 	game.AudioState.SecretMusicId = nil

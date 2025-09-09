@@ -468,7 +468,7 @@ mod.HadesHelpTextCopyKeys = {
 	MinotaurDefeatedMessage = true,
 	HadesDefeatedMessage = true,
 	ThanatosMessage = true,
-	-- CrawlerDefeatedMessage = true, -- Duplicate
+	CrawlerDefeatedMessage = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage",
 	-- #endregion
 	-- #region Keepsake/Pet messages
 	AchillesPatroclusSignoff = true,

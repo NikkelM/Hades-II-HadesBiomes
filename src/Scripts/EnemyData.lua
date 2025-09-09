@@ -1319,6 +1319,10 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 	},
+	CrawlerMiniBoss = {
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation",
+		OnDeathFunctionArgs = { Message = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage", },
+	},
 	-- #endregion
 	-- #region STYX - Bosses
 	Hades = {

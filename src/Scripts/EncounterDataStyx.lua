@@ -99,6 +99,21 @@ local encounterModifications = {
 			[1] = { Args = { LegalTypes = { "HadesCrawlerMiniBoss" }, }, },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "AngleIds", },
 		},
+		WipeEnemiesOnKillAllTypes = { "HadesCrawlerMiniBoss" },
+		CancelSpawnsOnKillAllTypes = { "HadesCrawlerMiniBoss" },
+		CanEncounterSkip = false,
+	},
+	MiniBossHeavyRangedForked = {
+		CanEncounterSkip = false,
+	},
+	MiniBossSatyr = {
+		CanEncounterSkip = false,
+	},
+	MiniBossMineLayer = {
+		CanEncounterSkip = false,
+	},
+	MiniBossRatThug = {
+		CanEncounterSkip = false,
 	},
 
 	-- BOSSES

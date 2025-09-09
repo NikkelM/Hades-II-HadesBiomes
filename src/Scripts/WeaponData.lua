@@ -1309,6 +1309,11 @@ local weaponModifications = {
 			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
 		},
 	},
+	CrawlerReburrowShockwave = {
+		AIData = {
+			ProjectileName = "CrawlerReburrowShockwave",
+		},
+	},
 	RatThugMeleeMiniboss = {
 		AIData = {
 			AIAttackDistance = 500,
@@ -1469,6 +1474,3 @@ local SjsonToAIDataPropertyMappings = {
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponReplacements,
 	weaponKeyReplacements, SjsonToAIDataPropertyMappings)
-mod.PrintTable(game.WeaponData.CrawlerRushMiniBoss)
-print()
-mod.PrintTable(game.EnemyData.HadesCrawlerMiniBoss)

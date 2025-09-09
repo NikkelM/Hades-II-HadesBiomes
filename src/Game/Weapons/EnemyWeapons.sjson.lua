@@ -79,6 +79,9 @@ local hadesWeaponsModifications = {
 		SelfVelocity = 2500,
 		SelfVelocityCap = 2500,
 	},
+	CrawlerReburrowShockwave = {
+		Projectile = "CrawlerReburrowShockwaveTouchdown",
+	},
 	-- TODO: Figure out good value
 	HadesDash = {
 		SelfVelocity = 3000,

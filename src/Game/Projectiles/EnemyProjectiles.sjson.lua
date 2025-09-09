@@ -263,6 +263,11 @@ local hadesProjectilesModifications = {
 			Scale = 1.0,
 		},
 	},
+	-- This is a copy of CrusherUnitTouchdown, but without the DetonateGraphic, it would be duplicated otherwise
+	CrawlerReburrowShockwaveTouchdown = {
+		InheritFrom = "CrusherUnitTouchdown",
+		DetonateGraphic = "nil",
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
