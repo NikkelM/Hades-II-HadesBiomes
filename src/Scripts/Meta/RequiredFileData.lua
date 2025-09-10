@@ -440,6 +440,7 @@ mod.SjsonFileModifications = {
 mod.MapFileMappings = {
 	-- Tartarus
 	["RoomOpening"] = "RoomOpening",
+	["RoomSimple01"] = "RoomSimple01",
 	["A_PreBoss01"] = "A_PreBoss01",
 	["A_Boss01"] = "A_Boss01",
 	["A_Boss02"] = "A_Boss02",

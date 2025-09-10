@@ -9,7 +9,7 @@ local newMapGroups = {
     Name = "TartarusModsNikkelMHadesBiomes",
     Maps = {
       { Name = "A_*" },
-      -- { Name = "RoomSimple01" },
+      { Name = "RoomSimple01" },
       { Name = "RoomOpening" }
     },
     Using = {

@@ -37,10 +37,6 @@ For Hades, these are the mappings:
 
 ## Special rooms
 
-### RoomSimple01
-
-This is the `RoomOpening` for the first run, where a specific set of Athena boons is forced.
-
 ## RoomData lua files
 
 Biome data is stored in `RoomData<BiomeName>.lua` files in Hades under `Hades/Content/Scripts`.

@@ -1,7 +1,7 @@
 local newRoomSets = {
 	Tartarus = {
 		-- Opening room for the very first run, forces Athena boon, no enemies
-		-- "RoomSimple01",
+		"RoomSimple01",
 		"RoomOpening",
 
 		"A_Boss01",

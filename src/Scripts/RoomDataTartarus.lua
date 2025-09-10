@@ -22,6 +22,15 @@ local roomReplacements = {
 		UnthreadedEvents = mod.NilValue,
 	},
 
+	RoomSimple01 = {
+		ForceIfEncounterNotCompleted = mod.NilValue,
+		LegalEncounters = { "GeneratedTartarus", },
+		ForcedRewardStore = mod.NilValue,
+		ForcedRewards = mod.NilValue,
+		ForceCommonLootFirstRun = mod.NilValue,
+		ForceLootTableFirstRun = mod.NilValue,
+	},
+
 	-- SHOPS
 	A_Shop01 = {
 		Binks = mod.NilValue,
@@ -90,8 +99,6 @@ local roomModifications = {
 			},
 		},
 	},
-	-- This is the first run's opening room, which forces Athena boons
-	RoomSimple01 = mod.NilValue,
 
 	-- SHOPS
 	A_Shop01 = {
