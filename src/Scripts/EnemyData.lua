@@ -463,6 +463,9 @@ local enemyModifications = {
 	},
 	HeavyRanged = {
 		StunAnimations = { Default = "HeavyRangedCrystal4" },
+		ActivateFadeIn = true,
+		ActivateTint = true,
+		ActivateStartAlpha = 0.0,
 		Tethers = {
 			[1] = { Distance = 20 },
 			[2] = { Distance = 20 },
@@ -1646,7 +1649,7 @@ local enemyKeyReplacements = {
 -- Only modify enemies that are not being used in Hades II in this way!
 -- Needs to be done before the enemy data is added to the game
 game.EnemyData.SpikeTrap.DefaultAIData.TargetGroups = { "GroundEnemies", "HeroTeam", }
-game.EnemyData.SpikeTrap.AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", }
+game.EnemyData.SpikeTrap.AIOptions = {"GuardAI", }
 game.EnemyData.Elite.EliteAttributeData.ModsNikkelMHadesBiomesStasisDeath = {
 	GameStateRequirements = {
 		{
