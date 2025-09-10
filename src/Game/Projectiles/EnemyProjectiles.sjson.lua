@@ -47,6 +47,9 @@ local projectilesToRemove = {
 -- Modifications/overrides to the Hades enemy projectiles
 local hadesProjectilesModifications = {
 	-- #region TARTARUS
+	PunchingBagUnitWeapon = {
+		DieWithOwner = true,
+	},
 	DisembodiedHandGrab = {
 		Effect = {
 			-- Don't play the ZagreusStun animation

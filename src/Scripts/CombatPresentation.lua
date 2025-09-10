@@ -12,6 +12,8 @@ modutil.mod.Path.Wrap("KillPresentation", function(base, victim, killer, args)
 				Group = "Standing",
 			})
 			local angle = GetAngle({ Id = victim.ObjectId })
+			-- To ensure there are no duplications (e.g. PunchingBagUnit during an attack continuing to slide)
+			SetAnimation({ Name = "BlankAnimation", DestinationId = victim.ObjectId })
 			if not victim.ModsNikkelMHadesBiomesIgnoreDeathAngle then
 				CreateAnimation({ Name = victim.DeathAnimation, DestinationId = deathAnimationObstacle, Angle = angle })
 			else
