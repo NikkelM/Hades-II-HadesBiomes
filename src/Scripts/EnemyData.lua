@@ -478,10 +478,6 @@ local enemyModifications = {
 			},
 		},
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
-		DefaultAIData = {
-			-- Some more difficulty
-			MaxAttackers = 4,
-		},
 	},
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
