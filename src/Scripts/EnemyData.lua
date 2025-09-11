@@ -478,6 +478,10 @@ local enemyModifications = {
 			},
 		},
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DefaultAIData = {
+			-- Some more difficulty
+			MaxAttackers = 4,
+		},
 	},
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
@@ -1442,6 +1446,7 @@ local enemyModifications = {
 		ProjectileName = "PhalanxTrapWeapon",
 		AIAttackDistance = 150,
 		OutgoingDamageModifiers = { { NonPlayerMultiplier = 15.0, }, },
+		-- TODO: Check
 		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
 	},
 	PhalanxTrapPassive = {
@@ -1649,7 +1654,7 @@ local enemyKeyReplacements = {
 -- Only modify enemies that are not being used in Hades II in this way!
 -- Needs to be done before the enemy data is added to the game
 game.EnemyData.SpikeTrap.DefaultAIData.TargetGroups = { "GroundEnemies", "HeroTeam", }
-game.EnemyData.SpikeTrap.AIOptions = {"GuardAI", }
+game.EnemyData.SpikeTrap.AIOptions = { "GuardAI", }
 game.EnemyData.Elite.EliteAttributeData.ModsNikkelMHadesBiomesStasisDeath = {
 	GameStateRequirements = {
 		{

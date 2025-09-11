@@ -399,11 +399,17 @@ mod.SjsonFileModifications = {
 		},
 	},
 	["Animations\\CharacterAnim_Enemies_WretchThug"] = {
+		EnemyActivationWretchThugFade = {
+			ChainTo = "EnemyWretchThugIdle",
+		},
 		EnemyWretchThugDeath = {
 			SortMode = "Isometric",
 		},
 	},
 	["Animations\\CharacterAnim_Enemies_Wringer"] = {
+		EnemyActivationDisembodiedHandFade = {
+			ChainTo = "EnemyWringerIdle",
+		},
 		EnemyWringerDeathVFX = {
 			SortMode = "Isometric",
 		},

@@ -33,21 +33,36 @@ end
 
 local modifications = {
 	-- #region TARTARUS
+	EnemyActivationWretchSwarmerFade = {
+		ChainTo = "EnemyWretchSwarmerIdle",
+	},
 	EnemyWretchSwarmerDeathVFX = {
 		SortMode = "Isometric",
 		Scale = 0.8,
+	},
+	EnemyActivationLightSpawnerFade = {
+		ChainTo = "SpawnerIdleAnim",
 	},
 	SpawnerDeath = {
 		SortMode = "Isometric",
 		OffsetY = -50.0,
 		Scale = 1.1,
 	},
+	EnemyActivationWretchGluttonFade = {
+		ChainTo = "EnemyWretchGluttonIdle",
+	},
 	EnemyWretchGluttonDeathVFX = {
 		SortMode = "Isometric",
+	},
+	EnemyActivationWretchCasterFade = {
+		ChainTo = "EnemyWretchCasterIdle",
 	},
 	EnemyWretchCasterDeath = {
 		SortMode = "Isometric",
 		Scale = 0.8,
+	},
+	EnemyActivationHeavyRangedFade = {
+		ChainTo = "HeavyRangedCrystal4",
 	},
 	HeavyRangedCrystal1Shatter = {
 		SortMode = "Isometric",
@@ -55,6 +70,9 @@ local modifications = {
 	HeavyRangedCrystal4Shatter = {
 		SortMode = "Isometric",
 		OffsetY = -70,
+	},
+	EnemyActivationThiefMineLayerFade = {
+		ChainTo = "EnemyWretchThiefIdle",
 	},
 	-- #endregion
 
