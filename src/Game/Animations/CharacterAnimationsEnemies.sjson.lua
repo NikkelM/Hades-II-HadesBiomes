@@ -77,8 +77,15 @@ local modifications = {
 	-- #endregion
 
 	-- #region ASPHODEL
+	EnemyActivationCrusherUnitFade = {
+		OffsetY = -75.0,
+	},
 	CrusherUnitDeathVFX = {
 		SortMode = "Isometric",
+	},
+	-- TODO: Animation doesn't work correctly - no container is seen
+	EnemyActivationMedusaHeadFade = {
+		ChainTo = "EnemyMedusaHeadIdle",
 	},
 	EnemyMedusaHeadDeath = {
 		SortMode = "Isometric",
