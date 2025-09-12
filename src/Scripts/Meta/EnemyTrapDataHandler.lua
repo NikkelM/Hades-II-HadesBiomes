@@ -45,9 +45,8 @@ function mod.ModifyEnemyTrapData(enemyData)
 			PostAttackDuration = 0.0,
 			FireTicksMin = 3,
 			FireTicksMax = 3,
-			FireInterval = 0.15,
+			AIFireTicksCooldown = 0.15,
 			TrackTargetDuringCharge = false,
-			-- Manually added!
 			ProjectileName = "DartTrapWeapon",
 			PostAttackCooldown = 2.0,
 		},

@@ -353,10 +353,10 @@ local enemyReplacements = {
 	HadesBloodlessPitcherElite = game.DeepCopyTable(game.EnemyData.BloodlessPitcher_Elite),
 	HadesBloodlessWaveFist = game.DeepCopyTable(game.EnemyData.BloodlessWaveFist),
 	HadesBloodlessWaveFistElite = game.DeepCopyTable(game.EnemyData.BloodlessWaveFist_Elite),
-	HadesSpreadShotUnit = game.DeepCopyTable(game.EnemyData.SpreadShotUnit),
-	HadesSpreadShotUnitElite = game.DeepCopyTable(game.EnemyData.SpreadShotUnit_Elite),
 	BloodlessNakedBerserker = game.DeepCopyTable(game.EnemyData.BloodlessBerserker),
 	BloodlessNakedBerserkerElite = game.DeepCopyTable(game.EnemyData.BloodlessBerserker_Elite),
+	HadesSpreadShotUnit = game.DeepCopyTable(game.EnemyData.SpreadShotUnit),
+	HadesSpreadShotUnitElite = game.DeepCopyTable(game.EnemyData.SpreadShotUnit_Elite),
 	-- #endregion
 	-- #region ASPHODEL - Hydra
 	HydraHeadImmortal = {
