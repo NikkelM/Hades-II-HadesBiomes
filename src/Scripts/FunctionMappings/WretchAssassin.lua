@@ -73,7 +73,6 @@ function mod.EnemyInvisibility(enemy, weaponAIData, args)
 		end
 
 		if weaponAIData.PostInvisibilityFunction ~= nil then
-			-- TODO: no currentRun argument!
 			game.CallFunctionName(weaponAIData.PreAttackEndFunctionName, enemy, weaponAIData, args)
 		end
 		AngleTowardTarget({ Id = enemy.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })

@@ -1351,6 +1351,7 @@ local weaponModifications = {
 			SpawnDefaultAIDataOverrides = {
 				PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 				PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
+				PostInvisibilityFunction = _PLUGIN.guid .. "." .. "HadesTeleport",
 			}
 		},
 	},

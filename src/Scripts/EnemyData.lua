@@ -1334,6 +1334,7 @@ local enemyModifications = {
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HadesKillPresentation",
 		DefaultAIData = {
 			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
+			PostInvisibilityFunction = _PLUGIN.guid .. "." .. "HadesTeleport",
 		},
 	},
 	-- #endregion
