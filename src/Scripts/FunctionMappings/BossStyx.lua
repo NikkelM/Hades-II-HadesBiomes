@@ -424,3 +424,14 @@ function mod.SetupHadesSpawnOptions(enemy)
 	table.insert(enemy.SpawnOptions, game.GetRandomValue(spawnOptionsSmall))
 	table.insert(enemy.SpawnOptions, game.GetRandomValue(spawnOptionsSmall))
 end
+
+function mod.HadesTeleport(enemy, weaponAIData, args)
+	local teleportPoints = GetIds({ Name = weaponAIData.TeleportationPointsGroupName })
+	local teleportPointId = game.GetRandomValue(teleportPoints)
+	game.RemoveValue(teleportPoints, GetClosest({ Id = enemy.ObjectId, DestinationIds = teleportPoints }))
+
+	Teleport({ Id = enemy.ObjectId, DestinationId = teleportPointId })
+	local postTeleportWaitDuration = game.RandomFloat(weaponAIData.PostTeleportWaitDurationMin,
+		weaponAIData.PostTeleportWaitDurationMax)
+	game.wait(game.CalcEnemyWait(enemy, postTeleportWaitDuration), enemy.AIThreadName)
+end
