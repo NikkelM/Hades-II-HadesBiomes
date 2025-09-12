@@ -1,4 +1,4 @@
-function mod.EnemyHandleInvisibleAttack(enemy, weaponAIData, currentRun, args)
+function mod.EnemyHandleInvisibleAttack(enemy, weaponAIData, args)
 	args = args or {}
 	if enemy.IsInvisible and not weaponAIData.KeepInvisibility then
 		if enemy.CurrentPhase ~= nil and enemy.CurrentPhase >= 2 and enemy.Phase2VFX ~= nil then
@@ -7,16 +7,13 @@ function mod.EnemyHandleInvisibleAttack(enemy, weaponAIData, currentRun, args)
 
 		SetLifeProperty({ DestinationId = enemy.ObjectId, Property = "InvulnerableFx", Value = "Invincibubble_Hades" })
 		enemy.IsInvisible = false
-		CreateHealthBar(enemy)
-		UpdateHealthBar(enemy, 0, { Force = true })
+		game.CreateHealthBar(enemy)
+		game.UpdateHealthBar(enemy, 0, { Force = true })
 
-		-- if enemy.ActiveEffects and enemy.ActiveEffects.MarkRuptureTarget then
-		-- 	UpdateRuptureEffectStacks({ TriggeredByTable = enemy, triggeredById = enemy.ObjectId })
-		-- end
 		if enemy.InvisibilityEndSound ~= nil then
 			PlaySound({ Name = enemy.InvisibilityEndSound })
 		end
-		SetUnitVulnerable(enemy)
+		game.SetUnitVulnerable(enemy)
 		SetAlpha({ Id = enemy.ObjectId, Fraction = 1.0, Duration = weaponAIData.InvisibilityFadeInDuration })
 		SetColor({ Id = enemy.ObjectId, Color = { 255, 255, 255, 255 }, Duration = weaponAIData.InvisibilityFadeInDuration })
 		if args.CreateAnimation then
@@ -29,11 +26,56 @@ function mod.EnemyHandleInvisibleAttack(enemy, weaponAIData, currentRun, args)
 		SetUnitProperty({
 			DestinationId = enemy.ObjectId,
 			Property = "ImmuneToStun",
-			Value = enemy
-					.PreInvisibilityImmuneToStun
+			Value = enemy.PreInvisibilityImmuneToStun
 		})
 		SetThingProperty({ DestinationId = enemy.ObjectId, Property = "StopsProjectiles", Value = true })
 		enemy.SkipInvulnerableOnHitPresentation = false
-		wait(CalcEnemyWait(enemy, weaponAIData.InvisibilityFadeInDuration), enemy.AIThreadName)
+		game.wait(game.CalcEnemyWait(enemy, weaponAIData.InvisibilityFadeInDuration), enemy.AIThreadName)
+	end
+end
+
+function mod.EnemyInvisibility(enemy, weaponAIData, args)
+	args = args or {}
+
+	weaponAIData.InvisibilityInterval = weaponAIData.InvisibilityInterval or 0
+	enemy.LastInvisibilityTime = enemy.LastInvisibilityTime or 0
+
+	if game._worldTime - enemy.LastInvisibilityTime >= weaponAIData.InvisibilityInterval then
+		ClearEffect({ Id = enemy.ObjectId, All = true })
+		SetLifeProperty({ DestinationId = enemy.ObjectId, Property = "InvulnerableFx", Value = nil })
+		enemy.SkipInvulnerableOnHitPresentation = true
+
+		local alpha = args.Alpha or 0.0
+		local color = args.Color or { 0, 0, 0, 0 }
+
+		SetAlpha({ Id = enemy.ObjectId, Fraction = alpha, Duration = weaponAIData.InvisibilityFadeOutDuration })
+		SetColor({ Id = enemy.ObjectId, Color = color, Duration = weaponAIData.InvisibilityFadeOutDuration })
+
+		if args.CreateAnimation then
+			CreateAnimation({ Name = args.CreateAnimation, DestinationId = enemy.ObjectId })
+		end
+		if args.Animation then
+			SetAnimation({ Name = args.Animation, DestinationId = enemy.ObjectId })
+		end
+		SetUnitProperty({ DestinationId = enemy.ObjectId, Property = "CollideWithUnits", Value = false })
+		SetThingProperty({ DestinationId = enemy.ObjectId, Property = "StopsProjectiles", Value = false })
+		enemy.PreInvisibilityImmuneToStun = GetUnitDataValue({ Id = enemy.ObjectId, Property = "ImmuneToStun" })
+		SetUnitProperty({ DestinationId = enemy.ObjectId, Property = "ImmuneToStun", Value = true })
+		SetUnitInvulnerable(enemy)
+		game.wait(weaponAIData.InvisibilityFadeOutDuration, enemy.AIThreadName)
+		if enemy.Phase2VFX ~= nil then
+			StopAnimation({ Name = enemy.Phase2VFX, DestinationId = enemy.ObjectId })
+		end
+		enemy.IsInvisible = true
+		enemy.LastInvisibilityTime = game._worldTime
+		if not enemy.UseBossHealthBar then
+			game.RemoveEnemyHealthBar(enemy)
+		end
+
+		if weaponAIData.PostInvisibilityFunction ~= nil then
+			-- TODO: no currentRun argument!
+			game.CallFunctionName(weaponAIData.PreAttackEndFunctionName, enemy, weaponAIData, args)
+		end
+		AngleTowardTarget({ Id = enemy.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
 	end
 end

@@ -416,6 +416,16 @@ local weaponModifications = {
 			TeleportBehindTarget = true,
 			PostTeleportAngleTowardTarget = true,
 			PreAttackFunctionName = mod.NilValue,
+			PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
+		},
+	},
+	WretchAssassinRanged = {
+		AIData = {
+			-- Fixed to use the Hades II teleportation
+			PreAttackTeleport = true,
+			PostTeleportAngleTowardTarget = true,
+			PreAttackFunctionName = mod.NilValue,
+			PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
 		},
 	},
 	-- #endregion
@@ -1340,6 +1350,7 @@ local weaponModifications = {
 		AIData = {
 			SpawnDefaultAIDataOverrides = {
 				PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
+				PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
 			}
 		},
 	},
@@ -1347,6 +1358,16 @@ local weaponModifications = {
 		AIData = {
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
+		},
+	},
+	HadesInvisibility = {
+		AIData = {
+			FireFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
+		},
+	},
+	HadesCerberusAssist = {
+		AIData = {
+			PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
 		},
 	},
 	-- #endregion
