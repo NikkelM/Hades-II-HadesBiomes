@@ -53,11 +53,10 @@ local hadesWeaponsModifications = {
 		SelfVelocity = mod.NilValue,
 		SelfUpwardVelocity = mod.NilValue,
 	},
-	-- TODO: Test good values/can it dash over the gaps? Remove other Vow override if this works
-	-- TODO: How are the ranges determined in Hades I? Use that to scale the different dash weapons
 	FlurrySpawnerDash = {
-		SelfVelocity = 4000,
-		SelfVelocityCap = 4000,
+		-- WeaponRange = 800
+		SelfVelocity = 6000,
+		SelfVelocityCap = 6000,
 	},
 	MinotaurBullRush = {
 		Effects = mod.NilValue,
@@ -76,6 +75,7 @@ local hadesWeaponsModifications = {
 
 	-- #region STYX
 	SatyrDash = {
+		-- WeaponRange = 350
 		SelfVelocity = 2500,
 		SelfVelocityCap = 2500,
 	},
@@ -84,8 +84,9 @@ local hadesWeaponsModifications = {
 	},
 	-- TODO: Figure out good value
 	HadesDash = {
-		SelfVelocity = 3000,
-		SelfVelocityCap = 3000,
+		-- WeaponRange = 500
+		SelfVelocity = 4000,
+		SelfVelocityCap = 4000,
 	},
 	-- #endregion
 }

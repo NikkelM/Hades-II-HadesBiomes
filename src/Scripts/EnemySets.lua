@@ -69,7 +69,6 @@ local additionalEnemySets = {
 		"PunchingBagUnit",
 		"HeavyMelee",
 		"HeavyRanged",
-
 		"HeavyMeleeElite",
 		"LightRangedElite",
 		"ThiefMineLayerElite",
@@ -264,7 +263,6 @@ local additionalEnemySets = {
 		"ShadeShieldUnitElite",
 		"ShadeSwordUnit",
 		"ShadeSwordUnitElite",
-
 		"SplitShotUnit",
 		"SplitShotUnitElite",
 		"Chariot",
@@ -299,7 +297,7 @@ local additionalEnemySets = {
 	-- TODO: Confirm death animations, remember to set SortMode to "Isometric" for all death animations
 	-- TODO: Test ActivateDuration on ALL enemies, from all biomes
 	-- TODO: Chain all ...Fade animations for the ActivateAnimations to the enemy idle animation instead of the Flash animation
-	-- Tested Biomes: Tartarus, Styx (only ActivateDuration)
+	-- Tested Biomes: Tartarus, Asphodel, Elysium, Styx (only ActivateDuration)
 	-- #region STYX
 	EnemiesBiome4 = {
 		"Crawler",

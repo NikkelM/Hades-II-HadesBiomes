@@ -396,9 +396,9 @@ mod.SjsonFileModifications = {
 		},
 	},
 	["Animations\\CharacterAnim_Enemies_Shades"] = {
-		-- TODO: Check on Butterfly boss
 		EnemyActivationShadeNakedFade = {
 			ChainTo = "ShadeNaked_Idle_Flameless",
+			OffsetY = -20.0,
 		},
 		EnemyActivationShadeSpearFade = {
 			ChainTo = "ShadeSpear_Idle",

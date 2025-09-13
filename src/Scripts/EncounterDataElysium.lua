@@ -91,20 +91,6 @@ local encounterModifications = {
 
 	-- MINIBOSSES
 	MiniBossNakedSpawners = {
-		-- Move the max enemies from 6 to 8 and add additional FlurrySpawners when the Vow of Shadows is active
-		EnemyCountShrineModifierName = "MinibossCountShrineUpgrade",
-		EnemyCountShineModifierAmount = 2,
-		ManualWaveTemplates = {
-			[1] = {
-				Spawns = {
-					[3] = {
-						Name = "FlurrySpawner",
-						TotalCount = 3,
-						RequiredMiniBossShrine = true,
-					},
-				},
-			},
-		},
 		CanEncounterSkip = false,
 	},
 	MiniBossMinotaur = {
