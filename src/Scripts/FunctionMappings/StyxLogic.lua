@@ -278,10 +278,34 @@ function mod.ModsNikkelMHadesBiomesReturnToStyxHubPresentation(currentRun, curre
 	game.waitUntil(notifyName)
 	local didSkip = not _eventTimeoutRecord[notifyName]
 	if didSkip then
+		local originalWeaponRange = GetWeaponDataValue({
+			Id = currentRun.Hero.ObjectId,
+			WeaponName = "WeaponBlink",
+			Property = "WeaponRange"
+		})
+		-- Increase the range to allow blinking onto the bridge to the rooms
+		SetWeaponProperty({
+			WeaponName = "WeaponBlink",
+			DestinationId = currentRun.Hero.ObjectId,
+			Property = "WeaponRange",
+			Value = 512,
+			ValueChangeType = "Absolute"
+		})
 		FireWeaponFromUnit({ Weapon = "WeaponBlink", Id = currentRun.Hero.ObjectId })
+		-- Small delay before resetting, otherwise the blink above already uses the reset range
+		game.thread(function()
+			game.wait(0.1)
+			SetWeaponProperty({
+				WeaponName = "WeaponBlink",
+				DestinationId = currentRun.Hero.ObjectId,
+				Property = "WeaponRange",
+				Value = originalWeaponRange,
+				ValueChangeType = "Absolute"
+			})
+		end)
+	else
+		SetAnimation({ DestinationId = currentRun.Hero.ObjectId, Name = "Melinoe_Combat_Return_ReEnter" })
 	end
-
-	SetAnimation({ DestinationId = currentRun.Hero.ObjectId, Name = "Melinoe_Combat_Return_ReEnter" })
 
 	LockCamera({ Id = currentRun.Hero.ObjectId, Duration = 2.0 })
 	RemoveInputBlock({ Name = "ModsNikkelMHadesBiomesReturnToStyxHubPresentation" })
