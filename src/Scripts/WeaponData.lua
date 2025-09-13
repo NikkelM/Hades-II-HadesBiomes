@@ -1363,7 +1363,8 @@ local weaponModifications = {
 	},
 	HadesInvisibility = {
 		AIData = {
-			FireFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
+			-- Different call, as for FireFunctionName, CurrentRun is also passed as an argument
+			FireFunctionName = _PLUGIN.guid .. "." .. "HadesEnemyInvisibility",
 		},
 	},
 	HadesCerberusAssist = {
