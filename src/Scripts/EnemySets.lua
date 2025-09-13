@@ -294,10 +294,7 @@ local additionalEnemySets = {
 	},
 	-- #endregion
 
-	-- TODO: Confirm death animations, remember to set SortMode to "Isometric" for all death animations
-	-- TODO: Test ActivateDuration on ALL enemies, from all biomes
-	-- TODO: Chain all ...Fade animations for the ActivateAnimations to the enemy idle animation instead of the Flash animation
-	-- Tested Biomes: Tartarus, Asphodel, Elysium, Styx (only ActivateDuration)
+	-- TODO: Confirm death animations (Styx), remember to set SortMode to "Isometric" for all death animations
 	-- #region STYX
 	EnemiesBiome4 = {
 		"Crawler",
