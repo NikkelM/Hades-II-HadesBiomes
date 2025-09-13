@@ -2,7 +2,10 @@ local hadesTwoPortraitsFile = rom.path.combine(rom.paths.Content(), "Game\\Anima
 
 local hadesTwoPortraitModifications = {
 	Portrait_Hades_HelmCape_01 = {
-		OffsetY = -91,
+		OffsetY = -90,
+	},
+	Portrait_Hades_HelmCape_01_Exit = {
+		OffsetY = -90,
 	},
 }
 
