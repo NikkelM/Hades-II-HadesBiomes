@@ -22,9 +22,6 @@ function mod.PickupAI(enemy, currentRun)
 end
 
 function mod.ModsNikkelMHadesBiomesShadeNakedPostActivate(source, args)
-	-- Save the time the unit was activated to be able to ignore the first rapid damage
-	source.ModsNikkelMHadesBiomesActivatedTime = game._worldTime
-
 	-- If there is an active challenge encounter, we need to add the unit to the active spawns
 	if game.CurrentRun.CurrentRoom.ChallengeEncounter ~= nil and game.CurrentRun.CurrentRoom.ChallengeEncounter.InProgress and game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns ~= nil then
 		game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns[source.ObjectId] = true
@@ -34,6 +31,13 @@ function mod.ModsNikkelMHadesBiomesShadeNakedPostActivate(source, args)
 	if source.UseActivatePresentation then
 		return
 	end
+	-- To prevent being damaged from the same hit that killed the parent, set temporarily invulnerable on spawn
+	game.SetUnitInvulnerable(source, "ShadeNakedSpawnInvulnerability", { Silent = true })
+	game.thread(function()
+		game.wait(0.05)
+		game.SetUnitVulnerable(source, "ShadeNakedSpawnInvulnerability")
+	end)
+
 	local angle = GetAngleBetween({ DestinationId = source.ObjectId, Id = game.CurrentRun.Hero.ObjectId }) +
 			game.RandomFloat(args.AngleOffsetMin, args.AngleOffsetMax)
 	local force = game.RandomFloat(args.ForceMin, args.ForceMax)
@@ -230,6 +234,7 @@ function mod.ProcessPickup(enemy, pickupTarget)
 		end
 		game.thread(game.PlayVoiceLines, oldEnemy.RespawnedVoiceLines, true)
 		mod.RemoveOnDeathWeapons(oldEnemy)
+		oldEnemy.ModsNikkelMHadesBiomesSkipDeathAnimation = true
 		game.Kill(oldEnemy)
 	end
 

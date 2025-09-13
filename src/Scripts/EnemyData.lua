@@ -1006,8 +1006,6 @@ local enemyModifications = {
 		DeathAnimation = "ShadeNakedDeathVFX",
 		DeathFx = "null",
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesShadeNakedDeath",
-		-- To prevent the first damage occurrence, which is duplicated from the killing blow
-		ModsNikkelMHadesBiomesIgnoreFirstRapidDamage = true,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,

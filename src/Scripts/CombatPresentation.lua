@@ -3,7 +3,7 @@ modutil.mod.Path.Wrap("KillPresentation", function(base, victim, killer, args)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy then
 		game.thread(mod.HandleTetherParentDeath, victim)
 
-		if victim.DeathAnimation ~= nil and victim.ManualDeathAnimation then
+		if victim.DeathAnimation ~= nil and victim.ManualDeathAnimation and not victim.ModsNikkelMHadesBiomesSkipDeathAnimation then
 			-- Set the death animation manually on a new obstacles, to not have to time the DestroyDelay
 			local deathAnimationObstacle = SpawnObstacle({
 				Name = "BlankObstacle",
