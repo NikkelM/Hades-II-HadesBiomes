@@ -87,6 +87,9 @@ local modifications = {
 	EnemyActivationMedusaHeadFade = {
 		ChainTo = "EnemyMedusaHeadIdle",
 	},
+	EnemyActivationHitAndRunUnitFade = {
+		ChainTo = "EnemyMedusaHeadIdle",
+	},
 	EnemyMedusaHeadDeath = {
 		SortMode = "Isometric",
 		BlockNewOwnerAnims = true,

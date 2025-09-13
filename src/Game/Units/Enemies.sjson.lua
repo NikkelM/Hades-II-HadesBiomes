@@ -32,7 +32,14 @@ local hadesEnemiesModifications = {
 	-- #endregion
 
 	-- #region ASPHODEL
-	BaseMedusaHead = { InheritFrom = "1_BaseEnemy", },
+	BaseMedusaHead = {
+		InheritFrom = "1_BaseEnemy",
+		Thing = {
+			-- The MedusaHead ActivateGraphic doesn't show any container, so we use the HitAndRunUnit one instead
+			-- It is automatically scaled
+			ActivateGraphic = "EnemyActivationFadeInHitAndRunUnitContainer",
+		},
+	},
 	HydraTooth = { InheritFrom = "1_BaseEnemy", },
 	-- #endregion
 
