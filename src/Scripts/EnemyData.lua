@@ -1233,11 +1233,13 @@ local enemyModifications = {
 	SatyrRanged = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "SatyrOnHit" },
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		ActivateDuration = 0.4,
 	},
 	RatThug = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "EnemyRatThugOnHit" },
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		OnDeathThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOnDeathFireProjectile",
 		OnDeathFunctionArgs = {
 			ProjectileName = "HadesPoisonPuddle",
@@ -1245,6 +1247,7 @@ local enemyModifications = {
 	},
 	Crawler = {
 		IgnoreSpeedShrine = true,
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		SpellSummonDataOverrides = {
 			DeepInheritance = true,
 			OutgoingDamageModifiers = { { NonPlayerMultiplier = 25, }, },
@@ -1264,6 +1267,7 @@ local enemyModifications = {
 	},
 	ThiefImpulseMineLayer = {
 		StunAnimations = { Default = "EnemyStyxThiefOnHit" },
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		ActivateDuration = 0.5,
 		DefaultAIData = {
 			BlendTimeoutMin = 0.5,

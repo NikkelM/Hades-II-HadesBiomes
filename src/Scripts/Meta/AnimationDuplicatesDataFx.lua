@@ -58,6 +58,17 @@ mod.HadesFxAnimationModifications = {
 		ChildAnimation = "null",
 		CreateAnimation = "TravelDoor03CloseAnim",
 	},
+	RatDeathSmallRandom = {
+		SortMode = "Isometric",
+		OffsetY = 10,
+	},
+	RatDeathRandom = {
+		SortMode = "Isometric",
+		OffsetY = 10,
+	},
+	SatyrDeathAnimation = {
+		SortMode = "Isometric",
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT

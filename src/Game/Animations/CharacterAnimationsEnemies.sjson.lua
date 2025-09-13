@@ -119,6 +119,9 @@ local modifications = {
 		SortMode = "Isometric",
 		OffsetY = -70,
 	},
+	EnemyStyxThiefDeath = {
+		SortMode = "Isometric",
+	},
 	-- #endregion
 }
 

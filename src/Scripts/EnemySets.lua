@@ -294,7 +294,6 @@ local additionalEnemySets = {
 	},
 	-- #endregion
 
-	-- TODO: Confirm death animations (Styx), remember to set SortMode to "Isometric" for all death animations
 	-- #region STYX
 	EnemiesBiome4 = {
 		"Crawler",
