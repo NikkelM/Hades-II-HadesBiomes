@@ -381,8 +381,14 @@ mod.SjsonFileModifications = {
 		},
 	},
 	["Animations\\CharacterAnim_Enemies_Chariot"] = {
+		EnemyActivationChariotFade = {
+			ChainTo = "ChariotIdle",
+		},
 		ChariotDeathVFX = {
 			SortMode = "Isometric",
+		},
+		EnemyActivationChariotSuicideFade = {
+			ChainTo = "ChariotSuicideIdle",
 		},
 		ChariotSuicideDeathVFX = {
 			SortMode = "Isometric",
@@ -390,6 +396,22 @@ mod.SjsonFileModifications = {
 		},
 	},
 	["Animations\\CharacterAnim_Enemies_Shades"] = {
+		-- TODO: Check on Butterfly boss
+		EnemyActivationShadeNakedFade = {
+			ChainTo = "ShadeNaked_Idle_Flameless",
+		},
+		EnemyActivationShadeSpearFade = {
+			ChainTo = "ShadeSpear_Idle",
+		},
+		EnemyActivationShadeBowFade = {
+			ChainTo = "ShadeBow_Idle",
+		},
+		EnemyActivationShadeShieldFade = {
+			ChainTo = "ShadeShield_Idle",
+		},
+		EnemyActivationShadeSwordFade = {
+			ChainTo = "ShadeSword_Idle",
+		},
 		ShadeDeathVFX = {
 			SortMode = "Isometric",
 		},
