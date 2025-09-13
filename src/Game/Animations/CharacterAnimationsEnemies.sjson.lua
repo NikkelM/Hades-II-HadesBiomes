@@ -83,12 +83,9 @@ local modifications = {
 	CrusherUnitDeathVFX = {
 		SortMode = "Isometric",
 	},
-	-- TODO: Animation doesn't work correctly - no container is seen
-	EnemyActivationMedusaHeadFade = {
-		ChainTo = "EnemyMedusaHeadIdle",
-	},
 	EnemyActivationHitAndRunUnitFade = {
 		ChainTo = "EnemyMedusaHeadIdle",
+		OffsetY = -110.0,
 	},
 	EnemyMedusaHeadDeath = {
 		SortMode = "Isometric",
