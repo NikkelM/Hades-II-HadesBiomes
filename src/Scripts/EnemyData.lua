@@ -1438,10 +1438,11 @@ local enemyModifications = {
 	},
 	PhalanxTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		-- Swapping to the actual DisabledAnimation doesn't work correctly, so to stop the snapping animation, we just use the Idle animation
+		DisabledAnimation = "PhalanxTrapIdle",
 		ProjectileName = "PhalanxTrapWeapon",
 		AIAttackDistance = 150,
 		OutgoingDamageModifiers = { { NonPlayerMultiplier = 15.0, }, },
-		-- TODO: Check
 		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
 	},
 	PhalanxTrapPassive = {

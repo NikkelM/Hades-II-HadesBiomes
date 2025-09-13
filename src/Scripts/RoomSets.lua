@@ -96,7 +96,8 @@ local newRoomSets = {
 		"C_Reprieve01",
 		"C_Story01",
 
-		"C_Combat01",
+		-- Disabled due to #144
+		-- "C_Combat01",
 		"C_Combat02",
 		"C_Combat03",
 		"C_Combat04",
