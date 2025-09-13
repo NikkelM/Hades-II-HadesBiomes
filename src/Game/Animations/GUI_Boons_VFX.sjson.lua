@@ -1,5 +1,4 @@
-local hadesTwoBoonFile = rom.path.combine(rom.paths.Content(),
-	"Game\\Animations\\GUI_Boons_VFX.sjson")
+local hadesTwoBoonFile = rom.path.combine(rom.paths.Content(), "Game\\Animations\\GUI_Boons_VFX.sjson")
 
 -- Make sure to add a Name key!
 

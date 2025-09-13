@@ -1,5 +1,4 @@
-local hadesTwoGuiVfxFile = rom.path.combine(rom.paths.Content(),
-	"Game\\Animations\\GUI_VFX.sjson")
+local hadesTwoGuiVfxFile = rom.path.combine(rom.paths.Content(), "Game\\Animations\\GUI_VFX.sjson")
 
 -- These should NOT be in use by Hades II to not break functionality there!
 local hadesTwoGuiVfxModifications = {}

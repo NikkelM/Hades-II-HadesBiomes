@@ -193,7 +193,6 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 				if game.Contains(moddedTransitionFunctions, aiStage.TransitionFunction) then
 					aiStage.TransitionFunction = _PLUGIN.guid .. "." .. aiStage.TransitionFunction
 				end
-				-- #region HYDRA
 				-- Perform the mapping of the SelectPactLevelAIStage to EMStageDataOverrides
 				if aiStage.SelectPactLevelAIStage then
 					-- These are applied if the shrineLevel is not high enough/default behaviour for this AIStage
@@ -208,7 +207,6 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 					end
 					aiStage.SelectPactLevelAIStage = nil
 				end
-				-- #endregion
 			end
 		end
 
@@ -1358,6 +1356,7 @@ local enemyModifications = {
 				},
 			},
 		},
+		-- TODO: For all - only one of these should be active at a time, depending on the unlocks
 		ValueOptions = {
 			[1] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
 			[2] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },

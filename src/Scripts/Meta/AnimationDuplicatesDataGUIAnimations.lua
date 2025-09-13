@@ -4,7 +4,6 @@
 mod.HadesGUIAnimationsDestinationFilename = "Game\\Animations\\Z_ModsNikkelmHadesBiomesGUIAnimations.sjson"
 
 mod.HadesGUIAnimationAdditions = {
-	-- TARTARUS
 	{
 		-- The original from Hades, as we cannot InheritFrom, as that would place the animation at the end of the file, and we need something else to inherit from it
 		Name = "ModsNikkelMHadesBiomesLocationTextBGOut",
@@ -67,7 +66,6 @@ mod.HadesGUIAnimationAdditions = {
 }
 
 mod.HadesGUIAnimationModifications = {
-	-- TARTARUS
 	LocationTextBGVictoryOut = {
 		InheritFrom = "ModsNikkelMHadesBiomesLocationTextBGOut",
 	},
