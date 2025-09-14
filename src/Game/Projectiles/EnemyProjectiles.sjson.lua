@@ -433,7 +433,7 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	end
 
 	-- Modifications that should be made to all projectiles
-	mod.RenameKeys(projectile, projectileKeyReplacements, "hadesProjectilesTable.Projectiles[" .. tostring(i) .. "]")
+	mod.RenameKeys(projectile, projectileKeyReplacements, "hadesProjectilesTable.Projectiles: " ..(projectile.Name or tostring(i)))
 
 	-- This property was renamed in Hades II
 	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then
@@ -445,6 +445,11 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 				effect.Name = "HeroOnHitStun"
 			end
 		end
+	end
+
+	-- We already renamed DissipateGraphic to DissipateFx above
+	if projectile.DissipateFx and not projectile.ImpactFx then
+		projectile.ImpactFx = projectile.DissipateFx
 	end
 
 	-- Hades uses DamageLow and DamageHigh properties, Hades II only has Damage
