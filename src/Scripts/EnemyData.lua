@@ -1335,6 +1335,10 @@ local enemyModifications = {
 			PostInvisibilityFunction = _PLUGIN.guid .. "." .. "HadesTeleport",
 		},
 	},
+	HadesAmmo = {
+		AIOptions = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesAttackAndDie", },
+		AttackTimerOffsetY = -170,
+	},
 	-- #endregion
 	-- #endregion
 

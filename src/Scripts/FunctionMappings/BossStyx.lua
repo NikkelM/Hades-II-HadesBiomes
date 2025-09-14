@@ -473,3 +473,60 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 	game.SetupUnit(newUnit)
 	Destroy({ Id = spawnPointId })
 end
+
+function mod.ModsNikkelMHadesBiomesAttackAndDie(enemy)
+	game.wait(game.CalcEnemyWait(enemy, 0.1), enemy.AIThreadName)
+
+	enemy.WeaponName = game.SelectWeapon(enemy)
+
+	local aiData = game.ShallowCopyTable(enemy.DefaultAIData) or enemy
+	if game.WeaponData[enemy.WeaponName] ~= nil and game.WeaponData[enemy.WeaponName].AIData ~= nil then
+		game.OverwriteTableKeys(aiData, game.WeaponData[enemy.WeaponName].AIData)
+	end
+	aiData.WeaponName = enemy.WeaponName
+
+	if enemy.DisplayAttackTimer then
+		local attackDuration = aiData.PreAttackDuration
+		game.thread(mod.ModsNikkelMHadesBiomesHandleAttackTimer, enemy, attackDuration)
+	end
+
+	local targetId = GetTargetId(enemy, aiData)
+	game.DoAttackerAILoop(enemy, aiData)
+
+	while enemy.ChainedWeapon ~= nil or enemy.ActiveWeaponCombo ~= nil do
+		enemy.WeaponName = game.SelectWeapon(enemy)
+
+		aiData = game.ShallowCopyTable(enemy.DefaultAIData) or {}
+		if game.WeaponData[enemy.WeaponName] ~= nil and game.WeaponData[enemy.WeaponName].AIData ~= nil then
+			game.OverwriteTableKeys(aiData, game.WeaponData[enemy.WeaponName].AIData)
+		end
+		aiData.WeaponName = enemy.WeaponName
+		game.DoAttackerAILoop(enemy, aiData)
+	end
+
+	while enemy.IsPolymorphed do
+		game.wait(0.5, enemy.AIThreadName)
+	end
+
+	game.Kill(enemy)
+end
+
+function mod.ModsNikkelMHadesBiomesHandleAttackTimer(enemy, attackDuration)
+	local offsetY = enemy.AttackTimerOffsetY or -150
+
+	for i = 1, attackDuration do
+		local timeRemaining = attackDuration - i + 1
+		game.thread(game.InCombatText, enemy.ObjectId, attackDuration + 1 - i, 0.5,
+			{ OffsetY = offsetY, SkipShadow = true, FontSize = 40, FlashAnimation = "TyphonEggTimerFlash", })
+		PlaySound({ Name = "/Leftovers/Menu Sounds/MenuButtonOn2", Id = enemy.ObjectId })
+		if timeRemaining == enemy.AttackTimerEndThreshold then
+			if enemy.AttackTimerEndSound ~= nil then
+				PlaySound({ Name = enemy.AttackTimerEndSound, Id = enemy.ObjectId })
+			end
+			if enemy.AttackTimerEndShake then
+				Shake({ Id = enemy.ObjectId, Speed = 350, Distance = 5, Duration = enemy.AttackTimerEndThreshold })
+			end
+		end
+		game.wait(game.CalcEnemyWait(enemy, 1.0), enemy.AIThreadName)
+	end
+end

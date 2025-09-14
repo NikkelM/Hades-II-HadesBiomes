@@ -58,3 +58,10 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 		end
 	end
 end)
+
+modutil.mod.Path.Wrap("CleanupEnemy", function(base, enemy)
+	base(enemy)
+	if enemy.DisplayAttackTimer and enemy.AttackTimerId ~= nil then
+		Destroy({ Id = enemy.AttackTimerId })
+	end
+end)
