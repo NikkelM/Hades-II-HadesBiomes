@@ -226,6 +226,7 @@ local function on_ready()
 		import "Scripts/MetaUpgradeData.lua"
 		import "Scripts/TraitDataNPCs.lua"
 		import "Scripts/ObstacleData.lua"
+		import "Scripts/ProjectileData.lua"
 
 		-- Applies modifications to the rooms, such as LegalEncounterDictionary
 		game.SetupRunData()
@@ -270,7 +271,6 @@ local function on_ready()
 		import "Scripts/HubPresentation.lua"
 		import "Scripts/NarrativeData.lua"
 		import "Scripts/PowersLogic.lua"
-		import "Scripts/ProjectileData.lua"
 		import "Scripts/RequirementsData.lua"
 		import "Scripts/RequirementsLogic.lua"
 		import "Scripts/RewardPresentation.lua"
