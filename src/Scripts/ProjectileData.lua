@@ -27,6 +27,12 @@ end
 local addProjectiles = {
 	ModsNikkelMHadesBiomesRubbleFall = game.DeepCopyTable(game.ProjectileData.RubbleFall),
 	ModsNikkelMHadesBiomesRubbleFallLarge = game.DeepCopyTable(game.ProjectileData.RubbleFallLarge),
+	HadesCast = {
+		OnDeathFunctionName =  _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHandleHadesCastDeath",
+		SpawnName = "HadesAmmo",
+		SpawnsSkipActivatePresentation = true,
+		CarriesSpawns = true,
+	},
 }
 
 for projectileName, projectileData in pairs(addProjectiles) do

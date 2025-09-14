@@ -1341,6 +1341,16 @@ local weaponModifications = {
 	},
 	-- #endregion
 	-- #region HADES
+	HadesBidentStrike = {
+		AIData = {
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
+		},
+	},
+	HadesBidentSpin = {
+		AIData = {
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
+		},
+	},
 	HadesSpawns = {
 		AIData = {
 			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",

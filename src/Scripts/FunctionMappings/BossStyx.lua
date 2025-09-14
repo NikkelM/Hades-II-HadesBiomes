@@ -435,3 +435,41 @@ function mod.HadesTeleport(enemy, weaponAIData, args)
 		weaponAIData.PostTeleportWaitDurationMax)
 	game.wait(game.CalcEnemyWait(enemy, postTeleportWaitDuration), enemy.AIThreadName)
 end
+
+function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerArgs)
+	if game.SessionMapState.HandlingDeath or (triggerArgs and triggerArgs.BlockSpawns) then
+		return
+	end
+
+	local newSpawnData = game.EnemyData[projectileData.SpawnName]
+	if newSpawnData == nil then
+		return
+	end
+
+	-- If the player was hit, don't spawn the ammo
+	if triggerArgs.TriggeredByTable ~= nil and triggerArgs.TriggeredByTable.ObjectId == game.CurrentRun.Hero.ObjectId then
+		-- TODO: Implement store ammo
+		return
+	end
+
+	local spawnPointId = SpawnObstacle({
+		Name = "InvisibleTarget",
+		LocationX = triggerArgs.LocationX,
+		LocationY = triggerArgs.LocationY,
+		Group = "Scripting"
+	})
+	-- if IsLocationBlocked({ Id = spawnPointId }) then
+	-- 	Destroy({ Id = spawnPointId })
+	-- -- TODO: Hitting the pillars does this, we still want to spawn it though - can we damage it?
+	-- return
+	-- end
+	local newUnit = game.DeepCopyTable(newSpawnData)
+	newUnit.ObjectId = SpawnUnit({ Name = projectileData.SpawnName, DestinationId = spawnPointId, Group = "Standing" })
+
+	if projectileData.SpawnsSkipActivatePresentation then
+		newUnit.UseActivatePresentation = false
+	end
+
+	game.SetupUnit(newUnit)
+	Destroy({ Id = spawnPointId })
+end

@@ -55,6 +55,7 @@ local hadesEnemiesModifications = {
 		-- For the player tracking
 		RotationSpeed = 20.0,
 	},
+	HadesAmmo = { InheritFrom = "1_BaseEnemy", },
 	-- #endregion
 
 	-- #region ENVIRONMENT

@@ -69,6 +69,10 @@ mod.HadesFxAnimationModifications = {
 	SatyrDeathAnimation = {
 		SortMode = "Isometric",
 	},
+	HadesBidentSpinSwipe = {
+		Scale = 2.9,
+		ScaleRadius = "nil",
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
