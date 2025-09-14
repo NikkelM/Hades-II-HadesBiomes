@@ -448,6 +448,7 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 
 	-- If the player was hit, don't spawn the ammo
 	if triggerArgs.TriggeredByTable ~= nil and triggerArgs.TriggeredByTable.ObjectId == game.CurrentRun.Hero.ObjectId then
+		CreateAnimation({ Name = "BloodstoneHitFxHades", DestinationId = game.CurrentRun.Hero.ObjectId, OffsetY = -100 })
 		-- TODO: Implement store ammo
 		return
 	end
@@ -458,11 +459,7 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 		LocationY = triggerArgs.LocationY,
 		Group = "Scripting"
 	})
-	-- if IsLocationBlocked({ Id = spawnPointId }) then
-	-- 	Destroy({ Id = spawnPointId })
-	-- -- TODO: Hitting the pillars does this, we still want to spawn it though - can we damage it?
-	-- return
-	-- end
+
 	local newUnit = game.DeepCopyTable(newSpawnData)
 	newUnit.ObjectId = SpawnUnit({ Name = projectileData.SpawnName, DestinationId = spawnPointId, Group = "Standing" })
 

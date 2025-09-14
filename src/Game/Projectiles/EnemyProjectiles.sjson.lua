@@ -275,6 +275,15 @@ local hadesProjectilesModifications = {
 		-- Makes it not go as far
 		Speed = 2500,
 	},
+	HadesCast = {
+		-- We manually create it as there are some visual bugs if the projectile hits the bottom part of the arena
+		DissipateFx = "null",
+		ImpactFx = "null",
+		Thing = {
+			-- This one has an attached flame spawner which was removed in the Hades II version
+			Graphic = "ModsNikkelMHadesBiomesBloodstoneProjectileHades",
+		},
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
@@ -433,7 +442,8 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	end
 
 	-- Modifications that should be made to all projectiles
-	mod.RenameKeys(projectile, projectileKeyReplacements, "hadesProjectilesTable.Projectiles: " ..(projectile.Name or tostring(i)))
+	mod.RenameKeys(projectile, projectileKeyReplacements,
+		"hadesProjectilesTable.Projectiles: " .. (projectile.Name or tostring(i)))
 
 	-- This property was renamed in Hades II
 	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then
