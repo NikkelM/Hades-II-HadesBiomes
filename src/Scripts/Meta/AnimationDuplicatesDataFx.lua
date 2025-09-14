@@ -73,6 +73,15 @@ mod.HadesFxAnimationModifications = {
 		Scale = 2.9,
 		ScaleRadius = "nil",
 	},
+	-- TODO: These two are removed for now, as the footsteps are not aligned with Hades
+	["SnowFootstepL-Hades"] = {
+		FilePath = "Dev\\blank_invisible",
+		CreateAnimations = {},
+	},
+	["SnowFootstepR-Hades"] = {
+		FilePath = "Dev\\blank_invisible",
+		CreateAnimations = {},
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
