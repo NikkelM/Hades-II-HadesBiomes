@@ -1347,6 +1347,7 @@ local weaponModifications = {
 			PreAttackStop = true,
 			PreAttackEndStop = true,
 			PostAttackStop = true,
+			PostAttackDuration = 0.5,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
 		},
 	},
