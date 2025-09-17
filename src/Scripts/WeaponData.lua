@@ -1343,11 +1343,36 @@ local weaponModifications = {
 	-- #region HADES
 	HadesBidentStrike = {
 		AIData = {
+			MoveWithinRange = true,
+			PreAttackStop = true,
+			PreAttackEndStop = true,
+			PostAttackStop = true,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
+		},
+	},
+	-- TODO: Only copied, not tested
+	HadesBidentStrikeCombo1 = {
+		AIData = {
+			MoveWithinRange = true,
+			PreAttackStop = true,
+			PreAttackEndStop = true,
+			PostAttackStop = true,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
 		},
 	},
 	HadesBidentSpin = {
 		AIData = {
+			MoveWithinRange = true,
+			PreAttackStop = true,
+			PreAttackEndStop = true,
+			PostAttackStop = true,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
+		},
+	},
+	-- TODO: Only copied, not tested
+	HadesBidentSpin2 = {
+		AIData = {
+			MoveWithinRange = true,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
 		},
 	},
@@ -1365,16 +1390,64 @@ local weaponModifications = {
 			}
 		},
 	},
+	HadesDash = {
+		AIData = {
+			PreAttackAnimation = "HadesBattleDash_Start",
+			PostAttackAnimation = "HadesBattleDash_ReturnToIdle",
+			PreAttackDuration = 0.03,
+			FireDuration = 0.1,
+			PostAttackDuration = 0.2,
+			WaitForAngleTowardTarget = true,
+			TrackTargetDuringCharge = true,
+			StopBeforeFire = true,
+			PostAttackStop = true,
+			MoveWithinRange = false,
+			AttackDistance = 9999,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+		},
+		Sounds = {
+			-- Need to change from FireSounds to WeaponFireSounds, as it's not a projectile weapon
+			WeaponFireSounds = {
+				{ Name = "/SFX/Enemy Sounds/Hades/EmoteEvading" },
+				{ Name = "/SFX/Enemy Sounds/Hades/HadesDash" },
+			},
+		},
+	},
 	HadesSideDash = {
 		AIData = {
+			PreAttackAnimation = "HadesBattleDash_Start",
+			PostAttackAnimation = "HadesBattleDash_ReturnToIdle",
+			PreAttackDuration = 0.03,
+			FireDuration = 0.1,
+			PostAttackDuration = 0.2,
+			WaitForAngleTowardTarget = true,
+			TrackTargetDuringCharge = true,
+			StopBeforeFire = true,
+			PostAttackStop = true,
+			MoveWithinRange = false,
+			AttackDistance = 9999,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
+		},
+		Sounds = {
+			-- Need to change from FireSounds to WeaponFireSounds, as it's not a projectile weapon
+			WeaponFireSounds = {
+				{ Name = "/SFX/Enemy Sounds/Hades/EmoteEvading" },
+				{ Name = "/SFX/Enemy Sounds/Hades/HadesDash" },
+			},
 		},
 	},
 	HadesInvisibility = {
 		AIData = {
 			-- Different call, as for FireFunctionName, CurrentRun is also passed as an argument
 			FireFunctionName = _PLUGIN.guid .. "." .. "HadesEnemyInvisibility",
+		},
+	},
+	-- TODO: Not tested
+	HadesMobilityCombo1 = {
+		AIData = {
+			MoveWithinRange = true,
 		},
 	},
 	HadesCerberusAssist = {

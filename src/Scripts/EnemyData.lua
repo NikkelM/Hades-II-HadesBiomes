@@ -1333,6 +1333,9 @@ local enemyModifications = {
 		DefaultAIData = {
 			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 			PostInvisibilityFunction = _PLUGIN.guid .. "." .. "HadesTeleport",
+			-- A little quicker to line up with the smoke better
+			InvisibilityFadeOutDuration = 0.4,
+			DashRequireLoS = true,
 		},
 	},
 	HadesAmmo = {
