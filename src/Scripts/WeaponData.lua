@@ -44,6 +44,12 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 			weaponData.OnFireCrowdReaction = nil
 		end
 
+		-- This key was renamed, but if it was true before, it must be false now
+		if weaponData.AIData.SkipMovement then
+			weaponData.AIData.MoveWithinRange = false
+			weaponData.AIData.SkipMovement = nil
+		end
+
 		-- If the weapon defines a projectile to use, it might be different from the weapon name, so use it instead
 		local sjsonWeaponProjectileName = (mod.HadesSjsonWeaponsTable[weaponName] and
 			mod.HadesSjsonWeaponsTable[weaponName].Projectile) or weaponName

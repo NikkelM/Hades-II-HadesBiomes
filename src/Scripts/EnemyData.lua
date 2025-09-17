@@ -109,6 +109,11 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		if enemyData.HitSparkScale ~= nil then
 			enemyData.HitSparkScale = nil
 		end
+		-- This key was renamed, but if it was true before, it must be false now
+		if enemyData.DefaultAIData and enemyData.DefaultAIData.SkipMovement then
+			enemyData.DefaultAIData.MoveWithinRange = false
+			enemyData.DefaultAIData.SkipMovement = nil
+		end
 
 		-- Always use the Olympus dialogue elements for the bosses
 		if enemyData.Portrait then
