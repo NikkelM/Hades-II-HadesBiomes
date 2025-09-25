@@ -12714,6 +12714,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 			AIMoveWithinRangeTimeoutMax = 3.0,
 		},
 
+		-- TODO: CombatLogic CastEmbeddedPresentationStart with 1.0
 		-- TODO: When missing, it spawns an enemy called HadesAmmo with AttackAndDie (comparison MudManEye)
 		-- TODO: Logic for storing ammo in the player - how is the damage increase for Hades on Mel calculated depending on the amount of ammo embedded?
 		-- TODO: If not hit, drop the skull that needs to be destroyed
