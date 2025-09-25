@@ -12714,12 +12714,19 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 			AIMoveWithinRangeTimeoutMax = 3.0,
 		},
 
+		-- TODO: When missing, it spawns an enemy called HadesAmmo with AttackAndDie (comparison MudManEye)
+		-- TODO: Logic for storing ammo in the player - how is the damage increase for Hades on Mel calculated depending on the amount of ammo embedded?
+		-- TODO: If not hit, drop the skull that needs to be destroyed
 		StoreAmmoOnHit = 1,
+		-- TODO: After 6.5 seconds, the effect stops
 		AmmoDropDelay = 6.5,
 		StoredAmmoIcon = "AmmoEmbeddedInPlayerIcon",
+		-- TODO: The weapon fired when the effect stops
 		AmmoDropFireWeapon = "HadesAmmoDrop",
 		SkipAmmoDropOnMiss = true,
+		-- TODO: The ammo is stored in the last hit enemy (e.g. it could have gone through obstacles) at the time the projectile dies
 		StoreAmmoInLastHit = true,
+		-- TODO: If the original projectile is deflected, drop the ammo immediately
 		FireAmmoDropWeaponOnDeflect = true,
 
 

@@ -23957,6 +23957,7 @@ mod.EnemyData = {
 		--InvisibilityOnHitFx = "QuickFlashRed",
 		--InvisibilityAlphaFlashOnHit = true,
 
+		-- TODO: This is for the embedded Cast damage. The multiplier doesn't exist in H2, maybe make it an effect?
 		OutgoingDamageModifiers =
 		{
 			HadesStoredAmmoVulnerability =
@@ -23975,6 +23976,7 @@ mod.EnemyData = {
 			PostTeleportWaitDurationMax = 2.0,
 			PostInvisibilityFunction = "HadesTeleport",
 
+			-- TODO: ErisDash as comparison in Hades II
 			DashWeapon = "HadesDash",
 			PreAttackDash = "HadesSideDash",
 			DashIfOverDistance = 500,
@@ -23989,9 +23991,17 @@ mod.EnemyData = {
 		OnDeathFunctionName = "HadesKillPresentation",
 		OnDeathFunctionArgs = { Message = "HadesDefeatedMessage", StartPanTime = 1.5, MessageLayer = "ScreenOverlay", MessageDelay = 1.5, MessageDuration = 3.5, AddInterBiomeTimerBlock = true },
 
+		-- TODO
 		WeaponOptions =
 		{
-			"HadesInvisibility", "HadesBidentStrike", "HadesBidentSpin", "HadesCast"
+			-- "HadesInvisibility", -- Done
+			-- "HadesBidentStrike", -- Done
+			-- "HadesBidentSpin", -- Done
+			-- "HadesCast" -- Done
+			-- TODO: For testing, later stage weapons below
+			"HadesBidentThrow",
+			-- "HadesBidentSpin2", -- Done
+
 		},
 		AIEndHealthThreshold = 0.66,
 		AIStages =

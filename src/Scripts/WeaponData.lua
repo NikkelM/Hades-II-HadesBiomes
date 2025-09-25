@@ -1445,6 +1445,47 @@ local weaponModifications = {
 			},
 		},
 	},
+	-- TODO: Weapon still WIP
+	HadesBidentThrow = {
+		AIData = {
+			TrackTargetDuringFire = false,
+			PostAttackStop = true,
+			-- TODO: The return point must stay within arena bounds! 
+			-- With th ecurrent setup, the dash animation removes collision for Hades so he can get out of bounds trying to get to it 
+		},
+	},
+	-- TODO: Weapon still WIP
+	HadesBidentRecoveryDash = {
+		AIData = {
+			FireProjectileTowardTarget = true,
+			AngleTowardsTargetWhileFiring = true,
+			WaitForAngleTowardTarget = false,
+			TrackTargetDuringCharge = false,
+			PreAttackStop = true,
+			ModsNikkelMHadesBiomesDestroyObstacleOnFire = "HadesBidentReturnPoint",
+			-- TargetClosestOfTypes = { "HadesBidentReturnPoint", },
+			-- Modded properties, to make sure the spear is fired from the obstacle and towards Theseus
+			-- ModsNikkelMHadesBiomesFireAtSelf = true,
+			-- ModsNikkelMHadesBiomesFireFromObstacle = "HadesBidentReturnPoint",
+			PreAttackAnimation = "HadesBattleBidentDash_Loop",
+			PostAttackAnimation = "HadesBattleDash_ReturnToIdle",
+			PreAttackDuration = 0.03,
+			FireDuration = 0.2,
+			PostAttackDuration = 0.2,
+			StopBeforeFire = true,
+			PostAttackStop = true,
+			MoveWithinRange = false,
+			AttackDistance = 9999,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+		},
+		Sounds = {
+			-- Need to change from FireSounds to WeaponFireSounds, as it's not a projectile weapon
+			WeaponFireSounds = {
+				{ Name = "/SFX/Enemy Sounds/Hades/EmoteEvading" },
+				{ Name = "/SFX/Enemy Sounds/Hades/HadesDash" },
+			},
+		},
+	},
 	HadesInvisibility = {
 		AIData = {
 			-- Different call, as for FireFunctionName, CurrentRun is also passed as an argument

@@ -459,6 +459,14 @@ mod.SjsonFileModifications = {
 	["Animations\\CharacterAnim_EnemiesBosses_Hades"] = {
 		HadesBattleDashStreaks = mod.NilValue,
 		HadesBattleDashStreaksDark = mod.NilValue,
+		-- To allow him blinking through the pillars (he otherwise gets stuck on them very often)
+		-- TODO: The Bident must stay within bounds, otherwise he'll go out of bounds trying to get to it (water on right of arena)
+		HadesBattleDash_Start = {
+			OwnerHasNoCollision = true,
+		},
+		HadesBattleBidentDash_Loop = {
+			OwnerHasNoCollision = true,
+		},
 	}
 }
 
