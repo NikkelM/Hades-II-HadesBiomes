@@ -87,7 +87,8 @@ mod.HadesPortraitAnimationAdditions = {
 		Scale = 1.0,
 		OffsetY = -117,
 	},
-	-- TODO: Re-check on 1.0 release if any new ones have been added (e.g. Persephone, Nyx)
+	-- TODO: Re-check on 1.0 release if any new ones have been added
+	-- TODO: Confirmed with 1.0, new ones are: Elysium, Zag, Nyx, Persephone
 	-- #region Codex portraits that are duplicates between the games
 	{
 		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_AsphodelBiome",
@@ -292,8 +293,6 @@ mod.HadesPortraitAnimationDuplicates = {
 	["PortraitGodRayEmitter_Poseidon"] = true,
 	["PortraitGodRayEmitter_Zeus"] = true,
 	["Portrait_God_01"] = true,
-	["Portrait_Hades_HelmCape_01"] = true,
-	["Portrait_Hades_HelmCape_01_Exit"] = true,
 	["Portrait_Cerberus_Default_01"] = true,
 	["Portrait_Cerberus_Default_01_Exit"] = true,
 	["Portrait_Chaos_Default_01"] = true,
@@ -350,4 +349,25 @@ mod.HadesPortraitAnimationDuplicates = {
 	-- Unseen Update
 	["Portrait_Ares_Blink"] = true,
 	["Portrait_Dionysus_Blink"] = true,
+	-- 1.0 Update
+	["Codex_Portrait_Zagreus"] = true,
+	["Codex_Portrait_Nyx"] = true,
+	["Codex_Portrait_Persephone"] = true,
+	["Codex_Portrait_ElysiumBiome"] = true,
+	["Portrait_Zag_Default_01"] = true,
+	["Portrait_Zag_Default_01_Exit"] = true,
+	["Portrait_Zag_Serious_01"] = true,
+	["Portrait_Zag_Serious_01_Exit"] = true,
+	["Portrait_Zag_Defiant_01"] = true,
+	["Portrait_Zag_Defiant_01_Exit"] = true,
+	["Portrait_Zag_Empathetic_01"] = true,
+	["Portrait_Zag_Empathetic_01_Exit"] = true,
+	["Portrait_Persephone_Queen_01"] = true,
+	["Portrait_Persephone_Queen_01_Exit"] = true,
+	["Portrait_Persephone_Queen_Calculating_01"] = true,
+	["Portrait_Persephone_Queen_Calculating_01_Exit"] = true,
+	["Portrait_Persephone_Queen_Apprehensive_01"] = true,
+	["Portrait_Persephone_Queen_Apprehensive_01_Exit"] = true,
+	["Portrait_Persephone_Queen_FiredUp_01"] = true,
+	["Portrait_Persephone_Queen_FiredUp_01_Exit"] = true,
 }

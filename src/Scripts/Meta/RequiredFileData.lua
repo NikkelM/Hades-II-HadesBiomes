@@ -37,7 +37,7 @@ mod.PackageFileMappings = {
 
 mod.BikFileMappings = {
 	-- #region GENERAL
-	-- TODO: Renaming doesn't work, as the metadata in probably the .bik_atlas is not updated
+	-- TODO: Renaming doesn't work, as the metadata in probably the .bik_atlas is not updated - Aunuch is working on something similar for their Furies mod, get info from them on how to do this properly
 	-- RoomTransition = "ModsNikkelMHadesBiomesRoomTransition",
 	-- Currently not using - enable if custom logic in DeathPresentation is used
 	-- "ZagreusDeathFullscreen",

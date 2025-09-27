@@ -41,6 +41,7 @@ local animationsToRemove = {
 	"BreakableIdle1",
 	"BreakableIdle2",
 	"BreakableIdle3",
+	"AsphodelSkullDeathFx",
 	-- Would be a duplicate, but is renamed
 	-- "SpikeTrapIdle",
 	-- "SpikeTrapPressed",
