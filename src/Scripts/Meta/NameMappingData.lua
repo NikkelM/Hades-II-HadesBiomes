@@ -124,6 +124,34 @@ mod.AsphodelRoomNameMappings = {
 	["B_Story01"] = "X_Story01",
 }
 
+-- Mappings for Elysium room names, as C_ is also used in Hades II. Used e.g. in IsGameStateEligible to map requirements for rooms
+mod.ElysiumRoomNameMappings = {
+	["Y_Intro"] = "Y_Intro",
+	["Y_Boss01"] = "Y_Boss01",
+	["Y_PostBoss01"] = "Y_PostBoss01",
+	["Y_PreBoss01"] = "Y_PreBoss01",
+	["Y_Shop01"] = "Y_Shop01",
+	["Y_MiniBoss01"] = "Y_MiniBoss01",
+	["Y_MiniBoss02"] = "Y_MiniBoss02",
+	["Y_Reprieve01"] = "Y_Reprieve01",
+	["Y_Combat01"] = "Y_Combat01",
+	["Y_Combat02"] = "Y_Combat02",
+	["Y_Combat03"] = "Y_Combat03",
+	["Y_Combat04"] = "Y_Combat04",
+	["Y_Combat05"] = "Y_Combat05",
+	["Y_Combat06"] = "Y_Combat06",
+	["Y_Combat07"] = "Y_Combat07",
+	["Y_Combat08"] = "Y_Combat08",
+	["Y_Combat09"] = "Y_Combat09",
+	["Y_Combat10"] = "Y_Combat10",
+	["Y_Combat11"] = "Y_Combat11",
+	["Y_Combat12"] = "Y_Combat12",
+	["Y_Combat13"] = "Y_Combat13",
+	["Y_Combat14"] = "Y_Combat14",
+	["Y_Combat15"] = "Y_Combat15",
+	["Y_Story01"] = "Y_Story01",
+}
+
 mod.HadesHelpTextFileNames = {
 	"_EnemyData",
 	"_EncounterData",

@@ -14,10 +14,10 @@ local roomReplacements = {
 	},
 
 	-- SHOPS
-	C_Shop01 = {
+	Y_Shop01 = {
 		Binks = mod.NilValue,
 	},
-	C_PreBoss01 = {
+	Y_PreBoss01 = {
 		Binks = mod.NilValue,
 	},
 }
@@ -44,7 +44,7 @@ local roomModifications = {
 	},
 
 	-- OPENING ROOMS
-	C_Intro = {
+	Y_Intro = {
 		InheritFrom = { "BaseElysium", "BiomeStartRoom", },
 		Starting = true,
 		BlockRunProgressUI = true,
@@ -61,13 +61,13 @@ local roomModifications = {
 	},
 
 	-- SHOPS
-	C_Shop01 = {
+	Y_Shop01 = {
 		StoreDataName = "WorldShop",
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 	},
-	C_PreBoss01 = {
+	Y_PreBoss01 = {
 		SkipLastKillPresentation = true,
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
@@ -76,7 +76,7 @@ local roomModifications = {
 	},
 
 	-- MINIBOSSES
-	C_MiniBoss01 = {
+	Y_MiniBoss01 = {
 		LoadModdedVoiceBanks = { "Minotaur", "ZagreusField" },
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
 		UnthreadedEvents = {
@@ -85,7 +85,7 @@ local roomModifications = {
 	},
 
 	-- BOSSES
-	C_Boss01 = {
+	Y_Boss01 = {
 		LoadModdedVoiceBanks = { "Minotaur", "Theseus", "ZagreusField" },
 		ForcedReward = "MixerHBossDrop",
 		FirstClearRewardStore = mod.NilValue,
@@ -108,19 +108,19 @@ local roomModifications = {
 	},
 
 	-- OTHER
-	C_Story01 = {
+	Y_Story01 = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
 		ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusExitFunctionName",
 		ExitFunctionArgs = {
 			Speed = 300,
 		},
 	},
-	C_Reprieve01 = {
+	Y_Reprieve01 = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,
 		},
 	},
-	C_PostBoss01 = {
+	Y_PostBoss01 = {
 		ExitPreviewAnim = "HadesExitPreview",
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {

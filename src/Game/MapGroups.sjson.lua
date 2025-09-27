@@ -117,7 +117,8 @@ local newMapGroups = {
   {
     Name = "ElysiumModsNikkelMHadesBiomes",
     Map = {
-      Name = "C_*",
+      -- C_ is also used for the Zagreus/Charon fight in Hades II
+      Name = "Y_*",
     },
     Using = {
       {

@@ -218,7 +218,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		return true
 	end
 
-	-- Map Asphodel room names for any requirement that has rooms in it
+	-- Map Asphodel & Elysium room names for any requirement that has rooms in it
 	local roomRequirementOptions = {
 		RequiredRoom = "string",
 		RequiredRooms = "table",
@@ -251,15 +251,23 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	for roomRequirement, requirementType in pairs(roomRequirementOptions) do
 		if requirements[roomRequirement] then
 			if requirementType == "string" then
-				requirements[roomRequirement] = mod.AsphodelRoomNameMappings[requirements[roomRequirement]] or
-						requirements[roomRequirement]
+				requirements[roomRequirement] =
+						mod.AsphodelRoomNameMappings[requirements[roomRequirement]]
+						or mod.ElysiumRoomNameMappings[requirements[roomRequirement]]
+						or requirements[roomRequirement]
 			elseif requirementType == "table" then
 				for i, roomName in ipairs(requirements[roomRequirement]) do
-					requirements[roomRequirement][i] = mod.AsphodelRoomNameMappings[roomName] or roomName
+					requirements[roomRequirement][i] =
+							mod.AsphodelRoomNameMappings[roomName]
+							or mod.ElysiumRoomNameMappings[roomName]
+							or roomName
 				end
 			elseif requirementType == "nameTable" then
 				for i, roomName in ipairs(requirements[roomRequirement]) do
-					requirements[roomRequirement][i].Name = mod.AsphodelRoomNameMappings[roomName.Name] or roomName.Name
+					requirements[roomRequirement][i].Name =
+							mod.AsphodelRoomNameMappings[roomName.Name]
+							or mod.ElysiumRoomNameMappings[roomName.Name]
+							or roomName.Name
 				end
 			end
 		end

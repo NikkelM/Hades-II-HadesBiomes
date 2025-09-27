@@ -22,7 +22,7 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 			OffsetY = -1303,
 			-- PactRewardOffsetX = -300,
 			-- PactRewardOffsetY = 200,
-			-- PactRewardRoomName = "C_Boss01",
+			-- PactRewardRoomName = "Y_Boss01",
 		},
 		Styx = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Styx",
