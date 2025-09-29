@@ -281,8 +281,6 @@ function mod.FirstTimeSetup()
 	copyFiles(mod.BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Animation ")
 	copyFiles(mod.BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p Animation ")
 
-	applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", "Game\\", mod.SjsonFileModifications)
-
 	-- Special treatment, as some are copied from the plugins_data, and some from the Hades installation
 	mod.DebugPrint("Copying .map_text files...", 3)
 	for src, dest in pairs(mod.MapFileMappings) do
@@ -301,6 +299,8 @@ function mod.FirstTimeSetup()
 
 	copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", "Voiceline ", true)
 	copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", "Voiceline ", true)
+
+	applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", "Game\\", mod.SjsonFileModifications)
 
 	mod.DebugPrint("Copying text files...", 3)
 	copyHadesHelpTexts()
