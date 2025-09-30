@@ -2258,13 +2258,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	-- if requirements.RequiredMinRunsCleared ~= nil and game.GameState.CompletedRunsCache < requirements.RequiredMinRunsCleared then
-	if requirements.RequiredMinRunsCleared ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache < requirements.RequiredMinRunsCleared then
+	if requirements.RequiredMinRunsCleared ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache < requirements.RequiredMinRunsCleared then
 		return false
 	end
-	if requirements.RequiredMaxRunsCleared ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache > requirements.RequiredMaxRunsCleared then
+	if requirements.RequiredMaxRunsCleared ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache > requirements.RequiredMaxRunsCleared then
 		return false
 	end
-	if requirements.RequiredRunsCleared ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache ~= requirements.RequiredRunsCleared then
+	if requirements.RequiredRunsCleared ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache ~= requirements.RequiredRunsCleared then
 		return false
 	end
 
