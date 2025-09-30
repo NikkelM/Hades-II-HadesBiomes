@@ -20,6 +20,7 @@ local function copyFile(src, dest, skipCheck)
 		error("Could not open destination file: " .. dest)
 	end
 
+	mod.DebugPrint("Copying file " .. src .. " to " .. dest, 4)
 	-- Read in blocks to not run out of memory
 	while true do
 		local block = inputFile:read(1024)
@@ -52,7 +53,6 @@ local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nam
 		end
 		destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest .. extension)
 		copyFile(srcPath, destPath)
-		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 	end
 end
 
@@ -74,8 +74,8 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, de
 		if not rom.path.exists(destPath) then
 			local fileData = mod.DecodeSjsonFile(srcPath)
 			mod.ApplyNestedSjsonModifications(fileData.Animations, modifications[src] or {})
+			mod.DebugPrint("Copying file " .. srcPath .. " to " .. destPath, 4)
 			sjson.encode_file(destPath, fileData)
-			mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 		else
 			mod.DebugPrint("File already exists and will not be overwritten: " .. destPath, 2)
 		end
@@ -292,7 +292,6 @@ function mod.FirstTimeSetup()
 		end
 		destPath = rom.path.combine(rom.paths.Content(), "Maps\\" .. dest .. ".map_text")
 		copyFile(srcPath, destPath)
-		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 	end
 
 	copyFiles(mod.MapFileMappings, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", "Map binary ", true)
