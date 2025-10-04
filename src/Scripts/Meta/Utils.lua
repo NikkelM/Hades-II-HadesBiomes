@@ -57,19 +57,6 @@ function mod.PrintTable(t, maxDepth, indent)
 	end
 end
 
-mod.CachedRunsFilePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\cache\\cachedRuns.sjson")
-
----Loads the cachedRuns.sjson file and returns its contents.
----@return table
-function mod.LoadCachedRunsFile()
-	if rom.path.exists(mod.CachedRunsFilePath) then
-		return mod.DecodeSjsonFile(mod.CachedRunsFilePath)
-	else
-		error(
-			"\"cachedRuns.sjson\" not found! Please re-install the mod by setting both \"uninstall\" and \"firstTimeSetup\" in the config to \"true\".")
-	end
-end
-
 ---Adds keys or entries from one table to another, skipping duplicates.
 ---If property is provided, skips duplicates based on the property (e.g., "Name").
 ---Returns tableToTake without the duplicate keys or entries.
@@ -444,6 +431,31 @@ function mod.ShouldRemoveEntry(entryName, entriesToRemove)
 	end
 	return false
 end
+
+---Tries to load a file in the mod's cache folder and returns its contents.
+---@return table
+function mod.TryLoadCachedSjsonFile(fileName)
+	local basePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\cache\\")
+	local path = rom.path.combine(basePath, fileName)
+	if rom.path.exists(path) then
+		return mod.DecodeSjsonFile(path)
+	else
+		error(fileName ..
+			" not found in the cache! Please re-install the mod by setting both \"uninstall\" and \"firstTimeSetup\" in the config to \"true\".")
+	end
+end
+
+---Saves data to a file in the mod's cache folder.
+---@param fileName string The name of the file to save to. This file must be located in the mod's cache folder.
+---@param data table The data to save.
+function mod.SaveCachedSjsonFile(fileName, data)
+	local basePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\cache\\")
+	local path = rom.path.combine(basePath, fileName)
+	sjson.encode_file(path, data)
+end
+
+---The mod's hidden config, stored in the cache folder as hiddenConfig.sjson.
+mod.HiddenConfig = mod.HiddenConfig or mod.TryLoadCachedSjsonFile("hiddenConfig.sjson")
 
 -- TODO: Remove when releasing
 modutil.mod.Path.Wrap("DebugPrint", function(base, args)

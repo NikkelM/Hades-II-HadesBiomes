@@ -116,7 +116,8 @@ function mod.CheckRequiredFiles(failFast)
 	missingFiles = missingFiles + checkFilesExist({ mod.HadesFxDestinationFilename }, "", "", failFast)
 	missingFiles = missingFiles + checkFilesExist({ mod.HadesGUIAnimationsDestinationFilename }, "", "", failFast)
 	missingFiles = missingFiles + checkFilesExist({ mod.HadesPortraitAnimationsDestinationFilename }, "", "", failFast)
-	missingFiles = missingFiles + checkFilesExist({ mod.HadesCharacterAnimationsNPCsDestinationFilename }, "", "", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist({ mod.HadesCharacterAnimationsNPCsDestinationFilename }, "", "", failFast)
 
 	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, "Maps\\", ".map_text", failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, "Maps\\bin\\", ".thing_bin", failFast)
@@ -126,7 +127,7 @@ function mod.CheckRequiredFiles(failFast)
 
 	-- The helpText files in the different languages
 	-- _NPCData files are installed differently, so not part of this table by default
-	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames)
+	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames) or {}
 	table.insert(allHelpTextFileNames, "_NPCData")
 	for _, fileName in ipairs(allHelpTextFileNames) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
@@ -142,4 +143,51 @@ function mod.CheckRequiredFiles(failFast)
 	end
 
 	return missingFiles
+end
+
+OnAnyLoad {
+	function(triggerArgs)
+		--#region Install screens
+		-- Only show the install screen if we are in the Training Grounds
+		if triggerArgs.name == "Hub_PreRun" then
+			-- If we haven't shown the install screen yet, or the installation is invalid
+			if (not mod.HiddenConfig.HasShownSuccessfulInstallScreen) or (not mod.HiddenConfig.IsValidInstallation) then
+				-- Update the config with the type of screen we are showing
+				-- Do it before showing the screen to also have this saved if the user closes the game without closing the screen first
+				mod.HiddenConfig.HasShownSuccessfulInstallScreen = mod.HiddenConfig.IsValidInstallation
+				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+
+				mod.OpenModInstallScreen(mod.HiddenConfig)
+			end
+		end
+		-- #endregion
+	end
+}
+
+function mod.OpenModInstallScreen(args)
+	args = args or {}
+	local screen = {}
+	if args.IsValidInstallation then
+		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess) or {}
+	else
+		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailure) or {}
+	end
+	local components = screen.Components
+	game.OnScreenOpened(screen)
+	game.CreateScreenFromData(screen, screen.ComponentData)
+	TeleportCursor({ DestinationId = components.ConfirmButton.Id, ForceUseCheck = true })
+	SetConfigOption({ Name = "ExclusiveInteractGroup", Value = "Combat_Menu_TraitTray_Overlay" })
+	SetColor({ Id = components.BackgroundTint.Id, Color = Color.Black })
+	SetAlpha({ Id = components.BackgroundTint.Id, Fraction = 0.0, Duration = 0 })
+	SetAlpha({ Id = components.BackgroundTint.Id, Fraction = 0.9, Duration = 0.3 })
+	game.wait(0.3)
+	screen.KeepOpen = true
+	game.HandleScreenInput(screen)
+end
+
+function mod.ConfirmExitInstallSuccessScreen(screen)
+	SetConfigOption({ Name = "ExclusiveInteractGroup", Value = nil })
+	game.OnScreenCloseStarted(screen)
+	game.CloseScreen(game.GetAllIds(screen.Components), 0.15)
+	game.OnScreenCloseFinished(screen)
 end
