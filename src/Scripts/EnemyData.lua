@@ -156,8 +156,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 								end
 							end
 							if entry.PortraitExitAnimation then
-								if entry.Portrait:find("^Portrait_Zag_") then
-									entry.Portrait = entry.Portrait:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
+								if entry.PortraitExitAnimation:find("^Portrait_Zag_") then
+									entry.PortraitExitAnimation = entry.PortraitExitAnimation:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
 								end
 							end
 							if entry.PreLineThreadedFunctionName then
