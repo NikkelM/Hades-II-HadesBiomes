@@ -3,61 +3,81 @@
 -- The destination filename, used in a couple of places in the mod, therefore defined centrally
 mod.HadesPortraitAnimationsDestinationFilename = "Game\\Animations\\Z_ModsNikkelmHadesBiomesPortraitAnimations.sjson"
 
-mod.HadesPortraitAnimationModifications = {
-	-- Replacing Zagreus solo portraits with ones where Melinoe is also present as a ghostly version behind him
-	Portrait_Zag_Default_01 = {
-		FilePath = "Portraits\\MelAndZagDefault",
-		OffsetY = 32,
-		OffsetX = -135,
-	},
-	Portrait_Zag_Default_01_Exit = {
-		FilePath = "Portraits\\MelAndZagDefault",
-		OffsetY = 32,
-		OffsetX = -135,
-	},
-	Portrait_Zag_Serious_01 = {
-		FilePath = "Portraits\\MelAndZagSerious",
-		OffsetY = 32,
-		OffsetX = -70,
-	},
-	Portrait_Zag_Serious_01_Exit = {
-		FilePath = "Portraits\\MelAndZagSerious",
-		OffsetY = 32,
-		OffsetX = -70,
-	},
-	Portrait_Zag_Defiant_01 = {
-		FilePath = "Portraits\\MelAndZagDefiant",
-		OffsetY = 32,
-		OffsetX = 0,
-	},
-	Portrait_Zag_Defiant_01_Exit = {
-		FilePath = "Portraits\\MelAndZagDefiant",
-		OffsetY = 32,
-		OffsetX = 0,
-	},
-	Portrait_Zag_Empathetic_01 = {
-		FilePath = "Portraits\\MelAndZagEmpathetic",
-		OffsetY = 32,
-		OffsetX = -100,
-	},
-	Portrait_Zag_Empathetic_01_Exit = {
-		FilePath = "Portraits\\MelAndZagEmpathetic",
-		OffsetY = 32,
-		OffsetX = -100,
-	},
-	Portrait_Zag_Unwell_01 = {
-		FilePath = "Portraits\\MelAndZagUnwell",
-		OffsetY = 32,
-		OffsetX = -100,
-	},
-	Portrait_Zag_Unwell_01_Exit = {
-		FilePath = "Portraits\\MelAndZagUnwell",
-		OffsetY = 32,
-		OffsetX = -100,
-	},
-}
+mod.HadesPortraitAnimationModifications = {}
 
 mod.HadesPortraitAnimationAdditions = {
+	-- #region Zagreus and Melinoe partner portraits
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+		InheritFrom = "Portrait_Base_01",
+		FilePath = "Portraits\\MelAndZagDefault",
+		OffsetY = 32,
+		OffsetX = -135,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01_Exit",
+		InheritFrom = "Portrait_Base_01_Exit",
+		FilePath = "Portraits\\MelAndZagDefault",
+		OffsetY = 32,
+		OffsetX = -135,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Zag_Serious_01",
+		InheritFrom = "Portrait_Base_01",
+		FilePath = "Portraits\\MelAndZagSerious",
+		OffsetY = 32,
+		OffsetX = -70,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Zag_Serious_01_Exit",
+		InheritFrom = "Portrait_Base_01_Exit",
+		FilePath = "Portraits\\MelAndZagSerious",
+		OffsetY = 32,
+		OffsetX = -70,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
+		InheritFrom = "Portrait_Base_01",
+		FilePath = "Portraits\\MelAndZagDefiant",
+		OffsetY = 32,
+		OffsetX = 0,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01_Exit",
+		InheritFrom = "Portrait_Base_01_Exit",
+		FilePath = "Portraits\\MelAndZagDefiant",
+		OffsetY = 32,
+		OffsetX = 0,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
+		InheritFrom = "Portrait_Base_01",
+		FilePath = "Portraits\\MelAndZagEmpathetic",
+		OffsetY = 32,
+		OffsetX = -100,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01_Exit",
+		InheritFrom = "Portrait_Base_01_Exit",
+		FilePath = "Portraits\\MelAndZagEmpathetic",
+		OffsetY = 32,
+		OffsetX = -100,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Zag_Unwell_01",
+		InheritFrom = "Portrait_Base_01",
+		FilePath = "Portraits\\MelAndZagUnwell",
+		OffsetY = 32,
+		OffsetX = -100,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Portrait_Zag_Unwell_01_Exit",
+		InheritFrom = "Portrait_Base_01_Exit",
+		FilePath = "Portraits\\MelAndZagUnwell",
+		OffsetY = 32,
+		OffsetX = -100,
+	},
+	-- #endregion
 	-- #region Character Dialogue portraits that are duplicates between the games
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Bouldy",
