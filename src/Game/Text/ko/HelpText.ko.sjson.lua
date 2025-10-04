@@ -35,11 +35,6 @@ local newData = {
 		DisplayName = "그리스 (악몽)",
 	},
 	{
-		Id = "CharProtag",
-		DisplayName = "자그레우스",
-		Description = "지하세계의 왕자",
-	},
-	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "돌덩이",
 		Description = "",

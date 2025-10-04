@@ -35,11 +35,6 @@ local newData = {
 		DisplayName = "ГРЕЦИЯ (Кошмар)",
 	},
 	{
-		Id = "CharProtag",
-		DisplayName = "Загрей",
-		Description = "Принц Подземного мира",
-	},
-	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "Валунок",
 		Description = "",

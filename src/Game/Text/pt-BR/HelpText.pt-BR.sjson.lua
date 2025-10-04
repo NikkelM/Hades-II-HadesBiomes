@@ -35,11 +35,6 @@ local newData = {
 		DisplayName = "GRÉCIA (Pesadelo)",
 	},
 	{
-		Id = "CharProtag",
-		DisplayName = "Zagreu",
-		Description = "Príncipe do Submundo",
-	},
-	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "Pedro, a Pedra",
 		Description = "",

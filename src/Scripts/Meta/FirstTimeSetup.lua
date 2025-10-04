@@ -271,6 +271,7 @@ function mod.FirstTimeSetup()
 
 	copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank", "Audio ")
 
+	-- TODO: Add progress percentages as these can take a long time for some people
 	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg", "1080p Hades ")
 	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", "1080p Hades ")
 	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg", "720p Hades ")

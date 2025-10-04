@@ -72,7 +72,7 @@ function mod.Uninstall()
 
 	mod.DebugPrint("Removing help text files...", 3)
 	-- _NPCData files are installed differently, so not part of this table by default
-	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames)
+	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames) or {}
 	table.insert(allHelpTextFileNames, "_NPCData")
 	for _, fileName in ipairs(allHelpTextFileNames) do
 		for _, language in ipairs(mod.HelpTextLanguages) do

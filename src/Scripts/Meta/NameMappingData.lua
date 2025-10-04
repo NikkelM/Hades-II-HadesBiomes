@@ -644,6 +644,7 @@ mod.HadesHelpTextAliases = {
 	Charon = "NPC_Charon_01",
 	ClearedCerberus_Alt1_Title = "ClearedCerberus_Title",
 	ClearedCerberus_Alt2_Title = "ClearedCerberus_Title",
+	CharProtag = "NPC_Zagreus_Past_01",
 }
 
 -- List of Speakers for which the entries in the _NPCData files should be copied

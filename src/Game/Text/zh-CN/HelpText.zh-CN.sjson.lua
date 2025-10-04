@@ -35,11 +35,6 @@ local newData = {
 		DisplayName = "希腊 （梦魇）",
 	},
 	{
-		Id = "CharProtag",
-		DisplayName = "扎格列欧斯",
-		Description = "冥界王子",
-	},
-	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "巨石",
 		Description = "",

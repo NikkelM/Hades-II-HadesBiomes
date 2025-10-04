@@ -32,11 +32,6 @@ local newData = {
 		-- Means SURFACE, not GREECE
 		DisplayName = "ΕΠΙΦΑΝΕΙΑ (Εφιάλτης)",
 	},
-	{
-		Id = "CharProtag",
-		DisplayName = "Ζαγρεύς",
-		Description = "Πρίγκιπας του Κάτω Κόσμου",
-	},
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 	-- 	DisplayName = "Bouldy",

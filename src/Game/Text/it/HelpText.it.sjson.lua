@@ -35,11 +35,6 @@ local newData = {
 		DisplayName = "GRECIA (Incubo)",
 	},
 	{
-		Id = "CharProtag",
-		DisplayName = "Zagreus",
-		Description = "Principe dell'Oltretomba",
-	},
-	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "Pietro",
 		Description = "",
