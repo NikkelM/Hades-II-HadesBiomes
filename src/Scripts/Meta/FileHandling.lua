@@ -147,7 +147,7 @@ end
 
 OnAnyLoad {
 	function(triggerArgs)
-		--#region Install screens
+		-- #region Install screens
 		-- Only show the install screen if we are in the Training Grounds
 		if triggerArgs.name == "Hub_PreRun" then
 			-- If we haven't shown the install screen yet, or the installation is invalid

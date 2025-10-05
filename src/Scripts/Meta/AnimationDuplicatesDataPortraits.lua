@@ -107,13 +107,16 @@ mod.HadesPortraitAnimationAdditions = {
 		Scale = 1.0,
 		OffsetY = -117,
 	},
-	-- TODO: Re-check on 1.0 release if any new ones have been added
-	-- TODO: Confirmed with 1.0, new ones are: Elysium, Zag, Nyx, Persephone
 	-- #region Codex portraits that are duplicates between the games
 	{
 		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_AsphodelBiome",
 		InheritFrom = "Codex_Portrait_Base_01",
 		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BiomeAsphodel",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_ElysiumBiome",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BiomeElysium",
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_ErebusBiome",
@@ -129,6 +132,11 @@ mod.HadesPortraitAnimationAdditions = {
 		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_ChaosBiome",
 		InheritFrom = "Codex_Portrait_Base_01",
 		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BiomeChaos",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Persephone",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Persephone",
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Cerberus",
