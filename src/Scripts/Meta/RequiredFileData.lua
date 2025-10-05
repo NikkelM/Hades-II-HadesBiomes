@@ -32,7 +32,6 @@ mod.PackageFileMappings = {
 	Styx = "StyxModsNikkelMHadesBiomes",
 	RoomManager = "RoomManagerModsNikkelMHadesBiomes",
 	Fx = "FxModsNikkelMHadesBiomes",
-	GUI = "GUIModsNikkelMHadesBiomes",
 }
 
 mod.BikFileMappings = {
