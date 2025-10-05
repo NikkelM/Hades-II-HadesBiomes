@@ -31,11 +31,6 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "ПОВЕРХНЮ (Кошмар)",
 	},
-	{
-		Id = "CharProtag",
-		DisplayName = "Загрей",
-		Description = "Принц підземного світу",
-	},
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 	-- 	DisplayName = "Bouldy",

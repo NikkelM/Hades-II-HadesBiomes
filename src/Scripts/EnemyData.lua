@@ -149,8 +149,15 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 								end
 							end
 							if entry.Portrait then
-								if entry.Portrait == "Portrait_Bouldy_Default_01" then
+								if entry.Portrait:find("^Portrait_Zag_") then
+									entry.Portrait = entry.Portrait:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
+								elseif entry.Portrait == "Portrait_Bouldy_Default_01" then
 									entry.Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy"
+								end
+							end
+							if entry.PortraitExitAnimation then
+								if entry.PortraitExitAnimation:find("^Portrait_Zag_") then
+									entry.PortraitExitAnimation = entry.PortraitExitAnimation:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
 								end
 							end
 							if entry.PreLineThreadedFunctionName then

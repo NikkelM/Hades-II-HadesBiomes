@@ -84,6 +84,19 @@ local obstacleModifications = {
 	-- #endregion
 
 	-- #region ELYSIUM
+	-- Is commented out in Hades II - enabling it again only causes there to be a "Foes nearby" prompt when attempting to use the door in the Zagreus fight
+	ElysiumExitDoor = {
+		InheritFrom = { "ExitDoor", },
+		ExitThroughCenter = true,
+		RewardPreviewOffsetZ = 0,
+		RewardPreviewOffsetY = -360,
+		RewardPreviewOffsetX = 0,
+		UnlockedUseTextCannotReroll = "UseLeaveRoom_CannotReroll",
+		UnlockedAnimation = "ElysiumDoorUnlocked",
+		ExitDoorOpenAnimation = "ElysiumDoorOpen",
+		ExitDoorCloseAnimation = "ElysiumDoorClose",
+		UnlockedUseSound = "",
+	},
 	HealthFountainElysium = {
 		InheritFrom = { "HealthFountain" },
 		HealingSpentAnimation = "HealthFountainEmptyElysium",

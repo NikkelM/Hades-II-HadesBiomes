@@ -31,7 +31,6 @@ local storyNPCNames = {
 
 -- For duplicate Portraits, see mod.HadesPortraitAnimationAdditions
 local hadesCodexOrdering = {
-	-- Moved NPC_FurySister_01, Harpy2, Harpy3, Theseus, Minotaur, NPC_Hades_01 here from ChthonicGods
 	ModsNikkelMHadesBiomesCodexEntry = {
 		-- Locations
 		"Tartarus", "Asphodel", "Elysium", "Styx", "Challenge", "Surface",
@@ -113,6 +112,7 @@ local duplicateCodexPortraits = {
 	Biomes = {
 		"Tartarus",
 		"Asphodel",
+		"Elysium",
 		"Challenge",
 	},
 	Enemies = {

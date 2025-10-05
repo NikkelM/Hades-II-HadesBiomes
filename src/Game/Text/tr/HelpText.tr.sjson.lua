@@ -31,11 +31,6 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "YÜZEY (Kâbus)",
 	},
-	{
-		Id = "CharProtag",
-		DisplayName = "Zagreus",
-		Description = "Yeraltı Dünyasının Prensi",
-	},
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 	-- 	DisplayName = "Bouldy",

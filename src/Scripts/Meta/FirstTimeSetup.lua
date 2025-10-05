@@ -20,6 +20,7 @@ local function copyFile(src, dest, skipCheck)
 		error("Could not open destination file: " .. dest)
 	end
 
+	mod.DebugPrint("Copying file " .. src .. " to " .. dest, 4)
 	-- Read in blocks to not run out of memory
 	while true do
 		local block = inputFile:read(1024)
@@ -52,7 +53,6 @@ local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nam
 		end
 		destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest .. extension)
 		copyFile(srcPath, destPath)
-		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 	end
 end
 
@@ -74,8 +74,8 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, de
 		if not rom.path.exists(destPath) then
 			local fileData = mod.DecodeSjsonFile(srcPath)
 			mod.ApplyNestedSjsonModifications(fileData.Animations, modifications[src] or {})
+			mod.DebugPrint("Copying file " .. srcPath .. " to " .. destPath, 4)
 			sjson.encode_file(destPath, fileData)
-			mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 		else
 			mod.DebugPrint("File already exists and will not be overwritten: " .. destPath, 2)
 		end
@@ -271,6 +271,7 @@ function mod.FirstTimeSetup()
 
 	copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank", "Audio ")
 
+	-- TODO: Add progress percentages as these can take a long time for some people
 	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg", "1080p Hades ")
 	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\", "Packages\\1080p\\", ".pkg_manifest", "1080p Hades ")
 	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg", "720p Hades ")
@@ -280,8 +281,6 @@ function mod.FirstTimeSetup()
 	copyFiles(mod.BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas", "1080p Animation ")
 	copyFiles(mod.BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Animation ")
 	copyFiles(mod.BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p Animation ")
-
-	applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", "Game\\", mod.SjsonFileModifications)
 
 	-- Special treatment, as some are copied from the plugins_data, and some from the Hades installation
 	mod.DebugPrint("Copying .map_text files...", 3)
@@ -294,13 +293,14 @@ function mod.FirstTimeSetup()
 		end
 		destPath = rom.path.combine(rom.paths.Content(), "Maps\\" .. dest .. ".map_text")
 		copyFile(srcPath, destPath)
-		mod.DebugPrint("Copied " .. srcPath .. " to " .. destPath, 4)
 	end
 
 	copyFiles(mod.MapFileMappings, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", "Map binary ", true)
 
 	copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", "Voiceline ", true)
 	copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", "Voiceline ", true)
+
+	applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", "Game\\", mod.SjsonFileModifications)
 
 	mod.DebugPrint("Copying text files...", 3)
 	copyHadesHelpTexts()

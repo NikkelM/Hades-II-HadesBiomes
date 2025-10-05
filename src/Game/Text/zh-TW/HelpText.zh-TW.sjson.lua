@@ -31,11 +31,6 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "地表 （夢魘）",
 	},
-	{
-		Id = "CharProtag",
-		DisplayName = "扎格列欧斯",
-		Description = "冥界王子",
-	},
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 	-- 	DisplayName = "Bouldy",

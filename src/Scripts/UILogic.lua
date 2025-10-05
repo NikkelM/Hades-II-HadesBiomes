@@ -1,4 +1,7 @@
-local function tryImportLanguageFile(fileType, lang)
+function mod.TryImportLanguageFile(fileType, lang)
+	if lang == nil then
+		lang = game.GetLanguage({})
+	end
 	local filePath = "Game/Text/" .. lang .. "/" .. fileType .. "." .. lang .. ".sjson.lua"
 	-- Try to import the file, silently skip if it doesn't exist
 	local success, err = pcall(import, filePath)
@@ -14,17 +17,17 @@ modutil.mod.Path.Wrap("OnLanguageChanged", function(base, args)
 	-- TODO: While the files are loaded correctly, the texts aren't loaded into memory as the hooks are only executed on a game start
 	local currentLanguage = game.GetLanguage({})
 
-	tryImportLanguageFile("HelpText", currentLanguage)
-	tryImportLanguageFile("CodexText", currentLanguage)
-	tryImportLanguageFile("ScreenText", currentLanguage)
-	tryImportLanguageFile("TraitText", currentLanguage)
-	tryImportLanguageFile("MiscText", currentLanguage)
+	mod.TryImportLanguageFile("HelpText", currentLanguage)
+	mod.TryImportLanguageFile("CodexText", currentLanguage)
+	mod.TryImportLanguageFile("ScreenText", currentLanguage)
+	mod.TryImportLanguageFile("TraitText", currentLanguage)
+	mod.TryImportLanguageFile("MiscText", currentLanguage)
 
 	-- Also always import english files with custom strings in case we are missing localizations
 	if currentLanguage ~= "en" then
-		tryImportLanguageFile("HelpText", "en")
-		tryImportLanguageFile("ScreenText", "en")
-		tryImportLanguageFile("TraitText", "en")
+		mod.TryImportLanguageFile("HelpText", "en")
+		mod.TryImportLanguageFile("ScreenText", "en")
+		mod.TryImportLanguageFile("TraitText", "en")
 	end
 
 	base(args)

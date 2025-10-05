@@ -68,6 +68,7 @@ local function on_ready()
 	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
 	import "Scripts/Meta/NameMappingData.lua"
+	import "Scripts/Meta/ScreenData.lua"
 	import "Scripts/Meta/StorytellerVoicelines.lua"
 	import "Scripts/Meta/ZagreusFieldVoicelines.lua"
 
@@ -78,6 +79,11 @@ local function on_ready()
 
 	import "Scripts/Meta/FirstTimeSetup.lua"
 	import "Scripts/Meta/Uninstall.lua"
+
+	-- We need to define mod.TryImportLanguageFile before calling it
+	import "Scripts/UILogic.lua"
+	-- We need to import the ScreenText file as we might need to show an unsuccessful install screen with localized text
+	mod.TryImportLanguageFile("ScreenText")
 
 	-- If the game was updated, the file checksums very likely got updated as well
 	-- At the same time, if the mod gets updated, the checksums.txt will be reset to the empty file as well
@@ -134,8 +140,8 @@ local function on_ready()
 		mod.FirstTimeSetup()
 	end
 
-	local numMissingFiles = mod.CheckRequiredFiles(false)
 	-- Before proceeding, check that required files exist
+	local numMissingFiles = mod.CheckRequiredFiles(false)
 	if numMissingFiles == 0 then
 		-- General data needed for map generation/display
 		import "Game/MapGroups.sjson.lua"
@@ -178,8 +184,6 @@ local function on_ready()
 
 		-- The ScreenText files depend on icons in here
 		import "Scripts/UIData.lua"
-		-- We need to wrap OnLanguageChanged before calling it
-		import "Scripts/UILogic.lua"
 		-- Load the initial set of language sjson files
 		game.OnLanguageChanged()
 
@@ -283,8 +287,14 @@ local function on_ready()
 		import "Scripts/StoreLogic.lua"
 		import "Scripts/WeaponSets.lua"
 
+		mod.HiddenConfig.IsValidInstallation = true
+		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+
 		mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)
 	else
+		mod.HiddenConfig.IsValidInstallation = false
+		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+
 		mod.DebugPrint(
 			"A total of " .. numMissingFiles ..
 			" required files are missing and the mod is not active. Please check the log and run the \"firstTimeSetup\" by setting the config value to true.",

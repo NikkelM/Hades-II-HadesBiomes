@@ -25,13 +25,13 @@ end
 
 function mod.Uninstall()
 	-- Check if any savegame has a modded run as the most recent one - block uninstallation if so, as it would corrupt the save file
-	local cachedRuns = mod.LoadCachedRunsFile()
+	local cachedRuns = mod.TryLoadCachedSjsonFile("cachedRuns.sjson")
 	if string.lower(config.uninstall) == "i am sure - uninstall" then
 		mod.DebugPrint(
 			"Uninstalling mod - forced uninstallation! Savegames may corrupt. Re-install the mod to try and restore them.", 2)
 		-- Empty the list of cached runs - as the user thinks it is wrong
 		local defaultCachedRuns = { ActiveModdedRuns = {} }
-		sjson.encode_file(mod.CachedRunsFilePath, defaultCachedRuns)
+		mod.SaveCachedSjsonFile("cachedRuns.sjson", defaultCachedRuns)
 	elseif not config.firstTimeSetup then
 		for saveFileIndex, isActive in pairs(cachedRuns.ActiveModdedRuns) do
 			if isActive then
@@ -72,7 +72,7 @@ function mod.Uninstall()
 
 	mod.DebugPrint("Removing help text files...", 3)
 	-- _NPCData files are installed differently, so not part of this table by default
-	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames)
+	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames) or {}
 	table.insert(allHelpTextFileNames, "_NPCData")
 	for _, fileName in ipairs(allHelpTextFileNames) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
