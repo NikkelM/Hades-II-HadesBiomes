@@ -35,11 +35,6 @@ local newData = {
 		DisplayName = "GRECJA (Koszmar)",
 	},
 	{
-		Id = "CharProtag",
-		DisplayName = "Zagreus",
-		Description = "Książę Podziemi",
-	},
-	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "Głazik",
 		Description = "",

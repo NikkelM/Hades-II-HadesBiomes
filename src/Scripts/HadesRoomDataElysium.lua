@@ -71,7 +71,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		WallSlamMultiplier = 2.0,
 	},
 
-	C_Combat01 =
+	Y_Combat01 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -86,7 +86,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		EntranceDirection = "Right",
 	},
 
-	C_Combat02 =
+	Y_Combat02 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -101,7 +101,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		EntranceDirection = "Right",
 	},
 
-	C_Combat03 =
+	Y_Combat03 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -116,7 +116,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		EntranceDirection = "Left",
 	},
 
-	C_Combat04 =
+	Y_Combat04 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -132,7 +132,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		RushMaxRangeOverride = 510, -- for the top gap
 	},
 
-	C_Combat05 =
+	Y_Combat05 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -148,7 +148,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		RushMaxRangeOverride = 450,
 	},
 
-	C_Combat06 =
+	Y_Combat06 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -164,7 +164,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		RushMaxRangeOverride = 510,
 	},
 
-	C_Combat07 =
+	Y_Combat07 =
 	{
 		DebugOnly = true,
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
@@ -180,7 +180,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		EntranceDirection = "Left",
 	},
 
-	C_Combat08 =
+	Y_Combat08 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -195,7 +195,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		EntranceDirection = "Left",
 	},
 
-	C_Combat09 =
+	Y_Combat09 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -210,7 +210,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		EntranceDirection = "Right",
 	},
 
-	C_Combat10 =
+	Y_Combat10 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -226,7 +226,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		IneligibleRewards = { "Devotion" },
 	},
 
-	C_Combat11 =
+	Y_Combat11 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -243,7 +243,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		RushMaxRangeOverride = 450,
 	},
 
-	C_Combat12 =
+	Y_Combat12 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -258,7 +258,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		EntranceDirection = "Right",
 	},
 
-	C_Combat13 =
+	Y_Combat13 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -273,7 +273,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		EntranceDirection = "Left",
 	},
 
-	C_Combat14 =
+	Y_Combat14 =
 	{
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
@@ -289,7 +289,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		RushMaxRangeOverride = 450,
 	},
 
-	C_Combat15 =
+	Y_Combat15 =
 	{
 		DebugOnly = true,
 		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
@@ -305,7 +305,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		EntranceDirection = "Left",
 	},
 
-	C_PreBoss01 =
+	Y_PreBoss01 =
 	{
 		InheritFrom = { "BaseElysium" },
 
@@ -313,7 +313,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		EntranceDirection = "LeftRight",
 		ZoomFraction = 0.92,
 
-		LinkedRoom = "C_Boss01",
+		LinkedRoom = "Y_Boss01",
 		ForceAtBiomeDepthMin = 9,
 		ForceAtBiomeDepthMax = 9,
 		ExitAmbience = "/Ambience/TheseusCrowdAmbientLoop",
@@ -362,7 +362,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		},
 	},
 
-	C_Boss01 =
+	Y_Boss01 =
 	{
 		InheritFrom = { "BaseElysium" },
 		RewardPreviewIcon = "RoomElitePreview4",
@@ -376,7 +376,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		},
 
 		RequiresLinked = true,
-		LinkedRoom = "C_PostBoss01",
+		LinkedRoom = "Y_PostBoss01",
 		Milestone = true,
 		MilestoneIcon = "BossIcon",
 		ResetBinksOnEnter = true,
@@ -774,7 +774,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		},
 	},
 
-	C_PostBoss01 =
+	Y_PostBoss01 =
 	{
 		InheritFrom = { "BaseElysium" },
 		LegalEncounters = { "Empty" },
@@ -881,7 +881,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		},
 	},
 
-	C_MiniBoss01 =
+	Y_MiniBoss01 =
 	{
 		InheritFrom = { "BaseElysium" },
 		IsMiniBossRoom = true,
@@ -1051,7 +1051,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		},
 	},
 
-	C_MiniBoss02 =
+	Y_MiniBoss02 =
 	{
 		InheritFrom = { "BaseElysium" },
 		IsMiniBossRoom = true,
@@ -1118,7 +1118,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 	},
 
 	-- Not implemented in Hades
-	C_MiniBoss03 =
+	Y_MiniBoss03 =
 	{
 		DebugOnly = true,
 		InheritFrom = { "BaseElysium" },
@@ -1163,7 +1163,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		},
 	},
 
-	C_Shop01 =
+	Y_Shop01 =
 	{
 		InheritFrom = { "BaseElysium" },
 		MaxCreationsThisRun = 1,
@@ -1219,7 +1219,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		},
 	},
 
-	C_Reprieve01 =
+	Y_Reprieve01 =
 	{
 		InheritFrom = { "BaseElysium" },
 		IneligibleRewards = { "Devotion", },
@@ -1267,7 +1267,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		},
 	},
 
-	C_Story01 =
+	Y_Story01 =
 	{
 		InheritFrom = { "BaseElysium" },
 		ForcedReward = "Story",
@@ -1332,7 +1332,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		},
 	},
 
-	C_Intro =
+	Y_Intro =
 	{
 		InheritFrom = { "BaseElysium" },
 		NumExits = 2,

@@ -35,11 +35,6 @@ local newData = {
 		DisplayName = "ギリシア （凶夢）",
 	},
 	{
-		Id = "CharProtag",
-		DisplayName = "ザグレウス",
-		Description = "冥界の王子",
-	},
-	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "イワコフ",
 		Description = "",

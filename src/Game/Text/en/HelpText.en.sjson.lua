@@ -36,12 +36,6 @@ local newData = {
 		DisplayName = "GREECE (Nightmare)",
 	},
 	{
-		-- Almost all textlines use CharProtag in Hades
-		Id = "CharProtag",
-		DisplayName = "Zagreus",
-		Description = "Prince of the Underworld",
-	},
-	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "Bouldy",
 		Description = "",

@@ -39,26 +39,26 @@ local newData = {
 		HoldLastFrame = false,
 		ChainTo = "MelTalkGifting01ReturnToIdle"
 	},
-	{
-		Name = "ZagreusDeathFullscreen",
-		FilePath = "Screens\\ZagreusDeadPool\\ZagreusDeadPool",
-		GroupName = "Overlay",
-		Type = "Book",
-		VideoTexture = "ZagreusDeathFullscreen",
-		AngleFromOwner = "Ignore",
-		Sound = "/SFX/Player Sounds/PlayerDeathBloodComponents",
-		EndFrame = 250,
-		HoldLastFrame = true,
-		NumFrames = 250,
-		PlaySpeed = 30.0,
-		StartFrame = 1,
-		Material = "Unlit",
-		DisableOwnerInteract = true,
-		TimeModifierFraction = 0.1,
-		Slides = {
-			{ DurationFrames = 1, Sound = "/SFX/StabSplatter", Frame = 1, },
-		},
-	},
+	-- {
+	-- 	Name = "ZagreusDeathFullscreen",
+	-- 	FilePath = "Screens\\ZagreusDeadPool\\ZagreusDeadPool",
+	-- 	GroupName = "Overlay",
+	-- 	Type = "Book",
+	-- 	VideoTexture = "ZagreusDeathFullscreen",
+	-- 	AngleFromOwner = "Ignore",
+	-- 	Sound = "/SFX/Player Sounds/PlayerDeathBloodComponents",
+	-- 	EndFrame = 250,
+	-- 	HoldLastFrame = true,
+	-- 	NumFrames = 250,
+	-- 	PlaySpeed = 30.0,
+	-- 	StartFrame = 1,
+	-- 	Material = "Unlit",
+	-- 	DisableOwnerInteract = true,
+	-- 	TimeModifierFraction = 0.1,
+	-- 	Slides = {
+	-- 		{ DurationFrames = 1, Sound = "/SFX/StabSplatter", Frame = 1, },
+	-- 	},
+	-- },
 }
 
 sjson.hook(animationsFile, function(data)

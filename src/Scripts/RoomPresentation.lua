@@ -42,7 +42,7 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 		end
 
 		-- #region Modified Hades/Hades II DeathPresentation - Comment in the base() call at the end to revert to normal behaviour
-		-- -- When enabling this, also add in the ZagreusDeathFullscreen animation in RequiredFileData.lua
+		-- -- When enabling this, also add in the ZagreusDeathFullscreen animation in RequiredFileData.lua and in Hero_Melinoe_Animation_Personality.sjson.lua
 		-- rom.audio.load_bank(rom.path.combine(_PLUGIN.plugins_data_mod_folder_path,
 		-- 	"Content\\Audio\\Desktop\\ModsNikkelMHadesBiomesMusicModded.bank"))
 		-- -- Overwrite the DeathStinger for this room - we always want to play the custom event if it is a modded run

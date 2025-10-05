@@ -35,11 +35,6 @@ local newData = {
 		DisplayName = "GRECIA (Pesadilla)",
 	},
 	{
-		Id = "CharProtag",
-		DisplayName = "Zagreo",
-		Description = "Príncipe del Inframundo",
-	},
-	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "Roquita",
 		Description = "",

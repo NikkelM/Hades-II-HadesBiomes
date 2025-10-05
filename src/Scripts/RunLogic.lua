@@ -36,7 +36,7 @@ end)
 
 -- Doing this here instead of in StartNewRun, as StartNewRun creates the first encounter before we can set the modded flag
 modutil.mod.Path.Wrap("ChooseStartingRoom", function(base, currentRun, args)
-	local cachedRuns = mod.LoadCachedRunsFile()
+	local cachedRuns = mod.TryLoadCachedSjsonFile("cachedRuns.sjson")
 
 	-- Only set the flag if we are starting a Hades run
 	local validModdedRunBiomes = {
@@ -50,10 +50,10 @@ modutil.mod.Path.Wrap("ChooseStartingRoom", function(base, currentRun, args)
 		currentRun.ModsNikkelMHadesBiomesIsModdedRun = true
 
 		cachedRuns.ActiveModdedRuns[game.GameState.ModsNikkelMHadesBiomesSaveFileIndex] = true
-		sjson.encode_file(mod.CachedRunsFilePath, cachedRuns)
+		mod.SaveCachedSjsonFile("cachedRuns.sjson", cachedRuns)
 	elseif game.GameState.ModsNikkelMHadesBiomesSaveFileIndex ~= nil then
 		cachedRuns.ActiveModdedRuns[game.GameState.ModsNikkelMHadesBiomesSaveFileIndex] = false
-		sjson.encode_file(mod.CachedRunsFilePath, cachedRuns)
+		mod.SaveCachedSjsonFile("cachedRuns.sjson", cachedRuns)
 	end
 
 	-- Edge case: We also need to do these modifications for the first room of a run, as the IsModdedRun flag only gets set after RunStateInit is called

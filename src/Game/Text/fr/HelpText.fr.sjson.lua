@@ -35,11 +35,6 @@ local newData = {
 		DisplayName = "GRÈCE (Cauchemar)",
 	},
 	{
-		Id = "CharProtag",
-		DisplayName = "Zagreus",
-		Description = "Prince des Enfers",
-	},
-	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "Pierrot",
 		Description = "",

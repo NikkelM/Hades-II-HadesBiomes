@@ -35,11 +35,6 @@ local newData = {
 		DisplayName = "GRIECHENLAND (Albtraum)",
 	},
 	{
-		Id = "CharProtag",
-		DisplayName = "Zagreus",
-		Description = "Prinz der Unterwelt",
-	},
-	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "Steinchen",
 		Description = "",
