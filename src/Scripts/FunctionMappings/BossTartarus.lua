@@ -81,8 +81,6 @@ function mod.HarpySupportAI(enemy)
 end
 
 function mod.HarpyKillPresentation(unit, args)
-	DebugPrint({ Text = "Harpy Kill Presentation: " })
-
 	if game.CurrentRun.CurrentRoom.Encounter and game.CurrentRun.CurrentRoom.Encounter.StartTime then
 		CurrentRun.CurrentRoom.Encounter.ClearTime = game._worldTime - game.CurrentRun.CurrentRoom.Encounter.StartTime
 	end
@@ -248,6 +246,7 @@ function mod.HarpyKillPresentation(unit, args)
 			FadeColor = Color.LocationTextGold,
 			Layer = args.MessageLayer,
 			Duration = args.MessageDuration,
+			-- Modded animation names
 			AnimationName = "LocationTextBGVictoryIn",
 			AnimationOutName = "LocationTextBGVictoryOut",
 			FontScale = 0.85,
