@@ -1,5 +1,6 @@
 -- Additional ScreenData entries are created here
 game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess = {
+	Name = "ModsNikkelMHadesBiomesInstallSuccess",
 	Components = {},
 	OpenSound = "/SFX/Menu Sounds/HadesLocationTextAppear",
 	CloseSound = "/SFX/Menu Sounds/IrisMenuBack",
@@ -86,6 +87,7 @@ game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess = {
 }
 
 game.ScreenData.ModsNikkelMHadesBiomesInstallFailure = {
+	Name = "ModsNikkelMHadesBiomesInstallFailure",
 	Components = {},
 	OpenSound = "/SFX/Menu Sounds/HadesLocationTextAppear",
 	CloseSound = "/SFX/Menu Sounds/IrisMenuBack",
@@ -170,5 +172,3 @@ game.ScreenData.ModsNikkelMHadesBiomesInstallFailure = {
 		},
 	}
 }
-
-game.ProcessDataStore(game.ScreenData)

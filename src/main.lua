@@ -75,7 +75,8 @@ local function on_ready()
 	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
 	local shouldProceed = config.enabled and
 			((string.lower(config.uninstall) ~= "true" and string.lower(config.uninstall) ~= "i am sure - uninstall") or config.firstTimeSetup)
-	if shouldProceed and not mod.ConfirmHadesInstallation() then return end
+	-- Always confirm the installation, as we might need the path if this is a weird first-install-with-uninstall-set situation
+	if not mod.ConfirmHadesInstallation() and shouldProceed then return end
 
 	import "Scripts/Meta/FirstTimeSetup.lua"
 	import "Scripts/Meta/Uninstall.lua"
