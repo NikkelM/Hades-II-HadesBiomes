@@ -79,7 +79,14 @@ local roomModifications = {
 	},
 
 	-- MINIBOSSES
+	X_MiniBoss01 = {
+		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+	},
+	X_MiniBoss02 = {
+		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+	},
 	X_Wrapping01 = {
+		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
 		PostCombatReloadEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "WrappingPostCombatReloadPresentation", },
 		},
@@ -99,6 +106,7 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroHydra", },
 		},
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceBossHydra",
+		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		ForcedReward = "MixerGBossDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,

@@ -85,10 +85,14 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium", },
 		},
 	},
+	Y_MiniBoss02 = {
+		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+	},
 
 	-- BOSSES
 	Y_Boss01 = {
 		LoadModdedVoiceBanks = { "Minotaur", "Theseus", "ZagreusField" },
+		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		ForcedReward = "MixerHBossDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,

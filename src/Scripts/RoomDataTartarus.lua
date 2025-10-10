@@ -132,6 +132,7 @@ local roomModifications = {
 	-- BOSSES
 	A_Boss01 = {
 		LoadModdedVoiceBanks = { "Megaera*", "Alecto*", "Tisiphone*", "ZagreusField" },
+		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		-- Replaces MegaeraHome with Megaera voicelines
 		UnthreadedEvents = {
 			[1] = {
@@ -155,12 +156,14 @@ local roomModifications = {
 		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 	A_Boss02 = {
+		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
 	},
 	A_Boss03 = {
+		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
