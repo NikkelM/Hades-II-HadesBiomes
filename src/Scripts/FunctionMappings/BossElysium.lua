@@ -232,7 +232,7 @@ function mod.SelectTheseusGod(enemy, run, args)
 	enemy.TheseusGodName = mod.GetUninteractedGodThisRunForTheseus() or "Artemis"
 	LoadPackages({ Names = enemy.TheseusGodName })
 	-- Contains some necessary Fx that were in various GodUpgrade packages in Hades
-	LoadPackages({ Names = "ModsNikkelMHadesBiomesTheseusGodFxModded" })
+	LoadPackages({ Names = "ModsNikkelMHadesBiomesTheseusGodFxOriginal" })
 end
 
 function mod.TheseusGodAI(enemy, currentRun)
