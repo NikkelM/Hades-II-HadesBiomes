@@ -28,6 +28,8 @@ local roomModifications = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
 
+		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Elysium",
+
 		Ambience = "/Leftovers/ElysiumAmbientLoop",
 		ReverbValue = 1.5,
 		-- Always play Bass
@@ -83,10 +85,14 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium", },
 		},
 	},
+	Y_MiniBoss02 = {
+		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+	},
 
 	-- BOSSES
 	Y_Boss01 = {
 		LoadModdedVoiceBanks = { "Minotaur", "Theseus", "ZagreusField" },
+		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		ForcedReward = "MixerHBossDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,
@@ -110,6 +116,7 @@ local roomModifications = {
 	-- OTHER
 	Y_Story01 = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
+		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusExitFunctionName",
 		ExitFunctionArgs = {
 			Speed = 300,
@@ -121,7 +128,7 @@ local roomModifications = {
 		},
 	},
 	Y_PostBoss01 = {
-		ExitPreviewAnim = "HadesExitPreview",
+		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
 			{

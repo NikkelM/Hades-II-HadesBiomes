@@ -290,7 +290,7 @@ updatedCodexData[codexGroupNameMappings.Enemies].TitleText = "ModsNikkelMHadesBi
 hadesCodexData = updatedCodexData
 
 local additionalCodexTabs = {
-	{ X = 0, Y = -88, Animation = "GUI\\Screens\\Codex\\CategoryTab1", Highlight = "GUI\\Screens\\Codex\\CategoryTabHighlight1", Active = "GUI\\Screens\\Codex\\CategoryTabActiveHighlightOverlay1" },
+	{ X = -10, Y = -88, Animation = "GUI\\Screens\\Codex\\CategoryTab3", Highlight = "GUI\\Screens\\Codex\\CategoryTabHighlight3", Active = "GUI\\Screens\\Codex\\CategoryTabActiveHighlightOverlay3" },
 }
 
 for groupName, _ in pairs(hadesCodexOrdering) do
@@ -302,3 +302,8 @@ end
 
 mod.AddTableKeysSkipDupes(game.CodexOrdering, hadesCodexOrdering)
 mod.AddTableKeysSkipDupes(game.CodexData, hadesCodexData)
+
+-- Modifications to the tab layout of the Codex, as we need to squish them left to ensure our new tab doesn't go beyond the overlayed area
+game.ScreenData.Codex.ChapterX = 405
+game.ScreenData.Codex.ChapterSpacingX = 84
+game.ScreenData.Codex.CategoryIconOffsetX = -2

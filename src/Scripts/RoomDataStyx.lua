@@ -42,6 +42,7 @@ local roomModifications = {
 		IneligibleRewards = { "Devotion" },
 		OptionalOverrides = {
 			IneligibleRewards = { "WeaponUpgrade", "Devotion" },
+			RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
 		},
 	},
 	BaseStyxWingEnd = {
@@ -132,10 +133,14 @@ local roomModifications = {
 			},
 		},
 	},
+	BaseStyxMiniBoss = {
+		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+	},
 
 	-- BOSSES
 	D_Boss01 = {
 		LoadModdedVoiceBanks = { "HadesField", "ZagreusField" },
+		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		ForcedReward = "MixerIBossDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,

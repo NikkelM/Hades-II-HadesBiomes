@@ -132,6 +132,7 @@ local roomModifications = {
 	-- BOSSES
 	A_Boss01 = {
 		LoadModdedVoiceBanks = { "Megaera*", "Alecto*", "Tisiphone*", "ZagreusField" },
+		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		-- Replaces MegaeraHome with Megaera voicelines
 		UnthreadedEvents = {
 			[1] = {
@@ -155,12 +156,14 @@ local roomModifications = {
 		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 	A_Boss02 = {
+		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
 	},
 	A_Boss03 = {
+		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
@@ -177,6 +180,7 @@ local roomModifications = {
 			[1] = mod.NilValue
 		},
 		LoadModdedVoiceBanks = { "Sisyphus", "ZagreusField" },
+		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 	},
 	A_Reprieve01 = {
 		GameStateRequirements = {
@@ -184,7 +188,7 @@ local roomModifications = {
 		},
 	},
 	A_PostBoss01 = {
-		ExitPreviewAnim = "HadesExitPreview",
+		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
 		NextRoomSet = { "Asphodel" },
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
@@ -245,8 +249,7 @@ local roomModifications = {
 
 -- Assign separately so we don't get a circular reference
 game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
-	-- Update in BaseStyx if anything is being changed here
-	LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "FxModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "ModsNikkelMHadesBiomesFxModded", "ModsNikkelMHadesBiomesFxOriginal", "ModsNikkelMHadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+	LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "NikkelM-HadesBiomesFxModded", "ModsNikkelMHadesBiomesFxOriginal", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Tartarus, roomModifications, roomReplacements, "Tartarus")

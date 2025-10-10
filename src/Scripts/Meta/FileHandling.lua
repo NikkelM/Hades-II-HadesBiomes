@@ -150,14 +150,25 @@ OnAnyLoad {
 		-- #region Install screens
 		-- Only show the install screen if we are in the Training Grounds
 		if triggerArgs.name == "Hub_PreRun" then
-			-- If we haven't shown the install screen yet, or the installation is invalid
-			if (not mod.HiddenConfig.HasShownSuccessfulInstallScreen) or (not mod.HiddenConfig.IsValidInstallation) then
-				-- Update the config with the type of screen we are showing
-				-- Do it before showing the screen to also have this saved if the user closes the game without closing the screen first
-				mod.HiddenConfig.HasShownSuccessfulInstallScreen = mod.HiddenConfig.IsValidInstallation
+			-- If an uninstall was just attempted, but failed
+			if mod.HiddenConfig.MustShowUninstallFailureScreen then
+				mod.HiddenConfig.MustShowUninstallFailureScreen = false
 				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
-
+			
+				-- Workaround to have this show up now, but not again on the next game start
+				mod.HiddenConfig.MustShowUninstallFailureScreen = true
 				mod.OpenModInstallScreen(mod.HiddenConfig)
+				mod.HiddenConfig.MustShowUninstallFailureScreen = false
+			else
+				-- If we haven't shown the install screen yet, or the installation is invalid
+				if (not mod.HiddenConfig.HasShownSuccessfulInstallScreen) or (not mod.HiddenConfig.IsValidInstallation) then
+					-- Update the config with the type of screen we are showing
+					-- Do it before showing the screen to also have this saved if the user closes the game without closing the screen first
+					mod.HiddenConfig.HasShownSuccessfulInstallScreen = mod.HiddenConfig.IsValidInstallation
+					mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+
+					mod.OpenModInstallScreen(mod.HiddenConfig)
+				end
 			end
 		end
 		-- #endregion
@@ -167,7 +178,9 @@ OnAnyLoad {
 function mod.OpenModInstallScreen(args)
 	args = args or {}
 	local screen = {}
-	if args.IsValidInstallation then
+	if args.MustShowUninstallFailureScreen then
+		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesUninstallFailure) or {}
+	elseif args.IsValidInstallation then
 		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess) or {}
 	else
 		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailure) or {}

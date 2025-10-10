@@ -50,6 +50,7 @@ local function on_ready()
 	import "Scripts/Meta/Constants.lua"
 	import "Scripts/Meta/Utils.lua"
 	import "Scripts/Meta/RequiredFileData.lua"
+	import "Scripts/Meta/NameMappingData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 
 	if config.enabled == false then
@@ -67,15 +68,15 @@ local function on_ready()
 	import "Scripts/Meta/AnimationDuplicatesDataGUIAnimations.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
-	import "Scripts/Meta/NameMappingData.lua"
-	import "Scripts/Meta/ScreenData.lua"
+	import "Scripts/Meta/ScreenDataInstallation.lua"
 	import "Scripts/Meta/StorytellerVoicelines.lua"
 	import "Scripts/Meta/ZagreusFieldVoicelines.lua"
 
 	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
 	local shouldProceed = config.enabled and
 			((string.lower(config.uninstall) ~= "true" and string.lower(config.uninstall) ~= "i am sure - uninstall") or config.firstTimeSetup)
-	if shouldProceed and not mod.ConfirmHadesInstallation() then return end
+	-- Always confirm the installation, as we might need the path if this is a weird first-install-with-uninstall-set situation
+	if not mod.ConfirmHadesInstallation() and shouldProceed then return end
 
 	import "Scripts/Meta/FirstTimeSetup.lua"
 	import "Scripts/Meta/Uninstall.lua"
@@ -108,23 +109,29 @@ local function on_ready()
 					"You tried disabling the mod, but uninstallation was not successful. As this may cause issues if left unresolved, the mod has been enabled again. Please follow the instructions in the logs above for more information.",
 					1)
 				config.enabled = true
+
+				mod.HiddenConfig.MustShowUninstallFailureScreen = true
+				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+
 				-- We need to confirm the Hades installation, as the mod has been enabled again
 				if not mod.ConfirmHadesInstallation() then return end
 			end
-		end
-
-		if uninstallSuccessful and not config.firstTimeSetup then
-			mod.DebugPrint(
-				"The mod was uninstalled successfully, and the \"firstTimeSetup\" flag is set to false, disabling mod.", 2)
-			config.enabled = false
-			-- Set to true to install the next time the mod is enabled
-			config.firstTimeSetup = true
-			return
-		elseif not uninstallSuccessful then
-			mod.DebugPrint(
-				"The mod was not uninstalled successfully, validating Hades installation to ensure we can proceed...", 2)
-			if not mod.ConfirmHadesInstallation() then
+		else
+			if uninstallSuccessful and not config.firstTimeSetup then
+				mod.DebugPrint(
+					"The mod was uninstalled successfully, and the \"firstTimeSetup\" flag is set to false, disabling mod.", 2)
+				config.enabled = false
+				-- Set to true to install the next time the mod is enabled
+				config.firstTimeSetup = true
 				return
+			elseif not uninstallSuccessful then
+				mod.DebugPrint(
+					"The mod was not uninstalled successfully, validating Hades installation to ensure we can proceed...", 2)
+
+				mod.HiddenConfig.MustShowUninstallFailureScreen = true
+				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+
+				if not mod.ConfirmHadesInstallation() then return end
 			end
 		end
 	elseif string.lower(config.uninstall) ~= "false" then
@@ -228,6 +235,7 @@ local function on_ready()
 		import "Scripts/ConsumableData.lua"
 		import "Scripts/EffectData.lua"
 		import "Scripts/MetaUpgradeData.lua"
+		import "Scripts/TraitData.lua"
 		import "Scripts/TraitDataNPCs.lua"
 		import "Scripts/ObstacleData.lua"
 
