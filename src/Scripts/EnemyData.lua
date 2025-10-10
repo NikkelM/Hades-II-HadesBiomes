@@ -1240,6 +1240,7 @@ local enemyModifications = {
 		StunAnimations = { Default = "SatyrOnHit" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		ActivateDuration = 0.4,
+		BlockCharm = true,
 	},
 	RatThug = {
 		LargeUnitCap = mod.NilValue,
