@@ -8,7 +8,7 @@ mod.HadesGUIAnimationAdditions = {
 		-- The original from Hades, as we cannot InheritFrom, as that would place the animation at the end of the file, and we need something else to inherit from it
 		-- Modified FilePath, as this has been moved to the modded package to try a workaround for the graphic overlaying as an artifact after a reload
 		Name = "ModsNikkelMHadesBiomesLocationTextBGOut",
-		FilePath = "GUIModded\\UnlockTextBG\\LocationTextBG",
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\UnlockTextBG\\LocationTextBG",
 		Type = "Slide",
 		EndFrame = 44,
 		NumFrames = 44,
@@ -66,7 +66,7 @@ mod.HadesGUIAnimationAdditions = {
 	},
 	{
 		Name = "ModsNikkelMHadesBiomesLocationTextBGIn",
-		FilePath = "GUIModded\\UnlockTextBG\\LocationTextBG",
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\UnlockTextBG\\LocationTextBG",
 		Type = "Slide",
 		PlaySpeed = 30.0,
 		StartFrame = 1,

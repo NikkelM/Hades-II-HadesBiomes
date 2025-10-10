@@ -8,7 +8,7 @@ local addParentAnimations = {
 	-- #region Location intros
 	ModsNikkelMHadesBiomesInfoBannerTartarusIn = {
 		Name = "ModsNikkelMHadesBiomesInfoBannerTartarusIn",
-		FilePath = "GUIModded\\LocationBackings\\TartarusBacking\\TartarusBacking",
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\LocationBackings\\TartarusBacking\\TartarusBacking",
 		OffsetY = 80,
 		StartAlpha = 0.0,
 		EndAlpha = 1.0,
@@ -17,7 +17,7 @@ local addParentAnimations = {
 	},
 	ModsNikkelMHadesBiomesInfoBannerAsphodelIn = {
 		Name = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn",
-		FilePath = "GUIModded\\LocationBackings\\AsphodelBacking\\AsphodelBacking",
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\LocationBackings\\AsphodelBacking\\AsphodelBacking",
 		OffsetY = 80,
 		StartAlpha = 0.0,
 		EndAlpha = 1.0,
@@ -26,7 +26,7 @@ local addParentAnimations = {
 	},
 	ModsNikkelMHadesBiomesInfoBannerElysiumIn = {
 		Name = "ModsNikkelMHadesBiomesInfoBannerElysiumIn",
-		FilePath = "GUIModded\\LocationBackings\\ElysiumBacking\\ElysiumBacking",
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\LocationBackings\\ElysiumBacking\\ElysiumBacking",
 		OffsetY = 80,
 		StartAlpha = 0.0,
 		EndAlpha = 1.0,
@@ -35,7 +35,7 @@ local addParentAnimations = {
 	},
 	ModsNikkelMHadesBiomesInfoBannerStyxIn = {
 		Name = "ModsNikkelMHadesBiomesInfoBannerStyxIn",
-		FilePath = "GUIModded\\LocationBackings\\StyxBacking\\StyxBacking",
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\LocationBackings\\StyxBacking\\StyxBacking",
 		OffsetY = 80,
 		StartAlpha = 0.0,
 		EndAlpha = 1.0,
