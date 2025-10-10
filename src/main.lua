@@ -229,6 +229,7 @@ local function on_ready()
 		import "Scripts/ConsumableData.lua"
 		import "Scripts/EffectData.lua"
 		import "Scripts/MetaUpgradeData.lua"
+		import "Scripts/TraitData.lua"
 		import "Scripts/TraitDataNPCs.lua"
 		import "Scripts/ObstacleData.lua"
 
