@@ -28,6 +28,8 @@ local roomModifications = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
 
+		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Elysium",
+
 		Ambience = "/Leftovers/ElysiumAmbientLoop",
 		ReverbValue = 1.5,
 		-- Always play Bass
