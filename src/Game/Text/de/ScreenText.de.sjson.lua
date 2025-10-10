@@ -38,20 +38,20 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_InstallSuccess",
 	-- 	DisplayName = "Installation successful!",
 	-- 	Description =
-	-- 	"\nWelcome to {#DialogLegendaryFormat}TODO: HadesBiomes WIP title{#Prev}!\n\nYou may now interact with the Chaos Gate in the training grounds to experience Zagreus' original journey to {#DialogLegendaryFormat}escape the Underworld {#Prev}through Melinoë's eyes.\n\n\nIf you experience any issues, please start a discussion on {#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nand attach your {#DialogLegendaryFormat}LogOutput.log {#Prev}file from the ReturnOfModding folder.",
+	-- 	"\nWelcome to {#DialogLegendaryFormat}TODO: HadesBiomes WIP title{#Prev}!\n\nYou may now interact with the Chaos Gate in the training grounds to experience Zagreus' original journey to {#DialogLegendaryFormat}escape the Underworld {#Prev}through Melinoë's eyes.\n\n\nIf you experience any issues, please start a discussion on {#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nand attach your {#DialogLegendaryFormat}LogOutput.log {#Prev}file from the \"ReturnOfModding\" folder.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InstallFailure",
 	-- 	DisplayName = "Installation failed!",
 	-- 	Description =
-	-- 	"\nWelcome to {#DialogLegendaryFormat}TODO: HadesBiomes WIP title{#Prev}!\n\nUnfortunately, installing the mod has {#DialogLegendaryFormat}FAILED{#Prev}, or your existing installation is broken.\nSome game features may not work as expected.\nPlease see the console window that opens with the game for how to resolve the problem.\n\nIf the issue persists, please start a discussion on\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nand attach your {#DialogLegendaryFormat}LogOutput.log {#Prev}file from the ReturnOfModding folder.",
+	-- 	"\nWelcome to {#DialogLegendaryFormat}TODO: HadesBiomes WIP title{#Prev}!\n\nUnfortunately, installing the mod has {#DialogLegendaryFormat}FAILED{#Prev}, or your existing installation is broken.\nSome game features may not work as expected.\nPlease see the console window that opens with the game for how to resolve the problem.\n\nIf the issue persists, please start a discussion on\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nand attach your {#DialogLegendaryFormat}LogOutput.log {#Prev}file from the \"ReturnOfModding\" folder.",
 	-- },
-	-- {
-	-- 	Id = "ModsNikkelMHadesBiomes_UninstallFailure",
-	-- 	DisplayName = "Uninstallation failed!",
-	-- 	Description =
-	-- 	"\nUninstalling {#DialogLegendaryFormat}TODO: HadesBiomes WIP title {#Prev}has {#DialogLegendaryFormat}FAILED {#Prev}, because for one of your saves, the {#BoldFormatGraft}most recent run {#Prev}was a modded run.\n\nThe game persists data after a run, and uninstalling the mod now would {#DialogLegendaryFormat}break your save {#Prev}until you reinstall the mod! To protect your saves, the mod has been {#DialogLegendaryFormat}enabled again{#Prev}. To safely uninstall, start and {#BoldFormatGraft}do not undo {#Prev}a normal run on all affected saves. Then retry uninstalling the mod.\n\nIf you think you should be able to uninstall now, set the {#BoldFormatGraft}uninstall {#Prev}config option to \"{#DialogLegendaryFormat}I am sure - Uninstall{#Prev}\".\nThis can {#DialogLegendaryFormat}break your save {#Prev} until you reinstall the mod!\n\nIf the issue persists, please start a discussion on\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nand attach your {#DialogLegendaryFormat}LogOutput.log {#Prev}file from the ReturnOfModding folder.",
-	-- },
+	{
+		Id = "ModsNikkelMHadesBiomes_UninstallFailure",
+		DisplayName = "Deinstallation gescheitert!",
+		Description =
+		"\nDie Deinstallation von {#DialogLegendaryFormat}TODO: HadesBiomes WIP title {#Prev}ist {#DialogLegendaryFormat}GESCHEITERT{#Prev}, da der {#BoldFormatGraft}aktuellste Durchgang {#Prev}einer deiner Speicherplätze modifiziert war.\n\nDas Spiel speichert Daten des letzten Durchgangs, daher würde eine Deinstallation {#DialogLegendaryFormat}deinen Speicherstand korrumpieren{#Prev}, bis die Mod wieder installiert wird! Daher wurde die Mod {#DialogLegendaryFormat}wieder eingeschaltet{#Prev}. Um sicher zu deinstallieren, starte einen neuen normalen Durchangang und {#BoldFormatGraft}gib ihn nicht auf {#Prev}. Dann versuche eine erneute Deinstallation.\n\nMöchtest du trotzdem deinstallieren, setze die {#BoldFormatGraft}uninstall{#Prev}-Option auf \"{#DialogLegendaryFormat}I am sure - Uninstall{#Prev}\". Dies kann deinen Speicherstand {#DialogLegendaryFormat}korrumpieren{#Prev}!\n\nBei weiteren Problemen starte bitte eine Diskussion auf\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nund lade die {#DialogLegendaryFormat}LogOutput.log {#Prev}Datei aus dem \"ReturnOfModding\" Ordner hoch.",
+	},
 }
 
 sjson.hook(screenTextFile, function(data)
