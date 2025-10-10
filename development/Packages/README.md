@@ -5,6 +5,9 @@ All .png files for a package should be in the same folder (e.g. `ModsNikkelMHade
 Important: The folder/package name CANNOT end in the name of an existing package, as this will confuse the game (it will try to load the custom package as the original package).
 Can also contain the source files (e.g. GIMP `.xcf` files).
 
+Make sure that packages and their nested folders are not too long!
+If the full path to a texture file is too long, the package will not be loaded and the game might even crash on startup.
+
 ## Modern approach
 
 Only use this approach for actual new packages, as the path to the textures will include the package's name, which isn't the case for original Hades packages!
