@@ -180,6 +180,7 @@ local roomModifications = {
 			[1] = mod.NilValue
 		},
 		LoadModdedVoiceBanks = { "Sisyphus", "ZagreusField" },
+		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 	},
 	A_Reprieve01 = {
 		GameStateRequirements = {
@@ -187,7 +188,7 @@ local roomModifications = {
 		},
 	},
 	A_PostBoss01 = {
-		ExitPreviewAnim = "HadesExitPreview",
+		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
 		NextRoomSet = { "Asphodel" },
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {

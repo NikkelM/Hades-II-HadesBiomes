@@ -130,6 +130,7 @@ local roomModifications = {
 	X_Story01 = {
 		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 		LoadModdedVoiceBanks = { "Eurydice", "ZagreusField" },
+		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		-- We play our own music in this room, don't play any by default
 		IgnoreMusic = true,
 	},
@@ -140,7 +141,7 @@ local roomModifications = {
 		},
 	},
 	X_PostBoss01 = {
-		ExitPreviewAnim = "HadesExitPreview",
+		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
 			{

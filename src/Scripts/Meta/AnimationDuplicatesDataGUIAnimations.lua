@@ -461,7 +461,6 @@ mod.HadesGUIAnimationDuplicates = {
 	["StackUpgradeSymbol"] = true,
 	["WeaponUpgradeSymbol"] = true,
 	["BoonSymbolBaseIsometric"] = true,
-	["StoryPreview"] = true,
 	["ChaosPreview"] = true,
 	["GiftDropPreview"] = true,
 	["ShopPreview"] = true,

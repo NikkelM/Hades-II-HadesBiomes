@@ -89,11 +89,12 @@ mod.FxAnimationMappings = {
 	HydraTouchdownFx = "HadesHydraTouchdownFx",
 }
 mod.GUIAnimationMappings = {
-	ExitPreview = "HadesExitPreview",
+	ExitPreview = "ModsNikkelMHadesBiomes_ExitPreview",
+	StoryPreview = "ModsNikkelMHadesBiomes_StoryPreview"
 }
 mod.PortraitAnimationMappings = {
-	Portrait_Base_01 = "HadesPortrait_Base_01",
-	Portrait_Base_01_Exit = "HadesPortrait_Base_01_Exit",
+	Portrait_Base_01 = "ModsNikkelMHadesBiomes_Portrait_Base_01",
+	Portrait_Base_01_Exit = "ModsNikkelMHadesBiomes_Portrait_Base_01_Exit",
 }
 mod.CharacterAnimationsNPCsMappings = {}
 

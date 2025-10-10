@@ -116,6 +116,7 @@ local roomModifications = {
 	-- OTHER
 	Y_Story01 = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
+		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusExitFunctionName",
 		ExitFunctionArgs = {
 			Speed = 300,
@@ -127,7 +128,7 @@ local roomModifications = {
 		},
 	},
 	Y_PostBoss01 = {
-		ExitPreviewAnim = "HadesExitPreview",
+		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
 			{
