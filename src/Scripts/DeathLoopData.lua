@@ -124,7 +124,7 @@ function mod.StartHadesRunSecretDoorPresentation(currentRun, secretDoor)
 	game.thread(game.SlightDescent)
 
 	-- Custom wait amount
-	game.wait(0.3)
+	game.wait(0.2)
 	FadeOut({ Duration = 0.3, Color = game.Color.Black })
 
 	game.WaitForSpeechFinished()

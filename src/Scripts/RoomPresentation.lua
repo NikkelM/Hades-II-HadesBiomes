@@ -25,6 +25,7 @@ end)
 -- 	base(animationName, colorGradeName)
 -- end)
 
+-- The animation on the run start Chaos gate is defined on a custom function
 -- modutil.mod.Path.Wrap("FullScreenFadeOutAnimation", function(base, animationName, colorGradeName)
 -- 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentHubRoom == nil then
 -- 		animationName = "ModsNikkelMHadesBiomesRoomTransitionIn"

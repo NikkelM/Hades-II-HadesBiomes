@@ -417,6 +417,12 @@ mod.SjsonFileModifications = {
 			SortMode = "Isometric",
 			OffsetY = -70.0,
 		},
+		ShadeGlow = {
+			FilePath = "null",
+			Scale = 0,
+			ScaleX = 0,
+			Material = "null"
+		},
 	},
 	["Animations\\CharacterAnim_Enemies_WretchThug"] = {
 		EnemyActivationWretchThugFade = {

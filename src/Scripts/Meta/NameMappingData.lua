@@ -89,11 +89,12 @@ mod.FxAnimationMappings = {
 	HydraTouchdownFx = "HadesHydraTouchdownFx",
 }
 mod.GUIAnimationMappings = {
-	ExitPreview = "HadesExitPreview",
+	ExitPreview = "ModsNikkelMHadesBiomes_ExitPreview",
+	StoryPreview = "ModsNikkelMHadesBiomes_StoryPreview"
 }
 mod.PortraitAnimationMappings = {
-	Portrait_Base_01 = "HadesPortrait_Base_01",
-	Portrait_Base_01_Exit = "HadesPortrait_Base_01_Exit",
+	Portrait_Base_01 = "ModsNikkelMHadesBiomes_Portrait_Base_01",
+	Portrait_Base_01_Exit = "ModsNikkelMHadesBiomes_Portrait_Base_01_Exit",
 }
 mod.CharacterAnimationsNPCsMappings = {}
 
@@ -666,8 +667,10 @@ mod.HadesCodexTextKeyRemovals = {
 }
 -- Mappings for Codex entries that exist in both games, but need to be renamed to avoid conflicts
 mod.HadesCodexTextNameMappings = {
-	CodexData_BloodlessBerserker_01 = "CodexData_BloodlessBerserker_01_Hades",
-	CodexData_Hades_01 = "CodexData_Hades_01_Hades",
+	CodexData_BloodlessBerserker_01 = "ModsNikkelMHadesBiomes_CodexData_BloodlessBerserker_01",
+	CodexData_Hades_01 = "ModsNikkelMHadesBiomes_CodexData_Hades_01",
+	CodexData_Hades_02 = "ModsNikkelMHadesBiomes_CodexData_Hades_02",
+	CodexData_Persephone_01 = "ModsNikkelMHadesBiomes_CodexData_Persephone_01",
 }
 
 -- Mappings for various game object modifications that need to be applied when the run is started/ended

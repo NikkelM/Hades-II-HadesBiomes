@@ -102,7 +102,7 @@ local addAnimations = {
 	-- #region GENERAL
 	{
 		Name = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front",
-		FilePath = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front\\ModsNikkelMHadesBiomes-RoomRewardAvailable-Front",
+		FilePath = "NikkelM-HadesBiomesFxModded\\RoomRewardAvailable-Front\\RoomRewardAvailable-Front",
 		Scale = 1.1,
 		Type = "Book",
 		AngleFromOwner = "Ignore",
