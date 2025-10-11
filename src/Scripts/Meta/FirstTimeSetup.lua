@@ -277,10 +277,19 @@ function mod.FirstTimeSetup()
 	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg", "720p Hades ")
 	copyFiles(mod.PackageFileMappings, "Content\\Win\\Packages\\720p\\", "Packages\\720p\\", ".pkg_manifest", "720p Hades ")
 
-	copyFiles(mod.BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Animation ")
-	copyFiles(mod.BikFileMappings, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas", "1080p Animation ")
-	copyFiles(mod.BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Animation ")
-	copyFiles(mod.BikFileMappings, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p Animation ")
+	copyFiles(mod.BikFileNames, "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Animation ")
+	copyFiles(mod.BikFileNames, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas", "1080p Animation ")
+	copyFiles(mod.BikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Animation ")
+	copyFiles(mod.BikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p Animation ")
+
+	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\1080p\\", "Movies\\1080p\\", ".bik", "1080p custom Animation ",
+		true)
+	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\1080p\\", "Movies\\1080p\\", ".bik_atlas",
+		"1080p custom Animation ", true)
+
+	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p custom Animation ", true)
+	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p custom Animation ",
+		true)
 
 	-- Special treatment, as some are copied from the plugins_data, and some from the Hades installation
 	mod.DebugPrint("Copying .map_text files...", 3)

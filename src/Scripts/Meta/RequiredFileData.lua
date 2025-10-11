@@ -33,7 +33,7 @@ mod.PackageFileMappings = {
 	RoomManager = "RoomManagerModsNikkelMHadesBiomes",
 }
 
-mod.BikFileMappings = {
+mod.BikFileNames = {
 	-- #region GENERAL
 	-- TODO: Renaming doesn't work, as the metadata in probably the .bik_atlas is not updated - Aunuch is working on something similar for their Furies mod, get info from them on how to do this properly
 	-- RoomTransition = "ModsNikkelMHadesBiomesRoomTransition",
@@ -343,6 +343,11 @@ mod.BikFileMappings = {
 	"CharonRadialPush_Bink",
 	"CharonGhostCharge_Bink",
 	"CharonTaunt_Bink",
+}
+
+mod.CustomBikFileNames = {
+	"DialogueBackgroundTartarus",
+	"DialogueBackgroundElysium",
 }
 
 mod.SjsonFileMappings = {

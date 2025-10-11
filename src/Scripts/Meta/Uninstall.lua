@@ -52,10 +52,15 @@ function mod.Uninstall()
 	removeFiles(mod.PackageFileMappings, "Packages\\720p\\", ".pkg")
 	removeFiles(mod.PackageFileMappings, "Packages\\720p\\", ".pkg_manifest")
 
-	removeFiles(mod.BikFileMappings, "Movies\\1080p\\", ".bik")
-	removeFiles(mod.BikFileMappings, "Movies\\1080p\\", ".bik_atlas")
-	removeFiles(mod.BikFileMappings, "Movies\\720p\\", ".bik")
-	removeFiles(mod.BikFileMappings, "Movies\\720p\\", ".bik_atlas")
+	removeFiles(mod.BikFileNames, "Movies\\1080p\\", ".bik")
+	removeFiles(mod.BikFileNames, "Movies\\1080p\\", ".bik_atlas")
+	removeFiles(mod.BikFileNames, "Movies\\720p\\", ".bik")
+	removeFiles(mod.BikFileNames, "Movies\\720p\\", ".bik_atlas")
+
+	removeFiles(mod.CustomBikFileNames, "Movies\\1080p\\", ".bik")
+	removeFiles(mod.CustomBikFileNames, "Movies\\1080p\\", ".bik_atlas")
+	removeFiles(mod.CustomBikFileNames, "Movies\\720p\\", ".bik")
+	removeFiles(mod.CustomBikFileNames, "Movies\\720p\\", ".bik_atlas")
 
 	removeFiles(mod.SjsonFileMappings, "Game\\", ".sjson")
 
