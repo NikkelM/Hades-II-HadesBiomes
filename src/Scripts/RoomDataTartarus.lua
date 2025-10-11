@@ -46,6 +46,8 @@ local roomModifications = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
 
+		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Tartarus",
+
 		Ambience = "/Leftovers/Object Ambiences/EvilLairAmbienceMatchSiteE",
 		ReverbValue = 2.0,
 		MusicActiveStems = { "Bass" },

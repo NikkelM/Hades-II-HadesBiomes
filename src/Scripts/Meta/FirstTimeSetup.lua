@@ -332,6 +332,10 @@ function mod.FirstTimeSetup()
 	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
 	copyFile(checksumsSrc, checksumsDest, true)
 
+	-- If this is a reinstall, to show the successful install screen again
+	mod.HiddenConfig.HasShownSuccessfulInstallScreen = false
+	mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+
 	config.firstTimeSetup = false
 	mod.DebugPrint("Finished mod installation and first time setup.", 3)
 end
