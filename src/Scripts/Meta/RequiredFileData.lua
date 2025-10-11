@@ -346,8 +346,8 @@ mod.BikFileNames = {
 }
 
 mod.CustomBikFileNames = {
-	"DialogueBackgroundTartarus",
-	"DialogueBackgroundElysium",
+	"HadesBiomesDiaBackTartarus",
+	"HadesBiomesDiaBackElysium",
 }
 
 mod.SjsonFileMappings = {
