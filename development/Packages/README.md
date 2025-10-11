@@ -15,7 +15,7 @@ Only use this approach for actual new packages, as the path to the textures will
 In the parent folder of the source folder, run
 
 ```
-deppth hpk -s NewPackageName_source -t NikkelM-NewPackageName
+deppth2 hpk -c BC7 -s NewPackageName_source -t NikkelM-NewPackageName
 ```
 
 This will create a new package named `NikkelM-NewPackageName.pkg` and the corresponding `NikkelM-NewPackageName.pkg_manifest`.
@@ -30,7 +30,7 @@ Create a new folder for the package (e.g. `ModsNikkelMHadesBiomesPortraits`).
 Add the `atlas.json` file to the `manifest` subfolder.
 Add the required texture `.png` files to the `textures/atlases` subfolder.
 
-Run `deppth pk -s <packageName> -t <packageName>.pkg` to create the package file.
+Run `deppth2 pk -s <packageName> -t <packageName>.pkg` to create the package file.
 
 Copy the resulting `.pkg` and `.pkg_manifest` files to the `data/Content/Packages` folder.
 
