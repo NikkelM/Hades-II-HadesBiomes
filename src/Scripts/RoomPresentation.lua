@@ -17,21 +17,21 @@ modutil.mod.Path.Wrap("StartRoomPresentation", function(base, currentRun, curren
 	base(currentRun, currentRoom)
 end)
 
--- TODO: We currently don't have the custom bink file available that is required for this to work
--- modutil.mod.Path.Wrap("FullScreenFadeInAnimation", function(base, animationName, colorGradeName)
--- 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentHubRoom == nil then
--- 		animationName = "ModsNikkelMHadesBiomesRoomTransitionOut"
--- 	end
--- 	base(animationName, colorGradeName)
--- end)
+-- Always force using the original Hades room transition animation in modded runs
+modutil.mod.Path.Wrap("FullScreenFadeInAnimation", function(base, animationName, colorGradeName)
+	if game.CurrentHubRoom == nil and game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		animationName = "ModsNikkelMHadesBiomesRoomTransitionOut"
+	end
+	base(animationName, colorGradeName)
+end)
 
 -- The animation on the run start Chaos gate is defined on a custom function
--- modutil.mod.Path.Wrap("FullScreenFadeOutAnimation", function(base, animationName, colorGradeName)
--- 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentHubRoom == nil then
--- 		animationName = "ModsNikkelMHadesBiomesRoomTransitionIn"
--- 	end
--- 	base(animationName, colorGradeName)
--- end)
+modutil.mod.Path.Wrap("FullScreenFadeOutAnimation", function(base, animationName, colorGradeName)
+	if game.CurrentHubRoom == nil and game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun  then
+		animationName = "ModsNikkelMHadesBiomesRoomTransitionIn"
+	end
+	base(animationName, colorGradeName)
+end)
 
 -- Currently disabled, as the music gets hidden too much by the Mel voicelines
 modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
