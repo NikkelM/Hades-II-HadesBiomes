@@ -150,6 +150,7 @@ function mod.BossIntroHades(eventSource, args)
 	end
 end
 
+-- TODO: Test
 function mod.ClearShadeWeapons()
 	local weaponIds = GetIdsByType({ Names = game.EnemyData.ShadeNaked.AIPickupType })
 	Destroy({ Ids = weaponIds })
@@ -196,12 +197,18 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	game.SetPlayerInvulnerable("HadesPhaseTransition")
 	-- ClearStoredAmmoHero()
 	mod.DestroyHadesFightObstacles()
+
+	-- To prevent shades from spawning ShadeNaked
+	game.MapState.BlockRespawns = true
+	game.MapState.BlockSpawns = true
 	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId }, BlockDeathWeapons = true })
 	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking" }, ExcludeNames = { "HadesCerberusAssist" } })
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 	SetAnimation({ Name = "HadesBattleKnockDown", DestinationId = boss.ObjectId })
 	SetGoalAngle({ Id = boss.ObjectId, Angle = 270 })
 	mod.ClearShadeWeapons()
+	game.MapState.BlockRespawns = false
+	game.MapState.BlockSpawns = false
 	game.thread(game.LastKillPresentation, boss)
 
 	local ammoIds = GetIdsByType({ Name = "AmmoPack" })
