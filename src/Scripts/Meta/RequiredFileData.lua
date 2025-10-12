@@ -347,7 +347,9 @@ mod.BikFileNames = {
 
 mod.CustomBikFileNames = {
 	"HadesBiomesDiaBackTartarus",
+	"HadesBiomesDiaBackAsphodel",
 	"HadesBiomesDiaBackElysium",
+	"HadesBiomesDiaBackEChamps",
 }
 
 mod.SjsonFileMappings = {
