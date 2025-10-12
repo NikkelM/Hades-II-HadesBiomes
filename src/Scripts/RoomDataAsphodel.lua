@@ -28,6 +28,8 @@ local roomModifications = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
 
+		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Asphodel",
+
 		Ambience = "/Leftovers/Object Ambiences/LavaAmbience_MatchSiteB",
 		ReverbValue = 1.0,
 		-- Always play Bass
