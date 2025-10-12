@@ -23954,9 +23954,6 @@ mod.EnemyData = {
 
 		SkipSetupSelectWeapon = true,
 
-		--InvisibilityOnHitFx = "QuickFlashRed",
-		--InvisibilityAlphaFlashOnHit = true,
-
 		-- TODO: This is for the embedded Cast damage. The multiplier doesn't exist in H2, maybe make it an effect?
 		OutgoingDamageModifiers =
 		{
@@ -23996,10 +23993,10 @@ mod.EnemyData = {
 		{
 			-- "HadesInvisibility", -- Done
 			-- "HadesBidentStrike", -- Done
-			-- "HadesBidentSpin", -- Done
+			"HadesBidentSpin", -- Done
 			-- "HadesCast" -- Done
 			-- TODO: For testing, later stage weapons below
-			"HadesBidentThrow",
+			-- "HadesBidentThrow",
 			-- "HadesBidentSpin2", -- Done
 
 		},
