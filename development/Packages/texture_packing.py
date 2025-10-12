@@ -8,8 +8,8 @@ import os
 
 # To use this script, you'll need to pip install scipy and PyTexturePacker in addition to deppth and pillow
 
-SOURCE_DIRECTORY = 'ModsNikkelMHadesBiomesGUIOriginal_source'   # The directory to recursively search for images in
-BASENAME = 'ModsNikkelMHadesBiomesGUIOriginal'           # Filenames created will start with this plus a number
+SOURCE_DIRECTORY = 'ModsNikkelMHadesBiomesFxOriginal_source'   # The directory to recursively search for images in
+BASENAME = 'ModsNikkelMHadesBiomesFxOriginal'           # Filenames created will start with this plus a number
 INCLUDE_HULLS = False                       # Change to True if you want hull points computed and added
 
 def build_atlases(source_dir, basename, include_hulls=False):
