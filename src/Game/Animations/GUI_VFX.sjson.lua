@@ -43,20 +43,19 @@ local addParentAnimations = {
 		HoldLastFrame = true,
 	},
 	-- #endregion
-	-- ModsNikkelMHadesBiomesRoomTransitionIn = {
-	-- 	Name = "ModsNikkelMHadesBiomesRoomTransitionIn",
-	-- 	FilePath = "Screens\\RoomTransition\\RoomTransition",
-	-- 	Type = "Book",
-	-- -- TODO: The RoomTransition .bik file already exists, so we need to create a new one. Right now, don't know how to correctly rename (issue is likely the .bik_atlas file)
-	-- 	VideoTexture = "ModsNikkelMHadesBiomesRoomTransition",
-	-- 	EndFrame = 20,
-	-- 	HoldLastFrame = true,
-	-- 	NumFrames = 20,
-	-- 	PlaySpeed = 30.0,
-	-- 	StartFrame = 1,
-	-- 	Material = "Unlit",
-	-- 	OnlyWhenVisible = true,
-	-- },
+	ModsNikkelMHadesBiomesRoomTransitionIn = {
+		Name = "ModsNikkelMHadesBiomesRoomTransitionIn",
+		FilePath = "Screens\\RoomTransition\\RoomTransition",
+		Type = "Book",
+		VideoTexture = "NikkelMHadesRT",
+		EndFrame = 20,
+		HoldLastFrame = true,
+		NumFrames = 20,
+		PlaySpeed = 30.0,
+		StartFrame = 1,
+		Material = "Unlit",
+		OnlyWhenVisible = true,
+	},
 }
 local addAnimations = {
 	-- #region Location intros
@@ -89,14 +88,14 @@ local addAnimations = {
 		Duration = 0.5,
 	},
 	-- #endregion
-	-- ModsNikkelMHadesBiomesRoomTransitionOut = {
-	-- 	Name = "ModsNikkelMHadesBiomesRoomTransitionOut",
-	-- 	InheritFrom = "ModsNikkelMHadesBiomesRoomTransitionIn",
-	-- 	EndFrame = 20,
-	-- 	HoldLastFrame = false,
-	-- 	PlayBackwards = true,
-	-- 	StartFrame = 1,
-	-- },
+	ModsNikkelMHadesBiomesRoomTransitionOut = {
+		Name = "ModsNikkelMHadesBiomesRoomTransitionOut",
+		InheritFrom = "ModsNikkelMHadesBiomesRoomTransitionIn",
+		EndFrame = 20,
+		HoldLastFrame = false,
+		PlayBackwards = true,
+		StartFrame = 1,
+	},
 }
 
 sjson.hook(hadesTwoGuiVfxFile, function(data)

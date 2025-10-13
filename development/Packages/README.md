@@ -12,11 +12,7 @@ If the full path to a texture file is too long, the package will not be loaded a
 
 Only use this approach for actual new packages, as the path to the textures will include the package's name, which isn't the case for original Hades packages!
 
-In the parent folder of the source folder, run
-
-```
-deppth hpk -s NewPackageName_source -t NikkelM-NewPackageName
-```
+In the parent folder of the source folder, run `deppth2 hpk -c BC7 -s NikkelM-HadesBiomesGUIModded_source -t NikkelM-HadesBiomesGUIModded`
 
 This will create a new package named `NikkelM-NewPackageName.pkg` and the corresponding `NikkelM-NewPackageName.pkg_manifest`.
 
@@ -30,7 +26,7 @@ Create a new folder for the package (e.g. `ModsNikkelMHadesBiomesPortraits`).
 Add the `atlas.json` file to the `manifest` subfolder.
 Add the required texture `.png` files to the `textures/atlases` subfolder.
 
-Run `deppth pk -s <packageName> -t <packageName>.pkg` to create the package file.
+Run `deppth2 pk -c BC7 -s ModsNikkelMHadesBiomesFxOriginal -t ModsNikkelMHadesBiomesFxOriginal.pkg` to create the package file.
 
 Copy the resulting `.pkg` and `.pkg_manifest` files to the `data/Content/Packages` folder.
 

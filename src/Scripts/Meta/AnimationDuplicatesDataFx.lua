@@ -18,6 +18,7 @@ mod.HadesFxAnimationModifications = {
 
 	-- #region ASPHODEL
 	["AsphodelRoomRewardAvailable-Back"] = {
+		FilePath = "NikkelM-HadesBiomesFxModded\\RoomRewardAvailable-Back\\RoomRewardAvailable-Back",
 		OffsetY = -407.0,
 	},
 	-- The death animation of the Gorgon heads

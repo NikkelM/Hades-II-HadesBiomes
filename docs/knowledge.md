@@ -341,7 +341,7 @@ If an enemy is binked, it might have a `Binks` property in `EnemyData.lua`.
    - The value of this property is the name of the animation to use for the `Default` property in the `StunAnimations` table.
    - Even if the enemy is a child of another enemy type, you need to add the `StunAnimations` property to the child directly, as the inheritence here does not seem to work correctly.
    - If the enemy has different animations for it's Heavy etc. variants, you can add these to the `StunAnimations` table as well - this has not been tested yet.
-2. Add the `.bik` files for the new enemy to the `BikFileMappings` table in `RequiredFileData.lua`, make sure to copy both the 1080p and 720p version.
+2. Add the `.bik` files for the new enemy to the `BikFileNames` table in `RequiredFileData.lua`, make sure to copy both the 1080p and 720p version.
 
 The following steps apply to non-binked enemies only.
 An example enemy is `HeavyRanged`.

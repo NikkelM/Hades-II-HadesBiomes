@@ -41,6 +41,8 @@ local function applyNPCGlobalModifications(base)
 		for textlineName, textline in pairs(npcData.GiftTextLineSets or {}) do
 			textline.Cost = { GiftPoints = 1, }
 			textline.OnGiftTrack = true
+			textline.UnfilledIcon = "EmptyHeartIcon"
+			textline.FilledIcon = "FilledHeartIcon"
 		end
 
 		-- Move all interaction textlines into the InteractTextLineSets, out of the RepeatableTextLineSets
@@ -80,18 +82,34 @@ local npcModifications = {
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
-			SisyphusGift08_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
-			SisyphusGift08_B = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
-			SisyphusGift09_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+			SisyphusGift07_A = {
+				RequiredAnyTextLines = mod.NilValue,
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			-- If you haven't had Ambrosia with others - would be very rare, so we just exclude it
+			SisyphusGift08_A = mod.NilValue,
+			SisyphusGift08_B = {
+				RequiredAnyTextLines = mod.NilValue,
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			SisyphusGift09_A = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
 			-- Need to rename ZagreusHome to ZagreusField voicelines
 			SisyphusGift01 = {
-				[1] = { Cue = "/VO/ZagreusField_00120", }
+				[1] = { Cue = "/VO/ZagreusField_00120", },
 			},
 			SisyphusGift05 = {
-				[2] = { Cue = "/VO/ZagreusField_00523", }
+				[2] = { Cue = "/VO/ZagreusField_00523", },
 			},
 			SisyphusGift06 = {
-				[2] = { Cue = "/VO/ZagreusField_00524", }
+				[2] = { Cue = "/VO/ZagreusField_00524", },
 			},
 		},
 	},
@@ -131,8 +149,16 @@ local npcModifications = {
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
-			EurydiceGift07 = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
-			EurydiceGift08 = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+			EurydiceGift07 = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			EurydiceGift08 = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
 		},
 	},
 	NPC_Patroclus_01 = {
@@ -159,8 +185,16 @@ local npcModifications = {
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
-			PatroclusGift07_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
-			PatroclusGift08_A = { Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue } },
+			PatroclusGift07_A = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			PatroclusGift08_A = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
 		},
 	},
 	ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01 = {

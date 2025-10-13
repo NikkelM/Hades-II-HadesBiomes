@@ -33,13 +33,7 @@ mod.PackageFileMappings = {
 	RoomManager = "RoomManagerModsNikkelMHadesBiomes",
 }
 
-mod.BikFileMappings = {
-	-- #region GENERAL
-	-- TODO: Renaming doesn't work, as the metadata in probably the .bik_atlas is not updated - Aunuch is working on something similar for their Furies mod, get info from them on how to do this properly
-	-- RoomTransition = "ModsNikkelMHadesBiomesRoomTransition",
-	-- Currently not using - enable if custom logic in DeathPresentation is used
-	-- "ZagreusDeathFullscreen",
-	-- #endregion
+mod.BikFileNames = {
 	-- #region TARTARUS
 	-- Wretch Glutton/PunchingBagUnit
 	"EnemyWretchGluttonAttack_Bink",
@@ -333,7 +327,7 @@ mod.BikFileMappings = {
 	"Cerberus_HadesAssistRun_Bink",
 	"Cerberus_HadesAssistJumpFromRun_Bink",
 	-- #endregion
-	-- Charon
+	-- #region Charon
 	"CharonIdleBattle_Bink",
 	"CharonMove_Bink",
 	"CharonMeleeFront_Bink",
@@ -343,6 +337,16 @@ mod.BikFileMappings = {
 	"CharonRadialPush_Bink",
 	"CharonGhostCharge_Bink",
 	"CharonTaunt_Bink",
+	-- #endregion
+}
+
+mod.CustomBikFileNames = {
+	"NikkelMHadesRT", -- The RoomTransition, weird name to adhere to have same character length as original file
+	"HadesBiomesDiaBackTartarus",
+	"HadesBiomesDiaBackAsphodel",
+	"HadesBiomesDiaBackElysium",
+	"HadesBiomesDiaBackEChamps",
+	"HadesBiomesDiaBackStyxBoss",
 }
 
 mod.SjsonFileMappings = {
