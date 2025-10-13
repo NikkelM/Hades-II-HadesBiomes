@@ -92,6 +92,7 @@ local roomModifications = {
 	-- BOSSES
 	Y_Boss01 = {
 		LoadModdedVoiceBanks = { "Minotaur", "Theseus", "ZagreusField" },
+		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_ElysiumChampions",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		ForcedReward = "MixerHBossDrop",
 		FirstClearRewardStore = mod.NilValue,

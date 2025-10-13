@@ -127,7 +127,7 @@ function mod.StartHadesRunSecretDoorPresentation(currentRun, secretDoor)
 
 	-- Custom wait amount
 	game.wait(0.2)
-	FadeOut({ Duration = 0.3, Color = game.Color.Black })
+	game.FullScreenFadeOutAnimation("ModsNikkelMHadesBiomesRoomTransitionIn")
 
 	game.WaitForSpeechFinished()
 

@@ -106,10 +106,15 @@ function mod.CheckRequiredFiles(failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\720p\\", ".pkg", failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\720p\\", ".pkg_manifest", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\1080p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\1080p\\", ".bik_atlas", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\720p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileMappings, "Movies\\720p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, "Movies\\1080p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, "Movies\\1080p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, "Movies\\720p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, "Movies\\720p\\", ".bik_atlas", failFast)
+
+	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, "Movies\\1080p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, "Movies\\1080p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, "Movies\\720p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, "Movies\\720p\\", ".bik_atlas", failFast)
 
 	missingFiles = missingFiles + checkFilesExist(mod.SjsonFileMappings, "Game\\", ".sjson", failFast)
 
@@ -154,7 +159,7 @@ OnAnyLoad {
 			if mod.HiddenConfig.MustShowUninstallFailureScreen then
 				mod.HiddenConfig.MustShowUninstallFailureScreen = false
 				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
-			
+
 				-- Workaround to have this show up now, but not again on the next game start
 				mod.HiddenConfig.MustShowUninstallFailureScreen = true
 				mod.OpenModInstallScreen(mod.HiddenConfig)

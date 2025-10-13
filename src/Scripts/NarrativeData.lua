@@ -18,7 +18,7 @@ local hadesNPCGiftLinePriorities = {
 		"SisyphusGift05",
 		"SisyphusGift06",
 		"SisyphusGift07_A",
-		"SisyphusGift08_A",
+		-- "SisyphusGift08_A", -- If you haven't had Ambrosia with others - would be very rare, so we just exclude it
 		"SisyphusGift08_B",
 		"SisyphusGift09_A",
 	},

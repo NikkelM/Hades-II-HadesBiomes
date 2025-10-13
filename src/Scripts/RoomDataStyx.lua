@@ -140,6 +140,7 @@ local roomModifications = {
 	-- BOSSES
 	D_Boss01 = {
 		LoadModdedVoiceBanks = { "HadesField", "ZagreusField" },
+		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_StyxBoss",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		ForcedReward = "MixerIBossDrop",
 		FirstClearRewardStore = mod.NilValue,
