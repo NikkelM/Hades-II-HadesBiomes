@@ -48,6 +48,8 @@ local hadesTwoObstacleModifications = {
 	SurfaceGravemarker04 = { Life = { DieOnCollisionRequiredVelocity = 1000.0, }, },
 	SurfaceGravemarker01a = { Life = { DieOnCollisionRequiredVelocity = 1000.0, }, },
 	SurfaceGravemarker06 = { Life = { DieOnCollisionRequiredVelocity = 1000.0, }, },
+	-- This causes occlusion when entering the boss room which is very distracting
+	SurfaceDestructiblePillarB = { Thing = { CausesOcclusion = false, }, },
 }
 
 sjson.hook(hadesTwoSurfaceObstacleFile, function(data)
