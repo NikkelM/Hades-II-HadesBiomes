@@ -24,9 +24,9 @@ function mod.ExitToHadesPresentation(currentRun, exitDoor)
 		end
 	end
 
-	OutdoorAmbientSoundId = PlaySound({ Name = "/Leftovers/Ambience/WhippingWindLoop" })
-	SetVolume({ Id = OutdoorAmbientSoundId, Value = 0.1 })
-	SetVolume({ Id = OutdoorAmbientSoundId, Value = 1.0, Duration = 8 })
+	game.AudioState.RainSoundId = PlaySound({ Name = "/Leftovers/Ambience/WhippingWindLoop" })
+	SetVolume({ Id = game.AudioState.RainSoundId, Value = 0.1 })
+	SetVolume({ Id = game.AudioState.RainSoundId, Value = 1.0, Duration = 8 })
 
 	game.LeaveRoomAudio(currentRun, exitDoor)
 
@@ -81,8 +81,9 @@ function mod.RoomEntranceHades(currentRun, currentRoom)
 	AdjustRadialBlurDistance({ Fraction = 0, Duration = 0.03, Delay = 0 })
 	AdjustFullscreenBloom({ Name = "Off", Duration = 5.0, Delay = 0.1 })
 
-	SetVolume({ Id = OutdoorAmbientSoundId, Value = 0.0, Duration = 5 })
-	OutdoorAmbientSoundId = nil
+	-- Replacing OutdoorAmbientSoundId with AudioState.RainSoundId
+	SetVolume({ Id = game.AudioState.RainSoundId, Value = 0.0, Duration = 5 })
+	game.AudioState.RainSoundId = nil
 	game.wait(0.03)
 
 	AdjustZoom({ Fraction = currentRun.CurrentRoom.IntroZoomFraction or 0.7, Duration = 0.0 })
@@ -97,7 +98,7 @@ function mod.RoomEntranceHades(currentRun, currentRoom)
 	SetUnitProperty({ DestinationId = currentRun.Hero.ObjectId, Property = "CollideWithObstacles", Value = false })
 	SetUnitProperty({ Property = "StartGraphic", Value = nil, DestinationId = currentRun.Hero.ObjectId })
 	SetUnitProperty({ Property = "MoveGraphic", Value = "MelinoeWalk", DestinationId = currentRun.Hero.ObjectId })
-	SetUnitProperty({ Property = "Speed", Value = 130, DestinationId = currentRun.Hero.ObjectId })
+	SetUnitProperty({ Property = "Speed", Value = 100, DestinationId = currentRun.Hero.ObjectId })
 
 	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
 	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
@@ -108,12 +109,12 @@ function mod.RoomEntranceHades(currentRun, currentRoom)
 		NotifyWithinDistance({
 			Id = currentRun.Hero.ObjectId,
 			DestinationId = currentRoom.HeroEndPoint,
-			Distance = 80,
+			Distance = 110,
 			Notify = notifyName
 		})
 		game.waitUntil(notifyName)
 		-- Slight extra wait to account for the withinDistance not being very precise
-		game.wait(0.3)
+		game.wait(0.7)
 	end
 	Stop({ Id = currentRun.Hero.ObjectId })
 
