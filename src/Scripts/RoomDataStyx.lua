@@ -155,7 +155,6 @@ local roomModifications = {
 			},
 		},
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceHades",
-		IntroSequenceDuration = 11.0,
 		ExitFunctionName = _PLUGIN.guid .. "." .. "CheckRunEndPresentation",
 	},
 

@@ -89,16 +89,14 @@ function mod.RoomEntranceHades(currentRun, currentRoom)
 	AdjustZoom({ Fraction = currentRun.CurrentRoom.IntroZoomFraction or 0.7, Duration = 0.0 })
 	FadeIn({ Duration = 5.5 })
 	LockCamera({ Id = hadesId, Duration = roomIntroSequenceDuration })
-	-- Makes a sound and can be seen, so not doing it, since we do the bright fade
-	-- game.FullScreenFadeInAnimation()
+
 	AdjustColorGrading({ Name = "Rain", Duration = 0 })
 	AdjustColorGrading({ Name = "Off", Duration = 4 })
 	AddInputBlock({ Name = "MoveHeroToRoomPosition" })
-	local initialSpeed = GetUnitDataValue({ Id = currentRun.Hero.ObjectId, Property = "Speed" })
+
+	game.SessionMapState.WeaponsDisabled = true
 	SetUnitProperty({ DestinationId = currentRun.Hero.ObjectId, Property = "CollideWithObstacles", Value = false })
-	SetUnitProperty({ Property = "StartGraphic", Value = nil, DestinationId = currentRun.Hero.ObjectId })
-	SetUnitProperty({ Property = "MoveGraphic", Value = "MelinoeWalk", DestinationId = currentRun.Hero.ObjectId })
-	SetUnitProperty({ Property = "Speed", Value = 100, DestinationId = currentRun.Hero.ObjectId })
+	game.SetupMelWalk()
 
 	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
 	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
@@ -113,15 +111,14 @@ function mod.RoomEntranceHades(currentRun, currentRoom)
 			Notify = notifyName
 		})
 		game.waitUntil(notifyName)
-		-- Slight extra wait to account for the withinDistance not being very precise
-		game.wait(1)
+		-- So the weapon equip animation isn't seen
+		game.wait(0.1)
+		SetUnitProperty({ Property = "Speed", Value = 50, DestinationId = currentRun.Hero.ObjectId })
+		game.wait(0.5)
 	end
 	Stop({ Id = currentRun.Hero.ObjectId })
 
-	SetUnitProperty({ Property = "StartGraphic", Value = "MelinoeStart", DestinationId = currentRun.Hero.ObjectId })
-	SetUnitProperty({ Property = "MoveGraphic", Value = "MelinoeRun", DestinationId = currentRun.Hero.ObjectId })
-	SetUnitProperty({ Property = "StopGraphic", Value = "MelinoeStop", DestinationId = currentRun.Hero.ObjectId })
-	SetUnitProperty({ Property = "Speed", Value = initialSpeed, DestinationId = currentRun.Hero.ObjectId })
+	game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = true })
 	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = currentRun.Hero.ObjectId })
 	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
 	game.wait(0.3)
@@ -145,6 +142,11 @@ function mod.BossIntroHades(eventSource, args)
 	end
 
 	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
+	-- Custom: To re-enable weapons disabled in RoomEntranceHades
+	game.SessionMapState.WeaponsDisabled = false
+	for i, rushWeaponName in pairs(game.WeaponSets.HeroRushWeapons) do
+		SetWeaponProperty({ WeaponName = rushWeaponName, DestinationId = game.CurrentRun.Hero.ObjectId, Property = "Enabled", Value = true })
+	end
 
 	if eventSource.Encounter.Name == "BossHadesPeaceful" then
 		game.CurrentRun.ActiveBiomeTimer = false
