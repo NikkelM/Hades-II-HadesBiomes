@@ -1397,6 +1397,16 @@ local weaponModifications = {
 			}
 		},
 	},
+	HadesCast = {
+		-- These are either on the projectile, or not used at all
+		StoreAmmoOnHit = mod.NilValue,
+		AmmoDropDelay = mod.NilValue,
+		StoredAmmoIcon = mod.NilValue,
+		AmmoDropFireWeapon = mod.NilValue,
+		SkipAmmoDropOnMiss = mod.NilValue,
+		StoreAmmoInLastHit = mod.NilValue,
+		FireAmmoDropWeaponOnDeflect = mod.NilValue,
+	},
 	HadesDash = {
 		AIData = {
 			PreAttackAnimation = "HadesBattleDash_Start",
@@ -1450,8 +1460,8 @@ local weaponModifications = {
 		AIData = {
 			TrackTargetDuringFire = false,
 			PostAttackStop = true,
-			-- TODO: The return point must stay within arena bounds! 
-			-- With th ecurrent setup, the dash animation removes collision for Hades so he can get out of bounds trying to get to it 
+			-- TODO: The return point must stay within arena bounds!
+			-- With th ecurrent setup, the dash animation removes collision for Hades so he can get out of bounds trying to get to it
 		},
 	},
 	-- TODO: Weapon still WIP
