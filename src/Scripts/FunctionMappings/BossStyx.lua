@@ -114,7 +114,7 @@ function mod.RoomEntranceHades(currentRun, currentRoom)
 		})
 		game.waitUntil(notifyName)
 		-- Slight extra wait to account for the withinDistance not being very precise
-		game.wait(0.7)
+		game.wait(1)
 	end
 	Stop({ Id = currentRun.Hero.ObjectId })
 
