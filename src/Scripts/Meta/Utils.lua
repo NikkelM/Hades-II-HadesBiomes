@@ -2,16 +2,16 @@
 ---@param t any The message to log.
 ---@param level number|nil The log level. 0 = Off, 1 = Errors, 2 = Warnings, 3 = Info, 4 = Debug. nil omits the level display.
 function mod.LogMessage(t, level)
-	local logLevels = { [1] = "[ERROR] ", [2] = "[WARNING] ", [3] = "[INFO] ", [4] = "[DEBUG] " }
-	local logColours = { [1] = "\27[31m", [2] = "\27[33m", [3] = "\27[32m", [4] = "\27[34m" } -- Red, Yellow, Green, Blue
-	local resetColour = "\27[0m"
-
-	local logLevelText = logLevels[level] or ""
-	local logLevelColour = logColours[level] or resetColour
-	local logColour
-	if level <= 2 then logColour = logColours[level] else logColour = resetColour end
-
-	print(string.format("%s%s%s%s%s", logLevelColour, logLevelText, logColour, tostring(t), resetColour))
+	if level == 1 then
+		-- Using rom.log.error would actually throw an error
+		print(string.format("\27[31m[ERROR] %s\27[0m", tostring(t)))
+	elseif level == 2 then
+		rom.log.warning(tostring(t))
+	elseif level == 3 then
+		rom.log.info(tostring(t))
+	elseif level == 4 then
+		rom.log.debug(tostring(t))
+	end
 end
 
 ---Prints a message to the console at the specified log level
