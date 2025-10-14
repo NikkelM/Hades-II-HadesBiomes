@@ -453,13 +453,60 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 		return
 	end
 
-	-- If the player was hit, don't spawn the ammo
-	if triggerArgs.TriggeredByTable ~= nil and triggerArgs.TriggeredByTable.ObjectId == game.CurrentRun.Hero.ObjectId then
+	-- Hit
+	local victim = triggerArgs.TriggeredByTable
+	local attacker = triggerArgs.AttackerTable
+	if victim ~= nil and victim.ObjectId == game.CurrentRun.Hero.ObjectId then
 		CreateAnimation({ Name = "BloodstoneHitFxHades", DestinationId = game.CurrentRun.Hero.ObjectId, OffsetY = -100 })
-		-- TODO: Implement store ammo
+		if victim.IsDead then
+			return
+		end
+
+		if victim.StoredAmmo == nil then
+			victim.StoredAmmo = {}
+		end
+
+		local storedAmmo = {}
+		storedAmmo.Id = _worldTime
+		storedAmmo.AttackerId = attacker.ObjectId
+		storedAmmo.LocationX = triggerArgs.LocationX
+		storedAmmo.LocationY = triggerArgs.LocationY
+		local offset = CalcOffset(math.rad(triggerArgs.Angle), projectileData.AmmoDropDistance or 50) or {}
+		storedAmmo.LocationX = storedAmmo.LocationX + offset.X
+		storedAmmo.LocationY = storedAmmo.LocationY + offset.Y
+		storedAmmo.Angle = triggerArgs.Angle
+
+		if IsEmpty(victim.StoredAmmo) then
+			game.AddIncomingDamageModifier(victim,
+				{
+					Name = "StoredAmmoVulnerability",
+					NonPlayerMultiplier = projectileData.StoredAmmoMultiplier or 2.0,
+				})
+			game.CastEmbeddedPresentationStart()
+		end
+		table.insert(victim.StoredAmmo, storedAmmo)
+
+		local offsetX = 575
+		local offsetY = -75
+		game.ScreenAnchors.StoredAmmo = game.ScreenAnchors.StoredAmmo or {}
+		offsetX = offsetX - (#game.ScreenAnchors.StoredAmmo * 22)
+		local screenId = CreateScreenObstacle({
+			Name = "BlankObstacle",
+			Group = "Combat_Menu",
+			DestinationId = game.ScreenAnchors.HealthBack,
+			X = 10 + offsetX,
+			Y = ScreenHeight - 50 + offsetY
+		})
+		SetThingProperty({ Property = "SortMode", Value = "Id", DestinationId = { Data = storedAmmo, Id = screenId } })
+
+		table.insert(game.ScreenAnchors.StoredAmmo, screenId)
+		SetAnimation({ Name = projectileData.StoredAmmoIcon or "AmmoEmbeddedInEnemyIcon", DestinationId = screenId })
+
+		thread(game.DropStoredAmmoHero, projectileData, storedAmmo.Id)
 		return
 	end
 
+	-- Miss
 	local spawnPointId = SpawnObstacle({
 		Name = "InvisibleTarget",
 		LocationX = triggerArgs.LocationX,
@@ -467,7 +514,7 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 		Group = "Scripting"
 	})
 
-	local newUnit = game.DeepCopyTable(newSpawnData)
+	local newUnit = game.DeepCopyTable(newSpawnData) or {}
 	newUnit.ObjectId = SpawnUnit({ Name = projectileData.SpawnName, DestinationId = spawnPointId, Group = "Standing" })
 
 	if projectileData.SpawnsSkipActivatePresentation then

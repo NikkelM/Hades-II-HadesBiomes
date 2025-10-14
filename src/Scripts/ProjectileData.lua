@@ -30,8 +30,11 @@ local addProjectiles = {
 	HadesCast = {
 		OnDeathFunctionName =  _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHandleHadesCastDeath",
 		SpawnName = "HadesAmmo",
-		SpawnsSkipActivatePresentation = true,
 		CarriesSpawns = true,
+		StoredAmmoVulnerabilityMultiplier = 2.0,
+		AmmoDropDelay = 6.5,
+		StoredAmmoIcon = "AmmoEmbeddedInPlayerIcon",
+		AmmoDropProjectile = "HadesAmmoDrop",
 	},
 }
 

@@ -1354,6 +1354,11 @@ local enemyModifications = {
 	HadesAmmo = {
 		AIOptions = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesAttackAndDie", },
 		AttackTimerOffsetY = -170,
+		UseActivatePresentation = false,
+		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
+		RunHistoryKilledByName = "Hades",
 	},
 	-- #endregion
 	-- #endregion
