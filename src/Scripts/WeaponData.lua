@@ -1376,11 +1376,9 @@ local weaponModifications = {
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
 		},
 	},
-	-- TODO: Only copied, not tested
-	HadesBidentSpin2 = {
+	HadesBidentSpin2Reverse = {
 		AIData = {
-			MoveWithinRange = true,
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
+			FireSelfVelocity = 2300,
 		},
 	},
 	HadesSpawns = {
