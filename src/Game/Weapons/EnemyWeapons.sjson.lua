@@ -90,8 +90,8 @@ local hadesWeaponsModifications = {
 	},
 	HadesBidentRecoveryDash = {
 		-- WeaponRange = 1400
-		SelfVelocity = 5000,
-		SelfVelocityCap = 5000,
+		SelfVelocity = 4700,
+		SelfVelocityCap = 4700,
 	},
 	-- #endregion
 }

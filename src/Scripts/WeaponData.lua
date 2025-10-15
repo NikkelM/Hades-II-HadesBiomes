@@ -1453,16 +1453,12 @@ local weaponModifications = {
 			},
 		},
 	},
-	-- TODO: Weapon still WIP
 	HadesBidentThrow = {
 		AIData = {
 			TrackTargetDuringFire = false,
 			PostAttackStop = true,
-			-- TODO: The return point must stay within arena bounds!
-			-- With th ecurrent setup, the dash animation removes collision for Hades so he can get out of bounds trying to get to it
 		},
 	},
-	-- TODO: Weapon still WIP
 	HadesBidentRecoveryDash = {
 		AIData = {
 			FireProjectileTowardTarget = true,
@@ -1471,10 +1467,6 @@ local weaponModifications = {
 			TrackTargetDuringCharge = false,
 			PreAttackStop = true,
 			ModsNikkelMHadesBiomesDestroyObstacleOnFire = "HadesBidentReturnPoint",
-			-- TargetClosestOfTypes = { "HadesBidentReturnPoint", },
-			-- Modded properties, to make sure the spear is fired from the obstacle and towards Theseus
-			-- ModsNikkelMHadesBiomesFireAtSelf = true,
-			-- ModsNikkelMHadesBiomesFireFromObstacle = "HadesBidentReturnPoint",
 			PreAttackAnimation = "HadesBattleBidentDash_Loop",
 			PostAttackAnimation = "HadesBattleDash_ReturnToIdle",
 			PreAttackDuration = 0.03,
