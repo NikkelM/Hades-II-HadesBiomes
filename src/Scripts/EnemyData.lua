@@ -162,7 +162,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 							end
 							if entry.PortraitExitAnimation then
 								if entry.PortraitExitAnimation:find("^Portrait_Zag_") then
-									entry.PortraitExitAnimation = entry.PortraitExitAnimation:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
+									entry.PortraitExitAnimation = entry.PortraitExitAnimation:gsub("^Portrait_Zag_",
+										"ModsNikkelMHadesBiomes_Portrait_Zag_")
 								end
 							end
 							if entry.PreLineThreadedFunctionName then
@@ -451,6 +452,11 @@ local enemyModifications = {
 	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
 		DefaultAIData = game.DeepCopyTable(game.EnemyData.LightRanged.DefaultAIData),
+	},
+	LightRangedSuperElite = {
+		DefaultAIData = {
+			TakeCoverDuration = 3.0,
+		},
 	},
 	BaseThief = {
 		DestroyDelay = 0.0,
@@ -775,6 +781,10 @@ local enemyModifications = {
 	},
 	RangedBurrowerElite = {
 		BlockAttributes = { "Blink", "Orbit", "Massive", },
+	},
+	-- Give it the elite weapon instead of the normal one
+	RangedBurrowerSuperElite = {
+		WeaponOptions = { "RangedBurrowerBurrow", "RangedBurrowerWeaponElite" },
 	},
 	CrusherUnit = {
 		StunAnimations = { Default = "CrusherUnitOnHit" },
@@ -1127,13 +1137,29 @@ local enemyModifications = {
 			RamEffectProperties = {
 				{
 					Property = "Speed",
-					Value = 1100,
+					Value = 1050,
 				},
 			},
 			RamEffectResetProperties = {
 				{
 					Property = "Speed",
 					Value = 400,
+				},
+			},
+		},
+	},
+	ChariotSuperElite = {
+		DefaultAIData = {
+			RamEffectProperties = {
+				{
+					Property = "Speed",
+					Value = 1050,
+				},
+			},
+			RamEffectResetProperties = {
+				{
+					Property = "Speed",
+					Value = 500,
 				},
 			},
 		},

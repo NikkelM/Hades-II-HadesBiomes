@@ -926,6 +926,26 @@ local weaponModifications = {
 			MaxPlayerDistance = 800,
 		},
 	},
+	ShadeSpearLeapSuper = {
+		AIData = {
+			DeepInheritance = true,
+			PreAttackAnimation = mod.NilValue,
+			FireAnimation = mod.NilValue,
+			LeapToTarget = true,
+			PreMoveLeap = true,
+			LeapAgainIfBlocked = true,
+			RequireLeapTargetLoS = true,
+			LeapChargeAnimation = "ShadeSpear_LeapPreAttack",
+			FireProjectileStartDelay = 0.05,
+			MoveWithinRange = false,
+			PreAttackDuration = 0.0,
+			PreFireDuration = 0.0,
+			FireDuration = 0,
+			TrackTargetDuringCharge = true,
+			StopBeforeFire = true,
+			PostAttackStop = true,
+		},
+	},
 	ShieldAlliesAoE = {
 		AIData = {
 			-- Don't remove this - doesn't work without, even though it's the same name
@@ -1384,6 +1404,8 @@ local weaponModifications = {
 	HadesSpawns = {
 		AIData = {
 			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
+			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "HadesSpawnsPresentation",
+			PreAttackDuration = 1,
 		},
 	},
 	HadesSpawns2 = {

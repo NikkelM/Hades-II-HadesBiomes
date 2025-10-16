@@ -584,3 +584,8 @@ function mod.ModsNikkelMHadesBiomesHandleAttackTimer(enemy, attackDuration)
 		game.wait(game.CalcEnemyWait(enemy, 1.0), enemy.AIThreadName)
 	end
 end
+
+function mod.HadesSpawnsPresentation(args)
+	AdjustColorGrading({ Name = "HadesSpawns", Duration = 0.5, Delay = 2.0 })
+	AdjustColorGrading({ Name = "Off", Duration = 1.5, Delay = 3 })
+end
