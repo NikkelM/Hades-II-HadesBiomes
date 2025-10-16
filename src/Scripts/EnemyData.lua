@@ -335,6 +335,13 @@ local enemyReplacements = {
 		-- SpawnerAI doesn't exist, spawn logic is in the weapon
 		AIOptions = { "AttackerAI", },
 	},
+	LightRanged = {
+		DefaultAIData = game.DeepCopyTable(game.EnemyData.LightRanged.DefaultAIData),
+	},
+	LightRangedSuperElite = {
+		-- Since we need to modify another property separately
+		DefaultAIData = game.DeepCopyTable(game.EnemyData.LightRanged.DefaultAIData),
+	},
 	-- #endregion
 	-- #region TARTARUS - Megaera
 	-- Setting this to an empty table in the enemy doesn't work, so resetting the keys that break the animations here
@@ -430,6 +437,9 @@ local enemyModifications = {
 	PunchingBagUnitElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
 	},
+	PunchingBagUnitSuperElite = {
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
+	},
 	BaseThug = {
 		LargeUnitCap = mod.NilValue,
 	},
@@ -445,13 +455,15 @@ local enemyModifications = {
 	DisembodiedHandElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
+	DisembodiedHandSuperElite = {
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
+	},
 	BaseCaster = {
 		AIAggroRange = 1250,
 		LargeUnitCap = mod.NilValue,
 	},
 	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
-		DefaultAIData = game.DeepCopyTable(game.EnemyData.LightRanged.DefaultAIData),
 	},
 	LightRangedSuperElite = {
 		DefaultAIData = {
@@ -501,6 +513,9 @@ local enemyModifications = {
 		BlockAttributes = { "Orbit", "Vacuum", "Massive", },
 	},
 	SwarmerElite = {
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
+	},
+	SwarmerSuperElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
 	LightSpawner = {
@@ -647,6 +662,10 @@ local enemyModifications = {
 		BlockAttributes = { "Blink", "Orbit", "Massive", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
+	HadesBloodlessNakedEliteSuperElite = {
+		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
+	},
 	BloodlessNakedBerserker = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		RequiredIntroEncounter = "BerserkerIntro",
@@ -748,6 +767,10 @@ local enemyModifications = {
 		BlockAttributes = { "Blink", "Orbit", "Massive", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
+	HadesBloodlessPitcherSuperElite = {
+		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
+	},
 	HadesSpreadShotUnit = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		ActivateFx = "EnemySummonRuneMedium",
@@ -782,9 +805,10 @@ local enemyModifications = {
 	RangedBurrowerElite = {
 		BlockAttributes = { "Blink", "Orbit", "Massive", },
 	},
-	-- Give it the elite weapon instead of the normal one
 	RangedBurrowerSuperElite = {
+	-- Give it the elite weapon instead of the normal one
 		WeaponOptions = { "RangedBurrowerBurrow", "RangedBurrowerWeaponElite" },
+		BlockAttributes = { "Blink", "Orbit", "Massive", },
 	},
 	CrusherUnit = {
 		StunAnimations = { Default = "CrusherUnitOnHit" },
@@ -1036,6 +1060,11 @@ local enemyModifications = {
 		DeathAnimation = "ShadeNakedDeathVFX",
 		DeathFx = "null",
 	},
+	ShadeNakedSuperElite = {
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DeathAnimation = "ShadeNakedDeathVFX",
+		DeathFx = "null",
+	},
 	ShadeSpearUnit = {
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
 		SpawnUnitOnDeath = "ShadeNaked",
@@ -1054,6 +1083,10 @@ local enemyModifications = {
 	},
 	ShadeSpearUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+		EliteAttributeOptions = game.CombineTables(
+			game.EnemySets.GenericEliteAttributes,
+			game.EnemySets.ShadeOnlyEliteAttributes
+		),
 	},
 	ShadeBowUnit = {
 		StunAnimations = { Default = "ShadeBow_OnHit" },
@@ -1070,6 +1103,11 @@ local enemyModifications = {
 	},
 	ShadeBowUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+		EliteAttributeOptions = game.CombineTables(
+			game.EnemySets.GenericEliteAttributes,
+			game.EnemySets.RangedOnlyEliteAttributes,
+			game.EnemySets.ShadeOnlyEliteAttributes
+		),
 	},
 	ShadeShieldUnit = {
 		StunAnimations = { Default = "ShadeShield_OnHit" },
@@ -1087,6 +1125,10 @@ local enemyModifications = {
 	},
 	ShadeShieldUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+		EliteAttributeOptions = game.CombineTables(
+			game.EnemySets.GenericEliteAttributes,
+			game.EnemySets.ShadeOnlyEliteAttributes
+		),
 	},
 	ShadeSwordUnit = {
 		StunAnimations = { Default = "ShadeSword_OnHit" },
@@ -1102,6 +1144,10 @@ local enemyModifications = {
 	},
 	ShadeSwordUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+		EliteAttributeOptions = game.CombineTables(
+			game.EnemySets.GenericEliteAttributes,
+			game.EnemySets.ShadeOnlyEliteAttributes
+		),
 	},
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
@@ -1198,6 +1244,11 @@ local enemyModifications = {
 	FlurrySpawner = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		DestroyDelay = mod.NilValue,
+	},
+	FlurrySpawnerSuperElite = {
+		-- For some reason EnemyPointRanged doesn't exist, and setting this to nil doesn't work
+		RequiredSpawnPoint = "EnemyPointMelee",
+		BlockAttributes = { "Rifts", "Homing", "Tracking", "Unflinching", "Frenzy" },
 	},
 	-- #endregion
 	-- #region ELYSIUM - Minibosses

@@ -120,5 +120,5 @@ end
 -- Stops new fragments from spawning after the miniboss dies
 function mod.ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath(victim, victimId, triggerArgs)
 	CancelWeaponFireRequests({ Id = victim.ObjectId })
-	ExpireProjectiles({ Names = { "SpawnSplitterFragment" } })
+	ExpireProjectiles({ Names = { "SpawnSplitterFragment", "SpawnSplitterFragmentSuperElite" } })
 end

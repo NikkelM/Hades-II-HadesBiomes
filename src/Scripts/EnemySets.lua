@@ -366,7 +366,7 @@ local additionalEnemySets = {
 		"HitAndRunUnitSuperElite",
 	},
 	EnemiesHadesEMSmall = {
-		"HeavyRangedSplitterMinibossSuperElite",
+		-- "HeavyRangedSplitterMinibossSuperElite", -- Disabled, as the laser beam jumps layers
 		"CrusherUnitSuperElite",
 		"FlurrySpawnerSuperElite",
 	},
