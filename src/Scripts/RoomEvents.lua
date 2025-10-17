@@ -5,7 +5,6 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
 
 	game.PlayVoiceLines(args.VoiceLines)
-	-- game.wait( 0.4, game.RoomThreadName )
 	local didPan = false
 
 	if args.ProcessTextLinesIds ~= nil then

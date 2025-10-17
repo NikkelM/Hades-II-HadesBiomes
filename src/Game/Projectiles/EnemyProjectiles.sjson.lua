@@ -8,10 +8,7 @@ local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Pro
 local projectilesToRemove = {
 	"1_BaseEnemyMagicProjectile",
 	"1_BaseTrapProjectile",
-	"HadesCastBeam",
-	"HadesCastBeamNoTracking",
 	"LavaPuddleLarge",
-	"BaseCollisionWeapon",
 	"LavaSplash",
 	"BloodlessMelee",
 	"BloodlessMeleeBerserker",
