@@ -66,6 +66,9 @@ local projectileModifications = {
 	HeavyRangedWeaponFork = {
 		InheritFrom = { "HeavyRangedWeapon", },
 	},
+	HadesCastBeam = {
+		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT

@@ -1533,6 +1533,22 @@ local weaponModifications = {
 			FireFunctionName = _PLUGIN.guid .. "." .. "HadesEnemyInvisibility",
 		},
 	},
+	HadesCastBeam = {
+		RapidDamageType = true,
+		AIData = {
+			ProjectileName = "HadesCastBeam",
+			ApplyEffectsOnWeaponFire = {
+				{
+					EffectName = "HadesCastBeamRotationDampener",
+					DataProperties = {
+						Duration = 3.05,
+						RotationMultiplier = 0.02,
+					},
+				}
+			},
+			ClearWeaponFireEffectsOnFireEnd = true,
+		},
+	},
 	-- TODO: Not tested
 	HadesMobilityCombo1 = {
 		AIData = {

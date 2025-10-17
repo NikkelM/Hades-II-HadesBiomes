@@ -281,6 +281,11 @@ local hadesProjectilesModifications = {
 			Graphic = "ModsNikkelMHadesBiomesBloodstoneProjectileHades",
 		},
 	},
+	HadesCastBeam = {
+		NumPenetrations = 99999,
+		DissipateGraphic = "null",
+		ImpactFx = "null",
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
