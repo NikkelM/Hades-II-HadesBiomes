@@ -93,6 +93,9 @@ local hadesWeaponsModifications = {
 		SelfVelocity = 5100,
 		SelfVelocityCap = 5100,
 	},
+	HadesBidentStrike = {
+		SelfVelocity = 2500,
+	},
 	-- #endregion
 }
 

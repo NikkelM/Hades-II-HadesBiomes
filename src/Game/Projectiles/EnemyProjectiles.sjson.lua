@@ -284,9 +284,6 @@ local hadesProjectilesModifications = {
 			Graphic = "ModsNikkelMHadesBiomesBloodstoneProjectileHades",
 		},
 	},
-	HadesAmmoWeapon = {
-		AffectsFriends = false,
-	},
 	-- #endregion
 
 	-- #region ENVIRONMENT

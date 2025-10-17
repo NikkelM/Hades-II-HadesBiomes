@@ -1377,13 +1377,40 @@ local weaponModifications = {
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
 		},
 	},
-	-- TODO: Only copied, not tested
+	HadesCast = {
+		StoreAmmoOnHit = mod.NilValue,
+		AmmoDropDelay = mod.NilValue,
+		StoredAmmoIcon = mod.NilValue,
+		AmmoDropFireWeapon = mod.NilValue,
+		SkipAmmoDropOnMiss = mod.NilValue,
+		StoreAmmoInLastHit = mod.NilValue,
+		FireAmmoDropWeaponOnDeflect = mod.NilValue,
+	},
 	HadesBidentStrikeCombo1 = {
 		AIData = {
+			ProjectileName = "HadesCast",
+			PreAttackAngleTowardTarget = true,
+			WaitForAngleTowardTarget = true,
+		},
+	},
+	HadesBidentStrikeCombo2 = {
+		AIData = {
+			ProjectileName = "HadesCast",
+			PreAttackDuration = 0.2,
+			PreAttackAngleTowardTarget = true,
+			WaitForAngleTowardTarget = true,
+		},
+	},
+	HadesBidentStrikeCombo3 = {
+		AIData = {
+			ProjectileName = "HadesBidentStrike",
 			MoveWithinRange = true,
 			PreAttackStop = true,
 			PreAttackEndStop = true,
 			PostAttackStop = true,
+			TargetPlayer = true,
+			PreAttackAngleTowardTarget = true,
+			WaitForAngleTowardTarget = true,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
 		},
 	},
@@ -1418,16 +1445,6 @@ local weaponModifications = {
 				PostInvisibilityFunction = _PLUGIN.guid .. "." .. "HadesTeleport",
 			}
 		},
-	},
-	HadesCast = {
-		-- These are either on the projectile, or not used at all
-		StoreAmmoOnHit = mod.NilValue,
-		AmmoDropDelay = mod.NilValue,
-		StoredAmmoIcon = mod.NilValue,
-		AmmoDropFireWeapon = mod.NilValue,
-		SkipAmmoDropOnMiss = mod.NilValue,
-		StoreAmmoInLastHit = mod.NilValue,
-		FireAmmoDropWeaponOnDeflect = mod.NilValue,
 	},
 	HadesDash = {
 		AIData = {

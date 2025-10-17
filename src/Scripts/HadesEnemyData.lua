@@ -23954,7 +23954,6 @@ mod.EnemyData = {
 
 		SkipSetupSelectWeapon = true,
 
-		-- TODO: This is for the embedded Cast damage. The multiplier doesn't exist in H2, maybe make it an effect?
 		OutgoingDamageModifiers =
 		{
 			HadesStoredAmmoVulnerability =
@@ -23991,14 +23990,29 @@ mod.EnemyData = {
 		-- TODO
 		WeaponOptions =
 		{
-			-- "HadesInvisibility", -- Done
-			-- "HadesBidentStrike", -- Done
+			"HadesInvisibility", -- Done
+			"HadesBidentStrike", -- Done
 			"HadesBidentSpin", -- Done
-			-- "HadesCast" -- Done
+			"HadesCast", -- Done
 			-- TODO: For testing, later stage weapons below
-			-- "HadesBidentThrow",
+			-- "HadesBidentThrow", -- Done
 			-- "HadesBidentSpin2", -- Done
-
+			-- "HadesSpawns", -- Done
+			-- "HadesSpawns2", -- Done
+			-- "HadesBidentStrikeCombo1", -- Done
+			-- "HadesCastBeam",
+			-- "HadesCastBeam2",
+			-- "HadesCastBeam360",
+			-- "HadesCastBeam2360",
+			-- "HadesWrath",
+			-- "HadesWrathPassive",
+			-- "HadesBidentArcCombo1",
+			-- "HadesBidentThrowCombo1",
+			-- "HadesMobilityCombo1",
+			-- "HadesConsumeHeal",
+			-- "HadesCerberusAssist",
+			-- "HadesBidentRangedChain",
+			-- "HadesReverseDarkness",
 		},
 		AIEndHealthThreshold = 0.66,
 		AIStages =
