@@ -110,6 +110,12 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 		if unit.SelectCustomSpawnOptions ~= nil then
 			game.CallFunctionName(unit.SelectCustomSpawnOptions, unit)
 		end
+		-- For HadesSpawns2
+		if unit.SetLastInvisibilityTimeOnSpawn then
+			unit.LastInvisibilityTime = _worldTime
+		else
+			unit.LastInvisibilityTime = 0
+		end
 	end
 
 	base(unit, currentRun, args)
