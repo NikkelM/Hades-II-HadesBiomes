@@ -290,6 +290,12 @@ local hadesProjectilesModifications = {
 	HadesTombstoneSpawn = {
 		SpawnOnDetonate = "ModsNikkelMHadesBiomesHadesTombstone"
 	},
+	HadesCerberusAssistBombard = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+		Thing = {
+			AttachedAnim = "null",
+		},
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT

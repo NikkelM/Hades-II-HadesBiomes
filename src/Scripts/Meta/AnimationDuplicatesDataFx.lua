@@ -75,6 +75,7 @@ mod.HadesFxAnimationModifications = {
 		ScaleRadius = "nil",
 	},
 	-- TODO: These two are removed for now, as the footsteps are not aligned with Hades
+	-- TODO: They aren't actually removed properly
 	["SnowFootstepL-Hades"] = {
 		FilePath = "Dev\\blank_invisible",
 		CreateAnimations = {},
@@ -82,6 +83,13 @@ mod.HadesFxAnimationModifications = {
 	["SnowFootstepR-Hades"] = {
 		FilePath = "Dev\\blank_invisible",
 		CreateAnimations = {},
+	},
+	CerberusRockFallFx = {
+		CreateAnimations = {
+			{ Name = "CerberusRockGlow" },
+			{ Name = "CerberusRockFallStreak" },
+			{ Name = "ModsNikkelMHadesBiomesBlastWarningDecal" },
+		},
 	},
 	-- #endregion
 

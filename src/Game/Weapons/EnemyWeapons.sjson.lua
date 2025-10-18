@@ -88,6 +88,12 @@ local hadesWeaponsModifications = {
 		SelfVelocityCap = 2700,
 		FireFx = "DashCrackSnowHades",
 	},
+	HadesSideDash = {
+		-- WeaponRange = 500
+		SelfVelocity = 2400,
+		SelfVelocityCap = 2400,
+		FireFx = "DashCrackSnowHades",
+	},
 	HadesBidentRecoveryDash = {
 		-- WeaponRange = 1400
 		SelfVelocity = 5100,

@@ -624,3 +624,210 @@ function mod.HadesConsumeHeal(enemy, weaponAIData, currentRun)
 		end
 	end
 end
+
+function mod.HandleHadesAssistPresentation(enemy, weaponAIData, currentRun)
+	game.thread(game.PlayVoiceLines, enemy.AssistActivatedVoiceLines)
+	mod.DoHadesAssistPresentation(weaponAIData, enemy.ObjectId)
+	game.thread(mod.DoCerberusAssistPresentation)
+	mod.DoHadesAssistPresentationPostWeapon(weaponAIData, enemy.ObjectId)
+end
+
+function mod.DoHadesAssistPresentation(assistData, enemyId)
+	local currentRun = game.CurrentRun
+	game.SetPlayerInvulnerable("Super")
+	AddInputBlock({ Name = "AssistPreSummon" })
+
+	PlaySound({ Name = assistData.ProcSound or "/Leftovers/SFX/AuraThrowLarge" })
+	PlaySound({ Name = "/SFX/Menu Sounds/PortraitEmoteSparklySFX" })
+
+	AdjustFullscreenBloom({ Name = "LastKillBloom", Duration = 0 })
+
+	local assistDimmer = SpawnObstacle({ Name = "rectangle01", DestinationId = enemyId, Group = "Combat_UI" })
+	Teleport({ Id = assistDimmer, OffsetX = game.ScreenCenterX, OffsetY = game.ScreenCenterY })
+	DrawScreenRelative({ Ids = { assistDimmer } })
+	SetScale({ Id = assistDimmer, Fraction = 10 })
+	SetColor({ Id = assistDimmer, Color = { 20, 20, 20, 255 } })
+	SetAlpha({ Id = assistDimmer, Fraction = 0.8, Duration = 0 })
+
+	game.wait(0.06)
+	ExpireProjectiles({ ExcludeNames = game.WeaponSets.ExpireProjectileExcludeProjectileNames })
+	game.AddSimSpeedChange("Assist", { Fraction = 0.005, LerpTime = 0 })
+
+	game.waitUnmodified(0.32)
+
+	game.HideCombatUI("AssistPresentationPortrait")
+
+	Rumble({ RightFraction = 0.7, Duration = 0.3 })
+	AdjustFullscreenBloom({ Name = "LightningStrike", Duration = 0 })
+	AdjustFullscreenBloom({ Name = "WrathPhase2", Duration = 0.1, Delay = 0 })
+	AdjustRadialBlurStrength({ Fraction = 1.5, Duration = 0 })
+	AdjustRadialBlurDistance({ Fraction = 0.125, Duration = 0 })
+	AdjustRadialBlurStrength({ Fraction = 0, Duration = 0.03, Delay = 0 })
+	AdjustRadialBlurDistance({ Fraction = 0, Duration = 0.03, Delay = 0 })
+
+	local wrathPresentationOffsetY = 100
+	local wrathStreak = SpawnObstacle({
+		Name = "BlankObstacle",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group = "Combat_UI"
+	})
+	Teleport({ Id = wrathStreak, OffsetX = (1920 / 2), OffsetY = 800 + wrathPresentationOffsetY })
+	DrawScreenRelative({ Ids = { wrathStreak } })
+	CreateAnimation({
+		Name = "WrathPresentationStreak",
+		DestinationId = wrathStreak,
+		Color = assistData.AssistPresentationColor or Color.Red
+	})
+
+	local portraitOffsetXBuffer = assistData.AssistPresentationPortraitOffsetX or 0
+	local portraitOffsetYBuffer = assistData.AssistPresentationPortraitOffsetY or 0
+
+	local godImage = SpawnObstacle({
+		Name = "BlankObstacle",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group = "Combat_Menu"
+	})
+	Teleport({
+		Id = godImage,
+		OffsetX = -300 + portraitOffsetXBuffer,
+		OffsetY = (1080 / 2) + 80 + wrathPresentationOffsetY + portraitOffsetYBuffer
+	})
+	DrawScreenRelative({ Ids = { godImage } })
+	CreateAnimation({ Name = assistData.AssistPresentationPortrait, DestinationId = godImage, Scale = "1.0" })
+
+	local godImage2 = SpawnObstacle({
+		Name = "BlankObstacle",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group =
+		"Combat_UI"
+	})
+	Teleport({ Id = godImage2, OffsetX = 60, OffsetY = (1080 / 2) + 80 + wrathPresentationOffsetY })
+	DrawScreenRelative({ Ids = { godImage2 } })
+	if assistData.AssistPresentationPortrait2 then
+		CreateAnimation({ Name = assistData.AssistPresentationPortrait2, DestinationId = godImage2, Scale = "1.0" })
+	end
+
+	local wrathStreakFront = SpawnObstacle({
+		Name = "BlankObstacle",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group = "Combat_Menu_Overlay"
+	})
+	Teleport({ Id = wrathStreakFront, OffsetX = 900, OffsetY = 1150 + wrathPresentationOffsetY })
+	DrawScreenRelative({ Ids = { wrathStreakFront } })
+	CreateAnimation({
+		Name = "WrathPresentationBottomDivider",
+		DestinationId = wrathStreakFront,
+		Scale = "1.25",
+		Color = assistData.AssistPresentationColor or game.Color.Red
+	})
+
+	local wrathVignette = SpawnObstacle({
+		Name = "BlankObstacle",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group = "FX_Standing_Top"
+	})
+	CreateAnimation({ Name = "WrathVignette", DestinationId = wrathVignette, Color = game.Color.Red })
+
+	-- audio
+	local dummyGodSource = {}
+
+	game.AddSimSpeedChange("Assist", { Fraction = 0.1, LerpTime = 0.06 })
+	SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 3, ValueChangeType = "Multiply", DataValue = false, DestinationNames = { "HeroTeam" } })
+
+	ScreenAnchors.FullscreenAlertFxAnchor = CreateScreenObstacle({
+		Name = "BlankObstacle",
+		Group = "Scripting",
+		X = game.ScreenCenterX,
+		Y = game.ScreenCenterY
+	})
+
+	local fullscreenAlertDisplacementFx = SpawnObstacle({
+		Name = "FullscreenAlertDisplace",
+		Group = "FX_Displacement",
+		DestinationId = game.ScreenAnchors.FullscreenAlertFxAnchor
+	})
+	DrawScreenRelative({ Id = fullscreenAlertDisplacementFx })
+
+	Move({ Id = godImage, Angle = 8, Distance = 800, Duration = 0.2, EaseIn = 0.2, EaseOut = 1, TimeModifierFraction = 0 })
+
+	Move({ Id = godImage2, Angle = 8, Distance = 800, Duration = 0.2, EaseIn = 0.2, EaseOut = 1, TimeModifierFraction = 0 })
+
+	Move({ Id = wrathStreakFront, Angle = 8, Distance = 200, Duration = 0.5, EaseIn = 0.9, EaseOut = 1, TimeModifierFraction = 0 })
+	Move({ Id = playerImage, Angle = 170, Speed = 50, TimeModifierFraction = 0 })
+
+	SetColor({ Id = wrathVignette, Color = { 0, 0, 0, 0.4 }, Duration = 0.05, TimeModifierFraction = 0 })
+
+	game.waitUnmodified(0.25)
+	PlaySound({ Name = "/SFX/Menu Sounds/PortraitEmoteSurpriseSFX" })
+
+	AdjustFullscreenBloom({ Name = "Off", Duration = 0.1, Delay = 0 })
+	Move({ Id = godImage, Angle = 8, Distance = 100, Duration = 1, EaseIn = 0.5, EaseOut = 0.5, TimeModifierFraction = 0 })
+
+	Move({ Id = godImage2, Angle = 8, Distance = 100, Duration = 1, EaseIn = 0.5, EaseOut = 0.5, TimeModifierFraction = 0 })
+
+	Move({ Id = wrathStreakFront, Angle = 8, Distance = 25, Duration = 1, EaseIn = 0.5, EaseOut = 1, TimeModifierFraction = 0 })
+
+	game.waitUnmodified(0.55)
+	AdjustZoom({ Fraction = currentRun.CurrentRoom.ZoomFraction or 0.9, LerpTime = 0.25 })
+
+	PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal3" })
+
+	RemoveInputBlock({ Name = "AssistPreSummon" })
+
+	SetAlpha({ Id = godImage, Fraction = 0, Duration = 0.12, TimeModifierFraction = 0 })
+
+	SetAlpha({ Id = godImage2, Fraction = 0, Duration = 0.12, TimeModifierFraction = 0 })
+
+	SetAlpha({ Id = wrathVignette, Fraction = 0, Duration = 0.06 })
+	SetColor({ Id = assistDimmer, Color = { 0.0, 0, 0, 0 }, Duration = 0.06 })
+	SetAlpha({ Id = fullscreenAlertDisplacementFx, Fraction = 0, Duration = 0.06 })
+
+	game.waitUnmodified(0.06)
+end
+
+function mod.DoCerberusAssistPresentation()
+	game.wait(0.3)
+	PlaySound({ Name = "/VO/CerberusBarks2" })
+	game.wait(0.4)
+	PlaySound({ Name = "/VO/CerberusBarks" })
+	game.wait(0.3)
+
+	local additionalAnimation = CreateAnimation({
+		Name = "LegendaryAspectSnow",
+		DestinationId = game.ScreenAnchors.FullscreenAlertFxAnchor
+	})
+	DrawScreenRelative({ Id = additionalAnimation })
+
+	AdjustFullscreenBloom({ Name = "CerberusSummon", Duration = 0.2 })
+
+	ShakeScreen({ Speed = 900, Distance = 15, Duration = 4, FalloffSpeed = 1400 })
+	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, LeftFraction = 0.3, Duration = 4.0 }, })
+	PlaySound({ Name = "/SFX/Enemy Sounds/Hades/CerberusSummonCanned" })
+
+	AdjustRadialBlurDistance({ Fraction = 2.0, Duration = 0.3 })
+	AdjustRadialBlurStrength({ Fraction = 1.0, Duration = 0.3 })
+	game.wait(5.0)
+
+	AdjustFullscreenBloom({ Name = "Off", Duration = 0.4 })
+	AdjustRadialBlurDistance({ Fraction = 0, Duration = 0.4 })
+	AdjustRadialBlurStrength({ Fraction = 0, Duration = 0.4 })
+
+	AdjustFullscreenBloom({ Name = "Off", Duration = 0.8 })
+end
+
+function mod.DoHadesAssistPresentationPostWeapon(assistData, enemyId)
+	game.AddSimSpeedChange("Assist", { Fraction = 0.3, LerpTime = 0.3 })
+	SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 1.0, ValueChangeType = "Absolute", DataValue = false, DestinationNames = { "HeroTeam" } })
+	game.waitUnmodified(assistData.AssistPostWeaponSlowDuration or 0)
+	SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 1.0, ValueChangeType = "Absolute", DataValue = false, DestinationNames = { "HeroTeam" } })
+	game.RemoveSimSpeedChange("Assist", { LerpTime = 0.3 })
+	-- TODO: Is undefined global, should probably be third argument
+	game.thread(game.CleanUpShoutPresentation, fullscreenAlertDisplacementFx)
+	game.ShowCombatUI("AssistPresentationPortrait")
+	game.thread(mod.RevulnerablePlayerAfterShout)
+end
+
+function mod.RevulnerablePlayerAfterShout()
+	game.waitUnmodified(0.4)
+	game.SetPlayerVulnerable("Super")
+end

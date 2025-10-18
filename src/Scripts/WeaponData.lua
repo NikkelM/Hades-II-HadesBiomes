@@ -1471,6 +1471,7 @@ local weaponModifications = {
 	},
 	HadesSideDash = {
 		AIData = {
+			DeepInheritance = true,
 			PreAttackAnimation = "HadesBattleDash_Start",
 			PostAttackAnimation = "HadesBattleDash_ReturnToIdle",
 			PreAttackDuration = 0.03,
@@ -1536,47 +1537,43 @@ local weaponModifications = {
 	HadesCastBeam = {
 		RapidDamageType = true,
 		AIData = {
-			ApplyEffectsOnWeaponFire = {
-				{
-					EffectName = "HadesCastBeamRotationDampener",
-					DataProperties = {
-						Duration = 3.05,
-						RotationMultiplier = 0.02,
-					},
-				}
-			},
-			ClearWeaponFireEffectsOnFireEnd = true,
+			FireRotationDampening = 0.02,
 		},
 	},
 	HadesCastBeam360 = {
 		RapidDamageType = true,
 		AIData = {
-			ApplyEffectsOnWeaponFire = {
-				{
-					EffectName = "HadesCastBeamRotationDampener",
-					DataProperties = {
-						Duration = 3.05,
-						RotationMultiplier = 0.015,
-					},
-				}
-			},
-			ClearWeaponFireEffectsOnFireEnd = true,
+			FireRotationDampening = 0.015,
+		},
+	},
+	HadesMobilityCombo1 = {
+		AIData = {
+			PostAttackDuration = 0.03,
+			ChainedWeapon = "HadesMobilityCombo3",
+		},
+	},
+	HadesMobilityCombo2 = {
+		AIData = {
+			PreAttackDuration = 0.03,
+			PostAttackDuration = 0.03,
+		},
+	},
+	HadesMobilityCombo3 = {
+		AIData = {
+			PreAttackDuration = 0.03,
+			PostAttackDuration = 0.03,
 		},
 	},
 	HadesConsumeHeal = {
 		AIData = {
 			RequireExistingIdsOfType = "ModsNikkelMHadesBiomesHadesTombstone",
-			PreAttackFunctionName =  _PLUGIN.guid .. "." .. "HadesConsumeHeal",
-		},
-	},
-	-- TODO: Not tested
-	HadesMobilityCombo1 = {
-		AIData = {
-			MoveWithinRange = true,
+			PreAttackFunctionName = _PLUGIN.guid .. "." .. "HadesConsumeHeal",
 		},
 	},
 	HadesCerberusAssist = {
 		AIData = {
+			PreAttackFunctionName = _PLUGIN.guid .. "." .. "HandleHadesAssistPresentation",
+			AssistPresentationPortrait = "ModsNikkelMHadesBiomes_Portrait_Cerberus",
 			PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
 		},
 	},
