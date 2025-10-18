@@ -227,6 +227,11 @@ local function on_ready()
 		import "Scripts/HadesRoomDataStyx.lua"
 		import "Scripts/RoomDataStyx.lua"
 
+		-- Porting over voiceline definitions
+		-- Needs to be done before they are used in HadesWeaponData
+		import "Scripts/HadesAudioData.lua"
+		import "Scripts/AudioData.lua"
+
 		-- Loads Weapon data
 		import "Scripts/HadesWeaponData.lua"
 		import "Scripts/WeaponData.lua"
@@ -262,8 +267,6 @@ local function on_ready()
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes
-		import "Scripts/HadesAudioData.lua"
-		import "Scripts/AudioData.lua"
 		import "Scripts/AudioLogic.lua"
 		import "Scripts/BiomeMapPresentation.lua"
 		import "Scripts/CodexData.lua"
