@@ -245,6 +245,8 @@ end
 mod.EnemyData.BaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
 -- Modified BaseVulnerableEnemy just for Hades bosses, which need some modifications
 mod.EnemyData.HadesBossBaseVulnerableEnemy = game.DeepCopyTable(game.EnemyData.BaseVulnerableEnemy)
+-- Re-implementing this as the name is reused but allegiance flipped between the games
+mod.EnemyData.ModsNikkelMHadesBiomesHadesTombstone = game.DeepCopyTable(game.EnemyData.HadesTombstone)
 
 -- Remove data from Hades that we don't want to use (e.g. enemies in Asphodel that are already implemented in Hades II)
 for _, name in ipairs(mod.EnemyNameRemovals) do
@@ -420,6 +422,17 @@ local enemyReplacements = {
 	},
 	Hades = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+	},
+	ModsNikkelMHadesBiomesHadesTombstone = {
+		InheritFrom = { "BaseTrap" },
+		ActivateAnimation = "ModsNikkelMHadesBiomesHadesTombstoneSpawn",
+		ActivateFx = "nil",
+		ActivateFx2 = "nil",
+		ActivateFxPreSpawn = "nil",
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOnDeathFireProjectile",
+		OnDeathFunctionArgs = {
+			ProjectileName = "HadesGraspingHands",
+		},
 	},
 	-- #endregion
 }
@@ -806,7 +819,7 @@ local enemyModifications = {
 		BlockAttributes = { "Blink", "Orbit", "Massive", },
 	},
 	RangedBurrowerSuperElite = {
-	-- Give it the elite weapon instead of the normal one
+		-- Give it the elite weapon instead of the normal one
 		WeaponOptions = { "RangedBurrowerBurrow", "RangedBurrowerWeaponElite" },
 		BlockAttributes = { "Blink", "Orbit", "Massive", },
 	},

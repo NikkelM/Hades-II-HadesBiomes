@@ -287,6 +287,9 @@ local hadesProjectilesModifications = {
 		ImpactFx = "null",
 		DeathFx = "HadesLaserEnd",
 	},
+	HadesTombstoneSpawn = {
+		SpawnOnDetonate = "ModsNikkelMHadesBiomesHadesTombstone"
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT

@@ -69,6 +69,10 @@ mod.EnemyWeaponMappings = {
 }
 
 mod.EnemyAnimationMappings = {
+	HadesStunTotemStatic = "ModsNikkelMHadesBiomesHadesStunTotemStatic",
+	HadesTombstoneSpawn = "ModsNikkelMHadesBiomesHadesTombstoneSpawn",
+	HadesStunTotemFlame = "ModsNikkelMHadesBiomesHadesStunTotemFlame",
+	HadesStunTotemFlameSpawn = "ModsNikkelMHadesBiomesHadesStunTotemFlameSpawn",
 	SpikeTrapIdle = "HadesSpikeTrapIdle",
 	SpikeTrapPressed = "HadesSpikeTrapPressed",
 	SpikeTrapPreFire = "HadesSpikeTrapPreFire",

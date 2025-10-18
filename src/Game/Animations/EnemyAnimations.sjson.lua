@@ -21,11 +21,7 @@ local animationsToRemove = {
 	"TrapFissureDisabled",
 	"WallSegmentIdle",
 	"WallSegmentNarrow01Idle",
-	"HadesTombstoneSpawn",
 	"HadesTombstoneExplode",
-	"HadesStunTotemFlame",
-	"HadesStunTotemFlameSpawn",
-	"HadesStunTotemStatic",
 	"BreakableAsphodelIdle",
 	"BreakableDeathAnim",
 	"BreakableDeathA",
@@ -43,6 +39,10 @@ local animationsToRemove = {
 	"BreakableIdle3",
 	"AsphodelSkullDeathFx",
 	-- Would be a duplicate, but is renamed
+	-- "HadesStunTotemStatic",
+	-- "HadesTombstoneSpawn",
+	-- "HadesStunTotemFlame",
+	-- "HadesStunTotemFlameSpawn",
 	-- "SpikeTrapIdle",
 	-- "SpikeTrapPressed",
 	-- "SpikeTrapPreFire",
@@ -64,12 +64,40 @@ local hadesEnemyAnimationsModifications = {
 		SortMode = "Isometric",
 	},
 	-- #endregion
+	-- #region STYX
+	ModsNikkelMHadesBiomesHadesTombstoneSpawn = {
+		ChainTo = "ModsNikkelMHadesBiomesHadesStunTotemStatic",
+		Scale = 1.4,
+		Sound = "/SFX/Enemy Sounds/Zombie/ZombieEmerge",
+		OriginX = 70.5,
+		OriginY = 191,
+	},
+	ModsNikkelMHadesBiomesHadesStunTotemStatic = {
+		FilePath = "Fx\\HadesStunTotemStatic\\Surface_Gravemarker_01Active",
+		Scale = 0.35,
+		OriginX = 212.5,
+		OriginY = 650,
+	},
+	ModsNikkelMHadesBiomesHadesStunTotemFlame = {
+		OffsetY = -150,
+	},
+	ModsNikkelMHadesBiomesHadesStunTotemFlameSpawn = {
+		OffsetY = -150,
+	},
+	HadesStunTotemSpawnDecal = {
+		OffsetZ = 85,
+		OffsetX = -2,
+	},
+	-- #endregion
 }
 
 -- Rename duplicate animation names using mod.EnemyAnimationMappings
 mod.RenameSjsonEntries(hadesEnemyAnimationsTable.Animations, mod.EnemyAnimationMappings, "Name", "EnemyAnimations.sjson")
 for oldName, newName in pairs(mod.EnemyAnimationMappings) do
 	mod.UpdateField(hadesEnemyAnimationsTable.Animations, oldName, newName, { "InheritFrom" }, "EnemyAnimations.sjson")
+	mod.UpdateField(hadesEnemyAnimationsTable.Animations, oldName, newName, { "ChainTo" }, "EnemyAnimations.sjson")
+	mod.UpdateField(hadesEnemyAnimationsTable.Animations, oldName, newName, { "ChildAnimation" }, "EnemyAnimations.sjson")
+	mod.UpdateField(hadesEnemyAnimationsTable.Animations, oldName, newName, { "CreateAnimation" }, "EnemyAnimations.sjson")
 end
 
 mod.ApplyNestedSjsonModifications(hadesEnemyAnimationsTable.Animations, hadesEnemyAnimationsModifications)

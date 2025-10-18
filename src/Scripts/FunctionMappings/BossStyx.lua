@@ -167,7 +167,8 @@ end
 
 function mod.DestroyHadesFightObstacles()
 	for k, enemy in pairs(game.ActiveEnemies) do
-		if enemy.Name == "HadesAmmo" or enemy.Name == "HadesTombstone" then
+		if enemy.Name == "HadesAmmo" or enemy.Name == "HadesTombstone" or enemy.Name == "ModsNikkelMHadesBiomesHadesTombstone" then
+			enemy.OnDeathFunctionName = nil
 			SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = enemy.ObjectId })
 			game.thread(game.Kill, enemy)
 		end
@@ -588,4 +589,38 @@ end
 function mod.HadesSpawnsPresentation(args)
 	AdjustColorGrading({ Name = "HadesSpawns", Duration = 0.5, Delay = 2.0 })
 	AdjustColorGrading({ Name = "Off", Duration = 1.5, Delay = 3 })
+end
+
+function mod.HadesConsumeHeal(enemy, weaponAIData, currentRun)
+	local urnsConsumed = 0
+	while urnsConsumed < weaponAIData.MaxConsumptions and not IsInvulnerable({ Id = enemy.ObjectId }) do
+		local urnId = game.GetRandomValue(GetIdsByType({ Name = "ModsNikkelMHadesBiomesHadesTombstone" }))
+		if urnId == nil or urnId == 0 then
+			break
+		end
+		if weaponAIData.ConsumeFx ~= nil then
+			CreateAnimation({ DestinationId = urnId, Name = weaponAIData.ConsumeFx })
+		end
+		for i = 1, weaponAIData.HealTicksPerConsume do
+			game.wait(game.CalcEnemyWait(enemy, weaponAIData.HealTickInterval), enemy.AIThreadName)
+			if game.ActiveEnemies[urnId] ~= nil and not IsInvulnerable({ Id = enemy.ObjectId }) then
+				game.Heal(enemy, { HealAmount = weaponAIData.HealPerTick, triggeredById = enemy.ObjectId })
+				game.thread(game.UpdateHealthBar, enemy, { Force = true })
+			else
+				StopAnimation({ DestinationId = urnId, Name = weaponAIData.ConsumeFx })
+				break
+			end
+		end
+		game.ActiveEnemies[urnId].OnDeathFunctionName = nil
+		SetUnitProperty({ DestinationId = urnId, Property = "OnDeathWeapon", Value = "null" })
+		StopAnimation({ DestinationId = urnId, Name = weaponAIData.ConsumeFx })
+		Destroy({ Id = urnId })
+		urnsConsumed = urnsConsumed + 1
+		game.wait(game.CalcEnemyWait(enemy, weaponAIData.NextUrnWait), enemy.AIThreadName)
+	end
+	if weaponAIData.StopAnimationsOnEnd then
+		for k, animationName in pairs(weaponAIData.StopAnimationsOnEnd) do
+			StopAnimation({ DestinationId = enemy.ObjectId, Name = animationName })
+		end
+	end
 end

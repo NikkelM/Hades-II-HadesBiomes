@@ -1548,6 +1548,27 @@ local weaponModifications = {
 			ClearWeaponFireEffectsOnFireEnd = true,
 		},
 	},
+	HadesCastBeam360 = {
+		RapidDamageType = true,
+		AIData = {
+			ApplyEffectsOnWeaponFire = {
+				{
+					EffectName = "HadesCastBeamRotationDampener",
+					DataProperties = {
+						Duration = 3.05,
+						RotationMultiplier = 0.015,
+					},
+				}
+			},
+			ClearWeaponFireEffectsOnFireEnd = true,
+		},
+	},
+	HadesConsumeHeal = {
+		AIData = {
+			RequireExistingIdsOfType = "ModsNikkelMHadesBiomesHadesTombstone",
+			PreAttackFunctionName =  _PLUGIN.guid .. "." .. "HadesConsumeHeal",
+		},
+	},
 	-- TODO: Not tested
 	HadesMobilityCombo1 = {
 		AIData = {
@@ -1684,4 +1705,3 @@ local SjsonToAIDataPropertyMappings = {
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponReplacements,
 	weaponKeyReplacements, SjsonToAIDataPropertyMappings)
-mod.PrintTable(game.WeaponData.HadesCastBeam)
