@@ -1536,7 +1536,6 @@ local weaponModifications = {
 	HadesCastBeam = {
 		RapidDamageType = true,
 		AIData = {
-			ProjectileName = "HadesCastBeam",
 			ApplyEffectsOnWeaponFire = {
 				{
 					EffectName = "HadesCastBeamRotationDampener",
@@ -1685,3 +1684,4 @@ local SjsonToAIDataPropertyMappings = {
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponReplacements,
 	weaponKeyReplacements, SjsonToAIDataPropertyMappings)
+mod.PrintTable(game.WeaponData.HadesCastBeam)

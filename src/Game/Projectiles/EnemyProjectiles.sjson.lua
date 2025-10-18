@@ -285,6 +285,7 @@ local hadesProjectilesModifications = {
 		NumPenetrations = 99999,
 		DissipateGraphic = "null",
 		ImpactFx = "null",
+		DeathFx = "HadesLaserEnd",
 	},
 	-- #endregion
 
