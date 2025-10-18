@@ -23920,6 +23920,7 @@ mod.EnemyData = {
 		AISetupDelay = 6.0,
 		MaxHealth = 17000,
 		Phases = 2,
+		-- TODO: Check
 		Phase2VFX = "HadesFlameAura",
 
 		Portrait = "Portrait_Hades_HelmCape_01",
@@ -23972,7 +23973,6 @@ mod.EnemyData = {
 			PostTeleportWaitDurationMax = 2.0,
 			PostInvisibilityFunction = "HadesTeleport",
 
-			-- TODO: ErisDash as comparison in Hades II
 			DashWeapon = "HadesDash",
 			PreAttackDash = "HadesSideDash",
 			DashIfOverDistance = 500,
@@ -23987,32 +23987,9 @@ mod.EnemyData = {
 		OnDeathFunctionName = "HadesKillPresentation",
 		OnDeathFunctionArgs = { Message = "HadesDefeatedMessage", StartPanTime = 1.5, MessageLayer = "ScreenOverlay", MessageDelay = 1.5, MessageDuration = 3.5, AddInterBiomeTimerBlock = true },
 
-		-- TODO
 		WeaponOptions =
 		{
-			"HadesInvisibility", -- Done
-			"HadesBidentStrike", -- Done
-			"HadesBidentSpin", -- Done
-			"HadesCast", -- Done
-			-- TODO: For testing, later stage weapons below
-			-- "HadesBidentThrow", -- Done
-			-- "HadesBidentSpin2", -- Done
-			-- "HadesSpawns", -- Done
-			-- "HadesSpawns2", -- Done
-			-- "HadesBidentStrikeCombo1", -- Done
-			-- "HadesCastBeam",
-			-- "HadesCastBeam2",
-			-- "HadesCastBeam360",
-			-- "HadesCastBeam2360",
-			-- "HadesWrath",
-			-- "HadesWrathPassive",
-			-- "HadesBidentArcCombo1",
-			-- "HadesBidentThrowCombo1",
-			-- "HadesMobilityCombo1",
-			-- "HadesConsumeHeal",
-			-- "HadesCerberusAssist",
-			-- "HadesBidentRangedChain",
-			-- "HadesReverseDarkness",
+			"HadesInvisibility", "HadesBidentStrike", "HadesBidentSpin", "HadesCast",
 		},
 		AIEndHealthThreshold = 0.66,
 		AIStages =
