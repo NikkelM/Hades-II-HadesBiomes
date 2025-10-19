@@ -1570,7 +1570,6 @@ local weaponModifications = {
 			PreAttackFunctionName = _PLUGIN.guid .. "." .. "HadesConsumeHeal",
 		},
 	},
-	-- TODO: Proper dark vignette missing?
 	HadesCerberusAssist = {
 		AIData = {
 			PreAttackFunctionName = _PLUGIN.guid .. "." .. "HandleHadesAssistPresentation",

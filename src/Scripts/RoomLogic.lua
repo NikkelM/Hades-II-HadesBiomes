@@ -112,7 +112,7 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 		end
 		-- For HadesSpawns2
 		if unit.SetLastInvisibilityTimeOnSpawn then
-			unit.LastInvisibilityTime = _worldTime
+			unit.LastInvisibilityTime = game._worldTime
 		else
 			unit.LastInvisibilityTime = 0
 		end

@@ -105,7 +105,7 @@ function mod.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimI
 	end
 	-- Suppress the damage presentation on the player (blood splatter etc.)
 	-- The weapon must define RapidDamageType = true for this to work
-	triggerArgs.SourceWeapon = triggerArgs.SourceProjectile
+	triggerArgs.SourceWeapon = triggerArgs.SourceProjectile or "HeavyRangedWeapon"
 end
 
 function mod.ModsNikkelMHadesBiomesHeavyRangedSplitterFragmentOnWeaponHit(victim, victimId, triggerArgs)

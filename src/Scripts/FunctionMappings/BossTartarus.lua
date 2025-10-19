@@ -268,14 +268,6 @@ function mod.HarpyKillPresentation(unit, args)
 			AnimationOutName = "LocationTextBGVictoryOut",
 			FontScale = 0.85,
 			TextOffsetY = 0,
-
-			-- SubtitleFont = args.SubtitleFont or "SpectralSCMedium",
-			-- SubtitleOffsetY = args.SubtitleOffsetY or 10,
-			-- SubtitleDelay = args.SubtitleDelay or 3.0,
-
-			-- SubTextColor = args.SubTextColor or game.Color.NarratorVoice,
-			-- SubtitleText = args.SubtitleText or game.GetRandomValue(args.SubtitleTextOptions),
-			-- SubtitleTextRevealSound = "/Leftovers/World Sounds/MapZoomInTight",
 		})
 
 	if deathPanSettings.BatsAfterDeath then
@@ -334,7 +326,6 @@ function mod.HarpyKillPresentation(unit, args)
 
 	game.wait(0.9)
 
-	-- SetAnimation({ DestinationId = killerId, Name = "MelinoeIdle" })
 	RemoveInputBlock({ Name = "HarpyKillPresentation" })
 	RemoveTimerBlock(game.CurrentRun, "HarpyKillPresentation")
 	SetConfigOption({ Name = "UseOcclusion", Value = true })

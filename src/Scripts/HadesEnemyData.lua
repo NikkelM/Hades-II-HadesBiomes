@@ -23920,7 +23920,6 @@ mod.EnemyData = {
 		AISetupDelay = 6.0,
 		MaxHealth = 17000,
 		Phases = 2,
-		-- TODO: Check
 		Phase2VFX = "HadesFlameAura",
 
 		Portrait = "Portrait_Hades_HelmCape_01",
