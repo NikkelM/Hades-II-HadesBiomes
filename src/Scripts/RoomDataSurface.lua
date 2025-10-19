@@ -18,33 +18,28 @@ local roomModifications = {
 
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerSurfaceIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerSurfaceOut",
+
+		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceSurface",
+		BlockCombat = true,
+		BlockRunProgressUI = true,
 	},
 
 	-- OPENING ROOMS
 	E_Intro = {
-		-- TODO: Is this needed?
 		InheritFrom = { "BaseSurface", "BiomeStartRoom", },
 		Starting = true,
-		-- TODO: Move into BaseSurface?
-		BlockRunProgressUI = true,
-		-- EntranceFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesDelayedRoomEntranceStandard",
+		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceE_Intro",
+
 		StartUnthreadedEvents = {
-			{ FunctionName = "EndBiomeRecords", },
-			{ FunctionName = "EndAllBiomeStates" },
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "RoomStartAlphaChanges" },
 		},
-		-- EntranceDirection = "LeftRight",
-		-- StrictLeftRight = true,
-		ThreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerSurfaceIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerSurfaceOut" }, },
+		DistanceTriggers = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "SunriseOverlook", },
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "SunriseOverlookBackToRoom", },
 		},
 	},
 	E_Story01 = {
-		-- TODO: Move into BaseSurface?
-		BlockRunProgressUI = true,
-		-- EntranceFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesDelayedRoomEntranceStandard",
-		-- EntranceDirection = "LeftRight",
-		-- StrictLeftRight = true,
 	},
 }
 
-mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Styx, roomModifications, roomReplacements, "Surface")
+mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Surface, roomModifications, roomReplacements, "Surface")

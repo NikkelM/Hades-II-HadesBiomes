@@ -7,7 +7,6 @@ mod.RoomData.Surface = mod.RoomData.Surface or {
 
 		-- TODO
 		FadeOutAnimation = "RoomTransitionInBlack",
-		-- TODO
 		EntranceFunctionName = "RoomEntranceSurface",
 		LocationText = "Location_Surface",
 		LocationTextShort = "Location_Surface",
@@ -55,7 +54,6 @@ mod.RoomData.Surface = mod.RoomData.Surface or {
 
 	E_Intro = {
 		InheritFrom = { "BaseSurface" },
-		-- TODO
 		EntranceFunctionName = "RoomEntranceE_Intro",
 		IntroZoomFraction = 0.78,
 		ZoomFraction = 0.78,
@@ -294,7 +292,6 @@ mod.RoomData.Surface = mod.RoomData.Surface or {
 
 	E_Story01 = {
 		InheritFrom = { "BaseSurface" },
-		-- TODO
 		LegalEncounters = { "Story_Persephone_01" },
 
 		IntroZoomFraction = 0.9,

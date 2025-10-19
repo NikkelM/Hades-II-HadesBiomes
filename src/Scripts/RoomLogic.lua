@@ -18,11 +18,13 @@ end)
 modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	base(currentRoom)
 
+	-- TODO: Challenge, Charon and Return? What Roomsets are they?
 	local moddedRoomSets = {
 		["Tartarus"] = true,
 		["Asphodel"] = true,
 		["Elysium"] = true,
 		["Styx"] = true,
+		["Surface"] = true,
 	}
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and moddedRoomSets[currentRoom.RoomSetName] then

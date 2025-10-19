@@ -219,6 +219,7 @@ local function on_ready()
 		import "Scripts/EncounterDataAsphodel.lua"
 		import "Scripts/EncounterDataElysium.lua"
 		import "Scripts/EncounterDataStyx.lua"
+		import "Scripts/EncounterDataSurface.lua"
 
 		-- Loads Room data
 		import "Scripts/RoomSets.lua"
