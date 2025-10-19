@@ -332,7 +332,7 @@ mod.BikFileNames = {
 	"Cerberus_HadesAssistRun_Bink",
 	"Cerberus_HadesAssistJumpFromRun_Bink",
 	-- #endregion
-	-- #region Charon
+	-- #region CHARON
 	"CharonIdleBattle_Bink",
 	"CharonMove_Bink",
 	"CharonMeleeFront_Bink",
@@ -342,6 +342,22 @@ mod.BikFileNames = {
 	"CharonRadialPush_Bink",
 	"CharonGhostCharge_Bink",
 	"CharonTaunt_Bink",
+	-- #endregion
+	-- #region PERSEPHONE
+	"NPC_PersephoneEndingBoatIdleFidget1_Bink",
+	"NPC_PersephoneEndingBoatIdleLoop_Bink",
+	"NPC_PersephoneGardenDismiss_Bink",
+	"NPC_PersephoneGardenGreeting_Bink",
+	"NPC_PersephoneGardenIdleHip_Bink",
+	"NPC_PersephoneGardenVulnerable_Bink",
+	"NPC_PersephoneGardenWalk_Bink",
+	"NPC_PersephoneGardenWalkStop_Bink",
+	"NPC_PersephoneUnderworldDismiss_Bink",
+	"NPC_PersephoneUnderworldGreeting_Bink",
+	"NPC_PersephoneUnderworldIdle_Bink",
+	"NPC_PersephoneUnderworldVulnerable_Bink",
+	"NPC_PersephoneUnderworldWalk_Bink",
+	"NPC_PersephoneUnderworldWalkStop_Bink",
 	-- #endregion
 }
 
