@@ -897,6 +897,8 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 	screen.ComponentData.VictoryBackground.Animation = "ModsNikkelMHadesBiomes_VictoryScreenIllustration_Elysium"
 	screen.ComponentData.TitleText = screen.ComponentData.UnderworldTitleText
 	screen.ComponentData.RunClearMessageText = screen.ComponentData.UnderworldRunClearMessageText
+	-- Custom colour change due to the different background image
+	screen.ComponentData.RunClearMessageText.TextArgs.Color = { 245, 255, 225, 255 }
 
 	screen.ComponentData.UnderworldTitleText = nil
 	screen.ComponentData.UnderworldRunClearMessageText = nil
