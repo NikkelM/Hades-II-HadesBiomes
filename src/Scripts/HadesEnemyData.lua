@@ -23989,7 +23989,7 @@ mod.EnemyData = {
 
 		WeaponOptions =
 		{
-			"HadesInvisibility", "HadesBidentStrike", "HadesBidentSpin", "HadesCast",
+			"HadesInvisibility", "HadesBidentStrike", "HadesBidentSpin", "HadesCast"
 		},
 		AIEndHealthThreshold = 0.66,
 		AIStages =

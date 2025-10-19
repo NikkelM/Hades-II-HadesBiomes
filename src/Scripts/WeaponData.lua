@@ -404,7 +404,7 @@ local weaponModifications = {
 	HeavyRangedSplitterFragment = {
 		AIData = {
 			DeepInheritance = true,
-			TargetClosestOfTypes = { "HeavyRangedSplitterMiniboss" },
+			TargetClosestOfTypes = { "HeavyRangedSplitterMiniboss", "HeavyRangedSplitterMinibossSuperElite" },
 			TargetClosest = mod.NilValue,
 			TargetFriends = mod.NilValue,
 			ExpireProjectilesOnHitStun = true,
@@ -1570,6 +1570,7 @@ local weaponModifications = {
 			PreAttackFunctionName = _PLUGIN.guid .. "." .. "HadesConsumeHeal",
 		},
 	},
+	-- TODO: Proper dark vignette missing?
 	HadesCerberusAssist = {
 		AIData = {
 			PreAttackFunctionName = _PLUGIN.guid .. "." .. "HandleHadesAssistPresentation",

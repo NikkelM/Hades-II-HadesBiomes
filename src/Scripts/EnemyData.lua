@@ -592,6 +592,15 @@ local enemyModifications = {
 		RunHistoryKilledByName = "HeavyRangedSplitterMiniboss",
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 	},
+	HeavyRangedSplitterFragmentSuperElite = {
+		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
+		UseActivatePresentation = false,
+		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
+		RunHistoryKilledByName = "HeavyRangedSplitterMinibossSuperElite",
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+	},
 	WretchAssassin = {
 		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
 		BlockRaiseDead = true,
@@ -1109,16 +1118,20 @@ local enemyModifications = {
 	ShadeBowUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
 		EliteAttributeOptions = game.CombineTables(
-			game.EnemySets.GenericEliteAttributes,
-			game.EnemySets.RangedOnlyEliteAttributes,
+			game.CombineTables(
+				game.EnemySets.GenericEliteAttributes,
+				game.EnemySets.RangedOnlyEliteAttributes
+			),
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 	},
 	ShadeBowUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
 		EliteAttributeOptions = game.CombineTables(
-			game.EnemySets.GenericEliteAttributes,
-			game.EnemySets.RangedOnlyEliteAttributes,
+			game.CombineTables(
+				game.EnemySets.GenericEliteAttributes,
+				game.EnemySets.RangedOnlyEliteAttributes
+			),
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 	},

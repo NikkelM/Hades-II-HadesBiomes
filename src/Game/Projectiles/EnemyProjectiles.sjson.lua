@@ -70,9 +70,26 @@ local hadesProjectilesModifications = {
 		TotalFuse = 4.0,
 		AutoAdjustForTarget = true,
 		MaxAdjustRate = 5,
+		DissipateGraphic = "null",
+		ImpactFx = "null",
+		DeathFx = "EnemyLaserEnd",
 	},
 	HeavyRangedSplitterFragment = {
 		DieWithOwner = true,
+	},
+	SpawnSplitterFragmentSuperElite = {
+		Thing = {
+			Saturation = -1.0,
+			Color = { Red = 0.50, Green = 0.50, Blue = 0.50 },
+		},
+	},
+	HeavyRangedSplitterFragmentSuperElite = {
+		DieWithOwner = true,
+	},
+	EliteBeams = {
+		DissipateGraphic = "null",
+		ImpactFx = "null",
+		DeathFx = "EnemyLaserEnd",
 	},
 	WretchAssassinRanged = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
