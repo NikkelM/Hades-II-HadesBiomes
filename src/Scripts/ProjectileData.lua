@@ -27,6 +27,15 @@ end
 local addProjectiles = {
 	ModsNikkelMHadesBiomesRubbleFall = game.DeepCopyTable(game.ProjectileData.RubbleFall),
 	ModsNikkelMHadesBiomesRubbleFallLarge = game.DeepCopyTable(game.ProjectileData.RubbleFallLarge),
+	HadesCast = {
+		OnDeathFunctionName =  _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHandleHadesCastDeath",
+		SpawnName = "HadesAmmo",
+		CarriesSpawns = true,
+		StoredAmmoVulnerabilityMultiplier = 2.0,
+		AmmoDropDelay = 6.5,
+		StoredAmmoIcon = "AmmoEmbeddedInPlayerIcon",
+		AmmoDropProjectile = "HadesAmmoDrop",
+	},
 }
 
 for projectileName, projectileData in pairs(addProjectiles) do
@@ -56,6 +65,9 @@ local projectileModifications = {
 	-- #region STYX
 	HeavyRangedWeaponFork = {
 		InheritFrom = { "HeavyRangedWeapon", },
+	},
+	HadesCastBeam = {
+		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
 	},
 	-- #endregion
 

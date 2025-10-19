@@ -126,9 +126,11 @@ mod.HadesGUIAnimationAdditions = {
 mod.HadesGUIAnimationModifications = {
 	LocationTextBGVictoryIn = {
 		InheritFrom = "ModsNikkelMHadesBiomesLocationTextBGIn",
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\VictoryBG\\VictoryBG",
 	},
 	LocationTextBGVictoryOut = {
 		InheritFrom = "ModsNikkelMHadesBiomesLocationTextBGOut",
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\VictoryBG\\VictoryBG",
 	},
 }
 

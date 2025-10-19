@@ -160,6 +160,7 @@ local function on_ready()
 		import "Game/Animations/EnemyAnimations.sjson.lua"
 		import "Game/Animations/GUI_Boons_VFX.sjson.lua"
 		import "Game/Animations/GUI_Portraits_VFX.sjson.lua"
+		import "Game/Animations/GUI_Screens_VFX.sjson.lua"
 		import "Game/Animations/GUI_VFX.sjson.lua"
 		import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"
@@ -197,6 +198,11 @@ local function on_ready()
 		-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 		-- Done first, as the EncounterData depends on the EnemySets
 		import "Scripts/EnemySets.lua"
+
+		-- Porting over voiceline definitions
+		-- Needs to be done before they are used in room data, weapon data or enemy data
+		import "Scripts/HadesAudioData.lua"
+		import "Scripts/AudioData.lua"
 
 		import "Scripts/Meta/EnemyTrapDataHandler.lua"
 		import "Scripts/HadesEnemyData.lua"
@@ -238,6 +244,8 @@ local function on_ready()
 		import "Scripts/TraitData.lua"
 		import "Scripts/TraitDataNPCs.lua"
 		import "Scripts/ObstacleData.lua"
+		import "Scripts/ProjectileData.lua"
+		import "Scripts/RunClearData.lua"
 
 		-- Applies modifications to the rooms, such as LegalEncounterDictionary
 		game.SetupRunData()
@@ -261,8 +269,6 @@ local function on_ready()
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes
-		import "Scripts/HadesAudioData.lua"
-		import "Scripts/AudioData.lua"
 		import "Scripts/AudioLogic.lua"
 		import "Scripts/BiomeMapPresentation.lua"
 		import "Scripts/CodexData.lua"
@@ -282,7 +288,6 @@ local function on_ready()
 		import "Scripts/HubPresentation.lua"
 		import "Scripts/NarrativeData.lua"
 		import "Scripts/PowersLogic.lua"
-		import "Scripts/ProjectileData.lua"
 		import "Scripts/RequirementsData.lua"
 		import "Scripts/RequirementsLogic.lua"
 		import "Scripts/RewardPresentation.lua"

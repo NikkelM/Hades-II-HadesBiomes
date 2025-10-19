@@ -126,6 +126,8 @@ local newTraitData = {
 				Value = 1,
 			},
 		},
+		-- Otherwises crashes the boon info screen as it doesn't have any logic to properly parse SumOf
+		BoonInfoIgnoreRequirements = true,
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceBuff",
 		AcquireFunctionArgs = {
 			FunctionName = "AddRarityToTraits",

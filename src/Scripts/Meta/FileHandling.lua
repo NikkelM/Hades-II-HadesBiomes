@@ -69,7 +69,7 @@ local function checkFileExistsWithRetry(filePath, retries, delay, failFast)
 			return true
 		end
 		if not failFast then
-			mod.DebugPrint("File not found: " .. filePath .. " (attempt " .. i .. ")", 1)
+			mod.DebugPrint("File not found: " .. filePath .. " (attempt " .. i .. ")", 2)
 		else
 			return false
 		end

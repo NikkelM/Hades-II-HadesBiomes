@@ -28,6 +28,12 @@ local addAnimations = {
 		InheritFrom = "BreakableIdle3",
 		OffsetY = -33.0,
 	},
+	-- For HadesCerberusAssistBombard
+	ModsNikkelMHadesBiomesBlastWarningDecal = {
+		Name = "ModsNikkelMHadesBiomesBlastWarningDecal",
+		InheritFrom = "BlastWarningDecal",
+		DieWithOwner = true,
+	},
 }
 
 sjson.hook(hadesTwoTartarusObstacleFile, function(data)

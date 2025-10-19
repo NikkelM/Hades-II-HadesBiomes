@@ -7,6 +7,16 @@ function mod.ModifyHadesHelpTextEntries(inputHelpTextTable)
 			end
 			if entry.DisplayName then
 				entry.DisplayName = string.gsub(entry.DisplayName, "{!Icons.ReRoll_Small}", "{!Icons.ReRoll}")
+				-- Replace the first and second occurrence of RunClearStar with RunClearDotsLeft and RunClearDotsRight for run clear messages
+				local starCount = 0
+				entry.DisplayName = string.gsub(entry.DisplayName, "{!Icons.RunClearStar}", function()
+					starCount = starCount + 1
+					if starCount == 1 then
+						return "{!Icons.RunClearDotsLeft}"
+					else
+						return "{!Icons.RunClearDotsRight}"
+					end
+				end)
 			end
 			if entry.Description then
 				entry.Description = string.gsub(entry.Description, "{#PreviousFormat}", "{#Prev}")

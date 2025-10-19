@@ -21,7 +21,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		-- I'll see you back at home.
 		{ Cue = "/VO/Hades_0265" },
 		-- You are a weakling, boy.
-		{ Cue = "/VO/Hades_0266" },
+		-- { Cue = "/VO/Hades_0266" },
 		-- Was that truly your best?
 		{ Cue = "/VO/Hades_0267" },
 		-- Die, like a mere mortal.
@@ -37,7 +37,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		-- A very tragic end.
 		{ Cue = "/VO/Hades_0329" },
 		-- Your time is up, boy.
-		{ Cue = "/VO/Hades_0330" },
+		-- { Cue = "/VO/Hades_0330" },
 		-- So much for that attempt.
 		{ Cue = "/VO/Hades_0331" },
 		-- Whatever happened there?
@@ -71,7 +71,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- Go on and try.
 			{ Cue = "/VO/Intercom_0275", RequiredPlayed = { "/VO/Intercom_0274" }, },
 			-- You're going nowhere, boy.
-			{ Cue = "/VO/Intercom_0276", RequiredPlayed = { "/VO/Intercom_0274" }, RequiredFalseTextLines = { "Ending01" }, },
+			-- { Cue = "/VO/Intercom_0276", RequiredPlayed = { "/VO/Intercom_0274" }, RequiredFalseTextLines = { "Ending01" }, },
 			-- You won't be anything at all.
 			{ Cue = "/VO/Intercom_0277", RequiredPlayed = { "/VO/Intercom_0274" }, RequiredPlayedThisRoom = { "/VO/ZagreusField_0891" },                                    RequiredFalseTextLines = { "Ending01" }, },
 			-- You withstood the combined might of the Furies...
@@ -117,7 +117,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- The Furies seem incapable of thwarting you.
 			{ Cue = "/VO/Intercom_0995", RequiredRoom = "A_PostBoss01",            RequiredTextLines = { "Ending01" } },
 			-- Your progress has been duly noted, boy.
-			{ Cue = "/VO/Intercom_0996", RequiredRoom = "A_PostBoss01",            RequiredTextLines = { "Ending01" } },
+			-- { Cue = "/VO/Intercom_0996", RequiredRoom = "A_PostBoss01",            RequiredTextLines = { "Ending01" } },
 			-- Is Tartarus some sort of joke to you?
 			{ Cue = "/VO/Intercom_0997", RequiredRoom = "A_PostBoss01",            RequiredTextLines = { "Ending01" } },
 			-- Those wretches of Tartarus cannot be relied upon.
@@ -145,9 +145,9 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- Where do you think you're going?
 			{ Cue = "/VO/Intercom_0382", RequiredPlayed = { "/VO/Intercom_0274" }, RequiredFalseTextLines = { "Ending01" }, },
 			-- No paradise awaits you, boy.
-			{ Cue = "/VO/Intercom_0383", RequiredRoom = "B_PostBoss01",            RequiredFalseTextLines = { "Ending01" }, },
+			-- { Cue = "/VO/Intercom_0383", RequiredRoom = "B_PostBoss01",            RequiredFalseTextLines = { "Ending01" }, },
 			-- Tread lightly, boy.
-			{ Cue = "/VO/Intercom_0384", RequiredPlayed = { "/VO/Intercom_0274" }, },
+			-- { Cue = "/VO/Intercom_0384", RequiredPlayed = { "/VO/Intercom_0274" }, },
 			-- You are testing my patience.
 			{ Cue = "/VO/Intercom_0385", RequiredRoom = "B_PostBoss01",            RequiredFalseTextLines = { "Ending01" }, },
 			-- Still there, are you?
@@ -155,9 +155,9 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- We'll have you back here soon enough I think.
 			{ Cue = "/VO/Intercom_0387", RequiredRoom = "B_PostBoss01" },
 			-- Go no further, boy. I'm warning you.
-			{ Cue = "/VO/Intercom_0388", RequiredRoom = "B_PostBoss01",            RequiredFalseTextLines = { "Ending01" }, },
+			-- { Cue = "/VO/Intercom_0388", RequiredRoom = "B_PostBoss01",            RequiredFalseTextLines = { "Ending01" }, },
 			-- How could you, boy? That Hydra had a family!
-			{ Cue = "/VO/Intercom_0389", RequiredRoom = "B_PostBoss01",            RequiredPlayed = { "/VO/Intercom_0380" } },
+			-- { Cue = "/VO/Intercom_0389", RequiredRoom = "B_PostBoss01",            RequiredPlayed = { "/VO/Intercom_0380" } },
 			-- That victory of yours shall be short-lived.
 			{ Cue = "/VO/Intercom_0390", RequiredRoom = "B_PostBoss01",            RequiredFalseTextLines = { "Ending01" }, },
 			-- Oh, I didn't see you come in.
@@ -203,11 +203,11 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- So you thwarted the Champion of Elysium.
 			{ Cue = "/VO/Intercom_0445", RequiredRoom = "C_PostBoss01" },
 			-- Don't make me come up there, boy.
-			{ Cue = "/VO/Intercom_0446", RequiredRoom = "C_PostBoss01" },
+			-- { Cue = "/VO/Intercom_0446", RequiredRoom = "C_PostBoss01" },
 			-- Nothing good awaits beyond my realm.
 			{ Cue = "/VO/Intercom_0447", RequiredRoom = "C_PostBoss01",            RequiredFalseTextLines = { "Ending01" }, },
 			-- The worst is yet to come, boy.
-			{ Cue = "/VO/Intercom_0448", RequiredRoom = "C_PostBoss01",            RequiredFalseTextLines = { "Ending01" }, },
+			-- { Cue = "/VO/Intercom_0448", RequiredRoom = "C_PostBoss01",            RequiredFalseTextLines = { "Ending01" }, },
 			-- You think you can just walk away from me?
 			{ Cue = "/VO/Intercom_0449", RequiredRoom = "C_PostBoss01",            RequiredFalseTextLines = { "Ending01" }, },
 			-- A disappointing show from Theseus.
@@ -223,7 +223,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- Go give the vermin in the Temple my regards.
 			{ Cue = "/VO/Intercom_0599", RequiredRoom = "C_PostBoss01",            RequiredSeenRooms = { "D_Combat01", "D_Combat02", "D_Combat03", "D_Combat04" } },
 			-- Befriended any Satyrs lately, boy?
-			{ Cue = "/VO/Intercom_0600", RequiredRoom = "C_PostBoss01",            RequiredSeenRooms = { "D_Combat01", "D_Combat02", "D_Combat03", "D_Combat04" } },
+			-- { Cue = "/VO/Intercom_0600", RequiredRoom = "C_PostBoss01",            RequiredSeenRooms = { "D_Combat01", "D_Combat02", "D_Combat03", "D_Combat04" } },
 			-- You force me to send Cerberus ahead, again.
 			{ Cue = "/VO/Intercom_0601", RequiredRoom = "C_PostBoss01",            RequiredSeenRooms = { "D_Hub" } },
 			-- Cerberus is patiently at work, instead of resting here.
@@ -235,7 +235,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- Go tend to the Satyr problem, for a change.
 			{ Cue = "/VO/Intercom_1014", RequiredRoom = "C_PostBoss01",            RequiredTextLines = { "Ending01" }, },
 			-- You made short work of Theseus, I take it, boy?
-			{ Cue = "/VO/Intercom_1015", RequiredRoom = "C_PostBoss01",            RequiredTextLines = { "Ending01" }, },
+			-- { Cue = "/VO/Intercom_1015", RequiredRoom = "C_PostBoss01",            RequiredTextLines = { "Ending01" }, },
 			-- The finest of Elysium all failed to thwart you, eh?
 			{ Cue = "/VO/Intercom_1016", RequiredRoom = "C_PostBoss01",            RequiredTextLines = { "Ending01" }, },
 			-- It seems I had best prepare myself, at this rate.
@@ -247,7 +247,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- Elysium ought to be harder to escape than that.
 			{ Cue = "/VO/Intercom_1020", RequiredRoom = "C_PostBoss01",            RequiredTextLines = { "Ending01" }, },
 			-- Already made it that far, have you, boy?
-			{ Cue = "/VO/Intercom_1021", RequiredRoom = "C_PostBoss01",            RequiredTextLines = { "Ending01" }, },
+			-- { Cue = "/VO/Intercom_1021", RequiredRoom = "C_PostBoss01",            RequiredTextLines = { "Ending01" }, },
 		},
 		{
 			RandomRemaining = true,
@@ -421,9 +421,9 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		-- You wish to anger me?!
 		{ Cue = "/VO/HadesField_0060" },
 		-- I've had it with you, boy!!
-		{ Cue = "/VO/HadesField_0286" },
+		-- { Cue = "/VO/HadesField_0286" },
 		-- Let's have it out, then, boy!!
-		{ Cue = "/VO/HadesField_0287" },
+		-- { Cue = "/VO/HadesField_0287" },
 		-- I shall not take such disrespect from you!!
 		{ Cue = "/VO/HadesField_0288" },
 		-- You wish to anger me?!
@@ -447,14 +447,13 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			RequiredFalseBossPhase = 3,
 			Cooldowns =
 			{
-				-- { Name = "HadesAnyQuipSpeech" },
 				{ Name = "HadesCastBeamSpeech", Time = 60 },
 			},
 
 			-- I have something for you!!
 			{ Cue = "/VO/HadesField_0061" },
 			-- Zagreus!!
-			{ Cue = "/VO/HadesField_0062", RequiredTextLines = { "Ending01" }, },
+			-- { Cue = "/VO/HadesField_0062", RequiredTextLines = { "Ending01" }, },
 			-- You blasted little...!
 			{ Cue = "/VO/HadesField_0063" },
 			-- No more!
@@ -1700,13 +1699,13 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		-- You tried.
 		{ Cue = "/VO/Thanatos_0118" },
 		-- Oh, Zag...
-		{ Cue = "/VO/Thanatos_0119" },
+		-- { Cue = "/VO/Thanatos_0119" },
 		-- What were you thinking.
 		{ Cue = "/VO/Thanatos_0120" },
 		-- You're dead.
 		{ Cue = "/VO/Thanatos_0121" },
 		-- You're dead, Zag.
-		{ Cue = "/VO/Thanatos_0122" },
+		-- { Cue = "/VO/Thanatos_0122" },
 		-- You're coming with me.
 		{ Cue = "/VO/Thanatos_0123" },
 		-- That's it.
@@ -1726,7 +1725,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		-- Let's go home.
 		{ Cue = "/VO/Thanatos_0131" },
 		-- Let's go, Zag.
-		{ Cue = "/VO/Thanatos_0132" },
+		-- { Cue = "/VO/Thanatos_0132" },
 		-- We're heading home.
 		{ Cue = "/VO/Thanatos_0133" },
 		-- There is no escape.
@@ -1774,7 +1773,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- Hah, haha.
 			{ Cue = "/VO/Achilles_0223", RequiredPlayed = { "/VO/Achilles_0222" } },
 			-- Hello, lad.
-			{ Cue = "/VO/Achilles_0224", RequiredPlayed = { "/VO/Achilles_0222" } },
+			-- { Cue = "/VO/Achilles_0224", RequiredPlayed = { "/VO/Achilles_0222" } },
 			-- Look, Pat.
 			{ Cue = "/VO/Achilles_0225", RequiredPlayed = { "/VO/Achilles_0222" } },
 			-- We've a guest.
@@ -1782,7 +1781,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- Ah, you're here.
 			{ Cue = "/VO/Achilles_0227", RequiredPlayed = { "/VO/Achilles_0222" } },
 			-- How goes it, lad?
-			{ Cue = "/VO/Achilles_0228", RequiredPlayed = { "/VO/Achilles_0222" } },
+			-- { Cue = "/VO/Achilles_0228", RequiredPlayed = { "/VO/Achilles_0222" } },
 			-- Come all this way, huh.
 			{ Cue = "/VO/Achilles_0229", RequiredPlayed = { "/VO/Achilles_0222" } },
 		},
@@ -2267,19 +2266,19 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- Look how happy Bouldy is!
 			{ Cue = "/VO/Sisyphus_0358" },
 			-- That's one good rock, isn't he, Prince!
-			{ Cue = "/VO/Sisyphus_0359", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0359", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- You've Bouldy's favor, Prince!
-			{ Cue = "/VO/Sisyphus_0360", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0360", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- I think he likes you!
 			{ Cue = "/VO/Sisyphus_0361" },
 			-- Bouldy is grateful.
 			{ Cue = "/VO/Sisyphus_0362" },
 			-- Your offering has been accepted, Prince!
-			{ Cue = "/VO/Sisyphus_0363", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0363", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- I'm sure he's grateful, Prince.
-			{ Cue = "/VO/Sisyphus_0364", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0364", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- That's good of you, Prince Z.!
-			{ Cue = "/VO/Sisyphus_0365", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0365", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Bouldy has got you covered!
 			{ Cue = "/VO/Sisyphus_0366" },
 			-- See that, Bouldy?
@@ -2303,5 +2302,145 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- Bouldy's got your back.
 			{ Cue = "/VO/Sisyphus_0468" },
 		},
+	},
+}
+
+mod.HeroVoiceLines = mod.HeroVoiceLines or {
+	HitByGraveHandsVoiceLines = {
+		{
+			RandomRemaining = true,
+			Queue = "Interrupt",
+			TriggerCooldowns = { "ZagreusAnyQuipSpeech" },
+			RequiredFalseTraits = { "StatusImmunityTrait" },
+			RequiredFalseBossPhase = 3,
+			Cooldowns = {
+				{ Name = "ZagreusHitByGraveHandsSpeech", Time = 10 }
+			},
+
+			-- Let me go!
+			{ Cue = "/VO/ZagreusField_2360", RequiredPlayed = { "/VO/ZagreusField_2362" } },
+			-- Let go of me!
+			{ Cue = "/VO/ZagreusField_2361", RequiredPlayed = { "/VO/ZagreusField_2362" } },
+			-- Get off me!
+			{ Cue = "/VO/ZagreusField_2362", },
+			-- Aah!
+			{ Cue = "/VO/ZagreusField_2363", RequiredPlayed = { "/VO/ZagreusField_2362" } },
+			-- Ah, stuck!
+			{ Cue = "/VO/ZagreusField_2364", RequiredPlayed = { "/VO/ZagreusField_2362" } },
+			-- Stuck!
+			{ Cue = "/VO/ZagreusField_2365", RequiredPlayed = { "/VO/ZagreusField_2362" } },
+			-- I'm stuck!
+			{ Cue = "/VO/ZagreusField_2366", RequiredPlayed = { "/VO/ZagreusField_2362" } },
+			-- Can't move!
+			{ Cue = "/VO/ZagreusField_2367", RequiredPlayed = { "/VO/ZagreusField_2362" } },
+			-- Not again!
+			{ Cue = "/VO/ZagreusField_2368", RequiredPlayed = { "/VO/ZagreusField_2362" } },
+			-- Augh again?
+			{ Cue = "/VO/ZagreusField_2369", RequiredPlayed = { "/VO/ZagreusField_2362" } },
+		},
+		{
+			ObjectType = "Hades",
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 0.3,
+				RequiredFalseBossPhase = 3,
+				Cooldowns = {
+					{ Name = "HadesAnyQuipSpeech" },
+					{ Name = "HadesGhostHandsSpeech", Time = 100 }
+				},
+
+				ExplicitRequirements = true,
+				GameStateRequirements = {
+					-- None
+				},
+
+				-- What's the matter, boy?
+				-- { Cue = "/VO/HadesField_0199" },
+				-- You're stuck.
+				{ Cue = "/VO/HadesField_0200" },
+				-- You're trapped.
+				{ Cue = "/VO/HadesField_0201" },
+				-- Hold still...!
+				{ Cue = "/VO/HadesField_0202" },
+				-- No squirming out of this.
+				{ Cue = "/VO/HadesField_0203" },
+				-- Be careful where you step.
+				{ Cue = "/VO/HadesField_0204" },
+				-- You stepped in something, boy.
+				-- { Cue = "/VO/HadesField_0205" },
+				-- Even my wretches don't want you to leave.
+				{ Cue = "/VO/HadesField_0206" },
+				-- You wait right there.
+				{ Cue = "/VO/HadesField_0207" },
+			}
+		}
+	},
+	HitByHadesAmmoVoiceLines = {
+		{
+			RandomRemaining = true,
+			PreLineWait = 0.15,
+			SuccessiveChanceToPlay = 0.33,
+			RequiredFalseBossPhase = 3,
+			Cooldowns = {
+				{ Name = "ZagreusAnyQuipSpeech" },
+				{ Name = "ZagHitByHadesAmmoSpeech", Time = 100 }
+			},
+			-- Ngh, I'm hit!
+			{ Cue = "/VO/ZagreusField_2370", RequiredPlayed = { "/VO/ZagreusField_2376" } },
+			-- Ungh, trouble...
+			{ Cue = "/VO/ZagreusField_2371", RequiredPlayed = { "/VO/ZagreusField_2376" } },
+			-- Rngh, no.
+			{ Cue = "/VO/ZagreusField_2372", RequiredPlayed = { "/VO/ZagreusField_2376" } },
+			-- Ah, got me!
+			{ Cue = "/VO/ZagreusField_2373", RequiredPlayed = { "/VO/ZagreusField_2376" } },
+			-- Khh, you!
+			{ Cue = "/VO/ZagreusField_2374", RequiredPlayed = { "/VO/ZagreusField_2376" } },
+			-- Unf not this.
+			{ Cue = "/VO/ZagreusField_2375", RequiredPlayed = { "/VO/ZagreusField_2376" } },
+			-- Augh, wha--?
+			{ Cue = "/VO/ZagreusField_2376" },
+			-- Mph get out!
+			{ Cue = "/VO/ZagreusField_2377", RequiredPlayed = { "/VO/ZagreusField_2376" } },
+		},
+		{
+			ObjectType = "Hades",
+			{
+				RandomRemaining = true,
+				PreLineWait = 0.3,
+				SuccessiveChanceToPlay = 0.5,
+				RequiredFalseBossPhase = 3,
+				Cooldowns = {
+					{ Name = "HadesAnyQuipSpeech" },
+					{ Name = "HadesGhostHandsSpeech", Time = 100 }
+				},
+
+				ExplicitRequirements = true,
+				GameStateRequirements = {
+					-- None
+				},
+
+				-- Prepare...!
+				{ Cue = "/VO/HadesField_0189" },
+				-- Do you feel your blood beginning to boil?
+				{ Cue = "/VO/HadesField_0190" },
+				-- Too slow.
+				{ Cue = "/VO/HadesField_0191" },
+				-- Beware, boy.
+				-- { Cue = "/VO/HadesField_0192" },
+				-- I'll boil your blood.
+				{ Cue = "/VO/HadesField_0193" },
+				-- You should have avoided that.
+				{ Cue = "/VO/HadesField_0194" },
+				-- Got you.
+				{ Cue = "/VO/HadesField_0195" },
+				-- What's wrong, boy?
+				-- { Cue = "/VO/HadesField_0196" },
+				-- Wake up, boy!
+				-- { Cue = "/VO/HadesField_0197" },
+				-- Surely you could have avoided that?
+				{ Cue = "/VO/HadesField_0198" },
+			}
+		}
 	},
 }

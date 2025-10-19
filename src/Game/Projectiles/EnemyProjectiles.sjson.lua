@@ -8,10 +8,7 @@ local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Pro
 local projectilesToRemove = {
 	"1_BaseEnemyMagicProjectile",
 	"1_BaseTrapProjectile",
-	"HadesCastBeam",
-	"HadesCastBeamNoTracking",
 	"LavaPuddleLarge",
-	"BaseCollisionWeapon",
 	"LavaSplash",
 	"BloodlessMelee",
 	"BloodlessMeleeBerserker",
@@ -73,9 +70,26 @@ local hadesProjectilesModifications = {
 		TotalFuse = 4.0,
 		AutoAdjustForTarget = true,
 		MaxAdjustRate = 5,
+		DissipateGraphic = "null",
+		ImpactFx = "null",
+		DeathFx = "EnemyLaserEnd",
 	},
 	HeavyRangedSplitterFragment = {
 		DieWithOwner = true,
+	},
+	SpawnSplitterFragmentSuperElite = {
+		Thing = {
+			Saturation = -1.0,
+			Color = { Red = 0.50, Green = 0.50, Blue = 0.50 },
+		},
+	},
+	HeavyRangedSplitterFragmentSuperElite = {
+		DieWithOwner = true,
+	},
+	EliteBeams = {
+		DissipateGraphic = "null",
+		ImpactFx = "null",
+		DeathFx = "EnemyLaserEnd",
 	},
 	WretchAssassinRanged = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
@@ -271,6 +285,34 @@ local hadesProjectilesModifications = {
 		InheritFrom = "CrusherUnitTouchdown",
 		DetonateGraphic = "nil",
 	},
+	HadesBidentStrike = {
+		-- Makes it not go as far
+		Speed = 2500,
+	},
+	HadesCast = {
+		-- We manually create it as there are some visual bugs if the projectile hits the bottom part of the arena
+		DissipateFx = "null",
+		ImpactFx = "null",
+		Thing = {
+			-- This one has an attached flame spawner which was removed in the Hades II version
+			Graphic = "ModsNikkelMHadesBiomesBloodstoneProjectileHades",
+		},
+	},
+	HadesCastBeam = {
+		NumPenetrations = 99999,
+		DissipateGraphic = "null",
+		ImpactFx = "null",
+		DeathFx = "HadesLaserEnd",
+	},
+	HadesTombstoneSpawn = {
+		SpawnOnDetonate = "ModsNikkelMHadesBiomesHadesTombstone"
+	},
+	HadesCerberusAssistBombard = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+		Thing = {
+			AttachedAnim = "null",
+		},
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT
@@ -429,7 +471,8 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	end
 
 	-- Modifications that should be made to all projectiles
-	mod.RenameKeys(projectile, projectileKeyReplacements, "hadesProjectilesTable.Projectiles[" .. tostring(i) .. "]")
+	mod.RenameKeys(projectile, projectileKeyReplacements,
+		"hadesProjectilesTable.Projectiles: " .. (projectile.Name or tostring(i)))
 
 	-- This property was renamed in Hades II
 	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then
@@ -441,6 +484,11 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 				effect.Name = "HeroOnHitStun"
 			end
 		end
+	end
+
+	-- We already renamed DissipateGraphic to DissipateFx above
+	if projectile.DissipateFx and not projectile.ImpactFx then
+		projectile.ImpactFx = projectile.DissipateFx
 	end
 
 	-- Hades uses DamageLow and DamageHigh properties, Hades II only has Damage

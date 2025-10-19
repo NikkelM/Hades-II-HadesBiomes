@@ -4491,8 +4491,7 @@ mod.NPCData = mod.NPCData or {
 		StartTextLinesAnimation = "EurydiceIdleSinging_SingingLoop_End",
 		EndTextLinesAnimation = "EurydiceIdleSinging_Start",
 
-		ActivateRequirements =
-		{
+		ActivateRequirements = {
 			RequiredMinCompletedRuns = 1,
 		},
 
@@ -7433,8 +7432,7 @@ mod.NPCData = mod.NPCData or {
 		Portrait = "Portrait_Patroclus_Default_01",
 		Groups = { "NPCs" },
 
-		ActivateRequirements =
-		{
+		ActivateRequirements = {
 			RequiredMinCompletedRuns = 1,
 		},
 

@@ -99,6 +99,7 @@ local addAnimationsParents = {
 }
 
 local addAnimations = {
+	-- #region GENERAL
 	{
 		Name = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front",
 		FilePath = "NikkelM-HadesBiomesFxModded\\RoomRewardAvailable-Front\\RoomRewardAvailable-Front",
@@ -115,14 +116,18 @@ local addAnimations = {
 		Ambient = 0.0,
 		OnlyWhenVisible = true,
 	},
-	-- There is no existing equivalent animation
+	-- #endregion
+
+	-- #region ASPHODEL
 	{
 		Name = "ModsNikkelMHadesBiomes-HealthFountainEmptyAsphodelWater",
 		InheritFrom = "HealthFountainFullAsphodelWater",
 		VisualFx = nil,
 		Alpha = 0.6,
 	},
-	-- For Styx
+	-- #endregion
+
+	-- #region STYX
 	{
 		Name = "PoisonCureFountainStyxFullStart",
 		InheritFrom = "PoisonCureFountainFull",
@@ -429,6 +434,15 @@ local addAnimations = {
 		SortMode = "FromParent",
 		Material = "Unlit",
 	},
+	-- #endregion
+
+	-- #region HADES
+	{
+		Name = "ModsNikkelMHadesBiomesBloodstoneProjectileHades",
+		InheritFrom = "BloodstoneProjectileHades",
+		ChildAnimation = "BloodstoneProjectileHadesFlameSpanwer"
+	}
+	-- #endregion
 }
 
 sjson.hook(hadesTwoTartarusObstacleFile, function(data)

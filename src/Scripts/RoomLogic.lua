@@ -28,10 +28,6 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and moddedRoomSets[currentRoom.RoomSetName] then
 		currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
 
-		-- Some packages introduce artifacts
-		UnloadPackages({ Name = "DeathArea" })
-		UnloadPackages({ Name = "Chaos" })
-
 		-- The base game doesn't load encounter packages when a save is loaded, or the RoomOpening is entered
 		if currentRoom.Encounter.LoadPackages then
 			for _, name in pairs(currentRoom.Encounter.LoadPackages) do
@@ -113,6 +109,12 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 		-- For Hades
 		if unit.SelectCustomSpawnOptions ~= nil then
 			game.CallFunctionName(unit.SelectCustomSpawnOptions, unit)
+		end
+		-- For HadesSpawns2
+		if unit.SetLastInvisibilityTimeOnSpawn then
+			unit.LastInvisibilityTime = game._worldTime
+		else
+			unit.LastInvisibilityTime = 0
 		end
 	end
 

@@ -90,6 +90,9 @@ function mod.CrawlerMiniBossEndPresentation(eventSource)
 end
 
 function mod.ModsNikkelMHadesBiomesOnDeathFireProjectile(unit, args)
+	if args.FunctionName then
+		game.thread(game.CallFunctionName, args.FunctionName, unit)
+	end
 	CreateProjectileFromUnit({
 		Name = args.ProjectileName,
 		Id = unit.ObjectId,

@@ -272,7 +272,7 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 			end
 		end
 
-		SetupUnit(newEnemy, game.CurrentRun, args)
+		game.SetupUnit(newEnemy, game.CurrentRun, args)
 		AddToGroup({ Id = newEnemy.ObjectId, Name = spawnGroupName })
 		--newEnemy.SkipActiveCount = true
 

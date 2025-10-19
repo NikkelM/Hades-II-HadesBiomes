@@ -18,9 +18,22 @@ modutil.mod.Path.Wrap("DoWeaponFire", function(base, enemy, aiData)
 	base(enemy, aiData)
 end)
 
+modutil.mod.Path.Wrap("AIFireWeapon", function(base, enemy, aiData)
+	local success = base(enemy, aiData)
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.ModsNikkelMHadesBiomesIsModdedEnemy then
+		-- For Hades' BidentThrow
+		if aiData.ModsNikkelMHadesBiomesDestroyObstacleOnFire then
+			Destroy({ Ids = GetIdsByType({ Name = aiData.ModsNikkelMHadesBiomesDestroyObstacleOnFire }), })
+		end
+	end
+
+	return success
+end)
+
 modutil.mod.Path.Wrap("AIFireProjectile", function(base, enemy, aiData, projectileData)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.ModsNikkelMHadesBiomesIsModdedEnemy then
-		-- For Theseus' SpearThrow and Hades' BidentThrow
+		-- For Theseus' SpearThrow
 		if aiData.ModsNikkelMHadesBiomesFireFromObstacle then
 			aiData.FireFromId = GetIdsByType({ Name = aiData.ModsNikkelMHadesBiomesFireFromObstacle })[1] or nil
 		end

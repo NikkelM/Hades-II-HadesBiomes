@@ -44,6 +44,12 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 			weaponData.OnFireCrowdReaction = nil
 		end
 
+		-- This key was renamed, but if it was true before, it must be false now
+		if weaponData.AIData.SkipMovement then
+			weaponData.AIData.MoveWithinRange = false
+			weaponData.AIData.SkipMovement = nil
+		end
+
 		-- If the weapon defines a projectile to use, it might be different from the weapon name, so use it instead
 		local sjsonWeaponProjectileName = (mod.HadesSjsonWeaponsTable[weaponName] and
 			mod.HadesSjsonWeaponsTable[weaponName].Projectile) or weaponName
@@ -398,7 +404,7 @@ local weaponModifications = {
 	HeavyRangedSplitterFragment = {
 		AIData = {
 			DeepInheritance = true,
-			TargetClosestOfTypes = { "HeavyRangedSplitterMiniboss" },
+			TargetClosestOfTypes = { "HeavyRangedSplitterMiniboss", "HeavyRangedSplitterMinibossSuperElite" },
 			TargetClosest = mod.NilValue,
 			TargetFriends = mod.NilValue,
 			ExpireProjectilesOnHitStun = true,
@@ -920,6 +926,26 @@ local weaponModifications = {
 			MaxPlayerDistance = 800,
 		},
 	},
+	ShadeSpearLeapSuper = {
+		AIData = {
+			DeepInheritance = true,
+			PreAttackAnimation = mod.NilValue,
+			FireAnimation = mod.NilValue,
+			LeapToTarget = true,
+			PreMoveLeap = true,
+			LeapAgainIfBlocked = true,
+			RequireLeapTargetLoS = true,
+			LeapChargeAnimation = "ShadeSpear_LeapPreAttack",
+			FireProjectileStartDelay = 0.05,
+			MoveWithinRange = false,
+			PreAttackDuration = 0.0,
+			PreFireDuration = 0.0,
+			FireDuration = 0,
+			TrackTargetDuringCharge = true,
+			StopBeforeFire = true,
+			PostAttackStop = true,
+		},
+	},
 	ShieldAlliesAoE = {
 		AIData = {
 			-- Don't remove this - doesn't work without, even though it's the same name
@@ -1341,13 +1367,78 @@ local weaponModifications = {
 	},
 	-- #endregion
 	-- #region HADES
+	HadesBidentStrike = {
+		AIData = {
+			MoveWithinRange = true,
+			PreAttackStop = true,
+			PreAttackEndStop = true,
+			PostAttackStop = true,
+			PostAttackDuration = 0.5,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
+		},
+	},
+	HadesCast = {
+		StoreAmmoOnHit = mod.NilValue,
+		AmmoDropDelay = mod.NilValue,
+		StoredAmmoIcon = mod.NilValue,
+		AmmoDropFireWeapon = mod.NilValue,
+		SkipAmmoDropOnMiss = mod.NilValue,
+		StoreAmmoInLastHit = mod.NilValue,
+		FireAmmoDropWeaponOnDeflect = mod.NilValue,
+	},
+	HadesBidentStrikeCombo1 = {
+		AIData = {
+			ProjectileName = "HadesCast",
+			PreAttackAngleTowardTarget = true,
+			WaitForAngleTowardTarget = true,
+		},
+	},
+	HadesBidentStrikeCombo2 = {
+		AIData = {
+			ProjectileName = "HadesCast",
+			PreAttackDuration = 0.2,
+			PreAttackAngleTowardTarget = true,
+			WaitForAngleTowardTarget = true,
+		},
+	},
+	HadesBidentStrikeCombo3 = {
+		AIData = {
+			ProjectileName = "HadesBidentStrike",
+			MoveWithinRange = true,
+			PreAttackStop = true,
+			PreAttackEndStop = true,
+			PostAttackStop = true,
+			TargetPlayer = true,
+			PreAttackAngleTowardTarget = true,
+			WaitForAngleTowardTarget = true,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
+		},
+	},
+	HadesBidentSpin = {
+		AIData = {
+			MoveWithinRange = true,
+			PreAttackStop = true,
+			PreAttackEndStop = true,
+			PostAttackStop = true,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
+		},
+	},
+	HadesBidentSpin2Reverse = {
+		AIData = {
+			FireSelfVelocity = 2300,
+		},
+	},
 	HadesSpawns = {
 		AIData = {
 			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
+			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "HadesSpawnsPresentation",
+			PreAttackDuration = 1,
 		},
 	},
 	HadesSpawns2 = {
 		AIData = {
+			-- ShieldRangedSuperElite since it's tethers wouldn't go invisible
+			SpawnSkipOverridesForTypes = { "WretchAssassinMinibossSuperElite", "ShieldRangedSuperElite" },
 			SpawnDefaultAIDataOverrides = {
 				PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 				PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
@@ -1355,19 +1446,134 @@ local weaponModifications = {
 			}
 		},
 	},
+	HadesDash = {
+		AIData = {
+			PreAttackAnimation = "HadesBattleDash_Start",
+			PostAttackAnimation = "HadesBattleDash_ReturnToIdle",
+			PreAttackDuration = 0.03,
+			FireDuration = 0.1,
+			PostAttackDuration = 0.2,
+			WaitForAngleTowardTarget = true,
+			TrackTargetDuringCharge = true,
+			StopBeforeFire = true,
+			PostAttackStop = true,
+			MoveWithinRange = false,
+			AttackDistance = 9999,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+		},
+		Sounds = {
+			-- Need to change from FireSounds to WeaponFireSounds, as it's not a projectile weapon
+			WeaponFireSounds = {
+				{ Name = "/SFX/Enemy Sounds/Hades/EmoteEvading" },
+				{ Name = "/SFX/Enemy Sounds/Hades/HadesDash" },
+			},
+		},
+	},
 	HadesSideDash = {
 		AIData = {
+			DeepInheritance = true,
+			PreAttackAnimation = "HadesBattleDash_Start",
+			PostAttackAnimation = "HadesBattleDash_ReturnToIdle",
+			PreAttackDuration = 0.03,
+			FireDuration = 0.1,
+			PostAttackDuration = 0.2,
+			WaitForAngleTowardTarget = true,
+			TrackTargetDuringCharge = true,
+			StopBeforeFire = true,
+			PostAttackStop = true,
+			MoveWithinRange = false,
+			AttackDistance = 9999,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
+		},
+		Sounds = {
+			-- Need to change from FireSounds to WeaponFireSounds, as it's not a projectile weapon
+			WeaponFireSounds = {
+				{ Name = "/SFX/Enemy Sounds/Hades/EmoteEvading" },
+				{ Name = "/SFX/Enemy Sounds/Hades/HadesDash" },
+			},
+		},
+	},
+	HadesBidentThrow = {
+		AIData = {
+			TrackTargetDuringFire = false,
+			PostAttackStop = true,
+		},
+	},
+	HadesBidentRecoveryDash = {
+		AIData = {
+			FireProjectileTowardTarget = true,
+			AngleTowardsTargetWhileFiring = true,
+			WaitForAngleTowardTarget = false,
+			TrackTargetDuringCharge = false,
+			PreAttackStop = true,
+			ModsNikkelMHadesBiomesDestroyObstacleOnFire = "HadesBidentReturnPoint",
+			PreAttackAnimation = "HadesBattleBidentDash_Loop",
+			PostAttackAnimation = "HadesBattleDash_ReturnToIdle",
+			PreAttackDuration = 0.03,
+			FireDuration = 0.2,
+			PostAttackDuration = 0.2,
+			StopBeforeFire = true,
+			PostAttackStop = true,
+			MoveWithinRange = false,
+			AttackDistance = 9999,
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+		},
+		Sounds = {
+			-- Need to change from FireSounds to WeaponFireSounds, as it's not a projectile weapon
+			WeaponFireSounds = {
+				{ Name = "/SFX/Enemy Sounds/Hades/EmoteEvading" },
+				{ Name = "/SFX/Enemy Sounds/Hades/HadesDash" },
+			},
 		},
 	},
 	HadesInvisibility = {
 		AIData = {
-			FireFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
+			-- Different call, as for FireFunctionName, CurrentRun is also passed as an argument
+			FireFunctionName = _PLUGIN.guid .. "." .. "HadesEnemyInvisibility",
+		},
+	},
+	HadesCastBeam = {
+		RapidDamageType = true,
+		AIData = {
+			FireRotationDampening = 0.02,
+		},
+	},
+	HadesCastBeam360 = {
+		RapidDamageType = true,
+		AIData = {
+			FireRotationDampening = 0.015,
+		},
+	},
+	HadesMobilityCombo1 = {
+		AIData = {
+			PostAttackDuration = 0.03,
+			ChainedWeapon = "HadesMobilityCombo3",
+		},
+	},
+	HadesMobilityCombo2 = {
+		AIData = {
+			PreAttackDuration = 0.03,
+			PostAttackDuration = 0.03,
+		},
+	},
+	HadesMobilityCombo3 = {
+		AIData = {
+			PreAttackDuration = 0.03,
+			PostAttackDuration = 0.03,
+		},
+	},
+	HadesConsumeHeal = {
+		AIData = {
+			RequireExistingIdsOfType = "ModsNikkelMHadesBiomesHadesTombstone",
+			PreAttackFunctionName = _PLUGIN.guid .. "." .. "HadesConsumeHeal",
 		},
 	},
 	HadesCerberusAssist = {
 		AIData = {
+			PreAttackFunctionName = _PLUGIN.guid .. "." .. "HandleHadesAssistPresentation",
+			AssistPresentationPortrait = "ModsNikkelMHadesBiomes_Portrait_Cerberus",
 			PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
 		},
 	},

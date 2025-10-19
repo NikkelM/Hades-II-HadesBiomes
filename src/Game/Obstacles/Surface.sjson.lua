@@ -43,6 +43,13 @@ local hadesTwoObstacleModifications = {
 	-- Obstacles that shouldn't be passable
 	SurfaceGravemarker07 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	SurfaceGravemarker07a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	-- These should not just plop out of existence when the player sprints at them
+	SurfaceGravemarker01 = { Life = { DieOnCollisionRequiredVelocity = 1000.0, }, },
+	SurfaceGravemarker04 = { Life = { DieOnCollisionRequiredVelocity = 1000.0, }, },
+	SurfaceGravemarker01a = { Life = { DieOnCollisionRequiredVelocity = 1000.0, }, },
+	SurfaceGravemarker06 = { Life = { DieOnCollisionRequiredVelocity = 1000.0, }, },
+	-- This causes occlusion when entering the boss room which is very distracting
+	SurfaceDestructiblePillarB = { Thing = { CausesOcclusion = false, }, },
 }
 
 sjson.hook(hadesTwoSurfaceObstacleFile, function(data)

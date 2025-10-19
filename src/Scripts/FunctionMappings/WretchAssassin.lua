@@ -5,7 +5,6 @@ function mod.EnemyHandleInvisibleAttack(enemy, weaponAIData, args)
 			CreateAnimation({ Name = enemy.Phase2VFX, DestinationId = enemy.ObjectId })
 		end
 
-		SetLifeProperty({ DestinationId = enemy.ObjectId, Property = "InvulnerableFx", Value = "Invincibubble_Hades" })
 		enemy.IsInvisible = false
 		game.CreateHealthBar(enemy)
 		game.UpdateHealthBar(enemy, 0, { Force = true })
@@ -13,7 +12,7 @@ function mod.EnemyHandleInvisibleAttack(enemy, weaponAIData, args)
 		if enemy.InvisibilityEndSound ~= nil then
 			PlaySound({ Name = enemy.InvisibilityEndSound })
 		end
-		game.SetUnitVulnerable(enemy)
+		game.SetUnitVulnerable(enemy, "EnemyInvisibility")
 		SetAlpha({ Id = enemy.ObjectId, Fraction = 1.0, Duration = weaponAIData.InvisibilityFadeInDuration })
 		SetColor({ Id = enemy.ObjectId, Color = { 255, 255, 255, 255 }, Duration = weaponAIData.InvisibilityFadeInDuration })
 		if args.CreateAnimation then
@@ -34,6 +33,10 @@ function mod.EnemyHandleInvisibleAttack(enemy, weaponAIData, args)
 	end
 end
 
+function mod.HadesEnemyInvisibility(enemy, weaponAIData, currentRun, args)
+	mod.EnemyInvisibility(enemy, weaponAIData, args)
+end
+
 function mod.EnemyInvisibility(enemy, weaponAIData, args)
 	args = args or {}
 
@@ -42,7 +45,6 @@ function mod.EnemyInvisibility(enemy, weaponAIData, args)
 
 	if game._worldTime - enemy.LastInvisibilityTime >= weaponAIData.InvisibilityInterval then
 		ClearEffect({ Id = enemy.ObjectId, All = true })
-		SetLifeProperty({ DestinationId = enemy.ObjectId, Property = "InvulnerableFx", Value = nil })
 		enemy.SkipInvulnerableOnHitPresentation = true
 
 		local alpha = args.Alpha or 0.0
@@ -52,7 +54,7 @@ function mod.EnemyInvisibility(enemy, weaponAIData, args)
 		SetColor({ Id = enemy.ObjectId, Color = color, Duration = weaponAIData.InvisibilityFadeOutDuration })
 
 		if args.CreateAnimation then
-			CreateAnimation({ Name = args.CreateAnimation, DestinationId = enemy.ObjectId })
+			CreateAnimation({ Name = args.CreateAnimation, DestinationId = enemy.ObjectId, Scale = 1.0 })
 		end
 		if args.Animation then
 			SetAnimation({ Name = args.Animation, DestinationId = enemy.ObjectId })
@@ -61,7 +63,7 @@ function mod.EnemyInvisibility(enemy, weaponAIData, args)
 		SetThingProperty({ DestinationId = enemy.ObjectId, Property = "StopsProjectiles", Value = false })
 		enemy.PreInvisibilityImmuneToStun = GetUnitDataValue({ Id = enemy.ObjectId, Property = "ImmuneToStun" })
 		SetUnitProperty({ DestinationId = enemy.ObjectId, Property = "ImmuneToStun", Value = true })
-		SetUnitInvulnerable(enemy)
+		game.SetUnitInvulnerable(enemy, "EnemyInvisibility", { Silent = true })
 		game.wait(weaponAIData.InvisibilityFadeOutDuration, enemy.AIThreadName)
 		if enemy.Phase2VFX ~= nil then
 			StopAnimation({ Name = enemy.Phase2VFX, DestinationId = enemy.ObjectId })
@@ -73,7 +75,7 @@ function mod.EnemyInvisibility(enemy, weaponAIData, args)
 		end
 
 		if weaponAIData.PostInvisibilityFunction ~= nil then
-			game.CallFunctionName(weaponAIData.PreAttackEndFunctionName, enemy, weaponAIData, args)
+			game.CallFunctionName(weaponAIData.PostInvisibilityFunction, enemy, weaponAIData, args)
 		end
 		AngleTowardTarget({ Id = enemy.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
 	end

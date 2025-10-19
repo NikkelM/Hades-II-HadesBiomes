@@ -2,7 +2,7 @@ local function applyModificationsAndInheritObstacleData(base, modifications, add
 	-- Apply additions
 	for obstacleName, obstacleData in pairs(additions) do
 		if base[obstacleName] then
-			mod.DebugPrint("Obstacle " .. obstacleName .. " already exists, skipping", 1)
+			mod.DebugPrint("Obstacle " .. obstacleName .. " already exists, skipping", 2)
 		else
 			base[obstacleName] = obstacleData
 		end

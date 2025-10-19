@@ -1,5 +1,3 @@
--- Adds a door (Chaos gate) to the training room that allows the player to start a Hades run
-
 -- Add the setup function to the Hub room
 table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 	FunctionName = _PLUGIN.guid .. "." .. "SpawnHadesRunStartDoor",

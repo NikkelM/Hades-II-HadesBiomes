@@ -23954,9 +23954,6 @@ mod.EnemyData = {
 
 		SkipSetupSelectWeapon = true,
 
-		--InvisibilityOnHitFx = "QuickFlashRed",
-		--InvisibilityAlphaFlashOnHit = true,
-
 		OutgoingDamageModifiers =
 		{
 			HadesStoredAmmoVulnerability =

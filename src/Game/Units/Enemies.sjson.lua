@@ -23,12 +23,7 @@ local hadesEnemiesModifications = {
 	BaseSwarmer = { InheritFrom = "1_BaseEnemy", },
 	BaseSpawner = { InheritFrom = "1_BaseEnemy", },
 	BaseThief = { InheritFrom = "1_BaseEnemy", },
-	WretchAssassin = {
-		InheritFrom = "1_BaseEnemy",
-		Life = {
-			InvulnerableFx = "nil",
-		},
-	},
+	WretchAssassin = { InheritFrom = "1_BaseEnemy", },
 	-- #endregion
 
 	-- #region ASPHODEL
@@ -59,6 +54,11 @@ local hadesEnemiesModifications = {
 	HeavyRangedForkedMiniboss = {
 		-- For the player tracking
 		RotationSpeed = 20.0,
+	},
+	HadesAmmo = {
+		InheritFrom = "1_BaseEnemy",
+		RotationSpeed = 0,
+		Speed = 0,
 	},
 	-- #endregion
 
@@ -129,6 +129,41 @@ local enemyAdditions = {
 		InheritFrom = "BloodlessBerserker_Elite",
 	},
 	-- #endregion
+
+	-- #region STYX
+	{
+		Name = "ModsNikkelMHadesBiomesHadesTombstone",
+		InheritFrom = "1_BaseTrap",
+		DisplayInEditor = true,
+		ImmuneToDoTs = true,
+		ImmuneToStun = true,
+		NoAllegiance = true,
+		Life = {
+			DeathGraphic = "HadesTombstoneExplode",
+			DeathSound = "/SFX/Enemy Sounds/EnemyDeathExplode",
+			ProjectilesAlwaysPenetrate = true,
+			TriggerOnHit = true,
+		},
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "ModsNikkelMHadesBiomesHadesTombstoneSpawn",
+			AttachedAnim = "HadesStunTotemSpawnDecal",
+			Scale = 1.0,
+			Tallness = 550.0,
+			StopsProjectiles = true,
+			Points = {
+				{ X = 0,   Y = 16 },
+				{ X = 32,  Y = 0 },
+				{ X = 16,  Y = -19 },
+				{ X = -16, Y = -20 },
+				{ X = -30, Y = 1 },
+			},
+			Using = {
+				{ Name = "HadesTombstoneActivate" },
+			},
+		},
+	},
+	--#endregion
 }
 
 local enemyKeyReplacements = {}

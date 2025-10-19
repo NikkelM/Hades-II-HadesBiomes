@@ -1,6 +1,11 @@
 function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	RemoveInputBlock({ Name = "PlayTextLines" })
 
+	-- Restart Eurydice's singing if we are talking to her
+	if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
+		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
+	end
+
 	RandomSynchronize(9)
 
 	source.UpgradeOptions = {}
@@ -126,6 +131,7 @@ function mod.ModsNikkelMHadesBiomesSisyphusDropPresentation(consumable, args)
 end
 
 -- #endregion
+
 -- #region Eurydice
 function mod.ModsNikkelMHadesBiomesSingingPresentation(source, ars)
 	if source.SingingFx ~= nil then
@@ -148,8 +154,10 @@ end
 function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 	source = source or game.ActiveEnemies[514436]
 
-	game.CurrentRun.EventState[source.ObjectId] = { FunctionName = _PLUGIN.guid ..
-	"." .. "ModsNikkelMHadesBiomesSingingPresentation", Args = args }
+	game.CurrentRun.EventState[source.ObjectId] = {
+		FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSingingPresentation",
+		Args = args
+	}
 	mod.ModsNikkelMHadesBiomesSingingPresentation(source, args)
 
 	-- Taken from game.SecretMusicPlayer

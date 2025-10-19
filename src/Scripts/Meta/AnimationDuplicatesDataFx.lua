@@ -70,6 +70,30 @@ mod.HadesFxAnimationModifications = {
 	SatyrDeathAnimation = {
 		SortMode = "Isometric",
 	},
+	HadesBidentSpinSwipe = {
+		Scale = 2.9,
+		ScaleRadius = "nil",
+	},
+	HadesFlameAura = {
+		Scale = 1.0,
+		OffsetY = 175,
+		UseAttachedMarkerLocation = "null"
+	},
+	["SnowFootstepL-Hades"] = {
+		FilePath = "Dev\\blank_invisible",
+		ClearCreateAnimations = true,
+	},
+	["SnowFootstepR-Hades"] = {
+		FilePath = "Dev\\blank_invisible",
+		ClearCreateAnimations = true,
+	},
+	CerberusRockFallFx = {
+		CreateAnimations = {
+			{ Name = "CerberusRockGlow" },
+			{ Name = "CerberusRockFallStreak" },
+			{ Name = "ModsNikkelMHadesBiomesBlastWarningDecal" },
+		},
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT

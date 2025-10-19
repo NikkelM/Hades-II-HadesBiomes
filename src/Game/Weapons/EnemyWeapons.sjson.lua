@@ -82,11 +82,25 @@ local hadesWeaponsModifications = {
 	CrawlerReburrowShockwave = {
 		Projectile = "CrawlerReburrowShockwaveTouchdown",
 	},
-	-- TODO: Figure out good value
 	HadesDash = {
 		-- WeaponRange = 500
-		SelfVelocity = 4000,
-		SelfVelocityCap = 4000,
+		SelfVelocity = 2700,
+		SelfVelocityCap = 2700,
+		FireFx = "DashCrackSnowHades",
+	},
+	HadesSideDash = {
+		-- WeaponRange = 500
+		SelfVelocity = 2400,
+		SelfVelocityCap = 2400,
+		FireFx = "DashCrackSnowHades",
+	},
+	HadesBidentRecoveryDash = {
+		-- WeaponRange = 1400
+		SelfVelocity = 5100,
+		SelfVelocityCap = 5100,
+	},
+	HadesBidentStrike = {
+		SelfVelocity = 2500,
 	},
 	-- #endregion
 }
