@@ -13,12 +13,14 @@ mod.AudioFileMappings = {
 -- Some speaker names do not work (e.g. MegaeraHome)!
 mod.VoiceoverFileNames = {
 	Alecto = "Alecto",
+	-- Charon = "Charon", -- Charon already exists and was moved into Megaera_1xxxx
 	Eurydice = "Eurydice",
 	HadesField = "HadesField",
 	Megaera = "Megaera",
 	MegaeraField = "MegaeraField",
 	Minotaur = "Minotaur",
 	Patroclus = "Patroclus",
+	-- Persephone = "Persephone", -- Persephone already exists and was moved into Megaera_2xxxx
 	Sisyphus = "Sisyphus",
 	Theseus = "Theseus",
 	Tisiphone = "Tisiphone",
@@ -30,6 +32,9 @@ mod.PackageFileMappings = {
 	Asphodel = "AsphodelModsNikkelMHadesBiomes",
 	Elysium = "ElysiumModsNikkelMHadesBiomes",
 	Styx = "StyxModsNikkelMHadesBiomes",
+	Surface = "SurfaceModsNikkelMHadesBiomes",
+	-- Erebus = "ErebusModsNikkelMHadesBiomes",
+	-- Charon = "CharonModsNikkelMHadesBiomes",
 	RoomManager = "RoomManagerModsNikkelMHadesBiomes",
 }
 
@@ -371,7 +376,7 @@ mod.SjsonFileMappings = {
 	"Animations\\CharacterAnim_EnemiesBosses_Theseus",
 	-- NPCs
 	-- "Animations\\CharacterAnimationsNPCs", -- This file is copied directly
-	-- "Animations\\CharacterAnimationsNPC_Persephone",
+	"Animations\\CharacterAnimationsNPC_Persephone",
 	"Animations\\CharacterAnimationsNPC_Thanatos",
 }
 
