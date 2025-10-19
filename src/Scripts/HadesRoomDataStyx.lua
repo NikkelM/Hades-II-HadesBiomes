@@ -743,10 +743,14 @@ mod.RoomData.Styx = mod.RoomData.Styx or {
 		{
 			-- None
 		},
+		-- TODO: Remove next two after testing
+		ForceAtBiomeDepthMin = 0,
+		ForceAtBiomeDepthMax = 0,
 
 		SpawnRewardOnId = 553271,
 
-		RequiresLinked = true,
+		-- TODO: Enable below after testing
+		-- RequiresLinked = true,
 		LinkedRoom = "E_Intro",
 		Milestone = true,
 		MilestoneIcon = "BossIcon",
@@ -1003,7 +1007,7 @@ mod.RoomData.Styx = mod.RoomData.Styx or {
 		LegalEncounters = { "Empty" },
 		IntroSequenceDuration = 0.3,
 		ZoomFraction = 0.85,
-		LinkedRoom = "D_Hub",
+		LinkedRoom = "D_Boss01",
 
 		GameStateRequirements =
 		{
