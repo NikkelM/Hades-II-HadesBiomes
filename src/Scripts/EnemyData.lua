@@ -431,6 +431,7 @@ local enemyReplacements = {
 		ActivateFxPreSpawn = "nil",
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOnDeathFireProjectile",
 		OnDeathFunctionArgs = {
+			FunctionName = _PLUGIN.guid .. "." .. "HitByGraveHandsPresentation",
 			ProjectileName = "HadesGraspingHands",
 		},
 	},

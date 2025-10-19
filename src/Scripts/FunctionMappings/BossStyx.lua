@@ -506,6 +506,20 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 		table.insert(game.ScreenAnchors.StoredAmmo, screenId)
 		SetAnimation({ Name = projectileData.StoredAmmoIcon or "AmmoEmbeddedInEnemyIcon", DestinationId = screenId })
 
+		if game.ScreenAnchors.BloodstoneVignetteId == nil then
+			game.ScreenAnchors.BloodstoneVignetteId = CreateScreenObstacle({
+				Name = "BlankObstacle",
+				Group = "Combat_Menu",
+				Animation = "BloodstoneVignette",
+				X = game.ScreenCenterX,
+				Y = game.ScreenCenterY,
+				ScaleX = game.ScreenScaleX,
+				ScaleY = game.ScreenScaleY,
+			})
+		end
+		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.HitByHadesAmmoVoiceLines, true)
+		game.thread(game.InCombatText, game.CurrentRun.Hero.ObjectId, "HitByHadesAmmo", 0.8, { OffsetY = -60 })
+
 		thread(game.DropStoredAmmoHero, projectileData, storedAmmo.Id)
 		return
 	end
@@ -622,6 +636,12 @@ function mod.HadesConsumeHeal(enemy, weaponAIData, currentRun)
 		for k, animationName in pairs(weaponAIData.StopAnimationsOnEnd) do
 			StopAnimation({ DestinationId = enemy.ObjectId, Name = animationName })
 		end
+	end
+end
+
+function mod.HitByGraveHandsPresentation(victim)
+	if not GetUnitDataValue({ Id = game.CurrentRun.Hero.ObjectId, Property = "ImmuneToStun" }) then
+		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.HitByGraveHandsVoiceLines, true)
 	end
 end
 
@@ -753,7 +773,7 @@ function mod.DoHadesAssistPresentation(assistData, enemyId)
 	Move({ Id = godImage2, Angle = 8, Distance = 800, Duration = 0.2, EaseIn = 0.2, EaseOut = 1, TimeModifierFraction = 0 })
 
 	Move({ Id = wrathStreakFront, Angle = 8, Distance = 200, Duration = 0.5, EaseIn = 0.9, EaseOut = 1, TimeModifierFraction = 0 })
-	Move({ Id = playerImage, Angle = 170, Speed = 50, TimeModifierFraction = 0 })
+	-- Move({ Id = playerImage, Angle = 170, Speed = 50, TimeModifierFraction = 0 })
 
 	SetColor({ Id = wrathVignette, Color = { 0, 0, 0, 0.4 }, Duration = 0.05, TimeModifierFraction = 0 })
 
