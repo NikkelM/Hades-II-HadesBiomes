@@ -1082,9 +1082,25 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 	if game.CurrentRun.ActiveBounty then
 		message = game.CurrentRun.ActiveBounty
 	else
-		-- TODO: Custom run clear message can be used here
-		local messageData = game.GetRandomEligiblePrioritizedItem(game.GameData.RunClearMessageData,
-			screen.MessagePriorities, game.GameState.PlayedRunClearMessages, game.GameState.RemainingRunClearMessages)
+		-- Custom start
+		local priorityEligibleMessages = {}
+		local eligibleMessages = {}
+		for name, origMessage in pairs(game.GameData.ModsNikkelMHadesBiomesRunClearMessageData) do
+			if game.IsGameStateEligible(game.CurrentRun, origMessage.GameStateRequirements) then
+				if origMessage.Priority then
+					table.insert(priorityEligibleMessages, origMessage)
+				else
+					table.insert(eligibleMessages, origMessage)
+				end
+			end
+		end
+		local messageData = nil
+		if not game.IsEmpty(priorityEligibleMessages) then
+			messageData = game.GetRandomValue(priorityEligibleMessages)
+		else
+			messageData = game.GetRandomValue(eligibleMessages)
+		end
+		-- Custom end
 		if messageData ~= nil then
 			message = messageData.Name
 			game.GameState.PlayedRunClearMessages[message] = true

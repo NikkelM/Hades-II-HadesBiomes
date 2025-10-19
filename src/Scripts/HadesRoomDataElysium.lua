@@ -588,7 +588,6 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 					Cooldown = 8.0,
 				},
 			},
-			-- TODO
 			-- Diehard Fan
 			[543023] =
 			{

@@ -544,7 +544,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredNoGodBoons ~= nil then -- not implemented in mod
+	if requirements.RequiredNoGodBoons ~= nil then
 		for traitName in pairs(game.CurrentRun.Hero.TraitDictionary) do
 			if IsGodTrait(traitName, { ForShop = true }) then
 				return false
@@ -2287,19 +2287,23 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	-- if requirements.RequiredConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= requirements.RequiredConsecutiveClears then
 	if requirements.RequiredConsecutiveClears ~= nil then
-		local consecutiveModdedClears = 0
-		for k, run in game.GameState.RunHistory do
-			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
-				if run.Cleared then
-					consecutiveModdedClears = consecutiveModdedClears + 1
-				else
-					break
-				end
-			end
-		end
-		if consecutiveModdedClears ~= requirements.RequiredConsecutiveClears then
+		local hasConsecutiveClears = game.RequiredConsecutiveClearsOfRoom(source,
+			{ Name = "D_Boss01", Count = requirements.RequiredConsecutiveClears })
+		if not hasConsecutiveClears then
 			return false
 		end
+		-- for k, run in game.GameState.RunHistory do
+		-- 	if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+		-- 		if run.Cleared then
+		-- 			consecutiveModdedClears = consecutiveModdedClears + 1
+		-- 		else
+		-- 			break
+		-- 		end
+		-- 	end
+		-- end
+		-- if consecutiveModdedClears ~= requirements.RequiredConsecutiveClears then
+		-- 	return false
+		-- end
 	end
 
 	if requirements.PlayerMaxHealthFraction ~= nil and game.CurrentRun.Hero.Health / game.CurrentRun.Hero.MaxHealth >= requirements.PlayerMaxHealthFraction then
@@ -2907,12 +2911,12 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredMoneyMin ~= nil then
-		if game.CurrentRun.Money < requirements.RequiredMoneyMin then
+		if game.GameState.Resources.Money < requirements.RequiredMoneyMin then
 			return false
 		end
 	end
 	if requirements.RequiredMoneyMax ~= nil then
-		if game.CurrentRun.Money > requirements.RequiredMoneyMax then
+		if game.GameState.Resources.Money > requirements.RequiredMoneyMax then
 			return false
 		end
 	end
@@ -3027,7 +3031,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 						return false
 					end
 
-					if value.Cost and game.CurrentRun.Money == nil or game.CurrentRun.Money < value.Cost then
+					if value.Cost and game.GameState.Resources.Money == nil or game.GameState.Resources.Money < value.Cost then
 						return false
 					end
 				end
@@ -3048,7 +3052,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 						return false
 					end
 
-					if value.Cost and game.CurrentRun.Money ~= nil and game.CurrentRun.Money >= value.Cost then
+					if value.Cost and game.GameState.Resources.Money ~= nil and game.GameState.Resources.Money >= value.Cost then
 						return false
 					end
 				end
