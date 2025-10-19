@@ -1003,7 +1003,7 @@ mod.RoomData.Styx = mod.RoomData.Styx or {
 		LegalEncounters = { "Empty" },
 		IntroSequenceDuration = 0.3,
 		ZoomFraction = 0.85,
-		LinkedRoom = "D_Boss01",
+		LinkedRoom = "D_Hub",
 
 		GameStateRequirements =
 		{
