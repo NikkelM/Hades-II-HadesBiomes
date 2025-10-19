@@ -595,9 +595,22 @@ mod.MapFileMappings = {
 	["D_Mini12"] = "D_Mini12",
 	["D_Mini13"] = "D_Mini13",
 	["D_Mini14"] = "D_Mini14",
-	-- -- Surface
-	-- ["E_Intro"] = "E_Intro",
-	-- ["E_Story01"] = "E_Story01",
+	-- Surface
+	["E_Intro"] = "E_Intro",
+	["E_Story01"] = "E_Story01",
+	-- Surface - Return/Ending
+	["RoomReturn"] = "RoomReturn",
+	["Return01"] = "Return01",
+	["Return02"] = "Return02",
+	["Return03"] = "Return03",
+	["Return04"] = "Return04",
+	["Return05"] = "Return05",
+	["Return06"] = "Return06",
+	-- -- Erebus/Challenge
+	-- ["RoomChallenge01"] = "RoomChallenge01",
+	-- ["RoomChallenge02"] = "RoomChallenge02",
+	-- ["RoomChallenge03"] = "RoomChallenge03",
+	-- ["RoomChallenge04"] = "RoomChallenge04",
 	-- -- Charon
 	-- ["CharonFight01"] = "CharonFight01",
 }

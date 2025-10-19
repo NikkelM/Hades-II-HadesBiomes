@@ -223,6 +223,54 @@ local newMapGroups = {
       }
     },
   },
+  {
+    Name = "Surface",
+    Maps = {
+      {
+        Name = "Return*",
+      },
+      {
+        Name = "E_*",
+      },
+    },
+    Using = {
+      {
+        -- "Screens\\RoomTransition\\RoomTransition0020",
+        -- "Fx\\EndingBoatRipple",
+      },
+    },
+  },
+  {
+    Name = "Erebus",
+    Map = {
+      Name = "RoomChallenge*",
+    },
+    Using = {
+      {
+        -- "Fx\\HydraToothSmokeDark",
+      },
+    },
+  },
+  {
+    Name = "Charon",
+    Maps = {
+      {
+        Name = "Charon*",
+      },
+    },
+    Using = {
+      {
+        -- "Fx\\CharonMeleeArc",
+        -- "Fx\\CharonMeleeArcLong",
+        -- "Fx\\CharonWaveStraight",
+        -- "Fx\\CharonGhostCharge",
+        -- "Fx\\CharonGhostChargeImpact",
+        -- "Fx\\CharonGhostChargePhaseIn",
+        -- "Fx\\CharonMoveTrail",
+        -- "Fx\\Travel_CharonPillar_01_Disintegrate",
+      },
+    },
+  },
 }
 
 local mapGroupsFile = rom.path.combine(rom.paths.Content(), "Game/MapGroups.sjson")
