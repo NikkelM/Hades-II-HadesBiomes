@@ -160,6 +160,7 @@ local function on_ready()
 		import "Game/Animations/EnemyAnimations.sjson.lua"
 		import "Game/Animations/GUI_Boons_VFX.sjson.lua"
 		import "Game/Animations/GUI_Portraits_VFX.sjson.lua"
+		import "Game/Animations/GUI_Screens_VFX.sjson.lua"
 		import "Game/Animations/GUI_VFX.sjson.lua"
 		import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 		import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"

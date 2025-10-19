@@ -106,6 +106,13 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 			runsCleared = runsCleared + 1
 			if not game.CurrentRun.ActiveBounty and game.CurrentRun.BiomesReached ~= nil then
 				moddedRunsCleared = moddedRunsCleared + 1
+				-- Custom fields
+				if game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache < game.CurrentRun.ShrinePointsCache then
+					game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache = game.CurrentRun.ShrinePointsCache
+				end
+				if game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache > game.CurrentRun.GameplayTime then
+					game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache = game.CurrentRun.GameplayTime
+				end
 			end
 		end
 		for k, run in ipairs(game.GameState.RunHistory) do

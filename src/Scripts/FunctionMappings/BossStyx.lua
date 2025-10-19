@@ -324,7 +324,7 @@ function mod.HadesKillPresentation(unit, args)
 	local deathPanSettings = args
 	ClearEffect({ Ids = { victimId, killerId }, All = true, BlockAll = true, })
 	-- StopSuper()
-	-- ClearStoredAmmoHero()
+	mod.ClearStoredAmmoHero()
 	mod.DestroyHadesFightObstacles()
 	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking" } })
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
@@ -399,8 +399,7 @@ function mod.HadesKillPresentation(unit, args)
 	mod.HarpyKillPresentation(unit, args)
 	game.wait(1.0, game.RoomThreadName)
 	RemoveInputBlock({ Name = "HadesKillPresentation" })
-	-- TODO: Show Modded screen
-	OpenRunClearScreen()
+	mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 	game.CurrentRun.ActiveBiomeTimer = false
 	game.CurrentRun.CurrentRoom.Encounter.BossKillPresentation = false
 	game.thread(game.CheckQuestStatus, { Silent = true })
@@ -867,4 +866,240 @@ end
 function mod.RevulnerablePlayerAfterShout()
 	game.waitUnmodified(0.4)
 	game.SetPlayerVulnerable("Super")
+end
+
+function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
+	game.AltAspectRatioFramesShow()
+	AddInputBlock({ Name = "OpenRunClearScreen" })
+	PlaySound({ Name = "/Leftovers/Menu Sounds/AscensionConfirm2" })
+	-- TODO: Check required
+	LoadVoiceBank({ Name = "Chaos", IgnoreAssert = true })
+
+	game.SessionMapState.PrevShowGameplayTimer = game.ConfigOptionCache.ShowGameplayTimer
+	SetConfigOption({ Name = "ShowGameplayTimer", Value = false })
+
+	local prevRecordTime = nil
+	local prevRecordShrinePoints = nil
+	-- TODO: How to handle bounties? How is it done in vanilla?
+	prevRecordTime = game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache or 999999
+	prevRecordShrinePoints = game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache or 0
+
+	game.RecordRunCleared()
+
+	-- TODO: Custom voicelines?
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.RunClearedVoiceLines)
+
+	local screen = game.DeepCopyTable(game.ScreenData.RunClear) or {}
+	screen.DamageDealtStartX = game.ScreenWidth - screen.DamageDealtRightOffset
+	screen.DamageDealtStartY = screen.DamageDealtStartY + (game.ScreenCenterNativeOffsetY * 2)
+	screen.DamageTakenStartY = screen.DamageTakenStartY + (game.ScreenCenterNativeOffsetY * 2)
+	-- TODO: How to handle bounties? How is it done in vanilla?
+	screen.ComponentData.VictoryBackground.Animation = "ModsNikkelMHadesBiomes_VictoryScreenIllustration_Elysium"
+	screen.ComponentData.TitleText = screen.ComponentData.UnderworldTitleText
+	screen.ComponentData.RunClearMessageText = screen.ComponentData.UnderworldRunClearMessageText
+
+	screen.ComponentData.UnderworldTitleText = nil
+	screen.ComponentData.UnderworldRunClearMessageText = nil
+	screen.ComponentData.SurfaceTitleText = nil
+	screen.ComponentData.SurfaceRunClearMessageText = nil
+
+	local args = {}
+	game.HideMoneyUI(args)
+	game.HideRerollUI(args)
+	game.HideResourceUIs(args)
+	game.HideObjectivesUI()
+
+	if game.MapState.FamiliarUnit ~= nil and game.MapState.FamiliarUnit.StopAIOnRunClear then
+		game.CallFunctionName(game.MapState.FamiliarUnit.StopAIFunctionName, game.MapState.FamiliarUnit)
+	end
+
+	game.OnScreenOpened(screen)
+	game.CreateScreenFromData(screen, screen.ComponentData)
+	game.OnScreenOpened(screen)
+	game.FrameState.RequestUpdateHealthUI = true
+
+	local components = screen.Components
+
+	-- Badge
+	if game.GameState.BadgeRank ~= nil then
+		local badgeData = game.BadgeData[game.BadgeOrderData[game.GameState.BadgeRank]]
+		if badgeData ~= nil then
+			SetAnimation({ DestinationId = components.BadgeRankIcon.Id, Name = badgeData.Icon })
+		end
+	end
+
+	game.wait(0.3)
+
+	local traitTrayScreen = game.OpenTraitTrayScreen({
+		DontDuckAudio = true,
+		DisableTooltips = true,
+		HideCloseButton = true,
+		HideInfoButton = true,
+		HideBounty = true,
+		HideBackgroundTint = true,
+		HideRoomCount = true,
+		HideCategoryTitleText = true,
+		AutoPin = true,
+		SkipInputHandlers = true,
+		OverwriteSelf = { IgnoreOtherScreenInput = false, },
+	}) or {}
+
+	PlaySound({ Name = "/SFX/Menu Sounds/IrisMenuSwitch" })
+	SetConfigOption({ Name = "TooltipShowDelay", Value = 999999 })
+
+	-- ClearTime
+	ModifyTextBox({ Id = components.ClearTimeValue.Id, Text = game.GetTimerString(game.CurrentRun.GameplayTime, 2), })
+	if game.CurrentRun.GameplayTime <= prevRecordTime then
+		wait(0.1)
+		SetAlpha({ Id = components.ClearTimeRecord.Id, Duration = game.HUDScreen.FadeOutDuration, Fraction = 1.0 })
+	end
+	game.wait(0.05)
+
+	-- ShrinePoints
+	if (game.CurrentRun.ShrinePointsCache or 0) > 0 then
+		SetAlpha({ Id = components.ShrinePointsLabel.Id, Duration = game.HUDScreen.FadeOutDuration, Fraction = 1.0 })
+		SetAlpha({ Id = components.ShrinePointsValue.Id, Duration = game.HUDScreen.FadeOutDuration, Fraction = 1.0 })
+		ModifyTextBox({ Id = components.ShrinePointsValue.Id, Text = CurrentRun.ShrinePointsCache })
+		if game.CurrentRun.ShrinePointsCache > prevRecordShrinePoints then
+			game.wait(0.1)
+			SetAlpha({ Id = components.ShrinePointsRecord.Id, Duration = game.HUDScreen.FadeOutDuration, Fraction = 1.0 })
+		end
+		game.wait(0.05)
+	end
+
+	-- Damage Dealt
+	local damageLocationX = screen.DamageDealtStartX
+	local damageLocationY = screen.DamageDealtStartY
+	local mappedDamageDealtRecord = {}
+	for sourceName, amount in pairs(game.CurrentRun.DamageDealtByHeroRecord) do
+		local mappedName = screen.DamageSourceMap[sourceName] or sourceName
+		mappedDamageDealtRecord[mappedName] = (mappedDamageDealtRecord[mappedName] or 0) + amount
+	end
+	for sourceName, amount in pairs(game.CurrentRun.DamageDealtByCharmedEnemiesRecord) do
+		local mappedName = "RunClearScreen_DamageDealtAllies"
+		mappedDamageDealtRecord[mappedName] = (mappedDamageDealtRecord[mappedName] or 0) + amount
+	end
+	local damageRecordItems = {}
+	for sourceName, amount in pairs(mappedDamageDealtRecord) do
+		table.insert(damageRecordItems, { SourceName = sourceName, Amount = amount })
+	end
+	table.sort(damageRecordItems, game.DamageRecordSort)
+	for i, damageRecordItem in ipairs(damageRecordItems) do
+		if i > screen.MaxDamageDealtItems then
+			break
+		end
+
+		local damageSourceComponent = game.CreateScreenComponent({
+			Name = "BlankObstacle",
+			Group = "Combat_Menu_TraitTray_Overlay_Text",
+			X = damageLocationX,
+			Y = damageLocationY
+		}) or {}
+		damageSourceComponent.Data = screen.DamageSourceFormat
+		screen.Components["DamageDealtSource" .. damageRecordItem.SourceName] = damageSourceComponent
+		local damageSourceFormat = game.ApplyLocalizedProperties(game.ShallowCopyTable(screen.DamageSourceFormat))
+		damageSourceFormat.Id = damageSourceComponent.Id
+		damageSourceFormat.Text = screen.DamageSourceTextOverrides[damageRecordItem.SourceName] or
+				damageRecordItem.SourceName
+		CreateTextBox(damageSourceFormat)
+
+		local damageAmountComponent = game.CreateScreenComponent({
+			Name = "BlankObstacle",
+			Group = "Combat_Menu_TraitTray_Overlay_Text",
+			X = damageLocationX + screen.DamageDealtAmountOffsetX,
+			Y = damageLocationY
+		}) or {}
+		damageAmountComponent.Data = screen.DamageAmountFormat
+		screen.Components["DamageDealtAmount" .. damageRecordItem.SourceName] = damageAmountComponent
+		local damageAmountFormat = game.ShallowCopyTable(screen.DamageAmountFormat) or {}
+		damageAmountFormat.Id = damageAmountComponent.Id
+		damageAmountFormat.Text = "{$TempTextData.DamageRecordAmount:N}"
+		damageAmountFormat.LuaKey = "TempTextData"
+		damageAmountFormat.LuaValue = { DamageRecordAmount = round(damageRecordItem.Amount) }
+		CreateTextBox(damageAmountFormat)
+
+		damageLocationY = damageLocationY + screen.DamageDealtSpacingY
+
+		game.wait(0.05)
+	end
+
+	-- Damage Taken
+	damageLocationX = screen.DamageDealtStartX
+	damageLocationY = screen.DamageTakenStartY
+	local mappedDamageTakenRecord = {}
+	for sourceName, amount in pairs(game.CurrentRun.DamageTakenFromRecord) do
+		if game.EnemyData[sourceName] ~= nil then
+			sourceName = game.GetGenusName(game.EnemyData[sourceName])
+		end
+		local mappedName = screen.DamageSourceMap[sourceName] or sourceName or ""
+		mappedDamageTakenRecord[mappedName] = (mappedDamageTakenRecord[mappedName] or 0) + amount
+	end
+	damageRecordItems = {}
+	for sourceName, amount in pairs(mappedDamageTakenRecord) do
+		table.insert(damageRecordItems, { SourceName = sourceName, Amount = amount })
+	end
+	table.sort(damageRecordItems, game.DamageRecordSort)
+	for i, damageRecordItem in ipairs(damageRecordItems) do
+		if i > screen.MaxDamageDealtItems then
+			break
+		end
+
+		local damageSourceComponent = game.CreateScreenComponent({
+			Name = "BlankObstacle",
+			Group = "Combat_Menu_TraitTray_Overlay_Text",
+			X = damageLocationX,
+			Y = damageLocationY
+		}) or {}
+		damageSourceComponent.Data = screen.DamageSourceFormat
+		screen.Components["DamageTakenSource" .. damageRecordItem.SourceName] = damageSourceComponent
+		local damageSourceFormat = game.ApplyLocalizedProperties(game.ShallowCopyTable(screen.DamageSourceFormat))
+		damageSourceFormat.Id = damageSourceComponent.Id
+		damageSourceFormat.Text = screen.DamageSourceTextOverrides[damageRecordItem.SourceName] or
+				damageRecordItem.SourceName
+		CreateTextBox(damageSourceFormat)
+
+		local damageAmountComponent = game.CreateScreenComponent({
+			Name = "BlankObstacle",
+			Group = "Combat_Menu_TraitTray_Overlay_Text",
+			X = damageLocationX + screen.DamageDealtAmountOffsetX,
+			Y = damageLocationY
+		}) or {}
+		damageAmountComponent.Data = screen.DamageAmountFormat
+		screen.Components["DamageTakenAmount" .. damageRecordItem.SourceName] = damageAmountComponent
+		local damageAmountFormat = game.ShallowCopyTable(screen.DamageAmountFormat) or {}
+		damageAmountFormat.Id = damageAmountComponent.Id
+		damageAmountFormat.Text = game.round(damageRecordItem.Amount)
+		CreateTextBox(damageAmountFormat)
+
+		damageLocationY = damageLocationY + screen.DamageDealtSpacingY
+
+		game.wait(0.05)
+	end
+
+	game.wait(0.05)
+
+	-- Clear Message
+	local message = nil
+	if game.CurrentRun.ActiveBounty then
+		message = game.CurrentRun.ActiveBounty
+	else
+		-- TODO: Custom run clear message can be used here
+		local messageData = game.GetRandomEligiblePrioritizedItem(game.GameData.RunClearMessageData,
+			screen.MessagePriorities, game.GameState.PlayedRunClearMessages, game.GameState.RemainingRunClearMessages)
+		if messageData ~= nil then
+			message = messageData.Name
+			game.GameState.PlayedRunClearMessages[message] = true
+			game.CurrentRun.VictoryMessage = message
+		end
+	end
+	game.RunClearMessagePresentation(screen, message)
+
+	game.killTaggedThreads(game.CombatUI.HideThreadName)
+	RemoveInputBlock({ Name = "OpenRunClearScreen" })
+
+	game.thread(game.HandleScreenInput, traitTrayScreen)
+	SetAlpha({ Id = components.CloseButton.Id, Duration = game.HUDScreen.FadeInDuration, Fraction = 1.0 })
+	SetAlpha({ Id = traitTrayScreen.Components.ScrollLeft.Id, Duration = game.HUDScreen.FadeInDuration, Fraction = 1.0 })
+	SetAlpha({ Id = traitTrayScreen.Components.ScrollRight.Id, Duration = game.HUDScreen.FadeInDuration, Fraction = 1.0 })
+	game.HandleScreenInput(screen)
 end
