@@ -153,9 +153,8 @@ function mod.BossIntroHades(eventSource, args)
 	end
 end
 
--- TODO: Test
 function mod.ClearShadeWeapons()
-	local weaponIds = GetIdsByType({ Names = game.EnemyData.ShadeNaked.AIPickupType })
+	local weaponIds = GetIdsByType({ Names = game.EnemyData.ShadeNaked.AIPickupTypes })
 	Destroy({ Ids = weaponIds })
 end
 
@@ -175,7 +174,6 @@ function mod.DestroyHadesFightObstacles()
 	end
 end
 
--- TODO: Stop Hexes
 function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	boss.InTransition = true
 	if boss.IsInvisible then
