@@ -177,7 +177,6 @@ end
 
 -- TODO: Stop Hexes
 function mod.HadesPhaseTransition(boss, currentRun, aiStage)
-	-- TODO: Called very late?
 	boss.InTransition = true
 	if boss.IsInvisible then
 		boss.IsInvisible = false
@@ -199,23 +198,22 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	-- end
 
 	game.SetPlayerInvulnerable("HadesPhaseTransition")
-	-- ClearStoredAmmoHero()
-	mod.DestroyHadesFightObstacles()
 
 	-- To prevent shades from spawning ShadeNaked
 	game.MapState.BlockRespawns = true
 	game.MapState.BlockSpawns = true
+	mod.ClearStoredAmmoHero()
+	mod.DestroyHadesFightObstacles()
 	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId }, BlockDeathWeapons = true })
 	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking" }, ExcludeNames = { "HadesCerberusAssist" } })
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
+
 	SetAnimation({ Name = "HadesBattleKnockDown", DestinationId = boss.ObjectId })
 	SetGoalAngle({ Id = boss.ObjectId, Angle = 270 })
 	mod.ClearShadeWeapons()
-	game.MapState.BlockRespawns = false
-	game.MapState.BlockSpawns = false
 	game.thread(game.LastKillPresentation, boss)
 
-	local ammoIds = GetIdsByType({ Name = "AmmoPack" })
+	local ammoIds = GetIdsByType({ Name = "LobAmmoPack" })
 	SetObstacleProperty({ Property = "Magnetism", Value = 3000, DestinationIds = ammoIds })
 	SetObstacleProperty({
 		Property = "MagnetismSpeedMax",
@@ -233,7 +231,7 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	game.ProcessTextLines(boss.BossPresentationNextStageTextLineSets)
 	game.ProcessTextLines(boss.BossPresentationNextStageRepeatableTextLineSets)
 
-	if game.GameState.TextLinesRecord["HadesR1FirstWin"] then
+	if game.GameState.TextLinesRecord["LordHadesR1FirstWin"] then
 		game.wait(0.5, game.RoomThreadName)
 	else
 		game.wait(2.0, game.RoomThreadName)
@@ -282,9 +280,16 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	game.BossHealthBarPresentation(boss)
 
 	game.wait(0.65, boss.AIThreadName)
+	game.MapState.BlockRespawns = false
+	game.MapState.BlockSpawns = false
 
 	game.SetPlayerVulnerable("HadesPhaseTransition")
-	FireWeaponFromUnit({ Id = boss.ObjectId, Weapon = "HadesRubbleClear", DestinationId = game.CurrentRun.Hero.ObjectId, AutoEquip = true })
+
+	-- Adapted from aiStage.FireWeapon
+	boss.WeaponName = "HadesRubbleClear"
+	local aiData = game.GetWeaponAIData(boss)
+	boss.ForcedWeaponInterrupt = nil
+	game.DoAttackerAILoop(boss, aiData)
 
 	-- Fire passive weapons
 	if aiStage.DumbFireWeapons ~= nil then
@@ -312,7 +317,6 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 end
 
 function mod.HadesKillPresentation(unit, args)
-	DebugPrint({ Text = "Hades Kill Presentation: " })
 	unit.InTransition = true
 	game.CurrentRun.CurrentRoom.Encounter.BossKillPresentation = true
 	local killerId = game.CurrentRun.Hero.ObjectId
@@ -376,10 +380,10 @@ function mod.HadesKillPresentation(unit, args)
 	end
 	game.thread(game.PlayVoiceLines, unit.DefeatedVoiceLines, true, unit)
 
-	if game .. GameState.TextLinesRecord["LordHadesFirstDefeat"] then
-		wait(2.8, game.RoomThreadName)
+	if game.GameState.TextLinesRecord["LordHadesDefeated01"] then
+		game.wait(2.8, game.RoomThreadName)
 	else
-		wait(4.0, game.RoomThreadName)
+		game.wait(4.0, game.RoomThreadName)
 	end
 
 	game.ProcessTextLines(unit.BossPresentationOutroTextLineSets)
@@ -396,7 +400,7 @@ function mod.HadesKillPresentation(unit, args)
 	game.wait(1.0, game.RoomThreadName)
 	RemoveInputBlock({ Name = "HadesKillPresentation" })
 	-- TODO: Show Modded screen
-	-- ShowRunClearScreen()
+	OpenRunClearScreen()
 	game.CurrentRun.ActiveBiomeTimer = false
 	game.CurrentRun.CurrentRoom.Encounter.BossKillPresentation = false
 	game.thread(game.CheckQuestStatus, { Silent = true })
@@ -448,7 +452,7 @@ function mod.HadesTeleport(enemy, weaponAIData, args)
 end
 
 function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerArgs)
-	if game.SessionMapState.HandlingDeath or (triggerArgs and triggerArgs.BlockSpawns) then
+	if game.SessionMapState.HandlingDeath or game.MapState.BlockSpawns or (triggerArgs and triggerArgs.BlockSpawns) then
 		return
 	end
 
@@ -541,6 +545,19 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 
 	game.SetupUnit(newUnit)
 	Destroy({ Id = spawnPointId })
+end
+
+function mod.ClearStoredAmmoHero()
+	local hero = game.CurrentRun.Hero
+	if hero ~= nil and hero.StoredAmmo ~= nil then
+		hero.StoredAmmo = {}
+	end
+	if game.ScreenAnchors.StoredAmmo ~= nil then
+		Destroy({ Ids = game.ScreenAnchors.StoredAmmo })
+		game.ScreenAnchors.StoredAmmo = nil
+	end
+
+	game.thread(game.CastEmbeddedPresentationEnd)
 end
 
 function mod.ModsNikkelMHadesBiomesAttackAndDie(enemy)

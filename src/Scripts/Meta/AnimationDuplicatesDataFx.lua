@@ -74,6 +74,11 @@ mod.HadesFxAnimationModifications = {
 		Scale = 2.9,
 		ScaleRadius = "nil",
 	},
+	HadesFlameAura = {
+		Scale = 1.0,
+		OffsetY = 175,
+		UseAttachedMarkerLocation = "null"
+	},
 	-- TODO: These two are removed for now, as the footsteps are not aligned with Hades
 	-- TODO: They aren't actually removed properly
 	["SnowFootstepL-Hades"] = {

@@ -1444,6 +1444,8 @@ local enemyModifications = {
 	-- #endregion
 	-- #region STYX - Bosses
 	Hades = {
+		-- It's misaligned/not tracking correctly
+		Phase2VFX = mod.NilValue,
 		BossDifficultyShrineRequiredCount = 4,
 		SelectCustomSpawnOptions = _PLUGIN.guid .. "." .. "SetupHadesSpawnOptions",
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HadesKillPresentation",
