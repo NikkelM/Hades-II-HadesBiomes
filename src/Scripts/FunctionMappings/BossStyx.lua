@@ -243,7 +243,7 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 
 	game.SetMusicSection(2)
 	if boss.CurrentPhase == 2 then
-		-- TODO
+		-- TODO: This track doesn't exist yet/need to fix music first
 		SetSoundCueValue({ Names = { "Duel" }, Id = game.AudioState.MusicId, Value = 1 })
 	end
 
@@ -661,9 +661,9 @@ end
 
 function mod.HandleHadesAssistPresentation(enemy, weaponAIData, currentRun)
 	game.thread(game.PlayVoiceLines, enemy.AssistActivatedVoiceLines)
-	mod.DoHadesAssistPresentation(weaponAIData, enemy.ObjectId)
+	local fullscreenAlertDisplacementFx = mod.DoHadesAssistPresentation(weaponAIData, enemy.ObjectId)
 	game.thread(mod.DoCerberusAssistPresentation)
-	mod.DoHadesAssistPresentationPostWeapon(weaponAIData, enemy.ObjectId)
+	mod.DoHadesAssistPresentationPostWeapon(weaponAIData, enemy.ObjectId, fullscreenAlertDisplacementFx)
 end
 
 function mod.DoHadesAssistPresentation(assistData, enemyId)
@@ -817,6 +817,8 @@ function mod.DoHadesAssistPresentation(assistData, enemyId)
 	SetAlpha({ Id = fullscreenAlertDisplacementFx, Fraction = 0, Duration = 0.06 })
 
 	game.waitUnmodified(0.06)
+
+	return fullscreenAlertDisplacementFx
 end
 
 function mod.DoCerberusAssistPresentation()
@@ -849,14 +851,13 @@ function mod.DoCerberusAssistPresentation()
 	AdjustFullscreenBloom({ Name = "Off", Duration = 0.8 })
 end
 
-function mod.DoHadesAssistPresentationPostWeapon(assistData, enemyId)
+function mod.DoHadesAssistPresentationPostWeapon(assistData, enemyId, fullscreenAlertDisplacementFx)
 	game.AddSimSpeedChange("Assist", { Fraction = 0.3, LerpTime = 0.3 })
 	SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 1.0, ValueChangeType = "Absolute", DataValue = false, DestinationNames = { "HeroTeam" } })
 	game.waitUnmodified(assistData.AssistPostWeaponSlowDuration or 0)
 	SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 1.0, ValueChangeType = "Absolute", DataValue = false, DestinationNames = { "HeroTeam" } })
 	game.RemoveSimSpeedChange("Assist", { LerpTime = 0.3 })
-	-- TODO: Is undefined global, should probably be third argument
-	game.thread(game.CleanUpShoutPresentation, fullscreenAlertDisplacementFx)
+	game.thread(game.CleanUpShoutPresentation, nil, nil, { fullscreenAlertDisplacementFx })
 	game.ShowCombatUI("AssistPresentationPortrait")
 	game.thread(mod.RevulnerablePlayerAfterShout)
 end
@@ -870,7 +871,6 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 	game.AltAspectRatioFramesShow()
 	AddInputBlock({ Name = "OpenRunClearScreen" })
 	PlaySound({ Name = "/Leftovers/Menu Sounds/AscensionConfirm2" })
-	-- TODO: Check required
 	LoadVoiceBank({ Name = "Chaos", IgnoreAssert = true })
 
 	game.SessionMapState.PrevShowGameplayTimer = game.ConfigOptionCache.ShowGameplayTimer
@@ -884,7 +884,6 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 
 	game.RecordRunCleared()
 
-	-- TODO: Custom voicelines?
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.RunClearedVoiceLines)
 
 	local screen = game.DeepCopyTable(game.ScreenData.RunClear) or {}
