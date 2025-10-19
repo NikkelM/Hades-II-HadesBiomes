@@ -224,7 +224,7 @@ local newMapGroups = {
     },
   },
   {
-    Name = "Surface",
+    Name = "SurfaceModsNikkelMHadesBiomes",
     Maps = {
       {
         Name = "Return*",
@@ -241,7 +241,7 @@ local newMapGroups = {
     },
   },
   {
-    Name = "Erebus",
+    Name = "ErebusModsNikkelMHadesBiomes",
     Map = {
       Name = "RoomChallenge*",
     },
@@ -252,7 +252,7 @@ local newMapGroups = {
     },
   },
   {
-    Name = "Charon",
+    Name = "CharonModsNikkelMHadesBiomes",
     Maps = {
       {
         Name = "Charon*",
