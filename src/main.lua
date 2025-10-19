@@ -199,6 +199,11 @@ local function on_ready()
 		-- Done first, as the EncounterData depends on the EnemySets
 		import "Scripts/EnemySets.lua"
 
+		-- Porting over voiceline definitions
+		-- Needs to be done before they are used in room data, weapon data or enemy data
+		import "Scripts/HadesAudioData.lua"
+		import "Scripts/AudioData.lua"
+
 		import "Scripts/Meta/EnemyTrapDataHandler.lua"
 		import "Scripts/HadesEnemyData.lua"
 		import "Scripts/HadesNPCData.lua"
@@ -227,11 +232,6 @@ local function on_ready()
 		import "Scripts/RoomDataElysium.lua"
 		import "Scripts/HadesRoomDataStyx.lua"
 		import "Scripts/RoomDataStyx.lua"
-
-		-- Porting over voiceline definitions
-		-- Needs to be done before they are used in HadesWeaponData
-		import "Scripts/HadesAudioData.lua"
-		import "Scripts/AudioData.lua"
 
 		-- Loads Weapon data
 		import "Scripts/HadesWeaponData.lua"

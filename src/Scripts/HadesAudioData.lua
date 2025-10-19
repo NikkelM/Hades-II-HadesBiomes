@@ -53,7 +53,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		-- What did I tell you?
 		{ Cue = "/VO/Hades_0337" },
 	},
-	-- TODO: Where do they play
 	HadesPostBossVoiceLines = {
 		Queue = "Interrupt",
 		{
