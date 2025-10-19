@@ -156,6 +156,14 @@ local roomModifications = {
 		},
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceHades",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "CheckRunEndPresentation",
+		ObstacleData = {
+			-- Makes the exit door interactable
+			-- FinalBossExitDoor
+			[552590] = {
+				Template = "FinalBossExitDoor",
+				ActivateIds = { 552590, },
+			},
+		},
 	},
 
 	-- OTHER

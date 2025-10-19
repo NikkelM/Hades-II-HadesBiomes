@@ -405,6 +405,7 @@ end
 
 function mod.CheckRunEndPresentation(currentRun, door)
 	AddInputBlock({ Name = "CheckRunEndPresentation" })
+	-- TODO: This is what doesn't allow entering the surface after the ending anymore
 	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
 		currentRun.CurrentRoom.SkipLoadNextMap = true
 		-- TODO: Check?
