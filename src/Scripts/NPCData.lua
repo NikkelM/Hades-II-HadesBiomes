@@ -207,6 +207,10 @@ local npcModifications = {
 			},
 		},
 	},
+	ModsNikkelMHadesBiomes_NPC_Persephone_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+	},
 }
 
 -- Before adding them to the game, we need to apply some additional modifications to NPCs

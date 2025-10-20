@@ -184,6 +184,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 									entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
 								elseif entry.Cue:find("^/VO/Charon_") then
 									entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+								elseif entry.Cue:find("^/VO/Persephone_") then
+									entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_2")
 								end
 							end
 						end

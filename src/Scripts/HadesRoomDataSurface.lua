@@ -71,7 +71,6 @@ mod.RoomData.Surface = mod.RoomData.Surface or {
 
 		ObstacleData = {
 			[552607] = {
-				-- TODO
 				OnUsedFunctionName = "LeaveRoomWithNoDoor",
 				OnUsedFunctionArgs = { NextMap = "E_Story01", ObjectId = 552607 },
 				InteractDistance = 175,

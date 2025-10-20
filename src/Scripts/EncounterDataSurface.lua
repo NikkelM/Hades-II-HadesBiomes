@@ -11,12 +11,14 @@ mod.UpdateField(encounterDataSurface, "Generated", "ModsNikkelMHadesBiomesGenera
 
 -- For tables that should be replaced. The modifications append table data!
 -- Can still use modifications if the modified table did not exist beforehand
-local encounterReplacements = {
-	-- Story_Persephone_01 = {},
-}
+local encounterReplacements = {}
 
 local encounterModifications = {
-	-- Story_Persephone_01 = {},
+	Story_Persephone_01 = {
+		StartRoomUnthreadedEvents = {
+			[1] = { Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "ModsNikkelMHadesBiomes_NPC_Persephone_01" }, }, },
+		},
+	},
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataSurface, encounterModifications, encounterReplacements)

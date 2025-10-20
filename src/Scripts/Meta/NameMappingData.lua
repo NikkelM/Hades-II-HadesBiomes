@@ -225,6 +225,7 @@ mod.HadesHelpTextCopyKeys = {
 	UseTalkToPatroclus = true,
 	UseTalkToCerberus = true,
 	UseTalkToEurydice = true,
+	UseTalkToFemaleGhost = true,
 	UseFinalBossDoor = true,
 	UseCerberusDoor = true,
 	UseStyxWarpDoor = true,
@@ -387,7 +388,9 @@ mod.HadesHelpTextCopyKeys = {
 	NPC_ThanatosUnnamed_01 = true,
 	NPC_Thanatos_01 = true,
 	Thanatos = true,
-	-- NPC_Persephone_01 = true,
+	-- In Hades II, this is "Queen of the Underworld"
+	NPC_Persephone_01 = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
+	-- This is the same as NPC_Persephone_01 in Hades II
 	-- NPC_Persephone_01A = true,
 	NPC_Persephone_Unnamed_01 = true,
 	NPC_Persephone_Home_01 = true,
