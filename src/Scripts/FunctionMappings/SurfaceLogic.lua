@@ -66,7 +66,6 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	game.wait(0.03)
 
 	AddInputBlock({ Name = "MoveHeroToRoomPosition" })
-	local initialSpeed = GetUnitDataValue({ Id = currentRun.Hero.ObjectId, Property = "Speed" })
 	SetUnitProperty({ DestinationId = currentRun.Hero.ObjectId, Property = "CollideWithObstacles", Value = false })
 
 	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == nil then
@@ -77,13 +76,13 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 
 	AdjustZoom({ Fraction = game.CurrentRun.CurrentRoom.IntroZoomFraction or 0.7, Duration = 0.0 })
 	FadeIn({ Duration = 4.9 })
-	PanCamera({ Id = currentRoom.CameraEndPoint, Duration = roomIntroSequenceDuration, EaseIn = 0.0, EaseOut = 0.0 })
+	PanCamera({ Id = currentRoom.CameraEndPoint, Duration = roomIntroSequenceDuration, EaseIn = 0.0, EaseOut = 1.5 })
 	game.FullScreenFadeInAnimation("RoomTransitionOutBlack")
 
 	-- TODO
 	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
 	-- TODO
-	game.thread(game.PlayVoiceLines, GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
 
 	if currentRoom.HeroEndPoint ~= nil then
 		Move({ Id = currentRun.Hero.ObjectId, DestinationId = currentRoom.HeroEndPoint, Mode = "Precise" })
@@ -96,13 +95,11 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 			Notify = notifyName
 		})
 		game.waitUntil(notifyName)
+		game.wait(1.0)
 	end
 	Stop({ Id = currentRun.Hero.ObjectId })
 
-	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == nil then
-		-- currentRoom.DisableWeapons = true -- This makes the room disable the dash as well
-		-- currentRoom.BlockCombat = true
-	else
+	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] ~= nil then
 		game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
 	end
 
