@@ -809,6 +809,24 @@ game.GameData.ModsNikkelMHadesBiomesRunClearMessageData = {
 			},
 		},
 	},
+	ClearNoDamageTakenFromBosses = {
+		InheritFrom = { "DefaultMessage" },
+		GameStateRequirements = {
+			{
+				FunctionName = "ClearedBossEncountersWithNoDamage",
+				FunctionArgs = {
+					Encounters = {
+						"BossHarpy1",
+						"BossHarpy2",
+						"BossHarpy3",
+						"BossHydra",
+						"BossTheseusAndMinotaur",
+						"BossHades",
+					},
+				},
+			},
+		},
+	},
 	-- #endregion
 }
 
