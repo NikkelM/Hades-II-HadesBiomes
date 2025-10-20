@@ -37,8 +37,30 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "SunriseOverlook", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "SunriseOverlookBackToRoom", },
 		},
+
+		ObstacleData = {
+			[552607] = {
+				OnUsedFunctionName = "AttemptUseDoor",
+				SetupEvents = {
+					{
+						FunctionName = "SetupDefaultDoor",
+					},
+					{
+						FunctionName = "GenericPresentation",
+						Args = {
+							AddToGroup = "ExitDoors",
+						},
+					}
+				},
+				HideRewardPreview = true,
+			},
+		},
 	},
+
 	E_Story01 = {
+		DistanceTriggers = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "CottageBloom", },
+		},
 	},
 }
 
