@@ -125,34 +125,34 @@ function mod.HasSeenRoomInRun(run, roomName)
 end
 
 function mod.GetFastestRunClearTime(currentRun)
-	local fastestTime = 999999
-	if currentRun.Cleared then
-		fastestTime = currentRun.GameplayTime
-	end
-	for k, prevRun in pairs(game.GameState.RunHistory) do
-		if prevRun.Cleared and prevRun.GameplayTime ~= nil and prevRun.GameplayTime < fastestTime then
-			fastestTime = prevRun.GameplayTime
-		end
-	end
-	return fastestTime
+	-- local fastestTime = 999999
+	-- if currentRun.Cleared then
+	-- 	fastestTime = currentRun.GameplayTime
+	-- end
+	-- for k, prevRun in pairs(game.GameState.RunHistory) do
+	-- 	if prevRun.Cleared and prevRun.BiomesReached.Tartarus and prevRun.GameplayTime ~= nil and prevRun.GameplayTime < fastestTime then
+	-- 		fastestTime = prevRun.GameplayTime
+	-- 	end
+	-- end
+	return game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache or 999999
 end
 
 function mod.GetHighestShrinePointRunClear(currentRun, args)
-	args = args or {}
-	local highestPoints = 0
-	if currentRun ~= nil and currentRun.Cleared and currentRun.ShrinePointsCache ~= nil then
-		if args.RequiredBiome == nil or currentRun.BiomesReached[args.RequiredBiome] then
-			highestPoints = currentRun.ShrinePointsCache
-		end
-	end
-	for runIndex, prevRun in ipairs(game.GameState.RunHistory) do
-		if args.RequiredBiome == nil or (prevRun.BiomesReached ~= nil and prevRun.BiomesReached[args.RequiredBiome]) then
-			if prevRun.Cleared and prevRun.ShrinePointsCache ~= nil and prevRun.ShrinePointsCache > highestPoints then
-				highestPoints = prevRun.ShrinePointsCache
-			end
-		end
-	end
-	return highestPoints
+	-- args = args or {}
+	-- local highestPoints = 0
+	-- if currentRun ~= nil and currentRun.Cleared and currentRun.ShrinePointsCache ~= nil then
+	-- 	if args.RequiredBiome == nil or currentRun.BiomesReached[args.RequiredBiome] then
+	-- 		highestPoints = currentRun.ShrinePointsCache
+	-- 	end
+	-- end
+	-- for runIndex, prevRun in ipairs(game.GameState.RunHistory) do
+	-- 	if prevRun.BiomesReached.Tartarus and (args.RequiredBiome == nil or (prevRun.BiomesReached ~= nil and prevRun.BiomesReached[args.RequiredBiome])) then
+	-- 		if prevRun.Cleared and prevRun.ShrinePointsCache ~= nil and prevRun.ShrinePointsCache > highestPoints then
+	-- 			highestPoints = prevRun.ShrinePointsCache
+	-- 		end
+	-- 	end
+	-- end
+	return game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache or 0
 end
 
 function mod.RunHasOneOfTraits(run, traits)
@@ -1872,8 +1872,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredUnitAlive ~= nil then
 		local unitId = GetClosestUnitOfType({
 			Id = game.CurrentRun.Hero.ObjectId,
-			DestinationName = requirements
-					.RequiredUnitAlive
+			DestinationName = requirements.RequiredUnitAlive
 		})
 		if not IsAlive({ Id = unitId }) then
 			return false
@@ -1895,8 +1894,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredUnitNotAlive ~= nil then
 		local unitId = GetClosestUnitOfType({
 			Id = game.CurrentRun.Hero.ObjectId,
-			DestinationName = requirements
-					.RequiredUnitNotAlive
+			DestinationName = requirements.RequiredUnitNotAlive
 		})
 		if IsAlive({ Id = unitId }) then
 			return false
@@ -1914,8 +1912,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredUnitNotDead ~= nil then
 		local unitId = GetClosestUnitOfType({
 			Id = game.CurrentRun.Hero.ObjectId,
-			DestinationName = requirements
-					.RequiredUnitNotDead
+			DestinationName = requirements.RequiredUnitNotDead
 		})
 		if game.ActiveEnemies[unitId] == nil or game.ActiveEnemies[unitId].IsDead then
 			return false
@@ -2156,7 +2153,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredMaxLastStands ~= nil then
-		if GetNumLastStands(game.CurrentRun.Hero) > requirements.RequiredMaxLastStands then
+		if game.TableLength(game.CurrentRun.Hero.LastStands) > requirements.RequiredMaxLastStands then
 			return false
 		end
 	end
