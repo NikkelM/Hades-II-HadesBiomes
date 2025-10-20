@@ -1,47 +1,4 @@
--- TODO: Is this even needed?
-function mod.RoomEntranceSurface(currentRun, currentRoom)
-	game.HideCombatUI("Surface")
-	AdjustZoom({ Fraction = game.CurrentRun.CurrentRoom.IntroZoomFraction or 0.7, Duration = 0.0 })
-	FadeIn({ Duration = 5.5 })
-	PanCamera({ Id = currentRoom.CameraEndPoint, Duration = currentRoom.IntroSequenceDuration or 4, EaseIn = 0.0, EaseOut = 0.0 })
-	game.FullScreenFadeInAnimation("RoomTransitionOutBlack")
-
-	AddInputBlock({ Name = "MoveHeroToRoomPosition" })
-	SetUnitProperty({ DestinationId = currentRun.Hero.ObjectId, Property = "CollideWithObstacles", Value = false })
-
-	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == nil then
-		game.SetupMelWalk()
-	end
-
-	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
-	-- TODO
-	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
-
-	if currentRoom.HeroEndPoint ~= nil then
-		Move({ Id = currentRun.Hero.ObjectId, DestinationId = currentRoom.HeroEndPoint, Mode = "Precise" })
-
-		local notifyName = "WithinDistance" .. currentRoom.HeroEndPoint
-		NotifyWithinDistance({
-			Id = currentRun.Hero.ObjectId,
-			DestinationId = currentRoom.HeroEndPoint,
-			Distance = 80,
-			Notify = notifyName
-		})
-		game.waitUntil(notifyName)
-	end
-	-- Stop({ Id = currentRun.Hero.ObjectId })
-
-	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == nil then
-		game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
-	end
-
-	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = currentRun.Hero.ObjectId })
-	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
-
-	LockCamera({ Id = currentRun.Hero.ObjectId, Duration = 2.0 })
-	game.UnzeroMouseTether("RoomEntrance")
-end
-
+-- #region E_Intro
 function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	game.HideCombatUI("Surface")
 	game.ZeroMouseTether("RoomEntrance")
@@ -102,6 +59,9 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] ~= nil then
 		game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
 	end
+
+	-- TODO: Debugging only
+	game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
 
 	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = currentRun.Hero.ObjectId })
 	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
@@ -239,6 +199,64 @@ function mod.SunriseOverlookBackToRoom(room, args)
 
 		game.killTaggedThreads("OverlookThread")
 	end
+end
+
+-- #endregion
+-- #endregion
+
+-- #region E_Story01
+function mod.RoomEntranceSurface(currentRun, currentRoom)
+	game.HideCombatUI("Surface")
+	game.ZeroMouseTether("RoomEntrance")
+	AdjustZoom({ Fraction = game.CurrentRun.CurrentRoom.IntroZoomFraction or 0.7, Duration = 0.0 })
+	FadeIn({ Duration = 5.5 })
+	PanCamera({ Id = currentRoom.CameraEndPoint, Duration = currentRoom.IntroSequenceDuration or 4, EaseIn = 0.0, EaseOut = 1.5 })
+	game.FullScreenFadeInAnimation("RoomTransitionOutBlack")
+
+	AddInputBlock({ Name = "MoveHeroToRoomPosition" })
+	SetUnitProperty({ DestinationId = currentRun.Hero.ObjectId, Property = "CollideWithObstacles", Value = false })
+
+	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == nil then
+		game.SetupMelWalk()
+	end
+
+	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
+	-- TODO
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
+
+	if currentRoom.HeroEndPoint ~= nil then
+		Move({ Id = currentRun.Hero.ObjectId, DestinationId = currentRoom.HeroEndPoint, Mode = "Precise" })
+
+		local notifyName = "WithinDistance" .. currentRoom.HeroEndPoint
+		NotifyWithinDistance({
+			Id = currentRun.Hero.ObjectId,
+			DestinationId = currentRoom.HeroEndPoint,
+			Distance = 110,
+			Notify = notifyName
+		})
+		game.waitUntil(notifyName)
+		game.wait(1.0)
+	end
+	Stop({ Id = currentRun.Hero.ObjectId })
+
+	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] ~= nil then
+		game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
+	end
+
+	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = currentRun.Hero.ObjectId })
+	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
+
+	LockCamera({ Id = currentRun.Hero.ObjectId, Duration = 2.0 })
+	game.UnzeroMouseTether("RoomEntrance")
+end
+
+function mod.CottageBloom()
+	game.wait(0.30)
+	AdjustColorGrading({ Name = "CottageTrellis", Duration = 2, Delay = 0.0, })
+	AdjustFullscreenBloom({ Name = "CottageBloom", Duration = 2.0 })
+	game.wait(2.5)
+	AdjustColorGrading({ Name = "Off", Duration = 3, Delay = 0.0, })
+	AdjustFullscreenBloom({ Name = "Off", Duration = 3.0 })
 end
 
 -- #endregion
