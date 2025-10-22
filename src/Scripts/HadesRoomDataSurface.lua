@@ -42,7 +42,6 @@ mod.RoomData.Surface = mod.RoomData.Surface or {
 			["FishingPointActive"] = "FishingPointActive_NoShadow",
 		},
 
-		-- TODO - Melinoe animations from the Surface
 		Binks = {
 			"ZagreusWalk2_Bink",
 			"ZagreusWalkStop2_Bink",

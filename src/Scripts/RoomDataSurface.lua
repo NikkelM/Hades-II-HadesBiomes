@@ -21,12 +21,13 @@ local roomModifications = {
 
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceSurface",
 		BlockCombat = true,
+		UnloadWeapons = true,
+		BlockFamiliars = true,
 		BlockRunProgressUI = true,
 	},
 
 	-- OPENING ROOMS
 	E_Intro = {
-		InheritFrom = { "BaseSurface", "BiomeStartRoom", },
 		Starting = true,
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceE_Intro",
 

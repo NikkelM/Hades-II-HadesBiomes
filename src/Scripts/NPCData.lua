@@ -223,8 +223,10 @@ local npcModifications = {
 			PersephoneFirstMeeting = {
 				[7] = {
 					PostLineThreadedFunctionName = mod.NilValue,
-					PostLineFunctionName = _PLUGIN.guid .. "." .. "TimePassesPresentation"
-				}
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "TimePassesPresentation",
+					-- Animation looks weird on Melinoe
+					PostLineAnim = mod.NilValue,
+				},
 			},
 		},
 	},
