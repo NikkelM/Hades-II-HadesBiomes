@@ -243,6 +243,9 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 		game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
 	end
 
+	-- TODO: Debugging only
+	game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
+
 	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = currentRun.Hero.ObjectId })
 	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
 
@@ -257,6 +260,56 @@ function mod.CottageBloom()
 	game.wait(2.5)
 	AdjustColorGrading({ Name = "Off", Duration = 3, Delay = 0.0, })
 	AdjustFullscreenBloom({ Name = "Off", Duration = 3.0 })
+end
+
+function mod.TimePassesPresentation(source, args)
+	FadeOut({ Color = game.Color.Black, Duration = 0.5 })
+	if args.GlobalVoiceLines ~= nil then
+		game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[args.GlobalVoiceLines])
+	end
+
+	if args.PersephoneMusicFullBlast ~= nil then
+		SetSoundCueValue({
+			Names = { "Harp", "Strings", "Room", "Trombones", "WoodWinds", "Percussion" },
+			Id = game.AudioState.MusicId,
+			Value = 1,
+			Duration = 1.2
+		})
+		SetVolume({ Id = game.AudioState.MusicId, Value = 1.0, Duration = 1.2 })
+	end
+
+	game.wait(args.PreTextWait or 1)
+
+	if args.HeroAnim ~= nil then
+		SetAnimation({ Name = args.HeroAnim, DestinationId = game.CurrentRun.Hero.ObjectId })
+	end
+
+	game.thread(game.DisplayInfoBanner, nil, {
+		TitleText = args.Text or "LoungeIntermissionMessage",
+		TitleTextOffsetX = 81,
+		LangTitleTextOffsetX = {
+			{ Code = "el", Value = 0 },
+			{ Code = "ja", Value = 0 },
+			{ Code = "ko", Value = 0 },
+			{ Code = "ru", Value = 0 },
+			{ Code = "uk", Value = 0 },
+		},
+		TextRevealSound = "/Leftovers/Menu Sounds/EmoteExcitement",
+		Color = game.Color.Gold,
+		TextColor = game.Color.White,
+		TextOffsetY = 20,
+		TitleFont = "SpectralSCLightTitling",
+		SubtitleFont = "SpectralSCLightTitling",
+		Layer = "ScreenOverlay",
+		AnimationName = game.CurrentRun.CurrentRoom.LocationAnimName or "LocationBackingIrisSmallIn",
+		AnimationOutName = game.CurrentRun.CurrentRoom.LocationAnimOutName or "LocationBackingIrisSmallOut",
+		AdditionalAnimation = "GodHoodRays",
+	})
+
+	game.wait(args.PostTextWait or 5)
+	game.wait(1.0)
+
+	FadeIn({ Color = game.Color.Black, Duration = 0.5 })
 end
 
 -- #endregion

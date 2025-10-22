@@ -210,6 +210,14 @@ local npcModifications = {
 	ModsNikkelMHadesBiomes_NPC_Persephone_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		InteractTextLineSets = {
+			PersephoneFirstMeeting = {
+				[7] = {
+					PostLineThreadedFunctionName = mod.NilValue,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "TimePassesPresentation"
+				}
+			},
+		},
 	},
 }
 
