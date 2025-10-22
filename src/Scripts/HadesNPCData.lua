@@ -131,13 +131,14 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- 		{ Cue = "/VO/ThanatosField_0184", RequiredAnyTextLines = { "ThanatosGift10" } },
 	-- 	},
 	-- },
+	-- Manually replaced /VO/Persephone_xxxx with /VO/Megaera_2xxxx
 	PersephoneGardenFirstGreeting = {
 		WithinDistance = 1200,
-		StatusAnimation = "StatusIconWantsToTalk",
+		-- StatusAnimation = "StatusIconWantsToTalk",
 		VoiceLines = {
 			{
 				-- Who's there?
-				{ Cue = "/VO/Persephone_0019" },
+				{ Cue = "/VO/Megaera_20019" },
 			},
 			{
 				PreLineWait = 0.5,
@@ -151,7 +152,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 				BreakIfPlayed = true,
 
 				-- Hello, indeed!
-				{ Cue = "/VO/Persephone_0327" },
+				{ Cue = "/VO/Megaera_20327" },
 			},
 			{
 				PreLineWait = 0.3,
@@ -162,6 +163,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			},
 		},
 	},
+	-- Manually replaced /VO/Persephone_xxxx with /VO/Megaera_2xxxx
 	PersephoneGardenGreeting = {
 		WithinDistance = 1250,
 		-- PostTriggerAngleTowardTarget = true,
@@ -173,7 +175,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 				ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
 
 				-- Zagreus...
-				{ Cue = "/VO/Persephone_0031" },
+				{ Cue = "/VO/Megaera_20031" },
 			},
 			{
 				{
@@ -182,7 +184,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 					ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
 
 					-- You're back...?
-					{ Cue = "/VO/Persephone_0034" },
+					{ Cue = "/VO/Megaera_20034" },
 				},
 				{
 					RequiredQueuedTextLines = "PersephoneMeeting08",
@@ -201,25 +203,25 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 				RandomRemaining = true,
 
 				-- Zagreus!
-				{ Cue = "/VO/Persephone_0030", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
+				{ Cue = "/VO/Megaera_20030", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
 				-- Zagreus?
-				{ Cue = "/VO/Persephone_0032", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
+				{ Cue = "/VO/Megaera_20032", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
 				-- You're back!
-				{ Cue = "/VO/Persephone_0033" },
+				{ Cue = "/VO/Megaera_20033" },
 				-- Ah, you're back.
-				{ Cue = "/VO/Persephone_0035" },
+				{ Cue = "/VO/Megaera_20035" },
 				-- My son!
-				{ Cue = "/VO/Persephone_0036" },
+				{ Cue = "/VO/Megaera_20036" },
 				-- Is that you, Zagreus?
-				{ Cue = "/VO/Persephone_0037", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
+				{ Cue = "/VO/Megaera_20037", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
 				-- Oh, it's you!
-				{ Cue = "/VO/Persephone_0038" },
+				{ Cue = "/VO/Megaera_20038" },
 				-- Is that you?
-				{ Cue = "/VO/Persephone_0039" },
+				{ Cue = "/VO/Megaera_20039" },
 				-- Zagreus, you're back!
-				{ Cue = "/VO/Persephone_0040", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
+				{ Cue = "/VO/Megaera_20040", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
 				-- Welcome back, my son.
-				{ Cue = "/VO/Persephone_0041" },
+				{ Cue = "/VO/Megaera_20041" },
 			},
 			{
 				PreLineWait = 0.5,
@@ -13392,7 +13394,7 @@ mod.NPCData = mod.NPCData or {
 					"That's quite all right; I do. {#DialogueItalicFormat}In the name of Persephone, the Queen{#PreviousFormat}!! Open the gates!"
 				},
 			},
-			-- TODO: 
+			-- TODO:
 			-- Ending01 scene in DeathLoopData
 			-- more events in NPC_Persephone_Home_01
 		},
