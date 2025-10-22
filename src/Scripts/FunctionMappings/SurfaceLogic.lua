@@ -312,4 +312,34 @@ function mod.TimePassesPresentation(source, args)
 	FadeIn({ Color = game.Color.Black, Duration = 0.5 })
 end
 
+function mod.SetupPersephoneMusic(eventSource, args)
+	args = args or {}
+	local stems = { "Room", "Trombones", "Percussion", "WoodWinds" }
+	if args.FullBlast then
+		SetSoundCueValue({
+			Names = { "Harp", "Strings", "Room", "WoodWinds", "Trombones", "Percussion" },
+			Id = game.AudioState.MusicId,
+			Value = 1,
+			Duration = 1.25
+		})
+		SetVolume({ Id = game.AudioState.MusicId, Value = 1, Duration = 10 })
+	elseif args.Mom then
+		stems = { "Room", "Trombones", "WoodWinds" }
+		SetSoundCueValue({ Names = stems, Id = game.AudioState.MusicId, Value = 0, Duration = 3 })
+		SetVolume({ Id = game.AudioState.MusicId, Value = 0.95, Duration = 3 })
+	elseif args.Son then
+		stems = { "Room", "Trombones", "Percussion" }
+		SetSoundCueValue({ Names = stems, Id = game.AudioState.MusicId, Value = 0, Duration = 3 })
+		SetVolume({ Id = game.AudioState.MusicId, Value = 0.95, Duration = 3 })
+	else
+		SetSoundCueValue({ Names = stems, Id = game.AudioState.MusicId, Value = 0, Duration = 3 })
+		SetVolume({ Id = game.AudioState.MusicId, Value = 0.95, Duration = 3 })
+	end
+end
+
+function mod.SurfaceKillHero(source, args)
+	game.wait(args.WaitTime or 0)
+	game.KillHero(game.CurrentRun.Hero, args)
+end
+
 -- #endregion

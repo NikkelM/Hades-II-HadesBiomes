@@ -22,9 +22,18 @@ local function applyNPCChoiceMappings(npcData, mappings)
 							end
 
 							-- Do other replacements to each of the textlines in the group
-							for property, replacement in pairs(mappingData.AlwaysReplaceIfExist or {}) do
-								if textLineSet[property] then
-									textLineSet[property] = replacement
+							for property, replacementMapping in pairs(mappingData.AlwaysReplaceIfExist or {}) do
+								if textLineSet[property] and textLineSet[property] == replacementMapping.Find then
+									textLineSet[property] = replacementMapping.Replace
+								end
+							end
+
+							-- Do inner replacements if they are requested
+							for property, replacementMapping in pairs(mappingData.InnerAlwaysReplaceIfExist or {}) do
+								for _, lineData in ipairs(textLineSet) do
+									if lineData[property] and lineData[property] == replacementMapping.Find then
+										lineData[property] = replacementMapping.Replace
+									end
 								end
 							end
 						end
@@ -238,7 +247,10 @@ local npcChoiceMappings = {
 		PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
 		PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
 		AlwaysReplaceIfExist = {
-			OnQueuedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
+			OnQueuedFunctionName = {
+				Find = "MusicianMusic",
+				Replace = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
+			},
 		},
 	},
 	NPC_Patroclus_01 = {
@@ -246,6 +258,19 @@ local npcChoiceMappings = {
 		TextToMatch = { "Patroclus_OfferText02", "Patroclus_OfferText03", "Patroclus_OfferText04", "Patroclus_OfferText05" },
 		PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
 		PrePortraitExitFunctionArgs = mod.PresetEventArgs.PatroclusBenefitChoices,
+	},
+	ModsNikkelMHadesBiomes_NPC_Persephone_01 = {
+		TextLineGroups = { "InteractTextLineSets" },
+		InnerAlwaysReplaceIfExist = {
+			PreLineThreadedFunctionName = {
+				Find = "SetupPersephoneMusic",
+				Replace = _PLUGIN.guid .. "." .. "SetupPersephoneMusic",
+			},
+			PostLineThreadedFunctionName = {
+				Find = "SurfaceKillHero",
+				Replace = _PLUGIN.guid .. "." .. "SurfaceKillHero",
+			},
+		},
 	},
 }
 

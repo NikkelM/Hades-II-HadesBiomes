@@ -39,6 +39,22 @@ local newData = {
 		HoldLastFrame = false,
 		ChainTo = "MelTalkGifting01ReturnToIdle"
 	},
+	{
+		Name = "ZagreusInteractionComeHither_Start",
+		InheritFrom = "Melinoe_Hug_Start",
+	},
+	{
+		Name = "ZagreusInteractionComeHither_Hold",
+		InheritFrom = "Melinoe_Hug_FireLoop",
+	},
+	{
+		Name = "ZagreusInteractionComeHither_End",
+		InheritFrom = "Melinoe_Hug_End",
+	},
+	{
+		Name = "ZagreusInjured_IdleToSick",
+		InheritFrom = "MelinoeIdleWeaponless",
+	},
 	-- {
 	-- 	Name = "ZagreusDeathFullscreen",
 	-- 	FilePath = "Screens\\ZagreusDeadPool\\ZagreusDeadPool",
