@@ -1446,6 +1446,7 @@ local enemyModifications = {
 	-- #endregion
 	-- #region STYX - Bosses
 	Hades = {
+		DestroyDelay = 0,
 		-- It's misaligned/not tracking correctly
 		Phase2VFX = mod.NilValue,
 		BossDifficultyShrineRequiredCount = 4,
