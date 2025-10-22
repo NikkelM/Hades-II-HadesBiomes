@@ -27,13 +27,32 @@ end)
 
 -- The animation on the run start Chaos gate is defined on a custom function
 modutil.mod.Path.Wrap("FullScreenFadeOutAnimation", function(base, animationName, colorGradeName)
-	if game.CurrentHubRoom == nil and game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun  then
+	if game.CurrentHubRoom == nil and game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		animationName = "ModsNikkelMHadesBiomesRoomTransitionIn"
 	end
 	base(animationName, colorGradeName)
 end)
 
--- Currently disabled, as the music gets hidden too much by the Mel voicelines
+modutil.mod.Path.Context.Wrap('DeathPresentation', function(currentRun, killer, deathArgs)
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		modutil.mod.Path.Wrap('DisplayInfoBanner', function(base, source, infoArgs)
+			if infoArgs.Text == "DeathMessage" then
+				-- Normal death during a run
+				infoArgs.Text = "ModsNikkelMHadesBiomes_DeathMessage"
+			elseif infoArgs.Text == "OutroDeathMessageAlt" or infoArgs.Text == "OutroDeathMessageTrueEnding" then
+				if currentRun.CurrentRoom.Name == "E_Story01" then
+					-- True ending death in Persephone's cottage
+					infoArgs.Text = "OutroDeathMessage"
+				else
+				-- The run was cleared
+				infoArgs.Text = "PostEndingDeathMessage"
+				end
+			end
+			base(source, infoArgs)
+		end)
+	end
+end)
+
 modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		-- Destroy any IDs that we marked as such. E.g. Alecto rage meter or Asphodel door reward front animation
