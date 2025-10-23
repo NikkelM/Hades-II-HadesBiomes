@@ -50,6 +50,10 @@ local surfaceRoomModifications = {
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRideAnimationSetup" },
 		},
+		BlockCombat = true,
+		UnloadWeapons = true,
+		BlockFamiliars = true,
+		BlockRunProgressUI = true,
 	},
 	Return02 = {
 		RoomSetName = "Surface",
@@ -58,6 +62,10 @@ local surfaceRoomModifications = {
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return03", } },
 		},
+		BlockCombat = true,
+		UnloadWeapons = true,
+		BlockFamiliars = true,
+		BlockRunProgressUI = true,
 	},
 	Return03 = {
 		RoomSetName = "Surface",
@@ -66,6 +74,10 @@ local surfaceRoomModifications = {
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return04", } },
 		},
+		BlockCombat = true,
+		UnloadWeapons = true,
+		BlockFamiliars = true,
+		BlockRunProgressUI = true,
 	},
 	Return04 = {
 		RoomSetName = "Surface",
@@ -73,6 +85,10 @@ local surfaceRoomModifications = {
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return05", } },
 		},
+		BlockCombat = true,
+		UnloadWeapons = true,
+		BlockFamiliars = true,
+		BlockRunProgressUI = true,
 	},
 	Return05 = {
 		RoomSetName = "Surface",
@@ -80,6 +96,10 @@ local surfaceRoomModifications = {
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return06", } },
 		},
+		BlockCombat = true,
+		UnloadWeapons = true,
+		BlockFamiliars = true,
+		BlockRunProgressUI = true,
 	},
 	Return06 = {
 		RoomSetName = "Surface",
@@ -90,6 +110,10 @@ local surfaceRoomModifications = {
 			[3] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRideOutro" },
 			[4] = { FunctionName = _PLUGIN.guid .. "." .. "SurfaceKillHero", Args = {} },
 		},
+		BlockCombat = true,
+		UnloadWeapons = true,
+		BlockFamiliars = true,
+		BlockRunProgressUI = true,
 	},
 }
 

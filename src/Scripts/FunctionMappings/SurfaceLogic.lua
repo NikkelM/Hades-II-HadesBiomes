@@ -91,7 +91,16 @@ function mod.DisplaySurfaceLocationText(currentRun, currentRoom)
 	game.thread(game.CheckLocationUnlock, nil, { Biome = "Surface" })
 end
 
-function mod.LeaveRoomWithNoDoor(source, args)
+function mod.LeaveRoomWithNoDoor(source, args, textLines, screen)
+	-- For the transition to the boat during the ending
+	if game.CurrentRun.CurrentRoom.Name == "E_Story01" then
+		if screen ~= nil and screen.PortraitId ~= nil then
+			screen.PortraitId = nil
+		end
+		-- Prevent Charon from greeting Melinoe on entering the boat in the ending scene
+		game.EnemyData.NPC_Charon_01.PostActivateEvents[2].GameStateRequirements = { { Path = { "CurrentRun", "CurrentRoom", "RoomSetName" }, IsNone = { "Surface" }, }, }
+	end
+
 	local door = { ObjectId = args.ObjectId, Room = game.CreateRoom(game.RoomData[args.NextMap]) }
 	if args.ExitSound ~= nil then
 		PlaySound({ Name = args.ExitSound })

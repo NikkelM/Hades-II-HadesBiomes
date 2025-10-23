@@ -63,6 +63,8 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "CottageBloom", },
 		},
 		ExitFunctionName = _PLUGIN.guid .. "." .. "SurfaceToBoatRideExit",
+		-- Blocks the Centaur and other on-room-start events from triggering during the ending
+		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen"},
 	},
 }
 
