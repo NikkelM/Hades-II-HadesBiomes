@@ -5,23 +5,16 @@ mod.RoomData.Surface = mod.RoomData.Surface or {
 		LegalEncounters = { "Surface" },
 		RichPresence = "#RichPresence_Surface",
 
-		-- TODO
 		FadeOutAnimation = "RoomTransitionInBlack",
 		EntranceFunctionName = "RoomEntranceSurface",
 		LocationText = "Location_Surface",
 		LocationTextShort = "Location_Surface",
-		-- TODO
 		DisableWeaponsExceptDash = true,
 		HideCombatUI = true,
-		-- TODO
 		HideEncounterText = true,
-		-- TODO
 		HideLowHealthShroud = true,
-		-- TODO
 		BlockDoorHealFromPrevious = true,
-		-- TODO
 		HideGoldGainFx = true,
-		-- TODO
 		BlockTraitSetup = true,
 		FlipHorizontalChance = 0.0,
 		NumExits = 1,
