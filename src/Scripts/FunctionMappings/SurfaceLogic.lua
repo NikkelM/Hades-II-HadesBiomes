@@ -362,9 +362,8 @@ function mod.SurfaceBoatScenePan(eventSource)
 	local charonId = 559285
 	local boatId = 559284
 
-	-- TODO: Charon
 	game.ActivatePrePlacedUnits(eventSource, { Ids = { 559285 }, CheckConversations = false })
-	SetAnimation({ DestinationId = 559285, Name = "Charon_IdleShop" })
+	SetAnimation({ DestinationId = 559285, Name = "Charon_Idle" })
 
 	PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/NauticalBellCharon", Id = boatId })
 	SetAlpha({ Id = game.ScreenAnchors.DialogueBackgroundId, Fraction = 0.0, Duration = 0.5 })
