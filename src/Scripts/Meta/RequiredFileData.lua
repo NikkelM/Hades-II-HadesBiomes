@@ -369,6 +369,14 @@ mod.BikFileNames = {
 	"ZagreusEndingBoatIdleFidget1_Bink",
 	"ZagreusEndingBoatIdleFidget2_Bink",
 	-- #endregion
+	-- #region ZAGREUS
+	"ZagreusStart_Bink",
+	"ZagreusIdle_Bink",
+	"ZagreusWalkStop2_Bink",
+	"ZagreusWalk2_Bink",
+	"ZagreusRun_Bink",
+	"ZagreusStop_Bink",
+	-- #endregion
 }
 
 mod.CustomBikFileNames = {

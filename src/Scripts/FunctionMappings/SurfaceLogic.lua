@@ -28,6 +28,8 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == nil then
 		game.SetupMelWalk()
 	else
+		-- Custom, as Zagreus needs a slower speed for his run animation to not look weird
+		SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
 		roomIntroSequenceDuration = 0.95
 	end
 	game.ToggleCombatControl({ "Rush" }, false)
@@ -59,10 +61,8 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 
 	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] ~= nil then
 		game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
+		SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
 	end
-
-	-- TODO: Debugging only
-	game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
 
 	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = currentRun.Hero.ObjectId })
 	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
@@ -236,6 +236,9 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 
 	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == nil then
 		game.SetupMelWalk()
+	else
+		-- Custom, as Zagreus needs a slower speed for his run animation to not look weird
+		SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
 	end
 	game.ToggleCombatControl({ "Rush" }, false)
 
@@ -260,10 +263,8 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 
 	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] ~= nil then
 		game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
+		SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
 	end
-
-	-- TODO: Debugging only
-	game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
 
 	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = currentRun.Hero.ObjectId })
 	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })

@@ -19,6 +19,18 @@ local roomModifications = {
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerSurfaceIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerSurfaceOut",
 
+		-- Swap the player model to Zagreus
+		-- TODO: Dialogue animations
+		SwapAnimations = {
+			["MelinoeIdle"] = "ModsNikkelMHadesBiomes_ZagreusIdle",
+			["MelinoeWalkStart"] = "ModsNikkelMHadesBiomes_ZagreusWalk2",
+			["MelinoeWalk"] = "ModsNikkelMHadesBiomes_ZagreusWalk2",
+			["MelinoeWalkStop"] = "ModsNikkelMHadesBiomes_ZagreusWalk2Stop",
+			["MelinoeStart"] = "ModsNikkelMHadesBiomes_ZagreusStart",
+			["MelinoeRun"] = "ModsNikkelMHadesBiomes_ZagreusRun",
+			["MelinoeStop"] = "ModsNikkelMHadesBiomes_ZagreusStop",
+		},
+
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceSurface",
 		BlockCombat = true,
 		UnloadWeapons = true,
