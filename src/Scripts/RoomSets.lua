@@ -152,7 +152,14 @@ local newRoomSets = {
 
 	Surface = {
 		"E_Intro",
-		"E_Story01"
+		"E_Story01",
+
+		"Return01",
+		"Return02",
+		"Return03",
+		"Return04",
+		"Return05",
+		"Return06",
 	},
 }
 

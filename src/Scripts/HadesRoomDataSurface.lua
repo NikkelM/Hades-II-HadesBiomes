@@ -302,7 +302,6 @@ mod.RoomData.Surface = mod.RoomData.Surface or {
 			-- TODO
 			DeathPresentationFunctionName = "SurfaceDeathPresentation",
 		},
-		-- TODO
 		ExitFunctionName = "SurfaceToBoatRideExit",
 
 		EnterVoiceLines = {

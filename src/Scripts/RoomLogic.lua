@@ -18,7 +18,7 @@ end)
 modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	base(currentRoom)
 
-	-- TODO: Challenge, Charon and Return? What Roomsets are they?
+	-- TODO: Challenge, Charon? What Roomsets are they?
 	local moddedRoomSets = {
 		["Tartarus"] = true,
 		["Asphodel"] = true,

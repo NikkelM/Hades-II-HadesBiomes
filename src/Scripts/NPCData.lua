@@ -228,6 +228,17 @@ local npcModifications = {
 					PostLineAnim = mod.NilValue,
 				},
 			},
+			PersephoneReturnsHome01 = {
+				[8] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "SurfaceBoatScenePan",
+				},
+				[9] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "LeaveRoomWithNoDoor",
+				},
+				[15] = {
+					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRideIntro",
+				},
+			},
 		},
 	},
 }

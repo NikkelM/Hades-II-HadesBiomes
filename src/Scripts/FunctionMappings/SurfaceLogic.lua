@@ -91,6 +91,14 @@ function mod.DisplaySurfaceLocationText(currentRun, currentRoom)
 	game.thread(game.CheckLocationUnlock, nil, { Biome = "Surface" })
 end
 
+function mod.LeaveRoomWithNoDoor(source, args)
+	local door = { ObjectId = args.ObjectId, Room = game.CreateRoom(game.RoomData[args.NextMap]) }
+	if args.ExitSound ~= nil then
+		PlaySound({ Name = args.ExitSound })
+	end
+	game.LeaveRoom(game.CurrentRun, door)
+end
+
 -- #region Overlook
 function mod.SunriseOverlook(room, args)
 	if not game.GameState.Flags.Overlook then
@@ -340,6 +348,222 @@ end
 function mod.SurfaceKillHero(source, args)
 	game.wait(args.WaitTime or 0)
 	game.KillHero(game.CurrentRun.Hero, args)
+end
+
+-- #endregion
+-- #region Return/TrueEnding
+
+function mod.SurfaceBoatScenePan(eventSource)
+	-- Custom start
+	Activate({ Ids = { 571470 } })
+	-- Custom end
+	local zagreusId = game.CurrentRun.Hero.ObjectId
+	local persephoneId = 559274
+	local charonId = 559285
+	local boatId = 559284
+
+	-- TODO: Charon
+	game.ActivatePrePlacedUnits(eventSource, { Ids = { 559285 }, CheckConversations = false })
+	SetAnimation({ DestinationId = 559285, Name = "Charon_IdleShop" })
+
+	PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/NauticalBellCharon", Id = boatId })
+	SetAlpha({ Id = game.ScreenAnchors.DialogueBackgroundId, Fraction = 0.0, Duration = 0.5 })
+
+	PanCamera({ Id = 560953, Duration = 13.0, OffsetX = -500, OffsetY = -60 })
+	FocusCamera({ Fraction = 1.0, Duration = 13.0 })
+
+	game.wait(1.0)
+	PlaySound({ Name = "/Leftovers/World Sounds/BigSplash", Id = charonId })
+
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.SurfaceBoatSightedVoiceLines)
+
+	game.wait(1.5)
+	AngleTowardTarget({ Id = zagreusId, DestinationId = charonId })
+
+	game.wait(4.5)
+
+	SetAlpha({ Id = game.ScreenAnchors.DialogueBackgroundId, Fraction = 1.0, Duration = 0.5 })
+end
+
+function mod.HandleReturnBoatRideIntro(eventSource, args)
+	AddInputBlock({ Name = "BoatRideIntro" })
+
+	local heroId = game.CurrentRun.Hero.ObjectId
+	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
+	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Persephone_01" })
+	local charonId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Charon_01" })
+
+	game.ProcessTextLines(game.ActiveEnemies[persephoneId].InteractTextLineSets)
+
+	mod.BoatSoundId = PlaySound({ Name = "/Leftovers/World Sounds/CaravanWaterMovingLoop", Id = heroBoatId })
+
+	StopSound({ Id = game.AudioState.AmbienceId, Duration = 26 })
+	game.AudioState.AmbienceId = nil
+	game.AudioState.AmbienceName = nil
+
+	game.wait(2)
+
+	-- this plays from the event PersephoneReturnsHome01
+	-- PlayRandomRemainingTextLines( ActiveEnemies[persephoneId], ActiveEnemies[persephoneId].InteractTextLineSets )
+
+	PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/NauticalBellCharonCenter", Id = heroBoatId })
+
+	game.thread(mod.HandleReturnBoatRideEndTheme)
+	RemoveInputBlock({ Name = "BoatRideIntro" })
+	mod.HandleReturnBoatRide(eventSource, { NextMap = "Return02" })
+end
+
+function mod.HandleReturnBoatRideEndTheme(eventSource, args)
+	print("HandleReturnBoatRideEndTheme")
+	game.wait(2.5)
+	StopSound({ Id = mod.BoatSoundId, Duration = 12 })
+	mod.BoatSoundId = nil
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.StartingBoatRideVoiceLines)
+	game.wait(7)
+	game.thread(game.MusicPlayer, "/Music/EndTheme")
+end
+
+function mod.ReturnRoomEntrance(currentRun, currentRoom)
+	LoadPackages({ Name = "ModsNikkelMHadesBiomesPortraits" })
+	game.wait(0.03)
+	FadeIn({ Duration = 0.0 })
+	mod.FullScreenFadeInAnimationBoatRide()
+	-- mod.FlashbackPresentation()
+	game.HideCombatUI("BoatRide")
+end
+
+function mod.FlashbackPresentation()
+	-- if game.GameState.Flags.InFlashback then
+	-- game.HideCombatUI("BoatRide")
+	-- AdjustColorGrading({ Name = "Sepia", Duration = 0.0 })
+	-- end
+end
+
+function mod.ReturnRoomExit(currentRun, exitDoor)
+	AddInputBlock({ Name = "RoomExit" })
+	mod.FullScreenFadeOutAnimationBoatRide()
+	RemoveInputBlock({ Name = "RoomExit" })
+end
+
+function mod.FullScreenFadeInAnimationBoatRide()
+	if game.ScreenAnchors.Transition ~= nil then
+		Destroy({ Id = game.ScreenAnchors.Transition })
+	end
+	AdjustColorGrading({ Name = "Dusk", Duration = 0 })
+	AdjustFullscreenBloom({ Name = "Off", Duration = 1 })
+	AdjustColorGrading({ Name = "Off", Duration = 1 })
+	game.ScreenAnchors.Transition = CreateScreenObstacle({
+		Name = "BlankObstacle",
+		X = game.ScreenCenterX,
+		Y = game.ScreenCenterY,
+		Group = "Overlay"
+	})
+	SetAnimation({ DestinationId = game.ScreenAnchors.Transition, Name = "RoomTransitionOutBoatRide" })
+end
+
+function mod.SurfaceToBoatRideExit(currentRun, exitDoor)
+	mod.FullScreenFadeOutAnimationBoatRide()
+end
+
+function mod.FullScreenFadeOutAnimationBoatRide(color)
+	if game.ScreenAnchors.Transition ~= nil then
+		Destroy({ Id = game.ScreenAnchors.Transition })
+	end
+	AdjustColorGrading({ Name = "Dusk", Duration = 1 })
+	game.ScreenAnchors.Transition = CreateScreenObstacle({
+		Name = "BlankObstacle",
+		X = game.ScreenCenterX,
+		Y = game.ScreenCenterY,
+		Group = "Overlay"
+	})
+	SetAnimation({ DestinationId = game.ScreenAnchors.Transition, Name = "RoomTransitionInBoatRide" })
+	PlaySound({ Name = "/Leftovers/Menu Sounds/InfoPanelOutURSA" })
+	game.wait(2.0)
+
+	game.ShowCombatUI("BoatRide")
+	RemoveInputBlock({ Name = "BoatRide" })
+	game.SetPlayerVulnerable("BoatRide")
+end
+
+function mod.HandleReturnBoatRideAnimationSetup(eventSource, args)
+	local heroId = game.CurrentRun.Hero.ObjectId
+	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
+	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Persephone_01" })
+	local charonId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Charon_01" })
+
+	SetAnimation({
+		DestinationId = heroId,
+		Name = game.CurrentRun.CurrentRoom.BoatAnimData.Zagreus or "ZagreusEndingBoat_IdleLoop"
+	})
+	SetAnimation({
+		DestinationId = persephoneId,
+		Name = game.CurrentRun.CurrentRoom.BoatAnimData.Persephone or "PersephoneEndingBoat_IdleLoop"
+	})
+	game.CurrentRun.CurrentRoom.BoatRideAnimationsSet = true
+
+	SetAnimation({ DestinationId = charonId, Name = "CharonEndingBoatRowIdle" })
+end
+
+function mod.HandleReturnBoatRide(eventSource, args)
+	-- TODO
+	-- game.thread(StartCredits)
+
+	game.HideCombatUI("BoatRide")
+	AddInputBlock({ Name = "BoatRide" })
+	game.SetPlayerInvulnerable("BoatRide")
+
+	local currentRoom = eventSource
+	local invisibleTargets = GetIdsByType({ Name = "InvisibleTarget" })
+
+	local heroId = game.CurrentRun.Hero.ObjectId
+	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
+	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Persephone_01" })
+	local persephoneBoatId = GetClosest({ Id = persephoneId, DestinationIds = invisibleTargets })
+	local charonId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Charon_01" })
+	local charonBoatId = GetClosest({ Id = charonId, DestinationIds = invisibleTargets })
+	local boatId = GetClosest({ Id = heroId, DestinationIds = GetIdsByType({ Name = "ReturnShip01" }) })
+	local boatFrontId = GetClosest({ Id = heroId, DestinationIds = GetIdsByType({ Name = "ReturnShip01Front" }) })
+	local boatMoveTargetId = GetClosest({ Id = boatId, DestinationIds = GetIdsByType({ Name = "BoatMovePoint" }) })
+
+	StopAmbientSound({ Id = charonId })
+
+	local cameraCreditPoint = SpawnObstacle({ Name = "InvisibleTarget" })
+	Attach({ Id = cameraCreditPoint, DestinationId = heroBoatId, OffsetY = 60, OffsetX = -450 })
+	if game.CurrentRun.CurrentRoom.Name == "Return01" then
+		PanCamera({ Id = cameraCreditPoint, Duration = 20.5, EaseIn = 0 })
+	else
+		LockCamera({ Id = cameraCreditPoint, Duration = 0.0 })
+	end
+
+	Attach({ Id = heroId, DestinationId = heroBoatId })
+	Attach({ Id = charonId, DestinationId = charonBoatId })
+	Attach({ Id = persephoneId, DestinationId = persephoneBoatId })
+	Attach({ Id = boatFrontId, DestinationId = boatId })
+
+	if not game.CurrentRun.CurrentRoom.BoatRideAnimationsSet then
+		SetAnimation({
+			DestinationId = heroId,
+			Name = game.CurrentRun.CurrentRoom.BoatAnimData.Zagreus or "ZagreusEndingBoat_IdleLoop"
+		})
+		SetAnimation({
+			DestinationId = persephoneId,
+			Name = CurrentRun.CurrentRoom.BoatAnimData.Persephone or "PersephoneEndingBoat_IdleLoop"
+		})
+		game.CurrentRun.CurrentRoom.BoatRideAnimationsSet = true
+	end
+	SetAnimation({ DestinationId = charonId, Name = "CharonEndingBoatRow_StartRowing" })
+
+	Move({ Id = boatId, DestinationId = boatMoveTargetId, Speed = 125, SuccessDistance = 30 })
+
+	local notifyName = "WithinDistance" .. boatMoveTargetId
+	NotifyWithinDistance({ Id = boatId, DestinationId = boatMoveTargetId, Distance = 200, Notify = notifyName })
+	game.waitUntil(notifyName)
+
+	if args.NextMap ~= nil then
+		mod.LeaveRoomWithNoDoor(eventSource, args)
+	else
+		SetAnimation({ DestinationId = charonId, Name = "CharonEndingBoatRow_StopRowing" })
+	end
 end
 
 -- #endregion

@@ -41,7 +41,7 @@ local roomModifications = {
 
 		ObstacleData = {
 			[552607] = {
-				OnUsedFunctionName = "AttemptUseDoor",
+				OnUsedFunctionName = _PLUGIN.guid .. "." .. "LeaveRoomWithNoDoor",
 				SetupEvents = {
 					{
 						FunctionName = "SetupDefaultDoor",
@@ -62,6 +62,7 @@ local roomModifications = {
 		DistanceTriggers = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "CottageBloom", },
 		},
+		ExitFunctionName = _PLUGIN.guid .. "." .. "SurfaceToBoatRideExit",
 	},
 }
 

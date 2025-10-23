@@ -359,6 +359,16 @@ mod.BikFileNames = {
 	"NPC_PersephoneUnderworldWalk_Bink",
 	"NPC_PersephoneUnderworldWalkStop_Bink",
 	-- #endregion
+	-- #region ENDING
+	"CharonEndingBoatRow_Bink",
+	"CharonEndingBoatRowIdle_Bink",
+	"EndingBoatBack_Bink",
+	"EndingBoatFront_Bink",
+	"EndingBoatWhole_Bink",
+	"ZagreusEndingBoatIdleLoop_Bink",
+	"ZagreusEndingBoatIdleFidget1_Bink",
+	"ZagreusEndingBoatIdleFidget2_Bink",
+	-- #endregion
 }
 
 mod.CustomBikFileNames = {
@@ -384,7 +394,7 @@ mod.SjsonFileMappings = {
 	"Animations\\CharacterAnim_Enemies_WretchThug",
 	"Animations\\CharacterAnim_Enemies_Wringer",
 	-- Bosses
-	-- "Animations\\CharacterAnim_EnemiesBosses_Charon",
+	"Animations\\CharacterAnim_EnemiesBosses_Charon",
 	"Animations\\CharacterAnim_EnemiesBosses_Furies",
 	"Animations\\CharacterAnim_EnemiesBosses_Hades",
 	"Animations\\CharacterAnim_EnemiesBosses_Hydra",
@@ -394,6 +404,8 @@ mod.SjsonFileMappings = {
 	-- "Animations\\CharacterAnimationsNPCs", -- This file is copied directly
 	"Animations\\CharacterAnimationsNPC_Persephone",
 	"Animations\\CharacterAnimationsNPC_Thanatos",
+	-- TODO: Has lots of duplicates, just take the ones we need for the ending scenes manually?
+	-- "Animations\\CharacterAnimationsHeroNonCombat",
 }
 
 -- Modifications to animations in the above files, before they are copied over
