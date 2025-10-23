@@ -30,6 +30,7 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	else
 		roomIntroSequenceDuration = 0.95
 	end
+	game.ToggleCombatControl({ "Rush" }, false)
 
 	AdjustZoom({ Fraction = game.CurrentRun.CurrentRoom.IntroZoomFraction or 0.7, Duration = 0.0 })
 	FadeIn({ Duration = 4.9 })
@@ -236,6 +237,7 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == nil then
 		game.SetupMelWalk()
 	end
+	game.ToggleCombatControl({ "Rush" }, false)
 
 	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
 	-- TODO

@@ -64,7 +64,7 @@ local roomModifications = {
 		},
 		ExitFunctionName = _PLUGIN.guid .. "." .. "SurfaceToBoatRideExit",
 		-- Blocks the Centaur and other on-room-start events from triggering during the ending
-		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen"},
+		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 	},
 }
 
