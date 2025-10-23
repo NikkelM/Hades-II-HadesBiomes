@@ -365,9 +365,6 @@ mod.BikFileNames = {
 	"EndingBoatBack_Bink",
 	"EndingBoatFront_Bink",
 	"EndingBoatWhole_Bink",
-	"ZagreusEndingBoatIdleLoop_Bink",
-	"ZagreusEndingBoatIdleFidget1_Bink",
-	"ZagreusEndingBoatIdleFidget2_Bink",
 	-- #endregion
 	-- #region ZAGREUS
 	"ZagreusStart_Bink",
@@ -376,6 +373,16 @@ mod.BikFileNames = {
 	"ZagreusWalk2_Bink",
 	"ZagreusRun_Bink",
 	"ZagreusStop_Bink",
+	"ZagreusTalkEmpathy_Bink",
+	"ZagreusInteractionThoughtful_Bink",
+	"ZagreusTalkDenial_Bink",
+	"ZagreusInteractionComeHither_Bink",
+	"ZagreusInjured_IdleToSick_Bink",
+	"ZagreusInjured_SickStandingSet_Bink",
+	"ZagreusInjured_SickKneelingSet_Bink",
+	"ZagreusEndingBoatIdleLoop_Bink",
+	"ZagreusEndingBoatIdleFidget1_Bink",
+	"ZagreusEndingBoatIdleFidget2_Bink",
 	-- #endregion
 }
 
