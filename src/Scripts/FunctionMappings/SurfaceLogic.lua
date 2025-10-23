@@ -413,6 +413,24 @@ function mod.HandleReturnBoatRideIntro(eventSource, args)
 	mod.HandleReturnBoatRide(eventSource, { NextMap = "Return02" })
 end
 
+function mod.HandleReturnBoatRideOutro(eventSource, args)
+	local heroId = game.CurrentRun.Hero.ObjectId
+	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
+	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Persephone_01" })
+
+	-- TODO
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.EndBoatRideVoiceLines, true)
+
+	PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/NauticalBellCharonCenter", Id = heroBoatId })
+
+	game.wait(1)
+
+	game.PlayRandomRemainingTextLines(game.ActiveEnemies[persephoneId],
+		game.ActiveEnemies[persephoneId].InteractTextLineSets)
+
+	game.UnblockCombatUI("Surface")
+end
+
 function mod.HandleReturnBoatRideEndTheme(eventSource, args)
 	print("HandleReturnBoatRideEndTheme")
 	game.wait(2.5)
@@ -424,7 +442,6 @@ function mod.HandleReturnBoatRideEndTheme(eventSource, args)
 end
 
 function mod.ReturnRoomEntrance(currentRun, currentRoom)
-	LoadPackages({ Name = "ModsNikkelMHadesBiomesPortraits" })
 	game.wait(0.03)
 	FadeIn({ Duration = 0.0 })
 	mod.FullScreenFadeInAnimationBoatRide()
