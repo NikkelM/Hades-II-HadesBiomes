@@ -411,6 +411,9 @@ function mod.CheckRunEndPresentation(currentRun, door)
 		-- TODO: Check?
 		game.EndEarlyAccessPresentation()
 	else
+		-- Custom function to play an incantation animation and voiceline
+		mod.SurfaceExitIncantationPresentation(door, game.CurrentRun.Hero)
+
 		local heroExitPointId = GetClosest({ Id = door.ObjectId, DestinationIds = GetIdsByType({ Name = "HeroExit" }), Distance = 600 })
 		game.thread(game.MoveHeroToRoomPosition,
 			{ DestinationId = heroExitPointId, DisableCollision = true, UseDefaultSpeed = true })
@@ -422,6 +425,97 @@ function mod.CheckRunEndPresentation(currentRun, door)
 		game.wait(3.5)
 	end
 	RemoveInputBlock({ Name = "CheckRunEndPresentation" })
+end
+
+mod.GlobalVoiceLines.MelinoeDBossExitVoiceLines = {
+	-- PlayFirst = true
+	-- { Cue = "/VO/MelinoeField_3423", Text = "Brother...!", },
+	-- { Cue = "/VO/MelinoeField_3424", Text = "Brother...", },
+	-- { Cue = "/VO/MelinoeField_3913", Text = "Just hold on a little while longer, Brother...", },
+	-- { Cue = "/VO/Melinoe_5062",      Text = "Prince Zagreus.", },
+	-- { Cue = "/VO/Melinoe_1417",      Text = "That just might work..." },
+	-- { Cue = "/VO/Melinoe_3412",      Text = "I know what to do..." },
+	{ Cue = "/VO/Melinoe_1075", Text = "{#Emph}By blood and darkness, let my will be done!" },
+	-- { Cue = "/VO/Melinoe_4706",      Text = "{#Emph}The strongest dreams shall shatter if they must!" },
+}
+
+function mod.SurfaceExitIncantationPresentation(usee, args, user)
+	args = args or {}
+	AddInputBlock({ Name = "MelUsedSystemObject" })
+	game.HideUseButton(usee.ObjectId, usee)
+	UseableOff({ Id = usee.ObjectId })
+	game.MapState.RoomRequiredObjects[usee.ObjectId] = nil
+
+	game.thread(game.PlayVoiceLines, mod.GlobalVoiceLines.MelinoeDBossExitVoiceLines)
+	PanCamera({ Id = 552590, Duration = 5.0, })
+	game.wait(0.1)
+
+	Stop({ Id = game.CurrentRun.Hero.ObjectId })
+	AdjustFullscreenBloom({ Name = "DesaturatedLight", Duration = 0.9 })
+	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, LeftFraction = 0.13, Duration = 1.5 }, })
+
+	local loopingSoundId = PlaySound({ Name = "/SFX/Menu Sounds/CauldronWhispers", Id = game.CurrentRun.Hero.ObjectId })
+	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = usee.ObjectId })
+	SetAnimation({ Name = "Melinoe_Gesture", DestinationId = game.CurrentRun.Hero.ObjectId, SpeedMultiplier = 1.15 })
+
+	CreateAnimation({
+		Name = "MelHPostBossHandFxLeft",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group = "FX_Standing_Add"
+	})
+	CreateAnimation({
+		Name = "MelHPostBossHandFxRight",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group = "FX_Standing_Add"
+	})
+	CreateAnimation({
+		Name = "MelHPostBossHandFxLeftB",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group = "FX_Standing_Add"
+	})
+	CreateAnimation({
+		Name = "MelHPostBossHandFxRightB",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group = "FX_Standing_Add"
+	})
+
+	CreateAnimation({
+		Name = "CWEntranceHadesSymbolIn",
+		DestinationId = usee.ObjectId,
+		OffsetZ = 0,
+		OffsetY = 0,
+		OffsetX = 0,
+		Scale = 0.85,
+		Group = "Combat_Menu_TraitTray"
+	})
+
+	game.wait(2.95)
+
+	AdjustRadialBlurDistance({ Fraction = 0, Duration = 1 })
+	AdjustRadialBlurStrength({ Fraction = 0, Duration = 1 })
+
+	ShakeScreen({ Distance = 6, Speed = 500, Duration = 0.3, FalloffSpeed = 1000 })
+	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, LeftFraction = 0.13, Duration = 0.5 }, })
+
+	StopAnimation({ Name = "CWEntranceHadesSymbolLoop", DestinationId = usee.ObjectId })
+	SetAlpha({ Ids = usee.RewardPreviewIconIds, Fraction = 0.0, Duration = 0 })
+	AdjustFullscreenBloom({ Name = "FullscreenFlash2", Duration = 0.0 })
+	AdjustFullscreenBloom({ Name = "Off", Duration = 1 })
+
+	game.wait(1.3)
+	StopAnimation({ Name = "MelHPostBossHandFxLeft", DestinationId = game.CurrentRun.Hero.ObjectId })
+	StopAnimation({ Name = "MelHPostBossHandFxRight", DestinationId = game.CurrentRun.Hero.ObjectId })
+	StopAnimation({ Name = "MelHPostBossHandFxLeftB", DestinationId = game.CurrentRun.Hero.ObjectId })
+	StopAnimation({ Name = "MelHPostBossHandFxRightB", DestinationId = game.CurrentRun.Hero.ObjectId })
+	StopSound({ Id = loopingSoundId, Duration = 0.4 })
+	loopingSoundId = nil
+
+	PlaySound({ Name = "/Leftovers/SFX/LightOn", Id = usee.ObjectId, Delay = 0.25 })
+	PlaySound({ Name = "/Leftovers/SFX/LightOn", Id = usee.ObjectId, Delay = 0.5 })
+	PlaySound({ Name = "/Leftovers/SFX/LightOn", Id = usee.ObjectId, Delay = 0.75 })
+	PlaySound({ Name = "/Leftovers/SFX/LightOn", Id = usee.ObjectId })
+
+	RemoveInputBlock({ Name = "MelUsedSystemObject" })
 end
 
 function mod.SetupHadesSpawnOptions(enemy)
