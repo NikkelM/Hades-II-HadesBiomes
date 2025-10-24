@@ -2337,16 +2337,17 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			UsePlayerSource = true,
 			SkipAnim = true,
 			-- Wait, isn't this... Eurydice and Orpheus?
-			{ Cue = "/VO/ZagreusField_3676", RequiredTextLines = { "EurydiceAboutOrpheus03" } },
+			{ Cue = "/VO/ZagreusField_3676",}, -- RequiredTextLines = { "EurydiceAboutOrpheus03" } },
 			-- Wait, isn't this Orpheus?
-			{ Cue = "/VO/ZagreusField_3677", RequiredFalseTextLines = { "EurydiceAboutOrpheus03" } },
+			-- { Cue = "/VO/ZagreusField_3677", RequiredFalseTextLines = { "EurydiceAboutOrpheus03" } },
 		},
 		{
 			PreLineWait = 4,
 			ObjectType = "NPC_Persephone_01",
 			SkipAnim = true,
 			-- Snow everywhere... Mother...
-			{ Cue = "/VO/Persephone_0098" },
+			-- Replace Persephone_ with Megaera_2
+			{ Cue = "/VO/Megaera_20098" },
 		},
 	},
 	SunriseOverlookVoiceLines = {
