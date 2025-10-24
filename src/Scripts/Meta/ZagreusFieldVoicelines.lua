@@ -791,6 +791,19 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4652 = true,
 	ZagreusField_4653 = true,
 
+	-- PresetEventargs
+	ZagreusField_3600 = true,
+	ZagreusField_3601 = true,
+	ZagreusField_3612 = true,
+	ZagreusField_3613 = true,
+	ZagreusField_3614 = true,
+	ZagreusField_3615 = true,
+	ZagreusField_3616 = true,
+	ZagreusField_3617 = true,
+	ZagreusField_3618 = true,
+	ZagreusField_3619 = true,
+	ZagreusField_3620 = true,
+
 	ZagreusField_3602 = true,
 	ZagreusField_3603 = true,
 	ZagreusField_3604 = true,
