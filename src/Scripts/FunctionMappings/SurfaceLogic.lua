@@ -39,6 +39,8 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	PanCamera({ Id = currentRoom.CameraEndPoint, Duration = roomIntroSequenceDuration, EaseIn = 0.0, EaseOut = 1.5 })
 	game.FullScreenFadeInAnimation("RoomTransitionOutBlack")
 
+	-- Need to set the speech bubble higher as the model/anchor is different
+	currentRun.Hero.AnimOffsetZ = 110
 	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
 	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
 
@@ -239,6 +241,8 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 	end
 	game.ToggleCombatControl({ "Rush" }, false)
 
+	-- Need to set the speech bubble higher as the model/anchor is different
+	currentRun.Hero.AnimOffsetZ = 110
 	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
 	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
 
