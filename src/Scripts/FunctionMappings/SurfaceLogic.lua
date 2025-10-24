@@ -39,9 +39,7 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	PanCamera({ Id = currentRoom.CameraEndPoint, Duration = roomIntroSequenceDuration, EaseIn = 0.0, EaseOut = 1.5 })
 	game.FullScreenFadeInAnimation("RoomTransitionOutBlack")
 
-	-- TODO
 	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
-	-- TODO
 	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
 
 	if currentRoom.HeroEndPoint ~= nil then
@@ -119,7 +117,6 @@ function mod.SunriseOverlook(room, args)
 		SetVolume({ Id = game.AudioState.MusicId, Value = 0.7, Duration = 1.5 })
 		PlaySound({ Name = "/Leftovers/World Sounds/MapZoomSlow" })
 
-		-- TODO
 		game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.SunriseOverlookVoiceLines, true)
 		game.SetCameraFocusOverride()
 		game.HideCombatUI("Overlook")
@@ -243,7 +240,6 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 	game.ToggleCombatControl({ "Rush" }, false)
 
 	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
-	-- TODO
 	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
 
 	if currentRoom.HeroEndPoint ~= nil then
@@ -414,9 +410,6 @@ function mod.HandleReturnBoatRideIntro(eventSource, args)
 
 	game.wait(2)
 
-	-- this plays from the event PersephoneReturnsHome01
-	-- PlayRandomRemainingTextLines( ActiveEnemies[persephoneId], ActiveEnemies[persephoneId].InteractTextLineSets )
-
 	PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/NauticalBellCharonCenter", Id = heroBoatId })
 
 	game.thread(mod.HandleReturnBoatRideEndTheme)
@@ -429,8 +422,8 @@ function mod.HandleReturnBoatRideOutro(eventSource, args)
 	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
 	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Persephone_01" })
 
-	-- TODO
-	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.EndBoatRideVoiceLines, true)
+	-- These don't exist in Hades
+	-- game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.EndBoatRideVoiceLines, true)
 
 	PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/NauticalBellCharonCenter", Id = heroBoatId })
 
@@ -455,15 +448,7 @@ function mod.ReturnRoomEntrance(currentRun, currentRoom)
 	game.wait(0.03)
 	FadeIn({ Duration = 0.0 })
 	mod.FullScreenFadeInAnimationBoatRide()
-	-- mod.FlashbackPresentation()
 	game.HideCombatUI("BoatRide")
-end
-
-function mod.FlashbackPresentation()
-	-- if game.GameState.Flags.InFlashback then
-	-- game.HideCombatUI("BoatRide")
-	-- AdjustColorGrading({ Name = "Sepia", Duration = 0.0 })
-	-- end
 end
 
 function mod.ReturnRoomExit(currentRun, exitDoor)
