@@ -443,7 +443,6 @@ function mod.HandleReturnBoatRideOutro(eventSource, args)
 end
 
 function mod.HandleReturnBoatRideEndTheme(eventSource, args)
-	print("HandleReturnBoatRideEndTheme")
 	game.wait(2.5)
 	StopSound({ Id = mod.BoatSoundId, Duration = 12 })
 	mod.BoatSoundId = nil
