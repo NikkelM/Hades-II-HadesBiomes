@@ -52,7 +52,6 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 			if game.IsScreenOpen("Codex") then
 				game.CloseCodexScreen()
 			end
-			PlaySound({ Name = "{84435f74-4111-43c5-8246-8b3e2736794d}" })
 
 			StopAmbientSound({ All = true })
 			StopSound({ Id = game.AudioState.SecretMusicId, Duration = 0.25 })
