@@ -33,21 +33,7 @@ mod.CreditsFormat = {
 		LangJaScaleModifier = 1.6,
 		LangCnScaleModifier = 1.4,
 		-- 
-		FontSize = 40,
-	},
-	Dedication = {
-		Font = "SpectralSCLight",
-		Justification = "Center",
-		Scale = 0.7,
-		Color = game.Color.White,
-		ShadowColor = { 0, 0, 0, 1.0 },
-		OutlineColor = { 0, 0, 0, 0 },
-		ShadowOffsetY = 2,
-		ShadowOffsetX = 0,
-		ShadowAlpha = 1,
-		ShadowBlur = 0,
-		LangKoScaleModifier = 1.4,
-		LangCnScaleModifier = 1.4,
+		FontSize = 35,
 	},
 	Name = {
 		Font = "SpectralSCMedium",
@@ -63,7 +49,7 @@ mod.CreditsFormat = {
 		LangKoScaleModifier = 1.4,
 		LangCnScaleModifier = 1.4,
 		-- 
-		FontSize = 40,
+		FontSize = 30,
 	},
 	Company = {
 		Font = "SpectralSCLight",
@@ -79,7 +65,7 @@ mod.CreditsFormat = {
 		LangKoScaleModifier = 1.4,
 		LangCnScaleModifier = 1.4,
 		-- 
-		FontSize = 40,
+		FontSize = 35,
 	},
 	Info = {
 		Font = "SpectralSCMedium",
@@ -95,7 +81,7 @@ mod.CreditsFormat = {
 		LangKoScaleModifier = 1.4,
 		LangCnScaleModifier = 1.4,
 		-- 
-		FontSize = 40,
+		FontSize = 27,
 	},
 	TranslatedLanguage = {
 		Font = "SpectralSCMedium",
@@ -111,12 +97,12 @@ mod.CreditsFormat = {
 		LangKoScaleModifier = 1.4,
 		LangCnScaleModifier = 1.4,
 		-- 
-		FontSize = 40,
+		FontSize = 35,
 	},
 	Legal = {
 		Font = "SpectralSCMedium",
 		Justification = "Center",
-		Scale = 0.72,
+		Scale = 0.6,
 		Color = game.Color.White,
 		ShadowColor = { 0, 0, 0, 0 },
 		OutlineColor = { 0, 0, 0, 0 },
@@ -127,7 +113,7 @@ mod.CreditsFormat = {
 		LangKoScaleModifier = 1.4,
 		LangCnScaleModifier = 1.4,
 		-- 
-		FontSize = 40,
+		FontSize = 23,
 	},
 }
 

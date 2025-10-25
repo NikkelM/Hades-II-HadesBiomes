@@ -54,6 +54,7 @@ local surfaceRoomModifications = {
 		UnloadWeapons = true,
 		BlockFamiliars = true,
 		BlockRunProgressUI = true,
+		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 	},
 	Return02 = {
 		RoomSetName = "Surface",
@@ -66,6 +67,7 @@ local surfaceRoomModifications = {
 		UnloadWeapons = true,
 		BlockFamiliars = true,
 		BlockRunProgressUI = true,
+		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 	},
 	Return03 = {
 		RoomSetName = "Surface",
@@ -78,6 +80,7 @@ local surfaceRoomModifications = {
 		UnloadWeapons = true,
 		BlockFamiliars = true,
 		BlockRunProgressUI = true,
+		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 	},
 	Return04 = {
 		RoomSetName = "Surface",
@@ -89,6 +92,7 @@ local surfaceRoomModifications = {
 		UnloadWeapons = true,
 		BlockFamiliars = true,
 		BlockRunProgressUI = true,
+		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 	},
 	Return05 = {
 		RoomSetName = "Surface",
@@ -100,6 +104,7 @@ local surfaceRoomModifications = {
 		UnloadWeapons = true,
 		BlockFamiliars = true,
 		BlockRunProgressUI = true,
+		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 	},
 	Return06 = {
 		RoomSetName = "Surface",
