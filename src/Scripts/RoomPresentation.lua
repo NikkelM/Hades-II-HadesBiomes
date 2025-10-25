@@ -33,26 +33,6 @@ modutil.mod.Path.Wrap("FullScreenFadeOutAnimation", function(base, animationName
 	base(animationName, colorGradeName)
 end)
 
-modutil.mod.Path.Context.Wrap('DeathPresentation', function(currentRun, killer, deathArgs)
-	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		modutil.mod.Path.Wrap('DisplayInfoBanner', function(base, source, infoArgs)
-			if infoArgs.Text == "DeathMessage" then
-				-- Normal death during a run
-				infoArgs.Text = "ModsNikkelMHadesBiomes_DeathMessage"
-			elseif infoArgs.Text == "OutroDeathMessageAlt" or infoArgs.Text == "OutroDeathMessageTrueEnding" then
-				if currentRun.CurrentRoom.Name == "E_Story01" then
-					-- True ending death in Persephone's cottage
-					infoArgs.Text = "OutroDeathMessage"
-				else
-				-- The run was cleared
-				infoArgs.Text = "PostEndingDeathMessage"
-				end
-			end
-			base(source, infoArgs)
-		end)
-	end
-end)
-
 modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		-- Destroy any IDs that we marked as such. E.g. Alecto rage meter or Asphodel door reward front animation
@@ -61,352 +41,141 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 			Destroy({ Ids = destroyIdsOnDeath })
 		end
 
-		-- #region Modified Hades/Hades II DeathPresentation - Comment in the base() call at the end to revert to normal behaviour
-		-- -- When enabling this, also add in the ZagreusDeathFullscreen animation in RequiredFileData.lua and in Hero_Melinoe_Animation_Personality.sjson.lua
-		-- rom.audio.load_bank(rom.path.combine(_PLUGIN.plugins_data_mod_folder_path,
-		-- 	"Content\\Audio\\Desktop\\ModsNikkelMHadesBiomesMusicModded.bank"))
-		-- -- Overwrite the DeathStinger for this room - we always want to play the custom event if it is a modded run
-		-- currentRun.CurrentRoom.Encounter.DeathStinger = "{84435f74-4111-43c5-8246-8b3e2736794d}"
-		-- AddInputBlock({ Name = "DeathPresentation" })
-		-- ClearCameraClamp({ LerpTime = 0.4 })
-		-- ZeroMouseTether("DeathPresentation")
-		-- LockCameraMotion("DeathPresentation")
-		-- ToggleCombatControl(CombatControlsDefaults, false, "DeathPresentation")
-		-- HideCombatUI("Death", { FadeDuration = 0.0 })
-		-- -- Would be better to move the layers of the death sequence up but avoiding changing the many fragile layers it has
-		-- RemoveRoomRewardPreviews()
-		-- RemoveScreenEdgeIndicators()
-		-- RemoveInspectPoints()
-		-- SetConfigOption({ Name = "UseOcclusion", Value = false })
+		-- Only replace animation if we are on the Surface after talking to Persephone
+		if currentRun.CurrentRoom.Name == "E_Story01" then
+			AddInputBlock({ Name = "DeathPresentation" })
+			ClearCameraClamp({ LerpTime = 0.4 })
+			ZeroMouseTether("DeathPresentation")
+			LockCameraMotion("DeathPresentation")
+			SetConfigOption({ Name = "UseOcclusion", Value = false })
 
-		-- if IsScreenOpen("Codex") then
-		-- 	CloseCodexScreen()
-		-- end
+			if IsScreenOpen("Codex") then
+				CloseCodexScreen()
+			end
 
-		-- StopAnimation({ Id = killer.ObjectId, Names = { "HealthBarArmorShatter", "ArmorBreak" } })
-		-- CleanupEnemies({ Destroy = true, DestroyIgnoreId = killer.ObjectId })
-		-- ExpireProjectiles({ Silent = true, BlockSpawns = true, IncludeToAdd = true })
-		-- ClearEffect({ Id = killer.ObjectId, All = true, BlockAll = true })
-		-- EffectPostClearAll(killer)
-		-- RunWeaponMethod({ Id = CurrentRun.Hero.ObjectId, Weapon = "All", Method = "cancelCharge" })
-		-- RunWeaponMethod({ Id = CurrentRun.Hero.ObjectId, Weapon = "All", Method = "ForceControlRelease" })
-		-- SetThingProperty({ Property = "AllowAnyFire", Value = false, DestinationId = CurrentRun.Hero.ObjectId, DataValue = false })
-		-- if MapState.ManaChargeIndicatorIds then
-		-- 	Destroy({ Ids = { MapState.ManaChargeIndicatorIds.BackingId, } })
-		-- end
-		-- for k, encounter in ipairs(currentRun.CurrentRoom.ActiveEncounters) do
-		-- 	if encounter.UseGroupHealthBar then
-		-- 		notifyExistingWaiters(encounter.Name .. "GroupHealthBarDead")
-		-- 	end
-		-- end
-		-- StopAmbientSound({ All = true })
-		-- StopSound({ Id = AudioState.SecretMusicId, Duration = 0.25 })
-		-- AudioState.SecretMusicId = nil
-		-- AudioState.SecretMusicName = nil
-		-- if AudioState.RainSoundId ~= nil then
-		-- 	StopSound({ Id = AudioState.RainSoundId, Duration = 0.2 })
-		-- 	AudioState.RainSoundId = nil
-		-- end
-		-- if AudioState.ChronosTimeSlowSoundId ~= nil then
-		-- 	StopSound({ Id = AudioState.ChronosTimeSlowSoundId, Duration = 0.2 })
-		-- 	AudioState.ChronosTimeSlowSoundId = nil
-		-- end
-		-- if AudioState.EliteEncounterMusicId ~= nil then
-		-- 	StopSound({ Id = AudioState.EliteEncounterMusicId, Duration = 0.2 })
-		-- 	AudioState.EliteEncounterMusicId = nil
-		-- end
-		-- if AudioState.SkipEncounterMusicId ~= nil then
-		-- 	StopSound({ Id = AudioState.SkipEncounterMusicId, Duration = 0.2 })
-		-- 	AudioState.SkipEncounterMusicId = nil
-		-- end
+			StopAmbientSound({ All = true })
+			StopSound({ Id = AudioState.SecretMusicId, Duration = 0.25 })
+			StopSound({ Id = AudioState.AmbientMusicId, Duration = 0.25 })
+			AudioState.SecretMusicId = nil
+			AudioState.SecretMusicName = nil
+			AudioState.AmbientMusicId = nil
+			if AudioState.RainSoundId ~= nil then
+				StopSound({ Id = AudioState.RainSoundId, Duration = 0.2 })
+				AudioState.RainSoundId = nil
+			end
+			if AudioState.ChronosTimeSlowSoundId ~= nil then
+				StopSound({ Id = AudioState.ChronosTimeSlowSoundId, Duration = 0.2 })
+				AudioState.ChronosTimeSlowSoundId = nil
+			end
+			if AudioState.EliteEncounterMusicId ~= nil then
+				StopSound({ Id = AudioState.EliteEncounterMusicId, Duration = 0.2 })
+				AudioState.EliteEncounterMusicId = nil
+			end
+			if AudioState.SkipEncounterMusicId ~= nil then
+				SkipEncounterEndPresentation()
+			end
 
-		-- SetAudioEffectState({ Name = "SpellCharge", Value = 0 })
-		-- SetAudioEffectState({ Name = "GlobalEcho", Value = 0 })
+			SetAudioEffectState({ Name = "SpellCharge", Value = 0 })
+			SetAudioEffectState({ Name = "GlobalEcho", Value = 0 })
 
-		-- SetThingProperty({ Property = "Graphic", Value = "MelinoeGetHitActionPose", DestinationId = CurrentRun.Hero.ObjectId })
-		-- ShakeScreen({ Speed = 300, Distance = 3, Duration = 0.27, FalloffSpeed = 1000 })
-		-- FocusCamera({ Fraction = 1.0, Duration = 0.27, ZoomType = "Ease" })
+			Stop({ Id = currentRun.Hero.ObjectId })
+			Halt({ Id = currentRun.Hero.ObjectId })
 
-		-- Stop({ Id = currentRun.Hero.ObjectId })
-		-- Halt({ Id = currentRun.Hero.ObjectId })
-		-- SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 0.0, DataValue = false, DestinationNames = { "GroundEnemies", "FlyingEnemies" } })
+			
+			RemoveFromGroup({ Id = killer.ObjectId, Names = { "Standing", "GroundEnemies", "FlyingEnemies" } })
+			AddToGroup({ Id = killer.ObjectId, Name = "Combat_UI", DrawGroup = true })
 
-		-- if killer.DamagedFxStyles ~= nil then
-		-- 	for _, animName in pairs(killer.DamagedFxStyles) do
-		-- 		StopAnimation({ DestinationId = killer.ObjectId, Name = animName, PreventChain = true, IncludeCreatedAnimations = true })
-		-- 	end
-		-- end
-		-- if killer.StopAnimationsOnHeroKill ~= nil then
-		-- 	StopAnimation({ DestinationId = killer.ObjectId, Names = killer.StopAnimationsOnHeroKill, PreventChain = true, IncludeCreatedAnimations = true })
-		-- end
-		-- RemoveFromGroup({ Id = killer.ObjectId, Names = { "Standing", "GroundEnemies", "FlyingEnemies" } })
-		-- AddToGroup({ Id = killer.ObjectId, Name = "Combat_UI", DrawGroup = true })
+			if currentRun.Hero.AttachedAnimationName ~= nil then
+				StopAnimation({ Name = currentRun.Hero.AttachedAnimationName, DestinationId = currentRun.Hero.ObjectId })
+			end
 
-		-- if currentRun.Hero.AttachedAnimationName ~= nil then
-		-- 	StopAnimation({ Name = currentRun.Hero.AttachedAnimationName, DestinationId = currentRun.Hero.ObjectId })
-		-- end
+			currentRun.Hero.Mute = false
+			UnmuteSpeakerPermanent(currentRun.Hero)
+			currentRun.Hero.SpeechParams.Chipmunk = nil
+			SetAudioEffectState({ Name = "Chipmunk", Value = 0 })
+			SetPlayerInvulnerable("PlayerDeath")
 
-		-- if MapState.BossShieldTriggers <= 0 and MapState.BossShieldFx then
-		-- 	StopAnimation({ Name = MapState.BossShieldFx, DestinationId = CurrentRun.Hero.ObjectId, IncludeCreatedAnimations = true })
-		-- end
-		-- currentRun.Hero.Mute = false
-		-- currentRun.Hero.CurrentlyPoisoned = nil
-		-- SetPlayerInvulnerable("PlayerDeath")
+			-- black out world
+			StopAnimation({ DestinationId = CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignetteHold" })
+			StopAnimation({ DestinationId = CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessGroundFog" })
+			AdjustFrame({ Color = Color.TransparentRed, Duration = 0.0, Fraction = 0 })
 
-		-- thread(PlayVoiceLines, GlobalVoiceLines.DeathVoiceLines)
+			ScreenAnchors.DeathBacking = CreateScreenObstacle({
+				Name = "rectangle01",
+				Group = "Combat_UI_World_Backing",
+				X = ScreenCenterX,
+				Y = ScreenCenterY,
+				Scale = 10.0,
+				ScaleX = ScreenScaleX,
+				ScaleY = ScreenScaleY
+			})
+			SetColor({ Id = ScreenAnchors.DeathBacking, Color = Color.Black })
+			SetAlpha({ Id = ScreenAnchors.DeathBacking, Fraction = 1.0, Duration = 0 })
 
-		-- if killer.CauseOfDeathVoiceLines ~= nil then
-		-- 	thread(PlayVoiceLines, killer.CauseOfDeathVoiceLines, nil, killer)
-		-- elseif currentRun.CurrentRoom.Encounter.CauseOfDeathVoiceLines ~= nil then
-		-- 	thread(PlayVoiceLines, currentRun.CurrentRoom.Encounter.CauseOfDeathVoiceLines)
-		-- elseif currentRun.CurrentRoom.CauseOfDeathVoiceLines ~= nil then
-		-- 	thread(PlayVoiceLines, currentRun.CurrentRoom.CauseOfDeathVoiceLines)
-		-- end
+			ScreenAnchors.DeathBackground = CreateScreenObstacle({
+				Name = "rectangle01",
+				Group = "Combat_UI_World_Backing",
+				X = ScreenCenterX,
+				Y = ScreenCenterY,
+				Scale = 10.0,
+				ScaleX = ScreenScaleX,
+				ScaleY = ScreenScaleY
+			})
+			SetColor({ Id = ScreenAnchors.DeathBackground, Color = Color.Black })
+			SetAlpha({ Id = ScreenAnchors.DeathBackground, Fraction = 1.0, Duration = 0 })
 
-		-- -- black out world
-		-- StopAnimation({ DestinationId = CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignetteHold" })
-		-- StopAnimation({ DestinationId = CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessGroundFog" })
-		-- AdjustFrame({ Color = Color.TransparentRed, Duration = 0.0, Fraction = 0 })
 
-		-- ScreenAnchors.DeathBacking = CreateScreenObstacle({
-		-- 	Name = "rectangle01",
-		-- 	Group = "Combat_UI_World_Backing",
-		-- 	X = ScreenCenterX,
-		-- 	Y = ScreenCenterY,
-		-- 	Scale = 10.0,
-		-- 	ScaleX = ScreenScaleX,
-		-- 	ScaleY = ScreenScaleY
-		-- })
-		-- SetColor({ Id = ScreenAnchors.DeathBacking, Color = Color.Black })
-		-- SetAlpha({ Id = ScreenAnchors.DeathBacking, Fraction = 1.0, Duration = 0 })
 
-		-- ScreenAnchors.DeathBackground = CreateScreenObstacle({
-		-- 	Name = "rectangle01",
-		-- 	Group = "Combat_UI_World_Backing",
-		-- 	X = ScreenCenterX,
-		-- 	Y = ScreenCenterY,
-		-- 	Scale = 10.0,
-		-- 	ScaleX = ScreenScaleX,
-		-- 	ScaleY = ScreenScaleY
-		-- })
-		-- SetColor({ Id = ScreenAnchors.DeathBackground, Color = Color.Black })
-		-- SetAlpha({ Id = ScreenAnchors.DeathBackground, Fraction = 1.0, Duration = 0 })
+			local deathAngleFace = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = currentRun.Hero.ObjectId, OffsetX = -200, OffsetY = 100 })
+			wait(0.02)
+			AngleTowardTarget({ Id = currentRun.Hero.ObjectId, DestinationId = deathAngleFace })
+			wait(0.08)
 
-		-- RemoveFromGroup({ Id = currentRun.Hero.ObjectId, Name = "Standing" })
-		-- AddToGroup({ Id = currentRun.Hero.ObjectId, Name = "Combat_Menu", DrawGroup = true })
-		-- thread(DoRumble, currentRun.Hero.HeroFinalHitRumbleParameters)
+			PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal2" })
 
-		-- Flash({ Id = CurrentRun.Hero.ObjectId, Speed = 0.02, MinFraction = 1.0, MaxFraction = 0.0, Color = Color.Red, Duration = 1.51, ExpireAfterCycle = true })
-		-- ShakeScreen({ Speed = 0, Distance = 0, Duration = 10.0 })
+			SetThingProperty({
+				Property = "Graphic",
+				Value = "ZagreusInjured_SickStanding_ToDeath",
+				DestinationId = currentRun.Hero.ObjectId
+			})
 
-		-- wait(0.02)
-		-- SetThingProperty({
-		-- 	Property = "ElapsedTimeMultiplier",
-		-- 	Value = 0.0,
-		-- 	DataValue = false,
-		-- 	DestinationId = killer.ObjectId
-		-- })
-		-- PlaySound({ Name = "/SFX/Player Sounds/IrisDeathStartFwoosh" })
-		-- PlaySound({ Name = "/SFX/Player Sounds/PlayerDeath" })
+			CreateGroup({ Name = "Dark_FX", BlendMode = "Normal" })
+			InsertGroupBehind({ Name = "Dark_FX", DestinationName = "Standing_Back" })
 
-		-- wait(1.11)
+			RemoveFromGroup({ Id = currentRun.Hero.ObjectId, Name = "Standing" })
+			AddToGroup({ Id = currentRun.Hero.ObjectId, Name = "Combat_Menu", DrawGroup = true })
+			thread(DoRumble, currentRun.Hero.HeroFinalHitRumbleParameters)
 
-		-- SetAlpha({ Id = killer.ObjectId, Fraction = 0, Duration = 0.2 })
+			wait(0.02)
+			SetThingProperty({ Property = "Grip", Value = 99999, DestinationId = CurrentRun.Hero.ObjectId })
 
-		-- wait(0.21)
-		-- PlaySound({ Name = "/SFX/Player Sounds/IrisDeathStab" })
-		-- if CurrentRun.BountyCleared then
-		-- 	PlaySound({ Name = "/Music/ChaosVictoryStinger" })
-		-- elseif CurrentRun.Cleared and CurrentRun.CurrentRoom.RoomSetName == "I" then
-		-- 	PlaySound({ Name = "/Music/IrisHadesDeathStingerOrch_MC" })
-		-- elseif CurrentRun.Cleared and CurrentRun.CurrentRoom.RoomSetName == "Q" then
-		-- 	PlaySound({ Name = "/Music/IrisDeathStingerOrch_MC" })
-		-- else
-		-- 	PlaySound({ Name = currentRun.CurrentRoom.Encounter.DeathStinger or "/Music/IrisDeathStinger" })
-		-- end
+			thread(DisplayInfoBanner, nil,
+				{
+					Text = "ModsNikkelMHadesBiomes_OutroDeathMessageAlt",
+					Delay = 1.15,
+					TextColor = Color.Red,
+					FontScale = 0.85,
+					TextOffsetY = -20,
+					AnimationName = "LocationTextBGDeath",
+					AnimationOutName = "LocationTextBGDeathOut",
+					ThreadName = "Outro",
+					Duration = 4.25,
+				})
 
-		-- local sceneOffsetY = -95
-		-- PanCamera({ Id = currentRun.Hero.ObjectId, Duration = 0.2, OffsetY = sceneOffsetY, Retarget = true, EaseIn = 0.0, EaseOut = 1.0 })
-		-- FocusCamera({ Fraction = 1.47, Duration = 0.2, ZoomType = "Ease" })
-		-- local melDeathFlash = CreateScreenComponent({
-		-- 	Name = "BlankObstacle",
-		-- 	Group = "Overlay",
-		-- 	X = ScreenCenterX,
-		-- 	Y = ScreenCenterY,
-		-- 	Animation = "MelDeathFlash",
-		-- 	ScaleX = ScreenScaleX,
-		-- 	ScaleY = ScreenScaleY
-		-- })
-		-- SetGoalAngle({ Id = currentRun.Hero.ObjectId, Angle = 315, CompleteAngle = true })
+			wait(0.85)
+			local ambientSoundId = PlaySound({ Name = "/Leftovers/Object Ambiences/WaterRushingBloodFall" })
 
-		-- for i = 1, 16 do
-		-- 	CreateAnimation({
-		-- 		Name = "MelDeathLine",
-		-- 		DestinationId = ScreenAnchors.DeathBackground,
-		-- 		Group = "Combat_Menu_TraitTray_Overlay_Additive"
-		-- 	})
-		-- end
+			wait(11.8)
+			StopSound({ Id = ambientSoundId, Duration = 4 })
+			WaitForSpeechFinished()
 
-		-- SetThingProperty({ Property = "Grip", Value = 99999, DestinationId = CurrentRun.Hero.ObjectId })
-
-		-- SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 1.0, DataValue = false, DestinationNames = { "HeroTeam" } })
-		-- SetGoalAngle({ Id = currentRun.Hero.ObjectId, Angle = 315, CompleteAngle = true })
-
-		-- if CurrentRun.ActiveBounty ~= nil then
-		-- 	LoadVoiceBanks("Chaos", nil, true)
-		-- 	if CurrentRun.BountyCleared then
-		-- 		local subtitleText = nil
-		-- 		local subtitleTimeData = nil
-		-- 		if GameState.PackagedBountyClears[CurrentRun.ActiveBounty] > 1 and GameState.PackagedBountyClearRecordTime[CurrentRun.ActiveBounty] == CurrentRun.GameplayTime then
-		-- 			subtitleText = "PackagedBountyComplete_Subtitle"
-		-- 			subtitleTimeData = { LuaKey = "TempTextData", LuaValue = { ClearTime = GetTimerString(CurrentRun.GameplayTime, 2) } }
-		-- 		end
-		-- 		thread(DisplayInfoBanner, nil, {
-		-- 			Text = "PackagedBountyEndedMessage",
-		-- 			Delay = 0.75,
-		-- 			TextColor = Color.White,
-		-- 			FontScale = 0.85,
-		-- 			AnimationName = "LocationBackingIrisChaosIn",
-		-- 			AnimationOutName = "LocationBackingIrisChaosOut",
-		-- 			AppearSound = "/SFX/ChaosBoonChoice",
-		-- 			Duration = 4.25,
-		-- 			TextOffsetY = 25,
-		-- 			SubTextColor = Color.ChaosVoice,
-		-- 			SubtitleTextRevealSound = "/SFX/Menu Sounds/BiomeMapRewardIcon",
-		-- 			SubtitleOffsetY = -10,
-		-- 			SubtitleText = subtitleText,
-		-- 			SubtitleData = subtitleTimeData,
-		-- 			BackingGradientAnimationName = "LocationBackingGradientThick",
-		-- 		})
-		-- 	else
-		-- 		-- Bounty failed
-		-- 		thread(DisplayInfoBanner, nil, {
-		-- 			Text = "BountyFailedMessage",
-		-- 			Delay = 0.75,
-		-- 			TextColor = { 200, 64, 64, 255 },
-		-- 			FontScale = 0.85,
-		-- 			AnimationName = "LocationBackingIrisChaosIn",
-		-- 			AnimationOutName = "LocationBackingIrisChaosOut",
-		-- 			AppearSound = "/SFX/ChaosBoonChoice",
-		-- 			Duration = 4.25,
-		-- 			TextOffsetY = 25,
-		-- 		})
-		-- 	end
-		-- elseif CurrentRun.Cleared then
-		-- 	thread(DisplayInfoBanner, nil,
-		-- 		{
-		-- 			Text = "ModsNikkelMHadesBiomes_OutroDeathMessageAlt",
-		-- 			Delay = 0.95,
-		-- 			Color = Color.Red,
-		-- 			Layer = "Overlay",
-		-- 			AnimationName =
-		-- 			"LocationTextBGDeath",
-		-- 			AnimationOutName = "LocationTextBGDeathOut",
-		-- 			ThreadName = "Outro",
-		-- 			Duration = 4.25,
-		-- 			TextOffsetY = 0
-		-- 		})
-		-- else
-		-- 	thread(DisplayInfoBanner, nil,
-		-- 		{
-		-- 			Text = "ModsNikkelMHadesBiomes_DeathMessage",
-		-- 			Delay = 0.95,
-		-- 			Color = Color.Red,
-		-- 			Layer = "Overlay",
-		-- 			AnimationName =
-		-- 			"LocationTextBGDeath",
-		-- 			AnimationOutName = "LocationTextBGDeathOut",
-		-- 			TextOffsetY = 0
-		-- 		})
-		-- end
-		-- SetAnimation({ DestinationId = currentRun.Hero.ObjectId, Name = "ZagreusDeathFullscreen" })
-		-- wait(4.23)
-		-- thread(PlayVoiceLines, GlobalVoiceLines.DeathReturnVoiceLines)
-		-- SetThingProperty({ Property = "Grip", Value = "Default", DestinationId = CurrentRun.Hero.ObjectId })
-		-- wait(0.13)
-		-- Destroy({ Id = melDeathFlash.Id })
-
-		-- wait(0.3)
-		-- Teleport({ Id = killer.ObjectId, OffsetX = 0, OffsetY = 0 })
-		-- ClearLootDrops(killer)
-
-		-- wait(0.55)
-
-		-- if currentRun.CurrentRoom.Encounter.DeathExtraSounds ~= nil then
-		-- 	local randomSound = GetRandomValue(currentRun.CurrentRoom.Encounter.DeathExtraSounds)
-		-- 	PlaySound({ Name = randomSound })
-		-- end
-
-		-- if ShouldIncrementEasyMode() and (CurrentRun.EasyModeIncremented or not GameState.EasyModeHadMaxPresentation) then
-		-- 	thread(EasyModeLevelUpPresentation)
-		-- 	wait(3.0)
-		-- end
-
-		-- local deathTauntTime = 3.6
-		-- local encounter = CurrentRun.CurrentRoom.Encounter
-		-- if CurrentRun.CurrentRoom.KilledByChaosCurse or CurrentRun.ActiveBounty then
-		-- 	-- Chaos Death Taunt
-		-- 	LoadPackages({ Names = "Chaos", IgnoreAssert = true })
-		-- 	thread(HadesSpeakingPresentation, { SubtitleColor = LootData.TrialUpgrade.SubtitleColor },
-		-- 		{
-		-- 			OverlayAnim = "ChaosOverlay",
-		-- 			BlockScreenshake = true,
-		-- 			PortraitDuration = 2,
-		-- 			VoiceLines = LootData.TrialUpgrade.DeathTauntVoiceLines
-		-- 		}) -- nopkg
-		-- 	wait(deathTauntTime)
-		-- elseif encounter ~= nil then
-		-- 	local encounterData = EncounterData[encounter.Name]
-		-- 	if not encounter.Completed then
-		-- 		if encounterData.HeroDeathEvents ~= nil then
-		-- 			RunEventsGeneric(encounterData.HeroDeathEvents, encounter, args)
-		-- 		elseif CurrentRun.CurrentRoom.Encounter.SpurnedGodName ~= nil then
-		-- 			-- Olympian Death Taunt
-		-- 			local spurnedGodName = CurrentRun.CurrentRoom.Encounter.SpurnedGodName
-		-- 			local spurnedGodData = LootData[spurnedGodName]
-		-- 			thread(HadesSpeakingPresentation, { SubtitleColor = spurnedGodData.SubtitleColor },
-		-- 				{
-		-- 					OverlayAnim = spurnedGodData.OverlayAnim,
-		-- 					BlockScreenshake = true,
-		-- 					PortraitDuration = 2,
-		-- 					VoiceLines =
-		-- 							spurnedGodData.DeathTauntVoiceLines
-		-- 				})
-		-- 			wait(deathTauntTime)
-		-- 		elseif CurrentRun.CurrentRoom.Encounter.TookChaosCurseDamage ~= nil or CurrentRun.ActiveBounty then
-		-- 			-- Chaos Death Taunt
-		-- 			LoadPackages({ Names = "Chaos", IgnoreAssert = true })
-		-- 			thread(HadesSpeakingPresentation, { SubtitleColor = LootData.TrialUpgrade.SubtitleColor },
-		-- 				{
-		-- 					OverlayAnim = "ChaosOverlay",
-		-- 					BlockScreenshake = true,
-		-- 					PortraitDuration = 2,
-		-- 					VoiceLines = LootData
-		-- 							.TrialUpgrade.DeathTauntVoiceLines
-		-- 				}) -- nopkg
-		-- 			wait(deathTauntTime)
-		-- 		end
-		-- 	end
-		-- end
-
-		-- wait(1.75)
-
-		-- SetAlpha({ Id = currentRun.Hero.ObjectId, Fraction = 0.0, Duration = 0.2 })
-
-		-- SetThingProperty({ Property = "AllowAnyFire", Value = true, DestinationId = CurrentRun.Hero.ObjectId, DataValue = false })
-
-		-- WaitForSpeechFinished()
-
-		-- -- un-chipmunkify Mel only after all speech has finished
-		-- currentRun.Hero.SpeechParams.Chipmunk = nil
-		-- SetAudioEffectState({ Name = "Chipmunk", Value = 0 })
-
-		-- UnlockCameraMotion("DeathPresentation")
-		-- RemoveInputBlock({ Name = "DeathPresentation" })
-		-- ToggleCombatControl(CombatControlsDefaults, true, "DeathPresentation")
-		-- SetConfigOption({ Name = "UseOcclusion", Value = true })
-		-- #endregion
-		base(currentRun, killer, args)
+			UnlockCameraMotion("DeathPresentation")
+			RemoveInputBlock({ Name = "DeathPresentation" })
+			ToggleCombatControl(CombatControlsDefaults, true, "DeathPresentation")
+			SetConfigOption({ Name = "UseOcclusion", Value = true })
+		else
+			base(currentRun, killer, args)
+		end
 	else
 		base(currentRun, killer, args)
 	end

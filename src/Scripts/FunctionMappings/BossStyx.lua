@@ -428,15 +428,17 @@ function mod.CheckRunEndPresentation(currentRun, door)
 end
 
 mod.GlobalVoiceLines.MelinoeDBossExitVoiceLines = {
-	-- PlayFirst = true
-	-- { Cue = "/VO/MelinoeField_3423", Text = "Brother...!", },
-	-- { Cue = "/VO/MelinoeField_3424", Text = "Brother...", },
-	-- { Cue = "/VO/MelinoeField_3913", Text = "Just hold on a little while longer, Brother...", },
-	-- { Cue = "/VO/Melinoe_5062",      Text = "Prince Zagreus.", },
-	-- { Cue = "/VO/Melinoe_1417",      Text = "That just might work..." },
-	-- { Cue = "/VO/Melinoe_3412",      Text = "I know what to do..." },
-	{ Cue = "/VO/Melinoe_1075", Text = "{#Emph}By blood and darkness, let my will be done!" },
-	-- { Cue = "/VO/Melinoe_4706",      Text = "{#Emph}The strongest dreams shall shatter if they must!" },
+	{
+		-- { Cue = "/VO/MelinoeField_3423", Text = "Brother...!", },
+		-- { Cue = "/VO/MelinoeField_3424", Text = "Brother...", },
+		-- { Cue = "/VO/MelinoeField_3913", Text = "Just hold on a little while longer, Brother...", },
+		-- { Cue = "/VO/Melinoe_5062",      Text = "Prince Zagreus.", },
+		-- { Cue = "/VO/Melinoe_1417",      Text = "That just might work..." },
+		-- { Cue = "/VO/Melinoe_3412",      Text = "I know what to do..." },
+		{ Cue = "/VO/Melinoe_1075",      Text = "{#Emph}By blood and darkness, let my will be done!" },
+		{ Cue = "/VO/MelinoeField_3418", Text = "{#Emph}Night and Darkness, guide me to my blood beyond the grasp of Time!", PlayFirst = true },
+		-- { Cue = "/VO/Melinoe_4706",      Text = "{#Emph}The strongest dreams shall shatter if they must!" },
+	},
 }
 
 function mod.SurfaceExitIncantationPresentation(usee, args, user)
