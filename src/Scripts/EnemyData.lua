@@ -184,6 +184,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 									entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
 								elseif entry.Cue:find("^/VO/Charon_") then
 									entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+								elseif entry.Cue:find("^/VO/Persephone_") then
+									entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
 								end
 							end
 						end
@@ -1444,6 +1446,7 @@ local enemyModifications = {
 	-- #endregion
 	-- #region STYX - Bosses
 	Hades = {
+		DestroyDelay = 0,
 		-- It's misaligned/not tracking correctly
 		Phase2VFX = mod.NilValue,
 		BossDifficultyShrineRequiredCount = 4,

@@ -5,6 +5,7 @@ local hadesNPCNames = {
 	"NPC_Patroclus_01",
 	"ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 	"ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
+	"ModsNikkelMHadesBiomes_NPC_Persephone_01",
 }
 game.NarrativeData.ConversationOrder = game.CombineTables(game.NarrativeData.ConversationOrder, hadesNPCNames)
 
