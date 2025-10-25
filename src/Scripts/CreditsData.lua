@@ -140,7 +140,7 @@ mod.CreditsData = {
 		-- { PreWait = 36.4 },
 		{ PreWait = 12 },
 
-		{ CreateScreenObstacle = "EndCreditsVignette",                         X = 0,                              Y = 540,                         SkipScreenAnchors = true },
+		{ CreateScreenObstacle = "EndCreditsVignette",                         X = -2,                              Y = 540,                         SkipScreenAnchors = true },
 
 		-- Mod Credits
 		{ CreditLineBuffer = 180 },
@@ -149,7 +149,7 @@ mod.CreditsData = {
 		{ PreWait = 0.8 },
 		{ CreditLineBuffer = 50 },
 		{ Text = "InGameCredits_Name_Mod_NikkelM",                             Format = mod.CreditsFormat.Craft },
-		{ CreditLineBuffer = 160 },
+		{ CreditLineBuffer = 190 },
 
 		{ PreWait = 2.3 },
 
@@ -172,18 +172,18 @@ mod.CreditsData = {
 		{ Text = "InGameCredits_Name_Mod_Magic",                               X = mod.CreditSpacing.ColumnCenter, Format = mod.CreditsFormat.Name },
 
 		{ PreWait = 2.0 },
-		{ CreditLineBuffer = 100 },
+		{ CreditLineBuffer = 190 },
 		{ Text = "InGameCredits_Info_Mod_Community",                           Format = mod.CreditsFormat.Info },
 
 		{ PreWait = 0.3 },
-		{ CreditLineBuffer = 70 },
+		{ CreditLineBuffer = 80 },
 		{ Text = "InGameCredits_Info_Mod_SGG_Thanks",                          Format = mod.CreditsFormat.Info },
 
 		-- Remove Mod Credits to continue with normal SuperGiant Credits
 		{ PreWait = 4 },
 		{ ScrollOn = true },
 
-		{ PreWait = 12.5 },
+		{ PreWait = 13 },
 
 		{ ScrollOff = true },
 		{ ClearScreen = true },

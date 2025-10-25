@@ -449,6 +449,11 @@ function mod.HandleReturnBoatRideEndTheme(eventSource, args)
 end
 
 function mod.ReturnRoomEntrance(currentRun, currentRoom)
+	-- Workaround to prevent both exitDoor.Id and unit.TakingExitDoorId from being nil, triggering the Nemesis race voicelines
+	for id, unit in pairs(game.ShallowCopyTable(game.ActiveEnemies) or {}) do
+		unit.TakingExitDoorId = 1
+	end
+
 	game.wait(0.03)
 	FadeIn({ Duration = 0.0 })
 	mod.FullScreenFadeInAnimationBoatRide()

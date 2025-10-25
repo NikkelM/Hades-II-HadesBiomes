@@ -52,7 +52,7 @@ local newData = {
 	},
 	{
 		Id = "InGameCredits_Info_Mod_Special_Shoutouts",
-		DisplayName = "modding community\ncontributors",
+		DisplayName = "modding community contributors",
 	},
 	{
 		Id = "InGameCredits_Craft_Mod_iDeath",
@@ -80,7 +80,7 @@ local newData = {
 	},
 	{
 		Id = "InGameCredits_Info_Mod_Community",
-		DisplayName = "Special thanks to all members of the Hades modding community!",
+		DisplayName = "Special thanks to all members of the Hades modding community \n that helped with testing and provided feedback!",
 	},
 	{
 		Id = "InGameCredits_Info_Mod_SGG_Thanks",
