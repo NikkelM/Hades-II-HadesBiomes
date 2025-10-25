@@ -15,7 +15,7 @@ mod.CreditsFormat = {
 		LangKoScaleModifier = 1.4,
 		LangJaScaleModifier = 1.4,
 		LangCnScaleModifier = 1.4,
-		-- 
+		--
 		FontSize = 50,
 	},
 	Craft = {
@@ -32,7 +32,7 @@ mod.CreditsFormat = {
 		LangKoScaleModifier = 1.4,
 		LangJaScaleModifier = 1.6,
 		LangCnScaleModifier = 1.4,
-		-- 
+		--
 		FontSize = 35,
 	},
 	Name = {
@@ -48,7 +48,7 @@ mod.CreditsFormat = {
 		ShadowBlur = 0,
 		LangKoScaleModifier = 1.4,
 		LangCnScaleModifier = 1.4,
-		-- 
+		--
 		FontSize = 30,
 	},
 	Company = {
@@ -64,7 +64,7 @@ mod.CreditsFormat = {
 		ShadowBlur = 0,
 		LangKoScaleModifier = 1.4,
 		LangCnScaleModifier = 1.4,
-		-- 
+		--
 		FontSize = 35,
 	},
 	Info = {
@@ -80,7 +80,7 @@ mod.CreditsFormat = {
 		ShadowBlur = 0,
 		LangKoScaleModifier = 1.4,
 		LangCnScaleModifier = 1.4,
-		-- 
+		--
 		FontSize = 27,
 	},
 	TranslatedLanguage = {
@@ -96,7 +96,7 @@ mod.CreditsFormat = {
 		ShadowBlur = 0,
 		LangKoScaleModifier = 1.4,
 		LangCnScaleModifier = 1.4,
-		-- 
+		--
 		FontSize = 35,
 	},
 	Legal = {
@@ -112,7 +112,7 @@ mod.CreditsFormat = {
 		ShadowBlur = 0,
 		LangKoScaleModifier = 1.4,
 		LangCnScaleModifier = 1.4,
-		-- 
+		--
 		FontSize = 23,
 	},
 }
@@ -137,11 +137,58 @@ mod.CreditSpacing = {
 
 mod.CreditsData = {
 	Return01 = {
-		-- Supergiant
 		-- { PreWait = 36.4 },
-		{ PreWait = 2.4 },
+		{ PreWait = 12 },
 
 		{ CreateScreenObstacle = "EndCreditsVignette",                         X = 0,                              Y = 540,                         SkipScreenAnchors = true },
+
+		-- Mod Credits
+		{ CreditLineBuffer = 180 },
+		{ PreWait = 2.3 },
+		{ Text = "InGameCredits_Craft_Mod_NikkelM",                            Format = mod.CreditsFormat.Header },
+		{ PreWait = 0.8 },
+		{ CreditLineBuffer = 50 },
+		{ Text = "InGameCredits_Name_Mod_NikkelM",                             Format = mod.CreditsFormat.Craft },
+		{ CreditLineBuffer = 160 },
+
+		{ PreWait = 2.3 },
+
+		{ Text = "InGameCredits_Info_Mod_Special_Shoutouts",                   Format = mod.CreditsFormat.Craft },
+		{ CreditLineBuffer = 80 },
+
+		{ PreWait = 1.0 },
+
+		{ Text = "InGameCredits_Craft_Mod_iDeath",                             X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Mod_burn",                               X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Craft },
+		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
+		{ Text = "InGameCredits_Name_Mod_iDeath",                              X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Mod_burn",                                X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
+		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferNameToNextCraft },
+
+		{ PreWait = 0.3 },
+
+		{ Text = "InGameCredits_Craft_Mod_Magic",                              X = mod.CreditSpacing.ColumnCenter, Format = mod.CreditsFormat.Craft },
+		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
+		{ Text = "InGameCredits_Name_Mod_Magic",                               X = mod.CreditSpacing.ColumnCenter, Format = mod.CreditsFormat.Name },
+
+		{ PreWait = 2.0 },
+		{ CreditLineBuffer = 100 },
+		{ Text = "InGameCredits_Info_Mod_Community",                           Format = mod.CreditsFormat.Info },
+
+		{ PreWait = 0.3 },
+		{ CreditLineBuffer = 70 },
+		{ Text = "InGameCredits_Info_Mod_SGG_Thanks",                          Format = mod.CreditsFormat.Info },
+
+		-- Remove Mod Credits to continue with normal SuperGiant Credits
+		{ PreWait = 4 },
+		{ ScrollOn = true },
+
+		{ PreWait = 12.5 },
+
+		{ ScrollOff = true },
+		{ ClearScreen = true },
+
+		-- Supergiant
 		{ CreateScreenObstacle = "EndCreditsSupergiantLogo",                   X = game.ScreenCenterX - 530,       Y = screenTop + 25 },
 
 		{ CreditLineBuffer = 192 },

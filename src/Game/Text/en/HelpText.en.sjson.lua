@@ -40,6 +40,52 @@ local newData = {
 		DisplayName = "Bouldy",
 		Description = "",
 	},
+
+	-- Credits
+	{
+		Id = "InGameCredits_Craft_Mod_NikkelM",
+		DisplayName = "a mod by",
+	},
+	{
+		Id = "InGameCredits_Name_Mod_NikkelM",
+		DisplayName = "NikkelM",
+	},
+	{
+		Id = "InGameCredits_Info_Mod_Special_Shoutouts",
+		DisplayName = "modding community\ncontributors",
+	},
+	{
+		Id = "InGameCredits_Craft_Mod_iDeath",
+		DisplayName = "hell2modding",
+	},
+	{
+		Id = "InGameCredits_Name_Mod_iDeath",
+		DisplayName = "iDeathHD",
+	},
+	{
+		Id = "InGameCredits_Craft_Mod_burn",
+		DisplayName = "additional artwork",
+	},
+	{
+		Id = "InGameCredits_Name_Mod_burn",
+		DisplayName = "burn",
+	},
+	{
+		Id = "InGameCredits_Craft_Mod_Magic",
+		DisplayName = "modutil",
+	},
+	{
+		Id = "InGameCredits_Name_Mod_Magic",
+		DisplayName = "Magic_Gonads",
+	},
+	{
+		Id = "InGameCredits_Info_Mod_Community",
+		DisplayName = "Special thanks to all members of the Hades modding community!",
+	},
+	{
+		Id = "InGameCredits_Info_Mod_SGG_Thanks",
+		DisplayName = "Thank you Supergiant Games for creating Hades and Hades II. \n What follows are the original games' credits.",
+	},
 }
 
 local hadesHelpTextCopiedEntries = mod.ModifyHadesHelpTextEntries(hadesHelpTextTable)
