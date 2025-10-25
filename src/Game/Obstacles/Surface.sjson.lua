@@ -7,7 +7,19 @@ local hadesTwoSurfaceObstacleFile = rom.path.combine(rom.paths.Content(), "Game\
 
 -- These need to be added before the others, as they are inherited from
 local hadesObstacleAdditionsParents = {}
-local hadesObstacleAdditions = {}
+local hadesObstacleAdditions = {
+	EndCreditsVignette = {
+		Name = "EndCreditsVignette",
+		InheritFrom = "1_BaseGUIObstacle",
+		DisplayInEditor = false,
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "EndCreditsVignette",
+			-- To account for a little pixel at the bottom being uncovered otherwise
+			Scale = 1.02
+		},
+	},
+}
 -- Add the added obstacles
 mod.AddTableKeysSkipDupes(hadesSurfaceObstacleTable.Obstacles, hadesObstacleAdditionsParents, "Name")
 mod.AddTableKeysSkipDupes(hadesSurfaceObstacleTable.Obstacles, hadesObstacleAdditions, "Name")

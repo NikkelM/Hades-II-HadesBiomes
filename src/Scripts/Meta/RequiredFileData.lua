@@ -419,8 +419,6 @@ mod.SjsonFileMappings = {
 	-- "Animations\\CharacterAnimationsNPCs", -- This file is copied directly
 	"Animations\\CharacterAnimationsNPC_Persephone",
 	"Animations\\CharacterAnimationsNPC_Thanatos",
-	-- TODO: Has lots of duplicates, just take the ones we need for the ending scenes manually?
-	-- "Animations\\CharacterAnimationsHeroNonCombat",
 }
 
 -- Modifications to animations in the above files, before they are copied over

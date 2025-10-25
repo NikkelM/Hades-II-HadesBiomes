@@ -521,8 +521,7 @@ function mod.HandleReturnBoatRideAnimationSetup(eventSource, args)
 end
 
 function mod.HandleReturnBoatRide(eventSource, args)
-	-- TODO
-	-- game.thread(StartCredits)
+	game.thread(mod.StartCredits)
 
 	game.HideCombatUI("BoatRide")
 	AddInputBlock({ Name = "BoatRide" })
@@ -579,6 +578,87 @@ function mod.HandleReturnBoatRide(eventSource, args)
 		mod.LeaveRoomWithNoDoor(eventSource, args)
 	else
 		SetAnimation({ DestinationId = charonId, Name = "CharonEndingBoatRow_StopRowing" })
+	end
+end
+
+function mod.StartCredits()
+	game.ScreenAnchors.Credits = {}
+	local scrollDistance = 1080 + 3000
+	local scrollSpeed = scrollDistance / 75
+	local scroll = false
+
+	local roomCredits = mod.CreditsData[game.CurrentRun.CurrentRoom.Name] or {}
+	local creditLineBuffer = 0
+
+	for index, creditsData in ipairs(roomCredits) do
+		if creditsData.CreditLineBuffer then
+			creditLineBuffer = creditLineBuffer + creditsData.CreditLineBuffer
+		end
+
+		if creditsData.ScrollOn then
+			scroll = true
+			if creditsData.ScrollSpeedOverride then
+				scrollSpeed = creditsData.ScrollSpeedOverride
+			end
+			if creditsData.ScrollDistanceOverride then
+				scrollDistance = creditsData.ScrollDistanceOverride
+			end
+			for k, creditId in pairs(game.ScreenAnchors.Credits) do
+				Move({ Id = creditId, Angle = 90, Distance = scrollDistance, Duration = scrollSpeed })
+			end
+		end
+		if creditsData.ScrollOff then
+			scroll = false
+		end
+
+		game.wait(creditsData.PreWait)
+
+		if creditsData.CreateScreenObstacle ~= nil then
+			creditsData.Id = CreateScreenObstacle({
+				Name = creditsData.CreateScreenObstacle,
+				Group = "Combat_UI",
+				X = creditsData.X,
+				Y = creditsData.Y
+			})
+			if not creditsData.SkipScreenAnchors then
+				table.insert(game.ScreenAnchors.Credits, creditsData.Id)
+			end
+		end
+
+		if creditsData.Text ~= nil then
+			local offsetY = 0
+			local offsetX = 0
+			if creditsData.Y then
+				offsetY = creditsData.Y
+			elseif creditLineBuffer > 0 then
+				offsetY = creditLineBuffer
+			else
+				offsetY = game.ScreenHeight
+			end
+			if creditsData.X then
+				offsetX = creditsData.X
+			else
+				offsetX = game.ScreenCenterX - 530
+			end
+			creditsData.Id = CreateScreenObstacle({ Name = "BlankObstacle", Group = "Combat_UI", X = offsetX, Y = offsetY })
+			table.insert(game.ScreenAnchors.Credits, creditsData.Id)
+			local textBoxData = game.MergeTables(creditsData, creditsData.Format)
+			CreateTextBox(textBoxData)
+
+			if scroll then
+				Move({ Id = creditsData.Id, Angle = 90, Distance = game.ScreenHeight + scrollDistance, Duration = scrollSpeed })
+			end
+		end
+
+		game.wait(creditsData.PostWait)
+
+		if creditsData.ClearScreen then
+			for k, textBoxId in pairs(game.ScreenAnchors.Credits) do
+				DestroyTextBox({ Id = textBoxId })
+				game.ScreenAnchors.Credits[k] = nil
+			end
+			creditLineBuffer = 0
+		end
 	end
 end
 
