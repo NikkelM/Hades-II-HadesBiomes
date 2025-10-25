@@ -401,7 +401,7 @@ function mod.HandleReturnBoatRideIntro(eventSource, args)
 
 	local heroId = game.CurrentRun.Hero.ObjectId
 	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
-	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Persephone_01" })
+	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "ModsNikkelMHadesBiomes_NPC_Persephone_01" })
 	local charonId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Charon_01" })
 
 	game.ProcessTextLines(game.ActiveEnemies[persephoneId].InteractTextLineSets)
@@ -424,7 +424,7 @@ end
 function mod.HandleReturnBoatRideOutro(eventSource, args)
 	local heroId = game.CurrentRun.Hero.ObjectId
 	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
-	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Persephone_01" })
+	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "ModsNikkelMHadesBiomes_NPC_Persephone_01" })
 
 	-- These don't exist in Hades
 	-- game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.EndBoatRideVoiceLines, true)
@@ -509,7 +509,7 @@ end
 function mod.HandleReturnBoatRideAnimationSetup(eventSource, args)
 	local heroId = game.CurrentRun.Hero.ObjectId
 	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
-	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Persephone_01" })
+	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "ModsNikkelMHadesBiomes_NPC_Persephone_01" })
 	local charonId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Charon_01" })
 
 	SetAnimation({
@@ -537,7 +537,7 @@ function mod.HandleReturnBoatRide(eventSource, args)
 
 	local heroId = game.CurrentRun.Hero.ObjectId
 	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
-	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Persephone_01" })
+	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "ModsNikkelMHadesBiomes_NPC_Persephone_01" })
 	local persephoneBoatId = GetClosest({ Id = persephoneId, DestinationIds = invisibleTargets })
 	local charonId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Charon_01" })
 	local charonBoatId = GetClosest({ Id = charonId, DestinationIds = invisibleTargets })
@@ -665,6 +665,34 @@ function mod.StartCredits()
 			creditLineBuffer = 0
 		end
 	end
+end
+
+function mod.BoatToDeathAreaTransition(eventSource, args)
+	local heroId = game.CurrentRun.Hero.ObjectId
+	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "ModsNikkelMHadesBiomes_NPC_Persephone_01" })
+	local houseDoorId = GetClosest({ Id = heroId, DestinationIds = GetIdsByType({ Name = "HouseDoor02" }) })
+
+	AddInputBlock({ Name = "ExitToDeathAreaPresentation" })
+	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
+
+	game.wait(0.8)
+
+	PlaySound({ Name = "/SFX/Menu Sounds/WeaponUnlockBoom", Id = houseDoorId })
+
+	ShakeScreen({ Speed = 500, Distance = 4, FalloffSpeed = 1000, Duration = 0.3, Delay = 0.45 })
+
+	LockCamera({ Id = houseDoorId, EaseIn = 0.04, EaseOut = 0.275, Duration = 13 })
+	game.wait(0.5)
+	SetAnimation({ DestinationId = houseDoorId, Name = "HouseDoor02Open" })
+
+	game.wait(1.75)
+
+	mod.FullScreenFadeOutAnimationBoatRide()
+
+	game.wait(3.0)
+
+	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
+	RemoveInputBlock({ Name = "ExitToDeathAreaPresentation" })
 end
 
 -- #endregion

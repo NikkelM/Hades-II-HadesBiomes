@@ -143,10 +143,10 @@ mod.CreditsData = {
 		{ CreateScreenObstacle = "EndCreditsVignette",                         X = -2,                              Y = 540,                         SkipScreenAnchors = true },
 
 		-- Mod Credits
+		-- TODO: Mod name in special formatting
 		{ CreditLineBuffer = 180 },
 		{ PreWait = 2.3 },
 		{ Text = "InGameCredits_Craft_Mod_NikkelM",                            Format = mod.CreditsFormat.Header },
-		{ PreWait = 0.8 },
 		{ CreditLineBuffer = 50 },
 		{ Text = "InGameCredits_Name_Mod_NikkelM",                             Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = 190 },

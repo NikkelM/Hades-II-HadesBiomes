@@ -299,6 +299,42 @@ In this map, we need to change the name for the Persephone NPC, as it is used in
 
 For ID `559274`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
 
+#### Return01
+
+In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
+
+For ID `552885`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
+
+#### Return02
+
+In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
+
+For ID `553261`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
+
+#### Return03
+
+In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
+
+For ID `553268`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
+
+#### Return04
+
+In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
+
+For ID `561150`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
+
+#### Return05
+
+In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
+
+For ID `553264`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
+
+#### Return06
+
+In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
+
+For ID `553381`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
+
 #### D_MiniBoss03
 
 In this map, we need to change the name for the CrawlerMiniboss, as it is used in both Hades and Hades II.

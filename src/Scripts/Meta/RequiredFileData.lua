@@ -365,6 +365,7 @@ mod.BikFileNames = {
 	"EndingBoatBack_Bink",
 	"EndingBoatFront_Bink",
 	"EndingBoatWhole_Bink",
+	"HouseDoor02Open",
 	-- #endregion
 	-- #region ZAGREUS
 	"ZagreusStart_Bink",

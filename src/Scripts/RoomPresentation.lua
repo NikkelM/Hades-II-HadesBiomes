@@ -41,8 +41,11 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 			Destroy({ Ids = destroyIdsOnDeath })
 		end
 
-		-- Only replace animation if we are on the Surface after talking to Persephone
-		if currentRun.CurrentRoom.Name == "E_Story01" then
+		if currentRun.CurrentRoom.Name == "Return06" then
+			-- For the ending scene
+			mod.BoatToDeathAreaTransition(nil, args)
+		elseif currentRun.CurrentRoom.Name == "E_Story01" then
+			-- Only replace animation if we are on the Surface after talking to Persephone
 			AddInputBlock({ Name = "DeathPresentation" })
 			ClearCameraClamp({ LerpTime = 0.4 })
 			game.ZeroMouseTether("DeathPresentation")
