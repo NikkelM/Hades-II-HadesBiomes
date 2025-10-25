@@ -45,34 +45,35 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 		if currentRun.CurrentRoom.Name == "E_Story01" then
 			AddInputBlock({ Name = "DeathPresentation" })
 			ClearCameraClamp({ LerpTime = 0.4 })
-			ZeroMouseTether("DeathPresentation")
-			LockCameraMotion("DeathPresentation")
+			game.ZeroMouseTether("DeathPresentation")
+			game.LockCameraMotion("DeathPresentation")
 			SetConfigOption({ Name = "UseOcclusion", Value = false })
 
-			if IsScreenOpen("Codex") then
-				CloseCodexScreen()
+			if game.IsScreenOpen("Codex") then
+				game.CloseCodexScreen()
 			end
+			PlaySound({ Name = "{84435f74-4111-43c5-8246-8b3e2736794d}" })
 
 			StopAmbientSound({ All = true })
-			StopSound({ Id = AudioState.SecretMusicId, Duration = 0.25 })
-			StopSound({ Id = AudioState.AmbientMusicId, Duration = 0.25 })
-			AudioState.SecretMusicId = nil
-			AudioState.SecretMusicName = nil
-			AudioState.AmbientMusicId = nil
-			if AudioState.RainSoundId ~= nil then
-				StopSound({ Id = AudioState.RainSoundId, Duration = 0.2 })
-				AudioState.RainSoundId = nil
+			StopSound({ Id = game.AudioState.SecretMusicId, Duration = 0.25 })
+			StopSound({ Id = game.AudioState.AmbientMusicId, Duration = 0.25 })
+			game.AudioState.SecretMusicId = nil
+			game.AudioState.SecretMusicName = nil
+			game.AudioState.AmbientMusicId = nil
+			if game.AudioState.RainSoundId ~= nil then
+				StopSound({ Id = game.AudioState.RainSoundId, Duration = 0.2 })
+				game.AudioState.RainSoundId = nil
 			end
-			if AudioState.ChronosTimeSlowSoundId ~= nil then
-				StopSound({ Id = AudioState.ChronosTimeSlowSoundId, Duration = 0.2 })
-				AudioState.ChronosTimeSlowSoundId = nil
+			if game.AudioState.ChronosTimeSlowSoundId ~= nil then
+				StopSound({ Id = game.AudioState.ChronosTimeSlowSoundId, Duration = 0.2 })
+				game.AudioState.ChronosTimeSlowSoundId = nil
 			end
-			if AudioState.EliteEncounterMusicId ~= nil then
-				StopSound({ Id = AudioState.EliteEncounterMusicId, Duration = 0.2 })
-				AudioState.EliteEncounterMusicId = nil
+			if game.AudioState.EliteEncounterMusicId ~= nil then
+				StopSound({ Id = game.AudioState.EliteEncounterMusicId, Duration = 0.2 })
+				game.AudioState.EliteEncounterMusicId = nil
 			end
-			if AudioState.SkipEncounterMusicId ~= nil then
-				SkipEncounterEndPresentation()
+			if game.AudioState.SkipEncounterMusicId ~= nil then
+				game.SkipEncounterEndPresentation()
 			end
 
 			SetAudioEffectState({ Name = "SpellCharge", Value = 0 })
@@ -81,7 +82,6 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 			Stop({ Id = currentRun.Hero.ObjectId })
 			Halt({ Id = currentRun.Hero.ObjectId })
 
-			
 			RemoveFromGroup({ Id = killer.ObjectId, Names = { "Standing", "GroundEnemies", "FlyingEnemies" } })
 			AddToGroup({ Id = killer.ObjectId, Name = "Combat_UI", DrawGroup = true })
 
@@ -90,46 +90,44 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 			end
 
 			currentRun.Hero.Mute = false
-			UnmuteSpeakerPermanent(currentRun.Hero)
+			game.UnmuteSpeakerPermanent(currentRun.Hero)
 			currentRun.Hero.SpeechParams.Chipmunk = nil
 			SetAudioEffectState({ Name = "Chipmunk", Value = 0 })
-			SetPlayerInvulnerable("PlayerDeath")
+			game.SetPlayerInvulnerable("PlayerDeath")
 
 			-- black out world
-			StopAnimation({ DestinationId = CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignetteHold" })
-			StopAnimation({ DestinationId = CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessGroundFog" })
-			AdjustFrame({ Color = Color.TransparentRed, Duration = 0.0, Fraction = 0 })
+			StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignetteHold" })
+			StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessGroundFog" })
+			AdjustFrame({ Color = game.Color.TransparentRed, Duration = 0.0, Fraction = 0 })
 
-			ScreenAnchors.DeathBacking = CreateScreenObstacle({
+			game.ScreenAnchors.DeathBacking = CreateScreenObstacle({
 				Name = "rectangle01",
 				Group = "Combat_UI_World_Backing",
-				X = ScreenCenterX,
-				Y = ScreenCenterY,
+				X = game.ScreenCenterX,
+				Y = game.ScreenCenterY,
 				Scale = 10.0,
-				ScaleX = ScreenScaleX,
-				ScaleY = ScreenScaleY
+				ScaleX = game.ScreenScaleX,
+				ScaleY = game.ScreenScaleY
 			})
-			SetColor({ Id = ScreenAnchors.DeathBacking, Color = Color.Black })
-			SetAlpha({ Id = ScreenAnchors.DeathBacking, Fraction = 1.0, Duration = 0 })
+			SetColor({ Id = game.ScreenAnchors.DeathBacking, Color = Color.Black })
+			SetAlpha({ Id = game.ScreenAnchors.DeathBacking, Fraction = 1.0, Duration = 0 })
 
-			ScreenAnchors.DeathBackground = CreateScreenObstacle({
+			game.ScreenAnchors.DeathBackground = CreateScreenObstacle({
 				Name = "rectangle01",
 				Group = "Combat_UI_World_Backing",
-				X = ScreenCenterX,
-				Y = ScreenCenterY,
+				X = game.ScreenCenterX,
+				Y = game.ScreenCenterY,
 				Scale = 10.0,
-				ScaleX = ScreenScaleX,
-				ScaleY = ScreenScaleY
+				ScaleX = game.ScreenScaleX,
+				ScaleY = game.ScreenScaleY
 			})
-			SetColor({ Id = ScreenAnchors.DeathBackground, Color = Color.Black })
-			SetAlpha({ Id = ScreenAnchors.DeathBackground, Fraction = 1.0, Duration = 0 })
-
-
+			SetColor({ Id = game.ScreenAnchors.DeathBackground, Color = Color.Black })
+			SetAlpha({ Id = game.ScreenAnchors.DeathBackground, Fraction = 1.0, Duration = 0 })
 
 			local deathAngleFace = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = currentRun.Hero.ObjectId, OffsetX = -200, OffsetY = 100 })
-			wait(0.02)
+			game.wait(0.02)
 			AngleTowardTarget({ Id = currentRun.Hero.ObjectId, DestinationId = deathAngleFace })
-			wait(0.08)
+			game.wait(0.08)
 
 			PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal2" })
 
@@ -144,12 +142,12 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 
 			RemoveFromGroup({ Id = currentRun.Hero.ObjectId, Name = "Standing" })
 			AddToGroup({ Id = currentRun.Hero.ObjectId, Name = "Combat_Menu", DrawGroup = true })
-			thread(DoRumble, currentRun.Hero.HeroFinalHitRumbleParameters)
+			game.thread(game.DoRumble, currentRun.Hero.HeroFinalHitRumbleParameters)
 
-			wait(0.02)
-			SetThingProperty({ Property = "Grip", Value = 99999, DestinationId = CurrentRun.Hero.ObjectId })
+			game.wait(0.02)
+			SetThingProperty({ Property = "Grip", Value = 99999, DestinationId = game.CurrentRun.Hero.ObjectId })
 
-			thread(DisplayInfoBanner, nil,
+			game.thread(game.DisplayInfoBanner, nil,
 				{
 					Text = "ModsNikkelMHadesBiomes_OutroDeathMessageAlt",
 					Delay = 1.15,
@@ -162,16 +160,16 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 					Duration = 4.25,
 				})
 
-			wait(0.85)
+			game.wait(0.85)
 			local ambientSoundId = PlaySound({ Name = "/Leftovers/Object Ambiences/WaterRushingBloodFall" })
 
-			wait(11.8)
+			game.wait(11.8)
 			StopSound({ Id = ambientSoundId, Duration = 4 })
-			WaitForSpeechFinished()
+			game.WaitForSpeechFinished()
 
-			UnlockCameraMotion("DeathPresentation")
+			game.UnlockCameraMotion("DeathPresentation")
 			RemoveInputBlock({ Name = "DeathPresentation" })
-			ToggleCombatControl(CombatControlsDefaults, true, "DeathPresentation")
+			game.ToggleCombatControl(game.CombatControlsDefaults, true, "DeathPresentation")
 			SetConfigOption({ Name = "UseOcclusion", Value = true })
 		else
 			base(currentRun, killer, args)
