@@ -46,9 +46,22 @@ local roomModifications = {
 			RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
 		},
 	},
+	BaseStyxMini = {
+		-- Don't turn off any stems during Styx mini rooms
+		CombatOverMusicEvents = {},
+	},
 	BaseStyxWingEnd = {
 		NextRoomEntranceFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesReturnToStyxHubPresentation",
 		IneligibleRewards = { "Devotion" },
+		-- Turn on the Bass stem, and play the outro music from the Drums section after the end combat rooms
+		CombatOverMusicEvents = {
+			{
+				GameStateRequirements = {},
+				MusicSection = 2,
+				MusicMutedStems = { "Guitar" },
+				MusicActiveStems = { "Bass", "Drums" },
+			},
+		},
 	},
 
 	-- OPENING ROOMS
@@ -136,6 +149,15 @@ local roomModifications = {
 	},
 	BaseStyxMiniBoss = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+		-- Turn on the Bass stem, and play the outro music from the Drums section after the end combat rooms
+		CombatOverMusicEvents = {
+			{
+				GameStateRequirements = {},
+				MusicSection = 2,
+				MusicMutedStems = { "Guitar" },
+				MusicActiveStems = { "Bass", "Drums" },
+			},
+		},
 	},
 
 	-- BOSSES
@@ -144,6 +166,7 @@ local roomModifications = {
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_StyxBoss",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		ForcedReward = "MixerIBossDrop",
+		EndMusicOnEnter = true,
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,

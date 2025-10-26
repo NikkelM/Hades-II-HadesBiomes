@@ -23,7 +23,8 @@ function mod.RoomEntranceD_Hub(currentRun, currentRoom, args)
 
 		game.wait(2.15)
 
-		game.SecretMusicPlayer("/Music/HadesTheme")
+		-- "Music/HadesTheme"
+		game.SecretMusicPlayer("{1ddbe605-eee3-470a-8569-fd4ea4dc317d}")
 
 		game.wait(2.9)
 		game.UnblockCombatUI("StyxHubIntro")
@@ -55,6 +56,12 @@ function mod.RoomEntranceD_Hub(currentRun, currentRoom, args)
 		game.wait(roomIntroSequenceDuration)
 		LockCamera({ Id = currentRun.Hero.ObjectId, Duration = 2.0 })
 	end
+end
+
+function mod.ResumeStyxMusic()
+	game.wait(1.1)
+	ResumeSound({ Id = game.AudioState.MusicId, Duration = 0.2 })
+	SetVolume({ Id = game.AudioState.MusicId, Value = 1.0 })
 end
 
 function mod.UseStyxFountain(usee, args)

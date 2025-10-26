@@ -213,6 +213,7 @@ local npcModifications = {
 		BossPresentationIntroTextLineSets = {
 			CerberusStyxMeeting01 = {
 				[1] = { PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Cerberus_Exit", },
+				[4] = { PreLineFunctionName = _PLUGIN.guid .. "." .. "ResumeStyxMusic" },
 			},
 		},
 	},
