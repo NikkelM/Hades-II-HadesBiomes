@@ -153,6 +153,18 @@ function mod.BossIntroHades(eventSource, args)
 	end
 end
 
+function mod.StartFinalBossRoomIntroMusic()
+	-- "/Music/BossFightMusic"
+	game.MusicPlayer("{fe196260-d08d-4a07-802d-6dfda39efa2e}")
+	game.SetMusicSection(8, game.AudioState.MusicId)
+end
+
+function mod.StartFinalBossRoomMusic()
+	-- "/Music/BossFightMusic"
+	game.MusicPlayer("{fe196260-d08d-4a07-802d-6dfda39efa2e}")
+	game.SetMusicSection(0, game.AudioState.MusicId)
+end
+
 function mod.ClearShadeWeapons()
 	local weaponIds = GetIdsByType({ Names = game.EnemyData.ShadeNaked.AIPickupTypes })
 	Destroy({ Ids = weaponIds })
@@ -203,7 +215,7 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	mod.ClearStoredAmmoHero()
 	mod.DestroyHadesFightObstacles()
 	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId }, BlockDeathWeapons = true })
-	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking" }, ExcludeNames = { "HadesCerberusAssist" } })
+	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" }, ExcludeNames = { "HadesCerberusAssist" } })
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 
 	SetAnimation({ Name = "HadesBattleKnockDown", DestinationId = boss.ObjectId })
@@ -324,7 +336,7 @@ function mod.HadesKillPresentation(unit, args)
 	-- StopSuper()
 	mod.ClearStoredAmmoHero()
 	mod.DestroyHadesFightObstacles()
-	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking" } })
+	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" } })
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignetteHold" })
 	SetAlpha({ Ids = GetIds({ Name = "Terrain_Lighting_01" }), Fraction = 1.0, Duration = 1.0 })
@@ -736,10 +748,12 @@ function mod.HadesConsumeHeal(enemy, weaponAIData, currentRun)
 				break
 			end
 		end
-		game.ActiveEnemies[urnId].OnDeathFunctionName = nil
-		SetUnitProperty({ DestinationId = urnId, Property = "OnDeathWeapon", Value = "null" })
-		StopAnimation({ DestinationId = urnId, Name = weaponAIData.ConsumeFx })
-		Destroy({ Id = urnId })
+		if game.ActiveEnemies[urnId] ~= nil then
+			game.ActiveEnemies[urnId].OnDeathFunctionName = nil
+			SetUnitProperty({ DestinationId = urnId, Property = "OnDeathWeapon", Value = "null" })
+			StopAnimation({ DestinationId = urnId, Name = weaponAIData.ConsumeFx })
+			Destroy({ Id = urnId })
+		end
 		urnsConsumed = urnsConsumed + 1
 		game.wait(game.CalcEnemyWait(enemy, weaponAIData.NextUrnWait), enemy.AIThreadName)
 	end

@@ -166,6 +166,16 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 										"ModsNikkelMHadesBiomes_Portrait_Zag_")
 								end
 							end
+							if entry.PreLineFunctionName then
+								if entry.PreLineFunctionName == "StartFinalBossRoomIntroMusic" then
+									entry.PreLineFunctionName = _PLUGIN.guid .. "." .. "StartFinalBossRoomIntroMusic"
+								end
+							end
+							if entry.PostLineFunctionName then
+								if entry.PostLineFunctionName == "StartFinalBossRoomMusic" then
+									entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "StartFinalBossRoomMusic"
+								end
+							end
 							if entry.PreLineThreadedFunctionName then
 								if entry.PreLineThreadedFunctionName == "PlayPreLineTauntAnimFromSource" then
 									entry.PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayPreLineTauntAnimFromSource"
@@ -836,6 +846,24 @@ local enemyModifications = {
 		BlockAttributes = { "Blink", "Orbit", "Massive", },
 	},
 	CrusherUnit = {
+		StunAnimations = { Default = "CrusherUnitOnHit" },
+		-- Don't create a new blank obstacle for this enemy, as the flipping logic would be hard to get right
+		ManualDeathAnimation = false,
+		DestroyDelay = 1.2,
+		BlockRaiseDead = true,
+		BlockCharm = true,
+		IgnoreSpeedShrine = true,
+		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "CrusherUnitTouchdown",
+			PostTouchdownMakeVulnerable = true,
+		},
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSkyAttackerAI",
+		DefaultAIData = {
+			PostTouchdownMinDuration = 1.2,
+		},
+	},
+	CrusherUnitSuperElite = {
 		StunAnimations = { Default = "CrusherUnitOnHit" },
 		-- Don't create a new blank obstacle for this enemy, as the flipping logic would be hard to get right
 		ManualDeathAnimation = false,
