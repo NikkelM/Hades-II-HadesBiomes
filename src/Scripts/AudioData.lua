@@ -66,7 +66,8 @@ game.MusicTrackData.Elysium = {
 	-- { Name = "/Music/MusicElysium3_MC", },
 }
 game.MusicTrackData.Styx = {
-	{ Name = "/Music/MusicStyx1_MC", },
+	-- "/Music/MusicStyx1_MC"
+	{ Name = "{9781c324-6083-4acd-bdaa-5a7a67608005}", },
 }
 
 -- Add required GlobalVoiceLines
