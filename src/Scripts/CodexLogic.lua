@@ -4,8 +4,7 @@ modutil.mod.Path.Wrap("OpenCodexScreen", function(base)
 	base()
 end)
 
--- TODO: Move into mod., check for other biomes
-function game.CheckLocationUnlock(eventSource, args)
+function mod.CheckLocationUnlock(eventSource, args)
 	game.CurrentRun.BiomesReached = game.CurrentRun.BiomesReached or {}
 	game.CurrentRun.BiomesReached[args.Biome] = true
 	game.CheckCodexUnlock("ModsNikkelMHadesBiomesCodexEntry", args.Biome)
