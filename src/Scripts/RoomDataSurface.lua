@@ -13,6 +13,7 @@ local roomModifications = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
 		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 
@@ -46,6 +47,9 @@ local roomModifications = {
 
 	-- OPENING ROOMS
 	E_Intro = {
+		-- "/Music/PersephoneTheme_MC"
+		Music = "{6925b297-5627-4549-b137-135aca5919d2}",
+
 		Starting = true,
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceE_Intro",
 

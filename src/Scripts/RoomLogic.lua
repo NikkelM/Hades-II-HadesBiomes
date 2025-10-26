@@ -50,19 +50,7 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 			end
 		end
 
-		if currentRoom.LoadModdedAudioBanks ~= nil then
-			for _, bank in ipairs(currentRoom.LoadModdedAudioBanks) do
-				rom.audio.load_bank(rom.path.combine(rom.paths.Content(), "Audio\\Desktop\\" .. bank .. ".bank"))
-			end
-		end
-
-		if currentRoom.LoadCustomModdedAudioBanks ~= nil then
-			for _, bank in ipairs(currentRoom.LoadCustomModdedAudioBanks) do
-				rom.audio.load_bank(rom.path.combine(_PLUGIN.plugins_data_mod_folder_path,
-					"Content\\Audio\\Desktop\\" .. bank .. ".bank"))
-			end
-		end
-
+		-- We don't need to load LoadModdedAudioBanks or LoadCustomModdedAudioBanks here, as they were already loaded in AudioStateInit
 		if currentRoom.LoadModdedVoiceBanks ~= nil then
 			game.LoadVoiceBanks(currentRoom.LoadModdedVoiceBanks)
 		end
