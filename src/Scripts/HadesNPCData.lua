@@ -10912,7 +10912,6 @@ mod.NPCData = mod.NPCData or {
 				},
 				{
 					Cue = "/VO/Storyteller_0243",
-					-- TODO
 					PreLineFunctionName = "ResumeStyxMusic",
 					IsNarration = true,
 					PreLineWait = 1.0,
@@ -13394,9 +13393,7 @@ mod.NPCData = mod.NPCData or {
 					"That's quite all right; I do. {#DialogueItalicFormat}In the name of Persephone, the Queen{#PreviousFormat}!! Open the gates!"
 				},
 			},
-			-- TODO:
 			-- Ending01 scene in DeathLoopData
-			-- more events in NPC_Persephone_Home_01
 		},
 	},
 }
