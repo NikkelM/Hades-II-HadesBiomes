@@ -210,8 +210,6 @@ function mod.SunriseOverlookBackToRoom(room, args)
 		SetSoundCueValue({ Id = game.AudioState.MusicId, Names = { "Keys" }, Value = 1.0, Duration = 1.5 })
 		SetVolume({ Id = game.AudioState.MusicId, Value = 1, Duration = 1.5 })
 		PlaySound({ Name = "/Leftovers/World Sounds/MapZoomInShortHigh" })
-		-- TODO
-		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.OverlookLeaveVoiceLines)
 		game.ClearCameraFocusOverride()
 
 		game.killTaggedThreads("OverlookThread")

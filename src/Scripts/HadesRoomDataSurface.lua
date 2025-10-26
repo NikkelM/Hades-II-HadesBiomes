@@ -292,7 +292,6 @@ mod.RoomData.Surface = mod.RoomData.Surface or {
 		Ambience = "/Leftovers/Ambience/FarmAmbience",
 
 		RunOverrides = {
-			-- TODO
 			DeathPresentationFunctionName = "SurfaceDeathPresentation",
 		},
 		ExitFunctionName = "SurfaceToBoatRideExit",
