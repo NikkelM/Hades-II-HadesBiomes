@@ -45,6 +45,7 @@ local surfaceRoomModifications = {
 		RoomSetName = "Surface",
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "NikkelM-HadesBiomesFxModded", "ModsNikkelMHadesBiomesFxOriginal", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "ReturnRoomEntrance",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "ReturnRoomExit",
 		UnthreadedEvents = {

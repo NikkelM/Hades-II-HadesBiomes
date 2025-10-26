@@ -445,7 +445,11 @@ function mod.HandleReturnBoatRideEndTheme(eventSource, args)
 	mod.BoatSoundId = nil
 	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.StartingBoatRideVoiceLines)
 	game.wait(7)
-	game.thread(game.MusicPlayer, "/Music/EndTheme")
+	-- Unmute both vocal tracks
+	SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.MusicId, Value = 1 })
+	SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.MusicId, Value = 1 })
+	-- "/Music/EndTheme"
+	game.thread(game.MusicPlayer, "{16339170-22cd-4823-97a8-0a7d91c5292c}")
 end
 
 function mod.ReturnRoomEntrance(currentRun, currentRoom)
