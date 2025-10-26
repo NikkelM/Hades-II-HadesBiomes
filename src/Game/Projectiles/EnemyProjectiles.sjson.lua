@@ -64,6 +64,9 @@ local hadesProjectilesModifications = {
 	},
 	HeavyRangedWeapon = {
 		NumPenetrations = 99999,
+		DissipateGraphic = "null",
+		ImpactFx = "null",
+		DeathFx = "EnemyLaserEnd",
 		InflictedDamageSound = "/SFX/BurnDamage",
 	},
 	HeavyRangedWeaponSplitter = {
