@@ -134,6 +134,9 @@ local roomModifications = {
 	-- BOSSES
 	A_Boss01 = {
 		LoadModdedVoiceBanks = { "Megaera*", "Alecto*", "Tisiphone*", "ZagreusField" },
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
+		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
+		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		-- Replaces MegaeraHome with Megaera voicelines
 		UnthreadedEvents = {
@@ -190,6 +193,9 @@ local roomModifications = {
 		},
 	},
 	A_PostBoss01 = {
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
+		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
+		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
 		NextRoomSet = { "Asphodel" },
 		SellShopSpawnChance = 1.0,

@@ -163,6 +163,10 @@ local roomModifications = {
 	-- BOSSES
 	D_Boss01 = {
 		LoadModdedVoiceBanks = { "HadesField", "ZagreusField" },
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
+		-- "/Leftovers/Ambience/OceanWavesWaterAmbience"
+		Ambience = "{c8b4b4e9-ee0e-4b72-8a5f-8b12e5179707}",
+
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_StyxBoss",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		ForcedReward = "MixerIBossDrop",
@@ -192,6 +196,9 @@ local roomModifications = {
 
 	-- OTHER
 	D_Reprieve01 = {
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
+		-- "/Leftovers/Ambience/StillWaterAmbience2"
+		Ambience = "{988cda14-71e5-41c8-9496-49f765a603d5}",
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,
 		},
