@@ -33,6 +33,23 @@ modutil.mod.Path.Wrap("FullScreenFadeOutAnimation", function(base, animationName
 	base(animationName, colorGradeName)
 end)
 
+modutil.mod.Path.Context.Wrap("DeathPresentation", function(currentRun, killer, deathArgs)
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		modutil.mod.Path.Wrap("DisplayInfoBanner", function(base, source, infoArgs)
+			if infoArgs.Text == "DeathMessage" then
+				-- Normal death during a run
+				infoArgs.Text = "ModsNikkelMHadesBiomes_DeathMessage"
+				infoArgs.TextColor = Color.Red
+				infoArgs.FontScale = 0.85
+				infoArgs.TextOffsetY = -20
+				infoArgs.AnimationName = "LocationTextBGDeath"
+				infoArgs.AnimationOutName = "LocationTextBGDeathOut"
+			end
+			base(source, infoArgs)
+		end)
+	end
+end)
+
 modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		-- Destroy any IDs that we marked as such. E.g. Alecto rage meter or Asphodel door reward front animation
