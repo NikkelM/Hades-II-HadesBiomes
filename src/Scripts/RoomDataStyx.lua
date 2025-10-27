@@ -27,6 +27,7 @@ local roomModifications = {
 	BaseStyx = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicStyxModded", },
 		-- "/Leftovers/Object Ambiences/CreepyIslandAmbience"
 		Ambience = "{ff413738-f0b8-400b-bbd6-c660e227583c}",
 		ReverbValue = 2.0,

@@ -27,6 +27,7 @@ local roomModifications = {
 	BaseElysium = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicElysiumModded", },
 
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Elysium",
 
@@ -210,3 +211,4 @@ local roomModifications = {
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Elysium, roomModifications, roomReplacements, "Elysium")
+mod.PrintTable(game.RoomData.BaseElysium)

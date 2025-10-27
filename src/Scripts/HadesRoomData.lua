@@ -131,7 +131,6 @@ mod.RoomData.Base = {
 	{
 		InheritFrom = { "BaseRoom" },
 		LegalEncounters = { "Surface" },
-		-- Music = "/Music/EndTheme",
 		Ambience = "/Leftovers/Object Ambiences/WaterRushingStream",
 		ZoomFraction = 0.75,
 
