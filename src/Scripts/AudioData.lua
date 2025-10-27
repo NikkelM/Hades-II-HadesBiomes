@@ -27,32 +27,94 @@ game.GlobalVoiceLines.EmptyStartNewHadesRunVoiceLines = {}
 
 -- Events from Hades
 local tartarusRoomStartMusicEvents = {
-	GameStateRequirements = {
-		{
-			PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
+	{
+		GameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" }
+			},
+			{
+				PathFalse = { "AudioState", "MusicId" },
+			},
+			{
+				PathFalse = { "AudioState", "SecretMusicId" },
+			},
 		},
-		{
-			PathFalse = { "CurrentRun", "Hero", "IsDead" }
-		},
-		{
-			PathFalse = { "AudioState", "MusicId" },
-		},
-		{
-			PathFalse = { "AudioState", "SecretMusicId" },
-		},
+		PlayBiomeMusic = true,
+		MusicSection = 0,
+		UseRoomMusicSection = true,
 	},
-	PlayBiomeMusic = true,
-	MusicSection = 0,
-	UseRoomMusicSection = true,
+	-- This one doesn't make sense, as it playes the "Boss" section randomly at depth 2?
+	-- {
+	-- 	GameStateRequirements = {
+	-- 		{
+	-- 			PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
+	-- 		},
+	-- 		{
+	-- 			PathFalse = { "CurrentRun", "Hero", "IsDead" }
+	-- 		},
+	-- 		{
+	-- 			Path = { "CurrentRun", "RunDepthCache" },
+	-- 			Comparison = "==",
+	-- 			Value = 2,
+	-- 		},
+	-- 	},
+	-- 	MusicSection = 2,
+	-- },
+	-- Switch to the more intense section from depth 3 onwards
+	{
+		GameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" }
+			},
+			{
+				Path = { "CurrentRun", "RunDepthCache" },
+				Comparison = "==",
+				Value = 3,
+			},
+		},
+		MusicSection = 3,
+	},
+	{
+		GameStateRequirements =
+		{
+			{
+				PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" }
+			},
+			{
+				Path = { "AudioState", "MusicSection", },
+				Comparison = "==",
+				Value = 0,
+			},
+			{
+				PathFalse = { "CurrentRun", "CurrentRoom", "RoomSetName", "Styx" },
+			},
+			{
+				FunctionName = "RequiredMusicSectionRoomDuration",
+				FunctionArgs = { Value = 2 },
+			},
+		},
+		-- Changed from 1, since that doesn't always work?
+		MusicSection = 3,
+	},
 }
-table.insert(game.RoomStartMusicEvents, tartarusRoomStartMusicEvents)
+game.RoomStartMusicEvents = game.MergeTables(game.RoomStartMusicEvents, tartarusRoomStartMusicEvents)
 
 -- Once fixed, get from the loaded data
 game.MusicTrackData.Tartarus = {
 	{ Name = "/Music/MusicHadesReset_MC", },
 	{ Name = "/Music/MusicHadesReset2_MC", },
 	{ Name = "/Music/MusicHadesReset3_MC", },
-	-- { Name = "/Music/MusicTartarus4_MC", }, -- The audio event for this track does not exist - #56
+	-- "/Music/MusicTartarus4_MC" The audio event for this track does not exist
+	{ Name = "{90ac2d7a-7b3a-4a41-a3de-5df2828bcfca}", },
 }
 game.MusicTrackData.Asphodel = {
 	-- { Name = "/Music/MusicAsphodel1_MC", }, -- The audio event for this track does not exist - #82
@@ -71,31 +133,51 @@ game.MusicTrackData.Styx = {
 }
 
 -- Add required GlobalVoiceLines
-game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
-game.GlobalVoiceLines.HadesPostBossVoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines or mod.GlobalVoiceLines.HadesPostBossVoiceLines
-game.GlobalVoiceLines.HadesWrathAttackVoiceLines = game.GlobalVoiceLines.HadesWrathAttackVoiceLines or mod.GlobalVoiceLines.HadesWrathAttackVoiceLines
-game.GlobalVoiceLines.HadesBeamAttackVoiceLines = game.GlobalVoiceLines.HadesBeamAttackVoiceLines or mod.GlobalVoiceLines.HadesBeamAttackVoiceLines
-game.GlobalVoiceLines.FatherSonArgumentVoiceLines = game.GlobalVoiceLines.FatherSonArgumentVoiceLines or mod.GlobalVoiceLines.FatherSonArgumentVoiceLines
+game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or
+		mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
+game.GlobalVoiceLines.HadesPostBossVoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines or
+		mod.GlobalVoiceLines.HadesPostBossVoiceLines
+game.GlobalVoiceLines.HadesWrathAttackVoiceLines = game.GlobalVoiceLines.HadesWrathAttackVoiceLines or
+		mod.GlobalVoiceLines.HadesWrathAttackVoiceLines
+game.GlobalVoiceLines.HadesBeamAttackVoiceLines = game.GlobalVoiceLines.HadesBeamAttackVoiceLines or
+		mod.GlobalVoiceLines.HadesBeamAttackVoiceLines
+game.GlobalVoiceLines.FatherSonArgumentVoiceLines = game.GlobalVoiceLines.FatherSonArgumentVoiceLines or
+		mod.GlobalVoiceLines.FatherSonArgumentVoiceLines
 
-game.GlobalVoiceLines.MultiFuryFightStartVoiceLines = game.GlobalVoiceLines.MultiFuryFightStartVoiceLines or mod.GlobalVoiceLines.MultiFuryFightStartVoiceLines
+game.GlobalVoiceLines.MultiFuryFightStartVoiceLines = game.GlobalVoiceLines.MultiFuryFightStartVoiceLines or
+		mod.GlobalVoiceLines.MultiFuryFightStartVoiceLines
 
-game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines = game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines or mod.GlobalVoiceLines.ThanatosDeathTauntVoiceLines
+game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines = game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines or
+		mod.GlobalVoiceLines.ThanatosDeathTauntVoiceLines
 
-game.GlobalVoiceLines.PatroclusGreetingLines = game.GlobalVoiceLines.PatroclusGreetingLines or mod.GlobalVoiceLines.PatroclusGreetingLines
-game.GlobalVoiceLines.PatroclusMutteringLines = game.GlobalVoiceLines.PatroclusMutteringLines or mod.GlobalVoiceLines.PatroclusMutteringLines
-game.GlobalVoiceLines.BlessedByBouldyVoiceLines = game.GlobalVoiceLines.BlessedByBouldyVoiceLines or mod.GlobalVoiceLines.BlessedByBouldyVoiceLines
+game.GlobalVoiceLines.PatroclusGreetingLines = game.GlobalVoiceLines.PatroclusGreetingLines or
+		mod.GlobalVoiceLines.PatroclusGreetingLines
+game.GlobalVoiceLines.PatroclusMutteringLines = game.GlobalVoiceLines.PatroclusMutteringLines or
+		mod.GlobalVoiceLines.PatroclusMutteringLines
+game.GlobalVoiceLines.BlessedByBouldyVoiceLines = game.GlobalVoiceLines.BlessedByBouldyVoiceLines or
+		mod.GlobalVoiceLines.BlessedByBouldyVoiceLines
 
-game.GlobalVoiceLines.TheseusWrathActivationVoiceLines = game.GlobalVoiceLines.TheseusWrathActivationVoiceLines or mod.GlobalVoiceLines.TheseusWrathActivationVoiceLines
-game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines = game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines or mod.GlobalVoiceLines.TheseusChariotRuinedVoiceLines
+game.GlobalVoiceLines.TheseusWrathActivationVoiceLines = game.GlobalVoiceLines.TheseusWrathActivationVoiceLines or
+		mod.GlobalVoiceLines.TheseusWrathActivationVoiceLines
+game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines = game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines or
+		mod.GlobalVoiceLines.TheseusChariotRuinedVoiceLines
 
-game.GlobalVoiceLines.CharonSurprisedVoiceLines = game.GlobalVoiceLines.CharonSurprisedVoiceLines or mod.GlobalVoiceLines.CharonSurprisedVoiceLines
-game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines = game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines or mod.GlobalVoiceLines.ThanatosSpecialExitVoiceLines
+game.GlobalVoiceLines.CharonSurprisedVoiceLines = game.GlobalVoiceLines.CharonSurprisedVoiceLines or
+		mod.GlobalVoiceLines.CharonSurprisedVoiceLines
+game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines = game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines or
+		mod.GlobalVoiceLines.ThanatosSpecialExitVoiceLines
 
-game.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines = game.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines or mod.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines
-game.GlobalVoiceLines.SurfaceBoatSightedVoiceLines = game.GlobalVoiceLines.SurfaceBoatSightedVoiceLines or mod.GlobalVoiceLines.SurfaceBoatSightedVoiceLines
-game.GlobalVoiceLines.StartingBoatRideVoiceLines = game.GlobalVoiceLines.StartingBoatRideVoiceLines or mod.GlobalVoiceLines.StartingBoatRideVoiceLines
-game.GlobalVoiceLines.SunriseOverlookVoiceLines = game.GlobalVoiceLines.SunriseOverlookVoiceLines or mod.GlobalVoiceLines.SunriseOverlookVoiceLines
+game.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines = game.GlobalVoiceLines
+		.PersephoneFirstMeetingIntermissionVoiceLines or mod.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines
+game.GlobalVoiceLines.SurfaceBoatSightedVoiceLines = game.GlobalVoiceLines.SurfaceBoatSightedVoiceLines or
+		mod.GlobalVoiceLines.SurfaceBoatSightedVoiceLines
+game.GlobalVoiceLines.StartingBoatRideVoiceLines = game.GlobalVoiceLines.StartingBoatRideVoiceLines or
+		mod.GlobalVoiceLines.StartingBoatRideVoiceLines
+game.GlobalVoiceLines.SunriseOverlookVoiceLines = game.GlobalVoiceLines.SunriseOverlookVoiceLines or
+		mod.GlobalVoiceLines.SunriseOverlookVoiceLines
 
 -- Add required HeroVoiceLines
-game.HeroVoiceLines.HitByGraveHandsVoiceLines = game.HeroVoiceLines.HitByGraveHandsVoiceLines or mod.HeroVoiceLines.HitByGraveHandsVoiceLines
-game.HeroVoiceLines.HitByHadesAmmoVoiceLines = game.HeroVoiceLines.HitByHadesAmmoVoiceLines or mod.HeroVoiceLines.HitByHadesAmmoVoiceLines
+game.HeroVoiceLines.HitByGraveHandsVoiceLines = game.HeroVoiceLines.HitByGraveHandsVoiceLines or
+		mod.HeroVoiceLines.HitByGraveHandsVoiceLines
+game.HeroVoiceLines.HitByHadesAmmoVoiceLines = game.HeroVoiceLines.HitByHadesAmmoVoiceLines or
+		mod.HeroVoiceLines.HitByHadesAmmoVoiceLines
