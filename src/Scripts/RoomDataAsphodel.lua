@@ -131,7 +131,6 @@ local roomModifications = {
 
 	-- OTHER
 	X_Story01 = {
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 		LoadModdedVoiceBanks = { "Eurydice", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		-- We play our own music in this room, don't play any by default
@@ -144,7 +143,6 @@ local roomModifications = {
 		},
 	},
 	X_PostBoss01 = {
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",

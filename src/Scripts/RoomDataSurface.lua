@@ -49,6 +49,8 @@ local roomModifications = {
 	E_Intro = {
 		-- "/Music/PersephoneTheme_MC"
 		Music = "{6925b297-5627-4549-b137-135aca5919d2}",
+		-- "/Leftovers/Ambience/ShoreAmbienceGentleWind"
+		Ambience = "{8235412b-da78-464a-8b1b-b1d528fda957}",
 
 		Starting = true,
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceE_Intro",
@@ -81,6 +83,8 @@ local roomModifications = {
 	},
 
 	E_Story01 = {
+		-- "/Leftovers/Ambience/FarmAmbience"
+		Ambience = "{b4e1c250-5dfc-4d9e-8c38-8f44c4462d1a}",
 		DistanceTriggers = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "CottageBloom", },
 		},

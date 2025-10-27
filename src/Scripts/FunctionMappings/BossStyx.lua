@@ -29,6 +29,7 @@ function mod.ExitToHadesPresentation(currentRun, exitDoor)
 	SetVolume({ Id = game.AudioState.RainSoundId, Value = 1.0, Duration = 8 })
 
 	game.LeaveRoomAudio(currentRun, exitDoor)
+	game.EndMusic(game.AudioState.MusicId, game.AudioState.MusicName, 0)
 
 	local cameraId = SpawnObstacle({
 		Name = "InvisibleTarget",

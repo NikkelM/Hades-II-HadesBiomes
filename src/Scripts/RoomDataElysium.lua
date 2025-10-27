@@ -27,7 +27,6 @@ local roomModifications = {
 	BaseElysium = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Elysium",
 
@@ -119,7 +118,6 @@ local roomModifications = {
 	-- OTHER
 	Y_Story01 = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 		-- "/Ambience/ElysiumAmbientLoop"
 		Ambience = "{0ad1ff34-6b23-42a9-a46c-8da523a8fc6b}",
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
@@ -134,7 +132,6 @@ local roomModifications = {
 		},
 	},
 	Y_PostBoss01 = {
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
