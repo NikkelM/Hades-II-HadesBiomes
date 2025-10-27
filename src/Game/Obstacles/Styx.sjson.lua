@@ -147,13 +147,14 @@ local hadesObstacleAdditions = {
 		Name = "CerberusKey",
 		InheritFrom = "BaseLoot",
 		DisplayInEditor = true,
-		Life = {
-			DeathFx = "CerberusKeyPickup",
-		},
 		Thing = {
 			AttachedAnim = "LootShadowCerberusKey",
 			EditorOutlineDrawBounds = false,
 			Graphic = "CerberusKey",
+			Interact = {
+				-- DeathFx turns into this
+				VisualFx = "CerberusKeyPickup",
+			},
 		},
 	},
 }
