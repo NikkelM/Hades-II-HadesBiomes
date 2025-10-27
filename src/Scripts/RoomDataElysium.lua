@@ -30,7 +30,8 @@ local roomModifications = {
 
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Elysium",
 
-		Ambience = "/Leftovers/ElysiumAmbientLoop",
+		-- "/Ambience/ElysiumAmbientLoop"
+		Ambience = "{0ad1ff34-6b23-42a9-a46c-8da523a8fc6b}",
 		ReverbValue = 1.5,
 		-- Always play Bass
 		-- MusicActiveStems = { "Bass" },
@@ -113,13 +114,26 @@ local roomModifications = {
 				},
 			},
 		},
+
+		-- Diehard Fan shade
+		ObstacleData = {
+			[543023] = {
+				InteractDistance = 380,
+				SpecialInteractFunctionName = _PLUGIN.guid .. "." .. "ElysiumSpecialInteractDieHardFanShade",
+				UseTextSpecial = "SpecialInteractShade",
+				SpecialInteractGameStateRequirements = {
+					{
+						Path = { "CurrentRun", "EnemyKills" },
+						HasAny = { "Theseus", "Theseus2" }
+					},
+				},
+			},
+		},
 	},
 
 	-- OTHER
 	Y_Story01 = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
-		-- "/Ambience/ElysiumAmbientLoop"
-		Ambience = "{0ad1ff34-6b23-42a9-a46c-8da523a8fc6b}",
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusExitFunctionName",
 		ExitFunctionArgs = {

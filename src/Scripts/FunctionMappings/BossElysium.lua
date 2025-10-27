@@ -484,3 +484,65 @@ function mod.ModsNikkelMHadesBiomesStopTheseusSlamWait(enemy, aiData, currentRun
 		game.SetThreadWait(game.ActiveEnemies[enemy.ComboPartnerId].AIThreadName, 0.01)
 	end
 end
+
+function mod.ElysiumSpecialInteractDieHardFanShade(usee, args)
+	local elysiumShadeVoiceLines = {
+		UsePlayerSource = true,
+		{
+			PreLineWait = 0.4,
+			BreakIfPlayed = true,
+			PlayOnceThisRun = true,
+			RandomRemaining = true,
+			Cooldowns = {
+				{ Name = "MelinoeSaluteSpeech", Time = 4 },
+			},
+			{ Cue = "/VO/Melinoe_4351",      Text = "No more despair, good Shade." },
+			{ Cue = "/VO/Melinoe_4352",      Text = "Hello again, good Shade." },
+			{ Cue = "/VO/MelinoeField_3045", Text = "You're always here, good Shade." },
+			{ Cue = "/VO/MelinoeField_3047", Text = "Something about my brother..." },
+			{ Cue = "/VO/MelinoeField_3048", Text = "My brother's biggest fan...?",              PlayFirst = true },
+			-- Generic voicelines
+			{ Cue = "/VO/Melinoe_4352",      Text = "Hello again, good Shade." },
+			{ Cue = "/VO/Melinoe_2321",      Text = "Hold fast to hope, good Shade." },
+			{ Cue = "/VO/Melinoe_2322",      Text = "Moonlight guide you, good Shade." },
+			{ Cue = "/VO/Melinoe_5519",      Text = "Thank you for having faith in him and me.", },
+			{
+				Cue = "/VO/Melinoe_5521",
+				Text = "He's safe and sound.",
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "ReachedTrueEnding" },
+					},
+				},
+			},
+			{ Cue = "/VO/Melinoe_2320", Text = "Have faith in him for me.", },
+			{ Cue = "/VO/Melinoe_1698", Text = "Salutations." },
+			{ Cue = "/VO/Melinoe_1699", Text = "Salutations!" },
+			{ Cue = "/VO/Melinoe_1701", Text = "Moonlight guide you." },
+			{ Cue = "/VO/Melinoe_1703", Text = "May moonlight guide you." },
+			{ Cue = "/VO/Melinoe_1704", Text = "Moonlight guide us." },
+			{ Cue = "/VO/Melinoe_1705", Text = "May moonlight guide us." },
+			{ Cue = "/VO/Melinoe_4260", Text = "Thank you for having faith in me." },
+			{ Cue = "/VO/Melinoe_4258", Text = "To further victories!", },
+		},
+	}
+
+	UseableOff({ Id = usee.ObjectId })
+	game.HideUseButton(usee.ObjectId, usee)
+	AddInputBlock({ Name = "SpecialInteractShade" })
+
+	local unequipAnimation = game.GetEquippedWeaponValue("UnequipAnimation") or "MelinoeIdleWeaponless"
+	SetAnimation({ Name = unequipAnimation, DestinationId = game.CurrentRun.Hero.ObjectId })
+	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = usee.ObjectId })
+	game.thread(game.PlayVoiceLines, elysiumShadeVoiceLines, true, usee)
+
+	game.wait(0.65)
+
+	SetAnimation({ Name = "MelinoeSalute", DestinationId = game.CurrentRun.Hero.ObjectId })
+	PlaySound({ Name = "/SFX/GhostEmotes/SmileTINY", Id = usee.ObjectId })
+	game.thread(game.PlayEmoteSimple, usee,
+		{ AnimationName = "StatusIconSmileRed", OffsetZ = -15, Delay = 1.5 })
+
+	game.wait(1.25)
+	RemoveInputBlock({ Name = "SpecialInteractShade" })
+end
