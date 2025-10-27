@@ -211,4 +211,3 @@ local roomModifications = {
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Elysium, roomModifications, roomReplacements, "Elysium")
-mod.PrintTable(game.RoomData.BaseElysium)
