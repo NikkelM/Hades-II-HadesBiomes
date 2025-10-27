@@ -212,11 +212,14 @@ end)
 modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, nextRoomData, args, otherDoors)
 	local isForced = base(currentRun, currentRoom, nextRoomData, args, otherDoors)
 
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isForced then
+	-- Only check if we need to force the room if it isn't forced already
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and not isForced then
+		-- Force a miniboss if the current wing should have one, and we've either seen the fountain room already, or can force it in another wing
 		if currentRoom ~= nil and currentRoom.ForceWingEndMiniBoss and nextRoomData.WingEndMiniBoss and (currentRun.CompletedStyxWings < 4 or mod.HasSeenRoomInRun(currentRun, "D_Reprieve01")) then
 			return true
 		end
 
+		-- Randomly force the next room to be a fountain room, with a 100% chance if this is the last wing
 		if nextRoomData.ForceChanceByRemainingWings then
 			local chance = 1 / (5 - currentRun.CompletedStyxWings)
 			if game.RandomChance(chance) then

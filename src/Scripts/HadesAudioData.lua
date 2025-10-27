@@ -2303,6 +2303,79 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Sisyphus_0468" },
 		},
 	},
+	-- Ending/Surface
+	PersephoneFirstMeetingIntermissionVoiceLines = {
+		{
+			PreLineWait = 0.35,
+			UsePlayerSource = true,
+			AllowTalkOverTextLines = true,
+			-- Mother...!
+			{ Cue = "/VO/ZagreusField_3605" },
+		}
+	},
+	SurfaceBoatSightedVoiceLines = {
+		{
+			PreLineWait = 2.35,
+			UsePlayerSource = true,
+			AllowTalkOverTextLines = true,
+			-- Charon?!
+			{ Cue = "/VO/ZagreusField_3672" },
+		},
+		{
+			ObjectType = "NPC_Charon_01",
+			AllowTalkOverTextLines = true,
+			-- Custom: Using Hades II animation
+			PreLineAnim = "Charon_Greeting",
+			-- Custom: Using Hades II voiceline
+			-- Hrrm...
+			{ Cue = "/VO/Charon_0034", Text = "{#Emph}Hrrm..." },
+		},
+	},
+	StartingBoatRideVoiceLines = {
+		{
+			PreLineWait = 21.5,
+			UsePlayerSource = true,
+			SkipAnim = true,
+			-- Wait, isn't this... Eurydice and Orpheus?
+			{ Cue = "/VO/ZagreusField_3676",}, -- RequiredTextLines = { "EurydiceAboutOrpheus03" } },
+			-- Wait, isn't this Orpheus?
+			-- { Cue = "/VO/ZagreusField_3677", RequiredFalseTextLines = { "EurydiceAboutOrpheus03" } },
+		},
+		{
+			PreLineWait = 4,
+			ObjectType = "NPC_Persephone_01",
+			SkipAnim = true,
+			-- Snow everywhere... Mother...
+			-- Replace Persephone_ with Megaera_2
+			{ Cue = "/VO/Megaera_20098" },
+		},
+	},
+	SunriseOverlookVoiceLines = {
+		BreakIfPlayed = true,
+		PreLineWait = 2.8,
+		UsePlayerSource = true,
+		PlayOnce = true,
+		RequiredTrueFlags = { "Overlook" },
+
+		-- Wha, that thing, that's... the sun...
+		{ Cue = "/VO/ZagreusField_3592", PlayOnce = true,                              PreLineWait = 5.6 },
+		-- So... bright... ugh...
+		{ Cue = "/VO/ZagreusField_3595", RequiredPlayed = { "/VO/ZagreusField_3592" }, PreLineWait = 6.0 },
+		-- It's... I...
+		{ Cue = "/VO/ZagreusField_4695", RequiredPlayed = { "/VO/ZagreusField_3592" }, PreLineWait = 6.0 },
+		-- So much water... Uncle Poseidon's realm
+		{ Cue = "/VO/ZagreusField_3593", RequiredPlayed = { "/VO/ZagreusField_3592" }, },
+		-- Mother isn't far...
+		{ Cue = "/VO/ZagreusField_3594", RequiredPlayed = { "/VO/ZagreusField_3592" }, },
+		-- Huh... to see this each day...
+		{ Cue = "/VO/ZagreusField_4694", RequiredPlayed = { "/VO/ZagreusField_3592" }, },
+		-- ...Beautiful...
+		{ Cue = "/VO/ZagreusField_4696", RequiredPlayed = { "/VO/ZagreusField_3592" }, PreLineWait = 6.2 },
+		-- ...The Sun...
+		{ Cue = "/VO/ZagreusField_4697", RequiredPlayed = { "/VO/ZagreusField_3592" }, PreLineWait = 6.0 },
+		-- ...The Sun... Helios...
+		{ Cue = "/VO/ZagreusField_4698", RequiredPlayed = { "/VO/ZagreusField_4697" }, PreLineWait = 6.0, RequiredTextLines = { "DemeterAboutHelios01" } },
+	},
 }
 
 mod.HeroVoiceLines = mod.HeroVoiceLines or {

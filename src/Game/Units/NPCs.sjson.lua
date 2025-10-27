@@ -17,7 +17,7 @@ local hadesNPCsToCopy = {
 	-- "NPC_Orpheus_Story_01",
 	-- "NPC_Orpheus_01",
 	"NPC_Hades_Story_02",
-	-- These are currently still defined in Hades II
+	-- These are still defined in Hades II, creating a ModsNikkelMHadesBiomes_ version of them
 	-- "NPC_Persephone_01",
 	-- "NPC_Thanatos_01",
 	-- "NPC_Thanatos_Field_01",
@@ -136,6 +136,36 @@ local hadesNPCAdditions = {
 				{ X = 728,  Y = 42, },
 				{ X = 6,    Y = -328, },
 			},
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
+		InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC",
+		DisplayInEditor = true,
+		Acceleration = 250.0,
+		Deceleration = 250.0,
+		RotationSpeed = 900.00,
+		MoveGraphic = "PersephoneGarden_Walk",
+		StopGraphic = "PersephoneGarden_WalkStop",
+		Speed = 250,
+		MoveAI = {
+			Name = "Pathfind",
+			LookAheadDistance = 100.0,
+			SuccessDistance = 10.0,
+		},
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "PersephoneGardenIdle",
+			Grip = 5000.0,
+			ImmuneToForce = true,
+			Tallness = 225.0,
+			Points = {
+				{ X = -6,  Y = 27 },
+				{ X = 44,  Y = 0 },
+				{ X = -2,  Y = -23 },
+				{ X = -54, Y = 3 },
+			},
+			SubtitleColor = { Red = 0.88, Green = 0.84, Blue = 0.25 },
 		},
 	},
 	-- The exact same as BaseNPC, but we need to redefine it as we hook into the Enemies.sjson file where BaseNPC is not yet defined

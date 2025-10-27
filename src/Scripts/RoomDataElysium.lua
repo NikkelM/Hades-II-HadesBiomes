@@ -59,6 +59,7 @@ local roomModifications = {
 		FlipHorizontalChance = 0.0,
 		ThreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut" }, },
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Elysium" } },
 		},
 	},
 
@@ -117,6 +118,8 @@ local roomModifications = {
 	-- OTHER
 	Y_Story01 = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
+		-- "/Ambience/ElysiumAmbientLoop"
+		Ambience = "{0ad1ff34-6b23-42a9-a46c-8da523a8fc6b}",
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusExitFunctionName",
 		ExitFunctionArgs = {
@@ -129,6 +132,8 @@ local roomModifications = {
 		},
 	},
 	Y_PostBoss01 = {
+		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
+		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {

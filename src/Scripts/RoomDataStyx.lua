@@ -27,7 +27,8 @@ local roomModifications = {
 	BaseStyx = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
-		Ambience = "/Leftovers/Object Ambiences/CreepyIslandAmbience",
+		-- "/Leftovers/Object Ambiences/CreepyIslandAmbience"
+		Ambience = "{ff413738-f0b8-400b-bbd6-c660e227583c}",
 		ReverbValue = 2.0,
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
@@ -45,9 +46,22 @@ local roomModifications = {
 			RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
 		},
 	},
+	BaseStyxMini = {
+		-- Don't turn off any stems during Styx mini rooms
+		CombatOverMusicEvents = {},
+	},
 	BaseStyxWingEnd = {
 		NextRoomEntranceFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesReturnToStyxHubPresentation",
 		IneligibleRewards = { "Devotion" },
+		-- Turn on the Bass stem, and play the outro music from the Drums section after the end combat rooms
+		CombatOverMusicEvents = {
+			{
+				GameStateRequirements = {},
+				MusicSection = 2,
+				MusicMutedStems = { "Guitar" },
+				MusicActiveStems = { "Bass", "Drums" },
+			},
+		},
 	},
 
 	-- OPENING ROOMS
@@ -65,11 +79,14 @@ local roomModifications = {
 		FlipHorizontalChance = 0.0,
 		ThreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerStyxIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerStyxOut" }, },
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Styx" } },
 		},
 	},
 	D_Hub = {
 		-- Megaera for Storyteller for Cerberus
 		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		-- "/Leftovers/Ambience/MatchSiteIPoolAmbience"
+		Ambience = "{e65b32ad-3a7e-4f88-9149-3260e929f04c}",
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
@@ -135,11 +152,24 @@ local roomModifications = {
 	},
 	BaseStyxMiniBoss = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+		-- Turn on the Bass stem, and play the outro music from the Drums section after the end combat rooms
+		CombatOverMusicEvents = {
+			{
+				GameStateRequirements = {},
+				MusicSection = 2,
+				MusicMutedStems = { "Guitar" },
+				MusicActiveStems = { "Bass", "Drums" },
+			},
+		},
 	},
 
 	-- BOSSES
 	D_Boss01 = {
 		LoadModdedVoiceBanks = { "HadesField", "ZagreusField" },
+		-- "/Leftovers/Ambience/OceanWavesWaterAmbience"
+		Ambience = "{c8b4b4e9-ee0e-4b72-8a5f-8b12e5179707}",
+		EndMusicOnEnter = true,
+
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_StyxBoss",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		ForcedReward = "MixerIBossDrop",
@@ -156,16 +186,30 @@ local roomModifications = {
 		},
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceHades",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "CheckRunEndPresentation",
+		ObstacleData = {
+			-- Makes the exit door interactable
+			-- FinalBossExitDoor
+			[552590] = {
+				Template = "FinalBossExitDoor",
+				ActivateIds = { 552590, },
+			},
+		},
 	},
 
 	-- OTHER
 	D_Reprieve01 = {
+		-- "/Leftovers/Ambience/StillWaterAmbience2"
+		Ambience = "{988cda14-71e5-41c8-9496-49f765a603d5}",
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,
 		},
 		StartUnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "SpawnConsumables", },
-		}
+		},
+		DisableRewardMagnetisim = true,
+		-- This is Zagreus speaking, replace with Melinoe
+		EnterVoiceLines = mod.NilValue,
+		EnterGlobalVoiceLines = "EnteredReprieveRoomVoiceLines",
 	},
 }
 

@@ -148,7 +148,19 @@ local newRoomSets = {
 		"D_Mini12",
 		"D_Mini13",
 		"D_Mini14",
-	}
+	},
+
+	Surface = {
+		"E_Intro",
+		"E_Story01",
+
+		"Return01",
+		"Return02",
+		"Return03",
+		"Return04",
+		"Return05",
+		"Return06",
+	},
 }
 
 for key, newRoomSet in pairs(newRoomSets) do

@@ -219,6 +219,7 @@ local function on_ready()
 		import "Scripts/EncounterDataAsphodel.lua"
 		import "Scripts/EncounterDataElysium.lua"
 		import "Scripts/EncounterDataStyx.lua"
+		import "Scripts/EncounterDataSurface.lua"
 
 		-- Loads Room data
 		import "Scripts/RoomSets.lua"
@@ -232,6 +233,8 @@ local function on_ready()
 		import "Scripts/RoomDataElysium.lua"
 		import "Scripts/HadesRoomDataStyx.lua"
 		import "Scripts/RoomDataStyx.lua"
+		import "Scripts/HadesRoomDataSurface.lua"
+		import "Scripts/RoomDataSurface.lua"
 
 		-- Loads Weapon data
 		import "Scripts/HadesWeaponData.lua"
@@ -266,6 +269,7 @@ local function on_ready()
 		import "Scripts/FunctionMappings/NPCLogic.lua"
 		import "Scripts/FunctionMappings/ShadeNaked.lua"
 		import "Scripts/FunctionMappings/StyxLogic.lua"
+		import "Scripts/FunctionMappings/SurfaceLogic.lua"
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes
@@ -277,6 +281,7 @@ local function on_ready()
 		import "Scripts/Combat.lua"
 		import "Scripts/CombatLogic.lua"
 		import "Scripts/CombatPresentation.lua"
+		import "Scripts/CreditsData.lua"
 		import "Scripts/DeathLoopData.lua"
 		import "Scripts/DeathLoopLogic.lua"
 		import "Scripts/EffectLogic.lua"

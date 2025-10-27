@@ -66,7 +66,8 @@ game.MusicTrackData.Elysium = {
 	-- { Name = "/Music/MusicElysium3_MC", },
 }
 game.MusicTrackData.Styx = {
-	{ Name = "/Music/MusicStyx1_MC", },
+	-- "/Music/MusicStyx1_MC"
+	{ Name = "{9781c324-6083-4acd-bdaa-5a7a67608005}", },
 }
 
 -- Add required GlobalVoiceLines
@@ -89,6 +90,11 @@ game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines = game.GlobalVoiceLines.The
 
 game.GlobalVoiceLines.CharonSurprisedVoiceLines = game.GlobalVoiceLines.CharonSurprisedVoiceLines or mod.GlobalVoiceLines.CharonSurprisedVoiceLines
 game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines = game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines or mod.GlobalVoiceLines.ThanatosSpecialExitVoiceLines
+
+game.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines = game.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines or mod.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines
+game.GlobalVoiceLines.SurfaceBoatSightedVoiceLines = game.GlobalVoiceLines.SurfaceBoatSightedVoiceLines or mod.GlobalVoiceLines.SurfaceBoatSightedVoiceLines
+game.GlobalVoiceLines.StartingBoatRideVoiceLines = game.GlobalVoiceLines.StartingBoatRideVoiceLines or mod.GlobalVoiceLines.StartingBoatRideVoiceLines
+game.GlobalVoiceLines.SunriseOverlookVoiceLines = game.GlobalVoiceLines.SunriseOverlookVoiceLines or mod.GlobalVoiceLines.SunriseOverlookVoiceLines
 
 -- Add required HeroVoiceLines
 game.HeroVoiceLines.HitByGraveHandsVoiceLines = game.HeroVoiceLines.HitByGraveHandsVoiceLines or mod.HeroVoiceLines.HitByGraveHandsVoiceLines

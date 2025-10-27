@@ -42,6 +42,24 @@ local addParentAnimations = {
 		Duration = 1.0,
 		HoldLastFrame = true,
 	},
+	ModsNikkelMHadesBiomesInfoBannerSurfaceIn = {
+		Name = "ModsNikkelMHadesBiomesInfoBannerSurfaceIn",
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\LocationBackings\\SurfaceBacking\\SurfaceBacking",
+		OffsetY = 80,
+		StartAlpha = 0.0,
+		EndAlpha = 1.0,
+		Duration = 1.0,
+		HoldLastFrame = true,
+	},
+	ModsNikkelMHadesBiomesInfoBannerErebusIn = {
+		Name = "ModsNikkelMHadesBiomesInfoBannerErebusIn",
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\LocationBackings\\ErebusBacking\\ErebusBacking",
+		OffsetY = 80,
+		StartAlpha = 0.0,
+		EndAlpha = 1.0,
+		Duration = 1.0,
+		HoldLastFrame = true,
+	},
 	-- #endregion
 	ModsNikkelMHadesBiomesRoomTransitionIn = {
 		Name = "ModsNikkelMHadesBiomesRoomTransitionIn",
@@ -83,6 +101,20 @@ local addAnimations = {
 	ModsNikkelMHadesBiomesInfoBannerStyxOut = {
 		Name = "ModsNikkelMHadesBiomesInfoBannerStyxOut",
 		InheritFrom = "ModsNikkelMHadesBiomesInfoBannerStyxIn",
+		StartAlpha = 1.0,
+		EndAlpha = 0.0,
+		Duration = 0.5,
+	},
+	ModsNikkelMHadesBiomesInfoBannerSurfaceOut = {
+		Name = "ModsNikkelMHadesBiomesInfoBannerSurfaceOut",
+		InheritFrom = "ModsNikkelMHadesBiomesInfoBannerSurfaceIn",
+		StartAlpha = 1.0,
+		EndAlpha = 0.0,
+		Duration = 0.5,
+	},
+	ModsNikkelMHadesBiomesInfoBannerErebusOut = {
+		Name = "ModsNikkelMHadesBiomesInfoBannerErebusOut",
+		InheritFrom = "ModsNikkelMHadesBiomesInfoBannerErebusIn",
 		StartAlpha = 1.0,
 		EndAlpha = 0.0,
 		Duration = 0.5,

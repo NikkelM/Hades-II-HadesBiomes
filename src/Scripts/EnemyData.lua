@@ -166,6 +166,16 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 										"ModsNikkelMHadesBiomes_Portrait_Zag_")
 								end
 							end
+							if entry.PreLineFunctionName then
+								if entry.PreLineFunctionName == "StartFinalBossRoomIntroMusic" then
+									entry.PreLineFunctionName = _PLUGIN.guid .. "." .. "StartFinalBossRoomIntroMusic"
+								end
+							end
+							if entry.PostLineFunctionName then
+								if entry.PostLineFunctionName == "StartFinalBossRoomMusic" then
+									entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "StartFinalBossRoomMusic"
+								end
+							end
 							if entry.PreLineThreadedFunctionName then
 								if entry.PreLineThreadedFunctionName == "PlayPreLineTauntAnimFromSource" then
 									entry.PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayPreLineTauntAnimFromSource"
@@ -184,6 +194,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 									entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
 								elseif entry.Cue:find("^/VO/Charon_") then
 									entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+								elseif entry.Cue:find("^/VO/Persephone_") then
+									entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
 								end
 							end
 						end
@@ -851,6 +863,24 @@ local enemyModifications = {
 			PostTouchdownMinDuration = 1.2,
 		},
 	},
+	CrusherUnitSuperElite = {
+		StunAnimations = { Default = "CrusherUnitOnHit" },
+		-- Don't create a new blank obstacle for this enemy, as the flipping logic would be hard to get right
+		ManualDeathAnimation = false,
+		DestroyDelay = 1.2,
+		BlockRaiseDead = true,
+		BlockCharm = true,
+		IgnoreSpeedShrine = true,
+		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
+		OnTouchdownFunctionArgs = {
+			ProjectileName = "CrusherUnitTouchdown",
+			PostTouchdownMakeVulnerable = true,
+		},
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSkyAttackerAI",
+		DefaultAIData = {
+			PostTouchdownMinDuration = 1.2,
+		},
+	},
 	ShieldRanged = {
 		StunAnimations = { Default = "HealRangedCrystal4" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -1444,6 +1474,7 @@ local enemyModifications = {
 	-- #endregion
 	-- #region STYX - Bosses
 	Hades = {
+		DestroyDelay = 0,
 		-- It's misaligned/not tracking correctly
 		Phase2VFX = mod.NilValue,
 		BossDifficultyShrineRequiredCount = 4,

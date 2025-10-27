@@ -29,6 +29,7 @@ function mod.ExitToHadesPresentation(currentRun, exitDoor)
 	SetVolume({ Id = game.AudioState.RainSoundId, Value = 1.0, Duration = 8 })
 
 	game.LeaveRoomAudio(currentRun, exitDoor)
+	game.EndMusic(game.AudioState.MusicId, game.AudioState.MusicName, 0)
 
 	local cameraId = SpawnObstacle({
 		Name = "InvisibleTarget",
@@ -153,6 +154,18 @@ function mod.BossIntroHades(eventSource, args)
 	end
 end
 
+function mod.StartFinalBossRoomIntroMusic()
+	-- "/Music/BossFightMusic"
+	game.MusicPlayer("{fe196260-d08d-4a07-802d-6dfda39efa2e}")
+	game.SetMusicSection(8, game.AudioState.MusicId)
+end
+
+function mod.StartFinalBossRoomMusic()
+	-- "/Music/BossFightMusic"
+	game.MusicPlayer("{fe196260-d08d-4a07-802d-6dfda39efa2e}")
+	game.SetMusicSection(0, game.AudioState.MusicId)
+end
+
 function mod.ClearShadeWeapons()
 	local weaponIds = GetIdsByType({ Names = game.EnemyData.ShadeNaked.AIPickupTypes })
 	Destroy({ Ids = weaponIds })
@@ -203,7 +216,7 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	mod.ClearStoredAmmoHero()
 	mod.DestroyHadesFightObstacles()
 	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId }, BlockDeathWeapons = true })
-	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking" }, ExcludeNames = { "HadesCerberusAssist" } })
+	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" }, ExcludeNames = { "HadesCerberusAssist" } })
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 
 	SetAnimation({ Name = "HadesBattleKnockDown", DestinationId = boss.ObjectId })
@@ -324,7 +337,7 @@ function mod.HadesKillPresentation(unit, args)
 	-- StopSuper()
 	mod.ClearStoredAmmoHero()
 	mod.DestroyHadesFightObstacles()
-	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking" } })
+	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" } })
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignetteHold" })
 	SetAlpha({ Ids = GetIds({ Name = "Terrain_Lighting_01" }), Fraction = 1.0, Duration = 1.0 })
@@ -405,11 +418,15 @@ end
 
 function mod.CheckRunEndPresentation(currentRun, door)
 	AddInputBlock({ Name = "CheckRunEndPresentation" })
+	-- TODO: This is what doesn't allow entering the surface after the ending anymore
 	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
 		currentRun.CurrentRoom.SkipLoadNextMap = true
 		-- TODO: Check?
 		game.EndEarlyAccessPresentation()
 	else
+		-- Custom function to play an incantation animation and voiceline
+		mod.SurfaceExitIncantationPresentation(door, game.CurrentRun.Hero)
+
 		local heroExitPointId = GetClosest({ Id = door.ObjectId, DestinationIds = GetIdsByType({ Name = "HeroExit" }), Distance = 600 })
 		game.thread(game.MoveHeroToRoomPosition,
 			{ DestinationId = heroExitPointId, DisableCollision = true, UseDefaultSpeed = true })
@@ -421,6 +438,99 @@ function mod.CheckRunEndPresentation(currentRun, door)
 		game.wait(3.5)
 	end
 	RemoveInputBlock({ Name = "CheckRunEndPresentation" })
+end
+
+mod.GlobalVoiceLines.MelinoeDBossExitVoiceLines = {
+	{
+		-- { Cue = "/VO/MelinoeField_3423", Text = "Brother...!", },
+		-- { Cue = "/VO/MelinoeField_3424", Text = "Brother...", },
+		-- { Cue = "/VO/MelinoeField_3913", Text = "Just hold on a little while longer, Brother...", },
+		-- { Cue = "/VO/Melinoe_5062",      Text = "Prince Zagreus.", },
+		-- { Cue = "/VO/Melinoe_1417",      Text = "That just might work..." },
+		-- { Cue = "/VO/Melinoe_3412",      Text = "I know what to do..." },
+		{ Cue = "/VO/Melinoe_1075",      Text = "{#Emph}By blood and darkness, let my will be done!" },
+		{ Cue = "/VO/MelinoeField_3418", Text = "{#Emph}Night and Darkness, guide me to my blood beyond the grasp of Time!", PlayFirst = true },
+		-- { Cue = "/VO/Melinoe_4706",      Text = "{#Emph}The strongest dreams shall shatter if they must!" },
+	},
+}
+
+function mod.SurfaceExitIncantationPresentation(usee, args, user)
+	args = args or {}
+	AddInputBlock({ Name = "MelUsedSystemObject" })
+	game.HideUseButton(usee.ObjectId, usee)
+	UseableOff({ Id = usee.ObjectId })
+	game.MapState.RoomRequiredObjects[usee.ObjectId] = nil
+
+	game.thread(game.PlayVoiceLines, mod.GlobalVoiceLines.MelinoeDBossExitVoiceLines)
+	PanCamera({ Id = 552590, Duration = 5.0, })
+	game.wait(0.1)
+
+	Stop({ Id = game.CurrentRun.Hero.ObjectId })
+	AdjustFullscreenBloom({ Name = "DesaturatedLight", Duration = 0.9 })
+	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, LeftFraction = 0.13, Duration = 1.5 }, })
+
+	local loopingSoundId = PlaySound({ Name = "/SFX/Menu Sounds/CauldronWhispers", Id = game.CurrentRun.Hero.ObjectId })
+	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = usee.ObjectId })
+	SetAnimation({ Name = "Melinoe_Gesture", DestinationId = game.CurrentRun.Hero.ObjectId, SpeedMultiplier = 1.15 })
+
+	CreateAnimation({
+		Name = "MelHPostBossHandFxLeft",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group = "FX_Standing_Add"
+	})
+	CreateAnimation({
+		Name = "MelHPostBossHandFxRight",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group = "FX_Standing_Add"
+	})
+	CreateAnimation({
+		Name = "MelHPostBossHandFxLeftB",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group = "FX_Standing_Add"
+	})
+	CreateAnimation({
+		Name = "MelHPostBossHandFxRightB",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		Group = "FX_Standing_Add"
+	})
+
+	CreateAnimation({
+		Name = "CWEntranceHadesSymbolIn",
+		DestinationId = usee.ObjectId,
+		OffsetZ = 0,
+		OffsetY = 0,
+		OffsetX = 0,
+		Scale = 0.85,
+		Group = "Combat_Menu_TraitTray"
+	})
+
+	game.wait(2.95)
+
+	AdjustRadialBlurDistance({ Fraction = 0, Duration = 1 })
+	AdjustRadialBlurStrength({ Fraction = 0, Duration = 1 })
+
+	ShakeScreen({ Distance = 6, Speed = 500, Duration = 0.3, FalloffSpeed = 1000 })
+	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, LeftFraction = 0.13, Duration = 0.5 }, })
+
+	StopAnimation({ Name = "CWEntranceHadesSymbolLoop", DestinationId = usee.ObjectId })
+	SetAlpha({ Ids = usee.RewardPreviewIconIds, Fraction = 0.0, Duration = 0 })
+	AdjustFullscreenBloom({ Name = "FullscreenFlash2", Duration = 0.0 })
+	AdjustFullscreenBloom({ Name = "Off", Duration = 1 })
+
+	game.wait(1.3)
+	StopAnimation({ Name = "MelHPostBossHandFxLeft", DestinationId = game.CurrentRun.Hero.ObjectId })
+	StopAnimation({ Name = "MelHPostBossHandFxRight", DestinationId = game.CurrentRun.Hero.ObjectId })
+	StopAnimation({ Name = "MelHPostBossHandFxLeftB", DestinationId = game.CurrentRun.Hero.ObjectId })
+	StopAnimation({ Name = "MelHPostBossHandFxRightB", DestinationId = game.CurrentRun.Hero.ObjectId })
+	StopSound({ Id = loopingSoundId, Duration = 0.4 })
+	loopingSoundId = nil
+
+	PlaySound({ Name = "/Leftovers/SFX/LightOn", Id = usee.ObjectId, Delay = 0.25 })
+	PlaySound({ Name = "/Leftovers/SFX/LightOn", Id = usee.ObjectId, Delay = 0.5 })
+	PlaySound({ Name = "/Leftovers/SFX/LightOn", Id = usee.ObjectId, Delay = 0.75 })
+	PlaySound({ Name = "/Leftovers/SFX/LightOn", Id = usee.ObjectId })
+
+	RemoveInputBlock({ Name = "MelUsedSystemObject" })
 end
 
 function mod.SetupHadesSpawnOptions(enemy)
@@ -639,10 +749,12 @@ function mod.HadesConsumeHeal(enemy, weaponAIData, currentRun)
 				break
 			end
 		end
-		game.ActiveEnemies[urnId].OnDeathFunctionName = nil
-		SetUnitProperty({ DestinationId = urnId, Property = "OnDeathWeapon", Value = "null" })
-		StopAnimation({ DestinationId = urnId, Name = weaponAIData.ConsumeFx })
-		Destroy({ Id = urnId })
+		if game.ActiveEnemies[urnId] ~= nil then
+			game.ActiveEnemies[urnId].OnDeathFunctionName = nil
+			SetUnitProperty({ DestinationId = urnId, Property = "OnDeathWeapon", Value = "null" })
+			StopAnimation({ DestinationId = urnId, Name = weaponAIData.ConsumeFx })
+			Destroy({ Id = urnId })
+		end
 		urnsConsumed = urnsConsumed + 1
 		game.wait(game.CalcEnemyWait(enemy, weaponAIData.NextUrnWait), enemy.AIThreadName)
 	end

@@ -2,33 +2,27 @@
 mod.PresetEventArgs = mod.PresetEventArgs or {
 	PatroclusMuttering = {
 		StatusAnimation = "StatusIconWantsToTalk",
-		DistanceTrigger =
-		{
+		DistanceTrigger = {
 			WithinDistance = 450,
 			VoiceLines = { GlobalVoiceLines = "PatroclusGreetingLines" }, --game.GlobalVoiceLines.PatroclusGreetingLines,
 		},
-		VoiceLines =
-		{
+		VoiceLines = {
 			[1] = { GlobalVoiceLines = "PatroclusMutteringLines" }, --game.GlobalVoiceLines.PatroclusMutteringLines,
 		},
 	},
 	PatroclusMutteringRepeatable = {
-		DistanceTrigger =
-		{
+		DistanceTrigger = {
 			WithinDistance = 450,
 			VoiceLines = game.GlobalVoiceLines.PatroclusGreetingLines,
 		},
-		VoiceLines =
-		{
+		VoiceLines = {
 			[1] = game.GlobalVoiceLines.PatroclusMutteringLines,
 		},
 	},
 	PatroclusGreetings = {
-		DistanceTrigger =
-		{
+		DistanceTrigger = {
 			WithinDistance = 350,
-			VoiceLines =
-			{
+			VoiceLines = {
 				RandomRemaining = true,
 				Queue = "Interrupt",
 				CooldownTime = "30",
@@ -137,159 +131,134 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- 		{ Cue = "/VO/ThanatosField_0184", RequiredAnyTextLines = { "ThanatosGift10" } },
 	-- 	},
 	-- },
-	-- PersephoneGardenFirstGreeting = {
-	-- 	WithinDistance = 1200,
-	-- 	StatusAnimation = "StatusIconWantsToTalk",
-	-- 	-- PostTriggerAngleTowardTarget = true,
-	-- 	VoiceLines =
-	-- 	{
-	-- 		{
-	-- 			-- PreLineAnim = "SisyphusIdleGreeting",
+	-- Manually replaced /VO/Persephone_xxxx with /VO/Megaera_2xxxx
+	PersephoneGardenFirstGreeting = {
+		WithinDistance = 1200,
+		-- StatusAnimation = "StatusIconWantsToTalk",
+		VoiceLines = {
+			{
+				-- Who's there?
+				{ Cue = "/VO/Megaera_20019" },
+			},
+			{
+				PreLineWait = 0.5,
+				UsePlayerSource = true,
 
-	-- 			-- Who's there?
-	-- 			{ Cue = "/VO/Persephone_0019" },
-	-- 		},
-	-- 		{
-	-- 			PreLineWait = 0.5,
-	-- 			UsePlayerSource = true,
+				-- Um... hello...?
+				{ Cue = "/VO/ZagreusField_3600" },
+			},
+			{
+				PreLineWait = 0.5,
+				BreakIfPlayed = true,
 
-	-- 			-- Um... hello...?
-	-- 			{ Cue = "/VO/ZagreusField_3600" },
-	-- 		},
-	-- 		{
-	-- 			PreLineWait = 0.5,
-	-- 			BreakIfPlayed = true,
+				-- Hello, indeed!
+				{ Cue = "/VO/Megaera_20327" },
+			},
+			{
+				PreLineWait = 0.3,
+				UsePlayerSource = true,
 
-	-- 			-- Hello, indeed!
-	-- 			{ Cue = "/VO/Persephone_0327" },
-	-- 		},
-	-- 		{
-	-- 			PreLineWait = 0.3,
-	-- 			UsePlayerSource = true,
+				-- Wait, can, can we just...?
+				{ Cue = "/VO/ZagreusField_3601" },
+			},
+		},
+	},
+	-- Manually replaced /VO/Persephone_xxxx with /VO/Megaera_2xxxx
+	PersephoneGardenGreeting = {
+		WithinDistance = 1250,
+		-- PostTriggerAngleTowardTarget = true,
+		VoiceLines = {
+			RequiredTextLines = { "PersephoneFirstMeeting" },
+			{
+				RequiredQueuedTextLines = "PersephoneMeeting07",
+				PreLineAnim = "PersephoneGarden_Vulnerable",
+				ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
 
-	-- 			-- Wait, can, can we just...?
-	-- 			{ Cue = "/VO/ZagreusField_3601" },
-	-- 		},
-	-- 	},
-	-- },
-	-- PersephoneGardenGreeting = {
-	-- 	WithinDistance = 1250,
-	-- 	-- PostTriggerAngleTowardTarget = true,
-	-- 	VoiceLines =
-	-- 	{
-	-- 		RequiredTextLines = { "PersephoneFirstMeeting" },
-	-- 		{
-	-- 			RequiredQueuedTextLines = "PersephoneMeeting07",
-	-- 			PreLineAnim = "PersephoneGarden_Vulnerable",
-	-- 			ObjectType = "NPC_Persephone_01",
+				-- Zagreus...
+				{ Cue = "/VO/Megaera_20031" },
+			},
+			{
+				{
+					RequiredQueuedTextLines = "PersephoneMeeting08",
+					PreLineAnim = "PersephoneGarden_Vulnerable",
+					ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
 
-	-- 			-- Zagreus...
-	-- 			{ Cue = "/VO/Persephone_0031" },
-	-- 		},
-	-- 		{
-	-- 			{
-	-- 				RequiredQueuedTextLines = "PersephoneMeeting08",
-	-- 				PreLineAnim = "PersephoneGarden_Vulnerable",
-	-- 				ObjectType = "NPC_Persephone_01",
+					-- You're back...?
+					{ Cue = "/VO/Megaera_20034" },
+				},
+				{
+					RequiredQueuedTextLines = "PersephoneMeeting08",
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					BreakIfPlayed = true,
 
-	-- 				-- You're back...?
-	-- 				{ Cue = "/VO/Persephone_0034" },
-	-- 			},
-	-- 			{
-	-- 				RequiredQueuedTextLines = "PersephoneMeeting08",
-	-- 				PreLineWait = 0.5,
-	-- 				UsePlayerSource = true,
-	-- 				BreakIfPlayed = true,
+					-- Mother!
+					{ Cue = "/VO/ZagreusField_3612" },
+				},
+			},
+			{
+				RequiredFalseQueuedTextLines = { "PersephoneMeeting07", "PersephoneMeeting08" },
+				PreLineAnim = "PersephoneGarden_Greeting",
+				ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
+				RandomRemaining = true,
 
-	-- 				-- Mother!
-	-- 				{ Cue = "/VO/ZagreusField_3612" },
-	-- 			},
-	-- 		},
-	-- 		{
-	-- 			RequiredFalseQueuedTextLines = { "PersephoneMeeting07", "PersephoneMeeting08" },
-	-- 			PreLineAnim = "PersephoneGarden_Greeting",
-	-- 			ObjectType = "NPC_Persephone_01",
-	-- 			RandomRemaining = true,
+				-- Zagreus!
+				{ Cue = "/VO/Megaera_20030", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
+				-- Zagreus?
+				{ Cue = "/VO/Megaera_20032", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
+				-- You're back!
+				{ Cue = "/VO/Megaera_20033" },
+				-- Ah, you're back.
+				{ Cue = "/VO/Megaera_20035" },
+				-- My son!
+				{ Cue = "/VO/Megaera_20036" },
+				-- Is that you, Zagreus?
+				{ Cue = "/VO/Megaera_20037", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
+				-- Oh, it's you!
+				{ Cue = "/VO/Megaera_20038" },
+				-- Is that you?
+				{ Cue = "/VO/Megaera_20039" },
+				-- Zagreus, you're back!
+				{ Cue = "/VO/Megaera_20040", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
+				-- Welcome back, my son.
+				{ Cue = "/VO/Megaera_20041" },
+			},
+			{
+				PreLineWait = 0.5,
+				UsePlayerSource = true,
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				RequiredQueuedTextLines = "PersephoneReturnsHome01",
 
-	-- 			-- Zagreus!
-	-- 			{ Cue = "/VO/Persephone_0030", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
-	-- 			-- Zagreus?
-	-- 			{ Cue = "/VO/Persephone_0032", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
-	-- 			-- You're back!
-	-- 			{ Cue = "/VO/Persephone_0033" },
-	-- 			-- Ah, you're back.
-	-- 			{ Cue = "/VO/Persephone_0035" },
-	-- 			-- My son!
-	-- 			{ Cue = "/VO/Persephone_0036" },
-	-- 			-- Is that you, Zagreus?
-	-- 			{ Cue = "/VO/Persephone_0037", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
-	-- 			-- Oh, it's you!
-	-- 			{ Cue = "/VO/Persephone_0038" },
-	-- 			-- Is that you?
-	-- 			{ Cue = "/VO/Persephone_0039" },
-	-- 			-- Zagreus, you're back!
-	-- 			{ Cue = "/VO/Persephone_0040", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
-	-- 			-- Welcome back, my son.
-	-- 			{ Cue = "/VO/Persephone_0041" },
-	-- 		},
-	-- 		{
-	-- 			PreLineWait = 0.5,
-	-- 			UsePlayerSource = true,
-	-- 			BreakIfPlayed = true,
-	-- 			RandomRemaining = true,
-	-- 			RequiredQueuedTextLines = "PersephoneReturnsHome01",
+				-- Mother...?
+				{ Cue = "/VO/ZagreusField_3619" },
+			},
+			{
+				PreLineWait = 0.5,
+				UsePlayerSource = true,
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				RequiredFalseQueuedTextLines = { "PersephoneReturnsHome01", "PersephoneMeeting08" },
 
-	-- 			-- Mother...?
-	-- 			{ Cue = "/VO/ZagreusField_3619" },
-	-- 		},
-	-- 		{
-	-- 			PreLineWait = 0.5,
-	-- 			UsePlayerSource = true,
-	-- 			BreakIfPlayed = true,
-	-- 			RandomRemaining = true,
-	-- 			RequiredFalseQueuedTextLines = { "PersephoneReturnsHome01", "PersephoneMeeting08" },
-
-	-- 			-- It's me.
-	-- 			{ Cue = "/VO/ZagreusField_3613" },
-	-- 			-- I'm back.
-	-- 			{ Cue = "/VO/ZagreusField_3614" },
-	-- 			-- I'm back, Mother!
-	-- 			{ Cue = "/VO/ZagreusField_3615" },
-	-- 			-- It's only me.
-	-- 			{ Cue = "/VO/ZagreusField_3616" },
-	-- 			-- I made it, Mother.
-	-- 			{ Cue = "/VO/ZagreusField_3617" },
-	-- 			-- Hello, Mother!
-	-- 			{ Cue = "/VO/ZagreusField_3618" },
-	-- 			-- Mother...?
-	-- 			{ Cue = "/VO/ZagreusField_3619", RequiredFalseQueuedTextLines = { "PersephoneMeeting09" }, },
-	-- 			-- I'm here, Mother.
-	-- 			{ Cue = "/VO/ZagreusField_3620" },
-	-- 		},
-	-- 	},
-	-- },
-	-- PersephoneGuaranteedGreeting = {
-	-- 	WithinDistance = 580,
-	-- 	PostTriggerAnimation = "PersephoneUnderworld_Greeting",
-	-- 	VoiceLines =
-	-- 	{
-	-- 		[1] = { GlobalVoiceLines = "PersephoneHomeGreetingVoiceLines" }, --GlobalVoiceLines.PersephoneHomeGreetingVoiceLines,
-	-- 	},
-	-- },
-	-- PersephoneGreeting = {
-	-- 	ChanceToTrigger = 0.75,
-	-- 	WithinDistance = 580,
-	-- 	PostTriggerAnimation = "PersephoneUnderworld_Greeting",
-	-- 	GameStateRequirements =
-	-- 	{
-	-- 		RequiredFalsePrevRooms = { "DeathAreaBedroom", "DeathAreaOffice", "DeathAreaBedroomHades" },
-	-- 		RequiresFalseHadesProcession = true,
-	-- 	},
-	-- 	VoiceLines =
-	-- 	{
-	-- 		[1] = { GlobalVoiceLines = "PersephoneHomeGreetingVoiceLines" }, --GlobalVoiceLines.PersephoneHomeGreetingVoiceLines,
-	-- 	},
-	-- },
+				-- It's me.
+				{ Cue = "/VO/ZagreusField_3613" },
+				-- I'm back.
+				{ Cue = "/VO/ZagreusField_3614" },
+				-- I'm back, Mother!
+				{ Cue = "/VO/ZagreusField_3615" },
+				-- It's only me.
+				{ Cue = "/VO/ZagreusField_3616" },
+				-- I made it, Mother.
+				{ Cue = "/VO/ZagreusField_3617" },
+				-- Hello, Mother!
+				{ Cue = "/VO/ZagreusField_3618" },
+				-- Mother...?
+				{ Cue = "/VO/ZagreusField_3619", RequiredFalseQueuedTextLines = { "PersephoneMeeting09" }, },
+				-- I'm here, Mother.
+				{ Cue = "/VO/ZagreusField_3620" },
+			},
+		},
+	},
 	SingingEurydiceSong01_Eurydice_SongFromStart = {
 		TrackName = "{5d99eb67-025b-4ae2-a8fa-bc9a1f52e5ec}",
 		Restore = true,
@@ -455,10 +424,8 @@ mod.NPCData = mod.NPCData or {
 		MoneyMin = 101,
 		MoneyMax = 115,
 
-		InteractTextLineSets =
-		{
-			SisyphusFirstMeeting =
-			{
+		InteractTextLineSets = {
+			SisyphusFirstMeeting = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -492,8 +459,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMeeting02_A =
-			{
+			SisyphusMeeting02_A = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -528,8 +494,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMeeting02 =
-			{
+			SisyphusMeeting02 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -563,8 +528,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMeeting03 =
-			{
+			SisyphusMeeting03 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -596,8 +560,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMeeting04 =
-			{
+			SisyphusMeeting04 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "SisyphusMeeting03", "SisyphusGift03" },
@@ -629,8 +592,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMeeting_AboutFury01 =
-			{
+			SisyphusMeeting_AboutFury01 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -659,8 +621,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMeeting05 =
-			{
+			SisyphusMeeting05 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredRoomLastRun = "A_Boss01",
@@ -690,8 +651,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 			-- bouldy introduced
-			SisyphusMeeting06 =
-			{
+			SisyphusMeeting06 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -721,8 +681,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMeeting07 =
-			{
+			SisyphusMeeting07 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -755,8 +714,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusAboutBouldy01 =
-			{
+			SisyphusAboutBouldy01 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -797,8 +755,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusAboutBouldy02 =
-			{
+			SisyphusAboutBouldy02 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -825,8 +782,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusAboutBouldy03 =
-			{
+			SisyphusAboutBouldy03 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "SisyphusAboutBouldy02" },
@@ -854,8 +810,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusAboutBouldy04 =
-			{
+			SisyphusAboutBouldy04 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "SisyphusAboutBouldy02" },
@@ -899,8 +854,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusAboutAlecto01 =
-			{
+			SisyphusAboutAlecto01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "SisyphusMeeting06", "Fury2FirstAppearance" },
@@ -927,8 +881,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusAboutTisiphone01 =
-			{
+			SisyphusAboutTisiphone01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "SisyphusMeeting06", "Fury3FirstAppearance" },
@@ -970,8 +923,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusMeeting08 =
-			{
+			SisyphusMeeting08 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusMeeting04", "SisyphusGift01" },
@@ -999,8 +951,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusBackstory01 =
-			{
+			SisyphusBackstory01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusMeeting06", "SisyphusGift01" },
@@ -1036,8 +987,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusBackstory02 =
-			{
+			SisyphusBackstory02 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -1080,8 +1030,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusBackstory03 =
-			{
+			SisyphusBackstory03 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -1135,8 +1084,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusBackstory04 =
-			{
+			SisyphusBackstory04 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredMinNPCInteractions = { NPC_Sisyphus_01 = 20 },
@@ -1163,8 +1111,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusBackstory05 =
-			{
+			SisyphusBackstory05 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusBackstory02", "SisyphusGift06" },
@@ -1205,8 +1152,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusBackstory06 =
-			{
+			SisyphusBackstory06 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusBackstory02", "SisyphusGift06" },
@@ -1238,8 +1184,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusLiberationQuest_Beginning_01 =
-			{
+			SisyphusLiberationQuest_Beginning_01 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -1281,8 +1226,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusLiberationQuestComplete =
-			{
+			SisyphusLiberationQuestComplete = {
 				SuperPriority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -1345,8 +1289,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusLiberationQuestAftermath01 =
-			{
+			SisyphusLiberationQuestAftermath01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusLiberationQuestComplete" },
@@ -1380,8 +1323,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusLiberationQuestAftermath02 =
-			{
+			SisyphusLiberationQuestAftermath02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusLiberationQuestComplete" },
@@ -1415,8 +1357,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusLiberationQuestAftermath03 =
-			{
+			SisyphusLiberationQuestAftermath03 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusLiberationQuestAftermath02" },
@@ -1452,8 +1393,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusHighRelationship01 =
-			{
+			SisyphusHighRelationship01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift09_A" },
@@ -1486,14 +1426,12 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusMeeting_FuryVictorious01 =
-			{
+			SisyphusMeeting_FuryVictorious01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusFirstMeeting" },
 				RequiredFalseTextLines = { "SisyphusLiberationQuestComplete" },
-				ConsecutiveDeathsInRoom =
-				{
+				ConsecutiveDeathsInRoom = {
 					Name = "A_Boss01",
 					Count = 2,
 				},
@@ -1518,8 +1456,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMeeting_FuryDefeated01 =
-			{
+			SisyphusMeeting_FuryDefeated01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusFirstMeeting" },
@@ -1547,8 +1484,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMeeting_FuryDefeated02 =
-			{
+			SisyphusMeeting_FuryDefeated02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "MegaeraMeeting02", "SisyphusFirstMeeting" },
@@ -1572,8 +1508,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusMeeting_AboutMegAndThanatos01 =
-			{
+			SisyphusMeeting_AboutMegAndThanatos01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "MegaeraGift06", "SisyphusGift03" },
@@ -1612,8 +1547,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMeeting_AboutMegAndThanatos02 =
-			{
+			SisyphusMeeting_AboutMegAndThanatos02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredFalseTextLinesLastRun = { "SisyphusMeeting_AboutMegAndThanatos01" },
@@ -1657,8 +1591,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusAboutThanatosRelationship01 =
-			{
+			SisyphusAboutThanatosRelationship01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusBackstory03", "SisyphusGift03", "ThanatosGift05" },
@@ -1691,8 +1624,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusRunProgress01 =
-			{
+			SisyphusRunProgress01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredRoomLastRun = "D_Hub",
@@ -1727,8 +1659,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusRunCleared01 =
-			{
+			SisyphusRunCleared01 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -1779,8 +1710,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusRunCleared02 =
-			{
+			SisyphusRunCleared02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "SisyphusRunCleared01", "PersephoneMeeting06" },
@@ -1814,8 +1744,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusPostEnding01 =
-			{
+			SisyphusPostEnding01 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -1849,8 +1778,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusPostEpilogue01 =
-			{
+			SisyphusPostEpilogue01 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -1883,8 +1811,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusPostEpilogue02 =
-			{
+			SisyphusPostEpilogue02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusPostEpilogue01" },
@@ -1917,8 +1844,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusPostEpilogue03 =
-			{
+			SisyphusPostEpilogue03 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusPostEpilogue02", "SisyphusLiberationQuestComplete" },
@@ -1953,8 +1879,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusAboutKeepsake01 =
-			{
+			SisyphusAboutKeepsake01 = {
 				-- Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -1987,8 +1912,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusAboutKeepsake02 =
-			{
+			SisyphusAboutKeepsake02 = {
 				-- Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -2025,8 +1949,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusAboutAboutSingersReunionQuest01 =
-			{
+			SisyphusAboutAboutSingersReunionQuest01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "OrpheusWithEurydice01", "SisyphusGift03" },
@@ -2061,8 +1984,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			SisyphusAboutLegendary01 =
-			{
+			SisyphusAboutLegendary01 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -2095,8 +2017,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusAboutLegendary02 =
-			{
+			SisyphusAboutLegendary02 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -2126,8 +2047,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			MegaeraWithSisyphus01_FollowUp =
-			{
+			MegaeraWithSisyphus01_FollowUp = {
 				PlayOnce = true,
 				InitialGiftableOffSource = true,
 				UseableOffSource = true,
@@ -2159,8 +2079,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			MegaeraWithSisyphus02_FollowUp =
-			{
+			MegaeraWithSisyphus02_FollowUp = {
 				PlayOnce = true,
 				InitialGiftableOffSource = true,
 				UseableOffSource = true,
@@ -2194,8 +2113,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			MegaeraWithSisyphus03_FollowUp =
-			{
+			MegaeraWithSisyphus03_FollowUp = {
 				PlayOnce = true,
 				InitialGiftableOffSource = true,
 				UseableOffSource = true,
@@ -2238,8 +2156,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			ThanatosWithSisyphus01_FollowUp =
-			{
+			ThanatosWithSisyphus01_FollowUp = {
 				PlayOnce = true,
 				InitialGiftableOffSource = true,
 				UseableOffSource = true,
@@ -2258,8 +2175,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			ThanatosWithSisyphus02_FollowUp =
-			{
+			ThanatosWithSisyphus02_FollowUp = {
 				PlayOnce = true,
 				InitialGiftableOffSource = true,
 				UseableOffSource = true,
@@ -2279,8 +2195,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			ThanatosWithSisyphus03_FollowUp =
-			{
+			ThanatosWithSisyphus03_FollowUp = {
 				PlayOnce = true,
 				InitialGiftableOffSource = true,
 				UseableOffSource = true,
@@ -2316,10 +2231,8 @@ mod.NPCData = mod.NPCData or {
 
 		},
 
-		RepeatableTextLineSets =
-		{
-			SisyphusChat01 =
-			{
+		RepeatableTextLineSets = {
+			SisyphusChat01 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0002",
@@ -2332,8 +2245,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat02 =
-			{
+			SisyphusChat02 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0003",
@@ -2346,8 +2258,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat03 =
-			{
+			SisyphusChat03 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0004",
@@ -2359,8 +2270,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat04 =
-			{
+			SisyphusChat04 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0005",
@@ -2373,8 +2283,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat05 =
-			{
+			SisyphusChat05 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0006",
@@ -2387,8 +2296,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat06 =
-			{
+			SisyphusChat06 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0007",
@@ -2400,8 +2308,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat07 =
-			{
+			SisyphusChat07 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0008",
@@ -2414,8 +2321,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat08 =
-			{
+			SisyphusChat08 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0009",
@@ -2429,8 +2335,7 @@ mod.NPCData = mod.NPCData or {
 				},
 
 			},
-			SisyphusChat09 =
-			{
+			SisyphusChat09 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0010",
@@ -2443,8 +2348,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat10 =
-			{
+			SisyphusChat10 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0011",
@@ -2456,8 +2360,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat11 =
-			{
+			SisyphusChat11 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0012",
@@ -2469,8 +2372,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat12 =
-			{
+			SisyphusChat12 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0013",
@@ -2483,8 +2385,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat13 =
-			{
+			SisyphusChat13 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0014",
@@ -2496,8 +2397,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat14 =
-			{
+			SisyphusChat14 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0015",
@@ -2510,8 +2410,7 @@ mod.NPCData = mod.NPCData or {
 				},
 
 			},
-			SisyphusChat15 =
-			{
+			SisyphusChat15 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0016",
@@ -2525,8 +2424,7 @@ mod.NPCData = mod.NPCData or {
 				},
 
 			},
-			SisyphusChat16 =
-			{
+			SisyphusChat16 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0017",
@@ -2539,8 +2437,7 @@ mod.NPCData = mod.NPCData or {
 				},
 
 			},
-			SisyphusChat17 =
-			{
+			SisyphusChat17 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0018",
@@ -2554,8 +2451,7 @@ mod.NPCData = mod.NPCData or {
 				},
 
 			},
-			SisyphusChat18 =
-			{
+			SisyphusChat18 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0019",
@@ -2568,8 +2464,7 @@ mod.NPCData = mod.NPCData or {
 				},
 
 			},
-			SisyphusChat19 =
-			{
+			SisyphusChat19 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0020",
@@ -2583,8 +2478,7 @@ mod.NPCData = mod.NPCData or {
 				},
 
 			},
-			SisyphusChat20 =
-			{
+			SisyphusChat20 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift06", },
 				{
@@ -2598,8 +2492,7 @@ mod.NPCData = mod.NPCData or {
 				},
 
 			},
-			SisyphusChat21 =
-			{
+			SisyphusChat21 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift06", },
 				{
@@ -2614,8 +2507,7 @@ mod.NPCData = mod.NPCData or {
 				},
 
 			},
-			SisyphusChat22 =
-			{
+			SisyphusChat22 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift06", },
 				{
@@ -2629,8 +2521,7 @@ mod.NPCData = mod.NPCData or {
 				},
 
 			},
-			SisyphusChat23 =
-			{
+			SisyphusChat23 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift06", },
 				{
@@ -2644,8 +2535,7 @@ mod.NPCData = mod.NPCData or {
 				},
 
 			},
-			SisyphusChat24 =
-			{
+			SisyphusChat24 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift06", },
 				{
@@ -2659,8 +2549,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat25 =
-			{
+			SisyphusChat25 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0334",
@@ -2672,8 +2561,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat26 =
-			{
+			SisyphusChat26 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0335",
@@ -2685,8 +2573,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat27 =
-			{
+			SisyphusChat27 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift06", "SisyphusMeeting06" },
 				{
@@ -2700,8 +2587,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat28 =
-			{
+			SisyphusChat28 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0337",
@@ -2713,8 +2599,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat29 =
-			{
+			SisyphusChat29 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0338",
@@ -2726,8 +2611,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat30 =
-			{
+			SisyphusChat30 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift06", "SisyphusMeeting06" },
 				{
@@ -2741,8 +2625,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat31 =
-			{
+			SisyphusChat31 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0340",
@@ -2754,8 +2637,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat32 =
-			{
+			SisyphusChat32 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0341",
@@ -2767,8 +2649,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat33 =
-			{
+			SisyphusChat33 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0342",
@@ -2780,8 +2661,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat34 =
-			{
+			SisyphusChat34 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0343",
@@ -2793,8 +2673,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat35 =
-			{
+			SisyphusChat35 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift06", "SisyphusMeeting06" },
 				{
@@ -2808,8 +2687,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat36 =
-			{
+			SisyphusChat36 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0345",
@@ -2821,8 +2699,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat37 =
-			{
+			SisyphusChat37 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0351",
@@ -2834,8 +2711,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat38 =
-			{
+			SisyphusChat38 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift06", "SisyphusMeeting06" },
 				{
@@ -2849,8 +2725,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat39 =
-			{
+			SisyphusChat39 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0456",
@@ -2863,8 +2738,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat40 =
-			{
+			SisyphusChat40 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0457",
@@ -2876,8 +2750,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat41 =
-			{
+			SisyphusChat41 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0458",
@@ -2890,8 +2763,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat42 =
-			{
+			SisyphusChat42 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0459",
@@ -2905,8 +2777,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat43 =
-			{
+			SisyphusChat43 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0460",
@@ -2919,8 +2790,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat44 =
-			{
+			SisyphusChat44 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Sisyphus_0461",
@@ -2933,8 +2803,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat45 =
-			{
+			SisyphusChat45 = {
 				UseableOffSource = true,
 				RequiresLastRunNotCleared = true,
 				{
@@ -2948,8 +2817,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusChat46 =
-			{
+			SisyphusChat46 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift06" },
 				{
@@ -2965,8 +2833,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- max relationship
-			SisyphusMaxChat01 =
-			{
+			SisyphusMaxChat01 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift09_A" },
 				{
@@ -2980,8 +2847,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMaxChat02 =
-			{
+			SisyphusMaxChat02 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift09_A" },
 				{
@@ -2995,8 +2861,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMaxChat03 =
-			{
+			SisyphusMaxChat03 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift09_A" },
 				{
@@ -3009,8 +2874,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMaxChat04 =
-			{
+			SisyphusMaxChat04 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift09_A" },
 				{
@@ -3023,8 +2887,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMaxChat05 =
-			{
+			SisyphusMaxChat05 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift09_A" },
 				{
@@ -3037,8 +2900,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMaxChat06 =
-			{
+			SisyphusMaxChat06 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift09_A" },
 				{
@@ -3052,8 +2914,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMaxChat07 =
-			{
+			SisyphusMaxChat07 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift09_A" },
 				{
@@ -3067,8 +2928,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMaxChat08 =
-			{
+			SisyphusMaxChat08 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift09_A" },
 				{
@@ -3081,8 +2941,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMaxChat09 =
-			{
+			SisyphusMaxChat09 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift09_A" },
 				{
@@ -3096,8 +2955,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMaxChat10 =
-			{
+			SisyphusMaxChat10 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift09_A" },
 				{
@@ -3110,8 +2968,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 			},
-			SisyphusMaxChat11 =
-			{
+			SisyphusMaxChat11 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "SisyphusGift09_A" },
 				{
@@ -3128,10 +2985,8 @@ mod.NPCData = mod.NPCData or {
 
 		},
 
-		GiftTextLineSets =
-		{
-			SisyphusGift01 =
-			{
+		GiftTextLineSets = {
+			SisyphusGift01 = {
 				PlayOnce = true,
 				{
 					Cue = "/VO/ZagreusHome_0120",
@@ -3150,8 +3005,7 @@ mod.NPCData = mod.NPCData or {
 					"Now hold a moment, Highness, I cannot accept something like this... not without giving back a little something in return, that is!"
 				},
 			},
-			SisyphusGift02 =
-			{
+			SisyphusGift02 = {
 				PlayOnce = true,
 				RequiredTextLines = { "SisyphusGift01", },
 				{
@@ -3166,8 +3020,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You better believe it, sir. Now you take care, be seeing you around."
 				},
 			},
-			SisyphusGift03 =
-			{
+			SisyphusGift03 = {
 				PlayOnce = true,
 				RequiredTextLines = { "SisyphusGift02", },
 				{
@@ -3187,8 +3040,7 @@ mod.NPCData = mod.NPCData or {
 					"You deserve better, Sisyphus! This really isn't much, but maybe it'll help you while away the days. Nights. Whatever time it is."
 				},
 			},
-			SisyphusGift04 =
-			{
+			SisyphusGift04 = {
 				PlayOnce = true,
 				RequiredTextLines = { "SisyphusGift03", },
 				{
@@ -3203,8 +3055,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You're always a sight for sore eyes out here, Sisyphus. Thank you for always believing in me."
 				},
 			},
-			SisyphusGift05 =
-			{
+			SisyphusGift05 = {
 				PlayOnce = true,
 				RequiredTextLines = { "SisyphusGift04", },
 				{
@@ -3219,8 +3070,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I figured you could do with something more than that this time around, good sir."
 				},
 			},
-			SisyphusGift06 =
-			{
+			SisyphusGift06 = {
 				PlayOnce = true,
 				RequiredTextLines = { "SisyphusGift05", },
 				{
@@ -3242,8 +3092,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- high relationship / locked gifts
-			SisyphusGift07_A =
-			{
+			SisyphusGift07_A = {
 				PlayOnce = true,
 				RequiredTextLines = { "SisyphusGift06", },
 				{
@@ -3281,13 +3130,11 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 			-- if you haven't had ambrosia with others
-			SisyphusGift08_A =
-			{
+			SisyphusGift08_A = {
 				PlayOnce = true,
 				RequiredTextLines = { "SisyphusGift07_A", },
 				RequiredFalseTextLines = { "SisyphusGift08_B", "MegaeraGift10", "OlympianReunionQuestComplete" },
-				EndVoiceLines =
-				{
+				EndVoiceLines = {
 					PreLineWait = 0.7,
 					UsePlayerSource = true,
 					-- Yeah I hope so too.
@@ -3319,14 +3166,12 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 			-- if you have had ambrosia with others
-			SisyphusGift08_B =
-			{
+			SisyphusGift08_B = {
 				PlayOnce = true,
 				RequiredTextLines = { "SisyphusGift07_A" },
 				RequiredAnyTextLines = { "MegaeraGift10", "OlympianReunionQuestComplete" },
 				RequiredFalseTextLines = { "SisyphusGift08_A" },
-				EndVoiceLines =
-				{
+				EndVoiceLines = {
 					PreLineWait = 0.7,
 					UsePlayerSource = true,
 					-- Yeah I hope so too.
@@ -3357,12 +3202,10 @@ mod.NPCData = mod.NPCData or {
 					"Ah, look at what the Prince has brought for us, Bouldy! Perhaps someday we'll have a chance to share some between us!"
 				},
 			},
-			SisyphusGift09_A =
-			{
+			SisyphusGift09_A = {
 				PlayOnce = true,
 				RequiredAnyTextLines = { "SisyphusGift08_A", "SisyphusGift08_B" },
-				EndVoiceLines =
-				{
+				EndVoiceLines = {
 					PreLineWait = 0.7,
 					UsePlayerSource = true,
 					-- You guys are great.
@@ -3407,8 +3250,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- below: old conversations from before the Welcome to Hell update
-			SisyphusGift07 =
-			{
+			SisyphusGift07 = {
 				Skip = true,
 				PlayOnce = true,
 				RequiredTextLines = { "SisyphusGift06" },
@@ -3424,8 +3266,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You're more than welcome, sir. For all you've done for me, it's the least I could do."
 				},
 			},
-			SisyphusGift08 =
-			{
+			SisyphusGift08 = {
 				Skip = true,
 				PlayOnce = true,
 				RequiredTextLines = { "SisyphusGift07", },
@@ -3444,8 +3285,7 @@ mod.NPCData = mod.NPCData or {
 			},
 		},
 
-		GiftGivenVoiceLines =
-		{
+		GiftGivenVoiceLines = {
 			{
 				BreakIfPlayed = true,
 				PreLineWait = 1.1,
@@ -3465,12 +3305,9 @@ mod.NPCData = mod.NPCData or {
 			},
 		},
 
-		CharacterInteractions =
-		{
-			Rescue =
-			{
-				VoiceLines =
-				{
+		CharacterInteractions = {
+			Rescue = {
+				VoiceLines = {
 					{
 						RandomRemaining = true,
 						PreLineWait = 0.4,
@@ -3552,14 +3389,12 @@ mod.NPCData = mod.NPCData or {
 		},
 
 		RepulseOnMeleeInvulnerableHit = 250,
-		OnHitVoiceLines =
-		{
+		OnHitVoiceLines = {
 			RandomRemaining = true,
 			BreakIfPlayed = true,
 			PreLineWait = 0.45,
 			PlayFromTarget = true,
-			Cooldowns =
-			{
+			Cooldowns = {
 				{ Name = "SisyphusAnyQuipSpeech", Time = 11 },
 			},
 
@@ -3611,15 +3446,13 @@ mod.NPCData = mod.NPCData or {
 			{ Cue = "/VO/Sisyphus_0241", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 		},
 
-		BouldyAttackReactionVoiceLines =
-		{
+		BouldyAttackReactionVoiceLines = {
 			RandomRemaining = true,
 			BreakIfPlayed = true,
 			PreLineWait = 0.55,
 			PlayFromTarget = true,
 			RequiredTextLines = { "SisyphusFirstMeeting" },
-			Cooldowns =
-			{
+			Cooldowns = {
 				{ Name = "SisyphusAnyQuipSpeech", Time = 7 },
 			},
 
@@ -3681,17 +3514,14 @@ mod.NPCData = mod.NPCData or {
 			RequiredMinCompletedRuns = 1,
 		},
 
-		InteractTextLineSets =
-		{
-			BouldyFirstMeeting =
-			{
+		InteractTextLineSets = {
+			BouldyFirstMeeting = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
 				GiftableOffSource = true,
 				RequiredTextLines = { "SisyphusAboutBouldy01" },
-				EndVoiceLines =
-				{
+				EndVoiceLines = {
 					{
 						RandomRemaining = true,
 						PreLineWait = 0.73,
@@ -3723,8 +3553,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   ."
 				},
 			},
-			BouldyMiscMeeting01 =
-			{
+			BouldyMiscMeeting01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "BouldyFirstMeeting" },
@@ -3745,8 +3574,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   ."
 				},
 			},
-			BouldyMiscMeeting02 =
-			{
+			BouldyMiscMeeting02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "BouldyFirstMeeting" },
@@ -3767,8 +3595,7 @@ mod.NPCData = mod.NPCData or {
 					Text = ".   .   .   ."
 				},
 			},
-			BouldyMiscMeeting03 =
-			{
+			BouldyMiscMeeting03 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "BouldyFirstMeeting" },
@@ -3791,10 +3618,8 @@ mod.NPCData = mod.NPCData or {
 			},
 		},
 
-		RepeatableTextLineSets =
-		{
-			BouldyChat01 =
-			{
+		RepeatableTextLineSets = {
+			BouldyChat01 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "BouldyFirstMeeting" },
 				{
@@ -3805,10 +3630,8 @@ mod.NPCData = mod.NPCData or {
 			},
 		},
 
-		GiftTextLineSets =
-		{
-			BouldyGiftRepeatable01 =
-			{
+		GiftTextLineSets = {
+			BouldyGiftRepeatable01 = {
 				{
 					Cue = "/VO/ZagreusField_2789",
 					Portrait = "Portrait_Zag_Default_01",
@@ -3828,8 +3651,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable02 =
-			{
+			BouldyGiftRepeatable02 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01" },
 				{
 					Cue = "/VO/ZagreusField_2790",
@@ -3850,8 +3672,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable03 =
-			{
+			BouldyGiftRepeatable03 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_2791",
@@ -3869,8 +3690,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable04 =
-			{
+			BouldyGiftRepeatable04 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_2792",
@@ -3890,8 +3710,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable05 =
-			{
+			BouldyGiftRepeatable05 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_2793",
@@ -3911,8 +3730,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable06 =
-			{
+			BouldyGiftRepeatable06 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_2794",
@@ -3932,8 +3750,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable07 =
-			{
+			BouldyGiftRepeatable07 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_2795",
@@ -3953,8 +3770,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable08 =
-			{
+			BouldyGiftRepeatable08 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_2796",
@@ -3974,8 +3790,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable09 =
-			{
+			BouldyGiftRepeatable09 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_2797",
@@ -3995,8 +3810,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable10 =
-			{
+			BouldyGiftRepeatable10 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_2798",
@@ -4016,8 +3830,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable11 =
-			{
+			BouldyGiftRepeatable11 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_2799",
@@ -4037,8 +3850,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable12 =
-			{
+			BouldyGiftRepeatable12 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_2800",
@@ -4058,8 +3870,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable13 =
-			{
+			BouldyGiftRepeatable13 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03" },
 				{
 					Cue = "/VO/ZagreusField_2801",
@@ -4079,8 +3890,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable14 =
-			{
+			BouldyGiftRepeatable14 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_2802",
@@ -4100,8 +3910,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable15 =
-			{
+			BouldyGiftRepeatable15 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_2803",
@@ -4121,8 +3930,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable16 =
-			{
+			BouldyGiftRepeatable16 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				RequiredTextLines = { "BouldyGiftRepeatable12" },
 				{
@@ -4143,8 +3951,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable17 =
-			{
+			BouldyGiftRepeatable17 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
 				{
 					Cue = "/VO/ZagreusField_2805",
@@ -4164,8 +3971,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable18 =
-			{
+			BouldyGiftRepeatable18 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
 				{
 					Cue = "/VO/ZagreusField_2806",
@@ -4185,8 +3991,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable19 =
-			{
+			BouldyGiftRepeatable19 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
 				{
 					Cue = "/VO/ZagreusField_2807",
@@ -4206,8 +4011,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable20 =
-			{
+			BouldyGiftRepeatable20 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				{
 					Cue = "/VO/ZagreusField_4215",
@@ -4227,8 +4031,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable21 =
-			{
+			BouldyGiftRepeatable21 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
 				{
 					Cue = "/VO/ZagreusField_4216",
@@ -4248,8 +4051,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable22 =
-			{
+			BouldyGiftRepeatable22 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03" },
 				{
 					Cue = "/VO/ZagreusField_4217",
@@ -4269,8 +4071,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable23 =
-			{
+			BouldyGiftRepeatable23 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03" },
 				{
 					Cue = "/VO/ZagreusField_4218",
@@ -4290,8 +4091,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable24 =
-			{
+			BouldyGiftRepeatable24 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
 				{
 					Cue = "/VO/ZagreusField_4219",
@@ -4311,8 +4111,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable25 =
-			{
+			BouldyGiftRepeatable25 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05" },
 				{
 					Cue = "/VO/ZagreusField_4220",
@@ -4332,8 +4131,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable26 =
-			{
+			BouldyGiftRepeatable26 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05", "BouldyGiftRepeatable06", "BouldyGiftRepeatable07", "BouldyGiftRepeatable08", "BouldyGiftRepeatable09", "BouldyGiftRepeatable10" },
 				{
 					Cue = "/VO/ZagreusField_4221",
@@ -4353,8 +4151,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable27 =
-			{
+			BouldyGiftRepeatable27 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05", "BouldyGiftRepeatable06", "BouldyGiftRepeatable07", "BouldyGiftRepeatable08", "BouldyGiftRepeatable09", "BouldyGiftRepeatable10" },
 				{
 					Cue = "/VO/ZagreusField_4222",
@@ -4374,8 +4171,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable28 =
-			{
+			BouldyGiftRepeatable28 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03", "BouldyGiftRepeatable04", "BouldyGiftRepeatable05", "BouldyGiftRepeatable06", "BouldyGiftRepeatable07", "BouldyGiftRepeatable08", "BouldyGiftRepeatable09", "BouldyGiftRepeatable10" },
 				{
 					Cue = "/VO/ZagreusField_4223",
@@ -4395,8 +4191,7 @@ mod.NPCData = mod.NPCData or {
 					PostLineFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings
 				},
 			},
-			BouldyGiftRepeatable29 =
-			{
+			BouldyGiftRepeatable29 = {
 				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02", "BouldyGiftRepeatable03" },
 				{
 					Cue = "/VO/ZagreusField_4224",
@@ -4418,8 +4213,7 @@ mod.NPCData = mod.NPCData or {
 			},
 		},
 
-		GiftGivenVoiceLines =
-		{
+		GiftGivenVoiceLines = {
 			BreakIfPlayed = true,
 			PreLineWait = 1.0,
 			PlayFromTarget = true,
@@ -4429,12 +4223,9 @@ mod.NPCData = mod.NPCData or {
 		},
 
 		--[[
-		CharacterInteractions =
-		{
-			Rescue =
-			{
-				VoiceLines =
-				{
+		CharacterInteractions = {
+			Rescue = {
+				VoiceLines = {
 					BreakIfPlayed = true,
 					RandomRemaining = true,
 					PreLineWait = 0.4,
@@ -4447,14 +4238,12 @@ mod.NPCData = mod.NPCData or {
 		]] --
 
 		OnHitFunctionName = "BouldyHitPresentation",
-		OnHitVoiceLines =
-		{
+		OnHitVoiceLines = {
 			RandomRemaining = true,
 			BreakIfPlayed = true,
 			PreLineWait = 0.25,
 			ObjectType = "NPC_Sisyphus_01",
-			Cooldowns =
-			{
+			Cooldowns = {
 				{ Name = "SisyphusAnyQuipSpeech", Time = 7 },
 			},
 
@@ -4495,11 +4284,9 @@ mod.NPCData = mod.NPCData or {
 			RequiredMinCompletedRuns = 1,
 		},
 
-		InteractTextLineSets =
-		{
+		InteractTextLineSets = {
 			-- not learned of her through orpheus, not met hydra
-			EurydiceFirstMeeting01_A =
-			{
+			EurydiceFirstMeeting01_A = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
@@ -4536,8 +4323,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
 			-- not learned of her through orpheus, met hydra
-			EurydiceFirstMeeting01_B =
-			{
+			EurydiceFirstMeeting01_B = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
@@ -4574,8 +4360,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
 			-- learned of her through orpheus, met hydra
-			EurydiceFirstMeeting01_C =
-			{
+			EurydiceFirstMeeting01_C = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -4615,8 +4400,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- If you didn't immediately mention Orpheus
-			EurydiceAboutOrpheus01 =
-			{
+			EurydiceAboutOrpheus01 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -4666,8 +4450,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 			-- If you immediately mentioned Orpheus
-			EurydiceAboutOrpheus01_B =
-			{
+			EurydiceAboutOrpheus01_B = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -4717,8 +4500,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- this is where Eurydice gets mad / Eurydice mad
-			EurydiceAboutOrpheus02 =
-			{
+			EurydiceAboutOrpheus02 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -4756,8 +4538,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceAboutOrpheus03 =
-			{
+			EurydiceAboutOrpheus03 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -4808,8 +4589,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- no longer mad after this
-			EurydiceAboutOrpheus04 =
-			{
+			EurydiceAboutOrpheus04 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -4852,8 +4632,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceProgressWithOrpheus01 =
-			{
+			EurydiceProgressWithOrpheus01 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -4891,8 +4670,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- song request / eurydice gives song / eurydicesong
-			EurydiceProgressWithOrpheus02 =
-			{
+			EurydiceProgressWithOrpheus02 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -4939,8 +4717,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceProgressWithOrpheus_SongReaction01 =
-			{
+			EurydiceProgressWithOrpheus_SongReaction01 = {
 				SuperPriority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -4983,8 +4760,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- not singing; used RequiresFalseAmbientTrackName //
-			EurydiceProgressWithOrpheus03 =
-			{
+			EurydiceProgressWithOrpheus03 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -5018,8 +4794,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			EurydiceAboutSingersReunionQuestComplete01 =
-			{
+			EurydiceAboutSingersReunionQuestComplete01 = {
 				SuperPriority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -5054,8 +4829,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceAboutSingersReunionQuestComplete02 =
-			{
+			EurydiceAboutSingersReunionQuestComplete02 = {
 				SuperPriority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -5088,8 +4862,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceAboutSingersReunionQuestComplete03 =
-			{
+			EurydiceAboutSingersReunionQuestComplete03 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -5124,8 +4897,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceAboutSingersReunionQuestComplete04 =
-			{
+			EurydiceAboutSingersReunionQuestComplete04 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceAboutSingersReunionQuestComplete01", "OrpheusTallTale06" },
@@ -5157,8 +4929,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceAboutSingersReunionQuestComplete05 =
-			{
+			EurydiceAboutSingersReunionQuestComplete05 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceAboutSingersReunionQuestComplete01", "EurydiceGift08", "OrpheusGift08" },
@@ -5189,8 +4960,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- if Orpheus hasn't mentioned her yet
-			EurydiceMentionsOrpheus01 =
-			{
+			EurydiceMentionsOrpheus01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
@@ -5225,8 +4995,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceMentionsOrpheus01_B =
-			{
+			EurydiceMentionsOrpheus01_B = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -5261,8 +5030,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceAboutHermes01 =
-			{
+			EurydiceAboutHermes01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift03", "HermesAboutEurydice01" },
@@ -5295,8 +5063,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceAboutNymphs01 =
-			{
+			EurydiceAboutNymphs01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceMiscMeeting04", "EurydiceGift03", "ArtemisAboutCallisto02" },
@@ -5331,8 +5098,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- if you haven't discussed the SingersReunionQuest resolution w/ Persephone
-			EurydiceAboutPersephone01 =
-			{
+			EurydiceAboutPersephone01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceAboutOrpheus02", "PersephoneMeeting02", "EurydiceGift06" },
@@ -5378,8 +5144,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 			-- if you have discussed the SingersReunionQuest resolution w/ Persephone
-			EurydiceAboutPersephone01_B =
-			{
+			EurydiceAboutPersephone01_B = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PersephoneAboutSingersReunionQuest01", "Ending01" },
@@ -5426,8 +5191,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydicePostEpilogue01 =
-			{
+			EurydicePostEpilogue01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "OlympianReunionQuestComplete", "OrpheusWithEurydice01" },
@@ -5461,8 +5225,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydicePostEpilogue02 =
-			{
+			EurydicePostEpilogue02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydicePostEpilogue01", "OrpheusWithEurydice01" },
@@ -5495,8 +5258,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceAboutMusic01 =
-			{
+			EurydiceAboutMusic01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "OrpheusWithEurydice01", "OrpheusMusicProgress03", "EurydiceGift07" },
@@ -5529,13 +5291,11 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceAboutOnions01 =
-			{
+			EurydiceAboutOnions01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift04" },
-				RequiredConsumablesThisRun =
-				{
+				RequiredConsumablesThisRun = {
 					Count = 1,
 					Names =
 					{
@@ -5572,8 +5332,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceAboutLove01 =
-			{
+			EurydiceAboutLove01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift08" },
@@ -5609,8 +5368,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceMiscMeeting01 =
-			{
+			EurydiceMiscMeeting01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift01" },
@@ -5639,8 +5397,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceMiscMeeting02 =
-			{
+			EurydiceMiscMeeting02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift01" },
@@ -5674,8 +5431,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceMiscMeeting03 =
-			{
+			EurydiceMiscMeeting03 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift01" },
@@ -5704,8 +5460,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceMiscMeeting04 =
-			{
+			EurydiceMiscMeeting04 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift01" },
@@ -5746,8 +5501,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceMiscMeeting05 =
-			{
+			EurydiceMiscMeeting05 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift01" },
@@ -5782,8 +5536,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceMiscMeeting06 =
-			{
+			EurydiceMiscMeeting06 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift01" },
@@ -5818,8 +5571,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceAboutAcorn01 =
-			{
+			EurydiceAboutAcorn01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredKeepsake = "ShieldBossTrait",
@@ -5848,8 +5600,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceAboutAcorn02 =
-			{
+			EurydiceAboutAcorn02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceAboutAcorn01" },
@@ -5881,8 +5632,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceAboutDistantMemory01 =
-			{
+			EurydiceAboutDistantMemory01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTrait = "DistanceDamageTrait",
@@ -5918,8 +5668,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceLowHealth01 =
-			{
+			EurydiceLowHealth01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift03" },
@@ -5939,8 +5688,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceLowHealth02 =
-			{
+			EurydiceLowHealth02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift01" },
@@ -5959,8 +5707,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceLowHealth03 =
-			{
+			EurydiceLowHealth03 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift01" },
@@ -5980,8 +5727,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceLowHealth04 =
-			{
+			EurydiceLowHealth04 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift01" },
@@ -6002,236 +5748,198 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			OrpheusWithEurydice01 =
-			{
+			OrpheusWithEurydice01 = {
 				PlayOnce = true,
 				SuperPriority = true,
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydice02 =
-			{
+			OrpheusWithEurydice02 = {
 				PlayOnce = true,
 				SuperPriority = true,
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydice03 =
-			{
+			OrpheusWithEurydice03 = {
 				PlayOnce = true,
 				SuperPriority = true,
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceEndTheme01 =
-			{
+			OrpheusWithEurydiceEndTheme01 = {
 				PlayOnce = true,
 				SuperPriority = true,
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat01 =
-			{
+			OrpheusWithEurydiceMiscChat01 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat02 =
-			{
+			OrpheusWithEurydiceMiscChat02 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat03 =
-			{
+			OrpheusWithEurydiceMiscChat03 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat04 =
-			{
+			OrpheusWithEurydiceMiscChat04 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat05 =
-			{
+			OrpheusWithEurydiceMiscChat05 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat06 =
-			{
+			OrpheusWithEurydiceMiscChat06 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat07 =
-			{
+			OrpheusWithEurydiceMiscChat07 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat08 =
-			{
+			OrpheusWithEurydiceMiscChat08 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat09 =
-			{
+			OrpheusWithEurydiceMiscChat09 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat10 =
-			{
+			OrpheusWithEurydiceMiscChat10 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat11 =
-			{
+			OrpheusWithEurydiceMiscChat11 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat12 =
-			{
+			OrpheusWithEurydiceMiscChat12 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat13 =
-			{
+			OrpheusWithEurydiceMiscChat13 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat14 =
-			{
+			OrpheusWithEurydiceMiscChat14 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat15 =
-			{
+			OrpheusWithEurydiceMiscChat15 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat16 =
-			{
+			OrpheusWithEurydiceMiscChat16 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat17 =
-			{
+			OrpheusWithEurydiceMiscChat17 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat18 =
-			{
+			OrpheusWithEurydiceMiscChat18 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat19 =
-			{
+			OrpheusWithEurydiceMiscChat19 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat20 =
-			{
+			OrpheusWithEurydiceMiscChat20 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat21 =
-			{
+			OrpheusWithEurydiceMiscChat21 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat22 =
-			{
+			OrpheusWithEurydiceMiscChat22 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat23 =
-			{
+			OrpheusWithEurydiceMiscChat23 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat24 =
-			{
+			OrpheusWithEurydiceMiscChat24 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat25 =
-			{
+			OrpheusWithEurydiceMiscChat25 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceInTheBloodChat01 =
-			{
+			OrpheusWithEurydiceInTheBloodChat01 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceInTheBloodChat02 =
-			{
+			OrpheusWithEurydiceInTheBloodChat02 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceInTheBloodChat03 =
-			{
+			OrpheusWithEurydiceInTheBloodChat03 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceInTheBloodChat04 =
-			{
+			OrpheusWithEurydiceInTheBloodChat04 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceInTheBloodChat05 =
-			{
+			OrpheusWithEurydiceInTheBloodChat05 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceInTheBloodChat06 =
-			{
+			OrpheusWithEurydiceInTheBloodChat06 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceInTheBloodChat07 =
-			{
+			OrpheusWithEurydiceInTheBloodChat07 = {
 				Skip = true,
 				UseableOffSource = true,
 				StatusAnimation = false,
 			},
 		},
 
-		RepeatableTextLineSets =
-		{
-			EurydiceChat01 =
-			{
+		RepeatableTextLineSets = {
+			EurydiceChat01 = {
 				UseableOffSource = true,
 				TeleportId = 514436,
 				TeleportToId = 545534,
@@ -6251,8 +5959,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChat02 =
-			{
+			EurydiceChat02 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0006",
@@ -6266,8 +5973,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceChat03 =
-			{
+			EurydiceChat03 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0007",
@@ -6281,8 +5987,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChat04 =
-			{
+			EurydiceChat04 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0008",
@@ -6296,8 +6001,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChat05 =
-			{
+			EurydiceChat05 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0009",
@@ -6311,8 +6015,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChat06 =
-			{
+			EurydiceChat06 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0010",
@@ -6326,8 +6029,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChat07 =
-			{
+			EurydiceChat07 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0011",
@@ -6341,8 +6043,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceChat08 =
-			{
+			EurydiceChat08 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0012",
@@ -6356,8 +6057,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChat09 =
-			{
+			EurydiceChat09 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0013",
@@ -6371,8 +6071,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChat11 =
-			{
+			EurydiceChat11 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0014",
@@ -6386,8 +6085,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChat12 =
-			{
+			EurydiceChat12 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0015",
@@ -6401,8 +6099,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChat13 =
-			{
+			EurydiceChat13 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0016",
@@ -6416,8 +6113,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChat14 =
-			{
+			EurydiceChat14 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0017",
@@ -6431,8 +6127,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceChat15 =
-			{
+			EurydiceChat15 = {
 				UseableOffSource = true,
 				AreIdsNotAlive = { 554419 },
 				{
@@ -6448,8 +6143,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceChatExtra01 =
-			{
+			EurydiceChatExtra01 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift06" },
 				{
@@ -6464,8 +6158,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChatExtra02 =
-			{
+			EurydiceChatExtra02 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift03" },
 				{
@@ -6480,8 +6173,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChatExtra03 =
-			{
+			EurydiceChatExtra03 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0241",
@@ -6495,8 +6187,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChatExtra04 =
-			{
+			EurydiceChatExtra04 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0242",
@@ -6510,8 +6201,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChatExtra05 =
-			{
+			EurydiceChatExtra05 = {
 				UseableOffSource = true,
 				RequiresLastRunNotCleared = true,
 				RequiredTextLines = { "EurydiceGift04" },
@@ -6527,8 +6217,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChatExtra06 =
-			{
+			EurydiceChatExtra06 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceGift02" },
 				{
@@ -6543,8 +6232,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChatExtra07 =
-			{
+			EurydiceChatExtra07 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0245",
@@ -6558,8 +6246,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChatExtra08 =
-			{
+			EurydiceChatExtra08 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0246",
@@ -6573,8 +6260,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChatExtra09 =
-			{
+			EurydiceChatExtra09 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0247",
@@ -6588,8 +6274,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChatExtra10 =
-			{
+			EurydiceChatExtra10 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0138",
@@ -6603,8 +6288,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChatExtra11 =
-			{
+			EurydiceChatExtra11 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0136",
@@ -6618,8 +6302,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChatExtra12 =
-			{
+			EurydiceChatExtra12 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0135",
@@ -6633,8 +6316,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceChatExtra13 =
-			{
+			EurydiceChatExtra13 = {
 				UseableOffSource = true,
 				{
 					Cue = "/VO/Eurydice_0134",
@@ -6650,8 +6332,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- mad at orpheus
-			EurydiceMadChat01 =
-			{
+			EurydiceMadChat01 = {
 				Priority = true,
 				UseableOffSource = true,
 				GiftableOffSource = true,
@@ -6670,8 +6351,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceMadChat02 =
-			{
+			EurydiceMadChat02 = {
 				Priority = true,
 				UseableOffSource = true,
 				GiftableOffSource = true,
@@ -6690,8 +6370,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceMadChat03 =
-			{
+			EurydiceMadChat03 = {
 				Priority = true,
 				UseableOffSource = true,
 				GiftableOffSource = true,
@@ -6710,8 +6389,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceMadChat05 =
-			{
+			EurydiceMadChat05 = {
 				Priority = true,
 				UseableOffSource = true,
 				GiftableOffSource = true,
@@ -6730,8 +6408,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceMadChat06 =
-			{
+			EurydiceMadChat06 = {
 				Priority = true,
 				UseableOffSource = true,
 				GiftableOffSource = true,
@@ -6750,8 +6427,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceMadChat07 =
-			{
+			EurydiceMadChat07 = {
 				Priority = true,
 				UseableOffSource = true,
 				GiftableOffSource = true,
@@ -6770,8 +6446,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceMadChat09 =
-			{
+			EurydiceMadChat09 = {
 				Priority = true,
 				UseableOffSource = true,
 				GiftableOffSource = true,
@@ -6790,8 +6465,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceMadChat10 =
-			{
+			EurydiceMadChat10 = {
 				Priority = true,
 				UseableOffSource = true,
 				GiftableOffSource = true,
@@ -6811,8 +6485,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 			-- caring for Orpheus again
-			EurydiceAintEvenMadChat01 =
-			{
+			EurydiceAintEvenMadChat01 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
 				{
@@ -6827,8 +6500,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceAintEvenMadChat02 =
-			{
+			EurydiceAintEvenMadChat02 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
@@ -6845,8 +6517,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceAintEvenMadChat03 =
-			{
+			EurydiceAintEvenMadChat03 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
@@ -6864,8 +6535,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceAintEvenMadChat04 =
-			{
+			EurydiceAintEvenMadChat04 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
@@ -6884,8 +6554,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
 
-			EurydiceAintEvenMadChat05 =
-			{
+			EurydiceAintEvenMadChat05 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
 				{
@@ -6900,8 +6569,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 			},
-			EurydiceAintEvenMadChat06 =
-			{
+			EurydiceAintEvenMadChat06 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
 				AreIdsNotAlive = { 554419 },
@@ -6917,8 +6585,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceAintEvenMadChat07 =
-			{
+			EurydiceAintEvenMadChat07 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
 				AreIdsNotAlive = { 554419 },
@@ -6934,8 +6601,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceAintEvenMadChat08 =
-			{
+			EurydiceAintEvenMadChat08 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
 				AreIdsNotAlive = { 554419 },
@@ -6951,8 +6617,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceAintEvenMadChat09 =
-			{
+			EurydiceAintEvenMadChat09 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "OrpheusWithEurydice01" },
 				{
@@ -6967,8 +6632,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceAintEvenMadChat10 =
-			{
+			EurydiceAintEvenMadChat10 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "OrpheusWithEurydice01" },
 				AreIdsNotAlive = { 554419 },
@@ -6984,8 +6648,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceAintEvenMadChat10 =
-			{
+			EurydiceAintEvenMadChat10 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "EurydiceProgressWithOrpheus03" },
 				{
@@ -7000,8 +6663,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceAintEvenMadChat11 =
-			{
+			EurydiceAintEvenMadChat11 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "OrpheusWithEurydice01" },
 				AreIdsNotAlive = { 554419 },
@@ -7018,56 +6680,47 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
 
-			OrpheusWithEurydiceMiscChat01 =
-			{
+			OrpheusWithEurydiceMiscChat01 = {
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat02 =
-			{
+			OrpheusWithEurydiceMiscChat02 = {
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat03 =
-			{
+			OrpheusWithEurydiceMiscChat03 = {
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat04 =
-			{
+			OrpheusWithEurydiceMiscChat04 = {
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat05 =
-			{
+			OrpheusWithEurydiceMiscChat05 = {
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat06 =
-			{
+			OrpheusWithEurydiceMiscChat06 = {
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat07 =
-			{
+			OrpheusWithEurydiceMiscChat07 = {
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat08 =
-			{
+			OrpheusWithEurydiceMiscChat08 = {
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
 			},
-			OrpheusWithEurydiceMiscChat09 =
-			{
+			OrpheusWithEurydiceMiscChat09 = {
 				UseableOffSource = true,
 				Skip = true,
 				StatusAnimation = false,
@@ -7075,10 +6728,8 @@ mod.NPCData = mod.NPCData or {
 
 		},
 
-		GiftTextLineSets =
-		{
-			EurydiceGift01 =
-			{
+		GiftTextLineSets = {
+			EurydiceGift01 = {
 				PlayOnce = true,
 				{
 					Cue = "/VO/ZagreusField_2498",
@@ -7097,8 +6748,7 @@ mod.NPCData = mod.NPCData or {
 					"{#DialogueItalicFormat}Aw{#PreviousFormat}, that's awful sweet of you, Your Royal Majesty. Bringing me fresh ingredients like this! Know what, here's something for you, too, help keep you safe out there!"
 				},
 			},
-			EurydiceGift02 =
-			{
+			EurydiceGift02 = {
 				PlayOnce = true,
 				RequiredTextLines = { "EurydiceGift01" },
 				{
@@ -7117,8 +6767,7 @@ mod.NPCData = mod.NPCData or {
 					"Oh, don't worry, we're still getting to know each other! Plenty of time for me to live up to my notorious reputation. Though I'm surprised you've heard of me at all."
 				},
 			},
-			EurydiceGift03 =
-			{
+			EurydiceGift03 = {
 				PlayOnce = true,
 				RequiredTextLines = { "EurydiceGift02" },
 				{
@@ -7137,8 +6786,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You know, of all the souls I've ever met, I feel like you put this stuff to the best possible use."
 				},
 			},
-			EurydiceGift04 =
-			{
+			EurydiceGift04 = {
 				PlayOnce = true,
 				RequiredTextLines = { "EurydiceGift03" },
 				{
@@ -7156,8 +6804,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "And I, in turn, shall go through your incredible cooking awful fast, given the opportunity."
 				},
 			},
-			EurydiceGift05 =
-			{
+			EurydiceGift05 = {
 				PlayOnce = true,
 				RequiredTextLines = { "EurydiceGift04" },
 				{
@@ -7177,8 +6824,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			EurydiceGift06 =
-			{
+			EurydiceGift06 = {
 				PlayOnce = true,
 				RequiredTextLines = { "EurydiceGift05" },
 				{
@@ -7197,8 +6843,7 @@ mod.NPCData = mod.NPCData or {
 					"{#DialogueItalicFormat}Hah{#PreviousFormat}, no! I don't think I can get into more trouble at the moment. May this make your dishes that much more delectable!"
 				},
 			},
-			EurydiceGift07 =
-			{
+			EurydiceGift07 = {
 				PlayOnce = true,
 				RequiredTextLines = { "EurydiceGift06" },
 				{
@@ -7226,8 +6871,7 @@ mod.NPCData = mod.NPCData or {
 					"Absolutely! Least I could do for all your friendship and support. Always happy to hear your voice when I'm out here."
 				},
 			},
-			EurydiceGift08 =
-			{
+			EurydiceGift08 = {
 				PlayOnce = true,
 				RequiredTextLines = { "EurydiceGift07" },
 				{
@@ -7257,8 +6901,7 @@ mod.NPCData = mod.NPCData or {
 
 		},
 
-		GiftGivenVoiceLines =
-		{
+		GiftGivenVoiceLines = {
 			BreakIfPlayed = true,
 			PreLineWait = 1.0,
 			PlayFromTarget = true,
@@ -7268,10 +6911,8 @@ mod.NPCData = mod.NPCData or {
 		},
 
 		CharacterInteractions = {
-			Rescue =
-			{
-				VoiceLines =
-				{
+			Rescue = {
+				VoiceLines = {
 
 					{
 						RandomRemaining = true,
@@ -7369,8 +7010,7 @@ mod.NPCData = mod.NPCData or {
 		},
 
 		RepulseOnMeleeInvulnerableHit = 250,
-		OnHitVoiceLines =
-		{
+		OnHitVoiceLines = {
 			{
 				RandomRemaining = true,
 				BreakIfPlayed = true,
@@ -7436,13 +7076,11 @@ mod.NPCData = mod.NPCData or {
 			RequiredMinCompletedRuns = 1,
 		},
 
-		SpawnUnthreadedEvents =
-		{
+		SpawnUnthreadedEvents = {
 			{
 				-- Standup after question completion
 				FunctionName = "GenericPresentation",
-				Args =
-				{
+				Args = {
 					SetAnimation = "PatroclusIdleStanding",
 					OverwriteSourceKeys =
 					{
@@ -7451,17 +7089,14 @@ mod.NPCData = mod.NPCData or {
 					},
 					ActivateIds = { 563040 },
 				},
-				GameStateRequirements =
-				{
+				GameStateRequirements = {
 					RequiredTextLines = { "MyrmidonReunionQuestComplete" },
 				},
 			},
 		},
 
-		InteractTextLineSets =
-		{
-			PatroclusFirstMeeting =
-			{
+		InteractTextLineSets = {
+			PatroclusFirstMeeting = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
@@ -7499,14 +7134,12 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 			-- alt below
-			PatroclusMeeting02 =
-			{
+			PatroclusMeeting02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusFirstMeeting" },
 				RequiredFalseTextLines = { "PatroclusAboutAchilles01B", "PatroclusMeeting02B" },
-				RequiredCodexEntry =
-				{
+				RequiredCodexEntry = {
 					EntryName = "NPC_Patroclus_01",
 					EntryIndex = 1,
 				},
@@ -7534,8 +7167,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusMeeting02B =
-			{
+			PatroclusMeeting02B = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusAboutBracer01C", "PatroclusAboutBracer01D" },
@@ -7564,8 +7196,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusMeeting03 =
-			{
+			PatroclusMeeting03 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B" },
@@ -7598,8 +7229,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusMeeting04 =
-			{
+			PatroclusMeeting04 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusAboutAchilles01B", "PatroclusAboutAchilles01C_01", "PatroclusAboutAchilles01C_02" },
@@ -7617,8 +7247,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusMeeting05 =
-			{
+			PatroclusMeeting05 = {
 				SuperPriority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -7652,8 +7281,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 			-- alt below
-			PatroclusMeeting06 =
-			{
+			PatroclusMeeting06 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusMeeting05" },
@@ -7687,8 +7315,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusMeeting06B =
-			{
+			PatroclusMeeting06B = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusAboutAchilles03A", "PatroclusAboutAchilles03B" },
@@ -7723,8 +7350,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 			-- alt below
-			PatroclusMeeting07 =
-			{
+			PatroclusMeeting07 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting06", "PatroclusMeeting06B" },
@@ -7758,8 +7384,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusMeeting07B =
-			{
+			PatroclusMeeting07B = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "MyrmidonReunionQuestComplete" },
@@ -7792,8 +7417,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusMeeting08 =
-			{
+			PatroclusMeeting08 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting06", "PatroclusMeeting06B" },
@@ -7827,8 +7451,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusMeeting09 =
-			{
+			PatroclusMeeting09 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting06", "PatroclusMeeting06B" },
@@ -7861,8 +7484,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusMeeting10 =
-			{
+			PatroclusMeeting10 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusAboutAchilles01A", "PatroclusAboutAchilles01B", "PatroclusAboutAchilles01C_01", "PatroclusAboutAchilles01C_02" },
@@ -7891,8 +7513,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusMeeting11 =
-			{
+			PatroclusMeeting11 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift04" },
@@ -7924,16 +7545,14 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- if you know patroclus' name but don't know his connection to achilles
-			PatroclusAboutBracer01A =
-			{
+			PatroclusAboutBracer01A = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusFirstMeeting" },
 				RequiredFalseTextLines = { "AchillesGift08", "AchillesGift06_A", "PatroclusAboutBracer01B", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D", "PatroclusAboutBracer01E", "PatroclusAboutAchilles02", "MyrmidonReunionQuestComplete" },
 				RequiredTrait = "DirectionalArmorTrait",
-				RequiredCodexEntry =
-				{
+				RequiredCodexEntry = {
 					EntryName = "NPC_Patroclus_01",
 					EntryIndex = 1,
 				},
@@ -7967,15 +7586,13 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 			-- if you know patroclus' name and know his connection to achilles
-			PatroclusAboutBracer01B =
-			{
+			PatroclusAboutBracer01B = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusFirstMeeting", "AchillesGift08", "AchillesGift06_A" },
 				RequiredFalseTextLines = { "PatroclusAboutAchilles01B", "PatroclusAboutBracer01A", "PatroclusAboutBracer01C", "PatroclusAboutBracer01D", "PatroclusAboutBracer01E", "MyrmidonReunionQuestComplete" },
 				RequiredTrait = "DirectionalArmorTrait",
-				RequiredCodexEntry =
-				{
+				RequiredCodexEntry = {
 					EntryName = "NPC_Patroclus_01",
 					EntryIndex = 1,
 				},
@@ -8009,8 +7626,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 			-- if you don't know patroclus' name and don't know his connection to achilles
-			PatroclusAboutBracer01C =
-			{
+			PatroclusAboutBracer01C = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
@@ -8049,8 +7665,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 			-- if you don't know patroclus' name but know his connection to achilles
-			PatroclusAboutBracer01D =
-			{
+			PatroclusAboutBracer01D = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
@@ -8089,8 +7704,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 			-- if you know patroclus' name, and have discussed achilles already
-			PatroclusAboutBracer01E =
-			{
+			PatroclusAboutBracer01E = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -8126,8 +7740,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutAchillesAspect01 =
-			{
+			PatroclusAboutAchillesAspect01 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -8163,8 +7776,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutAchillesAspect02 =
-			{
+			PatroclusAboutAchillesAspect02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusAboutAchillesAspect01" },
@@ -8200,8 +7812,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- if you don't know his connection to achilles already
-			PatroclusAboutAchilles01A =
-			{
+			PatroclusAboutAchilles01A = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusMeeting06" },
@@ -8261,8 +7872,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 			-- if you do know his connection to achilles
-			PatroclusAboutAchilles01B =
-			{
+			PatroclusAboutAchilles01B = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -8316,8 +7926,7 @@ mod.NPCData = mod.NPCData or {
 
 			-- if you do know his connection to achilles, specifically via the bracer conv with patroclus
 			-- there is a near-copy of this below due to very similar but mutually exclusive requirements
-			PatroclusAboutAchilles01C_01 =
-			{
+			PatroclusAboutAchilles01C_01 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -8373,8 +7982,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 			-- very similar to the above but with a variant of the requirements
-			PatroclusAboutAchilles01C_02 =
-			{
+			PatroclusAboutAchilles01C_02 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -8429,8 +8037,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 
-			PatroclusAboutAchilles02 =
-			{
+			PatroclusAboutAchilles02 = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -8473,8 +8080,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- alt below
-			PatroclusAboutAchilles03A =
-			{
+			PatroclusAboutAchilles03A = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -8519,8 +8125,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutAchilles03B =
-			{
+			PatroclusAboutAchilles03B = {
 				Priority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -8566,8 +8171,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 
-			PatroclusAboutAchilles04 =
-			{
+			PatroclusAboutAchilles04 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "AchillesAboutPatroclus04" },
@@ -8614,8 +8218,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutAchilles05 =
-			{
+			PatroclusAboutAchilles05 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "AchillesAboutPatroclusBackstory01", "PatroclusGift04" },
@@ -8663,8 +8266,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutAchilles06 =
-			{
+			PatroclusAboutAchilles06 = {
 				SuperPriority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -8699,8 +8301,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutMyrmidonReunionQuest01 =
-			{
+			PatroclusAboutMyrmidonReunionQuest01 = {
 				SuperPriority = true,
 				PlayOnce = true,
 				UseableOffSource = true,
@@ -8752,8 +8353,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 
-			PatroclusWithAchilles01 =
-			{
+			PatroclusWithAchilles01 = {
 				PlayOnce = true,
 				SuperPriority = true,
 				UseableOffSource = true,
@@ -8797,8 +8397,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusWithAchilles02 =
-			{
+			PatroclusWithAchilles02 = {
 				PlayOnce = true,
 				SuperPriority = true,
 				UseableOffSource = true,
@@ -8841,8 +8440,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusWithAchilles03 =
-			{
+			PatroclusWithAchilles03 = {
 				PlayOnce = true,
 				SuperPriority = true,
 				UseableOffSource = true,
@@ -8887,8 +8485,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 
-			PatroclusAfterMyrmidonReunionQuest01 =
-			{
+			PatroclusAfterMyrmidonReunionQuest01 = {
 				PlayOnce = true,
 				SuperPriority = true,
 				UseableOffSource = true,
@@ -8923,8 +8520,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAfterMyrmidonReunionQuest02 =
-			{
+			PatroclusAfterMyrmidonReunionQuest02 = {
 				PlayOnce = true,
 				SuperPriority = true,
 				UseableOffSource = true,
@@ -8959,8 +8555,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 
-			PatroclusPostEnding01 =
-			{
+			PatroclusPostEnding01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusAfterMyrmidonReunionQuest01", "Ending01" },
@@ -8994,8 +8589,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 
-			PatroclusPostEpilogue01 =
-			{
+			PatroclusPostEpilogue01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "OlympianReunionQuestComplete" },
@@ -9030,8 +8624,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 
-			PatroclusAboutKeepsake01 =
-			{
+			PatroclusAboutKeepsake01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift01" },
@@ -9060,8 +8653,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutKeepsake02 =
-			{
+			PatroclusAboutKeepsake02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusAboutKeepsake01" },
@@ -9089,8 +8681,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutWar01 =
-			{
+			PatroclusAboutWar01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusAboutAchilles04" },
@@ -9118,8 +8709,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutYoungAchilles01 =
-			{
+			PatroclusAboutYoungAchilles01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusAboutMyrmidonReunionQuest01" },
@@ -9148,8 +8738,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutTheseus01 =
-			{
+			PatroclusAboutTheseus01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift03" },
@@ -9185,8 +8774,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusAboutTheseus02 =
-			{
+			PatroclusAboutTheseus02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift01", "TheseusExtremeMeasures01" },
@@ -9218,8 +8806,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusAboutTheseus03 =
-			{
+			PatroclusAboutTheseus03 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusAboutTheseus01", "PatroclusAboutMinotaur01" },
@@ -9249,8 +8836,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutMinotaur01 =
-			{
+			PatroclusAboutMinotaur01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift03" },
@@ -9287,8 +8873,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
 
-			PatroclusAboutHeroes01 =
-			{
+			PatroclusAboutHeroes01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusAboutAchilles01A", "PatroclusAboutAchilles01B", "PatroclusAboutAchilles01C_01", "PatroclusAboutAchilles01C_02" },
@@ -9318,8 +8903,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutGods01 =
-			{
+			PatroclusAboutGods01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift06" },
@@ -9354,8 +8938,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
 			-- alt below
-			PatroclusAboutLove01_A =
-			{
+			PatroclusAboutLove01_A = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
@@ -9391,8 +8974,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutLove01_B =
-			{
+			PatroclusAboutLove01_B = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
@@ -9429,8 +9011,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
 
-			PatroclusAboutTrinkets01 =
-			{
+			PatroclusAboutTrinkets01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift05" },
@@ -9463,8 +9044,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutFishing01 =
-			{
+			PatroclusAboutFishing01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusFirstMeeting", "PatroclusGift04" },
@@ -9499,8 +9079,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMuttering,
 			},
-			PatroclusAboutLegendary01 =
-			{
+			PatroclusAboutLegendary01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "AchillesGift07_A" },
@@ -9547,8 +9126,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusLowHealth01 =
-			{
+			PatroclusLowHealth01 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusFirstMeeting", "PatroclusGift01" },
@@ -9568,8 +9146,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusLowHealth02 =
-			{
+			PatroclusLowHealth02 = {
 				PlayOnce = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusFirstMeeting", "PatroclusGift01" },
@@ -9591,10 +9168,8 @@ mod.NPCData = mod.NPCData or {
 
 		},
 
-		RepeatableTextLineSets =
-		{
-			PatroclusChat01 =
-			{
+		RepeatableTextLineSets = {
+			PatroclusChat01 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -9612,8 +9187,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat02 =
-			{
+			PatroclusChat02 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -9631,8 +9205,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusChat03 =
-			{
+			PatroclusChat03 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
@@ -9649,8 +9222,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat04 =
-			{
+			PatroclusChat04 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				{
@@ -9665,8 +9237,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat05 =
-			{
+			PatroclusChat05 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -9684,8 +9255,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusChat06 =
-			{
+			PatroclusChat06 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				{
@@ -9700,8 +9270,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat07 =
-			{
+			PatroclusChat07 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				{
@@ -9716,8 +9285,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat08 =
-			{
+			PatroclusChat08 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -9735,8 +9303,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusChat09 =
-			{
+			PatroclusChat09 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -9754,8 +9321,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusChat10 =
-			{
+			PatroclusChat10 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -9773,8 +9339,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusChat11 =
-			{
+			PatroclusChat11 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				{
@@ -9789,8 +9354,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat12 =
-			{
+			PatroclusChat12 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -9808,8 +9372,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat13 =
-			{
+			PatroclusChat13 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -9826,8 +9389,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusChat14 =
-			{
+			PatroclusChat14 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -9845,8 +9407,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusChat15 =
-			{
+			PatroclusChat15 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				{
@@ -9861,8 +9422,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat16 =
-			{
+			PatroclusChat16 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -9880,8 +9440,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusChat17 =
-			{
+			PatroclusChat17 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				AreIdsNotAlive = { 563036 },
@@ -9897,8 +9456,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat18 =
-			{
+			PatroclusChat18 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -9916,8 +9474,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusChat19 =
-			{
+			PatroclusChat19 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				AreIdsNotAlive = { 563036 },
@@ -9934,8 +9491,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
 			-- relationship improved
-			PatroclusChat19 =
-			{
+			PatroclusChat19 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift03" },
@@ -9954,8 +9510,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat20 =
-			{
+			PatroclusChat20 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift04", "PatroclusAboutAchilles02" },
 				AreIdsNotAlive = { 563036 },
@@ -9971,8 +9526,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat21 =
-			{
+			PatroclusChat21 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift03" },
 				AreIdsNotAlive = { 563036 },
@@ -9988,8 +9542,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat22 =
-			{
+			PatroclusChat22 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift02" },
 				{
@@ -10004,8 +9557,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat23 =
-			{
+			PatroclusChat23 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusAboutMyrmidonReunionQuest01" },
 				AreIdsNotAlive = { 563036 },
@@ -10022,8 +9574,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
 			-- additional chat
-			PatroclusChat24 =
-			{
+			PatroclusChat24 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				AreIdsNotAlive = { 563036 },
@@ -10039,8 +9590,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat25 =
-			{
+			PatroclusChat25 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -10058,8 +9608,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat26 =
-			{
+			PatroclusChat26 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -10077,8 +9626,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat27 =
-			{
+			PatroclusChat27 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				AreIdsNotAlive = { 563036 },
@@ -10094,8 +9642,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat27 =
-			{
+			PatroclusChat27 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				{
@@ -10110,8 +9657,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat28 =
-			{
+			PatroclusChat28 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting05", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles06" },
@@ -10129,8 +9675,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat29 =
-			{
+			PatroclusChat29 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting05", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles06" },
 				{
@@ -10145,8 +9690,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat30 =
-			{
+			PatroclusChat30 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting05", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles06" },
 				{
@@ -10161,8 +9705,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat31 =
-			{
+			PatroclusChat31 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				{
@@ -10177,8 +9720,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat32 =
-			{
+			PatroclusChat32 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -10196,8 +9738,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat33 =
-			{
+			PatroclusChat33 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -10215,8 +9756,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat34 =
-			{
+			PatroclusChat34 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				{
@@ -10231,8 +9771,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat35 =
-			{
+			PatroclusChat35 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusGift04" },
 				{
@@ -10247,8 +9786,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat36 =
-			{
+			PatroclusChat36 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusAboutTheseus01" },
 				RequiredSeenRooms = { "C_Boss01" },
@@ -10264,8 +9802,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat37 =
-			{
+			PatroclusChat37 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusAboutTheseus01" },
 				RequiredSeenRooms = { "C_Boss01" },
@@ -10281,8 +9818,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat38 =
-			{
+			PatroclusChat38 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift04" },
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -10299,8 +9835,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat39 =
-			{
+			PatroclusChat39 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				RequiredSeenRooms = { "C_Boss01" },
@@ -10316,8 +9851,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat40 =
-			{
+			PatroclusChat40 = {
 				-- Priority = true,
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
@@ -10336,8 +9870,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat41 =
-			{
+			PatroclusChat41 = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				RequiredSeenRooms = { "C_Boss01" },
@@ -10355,8 +9888,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- lines that play if you haven't revealed
-			PatroclusStandoffish01 =
-			{
+			PatroclusStandoffish01 = {
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
 				GiftableOffSource = true,
@@ -10375,8 +9907,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusStandoffish02 =
-			{
+			PatroclusStandoffish02 = {
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
 				GiftableOffSource = true,
@@ -10395,8 +9926,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusStandoffish03 =
-			{
+			PatroclusStandoffish03 = {
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
 				GiftableOffSource = true,
@@ -10415,8 +9945,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusStandoffish04 =
-			{
+			PatroclusStandoffish04 = {
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
 				GiftableOffSource = true,
@@ -10435,8 +9964,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusStandoffish05 =
-			{
+			PatroclusStandoffish05 = {
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
 				GiftableOffSource = true,
@@ -10455,8 +9983,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusStandoffish06 =
-			{
+			PatroclusStandoffish06 = {
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
 				GiftableOffSource = true,
@@ -10475,8 +10002,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusStandoffish07 =
-			{
+			PatroclusStandoffish07 = {
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
 				GiftableOffSource = true,
@@ -10495,8 +10021,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusStandoffish08 =
-			{
+			PatroclusStandoffish08 = {
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
 				GiftableOffSource = true,
@@ -10515,8 +10040,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusStandoffish09 =
-			{
+			PatroclusStandoffish09 = {
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
 				GiftableOffSource = true,
@@ -10535,8 +10059,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusStandoffish10 =
-			{
+			PatroclusStandoffish10 = {
 				UseableOffSource = true,
 				InitialGiftableOffSource = true,
 				GiftableOffSource = true,
@@ -10556,8 +10079,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
 
-			PatroclusReunionChat01 =
-			{
+			PatroclusReunionChat01 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				-- IsIdAlive = 563036,
@@ -10573,8 +10095,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat02 =
-			{
+			PatroclusReunionChat02 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				IsIdAlive = 563036,
@@ -10590,8 +10111,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat03 =
-			{
+			PatroclusReunionChat03 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				-- IsIdAlive = 563036,
@@ -10607,8 +10127,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat04 =
-			{
+			PatroclusReunionChat04 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				-- IsIdAlive = 563036,
@@ -10625,8 +10144,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
 			-- renamed, was 5
-			PatroclusReunionChat05A =
-			{
+			PatroclusReunionChat05A = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				IsIdAlive = 563036,
@@ -10642,8 +10160,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat05 =
-			{
+			PatroclusReunionChat05 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				IsIdAlive = 563036,
@@ -10659,8 +10176,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat06 =
-			{
+			PatroclusReunionChat06 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				IsIdAlive = 563036,
@@ -10676,8 +10192,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat07 =
-			{
+			PatroclusReunionChat07 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				IsIdAlive = 563036,
@@ -10693,8 +10208,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat08 =
-			{
+			PatroclusReunionChat08 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				-- IsIdAlive = 563036,
@@ -10710,8 +10224,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat09 =
-			{
+			PatroclusReunionChat09 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusAboutTheseus01" },
@@ -10728,8 +10241,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat10 =
-			{
+			PatroclusReunionChat10 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift06" },
 				-- IsIdAlive = 563036,
@@ -10745,8 +10257,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat11 =
-			{
+			PatroclusReunionChat11 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				IsIdAlive = 563036,
@@ -10762,8 +10273,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat12 =
-			{
+			PatroclusReunionChat12 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				IsIdAlive = 563036,
@@ -10779,8 +10289,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat13 =
-			{
+			PatroclusReunionChat13 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				-- IsIdAlive = 563036,
@@ -10796,8 +10305,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat14 =
-			{
+			PatroclusReunionChat14 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift05" },
 				-- IsIdAlive = 563036,
@@ -10814,8 +10322,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
 			-- renamed, was 15
-			PatroclusReunionChat15A =
-			{
+			PatroclusReunionChat15A = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift05" },
 				-- IsIdAlive = 563036,
@@ -10832,8 +10339,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
 			-- renamed, was 15
-			PatroclusReunionChat15B =
-			{
+			PatroclusReunionChat15B = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift05" },
 				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusAboutTheseus01" },
@@ -10850,8 +10356,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat15 =
-			{
+			PatroclusReunionChat15 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusGift07_A" },
 				RequiredAnyTextLines = { "PatroclusMeeting03", "PatroclusAboutTheseus01" },
@@ -10868,8 +10373,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat16 =
-			{
+			PatroclusReunionChat16 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				-- IsIdAlive = 563036,
@@ -10886,8 +10390,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
 			-- renamed, was 17
-			PatroclusReunionChat17A =
-			{
+			PatroclusReunionChat17A = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				-- IsIdAlive = 563036,
@@ -10903,8 +10406,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusReunionChat17 =
-			{
+			PatroclusReunionChat17 = {
 				UseableOffSource = true,
 				RequiredTextLines = { "PatroclusWithAchilles01" },
 				-- IsIdAlive = 563036,
@@ -10922,10 +10424,8 @@ mod.NPCData = mod.NPCData or {
 			},
 		},
 
-		GiftTextLineSets =
-		{
-			PatroclusGift01 =
-			{
+		GiftTextLineSets = {
+			PatroclusGift01 = {
 				PlayOnce = true,
 				{
 					Cue = "/VO/ZagreusField_1731",
@@ -10944,8 +10444,7 @@ mod.NPCData = mod.NPCData or {
 					"{#DialogueItalicFormat}Ahh{#PreviousFormat}, so you are taking pity on me, then? Well, I've no pride like many others here, so I shall take it. Though, let's make it a fair exchange, shall we?"
 				},
 			},
-			PatroclusGift02 =
-			{
+			PatroclusGift02 = {
 				PlayOnce = true,
 				RequiredTextLines = { "PatroclusGift01" },
 				{
@@ -10964,8 +10463,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "If this eases your burden even for a little while, then it's in good hands, as far as I'm concerned."
 				},
 			},
-			PatroclusGift03 =
-			{
+			PatroclusGift03 = {
 				PlayOnce = true,
 				RequiredTextLines = { "PatroclusGift02" },
 				{
@@ -10985,8 +10483,7 @@ mod.NPCData = mod.NPCData or {
 					"It's nothing. Thank you for not trying to slay me where I stand and boast about it, like seemingly everyone else around here."
 				},
 			},
-			PatroclusGift04 =
-			{
+			PatroclusGift04 = {
 				PlayOnce = true,
 				RequiredTextLines = { "PatroclusGift03" },
 				{
@@ -11005,8 +10502,7 @@ mod.NPCData = mod.NPCData or {
 					"I'd say you earned it more than anybody else I've seen around here, lately. Though I don't make the rules."
 				},
 			},
-			PatroclusGift05 =
-			{
+			PatroclusGift05 = {
 				PlayOnce = true,
 				RequiredTextLines = { "PatroclusGift04" },
 				{
@@ -11026,8 +10522,7 @@ mod.NPCData = mod.NPCData or {
 					"It's not a matter of owe, sir. Please open your mind to the possibility, nay the fact, that there are those who care about your wellbeing."
 				},
 			},
-			PatroclusGift06 =
-			{
+			PatroclusGift06 = {
 				PlayOnce = true,
 				RequiredTextLines = { "PatroclusGift05" },
 				{
@@ -11046,8 +10541,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "That's both very dejected and very astute of you to say. Take care of yourself, will you?"
 				},
 			},
-			PatroclusGift07_A =
-			{
+			PatroclusGift07_A = {
 				PlayOnce = true,
 				RequiredTextLines = { "PatroclusGift06" },
 				{
@@ -11083,8 +10577,7 @@ mod.NPCData = mod.NPCData or {
 					"Well... perhaps I'll try. You're not so bad, you know that, stranger? Careful with that, or you'll undermine the ruthless reputation that you have."
 				},
 			},
-			PatroclusGift08_A =
-			{
+			PatroclusGift08_A = {
 				PlayOnce = true,
 				RequiredTextLines = { "PatroclusGift07_A" },
 				{
@@ -11137,8 +10630,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- below: old conversations from before the Welcome to Hell update
-			PatroclusGift07 =
-			{
+			PatroclusGift07 = {
 				Skip = true,
 				PlayOnce = true,
 				RequiredTextLines = { "PatroclusGift06" },
@@ -11157,8 +10649,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You don't attack me indiscriminately, I give you Nectar. I don't think I'm being over-generous!"
 				},
 			},
-			PatroclusGift08 =
-			{
+			PatroclusGift08 = {
 				Skip = true,
 				PlayOnce = true,
 				RequiredTextLines = { "PatroclusGift07" },
@@ -11180,8 +10671,7 @@ mod.NPCData = mod.NPCData or {
 			},
 		},
 
-		GiftGivenVoiceLines =
-		{
+		GiftGivenVoiceLines = {
 			BreakIfPlayed = true,
 			PreLineWait = 1.0,
 			PlayFromTarget = true,
@@ -11190,12 +10680,9 @@ mod.NPCData = mod.NPCData or {
 			{ Cue = "/VO/ZagreusField_1732" },
 		},
 
-		CharacterInteractions =
-		{
-			Rescue =
-			{
-				VoiceLines =
-				{
+		CharacterInteractions = {
+			Rescue = {
+				VoiceLines = {
 					{
 						RandomRemaining = true,
 						PreLineWait = 0.65,
@@ -11287,8 +10774,7 @@ mod.NPCData = mod.NPCData or {
 		},
 
 		RepulseOnMeleeInvulnerableHit = 250,
-		OnHitVoiceLines =
-		{
+		OnHitVoiceLines = {
 			{
 				RandomRemaining = true,
 				BreakIfPlayed = true,
@@ -11376,13 +10862,10 @@ mod.NPCData = mod.NPCData or {
 			"Cerberus_HappyGreeting_Bink",
 		},
 
-		BossPresentationIntroTextLineSets =
-		{
-			CerberusStyxMeeting01 =
-			{
+		BossPresentationIntroTextLineSets = {
+			CerberusStyxMeeting01 = {
 				PlayOnce = true,
-				EndVoiceLines =
-				{
+				EndVoiceLines = {
 					PreLineWait = 0.6,
 					UsePlayerSource = true,
 					TriggerCooldowns = { "ZagreusForkingPathVoiceLinesPlayed" },
@@ -11429,7 +10912,6 @@ mod.NPCData = mod.NPCData or {
 				},
 				{
 					Cue = "/VO/Storyteller_0243",
-					-- TODO
 					PreLineFunctionName = "ResumeStyxMusic",
 					IsNarration = true,
 					PreLineWait = 1.0,
@@ -11440,16 +10922,13 @@ mod.NPCData = mod.NPCData or {
 			},
 		},
 
-		InteractTextLineSets =
-		{
+		InteractTextLineSets = {
 			-- key item delivered / boss door unlock events
-			CerberusBossDoorUnlock01 =
-			{
+			CerberusBossDoorUnlock01 = {
 				PlayOnce = true,
 				UseableOff = true,
 				RequiredRoomThisRun = "D_Reprieve01",
 				Priority = true,
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/ZagreusField_2066",
 					Portrait = "Portrait_Zag_Default_01",
@@ -11486,13 +10965,11 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			CerberusBossDoorUnlockRepeatable01 =
-			{
+			CerberusBossDoorUnlockRepeatable01 = {
 				PlayOnce = true,
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0245",
 					PreLineWait = 0.75,
@@ -11520,12 +10997,10 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}Cerberus again accepts the sack."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable01_Alt =
-			{
+			CerberusBossDoorUnlockRepeatable01_Alt = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02", "CerberusBossDoorUnlockRepeatable03", "CerberusBossDoorUnlockRepeatable04", "CerberusBossDoorUnlockRepeatable05", "CerberusBossDoorUnlockRepeatable06", "CerberusBossDoorUnlockRepeatable07" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0245",
 					PreLineWait = 0.75,
@@ -11553,13 +11028,11 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}Cerberus again accepts the sack."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable02 =
-			{
+			CerberusBossDoorUnlockRepeatable02 = {
 				PlayOnce = true,
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0253",
 					PreLineWait = 0.75,
@@ -11587,12 +11060,10 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}Gigantic Cerberus accepts the Prince's foul offering."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable02_Alt =
-			{
+			CerberusBossDoorUnlockRepeatable02_Alt = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02", "CerberusBossDoorUnlockRepeatable03", "CerberusBossDoorUnlockRepeatable04", "CerberusBossDoorUnlockRepeatable05", "CerberusBossDoorUnlockRepeatable06", "CerberusBossDoorUnlockRepeatable07" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0253",
 					PreLineWait = 0.75,
@@ -11620,12 +11091,10 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}Gigantic Cerberus accepts the Prince's foul offering."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable03 =
-			{
+			CerberusBossDoorUnlockRepeatable03 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0254",
 					PreLineWait = 0.75,
@@ -11645,7 +11114,6 @@ mod.NPCData = mod.NPCData or {
 						FullFadeTime = 1.8,
 						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
 						EndUnlockTextTable = { "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus_Alt1", "ClearedCerberus", "ClearedCerberus_Alt1", "ClearedCerberus_Alt2", "ClearedCerberus_A", "ClearedCerberus_B", "ClearedCerberus_C", "ClearedCerberus_D", "ClearedCerberus_E", "ClearedCerberus_F", "ClearedCerberus_G", "ClearedCerberus_H", "ClearedCerberus_I", "ClearedCerberus_J", "ClearedCerberus_K", "ClearedCerberus_L", "ClearedCerberus_M", "ClearedCerberus_N", "ClearedCerberus_O", "ClearedCerberus_P", "ClearedCerberus_Q" },
-						EndUnlockTextTable = { "ClearedCerberus_Alt2" },
 						UseAdditionalFootstepSounds = true,
 						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
 						MoveSound = "/Leftovers/SFX/BallImpact",
@@ -11654,12 +11122,10 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}The fearsome Cerberus accepts the Satyr sack."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable04 =
-			{
+			CerberusBossDoorUnlockRepeatable04 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0255",
 					PreLineWait = 0.75,
@@ -11687,12 +11153,10 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}The Prince persuades the Underworld's ferocious guardian to move aside."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable05 =
-			{
+			CerberusBossDoorUnlockRepeatable05 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0256",
 					PreLineWait = 0.75,
@@ -11720,12 +11184,10 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}The Prince compels the multi-headed hound to let him pass."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable06 =
-			{
+			CerberusBossDoorUnlockRepeatable06 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0257",
 					PreLineWait = 0.75,
@@ -11753,12 +11215,10 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}Thus has the Prince again persuaded fearsome Cerberus to get out of his way."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable07 =
-			{
+			CerberusBossDoorUnlockRepeatable07 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0258",
 					PreLineWait = 0.75,
@@ -11786,12 +11246,10 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}Joyfully the hound of hell accepts another Satyr sack."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable08 =
-			{
+			CerberusBossDoorUnlockRepeatable08 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0396",
 					PreLineWait = 0.75,
@@ -11820,12 +11278,10 @@ mod.NPCData = mod.NPCData or {
 					"{#DialogueItalicFormat}The monster's solitary weakness, Satyr sacks, prove terribly effective, once again."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable09 =
-			{
+			CerberusBossDoorUnlockRepeatable09 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0397",
 					PreLineWait = 0.75,
@@ -11854,12 +11310,10 @@ mod.NPCData = mod.NPCData or {
 					"{#DialogueItalicFormat}Fang-bearing Cerberus directs all three of his attentions toward the Satyr sack."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable10 =
-			{
+			CerberusBossDoorUnlockRepeatable10 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0398",
 					PreLineWait = 0.75,
@@ -11888,12 +11342,10 @@ mod.NPCData = mod.NPCData or {
 					"{#DialogueItalicFormat}The guardian of hell itself decides the time has come for a short break and snack."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable11 =
-			{
+			CerberusBossDoorUnlockRepeatable11 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0399",
 					PreLineWait = 0.75,
@@ -11921,12 +11373,10 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}Prince Zagreus once more offers to Cerberus one of his favored sacks."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable12 =
-			{
+			CerberusBossDoorUnlockRepeatable12 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0400",
 					PreLineWait = 0.75,
@@ -11954,12 +11404,10 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}Cerberus moves for no one, but for Satyr sacks, he can make an exception."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable13 =
-			{
+			CerberusBossDoorUnlockRepeatable13 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0401",
 					PreLineWait = 0.75,
@@ -11987,12 +11435,10 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}Vigilant Cerberus decides to look the other way, this once."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable14 =
-			{
+			CerberusBossDoorUnlockRepeatable14 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0402",
 					PreLineWait = 0.75,
@@ -12020,12 +11466,10 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}Each violent countenance of Cerberus agrees the Satyr sack must be destroyed."
 				},
 			},
-			CerberusBossDoorUnlockRepeatable15 =
-			{
+			CerberusBossDoorUnlockRepeatable15 = {
 				UseableOff = true,
 				RequiredTextLines = { "CerberusBossDoorUnlock01", "CerberusBossDoorUnlockRepeatable01", "CerberusBossDoorUnlockRepeatable02" },
 				RequiredRoomThisRun = "D_Reprieve01",
-				-- PreEventFunctionName = "PetCerberus",
 				{
 					Cue = "/VO/Storyteller_0403",
 					PreLineWait = 0.75,
@@ -12059,8 +11503,7 @@ mod.NPCData = mod.NPCData or {
 		RepulseOnMeleeInvulnerableHit = 250,
 		InvincibubbleScale = 2.5,
 		InvulnerableHitSound = "/VO/CerberusBarks",
-		OnHitVoiceLines =
-		{
+		OnHitVoiceLines = {
 			RandomRemaining = true,
 			BreakIfPlayed = true,
 			PreLineWait = 0.35,
@@ -12087,6 +11530,1870 @@ mod.NPCData = mod.NPCData or {
 			{ Cue = "/VO/ZagreusField_2165" },
 			-- I ought to be ashamed of myself.
 			{ Cue = "/VO/ZagreusField_2166" },
+		},
+	},
+
+	-- Persephone, Id = 559274
+	-- Alt Spawn Points: { 555708 [garden], 391561 [with hades], 555710 [with cerberus] }
+	ModsNikkelMHadesBiomes_NPC_Persephone_01 = {
+		InheritFrom = { "NPC_Neutral" },
+
+		UseText = "UseTalkToFemaleGhost",
+		Portrait = "Portrait_Persephone_Default_01",
+		AnimOffsetZ = 200,
+		StartTextLinesAngleTowardHero = true,
+		Groups = { "NPCs" },
+
+		Binks = {
+			"NPC_PersephoneGardenIdleHip_Bink",
+			"NPC_PersephoneGardenGreeting_Bink",
+			"NPC_PersephoneGardenWalk_Bink",
+			"NPC_PersephoneGardenWalkStop_Bink",
+			"NPC_PersephoneGardenDismiss_Bink",
+			"NPC_PersephoneGardenVulnerable_Bink",
+		},
+
+		InteractTextLineSets = {
+			PersephoneFirstMeeting = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredRoom = "E_Story01",
+				EndVoiceLines = {
+					PreLineWait = 1.8,
+					Queue = "Interrupt",
+					NoTarget = true,
+					-- However long... it takes...
+					{ Cue = "/VO/ZagreusField_3611" },
+					-- Urgh... can't... hold... on...
+					{ Cue = "/VO/ZagreusField_4646", PreLineWait = 2.5 },
+				},
+				{
+					Cue = "/VO/Persephone_0021",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { Mom = true },
+					Speaker = "NPC_Persephone_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text =
+					"Pray, who might you be, wandering all the way out here? You're trespassing on private property, you know. Speak up!"
+				},
+				{
+					Cue = "/VO/ZagreusField_3602",
+
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Erm{#PreviousFormat}, you must be... Persephone. My name is Zagreus, and... I think I might be your son."
+				},
+
+				{
+					Cue = "/VO/Persephone_0022",
+
+					MusicActiveStems = { "Percussion", "Room" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					PreLineWait = 0.15,
+					Emote = "PortraitEmoteSurprise",
+					Speaker = "NPC_Persephone_Unnamed_01",
+					SpeakerLabelOffsetY = 18,
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					PreLineAnim = "PersephoneGarden_Dismiss",
+					Text =
+					"{#DialogueItalicFormat}What{#PreviousFormat}?! How dare...! Get out of here! Get out, or I shall make you!! {#DialogueItalicFormat}Out {#PreviousFormat}with you!"
+				},
+				{
+					Cue = "/VO/ZagreusField_3603",
+
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Emote = "PortraitEmoteFiredUp",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"No!! So then you {#DialogueItalicFormat}are {#PreviousFormat}her. I, I don't care if you hate me, but I'm not leaving until I get some answers! I never even knew you existed. Why did you leave me?"
+				},
+				{
+					Cue = "/VO/Persephone_0023",
+
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					Portrait = "Portrait_Persephone_Joyful_01",
+					Emote = "PortraitEmoteSurprise",
+					PreLineAnim = "PersephoneGarden_Shocked",
+					Text =
+					"You died! You, you {#DialogueItalicFormat}died{#PreviousFormat}...! Those burning feet, they... sputtered out, when you were born. But... now you're standing here before me. How...?"
+				},
+				{
+					Cue = "/VO/ZagreusField_3604",
+
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I died? I died... what, you mean {#DialogueItalicFormat}permanently {#PreviousFormat}died, but, I'm alive! Oh, gods... you never even knew I existed, either."
+				},
+				{
+					Cue = "/VO/Persephone_0024",
+
+					MusicActiveStems = { "Percussion", "Room" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					Portrait = "Portrait_Persephone_Joyful_01",
+					PortraitExitAnimation = "Portrait_Persephone_Joyful_01_Exit",
+					PostLineAnim = "ZagreusInteractionComeHither_Start",
+					PostLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "TimePassesPresentation",
+					PostLineFunctionArgs = { PreTextWait = 1.5, HeroAnim = "ZagreusTalkDenialStart", GlobalVoiceLines = "PersephoneFirstMeetingIntermissionVoiceLines", PersephoneMusicFullBlast = true },
+					EndSound = "/Leftovers/Menu Sounds/EmoteThoughtful",
+					Text =
+					"Alive! Zagreus, he... even kept your name! You live, how can this be, you live? {#DialogueItalicFormat}You live{#PreviousFormat}...! Oh, the cruel Fates! My son!"
+				},
+				-- time passes
+				{
+					Cue = "/VO/ZagreusField_3606",
+
+					-- MusicActiveStems = { "WoodWinds" },
+					-- MusicMutedStems = { "Percussion", "Room" },
+
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					FadeOutTime = 0.6,
+					FullFadeTime = 6.5,
+					FadeInTime = 1.8,
+					PreLineWait = 0.2,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteExcitement",
+					InterSceneWaitTime = 0.2,
+					MusicSection = 3,
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+
+					TeleportToId = 571466,
+					TeleportOffsetY = 80,
+					TeleportOffsetX = 90,
+					TeleportHeroToId = 571466,
+					TeleportHeroOffsetX = -30,
+					TeleportHeroOffsetY = 120,
+					AngleHeroTowardTargetId = 571468,
+					AngleTowardHero = true,
+
+					Text =
+					"...In short, I beat him, finally, though he did everything he could to prevent our meeting here like this. But there's something he wanted me to tell you, in the end. He said to tell you Cerberus is doing very well."
+				},
+				{
+					Cue = "/VO/Persephone_0025",
+
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds", "Room", "Trombones" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					PreLineAnim = "PersephoneGarden_Vulnerable_ShockToThoughtful",
+					Text =
+					"{#DialogueItalicFormat}Ah{#PreviousFormat}. He told you that, did he. That's good. That's good! Though, tell me something, Zagreus. How... is it that you found me? To have journeyed all this way, I scarce believe it.... Zagreus?"
+				},
+				{
+					Cue = "/VO/ZagreusField_3607",
+
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion", "Strings" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					Emote = "PortraitEmoteDepressed",
+					PreLineAnim = "ZagreusInjured_IdleToSick",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Ugh{#PreviousFormat}... Oh, it's... guess I'm just a little tired, that's all. Not accustomed to the weather, as I think you call it."
+				},
+				{
+					Cue = "/VO/Persephone_0026",
+
+					MusicActiveStems = { "Percussion", "Strings" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					PreLineAnim = "PersephoneGarden_Vulnerable",
+					PreLineWait = 0.35,
+					Text = "No... no, that isn't it, it's that... you cannot stay here. You can't stay here."
+				},
+				{
+					Cue = "/VO/ZagreusField_3608",
+
+					MusicActiveStems = { "WoodWinds", "Room" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					Text = "Really, you're... {#DialogueItalicFormat}heh{#PreviousFormat}... kicking me out? Why?"
+				},
+				{
+					Cue = "/VO/Persephone_0027",
+
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					Portrait = "Portrait_Persephone_Calculating_01",
+					Text =
+					"The Fates are cruel, Zagreus. You're bound to that place... same as your father. So they would have us say good-bye, for now. My heart soars, knowing you live. Then it breaks, that our time together was so brief."
+				},
+				{
+					Cue = "/VO/ZagreusField_3609",
+
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					Text =
+					"No... I can... come back... I can come back, now that I found you, he... maybe he'll just let me come back."
+				},
+				{
+					Cue = "/VO/Persephone_0028",
+
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					PreLineAnim = "PersephoneGarden_Dismiss",
+					Text =
+					"You tell him I demand it. And I demand he also tell me how come he, or for that matter Nyx, never sent notice that you lived! Olympus is all rife with schemers, but I was so naive to think that they were different."
+				},
+				{
+					Cue = "/VO/ZagreusField_3610",
+
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					Text = "I'll tell him... I'll tell him, I... feel awful. I... I have to go."
+				},
+
+				{
+					Cue = "/VO/Persephone_0029",
+
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { FullBlast = true },
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					PostLineThreadedFunctionName = "SurfaceKillHero",
+					PostLineFunctionArgs = { WaitTime = 0, MusicEndTime = 60 },
+					Text =
+					"The Styx shall take you, then. Oh, Zagreus. Farewell, my son. Won't you come back to me? When you are able, please. Come back. I shall be waiting here. However long it takes."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PersephoneGardenFirstGreeting,
+			},
+
+			PersephoneMeeting02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PersephoneFirstMeeting" },
+				RequiredRoom = "E_Story01",
+				InitialGiftableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 1.8,
+					Queue = "Interrupt",
+					NoTarget = true,
+					-- Until we... ungh.
+					{ Cue = "/VO/ZagreusField_3628" },
+					-- No... not... yet...
+					-- { Cue = "/VO/ZagreusField_4649", PreLineWait = 2.5 },
+				},
+				{
+					Cue = "/VO/Persephone_0042",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { Mom = true },
+					Portrait = "Portrait_Persephone_Joyful_01",
+					PreLineAnim = "PersephoneGarden_Vulnerable",
+					Text =
+					"I begged the Fates that you'd return to me. Perhaps I ought to be more careful how I speak of them. Tell me, how was your journey? What happened?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3622",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Father didn't make it any easier for me. Nor would he tell me why he never sent for you, after you left. So, I don't know, what's going on, still, but... I wanted to see you, again."
+				},
+
+				{
+					Cue = "/VO/Persephone_0043",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Text =
+					"I wanted to see you, too. Come, speak quickly with me, that our time together here may be as full as possible, all right?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3623",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "I just... I need to know what happened, between you and Father. Why are you here, and not with us?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0044",
+					MusicActiveStems = { "Percussion", "Room" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Calculating_01",
+					Text =
+					"I couldn't live with myself anymore, down there. After I left Olympus, a long story in itself, I came to be with your father, in the Underworld. It was a shock, to say the least. The others in your father's house were welcoming enough, but... I never felt that I belonged."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3624",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I know the feeling, I think. But you stayed. Long enough to have me. Those whom I've spoken to about you, it's as you said, they have fond memories of you. And then, you even had a child. Did Father... did he mistreat you?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0045",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					PreLineAnim = "PersephoneGarden_Greeting",
+					Text =
+					"No, no. Your father could be very difficult. Though, he was gentle, with me. Soon enough, we got on fine, better than fine, at times, but... when I was with child... why, I struggled terribly. Because... a child born of surface-dwellers could not live, down there."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3625",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Could not live down there, according to whom, exactly? The Fates?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0046",
+					MusicSection = 3,
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Calculating_01",
+					Text =
+					"According to them, yes. According to your father, and to Nyx. Even having heard... I took my chances, anyway. But when you emerged stillborn... it was too much. I fled. I fled, and came to reside here. Above the notice of the Underworld. Beneath the notice of Olympus."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3626",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					Emote = "PortraitEmoteDepressed",
+					PreLineAnim = "ZagreusInjured_IdleToSick",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Urgh{#PreviousFormat}... but... why would Father lie to you? If he never wanted you... or never wanted me... surely he had the means."
+				},
+
+				{
+					Cue = "/VO/Persephone_0047",
+					MusicActiveStems = { "Percussion", "Room" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					PreLineAnim = "PersephoneGarden_Vulnerable",
+					Text =
+					"I don't know. I'm wondering the same. But, oh, look at you, Zagreus! We're running out of time. It's happening again! Stay with me, please?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3627",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					PreLineWait = 0.35,
+					Text = "...I'm trying... but I can't... stay that much longer... I don't think."
+				},
+
+				{
+					Cue = "/VO/Persephone_0048",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { FullBlast = true },
+					PostLineThreadedFunctionName = "SurfaceKillHero",
+					PostLineFunctionArgs = { WaitTime = 0, MusicEndTime = 60 },
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text =
+					"Oh, my dear son! Then please... ask Hades what you asked of me! Why he would lie? Tell him I must know, the same as you. And you farewell. Until we meet again!"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PersephoneGardenGreeting,
+			},
+
+			PersephoneMeeting03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PersephoneMeeting02" },
+				RequiredRoom = "E_Story01",
+				InitialGiftableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 1.8,
+					Queue = "Interrupt",
+					NoTarget = true,
+					-- It's just... a hunch... of mine...
+					{ Cue = "/VO/ZagreusField_3634" },
+					-- I'll... be... back...
+					{ Cue = "/VO/ZagreusField_4650", PreLineWait = 2.5 },
+				},
+				{
+					Cue = "/VO/ZagreusField_3629",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { Son = true },
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Mother, I... discovered how come Father led you to believe that I could not survive past birth. He didn't lie to you, exactly. So he says."
+				},
+
+				{
+					Cue = "/VO/Persephone_0049",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					Emote = "PortraitEmoteSurprise",
+					PreLineAnim = "PersephoneGarden_Dismiss",
+					Text =
+					"Wait, slow down, Zagreus, what do you mean? He told me you would not survive your birth, yet here you are. How wasn't that a lie?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3630",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Because... he thought it was the truth. The Fates appointed him dominion over the entire Underworld. But he would never have an heir, so he was led to understand. He never expected me to be born, much less survive."
+				},
+
+				{
+					Cue = "/VO/Persephone_0050",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					Text =
+					"He never expected you to survive? Then, forgive my asking, but... why did you? {#DialogueItalicFormat}How {#PreviousFormat}did you? The Fates are not known for making mistakes when it comes to such things."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3631",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Nyx saved my life. Or gave me life, I guess. Then raised me in your absence. The Fates are her daughters, right? Maybe she persuaded them to go easier on me. She cannot say more. In any case, apparently it took her quite a while to revive me, and... by then, you were gone."
+				},
+
+				{
+					Cue = "/VO/Persephone_0051",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Calculating_01",
+					Text =
+					"Nyx... of course she was involved. I only managed to escape because of her. Then, she restored my stillborn son to life, and nurtured him? And, I never would have known, unless that child, fully grown and having learned the truth, defied his father, and then found me here?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3632",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
+					PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteDepressed", Anim = "ZagreusInjured_IdleToSick", AnimTarget = "Hero", DoShake = true, Portrait = "Portrait_Zag_Unwell_01", WaitTime = 5.2 },
+					Text =
+					"Yes. Although, we still don't know how come Father and Nyx never sent for you. Though, {#DialogueItalicFormat}ungh{#PreviousFormat}, let me ask you something, Mother, if you please. If you had found out... that I was born, and very much alive... would you have come back?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0052",
+					MusicActiveStems = { "Percussion", "Room" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Joyful_01",
+					PreLineAnim = "PersephoneGarden_Shocked",
+					PostLineAnim = "PersephoneGarden_Vulnerable_ReturnToIdle",
+					MusicSection = 3,
+					Text =
+					"Would I have come back... to see my only child? Had I but known you lived... I would have gladly gone through hell again to see you, Zagreus. Of course I would have."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3633",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					PreLineAnim = "ZagreusInjured_IdleToSick",
+					PreLineAnimTarget = "Hero",
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					Text =
+					"Well then... what if... {#DialogueItalicFormat}urgh{#PreviousFormat}... what if Father... didn't want you... doing that?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0053",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { FullBlast = true },
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					PreLineAnim = "PersephoneGarden_Greeting",
+					PostLineThreadedFunctionName = "SurfaceKillHero",
+					PostLineFunctionArgs = { WaitTime = 0, MusicEndTime = 60 },
+					Text =
+					"What if he didn't want me coming back to him? Or seeing you? Oh no, you're fading again, Zagreus. You've pushed yourself too hard! But what is it you meant, by what you said?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PersephoneGardenGreeting,
+			},
+
+			PersephoneMeeting04 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PersephoneMeeting03" },
+				RequiredRoom = "E_Story01",
+				InitialGiftableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 1.8,
+					Queue = "Interrupt",
+					NoTarget = true,
+					-- I... I won't be long...
+					{ Cue = "/VO/ZagreusField_3639" },
+					-- Urgh... mmm... ungh...
+					{ Cue = "/VO/ZagreusField_4651", PreLineWait = 2.5 },
+				},
+				{
+					Cue = "/VO/Persephone_0054",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { Mom = true },
+					Text =
+					"So good to see you, again, Zagreus. Since last you left, I couldn't help but think the worst, about what happened after I had left... or soon before. You mentioned Nyx... you don't suppose that she and Hades... wanted me out of the way?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3635",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I just... don't think that can be. Though, let me ask you. How long did you know Father? And Nyx, for that matter? Did they seem trustworthy?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0055",
+					Portrait = "Portrait_Persephone_Calculating_01",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Text =
+					"Yes. I knew them long enough to have decided yes, that they were trustworthy. As much as anyone I've ever met. But I also know never to be trusting to a fault. I have to consider the possibility I was deceived."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3636",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Especially since neither of them is being forthcoming with me even now, right? And yet, I have this feeling something else is going on, Mother. The way that Father speaks of you, the way Nyx speaks of you... I think... they care for you."
+				},
+
+				{
+					Cue = "/VO/Persephone_0056",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Default_01",
+					MusicSection = 3,
+					Emote = "PortraitEmoteCheerful",
+					PreLineAnim = "PersephoneGarden_Vulnerable",
+					Text =
+					"{#DialogueItalicFormat}Ah, hahaha{#PreviousFormat}! Well, they have a funny way of showing it, I think. Your father, so... you have to get through {#DialogueItalicFormat}him {#PreviousFormat}each time you visit {#DialogueItalicFormat}me{#PreviousFormat}?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3637",
+					MusicActiveStems = { "WoodWinds", "Room" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenial_Full",
+					PreLineAnimTarget = "Hero",
+					Text = "I do. Mother, what if... what if Father thinks that he's protecting you? Have you... considered that?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0057",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					PreLineAnim = "PersephoneGarden_Greeting",
+					Text = "Protecting me? Why Zagreus, what do you mean by that? As you can see, I can fend for myself."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3638",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					Emote = "PortraitEmoteDepressed",
+					PreLineAnim = "ZagreusInjured_IdleToSick",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Well... {#DialogueItalicFormat}urgh{#PreviousFormat}... you're from Olympus, aren't you? But... the gods, none of them seem to know... you're here... so..."
+				},
+
+				{
+					Cue = "/VO/Persephone_0058",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { FullBlast = true },
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					Emote = "PortraitEmoteSurprise",
+					PreLineAnim = "PersephoneGarden_Vulnerable",
+					PostLineThreadedFunctionName = "SurfaceKillHero",
+					PostLineFunctionArgs = { WaitTime = 0, MusicEndTime = 60 },
+					Text = "What, how would you know something like that? Zagreus? Ah, curse the Fates, you're leaving me again..."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PersephoneGardenGreeting,
+			},
+
+			-- assuming you've met the gods a bunch, alt below
+			PersephoneMeeting05_A = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PersephoneMeeting04" },
+				RequiredFalseTextLines = { "PersephoneMeeting05_B" },
+				RequiredMinCompletedRuns = 15,
+				RequiredRoom = "E_Story01",
+				InitialGiftableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 1.8,
+					Queue = "Interrupt",
+					NoTarget = true,
+					-- When I... return...
+					{ Cue = "/VO/ZagreusField_3646" },
+					-- Khh... uhhh... urgh...
+					{ Cue = "/VO/ZagreusField_4652", PreLineWait = 2.5 },
+				},
+				{
+					Cue = "/VO/Persephone_0059",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { Mom = true },
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text = "Son, I have to ask you, how much do you know about your relatives upon Olympus?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3640",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I think I know quite a bit by now. I've been in steady contact with Athena, Zeus, and other members of the family ever since I first left Father's House... they've been assisting me in getting here."
+				},
+
+				{
+					Cue = "/VO/Persephone_0060",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					Emote = "PortraitEmoteSurprise",
+					PreLineAnim = "PersephoneGarden_Vulnerable",
+					Text = "No... Zagreus, what have you done? You've led them {#DialogueItalicFormat}here{#PreviousFormat}?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3642",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"No, no, they think... they think I'm trying to escape from Father so that I can join them on their mountaintop. At least I {#DialogueItalicFormat}think {#PreviousFormat}that's what they think. Most of them, anyway."
+				},
+
+				{
+					Cue = "/VO/Persephone_0061",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text = "But then... does Hades know of this? That Olympus is involved?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3643",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"He does. Both he and Nyx. In fact, it's Nyx who put me and Olympus into contact. I could never have broken free of the Underworld if not for their help."
+				},
+
+				{
+					Cue = "/VO/Persephone_0062",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text =
+					"So Nyx and Hades are against each other, then. And Olympus is helping you... but they don't know I'm here, as far as you're aware?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3644",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					MusicSection = 3,
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"That's right. More or less. Nyx and Father seem to put up with each other. Don't seem to have much of a choice. Though, ever since I learned of you, Nyx has been helping me to find you... while Father's tried to stop me."
+				},
+
+				{
+					Cue = "/VO/Persephone_0063",
+					MusicActiveStems = { "Percussion", "Room" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					PreLineAnim = "PersephoneGarden_Dismiss",
+					Text =
+					"That fool... what was he thinking? What {#DialogueItalicFormat}is {#PreviousFormat}he thinking...? Do you suppose... he thinks that he's protecting me from {#DialogueItalicFormat}them{#PreviousFormat}? Oh, no..."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3645",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInjured_IdleToSick",
+					PreLineAnimTarget = "Hero",
+					Emote = "PortraitEmoteDepressed",
+					Text =
+					"I... {#DialogueItalicFormat}urgh{#PreviousFormat}... I think maybe he does think so, indeed... because, now having met my relatives upon Olympus, I... can definitely see that they can be a bit... vindictive about things."
+				},
+
+				{
+					Cue = "/VO/Persephone_0064",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { FullBlast = true },
+					Portrait = "Portrait_Persephone_Calculating_01",
+					PostLineThreadedFunctionName = "SurfaceKillHero",
+					PostLineFunctionArgs = { WaitTime = 0, MusicEndTime = 60 },
+					Text =
+					"Vindictiveness runs in the family, my son. Then, if Olympus is involved, that would explain a lot. I'm here, not there with them, as you can see. But, oh, it seems we'll have to speak some more, when next you return..."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PersephoneGardenGreeting,
+			},
+			-- assuming you haven't met the gods much
+			PersephoneMeeting05_B = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PersephoneMeeting04" },
+				RequiredFalseTextLines = { "PersephoneMeeting05_A" },
+				RequiredMaxCompletedRuns = 14,
+				RequiredRoom = "E_Story01",
+				InitialGiftableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 1.8,
+					Queue = "Interrupt",
+					NoTarget = true,
+					-- When I... return...
+					{ Cue = "/VO/ZagreusField_3646" },
+					-- Khh... uhhh... urgh...
+					{ Cue = "/VO/ZagreusField_4652", PreLineWait = 2.5 },
+				},
+				{
+					Cue = "/VO/Persephone_0059",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { Mom = true },
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text = "Son, I have to ask you, how much do you know about your relatives upon Olympus?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3641",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"A little. I've been in contact with Athena, Zeus, and other members of the family ever since I first left Father's House... they've been assisting me in getting here."
+				},
+
+				{
+					Cue = "/VO/Persephone_0060",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					Emote = "PortraitEmoteSurprise",
+					PreLineAnim = "PersephoneGarden_Vulnerable",
+					Text = "No... Zagreus, what have you done? You've led them {#DialogueItalicFormat}here{#PreviousFormat}?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3642",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"No, no, they think... they think I'm trying to escape from Father so that I can join them on their mountaintop. At least I {#DialogueItalicFormat}think {#PreviousFormat}that's what they think. Most of them, anyway."
+				},
+
+				{
+					Cue = "/VO/Persephone_0061",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text = "But then... does Hades know of this? That Olympus is involved?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3643",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"He does. Both he and Nyx. In fact, it's Nyx who put me and Olympus into contact. I could never have broken free of the Underworld if not for their help."
+				},
+
+				{
+					Cue = "/VO/Persephone_0062",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text =
+					"So Nyx and Hades are against each other, then. And Olympus is helping you... but they don't know I'm here, as far as you're aware?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3644",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					MusicSection = 3,
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"That's right. More or less. Nyx and Father seem to put up with each other. Don't seem to have much of a choice. Though, ever since I learned of you, Nyx has been helping me to find you... while Father's tried to stop me."
+				},
+
+				{
+					Cue = "/VO/Persephone_0063",
+					MusicActiveStems = { "Percussion", "Room" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					PreLineAnim = "PersephoneGarden_Dismiss",
+					Text =
+					"That fool... what was he thinking? What {#DialogueItalicFormat}is {#PreviousFormat}he thinking...? Do you suppose... he thinks that he's protecting me from {#DialogueItalicFormat}them{#PreviousFormat}? Oh, no..."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3645",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInjured_IdleToSick",
+					PreLineAnimTarget = "Hero",
+					Emote = "PortraitEmoteDepressed",
+					Text =
+					"I... {#DialogueItalicFormat}urgh{#PreviousFormat}... I think maybe he does think so, indeed... because, now having met my relatives upon Olympus, I... can definitely see that they can be a bit... vindictive about things."
+				},
+
+				{
+					Cue = "/VO/Persephone_0064",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { FullBlast = true },
+					Portrait = "Portrait_Persephone_Calculating_01",
+					PostLineThreadedFunctionName = "SurfaceKillHero",
+					PostLineFunctionArgs = { WaitTime = 0, MusicEndTime = 60 },
+					Text =
+					"Vindictiveness runs in the family, my son. Then, if Olympus is involved, that would explain a lot. I'm here, not there with them, as you can see. But, oh, it seems we'll have to speak some more, when next you return..."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PersephoneGardenGreeting,
+			},
+
+			PersephoneMeeting06 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PersephoneMeeting05_A", "PersephoneMeeting05_B" },
+				RequiredRoom = "E_Story01",
+				InitialGiftableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 1.5,
+					Queue = "Interrupt",
+					NoTarget = true,
+					-- No... what have I done...
+					{ Cue = "/VO/ZagreusField_3651" },
+					-- Grr... I... can't...
+					{ Cue = "/VO/ZagreusField_4647", PreLineWait = 2.5 },
+				},
+				{
+					Cue = "/VO/Persephone_0065",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { Son = true },
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text =
+					"I could not stand it on Olympus, Zagreus. The blustering, the posturing... my overbearing mother... none of it. I would have left the mountain voluntarily, except..."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3647",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					PreLineWait = 0.35,
+					Text =
+					"...Except Father absconded with you, didn't he? Dragged you down with him into the Underworld. So if Olympus were to find that out... I shudder to think of the consequences."
+				},
+
+				{
+					Cue = "/VO/Persephone_0066",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					PreLineAnim = "PersephoneGarden_Greeting",
+					Text =
+					"That fool is trying to protect me even now. It wasn't he who absconded with me, my son. And it's more complicated even than that. I was content to leave. Willing to make my life within the Underworld. With your father."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3648",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"I dare not ask who {#DialogueItalicFormat}did {#PreviousFormat}bring you to Father, then. So, essentially, you ran away from home, to live with {#DialogueItalicFormat}him{#PreviousFormat}? I mean no disrespect, but... did you realize what you were getting yourself into?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0067",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Calculating_01",
+					MusicSection = 3,
+					Text =
+					"We have a tendency to be impetuous when we are younger, Zagreus. I'd heard all about your father before we met. Admired paintings of him. It was very awkward, at first. But he had a bluntness I fancied. A sense of principle. I much preferred him to his brothers, I can tell you that."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3649",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					Emote = "PortraitEmoteDepressed",
+					PreLineAnim = "ZagreusInjured_IdleToSick",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"So, {#DialogueItalicFormat}urgh{#PreviousFormat}... then you secretly left Mount Olympus to be with the god of the dead in the Underworld. And Olympus never found out. What do you suppose would happen... if they did?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0068",
+					MusicActiveStems = { "Percussion", "Room", "Trombones" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Calculating_01",
+					PreLineWait = 0.35,
+					PreLineAnim = "PersephoneGarden_Vulnerable",
+					Text =
+					"...I think... there would be war between Olympus and your father, Zagreus, if they found out. Especially now. After all this. And after all this time. They slew their parents once. If the Titans could be wiped from this world, so can we all."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3650",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion", "Trombones" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					Text =
+					"So it makes sense... if Father, he agrees with you, and thinks... that leaving you in hiding here, that it's the only way... he can prevent that war..."
+				},
+
+				{
+					Cue = "/VO/Persephone_0069",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { FullBlast = true },
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					PostLineThreadedFunctionName = "SurfaceKillHero",
+					PostLineFunctionArgs = { WaitTime = 0, MusicEndTime = 60 },
+					PreLineWait = 0.35,
+					Text =
+					"I can see how your father, shrewd but also single-minded as he was, might have followed such a line of reasoning as that. Oh, Zagreus... what have I done?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PersephoneGardenGreeting,
+			},
+
+			PersephoneMeeting07 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PersephoneMeeting06" },
+				RequiredRoom = "E_Story01",
+				InitialGiftableOffSource = true,
+				EndVoiceLines = {
+					{
+						PreLineWait = 1.5,
+						Queue = "Interrupt",
+						NoTarget = true,
+						-- Mother... I... blast...!
+						{ Cue = "/VO/ZagreusField_3656" },
+					},
+					{
+						PreLineWait = 1.8,
+						Queue = "Always",
+						NoTarget = true,
+						Source = { SubtitleColor = Color.PersephoneVoice },
+						-- Goodbye...!
+						{ Cue = "/VO/Persephone_0075" },
+					},
+				},
+				{
+					Cue = "/VO/Persephone_0070",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { Mom = true },
+					Portrait = "Portrait_Persephone_Calculating_01",
+					Text =
+					"Zagreus... it's wonderful to see you, but... I need to ask something of you. That you not visit me again, here in this place. Both for your safety, and for mine."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3652",
+					MusicActiveStems = { "WoodWinds", "Room" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Emote = "PortraitEmoteSurprise",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Wait, what? Because of what would happen if the Olympians found out? So, after everything, you're taking {#DialogueItalicFormat}Father{#PreviousFormat}'s side in all of this?!"
+				},
+
+				{
+					Cue = "/VO/Persephone_0071",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					PreLineAnim = "PersephoneGarden_Greeting",
+					Text =
+					"I am. Your father is no fool when it comes to matters such as this. Besides... all that has happened... it's my fault. I was selfish! And now both sides of our family threaten to be torn apart."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3653",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Emote = "PortraitEmoteFiredUp",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Your fault? So let's say you never left Olympus! Then it'd be just like you thought, until quite recently, I think. That I'd never existed! Besides, they haven't found out any of this. What makes you so sure they will, all the sudden?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0072",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text =
+					"Nyx may be veiling you from them as she veiled me when I fled here myself. But even her own powers aren't infallible. Each time you visit me, you are incurring risk. One small slip, and they shall find me. Discover your deception. Go home, Zagreus. Please."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3654",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					MusicSection = 3,
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Emote = "PortraitEmoteFiredUp",
+					Text =
+					"Go home {#DialogueItalicFormat}with {#PreviousFormat}me, Mother! You came here under false pretenses. I haven't fought all this way, over and over again, only to turn back now. I need you in my life! How can you just... turn me away like this?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0073",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Calculating_01",
+					PreLineAnim = "PersephoneGarden_Vulnerable",
+					PreLineWait = 0.5,
+					Text =
+					"Oh, Zagreus... I cannot return. After all that happened between Hades and me, and everyone, I just cannot fathom the idea. Besides... the risks we're taking would be even greater if Olympus were to find me there, with him. And you."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3655",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInjured_IdleToSick",
+					PreLineAnimTarget = "Hero",
+					Emote = "PortraitEmoteDepressed",
+					Text =
+					"Then... {#DialogueItalicFormat}ungh{#PreviousFormat}... you're just... going to stay here? Alone, in the middle of nowhere, in this little garden... forever? After we part ways, just like that?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0074",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { FullBlast = true },
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					PostLineThreadedFunctionName = "SurfaceKillHero",
+					PostLineFunctionArgs = { WaitTime = 0, MusicEndTime = 60 },
+					Text =
+					"My son... I know you've made hard choices and sacrifices to be here with me. And I'm forever grateful to have finally met you. But this is my home, now, yes. While your home is below. Please, if not for your sake, then for mine... do not return. I love you, Zagreus. Good-bye."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PersephoneGardenGreeting,
+			},
+
+			PersephoneMeeting08 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PersephoneMeeting07" },
+				RequiredRoom = "E_Story01",
+				InitialGiftableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 1.5,
+					Queue = "Interrupt",
+					NoTarget = true,
+					-- We... have to...
+					{ Cue = "/VO/ZagreusField_3662" },
+					-- No... not... yet...
+					{ Cue = "/VO/ZagreusField_4649", PreLineWait = 2.5 },
+				},
+				{
+					Cue = "/VO/ZagreusField_3657",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { Son = true },
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Emote = "PortraitEmoteFiredUp",
+					PreLineAnim = "ZagreusTalkDenial_Full",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"You can't do this to me, Mother. You said Father is no fool, and neither are you. There has to be a way to fix this. Not just with you and Father, but with everyone. There has to be a way!"
+				},
+
+				{
+					Cue = "/VO/Persephone_0076",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					PreLineWait = 0.35,
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					PreLineAnim = "PersephoneGarden_Dismiss",
+					Text =
+					"...You have your father's stubbornness. Listen to me. You're endangering everything you care about by coming here. Don't you understand? Besides..."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3658",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "What? Besides what? Tell me, please."
+				},
+
+				{
+					Cue = "/VO/Persephone_0077",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					PreLineWait = 0.35,
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text =
+					"...The truth is that I like it here, Zagreus. I have done well for myself on my own. And your father, he has his domain to look after. The feelings he once had for me... feelings we shared... they fade, with time. You'll understand, someday."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3659",
+					MusicActiveStems = { "WoodWinds", "Room" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Emote = "PortraitEmoteFiredUp",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}No{#PreviousFormat}! I won't be understanding anything of the sort. Father still loves you. I'm sure of it! And, he owes you an apology, damn it! I cannot make amends with you on his behalf. It's something only you can do together."
+				},
+
+				{
+					Cue = "/VO/Persephone_0078",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					MusicSection = 3,
+					PreLineAnim = "PersephoneGarden_Greeting",
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					Text = "What do you mean he still loves me, Zagreus...? How would you know?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3660",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInjured_IdleToSick",
+					PreLineAnimTarget = "Hero",
+					Emote = "PortraitEmoteDepressed",
+					Text =
+					"Because... {#DialogueItalicFormat}ungh{#PreviousFormat}... I'm his blasted son, that's how I know! But {#DialogueItalicFormat}trust me {#PreviousFormat}isn't ever good enough, I know that, too. I'll prove it to you, Mother! Just you wait and see."
+				},
+
+				{
+					Cue = "/VO/Persephone_0079",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					PreLineAnim = "PersephoneGarden_Shocked",
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text =
+					"You're fading, Son... you don't need to prove anything to me. Please don't do anything rash. All of us made our choices. Now we have to live with them. Isn't it enough, to know that I am safe? That I'm content to be alone?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3661",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { FullBlast = true },
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					Text =
+					"No... {#DialogueItalicFormat}urgh{#PreviousFormat}... it's not... it's not enough, for me, because... this blasted family... it cannot just keep hiding from its problems! Running from them! We're stuck with one another, we... we have to do everything we can... for one another!"
+				},
+
+				{
+					Cue = "/VO/Persephone_0080",
+					SetFlagTrue = "ZagSpecialEventInProgress",
+					Portrait = "Portrait_Persephone_Joyful_01",
+					PostLineThreadedFunctionName = "SurfaceKillHero",
+					PostLineFunctionArgs = { WaitTime = 0, MusicEndTime = 60 },
+					PreLineWait = 0.35,
+					Text = "I... oh, my dear boy..."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PersephoneGardenGreeting,
+			},
+
+			PersephoneMeeting09 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PersephoneMeeting08" },
+				RequiredRoom = "E_Story01",
+				InitialGiftableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 1.8,
+					Queue = "Interrupt",
+					NoTarget = true,
+					-- But... you are... the Queen...!
+					{ Cue = "/VO/ZagreusField_3667" },
+					-- Mmph... rrkh... ungh...
+					{ Cue = "/VO/ZagreusField_4653", PreLineWait = 2.5 },
+				},
+				{
+					Cue = "/VO/Persephone_0081",
+					PreLineWait = 0.35,
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { Mom = true },
+					Portrait = "Portrait_Persephone_Calculating_01",
+					Text =
+					"...Of everything down in that gloomy House, I miss old Cerberus the most, I think. But, I miss other things as well. The lack of light was gentler on my skin. Not being as cold. And Nyx, and her young sons. It was all very odd, but..."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3663",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Mother... in Father's bedchambers... mind you, there's almost nothing there, just neatly sorted rows of all his samey capes... but on his nightstand... is a portrait of {#DialogueItalicFormat}you{#PreviousFormat}. Wearing a regal crown of red laurels. A Queen. {#DialogueItalicFormat}His {#PreviousFormat}Queen."
+				},
+
+				{
+					Cue = "/VO/Persephone_0082",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					PreLineWait = 0.35,
+					PreLineAnim = "PersephoneGarden_Greeting",
+					Portrait = "Portrait_Persephone_Apprehensive_01",
+					Text =
+					"I was fitted for those garments when I first arrived. They... were not my customary style. So Hades has a portrait of me, still. Why would he put it back on display, now?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3664",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"No, no, he's never let anybody in his bedchambers! I broke in. Don't you see? He didn't put your portrait back on display. It's always been there! Ever since you left. So, Mother, why do you suppose he would do that?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0083",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					MusicSection = 3,
+					Portrait = "Portrait_Persephone_Calculating_01",
+					Text = "Because he... because he loves me still. Is that what you want me to say?"
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3665",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Have you ever loved him, yourself?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0084",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Persephone_Calculating_01",
+					Text =
+					"All I really wanted was to leave Olympus. I didn't exactly abscond. I doubt I had much of a choice, but I went willingly. Perhaps Zeus knew how I felt, and thought he was doing me a favor. As for Hades... I grew to love him, yes. He always gave me my space."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3666",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Unwell_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInjured_IdleToSick",
+					PreLineAnimTarget = "Hero",
+					Emote = "PortraitEmoteDepressed",
+					Text =
+					"Won't you... {#DialogueItalicFormat}urgh{#PreviousFormat}... won't you please talk to him? Or visit Cerberus again, or Nyx? As for Olympus... surely all of you... can figure something out...?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0085",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { FullBlast = true },
+					SetFlagTrue = "HadesEndingFlag",
+					PreLineAnim = "PersephoneGarden_Vulnerable",
+					Portrait = "Portrait_Persephone_Calculating_01",
+					PostLineThreadedFunctionName = "SurfaceKillHero",
+					PostLineFunctionArgs = { WaitTime = 0, MusicEndTime = 60 },
+					PreLineWait = 0.6,
+					Text =
+					"...I just don't know, my son. Olympus is behind me. And the Underworld... I cannot imagine I would be very welcome there after all this time."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PersephoneGardenGreeting,
+			},
+
+			PersephoneReturnsHome01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				-- placed so that boat is not visible
+				TeleportToId = 560320,
+				RequiredTextLines = { "PersephoneMeeting09" },
+				InitialGiftableOffSource = true,
+				{
+					Cue = "/VO/ZagreusField_3668",
+					PreLineFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { Son = true },
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineWait = 0.35,
+					AngleTowardHero = true,
+					PreLineAnim = "ZagreusTalkDenial_Full",
+					PreLineAnimTarget = "Hero",
+					Text = "Mother, wait, what is all this?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0086",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					PreLineAnim = "PersephoneGarden_Vulnerable",
+					Text = "Oh, Zagreus, I almost missed you. Truthfully, I hoped that I could make it a surprise..."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3669",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Make what a surprise?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0087",
+					MusicActiveStems = { "Percussion", "Room" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Text = "My arrival. I'm going. To your home. To Cerberus. Nyx. Your father."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3670",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Speaker = "CharProtag",
+					Emote = "PortraitEmoteSurprise",
+					Portrait = "Portrait_Zag_Defiant_01",
+					PreLineAnim = "ZagreusTalkDenial_Full",
+					PreLineAnimTarget = "Hero",
+					Text = "You're... {#DialogueItalicFormat}really{#PreviousFormat}?! Mother, you, you're serious?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0088",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Text =
+					"I am. Now if you could just help me pack up my remaining things? Only a few loose odds I'm bringing, just in case. If we hurry, maybe you could join me, rather than return the customary way. Not something a mother ever wants to see."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3671",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Join you, but... wait, how are you going to get back? I... hadn't thought that far ahead."
+				},
+
+				-- Pan to Charon
+				{
+					Cue = "/VO/Persephone_0089",
+					MusicActiveStems = { "Percussion", "Trombones" },
+					MusicMutedStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					MusicSection = 3,
+					PostLineFunctionName = "SurfaceBoatScenePan",
+					PortraitExitAnimation = "Portrait_Persephone_Default_01_Exit",
+					ActivateIds = { 571470 },
+					PreLineAnim = "PersephoneGarden_Dismiss",
+					Text = "Just so happens I know somebody who can give us a ride."
+				},
+
+				{
+					Cue = "/VO/Persephone_0090",
+					MusicActiveStems = { "Percussion" },
+					MusicMutedStems = { "WoodWinds", "Trombones" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PortraitExitAnimation = "Portrait_Persephone_Default_01_Exit",
+					Text =
+					"Doubtless he has pressing matters to attend to. So let's not keep him waiting any longer, Son. Come on, then!",
+					ClearPortraitId = true,
+					PostLineFunctionName = "LeaveRoomWithNoDoor",
+					PostLineFunctionArgs = { NextMap = "Return01", ExitSound = "/SFX/Menu Sounds/HadesTextDisappearFadeLOCATION" },
+				},
+				-- Load Return01
+
+				{
+					Cue = "/VO/ZagreusField_3673",
+					PreLineFunctionName = "CreateDialogueBackground",
+					MusicActiveStems = { "WoodWinds" },
+					MusicMutedStems = { "Percussion", "Harp", "Strings", "Percussion", "Room" },
+					MusicActiveStemsDuration = 2,
+					MusicMutedStemsDuration = 3,
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineWait = 1.35,
+					Text = "{#DialogueItalicFormat}<Sigh> {#PreviousFormat}...I'm still alive... but, how?"
+				},
+
+				{
+					Cue = "/VO/Persephone_0091",
+					Portrait = "Portrait_Persephone_Calculating_01",
+					Text = "You're on the River Styx. No longer in the mortal realm, entirely."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3674",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "I can't believe that this is happening."
+				},
+
+				{
+					Cue = "/VO/Persephone_0092",
+					Text =
+					"I know. My heart is racing. Nothing like a river journey to remind oneself that there's no turning back."
+				},
+
+				{
+					Cue = "/VO/ZagreusField_3675",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text =
+					"Seriously. Though, even after all of this... it's like we only just met. I have so many questions for you still."
+				},
+
+				{
+					Cue = "/VO/Persephone_0093",
+					PreLineThreadedFunctionName = "SetupPersephoneMusic",
+					PreLineThreadedFunctionArgs = { FullBlast = true },
+					MusicSection = 10,
+					Text =
+					"We'll have plenty of time for them, I think! For now, best we keep quiet. Pretend we're just a couple of dead souls on their final voyage.",
+					PortraitExitAnimation = "Portrait_Persephone_Default_01_Exit",
+					PostLineThreadedFunctionName = "HandleReturnBoatRideIntro",
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.PersephoneGardenGreeting,
+			},
+
+			PersephoneBoatRide02 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PersephoneReturnsHome01" },
+				RequiredRoom = "Return06",
+				{
+					Cue = "/VO/ZagreusField_3679",
+					MusicActiveStems = { "WoodWinds" },
+					MusicActiveStemsDuration = 2,
+					-- MusicMutedStems = { "Percussion" },
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineWait = 1.35,
+					Text = "This is embarrassing, but... I don't know the way to get back in. Except, you know, the customary way."
+				},
+
+				{
+					Cue = "/VO/Persephone_0100",
+					Portrait = "Portrait_Persephone_FiredUp_01",
+					PreLineThreadedFunctionName = "PowerWordPresentation",
+					PreLineThreadedFunctionArgs = { WaitTime = 4.5 },
+					-- PostLineThreadedFunctionName = "RoomOpeningEntrancePresentation"
+					-- PreLineAnim = "PersephoneGarden_Dismiss",
+					Text =
+					"That's quite all right; I do. {#DialogueItalicFormat}In the name of Persephone, the Queen{#PreviousFormat}!! Open the gates!"
+				},
+			},
+			-- Ending01 scene in DeathLoopData
 		},
 	},
 }

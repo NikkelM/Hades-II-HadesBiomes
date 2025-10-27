@@ -170,6 +170,7 @@ local function copyHadesNPCTexts()
 						if entry.Id then
 							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
 							entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
+							entry.Id = entry.Id:gsub("Persephone_", "Megaera_2")
 						end
 						table.insert(filteredTexts, entry)
 					end

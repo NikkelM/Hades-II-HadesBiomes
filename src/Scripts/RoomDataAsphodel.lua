@@ -58,6 +58,7 @@ local roomModifications = {
 		},
 		ThreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut" }, },
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Asphodel" } },
 		},
 	},
 
@@ -130,7 +131,6 @@ local roomModifications = {
 
 	-- OTHER
 	X_Story01 = {
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 		LoadModdedVoiceBanks = { "Eurydice", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		-- We play our own music in this room, don't play any by default
@@ -143,6 +143,8 @@ local roomModifications = {
 		},
 	},
 	X_PostBoss01 = {
+		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
+		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {

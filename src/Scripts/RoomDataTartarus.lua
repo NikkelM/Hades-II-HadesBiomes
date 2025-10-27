@@ -73,6 +73,7 @@ local roomModifications = {
 		EntranceFunctionArgs = { LandingAnimation = "Melinoe_HeroLanding", Sound = "/SFX/Player Sounds/MelWhooshDropIn", IntroHoldDuration = 2.34, StartZoomFraction = 0.65, ZoomDuration = 4 },
 		ThreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut" }, },
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Tartarus" } },
 			-- This will work with roomSetDataTartarus.RoomOpening.ThreadedEvents[3].Args.SpawnTypes = { "TartarusGhost01" }, but has the problem of spawning all Ghosts on the same ID
 			[3] = mod.NilValue
 		},
@@ -82,6 +83,8 @@ local roomModifications = {
 			-- Don't play the standard music event, it won't be able to get changed later
 			[3] = mod.NilValue,
 		},
+		-- "/Leftovers/Ambience/MatchSiteIPoolAmbience"
+		Ambience = "{e65b32ad-3a7e-4f88-9149-3260e929f04c}",
 		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		ChooseRewardRequirements = mod.NilValue,
 		ForcedRewards = mod.NilValue,
@@ -100,6 +103,12 @@ local roomModifications = {
 				RequiredAnyTextLines = mod.NilValue,
 			},
 		},
+	},
+
+	-- GENERIC ROOMS
+	A_Combat10 = {
+		-- "/Leftovers/Ambience/MatchSiteIPoolAmbience"
+		Ambience = "{e65b32ad-3a7e-4f88-9149-3260e929f04c}",
 	},
 
 	-- SHOPS
@@ -134,6 +143,8 @@ local roomModifications = {
 	-- BOSSES
 	A_Boss01 = {
 		LoadModdedVoiceBanks = { "Megaera*", "Alecto*", "Tisiphone*", "ZagreusField" },
+		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
+		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		-- Replaces MegaeraHome with Megaera voicelines
 		UnthreadedEvents = {
@@ -190,6 +201,8 @@ local roomModifications = {
 		},
 	},
 	A_PostBoss01 = {
+		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
+		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
 		NextRoomSet = { "Asphodel" },
 		SellShopSpawnChance = 1.0,
@@ -252,6 +265,7 @@ local roomModifications = {
 -- Assign separately so we don't get a circular reference
 game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
 	LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "NikkelM-HadesBiomesFxModded", "ModsNikkelMHadesBiomesFxOriginal", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+	LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Tartarus, roomModifications, roomReplacements, "Tartarus")

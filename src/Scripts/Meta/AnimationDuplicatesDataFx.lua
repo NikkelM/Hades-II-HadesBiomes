@@ -96,6 +96,14 @@ mod.HadesFxAnimationModifications = {
 	},
 	-- #endregion
 
+	-- #region Ending
+	CharonOarRipple = {
+		UseAttachedMarkerLocation = "null",
+		-- Can't get it to align properly
+		VisualFx = "null,"
+	},
+	-- #endregion
+
 	-- #region ENVIRONMENT
 	-- Used by the HydraSlamScattered attack
 	RadialNovaRubble = {

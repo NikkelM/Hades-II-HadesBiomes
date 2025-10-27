@@ -13,12 +13,14 @@ mod.AudioFileMappings = {
 -- Some speaker names do not work (e.g. MegaeraHome)!
 mod.VoiceoverFileNames = {
 	Alecto = "Alecto",
+	-- Charon = "Charon", -- Charon already exists and was moved into Megaera_1xxxx
 	Eurydice = "Eurydice",
 	HadesField = "HadesField",
 	Megaera = "Megaera",
 	MegaeraField = "MegaeraField",
 	Minotaur = "Minotaur",
 	Patroclus = "Patroclus",
+	-- Persephone = "Persephone", -- Persephone already exists and was moved into Megaera_2xxxx
 	Sisyphus = "Sisyphus",
 	Theseus = "Theseus",
 	Tisiphone = "Tisiphone",
@@ -30,6 +32,9 @@ mod.PackageFileMappings = {
 	Asphodel = "AsphodelModsNikkelMHadesBiomes",
 	Elysium = "ElysiumModsNikkelMHadesBiomes",
 	Styx = "StyxModsNikkelMHadesBiomes",
+	Surface = "SurfaceModsNikkelMHadesBiomes",
+	-- Erebus = "ErebusModsNikkelMHadesBiomes",
+	-- Charon = "CharonModsNikkelMHadesBiomes",
 	RoomManager = "RoomManagerModsNikkelMHadesBiomes",
 }
 
@@ -327,7 +332,7 @@ mod.BikFileNames = {
 	"Cerberus_HadesAssistRun_Bink",
 	"Cerberus_HadesAssistJumpFromRun_Bink",
 	-- #endregion
-	-- #region Charon
+	-- #region CHARON
 	"CharonIdleBattle_Bink",
 	"CharonMove_Bink",
 	"CharonMeleeFront_Bink",
@@ -337,6 +342,48 @@ mod.BikFileNames = {
 	"CharonRadialPush_Bink",
 	"CharonGhostCharge_Bink",
 	"CharonTaunt_Bink",
+	-- #endregion
+	-- #region PERSEPHONE
+	"NPC_PersephoneEndingBoatIdleFidget1_Bink",
+	"NPC_PersephoneEndingBoatIdleLoop_Bink",
+	"NPC_PersephoneGardenDismiss_Bink",
+	"NPC_PersephoneGardenGreeting_Bink",
+	"NPC_PersephoneGardenIdleHip_Bink",
+	"NPC_PersephoneGardenVulnerable_Bink",
+	"NPC_PersephoneGardenWalk_Bink",
+	"NPC_PersephoneGardenWalkStop_Bink",
+	"NPC_PersephoneUnderworldDismiss_Bink",
+	"NPC_PersephoneUnderworldGreeting_Bink",
+	"NPC_PersephoneUnderworldIdle_Bink",
+	"NPC_PersephoneUnderworldVulnerable_Bink",
+	"NPC_PersephoneUnderworldWalk_Bink",
+	"NPC_PersephoneUnderworldWalkStop_Bink",
+	-- #endregion
+	-- #region ENDING
+	"CharonEndingBoatRow_Bink",
+	"CharonEndingBoatRowIdle_Bink",
+	"EndingBoatBack_Bink",
+	"EndingBoatFront_Bink",
+	"EndingBoatWhole_Bink",
+	"HouseDoor02Open",
+	-- #endregion
+	-- #region ZAGREUS
+	"ZagreusStart_Bink",
+	"ZagreusIdle_Bink",
+	"ZagreusWalkStop2_Bink",
+	"ZagreusWalk2_Bink",
+	"ZagreusRun_Bink",
+	"ZagreusStop_Bink",
+	"ZagreusTalkEmpathy_Bink",
+	"ZagreusInteractionThoughtful_Bink",
+	"ZagreusTalkDenial_Bink",
+	"ZagreusInteractionComeHither_Bink",
+	"ZagreusInjured_IdleToSick_Bink",
+	"ZagreusInjured_SickStandingSet_Bink",
+	"ZagreusInjured_SickKneelingSet_Bink",
+	"ZagreusEndingBoatIdleLoop_Bink",
+	"ZagreusEndingBoatIdleFidget1_Bink",
+	"ZagreusEndingBoatIdleFidget2_Bink",
 	-- #endregion
 }
 
@@ -363,7 +410,7 @@ mod.SjsonFileMappings = {
 	"Animations\\CharacterAnim_Enemies_WretchThug",
 	"Animations\\CharacterAnim_Enemies_Wringer",
 	-- Bosses
-	-- "Animations\\CharacterAnim_EnemiesBosses_Charon",
+	"Animations\\CharacterAnim_EnemiesBosses_Charon",
 	"Animations\\CharacterAnim_EnemiesBosses_Furies",
 	"Animations\\CharacterAnim_EnemiesBosses_Hades",
 	"Animations\\CharacterAnim_EnemiesBosses_Hydra",
@@ -371,7 +418,7 @@ mod.SjsonFileMappings = {
 	"Animations\\CharacterAnim_EnemiesBosses_Theseus",
 	-- NPCs
 	-- "Animations\\CharacterAnimationsNPCs", -- This file is copied directly
-	-- "Animations\\CharacterAnimationsNPC_Persephone",
+	"Animations\\CharacterAnimationsNPC_Persephone",
 	"Animations\\CharacterAnimationsNPC_Thanatos",
 }
 
@@ -595,9 +642,22 @@ mod.MapFileMappings = {
 	["D_Mini12"] = "D_Mini12",
 	["D_Mini13"] = "D_Mini13",
 	["D_Mini14"] = "D_Mini14",
-	-- -- Surface
-	-- ["E_Intro"] = "E_Intro",
-	-- ["E_Story01"] = "E_Story01",
+	-- Surface
+	["E_Intro"] = "E_Intro",
+	["E_Story01"] = "E_Story01",
+	-- Surface - Return/Ending
+	["RoomReturn"] = "RoomReturn",
+	["Return01"] = "Return01",
+	["Return02"] = "Return02",
+	["Return03"] = "Return03",
+	["Return04"] = "Return04",
+	["Return05"] = "Return05",
+	["Return06"] = "Return06",
+	-- -- Erebus/Challenge
+	-- ["RoomChallenge01"] = "RoomChallenge01",
+	-- ["RoomChallenge02"] = "RoomChallenge02",
+	-- ["RoomChallenge03"] = "RoomChallenge03",
+	-- ["RoomChallenge04"] = "RoomChallenge04",
 	-- -- Charon
 	-- ["CharonFight01"] = "CharonFight01",
 }

@@ -125,17 +125,36 @@ local hadesObstacleAdditions = {
 			},
 		},
 	},
+	FinalBossExitDoor = {
+		Name = "FinalBossExitDoor",
+		InheritFrom = "ExitDoor",
+		DisplayInEditor = true,
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "FinalBossExitDoorLocked",
+			Interact = {
+				Distance = 300.0,
+				OffsetY = 175.0,
+			},
+			Points = {
+				{ X = -2, Y = 2 },
+				{ X = 2,  Y = 2 },
+				{ X = 0,  Y = -2 },
+			},
+		},
+	},
 	CerberusKey = {
 		Name = "CerberusKey",
 		InheritFrom = "BaseLoot",
 		DisplayInEditor = true,
-		Life = {
-			DeathFx = "CerberusKeyPickup",
-		},
 		Thing = {
 			AttachedAnim = "LootShadowCerberusKey",
 			EditorOutlineDrawBounds = false,
 			Graphic = "CerberusKey",
+			Interact = {
+				-- DeathFx turns into this
+				VisualFx = "CerberusKeyPickup",
+			},
 		},
 	},
 }
