@@ -69,7 +69,6 @@ function mod.UseStyxFountain(usee, args)
 	if game.CheckCooldown(fountain.CooldownNamePrefix .. fountain.ObjectId, fountain.CooldownDuration) then
 		ClearEffect({ Id = game.CurrentRun.Hero.ObjectId, Name = "MedeaPoison" })
 		ClearEffect({ Id = game.CurrentRun.Hero.ObjectId, Name = "StyxPoison" })
-		-- BlockEffect({ Id = CurrentRun.Hero.ObjectId, Name = "StyxPoison", Duration = 0.75 })
 		SetAnimation({ DestinationId = fountain.ObjectId, Name = fountain.OnCooldownAnimation })
 		UseableOff({ Id = fountain.ObjectId })
 		game.PoisonCureReady(fountain)
@@ -81,6 +80,19 @@ function mod.StyxPoisonApply(triggerArgs)
 	if unit == game.CurrentRun.Hero then
 		if not game.CurrentRun.Hero.IsDead then
 			mod.StartStyxPoisonPresentation(unit)
+			-- If we are not in Styx, we don't have heal fountains, so clear after an initial burst of damage
+			if game.CurrentRun.CurrentRoom.RoomSetName ~= "Styx" then
+				unit.ModsNikkelMHadesBiomesLastPoisonApplyTime = game._worldTime
+				-- Create a thread that waits and then clears the poison, if it hasn't been reapplied in the meantime
+				game.thread(function()
+					local waitTime = 1.2
+					game.wait(waitTime)
+					if unit.ModsNikkelMHadesBiomesLastPoisonApplyTime == nil or (unit.ModsNikkelMHadesBiomesLastPoisonApplyTime + waitTime <= game._worldTime) then
+						ClearEffect({ Id = unit.ObjectId, Name = "StyxPoison" })
+						ClearEffect({ Id = unit.ObjectId, Name = "MedeaPoison" })
+					end
+				end)
+			end
 		end
 	end
 end
@@ -113,7 +125,7 @@ function mod.StartStyxPoisonPresentation(unit)
 	game.PlayVoiceLines(game.HeroVoiceLines.PoisonAppliedVoiceLines, true)
 	if unit.TimesPoisoned == 1 then
 		game.wait(0.3)
-		local fountains = GetIdsByType({ Name = "PoisonCureFountainStyx" })
+		local fountains = GetIdsByType({ Name = "PoisonCureFountainStyx" }) or {}
 		for k, fountainId in pairs(fountains) do
 			game.thread(game.DirectionHintPresentation, { ObjectId = fountainId }, { Cooldown = 0 })
 			game.thread(game.InCombatText, fountainId, "UsePoisonCure", 1.75)
