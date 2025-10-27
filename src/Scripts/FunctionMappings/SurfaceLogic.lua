@@ -89,7 +89,7 @@ function mod.DisplaySurfaceLocationText(currentRun, currentRoom)
 	end
 
 	game.wait(1.2)
-	game.thread(game.CheckLocationUnlock, nil, { Biome = "Surface" })
+	game.thread(mod.CheckLocationUnlock, nil, { Biome = "Surface" })
 end
 
 function mod.LeaveRoomWithNoDoor(source, args, textLines, screen)
