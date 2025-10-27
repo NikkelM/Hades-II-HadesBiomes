@@ -839,6 +839,7 @@ local enemyModifications = {
 	},
 	RangedBurrowerElite = {
 		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
 	},
 	RangedBurrowerSuperElite = {
 		-- Give it the elite weapon instead of the normal one
@@ -1112,6 +1113,7 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		DeathAnimation = "ShadeNakedDeathVFX",
 		DeathFx = "null",
+		EliteAttributeOptions = {},
 	},
 	ShadeNakedSuperElite = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -1126,6 +1128,10 @@ local enemyModifications = {
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "ShadeSpearTouchdown",
 		},
+		-- If charmed/resurrected on the player's team, don't spawn a ShadeNaked on death
+		SpellSummonDataOverrides = {
+			SpawnUnitOnDeath = "nil",
+		},
 	},
 	ShadeSpearUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
@@ -1133,6 +1139,9 @@ local enemyModifications = {
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
+		SpellSummonDataOverrides = {
+			SpawnUnitOnDeath = "nil",
+		},
 	},
 	ShadeSpearUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
@@ -1140,31 +1149,47 @@ local enemyModifications = {
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
+		SpellSummonDataOverrides = {
+			SpawnUnitOnDeath = "nil",
+		},
 	},
 	ShadeBowUnit = {
 		StunAnimations = { Default = "ShadeBow_OnHit" },
 		SpawnUnitOnDeath = "ShadeNaked",
 		SkipActivatePresentationOnSpawns = true,
+		SpellSummonDataOverrides = {
+			SpawnUnitOnDeath = "nil",
+		},
 	},
 	ShadeBowUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
 		EliteAttributeOptions = game.CombineTables(
 			game.CombineTables(
-				game.EnemySets.GenericEliteAttributes,
-				game.EnemySets.RangedOnlyEliteAttributes
-			),
-			game.EnemySets.ShadeOnlyEliteAttributes
+				game.CombineTables(
+					game.EnemySets.GenericEliteAttributes,
+					game.EnemySets.RangedOnlyEliteAttributes
+				),
+				game.EnemySets.ShadeOnlyEliteAttributes),
+			{ "Hex" }
 		),
+		SpellSummonDataOverrides = {
+			SpawnUnitOnDeath = "nil",
+		},
 	},
 	ShadeBowUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
 		EliteAttributeOptions = game.CombineTables(
 			game.CombineTables(
-				game.EnemySets.GenericEliteAttributes,
-				game.EnemySets.RangedOnlyEliteAttributes
-			),
-			game.EnemySets.ShadeOnlyEliteAttributes
+				game.CombineTables(
+					game.EnemySets.GenericEliteAttributes,
+					game.EnemySets.RangedOnlyEliteAttributes
+				),
+				game.EnemySets.ShadeOnlyEliteAttributes),
+			{ "Hex" }
 		),
+		SpellSummonDataOverrides = {
+			SpawnUnitOnDeath = "nil",
+		},
 	},
 	ShadeShieldUnit = {
 		StunAnimations = { Default = "ShadeShield_OnHit" },
@@ -1172,6 +1197,9 @@ local enemyModifications = {
 		SkipActivatePresentationOnSpawns = true,
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
+		SpellSummonDataOverrides = {
+			SpawnUnitOnDeath = "nil",
+		},
 	},
 	ShadeShieldUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
@@ -1179,6 +1207,9 @@ local enemyModifications = {
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
+		SpellSummonDataOverrides = {
+			SpawnUnitOnDeath = "nil",
+		},
 	},
 	ShadeShieldUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
@@ -1186,11 +1217,17 @@ local enemyModifications = {
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
+		SpellSummonDataOverrides = {
+			SpawnUnitOnDeath = "nil",
+		},
 	},
 	ShadeSwordUnit = {
 		StunAnimations = { Default = "ShadeSword_OnHit" },
 		SpawnUnitOnDeath = "ShadeNaked",
 		SkipActivatePresentationOnSpawns = true,
+		SpellSummonDataOverrides = {
+			SpawnUnitOnDeath = "nil",
+		},
 	},
 	ShadeSwordUnitElite = {
 		SpawnUnitOnDeath = "ShadeNakedElite",
@@ -1198,6 +1235,9 @@ local enemyModifications = {
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
+		SpellSummonDataOverrides = {
+			SpawnUnitOnDeath = "nil",
+		},
 	},
 	ShadeSwordUnitSuperElite = {
 		SpawnUnitOnDeath = "ShadeNakedSuperElite",
@@ -1205,6 +1245,9 @@ local enemyModifications = {
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
+		SpellSummonDataOverrides = {
+			SpawnUnitOnDeath = "nil",
+		},
 	},
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
@@ -1303,7 +1346,7 @@ local enemyModifications = {
 		DestroyDelay = mod.NilValue,
 	},
 	FlurrySpawnerSuperElite = {
-		-- For some reason EnemyPointRanged doesn't exist, and setting this to nil doesn't work
+		-- For some reason EnemyPointRanged doesn't exist in D_Boss01, and setting this to nil doesn't work
 		RequiredSpawnPoint = "EnemyPointMelee",
 		BlockAttributes = { "Rifts", "Homing", "Tracking", "Unflinching", "Frenzy" },
 	},
@@ -1381,6 +1424,15 @@ local enemyModifications = {
 		ActivateDuration = 0.4,
 		BlockCharm = true,
 	},
+	SatyrRangedElite = {
+		EliteAttributeOptions = game.CombineTables(
+			game.CombineTables(
+				game.EnemySets.GenericEliteAttributes,
+				game.EnemySets.RangedOnlyEliteAttributes
+			),
+			{ "Hex", "Metallic", }
+		),
+	},
 	RatThug = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "EnemyRatThugOnHit" },
@@ -1409,6 +1461,7 @@ local enemyModifications = {
 	},
 	HeavyRangedForkedElite = {
 		DeathAnimation = "HeavyRangedForkedDeath",
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Metallic", }),
 	},
 	ThiefImpulseMineLayer = {
 		StunAnimations = { Default = "EnemyStyxThiefOnHit" },
@@ -1431,6 +1484,7 @@ local enemyModifications = {
 			AttackWhileMovingIntervalMin = 0,
 			AttackWhileMovingIntervalMax = 0.5,
 		},
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Metallic", }),
 	},
 	-- #endregion
 	-- #region STYX - Minibosses
