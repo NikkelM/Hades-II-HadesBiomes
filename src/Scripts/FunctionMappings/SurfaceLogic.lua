@@ -40,7 +40,7 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	game.FullScreenFadeInAnimation("RoomTransitionOutBlack")
 
 	-- Need to set the speech bubble higher as the model/anchor is different
-	currentRun.Hero.AnimOffsetZ = 110
+	currentRun.Hero.AnimOffsetZ = 125
 	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
 	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
 
@@ -240,7 +240,7 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 	game.ToggleCombatControl({ "Rush" }, false)
 
 	-- Need to set the speech bubble higher as the model/anchor is different
-	currentRun.Hero.AnimOffsetZ = 110
+	currentRun.Hero.AnimOffsetZ = 125
 	game.thread(game.PlayVoiceLines, currentRoom.EnterVoiceLines, true)
 	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[currentRoom.EnterGlobalVoiceLines], true)
 

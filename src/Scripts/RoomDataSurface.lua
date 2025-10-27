@@ -10,7 +10,7 @@ local roomReplacements = {
 local roomModifications = {
 	-- GENERIC
 	BaseSurface = {
-		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
+		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "NikkelM-HadesBiomesFxModded", "ModsNikkelMHadesBiomesFxOriginal", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
 		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
 		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
