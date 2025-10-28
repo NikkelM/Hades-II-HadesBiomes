@@ -119,7 +119,8 @@ game.MusicTrackData.Tartarus = {
 game.MusicTrackData.Asphodel = {
 	-- { Name = "/Music/MusicAsphodel1_MC", }, -- The audio event for this track does not exist - #82
 	{ Name = "/Music/MusicAsphodel2_MC", },
-	-- { Name = "/Music/MusicAsphodel3_MC", }, -- The audio event for this track does not exist - #82
+	-- "/Music/MusicAsphodel3_MC"
+	{ Name = "{9095ed41-3258-4161-ae60-23f686dfa394}", },
 }
 game.MusicTrackData.Elysium = {
 	{ Name = "/Music/MusicHadesReset_MC", }, -- Is this somehow the Elysium music??
