@@ -1546,6 +1546,7 @@ local enemyModifications = {
 		AIOptions = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesAttackAndDie", },
 		AttackTimerOffsetY = -170,
 		UseActivatePresentation = false,
+		IgnoreCastSlow = true,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,

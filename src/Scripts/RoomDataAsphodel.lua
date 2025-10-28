@@ -94,6 +94,7 @@ local roomModifications = {
 		PostCombatReloadEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "WrappingPostCombatReloadPresentation", },
 		},
+		NextRoomResumeMusic = true,
 	},
 
 	-- BOSSES
