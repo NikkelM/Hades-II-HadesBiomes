@@ -240,7 +240,6 @@ function mod.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId,
 
 	StopSound({ Id = game.AsphodelBoatSoundId, Duration = 0.2 })
 	game.AsphodelBoatSoundId = nil
-	-- PlaySound({ Name = "/Leftovers/World Sounds/CaravanWaterBuck2", Id = raftMovePoint })
 	local rumbleParams = { { ScreenPreWait = 0.02, Fraction = 0.15, Duration = 0.3 }, }
 	game.thread(game.DoRumble, rumbleParams)
 
@@ -367,9 +366,14 @@ function mod.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
 	game.wait(1.0)
 
 	game.FullScreenFadeOutAnimation()
-	AllowShout = false
 
 	currentRun.Hero.ExclusiveOnHitFunctionName = originalExclusiveOnHitFunctionName
+
+	-- If the next room is X_PostBoss01, stop the boat sound early, as that room won't stop it itself
+	if door ~= nil and door.Room.Name == "X_PostBoss01" then
+		StopSound({ Id = game.AsphodelBoatSoundId, Duration = 0.2 })
+		game.AsphodelBoatSoundId = nil
+	end
 
 	RemoveInputBlock({ Name = "LeaveRoomPresentation" })
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
