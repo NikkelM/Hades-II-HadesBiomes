@@ -335,7 +335,12 @@ local hadesProjectilesModifications = {
 		Effect = {
 			OnlyAffectName = "_PlayerUnit",
 		}
-	}
+	},
+	ArcherTrapWeapon = {
+		DissipateGraphic = "null",
+		ImpactFx = "null",
+		DeathFx = "ElysiumBallistaDissipate",
+	},
 	-- #endregion
 }
 
