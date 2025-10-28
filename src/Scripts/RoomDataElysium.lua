@@ -157,7 +157,7 @@ local roomModifications = {
 			},
 		},
 		-- Defines where the well spawns, making sure the sell shop spawns on the other possible ID - available IDs are 480768 and 532755
-		WellShopChallengeBaseId = 532755,
+		WellShopChallengeBaseId = 480768,
 		WellShopRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossWellShops" },
