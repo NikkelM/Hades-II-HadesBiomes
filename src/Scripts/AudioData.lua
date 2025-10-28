@@ -117,7 +117,8 @@ game.MusicTrackData.Tartarus = {
 	{ Name = "{90ac2d7a-7b3a-4a41-a3de-5df2828bcfca}", },
 }
 game.MusicTrackData.Asphodel = {
-	-- { Name = "/Music/MusicAsphodel1_MC", }, -- The audio event for this track does not exist - #82
+	-- "/Music/MusicAsphodel1_MC"
+	{ Name = "{e798505f-3f49-4c12-9f8d-779ee6edec25}", },
 	{ Name = "/Music/MusicAsphodel2_MC", },
 	-- "/Music/MusicAsphodel3_MC"
 	{ Name = "{9095ed41-3258-4161-ae60-23f686dfa394}", },
