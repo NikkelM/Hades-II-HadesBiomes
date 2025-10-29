@@ -18,19 +18,18 @@ function mod.RoomEntranceCrawlerMiniBoss(currentRun, currentRoom, args)
 			{ DestinationId = currentRoom.HeroEndPoint, DisableCollision = true, UseDefaultSpeed = true })
 	end
 
-	-- TODO: These voicelines are duplicates
-	-- game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.CrawlerMiniBossEncounterStartVoiceLines, true)
+	-- These voicelines are duplicates
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.CrawlerMiniBossEncounterStartVoiceLines, true)
 	game.wait(roomIntroSequenceDuration)
 	game.wait(0.5)
 	game.SecretMusicPlayer("/EmptyCue")
 
 	-- This used to be to give enough time for the intro voicelines on the first encounter
-	-- if game.GameState.EncountersOccurredCache.ModsNikkelMHadesBiomesMiniBossCrawler > 1 then
-	game.wait(0.5)
-	-- else
-	-- SetAnimation({ Name = "ZagreusInteractionThoughtful", DestinationId = game.CurrentRun.Hero.ObjectId })
-	-- game.wait(2.5)
-	-- end
+	if game.GameState.EncountersOccurredCache.ModsNikkelMHadesBiomesMiniBossCrawler > 1 then
+		game.wait(0.5)
+	else
+		game.wait(2.5)
+	end
 
 	AngleTowardTarget({ Id = crawlerId, DestinationId = game.CurrentRun.Hero.ObjectId })
 	PlaySound({ Name = "/SFX/QuickSnap", Id = crawlerId })
