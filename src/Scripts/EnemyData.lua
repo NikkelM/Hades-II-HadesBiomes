@@ -1374,6 +1374,13 @@ local enemyModifications = {
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
 		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
+		InvulnerableVoiceLines = {
+			CooldownTime = mod.NilValue,
+			CooldownName = mod.NilValue,
+			Cooldowns = {
+				{ Name = "MinotaurSpokeRecently", Time = 100 },
+			},
+		},
 	},
 	Minotaur2 = {
 		OnTouchdownFunctionArgs = {
@@ -1402,6 +1409,13 @@ local enemyModifications = {
 		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "TheseusDamaged",
 		AIStages = {
 			[2] = { RandomAIFunctionNames = { _PLUGIN.guid .. "." .. "TheseusGodAI" }, },
+		},
+		InvulnerableVoiceLines = {
+			CooldownTime = mod.NilValue,
+			CooldownName = mod.NilValue,
+			Cooldowns = {
+				{ Name = "TheseusSpokeRecently", Time = 100 },
+			},
 		},
 	},
 	Theseus2 = {

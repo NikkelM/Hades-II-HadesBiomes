@@ -31,6 +31,7 @@ function mod.TheseusMinotaurKillPresentation(unit, args)
 		Destroy({ Ids = GetIdsByType({ Name = "TheseusSpearReturnPoint" }) })
 	end
 
+	unit.MutePermanent = true
 	if bothBossesDead then
 		game.AddTimerBlock(game.CurrentRun, "TheseusMinotaurKillPresentation")
 		PlaySound({ Name = "/SFX/StabSplatterEndSequence" })
@@ -493,9 +494,6 @@ function mod.ElysiumSpecialInteractDieHardFanShade(usee, args)
 			BreakIfPlayed = true,
 			PlayOnceThisRun = true,
 			RandomRemaining = true,
-			Cooldowns = {
-				{ Name = "MelinoeSaluteSpeech", Time = 4 },
-			},
 			{ Cue = "/VO/Melinoe_4351",      Text = "No more despair, good Shade." },
 			{ Cue = "/VO/Melinoe_4352",      Text = "Hello again, good Shade." },
 			{ Cue = "/VO/MelinoeField_3045", Text = "You're always here, good Shade." },

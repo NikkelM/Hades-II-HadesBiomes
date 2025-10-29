@@ -21749,7 +21749,6 @@ mod.EnemyData = {
 			{ Cue = "/VO/Minotaur_0278" },
 		},
 
-		-- InvulnerableHitSound = "/SFX/Enemy Sounds/Minotaur/EmoteChuckle",
 		InvulnerableVoiceLines =
 		{
 			BreakIfPlayed = true,
