@@ -256,7 +256,6 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 
 	game.SetMusicSection(2)
 	if boss.CurrentPhase == 2 then
-		-- TODO: This track doesn't exist yet/need to fix music first
 		SetSoundCueValue({ Names = { "Duel" }, Id = game.AudioState.MusicId, Value = 1 })
 	end
 
@@ -440,20 +439,6 @@ function mod.CheckRunEndPresentation(currentRun, door)
 	RemoveInputBlock({ Name = "CheckRunEndPresentation" })
 end
 
-mod.GlobalVoiceLines.MelinoeDBossExitVoiceLines = {
-	{
-		-- { Cue = "/VO/MelinoeField_3423", Text = "Brother...!", },
-		-- { Cue = "/VO/MelinoeField_3424", Text = "Brother...", },
-		-- { Cue = "/VO/MelinoeField_3913", Text = "Just hold on a little while longer, Brother...", },
-		-- { Cue = "/VO/Melinoe_5062",      Text = "Prince Zagreus.", },
-		-- { Cue = "/VO/Melinoe_1417",      Text = "That just might work..." },
-		-- { Cue = "/VO/Melinoe_3412",      Text = "I know what to do..." },
-		{ Cue = "/VO/Melinoe_1075",      Text = "{#Emph}By blood and darkness, let my will be done!" },
-		{ Cue = "/VO/MelinoeField_3418", Text = "{#Emph}Night and Darkness, guide me to my blood beyond the grasp of Time!", PlayFirst = true },
-		-- { Cue = "/VO/Melinoe_4706",      Text = "{#Emph}The strongest dreams shall shatter if they must!" },
-	},
-}
-
 function mod.SurfaceExitIncantationPresentation(usee, args, user)
 	args = args or {}
 	AddInputBlock({ Name = "MelUsedSystemObject" })
@@ -461,7 +446,7 @@ function mod.SurfaceExitIncantationPresentation(usee, args, user)
 	UseableOff({ Id = usee.ObjectId })
 	game.MapState.RoomRequiredObjects[usee.ObjectId] = nil
 
-	game.thread(game.PlayVoiceLines, mod.GlobalVoiceLines.MelinoeDBossExitVoiceLines)
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines)
 	PanCamera({ Id = 552590, Duration = 5.0, })
 	game.wait(0.1)
 

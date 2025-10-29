@@ -2337,7 +2337,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			UsePlayerSource = true,
 			SkipAnim = true,
 			-- Wait, isn't this... Eurydice and Orpheus?
-			{ Cue = "/VO/ZagreusField_3676",}, -- RequiredTextLines = { "EurydiceAboutOrpheus03" } },
+			{ Cue = "/VO/ZagreusField_3676", }, -- RequiredTextLines = { "EurydiceAboutOrpheus03" } },
 			-- Wait, isn't this Orpheus?
 			-- { Cue = "/VO/ZagreusField_3677", RequiredFalseTextLines = { "EurydiceAboutOrpheus03" } },
 		},
@@ -2515,5 +2515,56 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				{ Cue = "/VO/HadesField_0198" },
 			}
 		}
+	},
+	-- Custom tables
+	ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines = {
+		UsePlayerSource = true,
+		{
+			PreLineWait = 0.4,
+			BreakIfPlayed = true,
+			PlayOnceThisRun = true,
+			RandomRemaining = true,
+			{ Cue = "/VO/Melinoe_4351",      Text = "No more despair, good Shade." },
+			{ Cue = "/VO/Melinoe_4352",      Text = "Hello again, good Shade." },
+			{ Cue = "/VO/MelinoeField_3045", Text = "You're always here, good Shade." },
+			{ Cue = "/VO/MelinoeField_3047", Text = "Something about my brother..." },
+			{ Cue = "/VO/MelinoeField_3048", Text = "My brother's biggest fan...?",              PlayFirst = true },
+			-- Generic voicelines
+			{ Cue = "/VO/Melinoe_4352",      Text = "Hello again, good Shade." },
+			{ Cue = "/VO/Melinoe_2321",      Text = "Hold fast to hope, good Shade." },
+			{ Cue = "/VO/Melinoe_2322",      Text = "Moonlight guide you, good Shade." },
+			{ Cue = "/VO/Melinoe_5519",      Text = "Thank you for having faith in him and me.", },
+			{
+				Cue = "/VO/Melinoe_5521",
+				Text = "He's safe and sound.",
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "ReachedTrueEnding" },
+					},
+				},
+			},
+			{ Cue = "/VO/Melinoe_2320", Text = "Have faith in him for me.", },
+			{ Cue = "/VO/Melinoe_1698", Text = "Salutations." },
+			{ Cue = "/VO/Melinoe_1699", Text = "Salutations!" },
+			{ Cue = "/VO/Melinoe_1701", Text = "Moonlight guide you." },
+			{ Cue = "/VO/Melinoe_1703", Text = "May moonlight guide you." },
+			{ Cue = "/VO/Melinoe_1704", Text = "Moonlight guide us." },
+			{ Cue = "/VO/Melinoe_1705", Text = "May moonlight guide us." },
+			{ Cue = "/VO/Melinoe_4260", Text = "Thank you for having faith in me." },
+			{ Cue = "/VO/Melinoe_4258", Text = "To further victories!", },
+		},
+	},
+	ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines = {
+		{
+			-- { Cue = "/VO/MelinoeField_3423", Text = "Brother...!", },
+			-- { Cue = "/VO/MelinoeField_3424", Text = "Brother...", },
+			-- { Cue = "/VO/MelinoeField_3913", Text = "Just hold on a little while longer, Brother...", },
+			-- { Cue = "/VO/Melinoe_5062",      Text = "Prince Zagreus.", },
+			-- { Cue = "/VO/Melinoe_1417",      Text = "That just might work..." },
+			-- { Cue = "/VO/Melinoe_3412",      Text = "I know what to do..." },
+			{ Cue = "/VO/Melinoe_1075",      Text = "{#Emph}By blood and darkness, let my will be done!" },
+			{ Cue = "/VO/MelinoeField_3418", Text = "{#Emph}Night and Darkness, guide me to my blood beyond the grasp of Time!", PlayFirst = true },
+			-- { Cue = "/VO/Melinoe_4706",      Text = "{#Emph}The strongest dreams shall shatter if they must!" },
+		},
 	},
 }

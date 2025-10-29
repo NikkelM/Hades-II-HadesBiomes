@@ -192,3 +192,8 @@ game.HeroVoiceLines.HitByGraveHandsVoiceLines = game.HeroVoiceLines.HitByGraveHa
 		mod.HeroVoiceLines.HitByGraveHandsVoiceLines
 game.HeroVoiceLines.HitByHadesAmmoVoiceLines = game.HeroVoiceLines.HitByHadesAmmoVoiceLines or
 		mod.HeroVoiceLines.HitByHadesAmmoVoiceLines
+
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines
