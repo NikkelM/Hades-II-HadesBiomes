@@ -187,6 +187,8 @@ local roomModifications = {
 		},
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceHades",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "CheckRunEndPresentation",
+		-- To prevent e.g. Centaur Arcana from triggering on the Surface
+		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 		ObstacleData = {
 			-- Makes the exit door interactable
 			-- FinalBossExitDoor

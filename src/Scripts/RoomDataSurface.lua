@@ -62,6 +62,7 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "SunriseOverlook", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "SunriseOverlookBackToRoom", },
 		},
+		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 
 		ObstacleData = {
 			[552607] = {
