@@ -55,9 +55,10 @@ local tartarusRoomStartMusicEvents = {
 	-- 		{
 	-- 			PathFalse = { "CurrentRun", "Hero", "IsDead" }
 	-- 		},
-	-- {
-	-- 	PathFalse = { "CurrentRun", "CurrentRoom", "RoomSetName", "Styx" },
-	-- },
+	-- 		{
+	-- 			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+	-- 			IsNone = { "Styx" },
+	-- 		},
 	-- 		{
 	-- 			Path = { "CurrentRun", "RunDepthCache" },
 	-- 			Comparison = "==",
@@ -76,7 +77,8 @@ local tartarusRoomStartMusicEvents = {
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
 			},
 			{
-				PathFalse = { "CurrentRun", "CurrentRoom", "RoomSetName", "Styx" },
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsNone = { "Styx" },
 			},
 			{
 				Path = { "CurrentRun", "RunDepthCache" },
@@ -101,7 +103,8 @@ local tartarusRoomStartMusicEvents = {
 				Value = 0,
 			},
 			{
-				PathFalse = { "CurrentRun", "CurrentRoom", "RoomSetName", "Styx" },
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsNone = { "Styx" },
 			},
 			{
 				FunctionName = "RequiredMusicSectionRoomDuration",
