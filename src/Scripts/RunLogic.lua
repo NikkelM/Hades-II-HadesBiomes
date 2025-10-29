@@ -38,14 +38,7 @@ end)
 modutil.mod.Path.Wrap("ChooseStartingRoom", function(base, currentRun, args)
 	local cachedRuns = mod.TryLoadCachedSjsonFile("cachedRuns.sjson")
 
-	-- Only set the flag if we are starting a Hades run
-	local validModdedRunBiomes = {
-		"Tartarus",
-		"Asphodel",
-		"Elysium",
-		"Styx",
-	}
-	if game.Contains(validModdedRunBiomes, args.StartingBiome) then
+	if mod.ValidModdedRunBiomes[args.StartingBiome] then
 		game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun = true
 		currentRun.ModsNikkelMHadesBiomesIsModdedRun = true
 
@@ -107,8 +100,10 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 			if not game.CurrentRun.ActiveBounty and game.CurrentRun.BiomesReached ~= nil then
 				moddedRunsCleared = moddedRunsCleared + 1
 				-- Custom fields
-				game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache = game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache or 0
-				game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache = game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTime or 999999
+				game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache = game.GameState
+						.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache or 0
+				game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache = game.GameState
+						.ModsNikkelMHadesBiomesFastestModdedRunClearTime or 999999
 				if game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache < game.CurrentRun.ShrinePointsCache then
 					game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache = game.CurrentRun.ShrinePointsCache
 				end

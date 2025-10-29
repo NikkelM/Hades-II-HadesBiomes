@@ -18,16 +18,7 @@ end)
 modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	base(currentRoom)
 
-	-- TODO: Challenge, Charon? What Roomsets are they?
-	local moddedRoomSets = {
-		["Tartarus"] = true,
-		["Asphodel"] = true,
-		["Elysium"] = true,
-		["Styx"] = true,
-		["Surface"] = true,
-	}
-
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and moddedRoomSets[currentRoom.RoomSetName] then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.ValidModdedRunBiomes[currentRoom.RoomSetName] then
 		currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
 
 		-- The base game doesn't load encounter packages when a save is loaded, or the RoomOpening is entered
