@@ -55,6 +55,9 @@ local tartarusRoomStartMusicEvents = {
 	-- 		{
 	-- 			PathFalse = { "CurrentRun", "Hero", "IsDead" }
 	-- 		},
+	-- {
+	-- 	PathFalse = { "CurrentRun", "CurrentRoom", "RoomSetName", "Styx" },
+	-- },
 	-- 		{
 	-- 			Path = { "CurrentRun", "RunDepthCache" },
 	-- 			Comparison = "==",
@@ -71,6 +74,9 @@ local tartarusRoomStartMusicEvents = {
 			},
 			{
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
+			},
+			{
+				PathFalse = { "CurrentRun", "CurrentRoom", "RoomSetName", "Styx" },
 			},
 			{
 				Path = { "CurrentRun", "RunDepthCache" },
@@ -124,10 +130,13 @@ game.MusicTrackData.Asphodel = {
 	{ Name = "{9095ed41-3258-4161-ae60-23f686dfa394}", },
 }
 game.MusicTrackData.Elysium = {
-	{ Name = "/Music/MusicHadesReset_MC", }, -- Is this somehow the Elysium music??
-	-- { Name = "/Music/MusicElysium1_MC", }, -- Audio events don't exist? Or file not loaded correctly?
-	-- { Name = "/Music/MusicElysium2_MC", },
-	-- { Name = "/Music/MusicElysium3_MC", },
+	{ Name = "/Music/MusicHadesReset_MC", },
+	-- "/Music/MusicElysium1_MC"
+	{ Name = "{9f9f6ebf-11f0-4c2f-8f2c-42f703be4b7d}", },
+	-- "/Music/MusicElysium2_MC"
+	{ Name = "{a843c030-5860-4c98-9f09-e25ea9372e28}", },
+	-- "/Music/MusicElysium3_MC"
+	{ Name = "{589a7217-b8c2-4cfb-b27b-45036c0f5875}", },
 }
 game.MusicTrackData.Styx = {
 	-- "/Music/MusicStyx1_MC"
