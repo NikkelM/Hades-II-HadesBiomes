@@ -1,9 +1,3 @@
-modutil.mod.Path.Wrap("OpenRunHistoryScreen", function(base, openedFrom)
-	LoadPackages({ Name = "ModsNikkelMHadesBiomesPortraits" })
-
-	base(openedFrom)
-end)
-
 modutil.mod.Path.Wrap("RunHistoryUpdateVisibility", function(base, screen)
 	base(screen)
 
@@ -16,6 +10,19 @@ modutil.mod.Path.Wrap("RunHistoryUpdateVisibility", function(base, screen)
 			ModifyTextBox({ Id = screen.ButtonIds[firstIndex - runIndex + 1], LuaKey = "TempTextData", LuaValue = { RunNum = runIndex, RouteName = routeName } })
 		end
 	end
+end)
+
+modutil.mod.Path.Context.Wrap("ShowRunHistory", function(screen, button)
+	modutil.mod.Path.Wrap("ModifyTextBox", function(base, args)
+		if args.Text == "RunHistoryScreen_Cleared" then
+			local run = button.Run
+			-- If the run was cleared, show the "ESCAPED" text instead of "PREVAILED!!"
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+				args.Text = "ModsNikkelMHadesBiomes_RunHistoryScreen_Cleared"
+			end
+		end
+		base(args)
+	end)
 end)
 
 -- Add the biome Codex entries to the Biome category so they are picked up by the Run History screen

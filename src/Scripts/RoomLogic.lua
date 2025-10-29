@@ -15,8 +15,13 @@ modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
 end)
 
 -- Wrap to also load modded resources, such as additional audio banks
+-- This is not called in any of the Crossroads rooms, so we don't need to check for that
 modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	base(currentRoom)
+
+	-- Load the portraits package immediately for a less laggy transition when opening the Codex
+	-- Always do this, so the Codex also doesn't lag when opening it during a normal run
+	LoadPackages({ Name = "ModsNikkelMHadesBiomesPortraits" })
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.ValidModdedRunBiomes[currentRoom.RoomSetName] then
 		currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}

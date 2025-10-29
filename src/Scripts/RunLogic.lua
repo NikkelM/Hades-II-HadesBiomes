@@ -199,9 +199,13 @@ modutil.mod.Path.Wrap("GetRunResult", function(base, run)
 	return base(run)
 end)
 
--- We want our modded runs to be considered a bounty run for the RunHistoryScreen
+-- We want our modded runs to be considered a bounty run for the RunHistoryScreen (this is for visuals)
 modutil.mod.Path.Wrap("WasBountyRun", function(base, run)
 	return (run.BiomesReached ~= nil and run.BiomesReached.Tartarus) or base(run)
+end)
+
+modutil.mod.Path.Wrap("WasRunSuccess", function(base, run)
+	return run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess or base(run)
 end)
 
 modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, nextRoomData, args, otherDoors)

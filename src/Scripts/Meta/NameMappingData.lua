@@ -574,6 +574,7 @@ mod.HadesHelpTextCopyKeys = {
 	RunHistoryScreenResult_CharonFight01 = true,
 	RunHistoryScreenResult_Challenge = true,
 	RunHistoryScreen_Assist = true,
+	RunHistoryScreen_Cleared = "ModsNikkelMHadesBiomes_RunHistoryScreen_Cleared",
 	-- #endregion
 	-- #region Victory Screen messages
 	ClearNumOne = "ModsNikkelMHadesBiomes_RunClear_ClearNumOne",

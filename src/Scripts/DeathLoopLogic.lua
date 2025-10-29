@@ -45,6 +45,8 @@ end)
 modutil.mod.Path.Wrap("DeathAreaRoomTransition", function(base, source, args)
 	-- Reset the modified game objects when returning to the Crossroads
 	mod.ApplyGlobalGameObjectModifications(false)
+	-- Load the portraits package immediately for a less laggy transition when opening the run history screen
+	LoadPackages({ Name = "ModsNikkelMHadesBiomesPortraits" })
 
 	base(source, args)
 end)
