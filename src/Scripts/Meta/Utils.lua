@@ -290,6 +290,7 @@ end
 ---It replaces quadruple quotes with triple quotes and a newline, as quadruple quotes are not parsed correctly in the sjson library.
 ---@param filePath string The path to the file to decode.
 ---@return table sjsonAsTable The decoded table.
+---@return string error If an error occurred, the error message.
 function mod.DecodeSjsonFile(filePath)
 	local fileHandle = io.open(filePath, "r")
 	if not fileHandle then
