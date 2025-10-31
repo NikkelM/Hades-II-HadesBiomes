@@ -8,7 +8,6 @@ function mod.ThanatosPreSpawnPresentation(eventSource)
 
 	game.wait(0.5, game.RoomThreadName)
 
-	-- TODO
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ThanatosSpawningVoiceLines, true)
 
 	game.wait(1.5, game.RoomThreadName)
@@ -26,8 +25,8 @@ function mod.ThanatosPreSpawnPresentation(eventSource)
 
 	game.wait(0.5, game.RoomThreadName)
 
-	-- TODO
-	SecretMusicPlayer("/Music/ThanatosTheme_MC")
+	-- "/Music/ThanatosTheme_MC"
+	game.SecretMusicPlayer("{f63fc90b-4f43-4303-959e-cae0aac1e430}")
 	SetSoundCueValue({ Names = { "Keys" }, Id = game.AudioState.SecretMusicId, Value = 1 })
 	SetSoundCueValue({ Names = { "Drums" }, Id = game.AudioState.SecretMusicId, Value = 0 })
 end
@@ -37,7 +36,6 @@ function mod.HandleThanatosSpawn(eventSource)
 	local currentRoom = game.CurrentRun.CurrentRoom
 	local currentEncounter = eventSource
 
-	-- TODO
 	local newUnit = game.DeepCopyTable(game.EnemyData.NPC_Thanatos_Field_01) or {}
 	local spawnPointId = game.SelectSpawnPoint(currentRoom, newUnit,
 		{ SpawnNearId = currentRun.Hero.ObjectId, SpawnRadius = 500 })
