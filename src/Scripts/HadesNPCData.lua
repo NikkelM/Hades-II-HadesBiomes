@@ -5297,8 +5297,7 @@ mod.NPCData = mod.NPCData or {
 				RequiredTextLines = { "EurydiceGift04" },
 				RequiredConsumablesThisRun = {
 					Count = 1,
-					Names =
-					{
+					Names = {
 						"RoomRewardConsolationPrize",
 					},
 				},
@@ -7082,8 +7081,7 @@ mod.NPCData = mod.NPCData or {
 				FunctionName = "GenericPresentation",
 				Args = {
 					SetAnimation = "PatroclusIdleStanding",
-					OverwriteSourceKeys =
-					{
+					OverwriteSourceKeys = {
 						AnimOffsetZ = 205,
 						Portrait = "Portrait_Patroclus_Neutral_01",
 					},
@@ -13394,6 +13392,6811 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 			-- Ending01 scene in DeathLoopData
+		},
+	},
+
+	-- Thanatos, Id = 423052 (DeathArea Version; Field Version below)
+	NPC_Thanatos_01 = {
+		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
+		DamageType = "Ally",
+		UseText = "UseTalkToThanatos",
+		Portrait = "Portrait_Thanatos_Default_01",
+		AnimOffsetZ = 225,
+		Groups = { "NPCs" },
+
+		Binks = {
+			"ThanatosIdle_Bink",
+			"ThanatosIdleInhouse_Bink",
+			"ThanatosIdleInhouseFidgetHairFlick__Bink",
+		},
+
+		SubtitleColor = Color.ThanatosVoice,
+
+		ActivateRequirements = {
+			RequiredTextLines = { "ThanatosFieldFirstMeeting", },
+			RequiredFalseTextLinesThisRun = { "PersephoneFirstMeeting" },
+			RequiredAnyEncountersThisRun = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro" },
+		},
+
+		InteractTextLineSets = {
+			ThanatosHomeFirstMeeting = {
+				Priority = true,
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiresRunNotCleared = true,
+				RequiredFalseTextLines = { "ThanatosHomeFirstMeetingAlt", "Ending01" },
+				{
+					Cue = "/VO/Thanatos_0207",
+					Text =
+					"Go about your business, Zag. What if Lord Hades saw us chatting like this, now...? I risked everything by helping you out there, and still you failed."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0220",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Turns out there's quite a lot of dead to fight down in the Underworld. Though I probably got farther than I would have, thanks to you."
+				},
+				{
+					Cue = "/VO/Thanatos_0208",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3, },
+					Text =
+					"Always happy to oblige. Especially when it causes me to risk my station. To risk everything I've worked for."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosHomeFirstMeetingAlt = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiresRunCleared = true,
+				RequiredTextLinesThisRun = "ThanatosFieldFirstMeeting",
+				RequiredFalseTextLines = { "ThanatosHomeFirstMeeting" },
+				{
+					Cue = "/VO/Thanatos_0583",
+					Text =
+					"What are you doing back here, Zagreus? I risked everything by helping you out there. So that was all for nothing, then?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2500",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Far from it, Than. I got where I needed to go, and if not for your help, maybe I wouldn't have. As for why I'm back... as Father would say, I have some business to attend to, here."
+				},
+				{
+					Cue = "/VO/Thanatos_0584",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3 },
+					Text =
+					"Well! Don't let me stop you, then. Always happy to risk my station for your sake. To risk everything I've worked for."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosHomeMiscMeeting01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Thanatos_01 = 1 },
+				RequiredFalseTextLines = { "Ending01" },
+				{
+					Cue = "/VO/Thanatos_0209",
+					Text =
+					"Be on your way, Zagreus. I have an audience with Lord Hades in a moment. An inquiry into my recent absences."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0221",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "What are you worried about, Than? You've never given him a reason not to trust you."
+				},
+				{
+					Cue = "/VO/Thanatos_0210",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "Recently, I'm not so sure. Whatever you're doing, it had better be worth it."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosHomeRunProgress01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosHomeMiscMeeting01", "ThanatosGift02" },
+				RequiredFalseTextLines = { "PersephoneFirstMeeting" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Don't be ridiculous, Than.
+					{ Cue = "/VO/ZagreusHome_0812" },
+				},
+				{
+					Cue = "/VO/Thanatos_0365",
+					Text = "I still cannot entirely believe you really think there's any way you're getting out of here."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0810",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Why? You've been out. It's thanks to you the mortals end up down here maybe half the time."
+				},
+				{
+					Cue = "/VO/Thanatos_0366",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"That's different, that's my job. I can't stay there, and frankly I can barely stand it. Do you have any idea how bright it gets, up there?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0811",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "No. But I look forward to finding out for myself."
+				},
+				{
+					Cue = "/VO/Thanatos_0367",
+					Text =
+					"{#DialogueItalicFormat}Tsch{#PreviousFormat}, well. We'll see what the Fates have to say about that. Maybe the shade of Daedalus can make you some protective eyewear or something."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosHomeRunProgress02 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PersephoneMeeting06" },
+				RequiresRunCleared = true,
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Couldn't if I tried!
+					{ Cue = "/VO/ZagreusHome_3434" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3433",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Thanatos, the world outside... didn't you say that it would make you sick, being out there for very long at all? I understand now what you meant by that. Beautiful place and all, but... it's good to be back."
+				},
+				{
+					Cue = "/VO/Thanatos_0553",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"See what I mean, now, Zag? Nice place to visit on occasion, sure. But I definitely wouldn't want to live there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			-- alt below
+			ThanatosBackstory01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosFieldBackstory01", "ThanatosGift03" },
+				RequiredAnyTextLines = { "Flashback_Mother_01", "CerberusStyxMeeting01" },
+				RequiredFalseTextLines = { "PersephoneFirstMeeting" },
+				{
+					Cue = "/VO/Thanatos_0211",
+					Text =
+					"I met her, you know. Persephone, I mean. You look more like your father, but... you have her eyes. One of them, anyway."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0222",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					Text = "You never spoke of her to me. You must have known... you kept the truth from me, the same as Nyx?"
+				},
+				{
+					Cue = "/VO/Thanatos_0212",
+					PreLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"It's not like that. I didn't know any more than you. Besides, Lord Hades ordered all of us to never speak of her again. I thought it just a bad relationship. I didn't realize she left her son."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0223",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "Something tells me Father wouldn't let her take me even if she wanted."
+				},
+				{
+					Cue = "/VO/Thanatos_0213",
+					Text =
+					"Maybe so. But even still, she did abandon you. Your family's here, if you ask me. But I can understand that... you need answers."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosBackstory01_B = {
+				Priority = true,
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosFieldBackstory01", "ThanatosGift03", "PersephoneFirstMeeting" },
+				RequiredAnyTextLines = { "Flashback_Mother_01", "CerberusStyxMeeting01" },
+				RequiredFalseTextLines = { "ThanatosBackstory01", "PersephoneMeeting08" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					ObjectType = "NPC_Thanatos_01",
+					RequiredMinElapsedTime = 3,
+					-- Hm.
+					{ Cue = "/VO/Thanatos_0179" },
+				},
+				{
+					Cue = "/VO/Thanatos_0211",
+					Text =
+					"I met her, you know. Persephone, I mean. You look more like your father, but, you have her eyes. One of them, anyway."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0222",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					Text = "You never spoke of her to me. You must have known... you kept the truth from me, the same as Nyx?"
+				},
+				{
+					Cue = "/VO/Thanatos_0212",
+					PreLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"It's not like that. I didn't know any more than you. Besides, Lord Hades ordered all of us to never speak of her again. I thought it just a bad relationship. I didn't realize she left her son."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0223",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "Something tells me Father wouldn't let her take me even if she wanted."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosBackstory02 = {
+				-- cutaway scene
+				Priority = true,
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosGift06" },
+				RequiredAnyTextLines = { "ThanatosBackstory01", "ThanatosBackstory01_B" },
+				RequiredFalseTextLines = { "Ending01", "ThanatosAboutStaying01" },
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				-- See you, Than.
+				EndCue = "/VO/ZagreusHome_0822",
+				EndWait = 0.9,
+				{
+					Cue = "/VO/ZagreusHome_0821",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey, Than. Come join me in the lounge for old time's sake. The coast is clear. The work can wait."
+				},
+				{
+					Cue = "/VO/Thanatos_0172",
+					PortraitExitAnimation = "Portrait_Thanatos_Default_01_Exit",
+					PostLineThreadedFunctionName = "LoungeRevelryPresentation",
+					PostLineFunctionArgs = { Sound2 = "/EmptyCue", Sound3 = "/EmptyCue" },
+					Text = "You're really asking me to join you for a drink...? I mean... you know what, sure. The work can wait."
+				},
+				{
+					Cue = "/VO/Thanatos_0582",
+					FadeOutTime = 0.5,
+					FullFadeTime = 7.8,
+					FadeInTime = 2.0,
+					InterSceneWaitTime = 0.5,
+					TeleportToId = 556834,
+					AngleTowardTargetId = 556835,
+					TeleportHeroToId = 556835,
+					AngleHeroTowardTargetId = 556834,
+					PreLineWait = 0.35,
+					AttachedDim = "Lounge",
+					FadeInSound = "/Leftovers/World Sounds/MapZoomInShortHigh",
+					Text =
+					"...I somehow knew, you know. I always knew you weren't going to stay. You were... so restless here. You just needed a reason to leave! And I hoped you wouldn't find one this quickly. {#DialogueItalicFormat}Eugh{#PreviousFormat}. What am I saying? You have no idea."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0784",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"No, I know exactly what you're saying, Than. I'm sorry that I'm putting you through all of this, it's just... it's something that I have to do. But, I'm glad we know the truth about me, now. Maybe we can move on from there."
+				},
+				{
+					Cue = "/VO/Thanatos_0174",
+					PortraitExitAnimation = "Portrait_Thanatos_Default_01_Exit",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"{#DialogueItalicFormat}Tsk{#PreviousFormat}... I've always lacked your optimism, Zag. Anyway... the work has waited long enough, I need to get back to it. Thanks for the drink."
+				},
+				{
+					Cue = "/VO/Thanatos_0175",
+					FadeOutTime = 0.5,
+					FullFadeTime = 0.5,
+					TeleportToId = 423055,
+					AngleTowardTargetId = 421122,
+					TeleportHeroToId = 423056,
+					AngleHeroTowardTargetId = 423055,
+					FadeInTime = 0.5,
+					FadeInSound = "/Leftovers/World Sounds/MapZoomInShortHigh",
+					FadeInTime = 0.5,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3, SkipExitReaction = true },
+					Text = "...Watch yourself out there, Zagreus. I have to go."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutDeath01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "ThanatosBackstory02", "ThanatosGift07_A", },
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Yeah, seriously.
+					{ Cue = "/VO/ZagreusHome_1452" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1450",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Thanatos, I've meant to ask... is it really the case that many mortals have a crippling fear of death?"
+				},
+				{
+					Cue = "/VO/Thanatos_0398",
+					Text =
+					"It is, I'm quite feared, up there. Most of them cannot distinguish between me, and, say, Lord Ares, or your father, even. We fill them with despair. No helping it."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1451",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Why not? I mean, isn't it kind of a big problem that they have such negative associations, here? Can't we... I don't know, do something to educate them all?"
+				},
+				{
+					Cue = "/VO/Thanatos_0399",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"We've all the time to educate them, here. Their ignorance of death is solved almost as soon as they experience their first. Though I suppose they might be better off knowing before the fact."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutDeath02 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosAboutDeath01" },
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					-- Didn't know you saw it that way.
+					{ Cue = "/VO/ZagreusHome_1455" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1453",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Than? I had another question about death. So... why is it mortals grieve so much about the thing, I mean... it definitely hurts there for a little while, but... it's not that bad."
+				},
+				{
+					Cue = "/VO/Thanatos_0400",
+					Text =
+					"They see it as their one and only chance. Imagine if, after you perished, that was it. Back to the infinite Chaos. Everything about you. Returned to how it was before you were even there."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1454",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"But that's absurd. One life? Though... {#DialogueItalicFormat}eugh{#PreviousFormat}. That's horrible, even to think about."
+				},
+				{
+					Cue = "/VO/Thanatos_0401",
+					Text =
+					"I know, right? Some of them know that isn't how it is, and try to tell their kind about what it is we do here, but... it's slow going, getting the information out. Either way! I get to be the bearer of good news."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutDeath03 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosAboutDeath02" },
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					-- It really is.
+					{ Cue = "/VO/ZagreusHome_1459" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1456",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey Than? Something's been troubling me still, with what you said, about how mortals look at death. If most of them believe their life is all they have... how do they live? I mean, I can't even imagine what that's like. I'd be a lot more careful, at the very least!"
+				},
+				{
+					Cue = "/VO/Thanatos_0402",
+					Text =
+					"They live with all their hearts, or at least try. I think there's something to it, truthfully. Though, some of them, they fall apart. They get here without me. On their own, gripped with despair. If only they knew what your father always says about all this."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1457",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text =
+					"What, you mean that {#DialogueItalicFormat}'there is no escape'{#PreviousFormat}? From what? The mortals are up there, not here. Not while they're technically alive in their sense, anyway."
+				},
+				{
+					Cue = "/VO/Thanatos_0403",
+					Text =
+					"I mean, you can't escape your problems, Zagreus. You can run from your family, but you can't run from everything. You have no choice but to confront it, and work through it, sooner or later, one way or another. You, and all of us."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1458",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineWait = 0.35,
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"...I'm starting to notice that, yes. Though, to a mortal who has yet to die... don't they think of death as some sort of release? You come to end their misery, something like that?"
+				},
+				{
+					Cue = "/VO/Thanatos_0404",
+					Text =
+					"I can release them from their decaying bodies. Sometimes, the Fates demand I bring them in sooner. That's about as much as I can do. Some of them get it early on, how to live. It's quite impressive, really, that they learn so quick."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutShifting01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosGift06", },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- I can see that.
+					{ Cue = "/VO/ZagreusHome_2502" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2501",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, just how far are you able to shift, anyway, Than? I never could go more than a blade's length in front of me, while you're out there skipping across the entire world probably."
+				},
+				{
+					Cue = "/VO/Thanatos_0585",
+					Text =
+					"Most of it, yes. Don't beat yourself up, though, Zagreus. It's a practiced skill but I've apparently been able to do it since birth. Mother Nyx says I was a real handful."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutBalcony01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "ThanatosGift05", },
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					-- Go get them.
+					{ Cue = "/VO/ZagreusHome_2807" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2805",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey, what is it you're always staring at out there, anyway, Than? I don't see anything."
+				},
+				{
+					Cue = "/VO/Thanatos_0612",
+					Text =
+					"The River Styx is right in front of you, and you don't see anything, Zag? I can watch it endlessly. Studying the competition, you might say. Most mortals expect to get here by river, with Charon. Not with me."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2806",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"So you're locked in ruthless battle with a river, searching it for any signs of weakness, that sort of thing? That sounds stressful."
+				},
+				{
+					Cue = "/VO/Thanatos_0613",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 2.5, SkipExitReaction = true },
+					Text =
+					"I find it rather soothing as a matter of fact. A break from having to deal constantly with mortal souls. Speaking of which... I have to pick somebody up right now."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutNemesisAspect01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosGift05" },
+				RequiredTraitsTaken = { "SwordCriticalParryTrait" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- I'm sure she's lovely, then.
+					{ Cue = "/VO/ZagreusHome_2504" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2503",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Than, my blade, the one I'm borrowing from Father anyway, it... revealed to me an older aspect of itself, of Nemesis. Nyx never mentions her. Have you two ever met?"
+				},
+				{
+					Cue = "/VO/Thanatos_0586",
+					Text =
+					"In case you haven't noticed, most of us who sprang from Nyx, we're not exactly close. Nemesis is fully occupied meting out justice on the surface. Our paths are not designed to cross. And based on everything I know, that's fine with me."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutErisAspect01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosGift05" },
+				RequiredMinRunsWithWeapons = { GunWeapon = 5 },
+				RequiredTraitsTaken = { "GunGrenadeSelfEmpowerTrait" },
+				RequiredWeapon = "GunWeapon",
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- All right, then!
+					{ Cue = "/VO/ZagreusHome_2506" },
+				},
+				{
+					Cue = "/VO/Thanatos_0587",
+					Text =
+					"How's that Rail of Adamant been working out for you lately? Always figured the direct approach was more your style. Though, I happened to have a look at your permanent record lately, and turns out you're doing a lot of work with that thing."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2505",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Why, Thanatos, you're learning to pry in others' business! The Rail's been working out just fine, thanks. Though, now that you mention it, how well do you know Eris, one of Nyx's daughters, right? Seems she wielded the Rail before me."
+				},
+				{
+					Cue = "/VO/Thanatos_0588",
+					Text =
+					"The mortals call her Strife. She and her children... it's thanks partly to their dedicated efforts I'm so busy all the time. Though, it is best we didn't speak of her, I think."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			-- alt below
+			ThanatosAboutSurface01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosGift03" },
+				RequiredFalseTextLines = { "ThanatosAboutSurface01_B", "PersephoneFirstMeeting" },
+				RequiredMaxRunsCleared = 0,
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					-- Huh. Maybe. I hope.
+					{ Cue = "/VO/ZagreusHome_1462" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1460",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Thanatos, I ought have asked by now, but... what's it like? Up there I mean, outside. You never talk about it, I... almost forget that's where you go, for work."
+				},
+				{
+					Cue = "/VO/Thanatos_0405",
+					Text =
+					"What can I say? It's... different. I never stay up there for very long, don't think I could, starts making me feel ill. Too many sensations all at once. And when the chariot of Helios is in the sky, it gets so bright that I can barely see."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1461",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text = "That sounds awful. If it's that bad, why would all the Olympians chat it up so much?"
+				},
+				{
+					Cue = "/VO/Thanatos_0406",
+					Text =
+					"There's no accounting for their taste, I guess. But, I'm discounting certain aspects that are not so bad. You know what? I'll not spoil the surprise. I have a feeling you're going to see for yourself soon enough."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutSurface01_B = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosGift03", "PersephoneFirstMeeting" },
+				RequiredFalseTextLines = { "ThanatosAboutSurface01" },
+				{
+					Cue = "/VO/ZagreusHome_1460",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Thanatos, I ought have asked by now, but... what's it like? Up there I mean, outside. You never talk about it, I... almost forget that's where you go, for work."
+				},
+				{
+					Cue = "/VO/Thanatos_0405",
+					Text =
+					"What can I say? It's... different. I never stay up there for very long, don't think I could, starts making me feel ill. Too many sensations all at once. And when the chariot of Helios is in the sky, it gets so bright that I can barely see."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1461",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text = "That sounds awful. If it's that bad, why would all the Olympians chat it up so much?"
+				},
+				{
+					Cue = "/VO/Thanatos_0663",
+					Text = "There's no accounting for their taste, I guess."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutCharon01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "CharonGift03", "ThanatosGift05" },
+				RequiredSeenRooms = { "D_Hub" },
+				-- I never thought of it like that.
+				EndCue = "/VO/ZagreusHome_1449",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/ZagreusHome_1447",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"What's going on with Charon, by the way, if you can tell me, Than? He's... never been particularly talkative, but he really seems to know the inner workings of this place."
+				},
+				{
+					Cue = "/VO/Thanatos_0396",
+					Text =
+					"I correspond with Charon all the time, but even I don't know the full extent of his responsibilities. He's an independent contractor of sorts, been here forever. Your father gives him plenty of space to work."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1448",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text =
+					"He must be compensated pretty well for having done this for so long. Tending the influx of new souls and all of that."
+				},
+				{
+					Cue = "/VO/Thanatos_0397",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"I doubt he's in it for the compensation, Zagreus. There is no Underworld without Charon. I think he knows that, and your father knows it, too."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			-- rename, was a 2 below
+			ThanatosAboutCharon02A = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "CharonGift04", "ThanatosAboutCharon01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "ThanatosAboutCharon01" }, Count = 2 },
+				-- Fair enough.
+				EndCue = "/VO/ZagreusHome_2508",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/ZagreusHome_2507",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, were you ever close with Charon, Than? Seems like no matter how much I try, I can't quite get through to him."
+				},
+				{
+					Cue = "/VO/Thanatos_0589",
+					Text =
+					"Wouldn't be surprised if you were closer to him than I am. Not all of Nyx's sons and daughters keep in steady touch. Though at least we're not always at each others' throats, like the other side of your family."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutCharon02 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "SkellyAboutSources04" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Did he really think that far ahead...?
+					{ Cue = "/VO/ZagreusHome_2515" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2513",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Than, you're not going to believe this, but... Charon's been helping me. All on his own, apparently! I was so sure that Nyx or someone put him up to it. That Skelly character I mentioned, Charon hired him!"
+				},
+				{
+					Cue = "/VO/Thanatos_0592",
+					AngleTowardHero = true,
+					Text =
+					"What are you talking about, Zagreus? Just because Charon's selling you things doesn't mean he's helping you. Wait, are you sure?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2514",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'm sure! His helper, Skelly, he's a lot more talkative, and finally let on. Although, he couldn't tell me how come Charon did a thing like this, I mean... we weren't ever close..."
+				},
+				{
+					Cue = "/VO/Thanatos_0593",
+					Text =
+					"{#DialogueItalicFormat}Hmm{#PreviousFormat}. All I can think of is... Charon's very dedicated to this House. Like some of us. Maybe he thought... he could help settle things, between you and your father. One way or another."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutCharonFight01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredEncounterThisRun = "BossCharon",
+				RequiredFalseDeathRoom = "CharonFight01",
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Don't think you will.
+					{ Cue = "/VO/ZagreusHome_2510" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2509",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, Than, now hypothetically, if I were to have vanquished Charon in single combat after having, I don't know, say, helped myself to one of his wares at no charge, how long would you say he'd hold it over me?"
+				},
+				{
+					Cue = "/VO/Thanatos_0590",
+					Text =
+					"Everything is an exchange with Charon, Zag. If there was something you refused to pay for, then I'm going to assume that's why you're back here, now. The debt is paid in obols, or in blood. Or their closest counterparts, I guess."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutSkelly01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "SkellyGift01", "ThanatosGift03", "SkellyGift01", "NyxGift01" },
+				-- Didn't think so.
+				EndCue = "/VO/ZagreusHome_2512",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/ZagreusHome_2511",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Than, level with me on this. You didn't happen to hire a shifty character called Skelly to assist me here and there, did you?"
+				},
+				{
+					Cue = "/VO/Thanatos_0591",
+					Emote = "PortraitEmoteSurprise",
+					Text = "Who, what? No. Why would you even ask?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutPersephone01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosGift03", "ThanatosFieldBackstory01" },
+				RequiredAnyTextLines = { "ThanatosBackstory01", "ThanatosBackstory01_B", "PersephoneFirstMeeting" },
+				RequiredFalseTextLines = { "Ending01" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Radiance, huh... doesn't sound like Father at all.
+					{ Cue = "/VO/ZagreusHome_2518" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2516",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Do you remember anything else about my mother, Than? Just, anything. You weren't close, I guess?"
+				},
+				{
+					Cue = "/VO/Thanatos_0614",
+					Text =
+					"We weren't. She kept to herself as I recall, and I would do the same. Unlike my present company, I do not ask too many questions. It was quite clear to me she wasn't from this place."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2517",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text = "Father isn't from this place, either. How was she any different?"
+				},
+				{
+					Cue = "/VO/Thanatos_0615",
+					Text =
+					"Sometimes I have to be reminded that Lord Hades wasn't born here, like the rest of us. But Persephone, she... she had a radiance about her, I suppose. Reminded me of the outside, but... I don't mean that in a negative respect."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutSisyphus01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosGift08", "SisyphusMeeting_AboutMegAndThanatos01", "SisyphusGift06" },
+				{
+					Cue = "/VO/ZagreusHome_1463",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Than, you don't hold a grudge against old Sisyphus, do you? He seems rather apprehensive about you. I understand you met not on the best of terms."
+				},
+				{
+					Cue = "/VO/Thanatos_0407",
+					Text =
+					"He is a brazen one, I have to give him that. I hadn't realized that you were close. Despite some questionable choices on your part, I don't think you're the poorest judge of character, and so... maybe I have him wrong."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1464",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text =
+					"I only have a faint impression of the man he used to be, although it seems he's changed a lot, since then. Thank you for understanding, anyway."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutSisyphusLiberationQuestComplete01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "SisyphusLiberationQuestComplete" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- Don't think you will.
+					{ Cue = "/VO/ZagreusHome_2525" },
+				},
+				{
+					Cue = "/VO/Thanatos_0621",
+					Text =
+					"I heard you stayed the knave-king's sentence. I should be angry with you. Sisyphus must be the only mortal {#DialogueItalicFormat}ever {#PreviousFormat}to have humiliated me. But Mother Nyx, she... must have backed you, didn't she..."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2524",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"We did what needed to be done. As much as Father likes making examples out of wretched shades, an eternal sentence felt a little excessive in this case. Besides... Sisyphus isn't leaving, anyway. Seems to have found his niche."
+				},
+				{
+					Cue = "/VO/Thanatos_0622",
+					Text =
+					"Oh? Well, he's an odd one through and through, I guess. As long as I don't have to deal with him again."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutAchilles01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosGift05" },
+				RequiredAnyTextLines = { "AchillesGift05_A", "AchillesGift05_B" },
+				{
+					Cue = "/VO/ZagreusHome_2526",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "You and Achilles ever get to talk much, Than?"
+				},
+				{
+					Cue = "/VO/Thanatos_0623",
+					Text =
+					"I have my orders, he has his. What do you think? Even back when he was still alive, there was no real chance I was going to be the one to take him here, given his line of work."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2527",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					Text = "Because he was a warrior. When mortals die a violent death, they're no longer your case, are they?"
+				},
+				{
+					Cue = "/VO/Thanatos_0624",
+					Text = "No. I tend to those in less of a hurry to come here."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutMyrmidonReunionQuestComplete01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Thanatos_01 = 1 },
+				RequiredTextLines = { "MyrmidonReunionQuestComplete", "ThanatosGift01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "MyrmidonReunionQuestComplete" }, Count = 4 },
+				RequiredFalseTextLinesLastRun = { "MyrmidonReunionQuestComplete" },
+				AreIdsNotAlive = { 370009 },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- It is. I think it is.
+					{ Cue = "/VO/ZagreusHome_2529" },
+				},
+				{
+					Cue = "/VO/Thanatos_0625",
+					Text =
+					"Your trainer's been absent from his post, more so than usual. You voided his pact with Lord Hades, didn't you? I don't know how you did it."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2528",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text =
+					"You know he's more than my trainer, Than. As for how I did it, turns out being the first and only son of Hades has its privileges. Now Achilles gets to be with someone he loves. Who loves him back."
+				},
+				{
+					Cue = "/VO/Thanatos_0626",
+					Text =
+					"Love is common among mortals. Is theirs really so special as to be worth the trouble? Not just on your part, but theirs?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutMegaera01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "ThanatosGift05", "MegaeraGift05", "MegaeraBedroom01", "Fury2FirstAppearance", "Fury3FirstAppearance" },
+				RequiredFalseTextLines = { "MegaeraGift09" },
+				RequiredKillsThisRun = { "Harpy" },
+				EndVoiceLines = {
+					PreLineWait = 0.85,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 2,
+					-- ...Oh.
+					{ Cue = "/VO/ZagreusHome_0818" },
+				},
+				{
+					Cue = "/VO/Thanatos_0370",
+					Text = "You've seen a lot of Megaera lately, haven't you, Zag?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0816",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "It's not like that, Than. She's there to slow me down. Get in my way."
+				},
+				{
+					Cue = "/VO/Thanatos_0371",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text = "If you insist. Although I think it's much more complicated than you say."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0817",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text =
+					"Yeah... her sisters are back. They're... hard to deal with. I don't think Meg is on good terms with either one."
+				},
+				{
+					Cue = "/VO/Thanatos_0372",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.35, SkipExitReaction = true },
+					Text = "That's not what I meant. But fine, you've told me all I need to know, for now."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutMegaera02 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosGift08", "MegaeraGift08", "SisyphusBackstory03" },
+				EndVoiceLines = {
+					PreLineWait = 0.85,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 2,
+					-- I know what you mean.
+					{ Cue = "/VO/ZagreusHome_2540" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2538",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You and Meg go back a long way, don't you? I forget sometimes you two are pretty close."
+				},
+				{
+					Cue = "/VO/Thanatos_0638",
+					Text =
+					"Our responsibilities must have us cross paths often, yes. But I didn't really get to know her until after the whole humiliating affair with Sisyphus."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2539",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, right. He got stuck in Tartarus after that, under Meg's personal supervision. So you bonded over your shared disdain for Sisyphus?"
+				},
+				{
+					Cue = "/VO/Thanatos_0639",
+					Text =
+					"We each had to blow off some steam, yes. That was some of the hardest I ever worked, back then, and her, too, I think. When you go through something like that with someone, it brings you closer, I suppose."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutBeingCloseWithMegaera01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithMegaera01_BMeg_GoToHer" },
+				RequiredFalseTextLines = { "MegaeraWithThanatosBedroom01" },
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					-- ...Sure. Sounds good.
+					{ Cue = "/VO/ZagreusHome_1486" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1483",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Than, there's something that I meant to tell you. Ask you, rather. You're close with Megaera, so, what I mean is... you know about {#DialogueItalicFormat}us{#PreviousFormat}, right?"
+				},
+				{
+					Cue = "/VO/Thanatos_0421",
+					Text = "Yes, of course. Why do you ask?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1484",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, it's just... I figured since you deal with mortals all the time, I know that some of them, they choose a single suitor. It's a valid custom, if it's yours...!"
+				},
+				{
+					Cue = "/VO/Thanatos_0422",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"The mortals have their customs, yes, indeed. Quite a variety, in point of fact. However, none as yet have stuck with me, I think. So don't concern yourself with things like that."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1485",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You're saying you're not angry with me? Or Meg, for that matter?"
+				},
+				{
+					Cue = "/VO/Thanatos_0423",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Not any more than usual. Tell her that I said hello when next you meet."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutBeingCloseWithDusa01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "BecameCloseWithDusa01" },
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01Than_BackOff" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- ...Yeah, well... thanks, Than.
+					{ Cue = "/VO/ZagreusHome_2494" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2493",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Than, you don't take issue with me being close with Dusa, do you? She brings such warmth to this place... I really appreciate having her here."
+				},
+				{
+					Cue = "/VO/Thanatos_0577",
+					Text = "You don't need to ask me such things, Zagreus. They're your feelings."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutAres01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AresAboutThanatos02", },
+				-- Disturbingly all right!
+				EndCue = "/VO/ZagreusHome_1446",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/ZagreusHome_1444",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Than, what's your relationship with Ares on Olympus? I know he deals in death himself, but... his approach seems rather different from your own."
+				},
+				{
+					Cue = "/VO/Thanatos_0394",
+					Text =
+					"I do not care for his approach at all. But he has been professionally courteous with me. More than I can say for most of your Olympian relatives, I suppose."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1445",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text = "You mean the rest of the Olympians don't treat you well?"
+				},
+				{
+					Cue = "/VO/Thanatos_0395",
+					Text =
+					"Discounting Hermes, I should say, the rest of them have nothing much to do with me at all. I can imagine why, I know it's complicated with your father here. But as for Ares... I think he's all right."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutNyxAndAres01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredAnyTextLines = { "AresAboutNyx01", "AresAboutNyx01_B" },
+				RequiredAnyOtherTextLines = { "ThanatosGift04", "ThanatosGift04_B" },
+				RequiredFalseTextLines = { "NyxAboutAres05", "NyxAboutAres05_B" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- ...Eh, you're probably right...
+					{ Cue = "/VO/ZagreusHome_2497" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2495",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Than? I thought you ought to know that Ares, he... I think he's taken quite an interest in Nyx. Keeps asking me to talk to her on his behalf."
+				},
+				{
+					Cue = "/VO/Thanatos_0578",
+					Text = "Finally. It's about time Olympus took notice of Mother and all her accomplishments."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2496",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Finally? You don't think Ares has untoward intentions or anything like that?"
+				},
+				{
+					Cue = "/VO/Thanatos_0579",
+					Text =
+					"He'd be a hollow fool if he did. Why do you think they fear us on Olympus, Zagreus? Because of Hypnos? I don't think Mother Nyx requires your concern. Though, by all means, talk to her about it, if you like."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutNyxAndChaos01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "NyxChaosReunionQuestComplete", "ThanatosGift06" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- Least I could do for all she's done for me.
+					{ Cue = "/VO/ZagreusHome_2499" },
+				},
+				{
+					Cue = "/VO/Thanatos_0580",
+					Text =
+					"Mother Nyx told me you restored the Eldest Sigil, Zagreus. I couldn't believe that was your doing. What you did... it meant a lot to her."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2498",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "It was my pleasure. Say, did Nyx ever let on to you of her relationship with Chaos, at any point?"
+				},
+				{
+					Cue = "/VO/Thanatos_0581",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"No, not everyone is quite as sharing as you are, Zag. Nor as inclined to pry. But still... in this case, sounds like it worked out. So, thank you. If she hasn't said as much."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutNyxAndDusa01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "NyxAboutDusa01", "ThanatosGift03" },
+				RequiredFalseTextLines = { "DusaWithNyx03" },
+				EndVoiceLines = {
+					PreLineWait = 0.6,
+					UsePlayerSource = true,
+					-- ...Tsch.
+					{ Cue = "/VO/ZagreusHome_2485" },
+				},
+				{
+					Cue = "/VO/Thanatos_0569",
+					Text =
+					"I can tell when Mother Nyx is upset, Zagreus. And I know better than to ask her, so I'm going to ask you. What happened?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2483",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Probably because Nyx took issue with me chatting with Dusa from time to time. Is that really so unbecoming of me? Not even Father seems to care."
+				},
+				{
+					Cue = "/VO/Thanatos_0570",
+					Emote = "PortraitEmoteFiredUp",
+					AngleTowardHero = true,
+					Text =
+					"Well, Mother cares! And I, for one, know better than to question it. None of us would be here were it not for her. If she has a request for you, you honor it."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2484",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You're telling me I should just start ignoring Dusa from now on, like you do?"
+				},
+				{
+					Cue = "/VO/Thanatos_0571",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3, SkipExitReaction = true },
+					Text = "You're a god. I'm telling you to learn to act like one."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutNyxAndDusa02 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredFalseTextLinesThisRun = { "PersephoneFirstMeeting", "Ending01", "OlympianReunionQuestComplete" },
+				RequiredTextLines = { "ThanatosAboutNyxAndDusa01" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "ThanatosAboutNyxAndDusa01" }, Count = 6 },
+				RequiredFalseTextLines = { "DusaWithNyx03" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- Thanks...
+					{ Cue = "/VO/ZagreusHome_2487" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2486",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'm sorry I raised my voice with you last time, Than. I know Nyx puts so much into this place, and has nurtured so many of us here."
+				},
+				{
+					Cue = "/VO/Thanatos_0572",
+					Text =
+					"It's not me you should be apologizing to, Zag. Although, with Mother Nyx, sometimes it's best to leave her be. As for Dusa... I didn't mean to suggest you should abandon your friend."
+				},
+			},
+			ThanatosAboutNyxAndDusa03 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "DusaVsNyx04", "ThanatosGift03" },
+				RequiredFalseTextLines = { "DusaWithNyx03", "MegaeraAboutDusaVsNyx02" },
+				GiftableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 0.6,
+					UsePlayerSource = true,
+					-- Maybe you should.
+					{ Cue = "/VO/ZagreusHome_2490" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2488",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "Nyx let her go, Than. Dusa, I mean, she's gone. What do I do?"
+				},
+				{
+					Cue = "/VO/Thanatos_0573",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"If I were you, I would start getting over it as soon as possible. But, I don't see you doing that. Just remember... maybe this isn't about you. Dusa's job may have been far too much for her. Mother Nyx is strict, but she is fair."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2489",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Then she should give Dusa another chance. Has Meg heard? She'll be furious."
+				},
+				{
+					Cue = "/VO/Thanatos_0574",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 3, SkipExitReaction = true },
+					Text =
+					"Megaera will be no such thing. Some of us don't default to questioning every decision from our superiors."
+				},
+			},
+			ThanatosAboutNyxAndDusa04 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "DusaWithNyx03", "ThanatosGift03" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "DusaWithNyx03" }, Count = 15 },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- I don't think we have to worry about that.
+					{ Cue = "/VO/ZagreusHome_2492" },
+				},
+				{
+					Cue = "/VO/Thanatos_0575",
+					Text =
+					"I saw that Dusa's back. You must have worked your ways on Mother Nyx. Don't know how you do it. Can't remember the last time I saw her budge on anything."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2491",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Nyx genuinely cares about this House and all of us. She had to come around on something like this. Dusa's one of the hardest workers here. Even if she has room to improve."
+				},
+				{
+					Cue = "/VO/Thanatos_0576",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"Incessant hard work can lead to trouble, Zagreus. I think maybe that's why Mother was concerned. We all know how your father can get. She doesn't need someone like Dusa taking after him."
+				},
+			},
+
+			ThanatosAboutHypnos01 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosWithHypnos01", "HypnosGift03" },
+				RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- He's like an annoying little brother to me.
+					{ Cue = "/VO/ZagreusHome_0815" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0813",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Than, you know, Hypnos, he adores you. Besides just driving you to madness, now and then."
+				},
+				{
+					Cue = "/VO/Thanatos_0368",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text = "I'm rather used to the relationship, thanks, Zagreus. Seems like you got to know him pretty well."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0814",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Well, dying repeatedly can end up bringing people closer, I suppose."
+				},
+				{
+					Cue = "/VO/Thanatos_0369",
+					Text =
+					"I don't know what's worse, dying repeatedly or Hypnos. Although, I guess I'm grateful for your patience with him, Zag."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			-- brothers quest
+			ThanatosAboutHypnos02 = {
+				Priority = true,
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosAboutHypnos01", "HypnosAboutThanatos03" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Probably!
+					{ Cue = "/VO/ZagreusHome_2534" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2532",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Got to tell you something, Than. You can be pretty mean to Hypnos! And that's coming from someone who's mean to Hypnos a lot. Believe me, I completely understand, but... still."
+				},
+				{
+					Cue = "/VO/Thanatos_0628",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"He's utterly incompetent, Zag. He wouldn't even be here if Mother Nyx wasn't trying to whip him into some sort of shape."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2533",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Yeah, but... pretty much none of this would be here, were it not for Nyx, right? Anyway my point is not that you should go easy on him, but... there must be some way not to get as frustrated. You'll both be better off."
+				},
+				{
+					Cue = "/VO/Thanatos_0629",
+					Emote = "PortraitEmoteFiredUp",
+					Text =
+					"I know, it's just...! You're right. I catch myself feeling particularly horrid after talking to him. He can be very frustrating, and self-absorbed... though, I know he means well. Probably."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			-- brothers quest
+			ThanatosAboutHypnos03 = {
+				Priority = true,
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosWithHypnos07" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- ...Who doesn't have room for improvement, though, right?
+					{ Cue = "/VO/ZagreusHome_2537" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2535",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I can hardly believe it. Hypnos finally came out on top, huh? Even Father seemed pleased with him. That's more than I get."
+				},
+				{
+					Cue = "/VO/Thanatos_0630",
+					Text =
+					"I can hardly believe it either, Zagreus. But then again, he's one of Mother Nyx's offspring, so we shouldn't be so surprised. Though, I have to thank you for talking to me about him a while back..."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2536",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Oh, that? I noticed you two getting along better recently. So what's your secret?"
+				},
+				{
+					Cue = "/VO/Thanatos_0631",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"He loves lists. Doesn't do well with subtlety, so much, but spell things out for him, and he will get right on it. Long as he's awake, at least. He's still working on that part."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutSingersReunionQuestComplete01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "ThanatosGift01", "OrpheusAboutSingersReunionQuest01" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- ...Than, wait...!
+					{ Cue = "/VO/ZagreusHome_2523" },
+				},
+				{
+					Cue = "/VO/Thanatos_0618",
+					Text =
+					"I saw you voided the old pact between Orpheus and your father. So now he gets to see his wife from time to time?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2521",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"He does, and I did, Than. I think we can stand to see a little less of him if it means he can be happier for the remainder of eternity."
+				},
+				{
+					Cue = "/VO/Thanatos_0619",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"You really need to learn to stop meddling in others' affairs. Did either of them even ask your help? I can't imagine Orpheus did, and I'm guessing his wife's feelings were complicated, too, from what I know of the circumstances of their final meeting."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2522",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"What? Orpheus is my mate, Than. And I came to know his muse, Eurydice, as well. They still had feelings for each other, but with no way to communicate."
+				},
+				{
+					Cue = "/VO/Thanatos_0620",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3, SkipExitReaction = true },
+					Text =
+					"So you decided to step in. {#DialogueItalicFormat}Tsch{#PreviousFormat}. I think my instincts on the subject are just not the same as yours. I know your intentions were in the right place, but... you know what, forget it."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutQuestLog01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredMinNPCInteractions = { NPC_Thanatos_01 = 1 },
+				RequiredCosmetics = { "QuestLog", },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 2,
+					-- I can hazard a guess...
+					{ Cue = "/VO/ZagreusHome_2520" },
+				},
+				{
+					Cue = "/VO/Thanatos_0616",
+					Text =
+					"I saw the Fated List of Minor Prophecies was requisitioned through the House Contractor, Zagreus. Didn't take you for an agent of the Fates."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2519",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Turns out I'm full of surprises, Thanatos. Though, the Three Fates are your sisters, aren't they? Surprised you didn't requisition the List yourself."
+				},
+				{
+					Cue = "/VO/Thanatos_0617",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"Guess it just wasn't meant to be. Though, I don't know them at all. Keep only to themselves, somewhere. Sometimes I wonder whether everything really is preordained, or whether they're making all this up as they go."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosRunCleared01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiresRunCleared = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "PersephoneFirstMeeting" },
+				RequiredFalseTextLines = { "Ending01" },
+				-- I'm planning to.
+				EndCue = "/VO/ZagreusHome_1550",
+				EndWait = 0.45,
+				{
+					Cue = "/VO/Thanatos_0544",
+					AngleTowardHero = true,
+					Text =
+					"You took Lord Hades down... you really did. I've never seen him quite like this before. I could scarce believe it when he came up through the Pool of Styx, himself..."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1549",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Seemed only fair in the grand scheme of things. He slew his own parents at some point, right? I think the Fates enjoy this sort of thing."
+				},
+				{
+					Cue = "/VO/Thanatos_0545",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 3, SkipExitReaction = true, },
+					Text =
+					"Come on, Zag, take some credit where it's due. Though... you'll forgive me if I keep my distance for a little while, as I think you have some issues to resolve. You watch yourself."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutStaying01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "ThanatosFieldAboutPersephoneFirstMeeting01", "ThanatosGift05" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- I'll hold you to that.
+					{ Cue = "/VO/ZagreusHome_3432" },
+				},
+				{
+					Cue = "/VO/Thanatos_0551",
+					PreLineWait = 0.35,
+					Text =
+					"...You're really staying, Zagreus? I mean... between the generally ill-conceived attempts to reach the surface every so often."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3431",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I am. I figured it's the only way I could continue interrupting you while you try to do your job. You work too hard, Than, live a little, right?"
+				},
+				{
+					Cue = "/VO/Thanatos_0552",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.85, SkipExitReaction = true },
+					Text =
+					"{#DialogueItalicFormat}Heh{#PreviousFormat}. Well then, I'll see what I can do about that. You'll have to show me what you mean by {#DialogueItalicFormat}'live a little'{#PreviousFormat}, though."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			-- misnomer; event moved later
+			ThanatosAboutPersephoneMeeting02 = {
+				Priority = true,
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PersephoneMeeting04" },
+				RequiredAnyTextLines = { "ThanatosBackstory01", "ThanatosBackstory01_B" },
+				RequiredAnyOtherTextLines = { "ThanatosFieldAboutPersephoneFirstMeeting01", "ThanatosGift05" },
+				RequiredFalseTextLines = { "Ending01" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					-- Yeah.
+					{ Cue = "/VO/ZagreusHome_3231" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3228",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Have to tell you something, Than. My birthmother... she didn't abandon me. Or at least... she didn't think she did."
+				},
+				{
+					Cue = "/VO/Thanatos_0647",
+					Text =
+					"She didn't {#DialogueItalicFormat}think {#PreviousFormat}she did? What are you talking about, Zag? She left when you were born. Was never seen or spoken of again, until all this with you."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3229",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, it turns out... she never knew I was alive, at all. Complications when I was born. She had been struggling already here, and it was all too much, I guess. By the time Nyx brought me back... my mother was long gone."
+				},
+				{
+					Cue = "/VO/Thanatos_0648",
+					Emote = "PortraitEmoteSurprise",
+					AngleTowardHero = true,
+					Text =
+					"{#DialogueItalicFormat}What{#PreviousFormat}? But, Mother Nyx, and your father, they... could have sent for her, let her know... they must have known where she went!"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3230",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Nyx knew. But, Father must have convinced her that my mother... that it would be for the best if she never found out. About me. So she could live in peace. Away from all of this. And away from Olympus."
+				},
+				{
+					Cue = "/VO/Thanatos_0649",
+					PreLineWait = 0.5,
+					Text = "That's... a lot to take in."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutRelationship01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "ThanatosGift06" },
+				RequiredAnyTextLines = { "Ending01", "ThanatosBackstory02" },
+				RequiredFalseTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" },
+				-- Wait! Ugh.
+				EndCue = "/VO/ZagreusHome_2542",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/Thanatos_0640",
+					PreLineWait = 0.35,
+					Text =
+					"...Answer me something, Zagreus. What am I to you, exactly, as of late? Because, sometimes, with you, I..."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2541",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'm sometimes at a loss myself, Thanatos. Though one thing I know is it's always really good running into you out there, it's... well, exciting. Sparring with you and all that! And then, I know it means that I might get to see you here."
+				},
+				{
+					Cue = "/VO/Thanatos_0641",
+					AngleTowardHero = true,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.2, SkipExitReaction = true },
+					Text =
+					"Well, here I am. But you didn't answer my question. Though, you know something? Forget I asked. I've got to go."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+			ThanatosAboutRelationship02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" },
+				MinRunsSinceAnyTextLines = { TextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" }, Count = 8 },
+				-- ...Good.
+				EndCue = "/VO/ZagreusHome_2545",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/ZagreusHome_2543",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, Than, tell me something, and forgive the awkward question here, but... are we good? I mean... between us. Any infuriating habits I should know about, that sort of thing?"
+				},
+				{
+					Cue = "/VO/Thanatos_0642",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"You know I don't have time to list all your infuriating habits, Zagreus. Though... if any of them were outside my usual tolerance threshold, I promise to let you know, all right?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2544",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "So then, we're good. Because I think we're good, but I just wanted to make sure."
+				},
+				{
+					Cue = "/VO/Thanatos_0643",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.2, SkipExitReaction = true },
+					Text = "We're good. See you, all right?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosAboutRelationship03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "ThanatosAboutRelationship02", "Ending01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "ThanatosAboutRelationship02" }, Count = 8 },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Definitely.
+					{ Cue = "/VO/ZagreusHome_2548" },
+				},
+				{
+					Cue = "/VO/Thanatos_0644",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PreLineWait = 0.35,
+					Text =
+					"...It just struck me how much you've changed, Zag. I still remember when you kept trying to singe Cerberus' tail with your feet. Haven't seen you do that in a while."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2546",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, I definitely learned my lesson there. But, thanks, I guess. You've opened up a lot, yourself, by the way. Talking to you lately, it's a world apart from the first time. You looked like you were going to slice my head off."
+				},
+				{
+					Cue = "/VO/Thanatos_0645",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"It sure must have taken a lot of courage for you to come right up and tell me you thought I looked better before I cut my hair. I still ask myself how come I didn't keep ignoring you after that. Or slice your head off."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2547",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Well, the option is always available, I guess. Hey, you ever think of growing it out again?"
+				},
+				{
+					Cue = "/VO/Thanatos_0646",
+					Portrait = "Portrait_Thanatos_Default_01",
+					Text =
+					"No. It kept getting in my way. Sliced it right off and never looked back. So... plenty of personal growth all around, then?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			-- ending
+			ThanatosAfterPersephoneMeeting03 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "ThanatosGift06" },
+				RequiredAnyTextLines = { "ThanatosFieldAboutPersephoneFirstMeeting01", "ThanatosAboutPersephoneMeeting02" },
+				RequiredFalseTextLinesLastRun = { "ThanatosAboutPersephoneMeeting02" },
+				RequiredFalseTextLines = { "Ending01" },
+				RequiresLastRunCleared = true,
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I hope so.
+					{ Cue = "/VO/ZagreusHome_3233" },
+				},
+				{
+					Cue = "/VO/Thanatos_0650",
+					Text =
+					"How's everything been going with your mother, Zagreus? You've been pretty quiet about the whole thing, is everything all right? You can tell me."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3232",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					Text =
+					"Thank you for asking, Than. I don't know how much more I can say right now, given everything. I'm still figuring it out myself. I'm thankful you've been there to help me get to see her from time to time."
+				},
+				{
+					Cue = "/VO/Thanatos_0651",
+					Text =
+					"Well, if there's something more that I can do to support you in this, let me know, all right? Sounds like you're making progress, at least."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosPostEnding01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "Ending01" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 20 },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					-- Bye, Than.
+					{ Cue = "/VO/ZagreusHome_3240" },
+				},
+				{
+					Cue = "/VO/Thanatos_0660",
+					Text =
+					"So, between us... all your attempting to break out of here, over and over... you're now authorized to keep that up? Exposing weaknesses in Underworld security, huh."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3238",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Something like that. I guess I've gotten pretty decent about escaping from a place that's known for being inescapable. Lets me keep in touch with the other side of the family. Work with you from time to time."
+				},
+				{
+					Cue = "/VO/Thanatos_0661",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"I have to say I never thought I'd hear you talking about looking forward to working, Zag. You feeling all right? Spending too much time on the surface, maybe?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3239",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh I'm feeling fine. I never thought I was much good at anything, but... if my fated purpose is to be a master of frustrating Father's efforts to make everything strictly perfect, I think I'm OK with that."
+				},
+				{
+					Cue = "/VO/Thanatos_0662",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 2.0, SkipExitReaction = true },
+					Text =
+					"Well, then, I'll be looking forward to working with you in a more official capacity. Even if we're still supposed to keep it all under wraps, for sake of appearances. See you out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosPostEnding02 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "Ending01", "ThanatosGift05" },
+				MinRunsSinceAnyTextLines = { TextLines = { "Ending01", "ThanatosPostEnding01" }, Count = 4 },
+				AreIdsAlive = { 555714 },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 2,
+					-- Oh I entirely agree with that.
+					{ Cue = "/VO/ZagreusHome_3235" },
+				},
+				{
+					Cue = "/VO/Thanatos_0652",
+					Text =
+					"Have to tell you, Zag. It's different, with your mother around here. Don't mean to be so obvious, but... it's something about your father, I suppose."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3234",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I think they have a lot of work ahead of them. As long as they're trying... he's trying... I think I'm good with that, for now. Though, I am glad she's here."
+				},
+				{
+					Cue = "/VO/Thanatos_0653",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.8, SkipExitReaction = true },
+					Text =
+					"I'm beginning to think we all are. And, please don't take this the wrong way, but... I think you and your father have a lot of work ahead of you, as well."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosPostEpilogue01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "OlympianReunionQuestComplete", "ThanatosGift03" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					-- Bye, Than.
+					{ Cue = "/VO/ZagreusHome_3240" },
+				},
+				{
+					Cue = "/VO/Thanatos_0658",
+					Text =
+					"Your mother's very clever, Zagreus. I always thought you got that from your father, now I'm not so sure. So all is well with the Olympians, again?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3236",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "For now, I think it is. But, you know how they are. How we all are, I guess."
+				},
+				{
+					Cue = "/VO/Thanatos_0659",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.7, SkipExitReaction = true },
+					Text =
+					"{#DialogueItalicFormat}Hah{#PreviousFormat}! Yes, indeed. Well, then! I guess enjoy it while it lasts, as mortals sometimes say. I'll see you out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+			},
+
+			ThanatosWithHades01 = {
+				Priority = true,
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "ThanatosHomeMiscMeeting01" },
+				RequiredFalseTextLines = { "Ending01" },
+				RequiredFalseValues = { CurrentEmployeeOfTheMonth = "Thanatos" },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				StatusAnimation = false,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- <Sigh>
+					{ Cue = "/VO/ZagreusHome_0788" },
+				},
+				{
+					Cue = "/VO/Hades_0354",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					Text =
+					"Such tardiness is oft to be expected from your brother, but from you, Thanatos? You're practically the god of punctuality."
+				},
+				{
+					Cue = "/VO/Thanatos_0373",
+					Text =
+					"My lord, I apologize sincerely for the lapse in my performance as of late. I think my duties following the recent war above took more of a toll from me than I expected."
+				},
+				{
+					Cue = "/VO/Hades_0355",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					Text =
+					"Thanatos, even we gods require rest from time to time. Someday we might get it around here, once this accursed House is well in order, finally. Until then, I appreciate your diligence. Do not overextend yourself."
+				},
+				{
+					Cue = "/VO/Thanatos_0374",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3, SkipExitReaction = true },
+					PostLineAnim = "Hades_HouseWritingLoop_IdleLoop_Start",
+					PostLineAnimTarget = 370006,
+					Text = "Thank you, my lord. I am at your service. I'll be getting back to my assignment now."
+				},
+			},
+
+			ThanatosWithHades02 = {
+				PlayOnce = true,
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "ThanatosWithHades01", "ThanatosGift03" },
+				RequiredFalseTextLines = { "ThanatosWithHades03" },
+				RequiredEncounterThisRun = "ThanatosTartarus",
+				RequiredFalseTextLines = { "Ending01" },
+				RequiredFalseValues = { CurrentEmployeeOfTheMonth = "Thanatos" },
+				StatusAnimation = false,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				-- <Sigh>
+				EndCue = "/VO/ZagreusField_1637",
+				EndWait = 0.3,
+				{
+					Cue = "/VO/Hades_0095",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					PreLineWait = 0.4,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.4, SkipExitReaction = true },
+					PostLineAnim = "Hades_HouseWritingLoop_IdleLoop_Start",
+					PostLineAnimTarget = 370006,
+					Text =
+					"...You have been rather slow about your duties, lately, Thanatos. And I'm receiving incident reports from Tartarus involving {#DialogueItalicFormat}you{#PreviousFormat}. Remember your responsibilities. And, remember, {#DialogueItalicFormat}I am watching you{#PreviousFormat}. Now, get out of my sight."
+				},
+			},
+
+			ThanatosWithHades03 = {
+				Priority = true,
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "ThanatosGift06" },
+				RequiredFalseTextLinesLastRun = { "ThanatosGift06" },
+				MinRunsSinceAnyTextLines = { TextLines = { "ThanatosWithHades02" }, Count = 1 },
+				RequiredFalseTextLines = { "Ending01", "ThanatosWithHades04" },
+				RequiredFalseValues = { CurrentEmployeeOfTheMonth = "Thanatos" },
+				PlayOnce = true,
+				StatusAnimation = false,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				-- <Sigh>
+				EndCue = "/VO/ZagreusHome_0788",
+				EndWait = 0.8,
+				{
+					Cue = "/VO/Hades_0625",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					PreLineAnim = "Hades_HouseFistSlam",
+					PreLineAnimTarget = 370006,
+					Emote = "PortraitEmoteAnger",
+					PreLineWait = 0.35,
+					Text =
+					"You've been abetting him, Thanatos. Behind my back! Betrayal. I would ask you {#DialogueItalicFormat}why{#PreviousFormat}. Well?"
+				},
+				{
+					Cue = "/VO/Thanatos_0473",
+					PreLineWait = 0.5,
+					Text =
+					"My lord, he and I... please. Go lock me up in Tartarus, or deal whichever justice you see fit, but... my loyalty is not subject to change. And I cannot stand by and watch you fight. The matter between you and Zagreus... there has to be some resolution, here."
+				},
+				{
+					Cue = "/VO/Hades_0626",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					PreLineWait = 0.4,
+					Text =
+					"You dare to lecture me? {#DialogueItalicFormat}Tsch{#PreviousFormat}. My loyal subjects are too few of late, I think. This is {#DialogueItalicFormat}your {#PreviousFormat}realm, not mine; I'll not cast you into that wretched pit. It's not like I have someone to replace you here, besides. Now then, begone."
+				},
+				{
+					Cue = "/VO/Thanatos_0474",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.5, SkipExitReaction = true },
+					PostLineAnim = "Hades_HouseWritingLoop_IdleLoop_Start",
+					PostLineAnimTarget = 370006,
+					Text = "I'm deeply sorry, lord..."
+				},
+			},
+
+			ThanatosWithHades04 = {
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "ThanatosGift06", "Ending01", "LordHadesPostEnding01" },
+				RequiredFalseTextLinesLastRun = { "ThanatosGift06", "Ending01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "ThanatosWithHades01", "ThanatosWithHades02", "ThanatosWithHades03" }, Count = 10 },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				{
+					Cue = "/VO/Thanatos_0546",
+					PreLineWait = 0.5,
+					Text = "You wished to see me once again, my lord? It's been... a while since I had an audience with you."
+				},
+				{
+					Cue = "/VO/Hades_1186",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					PreLineWait = 0.35,
+					Text =
+					"It has. The last time, what was it you said? That there must be some resolution to the {#DialogueItalicFormat}matter{#PreviousFormat}, as you called it, with my son? Well it is settled, now. Isn't it, boy?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3429",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I mean, you're still trying just as hard as ever to prevent me from escaping past the threshold of your realm, so, I don't know if I'd exactly call the matter {#DialogueItalicFormat}settled{#PreviousFormat}. But... it does feel different, now."
+				},
+				{
+					Cue = "/VO/Hades_1187",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					PreLineWait = 0.35,
+					Text =
+					"And so you see... I would continue in our mutual good graces, if you please. This House can only function if the upper management is in accord. What do you say?"
+				},
+				{
+					Cue = "/VO/Thanatos_0547",
+					PreLineWait = 0.4,
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"I say, you honor me, my lord. I appreciate you telling me, yourself. And I concur that, for the good of all the Underworld, it is imperative that each of us continue to perform at our full strength."
+				},
+				{
+					Cue = "/VO/Hades_1188",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.4, SkipExitReaction = true },
+					PostLineAnim = "Hades_HouseWritingLoop_IdleLoop_Start",
+					PostLineAnimTarget = 370006,
+					Text = "Then, as you were. Dismissed."
+				},
+			},
+
+			ThanatosWithHypnos01 = {
+				Partner = "NPC_Hypnos_01",
+				PlayOnce = true,
+				RequiredMinNPCInteractions = { NPC_Thanatos_01 = 1 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.8,
+					UsePlayerSource = true,
+					-- Oh...
+					{ Cue = "/VO/ZagreusHome_0561" },
+				},
+				{
+					Cue = "/VO/Thanatos_0218",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"Hypnos, really, that is the worst idea I think I've ever heard. Do you understand how little sense that makes?"
+				},
+				{
+					Cue = "/VO/Hypnos_0086",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					PreLineAnim = "HypnosIdleGreeting",
+					PreLineAnimTarget = 370024,
+					Emote = "PortraitEmoteCheerful",
+					Text =
+					"I'm just saying, maybe if you just, I don't know, had all the mortals die at the same time, it'd save you a bunch of trips, and then we'd have more time to spend together, huh?"
+				},
+				{
+					Cue = "/VO/Thanatos_0219",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", SkipExitReaction = true },
+					Text = "I don't know why I bother with you, honestly. Get back to work, and let me do the same."
+				},
+			},
+			ThanatosWithHypnos02 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredTextLines = { "ThanatosWithHades01", "ThanatosWithHypnos01" },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.9,
+					UsePlayerSource = true,
+					-- Oof.
+					{ Cue = "/VO/ZagreusField_1146" },
+				},
+				{
+					Cue = "/VO/Thanatos_0220",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text = "You cannot keep falling asleep on the job like this, Hypnos. This is completely unacceptable."
+				},
+				{
+					Cue = "/VO/Hypnos_0087",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					Text =
+					"Oh I just nodded off a little while, Thanatos! I rest easy knowing that you're here! But if I goofed, why, I guess you could kill me dead, or something, huh?"
+				},
+				{
+					Cue = "/VO/Thanatos_0221",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", SkipExitReaction = true },
+					Text =
+					"Don't give me any ideas. Pull yourself together, and quit slacking off. The House needs help, and you've got a job to do. Now get to it!"
+				},
+			},
+			-- brothers quest
+			ThanatosWithHypnos03 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredAnyTextLines = { "Ending01", "ThanatosAboutHypnos02" },
+				MinRunsSinceAnyTextLines = { TextLines = { "ThanatosAboutHypnos02" }, Count = 1 },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.7,
+					UsePlayerSource = true,
+					-- Oof, sorry Hypnos.
+					{ Cue = "/VO/ZagreusHome_2774" },
+				},
+				{
+					Cue = "/VO/Thanatos_0632",
+					PreLineWait = 0.3,
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Emote = "PortraitEmoteDepressed",
+					Text =
+					"...Hypnos, this list has a bunch of tasks from I don't know how long ago, I mean... I took several of these last year! And you've already submitted this week's registrations, why isn't that marked complete?"
+				},
+				{
+					Cue = "/VO/Hypnos_0193",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					Emote = "PortraitEmoteCheerful",
+					Text =
+					"Don't you know it, I was just about to get to that! Then you showed up, and I got so distracted, it just kind of slipped my mind! It happens, right?"
+				},
+				{
+					Cue = "/VO/Thanatos_0633",
+					Text =
+					"You need to focus, Brother. Or it'll be Lord Hades reprimanding you again, and that is not something you want."
+				},
+				{
+					Cue = "/VO/Hypnos_0194",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					PreLineAnim = "HypnosIdleGreeting",
+					PreLineAnimTarget = 370024,
+					Speaker = "NPC_Hypnos_01",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", SkipExitReaction = true, WaitTime = 0.3 },
+					Text =
+					"Oh, I don't know about that, last time I talked to Master he made {#DialogueItalicFormat}pretty clear {#PreviousFormat}he never wanted to speak to me again!"
+				},
+			},
+			-- brothers quest
+			ThanatosWithHypnos04 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredTextLines = { "ThanatosWithHypnos03" },
+				MinRunsSinceAnyTextLines = { TextLines = { "ThanatosWithHypnos03" }, Count = 2 },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					ObjectType = "NPC_Hypnos_01",
+					-- Don't worry, I won't!
+					{ Cue = "/VO/Hypnos_0198" },
+				},
+				{
+					Cue = "/VO/Thanatos_0536",
+					PreLineWait = 0.3,
+					Text =
+					"Hypnos, you're not irreplaceable, you understand? If you don't shape up, quickly, someone else is going to have your job."
+				},
+				{
+					Cue = "/VO/Hypnos_0197",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					Emote = "PortraitEmoteCheerful",
+					PreLineAnim = "HypnosIdleGreeting",
+					PreLineAnimTarget = 370024,
+					Text =
+					"Oh I hear you loud and clear, Thanatos! And, let me tell you, they will have the {#DialogueItalicFormat}greatest job in all the Underworld{#PreviousFormat}!"
+				},
+				{
+					Cue = "/VO/Thanatos_0537",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 2.2, SkipExitReaction = true },
+					Text =
+					"I feel like I'm not getting through to you, Brother. Well, after the inevitable happens, don't come telling me I didn't try."
+				},
+			},
+			-- brothers quest
+			ThanatosWithHypnos05 = {
+				Priority = true,
+				Partner = "NPC_Hypnos_01",
+				RequiredTextLines = { "ThanatosWithHypnos04", "HypnosGift04" },
+				MinRunsSinceAnyTextLines = { TextLines = { "ThanatosWithHypnos04" }, Count = 2 },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					ObjectType = "NPC_Thanatos_01",
+					-- If that'll be all?
+					{ Cue = "/VO/Thanatos_0155" },
+				},
+				{
+					Cue = "/VO/Thanatos_0634",
+					PreLineWait = 0.35,
+					Text =
+					"...Well, how often do you consult these lists you make? If you're spending too much time just making lists, you're not leaving time to get anything done."
+				},
+				{
+					Cue = "/VO/Hypnos_0195",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					Emote = "PortraitEmoteAffection",
+					PreLineAnim = "HypnosIdleGreeting",
+					PreLineAnimTarget = 370024,
+					Text =
+					"Oh, I {#DialogueItalicFormat}love {#PreviousFormat}making my lists... I always illustrate the edges, each one is {#DialogueItalicFormat}unique{#PreviousFormat}! That way anyone who gets to review the work, it's a whole {#DialogueItalicFormat}experience{#PreviousFormat}, you know? But... I guess it does take up a lot of time."
+				},
+				{
+					Cue = "/VO/Thanatos_0635",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Text =
+					"You'll have to work around the constraints of your responsibilities. You do take breaks, don't you? Before and after each break, maybe that's a time to make sure your own list of priorities is up-to-date."
+				},
+				{
+					Cue = "/VO/Hypnos_0196",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 2.1, SkipExitReaction = true },
+					Text =
+					"Wait, my own list of priorities...? But, you're saying I can just go and make a list... for me? Huh. Whoa. {#DialogueItalicFormat}Whoa{#PreviousFormat}...."
+				},
+			},
+			-- brothers quest
+			ThanatosWithHypnos06 = {
+				Priority = true,
+				Partner = "NPC_Hypnos_01",
+				RequiredTextLines = { "ThanatosWithHypnos05", "HypnosGift05", "ThanatosGift05" },
+				MinRunsSinceAnyTextLines = { TextLines = { "ThanatosWithHypnos05" }, Count = 3 },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.4,
+						UsePlayerSource = true,
+						ObjectType = "NPC_Hypnos_01",
+						-- Aww, thanks!
+						{ Cue = "/VO/Hypnos_0200", PreLineAnim = "HypnosIdleGreeting" },
+					},
+					{
+						PreLineWait = 0.15,
+						UsePlayerSource = true,
+						-- Good work, Hypnos!
+						{ Cue = "/VO/ZagreusHome_2777" },
+					},
+				},
+				{
+					Cue = "/VO/Thanatos_0538",
+					PreLineWait = 0.3,
+					Text =
+					"I've heard that your reports have been immaculate of late, Hypnos. I have to know, who's helping you with them? It can't be Zagreus."
+				},
+				{
+					Cue = "/VO/Hypnos_0199",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					Emote = "PortraitEmoteAffection",
+					PreLineAnim = "HypnosIdleGreeting",
+					PreLineAnimTarget = 370024,
+					Text =
+					"Oh, {#DialogueItalicFormat}haha{#PreviousFormat}, no, he doesn't help. It's just I took to listing only the important stuff up top, and spending just a bit more time on the priority reports, and... guess it's working out!"
+				},
+				{
+					Cue = "/VO/Thanatos_0539",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 2.1, SkipExitReaction = true },
+					Text = "Look, whatever the case... the work's improved. It's been observed. You ought to keep it up."
+				},
+			},
+			-- brothers quest
+			ThanatosWithHypnos07 = {
+				Priority = true,
+				Partner = "NPC_Hypnos_01",
+				RequiredTextLines = { "ThanatosWithHypnos06", "HypnosGift06" },
+				MinRunsSinceAnyTextLines = { TextLines = { "ThanatosWithHypnos06" }, Count = 2 },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					ObjectType = "NPC_Hypnos_01",
+					-- Huh, that is right!
+					{ Cue = "/VO/Hypnos_0202" },
+				},
+				{
+					Cue = "/VO/Thanatos_0540",
+					PreLineWait = 0.3,
+					Text =
+					"...Though, what I mean to say is, that... I'm sorry, Hypnos. You're my brother, but I haven't always treated you that way. Would you be willing to forgive me?"
+				},
+				{
+					Cue = "/VO/Hypnos_0201",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					Emote = "PortraitEmoteAffection",
+					PreLineAnim = "HypnosIdleGreeting",
+					PreLineAnimTarget = 370024,
+					Text =
+					"Aww, come on, Thanatos, are you kidding me, right here? We're like two skeletons in a crypt! You're the best, and you're always looking out for me. Even when you're not around for what can seem like aeons at a time!"
+				},
+				{
+					Cue = "/VO/Thanatos_0541",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 2.4, SkipExitReaction = true },
+					Text =
+					"Well let's not get ahead of ourselves, here. We each have got important jobs to do. Isn't that right, Brother?"
+				},
+			},
+			-- brothers quest
+			ThanatosWithHypnos08 = {
+				Priority = true,
+				Partner = "NPC_Hypnos_01",
+				RequiredTextLines = { "ThanatosWithHypnos07", "ThanatosAboutHypnos03" },
+				MinRunsSinceAnyTextLines = { TextLines = { "ThanatosWithHypnos07" }, Count = 2 },
+				RequiredValues = { CurrentEmployeeOfTheMonth = "Hypnos" },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.4,
+						UsePlayerSource = true,
+						ObjectType = "NPC_Hypnos_01",
+						-- Will do!
+						{ Cue = "/VO/Hypnos_0204" },
+					},
+					{
+						PreLineWait = 0.15,
+						UsePlayerSource = true,
+						-- Hey, he did it.
+						{ Cue = "/VO/ZagreusHome_2776" },
+					},
+				},
+				{
+					Cue = "/VO/Thanatos_0636",
+					PreLineWait = 0.35,
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "...Congratulations, Brother! I saw you finally made the board. You made us proud."
+				},
+				{
+					Cue = "/VO/Hypnos_0203",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					Emote = "PortraitEmoteCheerful",
+					Text =
+					"Sure did! That's something, huh? Though, sorry Thanatos, can't really chat right now, the shades are stacking up, there's greetings to be done, and sign-ins... lots of work to do, you know?"
+				},
+				{
+					Cue = "/VO/Thanatos_0637",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 2.1, SkipExitReaction = true },
+					Text = "I definitely know the feeling. Well then, let's keep it up, the both of us, all right?"
+				},
+			},
+
+			ThanatosWithNyx01 = {
+				PlayOnce = true,
+				Partner = "NPC_Nyx_01",
+				RequiredAnyTextLines = { "ThanatosGift01", "NyxGift02" },
+				RequiredFalseTextLinesThisRun = { "PersephoneFirstMeeting", "Ending01", "OlympianReunionQuestComplete" },
+				MinRunsSinceAnyTextLines = { TextLines = { "NyxAboutDusa04" }, Count = 4 },
+				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -120,
+				TeleportOffsetY = 30,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					ObjectType = "NPC_Nyx_01",
+					-- Farewell.
+					{ Cue = "/VO/Nyx_0137" },
+				},
+				{
+					Cue = "/VO/Thanatos_0542",
+					Text =
+					"Mother, is there something I can do to help, with all of this? I spend too much time away from the House. Please, let me know."
+				},
+				{
+					Cue = "/VO/Nyx_0136",
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					PreLineWait = 0.35,
+					Text =
+					"You are already doing what you can to help, my son. Continue doing so. Matters are at stake here concerning you and all of us. Your support and choices in this shape the outcome that shall come to pass."
+				},
+				{
+					Cue = "/VO/Thanatos_0543",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 2.1, SkipExitReaction = true },
+					Text =
+					"I understand, and I will do my best. Thank you for taking care of everything. I've every faith in you, Mother. And in this House. Farewell."
+				},
+			},
+			ThanatosWithNyx02 = {
+				PlayOnce = true,
+				Partner = "NPC_Nyx_01",
+				RequiredTextLines = { "OlympianReunionQuestComplete", "ThanatosGift10", "NyxGift09" },
+				MinRunsSinceAnyTextLines = { TextLines = { "OlympianReunionQuestComplete", "NyxAboutDusa04" }, Count = 5 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -120,
+				TeleportOffsetY = 30,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.45,
+						ObjectType = "NPC_Nyx_01",
+						-- Thank you, my son.
+						{ Cue = "/VO/Nyx_0298" },
+					},
+					{
+						PreLineWait = 0.15,
+						UsePlayerSource = true,
+						-- Heh.
+						{ Cue = "/VO/ZagreusHome_3190" },
+					},
+				},
+				{
+					Cue = "/VO/Thanatos_0554",
+					Text =
+					"Am I imagining it, Mother, or has this House been running relatively smoothly as of late? Although I know I must be tempting the Three Fates by putting it like this."
+				},
+				{
+					Cue = "/VO/Nyx_0297",
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					Text =
+					"It is through a concerted effort that the House thus thrives, for now. Though, it shall do so only through continued diligence on your behalf, and that of many others here. It is a good occasion to take brief reprieve. But we need you working to the best of your ability, here, Thanatos."
+				},
+				{
+					Cue = "/VO/Thanatos_0555",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 2.1, SkipExitReaction = true },
+					Text =
+					"Well... know that I am ever-grateful, Mother. And I love you very much. Where would we be right now if not for you? I don't take what you've done for us for granted, nor does anybody here. You rest assured."
+				},
+			},
+
+			ThanatosWithMegaera01 = {
+				PlayOnce = true,
+				Partner = "NPC_FurySister_01",
+				RequiredAnyTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt", "MegaeraMeeting01_Alt_B", "ThanatosGift01" },
+				RequiredMinNPCInteractions = { NPC_Thanatos_01 = 1 },
+				RequiredFalseTextLines = { "MegaeraGift08" },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				StatusAnimation = false,
+				TeleportToId = 390082,
+				TeleportOffsetX = -185,
+				TeleportOffsetY = 50,
+				AngleTowardTargetId = 390082,
+				InteractDistance = 300,
+				{
+					Cue = "/VO/MegaeraHome_0017",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					Speaker = "NPC_FurySister_01",
+					PreLineWait = 0.35,
+					Text =
+					"...But that was then and this is now, and we have work to do.... {#DialogueItalicFormat}Uh{#PreviousFormat}, anyway, Than, I think we'd best continue this discussion at some other time."
+				},
+				{
+					Cue = "/VO/Thanatos_0393",
+					Text = "You're interrupting private conversation, Zagreus. Leave us."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0018",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					Speaker = "NPC_FurySister_01",
+					Text =
+					"No, let him stay, if that's what he wants. What does it matter? He's technically allowed within these halls, but he must know he isn't welcome anymore."
+				},
+			},
+
+			ThanatosWithPersephone01 = {
+				PlayOnce = true,
+				Partner = "NPC_Persephone_Home_01",
+				RequiredTextLines = { "Ending01", "PersephoneHomeMeeting01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 4 },
+				MaxRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 40 },
+				RequiredFalseFlags = { "PersephoneGoingAway" },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 555714,
+				TeleportOffsetX = -65,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 555714,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					ObjectType = "NPC_Persephone_Home_01",
+					-- I know how mortals hate waiting around!
+					{ Cue = "/VO/Persephone_0181" },
+				},
+				{
+					Cue = "/VO/Thanatos_0654",
+					Text =
+					"Queen Persephone. All of us, we are most pleased you're back. If there is anything that I can do to ease your acclimation to this House, you need but ask."
+				},
+				{
+					Cue = "/VO/Persephone_0180",
+					Portrait = "Portrait_Persephone_Queen_01",
+					Speaker = "NPC_Persephone_Home_01",
+					PreLineAnim = "PersephoneUnderworld_Vulnerable",
+					PreLineAnimTarget = 555714,
+					Text =
+					"Why, thank you, Thanatos! I'll take you up on that if I can think of anything anytime soon. But my, you've grown! I understand you've been looking after my son, in the meantime?"
+				},
+				{
+					Cue = "/VO/Thanatos_0655",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 3.5, SkipExitReaction = true },
+					Text =
+					"Your son, he... is very capable of looking after himself, it turns out. Although I try to be there, just in case. Though, I must beg your pardon, Queen. Someone awaits me on the surface now."
+				},
+			},
+			ThanatosWithPersephone02 = {
+				PlayOnce = true,
+				Partner = "NPC_Persephone_Home_01",
+				RequiredTextLines = { "ThanatosWithPersephone01", "ThanatosWithHypnos07" },
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" },
+				MinRunsSinceAnyTextLines = { TextLines = { "ThanatosWithPersephone01" }, Count = 15 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 555714,
+				TeleportOffsetX = -65,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 555714,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					ObjectType = "NPC_Persephone_Home_01",
+					-- All right!
+					{ Cue = "/VO/Persephone_0131" },
+				},
+				{
+					Cue = "/VO/Thanatos_0656",
+					PreLineWait = 0.35,
+					Text =
+					"...I thank you for your blessings, Queen Persephone. Your son and I... we always were quite close, but through all this ordeal, we've become rather inseparable, I think."
+				},
+				{
+					Cue = "/VO/Persephone_0182",
+					Portrait = "Portrait_Persephone_Queen_01",
+					Speaker = "NPC_Persephone_Home_01",
+					PreLineAnim = "PersephoneUnderworld_Greeting",
+					PreLineAnimTarget = 555714,
+					Text =
+					"Well, I can see that he has better taste than I do, Thanatos! I have a sense of how industrious you are. You just take care of yourself, please. And take care of each other, too, all right?"
+				},
+				{
+					Cue = "/VO/Thanatos_0657",
+					PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.5, SkipExitReaction = true },
+					Text = "As you will, Queen. I mean, all right."
+				},
+			},
+		},
+		RepeatableTextLineSets = {
+			ThanatosHomeChat01 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0002",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "Sorry, Zagreus, I have to go. Lots of assignments as of late. Too bad I can't be everywhere at once."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat02 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "ThanatosGift06", },
+				{
+					Cue = "/VO/Thanatos_0003",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "No use in making idle chat, right, Zagreus?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat03 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "ThanatosGift06", "PersephoneMeeting06", "ThanatosAboutStaying01" },
+				{
+					Cue = "/VO/Thanatos_0004",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "I have a job to do, and you've no interest in remaining here. See you around out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat04 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "ThanatosGift06", },
+				{
+					Cue = "/VO/Thanatos_0005",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "Don't bother, Zagreus. I was just leaving."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat05 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "Ending01", "ThanatosGift07_A", "ThanatosGift07", },
+				{
+					Cue = "/VO/Thanatos_0006",
+					Text = "I hope you've thought through all of this. For both our sakes."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat06 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseDeathEncounters = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro" },
+				RequiredFalseTextLines = { "Ending01", "ThanatosGift06" },
+				{
+					Cue = "/VO/Thanatos_0007",
+					Text = "I can't keep bailing you out each time you get in over your head."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat07 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				RequiredFalseTextLines = { "Ending01" },
+				{
+					Cue = "/VO/Thanatos_0008",
+					Text = "I have to say it's quite a mess you've gotten yourself into, Zagreus."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat08 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift03" },
+				RequiredFalseTextLines = { "Ending01" },
+				{
+					Cue = "/VO/Thanatos_0009",
+					Text = "You better know what you're doing."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat09 = {
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "ThanatosGift06", },
+				{
+					Cue = "/VO/Thanatos_0010",
+					Text = "You're wasting your time. Just go."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat10 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "ThanatosGift06", },
+				{
+					Cue = "/VO/Thanatos_0011",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.35 },
+					Text = "Shouldn't you be back out there by now, getting yourself killed?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat11 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseDeathEncounters = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro" },
+				RequiredFalseTextLines = { "Ending01", "ThanatosGift06" },
+				RequiredRoom = "DeathArea",
+				{
+					Cue = "/VO/Thanatos_0012",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "You know how much trouble I am getting myself into here?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat12 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "ThanatosGift04", "ThanatosGift04_B" },
+				{
+					Cue = "/VO/Thanatos_0013",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "There's nothing left for us to talk about."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat13 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "ThanatosGift03", },
+				{
+					Cue = "/VO/Thanatos_0014",
+					Text = "Don't talk to me. Just go."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat14 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "ThanatosGift06", },
+				{
+					Cue = "/VO/Thanatos_0015",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "Excuse me, I've got work to do."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat15 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				{
+					Cue = "/VO/Thanatos_0016",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "Not now, I have to go."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat16 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "ThanatosGift010", },
+				{
+					Cue = "/VO/Thanatos_0017",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "I don't know what you want from me."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat17 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "ThanatosGift07", "ThanatosGift07_A" },
+				{
+					Cue = "/VO/Thanatos_0018",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "I have to get back to my responsibilities."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat18 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "Ending01" },
+				{
+					Cue = "/VO/Thanatos_0019",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "You are in so much trouble."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat19 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "ThanatosGift08", },
+				{
+					Cue = "/VO/Thanatos_0020",
+					Text = "You watch yourself out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			-- relationship improved
+			ThanatosHomeChat20 = {
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift06", },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0021",
+					Text = "Take care of yourself."
+				},
+			},
+			ThanatosHomeChat21 = {
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift06", },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0022",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "I'll see you out there, I guess."
+				},
+			},
+			ThanatosHomeChat22 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift03", },
+				RequiredFalseTextLines = { "Ending01" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0023",
+					Text = "I hope all this is worth it."
+				},
+			},
+			ThanatosHomeChat23 = {
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift06", },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0024",
+					Text = "We'll meet again out there."
+				},
+			},
+			ThanatosHomeChat24 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift03", },
+				RequiredFalseTextLines = { "Ending01" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0025",
+					Text = "I hope you know what you're doing."
+				},
+			},
+			ThanatosHomeChat25 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" },
+				{
+					Cue = "/VO/Thanatos_0026",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "Can't talk right now, I have to get to work."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat26 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0027",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "I need to get to work. I'll see you later."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat27 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "Ending01" },
+				RequiredTextLines = { "ThanatosGift01" },
+				{
+					Cue = "/VO/Thanatos_0028",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "Your father's going to have my hide."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat28 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "Ending01" },
+				RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" },
+				{
+					Cue = "/VO/Thanatos_0029",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "I am in so much trouble, you have no idea..."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeChat29 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredFalseTextLines = { "Ending01" },
+				RequiredTextLines = { "ThanatosGift03" },
+				{
+					Cue = "/VO/Thanatos_0030",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "What have I gotten myself into, Zag..."
+				},
+			},
+
+			-- max relationship
+			ThanatosHomeMaxChat01 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift05" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0439",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "Much as I would like to stay and chat, I'd better go."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat02 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift08" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0440",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "Zag, I've got so many mortals on my plate right now..."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat03 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift07_A" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0441",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "See you out there soon enough, all right?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat04 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift10" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0442",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "If you stay out too long, I'm going to track you down."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat05 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift06" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0443",
+					Text = "Sounds like we've both been keeping plenty busy as of late."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat06 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift06" },
+				{
+					Cue = "/VO/Thanatos_0444",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.5 },
+					Text = "Now that you're here, I can finally head out."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat07 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift06" },
+				{
+					Cue = "/VO/Thanatos_0445",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "We'll have to catch up more some other time."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat08 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift09" },
+				{
+					Cue = "/VO/Thanatos_0446",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "Sorry Zag, I'm due to get a bunch of mortals now."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat09 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift06" },
+				{
+					Cue = "/VO/Thanatos_0447",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited" },
+					Text = "Excuse me, Zag, just got word that I'm needed back up top."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat10 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift08" },
+				RequiredFalseTextLines = { "Ending01" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0448",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Hope your father's going to be all right with all of this."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat11 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift06" },
+				RequiredFalseDeathEncounters = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro" },
+				{
+					Cue = "/VO/Thanatos_0449",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "We showed those wretches last time, didn't we."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat12 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift10" },
+				RequiresRunCleared = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0450",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Good running into you out there, and glad you made it out."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat13 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift08" },
+				RequiresRunCleared = true,
+				RequiredTextLines = { "PersephoneMeeting02" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0451",
+					Text = "Impressive that you went the distance once again."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat14 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift08" },
+				RequiresRunCleared = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0452",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Was good having an opportunity to back you up out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat15 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift08" },
+				RequiresRunCleared = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
+				{
+					Cue = "/VO/Thanatos_0453",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "I heard you did good work out there last time."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat16 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift10" },
+				RequiresRunCleared = true,
+				{
+					Cue = "/VO/Thanatos_0454",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "The shades are murmuring about your latest exploits, Zag."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+			ThanatosHomeMaxChat17 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredRoom = "DeathArea",
+				RequiredTextLines = { "ThanatosGift05" },
+				RequiredRoomThisRun = "D_Hub",
+				{
+					Cue = "/VO/Thanatos_0455",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.6 },
+					Text = "Don't have a lot of time for catching up right now, here, Zag."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+			},
+
+			-- intermission scenes
+			-- alt ids: { 422142 (m), 422255 (t), }
+			ThanatosHomeIntermissionChat01 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				StatusAnimation = "StatusIconWantsToSmooch",
+				RequiredRoom = "DeathArea",
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" },
+				RequiredFalseQueuedTextLines = { "MegIntermissionChat01", "MegIntermissionChat02", "MegIntermissionChat03", "MegIntermissionChat04", "MegIntermissionChat05", "MegIntermissionChat06" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
+				-- prevent a progstop
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				AreIdsAlive = { 390082 },
+				{
+					Cue = "/VO/Thanatos_0456",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PortraitExitAnimation = "Portrait_Thanatos_Pleased_01_Exit",
+					AngleTowardHero = true,
+					PostLineThreadedFunctionName = "BedroomIntermissionPresentation",
+					PostLineFunctionArgs = { Partner = "Thanatos", UseRandomSounds = true },
+					Text = "You're not in too much of a hurry, are you, Zag?"
+				},
+				{
+					Cue = "/VO/Thanatos_0457",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					FadeOutTime = 0.5,
+					FadeOutEndSound = "/SFX/Menu Sounds/WeaponUnlockPoof",
+					FullFadeTime = 7.5,
+					LoadMap = "DeathAreaBedroom",
+					SpawnOnId = 422253,
+					AngleTowardHero = true,
+					TeleportHeroToId = 422254,
+					AngleHeroTowardTargetId = 422253,
+					FadeInTime = 2.5,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3 },
+					PostLineGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+					Text = "Well then... some mortal up there's lived a good, long life."
+				},
+			},
+			ThanatosHomeIntermissionChat02 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				StatusAnimation = "StatusIconWantsToSmooch",
+				RequiredRoom = "DeathArea",
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
+				RequiredFalseQueuedTextLines = { "MegIntermissionChat01", "MegIntermissionChat02", "MegIntermissionChat03", "MegIntermissionChat04", "MegIntermissionChat05", "MegIntermissionChat06" },
+				-- prevent a progstop
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				AreIdsAlive = { 390082 },
+				{
+					Cue = "/VO/Thanatos_0458",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PortraitExitAnimation = "Portrait_Thanatos_Pleased_01_Exit",
+					AngleTowardHero = true,
+					PostLineThreadedFunctionName = "BedroomIntermissionPresentation",
+					PostLineFunctionArgs = { Partner = "Thanatos", UseRandomSounds = true },
+					Text = "Mind if I practice my ability to shift short distances with someone else?"
+				},
+				{
+					Cue = "/VO/Thanatos_0459",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					FadeOutTime = 0.5,
+					FadeOutEndSound = "/SFX/Menu Sounds/WeaponUnlockPoof",
+					FullFadeTime = 7.5,
+					LoadMap = "DeathAreaBedroom",
+					SpawnOnId = 422253,
+					AngleTowardHero = true,
+					TeleportHeroToId = 422254,
+					AngleHeroTowardTargetId = 422253,
+					FadeInTime = 2.5,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3 },
+					PostLineGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+					Text = "Well... I'd say that test was a success, wouldn't you?"
+				},
+			},
+			ThanatosHomeIntermissionChat03 = {
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				StatusAnimation = "StatusIconWantsToSmooch",
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
+				RequiredFalseQueuedTextLines = { "MegIntermissionChat01", "MegIntermissionChat02", "MegIntermissionChat03", "MegIntermissionChat04", "MegIntermissionChat05", "MegIntermissionChat06" },
+				-- prevent a progstop
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				AreIdsAlive = { 390082 },
+				{
+					Cue = "/VO/Thanatos_0460",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PortraitExitAnimation = "Portrait_Thanatos_Pleased_01_Exit",
+					AngleTowardHero = true,
+					PostLineThreadedFunctionName = "BedroomIntermissionPresentation",
+					PostLineFunctionArgs = { Partner = "Thanatos", UseRandomSounds = true },
+					Text = "I have to shift away from here, though if you'd care to join me..."
+				},
+				{
+					Cue = "/VO/Thanatos_0461",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					FadeOutTime = 0.5,
+					FadeOutEndSound = "/SFX/Menu Sounds/WeaponUnlockPoof",
+					FullFadeTime = 7.5,
+					LoadMap = "DeathAreaBedroom",
+					SpawnOnId = 422253,
+					AngleTowardHero = true,
+					TeleportHeroToId = 422254,
+					AngleHeroTowardTargetId = 422253,
+					FadeInTime = 2.5,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3 },
+					PostLineGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+					Text = "Too bad I can't just shift you to the top, though this wasn't so bad."
+				},
+			},
+			ThanatosHomeIntermissionChat04 = {
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				StatusAnimation = "StatusIconWantsToSmooch",
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
+				RequiredFalseQueuedTextLines = { "MegIntermissionChat01", "MegIntermissionChat02", "MegIntermissionChat03", "MegIntermissionChat04", "MegIntermissionChat05", "MegIntermissionChat06" },
+				-- prevent a progstop
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				AreIdsAlive = { 390082 },
+				{
+					Cue = "/VO/Thanatos_0462",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PortraitExitAnimation = "Portrait_Thanatos_Pleased_01_Exit",
+					AngleTowardHero = true,
+					PostLineThreadedFunctionName = "BedroomIntermissionPresentation",
+					PostLineFunctionArgs = { Partner = "Thanatos", UseRandomSounds = true },
+					Text = "Hey let's get out of here for just a bit, all right?"
+				},
+				{
+					Cue = "/VO/Thanatos_0463",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					FadeOutTime = 0.5,
+					FadeOutEndSound = "/SFX/Menu Sounds/WeaponUnlockPoof",
+					FullFadeTime = 7.5,
+					LoadMap = "DeathAreaBedroom",
+					SpawnOnId = 422253,
+					AngleTowardHero = true,
+					TeleportHeroToId = 422254,
+					AngleHeroTowardTargetId = 422253,
+					FadeInTime = 2.5,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3 },
+					PostLineGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+					Text = "Whew. Thanks for the break, now back to it, I guess."
+				},
+			},
+			ThanatosHomeIntermissionChat05 = {
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				StatusAnimation = "StatusIconWantsToSmooch",
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
+				RequiredFalseQueuedTextLines = { "MegIntermissionChat01", "MegIntermissionChat02", "MegIntermissionChat03", "MegIntermissionChat04", "MegIntermissionChat05", "MegIntermissionChat06" },
+				-- prevent a progstop
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				AreIdsAlive = { 390082 },
+				{
+					Cue = "/VO/Thanatos_0464",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PortraitExitAnimation = "Portrait_Thanatos_Pleased_01_Exit",
+					AngleTowardHero = true,
+					PostLineThreadedFunctionName = "BedroomIntermissionPresentation",
+					PostLineFunctionArgs = { Partner = "Thanatos", UseRandomSounds = true },
+					Text = "Was just about to go on break, if you would care to join me."
+				},
+				{
+					Cue = "/VO/Thanatos_0465",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					FadeOutTime = 0.5,
+					FadeOutEndSound = "/SFX/Menu Sounds/WeaponUnlockPoof",
+					FullFadeTime = 7.5,
+					LoadMap = "DeathAreaBedroom",
+					SpawnOnId = 422253,
+					AngleTowardHero = true,
+					TeleportHeroToId = 422254,
+					AngleHeroTowardTargetId = 422253,
+					FadeInTime = 2.5,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3 },
+					PostLineGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+					Text = "Good catching up. Take care of yourself, Zag."
+				},
+			},
+			ThanatosHomeIntermissionChat06 = {
+				UseableOffSource = true,
+				RequiredRoom = "DeathArea",
+				StatusAnimation = "StatusIconWantsToSmooch",
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
+				RequiredFalseQueuedTextLines = { "MegIntermissionChat01", "MegIntermissionChat02", "MegIntermissionChat03", "MegIntermissionChat04", "MegIntermissionChat05", "MegIntermissionChat06" },
+				-- prevent a progstop
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				AreIdsAlive = { 390082 },
+				{
+					Cue = "/VO/Thanatos_0466",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PortraitExitAnimation = "Portrait_Thanatos_Pleased_01_Exit",
+					AngleTowardHero = true,
+					PostLineThreadedFunctionName = "BedroomIntermissionPresentation",
+					PostLineFunctionArgs = { Partner = "Thanatos", UseRandomSounds = true },
+					Text = "I think you'd better head back to your quarters, Zagreus."
+				},
+				{
+					Cue = "/VO/Thanatos_0467",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					FadeOutTime = 0.5,
+					FadeOutEndSound = "/SFX/Menu Sounds/WeaponUnlockPoof",
+					FullFadeTime = 7.5,
+					LoadMap = "DeathAreaBedroom",
+					SpawnOnId = 422253,
+					AngleTowardHero = true,
+					TeleportHeroToId = 422254,
+					AngleHeroTowardTargetId = 422253,
+					FadeInTime = 2.5,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3 },
+					PostLineGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+					Text = "Mm. I'd best get back to my responsibilities for now."
+				},
+			},
+
+			-- max relationship w/ Meg
+			ThanatosChatWithMegaera01 = {
+				Partner = "NPC_FurySister_01",
+				RequiredFalseTextLinesThisRun = { "Ending01" },
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" },
+				RequiredAnyOtherTextLines = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanPartnerRepeatableTextLines, Count = 16 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 390082,
+				TeleportOffsetX = -185,
+				TeleportOffsetY = 50,
+				AngleTowardTargetId = 390082,
+				{
+					Cue = "/VO/MegaeraHome_0249",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Speaker = "NPC_FurySister_01",
+					Text = "This is a private chat, if you'll excuse us, Zag."
+				},
+				{
+					Cue = "/VO/Thanatos_0475",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "We'll see you later out there, Zagreus."
+				},
+			},
+			ThanatosChatWithMegaera02 = {
+				Partner = "NPC_FurySister_01",
+				RequiredFalseTextLinesThisRun = { "Ending01" },
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" },
+				RequiredAnyOtherTextLines = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanPartnerRepeatableTextLines, Count = 18 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 390082,
+				TeleportOffsetX = -185,
+				TeleportOffsetY = 50,
+				AngleTowardTargetId = 390082,
+				{
+					Cue = "/VO/Thanatos_0476",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Just catching up on things with Megaera here, Zag."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0245",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Speaker = "NPC_FurySister_01",
+					Text = "We were just talking about you, Zagreus."
+				},
+			},
+			ThanatosChatWithMegaera03 = {
+				Partner = "NPC_FurySister_01",
+				RequiredFalseTextLinesThisRun = { "Ending01" },
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" },
+				RequiredAnyOtherTextLines = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanPartnerRepeatableTextLines, Count = 16 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 390082,
+				TeleportOffsetX = -185,
+				TeleportOffsetY = 50,
+				AngleTowardTargetId = 390082,
+				{
+					Cue = "/VO/MegaeraHome_0247",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Speaker = "NPC_FurySister_01",
+					Text = "Well if it isn't our mutual friend."
+				},
+				{
+					Cue = "/VO/Thanatos_0477",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Enjoy the peace and quiet with us, Zag."
+				},
+			},
+			ThanatosChatWithMegaera04 = {
+				Partner = "NPC_FurySister_01",
+				RequiredFalseTextLinesThisRun = { "Ending01" },
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" },
+				RequiredAnyOtherTextLines = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanPartnerRepeatableTextLines, Count = 16 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 390082,
+				TeleportOffsetX = -185,
+				TeleportOffsetY = 50,
+				AngleTowardTargetId = 390082,
+				{
+					Cue = "/VO/MegaeraHome_0248",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Speaker = "NPC_FurySister_01",
+					Text = "Just catching up with Thanatos, if you don't mind."
+				},
+				{
+					Cue = "/VO/Thanatos_0478",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Discussing work-related matters, Zagreus."
+				},
+			},
+			ThanatosChatWithMegaera05 = {
+				Partner = "NPC_FurySister_01",
+				RequiredFalseTextLinesThisRun = { "Ending01" },
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" },
+				RequiredAnyOtherTextLines = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanPartnerRepeatableTextLines, Count = 16 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 390082,
+				TeleportOffsetX = -185,
+				TeleportOffsetY = 50,
+				AngleTowardTargetId = 390082,
+				{
+					Cue = "/VO/MegaeraHome_0246",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Speaker = "NPC_FurySister_01",
+					Text = "Look who it is, Than. Zagreus."
+				},
+				{
+					Cue = "/VO/Thanatos_0479",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "We've been comparing notes about our latest tasks."
+				},
+			},
+			ThanatosChatWithMegaera06 = {
+				Partner = "NPC_FurySister_01",
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" },
+				RequiredAnyOtherTextLines = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B" },
+				RequiredFalseTextLines = { "MegaeraWithThanatosBedroom01MegThan_BackOff" },
+				RequiredFalseTextLinesThisRun = { "Ending01" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanPartnerRepeatableTextLines, Count = 16 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 390082,
+				TeleportOffsetX = -185,
+				TeleportOffsetY = 50,
+				AngleTowardTargetId = 390082,
+				{
+					Cue = "/VO/MegaeraHome_0250",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					Speaker = "NPC_FurySister_01",
+					Text = "We're in the middle of a conversation, Zag."
+				},
+				{
+					Cue = "/VO/Thanatos_0480",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Catch up with you some other time, all right?"
+				},
+			},
+			ThanatosChatWithHypnos01 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredAnyTextLines = { "HypnosGift08", "ThanatosGift10" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HypnosThanPartnerRepeatableTextLines, Count = 14 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.8,
+					ObjectType = "NPC_Hypnos_01",
+					-- Bye!!
+					{ Cue = "/VO/Hypnos_0270", PreLineAnim = "HypnosIdleGreeting" },
+				},
+				{
+					Cue = "/VO/Thanatos_0606",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.5, SkipExitReaction = true },
+					Text = "...Looks like you have everything under control. Nice work, Hypnos."
+				},
+			},
+			ThanatosChatWithHypnos02 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredAnyTextLines = { "HypnosGift08", "ThanatosGift10" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HypnosThanPartnerRepeatableTextLines, Count = 14 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.8,
+					ObjectType = "NPC_Hypnos_01",
+					-- Bye now!
+					{ Cue = "/VO/Hypnos_0271", PreLineAnim = "HypnosIdleGreeting" },
+				},
+				{
+					Cue = "/VO/Thanatos_0607",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.5, SkipExitReaction = true },
+					Text = "...Plenty of time for sleeping once your shift is over, right, Brother?"
+				},
+			},
+			ThanatosChatWithHypnos03 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredAnyTextLines = { "HypnosGift08", "ThanatosGift10" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HypnosThanPartnerRepeatableTextLines, Count = 14 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.8,
+					ObjectType = "NPC_Hypnos_01",
+					-- See you!
+					{ Cue = "/VO/Hypnos_0272", PreLineAnim = "HypnosIdleGreeting" },
+				},
+				{
+					Cue = "/VO/Thanatos_0608",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.5, SkipExitReaction = true },
+					Text = "...Heard your latest reports were looking good, Hypnos. You keep it up."
+				},
+			},
+			ThanatosChatWithHypnos04 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredAnyTextLines = { "HypnosGift08", "ThanatosGift10" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HypnosThanPartnerRepeatableTextLines, Count = 14 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.8,
+					ObjectType = "NPC_Hypnos_01",
+					-- So long!
+					{ Cue = "/VO/Hypnos_0273", PreLineAnim = "HypnosIdleGreeting" },
+				},
+				{
+					Cue = "/VO/Thanatos_0609",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.5, SkipExitReaction = true },
+					Text = "...Anyway, good catching up, Hypnos."
+				},
+			},
+			ThanatosChatWithHypnos05 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredAnyTextLines = { "HypnosGift08", "ThanatosGift10" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HypnosThanPartnerRepeatableTextLines, Count = 14 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.8,
+					ObjectType = "NPC_Hypnos_01",
+					-- OK!
+					{ Cue = "/VO/Hypnos_0274", PreLineAnim = "HypnosIdleGreeting" },
+				},
+				{
+					Cue = "/VO/Thanatos_0610",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.5, SkipExitReaction = true },
+					Text = "...That's the last of the new registrations, but I should have more soon."
+				},
+			},
+			ThanatosChatWithHypnos06 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredAnyTextLines = { "HypnosGift08", "ThanatosGift10" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HypnosThanPartnerRepeatableTextLines, Count = 14 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.8,
+					ObjectType = "NPC_Hypnos_01",
+					-- Great!!
+					{ Cue = "/VO/Hypnos_0275", PreLineAnim = "HypnosIdleGreeting" },
+				},
+				{
+					Cue = "/VO/Thanatos_0611",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.5, SkipExitReaction = true },
+					Text = "...All right, I'd better get going. Take care, Brother."
+				},
+			},
+			ThanatosChatWithHypnos07 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredAnyTextLines = { "HypnosGift08", "ThanatosGift10" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HypnosThanPartnerRepeatableTextLines, Count = 14 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.8,
+					ObjectType = "NPC_Hypnos_01",
+					-- Yep!
+					{ Cue = "/VO/Hypnos_0276", PreLineAnim = "HypnosIdleGreeting" },
+				},
+				{
+					Cue = "/VO/Thanatos_0606",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.5, SkipExitReaction = true },
+					Text = "...Looks like you have everything under control. Nice work, Hypnos."
+				},
+			},
+			ThanatosChatWithHypnos08 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredAnyTextLines = { "HypnosGift08", "ThanatosGift10" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HypnosThanPartnerRepeatableTextLines, Count = 14 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 110,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.8,
+					ObjectType = "NPC_Hypnos_01",
+					-- Haha, yeah!
+					{ Cue = "/VO/Hypnos_0277", PreLineAnim = "HypnosIdleGreeting" },
+				},
+				{
+					Cue = "/VO/Thanatos_0606",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.5, SkipExitReaction = true },
+					Text = "...Looks like you have everything under control. Nice work, Hypnos."
+				},
+			},
+
+			ThanatosChatWithNyx01 = {
+				Partner = "NPC_Nyx_01",
+				RequiredTextLines = { "ThanatosGift10", "NyxGift09", "Ending01", "OlympianReunionQuestComplete", "ThanatosWithHypnos07" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.NyxHadesThanPartnerRepeatableTextLines, Count = 12 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -120,
+				TeleportOffsetY = 30,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					ObjectType = "NPC_Nyx_01",
+					-- Farewell.
+					{ Cue = "/VO/Nyx_0137", PreLineAnim = "NyxIdleGreeting" },
+				},
+				{
+					Cue = "/VO/Nyx_0454",
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					PreLineWait = 0.35,
+					Text = "...We have another task for you."
+				},
+				{
+					Cue = "/VO/Thanatos_0594",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.5, SkipExitReaction = true },
+					Text = "As you will, Mother. It will be done immediately, then."
+				},
+			},
+			ThanatosChatWithNyx02 = {
+				Partner = "NPC_Nyx_01",
+				RequiredTextLines = { "ThanatosGift10", "NyxGift09", "Ending01", "OlympianReunionQuestComplete", "ThanatosWithHypnos07" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.NyxHadesThanPartnerRepeatableTextLines, Count = 12 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -120,
+				TeleportOffsetY = 30,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					ObjectType = "NPC_Nyx_01",
+					-- Very well.
+					{ Cue = "/VO/Nyx_0234" },
+				},
+				{
+					Cue = "/VO/Thanatos_0595",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.6, SkipExitReaction = true },
+					Text = "...Understood, Mother. Commencing the assignment now."
+				},
+			},
+			ThanatosChatWithNyx03 = {
+				Partner = "NPC_Nyx_01",
+				RequiredTextLines = { "ThanatosGift10", "NyxGift09", "Ending01", "OlympianReunionQuestComplete", "ThanatosWithHypnos07" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.NyxHadesThanPartnerRepeatableTextLines, Count = 12 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -120,
+				TeleportOffsetY = 30,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				{
+					Cue = "/VO/Nyx_0455",
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					PreLineWait = 0.35,
+					Text = "...Your expertise is needed once again."
+				},
+				{
+					Cue = "/VO/Thanatos_0596",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.5, SkipExitReaction = true },
+					Text = "Then, very well, Mother. I'll begin right away, and be back soon."
+				},
+			},
+			ThanatosChatWithNyx04 = {
+				Partner = "NPC_Nyx_01",
+				RequiredTextLines = { "ThanatosGift10", "NyxGift09", "Ending01", "OlympianReunionQuestComplete", "ThanatosWithHypnos07" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.NyxHadesThanPartnerRepeatableTextLines, Count = 12 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -120,
+				TeleportOffsetY = 30,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					ObjectType = "NPC_Nyx_01",
+					-- Indeed.
+					{ Cue = "/VO/Nyx_0316", PreLineAnim = "NyxIdleGreeting" },
+				},
+				{
+					Cue = "/VO/Thanatos_0597",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.0, SkipExitReaction = true },
+					Text = "...I hear you, Mother, and obey. I will return when the task is complete."
+				},
+			},
+			ThanatosChatWithNyx05 = {
+				Partner = "NPC_Nyx_01",
+				RequiredTextLines = { "ThanatosGift10", "NyxGift09", "Ending01", "OlympianReunionQuestComplete", "ThanatosWithHypnos07" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.NyxHadesThanPartnerRepeatableTextLines, Count = 12 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -120,
+				TeleportOffsetY = 30,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					ObjectType = "NPC_Nyx_01",
+					-- Then, go.
+					{ Cue = "/VO/Nyx_0384" },
+				},
+				{
+					Cue = "/VO/Thanatos_0598",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.7, SkipExitReaction = true },
+					Text = "Thank you for thinking of me for this task. I'll make it happen shortly."
+				},
+			},
+			ThanatosChatWithNyx06 = {
+				Partner = "NPC_Nyx_01",
+				RequiredTextLines = { "ThanatosGift10", "NyxGift09", "Ending01", "OlympianReunionQuestComplete", "ThanatosWithHypnos07" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.NyxHadesThanPartnerRepeatableTextLines, Count = 12 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -120,
+				TeleportOffsetY = 30,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					ObjectType = "NPC_Nyx_01",
+					-- Thank you, my son.
+					{ Cue = "/VO/Nyx_0298" },
+				},
+				{
+					Cue = "/VO/Thanatos_0599",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.7, SkipExitReaction = true },
+					Text = "...The task is clear to me, Mother. I go. Your will be done."
+				},
+			},
+
+			ThanatosChatWithHades01 = {
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "ThanatosWithHades04", "ThanatosGift10", "HadesGift05", "ThanatosWithHypnos07" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.NyxHadesThanPartnerRepeatableTextLines, Count = 13 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				{
+					Cue = "/VO/Thanatos_0600",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.35, SkipExitReaction = true, },
+					PostLineAnim = "Hades_HouseWritingLoop_IdleLoop_Start",
+					PostLineAnimTarget = 370006,
+					Text = "...It shall be as you say, my lord. I will report back soon."
+				},
+			},
+			ThanatosChatWithHades02 = {
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "ThanatosWithHades04", "ThanatosGift10", "HadesGift05", "ThanatosWithHypnos07" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.NyxHadesThanPartnerRepeatableTextLines, Count = 13 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				{
+					Cue = "/VO/Thanatos_0601",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.35, SkipExitReaction = true, },
+					PostLineAnim = "Hades_HouseWritingLoop_IdleLoop_Start",
+					PostLineAnimTarget = 370006,
+					Text = "...Yes, my lord. I will begin, and not return until the deed is done."
+				},
+			},
+			ThanatosChatWithHades03 = {
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "ThanatosWithHades04", "ThanatosGift10", "HadesGift05", "ThanatosWithHypnos07" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.NyxHadesThanPartnerRepeatableTextLines, Count = 13 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				{
+					Cue = "/VO/Thanatos_0602",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.35, SkipExitReaction = true, },
+					PostLineAnim = "Hades_HouseWritingLoop_IdleLoop_Start",
+					PostLineAnimTarget = 370006,
+					Text = "...If that is all, my lord, then I will make way for the surface now."
+				},
+			},
+			ThanatosChatWithHades04 = {
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "ThanatosWithHades04", "ThanatosGift10", "HadesGift05", "ThanatosWithHypnos07" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.NyxHadesThanPartnerRepeatableTextLines, Count = 13 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				{
+					Cue = "/VO/Thanatos_0603",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.35, SkipExitReaction = true, },
+					PostLineAnim = "Hades_HouseWritingLoop_IdleLoop_Start",
+					PostLineAnimTarget = 370006,
+					Text = "...I understand, my lord. I know where they are and soon shall bring them here."
+				},
+			},
+			ThanatosChatWithHades05 = {
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "ThanatosWithHades04", "ThanatosGift10", "HadesGift05", "ThanatosWithHypnos07" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.NyxHadesThanPartnerRepeatableTextLines, Count = 13 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				{
+					Cue = "/VO/Thanatos_0604",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.35, SkipExitReaction = true, },
+					PostLineAnim = "Hades_HouseWritingLoop_IdleLoop_Start",
+					PostLineAnimTarget = 370006,
+					Text = "...I do appreciate your faith in me, my lord. Begging your pardon, please."
+				},
+			},
+			ThanatosChatWithHades06 = {
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "ThanatosWithHades04", "ThanatosGift10", "HadesGift05", "ThanatosWithHypnos07" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.NyxHadesThanPartnerRepeatableTextLines, Count = 13 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				{
+					Cue = "/VO/Thanatos_0605",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.35, SkipExitReaction = true, },
+					PostLineAnim = "Hades_HouseWritingLoop_IdleLoop_Start",
+					PostLineAnimTarget = 370006,
+					Text = "...This matter will be dealt with promptly, lord. I expect to return shortly."
+				},
+			},
+		},
+
+		GiftTextLineSets = {
+			ThanatosGift01 = {
+				PlayOnce = true,
+				{
+					Cue = "/VO/ZagreusHome_0116",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "It isn't much, Than, but I got you something."
+				},
+				{
+					Cue = "/VO/Thanatos_0177",
+					Text =
+					"You want me to take that off your hands, fine. But you are taking this from me, and if anybody asks, we're even. Or, scratch that, don't tell anyone about this, understand?"
+				},
+			},
+			ThanatosGift02 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosGift01" },
+				{
+					Cue = "/VO/Thanatos_0166",
+					Text =
+					"What, really...? Come on, what is this, Zagreus. You think handing this to me makes up for everything you've put us through?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0224",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "It's just something I found out there that I thought you might like, Than. Don't think anything of it."
+				},
+			},
+			ThanatosGift03 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosGift02" },
+				{
+					Cue = "/VO/Thanatos_0167",
+					Text =
+					"Why bother with such empty gestures, Zag. You've said you're getting out of here; best focus on that and leave me be."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0779",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's not an empty gesture, Than. Besides, if I wasn't trying to stay focused, I'd be drinking it myself."
+				},
+			},
+			ThanatosGift04 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosGift03" },
+				RequiredFalseTextLines = { "Ending01", "ThanatosGift04_B" },
+				{
+					Cue = "/VO/Thanatos_0168",
+					Text =
+					"You shouldn't be doing this, Zag. You picked sides, and things are not the same. A momentary stab at thoughtfulness can't fix something like that."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0225",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"We've been through a lot, Than, and I think we'll be going through a lot more yet. Consider it a token of our kinship."
+				},
+			},
+			ThanatosGift04_B = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosGift03", "Ending01" },
+				RequiredFalseTextLines = { "ThanatosGift04" },
+				{
+					Cue = "/VO/Thanatos_0664",
+					Text = "Don't know what you're expecting, giving this to me. If there's a catch here, I don't want to know."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0225",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"We've been through a lot, Than, and I think we'll be going through a lot more yet. Consider it a token of our kinship."
+				},
+			},
+
+			ThanatosGift05 = {
+				PlayOnce = true,
+				RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" },
+				{
+					Cue = "/VO/Thanatos_0169",
+					Text =
+					"What is it with the generosity lately...? Look I'll just stash this with the rest if you really don't have a better thing to do with it than dump it off on me."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0780",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, that's an idea. One of these days or nights, we'll have enough of this stuff to throw a feast to make all of Olympus jealous."
+				},
+			},
+			ThanatosGift06 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosGift05" },
+				{
+					Cue = "/VO/Thanatos_0170",
+					Text =
+					"You can't be serious. You're serious...? {#DialogueItalicFormat}Eh{#PreviousFormat}, you know what, fine. I'll take this and we'll go about our business. Though I don't see why you bother."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0781",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Why I bother? Why, how else can I show you how I feel except by handing you these bottles from time to time?"
+				},
+			},
+
+			-- high relationship / locked gifts
+			ThanatosGift07_A = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosGift06" },
+				{
+					Cue = "/VO/ZagreusHome_1465",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey Than. For all the times you've bailed me out, and just, all the times you've been around for me... I thought I'd get you this. The real thing."
+				},
+				{
+					Cue = "/VO/Thanatos_0556",
+					Emote = "PortraitEmoteSurprise",
+					AngleTowardHero = true,
+					Text = "Ambrosia...! Zagreus, where did you even... don't you think this is a bit excessive?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2479",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You say that like it's a bad thing. Little bit of excess from time to time never hurt anyone I'm sure."
+				},
+				{
+					Cue = "/VO/Thanatos_0557",
+					Text =
+					"{#DialogueItalicFormat}Oh{#PreviousFormat}, you would be surprised. Though if you're going to embarrass me, you know what, I am going to reciprocate. {#DialogueItalicFormat}Behold{#PreviousFormat}!"
+				},
+			},
+
+			ThanatosGift08 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "ThanatosGift07_A" },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					-- Yeah, but I wanted to!
+					{ Cue = "/VO/ZagreusHome_2482" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2480",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"For you, Thanatos. The Olympians might be accustomed to this stuff but I think we should have our share of it down here. At least you should."
+				},
+				{
+					Cue = "/VO/Thanatos_0558",
+					Text =
+					"You know... the Olympians do have good taste in certain things. The last bottle you gave me... it was... better than expected. Though, I almost decided not to try it at all."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2481",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"But try it you did! And now, you'll get to try this one for comparison's sake. Each one's supposed to be different you know."
+				},
+				{
+					Cue = "/VO/Thanatos_0559",
+					PreLineWait = 0.3,
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text =
+					"Different, huh. Well, then, I guess I'll have to see what you mean by that. Thank you, Zag. You didn't have to do this."
+				},
+			},
+
+			ThanatosGift09 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "ThanatosGift08" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- Than, wait...!
+					{ Cue = "/VO/ZagreusHome_1470" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1467",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I hope you're ready for some more of the real thing, there, Than, because I got you some, and I won't be taking {#DialogueItalicFormat}'Tsch, what is this, Zag' {#PreviousFormat}for an answer."
+				},
+				{
+					Cue = "/VO/Thanatos_0409",
+					AngleTowardHero = true,
+					Emote = "PortraitEmoteDepressed",
+					Text =
+					"Ugh, what is this? Come on, already, Zagreus, are you just messing with me, now? How did you even manage to get more of this, much less decide to hand it off to me?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1468",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"In order: no, I'm not; by ransacking my father's realm repeatedly; and it's because I like you, Thanatos. In case you still have some misgivings about that."
+				},
+				{
+					Cue = "/VO/Thanatos_0411",
+					Text =
+					"You {#DialogueItalicFormat}like {#PreviousFormat}me, Zagreus...? I never thought, I... don't know why that sounds so strange, coming from you. Given everything that's happened as of late."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1469",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Yeah. Look, if you don't feel the same way about me at this point, I would rather know. Cease all these coy gift exchanges, and all that."
+				},
+				{
+					Cue = "/VO/Thanatos_0412",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3, SkipExitReaction = true },
+					Emote = "PortraitEmoteFiredUp",
+					Text =
+					"I never said anything like that! You know what, there's... a bunch of mortals I have to go fetch. Good-bye."
+				},
+			},
+
+			ThanatosGift10 = {
+				PlayOnce = true,
+				UseInitialInteractSetup = true,
+				RequiredTextLines = { "ThanatosGift09" },
+				EndVoiceLines = {
+					PreLineWait = 0.75,
+					UsePlayerSource = true,
+					-- You too.
+					{ Cue = "/VO/ZagreusHome_1475" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1471",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Thanatos, I wanted to apologize for the last time I approached you with a bottle of the real thing, and give the whole exchange another shot. Would that be all right?"
+				},
+				{
+					Cue = "/VO/Thanatos_0413",
+					Text =
+					"{#DialogueItalicFormat}Hmph{#PreviousFormat}! You're asking my consent to give me yet another lavish gift? Sure! Permission granted. Though, what makes you think that your approach this time is going to be any more successful than the last?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1472",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I don't know that it will. I never really know exactly where I stand with you. But I know how I feel. And I'd rather be up front with you, even if it means risking our relationship, such as it is."
+				},
+				{
+					Cue = "/VO/Thanatos_0414",
+					Text =
+					"Our relationship? It wasn't long ago you were prepared to throw it all away while making for the surface, if you don't recall. But now you're saying that you care for me, and... what, exactly, Zagreus?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1473",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Yes, that's what I'm saying, Than. I should not have left the way I did, without letting you know. But when you found me, I... think that's when... that's when I knew. Or started to realize, you know?"
+				},
+				{
+					Cue = "/VO/Thanatos_0415",
+					Text =
+					"I... yes. I know, I think, because... when I heard you took off, the anger that I felt, it was... it wasn't something I expected. So... {#DialogueItalicFormat}ungh{#PreviousFormat}. What do we do now?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1474",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Maybe we ought to take our time? Unlike the real thing there, that's a commodity we have in good supply. Just know that, if you feel the way I do... you know where to find me. And if not... I'm grateful, anyway."
+				},
+				{
+					Cue = "/VO/Thanatos_0416",
+					AngleTowardHero = true,
+					PreLineWait = 0.3,
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 0.3, UseMaxedPresentation = true, SkipExitReaction = true },
+					Text =
+					"...I see. Well, then. The best that I can say for now is that... I'm grateful, too, for this. Take care of yourself, Zag."
+				},
+			},
+
+			-- below: old conversations from before the Welcome to Hell update
+			ThanatosGift07 = {
+				Skip = true,
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosGift06", },
+				{
+					Cue = "/VO/Thanatos_0171",
+					Text =
+					"I have to hand it to you, Zag, you're really putting in the work to get me to forgive you after all you've done. I'm honestly surprised."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0782",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Don't be. That feast of ours is really going to be something, Than."
+				},
+			},
+
+		},
+
+		MissingDistanceTrigger = {
+			WithinDistance = 180,
+			RequiredFalseFlags = { "InFlashback", },
+			RequiredFalseTextLinesThisRun = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" },
+			VoiceLines = {
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				UsePlayerSource = true,
+				SuccessiveChanceToPlayAll = 0.1,
+				AreIdsNotAlive = { 423052 },
+				Cooldowns = {
+					{ Name = "ZagreusAnyQuipSpeech", Time = 30 },
+				},
+
+				-- Thanatos is on assignment huh.
+				{ Cue = "/VO/ZagreusHome_0776" },
+				-- Guess Than must be at work.
+				{ Cue = "/VO/ZagreusHome_0777", RequiredPlayed = { "/VO/ZagreusHome_0776" } },
+				-- Where's Thanatos I wonder.
+				{ Cue = "/VO/ZagreusHome_0778", RequiredPlayed = { "/VO/ZagreusHome_0776" } },
+			},
+		},
+
+		GiftGivenVoiceLines = {
+			{
+				BreakIfPlayed = true,
+				PreLineWait = 1.0,
+				PlayFromTarget = true,
+				RequiredTextLines = { "ThanatosGift07_A" },
+
+				-- What, Thanatos, is this... you're really giving Mort to me? I... I'm deeply honored!
+				{ Cue = "/VO/ZagreusHome_1466" },
+			},
+			{
+				BreakIfPlayed = true,
+				PreLineWait = 1.0,
+				PlayFromTarget = true,
+
+				-- Thank you, Than.
+				{ Cue = "/VO/ZagreusHome_0318" },
+				-- I do indeed.
+				-- { Cue = "/VO/ZagreusHome_0753" },
+			},
+		},
+	},
+
+	-- ThanatosField / Thanatos Field Version
+	NPC_Thanatos_Field_01 = {
+		InheritFrom = { "NPC_Thanatos_01" },
+		GenusName = "NPC_Thanatos_01",
+		AnimOffsetZ = 255,
+		PreAttackEndShake = true,
+		PreAttackFlashSound = "/Leftovers/SFX/AuraOnLoud",
+		SpawnAnimation = "ThanatosTalkDismissal",
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		InvincibubbleScale = 1.33,
+
+		ActivateRequirements = {
+			RequiredCompletedRuns = 0,
+		},
+
+		Binks = {
+			"ThanatosIdleInhouse_Bink",
+			"ThanatosIdle_Bink",
+			"ThanatosAttack_Bink",
+			"ThanatosAttackHold_Bink",
+			"ThanatosEmoteDismissal_Bink",
+		},
+
+		DefaultAIData = {
+			PreAttackEndShake = true,
+
+			AIAttackDistance = 1200,
+			AIBufferDistance = 900,
+
+			-- TargetFriends = true,
+			IngoreCursedByThanatos = true,
+			IgnoreInvulnerable = true,
+			AIWanderDistance = 200,
+
+			AIRequireProjectileLineOfSight = false,
+			MoveSuccessDistance = 50,
+		},
+		AIOptions = { AttackerAI },
+		PostCombatAI = "ThanatosPostCombat",
+		PostCombatTeleportIfPastDistance = 800,
+
+		WeaponOptions = { "ThanatosDeathCurse", "ThanatosDeathCurseAoE" },
+		DisarmedWeapon = "ThanatosDeathCurse",
+		OutgoingDamageModifiers = {
+			{
+				PlayerMultiplier = 0,
+			}
+		},
+
+		EntranceVoiceLines = {
+			{
+				RequiredFalseTextLines = { "ThanatosFirstAppearance" },
+				BreakIfPlayed = true,
+				PreLineWait = 0.5,
+
+				-- Death approaches.
+				{ Cue = "/VO/Thanatos_0031" },
+			},
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.25,
+				RequiredTextLines = { "ThanatosFirstAppearance" },
+
+				-- Death approaches.
+				{ Cue = "/VO/Thanatos_0031",      PreLineWait = 0.75 },
+				-- It's time.
+				{ Cue = "/VO/Thanatos_0034" },
+				-- Blood and darkness.
+				{ Cue = "/VO/Thanatos_0036" },
+				-- In the name of Hades.
+				{ Cue = "/VO/Thanatos_0037" },
+				-- Death has come.
+				{ Cue = "/VO/Thanatos_0039" },
+				-- You called?
+				{ Cue = "/VO/Thanatos_0041" },
+				-- Life and death, one and the same.
+				{ Cue = "/VO/Thanatos_0042" },
+				-- I got you.
+				{ Cue = "/VO/Thanatos_0046" },
+				-- Quite a mess you've made here, Zagreus.
+				{ Cue = "/VO/Thanatos_0050" },
+				-- Death is inescapable.
+				{ Cue = "/VO/Thanatos_0224" },
+				-- Thought I'd find you here.
+				{ Cue = "/VO/Thanatos_0225" },
+				-- Thought I'd drop in.
+				{ Cue = "/VO/Thanatos_0226",      RequiredTextLines = { "ThanatosGift01" } },
+				-- I have returned.
+				{ Cue = "/VO/Thanatos_0227" },
+				-- I have arrived.
+				{ Cue = "/VO/Thanatos_0228" },
+				-- I am here.
+				{ Cue = "/VO/Thanatos_0229" },
+				-- Pardon the interruption.
+				{ Cue = "/VO/Thanatos_0230" },
+				-- Hello again.
+				{ Cue = "/VO/Thanatos_0232" },
+				-- I sensed your presence here.
+				{ Cue = "/VO/Thanatos_0233" },
+				-- Did you miss me, Zagreus...?
+				{ Cue = "/VO/Thanatos_0234",      RequiredTextLines = { "ThanatosGift06" } },
+				-- How goes it, Zagreus?
+				{ Cue = "/VO/Thanatos_0235",      RequiredTextLines = { "ThanatosGift05" } },
+				-- The time has come.
+				{ Cue = "/VO/ThanatosField_0116" },
+				-- Death has arrived.
+				{ Cue = "/VO/ThanatosField_0117" },
+				-- Death is inevitable.
+				{ Cue = "/VO/ThanatosField_0118" },
+				-- I found you, Zagreus.
+				{ Cue = "/VO/ThanatosField_0119", RequiredTextLines = { "ThanatosGift08" } },
+				-- Looks like I got here just in time.
+				{ Cue = "/VO/ThanatosField_0120", RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
+				-- I have returned.
+				{ Cue = "/VO/ThanatosField_0121" },
+				-- I thought I'd find you here.
+				{ Cue = "/VO/ThanatosField_0122", RequiredTextLines = { "ThanatosGift08" } },
+				-- It's been a little while, hasn't it?
+				{ Cue = "/VO/ThanatosField_0123", RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
+				-- I happened to be in the area.
+				{ Cue = "/VO/ThanatosField_0124", RequiredTextLines = { "ThanatosGift10" } },
+				-- Why hello, Zagreus.
+				{ Cue = "/VO/ThanatosField_0125", RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
+				-- I have returned.
+				{ Cue = "/VO/ThanatosField_0126" },
+			},
+		},
+
+		EncounterStartVoiceLines = {
+			{
+				RandomRemaining = true,
+				PreLineWait = 0.7,
+
+				-- Back, you wretches.
+				{ Cue = "/VO/Thanatos_0049",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Stand down.
+				{ Cue = "/VO/Thanatos_0047",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- You wretches are coming with me.
+				{ Cue = "/VO/Thanatos_0038",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- This ends now.
+				{ Cue = "/VO/Thanatos_0035",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Time to die.
+				-- { Cue = "/VO/Thanatos_0032" },
+				-- Time is up.
+				-- { Cue = "/VO/Thanatos_0033" },
+				-- I'll take care of it.
+				-- { Cue = "/VO/Thanatos_0156" },
+				-- Good as done.
+				-- { Cue = "/VO/Thanatos_0159" },
+				-- So be it.
+				-- { Cue = "/VO/Thanatos_0165" },
+
+				-- You might want to stand back, there, Zag.
+				{ Cue = "/VO/Thanatos_0237",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Think you can beat me, Zag?
+				{ Cue = "/VO/Thanatos_0238",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Let's slay these wretches quickly.
+				{ Cue = "/VO/Thanatos_0239",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Can you deal death faster than I?
+				{ Cue = "/VO/Thanatos_0240",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- What say we get things started.
+				{ Cue = "/VO/Thanatos_0241",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Let's get to it, then.
+				{ Cue = "/VO/Thanatos_0242",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Here come your Father's forces.
+				{ Cue = "/VO/Thanatos_0243" },
+				-- I'll handle this.
+				{ Cue = "/VO/Thanatos_0244",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- I'll make this quick.
+				{ Cue = "/VO/Thanatos_0245",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Think you can beat me?
+				{ Cue = "/VO/Thanatos_0246",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Who dies first?
+				{ Cue = "/VO/Thanatos_0247",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- This won't take long.
+				{ Cue = "/VO/Thanatos_0248",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- All of you; it's over.
+				{ Cue = "/VO/Thanatos_0249",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- I'll send you to the lowest depths.
+				{ Cue = "/VO/Thanatos_0250",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Prepare yourselves.
+				{ Cue = "/VO/Thanatos_0251",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- This one's on me, Zag.
+				{ Cue = "/VO/Thanatos_0252",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- All of you, prepare to die again.
+				{ Cue = "/VO/Thanatos_0253",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Together we bring death.
+				{ Cue = "/VO/Thanatos_0254",      RequiredTextLines = { "ThanatosGift06" }, RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Together, like last time.
+				{ Cue = "/VO/ThanatosField_0139", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredTextLines = { "ThanatosGift10" } },
+				-- You brazen wretches ought to have turned back!
+				{ Cue = "/VO/ThanatosField_0140", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredFalseBiome = "Elysium" },
+				-- Come, wretches, and be returned to dust!
+				{ Cue = "/VO/ThanatosField_0141", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredFalseBiome = "Elysium" },
+				-- Who wants to be the first to die again?
+				{ Cue = "/VO/ThanatosField_0142", RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- You so-called champions could use a lesson in humility.
+				{ Cue = "/VO/ThanatosField_0143", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredTextLines = { "ThanatosGift08" },                        RequiredBiome = "Elysium" },
+				-- All in Elysium should know of us by now.
+				{ Cue = "/VO/ThanatosField_0144", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" }, RequiredBiome = "Elysium" },
+				-- Let's see how quickly we can wrap this up.
+				{ Cue = "/VO/ThanatosField_0145", RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Let get things started, then.
+				{ Cue = "/VO/ThanatosField_0146", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
+				-- I doubt this will take very long at all.
+				{ Cue = "/VO/ThanatosField_0147", RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- And here they come.
+				{ Cue = "/VO/ThanatosField_0148", RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- They're coming, Zagreus. Be on your guard.
+				{ Cue = "/VO/ThanatosField_0227", RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Think you can beat me again, Zag?
+				{ Cue = "/VO/ThanatosField_0228", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
+				-- What do you say we end this quickly, Zag?
+				{ Cue = "/VO/ThanatosField_0229", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
+				-- Scared I'll take more of them than you this time?
+				{ Cue = "/VO/ThanatosField_0230", RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- All of you, prepare to die again.
+				{ Cue = "/VO/ThanatosField_0231", RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- Here they come, fresh for the taking, Zag.
+				{ Cue = "/VO/ThanatosField_0232", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
+				-- Don't be too reckless to outpace me, Zagreus.
+				{ Cue = "/VO/ThanatosField_0233", RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- You wretches never seem to learn, do you.
+				{ Cue = "/VO/ThanatosField_0234", RequiredPlayed = { "/VO/Thanatos_0243" } },
+			},
+			{
+				RandomRemaining = true,
+				PreLineWait = 0.15,
+				UsePlayerSource = true,
+
+				-- No you don't.
+				-- { Cue = "/VO/ZagreusField_0951" },
+
+				-- That's not my style, Than.
+				{ Cue = "/VO/ZagreusField_1478", RequiredPlayedThisRoom = { "/VO/Thanatos_0237" }, },
+				-- One way to find out.
+				{ Cue = "/VO/ZagreusField_1479", RequiredPlayedThisRoom = { "/VO/Thanatos_0238" }, },
+				-- Let's, by all means.
+				{ Cue = "/VO/ZagreusField_1480", RequiredPlayedThisRoom = { "/VO/Thanatos_0239" }, },
+				-- Let's find out.
+				{ Cue = "/VO/ZagreusField_1481", RequiredPlayedThisRoom = { "/VO/Thanatos_0240" }, },
+				-- Sounds good.
+				{ Cue = "/VO/ZagreusField_1482", RequiredPlayedThisRoom = { "/VO/Thanatos_0241" }, },
+				-- Absolutely.
+				{ Cue = "/VO/ZagreusField_1483", RequiredPlayedThisRoom = { "/VO/Thanatos_0242" }, },
+				-- Let them come.
+				{ Cue = "/VO/ZagreusField_1484", RequiredPlayedThisRoom = { "/VO/Thanatos_0243" }, },
+				-- Got it under control, thanks.
+				{ Cue = "/VO/ZagreusField_1485", RequiredPlayedThisRoom = { "/VO/Thanatos_0244" }, },
+				-- That was my plan.
+				{ Cue = "/VO/ZagreusField_1486", RequiredPlayedThisRoom = { "/VO/Thanatos_0245" }, },
+				-- Occasionally, yes.
+				{ Cue = "/VO/ZagreusField_1487", RequiredPlayedThisRoom = { "/VO/Thanatos_0246" }, },
+				-- Hopefully not me.
+				{ Cue = "/VO/ZagreusField_1488", RequiredPlayedThisRoom = { "/VO/Thanatos_0247" }, },
+				-- No, it will not.
+				{ Cue = "/VO/ZagreusField_1489", RequiredPlayedThisRoom = { "/VO/Thanatos_0248" }, },
+				-- He's not kidding.
+				{ Cue = "/VO/ZagreusField_1490", RequiredPlayedThisRoom = { "/VO/Thanatos_0249" }, },
+				-- I'll also do that!
+				{ Cue = "/VO/ZagreusField_1491", RequiredPlayedThisRoom = { "/VO/Thanatos_0250" }, },
+				-- You better!
+				{ Cue = "/VO/ZagreusField_1492", RequiredPlayedThisRoom = { "/VO/Thanatos_0251" }, },
+				-- You're too kind.
+				{ Cue = "/VO/ZagreusField_1493", RequiredPlayedThisRoom = { "/VO/Thanatos_0252" }, },
+				-- Excluding me I hope.
+				{ Cue = "/VO/ZagreusField_1494", RequiredPlayedThisRoom = { "/VO/Thanatos_0253" }, },
+				-- Yeah.
+				{ Cue = "/VO/ZagreusField_1495", RequiredPlayedThisRoom = { "/VO/Thanatos_0254" }, },
+				-- We have this!
+				{ Cue = "/VO/ZagreusField_2903", RequiredPlayedThisRoom = { "/VO/ThanatosField_0139" }, },
+				-- You definitely ought!
+				{ Cue = "/VO/ZagreusField_2904", RequiredPlayedThisRoom = { "/VO/ThanatosField_0140" }, },
+				-- Or I'll slay you instead if you prefer!
+				{ Cue = "/VO/ZagreusField_2905", RequiredPlayedThisRoom = { "/VO/ThanatosField_0141" }, },
+				-- Not me.
+				{ Cue = "/VO/ZagreusField_2906", RequiredPlayedThisRoom = { "/VO/ThanatosField_0142" }, },
+				-- Lesson one: Don't mess with either one of us!
+				{ Cue = "/VO/ZagreusField_2907", RequiredPlayedThisRoom = { "/VO/ThanatosField_0143" }, },
+				-- I know, right?
+				{ Cue = "/VO/ZagreusField_2908", RequiredPlayedThisRoom = { "/VO/ThanatosField_0144" }, },
+				-- Let's see, indeed!
+				{ Cue = "/VO/ZagreusField_2909", RequiredPlayedThisRoom = { "/VO/ThanatosField_0145" }, },
+				-- Race you, Than!
+				{ Cue = "/VO/ZagreusField_2910", RequiredPlayedThisRoom = { "/VO/ThanatosField_0146" }, },
+				-- No doubt at all from me.
+				{ Cue = "/VO/ZagreusField_2911", RequiredPlayedThisRoom = { "/VO/ThanatosField_0147" }, },
+				-- And here they fall!
+				{ Cue = "/VO/ZagreusField_2912", RequiredPlayedThisRoom = { "/VO/ThanatosField_0148" }, },
+				-- I'll get right on it, Than!
+				{ Cue = "/VO/ZagreusField_3571", RequiredPlayedThisRoom = { "/VO/ThanatosField_0227" }, },
+				-- What do you think, Than?
+				{ Cue = "/VO/ZagreusField_3572", RequiredPlayedThisRoom = { "/VO/ThanatosField_0228" }, },
+				-- I say: Sure, Than, sounds good to me.
+				{ Cue = "/VO/ZagreusField_3573", RequiredPlayedThisRoom = { "/VO/ThanatosField_0229" }, },
+				-- Oh, absolutely terrified.
+				{ Cue = "/VO/ZagreusField_3574", RequiredPlayedThisRoom = { "/VO/ThanatosField_0230" }, },
+				-- Hope you don't mean me.
+				{ Cue = "/VO/ZagreusField_3575", RequiredPlayedThisRoom = { "/VO/ThanatosField_0231" }, },
+				-- Well, then, have at it!
+				{ Cue = "/VO/ZagreusField_3576", RequiredPlayedThisRoom = { "/VO/ThanatosField_0232" }, },
+				-- I'll be as reckless as I want!
+				{ Cue = "/VO/ZagreusField_3577", RequiredPlayedThisRoom = { "/VO/ThanatosField_0233" }, },
+				-- They really don't.
+				{ Cue = "/VO/ZagreusField_3578", RequiredPlayedThisRoom = { "/VO/ThanatosField_0234" }, },
+			},
+		},
+		LastStandReactionVoiceLines = {
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 1.7,
+			CooldownTime = 12,
+			Queue = "Always",
+
+			-- No you don't...!
+			{ Cue = "/VO/Thanatos_0089" },
+			-- No you don't.
+			{ Cue = "/VO/Thanatos_0090" },
+			-- I got you...!
+			{ Cue = "/VO/Thanatos_0091" },
+			-- I got you.
+			{ Cue = "/VO/Thanatos_0092" },
+			-- Not yet...!
+			{ Cue = "/VO/Thanatos_0093" },
+			-- Not. Yet...!
+			{ Cue = "/VO/Thanatos_0094" },
+			-- I don't think so.
+			{ Cue = "/VO/Thanatos_0095" },
+			-- It's not your time.
+			{ Cue = "/VO/Thanatos_0096" },
+			-- Not so fast.
+			{ Cue = "/VO/Thanatos_0097" },
+			-- Not a chance.
+			{ Cue = "/VO/Thanatos_0098" },
+			-- No way.
+			{ Cue = "/VO/Thanatos_0099" },
+			-- Not if I can help it.
+			{ Cue = "/VO/Thanatos_0100" },
+			-- Live. Go.
+			{ Cue = "/VO/Thanatos_0101" },
+			-- Be more careful.
+			{ Cue = "/VO/Thanatos_0102" },
+			-- Wake up.
+			{ Cue = "/VO/Thanatos_0103" },
+			-- Watch it, damn you.
+			{ Cue = "/VO/Thanatos_0104" },
+			-- On your feet.
+			{ Cue = "/VO/Thanatos_0105" },
+			-- Focus, Zag.
+			{ Cue = "/VO/Thanatos_0106" },
+			-- Keep fighting.
+			{ Cue = "/VO/Thanatos_0107" },
+			-- Keep going.
+			{ Cue = "/VO/Thanatos_0108" },
+			-- Get back in there.
+			{ Cue = "/VO/Thanatos_0109" },
+			-- You're not dying yet.
+			{ Cue = "/VO/Thanatos_0110" },
+			-- You're still alive, go!
+			{ Cue = "/VO/Thanatos_0111" },
+			-- It's not your time.
+			{ Cue = "/VO/Thanatos_0112" },
+			-- You're not finished.
+			{ Cue = "/VO/Thanatos_0113" },
+			-- You're still in this.
+			{ Cue = "/VO/Thanatos_0114" },
+			-- Snap out of it...!
+			{ Cue = "/VO/Thanatos_0115" },
+		},
+
+		AssistReactionVoiceLines = {
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.8,
+				SuccessiveChanceToPlay = 0.8,
+				Queue = "Interrupt",
+				RequiredTrait = "FuryAssistTrait",
+
+				-- Megaera, here?!
+				{ Cue = "/VO/ThanatosField_0085" },
+				-- What is this, Megaera?
+				{ Cue = "/VO/ThanatosField_0086" },
+				-- We have this, Megaera.
+				{ Cue = "/VO/ThanatosField_0087" },
+				-- Unnecessary, Megaera!
+				{ Cue = "/VO/ThanatosField_0088" },
+				-- Megaera, again?
+				{ Cue = "/VO/ThanatosField_0089" },
+				-- Megaera!
+				{ Cue = "/VO/ThanatosField_0090" },
+				-- Megaera?!
+				{ Cue = "/VO/ThanatosField_0091" },
+			},
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.8,
+				SuccessiveChanceToPlay = 0.8,
+				Queue = "Interrupt",
+				RequiredTrait = "SkellyAssistTrait",
+
+				-- Do I know him?
+				{ Cue = "/VO/ThanatosField_0092" },
+				-- What is he doing here?
+				{ Cue = "/VO/ThanatosField_0093" },
+				-- Who is that?
+				{ Cue = "/VO/ThanatosField_0094" },
+				-- Is he supposed to help?
+				{ Cue = "/VO/ThanatosField_0095" },
+				-- One of your friends, there, Zag?
+				{ Cue = "/VO/ThanatosField_0096" },
+				-- That skeleton.
+				{ Cue = "/VO/ThanatosField_0097" },
+				-- The skeleton, again.
+				{ Cue = "/VO/ThanatosField_0098", RequiredPlayed = { "/VO/ThanatosField_0097" }, },
+			},
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.8,
+				SuccessiveChanceToPlay = 0.8,
+				Queue = "Interrupt",
+				RequiredTrait = "SisyphusAssistTrait",
+
+				-- Sisyphus!!
+				{ Cue = "/VO/ThanatosField_0099" },
+				-- Sisyphus?
+				{ Cue = "/VO/ThanatosField_0100" },
+				-- Sisyphus, you dare?
+				{ Cue = "/VO/ThanatosField_0101" },
+				-- That Sisyphus!
+				{ Cue = "/VO/ThanatosField_0102" },
+				-- Him again?
+				{ Cue = "/VO/ThanatosField_0103" },
+				-- Why ask for help from him?
+				{ Cue = "/VO/ThanatosField_0104" },
+				-- Unnecessary, Zag!
+				{ Cue = "/VO/ThanatosField_0105" },
+				-- Some help he was!
+				{ Cue = "/VO/ThanatosField_0106" },
+			},
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.8,
+				SuccessiveChanceToPlay = 0.8,
+				Queue = "Interrupt",
+				RequiredTrait = "DusaAssistTrait",
+
+				-- Dusa?!
+				{ Cue = "/VO/ThanatosField_0189" },
+				-- Dusa!
+				{ Cue = "/VO/ThanatosField_0190" },
+				-- Dusa, here?
+				{ Cue = "/VO/ThanatosField_0191" },
+				-- Dusa, how?
+				{ Cue = "/VO/ThanatosField_0192" },
+				-- What are you doing, Dusa?!
+				{ Cue = "/VO/ThanatosField_0193" },
+			},
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.8,
+				SuccessiveChanceToPlay = 0.8,
+				Queue = "Interrupt",
+				RequiredTrait = "AchillesPatroclusAssistTrait",
+
+				-- Achilles?!
+				{ Cue = "/VO/ThanatosField_0194" },
+				-- Achilles!
+				{ Cue = "/VO/ThanatosField_0195" },
+				-- Achilles, here?
+				{ Cue = "/VO/ThanatosField_0196" },
+				-- Achilles, how?
+				{ Cue = "/VO/ThanatosField_0197" },
+			},
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.8,
+				Queue = "Interrupt",
+				RequiredOneOfTraits = { "FuryAssistTrait", "SkellyAssistTrait", "SisyphusAssistTrait", "DusaAssistTrait" },
+
+				-- What is this, Zagreus?
+				{ Cue = "/VO/ThanatosField_0107" },
+				-- You again?
+				{ Cue = "/VO/ThanatosField_0108" },
+				-- You again!
+				{ Cue = "/VO/ThanatosField_0109" },
+				-- I told you to get out!
+				{ Cue = "/VO/ThanatosField_0110" },
+				-- Stay out of this!
+				{ Cue = "/VO/ThanatosField_0111" },
+				-- Begone!
+				{ Cue = "/VO/ThanatosField_0112" },
+				-- Don't interfere!
+				{ Cue = "/VO/ThanatosField_0113" },
+				-- You're not authorized!
+				{ Cue = "/VO/ThanatosField_0114" },
+				-- Get out while you still can.
+				{ Cue = "/VO/ThanatosField_0115" },
+			},
+		},
+		KillStolenVoiceLines = {
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.4,
+			CooldownTime = 16,
+			SuccessiveChanceToPlay = 0.5,
+
+			-- Really?
+			{ Cue = "/VO/Thanatos_0076" },
+			-- Back off.
+			{ Cue = "/VO/Thanatos_0078" },
+			-- Oh come on.
+			{ Cue = "/VO/Thanatos_0075" },
+			-- Cut it out.
+			{ Cue = "/VO/Thanatos_0079" },
+			-- Don't do that again.
+			{ Cue = "/VO/Thanatos_0080" },
+			-- Stop that.
+			{ Cue = "/VO/Thanatos_0082" },
+			-- That one was mine.
+			{ Cue = "/VO/Thanatos_0381" },
+			-- That was my kill.
+			{ Cue = "/VO/Thanatos_0382" },
+			-- I see how it is.
+			{ Cue = "/VO/Thanatos_0383" },
+			-- You took my kill.
+			{ Cue = "/VO/Thanatos_0384" },
+			-- Find your own targets.
+			{ Cue = "/VO/Thanatos_0385" },
+			-- Oh really.
+			{ Cue = "/VO/Thanatos_0386" },
+			-- Think you can beat me?
+			{ Cue = "/VO/Thanatos_0387" },
+			-- Dirty move.
+			{ Cue = "/VO/Thanatos_0388" },
+			-- Oh hoh.
+			-- { Cue = "/VO/Thanatos_0389" },
+			-- So it's like that.
+			{ Cue = "/VO/Thanatos_0390" },
+			-- Get your own kills.
+			{ Cue = "/VO/Thanatos_0391" },
+			-- I had that one.
+			{ Cue = "/VO/Thanatos_0392" },
+		},
+		EncounterEndVoiceLines = {
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 1.25,
+
+				-- Life is short.
+				{ Cue = "/VO/Thanatos_0048" },
+				-- That's enough.
+				{ Cue = "/VO/Thanatos_0044" },
+				-- Enough.
+				{ Cue = "/VO/Thanatos_0045" },
+				-- Hmph.
+				{ Cue = "/VO/Thanatos_0161" },
+				-- All right.
+				{ Cue = "/VO/Thanatos_0163" },
+				-- That's settled.
+				{ Cue = "/VO/Thanatos_0323" },
+				-- That's settled, then.
+				{ Cue = "/VO/Thanatos_0324" },
+				-- That was the last of them.
+				{ Cue = "/VO/Thanatos_0325" },
+				-- That's quite enough of that.
+				{ Cue = "/VO/Thanatos_0326" },
+				-- Drove them back.
+				{ Cue = "/VO/Thanatos_0327" },
+				-- That's all of them.
+				{ Cue = "/VO/Thanatos_0328" },
+				-- I'll write this one off.
+				{ Cue = "/VO/Thanatos_0329" },
+				-- This won't go on the record.
+				{ Cue = "/VO/Thanatos_0330" },
+				-- That settles that.
+				{ Cue = "/VO/Thanatos_0331" },
+				-- Hm. You still alive?
+				{ Cue = "/VO/Thanatos_0332" },
+				-- ...You're welcome.
+				{ Cue = "/VO/Thanatos_0333",      PreLineWait = 1 },
+				-- Situation is under control.
+				{ Cue = "/VO/ThanatosField_0170" },
+				-- You're clear of them for now.
+				{ Cue = "/VO/ThanatosField_0171" },
+				-- We'll leave no trace of this.
+				{ Cue = "/VO/ThanatosField_0172" },
+				-- What chance did they have?
+				{ Cue = "/VO/ThanatosField_0173" },
+				-- Chamber secured.
+				{ Cue = "/VO/ThanatosField_0174" },
+				-- And that's the end of that.
+				{ Cue = "/VO/ThanatosField_0175" },
+				-- We make a decent team.
+				{ Cue = "/VO/ThanatosField_0176", RequiredTextLines = { "ThanatosGift10" } },
+				-- Good working with you, there.
+				{ Cue = "/VO/ThanatosField_0177", RequiredTextLines = { "ThanatosGift10" } },
+				-- Short work, there, wasn't it.
+				{ Cue = "/VO/ThanatosField_0178", RequiredAnyTextLines = { "ThanatosGift09" } },
+				-- Been a pleasure.
+				{ Cue = "/VO/ThanatosField_0179", RequiredTextLines = { "ThanatosGift10" } },
+			},
+		},
+		EncounterTiedVoiceLines = {
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.5,
+
+			-- Let's call this one a draw.
+			{ Cue = "/VO/Thanatos_0346", RequiredPlayed = { "/VO/Thanatos_0347" } },
+			-- Huh, it's a tie.
+			{ Cue = "/VO/Thanatos_0347" },
+			-- You got as many as I did.
+			{ Cue = "/VO/Thanatos_0348", RequiredPlayed = { "/VO/Thanatos_0347" } },
+			-- It's a draw.
+			{ Cue = "/VO/Thanatos_0349", RequiredPlayed = { "/VO/Thanatos_0347" } },
+			-- Looks like we tied.
+			{ Cue = "/VO/Thanatos_0350", RequiredPlayed = { "/VO/Thanatos_0347" } },
+			-- Another tie, huh.
+			{ Cue = "/VO/Thanatos_0351", RequiredPlayed = { "/VO/Thanatos_0347" } },
+		},
+		EncounterLostVoiceLines = {
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				RequiredMaxThanatosKillsThisRun = 0,
+				PreLineWait = 0.5,
+
+				-- All right, all right, you got me.
+				{ Cue = "/VO/ThanatosField_0202" },
+				-- You made short work there.
+				{ Cue = "/VO/ThanatosField_0203" },
+				-- Here, since you did all the work.
+				{ Cue = "/VO/ThanatosField_0204" },
+				-- Guess you had this well in hand.
+				{ Cue = "/VO/ThanatosField_0205" },
+				-- How did you get so fast?
+				{ Cue = "/VO/ThanatosField_0206" },
+				-- Wow, Zag.
+				{ Cue = "/VO/ThanatosField_0207" },
+				-- I can't believe this.
+				{ Cue = "/VO/ThanatosField_0208" },
+				-- That was embarrassing for me I have to say.
+				{ Cue = "/VO/ThanatosField_0209" },
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 0.5,
+
+				-- Not bad, Zag. Here.
+				{ Cue = "/VO/Thanatos_0334",      RequiredPlayed = { "/VO/Thanatos_0337" }, RequiredTextLines = { "ThanatosGift02" } },
+				-- Save some for me next time.
+				{ Cue = "/VO/Thanatos_0335",      RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- You took more down than I did.
+				{ Cue = "/VO/Thanatos_0336",      RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- Got more of them than I did, huh.
+				{ Cue = "/VO/Thanatos_0337" },
+				-- You held your own out there.
+				{ Cue = "/VO/Thanatos_0338",      RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- You held your own I guess.
+				{ Cue = "/VO/Thanatos_0339",      RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- You're not too bad at this.
+				{ Cue = "/VO/Thanatos_0340",      RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- You're reckless, but you're quick.
+				{ Cue = "/VO/Thanatos_0341",      RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- You're fast, I'll give you that.
+				{ Cue = "/VO/Thanatos_0342",      RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- Here's something for the show.
+				{ Cue = "/VO/Thanatos_0343",      RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- You've gotten stronger, Zag.
+				{ Cue = "/VO/Thanatos_0344",      RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- Good work, my friend.
+				{ Cue = "/VO/Thanatos_0345",      RequiredPlayed = { "/VO/Thanatos_0337" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" }, },
+				-- You earned this fair and square.
+				{ Cue = "/VO/ThanatosField_0185", RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- You beat me once again.
+				{ Cue = "/VO/ThanatosField_0186", RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- You got a lot of them.
+				{ Cue = "/VO/ThanatosField_0187", RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- I'll take more down next time.
+				{ Cue = "/VO/ThanatosField_0188", RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- Hang on to this for me.
+				{ Cue = "/VO/Thanatos_0498",      RequiredPlayed = { "/VO/Thanatos_0337" }, RequiredTextLines = { "ThanatosGift02" } },
+			},
+		},
+
+		BossPresentationIntroTextLineSets = {
+			ThanatosFirstAppearance = {
+				PlayOnce = true,
+				{
+					Cue = "/VO/ThanatosField_0007",
+					Text = "...Thought you could just get away from me, did you?"
+				},
+				{
+					Cue = "/VO/ZagreusField_1515",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Thanatos. I figured it was only a matter of time before Father sent you after me to do his dirty work."
+				},
+				{
+					Cue = "/VO/ThanatosField_0225",
+					Text =
+					"Zagreus. Is that really why you think I'm here? Let's see how many of these exalted champions you can send back to their dooms, unless you'd rather I would send you back to yours."
+				},
+			},
+
+			ThanatosFieldAboutHermes01 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosFirstAppearance", "ThanatosGift03", "HermesGift01" },
+				RequiredLootThisRun = "HermesUpgrade",
+				{
+					Cue = "/VO/ThanatosField_0149",
+					Text = "Barely caught up with you, here, Zag. You must have had a little help from Hermes, I suppose."
+				},
+			},
+
+			ThanatosFieldAboutKeepsake01 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosFirstAppearance" },
+				RequiredTrait = "PerfectClearDamageBonusTrait",
+				{
+					Cue = "/VO/ThanatosField_0226",
+					Text =
+					"You have the butterfly I gave to you. Stay back, then, and it'll make you stronger once I'm finished here."
+				},
+			},
+
+			ThanatosFieldAboutLegendary02 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosFirstAppearance", "ThanatosFieldAboutLegendary01" },
+				RequiredTrait = "ThanatosAssistTrait",
+				{
+					Cue = "/VO/ThanatosField_0222",
+					Text = "Got little Mort with you, there, huh. Well, there's no need to summon me this time."
+				},
+			},
+
+			ThanatosFieldRunCleared01 = {
+				PlayOnce = true,
+				RequiresLastRunCleared = true,
+				RequiredTextLines = { "ThanatosFirstAppearance" },
+				RequiredFalseTextLinesLastRun = { "ThanatosRunCleared01" },
+				{
+					Cue = "/VO/ThanatosField_0235",
+					Text = "You're back. I thought you made it out. No matter."
+				},
+			},
+
+			ThanatosFieldPostEnding01 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosFirstAppearance", "Ending01", "ThanatosGift03" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 20 },
+				{
+					Cue = "/VO/ThanatosField_0246",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Good to be working with you in a more official capacity, Zag. Shall we get started?"
+				},
+			},
+
+		},
+
+		BossPresentationTextLineSets = {
+			ThanatosMiscIntro01 = {
+				PlayOnce = true,
+				{
+					Cue = "/VO/Thanatos_0352",
+					Text =
+					"Thought I might find you all the way out here. Although, quite frankly, I'm surprised you're still alive."
+				},
+				{
+					Cue = "/VO/ZagreusField_1523",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "I can hold my own in case you haven't noticed, Than."
+				},
+				{
+					Cue = "/VO/Thanatos_0353",
+					Text = "I haven't, Zag! Now, stand back, and let me show you how it's done."
+				},
+			},
+			ThanatosMiscIntro02 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosMiscIntro01" },
+				{
+					Cue = "/VO/Thanatos_0354",
+					Text =
+					"Still at it, I see. You're stubborn. And you are going to get me in a heap of trouble before all is said and done."
+				},
+			},
+		},
+
+		BossPresentationRepeatableTextLineSets = {
+			ThanatosMiscStartRepeatable01 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift05" },
+				{
+					Cue = "/VO/ThanatosField_0127",
+					Text = "How about another of our little contests, Zagreus?"
+				},
+			},
+			ThanatosMiscStartRepeatable02 = {
+				RequiredTextLines = { "ThanatosMiscIntro02" },
+				RequiredTextLines = { "ThanatosGift10" },
+				{
+					Cue = "/VO/ThanatosField_0128",
+					Text = "We'll have to catch up at some other time. Though good to see you anyway."
+				},
+			},
+			ThanatosMiscStartRepeatable03 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift05" },
+				{
+					Cue = "/VO/ThanatosField_0129",
+					Text = "I have a feeling this is not going to take much time at all."
+				},
+			},
+			ThanatosMiscStartRepeatable04 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift08" },
+				{
+					Cue = "/VO/ThanatosField_0130",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "I only have a little time until my next assignment, but this shouldn't take too long."
+				},
+			},
+			ThanatosMiscStartRepeatable05 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift10" },
+				{
+					Cue = "/VO/ThanatosField_0131",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Thought I might stop by and check up on this corner of the Underworld, Zag."
+				},
+			},
+			ThanatosMiscStartRepeatable06 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift10" },
+				RequiredBiome = "Elysium",
+				{
+					Cue = "/VO/ThanatosField_0132",
+					Text = "You've come this far, now let's make sure you go the distance, Zag."
+				},
+			},
+			ThanatosMiscStartRepeatable07 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift08" },
+				{
+					Cue = "/VO/ThanatosField_0133",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "I heard there was a matter that required my attention here."
+				},
+			},
+			ThanatosMiscStartRepeatable08 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift09" },
+				{
+					Cue = "/VO/ThanatosField_0134",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Had a feeling I would find you all alone out here."
+				},
+			},
+			ThanatosMiscStartRepeatable09 = {
+				RequiredTextLines = { "ThanatosMiscIntro02" },
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" },
+				{
+					Cue = "/VO/ThanatosField_0135",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Want to stand back and watch me work, here, Zag?"
+				},
+			},
+			ThanatosMiscStartRepeatable10 = {
+				RequiredTextLines = { "ThanatosMiscIntro02" },
+				RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" },
+				{
+					Cue = "/VO/ThanatosField_0136",
+					Text = "This one is off the record, Zagreus. Come on!"
+				},
+			},
+			ThanatosMiscStartRepeatable11 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift05" },
+				RequiredFalsePlayedThisRoom = { "/VO/ThanatosField_0120" },
+				{
+					Cue = "/VO/ThanatosField_0137",
+					Text = "Looks like we've got an urgent work-related matter to attend to."
+				},
+			},
+			ThanatosMiscStartRepeatable12 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift09" },
+				{
+					Cue = "/VO/ThanatosField_0138",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "Your father's forces making trouble for you, Zag?"
+				},
+			},
+
+			ThanatosMiscStartRepeatable13 = {
+				-- Priority = true,
+				RequiredTextLines = { "ThanatosMiscStartRepeatable02", "ThanatosGift01" },
+				RequiredFalseTextLines = { "Ending01" },
+				{
+					Cue = "/VO/Thanatos_0355",
+					Text = "Not a word of this to anyone back home, you hear me, Zagreus?"
+				},
+			},
+			ThanatosMiscStartRepeatable14 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift06" },
+				{
+					Cue = "/VO/Thanatos_0356",
+					Text = "I heard you got yourself into another mess that needed cleaning up."
+				},
+			},
+			ThanatosMiscStartRepeatable15 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift06" },
+				RequiredFalseBiome = "Elysium",
+				{
+					Cue = "/VO/Thanatos_0357",
+					Text = "We'll catch up later, now let's deal with these wretches and be done."
+				},
+			},
+			ThanatosMiscStartRepeatable16 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift06" },
+				{
+					Cue = "/VO/Thanatos_0358",
+					Text = "Hope you don't mind if I cut in, here, Zagreus."
+				},
+			},
+			ThanatosMiscStartRepeatable17 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift10" },
+				{
+					Cue = "/VO/Thanatos_0359",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "What say we go take care of business here just like we used to, Zag?"
+				},
+			},
+			ThanatosMiscStartRepeatable18 = {
+				RequiredTextLines = { "ThanatosMiscIntro02" },
+				{
+					Cue = "/VO/Thanatos_0360",
+					Text = "I can't stay long, so how about we get this business over with."
+				},
+			},
+			ThanatosMiscStartRepeatable19 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift03" },
+				{
+					Cue = "/VO/Thanatos_0361",
+					Text = "Figured you'd be up to have another of our little contests. Now let's go."
+				},
+			},
+			ThanatosMiscStartRepeatable20 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift03" },
+				{
+					Cue = "/VO/Thanatos_0362",
+					Text = "What do you say we deal some death together, Zagreus?"
+				},
+			},
+			ThanatosMiscStartRepeatable21 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift03" },
+				{
+					Cue = "/VO/Thanatos_0363",
+					Text = "Don't have much time, but let me see if I can pitch in."
+				},
+			},
+			ThanatosMiscStartRepeatable22 = {
+				-- Priority = true,
+				RequiredTextLines = { "ThanatosMiscIntro02" },
+				RequiredFalseTextLines = { "ThanatosWithHades02", "Ending01" },
+				{
+					Cue = "/VO/Thanatos_0364",
+					Text = "Remember, not a word of this, to anyone. Let's go."
+				},
+			},
+			ThanatosMiscStartRepeatable23 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift09" },
+				{
+					Cue = "/VO/Thanatos_0231",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text = "You look like you could use a hand."
+				},
+			},
+			ThanatosMiscStartRepeatable24 = {
+				RequiredTextLines = { "ThanatosMiscIntro02" },
+				{
+					Cue = "/VO/Thanatos_0236",
+					Text = "Let's see who's better at this, Zagreus."
+				},
+			},
+			ThanatosMiscStartRepeatable25 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift05" },
+				{
+					Cue = "/VO/Thanatos_0379",
+					Text = "I got the feeling you could use some backup here."
+				},
+			},
+			ThanatosMiscStartRepeatable26 = {
+				RequiredTextLines = { "ThanatosMiscIntro02" },
+				{
+					Cue = "/VO/Thanatos_0665",
+					Text = "Let's get this done."
+				},
+			},
+			-- moved from the previous table
+			ThanatosMiscStart14 = {
+				RequiredTextLines = { "ThanatosMiscIntro02", "ThanatosGift06" },
+				{
+					Cue = "/VO/Thanatos_0380",
+					Text = "Good, I'm not too late. Got here as quickly as I could."
+				},
+			},
+			ThanatosMiscStart15 = {
+				RequiredTextLines = { "ThanatosMiscIntro02" },
+				{
+					Cue = "/VO/Thanatos_0377",
+					Text = "I got the message that you need assistance, Zagreus?"
+				},
+			},
+
+		},
+
+		InteractTextLineSets = {
+			ThanatosFieldFirstMeeting = {
+				PlayOnce = true,
+				InitialGiftableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 0.9,
+					UsePlayerSource = true,
+					-- <Sigh>
+					{ Cue = "/VO/ZagreusField_3444" },
+				},
+				{
+					Cue = "/VO/Thanatos_0195",
+					AngleTowardHero = true,
+					Text =
+					"You left, without so much as telling me good-bye. I suppose you knew I'd catch up with you sooner or later, is that it? No escaping death, and all?"
+				},
+				{
+					Cue = "/VO/ZagreusField_0514",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "I left when it was necessary, Than. I thought of you and hoped you'd understand. I have to do this."
+				},
+				{
+					Cue = "/VO/Thanatos_0196",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { WaitTime = 0.4, SkipExitReaction = true },
+					Text =
+					"That's more motivation than I've ever heard from you. Well, if you won't say it, I'll say it. Good-bye, Zagreus."
+				},
+			},
+			ThanatosFieldMiscMeeting01 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosFieldFirstMeeting", },
+				{
+					Cue = "/VO/Thanatos_0197",
+					Text =
+					"I've got to hand it to you, Zag. You're easy to track down. The shades of Tartarus are beginning to fear you even more than your Lord Father."
+				},
+				{
+					Cue = "/VO/ZagreusField_0515",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Oh they won't fear me once they get to know me."
+				},
+				{
+					Cue = "/VO/Thanatos_0198",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { WaitTime = 0.35, SkipExitReaction = true },
+					Text =
+					"I'm not so sure about that. Even I'm beginning to fear you, I think. Seems I don't know you as well as I thought."
+				},
+			},
+			ThanatosFieldMiscMeeting02 = {
+				PlayOnce = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "ThanatosFieldFirstMeeting", },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- I don't know what I'm supposed to say when he gets like this...
+					{ Cue = "/VO/ZagreusField_0516" },
+				},
+				{
+					Cue = "/VO/Thanatos_0199",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { WaitTime = 0.35, SkipExitReaction = true },
+					Text =
+					"What's with the look? You had your hands full, now you don't thanks to me... {#DialogueItalicFormat}Tsch{#PreviousFormat}, seems I'm left to thanking myself, since you're too proud to do it."
+				},
+			},
+			ThanatosFieldMiscMeeting03 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosFieldFirstMeeting", },
+				RequiredFalseBiome = "Elysium",
+				{
+					Cue = "/VO/Thanatos_0200",
+					Text = "You seemed a little winded, there, no? Not even close to the surface, yet, either."
+				},
+				{
+					Cue = "/VO/ZagreusField_0517",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Thanks for the vote of confidence there, Than."
+				},
+				{
+					Cue = "/VO/Thanatos_0201",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { WaitTime = 0.35 },
+					Text = "You're very welcome. Now, I'd better get back, before Lord Hades catches on to this."
+				},
+			},
+			ThanatosFieldMiscMeeting05 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosFieldFirstMeeting" },
+				{
+					Cue = "/VO/ZagreusField_0520",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenial_Full",
+					PreLineAnimTarget = "Hero",
+					Text = "I told you I don't need your help here, Thanatos."
+				},
+				{
+					Cue = "/VO/Thanatos_0204",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { WaitTime = 0.35 },
+					Text = "It wasn't being offered. Just happened to be in the area is all. Carry on, Zagreus."
+				},
+			},
+			ThanatosFieldBackstory01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosGift01" },
+				RequiredAnyTextLines = { "Flashback_Mother_01", "CerberusStyxMeeting01" },
+				RequiredFalseTextLines = { "Ending01", "ThanatosGift06", "ThanatosAboutPersephoneMeeting02", "ThanatosFieldAboutPersephoneFirstMeeting01" },
+				{
+					Cue = "/VO/Thanatos_0205",
+					Text = "Still running from yourself, I see. How's that been working out for you thus far?"
+				},
+				{
+					Cue = "/VO/ZagreusField_0519",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "I'm searching for my mother. You still live at home with yours. You don't know what it's like."
+				},
+				{
+					Cue = "/VO/Thanatos_0206",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { WaitTime = 0.35 },
+					PreLineAnim = "ThanatosTalkDismissal_Start",
+					PostLineAnim = "ThanatosTalkDismissal_Return",
+					Text =
+					"Mother Nyx was like a mother to you, too. And this is how you repay her. You should be ashamed of yourself, and learn your place."
+				},
+			},
+			ThanatosFieldBackstory02 = {
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosFieldBackstory01", "ThanatosGift02" },
+				RequiredFalseTextLines = { "Ending01", "ThanatosAboutPersephone01", "ThanatosFieldAboutPersephoneFirstMeeting01" },
+				{
+					Cue = "/VO/Thanatos_0202",
+					Text =
+					"Listen to me. I don't know how else to put this, but, I want you to come home. Voluntarily. It's not just you swept up in all this nonsense now. And, I know you didn't ask for me to get involved, but, what did you expect?"
+				},
+				{
+					Cue = "/VO/ZagreusField_0518",
+					PreLineWait = 0.35,
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "...Than. Home is never going to be the same for me. There's no use trying to pretend. I have to go."
+				},
+				{
+					Cue = "/VO/Thanatos_0203",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { WaitTime = 0.35 },
+					PreLineAnim = "ThanatosTalkDismissal_Start",
+					PostLineAnim = "ThanatosTalkDismissal_Return",
+					Text =
+					"You don't {#DialogueItalicFormat}have {#PreviousFormat}to do anything of the sort. You have no idea how good you've had it here. Maybe someday you'll come to understand."
+				},
+			},
+
+			ThanatosFieldBuildingTrust01 = {
+				Priority = true,
+				PlayOnce = true,
+				InitialGiftableOffSource = true,
+				ObjectivesCompleted = { Name = "PlayerKills", Min = 8, },
+				ObjectiveCompletedLastOffer = "PlayerKills",
+				RequiredTextLines = { "ThanatosFieldAboutRelationship01" },
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					-- It is all right. Thanks, Than.
+					{ Cue = "/VO/ZagreusField_2864" },
+				},
+				{
+					Cue = "/VO/ThanatosField_0002",
+					AngleTowardHero = true,
+					Text =
+					"Outdid me once again, there, huh. {#DialogueItalicFormat}Tsch{#PreviousFormat}. I have to admit, you're not as bad at all of this as I expected. First I found you, I was certain that you had no chance at all."
+				},
+				{
+					Cue = "/VO/ZagreusField_2862",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I seem to have this whole easy-to-underestimate thing about me, based on a decent sum of my relationships. In any case, I always welcome your appearances out here. I know it's not been easy for you, Than."
+				},
+				{
+					Cue = "/VO/ThanatosField_0003",
+					Text =
+					"That's fair as an assessment, I would say. But then again, it's never been an easy time for me. I know I have to do my job. But I don't have to keep on helping you, like this."
+				},
+				{
+					Cue = "/VO/ZagreusField_2863",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					PreLineWait = 0.35,
+					Text =
+					"...What, you're telling me this is it? You're just going to leave me to my own devices, then, I've proved myself to you, something like that?"
+				},
+				{
+					Cue = "/VO/ThanatosField_0004",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { WaitTime = 2.4, SkipExitReaction = true },
+					PreLineAnim = "ThanatosTalkDismissal",
+					Emote = "PortraitEmoteFiredUp",
+					Text =
+					"No, you deadbeat, I am telling you the opposite! Why do you think I keep on showing up? You may not really need me, Zagreus, but I will take these opportunities to help. I take it that's all right."
+				},
+			},
+
+			ThanatosFieldAboutLegendary01 = {
+				PlayOnce = true,
+				RequiredTrait = "ThanatosAssistTrait",
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					-- Accurate.
+					{ Cue = "/VO/ZagreusField_2866" },
+				},
+				{
+					Cue = "/VO/ThanatosField_0005",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					Text =
+					"Good to see you taking little Mort there on one of your strolls. Means I can better keep an eye on you out there."
+				},
+				{
+					Cue = "/VO/ZagreusField_2865",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"He's been great to have around, for sure. Still can't believe you found him after all this time! You used to always carry him around, I was so sad for you when he got lost."
+				},
+				{
+					Cue = "/VO/ThanatosField_0006",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 2, SkipExitReaction = true },
+					Text =
+					"And I cannot believe you still remember that. Regardless, he will not be getting lost again under your supervision, accurate?"
+				},
+			},
+
+			ThanatosFieldAboutRelationship01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosAboutRelationship01" },
+				InitialGiftableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- You too.
+					{ Cue = "/VO/ZagreusField_3517" },
+				},
+				{
+					Cue = "/VO/ZagreusField_3515",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"About when we last spoke. I care about you, Thanatos. A lot. Though, you asked what you are to me... how am I supposed to even answer that?"
+				},
+				{
+					Cue = "/VO/ThanatosField_0223",
+					Text =
+					"{#DialogueItalicFormat}Ugh{#PreviousFormat}, I don't know. Sometimes I miss not feeling anything. Can't always trust what feelings say. I get to thinking, are we only friends, or... look, this is embarrassing."
+				},
+				{
+					Cue = "/VO/ZagreusField_3516",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"To think discussing feelings would be even harder than annihilating Father's forces. But... I've been asking myself the same thing, Than. If it's any reassurance."
+				},
+				{
+					Cue = "/VO/ThanatosField_0224",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.8, SkipExitReaction = true },
+					Text = "Well, if you come up with any answers, I guess let me know. Good running into you."
+				},
+			},
+
+			ThanatosFieldAboutSingersReunionQuestComplete01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosAboutSingersReunionQuestComplete01" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- I'm glad you did, though, Than.
+					{ Cue = "/VO/ZagreusField_3512" },
+				},
+				{
+					Cue = "/VO/ThanatosField_0219",
+					Text =
+					"Hey. I didn't mean to lay the guilt on you for what you did for Orpheus, Zag. I just worry when we get involved... we can make matters worse."
+				},
+				{
+					Cue = "/VO/ZagreusField_3511",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You haven't ever made anything worse, Than. But as for me, I realized what you meant. I was so eager to do something for Orpheus when I first met Eurydice, I... never asked them if it was OK."
+				},
+				{
+					Cue = "/VO/ThanatosField_0220",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 2.2, SkipExitReaction = true },
+					Text =
+					"At least things turned out well for them. But that was fortunate. Family troubles, personal relations, and the like... it's sensitive business. Though, who am I to talk. You didn't ask me to show up, like this."
+				},
+			},
+
+			ThanatosFieldBecameCloseBackOffAftermath01 = {
+				PlayOnce = true,
+				RequiredTextLines = { "BecameCloseWithThanatos01Than_BackOff" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					TriggerCooldowns = { "ThanatosEncounterStartVoiceLines" },
+					-- All right.
+					{ Cue = "/VO/ZagreusField_3514" },
+				},
+				{
+					Cue = "/VO/ZagreusField_3513",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey, Than, are you OK? I mean, with everything, lately?"
+				},
+				{
+					Cue = "/VO/ThanatosField_0221",
+					Portrait = "Portrait_Thanatos_Pleased_01",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.8, SkipExitReaction = true },
+					Text =
+					"I am. Though, thanks for asking, Zag. The risk of being close with anyone is sometimes things get complicated, fast. Admittedly it's not a risk I often take, but... in your case, it's been worth it, all in all. We're good, all right?"
+				},
+			},
+
+			ThanatosFieldAboutPersephoneFirstMeeting01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				RequiredTextLines = { "ThanatosGift03", "ThanatosFieldBackstory02", "PersephoneMeeting03" },
+				RequiredFalseTextLines = { "Ending01", "ThanatosAboutPersephoneMeeting02" },
+				RequiresLastRunCleared = true,
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					TriggerCooldowns = { "ThanatosEncounterStartVoiceLines" },
+					-- I know what you mean.
+					{ Cue = "/VO/ZagreusField_4660" },
+				},
+				{
+					Cue = "/VO/Thanatos_0548",
+					Emote = "PortraitEmoteSurprise",
+					Text = "What are you doing back here, Zag? You made it out."
+				},
+				{
+					Cue = "/VO/ZagreusField_4658",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I did... but I had to come back. And, not exactly voluntarily. I'll be visiting up there from time to time, though... it looks like I'll be staying here."
+				},
+				{
+					Cue = "/VO/Thanatos_0549",
+					Text = "Visiting from time to time...? I don't understand."
+				},
+				{
+					Cue = "/VO/ZagreusField_4659",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's my mother. She's alive and well! It's just that I can't stay with her up there for very long! So we'll have to catch up... one visit at a time."
+				},
+				{
+					Cue = "/VO/Thanatos_0550",
+					PostLineThreadedFunctionName = "ThanatosExit",
+					PostLineFunctionArgs = { AnimationState = "NPCThanatosExited", WaitTime = 1.8, SkipExitReaction = true },
+					Text =
+					"I see. Well then... that's good. That's good, because... it means that I won't have to track you down up top. Because, between us, I can only take so much of it up there."
+				},
+			},
+
+		},
+
+		DistanceTriggers = {
+			{
+				WithinDistance = 500,
+				-- LockToCharacter = true,
+				TriggerOnceThisRun = true,
+				VoiceLines = {
+					-- Back again, hm?
+					-- { Cue = "/VO/Hades_0082", PreLineWait = 0.35, PlayOnceThisRun = true, },
+				},
+			},
+		},
+
+		OnHitVoiceLinesRequireAttackerName = "_PlayerUnit",
+		OnHitVoiceLines = {
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.25,
+			PlayFromTarget = true,
+			CooldownTime = 180,
+			ChanceToPlay = 0.05,
+			RequiredFalseTextLines = { "ThanatosGift10" },
+
+			-- Not me, idiot.
+			{ Cue = "/VO/Thanatos_0309",      RequiredKillEnemiesFound = true,    RequiredFalseTextLines = { "ThanatosGift03" }, },
+			-- Not helpful, Zagreus.
+			{ Cue = "/VO/Thanatos_0310",      RequiredKillEnemiesFound = true,    RequiredFalseTextLines = { "ThanatosGift03" }, },
+			-- I'm on your side.
+			{ Cue = "/VO/Thanatos_0311",      RequiredKillEnemiesFound = true,    RequiredFalseTextLines = { "ThanatosGift04", "ThanatosGift04_B" }, },
+			-- You can't hurt me.
+			{ Cue = "/VO/Thanatos_0312",      RequiredKillEnemiesFound = true },
+			-- Seriously, Zag?
+			{ Cue = "/VO/Thanatos_0313",      RequiredKillEnemiesFound = true },
+			-- Fight them not me.
+			{ Cue = "/VO/Thanatos_0314",      RequiredKillEnemiesFound = true },
+			-- You aren't helping, Zag.
+			{ Cue = "/VO/Thanatos_0315",      RequiredKillEnemiesFound = true },
+			-- You going to help or what?
+			{ Cue = "/VO/Thanatos_0316",      RequiredKillEnemiesFound = true,    RequiredFalseTextLines = { "ThanatosGift05" }, },
+			-- Counterproductive, Zag.
+			{ Cue = "/VO/Thanatos_0317",      RequiredKillEnemiesFound = true },
+			-- Why bother.
+			{ Cue = "/VO/Thanatos_0318",      RequiredKillEnemiesFound = true },
+			-- I'm not your foe here, Zag.
+			{ Cue = "/VO/Thanatos_0319",      RequiredKillEnemiesFound = true,    RequiredFalseTextLines = { "ThanatosGift03" }, },
+			-- Don't test me, Zagreus.
+			{ Cue = "/VO/Thanatos_0320",      RequiredKillEnemiesFound = true },
+			-- Not going to fight you, Zag.
+			{ Cue = "/VO/Thanatos_0321",      RequiredKillEnemiesFound = true },
+			-- Watch your fire.
+			{ Cue = "/VO/Thanatos_0322",      RequiredKillEnemiesFound = true,    RequiredWeapon = "GunWeapon" },
+			-- Idiot.
+			{ Cue = "/VO/Thanatos_0073",      RequiredKillEnemiesNotFound = true, RequiredFalseTextLines = { "ThanatosGift06" }, },
+			-- Come off it.
+			{ Cue = "/VO/Thanatos_0074",      RequiredKillEnemiesNotFound = true },
+			-- Oh come on.
+			{ Cue = "/VO/Thanatos_0075",      RequiredKillEnemiesNotFound = true },
+			-- Really?
+			{ Cue = "/VO/Thanatos_0076",      RequiredKillEnemiesNotFound = true },
+			-- Should've let you die.
+			{ Cue = "/VO/Thanatos_0077",      RequiredKillEnemiesNotFound = true, RequiredFalseTextLines = { "ThanatosGift06" }, },
+			-- Back off.
+			{ Cue = "/VO/Thanatos_0078",      RequiredKillEnemiesNotFound = true },
+			-- Cut it out.
+			{ Cue = "/VO/Thanatos_0079",      RequiredKillEnemiesNotFound = true },
+			-- Don't do that again.
+			{ Cue = "/VO/Thanatos_0080",      RequiredKillEnemiesNotFound = true },
+			-- Watch it.
+			{ Cue = "/VO/Thanatos_0081",      RequiredKillEnemiesNotFound = true },
+			-- Stop that.
+			{ Cue = "/VO/Thanatos_0082",      RequiredKillEnemiesNotFound = true },
+			-- Stop.
+			{ Cue = "/VO/Thanatos_0083",      RequiredKillEnemiesNotFound = true },
+			-- Why do I bother.
+			{ Cue = "/VO/Thanatos_0086",      RequiredKillEnemiesNotFound = true },
+			-- You finished?
+			{ Cue = "/VO/Thanatos_0087",      RequiredKillEnemiesNotFound = true },
+			-- Enough.
+			{ Cue = "/VO/Thanatos_0088",      RequiredKillEnemiesNotFound = true },
+			-- Watch it.
+			{ Cue = "/VO/ThanatosField_0166", RequiredKillEnemiesNotFound = true, RequiredFalseTextLines = { "ThanatosGift06" }, },
+			-- You've no control at all.
+			{ Cue = "/VO/ThanatosField_0167", RequiredKillEnemiesNotFound = true, RequiredFalseTextLines = { "ThanatosGift06" }, },
+			-- Focus on them, damn it.
+			{ Cue = "/VO/ThanatosField_0168", RequiredKillEnemiesNotFound = true, RequiredFalseTextLines = { "ThanatosGift06" }, },
+			-- Give me some room to work!
+			{ Cue = "/VO/ThanatosField_0169", RequiredKillEnemiesNotFound = true },
+
+		},
+		PlayerInjuredReactionVoiceLines = {
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.25,
+			PlayFromTarget = true,
+			CooldownTime = 40,
+
+			-- I got you...!
+			{ Cue = "/VO/Thanatos_0091",     RequiredKillEnemiesFound = true, },
+			-- Be more careful.
+			{ Cue = "/VO/Thanatos_0102" },
+			-- Wake up.
+			{ Cue = "/VO/Thanatos_0103" },
+			-- Focus, Zag.
+			{ Cue = "/VO/Thanatos_0106",     RequiredKillEnemiesFound = true, },
+			-- Keep fighting.
+			{ Cue = "/VO/Thanatos_0107",     RequiredKillEnemiesFound = true, },
+			-- Careful, damn it.
+			{ Cue = "/VO/Thanatos_0301" },
+			-- Watch yourself.
+			{ Cue = "/VO/Thanatos_0302" },
+			-- Watch out...!
+			{ Cue = "/VO/Thanatos_0303" },
+			-- Stay out of the way.
+			{ Cue = "/VO/Thanatos_0304" },
+			-- Zagreus!
+			{ Cue = "/VO/Thanatos_0305",     RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" }, },
+			-- Not on my watch.
+			{ Cue = "/VO/Thanatos_0306",     RequiredKillEnemiesFound = true, },
+			-- Don't die here, Zagreus.
+			{ Cue = "/VO/Thanatos_0307",     RequiredTextLines = { "ThanatosGift01" } },
+			-- Hold on, Zag.
+			{ Cue = "/VO/Thanatos_0308",     RequiredTextLines = { "ThanatosGift05" },                        RequiredKillEnemiesFound = true, },
+			-- Careful!
+			{ Cue = "/VO/ThanatosField_0162" },
+			-- Let me take care of this.
+			{ Cue = "/VO/ThanatosField_0163" },
+			-- Don't waste this chance you have!
+			{ Cue = "/VO/ThanatosField_0164" },
+			-- Left yourself open!
+			{ Cue = "/VO/ThanatosField_0165" },
+		},
+
+		KillingEnemyVoiceLines = {
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.35,
+			PlayFromTarget = true,
+			CooldownTime = 7,
+
+			-- Tsch.
+			-- { Cue = "/VO/Thanatos_0071" },
+			-- Pathetic.
+			{ Cue = "/VO/Thanatos_0072" },
+			-- Waste of time.
+			{ Cue = "/VO/Thanatos_0084" },
+			-- Useless.
+			{ Cue = "/VO/Thanatos_0085" },
+			-- Life is short.
+			{ Cue = "/VO/Thanatos_0048" },
+			-- Time's up.
+			{ Cue = "/VO/Thanatos_0269" },
+			-- Farewell.
+			{ Cue = "/VO/Thanatos_0270" },
+			-- Farewell...!
+			{ Cue = "/VO/Thanatos_0271" },
+			-- Rest in peace.
+			{ Cue = "/VO/Thanatos_0272" },
+			-- Good-bye.
+			{ Cue = "/VO/Thanatos_0273" },
+			-- Bye now.
+			{ Cue = "/VO/Thanatos_0274" },
+			-- Easy.
+			{ Cue = "/VO/Thanatos_0275" },
+			-- Simple.
+			{ Cue = "/VO/Thanatos_0276" },
+			-- Dead.
+			{ Cue = "/VO/Thanatos_0277" },
+			-- Dead...!
+			{ Cue = "/VO/Thanatos_0278" },
+			-- Gone.
+			{ Cue = "/VO/Thanatos_0279" },
+			-- One less.
+			{ Cue = "/VO/Thanatos_0280" },
+			-- Another gone.
+			{ Cue = "/VO/Thanatos_0281" },
+			-- That's one less.
+			{ Cue = "/VO/Thanatos_0282" },
+			-- There.
+			{ Cue = "/VO/Thanatos_0283" },
+			-- <Scoff>
+			-- { Cue = "/VO/Thanatos_0284" },
+			-- <Chuckle>
+			{ Cue = "/VO/Thanatos_0285" },
+			-- <Chuckle>
+			{ Cue = "/VO/Thanatos_0286" },
+			-- Dust.
+			{ Cue = "/VO/ThanatosField_0154" },
+			-- Wretch.
+			{ Cue = "/VO/ThanatosField_0155" },
+			-- Gone.
+			{ Cue = "/VO/ThanatosField_0156" },
+			-- Next?
+			{ Cue = "/VO/ThanatosField_0157" },
 		},
 	},
 }

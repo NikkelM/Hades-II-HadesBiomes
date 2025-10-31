@@ -2,8 +2,10 @@
 local encounterData = mod.LoadHadesEncounterData("EncounterData.lua") or {}
 local encounterDataTartarus = {
 	-- Generic encounters
-	-- This one is used by all biomes, we define it here
+	-- These are used by all biomes, we define it here
 	ModsNikkelMHadesBiomesGenerated = encounterData.Generated,
+	BaseThanatos = encounterData.BaseThanatos,
+	ThanatosTartarus = encounterData.ThanatosTartarus,
 
 	Story_Sisyphus_01 = encounterData.Story_Sisyphus_01,
 	GeneratedTartarus = encounterData.GeneratedTartarus,
@@ -126,6 +128,9 @@ local encounterModifications = {
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" }, } },
 		},
+	},
+	BaseThanatos = {
+		BlockAthenaEncounterKeepsake = true,
 	},
 
 	-- MINIBOSSES

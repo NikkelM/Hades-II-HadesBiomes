@@ -54,10 +54,10 @@ game.EncounterSets.EncounterEventsDefault = {
 }
 -- TODO: Implement missing functions
 game.EncounterSets.EncounterEventsThanatos = {
-	{ FunctionName = "ThanatosPreSpawnPresentation" },
-	{ FunctionName = "HandleThanatosSpawn" },
-	{ FunctionName = "ThanatosEncounterStartPresentation" },
-	{ FunctionName = "BeginThanatosEncounter" },
+	{ FunctionName = _PLUGIN.guid .. "." .. "ThanatosPreSpawnPresentation" },
+	{ FunctionName = _PLUGIN.guid .. "." .. "HandleThanatosSpawn" },
+	{ FunctionName = _PLUGIN.guid .. "." .. "ThanatosEncounterStartPresentation" },
+	{ FunctionName = _PLUGIN.guid .. "." .. "BeginThanatosEncounter" },
 	{ FunctionName = "HandleEnemySpawns" },
 	{ FunctionName = "CheckForAllEnemiesDead" },
 	{ FunctionName = "PostCombatAudio" },
