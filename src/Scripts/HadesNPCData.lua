@@ -18567,7 +18567,7 @@ mod.NPCData = mod.NPCData or {
 			AIAttackDistance = 1200,
 			AIBufferDistance = 900,
 
-			-- TargetFriends = true,
+			TargetFriends = true,
 			IngoreCursedByThanatos = true,
 			IgnoreInvulnerable = true,
 			AIWanderDistance = 200,
