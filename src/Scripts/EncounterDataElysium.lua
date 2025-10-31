@@ -5,6 +5,8 @@ local encounterDataElysium = {
 	GeneratedElysium = encounterData.GeneratedElysium,
 	DevotionTestElysium = encounterData.DevotionTestElysium,
 	Story_Patroclus_01 = encounterData.Story_Patroclus_01,
+	ThanatosElysium = encounterData.ThanatosElysium,
+	ThanatosElysiumIntro = encounterData.ThanatosElysiumIntro,
 
 	-- Minibosses
 	MiniBossMinotaur = encounterData.MiniBossMinotaur,

@@ -1,16 +1,19 @@
--- TARTARUS
+-- #region TARTARUS
 game.EncounterSets.TartarusEncountersDefault = {
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus",
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", --"SurvivalTartarus",
-	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", --"SurvivalTartarus", "ThanatosTartarus"
+	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", --"SurvivalTartarus",
+	"ThanatosTartarus"
 }
 game.EncounterSets.TartarusEncountersNoSurvival = { "GeneratedTartarus" }
+-- #endregion
 
--- ASPHODEL
+-- #region ASPHODEL
 game.EncounterSets.AsphodelEncountersDefault = {
 	"GeneratedAsphodel", "GeneratedAsphodel", "GeneratedAsphodel",
 	"GeneratedAsphodel", "GeneratedAsphodel", "GeneratedAsphodel",
-	"GeneratedAsphodel", "GeneratedAsphodel", "GeneratedAsphodel", --"ThanatosAsphodel"
+	"GeneratedAsphodel", "GeneratedAsphodel", "GeneratedAsphodel",
+	"ThanatosAsphodel"
 }
 game.EncounterSets.EncounterEventsWrapping = {
 	{ FunctionName = _PLUGIN.guid .. "." .. "WrappingEncounterStartPresentation" },
@@ -29,21 +32,24 @@ game.EncounterSets.EncounterEventsHydraPhase = {
 	{ FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesRememberHydraSpawnpoint" },
 	{ FunctionName = "CheckForEncounterEnemiesDead" },
 }
+-- #endregion
 
--- ELYSIUM
+-- #region ELYSIUM
 game.EncounterSets.ElysiumEncountersDefault = {
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
-	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium", --"ThanatosElysium",
-	-- "ThanatosElysiumIntro", "ThanatosElysiumIntro", "ThanatosElysiumIntro"
+	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium", "ThanatosElysium",
+	"ThanatosElysiumIntro", "ThanatosElysiumIntro", "ThanatosElysiumIntro"
 }
+-- #endregion
 
--- STYX
+-- #region STYX
 game.EncounterSets.StyxEncountersMini = {
 	"GeneratedStyxMini", "GeneratedStyxMini", "GeneratedStyxMini", "GeneratedStyxMini",
 }
+-- #endregion
 
--- GENERIC
+-- #region GENERIC
 game.EncounterSets.EncounterEventsDefault = {
 	{ FunctionName = "EncounterAudio" },
 	{ FunctionName = "HandleTrapChains" },
@@ -52,7 +58,6 @@ game.EncounterSets.EncounterEventsDefault = {
 	{ FunctionName = "PostCombatAudio" },
 	{ FunctionName = "SpawnRoomReward" },
 }
--- TODO: Implement missing functions
 game.EncounterSets.EncounterEventsThanatos = {
 	{ FunctionName = _PLUGIN.guid .. "." .. "ThanatosPreSpawnPresentation" },
 	{ FunctionName = _PLUGIN.guid .. "." .. "HandleThanatosSpawn" },
@@ -78,3 +83,4 @@ game.EncounterSets.EncounterEventsCharonFight = {
 	{ FunctionName = "CheckForAllEnemiesDead" },
 	{ FunctionName = "PostCombatAudio" },
 }
+-- #endregion
