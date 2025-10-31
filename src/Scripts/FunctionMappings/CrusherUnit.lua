@@ -179,7 +179,7 @@ function mod.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 end
 
 function mod.IsLocationBlockedWithinDistance(source, distance)
-	for enemyId, enemy in pairs(game.ShallowCopyTable(game.ActiveEnemies)) do
+	for enemyId, enemy in pairs(game.ShallowCopyTable(game.ActiveEnemies) or {}) do
 		if enemy.BlockingLocation and enemy.ObjectId ~= source.ObjectId then
 			if GetDistance({ Id = enemy.ObjectId, DestinationId = source.ObjectId }) < distance then
 				return true

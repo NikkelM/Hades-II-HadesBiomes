@@ -1,6 +1,6 @@
-function mod.RoomEntranceCrawlerMiniBoss(currentRun, currentRoom, args)
+function mod.RoomEntranceCrawlerMiniBoss(currentRun, currentRoom)
 	if currentRoom.Encounter ~= nil and currentRoom.Encounter.Name ~= "ModsNikkelMHadesBiomesMiniBossCrawler" then
-		game.RoomEntranceStandard(currentRun, currentRoom, args)
+		game.RoomEntranceStandard(currentRun, currentRoom)
 		return
 	end
 

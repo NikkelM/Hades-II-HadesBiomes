@@ -434,7 +434,8 @@ function mod.ShouldRemoveEntry(entryName, entriesToRemove)
 end
 
 ---Tries to load a file in the mod's cache folder and returns its contents.
----@return table
+---@return table decodedSjsonFile The decoded sjson file.
+---@return string error If the file does not exist, throws an error.
 function mod.TryLoadCachedSjsonFile(fileName)
 	local basePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\cache\\")
 	local path = rom.path.combine(basePath, fileName)

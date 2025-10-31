@@ -398,6 +398,7 @@ function mod.HandleReturnBoatRideIntro(eventSource, args)
 	AddInputBlock({ Name = "BoatRideIntro" })
 
 	local heroId = game.CurrentRun.Hero.ObjectId
+	local invisibleTargets = GetIdsByType({ Name = "InvisibleTarget" })
 	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
 	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "ModsNikkelMHadesBiomes_NPC_Persephone_01" })
 	local charonId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Charon_01" })
@@ -421,6 +422,7 @@ end
 
 function mod.HandleReturnBoatRideOutro(eventSource, args)
 	local heroId = game.CurrentRun.Hero.ObjectId
+	local invisibleTargets = GetIdsByType({ Name = "InvisibleTarget" })
 	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
 	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "ModsNikkelMHadesBiomes_NPC_Persephone_01" })
 
@@ -510,6 +512,7 @@ end
 
 function mod.HandleReturnBoatRideAnimationSetup(eventSource, args)
 	local heroId = game.CurrentRun.Hero.ObjectId
+	local invisibleTargets = GetIdsByType({ Name = "InvisibleTarget" })
 	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
 	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "ModsNikkelMHadesBiomes_NPC_Persephone_01" })
 	local charonId = GetClosestUnitOfType({ Id = heroId, DestinationName = "NPC_Charon_01" })
