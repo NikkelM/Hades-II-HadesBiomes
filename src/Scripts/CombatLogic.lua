@@ -10,6 +10,8 @@ end)
 
 modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy then
+		local killingWeaponName = triggerArgs.SourceWeapon
+
 		if victim.SupportAIUnitId ~= nil then
 			game.thread(game.Kill, game.ActiveEnemies[victim.SupportAIUnitId])
 		end
@@ -38,6 +40,11 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 				game.ActiveEnemies[unitIdToEnrage].PermanentEnraged = true
 				game.thread(mod.EnrageUnit, game.ActiveEnemies[unitIdToEnrage], game.CurrentRun, victim.EnrageOnDeathStartDelay)
 			end
+		end
+
+		if victim.KillingWeaponBlockDeathWeapons ~= nil and game.Contains(victim.KillingWeaponBlockDeathWeapons, killingWeaponName) then
+			SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = victim.ObjectId })
+			victim.SpawnsEnemyOnDeath = false
 		end
 	end
 
