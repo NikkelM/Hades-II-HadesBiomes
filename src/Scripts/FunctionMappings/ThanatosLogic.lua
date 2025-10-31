@@ -122,7 +122,9 @@ function mod.BeginThanatosEncounter()
 	game.StartEncounterEffects(game.CurrentRun)
 end
 
-function mod.ThanatosPostCombat(enemy, currentRun)
+function mod.ThanatosPostCombat(enemy)
+	local currentRun = game.CurrentRun
+
 	enemy.PostCombatTravel = true
 	local moveToId = game.SelectLootSpawnPoint(game.CurrentRun.CurrentRoom) or currentRun.Hero.ObjectId
 	local distanceToTarget = GetDistance({ Id = enemy.ObjectId, DestinationId = moveToId })
@@ -229,29 +231,16 @@ function mod.HandleThanatosEncounterReward(thanatos, args)
 
 	if (encounter.ThanatosKills or 0) > (encounter.PlayerKills or 0) then
 		-- Player loss
-		-- TODO: Check against Nemesis challenge system
 		game.thread(game.MarkObjectiveComplete, "ThanatosKills")
 		game.thread(game.MarkObjectiveFailed, "PlayerKills")
+
+		thanatos.KillChallengeArgs.Consumables = thanatos.KillChallengeArgs.FailConsumables
 	else
 		-- Player win
 		game.thread(game.MarkObjectiveFailed, "ThanatosKills")
 		game.thread(game.MarkObjectiveComplete, "PlayerKills")
 
-		local consumableId = SpawnObstacle({
-			Name = "RoomRewardMaxHealthDrop",
-			DestinationId = thanatos.ObjectId,
-			Group = "Standing"
-		})
-		local cost = 0
-		-- TODO: Check against Sisyphus
-		local consumable = game.CreateConsumableItem(consumableId, "RoomRewardMaxHealthDrop", cost) or {}
-		SetAnimation({ DestinationId = thanatos.ObjectId, Name = "ThanatosTalkDismissal_Return" })
-		game.ActivatedObjects = game.ActivatedObjects or {}
-		game.ActivatedObjects[consumable.ObjectId] = consumable
-		ApplyUpwardForce({ Id = consumableId, Speed = 450 })
-		local forceAngle = GetAngleBetween({ Id = thanatos.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
-		ApplyForce({ Id = consumableId, Speed = 200, Angle = forceAngle, SelfApplied = true })
-		PlaySound({ Name = "/Leftovers/World Sounds/TrainingMontageWhoosh", Id = consumableId })
+		thanatos.KillChallengeArgs.Consumables = thanatos.KillChallengeArgs.SuccessConsumables
 
 		if encounter.ThanatosKills == encounter.PlayerKills then
 			game.thread(game.PlayVoiceLines, thanatos.EncounterTiedVoiceLines, nil, thanatos)
@@ -260,12 +249,14 @@ function mod.HandleThanatosEncounterReward(thanatos, args)
 		end
 	end
 
+	game.NPCRewardDropPreProcessArgs(thanatos.KillChallengeArgs)
+	game.NPCRewardDrop(thanatos, thanatos.KillChallengeArgs)
+
 	game.CheckAvailableTextLines(thanatos)
 	AngleTowardTarget({ Id = thanatos.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
 	if thanatos.NextInteractLines ~= nil then
 		UseableOn({ Id = thanatos.ObjectId })
 	else
-		-- TODO: Preset event args
 		game.CheckDistanceTrigger(mod.PresetEventArgs.ThanatosFarewells, thanatos)
 		game.ActivatedObjects[thanatos.ObjectId] = nil
 		game.wait(0.2, game.RoomThreadName)
@@ -273,6 +264,12 @@ function mod.HandleThanatosEncounterReward(thanatos, args)
 			game.UnlockRoomExits(game.CurrentRun, game.CurrentRun.CurrentRoom)
 		end
 	end
+end
+
+function mod.ThanatosDropPresentation(source, args)
+	SetAnimation({ DestinationId = source.ObjectId, Name = "ThanatosTalkDismissal_Start" })
+	game.wait(0.3)
+	SetAnimation({ DestinationId = source.ObjectId, Name = "ThanatosTalkDismissal_Return" })
 end
 
 -- #region COMBAT

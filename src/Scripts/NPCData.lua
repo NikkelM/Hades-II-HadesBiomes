@@ -249,7 +249,35 @@ local npcModifications = {
 	},
 	NPC_Thanatos_Field_01 = {
 		AIOptions = { "AttackerAI" },
-		PostCombatAI =  _PLUGIN.guid .. "." .. "ThanatosPostCombat",
+		PostCombatAI = _PLUGIN.guid .. "." .. "ThanatosPostCombat",
+		KillChallengeArgs = {
+			Force = 200,
+			SuccessConsumables = {
+				RandomSelection = true,
+				{ Name = "MaxHealthDrop", },
+				{ Name = "MaxManaDrop", },
+				{
+					Name = "StackUpgrade",
+					IgnoreLootPoints = true,
+					GameStateRequirements = {
+						NamedRequirements = { "StackUpgradeLegal", },
+					},
+				},
+				{ Name = "RoomMoneyDrop", },
+				{
+					Name = "TalentDrop",
+					GameStateRequirements = {
+						NamedRequirements = { "TalentLegal", },
+					},
+				},
+			},
+			FailConsumables = {
+				RandomSelection = true,
+				{ Name = "RoomRewardConsolationPrize", },
+			},
+			ConsumablePreDropFunctionName = _PLUGIN.guid .. "." .. "ThanatosDropPresentation",
+			ConsumablePreDropFunctionDelay = 0.7,
+		},
 	},
 }
 

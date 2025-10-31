@@ -46,91 +46,91 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			},
 		},
 	},
-	-- ThanatosFarewells = {
-	-- 	PostTriggerFunctionName = "ThanatosExit",
-	-- 	PostTriggerFunctionArgs = { WaitTime = 4 },
-	-- 	WithinDistance = 750,
-	-- 	PreTriggerAnimation = "ThanatosTalkDismissal_Start",
-	-- 	VoiceLines =
-	-- 	{
-	-- 		BreakIfPlayed = true,
-	-- 		RandomRemaining = true,
-	-- 		SuccessiveChanceToPlay = 0.9,
-	-- 		PreLineWait = 0.75,
-	-- 		Queue = "Always",
+	ThanatosFarewells = {
+		PostTriggerFunctionName = _PLUGIN.guid .. "." .. "ThanatosExit",
+		PostTriggerFunctionArgs = { WaitTime = 4 },
+		WithinDistance = 750,
+		PreTriggerAnimation = "ThanatosTalkDismissal_Start",
+		VoiceLines =
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			SuccessiveChanceToPlay = 0.9,
+			PreLineWait = 0.75,
+			Queue = "Always",
 
-	-- 		-- It's clear. Go.
-	-- 		{ Cue = "/VO/Thanatos_0051" },
-	-- 		-- I have to get back.
-	-- 		{ Cue = "/VO/Thanatos_0052" },
-	-- 		-- Go on.
-	-- 		{ Cue = "/VO/Thanatos_0053" },
-	-- 		-- Keep going.
-	-- 		{ Cue = "/VO/Thanatos_0054",      RequiredTextLines = { "ThanatosFieldBuildingTrust01" } },
-	-- 		-- Keep fighting.
-	-- 		{ Cue = "/VO/Thanatos_0055",      RequiredTextLines = { "ThanatosFieldBuildingTrust01" } },
-	-- 		-- Nice running into you.
-	-- 		{ Cue = "/VO/Thanatos_0056",      RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" } },
-	-- 		-- Take care, Zagreus.
-	-- 		{ Cue = "/VO/Thanatos_0057",      RequiredTextLines = { "ThanatosGift08" } },
-	-- 		-- I'm going.
-	-- 		{ Cue = "/VO/Thanatos_0058" },
-	-- 		-- That's that.
-	-- 		{ Cue = "/VO/Thanatos_0059" },
-	-- 		-- Be seeing you.
-	-- 		{ Cue = "/VO/Thanatos_0060",      RequiredTextLines = { "ThanatosGift05" } },
-	-- 		-- I've got to go.
-	-- 		{ Cue = "/VO/Thanatos_0061",      RequiredTextLines = { "ThanatosGift05" } },
-	-- 		-- See you.
-	-- 		{ Cue = "/VO/Thanatos_0062",      RequiredTextLines = { "ThanatosGift06" } },
-	-- 		-- Not a word of this.
-	-- 		{ Cue = "/VO/Thanatos_0063" },
-	-- 		-- Let's keep this between us.
-	-- 		{ Cue = "/VO/Thanatos_0064",      RequiredTextLines = { "ThanatosGift06" } },
-	-- 		-- You had your hands full.
-	-- 		{ Cue = "/VO/Thanatos_0065" },
-	-- 		-- You're welcome. Go.
-	-- 		{ Cue = "/VO/Thanatos_0066",      RequiredFalseTextLines = { "ThanatosGift10" } },
-	-- 		-- Should be clear.
-	-- 		{ Cue = "/VO/Thanatos_0067",      RequiredTextLines = { "ThanatosGift01" } },
-	-- 		-- You never saw me.
-	-- 		{ Cue = "/VO/Thanatos_0068" },
-	-- 		-- Don't die, Zag.
-	-- 		{ Cue = "/VO/Thanatos_0069",      RequiredTextLines = { "ThanatosGift08" } },
-	-- 		-- Stay alive.
-	-- 		{ Cue = "/VO/Thanatos_0070",      RequiredTextLines = { "ThanatosGift07_A" } },
-	-- 		-- Bye, Zag.
-	-- 		{ Cue = "/VO/ThanatosField_0236", RequiredTextLines = { "ThanatosGift10" }, },
-	-- 		-- I'm off.
-	-- 		{ Cue = "/VO/ThanatosField_0237", RequiredTextLines = { "ThanatosGift06" }, },
-	-- 		-- Well, I'm off.
-	-- 		{ Cue = "/VO/ThanatosField_0238" },
-	-- 		-- Pleasure doing business.
-	-- 		{ Cue = "/VO/ThanatosField_0239", RequiredTextLines = { "ThanatosGift10" }, },
-	-- 		-- I should be getting back.
-	-- 		{ Cue = "/VO/ThanatosField_0240", RequiredTextLines = { "ThanatosGift08" }, },
-	-- 		-- You have this.
-	-- 		{ Cue = "/VO/ThanatosField_0241", RequiredTextLines = { "ThanatosGift09" }, },
-	-- 		-- See you at home.
-	-- 		{ Cue = "/VO/ThanatosField_0242", RequiredTextLines = { "ThanatosGift10" }, },
-	-- 		-- On to my next one.
-	-- 		{ Cue = "/VO/ThanatosField_0243", RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" }, },
-	-- 		-- Ungh, I'm late.
-	-- 		{ Cue = "/VO/ThanatosField_0244", RequiredTextLines = { "ThanatosGift03" }, },
-	-- 		-- I'm gone.
-	-- 		{ Cue = "/VO/ThanatosField_0245" },
-	-- 		-- Till next time.
-	-- 		{ Cue = "/VO/ThanatosField_0180", RequiredAnyTextLines = { "ThanatosGift09" } },
-	-- 		-- We should do this again.
-	-- 		{ Cue = "/VO/ThanatosField_0181", RequiredTextLines = { "ThanatosGift10" } },
-	-- 		-- You have this.
-	-- 		{ Cue = "/VO/ThanatosField_0182", RequiredAnyTextLines = { "ThanatosGift10" } },
-	-- 		-- Till we meet again.
-	-- 		{ Cue = "/VO/ThanatosField_0183", RequiredAnyTextLines = { "ThanatosGift09" } },
-	-- 		-- That takes care of that, I guess. See you.
-	-- 		{ Cue = "/VO/ThanatosField_0184", RequiredAnyTextLines = { "ThanatosGift10" } },
-	-- 	},
-	-- },
+			-- It's clear. Go.
+			{ Cue = "/VO/Thanatos_0051" },
+			-- I have to get back.
+			{ Cue = "/VO/Thanatos_0052" },
+			-- Go on.
+			{ Cue = "/VO/Thanatos_0053" },
+			-- Keep going.
+			{ Cue = "/VO/Thanatos_0054",      RequiredTextLines = { "ThanatosFieldBuildingTrust01" } },
+			-- Keep fighting.
+			{ Cue = "/VO/Thanatos_0055",      RequiredTextLines = { "ThanatosFieldBuildingTrust01" } },
+			-- Nice running into you.
+			{ Cue = "/VO/Thanatos_0056",      RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" } },
+			-- Take care, Zagreus.
+			{ Cue = "/VO/Thanatos_0057",      RequiredTextLines = { "ThanatosGift08" } },
+			-- I'm going.
+			{ Cue = "/VO/Thanatos_0058" },
+			-- That's that.
+			{ Cue = "/VO/Thanatos_0059" },
+			-- Be seeing you.
+			{ Cue = "/VO/Thanatos_0060",      RequiredTextLines = { "ThanatosGift05" } },
+			-- I've got to go.
+			{ Cue = "/VO/Thanatos_0061",      RequiredTextLines = { "ThanatosGift05" } },
+			-- See you.
+			{ Cue = "/VO/Thanatos_0062",      RequiredTextLines = { "ThanatosGift06" } },
+			-- Not a word of this.
+			{ Cue = "/VO/Thanatos_0063" },
+			-- Let's keep this between us.
+			{ Cue = "/VO/Thanatos_0064",      RequiredTextLines = { "ThanatosGift06" } },
+			-- You had your hands full.
+			{ Cue = "/VO/Thanatos_0065" },
+			-- You're welcome. Go.
+			{ Cue = "/VO/Thanatos_0066",      RequiredFalseTextLines = { "ThanatosGift10" } },
+			-- Should be clear.
+			{ Cue = "/VO/Thanatos_0067",      RequiredTextLines = { "ThanatosGift01" } },
+			-- You never saw me.
+			{ Cue = "/VO/Thanatos_0068" },
+			-- Don't die, Zag.
+			{ Cue = "/VO/Thanatos_0069",      RequiredTextLines = { "ThanatosGift08" } },
+			-- Stay alive.
+			{ Cue = "/VO/Thanatos_0070",      RequiredTextLines = { "ThanatosGift07_A" } },
+			-- Bye, Zag.
+			{ Cue = "/VO/ThanatosField_0236", RequiredTextLines = { "ThanatosGift10" }, },
+			-- I'm off.
+			{ Cue = "/VO/ThanatosField_0237", RequiredTextLines = { "ThanatosGift06" }, },
+			-- Well, I'm off.
+			{ Cue = "/VO/ThanatosField_0238" },
+			-- Pleasure doing business.
+			{ Cue = "/VO/ThanatosField_0239", RequiredTextLines = { "ThanatosGift10" }, },
+			-- I should be getting back.
+			{ Cue = "/VO/ThanatosField_0240", RequiredTextLines = { "ThanatosGift08" }, },
+			-- You have this.
+			{ Cue = "/VO/ThanatosField_0241", RequiredTextLines = { "ThanatosGift09" }, },
+			-- See you at home.
+			{ Cue = "/VO/ThanatosField_0242", RequiredTextLines = { "ThanatosGift10" }, },
+			-- On to my next one.
+			{ Cue = "/VO/ThanatosField_0243", RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" }, },
+			-- Ungh, I'm late.
+			{ Cue = "/VO/ThanatosField_0244", RequiredTextLines = { "ThanatosGift03" }, },
+			-- I'm gone.
+			{ Cue = "/VO/ThanatosField_0245" },
+			-- Till next time.
+			{ Cue = "/VO/ThanatosField_0180", RequiredAnyTextLines = { "ThanatosGift09" } },
+			-- We should do this again.
+			{ Cue = "/VO/ThanatosField_0181", RequiredTextLines = { "ThanatosGift10" } },
+			-- You have this.
+			{ Cue = "/VO/ThanatosField_0182", RequiredAnyTextLines = { "ThanatosGift10" } },
+			-- Till we meet again.
+			{ Cue = "/VO/ThanatosField_0183", RequiredAnyTextLines = { "ThanatosGift09" } },
+			-- That takes care of that, I guess. See you.
+			{ Cue = "/VO/ThanatosField_0184", RequiredAnyTextLines = { "ThanatosGift10" } },
+		},
+	},
 	-- Manually replaced /VO/Persephone_xxxx with /VO/Megaera_2xxxx
 	PersephoneGardenFirstGreeting = {
 		WithinDistance = 1200,
