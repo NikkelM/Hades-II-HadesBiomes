@@ -45,6 +45,7 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 		if victim.KillingWeaponBlockDeathWeapons ~= nil and game.Contains(victim.KillingWeaponBlockDeathWeapons, killingWeaponName) then
 			SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = victim.ObjectId })
 			victim.SpawnsEnemyOnDeath = false
+			victim.SpawnUnitOnDeath = nil
 		end
 	end
 
