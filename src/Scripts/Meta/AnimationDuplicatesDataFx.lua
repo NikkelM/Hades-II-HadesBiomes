@@ -104,6 +104,13 @@ mod.HadesFxAnimationModifications = {
 	},
 	-- #endregion
 
+	-- #region NPCs
+	ThanatosCurseOut = {
+		-- It would be shown through ClearFx, but that no longer works in Hades II
+		ChainTo = "ThanatosDeathsHead",
+	},
+	-- #endregion
+
 	-- #region ENVIRONMENT
 	-- Used by the HydraSlamScattered attack
 	RadialNovaRubble = {

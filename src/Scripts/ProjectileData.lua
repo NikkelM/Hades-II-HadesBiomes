@@ -36,6 +36,12 @@ local addProjectiles = {
 		StoredAmmoIcon = "AmmoEmbeddedInPlayerIcon",
 		AmmoDropProjectile = "HadesAmmoDrop",
 	},
+	ThanatosDeathCurse =	{
+		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "CurseHealthBar" },
+	},
+	ThanatosDeathCurseAoE =	{
+		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "CurseHealthBar" },
+	},
 }
 
 for projectileName, projectileData in pairs(addProjectiles) do

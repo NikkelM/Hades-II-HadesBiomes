@@ -242,6 +242,43 @@ local npcModifications = {
 			},
 		},
 	},
+	NPC_Thanatos_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		ExcludeFromDamageDealtRecord = true,
+	},
+	NPC_Thanatos_Field_01 = {
+		AIOptions = { "AttackerAI" },
+		PostCombatAI = _PLUGIN.guid .. "." .. "ThanatosPostCombat",
+		KillChallengeArgs = {
+			Force = 200,
+			SuccessConsumables = {
+				RandomSelection = true,
+				{ Name = "MaxHealthDrop", },
+				{ Name = "MaxManaDrop", },
+				{
+					Name = "StackUpgrade",
+					IgnoreLootPoints = true,
+					GameStateRequirements = {
+						NamedRequirements = { "StackUpgradeLegal", },
+					},
+				},
+				{ Name = "RoomMoneyDrop", },
+				{
+					Name = "TalentDrop",
+					GameStateRequirements = {
+						NamedRequirements = { "TalentLegal", },
+					},
+				},
+			},
+			FailConsumables = {
+				RandomSelection = true,
+				{ Name = "RoomRewardConsolationPrize", },
+			},
+			ConsumablePreDropFunctionName = _PLUGIN.guid .. "." .. "ThanatosDropPresentation",
+			ConsumablePreDropFunctionDelay = 0.7,
+		},
+	},
 }
 
 -- Before adding them to the game, we need to apply some additional modifications to NPCs
@@ -283,6 +320,15 @@ local npcChoiceMappings = {
 			PostLineThreadedFunctionName = {
 				Find = "SurfaceKillHero",
 				Replace = _PLUGIN.guid .. "." .. "SurfaceKillHero",
+			},
+		},
+	},
+	NPC_Thanatos_Field_01 = {
+		TextLineGroups = { "InteractTextLineSets" },
+		InnerAlwaysReplaceIfExist = {
+			PostLineThreadedFunctionName = {
+				Find = "ThanatosExit",
+				Replace = _PLUGIN.guid .. "." .. "ThanatosExit",
 			},
 		},
 	},

@@ -1090,6 +1090,7 @@ local enemyModifications = {
 	-- #region ELYSIUM - Regular
 	BaseShade = {
 		DestroyDelay = 0.0,
+		ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed = true
 	},
 	ShadeNaked = {
 		StunAnimations = { Default = "ShadeNaked_Idle" },

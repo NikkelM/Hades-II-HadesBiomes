@@ -1580,6 +1580,20 @@ local weaponModifications = {
 	-- #endregion
 	-- #endregion
 
+	-- #region THANATOS
+	ThanatosDeathCurse = {
+		AIData = {
+			PostAttackDuration = 0.4,
+		},
+	},
+	ThanatosDeathCurseAoE = {
+		AIData = {
+			PostAttackDuration = 0.5,
+			PostAttackCooldown = 1.5,
+		},
+	},
+	-- #endregion
+
 	-- #region ENVIRONMENT
 	BlastCubeExplosionElysium = {
 		AIData = {

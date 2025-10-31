@@ -50,6 +50,9 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 		if currentRoom.LoadModdedVoiceBanks ~= nil then
 			game.LoadVoiceBanks(currentRoom.LoadModdedVoiceBanks)
 		end
+		if currentRoom.Encounter ~= nil and currentRoom.Encounter.LoadModdedVoiceBanks ~= nil then
+			game.LoadVoiceBanks(currentRoom.Encounter.LoadModdedVoiceBanks)
+		end
 	end
 end)
 

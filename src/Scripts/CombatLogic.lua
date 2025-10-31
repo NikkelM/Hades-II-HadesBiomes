@@ -39,6 +39,12 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 				game.thread(mod.EnrageUnit, game.ActiveEnemies[unitIdToEnrage], game.CurrentRun, victim.EnrageOnDeathStartDelay)
 			end
 		end
+
+		if victim.ModsNikkelMHadesBiomesIsThanatosCursed and victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed then
+			SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = victim.ObjectId })
+			victim.SpawnsEnemyOnDeath = false
+			victim.SpawnUnitOnDeath = nil
+		end
 	end
 
 	base(victim, triggerArgs)

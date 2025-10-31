@@ -137,7 +137,7 @@ function mod.ModsNikkelMHadesBiomesSpawnerAI(enemy, aiData)
 			if aiData.SpawnFx then
 				CreateAnimation({ DestinationId = newEnemy.ObjectId, Name = aiData.SpawnFx })
 			end
-			game.thread(game.SetupUnit, newEnemy, CurrentRun)
+			game.thread(game.SetupUnit, newEnemy, game.CurrentRun)
 			AddToGroup({ Id = newEnemy.ObjectId, Name = spawnGroupName })
 			newEnemy.SkipActiveCount = true
 			if charmDuration > 0 then

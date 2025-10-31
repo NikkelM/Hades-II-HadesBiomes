@@ -248,6 +248,7 @@ local function on_ready()
 		import "Scripts/TraitData.lua"
 		import "Scripts/TraitDataNPCs.lua"
 		import "Scripts/ObstacleData.lua"
+		import "Scripts/ObjectiveData.lua"
 		import "Scripts/ProjectileData.lua"
 		import "Scripts/RunClearData.lua"
 
@@ -271,6 +272,7 @@ local function on_ready()
 		import "Scripts/FunctionMappings/ShadeNaked.lua"
 		import "Scripts/FunctionMappings/StyxLogic.lua"
 		import "Scripts/FunctionMappings/SurfaceLogic.lua"
+		import "Scripts/FunctionMappings/ThanatosLogic.lua"
 		import "Scripts/FunctionMappings/WretchAssassin.lua"
 
 		-- "Normal" code changes

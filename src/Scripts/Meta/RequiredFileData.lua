@@ -332,6 +332,13 @@ mod.BikFileNames = {
 	"Cerberus_HadesAssistRun_Bink",
 	"Cerberus_HadesAssistJumpFromRun_Bink",
 	-- #endregion
+	-- #region THANATOS
+	"ThanatosIdleInhouse_Bink",
+	"ThanatosIdle_Bink",
+	"ThanatosAttack_Bink",
+	"ThanatosAttackHold_Bink",
+	"ThanatosEmoteDismissal_Bink",
+	-- #endregion
 	-- #region CHARON
 	"CharonIdleBattle_Bink",
 	"CharonMove_Bink",
