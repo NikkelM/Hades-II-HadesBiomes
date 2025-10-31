@@ -188,7 +188,6 @@ function mod.ThanatosExit(source, args)
 	game.StopStatusAnimation(source)
 
 	if not args.SkipExitReaction then
-		-- TODO
 		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ThanatosExitReactionVoiceLines, true)
 	end
 
