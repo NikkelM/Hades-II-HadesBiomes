@@ -248,6 +248,7 @@ local function on_ready()
 		import "Scripts/TraitData.lua"
 		import "Scripts/TraitDataNPCs.lua"
 		import "Scripts/ObstacleData.lua"
+		import "Scripts/ObjectiveData.lua"
 		import "Scripts/ProjectileData.lua"
 		import "Scripts/RunClearData.lua"
 

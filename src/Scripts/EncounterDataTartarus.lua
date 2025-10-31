@@ -130,6 +130,7 @@ local encounterModifications = {
 		},
 	},
 	BaseThanatos = {
+		RequiredKillFunctionName = _PLUGIN.guid .. "." .. "TrackThanatosChallengeProgress",
 		BlockAthenaEncounterKeepsake = true,
 	},
 

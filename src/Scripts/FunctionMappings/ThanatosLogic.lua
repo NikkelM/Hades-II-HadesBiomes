@@ -1,5 +1,4 @@
 function mod.ThanatosPreSpawnPresentation(eventSource)
-	print("Thanatos Pre-Spawn Presentation started")
 	game.HideCombatUI("ThanatosIntro")
 
 	AdjustColorGrading({ Name = "Thanatos", Duration = 0.5 })
@@ -13,7 +12,13 @@ function mod.ThanatosPreSpawnPresentation(eventSource)
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ThanatosSpawningVoiceLines, true)
 
 	game.wait(1.5, game.RoomThreadName)
-	game.thread(mod.DisplayLocationText, nil, { Text = "ThanatosMessage", Delay = 0.95, FadeColor = { 0, 1, 0.7, 1 } })
+	game.thread(mod.DisplayLocationText, nil, {
+		Text = "ThanatosMessage",
+		Delay = 0.95,
+		FadeColor = { 0, 1, 0.7, 1 },
+		AnimationName = "ModsNikkelMHadesBiomesInfoBannerErebusIn",
+		AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerErebusOut",
+	})
 	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteAscendedDark" })
 
 	AdjustColorGrading({ Name = "Off", Duration = 3.0, Delay = 3.0 })
@@ -37,13 +42,11 @@ function mod.HandleThanatosSpawn(eventSource)
 	local spawnPointId = game.SelectSpawnPoint(currentRoom, newUnit,
 		{ SpawnNearId = currentRun.Hero.ObjectId, SpawnRadius = 500 })
 	if spawnPointId == nil then
-		print("No Thanatos spawn point, spawning on player")
 		spawnPointId = currentRun.Hero.ObjectId
 	end
 	newUnit.ObjectId = SpawnUnit({ Name = "NPC_Thanatos_Field_01", Group = "Standing", DestinationId = spawnPointId })
 	currentEncounter.ThanatosId = newUnit.ObjectId
 	game.SetupUnit(newUnit, game.CurrentRun, { IgnoreAI = true, PreLoadBinks = true, IgnoreAssert = true, })
-	mod.PrintTable(newUnit)
 	game.MapState.RoomRequiredObjects[newUnit.ObjectId] = newUnit
 	UseableOff({ Id = newUnit.ObjectId })
 	game.ActivatedObjects = game.ActivatedObjects or {}
@@ -200,7 +203,7 @@ function mod.ThanatosExit(source, args)
 	end
 
 	source.Mute = true
-	game.CurrentRun.EventState[source.ObjectId] = { FunctionName = _PLUGIN.guid .. "ThanatosExitSilent", Args = args }
+	game.CurrentRun.EventState[source.ObjectId] = { FunctionName = _PLUGIN.guid .. "." .. "ThanatosExitSilent", Args = args }
 
 	if args.UseMaxedPresentation then
 		RemoveInputBlock({ Name = "ThanatosExit" })
@@ -274,3 +277,33 @@ function mod.HandleThanatosEncounterReward(thanatos, args)
 		end
 	end
 end
+
+-- #region COMBAT
+function mod.CurseHealthBar(victim)
+	-- if not game.HeroData.DefaultHero.HeroAlliedUnits[victim.Name] then
+	if not game.UnitSets.PlayerSummons[victim.Name] then
+		victim.CursedHealthBarEffect = true
+		game.UpdateHealthBar(victim, 0, { Force = true })
+	end
+end
+
+function mod.TrackThanatosChallengeProgress(encounter, victim, killer)
+	if victim.IgnoreThanatosChallengeTracker then
+		return
+	end
+
+	-- TODO: killer is nil for Thanatos
+	local maxTimeSincePlayerDamage = encounter.MaxTimeSincePlayerDamage or 5
+	if killer ~= nil and killer.ObjectId == encounter.ThanatosId then
+		encounter.ThanatosKills = encounter.ThanatosKills + 1
+		game.UpdateObjectiveDescription("ThanatosKills", "Objective_ThanatosKills", "ThanatosKills", encounter.ThanatosKills)
+	elseif killer ~= nil and killer == CurrentRun.Hero then
+		encounter.PlayerKills = encounter.PlayerKills + 1
+		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
+	elseif victim ~= nil and victim.TimeOfLastPlayerDamage ~= nil and _worldTime - victim.TimeOfLastPlayerDamage < maxTimeSincePlayerDamage then
+		encounter.PlayerKills = encounter.PlayerKills + 1
+		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
+	end
+end
+
+-- #endregion

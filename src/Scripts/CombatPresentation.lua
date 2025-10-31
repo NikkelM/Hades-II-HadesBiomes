@@ -52,3 +52,28 @@ modutil.mod.Path.Wrap("UnitInvulnerableHitPresentation", function(base, blocker,
 
 	base(blocker, args)
 end)
+
+-- This is a very costly function!
+modutil.mod.Path.Wrap("UpdateHealthBarReal", function(base, args)
+	base(args)
+
+	local enemy = args[1]
+
+	if enemy.CursedHealthBarEffect then
+		if enemy.UseGroupHealthBar then
+			return
+		end
+
+		local screenId = args[2]
+		local falloffId = args[3]
+
+		if enemy.HitShields ~= nil and enemy.HitShields > 0 then
+			SetColor({ Id = screenId, Color = game.Color.CurseHitShield })
+		elseif enemy.HealthBuffer ~= nil and enemy.HealthBuffer > 0 then
+			SetColor({ Id = screenId, Color = game.Color.CurseHealthBuffer })
+		else
+			SetColor({ Id = screenId, Color = game.Color.CurseHealth })
+		end
+		SetColor({ Id = falloffId, Color = game.Color.CurseFalloff })
+	end
+end)
