@@ -3931,7 +3931,6 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 			BouldyGiftRepeatable16 = {
-				RequiredTextLines = { "BouldyGiftRepeatable01", "BouldyGiftRepeatable02" },
 				RequiredTextLines = { "BouldyGiftRepeatable12" },
 				{
 					Cue = "/VO/ZagreusField_2804",
@@ -6631,7 +6630,8 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "MusicianMusic",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice_SongFromStart,
 			},
-			EurydiceAintEvenMadChat10 = {
+			-- Custom: Renamed from EurydiceAintEvenMadChat10 as it was a duplicate
+			EurydiceAintEvenMadChat10_A = {
 				UseableOffSource = true,
 				RequiredTextLines = { "OrpheusWithEurydice01" },
 				AreIdsNotAlive = { 554419 },
@@ -9472,7 +9472,8 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusGreetings,
 			},
-			PatroclusChat19 = {
+			-- Custom: Renamed from PatroclusChat19 as it was a duplicate
+			PatroclusChat19_A = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				AreIdsNotAlive = { 563036 },
@@ -9624,7 +9625,8 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedThreadedFunctionName = "AmbientChatting",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.PatroclusMutteringRepeatable,
 			},
-			PatroclusChat27 = {
+			-- Custom: Renamed from PatroclusChat27 as it was a duplicate
+			PatroclusChat27_A = {
 				UseableOffSource = true,
 				RequiredAnyTextLines = { "PatroclusMeeting02", "PatroclusMeeting02B", "AchillesAboutPatroclus01B", "PatroclusAboutAchilles01B" },
 				AreIdsNotAlive = { 563036 },
@@ -13775,7 +13777,6 @@ mod.NPCData = mod.NPCData or {
 					AngleTowardTargetId = 421122,
 					TeleportHeroToId = 423056,
 					AngleHeroTowardTargetId = 423055,
-					FadeInTime = 0.5,
 					FadeInSound = "/Leftovers/World Sounds/MapZoomInShortHigh",
 					FadeInTime = 0.5,
 					PostLineThreadedFunctionName = "ThanatosExit",
@@ -15771,7 +15772,6 @@ mod.NPCData = mod.NPCData or {
 				PlayOnce = true,
 				Partner = "NPC_Hades_01",
 				RequiredTextLines = { "ThanatosWithHades01", "ThanatosGift03" },
-				RequiredFalseTextLines = { "ThanatosWithHades03" },
 				RequiredEncounterThisRun = "ThanatosTartarus",
 				RequiredFalseTextLines = { "Ending01" },
 				RequiredFalseValues = { CurrentEmployeeOfTheMonth = "Thanatos" },
@@ -16674,7 +16674,6 @@ mod.NPCData = mod.NPCData or {
 				-- Priority = true,
 				UseableOffSource = true,
 				GiftableOffSource = true,
-				RequiredRoom = "DeathArea",
 				RequiredFalseDeathEncounters = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro" },
 				RequiredFalseTextLines = { "Ending01", "ThanatosGift06" },
 				RequiredRoom = "DeathArea",
@@ -17107,7 +17106,6 @@ mod.NPCData = mod.NPCData or {
 				UseableOffSource = true,
 				GiftableOffSource = true,
 				RequiredRoom = "DeathArea",
-				RequiredTextLines = { "ThanatosGift08" },
 				RequiresRunCleared = true,
 				RequiredTextLines = { "PersephoneMeeting02" },
 				EndGlobalVoiceLines = "MiscEndVoiceLines_Thanatos",
@@ -19355,7 +19353,6 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 			ThanatosMiscStartRepeatable02 = {
-				RequiredTextLines = { "ThanatosMiscIntro02" },
 				RequiredTextLines = { "ThanatosGift10" },
 				{
 					Cue = "/VO/ThanatosField_0128",
