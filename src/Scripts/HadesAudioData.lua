@@ -1,5 +1,6 @@
 -- Contains some of the GlobalVoiceLines from Hades AudioData.lua
 mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
+	-- #region Hades
 	HadesDeathTauntVoiceLines = {
 		RandomRemaining = true,
 		BreakIfPlayed = true,
@@ -1623,6 +1624,8 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/HadesField_0227", PreLineWait = 0.65 },
 		},
 	},
+	-- #endregion
+	-- #region Megaera
 	MultiFuryFightStartVoiceLines = {
 		{
 			BreakIfPlayed = true,
@@ -1685,6 +1688,85 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Alecto_0302" },
 		}
 	},
+	-- #endregion
+	-- #region Thanatos
+	-- ThanatosGreetingVoiceLines = {
+	-- 	BreakIfPlayed = true,
+	-- 	RandomRemaining = true,
+	-- 	PreLineWait = 0.4,
+	-- 	PlayOnceFromTableThisRun = true,
+
+	-- 	-- Hmph.
+	-- 	{ Cue = "/VO/Thanatos_0161", RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- What.
+	-- 	{ Cue = "/VO/Thanatos_0183" },
+	-- 	-- Well, well.
+	-- 	{ Cue = "/VO/Thanatos_0188", RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- What do you need exactly.
+	-- 	{ Cue = "/VO/Thanatos_0147", RequiredPlayed = { "/VO/Thanatos_0183" },                                                RequiredFalseTextLines = { "ThanatosGift07_A" } },
+	-- 	-- Hmph.
+	-- 	{ Cue = "/VO/Thanatos_0161", RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Hm.
+	-- 	{ Cue = "/VO/Thanatos_0179", RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Yes?
+	-- 	{ Cue = "/VO/Thanatos_0182", RequiredFalseTextLines = { "ThanatosGift06" },                                           RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Tsch.
+	-- 	{ Cue = "/VO/Thanatos_0180", RequiredFalseTextLines = { "ThanatosGift05" },                                           RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- What?
+	-- 	{ Cue = "/VO/Thanatos_0184", RequiredFalseTextLines = { "ThanatosGift05" },                                           RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- You.
+	-- 	{ Cue = "/VO/Thanatos_0186", RequiredFalseTextLines = { "ThanatosGift04" },                                           RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- It's you.
+	-- 	{ Cue = "/VO/Thanatos_0187", RequiredFalseTextLines = { "ThanatosGift05" },                                           RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- What's up.
+	-- 	{ Cue = "/VO/Thanatos_0152", RequiredTextLines = { "ThanatosGift04" },                                                RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Heh.
+	-- 	{ Cue = "/VO/Thanatos_0181", RequiredTextLines = { "ThanatosGift05" },                                                RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- What is it, Zag.
+	-- 	{ Cue = "/VO/Thanatos_0148", RequiredTextLines = { "ThanatosGift03" },                                                RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Welcome home.
+	-- 	{ Cue = "/VO/Thanatos_0192", RequiredTextLines = { "ThanatosGift05" },                                                RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Sorry, Zag.
+	-- 	{ Cue = "/VO/Thanatos_0191", RequiredTextLines = { "ThanatosGift06" },                                                RequiredPlayed = { "/VO/Thanatos_0183" },       RequiresRunNotCleared = true },
+	-- 	-- You all right?
+	-- 	{ Cue = "/VO/Thanatos_0189", RequiredTextLines = { "ThanatosGift06" },                                                RequiredPlayed = { "/VO/Thanatos_0183" },       RequiresRunNotCleared = true },
+	-- 	-- You OK?
+	-- 	{ Cue = "/VO/Thanatos_0190", RequiredTextLines = { "ThanatosGift06" },                                                RequiredPlayed = { "/VO/Thanatos_0183" },       RequiresRunNotCleared = true },
+	-- 	-- Hey Zag.
+	-- 	{ Cue = "/VO/Thanatos_0193", RequiredTextLines = { "ThanatosGift06" },                                                RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Hey.
+	-- 	{ Cue = "/VO/Thanatos_0194", RequiredTextLines = { "ThanatosGift06" },                                                RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Ahem.
+	-- 	-- { Cue = "/VO/Thanatos_0185" },
+	-- 	-- Welcome back.
+	-- 	{ Cue = "/VO/Thanatos_0425", RequiredTextLines = { "ThanatosGift07_A" },                                              RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Hey Zag.
+	-- 	{ Cue = "/VO/Thanatos_0426", RequiredAnyTextLines = { "BecameCloserWithThanatos01", "BecameCloserWithThanatos01_B" }, RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Hey.
+	-- 	{ Cue = "/VO/Thanatos_0427", RequiredTextLines = { "ThanatosGift10" },                                                RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- You're back.
+	-- 	{ Cue = "/VO/Thanatos_0428", RequiredTextLines = { "ThanatosGift06" },                                                RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Good work out there.
+	-- 	{ Cue = "/VO/Thanatos_0429", RequiredTextLines = { "ThanatosGift06" },                                                RequiredPlayed = { "/VO/Thanatos_0183" },       RequiresRunCleared = true, },
+	-- 	-- Well done that time.
+	-- 	{ Cue = "/VO/Thanatos_0430", RequiredTextLines = { "ThanatosGift06" },                                                RequiredPlayed = { "/VO/Thanatos_0183" },       RequiresRunCleared = true, },
+	-- 	-- Good work.
+	-- 	{ Cue = "/VO/Thanatos_0431", RequiredTextLines = { "ThanatosGift06" },                                                RequiredPlayed = { "/VO/Thanatos_0183" },       RequiresRunCleared = true, },
+	-- 	-- Heard you made it, Zag.
+	-- 	{ Cue = "/VO/Thanatos_0432", RequiredTextLines = { "ThanatosGift06" },                                                RequiredPlayed = { "/VO/Thanatos_0183" },       RequiresRunCleared = true, },
+	-- 	-- Went all the way again, huh.
+	-- 	{ Cue = "/VO/Thanatos_0433", RequiredTextLines = { "ThanatosGift08" },                                                RequiredPlayed = { "/VO/Thanatos_0183" },       RequiresRunCleared = true, },
+	-- 	-- Glad you're back.
+	-- 	{ Cue = "/VO/Thanatos_0434", RequiredAnyTextLines = { "BecameCloserWithThanatos01", "BecameCloserWithThanatos01_B" }, RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Back in one piece.
+	-- 	{ Cue = "/VO/Thanatos_0435", RequiredTextLines = { "ThanatosGift07_A" },                                              RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Over here.
+	-- 	{ Cue = "/VO/Thanatos_0436", RequiredTextLines = { "ThanatosGift06" },                                                RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- Hm, hello.
+	-- 	{ Cue = "/VO/Thanatos_0437", RequiredTextLines = { "ThanatosGift06" },                                                RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- 	-- What's going on, Zag.
+	-- 	{ Cue = "/VO/Thanatos_0438", RequiredAnyTextLines = { "BecameCloserWithThanatos01", "BecameCloserWithThanatos01_B" }, RequiredPlayed = { "/VO/Thanatos_0183" } },
+	-- },
 	ThanatosDeathTauntVoiceLines = {
 		RandomRemaining = true,
 		BreakIfPlayed = true,
@@ -1755,6 +1837,17 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		-- Nothing I can do.
 		{ Cue = "/VO/Thanatos_0146" },
 	},
+	ThanatosSpecialExitVoiceLines = {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 1.5,
+		Source = { SubtitleColor = game.Color.ThanatosVoice },
+		AllowTalkOverTextLines = true,
+		-- Bye, Zag.
+		{ Cue = "/VO/ThanatosField_0236" },
+	},
+	-- #endregion
+	-- #region Patroclus
 	PatroclusGreetingLines = {
 		Queue = "Interrupt",
 		Cooldowns =
@@ -2046,6 +2139,8 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			},
 		},
 	},
+	-- #endregion
+	-- #region Theseus
 	TheseusWrathActivationVoiceLines = {
 		RandomRemaining = true,
 		PreLineWait = 0.1,
@@ -2150,6 +2245,8 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Theseus_0328" },
 		},
 	},
+	-- #endregion
+	-- #region Charon
 	-- Custom: Replaced Charon_ with Megaera_1
 	CharonSurprisedVoiceLines = {
 		Queue = "Interrupt",
@@ -2184,15 +2281,8 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Megaera_10072" },
 		},
 	},
-	ThanatosSpecialExitVoiceLines = {
-		RandomRemaining = true,
-		BreakIfPlayed = true,
-		PreLineWait = 1.5,
-		Source = { SubtitleColor = game.Color.ThanatosVoice },
-		AllowTalkOverTextLines = true,
-		-- Bye, Zag.
-		{ Cue = "/VO/ThanatosField_0236" },
-	},
+	-- #endregion
+	-- #region Sisyphus / Bouldy
 	BlessedByBouldyVoiceLines = {
 		{
 			RandomRemaining = true,
@@ -2303,7 +2393,8 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Sisyphus_0468" },
 		},
 	},
-	-- Ending/Surface
+	-- #endregion
+	-- #region Persephone/Ending/Surface
 	PersephoneFirstMeetingIntermissionVoiceLines = {
 		{
 			PreLineWait = 0.35,
@@ -2376,9 +2467,11 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		-- ...The Sun... Helios...
 		{ Cue = "/VO/ZagreusField_4698", RequiredPlayed = { "/VO/ZagreusField_4697" }, PreLineWait = 6.0, RequiredTextLines = { "DemeterAboutHelios01" } },
 	},
+	-- #endregion
 }
 
 mod.HeroVoiceLines = mod.HeroVoiceLines or {
+	-- #region Hades
 	HitByGraveHandsVoiceLines = {
 		{
 			RandomRemaining = true,
@@ -2516,7 +2609,9 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			}
 		}
 	},
-	-- Custom tables
+	-- #endregion
+	-- #region Custom
+	-- Plays when saluting the good shade in the Elysium boss room
 	ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines = {
 		UsePlayerSource = true,
 		{
@@ -2554,6 +2649,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_4258", Text = "To further victories!", },
 		},
 	},
+	-- Plays when exiting the Hades boss room
 	ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines = {
 		{
 			-- { Cue = "/VO/MelinoeField_3423", Text = "Brother...!", },
@@ -2567,4 +2663,5 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			-- { Cue = "/VO/Melinoe_4706",      Text = "{#Emph}The strongest dreams shall shatter if they must!" },
 		},
 	},
+	-- #endregion
 }

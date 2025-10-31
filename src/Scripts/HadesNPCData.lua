@@ -1,5 +1,6 @@
 -- For these, make the modifications directly here, as larger changes are often needed
 mod.PresetEventArgs = mod.PresetEventArgs or {
+	-- #region Patroclus
 	PatroclusMuttering = {
 		StatusAnimation = "StatusIconWantsToTalk",
 		DistanceTrigger = {
@@ -46,6 +47,25 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			},
 		},
 	},
+	-- #endregion
+	-- #region Thanatos
+	-- Brooding = {
+	-- 	ChanceToTrigger = 0.5,
+	-- 	PostTriggerAnimation = "ThanatosIdleInhouseFidget_HairFlick",
+	-- 	StatusAnimation = "StatusIconWantsToTalk",
+	-- 	WithinDistance = 620,
+	-- 	VoiceLines =		{
+	-- 		[1] = game.GlobalVoiceLines.ThanatosGreetingVoiceLines,
+	-- 	}
+	-- },
+	-- BroodingRepeatable = {
+	-- 	ChanceToTrigger = 0.5,
+	-- 	PostTriggerAnimation = "ThanatosIdleInhouseFidget_HairFlick",
+	-- 	WithinDistance = 420,
+	-- 	VoiceLines =		{
+	-- 		[1] = game.GlobalVoiceLines.ThanatosGreetingVoiceLines,
+	-- 	}
+	-- },
 	ThanatosFarewells = {
 		PostTriggerFunctionName = _PLUGIN.guid .. "." .. "ThanatosExit",
 		PostTriggerFunctionArgs = { WaitTime = 4 },
@@ -131,6 +151,8 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			{ Cue = "/VO/ThanatosField_0184", RequiredAnyTextLines = { "ThanatosGift10" } },
 		},
 	},
+	-- #endregion
+	-- #region Persephone
 	-- Manually replaced /VO/Persephone_xxxx with /VO/Megaera_2xxxx
 	PersephoneGardenFirstGreeting = {
 		WithinDistance = 1200,
@@ -259,6 +281,8 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			},
 		},
 	},
+	-- #endregion
+	-- #region Eurydice
 	SingingEurydiceSong01_Eurydice_SongFromStart = {
 		TrackName = "{5d99eb67-025b-4ae2-a8fa-bc9a1f52e5ec}",
 		Restore = true,
@@ -269,6 +293,8 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		TrackOffsetMin = 10.0,
 		TrackOffsetMax = 120.0,
 	},
+	-- #endregion
+	-- #region NPC Benefit choices
 	SisyphusBenefitChoices = {
 		SkipComponents = {
 			"OlympusBackground",
@@ -399,6 +425,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			},
 		},
 	},
+	-- #endregion
 }
 
 -- Selected NPC data from Hades, loaded alongside other enemies in EnemyData.lua
@@ -13397,6 +13424,7 @@ mod.NPCData = mod.NPCData or {
 		},
 	},
 
+	-- Manually replaced PresetEventArgs.Brooding/BroodingRepeatable with mod.PresetEventArgs.___ to make it easier
 	-- Thanatos, Id = 423052 (DeathArea Version; Field Version below)
 	NPC_Thanatos_01 = {
 		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
@@ -13454,8 +13482,7 @@ mod.NPCData = mod.NPCData or {
 					"Always happy to oblige. Especially when it causes me to risk my station. To risk everything I've worked for."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				-- TODO
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosHomeFirstMeetingAlt = {
@@ -13493,7 +13520,7 @@ mod.NPCData = mod.NPCData or {
 					"Well! Don't let me stop you, then. Always happy to risk my station for your sake. To risk everything I've worked for."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosHomeMiscMeeting01 = {
@@ -13525,7 +13552,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Recently, I'm not so sure. Whatever you're doing, it had better be worth it."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosHomeRunProgress01 = {
@@ -13578,7 +13605,7 @@ mod.NPCData = mod.NPCData or {
 					"{#DialogueItalicFormat}Tsch{#PreviousFormat}, well. We'll see what the Fates have to say about that. Maybe the shade of Daedalus can make you some protective eyewear or something."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosHomeRunProgress02 = {
 				PlayOnce = true,
@@ -13611,7 +13638,7 @@ mod.NPCData = mod.NPCData or {
 					"See what I mean, now, Zag? Nice place to visit on occasion, sure. But I definitely wouldn't want to live there."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			-- alt below
@@ -13657,7 +13684,7 @@ mod.NPCData = mod.NPCData or {
 					"Maybe so. But even still, she did abandon you. Your family's here, if you ask me. But I can understand that... you need answers."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosBackstory01_B = {
 				Priority = true,
@@ -13703,7 +13730,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Something tells me Father wouldn't let her take me even if she wanted."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosBackstory02 = {
@@ -13784,7 +13811,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "...Watch yourself out there, Zagreus. I have to go."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutDeath01 = {
@@ -13832,7 +13859,7 @@ mod.NPCData = mod.NPCData or {
 					"We've all the time to educate them, here. Their ignorance of death is solved almost as soon as they experience their first. Though I suppose they might be better off knowing before the fact."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutDeath02 = {
 				PlayOnce = true,
@@ -13878,7 +13905,7 @@ mod.NPCData = mod.NPCData or {
 					"I know, right? Some of them know that isn't how it is, and try to tell their kind about what it is we do here, but... it's slow going, getting the information out. Either way! I get to be the bearer of good news."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutDeath03 = {
 				PlayOnce = true,
@@ -13935,7 +13962,7 @@ mod.NPCData = mod.NPCData or {
 					"I can release them from their decaying bodies. Sometimes, the Fates demand I bring them in sooner. That's about as much as I can do. Some of them get it early on, how to live. It's quite impressive, really, that they learn so quick."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutShifting01 = {
@@ -13966,7 +13993,7 @@ mod.NPCData = mod.NPCData or {
 					"Most of it, yes. Don't beat yourself up, though, Zagreus. It's a practiced skill but I've apparently been able to do it since birth. Mother Nyx says I was a real handful."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutBalcony01 = {
@@ -14016,7 +14043,7 @@ mod.NPCData = mod.NPCData or {
 					"I find it rather soothing as a matter of fact. A break from having to deal constantly with mortal souls. Speaking of which... I have to pick somebody up right now."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutNemesisAspect01 = {
@@ -14048,7 +14075,7 @@ mod.NPCData = mod.NPCData or {
 					"In case you haven't noticed, most of us who sprang from Nyx, we're not exactly close. Nemesis is fully occupied meting out justice on the surface. Our paths are not designed to cross. And based on everything I know, that's fine with me."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutErisAspect01 = {
 				PlayOnce = true,
@@ -14086,7 +14113,7 @@ mod.NPCData = mod.NPCData or {
 					"The mortals call her Strife. She and her children... it's thanks partly to their dedicated efforts I'm so busy all the time. Though, it is best we didn't speak of her, I think."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			-- alt below
 			ThanatosAboutSurface01 = {
@@ -14130,7 +14157,7 @@ mod.NPCData = mod.NPCData or {
 					"There's no accounting for their taste, I guess. But, I'm discounting certain aspects that are not so bad. You know what? I'll not spoil the surprise. I have a feeling you're going to see for yourself soon enough."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutSurface01_B = {
 				PlayOnce = true,
@@ -14165,7 +14192,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "There's no accounting for their taste, I guess."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutCharon01 = {
@@ -14207,7 +14234,7 @@ mod.NPCData = mod.NPCData or {
 					"I doubt he's in it for the compensation, Zagreus. There is no Underworld without Charon. I think he knows that, and your father knows it, too."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			-- rename, was a 2 below
 			ThanatosAboutCharon02A = {
@@ -14236,7 +14263,7 @@ mod.NPCData = mod.NPCData or {
 					"Wouldn't be surprised if you were closer to him than I am. Not all of Nyx's sons and daughters keep in steady touch. Though at least we're not always at each others' throats, like the other side of your family."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutCharon02 = {
@@ -14285,7 +14312,7 @@ mod.NPCData = mod.NPCData or {
 					"{#DialogueItalicFormat}Hmm{#PreviousFormat}. All I can think of is... Charon's very dedicated to this House. Like some of us. Maybe he thought... he could help settle things, between you and your father. One way or another."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutCharonFight01 = {
@@ -14319,7 +14346,7 @@ mod.NPCData = mod.NPCData or {
 					"Everything is an exchange with Charon, Zag. If there was something you refused to pay for, then I'm going to assume that's why you're back here, now. The debt is paid in obols, or in blood. Or their closest counterparts, I guess."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutSkelly01 = {
 				PlayOnce = true,
@@ -14346,7 +14373,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Who, what? No. Why would you even ask?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutPersephone01 = {
@@ -14390,7 +14417,7 @@ mod.NPCData = mod.NPCData or {
 					"Sometimes I have to be reminded that Lord Hades wasn't born here, like the rest of us. But Persephone, she... she had a radiance about her, I suppose. Reminded me of the outside, but... I don't mean that in a negative respect."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutSisyphus01 = {
@@ -14422,7 +14449,7 @@ mod.NPCData = mod.NPCData or {
 					"I only have a faint impression of the man he used to be, although it seems he's changed a lot, since then. Thank you for understanding, anyway."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutSisyphusLiberationQuestComplete01 = {
 				PlayOnce = true,
@@ -14457,7 +14484,7 @@ mod.NPCData = mod.NPCData or {
 					"Oh? Well, he's an odd one through and through, I guess. As long as I don't have to deal with him again."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutAchilles01 = {
@@ -14488,7 +14515,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "No. I tend to those in less of a hurry to come here."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutMyrmidonReunionQuestComplete01 = {
 				PlayOnce = true,
@@ -14523,7 +14550,7 @@ mod.NPCData = mod.NPCData or {
 					"Love is common among mortals. Is theirs really so special as to be worth the trouble? Not just on your part, but theirs?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutMegaera01 = {
@@ -14574,7 +14601,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "That's not what I meant. But fine, you've told me all I need to know, for now."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutMegaera02 = {
 				PlayOnce = true,
@@ -14620,7 +14647,7 @@ mod.NPCData = mod.NPCData or {
 					"We each had to blow off some steam, yes. That was some of the hardest I ever worked, back then, and her, too, I think. When you go through something like that with someone, it brings you closer, I suppose."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutBeingCloseWithMegaera01 = {
@@ -14681,7 +14708,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Not any more than usual. Tell her that I said hello when next you meet."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutBeingCloseWithDusa01 = {
@@ -14712,7 +14739,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You don't need to ask me such things, Zagreus. They're your feelings."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutAres01 = {
@@ -14751,7 +14778,7 @@ mod.NPCData = mod.NPCData or {
 					"Discounting Hermes, I should say, the rest of them have nothing much to do with me at all. I can imagine why, I know it's complicated with your father here. But as for Ares... I think he's all right."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutNyxAndAres01 = {
 				PlayOnce = true,
@@ -14795,7 +14822,7 @@ mod.NPCData = mod.NPCData or {
 					"He'd be a hollow fool if he did. Why do you think they fear us on Olympus, Zagreus? Because of Hypnos? I don't think Mother Nyx requires your concern. Though, by all means, talk to her about it, if you like."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutNyxAndChaos01 = {
 				PlayOnce = true,
@@ -14828,7 +14855,7 @@ mod.NPCData = mod.NPCData or {
 					"No, not everyone is quite as sharing as you are, Zag. Nor as inclined to pry. But still... in this case, sounds like it worked out. So, thank you. If she hasn't said as much."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutNyxAndDusa01 = {
@@ -14885,7 +14912,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You're a god. I'm telling you to learn to act like one."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutNyxAndDusa02 = {
 				SuperPriority = true,
@@ -15046,7 +15073,7 @@ mod.NPCData = mod.NPCData or {
 					"I don't know what's worse, dying repeatedly or Hypnos. Although, I guess I'm grateful for your patience with him, Zag."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			-- brothers quest
 			ThanatosAboutHypnos02 = {
@@ -15095,7 +15122,7 @@ mod.NPCData = mod.NPCData or {
 					"I know, it's just...! You're right. I catch myself feeling particularly horrid after talking to him. He can be very frustrating, and self-absorbed... though, I know he means well. Probably."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			-- brothers quest
 			ThanatosAboutHypnos03 = {
@@ -15144,7 +15171,7 @@ mod.NPCData = mod.NPCData or {
 					"He loves lists. Doesn't do well with subtlety, so much, but spell things out for him, and he will get right on it. Long as he's awake, at least. He's still working on that part."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutSingersReunionQuestComplete01 = {
 				PlayOnce = true,
@@ -15200,7 +15227,7 @@ mod.NPCData = mod.NPCData or {
 					"So you decided to step in. {#DialogueItalicFormat}Tsch{#PreviousFormat}. I think my instincts on the subject are just not the same as yours. I know your intentions were in the right place, but... you know what, forget it."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutQuestLog01 = {
@@ -15240,7 +15267,7 @@ mod.NPCData = mod.NPCData or {
 					"Guess it just wasn't meant to be. Though, I don't know them at all. Keep only to themselves, somewhere. Sometimes I wonder whether everything really is preordained, or whether they're making all this up as they go."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosRunCleared01 = {
@@ -15280,7 +15307,7 @@ mod.NPCData = mod.NPCData or {
 					"Come on, Zag, take some credit where it's due. Though... you'll forgive me if I keep my distance for a little while, as I think you have some issues to resolve. You watch yourself."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutStaying01 = {
@@ -15321,7 +15348,7 @@ mod.NPCData = mod.NPCData or {
 					"{#DialogueItalicFormat}Heh{#PreviousFormat}. Well then, I'll see what I can do about that. You'll have to show me what you mean by {#DialogueItalicFormat}'live a little'{#PreviousFormat}, though."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			-- misnomer; event moved later
@@ -15389,7 +15416,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "That's... a lot to take in."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutRelationship01 = {
@@ -15430,7 +15457,7 @@ mod.NPCData = mod.NPCData or {
 					"Well, here I am. But you didn't answer my question. Though, you know something? Forget I asked. I've got to go."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 			ThanatosAboutRelationship02 = {
 				PlayOnce = true,
@@ -15474,7 +15501,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "We're good. See you, all right?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosAboutRelationship03 = {
@@ -15532,7 +15559,7 @@ mod.NPCData = mod.NPCData or {
 					"No. It kept getting in my way. Sliced it right off and never looked back. So... plenty of personal growth all around, then?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			-- ending
@@ -15571,7 +15598,7 @@ mod.NPCData = mod.NPCData or {
 					"Well, if there's something more that I can do to support you in this, let me know, all right? Sounds like you're making progress, at least."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosPostEnding01 = {
@@ -15629,7 +15656,7 @@ mod.NPCData = mod.NPCData or {
 					"Well, then, I'll be looking forward to working with you in a more official capacity. Even if we're still supposed to keep it all under wraps, for sake of appearances. See you out there."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosPostEnding02 = {
@@ -15671,7 +15698,7 @@ mod.NPCData = mod.NPCData or {
 					"I'm beginning to think we all are. And, please don't take this the wrong way, but... I think you and your father have a lot of work ahead of you, as well."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosPostEpilogue01 = {
@@ -15712,7 +15739,7 @@ mod.NPCData = mod.NPCData or {
 					"{#DialogueItalicFormat}Hah{#PreviousFormat}! Yes, indeed. Well, then! I guess enjoy it while it lasts, as mortals sometimes say. I'll see you out there."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
 
 			ThanatosWithHades01 = {
@@ -16547,7 +16574,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Sorry, Zagreus, I have to go. Lots of assignments as of late. Too bad I can't be everywhere at once."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat02 = {
 				-- Priority = true,
@@ -16562,7 +16589,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "No use in making idle chat, right, Zagreus?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat03 = {
 				-- Priority = true,
@@ -16577,7 +16604,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I have a job to do, and you've no interest in remaining here. See you around out there."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat04 = {
 				UseableOffSource = true,
@@ -16591,7 +16618,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Don't bother, Zagreus. I was just leaving."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat05 = {
 				-- Priority = true,
@@ -16603,7 +16630,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I hope you've thought through all of this. For both our sakes."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat06 = {
 				-- Priority = true,
@@ -16616,7 +16643,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I can't keep bailing you out each time you get in over your head."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat07 = {
 				-- Priority = true,
@@ -16629,7 +16656,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I have to say it's quite a mess you've gotten yourself into, Zagreus."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat08 = {
 				-- Priority = true,
@@ -16642,7 +16669,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You better know what you're doing."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat09 = {
 				UseableOffSource = true,
@@ -16653,7 +16680,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You're wasting your time. Just go."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat10 = {
 				-- Priority = true,
@@ -16668,7 +16695,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Shouldn't you be back out there by now, getting yourself killed?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat11 = {
 				-- Priority = true,
@@ -16684,7 +16711,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You know how much trouble I am getting myself into here?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat12 = {
 				-- Priority = true,
@@ -16699,7 +16726,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "There's nothing left for us to talk about."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat13 = {
 				-- Priority = true,
@@ -16711,7 +16738,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Don't talk to me. Just go."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat14 = {
 				-- Priority = true,
@@ -16726,7 +16753,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Excuse me, I've got work to do."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat15 = {
 				UseableOffSource = true,
@@ -16739,7 +16766,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Not now, I have to go."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat16 = {
 				UseableOffSource = true,
@@ -16753,7 +16780,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I don't know what you want from me."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat17 = {
 				UseableOffSource = true,
@@ -16767,7 +16794,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I have to get back to my responsibilities."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat18 = {
 				-- Priority = true,
@@ -16781,7 +16808,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You are in so much trouble."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat19 = {
 				-- Priority = true,
@@ -16793,7 +16820,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You watch yourself out there."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			-- relationship improved
 			ThanatosHomeChat20 = {
@@ -16864,7 +16891,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Can't talk right now, I have to get to work."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat26 = {
 				UseableOffSource = true,
@@ -16879,7 +16906,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I need to get to work. I'll see you later."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat27 = {
 				-- Priority = true,
@@ -16895,7 +16922,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Your father's going to have my hide."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat28 = {
 				-- Priority = true,
@@ -16911,7 +16938,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I am in so much trouble, you have no idea..."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeChat29 = {
 				-- Priority = true,
@@ -16942,7 +16969,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Much as I would like to stay and chat, I'd better go."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat02 = {
 				UseableOffSource = true,
@@ -16957,7 +16984,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Zag, I've got so many mortals on my plate right now..."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat03 = {
 				UseableOffSource = true,
@@ -16972,7 +16999,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "See you out there soon enough, all right?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat04 = {
 				UseableOffSource = true,
@@ -16986,7 +17013,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "If you stay out too long, I'm going to track you down."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat05 = {
 				UseableOffSource = true,
@@ -16999,7 +17026,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Sounds like we've both been keeping plenty busy as of late."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat06 = {
 				UseableOffSource = true,
@@ -17013,7 +17040,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Now that you're here, I can finally head out."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat07 = {
 				UseableOffSource = true,
@@ -17027,7 +17054,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "We'll have to catch up more some other time."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat08 = {
 				UseableOffSource = true,
@@ -17041,7 +17068,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Sorry Zag, I'm due to get a bunch of mortals now."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat09 = {
 				UseableOffSource = true,
@@ -17055,7 +17082,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Excuse me, Zag, just got word that I'm needed back up top."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat10 = {
 				-- Priority = true,
@@ -17071,7 +17098,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Hope your father's going to be all right with all of this."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat11 = {
 				UseableOffSource = true,
@@ -17085,7 +17112,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "We showed those wretches last time, didn't we."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat12 = {
 				UseableOffSource = true,
@@ -17100,7 +17127,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Good running into you out there, and glad you made it out."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat13 = {
 				UseableOffSource = true,
@@ -17114,7 +17141,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Impressive that you went the distance once again."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat14 = {
 				UseableOffSource = true,
@@ -17129,7 +17156,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Was good having an opportunity to back you up out there."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat15 = {
 				UseableOffSource = true,
@@ -17144,7 +17171,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I heard you did good work out there last time."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat16 = {
 				UseableOffSource = true,
@@ -17158,7 +17185,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "The shades are murmuring about your latest exploits, Zag."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 			ThanatosHomeMaxChat17 = {
 				UseableOffSource = true,
@@ -17173,7 +17200,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Don't have a lot of time for catching up right now, here, Zag."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.BroodingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.BroodingRepeatable,
 			},
 
 			-- intermission scenes

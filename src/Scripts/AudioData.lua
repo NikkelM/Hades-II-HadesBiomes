@@ -161,8 +161,12 @@ game.GlobalVoiceLines.FatherSonArgumentVoiceLines = game.GlobalVoiceLines.Father
 game.GlobalVoiceLines.MultiFuryFightStartVoiceLines = game.GlobalVoiceLines.MultiFuryFightStartVoiceLines or
 		mod.GlobalVoiceLines.MultiFuryFightStartVoiceLines
 
+-- game.GlobalVoiceLines.ThanatosGreetingVoiceLines = game.GlobalVoiceLines.ThanatosGreetingVoiceLines or
+-- 		mod.GlobalVoiceLines.ThanatosGreetingVoiceLines
 game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines = game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines or
 		mod.GlobalVoiceLines.ThanatosDeathTauntVoiceLines
+game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines = game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines or
+		mod.GlobalVoiceLines.ThanatosSpecialExitVoiceLines
 
 game.GlobalVoiceLines.PatroclusGreetingLines = game.GlobalVoiceLines.PatroclusGreetingLines or
 		mod.GlobalVoiceLines.PatroclusGreetingLines
@@ -178,8 +182,6 @@ game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines = game.GlobalVoiceLines.The
 
 game.GlobalVoiceLines.CharonSurprisedVoiceLines = game.GlobalVoiceLines.CharonSurprisedVoiceLines or
 		mod.GlobalVoiceLines.CharonSurprisedVoiceLines
-game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines = game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines or
-		mod.GlobalVoiceLines.ThanatosSpecialExitVoiceLines
 
 game.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines = game.GlobalVoiceLines
 		.PersephoneFirstMeetingIntermissionVoiceLines or mod.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines
