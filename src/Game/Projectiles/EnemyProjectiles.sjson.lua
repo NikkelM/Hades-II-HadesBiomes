@@ -318,6 +318,19 @@ local hadesProjectilesModifications = {
 	},
 	-- #endregion
 
+	-- #region THANATOS
+	ThanatosDeathCurse = {
+		Effect = {
+			Cooldown = 1.8,
+			Duration = 1.9,
+		},
+	},
+	ThanatosDeathCurseAoE = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+		Fuse = 2.2,
+	},
+	-- #endregion
+
 	-- #region ENVIRONMENT
 	-- TODO: Still work in progress, as it is not aligned perfectly with the trap itself
 	SpikeTrapWeapon = {
