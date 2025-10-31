@@ -130,6 +130,7 @@ local encounterModifications = {
 		},
 	},
 	BaseThanatos = {
+		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "ZagreusField" },
 		RequiredKillFunctionName = _PLUGIN.guid .. "." .. "TrackThanatosChallengeProgress",
 		BlockAthenaEncounterKeepsake = true,
 		SkipExitReadyCheckpoint = true,

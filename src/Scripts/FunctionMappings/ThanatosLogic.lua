@@ -81,11 +81,11 @@ function mod.ThanatosSpawnPresentation(thanatos)
 	game.ProcessTextLines(thanatos.BossPresentationTextLineSets)
 	game.ProcessTextLines(thanatos.BossPresentationRepeatableTextLineSets)
 
-	if game.GameState.TextLinesRecord["ThanatosFirstAppearance"] then
-		game.wait(0.5, game.RoomThreadName)
-	else
-		game.wait(2.0, game.RoomThreadName)
-	end
+	-- if game.GameState.TextLinesRecord["ThanatosFirstAppearance"] then
+	game.wait(0.5, game.RoomThreadName)
+	-- else
+	-- 	game.wait(2.0, game.RoomThreadName)
+	-- end
 
 	if not game.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationIntroTextLineSets) then
 		if not game.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationTextLineSets) then
@@ -217,6 +217,8 @@ function mod.ThanatosExit(source, args)
 			game.UnlockRoomExits(game.CurrentRun, game.CurrentRun.CurrentRoom)
 		end
 	end
+
+	game.CheckCodexUnlock("ModsNikkelMHadesBiomesCodexEntry", "NPC_Thanatos_01")
 end
 
 function mod.ThanatosExitSilent(source, args)

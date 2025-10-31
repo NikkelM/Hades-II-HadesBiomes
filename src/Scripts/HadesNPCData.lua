@@ -13452,6 +13452,7 @@ mod.NPCData = mod.NPCData or {
 					"Always happy to oblige. Especially when it causes me to risk my station. To risk everything I've worked for."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				-- TODO
 				OnQueuedFunctionArgs = PresetEventArgs.Brooding,
 			},
 

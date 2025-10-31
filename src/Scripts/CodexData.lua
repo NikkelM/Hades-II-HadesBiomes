@@ -150,16 +150,44 @@ local updatedCodexData = {}
 -- Manually copy some entries from other groups
 updatedCodexData.SavedEntries = {}
 updatedCodexData.SavedEntries.NPC_FurySister_01 = hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01
-updatedCodexData.SavedEntries.NPC_FurySister_01.Entries[4] = nil -- Romance entry
+-- updatedCodexData.SavedEntries.NPC_FurySister_01.Entries[4] = nil -- Romance entry
 updatedCodexData.SavedEntries.NPC_FurySister_01.Image = "ModsNikkelMHadesBiomes_" ..
 		updatedCodexData.SavedEntries.NPC_FurySister_01.Image
+
 updatedCodexData.SavedEntries.NPC_Thanatos_01 = hadesCodexData.ChthonicGods.Entries.NPC_Thanatos_01
 updatedCodexData.SavedEntries.NPC_Thanatos_01.Image = "ModsNikkelMHadesBiomes_" ..
 		updatedCodexData.SavedEntries.NPC_Thanatos_01.Image
+updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[1].UnlockThreshold = nil
+updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[1].UnlockGameStateRequirements = {
+	{
+		Path = { "GameState", "UseRecord", "NPC_Thanatos_Field_01" },
+		Comparison = ">=",
+		Value = 1,
+	}
+}
+updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[2].UnlockThreshold = nil
+updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[2].UnlockGameStateRequirements = {
+	{
+		Path = { "GameState", "UseRecord", "NPC_Thanatos_Field_01" },
+		Comparison = ">=",
+		Value = 5,
+	}
+}
+updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[3].UnlockThreshold = nil
+updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[3].UnlockGameStateRequirements = {
+	{
+		Path = { "GameState", "UseRecord", "NPC_Thanatos_Field_01" },
+		Comparison = ">=",
+		Value = 15,
+	}
+}
+-- updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[4] = nil -- Romance entry
+
 updatedCodexData.SavedEntries.Harpy2 = hadesCodexData.ChthonicGods.Entries.Harpy2
 updatedCodexData.SavedEntries.Harpy3 = hadesCodexData.ChthonicGods.Entries.Harpy3
 updatedCodexData.SavedEntries.Theseus = hadesCodexData.OtherDenizens.Entries.Theseus
 updatedCodexData.SavedEntries.Minotaur = hadesCodexData.OtherDenizens.Entries.Minotaur
+
 updatedCodexData.SavedEntries.NPC_Hades_01 = hadesCodexData.ChthonicGods.Entries.NPC_Hades_01
 updatedCodexData.SavedEntries.NPC_Hades_01.Entries[1].UnlockThreshold = 1
 updatedCodexData.SavedEntries.NPC_Hades_01.Entries[2].UnlockThreshold = 3
