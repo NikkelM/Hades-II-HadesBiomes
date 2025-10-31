@@ -209,7 +209,7 @@ local roomModifications = {
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
 			{
-				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossSellTraitShops" },
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeRestoreSellTraitShop" },
 			},
 		},
 		-- Defines where the well spawns, making sure the sell shop spawns on the other possible ID. Available IDs are 480768 and 487438

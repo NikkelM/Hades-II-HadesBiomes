@@ -375,7 +375,6 @@ mod.HadesHelpTextCopyKeys = {
 	NPC_FurySister_Unnamed_03 = true,
 	Harpy3 = true,
 	Harpy3_Full = true,
-	NPC_Orpheus_01 = true,
 	NPC_Orpheus_Story_01 = true,
 	Orpheus = true,
 	NPC_Sisyphus_01 = true,
@@ -386,7 +385,6 @@ mod.HadesHelpTextCopyKeys = {
 	NPC_Eurydice_01 = true,
 	NPC_Eurydice_Unnamed_01 = true,
 	NPC_ThanatosUnnamed_01 = true,
-	NPC_Thanatos_01 = true,
 	Thanatos = true,
 	-- In Hades II, this is "Queen of the Underworld"
 	NPC_Persephone_01 = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
@@ -1085,6 +1083,8 @@ mod.HadesCodexTextNameMappings = {
 	CodexData_Hades_01 = "ModsNikkelMHadesBiomes_CodexData_Hades_01",
 	CodexData_Hades_02 = "ModsNikkelMHadesBiomes_CodexData_Hades_02",
 	CodexData_Persephone_01 = "ModsNikkelMHadesBiomes_CodexData_Persephone_01",
+	CodexData_Thanatos_01 = "ModsNikkelMHadesBiomes_CodexData_Thanatos_01",
+	CodexData_Megaera_01 = "ModsNikkelMHadesBiomes_CodexData_Megaera_01",
 }
 
 -- Mappings for various game object modifications that need to be applied when the run is started/ended

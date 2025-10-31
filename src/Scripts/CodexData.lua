@@ -35,7 +35,7 @@ local hadesCodexOrdering = {
 		-- Locations
 		"Tartarus", "Asphodel", "Elysium", "Styx", "Challenge", "Surface",
 		-- NPCs
-		"NPC_Sisyphus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", -- "NPC_Persephone_Home_01",
+		"NPC_Sisyphus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01", -- "NPC_Persephone_Home_01",
 		-- Enemies
 		"HeavyMelee", "LightRanged", "PunchingBagUnit", "ThiefMineLayer", "WretchAssassinMiniboss", "Swarmer", "LightSpawner",
 		"DisembodiedHand", "HeavyRanged", "HeavyRangedSplitterMiniboss", "NPC_FurySister_01", "Harpy2", "Harpy3",
@@ -122,8 +122,10 @@ local duplicateCodexPortraits = {
 		"BloodlessPitcher",
 		"Crawler",
 		"CrawlerMiniBoss",
-		-- "NPC_Hades_01", -- Done in SavedEntries
 		"HeavyMelee",
+		-- "NPC_Hades_01", -- Done in SavedEntries
+		-- "NPC_FurySister_01", -- Done in SavedEntries
+		-- "NPC_Thanatos_01", -- Done in SavedEntries
 	},
 }
 
@@ -148,8 +150,12 @@ local updatedCodexData = {}
 -- Manually copy some entries from other groups
 updatedCodexData.SavedEntries = {}
 updatedCodexData.SavedEntries.NPC_FurySister_01 = hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01
--- Romance entry
-updatedCodexData.SavedEntries.NPC_FurySister_01.Entries[4] = nil
+updatedCodexData.SavedEntries.NPC_FurySister_01.Entries[4] = nil -- Romance entry
+updatedCodexData.SavedEntries.NPC_FurySister_01.Image = "ModsNikkelMHadesBiomes_" ..
+		updatedCodexData.SavedEntries.NPC_FurySister_01.Image
+updatedCodexData.SavedEntries.NPC_Thanatos_01 = hadesCodexData.ChthonicGods.Entries.NPC_Thanatos_01
+updatedCodexData.SavedEntries.NPC_Thanatos_01.Image = "ModsNikkelMHadesBiomes_" ..
+		updatedCodexData.SavedEntries.NPC_Thanatos_01.Image
 updatedCodexData.SavedEntries.Harpy2 = hadesCodexData.ChthonicGods.Entries.Harpy2
 updatedCodexData.SavedEntries.Harpy3 = hadesCodexData.ChthonicGods.Entries.Harpy3
 updatedCodexData.SavedEntries.Theseus = hadesCodexData.OtherDenizens.Entries.Theseus

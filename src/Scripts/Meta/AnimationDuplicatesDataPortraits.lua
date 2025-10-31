@@ -198,6 +198,26 @@ mod.HadesPortraitAnimationAdditions = {
 		InheritFrom = "Codex_Portrait_Base_01",
 		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Zagreus",
 	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Achilles",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Achilles",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Megaera",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Megaera",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Orpheus",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Orpheus",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Thanatos",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Thanatos",
+	},
 	-- #endregion
 }
 
@@ -398,4 +418,9 @@ mod.HadesPortraitAnimationDuplicates = {
 	["Portrait_Persephone_Queen_Apprehensive_01_Exit"] = true,
 	["Portrait_Persephone_Queen_FiredUp_01"] = true,
 	["Portrait_Persephone_Queen_FiredUp_01_Exit"] = true,
+	-- Post-Launch Update 1
+	["Codex_Portrait_Achilles"] = true,
+	["Codex_Portrait_Megaera"] = true,
+	["Codex_Portrait_Orpheus"] = true,
+	["Codex_Portrait_Thanatos"] = true,
 }
