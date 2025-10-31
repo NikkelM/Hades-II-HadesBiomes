@@ -184,9 +184,7 @@ function mod.ThanatosExit(source, args)
 	end
 
 	source.NextInteractLines = nil
-	-- TODO: Check if exists
 	game.RefreshUseButton(source.ObjectId, source)
-	-- TODO: Check if exists
 	game.StopStatusAnimation(source)
 
 	if not args.SkipExitReaction then
@@ -198,7 +196,6 @@ function mod.ThanatosExit(source, args)
 	AdjustColorGrading({ Name = "Off", Duration = 1.35 })
 
 	if args.UseMaxedPresentation then
-		-- TODO: Check if exists
 		game.MaxedRelationshipPresentation(source, { Text = "NPC_Thanatos_01", Icon = "Keepsake_ThanatosSticker_Max" })
 	end
 
@@ -284,6 +281,9 @@ function mod.CurseHealthBar(victim)
 	if not game.UnitSets.PlayerSummons[victim.Name] then
 		victim.CursedHealthBarEffect = true
 		game.UpdateHealthBar(victim, 0, { Force = true })
+
+		-- Custom, for the challenge tracking
+		victim.ModsNikkelMHadesBiomesIsThanatosCursed = true
 	end
 end
 
@@ -292,7 +292,14 @@ function mod.TrackThanatosChallengeProgress(encounter, victim, killer)
 		return
 	end
 
-	-- TODO: killer is nil for Thanatos
+	if killer ~= nil and killer.KillOwner ~= nil then
+		if killer.KillOwner == game.CurrentRun.Hero.ObjectId then
+			killer = game.CurrentRun.Hero
+		else
+			killer = game.ActiveEnemies[killer.KillOwner]
+		end
+	end
+
 	local maxTimeSincePlayerDamage = encounter.MaxTimeSincePlayerDamage or 5
 	if killer ~= nil and killer.ObjectId == encounter.ThanatosId then
 		encounter.ThanatosKills = encounter.ThanatosKills + 1
@@ -300,6 +307,10 @@ function mod.TrackThanatosChallengeProgress(encounter, victim, killer)
 	elseif killer ~= nil and killer == CurrentRun.Hero then
 		encounter.PlayerKills = encounter.PlayerKills + 1
 		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
+	elseif victim ~= nil and (victim.ModsNikkelMHadesBiomesIsThanatosCursed or game.Contains(victim.ActiveEffectsAtDamageStart, "ThanatosCurse")) then
+		-- Custom case added
+		encounter.ThanatosKills = encounter.ThanatosKills + 1
+		game.UpdateObjectiveDescription("ThanatosKills", "Objective_ThanatosKills", "ThanatosKills", encounter.ThanatosKills)
 	elseif victim ~= nil and victim.TimeOfLastPlayerDamage ~= nil and _worldTime - victim.TimeOfLastPlayerDamage < maxTimeSincePlayerDamage then
 		encounter.PlayerKills = encounter.PlayerKills + 1
 		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
