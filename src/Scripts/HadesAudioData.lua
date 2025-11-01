@@ -1,6 +1,290 @@
 -- Contains some of the GlobalVoiceLines from Hades AudioData.lua
 mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- #region Hades
+	SurvivalEncounterStartVoiceLines = {
+		{
+			RandomRemaining = true,
+			PreLineWait = 0.85,
+			NoTarget = true,
+			RequiredFalseBiome = "Styx",
+
+			-- You truly are an idiot, aren't you.
+			{ Cue = "/VO/Intercom_0057", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" }, RequiredFalseTextLines = { "Ending01" }, },
+			-- Don't make me laugh.
+			{ Cue = "/VO/Intercom_0060", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Do not so much as think about it.
+			{ Cue = "/VO/Intercom_0041", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- I do not think so, boy.
+			{ Cue = "/VO/Intercom_0043", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Who dares?
+			{ Cue = "/VO/Intercom_0096", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- You dare?
+			{ Cue = "/VO/Intercom_0097", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Thief!
+			{ Cue = "/VO/Intercom_0098", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Interloper!
+			{ Cue = "/VO/Intercom_0099" },
+			-- You shall pay for that!
+			{ Cue = "/VO/Intercom_0100", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- You shall regret this.
+			{ Cue = "/VO/Intercom_0101", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" }, RequiredFalseTextLines = { "Ending01" }, },
+			-- That is private property.
+			{ Cue = "/VO/Intercom_0102", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- We have an intruder.
+			{ Cue = "/VO/Intercom_0103" },
+			-- Trespasser!
+			{ Cue = "/VO/Intercom_0104" },
+			-- Transgressions are not tolerated.
+			{ Cue = "/VO/Intercom_0105", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Consider this a warning.
+			{ Cue = "/VO/Intercom_0106", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- We have a pest problem.
+			{ Cue = "/VO/Intercom_0107" },
+			-- Death is inescapable.
+			{ Cue = "/VO/Intercom_0226", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- You cannot escape.
+			{ Cue = "/VO/Intercom_0227", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- That is far enough.
+			{ Cue = "/VO/Intercom_0228", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Wretches of the Underworld, this is your chance.
+			{ Cue = "/VO/Intercom_0229", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel" } },
+			-- Come forth, wretches, and stop this meddler.
+			{ Cue = "/VO/Intercom_0230", RequiredFalseBiome = "Elysium" },
+			-- Do not presume that you escape my notice, boy.
+			{ Cue = "/VO/Intercom_0231", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- You really think you can get out of here?
+			{ Cue = "/VO/Intercom_0232", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredFalseTextLines = { "Ending01" }, },
+			-- Let's see if you can live through this.
+			{ Cue = "/VO/Intercom_0233", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Nobody gets out of here, whether alive or dead.
+			{ Cue = "/VO/Intercom_0234", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- You're out well past your curfew, boy.
+			{ Cue = "/VO/Intercom_0235", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredFalseTextLines = { "Ending01" }, },
+			-- I've tolerated your impudence for long enough.
+			{ Cue = "/VO/Intercom_0236", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredFalseTextLines = { "Ending01" }, },
+			-- I see you there.
+			{ Cue = "/VO/Intercom_0237", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- You think you can just walk away from here?
+			{ Cue = "/VO/Intercom_0238", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- If I could have a minute of your time...
+			{ Cue = "/VO/Intercom_0239", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Let's see your relatives upon Olympus get you out of this.
+			{ Cue = "/VO/Intercom_0240", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Allow me, boy, to introduce some of my loyal subjects.
+			{ Cue = "/VO/Intercom_0241", RequiredAnyTextLines = { "HadesGift01", "HadesGift01_B" }, },
+			-- You're not going anywhere.
+			{ Cue = "/VO/Intercom_0242", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Champions of Elysium, now prove yourselves!
+			{ Cue = "/VO/Intercom_0463", RequiredBiome = "Elysium" },
+			-- Come, heroes of Elysium, and vanquish the intruder!
+			{ Cue = "/VO/Intercom_0464", RequiredBiome = "Elysium" },
+			-- Why you...
+			{ Cue = "/VO/Intercom_0551", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- That does not belong to you.
+			{ Cue = "/VO/Intercom_0552", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Again with your tampering?
+			{ Cue = "/VO/Intercom_0553", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" }, RequiredPlayed = { "/VO/Intercom_0552" } },
+			-- That was ill-advised.
+			{ Cue = "/VO/Intercom_0554", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- What, again?
+			{ Cue = "/VO/Intercom_0555", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" }, RequiredPlayed = { "/VO/Intercom_0552" } },
+			-- My coffers are not yours for pillaging.
+			{ Cue = "/VO/Intercom_0556", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- You thief.
+			{ Cue = "/VO/Intercom_0557", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" }, RequiredFalseTextLines = { "Ending01" }, },
+			-- Security!
+			{ Cue = "/VO/Intercom_0558" },
+			-- Halt.
+			{ Cue = "/VO/Intercom_0567", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Seal the chamber.
+			{ Cue = "/VO/Intercom_0568", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- There you are.
+			{ Cue = "/VO/Intercom_0569", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- He's there. Get him.
+			{ Cue = "/VO/Intercom_0570", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- What's your rush, there, boy?
+			{ Cue = "/VO/Intercom_0571", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- My subjects wish to have a word with you.
+			{ Cue = "/VO/Intercom_0572", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- No need to be in such a hurry, boy.
+			{ Cue = "/VO/Intercom_0573", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- I thought I'd find you here.
+			{ Cue = "/VO/Intercom_0574", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- All right, wretches, get to work!
+			{ Cue = "/VO/Intercom_1110" },
+			-- Stop him, wretches!
+			{ Cue = "/VO/Intercom_1111" },
+			-- Stop him, wretches, now!
+			{ Cue = "/VO/Intercom_1112" },
+			-- You leave my troves alone!
+			{ Cue = "/VO/Intercom_1113", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Those troves are not for you!
+			{ Cue = "/VO/Intercom_1114", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Get your hands off my trove!
+			{ Cue = "/VO/Intercom_1115", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- Wretches, take him, now!
+			{ Cue = "/VO/Intercom_1116" },
+			-- Remain exactly where you are.
+			{ Cue = "/VO/Intercom_1117" },
+			-- I'll give these wretches not a minute more.
+			{ Cue = "/VO/Intercom_1118", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" } },
+			-- How foolhardy of you.
+			{ Cue = "/VO/Intercom_1119" },
+		},
+		{
+			RandomRemaining = true,
+			PreLineWait = 0.3,
+			SuccessiveChanceToPlay = 0.2,
+			RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },
+			RequiredFalseBiome = "Styx",
+			UsePlayerSource = true,
+
+			-- You lot, huh?
+			{ Cue = "/VO/ZagreusField_0215", PreLineWait = 4.9, },
+			-- Come and get it.
+			{ Cue = "/VO/ZagreusField_0217" },
+			-- Let's make this quick.
+			{ Cue = "/VO/ZagreusField_0218" },
+			-- No time to lose.
+			{ Cue = "/VO/ZagreusField_0219" },
+		}
+	},
+	SurvivalEncounterSurvivedVoiceLines = {
+		{
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 1.35,
+			NoTarget = true,
+			RequiredFalseBiome = "Styx",
+
+			-- Enough!
+			{ Cue = "/VO/Intercom_0243" },
+			-- Worthless wretches.
+			{ Cue = "/VO/Intercom_0244", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Pah, useless.
+			{ Cue = "/VO/Intercom_0245", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Blood and darkness.
+			{ Cue = "/VO/Intercom_0246", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- They had their chance.
+			{ Cue = "/VO/Intercom_0247", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- I shall deal with you later, then.
+			{ Cue = "/VO/Intercom_0248", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- You lived through all of that?
+			{ Cue = "/VO/Intercom_0249", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Who is going to clean all of this up?
+			{ Cue = "/VO/Intercom_0250", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Idiots!
+			{ Cue = "/VO/Intercom_0251", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Worthless!
+			{ Cue = "/VO/Intercom_0252", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Useless!
+			{ Cue = "/VO/Intercom_0253", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Damnable fools.
+			{ Cue = "/VO/Intercom_0254", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- It seems I need to look for better help.
+			{ Cue = "/VO/Intercom_0255", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Back to the lowest depths with them.
+			{ Cue = "/VO/Intercom_0256", RequiredFalseBiome = "Elysium",                                                          RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Enough, I've better things to do.
+			{ Cue = "/VO/Intercom_0257", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Kkh, you waste my time.
+			{ Cue = "/VO/Intercom_0258", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- All right, break it up!
+			{ Cue = "/VO/Intercom_0419", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- That's all the time we have.
+			{ Cue = "/VO/Intercom_0420", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Bah, that's enough!
+			{ Cue = "/VO/Intercom_0421", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Decidedly below my expectations.
+			{ Cue = "/VO/Intercom_0422", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Work faster next time!
+			{ Cue = "/VO/Intercom_0423", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- No more of this buffoonery!
+			{ Cue = "/VO/Intercom_0424", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- I expected more from the Exalted.
+			{ Cue = "/VO/Intercom_0465", RequiredBiome = "Elysium",                                                               RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Disappointing for these so-called Champions.
+			{ Cue = "/VO/Intercom_0466", RequiredBiome = "Elysium",                                                               RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Why do I pay these wretches.
+			{ Cue = "/VO/Intercom_0559", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- That's quite enough.
+			{ Cue = "/VO/Intercom_0560", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Fine, help yourself.
+			{ Cue = "/VO/Intercom_0561", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" }, CooldownName = "SaidHelpRecently",        CooldownTime = 30,                       RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- You did not earn this, boy.
+			{ Cue = "/VO/Intercom_0562", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" }, RequiredPlayed = { "/VO/Intercom_0243" }, RequiredFalseTextLines = { "Ending01" }, },
+			-- Nrgh, how many times...
+			{ Cue = "/VO/Intercom_0563", RequiredMinCompletedRuns = 12,                                                           RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- There. Satisfied?
+			{ Cue = "/VO/Intercom_0564", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Ugh, why do I bother.
+			{ Cue = "/VO/Intercom_0565", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- I should not be the supervisor here.
+			{ Cue = "/VO/Intercom_0566", RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Fine, get out.
+			{ Cue = "/VO/Intercom_0575", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Again you make a mockery of me.
+			{ Cue = "/VO/Intercom_0576", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- I've no more time for this.
+			{ Cue = "/VO/Intercom_0577", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Out, all of you!
+			{ Cue = "/VO/Intercom_0578", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Utterly incompetent.
+			{ Cue = "/VO/Intercom_0579", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- I ought have left them all in Erebus.
+			{ Cue = "/VO/Intercom_0580", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- I trust they inconvenienced you at least.
+			{ Cue = "/VO/Intercom_0581", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Why do I even bother.
+			{ Cue = "/VO/Intercom_0582", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Every time!
+			{ Cue = "/VO/Intercom_1120", RequiredPlayed = { "/VO/Intercom_0243" },                                                RequiredMinCompletedRuns = 15 },
+			-- Incompetents.
+			{ Cue = "/VO/Intercom_1121", RequiredPlayed = { "/VO/Intercom_0243" },                                                PlayOnce = true, },
+			-- Pah. Fine, go!
+			{ Cue = "/VO/Intercom_1122", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" } },
+			-- Fine, go, then!
+			{ Cue = "/VO/Intercom_1123", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" }, RequiredTextLines = { "Ending01" }, },
+			-- Time's up!
+			{ Cue = "/VO/Intercom_1124", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" }, RequiredTextLines = { "Ending01" }, },
+			-- All right, all right!
+			{ Cue = "/VO/Intercom_1125", RequiredEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },      RequiredPlayed = { "/VO/Intercom_0243" }, RequiredTextLines = { "Ending01" }, },
+		},
+		{
+			RandomRemaining = true,
+			PreLineWait = 1.0,
+			SuccessiveChanceToPlayAll = 0.66,
+			UsePlayerSource = true,
+			RequiredBiome = "Styx",
+
+			-- Yes.
+			{ Cue = "/VO/ZagreusField_1126" },
+			-- Yes...!
+			{ Cue = "/VO/ZagreusField_1127" },
+			-- Simple.
+			{ Cue = "/VO/ZagreusField_1128", RequiredMinHealthFraction = 0.6 },
+			-- Easy.
+			{ Cue = "/VO/ZagreusField_1129", RequiredMinHealthFraction = 0.6 },
+			-- No problem.
+			{ Cue = "/VO/ZagreusField_1130" },
+			-- No problem!
+			{ Cue = "/VO/ZagreusField_1131" },
+			-- There we go.
+			{ Cue = "/VO/ZagreusField_1132", },
+			-- How's that?
+			{ Cue = "/VO/ZagreusField_1133" },
+			-- How's that!
+			{ Cue = "/VO/ZagreusField_1134" },
+			-- There.
+			{ Cue = "/VO/ZagreusField_1135" },
+			-- What do I get?
+			{ Cue = "/VO/ZagreusField_1136" },
+			-- Short work.
+			{ Cue = "/VO/ZagreusField_1137" },
+			-- Whew.
+			{ Cue = "/VO/ZagreusField_1138", RequiredMaxHealthFraction = 0.4, CooldownName = "SaidWhewRecently", CooldownTime = 30 },
+		}
+	},
 	HadesDeathTauntVoiceLines = {
 		RandomRemaining = true,
 		BreakIfPlayed = true,

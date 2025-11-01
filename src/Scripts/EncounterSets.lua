@@ -1,8 +1,8 @@
 -- #region TARTARUS
 game.EncounterSets.TartarusEncountersDefault = {
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus",
-	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", --"SurvivalTartarus",
-	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", --"SurvivalTartarus",
+	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus",
+	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus",
 	"ThanatosTartarus"
 }
 game.EncounterSets.TartarusEncountersNoSurvival = { "GeneratedTartarus" }
@@ -82,5 +82,17 @@ game.EncounterSets.EncounterEventsCharonFight = {
 	{ FunctionName = "HandleEnemySpawns" },
 	{ FunctionName = "CheckForAllEnemiesDead" },
 	{ FunctionName = "PostCombatAudio" },
+}
+
+mod.EncounterSets = mod.EncounterSets or {}
+mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsSurvival = {
+	{ FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurvivalEncounterStartPresentation" },
+	{ FunctionName = "EncounterAudio" },
+	{ FunctionName = "BeginSurvivalEncounter" },
+	{ FunctionName = "HandleTimedSpawns" },
+	{ FunctionName = "DisableRoomTraps" },
+	{ FunctionName = "CheckForAllEnemiesDead" },
+	{ FunctionName = "PostCombatAudio" },
+	{ FunctionName = "SpawnRoomReward" },
 }
 -- #endregion
