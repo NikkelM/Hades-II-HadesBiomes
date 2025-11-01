@@ -108,27 +108,6 @@ local hadesEnemyCodexGroups = {
 	NPC_Hades_01 = { "Hades", },
 }
 
-local duplicateCodexPortraits = {
-	Biomes = {
-		"Tartarus",
-		"Asphodel",
-		"Elysium",
-		"Challenge",
-	},
-	Enemies = {
-		"BloodlessNakedBerserker",
-		"BloodlessGrenadier",
-		"BloodlessSelfDestruct",
-		"BloodlessPitcher",
-		"Crawler",
-		"CrawlerMiniBoss",
-		"HeavyMelee",
-		-- "NPC_Hades_01", -- Done in SavedEntries
-		-- "NPC_FurySister_01", -- Done in SavedEntries
-		-- "NPC_Thanatos_01", -- Done in SavedEntries
-	},
-}
-
 local hadesCodexData = loadHadesCodexData("CodexData.lua") or {}
 
 for oldName, newName in pairs(mod.EnemyNameMappings) do
@@ -138,8 +117,6 @@ for oldName, newName in pairs(mod.EnemyNameMappings) do
 
 	mod.UpdatePropertyName(hadesEnemyCodexGroups, oldName, newName, {}, "hadesEnemyCodexGroups")
 	mod.UpdateField(hadesEnemyCodexGroups, oldName, newName, { "*" }, "hadesEnemyCodexGroups")
-
-	mod.UpdateField(duplicateCodexPortraits, oldName, newName, { "*" }, "duplicateCodexPortraits")
 end
 
 for oldName, newName in pairs(mod.HadesCodexTextNameMappings) do
@@ -184,7 +161,9 @@ updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[3].UnlockGameStateRequirem
 -- updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[4] = nil -- Romance entry
 
 updatedCodexData.SavedEntries.Harpy2 = hadesCodexData.ChthonicGods.Entries.Harpy2
+updatedCodexData.SavedEntries.Harpy2.Image = "ModsNikkelMHadesBiomes_" .. updatedCodexData.SavedEntries.Harpy2.Image
 updatedCodexData.SavedEntries.Harpy3 = hadesCodexData.ChthonicGods.Entries.Harpy3
+updatedCodexData.SavedEntries.Harpy3.Image = "ModsNikkelMHadesBiomes_" .. updatedCodexData.SavedEntries.Harpy3.Image
 updatedCodexData.SavedEntries.Theseus = hadesCodexData.OtherDenizens.Entries.Theseus
 updatedCodexData.SavedEntries.Minotaur = hadesCodexData.OtherDenizens.Entries.Minotaur
 
@@ -266,21 +245,13 @@ for groupName, groupData in pairs(hadesCodexData) do
 		end
 		groupData.UnlockType = nil
 
-		-- For the NPCs, add the NoRequirements flag to the top-level, to allow to always view their boons, even if the codex entry has not been unlocked yet
-		for name, data in pairs(groupData.Entries) do
+		for name, entry in pairs(groupData.Entries) do
+			-- For the NPCs, add the NoRequirements flag to the top-level, to allow to always view their boons, even if the codex entry has not been unlocked yet
 			if game.Contains(storyNPCNames, name) then
-				data.NoRequirements = true
+				entry.NoRequirements = true
 			end
-		end
-
-		-- Update portraits if needed
-		if duplicateCodexPortraits[groupName] then
-			for _, entryName in ipairs(duplicateCodexPortraits[groupName]) do
-				local entry = updatedCodexData[codexGroupNameMappings[groupName]].Entries[entryName]
-				if entry then
-					entry.Image = "ModsNikkelMHadesBiomes_" .. entry.Image
-				end
-			end
+			-- Update the image path
+			entry.Image = "ModsNikkelMHadesBiomes_" .. entry.Image
 		end
 	end
 end

@@ -107,7 +107,9 @@ mod.HadesPortraitAnimationAdditions = {
 		Scale = 1.0,
 		OffsetY = -117,
 	},
-	-- #region Codex portraits that are duplicates between the games
+	-- #endregion
+	-- #region Codex portraits
+	-- #region Biomes
 	{
 		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_AsphodelBiome",
 		InheritFrom = "Codex_Portrait_Base_01",
@@ -129,95 +131,158 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BiomeTartarus",
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_ChaosBiome",
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_StyxBiome",
 		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BiomeChaos",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BiomeStyx",
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Persephone",
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_SurfaceBiome",
 		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Persephone",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BiomeSurface",
 	},
+	-- #endregion
+	-- #region NPCs/Characters
+	-- {
+	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Persephone",
+	-- 	InheritFrom = "Codex_Portrait_Persephone",
+	-- },
+	-- {
+	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Cerberus",
+	-- 	InheritFrom = "Codex_Portrait_Cerberus",
+	-- },
+	-- {
+	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Charon",
+	-- 	InheritFrom = "Codex_Portrait_Charon",
+	-- },
+	-- {
+	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Skelly",
+	-- 	InheritFrom = "Codex_Portrait_Skelly",
+	-- },
+	-- {
+	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Orpheus",
+	-- 	InheritFrom = "Codex_Portrait_Orpheus",
+	-- },
+	-- {
+	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Nyx",
+	-- 	InheritFrom = "Codex_Portrait_Nyx",
+	-- },
+	-- {
+	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Achilles",
+	-- 	InheritFrom = "Codex_Portrait_Achilles",
+	-- },
+	-- {
+	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Medusa",
+	-- 	InheritFrom = "Codex_Portrait_Dusa",
+	-- },
+	-- {
+	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Zagreus",
+	--  TODO: Might want a custom version of this one
+	-- 	InheritFrom = "Codex_Portrait_Zagreus",
+	-- },
+	-- {
+	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Hypnos",
+	--  TODO: Might want a custom version of this one
+	-- 	InheritFrom = "Codex_Portrait_Hypnos",
+	-- },
 	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Cerberus",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Cerberus",
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Charon",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Charon",
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Skelly",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Skelly",
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_BloodlessBerserker",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BloodlessBerserker",
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Grenadier",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BloodlessGrenadier",
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Pitcher",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BloodlessPitcher",
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_SelfDestruct",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_BloodlessSelfDestruct",
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Crawler",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Crawler",
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_CrawlerMiniBoss",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_CrawlerMiniBoss",
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Hades",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Hades",
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Thug",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_WretchThug",
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Zagreus",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Zagreus",
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Achilles",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Achilles",
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Thanatos",
+		InheritFrom = "Codex_Portrait_Thanatos",
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Megaera",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Megaera",
+		InheritFrom = "Codex_Portrait_Megaera",
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Orpheus",
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Alecto",
 		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Orpheus",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Alecto",
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Thanatos",
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Tisiphone",
 		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Thanatos",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Tisiphone",
 	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Theseus",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Theseus",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Minotaur",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Minotaur",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Hades",
+		InheritFrom = "Codex_Portrait_HadeCape",
+		-- Alternatively, Codex_Portrait_Hades
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Sisyphus",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Sisyphus",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Eurydice",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Eurydice",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Patroclus",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Patroclus",
+	},
+	-- #endregion
+	-- #region Enemies Tartarus
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Thug",
+		InheritFrom = "Codex_Portrait_WretchThug",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_DisembodiedHand",
+		-- TODO: Might want a custom version of this one
+		InheritFrom = "Codex_Portrait_Wringer",
+	},
+	-- #endregion
+	-- #region Enemies Asphodel
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Bloodless",
+		InheritFrom = "Codex_Portrait_BloodlessNaked",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_WaveFist",
+		InheritFrom = "Codex_Portrait_BloodlessWaveMaker",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_BloodlessBerserker",
+		InheritFrom = "Codex_Portrait_BloodlessBerserker",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Grenadier",
+		InheritFrom = "Codex_Portrait_BloodlessGrenadier",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Pitcher",
+		InheritFrom = "Codex_Portrait_BloodlessPitcher",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_SelfDestruct",
+		InheritFrom = "Codex_Portrait_BloodlessSelfDestruct",
+	},
+	-- #endregion
+	-- #region Enemies Elysium
+	-- #endregion
+	-- #region Enemies Styx
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Crawler",
+		-- TODO: Might want a custom version of this one
+		InheritFrom = "Codex_Portrait_Crawler",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_CrawlerMiniBoss",
+		InheritFrom = "Codex_Portrait_CrawlerMiniBoss",
+	},
+	-- #endregion
 	-- #endregion
 }
 
