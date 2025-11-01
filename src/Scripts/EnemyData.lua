@@ -244,6 +244,64 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 
 	-- Modify all enemies completely before processing inheritance, as that can mess up not-yet-modified parent enemies
 	for enemyName, enemyData in pairs(base) do
+		-- Update cooldowns on voicelines, as the Hades format no longer works for Hades II for some reason
+		local voicelineTables = {
+			"OnHitVoiceLines",
+			"KillingEnemyVoiceLines",
+			"LastStandReactionVoiceLines",
+			"WrathReactionVoiceLines",
+			"AssistEndedVoiceLines",
+			"RespawningVoiceLines",
+			"RespawnedVoiceLines",
+			"PlayerInjuredVoiceLines",
+			"InvulnerableVoiceLines",
+			"OnCharmedVoiceLines",
+			"LowHealthVoiceLines",
+			"CriticalHealthVoiceLines",
+			"RageFullVoiceLines",
+		}
+		for _, tableName in ipairs(voicelineTables) do
+			if enemyData[tableName] then
+				if enemyData[tableName].CooldownTime then
+					enemyData[tableName].Cooldowns = enemyData[tableName].Cooldowns or {}
+					table.insert(enemyData[tableName].Cooldowns, {
+						Name = enemyData[tableName].CooldownName or (enemyName .. "." .. tableName),
+						Time = enemyData[tableName].CooldownTime,
+					})
+					mod.DebugPrint("Added cooldown for voiceline table " .. tableName .. " on enemy " .. enemyName, 4)
+					enemyData[tableName].CooldownName = nil
+					enemyData[tableName].CooldownTime = nil
+				end
+				for _, voicelineEntry in ipairs(enemyData[tableName]) do
+					if voicelineEntry.CooldownTime then
+						voicelineEntry.Cooldowns = voicelineEntry.Cooldowns or {}
+						table.insert(voicelineEntry.Cooldowns, {
+							Name = voicelineEntry.CooldownName or (enemyName .. "." .. tableName),
+							Time = voicelineEntry.CooldownTime,
+						})
+						mod.DebugPrint("Added cooldown for voiceline entry in table " .. tableName .. " on enemy " .. enemyName, 4)
+						voicelineEntry.CooldownName = nil
+						voicelineEntry.CooldownTime = nil
+					end
+				end
+			end
+			if enemyData.AIStages and enemyData.AIStages.StageTransitionVoiceLines then
+				for _, aiStage in ipairs(enemyData.AIStages) do
+					if aiStage.StageTransitionVoiceLines and aiStage.StageTransitionVoiceLines.CooldownTime then
+						aiStage.StageTransitionVoiceLines.Cooldowns = aiStage.StageTransitionVoiceLines.Cooldowns or {}
+						table.insert(aiStage.StageTransitionVoiceLines.Cooldowns, {
+							Name = aiStage.StageTransitionVoiceLines.CooldownName or
+									(enemyName .. ".AIStages.StageTransitionVoiceLines"),
+							Time = aiStage.StageTransitionVoiceLines.CooldownTime,
+						})
+						mod.DebugPrint("Added cooldown for AIStages.StageTransitionVoiceLines on enemy " .. enemyName, 4)
+						aiStage.StageTransitionVoiceLines.CooldownName = nil
+						aiStage.StageTransitionVoiceLines.CooldownTime = nil
+					end
+				end
+			end
+		end
+
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
 		base[enemyName] = enemyData
 	end
@@ -1375,13 +1433,13 @@ local enemyModifications = {
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
 		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
-		InvulnerableVoiceLines = {
-			CooldownTime = mod.NilValue,
-			CooldownName = mod.NilValue,
-			Cooldowns = {
-				{ Name = "MinotaurSpokeRecently", Time = 100 },
-			},
-		},
+		-- InvulnerableVoiceLines = {
+		-- 	CooldownTime = mod.NilValue,
+		-- 	CooldownName = mod.NilValue,
+		-- 	Cooldowns = {
+		-- 		{ Name = "MinotaurSpokeRecently", Time = 100 },
+		-- 	},
+		-- },
 	},
 	Minotaur2 = {
 		OnTouchdownFunctionArgs = {
@@ -1411,13 +1469,13 @@ local enemyModifications = {
 		AIStages = {
 			[2] = { RandomAIFunctionNames = { _PLUGIN.guid .. "." .. "TheseusGodAI" }, },
 		},
-		InvulnerableVoiceLines = {
-			CooldownTime = mod.NilValue,
-			CooldownName = mod.NilValue,
-			Cooldowns = {
-				{ Name = "TheseusSpokeRecently", Time = 100 },
-			},
-		},
+		-- InvulnerableVoiceLines = {
+		-- 	CooldownTime = mod.NilValue,
+		-- 	CooldownName = mod.NilValue,
+		-- 	Cooldowns = {
+		-- 		{ Name = "TheseusSpokeRecently", Time = 100 },
+		-- 	},
+		-- },
 	},
 	Theseus2 = {
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",

@@ -185,6 +185,41 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 		end
 		mod.RenameKeys(weaponData, weaponKeyReplacements, weaponName)
 
+		-- Update cooldowns on voicelines, as the Hades format no longer works for Hades II for some reason
+		local voicelineTables = {
+			"PreAttackVoiceLines",
+			"PreMoveVoiceLines",
+			"WrathVoiceLines",
+			"OnDestroyVoiceLines",
+			"FiredHeroVoiceLines",
+		}
+		for _, tableName in ipairs(voicelineTables) do
+			if weaponData.AIData and weaponData.AIData[tableName] then
+				if weaponData.AIData[tableName].CooldownTime then
+					weaponData.AIData[tableName].Cooldowns = weaponData.AIData[tableName].Cooldowns or {}
+					table.insert(weaponData.AIData[tableName].Cooldowns, {
+						Name = weaponData.AIData[tableName].CooldownName or (weaponName .. "." .. tableName),
+						Time = weaponData.AIData[tableName].CooldownTime,
+					})
+					mod.DebugPrint("Added cooldown for voiceline table " .. tableName .. " on weapon " .. weaponName, 4)
+					weaponData.AIData[tableName].CooldownName = nil
+					weaponData.AIData[tableName].CooldownTime = nil
+				end
+				for _, voicelineEntry in ipairs(weaponData.AIData[tableName]) do
+					if voicelineEntry.CooldownTime then
+						voicelineEntry.Cooldowns = voicelineEntry.Cooldowns or {}
+						table.insert(voicelineEntry.Cooldowns, {
+							Name = voicelineEntry.CooldownName or (weaponName .. "." .. tableName),
+							Time = voicelineEntry.CooldownTime,
+						})
+						mod.DebugPrint("Added cooldown for voiceline entry in table " .. tableName .. " on weapon " .. weaponName, 4)
+						voicelineEntry.CooldownName = nil
+						voicelineEntry.CooldownTime = nil
+					end
+				end
+			end
+		end
+
 		game.ProcessDataInheritance(weaponData, game.WeaponData)
 		base[weaponName] = weaponData
 	end
