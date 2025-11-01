@@ -173,10 +173,6 @@ for voicelineGroup, replacement in pairs(requiredGlobalVoiceLineModifications) d
 end
 
 -- Add required GlobalVoiceLines
-game.GlobalVoiceLines.SurvivalEncounterStartVoiceLines = game.GlobalVoiceLines.SurvivalEncounterStartVoiceLines or
-		mod.GlobalVoiceLines.SurvivalEncounterStartVoiceLines
-game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines = game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines or
-		mod.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines
 game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or
 		mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
 game.GlobalVoiceLines.HadesPostBossVoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines or
@@ -221,6 +217,19 @@ game.GlobalVoiceLines.StartingBoatRideVoiceLines = game.GlobalVoiceLines.Startin
 		mod.GlobalVoiceLines.StartingBoatRideVoiceLines
 game.GlobalVoiceLines.SunriseOverlookVoiceLines = game.GlobalVoiceLines.SunriseOverlookVoiceLines or
 		mod.GlobalVoiceLines.SunriseOverlookVoiceLines
+
+game.GlobalVoiceLines.SurvivalEncounterStartVoiceLines = game.GlobalVoiceLines.SurvivalEncounterStartVoiceLines or
+		mod.GlobalVoiceLines.SurvivalEncounterStartVoiceLines
+game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines = game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines or
+		mod.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines
+game.GlobalVoiceLines.SurvivalAboutToStartVoiceLines = game.GlobalVoiceLines.SurvivalAboutToStartVoiceLines or
+		mod.GlobalVoiceLines.SurvivalAboutToStartVoiceLines
+game.GlobalVoiceLines.SurvivalStartVoiceLines = game.GlobalVoiceLines.SurvivalStartVoiceLines or
+		mod.GlobalVoiceLines.SurvivalStartVoiceLines
+game.GlobalVoiceLines.SurvivalExpiringVoiceLines = game.GlobalVoiceLines.SurvivalExpiringVoiceLines or
+		mod.GlobalVoiceLines.SurvivalExpiringVoiceLines
+game.GlobalVoiceLines.SurvivalResolvedVoiceLines = game.GlobalVoiceLines.SurvivalResolvedVoiceLines or
+		mod.GlobalVoiceLines.SurvivalResolvedVoiceLines
 
 -- Add required HeroVoiceLines
 game.HeroVoiceLines.HitByGraveHandsVoiceLines = game.HeroVoiceLines.HitByGraveHandsVoiceLines or

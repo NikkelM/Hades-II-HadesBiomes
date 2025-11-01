@@ -2,6 +2,8 @@ function mod.ModsNikkelMHadesBiomesSurvivalEncounterStartPresentation(eventSourc
 																																			playerGlobalVoiceLines, opponentGlobalVoiceLines)
 	-- Custom, as ActiveSpawns is not initialized in TimedSpawns
 	eventSource.ActiveSpawns = eventSource.ActiveSpawns or {}
+	-- Custom, as EncounterResolvedGlobalVoiceLines is not used in Hades II
+	game.CurrentRun.CurrentRoom.CombatResolvedVoiceLines = game.CurrentRun.CurrentRoom.CombatResolvedVoiceLines or eventSource.EncounterResolvedGlobalVoiceLines
 
 	AdjustColorGrading({ Name = colorGrade or "Alert", Duration = 0 })
 	ScreenAnchors.FullscreenAlertFxAnchor = CreateScreenObstacle({
