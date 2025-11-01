@@ -284,6 +284,22 @@ mod.HadesPortraitAnimationAdditions = {
 	},
 	-- #endregion
 	-- #endregion
+	-- #region Misc
+	{
+		Name = "ModsNikkelMHadesBiomesHadesOverlay",
+		FilePath = "Portraits\\Portraits_Hades_01",
+		Type = "Constant",
+		EndAlpha = 0.55,
+		Duration = 10.0,
+		EndFrame = 1,
+		HoldLastFrame = true,
+		NumFrames = 1,
+		StartFrame = 1,
+		EndScale = 1.15,
+		StartScale = 1.45,
+		Ambient = 0.0,
+	},
+	-- #endregion
 }
 
 -- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly

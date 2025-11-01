@@ -6,6 +6,8 @@ local encounterDataTartarus = {
 	ModsNikkelMHadesBiomesGenerated = encounterData.Generated,
 	BaseThanatos = encounterData.BaseThanatos,
 	ThanatosTartarus = encounterData.ThanatosTartarus,
+	BaseSurvival = encounterData.BaseSurvival,
+	SurvivalTartarus = encounterData.SurvivalTartarus,
 
 	Story_Sisyphus_01 = encounterData.Story_Sisyphus_01,
 	GeneratedTartarus = encounterData.GeneratedTartarus,
@@ -93,13 +95,16 @@ local encounterReplacements = {
 		InheritFrom = { "EliteChallenge", "GeneratedTartarus" },
 		EnemySet = EnemySets.EnemiesBiome1_EliteChallenge,
 	},
+	BaseSurvival = {
+		UnthreadedEvents = mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsSurvival,
+	},
 }
 
 local encounterModifications = {
 	-- GENERIC
 	ModsNikkelMHadesBiomesGenerated = {
 		BlockTypesAcrossWaves = true,
-		UnthreadedEvents = EncounterSets.EncounterEventsDefault,
+		UnthreadedEvents = game.EncounterSets.EncounterEventsDefault,
 		CountsForRoomEncounterDepth = true,
 	},
 	OpeningGenerated = {
@@ -134,6 +139,11 @@ local encounterModifications = {
 		RequiredKillFunctionName = _PLUGIN.guid .. "." .. "TrackThanatosChallengeProgress",
 		BlockAthenaEncounterKeepsake = true,
 		SkipExitReadyCheckpoint = true,
+	},
+	BaseSurvival = {
+		LoadModdedVoiceBanks = { "HadesField" },
+		BlockAthenaEncounterKeepsake = true,
+		CanEncounterSkip = false,
 	},
 
 	-- MINIBOSSES

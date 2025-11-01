@@ -146,7 +146,37 @@ game.MusicTrackData.Styx = {
 	{ Name = "{9781c324-6083-4acd-bdaa-5a7a67608005}", },
 }
 
+-- Replace cues with the modded name
+local requiredGlobalVoiceLineModifications = {
+	SurvivalEncounterStartVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1"
+	},
+	SurvivalEncounterSurvivedVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1"
+	},
+}
+for voicelineGroup, replacement in pairs(requiredGlobalVoiceLineModifications) do
+	for index, data in ipairs(mod.GlobalVoiceLines[voicelineGroup]) do
+		if data.Cue ~= nil then
+			data.Cue = string.gsub(data.Cue, replacement.Find, replacement.Replace)
+		end
+		if type(data) == "table" then
+			for innerIndex, innerData in ipairs(data) do
+				if innerData.Cue ~= nil then
+					innerData.Cue = string.gsub(innerData.Cue, replacement.Find, replacement.Replace)
+				end
+			end
+		end
+	end
+end
+
 -- Add required GlobalVoiceLines
+game.GlobalVoiceLines.SurvivalEncounterStartVoiceLines = game.GlobalVoiceLines.SurvivalEncounterStartVoiceLines or
+		mod.GlobalVoiceLines.SurvivalEncounterStartVoiceLines
+game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines = game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines or
+		mod.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines
 game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or
 		mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
 game.GlobalVoiceLines.HadesPostBossVoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines or
