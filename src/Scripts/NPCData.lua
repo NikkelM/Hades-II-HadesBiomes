@@ -236,6 +236,29 @@ local npcModifications = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		ExcludeFromDamageDealtRecord = true,
+		-- From Hades GiftData.lua
+		GiftTextLineSets = {
+			ThanatosGift07_A = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			ThanatosGift08 = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			ThanatosGift09 = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			ThanatosGift10 = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+		},
 	},
 	NPC_Thanatos_Field_01 = {
 		AIOptions = { "AttackerAI" },
