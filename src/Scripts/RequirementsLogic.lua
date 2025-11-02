@@ -3,12 +3,7 @@ modutil.mod.Path.Wrap("IsGameStateEligible", function(base, source, requirements
 
 	-- If it's a modded run and the already existing requirements are met, also check the Hades requirements
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
-		isEligible = mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
-		if not isEligible then
-			-- TODO: Debugging only
-			mod.DebugPrint(requirements)
-			print()
-		end
+		return mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
 	end
 
 	return isEligible
