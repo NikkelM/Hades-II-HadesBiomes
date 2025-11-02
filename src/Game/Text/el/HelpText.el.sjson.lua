@@ -13,12 +13,21 @@ local newData = {
 	-- 	DisplayName = "Zagreus\' Journey",
 	-- },
 	-- #endregion
+
 	-- #region Button/Use Prompts
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText",
 	-- 	DisplayName = "{I} {#UseTextPreReqFormat}Descend into Nightmare",
 	-- },
 	-- #endregion
+
+	-- #region UI
+	-- {
+	-- 	Id = "Objective_SurvivalTimer",
+	-- 	DisplayName = "Survive for: {$RemainingSeconds} Sec.",
+	-- },
+	-- #endregion
+
 	-- #region Save File Location Indicators
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus",
@@ -42,6 +51,7 @@ local newData = {
 		DisplayName = "ΕΠΙΦΑΝΕΙΑ (Εφιάλτης)",
 	},
 	-- #endregion
+
 	-- NPC Names
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
@@ -49,6 +59,7 @@ local newData = {
 	-- 	Description = "",
 	-- },
 	-- #endregion
+
 	-- region Credits
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_NikkelM",

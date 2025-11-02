@@ -110,16 +110,6 @@ local npcModifications = {
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
-			-- Need to rename ZagreusHome to ZagreusField voicelines
-			SisyphusGift01 = {
-				[1] = { Cue = "/VO/ZagreusField_00120", },
-			},
-			SisyphusGift05 = {
-				[2] = { Cue = "/VO/ZagreusField_00523", },
-			},
-			SisyphusGift06 = {
-				[2] = { Cue = "/VO/ZagreusField_00524", },
-			},
 		},
 	},
 	ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {
@@ -246,6 +236,29 @@ local npcModifications = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		ExcludeFromDamageDealtRecord = true,
+		-- From Hades GiftData.lua
+		GiftTextLineSets = {
+			ThanatosGift07_A = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			ThanatosGift08 = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			ThanatosGift09 = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			ThanatosGift10 = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+		},
 	},
 	NPC_Thanatos_Field_01 = {
 		AIOptions = { "AttackerAI" },
@@ -254,6 +267,8 @@ local npcModifications = {
 			Force = 200,
 			SuccessConsumables = {
 				RandomSelection = true,
+				{ Name = "MaxHealthDrop", },
+				{ Name = "MaxHealthDrop", },
 				{ Name = "MaxHealthDrop", },
 				{ Name = "MaxManaDrop", },
 				{

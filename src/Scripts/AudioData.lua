@@ -146,6 +146,32 @@ game.MusicTrackData.Styx = {
 	{ Name = "{9781c324-6083-4acd-bdaa-5a7a67608005}", },
 }
 
+-- Replace cues with the modded name
+local requiredGlobalVoiceLineModifications = {
+	SurvivalEncounterStartVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1"
+	},
+	SurvivalEncounterSurvivedVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1"
+	},
+}
+for voicelineGroup, replacement in pairs(requiredGlobalVoiceLineModifications) do
+	for index, data in ipairs(mod.GlobalVoiceLines[voicelineGroup]) do
+		if data.Cue ~= nil then
+			data.Cue = string.gsub(data.Cue, replacement.Find, replacement.Replace)
+		end
+		if type(data) == "table" then
+			for innerIndex, innerData in ipairs(data) do
+				if innerData.Cue ~= nil then
+					innerData.Cue = string.gsub(innerData.Cue, replacement.Find, replacement.Replace)
+				end
+			end
+		end
+	end
+end
+
 -- Add required GlobalVoiceLines
 game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or
 		mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
@@ -192,11 +218,27 @@ game.GlobalVoiceLines.StartingBoatRideVoiceLines = game.GlobalVoiceLines.Startin
 game.GlobalVoiceLines.SunriseOverlookVoiceLines = game.GlobalVoiceLines.SunriseOverlookVoiceLines or
 		mod.GlobalVoiceLines.SunriseOverlookVoiceLines
 
+game.GlobalVoiceLines.SurvivalEncounterStartVoiceLines = game.GlobalVoiceLines.SurvivalEncounterStartVoiceLines or
+		mod.GlobalVoiceLines.SurvivalEncounterStartVoiceLines
+game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines = game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines or
+		mod.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines
+game.GlobalVoiceLines.SurvivalAboutToStartVoiceLines = game.GlobalVoiceLines.SurvivalAboutToStartVoiceLines or
+		mod.GlobalVoiceLines.SurvivalAboutToStartVoiceLines
+game.GlobalVoiceLines.SurvivalStartVoiceLines = game.GlobalVoiceLines.SurvivalStartVoiceLines or
+		mod.GlobalVoiceLines.SurvivalStartVoiceLines
+game.GlobalVoiceLines.SurvivalExpiringVoiceLines = game.GlobalVoiceLines.SurvivalExpiringVoiceLines or
+		mod.GlobalVoiceLines.SurvivalExpiringVoiceLines
+game.GlobalVoiceLines.SurvivalResolvedVoiceLines = game.GlobalVoiceLines.SurvivalResolvedVoiceLines or
+		mod.GlobalVoiceLines.SurvivalResolvedVoiceLines
+
 -- Add required HeroVoiceLines
 game.HeroVoiceLines.HitByGraveHandsVoiceLines = game.HeroVoiceLines.HitByGraveHandsVoiceLines or
 		mod.HeroVoiceLines.HitByGraveHandsVoiceLines
 game.HeroVoiceLines.HitByHadesAmmoVoiceLines = game.HeroVoiceLines.HitByHadesAmmoVoiceLines or
 		mod.HeroVoiceLines.HitByHadesAmmoVoiceLines
+
+game.HeroVoiceLines.ThanatosSpawningVoiceLines = game.HeroVoiceLines.ThanatosSpawningVoiceLines or
+		mod.HeroVoiceLines.ThanatosSpawningVoiceLines
 
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines

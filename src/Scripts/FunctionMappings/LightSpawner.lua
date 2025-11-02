@@ -5,7 +5,7 @@ modutil.mod.Path.Wrap("HandleSpawnerBurst", function(base, enemy, aiData)
 	if enemy.ModsNikkelMHadesBiomesIsModdedEnemy then
 		mod.ModsNikkelMHadesBiomesSpawnerAI(enemy, aiData)
 	else
-		base(enemy, aiData)
+		return base(enemy, aiData)
 	end
 end)
 

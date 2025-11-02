@@ -41,6 +41,6 @@ modutil.mod.Path.Wrap("DamageEchoTrigger",
 			mod.ModsNikkelMHadesBiomesDamageEchoTrigger(enemy, effectName, damageMultiplier, additiveDamageMultiplier,
 				cooldown)
 		else
-			base(enemy, effectName, damageMultiplier, additiveDamageMultiplier, cooldown)
+			return base(enemy, effectName, damageMultiplier, additiveDamageMultiplier, cooldown)
 		end
 	end)

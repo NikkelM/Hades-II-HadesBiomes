@@ -39,7 +39,7 @@ modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 		end
 	end
 
-	base(victim, triggerArgs)
+	return base(victim, triggerArgs)
 end)
 
 modutil.mod.Path.Wrap("DeathAreaRoomTransition", function(base, source, args)
@@ -48,5 +48,5 @@ modutil.mod.Path.Wrap("DeathAreaRoomTransition", function(base, source, args)
 	-- Load the portraits package immediately for a less laggy transition when opening the run history screen
 	LoadPackages({ Name = "ModsNikkelMHadesBiomesPortraits" })
 
-	base(source, args)
+	return base(source, args)
 end)

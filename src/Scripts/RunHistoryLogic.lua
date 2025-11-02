@@ -21,7 +21,7 @@ modutil.mod.Path.Context.Wrap("ShowRunHistory", function(screen, button)
 				args.Text = "ModsNikkelMHadesBiomes_RunHistoryScreen_Cleared"
 			end
 		end
-		base(args)
+		return base(args)
 	end)
 end)
 

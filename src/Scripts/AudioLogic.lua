@@ -40,5 +40,5 @@ modutil.mod.Path.Wrap("AudioStateInit", function(base, triggerArgs)
 		end
 	end
 
-	base(triggerArgs)
+	return base(triggerArgs)
 end)

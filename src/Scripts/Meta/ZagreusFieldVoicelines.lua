@@ -1,6 +1,7 @@
 -- Note: ZagreusHome bank can't be loaded!
+-- ZagreusHome_ lines should be translated to ZagreusField_0 lines through the mod
 mod.ZagreusFieldVoicelines = {
-	-- Alecto
+	-- #regiongAlecto
 	ZagreusField_1408 = true,
 	ZagreusField_1409 = true,
 	ZagreusField_1410 = true,
@@ -30,8 +31,9 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4300 = true,
 	ZagreusField_4301 = true,
 	ZagreusField_4302 = true,
+	-- #endregion
 
-	-- Megaera
+	-- #region Megaera
 	ZagreusField_0137 = true,
 	ZagreusField_0461 = true,
 	ZagreusField_0462 = true,
@@ -94,8 +96,9 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4316 = true,
 	ZagreusField_4317 = true,
 	ZagreusField_4654 = true,
+	-- #endregion
 
-	-- Tisiphone
+	-- #region Tisiphone
 	-- EndVoiceLines
 	-- ZagreusField_3825 = true,
 	-- ZagreusField_3828 = true,
@@ -136,11 +139,11 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4108 = true,
 	ZagreusField_4544 = true,
 	ZagreusField_4546 = true,
+	-- #endregion
 
-	-- Hydra
-	-- None needed
+	-- Hydra - none needed
 
-	-- Theseus
+	-- #region Theseus
 	-- Endvoicelines
 	-- ZagreusField_3881 = true,
 
@@ -203,8 +206,9 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4110 = true,
 	ZagreusField_4274 = true,
 	ZagreusField_4275 = true,
+	-- #endregion
 
-	-- Minotaur
+	-- #region Minotaur
 	-- EndVoicelines
 	-- ZagreusField_4264 = true,
 
@@ -261,8 +265,9 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4267 = true,
 	ZagreusField_4268 = true,
 	ZagreusField_4645 = true,
+	-- #endregion
 
-	-- Hades enemy
+	-- #region Hades enemy
 	-- Cerberus assist from Hades
 	-- ZagreusField_4530 = true,
 	-- ZagreusField_4531 = true,
@@ -356,8 +361,9 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4644 = true,
 	ZagreusField_4668 = true,
 	ZagreusField_4675 = true,
+	-- #endregion
 
-	-- Charon fight
+	-- #region Charon fight
 	-- EndVoicelines
 	-- ZagreusField_3749 = true,
 
@@ -451,13 +457,15 @@ mod.ZagreusFieldVoicelines = {
 	Charon_0053 = true,
 	Charon_0068 = true,
 	Charon_0072 = true,
+	-- #endregion
 
-	-- Cerberus Styx
+	-- #region Cerberus Styx
 	ZagreusField_2063 = true,
 	ZagreusField_2064 = true,
 	ZagreusField_2066 = true,
+	-- #endregion
 
-	-- Sisyphus
+	-- #region Sisyphus
 	-- From CharacterInteractions.Rescue (likely when the pet is used)
 	-- ZagreusField_0179 = true,
 	-- ZagreusField_0485 = true,
@@ -471,12 +479,9 @@ mod.ZagreusFieldVoicelines = {
 	-- ZagreusField_2847
 
 	-- Gift Voicelines
-	-- ZagreusHome_0120 -> ZagreusField_00120
-	-- ZagreusHome_0523 -> ZagreusField_00523
-	-- ZagreusHome_0524 -> ZagreusField_00524
-	ZagreusField_00120 = true,
-	ZagreusField_00523 = true,
-	ZagreusField_00524 = true,
+	ZagreusField_00120 = true, -- ZagreusHome_0120
+	ZagreusField_00523 = true, -- ZagreusHome_0523
+	ZagreusField_00524 = true, --ZagreusHome_0524
 	ZagreusField_0143 = true,
 	ZagreusField_0465 = true,
 	ZagreusField_0466 = true,
@@ -547,8 +552,9 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4321 = true,
 	ZagreusField_4346 = true,
 	ZagreusField_4639 = true,
+	-- #endregion
 
-	-- Bouldy
+	-- #region Bouldy
 	-- EndVoiceLines
 	-- ZagreusField_2808 = true,
 
@@ -585,8 +591,9 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4222 = true,
 	ZagreusField_4223 = true,
 	ZagreusField_4224 = true,
+	-- #endregion
 
-	-- Eurydice
+	-- #region Eurydice
 	-- CharacterInteractions.Rescue voicelines
 	-- ZagreusField_2513 = true,
 	-- ZagreusField_2515 = true,
@@ -652,8 +659,9 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4291 = true,
 	ZagreusField_4292 = true,
 	ZagreusField_4293 = true,
+	-- #endregion
 
-	-- Patroclus
+	-- #region Patroclus
 	-- CharacterInteractions.Rescue voicelines
 	-- ZagreusField_1707 = true,
 	-- ZagreusField_1709 = true,
@@ -736,8 +744,9 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_3510 = true,
 	ZagreusField_4294 = true,
 	ZagreusField_4295 = true,
+	-- #endregion
 
-	-- Surface (Rooms, Overlook, Narrator)
+	-- #region Surface (Rooms, Overlook, Narrator)
 	-- RoomData
 	ZagreusField_3588 = true,
 	ZagreusField_3589 = true,
@@ -770,8 +779,9 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4696 = true,
 	ZagreusField_4697 = true,
 	ZagreusField_4698 = true,
+	-- #endregion
 
-	-- Persephone (Surface)
+	-- #region Persephone (Surface)
 	-- EndVoiceLines
 	-- Enabled for for the Surface as we actually use the Zagreus model so this makes sense
 	ZagreusField_3611 = true,
@@ -858,8 +868,9 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_3674 = true,
 	ZagreusField_3675 = true,
 	ZagreusField_3679 = true,
+	-- #endregion
 
-	-- Thanatos
+	-- #region Thanatos Field
 	-- EndVoiceLines
 	-- ZagreusField_0516 = true,
 	-- ZagreusField_1146 = true,
@@ -926,4 +937,32 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_3578 = true,
 	ZagreusField_4658 = true,
 	ZagreusField_4659 = true,
+	-- #endregion
+
+	-- #region Thanatos Home (+ Field Gifting)
+	-- GiftTextLineSets
+	-- EndVoiceLines
+	-- ZagreusField_01470 = true,
+	-- ZagreusField_01475 = true,
+	-- ZagreusField_02482 = true,
+
+	ZagreusField_00116 = true, -- ZagreusHome_0116
+	ZagreusField_00224 = true, -- ZagreusHome_0224
+	ZagreusField_00225 = true, -- ZagreusHome_0225
+	ZagreusField_00779 = true, -- ZagreusHome_0779
+	ZagreusField_00780 = true, -- ZagreusHome_0780
+	ZagreusField_00781 = true, -- ZagreusHome_0781
+	ZagreusField_00782 = true, -- ZagreusHome_0782
+	ZagreusField_01465 = true, -- ZagreusHome_1465
+	ZagreusField_01467 = true, -- ZagreusHome_1467
+	ZagreusField_01468 = true, -- ZagreusHome_1468
+	ZagreusField_01469 = true, -- ZagreusHome_1469
+	ZagreusField_01471 = true, -- ZagreusHome_1471
+	ZagreusField_01472 = true, -- ZagreusHome_1472
+	ZagreusField_01473 = true, -- ZagreusHome_1473
+	ZagreusField_01474 = true, -- ZagreusHome_1474
+	ZagreusField_02479 = true, -- ZagreusHome_2479
+	ZagreusField_02480 = true, -- ZagreusHome_2480
+	ZagreusField_02481 = true, -- ZagreusHome_2481
+	-- #endregion
 }

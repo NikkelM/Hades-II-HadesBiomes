@@ -289,7 +289,7 @@ mod.HadesHelpTextCopyKeys = {
 	-- #endregion
 	-- #region Combat Objectives
 	Objective_ThanatosKills = true,
-	Objective_SurvivalTimer = true,
+	-- Objective_SurvivalTimer = false, -- Manually added, as the formatting is different
 	-- Objective_PlayerKills = true, -- Duplicate
 	-- #endregion
 	-- #region Enemies

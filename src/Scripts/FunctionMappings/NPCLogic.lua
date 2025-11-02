@@ -105,7 +105,7 @@ modutil.mod.Path.Wrap("BouldyHitPresentation", function(base, victim)
 			game.thread(game.PlayVoiceLines, source.BouldyAttackReactionVoiceLines, true, source)
 		end
 	else
-		base(victim)
+		return base(victim)
 	end
 end)
 

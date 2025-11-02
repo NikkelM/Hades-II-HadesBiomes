@@ -2,7 +2,7 @@ modutil.mod.Path.Wrap("RamAILoop", function(base, enemy, aiData)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.ModsNikkelMHadesBiomesIsModdedEnemy then
 		mod.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 	else
-		base(enemy, aiData)
+		return base(enemy, aiData)
 	end
 end)
 

@@ -462,7 +462,7 @@ mod.HiddenConfig = mod.HiddenConfig or mod.TryLoadCachedSjsonFile("hiddenConfig.
 -- TODO: Remove when releasing
 modutil.mod.Path.Wrap("DebugPrint", function(base, args)
 	mod.DebugPrint(args.Text, 4)
-	base(args)
+	return base(args)
 end)
 
 -- TODO: Remove when releasing

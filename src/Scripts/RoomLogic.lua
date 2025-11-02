@@ -120,7 +120,8 @@ modutil.mod.Path.Wrap("SetupAI", function(base, enemy, args)
 	if enemy.SupportUnitName ~= nil then
 		mod.SpawnSupportAI(enemy)
 	end
-	base(enemy, args)
+
+	return base(enemy, args)
 end)
 
 modutil.mod.Path.Wrap("SetupInspectPoint", function(base, inspectPointData)
@@ -128,7 +129,8 @@ modutil.mod.Path.Wrap("SetupInspectPoint", function(base, inspectPointData)
 		-- Storyteller voicelines are added to the Megaera voicebank, as the game can't load unknown voicebanks and Storyteller is already taken
 		game.LoadVoiceBanks({ Name = "Megaera" })
 	end
-	base(inspectPointData)
+
+	return base(inspectPointData)
 end)
 
 modutil.mod.Path.Wrap("StartRoom", function(base, currentRun, currentRoom)
@@ -143,7 +145,7 @@ modutil.mod.Path.Wrap("StartRoom", function(base, currentRun, currentRoom)
 		end
 	end
 
-	base(currentRun, currentRoom)
+	return base(currentRun, currentRoom)
 end)
 
 modutil.mod.Path.Wrap("LeaveRoom", function(base, currentRun, door)
@@ -155,15 +157,15 @@ modutil.mod.Path.Wrap("LeaveRoom", function(base, currentRun, door)
 		currentRun.WingDepth = 0
 	end
 
-	base(currentRun, door)
+	return base(currentRun, door)
 end)
 
 -- Overriding to add in the logic for the Styx exit doors always having two minibosses
 modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
 	if run.ModsNikkelMHadesBiomesIsModdedRun and room.Name == "D_Hub" then
-		mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
+		return mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	else
-		base(run, room)
+		return base(run, room)
 	end
 end)
 
@@ -186,7 +188,7 @@ modutil.mod.Path.Wrap("DisableTrap", function(base, enemy)
 			game.Kill(enemy)
 		end
 	else
-		base(enemy)
+		return base(enemy)
 	end
 end)
 
