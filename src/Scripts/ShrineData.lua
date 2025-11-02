@@ -7,6 +7,14 @@ local newBountyTargetIcons = {
 }
 mod.AddTableKeysSkipDupes(game.ScreenData.Shrine.BountyTargetIcons, newBountyTargetIcons)
 
+local newBountyEncounterDoorFlipMap = {
+	BossHarpy1 = true,
+	BossHydra = true,
+	BossTheseusAndMinotaur = true,
+	BossHades = true,
+}
+mod.AddTableKeysSkipDupes(game.ScreenData.Shrine.BountyEncounterDoorFlipMap, newBountyEncounterDoorFlipMap)
+
 -- Insert the new bounties into the shrine at the correct positions
 -- To make this more resilient against future changes, we insert them based on the previous bounty's index
 -- The key is thew new bounty to insert, the value the bounty in front of which to insert it

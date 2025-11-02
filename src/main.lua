@@ -308,6 +308,7 @@ local function on_ready()
 		import "Scripts/RunHistoryData.lua"
 		import "Scripts/RunHistoryLogic.lua"
 		import "Scripts/RunLogic.lua"
+		import "Scripts/ShrinePresentation.lua"
 		import "Scripts/StoreLogic.lua"
 		import "Scripts/WeaponSets.lua"
 
