@@ -183,7 +183,7 @@ modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
 			end
 		end
 	else
-		base(run)
+		return base(run)
 	end
 end)
 

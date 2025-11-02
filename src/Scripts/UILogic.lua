@@ -30,5 +30,5 @@ modutil.mod.Path.Wrap("OnLanguageChanged", function(base, args)
 		mod.TryImportLanguageFile("TraitText", "en")
 	end
 
-	base(args)
+	return base(args)
 end)

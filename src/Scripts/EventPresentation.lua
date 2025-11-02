@@ -2,7 +2,8 @@ modutil.mod.Path.Wrap("StartedTextLinesPresentation", function(base, source, tex
 	if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
 		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 0 })
 	end
-	base(source, textLines)
+
+	return base(source, textLines)
 end)
 
 modutil.mod.Path.Wrap("FinishedTextLinesPresentation", function(base, source, textLines)
@@ -19,5 +20,6 @@ modutil.mod.Path.Wrap("FinishedTextLinesPresentation", function(base, source, te
 			Group = "Combat_UI_World"
 		})
 	end
-	base(source, textLines)
+
+	return base(source, textLines)
 end)

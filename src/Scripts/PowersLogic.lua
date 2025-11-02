@@ -3,5 +3,6 @@ modutil.mod.Path.Wrap("ApplyRoot", function(base, victim, functionArgs, triggerA
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim ~= nil and victim.GenusName == "CrusherUnit" then
 		return
 	end
-	base(victim, functionArgs, triggerArgs)
+
+	return base(victim, functionArgs, triggerArgs)
 end)

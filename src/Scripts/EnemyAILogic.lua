@@ -15,7 +15,7 @@ modutil.mod.Path.Wrap("DoWeaponFire", function(base, enemy, aiData)
 		game.thread(game.CrowdReactionPresentation, aiData.OnFireCrowdReaction)
 	end
 
-	base(enemy, aiData)
+	return base(enemy, aiData)
 end)
 
 modutil.mod.Path.Wrap("AIFireWeapon", function(base, enemy, aiData)
@@ -45,7 +45,7 @@ modutil.mod.Path.Wrap("AIFireProjectile", function(base, enemy, aiData, projecti
 		end
 	end
 
-	base(enemy, aiData, projectileData)
+	return base(enemy, aiData, projectileData)
 end)
 
 -- Gets called in a ThreadedEvents function in each boss's AIStage.

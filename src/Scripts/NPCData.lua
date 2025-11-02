@@ -255,6 +255,8 @@ local npcModifications = {
 			SuccessConsumables = {
 				RandomSelection = true,
 				{ Name = "MaxHealthDrop", },
+				{ Name = "MaxHealthDrop", },
+				{ Name = "MaxHealthDrop", },
 				{ Name = "MaxManaDrop", },
 				{
 					Name = "StackUpgrade",

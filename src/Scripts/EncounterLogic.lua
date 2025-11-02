@@ -27,5 +27,5 @@ modutil.mod.Path.Wrap("OnAllEnemiesDead", function(base, currentRoom, currentEnc
 		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "MedeaPoison" })
 	end
 
-	base(currentRoom, currentEncounter)
+	return base(currentRoom, currentEncounter)
 end)

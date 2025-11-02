@@ -28,7 +28,7 @@ modutil.mod.Path.Wrap("KillPresentation", function(base, victim, killer, args)
 		end
 	end
 
-	base(victim, killer, args)
+	return base(victim, killer, args)
 end)
 
 -- For the Alecto bossfight, if dying while the enemy is permanently enraged
@@ -50,7 +50,7 @@ modutil.mod.Path.Wrap("UnitInvulnerableHitPresentation", function(base, blocker,
 		PlaySound({ Name = blocker.ProjectileBlockSoundName, Id = blocker.ObjectId })
 	end
 
-	base(blocker, args)
+	return base(blocker, args)
 end)
 
 -- This is a very costly function!

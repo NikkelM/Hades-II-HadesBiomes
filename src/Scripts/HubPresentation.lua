@@ -43,7 +43,8 @@ modutil.mod.Path.Wrap("UpdateEscapeDoorForLimitGraspShrineUpgrade", function(bas
 
 		mod.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(nil, { EscapeDoorIds = { moddedEscapeDoorId } })
 	end
-	base(source, args)
+
+	return base(source, args)
 end)
 
 modutil.mod.Path.Wrap("StartNewRunPresentation", function(base, runDoor, args)
@@ -79,6 +80,6 @@ modutil.mod.Path.Wrap("StartNewRunPresentation", function(base, runDoor, args)
 		game.wait(0.3)
 		game.EndFixedDashPresentationValues()
 	else
-		base(runDoor, args)
+		return base(runDoor, args)
 	end
 end)

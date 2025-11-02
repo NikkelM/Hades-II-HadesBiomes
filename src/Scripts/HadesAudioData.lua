@@ -2784,6 +2784,12 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		{ Cue = "/VO/MelinoeField_0687", Text = "I've returned." },
 		{ Cue = "/VO/MelinoeField_0688", Text = "You won't stop me." },
 		{ Cue = "/VO/MelinoeField_0249", Text = "You don't know who you're dealing with..." },
+		{ Cue = "/VO/MelinoeField_0901", Text = "Got their attention, huh..." },
+		{ Cue = "/VO/MelinoeField_0891", Text = "I've drawn them out..." },
+		{ Cue = "/VO/MelinoeField_0892", Text = "They know I'm here..." },
+		{ Cue = "/VO/MelinoeField_0893", Text = "Here they come..." },
+		{ Cue = "/VO/MelinoeField_0895", Text = "I'm ready for you!" },
+		{ Cue = "/VO/MelinoeField_0897", Text = "Incoming..." },
 	},
 	SurvivalStartVoiceLines = {
 		RandomRemaining = true,
@@ -3046,6 +3052,66 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				{ Cue = "/VO/HadesField_0198" },
 			}
 		}
+	},
+	-- #endregion
+	-- #region Thanatos
+	ThanatosSpawningVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.65,
+		SuccessiveChanceToPlayAll = 0.5,
+		-- -- I hear something.
+		-- { Cue = "/VO/ZagreusField_0124" },
+		-- -- Something's off...
+		-- { Cue = "/VO/ZagreusField_0157", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredFalseTextLines = { "ThanatosGift07_A" }, },
+		-- -- Something's amiss...
+		-- { Cue = "/VO/ZagreusField_0158", RequiredFalseTextLines = { "ThanatosGift07_A" }, },
+		-- -- Thanatos.
+		-- { Cue = "/VO/ZagreusField_1432", RequiredPlayed = { "/VO/ZagreusField_0124" } },
+		-- -- Thanatos...
+		-- { Cue = "/VO/ZagreusField_1433", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredFalseTextLines = { "ThanatosGift06" }, },
+		-- -- Thanatos!
+		-- -- { Cue = "/VO/ZagreusField_1434", RequiredPlayed = { "/VO/ZagreusField_0124" } },
+		-- -- Than!
+		-- { Cue = "/VO/ZagreusField_1435", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift05" } },
+		-- -- Thanatos...!
+		-- { Cue = "/VO/ZagreusField_1436", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift07_A" }, },
+		-- -- Thanatos...?
+		-- { Cue = "/VO/ZagreusField_1437", RequiredPlayed = { "/VO/ZagreusField_0124" } },
+		-- -- It's him.
+		-- { Cue = "/VO/ZagreusField_2923", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredFalseTextLines = { "ThanatosGift05" }, },
+		-- -- It's him...!
+		-- { Cue = "/VO/ZagreusField_2924", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift03" } },
+		-- -- Than...!
+		-- { Cue = "/VO/ZagreusField_2925", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift04" } },
+		-- -- Here he comes.
+		-- { Cue = "/VO/ZagreusField_2926", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift10" } },
+		-- -- Death approaches?
+		-- { Cue = "/VO/ZagreusField_2927", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift05" } },
+		-- -- I know that toll.
+		-- { Cue = "/VO/ZagreusField_2928", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift03" } },
+		-- -- Come on in, Than.
+		-- { Cue = "/VO/ZagreusField_2929", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift10" } },
+		-- -- Hey, Than.
+		-- { Cue = "/VO/ZagreusField_4071", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift10" } },
+		-- -- Ah, yes.
+		-- { Cue = "/VO/ZagreusField_4072", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift10" } },
+		-- -- Was just thinking about you.
+		-- { Cue = "/VO/ZagreusField_4073", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" } },
+		-- -- Just in time.
+		-- { Cue = "/VO/ZagreusField_4074", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift10" } },
+		-- -- Guh-dong...
+		-- { Cue = "/VO/ZagreusField_4075", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift10" } },
+		-- -- Hi there.
+		-- { Cue = "/VO/ZagreusField_4076", RequiredPlayed = { "/VO/ZagreusField_0124" }, RequiredTextLines = { "ThanatosGift10" }, },
+		{ Cue = "/VO/MelinoeField_3739", Text = "{#Emph}Erm{#Prev}, what's going on...?", PlayFirst = true, },
+		{ Cue = "/VO/Melinoe_0168",      Text = "It's him..." },
+		{ Cue = "/VO/Melinoe_2284",      Text = "Right on time." },
+		{ Cue = "/VO/Melinoe_4268",      Text = "We meet again, and welcome." },
+		{ Cue = "/VO/MelinoeField_3117", Text = "Found me...!", },
+		{ Cue = "/VO/MelinoeField_3116", Text = "Here he comes...", },
+		{ Cue = "/VO/MelinoeField_3115", Text = "Here he comes...!", },
+		{ Cue = "/VO/MelinoeField_3240", Text = "Oh {#Emph}hello!", },
 	},
 	-- #endregion
 	-- #region Custom

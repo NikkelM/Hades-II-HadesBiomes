@@ -184,5 +184,5 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		args.ReUseIds = true
 	end
 
-	base(exitDoor, chosenRewardType, chosenLootName, index, args)
+	return base(exitDoor, chosenRewardType, chosenLootName, index, args)
 end)

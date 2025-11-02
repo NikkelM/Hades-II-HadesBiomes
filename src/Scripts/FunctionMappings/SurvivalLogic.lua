@@ -112,7 +112,7 @@ modutil.mod.Path.Context.Wrap("HandleTimedSpawns", function(eventSource, args)
 					{ VoiceLines = game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines })
 			end
 
-			base(objectiveName)
+			return base(objectiveName)
 		end)
 	end
 end)

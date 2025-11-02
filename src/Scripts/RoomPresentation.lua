@@ -14,7 +14,7 @@ modutil.mod.Path.Wrap("StartRoomPresentation", function(base, currentRun, curren
 			currentRoom)
 	end
 
-	base(currentRun, currentRoom)
+	return base(currentRun, currentRoom)
 end)
 
 -- Always force using the original Hades room transition animation in modded runs
@@ -22,7 +22,8 @@ modutil.mod.Path.Wrap("FullScreenFadeInAnimation", function(base, animationName,
 	if game.CurrentHubRoom == nil and game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		animationName = "ModsNikkelMHadesBiomesRoomTransitionOut"
 	end
-	base(animationName, colorGradeName)
+
+	return base(animationName, colorGradeName)
 end)
 
 -- The animation on the run start Chaos gate is defined on a custom function
@@ -30,7 +31,8 @@ modutil.mod.Path.Wrap("FullScreenFadeOutAnimation", function(base, animationName
 	if game.CurrentHubRoom == nil and game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		animationName = "ModsNikkelMHadesBiomesRoomTransitionIn"
 	end
-	base(animationName, colorGradeName)
+
+	return base(animationName, colorGradeName)
 end)
 
 modutil.mod.Path.Context.Wrap("DeathPresentation", function(currentRun, killer, deathArgs)
@@ -45,7 +47,7 @@ modutil.mod.Path.Context.Wrap("DeathPresentation", function(currentRun, killer, 
 				infoArgs.AnimationName = "LocationTextBGDeath"
 				infoArgs.AnimationOutName = "LocationTextBGDeathOut"
 			end
-			base(source, infoArgs)
+			return base(source, infoArgs)
 		end)
 	end
 end)
@@ -191,10 +193,10 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 			game.ToggleCombatControl(game.CombatControlsDefaults, true, "DeathPresentation")
 			SetConfigOption({ Name = "UseOcclusion", Value = true })
 		else
-			base(currentRun, killer, args)
+			return base(currentRun, killer, args)
 		end
 	else
-		base(currentRun, killer, args)
+		return base(currentRun, killer, args)
 	end
 end)
 
