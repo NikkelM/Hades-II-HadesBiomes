@@ -10,38 +10,39 @@ mod.AddTableKeysSkipDupes(game.ScreenData.Shrine.BountyTargetIcons, newBountyTar
 -- Insert the new bounties into the shrine at the correct positions
 -- To make this more resilient against future changes, we insert them based on the previous bounty's index
 -- The key is thew new bounty to insert, the value the bounty in front of which to insert it
+-- Inverse order, as the first one inserted will be "last" in the list
 local newBountyInsertOrder = {
 	-- Heat 6, inserted after the last Heat 4 bounty
-	ModsNikkelMHadesBiomes_BountyShrineStaff_TartarusBoss = "BountyShrineSuitGBoss",
-	ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss = "BountyShrineSuitGBoss",
-	ModsNikkelMHadesBiomes_BountyShrineTorches_ElysiumBoss = "BountyShrineSuitGBoss",
-	ModsNikkelMHadesBiomes_BountyShrineAxe_TartarusBoss = "BountyShrineSuitGBoss",
-	ModsNikkelMHadesBiomes_BountyShrineLob_AsphodelBoss = "BountyShrineSuitGBoss",
-	ModsNikkelMHadesBiomes_BountyShrineSuit_TartarusBoss = "BountyShrineSuitGBoss",
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineSuit_TartarusBoss",    insertAfter = "BountyShrineSuitGBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineLob_AsphodelBoss",     insertAfter = "BountyShrineSuitGBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineAxe_TartarusBoss",     insertAfter = "BountyShrineSuitGBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineTorches_ElysiumBoss",  insertAfter = "BountyShrineSuitGBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss", insertAfter = "BountyShrineSuitGBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineStaff_TartarusBoss",   insertAfter = "BountyShrineSuitGBoss" },
 
 	-- Heat 14, inserted after the last Heat 12 bounty
-	ModsNikkelMHadesBiomes_BountyShrineStaff_AsphodelBoss = "BountyShrineSuitHBoss",
-	ModsNikkelMHadesBiomes_BountyShrineDaggers_TartarusBoss = "BountyShrineSuitHBoss",
-	ModsNikkelMHadesBiomes_BountyShrineTorches_StyxBoss = "BountyShrineSuitHBoss",
-	ModsNikkelMHadesBiomes_BountyShrineAxe_ElysiumBoss = "BountyShrineSuitHBoss",
-	ModsNikkelMHadesBiomes_BountyShrineLob_TartarusBoss = "BountyShrineSuitHBoss",
-	ModsNikkelMHadesBiomes_BountyShrineSuit_StyxBoss = "BountyShrineSuitHBoss",
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineSuit_StyxBoss",        insertAfter = "BountyShrineSuitHBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineLob_TartarusBoss",     insertAfter = "BountyShrineSuitHBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineAxe_ElysiumBoss",      insertAfter = "BountyShrineSuitHBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineTorches_StyxBoss",     insertAfter = "BountyShrineSuitHBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineDaggers_TartarusBoss", insertAfter = "BountyShrineSuitHBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineStaff_AsphodelBoss",   insertAfter = "BountyShrineSuitHBoss" },
 
 	-- Heat 18, inserted after the last Heat 16 bounty
-	ModsNikkelMHadesBiomes_BountyShrineStaff_ElysiumBoss = "BountyShrineSuitQBoss",
-	ModsNikkelMHadesBiomes_BountyShrineDaggers_StyxBoss = "BountyShrineSuitQBoss",
-	ModsNikkelMHadesBiomes_BountyShrineTorches_TartarusBoss = "BountyShrineSuitQBoss",
-	ModsNikkelMHadesBiomes_BountyShrineAxe_AsphodelBoss = "BountyShrineSuitQBoss",
-	ModsNikkelMHadesBiomes_BountyShrineLob_ElysiumBoss = "BountyShrineSuitQBoss",
-	ModsNikkelMHadesBiomes_BountyShrineSuit_ElysiumBoss = "BountyShrineSuitQBoss",
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineSuit_ElysiumBoss",     insertAfter = "BountyShrineSuitQBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineLob_ElysiumBoss",      insertAfter = "BountyShrineSuitQBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineAxe_AsphodelBoss",     insertAfter = "BountyShrineSuitQBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineTorches_TartarusBoss", insertAfter = "BountyShrineSuitQBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineDaggers_StyxBoss",     insertAfter = "BountyShrineSuitQBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineStaff_ElysiumBoss",    insertAfter = "BountyShrineSuitQBoss" },
 
 	-- Heat 22, inserted after the last Heat 20 bounty
-	ModsNikkelMHadesBiomes_BountyShrineStaff_StyxBoss = "BountyShrineSuitIBoss",
-	ModsNikkelMHadesBiomes_BountyShrineDaggers_ElysiumBoss = "BountyShrineSuitIBoss",
-	ModsNikkelMHadesBiomes_BountyShrineTorches_AsphodelBoss = "BountyShrineSuitIBoss",
-	ModsNikkelMHadesBiomes_BountyShrineAxe_StyxBoss = "BountyShrineSuitIBoss",
-	ModsNikkelMHadesBiomes_BountyShrineLob_StyxBoss = "BountyShrineSuitIBoss",
-	ModsNikkelMHadesBiomes_BountyShrineSuit_AsphodelBoss = "BountyShrineSuitIBoss",
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineSuit_AsphodelBoss",    insertAfter = "BountyShrineSuitIBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineLob_StyxBoss",         insertAfter = "BountyShrineSuitIBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineAxe_StyxBoss",         insertAfter = "BountyShrineSuitIBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineTorches_AsphodelBoss", insertAfter = "BountyShrineSuitIBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineDaggers_ElysiumBoss",  insertAfter = "BountyShrineSuitIBoss" },
+	{ key = "ModsNikkelMHadesBiomes_BountyShrineStaff_StyxBoss",       insertAfter = "BountyShrineSuitIBoss" },
 }
 
 local function getRequirementValue(requirements, pathStr, key)
@@ -58,8 +59,8 @@ local allBountyKeys = {}
 for _, bountyKey in ipairs(game.ScreenData.Shrine.BountyOrder) do
 	table.insert(allBountyKeys, bountyKey)
 end
-for newBountyKey, _ in pairs(newBountyInsertOrder) do
-	table.insert(allBountyKeys, newBountyKey)
+for _, bountyEntry in ipairs(newBountyInsertOrder) do
+	table.insert(allBountyKeys, bountyEntry.key)
 end
 
 -- Pre-process all bounties once to extract weapon and heat data
@@ -78,7 +79,9 @@ for _, bountyKey in ipairs(allBountyKeys) do
 	end
 end
 
-for newBountyKey, insertAfterKey in pairs(newBountyInsertOrder) do
+for _, bountyEntry in ipairs(newBountyInsertOrder) do
+	local newBountyKey = bountyEntry.key
+	local insertAfterKey = bountyEntry.insertAfter
 	local newMeta = bountyMetadata[newBountyKey]
 	local insertIndex = nil
 
@@ -92,13 +95,11 @@ for newBountyKey, insertAfterKey in pairs(newBountyInsertOrder) do
 		local existingMeta = bountyMetadata[bountyName]
 		if existingMeta and
 				existingMeta.Weapon == newMeta.Weapon and
-				newMeta.Heat and existingMeta.Heat and
 				newMeta.Heat < existingMeta.Heat then
 			local unlockReqs = game.BountyData[bountyName].UnlockGameStateRequirements
 			local shrineReq = getRequirementValue(unlockReqs, "GameState.ShrineBountiesCompleted", "HasAll")
 			if shrineReq then
 				table.insert(shrineReq, newBountyKey)
-				print("Updated unlock requirements for bounty " .. bountyName .. " to include " .. newBountyKey)
 			end
 		end
 	end
