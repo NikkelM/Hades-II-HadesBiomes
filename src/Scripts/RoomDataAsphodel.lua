@@ -198,8 +198,7 @@ local roomModifications = {
 					AdditionalEndTimeWait = 1.0,
 					BiomeStart = "Asphodel",
 					BiomeEnd = "Elysium",
-					-- TODO: Theseus
-					ShrineBounty = "BossScylla01",
+					ShrineBounty = "BossTheseusAndMinotaur",
 				},
 			},
 		},

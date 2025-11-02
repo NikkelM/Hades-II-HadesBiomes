@@ -202,8 +202,7 @@ local roomModifications = {
 					-- AdditionalEndTimeWait = 1.0,
 					BiomeStart = "Elysium",
 					BiomeEnd = "Styx",
-					-- TODO: Hades
-					ShrineBounty = "BossScylla01",
+					ShrineBounty = "BossHades",
 				},
 			},
 		},

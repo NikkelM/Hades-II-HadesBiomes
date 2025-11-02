@@ -255,8 +255,7 @@ local roomModifications = {
 
 					BiomeStart = "Tartarus",
 					BiomeEnd = "Asphodel",
-					-- TODO: Hydra
-					ShrineBounty = "BossScylla01",
+					ShrineBounty = "BossHydra",
 				},
 			},
 		},

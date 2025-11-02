@@ -1,6 +1,5 @@
 -- #region Testaments of Night
 -- The encounters for each bounty
--- TODO: Add to postBoss room arguments for the BiomeMapPresentation
 local newBountyEncounters = {
 	ModsNikkelMHadesBiomesMegaeraEncounters = {
 		DebugOnly = true,

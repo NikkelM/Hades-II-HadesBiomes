@@ -3,34 +3,22 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		Tartarus = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Tartarus",
 			OffsetX = -62,
-			OffsetY = 234,
-			-- PactRewardOffsetX = -100,
-			-- PactRewardOffsetY = 250,
-			-- PactRewardRoomName = "A_Boss",
+			OffsetY = 235,
 		},
 		Asphodel = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Asphodel",
 			OffsetX = 108,
 			OffsetY = -453,
-			-- PactRewardOffsetX = 350,
-			-- PactRewardOffsetY = 150,
-			-- PactRewardRoomName = "B_Boss01",
 		},
 		Elysium = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Elysium",
 			OffsetX = 111,
 			OffsetY = -1303,
-			-- PactRewardOffsetX = -300,
-			-- PactRewardOffsetY = 200,
-			-- PactRewardRoomName = "Y_Boss01",
 		},
 		Styx = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Styx",
 			OffsetX = 80,
 			OffsetY = -2038,
-			-- PactRewardOffsetX = 200,
-			-- PactRewardOffsetY = 400,
-			-- PactRewardRoomName = "D_Boss01",
 		},
 	}
 
@@ -49,9 +37,9 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	SetColor({ Id = backgroundId, Color = game.Color.Black, Duration = 0 })
 	SetScale({ Id = backgroundId, Fraction = 10.0 })
 
-	-- Bottom must be first so it is sorted behind the top
-	local biomeMapBottomId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = 0.0, SortById = true })
+	-- Top must be first so it is sorted behind the bottom for the better fade
 	local biomeMapTopId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = -1872.0, SortById = true })
+	local biomeMapBottomId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = 0.0, SortById = true })
 	SetAnimation({ DestinationId = biomeMapTopId, Name = "GUI\\BiomeMap\\MapTop" })
 	SetAnimation({ DestinationId = biomeMapBottomId, Name = "GUI\\BiomeMap\\MapBottom" })
 
@@ -144,11 +132,10 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	for bountyName, v in pairs(game.CurrentRun.ShrineBountiesCompleted) do
 		local bountyData = game.BountyData[bountyName]
 		if bountyData ~= nil then
-			local prevRoom = game.GetPreviousRoom(CurrentRun) or {}
-			if game.CurrentRun.CurrentRoom.Encounter.Name == bountyData.Encounter or
-					prevRoom.Encounter.Name == bountyData.Encounter then
-				-- Original - Alternative not implemented/checked if needed
-				game.BiomeMapShowBounty(source, args, bountyData)
+			local prevRoom = game.GetPreviousRoom(game.CurrentRun) or {}
+			if game.ContainsAny(bountyData.Encounters, { game.CurrentRun.CurrentRoom.Encounter.Name, prevRoom.Encounter.Name }) then
+				-- Custom implementation with new offsets
+				mod.BiomeMapShowBounty(source, args, bountyData)
 
 				SetAlpha({ Id = args.TargetItemId, Fraction = 1.0 })
 				SetAlpha({ Id = args.BountyBackingId, Fraction = 1.0 })
@@ -239,9 +226,9 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	-- show any bounties on the current region
 	if args.ShrineBounty ~= nil and game.GameState.ActiveShrineBounty ~= nil and (game.CurrentRun.ActiveBounty == nil or game.CurrentHubRoom ~= nil) then
 		local bountyData = game.BountyData[game.GameState.ActiveShrineBounty]
-		if bountyData ~= nil and bountyData.Encounter == args.ShrineBounty then
-			-- Original - Alternative not implemented/checked if needed
-			game.BiomeMapShowBounty(source, args, bountyData)
+		if bountyData ~= nil and game.Contains(bountyData.Encounters, args.ShrineBounty) then
+			-- Custom implementation with new offsets
+			mod.BiomeMapShowBounty(source, args, bountyData)
 
 			game.wait(0.65)
 			CreateAnimation({ Name = "ShoutFlare", DestinationId = args.TargetItemId, Group = "Combat_Menu_TraitTray", Scale = 1.5, OffsetY = 120 })
@@ -270,4 +257,94 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	PlaySound({ Name = "/Leftovers/World Sounds/MapZoomInShortHigh" })
 	game.FullScreenFadeOutAnimation()
 	RemoveInputBlock({ Name = "BiomeMapPresentation" })
+end
+
+-- Same as original game, but we need different offsets
+function mod.BiomeMapShowBounty(source, args, bountyData)
+	local screen = game.ScreenData.Shrine
+	local bountyGroupName = "Combat_Menu_TraitTray"
+
+	local shrineBountyOffsets = {
+		BossHarpy1 = {
+			X = -100,
+			Y = 250,
+		},
+		BossHydra = {
+			X = 50,
+			Y = -200,
+		},
+		BossTheseusAndMinotaur = {
+			X = 100,
+			Y = -1300,
+		},
+		BossHades = {
+			X = -170,
+			Y = -2050,
+		},
+	}
+	local offset = shrineBountyOffsets[bountyData.Encounters[1]]
+
+	args.TargetItemId = SpawnObstacle({
+		Name = "BlankObstacle",
+		Group = bountyGroupName,
+		SortById = true,
+		LocationX = offset.X + screen.BountyTargetOffsetY,
+		LocationY = offset.Y + screen.BountyTargetOffsetY
+	})
+	SetAnimation({ Name = screen.BountyTargetIcons[bountyData.Encounters[1]], DestinationId = args.TargetItemId })
+	SetScale({ Id = args.TargetItemId, Fraction = screen.BountyBossIconScale })
+	SetAlpha({ Id = args.TargetItemId, Fraction = 0 })
+
+	args.BountyBackingId = SpawnObstacle({
+		Name = "BlankObstacle",
+		Group = bountyGroupName,
+		SortById = true,
+		LocationX = offset.X,
+		LocationY = offset.Y
+	})
+	SetAnimation({ Name = "GUI\\Screens\\Shrine\\Testament", DestinationId = args.BountyBackingId })
+	SetScale({ Id = args.BountyBackingId, Fraction = screen.BountyBossIconScale })
+	SetAlpha({ Id = args.BountyBackingId, Fraction = 0 })
+
+	local shrinePoints = 0
+	local weaponName = nil
+	if bountyData.CompleteGameStateRequirements ~= nil then
+		for j, completeRequirement in ipairs(bountyData.CompleteGameStateRequirements) do
+			if completeRequirement.HasAny ~= nil then
+				weaponName = completeRequirement.HasAny[1]
+			end
+			if completeRequirement.Value ~= nil then
+				shrinePoints = completeRequirement.Value
+			end
+		end
+	end
+
+	args.ShrinePointItemId = SpawnObstacle({
+		Name = "BlankObstacle",
+		Group = bountyGroupName,
+		SortById = true,
+		LocationX = offset.X + screen.BountyShrinePointsOffsetX,
+		LocationY = offset.Y + screen.BountyShrinePointsOffsetY
+	})
+	local bountyShrinePointsFormat = game.ShallowCopyTable(screen.BountyShrinePointsFormat) or {}
+	bountyShrinePointsFormat.Id = args.ShrinePointItemId
+	bountyShrinePointsFormat.Text = "ShrineScreen_BountyShrinePoints"
+	bountyShrinePointsFormat.LuaKey = "TempTextData"
+	bountyShrinePointsFormat.LuaValue = { RequiredShrinePoints = shrinePoints }
+	bountyShrinePointsFormat.DataProperties = {
+		OpacityWithOwner = true,
+	}
+	CreateTextBox(bountyShrinePointsFormat)
+	SetAlpha({ Id = args.ShrinePointItemId, Fraction = 0 })
+
+	args.WeaponItemId = SpawnObstacle({
+		Name = "BlankObstacle",
+		Group = bountyGroupName,
+		SortById = true,
+		LocationX = offset.X + screen.BountyWeaponOffsetX,
+		LocationY = offset.Y + screen.BountyWeaponOffsetY
+	})
+	SetAnimation({ Name = screen.BountyWeaponIcons[weaponName], DestinationId = args.WeaponItemId })
+	SetScale({ Id = args.WeaponItemId, Fraction = screen.BountyWeaponIconScale })
+	SetAlpha({ Id = args.WeaponItemId, Fraction = 0 })
 end

@@ -393,9 +393,3 @@ end
 function mod.AngleIds(eventSource, args)
 	AngleTowardTarget({ Ids = args.Ids, DestinationId = args.DestinationId })
 end
-
--- For D_Intro, to allow the cog wheels to place themselves correctly before the fade in
-function mod.ModsNikkelMHadesBiomesDelayedRoomEntranceStandard(currentRun, currentRoom)
-	game.wait(2.0)
-	game.RoomEntranceStandard(currentRun, currentRoom)
-end

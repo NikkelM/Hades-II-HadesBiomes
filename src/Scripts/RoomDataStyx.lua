@@ -70,7 +70,6 @@ local roomModifications = {
 		InheritFrom = { "BaseStyx", "BiomeStartRoom", },
 		Starting = true,
 		BlockRunProgressUI = true,
-		EntranceFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesDelayedRoomEntranceStandard",
 		StartUnthreadedEvents = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
