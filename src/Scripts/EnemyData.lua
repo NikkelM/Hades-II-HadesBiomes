@@ -124,7 +124,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			enemyData.NameplateDescriptionColor = { 145, 45, 90, 255 }
 		end
 
-		-- Dialogues playing before boss fights or when meetting NPCs
+		-- Dialogues playing before boss fights or when meeting NPCs
 		local bossPresentationProperties = {
 			"BossPresentationSuperPriorityIntroTextLineSets",
 			"BossPresentationPriorityIntroTextLineSets",
@@ -196,6 +196,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 									entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
 								elseif entry.Cue:find("^/VO/Persephone_") then
 									entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+								elseif entry.Cue:find("^/VO/ZagreusHome_") then
+									entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
 								end
 							end
 						end

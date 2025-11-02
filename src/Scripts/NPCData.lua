@@ -110,16 +110,6 @@ local npcModifications = {
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
-			-- Need to rename ZagreusHome to ZagreusField voicelines
-			SisyphusGift01 = {
-				[1] = { Cue = "/VO/ZagreusField_00120", },
-			},
-			SisyphusGift05 = {
-				[2] = { Cue = "/VO/ZagreusField_00523", },
-			},
-			SisyphusGift06 = {
-				[2] = { Cue = "/VO/ZagreusField_00524", },
-			},
 		},
 	},
 	ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {
