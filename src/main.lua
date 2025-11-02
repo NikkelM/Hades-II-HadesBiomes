@@ -241,10 +241,12 @@ local function on_ready()
 		import "Scripts/WeaponData.lua"
 
 		-- Other data that must be loaded before SetupRunData()
+		import "Scripts/BountyData.lua"
 		import "Scripts/ConsumableData.lua"
 		import "Scripts/EffectData.lua"
 		import "Scripts/LootData.lua"
 		import "Scripts/MetaUpgradeData.lua"
+		import "Scripts/ShrineData.lua"
 		import "Scripts/TraitData.lua"
 		import "Scripts/TraitDataNPCs.lua"
 		import "Scripts/ObstacleData.lua"
