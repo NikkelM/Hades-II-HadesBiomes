@@ -20,6 +20,28 @@ local roomReplacements = {
 	X_PreBoss01 = {
 		Binks = mod.NilValue,
 	},
+
+	X_PostBoss01 = {
+		EnterVoiceLines = {
+			Cooldowns = {
+				{ Name = "MelinoeAnyQuipSpeech" },
+			},
+			{
+				PreLineWait = 2,
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				SuccessiveChanceToPlay = 0.5,
+
+				{ Cue = "/VO/MelinoeField_2624", Text = "A magnificent beast, but a threat...", PlayFirst = true },
+				{ Cue = "/VO/MelinoeField_1102", Text = "Think I can finally go...", },
+				{ Cue = "/VO/MelinoeField_3011", Text = "Foul creature..." },
+				{ Cue = "/VO/MelinoeField_1104", Text = "I can get out now..." },
+				{ Cue = "/VO/Melinoe_1000",      Text = "Done." },
+				{ Cue = "/VO/MelinoeField_1338", Text = "One step closer..." },
+				{ Cue = "/VO/MelinoeField_1339", Text = "Little by little..." },
+			},
+		},
+	},
 }
 
 local roomModifications = {
@@ -150,6 +172,9 @@ local roomModifications = {
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
+		ThreadedEvents = {
+			[1] = { FunctionName = "HadesSpeakingPresentation", Args = { VoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines, StartDelay = 2.5 } },
+		},
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
 			{

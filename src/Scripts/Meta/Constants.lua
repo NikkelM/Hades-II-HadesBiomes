@@ -6,6 +6,7 @@ mod.ModdedUnitMaxHealthMultiplierBonus = 0.5
 mod.ModdedUnitHealthBufferMultiplierBonus = 0.3
 
 -- TODO: Challenge, Charon? What Roomsets are they?
+-- For Challenge, can use Melinoe_0376 as enter voiceline
 mod.ValidModdedRunBiomes = {
 	["Tartarus"] = true,
 	["Asphodel"] = true,

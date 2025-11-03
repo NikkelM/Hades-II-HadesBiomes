@@ -38,6 +38,29 @@ local roomReplacements = {
 	A_PreBoss01 = {
 		Binks = mod.NilValue,
 	},
+
+	A_PostBoss01 = {
+		EnterVoiceLines = {
+			Cooldowns = {
+				{ Name = "MelinoeAnyQuipSpeech" },
+			},
+			{
+				PreLineWait = 2,
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				SuccessiveChanceToPlay = 0.5,
+
+				{ Cue = "/VO/Melinoe_0381",      Text = "This is my path.",              PlayFirst = true },
+				{ Cue = "/VO/MelinoeField_1105", Text = "I think I'm finished here." },
+				{ Cue = "/VO/Melinoe_0339",      Text = "I've come this far..." },
+				{ Cue = "/VO/Melinoe_0383",      Text = "I will not fail." },
+				{ Cue = "/VO/Melinoe_1666",      Text = "Strength; knowledge; patience." },
+				{ Cue = "/VO/Melinoe_0137",      Text = "Onward." },
+				{ Cue = "/VO/Melinoe_2993",      Text = "All right." },
+				{ Cue = "/VO/MelinoeField_0560", Text = "All quiet." },
+			},
+		},
+	},
 }
 
 local roomModifications = {
@@ -207,6 +230,9 @@ local roomModifications = {
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
+		ThreadedEvents = {
+			[1] = { FunctionName = "HadesSpeakingPresentation", Args = { VoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines, StartDelay = 2.5 } },
+		},
 		NextRoomSet = { "Asphodel" },
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {

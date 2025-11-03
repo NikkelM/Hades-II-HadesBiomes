@@ -20,6 +20,25 @@ local roomReplacements = {
 	Y_PreBoss01 = {
 		Binks = mod.NilValue,
 	},
+
+	Y_PostBoss01 = {
+		EnterVoiceLines = {
+			Cooldowns = {
+				{ Name = "MelinoeAnyQuipSpeech" },
+			},
+			{
+				PreLineWait = 2,
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				SuccessiveChanceToPlay = 0.5,
+				{ Cue = "/VO/MelinoeField_0990", Text = "No more crowds...",                      PlayFirst = true },
+				{ Cue = "/VO/MelinoeField_0983", Text = "First tunnel to my right...", },
+				{ Cue = "/VO/MelinoeField_0989", Text = "Reeks in here..." },
+				{ Cue = "/VO/MelinoeField_1718", Text = "That's all for tonight's show." },
+				{ Cue = "/VO/MelinoeField_1720", Text = "And that's our show for tonight!" },
+			},
+		},
+	},
 }
 
 local roomModifications = {
@@ -152,6 +171,9 @@ local roomModifications = {
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
+		ThreadedEvents = {
+			[1] = { FunctionName = "HadesSpeakingPresentation", Args = { VoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines, StartDelay = 2.5 } },
+		},
 		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
 			{
