@@ -148,6 +148,14 @@ game.MusicTrackData.Styx = {
 
 -- Replace cues with the modded name
 local requiredGlobalVoiceLineModifications = {
+	-- HadesDeathTauntVoiceLines = {
+	-- 	Find = "Hades_",
+	-- 	Replace = "HadesField_0"
+	-- },
+	HadesPostBossVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1"
+	},
 	SurvivalEncounterStartVoiceLines = {
 		Find = "Intercom_",
 		Replace = "HadesField_1"
@@ -157,24 +165,27 @@ local requiredGlobalVoiceLineModifications = {
 		Replace = "HadesField_1"
 	},
 }
-for voicelineGroup, replacement in pairs(requiredGlobalVoiceLineModifications) do
-	for index, data in ipairs(mod.GlobalVoiceLines[voicelineGroup]) do
-		if data.Cue ~= nil then
-			data.Cue = string.gsub(data.Cue, replacement.Find, replacement.Replace)
-		end
-		if type(data) == "table" then
-			for innerIndex, innerData in ipairs(data) do
-				if innerData.Cue ~= nil then
-					innerData.Cue = string.gsub(innerData.Cue, replacement.Find, replacement.Replace)
-				end
-			end
+local function processCue(data, replacement)
+	if data.Cue ~= nil then
+		data.Cue = string.gsub(data.Cue, replacement.Find, replacement.Replace)
+	end
+	if type(data) == "table" then
+		for _, innerData in ipairs(data) do
+			processCue(innerData, replacement)
 		end
 	end
 end
 
+for voicelineGroup, replacement in pairs(requiredGlobalVoiceLineModifications) do
+	for index, data in ipairs(mod.GlobalVoiceLines[voicelineGroup]) do
+		processCue(data, replacement)
+	end
+end
+
 -- Add required GlobalVoiceLines
-game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or
-		mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
+-- These would overlap with Melinoe's own voicelines when dying
+-- game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or
+-- 		mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
 game.GlobalVoiceLines.HadesPostBossVoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines or
 		mod.GlobalVoiceLines.HadesPostBossVoiceLines
 game.GlobalVoiceLines.HadesWrathAttackVoiceLines = game.GlobalVoiceLines.HadesWrathAttackVoiceLines or

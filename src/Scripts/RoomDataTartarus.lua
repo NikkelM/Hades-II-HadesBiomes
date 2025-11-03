@@ -202,6 +202,8 @@ local roomModifications = {
 		},
 	},
 	A_PostBoss01 = {
+		-- For Intercom
+		LoadModdedVoiceBanks = { "HadesField" },
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
@@ -255,8 +257,7 @@ local roomModifications = {
 
 					BiomeStart = "Tartarus",
 					BiomeEnd = "Asphodel",
-					-- TODO: Hydra
-					ShrineBounty = "BossScylla01",
+					ShrineBounty = "BossHydra",
 				},
 			},
 		},

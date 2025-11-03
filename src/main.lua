@@ -241,10 +241,12 @@ local function on_ready()
 		import "Scripts/WeaponData.lua"
 
 		-- Other data that must be loaded before SetupRunData()
+		import "Scripts/BountyData.lua"
 		import "Scripts/ConsumableData.lua"
 		import "Scripts/EffectData.lua"
 		import "Scripts/LootData.lua"
 		import "Scripts/MetaUpgradeData.lua"
+		import "Scripts/ShrineData.lua"
 		import "Scripts/TraitData.lua"
 		import "Scripts/TraitDataNPCs.lua"
 		import "Scripts/ObstacleData.lua"
@@ -306,6 +308,7 @@ local function on_ready()
 		import "Scripts/RunHistoryData.lua"
 		import "Scripts/RunHistoryLogic.lua"
 		import "Scripts/RunLogic.lua"
+		import "Scripts/ShrinePresentation.lua"
 		import "Scripts/StoreLogic.lua"
 		import "Scripts/WeaponSets.lua"
 
@@ -321,6 +324,11 @@ local function on_ready()
 			"A total of " .. numMissingFiles ..
 			" required files are missing and the mod is not active. Please check the log and run the \"firstTimeSetup\" by setting the config value to true.",
 			1)
+	end
+
+	if mod.HiddenConfig.EnableVanillaDebugKeybinds == true then
+		mod.DebugPrint("Enabling vanilla debug keybinds as per hidden config setting.", 2)
+		rom.inputs.enable_vanilla_debug_keybinds(true)
 	end
 end
 

@@ -145,6 +145,8 @@ local roomModifications = {
 		},
 	},
 	X_PostBoss01 = {
+		-- For Intercom
+		LoadModdedVoiceBanks = { "HadesField" },
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
@@ -198,8 +200,7 @@ local roomModifications = {
 					AdditionalEndTimeWait = 1.0,
 					BiomeStart = "Asphodel",
 					BiomeEnd = "Elysium",
-					-- TODO: Theseus
-					ShrineBounty = "BossScylla01",
+					ShrineBounty = "BossTheseusAndMinotaur",
 				},
 			},
 		},
