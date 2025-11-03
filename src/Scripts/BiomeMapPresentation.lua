@@ -142,7 +142,7 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 				SetAlpha({ Id = args.ShrinePointItemId, Fraction = 1.0 })
 				SetAlpha({ Id = args.WeaponItemId, Fraction = 1.0 })
 
-				game.wait(1.1)
+				game.wait(1.6)
 				CreateAnimation({
 					Name = "ExorcismCorrectFlash",
 					DestinationId = args.TargetItemId,
