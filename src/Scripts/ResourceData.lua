@@ -162,5 +162,5 @@ local newResourceDisplayOrderData = {
 	"Fish_Surface_Legendary_01",
 	-- #endregion
 }
-mod.AddTableKeysSkipDupes(game.ResourceDisplayOrderData, newResourceDisplayOrderData)
+game.ResourceDisplayOrderData = game.ConcatTableValuesIPairs(game.ResourceDisplayOrderData, newResourceDisplayOrderData)
 -- #endregion

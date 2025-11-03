@@ -625,23 +625,6 @@ mod.HadesHelpTextCopyKeys = {
 	-- ClearGiftDrops = "ModsNikkelMHadesBiomes_RunClear_ClearGiftDrops",
 	-- ClearLockKeyDrops = "ModsNikkelMHadesBiomes_RunClear_ClearLockKeyDrops",
 	-- #endregion
-	-- #region Resources
-	Fish_Tartarus_Common_01 = true,
-	Fish_Tartarus_Rare_01 = true,
-	Fish_Tartarus_Legendary_01 = true,
-	Fish_Asphodel_Common_01 = true,
-	Fish_Asphodel_Rare_01 = true,
-	Fish_Asphodel_Legendary_01 = true,
-	Fish_Elysium_Common_01 = true,
-	Fish_Elysium_Rare_01 = true,
-	Fish_Elysium_Legendary_01 = true,
-	Fish_Styx_Common_01 = true,
-	Fish_Styx_Rare_01 = true,
-	Fish_Styx_Legendary_01 = true,
-	Fish_Surface_Common_01 = true,
-	Fish_Surface_Rare_01 = true,
-	Fish_Surface_Legendary_01 = true,
-	-- #endregion
 	-- #region Misc
 	PassiveItem = true,
 	Assist = true,
