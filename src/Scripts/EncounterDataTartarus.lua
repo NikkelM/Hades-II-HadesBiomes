@@ -141,7 +141,6 @@ local encounterModifications = {
 		SkipExitReadyCheckpoint = true,
 	},
 	BaseSurvival = {
-		LoadModdedVoiceBanks = { "HadesField" },
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,
 	},

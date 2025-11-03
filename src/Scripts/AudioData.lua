@@ -148,6 +148,10 @@ game.MusicTrackData.Styx = {
 
 -- Replace cues with the modded name
 local requiredGlobalVoiceLineModifications = {
+	HadesPostBossVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1"
+	},
 	SurvivalEncounterStartVoiceLines = {
 		Find = "Intercom_",
 		Replace = "HadesField_1"
@@ -157,18 +161,20 @@ local requiredGlobalVoiceLineModifications = {
 		Replace = "HadesField_1"
 	},
 }
+local function processCue(data, replacement)
+	if data.Cue ~= nil then
+		data.Cue = string.gsub(data.Cue, replacement.Find, replacement.Replace)
+	end
+	if type(data) == "table" then
+		for _, innerData in ipairs(data) do
+			processCue(innerData, replacement)
+		end
+	end
+end
+
 for voicelineGroup, replacement in pairs(requiredGlobalVoiceLineModifications) do
 	for index, data in ipairs(mod.GlobalVoiceLines[voicelineGroup]) do
-		if data.Cue ~= nil then
-			data.Cue = string.gsub(data.Cue, replacement.Find, replacement.Replace)
-		end
-		if type(data) == "table" then
-			for innerIndex, innerData in ipairs(data) do
-				if innerData.Cue ~= nil then
-					innerData.Cue = string.gsub(innerData.Cue, replacement.Find, replacement.Replace)
-				end
-			end
-		end
+		processCue(data, replacement)
 	end
 end
 
