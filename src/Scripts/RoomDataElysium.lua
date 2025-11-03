@@ -147,6 +147,8 @@ local roomModifications = {
 		},
 	},
 	Y_PostBoss01 = {
+		-- For Intercom
+		LoadModdedVoiceBanks = { "HadesField" },
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",

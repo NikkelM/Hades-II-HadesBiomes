@@ -1,59 +1,59 @@
 -- Contains some of the GlobalVoiceLines from Hades AudioData.lua
 mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- #region Hades
-	HadesDeathTauntVoiceLines = {
-		RandomRemaining = true,
-		BreakIfPlayed = true,
-		PreLineWait = 1.95,
-		NoTarget = true,
+	-- HadesDeathTauntVoiceLines = {
+	-- 	RandomRemaining = true,
+	-- 	BreakIfPlayed = true,
+	-- 	PreLineWait = 1.95,
+	-- 	NoTarget = true,
 
-		-- What did I tell you?
-		{ Cue = "/VO/Hades_0259" },
-		-- What did I tell you.
-		{ Cue = "/VO/Hades_0260" },
-		-- What did you expect?
-		{ Cue = "/VO/Hades_0261" },
-		-- What did you expect.
-		{ Cue = "/VO/Hades_0262" },
-		-- Surely you could have avoided that.
-		{ Cue = "/VO/Hades_0263" },
-		-- That was inevitable.
-		{ Cue = "/VO/Hades_0264" },
-		-- I'll see you back at home.
-		{ Cue = "/VO/Hades_0265" },
-		-- You are a weakling, boy.
-		-- { Cue = "/VO/Hades_0266" },
-		-- Was that truly your best?
-		{ Cue = "/VO/Hades_0267" },
-		-- Die, like a mere mortal.
-		{ Cue = "/VO/Hades_0268" },
-		-- Oh, that was it?
-		{ Cue = "/VO/Hades_0269" },
-		-- <Laughter>
-		{ Cue = "/VO/Hades_0270" },
-		-- <Laughter>
-		{ Cue = "/VO/Hades_0271" },
-		-- <Laughter>
-		{ Cue = "/VO/Hades_0272" },
-		-- A very tragic end.
-		{ Cue = "/VO/Hades_0329" },
-		-- Your time is up, boy.
-		-- { Cue = "/VO/Hades_0330" },
-		-- So much for that attempt.
-		{ Cue = "/VO/Hades_0331" },
-		-- Whatever happened there?
-		{ Cue = "/VO/Hades_0332" },
-		-- You don't have what it takes. Nobody does.
-		{ Cue = "/VO/Hades_0333" },
-		-- A tragic end fit for a poet's verse.
-		{ Cue = "/VO/Hades_0334" },
-		-- How many deaths is that?
-		{ Cue = "/VO/Hades_0335" },
-		-- You never seem to learn.
-		{ Cue = "/VO/Hades_0336" },
-		-- What did I tell you?
-		{ Cue = "/VO/Hades_0337" },
-	},
+	-- 	-- What did I tell you?
+	-- 	{ Cue = "/VO/Hades_0259" },
+	-- 	-- What did I tell you.
+	-- 	{ Cue = "/VO/Hades_0260" },
+	-- 	-- What did you expect?
+	-- 	{ Cue = "/VO/Hades_0261" },
+	-- 	-- What did you expect.
+	-- 	{ Cue = "/VO/Hades_0262" },
+	-- 	-- Surely you could have avoided that.
+	-- 	{ Cue = "/VO/Hades_0263" },
+	-- 	-- That was inevitable.
+	-- 	{ Cue = "/VO/Hades_0264" },
+	-- 	-- I'll see you back at home.
+	-- 	{ Cue = "/VO/Hades_0265" },
+	-- 	-- You are a weakling, boy.
+	-- 	-- { Cue = "/VO/Hades_0266" },
+	-- 	-- Was that truly your best?
+	-- 	{ Cue = "/VO/Hades_0267" },
+	-- 	-- Die, like a mere mortal.
+	-- 	{ Cue = "/VO/Hades_0268" },
+	-- 	-- Oh, that was it?
+	-- 	{ Cue = "/VO/Hades_0269" },
+	-- 	-- <Laughter>
+	-- 	{ Cue = "/VO/Hades_0270" },
+	-- 	-- <Laughter>
+	-- 	{ Cue = "/VO/Hades_0271" },
+	-- 	-- <Laughter>
+	-- 	{ Cue = "/VO/Hades_0272" },
+	-- 	-- A very tragic end.
+	-- 	{ Cue = "/VO/Hades_0329" },
+	-- 	-- Your time is up, boy.
+	-- 	-- { Cue = "/VO/Hades_0330" },
+	-- 	-- So much for that attempt.
+	-- 	{ Cue = "/VO/Hades_0331" },
+	-- 	-- Whatever happened there?
+	-- 	{ Cue = "/VO/Hades_0332" },
+	-- 	-- You don't have what it takes. Nobody does.
+	-- 	{ Cue = "/VO/Hades_0333" },
+	-- 	-- A tragic end fit for a poet's verse.
+	-- 	{ Cue = "/VO/Hades_0334" },
+	-- 	-- How many deaths is that?
+	-- 	{ Cue = "/VO/Hades_0335" },
+	-- 	-- You never seem to learn.
+	-- 	{ Cue = "/VO/Hades_0336" },
+	-- 	-- What did I tell you?
+	-- 	{ Cue = "/VO/Hades_0337" },
+	-- },
 	HadesPostBossVoiceLines = {
 		Queue = "Interrupt",
 		{

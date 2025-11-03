@@ -53,8 +53,6 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 		if currentRoom.Encounter ~= nil and currentRoom.Encounter.LoadModdedVoiceBanks ~= nil then
 			game.LoadVoiceBanks(currentRoom.Encounter.LoadModdedVoiceBanks)
 		end
-		-- ALWAYS load the HadesField VoiceBank, as it is used for Intercom as well, which includes Death Taunts that may occur in any room
-		game.LoadVoiceBanks({ "HadesField" })
 	end
 end)
 
