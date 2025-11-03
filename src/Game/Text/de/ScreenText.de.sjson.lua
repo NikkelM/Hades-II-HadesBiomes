@@ -7,7 +7,7 @@ local order = {
 }
 
 local newData = {
-	-- Run history
+	-- #region Run history
 	{
 		Id = "RunHistoryScreen_RouteTartarus",
 		DisplayName = "Albtraum",
@@ -28,12 +28,20 @@ local newData = {
 		Id = "RunHistoryScreen_RouteSurface",
 		DisplayName = "Albtraum",
 	},
-	-- Codex
+	-- #endregion
+
+	-- #region Codex/Inventory
 	{
 		Id = "ModsNikkelMHadesBiomesCodexEntryTitleText",
 		DisplayName = "Albtraum",
 	},
-	-- Install screens
+	{
+		Id = "InventoryScreen_ModesNikkelMHadesBiomesTab",
+		InheritFrom = "ModsNikkelMHadesBiomesCodexEntryTitleText",
+	},
+	-- #endregion
+
+	-- #region Install screens
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InstallSuccess",
 	-- 	DisplayName = "Installation successful!",
@@ -52,6 +60,7 @@ local newData = {
 		Description =
 		"Die Deinstallation von {#DialogLegendaryFormat}TODO: HadesBiomes WIP title {#Prev}ist {#DialogLegendaryFormat}GESCHEITERT{#Prev}, da der {#BoldFormatGraft}aktuellste Durchgang {#Prev}einer deiner Speicherplätze modifiziert war.\n\nDas Spiel speichert Daten des letzten Durchgangs, daher würde eine Deinstallation {#DialogLegendaryFormat}deinen Speicherstand korrumpieren{#Prev}, bis die Mod wieder installiert wird! Daher wurde die Mod {#DialogLegendaryFormat}wieder eingeschaltet{#Prev}. Um sicher zu deinstallieren, starte einen neuen normalen Durchangang und {#BoldFormatGraft}gib ihn nicht auf {#Prev}. Dann versuche eine erneute Deinstallation.\n\nMöchtest du trotzdem deinstallieren, setze die {#BoldFormatGraft}uninstall{#Prev}-Option auf \"{#DialogLegendaryFormat}I am sure - Uninstall{#Prev}\". Dies kann deinen Speicherstand {#DialogLegendaryFormat}korrumpieren{#Prev}!\n\nBei weiteren Problemen starte bitte eine Diskussion auf\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nund lade die {#DialogLegendaryFormat}LogOutput.log {#Prev}Datei aus dem \"ReturnOfModding\" Ordner hoch.",
 	},
+	-- #endregion
 }
 
 sjson.hook(screenTextFile, function(data)

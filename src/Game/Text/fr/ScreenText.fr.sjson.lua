@@ -7,7 +7,7 @@ local order = {
 }
 
 local newData = {
-	-- Run history
+	-- #region Run history
 	{
 		Id = "RunHistoryScreen_RouteTartarus",
 		DisplayName = "Cauchemar",
@@ -28,12 +28,20 @@ local newData = {
 		Id = "RunHistoryScreen_RouteSurface",
 		DisplayName = "Cauchemar",
 	},
-	-- Codex
+	-- #endregion
+
+	-- #region Codex/Inventory
 	{
 		Id = "ModsNikkelMHadesBiomesCodexEntryTitleText",
 		DisplayName = "Cauchemar",
 	},
-	-- Install screens
+	{
+		Id = "InventoryScreen_ModesNikkelMHadesBiomesTab",
+		InheritFrom = "ModsNikkelMHadesBiomesCodexEntryTitleText",
+	},
+	-- #endregion
+
+	-- #region Install screens
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InstallSuccess",
 	-- 	DisplayName = "Installation successful!",
@@ -52,6 +60,7 @@ local newData = {
 	-- 	Description =
 	-- 	"Uninstalling {#DialogLegendaryFormat}TODO: HadesBiomes WIP title {#Prev}has {#DialogLegendaryFormat}FAILED {#Prev}, because for one of your saves, the {#BoldFormatGraft}most recent run {#Prev}was a modded run.\n\nThe game persists data after a run, and uninstalling the mod now would {#DialogLegendaryFormat}break your save {#Prev}until you reinstall the mod! To protect your saves, the mod has been {#DialogLegendaryFormat}enabled again{#Prev}. To safely uninstall, start and {#BoldFormatGraft}do not undo {#Prev}a normal run on all affected saves. Then retry uninstalling the mod.\n\nIf you think you should be able to uninstall now, set the {#BoldFormatGraft}uninstall {#Prev}config option to \"{#DialogLegendaryFormat}I am sure - Uninstall{#Prev}\".\nThis can {#DialogLegendaryFormat}break your save {#Prev} until you reinstall the mod!\n\nIf the issue persists, please start a discussion on\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nand attach your {#DialogLegendaryFormat}LogOutput.log {#Prev}file from the \"ReturnOfModding\" folder.",
 	-- },
+	-- #endregion
 }
 
 sjson.hook(screenTextFile, function(data)
