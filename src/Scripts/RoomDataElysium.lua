@@ -11,6 +11,62 @@ local roomReplacements = {
 
 		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
 		ShrinePointDoorRequirements = { Skip = true },
+
+		-- HasHarvestPoint = true,
+		-- HasShovelPoint = true,
+		-- HasPickaxePoint = true,
+		-- HasExorcismPoint = true,
+
+		HasFishingPoint = true,
+		FishingPointRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
+			},
+			{
+				SumPrevRooms = 5,
+				Path = { "NumFishingPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumShovelPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumPickaxePoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumExorcismPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", },
+						NotHasAll = { "Fish_Elysium_Common_01", "Fish_Elysium_Rare_01", "Fish_Elysium_Legendary_01" },
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+					{
+						SumPrevRooms = 2,
+						Path = { "NumExorcismPoints" },
+						Comparison = "<=",
+						Value = 0,
+					},
+				},
+			},
+		},
 	},
 
 	-- SHOPS
@@ -31,7 +87,7 @@ local roomReplacements = {
 				RandomRemaining = true,
 				BreakIfPlayed = true,
 				SuccessiveChanceToPlay = 0.5,
-				{ Cue = "/VO/MelinoeField_0990", Text = "No more crowds...",                      PlayFirst = true },
+				{ Cue = "/VO/MelinoeField_0990", Text = "No more crowds...",               PlayFirst = true },
 				{ Cue = "/VO/MelinoeField_0983", Text = "First tunnel to my right...", },
 				{ Cue = "/VO/MelinoeField_0989", Text = "Reeks in here..." },
 				{ Cue = "/VO/MelinoeField_1718", Text = "That's all for tonight's show." },

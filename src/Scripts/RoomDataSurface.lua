@@ -4,6 +4,65 @@ local roomReplacements = {
 	-- GENERIC
 	BaseSurface = {
 		RoomSetName = "Surface",
+
+		-- HasHarvestPoint = true,
+		-- HasShovelPoint = true,
+		-- HasPickaxePoint = true,
+		-- HasExorcismPoint = true,
+
+		HasFishingPoint = true,
+		FishingPointRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "PersephoneFirstMeeting" },
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
+			},
+			{
+				SumPrevRooms = 5,
+				Path = { "NumFishingPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumShovelPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumPickaxePoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumExorcismPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", },
+						NotHasAll = { "Fish_Surface_Common_01", "Fish_Surface_Rare_01", "Fish_Surface_Legendary_01" },
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+					{
+						SumPrevRooms = 2,
+						Path = { "NumExorcismPoints" },
+						Comparison = "<=",
+						Value = 0,
+					},
+				},
+			},
+		},
 	},
 }
 
