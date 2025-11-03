@@ -325,6 +325,11 @@ local function on_ready()
 			" required files are missing and the mod is not active. Please check the log and run the \"firstTimeSetup\" by setting the config value to true.",
 			1)
 	end
+
+	if mod.HiddenConfig.EnableVanillaDebugKeybinds == true then
+		mod.DebugPrint("Enabling vanilla debug keybinds as per hidden config setting.", 2)
+		rom.inputs.enable_vanilla_debug_keybinds(true)
+	end
 end
 
 local function on_reload()
