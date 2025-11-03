@@ -246,6 +246,7 @@ local function on_ready()
 		import "Scripts/EffectData.lua"
 		import "Scripts/HarvestData.lua"
 		import "Scripts/LootData.lua"
+		import "Scripts/MarketData.lua"
 		import "Scripts/MetaUpgradeData.lua"
 		import "Scripts/ResourceData.lua"
 		import "Scripts/ShrineData.lua"
