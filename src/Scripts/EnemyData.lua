@@ -1019,6 +1019,7 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
+		IgnoreSpeedShrine = true,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
@@ -1497,7 +1498,9 @@ local enemyModifications = {
 		StunAnimations = { Default = "SatyrOnHit" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		ActivateDuration = 0.4,
+		-- Their poison doesn't damage enemies
 		BlockCharm = true,
+		BlockRaiseDead = true,
 	},
 	SatyrRangedElite = {
 		EliteAttributeOptions = game.CombineTables(
@@ -1599,6 +1602,7 @@ local enemyModifications = {
 	CrawlerMiniBoss = {
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation",
 		OnDeathFunctionArgs = { Message = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage", },
+		BlockCharm = true,
 	},
 	-- #endregion
 	-- #region STYX - Bosses
@@ -1616,6 +1620,7 @@ local enemyModifications = {
 			InvisibilityFadeOutDuration = 0.4,
 			DashRequireLoS = true,
 		},
+		ImmuneToPolymorph = true,
 	},
 	HadesAmmo = {
 		AIOptions = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesAttackAndDie", },
@@ -1625,6 +1630,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		ImmuneToPolymorph = true,
 		RunHistoryKilledByName = "Hades",
 	},
 	-- #endregion
