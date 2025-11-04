@@ -537,12 +537,21 @@ local enemyModifications = {
 	},
 	DisembodiedHand = {
 		StunAnimations = { Default = "EnemyWringerOnHit" },
+		GeneratorData = {
+			BlockSolo = true,
+		},
 	},
 	DisembodiedHandElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
+		GeneratorData = {
+			BlockSolo = true,
+		},
 	},
 	DisembodiedHandSuperElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
+		GeneratorData = {
+			BlockSolo = true,
+		},
 	},
 	BaseCaster = {
 		AIAggroRange = 1250,
