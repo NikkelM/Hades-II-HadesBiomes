@@ -448,6 +448,108 @@ local newData = {
 
 	-- #endregion
 	-- #endregion
+	-- #region Ore
+	-- #region Tartarus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreTartarus",
+	-- 	DisplayName = "Candle Wax",
+	-- 	Description = "Mostly used with incantations involving TODO and TODO.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreTartarus_Short",
+	-- 	DisplayName = "Wax",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreTartarus_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_OreTartarus",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_OreTartarus} Candle Wax",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreTartarus_Details",
+	-- 	Description =
+	-- 	"· Found using the {!Icons.ToolPickIcon} {$WeaponShopItemData.ToolPickaxe.Name} on {$Keywords.PickaxePointPlural} in {#BoldFormat}Tartarus (Nightmare){#Prev}"
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreTartarus_Flavor",
+	-- 	Description = "Ancient drippings hardened by time, their flames long since extinguished."
+	-- },
+	-- #endregion
+	-- #region Asphodel
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreAsphodel",
+	-- 	DisplayName = "Granite",
+	-- 	Description = "Mostly used with incantations involving TODO and TODO.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreAsphodel_Short",
+	-- 	DisplayName = "Granite",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreAsphodel_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_OreAsphodel",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_OreAsphodel} Granite",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreAsphodel_Details",
+	-- 	Description =
+	-- 	"· Found using the {!Icons.ToolPickIcon} {$WeaponShopItemData.ToolPickaxe.Name} on {$Keywords.PickaxePointPlural} in {#BoldFormat}Asphodel (Nightmare){#Prev}"
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreAsphodel_Flavor",
+	-- 	Description = "In the heat of Asphodel, only the sturdiest of rocks can  hope to withstand the test of time."
+	-- },
+	-- #endregion
+	-- #region Elysium
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreElysium",
+	-- 	DisplayName = "Lapis Lazuli",
+	-- 	Description = "Mostly used with incantations involving TODO and TODO.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreElysium_Short",
+	-- 	DisplayName = "Lazuli",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreElysium_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_OreElysium",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_OreElysium} Lapis Lazuli",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreElysium_Details",
+	-- 	Description =
+	-- 	"· Found using the {!Icons.ToolPickIcon} {$WeaponShopItemData.ToolPickaxe.Name} on {$Keywords.PickaxePointPlural} in {#BoldFormat}Elysium (Nightmare){#Prev}"
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreElysium_Flavor",
+	-- 	Description = "Even amongst the most worthy of shades, this celestial stone stands as a treasure worth seeking."
+	-- },
+	-- #endregion
+	-- #region Styx
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreStyx",
+	-- 	DisplayName = "Amber",
+	-- 	Description = "Mostly used with incantations involving TODO and TODO.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreStyx_Short",
+	-- 	DisplayName = "Amber",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreStyx_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_OreStyx",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_OreStyx} Amber",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreStyx_Details",
+	-- 	Description =
+	-- 	"· Found using the {!Icons.ToolPickIcon} {$WeaponShopItemData.ToolPickaxe.Name} on {$Keywords.PickaxePointPlural} in {#BoldFormat}Styx (Nightmare){#Prev}"
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OreStyx_Flavor",
+	-- 	Description = "Many things seep from the surface into the depths of the Underworld, some more valuable than others."
+	-- },
+	-- #endregion
+	-- #endregion
 	-- #endregion
 }
 
