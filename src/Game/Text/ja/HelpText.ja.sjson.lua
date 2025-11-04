@@ -455,7 +455,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreTartarus",
 	-- 	DisplayName = "Candle Wax",
-	-- 	Description = "Mostly used with incantations involving TODO and TODO.",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreTartarus_Short",
@@ -480,7 +480,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreAsphodel",
 	-- 	DisplayName = "Granite",
-	-- 	Description = "Mostly used with incantations involving TODO and TODO.",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreAsphodel_Short",
@@ -505,7 +505,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreElysium",
 	-- 	DisplayName = "Lapis Lazuli",
-	-- 	Description = "Mostly used with incantations involving TODO and TODO.",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreElysium_Short",
@@ -530,7 +530,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreStyx",
 	-- 	DisplayName = "Amber",
-	-- 	Description = "Mostly used with incantations involving TODO and TODO.",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreStyx_Short",
