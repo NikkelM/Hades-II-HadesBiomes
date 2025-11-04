@@ -10,7 +10,11 @@ If the full path to a texture file is too long, the package will not be loaded a
 
 ## Modern approach
 
-Only use this approach for actual new packages, as the path to the textures will include the package's name, which isn't the case for original Hades packages!
+There are two modes for `deppth2 hpk`, with the modern TeamName-ModName format, and the legacy "Any" format.
+If the source package matches the TeamName-ModName format, all texture paths will have the TeamName-ModName prefix added to them automatically.
+If using the legacy "Any" format, the texture paths will not have any prefix added to them.
+
+The legacy format is a custom hack into deppth2, and not part of the pip package.
 
 In the parent folder of the source folder, run `deppth2 hpk -c BC7 -s NikkelM-HadesBiomesGUIModded_source -t NikkelM-HadesBiomesGUIModded`
 
