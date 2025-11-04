@@ -113,6 +113,21 @@ local obstacleModifications = {
 
 	-- #region STYX
 	-- #endregion
+
+	-- #region Resource Points
+	-- HarvestPoint = {
+	-- OccupyingSpawnPointId = true,
+	-- },
+	PickaxePoint = {
+		OccupyingSpawnPointId = true,
+	},
+	-- ShovelPoint = {
+	-- OccupyingSpawnPointId = true,
+	-- },
+	-- ExorcismPoint = {
+	-- OccupyingSpawnPointId = true,
+	-- },
+	-- #endregion
 }
 
 local addedObstacles = {
