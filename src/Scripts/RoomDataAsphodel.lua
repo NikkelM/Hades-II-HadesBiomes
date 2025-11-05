@@ -14,10 +14,66 @@ local roomReplacements = {
 
 		-- HasHarvestPoint = true,
 		-- HasShovelPoint = true,
-		-- HasPickaxePoint = true,
+		HasPickaxePoint = true,
 		-- HasExorcismPoint = true,
-
 		HasFishingPoint = true,
+
+		PickaxePointRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreTartarus" },
+				Comparison = ">=",
+				Value = 6,
+			},
+			{
+				SumPrevRooms = 4,
+				Path = { "NumPickaxePoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumShovelPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumExorcismPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumFishingPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreAsphodel" },
+						Comparison = "<",
+						Value = 36,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+					{
+						SumPrevRooms = 2,
+						Path = { "NumShovelPoints" },
+						Comparison = "<=",
+						Value = 0,
+					},
+				},
+			},
+		},
 		FishingPointRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
@@ -139,6 +195,12 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut" }, },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Asphodel" } },
 		},
+
+		HarvestPointChances = { 0.02, },
+		-- ShovelPointChance = 0.02,
+		PickaxePointChance = 0.02,
+		--ExorcismPointChance = 0.02,
+		FishingPointChance = 0.02,
 	},
 
 	-- SHOPS
@@ -147,6 +209,11 @@ local roomModifications = {
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
+
+		-- ShovelPointChance = 0.4,
+		PickaxePointChance = 0.4,
+		-- ExorcismPointChance = 0.3,
+		FishingPointChance = 0.3,
 	},
 	X_PreBoss01 = {
 		SkipLastKillPresentation = true,
@@ -158,6 +225,11 @@ local roomModifications = {
 		ShrineMetaUpgradeName = mod.NilValue,
 		LinkedRoomByPactLevel = mod.NilValue,
 		LinkedRooms = { "X_Boss01", "X_Boss02" },
+
+		-- ShovelPointChance = 0.4,
+		PickaxePointChance = 0.4,
+		-- ExorcismPointChance = 0.3,
+		FishingPointChance = 0.3,
 	},
 
 	-- MINIBOSSES
@@ -215,12 +287,24 @@ local roomModifications = {
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		-- We play our own music in this room, don't play any by default
 		IgnoreMusic = true,
+
+		HarvestPointChances = { 0.5, 0.1, },
+		-- ShovelPointChance = 0.4,
+		PickaxePointChance = 0.4,
+		-- ExorcismPointChance = 0.4,
+		FishingPointChance = 0.1,
 	},
 	X_Reprieve01 = {
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "AsphodelEnterRoomPresentation",
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,
 		},
+
+		HarvestPointChances = { 0.6, 0.4, },
+		-- ShovelPointChance = 0.24,
+		PickaxePointChance = 0.36,
+		-- ExorcismPointChance = 0.24,
+		FishingPointChance = 0.18,
 	},
 	X_PostBoss01 = {
 		-- For Intercom
