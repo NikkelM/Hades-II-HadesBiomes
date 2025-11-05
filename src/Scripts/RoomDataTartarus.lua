@@ -309,7 +309,6 @@ local roomModifications = {
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
-		-- TODO: Finish adding chances to all biomes
 		-- ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
 		-- ExorcismPointChance = 0.3,
