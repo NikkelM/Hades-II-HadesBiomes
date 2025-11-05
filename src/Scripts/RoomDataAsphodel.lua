@@ -199,7 +199,7 @@ local roomModifications = {
 		HarvestPointChances = { 0.02, },
 		-- ShovelPointChance = 0.02,
 		PickaxePointChance = 0.02,
-		--ExorcismPointChance = 0.02,
+		ExorcismPointChance = 0.02,
 		FishingPointChance = 0.02,
 	},
 
@@ -212,7 +212,7 @@ local roomModifications = {
 
 		-- ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
-		-- ExorcismPointChance = 0.3,
+		ExorcismPointChance = 0.3,
 		FishingPointChance = 0.3,
 	},
 	X_PreBoss01 = {
@@ -228,7 +228,7 @@ local roomModifications = {
 
 		-- ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
-		-- ExorcismPointChance = 0.3,
+		ExorcismPointChance = 0.3,
 		FishingPointChance = 0.3,
 	},
 
@@ -291,7 +291,7 @@ local roomModifications = {
 		HarvestPointChances = { 0.5, 0.1, },
 		-- ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
-		-- ExorcismPointChance = 0.4,
+		ExorcismPointChance = 0.4,
 		FishingPointChance = 0.1,
 	},
 	X_Reprieve01 = {
@@ -303,7 +303,7 @@ local roomModifications = {
 		HarvestPointChances = { 0.6, 0.4, },
 		-- ShovelPointChance = 0.24,
 		PickaxePointChance = 0.36,
-		-- ExorcismPointChance = 0.24,
+		ExorcismPointChance = 0.24,
 		FishingPointChance = 0.18,
 	},
 	X_PostBoss01 = {

@@ -15,14 +15,8 @@ local roomReplacements = {
 		-- HasHarvestPoint = true,
 		-- HasShovelPoint = true,
 		HasPickaxePoint = true,
-		-- HasExorcismPoint = true,
+		HasExorcismPoint = true,
 		HasFishingPoint = true,
-
-		HarvestPointChances = { 0.30, },
-		-- ShovelPointChance = 0.24,
-		PickaxePointChance = 0.36,
-		-- ExorcismPointChance = 0.24,
-		FishingPointChance = 0.18,
 
 		PickaxePointRequirements = {
 			{
@@ -204,7 +198,7 @@ local roomModifications = {
 		HarvestPointChances = { 0.02, },
 		-- ShovelPointChance = 0.02,
 		PickaxePointChance = 0.02,
-		--ExorcismPointChance = 0.02,
+		ExorcismPointChance = 0.02,
 		FishingPointChance = 0.02,
 	},
 
@@ -218,7 +212,7 @@ local roomModifications = {
 		HarvestPointChances = { 0.75 },
 		-- ShovelPointChance = 0.5,
 		PickaxePointChance = 0.5,
-		-- ExorcismPointChance = 0.5,
+		ExorcismPointChance = 0.5,
 		FishingPointChance = 0.5,
 	},
 	Y_PreBoss01 = {
@@ -231,7 +225,7 @@ local roomModifications = {
 		HarvestPointChances = { 0.33 },
 		-- ShovelPointChance = 0.33,
 		PickaxePointChance = 0.33,
-		-- ExorcismPointChance = 0.33,
+		ExorcismPointChance = 0.33,
 		FishingPointChance = 0.33,
 	},
 
@@ -245,7 +239,7 @@ local roomModifications = {
 
 		-- ShovelPointChance = 0.5,
 		PickaxePointChance = 0.45,
-		-- ExorcismPointChance = 0.40,
+		ExorcismPointChance = 0.40,
 	},
 	Y_MiniBoss02 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
@@ -303,7 +297,7 @@ local roomModifications = {
 		HarvestPointChances = { 0.75 },
 		-- ShovelPointChance = 0.5,
 		PickaxePointChance = 0.5,
-		-- ExorcismPointChance = 0.5,
+		ExorcismPointChance = 0.5,
 		FishingPointChance = 0.5,
 	},
 	Y_Reprieve01 = {

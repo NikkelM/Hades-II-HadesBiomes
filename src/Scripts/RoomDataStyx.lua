@@ -15,14 +15,15 @@ local roomReplacements = {
 		-- HasHarvestPoint = true,
 		-- HasShovelPoint = true,
 		HasPickaxePoint = true,
-		-- HasExorcismPoint = true,
+		HasExorcismPoint = true,
 		HasFishingPoint = true,
 
 		-- Increased chances to make up for them only being eligible in WindEnd rooms
-		-- ShovelPointChance = 0.7,
-		PickaxePointChance = 0.7,
-		-- ExorcismPointChance = 0.7,
-		FishingPointChance = 0.2,
+		HarvestPointChances = { 0.30, },
+		-- ShovelPointChance = 0.24,
+		PickaxePointChance = 0.36,
+		ExorcismPointChance = 0.24,
+		FishingPointChance = 0.18,
 
 		PickaxePointRequirements = {
 			{
