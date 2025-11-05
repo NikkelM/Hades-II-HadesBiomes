@@ -132,6 +132,55 @@ mod.HadesGUIAnimationModifications = {
 		InheritFrom = "ModsNikkelMHadesBiomesLocationTextBGOut",
 		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\VictoryBG\\VictoryBG",
 	},
+	-- #region Resources
+	-- #region Fish
+	Fish_Tartarus_Common_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Tartarus_Common",
+	},
+	Fish_Tartarus_Rare_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Tartarus_Rare",
+	},
+	Fish_Tartarus_Legendary_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Tartarus_Legendary",
+	},
+	Fish_Asphodel_Common_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Asphodel_Common",
+	},
+	Fish_Asphodel_Rare_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Asphodel_Rare",
+	},
+	Fish_Asphodel_Legendary_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Asphodel_Legendary",
+	},
+	Fish_Elysium_Common_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Elysium_Common",
+	},
+	Fish_Elysium_Rare_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Elysium_Rare",
+	},
+	Fish_Elysium_Legendary_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Elysium_Legendary",
+	},
+	Fish_Styx_Common_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Styx_Common",
+	},
+	Fish_Styx_Rare_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Styx_Rare",
+	},
+	Fish_Styx_Legendary_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Styx_Legendary",
+	},
+	Fish_Surface_Common_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Surface_Common",
+	},
+	Fish_Surface_Rare_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Surface_Rare",
+	},
+	Fish_Surface_Legendary_01 = {
+		FilePath = "GUIModded\\Screens\\Resources\\Fish\\Surface_Legendary",
+	},
+	-- #endregion
+	-- #endregion
 }
 
 -- Duplicate GUI animations, saved here due to the animations not being hooked, but copied directly

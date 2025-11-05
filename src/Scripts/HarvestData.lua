@@ -498,3 +498,106 @@ local newBiomeOre = {
 game.PickaxePointData.WeightedOptions = game.ConcatTableValuesIPairs(game.PickaxePointData.WeightedOptions, newBiomeOre)
 
 -- #endregion
+
+-- #region Exorcism
+local newBiomeExorcismData = {
+	-- Tartarus
+	{
+		Weight = 1,
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Tartarus" },
+			},
+		},
+		-- This is custom
+		Animation = "3dGhostIdle",
+		AttemptsRemaining = 2,
+		NumMovesMin = 4,
+		NumMovesMax = 4,
+		MoveDurationMin = 1.5,
+		MoveDurationMax = 2.0,
+		InputCheckInterval = 0.1,
+		TotalCheckFails = 999,
+		ConsecutiveCheckFails = 13,
+		AddResources = {
+			MemPointsCommon = 40,
+		}
+	},
+	-- Asphodel
+	{
+		Weight = 1,
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Asphodel" },
+			},
+		},
+		-- This is custom
+		Animation = "AsphodelGhostIdle",
+		AttemptsRemaining = 2,
+		NumMovesMin = 5,
+		NumMovesMax = 5,
+		MoveDurationMin = 1.0,
+		MoveDurationMax = 1.4,
+		InputCheckInterval = 0.1,
+		TotalCheckFails = 999,
+		ConsecutiveCheckFails = 10,
+		AddResources =		{
+			MemPointsCommon = 50,
+		}
+	},
+	-- Elysium
+	{
+		Weight = 1,
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Elysium" },
+			},
+		},
+		-- This is custom
+		Animation = "ElysiumGhostIdle",
+		AttemptsRemaining = 2,
+		NumMovesMin = 6,
+		NumMovesMax = 6,
+		MoveDurationMin = 0.6,
+		MoveDurationMax = 0.8,
+		InputCheckInterval = 0.1,
+		TotalCheckFails = 999,
+		ConsecutiveCheckFails = 9,
+		AddResources = {
+			MemPointsCommon = 45,
+		}
+	},
+	-- Styx
+	{
+		Weight = 1,
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Styx" },
+			},
+		},
+		-- This is custom
+		Animation = "3dGhostIdle",
+		AttemptsRemaining = 2,
+		NumMovesMin = 7,
+		NumMovesMax = 7,
+		MoveDurationMin = 0.345,
+		MoveDurationMax = 0.460,
+		InputCheckInterval = 0.1,
+		TotalCheckFails = 999,
+		ConsecutiveCheckFails = 8,
+		AddResources = {
+			MemPointsCommon = 55,
+		}
+	},
+}
+game.ExorcismData.WeightedOptions = game.ConcatTableValuesIPairs(game.ExorcismData.WeightedOptions, newBiomeExorcismData)
+
+-- #endregion

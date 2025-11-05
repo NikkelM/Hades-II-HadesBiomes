@@ -15,19 +15,16 @@ local roomReplacements = {
 		-- HasHarvestPoint = true,
 		-- HasShovelPoint = true,
 		HasPickaxePoint = true,
-		-- HasExorcismPoint = true,
+		HasExorcismPoint = true,
 		HasFishingPoint = true,
 
-		-- Increased chances to make up for them only being eligible in WindEnd rooms
-		-- ShovelPointChance = 0.7,
-		PickaxePointChance = 0.7,
-		-- ExorcismPointChance = 0.7,
-		FishingPointChance = 0.2,
+		HarvestPointChances = { 0.30, },
+		-- ShovelPointChance = 0.24,
+		PickaxePointChance = 0.36,
+		ExorcismPointChance = 0.24,
+		FishingPointChance = 0.18,
 
 		PickaxePointRequirements = {
-			{
-				PathTrue = { "CurrentRun", "CurrentRoom", "WingEndRoom" },
-			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
 				Comparison = ">=",
@@ -83,6 +80,73 @@ local roomReplacements = {
 				},
 			},
 		},
+		ExorcismPointRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 2,
+			},
+			{
+				Path = { "GameState", "ExorcisedNames", "ElysiumGhostIdle" },
+				Comparison = ">=",
+				Value = 2,
+			},
+			{
+				SumPrevRooms = 6,
+				Path = { "NumExorcismPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumShovelPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumPickaxePoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumFishingPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					OrRequirements = {
+						{
+							{
+								Path = { "GameState", "LifetimeResourcesGained", "MemPointsCommon" },
+								Comparison = "<=",
+								Value = 1500,
+							},
+						},
+						{
+							{
+								Path = { "GameState", "ExorcisedNames", "3dGhostIdle" },
+								Comparison = "<",
+								Value = 6,
+							},
+						},
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+					{
+						SumPrevRooms = 1,
+						Path = { "NumFishingPoints" },
+						Comparison = "<=",
+						Value = 0,
+					},
+				},
+			},
+		},
 		FishingPointRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
@@ -111,7 +175,6 @@ local roomReplacements = {
 				Comparison = "<=",
 				Value = 0,
 			},
-
 			OrRequirements = {
 				-- collection
 				{
@@ -142,6 +205,7 @@ local roomReplacements = {
 		HasPickaxePoint = false,
 		HasExorcismPoint = false,
 
+		FishingPointChance = 0.30,
 		FishingPointRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
@@ -170,7 +234,6 @@ local roomReplacements = {
 				Comparison = "<=",
 				Value = 0,
 			},
-
 			OrRequirements = {
 				-- collection
 				{
@@ -281,6 +344,12 @@ local roomModifications = {
 	BaseStyxMini = {
 		-- Don't turn off any stems during Styx mini rooms
 		CombatOverMusicEvents = {},
+
+		-- No harvesting in mini rooms
+		HasHarvestPoint = false,
+		HasShovelPoint = false,
+		HasPickaxePoint = false,
+		HasExorcismPoint = false,
 	},
 	BaseStyxWingEnd = {
 		NextRoomEntranceFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesReturnToStyxHubPresentation",

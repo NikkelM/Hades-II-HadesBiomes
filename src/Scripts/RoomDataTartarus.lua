@@ -14,13 +14,8 @@ local roomReplacements = {
 		-- HasHarvestPoint = true,
 		-- HasShovelPoint = true,
 		HasPickaxePoint = true,
-		-- HasExorcismPoint = true,
+		HasExorcismPoint = true,
 		HasFishingPoint = true,
-
-		-- HarvestPointChances = { 0.02, },
-		-- ShovelPointChance = 0.02,
-		PickaxePointChance = 0.02,
-		FishingPointChance = 0.02,
 
 		PickaxePointRequirements = {
 			{
@@ -67,6 +62,73 @@ local roomReplacements = {
 					{
 						SumPrevRooms = 2,
 						Path = { "NumShovelPoints" },
+						Comparison = "<=",
+						Value = 0,
+					},
+				},
+			},
+		},
+		ExorcismPointRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 2,
+			},
+			{
+				Path = { "CurrentRun", "BiomeDepthCache" },
+				Comparison = ">=",
+				Value = 2,
+			},
+			{
+				SumPrevRooms = 6,
+				Path = { "NumExorcismPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumShovelPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumPickaxePoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumFishingPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					OrRequirements = {
+						{
+							{
+								Path = { "GameState", "LifetimeResourcesGained", "MemPointsCommon" },
+								Comparison = "<=",
+								Value = 1500,
+							},
+						},
+						{
+							{
+								Path = { "GameState", "ExorcisedNames", "3dGhostIdle" },
+								Comparison = "<",
+								Value = 2,
+							},
+						},
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+					{
+						SumPrevRooms = 2,
+						Path = { "NumFishingPoints" },
 						Comparison = "<=",
 						Value = 0,
 					},
@@ -311,7 +373,7 @@ local roomModifications = {
 
 		-- ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
-		-- ExorcismPointChance = 0.3,
+		ExorcismPointChance = 0.3,
 		FishingPointChance = 0.3,
 	},
 	A_PreBoss01 = {
@@ -321,7 +383,7 @@ local roomModifications = {
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
-		-- ExorcismPointChance = 0.3,
+		ExorcismPointChance = 0.3,
 		FishingPointChance = 0.3,
 	},
 
@@ -397,7 +459,7 @@ local roomModifications = {
 		HarvestPointChances = { 0.5, 0.1, },
 		-- ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
-		-- ExorcismPointChance = 0.4,
+		ExorcismPointChance = 0.4,
 		FishingPointChance = 0.1,
 	},
 	A_Reprieve01 = {
@@ -408,7 +470,7 @@ local roomModifications = {
 		-- HarvestPointChances = { 0.6, 0.4, },
 		-- ShovelPointChance = 0.24,
 		PickaxePointChance = 0.36,
-		-- ExorcismPointChance = 0.24,
+		ExorcismPointChance = 0.24,
 		FishingPointChance = 0.18,
 	},
 	A_PostBoss01 = {
