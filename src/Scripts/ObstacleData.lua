@@ -126,6 +126,12 @@ local obstacleModifications = {
 	-- },
 	ExorcismPoint = {
 		ModsNikkelMHadesBiomesBreakBreakablesOnPlace = true,
+		ModsNikkelMHadesBiomesScaleFactors = {
+			Tartarus = 0.95,
+			Asphodel = 0.65,
+			Elysium = 0.9,
+			Styx = 0.95,
+		},
 	},
 	-- #endregion
 }

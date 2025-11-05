@@ -32,7 +32,7 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 						local nearbyBreakables = GetClosestIds({
 							Id = obstacle.ObjectId,
 							DestinationIds = GetIdsByType({
-								Names = { "Breakable", "BlastCubeFused", "BlastCubeFusedRegenerating", "TartarusGhost01", "AsphodelGhost01" },
+								Names = { "Breakable", "BreakableAsphodel", "BreakableElysium", "BreakableStyx", "BlastCubeFused", "BlastCubeFusedRegenerating", "TartarusGhost01", "AsphodelGhost01", "ElysiumGhost01" },
 							}),
 							Distance = 65,
 						})
@@ -46,9 +46,14 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 						Group = "Standing",
 					})
 
+					-- Scale down ExorcismPoint ghosts
+					if obstacle.ModsNikkelMHadesBiomesScaleFactors and obstacle.ModsNikkelMHadesBiomesScaleFactors[game.CurrentRun.CurrentRoom.RoomSetName] then
+						SetScale({ Id = obstacle.ObjectId, Fraction = obstacle.ModsNikkelMHadesBiomesScaleFactors[game.CurrentRun.CurrentRoom.RoomSetName] })
+					end
+
 					-- If it is an ExorcismPoint, angle the ghost towards the nearest spawn point
 					if obstacle.Name == "ExorcismPoint" then
-						local nearestSpawnPoint = GetClosest({ Id = obstacle.ObjectId, DestinationNames = "SpawnPoints", Distance = 200 })
+						local nearestSpawnPoint = GetClosest({ Id = obstacle.ObjectId, DestinationNames = "SpawnPoints" }) or game.CurrentRun.Hero.ObjectId
 						AngleTowardTarget({ Id = obstacle.ObjectId, DestinationId = nearestSpawnPoint })
 					end
 				end
