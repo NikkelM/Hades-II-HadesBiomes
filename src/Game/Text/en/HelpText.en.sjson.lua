@@ -23,6 +23,11 @@ local newData = {
 		Id = "Objective_SurvivalTimer",
 		DisplayName = "Survive for: {$RemainingSeconds} Sec.",
 	},
+	-- TODO: Only while the mod is in early access
+	{
+		Id = "ModsNikkelMHadesBiomes_LeaveFeedback",
+		DisplayName = "Please leave feedback and bug reports on Discord in #help-h2 -> Hades run in Hades II",
+	},
 	-- #endregion
 
 	-- #region Button/Use Prompts

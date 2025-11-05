@@ -162,6 +162,15 @@ end)
 
 -- Overriding to add in the logic for the Styx exit doors always having two minibosses
 modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
+	-- TODO: Only while the mod is in early access
+	if run.ModsNikkelMHadesBiomesIsModdedRun then
+		if not game.CurrentRun.ModsNikkelMHadesBiomesHasShownFeedbackMessage then
+			game.CurrentRun.ModsNikkelMHadesBiomesHasShownFeedbackMessage = true
+			game.thread(game.InCombatTextArgs,
+				{ Text = "ModsNikkelMHadesBiomes_LeaveFeedback", TargetId = game.CurrentRun.Hero.ObjectId, SkipRise = true, SkipFlash = true, SkipShadow = true, Duration = 10.0, OffsetY = -160, PreDelay = 1.0 })
+		end
+	end
+
 	if run.ModsNikkelMHadesBiomesIsModdedRun and room.Name == "D_Hub" then
 		return mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	else
