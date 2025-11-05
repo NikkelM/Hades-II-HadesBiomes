@@ -119,14 +119,14 @@ local obstacleModifications = {
 	-- OccupyingSpawnPointId = true,
 	-- },
 	PickaxePoint = {
-		OccupyingSpawnPointId = true,
+		ModsNikkelMHadesBiomesBreakBreakablesOnPlace = true,
 	},
 	-- ShovelPoint = {
 	-- OccupyingSpawnPointId = true,
 	-- },
-	-- ExorcismPoint = {
-	-- OccupyingSpawnPointId = true,
-	-- },
+	ExorcismPoint = {
+		ModsNikkelMHadesBiomesBreakBreakablesOnPlace = true,
+	},
 	-- #endregion
 }
 
