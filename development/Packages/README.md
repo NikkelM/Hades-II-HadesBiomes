@@ -16,7 +16,10 @@ If using the legacy "Any" format, the texture paths will not have any prefix add
 
 The legacy format is a custom hack into deppth2, and not part of the pip package.
 
-In the parent folder of the source folder, run `deppth2 hpk -c BC7 -s NikkelM-HadesBiomesGUIModded_source -t NikkelM-HadesBiomesGUIModded`
+In the parent folder of the source folder:
+For the legacy format, run e.g. `deppth2 hpk -c BC7 -s ModsNikkelMHadesBiomesPortraits_source -t ModsNikkelMHadesBiomesPortraits`.
+
+For the modern format, run e.g. `deppth2 hpk -c BC7 -s NikkelM-HadesBiomesGUIModded_source -t NikkelM-HadesBiomesGUIModded`.
 
 This will create a new package named `NikkelM-NewPackageName.pkg` and the corresponding `NikkelM-NewPackageName.pkg_manifest`.
 

@@ -14,10 +14,72 @@ local roomReplacements = {
 
 		-- HasHarvestPoint = true,
 		-- HasShovelPoint = true,
-		-- HasPickaxePoint = true,
+		HasPickaxePoint = true,
 		-- HasExorcismPoint = true,
-
 		HasFishingPoint = true,
+
+		HarvestPointChances = { 0.30, },
+		-- ShovelPointChance = 0.24,
+		PickaxePointChance = 0.36,
+		-- ExorcismPointChance = 0.24,
+		FishingPointChance = 0.18,
+
+		PickaxePointRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreAsphodel" },
+				Comparison = ">=",
+				Value = 6,
+			},
+			{
+				SumPrevRooms = 4,
+				Path = { "NumPickaxePoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumShovelPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumExorcismPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumFishingPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreElysium" },
+						Comparison = "<",
+						Value = 30,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+					{
+						SumPrevRooms = 2,
+						Path = { "NumShovelPoints" },
+						Comparison = "<=",
+						Value = 0,
+					},
+				},
+			},
+		},
 		FishingPointRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
@@ -138,6 +200,12 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut" }, },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Elysium" } },
 		},
+
+		HarvestPointChances = { 0.02, },
+		-- ShovelPointChance = 0.02,
+		PickaxePointChance = 0.02,
+		--ExorcismPointChance = 0.02,
+		FishingPointChance = 0.02,
 	},
 
 	-- SHOPS
@@ -146,6 +214,12 @@ local roomModifications = {
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
+
+		HarvestPointChances = { 0.75 },
+		-- ShovelPointChance = 0.5,
+		PickaxePointChance = 0.5,
+		-- ExorcismPointChance = 0.5,
+		FishingPointChance = 0.5,
 	},
 	Y_PreBoss01 = {
 		SkipLastKillPresentation = true,
@@ -153,6 +227,12 @@ local roomModifications = {
 		IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
+
+		HarvestPointChances = { 0.33 },
+		-- ShovelPointChance = 0.33,
+		PickaxePointChance = 0.33,
+		-- ExorcismPointChance = 0.33,
+		FishingPointChance = 0.33,
 	},
 
 	-- MINIBOSSES
@@ -162,6 +242,10 @@ local roomModifications = {
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium", },
 		},
+
+		-- ShovelPointChance = 0.5,
+		PickaxePointChance = 0.45,
+		-- ExorcismPointChance = 0.40,
 	},
 	Y_MiniBoss02 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
@@ -211,10 +295,16 @@ local roomModifications = {
 	Y_Story01 = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
-		ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusExitFunctionName",
-		ExitFunctionArgs = {
-			Speed = 300,
-		},
+		-- ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusExitFunctionName",
+		-- ExitFunctionArgs = {
+		-- Speed = 300,
+		-- },
+
+		HarvestPointChances = { 0.75 },
+		-- ShovelPointChance = 0.5,
+		PickaxePointChance = 0.5,
+		-- ExorcismPointChance = 0.5,
+		FishingPointChance = 0.5,
 	},
 	Y_Reprieve01 = {
 		GameStateRequirements = {

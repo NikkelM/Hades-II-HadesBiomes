@@ -423,3 +423,78 @@ local newFishValues = {
 mod.AddTableKeysSkipDupes(game.FishingData.FishValues, newFishValues)
 
 -- #endregion
+
+-- #region Ore/PickaxePoint
+local newBiomeOre = {
+	-- Tartarus
+	{
+		Weight = 1,
+		MaxHealth = 3,
+		ResourceName = "ModsNikkelMHadesBiomes_OreTartarus",
+		SwingDamage = 1,
+		UnavailableAnimation = "PickaxePoint_ModsNikkelMHadesBiomes_OreTartarus_Unavailable",
+		Animation = "PickaxePoint_ModsNikkelMHadesBiomes_OreTartarus",
+		EmptyAnimation = "PickaxePoint_ModsNikkelMHadesBiomes_OreTartarus_Empty",
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Tartarus", },
+			},
+		},
+	},
+	-- Asphodel
+	{
+		Weight = 1,
+		MaxHealth = 3,
+		ResourceName = "ModsNikkelMHadesBiomes_OreAsphodel",
+		SwingDamage = 1,
+		UnavailableAnimation = "PickaxePoint_ModsNikkelMHadesBiomes_OreAsphodel_Unavailable",
+		Animation = "PickaxePoint_ModsNikkelMHadesBiomes_OreAsphodel",
+		EmptyAnimation = "PickaxePoint_ModsNikkelMHadesBiomes_OreAsphodel_Empty",
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Asphodel", },
+			},
+		},
+	},
+	-- Elysium
+	{
+		Weight = 1,
+		MaxHealth = 3,
+		ResourceName = "ModsNikkelMHadesBiomes_OreElysium",
+		SwingDamage = 1,
+		UnavailableAnimation = "PickaxePoint_ModsNikkelMHadesBiomes_OreElysium_Unavailable",
+		Animation = "PickaxePoint_ModsNikkelMHadesBiomes_OreElysium",
+		EmptyAnimation = "PickaxePoint_ModsNikkelMHadesBiomes_OreElysium_Empty",
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Elysium", },
+			},
+		},
+	},
+	-- Styx
+	{
+		Weight = 1,
+		MaxHealth = 3,
+		ResourceName = "ModsNikkelMHadesBiomes_OreStyx",
+		SwingDamage = 1,
+		UnavailableAnimation = "PickaxePoint_ModsNikkelMHadesBiomes_OreStyx_Unavailable",
+		Animation = "PickaxePoint_ModsNikkelMHadesBiomes_OreStyx",
+		EmptyAnimation = "PickaxePoint_ModsNikkelMHadesBiomes_OreStyx_Empty",
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Styx", },
+			},
+		},
+	},
+}
+game.PickaxePointData.WeightedOptions = game.ConcatTableValuesIPairs(game.PickaxePointData.WeightedOptions, newBiomeOre)
+
+-- #endregion

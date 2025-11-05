@@ -14,10 +14,75 @@ local roomReplacements = {
 
 		-- HasHarvestPoint = true,
 		-- HasShovelPoint = true,
-		-- HasPickaxePoint = true,
+		HasPickaxePoint = true,
 		-- HasExorcismPoint = true,
-
 		HasFishingPoint = true,
+
+		-- Increased chances to make up for them only being eligible in WindEnd rooms
+		-- ShovelPointChance = 0.7,
+		PickaxePointChance = 0.7,
+		-- ExorcismPointChance = 0.7,
+		FishingPointChance = 0.2,
+
+		PickaxePointRequirements = {
+			{
+				PathTrue = { "CurrentRun", "CurrentRoom", "WingEndRoom" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreElysium" },
+				Comparison = ">=",
+				Value = 6,
+			},
+			{
+				SumPrevRooms = 5,
+				Path = { "NumPickaxePoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumShovelPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumExorcismPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumFishingPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreStyx" },
+						Comparison = "<",
+						Value = 24,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+					{
+						SumPrevRooms = 2,
+						Path = { "NumShovelPoints" },
+						Comparison = "<=",
+						Value = 0,
+					},
+				},
+			},
+		},
 		FishingPointRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
@@ -71,6 +136,11 @@ local roomReplacements = {
 
 	D_Hub = {
 		Binks = { "Cerberus_HubIdle_Bink", },
+
+		HasHarvestPoint = false,
+		HasShovelPoint = false,
+		HasPickaxePoint = false,
+		HasExorcismPoint = false,
 
 		FishingPointRequirements = {
 			{
@@ -373,6 +443,8 @@ local roomModifications = {
 		-- This is Zagreus speaking, replace with Melinoe
 		EnterVoiceLines = mod.NilValue,
 		EnterGlobalVoiceLines = "EnteredReprieveRoomVoiceLines",
+
+		HarvestPointChances = { 0.7, 0.3, },
 	},
 }
 

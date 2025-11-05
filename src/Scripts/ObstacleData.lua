@@ -113,6 +113,21 @@ local obstacleModifications = {
 
 	-- #region STYX
 	-- #endregion
+
+	-- #region Resource Points
+	-- HarvestPoint = {
+	-- OccupyingSpawnPointId = true,
+	-- },
+	PickaxePoint = {
+		ModsNikkelMHadesBiomesBreakBreakablesOnPlace = true,
+	},
+	-- ShovelPoint = {
+	-- OccupyingSpawnPointId = true,
+	-- },
+	ExorcismPoint = {
+		ModsNikkelMHadesBiomesBreakBreakablesOnPlace = true,
+	},
+	-- #endregion
 }
 
 local addedObstacles = {

@@ -5,10 +5,10 @@ local roomReplacements = {
 	BaseSurface = {
 		RoomSetName = "Surface",
 
-		-- HasHarvestPoint = true,
-		-- HasShovelPoint = true,
-		-- HasPickaxePoint = true,
-		-- HasExorcismPoint = true,
+		HasHarvestPoint = false,
+		HasShovelPoint = false,
+		HasPickaxePoint = false,
+		HasExorcismPoint = false,
 
 		HasFishingPoint = true,
 		FishingPointRequirements = {

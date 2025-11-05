@@ -13,10 +13,66 @@ local roomReplacements = {
 
 		-- HasHarvestPoint = true,
 		-- HasShovelPoint = true,
-		-- HasPickaxePoint = true,
+		HasPickaxePoint = true,
 		-- HasExorcismPoint = true,
-
 		HasFishingPoint = true,
+
+		-- HarvestPointChances = { 0.02, },
+		-- ShovelPointChance = 0.02,
+		PickaxePointChance = 0.02,
+		FishingPointChance = 0.02,
+
+		PickaxePointRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				SumPrevRooms = 4,
+				Path = { "NumPickaxePoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumShovelPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumExorcismPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 1,
+				Path = { "NumFishingPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreTartarus" },
+						Comparison = "<",
+						Value = 62,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+					{
+						SumPrevRooms = 2,
+						Path = { "NumShovelPoints" },
+						Comparison = "<=",
+						Value = 0,
+					},
+				},
+			},
+		},
 		FishingPointRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
@@ -45,7 +101,6 @@ local roomReplacements = {
 				Comparison = "<=",
 				Value = 0,
 			},
-
 			OrRequirements = {
 				-- collection
 				{
@@ -253,6 +308,11 @@ local roomModifications = {
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
+
+		-- ShovelPointChance = 0.4,
+		PickaxePointChance = 0.4,
+		-- ExorcismPointChance = 0.3,
+		FishingPointChance = 0.3,
 	},
 	A_PreBoss01 = {
 		SkipLastKillPresentation = true,
@@ -260,6 +320,9 @@ local roomModifications = {
 		IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
+
+		-- ExorcismPointChance = 0.3,
+		FishingPointChance = 0.3,
 	},
 
 	-- MINIBOSSES
@@ -298,6 +361,11 @@ local roomModifications = {
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		BackupCauseOfDeath = "Harpy",
+
+		HasFishingPoint = false,
+		-- ShovelPointChance = 0.4,
+		PickaxePointChance = 0.4,
 	},
 	A_Boss02 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
@@ -325,11 +393,23 @@ local roomModifications = {
 		},
 		LoadModdedVoiceBanks = { "Sisyphus", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
+
+		HarvestPointChances = { 0.5, 0.1, },
+		-- ShovelPointChance = 0.4,
+		PickaxePointChance = 0.4,
+		-- ExorcismPointChance = 0.4,
+		FishingPointChance = 0.1,
 	},
 	A_Reprieve01 = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,
 		},
+
+		-- HarvestPointChances = { 0.6, 0.4, },
+		-- ShovelPointChance = 0.24,
+		PickaxePointChance = 0.36,
+		-- ExorcismPointChance = 0.24,
+		FishingPointChance = 0.18,
 	},
 	A_PostBoss01 = {
 		-- For Intercom
