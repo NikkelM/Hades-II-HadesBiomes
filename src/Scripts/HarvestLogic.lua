@@ -47,13 +47,17 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 					})
 
 					-- Scale down ExorcismPoint ghosts
-					if obstacle.ModsNikkelMHadesBiomesScaleFactors and obstacle.ModsNikkelMHadesBiomesScaleFactors[game.CurrentRun.CurrentRoom.RoomSetName] then
-						SetScale({ Id = obstacle.ObjectId, Fraction = obstacle.ModsNikkelMHadesBiomesScaleFactors[game.CurrentRun.CurrentRoom.RoomSetName] })
+					if obstacle.ModsNikkelMHadesBiomesScaleFactors and obstacle.ModsNikkelMHadesBiomesScaleFactors[obstacle.Animation] then
+						SetScale({
+							Id = obstacle.ObjectId,
+							Fraction = obstacle.ModsNikkelMHadesBiomesScaleFactors[obstacle.Animation]
+						})
 					end
 
 					-- If it is an ExorcismPoint, angle the ghost towards the nearest spawn point
 					if obstacle.Name == "ExorcismPoint" then
-						local nearestSpawnPoint = GetClosest({ Id = obstacle.ObjectId, DestinationNames = "SpawnPoints" }) or game.CurrentRun.Hero.ObjectId
+						local nearestSpawnPoint = GetClosest({ Id = obstacle.ObjectId, DestinationNames = "SpawnPoints" }) or
+								game.CurrentRun.Hero.ObjectId
 						AngleTowardTarget({ Id = obstacle.ObjectId, DestinationId = nearestSpawnPoint })
 					end
 				end

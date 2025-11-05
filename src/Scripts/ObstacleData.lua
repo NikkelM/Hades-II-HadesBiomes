@@ -127,10 +127,20 @@ local obstacleModifications = {
 	ExorcismPoint = {
 		ModsNikkelMHadesBiomesBreakBreakablesOnPlace = true,
 		ModsNikkelMHadesBiomesScaleFactors = {
-			Tartarus = 0.95,
-			Asphodel = 0.65,
-			Elysium = 0.9,
-			Styx = 0.95,
+			["3dGhostIdle"] = 0.9,
+			AsphodelGhostIdle = 0.65,
+			ElysiumGhostIdle = 0.85,
+		},
+	},
+	GhostRecruit = {
+		ModsNikkelMHadesBiomesLoadPackages = {
+			AsphodelGhostIdle = "AsphodelModsNikkelMHadesBiomes",
+			ElysiumGhostIdle = "ElysiumModsNikkelMHadesBiomes",
+		},
+		ModsNikkelMHadesBiomesScaleFactors = {
+			["3dGhostIdle"] = 0.9,
+			AsphodelGhostIdle = 0.65,
+			ElysiumGhostIdle = 0.85,
 		},
 	},
 	-- #endregion

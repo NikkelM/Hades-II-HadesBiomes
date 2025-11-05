@@ -302,6 +302,7 @@ local function on_ready()
 		import "Scripts/EnemyAILogic.lua"
 		import "Scripts/EncounterLogic.lua"
 		import "Scripts/EventPresentation.lua"
+		import "Scripts/GhostLogic.lua"
 		import "Scripts/HarvestLogic.lua"
 		import "Scripts/HubPresentation.lua"
 		import "Scripts/NarrativeData.lua"
