@@ -5,12 +5,18 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 		modutil.mod.Path.Wrap("GetInactiveIdsByType", function(base, args)
 			if args.Name == "PickaxePoint" or args.Name == "ExorcismPoint" then
 				-- Using Breakables to place the pickaxe and exorcism points in the corners and along walls instead of in the middle of the room
-				local eligibleIds = GetIdsByType({ Names = { "Breakable", "BreakableAsphodel", "BreakableElysium", "BreakableStyx" } }) or
-						-- Otherwise, fallback to enemy, points, giving priority to those more likely on the sides of the map
-						GetIdsByType({ Names = { "EnemyPointRanged", "EnemyPointSupport" } }) or
-						GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee" } }) or
-						-- If none are found, fallback to Ghost spawn points
-						GetIdsByType({ Names = { "TartarusGhost01", "AsphodelGhost01" } }) or {}
+				local eligibleIds = GetIdsByType({ Names = { "Breakable", "BreakableAsphodel", "BreakableElysium", "BreakableStyx" } })
+				-- Otherwise, fallback to enemy points, giving priority to those more likely on the sides of the map
+				if not eligibleIds or #eligibleIds == 0 then
+					eligibleIds = GetIdsByType({ Names = { "EnemyPointRanged", "EnemyPointSupport" } })
+				end
+				if not eligibleIds or #eligibleIds == 0 then
+					eligibleIds = GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee" } })
+				end
+				if not eligibleIds or #eligibleIds == 0 then
+					eligibleIds = GetIdsByType({ Names = { "TartarusGhost01", "AsphodelGhost01" } }) or {}
+				end
+
 				if args.Name == "ExorcismPoint" then
 					-- If we already chose PickaxePoints, remove those Ids from the eligible ExorcismPoint Ids to not overlap
 					if currentRoom.PickaxePointChoices then
@@ -29,8 +35,15 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 				end
 				return eligibleIds
 			elseif args.Name == "HarvestPoint" or args.Name == "ShovelPoint" then
-				local eligibleIds = GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee", "EnemyPointRanged", "EnemyPointSupport", } }) or
-						GetIdsByType({ Names = { "Breakable", "BreakableAsphodel", "BreakableElysium", "BreakableStyx" } }) or {}
+				local eligibleIds = GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee", "EnemyPointRanged", "EnemyPointSupport", } })
+				if not eligibleIds or #eligibleIds == 0 then
+					eligibleIds = GetIdsByType({ Names = { "Breakable", "BreakableAsphodel", "BreakableElysium", "BreakableStyx" } }) or
+							{}
+				end
+				if not eligibleIds or #eligibleIds == 0 then
+					eligibleIds = GetIdsByType({ Names = { "TartarusGhost01", "AsphodelGhost01" } }) or {}
+				end
+
 				if args.Name == "ShovelPoint" then
 					-- If we already chose HarvestPoints, remove those Ids from the eligible ShovelPoint Ids to not overlap
 					if currentRoom.HarvestPointChoicesIds then

@@ -116,12 +116,14 @@ local obstacleModifications = {
 
 	-- #region Resource Points
 	HarvestPoint = {
+		ModsNikkelMHadesBiomesBreakBreakablesOnPlace = true,
 		ModsNikkelMHadesBiomesOccupySpawnPointId = true,
 	},
 	PickaxePoint = {
 		ModsNikkelMHadesBiomesBreakBreakablesOnPlace = true,
 	},
 	ShovelPoint = {
+		ModsNikkelMHadesBiomesBreakBreakablesOnPlace = true,
 		ModsNikkelMHadesBiomesOccupySpawnPointId = true,
 	},
 	ExorcismPoint = {
@@ -376,6 +378,8 @@ local addedObstacles = {
 				{ Cue = "/VO/ZagreusField_4203", RequiredPlayed = { "/VO/ZagreusField_2086" } },
 			},
 		},
+		-- Custom: To prevent Melinoe from thanking Charon for the shop
+		ExitVoiceLines = {},
 	},
 	-- Styx: Exit from D_Boss01 to end
 	FinalBossExitDoor = {
