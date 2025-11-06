@@ -652,6 +652,210 @@ local newData = {
 	-- },
 	-- #endregion
 	-- #endregion
+	-- #region Seeds/ShovelPoint
+	-- #region Tartarus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedTartarus",
+	-- 	DisplayName = "Deathcap Spores",
+	-- 	Description =
+	-- 	"In {$GardenData.Seeds.ModsNikkelMHadesBiomes_SeedTartarus.GrowTimeMax}{!Icons.Clock}, grow into hearty funghi.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedTartarus_Short",
+	-- 	DisplayName = "D·Spores",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedTartarus_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_SeedTartarus",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_SeedTartarus_Icon} Deathcap Spores",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedTartarus_Details",
+	-- 	Description =
+	-- 	"· Found using the {!Icons.ToolShovelIcon} {$WeaponShopItemData.ToolShovel.Name} on {$Keywords.DiggingPointPlural} in {#BoldFormat}Tartarus (Nightmare){#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedTartarus_Flavor",
+	-- 	Description = "It should surprise no one that this mushroom's spores find their way even into Tartarus.",
+	-- },
+	-- #endregion
+	-- #region Asphodel
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedAsphodel",
+	-- 	DisplayName = "Ash Flower Seeds",
+	-- 	Description =
+	-- 	"In {$GardenData.Seeds.ModsNikkelMHadesBiomes_SeedAsphodel.GrowTimeMax}{!Icons.Clock}, grow into warming petals.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedAsphodel_Short",
+	-- 	DisplayName = "Ash·Seeds",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedAsphodel_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_SeedAsphodel",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_SeedAsphodel_Icon} Ash Flower Seeds",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedAsphodel_Details",
+	-- 	Description =
+	-- 	"· Found using the {!Icons.ToolShovelIcon} {$WeaponShopItemData.ToolShovel.Name} on {$Keywords.DiggingPointPlural} in {#BoldFormat}Asphodel (Nightmare){#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedAsphodel_Flavor",
+	-- 	Description = "The constant cycle of fire and ash leaves behind only the most resilient shells.",
+	-- },
+	-- #endregion
+	-- #region Elysium
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedElysium",
+	-- 	DisplayName = "Rose Quartz Buds",
+	-- 	Description =
+	-- 	"In {$GardenData.Seeds.ModsNikkelMHadesBiomes_SeedElysium.GrowTimeMax}{!Icons.Clock}, grow into frozen beauty.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedElysium_Short",
+	-- 	DisplayName = "Rose·Buds",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedElysium_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_SeedElysium",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_SeedElysium_Icon} Rose Quartz Buds",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedElysium_Details",
+	-- 	Description =
+	-- 	"· Found using the {!Icons.ToolShovelIcon} {$WeaponShopItemData.ToolShovel.Name} on {$Keywords.DiggingPointPlural} in {#BoldFormat}Elysium (Nightmare){#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedElysium_Flavor",
+	-- 	Description = "Though delicate in appearance, these buds are as tough as the heroes of Elysium themselves.",
+	-- },
+	-- #endregion
+	-- #region Styx
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedStyx",
+	-- 	DisplayName = "Pumpkin Seeds",
+	-- 	Description =
+	-- 	"In {$GardenData.Seeds.ModsNikkelMHadesBiomes_SeedStyx.GrowTimeMax}{!Icons.Clock}, grow into golden gourds.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedStyx_Short",
+	-- 	DisplayName = "P·Seeds",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedStyx_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_SeedStyx",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_SeedStyx_Icon} Pumpkin Seeds",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedStyx_Details",
+	-- 	Description =
+	-- 	"· Found using the {!Icons.ToolShovelIcon} {$WeaponShopItemData.ToolShovel.Name} on {$Keywords.DiggingPointPlural} in {#BoldFormat}Styx (Nightmare){#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SeedStyx_Flavor",
+	-- 	Description = "Every witch needs a jar of these seeds stashed away for a rainy day.",
+	-- },
+	-- #endregion
+	-- #endregion
+	-- #region Crops/Garden
+	-- #region Tartarus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropTartarus",
+	-- 	DisplayName = "Deathcap",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropTartarus_Short",
+	-- 	DisplayName = "Deathcap",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropTartarus_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_CropTartarus",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_CropTartarus_Icon} Deathcap",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropTartarus_Details",
+	-- 	Description = "· Grown in the {#BoldFormat}Crossroads {#Prev}using {$ResourceData.ModsNikkelMHadesBiomes_SeedTartarus.Name}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropTartarus_Flavor",
+	-- 	Description = "Having once grown on the Surface, this mushroom has now adapted to lowest depths of the Underworld as well.",
+	-- },
+	-- #endregion
+	-- #region Asphodel
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropAsphodel",
+	-- 	DisplayName = "Ash Flower",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropAsphodel_Short",
+	-- 	DisplayName = "Ash Flower",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropAsphodel_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_CropAsphodel",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_CropAsphodel_Icon} Ash Flower",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropAsphodel_Details",
+	-- 	Description = "· Grown in the {#BoldFormat}Crossroads {#Prev}using {$ResourceData.ModsNikkelMHadesBiomes_SeedAsphodel.Name}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropAsphodel_Flavor",
+	-- 	Description = "As everything in Asphodel, even the flora has adapted to thrive in extreme heat.",
+	-- },
+	-- #endregion
+	-- #region Elysium
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropElysium",
+	-- 	DisplayName = "Rose Quartz",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropElysium_Short",
+	-- 	DisplayName = "Rose Quartz",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropElysium_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_CropElysium",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_CropElysium_Icon} Rose Quartz",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropElysium_Details",
+	-- 	Description = "· Grown in the {#BoldFormat}Crossroads {#Prev}using {$ResourceData.ModsNikkelMHadesBiomes_SeedElysium.Name}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropElysium_Flavor",
+	-- 	Description = "A curious mix of plant and crystal, this flower radiates warmth and hope.",
+	-- },
+	-- #endregion
+	-- #region Styx
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropStyx",
+	-- 	DisplayName = "Pumpkin",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropStyx_Short",
+	-- 	DisplayName = "Pumpkin",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropStyx_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_CropStyx",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_CropStyx_Icon} Pumpkin",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropStyx_Details",
+	-- 	Description = "· Grown in the {#BoldFormat}Crossroads {#Prev}using {$ResourceData.ModsNikkelMHadesBiomes_SeedStyx.Name}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CropStyx_Flavor",
+	-- 	Description = "The most sturdy of gourds can find their way into those chambers of Styx nearest the surface.",
+	-- },
+	-- #endregion
+	-- #endregion
 	-- #endregion
 }
 
