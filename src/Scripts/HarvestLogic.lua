@@ -12,7 +12,8 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 						-- If none are found, fallback to Ghost spawn points
 						GetIdsByType({ Names = { "TartarusGhost01", "AsphodelGhost01" } })
 			elseif args.Name == "HarvestPoint" or args.Name == "ShovelPoint" then
-				return GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee", "EnemyPointRanged", "EnemyPointSupport", } })
+				return GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee", "EnemyPointRanged", "EnemyPointSupport", } }) or
+						GetIdsByType({ Names = { "Breakable", "BreakableAsphodel", "BreakableElysium", "BreakableStyx" } })
 			end
 
 			return base(args)
