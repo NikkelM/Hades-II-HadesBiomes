@@ -115,6 +115,66 @@ local addAnimations = {
 		VisualFx = "null",
 	},
 	-- #endregion
+	-- #region Plants/HarvestPoint
+	HarvestPoint_ModsNikkelMHadesBiomes_PlantTartarus = {
+		Name = "HarvestPoint_ModsNikkelMHadesBiomes_PlantTartarus",
+		InheritFrom = "HarvestPoint",
+		FilePath = "GUIModded\\Screens\\Resources\\Plants\\PlantTartarusUnharvested",
+		OffsetY = 0.0,
+		Scale = 0.4,
+	},
+	HarvestPoint_ModsNikkelMHadesBiomes_PlantTartarus_Used = {
+		Name = "HarvestPoint_ModsNikkelMHadesBiomes_PlantTartarus_Used",
+		InheritFrom = "HarvestPointUsed",
+		FilePath = "GUIModded\\Screens\\Resources\\Plants\\PlantTartarusHarvested",
+		OffsetY = 0.0,
+		Scale = 0.4,
+		ClearCreateAnimations = true,
+	},
+	HarvestPoint_ModsNikkelMHadesBiomes_PlantAsphodel = {
+		Name = "HarvestPoint_ModsNikkelMHadesBiomes_PlantAsphodel",
+		InheritFrom = "HarvestPoint",
+		FilePath = "GUIModded\\Screens\\Resources\\Plants\\PlantAsphodelUnharvested",
+		OffsetY = 0.0,
+		Scale = 0.4,
+	},
+	HarvestPoint_ModsNikkelMHadesBiomes_PlantAsphodel_Used = {
+		Name = "HarvestPoint_ModsNikkelMHadesBiomes_PlantAsphodel_Used",
+		InheritFrom = "HarvestPointUsed",
+		FilePath = "GUIModded\\Screens\\Resources\\Plants\\PlantAsphodelHarvested",
+		OffsetY = 0.0,
+		Scale = 0.4,
+		ClearCreateAnimations = true,
+	},
+	HarvestPoint_ModsNikkelMHadesBiomes_PlantElysium = {
+		Name = "HarvestPoint_ModsNikkelMHadesBiomes_PlantElysium",
+		InheritFrom = "HarvestPoint",
+		FilePath = "GUIModded\\Screens\\Resources\\Plants\\PlantElysiumUnharvested",
+		OffsetY = 0.0,
+		Scale = 0.4,
+	},
+	HarvestPoint_ModsNikkelMHadesBiomes_PlantElysium_Used = {
+		Name = "HarvestPoint_ModsNikkelMHadesBiomes_PlantElysium_Used",
+		InheritFrom = "HarvestPointUsed",
+		FilePath = "GUIModded\\Screens\\Resources\\Plants\\PlantElysiumHarvested",
+		OffsetY = 0.0,
+		Scale = 0.4,
+	},
+	HarvestPoint_ModsNikkelMHadesBiomes_PlantStyx = {
+		Name = "HarvestPoint_ModsNikkelMHadesBiomes_PlantStyx",
+		InheritFrom = "HarvestPoint",
+		FilePath = "GUIModded\\Screens\\Resources\\Plants\\PlantStyxUnharvested",
+		OffsetY = 0.0,
+		Scale = 0.4,
+	},
+	HarvestPoint_ModsNikkelMHadesBiomes_PlantStyx_Used = {
+		Name = "HarvestPoint_ModsNikkelMHadesBiomes_PlantStyx_Used",
+		InheritFrom = "HarvestPointUsed",
+		FilePath = "GUIModded\\Screens\\Resources\\Plants\\PlantStyxHarvested",
+		OffsetY = 0.0,
+		Scale = 0.4,
+	},
+	-- #endregion
 }
 
 sjson.hook(hadesTwoItemsHarvestVfxFile, function(data)

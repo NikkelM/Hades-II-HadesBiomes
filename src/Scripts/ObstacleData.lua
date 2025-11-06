@@ -115,14 +115,14 @@ local obstacleModifications = {
 	-- #endregion
 
 	-- #region Resource Points
-	-- HarvestPoint = {
-	-- OccupyingSpawnPointId = true,
-	-- },
+	HarvestPoint = {
+		ModsNikkelMHadesBiomesOccupySpawnPointId = true,
+	},
 	PickaxePoint = {
 		ModsNikkelMHadesBiomesBreakBreakablesOnPlace = true,
 	},
 	-- ShovelPoint = {
-	-- OccupyingSpawnPointId = true,
+	-- ModsNikkelMHadesBiomesOccupySpawnPointId = true,
 	-- },
 	ExorcismPoint = {
 		ModsNikkelMHadesBiomesBreakBreakablesOnPlace = true,

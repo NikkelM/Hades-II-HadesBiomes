@@ -143,10 +143,53 @@ local newOreData = {
 mod.AddTableKeysSkipDupes(game.ResourceData, newOreData)
 -- #endregion
 
+-- #region Plants/HarvestPoint
+local newPlantData = {
+	ModsNikkelMHadesBiomes_PlantTartarus = {
+		InheritFrom = { "BaseResource", "BasePlant" },
+		IconPath = "GUIModded\\Screens\\Resources\\Plants\\PlantTartarus",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Plants\\PlantTartarus_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_PlantTartarus_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_PlantTartarus_Short",
+		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+	},
+	ModsNikkelMHadesBiomes_PlantAsphodel = {
+		InheritFrom = { "BaseResource", "BasePlant" },
+		IconPath = "GUIModded\\Screens\\Resources\\Plants\\PlantAsphodel",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Plants\\PlantAsphodel_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_PlantAsphodel_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_PlantAsphodel_Short",
+		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+	},
+	ModsNikkelMHadesBiomes_PlantElysium = {
+		InheritFrom = { "BaseResource", "BasePlant" },
+		IconPath = "GUIModded\\Screens\\Resources\\Plants\\PlantElysium",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Plants\\PlantElysium_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_PlantElysium_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_PlantElysium_Short",
+		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+	},
+	ModsNikkelMHadesBiomes_PlantStyx = {
+		InheritFrom = { "BaseResource", "BasePlant" },
+		IconPath = "GUIModded\\Screens\\Resources\\Plants\\PlantStyx",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Plants\\PlantStyx_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_PlantStyx_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_PlantStyx_Short",
+		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+	},
+}
+mod.AddTableKeysSkipDupes(game.ResourceData, newPlantData)
+-- #endregion
+
 -- #region All
 -- The category tab in the inventory containing all new resources
--- Order should be Plant, Seed, Harvest, Ore, Fish
+-- Order should be Plants, Seed, Harvest, Ore, Fish
 local moddedResourcesInventoryOrder = {
+	-- Plants
+	"ModsNikkelMHadesBiomes_PlantTartarus",
+	"ModsNikkelMHadesBiomes_PlantAsphodel",
+	"ModsNikkelMHadesBiomes_PlantElysium",
+	"ModsNikkelMHadesBiomes_PlantStyx",
 	-- Ore
 	"ModsNikkelMHadesBiomes_OreTartarus",
 	"ModsNikkelMHadesBiomes_OreAsphodel",
@@ -189,27 +232,31 @@ table.insert(game.ScreenData.InventoryScreen.ItemCategories, 5, newModdedInvento
 
 -- The order in which resources are shown in cost menus when buying things
 -- In Hades II, this is each resource for a region after another, then the next region
--- Order should be Plant, Seed, Harvest, Ore, Fish
+-- Order should be Plants, Seed, Harvest, Ore, Fish
 local newResourceDisplayOrderData = {
 	-- #region Tartarus
+	"ModsNikkelMHadesBiomes_PlantTartarus",
 	"ModsNikkelMHadesBiomes_OreTartarus",
 	"Fish_Tartarus_Common_01",
 	"Fish_Tartarus_Rare_01",
 	"Fish_Tartarus_Legendary_01",
 	-- #endregion
 	-- #region Asphodel
+	"ModsNikkelMHadesBiomes_PlantAsphodel",
 	"ModsNikkelMHadesBiomes_OreAsphodel",
 	"Fish_Asphodel_Common_01",
 	"Fish_Asphodel_Rare_01",
 	"Fish_Asphodel_Legendary_01",
 	-- #endregion
 	-- #region Elysium
+	"ModsNikkelMHadesBiomes_PlantElysium",
 	"ModsNikkelMHadesBiomes_OreElysium",
 	"Fish_Elysium_Common_01",
 	"Fish_Elysium_Rare_01",
 	"Fish_Elysium_Legendary_01",
 	-- #endregion
 	-- #region Styx
+	"ModsNikkelMHadesBiomes_PlantStyx",
 	"ModsNikkelMHadesBiomes_OreStyx",
 	"Fish_Styx_Common_01",
 	"Fish_Styx_Rare_01",

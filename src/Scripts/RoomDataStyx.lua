@@ -12,7 +12,7 @@ local roomReplacements = {
 		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
 		ShrinePointDoorRequirements = { Skip = true },
 
-		-- HasHarvestPoint = true,
+		HasHarvestPoint = true,
 		-- HasShovelPoint = true,
 		HasPickaxePoint = true,
 		HasExorcismPoint = true,
@@ -24,6 +24,28 @@ local roomReplacements = {
 		ExorcismPointChance = 0.24,
 		FishingPointChance = 0.18,
 
+		HarvestPointRequirements = {
+			{
+				SumPrevRooms = 5,
+				Path = { "NumHarvestPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_PlantStyx" },
+						Comparison = "<",
+						Value = 16,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
 		PickaxePointRequirements = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
@@ -33,7 +55,7 @@ local roomReplacements = {
 			{
 				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreElysium" },
 				Comparison = ">=",
-				Value = 6,
+				Value = 5,
 			},
 			{
 				SumPrevRooms = 5,
@@ -65,7 +87,7 @@ local roomReplacements = {
 					{
 						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreStyx" },
 						Comparison = "<",
-						Value = 24,
+						Value = 8,
 					},
 				},
 				-- accumulation
@@ -514,6 +536,48 @@ local roomModifications = {
 		EnterGlobalVoiceLines = "EnteredReprieveRoomVoiceLines",
 
 		HarvestPointChances = { 0.7, 0.3, },
+		HarvestPointRequirements = {
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_PlantStyx" },
+						Comparison = "<",
+						Value = 16,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
+		PickaxePointRequirements = {
+			{
+				Path = { "GameState", "CompletedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreElysium" },
+				Comparison = ">=",
+				Value = 5,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreStyx" },
+						Comparison = "<",
+						Value = 8,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
 	},
 }
 

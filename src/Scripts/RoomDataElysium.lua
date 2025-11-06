@@ -12,12 +12,34 @@ local roomReplacements = {
 		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
 		ShrinePointDoorRequirements = { Skip = true },
 
-		-- HasHarvestPoint = true,
+		HasHarvestPoint = true,
 		-- HasShovelPoint = true,
 		HasPickaxePoint = true,
 		HasExorcismPoint = true,
 		HasFishingPoint = true,
 
+		HarvestPointRequirements = {
+			{
+				SumPrevRooms = 3,
+				Path = { "NumHarvestPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_PlantElysium" },
+						Comparison = "<",
+						Value = 8,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
 		PickaxePointRequirements = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
@@ -59,7 +81,7 @@ local roomReplacements = {
 					{
 						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreElysium" },
 						Comparison = "<",
-						Value = 30,
+						Value = 10,
 					},
 				},
 				-- accumulation
@@ -361,16 +383,55 @@ local roomModifications = {
 	Y_Story01 = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
-		-- ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusExitFunctionName",
-		-- ExitFunctionArgs = {
-		-- Speed = 300,
-		-- },
 
 		HarvestPointChances = { 0.75 },
 		-- ShovelPointChance = 0.5,
 		PickaxePointChance = 0.5,
 		ExorcismPointChance = 0.5,
 		FishingPointChance = 0.5,
+
+		HarvestPointRequirements = {
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_PlantElysium" },
+						Comparison = "<",
+						Value = 8,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
+		PickaxePointRequirements = {
+			{
+				Path = { "GameState", "CompletedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreAsphodel" },
+				Comparison = ">=",
+				Value = 6,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreElysium" },
+						Comparison = "<",
+						Value = 10,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
 	},
 	Y_Reprieve01 = {
 		GameStateRequirements = {
