@@ -182,20 +182,22 @@ mod.AddTableKeysSkipDupes(game.ResourceData, newPlantData)
 -- #endregion
 
 -- #region All
--- The category tab in the inventory containing all new resources
--- Order should be Plants, Seed, Harvest, Ore, Fish
-local moddedResourcesInventoryOrder = {
-	-- Plants
+-- The order in which resources are shown in cost menus when buying things, and the order of the items in the new inventory tab
+-- In Hades II, this is each resource for a region after another, then the next region
+-- Order should be Plant, Seed, Harvest, Ore. We move the fish to the end as there are a lot of them
+local newResourceDisplayOrderData = {
 	"ModsNikkelMHadesBiomes_PlantTartarus",
-	"ModsNikkelMHadesBiomes_PlantAsphodel",
-	"ModsNikkelMHadesBiomes_PlantElysium",
-	"ModsNikkelMHadesBiomes_PlantStyx",
-	-- Ore
 	"ModsNikkelMHadesBiomes_OreTartarus",
+
+	"ModsNikkelMHadesBiomes_PlantAsphodel",
 	"ModsNikkelMHadesBiomes_OreAsphodel",
+
+	"ModsNikkelMHadesBiomes_PlantElysium",
 	"ModsNikkelMHadesBiomes_OreElysium",
+
+	"ModsNikkelMHadesBiomes_PlantStyx",
 	"ModsNikkelMHadesBiomes_OreStyx",
-	-- Fish
+
 	"Fish_Tartarus_Common_01",
 	"Fish_Tartarus_Rare_01",
 	"Fish_Tartarus_Legendary_01",
@@ -211,6 +213,7 @@ local moddedResourcesInventoryOrder = {
 	"Fish_Surface_Common_01",
 	"Fish_Surface_Rare_01",
 	"Fish_Surface_Legendary_01",
+	-- #endregion
 }
 
 local newModdedInventoryItemCategory = {
@@ -221,52 +224,14 @@ local newModdedInventoryItemCategory = {
 	GameStateRequirements = {
 		{
 			Path = { "GameState", "LifetimeResourcesGained" },
-			HasAny = moddedResourcesInventoryOrder,
+			HasAny = newResourceDisplayOrderData,
 		}
 	},
 }
 newModdedInventoryItemCategory = game.ConcatTableValuesIPairs(newModdedInventoryItemCategory,
-	moddedResourcesInventoryOrder)
+	newResourceDisplayOrderData)
 -- Insert between Fish and Forget-Me-Nots
 table.insert(game.ScreenData.InventoryScreen.ItemCategories, 5, newModdedInventoryItemCategory)
 
--- The order in which resources are shown in cost menus when buying things
--- In Hades II, this is each resource for a region after another, then the next region
--- Order should be Plants, Seed, Harvest, Ore, Fish
-local newResourceDisplayOrderData = {
-	-- #region Tartarus
-	"ModsNikkelMHadesBiomes_PlantTartarus",
-	"ModsNikkelMHadesBiomes_OreTartarus",
-	"Fish_Tartarus_Common_01",
-	"Fish_Tartarus_Rare_01",
-	"Fish_Tartarus_Legendary_01",
-	-- #endregion
-	-- #region Asphodel
-	"ModsNikkelMHadesBiomes_PlantAsphodel",
-	"ModsNikkelMHadesBiomes_OreAsphodel",
-	"Fish_Asphodel_Common_01",
-	"Fish_Asphodel_Rare_01",
-	"Fish_Asphodel_Legendary_01",
-	-- #endregion
-	-- #region Elysium
-	"ModsNikkelMHadesBiomes_PlantElysium",
-	"ModsNikkelMHadesBiomes_OreElysium",
-	"Fish_Elysium_Common_01",
-	"Fish_Elysium_Rare_01",
-	"Fish_Elysium_Legendary_01",
-	-- #endregion
-	-- #region Styx
-	"ModsNikkelMHadesBiomes_PlantStyx",
-	"ModsNikkelMHadesBiomes_OreStyx",
-	"Fish_Styx_Common_01",
-	"Fish_Styx_Rare_01",
-	"Fish_Styx_Legendary_01",
-	-- #endregion
-	-- #region Surface
-	"Fish_Surface_Common_01",
-	"Fish_Surface_Rare_01",
-	"Fish_Surface_Legendary_01",
-	-- #endregion
-}
 game.ResourceDisplayOrderData = game.ConcatTableValuesIPairs(game.ResourceDisplayOrderData, newResourceDisplayOrderData)
 -- #endregion
