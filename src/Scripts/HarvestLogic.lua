@@ -68,10 +68,23 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 					"PickaxePoint_ModsNikkelMHadesBiomes_OreElysium",
 					"PickaxePoint_ModsNikkelMHadesBiomes_OreStyx",
 				}
+				local staticBasePlants = {
+					"HarvestPoint_ModsNikkelMHadesBiomes_PlantTartarus",
+					"HarvestPoint_ModsNikkelMHadesBiomes_PlantAsphodel",
+					"HarvestPoint_ModsNikkelMHadesBiomes_PlantStyx",
+				}
 
 				if game.Contains(moddedResourceAnimations, obstacle.Animation) or obstacle.Name == "ExorcismPoint" then
 					if obstacle.ModsNikkelMHadesBiomesOccupySpawnPointId then
 						obstacle.OccupyingSpawnPointId = obstacle.ObjectId
+					end
+
+					-- Use a presentation function that doesn't flip the base obstacle
+					if game.Contains(staticBasePlants, obstacle.Animation) then
+						obstacle.OnUsedFunctionArgs = {
+							PresentationFunctionName = _PLUGIN.guid ..
+									"." .. "ModsNikkelMHadesBiomes_StaticBase_UsedHarvestPointPresentation",
+						}
 					end
 
 					-- Additionally, if we are placed on a Breakable ID, we need to break that breakable and those in close proximity to prevent any clipping
