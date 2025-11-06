@@ -175,6 +175,48 @@ local addAnimations = {
 		Scale = 0.4,
 	},
 	-- #endregion
+	-- #region Crops/ShovelPoint/Garden
+	ModsNikkelMHadesBiomes_CropTartarus_Sprouted = {
+		Name = "ModsNikkelMHadesBiomes_CropTartarus_Sprouted",
+		InheritFrom = "PlantBaseSprouted",
+		FilePath = "GUIModded\\Screens\\Resources\\Crops\\CropTartarusSprouted",
+	},
+	ModsNikkelMHadesBiomes_CropTartarus_ReadyToHarvest = {
+		Name = "ModsNikkelMHadesBiomes_CropTartarus_ReadyToHarvest",
+		InheritFrom = "PlantBaseReadyToHarvest",
+		FilePath = "GUIModded\\Screens\\Resources\\Crops\\CropTartarusUnharvested",
+	},
+	ModsNikkelMHadesBiomes_CropAsphodel_Sprouted = {
+		Name = "ModsNikkelMHadesBiomes_CropAsphodel_Sprouted",
+		InheritFrom = "PlantBaseSprouted",
+		FilePath = "GUIModded\\Screens\\Resources\\Crops\\CropAsphodelSprouted",
+	},
+	ModsNikkelMHadesBiomes_CropAsphodel_ReadyToHarvest = {
+		Name = "ModsNikkelMHadesBiomes_CropAsphodel_ReadyToHarvest",
+		InheritFrom = "PlantBaseReadyToHarvest",
+		FilePath = "GUIModded\\Screens\\Resources\\Crops\\CropAsphodelUnharvested",
+	},
+	ModsNikkelMHadesBiomes_CropElysium_Sprouted = {
+		Name = "ModsNikkelMHadesBiomes_CropElysium_Sprouted",
+		InheritFrom = "PlantBaseSprouted",
+		FilePath = "GUIModded\\Screens\\Resources\\Crops\\CropElysiumSprouted",
+	},
+	ModsNikkelMHadesBiomes_CropElysium_ReadyToHarvest = {
+		Name = "ModsNikkelMHadesBiomes_CropElysium_ReadyToHarvest",
+		InheritFrom = "PlantBaseReadyToHarvest",
+		FilePath = "GUIModded\\Screens\\Resources\\Crops\\CropElysiumUnharvested",
+	},
+	ModsNikkelMHadesBiomes_CropStyx_Sprouted = {
+		Name = "ModsNikkelMHadesBiomes_CropStyx_Sprouted",
+		InheritFrom = "PlantBaseSprouted",
+		FilePath = "GUIModded\\Screens\\Resources\\Crops\\CropStyxSprouted",
+	},
+	ModsNikkelMHadesBiomes_CropStyx_ReadyToHarvest = {
+		Name = "ModsNikkelMHadesBiomes_CropStyx_ReadyToHarvest",
+		InheritFrom = "PlantBaseReadyToHarvest",
+		FilePath = "GUIModded\\Screens\\Resources\\Crops\\CropStyxUnharvested",
+	},
+	-- #endregion
 }
 
 sjson.hook(hadesTwoItemsHarvestVfxFile, function(data)
