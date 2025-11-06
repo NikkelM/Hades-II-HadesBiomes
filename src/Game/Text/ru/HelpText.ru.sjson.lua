@@ -53,7 +53,7 @@ local newData = {
 		DisplayName = "ГРЕЦИЯ (Кошмар)",
 	},
 
-	-- NPC Names
+	-- #region NPC Names
 	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "Валунок",
@@ -61,7 +61,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- region Credits
+	-- #region Credits
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_NikkelM",
 	-- 	DisplayName = "a mod by",

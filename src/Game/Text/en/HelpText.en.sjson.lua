@@ -68,7 +68,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- region Credits
+	-- #region Credits
 	{
 		Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_NikkelM",
 		DisplayName = "a mod by",

@@ -54,7 +54,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- NPC Names
+	-- #region NPC Names
 	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "돌덩이",
@@ -62,7 +62,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- region Credits
+	-- #region Credits
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_NikkelM",
 	-- 	DisplayName = "a mod by",
