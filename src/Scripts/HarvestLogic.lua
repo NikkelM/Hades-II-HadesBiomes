@@ -11,6 +11,9 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 						GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee" } }) or
 						-- If none are found, fallback to Ghost spawn points
 						GetIdsByType({ Names = { "TartarusGhost01", "AsphodelGhost01" } })
+			elseif args.Name == "HarvestPoint" or args.Name == "ShovelPoint" then
+				return GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee", "EnemyPointRanged", "EnemyPointSupport", } }) or
+						GetIdsByType({ Names = { "Breakable", "BreakableAsphodel", "BreakableElysium", "BreakableStyx" } })
 			end
 
 			return base(args)
@@ -19,14 +22,24 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 		-- For our modded harvest points, we need to spawn a new obstacle, as we don't use the preset Ids
 		modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle)
 			if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.RoomSetName ~= "Secrets" then
-				local moddedResourceNames = {
-					"ModsNikkelMHadesBiomes_OreTartarus",
-					"ModsNikkelMHadesBiomes_OreAsphodel",
-					"ModsNikkelMHadesBiomes_OreElysium",
-					"ModsNikkelMHadesBiomes_OreStyx",
+				local moddedResourceAnimations = {
+					-- Plants
+					"HarvestPoint_ModsNikkelMHadesBiomes_PlantTartarus",
+					"HarvestPoint_ModsNikkelMHadesBiomes_PlantAsphodel",
+					"HarvestPoint_ModsNikkelMHadesBiomes_PlantElysium",
+					"HarvestPoint_ModsNikkelMHadesBiomes_PlantStyx",
+					-- Ore
+					"PickaxePoint_ModsNikkelMHadesBiomes_OreTartarus",
+					"PickaxePoint_ModsNikkelMHadesBiomes_OreAsphodel",
+					"PickaxePoint_ModsNikkelMHadesBiomes_OreElysium",
+					"PickaxePoint_ModsNikkelMHadesBiomes_OreStyx",
 				}
 
-				if game.Contains(moddedResourceNames, obstacle.ResourceName) or (obstacle.Name == "ExorcismPoint") then
+				if game.Contains(moddedResourceAnimations, obstacle.Animation) or obstacle.Name == "ExorcismPoint" then
+					if obstacle.ModsNikkelMHadesBiomesOccupySpawnPointId then
+						obstacle.OccupyingSpawnPointId = obstacle.ObjectId
+					end
+
 					-- Additionally, if we are placed on a Breakable ID, we need to break that breakable and those in close proximity to prevent any clipping
 					if obstacle.ModsNikkelMHadesBiomesBreakBreakablesOnPlace then
 						local nearbyBreakables = GetClosestIds({

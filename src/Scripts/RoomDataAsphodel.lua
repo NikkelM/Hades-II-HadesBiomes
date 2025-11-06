@@ -12,12 +12,34 @@ local roomReplacements = {
 		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
 		ShrinePointDoorRequirements = { Skip = true },
 
-		-- HasHarvestPoint = true,
+		HasHarvestPoint = true,
 		-- HasShovelPoint = true,
 		HasPickaxePoint = true,
-		-- HasExorcismPoint = true,
+		HasExorcismPoint = true,
 		HasFishingPoint = true,
 
+		HarvestPointRequirements = {
+			{
+				SumPrevRooms = 3,
+				Path = { "NumHarvestPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_PlantAsphodel" },
+						Comparison = "<",
+						Value = 13,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
 		PickaxePointRequirements = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
@@ -59,7 +81,7 @@ local roomReplacements = {
 					{
 						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreAsphodel" },
 						Comparison = "<",
-						Value = 36,
+						Value = 15,
 					},
 				},
 				-- accumulation
@@ -365,6 +387,49 @@ local roomModifications = {
 		PickaxePointChance = 0.4,
 		ExorcismPointChance = 0.4,
 		FishingPointChance = 0.1,
+
+		HarvestPointRequirements = {
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_PlantAsphodel" },
+						Comparison = "<",
+						Value = 8,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
+		PickaxePointRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreTartarus" },
+				Comparison = ">=",
+				Value = 6,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreAsphodel" },
+						Comparison = "<",
+						Value = 15,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
 	},
 	X_Reprieve01 = {
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "AsphodelEnterRoomPresentation",

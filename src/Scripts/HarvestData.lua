@@ -545,7 +545,7 @@ local newBiomeExorcismData = {
 		InputCheckInterval = 0.1,
 		TotalCheckFails = 999,
 		ConsecutiveCheckFails = 10,
-		AddResources =		{
+		AddResources = {
 			MemPointsCommon = 50,
 		}
 	},
@@ -600,4 +600,74 @@ local newBiomeExorcismData = {
 }
 game.ExorcismData.WeightedOptions = game.ConcatTableValuesIPairs(game.ExorcismData.WeightedOptions, newBiomeExorcismData)
 
+-- #endregion
+
+-- #region Plants/Harvest
+local newBiomePlants = {
+	-- Tartarus
+	{
+		Weight = 15,
+		Animation = "HarvestPoint_ModsNikkelMHadesBiomes_PlantTartarus",
+		EmptyAnimation = "HarvestPoint_ModsNikkelMHadesBiomes_PlantTartarus_Used",
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Tartarus", },
+			},
+		},
+		AddResources = {
+			ModsNikkelMHadesBiomes_PlantTartarus = 1,
+		},
+	},
+	-- Asphodel
+	{
+		Weight = 15,
+		Animation = "HarvestPoint_ModsNikkelMHadesBiomes_PlantAsphodel",
+		EmptyAnimation = "HarvestPoint_ModsNikkelMHadesBiomes_PlantAsphodel_Used",
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Asphodel", },
+			},
+		},
+		AddResources = {
+			ModsNikkelMHadesBiomes_PlantAsphodel = 1,
+		},
+	},
+	-- Elysium
+	{
+		Weight = 15,
+		Animation = "HarvestPoint_ModsNikkelMHadesBiomes_PlantElysium",
+		EmptyAnimation = "HarvestPoint_ModsNikkelMHadesBiomes_PlantElysium_Used",
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Elysium", },
+			},
+		},
+		AddResources = {
+			ModsNikkelMHadesBiomes_PlantElysium = 1,
+		},
+	},
+	-- Styx
+	{
+		Weight = 15,
+		Animation = "HarvestPoint_ModsNikkelMHadesBiomes_PlantStyx",
+		EmptyAnimation = "HarvestPoint_ModsNikkelMHadesBiomes_PlantStyx_Used",
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Styx", },
+			},
+		},
+		AddResources = {
+			ModsNikkelMHadesBiomes_PlantStyx = 1,
+		},
+	},
+}
+game.HarvestData.WeightedOptions = game.ConcatTableValuesIPairs(game.HarvestData.WeightedOptions, newBiomePlants)
 -- #endregion

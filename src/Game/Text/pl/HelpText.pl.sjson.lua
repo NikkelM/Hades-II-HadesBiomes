@@ -54,7 +54,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- NPC Names
+	-- #region NPC Names
 	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "Głazik",
@@ -62,7 +62,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- region Credits
+	-- #region Credits
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_NikkelM",
 	-- 	DisplayName = "a mod by",
@@ -549,6 +549,105 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreStyx_Flavor",
 	-- 	Description = "Many things seep from the surface into the depths of the Underworld, some more valuable than others."
+	-- },
+	-- #endregion
+	-- #endregion
+	-- #region Plants/HarvestPoint
+	-- #region Tartarus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantTartarus",
+	-- 	DisplayName = "Blood Root",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantTartarus_Short",
+	-- 	DisplayName = "Blood Root",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantTartarus_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_PlantTartarus",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_PlantTartarus} Blood Root",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantTartarus_Details",
+	-- 	Description = "· Gathered by hand in {#BoldFormat}Tartarus (Nightmare){#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantTartarus_Flavor",
+	-- 	Description = "The rough hewn stone floors of Tartarus allow this hardy root to take hold and break free.",
+	-- },
+	-- #endregion
+	-- #region Asphodel
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantAsphodel",
+	-- 	DisplayName = "Volcanic Fumes",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantAsphodel_Short",
+	-- 	DisplayName = "Fumes",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantAsphodel_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_PlantAsphodel",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_PlantAsphodel} Fumes",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantAsphodel_Details",
+	-- 	Description = "· Gathered by hand in {#BoldFormat}Asphodel (Nightmare){#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantAsphodel_Flavor",
+	-- 	Description = "In the constant heat of Asphodel, these fumes rise up from cracks in the earth.",
+	-- },
+	-- #endregion
+	-- #region Elysium
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantElysium",
+	-- 	DisplayName = "Laurel",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantElysium_Short",
+	-- 	DisplayName = "Laurel",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantElysium_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_PlantElysium",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_PlantElysium} Laurel",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantElysium_Details",
+	-- 	Description = "· Gathered by hand in {#BoldFormat}Elysium (Nightmare){#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantElysium_Flavor",
+	-- 	Description =
+	-- 	"The glorious heroes of Elysium are showered with laurels even in death, where they have no more use for them.",
+	-- },
+	-- #endregion
+	-- #region Styx
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantStyx",
+	-- 	DisplayName = "Horned Melon",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantStyx_Short",
+	-- 	DisplayName = "Melon",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantStyx_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_PlantStyx",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_PlantStyx} Melon",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantStyx_Details",
+	-- 	Description = "· Gathered by hand in {#BoldFormat}Styx (Nightmare){#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PlantStyx_Flavor",
+	-- 	Description = "The toxic environs of Styx give rise to all manner of strange flora.",
 	-- },
 	-- #endregion
 	-- #endregion

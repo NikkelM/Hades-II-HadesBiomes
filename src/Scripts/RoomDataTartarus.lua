@@ -11,12 +11,34 @@ local roomReplacements = {
 		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
 		BreakableOptions = { "ModsNikkelMHadesBiomesBreakableIdle1", "ModsNikkelMHadesBiomesBreakableIdle2", "ModsNikkelMHadesBiomesBreakableIdle3" },
 
-		-- HasHarvestPoint = true,
+		HasHarvestPoint = true,
 		-- HasShovelPoint = true,
 		HasPickaxePoint = true,
 		HasExorcismPoint = true,
 		HasFishingPoint = true,
 
+		HarvestPointRequirements = {
+			{
+				SumPrevRooms = 3,
+				Path = { "NumHarvestPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_PlantTartarus" },
+						Comparison = "<",
+						Value = 8,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
 		PickaxePointRequirements = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
@@ -53,7 +75,7 @@ local roomReplacements = {
 					{
 						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreTartarus" },
 						Comparison = "<",
-						Value = 62,
+						Value = 20,
 					},
 				},
 				-- accumulation
@@ -194,6 +216,35 @@ local roomReplacements = {
 		-- Will be set in the encounter instead
 		UnthreadedEvents = mod.NilValue,
 
+		HarvestPointChances = { 0.02, },
+		HarvestPointRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				SumPrevRooms = 3,
+				Path = { "NumHarvestPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			OrRequirements =
+			{
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_PlantTartarus" },
+						Comparison = "<",
+						Value = 8,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.6,
+				},
+			},
+		},
 		-- Same as BaseTartarus, but RoomOpening would redefine it with a Hades I unlock condition
 		FishingPointRequirements = {
 			{
@@ -461,6 +512,45 @@ local roomModifications = {
 		PickaxePointChance = 0.4,
 		ExorcismPointChance = 0.4,
 		FishingPointChance = 0.1,
+
+		HarvestPointRequirements = {
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_PlantTartarus" },
+						Comparison = "<",
+						Value = 13,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
+		PickaxePointRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreTartarus" },
+						Comparison = "<",
+						Value = 20,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
 	},
 	A_Reprieve01 = {
 		GameStateRequirements = {
