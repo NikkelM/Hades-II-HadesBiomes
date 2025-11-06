@@ -122,6 +122,7 @@ local newData = {
 	-- #region Tartarus
 	-- Taken from the Hades HelpText Fish_Tartarus_Common_01
 	{
+		-- _Short variants are limited to 10 characters
 		Id = "Fish_Tartarus_Common_01_Short",
 		DisplayName = "Hellfish",
 	},
@@ -146,7 +147,7 @@ local newData = {
 
 	{
 		Id = "Fish_Tartarus_Rare_01_Short",
-		DisplayName = "Knucklehead",
+		DisplayName = "Knuck·head",
 	},
 	{
 		Id = "Fish_Tartarus_Rare_01",
@@ -167,7 +168,7 @@ local newData = {
 
 	{
 		Id = "Fish_Tartarus_Legendary_01_Short",
-		DisplayName = "Scyllascion",
+		DisplayName = "Scy·scion",
 	},
 	{
 		Id = "Fish_Tartarus_Legendary_01",
@@ -213,7 +214,7 @@ local newData = {
 
 	{
 		Id = "Fish_Asphodel_Rare_01_Short",
-		DisplayName = "Chrustacean",
+		DisplayName = "C·tacean",
 	},
 	{
 		Id = "Fish_Asphodel_Rare_01",
