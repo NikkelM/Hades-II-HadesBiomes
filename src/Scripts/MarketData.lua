@@ -2,7 +2,7 @@
 local newMarketFishValues = {
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 20,
+		BuyAmount = 25,
 		Cost = {
 			Fish_Tartarus_Common_01 = 1,
 		},
@@ -10,7 +10,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 40,
+		BuyAmount = 45,
 		Cost = {
 			Fish_Tartarus_Rare_01 = 1,
 		},
@@ -18,7 +18,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 75,
+		BuyAmount = 80,
 		Cost = {
 			Fish_Tartarus_Legendary_01 = 1,
 		},
@@ -26,7 +26,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 24,
+		BuyAmount = 29,
 		Cost = {
 			Fish_Asphodel_Common_01 = 1,
 		},
@@ -34,7 +34,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 48,
+		BuyAmount = 53,
 		Cost = {
 			Fish_Asphodel_Rare_01 = 1,
 		},
@@ -42,7 +42,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 84,
+		BuyAmount = 89,
 		Cost = {
 			Fish_Asphodel_Legendary_01 = 1,
 		},
@@ -50,7 +50,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 28,
+		BuyAmount = 33,
 		Cost = {
 			Fish_Elysium_Common_01 = 1,
 		},
@@ -58,7 +58,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 56,
+		BuyAmount = 61,
 		Cost = {
 			Fish_Elysium_Rare_01 = 1,
 		},
@@ -66,7 +66,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 98,
+		BuyAmount = 103,
 		Cost = {
 			Fish_Elysium_Legendary_01 = 1,
 		},
@@ -74,7 +74,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 32,
+		BuyAmount = 37,
 		Cost = {
 			Fish_Styx_Common_01 = 1,
 		},
@@ -82,7 +82,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 64,
+		BuyAmount = 69,
 		Cost = {
 			Fish_Styx_Rare_01 = 1,
 		},
@@ -90,7 +90,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 112,
+		BuyAmount = 117,
 		Cost = {
 			Fish_Styx_Legendary_01 = 1,
 		},
@@ -98,7 +98,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 44,
+		BuyAmount = 59,
 		Cost = {
 			Fish_Surface_Common_01 = 1,
 		},
@@ -106,7 +106,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 74,
+		BuyAmount = 79,
 		Cost = {
 			Fish_Surface_Rare_01 = 1,
 		},
@@ -114,7 +114,7 @@ local newMarketFishValues = {
 	},
 	{
 		BuyName = "MetaCurrency",
-		BuyAmount = 168,
+		BuyAmount = 173,
 		Cost = {
 			Fish_Surface_Legendary_01 = 1,
 		},
@@ -127,7 +127,7 @@ local newMarketFishValues = {
 local newMarketOreValues = {
 	{
 		BuyName = "CosmeticsPoints",
-		BuyAmount = 27,
+		BuyAmount = 31,
 		GameStateRequirements = {
 			{
 				FunctionName = "HasAllWorldUpgradesRequiringResource",
@@ -141,7 +141,7 @@ local newMarketOreValues = {
 	},
 	{
 		BuyName = "CosmeticsPoints",
-		BuyAmount = 33,
+		BuyAmount = 37,
 		GameStateRequirements = {
 			{
 				FunctionName = "HasAllWorldUpgradesRequiringResource",
@@ -155,7 +155,7 @@ local newMarketOreValues = {
 	},
 	{
 		BuyName = "CosmeticsPoints",
-		BuyAmount = 40,
+		BuyAmount = 44,
 		GameStateRequirements = {
 			{
 				FunctionName = "HasAllWorldUpgradesRequiringResource",
@@ -169,7 +169,7 @@ local newMarketOreValues = {
 	},
 	{
 		BuyName = "CosmeticsPoints",
-		BuyAmount = 47,
+		BuyAmount = 51,
 		GameStateRequirements = {
 			{
 				FunctionName = "HasAllWorldUpgradesRequiringResource",
@@ -245,14 +245,78 @@ local newMarketPlantValues = {
 }
 -- #endregion
 
+-- #region Crops/Seeds/ShovelPoint/Garde
+local newMarketCropValues = {
+	{
+		BuyName = "CosmeticsPoints",
+		BuyAmount = 90,
+		GameStateRequirements = {
+			{
+				FunctionName = "HasAllWorldUpgradesRequiringResource",
+			},
+		},
+		Cost = {
+			ModsNikkelMHadesBiomes_CropTartarus = 1,
+		},
+		Priority = true,
+		PurchaseSound = "/Leftovers/World Sounds/Caravan Interior/MushroomLogInteract",
+	},
+	{
+		BuyName = "CosmeticsPoints",
+		BuyAmount = 110,
+		GameStateRequirements = {
+			{
+				FunctionName = "HasAllWorldUpgradesRequiringResource",
+			},
+		},
+		Cost = {
+			ModsNikkelMHadesBiomes_CropAsphodel = 1,
+		},
+		Priority = true,
+		PurchaseSound = "/Leftovers/World Sounds/Caravan Interior/MushroomLogInteract",
+	},
+	{
+		BuyName = "CosmeticsPoints",
+		BuyAmount = 130,
+		GameStateRequirements = {
+			{
+				FunctionName = "HasAllWorldUpgradesRequiringResource",
+			},
+		},
+		Cost = {
+			ModsNikkelMHadesBiomes_CropElysium = 1,
+		},
+		Priority = true,
+		PurchaseSound = "/Leftovers/World Sounds/Caravan Interior/MushroomLogInteract",
+	},
+	{
+		BuyName = "CosmeticsPoints",
+		BuyAmount = 160,
+		GameStateRequirements = {
+			{
+				FunctionName = "HasAllWorldUpgradesRequiringResource",
+			},
+		},
+		Cost = {
+			ModsNikkelMHadesBiomes_CropStyx = 1,
+		},
+		Priority = true,
+		PurchaseSound = "/Leftovers/World Sounds/Caravan Interior/MushroomLogInteract",
+	},
+}
+-- #endregion
+
 for _, category in ipairs(game.ScreenData.MarketScreen.ItemCategories) do
 	-- Fish
 	if category.Name == "MarketScreen_Sell" then
 		category = game.ConcatTableValuesIPairs(category, newMarketFishValues) or {}
 	end
 	if category.Name == "MarketScreen_Exchange" then
-		-- Plants (to be inserted before the Ores)
+		-- The order here is also the order in the game menu
+		-- Plants
 		category = game.ConcatTableValuesIPairs(category, newMarketPlantValues) or {}
+		-- Crops
+		category = game.ConcatTableValuesIPairs(category, newMarketCropValues) or {}
 		-- Ore
 		category = game.ConcatTableValuesIPairs(category, newMarketOreValues) or {}
 	end
