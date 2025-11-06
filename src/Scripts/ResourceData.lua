@@ -228,6 +228,19 @@ local newSeedData = {
 		},
 	},
 }
+local newSeeds = {
+	"ModsNikkelMHadesBiomes_SeedTartarus",
+	"ModsNikkelMHadesBiomes_SeedAsphodel",
+	"ModsNikkelMHadesBiomes_SeedElysium",
+	"ModsNikkelMHadesBiomes_SeedStyx",
+}
+-- Need to add the seeds to the Garden tab in the inventory, so they can be selected for planting from there
+for _, category in ipairs(game.ScreenData.InventoryScreen.ItemCategories) do
+	if category.Name == "InventoryScreen_GardenTab" then
+		category = game.ConcatTableValuesIPairs(category, newSeeds)
+		break
+	end
+end
 local newCropData = {
 	ModsNikkelMHadesBiomes_CropTartarus = {
 		InheritFrom = { "BaseResource" },
