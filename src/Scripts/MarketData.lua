@@ -184,13 +184,76 @@ local newMarketOreValues = {
 }
 -- #endregion
 
+-- #region Plants/HarvestPoint
+local newMarketPlantValues = {
+	{
+		BuyName = "CosmeticsPoints",
+		BuyAmount = 16,
+		GameStateRequirements = {
+			{
+				FunctionName = "HasAllWorldUpgradesRequiringResource",
+			},
+		},
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantTartarus = 1,
+		},
+		Priority = true,
+		PurchaseSound = "/Leftovers/World Sounds/Caravan Interior/MushroomLogInteract",
+	},
+	{
+		BuyName = "CosmeticsPoints",
+		BuyAmount = 18,
+		GameStateRequirements = {
+			{
+				FunctionName = "HasAllWorldUpgradesRequiringResource",
+			},
+		},
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantAsphodel = 1,
+		},
+		Priority = true,
+		PurchaseSound = "/Leftovers/World Sounds/Caravan Interior/MushroomLogInteract",
+	},
+	{
+		BuyName = "CosmeticsPoints",
+		BuyAmount = 20,
+		GameStateRequirements = {
+			{
+				FunctionName = "HasAllWorldUpgradesRequiringResource",
+			},
+		},
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantElysium = 1,
+		},
+		Priority = true,
+		PurchaseSound = "/Leftovers/World Sounds/Caravan Interior/MushroomLogInteract",
+	},
+	{
+		BuyName = "CosmeticsPoints",
+		BuyAmount = 24,
+		GameStateRequirements = {
+			{
+				FunctionName = "HasAllWorldUpgradesRequiringResource",
+			},
+		},
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantStyx = 1,
+		},
+		Priority = true,
+		PurchaseSound = "/Leftovers/World Sounds/Caravan Interior/MushroomLogInteract",
+	},
+}
+-- #endregion
+
 for _, category in ipairs(game.ScreenData.MarketScreen.ItemCategories) do
 	-- Fish
 	if category.Name == "MarketScreen_Sell" then
 		category = game.ConcatTableValuesIPairs(category, newMarketFishValues) or {}
 	end
-	-- Ore
 	if category.Name == "MarketScreen_Exchange" then
+		-- Plants (to be inserted before the Ores)
+		category = game.ConcatTableValuesIPairs(category, newMarketPlantValues) or {}
+		-- Ore
 		category = game.ConcatTableValuesIPairs(category, newMarketOreValues) or {}
 	end
 end
