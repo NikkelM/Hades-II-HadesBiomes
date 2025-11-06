@@ -74,7 +74,7 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 					"HarvestPoint_ModsNikkelMHadesBiomes_PlantStyx",
 				}
 
-				if game.Contains(moddedResourceAnimations, obstacle.Animation) or obstacle.Name == "ExorcismPoint" then
+				if game.Contains(moddedResourceAnimations, obstacle.Animation) or obstacle.Name == "ExorcismPoint" or obstacle.Name == "ShovelPoint" then
 					if obstacle.ModsNikkelMHadesBiomesOccupySpawnPointId then
 						obstacle.OccupyingSpawnPointId = obstacle.ObjectId
 					end
