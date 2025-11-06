@@ -344,6 +344,7 @@ local roomReplacements = {
 	},
 
 	D_Boss01 = {
+		HasExorcismPoint = false,
 		FishingPointRequirements = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
@@ -375,7 +376,6 @@ local roomReplacements = {
 				Comparison = "<=",
 				Value = 0,
 			},
-
 			OrRequirements = {
 				-- collection
 				{
