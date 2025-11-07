@@ -1967,7 +1967,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				-- SuccessiveChanceToPlayAll = 0.25,
 				IsIdAlive = 563036,
 				-- SubtitleMinDistance = 1300,
-				Actor = "StrangerOcclusionP",
 				ObjectType = "NPC_Achilles_Story_01",
 
 				-- ...and then, when that pig-headed braggart ordered me to do it, I swear...
@@ -1982,7 +1981,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				-- SuccessiveChanceToPlayAll = 0.25,
 				IsIdAlive = 563036,
 				-- SubtitleMinDistance = 1300,
-				Actor = "StrangerOcclusionP",
 				ObjectType = "NPC_Achilles_Story_01",
 				RequiredFalsePlayedThisRoom = { "/VO/Achilles_0222" },
 
@@ -2000,7 +1998,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				-- SuccessiveChanceToPlayAll = 0.5,
 				-- SubtitleMinDistance = 1300,
 				RequiredFalsePlayedThisRoom = { "/VO/Achilles_0260" },
-				Actor = "StrangerOcclusionP",
 				IsIdAlive = 563036,
 
 				-- ...hahaha, that was an amazing day, indeed.
@@ -2033,7 +2030,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				PreLineWait = 0.75,
 				-- SuccessiveChanceToPlayAll = 0.5,
 				-- SubtitleMinDistance = 1300,
-				Actor = "StrangerOcclusionP",
 				IsIdAlive = 563036,
 
 				ObjectType = "NPC_Achilles_Story_01",
@@ -2066,7 +2062,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				PreLineWait = 0.75,
 				SuccessiveChanceToPlayAll = 0.5,
 				-- SubtitleMinDistance = 1300,
-				Actor = "StrangerOcclusionP",
 				RequiredTextLines = { "MyrmidonReunionQuestComplete" },
 				AreIdsNotAlive = { 563036 },
 
@@ -2097,7 +2092,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				PreLineWait = 0.75,
 				SuccessiveChanceToPlayAll = 0.25,
 				-- SubtitleMinDistance = 1300,
-				Actor = "StrangerOcclusionP",
 				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
 
 				{ Cue = "/VO/Patroclus_0144" },
@@ -3200,7 +3194,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			RequiredTextLines = { "PatroclusFirstMeeting" },
 			ObjectType = "NPC_Patroclus_01",
 			RequiredRoom = "C_Story01",
-			Actor = "StrangerOcclusionP",
 			-- Too bad, stranger.
 			{ Cue = "/VO/Patroclus_0257", },
 			-- <Chuckle>
