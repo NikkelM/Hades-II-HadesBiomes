@@ -154,15 +154,23 @@ local requiredGlobalVoiceLineModifications = {
 	-- },
 	HadesPostBossVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1"
+		Replace = "HadesField_1",
 	},
 	SurvivalEncounterStartVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1"
+		Replace = "HadesField_1",
 	},
 	SurvivalEncounterSurvivedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1"
+		Replace = "HadesField_1",
+	},
+	PersephoneFishCaughtVoiceLines = {
+		Find = "Persephone_",
+		Replace = "Megaera_2",
+	},
+	ModsNikkelMHadesBiomes_FishNotCaughtVoiceLines = {
+		Find = "Persephone_",
+		Replace = "Megaera_2",
 	},
 }
 local function processCue(data, replacement)
@@ -241,6 +249,34 @@ game.GlobalVoiceLines.SurvivalExpiringVoiceLines = game.GlobalVoiceLines.Surviva
 		mod.GlobalVoiceLines.SurvivalExpiringVoiceLines
 game.GlobalVoiceLines.SurvivalResolvedVoiceLines = game.GlobalVoiceLines.SurvivalResolvedVoiceLines or
 		mod.GlobalVoiceLines.SurvivalResolvedVoiceLines
+
+game.GlobalVoiceLines.PatroclusFishCaughtVoiceLines = game.GlobalVoiceLines.PatroclusFishCaughtVoiceLines or
+		mod.GlobalVoiceLines.PatroclusFishCaughtVoiceLines
+game.GlobalVoiceLines.PersephoneFishCaughtVoiceLines = game.GlobalVoiceLines.PersephoneFishCaughtVoiceLines or
+		mod.GlobalVoiceLines.PersephoneFishCaughtVoiceLines
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishCaughtVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_FishCaughtVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishCaughtVoiceLines
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishIdentifiedVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_FishIdentifiedVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishIdentifiedVoiceLines
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishingInitiatedVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_FishingInitiatedVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishingInitiatedVoiceLines
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_FishNotCaughtVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtVoiceLines
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtWayTooLateVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_FishNotCaughtWayTooLateVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtWayTooLateVoiceLines
+-- Insert reactions into Hades II tables
+table.insert(game.HeroVoiceLines.FishNotCaughtTooLateVoiceLines, 1,
+	mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines_PatroclusReaction)
+table.insert(game.HeroVoiceLines.FishNotCaughtVoiceLines, 1,
+	mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines_PatroclusReaction)
 
 -- Add required HeroVoiceLines
 game.HeroVoiceLines.HitByGraveHandsVoiceLines = game.HeroVoiceLines.HitByGraveHandsVoiceLines or

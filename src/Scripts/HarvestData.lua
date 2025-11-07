@@ -354,6 +354,7 @@ local newFishValues = {
 	Fish_Elysium_Common_01 = {
 		InheritFrom = { "BaseFish" },
 		FishIdentifiedVoiceLines = {
+			{ GlobalVoiceLines = "PatroclusFishCaughtVoiceLines" },
 			{ GlobalVoiceLines = "FishCaughtByCatVoiceLines" },
 			{ GlobalVoiceLines = "FishIdentifiedVoiceLines" },
 		},
@@ -361,6 +362,7 @@ local newFishValues = {
 	Fish_Elysium_Rare_01 = {
 		InheritFrom = { "BaseFish" },
 		FishIdentifiedVoiceLines = {
+			{ GlobalVoiceLines = "PatroclusFishCaughtVoiceLines" },
 			{ GlobalVoiceLines = "FishCaughtByCatVoiceLines" },
 			{ GlobalVoiceLines = "FishIdentifiedVoiceLines" },
 		},
@@ -368,6 +370,7 @@ local newFishValues = {
 	Fish_Elysium_Legendary_01 = {
 		InheritFrom = { "BaseFish" },
 		FishIdentifiedVoiceLines = {
+			{ GlobalVoiceLines = "PatroclusFishCaughtVoiceLines" },
 			{ GlobalVoiceLines = "FishCaughtByCatVoiceLines" },
 			{ GlobalVoiceLines = "FishIdentifiedVoiceLines" },
 		},

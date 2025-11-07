@@ -344,6 +344,9 @@ local roomReplacements = {
 	},
 
 	D_Boss01 = {
+		HasHarvestPoint = false,
+		HasShovelPoint = false,
+		HasPickaxePoint = false,
 		HasExorcismPoint = false,
 		FishingPointRequirements = {
 			{
