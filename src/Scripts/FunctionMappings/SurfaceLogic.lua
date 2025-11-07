@@ -269,6 +269,13 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 
 	LockCamera({ Id = currentRun.Hero.ObjectId, Duration = 2.0 })
 	game.UnzeroMouseTether("RoomEntrance")
+
+	-- Ping harvest (fishing) points
+	for id, obstacle in pairs(game.ShallowCopyTable(game.MapState.ActiveObstacles) or {}) do
+		if obstacle.ExitsUnlockedFunctionName ~= nil then
+			game.thread(game.CallFunctionName, obstacle.ExitsUnlockedFunctionName, obstacle, obstacle.ExitsUnlockedFunctionArgs)
+		end
+	end
 end
 
 function mod.CottageBloom()
