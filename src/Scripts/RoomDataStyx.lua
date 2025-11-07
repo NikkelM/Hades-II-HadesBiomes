@@ -56,7 +56,7 @@ local roomReplacements = {
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
 			},
 			{
-				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_SeedSlysium" },
+				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_SeedElysium" },
 				Comparison = ">=",
 				Value = 3,
 			},
