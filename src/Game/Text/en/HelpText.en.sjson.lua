@@ -774,11 +774,13 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_CropTartarus_Details",
-		Description = "· Grown in the {#BoldFormat}Crossroads {#Prev}using {$ResourceData.ModsNikkelMHadesBiomes_SeedTartarus.Name}",
+		Description =
+		"· Grown in the {#BoldFormat}Crossroads {#Prev}using {$ResourceData.ModsNikkelMHadesBiomes_SeedTartarus.Name}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_CropTartarus_Flavor",
-		Description = "Having once grown on the Surface, this mushroom has now adapted to lowest depths of the Underworld as well.",
+		Description =
+		"Having once grown on the Surface, this mushroom has now adapted to lowest depths of the Underworld as well.",
 	},
 	-- #endregion
 	-- #region Asphodel
@@ -798,7 +800,8 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_CropAsphodel_Details",
-		Description = "· Grown in the {#BoldFormat}Crossroads {#Prev}using {$ResourceData.ModsNikkelMHadesBiomes_SeedAsphodel.Name}",
+		Description =
+		"· Grown in the {#BoldFormat}Crossroads {#Prev}using {$ResourceData.ModsNikkelMHadesBiomes_SeedAsphodel.Name}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_CropAsphodel_Flavor",
@@ -822,7 +825,8 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_CropElysium_Details",
-		Description = "· Grown in the {#BoldFormat}Crossroads {#Prev}using {$ResourceData.ModsNikkelMHadesBiomes_SeedElysium.Name}",
+		Description =
+		"· Grown in the {#BoldFormat}Crossroads {#Prev}using {$ResourceData.ModsNikkelMHadesBiomes_SeedElysium.Name}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_CropElysium_Flavor",
@@ -846,11 +850,110 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_CropStyx_Details",
-		Description = "· Grown in the {#BoldFormat}Crossroads {#Prev}using {$ResourceData.ModsNikkelMHadesBiomes_SeedStyx.Name}",
+		Description =
+		"· Grown in the {#BoldFormat}Crossroads {#Prev}using {$ResourceData.ModsNikkelMHadesBiomes_SeedStyx.Name}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_CropStyx_Flavor",
 		Description = "The most sturdy of gourds can find their way into those chambers of Styx nearest the surface.",
+	},
+	-- #endregion
+	-- #endregion
+	-- #region Boss Drops
+	-- #region Tartarus
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceTartarus",
+		DisplayName = "Chthonic Key",
+		Description = "Not even the Fates are privy to what purpose this may hold.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceTartarus_Short",
+		DisplayName = "C·Key",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceTartarus_Icon",
+		InheritFrom = "ModsNikkelMHadesBiomes_BossResourceTartarus",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomes_BossResourceTartarus} Chthonic Key",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceTartarus_Details",
+		Description = "· Reward for vanquishing the {#BoldFormat}Guardian {#Prev}of {#BoldFormat}Tartarus (Nightmare){#Prev}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceTartarus_Flavor",
+		Description = "These living keys crumble to dust once used, their purpose fulfilled.",
+	},
+	-- #endregion
+	-- #region Asphodel
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceAsphodel",
+		DisplayName = "Diamonds",
+		Description = "Not even the Fates are privy to what purpose this may hold.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Short",
+		DisplayName = "Diamonds",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Icon",
+		InheritFrom = "ModsNikkelMHadesBiomes_BossResourceAsphodel",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomes_BossResourceAsphodel} Diamonds",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Details",
+		Description = "· Reward for vanquishing the {#BoldFormat}Guardian {#Prev}of {#BoldFormat}Asphodel (Nightmare){#Prev}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Flavor",
+		Description = "Forged under pressure in the searing heat of Asphodel.",
+	},
+	-- #endregion
+	-- #region Elysium
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceElysium",
+		DisplayName = "Celestial Essence",
+		Description = "Not even the Fates are privy to what purpose this may hold.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceElysium_Short",
+		DisplayName = "C·Essence",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceElysium_Icon",
+		InheritFrom = "ModsNikkelMHadesBiomes_BossResourceElysium",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomes_BossResourceElysium} Celestial Essence",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceElysium_Details",
+		Description = "· Reward for vanquishing the {#BoldFormat}Guardian {#Prev}of {#BoldFormat}Elysium (Nightmare){#Prev}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceElysium_Flavor",
+		Description = "Bestowed only upon the most worthy of heroes, this intangible substance emits all colours of light.",
+	},
+	-- #endregion
+	-- #region Styx
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceStyx",
+		DisplayName = "Titan Blood",
+		Description = "Not even the Fates are privy to what purpose this may hold.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceStyx_Short",
+		DisplayName = "T·Blood",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceStyx_Icon",
+		InheritFrom = "ModsNikkelMHadesBiomes_BossResourceStyx",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomes_BossResourceStyx} Titan Blood",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceStyx_Details",
+		Description = "· Reward for vanquishing the {#BoldFormat}Guardian {#Prev}of {#BoldFormat}Styx (Nightmare){#Prev}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BossResourceStyx_Flavor",
+		Description = "Pulsing with primordial power, this drop of blood contains but a fraction of a Titan's might.",
 	},
 	-- #endregion
 	-- #endregion
