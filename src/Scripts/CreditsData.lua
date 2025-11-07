@@ -180,15 +180,8 @@ mod.CreditsData = {
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_iDeath",            X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_burn",              X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
-		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferNameToNextCraft },
 
-		{ PreWait = 0.3 },
-
-		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Craft_Magic",            X = mod.CreditSpacing.ColumnCenter, Format = mod.CreditsFormat.Craft },
-		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
-		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_Magic",             X = mod.CreditSpacing.ColumnCenter, Format = mod.CreditsFormat.Name },
-
-		{ PreWait = 2.07 },
+		{ PreWait = 2.37 },
 		{ CreditLineBuffer = 190 },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Info_Community",         Format = mod.CreditsFormat.Info },
 

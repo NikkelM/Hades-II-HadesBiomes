@@ -88,6 +88,18 @@ local roomModifications = {
 			["MelinoeStart"] = "ModsNikkelMHadesBiomes_ZagreusStart",
 			["MelinoeRun"] = "ModsNikkelMHadesBiomes_ZagreusRun",
 			["MelinoeStop"] = "ModsNikkelMHadesBiomes_ZagreusStop",
+			-- Fishing
+			["Melinoe_Staff_Unequip"] = "ModsNikkelMHadesBiomes_ZagreusIdle",
+			["Melinoe_Torch_Unequip"] = "ModsNikkelMHadesBiomes_ZagreusIdle",
+			["Melinoe_Axe_Unequip"] = "ModsNikkelMHadesBiomes_ZagreusIdle",
+			["Melinoe_Dagger_Unequip"] = "ModsNikkelMHadesBiomes_ZagreusIdle",
+			["Melinoe_Lob_Unequip"] = "ModsNikkelMHadesBiomes_ZagreusIdle",
+			["Melinoe_Suit_Unequip"] = "ModsNikkelMHadesBiomes_ZagreusIdle",
+			["Melinoe_Fishing_Start"] = "ZagreusInteractionFishing_Start",
+			["Melinoe_Fishing_Idle"] = "ZagreusInteractionFishing",
+			["Melinoe_Fishing_Fidget"] = "ZagreusInteractionFishing_FishingWait",
+			["Melinoe_Fishing_Success"] = "ZagreusInteractionFishing_PullSuccess",
+			["Melinoe_Fishing_Failure"] = "ZagreusInteractionFishing_PullFailure",
 			-- Dialogue animations
 			["ZagreusTalkEmpathyStart"] = "ModsNikkelMHadesBiomes_ZagreusTalkEmpathyStart",
 			["ZagreusTalkEmpathy_Return"] = "ModsNikkelMHadesBiomes_ZagreusTalkEmpathy_Return",

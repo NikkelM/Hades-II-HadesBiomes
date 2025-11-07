@@ -13,7 +13,7 @@ local roomReplacements = {
 		ShrinePointDoorRequirements = { Skip = true },
 
 		HasHarvestPoint = true,
-		-- HasShovelPoint = true,
+		HasShovelPoint = true,
 		HasPickaxePoint = true,
 		HasExorcismPoint = true,
 		HasFishingPoint = true,
@@ -26,7 +26,7 @@ local roomReplacements = {
 
 		HarvestPointRequirements = {
 			{
-				SumPrevRooms = 5,
+				SumPrevRooms = 11,
 				Path = { "NumHarvestPoints" },
 				Comparison = "<=",
 				Value = 0,
@@ -46,6 +46,67 @@ local roomReplacements = {
 				},
 			},
 		},
+		ShovelPointRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
+			},
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_SeedElysium" },
+				Comparison = ">=",
+				Value = 3,
+			},
+			{
+				-- At least two major rooms
+				SumPrevRooms = 11,
+				Path = { "NumShovelPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				-- At least one major room
+				SumPrevRooms = 6,
+				Path = { "NumPickaxePoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 6,
+				Path = { "NumExorcismPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			{
+				SumPrevRooms = 6,
+				Path = { "NumFishingPoints" },
+				Comparison = "<=",
+				Value = 0,
+			},
+			OrRequirements = {
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_SeedStyx" },
+						Comparison = "<",
+						Value = 12,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+					{
+						SumPrevRooms = 6,
+						Path = { "NumPickaxePoints" },
+						Comparison = "<=",
+						Value = 0,
+					},
+				},
+			},
+		},
 		PickaxePointRequirements = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
@@ -58,25 +119,25 @@ local roomReplacements = {
 				Value = 5,
 			},
 			{
-				SumPrevRooms = 5,
+				SumPrevRooms = 11,
 				Path = { "NumPickaxePoints" },
 				Comparison = "<=",
 				Value = 0,
 			},
 			{
-				SumPrevRooms = 1,
+				SumPrevRooms = 6,
 				Path = { "NumShovelPoints" },
 				Comparison = "<=",
 				Value = 0,
 			},
 			{
-				SumPrevRooms = 1,
+				SumPrevRooms = 6,
 				Path = { "NumExorcismPoints" },
 				Comparison = "<=",
 				Value = 0,
 			},
 			{
-				SumPrevRooms = 1,
+				SumPrevRooms = 6,
 				Path = { "NumFishingPoints" },
 				Comparison = "<=",
 				Value = 0,
@@ -94,7 +155,7 @@ local roomReplacements = {
 				{
 					ChanceToPlay = 0.5,
 					{
-						SumPrevRooms = 2,
+						SumPrevRooms = 6,
 						Path = { "NumShovelPoints" },
 						Comparison = "<=",
 						Value = 0,
@@ -114,25 +175,25 @@ local roomReplacements = {
 				Value = 2,
 			},
 			{
-				SumPrevRooms = 6,
+				SumPrevRooms = 11,
 				Path = { "NumExorcismPoints" },
 				Comparison = "<=",
 				Value = 0,
 			},
 			{
-				SumPrevRooms = 1,
+				SumPrevRooms = 6,
 				Path = { "NumShovelPoints" },
 				Comparison = "<=",
 				Value = 0,
 			},
 			{
-				SumPrevRooms = 1,
+				SumPrevRooms = 6,
 				Path = { "NumPickaxePoints" },
 				Comparison = "<=",
 				Value = 0,
 			},
 			{
-				SumPrevRooms = 1,
+				SumPrevRooms = 6,
 				Path = { "NumFishingPoints" },
 				Comparison = "<=",
 				Value = 0,
@@ -161,7 +222,7 @@ local roomReplacements = {
 				{
 					ChanceToPlay = 0.5,
 					{
-						SumPrevRooms = 1,
+						SumPrevRooms = 6,
 						Path = { "NumFishingPoints" },
 						Comparison = "<=",
 						Value = 0,
@@ -174,25 +235,25 @@ local roomReplacements = {
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
 			},
 			{
-				SumPrevRooms = 5,
+				SumPrevRooms = 11,
 				Path = { "NumFishingPoints" },
 				Comparison = "<=",
 				Value = 0,
 			},
 			{
-				SumPrevRooms = 1,
+				SumPrevRooms = 6,
 				Path = { "NumShovelPoints" },
 				Comparison = "<=",
 				Value = 0,
 			},
 			{
-				SumPrevRooms = 1,
+				SumPrevRooms = 6,
 				Path = { "NumPickaxePoints" },
 				Comparison = "<=",
 				Value = 0,
 			},
 			{
-				SumPrevRooms = 1,
+				SumPrevRooms = 6,
 				Path = { "NumExorcismPoints" },
 				Comparison = "<=",
 				Value = 0,
@@ -209,7 +270,7 @@ local roomReplacements = {
 				{
 					ChanceToPlay = 0.5,
 					{
-						SumPrevRooms = 2,
+						SumPrevRooms = 6,
 						Path = { "NumExorcismPoints" },
 						Comparison = "<=",
 						Value = 0,
@@ -283,6 +344,10 @@ local roomReplacements = {
 	},
 
 	D_Boss01 = {
+		HasHarvestPoint = false,
+		HasShovelPoint = false,
+		HasPickaxePoint = false,
+		HasExorcismPoint = false,
 		FishingPointRequirements = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
@@ -314,7 +379,6 @@ local roomReplacements = {
 				Comparison = "<=",
 				Value = 0,
 			},
-
 			OrRequirements = {
 				-- collection
 				{
@@ -544,6 +608,36 @@ local roomModifications = {
 						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_PlantStyx" },
 						Comparison = "<",
 						Value = 16,
+					},
+				},
+				-- accumulation
+				{
+					ChanceToPlay = 0.5,
+				},
+			},
+		},
+		ShovelPointRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
+			},
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_SeedElysium" },
+				Comparison = ">=",
+				Value = 3,
+			},
+			OrRequirements =
+			{
+				-- collection
+				{
+					{
+						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_SeedStyx" },
+						Comparison = "<",
+						Value = 6,
 					},
 				},
 				-- accumulation

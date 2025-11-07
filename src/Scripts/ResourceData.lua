@@ -181,21 +181,127 @@ local newPlantData = {
 mod.AddTableKeysSkipDupes(game.ResourceData, newPlantData)
 -- #endregion
 
+-- #region Seeds/Crops/ShovelPoint
+local newSeedData = {
+	ModsNikkelMHadesBiomes_SeedTartarus = {
+		InheritFrom = { "BaseResource", "BaseSeed" },
+		IconPath = "GUIModded\\Screens\\Resources\\Crops\\CropTartarusSeed",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Crops\\CropTartarusSeed_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_SeedTartarus_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_SeedTartarus_Short",
+		OnAddVoiceLines = {
+			{ GlobalVoiceLines = "FoundSeedVoiceLines" },
+			{ GlobalVoiceLines = "ResourceFoundVoiceLines" },
+		},
+	},
+	ModsNikkelMHadesBiomes_SeedAsphodel = {
+		InheritFrom = { "BaseResource", "BaseSeed" },
+		IconPath = "GUIModded\\Screens\\Resources\\Crops\\CropAsphodelSeed",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Crops\\CropAsphodelSeed_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_SeedAsphodel_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_SeedAsphodel_Short",
+		OnAddVoiceLines = {
+			{ GlobalVoiceLines = "FoundSeedVoiceLines" },
+			{ GlobalVoiceLines = "ResourceFoundVoiceLines" },
+		},
+	},
+	ModsNikkelMHadesBiomes_SeedElysium = {
+		InheritFrom = { "BaseResource", "BaseSeed" },
+		IconPath = "GUIModded\\Screens\\Resources\\Crops\\CropElysiumSeed",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Crops\\CropElysiumSeed_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_SeedElysium_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_SeedElysium_Short",
+		OnAddVoiceLines = {
+			{ GlobalVoiceLines = "FoundSeedVoiceLines" },
+			{ GlobalVoiceLines = "ResourceFoundVoiceLines" },
+		},
+	},
+	ModsNikkelMHadesBiomes_SeedStyx = {
+		InheritFrom = { "BaseResource", "BaseSeed" },
+		IconPath = "GUIModded\\Screens\\Resources\\Crops\\CropStyxSeed",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Crops\\CropStyxSeed_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_SeedStyx_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_SeedStyx_Short",
+		OnAddVoiceLines = {
+			{ GlobalVoiceLines = "FoundSeedVoiceLines" },
+			{ GlobalVoiceLines = "ResourceFoundVoiceLines" },
+		},
+	},
+}
+local newSeeds = {
+	"ModsNikkelMHadesBiomes_SeedTartarus",
+	"ModsNikkelMHadesBiomes_SeedAsphodel",
+	"ModsNikkelMHadesBiomes_SeedElysium",
+	"ModsNikkelMHadesBiomes_SeedStyx",
+}
+-- Need to add the seeds to the Garden tab in the inventory, so they can be selected for planting from there
+for _, category in ipairs(game.ScreenData.InventoryScreen.ItemCategories) do
+	if category.Name == "InventoryScreen_GardenTab" then
+		category = game.ConcatTableValuesIPairs(category, newSeeds)
+		break
+	end
+end
+local newCropData = {
+	ModsNikkelMHadesBiomes_CropTartarus = {
+		InheritFrom = { "BaseResource" },
+		IconPath = "GUIModded\\Screens\\Resources\\Crops\\CropTartarus",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Crops\\CropTartarus_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_CropTartarus_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_CropTartarus_Short",
+		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+	},
+	ModsNikkelMHadesBiomes_CropAsphodel = {
+		InheritFrom = { "BaseResource" },
+		IconPath = "GUIModded\\Screens\\Resources\\Crops\\CropAsphodel",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Crops\\CropAsphodel_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_CropAsphodel_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_CropAsphodel_Short",
+		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+	},
+	ModsNikkelMHadesBiomes_CropElysium = {
+		InheritFrom = { "BaseResource" },
+		IconPath = "GUIModded\\Screens\\Resources\\Crops\\CropElysium",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Crops\\CropElysium_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_CropElysium_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_CropElysium_Short",
+		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+	},
+	ModsNikkelMHadesBiomes_CropStyx = {
+		InheritFrom = { "BaseResource" },
+		IconPath = "GUIModded\\Screens\\Resources\\Crops\\CropStyx",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Crops\\CropStyx_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_CropStyx_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_CropStyx_Short",
+		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+	},
+}
+mod.AddTableKeysSkipDupes(game.ResourceData, newSeedData)
+mod.AddTableKeysSkipDupes(game.ResourceData, newCropData)
+-- #endregion
+
 -- #region All
 -- The order in which resources are shown in cost menus when buying things, and the order of the items in the new inventory tab
 -- In Hades II, this is each resource for a region after another, then the next region
--- Order should be Plant, Seed, Harvest, Ore. We move the fish to the end as there are a lot of them
+-- Order should be Plant, Seed, Crop, Ore. We move the fish to the end as there are a lot of them
 local newResourceDisplayOrderData = {
 	"ModsNikkelMHadesBiomes_PlantTartarus",
+	"ModsNikkelMHadesBiomes_SeedTartarus",
+	"ModsNikkelMHadesBiomes_CropTartarus",
 	"ModsNikkelMHadesBiomes_OreTartarus",
 
 	"ModsNikkelMHadesBiomes_PlantAsphodel",
+	"ModsNikkelMHadesBiomes_SeedAsphodel",
+	"ModsNikkelMHadesBiomes_CropAsphodel",
 	"ModsNikkelMHadesBiomes_OreAsphodel",
 
 	"ModsNikkelMHadesBiomes_PlantElysium",
+	"ModsNikkelMHadesBiomes_SeedElysium",
+	"ModsNikkelMHadesBiomes_CropElysium",
 	"ModsNikkelMHadesBiomes_OreElysium",
 
 	"ModsNikkelMHadesBiomes_PlantStyx",
+	"ModsNikkelMHadesBiomes_SeedStyx",
+	"ModsNikkelMHadesBiomes_CropStyx",
 	"ModsNikkelMHadesBiomes_OreStyx",
 
 	"Fish_Tartarus_Common_01",

@@ -385,6 +385,8 @@ mod.BikFileNames = {
 	"ZagreusInteractionThoughtful_Bink",
 	"ZagreusTalkDenial_Bink",
 	"ZagreusInteractionComeHither_Bink",
+	"ZagreusInteractionFishing_Bink",
+	"ZagreusInteractionFishingFail_Bink",
 	"ZagreusInjured_IdleToSick_Bink",
 	"ZagreusInjured_SickStandingSet_Bink",
 	"ZagreusInjured_SickKneelingSet_Bink",

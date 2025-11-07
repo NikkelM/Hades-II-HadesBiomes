@@ -249,6 +249,7 @@ local function on_ready()
 		import "Scripts/CreditsData.lua"
 		import "Scripts/DeathLoopData.lua"
 		import "Scripts/EffectData.lua"
+		import "Scripts/GardenData.lua"
 		import "Scripts/HarvestData.lua"
 		import "Scripts/HeroData.lua"
 		import "Scripts/LootData.lua"

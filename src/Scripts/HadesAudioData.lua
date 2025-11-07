@@ -1967,7 +1967,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				-- SuccessiveChanceToPlayAll = 0.25,
 				IsIdAlive = 563036,
 				-- SubtitleMinDistance = 1300,
-				Actor = "StrangerOcclusionP",
 				ObjectType = "NPC_Achilles_Story_01",
 
 				-- ...and then, when that pig-headed braggart ordered me to do it, I swear...
@@ -1982,7 +1981,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				-- SuccessiveChanceToPlayAll = 0.25,
 				IsIdAlive = 563036,
 				-- SubtitleMinDistance = 1300,
-				Actor = "StrangerOcclusionP",
 				ObjectType = "NPC_Achilles_Story_01",
 				RequiredFalsePlayedThisRoom = { "/VO/Achilles_0222" },
 
@@ -2000,7 +1998,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				-- SuccessiveChanceToPlayAll = 0.5,
 				-- SubtitleMinDistance = 1300,
 				RequiredFalsePlayedThisRoom = { "/VO/Achilles_0260" },
-				Actor = "StrangerOcclusionP",
 				IsIdAlive = 563036,
 
 				-- ...hahaha, that was an amazing day, indeed.
@@ -2033,7 +2030,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				PreLineWait = 0.75,
 				-- SuccessiveChanceToPlayAll = 0.5,
 				-- SubtitleMinDistance = 1300,
-				Actor = "StrangerOcclusionP",
 				IsIdAlive = 563036,
 
 				ObjectType = "NPC_Achilles_Story_01",
@@ -2066,7 +2062,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				PreLineWait = 0.75,
 				SuccessiveChanceToPlayAll = 0.5,
 				-- SubtitleMinDistance = 1300,
-				Actor = "StrangerOcclusionP",
 				RequiredTextLines = { "MyrmidonReunionQuestComplete" },
 				AreIdsNotAlive = { 563036 },
 
@@ -2097,7 +2092,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				PreLineWait = 0.75,
 				SuccessiveChanceToPlayAll = 0.25,
 				-- SubtitleMinDistance = 1300,
-				Actor = "StrangerOcclusionP",
 				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
 
 				{ Cue = "/VO/Patroclus_0144" },
@@ -2911,6 +2905,321 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		{ Cue = "/VO/Melinoe_1002",      Text = "{#Emph}Whew." },
 		{ Cue = "/VO/MelinoeField_0472", Text = "Let this be a message to your lord!", },
 	},
+	-- #endregion
+	-- #region Fishing
+	PatroclusFishCaughtVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.8,
+		RequiredTextLines = { "PatroclusFirstMeeting" },
+		ObjectType = "NPC_Patroclus_01",
+		RequiredRoom = "C_Story01",
+		-- You caught one there, did you?
+		{ Cue = "/VO/Patroclus_0243" },
+		-- Did you just catch another?
+		{ Cue = "/VO/Patroclus_0244" },
+		-- Good fishing, stranger.
+		{ Cue = "/VO/Patroclus_0245" },
+		-- You showed that fish all right.
+		{ Cue = "/VO/Patroclus_0246" },
+		-- Very clever, stranger.
+		{ Cue = "/VO/Patroclus_0247" },
+		-- Another catch.
+		{ Cue = "/VO/Patroclus_0248" },
+		-- Another catch, huh.
+		{ Cue = "/VO/Patroclus_0249" },
+		-- Please leave me be.
+		{ Cue = "/VO/Patroclus_0250", RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" } },
+		-- A noble victory.
+		{ Cue = "/VO/Patroclus_0251" },
+		-- Skilfully done.
+		{ Cue = "/VO/Patroclus_0252" },
+		-- What good's a fish down here?
+		{ Cue = "/VO/Patroclus_0253" },
+		-- Fool of a fish.
+		{ Cue = "/VO/Patroclus_0254" },
+		-- It should have been more careful.
+		{ Cue = "/VO/Patroclus_0255" },
+		-- At last, the rivers are safe.
+		{ Cue = "/VO/Patroclus_0256" },
+	},
+	PersephoneFishCaughtVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.8,
+		RequiredTextLines = { "PersephoneFirstMeeting" },
+		ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
+		RequiredRoom = "E_Story01",
+		PreLineAnim = "PersephoneGarden_Greeting",
+		SubtitleMinDistance = 1200,
+		-- Good catch!
+		{ Cue = "/VO/Persephone_0284" },
+		-- Oh, good catch!
+		{ Cue = "/VO/Persephone_0285" },
+		-- Well caught.
+		{ Cue = "/VO/Persephone_0286" },
+		-- Nicely done!
+		{ Cue = "/VO/Persephone_0287" },
+		-- Ooh look at that!
+		{ Cue = "/VO/Persephone_0288" },
+		-- Got that one all right!
+		{ Cue = "/VO/Persephone_0289" },
+	},
+	ModsNikkelMHadesBiomes_FishCaughtVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.35,
+		Queue = "Interrupt",
+		-- Got you!
+		{ Cue = "/VO/ZagreusField_3044" },
+		-- You're mine.
+		{ Cue = "/VO/ZagreusField_3045" },
+		-- Come on up!
+		{ Cue = "/VO/ZagreusField_3046" },
+		-- Right there!
+		{ Cue = "/VO/ZagreusField_3047" },
+		-- That's a bite!
+		{ Cue = "/VO/ZagreusField_3048" },
+		-- Got a bite!
+		{ Cue = "/VO/ZagreusField_3049" },
+		-- Now!
+		{ Cue = "/VO/ZagreusField_3050" },
+		-- Mine!
+		{ Cue = "/VO/ZagreusField_3051" },
+		-- There!
+		{ Cue = "/VO/ZagreusField_3052" },
+		-- Fish!
+		{ Cue = "/VO/ZagreusField_3053" },
+		-- Bite this!
+		{ Cue = "/VO/ZagreusField_3054" },
+		-- Come on out!
+		{ Cue = "/VO/ZagreusField_3055" },
+		-- Got it!
+		{ Cue = "/VO/ZagreusField_3056" },
+		-- Think I got one!
+		{ Cue = "/VO/ZagreusField_3057" },
+		-- I got one!
+		{ Cue = "/VO/ZagreusField_3058" },
+	},
+	ModsNikkelMHadesBiomes_FishIdentifiedVoiceLines = {
+		{ GlobalVoiceLines = "PersephoneFishCaughtVoiceLines" },
+		{
+			RandomRemaining = true,
+			PreLineWait = 1.0,
+			Cooldowns = {
+				{ Name = "ZagreusGlobalFishCaughtVoiceLinesPlayed", Time = 30 },
+			},
+			-- Huzzah!
+			{ Cue = "/VO/ZagreusField_3109" },
+			-- Victory!
+			{ Cue = "/VO/ZagreusField_3110" },
+			-- A sea-creature!
+			{ Cue = "/VO/ZagreusField_3111" },
+			-- I caught one!
+			{ Cue = "/VO/ZagreusField_3112" },
+			-- A fine catch!
+			{ Cue = "/VO/ZagreusField_3113" },
+			-- That's one more fish for me!
+			{ Cue = "/VO/ZagreusField_3114" },
+			-- I am victorious.
+			{ Cue = "/VO/ZagreusField_3115" },
+			-- I win this round, Fish.
+			{ Cue = "/VO/ZagreusField_3116" },
+		},
+	},
+	ModsNikkelMHadesBiomes_FishingInitiatedVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.35,
+		SuccessiveChanceToPlay = 0.85,
+		TriggerCooldowns = { Name = "ApproachedCerberusSpeech" },
+		Cooldowns = {
+			{ Name = "ZagreusStartedFishingSpeech", Time = 5 },
+		},
+		-- Here, fishies.
+		{ Cue = "/VO/ZagreusField_3032", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- Come forth, fishes.
+		{ Cue = "/VO/ZagreusField_3033", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- Let's fish.
+		{ Cue = "/VO/ZagreusField_3034" },
+		-- Looks like a good spot.
+		{ Cue = "/VO/ZagreusField_3035", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- Fishing time.
+		{ Cue = "/VO/ZagreusField_3036", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- Fishing time, then.
+		{ Cue = "/VO/ZagreusField_3037", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- Come to me, fishies.
+		{ Cue = "/VO/ZagreusField_3038", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- Come, fishies.
+		{ Cue = "/VO/ZagreusField_3039", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- Time to fish.
+		{ Cue = "/VO/ZagreusField_3040", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- Always time to fish.
+		{ Cue = "/VO/ZagreusField_3041", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- Sure, why not.
+		{ Cue = "/VO/ZagreusField_3042", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- I know you're out there, fish.
+		{ Cue = "/VO/ZagreusField_3043", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- It's you or me, fishies.
+		{ Cue = "/VO/ZagreusField_3217", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- Denizens of the deep, arise.
+		{ Cue = "/VO/ZagreusField_3219", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- Got to hold nice and still.
+		{ Cue = "/VO/ZagreusField_3220", RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- What lurks in this surface river here?
+		{ Cue = "/VO/ZagreusField_3227", RequiredBiome = "Styx",                      RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- What lurks in the waters of the surface?
+		{ Cue = "/VO/ZagreusField_3228", RequiredBiome = "Styx",                      RequiredPlayed = { "/VO/ZagreusField_3034" } },
+		-- All right, let's catch some fish.
+		{ Cue = "/VO/ZagreusField_3340", },
+	},
+	ModsNikkelMHadesBiomes_FishNotCaughtVoiceLines = {
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.8,
+			RequiredTextLines = { "PersephoneFirstMeeting" },
+			ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
+			RequiredRoom = "E_Story01",
+			PreLineAnim = "PersephoneGarden_Vulnerable",
+			-- Alas for that.
+			{ Cue = "/VO/Persephone_0290", },
+			-- Next time, my son.
+			{ Cue = "/VO/Persephone_0291", },
+			-- Ah, well.
+			{ Cue = "/VO/Persephone_0292", },
+			-- Oof, almost!
+			{ Cue = "/VO/Persephone_0293", },
+			-- Can't win them all.
+			{ Cue = "/VO/Persephone_0294", },
+			-- Wasn't meant to be.
+			{ Cue = "/VO/Persephone_0295", },
+		},
+		{
+			RandomRemaining = true,
+			PreLineWait = 1.4,
+			ExplicitRequirements = true,
+			GameStateRequirements = {
+				-- None
+			},
+			-- Drat.
+			{ Cue = "/VO/ZagreusField_3117" },
+			-- Ah well.
+			{ Cue = "/VO/ZagreusField_3118" },
+			-- Missed...
+			{ Cue = "/VO/ZagreusField_3119" },
+			-- Tsk...
+			{ Cue = "/VO/ZagreusField_3120" },
+			-- Got away.
+			{ Cue = "/VO/ZagreusField_3121" },
+			-- You win this round, fish.
+			{ Cue = "/VO/ZagreusField_3122", PreLineWait = 1.8 },
+			-- Blood and...
+			{ Cue = "/VO/ZagreusField_3123" },
+			-- Argh.
+			{ Cue = "/VO/ZagreusField_3124" },
+			-- Missed it.
+			{ Cue = "/VO/ZagreusField_3125" },
+			-- Not quite.
+			{ Cue = "/VO/ZagreusField_3126" },
+			-- I missed...
+			{ Cue = "/VO/ZagreusField_3127" },
+			-- Blasted little...
+			{ Cue = "/VO/ZagreusField_3128" },
+			-- Damn.
+			{ Cue = "/VO/ZagreusField_3129" },
+			-- That little...
+			{ Cue = "/VO/ZagreusField_3130" },
+			-- I'll get you next time, fish!
+			{ Cue = "/VO/ZagreusField_3131", PreLineWait = 1.8 },
+			-- Lost it.
+			{ Cue = "/VO/ZagreusField_3132" },
+			-- No good.
+			{ Cue = "/VO/ZagreusField_3133" },
+			-- Curses!
+			{ Cue = "/VO/ZagreusField_3134" },
+		},
+	},
+	ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines = {
+		{
+			RandomRemaining = true,
+			PreLineWait = 2,
+			Cooldowns = {
+				{ Name = "ZagreusFishingSpeech", Time = 8 },
+			},
+			ExplicitRequirements = true,
+			GameStateRequirements = {
+				-- None
+			},
+			-- Ah well.
+			{ Cue = "/VO/ZagreusField_3135" },
+			-- Oh well.
+			{ Cue = "/VO/ZagreusField_3136" },
+			-- Better move on.
+			{ Cue = "/VO/ZagreusField_3137" },
+			-- Think that's enough.
+			{ Cue = "/VO/ZagreusField_3138" },
+			-- No use I guess.
+			{ Cue = "/VO/ZagreusField_3139" },
+			-- No fish this time.
+			{ Cue = "/VO/ZagreusField_3140" },
+		},
+	},
+	ModsNikkelMHadesBiomes_FishNotCaughtWayTooLateVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		RequiresFalseFishingInput = true,
+		Cooldowns = {
+			{ Name = "ZagreusFishingSpeech", Time = 14 },
+		},
+		-- Think I missed my chance here.
+		{ Cue = "/VO/ZagreusField_3559" },
+		-- Hmm, no bites I guess...
+		{ Cue = "/VO/ZagreusField_3560" },
+		-- Don't think I'll get a bite at this rate.
+		{ Cue = "/VO/ZagreusField_3561" },
+		-- ...I think I've waited long enough.
+		{ Cue = "/VO/ZagreusField_3562" },
+		-- No river denizens about I think.
+		{ Cue = "/VO/ZagreusField_3563" },
+		-- I should probably go...
+		{ Cue = "/VO/ZagreusField_3564" },
+	},
+	-- Inserted into Hades II table
+	ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines_PatroclusReaction = {
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.8,
+			RequiredTextLines = { "PatroclusFirstMeeting" },
+			ObjectType = "NPC_Patroclus_01",
+			RequiredRoom = "C_Story01",
+			-- Too bad, stranger.
+			{ Cue = "/VO/Patroclus_0257", },
+			-- <Chuckle>
+			{ Cue = "/VO/Patroclus_0258", },
+			-- It got away, did it?
+			{ Cue = "/VO/Patroclus_0259", },
+			-- My sympathies, stranger.
+			{ Cue = "/VO/Patroclus_0260", },
+			-- Good fortune never lasts...
+			{ Cue = "/VO/Patroclus_0261", },
+			-- You keep on trying, stranger.
+			{ Cue = "/VO/Patroclus_0262", },
+			-- Figured as much...
+			{ Cue = "/VO/Patroclus_0263", },
+			-- You'll get him yet I'm sure...
+			{ Cue = "/VO/Patroclus_0264", },
+			-- I saw nothing, stranger.
+			{ Cue = "/VO/Patroclus_0265", },
+			-- You missed, did you?
+			{ Cue = "/VO/Patroclus_0266", },
+			-- Tough fortune, there, stranger.
+			{ Cue = "/VO/Patroclus_0267", },
+			-- I thought you had that one...
+			{ Cue = "/VO/Patroclus_0268", },
+		},
+	}
 	-- #endregion
 }
 

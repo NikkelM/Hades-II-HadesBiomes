@@ -354,6 +354,7 @@ local newFishValues = {
 	Fish_Elysium_Common_01 = {
 		InheritFrom = { "BaseFish" },
 		FishIdentifiedVoiceLines = {
+			{ GlobalVoiceLines = "PatroclusFishCaughtVoiceLines" },
 			{ GlobalVoiceLines = "FishCaughtByCatVoiceLines" },
 			{ GlobalVoiceLines = "FishIdentifiedVoiceLines" },
 		},
@@ -361,6 +362,7 @@ local newFishValues = {
 	Fish_Elysium_Rare_01 = {
 		InheritFrom = { "BaseFish" },
 		FishIdentifiedVoiceLines = {
+			{ GlobalVoiceLines = "PatroclusFishCaughtVoiceLines" },
 			{ GlobalVoiceLines = "FishCaughtByCatVoiceLines" },
 			{ GlobalVoiceLines = "FishIdentifiedVoiceLines" },
 		},
@@ -368,6 +370,7 @@ local newFishValues = {
 	Fish_Elysium_Legendary_01 = {
 		InheritFrom = { "BaseFish" },
 		FishIdentifiedVoiceLines = {
+			{ GlobalVoiceLines = "PatroclusFishCaughtVoiceLines" },
 			{ GlobalVoiceLines = "FishCaughtByCatVoiceLines" },
 			{ GlobalVoiceLines = "FishIdentifiedVoiceLines" },
 		},
@@ -602,7 +605,7 @@ game.ExorcismData.WeightedOptions = game.ConcatTableValuesIPairs(game.ExorcismDa
 
 -- #endregion
 
--- #region Plants/Harvest
+-- #region Plants/HarvestPoint
 local newBiomePlants = {
 	-- Tartarus
 	{
@@ -670,4 +673,66 @@ local newBiomePlants = {
 	},
 }
 game.HarvestData.WeightedOptions = game.ConcatTableValuesIPairs(game.HarvestData.WeightedOptions, newBiomePlants)
+-- #endregion
+
+-- #region Seeds/ShovelPoints
+local newBiomeShovelPointSeeds = {
+	-- Tartarus
+	{
+		Weight = 4,
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Tartarus", },
+			},
+		},
+		AddResources = {
+			ModsNikkelMHadesBiomes_SeedTartarus = 1,
+		},
+	},
+	-- Asphodel
+	{
+		Weight = 4,
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Asphodel", },
+			},
+		},
+		AddResources = {
+			ModsNikkelMHadesBiomes_SeedAsphodel = 1,
+		},
+	},
+	-- Elysium
+	{
+		Weight = 4,
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Elysium", },
+			},
+		},
+		AddResources = {
+			ModsNikkelMHadesBiomes_SeedElysium = 1,
+		},
+	},
+	-- Styx
+	{
+		Weight = 4,
+		GameStateRequirements = {
+			{
+				PathFromArgs = true,
+				Path = { "RoomSetName" },
+				IsAny = { "Styx", },
+			},
+		},
+		AddResources = {
+			ModsNikkelMHadesBiomes_SeedStyx = 1,
+		},
+	},
+}
+game.ShovelPointData.WeightedOptions = game.ConcatTableValuesIPairs(game.ShovelPointData.WeightedOptions, newBiomeShovelPointSeeds)
 -- #endregion
