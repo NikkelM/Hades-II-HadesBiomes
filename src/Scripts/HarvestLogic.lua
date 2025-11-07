@@ -29,8 +29,7 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 					eligibleIds = GetIdsByType({ Names = { "Breakable", "BreakableAsphodel", "BreakableElysium", "BreakableStyx" } })
 					-- Otherwise, fallback to enemy spawn points
 					if #eligibleIds == 0 then
-						eligibleIds = GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee", "EnemyPointRanged", "EnemyPointSupport", } }) or
-						{}
+						eligibleIds = GetIds({ Name = "SpawnPoints" }) or {}
 						-- Remove the last few values, or less if the list is shorter, to ensure we always have spawn points left for enemies
 						for i = 1, math.min(6, #eligibleIds) do
 							table.remove(eligibleIds)
@@ -40,8 +39,7 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 						eligibleIds = GetIdsByType({ Names = { "TartarusGhost01", "AsphodelGhost01" } })
 					end
 				elseif args.Name == "HarvestPoint" or args.Name == "ShovelPoint" then
-					eligibleIds = GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee", "EnemyPointRanged", "EnemyPointSupport", } }) or
-					{}
+					eligibleIds = GetIds({ Name = "SpawnPoints" }) or {}
 					-- Remove the last few values, or less if the list is shorter, to ensure we always have spawn points left for enemies
 					for i = 1, math.min(6, #eligibleIds) do
 						table.remove(eligibleIds)
