@@ -3,63 +3,88 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.RoomSetName ~= "Secrets" then
 		-- To replace which Ids get used to place the current harvest point
 		modutil.mod.Path.Wrap("GetInactiveIdsByType", function(base, args)
-			if args.Name == "PickaxePoint" or args.Name == "ExorcismPoint" then
-				-- Using Breakables to place the pickaxe and exorcism points in the corners and along walls instead of in the middle of the room
-				local eligibleIds = GetIdsByType({ Names = { "Breakable", "BreakableAsphodel", "BreakableElysium", "BreakableStyx" } })
-				-- Otherwise, fallback to enemy points, giving priority to those more likely on the sides of the map
-				if not eligibleIds or #eligibleIds == 0 then
-					eligibleIds = GetIdsByType({ Names = { "EnemyPointRanged", "EnemyPointSupport" } })
-				end
-				if not eligibleIds or #eligibleIds == 0 then
-					eligibleIds = GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee" } })
-				end
-				if not eligibleIds or #eligibleIds == 0 then
-					eligibleIds = GetIdsByType({ Names = { "TartarusGhost01", "AsphodelGhost01" } }) or {}
-				end
-
-				if args.Name == "ExorcismPoint" then
-					-- If we already chose PickaxePoints, remove those Ids from the eligible ExorcismPoint Ids to not overlap
-					if currentRoom.PickaxePointChoices then
-						local usedIds = {}
-						for _, usedId in ipairs(currentRoom.PickaxePointChoices) do
-							usedIds[usedId] = true
-						end
-
-						for i = #eligibleIds, 1, -1 do
-							local id = eligibleIds[i]
-							if usedIds[id] then
-								table.remove(eligibleIds, i)
+			if game.Contains({ "HarvestPoint", "ShovelPoint", "PickaxePoint", "ExorcismPoint" }, args.Name) then
+				local eligibleIds = {}
+				local ineligibleSpawnPointIds = {}
+				-- Get a list of predetermined spawn points set in the room's encounter that we can't use
+				if currentRoom.Encounter and currentRoom.Encounter.SpawnWaves then
+					for _, wave in ipairs(currentRoom.Encounter.SpawnWaves) do
+						if wave.Spawns then
+							for _, spawn in ipairs(wave.Spawns) do
+								if spawn.SpawnOnIds then
+									for _, id in ipairs(spawn.SpawnOnIds) do
+										ineligibleSpawnPointIds[id] = true
+									end
+								end
+								if spawn.SpawnOnId then
+									ineligibleSpawnPointIds[spawn.SpawnOnId] = true
+								end
 							end
 						end
 					end
 				end
-				return eligibleIds
-			elseif args.Name == "HarvestPoint" or args.Name == "ShovelPoint" then
-				local eligibleIds = GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee", "EnemyPointRanged", "EnemyPointSupport", } })
-				if not eligibleIds or #eligibleIds == 0 then
-					eligibleIds = GetIdsByType({ Names = { "Breakable", "BreakableAsphodel", "BreakableElysium", "BreakableStyx" } }) or
-							{}
-				end
-				if not eligibleIds or #eligibleIds == 0 then
-					eligibleIds = GetIdsByType({ Names = { "TartarusGhost01", "AsphodelGhost01" } }) or {}
-				end
 
-				if args.Name == "ShovelPoint" then
-					-- If we already chose HarvestPoints, remove those Ids from the eligible ShovelPoint Ids to not overlap
-					if currentRoom.HarvestPointChoicesIds then
-						local usedIds = {}
-						for _, usedId in ipairs(currentRoom.HarvestPointChoicesIds) do
-							usedIds[usedId] = true
-						end
-
-						for i = #eligibleIds, 1, -1 do
-							local id = eligibleIds[i]
-							if usedIds[id] then
-								table.remove(eligibleIds, i)
-							end
+				if args.Name == "PickaxePoint" or args.Name == "ExorcismPoint" then
+					-- Using Breakables to place the pickaxe and exorcism points in the corners and along walls instead of in the middle of the room
+					eligibleIds = GetIdsByType({ Names = { "Breakable", "BreakableAsphodel", "BreakableElysium", "BreakableStyx" } })
+					-- Otherwise, fallback to enemy spawn points
+					if #eligibleIds == 0 then
+						eligibleIds = GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee", "EnemyPointRanged", "EnemyPointSupport", } }) or
+						{}
+						-- Remove the last few values, or less if the list is shorter, to ensure we always have spawn points left for enemies
+						for i = 1, math.min(6, #eligibleIds) do
+							table.remove(eligibleIds)
 						end
 					end
+					if #eligibleIds == 0 then
+						eligibleIds = GetIdsByType({ Names = { "TartarusGhost01", "AsphodelGhost01" } })
+					end
+				elseif args.Name == "HarvestPoint" or args.Name == "ShovelPoint" then
+					eligibleIds = GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee", "EnemyPointRanged", "EnemyPointSupport", } }) or
+					{}
+					-- Remove the last few values, or less if the list is shorter, to ensure we always have spawn points left for enemies
+					for i = 1, math.min(6, #eligibleIds) do
+						table.remove(eligibleIds)
+					end
+					if #eligibleIds == 0 then
+						eligibleIds = GetIdsByType({ Names = { "Breakable", "BreakableAsphodel", "BreakableElysium", "BreakableStyx" } })
+					end
+					if #eligibleIds == 0 then
+						eligibleIds = GetIdsByType({ Names = { "TartarusGhost01", "AsphodelGhost01" } })
+					end
 				end
+
+				eligibleIds = eligibleIds or {}
+
+				local usedIds = {}
+				for _, usedId in ipairs(currentRoom.ExorcismPointChoices or {}) do
+					usedIds[usedId] = true
+				end
+				for _, usedId in ipairs(currentRoom.ShovelPointChoices or {}) do
+					usedIds[usedId] = true
+				end
+				for _, usedId in ipairs(currentRoom.HarvestPointChoicesIds or {}) do
+					usedIds[usedId] = true
+				end
+				for _, usedId in ipairs(currentRoom.PickaxePointChoices or {}) do
+					usedIds[usedId] = true
+				end
+
+				for i = #eligibleIds, 1, -1 do
+					local id = eligibleIds[i]
+					if usedIds[id] then
+						table.remove(eligibleIds, i)
+					end
+				end
+
+				-- Remove ineligible spawn point Ids
+				for i = #eligibleIds, 1, -1 do
+					local id = eligibleIds[i]
+					if ineligibleSpawnPointIds[id] then
+						table.remove(eligibleIds, i)
+					end
+				end
+
 				return eligibleIds
 			end
 
