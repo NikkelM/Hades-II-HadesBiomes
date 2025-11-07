@@ -476,7 +476,7 @@ local roomModifications = {
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
-		-- ShovelPointChance = 0.4,
+		ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
 		ExorcismPointChance = 0.3,
 		FishingPointChance = 0.3,
@@ -522,7 +522,7 @@ local roomModifications = {
 			},
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
-		ForcedReward = "MixerFBossDrop",
+		ForcedReward = "ModsNikkelMHadesBiomes_BossResourceTartarusDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
@@ -531,7 +531,7 @@ local roomModifications = {
 		BackupCauseOfDeath = "Harpy",
 
 		HasFishingPoint = false,
-		-- ShovelPointChance = 0.4,
+		ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
 	},
 	A_Boss02 = {
@@ -562,7 +562,7 @@ local roomModifications = {
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 
 		HarvestPointChances = { 0.5, 0.1, },
-		-- ShovelPointChance = 0.4,
+		ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
 		ExorcismPointChance = 0.4,
 		FishingPointChance = 0.1,
@@ -635,8 +635,8 @@ local roomModifications = {
 			RequiredCosmetics = mod.NilValue,
 		},
 
-		-- HarvestPointChances = { 0.6, 0.4, },
-		-- ShovelPointChance = 0.24,
+		HarvestPointChances = { 0.6, 0.4, },
+		ShovelPointChance = 0.24,
 		PickaxePointChance = 0.36,
 		ExorcismPointChance = 0.24,
 		FishingPointChance = 0.18,
