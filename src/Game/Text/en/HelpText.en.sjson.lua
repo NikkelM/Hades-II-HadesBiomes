@@ -3,12 +3,6 @@ local hadesHelpTextTable = mod.DecodeSjsonFile(hadesHelpTextFile)
 
 local hadesTwoHelpTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/en/HelpText.en.sjson")
 
-local order = {
-	"Id",
-	"DisplayName",
-	"OverwriteLocalization"
-}
-
 -- Entirely new, custom entries
 local newData = {
 	-- #region Meta
@@ -963,9 +957,7 @@ local newData = {
 local hadesHelpTextCopiedEntries = mod.ModifyHadesHelpTextEntries(hadesHelpTextTable)
 
 sjson.hook(hadesTwoHelpTextFile, function(data)
-	for _, newValue in ipairs(newData) do
-		table.insert(data.Texts, sjson.to_object(newValue, order))
-	end
+	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id")
 	for _, newValue in ipairs(hadesHelpTextCopiedEntries) do
 		table.insert(data.Texts, sjson.to_object(newValue, order))
 	end

@@ -1,11 +1,5 @@
 local helpTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/uk/HelpText.uk.sjson")
 
-local order = {
-	"Id",
-	"DisplayName",
-	"OverwriteLocalization"
-}
-
 local newData = {
 	-- #region Meta
 	-- {
@@ -947,7 +941,5 @@ local newData = {
 }
 
 sjson.hook(helpTextFile, function(data)
-	for _, newValue in ipairs(newData) do
-		table.insert(data.Texts, sjson.to_object(newValue, order))
-	end
+	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id")
 end)
