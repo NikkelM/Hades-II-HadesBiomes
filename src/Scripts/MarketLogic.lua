@@ -1,9 +1,9 @@
 modutil.mod.Path.Context.Wrap("OpenMarketScreen", function(marketScreenArgs)
 	modutil.mod.Path.Wrap("ModifyTextBox", function(base, args)
-		local screen = modutil.mod.Locals.Stacked(2).screen
 		local currencyResourceName = modutil.mod.Locals.Stacked(2).currencyResourceName
 		if currencyResourceName == "ModsNikkelMHadesBiomes_BrokerResource" then
-			-- If we are showing the amount we have of the dummy modded resource, display the empty string
+			local screen = modutil.mod.Locals.Stacked(2).screen
+			-- If we are showing the amount we have of the dummy modded resource, display an empty string
 			if args.Id == screen.Components.BasicResourceButton.Id then
 				args.Text = " "
 			end
