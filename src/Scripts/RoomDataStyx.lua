@@ -399,6 +399,51 @@ local roomReplacements = {
 				},
 			},
 		},
+
+		EnterVoiceLines = {
+			-- First meeting
+			{
+				RequiredFalseTextLines = { "LordHadesEncounter01", "LordHadesEncounter01_B" },
+				PreLineWait = 2.25,
+				{ Cue = "/VO/MelinoeField_3000", Text = "{#Emph}<Gasp>" },
+				{ Cue = "/VO/MelinoeField_1520", Text = "Father...?",                  PreLineWait = 0.5 },
+				{ Cue = "/VO/MelinoeField_0917", Text = "{#Emph}Erm... {#Prev}hello?", PreLineWait = 2.1, BreakIfPlayed = true },
+			},
+			-- Progressing the story
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 4.35,
+				PlayOnce = true,
+				PlayOnceContext = "ModsNikkelMHadesBiomes_D_Boss01",
+				{ Cue = "/VO/MelinoeField_0920", Text = "You're not going to step aside, are you?", RequiredTextLines = { "PersephoneMeeting06" }, RequiredFalseTextLines = { "Ending01" }, },
+				{ Cue = "/VO/MelinoeField_1904", Text = "You're in my way.",                            RequiredTextLines = { "PersephoneMeeting09" }, RequiredFalseTextLines = { "Ending01" }, },
+			},
+			-- Afterwards
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 4.35,
+				SuccessiveChanceToPlayAll = 0.65,
+				RequiredFalseEncounters = { "BossHadesPeaceful" },
+				-- From I_Story01
+				{ Cue = "/VO/MelinoeField_1520", Text = "Father...?" },
+				{ Cue = "/VO/Melinoe_4016",      Text = "Father.",                                  PlayFirst = true, },
+				{ Cue = "/VO/Melinoe_4017",      Text = "Father..." },
+				{ Cue = "/VO/MelinoeField_1519", Text = "Father...!" },
+				{ Cue = "/VO/MelinoeField_1521", Text = "{#Emph}Erm... {#Prev}greetings, Father..." },
+				-- From Cerberus boss fight
+				{ Cue = "/VO/MelinoeField_0920", Text = "You're not going to step aside, are you?" },
+				{ Cue = "/VO/MelinoeField_0923", Text = "Heads up..." },
+				{ Cue = "/VO/MelinoeField_0922", Text = "I'm sorry, but I have to get through." },
+				{ Cue = "/VO/MelinoeField_0924", Text = "I'm not afraid of you..." },
+				-- From Eris
+				{ Cue = "/VO/MelinoeField_1904", Text = "You're in my way." },
+				{ Cue = "/VO/MelinoeField_1906", Text = "Every time..." },
+				-- From Prometheus
+				{ Cue = "/VO/MelinoeField_2517", Text = "Guess who." },
+			},
+		},
 	},
 }
 

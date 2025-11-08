@@ -8601,7 +8601,7 @@ mod.EnemyData = {
 				{ Cue = "/VO/MegaeraField_0153", PreLineWait = 0.3,                            RequiredPlayed = { "/VO/MegaeraField_0154" } },
 				-- Impossible!
 				{ Cue = "/VO/MegaeraField_0154", PlayOnce = true },
-				-- I can't--!
+				-- I can't!
 				{ Cue = "/VO/MegaeraField_0155", PreLineWait = 0.6,                            RequiredPlayed = { "/VO/MegaeraField_0154" } },
 				-- Again?!
 				{ Cue = "/VO/MegaeraField_0156", RequiredPlayed = { "/VO/MegaeraField_0154" }, RequiredKills = { Harpy = 3 } },
@@ -8621,7 +8621,7 @@ mod.EnemyData = {
 				{ Cue = "/VO/MegaeraField_0321", RequiredPlayed = { "/VO/MegaeraField_0154" } },
 				-- This is...
 				{ Cue = "/VO/MegaeraField_0322", RequiredPlayed = { "/VO/MegaeraField_0154" } },
-				-- How could I--!
+				-- How could I!
 				{ Cue = "/VO/MegaeraField_0323", RequiredPlayed = { "/VO/MegaeraField_0154" } },
 				-- Absurd...
 				{ Cue = "/VO/MegaeraField_0324", RequiredPlayed = { "/VO/MegaeraField_0154" } },
