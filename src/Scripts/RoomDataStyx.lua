@@ -19,7 +19,7 @@ local roomReplacements = {
 		HasFishingPoint = true,
 
 		HarvestPointChances = { 0.30, },
-		-- ShovelPointChance = 0.24,
+		ShovelPointChance = 0.24,
 		PickaxePointChance = 0.36,
 		ExorcismPointChance = 0.24,
 		FishingPointChance = 0.18,
@@ -558,7 +558,7 @@ local roomModifications = {
 
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_StyxBoss",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
-		ForcedReward = "MixerIBossDrop",
+		ForcedReward = "ModsNikkelMHadesBiomes_BossResourceStyxDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
@@ -648,7 +648,7 @@ local roomModifications = {
 		},
 		PickaxePointRequirements = {
 			{
-				Path = { "GameState", "CompletedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
 				Comparison = ">=",
 				Value = 1,
 			},

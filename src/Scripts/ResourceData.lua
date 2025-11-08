@@ -1,3 +1,15 @@
+-- #region Generic
+-- We need a new resource to show as the "cost" for the new category in the broker/market screen
+local newGenericMarketData = {
+	-- Don't add this to the inventory! This is a hidden resource only added for the icon on the broker trade screen
+	ModsNikkelMHadesBiomes_BrokerResource = {
+		InheritFrom = { "BaseResource" },
+		IconPath = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_72x72",
+	},
+}
+mod.AddTableKeysSkipDupes(game.ResourceData, newGenericMarketData)
+-- #endregion
+
 -- #region Fishing
 -- General data for each fish
 local newFishData = {
@@ -279,30 +291,76 @@ mod.AddTableKeysSkipDupes(game.ResourceData, newSeedData)
 mod.AddTableKeysSkipDupes(game.ResourceData, newCropData)
 -- #endregion
 
+-- #region Boss Resources
+local newBossResourceData = {
+	ModsNikkelMHadesBiomes_BossResourceTartarus = {
+		InheritFrom = { "BaseResource" },
+		IconPath = "GUIModded\\Screens\\Resources\\Boss\\BossTartarus",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Boss\\BossTartarus_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_BossResourceTartarus_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_BossResourceTartarus_Short",
+		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+		BrokerCannotSpendVoiceLines = { { GlobalVoiceLines = "InvalidResourceInteractionVoiceLines" }, }
+	},
+	ModsNikkelMHadesBiomes_BossResourceAsphodel = {
+		InheritFrom = { "BaseResource" },
+		IconPath = "GUIModded\\Screens\\Resources\\Boss\\BossAsphodel",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Boss\\BossAsphodel_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Short",
+		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+		BrokerCannotSpendVoiceLines = { { GlobalVoiceLines = "InvalidResourceInteractionVoiceLines" }, }
+	},
+	ModsNikkelMHadesBiomes_BossResourceElysium = {
+		InheritFrom = { "BaseResource" },
+		IconPath = "GUIModded\\Screens\\Resources\\Boss\\BossElysium",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Boss\\BossElysium_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_BossResourceElysium_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_BossResourceElysium_Short",
+		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+		BrokerCannotSpendVoiceLines = { { GlobalVoiceLines = "InvalidResourceInteractionVoiceLines" }, }
+	},
+	ModsNikkelMHadesBiomes_BossResourceStyx = {
+		InheritFrom = { "BaseResource" },
+		IconPath = "GUIModded\\Screens\\Resources\\Boss\\BossStyx",
+		TextIconPath = "GUIModded\\Screens\\Resources\\Boss\\BossStyx_Text",
+		TooltipId = "ModsNikkelMHadesBiomes_BossResourceStyx_Icon",
+		CostTextId = "ModsNikkelMHadesBiomes_BossResourceStyx_Short",
+		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+		BrokerCannotSpendVoiceLines = { { GlobalVoiceLines = "InvalidResourceInteractionVoiceLines" }, }
+	},
+}
+mod.AddTableKeysSkipDupes(game.ResourceData, newBossResourceData)
+-- #endregion
+
 -- #region All
 -- The order in which resources are shown in cost menus when buying things, and the order of the items in the new inventory tab
 -- In Hades II, this is each resource for a region after another, then the next region
--- Order should be Plant, Seed, Crop, Ore. We move the fish to the end as there are a lot of them
+-- Order should be Plant, Seed, Crop, Ore, Boss Resource. We move the fish to the end as there are a lot of them
 local newResourceDisplayOrderData = {
 	"ModsNikkelMHadesBiomes_PlantTartarus",
 	"ModsNikkelMHadesBiomes_SeedTartarus",
 	"ModsNikkelMHadesBiomes_CropTartarus",
 	"ModsNikkelMHadesBiomes_OreTartarus",
+	"ModsNikkelMHadesBiomes_BossResourceTartarus",
 
 	"ModsNikkelMHadesBiomes_PlantAsphodel",
 	"ModsNikkelMHadesBiomes_SeedAsphodel",
 	"ModsNikkelMHadesBiomes_CropAsphodel",
 	"ModsNikkelMHadesBiomes_OreAsphodel",
+	"ModsNikkelMHadesBiomes_BossResourceAsphodel",
 
 	"ModsNikkelMHadesBiomes_PlantElysium",
 	"ModsNikkelMHadesBiomes_SeedElysium",
 	"ModsNikkelMHadesBiomes_CropElysium",
 	"ModsNikkelMHadesBiomes_OreElysium",
+	"ModsNikkelMHadesBiomes_BossResourceElysium",
 
 	"ModsNikkelMHadesBiomes_PlantStyx",
 	"ModsNikkelMHadesBiomes_SeedStyx",
 	"ModsNikkelMHadesBiomes_CropStyx",
 	"ModsNikkelMHadesBiomes_OreStyx",
+	"ModsNikkelMHadesBiomes_BossResourceStyx",
 
 	"Fish_Tartarus_Common_01",
 	"Fish_Tartarus_Rare_01",

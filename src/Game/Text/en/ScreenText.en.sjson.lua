@@ -1,32 +1,26 @@
 local screenTextFile = rom.path.combine(rom.paths.Content(), "Game\\Text\\en\\ScreenText.en.sjson")
 
-local order = {
-	"Id",
-	"DisplayName",
-	"OverwriteLocalization"
-}
-
 local newData = {
 	-- #region Run history
 	{
 		Id = "RunHistoryScreen_RouteTartarus",
-		DisplayName = "Nightmare",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteAsphodel",
-		DisplayName = "Nightmare",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteElysium",
-		DisplayName = "Nightmare",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteStyx",
-		DisplayName = "Nightmare",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteSurface",
-		DisplayName = "Nightmare",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteModsNikkelMHadesBiomes",
@@ -39,13 +33,17 @@ local newData = {
 	-- #region Codex/Inventory
 	{
 		Id = "ModsNikkelMHadesBiomesCodexEntryTitleText",
-		DisplayName = "Nightmare",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "InventoryScreen_ModesNikkelMHadesBiomesTab",
 		InheritFrom = "ModsNikkelMHadesBiomesCodexEntryTitleText",
 	},
-	-- #endregion 
+	{
+		Id = "ModsNikkelMHadesBiomes_MarketScreen_Resources",
+		DisplayName = "Barter Exchange",
+	},
+	-- #endregion
 
 	-- #region Install screens
 	{
@@ -70,7 +68,5 @@ local newData = {
 }
 
 sjson.hook(screenTextFile, function(data)
-	for _, newValue in ipairs(newData) do
-		table.insert(data.Texts, sjson.to_object(newValue, order))
-	end
+	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id")
 end)

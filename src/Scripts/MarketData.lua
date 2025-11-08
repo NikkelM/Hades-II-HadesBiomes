@@ -306,6 +306,150 @@ local newMarketCropValues = {
 }
 -- #endregion
 
+-- #region Boss Resources
+local newBossResourceValues = {
+	-- Tartarus -> Erebus/Ephyra
+	{
+		BuyName = "MixerFBoss",
+		BuyAmount = 1,
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 2,
+		},
+		-- ConsumeSound of the drop of the resource you're buying
+		PurchaseSound = "/SFX/HeatCollectionPickupReverse2",
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "MixerFBoss" },
+				Comparison = ">=",
+				Value = 3,
+			},
+		},
+	},
+	{
+		BuyName = "MixerNBoss",
+		BuyAmount = 1,
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 2,
+		},
+		PurchaseSound = "/SFX/WoolPickup",
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "MixerNBoss" },
+				Comparison = ">=",
+				Value = 3,
+			},
+		},
+	},
+	-- Asphodel -> Oceanus/Thessaly
+	{
+		BuyName = "MixerGBoss",
+		BuyAmount = 1,
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
+		},
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "MixerGBoss" },
+				Comparison = ">=",
+				Value = 3,
+			},
+		},
+	},
+	{
+		BuyName = "MixerOBoss",
+		BuyAmount = 1,
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
+		},
+		PurchaseSound = "/SFX/ApplePickup",
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "MixerOBoss" },
+				Comparison = ">=",
+				Value = 3,
+			},
+		},
+	},
+	-- Elysium -> Fields/Olympus
+	{
+		BuyName = "MixerHBoss",
+		BuyAmount = 1,
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
+		},
+		PurchaseSound = "/SFX/TearPickup",
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "MixerHBoss" },
+				Comparison = ">=",
+				Value = 3,
+			},
+		},
+	},
+	{
+		BuyName = "MixerPBoss",
+		BuyAmount = 1,
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
+		},
+		PurchaseSound = "/SFX/FeatherPickup",
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "MixerPBoss" },
+				Comparison = ">=",
+				Value = 3,
+			},
+		},
+	},
+	-- Styx -> Tartarus/Summit
+	{
+		BuyName = "MixerIBoss",
+		BuyAmount = 1,
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
+		},
+		PurchaseSound = "/SFX/ChronosZSandPickupSFX",
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "ReachedTrueEnding" },
+			},
+		},
+	},
+	{
+		BuyName = "MixerQBoss",
+		BuyAmount = 1,
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
+		},
+		PurchaseSound = "/SFX/VoidLensPickupSFX",
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "ReachedTrueEnding" },
+			},
+		},
+	},
+}
+-- Add a new category to the broker screen
+local newBrokerBossTradeCategory = {
+	Name = "ModsNikkelMHadesBiomes_MarketScreen_Resources",
+	Icon = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_72x72",
+	CurrencyResourceName = "ModsNikkelMHadesBiomes_BrokerResource",
+	-- Need this side to ensure we show the correct icons for the resources (not the other way around)
+	FlipSides = false,
+	RefreshOncePerRun = true,
+	GameStateRequirements = {
+		-- To prevent an error when this new category is added while the player is in the Crossroads when installing the mod
+		{
+			Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+			Comparison = ">=",
+			Value = 1,
+		},
+	},
+}
+newBrokerBossTradeCategory = game.ConcatTableValuesIPairs(newBrokerBossTradeCategory, newBossResourceValues) or {}
+table.insert(game.ScreenData.MarketScreen.ItemCategories, newBrokerBossTradeCategory)
+-- #endregion
+
 for _, category in ipairs(game.ScreenData.MarketScreen.ItemCategories) do
 	-- Fish
 	if category.Name == "MarketScreen_Sell" then

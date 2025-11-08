@@ -349,7 +349,7 @@ local roomModifications = {
 		},
 
 		HarvestPointChances = { 0.02, },
-		-- ShovelPointChance = 0.02,
+		ShovelPointChance = 0.02,
 		PickaxePointChance = 0.02,
 		ExorcismPointChance = 0.02,
 		FishingPointChance = 0.02,
@@ -363,7 +363,7 @@ local roomModifications = {
 		FrogFamiliarMaxLeapDistance = 800,
 
 		HarvestPointChances = { 0.75 },
-		-- ShovelPointChance = 0.5,
+		ShovelPointChance = 0.5,
 		PickaxePointChance = 0.5,
 		ExorcismPointChance = 0.5,
 		FishingPointChance = 0.5,
@@ -376,7 +376,7 @@ local roomModifications = {
 		FrogFamiliarMaxLeapDistance = 800,
 
 		HarvestPointChances = { 0.33 },
-		-- ShovelPointChance = 0.33,
+		ShovelPointChance = 0.33,
 		PickaxePointChance = 0.33,
 		ExorcismPointChance = 0.33,
 		FishingPointChance = 0.33,
@@ -390,7 +390,7 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium", },
 		},
 
-		-- ShovelPointChance = 0.5,
+		ShovelPointChance = 0.5,
 		PickaxePointChance = 0.45,
 		ExorcismPointChance = 0.40,
 	},
@@ -403,7 +403,7 @@ local roomModifications = {
 		LoadModdedVoiceBanks = { "Minotaur", "Theseus", "ZagreusField" },
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_ElysiumChampions",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
-		ForcedReward = "MixerHBossDrop",
+		ForcedReward = "ModsNikkelMHadesBiomes_BossResourceElysiumDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
@@ -444,7 +444,7 @@ local roomModifications = {
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 
 		HarvestPointChances = { 0.75 },
-		-- ShovelPointChance = 0.5,
+		ShovelPointChance = 0.5,
 		PickaxePointChance = 0.5,
 		ExorcismPointChance = 0.5,
 		FishingPointChance = 0.5,
@@ -497,7 +497,7 @@ local roomModifications = {
 		},
 		PickaxePointRequirements = {
 			{
-				Path = { "GameState", "CompletedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
 				Comparison = ">=",
 				Value = 1,
 			},

@@ -3,12 +3,6 @@ local hadesHelpTextTable = mod.DecodeSjsonFile(hadesHelpTextFile)
 
 local hadesTwoHelpTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/pt-BR/HelpText.pt-BR.sjson")
 
-local order = {
-	"Id",
-	"DisplayName",
-	"OverwriteLocalization"
-}
-
 local newData = {
 	-- #region Meta
 	-- {
@@ -491,7 +485,7 @@ local newData = {
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreAsphodel_Flavor",
-	-- 	Description = "In the heat of Asphodel, only the sturdiest of rocks can  hope to withstand the test of time."
+	-- 	Description = "In the heat of Asphodel, only the sturdiest of rocks can hope to withstand the test of time."
 	-- },
 	-- #endregion
 	-- #region Elysium
@@ -848,16 +842,110 @@ local newData = {
 	-- },
 	-- #endregion
 	-- #endregion
+	-- #region Boss Drops
+	-- #region Tartarus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceTartarus",
+	-- 	DisplayName = "Chthonic Key",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceTartarus_Short",
+	-- 	DisplayName = "C·Key",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceTartarus_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_BossResourceTartarus",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_BossResourceTartarus} Chthonic Key",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceTartarus_Details",
+	-- 	Description = "· Reward for vanquishing the {#BoldFormat}Guardian {#Prev}of {#BoldFormat}Tartarus (Nightmare){#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceTartarus_Flavor",
+	-- 	Description = "These living keys crumble to dust once used, their purpose fulfilled.",
+	-- },
+	-- #endregion
+	-- #region Asphodel
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceAsphodel",
+	-- 	DisplayName = "Diamonds",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Short",
+	-- 	DisplayName = "Diamonds",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_BossResourceAsphodel",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_BossResourceAsphodel} Diamonds",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Details",
+	-- 	Description = "· Reward for vanquishing the {#BoldFormat}Guardian {#Prev}of {#BoldFormat}Asphodel (Nightmare){#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Flavor",
+	-- 	Description = "Forged under pressure in the searing heat of Asphodel.",
+	-- },
+	-- #endregion
+	-- #region Elysium
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceElysium",
+	-- 	DisplayName = "Celestial Essence",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceElysium_Short",
+	-- 	DisplayName = "C·Essence",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceElysium_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_BossResourceElysium",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_BossResourceElysium} Celestial Essence",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceElysium_Details",
+	-- 	Description = "· Reward for vanquishing the {#BoldFormat}Guardians {#Prev}of {#BoldFormat}Elysium (Nightmare){#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceElysium_Flavor",
+	-- 	Description = "Bestowed only upon the most worthy of heroes, this intangible substance emits all colours of light.",
+	-- },
+	-- #endregion
+	-- #region Styx
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceStyx",
+	-- 	DisplayName = "Titan Blood",
+	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceStyx_Short",
+	-- 	DisplayName = "T·Blood",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceStyx_Icon",
+	-- 	InheritFrom = "ModsNikkelMHadesBiomes_BossResourceStyx",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomes_BossResourceStyx} Titan Blood",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceStyx_Details",
+	-- 	Description = "· Reward for vanquishing the {#BoldFormat}Guardian {#Prev}of {#BoldFormat}Styx (Nightmare){#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceStyx_Flavor",
+	-- 	Description = "Pulsing with primordial power, this drop of blood contains but a fraction of a Titan's might.",
+	-- },
+	-- #endregion
+	-- #endregion
 	-- #endregion
 }
 
 local hadesHelpTextCopiedEntries = mod.ModifyHadesHelpTextEntries(hadesHelpTextTable)
 
 sjson.hook(hadesTwoHelpTextFile, function(data)
-	for _, newValue in ipairs(newData) do
-		table.insert(data.Texts, sjson.to_object(newValue, order))
-	end
-	for _, newValue in ipairs(hadesHelpTextCopiedEntries) do
-		table.insert(data.Texts, sjson.to_object(newValue, order))
-	end
+	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id")
+	mod.AddTableKeysSkipDupes(data.Texts, hadesHelpTextCopiedEntries, "Id")
 end)

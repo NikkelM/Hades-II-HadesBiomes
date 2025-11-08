@@ -350,7 +350,7 @@ local roomModifications = {
 		},
 
 		HarvestPointChances = { 0.02, },
-		-- ShovelPointChance = 0.02,
+		ShovelPointChance = 0.02,
 		PickaxePointChance = 0.02,
 		ExorcismPointChance = 0.02,
 		FishingPointChance = 0.02,
@@ -363,7 +363,7 @@ local roomModifications = {
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
-		-- ShovelPointChance = 0.4,
+		ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
 		ExorcismPointChance = 0.3,
 		FishingPointChance = 0.3,
@@ -379,7 +379,7 @@ local roomModifications = {
 		LinkedRoomByPactLevel = mod.NilValue,
 		LinkedRooms = { "X_Boss01", "X_Boss02" },
 
-		-- ShovelPointChance = 0.4,
+		ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
 		ExorcismPointChance = 0.3,
 		FishingPointChance = 0.3,
@@ -415,7 +415,7 @@ local roomModifications = {
 		},
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceBossHydra",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
-		ForcedReward = "MixerGBossDrop",
+		ForcedReward = "ModsNikkelMHadesBiomes_BossResourceAsphodelDrop",
 		FirstClearRewardStore = mod.NilValue,
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
@@ -442,7 +442,7 @@ local roomModifications = {
 		IgnoreMusic = true,
 
 		HarvestPointChances = { 0.5, 0.1, },
-		-- ShovelPointChance = 0.4,
+		ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
 		ExorcismPointChance = 0.4,
 		FishingPointChance = 0.1,
@@ -527,7 +527,7 @@ local roomModifications = {
 		},
 
 		HarvestPointChances = { 0.6, 0.4, },
-		-- ShovelPointChance = 0.24,
+		ShovelPointChance = 0.24,
 		PickaxePointChance = 0.36,
 		ExorcismPointChance = 0.24,
 		FishingPointChance = 0.18,
