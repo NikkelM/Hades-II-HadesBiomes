@@ -909,7 +909,7 @@ local newData = {
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceElysium_Details",
-	-- 	Description = "· Reward for vanquishing the {#BoldFormat}Guardian {#Prev}of {#BoldFormat}Elysium (Nightmare){#Prev}",
+	-- 	Description = "· Reward for vanquishing the {#BoldFormat}Guardians {#Prev}of {#BoldFormat}Elysium (Nightmare){#Prev}",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceElysium_Flavor",
