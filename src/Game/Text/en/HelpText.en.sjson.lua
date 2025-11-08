@@ -958,7 +958,5 @@ local hadesHelpTextCopiedEntries = mod.ModifyHadesHelpTextEntries(hadesHelpTextT
 
 sjson.hook(hadesTwoHelpTextFile, function(data)
 	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id")
-	for _, newValue in ipairs(hadesHelpTextCopiedEntries) do
-		table.insert(data.Texts, sjson.to_object(newValue, order))
-	end
+	mod.AddTableKeysSkipDupes(data.Texts, hadesHelpTextCopiedEntries, "Id")
 end)
