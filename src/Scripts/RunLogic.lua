@@ -229,3 +229,12 @@ modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, ne
 
 	return isForced
 end)
+
+-- Don't invalidate checkpoints in modded runs, as we still have some crashes every now and then that could reset run progress
+modutil.mod.Path.Wrap("InvalidateCheckpoint", function(base)
+	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		ValidateCheckpoint({ Value = true })
+	else
+		base()
+	end
+end)
