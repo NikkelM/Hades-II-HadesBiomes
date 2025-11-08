@@ -57,7 +57,7 @@ end)
 
 -- Recording stats after a run
 modutil.mod.Path.Wrap("RecordRunStats", function(base)
-	if game.CurrentRun.BiomesReached.Tartarus then
+	if game.CurrentRun.BiomesReached ~= nil and game.CurrentRun.BiomesReached.Tartarus then
 		game.CurrentRun.RunResult = game.GetRunResult(game.CurrentRun)
 		game.CurrentRun.EndingRoomName = game.CurrentRun.CurrentRoom.Name
 		game.CurrentRun.WeaponsCache = game.DeepCopyTable(game.CurrentRun.Hero.Weapons)
@@ -159,7 +159,7 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 end)
 
 modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
-	if run.BiomesReached.Tartarus then
+	if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 		-- TODO: These are used in ShowTraitStats() - these runs won't be included for these stats, as there is no display for them (yet)
 		local clearCountRecordName = "ModsNikkelMHadesBiomesClearCount"
 		local fastestTimeRecordName = "ModsNikkelMHadesBiomesFastestTime"

@@ -182,6 +182,17 @@ function mod.IsMetaUpgradeActive(upgradeName, args)
 	return false
 end
 
+function mod.GetPreviousModdedRun()
+	for i = #game.GameState.RunHistory, 1, -1 do
+		local run = game.GameState.RunHistory[i]
+		-- BiomesReached is on the save whitelist, ModsNikkelMHadesBiomesIsModdedRun is not
+		if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+			return run
+		end
+	end
+	return
+end
+
 function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
 	if args == nil then
 		args = {}
@@ -436,7 +447,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	local prevRun = game.PrevRun
+	-- local prevRun = game.PrevRun
+	local prevRun = mod.GetPreviousModdedRun()
 	if requirements.RequiredAnyTextLinesLastRun ~= nil then
 		if prevRun == nil or prevRun.TextLinesRecord == nil then
 			return false
@@ -599,13 +611,15 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 		for i = #game.GameState.RunHistory, 1, -1 do
 			local run = game.GameState.RunHistory[i]
-			if mod.HasSeenRoomInRun(run, requirements.ConsecutiveDeathsInRoom.Name) then
-				if not run.Cleared and run.EndingRoomName == requirements.ConsecutiveDeathsInRoom.Name then
-					-- Saw the room this run and died in it, streak continues
-					consecutiveDeathsInRoom = consecutiveDeathsInRoom + 1
-				else
-					-- Saw the room this run and didn't die, streak is broken
-					break
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+				if mod.HasSeenRoomInRun(run, requirements.ConsecutiveDeathsInRoom.Name) then
+					if not run.Cleared and run.EndingRoomName == requirements.ConsecutiveDeathsInRoom.Name then
+						-- Saw the room this run and died in it, streak continues
+						consecutiveDeathsInRoom = consecutiveDeathsInRoom + 1
+					else
+						-- Saw the room this run and didn't die, streak is broken
+						break
+					end
 				end
 			end
 		end
@@ -615,7 +629,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.ConsecutiveClearsOfRoom ~= nil then --
+	if requirements.ConsecutiveClearsOfRoom ~= nil then
 		local consecutiveClearsOfRoom = 0
 		if mod.HasSeenRoomEarlierInRun(game.CurrentRun, requirements.ConsecutiveClearsOfRoom.Name) then
 			if game.CurrentRun.Cleared or game.CurrentRun.EndingRoomName ~= requirements.ConsecutiveClearsOfRoom.Name then
@@ -628,13 +642,15 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 		for i = #game.GameState.RunHistory, 1, -1 do
 			local run = game.GameState.RunHistory[i]
-			if mod.HasSeenRoomInRun(run, requirements.ConsecutiveClearsOfRoom.Name) then
-				if run.Cleared or run.EndingRoomName ~= requirements.ConsecutiveClearsOfRoom.Name then
-					-- Saw the room this run and didn't die in it, streak continues
-					consecutiveClearsOfRoom = consecutiveClearsOfRoom + 1
-				else
-					-- Saw the room this run and died in it, streak is broken
-					break
+			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+				if mod.HasSeenRoomInRun(run, requirements.ConsecutiveClearsOfRoom.Name) then
+					if run.Cleared or run.EndingRoomName ~= requirements.ConsecutiveClearsOfRoom.Name then
+						-- Saw the room this run and didn't die in it, streak continues
+						consecutiveClearsOfRoom = consecutiveClearsOfRoom + 1
+					else
+						-- Saw the room this run and died in it, streak is broken
+						break
+					end
 				end
 			end
 		end
@@ -2569,7 +2585,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 					return false
 				end
 			end
-			runsSinceOccurred = runsSinceOccurred + 1
+			if prevRun.BiomesReached ~= nil and prevRun.BiomesReached.Tartarus then
+				runsSinceOccurred = runsSinceOccurred + 1
+			end
 		end
 	end
 	if requirements.MaxRunsSinceSquelchedHermes ~= nil then
@@ -2587,7 +2605,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 					return false
 				end
 			end
-			runsSinceOccurred = runsSinceOccurred + 1
+			if prevRun.BiomesReached ~= nil and prevRun.BiomesReached.Tartarus then
+				runsSinceOccurred = runsSinceOccurred + 1
+			end
 		end
 		if squelchedTimes == 0 then
 			return false
@@ -2605,10 +2625,12 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 						return false
 					end
 				end
-				runsSinceOccurred = runsSinceOccurred + 1
-				if runsSinceOccurred >= requirements.MinRunsSinceAnyTextLines.Count then
-					-- Already exceeded safely
-					break
+				if prevRun.BiomesReached ~= nil and prevRun.BiomesReached.Tartarus then
+					runsSinceOccurred = runsSinceOccurred + 1
+					if runsSinceOccurred >= requirements.MinRunsSinceAnyTextLines.Count then
+						-- Already exceeded safely
+						break
+					end
 				end
 			end
 		end
@@ -2627,7 +2649,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 						break
 					end
 				end
-				runsSinceOccurred = runsSinceOccurred + 1
+				if prevRun.BiomesReached ~= nil and prevRun.BiomesReached.Tartarus then
+					runsSinceOccurred = runsSinceOccurred + 1
+				end
 			end
 		end
 	end
