@@ -493,7 +493,7 @@ local newData = {
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreAsphodel_Flavor",
-	-- 	Description = "In the heat of Asphodel, only the sturdiest of rocks can  hope to withstand the test of time."
+	-- 	Description = "In the heat of Asphodel, only the sturdiest of rocks can hope to withstand the test of time."
 	-- },
 	-- #endregion
 	-- #region Elysium
