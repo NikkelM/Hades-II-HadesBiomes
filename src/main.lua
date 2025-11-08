@@ -309,6 +309,7 @@ local function on_ready()
 		import "Scripts/HarvestLogic.lua"
 		import "Scripts/HarvestPresentation.lua"
 		import "Scripts/HubPresentation.lua"
+		import "Scripts/MarketLogic.lua"
 		import "Scripts/NarrativeData.lua"
 		import "Scripts/PowersLogic.lua"
 		import "Scripts/RequirementsLogic.lua"

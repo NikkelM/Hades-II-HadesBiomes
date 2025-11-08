@@ -1,3 +1,15 @@
+-- #region Generic
+-- We need a new resource to show as the "cost" for the new category in the broker/market screen
+local newGenericMarketData = {
+	-- Don't add this to the inventory! This is a hidden resource only added for the icon on the broker trade screen
+	ModsNikkelMHadesBiomes_BrokerResource = {
+		InheritFrom = { "BaseResource" },
+		IconPath = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_72x72",
+	},
+}
+mod.AddTableKeysSkipDupes(game.ResourceData, newGenericMarketData)
+-- #endregion
+
 -- #region Fishing
 -- General data for each fish
 local newFishData = {
@@ -288,6 +300,7 @@ local newBossResourceData = {
 		TooltipId = "ModsNikkelMHadesBiomes_BossResourceTartarus_Icon",
 		CostTextId = "ModsNikkelMHadesBiomes_BossResourceTartarus_Short",
 		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+		BrokerCannotSpendVoiceLines = { { GlobalVoiceLines = "InvalidResourceInteractionVoiceLines" }, }
 	},
 	ModsNikkelMHadesBiomes_BossResourceAsphodel = {
 		InheritFrom = { "BaseResource" },
@@ -296,6 +309,7 @@ local newBossResourceData = {
 		TooltipId = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Icon",
 		CostTextId = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Short",
 		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+		BrokerCannotSpendVoiceLines = { { GlobalVoiceLines = "InvalidResourceInteractionVoiceLines" }, }
 	},
 	ModsNikkelMHadesBiomes_BossResourceElysium = {
 		InheritFrom = { "BaseResource" },
@@ -304,6 +318,7 @@ local newBossResourceData = {
 		TooltipId = "ModsNikkelMHadesBiomes_BossResourceElysium_Icon",
 		CostTextId = "ModsNikkelMHadesBiomes_BossResourceElysium_Short",
 		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+		BrokerCannotSpendVoiceLines = { { GlobalVoiceLines = "InvalidResourceInteractionVoiceLines" }, }
 	},
 	ModsNikkelMHadesBiomes_BossResourceStyx = {
 		InheritFrom = { "BaseResource" },
@@ -312,6 +327,7 @@ local newBossResourceData = {
 		TooltipId = "ModsNikkelMHadesBiomes_BossResourceStyx_Icon",
 		CostTextId = "ModsNikkelMHadesBiomes_BossResourceStyx_Short",
 		OnAddVoiceLines = { { GlobalVoiceLines = "ResourceFoundVoiceLines" }, },
+		BrokerCannotSpendVoiceLines = { { GlobalVoiceLines = "InvalidResourceInteractionVoiceLines" }, }
 	},
 }
 mod.AddTableKeysSkipDupes(game.ResourceData, newBossResourceData)

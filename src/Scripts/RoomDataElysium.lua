@@ -497,7 +497,7 @@ local roomModifications = {
 		},
 		PickaxePointRequirements = {
 			{
-				Path = { "GameState", "CompletedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
 				Comparison = ">=",
 				Value = 1,
 			},
