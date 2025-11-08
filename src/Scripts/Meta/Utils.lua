@@ -63,8 +63,9 @@ end
 ---@param tableToOverwrite table The table to add keys or entries to.
 ---@param tableToTake table The table to take keys or entries from.
 ---@param property string|nil The property to check for duplicates with. If nil, keys are checked.
+---@property order table|nil If provided, entries will be inserted as sjson objects using this order.
 ---@return table tableToTake All non-duplicate keys or entries from tableToTake.
-function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
+function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property, order)
 	if tableToTake == nil then
 		return {}
 	end
@@ -84,7 +85,11 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property)
 		-- Iterate through tableToTake and add non-duplicate entries to tableToOverwrite
 		for _, entryToTake in pairs(tableToTake) do
 			if entryToTake[property] and not propertyLookup[entryToTake[property]] then
-				table.insert(tableToOverwrite, entryToTake)
+				if order ~= nil then
+					table.insert(tableToOverwrite, sjson.to_object(entryToTake, order))
+				else
+					table.insert(tableToOverwrite, entryToTake)
+				end
 				table.insert(nonDuplicateItems, entryToTake)
 				propertyLookup[entryToTake[property]] = #tableToOverwrite
 			else

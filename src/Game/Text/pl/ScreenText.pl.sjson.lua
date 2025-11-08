@@ -1,5 +1,12 @@
 local screenTextFile = rom.path.combine(rom.paths.Content(), "Game\\Text\\pl\\ScreenText.pl.sjson")
 
+local order = {
+	"Id",
+	"InheritFrom",
+	"DisplayName",
+	"OverwriteLocalization"
+}
+
 local newData = {
 	-- #region Run history
 	{
@@ -62,5 +69,5 @@ local newData = {
 }
 
 sjson.hook(screenTextFile, function(data)
-	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id")
+	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id", order)
 end)

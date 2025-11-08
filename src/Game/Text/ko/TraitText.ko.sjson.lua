@@ -1,5 +1,12 @@
 local traitTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/ko/TraitText.ko.sjson")
 
+local order = {
+	"Id",
+	"InheritFrom",
+	"DisplayName",
+	"OverwriteLocalization"
+}
+
 local newData = {
 	-- #region Sisyphus
 	-- {
@@ -116,5 +123,5 @@ local newData = {
 }
 
 sjson.hook(traitTextFile, function(data)
-	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id")
+	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id", order)
 end)

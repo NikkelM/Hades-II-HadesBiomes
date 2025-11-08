@@ -1,5 +1,12 @@
 local helpTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/el/HelpText.el.sjson")
 
+local order = {
+	"Id",
+	"InheritFrom",
+	"DisplayName",
+	"OverwriteLocalization"
+}
+
 local newData = {
 	-- #region Meta
 	-- {
@@ -942,5 +949,5 @@ local newData = {
 }
 
 sjson.hook(helpTextFile, function(data)
-	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id")
+	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id", order)
 end)

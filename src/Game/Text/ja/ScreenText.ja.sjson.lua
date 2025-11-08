@@ -1,6 +1,13 @@
 -- Hooking CodexText for this language, as sjson.hook doesn't handle ScreentText decoding correctly
 local screenTextFile = rom.path.combine(rom.paths.Content(), "Game\\Text\\ja\\CodexText.ja.sjson")
 
+local order = {
+	"Id",
+	"InheritFrom",
+	"DisplayName",
+	"OverwriteLocalization"
+}
+
 local newData = {
 	-- #region Run history
 	{
@@ -63,5 +70,5 @@ local newData = {
 }
 
 sjson.hook(screenTextFile, function(data)
-	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id")
+	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id", order)
 end)
