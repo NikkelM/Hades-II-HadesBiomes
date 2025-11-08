@@ -11,35 +11,39 @@ local newData = {
 	-- #region Run history
 	{
 		Id = "RunHistoryScreen_RouteTartarus",
-		DisplayName = "악몽",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteAsphodel",
-		DisplayName = "악몽",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteElysium",
-		DisplayName = "악몽",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteStyx",
-		DisplayName = "악몽",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteSurface",
-		DisplayName = "악몽",
+		InheritFrom = "WeaponPointsRare",
 	},
 	-- #endregion
 
 	-- #region Codex/Inventory
 	{
 		Id = "ModsNikkelMHadesBiomesCodexEntryTitleText",
-		DisplayName = "악몽",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "InventoryScreen_ModesNikkelMHadesBiomesTab",
 		InheritFrom = "ModsNikkelMHadesBiomesCodexEntryTitleText",
 	},
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_MarketScreen_Resources",
+	-- 	DisplayName = "Barter Exchange",
+	-- },
 	-- #endregion
 
 	-- #region Install screens

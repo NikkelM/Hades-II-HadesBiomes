@@ -11,35 +11,39 @@ local newData = {
 	-- #region Run history
 	{
 		Id = "RunHistoryScreen_RouteTartarus",
-		DisplayName = "Incubo",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteAsphodel",
-		DisplayName = "Incubo",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteElysium",
-		DisplayName = "Incubo",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteStyx",
-		DisplayName = "Incubo",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "RunHistoryScreen_RouteSurface",
-		DisplayName = "Incubo",
+		InheritFrom = "WeaponPointsRare",
 	},
 	-- #endregion
 
 	-- #region Codex/Inventory
 	{
 		Id = "ModsNikkelMHadesBiomesCodexEntryTitleText",
-		DisplayName = "Incubo",
+		InheritFrom = "WeaponPointsRare",
 	},
 	{
 		Id = "InventoryScreen_ModesNikkelMHadesBiomesTab",
 		InheritFrom = "ModsNikkelMHadesBiomesCodexEntryTitleText",
 	},
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_MarketScreen_Resources",
+	-- 	DisplayName = "Barter Exchange",
+	-- },
 	-- #endregion
 
 	-- #region Install screens
