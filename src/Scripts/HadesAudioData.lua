@@ -1624,6 +1624,16 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/HadesField_0227", PreLineWait = 0.65 },
 		},
 	},
+	-- Ending
+	HadesSighVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.9,
+		AllowTalkOverTextLines = true,
+		ObjectType = "NPC_Hades_Story_02",
+		-- <Sigh>
+		{ Cue = "/VO/HadesField_0617" },
+	},
 	-- #endregion
 	-- #region Megaera
 	MultiFuryFightStartVoiceLines = {

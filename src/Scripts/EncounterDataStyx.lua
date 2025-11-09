@@ -123,6 +123,11 @@ local encounterModifications = {
 		-- As we might spawn enemies from BiomeB from Hades II, and we need the Hades symbol for the exit animation from BiomeI
 		LoadPackages = { "BiomeB", "BiomeI" },
 	},
+	BossHadesPeaceful = {
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicSurfaceModded", },
+		DelayedStart = true,
+		PostUnthreadedEvents = mod.NilValue,
+	},
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataStyx, encounterModifications, encounterReplacements)

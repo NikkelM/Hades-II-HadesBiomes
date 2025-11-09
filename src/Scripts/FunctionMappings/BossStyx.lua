@@ -1215,3 +1215,18 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 	SetAlpha({ Id = traitTrayScreen.Components.ScrollRight.Id, Duration = game.HUDScreen.FadeInDuration, Fraction = 1.0 })
 	game.HandleScreenInput(screen)
 end
+
+-- Ending
+function game.DoHadesSigh()
+	SetAlpha({ Id = game.ScreenAnchors.DialogueBackgroundId, Fraction = 0.0, Duration = 0.5 })
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.HadesSighVoiceLines)
+	-- "/Music/PersephoneTheme_MC"
+	game.thread(game.MusicPlayer, "{6925b297-5627-4549-b137-135aca5919d2}")
+	SetSoundCueValue({ Names = { "Strings", "Harp", "Percussion", "Room" }, Id = game.AudioState.MusicId, Value = 1, Duration = 0.75 })
+	SetSoundCueValue({ Names = { "WoodWinds", "Trombones" }, Id = game.AudioState.MusicId, Value = 0, Duration = 0.75 })
+	-- Custom
+	SetVolume({ Id = game.AudioState.MusicId, Value = 1.4 })
+
+	game.wait(4.6)
+	SetAlpha({ Id = game.ScreenAnchors.DialogueBackgroundId, Fraction = 1.0, Duration = 0.5 })
+end
