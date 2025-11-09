@@ -48,7 +48,7 @@ local roomReplacements = {
 		},
 		ShovelPointRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
 				Value = 1,
 			},
@@ -109,7 +109,7 @@ local roomReplacements = {
 		},
 		PickaxePointRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
 				Value = 1,
 			},
@@ -165,7 +165,7 @@ local roomReplacements = {
 		},
 		ExorcismPointRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
 				Value = 2,
 			},
@@ -417,7 +417,7 @@ local roomReplacements = {
 				PlayOnce = true,
 				PlayOnceContext = "ModsNikkelMHadesBiomes_D_Boss01",
 				{ Cue = "/VO/MelinoeField_0920", Text = "You're not going to step aside, are you?", RequiredTextLines = { "PersephoneMeeting06" }, RequiredFalseTextLines = { "Ending01" }, },
-				{ Cue = "/VO/MelinoeField_1904", Text = "You're in my way.",                            RequiredTextLines = { "PersephoneMeeting09" }, RequiredFalseTextLines = { "Ending01" }, },
+				{ Cue = "/VO/MelinoeField_1904", Text = "You're in my way.",                        RequiredTextLines = { "PersephoneMeeting09" }, RequiredFalseTextLines = { "Ending01" }, },
 			},
 			-- Afterwards
 			{
@@ -663,7 +663,7 @@ local roomModifications = {
 		},
 		ShovelPointRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
 				Value = 1,
 			},
@@ -693,7 +693,7 @@ local roomModifications = {
 		},
 		PickaxePointRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
 				Value = 1,
 			},

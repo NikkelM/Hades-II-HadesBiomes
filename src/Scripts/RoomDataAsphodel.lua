@@ -42,7 +42,7 @@ local roomReplacements = {
 		},
 		ShovelPointRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
 				Value = 1,
 			},
@@ -101,7 +101,7 @@ local roomReplacements = {
 		},
 		PickaxePointRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
 				Value = 1,
 			},
@@ -157,7 +157,7 @@ local roomReplacements = {
 		},
 		ExorcismPointRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
 				Value = 2,
 			},
@@ -465,7 +465,7 @@ local roomModifications = {
 		},
 		ShovelPointRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
 				Value = 1,
 			},
@@ -495,7 +495,7 @@ local roomModifications = {
 		},
 		PickaxePointRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
 				Value = 1,
 			},

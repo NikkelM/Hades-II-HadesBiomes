@@ -127,8 +127,10 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 		game.GameState.ClearedRunsCache = runsCleared
 		game.GameState.ClearedUnderworldRunsCache = underworldRunsCleared
 		game.GameState.ClearedSurfaceRunsCache = surfaceRunsCleared
-		-- Custom field
+		-- Custom fields
 		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = moddedRunsCleared
+		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache or 0
+		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache + 1
 
 		game.UpdateLifetimeTraitRecords(game.CurrentRun)
 

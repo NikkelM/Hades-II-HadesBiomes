@@ -440,7 +440,7 @@ local newBrokerBossTradeCategory = {
 	GameStateRequirements = {
 		-- To prevent an error when this new category is added while the player is in the Crossroads when installing the mod
 		{
-			Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+			Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 			Comparison = ">=",
 			Value = 1,
 		},

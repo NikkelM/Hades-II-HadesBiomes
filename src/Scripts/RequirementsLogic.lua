@@ -1176,17 +1176,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	-- if requirements.RequiredCompletedRuns ~= nil and GetCompletedRuns() ~= requirements.RequiredCompletedRuns then
-	if requirements.RequiredCompletedRuns ~= nil then
-		local completedModdedRuns = 0
-		for i, run in pairs(game.GameState.RunHistory) do
-			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
-				completedModdedRuns = completedModdedRuns + 1
-			end
-		end
-		if completedModdedRuns ~= requirements.RequiredCompletedRuns then
-			return false
-		end
+	if requirements.RequiredCompletedRuns ~= nil and game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache == nil or game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache ~= requirements.RequiredCompletedRuns then
+		return false
 	end
 
 	if requirements.RequiredFalseCompletedRuns ~= nil then
