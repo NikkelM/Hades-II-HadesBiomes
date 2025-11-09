@@ -6,11 +6,41 @@ local hadesTwoScreenVFXModifications = {}
 local addParentAnimations = {}
 
 local addAnimations = {
+	-- #region Run End Screens
 	ModsNikkelMHadesBiomes_VictoryScreenIllustration_Elysium = {
 		Name = "ModsNikkelMHadesBiomes_VictoryScreenIllustration_Elysium",
 		InheritFrom = "VictoryScreenIllustration_Underworld",
 		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\VictoryScreen\\VictoryScreenBackground_Elysium",
 	},
+	-- #endregion
+	-- #region Run History Screens
+	{
+		Name = "ModsNikkelMHadesBiomes_RunHistoryIn",
+		VideoTexture = "RunHistoryInHadesModdedXX",
+		NumFrames = 20,
+		PlaySpeed = 30,
+		Material = "Unlit",
+		ChainTo = "ModsNikkelMHadesBiomes_RunHistoryLoop",
+		-- TODO
+		Sound = "/SFX/Menu Sounds/RunHistoryUnderworld",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_RunHistoryLoop",
+		VideoTexture = "RunHistoryLoopHadesModded",
+		NumFrames = 150,
+		PlaySpeed = 30,
+		Material = "Unlit",
+		Loop = true,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_RunHistoryOut",
+		VideoTexture = "RunHistoryInHadesModdedXX",
+		NumFrames = 20,
+		PlaySpeed = 30,
+		Material = "Unlit",
+		PlayBackwards = true,
+	},
+	-- #endregion
 }
 
 sjson.hook(hadesTwoScreensVFXFile, function(data)

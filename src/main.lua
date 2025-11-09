@@ -318,6 +318,7 @@ local function on_ready()
 		import "Scripts/RoomLogic.lua"
 		import "Scripts/RoomPresentation.lua"
 		import "Scripts/RunHistoryLogic.lua"
+		import "Scripts/RunHistoryPresentation.lua"
 		import "Scripts/RunLogic.lua"
 		import "Scripts/ShrinePresentation.lua"
 		import "Scripts/StoreLogic.lua"
