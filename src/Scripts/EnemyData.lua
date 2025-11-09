@@ -1413,6 +1413,7 @@ local enemyModifications = {
 		WeaponOptions = { "ChariotRamDeathWeapon" },
 	},
 	FlurrySpawner = {
+		StunAnimations = { Default = "SoulSpawnerIdle" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		DestroyDelay = mod.NilValue,
 	},
