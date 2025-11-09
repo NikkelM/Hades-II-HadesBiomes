@@ -403,6 +403,7 @@ mod.CustomBikFileNames = {
 	"HadesBiomesDiaBackElysium",
 	"HadesBiomesDiaBackEChamps",
 	"HadesBiomesDiaBackStyxBoss",
+	"RunHistoryLoopHadesModded",
 }
 
 mod.SjsonFileMappings = {
