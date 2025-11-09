@@ -1176,7 +1176,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredCompletedRuns ~= nil and game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache == nil or game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache ~= requirements.RequiredCompletedRuns then
+	if requirements.RequiredCompletedRuns ~= nil and (game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache == nil or game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache ~= requirements.RequiredCompletedRuns) then
 		return false
 	end
 
