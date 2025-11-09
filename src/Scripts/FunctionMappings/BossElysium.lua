@@ -1,6 +1,6 @@
 function mod.ModsNikkelMHadesBiomesSetFlag(source, args)
 	args = args or {}
-	game.GameState.Flags[args.flagName] = args.value
+	game.GameState.Flags[args.FlagName] = args.value
 end
 
 function mod.BossIntroElysium(eventSource, args)
