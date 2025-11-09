@@ -28,7 +28,7 @@ local addProjectiles = {
 	ModsNikkelMHadesBiomesRubbleFall = game.DeepCopyTable(game.ProjectileData.RubbleFall),
 	ModsNikkelMHadesBiomesRubbleFallLarge = game.DeepCopyTable(game.ProjectileData.RubbleFallLarge),
 	HadesCast = {
-		OnDeathFunctionName =  _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHandleHadesCastDeath",
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHandleHadesCastDeath",
 		SpawnName = "HadesAmmo",
 		CarriesSpawns = true,
 		StoredAmmoVulnerabilityMultiplier = 2.0,
@@ -36,10 +36,10 @@ local addProjectiles = {
 		StoredAmmoIcon = "AmmoEmbeddedInPlayerIcon",
 		AmmoDropProjectile = "HadesAmmoDrop",
 	},
-	ThanatosDeathCurse =	{
+	ThanatosDeathCurse = {
 		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "CurseHealthBar" },
 	},
-	ThanatosDeathCurseAoE =	{
+	ThanatosDeathCurseAoE = {
 		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "CurseHealthBar" },
 	},
 }
@@ -69,6 +69,21 @@ local projectileModifications = {
 	-- #endregion
 
 	-- #region STYX
+	PoisonTrapWeapon = {
+		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesStyxPoisonWeaponHit" },
+	},
+	HadesPoisonPuddle = {
+		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesStyxPoisonWeaponHit" },
+	},
+	HadesPoisonPuddleSmall = {
+		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesStyxPoisonWeaponHit" },
+	},
+	SatyrRangedWeapon = {
+		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesStyxPoisonWeaponHit" },
+	},
+	SatyrRangedMinigun = {
+		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesStyxPoisonWeaponHit" },
+	},
 	HeavyRangedWeaponFork = {
 		InheritFrom = { "HeavyRangedWeapon", },
 	},
