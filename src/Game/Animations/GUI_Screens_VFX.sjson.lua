@@ -23,10 +23,7 @@ local addAnimations = {
 		PlaySpeed = 30,
 		Material = "Unlit",
 		ChainTo = "ModsNikkelMHadesBiomes_RunHistoryLoop",
-		-- TODO
 		Sound = "/SFX/Menu Sounds/RunHistoryUnderworld",
-		-- Sound = "/SFX/Menu Sounds/RunHistoryChaos"
-		-- Sound = "/SFX/Menu Sounds/RunHistorySurface"
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_RunHistoryLoop",
@@ -53,10 +50,7 @@ local addAnimations = {
 	-- 	PlaySpeed = 60,
 	-- 	Material = "Unlit",
 	-- 	ChainTo = "ModsNikkelMHadesBiomes_RunHistoryLoop",
-	-- 	-- TODO
 	-- 	Sound = "/SFX/Menu Sounds/RunHistoryUnderworld",
-	-- 	-- Sound = "/SFX/Menu Sounds/RunHistoryChaos"
-	-- 	-- Sound = "/SFX/Menu Sounds/RunHistorySurface"
 	-- },
 	-- {
 	-- 	Name = "ModsNikkelMHadesBiomes_RunHistoryTransitionModdedToBlank",
@@ -78,7 +72,6 @@ local addAnimations = {
 		PlaySpeed = 30,
 		Material = "Unlit",
 		ChainTo = "ModsNikkelMHadesBiomes_RunHistoryLoopFail",
-		-- TODO
 		Sound = "/SFX/Menu Sounds/RunHistoryUnderworld",
 	},
 	{
@@ -106,10 +99,7 @@ local addAnimations = {
 	-- 	PlaySpeed = 60,
 	-- 	Material = "Unlit",
 	-- 	ChainTo = "ModsNikkelMHadesBiomes_RunHistoryLoopFail",
-	-- 	-- TODO
 	-- 	Sound = "/SFX/Menu Sounds/RunHistoryUnderworld",
-	-- 	-- Sound = "/SFX/Menu Sounds/RunHistoryChaos"
-	-- 	-- Sound = "/SFX/Menu Sounds/RunHistorySurface"
 	-- },
 	-- {
 	-- 	Name = "ModsNikkelMHadesBiomes_RunHistoryTransitionModdedFailToBlank",
