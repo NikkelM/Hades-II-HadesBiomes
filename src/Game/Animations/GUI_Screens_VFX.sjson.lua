@@ -43,24 +43,27 @@ local addAnimations = {
 	},
 	-- #endregion
 	-- #region To/From Blank
-	-- {
-	-- 	Name = "ModsNikkelMHadesBiomes_RunHistoryTransitionBlankToModded",
-	-- 	VideoTexture = "RunHistoryTransitionBlankToModdedX", -- from ToSurface bik_atlas
-	-- 	NumFrames = 35,
-	-- 	PlaySpeed = 60,
-	-- 	Material = "Unlit",
-	-- 	ChainTo = "ModsNikkelMHadesBiomes_RunHistoryLoop",
-	-- 	Sound = "/SFX/Menu Sounds/RunHistoryUnderworld",
-	-- },
-	-- {
-	-- 	Name = "ModsNikkelMHadesBiomes_RunHistoryTransitionModdedToBlank",
-	-- 	VideoTexture = "RunHistoryTransitionModdedToBlankX", -- from ToSurface bik_atlas
-	-- 	NumFrames = 20,
-	-- 	PlaySpeed = 60,
-	-- 	Material = "Unlit",
-	-- 	ChainTo = "RunHistoryLoopBlank",
-	-- 	Sound = "/SFX/Menu Sounds/RunHistoryCrystalsOut",
-	-- },
+	{
+		Name = "ModsNikkelMHadesBiomes_RunHistoryTransitionBlankToModded",
+		VideoTexture = "RunHistoryTransitionBlankToModdedX",
+		NumFrames = 35,
+		PlaySpeed = 60,
+		Material = "Unlit",
+		ChainTo = "ModsNikkelMHadesBiomes_RunHistoryLoop",
+		Sound = "/SFX/Menu Sounds/RunHistoryUnderworld",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_RunHistoryTransitionModdedToBlank",
+		VideoTexture = "RunHistoryTransitionBlankToModdedX",
+		NumFrames = 20,
+		StartFrame = 1,
+		EndFrame = 20,
+		PlaySpeed = 60,
+		Material = "Unlit",
+		PlayBackwards = true,
+		ChainTo = "RunHistoryLoopBlank",
+		Sound = "/SFX/Menu Sounds/RunHistoryCrystalsOut",
+	},
 	-- #endregion
 	-- #endregion
 	-- #region Fail
@@ -98,15 +101,18 @@ local addAnimations = {
 	-- 	NumFrames = 35,
 	-- 	PlaySpeed = 60,
 	-- 	Material = "Unlit",
-	-- 	ChainTo = "ModsNikkelMHadesBiomes_RunHistoryLoopFail",
+	-- 	ChainTo = "ModsNikkelMHadesBiomes_RunHistoryLoop",
 	-- 	Sound = "/SFX/Menu Sounds/RunHistoryUnderworld",
 	-- },
 	-- {
 	-- 	Name = "ModsNikkelMHadesBiomes_RunHistoryTransitionModdedFailToBlank",
-	-- 	VideoTexture = "RunHistoryTransitionModdedFailToBlankX", -- from ToSurfaceFail bik_atlas
+	-- 	VideoTexture = "RunHistoryTransitionBlankToModdedFailX", -- from ToSurfaceFail bik_atlas
 	-- 	NumFrames = 20,
+	-- 	StartFrame = 1,
+	-- 	EndFrame = 20,
 	-- 	PlaySpeed = 60,
 	-- 	Material = "Unlit",
+	-- 	PlayBackwards = true,
 	-- 	ChainTo = "RunHistoryLoopBlank",
 	-- 	Sound = "/SFX/Menu Sounds/RunHistoryCrystalsOut",
 	-- },

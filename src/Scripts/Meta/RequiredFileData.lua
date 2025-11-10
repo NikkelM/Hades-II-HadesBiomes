@@ -407,6 +407,8 @@ mod.CustomBikFileNames = {
 	"RunHistoryInModdedFailXXX",
 	"RunHistoryLoopHadesModded",
 	"RunHistoryLoopModdedFailX",
+	"RunHistoryTransitionBlankToModdedX",
+	-- "RunHistoryTransitionBlankToModdedFailX", -- Both missing,
 }
 
 mod.SjsonFileMappings = {
