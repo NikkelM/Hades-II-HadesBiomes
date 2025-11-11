@@ -95,27 +95,27 @@ local addAnimations = {
 	},
 	-- #endregion
 	-- #region To/From Blank
-	-- {
-	-- 	Name = "ModsNikkelMHadesBiomes_RunHistoryTransitionBlankToModdedFail",
-	-- 	VideoTexture = "RunHistoryTransitionBlankToModdedFailX", -- from ToSurfaceFail bik_atlas
-	-- 	NumFrames = 35,
-	-- 	PlaySpeed = 60,
-	-- 	Material = "Unlit",
-	-- 	ChainTo = "ModsNikkelMHadesBiomes_RunHistoryLoop",
-	-- 	Sound = "/SFX/Menu Sounds/RunHistoryUnderworld",
-	-- },
-	-- {
-	-- 	Name = "ModsNikkelMHadesBiomes_RunHistoryTransitionModdedFailToBlank",
-	-- 	VideoTexture = "RunHistoryTransitionBlankToModdedFailX", -- from ToSurfaceFail bik_atlas
-	-- 	NumFrames = 20,
-	-- 	StartFrame = 1,
-	-- 	EndFrame = 20,
-	-- 	PlaySpeed = 60,
-	-- 	Material = "Unlit",
-	-- 	PlayBackwards = true,
-	-- 	ChainTo = "RunHistoryLoopBlank",
-	-- 	Sound = "/SFX/Menu Sounds/RunHistoryCrystalsOut",
-	-- },
+	{
+		Name = "ModsNikkelMHadesBiomes_RunHistoryTransitionBlankToModdedFail",
+		VideoTexture = "RunHistoryTransitionBlankToModdedFailX",
+		NumFrames = 35,
+		PlaySpeed = 60,
+		Material = "Unlit",
+		ChainTo = "ModsNikkelMHadesBiomes_RunHistoryLoopFail",
+		Sound = "/SFX/Menu Sounds/RunHistoryUnderworld",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_RunHistoryTransitionModdedFailToBlank",
+		VideoTexture = "RunHistoryTransitionBlankToModdedFailX",
+		NumFrames = 20,
+		StartFrame = 1,
+		EndFrame = 20,
+		PlaySpeed = 60,
+		Material = "Unlit",
+		PlayBackwards = true,
+		ChainTo = "RunHistoryLoopBlank",
+		Sound = "/SFX/Menu Sounds/RunHistoryCrystalsOut",
+	},
 	-- #endregion
 	-- #endregion
 	-- #endregion
