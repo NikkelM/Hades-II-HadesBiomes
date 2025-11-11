@@ -1529,6 +1529,12 @@ local enemyModifications = {
 		OnDeathFunctionArgs = {
 			ProjectileName = "HadesPoisonPuddle",
 		},
+		-- Don't allow poison attack when summoned on the player's side
+		SpellSummonDataOverrides = {
+			WeaponOptions = {
+				"RatThugMelee"
+			},
+		},
 	},
 	Crawler = {
 		IgnoreSpeedShrine = true,
