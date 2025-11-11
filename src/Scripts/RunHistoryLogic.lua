@@ -9,6 +9,9 @@ modutil.mod.Path.Wrap("RunHistoryUpdateVisibility", function(base, screen)
 			local button = screen.Components[screen.ButtonName .. runIndex]
 			local routeName = "RunHistoryScreen_RouteModsNikkelMHadesBiomes"
 			button.AnimationIndex = 7
+			if not game.WasRunSuccess(run) then
+				button.AnimationIndex = button.AnimationIndex + 1
+			end
 			ModifyTextBox({ Id = screen.ButtonIds[firstIndex - runIndex + 1], LuaKey = "TempTextData", LuaValue = { RunNum = runIndex, RouteName = routeName } })
 		end
 	end
