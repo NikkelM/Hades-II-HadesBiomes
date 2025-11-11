@@ -5,8 +5,13 @@ modutil.mod.Path.Wrap("RunHistoryUpdateVisibility", function(base, screen)
 	local lastIndex = math.max(1, firstIndex - screen.ItemsPerPage + 1)
 	for runIndex = firstIndex, lastIndex, -1 do
 		local run = game.GameState.RunHistory[runIndex] or game.CurrentRun
-		if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+		if run.BiomesReached ~= nil and (run.BiomesReached.Tartarus or run.BiomesReached.Asphodel or run.BiomesReached.Elysium or run.BiomesReached.Styx) then
+			local button = screen.Components[screen.ButtonName .. runIndex]
 			local routeName = "RunHistoryScreen_RouteModsNikkelMHadesBiomes"
+			button.AnimationIndex = 7
+			if not game.WasRunSuccess(run) then
+				button.AnimationIndex = button.AnimationIndex + 1
+			end
 			ModifyTextBox({ Id = screen.ButtonIds[firstIndex - runIndex + 1], LuaKey = "TempTextData", LuaValue = { RunNum = runIndex, RouteName = routeName } })
 		end
 	end
@@ -17,7 +22,7 @@ modutil.mod.Path.Context.Wrap("ShowRunHistory", function(screen, button)
 		if args.Text == "RunHistoryScreen_Cleared" then
 			local run = button.Run
 			-- If the run was cleared, show the "ESCAPED" text instead of "PREVAILED!!"
-			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+			if run.BiomesReached ~= nil and (run.BiomesReached.Tartarus or run.BiomesReached.Asphodel or run.BiomesReached.Elysium or run.BiomesReached.Styx) then
 				args.Text = "ModsNikkelMHadesBiomes_RunHistoryScreen_Cleared"
 			end
 		end

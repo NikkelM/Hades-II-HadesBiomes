@@ -81,10 +81,22 @@ local function on_ready()
 	import "Scripts/Meta/FirstTimeSetup.lua"
 	import "Scripts/Meta/Uninstall.lua"
 
-	-- We need to define mod.TryImportLanguageFile before calling it
-	import "Scripts/UILogic.lua"
-	-- We need to import the ScreenText file as we might need to show an unsuccessful install screen with localized text
-	mod.TryImportLanguageFile("ScreenText")
+	-- We need to always import the ScreenText file early as we might need to show an unsuccessful install screen with localized text
+	import "Game/Text/de/ScreenText.de.sjson.lua"
+	import "Game/Text/el/ScreenText.el.sjson.lua"
+	import "Game/Text/en/ScreenText.en.sjson.lua"
+	import "Game/Text/es/ScreenText.es.sjson.lua"
+	import "Game/Text/fr/ScreenText.fr.sjson.lua"
+	import "Game/Text/it/ScreenText.it.sjson.lua"
+	import "Game/Text/ja/ScreenText.ja.sjson.lua"
+	import "Game/Text/ko/ScreenText.ko.sjson.lua"
+	import "Game/Text/pl/ScreenText.pl.sjson.lua"
+	import "Game/Text/pt-BR/ScreenText.pt-BR.sjson.lua"
+	import "Game/Text/ru/ScreenText.ru.sjson.lua"
+	import "Game/Text/tr/ScreenText.tr.sjson.lua"
+	import "Game/Text/uk/ScreenText.uk.sjson.lua"
+	import "Game/Text/zh-CN/ScreenText.zh-CN.sjson.lua"
+	import "Game/Text/zh-TW/ScreenText.zh-TW.sjson.lua"
 
 	-- If the game was updated, the file checksums very likely got updated as well
 	-- At the same time, if the mod gets updated, the checksums.txt will be reset to the empty file as well
@@ -195,8 +207,71 @@ local function on_ready()
 
 		-- The ScreenText files depend on icons in here
 		import "Scripts/UIData.lua"
-		-- Load the initial set of language sjson files
-		game.OnLanguageChanged()
+
+		-- Localizations, custom texts
+		import "Game/Text/de/CodexText.de.sjson.lua"
+		-- import "Game/Text/el/CodexText.el.sjson.lua"
+		import "Game/Text/en/CodexText.en.sjson.lua"
+		import "Game/Text/es/CodexText.es.sjson.lua"
+		import "Game/Text/fr/CodexText.fr.sjson.lua"
+		import "Game/Text/it/CodexText.it.sjson.lua"
+		import "Game/Text/ja/CodexText.ja.sjson.lua"
+		import "Game/Text/ko/CodexText.ko.sjson.lua"
+		import "Game/Text/pl/CodexText.pl.sjson.lua"
+		import "Game/Text/pt-BR/CodexText.pt-BR.sjson.lua"
+		import "Game/Text/ru/CodexText.ru.sjson.lua"
+		-- import "Game/Text/tr/CodexText.tr.sjson.lua"
+		-- import "Game/Text/uk/CodexText.uk.sjson.lua"
+		import "Game/Text/zh-CN/CodexText.zh-CN.sjson.lua"
+		-- import "Game/Text/zh-TW/CodexText.zh-TW.sjson.lua"
+
+		import "Game/Text/de/HelpText.de.sjson.lua"
+		import "Game/Text/el/HelpText.el.sjson.lua"
+		import "Game/Text/en/HelpText.en.sjson.lua"
+		import "Game/Text/es/HelpText.es.sjson.lua"
+		import "Game/Text/fr/HelpText.fr.sjson.lua"
+		import "Game/Text/it/HelpText.it.sjson.lua"
+		import "Game/Text/ja/HelpText.ja.sjson.lua"
+		import "Game/Text/ko/HelpText.ko.sjson.lua"
+		import "Game/Text/pl/HelpText.pl.sjson.lua"
+		import "Game/Text/pt-BR/HelpText.pt-BR.sjson.lua"
+		import "Game/Text/ru/HelpText.ru.sjson.lua"
+		import "Game/Text/tr/HelpText.tr.sjson.lua"
+		import "Game/Text/uk/HelpText.uk.sjson.lua"
+		import "Game/Text/zh-CN/HelpText.zh-CN.sjson.lua"
+		import "Game/Text/zh-TW/HelpText.zh-TW.sjson.lua"
+
+		import "Game/Text/de/MiscText.de.sjson.lua"
+		-- import "Game/Text/el/MiscText.el.sjson.lua"
+		import "Game/Text/en/MiscText.en.sjson.lua"
+		import "Game/Text/es/MiscText.es.sjson.lua"
+		import "Game/Text/fr/MiscText.fr.sjson.lua"
+		import "Game/Text/it/MiscText.it.sjson.lua"
+		import "Game/Text/ja/MiscText.ja.sjson.lua"
+		import "Game/Text/ko/MiscText.ko.sjson.lua"
+		import "Game/Text/pl/MiscText.pl.sjson.lua"
+		import "Game/Text/pt-BR/MiscText.pt-BR.sjson.lua"
+		import "Game/Text/ru/MiscText.ru.sjson.lua"
+		-- import "Game/Text/tr/MiscText.tr.sjson.lua"
+		-- import "Game/Text/uk/MiscText.uk.sjson.lua"
+		import "Game/Text/zh-CN/MiscText.zh-CN.sjson.lua"
+		-- import "Game/Text/zh-TW/MiscText.zh-TW.sjson.lua"
+
+		import "Game/Text/de/TraitText.de.sjson.lua"
+		-- import "Game/Text/el/TraitText.el.sjson.lua"
+		import "Game/Text/en/TraitText.en.sjson.lua"
+		import "Game/Text/es/TraitText.es.sjson.lua"
+		import "Game/Text/fr/TraitText.fr.sjson.lua"
+		import "Game/Text/it/TraitText.it.sjson.lua"
+		import "Game/Text/ja/TraitText.ja.sjson.lua"
+		import "Game/Text/ko/TraitText.ko.sjson.lua"
+		import "Game/Text/pl/TraitText.pl.sjson.lua"
+		import "Game/Text/pt-BR/TraitText.pt-BR.sjson.lua"
+		import "Game/Text/ru/TraitText.ru.sjson.lua"
+		-- import "Game/Text/tr/TraitText.tr.sjson.lua"
+		-- import "Game/Text/uk/TraitText.uk.sjson.lua"
+		import "Game/Text/zh-CN/TraitText.zh-CN.sjson.lua"
+		-- import "Game/Text/zh-TW/TraitText.zh-TW.sjson.lua"
 
 		-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 		-- Done first, as the EncounterData depends on the EnemySets
@@ -318,6 +393,7 @@ local function on_ready()
 		import "Scripts/RoomLogic.lua"
 		import "Scripts/RoomPresentation.lua"
 		import "Scripts/RunHistoryLogic.lua"
+		import "Scripts/RunHistoryPresentation.lua"
 		import "Scripts/RunLogic.lua"
 		import "Scripts/ShrinePresentation.lua"
 		import "Scripts/StoreLogic.lua"

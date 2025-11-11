@@ -57,7 +57,8 @@ end)
 
 -- Recording stats after a run
 modutil.mod.Path.Wrap("RecordRunStats", function(base)
-	if game.CurrentRun.BiomesReached ~= nil and game.CurrentRun.BiomesReached.Tartarus then
+	-- Bounties are handled in the base function
+	if game.CurrentRun.BiomesReached ~= nil and (game.CurrentRun.BiomesReached.Tartarus or game.CurrentRun.BiomesReached.Asphodel or game.CurrentRun.BiomesReached.Elysium or game.CurrentRun.BiomesReached.Styx) then
 		game.CurrentRun.RunResult = game.GetRunResult(game.CurrentRun)
 		game.CurrentRun.EndingRoomName = game.CurrentRun.CurrentRoom.Name
 		game.CurrentRun.WeaponsCache = game.DeepCopyTable(game.CurrentRun.Hero.Weapons)
@@ -129,7 +130,8 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 		game.GameState.ClearedSurfaceRunsCache = surfaceRunsCleared
 		-- Custom fields
 		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = moddedRunsCleared
-		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache or 0
+		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache or
+				0
 		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache + 1
 
 		game.UpdateLifetimeTraitRecords(game.CurrentRun)
@@ -149,14 +151,19 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 	else
 		base()
 		-- Redo the run results to include modded runs in the GameState
+		local totalModdedRuns = 0
 		local moddedRunsCleared = 0
 		for k, run in ipairs(game.GameState.RunHistory) do
 			if run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess then
+				totalModdedRuns = totalModdedRuns + 1
 				moddedRunsCleared = moddedRunsCleared + 1
+			elseif run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldFail then
+				totalModdedRuns = totalModdedRuns + 1
 			end
 		end
 		-- Custom field
 		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = moddedRunsCleared
+		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = totalModdedRuns
 	end
 end)
 
@@ -191,7 +198,7 @@ end)
 
 modutil.mod.Path.Wrap("GetRunResult", function(base, run)
 	-- Run this before the base function, as the base function defaults to a surface run if it's not the underworld
-	if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+	if run.BiomesReached ~= nil and (run.BiomesReached.Tartarus or run.BiomesReached.Asphodel or run.BiomesReached.Elysium or run.BiomesReached.Styx) then
 		if run.Cleared then
 			return game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess
 		else
@@ -209,6 +216,11 @@ end)
 modutil.mod.Path.Wrap("WasRunSuccess", function(base, run)
 	return run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess or base(run)
 end)
+
+function mod.WasModdedRun(run)
+	return run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess or
+			run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldFail
+end
 
 modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, nextRoomData, args, otherDoors)
 	local isForced = base(currentRun, currentRoom, nextRoomData, args, otherDoors)
