@@ -295,3 +295,5 @@ game.HeroVoiceLines.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines = mod.Hero
 		.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_RunClearedVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_RunClearedVoiceLines
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines
