@@ -981,7 +981,7 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 
 	game.RecordRunCleared()
 
-	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.RunClearedVoiceLines)
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_RunClearedVoiceLines)
 
 	local screen = game.DeepCopyTable(game.ScreenData.RunClear) or {}
 	screen.DamageDealtStartX = game.ScreenWidth - screen.DamageDealtRightOffset

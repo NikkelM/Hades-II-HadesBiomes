@@ -3483,5 +3483,99 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_4706",      Text = "{#Emph}The strongest dreams shall shatter if they must!" },
 		},
 	},
+	-- After defeating Hades, when opening the run clear scren
+	ModsNikkelMHadesBiomes_RunClearedVoiceLines = {
+		Queue = "Always",
+		{ GlobalVoiceLines = "BarelySurvivedBossFightVoiceLines" },
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 1.15,
+			GameStateRequirements = {},
+			{ Cue = "/VO/MelinoeField_3881", Text = "...now for Zagreus to do his part.", PlayFirst = true },
+			{ Cue = "/VO/MelinoeField_1418", Text = "For my brother!", },
+			{ Cue = "/VO/MelinoeField_1407", Text = "Suffer in darkness..." },
+			{ Cue = "/VO/MelinoeField_1417", Text = "For my mother!" },
+			{ Cue = "/VO/MelinoeField_4816", Text = "For the Unseen!" },
+			{ Cue = "/VO/MelinoeField_4817", Text = "You're gone." },
+			{ Cue = "/VO/MelinoeField_1412", Text = "Fall, I said...!", },
+			-- From Underworld-specific
+			{ Cue = "/VO/MelinoeField_1415", Text = "What did I tell you?", },
+			{
+				Cue = "/VO/MelinoeField_1420",
+				Text = "For Nyx!",
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "EnemyKills", "Hades" },
+						Comparison = ">=",
+						Value = 5,
+					},
+					{
+						PathTrue = { "CurrentRun", "Hero", "TraitDictionary", "SuitMarkCritAspect" },
+					},
+				}
+			},
+			{
+				Cue = "/VO/MelinoeField_1421",
+				Text = "For Thanatos!",
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "EnemyKills", "Hades" },
+						Comparison = ">=",
+						Value = 5,
+					},
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "ThanatosFirstAppearance" },
+					},
+					{
+						PathTrue = { "CurrentRun", "Hero", "TraitDictionary", "AxePerfectCriticalAspect" },
+					},
+				}
+			},
+			{
+				Cue = "/VO/MelinoeField_1423",
+				Text = "For Olympus!",
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "EnemyKills", "Hades" },
+						Comparison = ">=",
+						Value = 6,
+					},
+				}
+			},
+			{
+				Cue = "/VO/MelinoeField_1424",
+				Text = "For Charon!",
+				GameStateRequirements =
+				{
+					{
+						Path = { "GameState", "EnemyKills", "Hades" },
+						Comparison = ">=",
+						Value = 6,
+					},
+					{
+						PathTrue = { "CurrentRun", "Hero", "TraitDictionary", "AxeArmCastAspect" },
+					},
+				}
+			},
+			{
+				Cue = "/VO/MelinoeField_1427",
+				Text = "For Schelemeus!",
+				GameStateRequirements =
+				{
+					{
+						Path = { "GameState", "EnemyKills", "Hades" },
+						Comparison = ">=",
+						Value = 10,
+					},
+				}
+			},
+			-- From Surface-specific
+			{ Cue = "/VO/MelinoeField_4813", Text = "This is our time.", },
+			{ Cue = "/VO/MelinoeField_3228", Text = "Return to shadow, {#Emph}now.", },
+			{ Cue = "/VO/MelinoeField_1413", Text = "Fall, damn you.", },
+			{ Cue = "/VO/MelinoeField_1414", Text = "...Fall.", },
+		},
+	},
 	-- #endregion
 }

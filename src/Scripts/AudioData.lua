@@ -293,3 +293,5 @@ game.HeroVoiceLines.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines = mod.HeroVoic
 		.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_RunClearedVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_RunClearedVoiceLines
