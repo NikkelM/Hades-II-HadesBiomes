@@ -114,6 +114,7 @@ local encounterModifications = {
 	},
 	MiniBossRatThug = {
 		CanEncounterSkip = false,
+		SkipBossTraits = true,
 	},
 
 	-- BOSSES
