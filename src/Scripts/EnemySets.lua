@@ -379,8 +379,6 @@ local additionalEnemySets = {
 	-- #endregion
 }
 
-table.insert(game.EnemySets.GenericEliteAttributes, "ModsNikkelMHadesBiomesStasisDeath")
-
 for oldName, newName in pairs(mod.EnemyNameMappings) do
 	mod.UpdateField(additionalEnemySets, oldName, newName, {}, "EnemySets.lua")
 end

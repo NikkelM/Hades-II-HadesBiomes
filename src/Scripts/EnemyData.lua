@@ -1966,14 +1966,5 @@ local enemyKeyReplacements = {
 -- Needs to be done before the enemy data is added to the game
 game.EnemyData.SpikeTrap.DefaultAIData.TargetGroups = { "GroundEnemies", "HeroTeam", }
 game.EnemyData.SpikeTrap.AIOptions = { "GuardAI", }
-game.EnemyData.Elite.EliteAttributeData.ModsNikkelMHadesBiomesStasisDeath = {
-	GameStateRequirements = {
-		{
-			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
-			IsAny = { "Tartarus", "Asphodel", "Elysium", "Styx", },
-		},
-	},
-	AddDeathWeapons = { "EliteStasisDeath" },
-}
 
 mod.ApplyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
