@@ -748,6 +748,7 @@ local enemyModifications = {
 		-- Flag that indicates the enemy is originally from Hades II, and we are just overwriting some properties
 		-- Used e.g. for the Zeus Blitz effect location
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -757,6 +758,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessNakedElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -772,6 +774,7 @@ local enemyModifications = {
 	},
 	BloodlessNakedBerserker = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "BerserkerIntro",
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
@@ -782,6 +785,7 @@ local enemyModifications = {
 	},
 	BloodlessNakedBerserkerElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -793,6 +797,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessWaveFist = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "WaveFistIntro",
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -803,6 +808,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessWaveFistElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -813,6 +819,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessGrenadier = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -822,6 +829,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessGrenadierElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -832,6 +840,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessSelfDestruct = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "SelfDestructIntro",
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -842,6 +851,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessSelfDestructElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -852,6 +862,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessPitcher = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "PitcherIntro",
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -862,6 +873,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessPitcherElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -877,6 +889,7 @@ local enemyModifications = {
 	},
 	HadesSpreadShotUnit = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -886,6 +899,7 @@ local enemyModifications = {
 	},
 	HadesSpreadShotUnitElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
