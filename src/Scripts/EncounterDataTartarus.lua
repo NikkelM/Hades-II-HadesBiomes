@@ -169,7 +169,6 @@ local encounterModifications = {
 
 	-- BOSSES
 	BossHarpy1 = {
-		DelayedStart = true,
 		WipeEnemiesOnKillAllTypes = { "Harpy" },
 		CancelSpawnsOnKillAllTypes = { "Harpy" },
 		PostUnthreadedEvents = mod.NilValue,

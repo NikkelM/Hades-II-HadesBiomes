@@ -119,14 +119,12 @@ local encounterModifications = {
 
 	-- BOSSES
 	BossHades = {
-		DelayedStart = true,
 		PostUnthreadedEvents = mod.NilValue,
 		-- As we might spawn enemies from BiomeB from Hades II, and we need the Hades symbol for the exit animation from BiomeI
 		LoadPackages = { "BiomeB", "BiomeI" },
 	},
 	BossHadesPeaceful = {
 		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicSurfaceModded", },
-		DelayedStart = true,
 		PostUnthreadedEvents = mod.NilValue,
 	},
 }

@@ -100,7 +100,6 @@ local encounterModifications = {
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,
 		BlockRespawnShrineUpgrade = true,
-		DelayedStart = true,
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedByShrineLevel", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "AngleIdsTowardPlayer", },
@@ -121,7 +120,6 @@ local encounterModifications = {
 
 	-- BOSSES
 	BossTheseusAndMinotaur = {
-		DelayedStart = true,
 		PostUnthreadedEvents = mod.NilValue,
 		-- For the Grenade graphics of EM Theseus
 		LoadPackages = { "BiomeOBoss" },
