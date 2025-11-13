@@ -354,6 +354,11 @@ local hadesProjectilesModifications = {
 		ImpactFx = "null",
 		DeathFx = "ElysiumBallistaDissipate",
 	},
+	AxeTrapWeapon = {
+		DamageRadius = 250,
+		DamageRadiusScaleY = 0.35,
+		DamageRadiusScaleX = 0.6,
+	},
 	-- #endregion
 }
 

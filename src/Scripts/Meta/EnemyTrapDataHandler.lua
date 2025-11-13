@@ -422,6 +422,11 @@ function mod.PassiveAttack(enemy, currentRun)
 end
 
 function mod.ModsNikkelMHadesBiomesToggleTrapState(enemy, aiData)
+	-- For the first trigger, ensure it's flipped with the map if needed
+	if game.CurrentRun.CurrentRoom.Flipped and enemy.ModsNikkelMHadesBiomesFlipIfRoomFlipped and not enemy.ModsNikkelMHadesBiomesIsFlipped then
+		FlipHorizontal({ Id = enemy.ObjectId })
+		enemy.ModsNikkelMHadesBiomesIsFlipped = true
+	end
 	if enemy.ModsNikkelMHadesBiomesCurrentlyActive then
 		enemy.ModsNikkelMHadesBiomesCurrentlyActive = false
 	else

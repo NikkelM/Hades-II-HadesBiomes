@@ -1888,6 +1888,7 @@ local enemyModifications = {
 			PostAttackEndFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesToggleTrapState",
 		},
 		WeaponName = "AxeTrapWeapon",
+		ModsNikkelMHadesBiomesFlipIfRoomFlipped = true,
 	},
 	AxeTrapTrigger = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
