@@ -293,6 +293,12 @@ In this map, we need to change the name for the Cerberus NPC, as it is used in b
 
 For ID `547487`, change the `Name` property from `NPC_Cerberus_Field_01` to `ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01`.
 
+#### D_MiniBoss03
+
+In this map, we need to change the name for the CrawlerMiniboss, as it is used in both Hades and Hades II.
+
+For ID `552394`, change the `Name` property from `CrawlerMiniBoss` to `HadesCrawlerMiniBoss`.
+
 #### E_Story01
 
 In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
@@ -334,12 +340,6 @@ For ID `553264`, change the `Name` property from `NPC_Persephone_01` to `ModsNik
 In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
 
 For ID `553381`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
-
-#### D_MiniBoss03
-
-In this map, we need to change the name for the CrawlerMiniboss, as it is used in both Hades and Hades II.
-
-For ID `552394`, change the `Name` property from `CrawlerMiniBoss` to `HadesCrawlerMiniBoss`.
 
 ## Map packages
 

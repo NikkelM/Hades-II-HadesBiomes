@@ -344,6 +344,14 @@ function mod.PassiveAttack(enemy, currentRun)
 		end
 
 		game.wait(game.CalcEnemyWait(enemy, preAttackEndDuration), enemy.AIThreadName)
+		-- 543225 is the non-working Saw Trap in this room, that is angled towards some indestructible obstacle I can't find
+		if game.CurrentRun.CurrentRoom.Name == "D_Mini13" and enemy.ObjectId == 543225 then
+			local newAngle = 205
+			if game.CurrentRun.CurrentRoom.Flipped then
+				newAngle = 335
+			end
+			SetAngle({ Id = enemy.ObjectId, Angle = newAngle })
+		end
 
 		local targetId = nil
 		if weaponAIData.TargetSelf then
