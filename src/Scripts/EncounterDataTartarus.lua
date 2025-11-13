@@ -97,6 +97,7 @@ local encounterReplacements = {
 	},
 	BaseSurvival = {
 		UnthreadedEvents = mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsSurvival,
+		StartRoomUnthreadedEvents = mod.NilValue,
 	},
 }
 
@@ -144,6 +145,7 @@ local encounterModifications = {
 		LoadModdedVoiceBanks = { "HadesField" },
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,
+		PreSpawnEnemies = false,
 	},
 
 	-- MINIBOSSES
