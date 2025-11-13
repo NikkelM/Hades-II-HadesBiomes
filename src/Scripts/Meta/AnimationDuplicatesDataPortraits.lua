@@ -423,7 +423,6 @@ mod.HadesPortraitAnimationAdditions = {
 	{
 		Name = "ModsNikkelMHadesBiomesHadesOverlay",
 		FilePath = "Portraits\\Portraits_Hades_01",
-		Type = "Constant",
 		EndAlpha = 0.55,
 		Duration = 10.0,
 		EndFrame = 1,

@@ -56,6 +56,29 @@ local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nam
 	end
 end
 
+local function removeDeprecatedAnimationProperties(animationsFile)
+	for _, animation in ipairs(animationsFile.Animations) do
+		animation.Type = nil
+		animation.FrameDataFile = nil
+		animation.SetOwnerEndAngle = nil
+		animation.DangerDistance = nil
+		animation.ActiveVisualFxCap = nil
+		animation.CancelOverCap = nil
+		animation.ShiftSpeedMin = nil
+		animation.ShiftSpeedMax = nil
+		animation.CancelAnimation = nil
+		animation.UseFrameAngleFromOwner = nil
+		animation.VisualFxUseAttachedMarkerLocation = nil
+		animation.UseBoundsForSortArea = nil
+		animation.UseAttachedFiredByMarkerLocation = nil
+		animation.AngleNumOffset = nil
+		animation.VisualFxRadialInterpolationLength = nil
+		animation.UseOwnerAnimOffset = nil
+		animation.IgnoreFrameCap = nil
+		animation.EaeOut = nil -- Typo
+	end
+end
+
 local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, destBasePath, modifications)
 	mod.DebugPrint("Copying .sjson files...", 3)
 	for key, value in pairs(fileMappings) do
@@ -74,6 +97,7 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, de
 		if not rom.path.exists(destPath) then
 			local fileData = mod.DecodeSjsonFile(srcPath)
 			mod.ApplyNestedSjsonModifications(fileData.Animations, modifications[src] or {})
+			removeDeprecatedAnimationProperties(fileData)
 			mod.DebugPrint("Copying file " .. srcPath .. " to " .. destPath, 4)
 			sjson.encode_file(destPath, fileData)
 		else
@@ -205,6 +229,7 @@ local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 	end
 
 	local filteredAnimations = {}
+	removeDeprecatedAnimationProperties(animationsTable)
 	for _, animation in ipairs(animationsTable.Animations) do
 		if not duplicates[animation.Name] then
 			if modifications[animation.Name] then

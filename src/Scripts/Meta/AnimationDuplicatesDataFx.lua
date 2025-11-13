@@ -35,7 +35,6 @@ mod.HadesFxAnimationModifications = {
 	},
 	HydraTooth = {
 		-- If these are the original animation values, the tooth is not visible at all
-		Type = "null",
 		EndFrame = "null",
 		Loop = "null",
 		NumFrames = "null",
@@ -93,6 +92,9 @@ mod.HadesFxAnimationModifications = {
 			{ Name = "CerberusRockFallStreak" },
 			{ Name = "ModsNikkelMHadesBiomesBlastWarningDecal" },
 		},
+	},
+	HadesUrnConsumeFx = {
+		EaseOut = 1,
 	},
 	-- #endregion
 

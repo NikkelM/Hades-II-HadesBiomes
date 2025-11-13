@@ -47,7 +47,6 @@ local newData = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ZagreusTalkEmpathy",
 		FilePath = "Animations\\Zagreus\\TalkEmpathy\\ZagreusTalkEmpathy",
-		Type = "Book",
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusInteractionEmpathy.sga",
 		VideoTexture = "ZagreusTalkEmpathy_Bink",
 		EndFrame = 200,
@@ -90,7 +89,6 @@ local newData = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ZagreusTalkDenial",
 		FilePath = "Animations\\Zagreus\\TalkDenial\\ZagreusTalkDenial",
-		Type = "Book",
 		VideoTexture = "ZagreusTalkDenial_Bink",
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusInteractionTalk.sga",
 		EndFrame = 355,
@@ -174,7 +172,6 @@ local newData = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ZagreusInteractionThoughtful",
 		FilePath = "Animations\\Zagreus\\InteractionThoughtful\\ZagreusInteractionThoughtful",
-		Type = "Book",
 		VideoTexture = "ZagreusInteractionThoughtful_Bink",
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusInteractionThoughtful.sga",
 		EndFrame = 334,
@@ -192,7 +189,6 @@ local newData = {
 	{
 		Name = "ZagreusInteractionComeHither_Start",
 		FilePath = "Animations\\Zagreus\\InteractionComeHither\\ZagreusInteractionComeHither",
-		Type = "Book",
 		VideoTexture = "ZagreusInteractionComeHither_Bink",
 		ChainTo = "ZagreusInteractionComeHither_Hold",
 		EndFrame = 80,
@@ -206,7 +202,6 @@ local newData = {
 	{
 		Name = "ZagreusInteractionComeHither",
 		FilePath = "Animations\\Zagreus\\InteractionComeHither\\ZagreusInteractionComeHither",
-		Type = "Book",
 		VideoTexture = "ZagreusInteractionComeHither_Bink",
 		ChainTo = "ZagreusInteractionComeHither_End",
 		EndFrame = 170,
@@ -246,7 +241,6 @@ local newData = {
 		Name = "ZagreusInjured_IdleToSick",
 		FilePath = "Animations\\Zagreus\\InteractionEnding\\InjuredIdleToSick\\ZagreusInjuredIdleToSick",
 		ChainTo = "ZagreusInjured_SickStanding_Loop",
-		Type = "Book",
 		VideoTexture = "ZagreusInjured_IdleToSick_Bink",
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusEndingInjuredIdleToSick.sga",
 		NumAngles = 8,
@@ -263,7 +257,6 @@ local newData = {
 	{
 		Name = "ZagreusInjured_SickStandingSet",
 		FilePath = "Animations\\Zagreus\\InteractionEnding\\InjuredSickToKneel\\ZagreusInjuredSickToKneel",
-		Type = "Book",
 		VideoTexture = "ZagreusInjured_SickStandingSet_Bink",
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusEndingInjuredSickToKneel.sga",
 		EndFrame = 280,
@@ -308,7 +301,6 @@ local newData = {
 	{
 		Name = "ZagreusInjured_SickKneelingSet",
 		FilePath = "Animations\\Zagreus\\InteractionEnding\\InjuredKneelToDeathVFX\\InjuredKneelToDeath",
-		Type = "Book",
 		VideoTexture = "ZagreusInjured_SickKneelingSet_Bink",
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusEndingInjureKneeToDeath.sga",
 		EndFrame = 320,
@@ -336,7 +328,6 @@ local newData = {
 	{
 		Name = "ZagreusInteractionFishing",
 		FilePath = "Animations\\Zagreus\\InteractionFishing\\ZagreusInteractionFishingSuccess",
-		Type = "Book",
 		VideoTexture = "ZagreusInteractionFishing_Bink",
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusFishingSuccess.sga",
 		NumAngles = 8,
@@ -476,7 +467,6 @@ local newData = {
 	{
 		Name = "ZagreusInteractionFishingFail",
 		FilePath = "Animations\\Zagreus\\InteractionFishingFail\\ZagreusInteractionFishingFail",
-		Type = "Book",
 		VideoTexture = "ZagreusInteractionFishingFail_Bink",
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusFishingFail.sga",
 		NumAngles = 8,
@@ -499,7 +489,6 @@ local newData = {
 	{
 		Name = "ZagreusEndingBoat_IdleLoop",
 		FilePath = "Animations\\Zagreus\\InteractionEnding\\BoatEndingIdleLoop\\ZagreusEndingBoatIdleLoop",
-		Type = "Book",
 		VideoTexture = "ZagreusEndingBoatIdleLoop_Bink",
 		ChainTo = "null",
 		EndFrame = 120,
@@ -516,7 +505,6 @@ local newData = {
 	{
 		Name = "ZagreusEndingBoat_IdleFidget1",
 		FilePath = "Animations\\Zagreus\\InteractionEnding\\BoatEndingIdleFidget1\\ZagreusEndingBoatIdleFidget1",
-		Type = "Book",
 		VideoTexture = "ZagreusEndingBoatIdleFidget1_Bink",
 		ChainTo = "ZagreusEndingBoat_IdleLoop",
 		EndFrame = 120,
@@ -532,7 +520,6 @@ local newData = {
 	{
 		Name = "ZagreusEndingBoat_IdleFidget2",
 		FilePath = "Animations\\Zagreus\\InteractionEnding\\BoatEndingIdleFidget2\\ZagreusEndingBoatIdleFidget2",
-		Type = "Book",
 		VideoTexture = "ZagreusEndingBoatIdleFidget2_Bink",
 		ChainTo = "ZagreusEndingBoat_IdleLoop",
 		EndFrame = 120,
@@ -591,7 +578,6 @@ local newData = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ZagreusIdle",
 		FilePath = "Animations\\Zagreus\\Idle\\ZagreusIdle",
-		Type = "Book",
 		VideoTexture = "ZagreusIdle_Bink",
 		EndFrame = 120,
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusIdle.sga",
@@ -608,7 +594,6 @@ local newData = {
 		Name = "ModsNikkelMHadesBiomes_ZagreusStart",
 		ChainTo = "ModsNikkelMHadesBiomes_ZagreusRun",
 		FilePath = "Animations\\Zagreus\\Start\\ZagreusStart",
-		Type = "Slide",
 		VideoTexture = "ZagreusStart_Bink",
 		EndFrame = 32,
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusStart.sga",
@@ -660,7 +645,6 @@ local newData = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ZagreusRun",
 		FilePath = "Animations\\Zagreus\\Run\\ZagreusRun",
-		Type = "Book",
 		VideoTexture = "ZagreusRun_Bink",
 		EndFrame = 32,
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusRun.sga",
@@ -681,7 +665,6 @@ local newData = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ZagreusStop",
 		FilePath = "Animations\\Zagreus\\Stop\\ZagreusStop",
-		Type = "Slide",
 		VideoTexture = "ZagreusStop_Bink",
 		EndFrame = 32,
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusStop.sga",
@@ -735,7 +718,6 @@ local newData = {
 		Name = "ModsNikkelMHadesBiomes_ZagreusWalk2",
 		FilePath = "Animations\\Zagreus\\Walk2\\ZagreusWalk",
 		StopAnimation = "ModsNikkelMHadesBiomes_ZagreusWalkStop2",
-		Type = "Slide",
 		VideoTexture = "ZagreusWalk2_Bink",
 		EndFrame = 60,
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusWalk2.sga",
@@ -818,7 +800,6 @@ local newData = {
 		Name = "ModsNikkelMHadesBiomes_ZagreusWalkStop2",
 		ChainTo = "ModsNikkelMHadesBiomes_ZagreusIdle",
 		FilePath = "Animations\\Zagreus\\WalkStop2\\ZagreusWalkStop2",
-		Type = "Slide",
 		VideoTexture = "ZagreusWalkStop2_Bink",
 		EndFrame = 60,
 		FrameDataFile = "Game\\Animations\\FrameData\\ZagreusWalkStop.sga",

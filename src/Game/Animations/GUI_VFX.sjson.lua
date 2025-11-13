@@ -64,7 +64,6 @@ local addParentAnimations = {
 	ModsNikkelMHadesBiomesRoomTransitionIn = {
 		Name = "ModsNikkelMHadesBiomesRoomTransitionIn",
 		FilePath = "Screens\\RoomTransition\\RoomTransition",
-		Type = "Book",
 		VideoTexture = "NikkelMHadesRT",
 		EndFrame = 20,
 		HoldLastFrame = true,

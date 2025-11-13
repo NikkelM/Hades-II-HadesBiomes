@@ -9,7 +9,6 @@ mod.HadesGUIAnimationAdditions = {
 		-- Modified FilePath, as this has been moved to the modded package to try a workaround for the graphic overlaying as an artifact after a reload
 		Name = "ModsNikkelMHadesBiomesLocationTextBGOut",
 		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\UnlockTextBG\\LocationTextBG",
-		Type = "Slide",
 		EndFrame = 44,
 		NumFrames = 44,
 		PlaySpeed = 30.0,
@@ -67,7 +66,6 @@ mod.HadesGUIAnimationAdditions = {
 	{
 		Name = "ModsNikkelMHadesBiomesLocationTextBGIn",
 		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\UnlockTextBG\\LocationTextBG",
-		Type = "Slide",
 		PlaySpeed = 30.0,
 		StartFrame = 1,
 		SortMode = "Id",
