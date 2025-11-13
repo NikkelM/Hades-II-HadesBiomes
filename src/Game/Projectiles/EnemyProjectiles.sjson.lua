@@ -332,7 +332,6 @@ local hadesProjectilesModifications = {
 	-- #endregion
 
 	-- #region ENVIRONMENT
-	-- TODO: Still work in progress, as it is not aligned perfectly with the trap itself
 	SpikeTrapWeapon = {
 		Thing = {
 			Scale = 1.0,
@@ -480,12 +479,6 @@ for modName, projectileMod in pairs(hadesProjectilesModifications) do
 	mod.RenameKeys(projectileMod, projectileKeyReplacements, "hadesProjectilesModifications[" .. tostring(modName) .. "]")
 end
 
--- Replace the ZagreusOnHitStun effect with HeroOnHitStun
-mod.UpdateField(hadesProjectilesTable.Projectiles, "ZagreusOnHitStun", "HeroOnHitStun", { "Effect", "Name" },
-	"EnemyProjectiles.sjson")
-mod.UpdateField(hadesProjectilesTable.Projectiles, "ZagreusOnHitStun", "HeroOnHitStun", { "Effects", "*", "Name" },
-	"EnemyProjectiles.sjson")
-
 -- Iterating through all projectiles
 for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	local projectile = hadesProjectilesTable.Projectiles[i]
@@ -503,11 +496,13 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	-- This property was renamed in Hades II
 	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then
 		projectile.Effect.Name = "HeroOnHitStun"
+		projectile.Effect.FrontFx = "DionysusStunnedFx"
 	end
 	if projectile.Effects then
 		for _, effect in ipairs(projectile.Effects) do
 			if effect.Name == "ZagreusOnHitStun" then
 				effect.Name = "HeroOnHitStun"
+				effect.FrontFx = "DionysusStunnedFx"
 			end
 		end
 	end
