@@ -275,7 +275,6 @@ local roomReplacements = {
 			{
 				RequiredCompletedRuns = 0,
 				PreLineWait = 0.4,
-				SkipAnim = true,
 				{ Cue = "/VO/MelinoeField_1418", Text = "For my brother!" }
 			},
 			-- Afterwards
@@ -284,7 +283,6 @@ local roomReplacements = {
 				RandomRemaining = true,
 				PreLineWait = 0.4,
 				RequiredMinCompletedRuns = 1,
-				SkipAnim = true,
 				Cooldowns = {
 					{ Name = "MelRunStartSpeech", Time = 12 },
 				},

@@ -8,6 +8,9 @@ function mod.ModifyEnemyTrapData(enemyData)
 	game.EnemyData.SpikeTrap.DefaultAIData.PreAttackAnimation = "HadesSpikeTrapPreFire"
 	game.EnemyData.SpikeTrap.DefaultAIData.PostAttackAnimation = "HadesSpikeTrapPressed"
 	game.EnemyData.SpikeTrap.DefaultAIData.DisabledAnimation = "HadesSpikeTrapDeactivated"
+	-- We need to flip this with the room, as we need for the AxeTraps
+	game.EnemyData.SpikeTrap.DefaultAIData.PreAttackFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCheckFlipTrapWithRoom"
+	game.EnemyData.SpikeTrap.ModsNikkelMHadesBiomesFlipIfRoomFlipped = true
 
 	enemyData.DartTrap = {
 		InheritFrom = { "BaseTrap" },
@@ -421,12 +424,16 @@ function mod.PassiveAttack(enemy, currentRun)
 	end
 end
 
-function mod.ModsNikkelMHadesBiomesToggleTrapState(enemy, aiData)
+function mod.ModsNikkelMHadesBiomesCheckFlipTrapWithRoom(enemy, aiData)
 	-- For the first trigger, ensure it's flipped with the map if needed
 	if game.CurrentRun.CurrentRoom.Flipped and enemy.ModsNikkelMHadesBiomesFlipIfRoomFlipped and not enemy.ModsNikkelMHadesBiomesIsFlipped then
 		FlipHorizontal({ Id = enemy.ObjectId })
 		enemy.ModsNikkelMHadesBiomesIsFlipped = true
 	end
+end
+
+function mod.ModsNikkelMHadesBiomesToggleTrapState(enemy, aiData)
+	mod.ModsNikkelMHadesBiomesCheckFlipTrapWithRoom(enemy, aiData)
 	if enemy.ModsNikkelMHadesBiomesCurrentlyActive then
 		enemy.ModsNikkelMHadesBiomesCurrentlyActive = false
 	else
