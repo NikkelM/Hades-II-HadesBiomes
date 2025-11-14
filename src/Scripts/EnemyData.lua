@@ -1633,6 +1633,7 @@ local enemyModifications = {
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation",
 		OnDeathFunctionArgs = { Message = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage", },
 		BlockCharm = true,
+		IsBoss = false,
 	},
 	-- #endregion
 	-- #region STYX - Bosses
