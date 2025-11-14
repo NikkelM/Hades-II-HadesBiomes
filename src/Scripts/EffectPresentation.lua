@@ -5,7 +5,7 @@ modutil.mod.Path.Wrap("EffectApplyPresentation", function(base, victim, effectDa
 		if effectData.Vfx then
 			effectData.Vfx = mod.EffectVfxMappings[effectData.Vfx] or effectData.Vfx
 		end
-
-		return base(victim, effectData, args)
 	end
+
+	return base(victim, effectData, args)
 end)
