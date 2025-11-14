@@ -29,9 +29,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineStaff_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHarpy1" },
-			},
 			HasAll = {
 				"BountyShrineStaffFBoss",
 				"BountyShrineStaffGBoss",
@@ -53,9 +50,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineStaff_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHydra" },
-			},
 			HasAll = {
 				"BountyShrineStaffFBoss",
 				"BountyShrineStaffGBoss",
@@ -81,9 +75,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineStaff_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossTheseusAndMinotaur" },
-			},
 			HasAll = {
 				"BountyShrineStaffFBoss",
 				"BountyShrineStaffGBoss",
@@ -111,9 +102,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineStaff_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHades" },
-			},
 			HasAll = {
 				"BountyShrineStaffFBoss",
 				"BountyShrineStaffGBoss",
@@ -145,9 +133,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineDaggers_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHarpy1" },
-			},
 			HasAll = {
 				"BountyShrineDaggerGBoss",
 				"BountyShrineDaggerNBoss",
@@ -173,9 +158,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHydra" },
-			},
 			HasAll = {
 				"BountyShrineDaggerGBoss",
 				"BountyShrineDaggerNBoss",
@@ -197,9 +179,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineDaggers_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossTheseusAndMinotaur" },
-			},
 			HasAll = {
 				"BountyShrineDaggerGBoss",
 				"BountyShrineDaggerNBoss",
@@ -229,9 +208,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineDaggers_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHades" },
-			},
 			HasAll = {
 				"BountyShrineDaggerGBoss",
 				"BountyShrineDaggerNBoss",
@@ -261,9 +237,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineTorches_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHarpy1" },
-			},
 			HasAll = {
 				"BountyShrineTorchOBoss",
 				"BountyShrineTorchHBoss",
@@ -291,9 +264,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineTorches_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHydra" },
-			},
 			HasAll = {
 				"BountyShrineTorchOBoss",
 				"BountyShrineTorchHBoss",
@@ -323,9 +293,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineTorches_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossTheseusAndMinotaur" },
-			},
 			HasAll = {
 				"BountyShrineTorchOBoss",
 				"BountyShrineTorchHBoss",
@@ -347,9 +314,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineTorches_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHades" },
-			},
 			HasAll = {
 				"BountyShrineTorchOBoss",
 				"BountyShrineTorchHBoss",
@@ -377,9 +341,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineAxe_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHarpy1" },
-			},
 			HasAll = {
 				"BountyShrineAxeNBoss",
 				"BountyShrineAxeOBoss",
@@ -401,9 +362,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineAxe_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHydra" },
-			},
 			HasAll = {
 				"BountyShrineAxeNBoss",
 				"BountyShrineAxeOBoss",
@@ -431,9 +389,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineAxe_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossTheseusAndMinotaur" },
-			},
 			HasAll = {
 				"BountyShrineAxeNBoss",
 				"BountyShrineAxeOBoss",
@@ -459,9 +414,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineAxe_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHades" },
-			},
 			HasAll = {
 				"BountyShrineAxeNBoss",
 				"BountyShrineAxeOBoss",
@@ -493,9 +445,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineLob_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHarpy1" },
-			},
 			HasAll = {
 				"BountyShrineLobHBoss",
 				"BountyShrineLobPBoss",
@@ -521,9 +470,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineLob_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHydra" },
-			},
 			HasAll = {
 				"BountyShrineLobHBoss",
 				"BountyShrineLobPBoss",
@@ -545,9 +491,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineLob_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossTheseusAndMinotaur" },
-			},
 			HasAll = {
 				"BountyShrineLobHBoss",
 				"BountyShrineLobPBoss",
@@ -575,9 +518,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineLob_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHades" },
-			},
 			HasAll = {
 				"BountyShrineLobHBoss",
 				"BountyShrineLobPBoss",
@@ -609,9 +549,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineSuit_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHarpy1" },
-			},
 			HasAll = {
 				"BountyShrineSuitPBoss",
 				"BountyShrineSuitFBoss",
@@ -633,9 +570,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineSuit_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHydra" },
-			},
 			HasAll = {
 				"BountyShrineSuitPBoss",
 				"BountyShrineSuitFBoss",
@@ -665,9 +599,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineSuit_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossTheseusAndMinotaur" },
-			},
 			HasAll = {
 				"BountyShrineSuitPBoss",
 				"BountyShrineSuitFBoss",
@@ -695,9 +626,6 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineSuit_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "EncountersOccurredCache", "BossHades" },
-			},
 			HasAll = {
 				"BountyShrineSuitPBoss",
 				"BountyShrineSuitFBoss",
