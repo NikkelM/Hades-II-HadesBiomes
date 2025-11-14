@@ -102,6 +102,7 @@ local encounterModifications = {
 		WipeEnemiesOnKillAllTypes = { "HadesCrawlerMiniBoss" },
 		CancelSpawnsOnKillAllTypes = { "HadesCrawlerMiniBoss" },
 		CanEncounterSkip = false,
+		SkipBossTraits = true,
 	},
 	MiniBossHeavyRangedForked = {
 		CanEncounterSkip = false,
@@ -114,7 +115,6 @@ local encounterModifications = {
 	},
 	MiniBossRatThug = {
 		CanEncounterSkip = false,
-		SkipBossTraits = true,
 	},
 
 	-- BOSSES
