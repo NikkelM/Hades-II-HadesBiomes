@@ -127,6 +127,7 @@ local newShrineBounties = {
 					"BountyShrineStaffQBoss",
 				},
 			},
+			NamedRequirementsFalse = { "ModsNikkelMHadesBiomesStyxBossBountyLockedByEnding" },
 		},
 		CompleteGameStateRequirements = {
 			{
@@ -243,6 +244,7 @@ local newShrineBounties = {
 					"BountyShrineDaggerQBoss",
 				},
 			},
+			NamedRequirementsFalse = { "ModsNikkelMHadesBiomesStyxBossBountyLockedByEnding" },
 		},
 		CompleteGameStateRequirements = {
 			{
@@ -359,6 +361,7 @@ local newShrineBounties = {
 					"BountyShrineTorchNBoss",
 				},
 			},
+			NamedRequirementsFalse = { "ModsNikkelMHadesBiomesStyxBossBountyLockedByEnding" },
 		},
 		CompleteGameStateRequirements = {
 			{
@@ -475,6 +478,7 @@ local newShrineBounties = {
 					"BountyShrineAxeQBoss",
 				},
 			},
+			NamedRequirementsFalse = { "ModsNikkelMHadesBiomesStyxBossBountyLockedByEnding" },
 		},
 		CompleteGameStateRequirements = {
 			{
@@ -591,6 +595,7 @@ local newShrineBounties = {
 					"BountyShrineLobQBoss",
 				},
 			},
+			NamedRequirementsFalse = { "ModsNikkelMHadesBiomesStyxBossBountyLockedByEnding" },
 		},
 		CompleteGameStateRequirements = {
 			{
@@ -707,6 +712,7 @@ local newShrineBounties = {
 					"BountyShrineSuitHBoss",
 				},
 			},
+			NamedRequirementsFalse = { "ModsNikkelMHadesBiomesStyxBossBountyLockedByEnding" },
 		},
 		CompleteGameStateRequirements = {
 			{
