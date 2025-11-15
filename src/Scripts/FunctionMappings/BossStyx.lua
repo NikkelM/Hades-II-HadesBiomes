@@ -1229,3 +1229,9 @@ function game.DoHadesSigh()
 	game.wait(4.6)
 	SetAlpha({ Id = game.ScreenAnchors.DialogueBackgroundId, Fraction = 1.0, Duration = 0.5 })
 end
+
+-- Only for assigning the victory message
+function mod.ModsNikkelMHadesBiomesHadesPeacefulVictory()
+	game.GameState.PlayedRunClearMessages.ModsNikkelMHadesBiomes_RunClear_ClearNumTen = true
+	game.CurrentRun.VictoryMessage = "ModsNikkelMHadesBiomes_RunClear_ClearNumTen"
+end

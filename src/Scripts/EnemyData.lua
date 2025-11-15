@@ -1632,7 +1632,9 @@ local enemyModifications = {
 	CrawlerMiniBoss = {
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation",
 		OnDeathFunctionArgs = { Message = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage", },
+		BlockRaiseDead = true,
 		BlockCharm = true,
+		BlockRespawnShrineUpgrade = true,
 		IsBoss = false,
 	},
 	-- #endregion
@@ -1663,6 +1665,9 @@ local enemyModifications = {
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
 		RunHistoryKilledByName = "Hades",
+	},
+	NPC_Hades_Story_02 = {
+		IsBoss = false,
 	},
 	-- #endregion
 	-- #endregion

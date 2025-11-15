@@ -125,7 +125,11 @@ local encounterModifications = {
 	},
 	BossHadesPeaceful = {
 		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicSurfaceModded", },
-		PostUnthreadedEvents = mod.NilValue,
+		PostUnthreadedEvents = {
+			-- Replacing with a custom function that sets the "Tenth time's a charm" victory message, which would normally be called in OpenRunClearScreen
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHadesPeacefulVictory", Args = mod.NilValue, GameStateRequirements = mod.NilValue },
+		},
+		SkipBossTraits = true,
 	},
 }
 
