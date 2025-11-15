@@ -104,10 +104,17 @@ for _, bountyEntry in ipairs(newBountyInsertOrder) do
 		if existingMeta and
 				existingMeta.Weapon == newMeta.Weapon and
 				newMeta.Heat < existingMeta.Heat then
-			local unlockReqs = game.BountyData[bountyName].UnlockGameStateRequirements
-			local shrineReq = getRequirementValue(unlockReqs, "GameState.ShrineBountiesCompleted", "HasAll")
-			if shrineReq then
-				table.insert(shrineReq, newBountyKey)
+			local bountyData = game.BountyData[bountyName]
+			if bountyData and bountyData.UnlockGameStateRequirements then
+				-- Find the requirement with the ShrineBountiesCompleted path
+				for _, req in ipairs(bountyData.UnlockGameStateRequirements) do
+					if req.Path and table.concat(req.Path, ".") == "GameState.ShrineBountiesCompleted" then
+						if req.HasAll then
+							table.insert(req.HasAll, newBountyKey)
+						end
+						break
+					end
+				end
 			end
 		end
 	end
