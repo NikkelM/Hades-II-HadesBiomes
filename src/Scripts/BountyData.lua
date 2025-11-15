@@ -29,10 +29,13 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineStaff_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineStaffFBoss",
-				"BountyShrineStaffGBoss",
-				"BountyShrineStaffNBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineStaffFBoss",
+					"BountyShrineStaffGBoss",
+					"BountyShrineStaffNBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -50,14 +53,17 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineStaff_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineStaffFBoss",
-				"BountyShrineStaffGBoss",
-				"BountyShrineStaffNBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineStaff_TartarusBoss",
-				"BountyShrineStaffOBoss",
-				"BountyShrineStaffHBoss",
-				"BountyShrineStaffPBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineStaffFBoss",
+					"BountyShrineStaffGBoss",
+					"BountyShrineStaffNBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineStaff_TartarusBoss",
+					"BountyShrineStaffOBoss",
+					"BountyShrineStaffHBoss",
+					"BountyShrineStaffPBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -75,16 +81,19 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineStaff_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineStaffFBoss",
-				"BountyShrineStaffGBoss",
-				"BountyShrineStaffNBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineStaff_TartarusBoss",
-				"BountyShrineStaffOBoss",
-				"BountyShrineStaffHBoss",
-				"BountyShrineStaffPBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineStaff_AsphodelBoss",
-				"BountyShrineStaffIBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineStaffFBoss",
+					"BountyShrineStaffGBoss",
+					"BountyShrineStaffNBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineStaff_TartarusBoss",
+					"BountyShrineStaffOBoss",
+					"BountyShrineStaffHBoss",
+					"BountyShrineStaffPBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineStaff_AsphodelBoss",
+					"BountyShrineStaffIBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -102,18 +111,21 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineStaff_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineStaffFBoss",
-				"BountyShrineStaffGBoss",
-				"BountyShrineStaffNBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineStaff_TartarusBoss",
-				"BountyShrineStaffOBoss",
-				"BountyShrineStaffHBoss",
-				"BountyShrineStaffPBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineStaff_AsphodelBoss",
-				"BountyShrineStaffIBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineStaff_ElysiumBoss",
-				"BountyShrineStaffQBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineStaffFBoss",
+					"BountyShrineStaffGBoss",
+					"BountyShrineStaffNBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineStaff_TartarusBoss",
+					"BountyShrineStaffOBoss",
+					"BountyShrineStaffHBoss",
+					"BountyShrineStaffPBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineStaff_AsphodelBoss",
+					"BountyShrineStaffIBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineStaff_ElysiumBoss",
+					"BountyShrineStaffQBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -133,14 +145,17 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineDaggers_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineDaggerGBoss",
-				"BountyShrineDaggerNBoss",
-				"BountyShrineStaffNBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss",
-				"BountyShrineDaggerHBoss",
-				"BountyShrineDaggerPBoss",
-				"BountyShrineDaggerFBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineDaggerGBoss",
+					"BountyShrineDaggerNBoss",
+					"BountyShrineStaffNBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss",
+					"BountyShrineDaggerHBoss",
+					"BountyShrineDaggerPBoss",
+					"BountyShrineDaggerFBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -158,10 +173,13 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineDaggerGBoss",
-				"BountyShrineDaggerNBoss",
-				"BountyShrineStaffNBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineDaggerGBoss",
+					"BountyShrineDaggerNBoss",
+					"BountyShrineStaffNBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -179,18 +197,21 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineDaggers_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineDaggerGBoss",
-				"BountyShrineDaggerNBoss",
-				"BountyShrineStaffNBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss",
-				"BountyShrineDaggerHBoss",
-				"BountyShrineDaggerPBoss",
-				"BountyShrineDaggerFBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineDaggers_TartarusBoss",
-				"BountyShrineDaggerQBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineDaggers_StyxBoss",
-				"BountyShrineDaggerIBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineDaggerGBoss",
+					"BountyShrineDaggerNBoss",
+					"BountyShrineStaffNBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss",
+					"BountyShrineDaggerHBoss",
+					"BountyShrineDaggerPBoss",
+					"BountyShrineDaggerFBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineDaggers_TartarusBoss",
+					"BountyShrineDaggerQBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineDaggers_StyxBoss",
+					"BountyShrineDaggerIBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -208,16 +229,19 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineDaggers_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineDaggerGBoss",
-				"BountyShrineDaggerNBoss",
-				"BountyShrineStaffNBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss",
-				"BountyShrineDaggerHBoss",
-				"BountyShrineDaggerPBoss",
-				"BountyShrineDaggerFBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineDaggers_TartarusBoss",
-				"BountyShrineDaggerQBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineDaggerGBoss",
+					"BountyShrineDaggerNBoss",
+					"BountyShrineStaffNBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss",
+					"BountyShrineDaggerHBoss",
+					"BountyShrineDaggerPBoss",
+					"BountyShrineDaggerFBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineDaggers_TartarusBoss",
+					"BountyShrineDaggerQBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -237,16 +261,19 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineTorches_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineTorchOBoss",
-				"BountyShrineTorchHBoss",
-				"BountyShrineTorchPBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineTorches_ElysiumBoss",
-				"BountyShrineTorchFBoss",
-				"BountyShrineTorchGBoss",
-				"BountyShrineTorchNBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineTorches_StyxBoss",
-				"BountyShrineTorchQBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineTorchOBoss",
+					"BountyShrineTorchHBoss",
+					"BountyShrineTorchPBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineTorches_ElysiumBoss",
+					"BountyShrineTorchFBoss",
+					"BountyShrineTorchGBoss",
+					"BountyShrineTorchNBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineTorches_StyxBoss",
+					"BountyShrineTorchQBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -264,18 +291,21 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineTorches_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineTorchOBoss",
-				"BountyShrineTorchHBoss",
-				"BountyShrineTorchPBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineTorches_ElysiumBoss",
-				"BountyShrineTorchFBoss",
-				"BountyShrineTorchGBoss",
-				"BountyShrineTorchNBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineTorches_StyxBoss",
-				"BountyShrineTorchQBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineTorches_TartarusBoss",
-				"BountyShrineTorchIBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineTorchOBoss",
+					"BountyShrineTorchHBoss",
+					"BountyShrineTorchPBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineTorches_ElysiumBoss",
+					"BountyShrineTorchFBoss",
+					"BountyShrineTorchGBoss",
+					"BountyShrineTorchNBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineTorches_StyxBoss",
+					"BountyShrineTorchQBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineTorches_TartarusBoss",
+					"BountyShrineTorchIBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -293,10 +323,13 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineTorches_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineTorchOBoss",
-				"BountyShrineTorchHBoss",
-				"BountyShrineTorchPBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineTorchOBoss",
+					"BountyShrineTorchHBoss",
+					"BountyShrineTorchPBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -314,14 +347,17 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineTorches_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineTorchOBoss",
-				"BountyShrineTorchHBoss",
-				"BountyShrineTorchPBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineTorches_ElysiumBoss",
-				"BountyShrineTorchFBoss",
-				"BountyShrineTorchGBoss",
-				"BountyShrineTorchNBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineTorchOBoss",
+					"BountyShrineTorchHBoss",
+					"BountyShrineTorchPBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineTorches_ElysiumBoss",
+					"BountyShrineTorchFBoss",
+					"BountyShrineTorchGBoss",
+					"BountyShrineTorchNBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -341,10 +377,13 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineAxe_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineAxeNBoss",
-				"BountyShrineAxeOBoss",
-				"BountyShrineAxeHBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineAxeNBoss",
+					"BountyShrineAxeOBoss",
+					"BountyShrineAxeHBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -362,16 +401,19 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineAxe_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineAxeNBoss",
-				"BountyShrineAxeOBoss",
-				"BountyShrineAxeHBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineAxe_TartarusBoss",
-				"BountyShrineAxePBoss",
-				"BountyShrineAxeFBoss",
-				"BountyShrineAxeGBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineAxe_ElysiumBoss",
-				"BountyShrineAxeIBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineAxeNBoss",
+					"BountyShrineAxeOBoss",
+					"BountyShrineAxeHBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineAxe_TartarusBoss",
+					"BountyShrineAxePBoss",
+					"BountyShrineAxeFBoss",
+					"BountyShrineAxeGBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineAxe_ElysiumBoss",
+					"BountyShrineAxeIBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -389,14 +431,17 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineAxe_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineAxeNBoss",
-				"BountyShrineAxeOBoss",
-				"BountyShrineAxeHBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineAxe_TartarusBoss",
-				"BountyShrineAxePBoss",
-				"BountyShrineAxeFBoss",
-				"BountyShrineAxeGBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineAxeNBoss",
+					"BountyShrineAxeOBoss",
+					"BountyShrineAxeHBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineAxe_TartarusBoss",
+					"BountyShrineAxePBoss",
+					"BountyShrineAxeFBoss",
+					"BountyShrineAxeGBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -414,18 +459,21 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineAxe_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineAxeNBoss",
-				"BountyShrineAxeOBoss",
-				"BountyShrineAxeHBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineAxe_TartarusBoss",
-				"BountyShrineAxePBoss",
-				"BountyShrineAxeFBoss",
-				"BountyShrineAxeGBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineAxe_ElysiumBoss",
-				"BountyShrineAxeIBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineAxe_AsphodelBoss",
-				"BountyShrineAxeQBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineAxeNBoss",
+					"BountyShrineAxeOBoss",
+					"BountyShrineAxeHBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineAxe_TartarusBoss",
+					"BountyShrineAxePBoss",
+					"BountyShrineAxeFBoss",
+					"BountyShrineAxeGBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineAxe_ElysiumBoss",
+					"BountyShrineAxeIBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineAxe_AsphodelBoss",
+					"BountyShrineAxeQBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -445,14 +493,17 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineLob_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineLobHBoss",
-				"BountyShrineLobPBoss",
-				"BountyShrineLobFBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineLob_AsphodelBoss",
-				"BountyShrineLobGBoss",
-				"BountyShrineLobNBoss",
-				"BountyShrineLobOBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineLobHBoss",
+					"BountyShrineLobPBoss",
+					"BountyShrineLobFBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineLob_AsphodelBoss",
+					"BountyShrineLobGBoss",
+					"BountyShrineLobNBoss",
+					"BountyShrineLobOBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -470,10 +521,13 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineLob_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineLobHBoss",
-				"BountyShrineLobPBoss",
-				"BountyShrineLobFBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineLobHBoss",
+					"BountyShrineLobPBoss",
+					"BountyShrineLobFBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -491,16 +545,19 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineLob_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineLobHBoss",
-				"BountyShrineLobPBoss",
-				"BountyShrineLobFBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineLob_AsphodelBoss",
-				"BountyShrineLobGBoss",
-				"BountyShrineLobNBoss",
-				"BountyShrineLobOBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineLob_TartarusBoss",
-				"BountyShrineLobIBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineLobHBoss",
+					"BountyShrineLobPBoss",
+					"BountyShrineLobFBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineLob_AsphodelBoss",
+					"BountyShrineLobGBoss",
+					"BountyShrineLobNBoss",
+					"BountyShrineLobOBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineLob_TartarusBoss",
+					"BountyShrineLobIBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -518,18 +575,21 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineLob_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineLobHBoss",
-				"BountyShrineLobPBoss",
-				"BountyShrineLobFBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineLob_AsphodelBoss",
-				"BountyShrineLobGBoss",
-				"BountyShrineLobNBoss",
-				"BountyShrineLobOBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineLob_TartarusBoss",
-				"BountyShrineLobIBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineLob_ElysiumBoss",
-				"BountyShrineLobQBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineLobHBoss",
+					"BountyShrineLobPBoss",
+					"BountyShrineLobFBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineLob_AsphodelBoss",
+					"BountyShrineLobGBoss",
+					"BountyShrineLobNBoss",
+					"BountyShrineLobOBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineLob_TartarusBoss",
+					"BountyShrineLobIBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineLob_ElysiumBoss",
+					"BountyShrineLobQBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -549,10 +609,13 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineSuit_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineSuitPBoss",
-				"BountyShrineSuitFBoss",
-				"BountyShrineSuitGBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineSuitPBoss",
+					"BountyShrineSuitFBoss",
+					"BountyShrineSuitGBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -570,18 +633,21 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineSuit_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineSuitPBoss",
-				"BountyShrineSuitFBoss",
-				"BountyShrineSuitGBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineSuit_TartarusBoss",
-				"BountyShrineSuitNBoss",
-				"BountyShrineSuitOBoss",
-				"BountyShrineSuitHBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineSuit_StyxBoss",
-				"BountyShrineSuitQBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineSuit_ElysiumBoss",
-				"BountyShrineSuitIBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineSuitPBoss",
+					"BountyShrineSuitFBoss",
+					"BountyShrineSuitGBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineSuit_TartarusBoss",
+					"BountyShrineSuitNBoss",
+					"BountyShrineSuitOBoss",
+					"BountyShrineSuitHBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineSuit_StyxBoss",
+					"BountyShrineSuitQBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineSuit_ElysiumBoss",
+					"BountyShrineSuitIBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -599,16 +665,19 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineSuit_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineSuitPBoss",
-				"BountyShrineSuitFBoss",
-				"BountyShrineSuitGBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineSuit_TartarusBoss",
-				"BountyShrineSuitNBoss",
-				"BountyShrineSuitOBoss",
-				"BountyShrineSuitHBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineSuit_StyxBoss",
-				"BountyShrineSuitQBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineSuitPBoss",
+					"BountyShrineSuitFBoss",
+					"BountyShrineSuitGBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineSuit_TartarusBoss",
+					"BountyShrineSuitNBoss",
+					"BountyShrineSuitOBoss",
+					"BountyShrineSuitHBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineSuit_StyxBoss",
+					"BountyShrineSuitQBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -626,14 +695,17 @@ local newShrineBounties = {
 	ModsNikkelMHadesBiomes_BountyShrineSuit_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
 		UnlockGameStateRequirements = {
-			HasAll = {
-				"BountyShrineSuitPBoss",
-				"BountyShrineSuitFBoss",
-				"BountyShrineSuitGBoss",
-				"ModsNikkelMHadesBiomes_BountyShrineSuit_TartarusBoss",
-				"BountyShrineSuitNBoss",
-				"BountyShrineSuitOBoss",
-				"BountyShrineSuitHBoss",
+			{
+				Path = { "GameState", "ShrineBountiesCompleted", },
+				HasAll = {
+					"BountyShrineSuitPBoss",
+					"BountyShrineSuitFBoss",
+					"BountyShrineSuitGBoss",
+					"ModsNikkelMHadesBiomes_BountyShrineSuit_TartarusBoss",
+					"BountyShrineSuitNBoss",
+					"BountyShrineSuitOBoss",
+					"BountyShrineSuitHBoss",
+				},
 			},
 		},
 		CompleteGameStateRequirements = {
