@@ -417,10 +417,9 @@ end
 
 function mod.CheckRunEndPresentation(currentRun, door)
 	AddInputBlock({ Name = "CheckRunEndPresentation" })
-	-- TODO: This is what doesn't allow entering the surface after the ending anymore
-	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
+	if game.GameState.TextLinesRecord["PersephoneReturnsHome01"] ~= nil then
 		currentRun.CurrentRoom.SkipLoadNextMap = true
-		-- TODO: Check?
+		-- TODO: Custom voicelines from the first game
 		game.EndEarlyAccessPresentation()
 	else
 		-- Custom function to play an incantation animation and voiceline
