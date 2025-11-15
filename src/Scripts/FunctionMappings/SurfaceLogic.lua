@@ -684,6 +684,9 @@ function mod.BoatToDeathAreaTransition(eventSource, args)
 	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "ModsNikkelMHadesBiomes_NPC_Persephone_01" })
 	local houseDoorId = GetClosest({ Id = heroId, DestinationIds = GetIdsByType({ Name = "HouseDoor02" }) })
 
+	-- Hacky: Add Ending01 to the TextLinesRecord, as we skip it, but a lot of other things check for it
+	game.GameState.TextLinesRecord["Ending01"] = true
+
 	AddInputBlock({ Name = "ExitToDeathAreaPresentation" })
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
 
