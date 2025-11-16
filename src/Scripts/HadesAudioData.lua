@@ -3488,13 +3488,25 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 	},
 	-- Plays when exiting the Hades boss room
 	ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines = {
-		RandomRemaining = true,
+		-- After the peaceful encounter
 		{
-			{ Cue = "/VO/Melinoe_1075",      Text = "{#Emph}By blood and darkness, let my will be done!" },
-			{ Cue = "/VO/MelinoeField_3418", Text = "{#Emph}Night and Darkness, guide me to my blood beyond the grasp of Time!", PlayFirst = true },
-			{ Cue = "/VO/MelinoeField_5192", Text = "OK. {#Emph}To the abyss of the subconscious I descend...!", },
-			{ Cue = "/VO/MelinoeField_5191", Text = "Again. {#Emph}To the abyss of the subconscious I descend...!", },
-			{ Cue = "/VO/Melinoe_4706",      Text = "{#Emph}The strongest dreams shall shatter if they must!" },
+			BreakIfPlayed = true,
+			{ Cue = "/VO/MelinoeField_1525", Text = "Thank you, Father." },
+			GameStateRequirements = {
+				{
+					PathTrue = { "CurrentRun", "TextLinesRecord", "LordHadesBeforePersephoneReturn01" },
+				},
+			},
+		},
+		{
+			RandomRemaining = true,
+			{
+				{ Cue = "/VO/Melinoe_1075",      Text = "{#Emph}By blood and darkness, let my will be done!" },
+				{ Cue = "/VO/MelinoeField_3418", Text = "{#Emph}Night and Darkness, guide me to my blood beyond the grasp of Time!", PlayFirst = true },
+				{ Cue = "/VO/MelinoeField_5192", Text = "OK. {#Emph}To the abyss of the subconscious I descend...!", },
+				{ Cue = "/VO/MelinoeField_5191", Text = "Again. {#Emph}To the abyss of the subconscious I descend...!", },
+				{ Cue = "/VO/Melinoe_4706",      Text = "{#Emph}The strongest dreams shall shatter if they must!" },
+			},
 		},
 	},
 	-- After defeating Hades, when opening the run clear scren
@@ -3610,12 +3622,6 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				},
 			},
 			{ Cue = "/VO/MelinoeField_5141", Text = "{#Emph}<Gasp> {#Prev}I... remember... all of that?" },
-		},
-		-- Post modded ending
-		{
-			RandomRemaining = true,
-			BreakIfPlayed = true,
-
 		},
 		-- #region Including base game priority events for compatibility
 		-- epilogue

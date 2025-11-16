@@ -419,6 +419,12 @@ local roomReplacements = {
 				{ Cue = "/VO/MelinoeField_0920", Text = "You're not going to step aside, are you?", RequiredTextLines = { "PersephoneMeeting06" }, RequiredFalseTextLines = { "Ending01" }, },
 				{ Cue = "/VO/MelinoeField_1904", Text = "You're in my way.",                        RequiredTextLines = { "PersephoneMeeting09" }, RequiredFalseTextLines = { "Ending01" }, },
 			},
+			{
+				BreakIfPlayed = true,
+				PreLineWait = 4.35,
+				RequiredEncounters = { "BossHadesPeaceful" },
+				{ Cue = "/VO/MelinoeField_1906", Text = "Every time..." },
+			},
 			-- Afterwards
 			{
 				BreakIfPlayed = true,

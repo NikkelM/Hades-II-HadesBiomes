@@ -417,9 +417,8 @@ end
 
 function mod.CheckRunEndPresentation(currentRun, door)
 	AddInputBlock({ Name = "CheckRunEndPresentation" })
-	if game.GameState.TextLinesRecord["PersephoneReturnsHome01"] ~= nil then
+	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
 		currentRun.CurrentRoom.SkipLoadNextMap = true
-		-- TODO: Custom voicelines from the first game
 		game.EndEarlyAccessPresentation()
 	else
 		-- Custom function to play an incantation animation and voiceline
@@ -430,7 +429,6 @@ function mod.CheckRunEndPresentation(currentRun, door)
 			{ DestinationId = heroExitPointId, DisableCollision = true, UseDefaultSpeed = true })
 		game.FullScreenFadeOutAnimation()
 		if game.GameState.TextLinesRecord["LordHadesBeforePersephoneReturn01"] ~= nil then
-			-- TODO
 			game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.BossHadesPeacefulExitVoiceLines)
 		end
 		game.wait(3.5)
