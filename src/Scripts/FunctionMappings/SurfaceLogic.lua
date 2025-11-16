@@ -691,6 +691,8 @@ function mod.BoatToDeathAreaTransition(eventSource, args)
 
 	-- Hacky: Add Ending01 to the TextLinesRecord, as we skip it, but a lot of other things check for it
 	game.GameState.TextLinesRecord["Ending01"] = true
+	-- Block Dora from spawning this run to prevent her interrupting the portrait scene
+	game.CurrentRun.BlockDoraSpawn = true
 
 	AddInputBlock({ Name = "ExitToDeathAreaPresentation" })
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
