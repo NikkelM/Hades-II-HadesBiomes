@@ -273,7 +273,12 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 	-- Ping harvest (fishing) points
 	for id, obstacle in pairs(game.ShallowCopyTable(game.MapState.ActiveObstacles) or {}) do
 		if obstacle.ExitsUnlockedFunctionName ~= nil then
-			game.thread(game.CallFunctionName, obstacle.ExitsUnlockedFunctionName, obstacle, obstacle.ExitsUnlockedFunctionArgs)
+			game.thread(
+				game.CallFunctionName,
+				obstacle.ExitsUnlockedFunctionName,
+				obstacle,
+				obstacle.ExitsUnlockedFunctionArgs
+			)
 		end
 	end
 end
@@ -708,6 +713,173 @@ function mod.BoatToDeathAreaTransition(eventSource, args)
 
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
 	RemoveInputBlock({ Name = "ExitToDeathAreaPresentation" })
+end
+
+-- Back in the DeathArea
+function mod.HubPostModdedCreditsStartPresentation(currentRun, args)
+	args = args or {}
+
+	AddInputBlock({ Name = "DeathWalkBlock" })
+	game.ZeroMouseTether("DeathPresentation")
+	TeleportCursor({ OffsetX = game.ScreenCenterX, OffsetY = game.ScreenCenterY })
+
+	-- unit
+	local initialSpeed = GetUnitDataValue({ Id = game.CurrentRun.Hero.ObjectId, Property = "Speed" })
+	SetUnitProperty({ Property = "Speed", Value = 0, DestinationId = game.CurrentRun.Hero.ObjectId })
+	SetGoalAngle({ Id = game.CurrentRun.Hero.ObjectId, Angle = 90 })
+	SetUnitProperty({ Property = "CollideWithObstacles", Value = false, DestinationId = game.CurrentRun.Hero.ObjectId })
+	SetAlpha({ Id = game.CurrentRun.Hero.ObjectId, Fraction = 1.0, Duration = 0 })
+	Teleport({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = 780542 })
+
+	game.StartRoomAmbience(game.CurrentRun, game.CurrentHubRoom)
+	-- TODO: Suppress Dora voiceline
+	game.TentEnterPresentation()
+	local dimmerIds = GetIds({ Name = "TentIntroDimmer_01" })
+	SetAlpha({ Ids = dimmerIds, Fraction = 1.0 })
+
+	local fadeLightIds = ({ 566965, 566818, 566896 })
+	SetAlpha({ Ids = fadeLightIds, Fraction = 0 })
+
+	local cameraStartId = 780542
+	LockCamera({ Id = cameraStartId, Duration = 0.01 })
+	game.wait(0.01)
+	PanCamera({ Id = cameraStartId, Duration = 0.0, OffsetY = 0, EaseIn = 0, Retarget = true })
+	AdjustZoom({ Fraction = game.CurrentHubRoom.ZoomFraction or 1.23 })
+	local cameraClamps = game.CurrentHubRoom.CameraClamps or game.GetDefaultClampIds()
+
+	SetSoundCueValue({ Names = { "Drums" }, Id = game.AudioState.MusicId, Value = 0 })
+
+	game.wait(0.3)
+
+	SetUnitProperty({ Property = "Speed", Value = initialSpeed, DestinationId = game.CurrentRun.Hero.ObjectId })
+	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = game.CurrentRun.Hero.ObjectId })
+
+	SetCameraClamp({ Ids = cameraClamps, SoftClamp = game.CurrentHubRoom.SoftClamp })
+
+	SetAlpha({ Ids = dimmerIds, Fraction = 0, Duration = 1.0 })
+
+	if game.CurrentHubRoom.CameraWalls then
+		CreateCameraWalls({})
+	end
+
+	local portrait = game.MapState.ActiveObstacles[589483]
+	FadeIn({ Duration = 0.5 })
+	mod.ViewModdedPortraitPresentation(portrait, args.PortraitArgs)
+	-- ProcessTextLines( portrait, args.PostPortraitTextLines )
+	-- PlayRandomRemainingTextLines( portrait, args.PostPortraitTextLines )
+
+	TeleportCursor({ OffsetX = game.ScreenCenterX, OffsetY = game.ScreenCenterY })
+	UnzeroMouseTether("DeathPresentation")
+	RemoveInputBlock({ Name = "DeathWalkBlock" })
+end
+
+function mod.ViewModdedPortraitPresentation(eventSource, args)
+	LoadVoiceBanks({ "Megaera" })
+	if not game.PlayingTextLines then
+		UseableOff({ Id = eventSource.ObjectId })
+	end
+
+	AddInputBlock({ Name = "ShowingInterstitial" })
+	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
+
+	game.HideCombatUI("ShowingInterstitial")
+	if args.PauseMusic then
+		game.PauseMusic()
+		game.PauseMusicianMusic()
+	end
+
+	if args.SecretMusic then
+		game.SecretMusicPlayer(args.SecretMusic)
+		SetSoundCueValue({ Names = { "Section", }, Id = game.AudioState.SecretMusicId, Value = args.SecretMusicSection })
+		SetSoundCueValue({
+			Names = args.SecretMusicActiveStems,
+			Id = game.AudioState.SecretMusicId,
+			Value = 1,
+			Duration = args.SecretMusicActiveStemsDuration or 1
+		})
+		SetSoundCueValue({
+			Names = args.SecretMusicMutedStems,
+			Id = game.AudioState.SecretMusicId,
+			Value = 0,
+			Duration = args.SecretMusicMutedStemsDuration or 1
+		})
+	end
+
+	if args.PortraitGlobalVoiceLines then
+		game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[args.PortraitGlobalVoiceLines])
+	end
+
+	game.wait(args.StartDelay or 0)
+
+	if args.FadeInTime then
+		FadeIn({ Duration = args.FadeInTime })
+	end
+
+	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteThoughtful" })
+
+	game.thread(game.UpdateFamilyPortraitVisibility, eventSource)
+
+	game.ScreenAnchors.PortraitDisplayAnchor = CreateScreenObstacle({
+		Name = "BlankObstacle",
+		Group = "Overlay",
+		X = game.ScreenCenterX,
+		Y = game.ScreenCenterY
+	})
+	local blackScreenId = CreateScreenObstacle({ Name = "rectangle01", X = game.ScreenCenterX, Y = game.ScreenCenterY })
+	SetScale({ Id = blackScreenId, Fraction = 10 })
+	SetColor({ Id = blackScreenId, Color = game.Color.Black })
+	SetAlpha({ Id = blackScreenId, Fraction = 1.0, Duration = 0 })
+
+	local portraitId = CreateScreenObstacle({
+		Name = "rectangle01",
+		X = game.ScreenCenterX,
+		Y = game.ScreenCenterY,
+		Group = "Overlay"
+	})
+	SetScale({ Id = portraitId, Fraction = 1.9 })
+	SetAlpha({ Id = portraitId, Fraction = 0.0, Duration = 0 })
+	SetAlpha({ Id = portraitId, Fraction = 1.0, Duration = 1.0 })
+	SetAnimation({ Name = args.PortraitAnimationName, DestinationId = portraitId })
+
+	Attach({ Id = blackScreenId, DestinationId = game.ScreenAnchors.PortraitDisplayAnchor })
+	Attach({ Id = portraitId, DestinationId = game.ScreenAnchors.PortraitDisplayAnchor })
+
+	-- Camera Pan
+	AdjustFullscreenBloom({ Name = "NewType06", Duration = 0 })
+	AdjustFullscreenBloom({ Name = "Off", Duration = 1, Delay = 0 })
+	Teleport({ Id = game.ScreenAnchors.PortraitDisplayAnchor, DestinationId = game.ScreenAnchors.PortraitDisplayAnchor, OffsetX = 0, OffsetY = 0 })
+	SetScale({ Id = portraitId, Fraction = 1, Duration = args.PanDuration or 9.8, EaseOut = 1.0, EaseIn = 0.0 })
+
+	game.wait(args.FadeOutWait or 12.0)
+
+	PlaySound({ Name = "/SFX/Menu Sounds/HadesTextDisappearFade" })
+
+	game.wait(0.375)
+
+	SetAlpha({ Id = blackScreenId, Fraction = 0.0, Duration = 0.375 })
+	SetAlpha({ Id = portraitId, Fraction = 0.0, Duration = 0.375 })
+
+	game.wait(0.625)
+	Destroy({ Id = portraitId })
+	Destroy({ Id = blackScreenId })
+	Destroy({ Id = game.ScreenAnchors.PortraitDisplayAnchor })
+
+	if args.SecretMusic then
+		StopSound({ Id = game.AudioState.SecretMusicId, Duration = 2 })
+		game.ResumeMusic()
+		game.AudioState.SecretMusicId = nil
+		game.AudioState.SecretMusicName = nil
+	end
+
+	if args.PauseMusic then
+		game.ResumeMusic()
+		game.ResumeMusicianMusic()
+	end
+
+	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
+
+	RemoveInputBlock({ Name = "ShowingInterstitial" })
+	game.UnblockCombatUI("ShowingInterstitial")
 end
 
 -- #endregion

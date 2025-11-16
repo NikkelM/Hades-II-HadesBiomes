@@ -70,7 +70,6 @@ modutil.mod.Path.Wrap("StartNewRunPresentation", function(base, runDoor, args)
 		SetUnitProperty({ DestinationId = game.CurrentRun.Hero.ObjectId, Property = "CollideWithObstacles", Value = false })
 		SetUnitProperty({ DestinationId = game.CurrentRun.Hero.ObjectId, Property = "CollideWithUnits", Value = false })
 		game.SetFixedDashPresentationValues()
-		-- FireWeaponFromUnit({ Weapon = "WeaponBlink", Id = CurrentRun.Hero.ObjectId })
 		game.thread(game.PlayVoiceLines,
 			game.GlobalVoiceLines[args.GlobalVoiceLines] or game.GlobalVoiceLines.StartNewRunVoiceLines)
 		game.wait(0.1)
@@ -83,7 +82,6 @@ modutil.mod.Path.Wrap("StartNewRunPresentation", function(base, runDoor, args)
 		return base(runDoor, args)
 	end
 end)
-
 
 modutil.mod.Path.Context.Wrap("StartDeathLoopPresentation", function(currentRun)
 	modutil.mod.Path.Wrap("PlayVoiceLines", function(base, voicelines, neverQueue, source, args)

@@ -184,6 +184,14 @@ local addAnimations = {
 		ChainTo = "null",
 	},
 	-- #endregion
+	-- #region Ending Portrait
+	{
+		Name = "PortraitFamily",
+		FilePath = "GUIModded\\FamilyPortraits\\FamilyPortrait_01",
+		Ambient = 0.0,
+		AngleFromOwner = "Ignore",
+	},
+	-- #endregion
 }
 
 sjson.hook(hadesTwoPortraitsFile, function(data)

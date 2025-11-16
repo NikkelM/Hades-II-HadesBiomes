@@ -3,6 +3,60 @@ table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 	FunctionName = _PLUGIN.guid .. "." .. "SpawnHadesRunStartDoor",
 })
 
+-- Add the ending portrait function to the Hub_Main
+local endingPortraitOnLoadEvent = {
+	FunctionName = "StartDeathLoop",
+	Args =
+	{
+		PresentationFunctionName = _PLUGIN.guid .. "." .. "HubPostModdedCreditsStartPresentation",
+		PresentationFunctionArgs = {
+			PortraitArgs = {
+				PauseMusic = true,
+				SecretMusic = "/Music/MusicExploration1_MC",
+				PortraitAnimationName = "PortraitFamily",
+				FadeInTime = 1.5,
+				FadeOutWait = 38,
+				PanDuration = 32,
+				PortraitGlobalVoiceLines = "StorytellerEndingVoiceLines",
+			},
+			-- PostPortraitTextLines =
+			-- {
+			-- 	TrueEndingFinaleResponse01 =
+			-- 	{
+			-- 		PlayOnce = true,
+			-- 		SkipContextArt = true,
+
+			-- 		{ Cue = "/VO/Melinoe_5736",
+			-- 			UsePlayerSource = true,
+			-- 			Portrait = "Portrait_Mel_Proud_01",
+			-- 			PreLineThreadedFunctionName = "PlayEmoteAnimFromSource", PreLineThreadedFunctionArgs = { Emote = "None", Portrait = "Portrait_Mel_Empathetic_01", WaitTime = 2.4 },
+			-- 			PreLineAnim = "MelTalkPensive01", PreLineAnimTarget = "Hero",
+			-- 			PostLineAnim = "MelTalkPensive01ReturnToIdle", PostLineAnimTarget = "Hero",
+
+			-- 			Text = "May it all turn out that way in time, Homer. Though, we're not there yet, especially not with the Fates still missing. We achieved something important, but more is to be done." },
+
+			-- 		EndFunctionName = "DisplayTrueEndingInfoBanner",
+			-- 		EndFunctionArgs = { Title = "TrueEndingReached", PreWait = 0.1, PostCreditsMusicFadeOutDuration = 0.3, Stinger = "/Music/IrisVictoryStingerLARGE", EndFunctionName = "RestoreMusicianMusic" },
+
+			-- 	},
+			-- },
+		},
+	},
+	GameStateRequirements = {
+		{
+			PathTrue = { "CurrentRun", "RoomsEntered", "Return06" },
+		},
+		{
+			PathFalse = { "CurrentRun", "UsedStoryReset" },
+		},
+		{
+			PathFalse = { "CurrentHubRoom", },
+		},
+	},
+	BreakIfPlayed = true,
+}
+table.insert(game.HubRoomData.Hub_Main.OnLoadEvents, 1, endingPortraitOnLoadEvent)
+
 function mod.SpawnHadesRunStartDoor(source, args)
 	-- Vow shrine would be: 589694
 	-- Run start door for the underworld

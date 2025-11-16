@@ -238,6 +238,8 @@ game.GlobalVoiceLines.StartingBoatRideVoiceLines = game.GlobalVoiceLines.Startin
 		mod.GlobalVoiceLines.StartingBoatRideVoiceLines
 game.GlobalVoiceLines.SunriseOverlookVoiceLines = game.GlobalVoiceLines.SunriseOverlookVoiceLines or
 		mod.GlobalVoiceLines.SunriseOverlookVoiceLines
+game.GlobalVoiceLines.StorytellerEndingVoiceLines = game.GlobalVoiceLines.StorytellerEndingVoiceLines or
+		mod.GlobalVoiceLines.StorytellerEndingVoiceLines
 
 game.GlobalVoiceLines.SurvivalEncounterStartVoiceLines = game.GlobalVoiceLines.SurvivalEncounterStartVoiceLines or
 		mod.GlobalVoiceLines.SurvivalEncounterStartVoiceLines

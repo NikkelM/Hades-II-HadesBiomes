@@ -2471,6 +2471,19 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		-- ...The Sun... Helios...
 		{ Cue = "/VO/ZagreusField_4698", RequiredPlayed = { "/VO/ZagreusField_4697" }, PreLineWait = 6.0, RequiredTextLines = { "DemeterAboutHelios01" } },
 	},
+	StorytellerEndingVoiceLines = {
+		{
+			PreLineWait = 1.2,
+			NoTarget = true,
+			-- Thus was Hades, feared ruler of the dead, reunited with his long-lost bride, Persephone, the Queen; and, together with their firstborn son, Prince Zagreus, they would go on to reign eternally beneath the Earth, in relative harmony.
+			{ Cue = "/VO/Megaera_00340", SubtitleColor = Color.NarratorVoice, },
+			-- The Queen's return marked an occasion of enthusiastic joy... so much as possible, in that dark, gloom-filled realm of the dead.
+			{ Cue = "/VO/Megaera_00341", SubtitleColor = Color.NarratorVoice, PreLineWait = 1 },
+			-- TODO: Replace this with a kind of "but, we know how the rest of that story goes"...
+			-- And, even after all this time, Olympus never did discover what transpired there in the Underworld.
+			{ Cue = "/VO/Megaera_00342", SubtitleColor = Color.NarratorVoice, PreLineWait = 1 },
+		},
+	},
 	-- #endregion
 	-- #region Survival Encounters
 	SurvivalEncounterStartVoiceLines = {
