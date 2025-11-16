@@ -441,7 +441,7 @@ local roomReplacements = {
 				-- From Cerberus boss fight
 				{ Cue = "/VO/MelinoeField_0920", Text = "You're not going to step aside, are you?" },
 				{ Cue = "/VO/MelinoeField_0923", Text = "Heads up..." },
-				{ Cue = "/VO/MelinoeField_0922", Text = "I'm sorry, but I have to get through." },
+				{ Cue = "/VO/MelinoeField_0922", Text = "I'm sorry, but I have to get through.",    RequiredFalseTextLines = { "Ending01" }, },
 				{ Cue = "/VO/MelinoeField_0924", Text = "I'm not afraid of you..." },
 				-- From Eris
 				{ Cue = "/VO/MelinoeField_1904", Text = "You're in my way." },

@@ -1680,14 +1680,29 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		return false
 	end
 
+	-- Helper function to translate voiceline IDs from Hades I to Hades II
+	local function TranslateVoiceLine(voiceLine)
+		if type(voiceLine) ~= "string" then
+			return voiceLine
+		end
+
+		local translated = voiceLine:gsub("/VO/Storyteller_", "/VO/Megaera_0")
+		translated = translated:gsub("/VO/Charon_", "/VO/Megaera_1")
+		translated = translated:gsub("/VO/Persephone_", "/VO/Megaera_2")
+
+		return translated
+	end
+
 	if requirements.RequiredPlayed ~= nil then
 		if type(requirements.RequiredPlayed) ~= "table" then
-			if game.GameState.SpeechRecord[requirements.RequiredPlayed] == nil then
+			local translatedVoiceLine = TranslateVoiceLine(requirements.RequiredPlayed)
+			if game.GameState.SpeechRecord[translatedVoiceLine] == nil then
 				return false
 			end
 		else
 			for k, voiceLine in pairs(requirements.RequiredPlayed) do
-				if game.GameState.SpeechRecord[voiceLine] == nil then
+				local translatedVoiceLine = TranslateVoiceLine(voiceLine)
+				if game.GameState.SpeechRecord[translatedVoiceLine] == nil then
 					return false
 				end
 			end
@@ -1695,7 +1710,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 	if requirements.RequiredFalsePlayed ~= nil then
 		for k, voiceLine in pairs(requirements.RequiredFalsePlayed) do
-			if game.GameState.SpeechRecord[voiceLine] ~= nil then
+			local translatedVoiceLine = TranslateVoiceLine(voiceLine)
+			if game.GameState.SpeechRecord[translatedVoiceLine] ~= nil then
 				return false
 			end
 		end
@@ -1703,7 +1719,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredPlayedThisRun ~= nil then
 		for k, voiceLine in pairs(requirements.RequiredPlayedThisRun) do
-			if not game.CurrentRun.SpeechRecord[voiceLine] then
+			local translatedVoiceLine = TranslateVoiceLine(voiceLine)
+			if not game.CurrentRun.SpeechRecord[translatedVoiceLine] then
 				return false
 			end
 		end
@@ -1711,7 +1728,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredAnyPlayedThisRun ~= nil then
 		local anyTrue = false
 		for k, voiceLine in pairs(requirements.RequiredAnyPlayedThisRun) do
-			if Contains(game.CurrentRun.SpeechRecord, voiceLine) then
+			local translatedVoiceLine = TranslateVoiceLine(voiceLine)
+			if Contains(game.CurrentRun.SpeechRecord, translatedVoiceLine) then
 				anyTrue = true
 				break
 			end
@@ -1722,25 +1740,39 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 	if requirements.RequiredFalsePlayedThisRun ~= nil then
 		for k, voiceLine in pairs(requirements.RequiredFalsePlayedThisRun) do
-			if game.CurrentRun.SpeechRecord[voiceLine] then
+			local translatedVoiceLine = TranslateVoiceLine(voiceLine)
+			if game.CurrentRun.SpeechRecord[translatedVoiceLine] then
 				return false
 			end
 		end
 	end
 	if requirements.RequiredFalsePlayedLastRun ~= nil and prevRun ~= nil then
 		for k, voiceLine in pairs(requirements.RequiredFalsePlayedLastRun) do
-			if prevRun.SpeechRecord ~= nil and prevRun.SpeechRecord[voiceLine] then
+			local translatedVoiceLine = TranslateVoiceLine(voiceLine)
+			if prevRun.SpeechRecord ~= nil and prevRun.SpeechRecord[translatedVoiceLine] then
 				return false
 			end
 		end
 	end
 
-	if requirements.RequiredPlayedThisRoom ~= nil and not ContainsAny(requirements.RequiredPlayedThisRoom, game.CurrentRun.CurrentRoom.SpeechRecord) then
-		return false
+	if requirements.RequiredPlayedThisRoom ~= nil then
+		local translatedLines = {}
+		for k, voiceLine in pairs(requirements.RequiredPlayedThisRoom) do
+			table.insert(translatedLines, TranslateVoiceLine(voiceLine))
+		end
+		if not ContainsAny(translatedLines, game.CurrentRun.CurrentRoom.SpeechRecord) then
+			return false
+		end
 	end
 
-	if requirements.RequiredFalsePlayedThisRoom ~= nil and ContainsAny(requirements.RequiredFalsePlayedThisRoom, game.CurrentRun.CurrentRoom.SpeechRecord) then
-		return false
+	if requirements.RequiredFalsePlayedThisRoom ~= nil then
+		local translatedLines = {}
+		for k, voiceLine in pairs(requirements.RequiredFalsePlayedThisRoom) do
+			table.insert(translatedLines, TranslateVoiceLine(voiceLine))
+		end
+		if ContainsAny(translatedLines, game.CurrentRun.CurrentRoom.SpeechRecord) then
+			return false
+		end
 	end
 
 	if requirements.RequiredRoomThisRun ~= nil then

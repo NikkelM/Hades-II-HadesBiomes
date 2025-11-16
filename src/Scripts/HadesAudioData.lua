@@ -3518,7 +3518,8 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			RandomRemaining = true,
 			PreLineWait = 1.15,
 			GameStateRequirements = {},
-			{ Cue = "/VO/MelinoeField_3881", Text = "...now for Zagreus to do his part.", PlayFirst = true },
+			-- Only plays if we've not seen the ending yet, as after it, we no longer switch to Zagreus
+			{ Cue = "/VO/MelinoeField_3881", Text = "...now for Zagreus to do his part.", PlayFirst = true, RequiredFalseTextLines = { "Ending01" }, },
 			{ Cue = "/VO/MelinoeField_1418", Text = "For my brother!", },
 			{ Cue = "/VO/MelinoeField_1407", Text = "Suffer in darkness..." },
 			{ Cue = "/VO/MelinoeField_1417", Text = "For my mother!" },
@@ -4019,7 +4020,6 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_2571",   Text = "{#Emph}Augh... {#Prev}he hits hard..." },
 			{ Cue = "/VO/Melinoe_2752",   Text = "{#Emph}Urgh... {#Prev}he had me figured out..." },
 			{ Cue = "/VO/Melinoe_2753",   Text = "{#Emph}Ungh... {#Prev}barely escaped from him..." },
-			{ Cue = "/VO/Melinoe_5117",   Text = "{#Emph}Ungh... {#Prev}just like old times...", },
 			{ Cue = "/VO/Melinoe_2938_B", Text = "Father..." },
 			{ Cue = "/VO/Melinoe_5175",   Text = "See you again soon, Father.", },
 		},
