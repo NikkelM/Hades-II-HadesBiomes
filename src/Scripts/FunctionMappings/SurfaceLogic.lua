@@ -765,8 +765,7 @@ function mod.HubPostModdedCreditsStartPresentation(currentRun, args)
 	local portrait = game.MapState.ActiveObstacles[589483]
 	FadeIn({ Duration = 0.5 })
 	mod.ViewModdedPortraitPresentation(portrait, args.PortraitArgs)
-	-- ProcessTextLines( portrait, args.PostPortraitTextLines )
-	-- PlayRandomRemainingTextLines( portrait, args.PostPortraitTextLines )
+	game.thread(game.PlayVoiceLines, args.EndVoiceLines)
 
 	TeleportCursor({ OffsetX = game.ScreenCenterX, OffsetY = game.ScreenCenterY })
 	UnzeroMouseTether("DeathPresentation")
