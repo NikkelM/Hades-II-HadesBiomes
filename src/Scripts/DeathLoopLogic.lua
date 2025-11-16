@@ -12,6 +12,10 @@ modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 		if game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.Encounter then
 			game.CurrentRun.CurrentRoom.Encounter.InProgress = false
 		end
+		-- If we died in the Hades boss fight, always set the killer to Hades
+		if game.CurrentRun.CurrentRoom.Name == "D_Boss01" then
+			killer.Name = "NPC_Hades_01"
+		end
 		if killer then
 			if killer.Name == "HarpySupportUnit" then
 				local resultText = game.CurrentRun.CurrentRoom.ResultText

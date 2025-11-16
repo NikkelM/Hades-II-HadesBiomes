@@ -1654,6 +1654,7 @@ local enemyModifications = {
 			DashRequireLoS = true,
 		},
 		ImmuneToPolymorph = true,
+		RunHistoryKilledByName = "NPC_Hades_01",
 	},
 	HadesAmmo = {
 		AIOptions = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesAttackAndDie", },
@@ -1664,7 +1665,7 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
-		RunHistoryKilledByName = "Hades",
+		RunHistoryKilledByName = "NPC_Hades_01",
 	},
 	NPC_Hades_Story_02 = {
 		IsBoss = false,
