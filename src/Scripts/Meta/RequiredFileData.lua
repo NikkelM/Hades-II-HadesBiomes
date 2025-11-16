@@ -681,6 +681,8 @@ mod.MapFileMappings = {
 mod.MapTextFileNames = {
 	-- A new Terrain group was added to resolve flickering tiles next to where the player spawns
 	RoomOpening = true,
+	-- A new Terrain group was added to resolve flickering tiles next to the exit door (same as above)
+	Return06 = true,
 }
 
 -- Languages supported by Hades

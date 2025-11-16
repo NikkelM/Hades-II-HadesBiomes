@@ -159,21 +159,21 @@ mod.CreditsData = {
 
 		-- Mod Credits
 		{ CreditLineBuffer = 100 },
-		{ PreWait = 2.31 },
+		{ PreWait = 2.33 },
 		{ Text = "ModsNikkelMHadesBiomes_Mod_Name",                             Format = mod.CreditsFormat.SpecialHeader },
 		{ CreditLineBuffer = 120 },
-		{ PreWait = 1.29 },
+		{ PreWait = 1.28 },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Craft_NikkelM",          Format = mod.CreditsFormat.Header },
 		{ CreditLineBuffer = 50 },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_NikkelM",           Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = 160 },
 
-		{ PreWait = 1.73 },
+		{ PreWait = 1.71 },
 
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Info_Special_Shoutouts", Format = mod.CreditsFormat.Name },
 		{ CreditLineBuffer = 80 },
 
-		{ PreWait = 1.12 },
+		{ PreWait = 1.1 },
 
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Craft_iDeath",           X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Craft },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Craft_burn",             X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Craft },
@@ -181,11 +181,11 @@ mod.CreditsData = {
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_iDeath",            X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_burn",              X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
 
-		{ PreWait = 2.37 },
+		{ PreWait = 2.35 },
 		{ CreditLineBuffer = 190 },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Info_Community",         Format = mod.CreditsFormat.Info },
 
-		{ PreWait = 0.3 },
+		{ PreWait = 0.28 },
 		{ CreditLineBuffer = 80 },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Info_SGG_Thanks",        Format = mod.CreditsFormat.Info },
 

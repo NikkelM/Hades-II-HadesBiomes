@@ -281,6 +281,117 @@ The above makes sure that `Terrain_04` is rendered above `Terrain_03` and below 
 ...
 ```
 
+#### Return06
+
+In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
+
+For ID `553381`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
+
+Additionally, the same as for `RoomOpening` applies here:
+In the `Return06.thing_bin` file (decompiled), there are two `TartarusCubeBrick03` objects (ID `210004` and `210099`).
+The parent of `210004` is ID `410061` (has `210004` as an `AttachedId`).
+These are the first and second tiles after the door (where the player starts) in the room.
+These two tiles have some bugged z-buffer location, which requires some manual changes from the Hades file to work nicely with Hades II.
+
+The changes that need to be made are as follows:
+
+To ID `210004`:
+
+- Added `"Comments": "FirstDoor"`
+- Assigned `Terrain_04` to the `GroupNames` array.
+
+To ID `210099`:
+
+- Added `"Comments": "SecondDoor"`
+- Assigned `Terrain_05` to the `GroupNames` array.
+
+Additionally, the new `Terrain_04` and `Terrain_05` groups must be added to the `Return06.map_text` file, in the correct positions:
+
+```text
+...
+{
+	"Id": 310001,
+	"Name": "Terrain_Decor_01"
+},
+{
+	"Id": 310009,
+	"Name": "Terrain_05"
+},
+{
+	"Id": 310008,
+	"Name": "Terrain_04"
+},
+{
+	"Id": 310007,
+	"Name": "Terrain_03"
+},
+...
+```
+
+The above makes sure that `Terrain_04` is rendered above `Terrain_03` and below `Terrain_Decor_01`, and the same for `Terrain_05`.
+
+```text
+...
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 310007,
+		"Name": "Terrain_03"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410019,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 310008,
+		"Name": "Terrain_04"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410019,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 310009,
+		"Name": "Terrain_05"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410019,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+...
+```
+
 #### A_Story01
 
 In this map, we need to change the name for the Bouldy NPC, as it is used in both Hades and Hades II.
@@ -334,12 +445,6 @@ For ID `561150`, change the `Name` property from `NPC_Persephone_01` to `ModsNik
 In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
 
 For ID `553264`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
-
-#### Return06
-
-In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
-
-For ID `553381`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
 
 ## Map packages
 
