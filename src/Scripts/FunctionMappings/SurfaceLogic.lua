@@ -734,7 +734,6 @@ function mod.HubPostModdedCreditsStartPresentation(currentRun, args)
 	Teleport({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = 780542 })
 
 	game.StartRoomAmbience(game.CurrentRun, game.CurrentHubRoom)
-	-- TODO: Suppress Dora voiceline
 	game.TentEnterPresentation()
 	local dimmerIds = GetIds({ Name = "TentIntroDimmer_01" })
 	SetAlpha({ Ids = dimmerIds, Fraction = 1.0 })

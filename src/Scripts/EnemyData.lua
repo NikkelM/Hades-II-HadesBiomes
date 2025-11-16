@@ -376,7 +376,6 @@ local enemyReplacements = {
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
-		-- TODO: Test on all enemies
 		ActivateFadeIn = false,
 		ActivateTint = false,
 		ActivateStartAlpha = 1.0,
