@@ -110,7 +110,7 @@ def transform_hull(hull, topLeft, size):
   def transform_point(point):
     x = point[0] - topLeft['x'] - round(size[0]/2.0)
     y = point[1] - topLeft['y'] - round(size[1]/2.0)
-    return [x, y]
+    return {'x': x, 'y': y}
 
   new_hull = []
   for point in hull:
