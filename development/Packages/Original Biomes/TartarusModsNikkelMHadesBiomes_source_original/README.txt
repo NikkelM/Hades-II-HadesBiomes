@@ -1,4 +1,5 @@
 Copy-Pasted the normal Tartarus package (atlas version).
+,?\s*\{"name":\s*"Fx\\\\GroundFogIso[^"]*"(?:[^{}]|\{[^{}]*\})*\}
 
 From Hades II Tilesets/Atmosphere:
 Atmosphere_Shadow_AngledCast_01

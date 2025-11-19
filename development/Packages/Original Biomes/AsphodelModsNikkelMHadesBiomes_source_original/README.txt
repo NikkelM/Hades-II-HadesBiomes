@@ -1,4 +1,5 @@
 Copy-Pasted the normal Asphodel package (atlas version).
+,?\s*\{"name":\s*"Fx\\\\GroundFogIso[^"]*"(?:[^{}]|\{[^{}]*\})*\}
 
 From Hades II Fx/Tilesets/Atmosphere:
 Atmosphere_Shadow_Rectangle_01
