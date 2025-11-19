@@ -1572,12 +1572,15 @@ local weaponModifications = {
 	HadesCastBeam = {
 		RapidDamageType = true,
 		AIData = {
+			-- To be dampened during attacking and when the beam dissipates
+			PreAttackRotationDampening = 0.02,
 			FireRotationDampening = 0.02,
 		},
 	},
 	HadesCastBeam360 = {
 		RapidDamageType = true,
 		AIData = {
+			PreAttackRotationDampening = 0.015,
 			FireRotationDampening = 0.015,
 		},
 	},
