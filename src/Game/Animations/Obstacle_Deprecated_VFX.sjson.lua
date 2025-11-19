@@ -63,6 +63,21 @@ local hadesTwoObstacleModifications = {
 		CreateAnimation = "Styx_Pillar03TransitionC",
 	},
 	-- #endregion
+
+	-- #region Surface
+	BossPillarB = {
+		ChildAnimation = "null",
+		CreateAnimation = "BossPillarTransitionA",
+	},
+	BossPillarC = {
+		ChildAnimation = "null",
+		CreateAnimation = "BossPillarTransitionB",
+	},
+	BossPillarD = {
+		ChildAnimation = "null",
+		CreateAnimation = "BossPillarTransitionC",
+	},
+	-- #endregion
 }
 
 local addAnimationsParents = {

@@ -52,6 +52,8 @@ mod.ApplyNestedSjsonModifications(hadesSurfaceObstacleTable.Obstacles, obstacleM
 
 -- Modifications to existing obstacles in Hades II
 local hadesTwoObstacleModifications = {
+	-- Destructible pillars that crumble when hit
+	SurfaceDestructiblePillar = { InheritFrom = "1_BaseVulnerableObstacle", },
 	-- Obstacles that shouldn't be passable
 	SurfaceGravemarker07 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	SurfaceGravemarker07a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
