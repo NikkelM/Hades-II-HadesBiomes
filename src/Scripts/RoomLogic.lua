@@ -28,19 +28,13 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 
 		-- The base game doesn't load encounter packages when a save is loaded, or the RoomOpening is entered
 		if currentRoom.Encounter ~= nil and currentRoom.Encounter.LoadPackages then
-			for _, name in pairs(currentRoom.Encounter.LoadPackages) do
-				LoadPackages({ Name = name })
-			end
+			LoadPackages({ Names = currentRoom.Encounter.LoadPackages })
 		end
 		if currentRoom.AlwaysLoadModdedPackages then
-			for _, name in pairs(currentRoom.AlwaysLoadModdedPackages) do
-				LoadPackages({ Name = name })
-			end
+			LoadPackages({ Names = currentRoom.AlwaysLoadModdedPackages })
 		end
 		if currentRoom.LoadModdedPackages then
-			for _, name in pairs(currentRoom.LoadModdedPackages) do
-				LoadPackages({ Name = name })
-			end
+			LoadPackages({ Names = currentRoom.LoadModdedPackages })
 		end
 
 		-- For the vow that gives a chance for enemies to be from the next biome
