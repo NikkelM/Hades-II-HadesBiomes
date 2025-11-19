@@ -66,6 +66,7 @@ local hadesEnemyAnimationsModifications = {
 	-- #endregion
 	-- #region STYX
 	ModsNikkelMHadesBiomesHadesTombstoneSpawn = {
+		FilePath = "NikkelM-HadesBiomesFxModded\\Fx\\ModsNikkelMHadesBiomesHadesStunTotemSpawn\\ModsNikkelMHadesBiomesHadesStunTotemSpawn",
 		ChainTo = "ModsNikkelMHadesBiomesHadesStunTotemStatic",
 		Scale = 1.4,
 		Sound = "/SFX/Enemy Sounds/Zombie/ZombieEmerge",
