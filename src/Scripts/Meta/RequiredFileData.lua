@@ -28,7 +28,7 @@ mod.VoiceoverFileNames = {
 }
 
 mod.PackageFileMappings = {
-	Tartarus = "TartarusModsNikkelMHadesBiomes",
+	-- Tartarus = "TartarusModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
 	Asphodel = "AsphodelModsNikkelMHadesBiomes",
 	Elysium = "ElysiumModsNikkelMHadesBiomes",
 	Styx = "StyxModsNikkelMHadesBiomes",

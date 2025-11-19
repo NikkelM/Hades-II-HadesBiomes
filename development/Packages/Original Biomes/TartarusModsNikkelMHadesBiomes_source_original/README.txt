@@ -32,6 +32,16 @@ Prototype_Tile_01
 
 
 From Hades II Fx/Tilesets/House:
+House_Brazier_01
+
+
+From Hades II Fx/Fx:
+GroundFogIso/
+LavaFire/
+LavaRippleA/
+LavaRippleB/
+LavaWaveD/
+
 
 
 
