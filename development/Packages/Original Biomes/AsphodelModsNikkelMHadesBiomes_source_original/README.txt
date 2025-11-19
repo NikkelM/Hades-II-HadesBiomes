@@ -1,10 +1,44 @@
 Copy-Pasted the normal Asphodel package (atlas version).
 
-Removed all Atmosphere references in manifests using this regex
+From Hades II Fx/Tilesets/Atmosphere:
+Atmosphere_Shadow_Rectangle_01
+Atmosphere_Shadow_Rectangle_04
+Atmosphere_Shadow_Rectangle_06
+Atmosphere_Shadow_Rectangle_07
+Atmosphere_Shadow_Rectangle_08
+Atmosphere_Shadow_Round_01
+Atmosphere_Shadow_Round_02
+Atmosphere_Stroke_DotMulti_01
+Atmosphere_Stroke_LongSingle_01
+Atmosphere_Stroke_LongSingle_02
+Atmosphere_Stroke_ShortDouble_01
+Atmosphere_Stroke_ShortMulti_01
+Atmosphere_Stroke_ShortMulti_02
+Basic_Glow_01
 
-,?\s*\{"name":\s*"Tilesets\\\\Atmosphere\\\\[^"]*"(?:[^{}]|\{[^{}]*\})*\}
 
-Removed additional textures:
+From Hades II Fx/Tilesets/Gradients:
+RadialTintableA
+RadialWhite
+
+
+From Hades II Fx/Tilesets/Graybox:
+_Impassable_Long
+_Impassable_Oval01
+_Impassable_Tile64Iso
+_Impassable_Tile64Iso_Half_01
+Prototype_Tile_01
+
+
+From Hades II Fx/Tilesets/Tartarus:
+Tartarus_Barrel_01
+Tartarus_BlankIsoTile_01
+Tartarus_Rubble_02
+Tartarus_Rubble_02b
+Tartarus_Rubble_02c
+Tartarus_Terrain_Brick_09
+Tartarus_WallBars_01
+
 
 From Hades II Fx/Fx:
 GroundFogIso/
@@ -14,3 +48,9 @@ LavaPuddleIn/
 LavaPuddleOut/
 LavaRippleA/
 LavaRippleB/
+LavaSplashProjectileHead/
+LavaWaveD/
+Vignette/VignetteLavaA
+Vignette/VignetteLavaB
+
+
