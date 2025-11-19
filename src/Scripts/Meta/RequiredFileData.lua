@@ -35,7 +35,7 @@ mod.PackageFileMappings = {
 	-- Surface = "SurfaceModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
 	-- Erebus = "ErebusModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
 	-- Charon = "CharonModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
-	RoomManager = "RoomManagerModsNikkelMHadesBiomes",
+	-- RoomManager = "RoomManagerModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
 }
 
 mod.BikFileNames = {
