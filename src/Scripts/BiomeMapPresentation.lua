@@ -34,7 +34,7 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		Destroy({ Ids = destroyIds })
 		game.wait(0.2) -- Need to wait for the sounds to finish before unloading them
 	end
-	for enemyId, enemy in pairs(game.ShallowCopyTable(game.ActiveEnemies)) do
+	for enemyId, enemy in pairs(game.ShallowCopyTable(game.ActiveEnemies) or {}) do
 		-- Should maybe call the full CleanupEnemy() but starting leaner
 		game.killTaggedThreads("EnemyHealthBarFalloff" .. enemy.ObjectId)
 		game.killTaggedThreads("Activating" .. enemy.ObjectId)
@@ -53,7 +53,7 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		StopAnimation({ Names = { "MetaUpgradeCardFlip", "CardFlipGlowA", "CardFlipGlowB" }, DestinationId = id })
 	end
 	StopUnattachedAnimation({ Names = { "ErisBombardmentCrater", "ErisBombardmentCraterFade", }, PreventChain = true })
-	Destroy({ Ids = CollapseTable(game.SessionMapState.ShownMetaUpgradeCardIds) })
+	Destroy({ Ids = game.CollapseTable(game.SessionMapState.ShownMetaUpgradeCardIds) })
 
 	AddInputBlock({ Name = "BiomeMapPresentation" })
 	BlockVfx({ DestinationNames = { "Standing_FX", "Standing_FX_02", } })

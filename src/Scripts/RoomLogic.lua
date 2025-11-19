@@ -26,12 +26,12 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.ValidModdedRunBiomes[currentRoom.RoomSetName] then
 		currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
 
+		if currentRoom.AlwaysLoadModdedPackages then
+			LoadPackages({ Names = currentRoom.AlwaysLoadModdedPackages })
+		end
 		-- The base game doesn't load encounter packages when a save is loaded, or the RoomOpening is entered
 		if currentRoom.Encounter ~= nil and currentRoom.Encounter.LoadPackages then
 			LoadPackages({ Names = currentRoom.Encounter.LoadPackages })
-		end
-		if currentRoom.AlwaysLoadModdedPackages then
-			LoadPackages({ Names = currentRoom.AlwaysLoadModdedPackages })
 		end
 		if currentRoom.LoadModdedPackages then
 			LoadPackages({ Names = currentRoom.LoadModdedPackages })
