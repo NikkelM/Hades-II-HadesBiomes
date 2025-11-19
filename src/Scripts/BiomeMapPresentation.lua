@@ -23,13 +23,44 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	}
 
 	game.killTaggedThreads("MetaUpgradePresentation")
+	game.killTaggedThreads("RespawningCoverManager")
+	game.killWaitUntilThreads("RespawningCoverDeath")
+	if source.RespawningCoverActiveIds ~= nil then
+		Destroy({ Ids = game.GetAllValues(source.RespawningCoverActiveIds) }) -- Need to remove before they interally chain back to another animation
+		game.wait(0.03)
+	end
+	local destroyIds = GetIdsByType({ Name = "ShipsFishFlap" })
+	if not game.IsEmpty(destroyIds) then
+		Destroy({ Ids = destroyIds })
+		game.wait(0.2) -- Need to wait for the sounds to finish before unloading them
+	end
+	for enemyId, enemy in pairs(game.ShallowCopyTable(game.ActiveEnemies)) do
+		-- Should maybe call the full CleanupEnemy() but starting leaner
+		game.killTaggedThreads("EnemyHealthBarFalloff" .. enemy.ObjectId)
+		game.killTaggedThreads("Activating" .. enemy.ObjectId)
+		game.killTaggedThreads(enemy.AIThreadName)
+		game.killWaitUntilThreads(enemy.AINotifyName)
+		BlockVfx({ DestinationId = enemyId })
+		Destroy({ Id = enemyId })
+	end
+	if source.FootstepAnimationL ~= nil then
+		SwapAnimation({ Name = "FireFootstepL-Spawner", DestinationName = source.FootstepAnimationL, Reverse = true })
+	end
+	if source.FootstepAnimationR ~= nil then
+		SwapAnimation({ Name = "FireFootstepR-Spawner", DestinationName = source.FootstepAnimationR, Reverse = true })
+	end
 	for _, id in pairs(game.SessionMapState.ShownMetaUpgradeCardIds) do
 		StopAnimation({ Names = { "MetaUpgradeCardFlip", "CardFlipGlowA", "CardFlipGlowB" }, DestinationId = id })
 	end
-	Destroy({ Ids = game.CollapseTable(game.SessionMapState.ShownMetaUpgradeCardIds) })
+	StopUnattachedAnimation({ Names = { "ErisBombardmentCrater", "ErisBombardmentCraterFade", }, PreventChain = true })
+	Destroy({ Ids = CollapseTable(game.SessionMapState.ShownMetaUpgradeCardIds) })
 
 	AddInputBlock({ Name = "BiomeMapPresentation" })
+	BlockVfx({ DestinationNames = { "Standing_FX", "Standing_FX_02", } })
+	UnloadPackageGroup({ Group = "Biome" })
 	LoadPackages({ Name = "BiomeMap", IgnoreAssert = true })
+
+	game.GameState.BiomeMapRecord[args.BiomeStart] = (game.GameState.BiomeMapRecord[args.BiomeStart] or 0) + 1
 
 	-- setup biome map
 	local groupName = "Combat_UI"
