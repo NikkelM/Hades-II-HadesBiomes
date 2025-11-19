@@ -27,16 +27,7 @@ mod.VoiceoverFileNames = {
 	ZagreusField = "ZagreusField",
 }
 
-mod.PackageFileMappings = {
-	-- Tartarus = "TartarusModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
-	-- Asphodel = "AsphodelModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
-	-- Elysium = "ElysiumModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
-	-- Styx = "StyxModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
-	-- Surface = "SurfaceModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
-	-- Erebus = "ErebusModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
-	-- Charon = "CharonModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
-	-- RoomManager = "RoomManagerModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
-}
+-- All biome .pkg files have been de-duplicated and added to the plugins_data folder
 
 mod.BikFileNames = {
 	-- #region TARTARUS

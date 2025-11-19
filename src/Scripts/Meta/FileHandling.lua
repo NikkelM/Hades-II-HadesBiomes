@@ -101,11 +101,6 @@ function mod.CheckRequiredFiles(failFast)
 	-- We only check once, since with a successful uninstall, there will be at least one missing file here already
 	if failFast and missingFiles > 0 then return missingFiles end
 
-	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\1080p\\", ".pkg", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\1080p\\", ".pkg_manifest", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\720p\\", ".pkg", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.PackageFileMappings, "Packages\\720p\\", ".pkg_manifest", failFast)
-
 	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, "Movies\\1080p\\", ".bik", failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, "Movies\\1080p\\", ".bik_atlas", failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, "Movies\\720p\\", ".bik", failFast)
