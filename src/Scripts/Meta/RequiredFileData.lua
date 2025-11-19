@@ -27,16 +27,7 @@ mod.VoiceoverFileNames = {
 	ZagreusField = "ZagreusField",
 }
 
-mod.PackageFileMappings = {
-	Tartarus = "TartarusModsNikkelMHadesBiomes",
-	Asphodel = "AsphodelModsNikkelMHadesBiomes",
-	Elysium = "ElysiumModsNikkelMHadesBiomes",
-	Styx = "StyxModsNikkelMHadesBiomes",
-	Surface = "SurfaceModsNikkelMHadesBiomes",
-	-- Erebus = "ErebusModsNikkelMHadesBiomes",
-	-- Charon = "CharonModsNikkelMHadesBiomes",
-	RoomManager = "RoomManagerModsNikkelMHadesBiomes",
-}
+-- All biome .pkg files have been de-duplicated and added to the plugins_data folder
 
 mod.BikFileNames = {
 	-- #region TARTARUS

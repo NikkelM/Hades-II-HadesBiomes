@@ -431,7 +431,6 @@ function mod.CheckRunEndPresentation(currentRun, door)
 		if game.GameState.TextLinesRecord["LordHadesBeforePersephoneReturn01"] ~= nil then
 			game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.BossHadesPeacefulExitVoiceLines)
 		end
-		game.wait(3.5)
 	end
 	RemoveInputBlock({ Name = "CheckRunEndPresentation" })
 end

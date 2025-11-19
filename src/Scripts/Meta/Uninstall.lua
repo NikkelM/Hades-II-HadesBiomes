@@ -47,11 +47,6 @@ function mod.Uninstall()
 
 	removeFiles(mod.AudioFileMappings, "Audio\\Desktop\\", ".bank")
 
-	removeFiles(mod.PackageFileMappings, "Packages\\1080p\\", ".pkg")
-	removeFiles(mod.PackageFileMappings, "Packages\\1080p\\", ".pkg_manifest")
-	removeFiles(mod.PackageFileMappings, "Packages\\720p\\", ".pkg")
-	removeFiles(mod.PackageFileMappings, "Packages\\720p\\", ".pkg_manifest")
-
 	removeFiles(mod.BikFileNames, "Movies\\1080p\\", ".bik")
 	removeFiles(mod.BikFileNames, "Movies\\1080p\\", ".bik_atlas")
 	removeFiles(mod.BikFileNames, "Movies\\720p\\", ".bik")

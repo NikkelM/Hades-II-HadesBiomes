@@ -14,7 +14,7 @@ modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
 	return rewardStoreName
 end)
 
--- Wrap to also load modded resources, such as additional audio banks
+-- Wrap to also load modded resources
 -- This is not called in any of the Crossroads rooms, so we don't need to check for that
 modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	base(currentRoom)
@@ -26,21 +26,20 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.ValidModdedRunBiomes[currentRoom.RoomSetName] then
 		currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
 
+		if currentRoom.AlwaysLoadModdedPackages then
+			LoadPackages({ Names = currentRoom.AlwaysLoadModdedPackages })
+		end
 		-- The base game doesn't load encounter packages when a save is loaded, or the RoomOpening is entered
-		if currentRoom.Encounter.LoadPackages then
-			for _, name in pairs(currentRoom.Encounter.LoadPackages) do
-				LoadPackages({ Name = name })
-			end
+		if currentRoom.Encounter ~= nil and currentRoom.Encounter.LoadPackages then
+			LoadPackages({ Names = currentRoom.Encounter.LoadPackages })
 		end
 		if currentRoom.LoadModdedPackages then
-			for _, name in pairs(currentRoom.LoadModdedPackages) do
-				LoadPackages({ Name = name })
-			end
+			LoadPackages({ Names = currentRoom.LoadModdedPackages })
 		end
 
 		-- For the vow that gives a chance for enemies to be from the next biome
 		if game.GetShrineUpgradeChangeValue("NextBiomeEnemyShrineUpgrade") > 0 then
-			local nextRoomSet = game.NextRoomSets[CurrentRun.CurrentRoom.RoomSetName]
+			local nextRoomSet = game.NextRoomSets[currentRoom.RoomSetName]
 			if nextRoomSet ~= nil then
 				LoadPackages({ Name = nextRoomSet })
 			end
