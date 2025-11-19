@@ -34,7 +34,7 @@ mod.PackageFileMappings = {
 	-- Styx = "StyxModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
 	-- Surface = "SurfaceModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
 	-- Erebus = "ErebusModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
-	-- Charon = "CharonModsNikkelMHadesBiomes",
+	-- Charon = "CharonModsNikkelMHadesBiomes", -- Part of mod data with removed duplicate texture references
 	RoomManager = "RoomManagerModsNikkelMHadesBiomes",
 }
 
