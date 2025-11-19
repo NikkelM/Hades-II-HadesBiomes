@@ -171,6 +171,21 @@ function mod.ClearShadeWeapons()
 	Destroy({ Ids = weaponIds })
 end
 
+function mod.HadesBeamDampeningOn(enemy, aiData, currentRun, args)
+	local dampenEffect = {
+		Id = enemy.ObjectId,
+		DestinationId = enemy.ObjectId,
+		EffectName = enemy.Name .. "HadesBeamRotationDampening"
+	}
+	dampenEffect.DataProperties = { Duration = 10, RotationMultiplier = aiData.ModsNikkelMHadesBiomes_HadesBeamDampeningValue or 0.02, TimeModifierFraction = 1 }
+	ApplyEffect(dampenEffect)
+	table.insert(enemy.ClearEffectsOnHitStun, dampenEffect.EffectName)
+end
+
+function mod.HadesBeamDampeningOff(enemy, aiData, currentRun, args)
+	ClearEffect({ Id = enemy.ObjectId, Name = enemy.Name .. "HadesBeamRotationDampening" })
+end
+
 function mod.HadesBattleKnockDownPreRecoverPresentation(boss)
 	SetAnimation({ Name = "HadesBattleKnockDown_PreRecover", DestinationId = boss.ObjectId })
 	game.wait(0.25)
