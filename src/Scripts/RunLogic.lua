@@ -1,14 +1,17 @@
 modutil.mod.Path.Wrap("RunStateInit", function(base)
 	base()
 
-	-- The custom logic is always called, even if the run is already ongoing
+	if game.CurrentRun == nil then
+		return
+	end
+
 	game.CurrentRun.SupportAINames = game.CurrentRun.SupportAINames or {}
 	game.CurrentRun.CompletedStyxWings = game.CurrentRun.CompletedStyxWings or 0
 	game.CurrentRun.ThanatosSpawns = game.CurrentRun.ThanatosSpawns or 0
 
 	-- Only do this if we haven't done it yet for this global instance
-	-- This key is not included in the save file, so it will always be null when the game is started and a new global is instantiated
-	if game.ModsNikkelMHadesBiomesCompletedGlobalsModifications == nil or not game.CurrentRun then
+	-- This key is not included in the save file on purpose, so it will always be null when the game is started and a new global is instantiated
+	if game.ModsNikkelMHadesBiomesCompletedGlobalsModifications == nil then
 		mod.ApplyGlobalGameObjectModifications(game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun)
 		game.ModsNikkelMHadesBiomesCompletedGlobalsModifications = true
 	end
