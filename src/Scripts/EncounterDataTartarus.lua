@@ -62,13 +62,13 @@ local encounterReplacements = {
 		-- To ensure we are not attacked while still running the entrance animation
 		PreSpawnAIWakeDelay = 0.5,
 		-- The original from Hades is 2.3
-		ActiveEnemyCapBase = 6.9,
+		ActiveEnemyCapBase = 3.4,
 		-- The original from Hades is 30
-		BaseDifficulty = 60,
+		BaseDifficulty = 45,
 		-- The original from Hades is 0.35
 		ActiveEnemyCapDepthRamp = 0.55,
 		-- The original from Hades is 11
-		DepthDifficultyRamp = 14,
+		DepthDifficultyRamp = 13,
 	},
 	OpeningGenerated = {
 		-- Blocks the LocationText from being shown an extra time in RoomEntranceDrop

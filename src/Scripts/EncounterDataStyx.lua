@@ -35,11 +35,11 @@ mod.UpdateField(encounterDataStyx, "Challenge", "TimeChallenge", { "InheritFrom"
 local encounterReplacements = {
 	GeneratedStyx = {
 		-- The original from Hades is 5
-		ActiveEnemyCapBase = 8,
+		ActiveEnemyCapBase = 6,
 		-- The original from Hades is 8
-		ActiveEnemyCapMax = 11,
+		ActiveEnemyCapMax = 8,
 		-- The original from Hades is 900
-		BaseDifficulty = 1200,
+		BaseDifficulty = 1000,
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
 		},

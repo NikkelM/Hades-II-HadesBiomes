@@ -44,15 +44,15 @@ local encounterReplacements = {
 		-- To ensure we are not attacked while still running the entrance animation
 		PreSpawnAIWakeDelay = 0.5,
 		-- The original from Hades is 2.3 - inherited from Generated
-		ActiveEnemyCapBase = 3.9,
+		ActiveEnemyCapBase = 3.3,
 		-- The original from Hades is 220
-		BaseDifficulty = 300,
+		BaseDifficulty = 260,
 		-- The original from Hades is 0.4
-		ActiveEnemyCapDepthRamp = 0.7,
+		ActiveEnemyCapDepthRamp = 0.6,
 		-- The original from Hades is 0.35
-		TypeCountDepthRamp = 0.55,
+		TypeCountDepthRamp = 0.5,
 		-- The original from Hades is 70
-		DepthDifficultyRamp = 80,
+		DepthDifficultyRamp = 75,
 		-- Original is missing HandleEncounterPreSpawns
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
