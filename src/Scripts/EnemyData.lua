@@ -626,6 +626,8 @@ local enemyModifications = {
 	-- #endregion
 	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
+		MaxHealth = 1100,
+		HealthBuffer = 2100,
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		SpawnEvents = {
 			{
@@ -638,8 +640,6 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
-		-- From 1325
-		HealthBuffer = 1800,
 		DefaultAIData = {
 			-- How long it waits before moving again while firing the beams
 			FireDuration = 5.75,
@@ -657,6 +657,8 @@ local enemyModifications = {
 		OnDamagedWeapons = mod.NilValue,
 	},
 	HeavyRangedSplitterMinibossSuperElite = {
+		MaxHealth = 1850,
+		HealthBuffer = 3400,
 		OnDamagedFireProjectiles = {
 			{
 				ProjectileName = "SpawnSplitterFragmentSuperElite",
@@ -667,6 +669,8 @@ local enemyModifications = {
 		OnDamagedWeapons = mod.NilValue,
 	},
 	HeavyRangedSplitterFragment = {
+		MaxHealth = 40,
+		HealthBuffer = 50,
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
 		UseActivatePresentation = false,
 		BlockRaiseDead = true,
@@ -676,6 +680,7 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 	},
 	HeavyRangedSplitterFragmentSuperElite = {
+		HealthBuffer = 70,
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
 		UseActivatePresentation = false,
 		BlockRaiseDead = true,
@@ -685,6 +690,8 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 	},
 	WretchAssassin = {
+		MaxHealth = 400,
+		HealthBuffer = 950,
 		StunAnimations = { Default = "EnemyWretchAssassinOnHit" },
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
@@ -701,12 +708,29 @@ local enemyModifications = {
 		RequiredKill = true,
 	},
 	Harpy = {
+		-- Base Health: 4400
+		-- EM Health: 4800
+		-- Hecate Health: 6050
+		-- Hecate EM Health: 7250
+		-- Polyphemus Health: 8400
+		-- Polyphemus EM Health: 10200
+		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
+		MaxHealth = 8000,
+		ShrineDataOverwrites = {
+			MaxHealth = 8800,
+		},
 		RunHistoryKilledByName = "NPC_FurySister_01",
 		ImmuneToPolymorph = true,
 		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HarpyKillPresentation",
 	},
 	Harpy2 = {
+		-- Base Health: 4600
+		-- EM Health: 4900
+		MaxHealth = 9000,
+		ShrineDataOverwrites = {
+			MaxHealth = 9900,
+		},
 		-- Gets overwritten by the Harpy value if not set
 		RunHistoryKilledByName = "Harpy2",
 		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
@@ -717,6 +741,12 @@ local enemyModifications = {
 		},
 	},
 	Harpy3 = {
+		-- Base Health: 5200
+		-- EM Health: 5600
+		MaxHealth = 10000,
+		ShrineDataOverwrites = {
+			MaxHealth = 11000,
+		},
 		RunHistoryKilledByName = "Harpy3",
 		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
 		BossPresentationTextLineSets = {
@@ -949,6 +979,8 @@ local enemyModifications = {
 		},
 	},
 	CrusherUnitSuperElite = {
+		MaxHealth = 1100,
+		HealthBuffer = 2800,
 		StunAnimations = { Default = "CrusherUnitOnHit" },
 		-- Don't create a new blank obstacle for this enemy, as the flipping logic would be hard to get right
 		ManualDeathAnimation = false,
@@ -967,6 +999,7 @@ local enemyModifications = {
 		},
 	},
 	ShieldRanged = {
+		MaxHealth = 480,
 		StunAnimations = { Default = "HealRangedCrystal4" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		BlockRaiseDead = true,
@@ -984,6 +1017,7 @@ local enemyModifications = {
 		},
 	},
 	ShieldRangedSuperElite = {
+		HealthBuffer = 900,
 		Tethers = {
 			[1] = { Distance = 20 },
 			[2] = { Distance = 20 },
@@ -999,6 +1033,8 @@ local enemyModifications = {
 	-- #endregion
 	-- #region ASPHODEL - Minibosses
 	ShieldRangedMiniBoss = {
+		MaxHealth = 1900,
+		HealthBuffer = 4700,
 		StunAnimations = { Default = "HealRangedCrystal4" },
 		DeathAnimation = "HealRangedDeathMiniBoss",
 		DeathFx = "null",
@@ -1018,6 +1054,8 @@ local enemyModifications = {
 		},
 	},
 	SpreadShotUnitMiniboss = {
+		MaxHealth = 700,
+		HealthBuffer = 1100,
 		-- In Hades II, projectiles can't be destroyed by attacks by default
 		-- So we change the difficulty introduced by the shrine to have all four enemies attack at once, as the invulnerable projectiles are actually easier to dodge than the normal attacks
 		-- We also remove the ShrineWeaponOptionsOverwrite, so we don't use the invulnerable projectiles at all
@@ -1030,6 +1068,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 	},
 	HitAndRunUnit = {
+		MaxHealth = 1650,
 		ManualDeathAnimation = false,
 		DestroyDelay = 3.0,
 		BlockRaiseDead = true,
@@ -1038,6 +1077,8 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 	},
 	CrusherUnitElite = {
+		MaxHealth = 800,
+		HealthBuffer = 1550,
 		BlockAttributes = { "Blink", "Orbit", "Fog", "Frenzy", "ManaDrain", "Molten", "Unflinching", "Vacuuming", },
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
@@ -1057,6 +1098,10 @@ local enemyModifications = {
 	-- #endregion
 	-- #region ASPHODEL - Bosses
 	HydraHeadImmortal = {
+		-- Base Health: 6000
+		-- Eris Health: 16000
+		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
+		MaxHealth = 12000,
 		AltHealthBarTextIds = {
 			[1] = {
 				GameStateRequirements = { RequiredPlayed = { "/VO/ZagreusField_3147" } },
@@ -1115,6 +1160,9 @@ local enemyModifications = {
 	},
 	-- Spawned heads
 	BaseHydraHead = {
+		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
+		MaxHealth = 800,
+		HealthBuffer = 800,
 		StunAnimations = { Default = "EnemyHydraOnHit" },
 		ManualDeathAnimation = false,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
@@ -1162,6 +1210,7 @@ local enemyModifications = {
 		AIOptions = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHydraToothAI", },
 	},
 	HydraTooth2 = {
+		MaxHealth = 150,
 		DefaultAIData = {
 			DeepInheritance = true,
 			SpawnOptions = { "BloodlessNakedBerserkerElite" },
@@ -1440,6 +1489,8 @@ local enemyModifications = {
 	-- #endregion
 	-- #region ELYSIUM - Minibosses
 	FlurrySpawnerElite = {
+		MaxHealth = 2200,
+		HealthBuffer = 2800,
 		DeathAnimation = "SoulSpawnerDeathMiniboss",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
@@ -1448,6 +1499,11 @@ local enemyModifications = {
 	-- #endregion
 	-- #region ELYSIUM - Bosses
 	Minotaur = {
+		-- Base Health: 14000
+		-- Prometheus Health: 33000
+		-- Heracles Health: 34000
+		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
+		MaxHealth = 19000,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "MinotaurOverheadTouchdown",
@@ -1461,15 +1517,10 @@ local enemyModifications = {
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
 		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
-		-- InvulnerableVoiceLines = {
-		-- 	CooldownTime = mod.NilValue,
-		-- 	CooldownName = mod.NilValue,
-		-- 	Cooldowns = {
-		-- 		{ Name = "MinotaurSpokeRecently", Time = 100 },
-		-- 	},
-		-- },
 	},
 	Minotaur2 = {
+		-- Base Health: 16000
+		MaxHealth = 21000,
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "MinotaurArmoredOverheadTouchdown",
 			SpawnDistance = 90,
@@ -1480,6 +1531,8 @@ local enemyModifications = {
 		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
 	},
 	Theseus = {
+		-- Base Health: 9000
+		MaxHealth = 13500,
 		-- Doesn't seem to be used
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
@@ -1497,15 +1550,10 @@ local enemyModifications = {
 		AIStages = {
 			[2] = { RandomAIFunctionNames = { _PLUGIN.guid .. "." .. "TheseusGodAI" }, },
 		},
-		-- InvulnerableVoiceLines = {
-		-- 	CooldownTime = mod.NilValue,
-		-- 	CooldownName = mod.NilValue,
-		-- 	Cooldowns = {
-		-- 		{ Name = "TheseusSpokeRecently", Time = 100 },
-		-- 	},
-		-- },
 	},
 	Theseus2 = {
+		-- Base Health: 12000
+		MaxHealth = 16000,
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
 		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "Theseus2Damaged",
 		AIStages = {
@@ -1598,17 +1646,23 @@ local enemyModifications = {
 	-- #endregion
 	-- #region STYX - Minibosses
 	SatyrRangedMiniboss = {
+		Health = 1800,
+		HealthBuffer = 3100,
 		ActivateDuration = 0.4,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 	},
 	RatThugMiniboss = {
+		Health = 1800,
+		HealthBuffer = 6200,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 	},
 	HeavyRangedForkedMiniboss = {
+		Health = 1200,
+		HealthBuffer = 5100,
 		DeathAnimation = "HeavyRangedForkedMinibossDeath",
 		SpawnObstaclesOnDeath = mod.NilValue,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -1617,6 +1671,8 @@ local enemyModifications = {
 		BlockCharm = true,
 	},
 	ThiefImpulseMineLayerMiniboss = {
+		Health = 1450,
+		HealthBuffer = 3000,
 		ActivateDuration = 0.7,
 		DefaultAIData = {
 			BlendTimeoutMin = 0.5,
@@ -1631,6 +1687,7 @@ local enemyModifications = {
 		BlockCharm = true,
 	},
 	CrawlerMiniBoss = {
+		MaxHealth = 14000,
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation",
 		OnDeathFunctionArgs = { Message = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage", },
 		BlockRaiseDead = true,
@@ -1641,6 +1698,16 @@ local enemyModifications = {
 	-- #endregion
 	-- #region STYX - Bosses
 	Hades = {
+		-- Base Health: 17000
+		-- Base EM Health: 22000
+		-- Chronos Health: 20000
+		-- Chronos EM Health: 22000
+		-- Typhon Health: 65000
+		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
+		MaxHealth = 20000,
+		ShrineDataOverwrites = {
+			MaxHealth = 23500,
+		},
 		DestroyDelay = 0,
 		-- It's misaligned/not tracking correctly
 		Phase2VFX = mod.NilValue,
@@ -1658,6 +1725,7 @@ local enemyModifications = {
 		RunHistoryKilledByName = "NPC_Hades_01",
 	},
 	HadesAmmo = {
+		MaxHealth = 350,
 		AIOptions = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesAttackAndDie", },
 		AttackTimerOffsetY = -170,
 		UseActivatePresentation = false,
