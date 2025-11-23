@@ -92,7 +92,7 @@ function mod.StyxPoisonApply(triggerArgs)
 				unit.ModsNikkelMHadesBiomesLastPoisonApplyTime = game._worldTime
 				-- Create a thread that waits and then clears the poison, if it hasn't been reapplied in the meantime
 				game.thread(function()
-					local waitTime = 1.2
+					local waitTime = 1.6
 					game.wait(waitTime)
 					if unit.ModsNikkelMHadesBiomesLastPoisonApplyTime == nil or (unit.ModsNikkelMHadesBiomesLastPoisonApplyTime + waitTime <= game._worldTime) then
 						ClearEffect({ Id = unit.ObjectId, Name = "StyxPoison" })
