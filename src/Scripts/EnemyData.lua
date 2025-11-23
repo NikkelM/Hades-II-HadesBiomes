@@ -653,6 +653,7 @@ local enemyModifications = {
 				Requirements = { MaxUnitsByType = { HeavyRangedSplitterFragment = 12 } },
 			},
 		},
+		OnDamagedFireProjectilesCooldown = 0.3,
 		OnDamagedWeapons = mod.NilValue,
 	},
 	HeavyRangedSplitterMinibossSuperElite = {
@@ -662,6 +663,7 @@ local enemyModifications = {
 				Requirements = { MaxUnitsByType = { HeavyRangedSplitterFragmentSuperElite = 12 } },
 			},
 		},
+		OnDamagedFireProjectilesCooldown = 0.2,
 		OnDamagedWeapons = mod.NilValue,
 	},
 	HeavyRangedSplitterFragment = {
