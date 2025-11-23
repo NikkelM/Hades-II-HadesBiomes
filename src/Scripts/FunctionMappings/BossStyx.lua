@@ -1194,7 +1194,7 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 		local priorityEligibleMessages = {}
 		local eligibleMessages = {}
 		for name, origMessage in pairs(game.GameData.ModsNikkelMHadesBiomesRunClearMessageData) do
-			if game.IsGameStateEligible(game.CurrentRun, origMessage.GameStateRequirements) then
+			if not origMessage.DebugOnly and game.IsGameStateEligible(game.CurrentRun, origMessage.GameStateRequirements) then
 				if origMessage.Priority then
 					table.insert(priorityEligibleMessages, origMessage)
 				else
