@@ -478,6 +478,7 @@ game.GameData.ModsNikkelMHadesBiomesRunClearMessageData = {
 		InheritFrom = { "DefaultMessage" },
 		GameStateRequirements = {
 			RequiredMinEncountersThisRun = {
+				-- One in each biome, and both in Styx
 				Count = 5,
 				Names = {
 					-- Tartarus

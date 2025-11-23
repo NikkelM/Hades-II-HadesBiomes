@@ -81,10 +81,6 @@ function mod.HarpySupportAI(enemy)
 end
 
 function mod.HarpyKillPresentation(unit, args)
-	if game.CurrentRun.CurrentRoom.Encounter and game.CurrentRun.CurrentRoom.Encounter.StartTime then
-		game.CurrentRun.CurrentRoom.Encounter.ClearTime = game._worldTime - game.CurrentRun.CurrentRoom.Encounter.StartTime
-	end
-
 	local allBossesDead = true
 	local encounterData = game.EncounterData[game.CurrentRun.CurrentRoom.Encounter.Name]
 	if encounterData.HoldKillPresentationForUnitDeaths ~= nil then
