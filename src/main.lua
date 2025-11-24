@@ -399,6 +399,9 @@ local function on_ready()
 		import "Scripts/StoreLogic.lua"
 		import "Scripts/WeaponSets.lua"
 
+		-- Ensure the FxOriginal package is loaded with every biome package
+		mod.SetBiomePackageLoadOverrides()
+
 		mod.HiddenConfig.IsValidInstallation = true
 		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 

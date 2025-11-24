@@ -43,7 +43,7 @@ local surfaceRoomReplacements = {}
 local surfaceRoomModifications = {
 	Return01 = {
 		RoomSetName = "Surface",
-		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "NikkelM-HadesBiomesFxModded", "ModsNikkelMHadesBiomesFxOriginal", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
 		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicSurfaceModded", },
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "ReturnRoomEntrance",
@@ -59,7 +59,7 @@ local surfaceRoomModifications = {
 	},
 	Return02 = {
 		RoomSetName = "Surface",
-		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "NikkelM-HadesBiomesFxModded", "ModsNikkelMHadesBiomesFxOriginal", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return03", } },
@@ -72,7 +72,7 @@ local surfaceRoomModifications = {
 	},
 	Return03 = {
 		RoomSetName = "Surface",
-		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "NikkelM-HadesBiomesFxModded", "ModsNikkelMHadesBiomesFxOriginal", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return04", } },
@@ -85,7 +85,7 @@ local surfaceRoomModifications = {
 	},
 	Return04 = {
 		RoomSetName = "Surface",
-		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "NikkelM-HadesBiomesFxModded", "ModsNikkelMHadesBiomesFxOriginal", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return05", } },
 		},
@@ -97,7 +97,7 @@ local surfaceRoomModifications = {
 	},
 	Return05 = {
 		RoomSetName = "Surface",
-		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "NikkelM-HadesBiomesFxModded", "ModsNikkelMHadesBiomesFxOriginal", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return06", } },
 		},
@@ -109,7 +109,7 @@ local surfaceRoomModifications = {
 	},
 	Return06 = {
 		RoomSetName = "Surface",
-		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesPortraits", "NikkelM-HadesBiomesFxModded", "ModsNikkelMHadesBiomesFxOriginal", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRideAudio" },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = {} },
