@@ -444,6 +444,26 @@ local newBrokerBossTradeCategory = {
 			Comparison = ">=",
 			Value = 1,
 		},
+		-- To only show this when the player has ever obtained a boss resource to trade here, and that resource can also already be traded in (the trade is unlocked)
+		{
+			PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceTartarus" },
+		},
+		OrRequirements = {
+			{
+				{
+					Path = { "GameState", "LifetimeResourcesGained", "MixerFBoss" },
+					Comparison = ">=",
+					Value = 3,
+				},
+			},
+			{
+				{
+					Path = { "GameState", "LifetimeResourcesGained", "MixerNBoss" },
+					Comparison = ">=",
+					Value = 3,
+				},
+			},
+		}
 	},
 }
 newBrokerBossTradeCategory = game.ConcatTableValuesIPairs(newBrokerBossTradeCategory, newBossResourceValues) or {}
