@@ -742,7 +742,8 @@ local roomModifications = {
 
 -- Assign separately so we don't get a circular reference
 game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
-	AlwaysLoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "ModsNikkelMHadesBiomesFxOriginal", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+	-- When updating here, also change in BaseSurface, and the Return rooms
+	AlwaysLoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Tartarus, roomModifications, roomReplacements, "Tartarus")

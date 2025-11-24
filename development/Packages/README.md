@@ -21,7 +21,16 @@ For the legacy format, run e.g. `deppth2 hpk -c BC7 -s ModsNikkelMHadesBiomesPor
 
 For the modern format, run e.g. `deppth2 hpk -c BC7 -s NikkelM-HadesBiomesGUIModded_source -t NikkelM-HadesBiomesGUIModded`.
 
+To include hulls, set the `-iH True` flag.
+
 This will create a new package named `NikkelM-NewPackageName.pkg` and the corresponding `NikkelM-NewPackageName.pkg_manifest`.
+
+## For Original Biome Packages
+
+For the original biome packages in the "Original Biomes" subfolder, they already have the manifests and atlases set up, as extracted from the Hades game files.
+Note that they should also all include their own copy of the FxOriginal package, as we need to load the textures included in it before the map completes loading, which is only possible if they are part of the biome package itself.
+
+To pack them, use the `pk` command: `deppth2 pk -c BC7 -s TartarusModsNikkelMHadesBiomes_source_original -t TartarusModsNikkelMHadesBiomes.pkg`.
 
 ## Old approach
 

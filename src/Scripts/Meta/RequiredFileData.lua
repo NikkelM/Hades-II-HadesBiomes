@@ -654,7 +654,6 @@ mod.MapFileMappings = {
 	["E_Intro"] = "E_Intro",
 	["E_Story01"] = "E_Story01",
 	-- Surface - Return/Ending
-	["RoomReturn"] = "RoomReturn",
 	["Return01"] = "Return01",
 	["Return02"] = "Return02",
 	["Return03"] = "Return03",
@@ -670,11 +669,11 @@ mod.MapFileMappings = {
 	-- ["CharonFight01"] = "CharonFight01",
 }
 
--- .map_text files that should be copied from the plugin_data folder instead of the Hades installation
+-- .map_text files that should be copied from the plugins_data folder instead of the Hades installation, as they have modifications from the original
 mod.MapTextFileNames = {
 	-- A new Terrain group was added to resolve flickering tiles next to where the player spawns
 	RoomOpening = true,
-	-- A new Terrain group was added to resolve flickering tiles next to the exit door (same as above)
+	-- A new Terrain group was added to resolve flickering tiles next to the exit door (same as for RoomOpening)
 	Return06 = true,
 }
 

@@ -464,8 +464,29 @@ end
 ---The mod's hidden config, stored in the cache folder as hiddenConfig.sjson.
 mod.HiddenConfig = mod.HiddenConfig or mod.TryLoadCachedSjsonFile("hiddenConfig.sjson")
 
--- TODO: Remove when releasing
+---We need to override the packages that are loaded with a biome package, to also load the Fx package, as we need the textures from it before map load.
+function mod.SetBiomePackageLoadOverrides()
+	local tartarusBiomeHash = rom.data.get_hash_guid_from_string("TartarusModsNikkelMHadesBiomes")
+	local asphodelBiomeHash = rom.data.get_hash_guid_from_string("AsphodelModsNikkelMHadesBiomes")
+	local elysiumBiomeHash = rom.data.get_hash_guid_from_string("ElysiumModsNikkelMHadesBiomes")
+	local styxBiomeHash = rom.data.get_hash_guid_from_string("StyxModsNikkelMHadesBiomes")
+	local surfaceBiomeHash = rom.data.get_hash_guid_from_string("SurfaceModsNikkelMHadesBiomes")
+	local erebusBiomeHash = rom.data.get_hash_guid_from_string("ErebusModsNikkelMHadesBiomes")
+	local charonBiomeHash = rom.data.get_hash_guid_from_string("CharonModsNikkelMHadesBiomes")
+
+	local originalFxHash = rom.data.get_hash_guid_from_string("ModsNikkelMHadesBiomesFxOriginal")
+
+	rom.data.load_package_overrides_set(tartarusBiomeHash, { tartarusBiomeHash, originalFxHash })
+	rom.data.load_package_overrides_set(asphodelBiomeHash, { asphodelBiomeHash, originalFxHash })
+	rom.data.load_package_overrides_set(elysiumBiomeHash, { elysiumBiomeHash, originalFxHash })
+	rom.data.load_package_overrides_set(styxBiomeHash, { styxBiomeHash, originalFxHash })
+	rom.data.load_package_overrides_set(surfaceBiomeHash, { surfaceBiomeHash, originalFxHash })
+	rom.data.load_package_overrides_set(erebusBiomeHash, { erebusBiomeHash, originalFxHash })
+	rom.data.load_package_overrides_set(charonBiomeHash, { charonBiomeHash, originalFxHash })
+end
+
 modutil.mod.Path.Wrap("DebugPrint", function(base, args)
+	mod.DebugPrint("game.DebugPrint() called with:", 4)
 	mod.DebugPrint(args.Text, 4)
 	return base(args)
 end)
