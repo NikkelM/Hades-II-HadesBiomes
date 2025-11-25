@@ -1,7 +1,5 @@
 local newRoomSets = {
 	Tartarus = {
-		-- Opening room for the very first run, forces Athena boon, no enemies
-		"RoomSimple01",
 		"RoomOpening",
 
 		"A_Boss01",
@@ -21,6 +19,7 @@ local newRoomSets = {
 		"A_Reprieve01",
 		"A_Story01",
 
+		"RoomSimple01",
 		"A_Combat01",
 		"A_Combat02",
 		"A_Combat03",
@@ -57,10 +56,10 @@ local newRoomSets = {
 		"X_PreBoss01",
 		"X_Shop01",
 
-		-- Barge of Death
-		"X_Wrapping01",
 		"X_MiniBoss01",
 		"X_MiniBoss02",
+		-- Barge of Death
+		"X_Wrapping01",
 
 		"X_Reprieve01",
 		"X_Story01",
