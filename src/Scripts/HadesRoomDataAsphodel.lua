@@ -345,7 +345,7 @@ mod.RoomData.Asphodel = mod.RoomData.Asphodel or {
 		NumExits = 1,
 		EntranceDirection = "LeftRight",
 
-		-- Overwritten by Room requirements in RoomDataAsphodel
+		-- Custom: Overwritten by Room requirements in RoomDataAsphodel
 		ShrineMetaUpgradeName = "BossDifficultyShrineUpgrade",
 		LinkedRoomByPactLevel =
 		{

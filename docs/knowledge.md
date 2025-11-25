@@ -404,7 +404,7 @@ For ID `506340`, change the `Name` property from `NPC_Bouldy_01` to `ModsNikkelM
 
 ### X_PreBoss01
 
-	Continue checking for AsphodelCatacomb01" from 546477
+543343 is the AsphodelBoat01b, and causes a black flicker. Setting Active to false fixes this.
 
 546475
 	Catacomb (where?)
