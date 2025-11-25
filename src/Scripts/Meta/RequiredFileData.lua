@@ -675,6 +675,8 @@ mod.MapTextFileNames = {
 	RoomOpening = true,
 	-- A new Terrain group was added to resolve flickering tiles next to the exit door (same as for RoomOpening)
 	Return06 = true,
+	-- Catacombs next to the entrance are flickering
+	B_PreBoss01 = true,
 }
 
 -- Languages supported by Hades

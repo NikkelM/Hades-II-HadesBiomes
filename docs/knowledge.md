@@ -402,6 +402,298 @@ In this map, we need to change the name for the Bouldy NPC, as it is used in bot
 
 For ID `506340`, change the `Name` property from `NPC_Bouldy_01` to `ModsNikkelMHadesBiomes_NPC_Bouldy_01`.
 
+### X_PreBoss01
+
+	Continue checking for AsphodelCatacomb01" from 546477
+
+546475
+	Catacomb (where?)
+	Changed to Standing00
+	546711
+		Skeleton attached to 546475
+		Changed to Standing02
+	546710
+		Skeleton attached to 546475
+		Changed to Standing03
+
+546757
+	Middle Pillar base (square brick)
+	Changed to Standing02
+546758
+	Middle pillar
+	GroupName to Standing03
+546759
+	Pillartop
+	GroupName to Standing04
+
+546557
+	Leftmost bottom brick
+	Attached IDs are another catacomb and a pillar base
+	546801
+		Catacomb to the left
+		Changed to Standing07
+	546798
+		Pillar base to the left
+		Changed to Standing05
+	546797
+		Pillar on 546798 on catacomb
+		Changed to Standing06
+	546796
+		Arch on pillar
+		Changed to Standing07
+
+546474
+	Rightmost catacomb
+	Changed to Standing000
+	546712 
+		Skeleton on top of catacomb
+		Changed to Standing03
+	546713
+		Skeleton on top of catacomb
+		Changed to Standing02
+
+546393
+	Rightmost pillarbase
+	Changed to Stairs_01
+	547744
+		Hydra head on top of pillarbase
+		Changed to Standing02
+
+546558
+	Catacomb left of middle pillar
+	Changed to Standing03
+		546716
+			Skeleton on top of catacomb
+			Changed to Standing04
+		546717
+			Skeleton on top of catacomb
+			Changed to Standing05
+
+546559
+	Catacomb right of left pillar
+	Changed to Standing04
+	546718
+		Skeleton on top of catacomb
+		Changed to Standing05
+	546719
+		Skeleton on top of catacomb
+		Changed to Standing06
+
+New map_text groups:
+
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 130011,
+		"Name": "Standing000"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 130012,
+		"Name": "Standing00"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 130013,
+		"Name": "Standing"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 130014,
+		"Name": "Standing02"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 130015,
+		"Name": "Standing03"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 130016,
+		"Name": "Standing04"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 130017,
+		"Name": "Standing05"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 130018,
+		"Name": "Standing06"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 130019,
+		"Name": "Standing07"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+```
+
+```
+{
+	"Id": 130019,
+	"Name": "Standing07"
+},
+{
+	"Id": 130018,
+	"Name": "Standing06"
+},
+{
+	"Id": 130017,
+	"Name": "Standing05"
+},
+{
+	"Id": 130016,
+	"Name": "Standing04"
+},
+{
+	"Id": 130015,
+	"Name": "Standing03"
+},
+{
+	"Id": 130014,
+	"Name": "Standing02"
+},
+{
+	"Id": 130013,
+	"Name": "Standing"
+},
+{
+	"Id": 130012,
+	"Name": "Standing00"
+},
+{
+	"Id": 130011,
+	"Name": "Standing000"
+},
+```
+
 #### D_Hub
 
 In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II.
