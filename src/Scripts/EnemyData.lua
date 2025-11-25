@@ -738,9 +738,9 @@ local enemyModifications = {
 		-- Polyphemus Health: 8400
 		-- Polyphemus EM Health: 10200
 		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
-		MaxHealth = 8000,
+		MaxHealth = 9500,
 		ShrineDataOverwrites = {
-			MaxHealth = 8800,
+			MaxHealth = 10200,
 		},
 		SubtitleColor = game.Color.MegVoice,
 		RunHistoryKilledByName = "NPC_FurySister_01",
@@ -751,9 +751,9 @@ local enemyModifications = {
 	Harpy2 = {
 		-- Base Health: 4600
 		-- EM Health: 4900
-		MaxHealth = 9000,
+		MaxHealth = 9900,
 		ShrineDataOverwrites = {
-			MaxHealth = 9900,
+			MaxHealth = 10600,
 		},
 		SubtitleColor = game.Color.AlectoVoice,
 		-- Gets overwritten by the Harpy value if not set
@@ -768,9 +768,9 @@ local enemyModifications = {
 	Harpy3 = {
 		-- Base Health: 5200
 		-- EM Health: 5600
-		MaxHealth = 10000,
+		MaxHealth = 10700,
 		ShrineDataOverwrites = {
-			MaxHealth = 11000,
+			MaxHealth = 11600,
 		},
 		SubtitleColor = game.Color.TisiphoneVoice,
 		RunHistoryKilledByName = "Harpy3",
@@ -1127,7 +1127,7 @@ local enemyModifications = {
 		-- Base Health: 6000
 		-- Eris Health: 16000
 		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
-		MaxHealth = 12000,
+		MaxHealth = 14500,
 		AltHealthBarTextIds = {
 			[1] = {
 				GameStateRequirements = { RequiredPlayed = { "/VO/ZagreusField_3147" } },
