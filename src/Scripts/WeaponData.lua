@@ -487,11 +487,15 @@ local weaponModifications = {
 	HarpyLightning = {
 		AIData = {
 			AttackSlotInterval = 0.01,
+			FireAnimation = "FuryLightningLoop",
+			PostAttackAnimation = "FuryLightningReturnToIdle",
 		},
 	},
 	HarpySpawns = {
 		AIData = {
 			FireFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
+			FireAnimation = "FuryLightningLoop",
+			PostAttackAnimation = "FuryLightningReturnToIdle",
 		},
 	},
 	-- #endregion
@@ -545,6 +549,18 @@ local weaponModifications = {
 			RemoveFromGroups = { "GroundEnemies" },
 		},
 	},
+	HarpyLightningCone = {
+		AIData = {
+			FireAnimation = "Fury2LightningLoop",
+			PostAttackAnimation = "Fury2LightningReturnToIdle",
+		},
+	},
+	HarpyLightningConeRage = {
+		AIData = {
+			FireAnimation = "Fury2LightningLoop",
+			PostAttackAnimation = "Fury2LightningReturnToIdle",
+		},
+	},
 	HarpyBuildRageBlast = {
 		AIData = {
 			PreAttackStop = true,
@@ -579,6 +595,8 @@ local weaponModifications = {
 				{ OffsetDistance = 1500, OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
 			},
 			BlockAsFirstWeapon = true,
+			FireAnimation = "Fury3LightningLoop",
+			PostAttackAnimation = "Fury3LightningReturnToIdle",
 		},
 	},
 	HarpyWhipLasso = {
@@ -664,6 +682,8 @@ local weaponModifications = {
 				{ OffsetDistance = 600,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue, OffsetAngle = 270 },
 				{ OffsetDistance = 900,  OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue, OffsetAngle = 270 },
 			},
+			FireAnimation = "Fury3LightningLoop",
+			PostAttackAnimation = "Fury3LightningReturnToIdle",
 		},
 	},
 	HarpyWhipCombo1 = {
