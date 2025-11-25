@@ -19,7 +19,7 @@ set HADES_TWO_CONTENT=D:\Program Files (x86)\Steam\steamapps\common\Hades II\Con
 set OUTPUT_DIR_MOD=F:\Users\nikke\OneDrive\Privat\Projects\Hades-II-HadesBiomes\data\Content\Maps\bin
 set OUTPUT_DIR_PLUGINS=C:\Users\nikke\AppData\Roaming\r2modmanPlus-local\HadesII\profiles\Default\ReturnOfModding\plugins_data\NikkelM-Hades_Biomes\Content\Maps\bin
 
-rem Define the list of files to process  separated by spaces
+rem Define the list of files to process, separated by spaces
 set FILES=A_Story01
 
 rem Loop through each file and process it

@@ -24,7 +24,6 @@ local addParentAnimations = {
 	},
 	ModsNikkelMHadesBiomes_GemPointObjectFx = {
 		Name = "ModsNikkelMHadesBiomes_GemPointObjectFx",
-		CreateAnimation = "PickupFlare",
 		FilePath = "Fx\\Gems\\Gems",
 		VisualFx = "GemSparkles",
 		EndFrame = 30,
@@ -98,13 +97,11 @@ local addAnimations = {
 	ModsNikkelMHadesBiomes_BossResourceAsphodelDrop = {
 		Name = "ModsNikkelMHadesBiomes_BossResourceAsphodelDrop",
 		InheritFrom = "ModsNikkelMHadesBiomes_GemPointObjectFx",
-		ClearCreateAnimations = true,
 		FilePath = "NikkelM-HadesBiomesFxModded\\Resources\\Boss\\SuperGems\\SuperGems",
 		PlaySpeed = 20,
 		Scale = 1.0,
 		CreateAnimations = {
-			{ Name = "SuperGemPointLight" },
-			{ Name = "PickupFlare" },
+			{ Name = "PickupFlareA" },
 		},
 	},
 	ModsNikkelMHadesBiomes_BossResourceElysiumDrop = {

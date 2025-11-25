@@ -88,7 +88,7 @@ function mod.PickHydraVariant(eventSource, args)
 	end
 
 	for k, enemyName in pairs(eventSource.EnemySet) do
-		PreLoadBinks({ Names = EnemyData[enemyName].Binks })
+		PreLoadBinks({ Names = game.EnemyData[enemyName].Binks })
 	end
 end
 
