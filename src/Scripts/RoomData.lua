@@ -51,6 +51,18 @@ local surfaceRoomModifications = {
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRideAnimationSetup" },
 		},
+		HeroOverwrites = {
+			AttachedAnimationName = "nil",
+			LineHistoryName = "NPC_Zagreus_Past_01",
+			NarrativeFadeInColor = game.Color.ZagreusVoice,
+			SubtitleColor = game.Color.ZagreusVoice,
+		},
+		RoomExitHeroOverwrites = {
+			AttachedAnimationName = "LaurelCindersSpawner",
+			LineHistoryName = "PlayerUnit",
+			NarrativeFadeInColor = game.Color.Teal,
+			SubtitleColor = game.Color.White,
+		},
 		BlockCombat = true,
 		UnloadWeapons = true,
 		BlockFamiliars = true,
@@ -63,6 +75,18 @@ local surfaceRoomModifications = {
 		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return03", } },
+		},
+		HeroOverwrites = {
+			AttachedAnimationName = "nil",
+			LineHistoryName = "NPC_Zagreus_Past_01",
+			NarrativeFadeInColor = game.Color.ZagreusVoice,
+			SubtitleColor = game.Color.ZagreusVoice,
+		},
+		RoomExitHeroOverwrites = {
+			AttachedAnimationName = "LaurelCindersSpawner",
+			LineHistoryName = "PlayerUnit",
+			NarrativeFadeInColor = game.Color.Teal,
+			SubtitleColor = game.Color.White,
 		},
 		BlockCombat = true,
 		UnloadWeapons = true,
@@ -77,6 +101,18 @@ local surfaceRoomModifications = {
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return04", } },
 		},
+		HeroOverwrites = {
+			AttachedAnimationName = "nil",
+			LineHistoryName = "NPC_Zagreus_Past_01",
+			NarrativeFadeInColor = game.Color.ZagreusVoice,
+			SubtitleColor = game.Color.ZagreusVoice,
+		},
+		RoomExitHeroOverwrites = {
+			AttachedAnimationName = "LaurelCindersSpawner",
+			LineHistoryName = "PlayerUnit",
+			NarrativeFadeInColor = game.Color.Teal,
+			SubtitleColor = game.Color.White,
+		},
 		BlockCombat = true,
 		UnloadWeapons = true,
 		BlockFamiliars = true,
@@ -89,6 +125,18 @@ local surfaceRoomModifications = {
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return05", } },
 		},
+		HeroOverwrites = {
+			AttachedAnimationName = "nil",
+			LineHistoryName = "NPC_Zagreus_Past_01",
+			NarrativeFadeInColor = game.Color.ZagreusVoice,
+			SubtitleColor = game.Color.ZagreusVoice,
+		},
+		RoomExitHeroOverwrites = {
+			AttachedAnimationName = "LaurelCindersSpawner",
+			LineHistoryName = "PlayerUnit",
+			NarrativeFadeInColor = game.Color.Teal,
+			SubtitleColor = game.Color.White,
+		},
 		BlockCombat = true,
 		UnloadWeapons = true,
 		BlockFamiliars = true,
@@ -100,6 +148,18 @@ local surfaceRoomModifications = {
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return06", } },
+		},
+		HeroOverwrites = {
+			AttachedAnimationName = "nil",
+			LineHistoryName = "NPC_Zagreus_Past_01",
+			NarrativeFadeInColor = game.Color.ZagreusVoice,
+			SubtitleColor = game.Color.ZagreusVoice,
+		},
+		RoomExitHeroOverwrites = {
+			AttachedAnimationName = "LaurelCindersSpawner",
+			LineHistoryName = "PlayerUnit",
+			NarrativeFadeInColor = game.Color.Teal,
+			SubtitleColor = game.Color.White,
 		},
 		BlockCombat = true,
 		UnloadWeapons = true,
@@ -115,6 +175,18 @@ local surfaceRoomModifications = {
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = {} },
 			[3] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRideOutro" },
 			[4] = { FunctionName = _PLUGIN.guid .. "." .. "SurfaceKillHero", Args = {} },
+		},
+		HeroOverwrites = {
+			AttachedAnimationName = "nil",
+			LineHistoryName = "NPC_Zagreus_Past_01",
+			NarrativeFadeInColor = game.Color.ZagreusVoice,
+			SubtitleColor = game.Color.ZagreusVoice,
+		},
+		RoomExitHeroOverwrites = {
+			AttachedAnimationName = "LaurelCindersSpawner",
+			LineHistoryName = "PlayerUnit",
+			NarrativeFadeInColor = game.Color.Teal,
+			SubtitleColor = game.Color.White,
 		},
 		BlockCombat = true,
 		UnloadWeapons = true,

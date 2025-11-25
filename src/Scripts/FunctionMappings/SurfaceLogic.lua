@@ -370,6 +370,10 @@ end
 function mod.SurfaceKillHero(source, args)
 	game.wait(args.WaitTime or 0)
 	game.KillHero(game.CurrentRun.Hero, args)
+	-- Revert the overrides, as they are somehow not reversed automatically when respawning in the hub
+	if game.CurrentRun.CurrentRoom.RoomExitHeroOverwrites ~= nil then
+		game.OverwriteSelf(game.CurrentRun.Hero, game.CurrentRun.CurrentRoom.RoomExitHeroOverwrites)
+	end
 end
 
 -- #endregion

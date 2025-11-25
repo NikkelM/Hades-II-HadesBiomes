@@ -123,6 +123,9 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			enemyData.NameplateSpeakerNameColor = game.Color.DialogueSpeakerNameOlympian
 			enemyData.NameplateDescriptionColor = { 145, 45, 90, 255 }
 		end
+		if enemyData.SubtitleColor and enemyData.NarrativeFadeInColor == nil then
+			enemyData.NarrativeFadeInColor = enemyData.SubtitleColor
+		end
 
 		-- Dialogues playing before boss fights or when meeting NPCs
 		local bossPresentationProperties = {
@@ -149,8 +152,28 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 								entry.Text = string.gsub(entry.Text, "{#PreviousFormat}", "{#Prev}")
 							end
 							if entry.Speaker then
-								if entry.Speaker == "NPC_Bouldy_01" then
+								if entry.Speaker == "CharProtag" then
+									entry.Speaker = "NPC_Zagreus_Past_01"
+									entry.LineHistoryName = "NPC_Zagreus_Past_01"
+								elseif entry.Speaker == "NPC_FurySister_01" then
+									entry.Source = "Harpy"
+								elseif entry.Speaker == "NPC_FurySister_02" then
+									entry.Source = "Harpy2"
+								elseif entry.Speaker == "NPC_FurySister_03" then
+									entry.Source = "Harpy3"
+								elseif entry.Speaker == "Minotaur" then
+									entry.Source = "Minotaur"
+								elseif entry.Speaker == "Theseus" then
+									entry.Source = "Theseus"
+								elseif entry.Speaker == "Hades" then
+									entry.Source = "Hades"
+								elseif entry.Speaker == "NPC_Bouldy_01" then
 									entry.Speaker = "ModsNikkelMHadesBiomes_NPC_Bouldy_01"
+									entry.Source = "NPC_Bouldy_01" -- Use the Hades II NarrativeFadeInColor
+								elseif entry.Speaker == "NPC_Patroclus_Unnamed_01" then
+									entry.Source = "NPC_Patroclus_01"
+								elseif entry.Speaker == "NPC_Persephone_Unnamed_01" then
+									entry.Source = "ModsNikkelMHadesBiomes_NPC_Persephone_01"
 								end
 							end
 							if entry.Portrait then
@@ -719,6 +742,7 @@ local enemyModifications = {
 		ShrineDataOverwrites = {
 			MaxHealth = 8800,
 		},
+		SubtitleColor = game.Color.MegVoice,
 		RunHistoryKilledByName = "NPC_FurySister_01",
 		ImmuneToPolymorph = true,
 		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
@@ -731,6 +755,7 @@ local enemyModifications = {
 		ShrineDataOverwrites = {
 			MaxHealth = 9900,
 		},
+		SubtitleColor = game.Color.AlectoVoice,
 		-- Gets overwritten by the Harpy value if not set
 		RunHistoryKilledByName = "Harpy2",
 		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
@@ -747,6 +772,7 @@ local enemyModifications = {
 		ShrineDataOverwrites = {
 			MaxHealth = 11000,
 		},
+		SubtitleColor = game.Color.TisiphoneVoice,
 		RunHistoryKilledByName = "Harpy3",
 		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
 		BossPresentationTextLineSets = {
@@ -1504,6 +1530,7 @@ local enemyModifications = {
 		-- Heracles Health: 34000
 		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 19000,
+		SubtitleColor = game.Color.MinotaurVoice,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "MinotaurOverheadTouchdown",
@@ -1533,6 +1560,7 @@ local enemyModifications = {
 	Theseus = {
 		-- Base Health: 9000
 		MaxHealth = 13500,
+		SubtitleColor = game.Color.TheseusVoice,
 		-- Doesn't seem to be used
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
@@ -1708,6 +1736,7 @@ local enemyModifications = {
 		ShrineDataOverwrites = {
 			MaxHealth = 23500,
 		},
+		SubtitleColor = game.Color.HadesVoice,
 		DestroyDelay = 0,
 		-- It's misaligned/not tracking correctly
 		Phase2VFX = mod.NilValue,

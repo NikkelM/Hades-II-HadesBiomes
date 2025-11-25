@@ -79,6 +79,19 @@ local roomModifications = {
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerSurfaceIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerSurfaceOut",
 
+		HeroOverwrites = {
+			AttachedAnimationName = "nil",
+			LineHistoryName = "NPC_Zagreus_Past_01",
+			NarrativeFadeInColor = game.Color.ZagreusVoice,
+			SubtitleColor = game.Color.ZagreusVoice,
+		},
+		RoomExitHeroOverwrites = {
+			AttachedAnimationName = "LaurelCindersSpawner",
+			LineHistoryName = "PlayerUnit",
+			NarrativeFadeInColor = game.Color.Teal,
+			SubtitleColor = game.Color.White,
+		},
+
 		-- Swap the player model to Zagreus
 		SwapAnimations = {
 			["MelinoeIdle"] = "ModsNikkelMHadesBiomes_ZagreusIdle",

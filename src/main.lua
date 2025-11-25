@@ -282,6 +282,9 @@ local function on_ready()
 		import "Scripts/HadesAudioData.lua"
 		import "Scripts/AudioData.lua"
 
+		-- New colours need to be added before using them in EnemyData
+		import "Scripts/Color.lua"
+
 		import "Scripts/Meta/EnemyTrapDataHandler.lua"
 		import "Scripts/HadesEnemyData.lua"
 		import "Scripts/HadesNPCData.lua"
@@ -321,7 +324,6 @@ local function on_ready()
 		-- Other data that must be loaded before SetupRunData()
 		import "Scripts/BountyData.lua"
 		import "Scripts/CodexData.lua"
-		import "Scripts/Color.lua"
 		import "Scripts/ConsumableData.lua"
 		import "Scripts/CreditsData.lua"
 		import "Scripts/DeathLoopData.lua"
@@ -386,6 +388,7 @@ local function on_ready()
 		import "Scripts/HubPresentation.lua"
 		import "Scripts/MarketLogic.lua"
 		import "Scripts/NarrativeData.lua"
+		import "Scripts/NarrativeLogic.lua"
 		import "Scripts/PowersLogic.lua"
 		import "Scripts/RequirementsLogic.lua"
 		import "Scripts/RewardPresentation.lua"

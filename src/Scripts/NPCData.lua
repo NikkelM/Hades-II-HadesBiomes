@@ -36,6 +36,17 @@ local function applyNPCChoiceMappings(npcData, mappings)
 									end
 								end
 							end
+
+							-- Add new key/value pairs if requested
+							for property, newKVPair in pairs(mappingData.InnerAlwaysAddKVPairs or {}) do
+								if textLineSet[property] then
+									for _, lineData in ipairs(textLineSet[property]) do
+										for key, value in pairs(newKVPair) do
+											lineData[key] = value
+										end
+									end
+								end
+							end
 						end
 					end
 				end
@@ -67,6 +78,7 @@ end
 local npcModifications = {
 	NPC_Sisyphus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		SubtitleColor = game.Color.SisyphusVoice,
 		ActivateRequirements = mod.NilValue,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
@@ -126,6 +138,7 @@ local npcModifications = {
 	},
 	NPC_Eurydice_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		SubtitleColor = game.Color.EurydiceVoice,
 		ActivateRequirements = mod.NilValue,
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
 		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
@@ -162,6 +175,7 @@ local npcModifications = {
 	},
 	NPC_Patroclus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		SubtitleColor = game.Color.PatroclusVoice,
 		ActivateRequirements = mod.NilValue,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
@@ -198,6 +212,8 @@ local npcModifications = {
 	},
 	ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		LineHistoryName = "Speaker_Homer",
+		SubtitleColor = game.Color.NarratorVoice,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Cerberus",
 		BossPresentationIntroTextLineSets = {
@@ -210,6 +226,7 @@ local npcModifications = {
 	ModsNikkelMHadesBiomes_NPC_Persephone_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		SubtitleColor = game.Color.PersephoneVoice,
 		InteractTextLineSets = {
 			PersephoneFirstMeeting = {
 				[7] = {
@@ -337,6 +354,16 @@ local npcChoiceMappings = {
 				Replace = _PLUGIN.guid .. "." .. "SurfaceKillHero",
 			},
 		},
+		InnerAlwaysAddKVPairs = {
+			EndVoiceLines = {
+				PreLineFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesToggleNarrativeFadeInColorForZagreus",
+				PreLineFunctionArgs = { ToggleOn = true, },
+				PostLineFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesToggleNarrativeFadeInColorForZagreus",
+				PostLineFunctionArgs = { ToggleOn = false, },
+				SpeakerName = "NPC_Zagreus_Past_01",
+				LineHistoryName = "NPC_Zagreus_Past_01",
+			}
+		}
 	},
 	NPC_Thanatos_Field_01 = {
 		TextLineGroups = { "InteractTextLineSets" },

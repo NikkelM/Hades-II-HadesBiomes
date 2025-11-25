@@ -5,6 +5,8 @@ local newColors = {
 	TheseusVoice = { 255, 194, 46, 255 },
 	MinotaurVoice = { 158, 128, 107, 255 },
 	SisyphusVoice = { 109, 185, 116, 255 },
+	EurydiceVoice = { 238, 255, 100, 255 },
+	PatroclusVoice = { 110, 148, 150, 255 },
 	ThanatosVoice = { 198, 164, 255, 255 },
 	DusaVoice = { 146, 255, 92, 255 },
 
