@@ -27,7 +27,8 @@ local newRoomSets = {
 		"A_Combat04",
 		"A_Combat05",
 		"A_Combat06",
-		"A_Combat07",
+		-- Flickering smoke, disabled until fixed (#273)
+		-- "A_Combat07",
 		"A_Combat08A",
 		"A_Combat08B",
 		"A_Combat09",
