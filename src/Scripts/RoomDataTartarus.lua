@@ -273,6 +273,7 @@ local roomReplacements = {
 		EnterVoiceLines = {
 			-- First run
 			{
+				BreakIfPlayed = true,
 				RequiredCompletedRuns = 0,
 				PreLineWait = 0.4,
 				{ Cue = "/VO/MelinoeField_1418", Text = "For my brother!" }
