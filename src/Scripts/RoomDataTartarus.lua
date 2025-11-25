@@ -275,14 +275,14 @@ local roomReplacements = {
 			{
 				BreakIfPlayed = true,
 				RequiredCompletedRuns = 0,
-				PreLineWait = 0.4,
+				PreLineWait = 0.9,
 				{ Cue = "/VO/MelinoeField_1418", Text = "For my brother!" }
 			},
 			-- Afterwards
 			{
 				BreakIfPlayed = true,
 				RandomRemaining = true,
-				PreLineWait = 0.4,
+				PreLineWait = 0.7,
 				RequiredMinCompletedRuns = 1,
 				Cooldowns = {
 					{ Name = "MelRunStartSpeech", Time = 12 },
