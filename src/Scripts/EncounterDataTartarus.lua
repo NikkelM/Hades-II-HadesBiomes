@@ -99,6 +99,159 @@ local encounterReplacements = {
 		UnthreadedEvents = mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsSurvival,
 		StartRoomUnthreadedEvents = mod.NilValue,
 	},
+
+	Story_Sisyphus_01 = {
+		ExitVoiceLines = {
+			ObjectType = "NPC_Sisyphus_01",
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineAnim = "SisyphusIdleGreeting",
+
+				-- Well you take care!
+				{ Cue = "/VO/Sisyphus_0122" },
+				-- Bye now!
+				{ Cue = "/VO/Sisyphus_0123" },
+				-- You can do it!
+				{ Cue = "/VO/Sisyphus_0124" },
+				-- You got this, Prince!
+				-- { Cue = "/VO/Sisyphus_0125", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+				-- Farewell, then!
+				{ Cue = "/VO/Sisyphus_0126" },
+				-- All right, bye!
+				{ Cue = "/VO/Sisyphus_0127" },
+				-- Careful out there!
+				{ Cue = "/VO/Sisyphus_0128" },
+				-- Take care out there!
+				{ Cue = "/VO/Sisyphus_0111" },
+				-- Good luck out there!
+				{ Cue = "/VO/Sisyphus_0112" },
+				-- Godspeed and all!
+				{ Cue = "/VO/Sisyphus_0113" },
+				-- Take care of yourself!
+				{ Cue = "/VO/Sisyphus_0114" },
+				-- Go get them, Prince!
+				-- { Cue = "/VO/Sisyphus_0115", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+				-- Farewell, Highness!
+				{ Cue = "/VO/Sisyphus_0116" },
+				-- Safe travels!
+				{ Cue = "/VO/Sisyphus_0117" },
+				-- Bye now!
+				{ Cue = "/VO/Sisyphus_0118" },
+				-- You can do this!
+				{ Cue = "/VO/Sisyphus_0119" },
+				-- So long for now!
+				{ Cue = "/VO/Sisyphus_0120" },
+				-- Keep going, Prince!
+				-- { Cue = "/VO/Sisyphus_0121", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+				-- See you again, all right?
+				{ Cue = "/VO/Sisyphus_0242" },
+				-- Do tell the Furies I said hi!
+				{ Cue = "/VO/Sisyphus_0243", RequiredCosmetics = { "SisyphusQuestItem" } },
+				-- You have this, Prince!
+				-- { Cue = "/VO/Sisyphus_0244", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+				-- Stop by again sometime!
+				{ Cue = "/VO/Sisyphus_0245", RequiredTextLines = { "SisyphusGift02" }, },
+				-- Careful out there, all right?
+				{ Cue = "/VO/Sisyphus_0246" },
+				-- May you get out of here this time, Highness!
+				{ Cue = "/VO/Sisyphus_0247", RequiredTextLines = { "SisyphusGift02" }, },
+				-- Always a pleasure, Prince!
+				-- { Cue = "/VO/Sisyphus_0248", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+				-- So long, Highness!
+				{ Cue = "/VO/Sisyphus_0249" },
+				-- Think he'll go all the way this time, Bouldy?
+				{ Cue = "/VO/Sisyphus_0250", RequiredTextLines = { "SisyphusMeeting06" }, },
+				-- Keep fighting, Highness!
+				{ Cue = "/VO/Sisyphus_0251" },
+				-- Thanks for stopping by!
+				{ Cue = "/VO/Sisyphus_0252" },
+				-- Until next time, all right?
+				{ Cue = "/VO/Sisyphus_0253", RequiredTextLines = { "SisyphusGift02" }, },
+			},
+		},
+		DistanceTriggers = {
+			{
+				TriggerObjectType = "NPC_Sisyphus_01",
+				WithinDistance = 600,
+				LeaveDistanceBuffer = 60,
+				VoiceLines = {
+					{
+						RandomRemaining = true,
+						PreLineAnim = "SisyphusIdleGreeting",
+
+						-- Your Highness!
+						{ Cue = "/VO/Sisyphus_0058" },
+						-- Hullo!
+						{ Cue = "/VO/Sisyphus_0054", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- That who I think it is...?
+						{ Cue = "/VO/Sisyphus_0050", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Ahoy!
+						{ Cue = "/VO/Sisyphus_0051", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Ahoy there!
+						{ Cue = "/VO/Sisyphus_0052", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Look who!
+						{ Cue = "/VO/Sisyphus_0053", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Hullo, hullo!
+						{ Cue = "/VO/Sisyphus_0055", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Just on a little break!
+						{ Cue = "/VO/Sisyphus_0056", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Perfect timing!
+						{ Cue = "/VO/Sisyphus_0057", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Well, well!
+						{ Cue = "/VO/Sisyphus_0059", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Aren't you a sight!
+						{ Cue = "/VO/Sisyphus_0060", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Prince Z.!
+						-- { Cue = "/VO/Sisyphus_0061", RequiredPlayed = { "/VO/Sisyphus_0058" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- Hey, hey!
+						{ Cue = "/VO/Sisyphus_0062", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Good morning or whenever!
+						{ Cue = "/VO/Sisyphus_0063", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Bouldy, look who!
+						{ Cue = "/VO/Sisyphus_0206", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredTextLines = { "SisyphusMeeting06" }, },
+						-- Hullo, Your Highness!
+						{ Cue = "/VO/Sisyphus_0207", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- You're back, welcome!
+						{ Cue = "/VO/Sisyphus_0208", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- He's back again, Bouldy!
+						{ Cue = "/VO/Sisyphus_0209", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredTextLines = { "SisyphusMeeting06" }, },
+						-- Good to see you!
+						{ Cue = "/VO/Sisyphus_0210", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Caught me on a break again!
+						{ Cue = "/VO/Sisyphus_0211", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Hullo, Prince Z.!
+						-- { Cue = "/VO/Sisyphus_0212", RequiredPlayed = { "/VO/Sisyphus_0058" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- How nice to see you, Prince!
+						-- { Cue = "/VO/Sisyphus_0213", RequiredPlayed = { "/VO/Sisyphus_0058" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- It's him, Bouldy!
+						{ Cue = "/VO/Sisyphus_0214", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredTextLines = { "SisyphusMeeting06" }, },
+						-- Well if it isn't you!
+						{ Cue = "/VO/Sisyphus_0215", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Ahoy, what's new of late?
+						{ Cue = "/VO/Sisyphus_0216", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- The Prince returns!
+						-- { Cue = "/VO/Sisyphus_0217", RequiredPlayed = { "/VO/Sisyphus_0058" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- What a surprise!
+						{ Cue = "/VO/Sisyphus_0218", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						-- Why, look who's here, Bouldy!
+						{ Cue = "/VO/Sisyphus_0219", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredTextLines = { "SisyphusMeeting06" }, },
+					},
+					{
+						UsePlayerSource = true,
+						RandomRemaining = true,
+						SuccessiveChanceToPlay = 0.66,
+						RequiredTextLines = { "SisyphusFirstMeeting" },
+
+						-- Hello, sir.
+						{ Cue = "/VO/ZagreusField_0463" },
+						-- Hey sir!
+						{ Cue = "/VO/ZagreusField_0464" },
+					},
+				},
+			},
+		},
+	},
 }
 
 local encounterModifications = {
