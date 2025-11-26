@@ -104,6 +104,7 @@ function mod.SurvivalTollPulse()
 	game.wait(1.0, game.RoomThreadName)
 end
 
+-- Can't make this static as we need the eventSource at runtime in the wrap
 modutil.mod.Path.Context.Wrap("HandleTimedSpawns", function(eventSource, args)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		modutil.mod.Path.Wrap("MarkObjectiveComplete", function(base, objectiveName)
