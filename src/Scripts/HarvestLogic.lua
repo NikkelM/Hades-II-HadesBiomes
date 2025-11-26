@@ -90,7 +90,7 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 		end)
 
 		-- For our modded harvest points, we need to spawn a new obstacle, as we don't use the preset Ids
-		modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle)
+		modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle, replaceOnlyNull, args)
 			if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.RoomSetName ~= "Secrets" then
 				local moddedResourceAnimations = {
 					-- Plants
@@ -159,7 +159,7 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 				end
 			end
 
-			return base(obstacle)
+			return base(obstacle, replaceOnlyNull, args)
 		end)
 	end
 end)

@@ -1,6 +1,6 @@
 -- For exorcised ghosts
 modutil.mod.Path.Context.Wrap("GhostRecruitsPreRun", function(source, args)
-	modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle)
+	modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle, replaceOnlyNull, obstacleArgs)
 		-- Load package with the correct texture
 		if obstacle.ModsNikkelMHadesBiomesLoadPackages and obstacle.ModsNikkelMHadesBiomesLoadPackages[obstacle.Animation] then
 			LoadPackages({ Name = obstacle.ModsNikkelMHadesBiomesLoadPackages[obstacle.Animation] })
@@ -14,6 +14,6 @@ modutil.mod.Path.Context.Wrap("GhostRecruitsPreRun", function(source, args)
 			})
 		end
 
-		return base(obstacle)
+		return base(obstacle, replaceOnlyNull, obstacleArgs)
 	end)
 end)

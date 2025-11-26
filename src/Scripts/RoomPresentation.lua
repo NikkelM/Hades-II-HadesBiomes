@@ -8,13 +8,13 @@ modutil.mod.Path.Wrap("DestroyDoorRewardPresenation", function(base, door)
 	base(door)
 end)
 
-modutil.mod.Path.Wrap("StartRoomPresentation", function(base, currentRun, currentRoom)
+modutil.mod.Path.Wrap("StartRoomPresentation", function(base, currentRun, currentRoom, metaPointsAwarded)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and currentRoom.StartRoomPresentationOnReload and currentRoom.ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub then
 		game.RunThreadedEvents(game.RoomData[currentRoom.Name].ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub,
 			currentRoom)
 	end
 
-	return base(currentRun, currentRoom)
+	return base(currentRun, currentRoom, metaPointsAwarded)
 end)
 
 -- Always force using the original Hades room transition animation in modded runs

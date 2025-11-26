@@ -172,7 +172,6 @@ end)
 
 modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
 	if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
-		-- TODO: These are used in ShowTraitStats() - these runs won't be included for these stats, as there is no display for them (yet)
 		local clearCountRecordName = "ModsNikkelMHadesBiomesClearCount"
 		local fastestTimeRecordName = "ModsNikkelMHadesBiomesFastestTime"
 		local shrinePointsRecordName = "ModsNikkelMHadesBiomesHighestShrinePoints"
