@@ -740,7 +740,7 @@ local enemyModifications = {
 		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 8200,
 		ShrineDataOverwrites = {
-			MaxHealth = 9200,
+			MaxHealth = 8800,
 		},
 		SubtitleColor = game.Color.MegVoice,
 		RunHistoryKilledByName = "NPC_FurySister_01",
@@ -751,9 +751,9 @@ local enemyModifications = {
 	Harpy2 = {
 		-- Base Health: 4600
 		-- EM Health: 4900
-		MaxHealth = 8500,
+		MaxHealth = 8400,
 		ShrineDataOverwrites = {
-			MaxHealth = 9500,
+			MaxHealth = 9000,
 		},
 		SubtitleColor = game.Color.AlectoVoice,
 		-- Gets overwritten by the Harpy value if not set
@@ -768,9 +768,9 @@ local enemyModifications = {
 	Harpy3 = {
 		-- Base Health: 5200
 		-- EM Health: 5600
-		MaxHealth = 9200,
+		MaxHealth = 8600,
 		ShrineDataOverwrites = {
-			MaxHealth = 10300,
+			MaxHealth = 9200,
 		},
 		SubtitleColor = game.Color.TisiphoneVoice,
 		RunHistoryKilledByName = "Harpy3",
@@ -1187,8 +1187,8 @@ local enemyModifications = {
 	-- Spawned heads
 	BaseHydraHead = {
 		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
-		MaxHealth = 800,
-		HealthBuffer = 800,
+		MaxHealth = 700,
+		HealthBuffer = 700,
 		StunAnimations = { Default = "EnemyHydraOnHit" },
 		ManualDeathAnimation = false,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
@@ -1732,7 +1732,7 @@ local enemyModifications = {
 		-- Chronos EM Health: 22000
 		-- Typhon Health: 65000
 		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
-		MaxHealth = 19000,
+		MaxHealth = 20000,
 		ShrineDataOverwrites = {
 			MaxHealth = 22500,
 		},
