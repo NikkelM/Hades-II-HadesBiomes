@@ -9,18 +9,6 @@ modutil.mod.Path.Wrap("DoEnemyHealthBufferDeplete", function(base, enemy)
 	end
 end)
 
-modutil.mod.Path.Context.Wrap("DamageEnemy", function(victim, triggerArgs)
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		modutil.mod.Path.Wrap("ProcessHealthBuffer", function(base, enemy, damageEventArgs)
-			if enemy.ModsNikkelMHadesBiomesIsThanatosCursed and not (triggerArgs.AttackerTable ~= nil and triggerArgs.AttackerTable.ObjectId == game.CurrentRun.Hero.ObjectId) then
-				return false
-			end
-
-			return base(enemy, damageEventArgs)
-		end)
-	end
-end)
-
 modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy then
 		if victim.SupportAIUnitId ~= nil then

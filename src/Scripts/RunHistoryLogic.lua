@@ -17,6 +17,7 @@ modutil.mod.Path.Wrap("RunHistoryUpdateVisibility", function(base, screen)
 	end
 end)
 
+-- Can't make static as we need the button reference at runtime in the wrap
 modutil.mod.Path.Context.Wrap("ShowRunHistory", function(screen, button)
 	modutil.mod.Path.Wrap("ModifyTextBox", function(base, args)
 		if args.Text == "RunHistoryScreen_Cleared" then
