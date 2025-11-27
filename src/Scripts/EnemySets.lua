@@ -78,6 +78,7 @@ local additionalEnemySets = {
 	EnemiesBiome1_EliteChallenge = {
 		"HeavyMeleeElite",
 		"PunchingBagUnitElite",
+		"DisembodiedHandElite",
 	},
 	EnemiesBiome1MiniBoss = {
 		"BloodlessGrenadierElite",
