@@ -310,6 +310,11 @@ local hadesProjectilesModifications = {
 	HadesTombstoneSpawn = {
 		SpawnOnDetonate = "ModsNikkelMHadesBiomesHadesTombstone"
 	},
+	HadesRubbleClear = {
+		-- Prevents the push effect from pushing you in front of the wave and immediately damaging you again
+		ImmunityKey = "HadesRubbleClear",
+		ImmunityDuration = 0.25,
+	},
 	HadesCerberusAssistBombard = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 		Thing = {
