@@ -1,4 +1,4 @@
-modutil.mod.Path.Context.Wrap("OpenMarketScreen", function(marketScreenArgs)
+modutil.mod.Path.Context.Wrap.Static("OpenMarketScreen", function(marketScreenArgs)
 	modutil.mod.Path.Wrap("ModifyTextBox", function(base, args)
 		local currencyResourceName = modutil.mod.Locals.Stacked(2).currencyResourceName
 		if currencyResourceName == "ModsNikkelMHadesBiomes_BrokerResource" then
@@ -8,6 +8,7 @@ modutil.mod.Path.Context.Wrap("OpenMarketScreen", function(marketScreenArgs)
 				args.Text = " "
 			end
 		end
-		base(args)
+
+		return base(args)
 	end)
 end)

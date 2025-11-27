@@ -35,31 +35,6 @@ modutil.mod.Path.Wrap("FullScreenFadeOutAnimation", function(base, animationName
 	return base(animationName, colorGradeName)
 end)
 
-modutil.mod.Path.Context.Wrap("DeathPresentation", function(currentRun, killer, deathArgs)
-	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		modutil.mod.Path.Wrap("DisplayInfoBanner", function(base, source, infoArgs)
-			if infoArgs.Text == "DeathMessage" then
-				-- Normal death during a run
-				infoArgs.Text = "ModsNikkelMHadesBiomes_DeathMessage"
-				infoArgs.TextColor = Color.Red
-				infoArgs.FontScale = 0.85
-				infoArgs.TextOffsetY = -20
-				infoArgs.AnimationName = "LocationTextBGDeath"
-				infoArgs.AnimationOutName = "LocationTextBGDeathOut"
-			elseif infoArgs.Text == "OutroDeathMessageAlt" or infoArgs.Text == "OutroDeathMessageTrueEnding" then
-				-- Post Ending01, run cleared
-				infoArgs.Text = "ModsNikkelMHadesBiomes_PostEndingDeathMessage"
-				infoArgs.TextColor = game.Color.Red
-				infoArgs.FontScale = 0.85
-				infoArgs.TextOffsetY = -20
-				infoArgs.AnimationName = "LocationTextBGDeath"
-				infoArgs.AnimationOutName = "LocationTextBGDeathOut"
-			end
-			return base(source, infoArgs)
-		end)
-	end
-end)
-
 modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		-- Destroy any IDs that we marked as such. E.g. Alecto rage meter or Asphodel door reward front animation
@@ -205,41 +180,6 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 		end
 	else
 		return base(currentRun, killer, args)
-	end
-end)
-
--- For modded run outro remembrances
-modutil.mod.Path.Context.Wrap("EndEarlyAccessPresentation", function()
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		-- Instead of returning a usual random outro, return a custom modded one
-		modutil.mod.Path.Override("GetRandomEligiblePrioritizedItem",
-			function(items, priorities, playedStore, randomRemainingStore, args)
-				game.GameState.ModsNikkelMHadesBiomes_PlayedRunOutros = game.GameState.ModsNikkelMHadesBiomes_PlayedRunOutros or
-						{}
-				local eligibleOutroData = {}
-				local eligibleUnplayedOutroData = {}
-				for k, outroData in pairs(mod.ModsNikkelMHadesBiomes_GameOutroData) do
-					if outroData.Header ~= nil and game.IsGameStateEligible(game.CurrentRun, outroData) then
-						table.insert(eligibleOutroData, outroData)
-						if not game.GameState.ModsNikkelMHadesBiomes_PlayedRunOutros[outroData.Header] then
-							table.insert(eligibleUnplayedOutroData, outroData)
-						end
-					end
-				end
-				local gameOutroData = nil
-				if game.IsEmpty(eligibleUnplayedOutroData) then
-					-- All played, start the record over
-					for index, outroData in pairs(game.GameOutroData) do
-						if outroData.Header ~= nil then
-							game.GameState.ModsNikkelMHadesBiomes_PlayedRunOutros[outroData.Header] = nil
-						end
-					end
-					gameOutroData = game.GetRandomValue(eligibleOutroData)
-				else
-					gameOutroData = game.GetRandomValue(eligibleUnplayedOutroData)
-				end
-				return gameOutroData
-			end)
 	end
 end)
 
