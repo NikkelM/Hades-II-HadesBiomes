@@ -1410,6 +1410,10 @@ local enemyModifications = {
 			SpawnUnitOnDeath = "nil",
 		},
 	},
+	SplitShotUnit = {
+		StunAnimations = { Default = "EnemyWretchCasterOnHit_SplitShot" },
+		DeathAnimation = "EnemyWretchCasterDeath_SplitShot",
+	},
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotOnHit" },

@@ -9,7 +9,6 @@ local additionalEnemySets = {
 		"Homing",
 	},
 	ShadeOnlyEliteAttributes = {
-		-- TODO: Implement MultiEgg
 		-- "MultiEgg",
 		-- "MultiEgg",
 		-- "MultiEgg",
