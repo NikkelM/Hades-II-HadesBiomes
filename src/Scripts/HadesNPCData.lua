@@ -3426,15 +3426,15 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- Uh, Prince?
-			{ Cue = "/VO/Sisyphus_0064", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0064", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Nice try, there!
 			{ Cue = "/VO/Sisyphus_0065" },
 			-- No use in that.
 			{ Cue = "/VO/Sisyphus_0066" },
 			-- Already dead here, Prince.
-			{ Cue = "/VO/Sisyphus_0067", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0067", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Don't bother, Prince.
-			{ Cue = "/VO/Sisyphus_0068", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0068", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Come on, now.
 			{ Cue = "/VO/Sisyphus_0069" },
 			-- Oh come now.
@@ -3444,7 +3444,7 @@ mod.NPCData = mod.NPCData or {
 			-- Try all you like!
 			{ Cue = "/VO/Sisyphus_0072" },
 			-- Very funny, Prince.
-			{ Cue = "/VO/Sisyphus_0073", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0073", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Oof, got me good there!
 			{ Cue = "/VO/Sisyphus_0074" },
 			-- Nope, can't feel a thing.
@@ -3452,25 +3452,25 @@ mod.NPCData = mod.NPCData or {
 			-- That's it, let all out.
 			{ Cue = "/VO/Sisyphus_0076" },
 			-- Hah, good one, Prince!
-			{ Cue = "/VO/Sisyphus_0232", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0232", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Augh, you got me, Highness!
 			{ Cue = "/VO/Sisyphus_0233" },
 			-- Oh, please, have mercy and all that!
 			{ Cue = "/VO/Sisyphus_0234" },
 			-- That your best shot, Prince Z.?
-			{ Cue = "/VO/Sisyphus_0235", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0235", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Now don't get frustrated all right?
 			{ Cue = "/VO/Sisyphus_0236" },
 			-- You getting ready for the road ahead?
 			{ Cue = "/VO/Sisyphus_0237" },
 			-- Nice shot there, Prince!
-			{ Cue = "/VO/Sisyphus_0238", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0238", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Augh, I'm hit!
 			{ Cue = "/VO/Sisyphus_0239" },
 			-- Wow you are strong Prince Z.!
-			{ Cue = "/VO/Sisyphus_0240", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0240", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Whew, most impressive, Prince!
-			{ Cue = "/VO/Sisyphus_0241", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0241", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 		},
 
 		BouldyAttackReactionVoiceLines = {
@@ -3486,7 +3486,7 @@ mod.NPCData = mod.NPCData or {
 			-- No use in that.
 			{ Cue = "/VO/Sisyphus_0066", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0066" } },
 			-- Don't bother, Prince.
-			{ Cue = "/VO/Sisyphus_0068", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0068" },               Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0068", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0068" },               Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Come on, now.
 			{ Cue = "/VO/Sisyphus_0069", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0069" } },
 			-- Oh come now.
@@ -3494,25 +3494,25 @@ mod.NPCData = mod.NPCData or {
 			-- Why bother.
 			{ Cue = "/VO/Sisyphus_0071", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0071" } },
 			-- Very funny, Prince.
-			{ Cue = "/VO/Sisyphus_0073", RequiredTextLines = { "SisyphusMeeting06" },                         Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0073", RequiredTextLines = { "SisyphusMeeting06" },                         Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Pick on somebody your own size, Prince!
-			{ Cue = "/VO/Sisyphus_0254", RequiredTextLines = { "SisyphusGift03" },                            Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0254", RequiredTextLines = { "SisyphusGift03" },                            Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- That's one fight you aren't going to win!
 			{ Cue = "/VO/Sisyphus_0255" },
 			-- Takes more than that to budge old Bouldy, Prince!
-			{ Cue = "/VO/Sisyphus_0256", RequiredTextLines = { "SisyphusMeeting06" },                         Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0256", RequiredTextLines = { "SisyphusMeeting06" },                         Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Sure is heavy, isn't he!
 			{ Cue = "/VO/Sisyphus_0257", RequiredTextLines = { "SisyphusMeeting06" } },
 			-- Bouldy can take whatever you dish out!
 			{ Cue = "/VO/Sisyphus_0258", RequiredTextLines = { "SisyphusMeeting06" } },
 			-- Now there's no need for that here, Prince.
-			{ Cue = "/VO/Sisyphus_0259", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0259", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Try all you like, there, Prince!
-			{ Cue = "/VO/Sisyphus_0260", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0260", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- Hey that's my friend, Prince Z.
-			{ Cue = "/VO/Sisyphus_0261", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0261", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- No hurting Bouldy, Prince.
-			{ Cue = "/VO/Sisyphus_0262", RequiredTextLines = { "SisyphusMeeting06" },                         Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+			-- { Cue = "/VO/Sisyphus_0262", RequiredTextLines = { "SisyphusMeeting06" },                         Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 			-- That's one tough rock you're messing with.
 			{ Cue = "/VO/Sisyphus_0263" },
 			-- Don't hurt yourself, all right?

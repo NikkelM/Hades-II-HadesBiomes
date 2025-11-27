@@ -27,7 +27,7 @@ local newData = {
 	-- TODO: Only while the mod is in early access
 	{
 		Id = "ModsNikkelMHadesBiomes_LeaveFeedback",
-		DisplayName = "Please leave feedback and bug reports on Discord in #help-h2 -> Hades run in Hades II",
+		DisplayName = "Please leave feedback and bug reports on GitHub or Discord in #h1-run-h2",
 	},
 	-- #endregion
 

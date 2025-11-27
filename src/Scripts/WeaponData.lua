@@ -612,8 +612,7 @@ local weaponModifications = {
 		GameStateRequirements = {
 			{
 				FunctionName = "RequiredShrineLevel",
-				FunctionArgs =
-				{
+				FunctionArgs = {
 					ShrineUpgradeName = "BossDifficultyShrineUpgrade",
 					Comparison = "==",
 					Value = 0,
@@ -623,7 +622,6 @@ local weaponModifications = {
 		AIData = {
 			DeepInheritance = true,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
-			PostAttackDuration = 1.0,
 		},
 	},
 	HarpyLungeSurgeBeam = {

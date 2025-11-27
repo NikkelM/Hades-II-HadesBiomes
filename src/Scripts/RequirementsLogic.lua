@@ -2135,10 +2135,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 		local numKillsLastRun = 0
 		for k, requiredKill in pairs(requirements.RequiredKillsLastRun) do
-			for roomOrder, room in pairs(prevRun.RoomHistory) do
-				if room.Kills ~= nil and room.Kills[requiredKill] ~= nil then
-					numKillsLastRun = numKillsLastRun + room.Kills[requiredKill]
-				end
+			if prevRun.EnemyKills ~= nil and prevRun.EnemyKills[requiredKill] ~= nil then
+				numKillsLastRun = numKillsLastRun + prevRun.EnemyKills[requiredKill]
 			end
 		end
 		if numKillsLastRun <= 0 then
