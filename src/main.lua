@@ -382,11 +382,8 @@ local function on_ready()
 		import "Scripts/EnemyAILogic.lua"
 		import "Scripts/EncounterLogic.lua"
 		import "Scripts/EventPresentation.lua"
-		import "Scripts/GhostLogic.lua"
-		import "Scripts/HarvestLogic.lua"
 		import "Scripts/HarvestPresentation.lua"
 		import "Scripts/HubPresentation.lua"
-		import "Scripts/MarketLogic.lua"
 		import "Scripts/NarrativeData.lua"
 		import "Scripts/NarrativeLogic.lua"
 		import "Scripts/PowersLogic.lua"
@@ -398,7 +395,6 @@ local function on_ready()
 		import "Scripts/RunHistoryLogic.lua"
 		import "Scripts/RunHistoryPresentation.lua"
 		import "Scripts/RunLogic.lua"
-		import "Scripts/ShrinePresentation.lua"
 		import "Scripts/StoreLogic.lua"
 		import "Scripts/WeaponSets.lua"
 
@@ -425,16 +421,42 @@ local function on_ready()
 	end
 end
 
+-- Loaded after all other mods
+-- Define static Context Wraps in here to prevent issues as per https://github.com/SGG-Modding/ModUtil/issues/12
+local function on_ready_late()
+	if config.enabled == false then return end
+
+	import "Scripts/CombatLogic_Late.lua"
+	import "Scripts/GhostLogic_Late.lua"
+	import "Scripts/HarvestLogic_Late.lua"
+	import "Scripts/HarvestPresentation_Late.lua"
+	import "Scripts/HubPresentation_Late.lua"
+	import "Scripts/MarketLogic_Late.lua"
+	import "Scripts/RoomPresentation_Late.lua"
+	import "Scripts/ShrinePresentation_Late.lua"
+end
+
 local function on_reload()
 	-- what to do when we are ready, but also again on every reload.
 	-- only do things that are safe to run over and over.
 	if config.enabled == false then return end
 end
 
+local function on_reload_late()
+	if config.enabled == false then return end
+end
+
 -- this allows us to limit certain functions to not be reloaded.
-local loader = reload.auto_single()
+local loader = reload.auto_multiple()
 
 -- this runs only when modutil and the game's lua is ready
 modutil.once_loaded.game(function()
-	loader.load(on_ready, on_reload)
+	loader.load("early", on_ready, on_reload)
+end)
+
+-- again but loaded later than other mods
+mods.on_all_mods_loaded(function()
+	modutil.once_loaded.game(function()
+		loader.load("late", on_ready_late, on_reload_late)
+	end)
 end)
