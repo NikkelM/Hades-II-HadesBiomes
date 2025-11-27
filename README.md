@@ -34,16 +34,32 @@ You can find an explanation of all options [on this wiki page](https://github.co
 
 ## Feedback & Bug Reports
 
+The mod is currently still in a beta state, so there are some missing features, and you may occasionally encounter bugs.
+
 Please directly leave bug reports as a [new issue on the project's GitHub repository](https://github.com/NikkelM/Hades-II-HadesBiomes/issues/new), or [start a discussion](https://github.com/NikkelM/Hades-II-HadesBiomes/discussions) for general feedback, suggestions and questions.
 
 If you do not have a GitHub account, you can also join the [Hades II Modding Discord server](https://discord.gg/KuMbyrN) and post in the [`#h1-run-h2`](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
+### Feature Roadmap
+
+Among many smaller improvements and fixes, the following major features are planned for future releases (in no particular order):
+
+- Secret boss fight (you know the one)
+- Erebus gates
+- New incantations for progression on the new route
+- New story events and dialogue between Melinoë and other characters from Hades II, concerning the new route
+- Displaying statistics for the new route with the Record Keeper
+- Additional boons for story NPCs (Sisyphus, Eurydice, Patroclus)
+
 ## Contributors
 
-- NikkelM ([GitHub](https://github.com/NikkelM), @NikkelM on [Discord](https://discord.gg/KuMbyrN)), mod creator
-- iDeathHD ([GitHub](https://github.com/xiaoxiao921), @iDeathHD on [Discord](https://discord.gg/KuMbyrN)), for changes to Hell2Modding to support this mod
-- @burn on [Discord](https://discord.gg/KuMbyrN), additional art
+- NikkelM ([GitHub](https://github.com/NikkelM), @NikkelM on [Discord](https://discord.gg/KuMbyrN)), Mod Creator
+- iDeathHD ([GitHub](https://github.com/xiaoxiao921), @iDeathHD on [Discord](https://discord.gg/KuMbyrN)), Hell2Modding Maintainer
+- @burn on [Discord](https://discord.gg/KuMbyrN), Additional Artwork
+- zannc ([GitHub](https://github.com/excellent-ae), @dwbl on [Discord](https://discord.gg/KuMbyrN)), Creator of [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) (automatically installed with this mod)
 - ...and the many other modding community members that have created tools, tested early versions, provided feedback and reported bugs! 
+
+## Image Gallery
 
 <img src="https://github.com/user-attachments/assets/72407431-8737-41d6-b417-d5890494a501" alt="Withstand Asphodel's Heat">
 
