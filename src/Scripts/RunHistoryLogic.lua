@@ -48,20 +48,21 @@ modutil.mod.Path.Wrap("ShowRunHistory", function(base, screen, button)
 	-- We need to revert this here for the selected run
 	-- As only a limited number of keys are included in the save file for past runs, we encode the ending room name in the KilledByName field
 	-- KilledByName == <EnemyName>#<EndingRoomName>
-	local run = button.Run
+	local run = game.DeepCopyTable(button.Run) or {}
 	if run.EndingRoomName == nil and run.KilledByName ~= nil then
 		local separatorIndex = string.find(run.KilledByName, "#")
 		if separatorIndex ~= nil then
-			button.Run.EndingRoomName = string.sub(run.KilledByName, separatorIndex + 1)
+			run.EndingRoomName = string.sub(run.KilledByName, separatorIndex + 1)
 			local enemyName = string.sub(run.KilledByName, 1, separatorIndex - 1)
 			-- If the enemy name is empty, the player was not killed
 			if enemyName == "" then
-				button.Run.KilledByName = nil
+				run.KilledByName = nil
 			else
-				button.Run.KilledByName = enemyName
+				run.KilledByName = enemyName
 			end
 		end
 	end
+	button.Run = run
 
 	base(screen, button)
 
