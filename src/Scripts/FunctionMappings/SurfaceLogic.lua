@@ -595,7 +595,6 @@ function mod.HandleReturnBoatRide(eventSource, args)
 	end
 	SetAnimation({ DestinationId = charonId, Name = "CharonEndingBoatRow_StartRowing" })
 
-	-- Slower speed than in Hades to prevent it stopping just before the screen fade
 	Move({ Id = boatId, DestinationId = boatMoveTargetId, Speed = 125, SuccessDistance = 30 })
 
 	local notifyName = "WithinDistance" .. boatMoveTargetId
