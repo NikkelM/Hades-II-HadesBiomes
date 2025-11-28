@@ -5,7 +5,7 @@
 Zagreus' Journey is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
 Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past.
 
-<img src="https://github.com/user-attachments/assets/19826a7b-f205-497e-92e8-1e77b4c2161f" alt="Zagreus' Journey">
+<img src="https://github.com/user-attachments/assets/87d52379-d73a-4040-afac-d4a40e5f7e89" alt="Zagreus' Journey">
 <div style="display: flex; justify-content: space-between;">
   <img src="https://github.com/user-attachments/assets/3272b242-f706-4bbe-aa14-782cb80af2e4" alt="Meet your Father" width="49.7%">
   <img src="https://github.com/user-attachments/assets/52235073-d1ad-473c-9e37-fcb538d80f1f" alt="Battle our of Tartarus" width="49.7%">
@@ -18,13 +18,20 @@ After installing the mod, a Chaos Gate will appear in the Crossroads, which will
 
 In order to use this mod you _must_ have Hades installed on your system at all times when playing Hades II.
 The mod will not work without it.
-This mod requires an additional 1GB of disk space.
 
 You can install this mod just like any other Hades II mod available on [Thunderstore](https://thunderstore.io/c/hades-ii/), the recommended mod manager is [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/).
+Starting the game the first time with the mod enabled will install a number of files.
+This may take some time depending on your hardware, and the game will display a black screen during this time.
+You can follow along the installation progress in the console window that opens when playing the game modded.
+
+If the mod was installed successfully, a popup will open in the Training Grounds to let you know.
+
+This mod requires an additional 1GB of disk space.
 
 If you would like more information, refer to the [Installation](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Installation-&-Uninstallation) wiki page.
 
 Before *removing* the mod from r2modman, you must first uninstall it through the `uninstall` configuration setting, to prevent any issues with leftover files.
+Don't uninstall the mod while in a Hades underworld run.
 
 ## Configuration
 
