@@ -2438,7 +2438,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		},
 		{
 			PreLineWait = 4,
-			ObjectType = "NPC_Persephone_01",
+			ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
 			SkipAnim = true,
 			-- Snow everywhere... Mother...
 			-- Replace Persephone_ with Megaera_2

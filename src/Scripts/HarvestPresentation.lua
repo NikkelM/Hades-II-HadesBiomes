@@ -21,3 +21,23 @@ function mod.ModsNikkelMHadesBiomes_StaticBase_UsedHarvestPointPresentation(sour
 	end
 	game.waitUnmodified(0.4)
 end
+
+modutil.mod.Path.Context.Wrap("FishingEndPresentation", function(fishData, fishingAnimationPointId, fishingArgs)
+	modutil.mod.Path.Wrap("PlayVoiceLines", function(base, voiceLines, neverQueue, source, args)
+		if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.RoomSetName == "Surface" then
+			if fishData and voiceLines == fishData.FishCaughtVoiceLines then
+				voiceLines = game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishCaughtVoiceLines
+			elseif fishData and voiceLines == fishData.FishIdentifiedVoiceLines then
+				voiceLines = game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishIdentifiedVoiceLines
+			elseif voiceLines == game.HeroVoiceLines.FishNotCaughtTooLateVoiceLines then
+				voiceLines = game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines
+			elseif voiceLines == game.HeroVoiceLines.FishNotCaughtWayTooLateVoiceLines then
+				voiceLines = game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtWayTooLateVoiceLines
+			elseif voiceLines == game.HeroVoiceLines.FishNotCaughtVoiceLines then
+				voiceLines = game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtVoiceLines
+			end
+		end
+
+		return base(voiceLines, neverQueue, source, args)
+	end)
+end)
