@@ -54,7 +54,7 @@ modutil.mod.Path.Wrap("ShowRunHistory", function(base, screen, button)
 		if separatorIndex ~= nil then
 			run.EndingRoomName = string.sub(run.VictoryMessage, separatorIndex + 1)
 			local originalVictoryMessage = string.sub(run.VictoryMessage, 1, separatorIndex - 1)
-			-- If the enemy name is empty, the player didn't get a victory message (none were eligible, or they didn't clear the run)
+			-- If the field is empty, the player didn't get a victory message (none were eligible, or they didn't clear the run)
 			if originalVictoryMessage == "" then
 				run.VictoryMessage = nil
 			else
