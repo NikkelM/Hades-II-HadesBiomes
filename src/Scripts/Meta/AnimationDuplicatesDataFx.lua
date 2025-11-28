@@ -1774,7 +1774,4 @@ mod.HadesFxAnimationDuplicates = {
 	["BoonDropB-Dionysus"] = true,
 	["BoonDropC-Dionysus"] = true,
 	["BoonDropDionysusIcon"] = true,
-	["BoonInfoSymbolArtemisIcon"] = true,
-	["BoonInfoSymbolAthenaIcon"] = true,
-	["BoonInfoSymbolDionysusIcon"] = true,
 }

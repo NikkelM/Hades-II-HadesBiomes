@@ -44,6 +44,26 @@ modutil.mod.Path.Wrap("ShowRunHistory", function(base, screen, button)
 	hadesBiomeCodexEntries.BiomeSurface = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Surface
 	game.CodexData.Biomes.Entries = game.MergeTables(game.CodexData.Biomes.Entries, hadesBiomeCodexEntries)
 
+	-- To prevent errors when opening the screen with the mod uninstalled, we need to set EndingRoomName to nil for modded runs
+	-- We need to revert this here for the selected run
+	-- As only a limited number of keys are included in the save file for past runs, we encode the endingRoomName in the VictoryMessage field
+	-- VictoryMessage == <VictoryMessage>#<EndingRoomName>
+	local run = game.DeepCopyTable(button.Run) or {}
+	if run.EndingRoomName == nil and run.VictoryMessage ~= nil then
+		local separatorIndex = string.find(run.VictoryMessage, "#")
+		if separatorIndex ~= nil then
+			run.EndingRoomName = string.sub(run.VictoryMessage, separatorIndex + 1)
+			local originalVictoryMessage = string.sub(run.VictoryMessage, 1, separatorIndex - 1)
+			-- If the field is empty, the player didn't get a victory message (none were eligible, or they didn't clear the run)
+			if originalVictoryMessage == "" then
+				run.VictoryMessage = nil
+			else
+				run.VictoryMessage = originalVictoryMessage
+			end
+		end
+	end
+	button.Run = run
+
 	base(screen, button)
 
 	game.CodexData.Biomes.Entries = originalEntries

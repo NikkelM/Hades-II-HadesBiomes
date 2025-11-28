@@ -1,3 +1,31 @@
+-- Damage maps
+local newDamageSourceMappings = {
+	-- #region TARTARUS
+	BloodMineBlast = "HadesThiefMineLayer",
+	HeavyRangedSplitterFragment = "HeavyRangedSplitterMiniboss",
+	HeavyRangedSplitterFragmentSuperElite = "HeavyRangedSplitterMinibossSuperElite",
+	-- #endregion
+
+	-- #region STYX
+	ModsNikkelMHadesBiomesHadesTombstone = "Hades",
+	HadesAmmo = "Hades",
+	-- #endregion
+
+	-- #region TRAPS
+	HadesSpikeTrapWeapon = "Traps",
+	DartTrapWeapon = "Traps",
+	AxeTrapWeapon = "Traps",
+	PoisonTrapWeapon = "Traps",
+	PhalanxTrapWeapon = "Traps",
+	ExplosiveBlast = "Traps",
+	SpikeWallWeapon = "Traps",
+	SmokeTrapWeapon = "Traps",
+	LavaSplash = "Traps",
+	LavaPuddleLarge = "Traps",
+	-- #endregion
+}
+mod.AddTableKeysSkipDupes(game.ScreenData.RunClear.DamageSourceMap, newDamageSourceMappings)
+
 game.GameData.ModsNikkelMHadesBiomesRunClearMessageData = {
 	DefaultMessage = {
 		DebugOnly = true,
@@ -830,5 +858,4 @@ game.GameData.ModsNikkelMHadesBiomesRunClearMessageData = {
 	},
 	-- #endregion
 }
-
 game.ProcessDataStore(game.GameData.ModsNikkelMHadesBiomesRunClearMessageData)

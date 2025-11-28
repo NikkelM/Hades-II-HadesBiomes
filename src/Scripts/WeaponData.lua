@@ -727,18 +727,6 @@ local weaponModifications = {
 			RequiresNotCharmed = true,
 		},
 	},
-	RangedBurrowerWeapon = {
-		-- Swap which weapon is used first due to how the activate animation was changed
-		AIData = {
-			ForceFirst = true,
-		},
-	},
-	RangedBurrowerBurrow = {
-		AIData = {
-			ForceFirst = false,
-		},
-		ForceFirst = mod.NilValue,
-	},
 	-- #endregion
 	-- #region ASPHODEL - Minibosses
 	-- #region ASPHODEL - Minibosses - SpreadShot

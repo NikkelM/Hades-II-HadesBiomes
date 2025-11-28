@@ -95,18 +95,6 @@ function mod.StartHadesRun(source, args)
 	-- Don't allow rain in underworld/modded runs
 	game.GameState.NextBiomeStateName = "VanillaState"
 
-	local cachedRuns = mod.TryLoadCachedSjsonFile("cachedRuns.sjson")
-
-	if game.GameState.ModsNikkelMHadesBiomesSaveFileIndex == nil then
-		-- Assign the GameState memory address (hash) as the index
-		game.GameState.ModsNikkelMHadesBiomesSaveFileIndex = tostring(game.GameState):match("table: (.+)")
-		game.RequestPreRunLoadoutChangeSave()
-		mod.SaveCachedSjsonFile("cachedRuns.sjson", cachedRuns)
-		mod.DebugPrint(
-			"Assigned the following mod save file identifier to the current save slot: " ..
-			game.GameState.ModsNikkelMHadesBiomesSaveFileIndex, 4)
-	end
-
 	mod.StartHadesRunSecretDoorPresentation(game.CurrentRun, source)
 
 	game.UseEscapeDoor(source, args)

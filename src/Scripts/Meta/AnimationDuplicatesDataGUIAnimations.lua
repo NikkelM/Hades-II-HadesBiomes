@@ -659,4 +659,8 @@ mod.HadesGUIAnimationDuplicates = {
 	-- 1.0 update
 	["AmmoPack"] = true,
 	["AmmoEmbeddedInEnemyIcon"] = true,
+	-- Mod compatibility: Droppable Gods
+	["BoonInfoSymbolArtemisIcon"] = true,
+	["BoonInfoSymbolAthenaIcon"] = true,
+	["BoonInfoSymbolDionysusIcon"] = true,
 }

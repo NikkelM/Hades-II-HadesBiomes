@@ -39,17 +39,9 @@ end)
 
 -- Doing this here instead of in StartNewRun, as StartNewRun creates the first encounter before we can set the modded flag
 modutil.mod.Path.Wrap("ChooseStartingRoom", function(base, currentRun, args)
-	local cachedRuns = mod.TryLoadCachedSjsonFile("cachedRuns.sjson")
-
 	if mod.ValidModdedRunBiomes[args.StartingBiome] then
 		game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun = true
 		currentRun.ModsNikkelMHadesBiomesIsModdedRun = true
-
-		cachedRuns.ActiveModdedRuns[game.GameState.ModsNikkelMHadesBiomesSaveFileIndex] = true
-		mod.SaveCachedSjsonFile("cachedRuns.sjson", cachedRuns)
-	elseif game.GameState.ModsNikkelMHadesBiomesSaveFileIndex ~= nil then
-		cachedRuns.ActiveModdedRuns[game.GameState.ModsNikkelMHadesBiomesSaveFileIndex] = false
-		mod.SaveCachedSjsonFile("cachedRuns.sjson", cachedRuns)
 	end
 
 	-- Edge case: We also need to do these modifications for the first room of a run, as the IsModdedRun flag only gets set after RunStateInit is called
@@ -168,6 +160,25 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = moddedRunsCleared
 		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = totalModdedRuns
 	end
+end)
+
+modutil.mod.Path.Wrap("EndRun", function(base, run)
+	if run.ModsNikkelMHadesBiomesIsModdedRun then
+		if run.ModsNikkelMHadesBiomesActualCurrentRoom ~= nil then
+			run.CurrentRoom = run.ModsNikkelMHadesBiomesActualCurrentRoom
+		end
+		-- To prevent an error with opening the Run History screen after uninstalling the mod, we need to encode the EndingRoomName into the VictoryMessage field
+		-- If it is a modded room name, the game otherwise crashes trying to find it
+		-- This encoding is reversed when opening the Run History screen with the mod installed
+		-- Only encode it if we've not already encoded it before for this run for some reason
+		if not string.find(run.VictoryMessage or "", "#") then
+			run.VictoryMessage = (run.VictoryMessage or "") .. "#" .. (run.CurrentRoom.Name or "")
+		end
+		-- The actual room name needs to be set to nil to ensure the base function assigns nil to EndingRoomName
+		run.CurrentRoom.Name = nil
+	end
+
+	return base(run)
 end)
 
 modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)

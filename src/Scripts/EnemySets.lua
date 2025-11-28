@@ -9,7 +9,6 @@ local additionalEnemySets = {
 		"Homing",
 	},
 	ShadeOnlyEliteAttributes = {
-		-- TODO: Implement MultiEgg
 		-- "MultiEgg",
 		-- "MultiEgg",
 		-- "MultiEgg",
@@ -79,6 +78,7 @@ local additionalEnemySets = {
 	EnemiesBiome1_EliteChallenge = {
 		"HeavyMeleeElite",
 		"PunchingBagUnitElite",
+		"DisembodiedHandElite",
 	},
 	EnemiesBiome1MiniBoss = {
 		"BloodlessGrenadierElite",

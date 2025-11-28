@@ -24,25 +24,6 @@ local function removeFile(filePath, extension)
 end
 
 function mod.Uninstall()
-	-- Check if any savegame has a modded run as the most recent one - block uninstallation if so, as it would corrupt the save file
-	local cachedRuns = mod.TryLoadCachedSjsonFile("cachedRuns.sjson")
-	if string.lower(config.uninstall) == "i am sure - uninstall" then
-		mod.DebugPrint(
-			"Uninstalling mod - forced uninstallation! Savegames may corrupt. Re-install the mod to try and restore them.", 2)
-		-- Empty the list of cached runs - as the user thinks it is wrong
-		local defaultCachedRuns = { ActiveModdedRuns = {} }
-		mod.SaveCachedSjsonFile("cachedRuns.sjson", defaultCachedRuns)
-	elseif not config.firstTimeSetup then
-		for saveFileIndex, isActive in pairs(cachedRuns.ActiveModdedRuns) do
-			if isActive then
-				mod.DebugPrint(
-					"For at least one of your save files, the most recent saved run is/was a modded Hades run (this may be incorrect if you replaced or deleted a save file with an active modded run at some point). The mod will *NOT* be uninstalled, otherwise your savegame will corrupt!\nMake sure you are currently in a normal Hades II run (and complete it normally without giving up), or were in one before you returned to the crossroads (by winning or dying, not giving up) to prevent savegame corruption! Then try uninstalling the mod again.\nAre you SURE this is wrong? Set \"uninstall\" in the config to \"I AM SURE - UNINSTALL\".",
-					1)
-				config.uninstall = "false"
-				return false
-			end
-		end
-	end
 	mod.DebugPrint("Uninstalling mod - removing files added by the mod", 3)
 
 	removeFiles(mod.AudioFileMappings, "Audio\\Desktop\\", ".bank")
@@ -95,7 +76,7 @@ function mod.Uninstall()
 	checksumsFile:write("")
 	checksumsFile:close()
 
-	config.uninstall = "false"
+	config.uninstall = false
 	mod.DebugPrint("Uninstallation complete.", 3)
 
 	return true
