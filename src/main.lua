@@ -118,7 +118,7 @@ local function on_ready()
 			else
 				-- Do not disable, as otherwise save files will break
 				mod.DebugPrint(
-					"You tried disabling the mod, but uninstallation was not successful. The mod is disabled, but some files may have been left behind. This can cause issues if left unresolved! Please follow the instructions in the logs above for more information.",
+					"You tried disabling the mod, but uninstallation was not successful. The mod is disabled, but some files may have been left behind. This can cause issues if left unresolved! Please try again or start a discussion on https://github.com/NikkelM/Hades-II-HadesBiomes/discussions if the issue persists.",
 					2)
 			end
 		else
