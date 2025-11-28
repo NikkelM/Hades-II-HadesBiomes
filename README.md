@@ -86,3 +86,12 @@ Among many smaller improvements and fixes, the following major features are plan
   <img src="https://github.com/user-attachments/assets/21dc3117-a2f6-4910-8119-20082537f312" alt="Descend into Tartarus" width="49.7%">
   <img src="https://github.com/user-attachments/assets/ef057f60-8723-4fb0-bcb0-ae754297d501" alt="Escape the Underworld" width="49.7%">
 </div>
+
+Congratulations, you've made it to the bottom of the page!
+
+If you are enjoying this mod and want to say thank you, you can consider donating to me on [GitHub Sponsors](https://github.com/sponsors/NikkelM) or [Ko-Fi](https://ko-fi.com/nikkelm).
+
+## Disclaimer
+
+This mod is a fan-project and not affiliated with or endorsed by Supergiant Games.
+All original code, art, music, voice & game design of Hades is copyright Supergiant Games.
