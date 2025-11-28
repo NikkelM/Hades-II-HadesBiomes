@@ -73,8 +73,7 @@ local function on_ready()
 	import "Scripts/Meta/ZagreusFieldVoicelines.lua"
 
 	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
-	local shouldProceed = config.enabled and
-			((string.lower(config.uninstall) ~= "true" and string.lower(config.uninstall) ~= "i am sure - uninstall") or config.firstTimeSetup)
+	local shouldProceed = config.enabled and (not config.uninstall or config.firstTimeSetup)
 	-- Always confirm the installation, as we might need the path if this is a weird first-install-with-uninstall-set situation
 	if not mod.ConfirmHadesInstallation() and shouldProceed then return end
 
@@ -104,7 +103,7 @@ local function on_ready()
 	mod.CompareChecksums()
 
 	-- If the mod is disabled, we also want to uninstall it and set the firstTimeSetup flag to true for the next time the mod is enabled again
-	if not config.enabled or string.lower(config.uninstall) == "true" or string.lower(config.uninstall) == "i am sure - uninstall" then
+	if not config.enabled or config.uninstall then
 		local uninstallSuccessful = mod.Uninstall()
 
 		if not config.enabled then
@@ -118,20 +117,14 @@ local function on_ready()
 			else
 				-- Do not disable, as otherwise save files will break
 				mod.DebugPrint(
-					"You tried disabling the mod, but uninstallation was not successful. As this may cause issues if left unresolved, the mod has been enabled again. Please follow the instructions in the logs above for more information.",
-					1)
-				config.enabled = true
-
-				mod.HiddenConfig.MustShowUninstallFailureScreen = true
-				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
-
-				-- We need to confirm the Hades installation, as the mod has been enabled again
-				if not mod.ConfirmHadesInstallation() then return end
+					"You tried disabling the mod, but uninstallation was not successful. The mod is disabled, but some files may have been left behind. This can cause issues if left unresolved! Please follow the instructions in the logs above for more information.",
+					2)
 			end
 		else
 			if uninstallSuccessful and not config.firstTimeSetup then
 				mod.DebugPrint(
-					"The mod was uninstalled successfully, and the \"firstTimeSetup\" flag is set to false, disabling mod.", 2)
+					"The mod was uninstalled successfully, and the \"firstTimeSetup\" flag is set to false, disabling mod. Set \"enabled\" to true in the config to install the mod the next time the game is started.",
+					2)
 				config.enabled = false
 				-- Set to true to install the next time the mod is enabled
 				config.firstTimeSetup = true
@@ -146,13 +139,6 @@ local function on_ready()
 				if not mod.ConfirmHadesInstallation() then return end
 			end
 		end
-	elseif string.lower(config.uninstall) ~= "false" then
-		mod.DebugPrint(
-			"Invalid value for \"uninstall\" in the config file (\"" ..
-			config.uninstall ..
-			"\"). Please set it to \"true\" to uninstall the mod normally, \"I AM SURE - UNINSTALL\" to force an uninstall, or \"false\" to not uninstall. Proceeding normally.",
-			2)
-		config.uninstall = "false"
 	end
 
 	if config.firstTimeSetup then
