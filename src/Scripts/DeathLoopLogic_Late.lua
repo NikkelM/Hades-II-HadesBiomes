@@ -10,9 +10,9 @@ modutil.mod.Path.Context.Wrap.Static("KillHero", function(victim, triggerArgs)
 			game.CurrentRun.CurrentRoom = dummyRoom
 
 			-- Additionally, to prevent an error with opening the Run History screen after uninstalling the mod,
-			-- we need to encode the ending room name into the KilledByName field, since if it is a modded room name, the game crashes trying to find it
+			-- we need to encode the EndingRoomName into the VictoryMessage field, since if it is a modded room name, the game crashes trying to find it
 			-- This encoding is reversed when opening the Run History screen with the mod installed
-			game.CurrentRun.KilledByName = (game.CurrentRun.KilledByName or "") .. "#" .. (game.CurrentRun.EndingRoomName or "")
+			game.CurrentRun.VictoryMessage = (game.CurrentRun.VictoryMessage or "") .. "#" .. (game.CurrentRun.EndingRoomName or "")
 			game.CurrentRun.EndingRoomName = nil
 		end
 

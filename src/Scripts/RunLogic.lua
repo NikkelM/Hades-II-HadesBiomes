@@ -167,12 +167,12 @@ modutil.mod.Path.Wrap("EndRun", function(base, run)
 		if game.CurrentRun.ModsNikkelMHadesBiomesActualCurrentRoom ~= nil then
 			run.CurrentRoom = game.CurrentRun.ModsNikkelMHadesBiomesActualCurrentRoom
 		end
-		-- To prevent an error with opening the Run History screen after uninstalling the mod, we need to encode the ending room name into the KilledByName field
+		-- To prevent an error with opening the Run History screen after uninstalling the mod, we need to encode the EndingRoomName into the VictoryMessage field
 		-- If it is a modded room name, the game otherwise crashes trying to find it
 		-- This encoding is reversed when opening the Run History screen with the mod installed
 		-- Only encode it if we've not already encoded it before for this run for some reason
-		if not string.find(run.KilledByName or "", "#") then
-			game.CurrentRun.KilledByName = (game.CurrentRun.KilledByName or "") .. "#" .. (run.CurrentRoom.Name or "")
+		if not string.find(run.VictoryMessage or "", "#") then
+			game.CurrentRun.VictoryMessage = (game.CurrentRun.VictoryMessage or "") .. "#" .. (run.CurrentRoom.Name or "")
 		end
 		-- The actual room name needs to be set to nil to ensure the base function assigns nil to EndingRoomName
 		run.CurrentRoom.Name = nil

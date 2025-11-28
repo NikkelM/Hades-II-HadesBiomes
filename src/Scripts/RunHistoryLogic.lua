@@ -46,19 +46,19 @@ modutil.mod.Path.Wrap("ShowRunHistory", function(base, screen, button)
 
 	-- To prevent errors when opening the screen with the mod uninstalled, we need to set EndingRoomName to nil for modded runs
 	-- We need to revert this here for the selected run
-	-- As only a limited number of keys are included in the save file for past runs, we encode the ending room name in the KilledByName field
-	-- KilledByName == <EnemyName>#<EndingRoomName>
+	-- As only a limited number of keys are included in the save file for past runs, we encode the endingRoomName in the VictoryMessage field
+	-- VictoryMessage == <VictoryMessage>#<EndingRoomName>
 	local run = game.DeepCopyTable(button.Run) or {}
-	if run.EndingRoomName == nil and run.KilledByName ~= nil then
-		local separatorIndex = string.find(run.KilledByName, "#")
+	if run.EndingRoomName == nil and run.VictoryMessage ~= nil then
+		local separatorIndex = string.find(run.VictoryMessage, "#")
 		if separatorIndex ~= nil then
-			run.EndingRoomName = string.sub(run.KilledByName, separatorIndex + 1)
-			local enemyName = string.sub(run.KilledByName, 1, separatorIndex - 1)
-			-- If the enemy name is empty, the player was not killed
-			if enemyName == "" then
-				run.KilledByName = nil
+			run.EndingRoomName = string.sub(run.VictoryMessage, separatorIndex + 1)
+			local originalVictoryMessage = string.sub(run.VictoryMessage, 1, separatorIndex - 1)
+			-- If the enemy name is empty, the player didn't get a victory message (none were eligible, or they didn't clear the run)
+			if originalVictoryMessage == "" then
+				run.VictoryMessage = nil
 			else
-				run.KilledByName = enemyName
+				run.VictoryMessage = originalVictoryMessage
 			end
 		end
 	end
