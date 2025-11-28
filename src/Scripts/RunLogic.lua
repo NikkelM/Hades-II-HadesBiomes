@@ -170,6 +170,22 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 	end
 end)
 
+modutil.mod.Path.Wrap("EndRun", function(base, run)
+	if run.ModsNikkelMHadesBiomesIsModdedRun then
+		if game.CurrentRun.ModsNikkelMHadesBiomesActualCurrentRoom ~= nil then
+			run.CurrentRoom = game.CurrentRun.ModsNikkelMHadesBiomesActualCurrentRoom
+		end
+		-- To prevent an error with opening the Run History screen after uninstalling the mod, we need to encode the ending room name into the KilledByName field
+		-- If it is a modded room name, the game otherwise crashes trying to find it
+		-- This encoding is reversed when opening the Run History screen with the mod installed
+		game.CurrentRun.KilledByName = (game.CurrentRun.KilledByName or "") .. "#" .. (run.CurrentRoom.Name or "")
+		-- The actual room name needs to be set to nil to ensure the base function assigns nil to EndingRoomName
+		run.CurrentRoom.Name = nil
+	end
+
+	return base(run)
+end)
+
 modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
 	if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 		local clearCountRecordName = "ModsNikkelMHadesBiomesClearCount"

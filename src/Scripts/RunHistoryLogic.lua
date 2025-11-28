@@ -44,6 +44,25 @@ modutil.mod.Path.Wrap("ShowRunHistory", function(base, screen, button)
 	hadesBiomeCodexEntries.BiomeSurface = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Surface
 	game.CodexData.Biomes.Entries = game.MergeTables(game.CodexData.Biomes.Entries, hadesBiomeCodexEntries)
 
+	-- To prevent errors when opening the screen with the mod uninstalled, we need to set EndingRoomName to nil for modded runs
+	-- We need to revert this here for the selected run
+	-- As only a limited number of keys are included in the save file for past runs, we encode the ending room name in the KilledByName field
+	-- KilledByName == <EnemyName>#<EndingRoomName>
+	local run = button.Run
+	if run.EndingRoomName == nil and run.KilledByName ~= nil then
+		local separatorIndex = string.find(run.KilledByName, "#")
+		if separatorIndex ~= nil then
+			button.Run.EndingRoomName = string.sub(run.KilledByName, separatorIndex + 1)
+			local enemyName = string.sub(run.KilledByName, 1, separatorIndex - 1)
+			-- If the enemy name is empty, the player was not killed
+			if enemyName == "" then
+				button.Run.KilledByName = nil
+			else
+				button.Run.KilledByName = enemyName
+			end
+		end
+	end
+
 	base(screen, button)
 
 	game.CodexData.Biomes.Entries = originalEntries

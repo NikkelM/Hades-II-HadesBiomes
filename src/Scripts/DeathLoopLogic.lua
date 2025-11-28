@@ -36,9 +36,14 @@ modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 		if killer == nil or game.TableLength(killer) == 0 then
 			if triggerArgs.Victim and triggerArgs.Victim.CurrentlyPoisoned and triggerArgs.EffectName == "StyxPoison" then
 				killer = killer or {}
-				killer.Name = game.CurrentRun.ModsNikkelMHadesBiomes_StyxPoisonLastInflictedBy
+				killer.Name = game.CurrentRun.ModsNikkelMHadesBiomesStyxPoisonLastInflictedBy
 			end
 		end
+	end
+
+	-- For compatibility with the DeathArea intro voiceline and the custom encoding of KilledByName
+	if killer.Name == "BiomeTime" then
+		game.CurrentRun.ModsNikkelMHadesBiomesKilledByBiomeTimer = true
 	end
 
 	triggerArgs.AttackerTable = killer
