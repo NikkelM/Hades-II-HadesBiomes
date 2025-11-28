@@ -3604,6 +3604,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_1414", Text = "...Fall.", },
 		},
 	},
+
 	-- Returning to the Crossroads
 	ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = {
 		Queue = "Always",
@@ -3729,9 +3730,10 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_4024", Text = "{#Emph}Augh... {#Prev}hey... Artemis..." },
 		},
 		-- #endregion
-		-- Cleared Run
+		-- Cleared Modded Run
 		{
 			BreakIfPlayed = true,
+			RandomRemaining = true,
 			PreLineWait = 1.0,
 			GameStateRequirements = {
 				{
@@ -3745,8 +3747,8 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_3647", Text = "{#Emph}<Sigh> {#Prev}A night well spent.", },
 			{ Cue = "/VO/Melinoe_3648", Text = "{#Emph}<Sigh> {#Prev}A good night's rest!", },
 			{ Cue = "/VO/Melinoe_3649", Text = "{#Emph}<Sigh> {#Prev}Another eventful night." },
-			{ Cue = "/VO/Melinoe_2569", Text = "...The Fates were on my side.",                                PreLineWait = 2.0, },
-			{ Cue = "/VO/Melinoe_2570", Text = "...I did all right that time...",                              PreLineWait = 2.0, },
+			{ Cue = "/VO/Melinoe_2569", Text = "...The Fates were on my side.", },
+			{ Cue = "/VO/Melinoe_2570", Text = "...I did all right that time...", },
 			{ Cue = "/VO/Melinoe_3643", Text = "{#Emph}Mm... {#Prev}good enough.", },
 			{
 				Cue = "/VO/Melinoe_3644",
@@ -3758,7 +3760,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					},
 				},
 			},
-			{ Cue = "/VO/Melinoe_3645", Text = "Just need to keep that up.",          PreLineWait = 2.1, },
+			{ Cue = "/VO/Melinoe_3645", Text = "Just need to keep that up.", },
 			{ Cue = "/VO/Melinoe_5150", Text = "{#Emph}<Sigh> {#Prev}Properly done.", },
 			{ Cue = "/VO/Melinoe_5151", Text = "{#Emph}<Sigh> {#Prev}One more then?" },
 			{ Cue = "/VO/Melinoe_5152", Text = "{#Emph}<Sigh> {#Prev}That was good.", },
@@ -3794,8 +3796,8 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				},
 			},
 			-- Custom
+			-- If the first run was also cleared, this will play on the second cleared run, as the first table will take precedence
 			{ Cue = "/VO/MelinoeField_3575", Text = "Father! Mother... Brother...!", PlayFirst = true },
-
 		},
 		-- #region Including base game events
 		-- packaged bounty cleared
@@ -3861,8 +3863,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 		{
 			GameStateRequirements = {
 				{
-					Path = { "CurrentRun", "KilledByName", },
-					IsAny = { "BiomeTimer" },
+					PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesKilledByBiomeTimer", },
 				},
 			},
 			RandomRemaining = true,
