@@ -6,8 +6,7 @@ table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 -- Add the ending portrait function to the Hub_Main
 local endingPortraitOnLoadEvent = {
 	FunctionName = "StartDeathLoop",
-	Args =
-	{
+	Args = {
 		PresentationFunctionName = _PLUGIN.guid .. "." .. "HubPostModdedCreditsStartPresentation",
 		PresentationFunctionArgs = {
 			PortraitArgs = {

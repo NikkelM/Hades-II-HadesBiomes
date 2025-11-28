@@ -438,7 +438,7 @@ function mod.HandleReturnBoatRideIntro(eventSource, args)
 
 	game.thread(mod.HandleReturnBoatRideEndTheme)
 	RemoveInputBlock({ Name = "BoatRideIntro" })
-	mod.HandleReturnBoatRide(eventSource, { NextMap = "Return02" })
+	mod.HandleReturnBoatRide(eventSource, { NextMap = "Return06" })
 end
 
 function mod.HandleReturnBoatRideOutro(eventSource, args)
@@ -599,7 +599,8 @@ function mod.HandleReturnBoatRide(eventSource, args)
 	end
 	SetAnimation({ DestinationId = charonId, Name = "CharonEndingBoatRow_StartRowing" })
 
-	Move({ Id = boatId, DestinationId = boatMoveTargetId, Speed = 125, SuccessDistance = 30 })
+	-- Slower speed than in Hades to prevent it stopping just before the screen fade
+	Move({ Id = boatId, DestinationId = boatMoveTargetId, Speed = 122, SuccessDistance = 30 })
 
 	local notifyName = "WithinDistance" .. boatMoveTargetId
 	NotifyWithinDistance({ Id = boatId, DestinationId = boatMoveTargetId, Distance = 200, Notify = notifyName })

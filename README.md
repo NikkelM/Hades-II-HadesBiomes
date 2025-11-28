@@ -8,11 +8,13 @@ Escape the Underworld as Melinoë, battle familiar foes and bosses using her uni
 <img src="https://github.com/user-attachments/assets/87d52379-d73a-4040-afac-d4a40e5f7e89" alt="Zagreus' Journey">
 <div style="display: flex; justify-content: space-between;">
   <img src="https://github.com/user-attachments/assets/3272b242-f706-4bbe-aa14-782cb80af2e4" alt="Meet your Father" width="49.7%">
-  <img src="https://github.com/user-attachments/assets/52235073-d1ad-473c-9e37-fcb538d80f1f" alt="Battle our of Tartarus" width="49.7%">
+  <img src="https://github.com/user-attachments/assets/52235073-d1ad-473c-9e37-fcb538d80f1f" alt="Battle out of Tartarus" width="49.7%">
 </div>
 
 <br>
-After installing the mod, a Chaos Gate will appear in the Crossroads, which will allow you to relive Zagreus' journey through the Underworld as Melinoë. 
+After installing the mod, a Chaos Gate will appear in the Crossroads, which will allow you to experience Zagreus' journey through the Underworld as Melinoë.
+
+It is highly recommended to complete the true ending of Hades before playing with this mod, as not all story events are included.
 
 ## Installation
 
@@ -41,7 +43,7 @@ You can find an explanation of all options [on this wiki page](https://github.co
 
 ## Feedback & Bug Reports
 
-The mod is currently still in a beta state, so there are some missing features, and you may occasionally encounter bugs.
+Though the mod can be played through from start to finish, it is still in a beta state, so there are some missing features, and you may occasionally encounter bugs.
 
 Please directly leave bug reports as a [new issue on the project's GitHub repository](https://github.com/NikkelM/Hades-II-HadesBiomes/issues/new), or [start a discussion](https://github.com/NikkelM/Hades-II-HadesBiomes/discussions) for general feedback, suggestions and questions.
 
@@ -52,8 +54,8 @@ If you do not have a GitHub account, you can also join the [Hades II Modding Dis
 Among many smaller improvements and fixes, the following major features are planned for future releases (in no particular order):
 
 - Secret boss fight (you know the one)
-- Erebus gates
-- New incantations for progression on the new route
+- Erebus gates (When there is enough Fear in the Night)
+- New incantations for meta-progression on the new route
 - New story events and dialogue between Melinoë and other characters from Hades II, concerning the new route
 - Displaying statistics for the new route with the Record Keeper
 - Additional boons for story NPCs (Sisyphus, Eurydice, Patroclus)
@@ -62,7 +64,8 @@ Among many smaller improvements and fixes, the following major features are plan
 
 - NikkelM ([GitHub](https://github.com/NikkelM), @NikkelM on [Discord](https://discord.gg/KuMbyrN)), Mod Creator
 - iDeathHD ([GitHub](https://github.com/xiaoxiao921), @iDeathHD on [Discord](https://discord.gg/KuMbyrN)), Hell2Modding Maintainer
-- @burn on [Discord](https://discord.gg/KuMbyrN), Additional Artwork
+- @burn on [Discord](https://discord.gg/KuMbyrN), Additional Artwork & Resource Design
+- Magic_Gonads ([GitHub](https://github.com/AndreLouisIssa), @Magic_Gonads on [Discord](https://discord.gg/KuMbyrN)), ModUtil Maintainer
 - zannc ([GitHub](https://github.com/excellent-ae), @dwbl on [Discord](https://discord.gg/KuMbyrN)), Creator of [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) (automatically installed with this mod)
 - ...and the many other modding community members that have created tools, tested early versions, provided feedback and reported bugs! 
 
