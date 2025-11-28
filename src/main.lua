@@ -60,6 +60,7 @@ local function on_ready()
 			mod.DebugPrint(
 				"The mod is disabled, but has not been uninstalled yet. Uninstallation will be attempted shortly...", 2)
 		else
+			mod.DebugPrint("The mod is currently disabled. Set \"enabled\" to true in the config to enable it.", 3)
 			return
 		end
 	end
