@@ -371,10 +371,11 @@ function mod.SurfaceKillHero(source, args)
 	game.wait(args.WaitTime or 0)
 
 	-- Since we set CurrentRun.CurrentRoom to BaseRoom in KillHero
-	local cachedRoomOverrides = game.CurrentRun.CurrentRoom.RoomExitHeroOverwrites
+	local cachedRoomOverrides = game.DeepCopyTable(game.CurrentRun.CurrentRoom.RoomExitHeroOverwrites)
+
 	game.KillHero(game.CurrentRun.Hero, args)
 
-	-- Revert the overrides, as they are somehow not reversed automatically when respawning in the hub
+	-- Revert the overrides, as they are not reversed automatically when respawning in the hub
 	if cachedRoomOverrides ~= nil then
 		game.OverwriteSelf(game.CurrentRun.Hero, cachedRoomOverrides)
 	end
