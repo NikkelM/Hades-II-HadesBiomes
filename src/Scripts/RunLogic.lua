@@ -164,8 +164,8 @@ end)
 
 modutil.mod.Path.Wrap("EndRun", function(base, run)
 	if run.ModsNikkelMHadesBiomesIsModdedRun then
-		if run.ModsNikkelMHadesBiomesActualCurrentRoom ~= nil then
-			run.CurrentRoom = run.ModsNikkelMHadesBiomesActualCurrentRoom
+		if run.ModsNikkelMHadesBiomesActualCurrentRoomName ~= nil then
+			run.CurrentRoom.Name = run.ModsNikkelMHadesBiomesActualCurrentRoomName
 		end
 		-- To prevent an error with opening the Run History screen after uninstalling the mod, we need to encode the EndingRoomName into the VictoryMessage field
 		-- If it is a modded room name, the game otherwise crashes trying to find it
