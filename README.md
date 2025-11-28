@@ -7,8 +7,8 @@ Escape the Underworld as Melinoë, battle familiar foes and bosses using her uni
 
 <img src="https://github.com/user-attachments/assets/19826a7b-f205-497e-92e8-1e77b4c2161f" alt="Zagreus' Journey">
 <div style="display: flex; justify-content: space-between;">
-  <img src="https://github.com/user-attachments/assets/3272b242-f706-4bbe-aa14-782cb80af2e4" alt="Meet your Father" width="49.77%">
-  <img src="https://github.com/user-attachments/assets/52235073-d1ad-473c-9e37-fcb538d80f1f" alt="Battle our of Tartarus" width="49.77%">
+  <img src="https://github.com/user-attachments/assets/3272b242-f706-4bbe-aa14-782cb80af2e4" alt="Meet your Father" width="49.7%">
+  <img src="https://github.com/user-attachments/assets/52235073-d1ad-473c-9e37-fcb538d80f1f" alt="Battle our of Tartarus" width="49.7%">
 </div>
 
 <br>
@@ -64,25 +64,25 @@ Among many smaller improvements and fixes, the following major features are plan
 <img src="https://github.com/user-attachments/assets/72407431-8737-41d6-b417-d5890494a501" alt="Withstand Asphodel's Heat">
 
 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-  <img src="https://github.com/user-attachments/assets/3e999e36-4031-43e8-8f7b-87f4763429e1" alt="Meet your brother's old friends" width="49.77%">
-  <img src="https://github.com/user-attachments/assets/190eb2e5-c148-4c4c-9735-c96254016a92" alt="Unleash your abilities on new enemies" width="49.77%">
+  <img src="https://github.com/user-attachments/assets/3e999e36-4031-43e8-8f7b-87f4763429e1" alt="Meet your brother's old friends" width="49.7%">
+  <img src="https://github.com/user-attachments/assets/190eb2e5-c148-4c4c-9735-c96254016a92" alt="Unleash your abilities on new enemies" width="49.7%">
 </div>
 
 <img src="https://github.com/user-attachments/assets/b49ab8cb-848a-4fde-bb9b-1dcaff037613" alt="Become Elysium's true Champion">
 
 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-  <img src="https://github.com/user-attachments/assets/e5e33c4d-af6d-4086-ad54-897d07dbf36e" alt="Be deadlier than Death himself" width="49.77%">
-  <img src="https://github.com/user-attachments/assets/f94e087a-450a-4f62-bd11-af6b998477b9" alt="Send Exalted Shades back to where they belong" width="49.77%">
+  <img src="https://github.com/user-attachments/assets/e5e33c4d-af6d-4086-ad54-897d07dbf36e" alt="Be deadlier than Death himself" width="49.7%">
+  <img src="https://github.com/user-attachments/assets/f94e087a-450a-4f62-bd11-af6b998477b9" alt="Send Exalted Shades back to where they belong" width="49.7%">
 </div>
 
 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-  <img src="https://github.com/user-attachments/assets/006246aa-22f4-4412-8b66-d480541413c7" alt="Choose your Path" width="49.77%">
-  <img src="https://github.com/user-attachments/assets/ef5f9804-40ea-462e-8b02-a42a0d896769" alt="Don't get poisoned" width="49.77%">
+  <img src="https://github.com/user-attachments/assets/006246aa-22f4-4412-8b66-d480541413c7" alt="Choose your Path" width="49.7%">
+  <img src="https://github.com/user-attachments/assets/ef5f9804-40ea-462e-8b02-a42a0d896769" alt="Don't get poisoned" width="49.7%">
 </div>
 
 <img src="https://github.com/user-attachments/assets/33e7c87d-e4c8-452f-87d8-5d809e022570" alt="Defy Destiny">
 
 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-  <img src="https://github.com/user-attachments/assets/21dc3117-a2f6-4910-8119-20082537f312" alt="Descend into Tartarus" width="49.77%">
-  <img src="https://github.com/user-attachments/assets/ef057f60-8723-4fb0-bcb0-ae754297d501" alt="Escape the Underworld" width="49.77%">
+  <img src="https://github.com/user-attachments/assets/21dc3117-a2f6-4910-8119-20082537f312" alt="Descend into Tartarus" width="49.7%">
+  <img src="https://github.com/user-attachments/assets/ef057f60-8723-4fb0-bcb0-ae754297d501" alt="Escape the Underworld" width="49.7%">
 </div>
