@@ -41,11 +41,6 @@ modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 		end
 	end
 
-	-- For compatibility with the DeathArea intro voiceline and the custom encoding of KilledByName
-	if killer.Name == "BiomeTimer" then
-		game.CurrentRun.ModsNikkelMHadesBiomesKilledByBiomeTimer = true
-	end
-
 	triggerArgs.AttackerTable = killer
 
 	return base(victim, triggerArgs)

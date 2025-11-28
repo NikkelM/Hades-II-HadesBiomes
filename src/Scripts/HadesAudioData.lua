@@ -3863,7 +3863,8 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 		{
 			GameStateRequirements = {
 				{
-					PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesKilledByBiomeTimer", },
+					Path = { "CurrentRun", "KilledByName", },
+					IsAny = { "BiomeTimer" },
 				},
 			},
 			RandomRemaining = true,
