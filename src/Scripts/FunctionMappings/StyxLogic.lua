@@ -78,7 +78,7 @@ end
 -- Saves the name of the last attacker that inflicted Styx poison, for the run history
 function mod.ModsNikkelMHadesBiomesStyxPoisonWeaponHit(victim, victimId, triggerArgs)
 	if triggerArgs.AttackerName then
-		game.CurrentRun.ModsNikkelMHadesBiomes_StyxPoisonLastInflictedBy = triggerArgs.AttackerName
+		game.CurrentRun.ModsNikkelMHadesBiomesStyxPoisonLastInflictedBy = triggerArgs.AttackerName
 	end
 end
 

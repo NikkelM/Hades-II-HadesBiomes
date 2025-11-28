@@ -248,6 +248,9 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	})
 	StopAnimation({ DestinationIds = ammoIds, Name = "AmmoReturnTimer" })
 
+	-- Do it again, just in case there was some desync
+	mod.DestroyHadesFightObstacles()
+	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" } })
 	game.thread(game.PlayVoiceLines, boss.PhaseEndedVoiceLines, nil, boss)
 
 	game.SetMusicSection(1)
@@ -351,6 +354,7 @@ function mod.HadesKillPresentation(unit, args)
 	-- StopSuper()
 	mod.ClearStoredAmmoHero()
 	mod.DestroyHadesFightObstacles()
+	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { unit.ObjectId }, BlockDeathWeapons = true })
 	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" } })
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignetteHold" })
@@ -369,6 +373,9 @@ function mod.HadesKillPresentation(unit, args)
 	StopAnimation({ DestinationIds = ammoIds, Name = "AmmoReturnTimer" })
 	game.SetUnitInvulnerable(unit)
 
+	-- Do it again, just in case there was some desync
+	mod.DestroyHadesFightObstacles()
+	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" } })
 	game.thread(game.LastKillPresentation, unit)
 	game.SetPlayerInvulnerable("HadesKillPresentation")
 	AddInputBlock({ Name = "HadesKillPresentation" })
