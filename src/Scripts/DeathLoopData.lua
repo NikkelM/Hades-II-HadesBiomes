@@ -14,8 +14,8 @@ local endingPortraitOnLoadEvent = {
 				SecretMusic = "/Music/MusicExploration1_MC",
 				PortraitAnimationName = "PortraitFamily",
 				FadeInTime = 1.5,
-				FadeOutWait = 50.5,
-				PanDuration = 45,
+				FadeOutWait = 51,
+				PanDuration = 48,
 				PortraitGlobalVoiceLines = "StorytellerEndingVoiceLines",
 			},
 			EndVoiceLines = {
