@@ -427,6 +427,7 @@ local function on_ready_late()
 	if config.enabled == false then return end
 
 	import "Scripts/CombatLogic_Late.lua"
+	import "Scripts/DeathLoopLogic_Late.lua"
 	import "Scripts/GhostLogic_Late.lua"
 	import "Scripts/HarvestLogic_Late.lua"
 	import "Scripts/HarvestPresentation_Late.lua"
