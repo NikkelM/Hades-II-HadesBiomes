@@ -438,7 +438,7 @@ function mod.HandleReturnBoatRideIntro(eventSource, args)
 
 	game.thread(mod.HandleReturnBoatRideEndTheme)
 	RemoveInputBlock({ Name = "BoatRideIntro" })
-	mod.HandleReturnBoatRide(eventSource, { NextMap = "Return06" })
+	mod.HandleReturnBoatRide(eventSource, { NextMap = "Return02" })
 end
 
 function mod.HandleReturnBoatRideOutro(eventSource, args)
@@ -600,10 +600,10 @@ function mod.HandleReturnBoatRide(eventSource, args)
 	SetAnimation({ DestinationId = charonId, Name = "CharonEndingBoatRow_StartRowing" })
 
 	-- Slower speed than in Hades to prevent it stopping just before the screen fade
-	Move({ Id = boatId, DestinationId = boatMoveTargetId, Speed = 122, SuccessDistance = 30 })
+	Move({ Id = boatId, DestinationId = boatMoveTargetId, Speed = 125, SuccessDistance = 30 })
 
 	local notifyName = "WithinDistance" .. boatMoveTargetId
-	NotifyWithinDistance({ Id = boatId, DestinationId = boatMoveTargetId, Distance = 200, Notify = notifyName })
+	NotifyWithinDistance({ Id = boatId, DestinationId = boatMoveTargetId, Distance = 210, Notify = notifyName })
 	game.waitUntil(notifyName)
 
 	if args.NextMap ~= nil then
@@ -701,6 +701,7 @@ function mod.BoatToDeathAreaTransition(eventSource, args)
 
 	-- Hacky: Add Ending01 to the TextLinesRecord, as we skip it, but a lot of other things check for it
 	game.GameState.TextLinesRecord["Ending01"] = true
+	game.CurrentRun.TextLinesRecord["Ending01"] = true
 	-- Block Dora from spawning this run to prevent her interrupting the portrait scene
 	game.CurrentRun.BlockDoraSpawn = true
 
