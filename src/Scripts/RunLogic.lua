@@ -170,7 +170,10 @@ modutil.mod.Path.Wrap("EndRun", function(base, run)
 		-- To prevent an error with opening the Run History screen after uninstalling the mod, we need to encode the ending room name into the KilledByName field
 		-- If it is a modded room name, the game otherwise crashes trying to find it
 		-- This encoding is reversed when opening the Run History screen with the mod installed
-		game.CurrentRun.KilledByName = (game.CurrentRun.KilledByName or "") .. "#" .. (run.CurrentRoom.Name or "")
+		-- Only encode it if we've not already encoded it before for this run for some reason
+		if not string.find(run.KilledByName or "", "#") then
+			game.CurrentRun.KilledByName = (game.CurrentRun.KilledByName or "") .. "#" .. (run.CurrentRoom.Name or "")
+		end
 		-- The actual room name needs to be set to nil to ensure the base function assigns nil to EndingRoomName
 		run.CurrentRoom.Name = nil
 	end
