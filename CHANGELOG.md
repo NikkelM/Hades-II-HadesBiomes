@@ -1,8 +1,13 @@
 # Changelog
 
-## v0.1.0
+## v0.1.1
 
 <!--Releasenotes start-->
+- Removed some unused Devotion weapons and projectiles for compatibility with Droppable Gods.
+<!--Releasenotes end-->
+
+## v0.1.0
+
 - Initial release!
 - Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past.
 - Adds all four original biomes & the Surface from Hades to Hades II.
@@ -13,4 +18,3 @@
 - Read about them and other characters, enemies and locations in a new Codex chapter.
 - Collect over 30 new resources during your runs in the original Underworld.
 - ...and much more!
-<!--Releasenotes end-->
