@@ -116,6 +116,13 @@ function mod.HasSeenRoomInRun(run, roomName)
 	if run.RoomCountCache ~= nil and run.RoomCountCache[roomName] ~= nil and run.RoomCountCache[roomName] > 0 then
 		return true
 	end
+	-- For the encoded EndingRoomName for uninstall compatibility
+	if run.EndingRoomName == nil and run.VictoryMessage ~= nil then
+		local separatorIndex = string.find(run.VictoryMessage, "#")
+		if separatorIndex ~= nil and string.sub(run.VictoryMessage, separatorIndex + 1) == roomName then
+			return true
+		end
+	end
 	return false
 end
 
@@ -570,7 +577,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredWeapon ~= nil and not game.CurrentRun.Hero.Weapons[requirements.RequiredWeapon] then --
 		return false
 	end
-	if requirements.RequiredAnyWeapon ~= nil then --
+	if requirements.RequiredAnyWeapon ~= nil then
 		local anyTrue = false
 		for k, name in pairs(requirements.RequiredAnyWeapon) do
 			if game.CurrentRun.Hero.Weapons[name] then
@@ -583,14 +590,14 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredFalseWeapon ~= nil and game.CurrentRun.Hero.Weapons[requirements.RequiredFalseWeapon] then --
+	if requirements.RequiredFalseWeapon ~= nil and game.CurrentRun.Hero.Weapons[requirements.RequiredFalseWeapon] then
 		return false
 	end
 	if requirements.RequiredFalseWeaponLastRun ~= nil and prevRun ~= nil and prevRun.Hero.Weapons[requirements.RequiredFalseWeaponLastRun] then -- not used anywhere
 		return false
 	end
 
-	if requirements.RequiredMinWeaponKills ~= nil then --
+	if requirements.RequiredMinWeaponKills ~= nil then
 		for requiredWeapon, requiredWeaponKillCount in pairs(requirements.RequiredMinWeaponKills) do
 			if game.GameState.WeaponKills[requiredWeapon] == nil or game.GameState.WeaponKills[requiredWeapon] < requiredWeaponKillCount then
 				return false
@@ -598,22 +605,36 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.ConsecutiveDeathsInRoom ~= nil then --
+	-- As we encode the EndingRoomName/CurrentRoom.Name for the last room into the VictoryMessage for modded runs, we need to reverse this here
+	if requirements.ConsecutiveDeathsInRoom ~= nil then
 		local consecutiveDeathsInRoom = 0
-		if mod.HasSeenRoomEarlierInRun(game.CurrentRun, requirements.ConsecutiveDeathsInRoom.Name) then
-			if not game.CurrentRun.Cleared and game.CurrentRun.EndingRoomName == requirements.ConsecutiveDeathsInRoom.Name then
-				-- Saw the room this run and died in it, streak continues
-				consecutiveDeathsInRoom = consecutiveDeathsInRoom + 1
-			else
-				-- Saw the room this run and didn't die in it, streak is 0
-				return false
+		-- We only count modded runs, and skip all others to retain integrity of the streak
+		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+			if mod.HasSeenRoomEarlierInRun(game.CurrentRun, requirements.ConsecutiveDeathsInRoom.Name) then
+				if not game.CurrentRun.Cleared and game.CurrentRun.EndingRoomName == requirements.ConsecutiveDeathsInRoom.Name or game.CurrentRun.ModsNikkelMHadesBiomesActualCurrentRoomName == requirements.ConsecutiveDeathsInRoom.Name then
+					-- Saw the room this run and died in it, streak continues
+					consecutiveDeathsInRoom = consecutiveDeathsInRoom + 1
+				else
+					-- Saw the room this run and didn't die in it, streak is 0
+					return false
+				end
 			end
 		end
 		for i = #game.GameState.RunHistory, 1, -1 do
 			local run = game.GameState.RunHistory[i]
+			-- We only count modded runs, and skip all others to retain integrity of the streak
 			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				if mod.HasSeenRoomInRun(run, requirements.ConsecutiveDeathsInRoom.Name) then
-					if not run.Cleared and run.EndingRoomName == requirements.ConsecutiveDeathsInRoom.Name then
+					-- For the encoded EndingRoomName for uninstall compatibility
+					if not run.Cleared and run.EndingRoomName == nil and run.VictoryMessage ~= nil then
+						local separatorIndex = string.find(run.VictoryMessage, "#")
+						if separatorIndex ~= nil and string.sub(run.VictoryMessage, separatorIndex + 1) == requirements.ConsecutiveDeathsInRoom.Name then
+							consecutiveDeathsInRoom = consecutiveDeathsInRoom + 1
+						else
+							-- Saw the room this run and didn't die in it, streak is broken
+							break
+						end
+					elseif not run.Cleared and run.EndingRoomName == requirements.ConsecutiveDeathsInRoom.Name then
 						-- Saw the room this run and died in it, streak continues
 						consecutiveDeathsInRoom = consecutiveDeathsInRoom + 1
 					else
@@ -629,22 +650,37 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
+	-- As we encode the EndingRoomName/CurrentRoom.Name for the last room into the VictoryMessage for modded runs, we need to reverse this here
 	if requirements.ConsecutiveClearsOfRoom ~= nil then
 		local consecutiveClearsOfRoom = 0
-		if mod.HasSeenRoomEarlierInRun(game.CurrentRun, requirements.ConsecutiveClearsOfRoom.Name) then
-			if game.CurrentRun.Cleared or game.CurrentRun.EndingRoomName ~= requirements.ConsecutiveClearsOfRoom.Name then
-				-- Saw the room this run and didn't die in it, streak continues
-				consecutiveClearsOfRoom = consecutiveClearsOfRoom + 1
-			else
-				-- Saw the room this run and died in it, streak is 0
-				return false
+		-- We only count modded runs, and skip all others to retain integrity of the streak
+		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+			if mod.HasSeenRoomEarlierInRun(game.CurrentRun, requirements.ConsecutiveClearsOfRoom.Name) then
+				if game.CurrentRun.Cleared or (game.CurrentRun.EndingRoomName ~= requirements.ConsecutiveClearsOfRoom.Name and game.CurrentRun.ModsNikkelMHadesBiomesActualCurrentRoomName ~= requirements.ConsecutiveClearsOfRoom.Name) then
+					-- Saw the room this run and didn't die in it, streak continues
+					consecutiveClearsOfRoom = consecutiveClearsOfRoom + 1
+				else
+					-- Saw the room this run and died in it, streak is 0
+					return false
+				end
 			end
 		end
 		for i = #game.GameState.RunHistory, 1, -1 do
 			local run = game.GameState.RunHistory[i]
+			-- We only count modded runs, and skip all others to retain integrity of the streak
 			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
 				if mod.HasSeenRoomInRun(run, requirements.ConsecutiveClearsOfRoom.Name) then
-					if run.Cleared or run.EndingRoomName ~= requirements.ConsecutiveClearsOfRoom.Name then
+					-- For the encoded EndingRoomName for uninstall compatibility
+					if not run.Cleared and run.EndingRoomName == nil and run.VictoryMessage ~= nil then
+						local separatorIndex = string.find(run.VictoryMessage, "#")
+						if separatorIndex ~= nil and string.sub(run.VictoryMessage, separatorIndex + 1) ~= requirements.ConsecutiveClearsOfRoom.Name then
+							-- Saw the room this run and didn't die in it, streak continues
+							consecutiveClearsOfRoom = consecutiveClearsOfRoom + 1
+						else
+							-- Saw the room this run and died in it, streak is broken
+							break
+						end
+					elseif run.Cleared or run.EndingRoomName ~= requirements.ConsecutiveClearsOfRoom.Name then
 						-- Saw the room this run and didn't die in it, streak continues
 						consecutiveClearsOfRoom = consecutiveClearsOfRoom + 1
 					else
@@ -659,13 +695,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredFalseSeenRoomThisRun ~= nil then --
+	if requirements.RequiredFalseSeenRoomThisRun ~= nil then
 		if mod.HasSeenRoomInRun(game.CurrentRun, requirements.RequiredFalseSeenRoomThisRun) then
 			return false
 		end
 	end
 
-	if requirements.RequiredFalseSeenRoomsThisRun ~= nil then --
+	if requirements.RequiredFalseSeenRoomsThisRun ~= nil then
 		for k, roomName in pairs(requirements.RequiredFalseSeenRoomsThisRun) do
 			if mod.HasSeenRoomInRun(game.CurrentRun, roomName) then
 				return false
@@ -673,14 +709,14 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredMinTimesSeenRoom ~= nil then --
+	if requirements.RequiredMinTimesSeenRoom ~= nil then
 		for requiredRoom, requiredTimesSeen in pairs(requirements.RequiredMinTimesSeenRoom) do
 			if game.GameState.RoomCountCache[requiredRoom] == nil or game.GameState.RoomCountCache[requiredRoom] < requiredTimesSeen then
 				return false
 			end
 		end
 	end
-	if requirements.RequiredMaxTimesSeenRoom ~= nil then --
+	if requirements.RequiredMaxTimesSeenRoom ~= nil then
 		for requiredRoom, requiredTimesSeen in pairs(requirements.RequiredMaxTimesSeenRoom) do
 			if game.GameState.RoomCountCache[requiredRoom] == nil or game.GameState.RoomCountCache[requiredRoom] > requiredTimesSeen then
 				return false
