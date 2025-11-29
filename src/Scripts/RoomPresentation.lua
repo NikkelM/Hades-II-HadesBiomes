@@ -44,6 +44,24 @@ modutil.mod.Path.Wrap("FullScreenFadeOutAnimation", function(base, animationName
 	return base(animationName, colorGradeName)
 end)
 
+modutil.mod.Path.Context.Wrap("DeathPresentation", function(currentRun, killer, deathArgs)
+	-- Can't move this to Static as we need the reference to killer
+	modutil.mod.Path.Wrap("PlayVoiceLines", function(base, voiceLines, neverQueue, source, args)
+		if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+			if voiceLines == killer.CauseOfDeathVoiceLines or voiceLines == currentRun.CurrentRoom.Encounter.CauseOfDeathVoiceLines or voiceLines == currentRun.CurrentRoom.CauseOfDeathVoiceLines then
+				-- Play these voicelines instead of GlobalVoiceLines.DeathReturnVoiceLines later
+				currentRun.ModsNikkelMHadesBiomesDeferredCauseOfDeathVoiceLines = voiceLines
+				return
+			elseif voiceLines == game.GlobalVoiceLines.DeathReturnVoiceLines and currentRun.ModsNikkelMHadesBiomesDeferredCauseOfDeathVoiceLines ~= nil then
+				voiceLines = currentRun.ModsNikkelMHadesBiomesDeferredCauseOfDeathVoiceLines
+				currentRun.ModsNikkelMHadesBiomesDeferredCauseOfDeathVoiceLines = nil
+			end
+		end
+
+		return base(voiceLines, neverQueue, source, args)
+	end)
+end)
+
 modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		-- Destroy any IDs that we marked as such. E.g. Alecto rage meter or Asphodel door reward front animation
