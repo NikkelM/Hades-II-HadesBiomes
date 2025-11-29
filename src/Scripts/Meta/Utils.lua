@@ -448,7 +448,7 @@ function mod.TryLoadCachedSjsonFile(fileName)
 		return mod.DecodeSjsonFile(path)
 	else
 		error(fileName ..
-			" not found in the cache! Please re-install the mod by setting both \"uninstall\" and \"firstTimeSetup\" in the config to \"true\".")
+			" not found in the cache! Please reinstall the mod by removing it from r2modman and installing it again afterwards.")
 	end
 end
 
