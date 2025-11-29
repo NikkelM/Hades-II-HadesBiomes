@@ -67,6 +67,7 @@ Among many smaller improvements and fixes, the following major features are plan
 - @burn on [Discord](https://discord.gg/KuMbyrN), Additional Artwork & Resource Design
 - Magic_Gonads ([GitHub](https://github.com/AndreLouisIssa), @Magic_Gonads on [Discord](https://discord.gg/KuMbyrN)), ModUtil Maintainer
 - zannc ([GitHub](https://github.com/excellent-ae), @dwbl on [Discord](https://discord.gg/KuMbyrN)), Creator of [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) (automatically installed with this mod)
+- @Aunuch on [Discord](https://discord.gg/KuMbyrN), Collaborator on the mod's Key Art
 - ...and the many other modding community members that have created tools, tested early versions, provided feedback and reported bugs! 
 
 ## Image Gallery
