@@ -92,6 +92,14 @@ local newData = {
 	-- 	DisplayName = "burn",
 	-- },
 	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_Magic",
+	-- 	DisplayName = "modutil",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_Magic",
+	-- 	DisplayName = "Magic_Gonads",
+	-- },
+	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Info_Community",
 	-- 	DisplayName =
 	-- 	"Special thanks to all members of the Hades modding community \n that helped with testing and provided feedback!",

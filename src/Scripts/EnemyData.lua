@@ -130,6 +130,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		-- Dialogues playing before boss fights or when meeting NPCs
 		local bossPresentationProperties = {
 			"BossPresentationSuperPriorityIntroTextLineSets",
+			"BossPresentationHighPriorityIntroTextLineSets",
 			"BossPresentationPriorityIntroTextLineSets",
 			"BossPresentationIntroTextLineSets",
 			"BossPresentationTextLineSets",
@@ -1756,6 +1757,52 @@ local enemyModifications = {
 		},
 		ImmuneToPolymorph = true,
 		RunHistoryKilledByName = "NPC_Hades_01",
+		-- Moving EM voiceline to a custom lower priority to prevent it playing instead of a story event
+		BossPresentationSuperPriorityIntroTextLineSets = {
+			LordHadesExtremeMeasures01 = mod.NilValue,
+		},
+		BossPresentationHighPriorityIntroTextLineSets = {
+			LordHadesExtremeMeasures01 = {
+				PlayOnce = true,
+				PreEventWait = 1.0,
+				RequiredMinActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 4 },
+				EndVoiceLines = {
+					UsePlayerSource = true,
+					PreLineWait = 1.25,
+					-- Let's go!
+					{ Cue = "/VO/ZagreusField_4330" },
+				},
+				{
+					Cue = "/VO/HadesField_0611",
+					PreLineWait = 0.35,
+					Text =
+					"I was reviewing the terms of the Pact of Punishment to which you are bound. Even when my servants resort to extreme measures, they were still unable to surpass you, then. So now, it is my turn."
+				},
+				{
+					Cue = "/VO/ZagreusField_4329",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Caught you unprepared, did I? After Theseus and his Macedonian, I half-expected to see you thundering around on some golden chariot of your own, drawn by sable steeds, that sort of thing. But it's just you."
+				},
+				{
+					Cue = "/VO/HadesField_0612",
+					PostLineAnim = "HadesBattleIntro",
+					Portrait = "Portrait_Hades_HelmCape_01",
+					AngleTowardTargetId = 40000,
+					PreLineFunctionName = "StartFinalBossRoomIntroMusic",
+					PostLineFunctionName = "StartFinalBossRoomMusic",
+					PreContentSound = "/Leftovers/Menu Sounds/TextReveal3",
+					PreLineWait = 0.35,
+					Text =
+					"It is just me, indeed. However... that should be more than necessary, here. No holding back this time, Zagreus. Are you ready?"
+				},
+			},
+		},
 	},
 	HadesAmmo = {
 		MaxHealth = 350,

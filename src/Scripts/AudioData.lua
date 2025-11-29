@@ -200,8 +200,8 @@ game.GlobalVoiceLines.HadesWrathAttackVoiceLines = game.GlobalVoiceLines.HadesWr
 		mod.GlobalVoiceLines.HadesWrathAttackVoiceLines
 game.GlobalVoiceLines.HadesBeamAttackVoiceLines = game.GlobalVoiceLines.HadesBeamAttackVoiceLines or
 		mod.GlobalVoiceLines.HadesBeamAttackVoiceLines
-game.GlobalVoiceLines.FatherSonArgumentVoiceLines = game.GlobalVoiceLines.FatherSonArgumentVoiceLines or
-		mod.GlobalVoiceLines.FatherSonArgumentVoiceLines
+-- game.GlobalVoiceLines.FatherSonArgumentVoiceLines = game.GlobalVoiceLines.FatherSonArgumentVoiceLines or
+-- 		mod.GlobalVoiceLines.FatherSonArgumentVoiceLines
 game.GlobalVoiceLines.HadesSighVoiceLines = game.GlobalVoiceLines.HadesSighVoiceLines or
 		mod.GlobalVoiceLines.HadesSighVoiceLines
 

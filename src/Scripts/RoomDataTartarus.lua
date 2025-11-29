@@ -289,13 +289,29 @@ local roomReplacements = {
 				},
 				{ Cue = "/VO/MelinoeField_4814", Text = "In the name of Hades." },
 				{ Cue = "/VO/Melinoe_0115",      Text = "For my family." },
-				{ Cue = "/VO/MelinoeField_4348", Text = "Just like before.", },
+				{
+					Cue = "/VO/MelinoeField_4348",
+					Text = "Just like before.",
+					GameStateRequirements = {
+						{
+							PathTrue = { "PrevRun", "Cleared" }
+						},
+					},
+				},
 				{ Cue = "/VO/MelinoeField_4349", Text = "Ensuring victory.", },
 				{ Cue = "/VO/Melinoe_1666",      Text = "Strength; knowledge; patience." },
 				{ Cue = "/VO/Melinoe_0381",      Text = "This is my path.", },
 				{ Cue = "/VO/Melinoe_0120",      Text = "No pressure." },
 				{ Cue = "/VO/Melinoe_0382",      Text = "No holding back." },
-				{ Cue = "/VO/Melinoe_0383",      Text = "I will not fail." },
+				{
+					Cue = "/VO/Melinoe_0383",
+					Text = "I will not fail.",
+					GameStateRequirements = {
+						{
+							PathFalse = { "PrevRun", "Cleared" }
+						},
+					},
+				},
 				{ Cue = "/VO/Melinoe_0118",      Text = "All right." },
 				{ Cue = "/VO/MelinoeField_0784", Text = "Let's see how this goes..." },
 				{ Cue = "/VO/Melinoe_1432",      Text = "No traitor to the House shall go unpunished.", },

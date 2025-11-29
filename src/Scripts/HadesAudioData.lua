@@ -478,1152 +478,1152 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		},
 		[2] = GlobalVoiceLines.HadesWrathAttackVoiceLines,
 	},
-	FatherSonArgumentVoiceLines = {
-		{
-			RequiredTextLines = { "Ending01" },
-			MaxRunsSinceAnyTextLines = { TextLines = { "HadesGift05" }, Count = 60 },
-			RequiredFalseBossPhase = 3,
-			{
-				RandomRemaining = true,
-				PreLineWait = 0.65,
-				SuccessiveChanceToPlay = 0.25,
-				TriggerCooldowns = { "HadesAnyQuipSpeech", "HadesSummonSpawnsSpeech", "HadesGoneInvisSpeech" },
-				Cooldowns =
-				{
-					{ Name = "FatherSonArgumentSpeech", Time = 320 },
-					{ Name = "HadesStageSwitchSpeech",  Time = 90 },
-					{ Name = "ZagStageSwitchSpeech",    Time = 90 },
-				},
-
-				-- Path A
-				-- You think I shall go easy on you, boy?
-				{ Cue = "/VO/HadesField_0506" },
-
-				-- Path B
-				-- You think your mother shall make me go soft, do you?
-				{ Cue = "/VO/HadesField_0507" },
-
-				-- Path C
-				-- Why don't you clean your chambers so ferociously?
-				{ Cue = "/VO/HadesField_0508" },
-
-				-- Path D
-				-- You'd not have made it here without Olympus, boy!
-				{ Cue = "/VO/HadesField_0509" },
-
-				-- Path E
-				-- Which of our relatives aided you this time, boy?
-				{ Cue = "/VO/HadesField_0510" },
-
-				-- Path F
-				-- You mother already begins to coddle you!
-				{ Cue = "/VO/HadesField_0511" },
-
-				-- Path G
-				-- I trust you're having a most pleasant evening, boy?
-				{ Cue = "/VO/HadesField_0512" },
-
-				-- Path H
-				-- Zagreus! Is this the best that you can do?
-				{ Cue = "/VO/HadesField_0513" },
-
-				-- Path I
-				-- Zagreus! I trust you had a pleasant journey here?
-				{ Cue = "/VO/HadesField_0515" },
-
-				-- Path J
-				-- Zagreus! How fared your plundering of my domain?
-				{ Cue = "/VO/HadesField_0516" },
-
-				-- Path K
-				-- To think you're so receptive to this form of discipline!
-				{ Cue = "/VO/HadesField_0517" },
-			},
-			-- Path A
-			{
-				PreLineWait = 0.4,
-				UsePlayerSource = true,
-				RandomRemaining = true,
-				-- You think I shall go easy on you, boy?
-				RequiredLastLinePlayed = { "/VO/HadesField_0506" },
-
-				-- Would be odd of you to start right now!
-				{ Cue = "/VO/ZagreusField_4548" },
-				-- What, you mean like last time?
-				{ Cue = "/VO/ZagreusField_4549" },
-				-- Think we both know the answer to that one!
-				{ Cue = "/VO/ZagreusField_4550" },
-				-- Not really, though, why do you ask?
-				{ Cue = "/VO/ZagreusField_4551" },
-				-- I guess we'll find out soon, won't we?
-				{ Cue = "/VO/ZagreusField_4552" },
-			},
-			{
-				PreLineWait = 0.4,
-				RandomRemaining = true,
-				SuccessiveChanceToPlay = 0.85,
-
-				-- You know, I think you're right!
-				{ Cue = "/VO/HadesField_0518", RequiredLastLinePlayed = { "/VO/ZagreusField_4548" }, },
-				-- You're easily distracted, you know that?
-				{ Cue = "/VO/HadesField_0519", RequiredLastLinePlayed = { "/VO/ZagreusField_4549" }, },
-				-- That we most certainly do.
-				{ Cue = "/VO/HadesField_0520", RequiredLastLinePlayed = { "/VO/ZagreusField_4550" }, },
-				-- A useless thought is all!
-				{ Cue = "/VO/HadesField_0521", RequiredLastLinePlayed = { "/VO/ZagreusField_4551" }, },
-				-- I suppose we shall!
-				{ Cue = "/VO/HadesField_0522", RequiredLastLinePlayed = { "/VO/ZagreusField_4552" }, },
-			},
-			{
-				PreLineWait = 0.4,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				UsePlayerSource = true,
-				SuccessiveChanceToPlay = 0.55,
-
-				-- Why, thanks!
-				{ Cue = "/VO/ZagreusField_4598", RequiredLastLinePlayed = { "/VO/HadesField_0518" }, },
-				-- Good chat!
-				{ Cue = "/VO/ZagreusField_4599", RequiredLastLinePlayed = { "/VO/HadesField_0518" }, },
-
-				-- Look at that lovely sky!
-				{ Cue = "/VO/ZagreusField_4600", RequiredLastLinePlayed = { "/VO/HadesField_0519" }, },
-				-- Am not!
-				{ Cue = "/VO/ZagreusField_4601", RequiredLastLinePlayed = { "/VO/HadesField_0519" }, },
-
-				-- Great!
-				{ Cue = "/VO/ZagreusField_4602", RequiredLastLinePlayed = { "/VO/HadesField_0520" }, },
-				-- All right, then!
-				{ Cue = "/VO/ZagreusField_4603", RequiredLastLinePlayed = { "/VO/HadesField_0520" }, },
-
-				-- Save it, then!
-				{ Cue = "/VO/ZagreusField_4604", RequiredLastLinePlayed = { "/VO/HadesField_0521" }, },
-				-- Well thanks for sharing, anyway!
-				{ Cue = "/VO/ZagreusField_4605", RequiredLastLinePlayed = { "/VO/HadesField_0521" }, },
-
-				-- Let's do it then!
-				{ Cue = "/VO/ZagreusField_4606", RequiredLastLinePlayed = { "/VO/HadesField_0522" }, },
-			},
-			-- Path B
-			{
-				PreLineWait = 0.4,
-				UsePlayerSource = true,
-				RandomRemaining = true,
-				-- You think your mother shall make me go soft, do you?
-				RequiredLastLinePlayed = { "/VO/HadesField_0507" },
-
-				-- I'm sure she'll wear you down eventually!
-				{ Cue = "/VO/ZagreusField_4553" },
-				-- Who knows? Mother's full of surprises!
-				{ Cue = "/VO/ZagreusField_4554" },
-				-- Perish the thought of you being less difficult, Father!
-				{ Cue = "/VO/ZagreusField_4555" },
-				-- Is that your deepest fear of late, Father?
-				{ Cue = "/VO/ZagreusField_4556" },
-				-- I think you'll get there, yes!
-				{ Cue = "/VO/ZagreusField_4557" },
-			},
-			{
-				PreLineWait = 0.4,
-				RandomRemaining = true,
-				SuccessiveChanceToPlay = 0.85,
-
-				-- You treat her with respect!
-				{ Cue = "/VO/HadesField_0523", RequiredLastLinePlayed = { "/VO/ZagreusField_4553", "/VO/ZagreusField_4554" }, },
-				-- Do not treat her as you allow yourself with me!
-				{ Cue = "/VO/HadesField_0524", RequiredLastLinePlayed = { "/VO/ZagreusField_4553", "/VO/ZagreusField_4554" }, },
-				-- Ah, how could I forget?
-				{ Cue = "/VO/HadesField_0525", RequiredLastLinePlayed = { "/VO/ZagreusField_4554" }, },
-			},
-			{
-				PreLineWait = 0.4,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				UsePlayerSource = true,
-				SuccessiveChanceToPlay = 0.75,
-
-				-- Same goes for you!
-				{ Cue = "/VO/ZagreusField_4607", RequiredLastLinePlayed = { "/VO/HadesField_0523", "/VO/HadesField_0524" }, },
-				-- Worry about yourself!
-				{ Cue = "/VO/ZagreusField_4608", RequiredLastLinePlayed = { "/VO/HadesField_0523", "/VO/HadesField_0524" }, },
-				-- Likewise to you!
-				{ Cue = "/VO/ZagreusField_4609", RequiredLastLinePlayed = { "/VO/HadesField_0523", "/VO/HadesField_0524" }, },
-				-- No plans for that!
-				{ Cue = "/VO/ZagreusField_4610", RequiredLastLinePlayed = { "/VO/HadesField_0523", "/VO/HadesField_0524" }, },
-				-- Old age, it happens!
-				{ Cue = "/VO/ZagreusField_4611", RequiredLastLinePlayed = { "/VO/HadesField_0525" }, },
-				-- You've been so busy!
-				{ Cue = "/VO/ZagreusField_4612", RequiredLastLinePlayed = { "/VO/HadesField_0525" }, },
-			},
-			-- Path C
-			{
-				PreLineWait = 0.4,
-				UsePlayerSource = true,
-				RandomRemaining = true,
-				-- Why don't you clean your chambers so ferociously?
-				RequiredLastLinePlayed = { "/VO/HadesField_0508" },
-
-				-- My chambers just aren't as enjoyable to fight!
-				{ Cue = "/VO/ZagreusField_4558" },
-				-- What, so they could look like your boring chambers?
-				{ Cue = "/VO/ZagreusField_4559" },
-				-- Too busy ransacking through your domain, sorry!
-				{ Cue = "/VO/ZagreusField_4560" },
-				-- Why don't you concentrate on fighting back?
-				{ Cue = "/VO/ZagreusField_4561" },
-			},
-			{
-				PreLineWait = 0.4,
-				RandomRemaining = true,
-				SuccessiveChanceToPlay = 0.85,
-
-				-- You and your clever wit!
-				{ Cue = "/VO/HadesField_0556", RequiredLastLinePlayed = { "/VO/ZagreusField_4558" }, },
-				-- Bah...!
-				{ Cue = "/VO/HadesField_0555", RequiredLastLinePlayed = { "/VO/ZagreusField_4558" }, },
-				-- You take that back about my chambers!
-				{ Cue = "/VO/HadesField_0526", RequiredLastLinePlayed = { "/VO/ZagreusField_4559" }, },
-				-- What would you know of real work?
-				{ Cue = "/VO/HadesField_0527", RequiredLastLinePlayed = { "/VO/ZagreusField_4560" }, },
-				-- I ask the questions here!
-				{ Cue = "/VO/HadesField_0528", RequiredLastLinePlayed = { "/VO/ZagreusField_4561" }, },
-			},
-			{
-				PreLineWait = 0.4,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				UsePlayerSource = true,
-				SuccessiveChanceToPlay = 0.75,
-
-				-- Nope!
-				{ Cue = "/VO/ZagreusField_4613", RequiredLastLinePlayed = { "/VO/HadesField_0526" }, },
-				-- They're boring, I say!
-				{ Cue = "/VO/ZagreusField_4614", RequiredLastLinePlayed = { "/VO/HadesField_0526" }, },
-
-				-- This isn't real work?
-				{ Cue = "/VO/ZagreusField_4615", RequiredLastLinePlayed = { "/VO/HadesField_0527" }, },
-				-- Just what you've taught me!
-				{ Cue = "/VO/ZagreusField_4616", RequiredLastLinePlayed = { "/VO/HadesField_0527" }, },
-
-				-- Whatever you say!
-				{ Cue = "/VO/ZagreusField_4617", RequiredLastLinePlayed = { "/VO/HadesField_0528" }, },
-				-- Really?
-				{ Cue = "/VO/ZagreusField_4618", RequiredLastLinePlayed = { "/VO/HadesField_0528" }, },
-			},
-			-- Path D
-			{
-				PreLineWait = 0.4,
-				UsePlayerSource = true,
-				RandomRemaining = true,
-				-- You'd not have made it here without Olympus, boy!
-				RequiredLastLinePlayed = { "/VO/HadesField_0509" },
-
-				-- That's funny, you wouldn't be here without Olympus, either!
-				{ Cue = "/VO/ZagreusField_4562" },
-				-- You act like you do everything yourself!
-				{ Cue = "/VO/ZagreusField_4563" },
-				-- You should be pleased to have their help!
-				{ Cue = "/VO/ZagreusField_4564" },
-				-- And what's your point, exactly, there?
-				{ Cue = "/VO/ZagreusField_4565" },
-			},
-			{
-				PreLineWait = 0.4,
-				RandomRemaining = true,
-				SuccessiveChanceToPlay = 0.85,
-
-				-- Bah, blast you, boy!
-				{ Cue = "/VO/HadesField_0529", RequiredLastLinePlayed = { "/VO/ZagreusField_4562" }, },
-				-- More than you know!
-				{ Cue = "/VO/HadesField_0530", RequiredLastLinePlayed = { "/VO/ZagreusField_4563" }, },
-				-- Oh, I'm delighted, boy!
-				{ Cue = "/VO/HadesField_0531", RequiredLastLinePlayed = { "/VO/ZagreusField_4564" }, },
-				-- Someday you'll understand!
-				{ Cue = "/VO/HadesField_0532", RequiredLastLinePlayed = { "/VO/ZagreusField_4565" }, },
-			},
-			{
-				PreLineWait = 0.4,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				UsePlayerSource = true,
-				SuccessiveChanceToPlay = 0.75,
-
-				-- Blast you right back!
-				{ Cue = "/VO/ZagreusField_4619", RequiredLastLinePlayed = { "/VO/HadesField_0529" }, },
-				-- <Chuckle>
-				{ Cue = "/VO/ZagreusField_4620", RequiredLastLinePlayed = { "/VO/HadesField_0529" }, },
-
-				-- Well, cheers!
-				{ Cue = "/VO/ZagreusField_4621", RequiredLastLinePlayed = { "/VO/HadesField_0530" }, },
-				-- I know a thing or two!
-				{ Cue = "/VO/ZagreusField_4622", RequiredLastLinePlayed = { "/VO/HadesField_0530" }, },
-
-				-- I can tell!
-				{ Cue = "/VO/ZagreusField_4623", RequiredLastLinePlayed = { "/VO/HadesField_0531" }, },
-				-- Clearly!
-				{ Cue = "/VO/ZagreusField_4624", RequiredLastLinePlayed = { "/VO/HadesField_0531" }, },
-
-				-- Ominous!
-				{ Cue = "/VO/ZagreusField_4625", RequiredLastLinePlayed = { "/VO/HadesField_0532" }, },
-				-- Sounds good!
-				{ Cue = "/VO/ZagreusField_4626", RequiredLastLinePlayed = { "/VO/HadesField_0532" }, },
-			},
-			-- Path E
-			{
-				PreLineWait = 0.4,
-				UsePlayerSource = true,
-				RandomRemaining = true,
-				-- Which of our relatives aided you this time, boy?
-				RequiredLastLinePlayed = { "/VO/HadesField_0510" },
-
-				-- I'll leave that one for you to figure out!
-				{ Cue = "/VO/ZagreusField_4566" },
-				-- Who do you think, Father?
-				{ Cue = "/VO/ZagreusField_4567" },
-				-- Oh, quite a few of them, I'll have you know!
-				{ Cue = "/VO/ZagreusField_4568" },
-				-- Certainly not you!
-				{ Cue = "/VO/ZagreusField_4569", RequiredFalseTraits = { "HadesShoutKeepsake" }, },
-			},
-			{
-				PreLineWait = 0.5,
-				RandomRemaining = true,
-				SuccessiveChanceToPlay = 0.85,
-
-				-- Enough!
-				{ Cue = "/VO/HadesField_0551", RequiredLastLinePlayed = { "/VO/ZagreusField_4568", "/VO/ZagreusField_4569" }, },
-				-- All right!
-				{ Cue = "/VO/HadesField_0553", RequiredLastLinePlayed = { "/VO/ZagreusField_4568", "/VO/ZagreusField_4569" }, },
-				-- I think it's time for you to die!
-				{ Cue = "/VO/HadesField_0533", RequiredLastLinePlayed = { "/VO/ZagreusField_4567" }, },
-				-- Do not pretend to even care!
-				{ Cue = "/VO/HadesField_0534", RequiredLastLinePlayed = { "/VO/ZagreusField_4567" }, },
-			},
-			{
-				PreLineWait = 0.4,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				UsePlayerSource = true,
-				SuccessiveChanceToPlay = 0.75,
-
-				-- Well I would beg to differ!
-				{ Cue = "/VO/ZagreusField_4627", RequiredLastLinePlayed = { "/VO/HadesField_0533" }, },
-				-- Mm, no thanks!
-				{ Cue = "/VO/ZagreusField_4628", RequiredLastLinePlayed = { "/VO/HadesField_0533" }, },
-
-				-- All right, I won't!
-				{ Cue = "/VO/ZagreusField_4629", RequiredLastLinePlayed = { "/VO/HadesField_0534" }, },
-				-- Fine!
-				{ Cue = "/VO/ZagreusField_4630", RequiredLastLinePlayed = { "/VO/HadesField_0534" }, },
-			},
-			-- Path F
-			{
-				PreLineWait = 0.4,
-				UsePlayerSource = true,
-				RandomRemaining = true,
-				-- You mother already begins to coddle you!
-				RequiredLastLinePlayed = { "/VO/HadesField_0511" },
-
-				-- Last I checked princes were meant to be coddled!
-				{ Cue = "/VO/ZagreusField_4570" },
-				-- It's called showing affection to your children, Father!
-				{ Cue = "/VO/ZagreusField_4571" },
-				-- Whatever will you do about it, Father?
-				{ Cue = "/VO/ZagreusField_4572" },
-				-- What do you even care?
-				{ Cue = "/VO/ZagreusField_4573" },
-			},
-			{
-				PreLineWait = 0.4,
-				RandomRemaining = true,
-				SuccessiveChanceToPlay = 0.85,
-
-				-- Ah, thank you for the information, there!
-				{ Cue = "/VO/HadesField_0535", RequiredLastLinePlayed = { "/VO/ZagreusField_4570", "/VO/ZagreusField_4571" }, },
-				-- Please, teach me more, then!
-				{ Cue = "/VO/HadesField_0536", RequiredLastLinePlayed = { "/VO/ZagreusField_4570", "/VO/ZagreusField_4571", }, },
-				-- Always such accusations, from you!
-				{ Cue = "/VO/HadesField_0537", RequiredLastLinePlayed = { "/VO/ZagreusField_4573", }, },
-				-- You impudent...!
-				{ Cue = "/VO/HadesField_0549", RequiredLastLinePlayed = { "/VO/ZagreusField_4572", }, },
-				-- You impertinent...!
-				{ Cue = "/VO/HadesField_0550", RequiredLastLinePlayed = { "/VO/ZagreusField_4572", }, },
-			},
-			{
-				PreLineWait = 0.4,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				UsePlayerSource = true,
-				SuccessiveChanceToPlay = 0.75,
-
-				-- You're most welcome!
-				{ Cue = "/VO/ZagreusField_4631", RequiredLastLinePlayed = { "/VO/HadesField_0535" }, },
-				-- Sure thing!
-				{ Cue = "/VO/ZagreusField_4632", RequiredLastLinePlayed = { "/VO/HadesField_0535" }, },
-				-- Happy to!
-				{ Cue = "/VO/ZagreusField_4633", RequiredLastLinePlayed = { "/VO/HadesField_0536" }, },
-				-- Always!
-				{ Cue = "/VO/ZagreusField_4634", RequiredLastLinePlayed = { "/VO/HadesField_0537" }, },
-			},
-			-- Path G
-			{
-				PreLineWait = 0.4,
-				UsePlayerSource = true,
-				RandomRemaining = true,
-				-- I trust you're having a most pleasant evening, boy?
-				RequiredLastLinePlayed = { "/VO/HadesField_0512" },
-
-				-- Quite lovely, Father, how about yourself?
-				{ Cue = "/VO/ZagreusField_4574" },
-				-- There's a refreshing chill now that you mention it!
-				{ Cue = "/VO/ZagreusField_4575" },
-				-- Oh I most definitely am, thank you, Father!
-				{ Cue = "/VO/ZagreusField_4576" },
-				-- It could be going better, I suppose!
-				{ Cue = "/VO/ZagreusField_4577" },
-			},
-			{
-				PreLineWait = 0.4,
-				RandomRemaining = true,
-				SuccessiveChanceToPlay = 0.85,
-
-				-- Oh, you know, same as ever, here!
-				{ Cue = "/VO/HadesField_0538", RequiredLastLinePlayed = { "/VO/ZagreusField_4574" }, },
-				-- Silence!
-				{ Cue = "/VO/HadesField_0552", RequiredLastLinePlayed = { "/VO/ZagreusField_4574" }, },
-
-				-- Just as I thought!
-				{ Cue = "/VO/HadesField_0539", RequiredLastLinePlayed = { "/VO/ZagreusField_4577", }, },
-				-- And such a shame for that!
-				{ Cue = "/VO/HadesField_0540", RequiredLastLinePlayed = { "/VO/ZagreusField_4577" }, },
-
-				-- You impudent...!
-				{ Cue = "/VO/HadesField_0549", RequiredLastLinePlayed = { "/VO/ZagreusField_4572", }, },
-				-- You impertinent...!
-				{ Cue = "/VO/HadesField_0550", RequiredLastLinePlayed = { "/VO/ZagreusField_4572", }, },
-			},
-			{
-				PreLineWait = 0.4,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				UsePlayerSource = true,
-				SuccessiveChanceToPlay = 0.75,
-
-				-- Well, carry on!
-				{ Cue = "/VO/ZagreusField_4635", RequiredLastLinePlayed = { "/VO/HadesField_0538" }, },
-				-- Thanks for your concern!
-				{ Cue = "/VO/ZagreusField_4636", RequiredLastLinePlayed = { "/VO/HadesField_0539" }, },
-				-- It'll be all right!
-				{ Cue = "/VO/ZagreusField_4637", RequiredLastLinePlayed = { "/VO/HadesField_0540" }, },
-			},
-			-- Path H
-			{
-				PreLineWait = 0.4,
-				UsePlayerSource = true,
-				RandomRemaining = true,
-				-- Zagreus! Is this the best that you can do?
-				RequiredLastLinePlayed = { "/VO/HadesField_0513" },
-
-				-- You'll have to let me know when this is over!
-				{ Cue = "/VO/ZagreusField_4578" },
-				-- We'll soon find out I think!
-				{ Cue = "/VO/ZagreusField_4579" },
-				-- I'm pretty sure it is!
-				{ Cue = "/VO/ZagreusField_4580" },
-				-- You know what, probably not!
-				{ Cue = "/VO/ZagreusField_4581" },
-			},
-			{
-				PreLineWait = 0.4,
-				RandomRemaining = true,
-				SuccessiveChanceToPlay = 0.85,
-				RequiredLastLinePlayed = { "/VO/ZagreusField_4568", "/VO/ZagreusField_4578", "/VO/ZagreusField_4579", "/VO/ZagreusField_4580", "/VO/ZagreusField_4581" },
-
-				-- Enough!
-				{ Cue = "/VO/HadesField_0551" },
-				-- Silence!
-				{ Cue = "/VO/HadesField_0552" },
-				-- All right!
-				{ Cue = "/VO/HadesField_0553" },
-				-- End of discussion, boy!
-				{ Cue = "/VO/HadesField_0554" },
-				-- Bah...!
-				{ Cue = "/VO/HadesField_0555" },
-				-- You and your clever wit!
-				{ Cue = "/VO/HadesField_0556" },
-			},
-			-- Path I
-			{
-				PreLineWait = 0.4,
-				UsePlayerSource = true,
-				RandomRemaining = true,
-				-- Zagreus! I trust you had a pleasant journey here?
-				RequiredLastLinePlayed = { "/VO/HadesField_0515" },
-
-				-- Oh, absolutely wonderful, thank you!
-				{ Cue = "/VO/ZagreusField_4586" },
-				-- It went all right, now that you mention it!
-				{ Cue = "/VO/ZagreusField_4587" },
-				-- Quite pleasant, actually!
-				{ Cue = "/VO/ZagreusField_4588" },
-				-- It's always pleasant in the Underworld!
-				{ Cue = "/VO/ZagreusField_4589" },
-			},
-			{
-				PreLineWait = 0.4,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				UsePlayerSource = true,
-				SuccessiveChanceToPlay = 0.75,
-
-				-- How truly wonderful to hear.
-				{ Cue = "/VO/HadesField_0543", RequiredLastLinePlayed = { "/VO/ZagreusField_4586", "/VO/ZagreusField_4587", "/VO/ZagreusField_4588", "/VO/ZagreusField_4577" }, },
-			},
-			-- Path J
-			{
-				PreLineWait = 0.4,
-				UsePlayerSource = true,
-				RandomRemaining = true,
-				-- Zagreus! How fared your plundering of my domain?
-				RequiredLastLinePlayed = { "/VO/HadesField_0516" },
-
-				-- It fared just great, thank you for asking, there!
-				{ Cue = "/VO/ZagreusField_4590" },
-				-- Could have gone better, though what can you do?
-				{ Cue = "/VO/ZagreusField_4591" },
-				-- Not bad at all, this time!
-				{ Cue = "/VO/ZagreusField_4592" },
-				-- I've had better escape attempts I think!
-				{ Cue = "/VO/ZagreusField_4593" },
-			},
-			{
-				PreLineWait = 0.4,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				UsePlayerSource = true,
-				SuccessiveChanceToPlay = 0.85,
-
-				-- You're very welcome, boy!
-				{ Cue = "/VO/HadesField_0541", RequiredLastLinePlayed = { "/VO/ZagreusField_4590" }, },
-				-- I can do this!
-				{ Cue = "/VO/HadesField_0544", RequiredLastLinePlayed = { "/VO/ZagreusField_4591" }, },
-				-- How truly wonderful to hear.
-				{ Cue = "/VO/HadesField_0543", RequiredLastLinePlayed = { "/VO/ZagreusField_4592" }, },
-				-- Losing your spirit, same as ever, there!
-				{ Cue = "/VO/HadesField_0545", RequiredLastLinePlayed = { "/VO/ZagreusField_4593" }, },
-			},
-			{
-				PreLineWait = 0.4,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				UsePlayerSource = true,
-				SuccessiveChanceToPlay = 0.75,
-
-				-- Not just yet!
-				{ Cue = "/VO/ZagreusField_4638", RequiredLastLinePlayed = { "/VO/HadesField_0545" }, },
-			},
-			-- Path K
-			{
-				PreLineWait = 0.4,
-				UsePlayerSource = true,
-				RandomRemaining = true,
-				SuccessiveChanceToPlay = 0.9,
-				-- To think you're so receptive to this form of discipline!
-				RequiredLastLinePlayed = { "/VO/HadesField_0517" },
-
-				-- And we finally have an activity we can do together!
-				{ Cue = "/VO/ZagreusField_4594" },
-				-- Seems like you have a lot to learn about discipline, huh?
-				{ Cue = "/VO/ZagreusField_4595" },
-				-- We gods do like to fight!
-				{ Cue = "/VO/ZagreusField_4596" },
-				-- Discipline, that's what we're calling it?
-				{ Cue = "/VO/ZagreusField_4597" },
-			},
-			{
-				PreLineWait = 0.4,
-				RandomRemaining = true,
-				SuccessiveChanceToPlay = 0.85,
-
-				-- Ah, yes, indeed!
-				{ Cue = "/VO/HadesField_0546", RequiredLastLinePlayed = { "/VO/ZagreusField_4594", "/VO/ZagreusField_4575", "/VO/ZagreusField_4576" }, },
-				-- We've all a lot to learn, I think!
-				{ Cue = "/VO/HadesField_0547", RequiredLastLinePlayed = { "/VO/ZagreusField_4595" }, },
-				-- Incorrigible brat!
-				{ Cue = "/VO/HadesField_0548", RequiredLastLinePlayed = { "/VO/ZagreusField_4595" }, },
-				-- How thoughtful, there, indeed!
-				{ Cue = "/VO/HadesField_0542", RequiredLastLinePlayed = { "/VO/ZagreusField_4595" }, },
-				-- Silence!
-				{ Cue = "/VO/HadesField_0552", RequiredLastLinePlayed = { "/VO/ZagreusField_4597" }, },
-				-- I think it's time for you to die!
-				{ Cue = "/VO/HadesField_0533", RequiredLastLinePlayed = { "/VO/ZagreusField_4596" }, },
-			},
-			{
-				PreLineWait = 0.4,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				UsePlayerSource = true,
-				SuccessiveChanceToPlay = 0.75,
-
-				-- Well, carry on!
-				{ Cue = "/VO/ZagreusField_4635", RequiredLastLinePlayed = { "/VO/HadesField_0538" }, },
-				-- Thanks for your concern!
-				{ Cue = "/VO/ZagreusField_4636", RequiredLastLinePlayed = { "/VO/HadesField_0539" }, },
-				-- It'll be all right!
-				{ Cue = "/VO/ZagreusField_4637", RequiredLastLinePlayed = { "/VO/HadesField_0540" }, },
-			},
-		},
-		-- pre-ending
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.65,
-			SuccessiveChanceToPlay = 0.25,
-			TriggerCooldowns = { "HadesAnyQuipSpeech", "HadesSummonSpawnsSpeech", "HadesGoneInvisSpeech" },
-			RequiredFalseTextLines = { "Ending01" },
-			Cooldowns =
-			{
-				{ Name = "FatherSonArgumentSpeech", Time = 300 },
-				{ Name = "HadesStageSwitchSpeech",  Time = 70 },
-				{ Name = "ZagStageSwitchSpeech",    Time = 70 },
-			},
-
-			-- Path A
-			-- You dare lash out against me like this, boy?
-			{ Cue = "/VO/HadesField_0155" },
-			-- You really think you can just walk away?
-			{ Cue = "/VO/HadesField_0359", RequiredPlayed = { "/VO/HadesField_0155" } },
-			-- You dare attempt to vanquish me, again?
-			{ Cue = "/VO/HadesField_0360", RequiresLastRunCleared = true,              RequiredPlayed = { "/VO/HadesField_0155" } },
-			-- You truly think this surface is where you belong?
-			{ Cue = "/VO/HadesField_0361", RequiredPlayed = { "/VO/HadesField_0155" } },
-			-- Do you even realize what you're doing, boy?
-			{ Cue = "/VO/HadesField_0362", RequiredPlayed = { "/VO/HadesField_0155" } },
-
-			-- Path B
-			-- Why do you keep up this foolishness?
-			{ Cue = "/VO/HadesField_0158", RequiredPlayed = { "/VO/HadesField_0155" } },
-			-- Why do you keep doing this, time after blasted time?
-			{ Cue = "/VO/HadesField_0363", RequiredPlayed = { "/VO/HadesField_0155" } },
-			-- Why have you forced me to confront you here, again?
-			{ Cue = "/VO/HadesField_0364", RequiredPlayed = { "/VO/HadesField_0155" } },
-			-- Why do you wish to die repeatedly like this?
-			{ Cue = "/VO/HadesField_0365", RequiredPlayed = { "/VO/HadesField_0155" } },
-			-- Why have you come all this way, again?
-			{ Cue = "/VO/HadesField_0366", RequiredPlayed = { "/VO/HadesField_0155" } },
-
-			-- Path C
-			-- You've no control over your brutish strength!
-			{ Cue = "/VO/HadesField_0216", RequiredPlayed = { "/VO/HadesField_0155" }, CooldownName = "SaidStrengthRecently",     CooldownTime = 40, },
-			-- That brutish strength of yours! How like your relatives you are!
-			{ Cue = "/VO/HadesField_0367", RequiredPlayed = { "/VO/HadesField_0155" }, CooldownName = "SaidStrengthRecently",     CooldownTime = 40, },
-			-- You lack the proper form! Pure brutish strength!
-			{ Cue = "/VO/HadesField_0368", RequiredPlayed = { "/VO/HadesField_0155" }, CooldownName = "SaidStrengthRecently",     CooldownTime = 40, },
-			-- Is this another showing of your brutish strength?
-			{ Cue = "/VO/HadesField_0369", RequiredPlayed = { "/VO/HadesField_0155" }, CooldownName = "SaidStrengthRecently",     CooldownTime = 40, },
-
-			-- Path D
-			-- What shall it take for you to cease with this madness?
-			{ Cue = "/VO/HadesField_0217", RequiredPlayed = { "/VO/HadesField_0155" } },
-			-- What shall it take for all of this to end?
-			{ Cue = "/VO/HadesField_0370", RequiredPlayed = { "/VO/HadesField_0155" } },
-			-- What shall it take for you to cease making me face you here?
-			{ Cue = "/VO/HadesField_0371", RequiredPlayed = { "/VO/HadesField_0155" } },
-			-- What shall it take for you to stop this foolishness?
-			{ Cue = "/VO/HadesField_0372", RequiredPlayed = { "/VO/HadesField_0155" } },
-			-- What is it going to take for you to get some sense into your head?
-			{ Cue = "/VO/HadesField_0373", RequiredPlayed = { "/VO/HadesField_0155" } },
-		},
-		-- Path A
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.85,
-			-- You dare lash out against me like this, boy?
-			RequiredLastLinePlayed = { "/VO/HadesField_0155", "/VO/HadesField_0359", "/VO/HadesField_0360", "/VO/HadesField_0361", "/VO/HadesField_0362" },
-
-			-- I do!
-			{ Cue = "/VO/ZagreusField_2291" },
-			-- That's right!
-			{ Cue = "/VO/ZagreusField_2292" },
-			-- What do you think, Father?
-			{ Cue = "/VO/ZagreusField_2293" },
-			-- I guess so!
-			{ Cue = "/VO/ZagreusField_2294" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.75,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2293" },
-
-			-- I think that you are an ignoble brat!
-			{ Cue = "/VO/HadesField_0156" },
-			-- I think you are wasting your time.
-			{ Cue = "/VO/HadesField_0157" },
-		},
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.65,
-			RequiredLastLinePlayed = { "/VO/HadesField_0156" },
-
-			-- Oh you'll think better of me soon!
-			{ Cue = "/VO/ZagreusField_2295" },
-			-- And I am shocked to hear it!
-			{ Cue = "/VO/ZagreusField_2296" },
-			-- And I think you're a miserable failure as a father!
-			{ Cue = "/VO/ZagreusField_2297" },
-		},
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.5,
-			RequiredLastLinePlayed = { "/VO/HadesField_0157" },
-
-			-- It's my time to do with as I please!
-			{ Cue = "/VO/ZagreusField_2298" },
-			-- I don't care what you think!
-			{ Cue = "/VO/ZagreusField_2299" },
-			-- Oh this isn't a waste of time at all!
-			{ Cue = "/VO/ZagreusField_2300" },
-		},
-		-- Path B
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.85,
-			-- Why do you keep up this foolishness?
-			RequiredLastLinePlayed = { "/VO/HadesField_0158", "/VO/HadesField_0363", "/VO/HadesField_0364", "/VO/HadesField_0365", "/VO/HadesField_0366" },
-
-			-- It beats having to live within your House!
-			{ Cue = "/VO/ZagreusField_2301" },
-			-- You know exactly why!
-			{ Cue = "/VO/ZagreusField_2302" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.75,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2301" },
-
-			-- Would that you could be useful there from time to time!
-			{ Cue = "/VO/HadesField_0159" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.75,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2302" },
-			RequiredFalseTextLines = { "PersephoneFirstMeeting" },
-
-			-- You shall never find her! She is gone!
-			{ Cue = "/VO/HadesField_0160" },
-		},
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.65,
-			RequiredLastLinePlayed = { "/VO/HadesField_0159" },
-
-			-- You'd like that, wouldn't you?
-			{ Cue = "/VO/ZagreusField_2303" },
-			-- Would that you could shut up and fight!
-			{ Cue = "/VO/ZagreusField_2304" },
-		},
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.65,
-			RequiredLastLinePlayed = { "/VO/HadesField_0160" },
-
-			-- Liar! Why should I trust a single word you say?
-			{ Cue = "/VO/ZagreusField_2305" },
-			-- No! She's out there. I know it!
-			{ Cue = "/VO/ZagreusField_2306" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.55,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2305" },
-
-			-- You're but a simple fool!
-			{ Cue = "/VO/HadesField_0161" },
-			-- All that I've told you is for your own good.
-			{ Cue = "/VO/HadesField_0162" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.55,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2306" },
-
-			-- She's gone, I say!
-			{ Cue = "/VO/HadesField_0163" },
-			-- You know nothing!
-			{ Cue = "/VO/HadesField_0164" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.55,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2303" },
-
-			-- You'd like to perish, wouldn't you?!
-			{ Cue = "/VO/HadesField_0165" },
-			-- What would you know of it!
-			{ Cue = "/VO/HadesField_0166" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.55,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2304" },
-
-			-- Oh I can do just that.
-			{ Cue = "/VO/HadesField_0167" },
-			-- I'll happily oblige.
-			{ Cue = "/VO/HadesField_0168" },
-		},
-		-- Path C
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			SuccessiveChanceToPlay = 0.85,
-			RequiredLastLinePlayed = { "/VO/HadesField_0216", "/VO/HadesField_0367", "/VO/HadesField_0368", "/VO/HadesField_0369" },
-
-			-- I'll show you brutish strength!
-			{ Cue = "/VO/ZagreusField_2412" },
-			-- Not interested in the analysis now, Father!
-			{ Cue = "/VO/ZagreusField_2413" },
-		},
-		-- C_1
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.85,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2412" },
-
-			-- And I'll show you the might that vanquished the Titans themselves.
-			{ Cue = "/VO/HadesField_0218" },
-			-- No! You're holding back, as always.
-			{ Cue = "/VO/HadesField_0219" },
-		},
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			SuccessiveChanceToPlay = 0.75,
-			-- And I'll show you the might that vanquished the Titans themselves.
-			RequiredLastLinePlayed = { "/VO/HadesField_0218" },
-
-			-- I'm not afraid of you!
-			{ Cue = "/VO/ZagreusField_2416", PreLineWait = 0.7 },
-			-- I'll have you join them soon!
-			{ Cue = "/VO/ZagreusField_2417" },
-		},
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			SuccessiveChanceToPlay = 0.75,
-			-- No! You're holding back, as always.
-			RequiredLastLinePlayed = { "/VO/HadesField_0219" },
-
-			-- Am I brutish or am I holding back? Make up your blasted mind!
-			{ Cue = "/VO/ZagreusField_2418" },
-			-- You want me to go all out? Then fine!
-			{ Cue = "/VO/ZagreusField_2419" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			SuccessiveChanceToPlay = 0.35,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2416" },
-
-			-- You ought to be.
-			{ Cue = "/VO/HadesField_0226" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			SuccessiveChanceToPlay = 0.35,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2417" },
-
-			-- You impudent...!
-			{ Cue = "/VO/HadesField_0227" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			SuccessiveChanceToPlay = 0.35,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2418" },
-
-			-- I'll make you regret this.
-			{ Cue = "/VO/HadesField_0228" },
-		},
-		{
-			RandomRemaining = true,
-			SuccessiveChanceToPlay = 0.35,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2419" },
-			PreLineWait = 0.4,
-
-			-- Fine!
-			{ Cue = "/VO/HadesField_0229" },
-		},
-		-- C_2
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.55,
-			-- Not interested in the analysis now, Father!
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2413" },
-
-			-- You have no inkling of what you need.
-			{ Cue = "/VO/HadesField_0220" },
-			-- Oh I think it's the perfect time.
-			{ Cue = "/VO/HadesField_0221" },
-		},
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			SuccessiveChanceToPlay = 0.75,
-			-- You have no inkling of what you need.
-			RequiredLastLinePlayed = { "/VO/HadesField_0220" },
-
-			-- I said shut up with the analysis!
-			{ Cue = "/VO/ZagreusField_2420" },
-			-- I need you to quit blathering and fight!
-			{ Cue = "/VO/ZagreusField_2421" },
-		},
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			SuccessiveChanceToPlay = 0.85,
-			-- Oh I think it's the perfect time.
-			RequiredLastLinePlayed = { "/VO/HadesField_0221" },
-
-			-- Oh I disagree!
-			{ Cue = "/VO/ZagreusField_2422" },
-			-- Well then, let's hear it!
-			{ Cue = "/VO/ZagreusField_2423" },
-		},
-		{
-			RandomRemaining = true,
-			SuccessiveChanceToPlay = 0.35,
-			PreLineWait = 0.4,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2420" },
-
-			-- Unfilial oaf!
-			{ Cue = "/VO/HadesField_0235" },
-		},
-		{
-			RandomRemaining = true,
-			SuccessiveChanceToPlay = 0.35,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2421" },
-			PreLineWait = 0.3,
-
-			-- Happily.
-			{ Cue = "/VO/HadesField_0231" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			SuccessiveChanceToPlay = 0.35,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2422" },
-
-			-- I thought you might!
-			{ Cue = "/VO/HadesField_0232" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			SuccessiveChanceToPlay = 0.35,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2423" },
-
-			-- You'd not listen even if I did!
-			{ Cue = "/VO/HadesField_0233" },
-		},
-		-- Path D
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			SuccessiveChanceToPlay = 0.85,
-			RequiredLastLinePlayed = { "/VO/HadesField_0217", "/VO/HadesField_0370", "/VO/HadesField_0371", "/VO/HadesField_0372", "/VO/HadesField_0373" },
-
-			-- You know exactly what it's going to take!
-			{ Cue = "/VO/ZagreusField_2414" },
-			-- It'll take you getting out of my blasted way!
-			{ Cue = "/VO/ZagreusField_2415" },
-		},
-		-- D_1
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.85,
-			-- You know exactly what it's going to take!
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2291", "/VO/ZagreusField_2292", "/VO/ZagreusField_2294", "/VO/ZagreusField_2414" },
-
-			-- Stubborn oaf!
-			{ Cue = "/VO/HadesField_0222" },
-			-- What you desire is impossible!
-			{ Cue = "/VO/HadesField_0223" },
-		},
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			SuccessiveChanceToPlay = 0.75,
-			-- Stubborn oaf!
-			RequiredLastLinePlayed = { "/VO/HadesField_0222" },
-
-			-- Miserable husk of a man!
-			{ Cue = "/VO/ZagreusField_2424" },
-			-- Wretched excuse for a father!
-			{ Cue = "/VO/ZagreusField_2425" },
-		},
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.4,
-			SuccessiveChanceToPlay = 0.75,
-			-- What you desire is impossible!
-			RequiredLastLinePlayed = { "/VO/HadesField_0223" },
-
-			-- We'll see!
-			{ Cue = "/VO/ZagreusField_2426" },
-			-- Like you would know!
-			{ Cue = "/VO/ZagreusField_2427" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.65,
-			SuccessiveChanceToPlay = 0.35,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2424" },
-
-			-- What would you know of misery?!
-			{ Cue = "/VO/HadesField_0234" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.65,
-			SuccessiveChanceToPlay = 0.35,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2425" },
-
-			-- Such utter disrespect!
-			{ Cue = "/VO/HadesField_0230" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.65,
-			SuccessiveChanceToPlay = 0.35,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2426" },
-
-			-- We certainly shall!
-			{ Cue = "/VO/HadesField_0236" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.45,
-			SuccessiveChanceToPlay = 0.35,
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2427" },
-
-			-- I do, you idiot!
-			{ Cue = "/VO/HadesField_0237" },
-		},
-		-- D_2
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.4,
-			ChanceToPlay = 0.85,
-			-- It'll take you getting out of my blasted way!
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2415" },
-
-			-- You cannot talk to me that way!
-			{ Cue = "/VO/HadesField_0224" },
-			-- No; that shall accomplish nothing.
-			{ Cue = "/VO/HadesField_0225" },
-		},
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.3,
-			SuccessiveChanceToPlay = 0.75,
-			-- You cannot talk to me that way!
-			RequiredLastLinePlayed = { "/VO/HadesField_0224" },
-
-			-- Well I just did!
-			{ Cue = "/VO/ZagreusField_2428" },
-			-- And you cannot treat me this way!
-			{ Cue = "/VO/ZagreusField_2429" },
-		},
-		{
-			RandomRemaining = true,
-			UsePlayerSource = true,
-			PreLineWait = 0.3,
-			SuccessiveChanceToPlay = 0.75,
-			-- No; that shall accomplish nothing.
-			RequiredLastLinePlayed = { "/VO/HadesField_0225" },
-
-			-- Let's test that theory!
-			{ Cue = "/VO/ZagreusField_2530" },
-			-- Oh I think it shall!
-			{ Cue = "/VO/ZagreusField_2531" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.3,
-			SuccessiveChanceToPlay = 0.35,
-			-- Well I just did!
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2428" },
-
-			-- You won't do it again.
-			{ Cue = "/VO/HadesField_0238" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.3,
-			SuccessiveChanceToPlay = 0.35,
-			-- And you cannot treat me this way!
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2429" },
-
-			-- I'll treat you as you deserve.
-			{ Cue = "/VO/HadesField_0239" },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.3,
-			SuccessiveChanceToPlay = 0.35,
-			-- Let's test that theory!
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2530" },
-
-			-- Happily.
-			{ Cue = "/VO/HadesField_0231" },
-			-- Fine!
-			{ Cue = "/VO/HadesField_0229", PreLineWait = 0.25, },
-		},
-		{
-			RandomRemaining = true,
-			PreLineWait = 0.3,
-			SuccessiveChanceToPlay = 0.35,
-			-- Oh I think it shall!
-			RequiredLastLinePlayed = { "/VO/ZagreusField_2531" },
-
-			-- I thought you might!
-			{ Cue = "/VO/HadesField_0232" },
-			-- You impudent...!
-			{ Cue = "/VO/HadesField_0227", PreLineWait = 0.65 },
-		},
-	},
+	-- FatherSonArgumentVoiceLines = {
+	-- 	{
+	-- 		RequiredTextLines = { "Ending01" },
+	-- 		MaxRunsSinceAnyTextLines = { TextLines = { "HadesGift05" }, Count = 60 },
+	-- 		RequiredFalseBossPhase = 3,
+	-- 		{
+	-- 			RandomRemaining = true,
+	-- 			PreLineWait = 0.65,
+	-- 			SuccessiveChanceToPlay = 0.25,
+	-- 			TriggerCooldowns = { "HadesAnyQuipSpeech", "HadesSummonSpawnsSpeech", "HadesGoneInvisSpeech" },
+	-- 			Cooldowns =
+	-- 			{
+	-- 				{ Name = "FatherSonArgumentSpeech", Time = 320 },
+	-- 				{ Name = "HadesStageSwitchSpeech",  Time = 90 },
+	-- 				{ Name = "ZagStageSwitchSpeech",    Time = 90 },
+	-- 			},
+
+	-- 			-- Path A
+	-- 			-- You think I shall go easy on you, boy?
+	-- 			{ Cue = "/VO/HadesField_0506" },
+
+	-- 			-- Path B
+	-- 			-- You think your mother shall make me go soft, do you?
+	-- 			{ Cue = "/VO/HadesField_0507" },
+
+	-- 			-- Path C
+	-- 			-- Why don't you clean your chambers so ferociously?
+	-- 			{ Cue = "/VO/HadesField_0508" },
+
+	-- 			-- Path D
+	-- 			-- You'd not have made it here without Olympus, boy!
+	-- 			{ Cue = "/VO/HadesField_0509" },
+
+	-- 			-- Path E
+	-- 			-- Which of our relatives aided you this time, boy?
+	-- 			{ Cue = "/VO/HadesField_0510" },
+
+	-- 			-- Path F
+	-- 			-- You mother already begins to coddle you!
+	-- 			{ Cue = "/VO/HadesField_0511" },
+
+	-- 			-- Path G
+	-- 			-- I trust you're having a most pleasant evening, boy?
+	-- 			{ Cue = "/VO/HadesField_0512" },
+
+	-- 			-- Path H
+	-- 			-- Zagreus! Is this the best that you can do?
+	-- 			{ Cue = "/VO/HadesField_0513" },
+
+	-- 			-- Path I
+	-- 			-- Zagreus! I trust you had a pleasant journey here?
+	-- 			{ Cue = "/VO/HadesField_0515" },
+
+	-- 			-- Path J
+	-- 			-- Zagreus! How fared your plundering of my domain?
+	-- 			{ Cue = "/VO/HadesField_0516" },
+
+	-- 			-- Path K
+	-- 			-- To think you're so receptive to this form of discipline!
+	-- 			{ Cue = "/VO/HadesField_0517" },
+	-- 		},
+	-- 		-- Path A
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			UsePlayerSource = true,
+	-- 			RandomRemaining = true,
+	-- 			-- You think I shall go easy on you, boy?
+	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0506" },
+
+	-- 			-- Would be odd of you to start right now!
+	-- 			{ Cue = "/VO/ZagreusField_4548" },
+	-- 			-- What, you mean like last time?
+	-- 			{ Cue = "/VO/ZagreusField_4549" },
+	-- 			-- Think we both know the answer to that one!
+	-- 			{ Cue = "/VO/ZagreusField_4550" },
+	-- 			-- Not really, though, why do you ask?
+	-- 			{ Cue = "/VO/ZagreusField_4551" },
+	-- 			-- I guess we'll find out soon, won't we?
+	-- 			{ Cue = "/VO/ZagreusField_4552" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			RandomRemaining = true,
+	-- 			SuccessiveChanceToPlay = 0.85,
+
+	-- 			-- You know, I think you're right!
+	-- 			{ Cue = "/VO/HadesField_0518", RequiredLastLinePlayed = { "/VO/ZagreusField_4548" }, },
+	-- 			-- You're easily distracted, you know that?
+	-- 			{ Cue = "/VO/HadesField_0519", RequiredLastLinePlayed = { "/VO/ZagreusField_4549" }, },
+	-- 			-- That we most certainly do.
+	-- 			{ Cue = "/VO/HadesField_0520", RequiredLastLinePlayed = { "/VO/ZagreusField_4550" }, },
+	-- 			-- A useless thought is all!
+	-- 			{ Cue = "/VO/HadesField_0521", RequiredLastLinePlayed = { "/VO/ZagreusField_4551" }, },
+	-- 			-- I suppose we shall!
+	-- 			{ Cue = "/VO/HadesField_0522", RequiredLastLinePlayed = { "/VO/ZagreusField_4552" }, },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			UsePlayerSource = true,
+	-- 			SuccessiveChanceToPlay = 0.55,
+
+	-- 			-- Why, thanks!
+	-- 			{ Cue = "/VO/ZagreusField_4598", RequiredLastLinePlayed = { "/VO/HadesField_0518" }, },
+	-- 			-- Good chat!
+	-- 			{ Cue = "/VO/ZagreusField_4599", RequiredLastLinePlayed = { "/VO/HadesField_0518" }, },
+
+	-- 			-- Look at that lovely sky!
+	-- 			{ Cue = "/VO/ZagreusField_4600", RequiredLastLinePlayed = { "/VO/HadesField_0519" }, },
+	-- 			-- Am not!
+	-- 			{ Cue = "/VO/ZagreusField_4601", RequiredLastLinePlayed = { "/VO/HadesField_0519" }, },
+
+	-- 			-- Great!
+	-- 			{ Cue = "/VO/ZagreusField_4602", RequiredLastLinePlayed = { "/VO/HadesField_0520" }, },
+	-- 			-- All right, then!
+	-- 			{ Cue = "/VO/ZagreusField_4603", RequiredLastLinePlayed = { "/VO/HadesField_0520" }, },
+
+	-- 			-- Save it, then!
+	-- 			{ Cue = "/VO/ZagreusField_4604", RequiredLastLinePlayed = { "/VO/HadesField_0521" }, },
+	-- 			-- Well thanks for sharing, anyway!
+	-- 			{ Cue = "/VO/ZagreusField_4605", RequiredLastLinePlayed = { "/VO/HadesField_0521" }, },
+
+	-- 			-- Let's do it then!
+	-- 			{ Cue = "/VO/ZagreusField_4606", RequiredLastLinePlayed = { "/VO/HadesField_0522" }, },
+	-- 		},
+	-- 		-- Path B
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			UsePlayerSource = true,
+	-- 			RandomRemaining = true,
+	-- 			-- You think your mother shall make me go soft, do you?
+	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0507" },
+
+	-- 			-- I'm sure she'll wear you down eventually!
+	-- 			{ Cue = "/VO/ZagreusField_4553" },
+	-- 			-- Who knows? Mother's full of surprises!
+	-- 			{ Cue = "/VO/ZagreusField_4554" },
+	-- 			-- Perish the thought of you being less difficult, Father!
+	-- 			{ Cue = "/VO/ZagreusField_4555" },
+	-- 			-- Is that your deepest fear of late, Father?
+	-- 			{ Cue = "/VO/ZagreusField_4556" },
+	-- 			-- I think you'll get there, yes!
+	-- 			{ Cue = "/VO/ZagreusField_4557" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			RandomRemaining = true,
+	-- 			SuccessiveChanceToPlay = 0.85,
+
+	-- 			-- You treat her with respect!
+	-- 			{ Cue = "/VO/HadesField_0523", RequiredLastLinePlayed = { "/VO/ZagreusField_4553", "/VO/ZagreusField_4554" }, },
+	-- 			-- Do not treat her as you allow yourself with me!
+	-- 			{ Cue = "/VO/HadesField_0524", RequiredLastLinePlayed = { "/VO/ZagreusField_4553", "/VO/ZagreusField_4554" }, },
+	-- 			-- Ah, how could I forget?
+	-- 			{ Cue = "/VO/HadesField_0525", RequiredLastLinePlayed = { "/VO/ZagreusField_4554" }, },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			UsePlayerSource = true,
+	-- 			SuccessiveChanceToPlay = 0.75,
+
+	-- 			-- Same goes for you!
+	-- 			{ Cue = "/VO/ZagreusField_4607", RequiredLastLinePlayed = { "/VO/HadesField_0523", "/VO/HadesField_0524" }, },
+	-- 			-- Worry about yourself!
+	-- 			{ Cue = "/VO/ZagreusField_4608", RequiredLastLinePlayed = { "/VO/HadesField_0523", "/VO/HadesField_0524" }, },
+	-- 			-- Likewise to you!
+	-- 			{ Cue = "/VO/ZagreusField_4609", RequiredLastLinePlayed = { "/VO/HadesField_0523", "/VO/HadesField_0524" }, },
+	-- 			-- No plans for that!
+	-- 			{ Cue = "/VO/ZagreusField_4610", RequiredLastLinePlayed = { "/VO/HadesField_0523", "/VO/HadesField_0524" }, },
+	-- 			-- Old age, it happens!
+	-- 			{ Cue = "/VO/ZagreusField_4611", RequiredLastLinePlayed = { "/VO/HadesField_0525" }, },
+	-- 			-- You've been so busy!
+	-- 			{ Cue = "/VO/ZagreusField_4612", RequiredLastLinePlayed = { "/VO/HadesField_0525" }, },
+	-- 		},
+	-- 		-- Path C
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			UsePlayerSource = true,
+	-- 			RandomRemaining = true,
+	-- 			-- Why don't you clean your chambers so ferociously?
+	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0508" },
+
+	-- 			-- My chambers just aren't as enjoyable to fight!
+	-- 			{ Cue = "/VO/ZagreusField_4558" },
+	-- 			-- What, so they could look like your boring chambers?
+	-- 			{ Cue = "/VO/ZagreusField_4559" },
+	-- 			-- Too busy ransacking through your domain, sorry!
+	-- 			{ Cue = "/VO/ZagreusField_4560" },
+	-- 			-- Why don't you concentrate on fighting back?
+	-- 			{ Cue = "/VO/ZagreusField_4561" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			RandomRemaining = true,
+	-- 			SuccessiveChanceToPlay = 0.85,
+
+	-- 			-- You and your clever wit!
+	-- 			{ Cue = "/VO/HadesField_0556", RequiredLastLinePlayed = { "/VO/ZagreusField_4558" }, },
+	-- 			-- Bah...!
+	-- 			{ Cue = "/VO/HadesField_0555", RequiredLastLinePlayed = { "/VO/ZagreusField_4558" }, },
+	-- 			-- You take that back about my chambers!
+	-- 			{ Cue = "/VO/HadesField_0526", RequiredLastLinePlayed = { "/VO/ZagreusField_4559" }, },
+	-- 			-- What would you know of real work?
+	-- 			{ Cue = "/VO/HadesField_0527", RequiredLastLinePlayed = { "/VO/ZagreusField_4560" }, },
+	-- 			-- I ask the questions here!
+	-- 			{ Cue = "/VO/HadesField_0528", RequiredLastLinePlayed = { "/VO/ZagreusField_4561" }, },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			UsePlayerSource = true,
+	-- 			SuccessiveChanceToPlay = 0.75,
+
+	-- 			-- Nope!
+	-- 			{ Cue = "/VO/ZagreusField_4613", RequiredLastLinePlayed = { "/VO/HadesField_0526" }, },
+	-- 			-- They're boring, I say!
+	-- 			{ Cue = "/VO/ZagreusField_4614", RequiredLastLinePlayed = { "/VO/HadesField_0526" }, },
+
+	-- 			-- This isn't real work?
+	-- 			{ Cue = "/VO/ZagreusField_4615", RequiredLastLinePlayed = { "/VO/HadesField_0527" }, },
+	-- 			-- Just what you've taught me!
+	-- 			{ Cue = "/VO/ZagreusField_4616", RequiredLastLinePlayed = { "/VO/HadesField_0527" }, },
+
+	-- 			-- Whatever you say!
+	-- 			{ Cue = "/VO/ZagreusField_4617", RequiredLastLinePlayed = { "/VO/HadesField_0528" }, },
+	-- 			-- Really?
+	-- 			{ Cue = "/VO/ZagreusField_4618", RequiredLastLinePlayed = { "/VO/HadesField_0528" }, },
+	-- 		},
+	-- 		-- Path D
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			UsePlayerSource = true,
+	-- 			RandomRemaining = true,
+	-- 			-- You'd not have made it here without Olympus, boy!
+	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0509" },
+
+	-- 			-- That's funny, you wouldn't be here without Olympus, either!
+	-- 			{ Cue = "/VO/ZagreusField_4562" },
+	-- 			-- You act like you do everything yourself!
+	-- 			{ Cue = "/VO/ZagreusField_4563" },
+	-- 			-- You should be pleased to have their help!
+	-- 			{ Cue = "/VO/ZagreusField_4564" },
+	-- 			-- And what's your point, exactly, there?
+	-- 			{ Cue = "/VO/ZagreusField_4565" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			RandomRemaining = true,
+	-- 			SuccessiveChanceToPlay = 0.85,
+
+	-- 			-- Bah, blast you, boy!
+	-- 			{ Cue = "/VO/HadesField_0529", RequiredLastLinePlayed = { "/VO/ZagreusField_4562" }, },
+	-- 			-- More than you know!
+	-- 			{ Cue = "/VO/HadesField_0530", RequiredLastLinePlayed = { "/VO/ZagreusField_4563" }, },
+	-- 			-- Oh, I'm delighted, boy!
+	-- 			{ Cue = "/VO/HadesField_0531", RequiredLastLinePlayed = { "/VO/ZagreusField_4564" }, },
+	-- 			-- Someday you'll understand!
+	-- 			{ Cue = "/VO/HadesField_0532", RequiredLastLinePlayed = { "/VO/ZagreusField_4565" }, },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			UsePlayerSource = true,
+	-- 			SuccessiveChanceToPlay = 0.75,
+
+	-- 			-- Blast you right back!
+	-- 			{ Cue = "/VO/ZagreusField_4619", RequiredLastLinePlayed = { "/VO/HadesField_0529" }, },
+	-- 			-- <Chuckle>
+	-- 			{ Cue = "/VO/ZagreusField_4620", RequiredLastLinePlayed = { "/VO/HadesField_0529" }, },
+
+	-- 			-- Well, cheers!
+	-- 			{ Cue = "/VO/ZagreusField_4621", RequiredLastLinePlayed = { "/VO/HadesField_0530" }, },
+	-- 			-- I know a thing or two!
+	-- 			{ Cue = "/VO/ZagreusField_4622", RequiredLastLinePlayed = { "/VO/HadesField_0530" }, },
+
+	-- 			-- I can tell!
+	-- 			{ Cue = "/VO/ZagreusField_4623", RequiredLastLinePlayed = { "/VO/HadesField_0531" }, },
+	-- 			-- Clearly!
+	-- 			{ Cue = "/VO/ZagreusField_4624", RequiredLastLinePlayed = { "/VO/HadesField_0531" }, },
+
+	-- 			-- Ominous!
+	-- 			{ Cue = "/VO/ZagreusField_4625", RequiredLastLinePlayed = { "/VO/HadesField_0532" }, },
+	-- 			-- Sounds good!
+	-- 			{ Cue = "/VO/ZagreusField_4626", RequiredLastLinePlayed = { "/VO/HadesField_0532" }, },
+	-- 		},
+	-- 		-- Path E
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			UsePlayerSource = true,
+	-- 			RandomRemaining = true,
+	-- 			-- Which of our relatives aided you this time, boy?
+	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0510" },
+
+	-- 			-- I'll leave that one for you to figure out!
+	-- 			{ Cue = "/VO/ZagreusField_4566" },
+	-- 			-- Who do you think, Father?
+	-- 			{ Cue = "/VO/ZagreusField_4567" },
+	-- 			-- Oh, quite a few of them, I'll have you know!
+	-- 			{ Cue = "/VO/ZagreusField_4568" },
+	-- 			-- Certainly not you!
+	-- 			{ Cue = "/VO/ZagreusField_4569", RequiredFalseTraits = { "HadesShoutKeepsake" }, },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.5,
+	-- 			RandomRemaining = true,
+	-- 			SuccessiveChanceToPlay = 0.85,
+
+	-- 			-- Enough!
+	-- 			{ Cue = "/VO/HadesField_0551", RequiredLastLinePlayed = { "/VO/ZagreusField_4568", "/VO/ZagreusField_4569" }, },
+	-- 			-- All right!
+	-- 			{ Cue = "/VO/HadesField_0553", RequiredLastLinePlayed = { "/VO/ZagreusField_4568", "/VO/ZagreusField_4569" }, },
+	-- 			-- I think it's time for you to die!
+	-- 			{ Cue = "/VO/HadesField_0533", RequiredLastLinePlayed = { "/VO/ZagreusField_4567" }, },
+	-- 			-- Do not pretend to even care!
+	-- 			{ Cue = "/VO/HadesField_0534", RequiredLastLinePlayed = { "/VO/ZagreusField_4567" }, },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			UsePlayerSource = true,
+	-- 			SuccessiveChanceToPlay = 0.75,
+
+	-- 			-- Well I would beg to differ!
+	-- 			{ Cue = "/VO/ZagreusField_4627", RequiredLastLinePlayed = { "/VO/HadesField_0533" }, },
+	-- 			-- Mm, no thanks!
+	-- 			{ Cue = "/VO/ZagreusField_4628", RequiredLastLinePlayed = { "/VO/HadesField_0533" }, },
+
+	-- 			-- All right, I won't!
+	-- 			{ Cue = "/VO/ZagreusField_4629", RequiredLastLinePlayed = { "/VO/HadesField_0534" }, },
+	-- 			-- Fine!
+	-- 			{ Cue = "/VO/ZagreusField_4630", RequiredLastLinePlayed = { "/VO/HadesField_0534" }, },
+	-- 		},
+	-- 		-- Path F
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			UsePlayerSource = true,
+	-- 			RandomRemaining = true,
+	-- 			-- You mother already begins to coddle you!
+	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0511" },
+
+	-- 			-- Last I checked princes were meant to be coddled!
+	-- 			{ Cue = "/VO/ZagreusField_4570" },
+	-- 			-- It's called showing affection to your children, Father!
+	-- 			{ Cue = "/VO/ZagreusField_4571" },
+	-- 			-- Whatever will you do about it, Father?
+	-- 			{ Cue = "/VO/ZagreusField_4572" },
+	-- 			-- What do you even care?
+	-- 			{ Cue = "/VO/ZagreusField_4573" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			RandomRemaining = true,
+	-- 			SuccessiveChanceToPlay = 0.85,
+
+	-- 			-- Ah, thank you for the information, there!
+	-- 			{ Cue = "/VO/HadesField_0535", RequiredLastLinePlayed = { "/VO/ZagreusField_4570", "/VO/ZagreusField_4571" }, },
+	-- 			-- Please, teach me more, then!
+	-- 			{ Cue = "/VO/HadesField_0536", RequiredLastLinePlayed = { "/VO/ZagreusField_4570", "/VO/ZagreusField_4571", }, },
+	-- 			-- Always such accusations, from you!
+	-- 			{ Cue = "/VO/HadesField_0537", RequiredLastLinePlayed = { "/VO/ZagreusField_4573", }, },
+	-- 			-- You impudent...!
+	-- 			{ Cue = "/VO/HadesField_0549", RequiredLastLinePlayed = { "/VO/ZagreusField_4572", }, },
+	-- 			-- You impertinent...!
+	-- 			{ Cue = "/VO/HadesField_0550", RequiredLastLinePlayed = { "/VO/ZagreusField_4572", }, },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			UsePlayerSource = true,
+	-- 			SuccessiveChanceToPlay = 0.75,
+
+	-- 			-- You're most welcome!
+	-- 			{ Cue = "/VO/ZagreusField_4631", RequiredLastLinePlayed = { "/VO/HadesField_0535" }, },
+	-- 			-- Sure thing!
+	-- 			{ Cue = "/VO/ZagreusField_4632", RequiredLastLinePlayed = { "/VO/HadesField_0535" }, },
+	-- 			-- Happy to!
+	-- 			{ Cue = "/VO/ZagreusField_4633", RequiredLastLinePlayed = { "/VO/HadesField_0536" }, },
+	-- 			-- Always!
+	-- 			{ Cue = "/VO/ZagreusField_4634", RequiredLastLinePlayed = { "/VO/HadesField_0537" }, },
+	-- 		},
+	-- 		-- Path G
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			UsePlayerSource = true,
+	-- 			RandomRemaining = true,
+	-- 			-- I trust you're having a most pleasant evening, boy?
+	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0512" },
+
+	-- 			-- Quite lovely, Father, how about yourself?
+	-- 			{ Cue = "/VO/ZagreusField_4574" },
+	-- 			-- There's a refreshing chill now that you mention it!
+	-- 			{ Cue = "/VO/ZagreusField_4575" },
+	-- 			-- Oh I most definitely am, thank you, Father!
+	-- 			{ Cue = "/VO/ZagreusField_4576" },
+	-- 			-- It could be going better, I suppose!
+	-- 			{ Cue = "/VO/ZagreusField_4577" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			RandomRemaining = true,
+	-- 			SuccessiveChanceToPlay = 0.85,
+
+	-- 			-- Oh, you know, same as ever, here!
+	-- 			{ Cue = "/VO/HadesField_0538", RequiredLastLinePlayed = { "/VO/ZagreusField_4574" }, },
+	-- 			-- Silence!
+	-- 			{ Cue = "/VO/HadesField_0552", RequiredLastLinePlayed = { "/VO/ZagreusField_4574" }, },
+
+	-- 			-- Just as I thought!
+	-- 			{ Cue = "/VO/HadesField_0539", RequiredLastLinePlayed = { "/VO/ZagreusField_4577", }, },
+	-- 			-- And such a shame for that!
+	-- 			{ Cue = "/VO/HadesField_0540", RequiredLastLinePlayed = { "/VO/ZagreusField_4577" }, },
+
+	-- 			-- You impudent...!
+	-- 			{ Cue = "/VO/HadesField_0549", RequiredLastLinePlayed = { "/VO/ZagreusField_4572", }, },
+	-- 			-- You impertinent...!
+	-- 			{ Cue = "/VO/HadesField_0550", RequiredLastLinePlayed = { "/VO/ZagreusField_4572", }, },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			UsePlayerSource = true,
+	-- 			SuccessiveChanceToPlay = 0.75,
+
+	-- 			-- Well, carry on!
+	-- 			{ Cue = "/VO/ZagreusField_4635", RequiredLastLinePlayed = { "/VO/HadesField_0538" }, },
+	-- 			-- Thanks for your concern!
+	-- 			{ Cue = "/VO/ZagreusField_4636", RequiredLastLinePlayed = { "/VO/HadesField_0539" }, },
+	-- 			-- It'll be all right!
+	-- 			{ Cue = "/VO/ZagreusField_4637", RequiredLastLinePlayed = { "/VO/HadesField_0540" }, },
+	-- 		},
+	-- 		-- Path H
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			UsePlayerSource = true,
+	-- 			RandomRemaining = true,
+	-- 			-- Zagreus! Is this the best that you can do?
+	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0513" },
+
+	-- 			-- You'll have to let me know when this is over!
+	-- 			{ Cue = "/VO/ZagreusField_4578" },
+	-- 			-- We'll soon find out I think!
+	-- 			{ Cue = "/VO/ZagreusField_4579" },
+	-- 			-- I'm pretty sure it is!
+	-- 			{ Cue = "/VO/ZagreusField_4580" },
+	-- 			-- You know what, probably not!
+	-- 			{ Cue = "/VO/ZagreusField_4581" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			RandomRemaining = true,
+	-- 			SuccessiveChanceToPlay = 0.85,
+	-- 			RequiredLastLinePlayed = { "/VO/ZagreusField_4568", "/VO/ZagreusField_4578", "/VO/ZagreusField_4579", "/VO/ZagreusField_4580", "/VO/ZagreusField_4581" },
+
+	-- 			-- Enough!
+	-- 			{ Cue = "/VO/HadesField_0551" },
+	-- 			-- Silence!
+	-- 			{ Cue = "/VO/HadesField_0552" },
+	-- 			-- All right!
+	-- 			{ Cue = "/VO/HadesField_0553" },
+	-- 			-- End of discussion, boy!
+	-- 			{ Cue = "/VO/HadesField_0554" },
+	-- 			-- Bah...!
+	-- 			{ Cue = "/VO/HadesField_0555" },
+	-- 			-- You and your clever wit!
+	-- 			{ Cue = "/VO/HadesField_0556" },
+	-- 		},
+	-- 		-- Path I
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			UsePlayerSource = true,
+	-- 			RandomRemaining = true,
+	-- 			-- Zagreus! I trust you had a pleasant journey here?
+	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0515" },
+
+	-- 			-- Oh, absolutely wonderful, thank you!
+	-- 			{ Cue = "/VO/ZagreusField_4586" },
+	-- 			-- It went all right, now that you mention it!
+	-- 			{ Cue = "/VO/ZagreusField_4587" },
+	-- 			-- Quite pleasant, actually!
+	-- 			{ Cue = "/VO/ZagreusField_4588" },
+	-- 			-- It's always pleasant in the Underworld!
+	-- 			{ Cue = "/VO/ZagreusField_4589" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			UsePlayerSource = true,
+	-- 			SuccessiveChanceToPlay = 0.75,
+
+	-- 			-- How truly wonderful to hear.
+	-- 			{ Cue = "/VO/HadesField_0543", RequiredLastLinePlayed = { "/VO/ZagreusField_4586", "/VO/ZagreusField_4587", "/VO/ZagreusField_4588", "/VO/ZagreusField_4577" }, },
+	-- 		},
+	-- 		-- Path J
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			UsePlayerSource = true,
+	-- 			RandomRemaining = true,
+	-- 			-- Zagreus! How fared your plundering of my domain?
+	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0516" },
+
+	-- 			-- It fared just great, thank you for asking, there!
+	-- 			{ Cue = "/VO/ZagreusField_4590" },
+	-- 			-- Could have gone better, though what can you do?
+	-- 			{ Cue = "/VO/ZagreusField_4591" },
+	-- 			-- Not bad at all, this time!
+	-- 			{ Cue = "/VO/ZagreusField_4592" },
+	-- 			-- I've had better escape attempts I think!
+	-- 			{ Cue = "/VO/ZagreusField_4593" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			UsePlayerSource = true,
+	-- 			SuccessiveChanceToPlay = 0.85,
+
+	-- 			-- You're very welcome, boy!
+	-- 			{ Cue = "/VO/HadesField_0541", RequiredLastLinePlayed = { "/VO/ZagreusField_4590" }, },
+	-- 			-- I can do this!
+	-- 			{ Cue = "/VO/HadesField_0544", RequiredLastLinePlayed = { "/VO/ZagreusField_4591" }, },
+	-- 			-- How truly wonderful to hear.
+	-- 			{ Cue = "/VO/HadesField_0543", RequiredLastLinePlayed = { "/VO/ZagreusField_4592" }, },
+	-- 			-- Losing your spirit, same as ever, there!
+	-- 			{ Cue = "/VO/HadesField_0545", RequiredLastLinePlayed = { "/VO/ZagreusField_4593" }, },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			UsePlayerSource = true,
+	-- 			SuccessiveChanceToPlay = 0.75,
+
+	-- 			-- Not just yet!
+	-- 			{ Cue = "/VO/ZagreusField_4638", RequiredLastLinePlayed = { "/VO/HadesField_0545" }, },
+	-- 		},
+	-- 		-- Path K
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			UsePlayerSource = true,
+	-- 			RandomRemaining = true,
+	-- 			SuccessiveChanceToPlay = 0.9,
+	-- 			-- To think you're so receptive to this form of discipline!
+	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0517" },
+
+	-- 			-- And we finally have an activity we can do together!
+	-- 			{ Cue = "/VO/ZagreusField_4594" },
+	-- 			-- Seems like you have a lot to learn about discipline, huh?
+	-- 			{ Cue = "/VO/ZagreusField_4595" },
+	-- 			-- We gods do like to fight!
+	-- 			{ Cue = "/VO/ZagreusField_4596" },
+	-- 			-- Discipline, that's what we're calling it?
+	-- 			{ Cue = "/VO/ZagreusField_4597" },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			RandomRemaining = true,
+	-- 			SuccessiveChanceToPlay = 0.85,
+
+	-- 			-- Ah, yes, indeed!
+	-- 			{ Cue = "/VO/HadesField_0546", RequiredLastLinePlayed = { "/VO/ZagreusField_4594", "/VO/ZagreusField_4575", "/VO/ZagreusField_4576" }, },
+	-- 			-- We've all a lot to learn, I think!
+	-- 			{ Cue = "/VO/HadesField_0547", RequiredLastLinePlayed = { "/VO/ZagreusField_4595" }, },
+	-- 			-- Incorrigible brat!
+	-- 			{ Cue = "/VO/HadesField_0548", RequiredLastLinePlayed = { "/VO/ZagreusField_4595" }, },
+	-- 			-- How thoughtful, there, indeed!
+	-- 			{ Cue = "/VO/HadesField_0542", RequiredLastLinePlayed = { "/VO/ZagreusField_4595" }, },
+	-- 			-- Silence!
+	-- 			{ Cue = "/VO/HadesField_0552", RequiredLastLinePlayed = { "/VO/ZagreusField_4597" }, },
+	-- 			-- I think it's time for you to die!
+	-- 			{ Cue = "/VO/HadesField_0533", RequiredLastLinePlayed = { "/VO/ZagreusField_4596" }, },
+	-- 		},
+	-- 		{
+	-- 			PreLineWait = 0.4,
+	-- 			BreakIfPlayed = true,
+	-- 			RandomRemaining = true,
+	-- 			UsePlayerSource = true,
+	-- 			SuccessiveChanceToPlay = 0.75,
+
+	-- 			-- Well, carry on!
+	-- 			{ Cue = "/VO/ZagreusField_4635", RequiredLastLinePlayed = { "/VO/HadesField_0538" }, },
+	-- 			-- Thanks for your concern!
+	-- 			{ Cue = "/VO/ZagreusField_4636", RequiredLastLinePlayed = { "/VO/HadesField_0539" }, },
+	-- 			-- It'll be all right!
+	-- 			{ Cue = "/VO/ZagreusField_4637", RequiredLastLinePlayed = { "/VO/HadesField_0540" }, },
+	-- 		},
+	-- 	},
+	-- 	-- pre-ending
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.65,
+	-- 		SuccessiveChanceToPlay = 0.25,
+	-- 		TriggerCooldowns = { "HadesAnyQuipSpeech", "HadesSummonSpawnsSpeech", "HadesGoneInvisSpeech" },
+	-- 		RequiredFalseTextLines = { "Ending01" },
+	-- 		Cooldowns =
+	-- 		{
+	-- 			{ Name = "FatherSonArgumentSpeech", Time = 300 },
+	-- 			{ Name = "HadesStageSwitchSpeech",  Time = 70 },
+	-- 			{ Name = "ZagStageSwitchSpeech",    Time = 70 },
+	-- 		},
+
+	-- 		-- Path A
+	-- 		-- You dare lash out against me like this, boy?
+	-- 		{ Cue = "/VO/HadesField_0155" },
+	-- 		-- You really think you can just walk away?
+	-- 		{ Cue = "/VO/HadesField_0359", RequiredPlayed = { "/VO/HadesField_0155" } },
+	-- 		-- You dare attempt to vanquish me, again?
+	-- 		{ Cue = "/VO/HadesField_0360", RequiresLastRunCleared = true,              RequiredPlayed = { "/VO/HadesField_0155" } },
+	-- 		-- You truly think this surface is where you belong?
+	-- 		{ Cue = "/VO/HadesField_0361", RequiredPlayed = { "/VO/HadesField_0155" } },
+	-- 		-- Do you even realize what you're doing, boy?
+	-- 		{ Cue = "/VO/HadesField_0362", RequiredPlayed = { "/VO/HadesField_0155" } },
+
+	-- 		-- Path B
+	-- 		-- Why do you keep up this foolishness?
+	-- 		{ Cue = "/VO/HadesField_0158", RequiredPlayed = { "/VO/HadesField_0155" } },
+	-- 		-- Why do you keep doing this, time after blasted time?
+	-- 		{ Cue = "/VO/HadesField_0363", RequiredPlayed = { "/VO/HadesField_0155" } },
+	-- 		-- Why have you forced me to confront you here, again?
+	-- 		{ Cue = "/VO/HadesField_0364", RequiredPlayed = { "/VO/HadesField_0155" } },
+	-- 		-- Why do you wish to die repeatedly like this?
+	-- 		{ Cue = "/VO/HadesField_0365", RequiredPlayed = { "/VO/HadesField_0155" } },
+	-- 		-- Why have you come all this way, again?
+	-- 		{ Cue = "/VO/HadesField_0366", RequiredPlayed = { "/VO/HadesField_0155" } },
+
+	-- 		-- Path C
+	-- 		-- You've no control over your brutish strength!
+	-- 		{ Cue = "/VO/HadesField_0216", RequiredPlayed = { "/VO/HadesField_0155" }, CooldownName = "SaidStrengthRecently",     CooldownTime = 40, },
+	-- 		-- That brutish strength of yours! How like your relatives you are!
+	-- 		{ Cue = "/VO/HadesField_0367", RequiredPlayed = { "/VO/HadesField_0155" }, CooldownName = "SaidStrengthRecently",     CooldownTime = 40, },
+	-- 		-- You lack the proper form! Pure brutish strength!
+	-- 		{ Cue = "/VO/HadesField_0368", RequiredPlayed = { "/VO/HadesField_0155" }, CooldownName = "SaidStrengthRecently",     CooldownTime = 40, },
+	-- 		-- Is this another showing of your brutish strength?
+	-- 		{ Cue = "/VO/HadesField_0369", RequiredPlayed = { "/VO/HadesField_0155" }, CooldownName = "SaidStrengthRecently",     CooldownTime = 40, },
+
+	-- 		-- Path D
+	-- 		-- What shall it take for you to cease with this madness?
+	-- 		{ Cue = "/VO/HadesField_0217", RequiredPlayed = { "/VO/HadesField_0155" } },
+	-- 		-- What shall it take for all of this to end?
+	-- 		{ Cue = "/VO/HadesField_0370", RequiredPlayed = { "/VO/HadesField_0155" } },
+	-- 		-- What shall it take for you to cease making me face you here?
+	-- 		{ Cue = "/VO/HadesField_0371", RequiredPlayed = { "/VO/HadesField_0155" } },
+	-- 		-- What shall it take for you to stop this foolishness?
+	-- 		{ Cue = "/VO/HadesField_0372", RequiredPlayed = { "/VO/HadesField_0155" } },
+	-- 		-- What is it going to take for you to get some sense into your head?
+	-- 		{ Cue = "/VO/HadesField_0373", RequiredPlayed = { "/VO/HadesField_0155" } },
+	-- 	},
+	-- 	-- Path A
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.85,
+	-- 		-- You dare lash out against me like this, boy?
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0155", "/VO/HadesField_0359", "/VO/HadesField_0360", "/VO/HadesField_0361", "/VO/HadesField_0362" },
+
+	-- 		-- I do!
+	-- 		{ Cue = "/VO/ZagreusField_2291" },
+	-- 		-- That's right!
+	-- 		{ Cue = "/VO/ZagreusField_2292" },
+	-- 		-- What do you think, Father?
+	-- 		{ Cue = "/VO/ZagreusField_2293" },
+	-- 		-- I guess so!
+	-- 		{ Cue = "/VO/ZagreusField_2294" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.75,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2293" },
+
+	-- 		-- I think that you are an ignoble brat!
+	-- 		{ Cue = "/VO/HadesField_0156" },
+	-- 		-- I think you are wasting your time.
+	-- 		{ Cue = "/VO/HadesField_0157" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.65,
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0156" },
+
+	-- 		-- Oh you'll think better of me soon!
+	-- 		{ Cue = "/VO/ZagreusField_2295" },
+	-- 		-- And I am shocked to hear it!
+	-- 		{ Cue = "/VO/ZagreusField_2296" },
+	-- 		-- And I think you're a miserable failure as a father!
+	-- 		{ Cue = "/VO/ZagreusField_2297" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.5,
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0157" },
+
+	-- 		-- It's my time to do with as I please!
+	-- 		{ Cue = "/VO/ZagreusField_2298" },
+	-- 		-- I don't care what you think!
+	-- 		{ Cue = "/VO/ZagreusField_2299" },
+	-- 		-- Oh this isn't a waste of time at all!
+	-- 		{ Cue = "/VO/ZagreusField_2300" },
+	-- 	},
+	-- 	-- Path B
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.85,
+	-- 		-- Why do you keep up this foolishness?
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0158", "/VO/HadesField_0363", "/VO/HadesField_0364", "/VO/HadesField_0365", "/VO/HadesField_0366" },
+
+	-- 		-- It beats having to live within your House!
+	-- 		{ Cue = "/VO/ZagreusField_2301" },
+	-- 		-- You know exactly why!
+	-- 		{ Cue = "/VO/ZagreusField_2302" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.75,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2301" },
+
+	-- 		-- Would that you could be useful there from time to time!
+	-- 		{ Cue = "/VO/HadesField_0159" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.75,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2302" },
+	-- 		RequiredFalseTextLines = { "PersephoneFirstMeeting" },
+
+	-- 		-- You shall never find her! She is gone!
+	-- 		{ Cue = "/VO/HadesField_0160" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.65,
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0159" },
+
+	-- 		-- You'd like that, wouldn't you?
+	-- 		{ Cue = "/VO/ZagreusField_2303" },
+	-- 		-- Would that you could shut up and fight!
+	-- 		{ Cue = "/VO/ZagreusField_2304" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.65,
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0160" },
+
+	-- 		-- Liar! Why should I trust a single word you say?
+	-- 		{ Cue = "/VO/ZagreusField_2305" },
+	-- 		-- No! She's out there. I know it!
+	-- 		{ Cue = "/VO/ZagreusField_2306" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.55,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2305" },
+
+	-- 		-- You're but a simple fool!
+	-- 		{ Cue = "/VO/HadesField_0161" },
+	-- 		-- All that I've told you is for your own good.
+	-- 		{ Cue = "/VO/HadesField_0162" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.55,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2306" },
+
+	-- 		-- She's gone, I say!
+	-- 		{ Cue = "/VO/HadesField_0163" },
+	-- 		-- You know nothing!
+	-- 		{ Cue = "/VO/HadesField_0164" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.55,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2303" },
+
+	-- 		-- You'd like to perish, wouldn't you?!
+	-- 		{ Cue = "/VO/HadesField_0165" },
+	-- 		-- What would you know of it!
+	-- 		{ Cue = "/VO/HadesField_0166" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.55,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2304" },
+
+	-- 		-- Oh I can do just that.
+	-- 		{ Cue = "/VO/HadesField_0167" },
+	-- 		-- I'll happily oblige.
+	-- 		{ Cue = "/VO/HadesField_0168" },
+	-- 	},
+	-- 	-- Path C
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		SuccessiveChanceToPlay = 0.85,
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0216", "/VO/HadesField_0367", "/VO/HadesField_0368", "/VO/HadesField_0369" },
+
+	-- 		-- I'll show you brutish strength!
+	-- 		{ Cue = "/VO/ZagreusField_2412" },
+	-- 		-- Not interested in the analysis now, Father!
+	-- 		{ Cue = "/VO/ZagreusField_2413" },
+	-- 	},
+	-- 	-- C_1
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.85,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2412" },
+
+	-- 		-- And I'll show you the might that vanquished the Titans themselves.
+	-- 		{ Cue = "/VO/HadesField_0218" },
+	-- 		-- No! You're holding back, as always.
+	-- 		{ Cue = "/VO/HadesField_0219" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		SuccessiveChanceToPlay = 0.75,
+	-- 		-- And I'll show you the might that vanquished the Titans themselves.
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0218" },
+
+	-- 		-- I'm not afraid of you!
+	-- 		{ Cue = "/VO/ZagreusField_2416", PreLineWait = 0.7 },
+	-- 		-- I'll have you join them soon!
+	-- 		{ Cue = "/VO/ZagreusField_2417" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		SuccessiveChanceToPlay = 0.75,
+	-- 		-- No! You're holding back, as always.
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0219" },
+
+	-- 		-- Am I brutish or am I holding back? Make up your blasted mind!
+	-- 		{ Cue = "/VO/ZagreusField_2418" },
+	-- 		-- You want me to go all out? Then fine!
+	-- 		{ Cue = "/VO/ZagreusField_2419" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2416" },
+
+	-- 		-- You ought to be.
+	-- 		{ Cue = "/VO/HadesField_0226" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2417" },
+
+	-- 		-- You impudent...!
+	-- 		{ Cue = "/VO/HadesField_0227" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2418" },
+
+	-- 		-- I'll make you regret this.
+	-- 		{ Cue = "/VO/HadesField_0228" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2419" },
+	-- 		PreLineWait = 0.4,
+
+	-- 		-- Fine!
+	-- 		{ Cue = "/VO/HadesField_0229" },
+	-- 	},
+	-- 	-- C_2
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.55,
+	-- 		-- Not interested in the analysis now, Father!
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2413" },
+
+	-- 		-- You have no inkling of what you need.
+	-- 		{ Cue = "/VO/HadesField_0220" },
+	-- 		-- Oh I think it's the perfect time.
+	-- 		{ Cue = "/VO/HadesField_0221" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		SuccessiveChanceToPlay = 0.75,
+	-- 		-- You have no inkling of what you need.
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0220" },
+
+	-- 		-- I said shut up with the analysis!
+	-- 		{ Cue = "/VO/ZagreusField_2420" },
+	-- 		-- I need you to quit blathering and fight!
+	-- 		{ Cue = "/VO/ZagreusField_2421" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		SuccessiveChanceToPlay = 0.85,
+	-- 		-- Oh I think it's the perfect time.
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0221" },
+
+	-- 		-- Oh I disagree!
+	-- 		{ Cue = "/VO/ZagreusField_2422" },
+	-- 		-- Well then, let's hear it!
+	-- 		{ Cue = "/VO/ZagreusField_2423" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		PreLineWait = 0.4,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2420" },
+
+	-- 		-- Unfilial oaf!
+	-- 		{ Cue = "/VO/HadesField_0235" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2421" },
+	-- 		PreLineWait = 0.3,
+
+	-- 		-- Happily.
+	-- 		{ Cue = "/VO/HadesField_0231" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2422" },
+
+	-- 		-- I thought you might!
+	-- 		{ Cue = "/VO/HadesField_0232" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2423" },
+
+	-- 		-- You'd not listen even if I did!
+	-- 		{ Cue = "/VO/HadesField_0233" },
+	-- 	},
+	-- 	-- Path D
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		SuccessiveChanceToPlay = 0.85,
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0217", "/VO/HadesField_0370", "/VO/HadesField_0371", "/VO/HadesField_0372", "/VO/HadesField_0373" },
+
+	-- 		-- You know exactly what it's going to take!
+	-- 		{ Cue = "/VO/ZagreusField_2414" },
+	-- 		-- It'll take you getting out of my blasted way!
+	-- 		{ Cue = "/VO/ZagreusField_2415" },
+	-- 	},
+	-- 	-- D_1
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.85,
+	-- 		-- You know exactly what it's going to take!
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2291", "/VO/ZagreusField_2292", "/VO/ZagreusField_2294", "/VO/ZagreusField_2414" },
+
+	-- 		-- Stubborn oaf!
+	-- 		{ Cue = "/VO/HadesField_0222" },
+	-- 		-- What you desire is impossible!
+	-- 		{ Cue = "/VO/HadesField_0223" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		SuccessiveChanceToPlay = 0.75,
+	-- 		-- Stubborn oaf!
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0222" },
+
+	-- 		-- Miserable husk of a man!
+	-- 		{ Cue = "/VO/ZagreusField_2424" },
+	-- 		-- Wretched excuse for a father!
+	-- 		{ Cue = "/VO/ZagreusField_2425" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.4,
+	-- 		SuccessiveChanceToPlay = 0.75,
+	-- 		-- What you desire is impossible!
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0223" },
+
+	-- 		-- We'll see!
+	-- 		{ Cue = "/VO/ZagreusField_2426" },
+	-- 		-- Like you would know!
+	-- 		{ Cue = "/VO/ZagreusField_2427" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.65,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2424" },
+
+	-- 		-- What would you know of misery?!
+	-- 		{ Cue = "/VO/HadesField_0234" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.65,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2425" },
+
+	-- 		-- Such utter disrespect!
+	-- 		{ Cue = "/VO/HadesField_0230" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.65,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2426" },
+
+	-- 		-- We certainly shall!
+	-- 		{ Cue = "/VO/HadesField_0236" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.45,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2427" },
+
+	-- 		-- I do, you idiot!
+	-- 		{ Cue = "/VO/HadesField_0237" },
+	-- 	},
+	-- 	-- D_2
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.4,
+	-- 		ChanceToPlay = 0.85,
+	-- 		-- It'll take you getting out of my blasted way!
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2415" },
+
+	-- 		-- You cannot talk to me that way!
+	-- 		{ Cue = "/VO/HadesField_0224" },
+	-- 		-- No; that shall accomplish nothing.
+	-- 		{ Cue = "/VO/HadesField_0225" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.3,
+	-- 		SuccessiveChanceToPlay = 0.75,
+	-- 		-- You cannot talk to me that way!
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0224" },
+
+	-- 		-- Well I just did!
+	-- 		{ Cue = "/VO/ZagreusField_2428" },
+	-- 		-- And you cannot treat me this way!
+	-- 		{ Cue = "/VO/ZagreusField_2429" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		UsePlayerSource = true,
+	-- 		PreLineWait = 0.3,
+	-- 		SuccessiveChanceToPlay = 0.75,
+	-- 		-- No; that shall accomplish nothing.
+	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0225" },
+
+	-- 		-- Let's test that theory!
+	-- 		{ Cue = "/VO/ZagreusField_2530" },
+	-- 		-- Oh I think it shall!
+	-- 		{ Cue = "/VO/ZagreusField_2531" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.3,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		-- Well I just did!
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2428" },
+
+	-- 		-- You won't do it again.
+	-- 		{ Cue = "/VO/HadesField_0238" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.3,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		-- And you cannot treat me this way!
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2429" },
+
+	-- 		-- I'll treat you as you deserve.
+	-- 		{ Cue = "/VO/HadesField_0239" },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.3,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		-- Let's test that theory!
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2530" },
+
+	-- 		-- Happily.
+	-- 		{ Cue = "/VO/HadesField_0231" },
+	-- 		-- Fine!
+	-- 		{ Cue = "/VO/HadesField_0229", PreLineWait = 0.25, },
+	-- 	},
+	-- 	{
+	-- 		RandomRemaining = true,
+	-- 		PreLineWait = 0.3,
+	-- 		SuccessiveChanceToPlay = 0.35,
+	-- 		-- Oh I think it shall!
+	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2531" },
+
+	-- 		-- I thought you might!
+	-- 		{ Cue = "/VO/HadesField_0232" },
+	-- 		-- You impudent...!
+	-- 		{ Cue = "/VO/HadesField_0227", PreLineWait = 0.65 },
+	-- 	},
+	-- },
 	-- Ending
 	HadesSighVoiceLines = {
 		BreakIfPlayed = true,
@@ -2438,7 +2438,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		},
 		{
 			PreLineWait = 4,
-			ObjectType = "NPC_Persephone_01",
+			ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
 			SkipAnim = true,
 			-- Snow everywhere... Mother...
 			-- Replace Persephone_ with Megaera_2

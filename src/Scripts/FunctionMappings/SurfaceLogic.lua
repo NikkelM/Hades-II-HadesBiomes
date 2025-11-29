@@ -447,9 +447,6 @@ function mod.HandleReturnBoatRideOutro(eventSource, args)
 	local heroBoatId = GetClosest({ Id = heroId, DestinationIds = invisibleTargets })
 	local persephoneId = GetClosestUnitOfType({ Id = heroId, DestinationName = "ModsNikkelMHadesBiomes_NPC_Persephone_01" })
 
-	-- These don't exist in Hades
-	-- game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.EndBoatRideVoiceLines, true)
-
 	PlaySound({ Name = "/Leftovers/World Sounds/Caravan Interior/NauticalBellCharonCenter", Id = heroBoatId })
 
 	game.wait(1)
@@ -523,7 +520,6 @@ function mod.FullScreenFadeOutAnimationBoatRide(color)
 		Group = "Overlay"
 	})
 	SetAnimation({ DestinationId = game.ScreenAnchors.Transition, Name = "RoomTransitionInBoatRide" })
-	PlaySound({ Name = "/Leftovers/Menu Sounds/InfoPanelOutURSA" })
 	game.wait(2.0)
 
 	game.ShowCombatUI("BoatRide")
@@ -602,7 +598,7 @@ function mod.HandleReturnBoatRide(eventSource, args)
 	Move({ Id = boatId, DestinationId = boatMoveTargetId, Speed = 125, SuccessDistance = 30 })
 
 	local notifyName = "WithinDistance" .. boatMoveTargetId
-	NotifyWithinDistance({ Id = boatId, DestinationId = boatMoveTargetId, Distance = 200, Notify = notifyName })
+	NotifyWithinDistance({ Id = boatId, DestinationId = boatMoveTargetId, Distance = 210, Notify = notifyName })
 	game.waitUntil(notifyName)
 
 	if args.NextMap ~= nil then
@@ -700,6 +696,7 @@ function mod.BoatToDeathAreaTransition(eventSource, args)
 
 	-- Hacky: Add Ending01 to the TextLinesRecord, as we skip it, but a lot of other things check for it
 	game.GameState.TextLinesRecord["Ending01"] = true
+	game.CurrentRun.TextLinesRecord["Ending01"] = true
 	-- Block Dora from spawning this run to prevent her interrupting the portrait scene
 	game.CurrentRun.BlockDoraSpawn = true
 
@@ -845,7 +842,7 @@ function mod.ViewModdedPortraitPresentation(eventSource, args)
 		Y = game.ScreenCenterY,
 		Group = "Overlay"
 	})
-	SetScale({ Id = portraitId, Fraction = 1.9 })
+	SetScale({ Id = portraitId, Fraction = 1.8 })
 	SetAlpha({ Id = portraitId, Fraction = 0.0, Duration = 0 })
 	SetAlpha({ Id = portraitId, Fraction = 1.0, Duration = 1.0 })
 	SetAnimation({ Name = args.PortraitAnimationName, DestinationId = portraitId })

@@ -20,15 +20,19 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 					PlaySound({ Name = "/Leftovers/World Sounds/MapZoomSlow" })
 				end
 				game.ProcessTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets)
+				-- Custom for Hades EM
+				game.ProcessTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets)
 				game.ProcessTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets)
 				game.ProcessTextLines(enemy, enemy.BossPresentationIntroTextLineSets)
 				game.ProcessTextLines(enemy, enemy.BossPresentationTextLineSets)
 				game.ProcessTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
 				if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets) then
-					if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets) then
-						if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationIntroTextLineSets) then
-							if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationTextLineSets) then
-								game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
+					if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets) then
+						if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets) then
+							if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationIntroTextLineSets) then
+								if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationTextLineSets) then
+									game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
+								end
 							end
 						end
 					end

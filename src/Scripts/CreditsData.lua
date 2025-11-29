@@ -155,7 +155,7 @@ mod.CreditsData = {
 	Return01 = {
 		{ PreWait = 12 },
 
-		{ CreateScreenObstacle = "EndCreditsVignette",                          X = -2,                             Y = 540,                         SkipScreenAnchors = true },
+		{ CreateScreenObstacle = "EndCreditsVignette",                          X = -2,                                  Y = 540,                         SkipScreenAnchors = true },
 
 		-- Mod Credits
 		{ CreditLineBuffer = 100 },
@@ -171,15 +171,19 @@ mod.CreditsData = {
 		{ PreWait = 1.71 },
 
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Info_Special_Shoutouts", Format = mod.CreditsFormat.Name },
-		{ CreditLineBuffer = 80 },
+		{ CreditLineBuffer = 60 },
 
 		{ PreWait = 1.1 },
 
-		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Craft_iDeath",           X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Craft },
-		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Craft_burn",             X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Craft },
+		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Craft_iDeath",           X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Craft },
+		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Craft_Magic",            X = mod.CreditSpacing.ColumnRight,      Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
-		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_iDeath",            X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
-		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_burn",              X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
+		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_iDeath",            X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Name },
+		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_Magic",             X = mod.CreditSpacing.ColumnRight,      Format = mod.CreditsFormat.Name },
+		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferNameToNextCraft },
+		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Craft_burn",             X = mod.CreditSpacing.ColumnCenter,       Format = mod.CreditsFormat.Craft },
+		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
+		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_burn",              X = mod.CreditSpacing.ColumnCenter,       Format = mod.CreditsFormat.Name },
 
 		{ PreWait = 2.35 },
 		{ CreditLineBuffer = 190 },
@@ -199,96 +203,96 @@ mod.CreditsData = {
 		{ ClearScreen = true },
 
 		-- Supergiant
-		{ CreateScreenObstacle = "EndCreditsSupergiantLogo",                    X = game.ScreenCenterX - 530,       Y = screenTop + 25 },
+		{ CreateScreenObstacle = "EndCreditsSupergiantLogo",                    X = game.ScreenCenterX - 530,            Y = screenTop + 25 },
 
 		{ CreditLineBuffer = 192 },
 
 		{ PreWait = 2.3 },
 
-		{ Text = "InGameCredits_Craft_Amir",                                    X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Craft },
-		{ Text = "InGameCredits_Craft_Gavin",                                   X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Amir",                                    X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Gavin",                                   X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
-		{ Text = "InGameCredits_Name_Amir",                                     X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
-		{ Text = "InGameCredits_Name_Gavin",                                    X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Amir",                                     X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Gavin",                                    X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Name },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferNameToNextCraft },
 
 		{ PreWait = 0.3 },
 
-		{ Text = "InGameCredits_Craft_Greg",                                    X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Craft },
-		{ Text = "InGameCredits_Craft_Andrew",                                  X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Greg",                                    X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Andrew",                                  X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
-		{ Text = "InGameCredits_Name_Greg",                                     X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
-		{ Text = "InGameCredits_Name_Andrew",                                   X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Greg",                                     X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Andrew",                                   X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Name },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferNameToNextCraft },
 
 		{ PreWait = 0.3 },
 
-		{ Text = "InGameCredits_Craft_Darren",                                  X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Craft },
-		{ Text = "InGameCredits_Craft_Jen",                                     X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Darren",                                  X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Jen",                                     X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
-		{ Text = "InGameCredits_Name_Darren",                                   X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
-		{ Text = "InGameCredits_Name_Jen",                                      X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Darren",                                   X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Jen",                                      X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Name },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferNameToNextCraft },
 
 		{ PreWait = 0.3 },
 
-		{ Text = "InGameCredits_Craft_Josh",                                    X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Craft },
-		{ Text = "InGameCredits_Craft_JP",                                      X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Josh",                                    X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_JP",                                      X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
-		{ Text = "InGameCredits_Name_Josh",                                     X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
-		{ Text = "InGameCredits_Name_JP",                                       X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Josh",                                     X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_JP",                                       X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Name },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferNameToNextCraft },
 
 		{ PreWait = 0.3 },
 
-		{ Text = "InGameCredits_Craft_Dexter",                                  X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Craft },
-		{ Text = "InGameCredits_Craft_Ed",                                      X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Dexter",                                  X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Ed",                                      X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
-		{ Text = "InGameCredits_Name_Dexter",                                   X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
-		{ Text = "InGameCredits_Name_Ed",                                       X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Dexter",                                   X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Ed",                                       X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Name },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferNameToNextCraft },
 
 		{ PreWait = 0.3 },
 
-		{ Text = "InGameCredits_Craft_Alice",                                   X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Craft },
-		{ Text = "InGameCredits_Craft_Joanne",                                  X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Alice",                                   X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Joanne",                                  X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
-		{ Text = "InGameCredits_Name_Alice",                                    X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
-		{ Text = "InGameCredits_Name_Joanne",                                   X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Alice",                                    X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Joanne",                                   X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Name },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferNameToNextCraft },
 
 		{ PreWait = 0.3 },
 
-		{ Text = "InGameCredits_Craft_Caitlin",                                 X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Craft },
-		{ Text = "InGameCredits_Craft_Paige",                                   X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Caitlin",                                 X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Paige",                                   X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
-		{ Text = "InGameCredits_Name_Caitlin",                                  X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
-		{ Text = "InGameCredits_Name_Paige",                                    X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Caitlin",                                  X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Paige",                                    X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Name },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferNameToNextCraft },
 
 		{ PreWait = 0.3 },
 
-		{ Text = "InGameCredits_Craft_Thinh",                                   X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Craft },
-		{ Text = "InGameCredits_Craft_Will",                                    X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Thinh",                                   X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Will",                                    X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
-		{ Text = "InGameCredits_Name_Thinh",                                    X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
-		{ Text = "InGameCredits_Name_Will",                                     X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Thinh",                                    X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Will",                                     X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Name },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferNameToNextCraft },
 
 		{ PreWait = 0.3 },
 
-		{ Text = "InGameCredits_Craft_Nikola",                                  X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Craft },
-		{ Text = "InGameCredits_Craft_Jesse",                                   X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Nikola",                                  X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Jesse",                                   X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
-		{ Text = "InGameCredits_Name_Nikola",                                   X = mod.CreditSpacing.ColumnLeft,   Format = mod.CreditsFormat.Name },
-		{ Text = "InGameCredits_Name_Jesse",                                    X = mod.CreditSpacing.ColumnRight,  Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Nikola",                                   X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Jesse",                                    X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Name },
 		{ CreditLineBuffer = 44 },
 
 		{ PreWait = 0.3 },
 
-		{ Text = "InGameCredits_Craft_Logan",                                   X = mod.CreditSpacing.ColumnCenter, Format = mod.CreditsFormat.Craft },
+		{ Text = "InGameCredits_Craft_Logan",                                   X = mod.CreditSpacing.ColumnCenter,      Format = mod.CreditsFormat.Craft },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
-		{ Text = "InGameCredits_Name_Logan",                                    X = mod.CreditSpacing.ColumnCenter, Format = mod.CreditsFormat.Name },
+		{ Text = "InGameCredits_Name_Logan",                                    X = mod.CreditSpacing.ColumnCenter,      Format = mod.CreditsFormat.Name },
 
 		{ PreWait = 9.0 },
 

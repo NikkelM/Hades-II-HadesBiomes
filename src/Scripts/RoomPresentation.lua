@@ -45,7 +45,7 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 
 		if currentRun.CurrentRoom.Name == "Return06" then
 			-- For the ending scene
-			mod.BoatToDeathAreaTransition(nil, args)
+			return mod.BoatToDeathAreaTransition(nil, args)
 		elseif currentRun.CurrentRoom.Name == "E_Story01" then
 			-- Only replace animation if we are on the Surface after talking to Persephone
 			AddInputBlock({ Name = "DeathPresentation" })
