@@ -5,6 +5,7 @@ local hadesProjectilesTable = mod.DecodeSjsonFile(hadesProjectilesFile)
 local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Projectiles\\PlayerProjectiles.sjson")
 
 -- Projectiles that are defined in a different file and therefore not caught by AddTableKeysSkipDupes()
+-- Or for compatibility with other mods, or we simply don't need them
 local projectilesToRemove = {
 	"1_BaseEnemyMagicProjectile",
 	"1_BaseTrapProjectile",
@@ -22,11 +23,6 @@ local projectilesToRemove = {
 	"BloodlessPitcherDeathLob",
 	"BloodlessSelfDestructDeathLob",
 	"BloodlessWaveFistWeapon",
-	"DevotionZeus",
-	"DevotionPoseidon",
-	"DevotionAphrodite",
-	"DevotionAres",
-	"DevotionDemeter",
 	"SmokeTrapWeapon",
 	"ExplosiveBlast",
 	"BlastCubeExplosion",
@@ -39,6 +35,13 @@ local projectilesToRemove = {
 	"LightningAura",
 	"PoisonPuddle",
 	"PoisonPuddleSmall",
+	-- Duplicates & Droppable Gods compatibility
+	-- Can't remove the other Devotion weapons as Theseus needs them for his Wrath attacks
+	"DevotionZeus",
+	"DevotionPoseidon",
+	"DevotionAphrodite",
+	"DevotionAres",
+	"DevotionDemeter",
 }
 
 -- Modifications/overrides to the Hades enemy projectiles

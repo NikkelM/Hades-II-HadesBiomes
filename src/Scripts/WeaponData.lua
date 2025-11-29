@@ -1677,6 +1677,21 @@ local weaponModifications = {
 		},
 	},
 	-- #endregion
+
+	-- #region DEVOTION
+	-- Compatibility: Droppable Gods
+	DevotionZeus = mod.NilValue,
+	DevotionArtemis_ALT = mod.NilValue,
+	DevotionArtemis	= mod.NilValue,
+	DevotionPoseidon_ALT = mod.NilValue,
+	DevotionAres = mod.NilValue,
+	DevotionDionysus_ALT = mod.NilValue,
+	DevotionDionysus = mod.NilValue,
+	DevotionAthena = mod.NilValue,
+	DevotionAphrodite = mod.NilValue,
+	DevotionDionysus2 = mod.NilValue,
+	DevotionDemeter = mod.NilValue,
+	-- #endregion
 }
 
 local renamedWeaponModifications = {}
