@@ -2069,6 +2069,18 @@ local enemyModifications = {
 		WeaponName = "AxeTrapWeapon",
 	},
 	-- #endregion
+
+	-- #region DEVOTION
+	-- Compatibility: Droppable Gods
+	ZeusUpgradeRoomWeapon = mod.NilValue,
+	DionysusUpgradeRoomWeapon = mod.NilValue,
+	DemeterUpgradeRoomWeapon = mod.NilValue,
+	AresUpgradeRoomWeapon = mod.NilValue,
+	ArtemisUpgradeRoomWeapon = mod.NilValue,
+	AphroditeUpgradeRoomWeapon = mod.NilValue,
+	AthenaUpgradeRoomWeapon = mod.NilValue,
+	PoseidonUpgradeRoomWeapon = mod.NilValue,
+	-- #endregion
 }
 
 -- Some keys were renamed in the DefaultAIData property

@@ -16,6 +16,22 @@ for oldName, newName in pairs(mod.EnemyProjectileMappings) do
 	mod.UpdateField(hadesWeaponsTable.Weapons, oldName, newName, { "Projectile" }, "EnemyWeapons.sjson")
 end
 
+-- Could be for compatibility reasons, or because we simply don't need them
+local weaponsToRemove = {
+	-- Compatibility: Droppable Gods
+	"DevotionZeus",
+	"DevotionArtemis_ALT",
+	"DevotionArtemis",
+	"DevotionPoseidon_ALT",
+	"DevotionAres",
+	"DevotionDionysus_ALT",
+	"DevotionDionysus",
+	"DevotionAthena",
+	"DevotionAphrodite",
+	"DevotionDionysus2",
+	"DevotionDemeter",
+}
+
 -- Remove duplicates
 hadesWeaponsTable.Weapons = mod.AddTableKeysSkipDupes(hadesTwoWeaponsTable.Weapons, hadesWeaponsTable.Weapons, "Name")
 
@@ -107,8 +123,16 @@ local hadesWeaponsModifications = {
 
 mod.ApplyNestedSjsonModifications(hadesWeaponsTable.Weapons, hadesWeaponsModifications)
 
--- Hades II uses NumProjectiles instead of ClipSize
-for _, weapon in ipairs(hadesWeaponsTable.Weapons) do
+for i = #hadesWeaponsTable.Weapons, 1, -1 do
+	local weapon = hadesWeaponsTable.Weapons[i]
+
+	-- Weapons that should be removed completely
+	if mod.ShouldRemoveEntry(weapon.Name, weaponsToRemove) then
+		table.remove(hadesWeaponsTable.Weapons, i)
+		mod.DebugPrint("Removed weapon: " .. weapon.Name .. " from EnemyWeapons.sjson", 4)
+	end
+
+	-- Hades II uses NumProjectiles instead of ClipSize
 	if weapon.ClipSize and not weapon.NumProjectiles then
 		weapon.NumProjectiles = weapon.ClipSize
 	end
