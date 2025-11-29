@@ -20,7 +20,7 @@ It is highly recommended to complete the true ending of Hades before playing wit
 
 In order to use this mod you _must_ have Hades installed on your system at all times when playing Hades II.
 The mod will not work without it.
-If you have Hades and Hades II installed in different parent folders, please refer to the [Installation](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Installation-&-Uninstallation#installation) wiki page for instructions on how to ensure the mod can discover your Hades installation.
+If you have Hades and Hades II installed in different parent folders, please refer to the [Configuration](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) wiki page for instructions on how to ensure the mod can discover your Hades installation.
 
 You can install this mod just like any other Hades II mod available on [Thunderstore](https://thunderstore.io/c/hades-ii/), the recommended mod manager is [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/).
 Starting the game the first time with the mod enabled will install a number of files.
