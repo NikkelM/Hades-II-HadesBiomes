@@ -76,6 +76,15 @@ You can track all planned features and fixes on the [project's GitHub Issues pag
 - @Aunuch on [Discord](https://discord.gg/KuMbyrN), Collaborator on the mod's Key Art
 - ...and the many other modding community members that tested early versions, provided feedback and reported bugs! 
 
+### Contribute Yourself!
+
+You can contribute to this mod by providing translations!
+The mod adds many different kinds of text, such as for the new resources, boons etc.<br>
+If you would like to translate some or all of these into your native language, you can find all texts in the [src/Game/Text/\<language shorthand\>](https://github.com/NikkelM/Hades-II-HadesBiomes/tree/main/src/Game/Text) folder of the mod's repository.
+If you decide to translate a category, please translate all texts in that category to ensure consistency for players.
+
+After uncommenting and translating your chosen texts, open a Pull Request with your changes on GitHub, and they will be included in the next release!
+
 ## Image Gallery
 
 <img src="https://github.com/user-attachments/assets/72407431-8737-41d6-b417-d5890494a501" alt="Withstand Asphodel's Heat">
