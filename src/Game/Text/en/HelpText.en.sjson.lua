@@ -27,7 +27,7 @@ local newData = {
 	-- TODO: Only while the mod is in early access
 	{
 		Id = "ModsNikkelMHadesBiomes_LeaveFeedback",
-		DisplayName = "[BETA] Please leave feedback and bug reports on GitHub or Discord in #h1-run-h2",
+		DisplayName = "[BETA] Please leave feedback and bug reports on GitHub or on Discord in #h1-run-h2",
 	},
 	-- #endregion
 

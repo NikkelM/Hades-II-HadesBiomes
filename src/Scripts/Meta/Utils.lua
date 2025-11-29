@@ -463,6 +463,8 @@ end
 
 ---The mod's hidden config, stored in the cache folder as hiddenConfig.sjson.
 mod.HiddenConfig = mod.HiddenConfig or mod.TryLoadCachedSjsonFile("hiddenConfig.sjson")
+mod.DebugPrint("Loaded hiddenConfig.sjson", 4)
+mod.DebugPrint(mod.HiddenConfig, 4)
 
 ---We need to override the packages that are loaded with a biome package, to also load the Fx package, as we need the textures from it before map load.
 function mod.SetBiomePackageLoadOverrides()
