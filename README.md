@@ -20,6 +20,7 @@ It is highly recommended to complete the true ending of Hades before playing wit
 
 In order to use this mod you _must_ have Hades installed on your system at all times when playing Hades II.
 The mod will not work without it.
+If you have Hades and Hades II installed in different parent folders, please refer to the [Configuration](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) wiki page for instructions on how to ensure the mod can discover your Hades installation.
 
 You can install this mod just like any other Hades II mod available on [Thunderstore](https://thunderstore.io/c/hades-ii/), the recommended mod manager is [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/).
 Starting the game the first time with the mod enabled will install a number of files.
@@ -32,8 +33,8 @@ This mod requires an additional 1GB of disk space.
 
 If you would like more information, refer to the [Installation](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Installation-&-Uninstallation) wiki page.
 
-Before *removing* the mod from r2modman, you must first uninstall it through the `uninstall` configuration setting, to prevent any issues with leftover files.
-Don't uninstall the mod while in a Hades underworld run.
+**Before removing** the mod from r2modman, you must first uninstall it through the `uninstall` configuration setting, to prevent any issues with leftover files.
+Only uninstall the mod while in the Crossroads to prevent issues.
 
 ## Configuration
 
@@ -60,15 +61,20 @@ Among many smaller improvements and fixes, the following major features are plan
 - Displaying statistics for the new route with the Record Keeper
 - Additional boons for story NPCs (Sisyphus, Eurydice, Patroclus)
 
+You can track all planned features and fixes on the [project's GitHub Issues page](https://github.com/NikkelM/Hades-II-HadesBiomes/issues).
+
 ## Contributors
 
 - NikkelM ([GitHub](https://github.com/NikkelM), @NikkelM on [Discord](https://discord.gg/KuMbyrN)), Mod Creator
+
+<br>
+
 - iDeathHD ([GitHub](https://github.com/xiaoxiao921), @iDeathHD on [Discord](https://discord.gg/KuMbyrN)), Hell2Modding Maintainer
 - @burn on [Discord](https://discord.gg/KuMbyrN), Additional Artwork & Resource Design
 - Magic_Gonads ([GitHub](https://github.com/AndreLouisIssa), @Magic_Gonads on [Discord](https://discord.gg/KuMbyrN)), ModUtil Maintainer
 - zannc ([GitHub](https://github.com/excellent-ae), @dwbl on [Discord](https://discord.gg/KuMbyrN)), Creator of [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) (automatically installed with this mod)
 - @Aunuch on [Discord](https://discord.gg/KuMbyrN), Collaborator on the mod's Key Art
-- ...and the many other modding community members that have created tools, tested early versions, provided feedback and reported bugs! 
+- ...and the many other modding community members that tested early versions, provided feedback and reported bugs! 
 
 ## Image Gallery
 
@@ -100,7 +106,7 @@ Among many smaller improvements and fixes, the following major features are plan
 
 Congratulations, you've made it to the bottom of the page!
 
-If you are enjoying this mod and want to say thank you, you can consider donating to me on [GitHub Sponsors](https://github.com/sponsors/NikkelM) or [Ko-Fi](https://ko-fi.com/nikkelm).
+If you are enjoying this mod and want to say thank you, you can leave a donation on [GitHub Sponsors](https://github.com/sponsors/NikkelM) or [Ko-Fi](https://ko-fi.com/nikkelm).
 
 ## Disclaimer
 
