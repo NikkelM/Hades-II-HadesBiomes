@@ -46,7 +46,7 @@ You can find an explanation of all options [on this wiki page](https://github.co
 
 Though the mod can be played through from start to finish, it is still in a beta state, so there are some missing features, and you may occasionally encounter bugs.
 
-Please directly leave bug reports as a [new issue on the project's GitHub repository](https://github.com/NikkelM/Hades-II-HadesBiomes/issues/new), or [start a discussion](https://github.com/NikkelM/Hades-II-HadesBiomes/discussions) for general feedback, suggestions and questions.
+Please directly leave bug reports as a [new issue on the project's GitHub repository](https://github.com/NikkelM/Hades-II-HadesBiomes/issues/new?template=bug_report.md), or [start a discussion](https://github.com/NikkelM/Hades-II-HadesBiomes/discussions) for general feedback, suggestions and questions.
 
 If you do not have a GitHub account, you can also join the [Hades II Modding Discord server](https://discord.gg/KuMbyrN) and post in the [`#h1-run-h2`](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
@@ -103,6 +103,8 @@ You can track all planned features and fixes on the [project's GitHub Issues pag
   <img src="https://github.com/user-attachments/assets/21dc3117-a2f6-4910-8119-20082537f312" alt="Descend into Tartarus" width="49.7%">
   <img src="https://github.com/user-attachments/assets/ef057f60-8723-4fb0-bcb0-ae754297d501" alt="Escape the Underworld" width="49.7%">
 </div>
+
+<br>
 
 Congratulations, you've made it to the bottom of the page!
 
