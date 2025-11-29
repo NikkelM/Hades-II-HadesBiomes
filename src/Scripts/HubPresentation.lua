@@ -1,29 +1,56 @@
 -- Lock the escape chaos gate if the shrine upgrade does not allow starting a run yet
 function mod.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(source, args)
 	args = args or {}
+	args.EscapeDoorIds = args.EscapeDoorIds or { source.ObjectId }
+	local escapeDoorId = args.EscapeDoorIds[1]
+	local escapeDoor = game.MapState.ActiveObstacles[escapeDoorId]
 
+	local surfaceRouteLocked = false
 	local shouldLock = false
+	if not game.IsGameStateEligible(escapeDoor, { NamedRequirementsFalse = { "SurfaceRouteLockedByTyphonKill" } }) then
+		shouldLock = true
+		surfaceRouteLocked = true
+	end
 	if game.GetNumShrineUpgrades("LimitGraspShrineUpgrade") >= 1 then
 		local graspPercent = (game.GameState.MetaUpgradeCostCache / game.GameState.MaxMetaUpgradeCostCache) * 100
 		if graspPercent > game.MetaUpgradeData.LimitGraspShrineUpgrade.ChangeValue then
 			shouldLock = true
+			-- To override which text is shown if both are true
+			surfaceRouteLocked = false
 		end
 	end
 
-	args.EscapeDoorIds = args.EscapeDoorIds or { source.ObjectId }
-	local escapeDoorId = args.EscapeDoorIds[1]
-	local escapeDoor = game.MapState.ActiveObstacles[escapeDoorId]
 	if escapeDoor ~= nil then
 		if shouldLock then
-			escapeDoor.UseText = "LimitGraspShrineUpgradeEscapeDoorClosed"
-			escapeDoor.OnUsedFunctionName = "LimitGraspShrineUpgradeEscapeDoorClosed"
-			StopAnimation({ Names = { "ChaosDoorOpen", "ChaosDoorFloor" }, DestinationId = escapeDoor.ObjectId })
-			SetAnimation({ DestinationId = escapeDoor.ObjectId, Name = "SecretDoor_Closed" })
+			mod.LockHadesRunStartDoor(escapeDoor,
+				{
+					ShouldLock = true,
+					UseText = "LimitGraspShrineUpgradeEscapeDoorClosed",
+					OnUsedFunctionName = (surfaceRouteLocked and "LockedSurfaceRunPresentation") or
+							"LimitGraspShrineUpgradeEscapeDoorClosed"
+				})
 		else
-			escapeDoor.UseText = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText"
-			escapeDoor.OnUsedFunctionName = _PLUGIN.guid .. "." .. "StartHadesRun"
-			SetAnimation({ DestinationId = escapeDoor.ObjectId, Name = "ModsNikkelMHadesBiomes_SecretDoor_Revealed" })
+			mod.LockHadesRunStartDoor(escapeDoor,
+				{
+					ShouldLock = false,
+					UseText = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText",
+					OnUsedFunctionName = _PLUGIN.guid .. "." .. "StartHadesRun"
+				})
 		end
+	end
+end
+
+function mod.LockHadesRunStartDoor(escapeDoor, args)
+	args = args or {}
+	if args.ShouldLock then
+		escapeDoor.UseText = args.UseText
+		escapeDoor.OnUsedFunctionName = args.OnUsedFunctionName
+		StopAnimation({ Names = { "ChaosDoorOpen", "ChaosDoorFloor" }, DestinationId = escapeDoor.ObjectId })
+		SetAnimation({ DestinationId = escapeDoor.ObjectId, Name = "SecretDoor_Closed" })
+	else
+		escapeDoor.UseText = args.UseText
+		escapeDoor.OnUsedFunctionName = args.OnUsedFunctionName
+		SetAnimation({ DestinationId = escapeDoor.ObjectId, Name = "ModsNikkelMHadesBiomes_SecretDoor_Revealed" })
 	end
 end
 

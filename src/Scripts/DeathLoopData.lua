@@ -57,9 +57,16 @@ function mod.SpawnHadesRunStartDoor(source, args)
 	})
 	chaosGate.ActivateIds = { chaosGate.ObjectId }
 
-	chaosGate.SetupEvents = { { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade", }, }
+	chaosGate.SetupEvents = {
+		{
+			FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade",
+		},
+	}
 	chaosGate.SpeakerName = nil
 	chaosGate.DistanceTrigger = {
+		GameStateRequirements = {
+			NamedRequirementsFalse = { "SurfaceRouteLockedByTyphonKill" },
+		},
 		WithinDistance = 800,
 		VoiceLines = {
 			Queue = "Always",
@@ -67,8 +74,8 @@ function mod.SpawnHadesRunStartDoor(source, args)
 			PlayOnceContext = "ModsNikkelMHadesBiomes_HadesRunStartDoorApproach",
 			UsePlayerSource = true,
 			{ Cue = "/VO/MelinoeField_2868", Text = "A Chaos Gate, up here?", },
-			{ Cue = "/VO/Melinoe_5753",      Text = "Through dreams and time, the past reveals itself...", PreLineWait = 0.4,},
-			{ Cue = "/VO/MelinoeField_3424", Text = "Brother...", PreLineWait = 0.4,  },
+			{ Cue = "/VO/Melinoe_5753",      Text = "Through dreams and time, the past reveals itself...", PreLineWait = 0.4, },
+			{ Cue = "/VO/MelinoeField_3424", Text = "Brother...",                                          PreLineWait = 0.4, },
 		}
 	}
 	chaosGate.UnlockedSound = nil
