@@ -64,17 +64,6 @@ function mod.ResumeStyxMusic()
 	SetVolume({ Id = game.AudioState.MusicId, Value = 1.0 })
 end
 
-function mod.UseStyxFountain(usee, args)
-	local fountain = usee
-	if game.CheckCooldown(fountain.CooldownNamePrefix .. fountain.ObjectId, fountain.CooldownDuration) then
-		ClearEffect({ Id = game.CurrentRun.Hero.ObjectId, Name = "MedeaPoison" })
-		ClearEffect({ Id = game.CurrentRun.Hero.ObjectId, Name = "StyxPoison" })
-		SetAnimation({ DestinationId = fountain.ObjectId, Name = fountain.OnCooldownAnimation })
-		UseableOff({ Id = fountain.ObjectId })
-		game.PoisonCureReady(fountain)
-	end
-end
-
 -- Saves the name of the last attacker that inflicted Styx poison, for the run history
 function mod.ModsNikkelMHadesBiomesStyxPoisonWeaponHit(victim, victimId, triggerArgs)
 	if triggerArgs.AttackerName then
