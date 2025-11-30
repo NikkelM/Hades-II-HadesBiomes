@@ -9,6 +9,7 @@
 - Fixed: Tisiphone's fog can stick to Melinoë.
 - Fixed: Styx saw blade weapon damage was not categorized as "Trap" damage.
 - Fixed: Barge of Death shielding crystals have no tethers attached.
+- Fixed: When altering fate (run RNG) at the Shrine, the Reroll Die is not shown over the Chaos Gate.
 - Compatibility: Removed some unused Devotion weapons and projectiles for compatibility with Droppable Gods.
 <!--Releasenotes end-->
 
