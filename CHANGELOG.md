@@ -11,6 +11,7 @@
 - Fixed: Gale can't block Styx poison damage.
 - Fixed: Tisiphone's fog can stick to Melinoë.
 - Fixed: Styx saw blade weapon damage is not categorized as "Trap" damage.
+- Fixed: Thanatos' attack crashes the game.
 - Fixed: Barge of Death shielding crystals have no tethers attached.
 - Fixed: When altering fate (run RNG) at the Shrine, the Reroll Die is not shown over the Chaos Gate.
 - Fixed: The "Summoner" Hydra variant's teeth spawn enemies even when destroyed.
