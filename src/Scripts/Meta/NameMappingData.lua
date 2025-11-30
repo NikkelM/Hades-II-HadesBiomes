@@ -98,7 +98,6 @@ mod.EnemyNameRemovals = {
 	"DionysusUpgradeRoomWeapon",
 	"ArtemisUpgradeRoomWeapon",
 	"AthenaUpgradeRoomWeapon",
-	"SpikeCube",
 	"SupportShields",
 	"SelfDestructSpawner",
 	"ShadeSpawner",
