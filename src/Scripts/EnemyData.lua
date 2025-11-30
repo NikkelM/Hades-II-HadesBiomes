@@ -1755,6 +1755,7 @@ local enemyModifications = {
 			-- A little quicker to line up with the smoke better
 			InvisibilityFadeOutDuration = 0.4,
 			DashRequireLoS = true,
+			SpawnCountDampenTraits = { HadesChronosDebuffBoon = true, },
 		},
 		ImmuneToPolymorph = true,
 		RunHistoryKilledByName = "NPC_Hades_01",

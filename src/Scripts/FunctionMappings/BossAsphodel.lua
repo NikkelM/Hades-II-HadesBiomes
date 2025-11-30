@@ -51,8 +51,10 @@ function mod.RoomEntranceBossHydra(currentRun, currentRoom)
 	game.thread(mod.HydraRoarPresentation)
 	game.wait(0.8)
 	if hydra.SwapAnimations ~= nil then
-		SetAnimation({ DestinationId = hydraId, Name = hydra.SwapAnimations["EnemyHydraRoarReturnToIdle"] or
-		"EnemyHydraRoarReturnToIdle" })
+		SetAnimation({
+			DestinationId = hydraId,
+			Name = hydra.SwapAnimations["EnemyHydraRoarReturnToIdle"] or "EnemyHydraRoarReturnToIdle"
+		})
 	end
 	game.UnblockCombatUI("BossEntrance")
 end
@@ -219,6 +221,18 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 			end
 		end
 		spawnCount = #spawns
+	end
+
+	-- For Hades HadesChronosDebuffBoon - reduce spawn count
+	if weaponAIData.SpawnCountDampenTraits ~= nil then
+		for traitName in pairs(weaponAIData.SpawnCountDampenTraits) do
+			if game.HeroHasTrait(traitName) then
+				local traitData = game.GetHeroTrait(traitName)
+				if traitData and traitData.DebuffValue then
+					spawnCount = spawnCount * traitData.DebuffValue
+				end
+			end
+		end
 	end
 
 	for i = 1, spawnCount do
