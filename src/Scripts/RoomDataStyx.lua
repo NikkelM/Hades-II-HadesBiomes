@@ -434,7 +434,7 @@ local roomReplacements = {
 				RequiredFalseEncounters = { "BossHadesPeaceful" },
 				-- From I_Story01
 				{ Cue = "/VO/MelinoeField_1520", Text = "Father...?" },
-				{ Cue = "/VO/Melinoe_4016",      Text = "Father.",                                  PlayFirst = true, },
+				{ Cue = "/VO/Melinoe_4016",      Text = "Father." },
 				{ Cue = "/VO/Melinoe_4017",      Text = "Father..." },
 				{ Cue = "/VO/MelinoeField_1519", Text = "Father...!" },
 				{ Cue = "/VO/MelinoeField_1521", Text = "{#Emph}Erm... {#Prev}greetings, Father..." },

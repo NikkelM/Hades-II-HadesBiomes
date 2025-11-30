@@ -3,6 +3,7 @@
 ## v0.1.1
 
 <!--Releasenotes start-->
+- Added voicelines when entering the Asphodel boss chamber.
 - Balancing: Reduced Poison tick rate from every 0.13s to every 0.23s.
 - Balancing: Slightly reduced overall enemy health and armour.
 - Balancing: Slightly reduced Chariot ram speed, and they are no longer immune to cast slow effects.
@@ -11,6 +12,7 @@
 - Fixed: Barge of Death shielding crystals have no tethers attached.
 - Fixed: When altering fate (run RNG) at the Shrine, the Reroll Die is not shown over the Chaos Gate.
 - Fixed: The "Summoner" Hydra variant's teeth spawn enemies even when destroyed.
+- Fixed: Some contextual voicelines can never play after returning to the Crossroads.
 - Compatibility: Removed some unused Devotion weapons and projectiles for compatibility with Droppable Gods.
 <!--Releasenotes end-->
 

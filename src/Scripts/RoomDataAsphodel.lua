@@ -303,7 +303,7 @@ local roomReplacements = {
 				BreakIfPlayed = true,
 				SuccessiveChanceToPlay = 0.5,
 
-				{ Cue = "/VO/MelinoeField_2624", Text = "A magnificent beast, but a threat...", PlayFirst = true },
+				{ Cue = "/VO/MelinoeField_2624", Text = "A magnificent beast, but a threat..." },
 				{ Cue = "/VO/MelinoeField_1102", Text = "Think I can finally go...", },
 				{ Cue = "/VO/MelinoeField_3011", Text = "Foul creature..." },
 				{ Cue = "/VO/MelinoeField_1104", Text = "I can get out now..." },

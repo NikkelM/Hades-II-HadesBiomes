@@ -428,7 +428,6 @@ local roomReplacements = {
 				RandomRemaining = true,
 				BreakIfPlayed = true,
 				SuccessiveChanceToPlay = 0.5,
-
 				{ Cue = "/VO/Melinoe_0381",      Text = "This is my path.",              PlayFirst = true },
 				{ Cue = "/VO/MelinoeField_1105", Text = "I think I'm finished here." },
 				{ Cue = "/VO/Melinoe_0339",      Text = "I've come this far..." },
