@@ -1,29 +1,31 @@
--- Custom events
--- Played when starting a Hades run (when entering the Chaos gate at the crossroads)
-mod.StartNewHadesRunVoiceLines = {
-	Queue = "Never",
-	PreLineWait = 0.35,
-	RandomRemaining = true,
-	GameStateRequirements = { {}, },
-
-	-- Custom
-	{ Cue = "/VO/MelinoeField_0205", Text = "Every bad dream has an escape...", PlayFirst = true },
-
-	-- From the underworld route
-	{ Cue = "/VO/Melinoe_3391",      Text = "Hence I go...", },
-	{ Cue = "/VO/Melinoe_0108",      Text = "I go.", },
-	{ Cue = "/VO/Melinoe_0110",      Text = "Commencing.", },
-	{ Cue = "/VO/Melinoe_0111",      Text = "Once more.", },
-	{ Cue = "/VO/Melinoe_2482",      Text = "Once more, then." },
-	{ Cue = "/VO/Melinoe_0375",      Text = "Farewell, Commander.", },
-	{ Cue = "/VO/Melinoe_3058_B",    Text = "Here we go." },
-
-	-- From the overworld route
-	{ Cue = "/VO/Melinoe_1665",      Text = "With the grace of the Moon." },
-	{ Cue = "/VO/Melinoe_2487",      Text = "New night, new path.", },
+-- #region Music
+game.MusicTrackData.Tartarus = {
+	{ Name = "/Music/MusicHadesReset_MC", },
+	{ Name = "/Music/MusicHadesReset2_MC", },
+	{ Name = "/Music/MusicHadesReset3_MC", },
+	-- "/Music/MusicTartarus4_MC"
+	{ Name = "{90ac2d7a-7b3a-4a41-a3de-5df2828bcfca}", },
 }
-
-game.GlobalVoiceLines.EmptyStartNewHadesRunVoiceLines = {}
+game.MusicTrackData.Asphodel = {
+	-- "/Music/MusicAsphodel1_MC"
+	{ Name = "{e798505f-3f49-4c12-9f8d-779ee6edec25}", },
+	{ Name = "/Music/MusicAsphodel2_MC", },
+	-- "/Music/MusicAsphodel3_MC"
+	{ Name = "{9095ed41-3258-4161-ae60-23f686dfa394}", },
+}
+game.MusicTrackData.Elysium = {
+	{ Name = "/Music/MusicHadesReset_MC", },
+	-- "/Music/MusicElysium1_MC"
+	{ Name = "{9f9f6ebf-11f0-4c2f-8f2c-42f703be4b7d}", },
+	-- "/Music/MusicElysium2_MC"
+	{ Name = "{a843c030-5860-4c98-9f09-e25ea9372e28}", },
+	-- "/Music/MusicElysium3_MC"
+	{ Name = "{589a7217-b8c2-4cfb-b27b-45036c0f5875}", },
+}
+game.MusicTrackData.Styx = {
+	-- "/Music/MusicStyx1_MC"
+	{ Name = "{9781c324-6083-4acd-bdaa-5a7a67608005}", },
+}
 
 -- Events from Hades
 local tartarusRoomStartMusicEvents = {
@@ -41,9 +43,38 @@ local tartarusRoomStartMusicEvents = {
 			{
 				PathFalse = { "AudioState", "SecretMusicId" },
 			},
+			{
+				Path = { "CurrentRun", "RunDepthCache" },
+				Comparison = "<",
+				Value = 3,
+			},
 		},
 		PlayBiomeMusic = true,
 		MusicSection = 0,
+		UseRoomMusicSection = true,
+	},
+	{
+		GameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" }
+			},
+			{
+				PathFalse = { "AudioState", "MusicId" },
+			},
+			{
+				PathFalse = { "AudioState", "SecretMusicId" },
+			},
+			{
+				Path = { "CurrentRun", "RunDepthCache" },
+				Comparison = ">=",
+				Value = 3,
+			},
+		},
+		PlayBiomeMusic = true,
+		MusicSection = 3,
 		UseRoomMusicSection = true,
 	},
 	-- This one doesn't make sense, as it playes the "Boss" section randomly at depth 2?
@@ -89,8 +120,7 @@ local tartarusRoomStartMusicEvents = {
 		MusicSection = 3,
 	},
 	{
-		GameStateRequirements =
-		{
+		GameStateRequirements = {
 			{
 				PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
 			},
@@ -117,34 +147,59 @@ local tartarusRoomStartMusicEvents = {
 }
 game.RoomStartMusicEvents = game.MergeTables(game.RoomStartMusicEvents, tartarusRoomStartMusicEvents)
 
--- Once fixed, get from the loaded data
-game.MusicTrackData.Tartarus = {
-	{ Name = "/Music/MusicHadesReset_MC", },
-	{ Name = "/Music/MusicHadesReset2_MC", },
-	{ Name = "/Music/MusicHadesReset3_MC", },
-	-- "/Music/MusicTartarus4_MC" The audio event for this track does not exist
-	{ Name = "{90ac2d7a-7b3a-4a41-a3de-5df2828bcfca}", },
+mod.CombatOverMusicEvents = {
+	Generic = {
+		{
+			GameStateRequirements = {
+				RequiredMinDepth = 3,
+				RequiredMusicName = "/Music/MusicExploration4_MC",
+			},
+			EndMusic = true,
+		},
+		{
+			GameStateRequirements = {
+				RequiredFalseRooms = { "D_Mini01", "D_Mini02", "D_Mini03", "D_Mini04", "D_Mini05", "D_Mini06", "D_Mini07", "D_Mini08", "D_Mini09", "D_Mini10", "D_Mini11", "D_Mini12", "D_Mini13", "D_Mini14", }
+			},
+			MusicMutedStems = { "Drums", },
+		},
+	},
+	Styx = {
+		{
+			GameStateRequirements = {},
+			MusicSection = 2,
+			MusicMutedStems = { "Guitar" },
+			MusicActiveStems = { "Bass", "Drums" },
+		},
+	},
 }
-game.MusicTrackData.Asphodel = {
-	-- "/Music/MusicAsphodel1_MC"
-	{ Name = "{e798505f-3f49-4c12-9f8d-779ee6edec25}", },
-	{ Name = "/Music/MusicAsphodel2_MC", },
-	-- "/Music/MusicAsphodel3_MC"
-	{ Name = "{9095ed41-3258-4161-ae60-23f686dfa394}", },
+-- #endregion
+
+-- #region Voicelines
+-- Played when starting a Hades run (when entering the Chaos gate at the crossroads)
+mod.StartNewHadesRunVoiceLines = {
+	Queue = "Never",
+	PreLineWait = 0.35,
+	RandomRemaining = true,
+	GameStateRequirements = { {}, },
+
+	-- Custom
+	{ Cue = "/VO/MelinoeField_0205", Text = "Every bad dream has an escape...", PlayFirst = true },
+
+	-- From the underworld route
+	{ Cue = "/VO/Melinoe_3391",      Text = "Hence I go...", },
+	{ Cue = "/VO/Melinoe_0108",      Text = "I go.", },
+	{ Cue = "/VO/Melinoe_0110",      Text = "Commencing.", },
+	{ Cue = "/VO/Melinoe_0111",      Text = "Once more.", },
+	{ Cue = "/VO/Melinoe_2482",      Text = "Once more, then." },
+	{ Cue = "/VO/Melinoe_0375",      Text = "Farewell, Commander.", },
+	{ Cue = "/VO/Melinoe_3058_B",    Text = "Here we go." },
+
+	-- From the overworld route
+	{ Cue = "/VO/Melinoe_1665",      Text = "With the grace of the Moon." },
+	{ Cue = "/VO/Melinoe_2487",      Text = "New night, new path.", },
 }
-game.MusicTrackData.Elysium = {
-	{ Name = "/Music/MusicHadesReset_MC", },
-	-- "/Music/MusicElysium1_MC"
-	{ Name = "{9f9f6ebf-11f0-4c2f-8f2c-42f703be4b7d}", },
-	-- "/Music/MusicElysium2_MC"
-	{ Name = "{a843c030-5860-4c98-9f09-e25ea9372e28}", },
-	-- "/Music/MusicElysium3_MC"
-	{ Name = "{589a7217-b8c2-4cfb-b27b-45036c0f5875}", },
-}
-game.MusicTrackData.Styx = {
-	-- "/Music/MusicStyx1_MC"
-	{ Name = "{9781c324-6083-4acd-bdaa-5a7a67608005}", },
-}
+
+game.GlobalVoiceLines.EmptyStartNewHadesRunVoiceLines = {}
 
 -- Replace cues with the modded name
 local requiredGlobalVoiceLineModifications = {
@@ -202,7 +257,8 @@ game.GlobalVoiceLines.HadesBeamAttackVoiceLines = game.GlobalVoiceLines.HadesBea
 		mod.GlobalVoiceLines.HadesBeamAttackVoiceLines
 -- game.GlobalVoiceLines.FatherSonArgumentVoiceLines = game.GlobalVoiceLines.FatherSonArgumentVoiceLines or
 -- 		mod.GlobalVoiceLines.FatherSonArgumentVoiceLines
-game.GlobalVoiceLines.ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines = game.GlobalVoiceLines.ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines or
+game.GlobalVoiceLines.ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines
 game.GlobalVoiceLines.HadesSighVoiceLines = game.GlobalVoiceLines.HadesSighVoiceLines or
 		mod.GlobalVoiceLines.HadesSighVoiceLines
@@ -210,7 +266,8 @@ game.GlobalVoiceLines.HadesSighVoiceLines = game.GlobalVoiceLines.HadesSighVoice
 game.GlobalVoiceLines.MultiFuryFightStartVoiceLines = game.GlobalVoiceLines.MultiFuryFightStartVoiceLines or
 		mod.GlobalVoiceLines.MultiFuryFightStartVoiceLines
 
-game.GlobalVoiceLines.ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines = game.GlobalVoiceLines.ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines or
+game.GlobalVoiceLines.ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines
 
 -- game.GlobalVoiceLines.ThanatosGreetingVoiceLines = game.GlobalVoiceLines.ThanatosGreetingVoiceLines or
@@ -304,3 +361,4 @@ game.HeroVoiceLines.ModsNikkelMHadesBiomes_RunClearedVoiceLines = mod.HeroVoiceL
 		.ModsNikkelMHadesBiomes_RunClearedVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines
+-- #endregion

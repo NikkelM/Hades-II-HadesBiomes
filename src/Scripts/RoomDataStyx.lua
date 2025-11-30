@@ -492,14 +492,7 @@ local roomModifications = {
 		NextRoomEntranceFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesReturnToStyxHubPresentation",
 		IneligibleRewards = { "Devotion" },
 		-- Turn on the Bass stem, and play the outro music from the Drums section after the end combat rooms
-		CombatOverMusicEvents = {
-			{
-				GameStateRequirements = {},
-				MusicSection = 2,
-				MusicMutedStems = { "Guitar" },
-				MusicActiveStems = { "Bass", "Drums" },
-			},
-		},
+		CombatOverMusicEvents = mod.CombatOverMusicEvents.Styx,
 	},
 
 	-- OPENING ROOMS
@@ -590,14 +583,7 @@ local roomModifications = {
 	BaseStyxMiniBoss = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
 		-- Turn on the Bass stem, and play the outro music from the Drums section after the end combat rooms
-		CombatOverMusicEvents = {
-			{
-				GameStateRequirements = {},
-				MusicSection = 2,
-				MusicMutedStems = { "Guitar" },
-				MusicActiveStems = { "Bass", "Drums" },
-			},
-		},
+		CombatOverMusicEvents = mod.CombatOverMusicEvents.Styx,
 	},
 
 	-- BOSSES

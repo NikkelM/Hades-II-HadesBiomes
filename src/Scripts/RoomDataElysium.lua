@@ -1,5 +1,4 @@
 -- Adds RoomData for Elysium from Hades to Hades II
-
 local roomReplacements = {
 	-- GENERIC
 	BaseElysium = {
@@ -276,6 +275,8 @@ local roomReplacements = {
 				},
 			},
 		},
+
+		CombatOverMusicEvents = mod.CombatOverMusicEvents.Generic,
 	},
 
 	-- SHOPS

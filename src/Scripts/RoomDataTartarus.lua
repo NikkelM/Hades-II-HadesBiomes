@@ -1,5 +1,4 @@
 -- Adds RoomData for Tartarus from Hades to Hades II
-
 local roomReplacements = {
 	-- GENERIC
 	BaseTartarus = {
@@ -465,6 +464,8 @@ local roomModifications = {
 
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut",
+
+		CombatOverMusicEvents = mod.CombatOverMusicEvents.Generic,
 	},
 
 	-- OPENING ROOMS
