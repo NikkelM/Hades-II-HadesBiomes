@@ -42,17 +42,17 @@ mod.UpdateField(encounterDataElysium, "Challenge", "TimeChallenge", { "InheritFr
 local encounterReplacements = {
 	GeneratedElysium = {
 		-- To ensure we are not attacked while still running the entrance animation
-		PreSpawnAIWakeDelay = 0.5,
+		PreSpawnAIWakeDelay = 1,
 		-- The original from Hades is 2.3 - inherited from Generated
 		ActiveEnemyCapBase = 3.3,
 		-- The original from Hades is 220
-		BaseDifficulty = 260,
+		BaseDifficulty = 300,
 		-- The original from Hades is 0.4
 		ActiveEnemyCapDepthRamp = 0.6,
 		-- The original from Hades is 0.35
 		TypeCountDepthRamp = 0.5,
 		-- The original from Hades is 70
-		DepthDifficultyRamp = 75,
+		DepthDifficultyRamp = 80,
 		-- Original is missing HandleEncounterPreSpawns
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },

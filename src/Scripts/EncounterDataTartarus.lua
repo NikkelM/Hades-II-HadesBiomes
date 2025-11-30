@@ -60,15 +60,15 @@ local encounterReplacements = {
 	},
 	GeneratedTartarus = {
 		-- To ensure we are not attacked while still running the entrance animation
-		PreSpawnAIWakeDelay = 0.5,
+		PreSpawnAIWakeDelay = 1,
 		-- The original from Hades is 2.3
-		ActiveEnemyCapBase = 3.4,
+		ActiveEnemyCapBase = 4.4,
 		-- The original from Hades is 30
-		BaseDifficulty = 45,
+		BaseDifficulty = 50,
 		-- The original from Hades is 0.35
 		ActiveEnemyCapDepthRamp = 0.55,
 		-- The original from Hades is 11
-		DepthDifficultyRamp = 13,
+		DepthDifficultyRamp = 16,
 	},
 	OpeningGenerated = {
 		-- Blocks the LocationText from being shown an extra time in RoomEntranceDrop

@@ -39,7 +39,7 @@ local encounterReplacements = {
 		-- The original from Hades is 8
 		ActiveEnemyCapMax = 8,
 		-- The original from Hades is 900
-		BaseDifficulty = 1000,
+		BaseDifficulty = 1150,
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
 		},
@@ -55,9 +55,9 @@ local encounterReplacements = {
 	},
 	GeneratedStyxMini = {
 		-- The original from Hades is 130
-		BaseDifficultyMin = 170,
+		BaseDifficultyMin = 150,
 		-- The original from Hades is 230
-		BaseDifficultyMax = 270,
+		BaseDifficultyMax = 250,
 		-- The original from Hades is 3
 		ActiveEnemyCapBase = 4,
 		-- The original from Hades is 3
