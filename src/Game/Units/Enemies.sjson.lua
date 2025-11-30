@@ -182,6 +182,7 @@ for oldName, newName in pairs(mod.EnemyNameMappings) do
 	end
 end
 
+-- Iterating through all enemies
 for i = #hadesEnemiesTable.Units, 1, -1 do
 	local enemy = hadesEnemiesTable.Units[i]
 	for parentKey, replacements in pairs(enemyKeyReplacements) do
@@ -209,7 +210,6 @@ sjson.hook(hadesTwoEnemiesFile, function(data)
 end)
 
 -- Assign to mod so we can get required properties in EnemyData.lua
--- TODO: These and the other "caches" don't work, it gets reloaded with the rest of the lua - probably can't get around it
 mod.HadesSjsonEnemiesTable = mod.HadesSjsonEnemiesTable or nil
 if mod.HadesSjsonEnemiesTable == nil then
 	mod.HadesSjsonEnemiesTable = {}

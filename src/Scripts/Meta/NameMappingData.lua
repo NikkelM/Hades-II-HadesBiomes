@@ -30,9 +30,31 @@ mod.EnemyNameMappings = {
 
 -- Enemies that should be removed from the Hades enemy data, as they already exist in Hades II. Also applies to Enemies.sjson
 mod.EnemyNameRemovals = {
+	-- #region Actual duplicates
 	-- #region GENERAL
 	"TrainingMelee",
+	"1_BaseBoss",
+	"TrapPadDisabled",
+	"PassiveRoomWeapon",
+	"DemeterUpgradeRoomWeapon",
+	"AresUpgradeRoomWeapon",
+	"ZeusUpgradeRoomWeapon",
+	"AphroditeUpgradeRoomWeapon",
+	"PoseidonUpgradeRoomWeapon",
+	"SpikeTrap",
+	"TrapFissureDisabled",
+	"GasTrapPassive",
+	"BlastCubeFused",
+	"GunBombUnit",
+	"HazardPoint",
+	"LavaSplash",
+	"LavaTile",
+	"LavaTileTriangle01",
+	"LavaTileTriangle02",
+	"TestCharacter",
+	"BloodMine",
 	-- #endregion
+
 	-- #region ASPHODEL
 	"BloodlessNaked",
 	"BloodlessNakedElite",
@@ -48,6 +70,44 @@ mod.EnemyNameRemovals = {
 	"SpreadShotUnitElite",
 	"BloodlessNakedBerserker",
 	"BloodlessNakedBerserkerElite",
+	-- #endregion
+
+	-- #region STYX
+	"HadesTombstone",
+	-- #endregion
+	-- #endregion
+
+	-- #region Unused enemies
+	"SwarmerHelmeted",
+	"SimpleSwarmer",
+	"SimpleMelee",
+	"SimpleMelee2",
+	"ThiefPoisonLayer",
+	"ThiefArmorer",
+	"ShadeSwordUnitTest",
+	"ShadeMagicUnit",
+	"ShadeMagicUnitSuperElite",
+	"TimeCrystal",
+	"HealRanged",
+	"HealRangedElite",
+	"Illusionist",
+	"IllusionistElite",
+	"IllusionistClone",
+	"IllusionistCloneElite",
+	"SeekingShotUnit",
+	"DionysusUpgradeRoomWeapon",
+	"ArtemisUpgradeRoomWeapon",
+	"AthenaUpgradeRoomWeapon",
+	"SpikeCube",
+	"SupportShields",
+	"SelfDestructSpawner",
+	"ShadeSpawner",
+	"ShadeSpawnerElite",
+	"UnstableGenerator",
+	"UnstableGeneratorElite",
+	"BreakableAsphodelHeal",
+	"ReflectiveMirror",
+	"BannerSupport",
 	-- #endregion
 }
 
