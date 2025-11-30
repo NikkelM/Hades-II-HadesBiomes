@@ -1,6 +1,6 @@
 -- Exact same as the original, but with a different trigger animation (for the Z-Offset)
 function mod.ModsNikkelMHadesBiomesDamageEchoTrigger(enemy, effectName, damageMultiplier, additiveDamageMultiplier,
-																											cooldown)
+																										 cooldown)
 	if enemy and not enemy.IsDead and game.IsEmpty(enemy.InvulnerableFlags) then
 		CreateAnimation({
 			Name = "ModsNikkelMHadesBiomesZeusEchoDebuffSwell",
@@ -44,3 +44,45 @@ modutil.mod.Path.Wrap("DamageEchoTrigger",
 			return base(enemy, effectName, damageMultiplier, additiveDamageMultiplier, cooldown)
 		end
 	end)
+
+
+modutil.mod.Path.Wrap("AddEffectBlock", function(base, args)
+	args = args or {}
+	base(args)
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		-- Also block Styx Poison every time we block Medea Poison
+		if args.Name == "MedeaPoison" then
+			args.Name = "StyxPoison"
+			AddEffectBlock(args)
+			-- Also clear any already applied stacks immediately
+			ClearEffect({ Id = args.Id or game.CurrentRun.Hero.ObjectId, Name = "StyxPoison" })
+		end
+	end
+end)
+
+modutil.mod.Path.Wrap("RemoveEffectBlock", function(base, args)
+	args = args or {}
+	base(args)
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		-- Also unblock Styx Poison every time we unblock Medea Poison
+		if args.Name == "MedeaPoison" then
+			args.Name = "StyxPoison"
+			RemoveEffectBlock(args)
+		end
+	end
+end)
+
+modutil.mod.Path.Wrap("ClearEffect", function(base, args)
+	args = args or {}
+	base(args)
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		-- Also clear Styx Poison every time we clear Medea Poison
+		if args.Name == "MedeaPoison" then
+			args.Name = "StyxPoison"
+			ClearEffect(args)
+		end
+	end
+end)
