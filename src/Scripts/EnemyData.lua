@@ -1534,7 +1534,7 @@ local enemyModifications = {
 		-- Prometheus Health: 33000
 		-- Heracles Health: 34000
 		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
-		MaxHealth = 17500,
+		MaxHealth = 18500,
 		SubtitleColor = game.Color.MinotaurVoice,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
@@ -1552,7 +1552,7 @@ local enemyModifications = {
 	},
 	Minotaur2 = {
 		-- Base Health: 16000
-		MaxHealth = 19000,
+		MaxHealth = 18500,
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "MinotaurArmoredOverheadTouchdown",
 			SpawnDistance = 90,
@@ -1564,7 +1564,7 @@ local enemyModifications = {
 	},
 	Theseus = {
 		-- Base Health: 9000
-		MaxHealth = 12000,
+		MaxHealth = 14000,
 		SubtitleColor = game.Color.TheseusVoice,
 		-- Doesn't seem to be used
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
@@ -1586,7 +1586,7 @@ local enemyModifications = {
 	},
 	Theseus2 = {
 		-- Base Health: 12000
-		MaxHealth = 14500,
+		MaxHealth = 15000,
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
 		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "Theseus2Damaged",
 		AIStages = {
