@@ -2,7 +2,7 @@
 
 > Refer to the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki) with any questions before opening an issue.
 
-Zagreus' Journey is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
+*Zagreus' Journey* is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
 Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past.
 
 <img src="https://github.com/user-attachments/assets/87d52379-d73a-4040-afac-d4a40e5f7e89" alt="Zagreus' Journey">
@@ -48,7 +48,7 @@ Though the mod can be played through from start to finish, it is still in a beta
 
 Please directly leave bug reports as a [new issue on the project's GitHub repository](https://github.com/NikkelM/Hades-II-HadesBiomes/issues/new?template=bug_report.md), or [start a discussion](https://github.com/NikkelM/Hades-II-HadesBiomes/discussions) for general feedback, suggestions and questions.
 
-If you do not have a GitHub account, you can also join the [Hades II Modding Discord server](https://discord.gg/KuMbyrN) and post in the [`#h1-run-h2`](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
+If you do not have a GitHub account, you can also join the [Hades II Modding Discord server](https://discord.gg/KuMbyrN) and post in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
 ### Feature Roadmap
 
@@ -62,6 +62,14 @@ Among many smaller improvements and fixes, the following major features are plan
 - Additional boons for story NPCs (Sisyphus, Eurydice, Patroclus)
 
 You can track all planned features and fixes on the [project's GitHub Issues page](https://github.com/NikkelM/Hades-II-HadesBiomes/issues).
+
+## Integrations with other Mods
+
+Some other mods may integrate with *Zagreus' Journey* to provide additional features, alternative functionality, or use the resources introduced by this mod:
+
+- [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) unlocks songs from Hades' original soundtrack through progression in *Zagreus' Journey*, and buying them from the Music Maker will require resources introduced by this mod.
+
+> Are you developing a mod that integrates with *Zagreus' Journey*, or would like to add such an integration? Let me know on [Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
 ## Contributors
 
