@@ -3,6 +3,9 @@
 ## v0.1.1
 
 <!--Releasenotes start-->
+- Balancing: Slightly reduced overall enemy health and armour.
+- Balancing: Slightly reduced Chariot ram speed, and they are no longer immune to cast slow effects.
+- Fixed: Styx saw blade weapon damage was not categorized as "Trap" damage.
 - Removed some unused Devotion weapons and projectiles for compatibility with Droppable Gods.
 <!--Releasenotes end-->
 
