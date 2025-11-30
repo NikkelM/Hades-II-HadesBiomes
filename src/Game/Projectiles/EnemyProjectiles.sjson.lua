@@ -268,8 +268,8 @@ local hadesProjectilesModifications = {
 				Name = "StyxPoison",
 				Type = "DAMAGE_OVER_TIME",
 				Amount = 1,
-				Cooldown = 0.13,
-				InitialDelay = 0.5,
+				Cooldown = 0.23,
+				InitialDelay = 0.85,
 				Duration = 8,
 				Stacks = true,
 				MaxStacks = 10,
@@ -388,7 +388,7 @@ local addProjectiles = {
 				Name = "StyxPoison",
 				Type = "DAMAGE_OVER_TIME",
 				Amount = 1,
-				Cooldown = 0.13,
+				Cooldown = 0.23,
 				InitialDelay = 0.85,
 				Duration = 8,
 				Stacks = true,
@@ -403,7 +403,7 @@ local addProjectiles = {
 	},
 	{
 		Name = "HadesPoisonPuddleSmall",
-		-- Cant inherit from PoisonPuddleSmall as that causes MedeaPoison to also be applied
+		-- Can't inherit from PoisonPuddleSmall as that causes MedeaPoison to also be applied
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 		Type = "INSTANT",
 		GroupName = "FX_Terrain",
@@ -418,8 +418,6 @@ local addProjectiles = {
 		InflictedDamageSound = "/SFX/BurnDamageSizzle",
 		InflictedDamageFx = "Immolation",
 		ImmunityKey = "PoisonPuddle",
-		-- For how long the player can be in the puddle before being poisoned, lowering from Hades II default of 0.18
-		ImmunityDuration = 0.12,
 		CanHitWithoutDamage = true,
 		Damage = 0,
 		MoveInterval = 0.19,
@@ -437,7 +435,7 @@ local addProjectiles = {
 				Name = "StyxPoison",
 				Type = "DAMAGE_OVER_TIME",
 				Amount = 1,
-				Cooldown = 0.13,
+				Cooldown = 0.23,
 				InitialDelay = 0.85,
 				Duration = 8,
 				Stacks = true,

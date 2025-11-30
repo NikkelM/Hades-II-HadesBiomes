@@ -3,6 +3,7 @@
 ## v0.1.1
 
 <!--Releasenotes start-->
+- Balancing: Reduced Poison tick rate from every 0.13s to every 0.23s.
 - Balancing: Slightly reduced overall enemy health and armour.
 - Balancing: Slightly reduced Chariot ram speed, and they are no longer immune to cast slow effects.
 - Fixed: Styx saw blade weapon damage was not categorized as "Trap" damage.
