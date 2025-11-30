@@ -2,8 +2,8 @@ mod.NilValue = {}
 mod.TableValue = {}
 
 -- All enemies have more health and armour in modded runs
-mod.ModdedUnitMaxHealthMultiplierBonus = 0.5
-mod.ModdedUnitHealthBufferMultiplierBonus = 0.3
+mod.ModdedUnitMaxHealthMultiplierBonus = 0.45
+mod.ModdedUnitHealthBufferMultiplierBonus = 0.2
 
 -- TODO: Challenge, Charon? What Roomsets are they?
 -- For Challenge, can use Melinoe_0376 as enter voiceline
