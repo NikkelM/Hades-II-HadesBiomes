@@ -99,6 +99,15 @@ local modifications = {
 		SortMode = "Isometric",
 		OffsetY = -40,
 	},
+	HealRangedCrystal1MiniBoss = {
+		Name = "HealRangedCrystal1Miniboss"
+	},
+	HealRangedCrystal2MiniBoss = {
+		Name = "HealRangedCrystal2Miniboss"
+	},
+	HealRangedCrystal3MiniBoss = {
+		Name = "HealRangedCrystal3Miniboss"
+	},
 	-- #endregion
 
 	-- #region ELYSIUM
