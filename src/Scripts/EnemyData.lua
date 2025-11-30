@@ -1238,6 +1238,7 @@ local enemyModifications = {
 	},
 	HydraTooth2 = {
 		MaxHealth = 150,
+		WeaponOptions = mod.NilValue,
 		DefaultAIData = {
 			DeepInheritance = true,
 			SpawnOptions = { "BloodlessNakedBerserkerElite" },
