@@ -131,6 +131,10 @@ local hadesProjectilesModifications = {
 	SummonMegaeraWhipWhirl = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 	},
+	TisiphoneFog = {
+		-- Otherwise it will stick to Mel once she runs through one
+		AffectsEnemies = false,
+	},
 	-- #endregion
 
 	-- #region ASPHODEL
