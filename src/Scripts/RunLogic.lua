@@ -135,14 +135,13 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 			game.GameState.LastBossHealthBarRecord[bossName] = healthFraction
 		end
 
-		-- Only used for voicelines, don't need in the modded runs
-		-- for bossName, bossData in pairs(game.BossDifficultyShrineEncounterMap) do
-		-- 	if game.CurrentRun.EncountersOccurredCache[bossData.Encounter] then
-		-- 		game.GameState.LastBossDifficultyRecord[bossName] = false
-		-- 	elseif game.CurrentRun.EncountersOccurredCache[bossData.AltEncounter] then
-		-- 		game.GameState.LastBossDifficultyRecord[bossName] = true
-		-- 	end
-		-- end
+		for bossName, bossData in pairs(game.BossDifficultyShrineEncounterMap) do
+			if game.CurrentRun.EncountersOccurredCache[bossData.Encounter] then
+				game.GameState.LastBossDifficultyRecord[bossName] = false
+			elseif game.CurrentRun.EncountersOccurredCache[bossData.AltEncounter] then
+				game.GameState.LastBossDifficultyRecord[bossName] = true
+			end
+		end
 	else
 		base()
 		-- Redo the run results to include modded runs in the GameState

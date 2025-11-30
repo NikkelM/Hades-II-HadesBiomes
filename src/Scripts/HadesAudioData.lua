@@ -1699,6 +1699,50 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		}
 	},
 	-- #endregion
+	-- #region Hydra/Lernie
+	ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines = {
+		{
+			PlayOnce = true,
+			PlayOnceContext = "ModsNikkelMHadesBiomesEnteredHydraChamber",
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 1.35,
+			{ Cue = "/VO/MelinoeField_0917", Text = "{#Emph}Erm... {#Prev}hello?", },
+		},
+		{
+			PlayOnce = true,
+			PlayOnceContext = "ModsNikkelMHadesBiomesEnteredHydraEMChamber",
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			RequiredRoom = "B_Boss02",
+			PreLineWait = 0.5,
+			{ Cue = "/VO/MelinoeField_3532", Text = "Covered in magma now... the Vow of Rivals caused all this?" },
+		},
+		{
+			PlayOnce = true,
+			PlayOnceContext = "ModsNikkelMHadesBiomesEnteredHydraChamberAfterEM",
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			RequiredRoom = "B_Boss01",
+			RequiredRoomLastRun = "B_Boss02",
+			PreLineWait = 0.5,
+			{ Cue = "/VO/MelinoeField_3537", Text = "At least that magma's gone for now...", },
+		},
+		{
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 1.35,
+			SuccessiveChanceToPlay = 0.33,
+			{ Cue = "/VO/MelinoeField_0923", Text = "Heads up..." },
+			{ Cue = "/VO/MelinoeField_0921", Text = "What is it you think you're guarding, {#Emph}hm?" },
+			{ Cue = "/VO/MelinoeField_0926", Text = "You're very vigilant, I'll grant you that." },
+			{ Cue = "/VO/MelinoeField_1904", Text = "You're in my way." },
+			{ Cue = "/VO/MelinoeField_1906", Text = "Every time..." },
+			{ Cue = "/VO/MelinoeField_1242", Text = "And here we go..." },
+			{ Cue = "/VO/MelinoeField_2860", Text = "Oh, no...", },
+		},
+	},
+	-- #endregion
 	-- #region Thanatos
 	-- ThanatosGreetingVoiceLines = {
 	-- 	BreakIfPlayed = true,

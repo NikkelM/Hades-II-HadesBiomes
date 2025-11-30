@@ -286,6 +286,12 @@ local roomReplacements = {
 		Binks = mod.NilValue,
 	},
 
+	X_Boss01 = {
+		EnterGlobalVoiceLines = "ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines",
+	},
+	X_Boss02 = {
+		EnterGlobalVoiceLines = "ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines",
+	},
 	X_PostBoss01 = {
 		EnterVoiceLines = {
 			Cooldowns = {
