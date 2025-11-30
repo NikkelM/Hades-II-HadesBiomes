@@ -13,6 +13,7 @@
 - Fixed: When altering fate (run RNG) at the Shrine, the Reroll Die is not shown over the Chaos Gate.
 - Fixed: The "Summoner" Hydra variant's teeth spawn enemies even when destroyed.
 - Fixed: Some contextual voicelines can never play after returning to the Crossroads.
+- Fixed: Some contextual dialogues with bosses could not be triggered.
 - Compatibility: Removed some unused Devotion weapons and projectiles for compatibility with Droppable Gods.
 <!--Releasenotes end-->
 
