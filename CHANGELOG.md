@@ -15,6 +15,7 @@
 - Fixed: Barge of Death shielding crystals have no tethers attached.
 - Fixed: When altering fate (run RNG) at the Shrine, the Reroll Die is not shown over the Chaos Gate.
 - Fixed: The "Summoner" Hydra variant's teeth spawn enemies even when destroyed.
+- Fixed: "Bigger" enemy elite perk doesn't work for the original game's enemies.
 - Fixed: Some contextual voicelines can never play after returning to the Crossroads.
 - Fixed: Some contextual dialogues with bosses could not be triggered.
 - Compatibility: Removed some unused Devotion weapons and projectiles for compatibility with Droppable Gods.

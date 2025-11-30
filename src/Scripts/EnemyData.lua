@@ -403,9 +403,6 @@ local enemyReplacements = {
 		ActivateFadeIn = false,
 		ActivateTint = false,
 		ActivateStartAlpha = 1.0,
-		-- The projectile scaling this is supposed to do doesn't work for H1 enemies it seems
-		-- TODO: Test this since the projectile stuff was reworked
-		BlockAttributes = { "Massive" },
 	},
 	HadesBossBaseVulnerableEnemy = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -628,7 +625,7 @@ local enemyModifications = {
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
 		WeaponOptions = { "HadesSwarmerMelee" },
-		BlockAttributes = { "Orbit", "Vacuum", "Massive", },
+		BlockAttributes = { "Orbit", "Vacuum", },
 	},
 	SwarmerElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
@@ -823,11 +820,11 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessNaked" },
 		},
-		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		BlockAttributes = { "Blink", "Orbit", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
 	HadesBloodlessNakedEliteSuperElite = {
-		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		BlockAttributes = { "Blink", "Orbit", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
 	BloodlessNakedBerserker = {
@@ -850,7 +847,7 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "BloodlessNakedBerserker" },
 		},
-		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		BlockAttributes = { "Blink", "Orbit", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
 	},
 	HadesBloodlessWaveFist = {
@@ -873,7 +870,7 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessWaveFist" },
 		},
-		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		BlockAttributes = { "Blink", "Orbit", },
 	},
 	HadesBloodlessGrenadier = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
@@ -894,7 +891,7 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessGrenadier" },
 		},
-		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		BlockAttributes = { "Blink", "Orbit", },
 	},
 	HadesBloodlessSelfDestruct = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
@@ -916,7 +913,7 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessSelfDestruct" },
 		},
-		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		BlockAttributes = { "Blink", "Orbit", },
 	},
 	HadesBloodlessPitcher = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
@@ -938,11 +935,11 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessPitcher" },
 		},
-		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		BlockAttributes = { "Blink", "Orbit", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
 	HadesBloodlessPitcherSuperElite = {
-		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		BlockAttributes = { "Blink", "Orbit", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
 	HadesSpreadShotUnit = {
@@ -979,13 +976,13 @@ local enemyModifications = {
 		UseActivatePresentation = false,
 	},
 	RangedBurrowerElite = {
-		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		BlockAttributes = { "Blink", "Orbit", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
 	},
 	RangedBurrowerSuperElite = {
 		-- Give it the elite weapon instead of the normal one
 		WeaponOptions = { "RangedBurrowerBurrow", "RangedBurrowerWeaponElite" },
-		BlockAttributes = { "Blink", "Orbit", "Massive", },
+		BlockAttributes = { "Blink", "Orbit", },
 	},
 	CrusherUnit = {
 		StunAnimations = { Default = "CrusherUnitOnHit" },
