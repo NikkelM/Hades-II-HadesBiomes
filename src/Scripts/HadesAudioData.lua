@@ -478,6 +478,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		},
 		[2] = GlobalVoiceLines.HadesWrathAttackVoiceLines,
 	},
+	-- #region FatherSonArgumentVoiceLines
 	-- FatherSonArgumentVoiceLines = {
 	-- 	{
 	-- 		RequiredTextLines = { "Ending01" },
@@ -1624,6 +1625,21 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		{ Cue = "/VO/HadesField_0227", PreLineWait = 0.65 },
 	-- 	},
 	-- },
+	-- #endregion
+	-- Played when using HadesPreDamageBoon on Hades himself
+	ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines = {
+		{
+			RandomRemaining = true,
+			PreLineWait = 0.35,
+			ObjectType = "Hades",
+			{ Cue = "/VO/HadesField_0631", Text = "What?!" },
+			{ Cue = "/VO/HadesField_0671", Text = "You are the prey, not me." },
+			{ Cue = "/VO/HadesField_0484", Text = "It seems you need all of the help that you can get!" },
+			{ Cue = "/VO/HadesField_0278", Text = "You mean to mock me with such tricks?" },
+			{ Cue = "/VO/HadesField_0466", Text = "You need assistance even now?" },
+			{ Cue = "/VO/HadesField_0583", Text = "I am still more than capable of besting you." },
+		},
+	},
 	-- Ending
 	HadesSighVoiceLines = {
 		BreakIfPlayed = true,
@@ -3951,7 +3967,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			BreakIfPlayed = true,
 			PreLineWait = 1.0,
 			SuccessiveChanceToPlayAll = 0.5,
-			{ Cue = "/VO/Melinoe_1875", Text = "{#Emph}Nrgh{#Prev}, I almost had her there..."},
+			{ Cue = "/VO/Melinoe_1875", Text = "{#Emph}Nrgh{#Prev}, I almost had her there..." },
 			{ Cue = "/VO/Melinoe_0370", Text = "{#Emph}Augh{#Prev}, she's... strong.", },
 			{ Cue = "/VO/Melinoe_2261", Text = "{#Emph}Ngh... {#Prev}what is her problem?" },
 			{ Cue = "/VO/Melinoe_3165", Text = "{#Emph}Ngh... {#Prev}to be beaten by {#Emph}her..." },
@@ -3968,7 +3984,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			BreakIfPlayed = true,
 			PreLineWait = 1.0,
 			SuccessiveChanceToPlayAll = 0.5,
-			{ Cue = "/VO/Melinoe_5124", Text = "{#Emph}Whew... {#Prev}too hot back there."},
+			{ Cue = "/VO/Melinoe_5124", Text = "{#Emph}Whew... {#Prev}too hot back there." },
 			{ Cue = "/VO/Melinoe_3638", Text = "{#Emph}Ngh... {#Prev}just couldn't take the heat..." },
 			{ Cue = "/VO/Melinoe_5120", Text = "{#Emph}Ngh... {#Prev}I had nowhere to go...", },
 			{ Cue = "/VO/Melinoe_0372", Text = "{#Emph}Eugh{#Prev}, ate me alive back there..." },
@@ -4022,8 +4038,8 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			BreakIfPlayed = true,
 			PreLineWait = 1.0,
 			SuccessiveChanceToPlayAll = 0.5,
-			{ Cue = "/VO/Melinoe_3583",      Text = "The sheer might of Lord Charon..." },
-			{ Cue = "/VO/Melinoe_5135",      Text = "{#Emph}Nngh... {#Prev}I {#Emph}did {#Prev}hear he was strong..." },
+			{ Cue = "/VO/Melinoe_3583", Text = "The sheer might of Lord Charon..." },
+			{ Cue = "/VO/Melinoe_5135", Text = "{#Emph}Nngh... {#Prev}I {#Emph}did {#Prev}hear he was strong..." },
 		},
 		-- #endregion
 		-- #region Including base game events

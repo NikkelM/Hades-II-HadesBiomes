@@ -1580,6 +1580,8 @@ local weaponModifications = {
 		AIData = {
 			-- Different call, as for FireFunctionName, CurrentRun is also passed as an argument
 			FireFunctionName = _PLUGIN.guid .. "." .. "HadesEnemyInvisibility",
+			-- To prevent him from being invulnerable when PreDamageBoss might be called
+			BlockAsFirstWeapon = true,
 		},
 	},
 	HadesCastBeam = {

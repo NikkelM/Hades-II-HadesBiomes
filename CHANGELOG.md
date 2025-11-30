@@ -7,6 +7,7 @@
 - Balancing: Reduced Poison tick rate from every 0.13s to every 0.23s.
 - Balancing: Slightly reduced overall enemy health and armour.
 - Balancing: Slightly reduced Chariot ram speed, and they are no longer immune to cast slow effects.
+- Fixed: "Old Grudge" and "Deep Dissent" do not have any effect against Hades.
 - Fixed: Tisiphone's fog can stick to Melinoë.
 - Fixed: Styx saw blade weapon damage is not categorized as "Trap" damage.
 - Fixed: Barge of Death shielding crystals have no tethers attached.

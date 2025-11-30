@@ -23,3 +23,11 @@ modutil.mod.Path.Wrap("FinishedTextLinesPresentation", function(base, source, te
 
 	return base(source, textLines)
 end)
+
+modutil.mod.Path.Wrap("HadesPreDamagePresentation", function(base, enemy, damageAmount, damageData)
+	if enemy ~= nil and enemy.Name == "Hades" then
+		damageData.VoiceLines = game.GlobalVoiceLines.ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines
+	end
+
+	return base(enemy, damageAmount, damageData)
+end)
