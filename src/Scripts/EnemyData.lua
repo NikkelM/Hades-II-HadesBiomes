@@ -1418,7 +1418,7 @@ local enemyModifications = {
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotOnHit" },
-		IgnoreCastSlow = true,
+		-- IgnoreCastSlow = true,
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
@@ -1427,7 +1427,7 @@ local enemyModifications = {
 			RamEffectProperties = {
 				{
 					Property = "Speed",
-					Value = 950,
+					Value = 850,
 				},
 			},
 			RamEffectResetProperties = {
@@ -1449,7 +1449,7 @@ local enemyModifications = {
 			RamEffectProperties = {
 				{
 					Property = "Speed",
-					Value = 1050,
+					Value = 900,
 				},
 			},
 			RamEffectResetProperties = {
@@ -1465,7 +1465,7 @@ local enemyModifications = {
 			RamEffectProperties = {
 				{
 					Property = "Speed",
-					Value = 1050,
+					Value = 900,
 				},
 			},
 			RamEffectResetProperties = {
@@ -1482,7 +1482,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
-		IgnoreCastSlow = true,
+		-- IgnoreCastSlow = true,
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
@@ -1491,7 +1491,7 @@ local enemyModifications = {
 			RamEffectProperties = {
 				{
 					Property = "Speed",
-					Value = 900,
+					Value = 800,
 				},
 			},
 			RamEffectResetProperties = {
