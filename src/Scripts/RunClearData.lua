@@ -22,6 +22,7 @@ local newDamageSourceMappings = {
 	SmokeTrapWeapon = "Traps",
 	LavaSplash = "Traps",
 	LavaPuddleLarge = "Traps",
+	SawTrapWeapon = "Traps",
 	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.ScreenData.RunClear.DamageSourceMap, newDamageSourceMappings)
