@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.1.2
+
+<!--Releasenotes start-->
+### Patch Highlights:
+
+
+Other fixes and improvements:
+- Fixed: The mod does not reinstall itself after a game update.
+
+<!--Releasenotes end-->
+
 ## v0.1.1
 
 <!--Releasenotes start-->
