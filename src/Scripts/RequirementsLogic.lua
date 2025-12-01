@@ -2429,13 +2429,17 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		if (game.CurrentRun.CurrentRoom.Encounter.ThanatosKills or 0) > requirements.RequiredMaxThanatosKillsThisRun then
 			return false
 		end
-		for roomIndex = #game.CurrentRun.RoomHistory, 1, -1 do
-			if game.CurrentRun.RoomHistory[roomIndex].Encounter.ThanatosKills then
-				if game.CurrentRun.RoomHistory[roomIndex].Encounter.ThanatosKills > requirements.RequiredMaxThanatosKillsThisRun then
-					return false
-				end
-				break
-			end
+		-- ThanatosKills in the Encounter is not saved in the RoomHistory, moving it up to CurrentRun
+		-- for roomIndex = #game.CurrentRun.RoomHistory, 1, -1 do
+		-- 	if game.CurrentRun.RoomHistory[roomIndex].Encounter.ThanatosKills then
+		-- 		if game.CurrentRun.RoomHistory[roomIndex].Encounter.ThanatosKills > requirements.RequiredMaxThanatosKillsThisRun then
+		-- 			return false
+		-- 		end
+		-- 		break
+		-- 	end
+		-- end
+		if (game.CurrentRun.ModsNikkelMHadesBiomesTotalThanatosKills or 0) > requirements.RequiredMaxThanatosKillsThisRun then
+			return false
 		end
 	end
 

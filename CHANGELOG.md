@@ -11,6 +11,7 @@
 - Balancing: Slightly increased encounter difficulty ratings to allow for more enemies per wave.
 - Fixed: "Old Grudge" and "Deep Dissent" do not have any effect against Hades.
 - Fixed: Gale can't block Styx poison damage.
+- Fixed: "Robbed Thanatos" title was eligible when simply meeting Thanatos, even when he got any kills.
 - Fixed: Tisiphone's fog can stick to Melinoë.
 - Fixed: Styx saw blade weapon damage is not categorized as "Trap" damage.
 - Fixed: Thanatos' attack crashes the game.
