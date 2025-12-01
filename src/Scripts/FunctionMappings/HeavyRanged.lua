@@ -6,8 +6,8 @@ function mod.CreateTethers(newEnemy, args)
 		return
 	end
 
-	-- For current compatibility with Gale, if the player has her equipped, don't create Tethers as they might be what's causing the crashes when she attacks them
-	if game.GameState.EquippedFamiliar == "PolecatFamiliar" then
+	-- For current compatibility with Gale, if the player has her equipped, don't create Tethers as they might be what's causing the crashes when she attacks them #329
+	if game.GameState.EquippedFamiliar == "PolecatFamiliar" or game.GameState.EquippedFamilar == "FrogFamiliar" then
 		return
 	end
 
@@ -36,8 +36,8 @@ function mod.CreateTethers(newEnemy, args)
 					Id = tetherId,
 					DestinationId = newEnemy.ObjectId,
 					-- The issue with the tethers is that TetherDistance and TetherElasticity are no longer existent in Hades II - issue #22
-					-- TetherDistance = tether.Distance,
-					-- TetherElasticity = tether.Elasticity,
+					TetherDistance = tether.Distance,
+					TetherElasticity = tether.Elasticity,
 					-- As a workaround, just do some static offsets
 					OffsetX = offsetX,
 					OffsetY = offsetY,
@@ -47,8 +47,8 @@ function mod.CreateTethers(newEnemy, args)
 					Id = prevTetherId,
 					DestinationId = tetherId,
 					TetherDistance = tether.Distance,
-					-- TetherRetractSpeed = tether.RetractSpeed,
-					-- TetherTrackZRatio = tether.TrackZRatio,
+					TetherRetractSpeed = tether.RetractSpeed,
+					TetherTrackZRatio = tether.TrackZRatio,
 					OffsetX = offsetX,
 					OffsetY = offsetY,
 				})
