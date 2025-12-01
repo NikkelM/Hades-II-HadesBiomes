@@ -64,11 +64,11 @@ local encounterReplacements = {
 		-- The original from Hades is 2.3
 		ActiveEnemyCapBase = 4.4,
 		-- The original from Hades is 30
-		BaseDifficulty = 50,
+		BaseDifficulty = 45,
 		-- The original from Hades is 0.35
 		ActiveEnemyCapDepthRamp = 0.55,
 		-- The original from Hades is 11
-		DepthDifficultyRamp = 16,
+		DepthDifficultyRamp = 13,
 	},
 	OpeningGenerated = {
 		-- Blocks the LocationText from being shown an extra time in RoomEntranceDrop

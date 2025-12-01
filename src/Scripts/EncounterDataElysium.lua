@@ -46,13 +46,13 @@ local encounterReplacements = {
 		-- The original from Hades is 2.3 - inherited from Generated
 		ActiveEnemyCapBase = 3.3,
 		-- The original from Hades is 220
-		BaseDifficulty = 300,
+		BaseDifficulty = 280,
 		-- The original from Hades is 0.4
 		ActiveEnemyCapDepthRamp = 0.6,
 		-- The original from Hades is 0.35
 		TypeCountDepthRamp = 0.5,
 		-- The original from Hades is 70
-		DepthDifficultyRamp = 80,
+		DepthDifficultyRamp = 78,
 		-- Original is missing HandleEncounterPreSpawns
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
