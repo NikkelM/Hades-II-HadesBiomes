@@ -145,6 +145,9 @@ local hadesProjectilesModifications = {
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
 	},
+	CrusherUnitSlamUpgraded = {
+		Fuse = 0.1,
+	},
 	HydraDart = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
@@ -154,8 +157,8 @@ local hadesProjectilesModifications = {
 		CheckObstacleImpact = true,
 		DetonateOnTouchdown = true,
 	},
-	CrusherUnitSlamUpgraded = {
-		Fuse = 0.1,
+	HydraSlamRockFall = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 	},
 	-- #endregion
 
