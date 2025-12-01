@@ -1242,7 +1242,7 @@ local weaponModifications = {
 	},
 	TheseusSpearSpin = {
 		AIData = {
-			FireSelfVelocity = 2000,
+			FireSelfVelocity = 1700,
 			-- So there are some opportunities to attack him without him blocking everything
 			PostAttackStop = true,
 			-- Also for this, removing the cooldown to not make it too easy

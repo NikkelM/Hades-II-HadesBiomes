@@ -7,6 +7,7 @@
 
 
 Other fixes and improvements:
+- Balancing: Reduced the forward momentum of Theseus' spear spin to attack to make it easier to dodge out of range.
 - Fixed: The mod does not reinstall itself after it is updated.
 - Workaround: If Gale is equipped, "Crystal" enemies will not spawn their tethers to prevent crashes when Gale attacks them.
 <!--Releasenotes end-->
