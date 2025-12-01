@@ -8,6 +8,7 @@
 
 Other fixes and improvements:
 - Fixed: The mod does not reinstall itself after it is updated.
+- Workaround: If Gale is equipped, "Crystal" enemies will not spawn their tethers to prevent crashes when Gale attacks them.
 <!--Releasenotes end-->
 
 ## v0.1.1
@@ -38,7 +39,6 @@ Other fixes and improvements:
 - Fixed: Some contextual voicelines can never play after returning to the Crossroads.
 - Fixed: Some contextual dialogues with bosses can not be triggered.
 - Tentative Fix: Music stops playing in rooms after minibosses or other special rooms. Please report if this still occurs.
-- Workaround: If Gale is equipped, "Crystal" enemies will not spawn their tethers to prevent crashes when Gale attacks them.
 - Compatibility: Removed some unused Devotion weapons and projectiles for compatibility with Droppable Gods.
 <!--Releasenotes end-->
 
