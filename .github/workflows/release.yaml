@@ -1,5 +1,5 @@
 name: Release
-run-name: ${{ format('{0} {1}', ((inputs.is-dry-run && 'Dry-run') || inputs.is-github-release-only-run && 'GitHub Release') || 'Release', inputs.tag) }}
+run-name: ${{ format('{0} {1}', (inputs.is-dry-run && 'Dry-run') || 'GitHub Release', inputs.tag) }}
 
 on:
   workflow_dispatch:
@@ -11,10 +11,10 @@ on:
         description: "Dry-run (do not publish, only test build)"
         type: boolean
         default: true
-      is-github-release-only-run:
-        description: "Release to GitHub only (do not upload to Thunderstore). Do not tick Dry-run for this to work"
-        type: boolean
-        default: true
+      # is-github-release-only-run:
+      #   description: "Release to GitHub only (do not upload to Thunderstore). Do not tick Dry-run for this to work"
+      #   type: boolean
+      #   default: true
 
 permissions:
   contents: write # required for pushing to the repository and creating releases
@@ -26,7 +26,7 @@ env:
 
 jobs:
   release:
-    name: ${{ format('{0} {1}', ((inputs.is-dry-run && 'Dry-run') || inputs.is-github-release-only-run && 'GitHub Release') || 'Release', inputs.tag) }}
+    name: ${{ format('{0} {1}', (inputs.is-dry-run && 'Dry-run') || 'GitHub Release', inputs.tag) }}
     runs-on: ubuntu-latest
     steps:
       - name: Check input tag format
@@ -62,11 +62,12 @@ jobs:
           path: ${{ env.artifact-path }}
           retention-days: 1
 
-      - name: Publish package
-        if: ${{ !inputs.is-dry-run && !inputs.is-github-release-only-run }}
-        env:
-          TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
-        run: tcli publish --file ${{ env.artifact-path }}
+          # Disabled on this repository, since we sometimes get a timeout when publishing the large package directly, which will fail the workflow and not publish the GitHub release
+      # - name: Publish package
+      #   if: ${{ !inputs.is-dry-run && !inputs.is-github-release-only-run }}
+      #   env:
+      #     TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
+      #   run: tcli publish --file ${{ env.artifact-path }}
 
       - name: Tag and push to repository
         if: ${{ !inputs.is-dry-run }}
