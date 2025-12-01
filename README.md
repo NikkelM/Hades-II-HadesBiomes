@@ -22,6 +22,8 @@ In order to use this mod you _must_ have Hades installed on your system at all t
 The mod will not work without it.
 If you have Hades and Hades II installed in different parent folders, please refer to the [Configuration](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) wiki page for instructions on how to ensure the mod can discover your Hades installation.
 
+> Please uninstall your Hades mods by renaming the `Mods` folder and running `modimporter.exe` when playing with this mod enabled!
+
 You can install this mod just like any other Hades II mod available on [Thunderstore](https://thunderstore.io/c/hades-ii/), the recommended mod manager is [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/).
 Starting the game the first time with the mod enabled will install a number of files.
 This may take some time depending on your hardware, and the game will display a black screen during this time.
