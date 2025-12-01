@@ -70,6 +70,7 @@ You can track all planned features and fixes on the [project's GitHub Issues pag
 Some other mods may integrate with *Zagreus' Journey* to provide additional features, alternative functionality, or use the resources introduced by this mod:
 
 - [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) unlocks songs from Hades' original soundtrack through progression in *Zagreus' Journey*, and buying them from the Music Maker will require resources introduced by this mod.
+- [Charon's Tip Jar](https://thunderstore.io/c/hades-ii/p/NikkelM/Charons_Tip_Jar/) adds a tip jar to Charon's shop rooms during Hades underworld runs. 
 
 > Are you developing a mod that integrates with *Zagreus' Journey*, or would like to add such an integration? Let me know on [Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
