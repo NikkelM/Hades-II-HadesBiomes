@@ -36,7 +36,7 @@ Other fixes and improvements:
 - Fixed: The "Summoner" Hydra variant's teeth spawn enemies even when destroyed.
 - Fixed: "Bigger" enemy elite perk doesn't work for the original game's enemies.
 - Fixed: Some contextual voicelines can never play after returning to the Crossroads.
-- Fixed: Some contextual dialogues with bosses could not be triggered.
+- Fixed: Some contextual dialogues with bosses can not be triggered.
 - Tentative Fix: Music stops playing in rooms after minibosses or other special rooms. Please report if this still occurs.
 - Workaround: If Gale is equipped, "Crystal" enemies will not spawn their tethers to prevent crashes when Gale attacks them.
 - Compatibility: Removed some unused Devotion weapons and projectiles for compatibility with Droppable Gods.
