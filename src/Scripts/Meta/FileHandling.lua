@@ -34,13 +34,10 @@ function mod.CompareChecksums()
 		local cachedChecksumsContent = cachedChecksums:read("*a")
 		local currentChecksumsContent = currentChecksums:read("*a")
 
-		if cachedChecksumsContent == "" then
-			mod.DebugPrint("The mod has recently been installed or updated. Running first time setup.", 3)
-			-- Just in case the user disabled the setting, we will set it to true here
-			config.firstTimeSetup = true
-		elseif cachedChecksumsContent ~= currentChecksumsContent then
+		-- It will be empty on first install or mod update, and unequal on game update
+		if cachedChecksumsContent == "" or cachedChecksumsContent ~= currentChecksumsContent then
 			mod.DebugPrint(
-				"Game \"checksums.txt\" does not match the mod's cached \"checksums.txt\". This indicates a game or mod update, the mod will be re-installed.",
+				"Game \"checksums.txt\" does not match the mod's \"checksums.txt\". This indicates a game or mod update or fresh install, the mod will be (re)-installed.",
 				2)
 			-- This will cause a re-installation of the mod immediately after this function call
 			config.uninstall = true
