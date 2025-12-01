@@ -6,6 +6,11 @@ function mod.CreateTethers(newEnemy, args)
 		return
 	end
 
+	-- For current compatibility with Gale, if the player has her equipped, don't create Tethers as they might be what's causing the crashes when she attacks them
+	if game.GameState.EquippedFamiliar == "PoleCatFamiliar" then
+		return
+	end
+
 	newEnemy.TetherIds = {}
 	local prevTetherId = newEnemy.ObjectId
 	for k, tether in ipairs(newEnemy.Tethers) do
