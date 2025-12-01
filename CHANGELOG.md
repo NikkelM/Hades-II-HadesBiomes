@@ -9,6 +9,7 @@
 - Balancing: Slightly reduced overall enemy health and armour.
 - Balancing: Slightly reduced Chariot ram speed, and they are no longer immune to cast slow effects.
 - Balancing: Slightly increased encounter difficulty ratings to allow for more enemies per wave.
+- Balancing: Witches in the "Witch's Circle" miniboss encounter can no longer have Elite Perks.
 - Fixed: "Old Grudge" and "Deep Dissent" do not have any effect against Hades.
 - Fixed: Gale can't block Styx poison damage.
 - Fixed: "Robbed Thanatos" title is eligible when simply meeting Thanatos, even when he got kills.

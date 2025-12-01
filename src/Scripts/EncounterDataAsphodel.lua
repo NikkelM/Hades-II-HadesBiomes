@@ -100,6 +100,7 @@ local encounterModifications = {
 		MinWaves = 1,
 		MaxWaves = 1,
 		CanEncounterSkip = false,
+		BlockEliteAttributes = true,
 	},
 	WrappingAsphodel = {
 		BlockAthenaEncounterKeepsake = true,
