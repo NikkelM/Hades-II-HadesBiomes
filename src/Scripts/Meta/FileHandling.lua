@@ -9,12 +9,26 @@ function mod.ConfirmHadesInstallation()
 
 	-- Check if the Hades installation is valid (by just confirming the .exe exists)
 	local exePath = rom.path.combine(mod.hadesGameFolder, "x64\\Hades.exe")
+	-- Check for a Steam or Epic installation first
 	if not rom.path.exists(exePath) then
-		mod.DebugPrint("Hades installation not found at \"" ..
-			exePath ..
-			"\". Please set the correct path in the config file. Use \"root\" if the Hades folder is in the same parent directory as Hades II.",
-			1)
-		return false
+		-- If not found, the user may have Hades installed from the Microsoft Store, which uses a different path for the .exe
+		local microsoftExePath = rom.path.combine(mod.hadesGameFolder, "Content\\Hades.exe")
+		if not rom.path.exists(microsoftExePath) then
+			-- If not found, check for the Microsoft Store Path one Content level up, in case the user misunderstood the instructions
+			local microsoftBackupExePath = rom.path.combine(mod.hadesGameFolder, "Hades.exe")
+			if not rom.path.exists(microsoftBackupExePath) then
+				mod.DebugPrint(
+					"The mod tried finding your Hades installation at \"" ..
+					exePath .. "\" (Steam/Epic) or \"" ..
+					microsoftExePath ..
+					"\" (Microsoft Store/Game Pass), but did not find it. Please set the correct path in the config file through your mod manager. Use \"root\" if the Hades folder is in the same folder as the Hades II folder.",
+					1)
+				return false
+			end
+		else
+			-- If the backup path exists, the hadesGameFolder needs to go one "Content" level deeper
+			mod.hadesGameFolder = rom.path.combine(mod.hadesGameFolder, "Content")
+		end
 	end
 
 	mod.DebugPrint("Hades installation found at " .. mod.hadesGameFolder, 3)

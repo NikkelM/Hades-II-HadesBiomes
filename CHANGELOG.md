@@ -4,7 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-
+- Support for PC Game Pass/Microsoft Store versions of Hades. You will need to provide the path of the Hades folder in the mod config file in your mod manager (such as `C:\Xbox\Hades`).
 
 Other fixes and improvements:
 - Balancing: Reduced the forward momentum of Theseus' spear spin to attack to make it easier to dodge out of range.

@@ -350,8 +350,8 @@ function mod.FirstTimeSetup()
 	local numMissingFiles = mod.CheckRequiredFiles(false)
 	if numMissingFiles > 0 then
 		mod.DebugPrint(
-			"A total of " .. numMissingFiles ..
-			" required files are missing immediately after first time setup. Please check the log for more information. Do you have Hades installed in the correct folder? Check the \"hadesGameFolder\" setting in your config file.",
+			numMissingFiles ..
+			" required files are missing immediately after first time setup. Do you have Hades installed in the correct folder? Check the \"hadesGameFolder\" setting in your config file.",
 			1)
 		return
 	end
