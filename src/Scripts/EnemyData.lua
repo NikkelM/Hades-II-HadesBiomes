@@ -1425,7 +1425,7 @@ local enemyModifications = {
 			RamEffectProperties = {
 				{
 					Property = "Speed",
-					Value = 850,
+					Value = 900,
 				},
 			},
 			RamEffectResetProperties = {
@@ -1447,7 +1447,7 @@ local enemyModifications = {
 			RamEffectProperties = {
 				{
 					Property = "Speed",
-					Value = 900,
+					Value = 950,
 				},
 			},
 			RamEffectResetProperties = {
@@ -1463,7 +1463,7 @@ local enemyModifications = {
 			RamEffectProperties = {
 				{
 					Property = "Speed",
-					Value = 900,
+					Value = 950,
 				},
 			},
 			RamEffectResetProperties = {
@@ -1489,7 +1489,7 @@ local enemyModifications = {
 			RamEffectProperties = {
 				{
 					Property = "Speed",
-					Value = 800,
+					Value = 830,
 				},
 			},
 			RamEffectResetProperties = {

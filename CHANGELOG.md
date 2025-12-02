@@ -9,6 +9,7 @@
 Other fixes and improvements:
 - Added a new installation failure screen for the particular case when the Hades installation could not be found, to allow for easier troubleshooting.
 - Balancing: Reduced the forward momentum of Theseus' spear spin to attack to make it easier to dodge out of range.
+- Balancing: Slightly increased Chariot ram speed.
 - Fixed: The installation failure screen shows only placeholder text.
 - Fixed: The mod does not reinstall itself after it is updated.
 - Fixed: The mod shows the "Installation Successful" message on every mod update.
