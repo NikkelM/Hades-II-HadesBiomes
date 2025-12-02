@@ -123,6 +123,7 @@ local encounterModifications = {
 		CancelSpawnsOnKill = mod.NilValue,
 		WipeEnemiesOnKill = mod.NilValue,
 		PostUnthreadedEvents = mod.NilValue,
+		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 }
 

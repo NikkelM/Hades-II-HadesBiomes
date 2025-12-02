@@ -305,6 +305,7 @@ local encounterModifications = {
 	MiniBossGrenadier = {
 		LoadPackages = { "BiomeB" },
 		CanEncounterSkip = false,
+		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 	MiniBossHeavyRangedSplitter = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
@@ -320,6 +321,7 @@ local encounterModifications = {
 		WipeEnemiesOnKillAllTypes = { "WretchAssassinMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "WretchAssassinMiniboss" },
 		CanEncounterSkip = false,
+		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 
 	-- BOSSES
@@ -330,6 +332,7 @@ local encounterModifications = {
 		StartRoomUnthreadedEvents = {
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryActivations" },
 		},
+		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 	BossHarpy2 = {
 		WipeEnemiesOnKillAllTypes = { "Harpy2" },
@@ -337,6 +340,7 @@ local encounterModifications = {
 		StartRoomUnthreadedEvents = {
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryActivations" },
 		},
+		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 	BossHarpy3 = {
 		WipeEnemiesOnKillAllTypes = { "Harpy3" },
@@ -344,6 +348,7 @@ local encounterModifications = {
 		StartRoomUnthreadedEvents = {
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryActivations" },
 		},
+		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 }
 
