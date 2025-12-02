@@ -52,7 +52,7 @@ mod.UpdateField(encounterDataAsphodel, "Challenge", "TimeChallenge", { "InheritF
 local encounterReplacements = {
 	GeneratedAsphodel = {
 		-- To ensure we are not attacked while still running the entrance animation
-		PreSpawnAIWakeDelay = 1,
+		PreSpawnAIWakeDelay = 1.4,
 		-- The original from Hades is 5.0
 		ActiveEnemyCapBase = 6.5,
 		-- The original from Hades is 170
