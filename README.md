@@ -40,14 +40,15 @@ If the mod was installed successfully, a popup will open in the Training Grounds
 
 This mod requires an additional 1GB of disk space.
 
-If you would like more information, refer to the [Installation](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Installation-&-Uninstallation) wiki page.
+If you have Hades and Hades II installed in different parent folders, such as through different storefronts (Steam/Epic Games/Microsoft Store/Game Pass), you will need to provide the path of your Hades installation in the mod's configuration file in your mod manager.
+Set the `hadesGameFolder` configuration option to the folder where Hades is installed (such as `C:\Program Files (x86)\Steam\steamapps\common\Hades` if installed through Steam, `C:\Program Files (x86)\Epic Games\Games\Hades` if installed through Epic Games, or `C:/Xbox/Hades` for Microsoft Store/Game Pass).
+
+If you would like more information or experience any issues, please refer to the [Installation](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Installation-&-Uninstallation) wiki page.
 
 **Before removing** the mod from r2modman, you must first uninstall it through the `uninstall` configuration setting, to prevent any issues with leftover files.
 Only uninstall the mod while in the Crossroads to prevent issues.
 
 ## Configuration
-
-If you have Hades and Hades II installed in the same folder, you should not need to change any configuration options.
 
 You can find an explanation of all options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
 
