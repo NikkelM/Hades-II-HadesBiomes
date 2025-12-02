@@ -1,6 +1,15 @@
 mod.NilValue = {}
 mod.TableValue = {}
 
+mod.DefaultHiddenConfig = {
+	HasShownSuccessfulInstallScreen = false,
+	IsValidInstallation = false,
+	MustShowUninstallFailureScreen = false,
+	-- For debugging purposes
+	IgnoreShowFeedbackMessage = false,
+	EnableVanillaDebugKeybinds = false,
+}
+
 -- All enemies have more health and armour in modded runs
 mod.ModdedUnitMaxHealthMultiplierBonus = 0.45
 mod.ModdedUnitHealthBufferMultiplierBonus = 0.2

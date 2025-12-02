@@ -9,6 +9,7 @@
 Other fixes and improvements:
 - Balancing: Reduced the forward momentum of Theseus' spear spin to attack to make it easier to dodge out of range.
 - Fixed: The mod does not reinstall itself after it is updated.
+- Fixed: The mod shows the "Installation Successful" message on every mod update.
 - Workaround: "Crystal" enemies (such as Brimstones) will not spawn their tethers to prevent crashes when attacked by a familiar, or hit by the Polymorph Hex.
 <!--Releasenotes end-->
 

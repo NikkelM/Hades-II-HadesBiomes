@@ -438,12 +438,31 @@ function mod.ShouldRemoveEntry(entryName, entriesToRemove)
 	return false
 end
 
+---Tries to use TryLoadCachedSjsonFile to load a file in the mod's cache folder.
+---If the file does not exist, creates it with the provided default content.
+---@param fileName string The name of the file to load or create. This file must be located in the mod's cache folder.
+---@param defaultContent table The default content to create the file with, if it does not exist.
+---@return table decodedSjsonFile The decoded sjson file
+function mod.TryGetOrCreateCachedSjsonFile(fileName, defaultContent)
+	defaultContent = defaultContent or {}
+	local basePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\cache\\")
+	local path = rom.path.combine(basePath, fileName)
+
+	if rom.path.exists(path) then
+		return mod.TryLoadCachedSjsonFile(path) or {}
+	else
+		mod.SaveCachedSjsonFile(fileName, defaultContent)
+		return defaultContent
+	end
+end
+
 ---Tries to load a file in the mod's cache folder and returns its contents.
 ---@return table decodedSjsonFile The decoded sjson file.
 ---@return string error If the file does not exist, throws an error.
 function mod.TryLoadCachedSjsonFile(fileName)
 	local basePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\cache\\")
 	local path = rom.path.combine(basePath, fileName)
+
 	if rom.path.exists(path) then
 		return mod.DecodeSjsonFile(path)
 	else
@@ -462,7 +481,8 @@ function mod.SaveCachedSjsonFile(fileName, data)
 end
 
 ---The mod's hidden config, stored in the cache folder as hiddenConfig.sjson.
-mod.HiddenConfig = mod.HiddenConfig or mod.TryLoadCachedSjsonFile("hiddenConfig.sjson")
+---We don't ship the file with the mod to prevent it being overwritten on a mod update
+mod.HiddenConfig = mod.HiddenConfig or mod.TryGetOrCreateCachedSjsonFile("hiddenConfig.sjson", mod.DefaultHiddenConfig)
 mod.DebugPrint("Loaded hiddenConfig.sjson", 4)
 mod.DebugPrint(mod.HiddenConfig, 4)
 
