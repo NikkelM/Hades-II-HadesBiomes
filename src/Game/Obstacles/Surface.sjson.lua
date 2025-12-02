@@ -90,8 +90,10 @@ local hadesTwoObstacleModifications = {
 }
 
 sjson.hook(hadesTwoSurfaceObstacleFile, function(data)
-	-- Add new obstacles
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["Surface"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Obstacles, hadesSurfaceObstacleTable.Obstacles, "Name")
-	-- Apply modifications to existing obstacles
 	mod.ApplyNestedSjsonModifications(data.Obstacles, hadesTwoObstacleModifications)
 end)

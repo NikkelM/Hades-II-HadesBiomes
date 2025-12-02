@@ -206,6 +206,12 @@ for _, enemyData in pairs(enemyAdditions) do
 end
 
 sjson.hook(hadesTwoEnemiesFile, function(data)
+	-- Note: Enemies.sjson is currently the sjson file that is loaded before all others, meaning we reset the table here
+	local sjsonLoads = {}
+	-- Set this to a non-boolean so another hook can verify it ran first, the other hook will set it to true
+	sjsonLoads["Enemies"] = "FileInitialized"
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Units, hadesEnemiesTable.Units, "Name")
 end)
 

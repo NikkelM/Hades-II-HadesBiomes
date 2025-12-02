@@ -23,5 +23,9 @@ local addProjectiles = {
 }
 
 sjson.hook(hadesTwoProjectilesFile, function(data)
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["Enemy_Traps_Projectiles"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Projectiles, addProjectiles, "Name")
 end)

@@ -156,6 +156,10 @@ local addAnimations = {
 mod.ApplyNestedSjsonModifications(hadesEnemyAnimationsTable.Animations, modifications)
 
 sjson.hook(hadesTwoEnemyAnimationsFile, function(data)
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["CharacterAnimationsEnemies"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Animations, hadesEnemyAnimationsTable.Animations, "Name")
 	mod.AddTableKeysSkipDupes(data.Animations, addAnimations, "Name")
 end)

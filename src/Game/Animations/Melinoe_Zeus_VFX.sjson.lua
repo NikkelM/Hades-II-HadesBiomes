@@ -23,7 +23,10 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoTartarusObstacleFile, function(data)
-	-- Add new animations
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["Melinoe_Zeus_VFX"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Animations, addAnimationsParents, "Name")
 	mod.AddTableKeysSkipDupes(data.Animations, addAnimations, "Name")
 end)

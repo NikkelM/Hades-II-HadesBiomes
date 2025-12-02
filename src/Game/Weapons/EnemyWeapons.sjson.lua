@@ -139,6 +139,10 @@ for i = #hadesWeaponsTable.Weapons, 1, -1 do
 end
 
 sjson.hook(hadesTwoPlayerWeaponsFile, function(data)
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["EnemyWeapons"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Weapons, hadesWeaponsTable.Weapons, "Name")
 end)
 

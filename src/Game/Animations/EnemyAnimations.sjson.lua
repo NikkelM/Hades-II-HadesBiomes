@@ -66,7 +66,8 @@ local hadesEnemyAnimationsModifications = {
 	-- #endregion
 	-- #region STYX
 	ModsNikkelMHadesBiomesHadesTombstoneSpawn = {
-		FilePath = "NikkelM-HadesBiomesFxModded\\Fx\\ModsNikkelMHadesBiomesHadesStunTotemSpawn\\ModsNikkelMHadesBiomesHadesStunTotemSpawn",
+		FilePath =
+		"NikkelM-HadesBiomesFxModded\\Fx\\ModsNikkelMHadesBiomesHadesStunTotemSpawn\\ModsNikkelMHadesBiomesHadesStunTotemSpawn",
 		ChainTo = "ModsNikkelMHadesBiomesHadesStunTotemStatic",
 		Scale = 1.4,
 		Sound = "/SFX/Enemy Sounds/Zombie/ZombieEmerge",
@@ -104,5 +105,17 @@ end
 mod.ApplyNestedSjsonModifications(hadesEnemyAnimationsTable.Animations, hadesEnemyAnimationsModifications)
 
 sjson.hook(hadesTwoEnemyAnimationsFile, function(data)
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	-- Verify that the Enemies.sjson hook ran first
+	if sjsonLoads["Enemies"] == "FileInitialized" then
+		sjsonLoads["Enemies"] = true
+	else
+		-- It didn't run, we need to make sure the mod opens the error popup
+		-- The easiest way is to remove the key from the table
+		sjsonLoads["Enemies"] = nil
+	end
+	sjsonLoads["EnemyAnimations"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Animations, hadesEnemyAnimationsTable.Animations, "Name")
 end)

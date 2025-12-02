@@ -195,9 +195,11 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoPortraitsFile, function(data)
-	-- Add new animations
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["GUI_Portraits_VFX"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Animations, addParentAnimations, "Name")
 	mod.AddTableKeysSkipDupes(data.Animations, addAnimations, "Name")
-	-- Apply modifications to existing animations
 	mod.ApplyNestedSjsonModifications(data.Animations, hadesTwoPortraitModifications)
 end)

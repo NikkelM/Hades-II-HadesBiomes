@@ -904,6 +904,10 @@ local newData = {
 }
 
 sjson.hook(animationsFile, function(data)
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["Hero_Melinoe_Animation_Personality"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	for _, newValue in ipairs(newData) do
 		table.insert(data.Animations, sjson.to_object(newValue, order))
 	end

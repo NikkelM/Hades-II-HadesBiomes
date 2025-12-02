@@ -250,5 +250,9 @@ for _, npcData in pairs(hadesNPCAdditions) do
 end
 
 sjson.hook(hadesTwoEnemiesFile, function(data)
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["NPCs"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Units, hadesNPCTable.Units, "Name")
 end)

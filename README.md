@@ -2,7 +2,7 @@
 
 > Refer to the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki) with any questions before opening an issue.
 
-> You can find all of the latest changes in the [Changelog](https://github.com/NikkelM/Hades-II-HadesBiomes/blob/main/CHANGELOG.md).
+> You can find all of the latest changes in the [Changelog](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/changelog/) on the mod page.
 
 *Zagreus' Journey* is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
 Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past.
@@ -32,8 +32,10 @@ If you have Hades and Hades II installed in different parent folders, please ref
 > Please uninstall your Hades mods by renaming the `Mods` folder and running `modimporter.exe` when playing with this mod enabled!
 
 You can install this mod just like any other Hades II mod available on [Thunderstore](https://thunderstore.io/c/hades-ii/), the recommended mod manager is [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/).
+Start the game through the mod manager to make sure mods are enabled - use the `Start Modded` button on the top left.
+
 Starting the game the first time with the mod enabled will install a number of files.
-This may take some time depending on your hardware, and the game will display a black screen during this time.
+**This may take some time depending on your hardware, and the game will display a black screen during this time.**
 You can follow along the installation progress in the console window that opens when playing the game modded.
 
 If the mod was installed successfully, a popup will open in the Training Grounds to let you know.

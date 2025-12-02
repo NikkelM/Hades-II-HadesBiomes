@@ -10,6 +10,10 @@ mod.DefaultHiddenConfig = {
 	EnableVanillaDebugKeybinds = false,
 }
 
+-- This is the number of sjson.hook calls we normally make
+-- If the count in the cache/sjsonLoads.sjson file is different when OnAnyLoad is called, we know something went wrong and need to ask the user to restart the game
+mod.ExpectedNumSjsonHooks = 30
+
 -- All enemies have more health and armour in modded runs
 mod.ModdedUnitMaxHealthMultiplierBonus = 0.45
 mod.ModdedUnitHealthBufferMultiplierBonus = 0.2

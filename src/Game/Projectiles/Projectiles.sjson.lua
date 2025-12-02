@@ -22,5 +22,9 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 end
 
 sjson.hook(hadesTwoProjectilesFile, function(data)
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["Projectiles"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Projectiles, hadesProjectilesTable.Projectiles, "Name")
 end)

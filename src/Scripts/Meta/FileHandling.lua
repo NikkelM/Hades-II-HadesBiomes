@@ -160,9 +160,26 @@ end
 
 OnAnyLoad {
 	function(triggerArgs)
-		-- #region Install screens
-		-- Only show the install screen if we are in the Training Grounds
-		if triggerArgs.name == "Hub_PreRun" then
+		-- #region SJSON Hook validation
+		-- Note: Enemies.sjson is currently the sjson file that is loaded before all others, meaning we reset the table there
+		local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+		local sjsonLoadCount = 0
+
+		for _ in pairs(sjsonLoads) do
+			sjsonLoadCount = sjsonLoadCount + 1
+		end
+		if sjsonLoadCount ~= mod.ExpectedNumSjsonHooks then
+			mod.DebugPrint(
+				sjsonLoadCount ..
+				" sjson hooks were executed during this game start, but " ..
+				mod.ExpectedNumSjsonHooks .. " were expected! Please restart the game.", 1)
+			-- Show the error popup, no matter what map we're on
+			mod.OpenModInstallScreen({ IsSjsonLoadError = true })
+			-- #endregion
+
+			-- #region Install screens
+			-- Only show the install screen if we are in the Training Grounds
+		elseif triggerArgs.name == "Hub_PreRun" then
 			-- If an uninstall was just attempted, but failed
 			if mod.HiddenConfig.MustShowUninstallFailureScreen then
 				mod.HiddenConfig.MustShowUninstallFailureScreen = false
@@ -191,7 +208,11 @@ OnAnyLoad {
 function mod.OpenModInstallScreen(args)
 	args = args or {}
 	local screen = {}
-	if args.MustShowUninstallFailureScreen then
+
+	-- For the Sjson load errors
+	if args.IsSjsonLoadError then
+		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesSjsonLoadError) or {}
+	elseif args.MustShowUninstallFailureScreen then
 		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesUninstallFailure) or {}
 	elseif args.IsValidInstallation then
 		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess) or {}

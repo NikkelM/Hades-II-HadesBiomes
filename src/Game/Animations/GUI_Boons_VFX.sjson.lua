@@ -75,7 +75,10 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoBoonFile, function(data)
-	-- Add new animations
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["GUI_Boons_VFX"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Animations, addAnimationsParents, "Name")
 	mod.AddTableKeysSkipDupes(data.Animations, addAnimations, "Name")
 end)

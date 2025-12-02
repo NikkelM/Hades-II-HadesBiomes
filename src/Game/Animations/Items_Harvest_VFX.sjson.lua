@@ -240,9 +240,11 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoItemsHarvestVfxFile, function(data)
-	-- Add new animations
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["Items_Harvest_VFX"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Animations, addParentAnimations, "Name")
 	mod.AddTableKeysSkipDupes(data.Animations, addAnimations, "Name")
-	-- Apply modifications to existing animations
 	mod.ApplyNestedSjsonModifications(data.Animations, hadesTwoItemsHarvestVfxModifications)
 end)

@@ -39,8 +39,10 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoTartarusObstacleFile, function(data)
-	-- Add new animations
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["Obstacle_1Base_VFX"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Animations, addAnimations, "Name")
-	-- Apply modifications to existing obstacle animations
 	mod.ApplyNestedSjsonModifications(data.Animations, hadesTwoObstacleModifications)
 end)

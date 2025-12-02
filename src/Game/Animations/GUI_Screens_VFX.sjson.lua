@@ -122,9 +122,11 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoScreensVFXFile, function(data)
-	-- Add new animations
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["GUI_Screens_VFX"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Animations, addParentAnimations, "Name")
 	mod.AddTableKeysSkipDupes(data.Animations, addAnimations, "Name")
-	-- Apply modifications to existing animations
 	mod.ApplyNestedSjsonModifications(data.Animations, hadesTwoScreenVFXModifications)
 end)

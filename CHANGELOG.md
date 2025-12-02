@@ -5,6 +5,7 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - Support for PC Game Pass/Microsoft Store versions of Hades. You will need to provide the path of the Hades folder in the mod config file in your mod manager (such as `C:\Xbox\Hades`).
+- Workaround: The game will prompt you to perform a restart if it was unable to load some required files. This can cause crashes, missing assets, or enemies to not deal damage otherwise.
 
 Other fixes and improvements:
 - Added a new installation failure screen for the particular case when the Hades installation could not be found, to allow for easier troubleshooting.

@@ -13,5 +13,9 @@ local newData = {
 local chaosObstaclesFile = rom.path.combine(rom.paths.Content(), "Game/Obstacles/Chaos.sjson")
 
 sjson.hook(chaosObstaclesFile, function(data)
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["Chaos"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
 	mod.AddTableKeysSkipDupes(data.Obstacles, newData, "Name")
 end)

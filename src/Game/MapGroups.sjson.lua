@@ -276,6 +276,10 @@ local newMapGroups = {
 local mapGroupsFile = rom.path.combine(rom.paths.Content(), "Game/MapGroups.sjson")
 
 sjson.hook(mapGroupsFile, function(data)
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["MapGroups"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
   for _, newValue in ipairs(newMapGroups) do
     table.insert(data.MapGroups, sjson.to_object(newValue, order))
   end
