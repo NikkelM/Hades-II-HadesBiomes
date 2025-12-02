@@ -11,7 +11,8 @@ Other fixes and improvements:
 - Balancing: Reduced the forward momentum of Theseus' spear spin to attack to make it easier to dodge out of range.
 - Balancing: Slightly increased Chariot ram speed.
 - Balancing: Increased the time it takes for enemies to start attacking after the player enters a new room in Asphodel.
-- Fixed: Vow of Menance could take effect in Boss encounters.
+- Fixed: Judgment and Crystal Figurine trigger for both Asterius and Theseus, doubling their effects.
+- Fixed: Vow of Menance can take effect in Boss encounters.
 - Fixed: The installation failure screen shows only placeholder text.
 - Fixed: The mod does not reinstall itself after it is updated.
 - Fixed: The mod shows the "Installation Successful" message on every mod update.

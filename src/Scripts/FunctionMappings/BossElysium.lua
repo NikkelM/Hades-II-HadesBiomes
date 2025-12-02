@@ -40,6 +40,8 @@ function mod.TheseusMinotaurKillPresentation(unit, args)
 		mod.HarpyKillPresentation(unit, args)
 		game.RemoveTimerBlock(game.CurrentRun, "TheseusMinotaurKillPresentation")
 	else
+		-- Prevent effects like the Judgment Arcana draw from activating for both bosses
+		unit.BlockPostBossMetaUpgrades = true
 		game.LastKillPresentation(unit)
 	end
 
