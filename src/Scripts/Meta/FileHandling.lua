@@ -17,6 +17,8 @@ function mod.ConfirmHadesInstallation()
 			-- If not found, check for the Microsoft Store Path one Content level up, in case the user misunderstood the instructions
 			local microsoftBackupExePath = rom.path.combine(mod.hadesGameFolder, "Hades.exe")
 			if not rom.path.exists(microsoftBackupExePath) then
+				-- Used to decide which install failure screen to show
+				mod.hadesGameFolder = nil
 				mod.DebugPrint(
 					"The mod tried finding your Hades installation at \"" ..
 					exePath .. "\" (Steam/Epic) or \"" ..
@@ -194,7 +196,11 @@ function mod.OpenModInstallScreen(args)
 	elseif args.IsValidInstallation then
 		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess) or {}
 	else
-		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailure) or {}
+		if mod.hadesGameFolder == nil then
+			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailureHadesNotFound) or {}
+		else
+			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailure) or {}
+		end
 	end
 	local components = screen.Components
 	game.OnScreenOpened(screen)

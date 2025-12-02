@@ -65,22 +65,6 @@ local function on_ready()
 		end
 	end
 
-	import "Scripts/Meta/AnimationDuplicatesDataFx.lua"
-	import "Scripts/Meta/AnimationDuplicatesDataGUIAnimations.lua"
-	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
-	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
-	import "Scripts/Meta/ScreenDataInstallation.lua"
-	import "Scripts/Meta/StorytellerVoicelines.lua"
-	import "Scripts/Meta/ZagreusFieldVoicelines.lua"
-
-	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
-	local shouldProceed = config.enabled and (not config.uninstall or config.firstTimeSetup)
-	-- Always confirm the installation, as we might need the path if this is a weird first-install-with-uninstall-set situation
-	if not mod.ConfirmHadesInstallation() and shouldProceed then return end
-
-	import "Scripts/Meta/FirstTimeSetup.lua"
-	import "Scripts/Meta/Uninstall.lua"
-
 	-- We need to always import the ScreenText file early as we might need to show an unsuccessful install screen with localized text
 	import "Game/Text/de/ScreenText.de.sjson.lua"
 	import "Game/Text/el/ScreenText.el.sjson.lua"
@@ -97,6 +81,22 @@ local function on_ready()
 	import "Game/Text/uk/ScreenText.uk.sjson.lua"
 	import "Game/Text/zh-CN/ScreenText.zh-CN.sjson.lua"
 	import "Game/Text/zh-TW/ScreenText.zh-TW.sjson.lua"
+
+	import "Scripts/Meta/AnimationDuplicatesDataFx.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataGUIAnimations.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
+	import "Scripts/Meta/ScreenDataInstallation.lua"
+	import "Scripts/Meta/StorytellerVoicelines.lua"
+	import "Scripts/Meta/ZagreusFieldVoicelines.lua"
+
+	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
+	local shouldProceed = config.enabled and (not config.uninstall or config.firstTimeSetup)
+	-- Always confirm the installation, as we might need the path if this is a weird first-install-with-uninstall-set situation
+	if not mod.ConfirmHadesInstallation() and shouldProceed then return end
+
+	import "Scripts/Meta/FirstTimeSetup.lua"
+	import "Scripts/Meta/Uninstall.lua"
 
 	-- If the game was updated, the file checksums very likely got updated as well
 	-- At the same time, if the mod gets updated, the checksums.txt will be reset to the empty file as well

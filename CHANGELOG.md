@@ -7,7 +7,9 @@
 - Support for PC Game Pass/Microsoft Store versions of Hades. You will need to provide the path of the Hades folder in the mod config file in your mod manager (such as `C:\Xbox\Hades`).
 
 Other fixes and improvements:
+- Added a new installation failure screen for the particular case when the Hades installation could not be found, to allow for easier troubleshooting.
 - Balancing: Reduced the forward momentum of Theseus' spear spin to attack to make it easier to dodge out of range.
+- Fixed: The installation failure screen shows only placeholder text.
 - Fixed: The mod does not reinstall itself after it is updated.
 - Fixed: The mod shows the "Installation Successful" message on every mod update.
 - Workaround: "Crystal" enemies (such as Brimstones) will not spawn their tethers to prevent crashes when attacked by a familiar, or hit by the Polymorph Hex.
