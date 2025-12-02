@@ -2,8 +2,15 @@
 
 > Refer to the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki) with any questions before opening an issue.
 
+> You can find all of the latest changes in the [Changelog](https://github.com/NikkelM/Hades-II-HadesBiomes/blob/main/CHANGELOG.md).
+
 *Zagreus' Journey* is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
 Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past.
+
+Wonder what it plays like?
+Take a look at what Haelian and Boated think of the mod:
+- [So, someone put Hades 1 in Hades 2 and it's amazing. | Haelian](https://www.youtube.com/watch?v=SIVrJya47YQ)
+- [They put Hades 1 in Hades 2 and it's PERFECT | Boated](https://www.youtube.com/watch?v=HYf_z8IV4LE)
 
 <img src="https://github.com/user-attachments/assets/87d52379-d73a-4040-afac-d4a40e5f7e89" alt="Zagreus' Journey">
 <div style="display: flex; justify-content: space-between;">
