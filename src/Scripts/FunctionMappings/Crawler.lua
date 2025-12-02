@@ -24,8 +24,8 @@ function mod.RoomEntranceCrawlerMiniBoss(currentRun, currentRoom)
 	game.wait(0.5)
 	game.SecretMusicPlayer("/EmptyCue")
 
-	-- This used to be to give enough time for the intro voicelines on the first encounter
-	if game.GameState.EncountersOccurredCache.ModsNikkelMHadesBiomesMiniBossCrawler > 1 then
+	-- This is used to give enough time for the intro voicelines on the first encounter
+	if game.GameState.EncountersOccurredCache.ModsNikkelMHadesBiomesMiniBossCrawler > 1 or game.GameState.EncountersOccurredCache.MiniBossCrawler > 1 then
 		game.wait(0.5)
 	else
 		game.wait(2.5)

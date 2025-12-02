@@ -13,6 +13,7 @@ Other fixes and improvements:
 - Balancing: Increased the time it takes for enemies to start attacking after the player enters a new room in Asphodel.
 - Fixed: Judgment and Crystal Figurine trigger for both Asterius and Theseus, doubling their effects.
 - Fixed: Vow of Menance can take effect in Boss encounters.
+- Fixed: Meeting Tiny Vermin for the first time could have a longer than expected wait time before the fight begins.
 - Fixed: The installation failure screen shows only placeholder text.
 - Fixed: The mod does not reinstall itself after it is updated.
 - Fixed: The mod shows the "Installation Successful" message on every mod update.
