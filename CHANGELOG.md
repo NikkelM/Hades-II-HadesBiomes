@@ -1,8 +1,10 @@
 # Changelog
 
-## v0.1.2 (Unreleased)
+## v0.1.2
 
 <!--Releasenotes start-->
+*Notice: I am aware of ongoing issues with music cutting out or changing suddenly. This is under investigation!*
+
 ### Patch Highlights:
 - Support for PC Game Pass/Microsoft Store versions of Hades. You will need to provide the path of the Hades folder in the mod config file in your mod manager (such as `C:\Xbox\Hades`).
 - Workaround: The game will prompt you to perform a restart if it was unable to load some required files. This can cause crashes, missing assets, or enemies to not deal damage otherwise.
@@ -12,6 +14,7 @@ Other fixes and improvements:
 - Balancing: Reduced the forward momentum of Theseus' spear spin to attack to make it easier to dodge out of range.
 - Balancing: Slightly increased Chariot ram speed.
 - Balancing: Increased the time it takes for enemies to start attacking after the player enters a new room in Asphodel.
+- Fixed: Opening the Broker screen crashes the game if the mod was temporarily disabled and then enabled again, and the player loaded into the Crossroads inbetween.
 - Fixed: Judgment and Crystal Figurine trigger for both Asterius and Theseus, doubling their effects.
 - Fixed: Vow of Menance can take effect in Boss encounters.
 - Fixed: Meeting Tiny Vermin for the first time could have a longer than expected wait time before the fight begins.

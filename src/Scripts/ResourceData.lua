@@ -292,7 +292,7 @@ mod.AddTableKeysSkipDupes(game.ResourceData, newCropData)
 -- #endregion
 
 -- #region Boss Resources
-local newBossResourceData = {
+mod.NewBossResourceData = {
 	ModsNikkelMHadesBiomes_BossResourceTartarus = {
 		InheritFrom = { "BaseResource" },
 		IconPath = "GUIModded\\Screens\\Resources\\Boss\\BossTartarus",
@@ -330,7 +330,7 @@ local newBossResourceData = {
 		BrokerCannotSpendVoiceLines = { { GlobalVoiceLines = "InvalidResourceInteractionVoiceLines" }, }
 	},
 }
-mod.AddTableKeysSkipDupes(game.ResourceData, newBossResourceData)
+mod.AddTableKeysSkipDupes(game.ResourceData, mod.NewBossResourceData)
 -- #endregion
 
 -- #region All
