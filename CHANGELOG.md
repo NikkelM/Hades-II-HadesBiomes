@@ -6,11 +6,12 @@
 *Notice: I am aware of ongoing issues with music cutting out or changing suddenly. This is under investigation!*
 
 ### Patch Highlights:
+- Fixed: An unterminated string in a japanese localization file for the Microsoft Store/PC Game Pass version of Hades causes the mod installation to fail.
 
 
 Other fixes and improvements:
-- Fixed: An unterminated string in a japanese localization file for the Microsoft Store/PC Game Pass version of Hades causes the mod installation to fail.
 - Fixed: Phase transition music for Hades does not play correctly.
+- Fixed: If the mod installation is invalid or broken, the "Restart Required" screen is shown instead of the "Installation Failed" screen.
 <!--Releasenotes end-->
 
 ## v0.1.2

@@ -170,7 +170,10 @@ OnAnyLoad {
 		for _ in pairs(sjsonLoads) do
 			sjsonLoadCount = sjsonLoadCount + 1
 		end
-		if sjsonLoadCount ~= mod.ExpectedNumSjsonHooks then
+
+		-- Only show the sjson screen if we shouldn't show the install error screen
+		-- As the sjson error will always come up if the install is invalid, which would lead to a bad feedback loop
+		if not (triggerArgs.name == "Hub_PreRun" and not mod.HiddenConfig.IsValidInstallation) and sjsonLoadCount ~= mod.ExpectedNumSjsonHooks then
 			mod.DebugPrint(
 				sjsonLoadCount ..
 				" sjson hooks were executed during this game start, but " ..
