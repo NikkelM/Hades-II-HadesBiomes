@@ -403,11 +403,11 @@ local roomReplacements = {
 		EnterVoiceLines = {
 			-- First meeting
 			{
-				RequiredFalseTextLines = { "LordHadesEncounter01", "LordHadesEncounter01_B" },
+				PlayOnce = true,
+				PlayOnceContext = "ModsNikkelMHadesBiomes_D_Boss01_FirstMeeting",
 				PreLineWait = 2.25,
 				{ Cue = "/VO/MelinoeField_3000", Text = "{#Emph}<Gasp>" },
-				{ Cue = "/VO/MelinoeField_1520", Text = "Father...?",                  PreLineWait = 0.5 },
-				{ Cue = "/VO/MelinoeField_0917", Text = "{#Emph}Erm... {#Prev}hello?", PreLineWait = 2.1, BreakIfPlayed = true },
+				{ Cue = "/VO/Melinoe_4017", Text = "Father...",   PreLineWait = 0.8, BreakIfPlayed = true, },
 			},
 			-- Progressing the story
 			{
