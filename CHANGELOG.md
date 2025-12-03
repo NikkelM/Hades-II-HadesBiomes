@@ -26,7 +26,6 @@ Other fixes and improvements:
 
 ## v0.1.1
 
-<!--Releasenotes start-->
 ### Patch Highlights:
 - Balancing: Reduced Poison tick rate from every 0.13s to every 0.23s.
 - Balancing: Increased grace period before first taking poison damage from 0.85s to 1s.
@@ -53,7 +52,6 @@ Other fixes and improvements:
 - Fixed: Some contextual dialogues with bosses can not be triggered.
 - Tentative Fix: Music stops playing in rooms after minibosses or other special rooms. Please report if this still occurs.
 - Compatibility: Removed some unused Devotion weapons and projectiles for compatibility with Droppable Gods.
-<!--Releasenotes end-->
 
 ## v0.1.0
 
