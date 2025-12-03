@@ -57,10 +57,10 @@ local hadesWeaponsModifications = {
 	HydraLunge = {
 		-- Needs to be lowered due to tethers not locking the head in place
 		-- It would otherwise fly over the whole map
-		SelfVelocity = 4300.0,
+		SelfVelocity = 4100.0,
 	},
 	HydraSnap = {
-		SelfVelocity = 4000.0,
+		SelfVelocity = 3800.0,
 	},
 	-- #endregion
 
