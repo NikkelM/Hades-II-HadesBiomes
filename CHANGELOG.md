@@ -9,6 +9,7 @@
 
 
 Other fixes and improvements:
+- Fixed: An unterminated string in a japanese localization file for the Microsoft Store/PC Game Pass version of Hades causes the mod installation to fail.
 - Fixed: Phase transition music for Hades does not play correctly.
 <!--Releasenotes end-->
 

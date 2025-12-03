@@ -311,6 +311,9 @@ function mod.DecodeSjsonFile(filePath)
 	elseif filePath:find("CodexText%.de") then
 		-- Replace mistakenly added """" instead of '"""
 		fileString = string.gsub(fileString, '""""', '\'"""')
+	elseif filePath:find("_NPCData.ja") then
+		-- Fix n\ instead of \n for Game Pass version
+		fileString = string.gsub(fileString, "父上は、エウリュディケを冥界からn\\", "父上は、エウリュディケを冥界から\n")
 	end
 
 	-- Replace opening quadruple quotes with triple quotes and a newline
@@ -485,7 +488,6 @@ end
 ---We don't ship the file with the mod to prevent it being overwritten on a mod update
 mod.HiddenConfig = mod.HiddenConfig or mod.TryGetOrCreateCachedSjsonFile("hiddenConfig.sjson", mod.DefaultHiddenConfig)
 mod.DebugPrint("Loaded hiddenConfig.sjson", 4)
-mod.DebugPrint(mod.HiddenConfig, 4)
 
 ---We need to override the packages that are loaded with a biome package, to also load the Fx package, as we need the textures from it before map load.
 function mod.SetBiomePackageLoadOverrides()
