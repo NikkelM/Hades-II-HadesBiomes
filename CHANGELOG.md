@@ -1,8 +1,19 @@
 # Changelog
 
-## v0.1.2
+## v0.1.3
 
 <!--Releasenotes start-->
+*Notice: I am aware of ongoing issues with music cutting out or changing suddenly. This is under investigation!*
+
+### Patch Highlights:
+
+
+Other fixes and improvements:
+- Fixed: Phase transition music for Hades does not play correctly.
+<!--Releasenotes end-->
+
+## v0.1.2
+
 *Notice: I am aware of ongoing issues with music cutting out or changing suddenly. This is under investigation!*
 
 ### Patch Highlights:
@@ -22,7 +33,6 @@ Other fixes and improvements:
 - Fixed: The mod does not reinstall itself after it is updated.
 - Fixed: The mod shows the "Installation Successful" message on every mod update.
 - Workaround: "Crystal" enemies (such as Brimstones) will not spawn their tethers to prevent crashes when attacked by a familiar, or hit by the Polymorph Hex.
-<!--Releasenotes end-->
 
 ## v0.1.1
 
