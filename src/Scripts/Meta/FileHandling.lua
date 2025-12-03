@@ -173,6 +173,10 @@ OnAnyLoad {
 				sjsonLoadCount ..
 				" sjson hooks were executed during this game start, but " ..
 				mod.ExpectedNumSjsonHooks .. " were expected! Please restart the game.", 1)
+			mod.DebugPrint("The following sjson files were loaded:", 1)
+			for sjsonFileName, _ in pairs(sjsonLoads) do
+				mod.DebugPrint(" - " .. sjsonFileName, 1)
+			end
 			-- Show the error popup, no matter what map we're on
 			mod.OpenModInstallScreen({ IsSjsonLoadError = true })
 			-- #endregion
