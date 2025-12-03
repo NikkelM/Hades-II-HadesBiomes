@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: The game crashes or something doesn't work
-title: "[BUG] "
+title: "[BUG] <Short description of the issue>"
 labels: bug
 assignees: ''
 
