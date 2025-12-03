@@ -10,6 +10,7 @@
 
 
 Other fixes and improvements:
+- Balancing: The Dire Soul Catcher is no longer immune to cast slow effects when dashing.
 - Fixed: Phase transition music for Hades does not play correctly.
 - Fixed: If the mod installation is invalid or broken, the "Restart Required" screen is shown instead of the "Installation Failed" screen.
 <!--Releasenotes end-->

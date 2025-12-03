@@ -1524,6 +1524,8 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		-- To not block the Dash/Blink
+		IgnoreCastSlow = true,
 	},
 	-- #endregion
 	-- #region ELYSIUM - Bosses
