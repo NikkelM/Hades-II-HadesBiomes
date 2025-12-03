@@ -462,6 +462,7 @@ end
 function mod.TryLoadCachedSjsonFile(fileName)
 	local basePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\cache\\")
 	local path = rom.path.combine(basePath, fileName)
+	mod.DebugPrint("Trying to load cached sjson file: " .. path, 4)
 
 	if rom.path.exists(path) then
 		return mod.DecodeSjsonFile(path)

@@ -158,11 +158,13 @@ function mod.CheckRequiredFiles(failFast)
 	return missingFiles
 end
 
+-- To not keep loading the file on each OnAnyLoad
+mod.CachedSjsonLoadsFile = nil
 OnAnyLoad {
 	function(triggerArgs)
 		-- #region SJSON Hook validation
 		-- Note: Enemies.sjson is currently the sjson file that is loaded before all others, meaning we reset the table there
-		local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+		local sjsonLoads = mod.CachedSjsonLoadsFile or mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 		local sjsonLoadCount = 0
 
 		for _ in pairs(sjsonLoads) do
