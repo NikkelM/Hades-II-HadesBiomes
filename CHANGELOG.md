@@ -12,6 +12,7 @@
 Other fixes and improvements:
 - Balancing: The Dire Soul Catcher is no longer immune to cast slow effects when dashing.
 - Balancing: The Bone Hydra's lunge attacks have reduced velocity to reduce the chance of a number of heads ending up in the same space.
+- Fixed: Voicelines that are supposed to play in the Crossroads between the first and second modded run do not play.
 - Fixed: Phase transition music for Hades does not play correctly.
 - Fixed: If the mod installation is invalid or broken, the "Restart Required" screen is shown instead of the "Installation Failed" screen.
 <!--Releasenotes end-->
