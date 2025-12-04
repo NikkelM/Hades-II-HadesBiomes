@@ -17,6 +17,7 @@ Other fixes and improvements:
 - Balancing: Centaur Tonic and Soul Heart offered by Patroclus now provide increased benefits.
 - Balancing: The Dire Soul Catcher is no longer immune to cast slow effects when dashing.
 - Balancing: The Bone Hydra's lunge attacks have reduced velocity to reduce the chance of multiple heads ending up in the same space.
+- Fixed: Knuckle Bones triggers on the Asterius miniboss chamber instead of Elysium's boss fight.
 - Fixed: Spark of Ixion can no longer appear in the Well of Charon in the room after defeating the Champions of Elysium.
 - Fixed: Thanatos has no relationship level display in the Codex.
 - Fixed: Certain queued conversations with Sisyphus cause the game to crash when entering his room.

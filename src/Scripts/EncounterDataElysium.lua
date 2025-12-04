@@ -100,6 +100,7 @@ local encounterModifications = {
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,
 		BlockRespawnShrineUpgrade = true,
+		SkipBossTraits = true,
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedByShrineLevel", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "AngleIdsTowardPlayer", },
