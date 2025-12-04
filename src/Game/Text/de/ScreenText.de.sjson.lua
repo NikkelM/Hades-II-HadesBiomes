@@ -49,7 +49,7 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_InstallFailure",
 		DisplayName = "Installation gescheitert!",
 		Description =
-		"Willkommen zu {#DialogLegendaryFormat}Zagreus\' Journey{#Prev}!\n\nLeider ist die Installation der Mod {#DialogLegendaryFormat}GESCHEITERT{#Prev}, oder deine existierende Installation ist kaputt.\nEinige Spielfunktionen könnten nicht funktionieren.\nBitte konsultiere das Konsolen-Fenster das sich mit dem Spiel öffnet, für Lösungshinweise.\n\nSollte das Problem weiterhin existieren, starte bitte eine Diskussion auf\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nund teile dein Log aus {#DialogLegendaryFormat}Settings -> Copy log file {#Prev}in deinem Modmanager.",
+		"Willkommen zu {#DialogLegendaryFormat}Zagreus\' Journey{#Prev}!\n\nLeider ist die Installation der Mod {#DialogLegendaryFormat}GESCHEITERT{#Prev}, oder deine existierende Installation ist kaputt.\nBitte konsultiere die Konsole, die sich mit dem Spiel öffnet, für Lösungshinweise. Eine Neuinstallation der Mod könnte helfen, setze dafür {#DialogLegendaryFormat}firstTimeSetup {#Prev}und {#DialogLegendaryFormat}uninstall {#Prev}in der Konfigurationsdatei der Mod auf {#DialogLegendaryFormat}true{#Prev}.\n\nSollte das Problem weiterhin existieren, starte bitte eine Diskussion auf\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nund teile dein Log aus {#DialogLegendaryFormat}Settings -> Copy log file {#Prev}in deinem Modmanager.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_InstallFailure_HadesNotFound",
@@ -63,6 +63,13 @@ local newData = {
 		Description =
 		"Die Deinstallation von {#DialogLegendaryFormat}Zagreus\' Journey {#Prev}ist {#DialogLegendaryFormat}GESCHEITERT{#Prev}!\n\nDie mit dem Spiel startende Konsole kann zusätzliche Details zu dem Fehler enthalten.\n\nBei weiteren Problemen starte bitte eine Diskussion auf\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nund teile dein Log aus {#DialogLegendaryFormat}Settings -> Copy log file {#Prev}in deinem Modmanager.",
 	},
+	-- -- If we failed to execute all sjson hooks
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SjsonHookFailure",
+	-- 	DisplayName = "Restart Needed!",
+	-- 	Description =
+	-- 	"The game was {#DialogLegendaryFormat}unable to load {#Prev}some files required by {#DialogLegendaryFormat}Zagreus\' Journey{#Prev}!\n\nThis means that the game may crash, enemies not deal damage, or assets not load.\n\nAs a workaround, {#DialogLegendaryFormat}restarting the game should fix this{#Prev}! If not, try reinstalling the mod by setting {#DialogLegendaryFormat}firstTimeSetup {#Prev}and {#DialogLegendaryFormat}uninstall {#Prev} to {#DialogLegendaryFormat}true {#Prev}in the mod config.\n\nIf the issue persists, please start a discussion on\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nand attach the log file from {#DialogLegendaryFormat}Settings -> Copy log file {#Prev}in your mod manager.",
+	-- },
 	-- #endregion
 }
 

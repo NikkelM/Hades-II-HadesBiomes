@@ -7,7 +7,7 @@
 
 ### Patch Highlights:
 - Fixed: An unterminated string in a japanese localization file for the Microsoft Store/PC Game Pass version of Hades causes the mod installation to fail.
-
+- Updated the priority with which error popups are shown, making troubleshooting the root cause of installation issues easier.
 
 Other fixes and improvements:
 - Changed the Codex Chapter and Inventory headings from "Nightmare" to "Zagreus' Journey".

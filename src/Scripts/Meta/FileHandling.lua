@@ -17,14 +17,19 @@ function mod.ConfirmHadesInstallation()
 			-- If not found, check for the Microsoft Store Path one Content level up, in case the user misunderstood the instructions
 			local microsoftBackupExePath = rom.path.combine(mod.hadesGameFolder, "Hades.exe")
 			if not rom.path.exists(microsoftBackupExePath) then
+				-- Set the invalid installation flag
+				mod.HiddenConfig.IsValidInstallation = false
+				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 				-- Used to decide which install failure screen to show
 				mod.hadesGameFolder = nil
+
 				mod.DebugPrint(
 					"The mod tried finding your Hades installation at \"" ..
 					exePath .. "\" (Steam/Epic) or \"" ..
 					microsoftExePath ..
 					"\" (Microsoft Store/Game Pass), but did not find it. Please set the correct path in the config file through your mod manager. Use \"root\" if the Hades folder is in the same folder as the Hades II folder.",
 					1)
+
 				return false
 			end
 		else
@@ -95,7 +100,7 @@ local function checkFilesExist(fileMappings, basePath, extension, failFast)
 	local missingFiles = 0
 	for src, dest in pairs(fileMappings) do
 		local destPath = rom.path.combine(rom.paths.Content(), basePath .. dest .. extension)
-		if not checkFileExistsWithRetry(destPath, 3, 1, failFast) then
+		if not checkFileExistsWithRetry(destPath, 3, 0.2, failFast) then
 			if not failFast then
 				mod.DebugPrint("Missing file: " .. destPath, 1)
 			end
@@ -171,9 +176,10 @@ OnAnyLoad {
 			sjsonLoadCount = sjsonLoadCount + 1
 		end
 
-		-- Only show the sjson screen if we shouldn't show the install error screen
-		-- As the sjson error will always come up if the install is invalid, which would lead to a bad feedback loop
-		if not (triggerArgs.name == "Hub_PreRun" and not mod.HiddenConfig.IsValidInstallation) and sjsonLoadCount ~= mod.ExpectedNumSjsonHooks then
+		-- Any install failure screens will be shown first
+		-- The sjson hook failure screen will only be shown in the Crossroads, or if we are in a modded run
+		if not (game.CurrentHubRoom ~= nil and not mod.HiddenConfig.IsValidInstallation)
+				and (sjsonLoadCount ~= mod.ExpectedNumSjsonHooks and (game.CurrentHubRoom or (game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun))) then
 			mod.DebugPrint(
 				sjsonLoadCount ..
 				" sjson hooks were executed during this game start, but " ..
@@ -182,13 +188,12 @@ OnAnyLoad {
 			for sjsonFileName, _ in pairs(sjsonLoads) do
 				mod.DebugPrint(" - " .. sjsonFileName, 1)
 			end
-			-- Show the error popup, no matter what map we're on
 			mod.OpenModInstallScreen({ IsSjsonLoadError = true })
 			-- #endregion
 
 			-- #region Install screens
-			-- Only show the install screen if we are in the Training Grounds
-		elseif triggerArgs.name == "Hub_PreRun" then
+			-- Only show the install screen if we are in the Crossroads
+		elseif game.CurrentHubRoom ~= nil then
 			-- If an uninstall was just attempted, but failed
 			if mod.HiddenConfig.MustShowUninstallFailureScreen then
 				mod.HiddenConfig.MustShowUninstallFailureScreen = false
