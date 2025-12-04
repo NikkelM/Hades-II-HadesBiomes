@@ -8,6 +8,7 @@
 ### Patch Highlights:
 - Fixed: An unterminated string in a japanese localization file for the Microsoft Store/PC Game Pass version of Hades causes the mod installation to fail.
 - Updated the priority with which error popups are shown, making troubleshooting the root cause of installation issues easier.
+- Added a new informative message when the mod installation fails due to installed Hades mods.
 
 Other fixes and improvements:
 - Changed the Codex Chapter and Inventory headings from "Nightmare" to "Zagreus' Journey".
@@ -26,8 +27,6 @@ Other fixes and improvements:
 <!--Releasenotes end-->
 
 ## v0.1.2
-
-*Notice: I am aware of ongoing issues with music cutting out or changing suddenly. This is under investigation!*
 
 ### Patch Highlights:
 - Support for PC Game Pass/Microsoft Store versions of Hades. You will need to provide the path of the Hades folder in the mod config file in your mod manager (such as `C:\Xbox\Hades`).

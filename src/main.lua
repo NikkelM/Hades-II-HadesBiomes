@@ -65,7 +65,7 @@ local function on_ready()
 		end
 	end
 
-	-- We need to always import the ScreenText file early as we might need to show an unsuccessful install screen with localized text
+	-- We need to always import the ScreenText and ShellText files early as we might need to show an unsuccessful install screen with localized text
 	import "Game/Text/de/ScreenText.de.sjson.lua"
 	import "Game/Text/el/ScreenText.el.sjson.lua"
 	import "Game/Text/en/ScreenText.en.sjson.lua"
@@ -79,8 +79,24 @@ local function on_ready()
 	import "Game/Text/ru/ScreenText.ru.sjson.lua"
 	import "Game/Text/tr/ScreenText.tr.sjson.lua"
 	import "Game/Text/uk/ScreenText.uk.sjson.lua"
-	import "Game/Text/zh-CN/ScreenText.zh-CN.sjson.lua"
+	import "Game/Text/zh-CN/ScreenText.zh-CN.sjson.lua" -- Decoding the Hades II file fails, so this does nothing
 	import "Game/Text/zh-TW/ScreenText.zh-TW.sjson.lua"
+
+	import "Game/Text/de/ShellText.de.sjson.lua" -- Decoding the Hades II file fails, so this does nothing
+	import "Game/Text/el/ShellText.el.sjson.lua"
+	import "Game/Text/en/ShellText.en.sjson.lua"
+	import "Game/Text/es/ShellText.es.sjson.lua"
+	import "Game/Text/fr/ShellText.fr.sjson.lua"
+	import "Game/Text/it/ShellText.it.sjson.lua"
+	import "Game/Text/ja/ShellText.ja.sjson.lua"
+	import "Game/Text/ko/ShellText.ko.sjson.lua"
+	import "Game/Text/pl/ShellText.pl.sjson.lua"
+	import "Game/Text/pt-BR/ShellText.pt-BR.sjson.lua"
+	import "Game/Text/ru/ShellText.ru.sjson.lua"
+	import "Game/Text/tr/ShellText.tr.sjson.lua"
+	import "Game/Text/uk/ShellText.uk.sjson.lua"
+	import "Game/Text/zh-CN/ShellText.zh-CN.sjson.lua"
+	import "Game/Text/zh-TW/ShellText.zh-TW.sjson.lua"
 
 	import "Scripts/Meta/AnimationDuplicatesDataFx.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataGUIAnimations.lua"
