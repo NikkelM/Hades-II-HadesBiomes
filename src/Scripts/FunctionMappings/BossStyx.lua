@@ -466,7 +466,7 @@ function mod.SurfaceExitIncantationPresentation(usee, args, user)
 
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines)
 	PanCamera({ Id = 552590, Duration = 5.0, })
-	game.wait(0.1)
+	game.wait(0.25)
 
 	Stop({ Id = game.CurrentRun.Hero.ObjectId })
 	AdjustFullscreenBloom({ Name = "DesaturatedLight", Duration = 0.9 })
@@ -507,7 +507,7 @@ function mod.SurfaceExitIncantationPresentation(usee, args, user)
 		Group = "Combat_Menu_TraitTray"
 	})
 
-	game.wait(2.95)
+	game.wait(3)
 
 	AdjustRadialBlurDistance({ Fraction = 0, Duration = 1 })
 	AdjustRadialBlurStrength({ Fraction = 0, Duration = 1 })
