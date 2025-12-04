@@ -286,6 +286,12 @@ local encounterModifications = {
 	Story_Sisyphus_01 = {
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" }, } },
+			[3] = mod.NilValue,
+			[4] = mod.NilValue,
+			[5] = mod.NilValue,
+			[6] = mod.NilValue,
+			[7] = mod.NilValue,
+			[8] = mod.NilValue,
 		},
 	},
 	BaseThanatos = {
