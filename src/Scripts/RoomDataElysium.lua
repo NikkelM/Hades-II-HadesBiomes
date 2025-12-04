@@ -389,9 +389,11 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium", },
 		},
 
+		-- It would get placed somewhere in the middle of the arena, and has collision so could interfere with gameplay
+		HasPickaxePoint = false,
+		-- There are not urns in this room, so would be placed on a spawn point which looks weird
+		HasExorcismPoint = false,
 		ShovelPointChance = 0.5,
-		PickaxePointChance = 0.45,
-		ExorcismPointChance = 0.40,
 	},
 	Y_MiniBoss02 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",

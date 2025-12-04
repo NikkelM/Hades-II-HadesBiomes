@@ -6,11 +6,12 @@
 *Notice: I am aware of ongoing issues with music cutting out or changing suddenly. This is under investigation!*
 
 ### Patch Highlights:
+- Fixed: Phase transition music for Hades does not play correctly.
 - Fixed: An unterminated string in a japanese localization file for the Microsoft Store/PC Game Pass version of Hades causes the mod installation to fail.
-- Updated the priority with which error popups are shown, making troubleshooting the root cause of installation issues easier.
-- Added a new informative message when the mod installation fails due to installed Hades mods.
 
 Other fixes and improvements:
+- Updated the priority with which error popups are shown, making troubleshooting the root cause of installation issues easier.
+- Added a new informative message when the mod installation fails due to installed Hades mods.
 - Changed the Codex Chapter and Inventory headings from "Nightmare" to "Zagreus' Journey".
 - Removed forced walking speed in the final biome after beating the final boss for the first time.
 - Reduced the Dash range in the Temple of Styx Hub to improve navigation fluidity.
@@ -18,14 +19,14 @@ Other fixes and improvements:
 - Balancing: The Dire Soul Catcher is no longer immune to cast slow effects when dashing.
 - Balancing: The Bone Hydra's lunge attacks have reduced velocity to reduce the chance of multiple heads ending up in the same space.
 - Fixed: Knuckle Bones triggers on the Asterius miniboss chamber instead of Elysium's boss fight.
-- Fixed: Spark of Ixion can no longer appear in the Well of Charon in the room after defeating the Champions of Elysium.
+- Fixed: Spark of Ixion can appear in the Well of Charon in the room after defeating the Champions of Elysium, even though Chaos Gates cannot spawn from this point onwards.
 - Fixed: Thanatos has no relationship level display in the Codex.
 - Fixed: Certain queued conversations with Sisyphus cause the game to crash when entering his room.
 - Fixed: Voicelines that are supposed to play during the first encounter with Hades do not play.
 - Fixed: Voicelines that are supposed to play in the Crossroads between the first and second modded run do not play.
-- Fixed: Phase transition music for Hades does not play correctly.
 - Fixed: If the mod installation is invalid or broken, the "Restart Required" screen is shown instead of the "Installation Failed" screen.
 - Fixed: The exit after defeating the Bone Hydra can now be used slightly earlier after picking up the room reward.
+- Fixed: Pickaxe points can spawn in the Asterius miniboss chamber, potentially blocking his movement and attacks.
 <!--Releasenotes end-->
 
 ## v0.1.2
