@@ -25,13 +25,13 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	AddInputBlock({ Name = "MoveHeroToRoomPosition" })
 	SetUnitProperty({ DestinationId = currentRun.Hero.ObjectId, Property = "CollideWithObstacles", Value = false })
 
-	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == nil then
-		game.SetupMelWalk()
-	else
-		-- Custom, as Zagreus needs a slower speed for his run animation to not look weird
-		SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
-		roomIntroSequenceDuration = 0.95
-	end
+	-- if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == nil then
+	-- 	game.SetupMelWalk()
+	-- else
+	-- Custom, as Zagreus needs a slower speed for his run animation to not look weird
+	SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
+	roomIntroSequenceDuration = 0.95
+	-- end
 	game.ToggleCombatControl({ "Rush" }, false)
 
 	AdjustZoom({ Fraction = game.CurrentRun.CurrentRoom.IntroZoomFraction or 0.7, Duration = 0.0 })
@@ -59,10 +59,10 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	end
 	Stop({ Id = currentRun.Hero.ObjectId })
 
-	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] ~= nil then
-		game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
-		SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
-	end
+	-- if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] ~= nil then
+	-- game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
+	-- SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
+	-- end
 
 	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = currentRun.Hero.ObjectId })
 	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
@@ -231,12 +231,12 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 	AddInputBlock({ Name = "MoveHeroToRoomPosition" })
 	SetUnitProperty({ DestinationId = currentRun.Hero.ObjectId, Property = "CollideWithObstacles", Value = false })
 
-	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == nil then
-		game.SetupMelWalk()
-	else
-		-- Custom, as Zagreus needs a slower speed for his run animation to not look weird
-		SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
-	end
+	-- if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == nil then
+	-- 	game.SetupMelWalk()
+	-- else
+	-- Custom, as Zagreus needs a slower speed for his run animation to not look weird
+	SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
+	-- end
 	game.ToggleCombatControl({ "Rush" }, false)
 
 	-- Need to set the speech bubble higher as the model/anchor is different
@@ -259,10 +259,10 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 	end
 	Stop({ Id = currentRun.Hero.ObjectId })
 
-	if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] ~= nil then
-		game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
-		SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
-	end
+	-- if game.GameState.TextLinesRecord["PersephoneFirstMeeting"] ~= nil then
+	-- game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = false })
+	-- SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
+	-- end
 
 	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = currentRun.Hero.ObjectId })
 	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
