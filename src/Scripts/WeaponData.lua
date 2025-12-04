@@ -428,9 +428,10 @@ local weaponModifications = {
 	},
 	DisembodiedHandGrab = {
 		AIData = {
+			-- TODO: Removed this change while investigating #411
 			-- Allow all Wringers to move at the same time, as sometimes there's only a few of these in the room and the fight feels boring
-			OnlyClosestOfTypesMove = mod.NilValue,
-			NotClosestSleepTime = mod.NilValue,
+			-- OnlyClosestOfTypesMove = mod.NilValue,
+			-- NotClosestSleepTime = mod.NilValue,
 		},
 	},
 	-- #endregion
