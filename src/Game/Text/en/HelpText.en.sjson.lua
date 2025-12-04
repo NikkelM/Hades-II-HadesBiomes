@@ -16,6 +16,8 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_Mod_Name",
 		DisplayName = "Zagreus\' Journey",
+		-- Mod name should be consistent across all languages
+		OverwriteLocalization = true,
 	},
 	-- #endregion
 

@@ -10,6 +10,7 @@
 
 
 Other fixes and improvements:
+- Changed the Codex Chapter and Inventory headings from "Nightmare" to "Zagreus' Journey". 
 - Balancing: Centaur Tonic and Soul Heart offered by Patroclus now provide increased benefits.
 - Balancing: The Dire Soul Catcher is no longer immune to cast slow effects when dashing.
 - Balancing: The Bone Hydra's lunge attacks have reduced velocity to reduce the chance of a number of heads ending up in the same space.

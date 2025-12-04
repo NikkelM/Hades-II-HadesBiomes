@@ -40,11 +40,11 @@ local newData = {
 	-- #region Codex/Inventory
 	{
 		Id = "ModsNikkelMHadesBiomesCodexEntryTitleText",
-		InheritFrom = "WeaponPointsRare",
+		InheritFrom = "ModsNikkelMHadesBiomes_Mod_Name",
 	},
 	{
 		Id = "InventoryScreen_ModesNikkelMHadesBiomesTab",
-		InheritFrom = "ModsNikkelMHadesBiomesCodexEntryTitleText",
+		InheritFrom = "ModsNikkelMHadesBiomes_Mod_Name",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_MarketScreen_Resources",

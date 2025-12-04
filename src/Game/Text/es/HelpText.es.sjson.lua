@@ -11,13 +11,6 @@ local order = {
 }
 
 local newData = {
-	-- #region Meta
-	-- {
-	-- 	Id = "ModsNikkelMHadesBiomes_Mod_Name",
-	-- 	DisplayName = "Zagreus\' Journey",
-	-- },
-	-- #endregion
-
 	-- #region Button/Use Prompts
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText",
