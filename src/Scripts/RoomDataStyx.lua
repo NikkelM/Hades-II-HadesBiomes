@@ -522,7 +522,6 @@ local roomModifications = {
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
 			},
 		},
-		RushMaxRangeOverride = 520,
 		-- Shorter as we add more wait time after the animation starts
 		IntroSequenceDuration = 0.3,
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceD_Hub",
