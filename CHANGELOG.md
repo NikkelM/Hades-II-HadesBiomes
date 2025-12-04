@@ -16,6 +16,7 @@ Other fixes and improvements:
 - Fixed: Voicelines that are supposed to play in the Crossroads between the first and second modded run do not play.
 - Fixed: Phase transition music for Hades does not play correctly.
 - Fixed: If the mod installation is invalid or broken, the "Restart Required" screen is shown instead of the "Installation Failed" screen.
+- Fixed: The exit after defeating the Bone Hydra can now be used slightly earlier after picking up the room reward.
 <!--Releasenotes end-->
 
 ## v0.1.2

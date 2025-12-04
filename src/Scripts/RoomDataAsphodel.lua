@@ -404,6 +404,7 @@ local roomModifications = {
 		PostCombatReloadEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "WrappingPostCombatReloadPresentation", },
 		},
+		-- TODO: Could this be causing the music issues?
 		NextRoomResumeMusic = true,
 	},
 
@@ -429,7 +430,7 @@ local roomModifications = {
 		RewardConsumableOverrides = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		-- To not have the preview be created while the boat is still moving
-		UnlockExitsWait = 1.5,
+		UnlockExitsWait = 0.75,
 	},
 	X_Boss02 = {
 		GameStateRequirements = {
