@@ -96,10 +96,6 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 			if not game.CurrentRun.ActiveBounty and game.CurrentRun.BiomesReached ~= nil then
 				moddedRunsCleared = moddedRunsCleared + 1
 				-- Custom fields
-				game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache = game.GameState
-						.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache or 0
-				game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache = game.GameState
-						.ModsNikkelMHadesBiomesFastestModdedRunClearTime or 999999
 				if game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache < game.CurrentRun.ShrinePointsCache then
 					game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache = game.CurrentRun.ShrinePointsCache
 				end
@@ -169,8 +165,7 @@ modutil.mod.Path.Wrap("EndRun", function(base, run)
 		run.CurrentRoom.Name = nil
 
 		-- Increase counter for completed modded runs
-		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = (game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache or 0) +
-				1
+		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache + 1
 	end
 
 	return base(run)

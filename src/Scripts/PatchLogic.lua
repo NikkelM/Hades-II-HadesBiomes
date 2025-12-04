@@ -15,6 +15,16 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 		end
 		-- #endregion
+
+		-- #region Initialize GameState variables
+		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache or
+				0
+		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = game.GameState.ModsNikkelMHadesBiomesClearedRunsCache or 0
+		game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache = game.GameState
+				.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache or 0
+		game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache = game.GameState
+				.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache or 999999
+		-- #endregion
 	end
 
 	if game.CurrentRun ~= nil then
@@ -28,7 +38,8 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			-- Additionally, to prevent an error with opening the Run History screen after uninstalling the mod,
 			-- we need to encode the EndingRoomName into the VictoryMessage field, since if it is a modded room name, the game crashes trying to find it
 			-- This encoding is reversed when opening the Run History screen with the mod installed
-			game.CurrentRun.VictoryMessage = (game.CurrentRun.VictoryMessage or "") .. "#" .. (game.CurrentRun.EndingRoomName or "")
+			game.CurrentRun.VictoryMessage = (game.CurrentRun.VictoryMessage or "") ..
+					"#" .. (game.CurrentRun.EndingRoomName or "")
 			game.CurrentRun.EndingRoomName = nil
 		end
 	end
