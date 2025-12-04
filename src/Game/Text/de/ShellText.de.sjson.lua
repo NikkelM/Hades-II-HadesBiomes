@@ -47,6 +47,4 @@ sjson.hook(shellTextFile, function(data)
 			end
 		end
 	end
-	print("Post")
 end)
-print("Postpost")

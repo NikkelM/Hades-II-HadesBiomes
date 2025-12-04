@@ -101,11 +101,12 @@ local encounterModifications = {
 		CanEncounterSkip = false,
 		BlockRespawnShrineUpgrade = true,
 		SkipBossTraits = true,
+		DelayedStart = true,
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedByShrineLevel", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "AngleIdsTowardPlayer", },
 		},
-		-- Without this, the room exits will immediately unlock after the conversation
+		-- Without these UnthreadedEvents, the room exits will immediately unlock after the conversation
 		UnthreadedEvents = {
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",

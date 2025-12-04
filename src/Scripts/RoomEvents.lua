@@ -1,4 +1,5 @@
 function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
+	args = args or {}
 	game.HideCombatUI("BossIntro")
 	AddInputBlock({ Name = "BossIntro" })
 	game.AddTimerBlock(game.CurrentRun, "BossIntro")

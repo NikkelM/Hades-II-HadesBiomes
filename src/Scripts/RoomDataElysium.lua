@@ -386,7 +386,16 @@ local roomModifications = {
 		LoadModdedVoiceBanks = { "Minotaur", "ZagreusField" },
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
 		UnthreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium", },
+			[1] = {
+				FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium",
+				Args = {
+					[0] = { DelayedStart = true, },
+					[1] = { DelayedStart = true, },
+					[2] = { DelayedStart = true, },
+					[3] = { DelayedStart = true, },
+					[4] = { DelayedStart = true, },
+				},
+			},
 		},
 
 		-- It would get placed somewhere in the middle of the arena, and has collision so could interfere with gameplay
