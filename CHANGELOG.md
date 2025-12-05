@@ -7,7 +7,7 @@
 
 ### Patch Highlights:
 - Fixed: Phase transition music for Hades does not play correctly.
-- Fixed: An unterminated string in a japanese localization file for the Microsoft Store/PC Game Pass version of Hades causes the mod installation to fail.
+- Fixed: An unterminated string in a Japanese localization file for the Microsoft Store/PC Game Pass version of Hades causes the mod installation to fail.
 
 Other fixes and improvements:
 - Updated the priority with which error popups are shown, making troubleshooting the root cause of installation issues easier.
@@ -26,7 +26,7 @@ Other fixes and improvements:
 - Fixed: Voicelines that are supposed to play during the first encounter with Hades do not play.
 - Fixed: Voicelines that are supposed to play in the Crossroads between the first and second modded run do not play.
 - Fixed: If the mod installation is invalid or broken, the "Restart Required" screen is shown instead of the "Installation Failed" screen.
-- Fixed: The exit after defeating the Bone Hydra can now be used slightly earlier after picking up the room reward.
+- Fixed: The exit after defeating the Bone Hydra is unlocked very late after picking up the reward.
 - Fixed: Pickaxe points can spawn in the Asterius miniboss chamber, potentially blocking his movement and attacks.
 <!--Releasenotes end-->
 

@@ -77,7 +77,7 @@ local newData = {
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_burn",
-	-- 	DisplayName = "additional artwork",
+	-- 	DisplayName = "artwork",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_burn",
