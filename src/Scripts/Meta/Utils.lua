@@ -60,12 +60,12 @@ end
 ---Adds keys or entries from one table to another, skipping duplicates.
 ---If property is provided, skips duplicates based on the property (e.g., "Name").
 ---Returns tableToTake without the duplicate keys or entries.
----@param tableToOverwrite table The table to add keys or entries to.
+---@param tableToAddTo table The table to add keys or entries to.
 ---@param tableToTake table The table to take keys or entries from.
 ---@param property string|nil The property to check for duplicates with. If nil, keys are checked.
----@property order table|nil If provided, entries will be inserted as sjson objects using this order.
+---@param order table|nil If provided, entries will be inserted as sjson objects using this order.
 ---@return table tableToTake All non-duplicate keys or entries from tableToTake.
-function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property, order)
+function mod.AddTableKeysSkipDupes(tableToAddTo, tableToTake, property, order)
 	if tableToTake == nil then
 		return {}
 	end
@@ -75,35 +75,35 @@ function mod.AddTableKeysSkipDupes(tableToOverwrite, tableToTake, property, orde
 	if property then
 		local propertyLookup = {}
 
-		-- Create a lookup table for the property values in tableToOverwrite
-		for index, entry in ipairs(tableToOverwrite) do
+		-- Create a lookup table for the property values in tableToAddTo
+		for index, entry in ipairs(tableToAddTo) do
 			if entry[property] then
 				propertyLookup[entry[property]] = index
 			end
 		end
 
-		-- Iterate through tableToTake and add non-duplicate entries to tableToOverwrite
+		-- Iterate through tableToTake and add non-duplicate entries to tableToAddTo
 		for _, entryToTake in pairs(tableToTake) do
 			if entryToTake[property] and not propertyLookup[entryToTake[property]] then
 				if order ~= nil then
-					table.insert(tableToOverwrite, sjson.to_object(entryToTake, order))
+					table.insert(tableToAddTo, sjson.to_object(entryToTake, order))
 				else
-					table.insert(tableToOverwrite, entryToTake)
+					table.insert(tableToAddTo, entryToTake)
 				end
 				table.insert(nonDuplicateItems, entryToTake)
-				propertyLookup[entryToTake[property]] = #tableToOverwrite
+				propertyLookup[entryToTake[property]] = #tableToAddTo
 			else
 				mod.DebugPrint("Skipped duplicate key: " .. entryToTake[property], 4)
 			end
 		end
 	else
-		-- Iterate through tableToTake and add non-duplicate keys to tableToOverwrite
+		-- Iterate through tableToTake and add non-duplicate keys to tableToAddTo
 		for key, value in pairs(tableToTake) do
-			if tableToOverwrite[key] == nil then
+			if tableToAddTo[key] == nil then
 				if value == "nil" then
-					tableToOverwrite[key] = nil
+					tableToAddTo[key] = nil
 				else
-					tableToOverwrite[key] = value
+					tableToAddTo[key] = value
 				end
 				nonDuplicateItems[key] = value
 			else
@@ -452,7 +452,23 @@ function mod.TryGetOrCreateCachedSjsonFile(fileName, defaultContent)
 	local path = rom.path.combine(basePath, fileName)
 
 	if rom.path.exists(path) then
-		return mod.TryLoadCachedSjsonFile(path) or {}
+		local loadedFileContent = mod.TryLoadCachedSjsonFile(path) or {}
+		-- Add all missing keys from defaultContent to loadedFileContent
+		mod.AddTableKeysSkipDupes(loadedFileContent, defaultContent)
+		-- Opposite: Remove any keys in loadedFileContent that are not in defaultContent
+		local anyRemoved = false
+		for key, _ in pairs(loadedFileContent) do
+			if defaultContent[key] == nil then
+				loadedFileContent[key] = nil
+				anyRemoved = true
+			end
+		end
+		if anyRemoved then
+			-- Save the updated content back to the file
+			mod.SaveCachedSjsonFile(fileName, loadedFileContent)
+		end
+
+		return loadedFileContent
 	else
 		mod.SaveCachedSjsonFile(fileName, defaultContent)
 		return defaultContent
@@ -483,11 +499,6 @@ function mod.SaveCachedSjsonFile(fileName, data)
 	local path = rom.path.combine(basePath, fileName)
 	sjson.encode_file(path, data)
 end
-
----The mod's hidden config, stored in the cache folder as hiddenConfig.sjson.
----We don't ship the file with the mod to prevent it being overwritten on a mod update
-mod.HiddenConfig = mod.HiddenConfig or mod.TryGetOrCreateCachedSjsonFile("hiddenConfig.sjson", mod.DefaultHiddenConfig)
-mod.DebugPrint("Loaded hiddenConfig.sjson", 4)
 
 ---We need to override the packages that are loaded with a biome package, to also load the Fx package, as we need the textures from it before map load.
 function mod.SetBiomePackageLoadOverrides()

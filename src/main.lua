@@ -53,6 +53,12 @@ local function on_ready()
 	import "Scripts/Meta/NameMappingData.lua"
 	import "Scripts/Meta/FileHandling.lua"
 
+	---The mod's hidden config, stored in the cache folder as hiddenConfig.sjson.
+	---We don't ship the file with the mod to prevent it being overwritten on a mod update
+	mod.HiddenConfig = mod.HiddenConfig or mod.TryGetOrCreateCachedSjsonFile("hiddenConfig.sjson", mod.DefaultHiddenConfig)
+	mod.DebugPrint("Loaded hiddenConfig.sjson", 4)
+	mod.DebugPrint(mod.HiddenConfig, 4)
+
 	if config.enabled == false then
 		local numMissingFiles = mod.CheckRequiredFiles(true)
 		if numMissingFiles == 0 then
