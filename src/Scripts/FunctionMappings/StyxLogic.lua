@@ -165,6 +165,7 @@ function game.UnlockDoor(source, args)
 	door.ReadyToUse = true
 end
 
+-- After talking to Cerberus, the reward rooms are locked
 function game.RelockAllDoors(source, args)
 	for id, door in pairs(game.MapState.OfferedExitDoors) do
 		if id ~= args.DoorId then

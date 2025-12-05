@@ -407,7 +407,7 @@ local roomReplacements = {
 				PlayOnceContext = "ModsNikkelMHadesBiomes_D_Boss01_FirstMeeting",
 				PreLineWait = 2.25,
 				{ Cue = "/VO/MelinoeField_3000", Text = "{#Emph}<Gasp>" },
-				{ Cue = "/VO/Melinoe_4017", Text = "Father...",   PreLineWait = 0.8, BreakIfPlayed = true, },
+				{ Cue = "/VO/Melinoe_4017",      Text = "Father...",    PreLineWait = 0.8, BreakIfPlayed = true, },
 			},
 			-- Progressing the story
 			{
@@ -474,8 +474,21 @@ local roomModifications = {
 		-- Devotion rewards are not available in Styx
 		IneligibleRewards = { "Devotion" },
 		OptionalOverrides = {
-			IneligibleRewards = { "WeaponUpgrade", "Devotion" },
+			IneligibleRewards = { "WeaponUpgrade", "Devotion", "SpellDrop", "HermesUpgrade" },
 			RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+			BoonRaritiesOverride = {
+				Legendary = 0.1,
+				Epic = 0.25,
+				Rare = 0.90,
+				LegendaryChance = mod.NilValue,
+				EpicChance = mod.NilValue,
+				RareChance = mod.NilValue,
+			},
+			RewardConsumableOverrides = {
+				AddMaxHealth = 50,
+				DropMoney = 200,
+				AddMaxMana = 60,
+			},
 		},
 	},
 	BaseStyxMini = {
