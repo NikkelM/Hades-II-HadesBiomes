@@ -61,15 +61,17 @@ modutil.mod.Path.Wrap("GetShopCostMultiplier", function(base)
 	return base()
 end)
 
-modutil.mod.Path.Wrap("RestockWorldItem", function(base, replacedIndex, kitId, args)
-	base(replacedIndex, kitId, args)
+modutil.mod.Path.Context.Wrap("RestockWorldItem", function(replacedIndex, restockKitId, args)
+	modutil.mod.Path.Wrap("SpawnStoreItemInWorld", function(base, itemData, kitId)
+		base(itemData, kitId)
 
-	local room = game.CurrentRun.CurrentRoom
-	-- Store the new item in the same index in the StoreOptions as the previous one
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and room.Name and game.RoomData[room.Name] and game.RoomData[room.Name].PersistentStore then
-		if room.Store and room.Store.StoreOptions and room.Store.StoreOptions[replacedIndex] then
-			game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore.StoreOptions = game.CurrentRun.CurrentRoom.Store
-					.StoreOptions
+		local room = game.CurrentRun.CurrentRoom
+		-- Store the new item in the same index in the StoreOptions as the previous one
+		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and room.Name and game.RoomData[room.Name] and game.RoomData[room.Name].PersistentStore then
+			if room.Store and room.Store.StoreOptions and room.Store.StoreOptions[replacedIndex] == nil then
+				room.Store.StoreOptions[replacedIndex] = itemData
+				game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore.StoreOptions = room.Store.StoreOptions
+			end
 		end
-	end
+	end)
 end)

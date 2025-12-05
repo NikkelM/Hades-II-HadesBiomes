@@ -1,9 +1,17 @@
 # Changelog
 
-## v0.1.3
+## v0.1.4
 
 <!--Releasenotes start-->
 *Notice: I am aware of ongoing issues with music cutting out or changing suddenly. This is under investigation!*
+
+### Patch Highlights:
+
+Other fixes and improvements:
+- Fixed: The restocked item spawned by Hermes' "Travel Deal" disappears after returning to the Styx hub room if it is not bought before visiting another room.
+<!--Releasenotes end-->
+
+## v0.1.3
 
 ### Patch Highlights:
 - Fixed: Phase transition music for Hades does not play correctly.
@@ -28,7 +36,6 @@ Other fixes and improvements:
 - Fixed: If the mod installation is invalid or broken, the "Restart Required" screen is shown instead of the "Installation Failed" screen.
 - Fixed: The exit after defeating the Bone Hydra is unlocked very late after picking up the reward.
 - Fixed: Pickaxe points can spawn in the Asterius miniboss chamber, potentially blocking his movement and attacks.
-<!--Releasenotes end-->
 
 ## v0.1.2
 
