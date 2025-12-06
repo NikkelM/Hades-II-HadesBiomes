@@ -28,8 +28,9 @@ It is highly recommended to complete the true ending of Hades before playing wit
 In order to use this mod you _must_ have Hades installed on your system at all times when playing Hades II.
 The mod will not work without it.
 If you have Hades and Hades II installed in different parent folders, please refer to the [Configuration](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) wiki page for instructions on how to ensure the mod can discover your Hades installation.
+You must start the game once to generate the configuration file.
 
-> Please uninstall your Hades mods by renaming the `Mods` folder and running `modimporter.exe` when playing with this mod enabled!
+You **must** uninstall your Hades mods by renaming the `Mods` folder and running `modimporter.exe` before installing this mod!
 
 You can install this mod just like any other Hades II mod available on [Thunderstore](https://thunderstore.io/c/hades-ii/), the recommended mod manager is [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/).
 Start the game through the mod manager to make sure mods are enabled - use the `Start Modded` button on the top left.
@@ -51,6 +52,9 @@ If you would like more information or experience any issues, please refer to the
 Only uninstall the mod while in the Crossroads to prevent issues.
 
 ## Configuration
+
+Note that the configuration file is only created after the first game start with the mod enabled in your mod manager.
+If you need to make any changes (such as to the `hadesGameFolder` setting), you will need to start the game once first to generate the config file.
 
 You can find an explanation of all options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
 

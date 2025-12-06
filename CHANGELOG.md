@@ -9,6 +9,7 @@
 - Fixed: Miniboss rooms in the Temple of Styx do not always offer upgraded reward versions.
 
 Other fixes and improvements:
+- The mod will now cancel the installation if it detects that Hades mods are installed, and show an informative message when loading into a save. This should prevent unexpected crashes when loading into the main menu in some cases.
 - Rewards within a Styx subwing cannot be rerolled anymore. The reward can still be rerolled while in the Hub area.
 - Fixed: If Thanatos has no more dialogue after an encounter, he disappears without unlocking the room exits.
 - Fixed: Thanatos leaves after his encounter if he has no more dialogue, but could still have been gifted.

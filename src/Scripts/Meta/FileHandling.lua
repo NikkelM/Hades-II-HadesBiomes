@@ -19,9 +19,8 @@ function mod.ConfirmHadesInstallation()
 			if not rom.path.exists(microsoftBackupExePath) then
 				-- Set the invalid installation flag
 				mod.HiddenConfig.IsValidInstallation = false
+				mod.HiddenConfig.InstallationFailReason = "NoHadesInstallationFound"
 				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
-				-- Used to decide which install failure screen to show
-				mod.hadesGameFolder = nil
 
 				mod.DebugPrint(
 					"The mod tried finding your Hades installation at \"" ..
@@ -231,9 +230,14 @@ function mod.OpenModInstallScreen(args)
 	elseif args.IsValidInstallation then
 		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess) or {}
 	else
-		if mod.hadesGameFolder == nil then
+		if args.InstallationFailReason == "NoHadesInstallationFound" then
 			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailureHadesNotFound) or {}
+		elseif args.InstallationFailReason == "HadesModsInstalled" then
+			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailureHadesModsInstalled) or {}
+		elseif args.InstallationFailReason == "MissingFiles" then
+			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailureMissingFiles) or {}
 		else
+			-- Generic fallback
 			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailure) or {}
 		end
 	end

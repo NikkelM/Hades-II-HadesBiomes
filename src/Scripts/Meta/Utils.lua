@@ -293,13 +293,22 @@ end
 
 ---Wrapper function around sjson.decode that reads a file and decodes it.
 ---It replaces quadruple quotes with triple quotes and a newline, as quadruple quotes are not parsed correctly in the sjson library.
+---Also applies some language-specific fixes for known issues in certain localization files.
 ---@param filePath string The path to the file to decode.
 ---@return table sjsonAsTable The decoded table.
----@return string error If an error occurred, the error message.
 function mod.DecodeSjsonFile(filePath)
 	local fileHandle = io.open(filePath, "r")
 	if not fileHandle then
-		error("Could not open help text file: " .. filePath)
+		mod.DebugPrint("Could not open sjson file: " .. filePath, 1)
+
+		-- To make sure we only try this if we've already successfully loaded the hidden config, as that also uses this function
+		if mod.HiddenConfig then
+			mod.HiddenConfig.IsValidInstallation = false
+			mod.HiddenConfig.InstallationFailReason = "Generic"
+			mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+		end
+
+		return {}
 	end
 
 	local fileString = fileHandle:read("*a")
@@ -476,8 +485,7 @@ function mod.TryGetOrCreateCachedSjsonFile(fileName, defaultContent)
 end
 
 ---Tries to load a file in the mod's cache folder and returns its contents.
----@return table decodedSjsonFile The decoded sjson file.
----@return string error If the file does not exist, throws an error.
+---@return table|nil decodedSjsonFile The decoded sjson file.
 function mod.TryLoadCachedSjsonFile(fileName)
 	local basePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\cache\\")
 	local path = rom.path.combine(basePath, fileName)
@@ -486,8 +494,11 @@ function mod.TryLoadCachedSjsonFile(fileName)
 	if rom.path.exists(path) then
 		return mod.DecodeSjsonFile(path)
 	else
-		error(fileName ..
-			" not found in the cache! Please reinstall the mod by removing it from r2modman and installing it again afterwards.")
+		mod.DebugPrint(
+			fileName ..
+			" not found in the cache! Please reinstall the mod by removing it from r2modman and installing it again afterwards.",
+			1)
+		return nil
 	end
 end
 
@@ -498,6 +509,36 @@ function mod.SaveCachedSjsonFile(fileName, data)
 	local basePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\cache\\")
 	local path = rom.path.combine(basePath, fileName)
 	sjson.encode_file(path, data)
+end
+
+---Checks if the user has Hades mods installed, which would conflict with this mod
+---The installation/mod load will be aborted and a message shown to the user
+---@return boolean True if Hades mods are installed, false otherwise
+function mod.AreHadesModsInstalled()
+	local modimporterLogFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\modimporter.log.txt")
+	if rom.path.exists(modimporterLogFilePath) then
+		local file = io.open(modimporterLogFilePath, "r")
+		if file then
+			local content = file:read("*all")
+			file:close()
+			if content and content:find("base files import a total of") and not content:find("0 base files import a total of 0 mod files") then
+				mod.DebugPrint(
+					"Hades mods detected! You must uninstall all mods for Hades before installing Zagreus' Journey. Aborting mod installation to prevent conflicts.",
+					1)
+
+				mod.HiddenConfig.IsValidInstallation = false
+				mod.HiddenConfig.InstallationFailReason = "HadesModsInstalled"
+				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+
+				-- Ensure we get a new clean install next time
+				config.uninstall = true
+				config.firstTimeSetup = true
+
+				return true
+			end
+		end
+	end
+	return false
 end
 
 ---We need to override the packages that are loaded with a biome package, to also load the Fx package, as we need the textures from it before map load.

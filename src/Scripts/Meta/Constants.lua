@@ -4,6 +4,7 @@ mod.TableValue = {}
 mod.DefaultHiddenConfig = {
 	HasShownSuccessfulInstallScreen = false,
 	IsValidInstallation = false,
+	InstallationFailReason = "",
 	MustShowUninstallFailureScreen = false,
 	-- For debugging purposes
 	IgnoreShowFeedbackMessage = false,

@@ -11,13 +11,15 @@ local function copyFile(src, dest, skipCheck)
 
 	local inputFile = io.open(src, "rb")
 	if not inputFile then
-		error("Could not open source file: " .. src .. " - validate your Hades installation and try again.")
+		mod.DebugPrint("Could not open source file: " .. src .. " - validate your Hades installation and try again.", 1)
+		return
 	end
 
 	local outputFile = io.open(dest, "wb")
 	if not outputFile then
 		inputFile:close()
-		error("Could not open destination file: " .. dest)
+		mod.DebugPrint("Could not open destination file: " .. dest, 1)
+		return
 	end
 
 	mod.DebugPrint("Copying file " .. src .. " to " .. dest, 4)
@@ -231,6 +233,11 @@ local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 	local filteredAnimations = {}
 	removeDeprecatedAnimationProperties(animationsTable)
 	for _, animation in ipairs(animationsTable.Animations) do
+		-- Check for an Olympus Extra installation
+		if animation.Name == "TheseusSpearSwipeApollo" then
+			return false
+		end
+
 		if not duplicates[animation.Name] then
 			if modifications[animation.Name] then
 				for key, value in pairs(modifications[animation.Name]) do
@@ -254,6 +261,8 @@ local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 	animationsTable.Animations = filteredAnimations
 
 	sjson.encode_file(destPath, animationsTable)
+
+	return true
 end
 
 local function copyHadesFxAnimations()
@@ -261,8 +270,13 @@ local function copyHadesFxAnimations()
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
 	local modifications = mod.HadesFxAnimationModifications or {}
 	local additions = mod.HadesFxAnimationAdditions or {}
-	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates,
-		modifications, additions, "Fx.sjson")
+
+	-- Will return false if an Olympus Extra animation is detected
+	if not copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates, modifications, additions, "Fx.sjson") then
+		return false
+	end
+
+	return true
 end
 
 local function copyHadesGUIAnimations()
@@ -294,6 +308,28 @@ end
 
 function mod.FirstTimeSetup()
 	mod.DebugPrint("Installing the mod...", 3)
+
+	mod.DebugPrint("Ensuring no Hades mods are installed...", 3)
+	if mod.AreHadesModsInstalled() then
+		return false
+	end
+
+	-- Doing an extra check to make sure Olympus Extra is not installed
+	mod.DebugPrint("Copying Fx animations...", 3)
+	if not copyHadesFxAnimations() then
+		mod.DebugPrint(
+			"Bad Hades Sjson edits detected! It is very likely you have Olympus Extra or another mod for Hades installed. You must uninstall all mods for Hades before installing Zagreus' Journey. Aborting mod installation to prevent conflicts.",
+			1)
+
+		mod.HiddenConfig.IsValidInstallation = false
+		mod.HiddenConfig.InstallationFailReason = "HadesModsInstalled"
+		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+
+		-- Ensure we get a new clean install next time
+		config.uninstall = true
+		config.firstTimeSetup = true
+		return false
+	end
 
 	copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank", "Audio ")
 
@@ -335,9 +371,6 @@ function mod.FirstTimeSetup()
 	copyHadesHelpTexts()
 	copyHadesNPCTexts()
 
-	mod.DebugPrint("Copying Fx animations...", 3)
-	copyHadesFxAnimations()
-
 	mod.DebugPrint("Copying GUI animations...", 3)
 	copyHadesGUIAnimations()
 
@@ -347,19 +380,27 @@ function mod.FirstTimeSetup()
 	mod.DebugPrint("Copying Character animations...", 3)
 	copyHadesCharacterAnimationsNPCs()
 
+	mod.DebugPrint("Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
+	local checksumsSrc = rom.path.combine(rom.paths.Content(), "Scripts\\checksums.txt")
+	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
+	copyFile(checksumsSrc, checksumsDest, true)
+
 	local numMissingFiles = mod.CheckRequiredFiles(false)
 	if numMissingFiles > 0 then
 		mod.DebugPrint(
 			numMissingFiles ..
 			" required files are missing immediately after first time setup. Do you have Hades installed in the correct folder? Check the \"hadesGameFolder\" setting in your config file.",
 			1)
-		return
-	end
 
-	mod.DebugPrint("Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
-	local checksumsSrc = rom.path.combine(rom.paths.Content(), "Scripts\\checksums.txt")
-	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
-	copyFile(checksumsSrc, checksumsDest, true)
+		mod.HiddenConfig.IsValidInstallation = false
+		mod.HiddenConfig.InstallationFailReason = "MissingFiles"
+		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+
+		-- Ensure we get a new clean install next time
+		config.uninstall = true
+		config.firstTimeSetup = true
+		return false
+	end
 
 	-- If this is a reinstall, to show the successful install screen again
 	mod.HiddenConfig.HasShownSuccessfulInstallScreen = false
@@ -367,4 +408,6 @@ function mod.FirstTimeSetup()
 
 	config.firstTimeSetup = false
 	mod.DebugPrint("Finished mod installation and first time setup.", 3)
+
+	return true
 end
