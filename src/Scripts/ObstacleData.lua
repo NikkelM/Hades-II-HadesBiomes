@@ -196,6 +196,7 @@ local addedObstacles = {
 		UnlockedAnimation = "StyxDoorUnlocked",
 		ExitDoorOpenAnimation = "StyxDoorOpen",
 		ExitDoorCloseAnimation = "StyxDoorClose",
+		AllowReroll = false,
 		-- intentionally blank, on the anim
 		UnlockedUseSound = "",
 		-- Custom
