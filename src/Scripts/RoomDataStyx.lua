@@ -484,10 +484,13 @@ local roomModifications = {
 				EpicChance = mod.NilValue,
 				RareChance = mod.NilValue,
 			},
-			RewardConsumableOverrides = {
-				AddMaxHealth = 50,
-				DropMoney = 200,
-				AddMaxMana = 60,
+			-- We directly change the consumables to their upgraded versions when choosing the door reward using the map
+			RewardConsumableOverrides = mod.NilValue,
+			RewardConsumableOverrideMap = {
+				RoomMoneyDrop = "RoomMoneyBigDrop",
+				MaxHealthDrop = "MaxHealthDropBig",
+				MaxManaDrop = "MaxManaDropBig",
+				StackUpgrade = "StackUpgradeBig",
 			},
 		},
 	},

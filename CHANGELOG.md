@@ -6,10 +6,11 @@
 *Notice: I am aware of ongoing issues with music cutting out or changing suddenly. This is under investigation!*
 
 ### Patch Highlights:
-- Fixed: Miniboss rooms in the Temple of Styx do not always offer upgraded rewards.
+- Fixed: Miniboss rooms in the Temple of Styx do not always offer upgraded reward versions.
 
 Other fixes and improvements:
 - Rewards within a Styx subwing cannot be rerolled anymore. The reward can still be rerolled while in the Hub area.
+- Fixed: Rerolling rewards for Styx miniboss rooms can result in duplicate rewards.
 - Fixed: The restocked item spawned by Hermes' "Travel Deal" disappears after returning to the Styx hub room if it is not bought before visiting another room.
 <!--Releasenotes end-->
 

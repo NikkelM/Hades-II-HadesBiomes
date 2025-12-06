@@ -200,16 +200,6 @@ modutil.mod.Path.Wrap("DisableTrap", function(base, enemy)
 	end
 end)
 
--- For Styx miniboss overrides
-modutil.mod.Path.Wrap("CreateStackLoot", function(base, args)
-	args = args or {}
-	if game.CurrentRun ~= nil and game.CurrentRun.CurrentRoom ~= nil and game.CurrentRun.CurrentRoom.StackNumOverride then
-		args.StackNum = game.CurrentRun.CurrentRoom.StackNumOverride
-	end
-
-	return base(args)
-end)
-
 function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	-- Synchronize the RNG to its initial state. Makes room reward choices deterministic on save/load
 	game.RandomSynchronize()
@@ -309,8 +299,21 @@ function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 				doorRoom.RewardStoreName = rewardStoreName
 			end
 			doorRoom.ChosenRewardType = game.ChooseRoomReward(game.CurrentRun, doorRoom, doorRoom.RewardStoreName,
-				rewardsChosen,
-				{ Door = door })
+				rewardsChosen, { Door = door })
+
+			-- Custom logic for Styx Miniboss rooms - change Consumables to their big variant
+			if doorRoom.ChosenRewardType ~= nil and doorRoom.UseOptionalOverrides and doorRoom.RewardConsumableOverrideMap then
+				-- Add the original reward to the chosen list to avoid duplicates
+				table.insert(rewardsChosen, { RewardType = doorRoom.ChosenRewardType, ForceLootName = doorRoom.ForceLootName, })
+				-- For the reroll logic
+				doorRoom.ModsNikkelMHadesBiomesStyxMinibossRoomOriginalReward = doorRoom.ChosenRewardType
+				-- Then replace it with the upgraded version
+				local overrideConsumable = doorRoom.RewardConsumableOverrideMap[doorRoom.ChosenRewardType]
+				if overrideConsumable ~= nil then
+					doorRoom.ChosenRewardType = overrideConsumable
+				end
+			end
+
 			if doorRoom.ChosenRewardType ~= nil then
 				game.SetupRoomReward(game.CurrentRun, doorRoom, rewardsChosen,
 					{ Door = door, IgnoreForceLootName = doorRoom.IgnoreForceLootName })
@@ -441,13 +444,11 @@ function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 				game.CurrentRun.CurrentRoom.MetaRewardStand)
 			StopAnimation({
 				Name = "MetaRewardStandLockedFx",
-				DestinationId = game.CurrentRun.CurrentRoom.MetaRewardStand
-						.ObjectId
+				DestinationId = game.CurrentRun.CurrentRoom.MetaRewardStand.ObjectId
 			})
 			SetAnimation({
 				Name = "MetaRewardStandUnlocked",
-				DestinationId = game.CurrentRun.CurrentRoom.MetaRewardStand
-						.ObjectId
+				DestinationId = game.CurrentRun.CurrentRoom.MetaRewardStand.ObjectId
 			})
 			PlaySound({ Name = "/SFX/WellShopUnlocked", Id = game.CurrentRun.CurrentRoom.MetaRewardStand.ObjectId })
 		end
