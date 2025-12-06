@@ -466,6 +466,9 @@ local roomModifications = {
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut",
 
 		CombatOverMusicEvents = mod.CombatOverMusicEvents.Generic,
+
+		-- From 0.45
+		TargetMetaRewardsRatio = 0.35,
 	},
 
 	-- OPENING ROOMS

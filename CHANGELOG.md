@@ -6,6 +6,7 @@
 *Notice: I am aware of ongoing issues with music cutting out or changing suddenly. This is under investigation!*
 
 ### Patch Highlights:
+- Rooms will now offer more Boons and other rewards useful for the current run, and less Ash, Bones and Nectar. This should be especially noticeable in Tartarus.
 - Fixed: Miniboss rooms in the Temple of Styx do not always offer upgraded reward versions.
 
 Other fixes and improvements:

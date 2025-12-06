@@ -340,6 +340,9 @@ local roomModifications = {
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut",
 
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "AsphodelEnterRoomPresentation",
+
+		-- From 0.4
+		TargetMetaRewardsRatio = 0.3,
 	},
 
 	-- OPENING ROOMS

@@ -328,6 +328,9 @@ local roomModifications = {
 
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut",
+
+		-- From 0.33
+		TargetMetaRewardsRatio = 0.25,
 	},
 
 	-- OPENING ROOMS

@@ -473,6 +473,8 @@ local roomModifications = {
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerStyxOut",
 		-- Devotion rewards are not available in Styx
 		IneligibleRewards = { "Devotion" },
+		-- No longer offer any meta rewards here. It didn't do so anyways, but be sure
+		TargetMetaRewardsRatio = 0,
 		OptionalOverrides = {
 			IneligibleRewards = { "WeaponUpgrade", "Devotion", "SpellDrop", "HermesUpgrade" },
 			RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
