@@ -37,10 +37,20 @@ local function applyNPCChoiceMappings(npcData, mappings)
 								end
 							end
 
-							-- Add new key/value pairs if requested
-							for property, newKVPair in pairs(mappingData.InnerAlwaysAddKVPairs or {}) do
-								if textLineSet[property] then
-									for _, lineData in ipairs(textLineSet[property]) do
+							-- Add new key/value pairs to the last textline in a given group if requested
+							for subTable, newKVPair in pairs(mappingData.AlwaysAddKVPairsToLastIPair or {}) do
+								if subTable == groupName then
+									local lastIndex = #textLineSet
+									for key, value in pairs(newKVPair) do
+										textLineSet[lastIndex][key] = value
+									end
+								end
+							end
+
+							-- Add new key/value pairs to a subtable if requested
+							for subTable, newKVPair in pairs(mappingData.InnerAlwaysAddKVPairs or {}) do
+								if textLineSet[subTable] then
+									for _, lineData in ipairs(textLineSet[subTable]) do
 										for key, value in pairs(newKVPair) do
 											lineData[key] = value
 										end
@@ -363,7 +373,17 @@ local npcChoiceMappings = {
 				SpeakerName = "NPC_Zagreus_Past_01",
 				LineHistoryName = "NPC_Zagreus_Past_01",
 			}
-		}
+		},
+	},
+	NPC_Thanatos_01 = {
+		TextLineGroups = { "GiftTextLineSets" },
+		AlwaysAddKVPairsToLastIPair = {
+			-- Thanatos should leave if he has no more dialogue after being gifted
+			GiftTextLineSets = {
+				PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCheckThanatosPostGiftExit",
+				PostLineThreadedFunctionArgs = { Delay = 2, },
+			},
+		},
 	},
 	NPC_Thanatos_Field_01 = {
 		TextLineGroups = { "InteractTextLineSets" },

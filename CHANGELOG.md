@@ -10,6 +10,8 @@
 
 Other fixes and improvements:
 - Rewards within a Styx subwing cannot be rerolled anymore. The reward can still be rerolled while in the Hub area.
+- Fixed: If Thanatos has no more dialogue after an encounter, he disappears without unlocking the room exits.
+- Fixed: Thanatos leaves after his encounter if he has no more dialogue, but could still have been gifted.
 - Fixed: Rerolling rewards for Styx miniboss rooms can result in duplicate rewards.
 - Fixed: The restocked item spawned by Hermes' "Travel Deal" disappears after returning to the Styx hub room if it is not bought before visiting another room.
 <!--Releasenotes end-->

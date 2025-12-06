@@ -249,7 +249,8 @@ function mod.HandleThanatosEncounterReward(thanatos, args)
 	end
 
 	-- Need to move his kills into CurrentRun as otherwise they are not kept in the save
-	game.CurrentRun.ModsNikkelMHadesBiomesTotalThanatosKills = (game.CurrentRun.ModsNikkelMHadesBiomesTotalThanatosKills or 0) + (encounter.ThanatosKills or 0)
+	game.CurrentRun.ModsNikkelMHadesBiomesTotalThanatosKills = (game.CurrentRun.ModsNikkelMHadesBiomesTotalThanatosKills or 0) +
+			(encounter.ThanatosKills or 0)
 
 	game.NPCRewardDropPreProcessArgs(thanatos.KillChallengeArgs)
 	game.NPCRewardDrop(thanatos, thanatos.KillChallengeArgs)
@@ -258,9 +259,19 @@ function mod.HandleThanatosEncounterReward(thanatos, args)
 	AngleTowardTarget({ Id = thanatos.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
 	if thanatos.NextInteractLines ~= nil then
 		UseableOn({ Id = thanatos.ObjectId })
+		-- Don't disappear him if you can still gift him, but already unlock the room exits anyways
+	elseif game.CanReceiveGift(thanatos) then
+		UseableOn({ Id = thanatos.ObjectId })
+		game.ActivatedObjects[thanatos.ObjectId] = nil
+		game.MapState.RoomRequiredObjects[thanatos.ObjectId] = nil
+		game.wait(0.2, game.RoomThreadName)
+		if game.CheckRoomExitsReady(game.CurrentRun.CurrentRoom) then
+			game.UnlockRoomExits(game.CurrentRun, game.CurrentRun.CurrentRoom)
+		end
 	else
 		game.CheckDistanceTrigger(mod.PresetEventArgs.ThanatosFarewells, thanatos)
 		game.ActivatedObjects[thanatos.ObjectId] = nil
+		game.MapState.RoomRequiredObjects[thanatos.ObjectId] = nil
 		game.wait(0.2, game.RoomThreadName)
 		if game.CheckRoomExitsReady(game.CurrentRun.CurrentRoom) then
 			game.UnlockRoomExits(game.CurrentRun, game.CurrentRun.CurrentRoom)
@@ -272,6 +283,14 @@ function mod.ThanatosDropPresentation(source, args)
 	SetAnimation({ DestinationId = source.ObjectId, Name = "ThanatosTalkDismissal_Start" })
 	game.wait(0.3)
 	SetAnimation({ DestinationId = source.ObjectId, Name = "ThanatosTalkDismissal_Return" })
+end
+
+-- If we can only gift, but no longer talk to Thanatos, he should exit after being gifted
+function mod.ModsNikkelMHadesBiomesCheckThanatosPostGiftExit(source, args)
+	if source.NextInteractLines == nil then
+		game.wait(args.Delay or 2)
+		game.thread(mod.ThanatosExit, source, args)
+	end
 end
 
 -- #region COMBAT
