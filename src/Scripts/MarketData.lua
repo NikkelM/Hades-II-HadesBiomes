@@ -430,7 +430,7 @@ local newBossResourceValues = {
 	},
 }
 -- Add a new category to the broker screen
-local newBrokerBossTradeCategory = {
+mod.NewBrokerBossTradeCategory = {
 	Name = "ModsNikkelMHadesBiomes_MarketScreen_Resources",
 	Icon = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_72x72",
 	CurrencyResourceName = "ModsNikkelMHadesBiomes_BrokerResource",
@@ -466,8 +466,8 @@ local newBrokerBossTradeCategory = {
 		}
 	},
 }
-newBrokerBossTradeCategory = game.ConcatTableValuesIPairs(newBrokerBossTradeCategory, newBossResourceValues) or {}
-table.insert(game.ScreenData.MarketScreen.ItemCategories, newBrokerBossTradeCategory)
+mod.NewBrokerBossTradeCategory = game.ConcatTableValuesIPairs(mod.NewBrokerBossTradeCategory, newBossResourceValues) or {}
+table.insert(game.ScreenData.MarketScreen.ItemCategories, mod.NewBrokerBossTradeCategory)
 -- #endregion
 
 for _, category in ipairs(game.ScreenData.MarketScreen.ItemCategories) do
