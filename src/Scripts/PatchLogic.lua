@@ -3,11 +3,40 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 	for _, roomName in pairs(mod.MapFileMappings) do
 		table.insert(moddedRoomNames, roomName)
 	end
+	-- For even more backwards compatibility, also include the old Elysium-style room names
+	-- Except C_Boss01, it's also used in Hades II, and won't break the history (though it will lie about the ending room)
+	local oldElysiumRoomNames = {
+		"C_Intro",
+		-- "C_Boss01", -- Also used in Hades II! Don't replace it when patching
+		"C_PostBoss01",
+		"C_PreBoss01",
+		"C_Shop01",
+		"C_MiniBoss01",
+		"C_MiniBoss02",
+		"C_Reprieve01",
+		"C_Story01",
+		"C_Combat01",
+		"C_Combat02",
+		"C_Combat03",
+		"C_Combat04",
+		"C_Combat05",
+		"C_Combat06",
+		"C_Combat07",
+		"C_Combat08",
+		"C_Combat09",
+		"C_Combat10",
+		"C_Combat11",
+		"C_Combat12",
+		"C_Combat13",
+		"C_Combat14",
+		"C_Combat15",
+	}
+	moddedRoomNames = game.ConcatTableValuesIPairs(moddedRoomNames, oldElysiumRoomNames)
 
 	if game.GameState ~= nil then
 		-- #region Fixing any older runs from before the uninstall-error was fixed
 		if not game.IsEmpty(game.GameState.RunHistory) then
-			for _, runData in pairs(GameState.RunHistory) do
+			for _, runData in pairs(game.GameState.RunHistory) do
 				if game.Contains(moddedRoomNames, runData.EndingRoomName) then
 					runData.VictoryMessage = (runData.VictoryMessage or "") .. "#" .. (runData.EndingRoomName or "")
 					runData.EndingRoomName = nil
