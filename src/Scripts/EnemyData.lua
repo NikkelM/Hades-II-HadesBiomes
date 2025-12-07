@@ -680,6 +680,25 @@ local enemyModifications = {
 	HeavyRangedSplitterMinibossSuperElite = {
 		MaxHealth = 1850,
 		HealthBuffer = 3400,
+		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
+		SpawnEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
+				Threaded = true,
+			},
+		},
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
+		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
+		ImmuneToPolymorph = true,
+		DefaultAIData = {
+			-- How long it waits before moving again while firing the beams
+			FireDuration = 5.75,
+			-- Sort of acts as a PreAttackDuration as well
+			MoveWithinRangeTimeoutMin = 1.5,
+			MoveWithinRangeTimeoutMax = 2.0,
+		},
 		OnDamagedFireProjectiles = {
 			{
 				ProjectileName = "SpawnSplitterFragmentSuperElite",
@@ -2154,3 +2173,4 @@ game.EnemyData.SpikeTrap.DefaultAIData.TargetGroups = { "GroundEnemies", "HeroTe
 game.EnemyData.SpikeTrap.AIOptions = { "GuardAI", }
 
 mod.ApplyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
+mod.PrintTable(game.EnemyData.HeavyRangedSplitterMinibossSuperElite)

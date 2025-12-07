@@ -18,6 +18,7 @@ Other fixes and improvements:
 - Fixed: If Hades' Cast is blocked by a shield (such as from "Nitro Boost" or "The Lovers" Arcana), the Boiling Blood effect is still applied.
 - Fixed: Eurydice can only be encountered if the Bone Hydra has been encountered without the Vow of Rivals active.
 - Fixed: The game crashes when opening the Broker screen on early game saves.
+- Fixed: The Doomstone summoned by Hades during his boss fight cannot be damaged once it's armour is broken.
 - Fixed: If Thanatos has no more dialogue after an encounter, he disappears without unlocking the room exits.
 - Fixed: Thanatos "Pleased" portrait version is not showing.
 - Fixed: Thanatos leaves after his encounter if he has no more dialogue, but could still have been gifted.
