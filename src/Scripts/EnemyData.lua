@@ -1756,6 +1756,8 @@ local enemyModifications = {
 			DashRequireLoS = true,
 			SpawnCountDampenTraits = { HadesChronosDebuffBoon = true, },
 		},
+		-- Handled by the Cast projectile itself
+		OutgoingDamageModifiers = mod.NilValue,
 		ImmuneToPolymorph = true,
 		RunHistoryKilledByName = "NPC_Hades_01",
 		-- Moving EM voiceline to a custom lower priority to prevent it playing instead of a story event

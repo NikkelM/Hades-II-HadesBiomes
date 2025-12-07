@@ -177,7 +177,11 @@ function mod.HadesBeamDampeningOn(enemy, aiData, currentRun, args)
 		DestinationId = enemy.ObjectId,
 		EffectName = enemy.Name .. "HadesBeamRotationDampening"
 	}
-	dampenEffect.DataProperties = { Duration = 10, RotationMultiplier = aiData.ModsNikkelMHadesBiomes_HadesBeamDampeningValue or 0.02, TimeModifierFraction = 1 }
+	dampenEffect.DataProperties = {
+		Duration = 10,
+		RotationMultiplier = aiData.ModsNikkelMHadesBiomes_HadesBeamDampeningValue or 0.02,
+		TimeModifierFraction = 1
+	}
 	ApplyEffect(dampenEffect)
 	table.insert(enemy.ClearEffectsOnHitStun, dampenEffect.EffectName)
 end
@@ -601,6 +605,18 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 					Name = "StoredAmmoVulnerability",
 					NonPlayerMultiplier = projectileData.StoredAmmoMultiplier or 2.0,
 				})
+			-- Do this before CastEmbeddedPresentationStart, so we get to decide the vignette being used
+			if game.ScreenAnchors.BloodstoneVignetteId == nil then
+				game.ScreenAnchors.BloodstoneVignetteId = CreateScreenObstacle({
+					Name = "BlankObstacle",
+					Group = "Combat_Menu",
+					Animation = "HadesBloodstoneVignette",
+					X = game.ScreenCenterX,
+					Y = game.ScreenCenterY,
+					ScaleX = game.ScreenScaleX,
+					ScaleY = game.ScreenScaleY,
+				})
+			end
 			game.CastEmbeddedPresentationStart()
 		end
 		table.insert(victim.StoredAmmo, storedAmmo)
@@ -620,18 +636,6 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 
 		table.insert(game.ScreenAnchors.StoredAmmo, screenId)
 		SetAnimation({ Name = projectileData.StoredAmmoIcon or "AmmoEmbeddedInEnemyIcon", DestinationId = screenId })
-
-		if game.ScreenAnchors.BloodstoneVignetteId == nil then
-			game.ScreenAnchors.BloodstoneVignetteId = CreateScreenObstacle({
-				Name = "BlankObstacle",
-				Group = "Combat_Menu",
-				Animation = "BloodstoneVignette",
-				X = game.ScreenCenterX,
-				Y = game.ScreenCenterY,
-				ScaleX = game.ScreenScaleX,
-				ScaleY = game.ScreenScaleY,
-			})
-		end
 		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.HitByHadesAmmoVoiceLines, true)
 		game.thread(game.InCombatText, game.CurrentRun.Hero.ObjectId, "HitByHadesAmmo", 0.8, { OffsetY = -60 })
 
