@@ -28,7 +28,7 @@ Other fixes and improvements:
 - Fixed: Tiny Vermin can get stuck behind the pit in the middle of it's room.
 - Fixed: Tiny Vermin's howl attack has a choppy animation and missing sound effect.
 - Fixed: Rerolling rewards for Styx miniboss rooms can result in rolling a reward present on another door.
-- Fixed: Enemies do not use weapons as their first attack if those weapons should be used first after spawning.
+- Fixed: Enemies sometimes do not use weapons as their first attack, even if those weapons should be used first after spawning.
 - Fixed: The timer does not pause when returning to the Styx Hub room.
 - Fixed: Eurydice can only be met if the Bone Hydra has been encountered without the Vow of Rivals active.
 - Fixed: If Thanatos has no more dialogue after an encounter, he disappears without unlocking the room exits.
