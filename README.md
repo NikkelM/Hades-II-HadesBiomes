@@ -33,6 +33,10 @@ You must start the game once to generate the configuration file.
 You **must** uninstall your Hades mods by renaming the `Mods` folder and running `modimporter.exe` before installing this mod!
 
 You can install this mod just like any other Hades II mod available on [Thunderstore](https://thunderstore.io/c/hades-ii/), the recommended mod manager is [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/).
+Install r2modman by using `Manual Download` on the linked page, and running the setup executable in the downloaded `.zip` file.
+
+Afterwards, you can find *Zagreus' Journey* on the `Online` tab in r2modman, or use `Install with Mod Manager` on the [mod's Thunderstore page](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/).
+The mod manager will automatically install any other mods this mod needs to work correctly.
 Start the game through the mod manager to make sure mods are enabled - use the `Start Modded` button on the top left.
 
 Starting the game the first time with the mod enabled will install a number of files.

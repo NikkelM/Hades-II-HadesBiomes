@@ -13,7 +13,7 @@ local configDesc = {
   uninstall =
   "Set this to \"true\" and start the game to uninstall the mod, which removes files copied from your Hades installation. Do this before uninstalling or disabling the mod through r2modman to avoid loose files staying behind. To re-install, set both \"uninstall\" and \"firstTimeSetup\" to true. If \"firstTimeSetup\" is not also set to \"true\", \"enabled\" will be set to false after uninstalling.",
   hadesGameFolder =
-  "The path to the Hades game folder. When set to \"root\", resolves to the \"Hades\" directory in the same parent directory as your Hades II installation. I.e., leave like this if you have both games installed through the same store and on the same drive. Otherwise, set to the full path of your Hades installation, e.g. \"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Hades\" for Steam/Epic or \"C:\\Xbox\\Hades\" for the Microsoft Store.",
+  "The path to the Hades game folder. When set to \"root\", resolves to the \"Hades\" directory in the same parent directory as your Hades II installation. I.e., leave like this if you have both games installed through the same store and on the same drive. Otherwise, set to the full path of your Hades installation, e.g. \"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Hades\" for Steam, \"C:\\Program Files (x86)\\Epic Games\\Games\\Hades\" for Epic Games or \"C:\\Xbox\\Hades\" for the Microsoft Store.",
   logLevel =
   "What kinds of logs should be printed to the console. Set a higher level to see more detailed logs. Set to one of: 0 = Off/No logs, 1 = Errors, 2 = Warnings, 3 = Info, 4 = Debug",
 }
