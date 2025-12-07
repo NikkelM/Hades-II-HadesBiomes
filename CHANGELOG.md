@@ -3,13 +3,13 @@
 ## v0.1.4
 
 <!--Releasenotes start-->
-*Notice: I am aware of ongoing issues with music cutting out or changing suddenly. This is under investigation!*
-
 ### Patch Highlights:
 - Balancing: Rooms will now offer more Boons and other rewards useful for the current run, and less Ash, Bones, and Nectar. This should be especially noticeable in Tartarus.
 - Fixed: Miniboss rooms in the Temple of Styx do not always offer upgraded rewards.
 - Fixed: Music cuts out, desyncs or disappears in Erebus.
 - Fixed: Music disappears after the "Barge of Death" encounter in Asphodel.
+
+*If you continue to experience issues with music, please report them on [GitHub](https://github.com/NikkelM/Hades-II-HadesBiomes/issues) or in the [modding Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.*
 
 Other fixes and improvements:
 - The mod will now cancel the installation if it detects that Hades mods are installed, and show an informative message when loading into a save. This should prevent unexpected crashes when loading into the main menu in some cases.
