@@ -452,6 +452,11 @@ local roomModifications = {
 		-- We play our own music in this room, don't play any by default
 		IgnoreMusic = true,
 
+		GameStateRequirements = {
+			RequiredSeenRooms = mod.NilValue,
+			RequiredSeenEncounter = "BossHydra",
+		},
+
 		HarvestPointChances = { 0.5, 0.1, },
 		ShovelPointChance = 0.4,
 		PickaxePointChance = 0.4,
