@@ -302,6 +302,9 @@ local hadesProjectilesModifications = {
 		-- Makes it not go as far
 		Speed = 2500,
 	},
+	HadesAmmoWeapon = {
+		AffectsFriends = false,
+	},
 	HadesCast = {
 		-- We manually create it as there are some visual bugs if the projectile hits the bottom part of the arena
 		DissipateFx = "null",
