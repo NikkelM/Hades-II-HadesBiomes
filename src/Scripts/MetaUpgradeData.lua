@@ -1,7 +1,8 @@
 local nextBiomeShrineBiomeEnemySets = {
-	Tartarus = game.EnemySets.EnemiesBiome2,
-	Asphodel = game.EnemySets.EnemiesBiome3,
-	Elysium = game.EnemySets.EnemiesBiome4,
+	-- On purpose not setting these, so that we can only swap the enemies that have a defined partner in the swap map
+	-- Tartarus = game.EnemySets.EnemiesBiome2,
+	-- Asphodel = game.EnemySets.EnemiesBiome3,
+	-- Elysium = game.EnemySets.EnemiesBiome4,
 }
 
 -- Which enemy is swapped for which other enemy
@@ -39,9 +40,9 @@ local nextbiomeShrineSwapMap = {
 	-- BloodlessPitcherElite = { Name = "ShadeSwordUnitElite", },
 	BloodlessWaveFist = { Name = "ShadeBowUnitElite", },
 	-- BloodlessWaveFistElite = { Name = "ShadeBowUnitElite", },
-	SpreadShotUnit = { Name = "SplitShotUnitElite", },
-	-- SpreadShotUnitElite = { Name = "SplitShotUnitElite", },
-	FreezeShotUnit = { Name = "ChariotSuicideElite", },
+	SpreadShotUnit = { Name = "SplitShotUnit", },
+	SpreadShotUnitElite = { Name = "SplitShotUnitElite", },
+	-- FreezeShotUnit = { Name = "ChariotSuicide", },
 	-- FreezeShotUnitElite = { Name = "ChariotSuicideElite", },
 	RangedBurrower = { Name = "ChariotElite", },
 	-- RangedBurrowerElite = { Name = "ChariotElite", },

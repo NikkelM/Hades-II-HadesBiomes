@@ -167,10 +167,11 @@ for key, newRoomSet in pairs(newRoomSets) do
 end
 
 -- This is for the vow that may spawn enemies from the next Biome
+-- Left empty on purpose to allow Vow of Menace to take effect on the first modded run as well
 local newNextRoomSets = {
-	Tartarus = "Asphodel",
-	Asphodel = "Elysium",
-	Elysium = "Styx",
+	-- Tartarus = "Asphodel",
+	-- Asphodel = "Elysium",
+	-- Elysium = "Styx",
 }
 
 for key, newNextRoomSet in pairs(newNextRoomSets) do
