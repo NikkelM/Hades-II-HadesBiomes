@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Rewards within a Styx subwing cannot be rerolled anymore. The reward can still be rerolled while in the Hub room.
 - Updated the Elysium dialogue background to look more cohesive.
 - If hit by Hades' Boiling Blood effect, the vignette effect shown now matches the one from the first game.
+- Balancing: Multiple Wringers can now attack at the same time, making encounters containing them slightly more challenging.
 - Fixed: Hydra Heads can be replaced with enemies from Elysium by the Vow of Menace.
 - Fixed: Vow of Menace has no effect on the first run.
 - Fixed: Vow of Menace can replace more enemy types than intended.
