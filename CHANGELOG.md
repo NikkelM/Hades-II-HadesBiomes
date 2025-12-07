@@ -6,28 +6,28 @@
 *Notice: I am aware of ongoing issues with music cutting out or changing suddenly. This is under investigation!*
 
 ### Patch Highlights:
-- Rooms will now offer more Boons and other rewards useful for the current run, and less Ash, Bones and Nectar. This should be especially noticeable in Tartarus.
-- Fixed: Miniboss rooms in the Temple of Styx do not always offer upgraded reward versions.
+- Balancing: Rooms will now offer more Boons and other rewards useful for the current run, and less Ash, Bones, and Nectar. This should be especially noticeable in Tartarus.
+- Fixed: Miniboss rooms in the Temple of Styx do not always offer upgraded rewards.
 - Fixed: Music cuts out, desyncs or disappears in Erebus.
 
 Other fixes and improvements:
 - The mod will now cancel the installation if it detects that Hades mods are installed, and show an informative message when loading into a save. This should prevent unexpected crashes when loading into the main menu in some cases.
-- Rewards within a Styx subwing cannot be rerolled anymore. The reward can still be rerolled while in the Hub area.
+- Rewards within a Styx subwing cannot be rerolled anymore. The reward can still be rerolled while in the Hub room.
 - Updated the Elysium dialogue background to look more cohesive.
 - If hit by Hades' Boiling Blood effect, the vignette effect shown now matches the one from the first game.
-- Fixed: Tiny Vermin can get stuck behind the pit in the middle of it's room.
-- Fixed: Tiny Vermin's howl attack has a choppy animation and missing sound effect.
-- Fixed: Enemies do not use weapons as their first attack if those weapons should be used first after spawning.
-- Fixed: The timer does not pause when returning to the Styx Hub room.
-- Fixed: If Hades' Cast is blocked by a shield (such as from "Nitro Boost" or "The Lovers" Arcana), the Boiling Blood effect is still applied.
-- Fixed: Eurydice can only be encountered if the Bone Hydra has been encountered without the Vow of Rivals active.
 - Fixed: The game crashes when opening the Broker screen on early game saves.
 - Fixed: The Doomstone summoned by Hades during his boss fight cannot be damaged once it's armour is broken.
+- Fixed: If Hades' Cast is blocked by a shield (such as from "Nitro Boost" or "The Lovers" Arcana), the Boiling Blood effect is still applied.
+- Fixed: The restocked item spawned by Hermes' "Travel Deal" disappears after returning to the Styx Hub room if it is not bought before visiting another room.
+- Fixed: Tiny Vermin can get stuck behind the pit in the middle of it's room.
+- Fixed: Tiny Vermin's howl attack has a choppy animation and missing sound effect.
+- Fixed: Rerolling rewards for Styx miniboss rooms can result in rolling a reward present on another door.
+- Fixed: Enemies do not use weapons as their first attack if those weapons should be used first after spawning.
+- Fixed: The timer does not pause when returning to the Styx Hub room.
+- Fixed: Eurydice can only be met if the Bone Hydra has been encountered without the Vow of Rivals active.
 - Fixed: If Thanatos has no more dialogue after an encounter, he disappears without unlocking the room exits.
-- Fixed: Thanatos "Pleased" portrait version is not showing.
-- Fixed: Thanatos leaves after his encounter if he has no more dialogue, but could still have been gifted.
-- Fixed: Rerolling rewards for Styx miniboss rooms can result in duplicate rewards.
-- Fixed: The restocked item spawned by Hermes' "Travel Deal" disappears after returning to the Styx hub room if it is not bought before visiting another room.
+- Fixed: Thanatos immediately leaves after his encounter if he has no more dialogue, but could still have been gifted.
+- Fixed: Thanatos' "Pleased" portrait version is missing.
 - Fixed: A voiceline between Zagreus and Sisyphus after the ending is missing. Please keep reporting missing voicelines.
 <!--Releasenotes end-->
 
