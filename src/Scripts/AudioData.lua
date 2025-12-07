@@ -95,7 +95,7 @@ local tartarusRoomStartMusicEvents = {
 		MusicSection = 3,
 	},
 }
-game.RoomStartMusicEvents = game.MergeTables(game.RoomStartMusicEvents, tartarusRoomStartMusicEvents)
+game.RoomStartMusicEvents = game.CombineTablesIPairs(game.RoomStartMusicEvents, tartarusRoomStartMusicEvents)
 
 mod.CombatOverMusicEvents = {
 	Generic = {
