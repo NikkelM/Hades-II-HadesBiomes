@@ -100,6 +100,7 @@ local encounterModifications = {
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,
 		BlockRespawnShrineUpgrade = true,
+		BlockNextBiomeEnemyShrineUpgrade = true,
 		SkipBossTraits = true,
 		DelayedStart = true,
 		StartRoomUnthreadedEvents = {
@@ -128,6 +129,7 @@ local encounterModifications = {
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedByShrineLevel", },
 		},
+		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 }
 

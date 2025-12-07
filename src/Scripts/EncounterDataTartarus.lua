@@ -269,6 +269,8 @@ local encounterModifications = {
 		NoFirstWaveStartDelay = true,
 		SpawnOverrides = { UseActivatePresentation = false, },
 		CanEncounterSkip = false,
+		BlockNextBiomeEnemyShrineUpgrade = true,
+		BlockAthenaEncounterKeepsake = true,
 		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		RequiredTextLines = mod.NilValue,
 		WaveTemplate = {
@@ -276,9 +278,7 @@ local encounterModifications = {
 			OverrideValues = game.BaseWaveOverrideValues,
 			StartDelay = 0.0
 		},
-		-- Sometimes these can move around when spawning, so we blacklist them
-		Blacklist = { LightSpawner = true, },
-		BlockAthenaEncounterKeepsake = true,
+		Blacklist = { LightSpawner = true, Swarmer = true, },
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,

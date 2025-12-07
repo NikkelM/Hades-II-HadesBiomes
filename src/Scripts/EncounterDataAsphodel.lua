@@ -125,6 +125,11 @@ local encounterModifications = {
 		PostUnthreadedEvents = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
+	BaseHydraEncounter = {
+		BlockAthenaEncounterKeepsake = true,
+		CanEncounterSkip = false,
+		BlockNextBiomeEnemyShrineUpgrade = true,
+	},
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataAsphodel, encounterModifications, encounterReplacements)

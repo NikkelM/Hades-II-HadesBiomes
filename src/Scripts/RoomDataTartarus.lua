@@ -500,7 +500,6 @@ local roomModifications = {
 		MaxAppearancesThisBiome = 1,
 		BlockRunProgressUI = true,
 		DisableRewardMagnetisim = true,
-		BlockNextBiomeEnemyShrineUpgrade = true,
 		StartThreadedEvents = {
 			{ FunctionName = "CheckBiomeStateStart" },
 			{ FunctionName = "ShadeMercManager",    Args = { StartingCountMin = 3, StartingCountMax = 12, ObjectNames = { "ShadeMerc" }, MaxActive = 12 } },
@@ -581,7 +580,6 @@ local roomModifications = {
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
-		BlockNextBiomeEnemyShrineUpgrade = true,
 		BackupCauseOfDeath = "Harpy",
 
 		HasFishingPoint = false,

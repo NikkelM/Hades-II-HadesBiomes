@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Rewards within a Styx subwing cannot be rerolled anymore. The reward can still be rerolled while in the Hub room.
 - Updated the Elysium dialogue background to look more cohesive.
 - If hit by Hades' Boiling Blood effect, the vignette effect shown now matches the one from the first game.
+- Fixed: Hydra Heads can be replaced with enemies from Elysium by the Vow of Menace.
 - Fixed: The game crashes when opening the Broker screen on early game saves.
 - Fixed: The Doomstone summoned by Hades during his boss fight cannot be damaged once it's armour is broken.
 - Fixed: If Hades' Cast is blocked by a shield (such as from "Nitro Boost" or "The Lovers" Arcana), the Boiling Blood effect is still applied.

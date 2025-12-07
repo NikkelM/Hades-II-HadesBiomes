@@ -421,7 +421,6 @@ local roomModifications = {
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
-		BlockNextBiomeEnemyShrineUpgrade = true,
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium",

@@ -123,6 +123,7 @@ local encounterModifications = {
 		LoadPackages = { "BiomeB", "BiomeI" },
 		LoadModdedVoiceBanks = { "Megaera" },
 		PostUnthreadedEvents = mod.NilValue,
+		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 	BossHadesPeaceful = {
 		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicSurfaceModded", },
