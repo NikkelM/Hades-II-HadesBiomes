@@ -13,6 +13,7 @@ function mod.WrappingEncounterStartPresentation(eventSource)
 	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, Fraction = 0.17, Duration = 1.0 }, })
 
 	game.wait(3.0, game.RoomThreadName)
+	game.PauseMusic()
 	game.SecretMusicPlayer("/Music/MusicExploration2_MC")
 	SetSoundCueValue({ Names = { "Section", }, Id = game.AudioState.SecretMusicId, Value = 2 })
 
@@ -145,9 +146,11 @@ function mod.WrappingEncounterEndPresentation(eventSource)
 	PlaySound({ Name = "/Leftovers/SFX/AnnouncementThunder" })
 	PlaySound({ Name = "/SFX/PillarDestroyed" })
 
-	SetSoundCueValue({ Names = { "Section", }, Id = game.AudioState.SecretMusicId, Value = 10 })
-	game.AudioState.SecretMusicId = nil
-	game.AudioState.SecretMusicName = nil
+	if game.AudioState.SecretMusicId ~= nil then
+		game.EndMusic(game.AudioState.SecretMusicId, game.AudioState.SecretMusicName)
+		game.AudioState.SecretMusicId = nil
+		game.AudioState.SecretMusicName = nil
+	end
 
 	local wrappingData = eventSource.WrappingData
 	for k, obstacleWrapData in pairs(wrappingData.ObstacleWrapData) do

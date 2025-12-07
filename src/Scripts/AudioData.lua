@@ -1,6 +1,5 @@
 -- #region Music
 game.MusicTrackData.Tartarus = {
-	{ Name = "/Music/MusicHadesReset_MC", },
 	{ Name = "/Music/MusicHadesReset2_MC", },
 	{ Name = "/Music/MusicHadesReset3_MC", },
 	-- "/Music/MusicTartarus4_MC"
@@ -32,8 +31,7 @@ local tartarusRoomStartMusicEvents = {
 	{
 		GameStateRequirements = {
 			{
-				Path = { "CurrentRun", "BiomesReached" },
-				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
+				PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
 			},
 			{
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
@@ -43,70 +41,17 @@ local tartarusRoomStartMusicEvents = {
 			},
 			{
 				PathFalse = { "AudioState", "SecretMusicId" },
-			},
-			{
-				Path = { "CurrentRun", "RunDepthCache" },
-				Comparison = "<",
-				Value = 3,
 			},
 		},
 		PlayBiomeMusic = true,
 		MusicSection = 0,
 		UseRoomMusicSection = true,
 	},
-	{
-		GameStateRequirements = {
-			{
-				Path = { "CurrentRun", "BiomesReached" },
-				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
-			},
-			{
-				PathFalse = { "CurrentRun", "Hero", "IsDead" }
-			},
-			{
-				PathFalse = { "AudioState", "MusicId" },
-			},
-			{
-				PathFalse = { "AudioState", "SecretMusicId" },
-			},
-			{
-				Path = { "CurrentRun", "RunDepthCache" },
-				Comparison = ">=",
-				Value = 3,
-			},
-		},
-		PlayBiomeMusic = true,
-		MusicSection = 3,
-		UseRoomMusicSection = true,
-	},
-	-- This one doesn't make sense, as it playes the "Boss" section randomly at depth 2?
-	-- {
-	-- 	GameStateRequirements = {
-	-- 		{
-	-- 			Path = { "CurrentRun", "BiomesReached" },
-	-- 			HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
-	-- 		},
-	-- 		{
-	-- 			PathFalse = { "CurrentRun", "Hero", "IsDead" }
-	-- 		},
-	-- 		{
-	-- 			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
-	-- 			IsNone = { "Styx" },
-	-- 		},
-	-- 		{
-	-- 			Path = { "CurrentRun", "RunDepthCache" },
-	-- 			Comparison = "==",
-	-- 			Value = 2,
-	-- 		},
-	-- 	},
-	-- 	MusicSection = 2,
-	-- },
 	-- Switch to the more intense section from depth 3 onwards
 	{
 		GameStateRequirements = {
 			{
-				Path = { "CurrentRun", "BiomesReached" },
-				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
+				PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
 			},
 			{
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
@@ -117,17 +62,17 @@ local tartarusRoomStartMusicEvents = {
 			},
 			{
 				Path = { "CurrentRun", "RunDepthCache" },
-				Comparison = "==",
+				Comparison = ">=",
 				Value = 3,
 			},
 		},
 		MusicSection = 3,
+		UseRoomMusicSection = true,
 	},
 	{
 		GameStateRequirements = {
 			{
-				Path = { "CurrentRun", "BiomesReached" },
-				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
+				PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
 			},
 			{
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
