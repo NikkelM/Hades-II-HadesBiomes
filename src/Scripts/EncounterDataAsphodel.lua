@@ -56,9 +56,9 @@ local encounterReplacements = {
 		-- The original from Hades is 5.0
 		ActiveEnemyCapBase = 6.5,
 		-- The original from Hades is 170
-		BaseDifficulty = 220,
+		BaseDifficulty = 210,
 		-- The original from Hades is 1.0
-		ActiveEnemyCapDepthRamp = 1.3,
+		ActiveEnemyCapDepthRamp = 1.5,
 		-- The original from Hades is 0.35
 		TypeCountDepthRamp = 0.5,
 		-- The original from Hades is 25

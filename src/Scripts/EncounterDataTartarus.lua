@@ -62,11 +62,11 @@ local encounterReplacements = {
 		-- To ensure we are not attacked while still running the entrance animation
 		PreSpawnAIWakeDelay = 1,
 		-- The original from Hades is 2.3
-		ActiveEnemyCapBase = 4.4,
+		ActiveEnemyCapBase = 4.8,
 		-- The original from Hades is 30
 		BaseDifficulty = 45,
 		-- The original from Hades is 0.35
-		ActiveEnemyCapDepthRamp = 0.55,
+		ActiveEnemyCapDepthRamp = 0.75,
 		-- The original from Hades is 11
 		DepthDifficultyRamp = 13,
 	},
