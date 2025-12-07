@@ -19,6 +19,7 @@ Other fixes and improvements:
 - Fixed: Thanatos leaves after his encounter if he has no more dialogue, but could still have been gifted.
 - Fixed: Rerolling rewards for Styx miniboss rooms can result in duplicate rewards.
 - Fixed: The restocked item spawned by Hermes' "Travel Deal" disappears after returning to the Styx hub room if it is not bought before visiting another room.
+- Fixed: A voiceline between Zagreus and Sisyphus after the ending is missing. Please keep reporting missing voicelines.
 <!--Releasenotes end-->
 
 ## v0.1.3
