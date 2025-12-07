@@ -18,6 +18,7 @@ Other fixes and improvements:
 - Fixed: Tiny Vermin can get stuck behind the pit in the middle of it's room.
 - Fixed: Tiny Vermin's howl attack has a choppy animation and missing sound effect.
 - Fixed: Enemies do not use weapons as their first attack if those weapons should be used first after spawning.
+- Fixed: The timer does not pause when returning to the Styx Hub room.
 - Fixed: If Hades' Cast is blocked by a shield (such as from "Nitro Boost" or "The Lovers" Arcana), the Boiling Blood effect is still applied.
 - Fixed: Eurydice can only be encountered if the Bone Hydra has been encountered without the Vow of Rivals active.
 - Fixed: The game crashes when opening the Broker screen on early game saves.

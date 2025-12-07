@@ -248,8 +248,17 @@ end
 
 function mod.ModsNikkelMHadesBiomesReturnToStyxHubPresentation(currentRun, currentRoom, args)
 	AddInputBlock({ Name = "ModsNikkelMHadesBiomesReturnToStyxHubPresentation" })
+
 	local roomData = game.RoomData[currentRoom.Name] or currentRoom
 	local roomIntroSequenceDuration = roomData.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or 0.0
+
+	game.AddTimerBlock(currentRun, "StartRoom")
+	if roomData.TimerBlock ~= nil then
+		game.AddTimerBlock(currentRun, roomData.TimerBlock)
+	end
+	if roomData.RemoveTimerBlock ~= nil then
+		game.RemoveTimerBlock(currentRun, roomData.RemoveTimerBlock)
+	end
 
 	SetAnimation({ Name = "MelinoeDeathReEnterHeadUp", DestinationId = currentRun.Hero.ObjectId })
 	SetAlpha({ Id = currentRun.Hero.ObjectId, Fraction = 0.0, Duration = 0 })
@@ -325,6 +334,7 @@ function mod.ModsNikkelMHadesBiomesReturnToStyxHubPresentation(currentRun, curre
 
 	LockCamera({ Id = currentRun.Hero.ObjectId, Duration = 2.0 })
 	RemoveInputBlock({ Name = "ModsNikkelMHadesBiomesReturnToStyxHubPresentation" })
+	game.RemoveTimerBlock(currentRun, "StartRoom")
 
 	-- For the familiar spawn presentation - this gives the good-looking one, instead of the sudden spawn
 	game.RunEventsGeneric(game.RoomEventData.GlobalRoomInputUnblockedEvents, currentRoom)

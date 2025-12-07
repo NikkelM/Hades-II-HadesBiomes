@@ -551,6 +551,7 @@ local roomModifications = {
 				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
 			},
 		},
+		TimerBlock = "ShopEncounter",
 		StoreDataName = "Q_WorldShop",
 		PostCombatReloadThreadedEvents = { { FunctionName = "CheckConversations" } },
 		-- We need to call this before the PostCombatReloadThreadedEvents as by then the room is already visible and the items would pop in
