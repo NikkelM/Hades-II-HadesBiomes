@@ -2173,4 +2173,3 @@ game.EnemyData.SpikeTrap.DefaultAIData.TargetGroups = { "GroundEnemies", "HeroTe
 game.EnemyData.SpikeTrap.AIOptions = { "GuardAI", }
 
 mod.ApplyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
-mod.PrintTable(game.EnemyData.HeavyRangedSplitterMinibossSuperElite)

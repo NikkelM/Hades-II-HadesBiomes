@@ -44,6 +44,11 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 			weaponData.OnFireCrowdReaction = nil
 		end
 
+		if weaponData.ForceFirst then
+			weaponData.AIData.ForceFirst = weaponData.ForceFirst
+			weaponData.ForceFirst = nil
+		end
+
 		-- This key was renamed, but if it was true before, it must be false now
 		if weaponData.AIData.SkipMovement then
 			weaponData.AIData.MoveWithinRange = false
@@ -337,6 +342,8 @@ local weaponReplacements = {
 			PreAttackAnimation = "EnemyCrawlerIdle",
 			FireAnimation = "EnemyCrawlerRun",
 			PostAttackAnimation = "EnemyCrawlerIdle",
+			-- Forces a reburrow if it can't reach the player on the other side of the gap in the middle of the room
+			RequireProjectileLoS = true,
 		},
 	},
 	-- #endregion
@@ -1392,6 +1399,8 @@ local weaponModifications = {
 	CrawlerSpawns = {
 		AIData = {
 			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
+			-- Prevents the weird wait between the animation start and the FX
+			PreAttackDuration = 0.0,
 		},
 	},
 	CrawlerReburrowShockwave = {

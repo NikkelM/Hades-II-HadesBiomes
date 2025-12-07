@@ -198,6 +198,12 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 		return
 	end
 
+	-- This would usually be done on AIFireProjectile, but that doesn't seem to be called for these
+	if weaponAIData.WeaponName ~= nil and game.WeaponData[weaponAIData.WeaponName].Sounds ~= nil and game.WeaponData[weaponAIData.WeaponName].Sounds.FireSounds ~= nil then
+		DoWeaponSounds(game.WeaponData[weaponAIData.WeaponName].Sounds.FireSounds, enemy,
+			game.WeaponData[weaponAIData.WeaponName])
+	end
+
 	local spawns = {}
 	if spawnCount == nil and weaponAIData.DifficultyRating ~= nil then
 		local difficultyRating = weaponAIData.DifficultyRating
