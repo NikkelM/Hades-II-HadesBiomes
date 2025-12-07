@@ -51,12 +51,13 @@ modutil.mod.Path.Wrap("AddEffectBlock", function(base, args)
 	base(args)
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		-- Also block Styx Poison every time we block Medea Poison
+		-- Also block Styx Poison and Hades' Boiling Blood every time we block Medea Poison
 		if args.Name == "MedeaPoison" then
 			args.Name = "StyxPoison"
 			AddEffectBlock(args)
 			-- Also clear any already applied stacks immediately
 			ClearEffect({ Id = args.Id or game.CurrentRun.Hero.ObjectId, Name = "StyxPoison" })
+			game.CurrentRun.Hero.ModsNikkelMHadesBiomesHitShieldEffectBlockActive = true
 		end
 	end
 end)
@@ -66,10 +67,11 @@ modutil.mod.Path.Wrap("RemoveEffectBlock", function(base, args)
 	base(args)
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		-- Also unblock Styx Poison every time we unblock Medea Poison
+		-- Also unblock Styx Poison and Hades' Boiling Blood block every time we unblock Medea Poison
 		if args.Name == "MedeaPoison" then
 			args.Name = "StyxPoison"
 			RemoveEffectBlock(args)
+			game.CurrentRun.Hero.ModsNikkelMHadesBiomesHitShieldEffectBlockActive = false
 		end
 	end
 end)

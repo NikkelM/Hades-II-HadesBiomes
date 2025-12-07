@@ -14,6 +14,7 @@ Other fixes and improvements:
 - The mod will now cancel the installation if it detects that Hades mods are installed, and show an informative message when loading into a save. This should prevent unexpected crashes when loading into the main menu in some cases.
 - Rewards within a Styx subwing cannot be rerolled anymore. The reward can still be rerolled while in the Hub area.
 - Updated the Elysium dialogue background to look more cohesive.
+- Fixed: If Hades' Cast is blocked by a shield (such as from "Nitro Boost" or "The Lovers" Arcana), the Boiling Blood effect is still applied.
 - Fixed: Eurydice can only be encountered if the Bone Hydra has been encountered without the Vow of Rivals active.
 - Fixed: The game crashes when opening the Broker screen on early game saves.
 - Fixed: If Thanatos has no more dialogue after an encounter, he disappears without unlocking the room exits.
