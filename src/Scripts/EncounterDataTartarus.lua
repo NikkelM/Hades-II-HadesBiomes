@@ -62,11 +62,12 @@ local encounterReplacements = {
 		-- To ensure we are not attacked while still running the entrance animation
 		PreSpawnAIWakeDelay = 1,
 		-- The original from Hades is 2.3
-		ActiveEnemyCapBase = 4.8,
+		ActiveEnemyCapBase = 4.3,
 		-- The original from Hades is 30
-		BaseDifficulty = 45,
+		-- Also change the DifficultyModifier in OpeningGenerated
+		BaseDifficulty = 40,
 		-- The original from Hades is 0.35
-		ActiveEnemyCapDepthRamp = 0.75,
+		ActiveEnemyCapDepthRamp = 0.5,
 		-- The original from Hades is 11
 		DepthDifficultyRamp = 13,
 	},
@@ -263,7 +264,7 @@ local encounterModifications = {
 	},
 	OpeningGenerated = {
 		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
-		DifficultyModifier = -60,
+		DifficultyModifier = -40,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
 		PreSpawnEnemies = false,
 		NoFirstWaveStartDelay = true,

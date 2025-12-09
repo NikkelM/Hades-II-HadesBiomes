@@ -7,6 +7,7 @@
 
 
 Other fixes and improvements:
+- Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
 - Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
 - Balancing: All Elysium Shades' dash attacks have increased range.
 - Balancing: The Wretched Sneak now waits longer after it's ranged attack before teleporting away.
