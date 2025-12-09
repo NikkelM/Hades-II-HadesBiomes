@@ -231,11 +231,14 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 
 	-- For Hades HadesChronosDebuffBoon - reduce spawn count
 	if weaponAIData.SpawnCountDampenTraits ~= nil then
-		for traitName in pairs(weaponAIData.SpawnCountDampenTraits) do
-			if game.HeroHasTrait(traitName) then
-				local traitData = game.GetHeroTrait(traitName)
-				if traitData and traitData.DebuffValue then
-					spawnCount = spawnCount * traitData.DebuffValue
+		-- If we should only apply the spawnDampenTraits when below a certain shrine level
+		if weaponAIData.SpawnCountDampenShrineUpgrade ~= nil and game.GetNumShrineUpgrades(weaponAIData.SpawnCountDampenShrineUpgrade) <= (weaponAIData.SpawnCountDampenMaxShrineLevel or 4) then
+			for traitName in pairs(weaponAIData.SpawnCountDampenTraits) do
+				if game.HeroHasTrait(traitName) then
+					local traitData = game.GetHeroTrait(traitName)
+					if traitData and traitData.DebuffValue then
+						spawnCount = spawnCount * traitData.DebuffValue
+					end
 				end
 			end
 		end

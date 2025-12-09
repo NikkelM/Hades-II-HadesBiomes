@@ -7,6 +7,7 @@
 
 
 Other fixes and improvements:
+- Balancing: If Deep Dissent is active, Hades will no longer summon minibosses during his Vow of Rivals fight, but normal enemies instead.
 - Balancing: Additional enemies summoned by Hades during his Vow of Rivals fight can now be risen by Night Bloom.
 - Fixed: The slowing area of effect around Hades' dropped Cast projectiles can be destroyed with attacks.
 - Fixed: Pickaxe points can spawn in the Elysium boss chamber, potentially blocking movement and attacks.

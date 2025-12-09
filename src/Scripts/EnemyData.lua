@@ -1785,6 +1785,9 @@ local enemyModifications = {
 			InvisibilityFadeOutDuration = 0.4,
 			DashRequireLoS = true,
 			SpawnCountDampenTraits = { HadesChronosDebuffBoon = true, },
+			-- If we are on EM4, Deep Dissent's effect is converted into spawning normal Super Elite enemies, instead of fewer enemies, so don't apply the original effect
+			SpawnCountDampenShrineUpgrade = "BossDifficultyShrineUpgrade",
+			SpawnCountDampenMaxShrineLevel = 3,
 		},
 		-- Handled by the Cast projectile itself
 		OutgoingDamageModifiers = mod.NilValue,

@@ -542,8 +542,8 @@ end
 
 function mod.SetupHadesSpawnOptions(enemy)
 	local enemySetPrefix = "EnemiesHades"
-	-- If the BossDifficultShrine is at EM4, use the harder enemies
-	if game.GetNumShrineUpgrades(enemy.ShrineMetaUpgradeName) >= 4 then
+	-- If the BossDifficultShrine is at EM4, use the harder enemies, except if the player has Deep Dissent
+	if game.GetNumShrineUpgrades(enemy.ShrineMetaUpgradeName) >= 4 and not game.HeroHasTrait("HadesChronosDebuffBoon") then
 		enemySetPrefix = "EnemiesHadesEM"
 	end
 	enemy.SpawnOptions = {}
