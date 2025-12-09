@@ -45,10 +45,17 @@ local mainHubAreaCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Banner_Infernal",
 		AnimationScale = 3.57,
 		GameStateRequirements = {
-			-- TODO: Having beat Hades on EM - use textline when he is defeated?
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "Cosmetic_HecateKey" },
+			},
+			-- Beaten EM4 Hades
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "LordHadesExtremeMeasuresDefeat01" },
+			},
+			NamedRequirements = { "T5Cosmetic" },
 		},
 		Cost = {
-			CosmeticsPoints = 500,
+			CosmeticsPoints = 800,
 			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
 			ModsNikkelMHadesBiomes_BossResourceStyx = 1,
 		},
@@ -75,10 +82,17 @@ local mainHubAreaCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Banner_Divine",
 		AnimationScale = 3.57,
 		GameStateRequirements = {
-			-- TODO
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "Cosmetic_HecateKey" },
+			},
+			-- Cleared Elysium
+			{
+				PathTrue = { "GameState", "RoomsEntered", "Y_PostBoss01" },
+			},
+			NamedRequirements = { "T5Cosmetic" },
 		},
 		Cost = {
-			CosmeticsPoints = 500,
+			CosmeticsPoints = 800,
 			ModsNikkelMHadesBiomes_PlantElysium = 2,
 			ModsNikkelMHadesBiomes_BossResourceElysium = 1,
 		},
@@ -108,11 +122,16 @@ local mainHubAreaCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Divine",
 		AnimationScale = 1.9,
 		GameStateRequirements = {
-			-- TODO
+			-- Met Patroclus
+			{
+				PathTrue = { "GameState", "RoomsEntered", "Y_Story01" },
+			},
+			NamedRequirements = { "T3Cosmetic" },
 		},
 		Cost = {
-			-- TODO
 			CosmeticsPoints = 500,
+			ModsNikkelMHadesBiomes_CropElysium = 1,
+			ModsNikkelMHadesBiomes_OreElysium = 4,
 		},
 	},
 	{
@@ -138,11 +157,16 @@ local mainHubAreaCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Gilded",
 		AnimationScale = 1.9,
 		GameStateRequirements = {
-			-- TODO
+			-- Entered Styx Hub
+			{
+				PathTrue = { "GameState", "RoomsEntered", "D_Hub" },
+			},
+			NamedRequirements = { "T3Cosmetic" },
 		},
 		Cost = {
-			-- TODO
 			CosmeticsPoints = 500,
+			ModsNikkelMHadesBiomes_CropElysium = 1,
+			ModsNikkelMHadesBiomes_OreStyx = 4,
 		},
 	},
 	{
@@ -168,11 +192,16 @@ local mainHubAreaCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Serpentine",
 		AnimationScale = 1.9,
 		GameStateRequirements = {
-			-- TODO
+			-- Met Megaera
+			{
+				PathTrue = { "GameState", "RoomsEntered", "A_Boss01" },
+			},
+			NamedRequirements = { "T3Cosmetic" },
 		},
 		Cost = {
-			-- TODO
 			CosmeticsPoints = 500,
+			ModsNikkelMHadesBiomes_CropTartarus = 1,
+			ModsNikkelMHadesBiomes_OreTartarus = 4,
 		},
 	},
 	-- #endregion
