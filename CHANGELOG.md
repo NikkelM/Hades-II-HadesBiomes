@@ -7,7 +7,9 @@
 
 
 Other fixes and improvements:
-- Balancing: The Wretched Sneak's now waits longer after it's ranged attack before teleporting away.
+- Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
+- Balancing: All Elysium Shades' dash attacks have increased range.
+- Balancing: The Wretched Sneak now waits longer after it's ranged attack before teleporting away.
 - Balancing: Decreased health and armour of the Doomstone.
 - Balancing: If Deep Dissent is active, Hades will no longer summon minibosses during his Vow of Rivals fight, but normal enemies instead.
 - Balancing: Additional enemies summoned by Hades during his Vow of Rivals fight can now be risen by Night Bloom.

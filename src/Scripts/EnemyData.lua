@@ -1311,6 +1311,12 @@ local enemyModifications = {
 	ShadeSpearUnit = {
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
 		SpawnUnitOnDeath = "ShadeNaked",
+		DefaultAIData = {
+			LeapSpeed = 1800,
+			LeapPrepareTime = 0.5,
+			LeapRecoveryTime = 0.75,
+			LeapOffsetRange = 450,
+		},
 		SkipActivatePresentationOnSpawns = true,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {

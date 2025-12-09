@@ -951,12 +951,19 @@ local weaponModifications = {
 		AIData = {
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
+			FireSelfVelocity = 2500,
 		},
 	},
 	ShadeBowSideDash = {
 		AIData = {
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
+			FireSelfVelocity = 2500,
+		},
+	},
+	ShadeSpearForwardDash = {
+		AIData = {
+			FireSelfVelocity = 2500,
 		},
 	},
 	ShadeSpearLeap = {
@@ -978,7 +985,7 @@ local weaponModifications = {
 			TrackTargetDuringCharge = true,
 			StopBeforeFire = true,
 			PostAttackStop = true,
-			MinAttacksBetweenUse = 2,
+			MinAttacksBetweenUse = 3,
 			MaxPlayerDistance = 800,
 		},
 	},
