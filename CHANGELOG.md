@@ -7,6 +7,7 @@
 
 
 Other fixes and improvements:
+- Fixed: Ranged Cast weapons can be used on the Surface. 
 - Fixed: Manual fishing is not possible on the Surface if Toula is equipped.
 - Fixed: Some voicelines for Zagreus when gifting Thanatos Ambrosia are missing.
 <!--Releasenotes end-->

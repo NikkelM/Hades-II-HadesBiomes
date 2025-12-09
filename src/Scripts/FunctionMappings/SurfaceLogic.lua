@@ -32,7 +32,11 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
 	roomIntroSequenceDuration = 0.95
 	-- end
-	game.ToggleCombatControl({ "Rush" }, false)
+
+	-- Disable all weapons, as the DisableWeapons call through BlockCombat somehow doesn't block the ranged casts
+	for weaponName, _ in pairs(game.MapState.EquippedWeapons) do
+		SetWeaponProperty({ WeaponName = weaponName, DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
+	end
 
 	AdjustZoom({ Fraction = game.CurrentRun.CurrentRoom.IntroZoomFraction or 0.7, Duration = 0.0 })
 	FadeIn({ Duration = 4.9 })
@@ -237,7 +241,11 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 	-- Custom, as Zagreus needs a slower speed for his run animation to not look weird
 	SetUnitProperty({ Property = "Speed", Value = 480, DestinationId = currentRun.Hero.ObjectId })
 	-- end
-	game.ToggleCombatControl({ "Rush" }, false)
+
+	-- Disable all weapons, as the DisableWeapons call through BlockCombat somehow doesn't block the ranged casts
+	for weaponName, _ in pairs(game.MapState.EquippedWeapons) do
+		SetWeaponProperty({ WeaponName = weaponName, DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
+	end
 
 	-- Need to set the speech bubble higher as the model/anchor is different
 	currentRun.Hero.AnimOffsetZ = 125
