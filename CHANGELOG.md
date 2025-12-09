@@ -8,6 +8,7 @@
 
 Other fixes and improvements:
 - Fixed: Manual fishing is not possible on the Surface if Toula is equipped.
+- Fixed: Some voicelines for Zagreus when gifting Thanatos Ambrosia are missing.
 <!--Releasenotes end-->
 
 ## v0.1.4
