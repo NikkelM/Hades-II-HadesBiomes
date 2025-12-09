@@ -1,4 +1,4 @@
--- For reference:
+-- For reference, modded resource names:
 --[[
 	"ModsNikkelMHadesBiomes_PlantTartarus",
 	"ModsNikkelMHadesBiomes_CropTartarus",
@@ -24,7 +24,7 @@
 local mainHubAreaCosmetics = {
 	-- #region Banners/Cosmetic_HecateKey
 	{
-		Id = _PLUGIN.guid .. "Cosmetic_Banner_Infernal",
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Banner_Infernal",
 		Name = {
 			en = "Banner, Infernal",
 		},
@@ -39,13 +39,13 @@ local mainHubAreaCosmetics = {
 		CosmeticsGroup = "Cosmetic_HecateKey",
 		InsertAfterCosmetic = "Cosmetic_HecateKey",
 		ShopCategory = "CosmeticsShop_Main",
-		IconPath = "GUI\\Screens\\CosmeticIcons\\cosmetic_arachneTapestry", -- TODO
-		-- IconScale = 1,
 		ActivateIds = { 780487 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Banner_Infernal",
+		IconScale = 0.3,
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Banner_Infernal",
 		AnimationScale = 3.57,
 		GameStateRequirements = {
-			-- Having beat Hades on EM - use textline when he is defeated?
+			-- TODO: Having beat Hades on EM - use textline when he is defeated?
 		},
 		Cost = {
 			CosmeticsPoints = 500,
@@ -54,7 +54,7 @@ local mainHubAreaCosmetics = {
 		},
 	},
 	{
-		Id = _PLUGIN.guid .. "Cosmetic_Banner_Divine",
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Banner_Divine",
 		Name = {
 			en = "Banner, Divine",
 		},
@@ -67,20 +67,52 @@ local mainHubAreaCosmetics = {
 			"Many of the shades that found their way into the Crossroads were deemed unworthy of passage to Elysium. This banner serves to inspire hope in those who see it.",
 		},
 		CosmeticsGroup = "Cosmetic_HecateKey",
-		InsertAfterCosmetic = _PLUGIN.guid .. "Cosmetic_Banner_Infernal",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Banner_Infernal",
 		ShopCategory = "CosmeticsShop_Main",
-		IconPath = "GUI\\Screens\\CosmeticIcons\\cosmetic_arachneTapestry", -- TODO
-		-- IconScale = 1,
 		ActivateIds = { 780487 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Banner_Divine",
+		IconScale = 0.3,
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Banner_Divine",
 		AnimationScale = 3.57,
 		GameStateRequirements = {
-
+			-- TODO
 		},
 		Cost = {
 			CosmeticsPoints = 500,
 			ModsNikkelMHadesBiomes_PlantElysium = 2,
 			ModsNikkelMHadesBiomes_BossResourceElysium = 1,
+		},
+	},
+	-- #endregion
+	-- #region Pillars/Cosmetic_CauldronPillars01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Divine",
+		Name = {
+			en = "Pillars, Divine",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Awe-inspiring monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"So numerous are the splendors of Elysium, that it was only a matter of time for some of its grandeur to find its way into the Crossroads.",
+		},
+		CosmeticsGroup = "Cosmetic_CauldronPillars01",
+		InsertAfterCosmetic = "Cosmetic_CauldronPillars01c",
+		ShopCategory = "CosmeticsShop_Main",
+		CameraFocusId = 575873,
+		SetAnimationIds = { 575834, 575871, 575872, 575874, 575873, 575832, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Divine",
+		IconScale = 0.1,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Divine",
+		AnimationScale = 1.9,
+		GameStateRequirements = {
+			-- TODO
+		},
+		Cost = {
+			-- TODO
+			CosmeticsPoints = 500,
 		},
 	},
 	-- #endregion
