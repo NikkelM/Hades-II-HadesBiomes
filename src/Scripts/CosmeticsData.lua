@@ -106,7 +106,7 @@ local mainHubAreaCosmetics = {
 		},
 		Description = {
 			en =
-			"{$Keywords.CosmeticAltAdd}: Awe-inspiring monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+			"{$Keywords.CosmeticSwap}: Awe-inspiring monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
 		},
 		FlavorText = {
 			en =
@@ -141,7 +141,7 @@ local mainHubAreaCosmetics = {
 		},
 		Description = {
 			en =
-			"{$Keywords.CosmeticAltAdd}: Ancient monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+			"{$Keywords.CosmeticSwap}: Ancient monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
 		},
 		FlavorText = {
 			en =
@@ -176,7 +176,7 @@ local mainHubAreaCosmetics = {
 		},
 		Description = {
 			en =
-			"{$Keywords.CosmeticAltAdd}: Rustic monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+			"{$Keywords.CosmeticSwap}: Rustic monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
 		},
 		FlavorText = {
 			en =
@@ -275,6 +275,48 @@ local mainHubAreaCosmetics = {
 			ModsNikkelMHadesBiomes_BossResourceElysium = 1,
 		},
 	},
+	-- #endregion
+	-- #region War Table/Cosmetic_OdysseusTable01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_War_Table_Heroic",
+		Name = {
+			en = "War Table, Heroic",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: To inspire heroic deeds, near to where {$Keywords.CharOdysseus} typically resides.",
+		},
+		FlavorText = {
+			en =
+			"Odysseus is no stranger to the logistics of war, and knows well the value of a sturdy table upon which to plan one's campaigns.",
+		},
+		CosmeticsGroup = "Cosmetic_OdysseusTable01",
+		InsertAfterCosmetic = "Cosmetic_OdysseusTable01",
+		ShopCategory = "CosmeticsShop_Main",
+		SetAnimationIds = { 561464 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\War_Table_Heroic",
+		IconScale = 0.2,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\War_Table_Heroic",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			-- Beaten the Champions on Extreme Measures
+			{
+				PathTrue = { "GameState", "EnemyKills", "Theseus2" },
+			},
+			{
+				PathTrue = { "GameState", "EnemyKills", "Minotaur2" },
+			},
+			NamedRequirements = { "T3Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 700,
+			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
+		},
+	},
+	-- #endregion
+	-- #region Broker Lanterns/Cosmetic_BrokerLantern01
+
 	-- #endregion
 }
 for _, cosmeticData in ipairs(mainHubAreaCosmetics) do

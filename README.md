@@ -113,7 +113,9 @@ The mod adds many different kinds of text, such as for the new resources, boons 
 If you would like to translate some or all of these into your native language, you can find all texts in the [src/Game/Text/\<language shorthand\>](https://github.com/NikkelM/Hades-II-HadesBiomes/tree/main/src/Game/Text) folder of the mod's repository.
 If you decide to translate a category, please translate all texts in that category to ensure consistency for players.
 
-After uncommenting and translating your chosen texts, open a Pull Request with your changes on GitHub, and they will be included in the next release!
+For Cosmetics, texts are located in [src/Scripts/CosmeticsData.lua](https://github.com/NikkelM/Hades-II-HadesBiomes/tree/main/src/Scripts/CosmeticsData.lua), directly assigned to each cosmetic item.
+
+After translating your chosen texts, open a Pull Request with your changes on GitHub, and they will be included in the next release!
 
 ## Image Gallery
 
