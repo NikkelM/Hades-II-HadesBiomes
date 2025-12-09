@@ -688,7 +688,8 @@ local enemyModifications = {
 			},
 		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
-		BlockRaiseDead = true,
+		-- Explicitly allow raising with Night Bloom
+		BlockRaiseDead = false,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
@@ -739,6 +740,10 @@ local enemyModifications = {
 		DefaultAIData = {
 			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 		},
+	},
+	WretchAssassinMinibossSuperElite = {
+		-- Still targets the player for some reason
+		BlockRaiseDead = true,
 	},
 	-- #endregion
 	-- #region TARTARUS - Bosses
@@ -1028,6 +1033,7 @@ local enemyModifications = {
 		-- Don't create a new blank obstacle for this enemy, as the flipping logic would be hard to get right
 		ManualDeathAnimation = false,
 		DestroyDelay = 1.2,
+		-- Don't allow Night Bloom, the SkyAttackerAI doesn't work with it
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		IgnoreSpeedShrine = true,
@@ -1118,6 +1124,9 @@ local enemyModifications = {
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
 		BlockRespawnShrineUpgrade = true,
+	},
+	HitAndRunUnitSuperElite = {
+		BlockRaiseDead = false,
 	},
 	CrusherUnitElite = {
 		MaxHealth = 800,
@@ -1533,6 +1542,8 @@ local enemyModifications = {
 		-- For some reason EnemyPointRanged doesn't exist in D_Boss01, and setting this to nil doesn't work
 		RequiredSpawnPoint = "EnemyPointMelee",
 		BlockAttributes = { "Rifts", "Homing", "Tracking", "Unflinching", "Frenzy" },
+		-- Explicitly allow raising with Night Bloom
+		BlockRaiseDead = false,
 	},
 	-- #endregion
 	-- #region ELYSIUM - Minibosses
