@@ -578,8 +578,8 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 	-- Hit
 	local victim = triggerArgs.TriggeredByTable
 	local attacker = triggerArgs.AttackerTable
-	-- Prevent the effect being added if the player currently has a hit shield active (from Nitro Boost, Lovers etc.)
-	if victim ~= nil and victim.ObjectId == game.CurrentRun.Hero.ObjectId and not victim.ModsNikkelMHadesBiomesHitShieldEffectBlockActive then
+	-- Prevent the effect being added if the player currently has a hit shield active (from Nitro Boost, Lovers etc.), or is invulnerable (e.g. Skull Persephone special)
+	if victim ~= nil and victim.ObjectId == game.CurrentRun.Hero.ObjectId and not victim.ModsNikkelMHadesBiomesHitShieldEffectBlockActive and game.TableLength(game.CurrentRun.Hero.InvulnerableFlags or {}) == 0 then
 		CreateAnimation({ Name = "BloodstoneHitFxHades", DestinationId = game.CurrentRun.Hero.ObjectId, OffsetY = -100 })
 		if victim.IsDead then
 			return

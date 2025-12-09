@@ -14,6 +14,7 @@ Other fixes and improvements:
 - Balancing: Decreased health and armour of the Doomstone.
 - Balancing: If Deep Dissent is active, Hades will no longer summon minibosses during his Vow of Rivals fight, but normal enemies instead.
 - Balancing: Additional enemies summoned by Hades during his Vow of Rivals fight can now be risen by Night Bloom.
+- Fixed: Boiling Blood can be applied while invulnerable, such as during the Aspect of Persephone's special attack.
 - Fixed: The slowing area of effect around Hades' dropped Cast projectiles can be destroyed with attacks.
 - Fixed: Pickaxe points can spawn in the Elysium boss chamber, potentially blocking movement and attacks.
 - Fixed: Harvest points can appear in Tisiphone's room, which become inaccessible after she shrinks the arena during her fight.
