@@ -205,6 +205,77 @@ local mainHubAreaCosmetics = {
 		},
 	},
 	-- #endregion
+	-- #region Rugs/Cosmetic_OdysseusRug
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Rug_Ancient",
+		Name = {
+			en = "Rug, Ancient",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: A time-worn piece, near to where {$Keywords.CharOdysseus} typically resides.",
+		},
+		FlavorText = {
+			en =
+			"This storied rug is rumoured to have once belonged to Sisyphus, the Founder and King of the City of Ephyra, which has since fallen into ruin at the hands of the Titan of Time.",
+		},
+		CosmeticsGroup = "Cosmetic_OdysseusRug",
+		InsertAfterCosmetic = "Cosmetic_OdysseusRug",
+		ShopCategory = "CosmeticsShop_Main",
+		ActivateIds = { 591259 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Rug_Ancient",
+		IconScale = 0.2,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Rug_Ancient",
+		AnimationScale = 2.35,
+		GameStateRequirements = {
+			-- Met Sisyphus
+			{
+				PathTrue = { "GameState", "RoomsEntered", "A_Story01" },
+			},
+		},
+		Cost = {
+			CosmeticsPoints = 250,
+			ModsNikkelMHadesBiomes_PlantTartarus = 2,
+			ModsNikkelMHadesBiomes_PlantAsphodel = 1,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Rug_Heroic",
+		Name = {
+			en = "Rug, Heroic",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: A piece that has seen many spectacles, near to where {$Keywords.CharOdysseus} typically resides.",
+		},
+		FlavorText = {
+			en =
+			"This rug emits an aura of valor and strength, and only permits the most worthy of shades to tread upon it.",
+		},
+		CosmeticsGroup = "Cosmetic_OdysseusRug",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Rug_Ancient",
+		ShopCategory = "CosmeticsShop_Main",
+		ActivateIds = { 591259 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Rug_Heroic",
+		IconScale = 0.18,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Rug_Heroic",
+		AnimationScale = 2.3,
+		GameStateRequirements = {
+			-- Beaten both Asterius solo and the Champions both
+			{
+				PathTrue = { "GameState", "EncountersCompletedCache", "MiniBossMinotaur" },
+			},
+			{
+				PathTrue = { "GameState", "RoomsEntered", "Y_PostBoss01" },
+			},
+		},
+		Cost = {
+			CosmeticsPoints = 300,
+			ModsNikkelMHadesBiomes_PlantElysium = 3,
+			ModsNikkelMHadesBiomes_BossResourceElysium = 1,
+		},
+	},
+	-- #endregion
 }
 for _, cosmeticData in ipairs(mainHubAreaCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
