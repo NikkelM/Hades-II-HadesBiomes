@@ -30,7 +30,7 @@ local mainHubAreaCosmetics = {
 		},
 		Description = {
 			en =
-			"{$Keywords.CosmeticAdd}: A fear-invoking scroll set on a standard before the great {#BoldFormatGraftDark}Tree of Life{#Prev}.",
+			"{$Keywords.CosmeticAltAdd}: A fear-invoking scroll set on a standard before the great {#BoldFormatGraftDark}Tree of Life{#Prev}.",
 		},
 		FlavorText = {
 			en =
@@ -67,7 +67,7 @@ local mainHubAreaCosmetics = {
 		},
 		Description = {
 			en =
-			"{$Keywords.CosmeticAdd}: A gift from the heavens, set on a standard before the great {#BoldFormatGraftDark}Tree of Life{#Prev}.",
+			"{$Keywords.CosmeticAltAdd}: A gift from the heavens, set on a standard before the great {#BoldFormatGraftDark}Tree of Life{#Prev}.",
 		},
 		FlavorText = {
 			en =
@@ -315,8 +315,55 @@ local mainHubAreaCosmetics = {
 		},
 	},
 	-- #endregion
-	-- #region Broker Lanterns/Cosmetic_BrokerLantern01
-
+	-- #region Broker Lantern/Cosmetic_BrokerLantern01
+	-- TODO: Temporarily disabled as the glow animation does not look good on the current asset
+	-- {
+	-- 	Id = _PLUGIN.guid .. "." .. "Cosmetic_Lantern_Infernal",
+	-- 	Name = {
+	-- 		en = "Lantern, Infernal",
+	-- 	},
+	-- 	Description = {
+	-- 		en =
+	-- 		"{$Keywords.CosmeticAltAdd}: A caged shade providing infernal light, near to where the {$Keywords.Broker} typically resides.",
+	-- 	},
+	-- 	FlavorText = {
+	-- 		en =
+	-- 		"Some skulls are so numb that they believe they can escape from Tartarus. This one ended up in the Crossroads, it is unclear how.",
+	-- 	},
+	-- 	CosmeticsGroup = "Cosmetic_BrokerLantern01",
+	-- 	InsertAfterCosmetic = "Cosmetic_BrokerLantern01",
+	-- 	ShopCategory = "CosmeticsShop_Main",
+	-- 	ActivateIds = { 743049 },
+	-- 	DeactivateIds = { 743058, 743060, 743057, 743061, 743059, 743063 },
+	-- 	SetAnimationIds = { 743049 },
+	-- 	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Lantern_Infernal",
+	-- 	IconScale = 0.6,
+	-- 	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Lantern_Infernal",
+	-- 	AnimationScale = 4,
+	-- 	GameStateRequirements = {
+	-- 		{
+	-- 			PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeMarket" }
+	-- 		},
+	-- 		{
+	-- 			Path = { "GameState", "EnemyKills", "HadesSwarmer" },
+	-- 			Comparison = ">=",
+	-- 			Value = 100,
+	-- 		},
+	-- 	},
+	-- 	Cost = {
+	-- 		CosmeticsPoints = 300,
+	-- 		ModsNikkelMHadesBiomes_BossResourceTartarus = 1,
+	-- 		ModsNikkelMHadesBiomes_PlantTartarus = 2,
+	-- 	},
+	-- 	RevealReactionVoiceLines = {
+	-- 		{
+	-- 			PreLineWait = 0.35,
+	-- 			UsePlayerSource = true,
+	-- 			{ Cue = "/VO/Melinoe_4137", Text = "I think a hanging light would go quite nicely over there." },
+	-- 		},
+	-- 		{ GlobalVoiceLines = "DoraCosmeticReactionVoiceLines" },
+	-- 	},
+	-- },
 	-- #endregion
 }
 for _, cosmeticData in ipairs(mainHubAreaCosmetics) do
