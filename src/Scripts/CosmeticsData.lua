@@ -115,6 +115,66 @@ local mainHubAreaCosmetics = {
 			CosmeticsPoints = 500,
 		},
 	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Gilded",
+		Name = {
+			en = "Pillars, Gilded",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Ancient monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"Pillars such as these hold up the grand halls in the Temple of Styx, just out of reach of mortals, hidden beneath the surface.",
+		},
+		CosmeticsGroup = "Cosmetic_CauldronPillars01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Divine",
+		ShopCategory = "CosmeticsShop_Main",
+		CameraFocusId = 575873,
+		SetAnimationIds = { 575834, 575871, 575872, 575874, 575873, 575832, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Gilded",
+		IconScale = 0.1,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Gilded",
+		AnimationScale = 1.9,
+		GameStateRequirements = {
+			-- TODO
+		},
+		Cost = {
+			-- TODO
+			CosmeticsPoints = 500,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Serpentine",
+		Name = {
+			en = "Pillars, Serpentine",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Rustic monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"Your animal familiars may need some convincing to approach these pillars, but they remind you of home, somehow.",
+		},
+		CosmeticsGroup = "Cosmetic_CauldronPillars01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Gilded",
+		ShopCategory = "CosmeticsShop_Main",
+		CameraFocusId = 575873,
+		SetAnimationIds = { 575834, 575871, 575872, 575874, 575873, 575832, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Serpentine",
+		IconScale = 0.1,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Serpentine",
+		AnimationScale = 1.9,
+		GameStateRequirements = {
+			-- TODO
+		},
+		Cost = {
+			-- TODO
+			CosmeticsPoints = 500,
+		},
+	},
 	-- #endregion
 }
 for _, cosmeticData in ipairs(mainHubAreaCosmetics) do
