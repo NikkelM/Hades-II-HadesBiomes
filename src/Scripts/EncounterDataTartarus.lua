@@ -278,7 +278,7 @@ local encounterModifications = {
 			OverrideValues = game.BaseWaveOverrideValues,
 			StartDelay = 0.0
 		},
-		Blacklist = { LightSpawner = true, Swarmer = true, },
+		Blacklist = { LightSpawner = true, },
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,

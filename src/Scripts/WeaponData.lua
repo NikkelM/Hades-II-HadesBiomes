@@ -481,6 +481,7 @@ local weaponModifications = {
 			PostTeleportAngleTowardTarget = true,
 			PreAttackFunctionName = mod.NilValue,
 			PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
+			PostAttackDuration = 1.15,
 		},
 	},
 	-- #endregion

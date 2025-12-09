@@ -7,6 +7,7 @@
 
 
 Other fixes and improvements:
+- Balancing: The Wretched Sneak's now waits longer after it's ranged attack before teleporting away.
 - Balancing: If Deep Dissent is active, Hades will no longer summon minibosses during his Vow of Rivals fight, but normal enemies instead.
 - Balancing: Additional enemies summoned by Hades during his Vow of Rivals fight can now be risen by Night Bloom.
 - Fixed: The slowing area of effect around Hades' dropped Cast projectiles can be destroyed with attacks.
@@ -15,7 +16,7 @@ Other fixes and improvements:
 - Fixed: "Blast Ready" VFX for Hephaestus' boons is shown on the Surface.
 - Fixed: Ranged Cast weapons can be used on the Surface. 
 - Fixed: Manual fishing is not possible on the Surface if Toula is equipped.
-- Fixed: Some voicelines for Zagreus when gifting Thanatos Ambrosia are missing.
+- Fixed: Some voicelines for Zagreus are missing when gifting Thanatos Ambrosia.
 <!--Releasenotes end-->
 
 ## v0.1.4
