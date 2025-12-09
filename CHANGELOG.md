@@ -8,6 +8,7 @@
 
 Other fixes and improvements:
 - Balancing: The Wretched Sneak's now waits longer after it's ranged attack before teleporting away.
+- Balancing: Decreased health and armour of the Doomstone.
 - Balancing: If Deep Dissent is active, Hades will no longer summon minibosses during his Vow of Rivals fight, but normal enemies instead.
 - Balancing: Additional enemies summoned by Hades during his Vow of Rivals fight can now be risen by Night Bloom.
 - Fixed: The slowing area of effect around Hades' dropped Cast projectiles can be destroyed with attacks.
