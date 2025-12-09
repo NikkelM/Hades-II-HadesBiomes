@@ -8,6 +8,7 @@
 
 Other fixes and improvements:
 - Balancing: Additional enemies summoned by Hades during his Vow of Rivals fight can now be risen by Night Bloom.
+- Fixed: The slowing area of effect around Hades' dropped Cast projectiles can be destroyed with attacks.
 - Fixed: Pickaxe points can spawn in the Elysium boss chamber, potentially blocking movement and attacks.
 - Fixed: Harvest points can appear in Tisiphone's room, which become inaccessible after she shrinks the arena during her fight.
 - Fixed: "Blast Ready" VFX for Hephaestus' boons is shown on the Surface.

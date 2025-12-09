@@ -305,6 +305,9 @@ local hadesProjectilesModifications = {
 	HadesAmmoWeapon = {
 		AffectsFriends = false,
 	},
+	HadesSlowPool = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+	},
 	HadesCast = {
 		-- We manually create it as there are some visual bugs if the projectile hits the bottom part of the arena
 		DissipateFx = "null",
