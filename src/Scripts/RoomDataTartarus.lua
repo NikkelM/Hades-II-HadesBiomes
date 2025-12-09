@@ -603,6 +603,13 @@ local roomModifications = {
 			{ FunctionName = _PLUGIN.guid .. "." .. "Harpy3MapRestore" },
 		},
 		RestorePresentationFunction = mod.NilValue,
+
+		-- Tisiphone adds walls during her fight, so gatherables would become inaccessible
+		HasHarvestPoint = false,
+		HasShovelPoint = false,
+		HasPickaxePoint = false,
+		HasExorcismPoint = false,
+		HasFishingPoint = false,
 	},
 
 	-- OTHER
