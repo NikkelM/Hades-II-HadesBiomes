@@ -1,8 +1,17 @@
 # Changelog
 
-## v0.1.4
+## v0.1.5
 
 <!--Releasenotes start-->
+### Patch Highlights:
+
+
+Other fixes and improvements:
+- Fixed: Manual fishing is not possible on the Surface if Toula is equipped.
+<!--Releasenotes end-->
+
+## v0.1.4
+
 ### Patch Highlights:
 - Balancing: Rooms will now offer more Boons and other rewards useful for the current run, and less Ash, Bones, and Nectar. This should be especially noticeable in Tartarus.
 - Fixed: Miniboss rooms in the Temple of Styx do not always offer upgraded rewards.
@@ -35,7 +44,6 @@ Other fixes and improvements:
 - Fixed: Thanatos immediately leaves after his encounter if he has no more dialogue, but could still have been gifted.
 - Fixed: Thanatos' "Pleased" portrait version is missing.
 - Fixed: A voiceline between Zagreus and Sisyphus after the ending is missing. Please keep reporting missing voicelines.
-<!--Releasenotes end-->
 
 ## v0.1.3
 

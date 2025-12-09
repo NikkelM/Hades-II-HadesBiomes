@@ -41,3 +41,15 @@ modutil.mod.Path.Context.Wrap("FishingEndPresentation", function(fishData, fishi
 		return base(voiceLines, neverQueue, source, args)
 	end)
 end)
+
+modutil.mod.Path.Wrap("FishingPointGetUseText", function(base, useTarget)
+	-- If on the surface, either show the locked text, or the normal text, but never the familiar text
+	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.RoomSetName == "Surface" then
+		if not game.IsComplexHarvestAllowed() then
+			return "UseFishingPointLocked"
+		end
+		return useTarget.UseText
+	end
+
+	return base(useTarget)
+end)
