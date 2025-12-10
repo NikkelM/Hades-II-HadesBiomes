@@ -1322,9 +1322,10 @@ local enemyModifications = {
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "ShadeSpearTouchdown",
 		},
-		-- If charmed/resurrected on the player's team, don't spawn a ShadeNaked on death
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			-- If charmed/resurrected on the player's team, don't spawn a ShadeNaked on death
+			-- This actually means it will never spawn, SGG messed up the if-clause checking this
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeSpearUnitElite = {
@@ -1334,7 +1335,7 @@ local enemyModifications = {
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeSpearUnitSuperElite = {
@@ -1344,7 +1345,7 @@ local enemyModifications = {
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeBowUnit = {
@@ -1352,7 +1353,7 @@ local enemyModifications = {
 		SpawnUnitOnDeath = "ShadeNaked",
 		SkipActivatePresentationOnSpawns = true,
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeBowUnitElite = {
@@ -1367,7 +1368,7 @@ local enemyModifications = {
 			{ "Hex" }
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeBowUnitSuperElite = {
@@ -1382,7 +1383,7 @@ local enemyModifications = {
 			{ "Hex" }
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeShieldUnit = {
@@ -1392,7 +1393,7 @@ local enemyModifications = {
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeShieldUnitElite = {
@@ -1402,7 +1403,7 @@ local enemyModifications = {
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeShieldUnitSuperElite = {
@@ -1412,7 +1413,7 @@ local enemyModifications = {
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeSwordUnit = {
@@ -1420,7 +1421,7 @@ local enemyModifications = {
 		SpawnUnitOnDeath = "ShadeNaked",
 		SkipActivatePresentationOnSpawns = true,
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeSwordUnitElite = {
@@ -1430,7 +1431,7 @@ local enemyModifications = {
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeSwordUnitSuperElite = {
@@ -1440,7 +1441,7 @@ local enemyModifications = {
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	SplitShotUnit = {
