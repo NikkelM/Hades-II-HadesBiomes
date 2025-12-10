@@ -16,6 +16,7 @@ Other fixes and improvements:
 - Balancing: Decreased health and armour of the Doomstone.
 - Balancing: If Deep Dissent is active, Hades will no longer summon minibosses during his Vow of Rivals fight, but normal enemies instead.
 - Balancing: Additional enemies summoned by Hades during his Vow of Rivals fight can now be risen by Night Bloom.
+- Fixed: If a Gorgon's petrifying projectile is blocked by a shield or Gale, you still get petrified. 
 - Fixed: Elysian Shades resurrected through Night Bloom create a respawn-egg when they die.
 - Fixed: Path of Stars upgrades offered by Styx miniboss rooms only grant three points instead of five.
 - Fixed: If defeating Asterius during his miniboss fight while kept alive through Moros' Engraved Pin, you die instead of reviving.

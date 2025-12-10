@@ -50,13 +50,17 @@ modutil.mod.Path.Wrap("AddEffectBlock", function(base, args)
 	args = args or {}
 	base(args)
 
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		-- Also block Styx Poison and Hades' Boiling Blood every time we block Medea Poison
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and args.Id == game.CurrentRun.Hero.ObjectId then
 		if args.Name == "MedeaPoison" then
+			-- For poison pools or darts in Styx
 			args.Name = "StyxPoison"
 			AddEffectBlock(args)
-			-- Also clear any already applied stacks immediately
-			ClearEffect({ Id = args.Id or game.CurrentRun.Hero.ObjectId, Name = "StyxPoison" })
+			ClearEffect({ Id = args.Id, Name = "StyxPoison" })
+			-- For FreezeShotUnit
+			args.Name = "FreezeStun"
+			AddEffectBlock(args)
+			ClearEffect({ Id = args.Id, Name = "FreezeStun" })
+			-- For Boiling Blood
 			game.CurrentRun.Hero.ModsNikkelMHadesBiomesHitShieldEffectBlockActive = true
 		end
 	end
@@ -66,11 +70,15 @@ modutil.mod.Path.Wrap("RemoveEffectBlock", function(base, args)
 	args = args or {}
 	base(args)
 
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		-- Also unblock Styx Poison and Hades' Boiling Blood block every time we unblock Medea Poison
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and args.Id == game.CurrentRun.Hero.ObjectId then
 		if args.Name == "MedeaPoison" then
+			-- For poison pools or darts in Styx
 			args.Name = "StyxPoison"
 			RemoveEffectBlock(args)
+			-- For FreezeShotUnit
+			args.Name = "FreezeStun"
+			RemoveEffectBlock(args)
+			-- For Boiling Blood
 			game.CurrentRun.Hero.ModsNikkelMHadesBiomesHitShieldEffectBlockActive = false
 		end
 	end
