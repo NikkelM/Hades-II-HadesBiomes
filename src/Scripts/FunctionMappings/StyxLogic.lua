@@ -81,9 +81,9 @@ function mod.StyxPoisonApply(triggerArgs)
 				unit.ModsNikkelMHadesBiomesLastPoisonApplyTime = game._worldTime
 				-- Create a thread that waits and then clears the poison, if it hasn't been reapplied in the meantime
 				game.thread(function()
-					local waitTime = 1.6
+					local waitTime = 2.4
 					game.wait(waitTime)
-					if unit.ModsNikkelMHadesBiomesLastPoisonApplyTime == nil or (unit.ModsNikkelMHadesBiomesLastPoisonApplyTime + waitTime <= game._worldTime) then
+					if unit.ModsNikkelMHadesBiomesLastPoisonApplyTime == nil or (unit.ModsNikkelMHadesBiomesLastPoisonApplyTime + waitTime <= game._worldTime + 0.01) then
 						ClearEffect({ Id = unit.ObjectId, Name = "StyxPoison" })
 						ClearEffect({ Id = unit.ObjectId, Name = "MedeaPoison" })
 					end
@@ -110,22 +110,39 @@ function mod.StartStyxPoisonPresentation(unit)
 			ScaleY = game.ScreenScaleY
 		})
 	end
+
 	unit.CurrentlyPoisoned = true
 	unit.TimesPoisoned = unit.TimesPoisoned or 0
-	unit.TimesPoisoned = unit.TimesPoisoned + 1
-	if game.CheckCooldown("PoisonAppliedTextCooldown", 1.5) then
+	if game.CurrentRun.CurrentRoom.RoomSetName == "Styx" then
+		unit.TimesPoisoned = unit.TimesPoisoned + 1
+	elseif game.CurrentRun.CurrentRoom.Encounter then
+		game.CurrentRun.CurrentRoom.Encounter.ModsNikkelMHadesBiomesUnitTimesPoisoned = (game.CurrentRun.CurrentRoom.Encounter.ModsNikkelMHadesBiomesUnitTimesPoisoned or 0) +
+				1
+	end
+
+	-- Only show this text if we won't show the custom text
+	if game.CheckCooldown("PoisonAppliedTextCooldown", 1.5) and not (game.CurrentRun.CurrentRoom.Encounter and game.CurrentRun.CurrentRoom.Encounter.ModsNikkelMHadesBiomesUnitTimesPoisoned == 1) then
 		game.thread(game.InCombatText, unit.ObjectId, "DebuffPoisoned", 1.2)
 	end
+
 	PlaySound({ Name = "/SFX/Player Sounds/DionysusShieldDash", Id = game.CurrentRun.Hero.ObjectId })
 	PlaySound({ Name = "/Leftovers/Menu Sounds/TitanToggleLong", Id = game.CurrentRun.Hero.ObjectId })
 	game.PlayVoiceLines(game.HeroVoiceLines.PoisonAppliedVoiceLines, true)
+
+	local fountains = {}
 	if unit.TimesPoisoned == 1 then
 		game.wait(0.3)
-		local fountains = GetIdsByType({ Name = "PoisonCureFountainStyx" }) or {}
-		for k, fountainId in pairs(fountains) do
+		fountains = GetIdsByType({ Name = "PoisonCureFountainStyx" }) or {}
+	end
+	-- If there's fountains (we are in Styx, and it's the first time we've been poisoned in Styx this run)
+	if not game.IsEmpty(fountains) then
+		for _, fountainId in pairs(fountains) do
 			game.thread(game.DirectionHintPresentation, { ObjectId = fountainId }, { Cooldown = 0 })
 			game.thread(game.InCombatText, fountainId, "UsePoisonCure", 1.75)
 		end
+	elseif game.CurrentRun.CurrentRoom.Encounter and game.CurrentRun.CurrentRoom.Encounter.ModsNikkelMHadesBiomesUnitTimesPoisoned == 1 then
+		-- We are not in Styx, and it's the first time we've been poisoned in this encounter
+		game.thread(game.InCombatText, game.CurrentRun.Hero.ObjectId, "ModsNikkelMHadesBiomesPoisonedNoCureHint", 3)
 	end
 end
 

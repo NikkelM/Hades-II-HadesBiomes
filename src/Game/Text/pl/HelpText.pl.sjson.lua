@@ -23,6 +23,10 @@ local newData = {
 		Id = "Objective_SurvivalTimer",
 		DisplayName = "Przeżyj przez {$RemainingSeconds} sek.",
 	},
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesPoisonedNoCureHint",
+	-- 	DisplayName = "Poison will disappear automatically!",
+	-- },
 	-- #endregion
 
 	-- #region Save File Location Indicators

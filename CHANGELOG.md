@@ -9,6 +9,7 @@
 Other fixes and improvements:
 - A victory stinger will now play when clearing a run after reaching the ending.
 - Melinoe will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
+- When poisoned in Elysium (through an enemy summoned by the Vow of Menace), an overhead text will now appear to remind you that poison will wear off automatically.
 - Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
 - Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
 - Balancing: All Elysium Shades' dash attacks have increased range.
@@ -16,6 +17,7 @@ Other fixes and improvements:
 - Balancing: Decreased health and armour of the Doomstone.
 - Balancing: If Deep Dissent is active, Hades will no longer summon minibosses during his Vow of Rivals fight, but normal enemies instead.
 - Balancing: Additional enemies summoned by Hades during his Vow of Rivals fight can now be risen by Night Bloom.
+- Balancing: Slightly increased poison damage from a single Styx enemy's hit in Elysium to be more in line with Elysium damage numbers (one hit now deals ~10 damage). Additional stacks can still apply, so be on your toes!
 - Fixed: If a Gorgon's petrifying projectile is blocked by a shield or Gale, you still get petrified. 
 - Fixed: Elysian Shades resurrected through Night Bloom create a respawn-egg when they die.
 - Fixed: Path of Stars upgrades offered by Styx miniboss rooms only grant three points instead of five.

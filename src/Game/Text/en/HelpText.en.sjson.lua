@@ -26,6 +26,10 @@ local newData = {
 		Id = "Objective_SurvivalTimer",
 		DisplayName = "Survive for: {$RemainingSeconds} Sec.",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesPoisonedNoCureHint",
+		DisplayName = "Poison will disappear automatically!",
+	},
 	-- TODO: Only while the mod is in early access
 	{
 		Id = "ModsNikkelMHadesBiomes_LeaveFeedback",
