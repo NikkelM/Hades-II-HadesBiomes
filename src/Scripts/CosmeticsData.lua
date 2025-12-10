@@ -365,3 +365,197 @@ local mainHubAreaCosmetics = {
 for _, cosmeticData in ipairs(mainHubAreaCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
+
+local preRunCosmetics = {
+	-- #region Exit Charms/Cosmetic_ExitCharm
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Achilles",
+		Name = {
+			en = "Charm, Antos",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Strategic embellishment to the warded gateways leading both above and below.",
+		},
+		FlavorText = {
+			en =
+			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by his mentor and friend Achilles.",
+		},
+		CosmeticsGroup = "Cosmetic_ExitCharm",
+		InsertAfterCosmetic = "Cosmetic_ExitCharm05",
+		ShopCategory = "CosmeticsShop_PreRun",
+		ActivateIds = { 589859, 589860 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Achilles",
+		IconScale = 0.6,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Achilles",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 600,
+			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
+			ModsNikkelMHadesBiomes_OreElysium = 4,
+			ModsNikkelMHadesBiomes_CropElysium = 2,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Dusa",
+		Name = {
+			en = "Charm, Fidi",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Reptilian embellishment to the warded gateways leading both above and below.",
+		},
+		FlavorText = {
+			en =
+			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by his servant and trusted companion Dusa.",
+		},
+		CosmeticsGroup = "Cosmetic_ExitCharm",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Achilles",
+		ShopCategory = "CosmeticsShop_PreRun",
+		ActivateIds = { 589859, 589860 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Dusa",
+		IconScale = 0.6,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Dusa",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 600,
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
+			ModsNikkelMHadesBiomes_OreAsphodel = 4,
+			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Megaera",
+		Name = {
+			en = "Charm, Battie",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Furious embellishment to the warded gateways leading both above and below.",
+		},
+		FlavorText = {
+			en =
+			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by the Fury Megaera herself, as a token of her complex affections.",
+		},
+		CosmeticsGroup = "Cosmetic_ExitCharm",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Dusa",
+		ShopCategory = "CosmeticsShop_PreRun",
+		ActivateIds = { 589859, 589860 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Megaera",
+		IconScale = 0.6,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Megaera",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 600,
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 2,
+			ModsNikkelMHadesBiomes_CropTartarus = 2,
+			ModsNikkelMHadesBiomes_PlantTartarus = 2,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Sisyphus",
+		Name = {
+			en = "Charm, Shady",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Steadfast embellishment to the warded gateways leading both above and below.",
+		},
+		FlavorText = {
+			en =
+			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by the shade Sisyphus and depicts his trusted rock companion, Bouldy.",
+		},
+		CosmeticsGroup = "Cosmetic_ExitCharm",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Megaera",
+		ShopCategory = "CosmeticsShop_PreRun",
+		ActivateIds = { 589859, 589860 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Sisyphus",
+		IconScale = 0.6,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Sisyphus",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 600,
+			ModsNikkelMHadesBiomes_OreTartarus = 5,
+			ModsNikkelMHadesBiomes_OreAsphodel = 5,
+			ModsNikkelMHadesBiomes_OreElysium = 5,
+			ModsNikkelMHadesBiomes_OreStyx = 5,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Skelly",
+		Name = {
+			en = "Charm, Rib",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Skeletal embellishment to the warded gateways leading both above and below.",
+		},
+		FlavorText = {
+			en =
+			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by his buddy Skelly, and bears a striking resemblance to Commander Schelemeus...",
+		},
+		CosmeticsGroup = "Cosmetic_ExitCharm",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Sisyphus",
+		ShopCategory = "CosmeticsShop_PreRun",
+		ActivateIds = { 589859, 589860 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Skelly",
+		IconScale = 0.6,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Skelly",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 600,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 1,
+			ModsNikkelMHadesBiomes_PlantStyx = 2,
+			ModsNikkelMHadesBiomes_CropStyx = 1,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Thanatos",
+		Name = {
+			en = "Charm, Mort",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Scurrying embellishment to the warded gateways leading both above and below.",
+		},
+		FlavorText = {
+			en =
+			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by Thanatos, God of the Dead, occasional ally and more than that.",
+		},
+		CosmeticsGroup = "Cosmetic_ExitCharm",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Skelly",
+		ShopCategory = "CosmeticsShop_PreRun",
+		ActivateIds = { 589859, 589860 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Thanatos",
+		IconScale = 0.6,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Thanatos",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 600,
+			ModsNikkelMHadesBiomes_CropAsphodel = 4,
+			ModsNikkelMHadesBiomes_CropElysium = 4,
+		},
+	},
+	-- #endregion
+}
+for _, cosmeticData in ipairs(preRunCosmetics) do
+	CosmeticsAPI.RegisterCosmetic(cosmeticData)
+end
