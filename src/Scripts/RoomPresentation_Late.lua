@@ -1,4 +1,5 @@
 modutil.mod.Path.Context.Wrap.Static("DeathPresentation", function(currentRun, killer, deathArgs)
+	-- The text and animation shown on the top
 	modutil.mod.Path.Wrap("DisplayInfoBanner", function(base, source, infoArgs)
 		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 			if infoArgs.Text == "DeathMessage" then
@@ -21,6 +22,28 @@ modutil.mod.Path.Context.Wrap.Static("DeathPresentation", function(currentRun, k
 		end
 
 		return base(source, infoArgs)
+	end)
+
+	-- The animation Mel herself does
+	modutil.mod.Path.Wrap("SetAnimation", function(base, args)
+		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.Cleared and game.GameState.TextLinesRecord.Ending01 then
+			-- This is only played if the original deathAnimation was MelinoeDeathEscape, which we override in the next clause, but that isn't propagated to the original function, so we just skip this call
+			if args.Name == "MelinoeDeathEscape2" then
+				return
+			end
+			-- If we have reached the mod's true ending, play the TrueEnding animation, even if we haven't reached the vanilla Hades II true ending
+			if args.Name == "MelinoeDeathEscape" then
+				args.Name = "MelinoeDeathSuccess"
+			end
+			-- If we just changed it to this animation, or the animation would have played anyways (as the player reached vanillar Hades II's true ending)
+			if args.Name == "MelinoeDeathSuccess" then
+				-- Hacky: Also play the Victory stinger here, since if the player has reached the True ending, but isn't in I or Q, no stinger is played at all
+				-- Which in the case of modded runs, means that on each victory after the mod's ending, no stinger is played
+				PlaySound({ Name = "/Music/IrisDeathStingerOrch_MC" })
+			end
+		end
+
+		return base(args)
 	end)
 end)
 

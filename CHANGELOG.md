@@ -7,6 +7,8 @@
 
 
 Other fixes and improvements:
+- A victory stinger will now play when clearing a run after reaching the ending.
+- Melinoe will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
 - Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
 - Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
 - Balancing: All Elysium Shades' dash attacks have increased range.
