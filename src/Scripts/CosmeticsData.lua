@@ -523,6 +523,43 @@ local preRunCosmetics = {
 			ModsNikkelMHadesBiomes_PlantStyx = 2,
 			ModsNikkelMHadesBiomes_CropStyx = 1,
 		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.8,
+				ObjectType = "NPC_Skelly_01",
+				Queue = "Always",
+				{ Cue = "/VO/Skelly_0384", Text = "Pretty nice, {#Emph}huh?", },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
+		CosmeticRemovedVoiceLines = {
+			{ GlobalVoiceLines = "CosmeticChangeVoiceLines" },
+			{
+				PreLineWait = 0.75,
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				ObjectType = "NPC_Skelly_01",
+				Queue = "Always",
+				{ Cue = "/VO/Skelly_0459", Text = "{#Emph}...Dammit." },
+				{ Cue = "/VO/Skelly_0467", Text = "Seriously?" },
+				{ Cue = "/VO/Skelly_0021", Text = "I shall return..." },
+			},
+		},
+		CosmeticReAddedVoiceLines = {
+			{ GlobalVoiceLines = "CosmeticChangeVoiceLines" },
+			{
+				PreLineWait = 0.75,
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				ObjectType = "NPC_Skelly_01",
+				Queue = "Always",
+				{ Cue = "/VO/Skelly_0016", Text = "A fine choice." },
+				{ Cue = "/VO/Skelly_0129", Text = "A fine selection!" },
+				{ Cue = "/VO/Skelly_0130", Text = "A fine selection." },
+				{ Cue = "/VO/Skelly_0063", Text = "Excellent!" },
+				{ Cue = "/VO/Skelly_0384", Text = "Pretty nice, {#Emph}huh?", },
+			},
+		}
 	},
 	{
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Thanatos",
