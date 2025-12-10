@@ -1789,7 +1789,7 @@ local enemyModifications = {
 			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 			PostInvisibilityFunction = _PLUGIN.guid .. "." .. "HadesTeleport",
 			-- A little quicker to line up with the smoke better
-			InvisibilityFadeOutDuration = 0.4,
+			InvisibilityFadeOutDuration = 0.85,
 			DashRequireLoS = true,
 			SpawnCountDampenTraits = { HadesChronosDebuffBoon = true, },
 			-- If we are on EM4, Deep Dissent's effect is converted into spawning normal Super Elite enemies, instead of fewer enemies, so don't apply the original effect
