@@ -493,6 +493,7 @@ local roomModifications = {
 				MaxHealthDrop = "MaxHealthDropBig",
 				MaxManaDrop = "MaxManaDropBig",
 				StackUpgrade = "StackUpgradeBig",
+				TalentDrop = "TalentBigDrop",
 			},
 		},
 	},
