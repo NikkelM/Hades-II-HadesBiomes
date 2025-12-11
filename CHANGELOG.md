@@ -30,6 +30,7 @@ Other fixes and improvements:
 - Fixed: The slowing area of effect around Hades' dropped Cast projectiles can be destroyed with attacks.
 - Fixed: Pickaxe points can spawn in the Elysium boss chamber, potentially blocking movement and attacks.
 - Fixed: Harvest points can appear in Tisiphone's room, which become inaccessible after she shrinks the arena during her fight.
+- Fixed: Rewards spawning in fountain rooms do not play a sound effect when they appear.
 - Fixed: "Blast Ready" VFX for Hephaestus' boons is shown on the Surface.
 - Fixed: Ranged Cast weapons can be used on the Surface. 
 - Fixed: Manual fishing is not possible on the Surface if Toula is equipped.

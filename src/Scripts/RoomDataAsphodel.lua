@@ -540,6 +540,7 @@ local roomModifications = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,
 		},
+		SuppressRewardSpawnSounds = false,
 
 		HarvestPointChances = { 0.6, 0.4, },
 		ShovelPointChance = 0.24,

@@ -650,6 +650,7 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "SpawnConsumables", },
 		},
 		DisableRewardMagnetisim = true,
+		SuppressRewardSpawnSounds = false,
 		-- This is Zagreus speaking, replace with Melinoe
 		EnterVoiceLines = mod.NilValue,
 		EnterGlobalVoiceLines = "EnteredReprieveRoomVoiceLines",

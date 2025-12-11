@@ -543,6 +543,7 @@ local roomModifications = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,
 		},
+		SuppressRewardSpawnSounds = false,
 	},
 	Y_PostBoss01 = {
 		-- For Intercom
