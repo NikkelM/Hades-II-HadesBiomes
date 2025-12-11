@@ -11,6 +11,7 @@ Other fixes and improvements:
 - Melinoe will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
 - When poisoned in Elysium (through an enemy summoned by the Vow of Menace), an overhead text will now appear to remind you that poison will wear off automatically.
 - Thanatos will now teleport to the room exit faster after clearing his encounters.
+- Added a config option for speedrunners to always force the Satyr Sack in Styx to spawn in the second wing.
 - Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
 - Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
 - Balancing: All Elysium Shades' dash attacks have increased range.

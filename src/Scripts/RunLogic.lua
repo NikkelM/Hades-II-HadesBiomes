@@ -237,6 +237,13 @@ modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, ne
 
 		-- Randomly force the next room to be a fountain room, with a 100% chance if this is the last wing
 		if nextRoomData.ForceChanceByRemainingWings then
+			if config.z_SpeedrunForceTwoSack then
+				-- If the config option is enabled, always force the fountain room in the second wing
+				if currentRun.CompletedStyxWings == 1 then
+					mod.DebugPrint("Forcing fountain room in Styx wing 2 due to config option.", 2)
+					return true
+				end
+			end
 			local chance = 1 / (5 - currentRun.CompletedStyxWings)
 			if game.RandomChance(chance) then
 				return true
