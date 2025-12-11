@@ -161,6 +161,11 @@ function mod.SpawnConsumables(eventSource, args)
 		local consumable = game.CreateConsumableItem(consumableId, spawnData.ConsumableName, 0) or {}
 		game.MapState.RoomRequiredObjects[consumable.ObjectId] = consumable
 	end
+
+	if config.z_SpeedrunForceTwoSack and game.CurrentRun.CurrentRoom.Name == "D_Reprieve01" then
+		game.thread(game.InCombatTextArgs,
+			{ TargetHero = true, Text = "ModsNikkelMHadesBiomesStyxFountainForcedThroughConfig", Duration = 3, PreDelay = 2 })
+	end
 end
 
 -- After talking to Cerberus, the exit door unlocks
