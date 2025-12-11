@@ -1165,7 +1165,7 @@ local enemyModifications = {
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "HydraTouchdown",
 			-- Lining up with when the head actually touches the ground
-			Delay = 0.23,
+			Delay = 0.16,
 		},
 		ImmuneToPolymorph = true,
 		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },

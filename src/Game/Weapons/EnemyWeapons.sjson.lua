@@ -53,17 +53,6 @@ local hadesWeaponAdditions = {
 mod.AddTableKeysSkipDupes(hadesWeaponsTable.Weapons, hadesWeaponAdditions, "Name")
 
 local hadesWeaponsModifications = {
-	-- #region ASPHODEL
-	HydraLunge = {
-		-- Needs to be lowered due to tethers not locking the head in place
-		-- It would otherwise fly over the whole map
-		SelfVelocity = 4100.0,
-	},
-	HydraSnap = {
-		SelfVelocity = 3800.0,
-	},
-	-- #endregion
-
 	-- #region ELYSIUM
 	ShadeSpearLeap = {
 		SelfVelocity = mod.NilValue,
@@ -114,9 +103,6 @@ local hadesWeaponsModifications = {
 		-- WeaponRange = 1400
 		SelfVelocity = 5100,
 		SelfVelocityCap = 5100,
-	},
-	HadesBidentStrike = {
-		SelfVelocity = 2500,
 	},
 	-- #endregion
 }

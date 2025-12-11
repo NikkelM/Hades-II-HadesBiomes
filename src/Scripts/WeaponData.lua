@@ -118,7 +118,7 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 				end
 			end
 
-			-- Move properties from the sjson to the AIData table
+			-- Move easily mappable properties from the sjson to the AIData table
 			for key, value in pairs(sjsonToAIDataPropertyMappings) do
 				-- Check if parent or grandparent have modifications for this property defined already
 				local skipProperty = false
@@ -137,6 +137,95 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 						weaponData.AIData[value] = secondAlternativeSjsonWeaponData[key]
 					end
 				end
+			end
+
+			-- Process effect mappings from the Hades sjson weapon data to the Hades II lua weapon definition
+			if sjsonWeaponData.Effect or sjsonWeaponData.Effects or
+					(parentWeaponName and mod.HadesSjsonWeaponsTable[parentWeaponName] and
+						(mod.HadesSjsonWeaponsTable[parentWeaponName].Effect or mod.HadesSjsonWeaponsTable[parentWeaponName].Effects)) or
+					(grandParentWeaponName and mod.HadesSjsonWeaponsTable[grandParentWeaponName] and
+						(mod.HadesSjsonWeaponsTable[grandParentWeaponName].Effect or mod.HadesSjsonWeaponsTable[grandParentWeaponName].Effects)) then
+				local effectNameMappings = {
+					MeleeAttackGrip = "AttackLowGrip",
+				}
+				local effectDefaultProperties = {
+					AttackLowGrip = {
+						Type = "GRIP",
+						Duration = 0.3,
+						Modifier = 0.6,
+						HaltOnEnd = true,
+					},
+				}
+
+				-- Helper function to process a single effect entry
+				local function processEffect(effectEntry)
+					local defaults = effectDefaultProperties[effectNameMappings[effectEntry.Name]]
+					return {
+						EffectName = effectNameMappings[effectEntry.Name],
+						DataProperties = {
+							Type = effectEntry.Type or defaults.Type,
+							Duration = effectEntry.Duration or defaults.Duration,
+							Modifier = effectEntry.Modifier or defaults.Modifier,
+							HaltOnEnd = effectEntry.HaltOnEnd ~= nil and effectEntry.HaltOnEnd or defaults.HaltOnEnd,
+						}
+					}
+				end
+
+				-- Get the effects from the sjson data, no matter if it's a single Effect or a list of Effects
+				local function collectEffectsFromSjson(sjsonData)
+					local effects = {}
+					if sjsonData then
+						if sjsonData.Effect then
+							table.insert(effects, sjsonData.Effect)
+						end
+						if sjsonData.Effects then
+							for _, effectEntry in ipairs(sjsonData.Effects) do
+								table.insert(effects, effectEntry)
+							end
+						end
+					end
+					return effects
+				end
+
+				-- Initialize ApplyEffectsOnWeaponFire if needed
+				if not weaponData.AIData.ApplyEffectsOnWeaponFire then
+					weaponData.AIData.ApplyEffectsOnWeaponFire = {}
+				end
+
+				-- Collect effects from own weapon, parent, and grandparent
+				local allEffects = {}
+
+				local ownEffects = collectEffectsFromSjson(sjsonWeaponData)
+				for _, effect in ipairs(ownEffects) do
+					table.insert(allEffects, effect)
+				end
+
+				if #allEffects == 0 and parentWeaponName and mod.HadesSjsonWeaponsTable[parentWeaponName] then
+					local parentEffects = collectEffectsFromSjson(mod.HadesSjsonWeaponsTable[parentWeaponName])
+					for _, effect in ipairs(parentEffects) do
+						table.insert(allEffects, effect)
+					end
+				end
+
+				if #allEffects == 0 and grandParentWeaponName and mod.HadesSjsonWeaponsTable[grandParentWeaponName] then
+					local grandParentEffects = collectEffectsFromSjson(mod.HadesSjsonWeaponsTable[grandParentWeaponName])
+					for _, effect in ipairs(grandParentEffects) do
+						table.insert(allEffects, effect)
+					end
+				end
+
+				for _, effectEntry in ipairs(allEffects) do
+					if effectNameMappings[effectEntry.Name] ~= nil then
+						local newEffect = processEffect(effectEntry)
+						table.insert(weaponData.AIData.ApplyEffectsOnWeaponFire, newEffect)
+					-- else
+					-- 	mod.DebugPrint(
+					-- 		"Unknown effect name " ..
+					-- 		effectEntry.Name .. " on weapon " .. weaponName .. ", cannot map to Hades II effect", 2)
+					end
+				end
+				-- print("Final ApplyEffectsOnWeaponFire for weapon " .. weaponName .. ":")
+				-- mod.PrintTable(weaponData.AIData.ApplyEffectsOnWeaponFire)
 			end
 		end
 
@@ -268,7 +357,6 @@ local weaponReplacements = {
 			},
 		},
 		AIData = {
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			PostAttackDuration = 1.7,
 			-- Do the beam attack both before and after the lunge
 			PostAttackDumbFireWeapons = { "HarpyLungeSurgeBeam" },
@@ -379,7 +467,7 @@ local weaponModifications = {
 	MineToss = {
 		AIData = {
 			DeepInheritance = true,
-			ApplyEffectsOnWeaponFire = { WeaponEffectData.RootedAttacker, },
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.RootedAttacker, },
 			ProjectileName = "BloodMineToss",
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
@@ -416,9 +504,6 @@ local weaponModifications = {
 			DeepInheritance = true,
 			PreAttackEndShake = true,
 			FireProjectileStartDelay = 0.03,
-			-- Modified, as the original 1800 is too short
-			FireSelfVelocity = 3000,
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackHighGrip, },
 			PreAttackDuration = 0.5,
 			FireDuration = 0.25,
 			PostAttackDuration = 0.5,
@@ -487,11 +572,6 @@ local weaponModifications = {
 	-- #endregion
 	-- #endregion
 	-- #region TARTARUS - Megaera
-	HarpyLunge = {
-		AIData = {
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
-		},
-	},
 	HarpyLightning = {
 		AIData = {
 			AttackSlotInterval = 0.01,
@@ -628,8 +708,9 @@ local weaponModifications = {
 			},
 		},
 		AIData = {
+			-- TODO: Too much tracking on this and the whip before
 			DeepInheritance = true,
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+			FireSelfVelocity = 3600,
 		},
 	},
 	HarpyLungeSurgeBeam = {
@@ -694,18 +775,7 @@ local weaponModifications = {
 	},
 	HarpyWhipCombo1 = {
 		AIData = {
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			BlockAsFirstWeapon = true,
-		},
-	},
-	HarpyWhipCombo2 = {
-		AIData = {
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
-		},
-	},
-	HarpyWhipCombo3 = {
-		AIData = {
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 		},
 	},
 	SummonTisiphoneBombingRun = {
@@ -793,18 +863,23 @@ local weaponModifications = {
 			PreAttackDuration = 0.8,
 			MoveWithinRangeTimeout = 0.5,
 			MaxConsecutiveUses = 3,
+			-- Needs to be lowered due to tethers not locking the head in place
+			-- It would otherwise fly over the whole map
+			FireSelfVelocity = 2950.0,
 		},
 	},
 	HydraLungeUntethered = {
 		AIData = {
 			PreAttackDuration = 0.8,
 			MaxConsecutiveUses = 3,
+			FireSelfVelocity = 2450.0,
 		},
 	},
 	HydraSlam = {
 		AIData = {
 			PostAttackDuration = 0.5,
 			MoveWithinRange = false,
+			FireSelfUpwardVelocity = 3500,
 		},
 	},
 	HydraSlamFrenzy = {
@@ -943,6 +1018,13 @@ local weaponModifications = {
 		},
 	},
 	-- #endregion
+	-- #region ASPHODEL - Hydra (Mini)
+	HydraSnap = {
+		AIData = {
+			FireSelfVelocity = 3000.0,
+		},
+	},
+	-- #endregion
 	-- #endregion
 
 	-- #region ELYSIUM
@@ -958,11 +1040,6 @@ local weaponModifications = {
 		AIData = {
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
-			FireSelfVelocity = 2500,
-		},
-	},
-	ShadeSpearForwardDash = {
-		AIData = {
 			FireSelfVelocity = 2500,
 		},
 	},
@@ -1241,7 +1318,7 @@ local weaponModifications = {
 	},
 	MinotaurArmoredAxeSpin = {
 		AIData = {
-			FireSelfVelocity = 1050,
+			FireSelfVelocity = 1000,
 		},
 	},
 	-- #endregion
@@ -1257,7 +1334,6 @@ local weaponModifications = {
 	},
 	TheseusSpearSpin = {
 		AIData = {
-			FireSelfVelocity = 1700,
 			-- So there are some opportunities to attack him without him blocking everything
 			PostAttackStop = true,
 			-- Also for this, removing the cooldown to not make it too easy
@@ -1439,7 +1515,6 @@ local weaponModifications = {
 			PreAttackEndStop = true,
 			PostAttackStop = true,
 			PostAttackDuration = 0.5,
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
 		},
 	},
 	HadesCast = {
@@ -1476,6 +1551,7 @@ local weaponModifications = {
 			TargetPlayer = true,
 			PreAttackAngleTowardTarget = true,
 			WaitForAngleTowardTarget = true,
+			-- TODO: Test if needed
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
 		},
 	},
@@ -1485,11 +1561,11 @@ local weaponModifications = {
 			PreAttackStop = true,
 			PreAttackEndStop = true,
 			PostAttackStop = true,
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
 		},
 	},
 	HadesBidentSpin2Reverse = {
 		AIData = {
+			-- TODO: Test if needed
 			FireSelfVelocity = 2300,
 		},
 	},
@@ -1524,6 +1600,7 @@ local weaponModifications = {
 			PostAttackStop = true,
 			MoveWithinRange = false,
 			AttackDistance = 9999,
+			-- TODO: Test if needed/if a property should be translated automatically from sjson
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 		},
 		Sounds = {
@@ -1548,6 +1625,7 @@ local weaponModifications = {
 			PostAttackStop = true,
 			MoveWithinRange = false,
 			AttackDistance = 9999,
+			-- TODO: Test if needed/if a property should be translated automatically from sjson
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
@@ -1583,6 +1661,7 @@ local weaponModifications = {
 			PostAttackStop = true,
 			MoveWithinRange = false,
 			AttackDistance = 9999,
+			-- TODO: Test if needed/if a property should be translated automatically from sjson
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 		},
 		Sounds = {
