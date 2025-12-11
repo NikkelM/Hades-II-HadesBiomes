@@ -677,6 +677,8 @@ mod.MapTextFileNames = {
 	Return06 = true,
 	-- Catacombs next to the entrance are flickering
 	B_PreBoss01 = true,
+	-- Need to remove Fx_Terrain group as it causes layering issues with the Cast and some enemy Fx (Like Chariot tracks)
+	C_Combat01 = true,
 }
 
 -- Languages supported by Hades
