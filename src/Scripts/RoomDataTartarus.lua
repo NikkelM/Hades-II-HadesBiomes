@@ -592,6 +592,8 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
+
+		HasPickaxePoint = false,
 	},
 	A_Boss03 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",

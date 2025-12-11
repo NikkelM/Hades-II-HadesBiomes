@@ -433,6 +433,8 @@ local roomModifications = {
 		RewardConsumableOverrides = mod.NilValue,
 		-- To not have the preview be created while the boat is still moving
 		UnlockExitsWait = 0.75,
+
+		HasPickaxePoint = false,
 	},
 	X_Boss02 = {
 		GameStateRequirements = {
@@ -442,6 +444,8 @@ local roomModifications = {
 				Value = 2,
 			},
 		},
+
+		HasPickaxePoint = false,
 	},
 
 	-- OTHER

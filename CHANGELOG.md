@@ -30,7 +30,7 @@ Other fixes and improvements:
 - Fixed: If defeating Asterius during his miniboss fight while kept alive through Moros' Engraved Pin, you die instead of reviving.
 - Fixed: Boiling Blood can be applied while invulnerable, such as during the Aspect of Persephone's special attack.
 - Fixed: The slowing area of effect around Hades' dropped Cast projectiles can be destroyed with attacks.
-- Fixed: Pickaxe points can spawn in the Elysium boss chamber, potentially blocking movement and attacks.
+- Fixed: Pickaxe points can spawn in the Elysium or Asphodel boss chambers, potentially blocking movement and attacks.
 - Fixed: Harvest points can appear in Tisiphone's room, which become inaccessible after she shrinks the arena during her fight.
 - Fixed: Rewards spawning in fountain rooms do not play a sound effect when they appear.
 - Fixed: "Blast Ready" VFX for Hephaestus' boons is shown on the Surface.
