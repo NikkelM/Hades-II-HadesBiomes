@@ -14,13 +14,14 @@ Other fixes and improvements:
 - Melinoe will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
 - Added a config option for speedrunners to always force the Satyr Sack in Styx to spawn in the second wing.
 - Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
-- Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
-- Balancing: All Elysium Shades' dash attacks have increased range.
 - Balancing: The Wretched Sneak now waits longer after it's ranged attack before teleporting away.
 - Balancing: Decreased health and armour of the Doomstone.
+- Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
+- Balancing: All Elysium Shades' dash attacks have increased range.
+- Balancing: Slightly increased poison damage from a single Styx enemy's hit in Elysium to be more in line with Elysium damage numbers (one hit now deals ~10 damage). Additional stacks can still apply, so be on your toes!
+- Balancing: Slightly increased the forward momentum of Asterius' spin attack to more closely match the behaviour in the first game.
 - Balancing: If Deep Dissent is active, Hades will no longer summon minibosses during his Vow of Rivals fight, but normal enemies instead.
 - Balancing: Additional enemies summoned by Hades during his Vow of Rivals fight can now be risen by Night Bloom.
-- Balancing: Slightly increased poison damage from a single Styx enemy's hit in Elysium to be more in line with Elysium damage numbers (one hit now deals ~10 damage). Additional stacks can still apply, so be on your toes!
 - Fixed: When using his teleport, Hades' voicelines and sound effect give away his new position before he reappears.
 - Fixed: Elysian Shades do not spawn a respawn egg if cursed by Thanatos, but killed by the player.
 - Fixed: If a Gorgon's petrifying projectile is blocked by a shield or Gale, you still get petrified. 

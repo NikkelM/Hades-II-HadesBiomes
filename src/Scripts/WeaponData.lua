@@ -1241,7 +1241,7 @@ local weaponModifications = {
 	},
 	MinotaurArmoredAxeSpin = {
 		AIData = {
-			FireSelfVelocity = 600,
+			FireSelfVelocity = 1050,
 		},
 	},
 	-- #endregion
