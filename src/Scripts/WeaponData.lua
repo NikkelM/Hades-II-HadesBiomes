@@ -145,6 +145,7 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 						(mod.HadesSjsonWeaponsTable[parentWeaponName].Effect or mod.HadesSjsonWeaponsTable[parentWeaponName].Effects)) or
 					(grandParentWeaponName and mod.HadesSjsonWeaponsTable[grandParentWeaponName] and
 						(mod.HadesSjsonWeaponsTable[grandParentWeaponName].Effect or mod.HadesSjsonWeaponsTable[grandParentWeaponName].Effects)) then
+				-- Can't get the RotationMultiplier ones to work here, and automatic mapping to FireRotationDampening also doesn't have the correct strength, so doing it manually for all attacks
 				local effectNameMappings = {
 					MeleeAttackGrip = "AttackLowGrip",
 				}
@@ -1189,7 +1190,7 @@ local weaponModifications = {
 			ProjectileName = "MinotaurBullRushRam",
 			WaitUntilProjectileDeath = "MinotaurBullRushRam",
 			PreAttackSetUnitProperties = {
-				Speed = 1200,
+				Speed = 1100,
 				CanOnlyMoveForward = "true",
 			},
 			-- Setting explicitly to not break when inferring the reset values as CanOnlyMoveForward will be a boolean instead of string
@@ -1267,11 +1268,11 @@ local weaponModifications = {
 			ProjectileName = "MinotaurArmoredBullRushRam",
 			WaitUntilProjectileDeath = "MinotaurArmoredBullRushRam",
 			PreAttackSetUnitProperties = {
-				Speed = 1300,
+				Speed = 1100,
 				CanOnlyMoveForward = "true",
 			},
 			PostAttackAnimation = "MinotaurArmoredBullRush_PreStrike",
-			FireRotationDampening = 0.7,
+			FireRotationDampening = 0.6,
 			EffectExpiredName = mod.NilValue,
 		},
 	},
@@ -1280,7 +1281,7 @@ local weaponModifications = {
 			ProjectileName = "MinotaurBullRushRam",
 			WaitUntilProjectileDeath = "MinotaurBullRushRam",
 			PreAttackSetUnitProperties = {
-				Speed = 1200,
+				Speed = 1100,
 				CanOnlyMoveForward = "true",
 			},
 			PostAttackSetUnitProperties = {
@@ -1289,7 +1290,7 @@ local weaponModifications = {
 			},
 			TrackTargetDuringCharge = true,
 			FireMoveTowardTarget = true,
-			FireRotationDampening = 0.7,
+			FireRotationDampening = 0.6,
 			MoveWithinRange = true,
 			MoveSuccessDistance = 35,
 			PostAttackStop = true,
@@ -1308,17 +1309,18 @@ local weaponModifications = {
 			ProjectileName = "MinotaurArmoredBullRushRam",
 			WaitUntilProjectileDeath = "MinotaurArmoredBullRushRam",
 			PreAttackSetUnitProperties = {
-				Speed = 1300,
+				Speed = 1100,
 				CanOnlyMoveForward = "true",
 			},
 			PostAttackAnimation = "MinotaurArmoredBullRush_PreStrike",
-			FireRotationDampening = 0.7,
+			FireRotationDampening = 0.6,
 			EffectExpiredName = mod.NilValue,
 		},
 	},
 	MinotaurArmoredAxeSpin = {
 		AIData = {
-			FireSelfVelocity = 1000,
+			FireSelfVelocity = 900,
+			FireRotationDampening = 0.2,
 		},
 	},
 	-- #endregion
