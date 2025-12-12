@@ -647,8 +647,6 @@ local enemyModifications = {
 	-- #endregion
 	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
-		MaxHealth = 950,
-		HealthBuffer = 1650,
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		SpawnEvents = {
 			{
@@ -678,8 +676,6 @@ local enemyModifications = {
 		OnDamagedWeapons = mod.NilValue,
 	},
 	HeavyRangedSplitterMinibossSuperElite = {
-		MaxHealth = 1650,
-		HealthBuffer = 3200,
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		SpawnEvents = {
 			{
