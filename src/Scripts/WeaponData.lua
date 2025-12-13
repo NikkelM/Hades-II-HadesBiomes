@@ -1344,6 +1344,8 @@ local weaponModifications = {
 			-- Also for this, removing the cooldown to not make it too easy
 			PostAttackCooldownMin = 0.75,
 			PostAttackCooldownMax = 1.25,
+			AITrackTargetDuringCharge = false,
+			FireRotationDampening = 0.001,
 		},
 	},
 	-- Has it's properties in the root instead of in AIData
