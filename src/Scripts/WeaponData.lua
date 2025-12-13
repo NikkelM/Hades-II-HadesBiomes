@@ -219,14 +219,8 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 					if effectNameMappings[effectEntry.Name] ~= nil then
 						local newEffect = processEffect(effectEntry)
 						table.insert(weaponData.AIData.ApplyEffectsOnWeaponFire, newEffect)
-						-- else
-						-- 	mod.DebugPrint(
-						-- 		"Unknown effect name " ..
-						-- 		effectEntry.Name .. " on weapon " .. weaponName .. ", cannot map to Hades II effect", 2)
 					end
 				end
-				-- print("Final ApplyEffectsOnWeaponFire for weapon " .. weaponName .. ":")
-				-- mod.PrintTable(weaponData.AIData.ApplyEffectsOnWeaponFire)
 			end
 		end
 
