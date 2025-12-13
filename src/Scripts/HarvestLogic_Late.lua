@@ -164,3 +164,16 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 		return base(obstacle, replaceOnlyNull, args)
 	end)
 end)
+
+modutil.mod.Path.Context.Wrap.Static("UseFishingPoint", function(fishingPoint, useArgs, user)
+	modutil.mod.Path.Wrap("HasFamiliarTool", function(base, toolName)
+		-- Toula isn't present on the Surface, so we don't have her auto-harvest tool there, Zagreus will need to fish himself
+		if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.RoomSetName == "Surface" then
+			if toolName == "ToolFishingRod" then
+				return false
+			end
+		end
+
+		return base(toolName)
+	end)
+end)

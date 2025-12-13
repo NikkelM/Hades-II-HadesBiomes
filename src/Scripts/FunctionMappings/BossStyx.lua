@@ -171,25 +171,6 @@ function mod.ClearShadeWeapons()
 	Destroy({ Ids = weaponIds })
 end
 
-function mod.HadesBeamDampeningOn(enemy, aiData, currentRun, args)
-	local dampenEffect = {
-		Id = enemy.ObjectId,
-		DestinationId = enemy.ObjectId,
-		EffectName = enemy.Name .. "HadesBeamRotationDampening"
-	}
-	dampenEffect.DataProperties = {
-		Duration = 10,
-		RotationMultiplier = aiData.ModsNikkelMHadesBiomes_HadesBeamDampeningValue or 0.02,
-		TimeModifierFraction = 1
-	}
-	ApplyEffect(dampenEffect)
-	table.insert(enemy.ClearEffectsOnHitStun, dampenEffect.EffectName)
-end
-
-function mod.HadesBeamDampeningOff(enemy, aiData, currentRun, args)
-	ClearEffect({ Id = enemy.ObjectId, Name = enemy.Name .. "HadesBeamRotationDampening" })
-end
-
 function mod.HadesBattleKnockDownPreRecoverPresentation(boss)
 	SetAnimation({ Name = "HadesBattleKnockDown_PreRecover", DestinationId = boss.ObjectId })
 	game.wait(0.25)
@@ -542,8 +523,8 @@ end
 
 function mod.SetupHadesSpawnOptions(enemy)
 	local enemySetPrefix = "EnemiesHades"
-	-- If the BossDifficultShrine is at EM4, use the harder enemies
-	if game.GetNumShrineUpgrades(enemy.ShrineMetaUpgradeName) >= 4 then
+	-- If the BossDifficultShrine is at EM4, use the harder enemies, except if the player has Deep Dissent
+	if game.GetNumShrineUpgrades(enemy.ShrineMetaUpgradeName) >= 4 and not game.HeroHasTrait("HadesChronosDebuffBoon") then
 		enemySetPrefix = "EnemiesHadesEM"
 	end
 	enemy.SpawnOptions = {}
@@ -578,8 +559,8 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 	-- Hit
 	local victim = triggerArgs.TriggeredByTable
 	local attacker = triggerArgs.AttackerTable
-	-- Prevent the effect being added if the player currently has a hit shield active (from Nitro Boost, Lovers etc.)
-	if victim ~= nil and victim.ObjectId == game.CurrentRun.Hero.ObjectId and not victim.ModsNikkelMHadesBiomesHitShieldEffectBlockActive then
+	-- Prevent the effect being added if the player currently has a hit shield active (from Nitro Boost, Lovers etc.), or is invulnerable (e.g. Skull Persephone special)
+	if victim ~= nil and victim.ObjectId == game.CurrentRun.Hero.ObjectId and not victim.ModsNikkelMHadesBiomesHitShieldEffectBlockActive and game.TableLength(game.CurrentRun.Hero.InvulnerableFlags or {}) == 0 then
 		CreateAnimation({ Name = "BloodstoneHitFxHades", DestinationId = game.CurrentRun.Hero.ObjectId, OffsetY = -100 })
 		if victim.IsDead then
 			return

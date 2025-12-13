@@ -434,6 +434,11 @@ local roomModifications = {
 			},
 		},
 
+		-- It would get placed somewhere in the middle of the arena, and has collision so could interfere with gameplay
+		HasPickaxePoint = false,
+		-- There are not urns in this room, so would be placed on a spawn point which looks weird
+		HasExorcismPoint = false,
+
 		-- Diehard Fan shade
 		ObstacleData = {
 			[543023] = {
@@ -538,6 +543,7 @@ local roomModifications = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,
 		},
+		SuppressRewardSpawnSounds = false,
 	},
 	Y_PostBoss01 = {
 		-- For Intercom

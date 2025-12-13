@@ -592,6 +592,8 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
+
+		HasPickaxePoint = false,
 	},
 	A_Boss03 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
@@ -603,6 +605,13 @@ local roomModifications = {
 			{ FunctionName = _PLUGIN.guid .. "." .. "Harpy3MapRestore" },
 		},
 		RestorePresentationFunction = mod.NilValue,
+
+		-- Tisiphone adds walls during her fight, so gatherables would become inaccessible
+		HasHarvestPoint = false,
+		HasShovelPoint = false,
+		HasPickaxePoint = false,
+		HasExorcismPoint = false,
+		HasFishingPoint = false,
 	},
 
 	-- OTHER
@@ -686,6 +695,7 @@ local roomModifications = {
 		GameStateRequirements = {
 			RequiredCosmetics = mod.NilValue,
 		},
+		SuppressRewardSpawnSounds = false,
 
 		HarvestPointChances = { 0.6, 0.4, },
 		ShovelPointChance = 0.24,

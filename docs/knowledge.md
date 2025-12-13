@@ -692,6 +692,10 @@ New map_text groups:
 },
 ```
 
+#### Y_Combat01
+
+Remove the `Fx_Terrain` group from the `map_text` files, as it causes layering issues with the Cast, and some enemy Fx (like Chariot tracks).
+
 #### D_Hub
 
 In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II.

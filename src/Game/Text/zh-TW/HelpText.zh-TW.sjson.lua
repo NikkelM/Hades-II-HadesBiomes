@@ -20,6 +20,14 @@ local newData = {
 	-- 	Id = "Objective_SurvivalTimer",
 	-- 	DisplayName = "Survive for: {$RemainingSeconds} Sec.",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesPoisonedNoCureHint",
+	-- 	DisplayName = "Poison will disappear automatically!",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesStyxFountainForcedThroughConfig",
+	-- 	DisplayName = "Fountain room forced by mod config",
+	-- },
 	-- #endregion
 
 	-- #region Save File Location Indicators

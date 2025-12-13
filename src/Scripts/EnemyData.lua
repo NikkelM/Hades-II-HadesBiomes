@@ -647,8 +647,6 @@ local enemyModifications = {
 	-- #endregion
 	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
-		MaxHealth = 1100,
-		HealthBuffer = 2100,
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		SpawnEvents = {
 			{
@@ -678,8 +676,6 @@ local enemyModifications = {
 		OnDamagedWeapons = mod.NilValue,
 	},
 	HeavyRangedSplitterMinibossSuperElite = {
-		MaxHealth = 1850,
-		HealthBuffer = 3400,
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		SpawnEvents = {
 			{
@@ -688,7 +684,8 @@ local enemyModifications = {
 			},
 		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
-		BlockRaiseDead = true,
+		-- Explicitly allow raising with Night Bloom
+		BlockRaiseDead = false,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
@@ -739,6 +736,10 @@ local enemyModifications = {
 		DefaultAIData = {
 			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 		},
+	},
+	WretchAssassinMinibossSuperElite = {
+		-- Still targets the player for some reason
+		BlockRaiseDead = true,
 	},
 	-- #endregion
 	-- #region TARTARUS - Bosses
@@ -1028,6 +1029,7 @@ local enemyModifications = {
 		-- Don't create a new blank obstacle for this enemy, as the flipping logic would be hard to get right
 		ManualDeathAnimation = false,
 		DestroyDelay = 1.2,
+		-- Don't allow Night Bloom, the SkyAttackerAI doesn't work with it
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		IgnoreSpeedShrine = true,
@@ -1119,6 +1121,9 @@ local enemyModifications = {
 		ImmuneToPolymorph = true,
 		BlockRespawnShrineUpgrade = true,
 	},
+	HitAndRunUnitSuperElite = {
+		BlockRaiseDead = false,
+	},
 	CrusherUnitElite = {
 		MaxHealth = 800,
 		HealthBuffer = 1550,
@@ -1156,7 +1161,7 @@ local enemyModifications = {
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "HydraTouchdown",
 			-- Lining up with when the head actually touches the ground
-			Delay = 0.23,
+			Delay = 0.16,
 		},
 		ImmuneToPolymorph = true,
 		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
@@ -1302,14 +1307,21 @@ local enemyModifications = {
 	ShadeSpearUnit = {
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
 		SpawnUnitOnDeath = "ShadeNaked",
+		DefaultAIData = {
+			LeapSpeed = 1800,
+			LeapPrepareTime = 0.5,
+			LeapRecoveryTime = 0.75,
+			LeapOffsetRange = 450,
+		},
 		SkipActivatePresentationOnSpawns = true,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "ShadeSpearTouchdown",
 		},
-		-- If charmed/resurrected on the player's team, don't spawn a ShadeNaked on death
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			-- If charmed/resurrected on the player's team, don't spawn a ShadeNaked on death
+			-- This actually means it will never spawn, SGG messed up the if-clause checking this
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeSpearUnitElite = {
@@ -1319,7 +1331,7 @@ local enemyModifications = {
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeSpearUnitSuperElite = {
@@ -1329,7 +1341,7 @@ local enemyModifications = {
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeBowUnit = {
@@ -1337,7 +1349,7 @@ local enemyModifications = {
 		SpawnUnitOnDeath = "ShadeNaked",
 		SkipActivatePresentationOnSpawns = true,
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeBowUnitElite = {
@@ -1352,7 +1364,7 @@ local enemyModifications = {
 			{ "Hex" }
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeBowUnitSuperElite = {
@@ -1367,7 +1379,7 @@ local enemyModifications = {
 			{ "Hex" }
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeShieldUnit = {
@@ -1377,7 +1389,7 @@ local enemyModifications = {
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeShieldUnitElite = {
@@ -1387,7 +1399,7 @@ local enemyModifications = {
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeShieldUnitSuperElite = {
@@ -1397,7 +1409,7 @@ local enemyModifications = {
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeSwordUnit = {
@@ -1405,7 +1417,7 @@ local enemyModifications = {
 		SpawnUnitOnDeath = "ShadeNaked",
 		SkipActivatePresentationOnSpawns = true,
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeSwordUnitElite = {
@@ -1415,7 +1427,7 @@ local enemyModifications = {
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	ShadeSwordUnitSuperElite = {
@@ -1425,7 +1437,7 @@ local enemyModifications = {
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeath = "nil",
+			SpawnUnitOnDeathChance = 1,
 		},
 	},
 	SplitShotUnit = {
@@ -1533,6 +1545,8 @@ local enemyModifications = {
 		-- For some reason EnemyPointRanged doesn't exist in D_Boss01, and setting this to nil doesn't work
 		RequiredSpawnPoint = "EnemyPointMelee",
 		BlockAttributes = { "Rifts", "Homing", "Tracking", "Unflinching", "Frenzy" },
+		-- Explicitly allow raising with Night Bloom
+		BlockRaiseDead = false,
 	},
 	-- #endregion
 	-- #region ELYSIUM - Minibosses
@@ -1771,9 +1785,12 @@ local enemyModifications = {
 			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 			PostInvisibilityFunction = _PLUGIN.guid .. "." .. "HadesTeleport",
 			-- A little quicker to line up with the smoke better
-			InvisibilityFadeOutDuration = 0.4,
+			InvisibilityFadeOutDuration = 0.85,
 			DashRequireLoS = true,
 			SpawnCountDampenTraits = { HadesChronosDebuffBoon = true, },
+			-- If we are on EM4, Deep Dissent's effect is converted into spawning normal Super Elite enemies, instead of fewer enemies, so don't apply the original effect
+			SpawnCountDampenShrineUpgrade = "BossDifficultyShrineUpgrade",
+			SpawnCountDampenMaxShrineLevel = 3,
 		},
 		-- Handled by the Cast projectile itself
 		OutgoingDamageModifiers = mod.NilValue,

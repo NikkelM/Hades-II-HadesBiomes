@@ -11,6 +11,8 @@ end)
 
 modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy then
+		local killer = triggerArgs.AttackerTable or {}
+
 		if victim.SupportAIUnitId ~= nil then
 			game.thread(game.Kill, game.ActiveEnemies[victim.SupportAIUnitId])
 		end
@@ -41,7 +43,7 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 			end
 		end
 
-		if victim.ModsNikkelMHadesBiomesIsThanatosCursed and victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed then
+		if victim.ModsNikkelMHadesBiomesIsThanatosCursed and victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed and not killer.ObjectId == game.CurrentRun.Hero.ObjectId then
 			SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = victim.ObjectId })
 			victim.SpawnsEnemyOnDeath = false
 			victim.SpawnUnitOnDeath = nil

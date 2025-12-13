@@ -154,7 +154,7 @@ function mod.ThanatosPostCombat(enemy)
 end
 
 function mod.ThanatosTeleportToExit(enemy, exitId)
-	game.wait(4.0, enemy.AIThreadName)
+	game.wait(1.5, enemy.AIThreadName)
 	CreateAnimation({ Name = "ThanatosTeleport", DestinationId = enemy.ObjectId })
 	game.wait(0.05, enemy.AIThreadName)
 	Teleport({ Id = enemy.ObjectId, DestinationId = exitId })

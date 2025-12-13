@@ -61,6 +61,8 @@ end
 function mod.MinotaurFinalStageTransition(boss, currentRun, aiStage)
 	if boss.CannotDieFromDamage then
 		currentRun.CurrentRoom.Encounter.CancelSpawns = true
+		-- For Moros' keepsake, to stop it from counting down and killing the player when the encounter is done
+		currentRun.CurrentRoom.Encounter.BossKillPresentation = true
 		boss.SkipOnDeathSpawnEncounter = true
 		game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId } })
 		mod.MinotaurEarlyExitPresentation(boss, currentRun)

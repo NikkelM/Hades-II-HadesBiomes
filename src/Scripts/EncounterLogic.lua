@@ -29,3 +29,8 @@ modutil.mod.Path.Wrap("OnAllEnemiesDead", function(base, currentRoom, currentEnc
 
 	return base(currentRoom, currentEncounter)
 end)
+
+-- For ShadeNaked spawns
+modutil.mod.Path.Wrap("GetActiveEnemyCount", function(base, encounter)
+	return base(encounter) + (game.MapState.PlaceholderEnemyCount or 0)
+end)

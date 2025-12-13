@@ -135,7 +135,7 @@ function mod.HydraStageTransition(boss, currentRun, aiStage)
 		game.thread(game.PlayVoiceLines, aiStage.StageTransitionVoiceLines, nil, boss)
 	end
 	if aiStage.StageTransitionGlobalVoiceLines ~= nil and not boss.IsDead then
-		game.thread(game.PlayVoiceLines, GlobalVoiceLines[aiStage.StageTransitionGlobalVoiceLines], nil, boss)
+		game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[aiStage.StageTransitionGlobalVoiceLines], nil, boss)
 	end
 
 	game.wait(aiStage.StartDelay or 4.0, boss.AIThreadName)
@@ -231,11 +231,14 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 
 	-- For Hades HadesChronosDebuffBoon - reduce spawn count
 	if weaponAIData.SpawnCountDampenTraits ~= nil then
-		for traitName in pairs(weaponAIData.SpawnCountDampenTraits) do
-			if game.HeroHasTrait(traitName) then
-				local traitData = game.GetHeroTrait(traitName)
-				if traitData and traitData.DebuffValue then
-					spawnCount = spawnCount * traitData.DebuffValue
+		-- If we should only apply the spawnDampenTraits when below a certain shrine level
+		if weaponAIData.SpawnCountDampenShrineUpgrade ~= nil and game.GetNumShrineUpgrades(weaponAIData.SpawnCountDampenShrineUpgrade) <= (weaponAIData.SpawnCountDampenMaxShrineLevel or 4) then
+			for traitName in pairs(weaponAIData.SpawnCountDampenTraits) do
+				if game.HeroHasTrait(traitName) then
+					local traitData = game.GetHeroTrait(traitName)
+					if traitData and traitData.DebuffValue then
+						spawnCount = spawnCount * traitData.DebuffValue
+					end
 				end
 			end
 		end

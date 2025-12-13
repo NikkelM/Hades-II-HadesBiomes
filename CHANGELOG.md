@@ -1,8 +1,46 @@
 # Changelog
 
-## v0.1.4
+## v0.1.5
 
 <!--Releasenotes start-->
+### Patch Highlights:
+- Overhauled many enemy's attack patterns, reducing their rotation speed and tracking/lock-on abilities during many attack combos. This should now feel closer to their behaviour in the first game.
+- Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
+- Balancing: The Wretched Sneak in Tartarus now waits longer after it's ranged attack before teleporting away.
+- Balancing: Decreased health and armour of the Doomstone.
+
+Other fixes and improvements:
+- Added an additional Elysium combat room that was previously disabled due to effect layering issues that have now been fixed.
+- When poisoned in Elysium (through an enemy summoned by the Vow of Menace), an overhead text will now appear to remind you that poison will wear off automatically.
+- Thanatos will now teleport to the room exit faster after clearing his encounters.
+- A victory stinger will now play when clearing a run after reaching the ending.
+- Melinoe will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
+- Added a config option for speedrunners to always force the Satyr Sack in Styx to spawn in the second wing.
+- Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
+- Balancing: All Elysium Shades' dash attacks have increased range.
+- Balancing: Slightly increased poison damage from a single Styx enemy's hit in Elysium to be more in line with Elysium damage numbers (one hit now deals ~10 damage). Additional hits can still stack, so be on your toes!
+- Balancing: Slightly increased the forward momentum of Asterius' spin attack to more closely match the behaviour in the first game.
+- Balancing: If Deep Dissent is active, Hades will no longer summon minibosses during his Vow of Rivals fight, but normal enemies instead.
+- Balancing: Some of the miniboss enemies summoned by Hades during his Vow of Rivals fight can now be resurrected by Night Bloom.
+- Fixed: Harvest points can appear in Tisiphone's room, which become inaccessible after she shrinks the arena during her fight.
+- Fixed: If a Gorgon's petrifying projectile is blocked by a hit-shield or Gale, you still get petrified.
+- Fixed: Pickaxe points can spawn in the Asphodel and Elysium boss chambers, potentially blocking movement and attacks.
+- Fixed: Elysian Shades do not create a respawn egg if cursed by Thanatos, but killed by the player.
+- Fixed: Elysian Shades resurrected through Night Bloom create a respawn-egg when they die.
+- Fixed: If defeating Asterius during his miniboss fight while kept alive through Moros' Engraved Pin, you die instead of reviving.
+- Fixed: Path of Stars upgrades offered by Styx miniboss rooms only grant three points instead of five.
+- Fixed: When using his teleport, Hades' voicelines and sound effect give away his new position before he reappears.
+- Fixed: Boiling Blood can be applied while invulnerable, such as during the Aspect of Persephone's special attack.
+- Fixed: The slowing area of effect around Hades' dropped Cast projectiles can sometimes be destroyed with attacks.
+- Fixed: "Blast Ready" VFX for Hephaestus' boons is shown on the Surface.
+- Fixed: Ranged Cast weapons can be used on the Surface.
+- Fixed: Manual fishing is not possible on the Surface if Toula is equipped.
+- Fixed: Rewards spawning in fountain rooms do not play a sound effect when they appear.
+- Fixed: Some voicelines for Zagreus are missing when gifting Thanatos Ambrosia.
+<!--Releasenotes end-->
+
+## v0.1.4
+
 ### Patch Highlights:
 - Balancing: Rooms will now offer more Boons and other rewards useful for the current run, and less Ash, Bones, and Nectar. This should be especially noticeable in Tartarus.
 - Fixed: Miniboss rooms in the Temple of Styx do not always offer upgraded rewards.
@@ -35,7 +73,6 @@ Other fixes and improvements:
 - Fixed: Thanatos immediately leaves after his encounter if he has no more dialogue, but could still have been gifted.
 - Fixed: Thanatos' "Pleased" portrait version is missing.
 - Fixed: A voiceline between Zagreus and Sisyphus after the ending is missing. Please keep reporting missing voicelines.
-<!--Releasenotes end-->
 
 ## v0.1.3
 

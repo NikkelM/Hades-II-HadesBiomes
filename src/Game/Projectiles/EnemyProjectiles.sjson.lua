@@ -298,12 +298,14 @@ local hadesProjectilesModifications = {
 		InheritFrom = "CrusherUnitTouchdown",
 		DetonateGraphic = "nil",
 	},
-	HadesBidentStrike = {
-		-- Makes it not go as far
-		Speed = 2500,
-	},
 	HadesAmmoWeapon = {
 		AffectsFriends = false,
+	},
+	HadesBidentStrike = {
+		Range = 900,
+	},
+	HadesSlowPool = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 	},
 	HadesCast = {
 		-- We manually create it as there are some visual bugs if the projectile hits the bottom part of the arena
