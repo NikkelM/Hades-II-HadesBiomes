@@ -1104,8 +1104,26 @@ local weaponModifications = {
 	},
 	-- #endregion
 	-- #region ELYSIUM - Minotaur
+	Minotaur5AxeCombo1 = {
+		AIData = {
+			AITrackTargetDuringCharge = false,
+			AngleTowardsTargetWhileFiring = false,
+			FireRotationDampening = 0.001,
+		},
+	},
+	Minotaur5AxeCombo2 = {
+		AIData = {
+			AITrackTargetDuringCharge = false,
+			AngleTowardsTargetWhileFiring = false,
+			PreAttackRotationDampening = 0.001,
+			FireRotationDampening = 0.001,
+		},
+	},
 	Minotaur5AxeCombo3 = {
 		AIData = {
+			PreAttackRotationDampening = 0.2,
+			WaitForAngleTowardTarget = true,
+			WaitForAngleTowardTargetTimeOut = 0.3,
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
 			-- Increased velocity to allow him to go further, but not too high
 			FireSelfVelocity = 2500,
@@ -1119,6 +1137,7 @@ local weaponModifications = {
 			PreFireDuration = 0.0,
 			-- Slightly adjusted so he doesn't hover at the end before the touchdown
 			FireDuration = 0.28,
+			FireRotationDampening = 0.001,
 		},
 	},
 	MinotaurArmored5AxeCombo3 = {
@@ -1126,9 +1145,19 @@ local weaponModifications = {
 			PostAttackAnimation = "MinotaurArmoredAttackSwings_AttackLeap",
 		},
 	},
+	Minotaur5AxeCombo4 = {
+		AIData = {
+			PreAttackRotationDampening = 0.2,
+			WaitForAngleTowardTarget = true,
+			WaitForAngleTowardTargetTimeOut = 0.3,
+			FireRotationDampening = 0.001,
+		},
+	},
 	Minotaur5AxeCombo5 = {
 		AIData = {
 			PostAttackDuration = 1.8,
+			PreAttackRotationDampening = 0.001,
+			FireRotationDampening = 0.001,
 		},
 	},
 	MinotaurLeapCombo3 = {
