@@ -135,7 +135,7 @@ function mod.HydraStageTransition(boss, currentRun, aiStage)
 		game.thread(game.PlayVoiceLines, aiStage.StageTransitionVoiceLines, nil, boss)
 	end
 	if aiStage.StageTransitionGlobalVoiceLines ~= nil and not boss.IsDead then
-		game.thread(game.PlayVoiceLines, GlobalVoiceLines[aiStage.StageTransitionGlobalVoiceLines], nil, boss)
+		game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[aiStage.StageTransitionGlobalVoiceLines], nil, boss)
 	end
 
 	game.wait(aiStage.StartDelay or 4.0, boss.AIThreadName)

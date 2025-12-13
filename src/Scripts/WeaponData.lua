@@ -517,6 +517,7 @@ local weaponModifications = {
 			RequireUnitLoS = true,
 			LoSBuffer = 80,
 			LoSEndBuffer = 32,
+			PreAttackRotationDampening = 0.001,
 		},
 	},
 	DisembodiedHandGrab = {
@@ -867,6 +868,7 @@ local weaponModifications = {
 			-- Needs to be lowered due to tethers not locking the head in place
 			-- It would otherwise fly over the whole map
 			FireSelfVelocity = 2950.0,
+			FireRotationDampening = 0.5,
 		},
 	},
 	HydraLungeUntethered = {
@@ -874,6 +876,7 @@ local weaponModifications = {
 			PreAttackDuration = 0.8,
 			MaxConsecutiveUses = 3,
 			FireSelfVelocity = 2450.0,
+			FireRotationDampening = 0.5,
 		},
 	},
 	HydraSlam = {
@@ -881,6 +884,7 @@ local weaponModifications = {
 			PostAttackDuration = 0.5,
 			MoveWithinRange = false,
 			FireSelfUpwardVelocity = 3500,
+			FireRotationDampening = 0.1,
 		},
 	},
 	HydraSlamFrenzy = {
@@ -897,27 +901,13 @@ local weaponModifications = {
 		AIData = {
 			AIMoveWithinRangeTimeout = 1.0,
 			PostAttackDuration = 0.5,
+			FireRotationDampening = 0.01,
 		},
 	},
 	HydraDartVolley = {
 		AIData = {
 			FireProjectileTowardTarget = true,
-			AttackSlots = {
-				-- InstantAngleTowardsTarget was removed
-				{ UseAttackerAngle = true, OffsetAngle = 0,   OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 15,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -15, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 30,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -30, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 45,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -45, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 60,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -60, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 75,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -75, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 90,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -90, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-			},
+			FireRotationDampening = 0.01,
 		},
 	},
 	-- #endregion
