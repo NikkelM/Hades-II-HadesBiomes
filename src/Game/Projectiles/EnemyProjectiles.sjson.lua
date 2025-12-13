@@ -301,6 +301,9 @@ local hadesProjectilesModifications = {
 	HadesAmmoWeapon = {
 		AffectsFriends = false,
 	},
+	HadesBidentStrike = {
+		Range = 900,
+	},
 	HadesSlowPool = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 	},

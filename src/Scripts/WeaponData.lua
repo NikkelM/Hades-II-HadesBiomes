@@ -1581,6 +1581,7 @@ local weaponModifications = {
 			PreAttackEndStop = true,
 			PostAttackStop = true,
 			PostAttackDuration = 0.5,
+			FireRotationDampening = 0.001,
 		},
 	},
 	HadesCast = {
@@ -1617,8 +1618,7 @@ local weaponModifications = {
 			TargetPlayer = true,
 			PreAttackAngleTowardTarget = true,
 			WaitForAngleTowardTarget = true,
-			-- TODO: Test if needed
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
+			FireRotationDampening = 0.001,
 		},
 	},
 	HadesBidentSpin = {
@@ -1627,12 +1627,28 @@ local weaponModifications = {
 			PreAttackStop = true,
 			PreAttackEndStop = true,
 			PostAttackStop = true,
+			FireRotationDampening = 0.001,
 		},
 	},
-	HadesBidentSpin2Reverse = {
+	HadesBidentArcCombo1 = {
 		AIData = {
-			-- TODO: Test if needed
-			FireSelfVelocity = 2300,
+			FireRotationDampening = 0.001,
+		},
+	},
+	HadesBidentArcCombo2 = {
+		AIData = {
+			AITrackTargetDuringCharge = false,
+			AngleTowardsTargetWhileFiring = false,
+			PreAttackRotationDampening = 1E-06,
+			FireRotationDampening = 1E-06,
+		},
+	},
+	HadesBidentArcCombo3 = {
+		AIData = {
+			AITrackTargetDuringCharge = false,
+			AngleTowardsTargetWhileFiring = false,
+			PreAttackRotationDampening = 1E-06,
+			FireRotationDampening = 1E-06,
 		},
 	},
 	HadesSpawns = {
@@ -1666,7 +1682,6 @@ local weaponModifications = {
 			PostAttackStop = true,
 			MoveWithinRange = false,
 			AttackDistance = 9999,
-			-- TODO: Test if needed/if a property should be translated automatically from sjson
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 		},
 		Sounds = {
@@ -1691,7 +1706,6 @@ local weaponModifications = {
 			PostAttackStop = true,
 			MoveWithinRange = false,
 			AttackDistance = 9999,
-			-- TODO: Test if needed/if a property should be translated automatically from sjson
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
@@ -1727,7 +1741,6 @@ local weaponModifications = {
 			PostAttackStop = true,
 			MoveWithinRange = false,
 			AttackDistance = 9999,
-			-- TODO: Test if needed/if a property should be translated automatically from sjson
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 		},
 		Sounds = {
