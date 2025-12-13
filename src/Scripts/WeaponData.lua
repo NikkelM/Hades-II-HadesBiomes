@@ -1078,6 +1078,24 @@ local weaponModifications = {
 			PostAttackStop = true,
 		},
 	},
+	ShadeSpearThrustSingle = {
+		AIData = {
+			PreAttackRotationDampening = 1E-06,
+			FireRotationDampening = 1E-06,
+		},
+	},
+	ShadeSpearThrust = {
+		AIData = {
+			PreAttackRotationDampening = 1E-06,
+			FireRotationDampening = 1E-06,
+		},
+	},
+	ShadeSpearForwardDash = {
+		AIData = {
+			AITrackTargetDuringCharge = false,
+			FireRotationDampening = 0.001,
+		},
+	},
 	ShadeShieldMelee = {
 		AIData = {
 			AITrackTargetDuringCharge = false,
