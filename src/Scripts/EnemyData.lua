@@ -647,8 +647,6 @@ local enemyModifications = {
 	-- #endregion
 	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
-		MaxHealth = 950,
-		HealthBuffer = 1650,
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		SpawnEvents = {
 			{
@@ -678,8 +676,6 @@ local enemyModifications = {
 		OnDamagedWeapons = mod.NilValue,
 	},
 	HeavyRangedSplitterMinibossSuperElite = {
-		MaxHealth = 1650,
-		HealthBuffer = 3200,
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		SpawnEvents = {
 			{
@@ -1165,7 +1161,7 @@ local enemyModifications = {
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "HydraTouchdown",
 			-- Lining up with when the head actually touches the ground
-			Delay = 0.23,
+			Delay = 0.16,
 		},
 		ImmuneToPolymorph = true,
 		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },

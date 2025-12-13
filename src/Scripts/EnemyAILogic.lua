@@ -53,6 +53,11 @@ end)
 function mod.ModsNikkelMHadesBiomesBossAIStageHandler(enemy, args)
 	local aiStage = enemy.AIStages[enemy.AIStageActive]
 
+	-- Revert any FireRotationDampening/treat it like a OnHitStun event for them
+	if not game.IsEmpty(enemy.ClearEffectsOnHitStun) then
+		ClearEffect({ Id = enemy.ObjectId, Names = enemy.ClearEffectsOnHitStun })
+	end
+
 	if aiStage.UnequipWeapons ~= nil then
 		for k, weaponName in pairs(aiStage.UnequipWeapons) do
 			game.RemoveValueAndCollapse(enemy.WeaponOptions, weaponName)

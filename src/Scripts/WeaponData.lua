@@ -118,7 +118,7 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 				end
 			end
 
-			-- Move properties from the sjson to the AIData table
+			-- Move easily mappable properties from the sjson to the AIData table
 			for key, value in pairs(sjsonToAIDataPropertyMappings) do
 				-- Check if parent or grandparent have modifications for this property defined already
 				local skipProperty = false
@@ -135,6 +135,90 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 						weaponData.AIData[value] = alternativeSjsonWeaponData[key]
 					elseif secondAlternativeSjsonWeaponData and secondAlternativeSjsonWeaponData[key] and not weaponData.AIData[value] then
 						weaponData.AIData[value] = secondAlternativeSjsonWeaponData[key]
+					end
+				end
+			end
+
+			-- Process effect mappings from the Hades sjson weapon data to the Hades II lua weapon definition
+			if sjsonWeaponData.Effect or sjsonWeaponData.Effects or
+					(parentWeaponName and mod.HadesSjsonWeaponsTable[parentWeaponName] and
+						(mod.HadesSjsonWeaponsTable[parentWeaponName].Effect or mod.HadesSjsonWeaponsTable[parentWeaponName].Effects)) or
+					(grandParentWeaponName and mod.HadesSjsonWeaponsTable[grandParentWeaponName] and
+						(mod.HadesSjsonWeaponsTable[grandParentWeaponName].Effect or mod.HadesSjsonWeaponsTable[grandParentWeaponName].Effects)) then
+				-- Can't get the RotationMultiplier ones to work here, and automatic mapping to FireRotationDampening also doesn't have the correct strength, so doing it manually for all attacks
+				local effectNameMappings = {
+					MeleeAttackGrip = "AttackLowGrip",
+				}
+				local effectDefaultProperties = {
+					AttackLowGrip = {
+						Type = "GRIP",
+						Duration = 0.3,
+						Modifier = 0.6,
+						HaltOnEnd = true,
+					},
+				}
+
+				-- Helper function to process a single effect entry
+				local function processEffect(effectEntry)
+					local defaults = effectDefaultProperties[effectNameMappings[effectEntry.Name]]
+					return {
+						EffectName = effectNameMappings[effectEntry.Name],
+						DataProperties = {
+							Type = effectEntry.Type or defaults.Type,
+							Duration = effectEntry.Duration or defaults.Duration,
+							Modifier = effectEntry.Modifier or defaults.Modifier,
+							HaltOnEnd = effectEntry.HaltOnEnd ~= nil and effectEntry.HaltOnEnd or defaults.HaltOnEnd,
+						}
+					}
+				end
+
+				-- Get the effects from the sjson data, no matter if it's a single Effect or a list of Effects
+				local function collectEffectsFromSjson(sjsonData)
+					local effects = {}
+					if sjsonData then
+						if sjsonData.Effect then
+							table.insert(effects, sjsonData.Effect)
+						end
+						if sjsonData.Effects then
+							for _, effectEntry in ipairs(sjsonData.Effects) do
+								table.insert(effects, effectEntry)
+							end
+						end
+					end
+					return effects
+				end
+
+				-- Initialize ApplyEffectsOnWeaponFire if needed
+				if not weaponData.AIData.ApplyEffectsOnWeaponFire then
+					weaponData.AIData.ApplyEffectsOnWeaponFire = {}
+				end
+
+				-- Collect effects from own weapon, parent, and grandparent
+				local allEffects = {}
+
+				local ownEffects = collectEffectsFromSjson(sjsonWeaponData)
+				for _, effect in ipairs(ownEffects) do
+					table.insert(allEffects, effect)
+				end
+
+				if #allEffects == 0 and parentWeaponName and mod.HadesSjsonWeaponsTable[parentWeaponName] then
+					local parentEffects = collectEffectsFromSjson(mod.HadesSjsonWeaponsTable[parentWeaponName])
+					for _, effect in ipairs(parentEffects) do
+						table.insert(allEffects, effect)
+					end
+				end
+
+				if #allEffects == 0 and grandParentWeaponName and mod.HadesSjsonWeaponsTable[grandParentWeaponName] then
+					local grandParentEffects = collectEffectsFromSjson(mod.HadesSjsonWeaponsTable[grandParentWeaponName])
+					for _, effect in ipairs(grandParentEffects) do
+						table.insert(allEffects, effect)
+					end
+				end
+
+				for _, effectEntry in ipairs(allEffects) do
+					if effectNameMappings[effectEntry.Name] ~= nil then
+						local newEffect = processEffect(effectEntry)
+						table.insert(weaponData.AIData.ApplyEffectsOnWeaponFire, newEffect)
 					end
 				end
 			end
@@ -268,7 +352,6 @@ local weaponReplacements = {
 			},
 		},
 		AIData = {
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			PostAttackDuration = 1.7,
 			-- Do the beam attack both before and after the lunge
 			PostAttackDumbFireWeapons = { "HarpyLungeSurgeBeam" },
@@ -379,7 +462,7 @@ local weaponModifications = {
 	MineToss = {
 		AIData = {
 			DeepInheritance = true,
-			ApplyEffectsOnWeaponFire = { WeaponEffectData.RootedAttacker, },
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.RootedAttacker, },
 			ProjectileName = "BloodMineToss",
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
@@ -416,9 +499,6 @@ local weaponModifications = {
 			DeepInheritance = true,
 			PreAttackEndShake = true,
 			FireProjectileStartDelay = 0.03,
-			-- Modified, as the original 1800 is too short
-			FireSelfVelocity = 3000,
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackHighGrip, },
 			PreAttackDuration = 0.5,
 			FireDuration = 0.25,
 			PostAttackDuration = 0.5,
@@ -431,6 +511,7 @@ local weaponModifications = {
 			RequireUnitLoS = true,
 			LoSBuffer = 80,
 			LoSEndBuffer = 32,
+			PreAttackRotationDampening = 0.001,
 		},
 	},
 	DisembodiedHandGrab = {
@@ -487,11 +568,6 @@ local weaponModifications = {
 	-- #endregion
 	-- #endregion
 	-- #region TARTARUS - Megaera
-	HarpyLunge = {
-		AIData = {
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
-		},
-	},
 	HarpyLightning = {
 		AIData = {
 			AttackSlotInterval = 0.01,
@@ -611,6 +687,7 @@ local weaponModifications = {
 		AIData = {
 			ChainedWeaponOptions = { "HarpyLassoLunge", "HarpyLassoLungeEM" },
 			ChainedWeapon = mod.NilValue,
+			AITrackTargetDuringCharge = false,
 			ForceFirst = true,
 		},
 	},
@@ -629,7 +706,7 @@ local weaponModifications = {
 		},
 		AIData = {
 			DeepInheritance = true,
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+			FireSelfVelocity = 3600,
 		},
 	},
 	HarpyLungeSurgeBeam = {
@@ -694,18 +771,7 @@ local weaponModifications = {
 	},
 	HarpyWhipCombo1 = {
 		AIData = {
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			BlockAsFirstWeapon = true,
-		},
-	},
-	HarpyWhipCombo2 = {
-		AIData = {
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
-		},
-	},
-	HarpyWhipCombo3 = {
-		AIData = {
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 		},
 	},
 	SummonTisiphoneBombingRun = {
@@ -793,18 +859,26 @@ local weaponModifications = {
 			PreAttackDuration = 0.8,
 			MoveWithinRangeTimeout = 0.5,
 			MaxConsecutiveUses = 3,
+			-- Needs to be lowered due to tethers not locking the head in place
+			-- It would otherwise fly over the whole map
+			FireSelfVelocity = 2950.0,
+			FireRotationDampening = 0.5,
 		},
 	},
 	HydraLungeUntethered = {
 		AIData = {
 			PreAttackDuration = 0.8,
 			MaxConsecutiveUses = 3,
+			FireSelfVelocity = 2450.0,
+			FireRotationDampening = 0.5,
 		},
 	},
 	HydraSlam = {
 		AIData = {
 			PostAttackDuration = 0.5,
 			MoveWithinRange = false,
+			FireSelfUpwardVelocity = 3500,
+			FireRotationDampening = 0.1,
 		},
 	},
 	HydraSlamFrenzy = {
@@ -821,27 +895,13 @@ local weaponModifications = {
 		AIData = {
 			AIMoveWithinRangeTimeout = 1.0,
 			PostAttackDuration = 0.5,
+			FireRotationDampening = 0.01,
 		},
 	},
 	HydraDartVolley = {
 		AIData = {
 			FireProjectileTowardTarget = true,
-			AttackSlots = {
-				-- InstantAngleTowardsTarget was removed
-				{ UseAttackerAngle = true, OffsetAngle = 0,   OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 15,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -15, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 30,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -30, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 45,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -45, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 60,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -60, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 75,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -75, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = 90,  OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-				{ UseAttackerAngle = true, OffsetAngle = -90, OffsetDistance = 1500, OffsetScaleY = 0.55, InstantAngleTowardsTarget = true, UseTargetPosition = true, UseAngleBetween = mod.NilValue, },
-			},
+			FireRotationDampening = 0.01,
 		},
 	},
 	-- #endregion
@@ -943,6 +1003,13 @@ local weaponModifications = {
 		},
 	},
 	-- #endregion
+	-- #region ASPHODEL - Hydra (Mini)
+	HydraSnap = {
+		AIData = {
+			FireSelfVelocity = 3000.0,
+		},
+	},
+	-- #endregion
 	-- #endregion
 
 	-- #region ELYSIUM
@@ -954,15 +1021,30 @@ local weaponModifications = {
 			FireSelfVelocity = 2500,
 		},
 	},
+	ShadeBowRanged = {
+		AIData = {
+			FireRotationDampening = 1E-06,
+		},
+	},
+	ShadeBowRangedRapidFire = {
+		AIData = {
+			FireRotationDampening = 1E-07,
+		},
+	},
+	ShadeBowRangedRapidSalvo = {
+		AIData = {
+			FireRotationDampening = 1E-07,
+		},
+	},
+	ShadeBowRangedSplitFire = {
+		AIData = {
+			FireRotationDampening = 1E-07,
+		},
+	},
 	ShadeBowSideDash = {
 		AIData = {
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
-			FireSelfVelocity = 2500,
-		},
-	},
-	ShadeSpearForwardDash = {
-		AIData = {
 			FireSelfVelocity = 2500,
 		},
 	},
@@ -1009,6 +1091,36 @@ local weaponModifications = {
 			PostAttackStop = true,
 		},
 	},
+	ShadeSpearThrustSingle = {
+		AIData = {
+			PreAttackRotationDampening = 1E-06,
+			FireRotationDampening = 1E-06,
+		},
+	},
+	ShadeSpearThrust = {
+		AIData = {
+			PreAttackRotationDampening = 1E-06,
+			FireRotationDampening = 1E-06,
+		},
+	},
+	ShadeSpearForwardDash = {
+		AIData = {
+			AITrackTargetDuringCharge = false,
+			FireRotationDampening = 0.001,
+		},
+	},
+	ShadeShieldMelee = {
+		AIData = {
+			AITrackTargetDuringCharge = false,
+			FireRotationDampening = 1E-06,
+		},
+	},
+	ShadeHunkerDown = {
+		AIData = {
+			AITrackTargetDuringCharge = false,
+			FireRotationDampening = 1E-06,
+		},
+	},
 	ShieldAlliesAoE = {
 		AIData = {
 			-- Don't remove this - doesn't work without, even though it's the same name
@@ -1023,8 +1135,26 @@ local weaponModifications = {
 	},
 	-- #endregion
 	-- #region ELYSIUM - Minotaur
+	Minotaur5AxeCombo1 = {
+		AIData = {
+			AITrackTargetDuringCharge = false,
+			AngleTowardsTargetWhileFiring = false,
+			FireRotationDampening = 0.001,
+		},
+	},
+	Minotaur5AxeCombo2 = {
+		AIData = {
+			AITrackTargetDuringCharge = false,
+			AngleTowardsTargetWhileFiring = false,
+			PreAttackRotationDampening = 0.001,
+			FireRotationDampening = 0.001,
+		},
+	},
 	Minotaur5AxeCombo3 = {
 		AIData = {
+			PreAttackRotationDampening = 0.2,
+			WaitForAngleTowardTarget = true,
+			WaitForAngleTowardTargetTimeOut = 0.3,
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
 			-- Increased velocity to allow him to go further, but not too high
 			FireSelfVelocity = 2500,
@@ -1038,6 +1168,7 @@ local weaponModifications = {
 			PreFireDuration = 0.0,
 			-- Slightly adjusted so he doesn't hover at the end before the touchdown
 			FireDuration = 0.28,
+			FireRotationDampening = 0.001,
 		},
 	},
 	MinotaurArmored5AxeCombo3 = {
@@ -1045,13 +1176,27 @@ local weaponModifications = {
 			PostAttackAnimation = "MinotaurArmoredAttackSwings_AttackLeap",
 		},
 	},
+	Minotaur5AxeCombo4 = {
+		AIData = {
+			PreAttackRotationDampening = 0.2,
+			WaitForAngleTowardTarget = true,
+			WaitForAngleTowardTargetTimeOut = 0.3,
+			FireRotationDampening = 0.001,
+		},
+	},
 	Minotaur5AxeCombo5 = {
 		AIData = {
 			PostAttackDuration = 1.8,
+			PreAttackRotationDampening = 0.001,
+			FireRotationDampening = 0.001,
 		},
 	},
 	MinotaurLeapCombo3 = {
 		AIData = {
+			PreAttackRotationDampening = 0.7,
+			WaitForAngleTowardTarget = true,
+			WaitForAngleTowardTargetTimeOut = 0.7,
+			FireRotationDampening = 0.001,
 			-- Should be the same as Minotaur5AxeCombo3
 			FireSelfVelocity = 2500,
 			FireSelfUpwardVelocity = 2000,
@@ -1060,6 +1205,10 @@ local weaponModifications = {
 	},
 	MinotaurLeapCombo4 = {
 		AIData = {
+			PreAttackRotationDampening = 0.7,
+			WaitForAngleTowardTarget = true,
+			WaitForAngleTowardTargetTimeOut = 0.7,
+			FireRotationDampening = 0.001,
 			-- Should be the same as Minotaur5AxeCombo3
 			FireSelfVelocity = 2500,
 			FireSelfUpwardVelocity = 2000,
@@ -1068,6 +1217,10 @@ local weaponModifications = {
 	},
 	MinotaurLeapCombo5 = {
 		AIData = {
+			PreAttackRotationDampening = 0.7,
+			WaitForAngleTowardTarget = true,
+			WaitForAngleTowardTargetTimeOut = 0.7,
+			FireRotationDampening = 0.001,
 			-- Should be the same as Minotaur5AxeCombo3
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
 			FireSelfVelocity = 2500,
@@ -1112,7 +1265,7 @@ local weaponModifications = {
 			ProjectileName = "MinotaurBullRushRam",
 			WaitUntilProjectileDeath = "MinotaurBullRushRam",
 			PreAttackSetUnitProperties = {
-				Speed = 1200,
+				Speed = 1100,
 				CanOnlyMoveForward = "true",
 			},
 			-- Setting explicitly to not break when inferring the reset values as CanOnlyMoveForward will be a boolean instead of string
@@ -1190,11 +1343,11 @@ local weaponModifications = {
 			ProjectileName = "MinotaurArmoredBullRushRam",
 			WaitUntilProjectileDeath = "MinotaurArmoredBullRushRam",
 			PreAttackSetUnitProperties = {
-				Speed = 1300,
+				Speed = 1100,
 				CanOnlyMoveForward = "true",
 			},
 			PostAttackAnimation = "MinotaurArmoredBullRush_PreStrike",
-			FireRotationDampening = 0.7,
+			FireRotationDampening = 0.6,
 			EffectExpiredName = mod.NilValue,
 		},
 	},
@@ -1203,7 +1356,7 @@ local weaponModifications = {
 			ProjectileName = "MinotaurBullRushRam",
 			WaitUntilProjectileDeath = "MinotaurBullRushRam",
 			PreAttackSetUnitProperties = {
-				Speed = 1200,
+				Speed = 1100,
 				CanOnlyMoveForward = "true",
 			},
 			PostAttackSetUnitProperties = {
@@ -1212,7 +1365,7 @@ local weaponModifications = {
 			},
 			TrackTargetDuringCharge = true,
 			FireMoveTowardTarget = true,
-			FireRotationDampening = 0.7,
+			FireRotationDampening = 0.6,
 			MoveWithinRange = true,
 			MoveSuccessDistance = 35,
 			PostAttackStop = true,
@@ -1231,17 +1384,18 @@ local weaponModifications = {
 			ProjectileName = "MinotaurArmoredBullRushRam",
 			WaitUntilProjectileDeath = "MinotaurArmoredBullRushRam",
 			PreAttackSetUnitProperties = {
-				Speed = 1300,
+				Speed = 1100,
 				CanOnlyMoveForward = "true",
 			},
 			PostAttackAnimation = "MinotaurArmoredBullRush_PreStrike",
-			FireRotationDampening = 0.7,
+			FireRotationDampening = 0.6,
 			EffectExpiredName = mod.NilValue,
 		},
 	},
 	MinotaurArmoredAxeSpin = {
 		AIData = {
-			FireSelfVelocity = 1050,
+			FireSelfVelocity = 900,
+			FireRotationDampening = 0.2,
 		},
 	},
 	-- #endregion
@@ -1257,12 +1411,13 @@ local weaponModifications = {
 	},
 	TheseusSpearSpin = {
 		AIData = {
-			FireSelfVelocity = 1700,
 			-- So there are some opportunities to attack him without him blocking everything
 			PostAttackStop = true,
 			-- Also for this, removing the cooldown to not make it too easy
 			PostAttackCooldownMin = 0.75,
 			PostAttackCooldownMax = 1.25,
+			AITrackTargetDuringCharge = false,
+			FireRotationDampening = 0.001,
 		},
 	},
 	-- Has it's properties in the root instead of in AIData
@@ -1391,10 +1546,25 @@ local weaponModifications = {
 			ProjectileInterval = 0.05,
 		},
 	},
+	SatyrRangedWeapon = {
+		AIData = {
+			FireRotationDampening = 1E-06,
+		},
+	},
+	SatyrSplitShot = {
+		AIData = {
+			FireRotationDampening = 1E-07,
+		},
+	},
+	SatyrSingleShot = {
+		AIData = {
+			FireRotationDampening = 1E-07,
+		},
+	},
 	GrenadierWeapon = {
 		AIData = {
 			DeepInheritance = true,
-			ApplyEffectsOnWeaponFire = { WeaponEffectData.RootedAttacker, },
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.RootedAttacker, },
 			ProjectileName = "GrenadierWeapon",
 			-- Custom addition to make the spread a little more random
 			Spread = 50,
@@ -1439,7 +1609,7 @@ local weaponModifications = {
 			PreAttackEndStop = true,
 			PostAttackStop = true,
 			PostAttackDuration = 0.5,
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
+			FireRotationDampening = 0.001,
 		},
 	},
 	HadesCast = {
@@ -1450,6 +1620,9 @@ local weaponModifications = {
 		SkipAmmoDropOnMiss = mod.NilValue,
 		StoreAmmoInLastHit = mod.NilValue,
 		FireAmmoDropWeaponOnDeflect = mod.NilValue,
+		AIData = {
+			FireRotationDampening = 1E-06,
+		},
 	},
 	HadesBidentStrikeCombo1 = {
 		AIData = {
@@ -1476,7 +1649,7 @@ local weaponModifications = {
 			TargetPlayer = true,
 			PreAttackAngleTowardTarget = true,
 			WaitForAngleTowardTarget = true,
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
+			FireRotationDampening = 0.001,
 		},
 	},
 	HadesBidentSpin = {
@@ -1485,12 +1658,28 @@ local weaponModifications = {
 			PreAttackStop = true,
 			PreAttackEndStop = true,
 			PostAttackStop = true,
-			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip, },
+			FireRotationDampening = 0.001,
 		},
 	},
-	HadesBidentSpin2Reverse = {
+	HadesBidentArcCombo1 = {
 		AIData = {
-			FireSelfVelocity = 2300,
+			FireRotationDampening = 0.001,
+		},
+	},
+	HadesBidentArcCombo2 = {
+		AIData = {
+			AITrackTargetDuringCharge = false,
+			AngleTowardsTargetWhileFiring = false,
+			PreAttackRotationDampening = 1E-06,
+			FireRotationDampening = 1E-06,
+		},
+	},
+	HadesBidentArcCombo3 = {
+		AIData = {
+			AITrackTargetDuringCharge = false,
+			AngleTowardsTargetWhileFiring = false,
+			PreAttackRotationDampening = 1E-06,
+			FireRotationDampening = 1E-06,
 		},
 	},
 	HadesSpawns = {
@@ -1560,6 +1749,11 @@ local weaponModifications = {
 			},
 		},
 	},
+	HadesRubbleClear = {
+		AIData = {
+			FireRotationDampening = 1E-06,
+		},
+	},
 	HadesBidentThrow = {
 		AIData = {
 			TrackTargetDuringFire = false,
@@ -1604,17 +1798,13 @@ local weaponModifications = {
 	HadesCastBeam = {
 		RapidDamageType = true,
 		AIData = {
-			PreFireFunctionName = _PLUGIN.guid .. "." .. "HadesBeamDampeningOn",
-			PostAttackEndFunctionName = _PLUGIN.guid .. "." .. "HadesBeamDampeningOff",
-			ModsNikkelMHadesBiomes_HadesBeamDampeningValue = 0.02,
+			FireRotationDampening = 0.02,
 		},
 	},
 	HadesCastBeam360 = {
 		RapidDamageType = true,
 		AIData = {
-			PreFireFunctionName = _PLUGIN.guid .. "." .. "HadesBeamDampeningOn",
-			PostAttackEndFunctionName = _PLUGIN.guid .. "." .. "HadesBeamDampeningOff",
-			ModsNikkelMHadesBiomes_HadesBeamDampeningValue = 0.015,
+			FireRotationDampening = 0.015,
 		},
 	},
 	HadesMobilityCombo1 = {

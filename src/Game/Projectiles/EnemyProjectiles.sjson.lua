@@ -298,12 +298,11 @@ local hadesProjectilesModifications = {
 		InheritFrom = "CrusherUnitTouchdown",
 		DetonateGraphic = "nil",
 	},
-	HadesBidentStrike = {
-		-- Makes it not go as far
-		Speed = 2500,
-	},
 	HadesAmmoWeapon = {
 		AffectsFriends = false,
+	},
+	HadesBidentStrike = {
+		Range = 900,
 	},
 	HadesSlowPool = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
