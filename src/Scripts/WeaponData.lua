@@ -1028,6 +1028,26 @@ local weaponModifications = {
 			FireSelfVelocity = 2500,
 		},
 	},
+	ShadeBowRanged = {
+		AIData = {
+			FireRotationDampening = 1E-06,
+		},
+	},
+	ShadeBowRangedRapidFire = {
+		AIData = {
+			FireRotationDampening = 1E-07,
+		},
+	},
+	ShadeBowRangedRapidSalvo = {
+		AIData = {
+			FireRotationDampening = 1E-07,
+		},
+	},
+	ShadeBowRangedSplitFire = {
+		AIData = {
+			FireRotationDampening = 1E-07,
+		},
+	},
 	ShadeBowSideDash = {
 		AIData = {
 			-- Causes an infinite loop, as this would be set to itself
@@ -1533,10 +1553,25 @@ local weaponModifications = {
 			ProjectileInterval = 0.05,
 		},
 	},
+	SatyrRangedWeapon = {
+		AIData = {
+			FireRotationDampening = 1E-06,
+		},
+	},
+	SatyrSplitShot = {
+		AIData = {
+			FireRotationDampening = 1E-07,
+		},
+	},
+	SatyrSingleShot = {
+		AIData = {
+			FireRotationDampening = 1E-07,
+		},
+	},
 	GrenadierWeapon = {
 		AIData = {
 			DeepInheritance = true,
-			ApplyEffectsOnWeaponFire = { WeaponEffectData.RootedAttacker, },
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.RootedAttacker, },
 			ProjectileName = "GrenadierWeapon",
 			-- Custom addition to make the spread a little more random
 			Spread = 50,
@@ -1592,6 +1627,9 @@ local weaponModifications = {
 		SkipAmmoDropOnMiss = mod.NilValue,
 		StoreAmmoInLastHit = mod.NilValue,
 		FireAmmoDropWeaponOnDeflect = mod.NilValue,
+		AIData = {
+			FireRotationDampening = 1E-06,
+		},
 	},
 	HadesBidentStrikeCombo1 = {
 		AIData = {
@@ -1718,6 +1756,11 @@ local weaponModifications = {
 			},
 		},
 	},
+	HadesRubbleClear = {
+		AIData = {
+			FireRotationDampening = 1E-06,
+		},
+	},
 	HadesBidentThrow = {
 		AIData = {
 			TrackTargetDuringFire = false,
@@ -1762,17 +1805,13 @@ local weaponModifications = {
 	HadesCastBeam = {
 		RapidDamageType = true,
 		AIData = {
-			PreFireFunctionName = _PLUGIN.guid .. "." .. "HadesBeamDampeningOn",
-			PostAttackEndFunctionName = _PLUGIN.guid .. "." .. "HadesBeamDampeningOff",
-			ModsNikkelMHadesBiomes_HadesBeamDampeningValue = 0.02,
+			FireRotationDampening = 0.02,
 		},
 	},
 	HadesCastBeam360 = {
 		RapidDamageType = true,
 		AIData = {
-			PreFireFunctionName = _PLUGIN.guid .. "." .. "HadesBeamDampeningOn",
-			PostAttackEndFunctionName = _PLUGIN.guid .. "." .. "HadesBeamDampeningOff",
-			ModsNikkelMHadesBiomes_HadesBeamDampeningValue = 0.015,
+			FireRotationDampening = 0.015,
 		},
 	},
 	HadesMobilityCombo1 = {
