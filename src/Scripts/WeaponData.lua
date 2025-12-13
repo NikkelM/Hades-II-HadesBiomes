@@ -693,6 +693,7 @@ local weaponModifications = {
 		AIData = {
 			ChainedWeaponOptions = { "HarpyLassoLunge", "HarpyLassoLungeEM" },
 			ChainedWeapon = mod.NilValue,
+			AITrackTargetDuringCharge = false,
 			ForceFirst = true,
 		},
 	},
