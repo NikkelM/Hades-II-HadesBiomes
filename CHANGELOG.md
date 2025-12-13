@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Thanatos will now teleport to the room exit faster after clearing his encounters.
 - A victory stinger will now play when clearing a run after reaching the ending.
 - Melinoe will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
+- Added a hint to open the inventory when first gathering any of the new resources added by the mod.
 - Added a config option for speedrunners to always force the Satyr Sack in Styx to spawn in the second wing.
 - Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
 - Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
