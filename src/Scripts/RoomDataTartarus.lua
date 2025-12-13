@@ -313,7 +313,6 @@ local roomReplacements = {
 				},
 				{ Cue = "/VO/Melinoe_0118",      Text = "All right." },
 				{ Cue = "/VO/MelinoeField_0784", Text = "Let's see how this goes..." },
-				{ Cue = "/VO/Melinoe_1432",      Text = "No traitor to the House shall go unpunished.", },
 				-- From BountyStart
 				{ Cue = "/VO/Melinoe_5505",      Text = "...So strange..." },
 			},
