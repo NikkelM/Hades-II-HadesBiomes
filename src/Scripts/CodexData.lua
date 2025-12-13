@@ -31,7 +31,7 @@ local storyNPCNames = {
 
 -- For duplicate Portraits, see mod.HadesPortraitAnimationAdditions
 local hadesCodexOrdering = {
-	ModsNikkelMHadesBiomesCodexEntry = {
+	[mod.CodexChapterName] = {
 		-- Locations
 		"Tartarus", "Asphodel", "Elysium", "Styx", "Challenge", "Surface",
 		-- NPCs
@@ -50,7 +50,7 @@ local hadesCodexOrdering = {
 -- Defines mappings, and all that are not in here are removed
 local codexGroupNameMappings = {
 	-- Used as the base category we create the new one from
-	Enemies = "ModsNikkelMHadesBiomesCodexEntry",
+	Enemies = mod.CodexChapterName,
 	-- These will be moved into Enemies after the mapping
 	Biomes = "ModsNikkelMHadesBiomesBiomes",
 	OtherDenizens = "ModsNikkelMHadesBiomesOtherDenizens",

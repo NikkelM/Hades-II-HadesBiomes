@@ -36,12 +36,12 @@ end)
 modutil.mod.Path.Wrap("ShowRunHistory", function(base, screen, button)
 	local originalEntries = game.DeepCopyTable(game.CodexData.Biomes.Entries)
 	local hadesBiomeCodexEntries = {}
-	hadesBiomeCodexEntries.BiomeTartarus = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Tartarus
-	hadesBiomeCodexEntries.BiomeAsphodel = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Asphodel
-	hadesBiomeCodexEntries.BiomeElysium = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Elysium
-	hadesBiomeCodexEntries.BiomeStyx = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Styx
-	hadesBiomeCodexEntries.BiomeChallenge = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Challenge
-	hadesBiomeCodexEntries.BiomeSurface = game.CodexData.ModsNikkelMHadesBiomesCodexEntry.Entries.Surface
+	hadesBiomeCodexEntries.BiomeTartarus = game.CodexData[mod.CodexChapterName].Entries.Tartarus
+	hadesBiomeCodexEntries.BiomeAsphodel = game.CodexData[mod.CodexChapterName].Entries.Asphodel
+	hadesBiomeCodexEntries.BiomeElysium = game.CodexData[mod.CodexChapterName].Entries.Elysium
+	hadesBiomeCodexEntries.BiomeStyx = game.CodexData[mod.CodexChapterName].Entries.Styx
+	hadesBiomeCodexEntries.BiomeChallenge = game.CodexData[mod.CodexChapterName].Entries.Challenge
+	hadesBiomeCodexEntries.BiomeSurface = game.CodexData[mod.CodexChapterName].Entries.Surface
 	game.CodexData.Biomes.Entries = game.MergeTables(game.CodexData.Biomes.Entries, hadesBiomeCodexEntries)
 
 	-- To prevent errors when opening the screen with the mod uninstalled, we need to set EndingRoomName to nil for modded runs

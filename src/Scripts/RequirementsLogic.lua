@@ -480,26 +480,41 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredCodexEntry ~= nil then
+		local requiredEntryName = requirements.RequiredCodexEntry.EntryName
+		local requiredEntryIndex = requirements.RequiredCodexEntry.EntryIndex or 1
+
+		if game.CodexData[mod.CodexChapterName].Entries[requiredEntryName] and game.CodexData[mod.CodexChapterName].Entries[requiredEntryName].Entries[requiredEntryIndex] then
+			local codexRequirements = game.CodexData[mod.CodexChapterName].Entries[requiredEntryName].Entries
+					[requiredEntryIndex].UnlockGameStateRequirements or {}
+			if not mod.ModsNikkelMHadesBiomesIsGameStateEligible(nil, codexRequirements) then
+				return false
+			end
+		end
 		-- local requiredEntryName = requirements.RequiredCodexEntry.EntryName
 		-- local requiredEntryIndex = requirements.RequiredCodexEntry.EntryIndex or 1
 		-- local requiredCodexEntryFound = HasCodexEntryBeenFound(requiredEntryName, requiredEntryIndex)
 		-- if not requiredCodexEntryFound then
 		-- 	return false
 		-- end
-		return false
 	end
 
 	if requirements.RequiredCodexEntries ~= nil then
-		-- for requiredEntryName, requiredEntryIndex in pairs(requirements.RequiredCodexEntries) do
-		-- 	if not HasCodexEntryBeenFound(requiredEntryName, requiredEntryIndex) then
-		-- 		return false
-		-- 	end
-		-- end
-		return false
+		for requiredEntryName, requiredEntryIndex in pairs(requirements.RequiredCodexEntries) do
+			if game.CodexData[mod.CodexChapterName].Entries[requiredEntryName] and game.CodexData[mod.CodexChapterName].Entries[requiredEntryName].Entries[requiredEntryIndex] then
+				local codexRequirements = game.CodexData[mod.CodexChapterName].Entries[requiredEntryName].Entries
+						[requiredEntryIndex].UnlockGameStateRequirements or {}
+				if not mod.ModsNikkelMHadesBiomesIsGameStateEligible(nil, codexRequirements) then
+					return false
+				end
+			end
+			-- 	if not HasCodexEntryBeenFound(requiredEntryName, requiredEntryIndex) then
+			-- 		return false
+			-- 	end
+		end
 	end
 
-	if requirements.RequiredCodexEntriesMin ~= nil then -- not implemented in mod
-		if CalcNumCodexEntriesUnlocked() < requirements.RequiredCodexEntriesMin then
+	if requirements.RequiredCodexEntriesMin ~= nil then
+		if game.CalcNumCodexEntriesUnlocked() < requirements.RequiredCodexEntriesMin then
 			return false
 		end
 	end

@@ -5,9 +5,9 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - Overhauled many enemy's attack patterns, reducing their rotation speed and tracking/lock-on abilities during many attack combos. This should now feel closer to their behaviour in the first game.
-- Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
 - Balancing: The Wretched Sneak in Tartarus now waits longer after it's ranged attack before teleporting away.
 - Balancing: Decreased health and armour of the Doomstone.
+- Fixed: Patroclus storyline does not start past the first meeting, and he cannot be gifted.
 
 Other fixes and improvements:
 - Added an additional Elysium combat room that was previously disabled due to effect layering issues that have now been fixed.
@@ -16,6 +16,7 @@ Other fixes and improvements:
 - A victory stinger will now play when clearing a run after reaching the ending.
 - Melinoe will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
 - Added a config option for speedrunners to always force the Satyr Sack in Styx to spawn in the second wing.
+- Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
 - Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
 - Balancing: All Elysium Shades' dash attacks have increased range.
 - Balancing: Slightly increased poison damage from a single Styx enemy's hit in Elysium to be more in line with Elysium damage numbers (one hit now deals ~10 damage). Additional hits can still stack, so be on your toes!

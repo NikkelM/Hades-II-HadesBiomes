@@ -215,7 +215,7 @@ function mod.ThanatosExit(source, args)
 		end
 	end
 
-	game.CheckCodexUnlock("ModsNikkelMHadesBiomesCodexEntry", "NPC_Thanatos_01")
+	game.CheckCodexUnlock(mod.CodexChapterName, "NPC_Thanatos_01")
 end
 
 function mod.ThanatosExitSilent(source, args)

@@ -62,3 +62,5 @@ mod.ModdedShrineBountyNames = {
 	"ModsNikkelMHadesBiomes_BountyShrineDaggers_ElysiumBoss",
 	"ModsNikkelMHadesBiomes_BountyShrineStaff_StyxBoss",
 }
+
+mod.CodexChapterName = "ModsNikkelMHadesBiomesCodexEntry"
