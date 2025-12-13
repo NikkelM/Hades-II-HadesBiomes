@@ -711,7 +711,6 @@ local weaponModifications = {
 			},
 		},
 		AIData = {
-			-- TODO: Too much tracking on this and the whip before
 			DeepInheritance = true,
 			FireSelfVelocity = 3600,
 		},
