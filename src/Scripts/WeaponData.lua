@@ -1162,6 +1162,10 @@ local weaponModifications = {
 	},
 	MinotaurLeapCombo3 = {
 		AIData = {
+			PreAttackRotationDampening = 0.7,
+			WaitForAngleTowardTarget = true,
+			WaitForAngleTowardTargetTimeOut = 0.7,
+			FireRotationDampening = 0.001,
 			-- Should be the same as Minotaur5AxeCombo3
 			FireSelfVelocity = 2500,
 			FireSelfUpwardVelocity = 2000,
@@ -1170,6 +1174,10 @@ local weaponModifications = {
 	},
 	MinotaurLeapCombo4 = {
 		AIData = {
+			PreAttackRotationDampening = 0.7,
+			WaitForAngleTowardTarget = true,
+			WaitForAngleTowardTargetTimeOut = 0.7,
+			FireRotationDampening = 0.001,
 			-- Should be the same as Minotaur5AxeCombo3
 			FireSelfVelocity = 2500,
 			FireSelfUpwardVelocity = 2000,
@@ -1178,6 +1186,10 @@ local weaponModifications = {
 	},
 	MinotaurLeapCombo5 = {
 		AIData = {
+			PreAttackRotationDampening = 0.7,
+			WaitForAngleTowardTarget = true,
+			WaitForAngleTowardTargetTimeOut = 0.7,
+			FireRotationDampening = 0.001,
 			-- Should be the same as Minotaur5AxeCombo3
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
 			FireSelfVelocity = 2500,
