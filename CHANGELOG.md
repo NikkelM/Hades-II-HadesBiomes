@@ -32,6 +32,7 @@ Other fixes and improvements:
 - Fixed: Path of Stars upgrades offered by Styx miniboss rooms only grant three points instead of five.
 - Fixed: When using his teleport, Hades' voicelines and sound effect give away his new position before he reappears.
 - Fixed: Boiling Blood can be applied while invulnerable, such as during the Aspect of Persephone's special attack.
+- Fixed: Boiling Blood can be applied when the projectile is blocked through the Black Coat's omega attack.
 - Fixed: The slowing area of effect around Hades' dropped Cast projectiles can sometimes be destroyed with attacks.
 - Fixed: "Blast Ready" VFX for Hephaestus' boons is shown on the Surface.
 - Fixed: Ranged Cast weapons can be used on the Surface.

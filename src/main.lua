@@ -412,6 +412,7 @@ local function on_ready()
 			import "Scripts/RunLogic.lua"
 			import "Scripts/StoreLogic.lua"
 			import "Scripts/TraitLogic.lua"
+			import "Scripts/WeaponLogic.lua"
 			import "Scripts/WeaponSets.lua"
 
 			-- Ensure the FxOriginal package is loaded with every biome package
