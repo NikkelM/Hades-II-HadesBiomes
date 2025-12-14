@@ -22,7 +22,7 @@ Other fixes and improvements:
 - Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
 - Balancing: The Wretched Pest will now attack slightly more frequently, eliminating times where it would stand still for a long time.
 - Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
-- Balancing: All Elysium Shades' dash attacks have increased range.
+- Balancing: All Elysian Shades' dash attacks have increased range.
 - Balancing: Slightly increased poison damage from a single Styx enemy's hit in Elysium to be more in line with Elysium damage numbers (one hit now deals ~10 damage). Additional hits can still stack, so be on your toes!
 - Balancing: Slightly increased the forward momentum of Asterius' spin attack to more closely match the behaviour in the first game.
 - Balancing: If Deep Dissent is active, Hades will no longer summon minibosses during his Vow of Rivals fight, but normal enemies instead.
@@ -56,8 +56,6 @@ Other fixes and improvements:
 - Fixed: Miniboss rooms in the Temple of Styx do not always offer upgraded rewards.
 - Fixed: Music cuts out, desyncs or disappears in Erebus.
 - Fixed: Music disappears after the "Barge of Death" encounter in Asphodel.
-
-*If you continue to experience issues with music, please report them on [GitHub](https://github.com/NikkelM/Hades-II-HadesBiomes/issues) or in the [modding Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.*
 
 Other fixes and improvements:
 - The mod will now cancel the installation if it detects that Hades mods are installed, and show an informative message when loading into a save. This should prevent unexpected crashes when loading into the main menu in some cases.
