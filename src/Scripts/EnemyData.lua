@@ -394,7 +394,8 @@ local enemyReplacements = {
 	-- #region GENERAL
 	BaseVulnerableEnemy = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
-		DestroyDelay = mod.NilValue,
+		-- Minimum 0.15 to allow OnDeathWeapons to fire from this unit (e.g. ChaosDeathWeaponCurse)
+		DestroyDelay = 0.15,
 		-- We always create the death animation on a new blank obstacle, so we don't have to time the DestroyDelay
 		ManualDeathAnimation = true,
 		ActivateFx = "EnemySummonRune",
@@ -406,7 +407,8 @@ local enemyReplacements = {
 	},
 	HadesBossBaseVulnerableEnemy = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
-		DestroyDelay = mod.NilValue,
+		-- Minimum 0.15 to allow OnDeathWeapons to fire from this unit (e.g. ChaosDeathWeaponCurse)
+		DestroyDelay = 0.15,
 		DefaultAIData = {
 			DeepInheritance = true,
 			MoveWithinRange = false,
@@ -584,9 +586,6 @@ local enemyModifications = {
 		DefaultAIData = {
 			TakeCoverDuration = 3.0,
 		},
-	},
-	BaseThief = {
-		DestroyDelay = 0.0,
 	},
 	ThiefMineLayer = {
 		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
@@ -1272,7 +1271,6 @@ local enemyModifications = {
 	-- #region ELYSIUM
 	-- #region ELYSIUM - Regular
 	BaseShade = {
-		DestroyDelay = 0.0,
 		ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed = true
 	},
 	ShadeNaked = {
@@ -1539,7 +1537,8 @@ local enemyModifications = {
 	FlurrySpawner = {
 		StunAnimations = { Default = "SoulSpawnerIdle" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
-		DestroyDelay = mod.NilValue,
+		-- Minimum 0.15 to allow OnDeathWeapons to fire from this unit (e.g. ChaosDeathWeaponCurse)
+		DestroyDelay = 0.15,
 	},
 	FlurrySpawnerSuperElite = {
 		-- For some reason EnemyPointRanged doesn't exist in D_Boss01, and setting this to nil doesn't work

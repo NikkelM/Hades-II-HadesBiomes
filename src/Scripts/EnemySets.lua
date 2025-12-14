@@ -114,7 +114,6 @@ local additionalEnemySets = {
 	EnemiesBiome2Challenge = {
 		"LightSpawnerElite",
 		"BloodlessNaked",
-		"BloodlessNaked",
 		"BloodlessNakedElite",
 		"BloodlessNakedBerserkerElite",
 		"BloodlessGrenadier",

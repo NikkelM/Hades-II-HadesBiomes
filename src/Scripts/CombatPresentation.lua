@@ -34,7 +34,7 @@ end)
 -- For the Alecto bossfight, if dying while the enemy is permanently enraged
 modutil.mod.Path.Wrap("PlayerLastStandPresentationEnd", function(base)
 	base()
-	if not IsEmpty(game.ActiveEnemies) then
+	if not game.IsEmpty(game.ActiveEnemies) then
 		local colorGrade = "None"
 		for id, enemy in pairs(game.ActiveEnemies) do
 			if enemy.PermanentEnraged and enemy.PermanentEnragedColorGrade then
@@ -59,7 +59,7 @@ modutil.mod.Path.Wrap("UpdateHealthBarReal", function(base, args)
 
 	local enemy = args[1]
 
-	if enemy.CursedHealthBarEffect then
+	if enemy and enemy.CursedHealthBarEffect then
 		if enemy.UseGroupHealthBar then
 			return
 		end
