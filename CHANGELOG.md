@@ -1,8 +1,17 @@
 # Changelog
 
-## v0.1.5
+## v0.1.6
 
 <!--Releasenotes start-->
+### Patch Highlights:
+
+
+Other fixes and improvements:
+
+<!--Releasenotes end-->
+
+## v0.1.5
+
 ### Patch Highlights:
 - Overhauled many enemy's attack patterns, reducing their rotation speed and tracking/lock-on abilities during many attack combos. This should now feel closer to their behaviour in the first game.
 - Balancing: The Wretched Sneak in Tartarus now waits longer after it's ranged attack before teleporting away.
@@ -47,7 +56,6 @@ Other fixes and improvements:
 - Fixed: Rewards spawning in fountain rooms do not play a sound effect when they appear.
 - Fixed: Some voicelines for Zagreus are missing when gifting Thanatos Ambrosia.
 - Fixed: The biome transition map overlays are not properly aligned for Elysium and Styx.
-<!--Releasenotes end-->
 
 ## v0.1.4
 
