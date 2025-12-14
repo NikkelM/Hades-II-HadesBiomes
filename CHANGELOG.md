@@ -27,6 +27,7 @@ Other fixes and improvements:
 - Fixed: Harvest points can appear in Tisiphone's room, which become inaccessible after she shrinks the arena during her fight.
 - Fixed: If a Gorgon's petrifying projectile is blocked by a hit-shield or Gale, you still get petrified.
 - Fixed: Pickaxe points can spawn in the Asphodel and Elysium boss chambers, potentially blocking movement and attacks.
+- Fixed: Enemy spawns in Elysium can be clustered too close to the player.
 - Fixed: Elysian Shades do not create a respawn egg if cursed by Thanatos, but killed by the player.
 - Fixed: Elysian Shades resurrected through Night Bloom create a respawn-egg when they die.
 - Fixed: If defeating Asterius during his miniboss fight while kept alive through Moros' Engraved Pin, you die instead of reviving.

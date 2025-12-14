@@ -84,6 +84,16 @@ local encounterReplacements = {
 
 local encounterModifications = {
 	-- GENERIC
+	GeneratedElysium = {
+		WaveTemplate = {
+			-- From ElysiumWaveOverrideValues
+			OverrideValues = {
+				RequireNearPlayerDistance = 1500,
+				SpawnAggroed = true,
+				IgnoreSpawnPreferences = true,
+			},
+		},
+	},
 	DevotionTestElysium = {
 		CanEncounterSkip = false,
 	},
