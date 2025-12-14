@@ -1662,6 +1662,8 @@ local enemyModifications = {
 			WeaponOptions = {
 				"RatThugMelee"
 			},
+			OnDeathThreadedFunctionName = mod.NilValue,
+			OnDeathFunctionArgs = mod.NilValue,
 		},
 	},
 	Crawler = {

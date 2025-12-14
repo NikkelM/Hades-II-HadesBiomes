@@ -38,6 +38,7 @@ Other fixes and improvements:
 - Fixed: "Blast Ready" VFX for Hephaestus' boons is shown on the Surface.
 - Fixed: Ranged Cast weapons can be used on the Surface.
 - Fixed: Manual fishing is not possible on the Surface if Toula is equipped.
+- Fixed: Gigantic Vermin summoned through Night Bloom create a poison puddle that damages the player when they die.
 - Fixed: Chaos' "Caustic" curse does not spawn Inferno-Bombs from most enemies added by the mod.
 - Fixed: Rewards spawning in fountain rooms do not play a sound effect when they appear.
 - Fixed: Some voicelines for Zagreus are missing when gifting Thanatos Ambrosia.
