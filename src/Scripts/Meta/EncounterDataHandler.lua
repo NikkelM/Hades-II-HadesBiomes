@@ -7,6 +7,12 @@ function mod.LoadHadesEncounterData(fileName)
 	if mod.CachedHadesEncounterData then
 		return game.DeepCopyTable(mod.CachedHadesEncounterData)
 	end
+	local originalConstantsData = game.DeepCopyTable(game.ConstantsData)
+	local originalWaveDifficultyPatterns = game.DeepCopyTable(game.WaveDifficultyPatterns)
+	local originalTimerBlockCombatExcludes = game.DeepCopyTable(game.TimerBlockCombatExcludes)
+	local originalBaseWaveOverrideValues = game.DeepCopyTable(game.BaseWaveOverrideValues)
+	local originalElysiumWaveOverrideValues = game.DeepCopyTable(game.ElysiumWaveOverrideValues)
+	local originalIntroWaveOverrideValues = game.DeepCopyTable(game.IntroWaveOverrideValues)
 	local originalEncounterData = game.DeepCopyTable(game.EncounterData)
 	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
 	local chunk, err = loadfile(pathName)
@@ -15,6 +21,12 @@ function mod.LoadHadesEncounterData(fileName)
 		-- No worries if this is marked as undefined, it comes from the loaded file
 		---@diagnostic disable-next-line: undefined-global
 		mod.CachedHadesEncounterData = game.DeepCopyTable(EncounterData)
+		game.ConstantsData = originalConstantsData
+		game.WaveDifficultyPatterns = originalWaveDifficultyPatterns
+		game.TimerBlockCombatExcludes = originalTimerBlockCombatExcludes
+		game.BaseWaveOverrideValues = originalBaseWaveOverrideValues
+		game.ElysiumWaveOverrideValues = originalElysiumWaveOverrideValues
+		game.IntroWaveOverrideValues = originalIntroWaveOverrideValues
 		game.EncounterData = originalEncounterData
 		return game.DeepCopyTable(mod.CachedHadesEncounterData)
 	else

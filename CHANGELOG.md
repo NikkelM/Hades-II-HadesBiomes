@@ -1,13 +1,22 @@
 # Changelog
 
-## v0.1.5
+## v0.1.6
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+
+
+Other fixes and improvements:
+
+<!--Releasenotes end-->
+
+## v0.1.5
+
+### Patch Highlights:
 - Overhauled many enemy's attack patterns, reducing their rotation speed and tracking/lock-on abilities during many attack combos. This should now feel closer to their behaviour in the first game.
-- Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
 - Balancing: The Wretched Sneak in Tartarus now waits longer after it's ranged attack before teleporting away.
 - Balancing: Decreased health and armour of the Doomstone.
+- Fixed: Patroclus storyline does not start past the first meeting, and he cannot be gifted.
 
 Other fixes and improvements:
 - Added an additional Elysium combat room that was previously disabled due to effect layering issues that have now been fixed.
@@ -15,9 +24,14 @@ Other fixes and improvements:
 - Thanatos will now teleport to the room exit faster after clearing his encounters.
 - A victory stinger will now play when clearing a run after reaching the ending.
 - Melinoe will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
+- Added a hint to open the inventory when first gathering any of the new resources added by the mod.
 - Added a config option for speedrunners to always force the Satyr Sack in Styx to spawn in the second wing.
+- Added a previously missing introductory encounter for the Wretched Pest.
+- Added an alternative animation when starting a new run in the Training Grounds.
+- Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
+- Balancing: The Wretched Pest will now attack slightly more frequently, eliminating times where it would stand still for a long time.
 - Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
-- Balancing: All Elysium Shades' dash attacks have increased range.
+- Balancing: All Elysian Shades' dash attacks have increased range.
 - Balancing: Slightly increased poison damage from a single Styx enemy's hit in Elysium to be more in line with Elysium damage numbers (one hit now deals ~10 damage). Additional hits can still stack, so be on your toes!
 - Balancing: Slightly increased the forward momentum of Asterius' spin attack to more closely match the behaviour in the first game.
 - Balancing: If Deep Dissent is active, Hades will no longer summon minibosses during his Vow of Rivals fight, but normal enemies instead.
@@ -25,19 +39,23 @@ Other fixes and improvements:
 - Fixed: Harvest points can appear in Tisiphone's room, which become inaccessible after she shrinks the arena during her fight.
 - Fixed: If a Gorgon's petrifying projectile is blocked by a hit-shield or Gale, you still get petrified.
 - Fixed: Pickaxe points can spawn in the Asphodel and Elysium boss chambers, potentially blocking movement and attacks.
+- Fixed: Enemy spawns in Elysium can be clustered too close to the player.
 - Fixed: Elysian Shades do not create a respawn egg if cursed by Thanatos, but killed by the player.
 - Fixed: Elysian Shades resurrected through Night Bloom create a respawn-egg when they die.
 - Fixed: If defeating Asterius during his miniboss fight while kept alive through Moros' Engraved Pin, you die instead of reviving.
 - Fixed: Path of Stars upgrades offered by Styx miniboss rooms only grant three points instead of five.
 - Fixed: When using his teleport, Hades' voicelines and sound effect give away his new position before he reappears.
 - Fixed: Boiling Blood can be applied while invulnerable, such as during the Aspect of Persephone's special attack.
+- Fixed: Boiling Blood can be applied when the projectile is blocked through the Black Coat's omega attack.
 - Fixed: The slowing area of effect around Hades' dropped Cast projectiles can sometimes be destroyed with attacks.
 - Fixed: "Blast Ready" VFX for Hephaestus' boons is shown on the Surface.
 - Fixed: Ranged Cast weapons can be used on the Surface.
 - Fixed: Manual fishing is not possible on the Surface if Toula is equipped.
+- Fixed: Gigantic Vermin summoned through Night Bloom create a poison puddle that damages the player when they die.
+- Fixed: Chaos' "Caustic" curse does not spawn Inferno-Bombs from most enemies added by the mod.
 - Fixed: Rewards spawning in fountain rooms do not play a sound effect when they appear.
 - Fixed: Some voicelines for Zagreus are missing when gifting Thanatos Ambrosia.
-<!--Releasenotes end-->
+- Fixed: The biome transition map overlays are not properly aligned for Elysium and Styx.
 
 ## v0.1.4
 
@@ -46,8 +64,6 @@ Other fixes and improvements:
 - Fixed: Miniboss rooms in the Temple of Styx do not always offer upgraded rewards.
 - Fixed: Music cuts out, desyncs or disappears in Erebus.
 - Fixed: Music disappears after the "Barge of Death" encounter in Asphodel.
-
-*If you continue to experience issues with music, please report them on [GitHub](https://github.com/NikkelM/Hades-II-HadesBiomes/issues) or in the [modding Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.*
 
 Other fixes and improvements:
 - The mod will now cancel the installation if it detects that Hades mods are installed, and show an informative message when loading into a save. This should prevent unexpected crashes when loading into the main menu in some cases.

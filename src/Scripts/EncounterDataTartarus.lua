@@ -31,7 +31,7 @@ local encounterDataTartarus = {
 	EliteChallengeTartarus = game.DeepCopyTable(encounterData.EliteChallengeF),
 
 	-- Intro encounters
-	-- ThiefMineLayerIntro = encounterData.ThiefMineLayerIntro, -- is broken
+	ThiefMineLayerIntro = encounterData.ThiefMineLayerIntro,
 	HeavyRangedIntro = encounterData.HeavyRangedIntro,
 	PunchingBagIntro = encounterData.PunchingBagIntro,
 	LightSpawnerIntro = encounterData.LightSpawnerIntro,

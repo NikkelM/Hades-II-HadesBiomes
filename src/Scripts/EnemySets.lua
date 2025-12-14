@@ -114,7 +114,6 @@ local additionalEnemySets = {
 	EnemiesBiome2Challenge = {
 		"LightSpawnerElite",
 		"BloodlessNaked",
-		"BloodlessNaked",
 		"BloodlessNakedElite",
 		"BloodlessNakedBerserkerElite",
 		"BloodlessGrenadier",
@@ -153,10 +152,9 @@ local additionalEnemySets = {
 	},
 	-- Custom
 	EnemiesBiome2_EliteChallenge = {
-		"BloodlessSelfDestructElite",
-		"BloodlessNakedBerserkerElite",
-		"BloodlessSelfDestructElite",
+		"BloodlessGrenadierElite",
 		"BloodlessPitcherElite",
+		"BloodlessNakedBerserkerElite",
 		"BloodlessWaveFistElite",
 	},
 	EnemiesBiome2Wrapping = {

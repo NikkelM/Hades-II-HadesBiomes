@@ -394,7 +394,8 @@ local enemyReplacements = {
 	-- #region GENERAL
 	BaseVulnerableEnemy = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
-		DestroyDelay = mod.NilValue,
+		-- Minimum 0.15 to allow OnDeathWeapons to fire from this unit (e.g. ChaosDeathWeaponCurse)
+		DestroyDelay = 0.15,
 		-- We always create the death animation on a new blank obstacle, so we don't have to time the DestroyDelay
 		ManualDeathAnimation = true,
 		ActivateFx = "EnemySummonRune",
@@ -406,7 +407,8 @@ local enemyReplacements = {
 	},
 	HadesBossBaseVulnerableEnemy = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
-		DestroyDelay = mod.NilValue,
+		-- Minimum 0.15 to allow OnDeathWeapons to fire from this unit (e.g. ChaosDeathWeaponCurse)
+		DestroyDelay = 0.15,
 		DefaultAIData = {
 			DeepInheritance = true,
 			MoveWithinRange = false,
@@ -585,15 +587,14 @@ local enemyModifications = {
 			TakeCoverDuration = 3.0,
 		},
 	},
-	BaseThief = {
-		DestroyDelay = 0.0,
-	},
 	ThiefMineLayer = {
 		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
-		-- The intro encounter is broken, there is nothing happening after the two enemies die
-		RequiredIntroEncounter = mod.NilValue,
 		DefaultAIData = {
-			PostAttackDuration = 0.75,
+			BlendTimeoutMin = 2.0,
+			BlendTimeoutMax = 3.5,
+			AttackWhileBlendingIntervalMin = 2.0,
+			AttackWhileBlendingIntervalMax = 3.0,
+			PostAttackDuration = 0.3,
 		},
 	},
 	ThiefMineLayerElite = {
@@ -1225,7 +1226,7 @@ local enemyModifications = {
 			-- Is overwritten by the actual spawnpoint in ModsNikkelMHadesBiomesRememberHydraSpawnpoint
 			MoveToClosestId = { 506375, 506376, 506377, 506378, 506380, 506381, },
 			MoveWithinRange = true,
-			MoveWithinRangeTimeout = 1.0,
+			MoveWithinRangeTimeout = 1.5,
 		},
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
@@ -1272,7 +1273,6 @@ local enemyModifications = {
 	-- #region ELYSIUM
 	-- #region ELYSIUM - Regular
 	BaseShade = {
-		DestroyDelay = 0.0,
 		ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed = true
 	},
 	ShadeNaked = {
@@ -1539,7 +1539,8 @@ local enemyModifications = {
 	FlurrySpawner = {
 		StunAnimations = { Default = "SoulSpawnerIdle" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
-		DestroyDelay = mod.NilValue,
+		-- Minimum 0.15 to allow OnDeathWeapons to fire from this unit (e.g. ChaosDeathWeaponCurse)
+		DestroyDelay = 0.15,
 	},
 	FlurrySpawnerSuperElite = {
 		-- For some reason EnemyPointRanged doesn't exist in D_Boss01, and setting this to nil doesn't work
@@ -1663,6 +1664,8 @@ local enemyModifications = {
 			WeaponOptions = {
 				"RatThugMelee"
 			},
+			OnDeathThreadedFunctionName = mod.NilValue,
+			OnDeathFunctionArgs = mod.NilValue,
 		},
 	},
 	Crawler = {

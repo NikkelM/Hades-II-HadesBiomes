@@ -60,8 +60,10 @@ modutil.mod.Path.Wrap("AddEffectBlock", function(base, args)
 			args.Name = "FreezeStun"
 			AddEffectBlock(args)
 			ClearEffect({ Id = args.Id, Name = "FreezeStun" })
-			-- For Boiling Blood
-			game.CurrentRun.Hero.ModsNikkelMHadesBiomesHitShieldEffectBlockActive = true
+			game.CurrentRun.Hero.ModsNikkelMHadesBiomesBoilingBloodShieldActive = true
+		elseif args.Name == "ModsNikkelMHadesBiomesHadesCastBlock" then
+			--Blocked from Black Coat/WeaponSuit
+			game.CurrentRun.Hero.ModsNikkelMHadesBiomesBoilingBloodShieldActive = true
 		end
 	end
 end)
@@ -78,8 +80,10 @@ modutil.mod.Path.Wrap("RemoveEffectBlock", function(base, args)
 			-- For FreezeShotUnit
 			args.Name = "FreezeStun"
 			RemoveEffectBlock(args)
-			-- For Boiling Blood
-			game.CurrentRun.Hero.ModsNikkelMHadesBiomesHitShieldEffectBlockActive = false
+			game.CurrentRun.Hero.ModsNikkelMHadesBiomesBoilingBloodShieldActive = false
+		elseif args.Name == "ModsNikkelMHadesBiomesHadesCastBlock" then
+			--Blocked from Black Coat/WeaponSuit
+			game.CurrentRun.Hero.ModsNikkelMHadesBiomesBoilingBloodShieldActive = false
 		end
 	end
 end)

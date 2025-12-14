@@ -416,6 +416,7 @@ local function on_ready()
 			import "Scripts/RunLogic.lua"
 			import "Scripts/StoreLogic.lua"
 			import "Scripts/TraitLogic.lua"
+			import "Scripts/WeaponLogic.lua"
 			import "Scripts/WeaponSets.lua"
 
 			-- Ensure the FxOriginal package is loaded with every biome package
@@ -456,6 +457,7 @@ local function on_ready_late()
 	import "Scripts/HubPresentation_Late.lua"
 	import "Scripts/InteractLogic_Late.lua"
 	import "Scripts/MarketLogic_Late.lua"
+	import "Scripts/ObjectiveLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
 	import "Scripts/ShrinePresentation_Late.lua"
 end

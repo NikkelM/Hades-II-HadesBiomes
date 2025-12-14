@@ -112,12 +112,16 @@ function mod.StartHadesRun(source, args)
 	-- Don't allow rain in underworld/modded runs
 	game.GameState.NextBiomeStateName = "VanillaState"
 
-	mod.StartHadesRunSecretDoorPresentation(game.CurrentRun, source)
+	local useAltDiveAnimation = false
+	if (game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache or 0) > 2 and game.RandomChance(0.25) then
+		useAltDiveAnimation = true
+	end
+	mod.StartHadesRunSecretDoorPresentation(source, useAltDiveAnimation)
 
 	game.UseEscapeDoor(source, args)
 end
 
-function mod.StartHadesRunSecretDoorPresentation(currentRun, secretDoor)
+function mod.StartHadesRunSecretDoorPresentation(secretDoor, useAltDiveAnimation)
 	game.HideCombatUI("StartHadesRunSecretDoorPresentation")
 	AddInputBlock({ Name = "StartHadesRunSecretDoorPresentation" })
 	game.ToggleCombatControl({ "AdvancedTooltip" }, false, "LeaveRoom")
@@ -149,9 +153,18 @@ function mod.StartHadesRunSecretDoorPresentation(currentRun, secretDoor)
 	-- She goes through the Oceanus-style sequence of jumping up and in
 	PanCamera({ Id = secretDoor.ObjectId, Duration = 1.1, OffsetY = -50, EaseOut = 0 })
 	game.wait(0.5)
-	SetAnimation({ Name = "Melinoe_Drop_Exit_Start", DestinationId = game.CurrentRun.Hero.ObjectId, SpeedMultiplier = 0.5 })
+	if useAltDiveAnimation then
+		SetAnimation({ Name = "Melinoe_DiveExit_Portal_Start", DestinationId = CurrentRun.Hero.ObjectId, SpeedMultiplier = 0.75 })
+	else
+		SetAnimation({ Name = "Melinoe_Drop_Exit_Start", DestinationId = game.CurrentRun.Hero.ObjectId, SpeedMultiplier = 0.5 })
+	end
 	AdjustColorGrading({ Name = "RainSubtle", Duration = 0.4 })
-	game.wait(0.35)
+	if useAltDiveAnimation then
+		game.wait(0.53)
+		PlaySound({ Name = "/Leftovers/SFX/PlayerJumpMedium" })
+	else
+		game.wait(0.35)
+	end
 
 	PlaySound({ Name = "/VO/MelinoeEmotes/EmoteEvading" })
 	local args = {}
@@ -164,7 +177,9 @@ function mod.StartHadesRunSecretDoorPresentation(currentRun, secretDoor)
 	game.wait(0.2)
 	PanCamera({ Id = secretDoor.ObjectId, Duration = 1.2, OffsetY = 85, Retarget = true })
 	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, Fraction = 0.15, Duration = 0.25 }, })
-	game.thread(game.SlightDescent)
+	if not useAltDiveAnimation then
+		game.thread(game.SlightDescent)
+	end
 
 	-- Custom wait amount
 	game.wait(0.2)

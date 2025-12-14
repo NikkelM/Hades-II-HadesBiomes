@@ -62,3 +62,60 @@ mod.ModdedShrineBountyNames = {
 	"ModsNikkelMHadesBiomes_BountyShrineDaggers_ElysiumBoss",
 	"ModsNikkelMHadesBiomes_BountyShrineStaff_StyxBoss",
 }
+
+mod.CodexChapterName = "ModsNikkelMHadesBiomesCodexEntry"
+
+-- Can be directly gathered in rooms
+mod.GatherableResourceNames = {
+	"ModsNikkelMHadesBiomes_PlantTartarus",
+	"ModsNikkelMHadesBiomes_SeedTartarus",
+	"ModsNikkelMHadesBiomes_OreTartarus",
+
+	"ModsNikkelMHadesBiomes_PlantAsphodel",
+	"ModsNikkelMHadesBiomes_SeedAsphodel",
+	"ModsNikkelMHadesBiomes_OreAsphodel",
+
+	"ModsNikkelMHadesBiomes_PlantElysium",
+	"ModsNikkelMHadesBiomes_SeedElysium",
+	"ModsNikkelMHadesBiomes_OreElysium",
+
+	"ModsNikkelMHadesBiomes_PlantStyx",
+	"ModsNikkelMHadesBiomes_SeedStyx",
+	"ModsNikkelMHadesBiomes_OreStyx",
+
+	"Fish_Tartarus_Common_01",
+	"Fish_Tartarus_Rare_01",
+	"Fish_Tartarus_Legendary_01",
+	"Fish_Asphodel_Common_01",
+	"Fish_Asphodel_Rare_01",
+	"Fish_Asphodel_Legendary_01",
+	"Fish_Elysium_Common_01",
+	"Fish_Elysium_Rare_01",
+	"Fish_Elysium_Legendary_01",
+	"Fish_Styx_Common_01",
+	"Fish_Styx_Rare_01",
+	"Fish_Styx_Legendary_01",
+	"Fish_Surface_Common_01",
+	"Fish_Surface_Rare_01",
+	"Fish_Surface_Legendary_01",
+}
+
+-- Can either be directly gathered in rooms, or grown in the Crossroads
+mod.NonBossResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.GatherableResourceNames), {
+	"ModsNikkelMHadesBiomes_CropTartarus",
+	"ModsNikkelMHadesBiomes_CropAsphodel",
+	"ModsNikkelMHadesBiomes_CropElysium",
+	"ModsNikkelMHadesBiomes_CropStyx",
+})
+
+-- Only obtainable from bosses
+mod.BossResourceNames = {
+	"ModsNikkelMHadesBiomes_BossResourceTartarus",
+	"ModsNikkelMHadesBiomes_BossResourceAsphodel",
+	"ModsNikkelMHadesBiomes_BossResourceElysium",
+	"ModsNikkelMHadesBiomes_BossResourceStyx",
+}
+
+-- All new resources
+mod.AllNewResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.NonBossResourceNames),
+	game.DeepCopyTable(mod.BossResourceNames))
