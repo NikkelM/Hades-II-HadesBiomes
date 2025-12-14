@@ -1224,7 +1224,7 @@ local enemyModifications = {
 			-- Is overwritten by the actual spawnpoint in ModsNikkelMHadesBiomesRememberHydraSpawnpoint
 			MoveToClosestId = { 506375, 506376, 506377, 506378, 506380, 506381, },
 			MoveWithinRange = true,
-			MoveWithinRangeTimeout = 1.0,
+			MoveWithinRangeTimeout = 1.5,
 		},
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,

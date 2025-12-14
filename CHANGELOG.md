@@ -42,6 +42,7 @@ Other fixes and improvements:
 - Fixed: Chaos' "Caustic" curse does not spawn Inferno-Bombs from most enemies added by the mod.
 - Fixed: Rewards spawning in fountain rooms do not play a sound effect when they appear.
 - Fixed: Some voicelines for Zagreus are missing when gifting Thanatos Ambrosia.
+- Fixed: The biome transition map overlays are not properly aligned for Elysium and Styx.
 <!--Releasenotes end-->
 
 ## v0.1.4

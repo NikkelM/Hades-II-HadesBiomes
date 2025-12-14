@@ -13,12 +13,12 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		Elysium = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Elysium",
 			OffsetX = 111,
-			OffsetY = -1303,
+			OffsetY = -1305,
 		},
 		Styx = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Styx",
 			OffsetX = 80,
-			OffsetY = -2038,
+			OffsetY = -2040,
 		},
 	}
 
@@ -69,7 +69,7 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	SetScale({ Id = backgroundId, Fraction = 10.0 })
 
 	-- Top must be first so it is sorted behind the bottom for the better fade
-	local biomeMapTopId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = -1872.0, SortById = true })
+	local biomeMapTopId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = -1874.0, SortById = true })
 	local biomeMapBottomId = SpawnObstacle({ Name = "BlankObstacle", Group = groupName, LocationX = 0.0, LocationY = 0.0, SortById = true })
 	SetAnimation({ DestinationId = biomeMapTopId, Name = "GUI\\BiomeMap\\MapTop" })
 	SetAnimation({ DestinationId = biomeMapBottomId, Name = "GUI\\BiomeMap\\MapBottom" })
