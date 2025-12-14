@@ -17,7 +17,9 @@ Other fixes and improvements:
 - Melinoe will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
 - Added a hint to open the inventory when first gathering any of the new resources added by the mod.
 - Added a config option for speedrunners to always force the Satyr Sack in Styx to spawn in the second wing.
+- Added a previously missing introductory encounter for the Wretched Pest.
 - Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
+- Balancing: The Wretched Pest will now attack slightly more frequently, eliminating times where it would stand still for a long time.
 - Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
 - Balancing: All Elysium Shades' dash attacks have increased range.
 - Balancing: Slightly increased poison damage from a single Styx enemy's hit in Elysium to be more in line with Elysium damage numbers (one hit now deals ~10 damage). Additional hits can still stack, so be on your toes!

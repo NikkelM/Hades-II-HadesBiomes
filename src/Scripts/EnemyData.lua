@@ -589,10 +589,12 @@ local enemyModifications = {
 	},
 	ThiefMineLayer = {
 		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
-		-- The intro encounter is broken, there is nothing happening after the two enemies die
-		RequiredIntroEncounter = mod.NilValue,
 		DefaultAIData = {
-			PostAttackDuration = 0.75,
+			BlendTimeoutMin = 2.0,
+			BlendTimeoutMax = 3.5,
+			AttackWhileBlendingIntervalMin = 2.0,
+			AttackWhileBlendingIntervalMax = 3.0,
+			PostAttackDuration = 0.3,
 		},
 	},
 	ThiefMineLayerElite = {
