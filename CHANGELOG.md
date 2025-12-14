@@ -18,6 +18,7 @@ Other fixes and improvements:
 - Added a hint to open the inventory when first gathering any of the new resources added by the mod.
 - Added a config option for speedrunners to always force the Satyr Sack in Styx to spawn in the second wing.
 - Added a previously missing introductory encounter for the Wretched Pest.
+- Added an alternative animation when starting a new run in the Training Grounds.
 - Balancing: Slightly reduced overall encounter difficulty ratings in Tartarus, Asphodel and Elysium (resulting in less enemies per room).
 - Balancing: The Wretched Pest will now attack slightly more frequently, eliminating times where it would stand still for a long time.
 - Balancing: The Longspear's leap attack is now slower, takes longer to recover from, and cannot be used as often.
