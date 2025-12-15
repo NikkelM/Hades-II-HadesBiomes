@@ -195,7 +195,7 @@ function mod.ThanatosExit(source, args)
 	AdjustColorGrading({ Name = "Off", Duration = 1.35 })
 
 	if args.UseMaxedPresentation then
-		game.MaxedRelationshipPresentation(source, { Text = "NPC_Thanatos_01", Icon = "Keepsake_ThanatosSticker_Max" })
+		game.MaxedRelationshipPresentation(source, { Text = "NPC_Thanatos_01", Icon = "Keepsake_zannc-SharedKeepsakePort-Thanatos" })
 	end
 
 	source.Mute = true
