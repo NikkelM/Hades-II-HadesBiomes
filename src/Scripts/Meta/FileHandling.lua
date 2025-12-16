@@ -236,6 +236,9 @@ function mod.OpenModInstallScreen(args)
 			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailureHadesModsInstalled) or {}
 		elseif args.InstallationFailReason == "MissingFiles" then
 			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailureMissingFiles) or {}
+		elseif args.InstallationFailReason == "HadesNotUpdated" then
+			-- Either the Hades install is not updated, or, more likely, the Hades install is pirated
+			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailureHadesNotUpdated) or {}
 		else
 			-- Generic fallback
 			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailure) or {}

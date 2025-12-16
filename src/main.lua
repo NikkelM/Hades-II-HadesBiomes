@@ -45,6 +45,8 @@ public.config = config -- so other mods can access our config
 local function on_ready()
 	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
 	local startTime = os.clock()
+	-- Used in some imported files
+	mod.EncounteredInstallationIssues = false
 
 	-- File handling and other generic functions required at install time
 	import "Scripts/Meta/Constants.lua"
@@ -418,10 +420,13 @@ local function on_ready()
 			-- Ensure the FxOriginal package is loaded with every biome package
 			mod.SetBiomePackageLoadOverrides()
 
-			mod.HiddenConfig.IsValidInstallation = true
-			mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+			-- E.g. ThanatosElysiumIntro encounter is missing, will be caught when importing EncounterDataElysium.lua
+			if mod.EncounteredInstallationIssues ~= true then
+				mod.HiddenConfig.IsValidInstallation = true
+				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 
-			mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)
+				mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)
+			end
 		else
 			mod.HiddenConfig.IsValidInstallation = false
 			mod.HiddenConfig.InstallationFailReason = "MissingFiles"

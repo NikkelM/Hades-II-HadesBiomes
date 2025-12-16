@@ -7,8 +7,8 @@
 
 
 Other fixes and improvements:
+- If the mod detects an outdated Hades installation, it will now mark the installation as invalid and show an informative message when loading into the Training Grounds. Updating your Hades installation should resolve the issue. 
 - Fixed: "Bond Forged" will now correctly display the sticker when you fully max out a characters friendship. ~ zannc's SharedKeepsakePort
-
 <!--Releasenotes end-->
 
 ## v0.1.5
