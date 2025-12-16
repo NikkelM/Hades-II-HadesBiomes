@@ -361,6 +361,61 @@ local mainHubAreaCosmetics = {
 		},
 	},
 	-- #endregion
+	-- #region Cauldron/Cosmetic_Cauldron01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Cauldron_Infernal",
+		Name = {
+			en = "Cauldron, Infernal",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Forged within the searing heat of Asphodel, and adorned with deathly motifs.",
+		},
+		FlavorText = {
+			en =
+			"Some incantations are said to be most powerful when uttered in the presence of metals originating from the deepest pits of the underworld.",
+		},
+		CosmeticsGroup = "Cosmetic_Cauldron01",
+		InsertAfterCosmetic = "Cosmetic_Cauldron01b",
+		ShopCategory = "CosmeticsShop_Main",
+		SetAnimationIds = { 558175 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Cauldron_Infernal",
+		IconScale = 0.17,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Cauldron_Infernal",
+		AnimationScale = 2,
+		AnimationOffsetY = -25,
+		IsCauldron = true,
+		CauldronLidAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Cauldron_Infernal_Lid",
+		-- For the bubbling water animation
+		AnimationInheritFrom = "CriticalItemWorldObject01",
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 2,
+			},
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 2200,
+			ModsNikkelMHadesBiomes_OreAsphodel = 9,
+			ModsNikkelMHadesBiomes_OreElysium = 6,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{
+					Cue = "/VO/Dora_0442",
+					Text = "Bet you can cook up some {#Emph}real {#Prev}nasty curses in this baby.",
+					PreLineFunctionName = "GenericPresentation",
+					PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs
+				},
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
+	},
+	-- #endregion
 }
 for _, cosmeticData in ipairs(mainHubAreaCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
@@ -390,6 +445,10 @@ local preRunCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Achilles",
 		AnimationScale = 2,
 		GameStateRequirements = {
+			{
+				-- Patroclus bond forged
+				PathTrue = { "GameState", "TextLinesRecord", "PatroclusGift08_A" }
+			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
 		Cost = {
@@ -421,6 +480,10 @@ local preRunCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Dusa",
 		AnimationScale = 2,
 		GameStateRequirements = {
+			{
+				-- Dora's quest completed
+				PathTrue = { "GameState", "TextLinesRecord", "DoraAboutMemories05" },
+			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
 		Cost = {
@@ -452,6 +515,12 @@ local preRunCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Megaera",
 		AnimationScale = 2,
 		GameStateRequirements = {
+			{
+				Path = { "GameState", "EnemyKills", },
+				SumOf = { "Harpy", "Harpy2", "Harpy3", },
+				Comparison = ">=",
+				Value = 5,
+			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
 		Cost = {
@@ -483,6 +552,10 @@ local preRunCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Sisyphus",
 		AnimationScale = 2,
 		GameStateRequirements = {
+			{
+				-- Sisyphus has given you his companion
+				PathTrue = { "GameState", "TextLinesRecord", "SisyphusGift07_A" }
+			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
 		Cost = {
@@ -515,6 +588,10 @@ local preRunCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Skelly",
 		AnimationScale = 2,
 		GameStateRequirements = {
+			{
+				-- Completed Skelly's Augmentation of Bone Density quest
+				PathTrue = { "GameState", "ObjectivesCompleted", "KillSkelly" },
+			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
 		Cost = {
@@ -583,12 +660,53 @@ local preRunCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Thanatos",
 		AnimationScale = 2,
 		GameStateRequirements = {
+			{
+				-- Thanatos has given you his companion
+				PathTrue = { "GameState", "TextLinesRecord", "ThanatosGift07_A" }
+			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
 		Cost = {
 			CosmeticsPoints = 600,
 			ModsNikkelMHadesBiomes_CropAsphodel = 4,
 			ModsNikkelMHadesBiomes_CropElysium = 4,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Cerberus",
+		Name = {
+			en = "Charm, Cerb",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Pettable embellishment to the warded gateways leading both above and below.",
+		},
+		FlavorText = {
+			en =
+			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+		},
+		CosmeticsGroup = "Cosmetic_ExitCharm",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Thanatos",
+		ShopCategory = "CosmeticsShop_PreRun",
+		ActivateIds = { 589859, 589860 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Cerberus",
+		IconScale = 0.6,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Cerberus",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			{
+				-- "Beaten" Cerberus enough times
+				Path = { "GameState", "RoomsEntered", "D_Boss01" },
+				Comparison = ">=",
+				Value = 7,
+			},
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 800,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 1,
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 2,
+			ModsNikkelMHadesBiomes_CropAsphodel = 2,
 		},
 	},
 	-- #endregion
