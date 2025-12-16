@@ -7,6 +7,7 @@
 
 
 Other fixes and improvements:
+- Fixed: "Bond Forged" will now correctly display the sticker when you fully max out a characters friendship. ~ zannc's SharedKeepsakePort
 
 <!--Releasenotes end-->
 
@@ -105,7 +106,7 @@ Other fixes and improvements:
 - Balancing: Centaur Tonic and Soul Heart offered by Patroclus now provide increased benefits.
 - Balancing: The Dire Soul Catcher is no longer immune to cast slow effects when dashing.
 - Balancing: The Bone Hydra's lunge attacks have reduced velocity to reduce the chance of multiple heads ending up in the same space.
-- Fixed: Hexes start auto-charging while still in conversation with Asterius before his miniboss fight. 
+- Fixed: Hexes start auto-charging while still in conversation with Asterius before his miniboss fight.
 - Fixed: Knuckle Bones triggers on the Asterius miniboss chamber instead of Elysium's boss fight.
 - Fixed: Spark of Ixion can appear in the Well of Charon in the room after defeating the Champions of Elysium, even though Chaos Gates cannot spawn from this point onwards.
 - Fixed: Thanatos has no relationship level display in the Codex.
