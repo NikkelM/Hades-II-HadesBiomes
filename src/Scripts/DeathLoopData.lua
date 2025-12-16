@@ -41,6 +41,11 @@ local endingPortraitOnLoadEvent = {
 table.insert(game.HubRoomData.Hub_Main.OnLoadEvents, 1, endingPortraitOnLoadEvent)
 
 function mod.SpawnHadesRunStartDoor(source, args)
+	if not mod.HiddenConfig.IsValidInstallation then
+		mod.DebugPrint("The mod installation is invalid due to: " .. (mod.HiddenConfig.InstallationFailReason or "UnknownReason") .. ", not spawning the Hades run start door.", 2)
+		return false
+	end
+
 	-- Vow shrine would be: 589694
 	-- Run start door for the underworld
 	local spawnId = 420947

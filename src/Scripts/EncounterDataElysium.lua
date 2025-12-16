@@ -31,6 +31,15 @@ local encounterDataElysium = {
 	ChariotSuicideIntro = encounterData.ChariotSuicideIntro,
 }
 
+-- If the Hades install is not up to date, the ThanatosElysiumIntro encounter might be missing - this is often an issue with pirated copies
+-- Mark the install as unsuccessful in that case, as the game will crash when entering the first Elysium room
+if not encounterDataElysium.ThanatosElysiumIntro then
+	mod.EncounteredInstallationIssues = true
+	mod.HiddenConfig.IsValidInstallation = false
+	mod.HiddenConfig.InstallationFailReason = "HadesNotUpdated"
+	mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+end
+
 mod.UpdateField(encounterDataElysium, "Generated", "ModsNikkelMHadesBiomesGenerated", { "InheritFrom" },
 	"EncounterDataElysium")
 
