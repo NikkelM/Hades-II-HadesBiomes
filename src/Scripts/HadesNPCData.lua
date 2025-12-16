@@ -3271,7 +3271,7 @@ mod.NPCData = mod.NPCData or {
 				{
 					Cue = "/VO/Sisyphus_0196",
 					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
-					PostLineFunctionArgs = { Text = "NPC_SisyphusAndBouldy_01", Icon = "Keepsake_zannc-SharedKeepsakePort-Sisyphus" },
+					PostLineFunctionArgs = { Text = "NPC_SisyphusAndBouldy_01", Icon = "Keepsake_SisyphusSticker_Max" },
 					Text = "Take it from me, Prince Z., Bouldy concurs."
 				},
 			},
@@ -6919,7 +6919,7 @@ mod.NPCData = mod.NPCData or {
 				{
 					Cue = "/VO/Eurydice_0208",
 					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
-					PostLineFunctionArgs = { Text = "NPC_Eurydice_01", Icon = "Keepsake_zannc-SharedKeepsakePort-Eurydice" },
+					PostLineFunctionArgs = { Text = "NPC_Eurydice_01", Icon = "Keepsake_EurydiceSticker_Max" },
 					Text =
 					"Well, we both know you've done a lot more for me than that. I wasn't expecting to make any new friends here anytime soon, so all the more reason it's been a real treat to get to know you. If I may say? You're a hell of a guy, Your Royal Majesty."
 				},
@@ -10650,7 +10650,7 @@ mod.NPCData = mod.NPCData or {
 				{
 					Cue = "/VO/Patroclus_0202",
 					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
-					PostLineFunctionArgs = { Text = "NPC_Patroclus_01", Icon = "Keepsake_zannc-SharedKeepsakePort-Patroclus" },
+					PostLineFunctionArgs = { Text = "NPC_Patroclus_01", Icon = "Keepsake_PatroclusSticker_Max" },
 					Text =
 					"And... I'm Patroclus, by the way. I'm realizing now... we've not officially met. It's good to know you, Zagreus. Stranger."
 				},
