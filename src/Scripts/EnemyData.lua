@@ -1119,7 +1119,6 @@ local enemyModifications = {
 		DestroyDelay = 3.0,
 		BlockRaiseDead = true,
 		BlockCharm = true,
-		ImmuneToPolymorph = true,
 		BlockRespawnShrineUpgrade = true,
 	},
 	HitAndRunUnitSuperElite = {
