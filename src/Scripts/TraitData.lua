@@ -4,7 +4,8 @@ table.insert(game.TraitData.TemporaryForcedSecretDoorTrait.GameStateRequirements
 	IsNone = { "Styx" },
 })
 table.insert(game.TraitData.TemporaryForcedSecretDoorTrait.GameStateRequirements, {
-	PathFalse = { "CurrentRun", "CurrentRoom", "Name", "Y_PostBoss01" },
+	Path = { "CurrentRun", "CurrentRoom", "Name" },
+	IsNone = { "Y_PostBoss01" },
 })
 
 -- Enable Hades' final boss damage boon in modded runs
