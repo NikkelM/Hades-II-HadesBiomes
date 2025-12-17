@@ -9,8 +9,9 @@
 Other fixes and improvements:
 - If the mod detects an outdated Hades installation, it will now mark the installation as invalid and show an informative message when loading into the Training Grounds. Updating your Hades installation should resolve the issue.
 - Balancing: Increased the amount of healing offered by Sisyphus' "Warm Embrace" from 25 to 50. *Note: Additional offerings and reworks will come in a future update.*
-- Fixed: If "Deep Dissent" is active, Hades may sometimes not spawn any enemies at all during his phase transitions.
 - Fixed: "Spark of Ixion" can appear in the Well of Charon in the room after defeating the Champions of Elysium, even though Chaos Gates cannot spawn from this point onwards.
+- Fixed: Hades can sometimes get stuck in the room's pillars or out of bounds after dashing.
+- Fixed: If "Deep Dissent" is active, Hades may sometimes not spawn any enemies at all during his phase transitions.
 - Fixed: After the last gift to Thanatos, an empty heart is still shown in the Codex.
 - Fixed: If both Nectar and Ambrosia can still be gifted to a character, both will show in empty hearts in the Codex, even when only the Nectar can currently be gifted.
 - Fixed: "Bond Forged" will now correctly display the sticker when you fully max out a characters friendship. ~ zannc's SharedKeepsakePort
