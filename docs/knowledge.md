@@ -309,6 +309,10 @@ To ID `210099`:
 - Added `"Comments": "SecondDoor"`
 - Assigned `Terrain_05` to the `GroupNames` array.
 
+Also:
+- Change the `GroupNames` for `508013` to `Terrain_04` (Rightmost TartarusGhostHandsMulti in the pit).
+- Change the `GroupNames` for `410695` to `Terrain_01` (TartarusGhostHandsMulti under the light to the right of the fishing pier).
+
 Additionally, the new `Terrain_04` and `Terrain_05` groups must be added to the `Return06.map_text` file, in the correct positions:
 
 ```text
