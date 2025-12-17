@@ -41,8 +41,8 @@ local tentCosmetics = {
 		InsertAfterCosmetic = "Cosmetic_FanPoster01b",
 		ShopCategory = "CosmeticsShop_Tent",
 		ActivateIds = { 738471 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\FanPoster_Theseus_Icon",
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\FanPoster_Theseus",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Tent\\FanPoster_Theseus_Icon",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\FanPoster_Theseus",
 		AnimationScale = 2.1,
 		AnimationOffsetY = 150,
 		GameStateRequirements = {
@@ -88,8 +88,8 @@ local tentCosmetics = {
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_FanPoster_Theseus",
 		ShopCategory = "CosmeticsShop_Tent",
 		ActivateIds = { 738471 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\FanPoster_Aphrodite_Icon",
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\FanPoster_Aphrodite",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Tent\\FanPoster_Aphrodite_Icon",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\FanPoster_Aphrodite",
 		AnimationScale = 2.1,
 		GameStateRequirements = {
 			{
@@ -101,6 +101,68 @@ local tentCosmetics = {
 			CosmeticsPoints = 500,
 			ModsNikkelMHadesBiomes_CropElysium = 3,
 			ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
+		},
+	},
+	-- #endregion
+	-- #region Table/Cosmetic_TentTable01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentTable_Hellish",
+		Name = {
+			en = "Table, Hellish",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Warm to the touch surface, with an unsteady pattern set within a deep red frame.",
+		},
+		FlavorText = {
+			en =
+			"Where this table once stood has been lost to time, but the uneven pattern etched into its surface seems to want to break free from its confines.",
+		},
+		CosmeticsGroup = "Cosmetic_TentTable01",
+		InsertAfterCosmetic = "Cosmetic_TentTable01c",
+		ShopCategory = "CosmeticsShop_Tent",
+		SetAnimationIds = { 566758, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Table_Hellish",
+		IconScale = 0.33,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Table_Hellish",
+		AnimationScale = 2.1,
+		GameStateRequirements = {
+			NamedRequirements = { "T3Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 250,
+			ModsNikkelMHadesBiomes_OreStyx = 5,
+			ModsNikkelMHadesBiomes_CropStyx = 2,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentTable_Serpentine",
+		Name = {
+			en = "Table, Serpentine",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Coiled surface, the pattern on this table seems to re-arrange itself each time you look at it.",
+		},
+		FlavorText = {
+			en =
+			"At night, when the surrounding forest is still, it can sometimes seem as though a faint hissing can be heard from this table.",
+		},
+		CosmeticsGroup = "Cosmetic_TentTable01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentTable_Hellish",
+		ShopCategory = "CosmeticsShop_Tent",
+		SetAnimationIds = { 566758, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Table_Serpentine",
+		IconScale = 0.33,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Table_Serpentine",
+		AnimationScale = 2.1,
+		GameStateRequirements = {
+			NamedRequirements = { "T3Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 250,
+			ModsNikkelMHadesBiomes_OreTartarus = 4,
+			ModsNikkelMHadesBiomes_PlantTartarus = 2,
 		},
 	},
 	-- #endregion
@@ -129,9 +191,9 @@ local mainHubAreaCosmetics = {
 		InsertAfterCosmetic = "Cosmetic_HecateKey",
 		ShopCategory = "CosmeticsShop_Main",
 		ActivateIds = { 780487 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Banner_Infernal",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Banner_Infernal",
 		IconScale = 0.3,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Banner_Infernal",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Banner_Infernal",
 		AnimationScale = 3.57,
 		GameStateRequirements = {
 			{
@@ -166,9 +228,9 @@ local mainHubAreaCosmetics = {
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Banner_Infernal",
 		ShopCategory = "CosmeticsShop_Main",
 		ActivateIds = { 780487 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Banner_Divine",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Banner_Divine",
 		IconScale = 0.3,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Banner_Divine",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Banner_Divine",
 		AnimationScale = 3.57,
 		GameStateRequirements = {
 			{
@@ -206,9 +268,9 @@ local mainHubAreaCosmetics = {
 		ShopCategory = "CosmeticsShop_Main",
 		CameraFocusId = 575873,
 		SetAnimationIds = { 575834, 575871, 575872, 575874, 575873, 575832, },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Divine",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Pillars_Divine",
 		IconScale = 0.1,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Divine",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Pillars_Divine",
 		AnimationScale = 1.9,
 		GameStateRequirements = {
 			-- Met Patroclus
@@ -241,9 +303,9 @@ local mainHubAreaCosmetics = {
 		ShopCategory = "CosmeticsShop_Main",
 		CameraFocusId = 575873,
 		SetAnimationIds = { 575834, 575871, 575872, 575874, 575873, 575832, },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Gilded",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Pillars_Gilded",
 		IconScale = 0.1,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Gilded",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Pillars_Gilded",
 		AnimationScale = 1.9,
 		GameStateRequirements = {
 			-- Entered Styx Hub
@@ -276,9 +338,9 @@ local mainHubAreaCosmetics = {
 		ShopCategory = "CosmeticsShop_Main",
 		CameraFocusId = 575873,
 		SetAnimationIds = { 575834, 575871, 575872, 575874, 575873, 575832, },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Serpentine",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Pillars_Serpentine",
 		IconScale = 0.1,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Pillars_Serpentine",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Pillars_Serpentine",
 		AnimationScale = 1.9,
 		GameStateRequirements = {
 			-- Met Megaera
@@ -312,9 +374,9 @@ local mainHubAreaCosmetics = {
 		InsertAfterCosmetic = "Cosmetic_OdysseusRug",
 		ShopCategory = "CosmeticsShop_Main",
 		ActivateIds = { 591259 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Rug_Ancient",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Rug_Ancient",
 		IconScale = 0.2,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Rug_Ancient",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Rug_Ancient",
 		AnimationScale = 2.35,
 		GameStateRequirements = {
 			-- Met Sisyphus
@@ -345,9 +407,9 @@ local mainHubAreaCosmetics = {
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Rug_Ancient",
 		ShopCategory = "CosmeticsShop_Main",
 		ActivateIds = { 591259 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Rug_Heroic",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Rug_Heroic",
 		IconScale = 0.18,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Rug_Heroic",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Rug_Heroic",
 		AnimationScale = 2.3,
 		GameStateRequirements = {
 			-- Beaten both Asterius solo and the Champions both
@@ -383,9 +445,9 @@ local mainHubAreaCosmetics = {
 		InsertAfterCosmetic = "Cosmetic_OdysseusTable01",
 		ShopCategory = "CosmeticsShop_Main",
 		SetAnimationIds = { 561464 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\War_Table_Heroic",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\War_Table_Heroic",
 		IconScale = 0.2,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\War_Table_Heroic",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\War_Table_Heroic",
 		AnimationScale = 2,
 		GameStateRequirements = {
 			-- Beaten the Champions on Extreme Measures
@@ -423,9 +485,9 @@ local mainHubAreaCosmetics = {
 		ShopCategory = "CosmeticsShop_Main",
 		CameraFocusId = 561185,
 		SetAnimationIds = { 576309, 585190, 561185, 561184, 588785, 742460, 742260, 742474, 742472 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Lantern_Infernal",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Lantern_Infernal",
 		IconScale = 0.6,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Lantern_Infernal",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Lantern_Infernal",
 		AnimationScale = 1.9,
 		GameStateRequirements = {
 			{
@@ -468,13 +530,13 @@ local mainHubAreaCosmetics = {
 		InsertAfterCosmetic = "Cosmetic_Cauldron01b",
 		ShopCategory = "CosmeticsShop_Main",
 		SetAnimationIds = { 558175 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Cauldron_Infernal",
-		IconScale = 0.17,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Cauldron_Infernal",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Cauldron_Infernal",
+		IconScale = 0.18,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Cauldron_Infernal",
 		AnimationScale = 2,
 		AnimationOffsetY = -25,
 		IsCauldron = true,
-		CauldronLidAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Cauldron_Infernal_Lid",
+		CauldronLidAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Cauldron_Infernal_Lid",
 		-- For the bubbling water animation
 		AnimationInheritFrom = "CriticalItemWorldObject01",
 		GameStateRequirements = {
@@ -489,6 +551,59 @@ local mainHubAreaCosmetics = {
 			CosmeticsPoints = 2200,
 			ModsNikkelMHadesBiomes_OreAsphodel = 9,
 			ModsNikkelMHadesBiomes_OreElysium = 6,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{
+					Cue = "/VO/Dora_0442",
+					Text = "Bet you can cook up some {#Emph}real {#Prev}nasty curses in this baby.",
+					PreLineFunctionName = "GenericPresentation",
+					PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs
+				},
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Cauldron_Infinite",
+		Name = {
+			en = "Cauldron, Infinite",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Forged by unknown powers in the deep void of Chaos itself.",
+		},
+		FlavorText = {
+			en =
+			"Everything was born from Chaos, and to it everything shall return. This cauldron is said to embody that very principle.",
+		},
+		CosmeticsGroup = "Cosmetic_Cauldron01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Cauldron_Infernal",
+		ShopCategory = "CosmeticsShop_Main",
+		SetAnimationIds = { 558175 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Cauldron_Infinite",
+		IconScale = 0.18,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Cauldron_Infinite",
+		AnimationScale = 2,
+		IsCauldron = true,
+		CauldronLidAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Cauldron_Infinite_Lid",
+		-- For the bubbling water animation
+		AnimationInheritFrom = "CriticalItemWorldObject01",
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 5,
+			},
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 2200,
+			ModsNikkelMHadesBiomes_CropTartarus = 4,
+			ModsNikkelMHadesBiomes_OreElysium = 5,
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
 		},
 		RevealReactionVoiceLines = {
 			{
@@ -538,9 +653,9 @@ local preRunCosmetics = {
 		InsertAfterCosmetic = "Cosmetic_ExitCharm05",
 		ShopCategory = "CosmeticsShop_PreRun",
 		ActivateIds = { 589859, 589860 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Achilles",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Achilles",
 		IconScale = 0.6,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Achilles",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Achilles",
 		AnimationScale = 2,
 		GameStateRequirements = {
 			{
@@ -573,9 +688,9 @@ local preRunCosmetics = {
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Achilles",
 		ShopCategory = "CosmeticsShop_PreRun",
 		ActivateIds = { 589859, 589860 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Dusa",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Dusa",
 		IconScale = 0.6,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Dusa",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Dusa",
 		AnimationScale = 2,
 		GameStateRequirements = {
 			{
@@ -608,9 +723,9 @@ local preRunCosmetics = {
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Dusa",
 		ShopCategory = "CosmeticsShop_PreRun",
 		ActivateIds = { 589859, 589860 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Megaera",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Megaera",
 		IconScale = 0.6,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Megaera",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Megaera",
 		AnimationScale = 2,
 		GameStateRequirements = {
 			{
@@ -645,9 +760,9 @@ local preRunCosmetics = {
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Megaera",
 		ShopCategory = "CosmeticsShop_PreRun",
 		ActivateIds = { 589859, 589860 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Sisyphus",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Sisyphus",
 		IconScale = 0.6,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Sisyphus",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Sisyphus",
 		AnimationScale = 2,
 		GameStateRequirements = {
 			{
@@ -681,9 +796,9 @@ local preRunCosmetics = {
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Sisyphus",
 		ShopCategory = "CosmeticsShop_PreRun",
 		ActivateIds = { 589859, 589860 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Skelly",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Skelly",
 		IconScale = 0.6,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Skelly",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Skelly",
 		AnimationScale = 2,
 		GameStateRequirements = {
 			{
@@ -753,9 +868,9 @@ local preRunCosmetics = {
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Skelly",
 		ShopCategory = "CosmeticsShop_PreRun",
 		ActivateIds = { 589859, 589860 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Thanatos",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Thanatos",
 		IconScale = 0.6,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Thanatos",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Thanatos",
 		AnimationScale = 2,
 		GameStateRequirements = {
 			{
@@ -787,9 +902,9 @@ local preRunCosmetics = {
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Thanatos",
 		ShopCategory = "CosmeticsShop_PreRun",
 		ActivateIds = { 589859, 589860 },
-		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Cerberus",
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Cerberus",
 		IconScale = 0.6,
-		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ExitCharm_Cerberus",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\ExitCharm_Cerberus",
 		AnimationScale = 2,
 		GameStateRequirements = {
 			{
