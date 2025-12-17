@@ -166,6 +166,46 @@ local tentCosmetics = {
 		},
 	},
 	-- #endregion
+	-- #region Candle/Cosmetic_TentCandle01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentCandle_Elysian",
+		Name = {
+			en = "Candle, Elysian",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Poured from the finest wax and scented with the sweetest fragrances of Elysium's gardens.",
+		},
+		FlavorText = {
+			en =
+			"Listing all the different flowers and other ingredients used in the making of this candle would be a task to rival that of the Princess of the Underworld's own.",
+		},
+		CosmeticsGroup = "Cosmetic_TentCandle01",
+		InsertAfterCosmetic = "Cosmetic_TentCandle01",
+		ShopCategory = "CosmeticsShop_Tent",
+		SetAnimationIds = { 566716, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Candle_Elysian",
+		IconScale = 0.27,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Candle_Elysian",
+		AnimationScale = 1.8,
+		GameStateRequirements = {
+			NamedRequirements = { "T1Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 150,
+			ModsNikkelMHadesBiomes_OreTartarus = 4,
+			ModsNikkelMHadesBiomes_PlantStyx = 2,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0412", Text = "Now this is a real top-of-the-line candle, Mel.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
+	},
+	-- #endregion
 }
 for _, cosmeticData in ipairs(tentCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
