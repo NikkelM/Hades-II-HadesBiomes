@@ -206,6 +206,113 @@ local tentCosmetics = {
 		},
 	},
 	-- #endregion
+	-- #region Bed/Blanket/Cosmetic_TentBlanket01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Chthonic",
+		Name = {
+			en = "Bedding, Chthonic",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Ornate and cushioned, with a familiar and soothing smell.",
+		},
+		FlavorText = {
+			en =
+			"Whilst the Lord Hades of the Underworld is not known for his sense of style, the Queen Persephone certainly has a taste for the finer things.",
+		},
+		CosmeticsGroup = "Cosmetic_TentBlanket01",
+		InsertAfterCosmetic = "Cosmetic_TentBlanket01c",
+		ShopCategory = "CosmeticsShop_Tent",
+		SetAnimationIds = { 566738 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Blanket_Chthonic",
+		IconScale = 0.15,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Blanket_Chthonic",
+		AnimationScale = 2.1,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			NamedRequirements = { "T1Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 180,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 1,
+			ModsNikkelMHadesBiomes_CropStyx = 2,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Infernal",
+		Name = {
+			en = "Bedding, Infernal",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Deep crimson and weathered, this bedding has a special place in your heart.",
+		},
+		FlavorText = {
+			en =
+			"When lying under this blanket, you can feel the connection to your brother in a time long past grow stronger than ever.",
+		},
+		CosmeticsGroup = "Cosmetic_TentBlanket01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Chthonic",
+		ShopCategory = "CosmeticsShop_Tent",
+		SetAnimationIds = { 566738 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Blanket_Infernal",
+		IconScale = 0.15,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Blanket_Infernal",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 6,
+			},
+			NamedRequirements = { "T1Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 180,
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 2,
+			ModsNikkelMHadesBiomes_CropAsphodel = 2,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Olympic",
+		Name = {
+			en = "Bedding, Olympic",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Subdued and yet elegant, with subtle motifs of your extended family.",
+		},
+		FlavorText = {
+			en =
+			"Even in times of war, the Gods upon Mount Olympus can find ways to rest and gather their strength in style.",
+		},
+		CosmeticsGroup = "Cosmetic_TentBlanket01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Infernal",
+		ShopCategory = "CosmeticsShop_Tent",
+		SetAnimationIds = { 566738 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Blanket_Olympic",
+		IconScale = 0.15,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Blanket_Olympic",
+		AnimationScale = 2.05,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 4,
+			},
+			NamedRequirements = { "T1Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 180,
+			ModsNikkelMHadesBiomes_BossResourceElysium = 1,
+			ModsNikkelMHadesBiomes_PlantElysium = 2,
+		},
+	},
+	-- #endregion
 }
 for _, cosmeticData in ipairs(tentCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
