@@ -49,7 +49,8 @@ local hadesNPCGiftLinePriorities = {
 		"ThanatosGift01",
 		"ThanatosGift02",
 		"ThanatosGift03",
-		"ThanatosGift04",
+		-- In Hades II, gift text lines only have one variant, so if we keep both, there will always be a locked heart in the Codex
+		-- "ThanatosGift04",
 		"ThanatosGift04_B",
 		"ThanatosGift05",
 		"ThanatosGift06",

@@ -54,6 +54,14 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 		game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache = game.GameState
 				.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache or 999999
 		-- #endregion
+	
+		-- #region Patching GiftTextLineSets
+		-- If ThanatosGift04 has already been completed, move it to ThanatosGift04_B, since that is now the only one still available
+		if game.GameState.TextLinesRecord["ThanatosGift04"] ~= nil then
+			game.GameState.TextLinesRecord["ThanatosGift04"] = nil
+			game.GameState.TextLinesRecord["ThanatosGift04_B"] = true
+		end
+		-- #endregion
 	end
 
 	if game.CurrentRun ~= nil then

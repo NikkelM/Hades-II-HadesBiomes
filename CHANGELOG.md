@@ -7,7 +7,9 @@
 
 
 Other fixes and improvements:
-- If the mod detects an outdated Hades installation, it will now mark the installation as invalid and show an informative message when loading into the Training Grounds. Updating your Hades installation should resolve the issue. 
+- If the mod detects an outdated Hades installation, it will now mark the installation as invalid and show an informative message when loading into the Training Grounds. Updating your Hades installation should resolve the issue.
+- Fixed: After the last gift to Thanatos, an empty heart is still shown in the Codex.
+- Fixed: If both Nectar and Ambrosia can still be gifted to a character, both will show in empty hearts in the Codex, even when only the Nectar can currently be gifted.
 - Fixed: "Bond Forged" will now correctly display the sticker when you fully max out a characters friendship. ~ zannc's SharedKeepsakePort
 <!--Releasenotes end-->
 
