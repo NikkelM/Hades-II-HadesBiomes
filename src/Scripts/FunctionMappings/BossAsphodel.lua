@@ -237,7 +237,8 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 				if game.HeroHasTrait(traitName) then
 					local traitData = game.GetHeroTrait(traitName)
 					if traitData and traitData.DebuffValue then
-						spawnCount = spawnCount * traitData.DebuffValue
+						-- Always spawn at least one enemy
+						spawnCount = math.floor(math.max(1, spawnCount * traitData.DebuffValue))
 					end
 				end
 			end
