@@ -21,6 +21,95 @@
 	"ModsNikkelMHadesBiomes_BossResourceStyx",
 ]] --
 
+-- CosmeticsShop_Tent
+local tentCosmetics = {
+	-- #region Fan Posters/Cosmetic_FanPoster01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_FanPoster_Theseus",
+		Name = {
+			en = "Wall-Scroll, Theseus",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Portrays the Champion of Elysium and passionate rival of your brother.",
+		},
+		FlavorText = {
+			en =
+			"Bonded with the Bull of Minos Asterius, his foe-turned-friend, the shades of Elysium now cheer for his victories, save one, who has always supported your brother.",
+		},
+		CosmeticsGroup = "Cosmetic_FanPoster01",
+		InsertAfterCosmetic = "Cosmetic_FanPoster01b",
+		ShopCategory = "CosmeticsShop_Tent",
+		ActivateIds = { 738471 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\FanPoster_Theseus_Icon",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\FanPoster_Theseus",
+		AnimationScale = 2.1,
+		AnimationOffsetY = 150,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "RoomsEntered", "Y_Boss01" },
+				Comparison = ">=",
+				Value = 3,
+			},
+			NamedRequirements = { "T2Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 500,
+			ModsNikkelMHadesBiomes_PlantElysium = 3,
+			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0419", Text = "Didn't know he was your type, but believe me I get it.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
+			{
+				PreLineWait = 0.35,
+				UsePlayerSource = true,
+				{ Cue = "/VO/Melinoe_3668", Text = "This is only so that I can better study my opponent." },
+			},
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_FanPoster_Aphrodite",
+		Name = {
+			en = "Wall-Scroll, Aphrodite",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Portrays the Goddess of Love, Beauty, and certainly not least of all, Passion.",
+		},
+		FlavorText = {
+			en =
+			"Amongst the many hardships imposed by your task, this scroll serves as a reminder that love can be found even in the darkest of places.",
+		},
+		CosmeticsGroup = "Cosmetic_FanPoster01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_FanPoster_Theseus",
+		ShopCategory = "CosmeticsShop_Tent",
+		ActivateIds = { 738471 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\FanPoster_Aphrodite_Icon",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\FanPoster_Aphrodite",
+		AnimationScale = 2.1,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "AphroditeGift04" },
+			},
+			NamedRequirements = { "T2Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 500,
+			ModsNikkelMHadesBiomes_CropElysium = 3,
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
+		},
+	},
+	-- #endregion
+}
+for _, cosmeticData in ipairs(tentCosmetics) do
+	CosmeticsAPI.RegisterCosmetic(cosmeticData)
+end
+
+-- CosmeticsShop_Main
 local mainHubAreaCosmetics = {
 	-- #region Banners/Cosmetic_HecateKey
 	{
@@ -421,6 +510,15 @@ for _, cosmeticData in ipairs(mainHubAreaCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
 
+-- CosmeticsShop_Taverna
+local tavernaCosmetics = {
+
+}
+for _, cosmeticData in ipairs(tavernaCosmetics) do
+	CosmeticsAPI.RegisterCosmetic(cosmeticData)
+end
+
+-- CosmeticsShop_PreRun
 local preRunCosmetics = {
 	-- #region Exit Charms/Cosmetic_ExitCharm
 	{
