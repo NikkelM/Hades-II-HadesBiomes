@@ -1227,6 +1227,51 @@ local preRunCosmetics = {
 		},
 	},
 	-- #endregion
+	-- #region Effigies/Scarecrows/Cosmetic_TrainingDummy01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TrainingDummy_Scarecrow",
+		Name = {
+			en = "Effigies, Scary",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Bird-repelling targets for martial training, set behind where {$Keywords.CharSkelly} typically resides.",
+		},
+		FlavorText = {
+			en =
+			"Though he would never complain about it to the Princess, the Commander has been seen to shoo away the occasional bird that mistook him for a resting place.",
+		},
+		CosmeticsGroup = "Cosmetic_TrainingDummy01",
+		InsertAfterCosmetic = "Cosmetic_TrainingDummy01b",
+		ShopCategory = "CosmeticsShop_PreRun",
+		CameraFocusId = 566610,
+		SetAnimationIds = { 566610, 566612, 567196, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\TrainingDummy_Scarecrow",
+		IconScale = 0.3,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\TrainingDummy_Scarecrow",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "SkellyGift04" },
+			},
+			NamedRequirements = { "T5Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 1100,
+			ModsNikkelMHadesBiomes_OreStyx = 5,
+			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+		},
+		RevealReactionVoiceLines =		{
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Skelly_01",
+				RequiredSourceValueFalse = "InPartnerConversation",
+				{ Cue = "/VO/Skelly_0157", Text = "Yeah!" },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
+	},
+	-- #endregion
 }
 for _, cosmeticData in ipairs(preRunCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
