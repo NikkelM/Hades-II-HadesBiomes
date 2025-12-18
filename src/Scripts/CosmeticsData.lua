@@ -313,6 +313,79 @@ local tentCosmetics = {
 		},
 	},
 	-- #endregion
+	-- #region Shelving/Cosmetic_TentShelf01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentShelf_Brooding",
+		Name = {
+			en = "Shelving, Brooding",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Offers seemingly endless storage space with a moody touch.",
+		},
+		FlavorText = {
+			en =
+			"The benefit of limited choice is that one can focus on what truly matters. The Princess of the Underworld and her father are similarly pragmatic in this regard.",
+		},
+		CosmeticsGroup = "Cosmetic_TentShelf01",
+		InsertAfterCosmetic = "Cosmetic_TentShelf01b",
+		ShopCategory = "CosmeticsShop_Tent",
+		SetAnimationIds = { 566827 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Shelf_Brooding",
+		IconScale = 0.35,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Shelf_Brooding",
+		AnimationScale = 3.5,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 5,
+			},
+			NamedRequirements = { "T2Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 180,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
+			ModsNikkelMHadesBiomes_PlantTartarus = 2,
+			ModsNikkelMHadesBiomes_CropElysium = 1,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentShelf_Royal",
+		Name = {
+			en = "Shelving, Royal",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Offers deep storage space with an intimidating touch.",
+		},
+		FlavorText = {
+			en =
+			"To perfect one's craft, immersing oneself in literature is paramount. The shelves of this design have proven the optimal choice for storing the tomes required for such a pursuit.",
+		},
+		CosmeticsGroup = "Cosmetic_TentShelf01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentShelf_Brooding",
+		ShopCategory = "CosmeticsShop_Tent",
+		SetAnimationIds = { 566827 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Shelf_Royal",
+		IconScale = 0.35,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Shelf_Royal",
+		AnimationScale = 3.5,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 6,
+			},
+			NamedRequirements = { "T2Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 180,
+			ModsNikkelMHadesBiomes_OreAsphodel = 5,
+			ModsNikkelMHadesBiomes_CropTartarus = 2,
+		},
+	},
+	-- #endregion
 }
 for _, cosmeticData in ipairs(tentCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
