@@ -1143,6 +1143,90 @@ local preRunCosmetics = {
 		},
 	},
 	-- #endregion
+	-- #region Skelly Dais/Cosmetic_SkellyFloor01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_SkellyFloor_Fancy",
+		Name = {
+			en = "Dais, Fancy",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Intricate stone platform, set right where {$Keywords.CharSkelly} typically resides.",
+		},
+		FlavorText = {
+			en =
+			"With symbolisms as could be found in the House of Hades in times past, the Commander should be suitably inspired to great deeds while standing upon this dais.",
+		},
+		CosmeticsGroup = "Cosmetic_SkellyFloor01",
+		InsertAfterCosmetic = "Cosmetic_SkellyFloor01b",
+		ShopCategory = "CosmeticsShop_PreRun",
+		SetAnimationIds = { 587209 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\SkellyFloor_Fancy",
+		IconScale = 0.15,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\SkellyFloor_Fancy",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			NamedRequirements = { "T1Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 250,
+			ModsNikkelMHadesBiomes_OreElysium = 4,
+			ModsNikkelMHadesBiomes_PlantStyx = 2,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Skelly_01",
+				RequiredSourceValueFalse = "InPartnerConversation",
+				{ Cue = "/VO/Skelly_0256", Text = "{#Emph}Ooh{#Prev}, scary..." },
+			},
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0470", Text = "A more-imposing place for the good Commander to stand.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_SkellyFloor_Olympian",
+		Name = {
+			en = "Dais, Fancy",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Watchful stone platform, set right where {$Keywords.CharSkelly} typically resides.",
+		},
+		FlavorText = {
+			en =
+			"What better way for the Commander to prove that he is favoured by the gods themselves, than to stand upon a dais crafted in their honour?",
+		},
+		CosmeticsGroup = "Cosmetic_SkellyFloor01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_SkellyFloor_Fancy",
+		ShopCategory = "CosmeticsShop_PreRun",
+		SetAnimationIds = { 587209 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\SkellyFloor_Olympian",
+		IconScale = 0.15,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\SkellyFloor_Olympian",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			NamedRequirements = { "T1Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 250,
+			ModsNikkelMHadesBiomes_CropAsphodel = 2,
+			ModsNikkelMHadesBiomes_CropStyx = 2,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Skelly_01",
+				RequiredSourceValueFalse = "InPartnerConversation",
+				{ Cue = "/VO/Skelly_0200", Text = "Oh dang!" },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
+	},
+	-- #endregion
 }
 for _, cosmeticData in ipairs(preRunCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
