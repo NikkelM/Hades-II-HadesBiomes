@@ -1035,7 +1035,7 @@ local preRunCosmetics = {
 	{
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Cerberus",
 		Name = {
-			en = "Charm, Cerb",
+			en = "Charm, Solo",
 		},
 		Description = {
 			en =
