@@ -1254,7 +1254,7 @@ local preRunCosmetics = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "SkellyGift04" },
 			},
-			NamedRequirements = { "T5Cosmetic" },
+			NamedRequirements = { "T4Cosmetic" },
 		},
 		Cost = {
 			CosmeticsPoints = 1100,
