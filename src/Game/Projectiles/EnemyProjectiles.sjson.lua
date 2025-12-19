@@ -293,6 +293,9 @@ local hadesProjectilesModifications = {
 			Scale = 1.0,
 		},
 	},
+	HeavyRangedWeaponFork = {
+		MaxAdjustRate = 14,
+	},
 	-- This is a copy of CrusherUnitTouchdown, but without the DetonateGraphic, it would be duplicated otherwise
 	CrawlerReburrowShockwaveTouchdown = {
 		InheritFrom = "CrusherUnitTouchdown",
