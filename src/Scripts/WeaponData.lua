@@ -1068,6 +1068,7 @@ local weaponModifications = {
 			StopBeforeFire = true,
 			PostAttackStop = true,
 			MinAttacksBetweenUse = 3,
+			MinPlayerDistance = 400,
 			MaxPlayerDistance = 800,
 		},
 	},
@@ -1089,6 +1090,7 @@ local weaponModifications = {
 			TrackTargetDuringCharge = true,
 			StopBeforeFire = true,
 			PostAttackStop = true,
+			MinPlayerDistance = 300,
 		},
 	},
 	ShadeSpearThrustSingle = {
