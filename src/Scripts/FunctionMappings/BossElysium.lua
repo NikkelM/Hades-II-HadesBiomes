@@ -86,6 +86,8 @@ function mod.MinotaurEarlyExitPresentation(boss, currentRun)
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
 	ExpireProjectiles({})
 	game.SetUnitVulnerable(boss)
+	-- Set earlier than in Hades, to allow him to walk through Melinoe in case she is blocking the path
+	SetUnitProperty({ DestinationId = boss.ObjectId, Property = "CollideWithUnits", Value = false })
 
 	game.thread(game.PlayVoiceLines, boss.EarlyExitVoiceLines, nil, boss)
 
@@ -93,7 +95,7 @@ function mod.MinotaurEarlyExitPresentation(boss, currentRun)
 	LockCamera({ Id = boss.ObjectId, Duration = 1.25 })
 	Move({ Id = boss.ObjectId, DestinationId = 522283, SuccessDistance = 50 })
 	local notifyName = "WithinDistance" .. boss.ObjectId
-	NotifyWithinDistance({ Id = boss.ObjectId, DestinationId = 522283, Distance = 50, Notify = notifyName, Timeout = 9.0, })
+	NotifyWithinDistance({ Id = boss.ObjectId, DestinationId = 522283, Distance = 50, Notify = notifyName, Timeout = 6.0, })
 	game.waitUntil(notifyName, boss.AIThreadName)
 
 	game.thread(game.PlayVoiceLines, boss.PostMatchTauntVoiceLines, true, boss)
@@ -119,7 +121,7 @@ function mod.MinotaurEarlyExitPresentation(boss, currentRun)
 
 	game.wait(1.5, game.RoomThreadName)
 
-	thread(PlayVoiceLines, HeroVoiceLines.MinotaurDefeatedVoiceLines)
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.MinotaurDefeatedVoiceLines)
 
 	LockCamera({ Ids = { 521115, 522283 }, Duration = 1.25 })
 	local exitDoor = game.MapState.ActiveObstacles[521115]
@@ -127,7 +129,6 @@ function mod.MinotaurEarlyExitPresentation(boss, currentRun)
 	game.wait(0.4, game.RoomThreadName)
 	SetAnimation({ DestinationId = exitDoor.ObjectId, Name = exitDoor.ExitDoorOpenAnimation })
 
-	SetUnitProperty({ DestinationId = boss.ObjectId, Property = "CollideWithUnits", Value = false })
 	SetUnitProperty({ DestinationId = boss.ObjectId, Property = "CollideWithObstacles", Value = false })
 	game.wait(2.5, game.RoomThreadName)
 

@@ -13,6 +13,7 @@ Other fixes and improvements:
 - Balancing: The Snakestone's lasers now move slower.
 - Balancing: Reduced the tracking/rotation speed of the Satyr Cultist when readying its blowgun attack.
 - Fixed: Entering Sisyphus' room can cause a crash at a certain point in his storyline.
+- Fixed: Asterius can sometimes get stuck on Melinoë if she is between him and the center of the room after he is defeated in his miniboss fight.
 - Fixed: "Spark of Ixion" can appear in the Well of Charon in the room after defeating the Champions of Elysium, even though Chaos Gates cannot spawn from this point onwards.
 - Fixed: Hades can sometimes get stuck in the room's pillars or out of bounds after dashing.
 - Fixed: If "Deep Dissent" is active, Hades may sometimes not spawn any enemies at all during his phase transitions.
@@ -34,7 +35,7 @@ Other fixes and improvements:
 - When poisoned in Elysium (through an enemy summoned by the Vow of Menace), an overhead text will now appear to remind you that poison will wear off automatically.
 - Thanatos will now teleport to the room exit faster after clearing his encounters.
 - A victory stinger will now play when clearing a run after reaching the ending.
-- Melinoe will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
+- Melinoë will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
 - Added a hint to open the inventory when first gathering any of the new resources added by the mod.
 - Added a config option for speedrunners to always force the Satyr Sack in Styx to spawn in the second wing.
 - Added a previously missing introductory encounter for the Wretched Pest.
