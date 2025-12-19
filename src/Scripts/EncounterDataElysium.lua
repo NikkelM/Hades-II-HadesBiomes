@@ -148,6 +148,7 @@ local encounterModifications = {
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedByShrineLevel", },
 		},
+		DelayedStart = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 }

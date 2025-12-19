@@ -339,6 +339,7 @@ local encounterModifications = {
 		StartRoomUnthreadedEvents = {
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryActivations" },
 		},
+		DelayedStart = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 	BossHarpy2 = {
@@ -347,6 +348,7 @@ local encounterModifications = {
 		StartRoomUnthreadedEvents = {
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryActivations" },
 		},
+		DelayedStart = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 	BossHarpy3 = {
@@ -355,6 +357,7 @@ local encounterModifications = {
 		StartRoomUnthreadedEvents = {
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryActivations" },
 		},
+		DelayedStart = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 }

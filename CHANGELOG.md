@@ -17,6 +17,7 @@ Other fixes and improvements:
 - Balancing: The Snakestone's lasers now move slower.
 - Balancing: Reduced the tracking/rotation speed of the Satyr Cultist when readying its blowgun attack.
 - Fixed: Entering Sisyphus' room can cause a crash at a certain point in his storyline.
+- Fixed: When entering the Tartarus or Elysium boss chambers, the player's Hex can start charging automatically before the fight begins.
 - Fixed: The main Hydra head does not return to the center of the arena before certain attacks.
 - Fixed: Respawned Elysian Shades do not immediately aggro the player.
 - Fixed: Asterius can sometimes get stuck on Melinoë if she is between him and the center of the room after he is defeated in his miniboss fight.
