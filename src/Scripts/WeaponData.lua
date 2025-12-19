@@ -1548,16 +1548,19 @@ local weaponModifications = {
 	},
 	SatyrRangedWeapon = {
 		AIData = {
+			PreAttackRotationDampening = 0.4,
 			FireRotationDampening = 1E-06,
 		},
 	},
 	SatyrSplitShot = {
 		AIData = {
+			PreAttackRotationDampening = 0.4,
 			FireRotationDampening = 1E-07,
 		},
 	},
 	SatyrSingleShot = {
 		AIData = {
+			PreAttackRotationDampening = 0.4,
 			FireRotationDampening = 1E-07,
 		},
 	},

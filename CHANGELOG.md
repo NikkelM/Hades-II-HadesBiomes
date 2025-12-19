@@ -11,6 +11,7 @@ Other fixes and improvements:
 - Balancing: Increased the amount of healing offered by Sisyphus' "Warm Embrace" from 25 to 50. *Note: Additional offerings and reworks will come in a future update.*
 - Balancing: The Megagorgon in Asphodel can now be morphed using the "Twilight Curse" Hex.
 - Balancing: The Snakestone's lasers now move slower.
+- Balancing: Reduced the tracking/rotation speed of the Satyr Cultist when readying its blowgun attack.
 - Fixed: Entering Sisyphus' room can cause a crash at a certain point in his storyline.
 - Fixed: "Spark of Ixion" can appear in the Well of Charon in the room after defeating the Champions of Elysium, even though Chaos Gates cannot spawn from this point onwards.
 - Fixed: Hades can sometimes get stuck in the room's pillars or out of bounds after dashing.
