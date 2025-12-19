@@ -4,6 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Balancing: Reduced the projectile speed for projectiles fired by the Wretched Witch, Dracon and Splitter.
 - Fixed: Gale and hit-shields trigger a block the "lock-on" attacks from Brimstones, the Doomstone, Snakestones and Hades' beam attack, which do not deal damage.
 
 Other fixes and improvements:
