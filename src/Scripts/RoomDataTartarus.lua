@@ -587,6 +587,9 @@ local roomModifications = {
 	},
 	A_Boss02 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
+		GameStateRequirements = {
+			RequiredKills = { Harpy = 4 },
+		},
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
@@ -596,6 +599,9 @@ local roomModifications = {
 	},
 	A_Boss03 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
+		GameStateRequirements = {
+			RequiredKills = { Harpy = 4 },
+		},
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },

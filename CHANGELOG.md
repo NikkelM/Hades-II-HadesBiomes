@@ -9,6 +9,7 @@
 Other fixes and improvements:
 - If the mod detects an outdated Hades installation, it will now mark the installation as invalid and show an informative message when loading into the Training Grounds. Updating your Hades installation should resolve the issue.
 - Balancing: Increased the amount of healing offered by Sisyphus' "Warm Embrace" from 25 to 50. *Note: Additional offerings and reworks will come in a future update.*
+- Balancing: Alecto and Tisiphone can now be encountered earlier in the story.
 - Balancing: The Megagorgon in Asphodel can now be morphed using the "Twilight Curse" Hex.
 - Balancing: Reduced the tracking/rotation speed of the purple Hydra variant when it readies and fires it's wave attack.
 - Balancing: Increased the minimum required distance to the player for the Longspear's leap attack.
