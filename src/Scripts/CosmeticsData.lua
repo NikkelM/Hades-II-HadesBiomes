@@ -847,7 +847,85 @@ end
 
 -- CosmeticsShop_Taverna
 local tavernaCosmetics = {
-
+	-- #region Benches/Cosmetic_TavernaChairs01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaChairs_Infernal",
+		Name = {
+			en = "Benches, Infernal",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Lightly cushioned seating, for all in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"Though the shades residing in the Crossroads don't need to sit anymore, some of them enjoy reminiscing of the old House of Hades when relaxing on these benches.",
+		},
+		CosmeticsGroup = "Cosmetic_TavernaChairs01",
+		InsertAfterCosmetic = "Cosmetic_TavernaChairs01c",
+		ShopCategory = "CosmeticsShop_Taverna",
+		SetAnimationIds = { 566374, 566377, 585764, 585753, 585756, 585760, 585763, 585759, 742136, 742137, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaChairs_Infernal",
+		IconScale = 0.3,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaChairs_Infernal",
+		AnimationScale = 2.2,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 3,
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeTaverna" }
+			},
+			NamedRequirements = { "T2Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 270,
+			ModsNikkelMHadesBiomes_OreTartarus = 5,
+			ModsNikkelMHadesBiomes_CropAsphodel = 2,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaChairs_Springtime",
+		Name = {
+			en = "Benches, Springtime",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Neatly arranged individual seating, for all in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"Whilst the Underworld does not experience seasons as does the Surface, the Crossroads is in an inbetween state that allows those residing within them to enjoy the fresh smells it brings.",
+		},
+		CosmeticsGroup = "Cosmetic_TavernaChairs01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaChairs_Infernal",
+		ShopCategory = "CosmeticsShop_Taverna",
+		SetAnimationIds = { 566374, 566377, 585764, 585753, 585756, 585760, 585763, 585759, 742136, 742137, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaChairs_Springtime",
+		IconScale = 0.3,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaChairs_Springtime",
+		AnimationScale = 2.2,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeTaverna" }
+			},
+			NamedRequirements = { "T1Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 250,
+			ModsNikkelMHadesBiomes_CropElysium = 2,
+			ModsNikkelMHadesBiomes_PlantStyx = 2,
+			ModsNikkelMHadesBiomes_CropStyx = 1,
+		},
+	},
+	-- #endregion
 }
 for _, cosmeticData in ipairs(tavernaCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
@@ -1261,7 +1339,7 @@ local preRunCosmetics = {
 			ModsNikkelMHadesBiomes_OreStyx = 5,
 			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
 		},
-		RevealReactionVoiceLines =		{
+		RevealReactionVoiceLines = {
 			{
 				PreLineWait = 0.35,
 				ObjectType = "NPC_Skelly_01",
