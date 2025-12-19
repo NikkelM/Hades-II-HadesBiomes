@@ -5,7 +5,7 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - Balancing: Reduced the projectile speed for projectiles fired by the Wretched Witch, Dracon and Splitter.
-- Fixed: Gale and hit-shields trigger a block the "lock-on" attacks from Brimstones, the Doomstone, Snakestones and Hades' beam attack, which do not deal damage.
+- Fixed: Gale and hit-shields trigger a block for the "lock-on" attacks from Brimstones, the Doomstone, Snakestones and Hades' beam attack, which do not deal damage.
 
 Other fixes and improvements:
 - If the mod detects an outdated Hades installation, it will now mark the installation as invalid and show an informative message when loading into the Training Grounds. Updating your Hades installation should resolve the issue.
