@@ -24,6 +24,7 @@ Other fixes and improvements:
 - Fixed: "Spark of Ixion" can appear in the Well of Charon in the room after defeating the Champions of Elysium, even though Chaos Gates cannot spawn from this point onwards.
 - Fixed: Hades can sometimes get stuck in the room's pillars or out of bounds after dashing.
 - Fixed: If "Deep Dissent" is active, Hades may sometimes not spawn any enemies at all during his phase transitions.
+- Fixed: If "Universal Donor" is equipped, the associated VFX will show on Zagreus while on the Surface.
 - Fixed: After the last gift to Thanatos, an empty heart is still shown in the Codex.
 - Fixed: If both Nectar and Ambrosia can still be gifted to a character, both will show in empty hearts in the Codex, even when only the Nectar can currently be gifted.
 - Fixed: "Bond Forged" will now correctly display the sticker when you fully max out a characters friendship. ~ zannc's SharedKeepsakePort
