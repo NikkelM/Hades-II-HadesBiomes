@@ -10,10 +10,12 @@ Other fixes and improvements:
 - If the mod detects an outdated Hades installation, it will now mark the installation as invalid and show an informative message when loading into the Training Grounds. Updating your Hades installation should resolve the issue.
 - Balancing: Increased the amount of healing offered by Sisyphus' "Warm Embrace" from 25 to 50. *Note: Additional offerings and reworks will come in a future update.*
 - Balancing: The Megagorgon in Asphodel can now be morphed using the "Twilight Curse" Hex.
+- Balancing: Reduced the tracking/rotation speed of the purple Hydra variant when it readies and fires it's wave attack.
 - Balancing: Increased the minimum required distance to the player for the Longspear's leap attack.
 - Balancing: The Snakestone's lasers now move slower.
 - Balancing: Reduced the tracking/rotation speed of the Satyr Cultist when readying its blowgun attack.
 - Fixed: Entering Sisyphus' room can cause a crash at a certain point in his storyline.
+- Fixed: The main Hydra head does not return to the center of the arena before certain attacks.
 - Fixed: Respawned Elysian Shades do not immediately aggro the player.
 - Fixed: Asterius can sometimes get stuck on Melinoë if she is between him and the center of the room after he is defeated in his miniboss fight.
 - Fixed: "Spark of Ixion" can appear in the Well of Charon in the room after defeating the Champions of Elysium, even though Chaos Gates cannot spawn from this point onwards.

@@ -1169,7 +1169,7 @@ local enemyModifications = {
 		DefaultAIData = {
 			MoveToId = 480903,
 			MoveWithinRange = true,
-			MoveWithinRangeTimeout = 1.0,
+			MoveWithinRangeTimeout = 2.0,
 		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HydraKillPresentation",
 		PactDataStage2 = {
