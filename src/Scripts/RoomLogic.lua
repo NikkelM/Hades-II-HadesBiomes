@@ -60,12 +60,6 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 	args = args or {}
 
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and (unit.ModsNikkelMHadesBiomesIsModdedEnemy or unit.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy) then
-		-- If the unit is a ShadeNaked, we don't want a summon animation for the picked up enemy
-		if currentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation then
-			currentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation = nil
-			unit.UseActivatePresentation = false
-		end
-
 		-- Overwrite weapon/AI data if necessary due to a vow
 		local shrineLevel = game.GetNumShrineUpgrades(unit.ShrineMetaUpgradeName)
 		local requiredShrineLevel = unit.ShrineMetaUpgradeRequiredLevel or 1
