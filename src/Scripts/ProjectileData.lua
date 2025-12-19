@@ -54,14 +54,14 @@ end
 local projectileModifications = {
 	-- #region TARTARUS
 	HeavyRangedWeapon = {
-		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
+		ModsNikkelMHadesBiomesPreOnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
 	},
 	HeavyRangedWeaponSplitter = {
 		InheritFrom = { "HeavyRangedWeapon", },
 	},
 	HeavyRangedSplitterFragment = {
 		InheritFrom = { "HeavyRangedWeaponSplitter", },
-		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedSplitterFragmentOnWeaponHit" },
+		ModsNikkelMHadesBiomesPreOnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedSplitterFragmentOnWeaponHit" },
 	},
 	HarpyLightning = {
 		InheritFrom = { "NoSlowFrameProjectile", },
@@ -70,6 +70,7 @@ local projectileModifications = {
 
 	-- #region STYX
 	PoisonTrapWeapon = {
+		-- This should not be a PreOnHitFunctionName, as we only want to save the attacker name if the poison actually hits and wasn't blocked
 		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesStyxPoisonWeaponHit" },
 	},
 	HadesPoisonPuddle = {
@@ -88,7 +89,7 @@ local projectileModifications = {
 		InheritFrom = { "HeavyRangedWeapon", },
 	},
 	HadesCastBeam = {
-		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
+		ModsNikkelMHadesBiomesPreOnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
 	},
 	-- #endregion
 

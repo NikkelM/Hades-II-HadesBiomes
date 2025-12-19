@@ -303,6 +303,8 @@ local function on_ready()
 
 			-- New colours need to be added before using them in EnemyData
 			import "Scripts/Color.lua"
+			-- New GameData entries need to be added before using them in HadesNPCData
+			import "Scripts/NarrativeData.lua"
 
 			import "Scripts/Meta/EnemyTrapDataHandler.lua"
 			import "Scripts/HadesEnemyData.lua"
@@ -404,7 +406,6 @@ local function on_ready()
 			import "Scripts/EventPresentation.lua"
 			import "Scripts/HarvestPresentation.lua"
 			import "Scripts/HubPresentation.lua"
-			import "Scripts/NarrativeData.lua"
 			import "Scripts/NarrativeLogic.lua"
 			import "Scripts/PatchLogic.lua"
 			import "Scripts/PowersLogic.lua"

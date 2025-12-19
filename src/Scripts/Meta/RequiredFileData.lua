@@ -522,10 +522,6 @@ mod.SjsonFileModifications = {
 	["Animations\\CharacterAnim_EnemiesBosses_Hades"] = {
 		HadesBattleDashStreaks = mod.NilValue,
 		HadesBattleDashStreaksDark = mod.NilValue,
-		-- To allow him blinking through the pillars (he otherwise gets stuck on them very often)
-		HadesBattleDash_Start = {
-			OwnerHasNoCollision = true,
-		},
 	}
 }
 

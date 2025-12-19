@@ -73,6 +73,8 @@ local function applyNPCGlobalModifications(base)
 			textline.OnGiftTrack = true
 			textline.UnfilledIcon = "EmptyHeartIcon"
 			textline.FilledIcon = "FilledHeartIcon"
+			-- To ensure only one gift line is shown as eligible in the Codex (prevent the Ambrosia events from showing when they shouldn't yet)
+			textline.GameStateRequirements = game.DeepCopyTable(textline)
 		end
 
 		-- Move all interaction textlines into the InteractTextLineSets, out of the RepeatableTextLineSets
@@ -268,6 +270,9 @@ local npcModifications = {
 		ExcludeFromDamageDealtRecord = true,
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
+			-- We only use the alternate version since Hades II doesn't support alternate gift lines
+			ThanatosGift04 = mod.NilValue,
+			-- The requirements for ThanatosGift04_B are modified manually below to be applied before setting its GameStateRequirements
 			ThanatosGift07_A = {
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
@@ -409,6 +414,9 @@ mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikk
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikkelMHadesBiomes_BouldyChat01.RequiredTextLines = {
 	"ModsNikkelMHadesBiomes_BouldyFirstMeeting", }
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.BouldyChat01 = nil
+
+-- Fix the requirements for ThanatosGift04_B to always be available, even before Ending01
+mod.NPCData.NPC_Thanatos_01.GiftTextLineSets.ThanatosGift04_B.RequiredTextLines = { "ThanatosGift03" }
 
 applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)
 applyNPCGlobalModifications(mod.NPCData)

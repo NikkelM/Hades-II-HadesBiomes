@@ -102,7 +102,7 @@ function mod.DoPickup(enemy, aiData, pickupTarget)
 
 		-- Begin pick up
 		SetThingProperty({ DestinationId = enemy.ObjectId, Property = "ImmuneToForce", Value = true })
-		local endTime = _worldTime + aiData.AIPickupTime
+		local endTime = game._worldTime + aiData.AIPickupTime
 		if IsAlive({ Id = pickupTarget }) then
 			Stop({ Id = enemy.ObjectId })
 			Shake({ Id = enemy.ObjectId, Distance = 3, Speed = 500, Duration = aiData.AIPickupTime })
@@ -111,7 +111,7 @@ function mod.DoPickup(enemy, aiData, pickupTarget)
 				Speed = 1.0,
 				MinFraction = 0,
 				MaxFraction = 0.8,
-				Color = Color.White,
+				Color = game.Color.White,
 				Duration = aiData.AIPickupTime,
 				ExpireAfterCycle = true
 			})
@@ -159,7 +159,7 @@ function mod.DoPickup(enemy, aiData, pickupTarget)
 				if aiData.PickupAnimation ~= nil then
 					SetAnimation({ Name = aiData.PickupAnimation, DestinationId = enemy.ObjectId })
 				end
-				Flash({ Id = enemy.ObjectId, Speed = 0.65, MinFraction = 1.0, MaxFraction = 0, Color = Color.Gold, ExpireAfterCycle = true })
+				Flash({ Id = enemy.ObjectId, Speed = 0.65, MinFraction = 1.0, MaxFraction = 0, Color = game.Color.Gold, ExpireAfterCycle = true })
 
 				mod.ProcessPickup(enemy, pickupTarget)
 				Destroy({ Id = pickupTarget })
@@ -171,7 +171,7 @@ function mod.DoPickup(enemy, aiData, pickupTarget)
 			end
 		end
 
-		if forceFailTime ~= nil and _worldTime >= forceFailTime then
+		if forceFailTime ~= nil and game._worldTime >= forceFailTime then
 			enemy.PickupTarget = nil
 			return false
 		end
@@ -186,11 +186,6 @@ function mod.ProcessPickup(enemy, pickupTarget)
 		return
 	end
 
-	-- If the enemy is the ShadeNaked, we don't want a summon animation for the picked up enemy
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.GenusName == "ShadeNaked" then
-		game.CurrentRun.ModsNikkelMHadesBiomesSkipNextActivatePresentation = true
-	end
-
 	local pickupType = game.MapState.ActiveObstacles[pickupTarget].Name
 	local pickupData = game.ObstacleData[pickupType] or game.ConsumableData[pickupType]
 
@@ -202,12 +197,15 @@ function mod.ProcessPickup(enemy, pickupTarget)
 	if pickupData.SwapToUnitOnPickup ~= nil then
 		local oldEnemy = enemy
 		local newEnemyName = pickupData.SwapToUnitOnPickup
-		if enemy.IsSuperElite and EnemyData[newEnemyName .. "SuperElite"] ~= nil then
+		if enemy.IsSuperElite and game.EnemyData[newEnemyName .. "SuperElite"] ~= nil then
 			newEnemyName = newEnemyName .. "SuperElite"
-		elseif enemy.IsElite and EnemyData[newEnemyName .. "Elite"] ~= nil then
+		elseif enemy.IsElite and game.EnemyData[newEnemyName .. "Elite"] ~= nil then
 			newEnemyName = newEnemyName .. "Elite"
 		end
-		local newEnemy = game.DeepCopyTable(EnemyData[newEnemyName]) or {}
+		local newEnemy = game.DeepCopyTable(game.EnemyData[newEnemyName]) or {}
+		newEnemy.UseActivatePresentation = false
+		newEnemy.SpawnAggroed = true
+
 		newEnemy.ObjectId = SpawnUnit({ Name = newEnemyName, InheritGroupNames = true, DestinationId = oldEnemy.ObjectId })
 		game.thread(game.SetupUnit, newEnemy, game.CurrentRun)
 

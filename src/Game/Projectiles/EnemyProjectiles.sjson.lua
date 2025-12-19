@@ -64,6 +64,7 @@ local hadesProjectilesModifications = {
 		UnpauseResetLocation = true,
 		-- Otherwise the enemy hits itself
 		AffectsSelf = false,
+		Speed = 470,
 	},
 	HeavyRangedWeapon = {
 		NumPenetrations = 99999,
@@ -141,6 +142,7 @@ local hadesProjectilesModifications = {
 	RangedBurrowerWeapon = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
+		Speed = 510,
 	},
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
@@ -173,12 +175,14 @@ local hadesProjectilesModifications = {
 		UnpauseResetLocation = true,
 		AffectsSelf = false,
 		Fuse = 1.65,
+		Speed = 530,
 	},
 	SplitShotWeaponSmall = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
 		UnpauseResetLocation = true,
 		AffectsSelf = false,
+		Speed = 530,
 		Thing = {
 			Graphic = "EnemyProjectileIn",
 		},
@@ -292,6 +296,9 @@ local hadesProjectilesModifications = {
 		Thing = {
 			Scale = 1.0,
 		},
+	},
+	HeavyRangedWeaponFork = {
+		MaxAdjustRate = 14,
 	},
 	-- This is a copy of CrusherUnitTouchdown, but without the DetonateGraphic, it would be duplicated otherwise
 	CrawlerReburrowShockwaveTouchdown = {

@@ -52,7 +52,7 @@ local newTraitData = {
 			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
 			LootOptions = {
 				{
-					Name = "HealDrop",
+					Name = "HealDropMajor",
 				},
 			},
 		},
@@ -60,7 +60,7 @@ local newTraitData = {
 			{
 				External = true,
 				BaseType = "ConsumableData",
-				BaseName = "HealDrop",
+				BaseName = "HealDropMajor",
 				Format = "FlatHeal",
 				BaseProperty = "HealFixed",
 				ExtractAs = "HealDropAmount"

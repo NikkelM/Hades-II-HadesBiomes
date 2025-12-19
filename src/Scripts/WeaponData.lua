@@ -927,11 +927,17 @@ local weaponModifications = {
 	HydraSummon = {
 		AIData = {
 			PreAttackDuration = 0.2,
+			-- While tethers are broken
+			AIAttackDistance = 50,
+			AIBufferDistance = 50,
 		},
 	},
 	HydraSummon2 = {
 		AIData = {
 			PreAttackDuration = 0.2,
+			-- While tethers are broken
+			AIAttackDistance = 50,
+			AIBufferDistance = 50,
 		},
 	},
 	HydraSummonSpread = {
@@ -979,6 +985,11 @@ local weaponModifications = {
 		AIData = {
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
+			PreAttackRotationDampening = 0.15,
+			FireRotationDampening = 0.01,
+			-- While tethers are broken
+			AIAttackDistance = 50,
+			AIBufferDistance = 50,
 		},
 	},
 	HydraRoarVolleyLeft = {
@@ -986,6 +997,8 @@ local weaponModifications = {
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireProjectileTowardTarget = true,
+			PreAttackRotationDampening = 0.15,
+			FireRotationDampening = 0.01,
 		},
 	},
 	HydraRoarVolleyRight = {
@@ -993,6 +1006,8 @@ local weaponModifications = {
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireProjectileTowardTarget = true,
+			PreAttackRotationDampening = 0.15,
+			FireRotationDampening = 0.01,
 		},
 	},
 	HydraRoarVolleyInsideOut = {
@@ -1000,6 +1015,8 @@ local weaponModifications = {
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireProjectileTowardTarget = true,
+			PreAttackRotationDampening = 0.15,
+			FireRotationDampening = 0.01,
 		},
 	},
 	-- #endregion
@@ -1007,6 +1024,7 @@ local weaponModifications = {
 	HydraSnap = {
 		AIData = {
 			FireSelfVelocity = 3000.0,
+			FireRotationDampening = 0.01,
 		},
 	},
 	-- #endregion
@@ -1068,6 +1086,7 @@ local weaponModifications = {
 			StopBeforeFire = true,
 			PostAttackStop = true,
 			MinAttacksBetweenUse = 3,
+			MinPlayerDistance = 400,
 			MaxPlayerDistance = 800,
 		},
 	},
@@ -1089,6 +1108,7 @@ local weaponModifications = {
 			TrackTargetDuringCharge = true,
 			StopBeforeFire = true,
 			PostAttackStop = true,
+			MinPlayerDistance = 300,
 		},
 	},
 	ShadeSpearThrustSingle = {
@@ -1548,16 +1568,19 @@ local weaponModifications = {
 	},
 	SatyrRangedWeapon = {
 		AIData = {
+			PreAttackRotationDampening = 0.4,
 			FireRotationDampening = 1E-06,
 		},
 	},
 	SatyrSplitShot = {
 		AIData = {
+			PreAttackRotationDampening = 0.4,
 			FireRotationDampening = 1E-07,
 		},
 	},
 	SatyrSingleShot = {
 		AIData = {
+			PreAttackRotationDampening = 0.4,
 			FireRotationDampening = 1E-07,
 		},
 	},
@@ -1594,7 +1617,7 @@ local weaponModifications = {
 	GrenadierWeaponMiniboss = {
 		AIData = {
 			DeepInheritance = true,
-			ApplyEffectsOnWeaponFire = { WeaponEffectData.RootedAttacker, },
+			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.RootedAttacker, },
 			ProjectileName = "GrenadierWeapon",
 			Spread = 40,
 		},

@@ -9,6 +9,8 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusWeaponBoon")
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusSpecialBoon")
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusSprintBoon")
+	-- Prevent Universal Donor/BloodRetentionBoon VFX
+	StopAnimation({ Name = "AresMelBuff", DestinationId = currentRun.Hero.ObjectId })
 
 	FadeOut({ Color = game.Color.Black, Duration = 0 })
 	AdjustFullscreenBloom({ Name = "LightningStrike", Duration = 0 })
@@ -238,6 +240,8 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusWeaponBoon")
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusSpecialBoon")
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusSprintBoon")
+	-- Prevent Universal Donor/BloodRetentionBoon VFX
+	StopAnimation({ Name = "AresMelBuff", DestinationId = currentRun.Hero.ObjectId })
 
 	FadeIn({ Duration = 5.5 })
 	PanCamera({ Id = currentRoom.CameraEndPoint, Duration = currentRoom.IntroSequenceDuration or 4, EaseIn = 0.0, EaseOut = 1.5 })

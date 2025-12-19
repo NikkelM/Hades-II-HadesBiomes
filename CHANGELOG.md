@@ -4,10 +4,29 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-
+- Balancing: Reduced the projectile speed for projectiles fired by the Wretched Witch, Dracon and Splitter.
+- Fixed: Gale and hit-shields trigger a block for the "lock-on" attacks from Brimstones, the Doomstone, Snakestones and Hades' beam attack, which do not deal damage.
 
 Other fixes and improvements:
-- If the mod detects an outdated Hades installation, it will now mark the installation as invalid and show an informative message when loading into the Training Grounds. Updating your Hades installation should resolve the issue. 
+- If the mod detects an outdated Hades installation, it will now mark the installation as invalid and show an informative message when loading into the Training Grounds. Updating your Hades installation should resolve the issue.
+- Balancing: Increased the amount of healing offered by Sisyphus' "Warm Embrace" from 25 to 50. *Note: Additional offerings and reworks will come in a future update.*
+- Balancing: Alecto and Tisiphone can now be encountered earlier in the story.
+- Balancing: The Megagorgon in Asphodel can now be morphed using the "Twilight Curse" Hex.
+- Balancing: Reduced the tracking/rotation speed of the purple Hydra variant when it readies and fires it's wave attack.
+- Balancing: Increased the minimum required distance to the player for the Longspear's leap attack.
+- Balancing: The Snakestone's lasers now move slower.
+- Balancing: Reduced the tracking/rotation speed of the Satyr Cultist when readying its blowgun attack.
+- Fixed: Entering Sisyphus' room can cause a crash at a certain point in his storyline.
+- Fixed: When entering the Tartarus or Elysium boss chambers, the player's Hex can start charging automatically before the fight begins.
+- Fixed: The main Hydra head does not return to the center of the arena before certain attacks.
+- Fixed: Respawned Elysian Shades do not immediately aggro the player.
+- Fixed: Asterius can sometimes get stuck on Melinoë if she is between him and the center of the room after he is defeated in his miniboss fight.
+- Fixed: "Spark of Ixion" can appear in the Well of Charon in the room after defeating the Champions of Elysium, even though Chaos Gates cannot spawn from this point onwards.
+- Fixed: Hades can sometimes get stuck in the room's pillars or out of bounds after dashing.
+- Fixed: If "Deep Dissent" is active, Hades may sometimes not spawn any enemies at all during his phase transitions.
+- Fixed: If "Universal Donor" is equipped, the associated VFX will show on Zagreus while on the Surface.
+- Fixed: After the last gift to Thanatos, an empty heart is still shown in the Codex.
+- Fixed: If both Nectar and Ambrosia can still be gifted to a character, both will show in empty hearts in the Codex, even when only the Nectar can currently be gifted.
 - Fixed: "Bond Forged" will now correctly display the sticker when you fully max out a characters friendship. ~ zannc's SharedKeepsakePort
 <!--Releasenotes end-->
 
@@ -24,7 +43,7 @@ Other fixes and improvements:
 - When poisoned in Elysium (through an enemy summoned by the Vow of Menace), an overhead text will now appear to remind you that poison will wear off automatically.
 - Thanatos will now teleport to the room exit faster after clearing his encounters.
 - A victory stinger will now play when clearing a run after reaching the ending.
-- Melinoe will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
+- Melinoë will now use her victory animation when returning to the Crossroads after clearing a run once the ending has been reached.
 - Added a hint to open the inventory when first gathering any of the new resources added by the mod.
 - Added a config option for speedrunners to always force the Satyr Sack in Styx to spawn in the second wing.
 - Added a previously missing introductory encounter for the Wretched Pest.

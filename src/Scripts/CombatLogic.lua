@@ -74,3 +74,16 @@ modutil.mod.Path.Wrap("CleanupEnemy", function(base, enemy)
 		Destroy({ Id = enemy.AttackTimerId })
 	end
 end)
+
+-- Only called within OnHit, used to change the damage of the HeavyRanged lock-on hit to 0 before anything else is processed that uses it
+-- The OnHitFunctionName is called too late (e.g. Gale block and HitShields still get used up before it would reduce the damage)
+modutil.mod.Path.Wrap("CheckImpactReaction",
+	function(base, attackerWeaponData, sourceProjectileData, victim, triggerArgs)
+		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and sourceProjectileData ~= nil and sourceProjectileData.ModsNikkelMHadesBiomesPreOnHitFunctionNames ~= nil and not triggerArgs.IsInvulnerable then
+			for _, functionName in pairs(sourceProjectileData.ModsNikkelMHadesBiomesPreOnHitFunctionNames) do
+				game.thread(game.CallFunctionName, functionName, victim, victim.ObjectId, triggerArgs)
+			end
+		end
+
+		return base(attackerWeaponData, sourceProjectileData, victim, triggerArgs)
+	end)
