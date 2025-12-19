@@ -8,8 +8,8 @@ import = require
 ---@diagnostic disable-next-line: undefined-global
 local mods = rom.mods
 
----@module 'SGG_Modding-ENVY-auto'
-mods['SGG_Modding-ENVY'].auto()
+---@module "SGG_Modding-ENVY-auto"
+mods["SGG_Modding-ENVY"].auto()
 -- ^ this gives us `public` and `import`, among others
 --	and makes all globals we define private to this plugin.
 ---@diagnostic disable: lowercase-global
@@ -20,24 +20,24 @@ rom = rom
 _PLUGIN = _PLUGIN
 
 -- get definitions for the game's globals
----@module 'game'
+---@module "game"
 game = rom.game
----@module 'game-import'
+---@module "game-import"
 ---@diagnostic disable-next-line: undefined-global
 import_as_fallback(game)
 
----@module 'SGG_Modding-SJSON'
-sjson = mods['SGG_Modding-SJSON']
----@module 'SGG_Modding-ModUtil'
-modutil = mods['SGG_Modding-ModUtil']
+---@module "SGG_Modding-SJSON"
+sjson = mods["SGG_Modding-SJSON"]
+---@module "SGG_Modding-ModUtil"
+modutil = mods["SGG_Modding-ModUtil"]
 
----@module 'SGG_Modding-Chalk'
+---@module "SGG_Modding-Chalk"
 chalk = mods["SGG_Modding-Chalk"]
----@module 'SGG_Modding-ReLoad'
-reload = mods['SGG_Modding-ReLoad']
+---@module "SGG_Modding-ReLoad"
+reload = mods["SGG_Modding-ReLoad"]
 
----@module 'config'
-config = chalk.auto 'config.lua'
+---@module "config"
+config = chalk.auto "config.lua"
 -- ^ this updates our `.cfg` file in the config folder!
 ---@diagnostic disable-next-line: undefined-global
 public.config = config -- so other mods can access our config
@@ -300,6 +300,8 @@ local function on_ready()
 
 			-- New colours need to be added before using them in EnemyData
 			import "Scripts/Color.lua"
+			-- New GameData entries need to be added before using them in HadesNPCData
+			import "Scripts/NarrativeData.lua"
 
 			import "Scripts/Meta/EnemyTrapDataHandler.lua"
 			import "Scripts/HadesEnemyData.lua"
@@ -400,7 +402,6 @@ local function on_ready()
 			import "Scripts/EventPresentation.lua"
 			import "Scripts/HarvestPresentation.lua"
 			import "Scripts/HubPresentation.lua"
-			import "Scripts/NarrativeData.lua"
 			import "Scripts/NarrativeLogic.lua"
 			import "Scripts/PatchLogic.lua"
 			import "Scripts/PowersLogic.lua"
