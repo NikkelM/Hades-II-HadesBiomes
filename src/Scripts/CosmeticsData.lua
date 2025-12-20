@@ -926,6 +926,84 @@ local tavernaCosmetics = {
 		},
 	},
 	-- #endregion
+	-- #region Tables/Cosmetic_TavernaTables01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaTables_Infernal",
+		Name = {
+			en = "Tables, Infernal",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Hewn from purest marble and adorned with deathly motifs, for all in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"There is no shortage of stone of any kind in the Underworld, and it is no surprise that furnishings from the House of Hades were made of the finest such materials.",
+		},
+		CosmeticsGroup = "Cosmetic_TavernaTables01",
+		InsertAfterCosmetic = "Cosmetic_TavernaTables01c",
+		ShopCategory = "CosmeticsShop_Taverna",
+		SetAnimationIds = { 585757, 585754, 585761, 566359, 742135, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaTables_Infernal",
+		IconScale = 0.2,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaTables_Infernal",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 3,
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeTaverna" }
+			},
+			NamedRequirements = { "T2Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 750,
+			ModsNikkelMHadesBiomes_OreElysium = 5,
+			ModsNikkelMHadesBiomes_OreTartarus = 5,
+		},
+	},
+		{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaTables_Springtime",
+		Name = {
+			en = "Tables, Springtime",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Decorated with imagery of fruits and flowers, for all in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"In the gloom atmosphere of the Crossroads and the Princess of the Underworld's task, these tables bring a touch of brightness and life to those who gather around them.",
+		},
+		CosmeticsGroup = "Cosmetic_TavernaTables01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaTables_Infernal",
+		ShopCategory = "CosmeticsShop_Taverna",
+		SetAnimationIds = { 585757, 585754, 585761, 566359, 742135, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaTables_Springtime",
+		IconScale = 0.2,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaTables_Springtime",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeTaverna" }
+			},
+			NamedRequirements = { "T1Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 700,
+			ModsNikkelMHadesBiomes_OreStyx = 5,
+			ModsNikkelMHadesBiomes_OreAsphodel = 5,
+		},
+	},
+	-- #endregion
 }
 for _, cosmeticData in ipairs(tavernaCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
