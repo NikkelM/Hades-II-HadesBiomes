@@ -965,7 +965,7 @@ local tavernaCosmetics = {
 			ModsNikkelMHadesBiomes_OreTartarus = 5,
 		},
 	},
-		{
+	{
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaTables_Springtime",
 		Name = {
 			en = "Tables, Springtime",
@@ -1001,6 +1001,49 @@ local tavernaCosmetics = {
 			CosmeticsPoints = 700,
 			ModsNikkelMHadesBiomes_OreStyx = 5,
 			ModsNikkelMHadesBiomes_OreAsphodel = 5,
+		},
+	},
+	-- #endregion
+	-- #region Cooking Pot/Cosmetic_TavernaCauldron01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaCauldron_Royal",
+		Name = {
+			en = "Cooking-Pot, Royal",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Well-crafted heat-conducting receptacle, in the middle of the {#BoldFormatGraftDark}Taverna{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+		},
+		CosmeticsGroup = "Cosmetic_TavernaCauldron01",
+		InsertAfterCosmetic = "Cosmetic_TavernaCauldron02",
+		ShopCategory = "CosmeticsShop_Taverna",
+		SetAnimationIds = { 586614 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaCauldron_Royal",
+		IconScale = 0.25,
+		IconOffsetY = -10,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaCauldron_Royal",
+		AnimationScale = 2.3,
+		AnimationOffsetX = -50,
+		AnimationOffsetY = -50,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 3,
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeTaverna" }
+			},
+			NamedRequirements = { "T3Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 250,
+			ModsNikkelMHadesBiomes_CropElysium = 2,
+			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
 		},
 	},
 	-- #endregion
