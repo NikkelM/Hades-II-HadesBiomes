@@ -1047,6 +1047,89 @@ local tavernaCosmetics = {
 		},
 	},
 	-- #endregion
+	-- #region Mosaic/Cosmetic_TavernaStarMosaic
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Furious",
+		Name = {
+			en = "Mosaic, Furious",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Simple natural stones with coloured glass inlays form this central flooring in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"The three furies Megaera, Alecto and Tisiphone do not care for lavish designs and decorations, but can appreciate the craftsmanship that went into this mosaic.",
+		},
+		CosmeticsGroup = "Cosmetic_TavernaStarMosaic",
+		InsertAfterCosmetic = "Cosmetic_TavernaStarMosaic",
+		ShopCategory = "CosmeticsShop_Taverna",
+		ActivateIds = { 738509 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaStarMosaic_Furious",
+		IconScale = 0.2,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaStarMosaic_Furious",
+		AnimationScale = 2,
+		AnimationOffsetY = -70,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "EnemyKills" },
+				SumOf = { "Harpy", "Harpy2", "Harpy3" },
+				Comparison = ">=",
+				Value = 5,
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeTaverna" }
+			},
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 1000,
+			ModsNikkelMHadesBiomes_PlantTartarus = 3,
+			ModsNikkelMHadesBiomes_CropTartarus = 2,
+			ModsNikkelMHadesBiomes_OreTartarus = 4,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Royal",
+		Name = {
+			en = "Mosaic, Royal",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Gold patterns inset to white stones form this central flooring in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"Lord Hades of the Underworld is not known for any display of wealth, but also did not order this mosaic be removed once he discovered its existence.",
+		},
+		CosmeticsGroup = "Cosmetic_TavernaStarMosaic",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Furious",
+		ShopCategory = "CosmeticsShop_Taverna",
+		ActivateIds = { 738509 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaStarMosaic_Royal",
+		IconScale = 0.2,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaStarMosaic_Royal",
+		AnimationScale = 1.95,
+		AnimationOffsetY = -55,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 4,
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeTaverna" }
+			},
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 1000,
+			ModsNikkelMHadesBiomes_PlantStyx = 2,
+			ModsNikkelMHadesBiomes_CropAsphodel = 3,
+			ModsNikkelMHadesBiomes_OreStyx = 5,
+		},
+	},
+	-- #endregion
 }
 for _, cosmeticData in ipairs(tavernaCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
