@@ -15,9 +15,22 @@ mod.DefaultHiddenConfig = {
 -- If the count in the cache/sjsonLoads.sjson file is different when OnAnyLoad is called, we know something went wrong and need to ask the user to restart the game
 mod.ExpectedNumSjsonHooks = 30
 
--- All enemies have more health and armour in modded runs
-mod.ModdedUnitMaxHealthMultiplierBonus = 0.45
-mod.ModdedUnitHealthBufferMultiplierBonus = 0.2
+-- All enemies have more health and armour in modded runs, scales with each biome
+-- Should not apply to bosses, which should opt out using ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and define their own modified health
+mod.ModdedUnitMaxHealthMultiplierBonus = {
+	Default = 0.4,
+	Tartarus = 0.35,
+	Asphodel = 0.4,
+	Elysium = 0.45,
+	Styx = 0.48
+}
+mod.ModdedUnitHealthBufferMultiplierBonus = {
+	Default = 0.15,
+	Tartarus = 0.1,
+	Asphodel = 0.15,
+	Elysium = 0.2,
+	Styx = 0.22
+}
 
 -- TODO: Challenge, Charon? What Roomsets are they?
 -- For Challenge, can use Melinoe_0376 as enter voiceline

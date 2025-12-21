@@ -756,11 +756,12 @@ local enemyModifications = {
 		-- Hecate EM Health: 7250
 		-- Polyphemus Health: 8400
 		-- Polyphemus EM Health: 10200
-		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
-		MaxHealth = 8200,
+		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
+		MaxHealth = 11000,
 		ShrineDataOverwrites = {
-			MaxHealth = 8800,
+			MaxHealth = 12000,
 		},
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.MegVoice,
 		RunHistoryKilledByName = "NPC_FurySister_01",
 		ImmuneToPolymorph = true,
@@ -770,10 +771,11 @@ local enemyModifications = {
 	Harpy2 = {
 		-- Base Health: 4600
 		-- EM Health: 4900
-		MaxHealth = 8400,
+		MaxHealth = 11100,
 		ShrineDataOverwrites = {
-			MaxHealth = 9000,
+			MaxHealth = 12200,
 		},
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.AlectoVoice,
 		-- Gets overwritten by the Harpy value if not set
 		RunHistoryKilledByName = "Harpy2",
@@ -787,10 +789,11 @@ local enemyModifications = {
 	Harpy3 = {
 		-- Base Health: 5200
 		-- EM Health: 5600
-		MaxHealth = 8600,
+		MaxHealth = 11400,
 		ShrineDataOverwrites = {
-			MaxHealth = 9200,
+			MaxHealth = 12400,
 		},
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.TisiphoneVoice,
 		RunHistoryKilledByName = "Harpy3",
 		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
@@ -1100,8 +1103,6 @@ local enemyModifications = {
 		},
 	},
 	SpreadShotUnitMiniboss = {
-		MaxHealth = 700,
-		HealthBuffer = 1100,
 		-- In Hades II, projectiles can't be destroyed by attacks by default
 		-- So we change the difficulty introduced by the shrine to have all four enemies attack at once, as the invulnerable projectiles are actually easier to dodge than the normal attacks
 		-- We also remove the ShrineWeaponOptionsOverwrite, so we don't use the invulnerable projectiles at all
@@ -1148,8 +1149,9 @@ local enemyModifications = {
 	HydraHeadImmortal = {
 		-- Base Health: 6000
 		-- Eris Health: 16000
-		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
-		MaxHealth = 13500,
+		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
+		MaxHealth = 18000,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
 			[1] = {
 				GameStateRequirements = { RequiredPlayed = { "/VO/ZagreusField_3147" } },
@@ -1208,9 +1210,10 @@ local enemyModifications = {
 	},
 	-- Spawned heads
 	BaseHydraHead = {
-		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
-		MaxHealth = 700,
-		HealthBuffer = 700,
+		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
+		MaxHealth = 1000,
+		HealthBuffer = 1000,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		StunAnimations = { Default = "EnemyHydraOnHit" },
 		ManualDeathAnimation = false,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
@@ -1566,8 +1569,9 @@ local enemyModifications = {
 		-- Base Health: 14000
 		-- Prometheus Health: 33000
 		-- Heracles Health: 34000
-		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
-		MaxHealth = 18500,
+		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
+		MaxHealth = 26500,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.MinotaurVoice,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
@@ -1585,7 +1589,8 @@ local enemyModifications = {
 	},
 	Minotaur2 = {
 		-- Base Health: 16000
-		MaxHealth = 18500,
+		MaxHealth = 27000,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "MinotaurArmoredOverheadTouchdown",
 			SpawnDistance = 90,
@@ -1597,7 +1602,8 @@ local enemyModifications = {
 	},
 	Theseus = {
 		-- Base Health: 9000
-		MaxHealth = 14000,
+		MaxHealth = 20000,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.TheseusVoice,
 		-- Doesn't seem to be used
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
@@ -1619,7 +1625,8 @@ local enemyModifications = {
 	},
 	Theseus2 = {
 		-- Base Health: 12000
-		MaxHealth = 15000,
+		MaxHealth = 21500,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
 		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "Theseus2Damaged",
 		AIStages = {
@@ -1771,11 +1778,12 @@ local enemyModifications = {
 		-- Chronos Health: 20000
 		-- Chronos EM Health: 22000
 		-- Typhon Health: 65000
-		-- Note that this is still multiplied by the ModdedUnitMaxHealthMultiplierBonus
-		MaxHealth = 20000,
+		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
+		MaxHealth = 30000,
 		ShrineDataOverwrites = {
-			MaxHealth = 22500,
+			MaxHealth = 33500,
 		},
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.HadesVoice,
 		DestroyDelay = 0,
 		-- It's misaligned/not tracking correctly

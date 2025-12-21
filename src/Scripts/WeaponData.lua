@@ -810,45 +810,36 @@ local weaponModifications = {
 		AIData = {
 			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
 			PreAttackWaitForAnimation = true,
-			PostAttackCooldown = mod.NilValue,
-			PostAttackCooldownMin = 2.0,
-			PostAttackCooldownMax = 3.0,
+			PostAttackCooldown = 2.2,
 		},
 		ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",
 		ShrineMetaUpgradeRequiredLevel = 1,
 		ShrineAIDataOverwrites = {
-			PostAttackCooldownMin = 1.5,
-			PostAttackCooldownMax = 1.5,
+			PostAttackCooldown = 1.7,
 		},
 	},
 	SpreadShotMinibossCone = {
 		AIData = {
 			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
 			PreAttackWaitForAnimation = true,
-			PostAttackCooldown = mod.NilValue,
-			PostAttackCooldownMin = 2.0,
-			PostAttackCooldownMax = 3.0,
+			PostAttackCooldown = 2.2,
 		},
 		ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",
 		ShrineMetaUpgradeRequiredLevel = 1,
 		ShrineAIDataOverwrites = {
-			PostAttackCooldownMin = 1.5,
-			PostAttackCooldownMax = 1.5,
+			PostAttackCooldown = 1.7,
 		},
 	},
 	SpreadShotMinibossCross = {
 		AIData = {
 			PreAttackAnimation = "Enemy_LightRanged_CastPreAttack",
 			PreAttackWaitForAnimation = true,
-			PostAttackCooldown = mod.NilValue,
-			PostAttackCooldownMin = 2.0,
-			PostAttackCooldownMax = 3.0,
+			PostAttackCooldown = 2.2,
 		},
 		ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",
 		ShrineMetaUpgradeRequiredLevel = 1,
 		ShrineAIDataOverwrites = {
-			PostAttackCooldownMin = 1.5,
-			PostAttackCooldownMax = 1.5,
+			PostAttackCooldown = 1.7,
 		},
 	},
 	-- #endregion
@@ -1042,21 +1033,6 @@ local weaponModifications = {
 	ShadeBowRanged = {
 		AIData = {
 			FireRotationDampening = 1E-06,
-		},
-	},
-	ShadeBowRangedRapidFire = {
-		AIData = {
-			FireRotationDampening = 1E-07,
-		},
-	},
-	ShadeBowRangedRapidSalvo = {
-		AIData = {
-			FireRotationDampening = 1E-07,
-		},
-	},
-	ShadeBowRangedSplitFire = {
-		AIData = {
-			FireRotationDampening = 1E-07,
 		},
 	},
 	ShadeBowSideDash = {

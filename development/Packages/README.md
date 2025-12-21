@@ -15,6 +15,7 @@ If the source package matches the TeamName-ModName format, all texture paths wil
 If using the legacy "Any" format, the texture paths will not have any prefix added to them.
 
 The legacy format is a custom hack into deppth2, and not part of the pip package.
+<!-- TODO: Document the code changes for the hack! -->
 
 In the parent folder of the source folder:
 For the legacy format, run e.g. `deppth2 hpk -c BC7 -s ModsNikkelMHadesBiomesPortraits_source -t ModsNikkelMHadesBiomesPortraits`.
