@@ -76,16 +76,23 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 			unit.WeaponOptions = unit.ShrineWeaponOptionsOverwrite
 		end
 
-		-- Increase the unit's health and armour
-		if unit.HealthBufferMultiplier ~= nil then
-			unit.HealthBufferMultiplier = unit.HealthBufferMultiplier + mod.ModdedUnitHealthBufferMultiplierBonus
-		else
-			unit.HealthBufferMultiplier = 1 + mod.ModdedUnitHealthBufferMultiplierBonus
-		end
-		if unit.HealthMultiplier ~= nil then
-			unit.HealthMultiplier = unit.HealthMultiplier * mod.ModdedUnitMaxHealthMultiplierBonus
-		else
-			unit.HealthMultiplier = 1 + mod.ModdedUnitMaxHealthMultiplierBonus
+		-- Increase the unit's health and armour, if it shouldn't be excluded from the modded modifiers
+		if not unit.ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers then
+			local healthBufferBonus = mod.ModdedUnitHealthBufferMultiplierBonus[currentRun.CurrentRoom.RoomSetName] or
+					mod.ModdedUnitHealthBufferMultiplierBonus.Default
+			local maxHealthBonus = mod.ModdedUnitMaxHealthMultiplierBonus[currentRun.CurrentRoom.RoomSetName] or
+					mod.ModdedUnitMaxHealthMultiplierBonus.Default
+
+			if unit.HealthBufferMultiplier ~= nil then
+				unit.HealthBufferMultiplier = unit.HealthBufferMultiplier + healthBufferBonus
+			else
+				unit.HealthBufferMultiplier = 1 + healthBufferBonus
+			end
+			if unit.HealthMultiplier ~= nil then
+				unit.HealthMultiplier = unit.HealthMultiplier + maxHealthBonus
+			else
+				unit.HealthMultiplier = 1 + maxHealthBonus
+			end
 		end
 
 		-- For Hades

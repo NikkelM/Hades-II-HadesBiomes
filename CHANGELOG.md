@@ -4,7 +4,9 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Balancing: Reduced overall enemy health in Tartarus and Asphodel, with larger reductions in Tartarus, whilst slightly increasing enemy health in Styx.
 - Balancing: Reduced the projectile speed for projectiles fired by the Wretched Witch, Dracon and Splitter.
+- Balancing: Removed randomization of attack timings of the Dire Spreaders in the "Witch's Circle" miniboss encounter to make the encounter more predictable.
 - Fixed: Gale and hit-shields trigger a block for the "lock-on" attacks from Brimstones, the Doomstone, Snakestones and Hades' beam attack, which do not deal damage.
 
 Other fixes and improvements:
@@ -13,7 +15,6 @@ Other fixes and improvements:
 - Balancing: Alecto and Tisiphone can now be encountered earlier in the story.
 - Balancing: The Megagorgon in Asphodel can now be morphed using the "Twilight Curse" Hex.
 - Balancing: Reduced the health and armour of the Dire Spreaders in the "Witch's Circle" miniboss encounter.
-- Balancing: Removed randomization of attack timings of the Dire Spreaders in the "Witch's Circle" miniboss encounter to make the encounter more predictable.
 - Balancing: Reduced the tracking/rotation speed of the purple Hydra variant when it readies and fires it's wave attack.
 - Balancing: Increased the minimum required distance to the player for the Longspear's leap attack.
 - Balancing: The Elite Strongbow's triple-shot attack now has better tracking and is not as easily avoidable.
