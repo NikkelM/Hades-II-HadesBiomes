@@ -52,6 +52,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineStaff_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 2,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -80,6 +91,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineStaff_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 3,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -110,6 +132,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineStaff_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 3,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -145,6 +178,17 @@ local newShrineBounties = {
 	-- #region Daggers
 	ModsNikkelMHadesBiomes_BountyShrineDaggers_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 2,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -197,6 +241,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineDaggers_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 3,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -229,6 +284,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineDaggers_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 3,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -262,6 +328,17 @@ local newShrineBounties = {
 	-- #region Torches
 	ModsNikkelMHadesBiomes_BountyShrineTorches_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 3,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -292,6 +369,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineTorches_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 3,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -348,6 +436,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineTorches_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 2,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -403,6 +502,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineAxe_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 3,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -433,6 +543,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineAxe_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 2,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -461,6 +582,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineAxe_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 3,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -496,6 +628,17 @@ local newShrineBounties = {
 	-- #region Lob/Skull
 	ModsNikkelMHadesBiomes_BountyShrineLob_TartarusBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesMegaeraEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 2,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -548,6 +691,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineLob_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 3,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -578,6 +732,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineLob_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 3,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -637,6 +802,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineSuit_AsphodelBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHydraEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 3,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -669,6 +845,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineSuit_ElysiumBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 3,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },
@@ -699,6 +886,17 @@ local newShrineBounties = {
 	},
 	ModsNikkelMHadesBiomes_BountyShrineSuit_StyxBoss = {
 		InheritFrom = { "DefaultBossHeatBounty", "ModsNikkelMHadesBiomesHadesEncounters" },
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 2,
+					},
+				}
+			},
+		},
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ShrineBountiesCompleted", },

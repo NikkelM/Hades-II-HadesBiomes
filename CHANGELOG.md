@@ -7,6 +7,7 @@
 - Balancing: Reduced overall enemy health in Tartarus and Asphodel, with larger reductions in Tartarus, whilst slightly increasing enemy health in Styx.
 - Balancing: Reduced the projectile speed for projectiles fired by the Wretched Witch, Dracon and Splitter.
 - Balancing: Removed randomization of attack timings of the Dire Spreaders in the "Witch's Circle" miniboss encounter to make the encounter more predictable.
+- Balancing: Increased the amount of Nightmare granted for completing the new testaments to align with the base game rewards: 14 fear testaments now grant 2 Nightmare, and 18 and 22 fear testaments now grant 3 Nightmare. If you have already completed some of these testaments, the owed Nightmare will be added to your inventory when you load into your save.
 - Fixed: Gale and hit-shields trigger a block for the "lock-on" attacks from Brimstones, the Doomstone, Snakestones and Hades' beam attack, which do not deal damage.
 
 Other fixes and improvements:
