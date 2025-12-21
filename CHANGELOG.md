@@ -12,6 +12,8 @@ Other fixes and improvements:
 - Balancing: Increased the amount of healing offered by Sisyphus' "Warm Embrace" from 25 to 50. *Note: Additional offerings and reworks will come in a future update.*
 - Balancing: Alecto and Tisiphone can now be encountered earlier in the story.
 - Balancing: The Megagorgon in Asphodel can now be morphed using the "Twilight Curse" Hex.
+- Balancing: Reduced the health and armour of the Dire Spreaders in the "Witch's Circle" miniboss encounter.
+- Balancing: Removed randomization of attack timings of the Dire Spreaders in the "Witch's Circle" miniboss encounter to make the encounter more predictable.
 - Balancing: Reduced the tracking/rotation speed of the purple Hydra variant when it readies and fires it's wave attack.
 - Balancing: Increased the minimum required distance to the player for the Longspear's leap attack.
 - Balancing: The Elite Strongbow's triple-shot attack now has better tracking and is not as easily avoidable.
