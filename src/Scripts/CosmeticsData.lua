@@ -1130,6 +1130,95 @@ local tavernaCosmetics = {
 		},
 	},
 	-- #endregion
+	-- #region Tassels/Cosmetic_MainHangingTassles01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_MainHangingTassles_Deathly",
+		Name = {
+			en = "Tassels, Deathly",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Protective and decorative intimidating charms near to the Princess' tent.",
+		},
+		FlavorText = {
+			en =
+			"Some forget that while most living beings enter the Underworld as shades, they also leave behind the mortal part of themselves on the Surface.",
+		},
+		CosmeticsGroup = "Cosmetic_MainHangingTassles01",
+		InsertAfterCosmetic = "Cosmetic_MainHangingTassles01b",
+		ShopCategory = "CosmeticsShop_Taverna",
+		CameraFocusId = 576000,
+		SetAnimationIds = { 576011, 576000, 576010, 575999, 585293 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\MainHangingTassles_Deathly",
+		IconScale = 0.15,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\MainHangingTassles_Deathly",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "RoomsEntered", "D_Intro" },
+			},
+			NamedRequirements = { "T1Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 180,
+			ModsNikkelMHadesBiomes_PlantStyx = 1,
+			ModsNikkelMHadesBiomes_CropTartarus = 2,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0452", Text = "I'll get some Shades to hang those up for you.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
+	},
+	-- #endregion
+	-- #region Rope/Cosmetic_MainHangingRope01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Cosmetic_MainHangingRope_Deathly",
+		Name = {
+			en = "Rope, Deathly",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Bound remembrances of the dead hanging above the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"They channel the energy of souls departing from the Surface, to enhance the potency of the Princess' concoctions.",
+		},
+		CosmeticsGroup = "Cosmetic_MainHangingRope01",
+		InsertAfterCosmetic = "Cosmetic_MainHangingRope01a",
+		ShopCategory = "CosmeticsShop_Taverna",
+		CameraFocusId = 567503,
+		SetAnimationIds = { 567502, 567327, 576074, 567326, 567503, 589757, 576156, 589685, 589686, 567328, 589688, 589687, 586405, 589689, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\MainHangingRope_Deathly",
+		IconScale = 0.12,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\MainHangingRope_Deathly",
+		AnimationScale = 1.8,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "RoomsEntered", "D_Intro" },
+			},
+			NamedRequirements = { "T2Cosmetic" },
+		},
+		Cost = {
+			CosmeticsPoints = 280,
+			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+			ModsNikkelMHadesBiomes_PlantElysium = 2,
+			ModsNikkelMHadesBiomes_OreAsphodel = 3,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0455", Text = "Could always use more stuff hanging from the trees.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
+	},
+	-- #endregion
 }
 for _, cosmeticData in ipairs(tavernaCosmetics) do
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
