@@ -1044,21 +1044,6 @@ local weaponModifications = {
 			FireRotationDampening = 1E-06,
 		},
 	},
-	ShadeBowRangedRapidFire = {
-		AIData = {
-			FireRotationDampening = 1E-07,
-		},
-	},
-	ShadeBowRangedRapidSalvo = {
-		AIData = {
-			FireRotationDampening = 1E-07,
-		},
-	},
-	ShadeBowRangedSplitFire = {
-		AIData = {
-			FireRotationDampening = 1E-07,
-		},
-	},
 	ShadeBowSideDash = {
 		AIData = {
 			-- Causes an infinite loop, as this would be set to itself

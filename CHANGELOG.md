@@ -14,6 +14,7 @@ Other fixes and improvements:
 - Balancing: The Megagorgon in Asphodel can now be morphed using the "Twilight Curse" Hex.
 - Balancing: Reduced the tracking/rotation speed of the purple Hydra variant when it readies and fires it's wave attack.
 - Balancing: Increased the minimum required distance to the player for the Longspear's leap attack.
+- Balancing: The Elite Strongbow's triple-shot attack now has better tracking and is not as easily avoidable.
 - Balancing: The Snakestone's lasers now move slower.
 - Balancing: Reduced the tracking/rotation speed of the Satyr Cultist when readying its blowgun attack.
 - Fixed: Entering Sisyphus' room can cause a crash at a certain point in his storyline.
