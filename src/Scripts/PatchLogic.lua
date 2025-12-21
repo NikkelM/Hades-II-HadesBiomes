@@ -34,7 +34,7 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 	moddedRoomNames = game.ConcatTableValuesIPairs(moddedRoomNames, oldElysiumRoomNames)
 
 	if game.GameState ~= nil then
-		-- #region Fixing any older runs from before the uninstall-error was fixed
+		-- #region Fix any older runs from before the uninstall-error was fixed
 		if not game.IsEmpty(game.GameState.RunHistory) then
 			for _, runData in pairs(game.GameState.RunHistory) do
 				if game.Contains(moddedRoomNames, runData.EndingRoomName) then
@@ -54,12 +54,19 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 		game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache = game.GameState
 				.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache or 999999
 		-- #endregion
-	
-		-- #region Patching GiftTextLineSets
+
+		-- #region Patch GiftTextLineSets
 		-- If ThanatosGift04 has already been completed, move it to ThanatosGift04_B, since that is now the only one still available
 		if game.GameState.TextLinesRecord["ThanatosGift04"] ~= nil then
 			game.GameState.TextLinesRecord["ThanatosGift04"] = nil
 			game.GameState.TextLinesRecord["ThanatosGift04_B"] = true
+		end
+		-- #endregion
+
+		-- #region Retroactively award additional Nightmare for modded testaments that were completed before the rewards were increased
+		if not game.GameState.ModsNikkelMHadesBiomesPatchedTestamentsIncreasedRewards then
+			mod.PatchTestamentIncreasedRewards()
+			game.GameState.ModsNikkelMHadesBiomesPatchedTestamentsIncreasedRewards = true
 		end
 		-- #endregion
 	end
@@ -84,3 +91,18 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 
 	base()
 end)
+
+function mod.PatchTestamentIncreasedRewards()
+	local owedNightmare = 0
+	for bountyName, _ in pairs(game.GameState.ShrineBountiesCompleted) do
+		local bountyData = game.BountyData[bountyName]
+		if game.Contains(mod.ModdedShrineBountyNames, bountyName) then
+			-- Minus one since we already awarded one Nightmare when the testament was originally completed
+			-- This will add 0 Nightmare for normal bounties, and 1/2 Nightmare for those rewarding 2/3 Nightmare on the higher heats
+			owedNightmare = owedNightmare + bountyData.LootOptions[1].Overrides.AddResources.WeaponPointsRare - 1
+		end
+	end
+
+	game.AddResource("WeaponPointsRare", owedNightmare, "Patch",
+		{ Silent = true, SkipVoiceLines = true, SkipInventoryObjective = true })
+end
