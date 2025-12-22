@@ -19,7 +19,7 @@ All new cosmetics were created by community member @burn, and can be unlocked us
 
 Other fixes and improvements:
 - If the mod detects an outdated Hades installation, it will now mark the installation as invalid and show an informative message when loading into the Training Grounds. Updating your Hades installation should resolve the issue.
-- Balancing: Increased the amount of healing offered by Sisyphus' "Warm Embrace" from 25 to 50. *Note: Additional offerings and reworks will come in a future update.*
+- Balancing: Increased the amount of healing offered by Sisyphus' "Warm Embrace" from 25 to 50.
 - Balancing: Alecto and Tisiphone can now be encountered earlier in the story.
 - Balancing: The Megagorgon in Asphodel can now be morphed using the "Twilight Curse" Hex.
 - Balancing: Reduced the health and armour of the Dire Spreaders in the "Witch's Circle" miniboss encounter.
@@ -37,9 +37,11 @@ Other fixes and improvements:
 - Fixed: Hades can sometimes get stuck in the room's pillars or out of bounds after dashing.
 - Fixed: If "Deep Dissent" is active, Hades may sometimes not spawn any enemies at all during his phase transitions.
 - Fixed: If "Universal Donor" is equipped, the associated VFX will show on Zagreus while on the Surface.
+- Fixed: Magick and Hexes do not (re)charge during Thanatos encounters.
 - Fixed: After the last gift to Thanatos, an empty heart is still shown in the Codex.
 - Fixed: If both Nectar and Ambrosia can still be gifted to a character, both will show in empty hearts in the Codex, even when only the Nectar can currently be gifted.
-- Fixed: "Bond Forged" will now correctly display the sticker when you fully max out a characters friendship. ~ zannc's SharedKeepsakePort
+- Fixed: Some texts are decoded incorrectly for Italian and Brazilian Portuguese localizations, causing the game to freeze when the relevant dialogue plays.
+- Fixed: "Bond Forged" will now correctly display the sticker when you fully max out a characters friendship. (zannc's SharedKeepsakePort)
 <!--Releasenotes end-->
 
 ## v0.1.5

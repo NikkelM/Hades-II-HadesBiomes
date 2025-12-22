@@ -117,7 +117,7 @@ function mod.ThanatosEncounterStartPresentation(eventSource)
 end
 
 function mod.BeginThanatosEncounter()
-	game.StartEncounterEffects(game.CurrentRun)
+	game.StartEncounterEffects()
 end
 
 function mod.ThanatosPostCombat(enemy)
