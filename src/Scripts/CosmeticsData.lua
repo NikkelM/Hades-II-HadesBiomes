@@ -274,7 +274,7 @@ local tentCosmetics = {
 		Cost = {
 			CosmeticsPoints = 180,
 			ModsNikkelMHadesBiomes_BossResourceTartarus = 2,
-			ModsNikkelMHadesBiomes_CropAsphodel = 2,
+			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
 		},
 	},
 	{
@@ -347,7 +347,7 @@ local tentCosmetics = {
 			CosmeticsPoints = 180,
 			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
 			ModsNikkelMHadesBiomes_PlantTartarus = 2,
-			ModsNikkelMHadesBiomes_CropElysium = 1,
+			ModsNikkelMHadesBiomes_PlantElysium = 1,
 		},
 	},
 	{
@@ -536,7 +536,7 @@ local mainHubAreaCosmetics = {
 		},
 		Cost = {
 			CosmeticsPoints = 500,
-			ModsNikkelMHadesBiomes_CropElysium = 1,
+			ModsNikkelMHadesBiomes_PlantElysium = 1,
 			ModsNikkelMHadesBiomes_OreStyx = 4,
 		},
 	},
@@ -770,7 +770,7 @@ local mainHubAreaCosmetics = {
 		Cost = {
 			CosmeticsPoints = 2200,
 			ModsNikkelMHadesBiomes_OreAsphodel = 9,
-			ModsNikkelMHadesBiomes_OreElysium = 6,
+			ModsNikkelMHadesBiomes_OreStyx = 6,
 		},
 		RevealReactionVoiceLines = {
 			{
@@ -822,7 +822,7 @@ local mainHubAreaCosmetics = {
 		Cost = {
 			CosmeticsPoints = 2200,
 			ModsNikkelMHadesBiomes_CropTartarus = 4,
-			ModsNikkelMHadesBiomes_OreElysium = 5,
+			ModsNikkelMHadesBiomes_OreAsphodel = 5,
 			ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
 		},
 		RevealReactionVoiceLines = {
@@ -920,7 +920,7 @@ local tavernaCosmetics = {
 		},
 		Cost = {
 			CosmeticsPoints = 250,
-			ModsNikkelMHadesBiomes_CropElysium = 2,
+			ModsNikkelMHadesBiomes_PlantElysium = 2,
 			ModsNikkelMHadesBiomes_PlantStyx = 2,
 			ModsNikkelMHadesBiomes_CropStyx = 1,
 		},
@@ -961,7 +961,7 @@ local tavernaCosmetics = {
 		},
 		Cost = {
 			CosmeticsPoints = 750,
-			ModsNikkelMHadesBiomes_OreElysium = 5,
+			ModsNikkelMHadesBiomes_OreAsphodel = 5,
 			ModsNikkelMHadesBiomes_OreTartarus = 5,
 		},
 	},
