@@ -9,7 +9,8 @@ local newIncantations = {
 		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_unlockCosmetics",
 		Cost = {
 			CosmeticsPoints = 150,
-			ModsNikkelMHadesBiomes_PlantTartarus = 3,
+			ModsNikkelMHadesBiomes_PlantTartarus = 2,
+			ModsNikkelMHadesBiomes_OreTartarus = 2,
 		},
 		GameStateRequirements = {
 			{
