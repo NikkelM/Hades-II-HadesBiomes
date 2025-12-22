@@ -366,6 +366,7 @@ local function on_ready()
 			import "Scripts/ProjectileData.lua"
 			import "Scripts/RunClearData.lua"
 			import "Scripts/RunHistoryData.lua"
+			import "Scripts/WorldUpgradeData.lua"
 
 			-- Applies modifications to the rooms, such as LegalEncounterDictionary
 			game.SetupRunData()

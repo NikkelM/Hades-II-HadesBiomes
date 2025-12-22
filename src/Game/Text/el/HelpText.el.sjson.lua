@@ -955,6 +955,20 @@ local newData = {
 	-- #endregion
 	-- #endregion
 	-- #endregion
+
+	-- #region Incantations
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation",
+	-- 	DisplayName = "House Contractor's Inventory List",
+	-- 	Description =
+	-- 	"Allow {$Keywords.CharDora} to procure new furnishings and decorations for the renewal project, inspired by your family's past."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation_Flavor",
+	-- 	Description =
+	-- 	"The Princess of the Underworld and her brother Zagreus share an affinity for redecorating their respective abodes, much to the dismay of both their guardians."
+	-- }
+	-- #endregion
 }
 
 sjson.hook(helpTextFile, function(data)
