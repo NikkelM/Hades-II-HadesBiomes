@@ -53,6 +53,7 @@ local tentCosmetics = {
 			},
 			NamedRequirements = { "T2Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 500,
 			ModsNikkelMHadesBiomes_PlantElysium = 3,
@@ -97,6 +98,7 @@ local tentCosmetics = {
 			},
 			NamedRequirements = { "T2Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 500,
 			ModsNikkelMHadesBiomes_CropElysium = 3,
@@ -129,6 +131,7 @@ local tentCosmetics = {
 		GameStateRequirements = {
 			NamedRequirements = { "T3Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 250,
 			ModsNikkelMHadesBiomes_OreStyx = 5,
@@ -159,6 +162,7 @@ local tentCosmetics = {
 		GameStateRequirements = {
 			NamedRequirements = { "T3Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 250,
 			ModsNikkelMHadesBiomes_OreTartarus = 4,
@@ -191,6 +195,7 @@ local tentCosmetics = {
 		GameStateRequirements = {
 			NamedRequirements = { "T1Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 150,
 			ModsNikkelMHadesBiomes_OreTartarus = 4,
@@ -236,6 +241,7 @@ local tentCosmetics = {
 			},
 			NamedRequirements = { "T1Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 180,
 			ModsNikkelMHadesBiomes_BossResourceStyx = 1,
@@ -271,6 +277,7 @@ local tentCosmetics = {
 			},
 			NamedRequirements = { "T1Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 180,
 			ModsNikkelMHadesBiomes_BossResourceTartarus = 2,
@@ -306,6 +313,7 @@ local tentCosmetics = {
 			},
 			NamedRequirements = { "T1Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 180,
 			ModsNikkelMHadesBiomes_BossResourceElysium = 1,
@@ -343,6 +351,7 @@ local tentCosmetics = {
 			},
 			NamedRequirements = { "T2Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 180,
 			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
@@ -379,6 +388,7 @@ local tentCosmetics = {
 			},
 			NamedRequirements = { "T2Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 180,
 			ModsNikkelMHadesBiomes_OreAsphodel = 5,
@@ -388,6 +398,12 @@ local tentCosmetics = {
 	-- #endregion
 }
 for _, cosmeticData in ipairs(tentCosmetics) do
+	if cosmeticData.GameStateRequirements == nil then
+		cosmeticData.GameStateRequirements = {}
+	end
+	table.insert(cosmeticData.GameStateRequirements, {
+		PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+	})
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
 
@@ -425,6 +441,7 @@ local mainHubAreaCosmetics = {
 			},
 			NamedRequirements = { "T5Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 800,
 			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
@@ -462,6 +479,7 @@ local mainHubAreaCosmetics = {
 			},
 			NamedRequirements = { "T5Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 800,
 			ModsNikkelMHadesBiomes_PlantElysium = 2,
@@ -499,6 +517,7 @@ local mainHubAreaCosmetics = {
 			},
 			NamedRequirements = { "T3Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 500,
 			ModsNikkelMHadesBiomes_CropElysium = 1,
@@ -534,6 +553,7 @@ local mainHubAreaCosmetics = {
 			},
 			NamedRequirements = { "T3Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 500,
 			ModsNikkelMHadesBiomes_PlantElysium = 1,
@@ -563,12 +583,9 @@ local mainHubAreaCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Pillars_Serpentine",
 		AnimationScale = 1.9,
 		GameStateRequirements = {
-			-- Met Megaera
-			{
-				PathTrue = { "GameState", "RoomsEntered", "A_Boss01" },
-			},
-			NamedRequirements = { "T3Cosmetic" },
+			-- Immediately available after the incantation
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 500,
 			ModsNikkelMHadesBiomes_CropTartarus = 1,
@@ -599,11 +616,9 @@ local mainHubAreaCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Rug_Ancient",
 		AnimationScale = 2.35,
 		GameStateRequirements = {
-			-- Met Sisyphus
-			{
-				PathTrue = { "GameState", "RoomsEntered", "A_Story01" },
-			},
+			-- Immediately available after the incantation
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 250,
 			ModsNikkelMHadesBiomes_PlantTartarus = 2,
@@ -640,6 +655,7 @@ local mainHubAreaCosmetics = {
 				PathTrue = { "GameState", "RoomsEntered", "Y_PostBoss01" },
 			},
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 300,
 			ModsNikkelMHadesBiomes_PlantElysium = 3,
@@ -679,6 +695,7 @@ local mainHubAreaCosmetics = {
 			},
 			NamedRequirements = { "T3Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 700,
 			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
@@ -717,6 +734,7 @@ local mainHubAreaCosmetics = {
 			},
 			NamedRequirements = { "T2Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 300,
 			ModsNikkelMHadesBiomes_BossResourceTartarus = 1,
@@ -760,13 +778,9 @@ local mainHubAreaCosmetics = {
 		-- For the bubbling water animation
 		AnimationInheritFrom = "CriticalItemWorldObject01",
 		GameStateRequirements = {
-			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
-				Comparison = ">=",
-				Value = 2,
-			},
-			NamedRequirements = { "T4Cosmetic" },
+			-- Immediately available after the incantation
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 2200,
 			ModsNikkelMHadesBiomes_OreAsphodel = 9,
@@ -819,6 +833,7 @@ local mainHubAreaCosmetics = {
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 2200,
 			ModsNikkelMHadesBiomes_CropTartarus = 4,
@@ -842,6 +857,12 @@ local mainHubAreaCosmetics = {
 	-- #endregion
 }
 for _, cosmeticData in ipairs(mainHubAreaCosmetics) do
+	if cosmeticData.GameStateRequirements == nil then
+		cosmeticData.GameStateRequirements = {}
+	end
+	table.insert(cosmeticData.GameStateRequirements, {
+		PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+	})
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
 
@@ -880,6 +901,7 @@ local tavernaCosmetics = {
 			},
 			NamedRequirements = { "T2Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 270,
 			ModsNikkelMHadesBiomes_OreTartarus = 5,
@@ -918,6 +940,7 @@ local tavernaCosmetics = {
 			},
 			NamedRequirements = { "T1Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 250,
 			ModsNikkelMHadesBiomes_PlantElysium = 2,
@@ -959,6 +982,7 @@ local tavernaCosmetics = {
 			},
 			NamedRequirements = { "T2Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 750,
 			ModsNikkelMHadesBiomes_OreAsphodel = 5,
@@ -997,6 +1021,7 @@ local tavernaCosmetics = {
 			},
 			NamedRequirements = { "T1Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 700,
 			ModsNikkelMHadesBiomes_OreStyx = 5,
@@ -1040,6 +1065,7 @@ local tavernaCosmetics = {
 			},
 			NamedRequirements = { "T3Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 250,
 			ModsNikkelMHadesBiomes_CropElysium = 2,
@@ -1082,6 +1108,7 @@ local tavernaCosmetics = {
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 1000,
 			ModsNikkelMHadesBiomes_PlantTartarus = 3,
@@ -1122,6 +1149,7 @@ local tavernaCosmetics = {
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 1000,
 			ModsNikkelMHadesBiomes_PlantStyx = 2,
@@ -1164,6 +1192,7 @@ local tavernaCosmetics = {
 			ModsNikkelMHadesBiomes_PlantStyx = 1,
 			ModsNikkelMHadesBiomes_CropTartarus = 2,
 		},
+		AlwaysRevealImmediately = true,
 		RevealReactionVoiceLines = {
 			{
 				PreLineWait = 0.35,
@@ -1203,6 +1232,7 @@ local tavernaCosmetics = {
 			},
 			NamedRequirements = { "T2Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 280,
 			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
@@ -1221,6 +1251,12 @@ local tavernaCosmetics = {
 	-- #endregion
 }
 for _, cosmeticData in ipairs(tavernaCosmetics) do
+	if cosmeticData.GameStateRequirements == nil then
+		cosmeticData.GameStateRequirements = {}
+	end
+	table.insert(cosmeticData.GameStateRequirements, {
+		PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+	})
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
 
@@ -1255,6 +1291,7 @@ local preRunCosmetics = {
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 600,
 			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
@@ -1290,6 +1327,7 @@ local preRunCosmetics = {
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 600,
 			ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
@@ -1327,6 +1365,7 @@ local preRunCosmetics = {
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 600,
 			ModsNikkelMHadesBiomes_BossResourceTartarus = 2,
@@ -1362,6 +1401,7 @@ local preRunCosmetics = {
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 600,
 			ModsNikkelMHadesBiomes_OreTartarus = 5,
@@ -1398,6 +1438,7 @@ local preRunCosmetics = {
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 600,
 			ModsNikkelMHadesBiomes_BossResourceStyx = 1,
@@ -1470,6 +1511,7 @@ local preRunCosmetics = {
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 600,
 			ModsNikkelMHadesBiomes_CropAsphodel = 4,
@@ -1506,6 +1548,7 @@ local preRunCosmetics = {
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 800,
 			ModsNikkelMHadesBiomes_BossResourceStyx = 1,
@@ -1539,6 +1582,7 @@ local preRunCosmetics = {
 		GameStateRequirements = {
 			NamedRequirements = { "T1Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 250,
 			ModsNikkelMHadesBiomes_OreElysium = 4,
@@ -1582,6 +1626,7 @@ local preRunCosmetics = {
 		GameStateRequirements = {
 			NamedRequirements = { "T1Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 250,
 			ModsNikkelMHadesBiomes_CropAsphodel = 2,
@@ -1627,6 +1672,7 @@ local preRunCosmetics = {
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
+		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 1100,
 			ModsNikkelMHadesBiomes_OreStyx = 5,
@@ -1639,11 +1685,21 @@ local preRunCosmetics = {
 				RequiredSourceValueFalse = "InPartnerConversation",
 				{ Cue = "/VO/Skelly_0157", Text = "Yeah!" },
 			},
-			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0475", Text = "Don't get too many birds around here but why not?", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
 		},
 	},
 	-- #endregion
 }
 for _, cosmeticData in ipairs(preRunCosmetics) do
+	if cosmeticData.GameStateRequirements == nil then
+		cosmeticData.GameStateRequirements = {}
+	end
+	table.insert(cosmeticData.GameStateRequirements, {
+		PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+	})
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
