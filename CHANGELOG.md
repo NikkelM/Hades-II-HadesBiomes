@@ -11,6 +11,7 @@ All new cosmetics were created by community member @burn, and can be unlocked us
 *Have ideas for additional new cosmetics? Let us know on Discord!* 
 
 ### Patch Highlights:
+- Added 40+ new unlockable Crossroads cosmetics inspired by the first game.
 - Balancing: Reduced overall enemy health in Tartarus and Asphodel, with larger reductions in Tartarus, whilst slightly increasing enemy health in Styx.
 - Balancing: Reduced the projectile speed for projectiles fired by the Wretched Witch, Dracon and Splitter.
 - Balancing: Removed randomization of attack timings of the Dire Spreaders in the "Witch's Circle" miniboss encounter to make the encounter more predictable.
