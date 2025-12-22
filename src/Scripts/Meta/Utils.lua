@@ -325,6 +325,12 @@ function mod.DecodeSjsonFile(filePath)
 		fileString = string.gsub(fileString, "父上は、エウリュディケを冥界からn\\", "父上は、エウリュディケを冥界から\n")
 	end
 
+	-- In some localizations, multiline strings (starting with """) are used, but " are still incorrectly escaped using \"
+	-- This breaks the sjson decoding, so we need to fix it by replacing \" with "
+	fileString = string.gsub(fileString, '"""(.-)"""', function(content)
+		return '"""' .. content:gsub('\\"', '"') .. '"""'
+	end)
+
 	-- Replace opening quadruple quotes with triple quotes and a newline
 	fileString = string.gsub(fileString, '= """"', '= """\n"')
 	-- Replace closing quadruple quotes with a newline and triple quotes
