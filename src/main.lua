@@ -42,6 +42,9 @@ config = chalk.auto "config.lua"
 ---@diagnostic disable-next-line: undefined-global
 public.config = config -- so other mods can access our config
 
+---@module "NikkelM-Cosmetics_API"
+CosmeticsAPI = mods["NikkelM-Cosmetics_API"]
+
 local function on_ready()
 	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
 	local startTime = os.clock()
@@ -343,6 +346,7 @@ local function on_ready()
 			import "Scripts/BountyData.lua"
 			import "Scripts/CodexData.lua"
 			import "Scripts/ConsumableData.lua"
+			import "Scripts/CosmeticsData.lua"
 			import "Scripts/CreditsData.lua"
 			import "Scripts/DeathLoopData.lua"
 			import "Scripts/EffectData.lua"
@@ -362,6 +366,7 @@ local function on_ready()
 			import "Scripts/ProjectileData.lua"
 			import "Scripts/RunClearData.lua"
 			import "Scripts/RunHistoryData.lua"
+			import "Scripts/WorldUpgradeData.lua"
 
 			-- Applies modifications to the rooms, such as LegalEncounterDictionary
 			game.SetupRunData()

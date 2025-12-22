@@ -51,6 +51,8 @@ modutil.mod.Path.Wrap("DeathAreaRoomTransition", function(base, source, args)
 	mod.ApplyGlobalGameObjectModifications(false)
 	-- Load the portraits package immediately for a less laggy transition when opening the run history screen
 	LoadPackages({ Name = "ModsNikkelMHadesBiomesPortraits" })
+	-- Load our new cosmetics
+	LoadPackages({ Name = "NikkelM-HadesBiomesCosmetics" })
 
 	return base(source, args)
 end)

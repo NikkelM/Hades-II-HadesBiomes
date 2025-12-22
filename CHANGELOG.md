@@ -1,8 +1,15 @@
 # Changelog
 
-## v0.1.6
+## v0.2.0
 
 <!--Releasenotes start-->
+### Introducing: New Crossroads Cosmetics!
+
+*Unlock 40+ new cosmetics for the Crossroads*, including new **Cauldrons**, **Fan Posters** for your tent, and **Charms** inspired by Zagreus' companions from the first game.
+All new cosmetics were created by community member @burn, and can be unlocked using resources collected during "Zagreus' Journey" runs after performing a new incantation added to your Cauldron.
+
+*Have ideas for additional new cosmetics? Let us know on Discord!* 
+
 ### Patch Highlights:
 - Balancing: Reduced overall enemy health in Tartarus and Asphodel, with larger reductions in Tartarus, whilst slightly increasing enemy health in Styx.
 - Balancing: Reduced the projectile speed for projectiles fired by the Wretched Witch, Dracon and Splitter.

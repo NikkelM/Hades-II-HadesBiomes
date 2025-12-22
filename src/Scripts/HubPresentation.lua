@@ -1,3 +1,4 @@
+-- #region Run Start Logic
 -- Lock the escape chaos gate if the shrine upgrade does not allow starting a run yet
 function mod.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(source, args)
 	args = args or {}
@@ -109,3 +110,20 @@ modutil.mod.Path.Wrap("StartNewRunPresentation", function(base, runDoor, args)
 		return base(runDoor, args)
 	end
 end)
+-- #endregion
+
+function mod.PostCosmeticsIncantationDoraCheckForNewItems(source, args)
+	source = source or game.ActiveEnemies[566832]
+	while source.PlayingEndVoiceLines do
+		game.wait(0.1)
+	end
+	if not source.Hidden and source.NextInteractLines ~= nil and source.NextInteractLines.StatusAnimation then
+		return false
+	end
+	if game.CanSpecialInteract(source) and game.IsGameStateEligible(source, { NamedRequirements = { "CosmeticsShopUnlocked" } }) then
+		if game.HasNewCosmeticsAvailable(source, { CategoryIndex = source.DefaultCategoryIndex }) then
+			game.PlayStatusAnimation(source, { Animation = "StatusIconNewItemsInStock" })
+			return true
+		end
+	end
+end
