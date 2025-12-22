@@ -5,7 +5,7 @@
 <!--Releasenotes start-->
 ### Introducing: New Crossroads Cosmetics!
 
-*Unlock 40+ new cosmetics for the Crossroads*, including new **Cauldrons**, **Fan Posters** for your tent, and **Charms** inspired by Zagreus' companions from the first game.
+*Unlock 40+ new cosmetics for the Crossroads*, including new **Cauldrons**, **Fan Posters** for your tent, **Charms** inspired by Zagreus' companions from the first game, and much more.
 All new cosmetics were created by community member @burn, and can be unlocked using resources collected during "Zagreus' Journey" runs after performing a new incantation added to your Cauldron.
 
 *Have ideas for additional new cosmetics? Let us know on Discord!* 
