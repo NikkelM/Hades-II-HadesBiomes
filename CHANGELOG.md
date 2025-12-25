@@ -1,8 +1,18 @@
 # Changelog
 
-## v0.2.0
+## v0.2.1
 
 <!--Releasenotes start-->
+### Patch Highlights:
+
+
+Other fixes and improvements:
+- Balancing: Reduced the maximum time the Skull-Crusher can stay airborne before attacking.
+- Balancing: Increased the time the Skull-Crusher stays grounded before taking off again.
+<!--Releasenotes end-->
+
+## v0.2.0
+
 ### Introducing: New Crossroads Cosmetics!
 
 *Unlock 40+ new cosmetics for the Crossroads*, including new **Cauldrons**, **Fan Posters** for your tent, **Charms** inspired by Zagreus' companions from the first game, and much more.
@@ -43,7 +53,6 @@ Other fixes and improvements:
 - Fixed: If both Nectar and Ambrosia can still be gifted to a character, both will show in empty hearts in the Codex, even when only the Nectar can currently be gifted.
 - Fixed: Some texts are decoded incorrectly for Italian and Brazilian Portuguese localizations, causing the game to freeze when the relevant dialogue plays.
 - Fixed: "Bond Forged" will now correctly display the sticker when you fully max out a characters friendship. (zannc's SharedKeepsakePort)
-<!--Releasenotes end-->
 
 ## v0.1.5
 

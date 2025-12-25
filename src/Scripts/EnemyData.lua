@@ -1023,7 +1023,9 @@ local enemyModifications = {
 		},
 		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSkyAttackerAI",
 		DefaultAIData = {
-			PostTouchdownMinDuration = 1.2,
+			AIMoveWithinRangeTimeoutMin = 2,
+			AIMoveWithinRangeTimeoutMax = 3,
+			PostTouchdownMinDuration = 1.5,
 		},
 	},
 	CrusherUnitSuperElite = {
@@ -1044,7 +1046,9 @@ local enemyModifications = {
 		},
 		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSkyAttackerAI",
 		DefaultAIData = {
-			PostTouchdownMinDuration = 1.2,
+			AIMoveWithinRangeTimeoutMin = 2,
+			AIMoveWithinRangeTimeoutMax = 3,
+			PostTouchdownMinDuration = 1.5,
 		},
 	},
 	ShieldRanged = {
