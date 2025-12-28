@@ -192,7 +192,7 @@ OnAnyLoad {
 
 			-- #region Install screens
 			-- Only show the install screen if we are in the Crossroads
-		elseif game.CurrentHubRoom ~= nil then
+		elseif game.CurrentHubRoom ~= nil and game.CurrentHubRoom.Name == "Hub_PreRun" then
 			-- If an uninstall was just attempted, but failed
 			if mod.HiddenConfig.MustShowUninstallFailureScreen then
 				mod.HiddenConfig.MustShowUninstallFailureScreen = false

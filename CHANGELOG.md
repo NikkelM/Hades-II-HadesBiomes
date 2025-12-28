@@ -7,6 +7,7 @@
 
 
 Other fixes and improvements:
+- The installation screen will now only show in the Training Grounds, and no longer in the main Crossroads.
 - Balancing: Reduced the maximum time the Skull-Crusher can stay airborne before attacking.
 - Balancing: Increased the time the Skull-Crusher stays grounded before taking off again.
 <!--Releasenotes end-->
