@@ -11,6 +11,7 @@ Other fixes and improvements:
 - Balancing: Reduced the maximum time the Skull-Crusher can stay airborne before attacking.
 - Balancing: Increased the time the Skull-Crusher stays grounded before taking off again.
 - Balancing: Slightly reduced the tracking speed of the Elite Strongbow's triple-shot attack.
+- Fixed: Dusa's codex entry is replaced with the one from the first game.
 <!--Releasenotes end-->
 
 ## v0.2.0

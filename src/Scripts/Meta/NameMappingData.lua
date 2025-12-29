@@ -1107,11 +1107,12 @@ mod.HadesNPCTextSpeakers = {
 }
 
 -- Keys to be removed from the CodexText files before hooking them into Hades II
--- These keys are not required (e.g. Gods)
+-- These keys are either duplicates or simply not required
 mod.HadesCodexTextKeyRemovals = {
 	"CodexData_Chaos_01",
 	"CodexData_Demeter_01",
 	"CodexData_Skelly_01",
+	"CodexData_Dusa_01",
 }
 -- Mappings for Codex entries that exist in both games, but need to be renamed to avoid conflicts
 mod.HadesCodexTextNameMappings = {
