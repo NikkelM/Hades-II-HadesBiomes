@@ -1,27 +1,45 @@
 -- Damage maps
 local newDamageSourceMappings = {
 	-- #region TARTARUS
+	BloodMine = "HadesThiefMineLayer",
 	BloodMineBlast = "HadesThiefMineLayer",
 	HeavyRangedSplitterFragment = "HeavyRangedSplitterMiniboss",
 	HeavyRangedSplitterFragmentSuperElite = "HeavyRangedSplitterMinibossSuperElite",
 	-- #endregion
 
 	-- #region STYX
+	GrenadierWeapon = "ThiefImpulseMineLayer",
+	GrenadierWeaponMiniboss = "ThiefImpulseMineLayerMiniboss",
 	ModsNikkelMHadesBiomesHadesTombstone = "Hades",
 	HadesAmmo = "Hades",
 	-- #endregion
 
 	-- #region TRAPS
+	SpikeTrap = "Traps",
 	HadesSpikeTrapWeapon = "Traps",
+	DartTrap = "Traps",
+	DartTrapEmitter = "Traps",
 	DartTrapWeapon = "Traps",
+	ArcherTrap = "Traps",
+	ArcherTrapWeapon = "Traps",
+	AxeTrap = "Traps",
+	AxeTrapTrigger = "Traps",
 	AxeTrapWeapon = "Traps",
+	PoisonTrap = "Traps",
 	PoisonTrapWeapon = "Traps",
+	PhalanxTrap = "Traps",
+	PhalanxTrapPassive = "Traps",
 	PhalanxTrapWeapon = "Traps",
+	BlastCubeFused = "Traps",
+	BlastCubeFusedRegenerating = "Traps",
 	ExplosiveBlast = "Traps",
+	SpikeCube = "Traps",
 	SpikeWallWeapon = "Traps",
+	GasTrapPassive = "Traps",
 	SmokeTrapWeapon = "Traps",
 	LavaSplash = "Traps",
 	LavaPuddleLarge = "Traps",
+	SawTrap = "Traps",
 	SawTrapWeapon = "Traps",
 	-- #endregion
 }
