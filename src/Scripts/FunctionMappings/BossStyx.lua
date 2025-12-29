@@ -580,7 +580,7 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 		storedAmmo.LocationY = storedAmmo.LocationY + offset.Y
 		storedAmmo.Angle = triggerArgs.Angle
 
-		if IsEmpty(victim.StoredAmmo) then
+		if game.IsEmpty(victim.StoredAmmo) then
 			game.AddIncomingDamageModifier(victim,
 				{
 					Name = "StoredAmmoVulnerability",
