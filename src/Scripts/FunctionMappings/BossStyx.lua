@@ -352,7 +352,7 @@ function mod.HadesKillPresentation(unit, args)
 	SetObstacleProperty({ Property = "Magnetism", Value = 3000, DestinationIds = ammoIds })
 	SetObstacleProperty({
 		Property = "MagnetismSpeedMax",
-		Value = CurrentRun.Hero.LeaveRoomAmmoMangetismSpeed,
+		Value = game.CurrentRun.Hero.LeaveRoomAmmoMangetismSpeed,
 		DestinationIds = ammoIds
 	})
 	StopAnimation({ DestinationIds = ammoIds, Name = "AmmoReturnTimer" })
@@ -571,11 +571,11 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 		end
 
 		local storedAmmo = {}
-		storedAmmo.Id = _worldTime
+		storedAmmo.Id = game._worldTime
 		storedAmmo.AttackerId = attacker.ObjectId
 		storedAmmo.LocationX = triggerArgs.LocationX
 		storedAmmo.LocationY = triggerArgs.LocationY
-		local offset = CalcOffset(math.rad(triggerArgs.Angle), projectileData.AmmoDropDistance or 50) or {}
+		local offset = game.CalcOffset(math.rad(triggerArgs.Angle), projectileData.AmmoDropDistance or 50) or {}
 		storedAmmo.LocationX = storedAmmo.LocationX + offset.X
 		storedAmmo.LocationY = storedAmmo.LocationY + offset.Y
 		storedAmmo.Angle = triggerArgs.Angle
@@ -803,7 +803,7 @@ function mod.DoHadesAssistPresentation(assistData, enemyId)
 	local wrathPresentationOffsetY = 100
 	local wrathStreak = SpawnObstacle({
 		Name = "BlankObstacle",
-		DestinationId = game.CurrentRun.Hero.ObjectId,
+		DestinationId = currentRun.Hero.ObjectId,
 		Group = "Combat_UI"
 	})
 	Teleport({ Id = wrathStreak, OffsetX = (1920 / 2), OffsetY = 800 + wrathPresentationOffsetY })
@@ -819,7 +819,7 @@ function mod.DoHadesAssistPresentation(assistData, enemyId)
 
 	local godImage = SpawnObstacle({
 		Name = "BlankObstacle",
-		DestinationId = game.CurrentRun.Hero.ObjectId,
+		DestinationId = currentRun.Hero.ObjectId,
 		Group = "Combat_Menu"
 	})
 	Teleport({
@@ -832,7 +832,7 @@ function mod.DoHadesAssistPresentation(assistData, enemyId)
 
 	local godImage2 = SpawnObstacle({
 		Name = "BlankObstacle",
-		DestinationId = game.CurrentRun.Hero.ObjectId,
+		DestinationId = currentRun.Hero.ObjectId,
 		Group =
 		"Combat_UI"
 	})
@@ -844,7 +844,7 @@ function mod.DoHadesAssistPresentation(assistData, enemyId)
 
 	local wrathStreakFront = SpawnObstacle({
 		Name = "BlankObstacle",
-		DestinationId = game.CurrentRun.Hero.ObjectId,
+		DestinationId = currentRun.Hero.ObjectId,
 		Group = "Combat_Menu_Overlay"
 	})
 	Teleport({ Id = wrathStreakFront, OffsetX = 900, OffsetY = 1150 + wrathPresentationOffsetY })
@@ -858,7 +858,7 @@ function mod.DoHadesAssistPresentation(assistData, enemyId)
 
 	local wrathVignette = SpawnObstacle({
 		Name = "BlankObstacle",
-		DestinationId = game.CurrentRun.Hero.ObjectId,
+		DestinationId = currentRun.Hero.ObjectId,
 		Group = "FX_Standing_Top"
 	})
 	CreateAnimation({ Name = "WrathVignette", DestinationId = wrathVignette, Color = game.Color.Red })
@@ -1050,7 +1050,7 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 	-- ClearTime
 	ModifyTextBox({ Id = components.ClearTimeValue.Id, Text = game.GetTimerString(game.CurrentRun.GameplayTime, 2), })
 	if game.CurrentRun.GameplayTime <= prevRecordTime then
-		wait(0.1)
+		game.wait(0.1)
 		SetAlpha({ Id = components.ClearTimeRecord.Id, Duration = game.HUDScreen.FadeOutDuration, Fraction = 1.0 })
 	end
 	game.wait(0.05)
