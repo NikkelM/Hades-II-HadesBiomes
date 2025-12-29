@@ -4,7 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-
+- Balancing: Further reduced the enemy health boost by ~10% (an enemy with a base health of 100 in Tartarus now has 125 instead of 135 health). This does not affect bosses.
 
 Other fixes and improvements:
 - The installation screen will now only show in the Training Grounds, and no longer in the main Crossroads.
