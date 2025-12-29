@@ -132,6 +132,7 @@ updatedCodexData.SavedEntries.NPC_FurySister_01.Image = "ModsNikkelMHadesBiomes_
 		updatedCodexData.SavedEntries.NPC_FurySister_01.Image
 
 updatedCodexData.SavedEntries.NPC_Thanatos_01 = hadesCodexData.ChthonicGods.Entries.NPC_Thanatos_01
+updatedCodexData.SavedEntries.NPC_Thanatos_01.ModsNikkelMHadesBiomesSkipShowKillCount = true
 updatedCodexData.SavedEntries.NPC_Thanatos_01.Image = "ModsNikkelMHadesBiomes_" ..
 		updatedCodexData.SavedEntries.NPC_Thanatos_01.Image
 updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[1].UnlockThreshold = nil
@@ -185,6 +186,7 @@ for groupName, groupData in pairs(hadesCodexData) do
 		-- Map unlock requirements to the new system
 		if groupData.UnlockType == "Enter" then
 			for biomeName, biomeCollection in pairs(groupData.Entries) do
+				biomeCollection.ModsNikkelMHadesBiomesSkipShowKillCount = true
 				for _, entry in ipairs(biomeCollection.Entries) do
 					if entry.UnlockThreshold then
 						entry.UnlockGameStateRequirements =
@@ -200,6 +202,7 @@ for groupName, groupData in pairs(hadesCodexData) do
 				end
 			end
 		elseif groupData.UnlockType == "Slay" or groupData.UnlockType == "SlayAlt" then
+			groupData.ShowKillCount = true
 			for enemyName, enemyCollection in pairs(groupData.Entries) do
 				for _, entry in ipairs(enemyCollection.Entries) do
 					if entry.UnlockThreshold then
@@ -226,6 +229,7 @@ for groupName, groupData in pairs(hadesCodexData) do
 			end
 		elseif groupData.UnlockType == "Interact" then
 			for characterName, characterCollection in pairs(groupData.Entries) do
+				characterCollection.ModsNikkelMHadesBiomesSkipShowKillCount = true
 				for _, entry in ipairs(characterCollection.Entries) do
 					if entry.UnlockThreshold then
 						entry.UnlockGameStateRequirements =
