@@ -979,7 +979,7 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 
 	local prevRecordTime = nil
 	local prevRecordShrinePoints = nil
-	-- TODO: How to handle bounties? How is it done in vanilla?
+	-- TODO: How to handle bounties? In Vanilla, there are no bounties in the final biome, so need to early return/skip this function
 	prevRecordTime = game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache or 999999
 	prevRecordShrinePoints = game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache or 0
 
@@ -991,7 +991,6 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 	screen.DamageDealtStartX = game.ScreenWidth - screen.DamageDealtRightOffset
 	screen.DamageDealtStartY = screen.DamageDealtStartY + (game.ScreenCenterNativeOffsetY * 2)
 	screen.DamageTakenStartY = screen.DamageTakenStartY + (game.ScreenCenterNativeOffsetY * 2)
-	-- TODO: How to handle bounties? How is it done in vanilla?
 	screen.ComponentData.VictoryBackground.Animation = "ModsNikkelMHadesBiomes_VictoryScreenIllustration_Elysium"
 	screen.ComponentData.TitleText = screen.ComponentData.UnderworldTitleText
 	screen.ComponentData.RunClearMessageText = screen.ComponentData.UnderworldRunClearMessageText
