@@ -1032,7 +1032,20 @@ local weaponModifications = {
 	},
 	ShadeBowRanged = {
 		AIData = {
+			PreAttackRotationDampening = 0.7,
 			FireRotationDampening = 1E-06,
+		},
+	},
+	ShadeBowRangedRapidFire = {
+		AIData = {
+			PreAttackRotationDampening = 0.5,
+			FireRotationDampening = 0.5,
+		},
+	},
+	ShadeBowRangedRapidSalvo = {
+		AIData = {
+			PreAttackRotationDampening = 0.5,
+			FireRotationDampening = 0.5,
 		},
 	},
 	ShadeBowSideDash = {
