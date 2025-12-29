@@ -1587,6 +1587,8 @@ local weaponModifications = {
 	-- #region STYX - Minibosses
 	CrawlerSpawns = {
 		AIData = {
+			MinAttacksBetweenUse = 9,
+			MaxAttacksBetweenUse = 12,
 			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
 			-- Prevents the weird wait between the animation start and the FX
 			PreAttackDuration = 0.0,
