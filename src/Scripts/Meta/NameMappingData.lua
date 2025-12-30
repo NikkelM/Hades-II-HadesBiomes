@@ -345,6 +345,7 @@ mod.HadesHelpTextCopyKeys = {
 	UseShrinePointDoor_Unlocked_Reroll = true,
 	UseShrinePointDoor_Unlocked_CannotReroll = true,
 	ShrinePointDoorEnterRequirement = true,
+	ExitBlockedByShrinePointReq = true,
 	-- #endregion
 	-- #region Combat Objectives
 	Objective_ThanatosKills = true,
