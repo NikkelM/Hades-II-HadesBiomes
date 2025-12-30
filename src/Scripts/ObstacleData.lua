@@ -489,7 +489,7 @@ local addedObstacles = {
 		UnlockedSound = "/SFX/HeatCollectionPickup",
 
 		-- Custom
-		ExitFunctionName = "AnomalyExitPresentation",
+		ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesShrineGateExitPresentation",
 		ExitBlockedByShrinePointsVoiceLines = {
 			Cooldowns = {
 				{ Name = "MelinoeAnyQuipSpeech" },

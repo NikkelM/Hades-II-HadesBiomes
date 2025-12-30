@@ -37,7 +37,7 @@ local challengeRoomModifications = {
 
 		NextRoomResumeMusic = true,
 		EntranceVfx = "SecretDoorDiveFx",
-		ExitFunctionName = "AnomalyExitPresentation",
+		ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesShrineGateExitPresentation",
 		ExitAnimation = "MelinoeSpellFire",
 		ExitVfx = "SecretDoorDiveFx",
 
