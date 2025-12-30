@@ -323,6 +323,8 @@ local function on_ready()
 			import "Scripts/EncounterDataElysium.lua"
 			import "Scripts/EncounterDataStyx.lua"
 			import "Scripts/EncounterDataSurface.lua"
+			-- Last since it inherits from encounters in the other biomes
+			import "Scripts/EncounterData.lua"
 
 			-- Loads Room data
 			import "Scripts/RoomSets.lua"

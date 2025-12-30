@@ -1,0 +1,47 @@
+-- Adds EncounterData for ShrineChallenges and Charon's fight from Hades to Hades II
+local encounterData = mod.LoadHadesEncounterData("EncounterData.lua") or {}
+local encounterDataChallengeCharon = {
+	-- ShrineChallenge
+	BasePerfectClear = encounterData.BasePerfectClear,
+	ShrineChallengeTartarus = encounterData.ShrineChallengeTartarus,
+	ShrineChallengeAsphodel = encounterData.ShrineChallengeAsphodel,
+	ShrineChallengeElysium = encounterData.ShrineChallengeElysium,
+
+	-- Charon
+	-- BossCharon = encounterData.BossCharon,
+}
+
+mod.UpdateField(encounterDataChallengeCharon, "Generated", "ModsNikkelMHadesBiomesGenerated", { "InheritFrom" },
+	"EncounterData")
+
+-- For TimeChallengeAsphodel
+mod.UpdateField(encounterDataChallengeCharon, "Challenge", "TimeChallenge", { "InheritFrom" }, "EncounterData")
+
+-- For tables that should be replaced. The modifications append table data!
+-- Can still use modifications if the modified table did not exist beforehand
+local encounterReplacements = {}
+
+local encounterModifications = {
+	-- ShrineChallenge
+	BasePerfectClear = {
+		CanEncounterSkip = false,
+		BlockAthenaEncounterKeepsake = true,
+		BlockNextBiomeEnemyShrineUpgrade = true,
+	},
+	ShrineChallengeTartarus = {
+		-- The original from Hades is 60
+		BaseDifficulty = 85,
+	},
+	ShrineChallengeAsphodel = {
+		-- The original from Hades is 200
+		BaseDifficulty = 230,
+	},
+	ShrineChallengeElysium = {
+		-- The original from Hades is 280
+		BaseDifficulty = 320,
+	},
+
+	-- Charon
+}
+
+mod.ApplyModificationsAndInheritEncounterData(encounterDataChallengeCharon, encounterModifications, encounterReplacements)
