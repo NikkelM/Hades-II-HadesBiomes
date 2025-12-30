@@ -22,11 +22,12 @@ mod.UpdateField(encounterDataChallengeCharon, "Challenge", "TimeChallenge", { "I
 local encounterReplacements = {}
 
 local encounterModifications = {
-	-- ShrineChallenge
+	-- #region ShrineChallenge
 	BasePerfectClear = {
 		CanEncounterSkip = false,
 		BlockAthenaEncounterKeepsake = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		SpawnAggroed = true,
 	},
 	ShrineChallengeTartarus = {
 		-- The original from Hades is 60
@@ -44,8 +45,11 @@ local encounterModifications = {
 		BaseDifficulty = 320,
 		LoadPackages = { "ElysiumModsNikkelMHadesBiomes", "BiomeB" },
 	},
+	-- #endregion
 
-	-- Charon
+	-- #region Charon
+
+	-- #endregion
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataChallengeCharon, encounterModifications, encounterReplacements)

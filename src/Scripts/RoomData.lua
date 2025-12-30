@@ -35,6 +35,12 @@ local challengeRoomModifications = {
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerErebusIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerErebusOut",
 
+		NextRoomResumeMusic = true,
+		EntranceVfx = "SecretDoorDiveFx",
+		ExitFunctionName = "AnomalyExitPresentation",
+		ExitAnimation = "MelinoeSpellFire",
+		ExitVfx = "SecretDoorDiveFx",
+
 		IneligibleRewards = { "Devotion", "WeaponUpgrade", "SpellDrop", "HermesUpgrade" },
 
 		InspectPoints = {
