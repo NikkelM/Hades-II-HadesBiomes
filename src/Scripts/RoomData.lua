@@ -30,6 +30,9 @@ local challengeRoomModifications = {
 		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+
+		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerErebusIn",
+		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerErebusOut",
 	},
 }
 
