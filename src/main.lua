@@ -216,6 +216,7 @@ local function on_ready()
 			import "Game/Obstacles/Chaos.sjson.lua"
 			import "Game/Obstacles/Elysium.sjson.lua"
 			import "Game/Obstacles/Gameplay.sjson.lua"
+			import "Game/Obstacles/Graybox.sjson.lua"
 			import "Game/Obstacles/Styx.sjson.lua"
 			import "Game/Obstacles/Surface.sjson.lua"
 			import "Game/Obstacles/Tartarus.sjson.lua"
