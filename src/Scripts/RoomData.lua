@@ -16,17 +16,38 @@ mod.ApplyModificationsAndInheritRoomData(baseRoomData, baseRoomModifications, ba
 -- #region CHALLENGE
 local challengeRoomData = {
 	RoomChallenge01 = mod.RoomData.Base.RoomChallenge01,
+	RoomChallenge02 = mod.RoomData.Base.RoomChallenge02,
+	RoomChallenge03 = mod.RoomData.Base.RoomChallenge03,
+	RoomChallenge04 = mod.RoomData.Base.RoomChallenge04,
 }
 
 local challengeRoomReplacements = {}
 local challengeRoomModifications = {
 	RoomChallenge01 = {
-		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+		RoomSetName = "Challenge",
+		IneligibleRewards = { "Devotion", "WeaponUpgrade", "SpellDrop", "HermesUpgrade" },
+		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 	},
 }
 
 mod.ApplyModificationsAndInheritRoomData(challengeRoomData, challengeRoomModifications, challengeRoomReplacements,
 	"Challenge")
+-- #endregion
+
+-- #region CHARON
+local charonRoomData = {
+	CharonFight01 = mod.RoomData.Base.CharonFight01,
+}
+
+local charonRoomReplacements = {}
+local charonRoomModifications = {
+	CharonFight01 = {
+		RoomSetName = "Charon",
+	},
+}
+
+-- mod.ApplyModificationsAndInheritRoomData(charonRoomData, charonRoomModifications, charonRoomReplacements, "Charon")
 -- #endregion
 
 -- #region SURFACE

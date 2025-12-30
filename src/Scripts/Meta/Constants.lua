@@ -32,14 +32,15 @@ mod.ModdedUnitHealthBufferMultiplierBonus = {
 	Styx = 0.22
 }
 
--- TODO: Challenge, Charon? What Roomsets are they?
--- For Challenge, can use Melinoe_0376 as enter voiceline
+-- TODO: For Challenge, can use Melinoe_0376 as enter voiceline
 mod.ValidModdedRunBiomes = {
 	["Tartarus"] = true,
 	["Asphodel"] = true,
 	["Elysium"] = true,
 	["Styx"] = true,
 	["Surface"] = true,
+	["Challenge"] = true,
+	-- ["Charon"] = true,
 }
 
 mod.ModdedShrineBountyNames = {

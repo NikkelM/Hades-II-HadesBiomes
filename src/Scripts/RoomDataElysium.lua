@@ -8,8 +8,9 @@ local roomReplacements = {
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Elysium",
 
+		-- TODO: Update requirements
 		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
-		ShrinePointDoorRequirements = { Skip = true },
+		-- ShrinePointDoorRequirements = { Skip = true },
 
 		HasHarvestPoint = true,
 		HasShovelPoint = true,

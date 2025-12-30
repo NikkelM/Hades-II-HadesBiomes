@@ -10,6 +10,22 @@ local roomReplacements = {
 		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
 		BreakableOptions = { "ModsNikkelMHadesBiomesBreakableIdle1", "ModsNikkelMHadesBiomesBreakableIdle2", "ModsNikkelMHadesBiomesBreakableIdle3" },
 
+		ShrinePointDoorRequirements = {
+			-- TODO: Incantation
+			-- {
+			-- 	PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradeMetaRewardStands" },
+			-- },
+			-- RequiredCosmetics = { "ShrinePointGates", },					
+			{
+				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
+			},
+			{
+				PathFalse = { "CurrentRun", "ActiveBounty" },
+			},
+			-- TODO: Enable after testing
+			-- RequiredMinRoomsSinceShrinePointDoor = 8,
+		},
+
 		HasHarvestPoint = true,
 		HasShovelPoint = true,
 		HasPickaxePoint = true,
@@ -458,9 +474,6 @@ local roomModifications = {
 		PerfectClearEncounterOptions = { "PerfectClearChallengeTartarus" },
 		EliteChallengeEncounterOptions = { "EliteChallengeTartarus" },
 
-		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
-		ShrinePointDoorRequirements = { Skip = true },
-
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut",
 
@@ -778,6 +791,7 @@ local roomModifications = {
 game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
 	-- When updating here, also change in BaseSurface, and the Return rooms
 	AlwaysLoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+	ShrinePointRoomOptions = { "RoomChallenge01", "RoomChallenge02", "RoomChallenge03", "RoomChallenge04" },
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Tartarus, roomModifications, roomReplacements, "Tartarus")
