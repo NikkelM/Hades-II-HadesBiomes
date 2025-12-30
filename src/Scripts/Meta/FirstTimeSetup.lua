@@ -217,7 +217,8 @@ local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 
 	if rom.path.exists(destPath) then
 		mod.DebugPrint("File already exists and will not be overwritten: " .. destPath, 2)
-		return
+		-- Still marking as successful to not throw the bad edits error
+		return true
 	end
 
 	-- Before removing duplicates, rename animations for which we need the old version

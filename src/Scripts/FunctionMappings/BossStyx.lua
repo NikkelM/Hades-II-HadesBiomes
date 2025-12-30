@@ -969,6 +969,11 @@ function mod.RevulnerablePlayerAfterShout()
 end
 
 function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
+	if not game.CurrentRun.BiomesReached or not game.CurrentRun.BiomesReached.Tartarus then
+		-- This is a Chaos Trial run
+		return
+	end
+
 	game.AltAspectRatioFramesShow()
 	AddInputBlock({ Name = "OpenRunClearScreen" })
 	PlaySound({ Name = "/Leftovers/Menu Sounds/AscensionConfirm2" })
@@ -979,7 +984,6 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 
 	local prevRecordTime = nil
 	local prevRecordShrinePoints = nil
-	-- TODO: How to handle bounties? In Vanilla, there are no bounties in the final biome, so need to early return/skip this function
 	prevRecordTime = game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache or 999999
 	prevRecordShrinePoints = game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache or 0
 

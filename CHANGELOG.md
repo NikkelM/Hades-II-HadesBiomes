@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Balancing: The Tiny Vermin can now call for reinforcements more frequently.
 - Fixed: Some trap damage is incorrectly attributed on the run clear screen.
 - Fixed: Dusa's codex entry is replaced with the one from the first game.
+- Fixed: A manual reinstall without a previous uninstall marks the Hades installation as failed due to an Olympus Extra installation, even if Olympus Extra is not installed.
 <!--Releasenotes end-->
 
 ## v0.2.0
