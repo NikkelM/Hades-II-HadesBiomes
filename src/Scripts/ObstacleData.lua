@@ -488,54 +488,26 @@ local addedObstacles = {
 		UnlockedAnimation = "ShrinePointDoor_Revealed",
 		UnlockedSound = "/SFX/HeatCollectionPickup",
 
-		-- TODO: Voice lines
-		ExitBlockedByShrinePointsVoiceLines = {
-			BreakIfPlayed = true,
-			RandomRemaining = true,
-			PreLineWait = 0.25,
-			CooldownTime = 9,
-
-			-- I need a higher Pain Level with the Pact of Punishment to go in this.
-			-- { Cue = "/VO/ZagreusField_1340", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- I need to power up the Pact of Punishment back home to go in this.
-			{ Cue = "/VO/ZagreusField_1341" },
-			-- My Pain Level isn't high enough.
-			-- { Cue = "/VO/ZagreusField_1342", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- My Pain Level's too low.
-			-- { Cue = "/VO/ZagreusField_1343", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- I need a higher Pain Level to go in.
-			-- { Cue = "/VO/ZagreusField_1344", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- My Pain Level's too low to get in.
-			-- { Cue = "/VO/ZagreusField_1345", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- Need a higher Pain Level to go in there.
-			-- { Cue = "/VO/ZagreusField_1346", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- Not getting in without a higher Pain Level.
-			-- { Cue = "/VO/ZagreusField_1347", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- I'm not authorized.
-			{ Cue = "/VO/ZagreusField_1348", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- Not letting me in.
-			{ Cue = "/VO/ZagreusField_1349", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- I don't have access.
-			{ Cue = "/VO/ZagreusField_1350", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- I can't get in.
-			{ Cue = "/VO/ZagreusField_1351", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- Not authorized to go in there.
-			{ Cue = "/VO/ZagreusField_1352", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- The Pact back home's the key to getting into this.
-			{ Cue = "/VO/ZagreusField_1353", RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- Not authorized.
-			{ Cue = "/VO/ZagreusHome_0602",  RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- Not enough Heat.
-			{ Cue = "/VO/ZagreusHome_0603",  RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- I don't have enough Heat.
-			{ Cue = "/VO/ZagreusHome_0604",  RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- I'm not authorized.
-			{ Cue = "/VO/ZagreusHome_0605",  RequiredPlayed = { "/VO/ZagreusField_1341" } },
-			-- I'm not cleared to do that.
-			{ Cue = "/VO/ZagreusHome_0606",  RequiredPlayed = { "/VO/ZagreusField_1341" } },
-		},
 		-- Custom
 		ExitFunctionName = "AnomalyExitPresentation",
+		ExitBlockedByShrinePointsVoiceLines = {
+			Cooldowns = {
+				{ Name = "MelinoeAnyQuipSpeech" },
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 0.25,
+				UsePlayerSource = true,
+				SkipCooldownCheckIfNonePlayed = true,
+				-- { Cue = "/VO/MelinoeField_3665", Text = "Only Fear can break this free..." },
+				{ Cue = "/VO/MelinoeField_3666", Text = "Too little Fear this night.", },
+				{ Cue = "/VO/MelinoeField_3667", Text = "I swore an Oath..." },
+				{ Cue = "/VO/MelinoeField_3668", Text = "Not frightening enough..." },
+				{ Cue = "/VO/Melinoe_3519",      Text = "I won't betray my vows." },
+				{ Cue = "/VO/Melinoe_3520",      Text = "I've not yet earned the right." },
+			},
+		},
 	},
 
 	ShrinePointExitDoor = {
