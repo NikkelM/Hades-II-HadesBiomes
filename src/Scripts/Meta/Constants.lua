@@ -32,7 +32,6 @@ mod.ModdedUnitHealthBufferMultiplierBonus = {
 	Styx = 0.22
 }
 
--- TODO: For Challenge, can use Melinoe_0376 as enter voiceline
 mod.ValidModdedRunBiomes = {
 	["Tartarus"] = true,
 	["Asphodel"] = true,

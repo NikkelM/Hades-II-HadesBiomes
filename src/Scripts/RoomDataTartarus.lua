@@ -789,8 +789,9 @@ local roomModifications = {
 
 -- Assign separately so we don't get a circular reference
 game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
-	-- When updating here, also change in BaseSurface, and the Return rooms
+	-- IMPORTANT: When updating the below items, also change in BaseSurface, and the Return rooms
 	AlwaysLoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+	-- IMPORTANT: When updating the above items, also change in BaseSurface, and the Return rooms
 	ShrinePointRoomOptions = { "RoomChallenge01", "RoomChallenge02", "RoomChallenge03", "RoomChallenge04" },
 }
 

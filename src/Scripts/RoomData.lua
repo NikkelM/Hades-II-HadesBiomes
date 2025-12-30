@@ -36,6 +36,24 @@ local challengeRoomModifications = {
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerErebusOut",
 
 		IneligibleRewards = { "Devotion", "WeaponUpgrade", "SpellDrop", "HermesUpgrade" },
+
+		InspectPoints = {
+			[515865] = {
+				InteractTextLineSets = {
+					CharonFirstInspect = mod.NilValue,
+					ModsNikkelMHadesBiomes_Challenge01FirstInspect = {
+						-- Is this where Father's goons assemble to come after me?
+						EndCue = "/VO/ZagreusField_1472",
+						EndWait = 0.3,
+						{
+							Cue = "/VO/Storyteller_0220",
+							Text =
+							"{#DialogueItalicFormat}Concealed in the dark recesses of the Underworld is the land of Erebus, wherein the dead await eternal sentencing; they long for the attention and good graces of their master, the Lord Hades."
+						},
+					},
+				}
+			}
+		},
 	},
 }
 
