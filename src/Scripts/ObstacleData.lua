@@ -480,7 +480,6 @@ local addedObstacles = {
 		UnlockedUseSound = "/Leftovers/SFX/NomadSprint",
 		ExitPortalSound = "/SFX/HeatCollectionPickup",
 
-		ExitFunctionName = "ExitSecretRoomPresentation",
 		EntranceVfx = "ZagreusSecretDoorDiveFadeFx_Shrine",
 		EntranceColorGrade = "SmokeTrap",
 
@@ -535,6 +534,8 @@ local addedObstacles = {
 			-- I'm not cleared to do that.
 			{ Cue = "/VO/ZagreusHome_0606",  RequiredPlayed = { "/VO/ZagreusField_1341" } },
 		},
+		-- Custom
+		ExitFunctionName = "AnomalyExitPresentation",
 	},
 
 	ShrinePointExitDoor = {
