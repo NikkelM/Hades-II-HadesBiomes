@@ -25,14 +25,17 @@ local challengeRoomReplacements = {}
 local challengeRoomModifications = {
 	RoomChallenge01 = {
 		RoomSetName = "Challenge",
-		IneligibleRewards = { "Devotion", "WeaponUpgrade", "SpellDrop", "HermesUpgrade" },
+
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
 		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
 
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerErebusIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerErebusOut",
+
+		IneligibleRewards = { "Devotion", "WeaponUpgrade", "SpellDrop", "HermesUpgrade" },
 	},
 }
 

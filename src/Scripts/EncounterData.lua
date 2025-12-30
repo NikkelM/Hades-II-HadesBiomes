@@ -31,14 +31,17 @@ local encounterModifications = {
 	ShrineChallengeTartarus = {
 		-- The original from Hades is 60
 		BaseDifficulty = 85,
+		LoadPackages = { "TartarusModsNikkelMHadesBiomes" },
 	},
 	ShrineChallengeAsphodel = {
 		-- The original from Hades is 200
 		BaseDifficulty = 230,
+		LoadPackages = { "AsphodelModsNikkelMHadesBiomes", "BiomeB" },
 	},
 	ShrineChallengeElysium = {
 		-- The original from Hades is 280
 		BaseDifficulty = 320,
+		LoadPackages = { "ElysiumModsNikkelMHadesBiomes" },
 	},
 
 	-- Charon
