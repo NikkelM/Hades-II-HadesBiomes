@@ -13,6 +13,7 @@ Other fixes and improvements:
 - Balancing: Increased the time the Skull-Crusher stays grounded before taking off again.
 - Balancing: Slightly reduced the tracking speed of the Elite Strongbow's triple-shot attack.
 - Balancing: The Tiny Vermin can now call for reinforcements more frequently.
+- Fixed: A second inspect point in the mid-shop in Tartarus never shows up (this was bugged in vanilla Hades as well - enjoy the exclusive new dialogue!).
 - Fixed: Some trap damage is incorrectly attributed on the run clear screen.
 - Fixed: Dusa's codex entry is replaced with the one from the first game.
 - Fixed: A manual reinstall without a previous uninstall marks the Hades installation as failed due to an Olympus Extra installation, even if Olympus Extra is not installed.

@@ -545,6 +545,24 @@ local roomModifications = {
 		PickaxePointChance = 0.4,
 		ExorcismPointChance = 0.3,
 		FishingPointChance = 0.3,
+
+		InspectPoints = {
+			[515864] = {
+				InteractTextLineSets = {
+					CharonFirstInspect = mod.NilValue,
+					ModsNikkelMHadesBiomes_CharonSecondInspect = {
+						-- Too bad I can't just take the ferry to the surface.
+						EndCue = "/VO/ZagreusField_1473",
+						EndWait = 0.3,
+						{
+							Cue = "/VO/Storyteller_0221",
+							Text =
+							"{#DialogueItalicFormat}The River Styx flows infamously through the Underworld, offering the boatman Charon expeditious travel from the realm of mortals to the lowest depths, where many of their shades reside forever."
+						},
+					},
+				},
+			},
+		},
 	},
 	A_PreBoss01 = {
 		SkipLastKillPresentation = true,
