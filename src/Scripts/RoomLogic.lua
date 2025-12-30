@@ -216,6 +216,61 @@ modutil.mod.Path.Wrap("CheckSpecialDoorRequirement", function(base, door)
 	return base(door)
 end)
 
+modutil.mod.Path.Wrap("HandleSecretSpawns", function(base, currentRun)
+	base(currentRun)
+
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		local currentRoom = currentRun.CurrentRoom
+		local secretPointIds = GetIdsByType({ Name = "SecretPoint" })
+
+		if currentRun.CurrentRoom and currentRun.CurrentRoom.ModsNikkelMHadesBiomesSecretDoorOnId then
+			-- Exclude the ID of the Chaos Gate that was spawned in this room from being used for the ShrinePointDoor
+			for i, secretPointId in ipairs(secretPointIds) do
+				if secretPointId == currentRun.CurrentRoom.ModsNikkelMHadesBiomesSecretDoorOnId then
+					table.remove(secretPointIds, i)
+					break
+				end
+			end
+		end
+
+		if not game.IsEmpty(secretPointIds) and mod.IsShrinePointDoorEligible(currentRun, currentRoom) then
+			currentRoom.ForceShrinePointDoor = true
+			local shrinePointRoomOptions = currentRoom.ShrinePointRoomOptions or game.RoomData.ModsNikkelMHadesBiomesBaseRoom
+
+			if game.IsEmpty(shrinePointRoomOptions) then
+				mod.DebugPrint("No shrine point room options available! They should be contained in all modded rooms, or fall back to ModsNikkelMHadesBiomesBaseRoom", 1)
+				return
+			end
+
+			local shrinePointRoomName = game.GetRandomValue(shrinePointRoomOptions)
+			local shrinePointRoomData = game.RoomSetData.Challenge[shrinePointRoomName]
+			if shrinePointRoomData ~= nil then
+				local secretPointId = game.RemoveRandomValue(secretPointIds)
+				local shrinePointDoor = game.DeepCopyTable(game.ObstacleData.ShrinePointDoor)
+				shrinePointDoor.ObjectId = SpawnObstacle({
+					Name = "ShrinePointDoor",
+					Group = "FX_Terrain",
+					DestinationId = secretPointId,
+					AttachedTable = shrinePointDoor
+				})
+				game.SetupObstacle(shrinePointDoor)
+				shrinePointDoor.ShrinePointReq = currentRoom.ShrinePointDoorCost or
+						(shrinePointDoor.CostBase + (shrinePointDoor.CostPerDepth * (currentRun.RunDepthCache - 1)))
+				local activeShrinePoints = game.GetTotalSpentShrinePoints()
+				local costFontColor = game.Color.CostAffordable
+				if shrinePointDoor.ShrinePointReq > activeShrinePoints then
+					costFontColor = game.Color.CostUnaffordable
+				end
+				local shrinePointRoom = game.CreateRoom(shrinePointRoomData, { SkipChooseReward = true })
+				shrinePointRoom.NeedsReward = true
+				game.AssignRoomToExitDoor(shrinePointDoor, shrinePointRoom)
+				shrinePointDoor.OnUsedPresentationFunctionName = "ShrinePointDoorUsedPresentation"
+				currentRun.LastShrinePointDoorDepth = game.GetRunDepth(currentRun)
+			end
+		end
+	end
+end)
+
 function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	-- Synchronize the RNG to its initial state. Makes room reward choices deterministic on save/load
 	game.RandomSynchronize()
