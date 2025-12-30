@@ -54,6 +54,10 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "ギリシア （凶夢）",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DisplayName = "エレボス （凶夢）",
+	},
 	-- #endregion
 
 	-- #region NPC Names

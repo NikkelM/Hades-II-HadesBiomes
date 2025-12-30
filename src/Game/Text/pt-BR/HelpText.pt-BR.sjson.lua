@@ -54,6 +54,10 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "GRÉCIA (Pesadelo)",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DisplayName = "ÉREBO (Pesadelo)",
+	},
 	-- #endregion
 
 	-- #region NPC Names

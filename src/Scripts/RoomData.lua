@@ -28,6 +28,8 @@ local challengeRoomModifications = {
 		IneligibleRewards = { "Devotion", "WeaponUpgrade", "SpellDrop", "HermesUpgrade" },
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
+
+		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
 	},
 }
 

@@ -54,6 +54,10 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "GRÈCE (Cauchemar)",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DisplayName = "ÉRÈBE (Cauchemar)",
+	},
 	-- #endregion
 
 	-- #region NPC Names

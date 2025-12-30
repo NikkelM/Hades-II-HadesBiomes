@@ -54,6 +54,10 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "그리스 (악몽)",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DisplayName = "에레보스 (악몽)",
+	},
 	-- #endregion
 
 	-- #region NPC Names

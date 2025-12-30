@@ -54,6 +54,10 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "GRIECHENLAND (Albtraum)",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DisplayName = "EREBOS (Albtraum)",
+	},
 	-- #endregion
 
 	-- #region NPC Names

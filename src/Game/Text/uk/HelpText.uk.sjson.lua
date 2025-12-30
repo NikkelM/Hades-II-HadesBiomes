@@ -51,6 +51,10 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "ПОВЕРХНЮ (Кошмар)",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DisplayName = "ЕРЕБ (Кошмар)",
+	},
 	-- #endregion
 
 	-- #region NPC Names

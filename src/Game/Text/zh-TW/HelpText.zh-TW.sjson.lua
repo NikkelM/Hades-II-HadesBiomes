@@ -51,6 +51,10 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "地表 （夢魘）",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DisplayName = "厄瑞玻斯 （夢魘）",
+	},
 	-- #endregion
 
 	-- #region NPC Names

@@ -54,6 +54,10 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "希腊 （梦魇）",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DisplayName = "厄瑞玻斯 （梦魇）",
+	},
 	-- #endregion
 
 	-- #region NPC Names

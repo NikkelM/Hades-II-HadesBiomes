@@ -69,6 +69,10 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "GREECE (Nightmare)",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DisplayName = "EREBUS (Nightmare)",
+	},
 	-- #endregion
 
 	-- #region NPC Names

@@ -51,6 +51,10 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "YÜZEY (Kâbus)",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DisplayName = "EREBOS (Kâbus)",
+	},
 	-- #endregion
 
 	-- #region NPC Names

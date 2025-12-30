@@ -52,6 +52,10 @@ local newData = {
 		-- Means SURFACE, not GREECE
 		DisplayName = "ΕΠΙΦΑΝΕΙΑ (Εφιάλτης)",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DisplayName = "ΕΡΕΒΟΣ (Εφιάλτης)",
+	},
 	-- #endregion
 
 	-- #region NPC Names
