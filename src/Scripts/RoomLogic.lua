@@ -201,6 +201,21 @@ modutil.mod.Path.Wrap("DisableTrap", function(base, enemy)
 	end
 end)
 
+modutil.mod.Path.Wrap("CheckSpecialDoorRequirement", function(base, door)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		local originalReturnValue = base(door)
+
+		-- None of the other, higher priority reasons were eligible
+		if originalReturnValue == nil and door and door.ShrinePointReq ~= nil and game.GetTotalSpentShrinePoints() < door.ShrinePointReq then
+			return "ExitBlockedByShrinePointReq"
+		end
+
+		return originalReturnValue
+	end
+
+	return base(door)
+end)
+
 function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	-- Synchronize the RNG to its initial state. Makes room reward choices deterministic on save/load
 	game.RandomSynchronize()
