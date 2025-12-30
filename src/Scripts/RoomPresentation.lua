@@ -427,8 +427,7 @@ function mod.ModsNikkelMHadesBiomesShrineGateExitPresentation(currentRun, exitDo
 
 	currentRun.Hero.ExitAngle = GetAngle({ Id = currentRun.Hero.ObjectId })
 
-	-- TODO: Need custom voicelines, and only play them when entering the challenge room, not when exiting
-	-- game.PlayVoiceLines( game.HeroVoiceLines.ContractAcceptedVoiceLines )
+	game.PlayVoiceLines( game.HeroVoiceLines.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines )
 
 	SetAnimation({ Name = "MelinoeInteractWeaponless", DestinationId = currentRun.Hero.ObjectId })
 	game.wait(0.2)

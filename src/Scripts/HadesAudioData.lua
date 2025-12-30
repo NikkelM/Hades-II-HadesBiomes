@@ -3608,7 +3608,45 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_1414", Text = "...Fall.", },
 		},
 	},
-
+	-- When entering an Erebus Gate/ShrineGate to a RoomChallenge
+	ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines = {
+		Queue = "Interrupt",
+		{
+			BreakIfPlayed = true,
+			PreLineWait = 0.25,
+			GameStateRequirements = {
+				{
+					-- Only play when entering, not when exiting a RoomChallenge
+					Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+					IsNone = { "Challenge" },
+				},
+				{
+					-- Only on first time using a ShrineGate
+					PathFalse = { "GameState", "BiomeVisits", "Challenge" },
+				},
+			},
+			{ Cue = "/VO/MelinoeField_4286", Text = "I accept these terms... I think!" },
+		},
+		{
+			RandomRemaining = true,
+			PreLineWait = 0.25,
+			GameStateRequirements = {
+				{
+					-- Only play when entering, not when exiting a RoomChallenge
+					Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+					IsNone = { "Challenge" },
+				},
+			},
+			-- From ZagContract
+			{ Cue = "/VO/MelinoeField_4284", Text = "I accept these terms!" },
+			{ Cue = "/VO/MelinoeField_4286", Text = "I accept these terms... I think!" },
+			-- Custom
+			{ Cue = "/VO/Melinoe_0376",      Text = "Into Erebus.", },
+			{ Cue = "/VO/Melinoe_4302",      Text = "Into the dark." },
+			{ Cue = "/VO/Melinoe_4305",      Text = "To the abyss." },
+			{ Cue = "/VO/Melinoe_5282",      Text = "Here we go again...!" },
+		},
+	},
 	-- Returning to the Crossroads
 	ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = {
 		Queue = "Always",

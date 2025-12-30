@@ -195,7 +195,7 @@ for voicelineGroup, replacement in pairs(requiredGlobalVoiceLineModifications) d
 	end
 end
 
--- Add required GlobalVoiceLines
+-- #region GlobalVoiceLines
 -- These would overlap with Melinoe's own voicelines when dying
 -- game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or
 -- 		mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
@@ -293,8 +293,9 @@ table.insert(game.HeroVoiceLines.FishNotCaughtTooLateVoiceLines, 1,
 	mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines_PatroclusReaction)
 table.insert(game.HeroVoiceLines.FishNotCaughtVoiceLines, 1,
 	mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines_PatroclusReaction)
+-- #endregion
 
--- Add required HeroVoiceLines
+-- #region HeroVoiceLines
 game.HeroVoiceLines.HitByGraveHandsVoiceLines = game.HeroVoiceLines.HitByGraveHandsVoiceLines or
 		mod.HeroVoiceLines.HitByGraveHandsVoiceLines
 game.HeroVoiceLines.HitByHadesAmmoVoiceLines = game.HeroVoiceLines.HitByHadesAmmoVoiceLines or
@@ -303,12 +304,16 @@ game.HeroVoiceLines.HitByHadesAmmoVoiceLines = game.HeroVoiceLines.HitByHadesAmm
 game.HeroVoiceLines.ThanatosSpawningVoiceLines = game.HeroVoiceLines.ThanatosSpawningVoiceLines or
 		mod.HeroVoiceLines.ThanatosSpawningVoiceLines
 
+-- Custom Voicelines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_RunClearedVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_RunClearedVoiceLines
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines
+-- #endregion
 -- #endregion
