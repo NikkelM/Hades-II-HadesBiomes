@@ -3629,6 +3629,21 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			},
 			{ Cue = "/VO/MelinoeField_5141", Text = "{#Emph}<Gasp> {#Prev}I... remember... all of that?" },
 		},
+		{
+			BreakIfPlayed = true,
+			PreLineWait = 1.0,
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+					Comparison = "==",
+					Value = 0,
+				},
+				{
+					PathTrue = { "CurrentRun", "Cleared" },
+				},
+			},
+			{ Cue = "/VO/MelinoeField_3575", Text = "Father! Mother... Brother...!" },
+		},
 		-- #region Including base game priority events for compatibility
 		-- epilogue
 		{
