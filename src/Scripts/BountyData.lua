@@ -195,7 +195,7 @@ local newShrineBounties = {
 				HasAll = {
 					"BountyShrineDaggerGBoss",
 					"BountyShrineDaggerNBoss",
-					"BountyShrineStaffNBoss",
+					"BountyShrineDaggerOBoss",
 					"ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss",
 					"BountyShrineDaggerHBoss",
 					"BountyShrineDaggerPBoss",
@@ -223,7 +223,7 @@ local newShrineBounties = {
 				HasAll = {
 					"BountyShrineDaggerGBoss",
 					"BountyShrineDaggerNBoss",
-					"BountyShrineStaffNBoss",
+					"BountyShrineDaggerOBoss",
 				},
 			},
 		},
@@ -258,7 +258,7 @@ local newShrineBounties = {
 				HasAll = {
 					"BountyShrineDaggerGBoss",
 					"BountyShrineDaggerNBoss",
-					"BountyShrineStaffNBoss",
+					"BountyShrineDaggerOBoss",
 					"ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss",
 					"BountyShrineDaggerHBoss",
 					"BountyShrineDaggerPBoss",
@@ -301,7 +301,7 @@ local newShrineBounties = {
 				HasAll = {
 					"BountyShrineDaggerGBoss",
 					"BountyShrineDaggerNBoss",
-					"BountyShrineStaffNBoss",
+					"BountyShrineDaggerOBoss",
 					"ModsNikkelMHadesBiomes_BountyShrineDaggers_AsphodelBoss",
 					"BountyShrineDaggerHBoss",
 					"BountyShrineDaggerPBoss",
