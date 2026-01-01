@@ -1679,6 +1679,7 @@ local enemyModifications = {
 		},
 	},
 	Crawler = {
+		StunAnimations = { Default = "EnemyCrawlerIdle" },
 		IgnoreSpeedShrine = true,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		SpellSummonDataOverrides = {

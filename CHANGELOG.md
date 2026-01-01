@@ -13,8 +13,9 @@ Other fixes and improvements:
 - Balancing: Increased the time the Skull-Crusher stays grounded before taking off again.
 - Balancing: Slightly reduced the tracking speed of the Elite Strongbow's triple-shot attack.
 - Balancing: The Tiny Vermin can now call for reinforcements more frequently.
-- Fixed: Bouldy's special damage boon grants up to 1000% bonus damage instead of up to 10%.
 - Fixed: When preparing to fire it's wave attack, the purple Hydra variant cannot turn to face Melinoë in time and ends up firing the attack into the lava.
+- Fixed: When a Crawler is stunned, it becomes invisible.
+- Fixed: Bouldy's special damage boon grants up to 1000% bonus damage instead of up to 10%.
 - Fixed: Contextual voicelines with Hades story NPCs relating to their respective keepsakes being equipped cannot trigger.
 - Fixed: Testaments for the Sister Blades incorrectly require having completed the Polyphemus testament with the Witch's Staff.
 - Fixed: Some trap damage is incorrectly attributed on the run clear screen.
