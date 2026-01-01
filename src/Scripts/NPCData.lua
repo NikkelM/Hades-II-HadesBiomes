@@ -112,6 +112,9 @@ local npcModifications = {
 		InteractTextLineSets = {
 			SisyphusAboutBouldy02 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
 			SisyphusLiberationQuest_Beginning_01 = { RequiredTextLines = { "SisyphusBackstory03", "SisyphusMeeting06", "SisyphusGift06", "ModsNikkelMHadesBiomes_BouldyFirstMeeting" }, },
+			-- The new name from SharedKeepsakePort
+			SisyphusAboutKeepsake01 = { RequiredTrait = "SisyphusVanillaKeepsake", },
+			SisyphusAboutKeepsake02 = { RequiredTrait = "SisyphusVanillaKeepsake", },
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
@@ -172,6 +175,11 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesBuffMegaPom",
 			"ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		},
+		InteractTextLineSets = {
+			-- The new name from SharedKeepsakePort
+			EurydiceAboutAcorn01 = { RequiredKeepsake = "ShieldBossKeepsake", },
+			EurydiceAboutAcorn02 = { RequiredKeepsake = "ShieldBossKeepsake", },
+		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
 			EurydiceGift07 = {
@@ -209,6 +217,11 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesBuffExtraChance",
 			"ModsNikkelMHadesBiomesGainMaxHealthMinMana",
 			"ModsNikkelMHadesBiomesGainMinHealthMaxMana",
+		},
+		InteractTextLineSets = {
+			-- The new name from SharedKeepsakePort
+			PatroclusAboutKeepsake01 = { RequiredKeepsake = "ShieldAfterHitKeepsake", },
+			PatroclusAboutKeepsake02 = { RequiredKeepsake = "ShieldAfterHitKeepsake", },
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
@@ -327,6 +340,10 @@ local npcModifications = {
 			},
 			ConsumablePreDropFunctionName = _PLUGIN.guid .. "." .. "ThanatosDropPresentation",
 			ConsumablePreDropFunctionDelay = 0.7,
+		},
+		BossPresentationIntroTextLineSets = {
+			-- The new name from SharedKeepsakePort
+			ThanatosFieldAboutKeepsake01 = { RequiredTrait = "PerfectClearDamageBonusKeepsake", },
 		},
 	},
 }

@@ -894,8 +894,19 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		return false
 	end
 
-	if requirements.RequiresMaxKeepsake ~= nil and game.GameState.LastAwardTrait ~= nil and not IsKeepsakeMaxed(game.GameState.LastAwardTrait) then --
-		return false
+	-- LastAwardTrait is the currently equipped keepsake
+	-- This is the equivalent check in Hades II, accounting for the ability to rarify a keepsake above the actual max through a boon
+	-- {
+	-- Path = { "CurrentRun", "Hero", "TraitDictionary", "<KeepsakeName>", 1, "Rarity" },
+	-- IsAny = { "Epic", "Heroic" },
+	-- },
+	-- if requirements.RequiresMaxKeepsake ~= nil and game.GameState.LastAwardTrait ~= nil and not game.IsKeepsakeMaxed(game.GameState.LastAwardTrait) then
+	-- 	return false
+	-- end
+	if requirements.RequiresMaxKeepsake ~= nil and game.GameState.LastAwardTrait ~= nil then
+		if game.CurrentRun ~= nil and game.CurrentRun.Hero ~= nil and game.CurrentRun.Hero.TraitDictionary ~= nil and game.CurrentRun.Hero.TraitDictionary[game.GameState.LastAwardTrait] ~= nil and game.CurrentRun.Hero.TraitDictionary[game.GameState.LastAwardTrait][1] ~= nil and (game.CurrentRun.Hero.TraitDictionary[game.GameState.LastAwardTrait][1].Rarity ~= "Epic" and game.CurrentRun.Hero.TraitDictionary[game.GameState.LastAwardTrait][1].Rarity ~= "Heroic") then
+			return false
+		end
 	end
 
 	if requirements.RequiresMaxKeepsakes ~= nil then -- not used anywhere (achievement)
@@ -903,7 +914,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			return false
 		end
 		for k, keepsakeName in pairs(requirements.RequiresMaxKeepsakes) do
-			if not IsKeepsakeMaxed(keepsakeName) then
+			if not game.IsKeepsakeMaxed(keepsakeName) then
 				return false
 			end
 		end
