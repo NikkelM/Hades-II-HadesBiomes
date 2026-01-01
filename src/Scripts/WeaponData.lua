@@ -976,7 +976,6 @@ local weaponModifications = {
 		AIData = {
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
-			PreAttackRotationDampening = 0.15,
 			FireRotationDampening = 0.01,
 			-- While tethers are broken
 			AIAttackDistance = 50,
@@ -988,7 +987,6 @@ local weaponModifications = {
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireProjectileTowardTarget = true,
-			PreAttackRotationDampening = 0.15,
 			FireRotationDampening = 0.01,
 		},
 	},
@@ -997,7 +995,6 @@ local weaponModifications = {
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireProjectileTowardTarget = true,
-			PreAttackRotationDampening = 0.15,
 			FireRotationDampening = 0.01,
 		},
 	},
@@ -1006,7 +1003,6 @@ local weaponModifications = {
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireProjectileTowardTarget = true,
-			PreAttackRotationDampening = 0.15,
 			FireRotationDampening = 0.01,
 		},
 	},
