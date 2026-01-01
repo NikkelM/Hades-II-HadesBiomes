@@ -22,6 +22,7 @@ Other fixes and improvements:
 - Fixed: Testaments for the Sister Blades incorrectly require having completed the Polyphemus testament with the Witch's Staff.
 - Fixed: Some trap damage is incorrectly attributed on the run clear screen.
 - Fixed: Dusa's codex entry is replaced with the one from the first game.
+- Fixed: Some textures in some rooms can be misplaced when reloading a save while in them.
 - Fixed: A manual reinstall without a previous uninstall marks the Hades installation as failed due to an Olympus Extra installation, even if Olympus Extra is not installed.
 <!--Releasenotes end-->
 
