@@ -364,11 +364,11 @@ local roomModifications = {
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
-		HarvestPointChances = { 0.75 },
-		ShovelPointChance = 0.5,
-		PickaxePointChance = 0.5,
-		ExorcismPointChance = 0.5,
-		FishingPointChance = 0.5,
+		HarvestPointChances = { 0.5 },
+		ShovelPointChance = 0.4,
+		PickaxePointChance = 0.4,
+		ExorcismPointChance = 0.4,
+		FishingPointChance = 0.4,
 	},
 	Y_PreBoss01 = {
 		SkipLastKillPresentation = true,
@@ -377,11 +377,11 @@ local roomModifications = {
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
-		HarvestPointChances = { 0.33 },
-		ShovelPointChance = 0.33,
-		PickaxePointChance = 0.33,
-		ExorcismPointChance = 0.33,
-		FishingPointChance = 0.33,
+		HarvestPointChances = { 0.3 },
+		ShovelPointChance = 0.3,
+		PickaxePointChance = 0.3,
+		ExorcismPointChance = 0.3,
+		FishingPointChance = 0.3,
 	},
 
 	-- MINIBOSSES
@@ -405,7 +405,6 @@ local roomModifications = {
 		HasPickaxePoint = false,
 		-- There are not urns in this room, so would be placed on a spawn point which looks weird
 		HasExorcismPoint = false,
-		ShovelPointChance = 0.5,
 	},
 	Y_MiniBoss02 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
@@ -460,11 +459,11 @@ local roomModifications = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 
-		HarvestPointChances = { 0.75 },
-		ShovelPointChance = 0.5,
-		PickaxePointChance = 0.5,
-		ExorcismPointChance = 0.5,
-		FishingPointChance = 0.5,
+		HarvestPointChances = { 0.5 },
+		ShovelPointChance = 0.4,
+		PickaxePointChance = 0.4,
+		ExorcismPointChance = 0.4,
+		FishingPointChance = 0.4,
 
 		HarvestPointRequirements = {
 			OrRequirements = {

@@ -12,6 +12,7 @@ Other fixes and improvements:
 - Balancing: Increased the time the Skull-Crusher stays grounded before taking off again.
 - Balancing: Slightly reduced the tracking speed of the Elite Strongbow's triple-shot attack.
 - Balancing: The Tiny Vermin can now call for reinforcements more frequently.
+- Balancing: Slightly reduced the spawn rate of resource points.
 - Fixed: Magick and Hexes do not (re)charge, and the Aspect of Supay does not attack automatically during boss fights with Tisiphone or Alecto.
 - Fixed: The teeth spawned by the "Summoner" Hydra variant can be stunned.
 - Fixed: When preparing to fire it's wave attack, the purple Hydra variant cannot turn to face Melinoë in time and ends up firing the attack into the lava.

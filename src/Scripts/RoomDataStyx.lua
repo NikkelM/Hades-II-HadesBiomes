@@ -18,11 +18,11 @@ local roomReplacements = {
 		HasExorcismPoint = true,
 		HasFishingPoint = true,
 
-		HarvestPointChances = { 0.30, },
-		ShovelPointChance = 0.24,
-		PickaxePointChance = 0.36,
-		ExorcismPointChance = 0.24,
-		FishingPointChance = 0.18,
+		HarvestPointChances = { 0.3, },
+		ShovelPointChance = 0.2,
+		PickaxePointChance = 0.3,
+		ExorcismPointChance = 0.2,
+		FishingPointChance = 0.15,
 
 		HarvestPointRequirements = {
 			{
@@ -288,7 +288,7 @@ local roomReplacements = {
 		HasPickaxePoint = false,
 		HasExorcismPoint = false,
 
-		FishingPointChance = 0.30,
+		FishingPointChance = 0.3,
 		FishingPointRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeToolsShop" },
@@ -655,7 +655,7 @@ local roomModifications = {
 		EnterVoiceLines = mod.NilValue,
 		EnterGlobalVoiceLines = "EnteredReprieveRoomVoiceLines",
 
-		HarvestPointChances = { 0.7, 0.3, },
+		HarvestPointChances = { 0.5, 0.3, },
 		HarvestPointRequirements = {
 			OrRequirements = {
 				-- collection

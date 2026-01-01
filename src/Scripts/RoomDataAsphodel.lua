@@ -373,10 +373,10 @@ local roomModifications = {
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
-		ShovelPointChance = 0.4,
-		PickaxePointChance = 0.4,
-		ExorcismPointChance = 0.3,
-		FishingPointChance = 0.3,
+		ShovelPointChance = 0.35,
+		PickaxePointChance = 0.35,
+		ExorcismPointChance = 0.25,
+		FishingPointChance = 0.25,
 	},
 	X_PreBoss01 = {
 		SkipLastKillPresentation = true,
@@ -389,10 +389,10 @@ local roomModifications = {
 		LinkedRoomByPactLevel = mod.NilValue,
 		LinkedRooms = { "X_Boss01", "X_Boss02" },
 
-		ShovelPointChance = 0.4,
-		PickaxePointChance = 0.4,
-		ExorcismPointChance = 0.3,
-		FishingPointChance = 0.3,
+		ShovelPointChance = 0.35,
+		PickaxePointChance = 0.35,
+		ExorcismPointChance = 0.25,
+		FishingPointChance = 0.25,
 	},
 
 	-- MINIBOSSES
@@ -460,11 +460,11 @@ local roomModifications = {
 			RequiredSeenEncounter = "BossHydra",
 		},
 
-		HarvestPointChances = { 0.5, 0.1, },
-		ShovelPointChance = 0.4,
-		PickaxePointChance = 0.4,
-		ExorcismPointChance = 0.4,
-		FishingPointChance = 0.1,
+		HarvestPointChances = { 0.4, 0.1, },
+		ShovelPointChance = 0.35,
+		PickaxePointChance = 0.35,
+		ExorcismPointChance = 0.35,
+		FishingPointChance = 0.15,
 
 		HarvestPointRequirements = {
 			OrRequirements = {
@@ -546,11 +546,11 @@ local roomModifications = {
 		},
 		SuppressRewardSpawnSounds = false,
 
-		HarvestPointChances = { 0.6, 0.4, },
-		ShovelPointChance = 0.24,
-		PickaxePointChance = 0.36,
-		ExorcismPointChance = 0.24,
-		FishingPointChance = 0.18,
+		HarvestPointChances = { 0.5, 0.3, },
+		ShovelPointChance = 0.2,
+		PickaxePointChance = 0.3,
+		ExorcismPointChance = 0.2,
+		FishingPointChance = 0.15,
 	},
 	X_PostBoss01 = {
 		-- For Intercom
