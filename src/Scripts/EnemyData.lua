@@ -1298,6 +1298,7 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		AIOptions = { _PLUGIN.guid .. "." .. "PickupAI", },
+		AIPickupRange = 45,
 	},
 	ShadeNakedElite = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
