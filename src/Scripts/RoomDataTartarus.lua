@@ -591,7 +591,12 @@ local roomModifications = {
 			RequiredKills = { Harpy = 4 },
 		},
 		UnthreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
+			[1] = {
+				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
+				Args = {
+					DelayedStart = true,
+				},
+			},
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
 
@@ -603,7 +608,12 @@ local roomModifications = {
 			RequiredKills = { Harpy = 4 },
 		},
 		UnthreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
+			[1] = {
+				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
+				Args = {
+					DelayedStart = true,
+				},
+			},
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
 		PostCombatReloadEvents = {
