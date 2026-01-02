@@ -58,82 +58,8 @@ function mod.ModsNikkelMHadesBiomesHandleWrapping(encounter)
 					OffsetY = offset.Y
 				})
 				obstacleWrapData.WrapCount = 0
-				game.thread(game.WrapObstacle, id, obstacleWrapData, { ResetTargetId = resetTargetId, Angle = -155 })
+				game.thread(mod.WrapObstacle, id, obstacleWrapData, resetTargetId, 0)
 			end
-		end
-	end
-
-	local spawnData = wrappingData.SpawnData
-	if spawnData ~= nil then
-		if spawnData.PreSpawnObstacles then
-			for i = 1, 5 do
-				local nextObstacleName = game.GetRandomValue(spawnData.ObstacleNames)
-				local nextSpawnDestination = game.GetRandomValue(spawnData.SpawnPoints) or {}
-				if not nextSpawnDestination.SkipPreSpawn then
-					offset = game.CalcOffset(math.rad(-155), i * 1750) or { X = 0, Y = 0 }
-					local newObstacleId = SpawnObstacle({
-						Name = nextObstacleName,
-						DestinationId = nextSpawnDestination.Id,
-						Group = nextSpawnDestination.GroupName,
-						OffsetX = offset.X,
-						OffsetY = offset.Y
-					})
-					SetThingProperty({ Property = "StopsLight", Value = false, DestinationId = newObstacleId })
-					SetThingProperty({ Property = "StopsUnits", Value = false, DestinationId = newObstacleId })
-					if nextSpawnDestination.ObstacleHSVOverrides ~= nil and nextSpawnDestination.ObstacleHSVOverrides[nextObstacleName] ~= nil then
-						SetHSV({
-							Id = newObstacleId,
-							HSV = nextSpawnDestination.ObstacleHSVOverrides[nextObstacleName],
-							ValueChangeType = "Absolute"
-						})
-					end
-					if nextSpawnDestination.ObstacleColorOverrides ~= nil and nextSpawnDestination.ObstacleColorOverrides[nextObstacleName] ~= nil then
-						SetColor({
-							Id = newObstacleId,
-							Color = nextSpawnDestination.ObstacleColorOverrides[nextObstacleName],
-							ValueChangeType = "Absolute"
-						})
-					end
-
-					Move({ Id = newObstacleId, Angle = -155, Speed = spawnData.MoveSpeed or 500 })
-					game.thread(game.DestroyOnDelay, { newObstacleId }, spawnData.MoveTime or 10)
-				end
-			end
-		end
-
-		while true do
-			local nextObstacleName = game.GetRandomValue(spawnData.ObstacleNames)
-			local nextSpawnDestination = game.GetRandomValue(spawnData.SpawnPoints) or {}
-			local groupName = nextSpawnDestination.GroupName
-			if nextSpawnDestination.ObstacleGroupOverrides ~= nil then
-				groupName = nextSpawnDestination.ObstacleGroupOverrides[nextObstacleName] or groupName
-			end
-			local newObstacleId = SpawnObstacle({
-				Name = nextObstacleName,
-				DestinationId = nextSpawnDestination.Id,
-				Group = groupName
-			})
-			SetThingProperty({ Property = "StopsLight", Value = false, DestinationId = newObstacleId })
-			SetThingProperty({ Property = "StopsUnits", Value = false, DestinationId = newObstacleId })
-			if nextSpawnDestination.ObstacleHSVOverrides ~= nil and nextSpawnDestination.ObstacleHSVOverrides[nextObstacleName] ~= nil then
-				SetHSV({
-					Id = newObstacleId,
-					HSV = nextSpawnDestination.ObstacleHSVOverrides[nextObstacleName],
-					ValueChangeType = "Absolute"
-				})
-			end
-			if nextSpawnDestination.ObstacleColorOverrides ~= nil and nextSpawnDestination.ObstacleColorOverrides[nextObstacleName] ~= nil then
-				SetColor({
-					Id = newObstacleId,
-					Color = nextSpawnDestination.ObstacleColorOverrides[nextObstacleName],
-					ValueChangeType = "Absolute"
-				})
-			end
-			Move({ Id = newObstacleId, Angle = -155, Speed = spawnData.MoveSpeed or 500 })
-			game.thread(game.DestroyOnDelay, { newObstacleId }, spawnData.MoveTime or 10)
-
-			local nextSpawnInterval = game.RandomFloat(spawnData.SpawnIntervalMin, spawnData.SpawnIntervalMax)
-			game.wait(nextSpawnInterval, game.RoomThreadName)
 		end
 	end
 end
@@ -177,4 +103,34 @@ end
 function mod.WrappingPostCombatReloadPresentation(eventSource)
 	local encounter = eventSource.Encounter
 	Destroy({ Ids = GetIds({ Name = encounter.WrappingData.StartingGroupName }) })
+end
+
+function mod.WrapObstacle(id, obstacleWrapData, resetTargetId, wrapCount)
+	local encounter = game.CurrentRun.CurrentRoom.Encounter
+	local repeatDelay = 24
+	local moveTime = obstacleWrapData.MoveTime
+
+	if wrapCount == 0 then
+		game.wait(obstacleWrapData.FirstWrapDelay, game.RoomThreadName)
+		moveTime = obstacleWrapData.FirstMoveTime or moveTime
+		repeatDelay = obstacleWrapData.FirstRepeatDelay or repeatDelay
+	end
+
+	if not encounter.InProgress then
+		return
+	end
+	-- Get in position right before platform
+	if obstacleWrapData.FirstTeleport or wrapCount > 0 then
+		Teleport({ Id = id, DestinationId = resetTargetId })
+	end
+	Move({ Id = id, Angle = -155, Speed = 500 })
+	game.wait(moveTime, game.RoomThreadName)
+
+	Stop({ Id = id })
+	if not encounter.InProgress then
+		return
+	end
+	game.wait(repeatDelay - moveTime, game.RoomThreadName)
+
+	game.thread(mod.WrapObstacle, id, obstacleWrapData, resetTargetId, wrapCount + 1)
 end
