@@ -96,7 +96,7 @@ function mod.HasSeenRoom(roomName, excludeThisRun)
 	if game.GameState.RoomCountCache[roomName] ~= nil and game.GameState.RoomCountCache[roomName] > 0 then
 		return true
 	end
-	if not excludeThisRun and mod.HasSeenRoomInRun(CurrentRun, roomName) then
+	if not excludeThisRun and mod.HasSeenRoomInRun(game.CurrentRun, roomName) then
 		return true
 	end
 	return false

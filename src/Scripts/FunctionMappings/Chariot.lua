@@ -20,7 +20,7 @@ function mod.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 		aiData.MoveWithinRangeTimeout = aiData.SetupTimeout
 		game.MoveWithinRange(enemy, aiData.TargetId, aiData)
 
-		if not _eventTimeoutRecord[enemy.AINotifyName] then
+		if not game._eventTimeoutRecord[enemy.AINotifyName] then
 			-- Teleportation
 			if aiData.TeleportToSpawnPoints then
 				game.HandleEnemyTeleportation(enemy, aiData)

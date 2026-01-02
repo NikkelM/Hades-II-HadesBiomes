@@ -452,7 +452,7 @@ function mod.HandleHarpyRage(enemy)
 
 	while not enemy.IsDead and not enemy.PermanentEnraged do
 		game.wait(rageDecayInterval)
-		if enemy.RageFraction > 0 and _worldTime - enemy.LastRageGainTime > enemy.RageDecayStartDuration then
+		if enemy.RageFraction > 0 and game._worldTime - enemy.LastRageGainTime > enemy.RageDecayStartDuration then
 			enemy.RageFraction = enemy.RageFraction - rageDecayRate
 			SetAnimationFrameTarget({
 				Name = "EnemyHealthBarFillBoss",
