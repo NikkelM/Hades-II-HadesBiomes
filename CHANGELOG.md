@@ -9,6 +9,7 @@
 Other fixes and improvements:
 - The installation screen will now only show in the Training Grounds, and no longer in the main Crossroads.
 - Added a "Vanquished" count for Zagreus' Journey enemies to their respective Codex entries.
+- Changed the default logging level of the mod to "Debug" to simplify troubleshooting user issues. You can change this in the mod's config file.
 - Balancing: Reduced the maximum time the Skull-Crusher can stay airborne before attacking.
 - Balancing: Increased the time the Skull-Crusher stays grounded before taking off again.
 - Balancing: Slightly reduced the tracking speed of the Elite Strongbow's triple-shot attack.

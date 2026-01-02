@@ -3,7 +3,7 @@ local config = {
   firstTimeSetup = true,
   hadesGameFolder = "root",
   uninstall = false,
-  logLevel = 3,
+  logLevel = 4,
   z_SpeedrunForceTwoSack = false
 }
 
