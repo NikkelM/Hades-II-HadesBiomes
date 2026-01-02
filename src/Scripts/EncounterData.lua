@@ -19,15 +19,22 @@ mod.UpdateField(encounterDataChallengeCharon, "Challenge", "TimeChallenge", { "I
 
 -- For tables that should be replaced. The modifications append table data!
 -- Can still use modifications if the modified table did not exist beforehand
-local encounterReplacements = {}
+local encounterReplacements = {
+	BasePerfectClear = {
+		UnthreadedEvents = mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsPerfectClear,
+	},
+}
 
 local encounterModifications = {
 	-- #region ShrineChallenge
 	BasePerfectClear = {
+		LoadModdedVoiceBanks = { "HadesField" },
 		CanEncounterSkip = false,
 		BlockAthenaEncounterKeepsake = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		SpawnAggroed = true,
+		-- For the taunt if the encounter was failed
+		ModsNikkelMHadesBiomesPostEncounterPlayHadesTaunt = true,
 	},
 	ShrineChallengeTartarus = {
 		-- The original from Hades is 60

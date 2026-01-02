@@ -95,4 +95,15 @@ mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsSurvival = {
 	{ FunctionName = "PostCombatAudio" },
 	{ FunctionName = "SpawnRoomReward" },
 }
+mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsPerfectClear = {
+	{ FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPerfectClearEncounterStartPresentation" },
+	{ FunctionName = "EncounterAudio" },
+	{ FunctionName = "BeginPerfectClearEncounter" },
+	{ FunctionName = "HandleEnemySpawns" },
+	{ FunctionName = "CheckForAllEnemiesDead" },
+	{ FunctionName = "PostCombatAudio" },
+	{ FunctionName = "CheckActiveObjectivesStatus" },
+	{ FunctionName = "PerfectClearEncounterEndPresentation" },
+	{ FunctionName = "SpawnPerfectClearRoomReward" },
+}
 -- #endregion

@@ -161,6 +161,7 @@ game.GlobalVoiceLines.EmptyStartNewHadesRunVoiceLines = {}
 
 -- Replace cues with the modded name
 local requiredGlobalVoiceLineModifications = {
+	-- These voicelines are not currently used
 	-- HadesDeathTauntVoiceLines = {
 	-- 	Find = "Hades_",
 	-- 	Replace = "HadesField_0"
@@ -174,6 +175,22 @@ local requiredGlobalVoiceLineModifications = {
 		Replace = "HadesField_1",
 	},
 	SurvivalEncounterSurvivedVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1",
+	},
+	PerfectClearEncounterStartVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1",
+	},
+	PerfectClearEncounterFailedVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1",
+	},
+	PerfectClearEncounterQuicklyFailedVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1",
+	},
+	PerfectClearEncounterClearedVoiceLines = {
 		Find = "Intercom_",
 		Replace = "HadesField_1",
 	},
@@ -273,6 +290,15 @@ game.GlobalVoiceLines.SurvivalExpiringVoiceLines = game.GlobalVoiceLines.Surviva
 		mod.GlobalVoiceLines.SurvivalExpiringVoiceLines
 game.GlobalVoiceLines.SurvivalResolvedVoiceLines = game.GlobalVoiceLines.SurvivalResolvedVoiceLines or
 		mod.GlobalVoiceLines.SurvivalResolvedVoiceLines
+
+game.GlobalVoiceLines.PerfectClearEncounterStartVoiceLines = game.GlobalVoiceLines.PerfectClearEncounterStartVoiceLines or
+		mod.GlobalVoiceLines.PerfectClearEncounterStartVoiceLines
+game.GlobalVoiceLines.PerfectClearEncounterFailedVoiceLines = game.GlobalVoiceLines.PerfectClearEncounterFailedVoiceLines or
+		mod.GlobalVoiceLines.PerfectClearEncounterFailedVoiceLines
+game.GlobalVoiceLines.PerfectClearEncounterQuicklyFailedVoiceLines = game.GlobalVoiceLines.PerfectClearEncounterQuicklyFailedVoiceLines or
+		mod.GlobalVoiceLines.PerfectClearEncounterQuicklyFailedVoiceLines
+game.GlobalVoiceLines.PerfectClearEncounterClearedVoiceLines = game.GlobalVoiceLines.PerfectClearEncounterClearedVoiceLines or
+		mod.GlobalVoiceLines.PerfectClearEncounterClearedVoiceLines
 
 game.GlobalVoiceLines.PatroclusFishCaughtVoiceLines = game.GlobalVoiceLines.PatroclusFishCaughtVoiceLines or
 		mod.GlobalVoiceLines.PatroclusFishCaughtVoiceLines

@@ -510,6 +510,7 @@ local roomModifications = {
 		Ambience = "{e65b32ad-3a7e-4f88-9149-3260e929f04c}",
 		PlayBiomeMusic = true,
 		MusicSection = 0,
+		MusicStartDelay = 1.75,
 		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		ChooseRewardRequirements = mod.NilValue,
 		ForcedRewards = mod.NilValue,
