@@ -20,6 +20,7 @@ Other fixes and improvements:
 - Fixed: The teeth spawned by the "Summoner" Hydra variant can be stunned.
 - Fixed: When preparing to fire it's wave attack, the purple Hydra variant cannot turn to face Melinoë in time and ends up firing the attack into the lava.
 - Fixed: Exalted Shades sometimes stand idle next to weapons instead of picking them up to respawn.
+- Fixed: If an Exalted Shade is killed while picking up a weapon, the weapon does not return to its ghostly form.
 - Fixed: When a Crawler is stunned, it becomes invisible.
 - Fixed: Bouldy's special damage boon grants up to 1000% bonus damage instead of up to 10%.
 - Fixed: Elysium Shades killed by Thanatos can sometimes spawn an Exalted Shade.

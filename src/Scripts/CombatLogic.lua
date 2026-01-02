@@ -73,6 +73,13 @@ modutil.mod.Path.Wrap("CleanupEnemy", function(base, enemy)
 	if enemy.DisplayAttackTimer and enemy.AttackTimerId ~= nil then
 		Destroy({ Id = enemy.AttackTimerId })
 	end
+	-- For ShadeNaked in the process of picking up a weapon
+	if enemy.PickupTarget ~= nil then
+		if enemy.PickupTarget.PickupFailedAnimation ~= nil then
+			SetAnimation({ Name = enemy.PickupTarget.PickupFailedAnimation, DestinationId = enemy.PickupTarget.ObjectId })
+		end
+		enemy.PickupTarget = nil
+	end
 end)
 
 -- Only called within OnHit, used to change the damage of the HeavyRanged lock-on hit to 0 before anything else is processed that uses it
