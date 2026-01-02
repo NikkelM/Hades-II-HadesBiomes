@@ -35,6 +35,11 @@ local tartarusRoomStartMusicEvents = {
 				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
 			},
 			{
+				-- In intro and boss rooms we have custom logic to play music with a slight delay, don't start early using this event
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsNone = { "RoomOpening", "A_Boss01", "A_Boss02", "A_Boss03", "X_Intro", "X_Boss01", "X_Boss02", "Y_Intro", "Y_Boss01", "D_Intro" },
+			},
+			{
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
 			},
 			{
