@@ -418,6 +418,7 @@ local function on_ready()
 			import "Scripts/RunHistoryLogic.lua"
 			import "Scripts/RunHistoryPresentation.lua"
 			import "Scripts/RunLogic.lua"
+			import "Scripts/ShrinePresentation.lua"
 			import "Scripts/StoreLogic.lua"
 			import "Scripts/TraitLogic.lua"
 			import "Scripts/WeaponLogic.lua"
@@ -466,7 +467,6 @@ local function on_ready_late()
 	import "Scripts/MarketLogic_Late.lua"
 	import "Scripts/ObjectiveLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
-	import "Scripts/ShrinePresentation_Late.lua"
 end
 
 local function on_reload()
