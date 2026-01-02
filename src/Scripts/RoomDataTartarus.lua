@@ -544,6 +544,10 @@ local roomModifications = {
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
+		-- Disable all music if it's a free reward room (no Charon/Shop)
+		IgnoreStemMixer = true,
+		MusicMutedStems = { "Drums", "Bass", "Guitar", },
+
 		ShovelPointChance = 0.35,
 		PickaxePointChance = 0.35,
 		ExorcismPointChance = 0.25,

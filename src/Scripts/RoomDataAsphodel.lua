@@ -389,6 +389,10 @@ local roomModifications = {
 		LinkedRoomByPactLevel = mod.NilValue,
 		LinkedRooms = { "X_Boss01", "X_Boss02" },
 
+		-- Disable all music if it's a free reward room (no Charon/Shop)
+		IgnoreStemMixer = true,
+		MusicMutedStems = { "Drums", "Bass", "Guitar", },
+
 		ShovelPointChance = 0.35,
 		PickaxePointChance = 0.35,
 		ExorcismPointChance = 0.25,
