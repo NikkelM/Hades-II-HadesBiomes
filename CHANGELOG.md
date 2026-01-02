@@ -4,6 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Fixed: Music can disappear after the "Barge of Death" encounter in Asphodel.
 
 Other fixes and improvements:
 - The installation screen will now only show in the Training Grounds, and no longer in the main Crossroads.

@@ -6,14 +6,16 @@ function mod.WrappingEncounterStartPresentation(eventSource)
 	-- Using a modified version/original Hades version, as it has a game.wait() call that feels more natural when starting the level
 	game.thread(mod.ModsNikkelMHadesBiomesHandleWrapping, eventSource)
 	game.wait(2.0, game.RoomThreadName)
-	Activate({ Ids = { 548133, 548134 } })
 
+	-- Custom: End the biome music, but don't set it to Section 10, which is the boss-theme ending
+	game.EndMusic(game.AudioState.MusicId, game.AudioState.MusicName, nil, { IgnoreSection = true, Duration = 0.25 })
+
+	Activate({ Ids = { 548133, 548134 } })
 	ShakeScreen({ Speed = 100, Distance = 2, FalloffSpeed = 2000, Duration = 3.0 })
 	PlaySound({ Name = "/SFX/DeathBoatMoveStart" })
 	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, Fraction = 0.17, Duration = 1.0 }, })
 
 	game.wait(3.0, game.RoomThreadName)
-	game.PauseMusic()
 	game.SecretMusicPlayer("/Music/MusicExploration2_MC")
 	SetSoundCueValue({ Names = { "Section", }, Id = game.AudioState.SecretMusicId, Value = 2 })
 
@@ -35,19 +37,19 @@ function mod.ModsNikkelMHadesBiomesHandleWrapping(encounter)
 		ShiftThingsByOffset = true
 	})
 
-	game.wait(3.0, RoomThreadName)
+	game.wait(3.0, game.RoomThreadName)
 
 	Move({ Ids = wrappingData.StartingIds, Angle = -155, Speed = 300, EaseIn = 0.5 })
 	game.thread(game.DestroyOnDelay, wrappingData.StartingIds, 5.0)
 
-	for k, obstacleWrapData in pairs(wrappingData.ObstacleWrapData) do
+	for _, obstacleWrapData in pairs(wrappingData.ObstacleWrapData) do
 		if obstacleWrapData.Destroy then
 			Destroy({ Ids = obstacleWrapData.Ids })
 		else
 			if (obstacleWrapData.FirstWrapDelay or 0) == 0 then
 				Move({ Ids = obstacleWrapData.Ids, Angle = -155, Speed = 500, EaseIn = 0.5 })
 			end
-			for k, id in pairs(obstacleWrapData.Ids) do
+			for _, id in pairs(obstacleWrapData.Ids) do
 				offset = game.CalcOffset(math.rad(-155), obstacleWrapData.ResetOffsetDistance) or { X = 0, Y = 0 }
 				local resetTargetId = SpawnObstacle({
 					Name = "InvisibleTarget",
@@ -131,7 +133,7 @@ function mod.ModsNikkelMHadesBiomesHandleWrapping(encounter)
 			game.thread(game.DestroyOnDelay, { newObstacleId }, spawnData.MoveTime or 10)
 
 			local nextSpawnInterval = game.RandomFloat(spawnData.SpawnIntervalMin, spawnData.SpawnIntervalMax)
-			game.wait(nextSpawnInterval, RoomThreadName)
+			game.wait(nextSpawnInterval, game.RoomThreadName)
 		end
 	end
 end

@@ -407,8 +407,6 @@ local roomModifications = {
 		PostCombatReloadEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "WrappingPostCombatReloadPresentation", },
 		},
-		-- TODO: Could this be causing the music issues?
-		NextRoomResumeMusic = true,
 	},
 
 	-- BOSSES

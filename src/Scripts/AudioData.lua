@@ -31,7 +31,8 @@ local tartarusRoomStartMusicEvents = {
 	{
 		GameStateRequirements = {
 			{
-				PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
+				Path = { "CurrentRun", "BiomesReached" },
+				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
 			},
 			{
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
@@ -51,7 +52,8 @@ local tartarusRoomStartMusicEvents = {
 	{
 		GameStateRequirements = {
 			{
-				PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
+				Path = { "CurrentRun", "BiomesReached" },
+				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
 			},
 			{
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
@@ -72,7 +74,8 @@ local tartarusRoomStartMusicEvents = {
 	{
 		GameStateRequirements = {
 			{
-				PathTrue = { "CurrentRun", "BiomesReached", "Tartarus" },
+				Path = { "CurrentRun", "BiomesReached" },
+				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
 			},
 			{
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
