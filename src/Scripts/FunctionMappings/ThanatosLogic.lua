@@ -295,7 +295,6 @@ end
 
 -- #region COMBAT
 function mod.CurseHealthBar(victim)
-	-- if not game.HeroData.DefaultHero.HeroAlliedUnits[victim.Name] then
 	if not game.UnitSets.PlayerSummons[victim.Name] then
 		victim.CursedHealthBarEffect = true
 		game.UpdateHealthBar(victim, 0, { Force = true })
@@ -322,14 +321,14 @@ function mod.TrackThanatosChallengeProgress(encounter, victim, killer)
 	if killer ~= nil and killer.ObjectId == encounter.ThanatosId then
 		encounter.ThanatosKills = encounter.ThanatosKills + 1
 		game.UpdateObjectiveDescription("ThanatosKills", "Objective_ThanatosKills", "ThanatosKills", encounter.ThanatosKills)
-	elseif killer ~= nil and killer == CurrentRun.Hero then
+	elseif killer ~= nil and killer == game.CurrentRun.Hero then
 		encounter.PlayerKills = encounter.PlayerKills + 1
 		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
 	elseif victim ~= nil and (victim.ModsNikkelMHadesBiomesIsThanatosCursed or game.Contains(victim.ActiveEffectsAtDamageStart, "ThanatosCurse")) then
 		-- Custom case added
 		encounter.ThanatosKills = encounter.ThanatosKills + 1
 		game.UpdateObjectiveDescription("ThanatosKills", "Objective_ThanatosKills", "ThanatosKills", encounter.ThanatosKills)
-	elseif victim ~= nil and victim.TimeOfLastPlayerDamage ~= nil and _worldTime - victim.TimeOfLastPlayerDamage < maxTimeSincePlayerDamage then
+	elseif victim ~= nil and victim.TimeOfLastPlayerDamage ~= nil and game._worldTime - victim.TimeOfLastPlayerDamage < maxTimeSincePlayerDamage then
 		encounter.PlayerKills = encounter.PlayerKills + 1
 		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
 	end

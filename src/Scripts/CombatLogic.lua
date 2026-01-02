@@ -43,7 +43,7 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 			end
 		end
 
-		if victim.ModsNikkelMHadesBiomesIsThanatosCursed and victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed and not killer.ObjectId == game.CurrentRun.Hero.ObjectId then
+		if victim.ModsNikkelMHadesBiomesIsThanatosCursed and victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed and killer.ObjectId ~= game.CurrentRun.Hero.ObjectId then
 			SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = victim.ObjectId })
 			victim.SpawnsEnemyOnDeath = false
 			victim.SpawnUnitOnDeath = nil
