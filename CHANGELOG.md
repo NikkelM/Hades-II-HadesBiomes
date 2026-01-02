@@ -4,18 +4,37 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- Balancing: Further reduced the enemy health boost by ~10% (an enemy with a base health of 100 in Tartarus now has 125 instead of 135 health). This does not affect bosses.
+- Fixed: Music can disappear after the "Barge of Death" encounter in Asphodel.
 
 Other fixes and improvements:
 - The installation screen will now only show in the Training Grounds, and no longer in the main Crossroads.
 - Added a "Vanquished" count for Zagreus' Journey enemies to their respective Codex entries.
+- Changed the default logging level of the mod to "Debug" to simplify troubleshooting user issues. You can change this in the mod's config file.
 - Balancing: Reduced the maximum time the Skull-Crusher can stay airborne before attacking.
 - Balancing: Increased the time the Skull-Crusher stays grounded before taking off again.
 - Balancing: Slightly reduced the tracking speed of the Elite Strongbow's triple-shot attack.
 - Balancing: The Tiny Vermin can now call for reinforcements more frequently.
+- Balancing: Slightly reduced the spawn rate of resource points.
 - Fixed: A second inspect point in the mid-shop in Tartarus never shows up (this was bugged in vanilla Hades as well - enjoy the exclusive new dialogue!).
+- Fixed: Magick and Hexes do not (re)charge, and the Aspect of Supay does not attack automatically during boss fights with Tisiphone or Alecto.
+- Fixed: Background obstacles in the "Barge of Death" encounter keep moving after the encounter has ended and the boat has stopped.
+- Fixed: The teeth spawned by the "Summoner" Hydra variant can be stunned.
+- Fixed: When preparing to fire it's wave attack, the purple Hydra variant cannot turn to face Melinoë in time and ends up firing the attack into the lava.
+- Fixed: Exalted Shades sometimes stand idle next to weapons instead of picking them up to respawn.
+- Fixed: If an Exalted Shade is killed while picking up a weapon, the weapon does not return to its ghostly form.
+- Fixed: When a Crawler is stunned, it becomes invisible.
+- Fixed: Bouldy's special damage boon grants up to 1000% bonus damage instead of up to 10%.
+- Fixed: Elysium Shades killed by Thanatos can sometimes spawn an Exalted Shade.
+- Fixed: When first entering a new region, music starts to play, then quickly cuts out and changes.
+- Fixed: Biome music continues to play in shop rooms with free rewards before a boss encounter.
+- Fixed: Contextual voicelines with Hades story NPCs relating to their respective keepsakes being equipped cannot trigger.
+- Fixed: When marking a new testament, the indicator below the Shrine can sometimes point to the wrong exit.
+- Fixed: Testaments for the Sister Blades incorrectly require having completed the Polyphemus testament with the Witch's Staff.
 - Fixed: Some trap damage is incorrectly attributed on the run clear screen.
 - Fixed: Dusa's codex entry is replaced with the one from the first game.
+- Fixed: Some textures in some rooms can be misplaced when reloading a save while in them.
+- Fixed: Attempting to reroll a door with Ash, Bones, or Nectar in a room with three exits freezes the game.
+- Fixed: In the Rift of Thessaly, rerolling doors can choose the same reward again in rare cases.
 - Fixed: A manual reinstall without a previous uninstall marks the Hades installation as failed due to an Olympus Extra installation, even if Olympus Extra is not installed.
 <!--Releasenotes end-->
 

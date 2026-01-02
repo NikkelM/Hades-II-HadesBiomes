@@ -334,7 +334,11 @@ local roomReplacements = {
 			},
 		},
 
-		HarvestPointChances = { 0.02, },
+		HarvestPointChances = { 0.1, },
+		ShovelPointChance = 0.1,
+		PickaxePointChance = 0.1,
+		ExorcismPointChance = 0.1,
+		FishingPointChance = 0.1,
 		HarvestPointRequirements = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
@@ -504,6 +508,8 @@ local roomModifications = {
 		},
 		-- "/Leftovers/Ambience/MatchSiteIPoolAmbience"
 		Ambience = "{e65b32ad-3a7e-4f88-9149-3260e929f04c}",
+		PlayBiomeMusic = true,
+		MusicSection = 0,
 		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		ChooseRewardRequirements = mod.NilValue,
 		ForcedRewards = mod.NilValue,
@@ -541,11 +547,6 @@ local roomModifications = {
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
-		ShovelPointChance = 0.4,
-		PickaxePointChance = 0.4,
-		ExorcismPointChance = 0.3,
-		FishingPointChance = 0.3,
-
 		InspectPoints = {
 			[515864] = {
 				InteractTextLineSets = {
@@ -563,6 +564,11 @@ local roomModifications = {
 				},
 			},
 		},
+
+		ShovelPointChance = 0.35,
+		PickaxePointChance = 0.35,
+		ExorcismPointChance = 0.25,
+		FishingPointChance = 0.25,
 	},
 	A_PreBoss01 = {
 		SkipLastKillPresentation = true,
@@ -571,8 +577,14 @@ local roomModifications = {
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
-		ExorcismPointChance = 0.3,
-		FishingPointChance = 0.3,
+		-- Disable all music if it's a free reward room (no Charon/Shop)
+		IgnoreStemMixer = true,
+		MusicMutedStems = { "Drums", "Bass", "Guitar", },
+
+		ShovelPointChance = 0.35,
+		PickaxePointChance = 0.35,
+		ExorcismPointChance = 0.25,
+		FishingPointChance = 0.25,
 	},
 
 	-- MINIBOSSES
@@ -613,8 +625,8 @@ local roomModifications = {
 		BackupCauseOfDeath = "Harpy",
 
 		HasFishingPoint = false,
-		ShovelPointChance = 0.4,
-		PickaxePointChance = 0.4,
+		HasPickaxePoint = false,
+		ShovelPointChance = 0.3,
 	},
 	A_Boss02 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
@@ -622,11 +634,18 @@ local roomModifications = {
 			RequiredKills = { Harpy = 4 },
 		},
 		UnthreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
+			[1] = {
+				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
+				Args = {
+					DelayedStart = true,
+				},
+			},
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
 
+		HasFishingPoint = false,
 		HasPickaxePoint = false,
+		ShovelPointChance = 0.3,
 	},
 	A_Boss03 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
@@ -634,7 +653,12 @@ local roomModifications = {
 			RequiredKills = { Harpy = 4 },
 		},
 		UnthreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro", },
+			[1] = {
+				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
+				Args = {
+					DelayedStart = true,
+				},
+			},
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
 		PostCombatReloadEvents = {
@@ -658,11 +682,11 @@ local roomModifications = {
 		LoadModdedVoiceBanks = { "Sisyphus", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 
-		HarvestPointChances = { 0.5, 0.1, },
-		ShovelPointChance = 0.4,
-		PickaxePointChance = 0.4,
-		ExorcismPointChance = 0.4,
-		FishingPointChance = 0.1,
+		HasFishingPoint = false,
+		HarvestPointChances = { 0.4, 0.1, },
+		ShovelPointChance = 0.35,
+		PickaxePointChance = 0.35,
+		ExorcismPointChance = 0.35,
 
 		HarvestPointRequirements = {
 			OrRequirements = {
@@ -733,11 +757,11 @@ local roomModifications = {
 		},
 		SuppressRewardSpawnSounds = false,
 
-		HarvestPointChances = { 0.6, 0.4, },
-		ShovelPointChance = 0.24,
-		PickaxePointChance = 0.36,
-		ExorcismPointChance = 0.24,
-		FishingPointChance = 0.18,
+		HarvestPointChances = { 0.5, 0.3, },
+		ShovelPointChance = 0.2,
+		PickaxePointChance = 0.3,
+		ExorcismPointChance = 0.2,
+		FishingPointChance = 0.15,
 	},
 	A_PostBoss01 = {
 		-- For Intercom

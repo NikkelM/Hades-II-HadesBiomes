@@ -43,7 +43,7 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 			end
 		end
 
-		if victim.ModsNikkelMHadesBiomesIsThanatosCursed and victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed and not killer.ObjectId == game.CurrentRun.Hero.ObjectId then
+		if victim.ModsNikkelMHadesBiomesIsThanatosCursed and victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed and killer.ObjectId ~= game.CurrentRun.Hero.ObjectId then
 			SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = victim.ObjectId })
 			victim.SpawnsEnemyOnDeath = false
 			victim.SpawnUnitOnDeath = nil
@@ -72,6 +72,13 @@ modutil.mod.Path.Wrap("CleanupEnemy", function(base, enemy)
 	base(enemy)
 	if enemy.DisplayAttackTimer and enemy.AttackTimerId ~= nil then
 		Destroy({ Id = enemy.AttackTimerId })
+	end
+	-- For ShadeNaked in the process of picking up a weapon
+	if enemy.PickupTarget ~= nil then
+		if enemy.PickupTarget.PickupFailedAnimation ~= nil then
+			SetAnimation({ Name = enemy.PickupTarget.PickupFailedAnimation, DestinationId = enemy.PickupTarget.ObjectId })
+		end
+		enemy.PickupTarget = nil
 	end
 end)
 

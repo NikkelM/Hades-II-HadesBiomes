@@ -325,7 +325,7 @@ function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 		if door.Room.ForcedRewardStore ~= nil then
 			rewardStoreOverrides[index] = door.Room.ForcedRewardStore
 		end
-		if rewardStoreOverrides[index] and not Contains(game.RewardStoreData.InvalidOverrides, rewardStoreOverrides[index]) then
+		if rewardStoreOverrides[index] and not game.Contains(game.RewardStoreData.InvalidOverrides, rewardStoreOverrides[index]) then
 			rewardStoreName = rewardStoreOverrides[index]
 		end
 		game.wait(0.02) -- Distribute workload
@@ -364,7 +364,7 @@ function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 		if doorRoom ~= nil and doorRoom.NeedsReward then
 			if doorRoom.IndividualRewardStore ~= nil then
 				doorRoom.RewardStoreName = doorRoom.IndividualRewardStore
-			elseif rewardStoreOverrides[index] ~= nil and not game.Contains(RewardStoreData.InvalidOverrides, rewardStoreOverrides[index]) then
+			elseif rewardStoreOverrides[index] ~= nil and not game.Contains(game.RewardStoreData.InvalidOverrides, rewardStoreOverrides[index]) then
 				doorRoom.RewardStoreName = rewardStoreOverrides[index]
 			else
 				doorRoom.RewardStoreName = rewardStoreName

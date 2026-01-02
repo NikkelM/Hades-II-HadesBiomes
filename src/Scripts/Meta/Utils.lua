@@ -558,18 +558,26 @@ function mod.SetBiomePackageLoadOverrides()
 	local charonBiomeHash = rom.data.get_hash_guid_from_string("CharonModsNikkelMHadesBiomes")
 
 	local originalFxHash = rom.data.get_hash_guid_from_string("ModsNikkelMHadesBiomesFxOriginal")
+	local moddedFxHash = rom.data.get_hash_guid_from_string("NikkelM-HadesBiomesFxModded")
+	local roomManagerHash = rom.data.get_hash_guid_from_string("RoomManagerModsNikkelMHadesBiomes")
 
-	rom.data.load_package_overrides_set(tartarusBiomeHash, { tartarusBiomeHash, originalFxHash })
-	rom.data.load_package_overrides_set(asphodelBiomeHash, { asphodelBiomeHash, originalFxHash })
-	rom.data.load_package_overrides_set(elysiumBiomeHash, { elysiumBiomeHash, originalFxHash })
-	rom.data.load_package_overrides_set(styxBiomeHash, { styxBiomeHash, originalFxHash })
-	rom.data.load_package_overrides_set(surfaceBiomeHash, { surfaceBiomeHash, originalFxHash })
-	rom.data.load_package_overrides_set(erebusBiomeHash, { erebusBiomeHash, originalFxHash })
-	rom.data.load_package_overrides_set(charonBiomeHash, { charonBiomeHash, originalFxHash })
+	rom.data.load_package_overrides_set(tartarusBiomeHash,
+		{ tartarusBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+	rom.data.load_package_overrides_set(asphodelBiomeHash,
+		{ asphodelBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+	rom.data.load_package_overrides_set(elysiumBiomeHash,
+		{ elysiumBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+	rom.data.load_package_overrides_set(styxBiomeHash,
+		{ styxBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+	rom.data.load_package_overrides_set(surfaceBiomeHash,
+		{ surfaceBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+	rom.data.load_package_overrides_set(erebusBiomeHash,
+		{ erebusBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+	rom.data.load_package_overrides_set(charonBiomeHash,
+		{ charonBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
 end
 
 modutil.mod.Path.Wrap("DebugPrint", function(base, args)
-	mod.DebugPrint("game.DebugPrint() called with:", 4)
 	mod.DebugPrint(args.Text, 4)
 	return base(args)
 end)

@@ -1,8 +1,8 @@
 -- Contains the upgrade choices the player can choose from NPCs like Sisyphus
-local DepthDamageMultiplier = 0.0
-local DuplicateMultiplier = -0.60
-local DuplicateStrongMultiplier = -0.40
-local DuplicateVeryStrongMultiplier = -0.20
+local depthDamageMultiplier = 0.0
+local duplicateMultiplier = -0.60
+local duplicateStrongMultiplier = -0.40
+local duplicateVeryStrongMultiplier = -0.20
 
 local newTraitData = {
 	-- #region Sisyphus
@@ -312,7 +312,7 @@ local newTraitData = {
 				BaseMax = 0.99,
 				SourceIsMultiplier = true,
 				IdenticalMultiplier = {
-					Value = DuplicateMultiplier,
+					Value = duplicateMultiplier,
 				},
 			},
 			ReportValues = {
@@ -335,13 +335,13 @@ local newTraitData = {
 				BaseMax = 1.05,
 				SourceIsMultiplier = true,
 				IdenticalMultiplier = {
-					Value = DuplicateMultiplier,
+					Value = duplicateMultiplier,
 				},
 			},
 			ReportValues = {
 				ReportedMultiplier = "ValidWeaponMultiplier"
 			},
-			ValidWeapons = WeaponSets.HeroPrimaryWeapons,
+			ValidWeapons = game.WeaponSets.HeroPrimaryWeapons,
 		},
 		ExtractValues = {
 			{
@@ -355,18 +355,18 @@ local newTraitData = {
 		InheritFrom = { "BouldyBlessing" },
 		AddOutgoingDamageModifiers = {
 			ValidWeaponMultiplier = {
-				BaseMin = 10.01,
-				BaseMax = 10.05,
+				BaseMin = 1.01,
+				BaseMax = 1.05,
 				SourceIsMultiplier = true,
 				IdenticalMultiplier =
 				{
-					Value = DuplicateMultiplier,
+					Value = duplicateMultiplier,
 				},
 			},
 			ReportValues = {
 				ReportedMultiplier = "ValidWeaponMultiplier"
 			},
-			ValidWeapons = WeaponSets.HeroSecondaryWeapons,
+			ValidWeapons = game.WeaponSets.HeroSecondaryWeapons,
 		},
 		ExtractValues = {
 			{
@@ -387,14 +387,14 @@ local newTraitData = {
 				SourceIsMultiplier = true,
 				IdenticalMultiplier =
 				{
-					Value = DuplicateMultiplier,
+					Value = duplicateMultiplier,
 				},
 			},
 			ReportValues = {
 				ReportedMultiplier = "ValidWeaponMultiplier"
 			},
-			ValidWeapons = WeaponSets.HeroRangedWeapons,
-			ValidProjectiles = WeaponSets.CastProjectileNames,
+			ValidWeapons = game.WeaponSets.HeroRangedWeapons,
+			ValidProjectiles = game.WeaponSets.CastProjectileNames,
 			WeaponOrProjectileRequirement = true,
 		},
 		ExtractValues = {

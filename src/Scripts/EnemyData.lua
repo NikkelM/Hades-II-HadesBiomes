@@ -1298,6 +1298,7 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		AIOptions = { _PLUGIN.guid .. "." .. "PickupAI", },
+		AIPickupRange = 45,
 	},
 	ShadeNakedElite = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -1679,6 +1680,7 @@ local enemyModifications = {
 		},
 	},
 	Crawler = {
+		StunAnimations = { Default = "EnemyCrawlerIdle" },
 		IgnoreSpeedShrine = true,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		SpellSummonDataOverrides = {

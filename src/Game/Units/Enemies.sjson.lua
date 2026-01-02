@@ -35,7 +35,10 @@ local hadesEnemiesModifications = {
 			ActivateGraphic = "EnemyActivationFadeInHitAndRunUnitContainer",
 		},
 	},
-	HydraTooth = { InheritFrom = "1_BaseEnemy", },
+	HydraTooth = {
+		InheritFrom = "1_BaseEnemy",
+		ImmuneToStun = true,
+	},
 	-- #endregion
 
 	-- #region ELYSIUM
