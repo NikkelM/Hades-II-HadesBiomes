@@ -9,9 +9,19 @@ local roomReplacements = {
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Styx",
 
-		-- TODO: Update requirements
-		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
-		-- ShrinePointDoorRequirements = { Skip = true },
+		-- We set the requirements, but the chance is set to 0 for Styx (there are no Chaos or Erebus Gates)
+		ShrinePointDoorRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation" },
+			},
+			{
+				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
+			},
+			{
+				PathFalse = { "CurrentRun", "ActiveBounty" },
+			},
+			RequiredMinRoomsSinceShrinePointDoor = 8,
+		},
 
 		HasHarvestPoint = true,
 		HasShovelPoint = true,

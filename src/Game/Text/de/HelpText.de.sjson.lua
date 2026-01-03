@@ -964,17 +964,43 @@ local newData = {
 	-- #endregion
 
 	-- #region Incantations
+	-- Unlock Hades Cosmetics with Dora
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation",
-	-- 	DisplayName = "House Contractor's Inventory List",
+	-- 	DisplayName = "Recovery of Lost Inventory",
 	-- 	Description =
-	-- 	"Allow {$Keywords.CharDora} to procure new furnishings and decorations for the renewal project, inspired by your family's past."
+	-- 	"Allow {$Keywords.CharDora} to procure new furnishings and decorations for the renewal project, inspired by your family's past and the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}."
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation_Flavor",
 	-- 	Description =
 	-- 	"The Princess of the Underworld and her brother Zagreus share an affinity for redecorating their respective abodes, much to the dismay of both their guardians."
-	-- }
+	-- },
+	-- Add ShrineChallenges/Erebus Gates to modded runs
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation",
+	-- 	DisplayName = "Unbinding of Hellish Gateways",
+	-- 	Description =
+	-- 	"Cause {$Keywords.RoomPlural} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} to sometimes contain an {$Keywords.ShrinePointGate}."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation_Flavor",
+	-- 	Description =
+	-- 	"Erebus is so much more than the woods surrounding the Crossroads. Your father, the Lord Hades, once used it to keep the ever-growing army of shades awaiting his judgement at bay."
+	-- },
+	-- #endregion
+
+	-- #region Keywords
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesModdedRoute",
+	-- 	DisplayName = "Nightmare Realm",
+	-- 	Description = "The {$Keywords.HealthGate} in the Training Grounds reveals a version of the Underworld as it once was.",
+	-- },
+	-- {
+	-- 	Id = "ShrinePointGate",
+	-- 	DisplayName = "Erebus Gate",
+	-- 	Description = "The {$Keywords.Shrine} is key to entering these challenges at the outer reaches.",
+	-- },
 	-- #endregion
 }
 

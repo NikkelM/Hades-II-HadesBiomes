@@ -8,9 +8,18 @@ local roomReplacements = {
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Asphodel",
 
-		-- TODO: Update requirements
-		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
-		-- ShrinePointDoorRequirements = { Skip = true },
+		ShrinePointDoorRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation" },
+			},
+			{
+				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
+			},
+			{
+				PathFalse = { "CurrentRun", "ActiveBounty" },
+			},
+			RequiredMinRoomsSinceShrinePointDoor = 8,
+		},
 
 		HasHarvestPoint = true,
 		HasShovelPoint = true,

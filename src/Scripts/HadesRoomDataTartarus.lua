@@ -27,7 +27,6 @@ mod.RoomData.Tartarus = mod.RoomData.Tartarus or {
 		{
 			RequiredScreenViewed = "ShrineUpgrade",
 			RequiredMinRoomsSinceShrinePointDoor = 8,
-			-- TODO: Must not be a requirement
 			RequireEncounterCompleted = "EnemyIntroFight01",
 			RequiredCosmetics = { "ShrinePointGates", },
 		},

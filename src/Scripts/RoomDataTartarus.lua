@@ -11,19 +11,16 @@ local roomReplacements = {
 		BreakableOptions = { "ModsNikkelMHadesBiomesBreakableIdle1", "ModsNikkelMHadesBiomesBreakableIdle2", "ModsNikkelMHadesBiomesBreakableIdle3" },
 
 		ShrinePointDoorRequirements = {
-			-- TODO: Incantation
-			-- {
-			-- 	PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradeMetaRewardStands" },
-			-- },
-			-- RequiredCosmetics = { "ShrinePointGates", },					
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation" },
+			},
 			{
 				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
 			},
 			{
 				PathFalse = { "CurrentRun", "ActiveBounty" },
 			},
-			-- TODO: Enable after testing
-			-- RequiredMinRoomsSinceShrinePointDoor = 8,
+			RequiredMinRoomsSinceShrinePointDoor = 8,
 		},
 
 		HasHarvestPoint = true,
