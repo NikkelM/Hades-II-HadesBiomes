@@ -17,6 +17,7 @@ Other fixes and improvements:
 - Balancing: Slightly reduced the spawn rate of resource points.
 - Fixed: A second inspect point in the mid-shop in Tartarus never shows up (this was bugged in vanilla Hades as well - enjoy the exclusive new dialogue!).
 - Fixed: Magick and Hexes do not (re)charge, and the Aspect of Supay does not attack automatically during boss fights with Tisiphone or Alecto.
+- Fixed: Alecto's Rage meter is missing it's icon.
 - Fixed: Background obstacles in the "Barge of Death" encounter keep moving after the encounter has ended and the boat has stopped.
 - Fixed: The teeth spawned by the "Summoner" Hydra variant can be stunned.
 - Fixed: When preparing to fire it's wave attack, the purple Hydra variant cannot turn to face Melinoë in time and ends up firing the attack into the lava.

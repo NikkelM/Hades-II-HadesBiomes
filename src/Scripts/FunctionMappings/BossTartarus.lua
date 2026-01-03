@@ -431,11 +431,11 @@ function mod.BuildRageMeter(meterAmount, enemy)
 	enemy.RageFraction = enemy.RageFraction or 0
 
 	enemy.RageFraction = enemy.RageFraction + meterAmount
-	enemy.LastRageGainTime = _worldTime
+	enemy.LastRageGainTime = game._worldTime
 	SetAnimationFrameTarget({ Name = "EnemyHealthBarFillBoss", Fraction = 1 - enemy.RageFraction, DestinationId = screenId })
 	if enemy.RageFraction >= 1 then
 		enemy.RageFraction = 0
-		thread(mod.EnrageUnit, enemy, game.CurrentRun)
+		game.thread(mod.EnrageUnit, enemy, game.CurrentRun)
 	end
 end
 
@@ -532,7 +532,7 @@ function mod.EnrageHarpyPermanent(enemy)
 end
 
 function mod.HarpyEnragedPresentation(enemy, currentRun)
-	local screenId = ScreenAnchors.BossRageFill
+	local screenId = game.ScreenAnchors.BossRageFill
 
 	if enemy.PermanentEnraged then
 		game.thread(game.InCombatText, enemy.ObjectId, "Combat_PermanentEnraged", 1)
@@ -568,9 +568,9 @@ function mod.DrainHarpyRageMeter(enemy, duration)
 		SetAnimationFrameTarget({
 			Name = "EnemyHealthBarFillBoss",
 			Fraction = fraction,
-			DestinationId = ScreenAnchors.BossRageFill
+			DestinationId = game.ScreenAnchors.BossRageFill
 		})
-		game.wait(tickDuration, RoomThreadName)
+		game.wait(tickDuration, game.RoomThreadName)
 	end
 end
 
@@ -629,7 +629,6 @@ function mod.Harpy3MapTransition(enemy)
 	PlaySound({ Name = "/Leftovers/World Sounds/ThunderHuge" })
 	ShakeScreen({ Speed = 1000, Distance = 10, FalloffSpeed = 2000, Duration = 1.5 })
 	FocusCamera({ Fraction = 0.97, ZoomType = "Ease", Duration = 2.5 })
-	--PanCamera({ Id =  enemy.ObjectId, Duration = 4.0 })
 
 	AdjustRadialBlurDistance({ Fraction = 2.0, Duration = 2.0 })
 	AdjustRadialBlurStrength({ Fraction = 1.5, Duration = 2.0 })
@@ -644,10 +643,10 @@ function mod.Harpy3MapTransition(enemy)
 		end
 	end
 
-	ExpireProjectiles({ ExcludeNames = WeaponSets.MapTransitionExpireProjectileExcludeNames })
+	ExpireProjectiles({ ExcludeNames = game.WeaponSets.MapTransitionExpireProjectileExcludeNames })
 	game.wait(0.75)
 
-	ExpireProjectiles({ ExcludeNames = WeaponSets.MapTransitionExpireProjectileExcludeNames })
+	ExpireProjectiles({ ExcludeNames = game.WeaponSets.MapTransitionExpireProjectileExcludeNames })
 	AddInputBlock({ Name = "Harpy3MapTransition" })
 	PlaySound({ Name = "/SFX/Menu Sounds/HadesTextDisappearFade" })
 	game.FullScreenFadeOutAnimation()
@@ -761,7 +760,7 @@ function mod.SpawnSupportAI(enemy)
 		return
 	end
 
-	local supportUnit = game.DeepCopyTable(EnemyData[enemy.SupportUnitName]) or {}
+	local supportUnit = game.DeepCopyTable(game.EnemyData[enemy.SupportUnitName]) or {}
 	supportUnit.ObjectId = SpawnUnit({
 		Name = enemy.SupportUnitName,
 		Group = "Standing",
