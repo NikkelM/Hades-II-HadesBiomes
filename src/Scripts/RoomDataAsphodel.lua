@@ -4,7 +4,7 @@ local roomReplacements = {
 	BaseAsphodel = {
 		SecretDoorRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.SecretDoorRequirements),
 		WellShopRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.WellShopRequirements),
-		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
+		-- The Asphodel teleport in Hades II - we don't want it in Zagreus' Journey
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Asphodel",
 

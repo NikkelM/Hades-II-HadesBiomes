@@ -4,7 +4,7 @@ local roomReplacements = {
 	BaseTartarus = {
 		SecretDoorRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.SecretDoorRequirements),
 		WellShopRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.WellShopRequirements),
-		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
+		-- The Asphodel teleport in Hades II - we don't want it in Zagreus' Journey
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Tartarus",
 		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
