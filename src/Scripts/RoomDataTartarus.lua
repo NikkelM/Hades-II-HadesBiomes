@@ -809,10 +809,10 @@ local roomModifications = {
 
 					HeroMoveOffsetX = 365,
 					HeroMoveOffsetY = -455,
-					HeroMoveDuration = 2.0,
+					HeroMoveDuration = 1.8,
 					FamiliarMoveOffsetX = 365,
 					FamiliarMoveOffsetY = -455,
-					FamiliarMoveDuration = 2.0,
+					FamiliarMoveDuration = 1.8,
 					CameraMoveOffsetY = -805,
 
 					MoveEaseIn = 0.5,

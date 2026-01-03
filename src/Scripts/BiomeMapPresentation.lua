@@ -153,8 +153,6 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		LocationY = args.HeroStartOffsetY + args.CameraMoveOffsetY
 	})
 
-	PanCamera({ Id = cameraDestinationId, Duration = 8 + args.HeroMoveDuration, EaseIn = 0.0, EaseOut = 0.5 })
-
 	-- presentation starts
 	game.FullScreenFadeInAnimation()
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.RegionClearedVoiceLines, true)
@@ -173,14 +171,14 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 				SetAlpha({ Id = args.ShrinePointItemId, Fraction = 1.0 })
 				SetAlpha({ Id = args.WeaponItemId, Fraction = 1.0 })
 
-				game.wait(1.6)
+				game.wait(1)
 				CreateAnimation({
-					Name = "ExorcismCorrectFlash",
+					Name = "BiomeMapBountyComplete",
 					DestinationId = args.TargetItemId,
 					Group = "Combat_Menu_TraitTray_Overlay",
-					Scale = 0.9,
-					OffsetY = -45,
-					OffsetX = 10
+					Scale = 1.0,
+					OffsetY = 0,
+					OffsetX = 0
 				})
 				PlaySound({ Name = "/SFX/Menu Sounds/BiomeMapRewardIcon", Id = args.TargetItemId })
 				game.wait(0.05)
@@ -195,6 +193,8 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		end
 	end
 
+	PanCamera({ Id = cameraDestinationId, Duration = 6 + args.HeroMoveDuration, EaseIn = 0.0, EaseOut = 0.5 })
+
 	if args.ShrinePointItemId then
 		game.wait(0.35)
 		SetScale({ Id = args.TargetItemId, Fraction = 0, Duration = 0.2 })
@@ -206,7 +206,7 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		game.wait(1.05)
 	end
 
-	game.wait(1.5)
+	game.wait(1.3)
 
 	-- move pieces
 	SetAnimation({ Name = "MelMarkerMove", DestinationId = melId })
@@ -283,7 +283,7 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 		end
 	end
 
-	game.wait(4.5 + (args.AdditionalEndTimeWait or 0))
+	game.wait(3.5 + (args.AdditionalEndTimeWait or 0))
 
 	PlaySound({ Name = "/Leftovers/World Sounds/MapZoomInShortHigh" })
 	game.FullScreenFadeOutAnimation()

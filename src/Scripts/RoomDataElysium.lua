@@ -607,16 +607,15 @@ local roomModifications = {
 
 					HeroMoveOffsetX = -80,
 					HeroMoveOffsetY = -480,
-					HeroMoveDuration = 2.0,
+					HeroMoveDuration = 1.8,
 					FamiliarMoveOffsetX = -80,
 					FamiliarMoveOffsetY = -430,
-					FamiliarMoveDuration = 2.0,
+					FamiliarMoveDuration = 1.8,
 					CameraMoveOffsetY = -450,
 
 					MoveEaseIn = 0.5,
 					MoveEaseOut = 1.0,
 
-					-- AdditionalEndTimeWait = 1.0,
 					BiomeStart = "Elysium",
 					BiomeEnd = "Styx",
 					ShrineBounty = "BossHades",
