@@ -1,3 +1,4 @@
+-- #region Survival encounter/Survive 60 seconds
 function mod.ModsNikkelMHadesBiomesSurvivalEncounterStartPresentation(eventSource, tollTimes, colorGrade, colorFx,
 																																			playerGlobalVoiceLines, opponentGlobalVoiceLines)
 	-- Custom, as ActiveSpawns is not initialized in TimedSpawns
@@ -118,3 +119,41 @@ modutil.mod.Path.Context.Wrap("HandleTimedSpawns", function(eventSource, args)
 		end)
 	end
 end)
+-- #endregion
+
+-- #region ShrineChallenge/PerfectClear/Erebus Gates
+function mod.ModsNikkelMHadesBiomesPerfectClearEncounterStartPresentation(eventSource)
+	local encounter = eventSource
+
+	game.PauseMusic()
+
+	game.SecretMusicPlayer("/Music/ErebusChallengeMusic_MC")
+	SetSoundCueValue({ Names = { "Guitar", "Bass", "Drums" }, Id = game.AudioState.SecretMusicId, Value = 1 })
+
+	mod.ModsNikkelMHadesBiomesSurvivalEncounterStartPresentation(encounter, 0, "PerfectClear", "FullscreenAlertColorDark",
+		"PerfectClearEncounterInitiatedLines", "PerfectClearEncounterStartVoiceLines")
+end
+
+modutil.mod.Path.Wrap("PerfectClearObjectiveFailedPresentation", function(base, run)
+	base(run)
+
+	if run.ModsNikkelMHadesBiomesIsModdedRun and run.CurrentRoom and run.CurrentRoom.Encounter and run.CurrentRoom.Encounter.ModsNikkelMHadesBiomesPostEncounterPlayHadesTaunt then
+		local source = {} -- Dummy source for disembodied voice
+		source.SubtitleColor = game.Color.HadesVoice
+
+		-- This used to be 11, but that was way too low to ever trigger, probably due to a change in when the encounter start time is recorded
+		if run.CurrentRoom.Encounter.StartTime ~= nil and game._worldTime - run.CurrentRoom.Encounter.StartTime < 30 then
+			if game.CheckCooldown("PerfectClearEncounterFailed", 60.0) then
+				game.thread(game.HadesSpeakingPresentation, source,
+					{ VoiceLines = game.GlobalVoiceLines.PerfectClearEncounterQuicklyFailedVoiceLines, ColorGrade = "PerfectClear", StartDelay = 1.0 })
+			end
+		else
+			if game.CheckCooldown("PerfectClearEncounterFailed", 60.0) then
+				game.thread(game.HadesSpeakingPresentation, source,
+					{ VoiceLines = game.GlobalVoiceLines.PerfectClearEncounterFailedVoiceLines, ColorGrade = "PerfectClear", StartDelay = 1.0 })
+			end
+		end
+	end
+end)
+
+-- #endregion

@@ -2949,6 +2949,182 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		{ Cue = "/VO/MelinoeField_0472", Text = "Let this be a message to your lord!", },
 	},
 	-- #endregion
+	-- #region Erebus Gates/ShrineChallenges
+	PerfectClearEncounterStartVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 1.25,
+		NoTarget = true,
+		-- Let's see if you're as skillful as you think.
+		{ Cue = "/VO/Intercom_0289" },
+		-- Wretches of the Underworld, take him.
+		-- { Cue = "/VO/Intercom_0290" },
+		-- We shall see how good you really are.
+		{ Cue = "/VO/Intercom_0291" },
+		-- How about a little contest, boy.
+		-- { Cue = "/VO/Intercom_0292" },
+		-- My wretches have come to collect.
+		{ Cue = "/VO/Intercom_0293" },
+		-- Let's see you avoid this.
+		{ Cue = "/VO/Intercom_0294" },
+		-- I have a challenge for you, boy.
+		-- { Cue = "/VO/Intercom_0295" },
+		-- Can you evade my wretches, boy?
+		-- { Cue = "/VO/Intercom_0296" },
+		-- Get him, wretches, now!
+		-- { Cue = "/VO/Intercom_0297" },
+		-- Time now to pay your dues.
+		{ Cue = "/VO/Intercom_0298" },
+		-- I'd like to see you dodge the following.
+		{ Cue = "/VO/Intercom_0299" },
+		-- Don't let yourself get hit, or else, boy!
+		-- { Cue = "/VO/Intercom_0300" },
+		-- I know where you are.
+		{ Cue = "/VO/Intercom_0413" },
+		-- You shall not escape.
+		{ Cue = "/VO/Intercom_0414" },
+		-- Where do you think you're going?
+		{ Cue = "/VO/Intercom_0415" },
+		-- Stop right there.
+		{ Cue = "/VO/Intercom_0416" },
+		-- You should know when to quit.
+		{ Cue = "/VO/Intercom_0417", RequiredFalseTextLines = { "Ending01" }, },
+		-- You're trapped, boy. Don't you understand?
+		-- { Cue = "/VO/Intercom_0418", RequiredFalseTextLines = { "Ending01" }, },
+		-- So you've returned.
+		{ Cue = "/VO/Intercom_0583", RequireCurrentEncounterCompleted = true },
+		-- Welcome to Erebus.
+		{ Cue = "/VO/Intercom_0584" },
+		-- What sort of fool goes into Erebus at will?
+		{ Cue = "/VO/Intercom_0585", RequiredFalseTextLines = { "Ending01" }, },
+		-- I see that you've returned.
+		{ Cue = "/VO/Intercom_0586", RequireCurrentEncounterCompleted = true },
+		-- One scratch and all your efforts will be lost.
+		{ Cue = "/VO/Intercom_0587" },
+		-- Remember not to get too nervous, boy.
+		-- { Cue = "/VO/Intercom_0588" },
+		-- I've a delicious onion waiting for you, boy.
+		-- { Cue = "/VO/Intercom_1136", }, -- RequiredCodexEntry = { EntryName = "RoomRewardConsolationPrize", EntryIndex = 1, }, },
+		-- Let's see you put your youthful reflexes to work.
+		{ Cue = "/VO/Intercom_1137" },
+		-- I doubt you'll outmaneuver all this lot.
+		{ Cue = "/VO/Intercom_1138" },
+		-- Longing for the bitter taste of onion, boy?
+		-- { Cue = "/VO/Intercom_1139", }, -- RequiredCodexEntry = { EntryName = "RoomRewardConsolationPrize", EntryIndex = 1, }, },
+		-- One false move is all it takes here, boy.	
+		-- { Cue = "/VO/Intercom_1140" },
+	},
+	PerfectClearEncounterFailedVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 1.25,
+		NoTarget = true,
+		CooldownTime = 200,
+		-- As expected.
+		{ Cue = "/VO/Intercom_0304", RequiredFalseTextLines = { "Ending01" }, },
+		-- Another failure.
+		{ Cue = "/VO/Intercom_0305", RequiredFalseTextLines = { "Ending01" }, },
+		-- Oh, too bad.
+		{ Cue = "/VO/Intercom_0306" },
+		-- You've always been slow, boy.
+		-- { Cue = "/VO/Intercom_0307", RequiredFalseTextLines = { "Ending01" }, },
+		-- You failed.
+		{ Cue = "/VO/Intercom_0308" },
+		-- I knew you couldn't do it.
+		{ Cue = "/VO/Intercom_0309", RequiredFalseTextLines = { "Ending01" }, },
+		-- Predictable.
+		{ Cue = "/VO/Intercom_0310" },
+		-- Laughable.
+		{ Cue = "/VO/Intercom_0311", RequiredFalseTextLines = { "Ending01" }, },
+		-- Aww.
+		{ Cue = "/VO/Intercom_0312" },
+		-- Not quite nimble enough.
+		{ Cue = "/VO/Intercom_1141", RequiredTextLines = { "Ending01" }, },
+		-- I was more spry than that when I was young.
+		{ Cue = "/VO/Intercom_1142", RequiredTextLines = { "Ending01" }, },
+		-- Too slow!
+		{ Cue = "/VO/Intercom_1143" },
+		-- An onion you shall have!
+		{ Cue = "/VO/Intercom_1144", }, -- RequiredCodexEntry = { EntryName = "RoomRewardConsolationPrize", EntryIndex = 1, }, },
+		-- Fell short of expectations.
+		{ Cue = "/VO/Intercom_1145", RequiredTextLines = { "Ending01" }, },
+		-- A failed attempt.
+		{ Cue = "/VO/Intercom_1146" },
+		-- You could do better than that.
+		{ Cue = "/VO/Intercom_1147", RequiredTextLines = { "Ending01" }, },
+	},
+	PerfectClearEncounterQuicklyFailedVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 1.25,
+		NoTarget = true,
+		CooldownTime = 200,
+		-- Hah, already?
+		{ Cue = "/VO/Intercom_0851" },
+		-- Pah, haha.
+		{ Cue = "/VO/Intercom_0852", RequiredPlayed = { "/VO/Intercom_0851" }, },
+		-- Ah, too bad.
+		{ Cue = "/VO/Intercom_0853", RequiredPlayed = { "/VO/Intercom_0851" }, },
+		-- You already failed?
+		{ Cue = "/VO/Intercom_0854", RequiredPlayed = { "/VO/Intercom_0851" }, RequiredFalseTextLines = { "Ending01" }, },
+		-- Well that was quick.
+		{ Cue = "/VO/Intercom_0855", RequiredPlayed = { "/VO/Intercom_0851" }, },
+		-- Already?
+		{ Cue = "/VO/Intercom_0856", RequiredPlayed = { "/VO/Intercom_0851" }, },
+		-- Hah, haha.
+		{ Cue = "/VO/Intercom_0857", RequiredPlayed = { "/VO/Intercom_0851" }, },
+		-- An immediate failure.
+		{ Cue = "/VO/Intercom_0858", RequiredPlayed = { "/VO/Intercom_0851" }, },
+	},
+	PerfectClearEncounterClearedVoiceLines = {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 1.35,
+		NoTarget = true,
+		-- <Laugh>
+		{ Cue = "/VO/Intercom_0301", PreLineWait = 0.3,                               CurrentEncounterValueTrue = "PlayerTookDamage" },
+		-- <Laugh>
+		{ Cue = "/VO/Intercom_0302", PreLineWait = 0.3,                               CurrentEncounterValueTrue = "PlayerTookDamage" },
+		-- <Laugh>
+		{ Cue = "/VO/Intercom_0303", PreLineWait = 0.3,                               CurrentEncounterValueTrue = "PlayerTookDamage" },
+		-- You thank the Fates for this.
+		{ Cue = "/VO/Intercom_0313", CurrentEncounterValueFalse = "PlayerTookDamage", RequiredFalseTextLines = { "Ending01" }, },
+		-- Useless lot.
+		{ Cue = "/VO/Intercom_0314", CurrentEncounterValueFalse = "PlayerTookDamage" },
+		-- Miserable fools.
+		{ Cue = "/VO/Intercom_0315", CurrentEncounterValueFalse = "PlayerTookDamage" },
+		-- Mere luck is all.
+		{ Cue = "/VO/Intercom_0316", CurrentEncounterValueFalse = "PlayerTookDamage", RequiredFalseTextLines = { "Ending01" }, },
+		-- How fortunate for you.
+		{ Cue = "/VO/Intercom_0317", CurrentEncounterValueFalse = "PlayerTookDamage" },
+		-- Enough of this.
+		{ Cue = "/VO/Intercom_0318", CurrentEncounterValueFalse = "PlayerTookDamage", RequiredFalseTextLines = { "Ending01" }, },
+		-- Grr...
+		{ Cue = "/VO/Intercom_0319", CurrentEncounterValueFalse = "PlayerTookDamage" },
+		-- <Scoff>
+		{ Cue = "/VO/Intercom_0320", CurrentEncounterValueFalse = "PlayerTookDamage" },
+		-- Blast.
+		{ Cue = "/VO/Intercom_0321", CurrentEncounterValueFalse = "PlayerTookDamage" },
+		-- Gloat all you like.
+		{ Cue = "/VO/Intercom_0322", CurrentEncounterValueFalse = "PlayerTookDamage", RequiredFalseTextLines = { "Ending01" }, },
+		-- Feh, the dead are useless.
+		{ Cue = "/VO/Intercom_0323", CurrentEncounterValueFalse = "PlayerTookDamage" },
+		-- Fine, keep your trinket, then.
+		{ Cue = "/VO/Intercom_0324", CurrentEncounterValueFalse = "PlayerTookDamage" },
+		-- You're quick, I'll give you that.
+		{ Cue = "/VO/Intercom_1148", CurrentEncounterValueFalse = "PlayerTookDamage", RequiredTextLines = { "Ending01" }, },
+		-- A perfectly good onion gone to waste!
+		{ Cue = "/VO/Intercom_1149", CurrentEncounterValueFalse = "PlayerTookDamage", }, --RequiredCodexEntry = { EntryName = "RoomRewardConsolationPrize", EntryIndex = 1, }, },
+		-- Hapless wretches.
+		{ Cue = "/VO/Intercom_1150", CurrentEncounterValueFalse = "PlayerTookDamage" },
+		-- All right, I've seen enough.
+		{ Cue = "/VO/Intercom_1151", CurrentEncounterValueFalse = "PlayerTookDamage", RequiredTextLines = { "Ending01" }, },
+		-- Deft on your feet as ever.
+		{ Cue = "/VO/Intercom_1152", CurrentEncounterValueFalse = "PlayerTookDamage", RequiredTextLines = { "Ending01" }, },
+		-- Eluded all of them...
+		{ Cue = "/VO/Intercom_1153", CurrentEncounterValueFalse = "PlayerTookDamage", RequiredTextLines = { "Ending01" }, },
+	},
+	-- #endregion
 	-- #region Fishing
 	PatroclusFishCaughtVoiceLines = {
 		BreakIfPlayed = true,
@@ -3608,7 +3784,45 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_1414", Text = "...Fall.", },
 		},
 	},
-
+	-- When entering an Erebus Gate/ShrineGate to a RoomChallenge
+	ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines = {
+		Queue = "Interrupt",
+		{
+			BreakIfPlayed = true,
+			PreLineWait = 0.25,
+			GameStateRequirements = {
+				{
+					-- Only play when entering, not when exiting a RoomChallenge
+					Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+					IsNone = { "Challenge" },
+				},
+				{
+					-- Only on first time using a ShrineGate
+					PathFalse = { "GameState", "BiomeVisits", "Challenge" },
+				},
+			},
+			{ Cue = "/VO/MelinoeField_4286", Text = "I accept these terms... I think!" },
+		},
+		{
+			RandomRemaining = true,
+			PreLineWait = 0.25,
+			GameStateRequirements = {
+				{
+					-- Only play when entering, not when exiting a RoomChallenge
+					Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+					IsNone = { "Challenge" },
+				},
+			},
+			-- From ZagContract
+			{ Cue = "/VO/MelinoeField_4284", Text = "I accept these terms!" },
+			{ Cue = "/VO/MelinoeField_4286", Text = "I accept these terms... I think!" },
+			-- Custom
+			{ Cue = "/VO/Melinoe_0376",      Text = "Into Erebus.", },
+			{ Cue = "/VO/Melinoe_4302",      Text = "Into the dark." },
+			{ Cue = "/VO/Melinoe_4305",      Text = "To the abyss." },
+			{ Cue = "/VO/Melinoe_5282",      Text = "Here we go again...!" },
+		},
+	},
 	-- Returning to the Crossroads
 	ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = {
 		Queue = "Always",
@@ -3759,16 +3973,16 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					PathTrue = { "CurrentRun", "Cleared" },
 				},
 			},
-			{ Cue = "/VO/Melinoe_2567", Text = "{#Emph}Mmph... {#Prev}adequate.", RequiredTrueTextLines = { "Ending01", }, },
+			{ Cue = "/VO/Melinoe_2567", Text = "{#Emph}Mmph... {#Prev}adequate.",                              RequiredTrueTextLines = { "Ending01", }, },
 			{ Cue = "/VO/Melinoe_2568", Text = "{#Emph}Whew. {#Prev}Not a bad night, I guess.", },
 			{ Cue = "/VO/Melinoe_2399", Text = "{#Emph}Mmph... {#Prev}well {#Emph}that {#Prev}was productive." },
 			{ Cue = "/VO/Melinoe_3646", Text = "{#Emph}<Sigh> {#Prev}As it should be.", },
 			{ Cue = "/VO/Melinoe_3647", Text = "{#Emph}<Sigh> {#Prev}A night well spent.", },
-			{ Cue = "/VO/Melinoe_3648", Text = "{#Emph}<Sigh> {#Prev}A good night's rest!", RequiredTrueTextLines = { "Ending01", }, },
+			{ Cue = "/VO/Melinoe_3648", Text = "{#Emph}<Sigh> {#Prev}A good night's rest!",                    RequiredTrueTextLines = { "Ending01", }, },
 			{ Cue = "/VO/Melinoe_3649", Text = "{#Emph}<Sigh> {#Prev}Another eventful night.", },
 			{ Cue = "/VO/Melinoe_2569", Text = "...The Fates were on my side.", },
 			{ Cue = "/VO/Melinoe_2570", Text = "...I did all right that time...", },
-			{ Cue = "/VO/Melinoe_3643", Text = "{#Emph}Mm... {#Prev}good enough.", RequiredTrueTextLines = { "Ending01", }, },
+			{ Cue = "/VO/Melinoe_3643", Text = "{#Emph}Mm... {#Prev}good enough.",                             RequiredTrueTextLines = { "Ending01", }, },
 			{
 				Cue = "/VO/Melinoe_3644",
 				Text = "...That's more like it.",

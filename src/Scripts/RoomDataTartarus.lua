@@ -4,11 +4,24 @@ local roomReplacements = {
 	BaseTartarus = {
 		SecretDoorRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.SecretDoorRequirements),
 		WellShopRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.WellShopRequirements),
-		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
+		-- The Asphodel teleport in Hades II - we don't want it in Zagreus' Journey
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Tartarus",
 		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
 		BreakableOptions = { "ModsNikkelMHadesBiomesBreakableIdle1", "ModsNikkelMHadesBiomesBreakableIdle2", "ModsNikkelMHadesBiomesBreakableIdle3" },
+
+		ShrinePointDoorRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation" },
+			},
+			{
+				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
+			},
+			{
+				PathFalse = { "CurrentRun", "ActiveBounty" },
+			},
+			RequiredMinRoomsSinceShrinePointDoor = 8,
+		},
 
 		HasHarvestPoint = true,
 		HasShovelPoint = true,
@@ -462,9 +475,6 @@ local roomModifications = {
 		PerfectClearEncounterOptions = { "PerfectClearChallengeTartarus" },
 		EliteChallengeEncounterOptions = { "EliteChallengeTartarus" },
 
-		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
-		ShrinePointDoorRequirements = { Skip = true },
-
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut",
 
@@ -497,6 +507,7 @@ local roomModifications = {
 		Ambience = "{e65b32ad-3a7e-4f88-9149-3260e929f04c}",
 		PlayBiomeMusic = true,
 		MusicSection = 0,
+		MusicStartDelay = 1.75,
 		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		ChooseRewardRequirements = mod.NilValue,
 		ForcedRewards = mod.NilValue,
@@ -533,6 +544,24 @@ local roomModifications = {
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
+
+		InspectPoints = {
+			[515864] = {
+				InteractTextLineSets = {
+					CharonFirstInspect = mod.NilValue,
+					ModsNikkelMHadesBiomes_CharonSecondInspect = {
+						-- Too bad I can't just take the ferry to the surface.
+						EndCue = "/VO/ZagreusField_1473",
+						EndWait = 0.3,
+						{
+							Cue = "/VO/Storyteller_0221",
+							Text =
+							"{#DialogueItalicFormat}The River Styx flows infamously through the Underworld, offering the boatman Charon expeditious travel from the realm of mortals to the lowest depths, where many of their shades reside forever."
+						},
+					},
+				},
+			},
+		},
 
 		ShovelPointChance = 0.35,
 		PickaxePointChance = 0.35,
@@ -780,10 +809,10 @@ local roomModifications = {
 
 					HeroMoveOffsetX = 365,
 					HeroMoveOffsetY = -455,
-					HeroMoveDuration = 2.0,
+					HeroMoveDuration = 1.8,
 					FamiliarMoveOffsetX = 365,
 					FamiliarMoveOffsetY = -455,
-					FamiliarMoveDuration = 2.0,
+					FamiliarMoveDuration = 1.8,
 					CameraMoveOffsetY = -805,
 
 					MoveEaseIn = 0.5,
@@ -800,8 +829,10 @@ local roomModifications = {
 
 -- Assign separately so we don't get a circular reference
 game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
-	-- When updating here, also change in BaseSurface, and the Return rooms
+	-- IMPORTANT: When updating the below items, also change in BaseSurface, and the Return rooms
 	AlwaysLoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+	-- IMPORTANT: When updating the above items, also change in BaseSurface, and the Return rooms
+	ShrinePointRoomOptions = { "RoomChallenge01", "RoomChallenge02", "RoomChallenge03", "RoomChallenge04" },
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Tartarus, roomModifications, roomReplacements, "Tartarus")

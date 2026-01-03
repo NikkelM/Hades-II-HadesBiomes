@@ -16,7 +16,7 @@ modutil.mod.Path.Wrap("CalculateActiveEnemyCap", function(base, currentRun, curr
 	if currentEncounter.EnemyCountShrineModifierName then
 		local modifierName = currentEncounter.EnemyCountShrineModifierName
 		enemyCap = math.floor(enemyCap +
-			(GetNumShrineUpgrades(modifierName) * currentEncounter.EnemyCountShineModifierAmount))
+			(game.GetNumShrineUpgrades(modifierName) * currentEncounter.EnemyCountShineModifierAmount))
 	end
 
 	return enemyCap
@@ -24,10 +24,22 @@ end)
 
 modutil.mod.Path.Wrap("OnAllEnemiesDead", function(base, currentRoom, currentEncounter)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		ClearEffect({ Id = CurrentRun.Hero.ObjectId, Name = "MedeaPoison" })
+		ClearEffect({ Id = game.CurrentRun.Hero.ObjectId, Name = "MedeaPoison" })
 	end
 
-	return base(currentRoom, currentEncounter)
+	base(currentRoom, currentEncounter)
+
+	local encounterData = game.EncounterData[currentEncounter.Name] or currentEncounter
+	if encounterData.SkipOnAllEnemiesDeadCleanup then
+		return
+	end
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		if currentEncounter.EncounterType == "PerfectClear" then
+			game.thread(game.HadesSpeakingPresentation, currentRoom,
+				{ VoiceLines = { GlobalVoiceLines = "PerfectClearEncounterClearedVoiceLines" }, ColorGrade = "PerfectClear" })
+		end
+	end
 end)
 
 -- For ShadeNaked spawns

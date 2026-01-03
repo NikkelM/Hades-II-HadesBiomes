@@ -195,7 +195,8 @@ function mod.ThanatosExit(source, args)
 	AdjustColorGrading({ Name = "Off", Duration = 1.35 })
 
 	if args.UseMaxedPresentation then
-		game.MaxedRelationshipPresentation(source, { Text = "NPC_Thanatos_01", Icon = "Keepsake_zannc-SharedKeepsakePort-Thanatos" })
+		game.MaxedRelationshipPresentation(source,
+			{ Text = "NPC_Thanatos_01", Icon = "Keepsake_zannc-SharedKeepsakePort-Thanatos" })
 	end
 
 	source.Mute = true
@@ -328,7 +329,12 @@ function mod.TrackThanatosChallengeProgress(encounter, victim, killer)
 		-- Custom case added
 		encounter.ThanatosKills = encounter.ThanatosKills + 1
 		game.UpdateObjectiveDescription("ThanatosKills", "Objective_ThanatosKills", "ThanatosKills", encounter.ThanatosKills)
+	elseif killer ~= nil and (killer.Charmed or killer.DamageType == "Ally") then
+		-- Charmed enemy or familiar kill
+		encounter.PlayerKills = encounter.PlayerKills + 1
+		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
 	elseif victim ~= nil and victim.TimeOfLastPlayerDamage ~= nil and game._worldTime - victim.TimeOfLastPlayerDamage < maxTimeSincePlayerDamage then
+		-- Might be an environment kill, but the player recently damaged the enemy, so we count it as a player kill
 		encounter.PlayerKills = encounter.PlayerKills + 1
 		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
 	end

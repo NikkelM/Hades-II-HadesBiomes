@@ -656,12 +656,12 @@ mod.MapFileMappings = {
 	["Return04"] = "Return04",
 	["Return05"] = "Return05",
 	["Return06"] = "Return06",
-	-- -- Erebus/Challenge
-	-- ["RoomChallenge01"] = "RoomChallenge01",
-	-- ["RoomChallenge02"] = "RoomChallenge02",
-	-- ["RoomChallenge03"] = "RoomChallenge03",
-	-- ["RoomChallenge04"] = "RoomChallenge04",
-	-- -- Charon
+	-- Erebus/Challenge
+	["RoomChallenge01"] = "RoomChallenge01",
+	["RoomChallenge02"] = "RoomChallenge02",
+	["RoomChallenge03"] = "RoomChallenge03",
+	["RoomChallenge04"] = "RoomChallenge04",
+	-- Charon
 	-- ["CharonFight01"] = "CharonFight01",
 }
 

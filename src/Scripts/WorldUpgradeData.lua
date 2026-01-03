@@ -44,6 +44,29 @@ local newIncantations = {
 		},
 	},
 	-- #endregion
+	-- #region ShrineChallenge/Erebus Gates
+	ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_shrinePointGates_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceStyx = 1,
+			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "RoomsEntered", "D_Hub" },
+			},
+			{
+				-- The Oath of the Unseen must be unlocked
+				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
+			},
+		},
+	},
+	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.WorldUpgradeData, newIncantations)
 
@@ -61,6 +84,9 @@ for incantationName, incantationData in pairs(newIncantations) do
 					if worldUpgradeName == insertAfterItem then
 						insertedAtPosition = true
 						table.insert(ghostAdminCategory, index + 1, incantationName)
+						mod.DebugPrint(
+							"Inserted " .. incantationName .. " after " .. insertAfterItem ..
+							" in category " .. cauldronCategory .. ".", 4)
 						break
 					end
 				end
@@ -72,6 +98,8 @@ for incantationName, incantationData in pairs(newIncantations) do
 				end
 			else
 				table.insert(ghostAdminCategory, incantationName)
+				mod.DebugPrint(
+					"Inserted " .. incantationName .. " at the end of category " .. cauldronCategory .. ".", 4)
 			end
 		end
 	end

@@ -9,12 +9,14 @@
 Other fixes and improvements:
 - The installation screen will now only show in the Training Grounds, and no longer in the main Crossroads.
 - Added a "Vanquished" count for Zagreus' Journey enemies to their respective Codex entries.
+- Decreased the overall amount of time spent in the biome map transition.
 - Changed the default logging level of the mod to "Debug" to simplify troubleshooting user issues. You can change this in the mod's config file.
 - Balancing: Reduced the maximum time the Skull-Crusher can stay airborne before attacking.
 - Balancing: Increased the time the Skull-Crusher stays grounded before taking off again.
 - Balancing: Slightly reduced the tracking speed of the Elite Strongbow's triple-shot attack.
 - Balancing: The Tiny Vermin can now call for reinforcements more frequently.
 - Balancing: Slightly reduced the spawn rate of resource points.
+- Fixed: A second inspect point in the mid-shop in Tartarus never shows up (this was bugged in vanilla Hades as well - enjoy the exclusive new dialogue!).
 - Fixed: Magick and Hexes do not (re)charge, and the Aspect of Supay does not attack automatically during boss fights with Tisiphone or Alecto.
 - Fixed: Alecto's Rage meter is missing it's icon.
 - Fixed: Background obstacles in the "Barge of Death" encounter keep moving after the encounter has ended and the boat has stopped.
@@ -25,11 +27,14 @@ Other fixes and improvements:
 - Fixed: When a Crawler is stunned, it becomes invisible.
 - Fixed: Bouldy's special damage boon grants up to 1000% bonus damage instead of up to 10%.
 - Fixed: Elysium Shades killed by Thanatos can sometimes spawn an Exalted Shade.
+- Fixed: Enemy kills by familiars or charmed enemies are not counted towards Melinoë's kills when dueling Thanatos.
+- Fixed: Enemies killed by Melinoë while they are cursed by Thanatos will still trigger the "skull" death animation effect that should only trigger for Thanatos' kills.
 - Fixed: When first entering a new region, music starts to play, then quickly cuts out and changes.
 - Fixed: Biome music continues to play in shop rooms with free rewards before a boss encounter.
 - Fixed: Contextual voicelines with Hades story NPCs relating to their respective keepsakes being equipped cannot trigger.
 - Fixed: When marking a new testament, the indicator below the Shrine can sometimes point to the wrong exit.
 - Fixed: Testaments for the Sister Blades incorrectly require having completed the Polyphemus testament with the Witch's Staff.
+- Fixed: An incorrect animation plays on the biome transition map after completing a testament.
 - Fixed: Some trap damage is incorrectly attributed on the run clear screen.
 - Fixed: Dusa's codex entry is replaced with the one from the first game.
 - Fixed: Some textures in some rooms can be misplaced when reloading a save while in them.

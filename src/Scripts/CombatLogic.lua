@@ -10,7 +10,7 @@ modutil.mod.Path.Wrap("DoEnemyHealthBufferDeplete", function(base, enemy)
 end)
 
 modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (victim.ModsNikkelMHadesBiomesIsModdedEnemy or victim.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy) then
 		local killer = triggerArgs.AttackerTable or {}
 
 		if victim.SupportAIUnitId ~= nil then
@@ -43,17 +43,22 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 			end
 		end
 
-		if victim.ModsNikkelMHadesBiomesIsThanatosCursed and victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed and killer.ObjectId ~= game.CurrentRun.Hero.ObjectId then
-			SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = victim.ObjectId })
-			victim.SpawnsEnemyOnDeath = false
-			victim.SpawnUnitOnDeath = nil
+		if victim.ModsNikkelMHadesBiomesIsThanatosCursed then
+			if killer.ObjectId == game.CurrentRun.Hero.ObjectId then
+				-- Don't play the "DeathHead" animation, which should only play if Thanatos kills the enemy
+				StopAnimation({ Name = "ThanatosCurseIn", DestinationId = victim.ObjectId, PreventChain = true, })
+			elseif victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed and killer.ObjectId ~= game.CurrentRun.Hero.ObjectId then
+				SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = victim.ObjectId })
+				victim.SpawnsEnemyOnDeath = false
+				victim.SpawnUnitOnDeath = nil
+			end
 		end
 	end
 
 	base(victim, triggerArgs)
 
 	-- These were originally called in Kill() instead of KillEnemy(), so we're moving it past the base call
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy and victim.ObjectId ~= nil then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ObjectId ~= nil and (victim.ModsNikkelMHadesBiomesIsModdedEnemy or victim.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy) then
 		if victim.OnDeathCrowdReaction ~= nil then
 			game.thread(game.CrowdReactionPresentation, victim.OnDeathCrowdReaction)
 		end
@@ -70,15 +75,18 @@ end)
 
 modutil.mod.Path.Wrap("CleanupEnemy", function(base, enemy)
 	base(enemy)
-	if enemy.DisplayAttackTimer and enemy.AttackTimerId ~= nil then
-		Destroy({ Id = enemy.AttackTimerId })
-	end
-	-- For ShadeNaked in the process of picking up a weapon
-	if enemy.PickupTarget ~= nil then
-		if enemy.PickupTarget.PickupFailedAnimation ~= nil then
-			SetAnimation({ Name = enemy.PickupTarget.PickupFailedAnimation, DestinationId = enemy.PickupTarget.ObjectId })
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.ObjectId ~= nil and enemy.ModsNikkelMHadesBiomesIsModdedEnemy then
+		if enemy.DisplayAttackTimer and enemy.AttackTimerId ~= nil then
+			Destroy({ Id = enemy.AttackTimerId })
 		end
-		enemy.PickupTarget = nil
+		-- For ShadeNaked in the process of picking up a weapon
+		if enemy.PickupTarget ~= nil then
+			if enemy.PickupTarget.PickupFailedAnimation ~= nil then
+				SetAnimation({ Name = enemy.PickupTarget.PickupFailedAnimation, DestinationId = enemy.PickupTarget.ObjectId })
+			end
+			enemy.PickupTarget = nil
+		end
 	end
 end)
 

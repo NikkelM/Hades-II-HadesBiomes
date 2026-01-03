@@ -37,7 +37,14 @@ end
 mod.ApplyNestedSjsonModifications(hadesTravelObstacleTable.Obstacles, obstacleModifications)
 
 -- Modifications to existing obstacles in Hades II
-local hadesTwoObstacleModifications = {}
+local hadesTwoObstacleModifications = {
+	-- Obstacles that shouldn't be passable
+	TravelGable01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TravelPillarBase01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TravelPillarBase02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TravelPillar01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TravelPillar02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+}
 
 sjson.hook(hadesTwoTravelObstacleFile, function(data)
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
