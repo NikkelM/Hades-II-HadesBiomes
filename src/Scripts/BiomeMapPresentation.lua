@@ -291,7 +291,6 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 end
 
 -- Same as original game, but we need different offsets
--- TODO: Can this be modified through Stacked Locals instead of a new function?
 function mod.BiomeMapShowBounty(source, args, bountyData)
 	local screen = game.ScreenData.Shrine
 	local bountyGroupName = "Combat_Menu_TraitTray"
