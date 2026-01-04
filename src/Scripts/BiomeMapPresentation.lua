@@ -261,7 +261,7 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 			-- Custom implementation with new offsets
 			mod.BiomeMapShowBounty(source, args, bountyData)
 
-			game.wait(0.65)
+			game.wait(0.45)
 			CreateAnimation({ Name = "ShoutFlare", DestinationId = args.TargetItemId, Group = "Combat_Menu_TraitTray", Scale = 1.5, OffsetY = 120 })
 			CreateAnimation({ Name = "TraitUpdate", DestinationId = args.TargetItemId, Group = "Combat_Menu_TraitTray", Scale = 2.0 })
 			PlaySound({ Name = "/SFX/Menu Sounds/MirrorFlash2" })
@@ -273,13 +273,16 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 			SetAlpha({ Id = args.ShrinePointItemId, Fraction = 1.0 })
 			SetAlpha({ Id = args.WeaponItemId, Fraction = 1.0 })
 
-			game.wait(0.88)
+			game.wait(0.4)
 
 			if not game.IsEmpty(extraObjectIds) then
 				SetAnimation({ Name = "BannerMarkerIdle", DestinationIds = extraObjectIds })
 				PlaySound({ Name = "/SFX/CharonOarImpact", Id = melId })
 				Stop({ Ids = extraObjectIds })
 			end
+
+			-- Wait a little less
+			args.AdditionalEndTimeWait = (args.AdditionalEndTimeWait or 0) - 1.0
 		end
 	end
 
@@ -305,7 +308,7 @@ function mod.BiomeMapShowBounty(source, args, bountyData)
 			Y = -180,
 		},
 		BossTheseusAndMinotaur = {
-			X = 100,
+			X = -40,
 			Y = -1300,
 		},
 		BossHades = {

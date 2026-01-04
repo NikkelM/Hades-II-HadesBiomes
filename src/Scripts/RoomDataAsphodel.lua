@@ -620,7 +620,6 @@ local roomModifications = {
 					MoveEaseIn = 0.5,
 					MoveEaseOut = 1.0,
 
-					AdditionalEndTimeWait = 1.0,
 					BiomeStart = "Asphodel",
 					BiomeEnd = "Elysium",
 					ShrineBounty = "BossTheseusAndMinotaur",
