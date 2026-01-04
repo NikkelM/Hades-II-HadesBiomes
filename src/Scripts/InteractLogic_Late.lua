@@ -1,12 +1,12 @@
 modutil.mod.Path.Context.Wrap.Static("AttemptRerollDoor", function(rerollRun, door)
 	modutil.mod.Path.Wrap("ChooseRoomReward", function(base, run, room, rewardStoreName, previouslyChosenRewards, args)
-		-- Update the previouslyChosenRewards to include the base version of a potential Styx miniboss room reward
+		-- Update the previouslyChosenRewards to include the base version of a potential Styx miniboss/ShrineChallenge room reward
 		if run and run.ModsNikkelMHadesBiomesIsModdedRun and room and room.UseOptionalOverrides and room.RewardConsumableOverrideMap then
 			for index, offeredDoor in pairs(game.MapState.OfferedExitDoors) do
-				if offeredDoor.Room ~= nil and offeredDoor.Room.ModsNikkelMHadesBiomesStyxMinibossRoomOriginalReward ~= nil then
+				if offeredDoor.Room ~= nil and offeredDoor.Room.ModsNikkelMHadesBiomesOriginalOverrideReward ~= nil then
 					table.insert(previouslyChosenRewards,
 						{
-							RewardType = offeredDoor.Room.ModsNikkelMHadesBiomesStyxMinibossRoomOriginalReward,
+							RewardType = offeredDoor.Room.ModsNikkelMHadesBiomesOriginalOverrideReward,
 							ForceLootName = offeredDoor.Room.ForceLootName
 						})
 				end
