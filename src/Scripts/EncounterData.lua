@@ -38,18 +38,18 @@ local encounterModifications = {
 	},
 	ShrineChallengeTartarus = {
 		-- The original from Hades is 60
-		BaseDifficulty = 85,
+		BaseDifficulty = 75,
 		-- BiomeB since the EnemySet contains Bloodless enemies as well
 		LoadPackages = { "TartarusModsNikkelMHadesBiomes", "BiomeB" },
 	},
 	ShrineChallengeAsphodel = {
 		-- The original from Hades is 200
-		BaseDifficulty = 230,
+		BaseDifficulty = 210,
 		LoadPackages = { "AsphodelModsNikkelMHadesBiomes", "BiomeB" },
 	},
 	ShrineChallengeElysium = {
 		-- The original from Hades is 280
-		BaseDifficulty = 320,
+		BaseDifficulty = 300,
 		LoadPackages = { "ElysiumModsNikkelMHadesBiomes", "BiomeB" },
 	},
 	-- #endregion
