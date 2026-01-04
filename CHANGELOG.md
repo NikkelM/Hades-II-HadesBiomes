@@ -37,6 +37,7 @@ Other fixes and improvements:
 - Fixed: When marking a new testament, the indicator below the Shrine can sometimes point to the wrong exit.
 - Fixed: Testaments for the Sister Blades incorrectly require having completed the Polyphemus testament with the Witch's Staff.
 - Fixed: An incorrect animation plays on the biome transition map after completing a testament.
+- Fixed: The Asphodel bounty icon overlaps with the familiar's figurine on the biome map.
 - Fixed: Some trap damage is incorrectly attributed on the run clear screen.
 - Fixed: Dusa's codex entry is replaced with the one from the first game.
 - Fixed: Some textures in some rooms can be misplaced when reloading a save while in them.
