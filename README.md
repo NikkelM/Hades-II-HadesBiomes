@@ -86,7 +86,7 @@ If you do not have a GitHub account, you can also join the [Hades II Modding Dis
 Among many smaller improvements and fixes, the following major features are planned for future releases (in no particular order):
 
 - Secret boss fight (you know the one)
-- Erebus gates (When there is enough Fear in the Night)
+- [DONE!] Erebus gates (when there is enough Fear in the Night)
 - New incantations for meta-progression on the new route
 - New story events and dialogue between Melinoë and other characters from Hades II, concerning the new route
 - Displaying statistics for the new route with the Record Keeper

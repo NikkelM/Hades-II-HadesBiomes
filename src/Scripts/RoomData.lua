@@ -42,6 +42,19 @@ local challengeRoomModifications = {
 		ExitVfx = "SecretDoorDiveFx",
 
 		IneligibleRewards = { "Devotion", "WeaponUpgrade", "SpellDrop", "HermesUpgrade" },
+		-- So it's caught by the custom logic for upgraded consumable rewards
+		UseOptionalOverrides = true,
+		-- Need to define this to prevent nil error
+		OptionalOverrides = {},
+		-- We directly change the consumables to their upgraded versions when choosing the door reward using the map
+		RewardConsumableOverrides = mod.NilValue,
+		RewardConsumableOverrideMap = {
+			RoomMoneyDrop = "RoomMoneyBigDrop",
+			MaxHealthDrop = "MaxHealthDropBig",
+			MaxManaDrop = "MaxManaDropBig",
+			StackUpgrade = "StackUpgradeBig",
+			TalentDrop = "TalentBigDrop",
+		},
 
 		InspectPoints = {
 			[515865] = {
@@ -57,8 +70,8 @@ local challengeRoomModifications = {
 							"{#DialogueItalicFormat}Concealed in the dark recesses of the Underworld is the land of Erebus, wherein the dead await eternal sentencing; they long for the attention and good graces of their master, the Lord Hades."
 						},
 					},
-				}
-			}
+				},
+			},
 		},
 	},
 }

@@ -160,7 +160,7 @@ modutil.mod.Path.Wrap("LeaveRoom", function(base, currentRun, door)
 	return base(currentRun, door)
 end)
 
--- Overriding to add in the logic for the Styx exit doors always having two minibosses
+-- Overriding to add in the logic for the Styx miniboss and ShrineChallenge/Erebus room rewards
 modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
 	-- TODO: Only while the mod is in early access
 	if run.ModsNikkelMHadesBiomesIsModdedRun and not mod.HiddenConfig.IgnoreShowFeedbackMessage then
@@ -171,7 +171,8 @@ modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
 		end
 	end
 
-	if run.ModsNikkelMHadesBiomesIsModdedRun and room.Name == "D_Hub" then
+	-- We are either in D_Hub and need to set up the miniboss exits, or the room has a ShrineChallenge/Erebus door, which also needs upgraded rewards
+	if run.ModsNikkelMHadesBiomesIsModdedRun and (room.Name == "D_Hub" or room.ShrinePointDoorChanceSuccess == true) then
 		return mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	else
 		return base(run, room)
@@ -271,6 +272,7 @@ modutil.mod.Path.Wrap("HandleSecretSpawns", function(base, currentRun)
 	end
 end)
 
+-- This is essentially the same function as vanilla, and only inserts the logic to upgrade consumable rewards for Styx miniboss rooms and ShrineChallenge/Erebus rooms
 function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	-- Synchronize the RNG to its initial state. Makes room reward choices deterministic on save/load
 	game.RandomSynchronize()
@@ -311,7 +313,7 @@ function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 			end
 			local roomForDoorData = nil
 			if door.ForceRoomName ~= nil then
-				roomForDoorData = RoomData[door.ForceRoomName]
+				roomForDoorData = game.RoomData[door.ForceRoomName]
 			else
 				roomForDoorData = game.ChooseNextRoomData(run, door.ChooseRoomArgs, exitDoorsIPairs)
 			end
@@ -372,12 +374,12 @@ function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 			doorRoom.ChosenRewardType = game.ChooseRoomReward(game.CurrentRun, doorRoom, doorRoom.RewardStoreName,
 				rewardsChosen, { Door = door })
 
-			-- Custom logic for Styx Miniboss rooms - change Consumables to their big variant
+			-- Custom logic for Styx Miniboss and ShrineChallenge rooms - change Consumables to their big variant
 			if doorRoom.ChosenRewardType ~= nil and doorRoom.UseOptionalOverrides and doorRoom.RewardConsumableOverrideMap then
 				-- Add the original reward to the chosen list to avoid duplicates
 				table.insert(rewardsChosen, { RewardType = doorRoom.ChosenRewardType, ForceLootName = doorRoom.ForceLootName, })
 				-- For the reroll logic
-				doorRoom.ModsNikkelMHadesBiomesStyxMinibossRoomOriginalReward = doorRoom.ChosenRewardType
+				doorRoom.ModsNikkelMHadesBiomesOriginalOverrideReward = doorRoom.ChosenRewardType
 				-- Then replace it with the upgraded version
 				local overrideConsumable = doorRoom.RewardConsumableOverrideMap[doorRoom.ChosenRewardType]
 				if overrideConsumable ~= nil then
