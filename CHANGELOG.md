@@ -4,7 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- NEW: Enter **Erebus Gates** and clear their encounter without being hit for upgraded rewards! You can perform a new incantation to make these gates appear during *Zagreus' Journey* runs, and can enter them if there is enough *Fear* in the Night.
+- NEW: Enter **Erebus Gates** and clear their encounters without being hit for upgraded rewards! You can perform a new incantation to make these gates appear during *Zagreus' Journey* runs, and can enter them if there is enough *Fear* in the Night.
 - Fixed: Music can disappear after the "Barge of Death" encounter in Asphodel.
 
 Other fixes and improvements:
@@ -28,15 +28,15 @@ Other fixes and improvements:
 - Fixed: When a Crawler is stunned, it becomes invisible.
 - Fixed: Bouldy's special damage boon grants up to 1000% bonus damage instead of up to 10%.
 - Fixed: Elysium Shades killed by Thanatos can sometimes spawn an Exalted Shade.
-- Fixed: Enemy kills by familiars or charmed enemies are not counted towards Melinoë's kills when dueling Thanatos.
+- Fixed: Enemies killed by familiars or charmed enemies are not counted towards Melinoë's kills when dueling Thanatos.
 - Fixed: Enemies killed by Melinoë while they are cursed by Thanatos will still trigger the "skull" death animation effect that should only trigger for Thanatos' kills.
 - Fixed: When first entering a new region, music starts to play, then quickly cuts out and changes.
 - Fixed: Biome music continues to play in shop rooms with free rewards before a boss encounter.
-- Fixed: (Tentative) Music can duplicate/overlap after a challenge encounter (Trove, Moon Monuments).
+- Fixed: (Tentative) Music can duplicate/overlap in rooms after a "challenge" encounter (Troves, Moon Monuments).
 - Fixed: Contextual voicelines with Hades story NPCs relating to their respective keepsakes being equipped cannot trigger.
 - Fixed: When marking a new testament, the indicator below the Shrine can sometimes point to the wrong exit.
 - Fixed: Testaments for the Sister Blades incorrectly require having completed the Polyphemus testament with the Witch's Staff.
-- Fixed: An incorrect animation plays on the biome transition map after completing a testament.
+- Fixed: An incorrect animation plays on the biome transition map after completing a Testament of Night.
 - Fixed: Fixed some Testament of Night icons overlapping with the figurines on the biome map.
 - Fixed: Some trap damage is incorrectly attributed on the run clear screen.
 - Fixed: Dusa's codex entry is replaced with the one from the first game.

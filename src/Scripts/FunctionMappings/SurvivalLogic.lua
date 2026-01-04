@@ -137,7 +137,7 @@ end
 modutil.mod.Path.Wrap("PerfectClearObjectiveFailedPresentation", function(base, run)
 	base(run)
 
-	if run.ModsNikkelMHadesBiomesIsModdedRun and run.CurrentRoom and run.CurrentRoom.Encounter and run.CurrentRoom.Encounter.ModsNikkelMHadesBiomesPostEncounterPlayHadesTaunt then
+	if run and run.ModsNikkelMHadesBiomesIsModdedRun and run.CurrentRoom and run.CurrentRoom.Encounter and run.CurrentRoom.Encounter.ModsNikkelMHadesBiomesPostEncounterPlayHadesTaunt then
 		local source = {} -- Dummy source for disembodied voice
 		source.SubtitleColor = game.Color.HadesVoice
 

@@ -1,7 +1,12 @@
+--[[ Modded incantation order:
+ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates
+ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics
+]]--
+
 local newIncantations = {
 	-- #region Cosmetics
 	ModsNikkelMHadesBiomesUnlockCosmeticsIncantation = {
-		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
@@ -46,15 +51,15 @@ local newIncantations = {
 	-- #endregion
 	-- #region ShrineChallenge/Erebus Gates
 	ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation = {
-		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation",
+		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
 		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_shrinePointGates_01",
 		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 1,
 			ModsNikkelMHadesBiomes_BossResourceStyx = 1,
-			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
 		},
 		GameStateRequirements = {
 			{

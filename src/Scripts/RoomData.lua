@@ -88,7 +88,8 @@ local charonRoomData = {
 local charonRoomReplacements = {}
 local charonRoomModifications = {
 	CharonFight01 = {
-		RoomSetName = "Charon",
+		-- The encounter has BiomeName = "Challenge" - should this be Challenge or separate/Charon? How does it work with the MapGroups.sjson?
+		-- RoomSetName = "Charon",
 	},
 }
 
