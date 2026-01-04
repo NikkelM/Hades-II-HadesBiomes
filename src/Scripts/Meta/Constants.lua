@@ -13,7 +13,7 @@ mod.DefaultHiddenConfig = {
 
 -- This is the number of sjson.hook calls we normally make
 -- If the count in the cache/sjsonLoads.sjson file is different when OnAnyLoad is called, we know something went wrong and need to ask the user to restart the game
-mod.ExpectedNumSjsonHooks = 30
+mod.ExpectedNumSjsonHooks = 31
 
 -- All enemies have more health and armour in modded runs, scales with each biome
 -- Should not apply to bosses, which should opt out using ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and define their own modified health
@@ -32,14 +32,14 @@ mod.ModdedUnitHealthBufferMultiplierBonus = {
 	Styx = 0.22
 }
 
--- TODO: Challenge, Charon? What Roomsets are they?
--- For Challenge, can use Melinoe_0376 as enter voiceline
 mod.ValidModdedRunBiomes = {
 	["Tartarus"] = true,
 	["Asphodel"] = true,
 	["Elysium"] = true,
 	["Styx"] = true,
 	["Surface"] = true,
+	["Challenge"] = true,
+	-- ["Charon"] = true,
 }
 
 mod.ModdedShrineBountyNames = {

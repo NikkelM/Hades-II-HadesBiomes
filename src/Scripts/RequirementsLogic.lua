@@ -85,6 +85,26 @@ modutil.mod.Path.Wrap("IsTextLineEligible", function(base, currentRun, source, l
 	return isEligible
 end)
 
+function mod.IsShrinePointDoorEligible(currentRun, currentRoom)
+	if currentRoom.ForceShrinePointDoor then
+		return true
+	end
+
+	if game.HasHeroTraitValue("ForceShrinePointDoor") then
+		return true
+	end
+
+	if not currentRoom.ShrinePointDoorChanceSuccess then
+		return false
+	end
+
+	if not game.IsGameStateEligible(currentRun, currentRoom.ShrinePointDoorRequirements) then
+		return false
+	end
+
+	return true
+end
+
 function mod.HasSeenEncounter(encounterName)
 	if game.GameState.EncountersOccurredCache[encounterName] ~= nil and game.GameState.EncountersOccurredCache[encounterName] > 0 then
 		return true

@@ -83,11 +83,11 @@ local encounterReplacements = {
 
 	PerfectClearChallengeElysium = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedElysium" },
-		EnemySet = EnemySets.EnemiesBiome3,
+		EnemySet = game.EnemySets.EnemiesBiome3,
 	},
 	EliteChallengeElysium = {
 		InheritFrom = { "EliteChallenge", "GeneratedElysium" },
-		EnemySet = EnemySets.EnemiesBiome3_EliteChallenge,
+		EnemySet = game.EnemySets.EnemiesBiome3_EliteChallenge,
 	},
 }
 

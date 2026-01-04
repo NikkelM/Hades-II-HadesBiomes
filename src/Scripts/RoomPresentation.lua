@@ -403,3 +403,65 @@ end
 function mod.AngleIds(eventSource, args)
 	AngleTowardTarget({ Ids = args.Ids, DestinationId = args.DestinationId })
 end
+
+function mod.ModsNikkelMHadesBiomesShrineGateExitPresentation(currentRun, exitDoor, args)
+	AddInputBlock({ Name = "LeaveRoomPresentation" })
+	game.ToggleCombatControl({ "AdvancedTooltip" }, false, "LeaveRoom")
+	game.HideCombatUI("ContractExitPresentation")
+
+	Stop({ Id = currentRun.Hero.ObjectId })
+	game.wait(0.01)
+
+	PlaySound({ Name = "/SFX/Menu Sounds/GeneralWhooshMENULoudLow" })
+	AngleTowardTarget({ Id = currentRun.Hero.ObjectId, DestinationId = exitDoor.ObjectId })
+
+	local unequipAnimation = game.GetEquippedWeaponValue("UnequipAnimation") or "MelinoeIdleWeaponless"
+	SetAnimation({ Name = unequipAnimation, DestinationId = currentRun.Hero.ObjectId })
+	PanCamera({ Id = exitDoor.ObjectId, Duration = 1.1, OffsetY = -50, EaseOut = 0 })
+	game.wait(0.5)
+	ModifySubtitles({ SuppressLyrics = true })
+
+	game.wait(0.35)
+
+	SetAnimation({ Name = "MelTalkBrooding01", DestinationId = currentRun.Hero.ObjectId, SpeedMultiplier = 0.5 })
+
+	currentRun.Hero.ExitAngle = GetAngle({ Id = currentRun.Hero.ObjectId })
+
+	game.PlayVoiceLines( game.HeroVoiceLines.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines )
+
+	SetAnimation({ Name = "MelinoeInteractWeaponless", DestinationId = currentRun.Hero.ObjectId })
+	game.wait(0.2)
+	CreateAnimation({ Name = "ContractTeleportFx", DestinationId = exitDoor.ObjectId, Scale = 0.7 })
+
+	-- Timed to destroy the preview when Mel does the interaction animation
+	if exitDoor ~= nil then
+		if exitDoor.AdditionalIcons ~= nil and not game.IsEmpty(exitDoor.AdditionalIcons) then
+			Destroy({ Ids = game.GetAllValues(exitDoor.AdditionalIcons) })
+			exitDoor.AdditionalIcons = nil
+		end
+		game.DestroyDoorRewardPresenation(exitDoor)
+		if exitDoor.ExitDoorOpenAnimation ~= nil then
+			SetAnimation({ DestinationId = exitDoor.ObjectId, Name = exitDoor.ExitDoorOpenAnimation })
+		end
+	end
+
+	SetAlpha({ Id = exitDoor.ObjectId, Fraction = 0.0, Duration = 0.1 })
+	PlaySound({ Name = "/SFX/Enemy Sounds/Chronos/ChronosTeleport", Id = currentRun.Hero.ObjectId })
+	game.wait(0.1)
+	CreateAnimation({ Name = "HadesContractFx", DestinationId = currentRun.Hero.ObjectId, })
+	PlaySound({ Name = "/SFX/ShipsDoorTeleport", Id = currentRun.Hero.ObjectId })
+
+	game.wait(1.0)
+
+	CreateAnimation({ Name = "ContractTeleportFx", DestinationId = currentRun.Hero.ObjectId, })
+	SetAlpha({ Id = currentRun.Hero.ObjectId, Fraction = 0, Duration = 0.1 })
+
+	game.wait(0.01)
+
+	ModifySubtitles({ SuppressLyrics = false })
+	game.FullScreenFadeOutAnimation("RoomTransitionIn_Down")
+	game.WaitForSpeechFinished()
+
+	RemoveInputBlock({ Name = "LeaveRoomPresentation" })
+	game.ToggleCombatControl({ "AdvancedTooltip" }, true, "LeaveRoom")
+end

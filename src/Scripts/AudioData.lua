@@ -161,6 +161,7 @@ game.GlobalVoiceLines.EmptyStartNewHadesRunVoiceLines = {}
 
 -- Replace cues with the modded name
 local requiredGlobalVoiceLineModifications = {
+	-- These voicelines are not currently used
 	-- HadesDeathTauntVoiceLines = {
 	-- 	Find = "Hades_",
 	-- 	Replace = "HadesField_0"
@@ -174,6 +175,22 @@ local requiredGlobalVoiceLineModifications = {
 		Replace = "HadesField_1",
 	},
 	SurvivalEncounterSurvivedVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1",
+	},
+	PerfectClearEncounterStartVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1",
+	},
+	PerfectClearEncounterFailedVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1",
+	},
+	PerfectClearEncounterQuicklyFailedVoiceLines = {
+		Find = "Intercom_",
+		Replace = "HadesField_1",
+	},
+	PerfectClearEncounterClearedVoiceLines = {
 		Find = "Intercom_",
 		Replace = "HadesField_1",
 	},
@@ -203,7 +220,7 @@ for voicelineGroup, replacement in pairs(requiredGlobalVoiceLineModifications) d
 	end
 end
 
--- Add required GlobalVoiceLines
+-- #region GlobalVoiceLines
 -- These would overlap with Melinoe's own voicelines when dying
 -- game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or
 -- 		mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
@@ -274,6 +291,15 @@ game.GlobalVoiceLines.SurvivalExpiringVoiceLines = game.GlobalVoiceLines.Surviva
 game.GlobalVoiceLines.SurvivalResolvedVoiceLines = game.GlobalVoiceLines.SurvivalResolvedVoiceLines or
 		mod.GlobalVoiceLines.SurvivalResolvedVoiceLines
 
+game.GlobalVoiceLines.PerfectClearEncounterStartVoiceLines = game.GlobalVoiceLines.PerfectClearEncounterStartVoiceLines or
+		mod.GlobalVoiceLines.PerfectClearEncounterStartVoiceLines
+game.GlobalVoiceLines.PerfectClearEncounterFailedVoiceLines = game.GlobalVoiceLines.PerfectClearEncounterFailedVoiceLines or
+		mod.GlobalVoiceLines.PerfectClearEncounterFailedVoiceLines
+game.GlobalVoiceLines.PerfectClearEncounterQuicklyFailedVoiceLines = game.GlobalVoiceLines.PerfectClearEncounterQuicklyFailedVoiceLines or
+		mod.GlobalVoiceLines.PerfectClearEncounterQuicklyFailedVoiceLines
+game.GlobalVoiceLines.PerfectClearEncounterClearedVoiceLines = game.GlobalVoiceLines.PerfectClearEncounterClearedVoiceLines or
+		mod.GlobalVoiceLines.PerfectClearEncounterClearedVoiceLines
+
 game.GlobalVoiceLines.PatroclusFishCaughtVoiceLines = game.GlobalVoiceLines.PatroclusFishCaughtVoiceLines or
 		mod.GlobalVoiceLines.PatroclusFishCaughtVoiceLines
 game.GlobalVoiceLines.PersephoneFishCaughtVoiceLines = game.GlobalVoiceLines.PersephoneFishCaughtVoiceLines or
@@ -301,8 +327,9 @@ table.insert(game.HeroVoiceLines.FishNotCaughtTooLateVoiceLines, 1,
 	mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines_PatroclusReaction)
 table.insert(game.HeroVoiceLines.FishNotCaughtVoiceLines, 1,
 	mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines_PatroclusReaction)
+-- #endregion
 
--- Add required HeroVoiceLines
+-- #region HeroVoiceLines
 game.HeroVoiceLines.HitByGraveHandsVoiceLines = game.HeroVoiceLines.HitByGraveHandsVoiceLines or
 		mod.HeroVoiceLines.HitByGraveHandsVoiceLines
 game.HeroVoiceLines.HitByHadesAmmoVoiceLines = game.HeroVoiceLines.HitByHadesAmmoVoiceLines or
@@ -311,12 +338,16 @@ game.HeroVoiceLines.HitByHadesAmmoVoiceLines = game.HeroVoiceLines.HitByHadesAmm
 game.HeroVoiceLines.ThanatosSpawningVoiceLines = game.HeroVoiceLines.ThanatosSpawningVoiceLines or
 		mod.HeroVoiceLines.ThanatosSpawningVoiceLines
 
+-- Custom Voicelines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_RunClearedVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_RunClearedVoiceLines
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines
+-- #endregion
 -- #endregion

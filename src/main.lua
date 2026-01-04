@@ -216,6 +216,7 @@ local function on_ready()
 			import "Game/Obstacles/Chaos.sjson.lua"
 			import "Game/Obstacles/Elysium.sjson.lua"
 			import "Game/Obstacles/Gameplay.sjson.lua"
+			import "Game/Obstacles/Graybox.sjson.lua"
 			import "Game/Obstacles/Styx.sjson.lua"
 			import "Game/Obstacles/Surface.sjson.lua"
 			import "Game/Obstacles/Tartarus.sjson.lua"
@@ -322,6 +323,8 @@ local function on_ready()
 			import "Scripts/EncounterDataElysium.lua"
 			import "Scripts/EncounterDataStyx.lua"
 			import "Scripts/EncounterDataSurface.lua"
+			-- Last since it inherits from encounters in the other biomes
+			import "Scripts/EncounterData.lua"
 
 			-- Loads Room data
 			import "Scripts/RoomSets.lua"
@@ -353,6 +356,7 @@ local function on_ready()
 			import "Scripts/GardenData.lua"
 			import "Scripts/HarvestData.lua"
 			import "Scripts/HeroData.lua"
+			import "Scripts/KeywordData.lua"
 			import "Scripts/LootData.lua"
 			import "Scripts/MarketData.lua"
 			import "Scripts/MetaUpgradeData.lua"
@@ -459,6 +463,7 @@ local function on_ready_late()
 
 	import "Scripts/CombatLogic_Late.lua"
 	import "Scripts/DeathLoopLogic_Late.lua"
+	import "Scripts/EventPresentation_Late.lua"
 	import "Scripts/GhostLogic_Late.lua"
 	import "Scripts/HarvestLogic_Late.lua"
 	import "Scripts/HarvestPresentation_Late.lua"
@@ -466,6 +471,7 @@ local function on_ready_late()
 	import "Scripts/InteractLogic_Late.lua"
 	import "Scripts/MarketLogic_Late.lua"
 	import "Scripts/ObjectiveLogic_Late.lua"
+	import "Scripts/RoomLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
 end
 

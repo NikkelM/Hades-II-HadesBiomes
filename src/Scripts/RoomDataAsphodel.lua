@@ -4,12 +4,22 @@ local roomReplacements = {
 	BaseAsphodel = {
 		SecretDoorRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.SecretDoorRequirements),
 		WellShopRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.WellShopRequirements),
-		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
+		-- The Asphodel teleport in Hades II - we don't want it in Zagreus' Journey
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Asphodel",
 
-		-- Erebus challenge encounter are not currently working - the skip flag always makes the check return false so we don't get any gates spawned
-		ShrinePointDoorRequirements = { Skip = true },
+		ShrinePointDoorRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation" },
+			},
+			{
+				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
+			},
+			{
+				PathFalse = { "CurrentRun", "ActiveBounty" },
+			},
+			RequiredMinRoomsSinceShrinePointDoor = 8,
+		},
 
 		HasHarvestPoint = true,
 		HasShovelPoint = true,
@@ -601,16 +611,15 @@ local roomModifications = {
 
 					HeroMoveOffsetX = -350,
 					HeroMoveOffsetY = -630,
-					HeroMoveDuration = 2.0,
+					HeroMoveDuration = 1.8,
 					FamiliarMoveOffsetX = -350,
 					FamiliarMoveOffsetY = -630,
-					FamiliarMoveDuration = 2.0,
+					FamiliarMoveDuration = 1.8,
 					CameraMoveOffsetY = -950,
 
 					MoveEaseIn = 0.5,
 					MoveEaseOut = 1.0,
 
-					AdditionalEndTimeWait = 1.0,
 					BiomeStart = "Asphodel",
 					BiomeEnd = "Elysium",
 					ShrineBounty = "BossTheseusAndMinotaur",

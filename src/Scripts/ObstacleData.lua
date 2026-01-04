@@ -447,12 +447,110 @@ local addedObstacles = {
 		},
 	},
 	-- #endregion
+
+	-- #region SHRINECHALLENGE
+	-- Entering Erebus
+	ShrinePointDoor = {
+		-- Custom: Added InheritFrom
+		InheritFrom = { "ExitDoor", },
+		CostBase = 2,
+		CostPerDepth = 2,
+
+		UsePromptOffsetY = -5,
+		UsePromptOffsetX = 60,
+
+		RewardPreviewOffsetZ = 120,
+		RewardPreviewOffsetY = 1,
+		BackingAnimation = "UnattachedRoomRewardAvailable-Back",
+		IconSortMode = "Isometric",
+
+		OverheadTextFontSize = 14,
+		OverheadTextOffset = -150,
+		OverheadTextColor = game.Color.DarkOrange,
+
+		UseText = "UseShrinePointDoor_Locked_PreReward",
+		LockedUseText = "UseShrinePointDoor_Locked_PostReward",
+		UnlockedUseText = "UseShrinePointDoor_Unlocked",
+		UnlockedUseTextReroll = "UseShrinePointDoor_Unlocked_Reroll",
+		UnlockedUseTextCannotReroll = "UseShrinePointDoor_Unlocked_CannotReroll",
+		RerollFunctionName = "AttemptRerollDoor",
+		AllowReroll = true,
+
+		LockedUseSound = "/Leftovers/SFX/OutOfAmmo2",
+		UnlockedUseSound = "/Leftovers/SFX/NomadSprint",
+		ExitPortalSound = "/SFX/HeatCollectionPickup",
+
+		EntranceVfx = "ZagreusSecretDoorDiveFadeFx_Shrine",
+		EntranceColorGrade = "SmokeTrap",
+
+		ExitDoorOpenAnimation = "ShrinePointDoor_Revealed",
+		ExitDoorCloseAnimation = "ShrinePointDoor_Revealed",
+		UnlockedAnimation = "ShrinePointDoor_Revealed",
+		UnlockedSound = "/SFX/HeatCollectionPickup",
+
+		-- Custom
+		ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesShrineGateExitPresentation",
+		ExitBlockedByShrinePointsVoiceLines = {
+			Cooldowns = {
+				{ Name = "MelinoeAnyQuipSpeech" },
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 0.25,
+				UsePlayerSource = true,
+				SkipCooldownCheckIfNonePlayed = true,
+				-- { Cue = "/VO/MelinoeField_3665", Text = "Only Fear can break this free..." },
+				{ Cue = "/VO/MelinoeField_3666", Text = "Too little Fear this night.", },
+				{ Cue = "/VO/MelinoeField_3667", Text = "I swore an Oath..." },
+				{ Cue = "/VO/MelinoeField_3668", Text = "Not frightening enough..." },
+				{ Cue = "/VO/Melinoe_3519",      Text = "I won't betray my vows." },
+				{ Cue = "/VO/Melinoe_3520",      Text = "I've not yet earned the right." },
+			},
+		},
+	},
+
+	-- Going back to the biome
+	ShrinePointExitDoor = {
+		-- Custom: Added InheritFrom
+		InheritFrom = { "ExitDoor", },
+		IsDefaultDoor = true,
+
+		UsePromptOffsetY = -5,
+		UsePromptOffsetX = 60,
+
+		RewardPreviewOffsetZ = 120,
+		RewardPreviewOffsetY = 0,
+		BackingAnimation = "UnattachedRoomRewardAvailable-Back",
+		IconSortMode = "Isometric",
+
+		UnlockedUseText = "UseExitSecretRoom",
+		UnlockedUseTextReroll = "UseExitSecretRoom_Reroll",
+		UnlockedUseTextCannotReroll = "UseExitSecretRoom_CannotReroll",
+		RerollFunctionName = "AttemptRerollDoor",
+		AllowReroll = true,
+
+		LockedUseSound = "/Leftovers/SFX/OutOfAmmo2",
+		UnlockedUseSound = "/Leftovers/SFX/NomadSprint",
+		ExitPortalSound = "/SFX/HeatCollectionPickup",
+
+		ExitDoorOpenAnimation = "ShrinePointDoor_Revealed",
+		ExitDoorCloseAnimation = "ShrinePointDoor_Revealed",
+		UnlockedAnimation = "ShrinePointDoor_Revealed",
+
+		-- Custom - Hades II text is "Descend?", but it should be "Locked" for this door
+		UseText = "UseShrinePointDoor_Locked_PreReward",
+		LockedUseText = "UseShrinePointDoor_Locked_PreReward",
+	},
+	-- #endregion
 }
 
 -- We need to re-process data inheritance for any redefined obstacles that define an InheritFrom
 local needInheritanceProcessing = {
 	"HealthFountainAsphodel",
 	"HealthFountainElysium",
+	"ShrinePointDoor",
+	"ShrinePointExitDoor",
 	"StyxDoor01",
 	"TravelDoor03",
 	"StyxWarpDoor",

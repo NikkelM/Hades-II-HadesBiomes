@@ -160,7 +160,7 @@ modutil.mod.Path.Wrap("LeaveRoom", function(base, currentRun, door)
 	return base(currentRun, door)
 end)
 
--- Overriding to add in the logic for the Styx exit doors always having two minibosses
+-- Overriding to add in the logic for the Styx miniboss and ShrineChallenge/Erebus room rewards
 modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
 	-- TODO: Only while the mod is in early access
 	if run.ModsNikkelMHadesBiomesIsModdedRun and not mod.HiddenConfig.IgnoreShowFeedbackMessage then
@@ -171,7 +171,8 @@ modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
 		end
 	end
 
-	if run.ModsNikkelMHadesBiomesIsModdedRun and room.Name == "D_Hub" then
+	-- We are either in D_Hub and need to set up the miniboss exits, or the room has a ShrineChallenge/Erebus door, which also needs upgraded rewards
+	if run.ModsNikkelMHadesBiomesIsModdedRun and (room.Name == "D_Hub" or room.ShrinePointDoorChanceSuccess == true) then
 		return mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	else
 		return base(run, room)
@@ -201,6 +202,77 @@ modutil.mod.Path.Wrap("DisableTrap", function(base, enemy)
 	end
 end)
 
+modutil.mod.Path.Wrap("CheckSpecialDoorRequirement", function(base, door)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		local originalReturnValue = base(door)
+
+		-- None of the other, higher priority reasons were eligible
+		if originalReturnValue == nil and door and door.ShrinePointReq ~= nil and game.GetTotalSpentShrinePoints() < door.ShrinePointReq then
+			return "ExitBlockedByShrinePointReq"
+		end
+
+		return originalReturnValue
+	end
+
+	return base(door)
+end)
+
+modutil.mod.Path.Wrap("HandleSecretSpawns", function(base, currentRun)
+	base(currentRun)
+
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		local currentRoom = currentRun.CurrentRoom
+		local secretPointIds = GetIdsByType({ Name = "SecretPoint" })
+
+		if currentRun.CurrentRoom and currentRun.CurrentRoom.ModsNikkelMHadesBiomesSecretDoorOnId then
+			-- Exclude the ID of the Chaos Gate that was spawned in this room from being used for the ShrinePointDoor
+			for i, secretPointId in ipairs(secretPointIds) do
+				if secretPointId == currentRun.CurrentRoom.ModsNikkelMHadesBiomesSecretDoorOnId then
+					table.remove(secretPointIds, i)
+					break
+				end
+			end
+		end
+
+		if not game.IsEmpty(secretPointIds) and mod.IsShrinePointDoorEligible(currentRun, currentRoom) then
+			currentRoom.ForceShrinePointDoor = true
+			local shrinePointRoomOptions = currentRoom.ShrinePointRoomOptions or game.RoomData.ModsNikkelMHadesBiomesBaseRoom
+
+			if game.IsEmpty(shrinePointRoomOptions) then
+				mod.DebugPrint("No shrine point room options available! They should be contained in all modded rooms, or fall back to ModsNikkelMHadesBiomesBaseRoom", 1)
+				return
+			end
+
+			local shrinePointRoomName = game.GetRandomValue(shrinePointRoomOptions)
+			local shrinePointRoomData = game.RoomSetData.Challenge[shrinePointRoomName]
+			if shrinePointRoomData ~= nil then
+				local secretPointId = game.RemoveRandomValue(secretPointIds)
+				local shrinePointDoor = game.DeepCopyTable(game.ObstacleData.ShrinePointDoor)
+				shrinePointDoor.ObjectId = SpawnObstacle({
+					Name = "ShrinePointDoor",
+					Group = "FX_Terrain",
+					DestinationId = secretPointId,
+					AttachedTable = shrinePointDoor
+				})
+				game.SetupObstacle(shrinePointDoor)
+				shrinePointDoor.ShrinePointReq = currentRoom.ShrinePointDoorCost or
+						(shrinePointDoor.CostBase + (shrinePointDoor.CostPerDepth * (currentRun.RunDepthCache - 1)))
+				local activeShrinePoints = game.GetTotalSpentShrinePoints()
+				local costFontColor = game.Color.CostAffordable
+				if shrinePointDoor.ShrinePointReq > activeShrinePoints then
+					costFontColor = game.Color.CostUnaffordable
+				end
+				local shrinePointRoom = game.CreateRoom(shrinePointRoomData, { SkipChooseReward = true })
+				shrinePointRoom.NeedsReward = true
+				game.AssignRoomToExitDoor(shrinePointDoor, shrinePointRoom)
+				shrinePointDoor.OnUsedPresentationFunctionName = "ShrinePointDoorUsedPresentation"
+				currentRun.LastShrinePointDoorDepth = game.GetRunDepth(currentRun)
+			end
+		end
+	end
+end)
+
+-- This is essentially the same function as vanilla, and only inserts the logic to upgrade consumable rewards for Styx miniboss rooms and ShrineChallenge/Erebus rooms
 function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	-- Synchronize the RNG to its initial state. Makes room reward choices deterministic on save/load
 	game.RandomSynchronize()
@@ -241,7 +313,7 @@ function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 			end
 			local roomForDoorData = nil
 			if door.ForceRoomName ~= nil then
-				roomForDoorData = RoomData[door.ForceRoomName]
+				roomForDoorData = game.RoomData[door.ForceRoomName]
 			else
 				roomForDoorData = game.ChooseNextRoomData(run, door.ChooseRoomArgs, exitDoorsIPairs)
 			end
@@ -302,12 +374,12 @@ function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 			doorRoom.ChosenRewardType = game.ChooseRoomReward(game.CurrentRun, doorRoom, doorRoom.RewardStoreName,
 				rewardsChosen, { Door = door })
 
-			-- Custom logic for Styx Miniboss rooms - change Consumables to their big variant
+			-- Custom logic for Styx Miniboss and ShrineChallenge rooms - change Consumables to their big variant
 			if doorRoom.ChosenRewardType ~= nil and doorRoom.UseOptionalOverrides and doorRoom.RewardConsumableOverrideMap then
 				-- Add the original reward to the chosen list to avoid duplicates
 				table.insert(rewardsChosen, { RewardType = doorRoom.ChosenRewardType, ForceLootName = doorRoom.ForceLootName, })
 				-- For the reroll logic
-				doorRoom.ModsNikkelMHadesBiomesStyxMinibossRoomOriginalReward = doorRoom.ChosenRewardType
+				doorRoom.ModsNikkelMHadesBiomesOriginalOverrideReward = doorRoom.ChosenRewardType
 				-- Then replace it with the upgraded version
 				local overrideConsumable = doorRoom.RewardConsumableOverrideMap[doorRoom.ChosenRewardType]
 				if overrideConsumable ~= nil then

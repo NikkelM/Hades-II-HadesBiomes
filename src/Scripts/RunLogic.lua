@@ -50,6 +50,17 @@ modutil.mod.Path.Wrap("ChooseStartingRoom", function(base, currentRun, args)
 	return base(currentRun, args)
 end)
 
+modutil.mod.Path.Wrap("CreateRoom", function(base, roomData, args)
+	local room = base(roomData, args)
+
+	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		local shrinePointDoorChance = room.ShrinePointDoorSpawnChance or game.RoomData.ModsNikkelMHadesBiomesBaseRoom.ShrinePointDoorSpawnChance or 0.0
+		room.ShrinePointDoorChanceSuccess = game.RandomChance(shrinePointDoorChance)
+	end
+
+	return room
+end)
+
 -- Recording stats after a run
 modutil.mod.Path.Wrap("RecordRunStats", function(base)
 	-- Bounties are handled in the base function

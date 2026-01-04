@@ -370,6 +370,104 @@ local additionalEnemySets = {
 	},
 	-- #endregion
 
+	-- #region EREBUS GATES/SHRINECHALLENGE
+	ShrineChallengeSuperElite = {
+		"BloodlessPitcherSuperElite",
+		"ShadeShieldUnitSuperElite",
+		"ShadeSpearUnitSuperElite",
+		"ShadeSwordUnitSuperElite",
+		"ShieldRangedSuperElite",
+		"ShadeBowUnitSuperElite",
+		"PunchingBagUnitSuperElite",
+		"LightRangedSuperElite",
+		"BloodlessNakedSuperElite",
+		"ChariotSuperElite",
+		"SwarmerSuperElite",
+	},
+	ShrineChallengeFodder = {
+		"Swarmer",
+		"ThiefMineLayer",
+		"HeavyRanged",
+		"ChariotSuicide",
+		"LightRanged",
+		"BloodlessNaked"
+	},
+	ShrineChallengeTartarus = {
+		"LightRangedSuperElite",
+		"LightRanged",
+		"LightRangedElite",
+		"SwarmerSuperElite",
+		"Swarmer",
+		"SwarmerElite",
+		"HeavyRanged",
+		"HeavyRangedElite",
+		"ChariotSuicide",
+		"BloodlessNaked",
+		"HeavyMelee",
+		"HeavyMeleeElite",
+		"PunchingBagUnit",
+		"PunchingBagUnitElite"
+	},
+	ShrineChallengeAsphodel = {
+		"ShadeBowUnitSuperElite",
+		"PunchingBagUnitSuperElite",
+		"LightRangedSuperElite",
+		"BloodlessNakedSuperElite",
+		"ShadeSwordUnitSuperElite",
+		"ShieldRangedSuperElite",
+		"ChariotSuicide",
+		"ChariotSuicideElite",
+		"BloodlessNaked",
+		"BloodlessNakedElite",
+		"BloodlessGrenadier",
+		"BloodlessGrenadierElite",
+		"BloodlessSelfDestruct",
+		"BloodlessSelfDestructElite",
+		"BloodlessPitcher",
+		"BloodlessPitcherElite",
+		"BloodlessWaveFist",
+		"BloodlessWaveFistElite",
+		"HeavyRangedElite",
+		"SpreadShotUnit",
+		"SpreadShotUnitElite",
+		"FreezeShotUnit",
+		"FreezeShotUnitElite",
+	},
+	ShrineChallengeElysium = {
+		"FlurrySpawnerSuperElite",
+		"FlurrySpawnerSuperElite",
+		"HitAndRunUnitSuperElite",
+		"HitAndRunUnitSuperElite",
+		"BloodlessPitcherSuperElite",
+		"BloodlessPitcherSuperElite",
+		"ShadeShieldUnitSuperElite",
+		"ShadeShieldUnitSuperElite",
+		"ChariotSuperElite",
+		"ChariotSuperElite",
+		"ShadeBowUnitSuperElite",
+		"ShadeBowUnitSuperElite",
+		"PunchingBagUnitSuperElite",
+		"PunchingBagUnitSuperElite",
+		"ShadeSpearUnit",
+		"ShadeSpearUnitElite",
+		"ShadeBowUnit",
+		"ShadeBowUnitElite",
+		"ShadeShieldUnit",
+		"ShadeShieldUnitElite",
+		"ShadeSwordUnit",
+		"ShadeSwordUnitElite",
+		"ShieldRangedElite",
+		"SplitShotUnit",
+		"SplitShotUnitElite",
+		"Chariot",
+		"ChariotElite",
+		"ChariotSuicide",
+		"ChariotSuicideElite",
+		"FlurrySpawner",
+		"FlurrySpawner",
+	},
+	-- #endregion
+
 	-- #region ENVIRONMENT
 	-- Decides which traps can be added to rooms that randomize traps
 	TrapsBiome1 = { "SpikeTrap", },
@@ -385,5 +483,7 @@ end
 for setName, setData in pairs(additionalEnemySets) do
 	if not game.EnemySets[setName] then
 		game.EnemySets[setName] = setData
+	else
+		mod.DebugPrint("Enemy set '" .. setName .. "' already exists, skipping addition.", 2)
 	end
 end
