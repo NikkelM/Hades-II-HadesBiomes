@@ -449,7 +449,7 @@ local addedObstacles = {
 	-- #endregion
 
 	-- #region SHRINECHALLENGE
-	-- TODO: Check all function calls/texts
+	-- Entering Erebus
 	ShrinePointDoor = {
 		-- Custom: Added InheritFrom
 		InheritFrom = { "ExitDoor", },
@@ -510,6 +510,7 @@ local addedObstacles = {
 		},
 	},
 
+	-- Going back to the biome
 	ShrinePointExitDoor = {
 		-- Custom: Added InheritFrom
 		InheritFrom = { "ExitDoor", },
@@ -523,22 +524,23 @@ local addedObstacles = {
 		BackingAnimation = "UnattachedRoomRewardAvailable-Back",
 		IconSortMode = "Isometric",
 
-		UseText = "UseSecretDoor_Locked_PreReward",
-		LockedUseText = "UseSecretDoor_Locked_PostReward",
 		UnlockedUseText = "UseExitSecretRoom",
 		UnlockedUseTextReroll = "UseExitSecretRoom_Reroll",
 		UnlockedUseTextCannotReroll = "UseExitSecretRoom_CannotReroll",
 		RerollFunctionName = "AttemptRerollDoor",
 		AllowReroll = true,
 
-		-- UseSound = "/Leftovers/SFX/NomadSprint",
 		LockedUseSound = "/Leftovers/SFX/OutOfAmmo2",
 		UnlockedUseSound = "/Leftovers/SFX/NomadSprint",
 		ExitPortalSound = "/SFX/HeatCollectionPickup",
 
 		ExitDoorOpenAnimation = "ShrinePointDoor_Revealed",
 		ExitDoorCloseAnimation = "ShrinePointDoor_Revealed",
-		UnlockedAnimation = "ShrinePointDoor_Revealed"
+		UnlockedAnimation = "ShrinePointDoor_Revealed",
+
+		-- Custom - Hades II text is "Descend?", but it should be "Locked" for this door
+		UseText = "UseShrinePointDoor_Locked_PreReward",
+		LockedUseText = "UseShrinePointDoor_Locked_PreReward",
 	},
 	-- #endregion
 }
