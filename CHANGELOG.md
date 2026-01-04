@@ -1,9 +1,10 @@
 # Changelog
 
-## v0.2.1
+## v0.3.0
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- NEW: Enter **Erebus Gates** and clear their encounter without being hit for upgraded rewards! You can perform a new incantation to make these gates appear during *Zagreus' Journey* runs, and can enter them if there is enough *Fear* in the Night.
 - Fixed: Music can disappear after the "Barge of Death" encounter in Asphodel.
 
 Other fixes and improvements:
