@@ -5,7 +5,8 @@ local roomKeyReplacements = {
 		LegendaryChance = "Legendary",
 		EpicChance = "Epic",
 		RareChance = "Rare",
-	}
+	},
+	SellTraitShopChance = "SellShopSpawnChance",
 }
 
 -- Applies modifications to base room objects, and then adds the new room objects to the game

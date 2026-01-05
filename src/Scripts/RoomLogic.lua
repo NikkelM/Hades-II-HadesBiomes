@@ -234,12 +234,15 @@ modutil.mod.Path.Wrap("HandleSecretSpawns", function(base, currentRun)
 			end
 		end
 
+		-- ShrineChallenge/Erebus Gates
 		if not game.IsEmpty(secretPointIds) and mod.IsShrinePointDoorEligible(currentRun, currentRoom) then
 			currentRoom.ForceShrinePointDoor = true
 			local shrinePointRoomOptions = currentRoom.ShrinePointRoomOptions or game.RoomData.ModsNikkelMHadesBiomesBaseRoom
 
 			if game.IsEmpty(shrinePointRoomOptions) then
-				mod.DebugPrint("No shrine point room options available! They should be contained in all modded rooms, or fall back to ModsNikkelMHadesBiomesBaseRoom", 1)
+				mod.DebugPrint(
+					"No shrine point room options available! They should be contained in all modded rooms, or fall back to ModsNikkelMHadesBiomesBaseRoom",
+					1)
 				return
 			end
 

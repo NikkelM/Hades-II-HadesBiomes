@@ -54,7 +54,8 @@ modutil.mod.Path.Wrap("CreateRoom", function(base, roomData, args)
 	local room = base(roomData, args)
 
 	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		local shrinePointDoorChance = room.ShrinePointDoorSpawnChance or game.RoomData.ModsNikkelMHadesBiomesBaseRoom.ShrinePointDoorSpawnChance or 0.0
+		local shrinePointDoorChance = room.ShrinePointDoorSpawnChance or
+				game.RoomData.ModsNikkelMHadesBiomesBaseRoom.ShrinePointDoorSpawnChance or 0.0
 		room.ShrinePointDoorChanceSuccess = game.RandomChance(shrinePointDoorChance)
 	end
 

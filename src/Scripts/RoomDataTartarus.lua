@@ -771,7 +771,6 @@ local roomModifications = {
 			[1] = { FunctionName = "HadesSpeakingPresentation", Args = { VoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines, StartDelay = 2.5 } },
 		},
 		NextRoomSet = { "Asphodel" },
-		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeRestoreSellTraitShop" },

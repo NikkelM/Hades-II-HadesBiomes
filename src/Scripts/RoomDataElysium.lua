@@ -567,7 +567,6 @@ local roomModifications = {
 		ThreadedEvents = {
 			[1] = { FunctionName = "HadesSpeakingPresentation", Args = { VoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines, StartDelay = 2.5 } },
 		},
-		SellShopSpawnChance = 1.0,
 		SellShopRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeRestoreSellTraitShop" },

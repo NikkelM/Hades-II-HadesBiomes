@@ -75,3 +75,12 @@ modutil.mod.Path.Context.Wrap("RestockWorldItem", function(replacedIndex, restoc
 		end
 	end)
 end)
+
+modutil.mod.Path.Wrap("RunShopGeneration", function(base, room)
+	base(room)
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and room.Store == nil and game.IsSellTraitShopEligible(room) then
+		-- Using RoomShop to ensure it's not empty so we can reroll the offered boons
+		room.Store = game.FillInShopOptions({ StoreData = game.StoreData.RoomShop, RoomName = room.Name })
+	end
+end)
