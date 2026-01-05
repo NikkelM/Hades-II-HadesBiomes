@@ -156,4 +156,12 @@ modutil.mod.Path.Wrap("PerfectClearObjectiveFailedPresentation", function(base, 
 	end
 end)
 
+function mod.PerfectClearEncounterEndPresentation(eventSource)
+	if game.AudioState.SecretMusicId ~= nil then
+		game.EndMusic(game.AudioState.SecretMusicId, game.AudioState.SecretMusicName)
+		game.AudioState.SecretMusicId = nil
+		game.AudioState.SecretMusicName = nil
+	end
+end
+
 -- #endregion

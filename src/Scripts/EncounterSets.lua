@@ -103,7 +103,8 @@ mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsPerfectClear = {
 	{ FunctionName = "CheckForAllEnemiesDead" },
 	{ FunctionName = "PostCombatAudio" },
 	{ FunctionName = "CheckActiveObjectivesStatus" },
-	{ FunctionName = "PerfectClearEncounterEndPresentation" },
+	-- The Hades II version has an incorrect reference to SecretMusicName instead of AudioState.SecretMusicName
+	{ FunctionName = _PLUGIN.guid .. "." .. "PerfectClearEncounterEndPresentation" },
 	{ FunctionName = "SpawnPerfectClearRoomReward" },
 }
 -- #endregion
