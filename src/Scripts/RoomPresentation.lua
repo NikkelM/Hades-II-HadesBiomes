@@ -28,7 +28,7 @@ end)
 
 -- Always force using the original Hades room transition animation in modded runs
 modutil.mod.Path.Wrap("FullScreenFadeInAnimation", function(base, animationName, colorGradeName)
-	if game.CurrentHubRoom == nil and game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+	if game.CurrentHubRoom == nil and game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and animationName ~= "RerollTransitionOut" then
 		animationName = "ModsNikkelMHadesBiomesRoomTransitionOut"
 	end
 
@@ -37,7 +37,7 @@ end)
 
 -- The animation on the run start Chaos gate is defined on a custom function
 modutil.mod.Path.Wrap("FullScreenFadeOutAnimation", function(base, animationName, colorGradeName)
-	if game.CurrentHubRoom == nil and game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+	if game.CurrentHubRoom == nil and game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and animationName ~= "RerollTransitionIn" then
 		animationName = "ModsNikkelMHadesBiomesRoomTransitionIn"
 	end
 
