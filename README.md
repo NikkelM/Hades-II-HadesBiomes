@@ -21,7 +21,7 @@ Take a look at what Haelian and Boated think of the mod:
 <br>
 After installing the mod, a Chaos Gate will appear in the Crossroads, which will allow you to experience Zagreus' journey through the Underworld as Melinoë.
 
-It is highly recommended to complete the true ending of Hades before playing with this mod, as not all story events are included.
+It is highly recommended that you complete the true ending of Hades before playing with this mod, as not all story events are included.
 
 ## Installation
 
@@ -30,7 +30,7 @@ The mod will not work without it.
 If you have Hades and Hades II installed in different parent folders, please refer to the [Configuration](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) wiki page for instructions on how to ensure the mod can discover your Hades installation.
 You must start the game once to generate the configuration file.
 
-You **must** uninstall your Hades mods by renaming the `Mods` folder and running `modimporter.exe` before installing this mod!
+You **must** uninstall your Hades mods by renaming or deleting the `Mods` folder and running `modimporter.exe` before installing this mod!
 
 You can install this mod just like any other Hades II mod available on [Thunderstore](https://thunderstore.io/c/hades-ii/), the recommended mod manager is [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/).
 Install r2modman by using `Manual Download` on the linked page, and running the setup executable in the downloaded `.zip` file.
@@ -49,10 +49,11 @@ This mod requires an additional 1GB of disk space.
 
 If you have Hades and Hades II installed in different parent folders, such as through different storefronts (Steam/Epic Games/Microsoft Store/Game Pass), you will need to provide the path of your Hades installation in the mod's configuration file in your mod manager.
 Set the `hadesGameFolder` configuration option to the folder where Hades is installed (such as `C:\Program Files (x86)\Steam\steamapps\common\Hades` if installed through Steam, `C:\Program Files (x86)\Epic Games\Games\Hades` if installed through Epic Games, or `C:/Xbox/Hades` for Microsoft Store/Game Pass).
+Refer to the [Configuration](#configuration) section below for more information on how to find the configuration file.
 
 If you would like more information or experience any issues, please refer to the [Installation](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Installation-&-Uninstallation) wiki page.
 
-**Before removing** the mod from r2modman, you must first uninstall it through the `uninstall` configuration setting, to prevent any issues with leftover files.
+**Before removing** the mod from r2modman, you should first uninstall it through the `uninstall` configuration setting, to prevent any issues with leftover files.
 Only uninstall the mod while in the Crossroads to prevent issues.
 
 ## Configuration

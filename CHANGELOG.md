@@ -43,7 +43,7 @@ Other fixes and improvements:
 - Fixed: Dusa's codex entry is replaced with the one from the first game.
 - Fixed: Some textures in some rooms can be misplaced when reloading a save while in them.
 - Fixed: In the Rift of Thessaly, rerolling doors can choose the same reward again in rare cases.
-- Fixed: A manual reinstall without a previous uninstall marks the Hades installation as failed due to an Olympus Extra installation, even if Olympus Extra is not installed.
+- Fixed: A manual reinstall without a previous uninstall marks the Hades installation as invalid due to an Olympus Extra installation, even if Olympus Extra is not installed.
 <!--Releasenotes end-->
 
 ## v0.2.0
