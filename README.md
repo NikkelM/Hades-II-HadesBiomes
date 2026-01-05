@@ -25,6 +25,8 @@ It is highly recommended that you complete the true ending of Hades before playi
 
 ## Installation
 
+> Installing on Steam Deck? Please also refer to the [Steam Deck Installation Guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/steam-deck) on the Hades II Mod wiki.
+
 In order to use this mod you _must_ have Hades installed on your system at all times when playing Hades II.
 The mod will not work without it.
 If you have Hades and Hades II installed in different parent folders, please refer to the [Configuration](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) wiki page for instructions on how to ensure the mod can discover your Hades installation.
