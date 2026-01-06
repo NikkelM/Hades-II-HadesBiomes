@@ -984,6 +984,30 @@ local newData = {
 	-- 	Description =
 	-- 	"Erebus is so much more than the woods surrounding the Crossroads. Your father, the Lord Hades, once used it to keep the ever-growing army of shades awaiting his judgement at bay."
 	-- },
+	-- Add Pool of Purging/SellShops/SellTraitShops to post-boss rooms
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation",
+	-- 	DisplayName = "Summoning of Blood-Red Fountains",
+	-- 	Description =
+	-- 	"Cause a {$Keywords.SellTraitShop} to always appear in the space between each {$Keywords.Biome} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation_Flavor",
+	-- 	Description =
+	-- 	"The Titan Chronos and the boatman Charon may disagree on more things than not, but both are aware that most anything can be bought for the right price, even Olympian favors."
+	-- },
+	-- Add Pool of Purging/SellShops/SellTraitShops to any rooms during a run
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation",
+	-- 	DisplayName = "Rise of Blood-Red Fountains",
+	-- 	Description =
+	-- 	"Cause {$Keywords.RoomPlural} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} to sometimes contain a {$Keywords.SellTraitShop}."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation_Flavor",
+	-- 	Description =
+	-- 	"One would think that any Olympian boon is one to be cherished, but sometimes even the Princess of the Underworld finds herself in need of coin."
+	-- },
 	-- #endregion
 
 	-- #region Keywords
