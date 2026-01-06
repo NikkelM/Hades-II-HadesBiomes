@@ -1,9 +1,96 @@
 --[[ Modded incantation order:
-ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates
-ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics
-]]--
+ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation - Sell Shops after bosses - after 2 runs
+ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation - Sell Shops during runs - after 3 runs
+ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after clearing 2 runs
+ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after 6 runs
+]] --
 
 local newIncantations = {
+	-- #region Pool of Purging/SellShops/SellTraitShops
+	-- TODO: Same incantations for WellShops, which should come before SellTraitShops
+	ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation = {
+		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_selltrait",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantTartarus = 2,
+			ModsNikkelMHadesBiomes_CropTartarus = 1,
+		},
+		GameStateRequirements = {
+			{
+				-- Player already has Pools of Purging in all vanilla post-boss rooms
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossSellTraitShops" },
+			},
+			{
+				PathTrue = { "GameState", "RoomsEntered", "X_PostBoss01" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 2,
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_selltrait",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+			ModsNikkelMHadesBiomes_CropAsphodel = 1,
+			ModsNikkelMHadesBiomes_OreTartarus = 3,
+		},
+		GameStateRequirements = {
+			{
+				-- Player already has Pools of Purging in all modded post-boss rooms
+				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation" },
+			},
+			{
+				PathTrue = { "GameState", "RoomsEntered", "Y_PostBoss01" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 3,
+			},
+		},
+	},
+	-- #endregion
+	-- #region ShrineChallenge/Erebus Gates
+	ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_shrinePointGates_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 1,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "RoomsEntered", "D_Hub" },
+			},
+			{
+				-- The Oath of the Unseen must be unlocked
+				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 2,
+			},
+		},
+	},
+	-- #endregion
 	-- #region Cosmetics
 	ModsNikkelMHadesBiomesUnlockCosmeticsIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation",
@@ -15,13 +102,13 @@ local newIncantations = {
 		Cost = {
 			CosmeticsPoints = 150,
 			ModsNikkelMHadesBiomes_PlantTartarus = 2,
-			ModsNikkelMHadesBiomes_OreTartarus = 2,
+			ModsNikkelMHadesBiomes_OreAsphodel = 4,
 		},
 		GameStateRequirements = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 1,
+				Value = 6,
 			},
 			NamedRequirements = { "CosmeticsShopUnlocked" },
 		},
@@ -46,29 +133,6 @@ local newIncantations = {
 			PreLineWait = 0.55,
 			ObjectType = "NPC_Dora_01",
 			{ Cue = "/VO/Dora_0272", Text = "Got some new stuff here.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
-		},
-	},
-	-- #endregion
-	-- #region ShrineChallenge/Erebus Gates
-	ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation = {
-		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
-		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
-
-		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
-
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_shrinePointGates_01",
-		Cost = {
-			ModsNikkelMHadesBiomes_BossResourceAsphodel = 1,
-			ModsNikkelMHadesBiomes_BossResourceStyx = 1,
-		},
-		GameStateRequirements = {
-			{
-				PathTrue = { "GameState", "RoomsEntered", "D_Hub" },
-			},
-			{
-				-- The Oath of the Unseen must be unlocked
-				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
-			},
 		},
 	},
 	-- #endregion

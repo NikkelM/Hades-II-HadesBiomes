@@ -10,6 +10,15 @@ local roomReplacements = {
 		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
 		BreakableOptions = { "ModsNikkelMHadesBiomesBreakableIdle1", "ModsNikkelMHadesBiomesBreakableIdle2", "ModsNikkelMHadesBiomesBreakableIdle3" },
 
+		SellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation" },
+			},
+			RequiredMinBiomeDepth = 4,
+			RequiredMinCompletedRuns = 1,
+			RequiredUpgradeableGodTraits = 3,
+			RequiredMinRoomsSinceSellTraitShop = 6,
+		},
 		ShrinePointDoorRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation" },
@@ -773,7 +782,7 @@ local roomModifications = {
 		NextRoomSet = { "Asphodel" },
 		SellShopRequirements = {
 			{
-				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeRestoreSellTraitShop" },
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation" },
 			},
 		},
 		-- Defines where the well spawns, making sure the sell shop spawns on the other possible ID. Available IDs are 480768 and 487438

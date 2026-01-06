@@ -8,6 +8,14 @@ local roomReplacements = {
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Asphodel",
 
+		SellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation" },
+			},
+			RequiredMinCompletedRuns = 1,
+			RequiredUpgradeableGodTraits = 3,
+			RequiredMinRoomsSinceSellTraitShop = 2,
+		},
 		ShrinePointDoorRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation" },
@@ -575,7 +583,7 @@ local roomModifications = {
 		},
 		SellShopRequirements = {
 			{
-				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeRestoreSellTraitShop" },
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation" },
 			},
 		},
 		-- Defines where the well spawns, making sure the sell shop spawns on the other possible ID - available IDs are 480768 and 532755

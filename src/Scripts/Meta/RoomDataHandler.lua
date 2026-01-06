@@ -1,17 +1,17 @@
 -- Contains generic functions to handle migrating room data from Hades to Hades II
 
-local roomKeyReplacements = {
-	BoonRaritiesOverride = {
-		LegendaryChance = "Legendary",
-		EpicChance = "Epic",
-		RareChance = "Rare",
-	},
-	SellTraitShopChance = "SellShopSpawnChance",
-}
-
 -- Applies modifications to base room objects, and then adds the new room objects to the game
 function mod.ApplyModificationsAndInheritRoomData(base, modifications, replacements, roomSetName)
 	-- Rename keys
+	local roomKeyReplacements = {
+		BoonRaritiesOverride = {
+			LegendaryChance = "Legendary",
+			EpicChance = "Epic",
+			RareChance = "Rare",
+		},
+		SellTraitShopChance = "SellShopSpawnChance",
+		SellTraitShopRequirements = "SellShopRequirements",
+	}
 	for roomName, roomData in pairs(base) do
 		mod.RenameKeys(roomData, roomKeyReplacements, roomName)
 	end

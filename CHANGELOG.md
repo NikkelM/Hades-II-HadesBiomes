@@ -5,7 +5,7 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - NEW: Enter **Erebus Gates** and clear their encounters without being hit for upgraded rewards! You can perform a new incantation to make these gates appear during *Zagreus' Journey* runs, and can enter them if there is enough *Fear* in the Night.
-- Stygian Wells can now appear in rooms in Zagreus' Journey runs.
+- Pools of Purging can now appear in rooms in Zagreus' Journey runs (after performing the accompanying incantations).
 - Fixed: Music can disappear after the "Barge of Death" encounter in Asphodel.
 - Fixed: When first entering a new region, music starts to play, then quickly cuts out and changes.
 - Fixed: Attempting to reroll a door with Ash, Bones, or Nectar in a room with three exits freezes the game.

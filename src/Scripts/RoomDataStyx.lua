@@ -9,6 +9,14 @@ local roomReplacements = {
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Styx",
 
+		SellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation" },
+			},
+			RequiredMinCompletedRuns = 1,
+			RequiredUpgradeableGodTraits = 3,
+			RequiredMinRoomsSinceSellTraitShop = 6,
+		},
 		-- We set the requirements, but the chance is set to 0 for Styx (there are no Chaos or Erebus Gates)
 		ShrinePointDoorRequirements = {
 			{
