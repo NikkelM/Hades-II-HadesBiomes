@@ -21,8 +21,15 @@ local newIncantations = {
 			ModsNikkelMHadesBiomes_OreTartarus = 2,
 		},
 		GameStateRequirements = {
-			-- As this is used to indicate if the Cauldron category itself is revealed as well
-			NamedRequirements = { "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation_Unlockable" },
+			{
+				-- Player already has Wells of Charon in vanilla runs
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeWellShops" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
 		},
 		IncantationVoiceLines = {
 			{
@@ -245,7 +252,8 @@ local sortedIncantationNames = getSortedIncantations(newIncantations)
 for _, incantationName in pairs(sortedIncantationNames) do
 	local incantationData = newIncantations[incantationName]
 	local insertAfterItem = incantationData.ModsNikkelMHadesBiomesInsertAfterItem
-	local cauldronCategory = incantationData.ModsNikkelMHadesBiomesCauldronCategory or "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical"
+	local cauldronCategory = incantationData.ModsNikkelMHadesBiomesCauldronCategory or
+			"WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical"
 	-- This table is defined in GhostAdminData_Items.lua in Hades II
 	for _, ghostAdminCategory in ipairs(game.ScreenData.GhostAdmin.ItemCategories) do
 		if ghostAdminCategory.Name == cauldronCategory then

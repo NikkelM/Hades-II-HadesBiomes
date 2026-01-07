@@ -6,7 +6,10 @@ local newCauldronCategories = {
 		Animations = { Default = "GUI\\Screens\\CriticalItemShop\\CategoryTab01", Highlight = "GUI\\Screens\\CriticalItemShop\\CategoryTabMouseOver01", Active = "GUI\\Screens\\CriticalItemShop\\CategoryTabSelected01", Reveal = "CriticalItemShopCategoryTabReveal", },
 		OneRevealPerRun = true,
 		GameStateRequirements = {
-			NamedRequirements = { "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation_Unlockable" },
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "IsAnyWorldUpgradeEligible",
+				FunctionArgs = { ItemDataCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical" },
+			},
 		},
 		-- Incantations/WorldUpgrades are added as ipairs in the loop in WorldUpgradeData.lua
 	},

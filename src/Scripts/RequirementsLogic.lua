@@ -105,6 +105,29 @@ function mod.IsShrinePointDoorEligible(currentRun, currentRoom)
 	return true
 end
 
+-- Used to check if the new Cauldron category should be revealed or not
+function mod.IsAnyWorldUpgradeEligible(source, args)
+	args = args or {}
+	local category = args.ItemDataCategory
+
+	if not category then
+		return false
+	end
+
+	for _, ghostAdminCategory in ipairs(game.ScreenData.GhostAdmin.ItemCategories) do
+		if ghostAdminCategory.Name == category then
+			for _, upgradeName in ipairs(ghostAdminCategory) do
+				local worldUpgrade = game.WorldUpgradeData[upgradeName]
+				if worldUpgrade and worldUpgrade.GameStateRequirements == nil or game.IsGameStateEligible(worldUpgrade, worldUpgrade.GameStateRequirements) then
+					return true
+				end
+			end
+		end
+	end
+
+	return false
+end
+
 function mod.HasSeenEncounter(encounterName)
 	if game.GameState.EncountersOccurredCache[encounterName] ~= nil and game.GameState.EncountersOccurredCache[encounterName] > 0 then
 		return true
