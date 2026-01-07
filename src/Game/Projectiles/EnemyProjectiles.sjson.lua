@@ -521,13 +521,11 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 	-- This property was renamed in Hades II
 	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then
 		projectile.Effect.Name = "HeroOnHitStun"
-		projectile.Effect.FrontFx = "DionysusStunnedFx"
 	end
 	if projectile.Effects then
 		for _, effect in ipairs(projectile.Effects) do
 			if effect.Name == "ZagreusOnHitStun" then
 				effect.Name = "HeroOnHitStun"
-				effect.FrontFx = "DionysusStunnedFx"
 			end
 		end
 	end
