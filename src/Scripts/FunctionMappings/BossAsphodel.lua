@@ -153,7 +153,7 @@ function mod.HydraKillPresentation(unit, args)
 	game.SetPlayerInvulnerable("HydraKillPresentation")
 	PlaySound({ Name = "/SFX/StabSplatterEndSequence" })
 	PlaySound({ Name = "/SFX/Enemy Sounds/HydraHead/EmoteFinalDying1", Id = unit.ObjectId })
-	ExpireProjectiles({ Names = { "HydraSummon", "HydraSummon2" } })
+	ExpireProjectiles({ Names = { "HydraSummon", "HydraSummon2", "HydraSummonSpread" } })
 
 	if args.KillEnemyNames ~= nil then
 		for enemyData, enemy in pairs(game.ActiveEnemies) do

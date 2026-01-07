@@ -29,6 +29,7 @@ Other fixes and improvements:
 - Fixed: Alecto's Rage meter is missing it's icon.
 - Fixed: Background obstacles in the "Barge of Death" encounter keep moving after the encounter has ended and the boat has stopped.
 - Fixed: The teeth spawned by the "Summoner" Hydra variant can be stunned.
+- Fixed: If the "Summoner" Hydra variant is defeated while summoning teeth, those teeth will still spawn enemies that need to be defeated after its death.
 - Fixed: When preparing to fire it's wave attack, the purple Hydra variant cannot turn to face Melinoë in time and ends up firing the attack into the lava.
 - Fixed: Exalted Shades sometimes stand idle next to weapons instead of picking them up to respawn.
 - Fixed: If an Exalted Shade is killed while picking up a weapon, the weapon does not return to its ghostly form.
