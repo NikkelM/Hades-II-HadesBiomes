@@ -650,6 +650,7 @@ local roomModifications = {
 				Args = { DelayedStart = true, },
 			},
 		},
+		TeleportCatFamiliarOnEncounterStart = true,
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceHades",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "CheckRunEndPresentation",
 		-- To prevent e.g. Centaur Arcana from triggering on the Surface
