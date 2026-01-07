@@ -142,7 +142,7 @@ modutil.mod.Path.Wrap("PerfectClearObjectiveFailedPresentation", function(base, 
 		source.SubtitleColor = game.Color.HadesVoice
 
 		-- This used to be 11, but that was way too low to ever trigger, probably due to a change in when the encounter start time is recorded
-		if run.CurrentRoom.Encounter.StartTime ~= nil and game._worldTime - run.CurrentRoom.Encounter.StartTime < 30 then
+		if run.CurrentRoom.Encounter.StartTime ~= nil and game._worldTime - run.CurrentRoom.Encounter.StartTime < 35 then
 			if game.CheckCooldown("PerfectClearEncounterFailed", 60.0) then
 				game.thread(game.HadesSpeakingPresentation, source,
 					{ VoiceLines = game.GlobalVoiceLines.PerfectClearEncounterQuicklyFailedVoiceLines, ColorGrade = "PerfectClear", StartDelay = 1.0 })
