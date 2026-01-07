@@ -1,23 +1,93 @@
 --[[ Modded incantation order:
-ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation - Sell Shops after bosses - after 2 runs
-ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation - Sell Shops during runs - after 3 runs
+ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation - Well of Charon during runs - after 1 run
+ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation - Well of Charon after bosses - after 3 runs
+ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation - Sell Shops during runs - after 2 runs
+ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation - Sell Shops after bosses - after 4 runs
 ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after clearing 2 runs
 ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after 6 runs
 ]] --
 
 local newIncantations = {
-	-- #region Pool of Purging/SellShops/SellTraitShops
-	-- TODO: Same incantations for WellShops, which should come before SellTraitShops
-	ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation = {
+	-- #region Well of Charon/WellShop
+	ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation = {
 		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_well",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantTartarus = 1,
+			ModsNikkelMHadesBiomes_OreTartarus = 2,
+		},
+		GameStateRequirements = {
+			{
+				-- Player already has Wells of Charon in vanilla runs
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeWellShops" },
+			},
+			{
+				PathTrue = { "GameState", "RoomsEntered", "A_Boss01" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+		},
+		IncantationVoiceLines = {
+			{
+				PreLineWait = 0.65,
+				{ Cue = "/VO/Melinoe_5601", Text = "{#Emph}Long-dormant Wells of Charon, rise again into the night!" },
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_well",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantAsphodel = 1,
+			ModsNikkelMHadesBiomes_OreAsphodel = 2,
+		},
+		GameStateRequirements = {
+			{
+				-- Player already has Wells of Charon in all vanilla post-boss rooms
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossWellShops" },
+			},
+			{
+				-- Player already has Wells of Charon in modded rooms
+				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation" },
+			},
+			{
+				PathTrue = { "GameState", "RoomsEntered", "X_PostBoss01" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 3,
+			},
+			-- Hasn't just unlocked the in-run wells
+			{
+				PathFalse = { "PrevRun", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation" },
+			},
+		},
+	},
+	-- #endregion
+	-- #region Pool of Purging/SellShops/SellTraitShops
+	ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
 		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_selltrait",
 		Cost = {
-			ModsNikkelMHadesBiomes_PlantTartarus = 2,
-			ModsNikkelMHadesBiomes_CropTartarus = 1,
+			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+			ModsNikkelMHadesBiomes_CropAsphodel = 1,
+			ModsNikkelMHadesBiomes_OreTartarus = 3,
 		},
 		GameStateRequirements = {
 			{
@@ -34,22 +104,25 @@ local newIncantations = {
 			},
 		},
 	},
-	ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation = {
-		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation",
+	ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
 		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_selltrait",
 		Cost = {
-			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
-			ModsNikkelMHadesBiomes_CropAsphodel = 1,
-			ModsNikkelMHadesBiomes_OreTartarus = 3,
+			ModsNikkelMHadesBiomes_PlantTartarus = 2,
+			ModsNikkelMHadesBiomes_CropTartarus = 1,
 		},
 		GameStateRequirements = {
 			{
-				-- Player already has Pools of Purging in all modded post-boss rooms
-				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation" },
+				-- Player already has Pools of Purging in all vanilla post-boss rooms
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossSellTraitShops" },
+			},
+			{
+				-- Player already has Pools of Purging in all modded rooms
+				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation" },
 			},
 			{
 				PathTrue = { "GameState", "RoomsEntered", "Y_PostBoss01" },
@@ -57,14 +130,18 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 3,
+				Value = 4,
+			},
+			-- Hasn't just unlocked the in-run wells
+			{
+				PathFalse = { "PrevRun", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation" },
 			},
 		},
 	},
 	-- #endregion
 	-- #region ShrineChallenge/Erebus Gates
 	ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation = {
-		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation",
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
@@ -92,6 +169,7 @@ local newIncantations = {
 	},
 	-- #endregion
 	-- #region Cosmetics
+	-- DO NOT change the name of this, as this would invalidate the unlock for anyone who has already performed the incantation
 	ModsNikkelMHadesBiomesUnlockCosmeticsIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
@@ -140,7 +218,41 @@ local newIncantations = {
 mod.AddTableKeysSkipDupes(game.WorldUpgradeData, newIncantations)
 
 -- Adds the new incantations to the Cauldron screen categories
-for incantationName, incantationData in pairs(newIncantations) do
+-- Build a sorted list based on dependencies to ensure items are inserted in the correct order
+local function getSortedIncantations(incantations)
+	local sorted = {}
+	local processed = {}
+
+	local function addIncantation(name)
+		if processed[name] then
+			return
+		end
+
+		local data = incantations[name]
+		if data and data.ModsNikkelMHadesBiomesInsertAfterItem then
+			-- If this depends on another incantation, process that one first
+			local dependency = data.ModsNikkelMHadesBiomesInsertAfterItem
+			if incantations[dependency] then
+				addIncantation(dependency)
+			end
+		end
+
+		table.insert(sorted, name)
+		processed[name] = true
+	end
+
+	for incantationName, _ in pairs(incantations) do
+		addIncantation(incantationName)
+	end
+
+	return sorted
+end
+
+local sortedIncantationNames = getSortedIncantations(newIncantations)
+
+-- Adds the new incantations to the Cauldron screen categories
+for _, incantationName in pairs(sortedIncantationNames) do
+	local incantationData = newIncantations[incantationName]
 	local insertAfterItem = incantationData.ModsNikkelMHadesBiomesInsertAfterItem
 	local cauldronCategory = incantationData.ModsNikkelMHadesBiomesCauldronCategory or "WorldUpgradeScreen_Critical"
 	-- This table is defined in GhostAdminData_Items.lua in Hades II

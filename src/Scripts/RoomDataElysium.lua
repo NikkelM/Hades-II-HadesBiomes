@@ -3,11 +3,17 @@ local roomReplacements = {
 	-- GENERIC
 	BaseElysium = {
 		SecretDoorRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.SecretDoorRequirements),
-		WellShopRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.WellShopRequirements),
 		-- The Asphodel teleport in Hades II - we don't want it in Zagreus' Journey
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Elysium",
 
+		WellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation" },
+			},
+			RequiredMinCompletedRuns = 1,
+			RequiredMinRoomsSinceWellShop = 3,
+		},
 		SellShopRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation" },
@@ -576,16 +582,19 @@ local roomModifications = {
 		ThreadedEvents = {
 			[1] = { FunctionName = "HadesSpeakingPresentation", Args = { VoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines, StartDelay = 2.5 } },
 		},
-		SellShopRequirements = {
-			{
-				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation" },
-			},
-		},
+		-- In vanilla the game adds a SetupGameStateRequirement to the obstacle, but we don't do that in modded rooms
+		-- So to prevent the well from spawning even without the incantation, we set ForceWellShop to false and just use the WellShopSpawnChance
+		ForceWellShop = false,
 		-- Defines where the well spawns, making sure the sell shop spawns on the other possible ID - available IDs are 480768 and 532755
 		WellShopChallengeBaseId = 532755,
 		WellShopRequirements = {
 			{
-				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossWellShops" },
+				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation" },
+			},
+		},
+		SellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation" },
 			},
 		},
 		ObstacleData = {

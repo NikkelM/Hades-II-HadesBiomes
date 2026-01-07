@@ -4,7 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- NEW: Enter **Erebus Gates** and clear their encounters without being hit for upgraded rewards! You can perform a new incantation to make these gates appear during *Zagreus' Journey* runs, and can enter them if there is enough *Fear* in the Night.
+- Enter **Erebus Gates** and clear their encounters without being hit for upgraded rewards! You can perform a new incantation to make these gates appear during *Zagreus' Journey* runs, and can enter them if there is enough *Fear* in the Night.
 - Pools of Purging can now appear in rooms in Zagreus' Journey runs (after performing the accompanying incantations).
 - Fixed: Music can disappear after the "Barge of Death" encounter in Asphodel.
 - Fixed: When first entering a new region, music starts to play, then quickly cuts out and changes.
@@ -12,6 +12,7 @@
 
 Other fixes and improvements:
 - The installation screen will now only show in the Training Grounds, and no longer in the main Crossroads.
+- Added new incantations to unlock Wells of Charon for Zagreus' Journey runs (note that they will no longer appear until the incantations are performed).
 - Added a "Vanquished" count for Zagreus' Journey enemies to their respective Codex entries.
 - Decreased the overall amount of time spent in the biome map transition.
 - Changed the default logging level of the mod to "Debug" to simplify troubleshooting user issues. You can change this in the mod's config file.

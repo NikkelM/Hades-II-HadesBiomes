@@ -1010,7 +1010,7 @@ local newData = {
 	-- Add Pool of Purging/SellShops/SellTraitShops to post-boss rooms
 	{
 		Id = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation",
-		DisplayName = "Summoning of Blood-Red Fountains",
+		DisplayName = "Surge of Blood-Red Fountains",
 		Description =
 		"Cause a {$Keywords.SellTraitShop} to always appear in the space between each {$Keywords.Biome} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}."
 	},
@@ -1031,13 +1031,38 @@ local newData = {
 		Description =
 		"One would think that any Olympian boon is one to be cherished, but sometimes even the Princess of the Underworld finds herself in need of coin."
 	},
+	-- Add Well of Charon/WellShops to post-boss rooms
+	{
+		Id = "ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation",
+		DisplayName = "Surge of Lilac-Flowing Fountains",
+		Description =
+		"Cause a {$Keywords.WellShop} to always appear in the space between each {$Keywords.Biome} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}."
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation_Flavor",
+		Description =
+		"The great Lord Charon has long been known to offer more than just passage across the River Styx - for those who can afford it."
+	},
+	-- Add Well of Charon/WellShops to any rooms during a run
+	{
+		Id = "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation",
+		DisplayName = "Rise of Lilac-Flowing Fountains",
+		Description =
+		"Cause {$Keywords.RoomPlural} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} to sometimes contain a {$Keywords.WellShop}."
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation_Flavor",
+		Description =
+		"The boatman Charon was of great help to the Prince Zagreus on his attempts to escape the Underworld, always willing to lend a hand - for the right price."
+	},
 	-- #endregion
 
 	-- #region Keywords
 	{
 		Id = "ModsNikkelMHadesBiomesModdedRoute",
 		DisplayName = "Nightmare Realm",
-		Description = "The {$Keywords.HealthGate} in the Training Grounds reveals a version of the Underworld as it once was.",
+		Description =
+		"The {$Keywords.HealthGate} in the Training Grounds reveals a version of the Underworld as it once was.",
 	},
 	{
 		Id = "ShrinePointGate",

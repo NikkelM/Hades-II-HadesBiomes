@@ -62,12 +62,13 @@ Only uninstall the mod while in the Crossroads to prevent issues.
 
 Note that the configuration file is only created after the first game start with the mod enabled in your mod manager.
 If you need to make any changes (such as to the `hadesGameFolder` setting), you will need to start the game once first to generate the config file.
+If you are using r2modman, you can modify the config directly through the mod manager, in the `Config editor` tab.
 
-You can find an explanation of all options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
+You can find an explanation of all configuration options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
 
 ## Feedback & Bug Reports
 
-Though the mod can be played through from start to finish, it is still in a beta state, so there are some missing features, and you may occasionally encounter bugs.
+Though the mod can be played through from start to finish and is very polished already, it is still in a beta state, so there are some missing features, and you may occasionally encounter bugs.
 
 Please directly leave bug reports as a [new issue on the project's GitHub repository](https://github.com/NikkelM/Hades-II-HadesBiomes/issues/new?template=bug_report.md), or [start a discussion](https://github.com/NikkelM/Hades-II-HadesBiomes/discussions) for general feedback, suggestions and questions.
 

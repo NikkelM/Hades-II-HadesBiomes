@@ -4,11 +4,17 @@ local roomReplacements = {
 	-- GENERIC
 	BaseStyx = {
 		SecretDoorRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.SecretDoorRequirements),
-		WellShopRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.WellShopRequirements),
 		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Styx",
 
+		WellShopRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation" },
+			},
+			RequiredMinCompletedRuns = 1,
+			RequiredMinRoomsSinceWellShop = 6,
+		},
 		SellShopRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation" },
