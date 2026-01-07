@@ -14,6 +14,7 @@
 Other fixes and improvements:
 - Added a new incantation to unlock the Keepsake Rack in rooms between regions for Zagreus' Journey runs (note that it will no longer appear until the incantation is performed).
 - Added new incantations to unlock Wells of Charon for Zagreus' Journey runs (note that they will no longer appear until the incantations are performed).
+- Added new incantations to unlcok Fountain Chambers in Tartarus, Asphodel, and Elysium for Zagreus' Journey runs (note that they will no longer appear until the incantations are performed).
 - Added a "Vanquished" count for Zagreus' Journey enemies to their respective Codex entries.
 - Decreased the overall amount of time spent in the biome map transition.
 - The installation screen will now only show in the Training Grounds, and no longer in the main Crossroads.

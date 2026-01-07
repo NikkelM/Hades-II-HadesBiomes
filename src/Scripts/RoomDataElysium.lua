@@ -304,6 +304,19 @@ local roomReplacements = {
 		CombatOverMusicEvents = mod.CombatOverMusicEvents.Generic,
 	},
 
+	Y_Reprieve01 = {
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation" },
+			},
+			{
+				Path = { "CurrentRun", "BiomeDepthCache" },
+				Comparison = ">=",
+				Value = 4,
+			},
+		},
+	},
+
 	-- SHOPS
 	Y_Shop01 = {
 		Binks = mod.NilValue,
@@ -568,9 +581,6 @@ local roomModifications = {
 		},
 	},
 	Y_Reprieve01 = {
-		GameStateRequirements = {
-			RequiredCosmetics = mod.NilValue,
-		},
 		SuppressRewardSpawnSounds = false,
 	},
 	Y_PostBoss01 = {

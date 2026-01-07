@@ -441,6 +441,19 @@ local roomReplacements = {
 		ForceLootTableFirstRun = mod.NilValue,
 	},
 
+	A_Reprieve01 = {
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation" },
+			},
+			{
+				Path = { "CurrentRun", "BiomeDepthCache" },
+				Comparison = ">=",
+				Value = 4,
+			},
+		},
+	},
+
 	-- SHOPS
 	A_Shop01 = {
 		Binks = mod.NilValue,
@@ -766,9 +779,6 @@ local roomModifications = {
 		},
 	},
 	A_Reprieve01 = {
-		GameStateRequirements = {
-			RequiredCosmetics = mod.NilValue,
-		},
 		SuppressRewardSpawnSounds = false,
 
 		HarvestPointChances = { 0.5, 0.3, },

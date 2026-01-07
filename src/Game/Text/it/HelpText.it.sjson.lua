@@ -39,24 +39,48 @@ local newData = {
 		DisplayName = "TARTARO (Incubo)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Short",
+		DisplayName = "Tartaro",
+	},
+	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
 		DisplayName = "ASFODELO (Incubo)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Short",
+		DisplayName = "Asfodelo",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
 		DisplayName = "ELISIO (Incubo)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Short",
+		DisplayName = "Elisio",
+	},
+	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
 		DisplayName = "STIGE (Incubo)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Short",
+		DisplayName = "Stige",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface",
 		DisplayName = "GRECIA (Incubo)",
 	},
 	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Surface_Short",
+		DisplayName = "Grecia",
+	},
+	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
 		DisplayName = "EREBO (Incubo)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge_Short",
+		DisplayName = "Erebo",
 	},
 	-- #endregion
 
@@ -1045,7 +1069,41 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation_Flavor",
 	-- 	Description =
-	-- 	"As Princess of Nightmares, no dream is too far removed from reality to not allow yourself to be reminded of those you hold dear."
+	-- 	"For the Princess of Nightmares, no dream is too far removed from reality to not allow her to be reminded of those she holds dear."
+	-- },
+	-- Add Reprieve/Fountain Chambers
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation",
+	-- 	DisplayName = "Eerie Lifespring",
+	-- 	Description =
+	-- 	"Reveal a hidden chamber in {$Keywords.ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Short} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, where you may restore some {!Icons.HealthRestoreHome} and elude your foes."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation_Flavor",
+	-- 	Description =
+	-- 	"Tucked away in a long lost corner of Tartarus is an abandoned bath house, where the Erinyes once sought respite from their eternal duties.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation",
+	-- 	DisplayName = "Scalding Lifespring",
+	-- 	Description =
+	-- 	"Reveal a hidden chamber in {$Keywords.ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Short} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, where you may restore some {!Icons.HealthRestoreHome} and elude your foes."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation_Flavor",
+	-- 	Description =
+	-- 	"How this forgotten fountain has not yet evaporated in the heat of Asphodel is a mystery best not pondered too deeply, lest it leads to answers you do not wish to know.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation",
+	-- 	DisplayName = "Foggy Lifespring",
+	-- 	Description =
+	-- 	"Reveal a hidden chamber in {$Keywords.ModsNikkelMHadesBiomesLocation_Hades_Elysium_Short} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, where you may restore some {!Icons.HealthRestoreHome} and elude your foes."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation_Flavor",
+	-- 	Description =
+	-- 	"Even the greatest of heroes who have passed into Elysium are not allowed to drink of the waters flowing from it's fountains, which is reserved for the gods alone.",
 	-- },
 	-- #endregion
 

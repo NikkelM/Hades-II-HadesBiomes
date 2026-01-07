@@ -4,8 +4,11 @@ ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation - Well of Charon during r
 ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation - Well of Charon after bosses - after 3 runs
 ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation - Sell Shops during runs - after 2 runs
 ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation - Sell Shops after bosses - after 4 runs
+ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation - Tartarus Fountain Chamber - after 1 run
+ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation - Asphodel Fountain Chamber - after 3 runs
+ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation - Elysium Fountain Chamber - after 5 runs
 ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after clearing 2 runs
-ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after 6 runs
+ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after clearing 5 runs
 ]] --
 
 local newIncantations = {
@@ -93,7 +96,7 @@ local newIncantations = {
 			},
 			-- Hasn't just unlocked the in-run wells. This check includes CurrentRun
 			{
-				SumPrevRuns = 1,
+				SumPrevRuns = 2,
 				Path = { "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation" },
 				CountPathTrue = true,
 				Comparison = "<",
@@ -160,8 +163,96 @@ local newIncantations = {
 			},
 			-- Hasn't just unlocked the in-run wells. This check includes CurrentRun
 			{
-				SumPrevRuns = 1,
+				SumPrevRuns = 2,
 				Path = { "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation" },
+				CountPathTrue = true,
+				Comparison = "<",
+				Value = 1,
+			},
+		},
+	},
+	-- #endregion
+	-- #region Reprieve/Fountain Chambers
+	ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_tartarus",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantTartarus = 3,
+			ModsNikkelMHadesBiomes_OreTartarus = 3,
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradeErebusReprieve" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_asphodel",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantAsphodel = 3,
+			ModsNikkelMHadesBiomes_OreAsphodel = 3,
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation" },
+			},
+			{
+				PathTrue = { "GameState", "RoomsEntered", "X_Intro" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 3,
+			},
+			{
+				SumPrevRuns = 2,
+				Path = { "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation" },
+				CountPathTrue = true,
+				Comparison = "<",
+				Value = 1,
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_elysium",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantElysium = 3,
+			ModsNikkelMHadesBiomes_OreElysium = 3,
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation" },
+			},
+			{
+				PathTrue = { "GameState", "RoomsEntered", "Y_Intro" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 5,
+			},
+			{
+				SumPrevRuns = 2,
+				Path = { "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation" },
 				CountPathTrue = true,
 				Comparison = "<",
 				Value = 1,
@@ -171,7 +262,7 @@ local newIncantations = {
 	-- #endregion
 	-- #region ShrineChallenge/Erebus Gates
 	ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation = {
-		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation",
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
@@ -214,9 +305,9 @@ local newIncantations = {
 		},
 		GameStateRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
 				Comparison = ">=",
-				Value = 6,
+				Value = 5,
 			},
 			NamedRequirements = { "CosmeticsShopUnlocked" },
 		},

@@ -304,6 +304,19 @@ local roomReplacements = {
 		CombatOverMusicEvents = mod.CombatOverMusicEvents.Generic,
 	},
 
+	X_Reprieve01 = {
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation" },
+			},
+			{
+				Path = { "CurrentRun", "BiomeDepthCache" },
+				Comparison = ">=",
+				Value = 4,
+			},
+		},
+	},
+
 	-- SHOPS
 	X_Shop01 = {
 		Binks = mod.NilValue,
@@ -568,9 +581,6 @@ local roomModifications = {
 	},
 	X_Reprieve01 = {
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "AsphodelEnterRoomPresentation",
-		GameStateRequirements = {
-			RequiredCosmetics = mod.NilValue,
-		},
 		SuppressRewardSpawnSounds = false,
 
 		HarvestPointChances = { 0.5, 0.3, },
