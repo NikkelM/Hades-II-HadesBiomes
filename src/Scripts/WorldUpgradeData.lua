@@ -1,4 +1,5 @@
 --[[ Modded incantation order:
+ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation - Post-Boss Keepsake Rack - after 1 run
 ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation - Well of Charon during runs - after 1 run
 ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation - Well of Charon after bosses - after 3 runs
 ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation - Sell Shops during runs - after 2 runs
@@ -8,16 +9,40 @@ ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after 6 runs
 ]] --
 
 local newIncantations = {
+	-- #region Post-Boss Keepsake Rack/GiftRack
+	ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation = {
+		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_giftRackUpgrade_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantTartarus = 1,
+		},
+		GameStateRequirements = {
+			{
+				-- Player already has Keepsake racks in all vanilla post-boss rooms
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradePostBossGiftRack" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+		},
+	},
+	-- #endregion
 	-- #region Well of Charon/WellShop
 	ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation = {
-		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
 		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_well",
 		Cost = {
-			ModsNikkelMHadesBiomes_PlantTartarus = 1,
+			ModsNikkelMHadesBiomes_PlantTartarus = 2,
 			ModsNikkelMHadesBiomes_OreTartarus = 2,
 		},
 		GameStateRequirements = {
@@ -66,9 +91,13 @@ local newIncantations = {
 				Comparison = ">=",
 				Value = 3,
 			},
-			-- Hasn't just unlocked the in-run wells
+			-- Hasn't just unlocked the in-run wells. This check includes CurrentRun
 			{
-				PathFalse = { "PrevRun", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation" },
+				SumPrevRuns = 1,
+				Path = { "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation" },
+				CountPathTrue = true,
+				Comparison = "<",
+				Value = 1,
 			},
 		},
 	},
@@ -129,9 +158,13 @@ local newIncantations = {
 				Comparison = ">=",
 				Value = 4,
 			},
-			-- Hasn't just unlocked the in-run wells
+			-- Hasn't just unlocked the in-run wells. This check includes CurrentRun
 			{
-				PathFalse = { "PrevRun", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation" },
+				SumPrevRuns = 1,
+				Path = { "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation" },
+				CountPathTrue = true,
+				Comparison = "<",
+				Value = 1,
 			},
 		},
 	},

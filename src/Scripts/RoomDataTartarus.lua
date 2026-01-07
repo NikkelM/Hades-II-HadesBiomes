@@ -806,7 +806,7 @@ local roomModifications = {
 			[486504] = {
 				SetupGameStateRequirements = {
 					{
-						PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradePostBossGiftRack" },
+						PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation" },
 					},
 					RequiredCosmetics = mod.NilValue,
 				},

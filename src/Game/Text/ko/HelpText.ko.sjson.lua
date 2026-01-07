@@ -1035,6 +1035,18 @@ local newData = {
 	-- 	Description =
 	-- 	"The boatman Charon was of great help to the Prince Zagreus on his attempts to escape the Underworld, always willing to lend a hand - for the right price."
 	-- },
+	-- Add Keepsake Racks/GiftRack to post-boss rooms
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation",
+	-- 	DisplayName = "Regional Keepsakes",
+	-- 	Description =
+	-- 	"Manifest your collection of {$Keywords.Keepsakes} in the spaces separating each {$Keywords.Biome} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation_Flavor",
+	-- 	Description =
+	-- 	"As Princess of Nightmares, no dream is too far removed from reality to not allow yourself to be reminded of those you hold dear."
+	-- },
 	-- #endregion
 
 	-- #region Keywords

@@ -12,10 +12,11 @@
 - Fixed: Attempting to reroll a door with Ash, Bones, or Nectar in a room with three exits freezes the game.
 
 Other fixes and improvements:
-- The installation screen will now only show in the Training Grounds, and no longer in the main Crossroads.
+- Added a new incantation to unlock the Keepsake Rack in rooms between regions for Zagreus' Journey runs (note that it will no longer appear until the incantation is performed).
 - Added new incantations to unlock Wells of Charon for Zagreus' Journey runs (note that they will no longer appear until the incantations are performed).
 - Added a "Vanquished" count for Zagreus' Journey enemies to their respective Codex entries.
 - Decreased the overall amount of time spent in the biome map transition.
+- The installation screen will now only show in the Training Grounds, and no longer in the main Crossroads.
 - Changed the default logging level of the mod to "Debug" to simplify troubleshooting user issues. You can change this in the mod's config file.
 - Balancing: Reduced the maximum time the Skull-Crusher can stay airborne before attacking.
 - Balancing: Increased the time the Skull-Crusher stays grounded before taking off again.
