@@ -32,7 +32,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- #region Codex/Inventory
+	-- #region Codex/Inventory/Cauldron
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_MarketScreen_Resources",
 	-- 	DisplayName = "Barter Exchange",

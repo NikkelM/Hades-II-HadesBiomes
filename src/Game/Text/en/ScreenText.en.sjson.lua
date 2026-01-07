@@ -37,13 +37,17 @@ local newData = {
 	},
 	-- #endregion
 
-	-- #region Codex/Inventory
+	-- #region Codex/Inventory/Cauldron
 	{
 		Id = "ModsNikkelMHadesBiomesCodexEntryTitleText",
 		InheritFrom = "ModsNikkelMHadesBiomes_Mod_Name",
 	},
 	{
 		Id = "InventoryScreen_ModesNikkelMHadesBiomesTab",
+		InheritFrom = "ModsNikkelMHadesBiomes_Mod_Name",
+	},
+	{
+		Id = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 		InheritFrom = "ModsNikkelMHadesBiomes_Mod_Name",
 	},
 	{

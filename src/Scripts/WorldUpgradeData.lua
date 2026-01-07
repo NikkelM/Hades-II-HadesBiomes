@@ -11,7 +11,7 @@ local newIncantations = {
 	-- #region Well of Charon/WellShop
 	ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation = {
 		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
-		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -21,18 +21,8 @@ local newIncantations = {
 			ModsNikkelMHadesBiomes_OreTartarus = 2,
 		},
 		GameStateRequirements = {
-			{
-				-- Player already has Wells of Charon in vanilla runs
-				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeWellShops" },
-			},
-			{
-				PathTrue = { "GameState", "RoomsEntered", "A_Boss01" },
-			},
-			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
-				Comparison = ">=",
-				Value = 1,
-			},
+			-- As this is used to indicate if the Cauldron category itself is revealed as well
+			NamedRequirements = { "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation_Unlockable" },
 		},
 		IncantationVoiceLines = {
 			{
@@ -43,7 +33,7 @@ local newIncantations = {
 	},
 	ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation",
-		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -79,7 +69,7 @@ local newIncantations = {
 	-- #region Pool of Purging/SellShops/SellTraitShops
 	ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation",
-		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -106,7 +96,7 @@ local newIncantations = {
 	},
 	ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation",
-		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -142,7 +132,7 @@ local newIncantations = {
 	-- #region ShrineChallenge/Erebus Gates
 	ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation",
-		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -172,7 +162,7 @@ local newIncantations = {
 	-- DO NOT change the name of this, as this would invalidate the unlock for anyone who has already performed the incantation
 	ModsNikkelMHadesBiomesUnlockCosmeticsIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation",
-		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_Critical",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -251,10 +241,11 @@ end
 local sortedIncantationNames = getSortedIncantations(newIncantations)
 
 -- Adds the new incantations to the Cauldron screen categories
+-- The modded category is defined in GhostAdminData_Items.lua
 for _, incantationName in pairs(sortedIncantationNames) do
 	local incantationData = newIncantations[incantationName]
 	local insertAfterItem = incantationData.ModsNikkelMHadesBiomesInsertAfterItem
-	local cauldronCategory = incantationData.ModsNikkelMHadesBiomesCauldronCategory or "WorldUpgradeScreen_Critical"
+	local cauldronCategory = incantationData.ModsNikkelMHadesBiomesCauldronCategory or "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical"
 	-- This table is defined in GhostAdminData_Items.lua in Hades II
 	for _, ghostAdminCategory in ipairs(game.ScreenData.GhostAdmin.ItemCategories) do
 		if ghostAdminCategory.Name == cauldronCategory then
