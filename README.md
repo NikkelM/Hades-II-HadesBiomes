@@ -83,7 +83,8 @@ If you do not have a GitHub account, you can also join the [Hades II Modding Dis
 - Collect 30+ new resources specific to the new biomes, use them for unlocks in this and [other mods](#integrations-with-other-mods), and trade them with the Broker.
 - Decorate the Crossroads with 40+ new cosmetics, including new Cauldrons, Fan Posters for your tent, and Charms inspired by Zagreus' companions from the first game.
 - Complete 24 new testaments by clearing the new bosses using each of your weapons with new fear levels.
-- Read about all of the "new" biomes, enemies, bosses and friends in a new chapter in your Codex.
+- Discover and perform 10+ new incantations to unlock gameplay features and rooms in Zagreus' Journey runs.
+- Read all about the new biomes, enemies, bosses and friends in a new chapter in your Codex.
 
 ### Feature Roadmap
 
@@ -91,7 +92,7 @@ Among many smaller improvements and fixes, the following major features are plan
 
 - Secret boss fight (you know the one)
 - [DONE!] Erebus gates (when there is enough Fear in the Night)
-- New incantations for meta-progression on the new route
+- [DONE!] New incantations for meta-progression on the new route
 - New story events and dialogue between Melinoë and other characters from Hades II, concerning the new route
 - Displaying statistics for the new route with the Record Keeper
 - Additional boons for story NPCs (Sisyphus, Eurydice, Patroclus)
