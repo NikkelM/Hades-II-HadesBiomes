@@ -1983,22 +1983,22 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredKillEnemiesFound and IsEmpty(game.RequiredKillEnemies) then
+	if requirements.RequiredKillEnemiesFound and game.IsEmpty(game.RequiredKillEnemies) then
 		return false
 	end
 
-	if requirements.RequiredKillEnemiesNotFound ~= nil and not IsEmpty(game.RequiredKillEnemies) then
+	if requirements.RequiredKillEnemiesNotFound ~= nil and not game.IsEmpty(game.RequiredKillEnemies) then
 		return false
 	end
 
-	if requirements.RequiredMinKillEnemies and TableLength(game.RequiredKillEnemies) < requirements.RequiredMinKillEnemies then
+	if requirements.RequiredMinKillEnemies and game.TableLength(game.RequiredKillEnemies) < requirements.RequiredMinKillEnemies then
 		return false
 	end
 
 	if requirements.RequiredAnyActiveEnemyTypes and game.ActiveEnemies ~= nil then
 		local anyTrue = false
 		for k, enemy in pairs(game.ActiveEnemies) do
-			if Contains(requirements.RequiredAnyActiveEnemyTypes, enemy.Name) then
+			if game.Contains(requirements.RequiredAnyActiveEnemyTypes, enemy.Name) then
 				anyTrue = true
 				break
 			end

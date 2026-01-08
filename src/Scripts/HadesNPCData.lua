@@ -92,7 +92,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			-- Nice running into you.
 			{ Cue = "/VO/Thanatos_0056",      RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" } },
 			-- Take care, Zagreus.
-			{ Cue = "/VO/Thanatos_0057",      RequiredTextLines = { "ThanatosGift08" } },
+			-- { Cue = "/VO/Thanatos_0057",      RequiredTextLines = { "ThanatosGift08" } },
 			-- I'm going.
 			{ Cue = "/VO/Thanatos_0058" },
 			-- That's that.
@@ -116,11 +116,11 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			-- You never saw me.
 			{ Cue = "/VO/Thanatos_0068" },
 			-- Don't die, Zag.
-			{ Cue = "/VO/Thanatos_0069",      RequiredTextLines = { "ThanatosGift08" } },
+			-- { Cue = "/VO/Thanatos_0069",      RequiredTextLines = { "ThanatosGift08" } },
 			-- Stay alive.
 			{ Cue = "/VO/Thanatos_0070",      RequiredTextLines = { "ThanatosGift07_A" } },
 			-- Bye, Zag.
-			{ Cue = "/VO/ThanatosField_0236", RequiredTextLines = { "ThanatosGift10" }, },
+			-- { Cue = "/VO/ThanatosField_0236", RequiredTextLines = { "ThanatosGift10" }, },
 			-- I'm off.
 			{ Cue = "/VO/ThanatosField_0237", RequiredTextLines = { "ThanatosGift06" }, },
 			-- Well, I'm off.
@@ -132,7 +132,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			-- You have this.
 			{ Cue = "/VO/ThanatosField_0241", RequiredTextLines = { "ThanatosGift09" }, },
 			-- See you at home.
-			{ Cue = "/VO/ThanatosField_0242", RequiredTextLines = { "ThanatosGift10" }, },
+			-- { Cue = "/VO/ThanatosField_0242", RequiredTextLines = { "ThanatosGift10" }, },
 			-- On to my next one.
 			{ Cue = "/VO/ThanatosField_0243", RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" }, },
 			-- Ungh, I'm late.
@@ -3370,23 +3370,23 @@ mod.NPCData = mod.NPCData or {
 						-- I got you covered!
 						{ Cue = "/VO/Sisyphus_0036" },
 						-- I got you covered, Prince!
-						{ Cue = "/VO/Sisyphus_0222", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- { Cue = "/VO/Sisyphus_0222", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 						-- Certainly, Highness!
 						{ Cue = "/VO/Sisyphus_0223" },
 						-- Sure thing, Prince Z.!
-						{ Cue = "/VO/Sisyphus_0224", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- { Cue = "/VO/Sisyphus_0224", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 						-- My pleasure, Prince!
-						{ Cue = "/VO/Sisyphus_0225", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- { Cue = "/VO/Sisyphus_0225", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 						-- No worries whatsoever!
 						{ Cue = "/VO/Sisyphus_0226" },
 						-- Think I can do that, Prince!
-						{ Cue = "/VO/Sisyphus_0227", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- { Cue = "/VO/Sisyphus_0227", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 						-- Got that right here, Prince Z.!
-						{ Cue = "/VO/Sisyphus_0228", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- { Cue = "/VO/Sisyphus_0228", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 						-- Then here you go!
 						{ Cue = "/VO/Sisyphus_0229" },
 						-- Ah, certainly, Prince Z.!
-						{ Cue = "/VO/Sisyphus_0230", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- { Cue = "/VO/Sisyphus_0230", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 						-- Here you are!
 						{ Cue = "/VO/Sisyphus_0231" },
 					},
@@ -4243,25 +4243,7 @@ mod.NPCData = mod.NPCData or {
 			BreakIfPlayed = true,
 			PreLineWait = 1.0,
 			PlayFromTarget = true,
-
-			-- Thanks for that, sir.
-			-- { Cue = "/VO/ZagreusHome_0320" },
 		},
-
-		--[[
-		CharacterInteractions = {
-			Rescue = {
-				VoiceLines = {
-					BreakIfPlayed = true,
-					RandomRemaining = true,
-					PreLineWait = 0.4,
-
-					-- Sure thing!
-					-- { Cue = "/VO/Sisyphus_0038" },
-				},
-			},
-		},
-		]] --
 
 		OnHitFunctionName = "BouldyHitPresentation",
 		OnHitVoiceLines = {
@@ -4276,7 +4258,7 @@ mod.NPCData = mod.NPCData or {
 			-- No use in that.
 			{ Cue = "/VO/Sisyphus_0066" },
 			-- Don't bother, Prince.
-			{ Cue = "/VO/Sisyphus_0068" },
+			-- { Cue = "/VO/Sisyphus_0068" },
 			-- Come on, now.
 			{ Cue = "/VO/Sisyphus_0069" },
 			-- Oh come now.
@@ -4284,7 +4266,7 @@ mod.NPCData = mod.NPCData or {
 			-- Why bother.
 			{ Cue = "/VO/Sisyphus_0071" },
 			-- Very funny, Prince.
-			{ Cue = "/VO/Sisyphus_0073" },
+			-- { Cue = "/VO/Sisyphus_0073" },
 		},
 	},
 
@@ -13440,7 +13422,7 @@ mod.NPCData = mod.NPCData or {
 			"ThanatosIdleInhouseFidgetHairFlick__Bink",
 		},
 
-		SubtitleColor = Color.ThanatosVoice,
+		SubtitleColor = game.Color.ThanatosVoice,
 
 		ActivateRequirements = {
 			RequiredTextLines = { "ThanatosFieldFirstMeeting", },
@@ -13448,6 +13430,7 @@ mod.NPCData = mod.NPCData or {
 			RequiredAnyEncountersThisRun = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro" },
 		},
 
+		-- #region InteractTextLineSets
 		-- InteractTextLineSets = {
 		-- 	ThanatosHomeFirstMeeting = {
 		-- 		Priority = true,
@@ -18125,6 +18108,7 @@ mod.NPCData = mod.NPCData or {
 		-- 		},
 		-- 	},
 		-- },
+		-- #endregion
 
 		GiftTextLineSets = {
 			ThanatosGift01 = {
@@ -18645,7 +18629,7 @@ mod.NPCData = mod.NPCData or {
 				-- I got you.
 				{ Cue = "/VO/Thanatos_0046" },
 				-- Quite a mess you've made here, Zagreus.
-				{ Cue = "/VO/Thanatos_0050" },
+				-- { Cue = "/VO/Thanatos_0050" },
 				-- Death is inescapable.
 				{ Cue = "/VO/Thanatos_0224" },
 				-- Thought I'd find you here.
@@ -18665,9 +18649,9 @@ mod.NPCData = mod.NPCData or {
 				-- I sensed your presence here.
 				{ Cue = "/VO/Thanatos_0233" },
 				-- Did you miss me, Zagreus...?
-				{ Cue = "/VO/Thanatos_0234",      RequiredTextLines = { "ThanatosGift06" } },
+				-- { Cue = "/VO/Thanatos_0234",      RequiredTextLines = { "ThanatosGift06" } },
 				-- How goes it, Zagreus?
-				{ Cue = "/VO/Thanatos_0235",      RequiredTextLines = { "ThanatosGift05" } },
+				-- { Cue = "/VO/Thanatos_0235",      RequiredTextLines = { "ThanatosGift05" } },
 				-- The time has come.
 				{ Cue = "/VO/ThanatosField_0116" },
 				-- Death has arrived.
@@ -18675,7 +18659,7 @@ mod.NPCData = mod.NPCData or {
 				-- Death is inevitable.
 				{ Cue = "/VO/ThanatosField_0118" },
 				-- I found you, Zagreus.
-				{ Cue = "/VO/ThanatosField_0119", RequiredTextLines = { "ThanatosGift08" } },
+				-- { Cue = "/VO/ThanatosField_0119", RequiredTextLines = { "ThanatosGift08" } },
 				-- Looks like I got here just in time.
 				{ Cue = "/VO/ThanatosField_0120", RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
 				-- I have returned.
@@ -18687,7 +18671,7 @@ mod.NPCData = mod.NPCData or {
 				-- I happened to be in the area.
 				{ Cue = "/VO/ThanatosField_0124", RequiredTextLines = { "ThanatosGift10" } },
 				-- Why hello, Zagreus.
-				{ Cue = "/VO/ThanatosField_0125", RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
+				-- { Cue = "/VO/ThanatosField_0125", RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
 				-- I have returned.
 				{ Cue = "/VO/ThanatosField_0126" },
 			},
@@ -18718,9 +18702,9 @@ mod.NPCData = mod.NPCData or {
 				-- { Cue = "/VO/Thanatos_0165" },
 
 				-- You might want to stand back, there, Zag.
-				{ Cue = "/VO/Thanatos_0237",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- { Cue = "/VO/Thanatos_0237",      RequiredPlayed = { "/VO/Thanatos_0243" } },
 				-- Think you can beat me, Zag?
-				{ Cue = "/VO/Thanatos_0238",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- { Cue = "/VO/Thanatos_0238",      RequiredPlayed = { "/VO/Thanatos_0243" } },
 				-- Let's slay these wretches quickly.
 				{ Cue = "/VO/Thanatos_0239",      RequiredPlayed = { "/VO/Thanatos_0243" } },
 				-- Can you deal death faster than I?
@@ -18748,7 +18732,7 @@ mod.NPCData = mod.NPCData or {
 				-- Prepare yourselves.
 				{ Cue = "/VO/Thanatos_0251",      RequiredPlayed = { "/VO/Thanatos_0243" } },
 				-- This one's on me, Zag.
-				{ Cue = "/VO/Thanatos_0252",      RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- { Cue = "/VO/Thanatos_0252",      RequiredPlayed = { "/VO/Thanatos_0243" } },
 				-- All of you, prepare to die again.
 				{ Cue = "/VO/Thanatos_0253",      RequiredPlayed = { "/VO/Thanatos_0243" } },
 				-- Together we bring death.
@@ -18774,19 +18758,19 @@ mod.NPCData = mod.NPCData or {
 				-- And here they come.
 				{ Cue = "/VO/ThanatosField_0148", RequiredPlayed = { "/VO/Thanatos_0243" } },
 				-- They're coming, Zagreus. Be on your guard.
-				{ Cue = "/VO/ThanatosField_0227", RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- { Cue = "/VO/ThanatosField_0227", RequiredPlayed = { "/VO/Thanatos_0243" } },
 				-- Think you can beat me again, Zag?
-				{ Cue = "/VO/ThanatosField_0228", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
+				-- { Cue = "/VO/ThanatosField_0228", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
 				-- What do you say we end this quickly, Zag?
-				{ Cue = "/VO/ThanatosField_0229", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
+				-- { Cue = "/VO/ThanatosField_0229", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
 				-- Scared I'll take more of them than you this time?
 				{ Cue = "/VO/ThanatosField_0230", RequiredPlayed = { "/VO/Thanatos_0243" } },
 				-- All of you, prepare to die again.
 				{ Cue = "/VO/ThanatosField_0231", RequiredPlayed = { "/VO/Thanatos_0243" } },
 				-- Here they come, fresh for the taking, Zag.
-				{ Cue = "/VO/ThanatosField_0232", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
+				-- { Cue = "/VO/ThanatosField_0232", RequiredPlayed = { "/VO/Thanatos_0243" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" } },
 				-- Don't be too reckless to outpace me, Zagreus.
-				{ Cue = "/VO/ThanatosField_0233", RequiredPlayed = { "/VO/Thanatos_0243" } },
+				-- { Cue = "/VO/ThanatosField_0233", RequiredPlayed = { "/VO/Thanatos_0243" } },
 				-- You wretches never seem to learn, do you.
 				{ Cue = "/VO/ThanatosField_0234", RequiredPlayed = { "/VO/Thanatos_0243" } },
 			},
@@ -18914,7 +18898,7 @@ mod.NPCData = mod.NPCData or {
 			-- On your feet.
 			{ Cue = "/VO/Thanatos_0105" },
 			-- Focus, Zag.
-			{ Cue = "/VO/Thanatos_0106" },
+			-- { Cue = "/VO/Thanatos_0106" },
 			-- Keep fighting.
 			{ Cue = "/VO/Thanatos_0107" },
 			-- Keep going.
@@ -18976,7 +18960,7 @@ mod.NPCData = mod.NPCData or {
 				-- Is he supposed to help?
 				{ Cue = "/VO/ThanatosField_0095" },
 				-- One of your friends, there, Zag?
-				{ Cue = "/VO/ThanatosField_0096" },
+				-- { Cue = "/VO/ThanatosField_0096" },
 				-- That skeleton.
 				{ Cue = "/VO/ThanatosField_0097" },
 				-- The skeleton, again.
@@ -19003,7 +18987,7 @@ mod.NPCData = mod.NPCData or {
 				-- Why ask for help from him?
 				{ Cue = "/VO/ThanatosField_0104" },
 				-- Unnecessary, Zag!
-				{ Cue = "/VO/ThanatosField_0105" },
+				-- { Cue = "/VO/ThanatosField_0105" },
 				-- Some help he was!
 				{ Cue = "/VO/ThanatosField_0106" },
 			},
@@ -19051,7 +19035,7 @@ mod.NPCData = mod.NPCData or {
 				RequiredOneOfTraits = { "FuryAssistTrait", "SkellyAssistTrait", "SisyphusAssistTrait", "DusaAssistTrait" },
 
 				-- What is this, Zagreus?
-				{ Cue = "/VO/ThanatosField_0107" },
+				-- { Cue = "/VO/ThanatosField_0107" },
 				-- You again?
 				{ Cue = "/VO/ThanatosField_0108" },
 				-- You again!
@@ -19210,7 +19194,7 @@ mod.NPCData = mod.NPCData or {
 				-- How did you get so fast?
 				{ Cue = "/VO/ThanatosField_0206" },
 				-- Wow, Zag.
-				{ Cue = "/VO/ThanatosField_0207" },
+				-- { Cue = "/VO/ThanatosField_0207" },
 				-- I can't believe this.
 				{ Cue = "/VO/ThanatosField_0208" },
 				-- That was embarrassing for me I have to say.
@@ -19222,7 +19206,7 @@ mod.NPCData = mod.NPCData or {
 				PreLineWait = 0.5,
 
 				-- Not bad, Zag. Here.
-				{ Cue = "/VO/Thanatos_0334",      RequiredPlayed = { "/VO/Thanatos_0337" }, RequiredTextLines = { "ThanatosGift02" } },
+				-- { Cue = "/VO/Thanatos_0334",      RequiredPlayed = { "/VO/Thanatos_0337" }, RequiredTextLines = { "ThanatosGift02" } },
 				-- Save some for me next time.
 				{ Cue = "/VO/Thanatos_0335",      RequiredPlayed = { "/VO/Thanatos_0337" } },
 				-- You took more down than I did.
@@ -19242,7 +19226,7 @@ mod.NPCData = mod.NPCData or {
 				-- Here's something for the show.
 				{ Cue = "/VO/Thanatos_0343",      RequiredPlayed = { "/VO/Thanatos_0337" } },
 				-- You've gotten stronger, Zag.
-				{ Cue = "/VO/Thanatos_0344",      RequiredPlayed = { "/VO/Thanatos_0337" } },
+				-- { Cue = "/VO/Thanatos_0344",      RequiredPlayed = { "/VO/Thanatos_0337" } },
 				-- Good work, my friend.
 				{ Cue = "/VO/Thanatos_0345",      RequiredPlayed = { "/VO/Thanatos_0337" }, RequiredAnyTextLines = { "ThanatosGift07", "ThanatosGift07_A" }, },
 				-- You earned this fair and square.
@@ -20055,29 +20039,29 @@ mod.NPCData = mod.NPCData or {
 			-- Not me, idiot.
 			{ Cue = "/VO/Thanatos_0309",      RequiredKillEnemiesFound = true,    RequiredFalseTextLines = { "ThanatosGift03" }, },
 			-- Not helpful, Zagreus.
-			{ Cue = "/VO/Thanatos_0310",      RequiredKillEnemiesFound = true,    RequiredFalseTextLines = { "ThanatosGift03" }, },
+			-- { Cue = "/VO/Thanatos_0310",      RequiredKillEnemiesFound = true,    RequiredFalseTextLines = { "ThanatosGift03" }, },
 			-- I'm on your side.
 			{ Cue = "/VO/Thanatos_0311",      RequiredKillEnemiesFound = true,    RequiredFalseTextLines = { "ThanatosGift04", "ThanatosGift04_B" }, },
 			-- You can't hurt me.
 			{ Cue = "/VO/Thanatos_0312",      RequiredKillEnemiesFound = true },
 			-- Seriously, Zag?
-			{ Cue = "/VO/Thanatos_0313",      RequiredKillEnemiesFound = true },
+			-- { Cue = "/VO/Thanatos_0313",      RequiredKillEnemiesFound = true },
 			-- Fight them not me.
 			{ Cue = "/VO/Thanatos_0314",      RequiredKillEnemiesFound = true },
 			-- You aren't helping, Zag.
-			{ Cue = "/VO/Thanatos_0315",      RequiredKillEnemiesFound = true },
+			-- { Cue = "/VO/Thanatos_0315",      RequiredKillEnemiesFound = true },
 			-- You going to help or what?
 			{ Cue = "/VO/Thanatos_0316",      RequiredKillEnemiesFound = true,    RequiredFalseTextLines = { "ThanatosGift05" }, },
 			-- Counterproductive, Zag.
-			{ Cue = "/VO/Thanatos_0317",      RequiredKillEnemiesFound = true },
+			-- { Cue = "/VO/Thanatos_0317",      RequiredKillEnemiesFound = true },
 			-- Why bother.
 			{ Cue = "/VO/Thanatos_0318",      RequiredKillEnemiesFound = true },
 			-- I'm not your foe here, Zag.
-			{ Cue = "/VO/Thanatos_0319",      RequiredKillEnemiesFound = true,    RequiredFalseTextLines = { "ThanatosGift03" }, },
+			-- { Cue = "/VO/Thanatos_0319",      RequiredKillEnemiesFound = true,    RequiredFalseTextLines = { "ThanatosGift03" }, },
 			-- Don't test me, Zagreus.
 			{ Cue = "/VO/Thanatos_0320",      RequiredKillEnemiesFound = true },
 			-- Not going to fight you, Zag.
-			{ Cue = "/VO/Thanatos_0321",      RequiredKillEnemiesFound = true },
+			-- { Cue = "/VO/Thanatos_0321",      RequiredKillEnemiesFound = true },
 			-- Watch your fire.
 			{ Cue = "/VO/Thanatos_0322",      RequiredKillEnemiesFound = true,    RequiredWeapon = "GunWeapon" },
 			-- Idiot.
@@ -20132,7 +20116,7 @@ mod.NPCData = mod.NPCData or {
 			-- Wake up.
 			{ Cue = "/VO/Thanatos_0103" },
 			-- Focus, Zag.
-			{ Cue = "/VO/Thanatos_0106",     RequiredKillEnemiesFound = true, },
+			-- { Cue = "/VO/Thanatos_0106",     RequiredKillEnemiesFound = true, },
 			-- Keep fighting.
 			{ Cue = "/VO/Thanatos_0107",     RequiredKillEnemiesFound = true, },
 			-- Careful, damn it.
@@ -20144,13 +20128,13 @@ mod.NPCData = mod.NPCData or {
 			-- Stay out of the way.
 			{ Cue = "/VO/Thanatos_0304" },
 			-- Zagreus!
-			{ Cue = "/VO/Thanatos_0305",     RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" }, },
+			-- { Cue = "/VO/Thanatos_0305",     RequiredAnyTextLines = { "ThanatosGift04", "ThanatosGift04_B" }, },
 			-- Not on my watch.
 			{ Cue = "/VO/Thanatos_0306",     RequiredKillEnemiesFound = true, },
 			-- Don't die here, Zagreus.
-			{ Cue = "/VO/Thanatos_0307",     RequiredTextLines = { "ThanatosGift01" } },
+			-- { Cue = "/VO/Thanatos_0307",     RequiredTextLines = { "ThanatosGift01" } },
 			-- Hold on, Zag.
-			{ Cue = "/VO/Thanatos_0308",     RequiredTextLines = { "ThanatosGift05" },                        RequiredKillEnemiesFound = true, },
+			-- { Cue = "/VO/Thanatos_0308",     RequiredTextLines = { "ThanatosGift05" },                        RequiredKillEnemiesFound = true, },
 			-- Careful!
 			{ Cue = "/VO/ThanatosField_0162" },
 			-- Let me take care of this.

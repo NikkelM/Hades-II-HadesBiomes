@@ -43,6 +43,7 @@ Other fixes and improvements:
 - Fixed: Biome music continues to play in shop rooms with free rewards before a boss encounter.
 - Fixed: (Tentative) Music can duplicate/overlap in rooms after a "challenge" encounter (Troves, Moon Monuments).
 - Fixed: Contextual voicelines with Hades story NPCs relating to their respective keepsakes being equipped cannot trigger.
+- Fixed: NPCs sometimes refer to Zagreus (by his name or gender).
 - Fixed: When marking a new testament, the indicator below the Shrine can sometimes point to the wrong exit.
 - Fixed: Testaments for the Sister Blades incorrectly require having completed the Polyphemus testament with the Witch's Staff.
 - Fixed: An incorrect animation plays on the biome transition map after completing a Testament of Night.
