@@ -8,6 +8,23 @@ local roomReplacements = {
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Styx",
 
+		-- We set the requirements, but the chance is set to 0 for Styx (there are no Challenges)
+		TimeChallengeSwitchRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation" },
+			},
+		},
+		PerfectClearSwitchRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation" },
+			},
+		},
+		EliteSwitchRequirements = {
+			NamedRequirements = { "TalentLegal", },
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation" },
+			},
+		},
 		WellShopRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation" },

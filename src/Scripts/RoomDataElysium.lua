@@ -7,6 +7,22 @@ local roomReplacements = {
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Elysium",
 
+		TimeChallengeSwitchRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation" },
+			},
+		},
+		PerfectClearSwitchRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation" },
+			},
+		},
+		EliteSwitchRequirements = {
+			NamedRequirements = { "TalentLegal", },
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation" },
+			},
+		},
 		WellShopRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation" },

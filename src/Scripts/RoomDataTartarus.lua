@@ -9,6 +9,22 @@ local roomReplacements = {
 		-- The animations are also defined in Hades II, and are misaligned for the spawn points on Hades maps
 		BreakableOptions = { "ModsNikkelMHadesBiomesBreakableIdle1", "ModsNikkelMHadesBiomesBreakableIdle2", "ModsNikkelMHadesBiomesBreakableIdle3" },
 
+		TimeChallengeSwitchRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation" },
+			},
+		},
+		PerfectClearSwitchRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation" },
+			},
+		},
+		EliteSwitchRequirements = {
+			NamedRequirements = { "TalentLegal", },
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation" },
+			},
+		},
 		WellShopRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation" },
@@ -863,3 +879,4 @@ game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Tartarus, roomModifications, roomReplacements, "Tartarus")
+mod.PrintTable(game.RoomData.A_Combat01)

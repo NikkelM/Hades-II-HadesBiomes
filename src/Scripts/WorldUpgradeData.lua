@@ -7,7 +7,9 @@ ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation - Sell Shops after bos
 ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation - Tartarus Fountain Chamber - after 2 run
 ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation - Asphodel Fountain Chamber - after 4 runs
 ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation - Elysium Fountain Chamber - after 6 runs
-ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after completing 5 and clearing 2 runs
+ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation - Infernal Troves - after 4 runs
+ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation - Moon Moncuments - after completing 6 runs and clearing 2 runs
+ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after completing 7 and clearing 4 runs
 ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after completing 8 and clearing 5 runs
 ]] --
 
@@ -260,9 +262,79 @@ local newIncantations = {
 		},
 	},
 	-- #endregion
+	-- #region Challenges/Infernal Troves/Moon Monuments
+	ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_trove",
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 2,
+			ModsNikkelMHadesBiomes_BossResourceElysium = 1,
+			ModsNikkelMHadesBiomes_OreElysium = 5
+		},
+		GameStateRequirements = {
+			{
+				-- Player already has Infernal Troves in the Underworld
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeChallengeSwitches1" },
+			},
+			{
+				PathTrue = { "GameState", "RoomsEntered", "Y_Boss01" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 4,
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_challengeswitch",
+		Cost = {
+			ModsNikkelMHadesBiomes_OreAsphodel = 5,
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
+			ModsNikkelMHadesBiomes_CropElysium = 2,
+		},
+		GameStateRequirements = {
+			{
+				-- Player already has Moon Monuments in vanilla runs
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeChallengeSwitchesExtra1" },
+			},
+			{
+				-- Player already has Infernal Troves in modded runs
+				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 6,
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 2,
+			},
+			-- Hasn't just unlocked the Infernal Troves. This check includes CurrentRun
+			{
+				SumPrevRuns = 2,
+				Path = { "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation" },
+				CountPathTrue = true,
+				Comparison = "<",
+				Value = 1,
+			},
+		},
+	},
+	-- #endregion
 	-- #region ShrineChallenge/Erebus Gates
 	ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation = {
-		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation",
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
@@ -284,12 +356,12 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 5,
+				Value = 7,
 			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
 				Comparison = ">=",
-				Value = 2,
+				Value = 4,
 			},
 		},
 	},

@@ -31,6 +31,7 @@ mod.RoomData.Tartarus = mod.RoomData.Tartarus or {
 			RequiredCosmetics = { "ShrinePointGates", },
 		},
 		ChallengeSpawnChance = 0.25,
+		-- This key isn't used in Hades II
 		ChallengeSwitchRequirements =
 		{
 			RequiredMinBiomeDepth = 7,

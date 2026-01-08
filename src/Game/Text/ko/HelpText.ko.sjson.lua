@@ -1105,6 +1105,29 @@ local newData = {
 	-- 	Description =
 	-- 	"Even the greatest of heroes who have passed into Elysium are not allowed to drink of the waters flowing from it's fountains, which is reserved for the gods alone.",
 	-- },
+	-- Add Infernal Troves/Moon Monuments
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation",
+	-- 	DisplayName = "Exhumed Plunder",
+	-- 	Description =
+	-- 	"Cause {$Keywords.RoomPlural} throughout the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} to sometimes contain an {$Keywords.ChallengeSwitch}."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation_Flavor",
+	-- 	Description =
+	-- 	"He would not stand to hear it, but the Lord Hades and his father Chronos are not so different when it comes to their safekeeping techniques for Gold.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation",
+	-- 	DisplayName = "Claws of Night and Darkness",
+	-- 	Description =
+	-- 	"Cause {$Keywords.RoomPlural} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} to sometimes contain a {$Keywords.EliteChallengeSwitch} or an {$Keywords.PerfectClearChallengeSwitch}."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation_Flavor",
+	-- 	Description =
+	-- 	"The Unseen's reach is greater than many assume, and so it is no surprise that even the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} is not beyond their grasp.",
+	-- },
 	-- #endregion
 
 	-- #region Keywords
