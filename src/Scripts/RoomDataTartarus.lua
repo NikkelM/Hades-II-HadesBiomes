@@ -879,4 +879,3 @@ game.RoomData.ModsNikkelMHadesBiomesBaseRoom = {
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Tartarus, roomModifications, roomReplacements, "Tartarus")
-mod.PrintTable(game.RoomData.A_Combat01)
