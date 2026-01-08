@@ -7842,7 +7842,7 @@ mod.EnemyData = {
 			CooldownName = "MegSpokeRecently",
 
 			-- Go home, Zagreus.
-			{ Cue = "/VO/MegaeraField_0123" },
+			-- { Cue = "/VO/MegaeraField_0123" },
 			-- That's what you get.
 			{ Cue = "/VO/MegaeraField_0124" },
 			-- Hah! Idiot.
@@ -7851,8 +7851,6 @@ mod.EnemyData = {
 			{ Cue = "/VO/MegaeraField_0130", RequiredFalseTextLines = { "MegaeraGift10" } },
 			-- Get the hell out of here.
 			{ Cue = "/VO/MegaeraField_0131", RequiredFalseTextLines = { "MegaeraGift10" } },
-			-- You stupid little fool.
-			-- { Cue = "/VO/MegaeraField_0132" },
 			-- <Laughter>
 			{ Cue = "/VO/MegaeraField_0134" },
 			-- <Laughter>
@@ -7911,7 +7909,7 @@ mod.EnemyData = {
 			-- Cute.
 			{ Cue = "/VO/MegaeraField_0223" },
 			-- You're bleeding, Zagreus.
-			{ Cue = "/VO/MegaeraField_0224" },
+			-- { Cue = "/VO/MegaeraField_0224" },
 			-- You can't hold out forever.
 			{ Cue = "/VO/MegaeraField_0225" },
 			-- You're going home.
@@ -7925,11 +7923,11 @@ mod.EnemyData = {
 			-- You're mine.
 			{ Cue = "/VO/MegaeraField_0230" },
 			-- I know Nyx is helping you.
-			{ Cue = "/VO/MegaeraField_0231" },
+			-- { Cue = "/VO/MegaeraField_0231" },
 			-- You cheating little...
 			{ Cue = "/VO/MegaeraField_0232" },
 			-- You're running out of chances, Zagreus.
-			{ Cue = "/VO/MegaeraField_0233" },
+			-- { Cue = "/VO/MegaeraField_0233" },
 			-- You'll get what you deserve.
 			{ Cue = "/VO/MegaeraField_0234" },
 			-- Got you for once.
@@ -7945,7 +7943,7 @@ mod.EnemyData = {
 			-- Slowed you down, have I?
 			{ Cue = "/VO/MegaeraField_0240", ConsecutiveClearsOfRoom = { Name = "A_Boss01", Count = 3 }, },
 			-- Give Hades my regards.
-			{ Cue = "/VO/MegaeraField_0128" },
+			-- { Cue = "/VO/MegaeraField_0128" },
 		},
 		WrathReactionVoiceLines =
 		{
@@ -7961,7 +7959,7 @@ mod.EnemyData = {
 				-- What...!
 				{ Cue = "/VO/MegaeraField_0399", RequiredPlayed = { "/VO/MegaeraField_0409" } },
 				-- Zagreus...
-				{ Cue = "/VO/MegaeraField_0400", RequiredPlayed = { "/VO/MegaeraField_0409" } },
+				-- { Cue = "/VO/MegaeraField_0400", RequiredPlayed = { "/VO/MegaeraField_0409" } },
 				-- Come then.
 				{ Cue = "/VO/MegaeraField_0401", RequiredPlayed = { "/VO/MegaeraField_0409" } },
 				-- Do your worst.
@@ -8001,7 +7999,7 @@ mod.EnemyData = {
 				-- This again?
 				{ Cue = "/VO/MegaeraField_0702", RequiredPlayed = { "/VO/MegaeraField_0409" } },
 				-- Come on, Zag.
-				{ Cue = "/VO/MegaeraField_0703", RequiredPlayed = { "/VO/MegaeraField_0409" } },
+				-- { Cue = "/VO/MegaeraField_0703", RequiredPlayed = { "/VO/MegaeraField_0409" } },
 				-- Not this again.
 				{ Cue = "/VO/MegaeraField_0704", RequiredPlayed = { "/VO/MegaeraField_0409" } },
 				-- Oh no.
@@ -8054,7 +8052,7 @@ mod.EnemyData = {
 				-- How did that get in?!
 				{ Cue = "/VO/MegaeraField_0567" },
 				-- Odd friends you're making, Zagreus!
-				{ Cue = "/VO/MegaeraField_0568" },
+				-- { Cue = "/VO/MegaeraField_0568" },
 				-- It's that damn skeleton!
 				{ Cue = "/VO/MegaeraField_0569", RequiredPlayed = { "/VO/MegaeraField_0567" }, },
 				-- The skeleton, again?
@@ -8082,7 +8080,7 @@ mod.EnemyData = {
 				-- You blasted wretch!!
 				{ Cue = "/VO/MegaeraField_0576" },
 				-- How could you, Zagreus!!
-				{ Cue = "/VO/MegaeraField_0577" },
+				-- { Cue = "/VO/MegaeraField_0577" },
 				-- You're going to be sorry, Sisyphus!
 				{ Cue = "/VO/MegaeraField_0578" },
 			},
@@ -8137,7 +8135,7 @@ mod.EnemyData = {
 				RequiredRoom = "A_Boss01",
 
 				-- What is this, Zagreus?
-				{ Cue = "/VO/MegaeraField_0579" },
+				-- { Cue = "/VO/MegaeraField_0579" },
 				-- Fight me yourself!
 				{ Cue = "/VO/MegaeraField_0580" },
 				-- Can't handle me yourself?
@@ -8171,7 +8169,7 @@ mod.EnemyData = {
 				SkipAnim = true,
 				SuccessiveChanceToPlayAll = 0.33,
 				RequiredMinActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 1 },
-				Source = { SubtitleColor = Color.MegVoice },
+				Source = { SubtitleColor = game.Color.MegVoice },
 
 				-- We got him.
 				{ Cue = "/VO/MegaeraField_0369" },
@@ -8199,25 +8197,25 @@ mod.EnemyData = {
 				Queue = "Interrupt",
 				NoTarget = true,
 				SkipAnim = true,
-				Source = { SubtitleColor = Color.MegVoice },
+				Source = { SubtitleColor = game.Color.MegVoice },
 				RequiredTextLines = { "MegaeraGift10" },
 
 				-- You're mine and always will be, Zagreus.
-				{ Cue = "/VO/MegaeraField_0659", RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" }, },
+				-- { Cue = "/VO/MegaeraField_0659", RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" }, },
 				-- You're mine, Zag. Don't forget it.
-				{ Cue = "/VO/MegaeraField_0660", RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" }, },
+				-- { Cue = "/VO/MegaeraField_0660", RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" }, },
 				-- We'll have to finish this back home.
-				{ Cue = "/VO/MegaeraField_0661", RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" }, },
+				-- { Cue = "/VO/MegaeraField_0661", RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" }, },
 				-- It's all part of the job.
 				{ Cue = "/VO/MegaeraField_0662" },
 				-- What else did you expect?
 				{ Cue = "/VO/MegaeraField_0663" },
 				-- You could do better than that, Zagreus.
-				{ Cue = "/VO/MegaeraField_0664" },
+				-- { Cue = "/VO/MegaeraField_0664" },
 				-- Were you distracted maybe, Zagreus?
-				{ Cue = "/VO/MegaeraField_0665" },
+				-- { Cue = "/VO/MegaeraField_0665" },
 				-- Don't get so careless with me next time, Zag.
-				{ Cue = "/VO/MegaeraField_0666" },
+				-- { Cue = "/VO/MegaeraField_0666" },
 				-- Thanks for the little workout there.
 				{ Cue = "/VO/MegaeraField_0667" },
 				-- I guess I'll see you back here before long.
@@ -8227,7 +8225,7 @@ mod.EnemyData = {
 				-- Finally.
 				{ Cue = "/VO/MegaeraField_0296" },
 				-- Give Hades my regards.
-				{ Cue = "/VO/MegaeraField_0128" },
+				-- { Cue = "/VO/MegaeraField_0128" },
 				-- You should have known better.
 				{ Cue = "/VO/MegaeraField_0129" },
 				-- I think we're finished here.
@@ -8244,26 +8242,26 @@ mod.EnemyData = {
 				Queue = "Interrupt",
 				NoTarget = true,
 				SkipAnim = true,
-				Source = { SubtitleColor = Color.MegVoice },
+				Source = { SubtitleColor = game.Color.MegVoice },
 				ConsecutiveClearsOfRoom =
 				{
 					Name = "A_Boss01",
 					Count = 2,
 				},
 				-- About damn time I finally got you, Zag.
-				{ Cue = "/VO/MegaeraField_0143", RequiredTextLines = { "MegaeraGift03" }, },
+				-- { Cue = "/VO/MegaeraField_0143", RequiredTextLines = { "MegaeraGift03" }, },
 				-- That took me long enough.
 				{ Cue = "/VO/MegaeraField_0144" },
 				-- Revenge is always sweet.
 				{ Cue = "/VO/MegaeraField_0145", RequiredFalseTextLines = { "MegaeraGift10" } },
 				-- I finally got you, Zagreus.
-				{ Cue = "/VO/MegaeraField_0146" },
+				-- { Cue = "/VO/MegaeraField_0146" },
 				-- Did you go easy on me, Zagreus?
-				{ Cue = "/VO/MegaeraField_0147", RequiredFalseTextLines = { "MegaeraGift10" } },
+				-- { Cue = "/VO/MegaeraField_0147", RequiredFalseTextLines = { "MegaeraGift10" } },
 				-- Did you just let me win...?
 				{ Cue = "/VO/MegaeraField_0148", RequiredFalseTextLines = { "MegaeraGift10" } },
 				-- Give Hades my regards.
-				{ Cue = "/VO/MegaeraField_0128" },
+				-- { Cue = "/VO/MegaeraField_0128" },
 				-- You must have let me win.
 				{ Cue = "/VO/MegaeraField_0310" },
 				-- Your heart just wasn't in it... why?
@@ -8273,7 +8271,7 @@ mod.EnemyData = {
 				-- The Fates were on my side for once.
 				{ Cue = "/VO/MegaeraField_0313" },
 				-- You're out of practice, Zag.
-				{ Cue = "/VO/MegaeraField_0314" },
+				-- { Cue = "/VO/MegaeraField_0314" },
 				-- Get out of here.
 				{ Cue = "/VO/MegaeraField_0315", RequiredFalseTextLines = { "MegaeraGift10" } },
 				-- Finally got you for once.
@@ -8290,14 +8288,14 @@ mod.EnemyData = {
 				Queue = "Interrupt",
 				NoTarget = true,
 				SkipAnim = true,
-				Source = { SubtitleColor = Color.MegVoice },
+				Source = { SubtitleColor = game.Color.MegVoice },
 				ConsecutiveDeathsInRoom =
 				{
 					Name = "A_Boss01",
 					Count = 2,
 				},
 				-- You'll never beat me, Zag.
-				{ Cue = "/VO/MegaeraField_0137", RequiredFalseTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_Alt", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt_B" } },
+				-- { Cue = "/VO/MegaeraField_0137", RequiredFalseTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_Alt", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt_B" } },
 				-- Don't you know when to quit?
 				{ Cue = "/VO/MegaeraField_0138", RequiredFalseTextLines = { "MegaeraGift10" } },
 				-- Give up, already, damn you.
@@ -8317,9 +8315,9 @@ mod.EnemyData = {
 				-- I'll send you back as often as it takes.
 				{ Cue = "/VO/MegaeraField_0309" },
 				-- Got you again like in the old days, Zag.
-				{ Cue = "/VO/MegaeraField_0674" },
+				-- { Cue = "/VO/MegaeraField_0674" },
 				-- Beginning to see a pattern, Zagreus?
-				{ Cue = "/VO/MegaeraField_0675" },
+				-- { Cue = "/VO/MegaeraField_0675" },
 				-- I'll never hold back, for you or anyone.
 				{ Cue = "/VO/MegaeraField_0676" },
 			},
@@ -8331,10 +8329,10 @@ mod.EnemyData = {
 				NoTarget = true,
 				SkipAnim = true,
 				RequiredFalseTextLines = { "MegaeraGift10" },
-				Source = { SubtitleColor = Color.MegVoice },
+				Source = { SubtitleColor = game.Color.MegVoice },
 
 				-- Go home, Zagreus.
-				{ Cue = "/VO/MegaeraField_0123" },
+				-- { Cue = "/VO/MegaeraField_0123" },
 				-- That's what you get.
 				{ Cue = "/VO/MegaeraField_0124" },
 				-- Hah! Idiot.
@@ -8344,15 +8342,13 @@ mod.EnemyData = {
 				-- You're nothing to me anymore.
 				{ Cue = "/VO/MegaeraField_0127", RequiredFalseTextLines = { "MegaeraGift05" } },
 				-- Give Hades my regards.
-				{ Cue = "/VO/MegaeraField_0128" },
+				-- { Cue = "/VO/MegaeraField_0128" },
 				-- You should have known better.
 				{ Cue = "/VO/MegaeraField_0129" },
 				-- To hell with you.
 				{ Cue = "/VO/MegaeraField_0130" },
 				-- Get the hell out of here.
 				{ Cue = "/VO/MegaeraField_0131" },
-				-- You stupid little fool.
-				-- { Cue = "/VO/MegaeraField_0132" },
 				-- I think we're finished here.
 				{ Cue = "/VO/MegaeraField_0133" },
 				-- Finally.
@@ -8368,7 +8364,7 @@ mod.EnemyData = {
 				-- You little fool.
 				{ Cue = "/VO/MegaeraField_0301" },
 				-- Do say hello to Nyx for me.
-				{ Cue = "/VO/MegaeraField_0302", RequiredTextLines = { "NyxFirstMeeting", "Flashback_Mother_01" } },
+				-- { Cue = "/VO/MegaeraField_0302", RequiredTextLines = { "NyxFirstMeeting", "Flashback_Mother_01" } },
 				-- Drown in the River Styx.
 				{ Cue = "/VO/MegaeraField_0303" },
 				-- We're through.
@@ -8384,17 +8380,6 @@ mod.EnemyData = {
 			},
 		},
 		InvulnerableHitSound = "/SFX/Enemy Sounds/Megaera/EmoteLaugh",
-		--[[
-		InvulnerableVoiceLines =
-		{
-			BreakIfPlayed = true,
-			RandomRemaining = true,
-			PreLineWait = 0.15,
-			CooldownTime = 3,
-
-			-- Placeholder
-		},
-		--]]
 		CharmStartSound = "/SFX/Enemy Sounds/Megaera/EmoteChuckle",
 		OnCharmedVoiceLines =
 		{
@@ -8507,7 +8492,7 @@ mod.EnemyData = {
 				-- Ungh, heh.
 				{ Cue = "/VO/MegaeraField_0633", },
 				-- How thoughtful of you, Zag.
-				{ Cue = "/VO/MegaeraField_0634", },
+				-- { Cue = "/VO/MegaeraField_0634", },
 				-- You can do better than that.
 				{ Cue = "/VO/MegaeraField_0636", },
 				-- That's it?
@@ -8527,7 +8512,7 @@ mod.EnemyData = {
 				-- Oh, come on.
 				{ Cue = "/VO/MegaeraField_0772", },
 				-- Really, Zag?
-				{ Cue = "/VO/MegaeraField_0773", },
+				-- { Cue = "/VO/MegaeraField_0773", },
 			},
 		},
 		CriticalHealthVoiceLineThreshold = 0.3,
@@ -9244,23 +9229,6 @@ mod.EnemyData = {
 		},
 		BossPresentationIntroTextLineSets =
 		{
-			--[[ removed to make room for QuestLog 11/23/19 [gk]
-			FuryFirstAppearanceFirstRun =
-			{
-				PlayOnce = true,
-				RequiredCompletedRuns = 0,
-				{ Cue = "/VO/MegaeraField_0002", Speaker = "NPC_FurySister_01",
-					Text = "Halt, Zagreus. Not one step further." },
-				{ Portrait = "Portrait_Zag_Default_01", Speaker = "CharProtag", Cue = "/VO/ZagreusField_0461",
-					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-					Text = "Come on, Meg. Haven't we had more than enough of each other by now? Besides, don't you have someplace else to be?" },
-				{ Cue = "/VO/MegaeraField_0003", Speaker = "NPC_FurySister_01",
-					PreLineAnim = "FuryTaunt", PreLineWait = 0.35,
-					PreLineFunctionName = "StartBossRoomMusic",
-					Text = "You know exactly why I'm here. Now shut your mouth, and come die like a man." },
-			},
-			]] --
 			FuryFirstAppearance =
 			{
 				PlayOnce = true,
@@ -12311,7 +12279,7 @@ mod.EnemyData = {
 				SkipAnim = true,
 				SuccessiveChanceToPlayAll = 0.33,
 				RequiredMinActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 1 },
-				Source = { SubtitleColor = Color.AlectoVoice },
+				Source = { SubtitleColor = game.Color.AlectoVoice },
 
 				-- We got him.
 				{ Cue = "/VO/Alecto_0303" },
@@ -12329,7 +12297,7 @@ mod.EnemyData = {
 				Queue = "Interrupt",
 				NoTarget = true,
 				SkipAnim = true,
-				Source = { SubtitleColor = Color.AlectoVoice },
+				Source = { SubtitleColor = game.Color.AlectoVoice },
 				ConsecutiveDeathsInRoom =
 				{
 					Name = "A_Boss02",
@@ -12355,7 +12323,7 @@ mod.EnemyData = {
 				Queue = "Interrupt",
 				NoTarget = true,
 				SkipAnim = true,
-				Source = { SubtitleColor = Color.AlectoVoice },
+				Source = { SubtitleColor = game.Color.AlectoVoice },
 				ConsecutiveClearsOfRoom =
 				{
 					Name = "A_Boss02",
@@ -12381,7 +12349,7 @@ mod.EnemyData = {
 				Queue = "Interrupt",
 				NoTarget = true,
 				SkipAnim = true,
-				Source = { SubtitleColor = Color.AlectoVoice },
+				Source = { SubtitleColor = game.Color.AlectoVoice },
 
 				-- Get out of here, redblood.
 				{ Cue = "/VO/Alecto_0215" },
@@ -12392,19 +12360,17 @@ mod.EnemyData = {
 				-- I told you what was going to happen.
 				{ Cue = "/VO/Alecto_0218" },
 				-- Go on now back to daddy.
-				{ Cue = "/VO/Alecto_0219" },
+				-- { Cue = "/VO/Alecto_0219" },
 				-- Bye now, see you next time!
 				{ Cue = "/VO/Alecto_0220" },
 				-- Aw, we were just getting started.
 				{ Cue = "/VO/Alecto_0221" },
-				-- Right down the drain with you.
-				-- { Cue = "/VO/Alecto_0222" },
 				-- Aw, over so soon?
 				{ Cue = "/VO/Alecto_0223" },
 				-- Another piece of trash goes down the drain.
 				{ Cue = "/VO/Alecto_0224" },
 				-- Tell Daddy I said hi.
-				{ Cue = "/VO/Alecto_0225" },
+				-- { Cue = "/VO/Alecto_0225" },
 				-- Finally.
 				{ Cue = "/VO/Alecto_0226" },
 				-- All right, all right, that's enough.
@@ -12480,19 +12446,6 @@ mod.EnemyData = {
 			PreLineWait = 0.25,
 			CooldownTime = 16,
 			CooldownName = "AlectoSpokeRecently",
-
-			-- I don't think so.
-			-- { Cue = "/VO/Alecto_0207" },
-			-- Not a chance.
-			-- { Cue = "/VO/Alecto_0210" },
-			-- Nice try.
-			-- { Cue = "/VO/Alecto_0212" },
-			-- No way.
-			-- { Cue = "/VO/Alecto_0211" },
-			-- Pshh.
-			-- { Cue = "/VO/Alecto_0213" },
-			-- Really?
-			-- { Cue = "/VO/Alecto_0214" },
 		},
 		LowHealthVoiceLineThreshold = 0.6,
 		LowHealthVoiceLines =
@@ -15035,7 +14988,7 @@ mod.EnemyData = {
 			Queue = "Interrupt",
 			NoTarget = true,
 			SkipAnim = true,
-			Source = { SubtitleColor = Color.TisiphoneVoice },
+			Source = { SubtitleColor = game.Color.TisiphoneVoice },
 
 			-- Murderer.
 			{ Cue = "/VO/Tisiphone_0071" },
@@ -15051,8 +15004,6 @@ mod.EnemyData = {
 			{ Cue = "/VO/Tisiphone_0077" },
 			-- Murdererr.
 			{ Cue = "/VO/Tisiphone_0078" },
-			-- <Laughter>
-			-- { Cue = "/VO/Tisiphone_0075" },
 			-- Murderer!
 			{ Cue = "/VO/Tisiphone_0167" },
 			-- Mmmurder....
@@ -15252,11 +15203,11 @@ mod.EnemyData = {
 				-- Ah, this again huh.
 				{ Cue = "/VO/Skelly_0587", RequiredPlayed = { "/VO/Skelly_0549" } },
 				-- I'm scared, hold me, boyo!
-				{ Cue = "/VO/Skelly_0588", RequiredPlayed = { "/VO/Skelly_0549" } },
+				-- { Cue = "/VO/Skelly_0588", RequiredPlayed = { "/VO/Skelly_0549" } },
 				-- Where'd everybody go?
 				{ Cue = "/VO/Skelly_0589", RequiredPlayed = { "/VO/Skelly_0549" } },
 				-- The walls, boyo!
-				{ Cue = "/VO/Skelly_0590", RequiredPlayed = { "/VO/Skelly_0549" } },
+				-- { Cue = "/VO/Skelly_0590", RequiredPlayed = { "/VO/Skelly_0549" } },
 				-- Ah, no, not this again!
 				{ Cue = "/VO/Skelly_0591", RequiredPlayed = { "/VO/Skelly_0549" } },
 			},
@@ -18256,7 +18207,7 @@ mod.EnemyData = {
 				NoTarget = true,
 				SkipAnim = true,
 				SuccessiveChanceToPlayAll = 0.33,
-				Source = { SubtitleColor = Color.TheseusVoice },
+				Source = { SubtitleColor = game.Color.TheseusVoice },
 				ConsecutiveClearsOfRoom =
 				{
 					Name = "C_Boss01",
@@ -18277,7 +18228,7 @@ mod.EnemyData = {
 				NoTarget = true,
 				SkipAnim = true,
 				SuccessiveChanceToPlayAll = 0.33,
-				Source = { SubtitleColor = Color.TheseusVoice },
+				Source = { SubtitleColor = game.Color.TheseusVoice },
 				ConsecutiveDeathsInRoom =
 				{
 					Name = "C_Boss01",
@@ -18297,7 +18248,7 @@ mod.EnemyData = {
 				Queue = "Interrupt",
 				NoTarget = true,
 				SkipAnim = true,
-				Source = { SubtitleColor = Color.TheseusVoice },
+				Source = { SubtitleColor = game.Color.TheseusVoice },
 
 				-- You shall never defeat us.
 				{ Cue = "/VO/Theseus_0192", RequiredAnyUnitAlive = { "Minotaur", "Minotaur2" },  RequiredFalseFlags = { "HeroesMuted" }, },
@@ -18384,20 +18335,8 @@ mod.EnemyData = {
 			[3] = GlobalVoiceLines.ChaosReactionVoiceLines,
 		},
 
-		-- RageFullSound = "/SFX/Enemy Sounds/Theseus/EmotePoweringUp",
 		RageFullVoiceLines =
 		{
-			--[[
-			{
-				RandomRemaining = true,
-				PreLineWait = 0.6,
-
-				-- Asterius!!
-				{ Cue = "/VO/Theseus_0226" },
-				-- No, Asterius!
-				{ Cue = "/VO/Theseus_0227" },
-			},
-			]] --
 		},
 
 		CharmStartSound = "/SFX/Enemy Sounds/Theseus/EmoteLaugh",
@@ -21603,22 +21542,6 @@ mod.EnemyData = {
 		},
 		CauseOfDeathVoiceLines =
 		{
-			--[[
-			{
-				RandomRemaining = true,
-				BreakIfPlayed = true,
-				PreLineWait = 1.2,
-				Queue = "Interrupt",
-				NoTarget = true,
-				SkipAnim = true,
-				ConsecutiveClearsOfRoom =
-				{
-				  Name = "C_MiniBoss01",
-				  Count = 2,
-				},
-				-- About damn time I finally got you, Zag.
-				-- { Cue = "/VO/MegaeraField_0143", RequiredTextLines = { "MegaeraGift03" }, },
-			},
 			{
 				RandomRemaining = true,
 				BreakIfPlayed = true,
@@ -21626,21 +21549,7 @@ mod.EnemyData = {
 				Queue = "Interrupt",
 				NoTarget = true,
 				SkipAnim = true,
-				ConsecutiveDeathsInRoom =
-				{
-				  Name = "C_MiniBoss01",
-				  Count = 2,
-				},
-			},
-			]] --
-			{
-				RandomRemaining = true,
-				BreakIfPlayed = true,
-				PreLineWait = 0.75,
-				Queue = "Interrupt",
-				NoTarget = true,
-				SkipAnim = true,
-				Source = { SubtitleColor = Color.MinotaurVoice },
+				Source = { SubtitleColor = game.Color.MinotaurVoice },
 
 				-- A noble attempt.
 				{ Cue = "/VO/Minotaur_0210" },
@@ -21711,15 +21620,6 @@ mod.EnemyData = {
 		-- RageFullSound = "/SFX/Enemy Sounds/Minotaur/EmotePoweringUp",
 		RageFullVoiceLines =
 		{
-			--[[
-			{
-				RandomRemaining = true,
-				PreLineWait = 0.6,
-
-				-- King...!
-				{ Cue = "/VO/Minotaur_0242" },
-			},
-			]] --
 		},
 
 		OnCharmedVoiceLines =
@@ -21914,8 +21814,6 @@ mod.EnemyData = {
 				{ Cue = "/VO/Minotaur_0233", RequiredPlayed = { "/VO/Minotaur_0229" } },
 				-- King, I...
 				{ Cue = "/VO/Minotaur_0234", RequiredPlayed = { "/VO/Minotaur_0229" } },
-				-- Ugh, can't...
-				-- { Cue = "/VO/Minotaur_0235" },
 				-- Hah, hahaha...
 				{ Cue = "/VO/Minotaur_0236", RequiredPlayed = { "/VO/Minotaur_0229" } },
 				-- Thank... you...
@@ -23723,13 +23621,6 @@ mod.EnemyData = {
 		-- following are repeatable versions of the above
 		BossPresentationOutroRepeatableTextLineSets =
 		{
-			--[[
-			MinotaurMiscOutro01 =
-			{
-				{ Cue = "",
-					Text = "Peaaaaace!" },
-			},
-			]] --
 		},
 
 		Binks =
@@ -24179,7 +24070,7 @@ mod.EnemyData = {
 			-- Wide open.
 			{ Cue = "/VO/HadesField_0176" },
 			-- I thought Achilles taught you to be quick.
-			{ Cue = "/VO/HadesField_0177", SuccessiveChanceToPlay = 0.01 },
+			-- { Cue = "/VO/HadesField_0177", SuccessiveChanceToPlay = 0.01 },
 			-- Die!
 			{ Cue = "/VO/HadesField_0285" },
 			-- Fall!
@@ -24217,7 +24108,7 @@ mod.EnemyData = {
 			-- There is no escape.
 			{ Cue = "/VO/HadesField_0069" },
 			-- Go home, boy.
-			{ Cue = "/VO/HadesField_0070" },
+			-- { Cue = "/VO/HadesField_0070" },
 			-- Kick and scream all you like.
 			{ Cue = "/VO/HadesField_0071" },
 			-- You can't withstand me.
@@ -24233,7 +24124,7 @@ mod.EnemyData = {
 			-- You still resist?
 			{ Cue = "/VO/HadesField_0173" },
 			-- You're bleeding, boy.
-			{ Cue = "/VO/HadesField_0174" },
+			-- { Cue = "/VO/HadesField_0174" },
 			-- Idiot!
 			{ Cue = "/VO/HadesField_0294", RequiredFalseTextLines = { "Ending01" }, },
 			-- You'll perish yet.
@@ -24241,7 +24132,7 @@ mod.EnemyData = {
 			-- Think you can keep this up?
 			{ Cue = "/VO/HadesField_0296" },
 			-- You're merely stalling, boy!
-			{ Cue = "/VO/HadesField_0297" },
+			-- { Cue = "/VO/HadesField_0297" },
 			-- Not yet persuaded to go back I see?
 			{ Cue = "/VO/HadesField_0298" },
 			-- Hungry for more, I see?
@@ -24293,7 +24184,7 @@ mod.EnemyData = {
 				-- You'd cower underneath Athena's shield?
 				{ Cue = "/VO/HadesField_0077", RequiredTrait = "AthenaShoutTrait" },
 				-- Athena cannot save you from me, boy.
-				{ Cue = "/VO/HadesField_0078", RequiredTrait = "AthenaShoutTrait" },
+				-- { Cue = "/VO/HadesField_0078", RequiredTrait = "AthenaShoutTrait" },
 				-- I'll slay you once her shield falls.
 				{ Cue = "/VO/HadesField_0667", RequiredTrait = "AthenaShoutTrait" },
 				-- Athena would be wiser to stay out of this!
@@ -24310,7 +24201,7 @@ mod.EnemyData = {
 				-- You think of her at such a time as this?!
 				{ Cue = "/VO/HadesField_0669", RequiredTrait = "AphroditeShoutTrait" },
 				-- You cannot sway me, boy!
-				{ Cue = "/VO/HadesField_0670", RequiredTrait = "AphroditeShoutTrait" },
+				-- { Cue = "/VO/HadesField_0670", RequiredTrait = "AphroditeShoutTrait" },
 				-- Must Aphrodite get involved in everything?
 				{ Cue = "/VO/HadesField_0474", RequiredTrait = "AphroditeShoutTrait", RequiredTextLines = { "Ending01" }, },
 				-- To Aphrodite all of this must be some sort of jest!
@@ -24334,11 +24225,11 @@ mod.EnemyData = {
 				-- You'd best stay out of my affairs, Ares!
 				{ Cue = "/VO/HadesField_0084", RequiredTrait = "AresShoutTrait" },
 				-- Turn back this instant, boy!
-				{ Cue = "/VO/HadesField_0673", RequiredTrait = "AresShoutTrait" },
+				-- { Cue = "/VO/HadesField_0673", RequiredTrait = "AresShoutTrait" },
 				-- This shape-shifting of yours won't last for long.
 				{ Cue = "/VO/HadesField_0674", RequiredTrait = "AresShoutTrait" },
 				-- This must be a delight for your dear cousin Ares, boy!
-				{ Cue = "/VO/HadesField_0478", RequiredTrait = "AresShoutTrait",      RequiredTextLines = { "Ending01" }, },
+				-- { Cue = "/VO/HadesField_0478", RequiredTrait = "AresShoutTrait",      RequiredTextLines = { "Ending01" }, },
 				-- That Ares can turn any small dispute into a war!
 				{ Cue = "/VO/HadesField_0479", RequiredTrait = "AresShoutTrait",      RequiredTextLines = { "Ending01" }, },
 
@@ -24347,7 +24238,7 @@ mod.EnemyData = {
 				-- Why are you staining my clothes with wine?!
 				{ Cue = "/VO/HadesField_0086", RequiredTrait = "DionysusShoutTrait" },
 				-- You think this cause for celebration, boy?!
-				{ Cue = "/VO/HadesField_0675", RequiredTrait = "DionysusShoutTrait" },
+				-- { Cue = "/VO/HadesField_0675", RequiredTrait = "DionysusShoutTrait" },
 				-- You cloud your senses with this foolishness!
 				{ Cue = "/VO/HadesField_0676", RequiredTrait = "DionysusShoutTrait" },
 				-- This is a battle, not a time for revelry!
@@ -24380,7 +24271,7 @@ mod.EnemyData = {
 				RequiredFalseTraits = { "HadesShoutTrait" },
 
 				-- I'll not indulge such outbursts from you, boy!
-				{ Cue = "/VO/HadesField_0087" },
+				-- { Cue = "/VO/HadesField_0087" },
 				-- You'd pit my own kin, against me?
 				{ Cue = "/VO/HadesField_0088" },
 				-- How vile that you'd drag Olympus into this!
@@ -24495,7 +24386,7 @@ mod.EnemyData = {
 				-- Was that your foolish doing, Poseidon?!
 				{ Cue = "/VO/HadesField_0274", RequiredPlayed = { "/VO/HadesField_0272" }, },
 				-- Another of your blasted boulders, boy?!
-				{ Cue = "/VO/HadesField_0275", RequiredPlayed = { "/VO/HadesField_0272" }, },
+				-- { Cue = "/VO/HadesField_0275", RequiredPlayed = { "/VO/HadesField_0272" }, },
 				-- A collapse from the Temple, nothing more!
 				{ Cue = "/VO/HadesField_0276", RequiredPlayed = { "/VO/HadesField_0272" }, },
 				-- Was that the blasted boulder from before?!
@@ -24525,7 +24416,7 @@ mod.EnemyData = {
 				-- What is the gorgon doing here again?
 				{ Cue = "/VO/HadesField_0461", RequiredPlayed = { "/VO/HadesField_0458" }, },
 				-- You summon our custodian for help?
-				{ Cue = "/VO/HadesField_0462", RequiredPlayed = { "/VO/HadesField_0458" }, },
+				-- { Cue = "/VO/HadesField_0462", RequiredPlayed = { "/VO/HadesField_0458" }, },
 			},
 			{
 				RandomRemaining = true,
@@ -24558,7 +24449,7 @@ mod.EnemyData = {
 				-- Face me yourself!
 				{ Cue = "/VO/HadesField_0463" },
 				-- Invite more of your friends, why don't you, boy?
-				{ Cue = "/VO/HadesField_0464", RequiredFalseTraits = { "SisyphusAssistTrait" }, },
+				-- { Cue = "/VO/HadesField_0464", RequiredFalseTraits = { "SisyphusAssistTrait" }, },
 				-- Leave that one out of this!
 				{ Cue = "/VO/HadesField_0465" },
 				-- You need assistance even now?
@@ -24577,7 +24468,7 @@ mod.EnemyData = {
 					{
 						RandomRemaining = true,
 						PreLineWait = 0.05,
-						Source = { SubtitleColor = Color.HadesVoice },
+						Source = { SubtitleColor = game.Color.HadesVoice },
 						Cooldowns =
 						{
 							{ Name = "HadesAnyQuipSpeech", Time = 10 },
@@ -24687,7 +24578,6 @@ mod.EnemyData = {
 					RandomRemaining = true,
 					PreLineWait = 2.0,
 					RequiredFalseBossPhase = 3,
-					-- SuccessiveChanceToPlay = 0.66,
 					TriggerCooldowns = { "HadesAnyQuipSpeech" },
 
 					-- Enough of this!!
@@ -24714,12 +24604,8 @@ mod.EnemyData = {
 					{ Cue = "/VO/HadesField_0573", RequiredPlayed = { "/VO/HadesField_0053" }, },
 					-- You truly dare?
 					{ Cue = "/VO/HadesField_0574", RequiredPlayed = { "/VO/HadesField_0053" }, },
-					-- Do not hold back!
-					-- { Cue = "/VO/HadesField_0575", RequiredPlayed = { "/VO/HadesField_0650" }, },
 					-- No holding back!
 					{ Cue = "/VO/HadesField_0576", RequiredPlayed = { "/VO/HadesField_0053" }, RequiredTextLines = { "Ending01" } },
-					-- All right!
-					-- { Cue = "/VO/HadesField_0577", RequiredPlayed = { "/VO/HadesField_0650" }, },
 					-- Try that again!
 					{ Cue = "/VO/HadesField_0578", RequiredPlayed = { "/VO/HadesField_0053" }, RequiredTextLines = { "Ending01" } },
 				},
@@ -24763,7 +24649,7 @@ mod.EnemyData = {
 				NoTarget = true,
 				SkipAnim = true,
 				SuccessiveChanceToPlayAll = 0.25,
-				Source = { SubtitleColor = Color.HadesVoice },
+				Source = { SubtitleColor = game.Color.HadesVoice },
 				ConsecutiveClearsOfRoom =
 				{
 					Name = "D_Boss01",
@@ -24772,7 +24658,7 @@ mod.EnemyData = {
 				-- Consider that a reimbursement for last time.
 				{ Cue = "/VO/HadesField_0129" },
 				-- You are somewhat stronger than expected, boy.
-				{ Cue = "/VO/HadesField_0130" },
+				-- { Cue = "/VO/HadesField_0130" },
 				-- How arrogant of you to think you are superior to me.
 				{ Cue = "/VO/HadesField_0131" },
 				-- I am still more than capable of besting you.
@@ -24786,7 +24672,7 @@ mod.EnemyData = {
 				NoTarget = true,
 				SkipAnim = true,
 				SuccessiveChanceToPlayAll = 0.33,
-				Source = { SubtitleColor = Color.HadesVoice },
+				Source = { SubtitleColor = game.Color.HadesVoice },
 				ConsecutiveDeathsInRoom =
 				{
 					Name = "D_Boss01",
@@ -24801,24 +24687,24 @@ mod.EnemyData = {
 				-- You're stubborn, boy; however, so am I.
 				{ Cue = "/VO/HadesField_0318" },
 				-- Got you again, there, boy.
-				{ Cue = "/VO/HadesField_0586", RequiredTextLines = { "Ending01" }, },
+				-- { Cue = "/VO/HadesField_0586", RequiredTextLines = { "Ending01" }, },
 			},
 			-- Extreme Measures 4 specific
-			{
-				RandomRemaining = true,
-				BreakIfPlayed = true,
-				PreLineWait = 1.65,
-				Queue = "Interrupt",
-				NoTarget = true,
-				SkipAnim = true,
-				SuccessiveChanceToPlayAll = 0.5,
-				RequiredTextLines = { "Ending01" },
-				RequiredMinActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 4 },
-				Source = { SubtitleColor = Color.HadesVoice },
+			-- {
+			-- 	RandomRemaining = true,
+			-- 	BreakIfPlayed = true,
+			-- 	PreLineWait = 1.65,
+			-- 	Queue = "Interrupt",
+			-- 	NoTarget = true,
+			-- 	SkipAnim = true,
+			-- 	SuccessiveChanceToPlayAll = 0.5,
+			-- 	RequiredTextLines = { "Ending01" },
+			-- 	RequiredMinActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 4 },
+			-- 	Source = { SubtitleColor = game.Color.HadesVoice },
 
-				-- Do not become too prideful with me, boy.
-				{ Cue = "/VO/HadesField_0584", SuccessiveChanceToPlay = 0.05 },
-			},
+			-- 	-- Do not become too prideful with me, boy.
+			-- 	{ Cue = "/VO/HadesField_0584", SuccessiveChanceToPlay = 0.05 },
+			-- },
 			{
 				RandomRemaining = true,
 				BreakIfPlayed = true,
@@ -24828,7 +24714,7 @@ mod.EnemyData = {
 				SkipAnim = true,
 				SuccessiveChanceToPlayAll = 0.5,
 				RequiredTextLines = { "Ending01" },
-				Source = { SubtitleColor = Color.HadesVoice },
+				Source = { SubtitleColor = game.Color.HadesVoice },
 
 				-- I expected more from you than this.
 				{ Cue = "/VO/HadesField_0579" },
@@ -24845,17 +24731,17 @@ mod.EnemyData = {
 				-- I still have some of my old strength, it seems.
 				{ Cue = "/VO/HadesField_0433" },
 				-- Better fortunes next time, Zagreus.
-				{ Cue = "/VO/HadesField_0434" },
+				-- { Cue = "/VO/HadesField_0434" },
 				-- You did make it this far at least.
 				{ Cue = "/VO/HadesField_0435" },
 				-- Be mindful of the House while I am gone.
-				{ Cue = "/VO/HadesField_0436" },
+				-- { Cue = "/VO/HadesField_0436" },
 				-- Until our next exchange.
 				{ Cue = "/VO/HadesField_0437" },
 				-- Perhaps next time you shall fare differently.
 				{ Cue = "/VO/HadesField_0438" },
 				-- Sometimes one's best is insufficient, boy.
-				{ Cue = "/VO/HadesField_0439" },
+				-- { Cue = "/VO/HadesField_0439" },
 				-- Next time, I shall expect better results from you.
 				{ Cue = "/VO/HadesField_0440" },
 				-- Not even the combined might of Olympus was enough.
@@ -24870,7 +24756,7 @@ mod.EnemyData = {
 				Queue = "Interrupt",
 				NoTarget = true,
 				SkipAnim = true,
-				Source = { SubtitleColor = Color.HadesVoice },
+				Source = { SubtitleColor = game.Color.HadesVoice },
 
 				-- Would that you applied yourself to something worth the while.
 				{ Cue = "/VO/HadesField_0116", RequiredFalseTextLines = { "Ending01" }, },
@@ -24879,23 +24765,23 @@ mod.EnemyData = {
 				-- You're as disgraceful as our kin upon Olympus.
 				{ Cue = "/VO/HadesField_0118", RequiredFalseTextLines = { "Ending01" }, },
 				-- I told you, boy, that there is no escape.
-				{ Cue = "/VO/HadesField_0119" },
+				-- { Cue = "/VO/HadesField_0119" },
 				-- Someday or night you shall look back on this, and thank me, boy.
-				{ Cue = "/VO/HadesField_0120", RequiredFalseTextLines = { "Ending01" }, },
+				-- { Cue = "/VO/HadesField_0120", RequiredFalseTextLines = { "Ending01" }, },
 				-- If this must be the way to teach you discipline, then so be it.
 				{ Cue = "/VO/HadesField_0121" },
 				-- You mind your manners once you return to my hall.
-				{ Cue = "/VO/HadesField_0122" },
+				-- { Cue = "/VO/HadesField_0122" },
 				-- How disappointingly predictable an outcome.
 				{ Cue = "/VO/HadesField_0123", RequiredFalseTextLines = { "Ending01" }, },
 				-- You well could have expected this result.
 				{ Cue = "/VO/HadesField_0124" },
 				-- Weakling! Remember that I vanquished Titans, boy.
-				{ Cue = "/VO/HadesField_0125", RequiredFalseTextLines = { "HadesGift05" }, },
+				-- { Cue = "/VO/HadesField_0125", RequiredFalseTextLines = { "HadesGift05" }, },
 				-- You never, ever learn.
 				{ Cue = "/VO/HadesField_0317", RequiredTextLines = { "LordHadesMiscEncounter05" }, RequiredFalseTextLines = { "Ending01" }, },
 				-- Achilles taught you reasonably well.
-				{ Cue = "/VO/HadesField_0319", RequiredMinRunsCleared = 1, },
+				-- { Cue = "/VO/HadesField_0319", RequiredMinRunsCleared = 1, },
 				-- Supposing I shall see you here again some other eve.
 				{ Cue = "/VO/HadesField_0320", RequiredTextLines = { "LordHadesMiscEncounter06" } },
 				-- Now that we're finished here, I can get back to work.
@@ -24947,9 +24833,6 @@ mod.EnemyData = {
 			{
 				-- None
 			},
-
-			-- You hit me!
-			-- { Cue = "/VO/Theseus_0166", },
 		},
 		CriticalHealthVoiceLineThreshold = 0.3,
 		CriticalHealthVoiceLines =
@@ -24985,10 +24868,6 @@ mod.EnemyData = {
 			{ Cue = "/VO/HadesField_0108" },
 			-- Again!
 			{ Cue = "/VO/HadesField_0101" },
-			-- Harder.
-			-- { Cue = "/VO/HadesField_0109" },
-			-- Harder!
-			-- { Cue = "/VO/HadesField_0110" },
 			-- Truly.
 			{ Cue = "/VO/HadesField_0111" },
 			-- Urgh...
@@ -25006,7 +24885,6 @@ mod.EnemyData = {
 			-- Right...
 			{ Cue = "/VO/HadesField_0598", GameStateRequirements = { RequiredBossPhase = 1 } },
 		},
-		-- DefeatedSound = "/SFX/Enemy Sounds/Hades/EmoteDying",
 		DefeatedVoiceLines =
 		{
 			{
@@ -25047,7 +24925,7 @@ mod.EnemyData = {
 				PostLineWait = 1.0,
 
 				-- See... you... at... home....
-				{ Cue = "/VO/HadesField_0137", RequiredPlayed = { "/VO/HadesField_0139" } },
+				-- { Cue = "/VO/HadesField_0137", RequiredPlayed = { "/VO/HadesField_0139" } },
 				-- Charon... take me home.
 				{ Cue = "/VO/HadesField_0138", RequiredPlayed = { "/VO/HadesField_0139" } },
 				-- There... is... no... escape...
@@ -25087,9 +24965,9 @@ mod.EnemyData = {
 				-- You shall... soon... follow...
 				{ Cue = "/VO/HadesField_0381", RequiredPlayed = { "/VO/HadesField_0139" }, RequiredFalseTextLines = { "Ending01" }, },
 				-- You... win... boy...
-				{ Cue = "/VO/HadesField_0488", RequiredPlayed = { "/VO/HadesField_0139" }, RequiredTextLines = { "Ending01" }, },
+				-- { Cue = "/VO/HadesField_0488", RequiredPlayed = { "/VO/HadesField_0139" }, RequiredTextLines = { "Ending01" }, },
 				-- Well... done... boy....
-				{ Cue = "/VO/HadesField_0489", RequiredPlayed = { "/VO/HadesField_0139" }, RequiredTextLines = { "Ending01" }, },
+				-- { Cue = "/VO/HadesField_0489", RequiredPlayed = { "/VO/HadesField_0139" }, RequiredTextLines = { "Ending01" }, },
 				-- You're... quite... strong...
 				{ Cue = "/VO/HadesField_0490", RequiredPlayed = { "/VO/HadesField_0139" }, RequiredTextLines = { "Ending01" }, },
 				-- You... fought... well...
@@ -25109,7 +24987,7 @@ mod.EnemyData = {
 				-- I... could have... had... you...
 				{ Cue = "/VO/HadesField_0495", RequiredPlayed = { "/VO/HadesField_0139" }, RequiredTextLines = { "Ending01" }, RequiredMaxHealthFraction = 0.5, RequiredMaxLastStands = 0 },
 				-- Such... strength... boy...
-				{ Cue = "/VO/HadesField_0496", RequiredPlayed = { "/VO/HadesField_0139" }, RequiredTextLines = { "Ending01" }, },
+				-- { Cue = "/VO/HadesField_0496", RequiredPlayed = { "/VO/HadesField_0139" }, RequiredTextLines = { "Ending01" }, },
 				-- I... must... go...
 				{ Cue = "/VO/HadesField_0497", RequiredPlayed = { "/VO/HadesField_0139" }, RequiredTextLines = { "Ending01" }, },
 			},
@@ -25133,7 +25011,7 @@ mod.EnemyData = {
 				-- We have a winner!
 				{ Cue = "/VO/Skelly_0240" },
 				-- You earned it, pal.
-				{ Cue = "/VO/Skelly_0241" },
+				-- { Cue = "/VO/Skelly_0241" },
 			},
 		},
 
@@ -27744,35 +27622,6 @@ mod.EnemyData = {
 
 		BossPresentationOutroTextLineSets =
 		{
-			--[[ (Early Access)
-			LordHadesFirstDefeat =
-			{
-				PlayOnce = true,
-				{ Cue = "/VO/HadesField_0011", Portrait = "Portrait_Hades_Helm_01",
-					PreLineWait = 0.35,
-					PreLineThreadedFunctionName = "PlayEmoteAnimFromSource", PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteAnger", DoShake = true, WaitTime = 9.8 },
-					Text = "I... how... you.... Go. Go, then. {#DialogueItalicFormat}Go{#PreviousFormat}!! Get out of here! Get out!" },
-				{ Cue = "/VO/ZagreusField_2176", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-					Text = "I told you that I would, Father. And I'm going to. Goodbye." },
-				{ Cue = "/VO/HadesField_0012", Portrait = "Portrait_Hades_Helm_01",
-					PreLineWait = 0.35,
-					Text = "...Wait. Wait, just... if you... if you find her. If you somehow find her? Tell her something for me, tell her... Tell her Cerberus is doing very well." },
-				{ Cue = "/VO/ZagreusField_2177", Portrait = "Portrait_Zag_Defiant_01", Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkDenialStart", PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkDenialReturnToIdle", PostLineAnimTarget = "Hero",
-					Text = "What? Wait. I don't think I owe you any favors, here. Though, answer me one question, and I'll give it some thought, how's that?" },
-				{ Cue = "/VO/HadesField_0014", Portrait = "Portrait_Hades_Helm_01", PreLineWait = 0.35,
-					Text = "...I know your question, boy. But, ask it anyway." },
-				{ Cue = "/VO/ZagreusField_2214", Portrait = "Portrait_Zag_Serious_01", Speaker = "CharProtag",
-					Text = "Persephone. My mother. Why did she leave?" },
-				{ Cue = "/VO/HadesField_0015", Portrait = "Portrait_Hades_Helm_01",
-					PreLineThreadedFunctionName = "PowerWordPresentation", PreLineThreadedFunctionArgs = { WaitTime = 1.8 },
-					Text = "...I... urgh... blood and darkness..." },
-			},
-			]] --
-
 			-- Ending
 			LordHadesDefeated01 =
 			{
@@ -28354,8 +28203,6 @@ mod.EnemyData = {
 		InheritFrom = { "BaseBossEnemy", "BaseVulnerableEnemy" },
 		HealthBarTextId = "Charon_Full",
 		AnimOffsetZ = 300,
-		--SpawnAnimation = "HadesBattleIntroIdle",
-		--AttachedAnimationName = "LaurelCindersSpawnerHades",
 
 		AISetupDelay = 2.0,
 		MaxHealth = 16500,
@@ -28369,13 +28216,6 @@ mod.EnemyData = {
 		HealthBarOffsetY = -275,
 		RepulseOnMeleeInvulnerableHit = 400,
 		IgnoreInvincibubbleOnHit = true,
-		--DeathAnimation = "HadesDeathFullscreen",
-		--ClearChillOnDeath = true,
-		--ManualDeathAnimation = true,
-		--DestroyDelay = 1.0,
-		--EndThreadWaitsOnDeath = "HadesSpawns",
-
-		--CharmStartSound = "/SFX/Enemy Sounds/Hades/EmoteLaugh",
 
 		DefaultAIData =
 		{
@@ -28561,7 +28401,7 @@ mod.EnemyData = {
 				Queue = "Interrupt",
 				NoTarget = true,
 				SkipAnim = true,
-				Source = { SubtitleColor = Color.CharonVoice },
+				Source = { SubtitleColor = game.Color.CharonVoice },
 
 				-- Hrreehhh, hehh....
 				{ Cue = "/VO/Charon_0048" },
@@ -28621,9 +28461,6 @@ mod.EnemyData = {
 			{
 				-- None
 			},
-
-			-- You hit me!
-			-- { Cue = "/VO/Theseus_0166", },
 		},
 		CriticalHealthVoiceLineThreshold = 0.3,
 		CriticalHealthVoiceLines =
@@ -28641,11 +28478,7 @@ mod.EnemyData = {
 			{
 				-- None
 			},
-
-			-- You...
-			-- { Cue = "/VO/HadesField_0102" },
 		},
-		-- DefeatedSound = "/SFX/Enemy Sounds/Hades/EmoteDying",
 		EarlyExitVoiceLines =
 		{
 			{
@@ -28699,9 +28532,6 @@ mod.EnemyData = {
 			BreakIfPlayed = true,
 			RandomRemaining = true,
 			PreLineWait = 0.3,
-
-			-- <Snort>
-			-- { Cue = "/VO/Minotaur_0182" },
 		},
 
 		BossPresentationPriorityIntroTextLineSets =
@@ -29027,11 +28857,6 @@ mod.EnemyData = {
 		PreAttackDuration = 0.0,
 		FireDuration = 0.0,
 		PostAttackDuration = 0.0,
-
-		--PreAttackAnimation = "ArcherTrapPreAttack",
-		--FireAnimation = "ArcherTrapIdle",
-		--PostAttackAnimation = "ArcherTrapIdle",
-		--PreAttackEndShake = true,
 
 		SkipMovement = true,
 		SkipAngleTowardTarget = true,
