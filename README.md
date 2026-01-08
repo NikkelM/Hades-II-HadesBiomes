@@ -14,7 +14,7 @@ Take a look at what Haelian and Boated think of the mod:
 
 <img src="https://github.com/user-attachments/assets/87d52379-d73a-4040-afac-d4a40e5f7e89" alt="Zagreus' Journey">
 <div style="display: flex; justify-content: space-between;">
-  <img src="https://github.com/user-attachments/assets/3272b242-f706-4bbe-aa14-782cb80af2e4" alt="Meet your Father" width="49.7%">
+  <img src="https://github.com/user-attachments/assets/3272b242-f706-4bbe-aa14-782cb80af2e4" alt="Face your Father" width="49.7%">
   <img src="https://github.com/user-attachments/assets/52235073-d1ad-473c-9e37-fcb538d80f1f" alt="Battle out of Tartarus" width="49.7%">
 </div>
 
@@ -154,7 +154,7 @@ After translating your chosen texts, open a Pull Request with your changes on Gi
   <img src="https://github.com/user-attachments/assets/ef5f9804-40ea-462e-8b02-a42a0d896769" alt="Don't get poisoned" width="49.7%">
 </div>
 
-<img src="https://github.com/user-attachments/assets/33e7c87d-e4c8-452f-87d8-5d809e022570" alt="Defy Destiny">
+<img src="https://github.com/user-attachments/assets/33e7c87d-e4c8-452f-87d8-5d809e022570" alt="Defy Death">
 
 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
   <img src="https://github.com/user-attachments/assets/21dc3117-a2f6-4910-8119-20082537f312" alt="Descend into Tartarus" width="49.7%">

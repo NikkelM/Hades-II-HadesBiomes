@@ -42,7 +42,7 @@ Other fixes and improvements:
 - Fixed: Enemies killed by Melinoë while they are cursed by Thanatos will still trigger the "skull" death animation effect that should only trigger for Thanatos' kills.
 - Fixed: Biome music continues to play in shop rooms with free rewards before a boss encounter.
 - Fixed: (Tentative) Music can duplicate/overlap in rooms after a "challenge" encounter (Troves, Moon Monuments).
-- Fixed: Contextual voicelines with Hades story NPCs relating to their respective keepsakes being equipped cannot trigger.
+- Fixed: Contextual voicelines with story NPCs relating to their respective keepsakes being equipped cannot trigger.
 - Fixed: NPCs and bosses sometimes refer to Zagreus (by his name or gender).
 - Fixed: When marking a new testament, the indicator below the Shrine can sometimes point to the wrong exit.
 - Fixed: Testaments for the Sister Blades incorrectly require having completed the Polyphemus testament with the Witch's Staff.
