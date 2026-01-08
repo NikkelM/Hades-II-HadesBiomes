@@ -1,16 +1,16 @@
 --[[ Modded incantation order:
 ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation - Post-Boss Keepsake Rack - after 1 run
-ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation - Well of Charon during runs - after 1 run
-ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation - Well of Charon after bosses - after 3 runs
-ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation - Sell Shops during runs - after 2 runs
-ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation - Sell Shops after bosses - after 4 runs
-ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation - Tartarus Fountain Chamber - after 2 run
-ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation - Asphodel Fountain Chamber - after 4 runs
-ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation - Elysium Fountain Chamber - after 6 runs
-ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation - Infernal Troves - after 4 runs
+ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation - Well of Charon during runs - after 2 runs
+ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation - Well of Charon after bosses - after 5 runs
+ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation - Sell Shops during runs - after 4 runs
+ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation - Sell Shops after bosses - after 6 runs
+ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation - Tartarus Fountain Chamber - after 3 runs
+ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation - Asphodel Fountain Chamber - after 6 runs
+ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation - Elysium Fountain Chamber - after 9 runs
+ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation - Infernal Troves - after 3 runs
 ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation - Moon Moncuments - after completing 6 runs and clearing 2 runs
 ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after completing 7 and clearing 4 runs
-ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after completing 8 and clearing 5 runs
+ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after completing 2 runs
 ]] --
 
 local newIncantations = {
@@ -58,7 +58,7 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 1,
+				Value = 2,
 			},
 		},
 		IncantationVoiceLines = {
@@ -94,7 +94,7 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 3,
+				Value = 5,
 			},
 			-- Hasn't just unlocked the in-run wells. This check includes CurrentRun
 			{
@@ -131,7 +131,7 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 2,
+				Value = 4,
 			},
 		},
 	},
@@ -161,7 +161,7 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 4,
+				Value = 6,
 			},
 			-- Hasn't just unlocked the in-run wells. This check includes CurrentRun
 			{
@@ -193,7 +193,7 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 2,
+				Value = 3,
 			},
 		},
 	},
@@ -218,7 +218,7 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 4,
+				Value = 6,
 			},
 			{
 				SumPrevRuns = 2,
@@ -250,7 +250,7 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 6,
+				Value = 9,
 			},
 			{
 				SumPrevRuns = 2,
@@ -286,7 +286,7 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 4,
+				Value = 3,
 			},
 		},
 	},
@@ -384,12 +384,7 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 8,
-			},
-			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
-				Comparison = ">=",
-				Value = 5,
+				Value = 2,
 			},
 			NamedRequirements = { "CosmeticsShopUnlocked" },
 		},
