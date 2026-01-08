@@ -4,11 +4,11 @@ ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation - Well of Charon during r
 ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation - Well of Charon after bosses - after 3 runs
 ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation - Sell Shops during runs - after 2 runs
 ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation - Sell Shops after bosses - after 4 runs
-ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation - Tartarus Fountain Chamber - after 1 run
-ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation - Asphodel Fountain Chamber - after 3 runs
-ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation - Elysium Fountain Chamber - after 5 runs
-ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after clearing 2 runs
-ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after clearing 5 runs
+ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation - Tartarus Fountain Chamber - after 2 run
+ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation - Asphodel Fountain Chamber - after 4 runs
+ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation - Elysium Fountain Chamber - after 6 runs
+ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after completing 5 and clearing 2 runs
+ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after completing 8 and clearing 5 runs
 ]] --
 
 local newIncantations = {
@@ -191,7 +191,7 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 1,
+				Value = 2,
 			},
 		},
 	},
@@ -216,7 +216,7 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 3,
+				Value = 4,
 			},
 			{
 				SumPrevRuns = 2,
@@ -248,7 +248,7 @@ local newIncantations = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 				Comparison = ">=",
-				Value = 5,
+				Value = 6,
 			},
 			{
 				SumPrevRuns = 2,
@@ -282,6 +282,11 @@ local newIncantations = {
 				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
 			},
 			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 5,
+			},
+			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
 				Comparison = ">=",
 				Value = 2,
@@ -304,6 +309,11 @@ local newIncantations = {
 			ModsNikkelMHadesBiomes_OreAsphodel = 4,
 		},
 		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 8,
+			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
 				Comparison = ">=",
