@@ -24,6 +24,7 @@ local newIncantations = {
 		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_giftRackUpgrade_01",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantTartarus = 1,
+			ModsNikkelMHadesBiomes_OreTartarus = 2,
 		},
 		GameStateRequirements = {
 			{
@@ -47,7 +48,7 @@ local newIncantations = {
 
 		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_well",
 		Cost = {
-			ModsNikkelMHadesBiomes_PlantTartarus = 2,
+			ModsNikkelMHadesBiomes_CropTartarus = 1,
 			ModsNikkelMHadesBiomes_OreTartarus = 2,
 		},
 		GameStateRequirements = {
@@ -76,7 +77,8 @@ local newIncantations = {
 
 		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_well",
 		Cost = {
-			ModsNikkelMHadesBiomes_PlantAsphodel = 1,
+			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+			ModsNikkelMHadesBiomes_CropAsphodel = 1,
 			ModsNikkelMHadesBiomes_OreAsphodel = 2,
 		},
 		GameStateRequirements = {
@@ -116,8 +118,8 @@ local newIncantations = {
 
 		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_selltrait",
 		Cost = {
-			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
-			ModsNikkelMHadesBiomes_CropAsphodel = 1,
+			ModsNikkelMHadesBiomes_PlantAsphodel = 1,
+			ModsNikkelMHadesBiomes_CropAsphodel = 2,
 			ModsNikkelMHadesBiomes_OreTartarus = 3,
 		},
 		GameStateRequirements = {
@@ -143,7 +145,7 @@ local newIncantations = {
 
 		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_selltrait",
 		Cost = {
-			ModsNikkelMHadesBiomes_PlantTartarus = 2,
+			ModsNikkelMHadesBiomes_PlantElysium = 2,
 			ModsNikkelMHadesBiomes_CropTartarus = 1,
 		},
 		GameStateRequirements = {
@@ -184,6 +186,7 @@ local newIncantations = {
 		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_tartarus",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantTartarus = 3,
+			ModsNikkelMHadesBiomes_CropTartarus = 1,
 			ModsNikkelMHadesBiomes_OreTartarus = 3,
 		},
 		GameStateRequirements = {
@@ -206,6 +209,7 @@ local newIncantations = {
 		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_asphodel",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantAsphodel = 3,
+			ModsNikkelMHadesBiomes_CropAsphodel = 1,
 			ModsNikkelMHadesBiomes_OreAsphodel = 3,
 		},
 		GameStateRequirements = {
@@ -238,6 +242,7 @@ local newIncantations = {
 		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_elysium",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantElysium = 3,
+			ModsNikkelMHadesBiomes_CropElysium = 1,
 			ModsNikkelMHadesBiomes_OreElysium = 3,
 		},
 		GameStateRequirements = {
@@ -273,7 +278,7 @@ local newIncantations = {
 		Cost = {
 			ModsNikkelMHadesBiomes_BossResourceTartarus = 2,
 			ModsNikkelMHadesBiomes_BossResourceElysium = 1,
-			ModsNikkelMHadesBiomes_OreElysium = 5
+			ModsNikkelMHadesBiomes_OreElysium = 5,
 		},
 		GameStateRequirements = {
 			{
@@ -298,8 +303,9 @@ local newIncantations = {
 
 		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_challengeswitch",
 		Cost = {
-			ModsNikkelMHadesBiomes_OreAsphodel = 5,
+			ModsNikkelMHadesBiomes_OreTartarus = 5,
 			ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 1,
 			ModsNikkelMHadesBiomes_CropElysium = 2,
 		},
 		GameStateRequirements = {
@@ -342,7 +348,7 @@ local newIncantations = {
 		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_shrinePointGates_01",
 		Cost = {
 			ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
-			ModsNikkelMHadesBiomes_BossResourceAsphodel = 1,
+			ModsNikkelMHadesBiomes_BossResourceElysium = 1,
 			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
 		},
 		GameStateRequirements = {
@@ -378,7 +384,7 @@ local newIncantations = {
 		Cost = {
 			CosmeticsPoints = 150,
 			ModsNikkelMHadesBiomes_PlantTartarus = 2,
-			ModsNikkelMHadesBiomes_OreAsphodel = 4,
+			ModsNikkelMHadesBiomes_OreAsphodel = 3,
 		},
 		GameStateRequirements = {
 			{
