@@ -62,6 +62,20 @@ function mod.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 			game.waitUntil(enemy.AINotifyName)
 		end
 
+		local wasRooted = false
+		while enemy.RootActive do
+			wasRooted = true
+			game.wait(0.1, enemy.AIThreadName)
+		end
+		-- The enemy may have died during the freeze/root effect
+		if enemy.IsDead then
+			return
+		end
+		if wasRooted then
+			-- Small wait after unrooting to smooth out the transition
+			game.wait(0.8, enemy.AIThreadName)
+		end
+
 		enemy.WeaponName = game.SelectWeapon(enemy)
 		table.insert(enemy.WeaponHistory, enemy.WeaponName)
 		local aiData = game.GetWeaponAIData(enemy) or {}
@@ -160,13 +174,39 @@ function mod.ModsNikkelMHadesBiomesSkyAttackerAI(enemy, currentRun)
 				end
 			end
 
+			-- Need to wait before starting the PostTouchdownMinDuration wait, as it would otherwise be started with the TimeDurationMultiplier, making the enemy never take off again
+			local postTouchdownTimestamp = nil
+			if enemy.RootActive then
+				postTouchdownTimestamp = game._worldTime
+			end
+			while enemy.RootActive do
+				game.wait(0.1, enemy.AIThreadName)
+			end
+			-- The enemy may have died during the freeze/root effect
+			if enemy.IsDead then
+				return
+			end
+
 			-- Post-Attack wait
 			if enemy.IsAggroed and aiData.PostTouchdownMinDuration ~= nil then
+				local waitDuration = aiData.PostTouchdownMinDuration
+				-- If we were rooted after the attack, reduce the wait duration by the elapsed time, but always wait at least 1 second after the freeze ends
+				if postTouchdownTimestamp ~= nil then
+					local elapsedTime = game._worldTime - postTouchdownTimestamp
+					-- Always wait at least have the original wait duration, or more if the freeze didn't last that long
+					waitDuration = math.max(waitDuration / 2, waitDuration - elapsedTime)
+				end
 				-- Hacky: Attacking the enemy would break the wait, so we use a notify instead which never resolves
 				-- The timeout is the actual wait time
 				-- This can be seen as a minimum PostAttackDuration
 				enemy.AINotifyName = "ModsNikkelMHadesBiomesNeverResolveNotifyName" .. enemy.ObjectId
-				NotifyOutsideDistance({ Id = enemy.ObjectId, DestinationId = currentRun.Hero.ObjectId, Distance = 99999, Notify = enemy.AINotifyName, Timeout = game.CalcEnemyWait(enemy, aiData.PostTouchdownMinDuration) })
+				NotifyOutsideDistance({
+					Id = enemy.ObjectId,
+					DestinationId = currentRun.Hero.ObjectId,
+					Distance = 99999,
+					Notify = enemy.AINotifyName,
+					Timeout = game.CalcEnemyWait(enemy, waitDuration)
+				})
 				game.waitUntil(enemy.AINotifyName)
 			end
 		else
