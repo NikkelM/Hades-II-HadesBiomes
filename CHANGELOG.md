@@ -48,7 +48,7 @@ Other fixes and improvements:
 - Fixed: Testaments for the Sister Blades incorrectly require having completed the Polyphemus testament with the Witch's Staff.
 - Fixed: An incorrect animation plays on the biome transition map after completing a Testament of Night.
 - Fixed: Fixed some Testament of Night icons overlapping with the figurines on the biome map.
-- Fixed: When hit, a "stunned" animation always plays above Melinoë's head, even when no or another animation should play.
+- Fixed: When hit, a "stunned" visual effect always plays above Melinoë's head, even when no or another effect animation should play.
 - Fixed: Some trap damage is incorrectly attributed on the run clear screen.
 - Fixed: Dusa's codex entry is replaced with the one from the first game.
 - Fixed: Some textures in some rooms can be misplaced when reloading a save while in them.
