@@ -118,7 +118,7 @@ Some other mods integrate with *Zagreus' Journey* to provide additional features
 - iDeathHD ([GitHub](https://github.com/xiaoxiao921), @iDeathHD on [Discord](https://discord.gg/KuMbyrN)), Hell2Modding Maintainer
 - @burn on [Discord](https://discord.gg/KuMbyrN), Artwork & Resource Design
 - Magic_Gonads ([GitHub](https://github.com/AndreLouisIssa), @Magic_Gonads on [Discord](https://discord.gg/KuMbyrN)), ModUtil Maintainer
-- zannc ([GitHub](https://github.com/excellent-ae), @dwbl on [Discord](https://discord.gg/KuMbyrN)), Creator of [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) (automatically installed with this mod)
+- zannc ([GitHub](https://github.com/excellent-ae), @dwbl. on [Discord](https://discord.gg/KuMbyrN)), Creator of [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) (automatically installed with this mod)
 - @Aunuch on [Discord](https://discord.gg/KuMbyrN), Collaborator on the mod's Key Art
 - ...and the many other modding community members that tested early versions, provided feedback and reported bugs! 
 
