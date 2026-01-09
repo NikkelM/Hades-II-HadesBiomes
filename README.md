@@ -1,14 +1,16 @@
-# Zagreus' Journey
+<!-- # Zagreus' Journey -->
+<img src="https://github.com/user-attachments/assets/2a72faa9-559f-4b73-8e6e-8d5e31c4c76c" alt="Zagreus' Journey">
 
 > Refer to the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki) with any questions before opening an issue.
 
 > You can find all of the latest changes in the [Changelog](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/changelog/) on the mod page.
 
-*Zagreus' Journey* is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
+_Zagreus' Journey_ is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
 Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past.
 
 Wonder what it plays like?
 Take a look at what Haelian and Boated think of the mod:
+
 - [So, someone put Hades 1 in Hades 2 and it's amazing. | Haelian](https://www.youtube.com/watch?v=SIVrJya47YQ)
 - [They put Hades 1 in Hades 2 and it's PERFECT | Boated](https://www.youtube.com/watch?v=HYf_z8IV4LE)
 
@@ -23,7 +25,8 @@ After installing the mod, a Chaos Gate will appear in the Crossroads, which will
 
 It is highly recommended that you complete the true ending of Hades before playing with this mod, as not all story events are included.
 
-## Installation
+<!-- ## Installation -->
+<img src="https://github.com/user-attachments/assets/6daed6fd-84ef-43de-a7e8-6ff02ee5cad5" alt="Installation">
 
 > Installing on Steam Deck? Please also refer to the [Steam Deck Installation Guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/steam-deck) on the Hades II Mod wiki.
 
@@ -37,7 +40,7 @@ You **must** uninstall your Hades mods by renaming or deleting the `Mods` folder
 You can install this mod just like any other Hades II mod available on [Thunderstore](https://thunderstore.io/c/hades-ii/), the recommended mod manager is [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/).
 Install r2modman by using `Manual Download` on the linked page, and running the setup executable in the downloaded `.zip` file.
 
-Afterwards, you can find *Zagreus' Journey* on the `Online` tab in r2modman, or use `Install with Mod Manager` on the [mod's Thunderstore page](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/).
+Afterwards, you can find _Zagreus' Journey_ on the `Online` tab in r2modman, or use `Install with Mod Manager` on the [mod's Thunderstore page](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/).
 The mod manager will automatically install any other mods this mod needs to work correctly.
 Start the game through the mod manager to make sure mods are enabled - use the `Start Modded` button on the top left.
 
@@ -58,7 +61,8 @@ If you would like more information or experience any issues, please refer to the
 **Before removing** the mod from r2modman, you should first uninstall it through the `uninstall` configuration setting, to prevent any issues with leftover files.
 Only uninstall the mod while in the Crossroads to prevent issues.
 
-## Configuration
+<!-- ## Configuration -->
+<img src="https://github.com/user-attachments/assets/52bd67a2-540a-4498-b864-d4eeb9a778c8" alt="Configuration">
 
 Note that the configuration file is only created after the first game start with the mod enabled in your mod manager.
 If you need to make any changes (such as to the `hadesGameFolder` setting), you will need to start the game once first to generate the config file.
@@ -66,7 +70,7 @@ If you are using r2modman, you can modify the config directly through the mod ma
 
 You can find an explanation of all configuration options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
 
-## Feedback & Bug Reports
+### Feedback & Bug Reports
 
 Though the mod can be played through from start to finish and is very polished already, it is still in a beta state, so there are some missing features, and you may occasionally encounter bugs.
 
@@ -74,7 +78,8 @@ Please directly leave bug reports as a [new issue on the project's GitHub reposi
 
 If you do not have a GitHub account, you can also join the [Hades II Modding Discord server](https://discord.gg/KuMbyrN) and post in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
-## Features
+<!-- ## Features -->
+<img src="https://github.com/user-attachments/assets/3d458e61-25c5-41d5-b312-13d2d8106561" alt="Features">
 
 - Play through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
 - Discover and overcome the challenge of fighting all of the original game's enemies and bosses using Melinoë's unique abilities and weapons.
@@ -99,17 +104,18 @@ Among many smaller improvements and fixes, the following major features are plan
 
 You can track all planned features and fixes on the [project's GitHub Issues page](https://github.com/NikkelM/Hades-II-HadesBiomes/issues).
 
-## Integrations with other Mods
+### Integrations with other Mods
 
-Some other mods integrate with *Zagreus' Journey* to provide additional features, alternative functionality, or use the resources introduced by this mod:
+Some other mods integrate with _Zagreus' Journey_ to provide additional features, alternative functionality, or use the resources introduced by this mod:
 
-- [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) unlocks songs from Hades' original soundtrack through progression in *Zagreus' Journey*, and buying them from the Music Maker will require resources introduced by this mod.
-- [Charon's Tip Jar](https://thunderstore.io/c/hades-ii/p/NikkelM/Charons_Tip_Jar/) adds a tip jar to Charon's shop rooms during *Zagreus' Journey* underworld runs.
-- [Flip the Arcana](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Flip_the_Arcana_Mod/) adds flipped versions of the Arcana cards with wildly different effects, and will require resources from *Zagreus' Journey* to unlock them if both mods are installed.
+- [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) unlocks songs from Hades' original soundtrack through progression in _Zagreus' Journey_, and buying them from the Music Maker will require resources introduced by this mod.
+- [Charon's Tip Jar](https://thunderstore.io/c/hades-ii/p/NikkelM/Charons_Tip_Jar/) adds a tip jar to Charon's shop rooms during _Zagreus' Journey_ underworld runs.
+- [Flip the Arcana](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Flip_the_Arcana_Mod/) adds flipped versions of the Arcana cards with wildly different effects, and will require resources from _Zagreus' Journey_ to unlock them if both mods are installed.
 
-> Are you developing a mod that integrates with *Zagreus' Journey*, or would like to add such an integration? Let me know on [Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
+> Are you developing a mod that integrates with _Zagreus' Journey_, or would like to add such an integration? Let me know on [Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
-## Contributors
+<!-- ## Contributors -->
+<img src="https://github.com/user-attachments/assets/c5e11388-78c2-49a7-bbc4-3176e34a1976" alt="Contributors">
 
 - NikkelM ([GitHub](https://github.com/NikkelM), @NikkelM on [Discord](https://discord.gg/KuMbyrN)), Mod Creator
 
@@ -120,7 +126,7 @@ Some other mods integrate with *Zagreus' Journey* to provide additional features
 - Magic_Gonads ([GitHub](https://github.com/AndreLouisIssa), @Magic_Gonads on [Discord](https://discord.gg/KuMbyrN)), ModUtil Maintainer
 - zannc ([GitHub](https://github.com/excellent-ae), @dwbl. on [Discord](https://discord.gg/KuMbyrN)), Creator of [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) (automatically installed with this mod)
 - @Aunuch on [Discord](https://discord.gg/KuMbyrN), Collaborator on the mod's Key Art
-- ...and the many other modding community members that tested early versions, provided feedback and reported bugs! 
+- ...and the many other modding community members that tested early versions, provided feedback and reported bugs!
 
 ### Contribute Yourself!
 
@@ -133,12 +139,13 @@ For Cosmetics, texts are located in [src/Scripts/CosmeticsData.lua](https://gith
 
 After translating your chosen texts, open a Pull Request with your changes on GitHub, and they will be included in the next release!
 
-## Image Gallery
+<!-- ## Image Gallery -->
+<img src="https://github.com/user-attachments/assets/d1c023b9-b9c5-4784-9f47-d55e2482baa5" alt="Image Gallery">
 
-<img src="https://github.com/user-attachments/assets/72407431-8737-41d6-b417-d5890494a501" alt="Withstand Asphodel's Heat">
+<img src="https://github.com/user-attachments/assets/3e999e36-4031-43e8-8f7b-87f4763429e1" alt="Meet your brother's old friends">
 
 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-  <img src="https://github.com/user-attachments/assets/3e999e36-4031-43e8-8f7b-87f4763429e1" alt="Meet your brother's old friends" width="49.7%">
+  <img src="https://github.com/user-attachments/assets/72407431-8737-41d6-b417-d5890494a501" alt="Withstand Asphodel's Heat" width="49.7%">
   <img src="https://github.com/user-attachments/assets/190eb2e5-c148-4c4c-9735-c96254016a92" alt="Unleash your abilities on new enemies" width="49.7%">
 </div>
 
