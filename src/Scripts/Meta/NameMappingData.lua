@@ -288,7 +288,6 @@ mod.HadesHelpTextCopyKeys = {
 	UseFinalBossDoor = true,
 	UseCerberusDoor = true,
 	UseStyxWarpDoor = true,
-	UseForbiddenItem = true,
 	-- UseForbiddenItem = true, -- Duplicate
 	-- UseCharonStoreDiscount = true, -- Duplicate
 	-- #endregion

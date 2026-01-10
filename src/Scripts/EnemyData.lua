@@ -200,6 +200,11 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 									entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "StartFinalBossRoomMusic"
 								end
 							end
+							if entry.PreLineFunctionName then
+								if entry.PreLineFunctionName == "StartCharonBossRoomMusic" then
+									entry.PreLineFunctionName = _PLUGIN.guid .. "." .. "StartCharonBossRoomMusic"
+								end
+							end
 							if entry.PreLineThreadedFunctionName then
 								if entry.PreLineThreadedFunctionName == "PlayPreLineTauntAnimFromSource" then
 									entry.PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayPreLineTauntAnimFromSource"
@@ -240,6 +245,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 					"MinotaurFinalStageTransition",
 					"TheseusChariotDismount",
 					"HadesPhaseTransition",
+					"CharonFightEndPresentation",
 				}
 				if game.Contains(moddedTransitionFunctions, aiStage.TransitionFunction) then
 					aiStage.TransitionFunction = _PLUGIN.guid .. "." .. aiStage.TransitionFunction

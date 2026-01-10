@@ -1,6 +1,5 @@
 -- #region ForbiddenShopItem spawn
 function mod.CheckForbiddenShopItem(eventSource, args)
-	print("CheckForbiddenShopItem called")
 	local spawnOnId = GetClosest({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "ForbiddenShopItemSpawnPoint" })
 	if spawnOnId == nil or spawnOnId == 0 then
 		return
@@ -85,7 +84,7 @@ function mod.ForbiddenShopItemTaken(source, args)
 	AdjustRadialBlurStrength({ Fraction = 0, Duration = 0.03 })
 	AdjustRadialBlurDistance({ Fraction = 0, Duration = 0.03 })
 
-	SetAnimation({ Name = "MelTalkBrooding01", DestinationId = game.CurrentRun.Hero.ObjectId })
+	-- SetAnimation({ Name = "MelTalkBrooding01", DestinationId = game.CurrentRun.Hero.ObjectId })
 	PlaySound({ Name = "/Leftovers/Menu Sounds/AscensionConfirm" })
 	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, Fraction = 0.15, Duration = 0.7 }, })
 	Flash({ Id = game.CurrentRun.Hero.ObjectId, Speed = 0.5, MinFraction = 0, MaxFraction = 1.0, Color = game.Color.White, Duration = 1.0, ExpireAfterCycle = false })
@@ -108,6 +107,141 @@ function mod.ForbiddenShopItemTaken(source, args)
 	-- Custom: Does nothing
 	game.CurrentRun.CurrentRoom.ExitFunctionName = _PLUGIN.guid .. "." .. "ExitToCharonFightPresentation"
 	mod.LeaveRoomWithNoDoor(source, args)
+end
+
+-- #endregion
+
+-- #region Boss fight
+function mod.BossIntroCharon(eventSource, args)
+	AddInputBlock({ Name = "BossIntro" })
+	game.AddTimerBlock(game.CurrentRun, "CharonIntro")
+	game.HideCombatUI("BossIntroCharon")
+
+	-- if not game.TextLinesRecord.BossCharonEncounter01 then
+	-- 	game.wait(4)
+	-- else
+	game.wait(2.5)
+	-- end
+
+	RemoveInputBlock({ Name = "BossIntro" })
+	game.RemoveTimerBlock(game.CurrentRun, "CharonIntro")
+	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
+	game.ShowCombatUI("BossIntroCharon")
+end
+
+function mod.StartCharonBossRoomMusic()
+	-- /Music/CharonFightTheme
+	game.MusicPlayer("{c5808c4e-a192-4f33-bcae-1e1415b6f8e8}")
+	game.SetMusicSection(0, game.AudioState.MusicId)
+end
+
+function mod.CharonFightEndPresentation(boss, currentRun)
+	game.AddTimerBlock(game.CurrentRun, "CharonEarlyExitPresentation")
+	AddInputBlock({ Name = "CharonFightEnd" })
+	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
+	ExpireProjectiles({})
+	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId }, BlockDeathWeapons = true })
+	game.notifyExistingWaiters("AllRequiredKillEnemiesDead")
+	game.HideCombatUI("CharonFightEnd")
+	boss.AIDisabled = true
+
+	SetUnitProperty({ Property = "Speed", Value = 500, DestinationId = boss.ObjectId })
+
+	game.thread(game.LastKillPresentation, boss)
+	PlaySound({ Name = "/Leftovers/SFX/AnnouncementPing3" })
+	SetSoundCueValue({ Names = { "Section", }, Id = game.AudioState.MusicId, Value = 10 })
+	game.AudioState.MusicName = nil
+	game.AudioState.MusicSection = nil
+	game.AudioState.MusicId = nil
+
+	-- ZeroSuperMeter()
+
+	-- TODO: Check voicelines
+	game.thread(game.PlayVoiceLines, boss.EarlyExitVoiceLines, nil, boss)
+
+	game.wait(0.5, game.RoomThreadName)
+
+	StopAnimation({ Name = "Invincibubble_Charon", DestinationId = boss.ObjectId })
+	SetLifeProperty({ DestinationId = boss.ObjectId, Property = "InvulnerableFx", Value = nil })
+	SetAnimation({ DestinationId = boss.ObjectId, Name = GetThingDataValue({ Id = boss.ObjectId, Property = "Graphic" }) })
+	LockCamera({ Id = boss.ObjectId, Duration = 1.25 })
+	Move({ Id = boss.ObjectId, DestinationId = 40055, SuccessDistance = 32 })
+	local notifyName = "WithinDistance" .. boss.ObjectId
+	NotifyWithinDistance({ Id = boss.ObjectId, DestinationId = 40055, Distance = 50, Notify = notifyName, Timeout = 9.0, })
+	game.waitUntil(notifyName, boss.AIThreadName)
+
+	-- TODO: Voicelines
+	game.thread(game.PlayVoiceLines, boss.PostMatchTauntVoiceLines, true, boss)
+	Stop({ Id = boss.ObjectId })
+
+	game.wait(0.2, game.RoomThreadName)
+	AngleTowardTarget({ Id = boss.ObjectId, DestinationId = 50065 })
+
+	game.wait(0.70, game.RoomThreadName)
+
+	local consumableId = SpawnObstacle({ Name = "CharonStoreDiscount", DestinationId = boss.ObjectId, Group = "Standing" })
+	local consumable = game.CreateConsumableItem(consumableId, "CharonStoreDiscount", 0)
+	game.MapState.RoomRequiredObjects[consumable.ObjectId] = consumable
+
+	SetAnimation({ DestinationId = boss.ObjectId, Name = "CharonMeleeFront_ReturnToIdleLeft" })
+
+	ApplyUpwardForce({ Id = consumableId, Speed = 700 })
+	local forceAngle = GetAngleBetween({ Id = boss.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
+	ApplyForce({ Id = consumableId, Speed = 300, Angle = forceAngle, SelfApplied = true })
+
+	PlaySound({ Name = "/Leftovers/World Sounds/TrainingMontageWhoosh", Id = consumableId })
+
+	game.wait(2.0, game.RoomThreadName)
+
+	game.ProcessTextLines(boss.BossPresentationOutroTextLineSets)
+	game.ProcessTextLines(boss.BossPresentationOutroRepeatableTextLineSets)
+
+	game.RemoveEnemyUI(boss)
+
+	if not game.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroTextLineSets) then
+		game.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+	end
+
+	-- TODO: Voicelines
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.CharonFightRewardVoiceLines, true)
+
+	LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = 1.25 })
+	AngleTowardTarget({ Id = boss.ObjectId, DestinationId = 50065 })
+
+	game.wait(0.5, game.RoomThreadName)
+
+	RemoveInputBlock({ Name = "CharonFightEnd" })
+	game.RemoveTimerBlock(game.CurrentRun, "CharonEarlyExitPresentation")
+	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
+	game.ShowCombatUI("CharonFightEnd")
+end
+
+function mod.LeaveCharonFight(eventSource, args)
+	args = args or {}
+	AddInputBlock({ Name = "LeaveCharonFight" })
+	game.wait(args.Delay or 1.0, game.RoomThreadName)
+
+	PlaySound({ Name = "/Leftovers/SFX/NomadSprint", DestinationId = game.CurrentRun.Hero.ObjectId })
+
+	PlaySound({ Name = "/Leftovers/Menu Sounds/AscensionConfirm" })
+	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, Fraction = 0.15, Duration = 0.7 }, })
+	Flash({ Id = game.CurrentRun.Hero.ObjectId, Speed = 0.5, MinFraction = 0, MaxFraction = 1.0, Color = game.Color.White, Duration = 1.0, ExpireAfterCycle = false })
+	AdjustColorGrading({ Name = "Chaos", Duration = 0.7 })
+
+	game.wait(0.7)
+
+	CreateAnimation({ Name = "ZagreusSecretDoorDiveFadeFx", DestinationId = game.CurrentRun.Hero.ObjectId })
+	SetAlpha({ Id = game.CurrentRun.Hero.ObjectId, Fraction = 0, Duration = 0.13 })
+
+	game.wait(0.4)
+	game.FullScreenFadeOutAnimation()
+	game.wait(0.2)
+
+	RemoveInputBlock({ Name = "LeaveCharonFight" })
+	-- Custom: Does nothing
+	game.CurrentRun.CurrentRoom.ExitFunctionName = _PLUGIN.guid .. "." .. "ExitFromCharonFightPresentation"
+	local nextMap = game.ChooseNextRoomData(game.CurrentRun).Name
+	mod.LeaveRoomWithNoDoor(game.CurrentRun, { NextMap = nextMap })
 end
 
 -- #endregion

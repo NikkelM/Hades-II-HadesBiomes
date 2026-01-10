@@ -56,9 +56,12 @@ local encounterModifications = {
 
 	-- #region Charon
 	BossCharon = {
-		-- TODO: Do we need the original Charon package and voicebank?
-		-- LoadModdedPackages = { "Charon" },
-		-- LoadModdedVoiceBanks = { "Charon" },
+		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		SkipBossTraits = true,
+		BlockAthenaEncounterKeepsake = true,
+		CanEncounterSkip = false,
+		BlockRespawnShrineUpgrade = true,
+		BlockNextBiomeEnemyShrineUpgrade = true,
 	},
 	-- #endregion
 }
