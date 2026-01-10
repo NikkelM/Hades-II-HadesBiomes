@@ -1,3 +1,5 @@
+local hadesTwoGameplayObstaclesFile = rom.path.combine(rom.paths.Content(), "Game/Obstacles/Gameplay.sjson")
+
 -- For new resources/consumable
 local newData = {
 	ModsNikkelMHadesBiomes_BossResourceTartarusDrop = {
@@ -39,12 +41,22 @@ local newData = {
 	},
 }
 
-local gameplayObstaclesFile = rom.path.combine(rom.paths.Content(), "Game/Obstacles/Gameplay.sjson")
+local hadesTwoObstacleModifications = {
+	ForbiddenShopItem = {
+		Thing = {
+			Interact = {
+				DestroyOnUse = false,
+				VisualFx = "LockKeyPickupSmall",
+			},
+		},
+	},
+}
 
-sjson.hook(gameplayObstaclesFile, function(data)
+sjson.hook(hadesTwoGameplayObstaclesFile, function(data)
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Gameplay"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
 
 	mod.AddTableKeysSkipDupes(data.Obstacles, newData, "Name")
+	mod.ApplyNestedSjsonModifications(data.Obstacles, hadesTwoObstacleModifications)
 end)
