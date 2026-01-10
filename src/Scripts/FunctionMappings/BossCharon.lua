@@ -117,11 +117,7 @@ function mod.BossIntroCharon(eventSource, args)
 	game.AddTimerBlock(game.CurrentRun, "CharonIntro")
 	game.HideCombatUI("BossIntroCharon")
 
-	-- if not game.TextLinesRecord.BossCharonEncounter01 then
-	-- 	game.wait(4)
-	-- else
-	game.wait(2.5)
-	-- end
+	game.wait(4)
 
 	RemoveInputBlock({ Name = "BossIntro" })
 	game.RemoveTimerBlock(game.CurrentRun, "CharonIntro")

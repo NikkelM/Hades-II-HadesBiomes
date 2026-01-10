@@ -2342,6 +2342,43 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Megaera_10072" },
 		},
 	},
+	EnteredCharonFightVoiceLines = {
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.7,
+			SuccessiveChanceToPlay = 0.66,
+			UsePlayerSource = true,
+			{ Cue = "/VO/MelinoeField_0173", Text = "Oh no.", },
+			{ Cue = "/VO/MelinoeField_4239", Text = "If you insist!", },
+			{ Cue = "/VO/MelinoeField_5000", Text = "Hi there...!", },
+			{ Cue = "/VO/MelinoeField_5001", Text = "{#Emph}Raaah!", },
+			{ Cue = "/VO/MelinoeField_5006", Text = "...Hi.", },
+		},
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.55,
+			SuccessiveChanceToPlay = 0.66,
+			ObjectType = "Charon",
+			-- Harrhh...!
+			{ Cue = "/VO/Megaera_10028" },
+			-- Hrraahh...!
+			{ Cue = "/VO/Megaera_10029" },
+			-- Hrrrr...!
+			{ Cue = "/VO/Megaera_10030" },
+			-- Nrrrrhhh...!
+			{ Cue = "/VO/Megaera_10031" },
+			-- Hmmmm....!
+			{ Cue = "/VO/Megaera_10032" },
+			-- Guuhhhh...
+			{ Cue = "/VO/Megaera_10033" },
+			-- Heehhhh...
+			{ Cue = "/VO/Megaera_10034" },
+			-- Mrrrrnnn....
+			{ Cue = "/VO/Megaera_10035" },
+		},
+	},
 	-- #endregion
 	-- #region Sisyphus / Bouldy
 	BlessedByBouldyVoiceLines = {
@@ -3611,7 +3648,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			PreLineWait = 0.5,
 			PlayOnce = true,
 			PlayOnceContext = "ModsNikkelMHadesBiomes_ForbiddenShopItemTakenFirstTime",
-			{ Cue = "/VO/Melinoe_2283", Text = "Lord Charon always delivers.", TriggerCooldowns = { "CharonSurprisedSpeech" } },
+			{ Cue = "/VO/Melinoe_1904", Text = "I'll just stash this away.", TriggerCooldowns = { "CharonSurprisedSpeech" } },
 		},
 		{
 			RandomRemaining = true,
@@ -3619,7 +3656,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			PreLineWait = 0.5,
 			GameStateRequirements = {
 				{
-					PathFalse = { "CurrentRun", "CurrentRoom", "SpeechRecord", "/VO/Melinoe_2283" },
+					PathFalse = { "CurrentRun", "CurrentRoom", "SpeechRecord", "/VO/Melinoe_1904" },
 				},
 			},
 			{ Cue = "/VO/MelinoeField_0524", Text = "Don't mind me...!",                  TriggerCooldowns = { "CharonSurprisedSpeech" } },
@@ -3630,7 +3667,6 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_1216",      Text = "I need this.",                       TriggerCooldowns = { "CharonSurprisedSpeech" } },
 			{ Cue = "/VO/Melinoe_1217",      Text = "This should help.",                  TriggerCooldowns = { "CharonSurprisedSpeech" } },
 			{ Cue = "/VO/Melinoe_2150",      Text = "Don't mind me.",                     TriggerCooldowns = { "CharonSurprisedSpeech" } },
-			{ Cue = "/VO/Melinoe_2283",      Text = "Lord Charon always delivers.",       TriggerCooldowns = { "CharonSurprisedSpeech" } },
 			-- All below: CharonSurprisedVoiceLines will play
 			-- All below: "Sorry" type ForbiddenShopItemCaughtVoiceLines will not play
 			{ Cue = "/VO/MelinoeField_0409", Text = "Pardon the racket, Lord Charon...!", TriggerCooldowns = { "ForbiddenShopItemCaughtSpeech" }, PreLineWait = 1.5, },

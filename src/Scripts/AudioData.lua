@@ -266,6 +266,8 @@ game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines = game.GlobalVoiceLines.The
 
 game.GlobalVoiceLines.CharonSurprisedVoiceLines = game.GlobalVoiceLines.CharonSurprisedVoiceLines or
 		mod.GlobalVoiceLines.CharonSurprisedVoiceLines
+game.GlobalVoiceLines.EnteredCharonFightVoiceLines = game.GlobalVoiceLines.EnteredCharonFightVoiceLines or
+		mod.GlobalVoiceLines.EnteredCharonFightVoiceLines
 
 game.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines = game.GlobalVoiceLines
 		.PersephoneFirstMeetingIntermissionVoiceLines or mod.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines
