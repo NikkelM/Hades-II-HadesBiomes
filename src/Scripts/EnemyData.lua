@@ -291,6 +291,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			"LowHealthVoiceLines",
 			"CriticalHealthVoiceLines",
 			"RageFullVoiceLines",
+			"EarlyExitVoiceLines",
 		}
 		for _, tableName in ipairs(voicelineTables) do
 			if enemyData[tableName] then
@@ -314,6 +315,34 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 						mod.DebugPrint("Added cooldown for voiceline entry in table " .. tableName .. " on enemy " .. enemyName, 4)
 						voicelineEntry.CooldownName = nil
 						voicelineEntry.CooldownTime = nil
+					end
+
+					if type(voicelineEntry) == "table" then
+						for _, entry in ipairs(voicelineEntry) do
+							if entry.Cue then
+								if entry.Cue:find("^/VO/Storyteller_") then
+									entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+								elseif entry.Cue:find("^/VO/Charon_") then
+									entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+								elseif entry.Cue:find("^/VO/Persephone_") then
+									entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+								elseif entry.Cue:find("^/VO/ZagreusHome_") then
+									entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+								end
+							end
+						end
+					else
+						if voicelineEntry.Cue then
+							if voicelineEntry.Cue:find("^/VO/Storyteller_") then
+								voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+							elseif voicelineEntry.Cue:find("^/VO/Charon_") then
+								voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+							elseif voicelineEntry.Cue:find("^/VO/Persephone_") then
+								voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+							elseif voicelineEntry.Cue:find("^/VO/ZagreusHome_") then
+								voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+							end
+						end
 					end
 				end
 			end

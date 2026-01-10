@@ -156,7 +156,6 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 
 	-- ZeroSuperMeter()
 
-	-- TODO: Check voicelines
 	game.thread(game.PlayVoiceLines, boss.EarlyExitVoiceLines, nil, boss)
 
 	game.wait(0.5, game.RoomThreadName)
@@ -170,7 +169,6 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 	NotifyWithinDistance({ Id = boss.ObjectId, DestinationId = 40055, Distance = 50, Notify = notifyName, Timeout = 9.0, })
 	game.waitUntil(notifyName, boss.AIThreadName)
 
-	-- TODO: Voicelines
 	game.thread(game.PlayVoiceLines, boss.PostMatchTauntVoiceLines, true, boss)
 	Stop({ Id = boss.ObjectId })
 
@@ -202,8 +200,8 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 		game.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
 	end
 
-	-- TODO: Voicelines
-	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.CharonFightRewardVoiceLines, true)
+	-- Similar lines being played through CharonStoreDiscount pickup
+	-- game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.CharonFightRewardVoiceLines, true)
 
 	LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = 1.25 })
 	AngleTowardTarget({ Id = boss.ObjectId, DestinationId = 50065 })
@@ -224,7 +222,6 @@ function mod.LeaveCharonFight(eventSource, args)
 	PlaySound({ Name = "/Leftovers/SFX/NomadSprint", DestinationId = game.CurrentRun.Hero.ObjectId })
 
 	PlaySound({ Name = "/Leftovers/Menu Sounds/AscensionConfirm" })
-	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, Fraction = 0.15, Duration = 0.7 }, })
 	Flash({ Id = game.CurrentRun.Hero.ObjectId, Speed = 0.5, MinFraction = 0, MaxFraction = 1.0, Color = game.Color.White, Duration = 1.0, ExpireAfterCycle = false })
 	AdjustColorGrading({ Name = "Chaos", Duration = 0.7 })
 
