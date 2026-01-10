@@ -280,7 +280,7 @@ local encounterModifications = {
 			StartDelay = 0.0
 		},
 		-- They can sometimes briefly move/pop in suddenly
-		Blacklist = { LightSpawner = true, Swarmer = true, },
+		Blacklist = { LightSpawner = true, HadesSwarmer = true, },
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,
