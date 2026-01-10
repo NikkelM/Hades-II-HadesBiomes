@@ -126,7 +126,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "Valued Customer",
 		Description =
-		"All items can be purchased for {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev}{#ItalicFormat}(this escape attempt){#Prev}.",
+		"All items can be purchased for {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev}{#ItalicFormat}( this escape attempt){#Prev}.",
 	},
 	-- #endregion
 }

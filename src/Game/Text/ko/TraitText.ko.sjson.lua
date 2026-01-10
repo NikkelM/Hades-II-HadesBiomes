@@ -126,7 +126,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "소중한 고객",
 		Description =
-		"모든 상품을 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} 할인된 가격으로 구매할 수 있습니다{#ItalicFormat}(현재 탈출 시도에서){#PreviousFormat}."
+		"모든 상품을 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} 할인된 가격으로 구매할 수 있습니다{#ItalicFormat}(현재 탈출 시도에서){#Prev}."
 	},
 	-- #endregion
 }

@@ -126,7 +126,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "重要客户",
 		Description =
-		"所有的物品价格变为 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev}{#ItalicFormat}（仅限本次脱逃）{#Prev}。"
+		"所有的物品价格变为 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev}{#ItalicFormat} （仅限本次脱逃）{#Prev}。"
 	},
 	-- #endregion
 }
