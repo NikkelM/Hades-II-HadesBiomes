@@ -1,4 +1,5 @@
 local newMiscConsumables = {
+	-- Satyr Sack in Styx
 	CerberusKey = {
 		BlockExitText = "ExitBlockedByHeal",
 		CanDuplicate = false,
@@ -6,7 +7,24 @@ local newMiscConsumables = {
 		UsePromptOffsetY = 30,
 		PlayInteract = true,
 		HideWorldText = true,
-	}
+		LastRewardEligible = false,
+	},
+	-- Gold Sack in Mid-Shops to trigger Charon's boss fight
+	ForbiddenShopItem = {
+		InheritFrom = { "BaseConsumable", "Tier1Consumable" },
+		Cost = 0,
+		HideWorldText = true,
+		DropMoney = 300,
+		DropMoneyRadius = 10,
+		UseText = "UseForbiddenItem",
+		OnUsedFunctionName = _PLUGIN.guid .. "." .. "ForbiddenShopItemTaken",
+		-- Custom properties
+		DropMoneyPickupDelay = 0.3,
+		CanDuplicate = false,
+		LastRewardEligible = false,
+		PlayInteract = true,
+		ConsumeSound = "/SFX/GoldCoinRewardUse",
+	},
 }
 mod.AddTableKeysSkipDupes(game.ConsumableData, newMiscConsumables)
 

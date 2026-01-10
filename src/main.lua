@@ -379,6 +379,7 @@ local function on_ready()
 			-- Function mappings between Hades and Hades II
 			import "Scripts/FunctionMappings/AsphodelWrapping.lua"
 			import "Scripts/FunctionMappings/BossAsphodel.lua"
+			import "Scripts/FunctionMappings/BossCharon.lua"
 			import "Scripts/FunctionMappings/BossElysium.lua"
 			import "Scripts/FunctionMappings/BossStyx.lua"
 			import "Scripts/FunctionMappings/BossTartarus.lua"
