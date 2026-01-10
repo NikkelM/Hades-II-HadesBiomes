@@ -111,7 +111,7 @@ end
 
 -- #endregion
 
--- #region Boss fight
+-- #region Boss fight intro/outro
 function mod.BossIntroCharon(eventSource, args)
 	AddInputBlock({ Name = "BossIntro" })
 	game.AddTimerBlock(game.CurrentRun, "CharonIntro")
@@ -235,6 +235,44 @@ function mod.LeaveCharonFight(eventSource, args)
 	game.CurrentRun.CurrentRoom.ExitFunctionName = _PLUGIN.guid .. "." .. "ExitFromCharonFightPresentation"
 	local nextMap = game.ChooseNextRoomData(game.CurrentRun).Name
 	mod.LeaveRoomWithNoDoor(game.CurrentRun, { NextMap = nextMap })
+end
+
+-- #endregion
+
+-- #region Boss fight
+function mod.RandomizeCover(source, args)
+	local coverOptions = args.CoverOptions
+	local coverCount = game.RandomInt(args.CoverCountMin or 0, args.CoverCountMax or 0)
+
+	game.wait(args.StartWait, game.RoomThreadName)
+
+	if args.ShakeScreen then
+		ShakeScreen({ Speed = 300, Distance = 3, FalloffSpeed = 2000, Duration = 1.0 })
+	end
+
+	for i = 1, coverCount do
+		local coverId = game.RemoveRandomValue(coverOptions)
+		local obstacle = game.MapState.ActiveObstacles[coverId]
+		if obstacle ~= nil and not obstacle.ToggledOn then
+			if obstacle.ToggleOnAnimation ~= nil then
+				SetAnimation({ DestinationId = coverId, Name = obstacle.ToggleOnAnimation })
+			end
+			SetThingProperty({ Property = "StopsProjectiles", Value = true, DestinationId = coverId })
+			obstacle.ToggledOn = true
+		end
+	end
+	for k, coverId in pairs(coverOptions) do
+		local obstacle = game.MapState.ActiveObstacles[coverId]
+		if obstacle ~= nil and obstacle.ToggledOn then
+			if obstacle.ToggleOffAnimation ~= nil then
+				SetAnimation({ DestinationId = coverId, Name = obstacle.ToggleOffAnimation })
+			end
+			SetThingProperty({ Property = "StopsProjectiles", Value = false, DestinationId = coverId })
+			obstacle.ToggledOn = false
+		end
+	end
+
+	game.wait(args.EndWait, game.RoomThreadName)
 end
 
 -- #endregion

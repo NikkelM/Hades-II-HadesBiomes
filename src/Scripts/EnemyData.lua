@@ -1916,6 +1916,15 @@ local enemyModifications = {
 	-- #endregion
 	-- #endregion
 
+	-- #region CHARON
+	Charon = {
+		AIStages = {
+			[2] = { TransitionUnthreadedFunctionNames = { _PLUGIN.guid .. "." .. "RandomizeCover" }, },
+			[3] = { TransitionUnthreadedFunctionNames = { _PLUGIN.guid .. "." .. "RandomizeCover" }, },
+		},
+	},
+	-- #endregion
+
 	-- #region ENVIRONMENT
 	Breakable = {
 		CannotDieFromDamage = true,
