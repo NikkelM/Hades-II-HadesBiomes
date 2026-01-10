@@ -525,6 +525,9 @@ local roomModifications = {
 
 		CombatOverMusicEvents = mod.CombatOverMusicEvents.Generic,
 
+		-- /Music/CharonShopTheme
+		ShopSecretMusic = "{4c02268d-911d-481a-bd46-0b789bef4997}",
+
 		-- From 0.45
 		TargetMetaRewardsRatio = 0.35,
 	},

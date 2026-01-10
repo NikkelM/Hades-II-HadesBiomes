@@ -395,6 +395,9 @@ local roomModifications = {
 
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "AsphodelEnterRoomPresentation",
 
+		-- /Music/CharonShopTheme
+		ShopSecretMusic = "{4c02268d-911d-481a-bd46-0b789bef4997}",
+
 		-- From 0.4
 		TargetMetaRewardsRatio = 0.3,
 	},

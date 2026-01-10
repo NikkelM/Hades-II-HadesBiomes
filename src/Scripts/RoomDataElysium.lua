@@ -383,6 +383,9 @@ local roomModifications = {
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut",
 
+		-- /Music/CharonShopTheme
+		ShopSecretMusic = "{4c02268d-911d-481a-bd46-0b789bef4997}",
+
 		-- From 0.33
 		TargetMetaRewardsRatio = 0.25,
 	},

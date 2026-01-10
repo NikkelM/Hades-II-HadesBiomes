@@ -4,7 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-
+- Charon's shops now play the original music from the first game during Zagreus' Journey runs.
 
 Other fixes and improvements:
 - Fixed: In rare cases, some ineligible combinations of voicelines can play during NPC or boss encounters.
