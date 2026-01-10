@@ -444,6 +444,25 @@ local newTraitData = {
 		InheritFrom = { "BouldyBlessing" },
 	},
 	-- #endregion
+
+	-- #region Charon
+	-- His reward card, when beating him in his boss fight/BossCharon
+	DiscountTrait = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		-- TODO: Icon from burn
+		Icon = "Boon_Bouldy_01",
+		StoreCostMultiplier = 0.8,
+		ExtractValues = {
+			{
+				Key = "StoreCostMultiplier",
+				ExtractAs = "TooltipDiscount",
+				Format = "NegativePercentDelta",
+				HideSigns = true,
+			},
+		},
+	},
+	-- #endregion
 }
 
 game.OverwriteTableKeys(game.TraitData, newTraitData)

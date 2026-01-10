@@ -39,6 +39,15 @@ local newData = {
 			Graphic = "ModsNikkelMHadesBiomes_BossResourceStyxDrop",
 		},
 	},
+	CharonStoreDiscount = {
+		Name = "CharonStoreDiscount",
+		InheritFrom = "CharonPointsDrop",
+		Thing = {
+			Interact = {
+				VisualFx = "RoomRewardMoneyDropCoinPickup",
+			},
+		},
+	},
 }
 
 local hadesTwoObstacleModifications = {

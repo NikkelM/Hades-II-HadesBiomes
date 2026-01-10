@@ -120,6 +120,15 @@ local newData = {
 		"你相信巨石，巨石也相信你。 \n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency} 奖励：{#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
+
+	-- #region Charon
+	{
+		Id = "DiscountTrait",
+		DisplayName = "重要客户",
+		Description =
+		"所有的物品价格变为 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev}{#ItalicFormat}（仅限本次脱逃）{#Prev}。"
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)
