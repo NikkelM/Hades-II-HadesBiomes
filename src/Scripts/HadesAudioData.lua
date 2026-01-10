@@ -2345,12 +2345,24 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	EnteredCharonFightVoiceLines = {
 		{
 			BreakIfPlayed = true,
+			PreLineWait = 1.0,
+			UsePlayerSource = true,
+			PlayOnce = true,
+			PlayOnceContext = "ModsNikkelMHadesBiomes_EnteredCharonFightFirstTime",
+			{ Cue = "/VO/MelinoeField_0173", Text = "Oh no.", },
+		},
+		{
+			BreakIfPlayed = true,
 			RandomRemaining = true,
-			PreLineWait = 0.7,
+			PreLineWait = 1.0,
 			SuccessiveChanceToPlay = 0.66,
 			UsePlayerSource = true,
+			GameStateRequirements = {
+				{
+					PathFalse = { "CurrentRun", "CurrentRoom", "SpeechRecord", "/VO/MelinoeField_0173" },
+				},
+			},
 			{ Cue = "/VO/MelinoeField_0173", Text = "Oh no.", },
-			{ Cue = "/VO/MelinoeField_4239", Text = "If you insist!", },
 			{ Cue = "/VO/MelinoeField_5000", Text = "Hi there...!", },
 			{ Cue = "/VO/MelinoeField_5001", Text = "{#Emph}Raaah!", },
 			{ Cue = "/VO/MelinoeField_5006", Text = "...Hi.", },
@@ -2358,7 +2370,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		{
 			BreakIfPlayed = true,
 			RandomRemaining = true,
-			PreLineWait = 0.55,
+			PreLineWait = 1.0,
 			SuccessiveChanceToPlay = 0.66,
 			ObjectType = "Charon",
 			-- Harrhh...!
