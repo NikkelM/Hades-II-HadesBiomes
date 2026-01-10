@@ -1,8 +1,17 @@
 # Changelog
 
-## v0.3.0
+## v0.4.0
 
 <!--Releasenotes start-->
+### Patch Highlights:
+
+
+Other fixes and improvements:
+- Fixed: In rare cases, some ineligible combinations of voicelines can play during NPC or boss encounters.
+<!--Releasenotes end-->
+
+## v0.3.0
+
 ### Patch Highlights:
 - Enter **Erebus Gates** and clear their encounters without being hit for upgraded rewards! You can perform a new incantation to make these gates appear during *Zagreus' Journey* runs, and can enter them if there is enough *Fear* in the Night.
 - Pools of Purging can now appear in rooms in Zagreus' Journey runs (after performing the accompanying incantation).
@@ -55,7 +64,6 @@ Other fixes and improvements:
 - Fixed: When rerolling boons or shop items, the Zagreus' Journey room transition fade is shown instead of the dedicated reroll effect.
 - Fixed: In the Rift of Thessaly, rerolling doors can choose the same reward again in rare cases.
 - Fixed: A manual reinstall without a previous uninstall marks the Hades installation as invalid due to an Olympus Extra installation, even if Olympus Extra is not installed.
-<!--Releasenotes end-->
 
 ## v0.2.0
 
