@@ -89,11 +89,11 @@ local charonRoomReplacements = {}
 local charonRoomModifications = {
 	CharonFight01 = {
 		-- The encounter has BiomeName = "Challenge" - should this be Challenge or separate/Charon? How does it work with the MapGroups.sjson?
-		-- RoomSetName = "Charon",
+		RoomSetName = "Challenge",
 	},
 }
 
--- mod.ApplyModificationsAndInheritRoomData(charonRoomData, charonRoomModifications, charonRoomReplacements, "Charon")
+mod.ApplyModificationsAndInheritRoomData(charonRoomData, charonRoomModifications, charonRoomReplacements, "Charon")
 -- #endregion
 
 -- #region SURFACE
