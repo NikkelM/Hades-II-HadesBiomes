@@ -4,6 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- You can now **challenge your favourite shopkeeper** to a friendly duel by "borrowing" some his his funds! Defeat Charon for a special discount on all his ware for the duration of your current run.
 - Charon's shops now play the original music from the first game during Zagreus' Journey runs.
 
 Other fixes and improvements:
