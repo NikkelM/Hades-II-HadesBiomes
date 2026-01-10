@@ -413,6 +413,7 @@ local roomModifications = {
 
 	-- SHOPS
 	Y_Shop01 = {
+		LoadModdedVoiceBanks = { "Megaera" },
 		StoreDataName = "WorldShop",
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		FamiliarsPreferSpawnPointMovement = true,

@@ -579,6 +579,7 @@ local roomModifications = {
 
 	-- SHOPS
 	A_Shop01 = {
+		LoadModdedVoiceBanks = { "Megaera" },
 		ThreadedEvents = {
 			-- To get PatrolPath working, see RoomOpening
 			[1] = mod.NilValue,
