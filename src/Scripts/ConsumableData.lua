@@ -41,25 +41,22 @@ local newMiscConsumables = {
 		UseThreadedFunctionArgs = {},
 		HideWorldText = true,
 
-		-- TODO:
 		ConsumedVoiceLines = {
-			PlayOnce = true,
+			{
+				PreLineWait = 0.55,
+				BreakIfPlayed = true,
+				PlayOnce = true,
+				PlayOnceContext = "ModsNikkelMHadesBiomes_CharonStoreDiscountFirstUse",
+				{ Cue = "/VO/Melinoe_1819", Text = "Oh, I won't tell a soul." },
+			},
 			RandomRemaining = true,
 			BreakIfPlayed = true,
 			PreLineWait = 0.55,
-
-			-- I look forward to making use of this.
-			{ Cue = "/VO/ZagreusField_3767", RequiredPlayed = { "/VO/ZagreusField_3770" }, },
-			-- Appreciate your generosity.
-			{ Cue = "/VO/ZagreusField_3768", RequiredPlayed = { "/VO/ZagreusField_3770" }, },
-			-- Looks like I'm back in the club.
-			{ Cue = "/VO/ZagreusField_3769", RequiredPlayed = { "/VO/ZagreusField_3770" }, },
-			-- Look at these savings!
-			{ Cue = "/VO/ZagreusField_3770" },
-			-- What a deal, mate.
-			{ Cue = "/VO/ZagreusField_3771", RequiredPlayed = { "/VO/ZagreusField_3770" }, },
-			-- It's a deal!
-			{ Cue = "/VO/ZagreusField_3772", RequiredPlayed = { "/VO/ZagreusField_3770" }, },
+			SuccessiveChanceToPlayAll = 0.5,
+			{ Cue = "/VO/MelinoeField_4295", Text = "My entitlement.", },
+			{ Cue = "/VO/MelinoeField_4294", Text = "I earned this." },
+			{ Cue = "/VO/Melinoe_0554",      Text = "I'll take it.", },
+			{ Cue = "/VO/Melinoe_1819",      Text = "Oh, I won't tell a soul." },
 		},
 		-- Custom
 		PlayInteract = true,

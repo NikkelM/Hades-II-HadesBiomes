@@ -3625,12 +3625,10 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_0524", Text = "Don't mind me...!",                  TriggerCooldowns = { "CharonSurprisedSpeech" } },
 			{ Cue = "/VO/Melinoe_1293",      Text = "Pure Gold...",                       TriggerCooldowns = { "CharonSurprisedSpeech" } },
 			{ Cue = "/VO/Melinoe_0694",      Text = "Gold...",                            TriggerCooldowns = { "CharonSurprisedSpeech" } },
-			{ Cue = "/VO/MelinoeField_4295", Text = "My entitlement.",                    TriggerCooldowns = { "CharonSurprisedSpeech" } },
 			{ Cue = "/VO/Melinoe_2154",      Text = "Gold coins...",                      TriggerCooldowns = { "CharonSurprisedSpeech" } },
 			{ Cue = "/VO/Melinoe_1904",      Text = "I'll just stash this away.",         TriggerCooldowns = { "CharonSurprisedSpeech" } },
 			{ Cue = "/VO/Melinoe_1216",      Text = "I need this.",                       TriggerCooldowns = { "CharonSurprisedSpeech" } },
 			{ Cue = "/VO/Melinoe_1217",      Text = "This should help.",                  TriggerCooldowns = { "CharonSurprisedSpeech" } },
-			{ Cue = "/VO/Melinoe_0554",      Text = "I'll take it.",                      TriggerCooldowns = { "CharonSurprisedSpeech" } },
 			{ Cue = "/VO/Melinoe_2150",      Text = "Don't mind me.",                     TriggerCooldowns = { "CharonSurprisedSpeech" } },
 			{ Cue = "/VO/Melinoe_2283",      Text = "Lord Charon always delivers.",       TriggerCooldowns = { "CharonSurprisedSpeech" } },
 			-- All below: CharonSurprisedVoiceLines will play
