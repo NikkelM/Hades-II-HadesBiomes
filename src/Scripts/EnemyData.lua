@@ -317,30 +317,29 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 						voicelineEntry.CooldownTime = nil
 					end
 
-					if type(voicelineEntry) == "table" then
-						for _, entry in ipairs(voicelineEntry) do
-							if entry.Cue then
-								if entry.Cue:find("^/VO/Storyteller_") then
-									entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
-								elseif entry.Cue:find("^/VO/Charon_") then
-									entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
-								elseif entry.Cue:find("^/VO/Persephone_") then
-									entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
-								elseif entry.Cue:find("^/VO/ZagreusHome_") then
-									entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
-								end
-							end
+					if voicelineEntry.Cue then
+						if voicelineEntry.Cue:find("^/VO/Storyteller_") then
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+						elseif voicelineEntry.Cue:find("^/VO/Charon_") then
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+						elseif voicelineEntry.Cue:find("^/VO/Persephone_") then
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+						elseif voicelineEntry.Cue:find("^/VO/ZagreusHome_") then
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
 						end
 					else
-						if voicelineEntry.Cue then
-							if voicelineEntry.Cue:find("^/VO/Storyteller_") then
-								voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
-							elseif voicelineEntry.Cue:find("^/VO/Charon_") then
-								voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
-							elseif voicelineEntry.Cue:find("^/VO/Persephone_") then
-								voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
-							elseif voicelineEntry.Cue:find("^/VO/ZagreusHome_") then
-								voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+						-- Handle nested voiceline entries (array of entries)
+						for _, innerEntry in ipairs(voicelineEntry) do
+							if innerEntry.Cue then
+								if innerEntry.Cue:find("^/VO/Storyteller_") then
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+								elseif innerEntry.Cue:find("^/VO/Charon_") then
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+								elseif innerEntry.Cue:find("^/VO/Persephone_") then
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+								elseif innerEntry.Cue:find("^/VO/ZagreusHome_") then
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+								end
 							end
 						end
 					end
@@ -1918,6 +1917,8 @@ local enemyModifications = {
 
 	-- #region CHARON
 	Charon = {
+		SubtitleColor = game.Color.CharonVoice,
+		RunHistoryKilledByName = "NPC_Charon_01",
 		AIStages = {
 			[2] = { TransitionUnthreadedFunctionNames = { _PLUGIN.guid .. "." .. "RandomizeCover" }, },
 			[3] = { TransitionUnthreadedFunctionNames = { _PLUGIN.guid .. "." .. "RandomizeCover" }, },
