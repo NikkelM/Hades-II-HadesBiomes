@@ -358,6 +358,15 @@ local hadesProjectilesModifications = {
 	},
 	-- #endregion
 
+	-- #region CHARON
+	CharonGhostCharge = {
+		Type = "STRAIGHT",
+		DissipateGraphic = "null",
+		ImpactFx = "null",
+		DeathFx = "CharonGhostChargeImpact",
+	},
+	-- #endregion
+
 	-- #region ENVIRONMENT
 	SpikeTrapWeapon = {
 		Thing = {

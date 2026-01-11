@@ -1924,6 +1924,23 @@ local enemyModifications = {
 			[3] = { TransitionUnthreadedFunctionNames = { _PLUGIN.guid .. "." .. "RandomizeCover" }, },
 		},
 	},
+	CharonGhostChargeSource = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		DefaultAIData = {
+			DeepInheritance = true,
+			WeaponName = "CharonGhostCharge",
+			-- Moved in here from the normal Enemy data
+			ProjectileName = "CharonGhostCharge",
+			PreAttackDuration = 0.0,
+			FireDuration = 0.0,
+			PostAttackDuration = 0.0,
+			SkipMovement = true,
+			SkipAngleTowardTarget = true,
+			TargetSelf = true,
+			ProjectileDestinationOffsetFromTarget = true,
+			ProjectileOffsetDistance = 100,
+		},
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT

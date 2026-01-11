@@ -220,6 +220,7 @@ local function on_ready()
 			import "Game/Obstacles/Styx.sjson.lua"
 			import "Game/Obstacles/Surface.sjson.lua"
 			import "Game/Obstacles/Tartarus.sjson.lua"
+			import "Game/Obstacles/Temple.sjson.lua"
 			import "Game/Obstacles/Travel.sjson.lua"
 
 			-- Helper functions to deduplicate code in the localization files

@@ -275,4 +275,18 @@ function mod.RandomizeCover(source, args)
 	game.wait(args.EndWait, game.RoomThreadName)
 end
 
+function mod.CharonGhostCharge(enemy, weaponAIData, currentRun, args)
+	for k, id in ipairs(args.FireFromIds) do
+		local activeGhostChargeSource = game.ActiveEnemies[id]
+		activeGhostChargeSource.WeaponName = game.SelectWeapon(activeGhostChargeSource)
+
+		local ghostChargeWeaponAIData = game.GetWeaponAIData(activeGhostChargeSource)
+		local targetId = game.GetTargetId(activeGhostChargeSource, ghostChargeWeaponAIData)
+		table.insert(activeGhostChargeSource.WeaponHistory, activeGhostChargeSource.WeaponName)
+
+		game.thread(game.DoAttack, activeGhostChargeSource, ghostChargeWeaponAIData)
+		game.wait(args.FireInterval, game.RoomThreadName)
+	end
+end
+
 -- #endregion
