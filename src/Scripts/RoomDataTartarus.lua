@@ -583,6 +583,8 @@ local roomModifications = {
 	-- SHOPS
 	A_Shop01 = {
 		LoadModdedVoiceBanks = { "Megaera" },
+		-- For the SpiderSkitterLoop SFX
+		LoadModdedAudioBanks = { "BiomeF" },
 		ThreadedEvents = {
 			-- To get PatrolPath working, see RoomOpening
 			[1] = mod.NilValue,
