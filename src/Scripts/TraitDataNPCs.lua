@@ -450,8 +450,7 @@ local newTraitData = {
 	DiscountTrait = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
-		-- TODO: Icon from burn
-		Icon = "Boon_Bouldy_01",
+		Icon = "Membership_Card_Large",
 		StoreCostMultiplier = 0.8,
 		ExtractValues = {
 			{
