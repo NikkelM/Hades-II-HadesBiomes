@@ -126,7 +126,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "Ценный клиент",
 		Description =
-		"Все предметы продаются со скидкой {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev}{#ItalicFormat}( во время этой попытки побега){#Prev}."
+		"Все предметы продаются со скидкой {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(во время этой попытки побега){#Prev}."
 	},
 	-- #endregion
 }

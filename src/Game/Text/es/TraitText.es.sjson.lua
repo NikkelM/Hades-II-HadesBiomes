@@ -126,7 +126,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "Cliente Preferente",
 		Description =
-		"Puedes comprar todos los objetos con un descuento del {#UpgradeFormat} {$TooltipData.ExtractData.TooltipDiscount} % de {!Icons.Currency}{#Prev}{#ItalicFormat}( en esta tentativa de huida){#Prev}."
+		"Puedes comprar todos los objetos con un descuento del {#UpgradeFormat} {$TooltipData.ExtractData.TooltipDiscount} % de {!Icons.Currency}{#Prev} {#ItalicFormat}(en esta tentativa de huida){#Prev}."
 	},
 	-- #endregion
 }
