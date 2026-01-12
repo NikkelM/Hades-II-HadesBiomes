@@ -9,6 +9,9 @@ function mod.RoomEntranceBossHydra(currentRun, currentRoom)
 	local hydra = game.ActiveEnemies[hydraId] or {}
 	game.HideCombatUI("BossEntrance")
 
+	-- In case of there being no music after certain room chains, resume or start new music
+	mod.SafetyResumeBossMusic()
+
 	-- Custom: Prevent the invulnerable hit presentation from playing when leaving the room and not being centered on the boat
 	local originalExclusiveOnHitFunctionName = currentRun.Hero.ExclusiveOnHitFunctionName
 	currentRun.Hero.ExclusiveOnHitFunctionName = mod.AsphodelLeaveRoomPresentationDummyOnHitFunction

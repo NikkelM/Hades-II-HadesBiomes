@@ -220,7 +220,12 @@ function mod.HarpyKillPresentation(unit, args)
 	-- black out world
 	AdjustFrame({ Color = game.Color.TransparentRed, Duration = 0.0, Fraction = 0 })
 	game.ScreenAnchors.DeathBackground = game.ScreenAnchors.DeathBackground or
-			game.CreateScreenObstacle({ Name = "rectangle01", Group = "Combat_UI", X = game.ScreenCenterX, Y = game.ScreenCenterY })
+			game.CreateScreenObstacle({
+				Name = "rectangle01",
+				Group = "Combat_UI",
+				X = game.ScreenCenterX,
+				Y = game.ScreenCenterY
+			})
 	SetScale({ Id = game.ScreenAnchors.DeathBackground, Fraction = 10 })
 	SetColor({ Id = game.ScreenAnchors.DeathBackground, Color = game.Color.Black })
 	SetAlpha({ Id = game.ScreenAnchors.DeathBackground, Fraction = 1.0, Duration = 0 })
@@ -229,7 +234,8 @@ function mod.HarpyKillPresentation(unit, args)
 		{ { ScreenPreWait = 0.04, RightFraction = 0.17, Duration = 0.65 }, { ScreenPreWait = 2.8, LeftFraction = 0.3, Duration = 0.6 } })
 
 	Flash({ Id = victimId, Speed = 0.02, MinFraction = 1.0, MaxFraction = 1.0, Color = Color.Red, Duration = 1.55, ExpireAfterCycle = true })
-	game.thread(game.BossDeathFlash, { DestinationId = victimId, StartDelay = 0.52, StopDelay = 0.3, OffsetY = args.DeathFlashOffsetY or 0 } )
+	game.thread(game.BossDeathFlash,
+		{ DestinationId = victimId, StartDelay = 0.52, StopDelay = 0.3, OffsetY = args.DeathFlashOffsetY or 0 })
 
 	game.wait(0.15)
 	if killerId == game.CurrentRun.Hero.ObjectId then
