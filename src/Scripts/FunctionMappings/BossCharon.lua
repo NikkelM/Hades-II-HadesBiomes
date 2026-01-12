@@ -84,7 +84,6 @@ function mod.ForbiddenShopItemTaken(source, args)
 	AdjustRadialBlurStrength({ Fraction = 0, Duration = 0.03 })
 	AdjustRadialBlurDistance({ Fraction = 0, Duration = 0.03 })
 
-	-- SetAnimation({ Name = "MelTalkBrooding01", DestinationId = game.CurrentRun.Hero.ObjectId })
 	PlaySound({ Name = "/Leftovers/Menu Sounds/AscensionConfirm" })
 	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, Fraction = 0.15, Duration = 0.7 }, })
 	Flash({ Id = game.CurrentRun.Hero.ObjectId, Speed = 0.5, MinFraction = 0, MaxFraction = 1.0, Color = game.Color.White, Duration = 1.0, ExpireAfterCycle = false })
@@ -127,8 +126,7 @@ end
 
 function mod.StartCharonBossRoomMusic()
 	-- /Music/CharonFightTheme
-	game.MusicPlayer("{c5808c4e-a192-4f33-bcae-1e1415b6f8e8}")
-	game.SetMusicSection(0, game.AudioState.MusicId)
+	game.SecretMusicPlayer("{c5808c4e-a192-4f33-bcae-1e1415b6f8e8}", { Section = 0 })
 end
 
 function mod.CharonFightEndPresentation(boss, currentRun)
@@ -145,12 +143,9 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 
 	game.thread(game.LastKillPresentation, boss)
 	PlaySound({ Name = "/Leftovers/SFX/AnnouncementPing3" })
-	SetSoundCueValue({ Names = { "Section", }, Id = game.AudioState.MusicId, Value = 10 })
-	game.AudioState.MusicName = nil
-	game.AudioState.MusicSection = nil
-	game.AudioState.MusicId = nil
-
-	-- ZeroSuperMeter()
+	SetSoundCueValue({ Names = { "Section", }, Id = game.AudioState.SecretMusicId, Value = 10 })
+	game.AudioState.SecretMusicId = nil
+	game.AudioState.SecretMusicName = nil
 
 	game.thread(game.PlayVoiceLines, boss.EarlyExitVoiceLines, nil, boss)
 

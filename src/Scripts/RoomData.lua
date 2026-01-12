@@ -99,10 +99,13 @@ local charonRoomModifications = {
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerErebusIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerErebusOut",
 
+		-- Started manually through the text lines
+		SecretMusic = "/Music/BlankMusicCue",
+		NextRoomResumeMusic = true,
+
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroCharon" },
 		},
-		UsePreviousRoomSet = true,
 	},
 }
 
