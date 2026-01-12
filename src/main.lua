@@ -48,6 +48,13 @@ CosmeticsAPI = mods["NikkelM-Cosmetics_API"]
 local function on_ready()
 	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
 	local startTime = os.clock()
+	local lastImportTime = startTime
+
+	local function DebugLogScriptImportProgress(scriptName)
+		mod.DebugPrint(
+			"[Script Loading] Imported " .. scriptName .. " file(s), took " .. (os.clock() - lastImportTime) .. " seconds", 4)
+		lastImportTime = os.clock()
+	end
 	-- Used in some imported files
 	mod.EncounteredInstallationIssues = false
 
@@ -57,6 +64,7 @@ local function on_ready()
 	import "Scripts/Meta/RequiredFileData.lua"
 	import "Scripts/Meta/NameMappingData.lua"
 	import "Scripts/Meta/FileHandling.lua"
+	DebugLogScriptImportProgress("meta")
 
 	---The mod's hidden config, stored in the cache folder as hiddenConfig.sjson.
 	---We don't ship the file with the mod to prevent it being overwritten on a mod update
@@ -92,6 +100,7 @@ local function on_ready()
 	import "Game/Text/uk/ScreenText.uk.sjson.lua"
 	import "Game/Text/zh-CN/ScreenText.zh-CN.sjson.lua" -- Decoding the Hades II file fails, so this does nothing
 	import "Game/Text/zh-TW/ScreenText.zh-TW.sjson.lua"
+	DebugLogScriptImportProgress("ScreenText SJSON")
 
 	import "Game/Text/de/ShellText.de.sjson.lua" -- Decoding the Hades II file fails, so this does nothing
 	import "Game/Text/el/ShellText.el.sjson.lua"
@@ -108,6 +117,7 @@ local function on_ready()
 	import "Game/Text/uk/ShellText.uk.sjson.lua"
 	import "Game/Text/zh-CN/ShellText.zh-CN.sjson.lua"
 	import "Game/Text/zh-TW/ShellText.zh-TW.sjson.lua"
+	DebugLogScriptImportProgress("ShellText SJSON")
 
 	import "Scripts/Meta/AnimationDuplicatesDataFx.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataGUIAnimations.lua"
@@ -116,6 +126,7 @@ local function on_ready()
 	import "Scripts/Meta/ScreenDataInstallation.lua"
 	import "Scripts/Meta/StorytellerVoicelines.lua"
 	import "Scripts/Meta/ZagreusFieldVoicelines.lua"
+	DebugLogScriptImportProgress("additional meta")
 
 	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
 	local shouldProceed = config.enabled and (not config.uninstall or config.firstTimeSetup)
@@ -126,6 +137,7 @@ local function on_ready()
 
 	import "Scripts/Meta/FirstTimeSetup.lua"
 	import "Scripts/Meta/Uninstall.lua"
+	DebugLogScriptImportProgress("setup/uninstall")
 
 	-- If the game was updated, the file checksums very likely got updated as well
 	-- At the same time, if the mod gets updated, the checksums.txt will be reset to the empty file as well
@@ -183,26 +195,37 @@ local function on_ready()
 		if numMissingFiles == 0 then
 			-- General data needed for map generation/display
 			import "Game/MapGroups.sjson.lua"
+			DebugLogScriptImportProgress("MapGroups SJSON")
 
 			-- SJSON changes
 			import "Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson.lua"
 			import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
+			DebugLogScriptImportProgress("Character Animation SJSON")
+
 			-- Must be loaded after CharacterAnimationsEnemies, as it inherits some animations from it
 			import "Game/Animations/EnemyAnimations.sjson.lua"
+			DebugLogScriptImportProgress("Enemy Animation SJSON")
+
 			import "Game/Animations/GUI_Boons_VFX.sjson.lua"
 			import "Game/Animations/GUI_Portraits_VFX.sjson.lua"
 			import "Game/Animations/GUI_Screens_VFX.sjson.lua"
 			import "Game/Animations/GUI_VFX.sjson.lua"
+			DebugLogScriptImportProgress("GUI Animation SJSON")
+
 			import "Game/Animations/Items_General_VFX.sjson.lua"
 			import "Game/Animations/Items_Harvest_VFX.sjson.lua"
+			DebugLogScriptImportProgress("Item Animation SJSON")
+
 			import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Deprecated_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_General_VFX.sjson.lua"
+			DebugLogScriptImportProgress("Obstacle Animation SJSON")
 
 			import "Game/Units/Enemies.sjson.lua"
 			import "Game/Units/NPCs.sjson.lua"
+			DebugLogScriptImportProgress("Unit SJSON")
 
 			import "Game/Weapons/EnemyWeapons.sjson.lua"
 
@@ -211,6 +234,7 @@ local function on_ready()
 			import "Game/Projectiles/EnemyProjectiles.sjson.lua"
 			import "Game/Projectiles/Enemy_BiomeN_Projectiles.sjson.lua"
 			import "Game/Projectiles/Enemy_Traps_Projectiles.sjson.lua"
+			DebugLogScriptImportProgress("Projectile and Weapon SJSON")
 
 			import "Game/Obstacles/Asphodel.sjson.lua"
 			import "Game/Obstacles/Chaos.sjson.lua"
@@ -222,12 +246,14 @@ local function on_ready()
 			import "Game/Obstacles/Tartarus.sjson.lua"
 			import "Game/Obstacles/Temple.sjson.lua"
 			import "Game/Obstacles/Travel.sjson.lua"
+			DebugLogScriptImportProgress("Obstacle SJSON")
 
 			-- Helper functions to deduplicate code in the localization files
 			import "Game/Text/HadesTextUtils.lua"
 
 			-- The ScreenText files depend on icons in here
 			import "Scripts/UIData.lua"
+			DebugLogScriptImportProgress("HadesTextUtils and UIData")
 
 			-- Localizations, custom texts
 			import "Game/Text/de/CodexText.de.sjson.lua"
@@ -245,6 +271,7 @@ local function on_ready()
 			-- import "Game/Text/uk/CodexText.uk.sjson.lua"
 			import "Game/Text/zh-CN/CodexText.zh-CN.sjson.lua"
 			-- import "Game/Text/zh-TW/CodexText.zh-TW.sjson.lua"
+			DebugLogScriptImportProgress("CodexText SJSON")
 
 			import "Game/Text/de/HelpText.de.sjson.lua"
 			import "Game/Text/el/HelpText.el.sjson.lua"
@@ -261,6 +288,7 @@ local function on_ready()
 			import "Game/Text/uk/HelpText.uk.sjson.lua"
 			import "Game/Text/zh-CN/HelpText.zh-CN.sjson.lua"
 			import "Game/Text/zh-TW/HelpText.zh-TW.sjson.lua"
+			DebugLogScriptImportProgress("HelpText SJSON")
 
 			import "Game/Text/de/MiscText.de.sjson.lua"
 			-- import "Game/Text/el/MiscText.el.sjson.lua"
@@ -277,6 +305,7 @@ local function on_ready()
 			-- import "Game/Text/uk/MiscText.uk.sjson.lua"
 			import "Game/Text/zh-CN/MiscText.zh-CN.sjson.lua"
 			-- import "Game/Text/zh-TW/MiscText.zh-TW.sjson.lua"
+			DebugLogScriptImportProgress("MiscText SJSON")
 
 			import "Game/Text/de/TraitText.de.sjson.lua"
 			-- import "Game/Text/el/TraitText.el.sjson.lua"
@@ -293,6 +322,7 @@ local function on_ready()
 			-- import "Game/Text/uk/TraitText.uk.sjson.lua"
 			import "Game/Text/zh-CN/TraitText.zh-CN.sjson.lua"
 			-- import "Game/Text/zh-TW/TraitText.zh-TW.sjson.lua"
+			DebugLogScriptImportProgress("TraitText SJSON")
 
 			-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 			-- Done first, as the EncounterData depends on the EnemySets
@@ -307,14 +337,18 @@ local function on_ready()
 			import "Scripts/Color.lua"
 			-- New GameData entries need to be added before using them in HadesNPCData
 			import "Scripts/NarrativeData.lua"
+			DebugLogScriptImportProgress("EnemySets, AudioData, Color and NarrativeData")
 
 			import "Scripts/Meta/EnemyTrapDataHandler.lua"
 			import "Scripts/HadesEnemyData.lua"
 			import "Scripts/HadesNPCData.lua"
+			DebugLogScriptImportProgress("Hades Enemy and NPC Data")
 			import "Scripts/EnemyData.lua"
 			import "Scripts/NPCData.lua"
+			DebugLogScriptImportProgress("Enemy and NPC Data")
 			import "Scripts/Meta/EncounterDataHandler.lua"
 			import "Scripts/Meta/RoomDataHandler.lua"
+			DebugLogScriptImportProgress("EncounterDataHandler and RoomDataHandler")
 
 			-- Loads Encounter data
 			-- Do this before loading the room data, as the rooms need the legal encounters defined in here
@@ -326,6 +360,7 @@ local function on_ready()
 			import "Scripts/EncounterDataSurface.lua"
 			-- Last since it inherits from encounters in the other biomes
 			import "Scripts/EncounterData.lua"
+			DebugLogScriptImportProgress("Encounter Sets and Encounter Data")
 
 			-- Loads Room data
 			import "Scripts/RoomSets.lua"
@@ -341,10 +376,12 @@ local function on_ready()
 			import "Scripts/RoomDataStyx.lua"
 			import "Scripts/HadesRoomDataSurface.lua"
 			import "Scripts/RoomDataSurface.lua"
+			DebugLogScriptImportProgress("Room Sets and Room Data")
 
 			-- Loads Weapon data
 			import "Scripts/HadesWeaponData.lua"
 			import "Scripts/WeaponData.lua"
+			DebugLogScriptImportProgress("Weapon Data")
 
 			-- Other data that must be loaded before SetupRunData()
 			import "Scripts/BountyData.lua"
@@ -373,9 +410,12 @@ local function on_ready()
 			import "Scripts/RunClearData.lua"
 			import "Scripts/RunHistoryData.lua"
 			import "Scripts/WorldUpgradeData.lua"
+			DebugLogScriptImportProgress("other required Data files")
 
 			-- Applies modifications to the rooms, such as LegalEncounterDictionary
 			game.SetupRunData()
+			mod.DebugPrint("[Script Loading] SetupRunData called, took " .. (os.clock() - lastImportTime) .. " seconds", 4)
+			lastImportTime = os.clock()
 
 			-- Function mappings between Hades and Hades II
 			import "Scripts/FunctionMappings/AsphodelWrapping.lua"
@@ -398,6 +438,7 @@ local function on_ready()
 			import "Scripts/FunctionMappings/SurvivalLogic.lua"
 			import "Scripts/FunctionMappings/ThanatosLogic.lua"
 			import "Scripts/FunctionMappings/WretchAssassin.lua"
+			DebugLogScriptImportProgress("Function Mapping files")
 
 			-- "Normal" code changes
 			import "Scripts/AudioLogic.lua"
@@ -430,9 +471,13 @@ local function on_ready()
 			import "Scripts/TraitLogic.lua"
 			import "Scripts/WeaponLogic.lua"
 			import "Scripts/WeaponSets.lua"
+			DebugLogScriptImportProgress("main logic and presentation scripts")
 
 			-- Ensure the FxOriginal package is loaded with every biome package
 			mod.SetBiomePackageLoadOverrides()
+			mod.DebugPrint(
+				"[Script Loading] Set biome package load overrides, took " .. (os.clock() - lastImportTime) .. " seconds", 4)
+			lastImportTime = os.clock()
 
 			-- E.g. ThanatosElysiumIntro encounter is missing, will be caught when importing EncounterDataElysium.lua
 			if mod.EncounteredInstallationIssues ~= true then
