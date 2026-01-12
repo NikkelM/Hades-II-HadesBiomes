@@ -84,8 +84,7 @@ table.insert(game.EncounterData.Shop.StartRoomUnthreadedEvents,
 				Comparison = ">=",
 				Value = 1,
 			},
-			-- TODO: Chance should be 0.22
-			ChanceToPlay = 1,
+			ChanceToPlay = 0.22,
 		},
 	}
 )
