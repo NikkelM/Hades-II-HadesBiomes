@@ -103,7 +103,7 @@ function mod.ForbiddenShopItemTaken(source, args)
 
 	game.RemoveTimerBlock(game.CurrentRun, "StealPresentation")
 	args.NextMap = "CharonFight01"
-	-- Custom: Does nothing
+	-- Custom: Does nothing (but must be assigned or it will cause a nil error)
 	game.CurrentRun.CurrentRoom.ExitFunctionName = _PLUGIN.guid .. "." .. "ExitToCharonFightPresentation"
 	mod.LeaveRoomWithNoDoor(source, args)
 end
@@ -226,7 +226,7 @@ function mod.LeaveCharonFight(eventSource, args)
 	game.wait(0.2)
 
 	RemoveInputBlock({ Name = "LeaveCharonFight" })
-	-- Custom: Does nothing
+	-- Custom: Does nothing (but must be assigned or it will cause a nil error)
 	game.CurrentRun.CurrentRoom.ExitFunctionName = _PLUGIN.guid .. "." .. "ExitFromCharonFightPresentation"
 	local nextMap = game.ChooseNextRoomData(game.CurrentRun).Name
 	mod.LeaveRoomWithNoDoor(game.CurrentRun, { NextMap = nextMap })
