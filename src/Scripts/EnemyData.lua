@@ -1929,6 +1929,7 @@ local enemyModifications = {
 	},
 	CharonGhostChargeSource = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		RunHistoryKilledByName = "NPC_Charon_01",
 		DefaultAIData = {
 			DeepInheritance = true,
 			WeaponName = "CharonGhostCharge",
