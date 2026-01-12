@@ -346,6 +346,18 @@ end
 ---@param destinationTable table The table to modify.
 ---@param modifications table The modifications to apply. The key must match a Name key in the destinationTable entry.
 function mod.ApplyNestedSjsonModifications(destinationTable, modifications)
+	local function mergeTable(target, source)
+		for key, value in pairs(source) do
+			if value == mod.NilValue then
+				target[key] = nil
+			elseif type(value) == "table" and type(target[key]) == "table" then
+				mergeTable(target[key], value)
+			else
+				target[key] = value
+			end
+		end
+	end
+
 	-- Collect names to remove to avoid issues with removing during iteration
 	local namesToRemove = {}
 	for _, entry in ipairs(destinationTable) do
@@ -354,25 +366,11 @@ function mod.ApplyNestedSjsonModifications(destinationTable, modifications)
 			if modification == mod.NilValue then
 				table.insert(namesToRemove, entry.Name)
 			else
-				for key, value in pairs(modification) do
-					if value == mod.NilValue then
-						entry[key] = nil
-					elseif type(value) == "table" then
-						entry[key] = entry[key] or {}
-						for subKey, subValue in pairs(value) do
-							if subValue == mod.NilValue then
-								entry[key][subKey] = nil
-							else
-								entry[key][subKey] = subValue
-							end
-						end
-					else
-						entry[key] = value
-					end
-				end
+				mergeTable(entry, modification)
 			end
 		end
 	end
+
 	-- Remove entries after iteration for safety
 	if #namesToRemove > 0 then
 		local nameSet = {}

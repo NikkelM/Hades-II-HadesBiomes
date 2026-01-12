@@ -432,25 +432,8 @@ local weaponReplacements = {
 	-- #endregion
 
 	-- #region CHARON
-	CharonGhostChargeLeft = {
-		Sounds = { FireSounds = { { Name = "/VO/Megaera_10026" }, }, },
-	},
-	CharonGhostChargeTopAndBot = {
-		Sounds = { FireSounds = { { Name = "/VO/Megaera_10026" }, }, },
-	},
-	CharonGhostChargeLeftAndRight = {
-		Sounds = { FireSounds = { { Name = "/VO/Megaera_10026" }, }, },
-	},
-	CharonGhostCharge360 = {
-		Sounds = { FireSounds = { { Name = "/VO/Megaera_10026" }, }, },
-	},
 	CharonWaveStraight = {
-		Sounds = {
-			FireSounds = {
-				{ Name = "/SFX/Enemy Sounds/Charon/CharonGroundBlastFire" },
-				{ Name = "/VO/Megaera_10005" },
-			},
-		},
+		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/Charon/CharonGroundBlastFire" }, }, },
 	},
 	-- #endregion
 }
@@ -1862,6 +1845,94 @@ local weaponModifications = {
 			PostAttackDuration = 0.5,
 			PostAttackCooldown = 1.5,
 		},
+	},
+	-- #endregion
+
+	-- #region CHARON
+	CharonMeleeBack = {
+		AIData = {
+			PreAttackRotationDampening = 0.4,
+			FireRotationDampening = 0.001,
+		},
+	},
+	CharonMeleeStraight = {
+		AIData = {
+			-- Moved here from CharonWaveStraight, as that is a DumbFireWeapon and the requirement doesn't do anything
+			MaxConsecutiveUses = 3,
+		},
+	},
+	CharonWaveStraight = {
+		AIData = {
+			PreAttackVoiceLines = {
+				Cooldowns = {
+					{ Name = "CharonPreAttackSpeech", Time = 5 },
+				},
+				{ Cue = "/VO/Megaera_10005", Text = "{#DialogueItalicFormat}Haaahhhhhhhhh{#Prev}....", SkipAnim = true },
+			},
+		},
+	},
+	-- This weapon does not exist Hades, but is required to fire the projectile
+	CharonGhostCharge = {
+		AIData = {
+			DeepInheritance = true,
+		},
+	},
+	CharonGhostChargeLeft = {
+		AIData = {
+			AIAttackDistance = 90,
+			PreAttackVoiceLines = {
+				Cooldowns = {
+					{ Name = "CharonPreAttackSpeech", Time = 5 },
+				},
+				{ Cue = "/VO/Megaera_10026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
+			},
+			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
+		},
+		Sounds = mod.NilValue,
+	},
+	CharonGhostChargeRight = {
+		AIData = {
+			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
+		},
+	},
+	CharonGhostChargeTopAndBot = {
+		AIData = {
+			AIAttackDistance = 90,
+			PreAttackVoiceLines = {
+				Cooldowns = {
+					{ Name = "CharonPreAttackSpeech", Time = 5 },
+				},
+				{ Cue = "/VO/Megaera_10026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
+			},
+			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
+		},
+		Sounds = mod.NilValue,
+	},
+	CharonGhostChargeLeftAndRight = {
+		AIData = {
+			AIAttackDistance = 90,
+			PreAttackVoiceLines = {
+				Cooldowns = {
+					{ Name = "CharonPreAttackSpeech", Time = 5 },
+				},
+				{ Cue = "/VO/Megaera_10026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
+			},
+			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
+		},
+		Sounds = mod.NilValue,
+	},
+	CharonGhostCharge360 = {
+		AIData = {
+			AIAttackDistance = 90,
+			PreAttackVoiceLines = {
+				Cooldowns = {
+					{ Name = "CharonPreAttackSpeech", Time = 5 },
+				},
+				{ Cue = "/VO/Megaera_10026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
+			},
+			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
+		},
+		Sounds = mod.NilValue,
 	},
 	-- #endregion
 

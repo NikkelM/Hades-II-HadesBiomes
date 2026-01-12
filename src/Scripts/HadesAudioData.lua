@@ -2310,21 +2310,18 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		},
 	},
 	-- #endregion
-	-- #region Charon
+	-- #region Charon/ForbiddenShopItem/BossCharon
 	-- Custom: Replaced Charon_ with Megaera_1
 	CharonSurprisedVoiceLines = {
 		Queue = "Interrupt",
 		{
 			RandomRemaining = true,
 			BreakIfPlayed = true,
-			-- TODO: This might need to be changed to ModsNikkelMHadesBiomes_NPC_Charon_01
 			ObjectType = "NPC_Charon_01",
 			PreLineWait = 0.1,
-			Cooldowns =
-			{
+			Cooldowns = {
 				{ Name = "CharonSurprisedSpeech", Time = 10 },
 			},
-
 			-- Hoh?
 			{ Cue = "/VO/Megaera_10052" },
 			-- Hrn?
@@ -2343,6 +2340,55 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Megaera_10071" },
 			-- Hrrnn!!
 			{ Cue = "/VO/Megaera_10072" },
+		},
+	},
+	EnteredCharonFightVoiceLines = {
+		{
+			BreakIfPlayed = true,
+			PreLineWait = 1.0,
+			UsePlayerSource = true,
+			PlayOnce = true,
+			PlayOnceContext = "ModsNikkelMHadesBiomes_EnteredCharonFightFirstTime",
+			{ Cue = "/VO/MelinoeField_0173", Text = "Oh no.", },
+		},
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 1.0,
+			SuccessiveChanceToPlay = 0.66,
+			UsePlayerSource = true,
+			GameStateRequirements = {
+				{
+					PathFalse = { "CurrentRun", "CurrentRoom", "SpeechRecord", "/VO/MelinoeField_0173" },
+				},
+			},
+			{ Cue = "/VO/MelinoeField_0173", Text = "Oh no.", },
+			{ Cue = "/VO/MelinoeField_5000", Text = "Hi there...!", },
+			{ Cue = "/VO/MelinoeField_5001", Text = "{#Emph}Raaah!", },
+			{ Cue = "/VO/MelinoeField_5006", Text = "...Hi.", },
+		},
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 1.0,
+			SuccessiveChanceToPlay = 0.66,
+			ObjectType = "Charon",
+			-- Harrhh...!
+			{ Cue = "/VO/Megaera_10028" },
+			-- Hrraahh...!
+			{ Cue = "/VO/Megaera_10029" },
+			-- Hrrrr...!
+			{ Cue = "/VO/Megaera_10030" },
+			-- Nrrrrhhh...!
+			{ Cue = "/VO/Megaera_10031" },
+			-- Hmmmm....!
+			{ Cue = "/VO/Megaera_10032" },
+			-- Guuhhhh...
+			{ Cue = "/VO/Megaera_10033" },
+			-- Heehhhh...
+			{ Cue = "/VO/Megaera_10034" },
+			-- Mrrrrnnn....
+			{ Cue = "/VO/Megaera_10035" },
 		},
 	},
 	-- #endregion
@@ -3604,6 +3650,67 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_3115", Text = "Here he comes...!", },
 			{ Cue = "/VO/MelinoeField_3240", Text = "Oh {#Emph}hello!", },
 		},
+	},
+	-- #endregion
+	-- #region Charon/ForbiddenShopItem/BossCharon
+	ForbiddenShopItemTakenVoiceLines = {
+		Queue = "Interrupt",
+		{
+			UsePlayerSource = true,
+			PreLineWait = 0.5,
+			PlayOnce = true,
+			PlayOnceContext = "ModsNikkelMHadesBiomes_ForbiddenShopItemTakenFirstTime",
+			{ Cue = "/VO/Melinoe_1904", Text = "I'll just stash this away.", TriggerCooldowns = { "CharonSurprisedSpeech" } },
+		},
+		{
+			RandomRemaining = true,
+			UsePlayerSource = true,
+			PreLineWait = 0.5,
+			GameStateRequirements = {
+				{
+					PathFalse = { "CurrentRun", "CurrentRoom", "SpeechRecord", "/VO/Melinoe_1904" },
+				},
+			},
+			{ Cue = "/VO/MelinoeField_0524", Text = "Don't mind me...!",                  TriggerCooldowns = { "CharonSurprisedSpeech" } },
+			{ Cue = "/VO/Melinoe_1293",      Text = "Pure Gold...",                       TriggerCooldowns = { "CharonSurprisedSpeech" } },
+			{ Cue = "/VO/Melinoe_0694",      Text = "Gold...",                            TriggerCooldowns = { "CharonSurprisedSpeech" } },
+			{ Cue = "/VO/Melinoe_2154",      Text = "Gold coins...",                      TriggerCooldowns = { "CharonSurprisedSpeech" } },
+			{ Cue = "/VO/Melinoe_1904",      Text = "I'll just stash this away.",         TriggerCooldowns = { "CharonSurprisedSpeech" } },
+			{ Cue = "/VO/Melinoe_1216",      Text = "I need this.",                       TriggerCooldowns = { "CharonSurprisedSpeech" } },
+			{ Cue = "/VO/Melinoe_1217",      Text = "This should help.",                  TriggerCooldowns = { "CharonSurprisedSpeech" } },
+			{ Cue = "/VO/Melinoe_2150",      Text = "Don't mind me.",                     TriggerCooldowns = { "CharonSurprisedSpeech" } },
+			-- All below: CharonSurprisedVoiceLines will play
+			-- All below: "Sorry" type ForbiddenShopItemCaughtVoiceLines will not play
+			{ Cue = "/VO/MelinoeField_0409", Text = "Pardon the racket, Lord Charon...!", TriggerCooldowns = { "ForbiddenShopItemCaughtSpeech" }, PreLineWait = 1.5, },
+			{ Cue = "/VO/Melinoe_2773",      Text = "Shall we?",                          TriggerCooldowns = { "ForbiddenShopItemCaughtSpeech" }, PreLineWait = 1.5, },
+			{ Cue = "/VO/MelinoeField_3700", Text = "Shall we cross blades again?",       TriggerCooldowns = { "ForbiddenShopItemCaughtSpeech" }, PreLineWait = 1.5, },
+			{ Cue = "/VO/Melinoe_3654",      Text = "Shall we liven things up?",          TriggerCooldowns = { "ForbiddenShopItemCaughtSpeech" }, PreLineWait = 1.5, },
+		},
+		{
+			-- Custom: Replaced Charon_ with Megaera_1
+			RandomRemaining = true,
+			PreLineWait = 0.2,
+			ObjectType = "NPC_Charon_01",
+			-- Nrraaauuuggghhh!!
+			{ Cue = "/VO/Megaera_10041" },
+			-- Hhhaaaauuuhhhhh!!
+			{ Cue = "/VO/Megaera_10042" },
+			-- Hrrrauuugggghhhh!
+			{ Cue = "/VO/Megaera_10043" },
+			-- Grrraauuuggggghhh!
+			{ Cue = "/VO/Megaera_10044" },
+			-- Haaahhhhhhhhh....
+			{ Cue = "/VO/Megaera_10005" },
+		},
+	},
+	ForbiddenShopItemCaughtVoiceLines = {
+		Queue = "Interrupt",
+		PreLineWait = 0.73,
+		UsePlayerSource = true,
+		Cooldowns = {
+			{ Name = "ForbiddenShopItemCaughtSpeech", Time = 10 },
+		},
+		{ Cue = "/VO/MelinoeField_2368", Text = "Sorry...!" },
 	},
 	-- #endregion
 	-- #region Custom

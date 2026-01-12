@@ -120,6 +120,15 @@ local newData = {
 		"당신은 돌덩이를 신뢰하고, 돌덩이도 당신을 신뢰합니다. \n {!Icons.Bullet}{#PropertyFormat}추가 {!Icons.Currency}: {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
+
+	-- #region Charon
+	{
+		Id = "DiscountTrait",
+		DisplayName = "소중한 고객",
+		Description =
+		"모든 상품을 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} 할인된 가격으로 구매할 수 있습니다{#ItalicFormat}(현재 탈출 시도에서){#Prev}."
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

@@ -662,7 +662,7 @@ mod.MapFileMappings = {
 	["RoomChallenge03"] = "RoomChallenge03",
 	["RoomChallenge04"] = "RoomChallenge04",
 	-- Charon
-	-- ["CharonFight01"] = "CharonFight01",
+	["CharonFight01"] = "CharonFight01",
 }
 
 -- .map_text files that should be copied from the plugins_data folder instead of the Hades installation, as they have modifications from the original

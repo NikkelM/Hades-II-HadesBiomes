@@ -88,12 +88,28 @@ local charonRoomData = {
 local charonRoomReplacements = {}
 local charonRoomModifications = {
 	CharonFight01 = {
-		-- The encounter has BiomeName = "Challenge" - should this be Challenge or separate/Charon? How does it work with the MapGroups.sjson?
-		-- RoomSetName = "Charon",
+		RoomSetName = "Challenge",
+		-- BiomeG for some of the SFX for Charon's attacks
+		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "BiomeG", },
+		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicErebusModded", },
+
+		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+
+		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerErebusIn",
+		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerErebusOut",
+
+		-- Started manually through the text lines
+		SecretMusic = "/Music/BlankMusicCue",
+		NextRoomResumeMusic = true,
+
+		UnthreadedEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroCharon" },
+		},
 	},
 }
 
--- mod.ApplyModificationsAndInheritRoomData(charonRoomData, charonRoomModifications, charonRoomReplacements, "Charon")
+mod.ApplyModificationsAndInheritRoomData(charonRoomData, charonRoomModifications, charonRoomReplacements, "Challenge")
 -- #endregion
 
 -- #region SURFACE

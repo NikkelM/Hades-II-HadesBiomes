@@ -454,15 +454,15 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 
 		EnterVoiceLines =
 		{
-			{
-				RandomRemaining = true,
-				BreakIfPlayed = true,
-				PreLineWait = 0.65,
-				RequiredActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 3 },
+			-- {
+			-- 	RandomRemaining = true,
+			-- 	BreakIfPlayed = true,
+			-- 	PreLineWait = 0.65,
+			-- 	RequiredActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 3 },
 
-				-- ...This has to be some kind of bad dream.
-				{ Cue = "/VO/ZagreusField_2749", PlayOnce = true },
-			},
+			-- 	-- ...This has to be some kind of bad dream.
+			-- 	{ Cue = "/VO/ZagreusField_2749", PlayOnce = true },
+			-- },
 			{
 				RandomRemaining = true,
 				BreakIfPlayed = true,
@@ -474,39 +474,39 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 				-- Brothers in Death!!
 				{ Cue = "/VO/Theseus_0394" },
 			},
-			{
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				PreLineWait = 1.35,
-				SuccessiveChanceToPlayAll = 0.33,
+			-- {
+			-- 	BreakIfPlayed = true,
+			-- 	RandomRemaining = true,
+			-- 	PreLineWait = 1.35,
+			-- 	SuccessiveChanceToPlayAll = 0.33,
 
-				-- Oh wow...
-				{ Cue = "/VO/ZagreusField_1616", SuccessiveChanceToPlay = 0.01, },
-				-- Gentlemen.
-				{ Cue = "/VO/ZagreusField_1617", RequiredPlayed = { "/VO/ZagreusField_1616" } },
-				-- Gentlemen?
-				{ Cue = "/VO/ZagreusField_1618", RequiredPlayed = { "/VO/ZagreusField_1616" } },
-				-- Rematch?
-				{ Cue = "/VO/ZagreusField_1619", RequiredPlayed = { "/VO/ZagreusField_1616" } },
-				-- Care for a rematch?
-				{ Cue = "/VO/ZagreusField_1620", RequiredPlayed = { "/VO/ZagreusField_1616" } },
-				-- Gentlemen, I'm back.
-				{ Cue = "/VO/ZagreusField_1621", RequiredPlayed = { "/VO/ZagreusField_1616" } },
-				-- These two.
-				{ Cue = "/VO/ZagreusField_1622", RequiredPlayed = { "/VO/ZagreusField_1616" } },
-				-- Time for the main event.
-				{ Cue = "/VO/ZagreusField_1613", RequiredPlayed = { "/VO/ZagreusField_1616" } },
-				-- Big crowd, huh.
-				{ Cue = "/VO/ZagreusField_1614", RequiredPlayed = { "/VO/ZagreusField_1616" } },
-				-- Hey everyone, I'm back!
-				{ Cue = "/VO/ZagreusField_1615", RequiredPlayed = { "/VO/ZagreusField_1616" } },
-				-- Asterius. Theseus.
-				{ Cue = "/VO/ZagreusField_3887", RequiredPlayed = { "/VO/ZagreusField_1616" } },
-				-- Asterius. Other guy.
-				{ Cue = "/VO/ZagreusField_3888", RequiredPlayed = { "/VO/ZagreusField_1616", "/VO/ZagreusField_3887" } },
-				-- Rematch?
-				{ Cue = "/VO/ZagreusField_3889", RequiredPlayed = { "/VO/ZagreusField_1616" } },
-			},
+			-- 	-- Oh wow...
+			-- 	{ Cue = "/VO/ZagreusField_1616", SuccessiveChanceToPlay = 0.01, },
+			-- 	-- Gentlemen.
+			-- 	{ Cue = "/VO/ZagreusField_1617", RequiredPlayed = { "/VO/ZagreusField_1616" } },
+			-- 	-- Gentlemen?
+			-- 	{ Cue = "/VO/ZagreusField_1618", RequiredPlayed = { "/VO/ZagreusField_1616" } },
+			-- 	-- Rematch?
+			-- 	{ Cue = "/VO/ZagreusField_1619", RequiredPlayed = { "/VO/ZagreusField_1616" } },
+			-- 	-- Care for a rematch?
+			-- 	{ Cue = "/VO/ZagreusField_1620", RequiredPlayed = { "/VO/ZagreusField_1616" } },
+			-- 	-- Gentlemen, I'm back.
+			-- 	{ Cue = "/VO/ZagreusField_1621", RequiredPlayed = { "/VO/ZagreusField_1616" } },
+			-- 	-- These two.
+			-- 	{ Cue = "/VO/ZagreusField_1622", RequiredPlayed = { "/VO/ZagreusField_1616" } },
+			-- 	-- Time for the main event.
+			-- 	{ Cue = "/VO/ZagreusField_1613", RequiredPlayed = { "/VO/ZagreusField_1616" } },
+			-- 	-- Big crowd, huh.
+			-- 	{ Cue = "/VO/ZagreusField_1614", RequiredPlayed = { "/VO/ZagreusField_1616" } },
+			-- 	-- Hey everyone, I'm back!
+			-- 	{ Cue = "/VO/ZagreusField_1615", RequiredPlayed = { "/VO/ZagreusField_1616" } },
+			-- 	-- Asterius. Theseus.
+			-- 	{ Cue = "/VO/ZagreusField_3887", RequiredPlayed = { "/VO/ZagreusField_1616" } },
+			-- 	-- Asterius. Other guy.
+			-- 	{ Cue = "/VO/ZagreusField_3888", RequiredPlayed = { "/VO/ZagreusField_1616", "/VO/ZagreusField_3887" } },
+			-- 	-- Rematch?
+			-- 	{ Cue = "/VO/ZagreusField_3889", RequiredPlayed = { "/VO/ZagreusField_1616" } },
+			-- },
 			{
 				BreakIfPlayed = true,
 				RandomRemaining = true,
@@ -526,7 +526,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 				-- Ah, at last!
 				{ Cue = "/VO/Theseus_0460" },
 				-- He returns!
-				{ Cue = "/VO/Theseus_0461" },
+				-- { Cue = "/VO/Theseus_0461" },
 				-- Our sworn enemy!
 				{ Cue = "/VO/Theseus_0462" },
 				-- So...!
@@ -551,7 +551,7 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 				-- Ah, at last!
 				{ Cue = "/VO/Theseus_0460" },
 				-- He returns!
-				{ Cue = "/VO/Theseus_0461" },
+				-- { Cue = "/VO/Theseus_0461" },
 				-- Our sworn enemy!
 				{ Cue = "/VO/Theseus_0462" },
 				-- So...!
@@ -961,42 +961,42 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 
 		EnterVoiceLines =
 		{
-			{
-				RandomRemaining = true,
-				PreLineWait = 0.75,
-				RequiredActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 3 },
+			-- {
+			-- 	RandomRemaining = true,
+			-- 	PreLineWait = 0.75,
+			-- 	RequiredActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 3 },
 
-				-- ...Asterius, you look absolutely smashing!
-				{ Cue = "/VO/ZagreusField_2819", PlayOnce = true },
+			-- 	-- ...Asterius, you look absolutely smashing!
+			-- 	{ Cue = "/VO/ZagreusField_2819", PlayOnce = true },
 
-				-- Oh this is trouble.
-				-- { Cue = "/VO/ZagreusField_1611", PlayOnce = true },
-			},
+			-- 	-- Oh this is trouble.
+			-- 	-- { Cue = "/VO/ZagreusField_1611", PlayOnce = true },
+			-- },
 			-- Zagreus Greetings
-			{
-				PreLineWait = 1.0,
-				BreakIfPlayed = true,
-				RandomRemaining = true,
-				SuccessiveChanceToPlay = 0.2,
-				UsePlayerSource = true,
+			-- {
+			-- 	PreLineWait = 1.0,
+			-- 	BreakIfPlayed = true,
+			-- 	RandomRemaining = true,
+			-- 	SuccessiveChanceToPlay = 0.2,
+			-- 	UsePlayerSource = true,
 
-				-- Asterius!
-				{ Cue = "/VO/ZagreusField_4677", RequiredPlayed = { "/VO/ZagreusField_4680" }, RequiredMinTimesSeenRoom = { C_MiniBoss01 = 5 }, },
-				-- Asterius.
-				{ Cue = "/VO/ZagreusField_4678", RequiredPlayed = { "/VO/ZagreusField_4680" }, RequiredMinTimesSeenRoom = { C_MiniBoss01 = 3 }, },
-				-- Oh, hi.
-				{ Cue = "/VO/ZagreusField_4679", RequiredPlayed = { "/VO/ZagreusField_4680" }, },
-				-- The Bull of Minos!
-				{ Cue = "/VO/ZagreusField_4680", PlayOnce = true },
-				-- The Bull of Minos.
-				{ Cue = "/VO/ZagreusField_4681", RequiredPlayed = { "/VO/ZagreusField_4680" }, },
-				-- Rematch?
-				{ Cue = "/VO/ZagreusField_4682", RequiredPlayed = { "/VO/ZagreusField_4680" }, RequiredMinTimesSeenRoom = { C_MiniBoss01 = 5 }, },
-				-- Rematch, then?
-				{ Cue = "/VO/ZagreusField_4683", RequiredPlayed = { "/VO/ZagreusField_4680" }, RequiredMinTimesSeenRoom = { C_MiniBoss01 = 6 }, },
-				-- Shall we, sir?
-				{ Cue = "/VO/ZagreusField_4684", RequiredPlayed = { "/VO/ZagreusField_4680" }, RequiredMinTimesSeenRoom = { C_MiniBoss01 = 10 }, },
-			},
+			-- 	-- Asterius!
+			-- 	{ Cue = "/VO/ZagreusField_4677", RequiredPlayed = { "/VO/ZagreusField_4680" }, RequiredMinTimesSeenRoom = { C_MiniBoss01 = 5 }, },
+			-- 	-- Asterius.
+			-- 	{ Cue = "/VO/ZagreusField_4678", RequiredPlayed = { "/VO/ZagreusField_4680" }, RequiredMinTimesSeenRoom = { C_MiniBoss01 = 3 }, },
+			-- 	-- Oh, hi.
+			-- 	{ Cue = "/VO/ZagreusField_4679", RequiredPlayed = { "/VO/ZagreusField_4680" }, },
+			-- 	-- The Bull of Minos!
+			-- 	{ Cue = "/VO/ZagreusField_4680", PlayOnce = true },
+			-- 	-- The Bull of Minos.
+			-- 	{ Cue = "/VO/ZagreusField_4681", RequiredPlayed = { "/VO/ZagreusField_4680" }, },
+			-- 	-- Rematch?
+			-- 	{ Cue = "/VO/ZagreusField_4682", RequiredPlayed = { "/VO/ZagreusField_4680" }, RequiredMinTimesSeenRoom = { C_MiniBoss01 = 5 }, },
+			-- 	-- Rematch, then?
+			-- 	{ Cue = "/VO/ZagreusField_4683", RequiredPlayed = { "/VO/ZagreusField_4680" }, RequiredMinTimesSeenRoom = { C_MiniBoss01 = 6 }, },
+			-- 	-- Shall we, sir?
+			-- 	{ Cue = "/VO/ZagreusField_4684", RequiredPlayed = { "/VO/ZagreusField_4680" }, RequiredMinTimesSeenRoom = { C_MiniBoss01 = 10 }, },
+			-- },
 			-- Minotaur Greetings
 			{
 				PreLineWait = 1.0,

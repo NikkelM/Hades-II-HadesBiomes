@@ -266,6 +266,8 @@ game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines = game.GlobalVoiceLines.The
 
 game.GlobalVoiceLines.CharonSurprisedVoiceLines = game.GlobalVoiceLines.CharonSurprisedVoiceLines or
 		mod.GlobalVoiceLines.CharonSurprisedVoiceLines
+game.GlobalVoiceLines.EnteredCharonFightVoiceLines = game.GlobalVoiceLines.EnteredCharonFightVoiceLines or
+		mod.GlobalVoiceLines.EnteredCharonFightVoiceLines
 
 game.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines = game.GlobalVoiceLines
 		.PersephoneFirstMeetingIntermissionVoiceLines or mod.GlobalVoiceLines.PersephoneFirstMeetingIntermissionVoiceLines
@@ -293,11 +295,14 @@ game.GlobalVoiceLines.SurvivalResolvedVoiceLines = game.GlobalVoiceLines.Surviva
 
 game.GlobalVoiceLines.PerfectClearEncounterStartVoiceLines = game.GlobalVoiceLines.PerfectClearEncounterStartVoiceLines or
 		mod.GlobalVoiceLines.PerfectClearEncounterStartVoiceLines
-game.GlobalVoiceLines.PerfectClearEncounterFailedVoiceLines = game.GlobalVoiceLines.PerfectClearEncounterFailedVoiceLines or
+game.GlobalVoiceLines.PerfectClearEncounterFailedVoiceLines = game.GlobalVoiceLines
+		.PerfectClearEncounterFailedVoiceLines or
 		mod.GlobalVoiceLines.PerfectClearEncounterFailedVoiceLines
-game.GlobalVoiceLines.PerfectClearEncounterQuicklyFailedVoiceLines = game.GlobalVoiceLines.PerfectClearEncounterQuicklyFailedVoiceLines or
+game.GlobalVoiceLines.PerfectClearEncounterQuicklyFailedVoiceLines = game.GlobalVoiceLines
+		.PerfectClearEncounterQuicklyFailedVoiceLines or
 		mod.GlobalVoiceLines.PerfectClearEncounterQuicklyFailedVoiceLines
-game.GlobalVoiceLines.PerfectClearEncounterClearedVoiceLines = game.GlobalVoiceLines.PerfectClearEncounterClearedVoiceLines or
+game.GlobalVoiceLines.PerfectClearEncounterClearedVoiceLines = game.GlobalVoiceLines
+		.PerfectClearEncounterClearedVoiceLines or
 		mod.GlobalVoiceLines.PerfectClearEncounterClearedVoiceLines
 
 game.GlobalVoiceLines.PatroclusFishCaughtVoiceLines = game.GlobalVoiceLines.PatroclusFishCaughtVoiceLines or
@@ -337,6 +342,11 @@ game.HeroVoiceLines.HitByHadesAmmoVoiceLines = game.HeroVoiceLines.HitByHadesAmm
 
 game.HeroVoiceLines.ThanatosSpawningVoiceLines = game.HeroVoiceLines.ThanatosSpawningVoiceLines or
 		mod.HeroVoiceLines.ThanatosSpawningVoiceLines
+
+game.HeroVoiceLines.ForbiddenShopItemTakenVoiceLines = game.HeroVoiceLines.ForbiddenShopItemTakenVoiceLines or
+		mod.HeroVoiceLines.ForbiddenShopItemTakenVoiceLines
+game.HeroVoiceLines.ForbiddenShopItemCaughtVoiceLines = game.HeroVoiceLines.ForbiddenShopItemCaughtVoiceLines or
+		mod.HeroVoiceLines.ForbiddenShopItemCaughtVoiceLines
 
 -- Custom Voicelines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines = mod.HeroVoiceLines

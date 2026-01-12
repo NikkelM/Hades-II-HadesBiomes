@@ -200,6 +200,11 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 									entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "StartFinalBossRoomMusic"
 								end
 							end
+							if entry.PreLineFunctionName then
+								if entry.PreLineFunctionName == "StartCharonBossRoomMusic" then
+									entry.PreLineFunctionName = _PLUGIN.guid .. "." .. "StartCharonBossRoomMusic"
+								end
+							end
 							if entry.PreLineThreadedFunctionName then
 								if entry.PreLineThreadedFunctionName == "PlayPreLineTauntAnimFromSource" then
 									entry.PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayPreLineTauntAnimFromSource"
@@ -240,6 +245,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 					"MinotaurFinalStageTransition",
 					"TheseusChariotDismount",
 					"HadesPhaseTransition",
+					"CharonFightEndPresentation",
 				}
 				if game.Contains(moddedTransitionFunctions, aiStage.TransitionFunction) then
 					aiStage.TransitionFunction = _PLUGIN.guid .. "." .. aiStage.TransitionFunction
@@ -285,6 +291,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			"LowHealthVoiceLines",
 			"CriticalHealthVoiceLines",
 			"RageFullVoiceLines",
+			"EarlyExitVoiceLines",
 		}
 		for _, tableName in ipairs(voicelineTables) do
 			if enemyData[tableName] then
@@ -308,6 +315,33 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 						mod.DebugPrint("Added cooldown for voiceline entry in table " .. tableName .. " on enemy " .. enemyName, 4)
 						voicelineEntry.CooldownName = nil
 						voicelineEntry.CooldownTime = nil
+					end
+
+					if voicelineEntry.Cue then
+						if voicelineEntry.Cue:find("^/VO/Storyteller_") then
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+						elseif voicelineEntry.Cue:find("^/VO/Charon_") then
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+						elseif voicelineEntry.Cue:find("^/VO/Persephone_") then
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+						elseif voicelineEntry.Cue:find("^/VO/ZagreusHome_") then
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+						end
+					else
+						-- Handle nested voiceline entries (array of entries)
+						for _, innerEntry in ipairs(voicelineEntry) do
+							if innerEntry.Cue then
+								if innerEntry.Cue:find("^/VO/Storyteller_") then
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+								elseif innerEntry.Cue:find("^/VO/Charon_") then
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+								elseif innerEntry.Cue:find("^/VO/Persephone_") then
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+								elseif innerEntry.Cue:find("^/VO/ZagreusHome_") then
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+								end
+							end
+						end
 					end
 				end
 			end
@@ -1879,6 +1913,38 @@ local enemyModifications = {
 		IsBoss = false,
 	},
 	-- #endregion
+	-- #endregion
+
+	-- #region CHARON
+	Charon = {
+		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
+		MaxHealth = 21000,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
+		SubtitleColor = game.Color.CharonVoice,
+		RunHistoryKilledByName = "NPC_Charon_01",
+		AIStages = {
+			[2] = { TransitionUnthreadedFunctionNames = { _PLUGIN.guid .. "." .. "RandomizeCover" }, },
+			[3] = { TransitionUnthreadedFunctionNames = { _PLUGIN.guid .. "." .. "RandomizeCover" }, },
+		},
+	},
+	CharonGhostChargeSource = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		RunHistoryKilledByName = "NPC_Charon_01",
+		DefaultAIData = {
+			DeepInheritance = true,
+			WeaponName = "CharonGhostCharge",
+			-- Moved in here from the normal Enemy data
+			ProjectileName = "CharonGhostCharge",
+			PreAttackDuration = 0.0,
+			FireDuration = 0.0,
+			PostAttackDuration = 0.0,
+			SkipMovement = true,
+			SkipAngleTowardTarget = true,
+			TargetSelf = true,
+			ProjectileDestinationOffsetFromTarget = true,
+			ProjectileOffsetDistance = 100,
+		},
+	},
 	-- #endregion
 
 	-- #region ENVIRONMENT

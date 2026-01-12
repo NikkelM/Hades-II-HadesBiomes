@@ -8,7 +8,7 @@ local encounterDataChallengeCharon = {
 	ShrineChallengeElysium = encounterData.ShrineChallengeElysium,
 
 	-- Charon
-	-- BossCharon = encounterData.BossCharon,
+	BossCharon = encounterData.BossCharon,
 }
 
 mod.UpdateField(encounterDataChallengeCharon, "Generated", "ModsNikkelMHadesBiomesGenerated", { "InheritFrom" },
@@ -55,8 +55,36 @@ local encounterModifications = {
 	-- #endregion
 
 	-- #region Charon
-
+	BossCharon = {
+		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		SkipBossTraits = true,
+		BlockAthenaEncounterKeepsake = true,
+		CanEncounterSkip = false,
+		BlockRespawnShrineUpgrade = true,
+		BlockNextBiomeEnemyShrineUpgrade = true,
+	},
 	-- #endregion
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataChallengeCharon, encounterModifications, encounterReplacements)
+
+-- For Charon, in order to spawn the ForbiddenShopItem, we need to insert an additional StartRoomUnthreadedEvent
+table.insert(game.EncounterData.Shop.StartRoomUnthreadedEvents,
+	{
+		FunctionName = _PLUGIN.guid .. "." .. "CheckForbiddenShopItem",
+		GameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
+			},
+			{
+				PathFalse = { "CurrentRun", "ForbiddenShopItemOffered" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			ChanceToPlay = 0.22,
+		},
+	}
+)

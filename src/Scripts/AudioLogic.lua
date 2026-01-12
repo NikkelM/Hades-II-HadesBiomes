@@ -51,3 +51,12 @@ modutil.mod.Path.Wrap("ResumeMusic", function(base, args)
 
 	return base(args)
 end)
+
+-- Called in some boss intros - just in case there is no Music playing (either paused or MusicId == nil), we resume it/create it
+function mod.SafetyResumeBossMusic()
+	if game.AudioState.MusicId ~= nil and game.AudioState.MusicPaused then
+		game.ResumeMusic()
+	elseif game.AudioState.MusicId == nil then
+		game.MusicMixer({ PlayBiomeMusic = true, MusicSection = 0, UseRoomMusicSection = true, })
+	end
+end

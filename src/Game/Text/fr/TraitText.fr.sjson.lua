@@ -120,6 +120,15 @@ local newData = {
 		"Vous croyez en Pierrot, et Pierrot croit en vous. \n {!Icons.Bullet}{#PropertyFormat}Valeur des {!Icons.Currency} : {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
+
+	-- #region Charon
+	{
+		Id = "DiscountTrait",
+		DisplayName = "Client Fidèle",
+		Description =
+		"Toutes les marchandises de Charon coûtent {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} moins cher {#ItalicFormat}(pour cette tentative d'évasion){#Prev}."
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

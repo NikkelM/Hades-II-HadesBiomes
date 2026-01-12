@@ -5,6 +5,10 @@ end
 
 function mod.BossIntroElysium(eventSource, args)
 	local shrineLevel = game.GetNumShrineUpgrades(eventSource.ShrineMetaUpgradeName)
+
+	-- In case of there being no music after certain room chains, resume or start new music
+	mod.SafetyResumeBossMusic()
+
 	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args[shrineLevel])
 end
 

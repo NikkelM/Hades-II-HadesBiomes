@@ -276,18 +276,9 @@ local hadesProjectilesModifications = {
 	SatyrRangedWeapon = {
 		Effects = {
 			[2] = {
-				Name = "StyxPoison",
-				Type = "DAMAGE_OVER_TIME",
-				Amount = 1,
 				Cooldown = 0.23,
 				InitialDelay = 1,
-				Duration = 8,
-				Stacks = true,
-				MaxStacks = 10,
-				ExtendDurationOnReapply = false,
-				SilentImpact = true,
 				FrontFx = "PoisonStatusFx",
-				Active = true,
 				OnlyAffectName = "_PlayerUnit",
 			},
 		},
@@ -355,6 +346,22 @@ local hadesProjectilesModifications = {
 	ThanatosDeathCurseAoE = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 		Fuse = 2.2,
+	},
+	-- #endregion
+
+	-- #region CHARON
+	CharonMeleeArcLeft = {
+		Effects = {
+			[2] = {
+				FrontFx = "DionysusStunnedFx",
+			},
+		},
+	},
+	CharonGhostCharge = {
+		Type = "STRAIGHT",
+		DissipateGraphic = "null",
+		ImpactFx = "null",
+		DeathFx = "CharonGhostChargeImpact",
 	},
 	-- #endregion
 

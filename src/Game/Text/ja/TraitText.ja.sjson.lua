@@ -120,6 +120,15 @@ local newData = {
 		"イワコフを信ずれば、イワコフもまた、汝を信ず。\n {!Icons.Bullet}{#PropertyFormat}{!Icons.Currency}ボーナス： {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
+
+	-- #region Charon
+	{
+		Id = "DiscountTrait",
+		DisplayName = "得意客",
+		Description =
+		"すべてのアイテムを{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}引き{#Prev} で購入できる{#ItalicFormat}（館に戻るまで）{#Prev}。"
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

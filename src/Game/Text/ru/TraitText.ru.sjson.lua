@@ -120,6 +120,15 @@ local newData = {
 		"Ты веришь в Валунка, а Валунок верит в тебя. \n {!Icons.Bullet}{#PropertyFormat}Бонус к {!Icons.Currency}! {#Prev}{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMoneyRewardIncrease:P}{#Prev}"
 	},
 	-- #endregion
+
+	-- #region Charon
+	{
+		Id = "DiscountTrait",
+		DisplayName = "Ценный клиент",
+		Description =
+		"Все предметы продаются со скидкой {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(во время этой попытки побега){#Prev}."
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

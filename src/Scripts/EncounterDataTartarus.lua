@@ -279,7 +279,8 @@ local encounterModifications = {
 			OverrideValues = game.BaseWaveOverrideValues,
 			StartDelay = 0.0
 		},
-		Blacklist = { LightSpawner = true, },
+		-- They can sometimes briefly move/pop in suddenly
+		Blacklist = { LightSpawner = true, HadesSwarmer = true, },
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,

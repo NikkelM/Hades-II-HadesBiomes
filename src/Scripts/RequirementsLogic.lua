@@ -1794,6 +1794,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		local translated = voiceLine:gsub("/VO/Storyteller_", "/VO/Megaera_0")
 		translated = translated:gsub("/VO/Charon_", "/VO/Megaera_1")
 		translated = translated:gsub("/VO/Persephone_", "/VO/Megaera_2")
+		translated = translated:gsub("/VO/ZagreusHome_", "/VO/ZagreusField_0")
 
 		return translated
 	end
@@ -1834,7 +1835,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		local anyTrue = false
 		for k, voiceLine in pairs(requirements.RequiredAnyPlayedThisRun) do
 			local translatedVoiceLine = TranslateVoiceLine(voiceLine)
-			if Contains(game.CurrentRun.SpeechRecord, translatedVoiceLine) then
+			if game.CurrentRun.SpeechRecord[translatedVoiceLine] then
 				anyTrue = true
 				break
 			end
@@ -1861,27 +1862,30 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredPlayedThisRoom ~= nil then
-		local translatedLines = {}
+		local anyTrue = false
 		for k, voiceLine in pairs(requirements.RequiredPlayedThisRoom) do
-			table.insert(translatedLines, TranslateVoiceLine(voiceLine))
+			local translatedVoiceLine = TranslateVoiceLine(voiceLine)
+			if game.CurrentRun.CurrentRoom.SpeechRecord[translatedVoiceLine] then
+				anyTrue = true
+				break
+			end
 		end
-		if not ContainsAny(translatedLines, game.CurrentRun.CurrentRoom.SpeechRecord) then
+		if not anyTrue then
 			return false
 		end
 	end
 
 	if requirements.RequiredFalsePlayedThisRoom ~= nil then
-		local translatedLines = {}
 		for k, voiceLine in pairs(requirements.RequiredFalsePlayedThisRoom) do
-			table.insert(translatedLines, TranslateVoiceLine(voiceLine))
-		end
-		if ContainsAny(translatedLines, game.CurrentRun.CurrentRoom.SpeechRecord) then
-			return false
+			local translatedVoiceLine = TranslateVoiceLine(voiceLine)
+			if game.CurrentRun.CurrentRoom.SpeechRecord[translatedVoiceLine] then
+				return false
+			end
 		end
 	end
 
 	if requirements.RequiredRoomThisRun ~= nil then
-		local roomData = RoomData[requirements.RequiredRoomThisRun]
+		local roomData = game.RoomData[requirements.RequiredRoomThisRun]
 		if roomData == nil or game.CurrentRun.RoomCountCache[roomData.Name] == nil or game.CurrentRun.RoomCountCache[roomData.Name] <= 0 then
 			return false
 		end

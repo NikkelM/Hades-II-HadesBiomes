@@ -87,6 +87,12 @@ function mod.ModsNikkelMHadesBiomesBossAIStageHandler(enemy, args)
 		end
 	end
 
+	if aiStage.TransitionUnthreadedFunctionNames ~= nil then
+		for i, functionName in ipairs(aiStage.TransitionUnthreadedFunctionNames) do
+			game.CallFunctionName(functionName, enemy, aiStage.TransitionUnthreadedFunctionArgs[i])
+		end
+	end
+
 	if aiStage.PermanentlyEnrage then
 		enemy.PermanentEnraged = true
 		game.thread(mod.EnrageUnit, enemy, game.CurrentRun)

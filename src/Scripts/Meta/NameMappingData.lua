@@ -276,7 +276,6 @@ mod.HadesHelpTextCopyKeys = {
 	UseLeaveRoomAsphodel = true,
 	UseLeaveRoomAsphodel_Reroll = true,
 	UseLeaveRoomAsphodel_CannotReroll = true,
-	DiscountTrait = true,
 	GiftBouldyUseText = true,
 	UseTalkToSisyphus = true,
 	UseTalkToBouldy = true,
