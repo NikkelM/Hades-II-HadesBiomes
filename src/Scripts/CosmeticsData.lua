@@ -1605,7 +1605,7 @@ local preRunCosmetics = {
 	{
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_SkellyFloor_Olympian",
 		Name = {
-			en = "Dais, Fancy",
+			en = "Dais, Olympian",
 		},
 		Description = {
 			en =

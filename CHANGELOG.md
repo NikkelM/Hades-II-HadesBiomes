@@ -10,6 +10,7 @@
 Other fixes and improvements:
 - Slightly boosted the volume of some music tracks.
 - Fixed: Tisiphone's whip lash attack does not stun the player.
+- Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".
 - Fixed: In rare cases, some ineligible combinations of voicelines can play during NPC or boss encounters.
 <!--Releasenotes end-->
 
