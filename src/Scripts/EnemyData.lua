@@ -1917,6 +1917,9 @@ local enemyModifications = {
 
 	-- #region CHARON
 	Charon = {
+		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
+		MaxHealth = 21000,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.CharonVoice,
 		RunHistoryKilledByName = "NPC_Charon_01",
 		AIStages = {
