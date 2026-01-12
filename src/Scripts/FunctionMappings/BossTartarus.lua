@@ -1,4 +1,7 @@
 function mod.MultiFuryIntro(eventSource, args)
+	-- In case of there being no music after certain room chains, resume or start new music
+	mod.SafetyResumeBossMusic()
+
 	local boss = game.ActiveEnemies[args.BossId]
 	for k, supportAIName in pairs(boss.SupportAINames) do
 		local obstacleName = "MultiFury" .. supportAIName .. "Intro"
