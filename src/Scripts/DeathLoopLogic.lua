@@ -46,7 +46,20 @@ modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 	return base(victim, triggerArgs)
 end)
 
+-- This must be the same as the wrap for HubPostBountyLoad, which is called instead of DeathAreaRoomTransition when returning from a Chaos Trial
 modutil.mod.Path.Wrap("DeathAreaRoomTransition", function(base, source, args)
+	-- Reset the modified game objects when returning to the Crossroads
+	mod.ApplyGlobalGameObjectModifications(false)
+	-- Load the portraits package immediately for a less laggy transition when opening the run history screen
+	LoadPackages({ Name = "ModsNikkelMHadesBiomesPortraits" })
+	-- Load our new cosmetics
+	LoadPackages({ Name = "NikkelM-HadesBiomesCosmetics" })
+
+	return base(source, args)
+end)
+
+-- If returning from a Chaos Trial, this will be called instead of DeathAreaRoomTransition
+modutil.mod.Path.Wrap("HubPostBountyLoad", function(base, source, args)
 	-- Reset the modified game objects when returning to the Crossroads
 	mod.ApplyGlobalGameObjectModifications(false)
 	-- Load the portraits package immediately for a less laggy transition when opening the run history screen
