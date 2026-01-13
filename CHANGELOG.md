@@ -14,6 +14,7 @@ Other fixes and improvements:
 - Fixed: When returning from a Chaos Trial, Zagreus' Journey cosmetics and other assets are not loaded until switching rooms.
 - Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".
 - Fixed: In rare cases, some ineligible combinations of voicelines can play during NPC or boss encounters.
+- Fixed: Icons for some cosmetics added by the mod are very noisy/grainy and hard to decipher.
 <!--Releasenotes end-->
 
 ## v0.3.0
