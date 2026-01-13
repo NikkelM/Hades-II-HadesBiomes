@@ -5,6 +5,7 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - You can now **challenge Lord Charon** to a "friendly duel" by "borrowing" some his his Gold! Defeat your favourite shopkeeper for a special discount on all his wares for the duration of your current run.
+- Added 8 new cosmetics to discover and unlock in the Crossroads, created by @burn.
 - Charon's shops now play the original music from the first game during Zagreus' Journey runs.
 
 Other fixes and improvements:

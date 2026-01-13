@@ -172,6 +172,37 @@ local tentCosmetics = {
 	-- #endregion
 	-- #region Candle/Cosmetic_TentCandle01
 	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentCandle_Tartarus",
+		Name = {
+			en = "Candle, Tartarus",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Poured from aged wax and set within a holder of dark, green stone.",
+		},
+		FlavorText = {
+			en =
+			"Before the Titan Chronos took hold of Tartarus, its sheer endless chambers were illuminated by countless candles such as this one, spreading their eerie green glow.",
+		},
+		CosmeticsGroup = "Cosmetic_TentCandle01",
+		InsertAfterCosmetic = "Cosmetic_TentCandle01",
+		ShopCategory = "CosmeticsShop_Tent",
+		SetAnimationIds = { 566716, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Candle_Tartarus",
+		IconScale = 0.27,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Candle_Tartarus",
+		AnimationScale = 1.8,
+		GameStateRequirements = {
+			NamedRequirements = { "T1Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 150,
+			ModsNikkelMHadesBiomes_OreTartarus = 3,
+			ModsNikkelMHadesBiomes_CropTartarus = 2,
+		},
+	},
+	{
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentCandle_Elysian",
 		Name = {
 			en = "Candle, Elysian",
@@ -185,7 +216,7 @@ local tentCosmetics = {
 			"Listing all the different flowers and other ingredients used in the making of this candle would be a task to rival that of the Princess of the Underworld's own.",
 		},
 		CosmeticsGroup = "Cosmetic_TentCandle01",
-		InsertAfterCosmetic = "Cosmetic_TentCandle01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentCandle_Tartarus",
 		ShopCategory = "CosmeticsShop_Tent",
 		SetAnimationIds = { 566716, },
 		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Candle_Elysian",
@@ -193,13 +224,16 @@ local tentCosmetics = {
 		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Candle_Elysian",
 		AnimationScale = 1.8,
 		GameStateRequirements = {
-			NamedRequirements = { "T1Cosmetic" },
+			{
+				PathTrue = { "GameState", "RoomsEntered", "Y_Boss01" },
+			},
+			NamedRequirements = { "T2Cosmetic" },
 		},
 		AlwaysRevealImmediately = true,
 		Cost = {
 			CosmeticsPoints = 150,
 			ModsNikkelMHadesBiomes_OreTartarus = 4,
-			ModsNikkelMHadesBiomes_PlantStyx = 2,
+			ModsNikkelMHadesBiomes_PlantElysium = 2,
 		},
 		RevealReactionVoiceLines = {
 			{
@@ -486,6 +520,51 @@ local mainHubAreaCosmetics = {
 			ModsNikkelMHadesBiomes_BossResourceElysium = 1,
 		},
 	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Banner_Resistance",
+		Name = {
+			en = "Banner, Resistance",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: A show of strength and determination, set on a standard before the great {#BoldFormatGraftDark}Tree of Life{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"To know what one has to gain, one must know what has been lost. The Princess of the Underworld understands this all too well.",
+		},
+		CosmeticsGroup = "Cosmetic_HecateKey",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Banner_Divine",
+		ShopCategory = "CosmeticsShop_Main",
+		ActivateIds = { 780487 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Banner_Resistance",
+		IconScale = 0.3,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Banner_Resistance",
+		AnimationScale = 3.57,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "Cosmetic_HecateKey" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 3,
+			},
+			{
+				Path = { "GameState", "ClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			NamedRequirements = { "T5Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 950,
+			ModsNikkelMHadesBiomes_OreTartarus = 4,
+			ModsNikkelMHadesBiomes_CropStyx = 2,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
+		},
+	},
 	-- #endregion
 	-- #region Pillars/Cosmetic_CauldronPillars01
 	{
@@ -590,6 +669,44 @@ local mainHubAreaCosmetics = {
 			CosmeticsPoints = 500,
 			ModsNikkelMHadesBiomes_CropTartarus = 1,
 			ModsNikkelMHadesBiomes_OreTartarus = 4,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Infinite",
+		Name = {
+			en = "Pillars, Infinite",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Impossible monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"Chaos does as it pleases, and though it is in it's essence the opposite of structure, these pillars with their endless patterns seem to embody both concepts at once.",
+		},
+		CosmeticsGroup = "Cosmetic_CauldronPillars01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Serpentine",
+		ShopCategory = "CosmeticsShop_Main",
+		CameraFocusId = 575873,
+		SetAnimationIds = { 575834, 575871, 575872, 575874, 575873, 575832, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Pillars_Infinite",
+		IconScale = 0.1,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Pillars_Infinite",
+		AnimationScale = 1.9,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 5,
+			},
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 700,
+			ModsNikkelMHadesBiomes_OreAsphodel = 5,
+			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
+			ModsNikkelMHadesBiomes_PlantStyx = 4,
 		},
 	},
 	-- #endregion
@@ -703,7 +820,7 @@ local mainHubAreaCosmetics = {
 		},
 	},
 	-- #endregion
-	-- #region Crossroads Lanterns/CosmeticIcon_MainLanterns01
+	-- #region Lanterns/CosmeticIcon_MainLanterns01
 	{
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Lantern_Infernal",
 		Name = {
@@ -747,6 +864,43 @@ local mainHubAreaCosmetics = {
 				{ Cue = "/VO/Dora_0484", Text = "{#Emph}A pittance of a light within the infinite dark of existence!", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraScaryAppearArgs },
 			},
 			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Lantern_Gilded",
+		Name = {
+			en = "Lanterns, Gilded",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Slim glass tubes illuminate the Crossroads with a pulsing, purplish light.",
+		},
+		FlavorText = {
+			en =
+			"Though the Underworld is not as devoid of light as one might think, these lanterns seem to harness a light unlike any other.",
+		},
+		CosmeticsGroup = "Cosmetic_MainLanterns01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Lantern_Infernal",
+		ShopCategory = "CosmeticsShop_Main",
+		CameraFocusId = 561185,
+		SetAnimationIds = { 576309, 585190, 561185, 561184, 588785, 742460, 742260, 742474, 742472 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Lantern_Gilded",
+		IconScale = 0.35,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Lantern_Gilded",
+		AnimationScale = 1.2,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 3,
+			},
+			NamedRequirements = { "T2Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 350,
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 1,
+			ModsNikkelMHadesBiomes_CropTartarus = 2,
 		},
 	},
 	-- #endregion
@@ -1117,6 +1271,47 @@ local tavernaCosmetics = {
 		},
 	},
 	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Gilded",
+		Name = {
+			en = "Mosaic, Gilded",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Strange, petal-like stones form this central flooring in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"The four corners of this mosaic are said to point towards the four rivers of the Underworld: Styx, Acheron, Lethe, and Phlegethon.",
+		},
+		CosmeticsGroup = "Cosmetic_TavernaStarMosaic",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Furious",
+		ShopCategory = "CosmeticsShop_Taverna",
+		ActivateIds = { 738509 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaStarMosaic_Gilded",
+		IconScale = 0.2,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaStarMosaic_Gilded",
+		AnimationScale = 1.95,
+		AnimationOffsetY = -55,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 2,
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeTaverna" }
+			},
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 900,
+			ModsNikkelMHadesBiomes_PlantElysium = 2,
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 1,
+			ModsNikkelMHadesBiomes_OreElysium = 4,
+		},
+	},
+	{
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Royal",
 		Name = {
 			en = "Mosaic, Royal",
@@ -1130,7 +1325,7 @@ local tavernaCosmetics = {
 			"Lord Hades of the Underworld is not known for any display of wealth, but also did not order this mosaic be removed once he discovered its existence.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaStarMosaic",
-		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Furious",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Gilded",
 		ShopCategory = "CosmeticsShop_Taverna",
 		ActivateIds = { 738509 },
 		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\TavernaStarMosaic_Royal",
@@ -1642,6 +1837,50 @@ local preRunCosmetics = {
 			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
 		},
 	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_SkellyFloor_Psychopomp",
+		Name = {
+			en = "Dais, Psychopomp",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Rich stone platform, set right where {$Keywords.CharSkelly} typically resides.",
+		},
+		FlavorText = {
+			en =
+			"Stories speak of a wretch not dissimilar to the Commander, who once was employed by a certain ferryman to assist with an important matter in the House of Hades.",
+		},
+		CosmeticsGroup = "Cosmetic_SkellyFloor01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_SkellyFloor_Olympian",
+		ShopCategory = "CosmeticsShop_PreRun",
+		SetAnimationIds = { 587209 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\SkellyFloor_Psychopomp",
+		IconScale = 0.15,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\SkellyFloor_Psychopomp",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "EncountersCompletedCache", "BossCharon" },
+			},
+			NamedRequirements = { "T3Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 500,
+			CharonPoints = 2,
+			ModsNikkelMHadesBiomes_PlantAsphodel = 4,
+			ModsNikkelMHadesBiomes_CropElysium = 3,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Skelly_01",
+				RequiredSourceValueFalse = "InPartnerConversation",
+				{ Cue = "/VO/Skelly_0216", Text = "{#Emph}Ahh{#Prev}, yes!" },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
+	},
 	-- #endregion
 	-- #region Effigies/Scarecrows/Cosmetic_TrainingDummy01
 	{
@@ -1690,6 +1929,98 @@ local preRunCosmetics = {
 				ObjectType = "NPC_Dora_01",
 				{ Cue = "/VO/Dora_0475", Text = "Don't get too many birds around here but why not?", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
 			},
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TrainingDummy_Psychopomp",
+		Name = {
+			en = "Effigies, Psychopomp",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Ever-present targets for martial training, set behind where {$Keywords.CharSkelly} typically resides.",
+		},
+		FlavorText = {
+			en =
+			"The boatman Charon can be in many places at once, and is always watching, even if only through the eyes of his many associates.",
+		},
+		CosmeticsGroup = "Cosmetic_TrainingDummy01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TrainingDummy_Scarecrow",
+		ShopCategory = "CosmeticsShop_PreRun",
+		CameraFocusId = 566610,
+		SetAnimationIds = { 566610, 566612, 567196, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\TrainingDummy_Psychopomp",
+		IconScale = 0.3,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\TrainingDummy_Psychopomp",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "EncountersCompletedCache", "BossCharon" },
+				Comparison = ">=",
+				Value = 2,
+			},
+			NamedRequirements = { "T4Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 1300,
+			ModsNikkelMHadesBiomes_OreStyx = 4,
+			ModsNikkelMHadesBiomes_CropAsphodel = 2,
+			ModsNikkelMHadesBiomes_PlantTartarus = 4,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Skelly_01",
+				RequiredSourceValueFalse = "InPartnerConversation",
+				{ Cue = "/VO/Skelly_0256", Text = "{#Emph}Ooh{#Prev}, scary..." },
+			},
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0475", Text = "Don't get too many birds around here but why not?", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
+		},
+	},
+	-- #endregion
+	-- #region Exit Statue/Cosmetic_SkellyZagreusStatue
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_SkellyStatue_Daemonic",
+		Name = {
+			en = "Statue, Daemonic",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Stone slab reduced by chisel to the unmistakable form of the fearsome Hound of Hell, Cerberus.",
+		},
+		FlavorText = {
+			en =
+			"Every shade in the Underworld knows of Cerberus, the three-headed guardian of the House of Hades. Few have seen him themselves, yet all know of his terrifying appearance.",
+		},
+		CosmeticsGroup = "Cosmetic_SkellyZagreusStatue",
+		InsertAfterCosmetic = "Cosmetic_SkellyZagreusStatue",
+		ShopCategory = "CosmeticsShop_PreRun",
+		ActivateIds = { 780532 },
+		ToggleCollision = true,
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\SkellyStatue_Daemonic",
+		IconScale = 0.25,
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\SkellyStatue_Daemonic",
+		AnimationScale = 1.8,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "Cosmetic_SkellyZagreusStatue" },
+			},
+			-- Beaten EM4 Hades
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "LordHadesExtremeMeasuresDefeat01" },
+			},
+			NamedRequirements = { "T5Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 2500,
+			ModsNikkelMHadesBiomes_OreStyx = 3,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
 		},
 	},
 	-- #endregion
