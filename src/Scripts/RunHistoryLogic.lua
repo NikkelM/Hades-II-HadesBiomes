@@ -5,7 +5,7 @@ modutil.mod.Path.Wrap("RunHistoryUpdateVisibility", function(base, screen)
 	local lastIndex = math.max(1, firstIndex - screen.ItemsPerPage + 1)
 	for runIndex = firstIndex, lastIndex, -1 do
 		local run = game.GameState.RunHistory[runIndex] or game.CurrentRun
-		if run.BiomesReached ~= nil and (run.BiomesReached.Tartarus or run.BiomesReached.Asphodel or run.BiomesReached.Elysium or run.BiomesReached.Styx) then
+		if run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess or run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldFail then
 			local button = screen.Components[screen.ButtonName .. runIndex]
 			local routeName = "RunHistoryScreen_RouteModsNikkelMHadesBiomes"
 			button.AnimationIndex = 7
