@@ -23,7 +23,7 @@ modutil.mod.Path.Context.Wrap("ShowRunHistory", function(screen, button)
 		if args.Text == "RunHistoryScreen_Cleared" then
 			local run = button.Run
 			-- If the run was cleared, show the "ESCAPED" text instead of "PREVAILED!!"
-			if run.BiomesReached ~= nil and (run.BiomesReached.Tartarus or run.BiomesReached.Asphodel or run.BiomesReached.Elysium or run.BiomesReached.Styx) then
+			if run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess or run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldFail then
 				args.Text = "ModsNikkelMHadesBiomes_RunHistoryScreen_Cleared"
 			end
 		end
