@@ -291,7 +291,7 @@ local function on_ready()
 			DebugLogScriptImportProgress("HelpText SJSON")
 
 			import "Game/Text/de/MiscText.de.sjson.lua"
-			-- import "Game/Text/el/MiscText.el.sjson.lua"
+			import "Game/Text/el/MiscText.el.sjson.lua"
 			import "Game/Text/en/MiscText.en.sjson.lua"
 			import "Game/Text/es/MiscText.es.sjson.lua"
 			import "Game/Text/fr/MiscText.fr.sjson.lua"
@@ -301,10 +301,10 @@ local function on_ready()
 			import "Game/Text/pl/MiscText.pl.sjson.lua"
 			import "Game/Text/pt-BR/MiscText.pt-BR.sjson.lua"
 			import "Game/Text/ru/MiscText.ru.sjson.lua"
-			-- import "Game/Text/tr/MiscText.tr.sjson.lua"
-			-- import "Game/Text/uk/MiscText.uk.sjson.lua"
+			import "Game/Text/tr/MiscText.tr.sjson.lua"
+			import "Game/Text/uk/MiscText.uk.sjson.lua"
 			import "Game/Text/zh-CN/MiscText.zh-CN.sjson.lua"
-			-- import "Game/Text/zh-TW/MiscText.zh-TW.sjson.lua"
+			import "Game/Text/zh-TW/MiscText.zh-TW.sjson.lua"
 			DebugLogScriptImportProgress("MiscText SJSON")
 
 			import "Game/Text/de/TraitText.de.sjson.lua"

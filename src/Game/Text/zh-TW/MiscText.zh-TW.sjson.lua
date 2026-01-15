@@ -1,0 +1,182 @@
+-- This localization did not exist for Hades. Therefore, this file contains a copy of the english language version.
+-- Not all entries are used in the mod
+local miscTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/zh-TW/MiscText.zh-TW.sjson")
+
+local order = {
+	"Id",
+	"InheritFrom",
+	"DisplayName",
+	"Description",
+	"OverwriteLocalization",
+}
+
+local newData = {
+	-- #region NPC Offering/Choice texts
+	-- {
+	-- 	Id = "Eurydice_OfferText01",
+	-- 	DisplayName = "{#DialogueItalicFormat}The nymph offers several delectable treats.",
+	-- },
+	-- {
+	-- 	Id = "Eurydice_OfferText02",
+	-- 	DisplayName = "{#DialogueItalicFormat}Eurydice offers several delectable treats.",
+	-- },
+	-- {
+	-- 	Id = "Eurydice_OfferText03",
+	-- 	DisplayName = "{#DialogueItalicFormat}The singers offer several delectable treats.",
+	-- },
+	-- {
+	-- 	Id = "Orpheus_OfferText01",
+	-- 	DisplayName = "{#DialogueItalicFormat}Orpheus wishes to know your choice of music.",
+	-- },
+	-- {
+	-- 	Id = "Sisyphus_OfferText01",
+	-- 	DisplayName = "{#DialogueItalicFormat}Sisyphus furtively offers a choice of benefits.",
+	-- },
+	-- {
+	-- 	Id = "Patroclus_OfferText02",
+	-- 	DisplayName = "{#DialogueItalicFormat}Patroclus offers one of several premium goods.",
+	-- },
+	-- {
+	-- 	Id = "Patroclus_OfferText03",
+	-- 	DisplayName = "{#DialogueItalicFormat}The shade offers one of several premium goods.",
+	-- },
+	-- {
+	-- 	Id = "Patroclus_OfferText04",
+	-- 	DisplayName = "{#DialogueItalicFormat}The shade still offers one of his premium goods.",
+	-- },
+	-- {
+	-- 	Id = "Patroclus_OfferText05",
+	-- 	DisplayName = "{#DialogueItalicFormat}Patroclus still offers one of his premium goods.",
+	-- },
+	-- {
+	-- 	Id = "Megaera_ChoiceText01",
+	-- 	DisplayName = "{#DialogueItalicFormat}Be with Megaera? (Follow your heart.)",
+	-- },
+	-- {
+	-- 	Id = "Megaera_ChoiceText02",
+	-- 	DisplayName = "{#DialogueItalicFormat}Be with Megaera? (Either way, it will be OK.)",
+	-- },
+	-- {
+	-- 	Id = "Thanatos_ChoiceText01",
+	-- 	DisplayName = "{#DialogueItalicFormat}Go to Thanatos? (Follow your heart.)",
+	-- },
+	-- {
+	-- 	Id = "Thanatos_ChoiceText02",
+	-- 	DisplayName = "{#DialogueItalicFormat}Go to Thanatos? (Either way, it will be OK.)",
+	-- },
+	-- {
+	-- 	Id = "Dusa_ChoiceText01",
+	-- 	DisplayName = "{#DialogueItalicFormat}Take back the Ambrosia? (She won't mind.)",
+	-- },
+	-- {
+	-- 	Id = "MegaeraWithThanatos_ChoiceText01",
+	-- 	DisplayName = "{#DialogueItalicFormat}Be with Meg and Than? (If you want.)",
+	-- },
+	-- #endregion
+	-- #region Discord Rich Presence
+	-- {
+	-- 	Id = "RichPresence_House",
+	-- 	DisplayName = "In the House of Hades",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_Bedroom",
+	-- 	DisplayName = "In the Underworld Prince's Chamber",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_Office",
+	-- 	DisplayName = "In the Underworld Admin Chamber",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_RoomPreRun",
+	-- 	DisplayName = "Preparing to Battle out of Hell",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_Tartarus",
+	-- 	DisplayName = "Battling out of Tartarus",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_Asphodel",
+	-- 	DisplayName = "Battling out of Asphodel",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_Elysium",
+	-- 	DisplayName = "Battling out of Elysium",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_Styx",
+	-- 	DisplayName = "Battling out of the Temple of Styx",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_StyxHub",
+	-- 	DisplayName = "Somewhere in the Temple of Styx",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_Chaos",
+	-- 	DisplayName = "Somewhere in Chaos",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_Erebus",
+	-- 	DisplayName = "Battling in Erebus",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_Surface",
+	-- 	DisplayName = "Beyond the Underworld",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_ABoss01",
+	-- 	DisplayName = "Battling Megaera, the Fury",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_ABoss02",
+	-- 	DisplayName = "Battling Alecto, the Fury",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_ABoss03",
+	-- 	DisplayName = "Battling Tisiphone, the Fury",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_BBoss01",
+	-- 	DisplayName = "Battling the Bone Hydra",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_CMiniBoss01",
+	-- 	DisplayName = "Battling the Bull of Minos",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_CBoss01",
+	-- 	DisplayName = "Battling the Champion of Elysium",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_DBoss01",
+	-- 	DisplayName = "Battling the Final Boss",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_CharonFight",
+	-- 	DisplayName = "Battling a Shadowy Presence",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_AStory01",
+	-- 	DisplayName = "Chatting with Sisyphus",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_BStory01",
+	-- 	DisplayName = "Chatting with Eurydice",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_CStory01",
+	-- 	DisplayName = "Chatting with the Fallen Warrior",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_PostBoss",
+	-- 	DisplayName = "Climbing to the Next Region",
+	-- },
+	-- {
+	-- 	Id = "RichPresence_Default",
+	-- 	DisplayName = "Battling out of Hell",
+	-- },
+	-- #endregion
+}
+
+sjson.hook(miscTextFile, function(data)
+	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id", order)
+end)
