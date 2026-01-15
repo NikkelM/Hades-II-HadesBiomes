@@ -7,7 +7,8 @@ local order = {
 	"Id",
 	"InheritFrom",
 	"DisplayName",
-	"OverwriteLocalization"
+	"Description",
+	"OverwriteLocalization",
 }
 
 local newData = {
