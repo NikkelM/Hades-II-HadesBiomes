@@ -257,7 +257,7 @@ local function on_ready()
 
 			-- Localizations, custom texts
 			import "Game/Text/de/CodexText.de.sjson.lua"
-			-- import "Game/Text/el/CodexText.el.sjson.lua"
+			import "Game/Text/el/CodexText.el.sjson.lua"
 			import "Game/Text/en/CodexText.en.sjson.lua"
 			import "Game/Text/es/CodexText.es.sjson.lua"
 			import "Game/Text/fr/CodexText.fr.sjson.lua"
@@ -267,10 +267,10 @@ local function on_ready()
 			import "Game/Text/pl/CodexText.pl.sjson.lua"
 			import "Game/Text/pt-BR/CodexText.pt-BR.sjson.lua"
 			import "Game/Text/ru/CodexText.ru.sjson.lua"
-			-- import "Game/Text/tr/CodexText.tr.sjson.lua"
-			-- import "Game/Text/uk/CodexText.uk.sjson.lua"
+			import "Game/Text/tr/CodexText.tr.sjson.lua"
+			import "Game/Text/uk/CodexText.uk.sjson.lua"
 			import "Game/Text/zh-CN/CodexText.zh-CN.sjson.lua"
-			-- import "Game/Text/zh-TW/CodexText.zh-TW.sjson.lua"
+			import "Game/Text/zh-TW/CodexText.zh-TW.sjson.lua"
 			DebugLogScriptImportProgress("CodexText SJSON")
 
 			import "Game/Text/de/HelpText.de.sjson.lua"

@@ -1,0 +1,822 @@
+-- This localization did not exist for Hades. Therefore, this file contains a copy of the english language version
+-- Some unused entries were removed, and some remaining entries may be unused at the moment
+local codexTextFile = rom.path.combine(rom.paths.Content(), "Game/Text/el/CodexText.el.sjson")
+
+local order = {
+	"Id",
+	"InheritFrom",
+	"DisplayName",
+	"Description",
+	"OverwriteLocalization",
+}
+
+local newData = {
+	Texts = {
+		-- #region Biomes
+		-- {
+		-- 	Id = "CodexData_Erebus_01",
+		-- 	DisplayName =
+		-- 	"'...If the dead excel at anything, it is having to wait. It is the first thing almost all the dead must do, upon arriving at the edges of this realm...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Erebus_02",
+		-- 	DisplayName =
+		-- 	"'...If the dead excel at anything, it is having to wait. It is the first thing almost all the dead must do, upon arriving at the edges of this realm. {#CodexBoldFormat}Erebus, their waiting area, lies shrouded in darkness, betraying to the dead no hint of whether they shall continue their existence in the splendors of Elysium or in the pits of Tartarus...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Erebus_03",
+		-- 	DisplayName =
+		-- 	"'...If the dead excel at anything, it is having to wait. It is the first thing almost all the dead must do, upon arriving at the edges of this realm. Erebus, their waiting area, lies shrouded in darkness, betraying to the dead no hint of whether they shall continue their existence in the splendors of Elysium or in the pits of Tartarus. {#CodexBoldFormat}Some wretched souls, for a variety of reasons, remain in Erebus indefinitely. For these, the Master sometimes offers a condition of reprieve: to do his bidding, or to wait, and wait, and wait awhile longer.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Tartarus_01",
+		-- 	DisplayName =
+		-- 	"'...The lowest reaches of the Underworld are reserved not just for the Master's own abode, but for the benefit of every wretch who, in the course of drawing breath, failed every opportunity to leave any sort of positive impression behind...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Tartarus_02",
+		-- 	DisplayName =
+		-- 	"'...The lowest reaches of the Underworld are reserved not just for the Master's own abode, but for the benefit of every wretch who, in the course of drawing breath, failed every opportunity to leave any sort of positive impression behind. {#CodexBoldFormat}Tartarus is one of the Master's most elaborate designs, constructed not just to contain the wretched dead, but to oppress them, to punish them. The Master has no pity for the wretches, here; he would say they had their chance, and knew the risks of leading hateful lives...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Tartarus_03",
+		-- 	DisplayName =
+		-- 	"'...The lowest reaches of the Underworld are reserved not just for the Master's own abode, but for the benefit of every wretch who, in the course of drawing breath, failed every opportunity to leave any sort of positive impression behind. Tartarus is one of the Master's most elaborate designs, constructed not just to contain the wretched dead, but to oppress them, to punish them. The Master has no pity for the wretches, here; he would say they had their chance, and knew the risks of leading hateful lives. {#CodexBoldFormat}Punishment is all that is left for souls such as these; no more chance of rehabilitation, only suffering. Some miserably toil about, while others receive dedicated hands-on treatment, courtesy of the Master's overseers, who ensure Tartarus always retains the reputation that it has.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Asphodel_01",
+		-- 	DisplayName =
+		-- 	"'...Among the many reasons it is best for mortals to strive to treat each other reasonably well is that, after having lived their short lives, they may wind up stuck with one another for eternity in the meadows of Asphodel...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Asphodel_02",
+		-- 	DisplayName =
+		-- 	"'...Among the many reasons it is best for mortals to strive to treat each other reasonably well is that, after having lived their short lives, they may wind up stuck with one another for eternity in the meadows of Asphodel. {#CodexBoldFormat}There are only several destinations for the vast majority of mortals, after all. The worst are sent to Tartarus; the greatest, to Elysium; and all the others, there. Asphodel is the vastest region of the Underworld, not dissimilar in ways from soaring surface planes, save for the presence of the ever-burning River Phlegethon...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Asphodel_03",
+		-- 	DisplayName =
+		-- 	"'...Among the many reasons it is best for mortals to strive to treat each other reasonably well is that, after having lived their short lives, they may wind up stuck with one another for eternity in the meadows of Asphodel. There are only several destinations for the vast majority of mortals, after all. The worst are sent to Tartarus; the greatest, to Elysium; and all the others, there. Asphodel is the vastest region of the Underworld, not dissimilar in ways from soaring surface planes, save for the presence of the ever-burning River Phlegethon. {#CodexBoldFormat}Some shades of Asphodel express concern that the river threatens to flood, to engulf the meadows in fire and ash. At the House of Hades we have downplayed the likelihood of this; but we are ill-equipped to deal with the outcome, should it come to pass. At best, we can swiftly relocate the shades who wish to leave to Asphodel's outskirts.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Elysium_01",
+		-- 	DisplayName =
+		-- 	"'...Some mortals surely would wish to live forever if only they could. Though, for the sensible ones, spending an eternity in the fields of Elysium would be their foremost choice; to be forever in that beautiful place, together with only the greatest souls to have ever lived...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Elysium_02",
+		-- 	DisplayName =
+		-- 	"'...Some mortals surely would wish to live forever if only they could. Though, for the sensible ones, spending an eternity in the fields of Elysium would be their foremost choice; to be forever in that beautiful place, together with only the greatest souls to have ever lived. {#CodexBoldFormat}Elysium is the most exclusive, sparsely populated region in the Underworld, and even still, it is perhaps the most well-known {#CodexItalicFormat}(although Tartarus has considerable notoriety, as well){#PreviousFormat}. Only the great get in. Many mortals strive for greatness all their lives, never quite realizing there is no existing formula for it. Not even a specific definition for it...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Elysium_03",
+		-- 	DisplayName =
+		-- 	"'...Some mortals surely would wish to live forever if only they could. Though, for the sensible ones, spending an eternity in the fields of Elysium would be their foremost choice; to be forever in that beautiful place, together with only the greatest souls to have ever lived. Elysium is the most exclusive, sparsely populated region in the Underworld, and even still, it is perhaps the most well-known {#CodexItalicFormat}(although Tartarus has considerable notoriety, as well){#PreviousFormat}. Only the great get in. Many mortals strive for greatness all their lives, never quite realizing there is no existing formula for it. Not even a specific definition for it. {#CodexBoldFormat}Greatness is evaluated here, by several judges entrusted to consider the many cases the Master himself cannot see to personally. So, it must be said that reaching Elysium is no small feat. A lifetime spent achieving impressive feats is the best preparation I can think of.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Styx_01",
+		-- 	DisplayName =
+		-- 	"'...Despite the infamy of the River Styx among surface-dwelling, still-breathing mortals, the river is not found on any map. Mortals agree it is best to discover where the River Styx originates only when brought there...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Styx_02",
+		-- 	DisplayName =
+		-- 	"'...Despite the infamy of the River Styx among surface-dwelling, still-breathing mortals, the river is not found on any map. Mortals agree it is best to discover where the River Styx originates only when brought there. {#CodexBoldFormat}Those of us who lived upon the surface and made the journey here across the Styx now know the waters cut through a carved facade of stone, its unassuming exterior concealing a vast and intricately carved temple built in praise and fear of the Master, the god of the dead...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Styx_03",
+		-- 	DisplayName =
+		-- 	"'...Despite the infamy of the River Styx among surface-dwelling, still-breathing mortals, the river is not found on any map. Mortals agree it is best to discover where the River Styx originates only when brought there. Those of us who lived upon the surface and made the journey here across the Styx now know the waters cut through a carved facade of stone, its unassuming exterior concealing a vast and intricately carved temple built in praise and fear of the Master, the god of the dead. {#CodexBoldFormat}Since the temple's construction, however, it has fallen into a state of relative disrepair; perhaps the mortals who erected it were all scared off by vicious Cerberus, who once guarded the gates. But now, the place is overrun with creatures of a very different kind, bent inexplicably on defacing the entire property, much to the Master's infinite frustration.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Surface_01",
+		-- 	DisplayName =
+		-- 	"'...I was born in a land with next-to-nothing in common with the Underworld, save for the fact that it happens to contain the surface's single entryway into this realm. That is reason enough for me to mention it here. Greece, as I remember it, was a vast, moody, beautiful country, and I am told both that there are many others like it, and none that compare. I can believe it either way, I think...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Surface_02",
+		-- 	DisplayName =
+		-- 	"'...I was born in a land with next-to-nothing in common with the Underworld, save for the fact that it happens to contain the surface's single entryway into this realm. That is reason enough for me to mention it here. Greece, as I remember it, was a vast, moody, beautiful country, and I am told both that there are many others like it, and none that compare. I can believe it either way, I think. {#CodexBoldFormat}Here, in the Master's realm, we are well provided for, and do not suffer the whims of quite as many gods as often. Nevertheless, I must admit that there are aspects of my country that I miss, from time to time. The stark, bright beauty of that strange, wondrous land! I saw so little of it, and even still, it stays with me like this. As for why the Underworld has but one known way in, from my country, of all places: If there is only one way in, then there is only one way out.{#PreviousFormat}'",
+		-- },
+		-- #endregion
+		-- #region Misc/Unordered entries/NPCs and Enemies
+		-- {
+		-- 	Id = "CodexData_Hades_01",
+		-- 	DisplayName =
+		-- 	"'...What is there to say about the Master? Master not just of the House in which I work, but of the entirety of the domain beneath the earth, the place we all end up after we die. He is a god of character, I have to give him that...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Hades_02",
+		-- 	DisplayName =
+		-- 	"'...What is there to say about the Master? Master not just of the House in which I work, but of the entirety of the domain beneath the earth, the place we all end up after we die. He is a god of character, I have to give him that. {#CodexBoldFormat}In life, I once served someone who reminded me of him a little, yet even the kingliest of mortals pales in comparison. Suffice it, then, to say that the Lord Hades takes matters of his Fate-appointed Underworld in utmost seriousness...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Hades_03",
+		-- 	DisplayName =
+		-- 	"'...What is there to say about the Master? Master not just of the House in which I work, but of the entirety of the domain beneath the earth, the place we all end up after we die. He is a god of character, I have to give him that. In life, I once served someone who reminded me of him a little, yet even the kingliest of mortals pales in comparison. Suffice it, then, to say that the Lord Hades takes matters of his Fate-appointed Underworld in utmost seriousness. {#CodexBoldFormat}Yet, his meticulous veneer gives way to impatience frequently enough, especially with his only son. This resentment extends to his never-ending work, for he presides over an endless procession of the dead. The Master claims he alone can tend to their affairs, but grudgingly, I think, expects his son's support...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Hades_04",
+		-- 	DisplayName =
+		-- 	"'...What is there to say about the Master? Master not just of the House in which I work, but of the entirety of the domain beneath the earth, the place we all end up after we die. He is a god of character, I have to give him that. In life, I once served someone who reminded me of him a little, yet even the kingliest of mortals pales in comparison. Suffice it, then, to say that the Lord Hades takes matters of his Fate-appointed Underworld in utmost seriousness. Yet, his meticulous veneer gives way to impatience frequently enough, especially with his only son. This resentment extends to his never-ending work, for he presides over an endless procession of the dead. The Master claims he alone can tend to their affairs, but grudgingly, I think, expects his son's support. {#CodexBoldFormat}After all, Lord Hades long since severed ties with his family on Olympus, and leads a solitary life, now. His son is his sole remaining connection to his family, and I fear it falters.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0011",
+		-- 	DisplayName =
+		-- 	"'...Mother Night, we like to call her, though rare is the occasion when she dotes on us. She has her many, many children to look after, many of whom reside now in locales well beyond my reckoning, and perhaps even beyond hers...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0012",
+		-- 	DisplayName =
+		-- 	"'...Mother Night, we like to call her, though rare is the occasion when she dotes on us. She has her many, many children to look after, many of whom reside now in locales beyond my reckoning, and perhaps beyond hers. {#CodexBoldFormat}Yet, nonetheless, she toils about the Master's House, and conducts such affairs that fail to reach his notice or gain his attention...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0013",
+		-- 	DisplayName =
+		-- 	"'...Mother Night, we like to call her, though rare is the occasion when she dotes on us. She has her many, many children to look after, many of whom reside now in locales beyond my reckoning, and perhaps beyond hers. Yet, nonetheless, she toils about the Master's House, and conducts such affairs that fail to reach his notice or gain his attention. {#CodexBoldFormat}She and the Master do enjoy a sort of harmony, for even as he tends personally to the dead, she watches over the domain itself. They tolerate each other, in respect of one another's power...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Nyx_04",
+		-- 	DisplayName =
+		-- 	"'...Mother Night, we like to call her, though rare is the occasion when she dotes on us. She has her many, many children to look after, many of whom reside now in locales beyond my reckoning, and perhaps beyond hers. Yet, nonetheless, she toils about the Master's House, and conducts such affairs that fail to reach his notice or gain his attention. She and the Master do enjoy a sort of harmony, for even as he tends personally to the dead, she watches over the domain itself. They tolerate each other, in respect of one another's power. {#CodexBoldFormat}She could have made the Master's life eternally more difficult, down here, if she so chose. Had every right to, perhaps, when her own daughters, the Fates, determined that the Master ought to govern where once she alone presided. But, Mother Night does not possess a mortal's pridefulness; and her commitment to the Underworld and her children is absolute.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0014",
+		-- 	DisplayName =
+		-- 	"'...It is said that Sleep is the cousin of Death. That turns out to be not quite correct, insofar as the two, in fact, are brothers, born to Nyx herself. The former of the two, we call him Hypnos; he whiles away, half-sleeping, watching over the Pool of Styx in the foyer of the House, taking stock of those arriving in the Master's domain, or returning to it...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0015",
+		-- 	DisplayName =
+		-- 	"'...It is said that Sleep is the cousin of Death. That turns out to be not quite correct, insofar as the two, in fact, are brothers, born to Nyx herself. The former of the two, we call him Hypnos; he whiles away, half-sleeping, watching over the Pool of Styx in the foyer of the House, taking stock of those arriving in the Master's domain, or returning to it. {#CodexBoldFormat}Though Hypnos may be lacking in propriety, he brings a certain cheer, however unconventional, into the grim proceedings of the House...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0016",
+		-- 	DisplayName =
+		-- 	"'...It is said that Sleep is the cousin of Death. That turns out to be not quite correct, insofar as the two, in fact, are brothers, born to Nyx herself. The former of the two, we call him Hypnos; he whiles away, half-sleeping, watching over the Pool of Styx in the foyer of the House, taking stock of those arriving in the Master's domain, or returning to it. Though Hypnos may be lacking in propriety, he brings a certain cheer, however unconventional, into the grim proceedings of the House. {#CodexBoldFormat}It is a wonder that the Master is so tolerant of this. Some say it is because the Master is oblivious to Hypnos, but it is my choice to think the Master secretly and silently enjoys the bit of levity the fellow purposely or inadvertently provides.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Thanatos_01",
+		-- 	DisplayName =
+		-- 	"'...Few gods traverse the boundary that divides the surface realm where dwell the living, and this one, where dwell the dead. Thanatos, embodiment of death, is among those with such an authority and power...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Thanatos_02",
+		-- 	DisplayName =
+		-- 	"'...Few gods traverse the boundary that divides the surface realm where dwell the living, and this one, where dwell the dead. Thanatos ranks high even among those of such authority and power. {#CodexBoldFormat}Although it is my Master who presides over the Underworld, Thanatos is death itself, brother of Sleep, an instrument for sending mortals to the Underworld; more peacefully than violently, mind you, as I did not encounter him myself when came my time, by Ares' and Apollo's design...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Thanatos_03",
+		-- 	DisplayName =
+		-- 	"'...Few gods traverse the boundary that divides the surface realm where dwell the living, and this one, where dwell the dead. Thanatos ranks high even among those of such authority and power. Although it is my Master who presides over the Underworld, Thanatos is death itself, brother of Sleep, an instrument for sending mortals to the Underworld; more peacefully than violently, mind you, as I did not encounter him myself when came my time, by Ares' and Apollo's design. {#CodexBoldFormat}As death is swift and unavoidable to mortals, so is Thanatos devoted without question to his work. Fatherless, he honors always his mother, the goddess Nyx. He tirelessly serves his foreign Master, whose son at least he adores, despite their differences in manner and outlook...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Thanatos_04",
+		-- 	DisplayName =
+		-- 	"'...Few gods traverse the boundary that divides the surface realm where dwell the living, and this one, where dwell the dead. Thanatos ranks high even among those of such authority and power. Although it is my Master who presides over the Underworld, Thanatos is death itself, brother of Sleep, an instrument in sending mortals on their way into the Underworld; more peacefully than violently, mind you, as I did not encounter him myself when came my time, by Ares' and Apollo's design. As death is swift and unavoidable to mortals, so is Thanatos devoted without question to his work. Fatherless, he honors always his mother, the goddess Nyx. He tirelessly serves his foreign Master, whose son at least he adores, despite their opposing manner and outlook. {#CodexBoldFormat}Thanatos would never speak of this, but it is clear, to me. Whence came the bond they share? My thought is that the Master's son must be the god of blood; of life. Thus, they are inexorably drawn.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Megaera_01",
+		-- 	DisplayName =
+		-- 	"'...The ancient Fury Sisters deal retribution for eternity against all those whose lives unspeakably befouled the lives of others. They each seem to relish their grim work, though none so much as Megaera, the first among them...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Megaera_02",
+		-- 	DisplayName =
+		-- 	"'...The ancient Fury Sisters deal retribution for eternity against all those whose lives unspeakably befouled the lives of others. They each seem to relish their grim work, though none so much as Megaera, the first among them. {#CodexBoldFormat}Her whip is very much notorious around these parts, and there are those who say she is more than my equal in the martial ways, a conjecture I see no reason to test...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Megaera_03",
+		-- 	DisplayName =
+		-- 	"'...The ancient Fury Sisters deal retribution for eternity against all those whose lives unspeakably befouled the lives of others. They each seem to relish their grim work, though none so much as Megaera, the first among them. Her whip is very much notorious around these parts, and there are those who say she is more than my equal in the martial ways, a conjecture I see no reason to test. {#CodexBoldFormat}Though she by all accounts appears to lead a solitary life, she and the Master's son do have some history; although, I am not privy to the details, and know much better than to ask...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Megaera_04",
+		-- 	DisplayName =
+		-- 	"'...The ancient Fury Sisters deal retribution for eternity against all those whose lives unspeakably befouled the lives of others. They each seem to relish their grim work, though none so much as Megaera, the first among them. Her whip is very much notorious around these parts, and there are those who say she is more than my equal in the martial ways, a conjecture I see no reason to test. Though she by all accounts appears to lead a solitary life, she and the Master's son do have some history; although, I am not privy to the details, and know much better than to ask. {#CodexBoldFormat}I do, however, know what she herself has volunteered to me, as we have on occasion passed the off-work time together in the Master's lounge. She has no parents; her surrogate mother is the goddess Nyx. She resents the Master's youthful son for words he spoke in careless arrogance. She follows the Master's orders and honors him; but her commitment is to the House itself, I think.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0023",
+		-- 	DisplayName =
+		-- 	"'...Each of the ancient Fury Sisters is preoccupied eternally with tormenting a certain swath of moral crime, and Alecto enjoys the broadest swath of all: those who, during their mortal days, committed wrongful acts at the behest of their impulsive passions...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0024",
+		-- 	DisplayName =
+		-- 	"'...Each of the ancient Fury Sisters is preoccupied eternally with tormenting a certain swath of moral crime, and Alecto enjoys the broadest swath of all: those who, during their mortal days, committed wrongful acts at the behest of their impulsive passions. {#CodexBoldFormat}With that being the case, I see it somewhat as a miracle that I myself avoided her barbed whip here in the Underworld; and I am thankful for it, for Alecto's reputation paints her as a being best given the widest possible berth...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0025",
+		-- 	DisplayName =
+		-- 	"'...Each of the ancient Fury Sisters is preoccupied eternally with tormenting a certain swath of moral crime, and Alecto enjoys the broadest swath of all: those who, during their mortal days, committed wrongful acts at the behest of their impulsive passions. With that being the case, I see it somewhat as a miracle that I myself avoided her barbed whip here in the Underworld; and I am thankful for it, for Alecto's reputation paints her as a being best given the widest possible berth. {#CodexBoldFormat}That she appears to be on questionable terms with her own sisters, and is not permitted in the House of Hades due to profane acts of insubordination long past, perhaps is all that needs be said of her for now.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Tisiphone_01",
+		-- 	DisplayName =
+		-- 	"'...Among each of the deathless Fury Sisters, the one known as Tisiphone is probably responsible for the particularly fearsome reputation they all share, both on the surface of the earth and here below...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Tisiphone_02",
+		-- 	DisplayName =
+		-- 	"'...Among each of the deathless Fury Sisters, the one known as Tisiphone is probably responsible for the particularly fearsome reputation they all share, both on the surface of the earth and here below. {#CodexBoldFormat}This is of course not to diminish the deserved notoriety that they each, in turn, have earned through their efficient torturing of those who tried to get away with terrible misdeeds in life; and yet, Tisiphone, among the three, least shares the qualities with which mortals can identify...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Tisiphone_03",
+		-- 	DisplayName =
+		-- 	"'...Among each of the deathless Fury Sisters, the one known as Tisiphone is probably responsible for the particularly fearsome reputation they all share, both on the surface of the earth and here below. This is of course not to diminish the deserved notoriety that they each, in turn, have earned through their efficient torturing of those who tried to get away with terrible misdeeds in life; and yet, Tisiphone, among the three, least shares the qualities with which mortals can identify. {#CodexBoldFormat}What could have caused Tisiphone to focus so relentlessly upon her task of punishing murder? She is unlikely to ever say, although the tales of the Furies having come from the spilt blood of the eldest of the Titans offers fertile ground for speculation on the matter.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0038",
+		-- 	DisplayName =
+		-- 	"'...I see no reason to regale you with stories of my past. Suffice it that I fought, as bravely as I could, alongside many of the finest men the world has ever known...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0039",
+		-- 	DisplayName =
+		-- 	"'...I see no reason to regale you with stories of my past. Suffice it that I fought, as bravely as I could, alongside many of the finest men the world has ever known. {#CodexBoldFormat}I buried far too many of them, and sent many others to this place, where now at last we all are peers. I am fortunate the Master of the House took pity upon me, and spared me from eternal boredom in Elysium with an existence closer to the times when I still lived, and had a job to do...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0040",
+		-- 	DisplayName =
+		-- 	"'...I see no reason to regale you with stories of my past. Suffice it that I fought, as bravely as I could, alongside many of the finest men the world has ever known. I buried far too many of them, and sent many others to this place, where now at last we all are peers. I am fortunate the Master of the House took pity upon me, and spared me from eternal boredom in Elysium with an existence closer to the times when I still lived, and had a job to do. {#CodexBoldFormat}Yet, I am unmade, unwhole, here in this place; alone, without the one with whom I shared my life when we were flesh and blood. He is somewhere within this realm, yet our time, I think, is long since passed...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Achilles_04",
+		-- 	DisplayName =
+		-- 	"'...I see no reason to regale you with stories of my past. Suffice it that I fought, as bravely as I could, alongside many of the finest men the world has ever known. I buried far too many of them, and sent many others to this place, where now at last we all are peers. I am fortunate the Master of the House took pity upon me, and spared me from eternal boredom in Elysium with an existence closer to the times when I still lived, and had a job to do. Yet, I am unmade, unwhole, here in this place; alone, without the one with whom I shared my life when we were flesh and blood. He is somewhere within this realm, yet our time, I think, is long since passed. {#CodexBoldFormat}But, I have made mistakes before... so many! Surely, in believing this, I could be making yet another? The infinite awaits. Given limitless time... is anything truly impossible? Yet, our finite mortal time both limits us and spurs our actions. Thus, now, I am always of two minds.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Sisyphus_01",
+		-- 	DisplayName =
+		-- 	"'...Most of those who earn the highest form of punishment in Tartarus committed acts I hesitate to commit to the page, though Sisyphus is an exception to the rule...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Sisyphus_02",
+		-- 	DisplayName =
+		-- 	"'...Most of those who earn the highest form of punishment in Tartarus committed acts I hesitate to commit to the page, though Sisyphus is an exception to the rule. {#CodexBoldFormat}He earns the Furies' lashes for the crime of having once outsmarted the Lord Hades; cheated Death! A reckless plan, although he executed it, and bought himself a little extra time. Though now he pays for it, heaving that boulder constantly...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Sisyphus_03",
+		-- 	DisplayName =
+		-- 	"'...Most of those who earn the highest form of punishment in Tartarus committed acts I hesitate to commit to the page, though Sisyphus is an exception to the rule. He earns the Furies' lashes for the crime of having once outsmarted the Lord Hades; cheated Death! A reckless plan, although he executed it, and bought himself a little extra time. Though now he pays for it, heaving that boulder constantly. {#CodexBoldFormat}And yet, the act of doing so for some interminable length of time appears to have imparted on him a certain kind of outlook on his life, such as it is; one that I may well do to study in my own ample amounts of time to spare...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Sisyphus_04",
+		-- 	DisplayName =
+		-- 	"'...Most of those who earn the highest form of punishment in Tartarus committed acts I hesitate to commit to the page, though Sisyphus is an exception to the rule. He earns the Furies' lashes for the crime of having once outsmarted the Lord Hades; cheated Death! A reckless plan, although he executed it, and bought himself a little extra time. Though now he pays for it, heaving that boulder constantly. And yet, the act of doing so for some interminable length of time appears to have imparted on him a certain kind of outlook on his life, such as it is; one that I may well do to study in my own ample supply of time to spare. {#CodexBoldFormat}For how is it that this knave of a forgotten king, stripped utterly of his nobility and subjected to a cruel torture for eternity, can show such grace? Sometimes I think the Master's carefree son takes after him. But they have seldom met; not since the Master finally understood his son would show this shade no cruelty at all.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Eurydice_01",
+		-- 	DisplayName =
+		-- 	"'...Mortality and immortality are closer than most gods care to believe. There are such minor gods as can be killed. So it is with nymphs, and all the naiads and the dryads and the like, the spirits of the woods, and seas, and skies; in life, they captivate our mortal senses and imaginations, but in death, we all are more alike...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Eurydice_02",
+		-- 	DisplayName =
+		-- 	"'...Mortality and immortality are closer than most gods care to believe. There are such minor gods as can be killed. So it is with nymphs, and all the naiads and the dryads and the like, the spirits of the woods, and seas, and skies; in life, they captivate our mortal senses and imaginations, but in death, we all are more alike. {#CodexBoldFormat}The nymph Eurydice, born of the oak itself, must know this better than most of her kind. She took a suitor who, by most accounts, was but a common mortal; talented beyond compare, but not a god. Yet, all the love they shared could not keep death from tearing them apart...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Eurydice_03",
+		-- 	DisplayName =
+		-- 	"'...Mortality and immortality are closer than most gods care to believe. There are such minor gods as can be killed. So it is with nymphs, and all the naiads and the dryads and the like, the spirits of the woods, and seas, and skies; in life, they captivate our mortal senses and imaginations, but in death, we all are more alike. The nymph Eurydice, born of the oak itself, must know this better than most of her kind. She took a suitor who, by most accounts, was but a common mortal; talented beyond compare, but not a god. Yet, all the love they shared could not keep death from tearing them apart. {#CodexBoldFormat}She bears a special mention here for having almost fled the Underworld, once. Such was the full-hearted devotion of her mate, that he did venture all the way into this realm, in search of her, and treated with the Master for her soul. They say the Master almost let her go...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Eurydice_04",
+		-- 	DisplayName =
+		-- 	"'...Mortality and immortality are closer than most gods care to believe. There are such minor gods as can be killed. So it is with nymphs, and all the naiads and the dryads and the like, the spirits of the woods, and seas, and skies; in life, they captivate our mortal senses and imaginations, but in death, we all are more alike. The nymph Eurydice, born of the oak itself, must know this better than most of her kind. She took a suitor who, by most accounts, was but a common mortal; talented beyond compare, but not a god. Yet, all the love they shared could not keep death from tearing them apart. She bears a special mention here for having almost fled the Underworld, once. Such was the full-hearted devotion of her mate, that he did venture all the way into this realm, in search of her, and treated with the Master for her soul. They say the Master almost let her go. {#CodexBoldFormat}But when he finally refused, she grieved, but she did not despair. Even in death, she moved on with her life.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0047",
+		-- 	DisplayName =
+		-- 	"'...No one sings a sweeter, sadder song than Orpheus, who, if I'm to understand correctly, is among the only mortals who once ventured down into the Underworld, and returned to tell the tale...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0048",
+		-- 	DisplayName =
+		-- 	"'...No one sings a sweeter, sadder song than Orpheus, who, if I'm to understand correctly, is among the only mortals who once ventured down into the Underworld, and returned to tell the tale. {#CodexBoldFormat}He now resides among us permanently, ever mournful of what could have been. The Master seems to take some pity on him, though, or simply likes his songs; he serves as court musician in the House...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0049",
+		-- 	DisplayName =
+		-- 	"'...No one sings a sweeter, sadder song than Orpheus, who, if I'm to understand correctly, is among the only mortals who once ventured down into the Underworld, and returned to tell the tale. He now resides among us permanently, ever mournful of what could have been. The Master seems to take some pity on him, though, or simply likes his songs; he serves as court musician in the House. {#CodexBoldFormat}I empathize with his desire for reunion with the shade of one he has loved and lost. But, sometimes, I fear that Orpheus seems to have lost more than his love. I pray that he shall find his muse eventually...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Orpheus_04",
+		-- 	DisplayName =
+		-- 	"'...No one sings a sweeter, sadder song than Orpheus, who, if I'm to understand correctly, is among the only mortals who once ventured down into the Underworld, and returned to tell the tale. He now resides among us permanently, ever mournful of what could have been. The Master seems to take some pity on him, though, or simply likes his songs; he serves as court musician in the House. I empathize with his desire for reunion with the shade of one he has loved and lost. But, sometimes, I fear that Orpheus seems to have lost more than his love. I pray that he shall find his muse eventually. {#CodexBoldFormat}For if he cannot... if someone who once had such fiery resolve could be brought so low, become so utterly resigned in death... what hope do any of us have? The consolation of eternity is knowing we all can solve our problems, given enough time and effort. But the terror of it is knowing we cannot escape those problems, either.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Persephone_01",
+		-- 	DisplayName =
+		-- 	"'...In the Underworld, as on the surface, certain topics are never to be discussed, especially in decent company. Well, this is not a discussion, and the company I keep is rather limited. So, let us consider the Queen of the Underworld; who she was, what happened to her, and why nobody seems to know the answer to either of those questions...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Persephone_02",
+		-- 	DisplayName =
+		-- 	"'...In the Underworld, as on the surface, certain topics are never to be discussed, especially in decent company. Well, this is not a discussion, and the company I keep is rather limited. So, let us consider the Queen of the Underworld; who she was, what happened to her, and why nobody seems to know the answer to either of those questions. {#CodexBoldFormat}All matters in the House of Hades are concealed from the living, and the gods above; even here, the one piece of agreed-upon knowledge concerning the Queen is the unspeakable punishment for invoking her name...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Persephone_03",
+		-- 	DisplayName =
+		-- 	"'...In the Underworld, as on the surface, certain topics are never to be discussed, especially in decent company. Well, this is not a discussion, and the company I keep is rather limited. So, let us consider the Queen of the Underworld; who she was, what happened to her, and why nobody seems to know the answer to either of those questions. All matters in the House of Hades are concealed from the living, and the gods above; even here, the one piece of agreed-upon knowledge concerning the Queen is the unspeakable punishment for invoking her name. {#CodexBoldFormat}I gather that her reign must have been short-lived, for there was not even a trace of her in the House. Save for one remnant I once thought I saw...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Persephone_04",
+		-- 	DisplayName =
+		-- 	"'...In the Underworld, as on the surface, certain topics are never to be discussed, especially in decent company. Well, this is not a discussion, and the company I keep is rather limited. So, let us consider the Queen of the Underworld; who she was, what happened to her, and why nobody seems to know the answer to either of those questions. All matters in the House of Hades are concealed from the living, and the gods above; even here, the one piece of agreed-upon knowledge concerning the Queen is the unspeakable punishment for invoking her name. I gather that her reign must have been short-lived, for there was not even a trace of her in the House. Save for one remnant I once thought I saw. {#CodexBoldFormat}It was something I was never meant to see. One day or perhaps night, I was guarding the Master's hall, when he threw open his private chamber doors in a fury. Then I saw her! A splendid portrait I have longed to see again since. What of the Master, then?{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0050",
+		-- 	DisplayName =
+		-- 	"'...Oft called the greatest king of Athens, the hero Theseus is nonetheless best-known for his deeds earlier in life; deeds great enough to earn his immortal soul a place of high honor in hallowed Elysium...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0051",
+		-- 	DisplayName =
+		-- 	"'...Oft called the greatest king of Athens, the hero Theseus is nonetheless best-known for his deeds earlier in life; deeds great enough to earn his immortal soul a place of high honor in hallowed Elysium. {#CodexBoldFormat}Now he reigns in this heaven of ours much as I understand he reigned in life; with pride and confidence both in abundance. The kings I knew in life aspired to the same. Yet, there is something distinctly different about him...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0052",
+		-- 	DisplayName =
+		-- 	"'...Oft called the greatest king of Athens, the hero Theseus is nonetheless best-known for his deeds earlier in life; deeds great enough to earn his immortal soul a place of high honor in hallowed Elysium. Now he reigns in this heaven of ours much as I understand he reigned in life; with pride and confidence both in abundance. The kings I knew in life aspired to the same. Yet, there is something distinctly different about him. {#CodexBoldFormat}I do not know if it was merely for pity that Theseus vouched for the bull-headed Asterius to join him in Elysium, doubtless risking his own station there. Some say Asterius is merely an unwilling servant of his, now. But I know mortal battle builds strong bonds. Is it so difficult to imagine that a peerless man like Theseus might find a peer in an unlikely soul?{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0053",
+		-- 	DisplayName =
+		-- 	"'...In life, the wretched abomination known as the Minotaur was feared across the coast of Greece; those cast into the Labyrinth in which he, himself, was trapped had no hope of escape...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0054",
+		-- 	DisplayName =
+		-- 	"'...In life, the wretched abomination known as the Minotaur was feared across the coast of Greece; those cast into the Labyrinth in which he, himself, was trapped had no hope of escape. {#CodexBoldFormat}That was until the young hero Theseus entered the Labyrinth voluntarily, and slew him in what was, by most accounts, a spectacular battle. A famous tale -- but what happened when they reunited in death needs to be told, as well. Here, they say Theseus again discovered the Minotaur, whose soul had lingered restlessly at the edge of the Underworld, and Theseus took pity on him. Though, I think there is more to it than that...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0055",
+		-- 	DisplayName =
+		-- 	"'...In life, the wretched abomination known as the Minotaur was feared across the coast of Greece; those cast into the Labyrinth in which he, himself, was trapped had no hope of escape. That was until the young hero Theseus entered the Labyrinth voluntarily, and slew him in what was, by most accounts, a spectacular battle. A famous tale -- but what happened when they reunited in death needs to be told, as well. Here, they say Theseus again discovered the Minotaur, whose soul had lingered restlessly at the edge of the Underworld, and Theseus took pity on him. Though, I think there is more to it than that. {#CodexBoldFormat}I think Theseus saw in the bull-man Asterius his greatest rival. Thus he offered Asterius a seat of honor in Elysium alongside him; a just result, for their fame and glory are intertwined.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0059",
+		-- 	DisplayName = "'...Forgive me. It is not my place to say much of him, now...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0060",
+		-- 	DisplayName =
+		-- 	"'...Forgive me. It is not my place to say much of him, now. {#CodexBoldFormat}May his name yet live. May his soul bask forever in the glory of Elysium...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0061",
+		-- 	DisplayName =
+		-- 	"'...Forgive me. It is not my place to say much of him, now. May his name yet live. May his soul bask forever in the glory of Elysium. {#CodexBoldFormat}No more. Fear is for the weak. Fear is for the weak. Fear is for the weak. Fear is for the weak...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_Patroclus_04",
+		-- 	DisplayName =
+		-- 	"'...Forgive me. It is not my place to say much of him, now. May his name yet live. May his soul bask forever in the glory of Elysium. No more. Fear is for the weak. Fear is for the weak. Fear is for the weak. Fear is for the weak. {#CodexBoldFormat}No more! I cannot risk it all. I cannot risk it all! I cannot risk it all, can I? I have risked everything already, have I not? Then, why not risk it all, again? Am I to risk it all? Why should I? For my own sake, at his own expense? Doubtless he drank already from the Lethe, and forgot. Would I have done the same? Would I do the same? \n\n {#CodexBoldFormat}Ah, life's final cruelty! That we still feel!{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0065",
+		-- 	DisplayName =
+		-- 	"'...This is the land of death; anything that lives is likely to be rather bothersome, here, and the Numbskulls certainly fit this profile...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0066",
+		-- 	DisplayName =
+		-- 	"'...This is the land of death; anything that lives is likely to be rather bothersome, here, and the Numbskulls certainly fit this profile. {#CodexBoldFormat}Voracious little creatures, the Lord Hades nonetheless opted not to exterminate them all since they do have a tendency to prey on foolish shades who dare to leave their station.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0067",
+		-- 	DisplayName =
+		-- 	"'...The hideous appearance of this mound of human-looking skulls effectively deters any who wander out into the reaches of the Underworld...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0068",
+		-- 	DisplayName =
+		-- 	"'...The hideous appearance of this mound of human-looking skulls effectively deters any who wander out into the reaches of the Underworld. {#CodexBoldFormat}Within, an endless litany of Numbskulls waits to clatter forth, mindlessly preying on what little life-essence that they are like to find.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_DisembodiedHand_01",
+		-- 	DisplayName =
+		-- 	"'...Among mortals, thievery is among the most despised of crimes, resulting on occasion in thieving hands being taken from their owners. As it turns out, they remain separated even here...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_DisembodiedHand_02",
+		-- 	DisplayName =
+		-- 	"'...Among mortals, thievery is among the most despised of crimes, resulting on occasion in thieving hands being taken from their owners. As it turns out, they remain separated even here. {#CodexBoldFormat}Those thieving hands remain in the darkest depths of Tartarus, grasping forever for riches, the warmth of life... anything they cannot have.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0069",
+		-- 	DisplayName =
+		-- 	"'...The dead in Tartarus are here, in general, because they did not deserve a noble death. They were knaves, scoundrels, cutthroats... the worst that mortals have to offer...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0070",
+		-- 	DisplayName =
+		-- 	"'...The dead in Tartarus are here, in general, because they did not deserve a noble death. They were knaves, scoundrels, cutthroats... the worst that mortals have to offer. {#CodexBoldFormat}Even now, reduced merely to shades, they are compelled by evil thoughts, and take to brandishing about crude weapons washed down by the river Styx.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0071",
+		-- 	DisplayName =
+		-- 	"'...Practitioners of foul arts, their lives inevitably were cut short, but now continue in a way within the bowels of the earth...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0072",
+		-- 	DisplayName =
+		-- 	"'...Practitioners of foul arts, their lives inevitably were cut short, but now continue in a way within the bowels of the earth. {#CodexBoldFormat}Here, the sole remaining source of purpose that they have is to snuff out the final vestiges of life that find their way into this grim domain.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0073",
+		-- 	DisplayName =
+		-- 	"'...There is ample room in Tartarus even for these prodigious, boorish entities, who doubtless were intolerable even when they lived...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0074",
+		-- 	DisplayName =
+		-- 	"'...There is ample room in Tartarus even for these prodigious, boorish entities, who doubtless were intolerable even when they lived. {#CodexBoldFormat}Now, having been reduced merely to their most base of negative impulses, these damnable wretches do their part to help uphold the Underworld's cruel reputation.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0075",
+		-- 	DisplayName =
+		-- 	"'...The ashes of the dead are copious within the Underworld, sometimes congealing into awful little spirits keen to cause whatever strife and mischief that they can...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0076",
+		-- 	DisplayName =
+		-- 	"'...The ashes of the dead are copious within the Underworld, sometimes congealing into awful little spirits keen to cause whatever strife and mischief that they can. {#CodexBoldFormat}These wretches house themselves in long-forgotten urns, almost like underwater crabs choosing ignoble homes from derelict sea-shells.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_WretchAssassin_01",
+		-- 	DisplayName =
+		-- 	"'...I am unfit to judge those who, in their mortal days, made work of taking lives. In my case, such bloodshed was sanctioned, even honored as a necessary consequence of war. But there are those who took lives for no cause other than personal gain. And now, even in death, they serve the highest bidder...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_WretchAssassin_02",
+		-- 	DisplayName =
+		-- 	"'...I am unfit to judge those who, in their mortal days, made work of taking lives. In my case, such bloodshed was sanctioned, even honored as a necessary consequence of war. But there are those who took lives for no cause other than personal gain. And now, even in death, they serve the highest bidder. {#CodexBoldFormat}The Master gives them brief reprieve from Tisiphone's whip in exchange for ensuring the other worst wretches of Tartarus remain firmly in their place. They are not permitted to leave their solitary confinement; but should any other soul trespass there, they are all too eager to ply their old trade.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0077",
+		-- 	DisplayName =
+		-- 	"'...The pressures of the lowest reaches of the Underworld forge these terrifying crystal entities, imbued with overflowing hatred from the essence of the damned, which gives them something much akin to life...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0078",
+		-- 	DisplayName =
+		-- 	"'...The pressures of the lowest reaches of the Underworld forge these terrifying crystal entities, imbued with overflowing hatred from the essence of the damned, which gives them something much akin to life. {#CodexBoldFormat}Their hatred concentrates into a ray of pain that even the chthonic gods have learned to carefully avoid whenever possible.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_HeavyRangedSplitter_01",
+		-- 	DisplayName =
+		-- 	"'...So desperate are some souls to escape the realm of the dead that they plunge into the mists of Erebus, even before their sentencing. Having thus been lost, they are never officially registered, or heard from again. But, there is no escape from death, even for such souls...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_HeavyRangedSplitter_02",
+		-- 	DisplayName =
+		-- 	"'...So desperate are some souls to escape the realm of the dead that they plunge into the mists of Erebus, even before their sentencing. Having thus been lost, they are never officially registered, or heard from again. But, there is no escape from death, even for such souls. {#CodexBoldFormat}They probably become part of the fabric of this place. How else to explain some of the phenomena in Tartarus? Crystalline formations reverberating as if in agony. A few are appalling in size, as though all those lost souls found each other, in the end.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0079",
+		-- 	DisplayName =
+		-- 	"'...The Underworld was born of nothingness; of pure, chaotic void. Vestiges of this remain within this place, crystallized into a form of something that could not rightly be called life...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0080",
+		-- 	DisplayName =
+		-- 	"'...The Underworld was born of nothingness; of pure, chaotic void. Vestiges of this remain within this place, crystallized into a form of something that could not rightly be called life. {#CodexBoldFormat}These entities appear to be content to spread their entropy, encasing wretches of the damned in utter nothingness, a state in which they cannot come to further harm.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0081",
+		-- 	DisplayName =
+		-- 	"'...The skeletal remains of fallen warriors left with nothing but an insatiable impulse toward violence, they wander the burning fields of Asphodel, hungering for something far beyond their capacity...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0082",
+		-- 	DisplayName =
+		-- 	"'...The skeletal remains of fallen warriors left with nothing but an insatiable impulse toward violence, they wander the burning fields of Asphodel, hungering for something far beyond their capacity. {#CodexBoldFormat}Once mortals who fell in battle, they were not given proper burial and now remain forever trapped in the throes of combat, their seething consciousness encased within a prison of bleached bone...{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0083",
+		-- 	DisplayName =
+		-- 	"'...The skeletal remains of fallen warriors left with nothing but an insatiable impulse toward violence, they wander the burning fields of Asphodel, hungering for something far beyond their capacity. Once mortals who fell in battle, they were not given proper burial and now remain forever trapped in the throes of combat, their seething consciousness encased within a prison of bleached bone. {#CodexBoldFormat}The Bloodless seem to heed the orders of Lord Hades, and appear to recognize him as their one true master; yet, at times, they do exhibit tendencies suggesting that they may have other callings here, within the Underworld.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_BloodlessBerserker_01",
+		-- 	DisplayName =
+		-- 	"'...For mortals, the need occasionally arises to draw blood, whether for a cause or by necessity. But there are also those who do it for its own sake; monsters in the form of men, revealed finally for what they are once in this realm...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_BloodlessBerserker_02",
+		-- 	DisplayName =
+		-- 	"'...For mortals, the need occasionally arises to draw blood, whether for a cause or by necessity. But there are also those who do it for its own sake; monsters in the form of men, revealed finally for what they are once in this realm. {#CodexBoldFormat}By all rights, they should be sealed away in Tartarus. But their savagery is such that it draws the Master's attention, and some are able to secure a bit of reprieve in Asphodel, in exchange for enforcing the Master's will.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0084",
+		-- 	DisplayName =
+		-- 	"'...One-time scions of so many long-forgotten cults, which worshiped monsters slain by heroes at some point, these remnants of the living yet possess capacity to give a certain shape to diabolic energies...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0085",
+		-- 	DisplayName =
+		-- 	"'...One-time scions of so many long-forgotten cults, which worshiped monsters slain by heroes at some point, these remnants of the living yet possess capacity to give a certain shape to diabolic energies. {#CodexBoldFormat}Within these waves of devastation lie their memories of their hate-filled transgressions, which they re-live and re-create again and again, much like the ocean's wave lapping somewhere against brittle and uncaring shores.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_RangedBurrower_01",
+		-- 	DisplayName =
+		-- 	"'...All mortal life is a struggle to survive that ends in failure; one final lesson, prior to a transfer here, where we have room enough for every living thing, from the greatest of men, to the lowliest of serpents...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_RangedBurrower_02",
+		-- 	DisplayName =
+		-- 	"'...All mortal life is a struggle to survive that ends in failure; one final lesson, prior to a transfer here, where we have room enough for every living thing, from the greatest of men, to the lowliest of serpents. {#CodexBoldFormat}The Dracons of Asphodel seem to be remnants of the latter category, though are rarely seen for their shame-filled tendency to remain burrowed in their dens, rising up only when sufficiently agitated. Not so different from my kind, perhaps.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0086",
+		-- 	DisplayName =
+		-- 	"'...As if forged bronze is insufficient in its keen ability to put an end to life, there have been those who studied the eldritch art of chemistry to fashion devastating, fiery devices known as {#CodexItalicFormat}bombs{#PreviousFormat}...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0087",
+		-- 	DisplayName =
+		-- 	"'...As if forged bronze is insufficient in its keen ability to put an end to life, there have been those who studied the eldritch art of chemistry to fashion devastating, fiery devices known as {#CodexItalicFormat}bombs{#PreviousFormat}. {#CodexBoldFormat}They likely all fell victim to their own inventions. But even though they are now rightfully where they belong, their limitless desire for destruction yet keeps them intact.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0088",
+		-- 	DisplayName =
+		-- 	"'...Marauding warriors that once lived in sin and lusted after murder, now reborn beneath the earth, eternally reliving the final violent moments of their days of war and strife...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0089",
+		-- 	DisplayName =
+		-- 	"'...Marauding warriors that once lived in sin and lusted after murder, now reborn beneath the earth, eternally reliving the final violent moments of their days of war and strife. {#CodexBoldFormat}They now have nothing left except their impulse toward bloodshed, or the shedding of whatever can be torn asunder by their claws.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0090",
+		-- 	DisplayName =
+		-- 	"'...Perhaps the Titan called Prometheus would have reconsidered before gifting unto mortal-kind the great discovery of flame, had he foreknowledge of his punishment... or foreknowledge of the Burn-flingers, who practice their obscene art only for destruction's sake...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0091",
+		-- 	DisplayName =
+		-- 	"'...Perhaps the Titan called Prometheus would have reconsidered before gifting unto mortal-kind the great discovery of flame, had he foreknowledge of his punishment... or foreknowledge of the Burn-flingers, who practice their obscene art only for destruction's sake. {#CodexBoldFormat}As they once were mortals, it is likely that they died from careless acts of alchemy; and now, within the Underworld, they have nothing left to lose, and time eternal to attempt perfection when it comes to caustic, poisonous concoctions.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0092",
+		-- 	DisplayName =
+		-- 	"'...There is such knowledge that the gods sought to keep well afield of mortal minds; and there are mortals who pursued that knowledge, undeterred, all their short lives...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0093",
+		-- 	DisplayName =
+		-- 	"'...There is such knowledge that the gods sought to keep well afield of mortal minds; and there are mortals who pursued that knowledge, undeterred, all their short lives. {#CodexBoldFormat}Many now decorate the lowest pits of Tartarus. A scarce few, however, demonstrated such a zeal and talent that the Lord Hades soon put them to work, throughout his realm.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_FreezeShotUnit_01",
+		-- 	DisplayName =
+		-- 	"'...As the immortal ichor of the most infamous of gorgons spilled from her severed head into the earth, it trickled down into the Underworld, and spawned a brood of vengeful offspring...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_FreezeShotUnit_02",
+		-- 	DisplayName =
+		-- 	"'...As the immortal ichor of the most infamous of gorgons spilled from her severed head into the earth, it trickled down into the Underworld, and spawned a brood of vengeful offspring. {#CodexBoldFormat}Their passions include searing heat, for their own blood runs cold, and petrifying anything with eyes. They even petrify themselves when sufficiently endangered, returning to the earth, to begin again their vicious cycle.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0096",
+		-- 	DisplayName =
+		-- 	"'...In the great and ancient war that raged between the Titans and Olympians, the brutish Cyclopes stood with the former side, and dearly paid for it. Their kind has all but disappeared from earth, though remnants still remain beneath it...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0097",
+		-- 	DisplayName =
+		-- 	"'...In the great and ancient war that raged between the Titans and Olympians, the brutish Cyclopes stood with the former side, and dearly paid for it. Their kind has all but disappeared from earth, though remnants still remain beneath it. {#CodexBoldFormat}Stripped of their cunning, some of their kind have been reduced only to one-eyed skulls, stacked somewhere like so many living trophies in the realm of the dead. There, they clamor for a chance to get back at the gods who made them thus.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_MegaGorgon_01",
+		-- 	DisplayName =
+		-- 	"'...The petrifying gorgons so were feared among the living, that the kings of men summoned the greatest of their heroes to dispatch them, claiming that the fickle gods desired it...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_MegaGorgon_02",
+		-- 	DisplayName =
+		-- 	"'...The petrifying gorgons so were feared among the living, that the kings of men summoned the greatest of their heroes to dispatch them, claiming that the fickle gods desired it. {#CodexBoldFormat}The heroes somehow met with some success, and now, the Underworld is home to remnants of the gorgons' kind -- including a conspicuously larger specimen that dwells among remains of Cyclopes, each of their kinds, similarly spurned.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0100",
+		-- 	DisplayName =
+		-- 	"'...Stripped of the flesh the hero Heracles sliced through and cauterized, the Hydra now resides within the Underworld, stewing in the scintillating tumult of the fire-river called the Phlegethon...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0101",
+		-- 	DisplayName =
+		-- 	"'...Stripped of the flesh the hero Heracles sliced through and cauterized, the Hydra now resides within the Underworld, stewing in the scintillating tumult of the fire-river called the Phlegethon. {#CodexBoldFormat}It mercilessly watches over passage toward Elysium, devouring those shades who would dare seek the comforts of that hallowed place.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0102",
+		-- 	DisplayName =
+		-- 	"'...In life, they worshiped the chthonic gods, through profane practices beyond the knowledge or the capability of lesser souls...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0103",
+		-- 	DisplayName =
+		-- 	"'...In life, they worshiped the chthonic gods, through profane practices beyond the knowledge or the capability of lesser souls. {#CodexBoldFormat}In death, they are much closer to their goal, their talents and devotion affording them a higher station here than their deeds in life might otherwise have earned them.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0104",
+		-- 	DisplayName =
+		-- 	"'...The wild land of Nemea is perhaps best known for the monstrous lion slain by the hero Heracles during one of his many labors, oft-told still. The visage of this beast became a symbol of its prideful chariot-riders, who trained so rigorously, they believed they formed a bond with their own vessels of wood and bronze...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0105",
+		-- 	DisplayName =
+		-- 	"'...The wild land of Nemea is perhaps best known for the monstrous lion slain by the hero Heracles during one of his many labors, oft-told still. The visage of this beast became a symbol of its prideful chariot-riders, who trained so rigorously, they believed they formed a bond with their own vessels of wood and bronze. {#CodexBoldFormat}It turns out that their beliefs were well-founded: The Nemean Chariots yet race across the moss and stonework of Elysium, competing endlessly, training for new competitions of their own design. An eternity of preparation for imaginary war; the best kind, I should think, which shall not take from them again their lives or kin.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0106",
+		-- 	DisplayName =
+		-- 	"'...The chariot is a famous symbol of the warfare and technology of my mortal days. However, its specific role in battle sometimes is exaggerated. Chariots ushered men like me to the front lines. They themselves were seldom the ones to go crashing through enemy ranks. Though, there were, indeed, exceptions...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0107",
+		-- 	DisplayName =
+		-- 	"'...The chariot is a famous symbol of the warfare and technology of my mortal days. However, its specific role in battle sometimes is exaggerated. Chariots ushered men like me to the front lines. They themselves were seldom the ones to go crashing through enemy ranks. Though, there were, indeed, exceptions. {#CodexBoldFormat}More than once I witnessed some particularly brave or bloodthirsty soul abandon his expected duties at the helm of his vessel, and crash explosively into enemy ranks -- like the stories tell. This led to death, of course. But, dying valorously and spectacularly sometimes is sufficient to secure an all-too-decent spot within the afterlife.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0108",
+		-- 	DisplayName =
+		-- 	"'...The Exalted, such as the blade-wielding Brightswords, are bound to the arms they carried when they fell in battle as mortals. When severed from those arms, they make a desperate grasp for them, so they can fight some more...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0109",
+		-- 	DisplayName =
+		-- 	"'...The Exalted, such as the blade-wielding Brightswords, are bound to the arms they carried when they fell in battle as mortals. When severed from those arms, they make a desperate grasp for them, so they can fight some more. {#CodexBoldFormat}In life, I knew so many warriors who would throw away their lives for glory, believing that the gods were on their side; refusing to consider {#DialogueItalicFormat}(for how could they?) {#PreviousFormat}that their hated opponents felt the very same. Yet gods and mortals do look on this type of single-minded devotion with respect, and so, these envied souls do wind up in Elysium, where they can fight on and on, until they go blue in the face.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0110",
+		-- 	DisplayName =
+		-- 	"'...I know what they can do only too well. Their endless training regimen takes influence from the specific martial style I strove to perfect in life; the spear always having been my preferred weapon, for its reach and versatility...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0111",
+		-- 	DisplayName =
+		-- 	"'...I know what they can do only too well. Their endless training regimen takes influence from the specific martial style I strove to perfect in life; the spear always having been my preferred weapon, for its reach and versatility. {#CodexBoldFormat}These exalted souls of course are masters of arms, and would not have been placed within Elysium for simple military feats alone; yet, if the choice avails them, they would brandish those spears of theirs and fight with the terrible wrath of a starved wolf. That is their idea of heaven.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0112",
+		-- 	DisplayName =
+		-- 	"'...I always thought archers were simple cowards, no matter their skill. But I am not the one deciding who enters Elysium, as can be plainly seen by the abundance of such skillful arrow-flingers as these Exalted Strongbows, as they are sometimes known...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0113",
+		-- 	DisplayName =
+		-- 	"'...I always thought archers were simple cowards, no matter their skill. But I am not the one deciding who enters Elysium, as can be plainly seen by the abundance of such skillful arrow-flingers as these Exalted Strongbows, as they are sometimes known. {#CodexBoldFormat}They revel still in seeing who among them can let loose their arrows with the greatest skill; preferring live target practice to the more-conventional kind. Death can no longer stop them from improving in their mastery, however slowly that improvement comes at this late stage in their careers.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0114",
+		-- 	DisplayName =
+		-- 	"'...The illusion of protection is sometimes indistinguishable from the real thing. After all, one's ability to survive and prevail in perilous matters is largely an act of will. Thus do the Exalted Greatshield-bearers of Elysium cling {#CodexItalicFormat}(I think rather desperately) {#PreviousFormat}to their worldly comforts, even in death...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0115",
+		-- 	DisplayName =
+		-- 	"'...The illusion of protection is sometimes indistinguishable from the real thing. After all, one's ability to survive and prevail in perilous matters is largely an act of will. Thus do the Exalted Greatshield-bearers of Elysium cling {#CodexItalicFormat}(I think rather desperately) {#PreviousFormat}to their worldly comforts, even in death. {#CodexBoldFormat}During my mortal days, a shield meant nothing to me; a mere hindrance to be punctured just as easily as flesh. I understand, however, that Exalted shields are made of stronger stuff, bound as they are to the souls of those who fell while holding them in battle.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0116",
+		-- 	DisplayName =
+		-- 	"'...What is the soul? An ember from the depths of Chaos, nothing more, I think. But it is all we are, as mortals; and it is all we are reduced to, once we inevitably fade away. Is it such a surprise, then, that we souls seek company in death just as in life? Likewise, it should come as no surprise, I think, that some such souls yet harbor hatred in what used to be their hearts...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0117",
+		-- 	DisplayName =
+		-- 	"'...What is the soul? An ember from the depths of Chaos, nothing more, I think. But it is all we are, as mortals; and it is all we are reduced to, once we inevitably fade away. Is it such a surprise, then, that we souls seek company in death just as in life? Likewise, it should come as no surprise, I think, that some such souls yet harbor hatred in what used to be their hearts. {#CodexBoldFormat}Petty, spiteful souls flock together. They always have, and always will. Here in the depths, such souls sometimes flock in such great numbers, that they congeal. This unassuming form, its components reminiscent of the butterfly which mortals praise for its delicate beauty, belies their intentions.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0118",
+		-- 	DisplayName =
+		-- 	"'...The barrier between the realm of the living and the realm of the dead cannot be easily transgressed; but there are creatures adequately small and vicious as to rise up to the challenge...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0119",
+		-- 	DisplayName =
+		-- 	"'...The barrier between the realm of the living and the realm of the dead cannot be easily transgressed; but there are creatures adequately small and vicious as to rise up to this challenge {#CodexItalicFormat}(as well as to the challenge of being slain in great droves by would-be heroes setting forth to prove themselves, all in the name of Experience){#PreviousFormat}. {#CodexBoldFormat}They crawl between the cracks and crevices of the facade that separates the Master's Underworld from lands above, growing in number, oblivious to the hallowed grounds they foul.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0120",
+		-- 	DisplayName =
+		-- 	"'...There is a certain perverse cruelty to life. This, I feel, is plainly evident in the vile form of the loathsome vermin that grow thick with contempt in the recesses of the Underworld's topmost echelon. Would that there were more-succinct ways to describe plague-ridden horrors such as these...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0121",
+		-- 	DisplayName =
+		-- 	"'...There is a certain perverse cruelty to life. This, I feel, is plainly evident in the vile form of the loathsome vermin that grow thick with contempt in the recesses of the Underworld's topmost echelon. Would that there were more-succinct ways to describe plague-ridden horrors such as these. {#CodexBoldFormat}They multiply inexorably, in quantity and girth. Their virulent nature seems entirely at odds with their continued existence. Yet, they too possess a vicious, cunning instinct -- and savage strength -- far superior to that of your everyday, ordinary pest.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_CrawlerMiniBoss_01",
+		-- 	DisplayName =
+		-- 	"'...Vermin, like men and dogs, are followers. Oftentimes it is the largest, most physically imposing of a pack that becomes leader. But, size is not the only factor, and ultimately not a substitute for a ferocity of spirit...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_CrawlerMiniBoss_02",
+		-- 	DisplayName =
+		-- 	"'...Vermin, like men and dogs, are followers. Oftentimes it is the largest, most physically imposing of a pack that becomes leader. But, size is not the only factor, and ultimately not a substitute for a ferocity of spirit. {#CodexBoldFormat}Among the vermin infestation we contend with near the surface, there apparently is a shining such example. Even the most robust vermin of the pack are subservient to this king of theirs, smaller in stature, but by far more cruel. Can a simple beast feel malice? Supposedly, this one can.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0122",
+		-- 	DisplayName =
+		-- 	"'...The dead share much in common with the living; each desperate for something they cannot articulate. For the dead, this can mean an unrelenting urge to gain the surface of the Master's realm, and to break free {#CodexItalicFormat}(or try), {#PreviousFormat}using whatever means avail themselves -- even lurking in an unassuming bowl of ash...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0123",
+		-- 	DisplayName =
+		-- 	"'...The dead share much in common with the living; each desperate for something they cannot articulate. For the dead, this can mean an unrelenting urge to gain the surface of the Master's realm, and to break free {#CodexItalicFormat}(or try), {#PreviousFormat}using whatever means avail themselves -- even lurking in an unassuming bowl of ash. {#CodexBoldFormat}It is almost poetic how these petty souls detest the living, striving as they do to re-gain their own lives. And to what end? They fling themselves upon the threshold to the Underworld, inevitably shattering, their ashes spreading far and wide, so that they might reconstitute on some impending day or night, and have another go.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0124",
+		-- 	DisplayName =
+		-- 	"'...The crystal-consciousnesses lurking in the Underworld are none-too-easily explained, and this is doubly the case when it comes to the serpentine forms residing underneath the upper temple's floors...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0125",
+		-- 	DisplayName =
+		-- 	"'...The crystal-consciousnesses lurking in the Underworld are none-too-easily explained, and this is doubly the case when it comes to the serpentine forms residing underneath the upper temple's floors. {#CodexBoldFormat}What gave them such a shape and single-minded purpose is left for the imagination to decide; although, the boorish satyrs despoiling the surface seem to take up residence in the same spaces, and may well be to blame for these nuisances, as they are for many others.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0126",
+		-- 	DisplayName =
+		-- 	"'...A multitude of worries decorate the brow of grim Lord Hades, whose nature is unknown to anyone but him. But, there are some concerns that even he cannot suppress...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_0127",
+		-- 	DisplayName =
+		-- 	"'...A multitude of worries decorate the brow of grim Lord Hades, whose nature is unknown to anyone but him. But, there are some concerns that even he cannot suppress. {#CodexBoldFormat}Take, for example, the dark movements of the satyr vermin-worshipers residing in the temple-gateway at the surface of this realm. What they must want is yet unclear; but, their hatred for Lord Hades is not. Efforts to exterminate the goat-faced fiends have proven unsuccessful to this point, for they reside frustratingly beyond even the Master's influence. What can they do, in turn, except to desecrate the Master's halls? Yet, if the Master is uneasy, there must be a cause.{#PreviousFormat}'",
+		-- },
+		-- #endregion
+		-- #region Legendary Keepsakes/Companions/AssistTraits
+		-- {
+		-- 	Id = "CodexData_FuryAssistTrait_01",
+		-- 	DisplayName =
+		-- 	"'...When Battie first emerged from the darkness, she was overjoyed to learn there was a whole wide world beneath the ground, filled with many wondrous sounds and scents. However, Mother Night instructed her never to fly too far; to stay within the bounds of Tartarus, where it was safe for creatures such as her. Battie heeded the warning, but only for as long as she could stand...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_FuryAssistTrait_02",
+		-- 	DisplayName =
+		-- 	"'...When Battie first emerged from the darkness, she was overjoyed to learn there was a whole wide world beneath the ground, filled with many wondrous sounds and scents. However, Mother Night instructed her never to fly too far; to stay within the bounds of Tartarus, where it was safe for creatures such as her. Battie heeded the warning, but only for as long as she could stand. {#CodexBoldFormat}One evening, having grown quite restless, Battie flew as far and wide as she was able, across the meadows of Asphodel, all across the fields of Elysium, such was her excitement to experience it all. By the time Mother Night discovered what she had done and found her, she was thoroughly exhausted. Now, Battie keeps safe whomever she is given to, but can no longer fly as she once did.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_ThanatosAssistTrait_01",
+		-- 	DisplayName =
+		-- 	"'...When Mort first emerged from the darkness, he was frightened to discover he was on the smaller side of the variety of creatures that surrounded him. The world was such a dangerous place! However, Mother Night told him to take heart, and not to make too much about his size. It was not to his detriment, to be so small. Mort decided to put the idea to the test...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_ThanatosAssistTrait_02",
+		-- 	DisplayName =
+		-- 	"'...When Mort first emerged from the darkness, he was frightened to discover he was on the smaller side of the variety of creatures that surrounded him. The world was such a dangerous place! However, Mother Night told him to take heart, and not to make too much about his size. It was not to his detriment, to be so small. Mort decided to put the idea to the test. {#CodexBoldFormat}He discovered there were creatures even smaller than he; insects, arachnids, and the like. And so he lorded over them, using his size to his advantage. When Mother Nyx found him, he was huddled in a corner, surrounded by tiny creatures thoroughly terrified of him. Since then, Mort still retains his odd ability to instill fear, though as protector of whomever he is given to, not as tormentor of the smallest things.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_DusaAssistTrait_01",
+		-- 	DisplayName =
+		-- 	"'...When Fidi first emerged from the darkness, she grew very concerned as to why she was forced to slither bodily along the ground, while shades could float about, and bats could fly. Why was she forced to move in such a thoroughly ignoble way? It was unfair. However, Mother Night implored her not to be so vain about her sense of justice; surely there were creatures who envied her. But Fidi was unconvinced...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_DusaAssistTrait_02",
+		-- 	DisplayName =
+		-- 	"'...When Fidi first emerged from the darkness, she grew very concerned as to why she was forced to slither bodily along the ground, while shades could float about, and bats could fly. Why was she forced to move in such a thoroughly ignoble way? It was unfair. However, Mother Night implored her not to be so vain about her sense of justice; surely there were creatures who envied her. But Fidi was unconvinced. {#CodexBoldFormat}She crawled deep into a hole, ashamed, and angered by the world's cruelties. Various creatures gathered, concerned for her, and attempted to draw her out. But Fidi only dug deeper; she thought they were deceiving her. By the time Mother Night found her, she was very hungry and alone. Now, Fidi has a new perspective on the world. And she no longer needs to crawl, for she travels wherever whomever she is given to wishes to go.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_SisyphusAssistTrait_01",
+		-- 	DisplayName =
+		-- 	"'...When Shady first emerged from the darkness, he wanted to know who he was, where he came from, and where he belonged. He asked these questions quite incessantly of everyone. However, Mother Night suggested that he look inside himself for answers, especially where his belonging was concerned. Some questions cannot be answered by others, she said. Yet, Shady nonetheless was quite preoccupied of learning more about himself...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_SisyphusAssistTrait_02",
+		-- 	DisplayName =
+		-- 	"'...When Shady first emerged from the darkness, he wanted to know who he was, where he came from, and where he belonged. He asked these questions quite incessantly of everyone. However, Mother Night suggested that he look inside himself for answers, especially where his belonging was concerned. Some questions cannot be answered by others, she said. Yet, Shady nonetheless was quite preoccupied of learning more about himself. {#CodexBoldFormat}He found a creature reminiscent of himself, and asked his questions of it, hearing only other questions in reply. When Mother Night found him, he was speaking incessantly to his own reflection in the river, having learned nothing at all. Now, Shady has accepted his small place in the Underworld, lending his sense of determination to whomever he is given to. And he no longer questions who he was.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_SkellyAssistTrait_01",
+		-- 	DisplayName =
+		-- 	"'...When Rib first emerged from the darkness, he wished more than anything to be as strong as the many great heroes who reside within the Underworld. But he was distraught by his thin frame, and found there was nothing he could do to change it, no matter how he tried. However, Mother Night cautioned him that he was following a path to greatness very different from the heroes he admired; they were guided not by envy of others. Rib did not believe this; he knew heroes inspired other heroes...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_SkellyAssistTrait_02",
+		-- 	DisplayName =
+		-- 	"'...When Rib first emerged from the darkness, he wished more than anything to be as strong as the many great heroes who reside within the Underworld. But he was distraught by his thin frame, and found there was nothing he could do to change it, no matter how he tried. However, Mother Night cautioned him that he was following a path to greatness very different from the heroes he admired; they were guided not by envy of others. Rib did not believe this; he knew heroes inspired other heroes. {#CodexBoldFormat}Determined to prove himself, he sought to hoist an entire boulder to prove his strength to those he knew. He trained, and trained. But by the time Mother Night found him, he was crumpled in a heap. Now, Rib no longer seeks to be admired, but is very capable of making himself useful to whomever he is given to. And, he is not so preoccupied with heroes, anymore.{#PreviousFormat}'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_AchillesPatroclusAssistTrait_01",
+		-- 	DisplayName =
+		-- 	"'...When Antos first emerged from the darkness, he smashed through the very earth, heaving boulders many times his size until he stood on all six legs, victorious. He felt prepared to take on any challenge. However, Mother Night urged him to be mindful of his limits; there is always something bigger, something stronger in the world. Antos was undeterred. If he could sweep Night herself from her feet, surely she would recognize his power, and apologize...'",
+		-- },
+		-- {
+		-- 	Id = "CodexData_AchillesPatroclusAssistTrait_02",
+		-- 	DisplayName =
+		-- 	"'...When Antos first emerged from the darkness, he smashed through the very earth, heaving boulders many times his size until he stood on all six legs, victorious. He felt prepared to take on any challenge. However, Mother Night urged him to be mindful of his limits; there is always something bigger, something stronger in the world. Antos was undeterred. If he could sweep Night herself from her feet, surely she would recognize his power, and apologize. {#CodexBoldFormat}He slid under the rocks and earth, lying in ambush until just the right moment. When Mother Night crossed his path, paying him no heed at all, he seized his opportunity to prove his surpassing strength. He struck Mother Night full in the ankle. But, she merely turned to him, and sadly shook her head. Now, Antos still possesses strength many times his size; though he is very small, indeed.{#PreviousFormat}'",
+		-- },
+		-- #endregion
+	},
+}
+
+newData = mod.ModifyCodexTextEntries(newData)
+
+sjson.hook(codexTextFile, function(data)
+	mod.AddTableKeysSkipDupes(data.Texts, newData.Texts, "Id", order)
+end)
