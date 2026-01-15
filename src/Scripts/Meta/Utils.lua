@@ -48,11 +48,12 @@ function mod.PrintTable(t, maxDepth, indent)
 
 	local formatting = string.rep("  ", indent)
 	for k, v in pairs(t) do
+		local keyStr = tostring(k)
 		if type(v) == "table" then
-			print(formatting .. k .. ":")
+			print(formatting .. keyStr .. ":")
 			mod.PrintTable(v, maxDepth, indent + 1)
 		else
-			print(formatting .. k .. ": " .. tostring(v))
+			print(formatting .. keyStr .. ": " .. tostring(v))
 		end
 	end
 end
@@ -76,24 +77,24 @@ function mod.AddTableKeysSkipDupes(tableToAddTo, tableToTake, property, order)
 		local propertyLookup = {}
 
 		-- Create a lookup table for the property values in tableToAddTo
-		for index, entry in ipairs(tableToAddTo) do
-			if entry[property] then
-				propertyLookup[entry[property]] = index
+		for _, entry in pairs(tableToAddTo) do
+			if entry[property] ~= nil then
+				propertyLookup[entry[property]] = true
 			end
 		end
 
 		-- Iterate through tableToTake and add non-duplicate entries to tableToAddTo
 		for _, entryToTake in pairs(tableToTake) do
-			if entryToTake[property] and not propertyLookup[entryToTake[property]] then
+			if entryToTake[property] ~= nil and not propertyLookup[entryToTake[property]] then
 				if order ~= nil then
 					table.insert(tableToAddTo, sjson.to_object(entryToTake, order))
 				else
 					table.insert(tableToAddTo, entryToTake)
 				end
 				table.insert(nonDuplicateItems, entryToTake)
-				propertyLookup[entryToTake[property]] = #tableToAddTo
+				propertyLookup[entryToTake[property]] = true
 			else
-				mod.DebugPrint("Skipped duplicate key: " .. entryToTake[property], 4)
+				mod.DebugPrint("Skipped duplicate key: " .. tostring(entryToTake[property]), 4)
 			end
 		end
 	else
@@ -107,7 +108,7 @@ function mod.AddTableKeysSkipDupes(tableToAddTo, tableToTake, property, order)
 				end
 				nonDuplicateItems[key] = value
 			else
-				mod.DebugPrint("Skipped duplicate key: " .. key, 4)
+				mod.DebugPrint("Skipped duplicate key: " .. tostring(key), 4)
 			end
 		end
 	end
@@ -154,58 +155,65 @@ function mod.RenameKeys(base, replacements, baseName, propertyPath)
 	end
 end
 
----Updates a specified field in a table to match the new property name.
+---Updates a specified field value in a table to match the new property name.
 ---This will also work for tables with multiple entries and nested structures.
 ---@param tableToModify table The table to modify.
 ---@param find string The value to find.
 ---@param replaceWith any The value to replace "find" with.
----@param propertyPath table The path to the property being modified, as a list of keys, such as { "GeneratorData", "BlockEnemyTypes" }. A "*" key will apply the change to all keys in the table.
+---@param propertyPath table The path to the property being modified, as a list of keys, such as { "GeneratorData", "BlockEnemyTypes" }. A "\*" key will apply the change to all keys in the table.
 ---@param tableName string|nil The name of the table being modified, used for debugging purposes.
 function mod.UpdateField(tableToModify, find, replaceWith, propertyPath, tableName)
 	local function updateField(data, path)
-		local replaced = false
 		if #path == 0 then
 			if type(data) == "string" then
 				if data == find then
-					replaced = true
-					return replaceWith, replaced
+					return replaceWith, true
 				end
 			elseif type(data) == "table" then
+				local anyReplaced = false
 				for i, value in ipairs(data) do
 					if value == find then
 						data[i] = replaceWith
-						replaced = true
+						anyReplaced = true
 					end
 				end
+				return data, anyReplaced
 			end
-			return data, replaced
+			return data, false
 		else
 			local key = table.remove(path, 1)
 			if key == "*" then
 				if type(data) == "table" then
+					local anyReplaced = false
 					for k, v in pairs(data) do
-						data[k], replaced = updateField(v, { table.unpack(path) })
+						local child, childReplaced = updateField(v, { table.unpack(path) })
+						data[k] = child
+						anyReplaced = anyReplaced or childReplaced
 					end
+					return data, anyReplaced
 				end
-			elseif data ~= nil and data[key] then
-				data[key], replaced = updateField(data[key], path)
+			elseif data ~= nil and data[key] ~= nil then
+				local child, childReplaced = updateField(data[key], path)
+				data[key] = child
+				return data, childReplaced
 			end
-			return data, replaced
+			return data, false
 		end
 	end
 
-	local replaced = false
 	for name, data in pairs(tableToModify) do
-		if type(name) == "number" and data.Name ~= nil then
-			name = data.Name
+		local keyName = name
+		if type(keyName) == "number" and data.Name ~= nil then
+			keyName = data.Name
 		end
 		local pathCopy = { table.unpack(propertyPath) }
-		data, replaced = updateField(data, pathCopy)
+		local updated, replaced = updateField(data, pathCopy)
 		if replaced then
 			mod.DebugPrint(
 				"Updated " .. table.concat(propertyPath, "-") .. " from " .. find .. " to " .. tostring(replaceWith) ..
-				" for " .. (name or "an unknown entry") .. " in " .. (tableName or "an unknown table"), 4)
+				" for " .. (keyName or "an unknown entry") .. " in " .. (tableName or "an unknown table"), 4)
 		end
+		tableToModify[name] = updated
 	end
 end
 
@@ -214,30 +222,35 @@ end
 ---@param tableToModify table The table to modify.
 ---@param propertyNameToFind string The property name to find.
 ---@param newPropertyName string The new property name to replace the old one.
----@param propertyPath table The path to the property being modified, as a list of keys, such as { "ManualWaveTemplates", "*", "Spawns", "*" }.
+---@param propertyPath table The path to the property being modified, as a list of keys, such as { "ManualWaveTemplates", "\*", "Spawns", "\*" }.
 ---@param tableName string|nil The name of the table being modified, used for debugging purposes.
 function mod.UpdatePropertyName(tableToModify, propertyNameToFind, newPropertyName, propertyPath, tableName)
 	local function updateProperty(data, path)
-		local renamed = false
 		if #path == 0 then
 			if type(data) == "table" and data[propertyNameToFind] ~= nil then
 				data[newPropertyName] = data[propertyNameToFind]
 				data[propertyNameToFind] = nil
-				renamed = true
+				return data, true
 			end
-			return data, renamed
+			return data, false
 		else
 			local key = table.remove(path, 1)
 			if key == "*" then
 				if type(data) == "table" then
-					for _, child in pairs(data) do
-						child, renamed = updateProperty(child, { table.unpack(path) })
+					local anyRenamed = false
+					for k, child in pairs(data) do
+						local updatedChild, childRenamed = updateProperty(child, { table.unpack(path) })
+						data[k] = updatedChild
+						anyRenamed = anyRenamed or childRenamed
 					end
+					return data, anyRenamed
 				end
-			elseif data ~= nil and data[key] then
-				data[key], renamed = updateProperty(data[key], path)
+			elseif data ~= nil and data[key] ~= nil then
+				local updatedChild, childRenamed = updateProperty(data[key], path)
+				data[key] = updatedChild
+				return data, childRenamed
 			end
-			return data, renamed
+			return data, false
 		end
 	end
 
@@ -253,16 +266,16 @@ function mod.UpdatePropertyName(tableToModify, propertyNameToFind, newPropertyNa
 		end
 	else
 		-- Handle nested renaming
-		local renamed = false
 		for name, data in pairs(tableToModify) do
 			local pathCopy = { table.unpack(propertyPath) }
-			data, renamed = updateProperty(data, pathCopy)
+			local updated, renamed = updateProperty(data, pathCopy)
 			if renamed then
 				mod.DebugPrint(
 					"Renamed property " ..
 					propertyNameToFind .. " to " .. newPropertyName .. " at path " .. table.concat(propertyPath, "-") ..
 					" for " .. (name or "an unknown entry") .. " in " .. (tableName or "an unknown table"), 4)
 			end
+			tableToModify[name] = updated
 		end
 	end
 end
@@ -393,10 +406,11 @@ end
 ---@param filename string|nil The name of the file being modified, used for debugging purposes
 function mod.RenameSjsonEntries(tableToModify, mappings, key, filename)
 	for _, entry in ipairs(tableToModify) do
-		if entry[key] then
+		if entry[key] ~= nil then
 			if mappings[entry[key]] then
 				mod.DebugPrint("Renamed entry: " ..
-					entry[key] .. " to " .. mappings[entry[key]] .. " in " .. (filename or "an unknown file"), 4)
+					tostring(entry[key]) .. " to " .. tostring(mappings[entry[key]]) .. " in " .. (filename or "an unknown file"),
+					4)
 				entry[key] = mappings[entry[key]]
 			end
 		end
@@ -416,8 +430,8 @@ function mod.RemoveSjsonEntries(tableToModify, mappings, key, filename)
 
 	for i = #tableToModify, 1, -1 do
 		local entry = tableToModify[i]
-		if entry[key] and mappingsSet[entry[key]] then
-			mod.DebugPrint("Removed entry: " .. entry[key] .. " from " .. (filename or "an unknown file"), 4)
+		if entry[key] ~= nil and mappingsSet[entry[key]] then
+			mod.DebugPrint("Removed entry: " .. tostring(entry[key]) .. " from " .. (filename or "an unknown file"), 4)
 			table.remove(tableToModify, i)
 		end
 	end
