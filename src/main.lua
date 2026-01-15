@@ -308,7 +308,7 @@ local function on_ready()
 			DebugLogScriptImportProgress("MiscText SJSON")
 
 			import "Game/Text/de/TraitText.de.sjson.lua"
-			-- import "Game/Text/el/TraitText.el.sjson.lua"
+			import "Game/Text/el/TraitText.el.sjson.lua"
 			import "Game/Text/en/TraitText.en.sjson.lua"
 			import "Game/Text/es/TraitText.es.sjson.lua"
 			import "Game/Text/fr/TraitText.fr.sjson.lua"
@@ -318,10 +318,10 @@ local function on_ready()
 			import "Game/Text/pl/TraitText.pl.sjson.lua"
 			import "Game/Text/pt-BR/TraitText.pt-BR.sjson.lua"
 			import "Game/Text/ru/TraitText.ru.sjson.lua"
-			-- import "Game/Text/tr/TraitText.tr.sjson.lua"
-			-- import "Game/Text/uk/TraitText.uk.sjson.lua"
+			import "Game/Text/tr/TraitText.tr.sjson.lua"
+			import "Game/Text/uk/TraitText.uk.sjson.lua"
 			import "Game/Text/zh-CN/TraitText.zh-CN.sjson.lua"
-			-- import "Game/Text/zh-TW/TraitText.zh-TW.sjson.lua"
+			import "Game/Text/zh-TW/TraitText.zh-TW.sjson.lua"
 			DebugLogScriptImportProgress("TraitText SJSON")
 
 			-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
