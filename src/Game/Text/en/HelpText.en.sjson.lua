@@ -1164,6 +1164,39 @@ local newData = {
 		Description = "The {$Keywords.Shrine} is key to entering these challenges at the outer reaches.",
 	},
 	-- #endregion
+
+	-- #region Quests/Minor Prophecies
+	{
+		Id = "ModsNikkelMHadesBiomes_FirstClear",
+		DisplayName = "Is There No Escape?",
+		Description = "The daughter of the god of the dead shall someday break free from the realm in which she was born.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_MeetChthonicGods",
+		DisplayName = "Chthonic Colleagues",
+		Description = "The daughter of the god of the dead shall someday meet some of the rulers of the Underworld.",
+	},
+	{
+		Id = "A_Boss01",
+		DisplayName = "Met Megaera"
+	},
+	{
+		Id = "A_Boss02",
+		DisplayName = "Met Alecto"
+	},
+	{
+		Id = "A_Boss03",
+		DisplayName = "Met Tisiphone"
+	},
+	{
+		Id = "D_Boss01",
+		DisplayName = "Met Hades"
+	},
+	{
+		Id = "ThanatosFirstAppearance",
+		DisplayName = "Met Thanatos"
+	}
+	-- #endregion
 }
 
 local hadesHelpTextCopiedEntries = mod.ModifyHadesHelpTextEntries(hadesHelpTextTable)

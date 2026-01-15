@@ -407,6 +407,7 @@ local function on_ready()
 			import "Scripts/ObstacleData.lua"
 			import "Scripts/ObjectiveData.lua"
 			import "Scripts/ProjectileData.lua"
+			import "Scripts/QuestData.lua"
 			import "Scripts/RunClearData.lua"
 			import "Scripts/RunHistoryData.lua"
 			import "Scripts/WorldUpgradeData.lua"
