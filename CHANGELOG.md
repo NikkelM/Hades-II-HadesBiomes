@@ -10,6 +10,7 @@
 
 Other fixes and improvements:
 - Slightly boosted the volume of some music tracks.
+- If the mod installation is interrupted by closing the game, it will now continue where it left off instead of restarting from the beginning.
 - Fixed: Tisiphone's whip lash attack does not stun the player.
 - Fixed: When returning from a Chaos Trial, Zagreus' Journey cosmetics and other assets are not loaded until switching rooms.
 - Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".

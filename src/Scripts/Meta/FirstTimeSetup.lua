@@ -315,6 +315,11 @@ function mod.FirstTimeSetup()
 		return false
 	end
 
+	mod.DebugPrint("Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
+	local checksumsSrc = rom.path.combine(rom.paths.Content(), "Scripts\\checksums.txt")
+	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
+	copyFile(checksumsSrc, checksumsDest, true)
+
 	-- Doing an extra check to make sure Olympus Extra is not installed
 	mod.DebugPrint("Copying Fx animations...", 3)
 	if not copyHadesFxAnimations() then
@@ -380,11 +385,6 @@ function mod.FirstTimeSetup()
 
 	mod.DebugPrint("Copying Character animations...", 3)
 	copyHadesCharacterAnimationsNPCs()
-
-	mod.DebugPrint("Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
-	local checksumsSrc = rom.path.combine(rom.paths.Content(), "Scripts\\checksums.txt")
-	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
-	copyFile(checksumsSrc, checksumsDest, true)
 
 	local numMissingFiles = mod.CheckRequiredFiles(false)
 	if numMissingFiles > 0 then
