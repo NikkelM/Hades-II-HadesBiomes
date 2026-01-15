@@ -5,7 +5,7 @@ modutil.mod.Path.Wrap("RunHistoryUpdateVisibility", function(base, screen)
 	local lastIndex = math.max(1, firstIndex - screen.ItemsPerPage + 1)
 	for runIndex = firstIndex, lastIndex, -1 do
 		local run = game.GameState.RunHistory[runIndex] or game.CurrentRun
-		if run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess or run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldFail then
+		if mod.WasModdedRun(run) then
 			local button = screen.Components[screen.ButtonName .. runIndex]
 			local routeName = "RunHistoryScreen_RouteModsNikkelMHadesBiomes"
 			button.AnimationIndex = 7
@@ -23,7 +23,7 @@ modutil.mod.Path.Context.Wrap("ShowRunHistory", function(screen, button)
 		if args.Text == "RunHistoryScreen_Cleared" then
 			local run = button.Run
 			-- If the run was cleared, show the "ESCAPED" text instead of "PREVAILED!!"
-			if run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess or run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldFail then
+			if mod.WasModdedRun(run) then
 				args.Text = "ModsNikkelMHadesBiomes_RunHistoryScreen_Cleared"
 			end
 		end

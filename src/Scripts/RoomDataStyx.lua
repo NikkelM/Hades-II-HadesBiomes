@@ -615,6 +615,17 @@ local roomModifications = {
 	},
 
 	-- MINIBOSSES
+	BaseStyxMiniBoss = {
+		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+		-- Turn on the Bass stem, and play the outro music from the Drums section after the end combat rooms
+		CombatOverMusicEvents = mod.CombatOverMusicEvents.Styx,
+	},
+	D_MiniBoss01 = {
+		BackupCauseOfDeath = "SatyrRangedMiniboss",
+	},
+	D_MiniBoss02 = {
+		BackupCauseOfDeath = "RatThugMiniboss",
+	},
 	D_MiniBoss03 = {
 		-- Need to always call this, as overwriting it in the overrides is too late. The function will skip itself if it's not the correct encounter
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceCrawlerMiniBoss",
@@ -634,17 +645,17 @@ local roomModifications = {
 				}
 			},
 		},
+		BackupCauseOfDeath = "HeavyRangedForkedMiniboss",
 		EncounterSpecificDataOverwrites = {
 			MiniBossCrawler = mod.NilValue,
 			ModsNikkelMHadesBiomesMiniBossCrawler = {
 				SkipLastKillSound = true,
+				BackupCauseOfDeath = "CrawlerMiniBoss",
 			},
 		},
 	},
-	BaseStyxMiniBoss = {
-		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
-		-- Turn on the Bass stem, and play the outro music from the Drums section after the end combat rooms
-		CombatOverMusicEvents = mod.CombatOverMusicEvents.Styx,
+	D_MiniBoss04 = {
+		BackupCauseOfDeath = "ThiefImpulseMineLayerMiniboss",
 	},
 
 	-- BOSSES
@@ -680,6 +691,7 @@ local roomModifications = {
 				ActivateIds = { 552590, },
 			},
 		},
+		BackupCauseOfDeath = "Hades",
 	},
 
 	-- OTHER

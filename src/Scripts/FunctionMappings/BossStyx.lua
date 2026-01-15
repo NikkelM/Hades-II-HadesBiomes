@@ -969,7 +969,7 @@ function mod.RevulnerablePlayerAfterShout()
 end
 
 function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
-	if not game.CurrentRun.BiomesReached or not game.CurrentRun.BiomesReached.Tartarus then
+	if game.CurrentRun.ActiveBounty ~= nil then
 		-- This is a Chaos Trial run
 		return
 	end

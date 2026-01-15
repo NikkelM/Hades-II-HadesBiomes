@@ -643,6 +643,16 @@ local roomModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "MiniBossRoomPresentation" },
 		},
 	},
+	A_MiniBoss02 = {
+		BackupCauseOfDeath = "HeavyRangedSplitterMiniboss",
+	},
+	A_MiniBoss03 = {
+		-- Even though the enemy is called WretchAssassin, the Codex entry is called WretchAssassinMiniboss, which we need for the prtrait
+		BackupCauseOfDeath = "WretchAssassinMiniboss",
+	},
+	A_MiniBoss04 = {
+		BackupCauseOfDeath = "HeavyRangedSplitterMiniboss",
+	},
 
 	-- BOSSES
 	A_Boss01 = {
@@ -690,6 +700,7 @@ local roomModifications = {
 			},
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
+		BackupCauseOfDeath = "Harpy2",
 
 		HasFishingPoint = false,
 		HasPickaxePoint = false,
@@ -713,6 +724,7 @@ local roomModifications = {
 			{ FunctionName = _PLUGIN.guid .. "." .. "Harpy3MapRestore" },
 		},
 		RestorePresentationFunction = mod.NilValue,
+		BackupCauseOfDeath = "Harpy3",
 
 		-- Tisiphone adds walls during her fight, so gatherables would become inaccessible
 		HasHarvestPoint = false,

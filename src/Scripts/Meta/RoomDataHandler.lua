@@ -15,6 +15,14 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications, replaceme
 	for roomName, roomData in pairs(base) do
 		mod.RenameKeys(roomData, roomKeyReplacements, roomName)
 	end
+	for oldName, newName in pairs(mod.EnemyNameMappings) do
+		mod.UpdateField(modifications, oldName, newName, { "BackupCauseOfDeath" }, "RoomDataHandler modifications")
+		mod.UpdateField(replacements, oldName, newName, { "BackupCauseOfDeath" }, "RoomDataHandler replacements")
+		mod.UpdateField(modifications, oldName, newName,
+			{ "EncounterSpecificDataOverwrites", "*", "BackupCauseOfDeath" }, "RoomDataHandler modifications")
+		mod.UpdateField(replacements, oldName, newName,
+			{ "EncounterSpecificDataOverwrites", "*", "BackupCauseOfDeath" }, "RoomDataHandler replacements")
+	end
 
 	-- Apply replacements
 	for roomName, roomData in pairs(replacements) do

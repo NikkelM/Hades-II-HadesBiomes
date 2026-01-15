@@ -463,6 +463,7 @@ local roomModifications = {
 	},
 	X_MiniBoss02 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+		BackupCauseOfDeath = "SpreadShotUnitMiniboss",
 	},
 	X_Wrapping01 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
@@ -493,6 +494,7 @@ local roomModifications = {
 		RewardConsumableOverrides = mod.NilValue,
 		-- To not have the preview be created while the boat is still moving
 		UnlockExitsWait = 0.75,
+		BackupCauseOfDeath = "HydraHeadImmortal",
 
 		HasPickaxePoint = false,
 	},
@@ -504,6 +506,7 @@ local roomModifications = {
 				Value = 2,
 			},
 		},
+		BackupCauseOfDeath = "HydraHeadImmortal",
 
 		HasPickaxePoint = false,
 	},

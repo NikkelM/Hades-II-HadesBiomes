@@ -1807,6 +1807,7 @@ local enemyModifications = {
 	},
 	CrawlerMiniBoss = {
 		MaxHealth = 14000,
+		RunHistoryKilledByName = "HadesCrawlerMiniBoss",
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation",
 		OnDeathFunctionArgs = { Message = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage", },
 		BlockRaiseDead = true,

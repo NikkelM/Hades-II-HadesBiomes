@@ -462,6 +462,7 @@ local roomModifications = {
 				},
 			},
 		},
+		BackupCauseOfDeath = "Minotaur",
 
 		-- It would get placed somewhere in the middle of the arena, and has collision so could interfere with gameplay
 		HasPickaxePoint = false,
@@ -470,6 +471,7 @@ local roomModifications = {
 	},
 	Y_MiniBoss02 = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+		BackupCauseOfDeath = "FlurrySpawnerElite",
 	},
 
 	-- BOSSES
