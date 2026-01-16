@@ -1168,7 +1168,8 @@ local newData = {
 	-- #region Quests/Minor Prophecies
 	{
 		Id = "ModsNikkelMHadesBiomes_FirstClear",
-		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Is There No Escape?",
+		-- Space at the end of the display name is intentional to center the quest in the quest log, where the icon is hidden
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Is There No Escape? ",
 		Description = "The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born.",
 	},
 	{
@@ -1177,7 +1178,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_MeetChthonicGods",
-		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Chthonic Colleagues",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Chthonic Colleagues ",
 		Description = "The daughter of the god of the dead shall someday dream of meeting some of the rulers of the Underworld.",
 	},
 	{
@@ -1202,7 +1203,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_WeaponClears",
-		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Master of Arms",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Master of Arms ",
 		Description = "The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born using each of the {#Emph}Nocturnal Arms{#Prev}.",
 	},
 	-- #endregion
