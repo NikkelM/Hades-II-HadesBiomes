@@ -12,6 +12,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_WeaponClears",
 	"ModsNikkelMHadesBiomes_MeetChthonicGods",
 	-- self-improvement & stockpiling
+	"ModsNikkelMHadesBiomes_CosmeticsSmall",
 	-- boons & character traits
 	"ModsNikkelMHadesBiomes_KeepsakesQuest",
 	-- weapons & combat
@@ -100,11 +101,11 @@ local newQuestData = {
 			-- TODO: Hypnos, if #300 is implemented
 			-- Thanatos
 			{
-				PathTrue = { "GameState", "TextLinesRecord", "ThanadstosFirstAppearance" },
+				PathTrue = { "GameState", "TextLinesRecord", "ThanatosFirstAppearance" },
 			},
 			-- Hades
 			{
-				PathTrue = { "GameState", "RoomsEntered", "D_Bodsss01" },
+				PathTrue = { "GameState", "RoomsEntered", "D_Boss01" },
 			},
 		},
 		IncompleteName = "UnknownCondition_Meet",
@@ -201,6 +202,29 @@ local newQuestData = {
 			},
 		},
 		IncompleteName = "Quest_UnknownCondition",
+	},
+	-- Unlocked modded Cosmetics
+	ModsNikkelMHadesBiomes_CosmeticsSmall = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "CosmeticsPoints",
+		RewardResourceAmount = 2000,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "QuestStatus", "QuestCosmeticsSmall" },
+				IsAny = { "CashedOut" }
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "WorldUpgradesAdded" },
+				CountOf = mod.ModdedCosmeticIds,
+				Comparison = ">=",
+				Value = 15,
+			},
+		},
 	},
 }
 mod.AddTableKeysSkipDupes(game.QuestData, newQuestData)

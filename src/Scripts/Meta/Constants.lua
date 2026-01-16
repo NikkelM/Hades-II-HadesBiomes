@@ -430,3 +430,6 @@ mod.BossResourceNames = {
 -- All new resources
 mod.AllNewResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.NonBossResourceNames),
 	game.DeepCopyTable(mod.BossResourceNames))
+
+-- Populated in the loops in CosmeticData.lua
+mod.ModdedCosmeticIds = {}

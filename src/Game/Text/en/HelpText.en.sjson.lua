@@ -1216,6 +1216,11 @@ local newData = {
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Wanton Ransacking ",
 		Description = "The daughter of the god of the dead shall someday dream of slaying various armored Wardens guarding key Underworld chambers.",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_CosmeticsSmall",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} A Simple Job ",
+		Description = "The daughter of the god of the dead shall someday employ the Shade called {$Keywords.CharDora} to procure {#Emph}{$QuestData.ModsNikkelMHadesBiomes_CosmeticsSmall.CompleteGameStateRequirements.1.Value} decorations {#Prev}dreamt up from her family's past.",
+	},
 	-- #endregion
 }
 
