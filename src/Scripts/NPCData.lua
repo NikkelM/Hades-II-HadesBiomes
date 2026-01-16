@@ -113,8 +113,8 @@ local npcModifications = {
 			SisyphusAboutBouldy02 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
 			SisyphusLiberationQuest_Beginning_01 = { RequiredTextLines = { "SisyphusBackstory03", "SisyphusMeeting06", "SisyphusGift06", "ModsNikkelMHadesBiomes_BouldyFirstMeeting" }, },
 			-- The new name from SharedKeepsakePort
-			SisyphusAboutKeepsake01 = { RequiredTrait = "SisyphusVanillaKeepsake", },
-			SisyphusAboutKeepsake02 = { RequiredTrait = "SisyphusVanillaKeepsake", },
+			SisyphusAboutKeepsake01 = { RequiredTrait = "zannc-SharedKeepsakePort-SisyphusVanillaKeepsake", },
+			SisyphusAboutKeepsake02 = { RequiredTrait = "zannc-SharedKeepsakePort-SisyphusVanillaKeepsake", },
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
@@ -177,8 +177,8 @@ local npcModifications = {
 		},
 		InteractTextLineSets = {
 			-- The new name from SharedKeepsakePort
-			EurydiceAboutAcorn01 = { RequiredKeepsake = "ShieldBossKeepsake", },
-			EurydiceAboutAcorn02 = { RequiredKeepsake = "ShieldBossKeepsake", },
+			EurydiceAboutAcorn01 = { RequiredKeepsake = "zannc-SharedKeepsakePort-ShieldBossKeepsake", },
+			EurydiceAboutAcorn02 = { RequiredKeepsake = "zannc-SharedKeepsakePort-ShieldBossKeepsake", },
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
@@ -220,8 +220,8 @@ local npcModifications = {
 		},
 		InteractTextLineSets = {
 			-- The new name from SharedKeepsakePort
-			PatroclusAboutKeepsake01 = { RequiredKeepsake = "ShieldAfterHitKeepsake", },
-			PatroclusAboutKeepsake02 = { RequiredKeepsake = "ShieldAfterHitKeepsake", },
+			PatroclusAboutKeepsake01 = { RequiredKeepsake = "zannc-SharedKeepsakePort-ShieldAfterHitKeepsake", },
+			PatroclusAboutKeepsake02 = { RequiredKeepsake = "zannc-SharedKeepsakePort-ShieldAfterHitKeepsake", },
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
@@ -343,7 +343,7 @@ local npcModifications = {
 		},
 		BossPresentationIntroTextLineSets = {
 			-- The new name from SharedKeepsakePort
-			ThanatosFieldAboutKeepsake01 = { RequiredTrait = "PerfectClearDamageBonusKeepsake", },
+			ThanatosFieldAboutKeepsake01 = { RequiredTrait = "zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake", },
 		},
 	},
 }

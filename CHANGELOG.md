@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Fixed: When returning from a Chaos Trial, Zagreus' Journey cosmetics and other assets are not loaded until switching rooms.
 - Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".
 - Fixed: Gods don't comment on you choosing them over another god during a Family Dispute during Zagreus' Journey runs.
+- Fixed: Contextual voicelines with story NPCs relating to their respective keepsakes being equipped cannot trigger.
 - Fixed: In rare cases, some ineligible combinations of voicelines can play during NPC or boss encounters.
 - Fixed: Dying in a boss or miniboss room does not always show the correct portrait in the Run History screen.
 - Fixed: For saves with Zagreus' Journey runs from the alpha, some run results can show placeholder text.
