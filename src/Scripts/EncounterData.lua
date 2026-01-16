@@ -67,24 +67,3 @@ local encounterModifications = {
 }
 
 mod.ApplyModificationsAndInheritEncounterData(encounterDataChallengeCharon, encounterModifications, encounterReplacements)
-
--- For Charon, in order to spawn the ForbiddenShopItem, we need to insert an additional StartRoomUnthreadedEvent
-table.insert(game.EncounterData.Shop.StartRoomUnthreadedEvents,
-	{
-		FunctionName = _PLUGIN.guid .. "." .. "CheckForbiddenShopItem",
-		GameStateRequirements = {
-			{
-				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
-			},
-			{
-				PathFalse = { "CurrentRun", "ForbiddenShopItemOffered" },
-			},
-			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
-				Comparison = ">=",
-				Value = 1,
-			},
-			ChanceToPlay = 0.22,
-		},
-	}
-)

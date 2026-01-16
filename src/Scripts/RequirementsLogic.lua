@@ -105,6 +105,26 @@ function mod.IsShrinePointDoorEligible(currentRun, currentRoom)
 	return true
 end
 
+function mod.IsForbiddenShopItemEligible(currentRun, currentRoom)
+	if currentRoom.ForceForbiddenShopItem then
+		return true
+	end
+
+	if game.HasHeroTraitValue("ForceForbiddenShopItem") then
+		return true
+	end
+
+	if not currentRoom.ForbiddenShopItemChanceSuccess then
+		return false
+	end
+
+	if not game.IsGameStateEligible(currentRun, currentRoom.ForbiddenShopItemRequirements) then
+		return false
+	end
+
+	return true
+end
+
 -- Used to check if the new Cauldron category should be revealed or not
 function mod.IsAnyWorldUpgradeEligible(source, args)
 	args = args or {}

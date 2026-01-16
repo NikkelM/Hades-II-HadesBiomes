@@ -272,6 +272,12 @@ modutil.mod.Path.Wrap("HandleSecretSpawns", function(base, currentRun)
 				currentRun.LastShrinePointDoorDepth = game.GetRunDepth(currentRun)
 			end
 		end
+
+		-- ForbiddenShopItem/Charon Sack of Gold
+		local forbiddenShopItemId = GetClosest({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "ForbiddenShopItemSpawnPoint" })
+		if forbiddenShopItemId ~= nil and forbiddenShopItemId ~= 0 and mod.IsForbiddenShopItemEligible(currentRun, currentRoom) then
+			mod.SpawnForbiddenShopItem(currentRoom, { SpawnOnId = forbiddenShopItemId })
+		end
 	end
 end)
 
