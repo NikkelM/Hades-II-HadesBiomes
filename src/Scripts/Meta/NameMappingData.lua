@@ -661,6 +661,9 @@ mod.HadesHelpTextCopyKeys = {
 	-- ClearGiftDrops = "ModsNikkelMHadesBiomes_RunClear_ClearGiftDrops",
 	-- ClearLockKeyDrops = "ModsNikkelMHadesBiomes_RunClear_ClearLockKeyDrops",
 	-- #endregion
+	-- #region QuestData/Minor Prophecies
+	UnknownCondition_Meet = true,
+	-- #endregion
 	-- #region Misc
 	PassiveItem = true,
 	Assist = true,

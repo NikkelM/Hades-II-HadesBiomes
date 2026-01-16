@@ -1168,13 +1168,17 @@ local newData = {
 	-- #region Quests/Minor Prophecies
 	{
 		Id = "ModsNikkelMHadesBiomes_FirstClear",
-		DisplayName = "Is There No Escape?",
-		Description = "The daughter of the god of the dead shall someday break free from the realm in which she was born.",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Is There No Escape?",
+		Description = "The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born.",
+	},
+	{
+		Id = "PersephoneFirstMeeting",
+		DisplayName = "Escape your Nightmare"
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_MeetChthonicGods",
-		DisplayName = "Chthonic Colleagues",
-		Description = "The daughter of the god of the dead shall someday meet some of the rulers of the Underworld.",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Chthonic Colleagues",
+		Description = "The daughter of the god of the dead shall someday dream of meeting some of the rulers of the Underworld.",
 	},
 	{
 		Id = "A_Boss01",
@@ -1195,7 +1199,12 @@ local newData = {
 	{
 		Id = "ThanatosFirstAppearance",
 		DisplayName = "Met Thanatos"
-	}
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_WeaponClears",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Master of Arms",
+		Description = "The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born using each of the {#Emph}Nocturnal Arms{#Prev}.",
+	},
 	-- #endregion
 }
 

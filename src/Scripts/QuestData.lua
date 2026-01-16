@@ -1,7 +1,19 @@
+-- To hide the icon in the list view, and show it smaller in the detail view
+game.ScreenData.QuestLog.ReadyToCashOutFormat.TextSymbolScale = 0
+game.ScreenData.QuestLog.IncompleteFormat.TextSymbolScale = 0
+game.ScreenData.QuestLog.CashedOutFormat.TextSymbolScale = 0
+game.ScreenData.QuestLog.ComponentData.InfoBoxTitle.TextArgs.TextSymbolScale = 0.5
+
 -- The order of the quests in the Quest log, these will be appended to the end of the vanilla list
 local newQuestOrderData = {
+	-- key / mission-critical
 	"ModsNikkelMHadesBiomes_FirstClear",
+	-- major / priority
+	"ModsNikkelMHadesBiomes_WeaponClears",
 	"ModsNikkelMHadesBiomes_MeetChthonicGods",
+	-- self-improvement & stockpiling
+	-- boons & character traits
+	-- weapons & combat
 }
 game.ConcatTableValuesIPairs(game.QuestOrderData, newQuestOrderData)
 
@@ -20,10 +32,9 @@ local newQuestData = {
 			{
 				RandomRemaining = true,
 				BreakIfPlayed = true,
-				SuccessiveChanceToPlay = 0.3,
+				SuccessiveChanceToPlay = 0.2,
 				PreLineWait = 0.4,
 				Cooldowns = { { Name = "MelinoeProphecyFulfilledSpeech", Time = 3 }, },
-				{ Cue = "/VO/Melinoe_4725", Text = "Well, thank the Fates..." },
 				{ Cue = "/VO/Melinoe_1901", Text = "Well this worked out, I guess." },
 				{ Cue = "/VO/Melinoe_1730", Text = "The Fates expected I would get this far..." },
 			},
@@ -53,9 +64,7 @@ local newQuestData = {
 		RewardResourceAmount = 1000,
 		CompleteGameStateRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
-				Comparison = ">=",
-				Value = 1,
+				PathTrue = { "GameState", "TextLinesRecord", "PersephoneFirstMeeting", },
 			},
 		},
 		CashedOutVoiceLines = {
@@ -84,13 +93,50 @@ local newQuestData = {
 			{
 				PathTrue = { "GameState", "RoomsEntered", "A_Boss03" },
 			},
-			-- Hades
-			{
-				PathTrue = { "GameState", "RoomsEntered", "D_Boss01" },
-			},
+			-- TODO: Hypnos, if #300 is implemented
 			-- Thanatos
 			{
-				PathTrue = { "GameState", "TextLinesRecord", "ThanatosFirstAppearance" },
+				PathTrue = { "GameState", "TextLinesRecord", "ThanadstosFirstAppearance" },
+			},
+			-- Hades
+			{
+				PathTrue = { "GameState", "RoomsEntered", "D_Bodsss01" },
+			},
+		},
+		IncompleteName = "UnknownCondition_Meet",
+	},
+	ModsNikkelMHadesBiomes_WeaponClears = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 3,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "WeaponsUnlocked" },
+				HasAll = {
+					"WeaponStaffSwing",
+					"WeaponDagger",
+					"WeaponTorch",
+					"WeaponAxe",
+					"WeaponLob",
+					"WeaponSuit",
+				},
+			},
+			{
+				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_FirstClear" },
+				IsAny = { "CashedOut" }
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "ClearedWithWeapons", "Styx" },
+				HasAll = {
+					"WeaponStaffSwing",
+					"WeaponDagger",
+					"WeaponTorch",
+					"WeaponAxe",
+					"WeaponLob",
+					"WeaponSuit",
+				},
 			},
 		},
 	},
