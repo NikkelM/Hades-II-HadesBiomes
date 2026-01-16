@@ -456,6 +456,7 @@ mod.HadesHelpTextCopyKeys = {
 	-- NPC_Bouldy_01 = true, -- Duplicate
 	-- NPC_Hades_01 = true, -- Duplicate
 	-- NPC_Hades_Story_02 = true, -- Using alias
+	Achilles = true,
 	-- #endregion
 	-- #region GameOutroData (Post-Ending)
 	Outro_PostEnding01 = true,
@@ -1098,6 +1099,7 @@ mod.HadesHelpTextAliases = {
 	ClearedCerberus_Alt2_Title = "ClearedCerberus_Title",
 	CharProtag = "NPC_Zagreus_Past_01",
 	HitAndRunUnitElite = "HitAndRunUnit",
+	CharAchilles = "Achilles",
 }
 
 -- List of Speakers for which the entries in the _NPCData files should be copied
