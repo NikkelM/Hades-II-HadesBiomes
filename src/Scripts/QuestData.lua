@@ -15,6 +15,7 @@ local newQuestOrderData = {
 	-- boons & character traits
 	"ModsNikkelMHadesBiomes_KeepsakesQuest",
 	-- weapons & combat
+	"ModsNikkelMHadesBiomes_MiniBossKills",
 }
 game.ConcatTableValuesIPairs(game.QuestOrderData, newQuestOrderData)
 
@@ -164,6 +165,38 @@ local newQuestData = {
 					"zannc-SharedKeepsakePort-ShieldBossKeepsake",
 					"zannc-SharedKeepsakePort-ShieldAfterHitKeepsake",
 					"zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake",
+				},
+			},
+		},
+		IncompleteName = "Quest_UnknownCondition",
+	},
+	-- Defeated all minibosses
+	ModsNikkelMHadesBiomes_MiniBossKills = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "CardUpgradePoints",
+		RewardResourceAmount = 5,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "RoomsEntered", "D_Intro" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "EnemyKills", },
+				HasAll = {
+					"HadesBloodlessGrenadierElite",
+					"HeavyRangedSplitterMiniboss",
+					"WretchAssassinMiniboss",
+					"ShieldRangedElite",
+					"HitAndRunUnitElite",
+					"CrusherUnitElite",
+					"SpreadShotUnitMiniboss",
+					"FlurrySpawnerElite",
+					"ThiefImpulseMineLayerMiniboss",
+					"HeavyRangedForkedMiniboss",
+					"RatThugMiniboss",
+					"SatyrRangedMiniboss",
+					"HadesCrawlerMiniBoss",
 				},
 			},
 		},

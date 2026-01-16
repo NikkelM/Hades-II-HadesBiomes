@@ -1211,6 +1211,11 @@ local newData = {
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Close at Heart ",
 		Description = "The daughter of the god of the dead shall someday equip various Keepsakes from those who grew closer to her brother.",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_MiniBossKills",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Wanton Ransacking ",
+		Description = "The daughter of the god of the dead shall someday dream of slaying various armored Wardens guarding key Underworld chambers.",
+	},
 	-- #endregion
 }
 
