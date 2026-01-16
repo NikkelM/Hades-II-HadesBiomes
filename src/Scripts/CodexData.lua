@@ -123,11 +123,17 @@ for oldName, newName in pairs(mod.HadesCodexTextNameMappings) do
 	mod.UpdateField(hadesCodexData, oldName, newName, { "Entries", "*", "Entries", "*", "Text" }, "CodexData entries")
 end
 
+-- Remove Romance/Custom Relationship entries
+hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01.Entries[4] = nil
+hadesCodexData.ChthonicGods.Entries.NPC_Thanatos_01.Entries[4] = nil
+hadesCodexData.OtherDenizens.Entries.NPC_Sisyphus_01.Entries[4] = nil
+hadesCodexData.OtherDenizens.Entries.NPC_Eurydice_01.Entries[4] = nil
+hadesCodexData.OtherDenizens.Entries.NPC_Patroclus_01.Entries[4] = nil
+
 local updatedCodexData = {}
 -- Manually copy some entries from other groups
 updatedCodexData.SavedEntries = {}
 updatedCodexData.SavedEntries.NPC_FurySister_01 = hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01
--- updatedCodexData.SavedEntries.NPC_FurySister_01.Entries[4] = nil -- Romance entry
 updatedCodexData.SavedEntries.NPC_FurySister_01.Image = "ModsNikkelMHadesBiomes_" ..
 		updatedCodexData.SavedEntries.NPC_FurySister_01.Image
 
@@ -159,14 +165,17 @@ updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[3].UnlockGameStateRequirem
 		Value = 15,
 	}
 }
--- updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[4] = nil -- Romance entry
 
 updatedCodexData.SavedEntries.Harpy2 = hadesCodexData.ChthonicGods.Entries.Harpy2
 updatedCodexData.SavedEntries.Harpy2.Image = "ModsNikkelMHadesBiomes_" .. updatedCodexData.SavedEntries.Harpy2.Image
 updatedCodexData.SavedEntries.Harpy3 = hadesCodexData.ChthonicGods.Entries.Harpy3
 updatedCodexData.SavedEntries.Harpy3.Image = "ModsNikkelMHadesBiomes_" .. updatedCodexData.SavedEntries.Harpy3.Image
 updatedCodexData.SavedEntries.Theseus = hadesCodexData.OtherDenizens.Entries.Theseus
+updatedCodexData.SavedEntries.Theseus.Image = "ModsNikkelMHadesBiomes_" .. updatedCodexData.SavedEntries.Theseus.Image
+hadesCodexData.OtherDenizens.Entries.Theseus = nil
 updatedCodexData.SavedEntries.Minotaur = hadesCodexData.OtherDenizens.Entries.Minotaur
+updatedCodexData.SavedEntries.Minotaur.Image = "ModsNikkelMHadesBiomes_" .. updatedCodexData.SavedEntries.Minotaur.Image
+hadesCodexData.OtherDenizens.Entries.Minotaur = nil
 
 updatedCodexData.SavedEntries.NPC_Hades_01 = hadesCodexData.ChthonicGods.Entries.NPC_Hades_01
 updatedCodexData.SavedEntries.NPC_Hades_01.Entries[1].UnlockThreshold = 1
@@ -186,61 +195,77 @@ for groupName, groupData in pairs(hadesCodexData) do
 		-- Map unlock requirements to the new system
 		if groupData.UnlockType == "Enter" then
 			for biomeName, biomeCollection in pairs(groupData.Entries) do
-				biomeCollection.ModsNikkelMHadesBiomesSkipShowKillCount = true
-				for _, entry in ipairs(biomeCollection.Entries) do
-					if entry.UnlockThreshold then
-						entry.UnlockGameStateRequirements =
-						{
+				-- Remove the entry if it's not in the hadesCodexOrdering[mod.CodexChapterName]
+				if not game.Contains(hadesCodexOrdering[mod.CodexChapterName], biomeName) then
+					mod.DebugPrint("Removing biome " .. biomeName .. " from CodexData as it's not in the ordering", 4)
+					groupData.Entries[biomeName] = nil
+				else
+					biomeCollection.ModsNikkelMHadesBiomesSkipShowKillCount = true
+					for _, entry in ipairs(biomeCollection.Entries) do
+						if entry.UnlockThreshold then
+							entry.UnlockGameStateRequirements =
 							{
-								Path = { "GameState", "BiomeVisits", biomeName },
-								Comparison = ">=",
-								Value = entry.UnlockThreshold,
-							},
-						}
-						entry.UnlockThreshold = nil
+								{
+									Path = { "GameState", "BiomeVisits", biomeName },
+									Comparison = ">=",
+									Value = entry.UnlockThreshold,
+								},
+							}
+							entry.UnlockThreshold = nil
+						end
 					end
 				end
 			end
 		elseif groupData.UnlockType == "Slay" or groupData.UnlockType == "SlayAlt" then
 			groupData.ShowKillCount = true
 			for enemyName, enemyCollection in pairs(groupData.Entries) do
-				for _, entry in ipairs(enemyCollection.Entries) do
-					if entry.UnlockThreshold then
-						local newThreshold = entry.UnlockThreshold
-						-- For normal enemies, up the requirements
-						if groupData.UnlockType == "Slay" then
-							if newThreshold == 1 then
-								newThreshold = 5
-							else
-								newThreshold = newThreshold * 2
+				if not game.Contains(hadesCodexOrdering[mod.CodexChapterName], enemyName) then
+					mod.DebugPrint("Removing enemy " .. enemyName .. " from CodexData as it's not in the ordering", 4)
+					groupData.Entries[enemyName] = nil
+				else
+					for _, entry in ipairs(enemyCollection.Entries) do
+						if entry.UnlockThreshold then
+							local newThreshold = entry.UnlockThreshold
+							-- For normal enemies, up the requirements
+							if groupData.UnlockType == "Slay" then
+								if newThreshold == 1 then
+									newThreshold = 5
+								else
+									newThreshold = newThreshold * 2
+								end
 							end
+							entry.UnlockGameStateRequirements = {
+								{
+									Path = { "GameState", "EnemyKills" },
+									SumOf = hadesEnemyCodexGroups[enemyName] or { enemyName },
+									Comparison = ">=",
+									Value = newThreshold,
+								},
+							}
+							entry.UnlockThreshold = nil
 						end
-						entry.UnlockGameStateRequirements = {
-							{
-								Path = { "GameState", "EnemyKills" },
-								SumOf = hadesEnemyCodexGroups[enemyName] or { enemyName },
-								Comparison = ">=",
-								Value = newThreshold,
-							},
-						}
-						entry.UnlockThreshold = nil
 					end
 				end
 			end
 		elseif groupData.UnlockType == "Interact" then
 			for characterName, characterCollection in pairs(groupData.Entries) do
-				characterCollection.ModsNikkelMHadesBiomesSkipShowKillCount = true
-				for _, entry in ipairs(characterCollection.Entries) do
-					if entry.UnlockThreshold then
-						entry.UnlockGameStateRequirements =
-						{
+				if not game.Contains(hadesCodexOrdering[mod.CodexChapterName], characterName) then
+					mod.DebugPrint("Removing character " .. characterName .. " from CodexData as it's not in the ordering", 4)
+					groupData.Entries[characterName] = nil
+				else
+					characterCollection.ModsNikkelMHadesBiomesSkipShowKillCount = true
+					for _, entry in ipairs(characterCollection.Entries) do
+						if entry.UnlockThreshold then
+							entry.UnlockGameStateRequirements =
 							{
-								Path = { "GameState", "UseRecord", characterName },
-								Comparison = ">=",
-								Value = entry.UnlockThreshold,
-							},
-						}
-						entry.UnlockThreshold = nil
+								{
+									Path = { "GameState", "UseRecord", characterName },
+									Comparison = ">=",
+									Value = entry.UnlockThreshold,
+								},
+							}
+							entry.UnlockThreshold = nil
+						end
 					end
 				end
 			end
@@ -293,7 +318,8 @@ end
 updatedCodexData[codexGroupNameMappings.OtherDenizens] = nil
 
 -- Set metadata for the new group
-updatedCodexData[codexGroupNameMappings.Enemies].Icon = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_72x72"
+updatedCodexData[codexGroupNameMappings.Enemies].Icon =
+"Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_72x72"
 updatedCodexData[codexGroupNameMappings.Enemies].TitleText = "ModsNikkelMHadesBiomesCodexEntryTitleText"
 
 hadesCodexData = updatedCodexData
