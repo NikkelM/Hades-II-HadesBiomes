@@ -1,6 +1,7 @@
 -- #region ForbiddenShopItem spawn
-function mod.CheckForbiddenShopItem(eventSource, args)
-	local spawnOnId = GetClosest({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "ForbiddenShopItemSpawnPoint" })
+function mod.SpawnForbiddenShopItem(eventSource, args)
+	args = args or {}
+	local spawnOnId = args.SpawnOnId or GetClosest({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "ForbiddenShopItemSpawnPoint" })
 	if spawnOnId == nil or spawnOnId == 0 then
 		return
 	end
@@ -8,7 +9,6 @@ function mod.CheckForbiddenShopItem(eventSource, args)
 	game.CurrentRun.ForbiddenShopItemOffered = true
 
 	local consumableName = "ForbiddenShopItem"
-	-- local playerId = GetIdsByType({ Name = "_PlayerUnit" })
 	local consumableId = SpawnObstacle({ Name = consumableName, DestinationId = spawnOnId, Group = "Standing" })
 	local consumable = game.CreateConsumableItem(consumableId, consumableName, 0)
 	if consumable.DropMoney ~= nil then
@@ -16,7 +16,6 @@ function mod.CheckForbiddenShopItem(eventSource, args)
 			game.GetTotalHeroTraitValue("MoneyMultiplier", { IsMultiplier = true }))
 	end
 
-	table.insert(game.CurrentRun.CurrentRoom.Store.SpawnedStoreItems, { ObjectId = consumableId, Cost = consumable.Cost })
 	SetObstacleProperty({ Property = "MagnetismWhileBlocked", Value = 0, DestinationId = consumableId })
 
 	local shopIds = GetInactiveIds({ Name = "ForbiddenShop" })
@@ -38,7 +37,7 @@ function mod.ForbiddenShopItemTaken(source, args)
 
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ForbiddenShopItemTakenVoiceLines)
 
-	game.wait(0.1)
+	game.wait(0.2)
 
 	game.StopSecretMusic()
 	game.EndAmbience(0.1)

@@ -427,6 +427,19 @@ local roomModifications = {
 		PickaxePointChance = 0.4,
 		ExorcismPointChance = 0.4,
 		FishingPointChance = 0.4,
+
+		-- Charon's Sack of Gold
+		ForbiddenShopItemRequirements = {
+			{
+				PathFalse = { "CurrentRun", "ForbiddenShopItemOffered" },
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+		},
+		ForbiddenShopItemSpawnChance = 0.22,
 	},
 	Y_PreBoss01 = {
 		SkipLastKillPresentation = true,
