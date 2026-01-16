@@ -1221,6 +1221,11 @@ local newData = {
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} A Simple Job ",
 		Description = "The daughter of the god of the dead shall someday employ the Shade called {$Keywords.CharDora} to procure {#Emph}{$QuestData.ModsNikkelMHadesBiomes_CosmeticsSmall.CompleteGameStateRequirements.1.Value} decorations {#Prev}dreamt up from her family's past.",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_CodexSmall",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Chthonic Knowledge ",
+		Description = "The daughter of the god of the dead shall someday recall a portion of the knowledge once contained in her brother's Underworld Codex entrusted to him by the great {$Keywords.CharAchilles}.",
+	},
 	-- #endregion
 }
 
