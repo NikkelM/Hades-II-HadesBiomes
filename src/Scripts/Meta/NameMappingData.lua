@@ -1097,13 +1097,16 @@ mod.HadesHelpTextAliases = {
 	ClearedCerberus_Alt1_Title = "ClearedCerberus_Title",
 	ClearedCerberus_Alt2_Title = "ClearedCerberus_Title",
 	CharProtag = "NPC_Zagreus_Past_01",
+	HitAndRunUnitElite = "HitAndRunUnit",
 }
 
 -- List of Speakers for which the entries in the _NPCData files should be copied
+-- TODO: Thanatos?
 mod.HadesNPCTextSpeakers = {
 	Sisyphus = true,
 	Eurydice = true,
 	Patroclus = true,
+	Thanatos = true,
 	Persephone = true, -- For now - we don't need all of her voicelines, as they are split between Surface and Home
 	-- Cerberus Storyteller voicelines from mod.StorytellerVoicelines
 	-- ZagreusField voicelines from mod.ZagreusFieldVoicelines
