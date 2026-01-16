@@ -1206,6 +1206,11 @@ local newData = {
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Master of Arms ",
 		Description = "The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born using each of the {#Emph}Nocturnal Arms{#Prev}.",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_KeepsakesQuest",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Close at Heart ",
+		Description = "The daughter of the god of the dead shall someday equip various Keepsakes from those who grew closer to her brother.",
+	},
 	-- #endregion
 }
 

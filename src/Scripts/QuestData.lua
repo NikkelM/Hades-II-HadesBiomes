@@ -13,6 +13,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_MeetChthonicGods",
 	-- self-improvement & stockpiling
 	-- boons & character traits
+	"ModsNikkelMHadesBiomes_KeepsakesQuest",
 	-- weapons & combat
 }
 game.ConcatTableValuesIPairs(game.QuestOrderData, newQuestOrderData)
@@ -58,6 +59,7 @@ local newQuestData = {
 			},
 		},
 	},
+	-- Clear once
 	ModsNikkelMHadesBiomes_FirstClear = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "MetaCurrency",
@@ -76,6 +78,7 @@ local newQuestData = {
 			{ Cue = "/VO/Moros_0281", Text = "You are emboldened by your knowledge of the past." },
 		},
 	},
+	-- Meet Megaera, Alecto, Tisiphone, Thanatos, Hades, (Hypnos)
 	ModsNikkelMHadesBiomes_MeetChthonicGods = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "MetaCurrency",
@@ -105,6 +108,7 @@ local newQuestData = {
 		},
 		IncompleteName = "UnknownCondition_Meet",
 	},
+	-- Clear with each weapon (any aspect)
 	ModsNikkelMHadesBiomes_WeaponClears = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "WeaponPointsRare",
@@ -139,6 +143,31 @@ local newQuestData = {
 				},
 			},
 		},
+	},
+	-- Equip new keepsakes (from SharedKeepsakePort)
+	ModsNikkelMHadesBiomes_KeepsakesQuest = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "SuperGiftPoints",
+		RewardResourceAmount = 2,
+		UnlockGameStateRequirements = {
+			-- Has met any of the new NPCs
+			{
+				Path = { "GameState", "UseRecord" },
+				HasAny = { "NPC_Sisyphus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01", "NPC_Thanatos_Field_01" }
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "TraitsTaken" },
+				HasAll = {
+					"zannc-SharedKeepsakePort-SisyphusVanillaKeepsake",
+					"zannc-SharedKeepsakePort-ShieldBossKeepsake",
+					"zannc-SharedKeepsakePort-ShieldAfterHitKeepsake",
+					"zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake",
+				},
+			},
+		},
+		IncompleteName = "Quest_UnknownCondition",
 	},
 }
 mod.AddTableKeysSkipDupes(game.QuestData, newQuestData)
