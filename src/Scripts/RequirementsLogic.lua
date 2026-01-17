@@ -202,6 +202,56 @@ function mod.GetFastestRunClearTime(currentRun)
 	return game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache or 999999
 end
 
+function mod.GetAspectsFromWeaponName(weaponName)
+	local aspects = {}
+	if game.ScreenData.WeaponUpgradeScreen.DisplayOrder[weaponName] ~= nil then
+		aspects = game.ScreenData.WeaponUpgradeScreen.DisplayOrder[weaponName]
+	else
+		aspects = { weaponName }
+	end
+	return aspects
+end
+
+function mod.WeaponHasModdedClearTime(source, args)
+	args = args or {}
+	if args.WeaponName == nil or args.RequiredClearTime == nil then
+		return false
+	end
+	local weaponName = args.WeaponName
+	local requiredClearTime = args.RequiredClearTime
+
+	local aspectsToCheck = mod.GetAspectsFromWeaponName(weaponName)
+	for _, aspectName in ipairs(aspectsToCheck) do
+		local traitStat = game.GameState.LifetimeTraitStats[aspectName]
+		if traitStat ~= nil and traitStat.ModsNikkelMHadesBiomesFastestTime ~= nil then
+			if traitStat.ModsNikkelMHadesBiomesFastestTime <= requiredClearTime then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function mod.WeaponHasModdedShrinePointClear(source, args)
+	args = args or {}
+	if args.WeaponName == nil or args.RequiredShrinePoints == nil then
+		return false
+	end
+	local weaponName = args.WeaponName
+	local requiredShrinePoints = args.RequiredShrinePoints
+
+	local aspectsToCheck = mod.GetAspectsFromWeaponName(weaponName)
+	for _, aspectName in ipairs(aspectsToCheck) do
+		local traitStat = game.GameState.LifetimeTraitStats[aspectName]
+		if traitStat ~= nil and traitStat.ModsNikkelMHadesBiomesHighestShrinePoints ~= nil then
+			if traitStat.ModsNikkelMHadesBiomesHighestShrinePoints >= requiredShrinePoints then
+				return true
+			end
+		end
+	end
+	return false
+end
+
 function mod.GetHighestShrinePointRunClear(currentRun, args)
 	-- args = args or {}
 	-- local highestPoints = 0

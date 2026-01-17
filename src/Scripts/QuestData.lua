@@ -11,6 +11,7 @@ local newQuestOrderData = {
 	-- major / priority
 	"ModsNikkelMHadesBiomes_QuestMeetChthonicGods",
 	"ModsNikkelMHadesBiomes_QuestWeaponClears",
+	"ModsNikkelMHadesBiomes_QuestWeaponClearsFast",
 	"ModsNikkelMHadesBiomes_QuestWeaponClearsHighHeat",
 	"ModsNikkelMHadesBiomes_QuestMetaUpgrades",
 	"ModsNikkelMHadesBiomes_QuestPactUpgrades",
@@ -95,20 +96,10 @@ local newQuestData = {
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
 			{
-				Path = { "GameState", "WeaponsUnlocked" },
-				HasAll = {
-					"WeaponStaffSwing",
-					"WeaponDagger",
-					"WeaponTorch",
-					"WeaponAxe",
-					"WeaponLob",
-					"WeaponSuit",
-				},
-			},
-			{
 				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
 				IsAny = { "CashedOut" }
 			},
+			NamedRequirements = { "AllWeaponsUnlocked" },
 		},
 		CompleteGameStateRequirements = {
 			{
@@ -405,34 +396,84 @@ local newQuestData = {
 		},
 		CompleteGameStateRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints", "Styx", "WeaponStaffSwing" },
-				Comparison = ">=",
-				Value = 32,
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedShrinePointClear",
+				FunctionArgs = { WeaponName = "WeaponStaffSwing", RequiredShrinePoints = 32, },
 			},
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints", "Styx", "WeaponDagger" },
-				Comparison = ">=",
-				Value = 32,
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedShrinePointClear",
+				FunctionArgs = { WeaponName = "WeaponDagger", RequiredShrinePoints = 32, },
 			},
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints", "Styx", "WeaponTorch" },
-				Comparison = ">=",
-				Value = 32,
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedShrinePointClear",
+				FunctionArgs = { WeaponName = "WeaponTorch", RequiredShrinePoints = 32, },
 			},
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints", "Styx", "WeaponAxe" },
-				Comparison = ">=",
-				Value = 32,
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedShrinePointClear",
+				FunctionArgs = { WeaponName = "WeaponAxe", RequiredShrinePoints = 32, },
 			},
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints", "Styx", "WeaponLob" },
-				Comparison = ">=",
-				Value = 32,
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedShrinePointClear",
+				FunctionArgs = { WeaponName = "WeaponLob", RequiredShrinePoints = 32, },
 			},
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints", "Styx", "WeaponSuit" },
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedShrinePointClear",
+				FunctionArgs = { WeaponName = "WeaponSuit", RequiredShrinePoints = 32, },
+			},
+		},
+		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {
+			"WeaponStaffSwing",
+			"WeaponDagger",
+			"WeaponTorch",
+			"WeaponAxe",
+			"WeaponLob",
+			"WeaponSuit",
+		},
+	},
+	-- Clear in under 22 minutes with all weapons
+	ModsNikkelMHadesBiomes_QuestWeaponClearsFast = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 3,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestWeaponClears" },
+				IsAny = { "CashedOut" }
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache" },
+				Comparison = "<=",
+				Value = 1500,
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
 				Comparison = ">=",
-				Value = 32,
+				Value = 5,
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "WeaponStaffSwing", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "WeaponDagger", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "WeaponTorch", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "WeaponAxe", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "WeaponLob", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "WeaponSuit", RequiredClearTime = 1320, },
 			},
 		},
 		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {

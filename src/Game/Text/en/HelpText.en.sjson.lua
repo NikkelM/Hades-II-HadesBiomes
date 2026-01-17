@@ -1275,6 +1275,12 @@ local newData = {
 		Description =
 		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, using each of the {#Emph}Nocturnal Arms {#Prev}and, I don't know, {#UseShrinePointFormat}32{#Prev}{!Icons.ShrinePoint} from the {#Emph}Oath of the Unseen{#Prev}?",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestWeaponClearsFast",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Short Work ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, in no more than {#BoldFormatGraft}22 min.{#Prev}, using each of the {#Emph}Nocturnal Arms {#Prev}.",
+	},
 	-- #endregion
 }
 

@@ -182,16 +182,6 @@ modutil.mod.Path.Wrap("RecordRunCleared", function(base)
 			end
 		end
 
-		-- Record the highest fear level with which the current weapon has cleared a run
-		game.GameState.ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints[game.CurrentRun.CurrentRoom.RoomSetName] = game
-				.GameState.ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints[game.CurrentRun.CurrentRoom.RoomSetName] or {}
-		for weaponName in pairs(game.CurrentRun.Hero.Weapons) do
-			if game.CurrentRun.ShrinePointsCache > (game.GameState.ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints[game.CurrentRun.CurrentRoom.RoomSetName][weaponName] or 0) then
-				game.GameState.ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints[game.CurrentRun.CurrentRoom.RoomSetName][weaponName] =
-						game.CurrentRun.ShrinePointsCache
-			end
-		end
-
 		-- Record full run clears for modded runs separately
 		if #game.CurrentRun.KeepsakeCache == 1 then
 			game.GameState.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes[game.CurrentRun.KeepsakeCache[1]] = true
@@ -223,23 +213,25 @@ end)
 
 modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
 	if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
-		local clearCountRecordName = "ModsNikkelMHadesBiomesClearCount"
-		local fastestTimeRecordName = "ModsNikkelMHadesBiomesFastestTime"
-		local shrinePointsRecordName = "ModsNikkelMHadesBiomesHighestShrinePoints"
+		if game.CurrentRun.ActiveBounty == nil then
+			local clearCountRecordName = "ModsNikkelMHadesBiomesClearCount"
+			local fastestTimeRecordName = "ModsNikkelMHadesBiomesFastestTime"
+			local shrinePointsRecordName = "ModsNikkelMHadesBiomesHighestShrinePoints"
 
-		if run.TraitCache ~= nil then
-			for traitName in pairs(run.TraitCache) do
-				game.GameState.LifetimeTraitStats[traitName] = game.GameState.LifetimeTraitStats[traitName] or {}
-				local stats = game.GameState.LifetimeTraitStats[traitName]
-				stats.UseCount = (stats.UseCount or 0) + 1
-				if run.Cleared then
-					stats[clearCountRecordName] = (stats[clearCountRecordName] or 0) + 1
-					stats.ClearCount = (stats.ClearCount or 0) + 1
-					if run.GameplayTime < (stats[fastestTimeRecordName] or 999999) then
-						stats[fastestTimeRecordName] = run.GameplayTime
-					end
-					if run.ShrinePointsCache > (stats[shrinePointsRecordName] or 0) then
-						stats[shrinePointsRecordName] = run.ShrinePointsCache
+			if run.TraitCache ~= nil then
+				for traitName in pairs(run.TraitCache) do
+					game.GameState.LifetimeTraitStats[traitName] = game.GameState.LifetimeTraitStats[traitName] or {}
+					local stats = game.GameState.LifetimeTraitStats[traitName]
+					stats.UseCount = (stats.UseCount or 0) + 1
+					if run.Cleared then
+						stats[clearCountRecordName] = (stats[clearCountRecordName] or 0) + 1
+						stats.ClearCount = (stats.ClearCount or 0) + 1
+						if run.GameplayTime < (stats[fastestTimeRecordName] or 999999) then
+							stats[fastestTimeRecordName] = run.GameplayTime
+						end
+						if run.ShrinePointsCache > (stats[shrinePointsRecordName] or 0) then
+							stats[shrinePointsRecordName] = run.ShrinePointsCache
+						end
 					end
 				end
 			end
