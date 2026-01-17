@@ -169,15 +169,22 @@ end)
 modutil.mod.Path.Wrap("RecordRunCleared", function(base)
 	base()
 
-	-- Record with which level of each ShrineUpgrades/Vows/Fear the run was cleared (e.g. for the Quests tracking these)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[game.CurrentRun.CurrentRoom.RoomSetName] = game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades
+		-- Record with which level of each ShrineUpgrades/Vows/Fear the run was cleared (e.g. for the Quests tracking these)
+		game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[game.CurrentRun.CurrentRoom.RoomSetName] = game
+				.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades
 				[game.CurrentRun.CurrentRoom.RoomSetName] or {}
 		for shrineUpgradeName, shrineUpgradeLevel in pairs(game.GameState.ShrineUpgrades) do
 			-- Only record non-zero levels
 			if shrineUpgradeLevel > (game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[game.CurrentRun.CurrentRoom.RoomSetName][shrineUpgradeName] or 0) then
-				game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[game.CurrentRun.CurrentRoom.RoomSetName][shrineUpgradeName] = shrineUpgradeLevel
+				game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[game.CurrentRun.CurrentRoom.RoomSetName][shrineUpgradeName] =
+						shrineUpgradeLevel
 			end
+		end
+
+		-- Record full run clears for modded runs separately
+		if game.CurrentRun.ActiveBounty == nil and #game.CurrentRun.KeepsakeCache == 1 then
+			game.GameState.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes[game.CurrentRun.KeepsakeCache[1]] = true
 		end
 	end
 end)

@@ -12,7 +12,8 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestMeetChthonicGods",
 	"ModsNikkelMHadesBiomes_QuestWeaponClears",
 	"ModsNikkelMHadesBiomes_QuestMetaUpgrades",
-	"ModsNikkelMHadesBiomes_PactUpgrades",
+	"ModsNikkelMHadesBiomes_QuestPactUpgrades",
+	"ModsNikkelMHadesBiomes_QuestChaosKeepsakeFullRun",
 	-- self-improvement & stockpiling
 	"ModsNikkelMHadesBiomes_QuestCodexSmall",
 	"ModsNikkelMHadesBiomes_QuestCosmeticsSmall",
@@ -280,7 +281,7 @@ local newQuestData = {
 		},
 	},
 	-- Clearing with each Vow/Pact/ShrineUpgrade
-	ModsNikkelMHadesBiomes_PactUpgrades = {
+	ModsNikkelMHadesBiomes_QuestPactUpgrades = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "WeaponPointsRare",
 		RewardResourceAmount = 4,
@@ -323,6 +324,39 @@ local newQuestData = {
 					"BanUnpickedBoonsShrineUpgrade",
 					"BossDifficultyShrineUpgrade",
 				},
+			},
+		},
+	},
+	-- Full run cleared with Chaos Keepsake equipped
+	ModsNikkelMHadesBiomes_QuestChaosKeepsakeFullRun = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "Mixer5Common",
+		RewardResourceAmount = 2,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				-- TODO: ChaosSurfaceQuest01 text line does not exist yet - should be added as possible text line for Chaos in modded runs
+				HasAll = { "ChaosSurfaceQuest01", "LordHadesDefeated02", }
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes", "RandomBlessingKeepsake" },
+			},
+		},
+		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestChaosKeepsakeFullRun_Condition",
+		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestChaosKeepsakeFullRun_Cleared",
+		CashedOutVoiceLines = {
+			{
+				PreLineWait = 0.4,
+				GameStateRequirements = { {}, },
+				Cooldowns = {
+					{ Name = "MorosProphecyFulfilledSpeech", Time = 3 },
+				},
+				SkipAnim = true,
+				RequiredSourceValueFalse = "InPartnerConversation",
+				ObjectType = "NPC_Moros_01",
+				{ Cue = "/VO/Moros_0619", Text = "Whatever pact you formed with Chaos shall be sealed." },
 			},
 		},
 	},

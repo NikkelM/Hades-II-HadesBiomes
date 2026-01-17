@@ -1851,6 +1851,7 @@ local enemyModifications = {
 		OutgoingDamageModifiers = mod.NilValue,
 		ImmuneToPolymorph = true,
 		RunHistoryKilledByName = "NPC_Hades_01",
+
 		-- Moving EM voiceline to a custom lower priority to prevent it playing instead of a story event
 		BossPresentationSuperPriorityIntroTextLineSets = {
 			LordHadesExtremeMeasures01 = mod.NilValue,
@@ -1895,6 +1896,28 @@ local enemyModifications = {
 					Text =
 					"It is just me, indeed. However... that should be more than necessary, here. No holding back this time, Zagreus. Are you ready?"
 				},
+			},
+		},
+		BossPresentationOutroTextLineSets = {
+			LordHadesChaosSurfaceQuestDefeat01 = {
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "TextLinesRecord" },
+						HasAll = { "ChaosSurfaceQuest01", "LordHadesDefeated02" },
+					},
+					{
+						Path = { "CurrentRun", "KeepsakeCache" },
+						UseLength = true,
+						Comparison = "==",
+						Value = 1,
+					},
+					{
+						PathTrue = { "CurrentRun", "Hero", "TraitDictionary", "RandomBlessingKeepsake" },
+					},
+				},
+				RequiredTextLines = mod.NilValue,
+				RequiredTrait = mod.NilValue,
+				EndVoiceLines = { [1] = { Cue = "/VO/Chaos_0151", Text = "{#Emph}<Laughter>" }, },
 			},
 		},
 	},
