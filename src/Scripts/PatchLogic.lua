@@ -6,9 +6,9 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 		mod.DebugPrint(
 			"Applying patches to GameState, current patch revision: " .. game.GameState.ModsNikkelMHadesBiomesPatchRevision, 4)
 
-		-- #region RunHistory
-		if not game.IsEmpty(game.GameState.RunHistory) then
-			if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 1 then
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 1 then
+			-- #region RunHistory
+			if not game.IsEmpty(game.GameState.RunHistory) then
 				for _, runData in pairs(game.GameState.RunHistory) do
 					if mod.WasModdedRun(runData) then
 						-- #region Fix any older runs from before the uninstall-error was fixed
@@ -40,11 +40,9 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 					end
 				end
 			end
-		end
-		-- #endregion
+			-- #endregion
 
-		-- #region Misc GameState
-		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 1 then
+			-- #region Misc GameState
 			-- #region Initialize GameState variables
 			game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache or
 					0
@@ -64,11 +62,12 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 				game.GameState.TextLinesRecord["ThanatosGift04_B"] = true
 			end
 			-- #endregion
+			-- #endregion
 
 			-- #region Retroactively award additional Nightmare for modded testaments that were completed before the rewards were increased
 			if not game.GameState.ModsNikkelMHadesBiomesPatchedTestamentsIncreasedRewards then
+				-- Not setting the GameState variable anymore as this won't be called after revision 1 anymore
 				mod.PatchTestamentIncreasedRewards()
-				game.GameState.ModsNikkelMHadesBiomesPatchedTestamentsIncreasedRewards = true
 			end
 			-- #endregion
 
@@ -77,18 +76,10 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 				game.CheckCodexUnlock(mod.CodexChapterName, entryName)
 			end
 			-- #endregion
-		end
 
-		-- TODO: From patch version 1 onwards we don't need to check this anymore and should remove the unnecessary key/if-branch above
-		if game.GameState.ModsNikkelMHadesBiomesPatchRevision >= 1 then
-			game.GameState.ModsNikkelMHadesBiomesPatchedTestamentsIncreasedRewards = nil
-		end
-		-- #endregion
-
-		-- #region CurrentRun
-		if game.CurrentRun ~= nil then
-			-- #region If in the Hub and the current run is modded
-			if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 1 then
+			-- #region CurrentRun
+			if game.CurrentRun ~= nil then
+				-- #region If in the Hub and the current run is modded
 				if game.CurrentHubRoom ~= nil and game.Contains(mod.ModdedRoomNamesWithOldElysium, game.CurrentRun.CurrentRoom.Name) then
 					-- Save the actual ending room for when we call EndRun() when starting the next run, so we can still access it there
 					game.CurrentRun.ModsNikkelMHadesBiomesActualCurrentRoomName = game.CurrentRun.CurrentRoom.Name
@@ -102,10 +93,15 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 							"#" .. (game.CurrentRun.EndingRoomName or "")
 					game.CurrentRun.EndingRoomName = nil
 				end
+				-- #endregion
 			end
 			-- #endregion
 		end
-		-- #endregion
+
+		-- TODO: From patch version 1 onwards we don't need to check this anymore and should remove the unnecessary key/if-branch above
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision >= 1 then
+			game.GameState.ModsNikkelMHadesBiomesPatchedTestamentsIncreasedRewards = nil
+		end
 
 		-- IMPORTANT: This must be incremented every time this function is changed
 		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 1
