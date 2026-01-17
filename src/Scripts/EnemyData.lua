@@ -906,7 +906,7 @@ local enemyModifications = {
 			BlockEnemyTypes = { "BloodlessNakedBerserker" },
 		},
 		BlockAttributes = { "Blink", "Orbit", },
-		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
+		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Metallic", }),
 	},
 	HadesBloodlessWaveFist = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,

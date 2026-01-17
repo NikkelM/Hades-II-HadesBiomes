@@ -210,6 +210,11 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 	end
 end)
 
+function mod.RoomEntranceDropRoomOpening(currentRun, currentRoom, args)
+	game.RoomEntranceDrop(currentRun, currentRoom, args)
+	game.thread(game.RoomOpeningUIDelay)
+end
+
 function mod.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId, skipCameraLockOnEnd)
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or
 			0.8
@@ -427,7 +432,7 @@ function mod.ModsNikkelMHadesBiomesShrineGateExitPresentation(currentRun, exitDo
 
 	currentRun.Hero.ExitAngle = GetAngle({ Id = currentRun.Hero.ObjectId })
 
-	game.PlayVoiceLines( game.HeroVoiceLines.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines )
+	game.PlayVoiceLines(game.HeroVoiceLines.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines)
 
 	SetAnimation({ Name = "MelinoeInteractWeaponless", DestinationId = currentRun.Hero.ObjectId })
 	game.wait(0.2)
