@@ -107,7 +107,6 @@ local addAnimations = {
 	ModsNikkelMHadesBiomes_BossResourceElysiumDrop = {
 		Name = "ModsNikkelMHadesBiomes_BossResourceElysiumDrop",
 		InheritFrom = "PowerUp01",
-		Sound = "/Leftovers/Object Ambiences/DarkThirstAmbience",
 	},
 	ModsNikkelMHadesBiomes_BossResourceStyxDrop = {
 		Name = "ModsNikkelMHadesBiomes_BossResourceStyxDrop",
@@ -128,7 +127,6 @@ local addAnimations = {
 		VisualFx = "LockKeySparkleOutward",
 		VisualFxIntervalMin = 0.1,
 		VisualFxIntervalMax = 0.2,
-		Sound = "/SFX/Object Ambiences/TitanBloodAmbience",
 	},
 }
 
