@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Balancing: The Bone-Raker can no longer gain the "Scraper" elite perk.
 - Fixed: Tisiphone's whip lash attack does not stun the player.
 - Fixed: If the keepsake equipped at the start of the run adds a random boon or hammer, the floating text indicating which one was gained is missing.
+- Fixed: Ambient sound effects for the Elysium and Styx boss resource drops persist after the resource is picked up.
 - Fixed: Gods don't comment on you choosing them over another god during a Family Dispute during Zagreus' Journey runs.
 - Fixed: Contextual voicelines with story NPCs relating to their respective keepsakes being equipped cannot trigger.
 - Fixed: In rare cases, some ineligible combinations of voicelines can play during NPC or boss encounters.

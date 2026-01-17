@@ -30,6 +30,7 @@ local newData = {
 		InheritFrom = "BaseLoot",
 		Thing = {
 			Graphic = "ModsNikkelMHadesBiomes_BossResourceElysiumDrop",
+			AmbientSound = "/Leftovers/Object Ambiences/DarkThirstAmbience",
 		},
 	},
 	ModsNikkelMHadesBiomes_BossResourceStyxDrop = {
@@ -37,6 +38,7 @@ local newData = {
 		InheritFrom = "BaseLoot",
 		Thing = {
 			Graphic = "ModsNikkelMHadesBiomes_BossResourceStyxDrop",
+			AmbientSound = "/SFX/Object Ambiences/TitanBloodAmbience",
 		},
 	},
 	CharonStoreDiscount = {
