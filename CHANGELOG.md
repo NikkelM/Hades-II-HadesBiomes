@@ -13,6 +13,7 @@ Other fixes and improvements:
 - Slightly boosted the volume of some music tracks.
 - If the mod installation is interrupted by closing the game, it will now continue where it left off instead of restarting from the beginning.
 - Fixed: Tisiphone's whip lash attack does not stun the player.
+- Fixed: If the keepsake equipped at the start of the run adds a random boon or hammer, the floating text indicating which one was gained is missing.
 - Fixed: When returning from a Chaos Trial, Zagreus' Journey cosmetics and other assets are not loaded until switching rooms.
 - Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".
 - Fixed: Gods don't comment on you choosing them over another god during a Family Dispute during Zagreus' Journey runs.
