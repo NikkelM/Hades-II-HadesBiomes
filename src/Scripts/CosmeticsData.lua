@@ -21,6 +21,7 @@
 	"ModsNikkelMHadesBiomes_BossResourceStyx",
 ]] --
 
+-- In total, as of 2026-01-17: 48 cosmetics
 -- CosmeticsShop_Tent
 local tentCosmetics = {
 	-- #region Fan Posters/Cosmetic_FanPoster01

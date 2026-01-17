@@ -11,6 +11,7 @@ ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation - Infernal Troves - after
 ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation - Moon Moncuments - after completing 6 runs and clearing 2 runs
 ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after completing 7 and clearing 4 runs
 ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after completing 2 runs
+WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic - New Music for the Music Maker - from Hades_OST_for_the_Music_Maker - after 1 run and meeting Eurydice
 ]] --
 
 local newIncantations = {
@@ -420,6 +421,9 @@ local newIncantations = {
 	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.WorldUpgradeData, newIncantations)
+-- The OST mod is now a dependency, so we can safely call this
+-- Need to add it to the table so we can sort and insert it into Cauldron category correctly
+newIncantations["WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic"] = game.WorldUpgradeData["WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic"]
 
 -- Adds the new incantations to the Cauldron screen categories
 -- Build a sorted list based on dependencies to ensure items are inserted in the correct order
