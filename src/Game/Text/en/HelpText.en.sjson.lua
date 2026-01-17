@@ -1259,6 +1259,16 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_QuestChaosKeepsakeFullRun_Cleared",
 		DisplayName = "{!Icons.QuestProgressComplete} Take the Embryo All the Way to Victory (In a Nightmare)",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestHermesBeatCharon",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} A Friendly Wager ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of overcoming the Stygian Boatman in two successive battles against him, at the urging of the god of swiftness.",
+	},
+	{
+		Id = "BossCharonHermesQuestComplete01",
+		DisplayName = "Defeat Charon in Two Successive Battles Against Him",
+	},
 	-- #endregion
 }
 

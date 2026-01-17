@@ -14,6 +14,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestMetaUpgrades",
 	"ModsNikkelMHadesBiomes_QuestPactUpgrades",
 	"ModsNikkelMHadesBiomes_QuestChaosKeepsakeFullRun",
+	"ModsNikkelMHadesBiomes_QuestHermesBeatCharon",
 	-- self-improvement & stockpiling
 	"ModsNikkelMHadesBiomes_QuestCodexSmall",
 	"ModsNikkelMHadesBiomes_QuestCosmeticsSmall",
@@ -357,6 +358,24 @@ local newQuestData = {
 				RequiredSourceValueFalse = "InPartnerConversation",
 				ObjectType = "NPC_Moros_01",
 				{ Cue = "/VO/Moros_0619", Text = "Whatever pact you formed with Chaos shall be sealed." },
+			},
+		},
+	},
+	-- Beat Charon twice in a row on behalf of Hermes
+	ModsNikkelMHadesBiomes_QuestHermesBeatCharon = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "CharonPoints",
+		RewardResourceAmount = 3,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				-- TODO: HermesBeatCharonQuest01 text line does not exist yet - should be added as possible text line for Hermes in modded runs
+				HasAll = { "HermesBeatCharonQuest01", }
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "BossCharonHermesQuestComplete01" },
 			},
 		},
 	},
