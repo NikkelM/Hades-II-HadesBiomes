@@ -186,3 +186,16 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 
 	return base(exitDoor, chosenRewardType, chosenLootName, index, args)
 end)
+
+modutil.mod.Path.Wrap("PopulateDoorRewardPreviewSubIcons", function(base, exitDoor, args)
+	local subIcons = base(exitDoor, args)
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and not args.RewardHidden and not args.SkipRoomSubIcons then
+		local room = exitDoor.Room
+		if room.ForbiddenShopItemChanceSuccess then
+			table.insert(subIcons, { Name = "ModsNikkelMHadesBiomes_RoomRewardSubIcon_ForbiddenShopItem" })
+		end
+	end
+
+	return subIcons
+end)

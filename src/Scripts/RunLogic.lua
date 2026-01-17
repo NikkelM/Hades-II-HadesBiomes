@@ -62,8 +62,6 @@ modutil.mod.Path.Wrap("CreateRoom", function(base, roomData, args)
 		if forbiddenShopItemRequirements ~= nil and game.IsGameStateEligible(forbiddenShopItemRequirements) then
 			local forbiddenShopItemChance = room.ForbiddenShopItemSpawnChance or 0.0
 			room.ForbiddenShopItemChanceSuccess = game.RandomChance(forbiddenShopItemChance)
-			-- For the preview icon on the door
-			room.ZagreusContractSuccess = room.ForbiddenShopItemChanceSuccess
 		end
 	end
 

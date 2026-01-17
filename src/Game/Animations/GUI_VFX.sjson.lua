@@ -127,6 +127,12 @@ local addAnimations = {
 		PlayBackwards = true,
 		StartFrame = 1,
 	},
+	-- Preview icon on doors if the next room has a Forbidden Shop Item/Charon Fight
+	ModsNikkelMHadesBiomes_RoomRewardSubIcon_ForbiddenShopItem = {
+		Name = "ModsNikkelMHadesBiomes_RoomRewardSubIcon_ForbiddenShopItem",
+		InheritFrom = "RoomRewardSubIcon_Boss",
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Icons\\RoomReward\\SubIcon_ForbiddenShopItem",
+	},
 }
 
 sjson.hook(hadesTwoGuiVfxFile, function(data)
