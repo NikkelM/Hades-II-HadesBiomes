@@ -1219,7 +1219,7 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestCosmeticsSmall",
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} A Simple Job ",
-		Description = "The daughter of the god of the dead shall someday employ the Shade called {$Keywords.CharDora} to procure {#Emph}{$QuestData.ModsNikkelMHadesBiomes_CosmeticsSmall.CompleteGameStateRequirements.1.Value} decorations {#Prev}dreamt up from her family's past.",
+		Description = "The daughter of the god of the dead shall someday employ the Shade called {$Keywords.CharDora} to procure {#Emph}{$QuestData.ModsNikkelMHadesBiomes_QuestCosmeticsSmall.CompleteGameStateRequirements.1.Value} decorations {#Prev}dreamt up from her family's past.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestCodexSmall",
@@ -1230,6 +1230,11 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_QuestMetaUpgrades",
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Dark Reflections ",
 		Description = "The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, whilst influenced by each different {#Emph}{$Keywords.Card}{#Prev}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PactUpgrades",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Harsh Conditions ",
+		Description = "The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, while under the influence of each of the Vows from the {#Emph}Oath of the Unseen{#Prev}.",
 	},
 	-- #endregion
 }

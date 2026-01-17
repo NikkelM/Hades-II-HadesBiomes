@@ -12,6 +12,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestMeetChthonicGods",
 	"ModsNikkelMHadesBiomes_QuestWeaponClears",
 	"ModsNikkelMHadesBiomes_QuestMetaUpgrades",
+	"ModsNikkelMHadesBiomes_PactUpgrades",
 	-- self-improvement & stockpiling
 	"ModsNikkelMHadesBiomes_QuestCodexSmall",
 	"ModsNikkelMHadesBiomes_QuestCosmeticsSmall",
@@ -228,7 +229,7 @@ local newQuestData = {
 	ModsNikkelMHadesBiomes_QuestMetaUpgrades = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "WeaponPointsRare",
-		RewardResourceAmount = 4,
+		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
@@ -279,5 +280,51 @@ local newQuestData = {
 		},
 	},
 	-- Clearing with each Vow/Pact/ShrineUpgrade
+	ModsNikkelMHadesBiomes_PactUpgrades = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 4,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 2,
+			},
+			{
+				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
+				IsAny = { "CashedOut" }
+			},
+			NamedRequirements = { "ShrineUnlocked" },
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades", "Styx" },
+				HasAll = {
+					"EnemyDamageShrineUpgrade",
+					"EnemyHealthShrineUpgrade",
+					"EnemyShieldShrineUpgrade",
+					"EnemySpeedShrineUpgrade",
+					"EnemyCountShrineUpgrade",
+					"NextBiomeEnemyShrineUpgrade",
+					"EnemyRespawnShrineUpgrade",
+					"EnemyEliteShrineUpgrade",
+					"HealingReductionShrineUpgrade",
+					"ShopPricesShrineUpgrade",
+					"MinibossCountShrineUpgrade",
+					"BoonSkipShrineUpgrade",
+					"BiomeSpeedShrineUpgrade",
+					"LimitGraspShrineUpgrade",
+					"BoonManaReserveShrineUpgrade",
+					"BanUnpickedBoonsShrineUpgrade",
+					"BossDifficultyShrineUpgrade",
+				},
+			},
+		},
+	},
 }
 mod.AddTableKeysSkipDupes(game.QuestData, newQuestData)

@@ -69,6 +69,8 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 				-- Not setting the GameState variable anymore as this won't be called after revision 1 anymore
 				mod.PatchTestamentIncreasedRewards()
 			end
+			-- In case it was set before the revision system was introduced
+			game.GameState.ModsNikkelMHadesBiomesPatchedTestamentsIncreasedRewards = nil
 			-- #endregion
 
 			-- #region Patch missing Codex unlocks in CodexStatus
@@ -97,14 +99,13 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 			-- #endregion
 		end
-
-		-- TODO: From patch version 1 onwards we don't need to check this anymore and should remove the unnecessary key/if-branch above
-		if game.GameState.ModsNikkelMHadesBiomesPatchRevision >= 1 then
-			game.GameState.ModsNikkelMHadesBiomesPatchedTestamentsIncreasedRewards = nil
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 2 then
+			game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades = game.GameState
+					.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades or {}
 		end
 
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 1
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 2
 	end
 
 	return base()

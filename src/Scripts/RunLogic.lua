@@ -70,10 +70,9 @@ modutil.mod.Path.Wrap("CreateRoom", function(base, roomData, args)
 	return room
 end)
 
--- Recording stats after a run
+-- Recording stats after a run (clearing or losing)
 modutil.mod.Path.Wrap("RecordRunStats", function(base)
-	-- Bounties are handled in the base function
-	if game.CurrentRun.BiomesReached ~= nil and (game.CurrentRun.BiomesReached.Tartarus or game.CurrentRun.BiomesReached.Asphodel or game.CurrentRun.BiomesReached.Elysium or game.CurrentRun.BiomesReached.Styx) then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		game.CurrentRun.RunResult = game.GetRunResult(game.CurrentRun)
 		game.CurrentRun.EndingRoomName = game.CurrentRun.CurrentRoom.Name
 		game.CurrentRun.WeaponsCache = game.DeepCopyTable(game.CurrentRun.Hero.Weapons)
@@ -166,6 +165,22 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 		end
 		-- Custom field
 		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = moddedRunsCleared
+	end
+end)
+
+modutil.mod.Path.Wrap("RecordRunCleared", function(base)
+	base()
+
+	-- Record with which level of each ShrineUpgrades/Vows/Fear the run was cleared (e.g. for the Quests tracking these)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[game.CurrentRun.CurrentRoom.RoomSetName] = game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades
+				[game.CurrentRun.CurrentRoom.RoomSetName] or {}
+		for shrineUpgradeName, shrineUpgradeLevel in pairs(game.GameState.ShrineUpgrades) do
+			-- Only record non-zero levels
+			if shrineUpgradeLevel > (game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[game.CurrentRun.CurrentRoom.RoomSetName][shrineUpgradeName] or 0) then
+				game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[game.CurrentRun.CurrentRoom.RoomSetName][shrineUpgradeName] = shrineUpgradeLevel
+			end
+		end
 	end
 end)
 
