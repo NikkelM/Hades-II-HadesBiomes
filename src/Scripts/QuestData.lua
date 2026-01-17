@@ -7,17 +7,18 @@ game.ScreenData.QuestLog.ComponentData.InfoBoxTitle.TextArgs.TextSymbolScale = 0
 -- The order of the quests in the Quest log, these will be appended to the end of the vanilla list
 local newQuestOrderData = {
 	-- key / mission-critical
-	"ModsNikkelMHadesBiomes_FirstClear",
+	"ModsNikkelMHadesBiomes_QuestFirstClear",
 	-- major / priority
-	"ModsNikkelMHadesBiomes_WeaponClears",
-	"ModsNikkelMHadesBiomes_MeetChthonicGods",
+	"ModsNikkelMHadesBiomes_QuestMeetChthonicGods",
+	"ModsNikkelMHadesBiomes_QuestWeaponClears",
+	"ModsNikkelMHadesBiomes_QuestMetaUpgrades",
 	-- self-improvement & stockpiling
-	"ModsNikkelMHadesBiomes_CodexSmall",
-	"ModsNikkelMHadesBiomes_CosmeticsSmall",
+	"ModsNikkelMHadesBiomes_QuestCodexSmall",
+	"ModsNikkelMHadesBiomes_QuestCosmeticsSmall",
 	-- boons & character traits
-	"ModsNikkelMHadesBiomes_KeepsakesQuest",
+	"ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
 	-- weapons & combat
-	"ModsNikkelMHadesBiomes_MiniBossKills",
+	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
 }
 game.ConcatTableValuesIPairs(game.QuestOrderData, newQuestOrderData)
 
@@ -34,7 +35,7 @@ local newQuestData = {
 		},
 	},
 	-- Clear once
-	ModsNikkelMHadesBiomes_FirstClear = {
+	ModsNikkelMHadesBiomes_QuestFirstClear = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 1000,
@@ -53,7 +54,7 @@ local newQuestData = {
 		},
 	},
 	-- Meet Megaera, Alecto, Tisiphone, Thanatos, Hades, (Hypnos)
-	ModsNikkelMHadesBiomes_MeetChthonicGods = {
+	ModsNikkelMHadesBiomes_QuestMeetChthonicGods = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 300,
@@ -83,7 +84,7 @@ local newQuestData = {
 		IncompleteName = "UnknownCondition_Meet",
 	},
 	-- Clear with each weapon (any aspect)
-	ModsNikkelMHadesBiomes_WeaponClears = {
+	ModsNikkelMHadesBiomes_QuestWeaponClears = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "WeaponPointsRare",
 		RewardResourceAmount = 3,
@@ -100,7 +101,7 @@ local newQuestData = {
 				},
 			},
 			{
-				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_FirstClear" },
+				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
 				IsAny = { "CashedOut" }
 			},
 		},
@@ -119,7 +120,7 @@ local newQuestData = {
 		},
 	},
 	-- Equip new keepsakes (from SharedKeepsakePort)
-	ModsNikkelMHadesBiomes_KeepsakesQuest = {
+	ModsNikkelMHadesBiomes_QuestKeepsakesQuest = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "SuperGiftPoints",
 		RewardResourceAmount = 2,
@@ -144,7 +145,7 @@ local newQuestData = {
 		IncompleteName = "Quest_UnknownCondition",
 	},
 	-- Defeated all minibosses
-	ModsNikkelMHadesBiomes_MiniBossKills = {
+	ModsNikkelMHadesBiomes_QuestMiniBossKills = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "CardUpgradePoints",
 		RewardResourceAmount = 5,
@@ -176,7 +177,7 @@ local newQuestData = {
 		IncompleteName = "Quest_UnknownCondition",
 	},
 	-- Unlocked modded Cosmetics
-	ModsNikkelMHadesBiomes_CosmeticsSmall = {
+	ModsNikkelMHadesBiomes_QuestCosmeticsSmall = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "CosmeticsPoints",
 		RewardResourceAmount = 2000,
@@ -199,7 +200,7 @@ local newQuestData = {
 		},
 	},
 	-- Codex entries (there are 53 in total in the mod)
-	ModsNikkelMHadesBiomes_CodexSmall = {
+	ModsNikkelMHadesBiomes_QuestCodexSmall = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 500,
@@ -223,5 +224,60 @@ local newQuestData = {
 			},
 		},
 	},
+	-- Clearing with each Arcana Card/MetaUpgrade
+	ModsNikkelMHadesBiomes_QuestMetaUpgrades = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 4,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 2,
+			},
+			{
+				Path = { "GameState", "MetaUpgradeMaxLevelCountCache" },
+				Comparison = ">=",
+				Value = 3,
+			},
+			{
+				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
+				IsAny = { "CashedOut" }
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "ClearedWithMetaUpgrades", "Styx" },
+				HasAll = {
+					"ChanneledCast",
+					"HealthRegen",
+					"LowManaDamageBonus",
+					"CastCount",
+					"SorceryRegenUpgrade",
+					"CastBuff",
+					"BonusHealth",
+					"BonusDodge",
+					"ManaOverTime",
+					"MagicCrit",
+					"SprintShield",
+					"LastStand",
+					"MaxHealthPerRoom",
+					"StatusVulnerability",
+					"ChanneledBlock",
+					"DoorReroll",
+					"StartingGold",
+					"MetaToRunUpgrade",
+					"RarityBoost",
+					"BonusRarity",
+					"TradeOff",
+					"ScreenReroll",
+					"LowHealthBonus",
+					"EpicRarityBoost",
+					"CardDraw",
+				},
+			},
+		},
+	},
+	-- Clearing with each Vow/Pact/ShrineUpgrade
 }
 mod.AddTableKeysSkipDupes(game.QuestData, newQuestData)

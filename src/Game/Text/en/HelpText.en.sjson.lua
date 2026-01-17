@@ -1167,7 +1167,7 @@ local newData = {
 
 	-- #region Quests/Minor Prophecies
 	{
-		Id = "ModsNikkelMHadesBiomes_FirstClear",
+		Id = "ModsNikkelMHadesBiomes_QuestFirstClear",
 		-- Space at the end of the display name is intentional to center the quest in the quest log, where the icon is hidden
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Is There No Escape? ",
 		Description = "The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born.",
@@ -1177,7 +1177,7 @@ local newData = {
 		DisplayName = "Escape your Nightmare"
 	},
 	{
-		Id = "ModsNikkelMHadesBiomes_MeetChthonicGods",
+		Id = "ModsNikkelMHadesBiomes_QuestMeetChthonicGods",
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Chthonic Colleagues ",
 		Description = "The daughter of the god of the dead shall someday dream of meeting some of the rulers of the Underworld.",
 	},
@@ -1202,29 +1202,34 @@ local newData = {
 		DisplayName = "Met Thanatos"
 	},
 	{
-		Id = "ModsNikkelMHadesBiomes_WeaponClears",
+		Id = "ModsNikkelMHadesBiomes_QuestWeaponClears",
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Master of Arms ",
-		Description = "The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born using each of the {#Emph}Nocturnal Arms{#Prev}.",
+		Description = "The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, using each of the {#Emph}Nocturnal Arms{#Prev}.",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomes_KeepsakesQuest",
+		Id = "ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Close at Heart ",
 		Description = "The daughter of the god of the dead shall someday equip various Keepsakes from those who grew closer to her brother.",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomes_MiniBossKills",
+		Id = "ModsNikkelMHadesBiomes_QuestMiniBossKills",
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Wanton Ransacking ",
 		Description = "The daughter of the god of the dead shall someday dream of slaying various armored Wardens guarding key Underworld chambers.",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomes_CosmeticsSmall",
+		Id = "ModsNikkelMHadesBiomes_QuestCosmeticsSmall",
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} A Simple Job ",
 		Description = "The daughter of the god of the dead shall someday employ the Shade called {$Keywords.CharDora} to procure {#Emph}{$QuestData.ModsNikkelMHadesBiomes_CosmeticsSmall.CompleteGameStateRequirements.1.Value} decorations {#Prev}dreamt up from her family's past.",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomes_CodexSmall",
+		Id = "ModsNikkelMHadesBiomes_QuestCodexSmall",
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Chthonic Knowledge ",
 		Description = "The daughter of the god of the dead shall someday recall a portion of the knowledge once contained in her brother's Underworld Codex entrusted to him by the great {$Keywords.CharAchilles}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestMetaUpgrades",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Dark Reflections ",
+		Description = "The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, whilst influenced by each different {#Emph}{$Keywords.Card}{#Prev}.",
 	},
 	-- #endregion
 }
