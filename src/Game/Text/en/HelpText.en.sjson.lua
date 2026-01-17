@@ -1269,6 +1269,12 @@ local newData = {
 		Id = "BossCharonHermesQuestComplete01",
 		DisplayName = "Defeat Charon in Two Successive Battles Against Him",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestWeaponClearsHighHeat",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} The Fulfilled Vow ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, using each of the {#Emph}Nocturnal Arms {#Prev}and, I don't know, {#UseShrinePointFormat}32{#Prev}{!Icons.ShrinePoint} from the {#Emph}Oath of the Unseen{#Prev}?",
+	},
 	-- #endregion
 }
 

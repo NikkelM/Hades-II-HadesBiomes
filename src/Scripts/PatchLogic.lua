@@ -103,6 +103,8 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 2 then
 			game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades = game.GameState
 					.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades or {}
+			game.GameState.ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints = game.GameState
+					.ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints or {}
 			game.GameState.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes = game.GameState
 					.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes or {}
 		end

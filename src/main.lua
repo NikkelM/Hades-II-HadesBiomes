@@ -459,6 +459,7 @@ local function on_ready()
 			import "Scripts/NarrativeLogic.lua"
 			import "Scripts/PatchLogic.lua"
 			import "Scripts/PowersLogic.lua"
+			import "Scripts/QuestLogic.lua"
 			import "Scripts/RequirementsLogic.lua"
 			import "Scripts/RewardPresentation.lua"
 			import "Scripts/RoomEvents.lua"

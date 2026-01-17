@@ -11,6 +11,7 @@ local newQuestOrderData = {
 	-- major / priority
 	"ModsNikkelMHadesBiomes_QuestMeetChthonicGods",
 	"ModsNikkelMHadesBiomes_QuestWeaponClears",
+	"ModsNikkelMHadesBiomes_QuestWeaponClearsHighHeat",
 	"ModsNikkelMHadesBiomes_QuestMetaUpgrades",
 	"ModsNikkelMHadesBiomes_QuestPactUpgrades",
 	"ModsNikkelMHadesBiomes_QuestChaosKeepsakeFullRun",
@@ -26,6 +27,7 @@ local newQuestOrderData = {
 game.ConcatTableValuesIPairs(game.QuestOrderData, newQuestOrderData)
 
 local newQuestData = {
+	-- #region Base Hades Quests
 	ModsNikkelMHadesBiomes_DefaultQuestItem = {
 		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		DebugOnly = true,
@@ -379,5 +381,71 @@ local newQuestData = {
 			},
 		},
 	},
+	-- Clear on 32 fear with all weapons
+	ModsNikkelMHadesBiomes_QuestWeaponClearsHighHeat = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 6,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestWeaponClears" },
+				IsAny = { "CashedOut" }
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
+				Comparison = ">=",
+				Value = 8,
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 5,
+			},
+			NamedRequirements = { "ShrineUnlocked" },
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints", "Styx", "WeaponStaffSwing" },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints", "Styx", "WeaponDagger" },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints", "Styx", "WeaponTorch" },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints", "Styx", "WeaponAxe" },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints", "Styx", "WeaponLob" },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomes_WeaponsClearedWithShrinePoints", "Styx", "WeaponSuit" },
+				Comparison = ">=",
+				Value = 32,
+			},
+		},
+		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {
+			"WeaponStaffSwing",
+			"WeaponDagger",
+			"WeaponTorch",
+			"WeaponAxe",
+			"WeaponLob",
+			"WeaponSuit",
+		},
+	},
+	-- #endregion
+	-- #region Custom Quests
+	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.QuestData, newQuestData)
