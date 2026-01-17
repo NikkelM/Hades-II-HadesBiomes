@@ -396,6 +396,7 @@ function mod.SurfaceKillHero(source, args)
 	-- Since we set CurrentRun.CurrentRoom to BaseRoom in KillHero
 	local cachedRoomOverrides = game.DeepCopyTable(game.CurrentRun.CurrentRoom.RoomExitHeroOverwrites)
 
+	game.CurrentRun.ModsNikkelMHadesBiomesSkipFindKiller = true
 	game.KillHero(game.CurrentRun.Hero, args)
 
 	-- Revert the overrides, as they are not reversed automatically when respawning in the hub

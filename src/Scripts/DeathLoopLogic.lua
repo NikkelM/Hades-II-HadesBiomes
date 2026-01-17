@@ -1,4 +1,3 @@
--- For the RunHistoryScreen, we need to set a proper name for when the player is killed by a HarpySupportUnit
 modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 	local killer = triggerArgs.AttackerTable
 	if killer == nil then
@@ -13,37 +12,30 @@ modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 			game.CurrentRun.CurrentRoom.Encounter.InProgress = false
 		end
 
-		-- In Boss and Miniboss rooms, set the killer to the boss/miniboss name instead of any potential minions or traps
-		if game.CurrentRun.CurrentRoom.BackupCauseOfDeath ~= nil then
-			killer = game.EnemyData[game.CurrentRun.CurrentRoom.BackupCauseOfDeath]
-		end
+		if not game.CurrentRun.ModsNikkelMHadesBiomesSkipFindKiller then
+			-- In Boss and Miniboss rooms, set the killer to the boss/miniboss name instead of any potential minions or traps
+			if game.CurrentRun.CurrentRoom.BackupCauseOfDeath ~= nil then
+				killer = game.EnemyData[game.CurrentRun.CurrentRoom.BackupCauseOfDeath]
+			end
 
-		if killer then
-			if killer.Name == "HarpySupportUnit" then
-				local resultText = game.CurrentRun.CurrentRoom.ResultText
-				if resultText == "RunHistoryScreenResult_A_Boss01" then
-					killer.Name = "Harpy"
-				elseif resultText == "RunHistoryScreenResult_A_Boss02" then
-					killer.Name = "Harpy2"
-				elseif resultText == "RunHistoryScreenResult_A_Boss03" then
-					killer.Name = "Harpy3"
+			if killer then
+				if killer.Name == "Hades" then
+					killer.Name = "NPC_Hades_01"
+				elseif killer.Name == "BloodMine" then
+					killer.Name = "HadesThiefMineLayer"
 				end
-			elseif killer.Name == "Hades" then
-				killer.Name = "NPC_Hades_01"
-			elseif killer.Name == "BloodMine" then
-				killer.Name = "HadesThiefMineLayer"
+			end
+
+			if killer == nil or game.TableLength(killer) == 0 then
+				if triggerArgs.Victim and triggerArgs.Victim.CurrentlyPoisoned and triggerArgs.EffectName == "StyxPoison" then
+					killer = killer or {}
+					killer.Name = game.CurrentRun.ModsNikkelMHadesBiomesStyxPoisonLastInflictedBy
+				end
 			end
 		end
 
-		if killer == nil or game.TableLength(killer) == 0 then
-			if triggerArgs.Victim and triggerArgs.Victim.CurrentlyPoisoned and triggerArgs.EffectName == "StyxPoison" then
-				killer = killer or {}
-				killer.Name = game.CurrentRun.ModsNikkelMHadesBiomesStyxPoisonLastInflictedBy
-			end
-		end
+		triggerArgs.AttackerTable = killer
 	end
-
-	triggerArgs.AttackerTable = killer
 
 	return base(victim, triggerArgs)
 end)

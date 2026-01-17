@@ -426,6 +426,7 @@ function mod.CheckRunEndPresentation(currentRun, door)
 	AddInputBlock({ Name = "CheckRunEndPresentation" })
 	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
 		currentRun.CurrentRoom.SkipLoadNextMap = true
+		currentRun.ModsNikkelMHadesBiomesSkipFindKiller = true
 		game.EndEarlyAccessPresentation()
 	else
 		-- Custom function to play an incantation animation and voiceline
