@@ -12,6 +12,7 @@ Other fixes and improvements:
 - Charon's shops now play the original music from the first game during Zagreus' Journey runs.
 - Slightly boosted the volume of some music tracks.
 - If the mod installation is interrupted by closing the game, it will now continue where it left off instead of restarting from the beginning.
+- Balancing: The Bone-Raker can no longer gain the "Scraper" elite perk.
 - Fixed: Tisiphone's whip lash attack does not stun the player.
 - Fixed: If the keepsake equipped at the start of the run adds a random boon or hammer, the floating text indicating which one was gained is missing.
 - Fixed: When returning from a Chaos Trial, Zagreus' Journey cosmetics and other assets are not loaded until switching rooms.
