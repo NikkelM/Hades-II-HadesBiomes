@@ -6,15 +6,17 @@
 ### Patch Highlights:
 - You can now **challenge Lord Charon** to a "friendly duel" by "borrowing" some his his Gold! Defeat your favourite shopkeeper for a special discount on all his wares for the duration of your current run.
 - Added 8 new cosmetics to discover and unlock in the Crossroads, created by @burn.
-- Charon's shops now play the original music from the first game during Zagreus' Journey runs.
+- You can now unlock **new music tracks** from the first game with the Music Maker in the Crossroads, through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (installed automatically with this mod). Perform the "Recovery of Orpheus' Scriptures" incantation to unlock the new music.
 
 Other fixes and improvements:
+- Charon's shops now play the original music from the first game during Zagreus' Journey runs.
 - Slightly boosted the volume of some music tracks.
 - If the mod installation is interrupted by closing the game, it will now continue where it left off instead of restarting from the beginning.
 - Fixed: Tisiphone's whip lash attack does not stun the player.
 - Fixed: When returning from a Chaos Trial, Zagreus' Journey cosmetics and other assets are not loaded until switching rooms.
 - Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".
 - Fixed: Gods don't comment on you choosing them over another god during a Family Dispute during Zagreus' Journey runs.
+- Fixed: Contextual voicelines with story NPCs relating to their respective keepsakes being equipped cannot trigger.
 - Fixed: In rare cases, some ineligible combinations of voicelines can play during NPC or boss encounters.
 - Fixed: Dying in a boss or miniboss room does not always show the correct portrait in the Run History screen.
 - Fixed: For saves with Zagreus' Journey runs from the alpha, some run results can show placeholder text.

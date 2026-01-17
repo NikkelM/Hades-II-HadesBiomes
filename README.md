@@ -1,10 +1,6 @@
 <!-- # Zagreus' Journey -->
 <img src="https://github.com/user-attachments/assets/2a72faa9-559f-4b73-8e6e-8d5e31c4c76c" alt="Zagreus' Journey">
 
-> Refer to the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki) with any questions before opening an issue.
-
-> You can find all of the latest changes in the [Changelog](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/changelog/) on the mod page.
-
 _Zagreus' Journey_ is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
 Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past.
 
@@ -24,6 +20,46 @@ Take a look at what Haelian and Boated think of the mod:
 After installing the mod, a Chaos Gate will appear in the Crossroads, which will allow you to experience Zagreus' journey through the Underworld as Melinoë.
 
 It is highly recommended that you complete the main story of Hades before playing with this mod, as not all story events are included.
+
+> Refer to the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki) with any questions before opening an issue.
+
+> You can find all of the latest changes in the [Changelog](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/changelog/) on the mod page.
+
+<!-- ## Features -->
+<img src="https://github.com/user-attachments/assets/3d458e61-25c5-41d5-b312-13d2d8106561" alt="Features">
+
+- Play through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
+- Discover and overcome the challenge of fighting all of the original game's enemies and bosses using Melinoë's unique abilities and weapons.
+- Relive Zagreus' story by ascending to the Surface, meeting your brother's old friends and conversing with the Fury Sisters, the Champions of Elysium and [REDACTED] himself.
+- Unlock **four** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
+- Collect **30+** new resources specific to the new biomes, use them for unlocks in this and [other mods](#integrations-with-other-mods), and trade them with the Broker.
+- Unlock **29** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
+- Decorate the Crossroads with **45+** new cosmetics, including new **Cauldrons**, **Fan Posters** for your tent, and **Charms** inspired by Zagreus' companions from the first game.
+- Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
+- Discover and perform **10+** new incantations to unlock gameplay features and new rooms in Zagreus' Journey runs.
+- Read all about the new biomes, enemies, bosses and friends in a new chapter in your Codex.
+
+### Feature Roadmap
+
+Among many smaller improvements and fixes, the following major features are planned for future releases (in no particular order):
+
+- [DONE!] Secret boss fight (you know the one)
+- [DONE!] Erebus gates (when there is enough Fear in the Night)
+- [DONE!] New incantations for meta-progression on the new route
+- New minor prophecies for progression through Zagreus' Journey
+- New Chaos Trials (including randomized trials) for the new biomes and bosses.
+- New story events and dialogue between Melinoë and other characters from Hades II, concerning the new route and gameplay features
+
+You can track all planned features and fixes on the [project's GitHub Issues page](https://github.com/NikkelM/Hades-II-HadesBiomes/issues).
+
+### Integrations with other Mods
+
+Some other mods integrate with _Zagreus' Journey_ to provide additional features, alternative functionality, or use the resources introduced by this mod:
+
+- [Charon's Tip Jar](https://thunderstore.io/c/hades-ii/p/NikkelM/Charons_Tip_Jar/) adds a tip jar to Charon's shop rooms during _Zagreus' Journey_ underworld runs.
+- [Flip the Arcana](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Flip_the_Arcana_Mod/) adds flipped versions of the Arcana cards with wildly different effects, and will require resources from _Zagreus' Journey_ to unlock them if both mods are installed.
+
+> Are you developing a mod that integrates with _Zagreus' Journey_, or would like to add such an integration? Let me know on [Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
 <!-- ## Installation -->
 <img src="https://github.com/user-attachments/assets/6daed6fd-84ef-43de-a7e8-6ff02ee5cad5" alt="Installation">
@@ -77,42 +113,6 @@ Though the mod can be played through from start to finish and is very polished a
 Please directly leave bug reports as a [new issue on the project's GitHub repository](https://github.com/NikkelM/Hades-II-HadesBiomes/issues/new?template=bug_report.md), or [start a discussion](https://github.com/NikkelM/Hades-II-HadesBiomes/discussions) for general feedback, suggestions and questions.
 
 If you do not have a GitHub account, you can also join the [Hades II Modding Discord server](https://discord.gg/KuMbyrN) and post in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
-
-<!-- ## Features -->
-<img src="https://github.com/user-attachments/assets/3d458e61-25c5-41d5-b312-13d2d8106561" alt="Features">
-
-- Play through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
-- Discover and overcome the challenge of fighting all of the original game's enemies and bosses using Melinoë's unique abilities and weapons.
-- Relive Zagreus' story by ascending to the Surface, meeting your brother's old friends and conversing with the Fury Sisters, the Champions of Elysium and [REDACTED] himself.
-- Unlock four of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus and Thanatos through the Shared Keepsake Port mod (automatically installed with this mod).
-- Collect 30+ new resources specific to the new biomes, use them for unlocks in this and [other mods](#integrations-with-other-mods), and trade them with the Broker.
-- Decorate the Crossroads with 40+ new cosmetics, including new Cauldrons, Fan Posters for your tent, and Charms inspired by Zagreus' companions from the first game.
-- Complete 24 new testaments by clearing the new bosses using each of your weapons with new fear levels.
-- Discover and perform 10+ new incantations to unlock gameplay features and rooms in Zagreus' Journey runs.
-- Read all about the new biomes, enemies, bosses and friends in a new chapter in your Codex.
-
-### Feature Roadmap
-
-Among many smaller improvements and fixes, the following major features are planned for future releases (in no particular order):
-
-- [DONE!] Secret boss fight (you know the one)
-- [DONE!] Erebus gates (when there is enough Fear in the Night)
-- [DONE!] New incantations for meta-progression on the new route
-- New story events and dialogue between Melinoë and other characters from Hades II, concerning the new route
-- Displaying statistics for the new route with the Record Keeper
-- Additional boons for story NPCs (Sisyphus, Eurydice, Patroclus)
-
-You can track all planned features and fixes on the [project's GitHub Issues page](https://github.com/NikkelM/Hades-II-HadesBiomes/issues).
-
-### Integrations with other Mods
-
-Some other mods integrate with _Zagreus' Journey_ to provide additional features, alternative functionality, or use the resources introduced by this mod:
-
-- [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) unlocks songs from Hades' original soundtrack through progression in _Zagreus' Journey_, and buying them from the Music Maker will require resources introduced by this mod.
-- [Charon's Tip Jar](https://thunderstore.io/c/hades-ii/p/NikkelM/Charons_Tip_Jar/) adds a tip jar to Charon's shop rooms during _Zagreus' Journey_ underworld runs.
-- [Flip the Arcana](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Flip_the_Arcana_Mod/) adds flipped versions of the Arcana cards with wildly different effects, and will require resources from _Zagreus' Journey_ to unlock them if both mods are installed.
-
-> Are you developing a mod that integrates with _Zagreus' Journey_, or would like to add such an integration? Let me know on [Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
 <!-- ## Contributors -->
 <img src="https://github.com/user-attachments/assets/c5e11388-78c2-49a7-bbc4-3176e34a1976" alt="Contributors">

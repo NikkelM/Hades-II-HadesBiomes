@@ -828,7 +828,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredTrait ~= nil and (not TraitData[requirements.RequiredTrait] or not HeroHasTrait(requirements.RequiredTrait)) then -- not implemented in mod
+	if requirements.RequiredTrait ~= nil and (not game.TraitData[requirements.RequiredTrait] or not game.HeroHasTrait(requirements.RequiredTrait)) then
 		return false
 	end
 
