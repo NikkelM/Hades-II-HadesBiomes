@@ -394,7 +394,7 @@ local newQuestData = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
 				Comparison = ">=",
-				Value = 8,
+				Value = 16,
 			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
