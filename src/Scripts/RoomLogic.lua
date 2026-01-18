@@ -274,9 +274,25 @@ modutil.mod.Path.Wrap("HandleSecretSpawns", function(base, currentRun)
 		end
 
 		-- ForbiddenShopItem/Charon Sack of Gold
-		local forbiddenShopItemId = GetClosest({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "ForbiddenShopItemSpawnPoint" })
+		local forbiddenShopItemId = GetClosest({
+			Id = game.CurrentRun.Hero.ObjectId,
+			DestinationName = "ForbiddenShopItemSpawnPoint"
+		})
 		if forbiddenShopItemId ~= nil and forbiddenShopItemId ~= 0 and mod.IsForbiddenShopItemEligible(currentRun, currentRoom) then
 			mod.SpawnForbiddenShopItem(currentRoom, { SpawnOnId = forbiddenShopItemId })
+		end
+	end
+end)
+
+modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentRoom, currentEncounter)
+	base(currentRun, currentRoom, currentEncounter)
+
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		if game.HeroHasTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) then
+			local traitData = game.GetHeroTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait)
+			if traitData.AccumulatedDamageBonus >= 1.296 then
+				game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_ThanatosKeepsakeAchievedHighPercentage = true
+			end
 		end
 	end
 end)

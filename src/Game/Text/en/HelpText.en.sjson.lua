@@ -1317,6 +1317,16 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_SoldLegendaryBoonFlag",
 		DisplayName = "Purge a Legendary Boon in a {$Keywords.SellTraitShop} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Thorn Of Thanatos ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of evading her foes' every strike, whilst carrying the {#Emph}{$TraitData.zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake.Name} {#Prev}from {$Keywords.CharThanatos}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ThanatosKeepsakeAchievedHighPercentage",
+		DisplayName = "Achieve 30% bonus damage from the {$TraitData.zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake.Name} whilst in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
+	},
 	-- #endregion
 }
 

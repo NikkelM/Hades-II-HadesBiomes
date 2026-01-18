@@ -28,6 +28,7 @@ local newQuestOrderData = {
 	-- weapons & combat
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
 	"ModsNikkelMHadesBiomes_QuestShutdownThanatos",
+	"ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
 }
 game.ConcatTableValuesIPairs(game.QuestOrderData, newQuestOrderData)
 
@@ -135,10 +136,10 @@ local newQuestData = {
 			{
 				Path = { "GameState", "TraitsTaken" },
 				HasAll = {
-					"zannc-SharedKeepsakePort-SisyphusVanillaKeepsake",
-					"zannc-SharedKeepsakePort-ShieldBossKeepsake",
-					"zannc-SharedKeepsakePort-ShieldAfterHitKeepsake",
-					"zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake",
+					mod.SharedKeepsakePortSisyphusKeepsakeTrait,
+					mod.SharedKeepsakePortEurydiceKeepsakeTrait,
+					mod.SharedKeepsakePortPatroclusKeepsakeTrait,
+					mod.SharedKeepsakePortThanatosKeepsakeTrait,
 				},
 			},
 		},
@@ -572,6 +573,22 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_SoldLegendaryBoonFlag" },
+			},
+		},
+	},
+	-- Achieve 30% bonus damage with Thanatos' keepsake
+	ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "SuperGiftPoints",
+		RewardResourceAmount = 2,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TraitsTaken", mod.SharedKeepsakePortThanatosKeepsakeTrait },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_ThanatosKeepsakeAchievedHighPercentage" },
 			},
 		},
 	},
