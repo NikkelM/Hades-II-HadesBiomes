@@ -20,6 +20,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestHermesBeatCharon",
 	-- self-improvement & stockpiling
 	"ModsNikkelMHadesBiomes_QuestCodexSmall",
+	"ModsNikkelMHadesBiomes_QuestSongsSmall",
 	"ModsNikkelMHadesBiomes_QuestCosmeticsSmall",
 	-- boons & character traits
 	"ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
@@ -535,6 +536,25 @@ local newQuestData = {
 				RequiredSourceValueFalse = "InPartnerConversation",
 				ObjectType = "NPC_Moros_01",
 				{ Cue = "/VO/Moros_0629", Text = "I think we both knew this would come to pass." },
+			},
+		},
+	},
+	-- Unlock Hades OST songs
+	ModsNikkelMHadesBiomes_QuestSongsSmall = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "CosmeticsPoints",
+		RewardResourceAmount = 1000,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "WorldUpgradesAdded" },
+				CountOf = mod.HadesOstSongNames,
+				Comparison = ">=",
+				Value = 10,
 			},
 		},
 	},

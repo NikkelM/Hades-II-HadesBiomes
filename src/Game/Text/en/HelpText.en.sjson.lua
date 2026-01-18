@@ -1293,13 +1293,19 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestTenClears",
-		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Family Secret ",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} The Family Secret ",
 		Description =
 		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, again and again, until she discovers what her brother's attempts set in motion.",
 	},
 	{
 		Id = "Ending01",
 		DisplayName = "Complete Zagreus' Journey",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestSongsSmall",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} The Gift of Song ",
+		Description =
+		"The daughter of the god of the dead shall someday encourage the {$Keywords.MusicPlayer} to perform {#Emph}{$QuestData.ModsNikkelMHadesBiomes_QuestSongsSmall.CompleteGameStateRequirements.1.Value} music pieces {#Prev}once played by the great {$Keywords.CharOrpheus} in the House of Hades.",
 	},
 	-- #endregion
 }

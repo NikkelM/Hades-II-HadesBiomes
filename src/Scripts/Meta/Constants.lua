@@ -1,3 +1,6 @@
+local mods = rom.mods
+local hadesOSTModReference = mods["NikkelM-Hades_OST_for_the_Music_Maker"]
+
 mod.NilValue = {}
 mod.TableValue = {}
 
@@ -433,3 +436,6 @@ mod.AllNewResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.No
 
 -- Populated in the loops in CosmeticData.lua
 mod.ModdedCosmeticIds = {}
+
+-- Song names/Ids from Hades OST for the Music Maker
+mod.HadesOstSongNames = hadesOSTModReference.HadesOstSongNames

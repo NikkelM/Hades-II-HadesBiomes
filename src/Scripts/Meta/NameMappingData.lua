@@ -1100,6 +1100,7 @@ mod.HadesHelpTextAliases = {
 	CharProtag = "NPC_Zagreus_Past_01",
 	HitAndRunUnitElite = "HitAndRunUnit",
 	CharAchilles = "Achilles",
+	CharOrpheus = "Orpheus",
 	CharThanatos = "Thanatos",
 }
 

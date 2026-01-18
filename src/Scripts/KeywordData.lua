@@ -7,6 +7,7 @@ local newKeywords = {
 	"ModsNikkelMHadesBiomesLocation_Hades_Surface_Short",
 	"ModsNikkelMHadesBiomesLocation_Hades_Challenge_Short",
 	"CharAchilles",
+	"CharOrpheus",
 	"CharThanatos",
 	"ShrinePointGate",
 }
