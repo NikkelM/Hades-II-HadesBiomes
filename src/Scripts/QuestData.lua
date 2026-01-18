@@ -7,6 +7,7 @@ game.ScreenData.QuestLog.ComponentData.InfoBoxTitle.TextArgs.TextSymbolScale = 0
 -- The order of the quests in the Quest log, these will be appended to the end of the vanilla list
 local newQuestOrderData = {
 	-- key / mission-critical
+	"ModsNikkelMHadesBiomes_QuestTenClears",
 	"ModsNikkelMHadesBiomes_QuestFirstClear",
 	-- major / priority
 	"ModsNikkelMHadesBiomes_QuestMeetChthonicGods",
@@ -488,6 +489,7 @@ local newQuestData = {
 	},
 	-- #endregion
 	-- #region Custom Quests
+	-- Beat Thanatos with him getting 0 kills
 	ModsNikkelMHadesBiomes_QuestShutdownThanatos = {
 		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
 		RewardResourceName = "MetaCurrency",
@@ -500,6 +502,39 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_ShutdownThanatosFlag" },
+			},
+		},
+	},
+	-- Finish mod story/escape 10 times
+	ModsNikkelMHadesBiomes_QuestTenClears = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "SuperGiftPoints",
+		RewardResourceAmount = 3,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
+				IsAny = { "CashedOut" }
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 2,
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+			},
+		},
+		CashedOutVoiceLines = {
+			{
+				PreLineWait = 0.4,
+				GameStateRequirements = { {}, },
+				Cooldowns = { { Name = "MorosProphecyFulfilledSpeech", Time = 3 }, },
+				SkipAnim = true,
+				RequiredSourceValueFalse = "InPartnerConversation",
+				ObjectType = "NPC_Moros_01",
+				{ Cue = "/VO/Moros_0629", Text = "I think we both knew this would come to pass." },
 			},
 		},
 	},

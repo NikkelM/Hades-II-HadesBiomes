@@ -1291,6 +1291,16 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_ShutdownThanatosFlag",
 		DisplayName = "Beat {$Keywords.CharThanatos} and Don't Let Him Get a Single Kill",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestTenClears",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Family Secret ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, again and again, until she discovers what her brother's attempts set in motion.",
+	},
+	{
+		Id = "Ending01",
+		DisplayName = "Complete Zagreus' Journey",
+	},
 	-- #endregion
 }
 
