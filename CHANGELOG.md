@@ -19,6 +19,7 @@ Other fixes and improvements:
 - Fixed: Gods don't comment on you choosing them over another god during a Family Dispute during Zagreus' Journey runs.
 - Fixed: Contextual voicelines with story NPCs relating to their respective keepsakes being equipped cannot trigger.
 - Fixed: In rare cases, some ineligible combinations of voicelines can play during NPC or boss encounters.
+- Fixed: Some NPC and boss conversations are not properly prioritized and will not be forced to play before more generic dialogue.
 - Fixed: When returning to the Crossroads after a cleared Zagreus' Journey run after the story ending, the game plays a Hades voiceline indicating he killed you.
 - Fixed: When returning from a Chaos Trial, Zagreus' Journey cosmetics and other assets are not loaded until switching rooms.
 - Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".

@@ -21,7 +21,7 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 					PlaySound({ Name = "/Leftovers/World Sounds/MapZoomSlow" })
 				end
 				game.ProcessTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets)
-				-- Custom for Hades EM
+				-- BossPresentationHighPriorityIntroTextLineSets is custom for Hades EM
 				game.ProcessTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets)
 				game.ProcessTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets)
 				game.ProcessTextLines(enemy, enemy.BossPresentationIntroTextLineSets)
