@@ -22,6 +22,7 @@ Other fixes and improvements:
 - Fixed: Some NPC and boss conversations are not properly prioritized and will not be forced to play before more generic dialogue.
 - Fixed: When returning to the Crossroads after a cleared Zagreus' Journey run after the story ending, the game plays a Hades voiceline indicating he killed you.
 - Fixed: When returning from a Chaos Trial, Zagreus' Journey cosmetics and other assets are not loaded until switching rooms.
+- Fixed: When a Thanatos encounter starts, Melinoë can sometimes play a Zagreus voiceline.
 - Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".
 - Fixed: Dying in a boss or miniboss room does not always show the correct portrait in the Run History screen.
 - Fixed: For saves with Zagreus' Journey runs from the alpha, some run results can show placeholder text.
