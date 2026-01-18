@@ -1281,6 +1281,16 @@ local newData = {
 		Description =
 		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, in no more than {#BoldFormatGraft}22 min.{#Prev}, using each of the {#Emph}Nocturnal Arms {#Prev}.",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestShutdownThanatos",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Death Dealer ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of battling Underworld wretches with {$Keywords.CharThanatos} at her side, and not let him land a single blow.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ShutdownThanatosFlag",
+		DisplayName = "Beat {$Keywords.CharThanatos} and Don't Let Him Get a Single Kill",
+	},
 	-- #endregion
 }
 

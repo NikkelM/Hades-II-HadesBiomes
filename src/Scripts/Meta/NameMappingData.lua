@@ -1100,6 +1100,7 @@ mod.HadesHelpTextAliases = {
 	CharProtag = "NPC_Zagreus_Past_01",
 	HitAndRunUnitElite = "HitAndRunUnit",
 	CharAchilles = "Achilles",
+	CharThanatos = "Thanatos",
 }
 
 -- List of Speakers for which the entries in the _NPCData files should be copied

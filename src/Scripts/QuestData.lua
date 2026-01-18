@@ -24,6 +24,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
 	-- weapons & combat
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
+	"ModsNikkelMHadesBiomes_QuestShutdownThanatos",
 }
 game.ConcatTableValuesIPairs(game.QuestOrderData, newQuestOrderData)
 
@@ -487,6 +488,21 @@ local newQuestData = {
 	},
 	-- #endregion
 	-- #region Custom Quests
+	ModsNikkelMHadesBiomes_QuestShutdownThanatos = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "MetaCurrency",
+		RewardResourceAmount = 1500,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "ThanatosFirstAppearance" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_ShutdownThanatosFlag" },
+			},
+		},
+	},
 	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.QuestData, newQuestData)

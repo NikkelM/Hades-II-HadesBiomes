@@ -105,6 +105,9 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 					.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades or {}
 			game.GameState.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes = game.GameState
 					.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes or {}
+			-- To track some custom misc flag, e.g. for certain Quest progress
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags = game.GameState
+					.ModsNikkelMHadesBiomesCustomFlags or {}
 		end
 
 		-- IMPORTANT: This must be incremented every time this function is changed
