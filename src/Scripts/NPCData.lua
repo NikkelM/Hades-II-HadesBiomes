@@ -113,8 +113,8 @@ local npcModifications = {
 			SisyphusAboutBouldy02 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
 			SisyphusLiberationQuest_Beginning_01 = { RequiredTextLines = { "SisyphusBackstory03", "SisyphusMeeting06", "SisyphusGift06", "ModsNikkelMHadesBiomes_BouldyFirstMeeting" }, },
 			-- The new name from SharedKeepsakePort
-			SisyphusAboutKeepsake01 = { RequiredTrait = "zannc-SharedKeepsakePort-SisyphusVanillaKeepsake", },
-			SisyphusAboutKeepsake02 = { RequiredTrait = "zannc-SharedKeepsakePort-SisyphusVanillaKeepsake", },
+			SisyphusAboutKeepsake01 = { RequiredTrait = mod.SharedKeepsakePortSisyphusKeepsakeTrait, },
+			SisyphusAboutKeepsake02 = { RequiredTrait = mod.SharedKeepsakePortSisyphusKeepsakeTrait, },
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
@@ -136,7 +136,7 @@ local npcModifications = {
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
-				[5] = { PostLineFunctionArgs = { Icon = "Keepsake_zannc-SharedKeepsakePort-Sisyphus" }, },
+				[5] = { PostLineFunctionArgs = { Icon = mod.SharedKeepsakePortSisyphusKeepsakeBondIcon }, },
 			},
 		},
 	},
@@ -177,8 +177,8 @@ local npcModifications = {
 		},
 		InteractTextLineSets = {
 			-- The new name from SharedKeepsakePort
-			EurydiceAboutAcorn01 = { RequiredKeepsake = "zannc-SharedKeepsakePort-ShieldBossKeepsake", },
-			EurydiceAboutAcorn02 = { RequiredKeepsake = "zannc-SharedKeepsakePort-ShieldBossKeepsake", },
+			EurydiceAboutAcorn01 = { RequiredKeepsake = mod.SharedKeepsakePortEurydiceKeepsakeTrait, },
+			EurydiceAboutAcorn02 = { RequiredKeepsake = mod.SharedKeepsakePortEurydiceKeepsakeTrait, },
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
@@ -191,7 +191,7 @@ local npcModifications = {
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
-				[3] = { PostLineFunctionArgs = { Icon = "Keepsake_zannc-SharedKeepsakePort-Eurydice" }, },
+				[3] = { PostLineFunctionArgs = { Icon = mod.SharedKeepsakePortEurydiceKeepsakeBondIcon }, },
 			},
 		},
 	},
@@ -220,8 +220,8 @@ local npcModifications = {
 		},
 		InteractTextLineSets = {
 			-- The new name from SharedKeepsakePort
-			PatroclusAboutKeepsake01 = { RequiredKeepsake = "zannc-SharedKeepsakePort-ShieldAfterHitKeepsake", },
-			PatroclusAboutKeepsake02 = { RequiredKeepsake = "zannc-SharedKeepsakePort-ShieldAfterHitKeepsake", },
+			PatroclusAboutKeepsake01 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
+			PatroclusAboutKeepsake02 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
@@ -234,7 +234,7 @@ local npcModifications = {
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
-				[6] = { PostLineFunctionArgs = { Icon = "Keepsake_zannc-SharedKeepsakePort-Patroclus" }, },
+				[6] = { PostLineFunctionArgs = { Icon = mod.SharedKeepsakePortPatroclusKeepsakeBondIcon }, },
 			},
 		},
 	},
@@ -343,7 +343,7 @@ local npcModifications = {
 		},
 		BossPresentationIntroTextLineSets = {
 			-- The new name from SharedKeepsakePort
-			ThanatosFieldAboutKeepsake01 = { RequiredTrait = "zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake", },
+			ThanatosFieldAboutKeepsake01 = { RequiredTrait = mod.SharedKeepsakePortThanatosKeepsakeTrait, },
 		},
 	},
 }

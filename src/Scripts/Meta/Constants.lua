@@ -439,3 +439,13 @@ mod.ModdedCosmeticIds = {}
 
 -- Song names/Ids from Hades OST for the Music Maker
 mod.HadesOstSongNames = hadesOSTModReference.HadesOstSongNames
+
+-- Keepsake names from SharedKeepsakePort
+mod.SharedKeepsakePortSisyphusKeepsakeTrait = "zannc-SharedKeepsakePort-SisyphusVanillaKeepsake"
+mod.SharedKeepsakePortSisyphusKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Sisyphus"
+mod.SharedKeepsakePortEurydiceKeepsakeTrait = "zannc-SharedKeepsakePort-ShieldBossKeepsake"
+mod.SharedKeepsakePortEurydiceKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Eurydice"
+mod.SharedKeepsakePortPatroclusKeepsakeTrait = "zannc-SharedKeepsakePort-ShieldAfterHitKeepsake"
+mod.SharedKeepsakePortPatroclusKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Patroclus"
+mod.SharedKeepsakePortThanatosKeepsakeTrait = "zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake"
+mod.SharedKeepsakePortThanatosKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Thanatos"

@@ -196,7 +196,7 @@ function mod.ThanatosExit(source, args)
 
 	if args.UseMaxedPresentation then
 		game.MaxedRelationshipPresentation(source,
-			{ Text = "NPC_Thanatos_01", Icon = "Keepsake_zannc-SharedKeepsakePort-Thanatos" })
+			{ Text = "NPC_Thanatos_01", Icon = mod.SharedKeepsakePortThanatosKeepsakeBondIcon })
 	end
 
 	source.Mute = true
