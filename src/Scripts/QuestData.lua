@@ -18,6 +18,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestPactUpgrades",
 	"ModsNikkelMHadesBiomes_QuestChaosKeepsakeFullRun",
 	"ModsNikkelMHadesBiomes_QuestHermesBeatCharon",
+	"ModsNikkelMHadesBiomes_QuestPurgeLegendaryBoon",
 	-- self-improvement & stockpiling
 	"ModsNikkelMHadesBiomes_QuestCodexSmall",
 	"ModsNikkelMHadesBiomes_QuestSongsSmall",
@@ -555,6 +556,22 @@ local newQuestData = {
 				CountOf = mod.HadesOstSongNames,
 				Comparison = ">=",
 				Value = 10,
+			},
+		},
+	},
+	-- Purge a legendary boon
+	ModsNikkelMHadesBiomes_QuestPurgeLegendaryBoon = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "GiftPoints",
+		RewardResourceAmount = 3,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_SoldLegendaryBoonFlag" },
 			},
 		},
 	},

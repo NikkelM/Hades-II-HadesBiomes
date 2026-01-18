@@ -1307,6 +1307,16 @@ local newData = {
 		Description =
 		"The daughter of the god of the dead shall someday encourage the {$Keywords.MusicPlayer} to perform {#Emph}{$QuestData.ModsNikkelMHadesBiomes_QuestSongsSmall.CompleteGameStateRequirements.1.Value} music pieces {#Prev}once played by the great {$Keywords.CharOrpheus} in the House of Hades.",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestPurgeLegendaryBoon",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Thanks, No Thanks ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of risking the wrath of the Gods by trading their most valuable gifts for coin.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_SoldLegendaryBoonFlag",
+		DisplayName = "Purge a Legendary Boon in a {$Keywords.SellTraitShop} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
+	},
 	-- #endregion
 }
 

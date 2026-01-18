@@ -468,6 +468,7 @@ local function on_ready()
 			import "Scripts/RunHistoryLogic.lua"
 			import "Scripts/RunHistoryPresentation.lua"
 			import "Scripts/RunLogic.lua"
+			import "Scripts/SellTraitLogic.lua"
 			import "Scripts/ShrinePresentation.lua"
 			import "Scripts/StoreLogic.lua"
 			import "Scripts/TraitLogic.lua"
