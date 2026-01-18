@@ -1315,7 +1315,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_SoldLegendaryBoonFlag",
-		DisplayName = "Purge a Legendary Boon in a {$Keywords.SellTraitShop} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
+		DisplayName = "Purge a Legendary Boon In a {$Keywords.SellTraitShop} In the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
@@ -1325,7 +1325,17 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ThanatosKeepsakeAchievedHighPercentage",
-		DisplayName = "Achieve 30% bonus damage from the {$TraitData.zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake.Name} whilst in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
+		DisplayName = "Achieve 30% Bonus Damage From the {$TraitData.zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake.Name} In the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Extreme Measures ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of overcoming her father and his strongest allies whilst they are empowered by the {#Emph}{$MetaUpgradeData.BossDifficultyShrineUpgrade.Name}{#Prev}.",
+	},
+	{
+		Id = "LordHadesExtremeMeasuresDefeat01",
+		DisplayName = "Defeat {$Keywords.CharHades} With {#LegendaryFormat}Rank IV {#Prev}of the {$MetaUpgradeData.BossDifficultyShrineUpgrade.Name} Active",
 	},
 	-- #endregion
 }

@@ -27,6 +27,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
 	-- weapons & combat
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
+	"ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun",
 	"ModsNikkelMHadesBiomes_QuestShutdownThanatos",
 	"ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
 }
@@ -589,6 +590,32 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_ThanatosKeepsakeAchievedHighPercentage" },
+			},
+		},
+	},
+	-- Clear a run on EM4
+	ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "CardUpgradePoints",
+		RewardResourceAmount = 4,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
+				IsAny = { "CashedOut" }
+			},
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBossDifficultyT4" },
+			},
+			NamedRequirements = { "ShrineUnlocked" },
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "LordHadesExtremeMeasuresDefeat01" },
 			},
 		},
 	},
