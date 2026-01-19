@@ -1337,6 +1337,12 @@ local newData = {
 		Id = "LordHadesExtremeMeasuresDefeat01",
 		DisplayName = "Defeat {$Keywords.CharHades} With {#LegendaryFormat}Rank IV {#Prev}of the {$MetaUpgradeData.BossDifficultyShrineUpgrade.Name} Active",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Following Through ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of overcoming her foes without being hit during {#Emph}{$QuestData.ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters.CompleteGameStateRequirements.1.Value} consecutive {#Prev} {$Keywords.ShrinePointGate} challenges that she has accepted.",
+	},
 	-- #endregion
 }
 

@@ -29,6 +29,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
 	"ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun",
 	"ModsNikkelMHadesBiomes_QuestShutdownThanatos",
+	"ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
 	"ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
 }
 game.ConcatTableValuesIPairs(game.QuestOrderData, newQuestOrderData)
@@ -616,6 +617,34 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "LordHadesExtremeMeasuresDefeat01" },
+			},
+		},
+	},
+	-- Successfully clear ShrineChallenge/Erebus encounters in a row
+	ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "MetaCurrency",
+		RewardResourceAmount = 1200,
+		UnlockGameStateRequirements = {
+			-- {
+			-- 	Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
+			-- 	IsAny = { "CashedOut" }
+			-- },
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
+				Comparison = ">=",
+				Value = 5,
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation" },
+			},
+			NamedRequirements = { "ShrineUnlocked" },
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears" },
+				Comparison = ">=",
+				Value = 3,
 			},
 		},
 	},

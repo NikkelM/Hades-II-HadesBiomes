@@ -162,6 +162,16 @@ function mod.PerfectClearEncounterEndPresentation(eventSource)
 		game.AudioState.SecretMusicId = nil
 		game.AudioState.SecretMusicName = nil
 	end
+
+	-- For the Quest tracking
+	game.GameState.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears = game.GameState
+			.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears or 0
+	if eventSource.PlayerTookDamage then
+		game.GameState.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears = 0
+	else
+		game.GameState.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears =
+				game.GameState.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears + 1
+	end
 end
 
 -- #endregion
