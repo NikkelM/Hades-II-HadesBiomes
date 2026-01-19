@@ -212,7 +212,8 @@ modutil.mod.Path.Wrap("EndRun", function(base, run)
 end)
 
 modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
-	if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+	if run.ModsNikkelMHadesBiomesIsModdedRun then
+		-- Bounty runs shouldn't count towards lifetime stats
 		if game.CurrentRun.ActiveBounty == nil then
 			local clearCountRecordName = "ModsNikkelMHadesBiomesClearCount"
 			local fastestTimeRecordName = "ModsNikkelMHadesBiomesFastestTime"
@@ -242,8 +243,16 @@ modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
 end)
 
 modutil.mod.Path.Wrap("GetRunResult", function(base, run)
+	if run.ActiveBounty ~= nil then
+		if run.BountyCleared then
+			return game.RunResultData.BountySuccess
+		else
+			return game.RunResultData.BountyFail
+		end
+	end
+
 	-- Run this before the base function, as the base function defaults to a surface run if it's not the underworld
-	if run.BiomesReached ~= nil and (run.BiomesReached.Tartarus or run.BiomesReached.Asphodel or run.BiomesReached.Elysium or run.BiomesReached.Styx) then
+	if run.ModsNikkelMHadesBiomesIsModdedRun then
 		if run.Cleared then
 			return game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess
 		else
