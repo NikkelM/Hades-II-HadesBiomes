@@ -5,6 +5,7 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - You can now **challenge Lord Charon** to a "friendly duel" by "borrowing" some his his Gold! Defeat your favourite shopkeeper for a special discount on all his wares for the duration of your current run.
+- Discover and complete over **25 new Minor Prophecies** at the Fated List, with more coming in the future.
 - Added 8 new cosmetics to discover and unlock in the Crossroads, created by @burn.
 - You can now unlock **new music tracks** from the first game with the Music Maker in the Crossroads, through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (installed automatically with this mod). Perform the "Recovery of Orpheus' Scriptures" incantation to unlock the new music.
 

@@ -31,12 +31,13 @@ It is highly recommended that you complete the main story of Hades before playin
 - Play through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
 - Discover and overcome the challenge of fighting all of the original game's enemies and bosses using Melinoë's unique abilities and weapons.
 - Relive Zagreus' story by ascending to the Surface, meeting your brother's old friends and conversing with the Fury Sisters, the Champions of Elysium and [REDACTED] himself.
-- Unlock **four** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
 - Collect **30+** new resources specific to the new biomes, use them for unlocks in this and [other mods](#integrations-with-other-mods), and trade them with the Broker.
 - Unlock **29** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
 - Decorate the Crossroads with **45+** new cosmetics, including new **Cauldrons**, **Fan Posters** for your tent, and **Charms** inspired by Zagreus' companions from the first game.
+- Discover and complete **25+** new Minor Prophecies at the Fated List.
 - Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
 - Discover and perform **10+** new incantations to unlock gameplay features and new rooms in Zagreus' Journey runs.
+- Unlock **four** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
 - Read all about the new biomes, enemies, bosses and friends in a new chapter in your Codex.
 
 ### Feature Roadmap
@@ -46,7 +47,7 @@ Among many smaller improvements and fixes, the following major features are plan
 - [DONE!] Secret boss fight (you know the one)
 - [DONE!] Erebus gates (when there is enough Fear in the Night)
 - [DONE!] New incantations for meta-progression on the new route
-- New minor prophecies for progression through Zagreus' Journey
+- [DONE!] New minor prophecies for progression through Zagreus' Journey
 - New Chaos Trials (including randomized trials) for the new biomes and bosses.
 - New story events and dialogue between Melinoë and other characters from Hades II, concerning the new route and gameplay features
 
