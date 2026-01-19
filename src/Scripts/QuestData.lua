@@ -41,9 +41,11 @@ game.ConcatTableValuesIPairs(game.QuestOrderData, newQuestOrderData)
 
 local newQuestData = {
 	-- #region Base Hades Quests
-	ModsNikkelMHadesBiomes_DefaultQuestItem = {
-		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
-		DebugOnly = true,
+	-- Clear once
+	ModsNikkelMHadesBiomes_QuestFirstClear = {
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest"  },
+		RewardResourceName = "MetaCurrency",
+		RewardResourceAmount = 1000,
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
@@ -51,12 +53,6 @@ local newQuestData = {
 				Value = 1,
 			},
 		},
-	},
-	-- Clear once
-	ModsNikkelMHadesBiomes_QuestFirstClear = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
-		RewardResourceName = "MetaCurrency",
-		RewardResourceAmount = 1000,
 		CompleteGameStateRequirements = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "PersephoneFirstMeeting", },
@@ -73,9 +69,16 @@ local newQuestData = {
 	},
 	-- Meet Megaera, Alecto, Tisiphone, Thanatos, Hades, (Hypnos)
 	ModsNikkelMHadesBiomes_QuestMeetChthonicGods = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 300,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+		},
 		CompleteGameStateRequirements = {
 			-- Megaera
 			{
@@ -103,7 +106,7 @@ local newQuestData = {
 	},
 	-- Clear with each weapon (any aspect)
 	ModsNikkelMHadesBiomes_QuestWeaponClears = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest"  },
 		RewardResourceName = "WeaponPointsRare",
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
@@ -129,7 +132,7 @@ local newQuestData = {
 	},
 	-- Equip new keepsakes (from SharedKeepsakePort)
 	ModsNikkelMHadesBiomes_QuestKeepsakesQuest = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
 		RewardResourceName = "SuperGiftPoints",
 		RewardResourceAmount = 2,
 		UnlockGameStateRequirements = {
@@ -154,7 +157,7 @@ local newQuestData = {
 	},
 	-- Defeated all minibosses
 	ModsNikkelMHadesBiomes_QuestMiniBossKills = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultKillQuest" },
 		RewardResourceName = "CardUpgradePoints",
 		RewardResourceAmount = 5,
 		UnlockGameStateRequirements = {
@@ -186,7 +189,7 @@ local newQuestData = {
 	},
 	-- Unlocked modded Cosmetics
 	ModsNikkelMHadesBiomes_QuestCosmeticsSmall = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
 		RewardResourceName = "CosmeticsPoints",
 		RewardResourceAmount = 2000,
 		UnlockGameStateRequirements = {
@@ -209,7 +212,7 @@ local newQuestData = {
 	},
 	-- Codex entries (there are 53 in total in the mod)
 	ModsNikkelMHadesBiomes_QuestCodexSmall = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultUnseenQuest" },
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 500,
 		UnlockGameStateRequirements = {
@@ -234,7 +237,7 @@ local newQuestData = {
 	},
 	-- Clearing with each Arcana Card/MetaUpgrade
 	ModsNikkelMHadesBiomes_QuestMetaUpgrades = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultUnseenQuest" },
 		RewardResourceName = "WeaponPointsRare",
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
@@ -288,7 +291,7 @@ local newQuestData = {
 	},
 	-- Clearing with each Vow/Pact/ShrineUpgrade
 	ModsNikkelMHadesBiomes_QuestPactUpgrades = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "WeaponPointsRare",
 		RewardResourceAmount = 4,
 		UnlockGameStateRequirements = {
@@ -335,7 +338,7 @@ local newQuestData = {
 	},
 	-- Full run cleared with Chaos Keepsake equipped
 	ModsNikkelMHadesBiomes_QuestChaosKeepsakeFullRun = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultChaosQuest" },
 		RewardResourceName = "Mixer5Common",
 		RewardResourceAmount = 2,
 		UnlockGameStateRequirements = {
@@ -368,7 +371,7 @@ local newQuestData = {
 	},
 	-- Beat Charon twice in a row on behalf of Hermes
 	ModsNikkelMHadesBiomes_QuestHermesBeatCharon = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "CharonPoints",
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
@@ -386,7 +389,7 @@ local newQuestData = {
 	},
 	-- Clear on 32 fear with all weapons
 	ModsNikkelMHadesBiomes_QuestWeaponClearsHighHeat = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest"  },
 		RewardResourceName = "WeaponPointsRare",
 		RewardResourceAmount = 6,
 		UnlockGameStateRequirements = {
@@ -443,7 +446,7 @@ local newQuestData = {
 	},
 	-- Clear in under 22 minutes with all weapons
 	ModsNikkelMHadesBiomes_QuestWeaponClearsFast = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest"  },
 		RewardResourceName = "WeaponPointsRare",
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
@@ -501,7 +504,7 @@ local newQuestData = {
 	-- #region Custom Quests
 	-- Beat Thanatos with him getting 0 kills
 	ModsNikkelMHadesBiomes_QuestShutdownThanatos = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 1500,
 		UnlockGameStateRequirements = {
@@ -517,7 +520,7 @@ local newQuestData = {
 	},
 	-- Finish mod story/escape 10 times
 	ModsNikkelMHadesBiomes_QuestTenClears = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest"  },
 		RewardResourceName = "SuperGiftPoints",
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
@@ -550,7 +553,7 @@ local newQuestData = {
 	},
 	-- Unlock Hades OST songs
 	ModsNikkelMHadesBiomes_QuestSongsSmall = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
 		RewardResourceName = "CosmeticsPoints",
 		RewardResourceAmount = 1000,
 		UnlockGameStateRequirements = {
@@ -569,7 +572,7 @@ local newQuestData = {
 	},
 	-- Purge a legendary boon
 	ModsNikkelMHadesBiomes_QuestPurgeLegendaryBoon = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "GiftPoints",
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
@@ -585,7 +588,7 @@ local newQuestData = {
 	},
 	-- Achieve 30% bonus damage with Thanatos' keepsake
 	ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "SuperGiftPoints",
 		RewardResourceAmount = 2,
 		UnlockGameStateRequirements = {
@@ -601,7 +604,7 @@ local newQuestData = {
 	},
 	-- Clear a run on EM4
 	ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest"  },
 		RewardResourceName = "CardUpgradePoints",
 		RewardResourceAmount = 4,
 		UnlockGameStateRequirements = {
@@ -627,7 +630,7 @@ local newQuestData = {
 	},
 	-- Successfully clear ShrineChallenge/Erebus encounters in a row
 	ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultKillQuest" },
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 1200,
 		UnlockGameStateRequirements = {
@@ -655,7 +658,7 @@ local newQuestData = {
 	},
 	-- Gain all Sisyphus boons
 	ModsNikkelMHadesBiomes_QuestSisyphusUpgrades = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 400,
 		UnlockGameStateRequirements = {
@@ -676,7 +679,7 @@ local newQuestData = {
 	},
 	-- Gain all Eurydice boons
 	ModsNikkelMHadesBiomes_QuestEurydiceUpgrades = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 400,
 		UnlockGameStateRequirements = {
@@ -697,7 +700,7 @@ local newQuestData = {
 	},
 	-- Gain all Patroclus boons
 	ModsNikkelMHadesBiomes_QuestPatroclusUpgrades = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 400,
 		UnlockGameStateRequirements = {
@@ -720,7 +723,7 @@ local newQuestData = {
 	},
 	-- Gift Bouldy enough times
 	ModsNikkelMHadesBiomes_QuestBouldyUpgrades = {
-		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
 		RewardResourceName = "CardUpgradePoints",
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
