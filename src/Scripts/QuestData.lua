@@ -626,10 +626,10 @@ local newQuestData = {
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 1200,
 		UnlockGameStateRequirements = {
-			-- {
-			-- 	Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
-			-- 	IsAny = { "CashedOut" }
-			-- },
+			{
+				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
+				IsAny = { "CashedOut" }
+			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
 				Comparison = ">=",
