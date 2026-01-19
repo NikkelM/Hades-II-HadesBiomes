@@ -2,7 +2,7 @@
 -- For Hades Tartartus doors, we use the original Hades backing art, so we set ReUseIds which prevents the Hades II backing from being created
 modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosenRewardType, chosenLootName, index, args)
 	args = args or {}
-
+	game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
 	if not args.ReUseIds and (exitDoor.Name == "TartarusDoor03b" or exitDoor.Name == "AsphodelBoat01b") then
 		local room = exitDoor.Room
 		chosenRewardType = chosenRewardType or room.ChosenRewardType
