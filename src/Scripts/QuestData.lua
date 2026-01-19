@@ -4,6 +4,8 @@ game.ScreenData.QuestLog.IncompleteFormat.TextSymbolScale = 0
 game.ScreenData.QuestLog.CashedOutFormat.TextSymbolScale = 0
 game.ScreenData.QuestLog.ComponentData.InfoBoxTitle.TextArgs.TextSymbolScale = 0.5
 
+local flippedArcanaActive = rom.mods["ReadEmAndWeep-Flip_the_Arcana_Mod"]
+
 -- The order of the quests in the Quest log, these will be appended to the end of the vanilla list
 local newQuestOrderData = {
 	-- key / mission-critical
@@ -41,6 +43,19 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
 	"ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
 }
+
+if flippedArcanaActive then
+	local insertIndex = nil
+	for index, questKey in ipairs(newQuestOrderData) do
+		if questKey == "ModsNikkelMHadesBiomes_QuestMetaUpgrades" then
+			insertIndex = index + 1
+			break
+		end
+	end
+	if insertIndex then
+		table.insert(newQuestOrderData, insertIndex, "ModsNikkelMHadesBiomes_QuestFlippedMetaUpgrades")
+	end
+end
 game.ConcatTableValuesIPairs(game.QuestOrderData, newQuestOrderData)
 
 local newQuestData = {
@@ -242,8 +257,8 @@ local newQuestData = {
 	-- Clearing with each Arcana Card/MetaUpgrade
 	ModsNikkelMHadesBiomes_QuestMetaUpgrades = {
 		InheritFrom = { "DefaultQuestItem", "DefaultUnseenQuest" },
-		RewardResourceName = "WeaponPointsRare",
-		RewardResourceAmount = 3,
+		RewardResourceName = "CardUpgradePoints",
+		RewardResourceAmount = 4,
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
@@ -1201,3 +1216,53 @@ local newQuestData = {
 	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.QuestData, newQuestData)
+
+if flippedArcanaActive then
+	-- Clearing with each flipped Arcana Card/MetaUpgrade
+	local flippedArcanaNewQuestData = {
+		ModsNikkelMHadesBiomes_QuestFlippedMetaUpgrades = {
+			InheritFrom = { "DefaultQuestItem", "DefaultUnseenQuest" },
+			RewardResourceName = "CardUpgradePoints",
+			RewardResourceAmount = 5,
+			UnlockGameStateRequirements = {
+				{
+					Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestMetaUpgrades" },
+					IsAny = { "CashedOut" }
+				},
+			},
+			CompleteGameStateRequirements = {
+				{
+					Path = { "GameState", "ClearedWithMetaUpgrades", "Styx" },
+					HasAll = {
+						"ReversedChanneledCast",
+						"ReversedHealthRegen",
+						"ReversedLowManaDamageBonus",
+						"ReversedCastCount",
+						"ReversedSorceryRegenUpgrade",
+						"ReversedCastBuff",
+						"ReversedBonusHealth",
+						"ReversedBonusDodge",
+						"ReversedManaOverTime",
+						"ReversedMagicCrit",
+						"ReversedSprintShield",
+						"ReversedLastStand",
+						"ReversedMaxHealthPerRoom",
+						"ReversedStatusVulnerability",
+						"ReversedChanneledBlock",
+						"ReversedDoorReroll",
+						"ReversedStartingGold",
+						"ReversedMetaToRunUpgrade",
+						"ReversedRarityBoost",
+						"ReversedBonusRarity",
+						"ReversedTradeOff",
+						"ReversedScreenReroll",
+						"ReversedLowHealthBonus",
+						"ReversedEpicRarityBoost",
+						"ReversedCardDraw",
+					},
+				},
+			},
+		},
+	}
+	mod.AddTableKeysSkipDupes(game.QuestData, flippedArcanaNewQuestData)
+end

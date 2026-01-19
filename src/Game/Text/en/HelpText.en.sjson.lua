@@ -1415,6 +1415,12 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_QuestCropsSmall_Styx",
 		DisplayName = "Grow a Golden {$ResourceData.ModsNikkelMHadesBiomes_CropStyx.Name}",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestFlippedMetaUpgrades",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Reversed Reflections ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, whilst influenced by each {#Emph}reversed {$Keywords.Card}{#Prev}.",
+	},
 	-- #endregion
 }
 
