@@ -414,13 +414,23 @@ mod.GatherableResourceNames = {
 	"Fish_Surface_Legendary_01",
 }
 
--- Can either be directly gathered in rooms, or grown in the Crossroads
-mod.NonBossResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.GatherableResourceNames), {
+mod.SeedResourceNames = {
+	"ModsNikkelMHadesBiomes_SeedTartarus",
+	"ModsNikkelMHadesBiomes_SeedAsphodel",
+	"ModsNikkelMHadesBiomes_SeedElysium",
+	"ModsNikkelMHadesBiomes_SeedStyx",
+}
+
+mod.GrowableResourceNames = {
 	"ModsNikkelMHadesBiomes_CropTartarus",
 	"ModsNikkelMHadesBiomes_CropAsphodel",
 	"ModsNikkelMHadesBiomes_CropElysium",
 	"ModsNikkelMHadesBiomes_CropStyx",
-})
+}
+
+-- Can either be directly gathered in rooms, or grown in the Crossroads
+mod.NonBossResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.GatherableResourceNames),
+	game.DeepCopyTable(mod.GrowableResourceNames))
 
 -- Only obtainable from bosses
 mod.BossResourceNames = {

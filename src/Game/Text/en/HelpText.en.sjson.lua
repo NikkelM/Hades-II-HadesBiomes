@@ -1393,6 +1393,28 @@ local newData = {
 		Description =
 		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, in no more than {#BoldFormatGraft}22 min.{#Prev}, using each and every {#Emph}Aspect {#Prev}of the {#Emph}Nocturnal Arms {#Prev}available to her.",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestCropsSmall",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Careful Cultivation ",
+		Description =
+		"The daughter of the god of the dead shall someday gather a variety of strange seeds in the {#Emph}{$Keywords.ModsNikkelMHadesBiomesModdedRoute} {#Prev}and nurture them to full bloom in her {#Emph}Garden{#Prev}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestCropsSmall_Tartarus",
+		DisplayName = "Grow a Hearty {$ResourceData.ModsNikkelMHadesBiomes_CropTartarus.Name}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestCropsSmall_Asphodel",
+		DisplayName = "Grow a Warming {$ResourceData.ModsNikkelMHadesBiomes_CropAsphodel.Name}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestCropsSmall_Elysium",
+		DisplayName = "Grow a Fragile {$ResourceData.ModsNikkelMHadesBiomes_CropElysium.Name}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestCropsSmall_Styx",
+		DisplayName = "Grow a Golden {$ResourceData.ModsNikkelMHadesBiomes_CropStyx.Name}",
+	},
 	-- #endregion
 }
 

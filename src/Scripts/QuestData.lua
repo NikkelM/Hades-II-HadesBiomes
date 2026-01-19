@@ -26,6 +26,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestCodexSmall",
 	"ModsNikkelMHadesBiomes_QuestSongsSmall",
 	"ModsNikkelMHadesBiomes_QuestCosmeticsSmall",
+	"ModsNikkelMHadesBiomes_QuestCropsSmall",
 	-- boons & character traits
 	"ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
 	-- TODO: Disabled until we have more options through #155/#300
@@ -1161,6 +1162,41 @@ local newQuestData = {
 			"SuitMarkCritAspect",
 			"SuitComboAspect",
 		},
+	},
+	-- Grow modded crops
+	ModsNikkelMHadesBiomes_QuestCropsSmall = {
+		InheritFrom = { "DefaultQuestItem", "DefaultNatureQuest" },
+		RewardResourceName = "MetaCurrency",
+		RewardResourceAmount = 300,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeGarden" },
+			},
+			{
+				Path = { "GameState", "LifetimeResourcesGained" },
+				HasAny = mod.SeedResourceNames,
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_CropTartarus" },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_CropAsphodel" },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_CropElysium" },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_CropStyx" },
+			},
+		},
+		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {
+			"ModsNikkelMHadesBiomes_QuestCropsSmall_Tartarus",
+			"ModsNikkelMHadesBiomes_QuestCropsSmall_Asphodel",
+			"ModsNikkelMHadesBiomes_QuestCropsSmall_Elysium",
+			"ModsNikkelMHadesBiomes_QuestCropsSmall_Styx",
+		}
 	},
 	-- #endregion
 }
