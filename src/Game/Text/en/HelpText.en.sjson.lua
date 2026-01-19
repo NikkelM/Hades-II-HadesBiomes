@@ -1343,6 +1343,38 @@ local newData = {
 		Description =
 		"The daughter of the god of the dead shall someday dream of overcoming her foes without being hit during {#Emph}{$QuestData.ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters.CompleteGameStateRequirements.1.Value} consecutive {#Prev} {$Keywords.ShrinePointGate} challenges that she has accepted.",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestSisyphusUpgrades",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Shade of Chains ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of claiming a variety of gifts offered by the eternal laborer {#Emph}{$Keywords.CharSisyphus}{#Prev}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestEurydiceUpgrades",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Muse of Music ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of sampling the many treats prepared by the carefree nymph {#Emph}{$Keywords.CharEurydice}{#Prev}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestPatroclusUpgrades",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Warrior of Old ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of receiving a number of unwanted blessings handed out by the forgotten warrior {#Emph}{$Keywords.CharPatroclus}{#Prev}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestBouldyUpgrades",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Heart of Stone ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of investing herself and enough {!Icons.GiftPoints} to start believing in the steadfast friend that is {#Emph}{$Keywords.CharBouldy}{#Prev}, and have him believe in her.",
+	},
+	{
+		Id = "QuestBouldyUpgrades_Condition",
+		DisplayName = "{!Icons.QuestProgressIncomplete} Start Believing in {$Keywords.CharBouldy}, and {$Keywords.CharBouldy} Will Start Believing in You",
+	},
+	{
+		Id = "QuestBouldyUpgrades_Complete",
+		DisplayName = "{!Icons.QuestProgressComplete} Start Believing in {$Keywords.CharBouldy}, and {$Keywords.CharBouldy} Will Start Believing in You",
+	},
 	-- #endregion
 }
 

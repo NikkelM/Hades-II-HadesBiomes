@@ -1102,10 +1102,13 @@ mod.HadesHelpTextAliases = {
 	CharAchilles = "Achilles",
 	CharOrpheus = "Orpheus",
 	CharThanatos = "Thanatos",
+	CharSisyphus = "Sisyphus",
+	CharEurydice = "NPC_Eurydice_01",
+	CharPatroclus = "NPC_Patroclus_01",
+	CharBouldy = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 }
 
 -- List of Speakers for which the entries in the _NPCData files should be copied
--- TODO: Thanatos?
 mod.HadesNPCTextSpeakers = {
 	Sisyphus = true,
 	Eurydice = true,

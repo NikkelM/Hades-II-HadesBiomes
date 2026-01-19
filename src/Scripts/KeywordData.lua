@@ -9,6 +9,10 @@ local newKeywords = {
 	"CharAchilles",
 	"CharOrpheus",
 	"CharThanatos",
+	"CharSisyphus",
+	"CharEurydice",
+	"CharPatroclus",
+	"CharBouldy",
 	"ShrinePointGate",
 }
 game.ConcatTableValuesIPairs(game.KeywordList, newKeywords)

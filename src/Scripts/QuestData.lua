@@ -25,6 +25,11 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestCosmeticsSmall",
 	-- boons & character traits
 	"ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
+	-- TODO: Disabled until we have more options through #155/#300
+	-- "ModsNikkelMHadesBiomes_QuestSisyphusUpgrades",
+	-- "ModsNikkelMHadesBiomes_QuestEurydiceUpgrades",
+	-- "ModsNikkelMHadesBiomes_QuestPatroclusUpgrades",
+	"ModsNikkelMHadesBiomes_QuestBouldyUpgrades",
 	-- weapons & combat
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
 	"ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun",
@@ -647,6 +652,91 @@ local newQuestData = {
 				Value = 3,
 			},
 		},
+	},
+	-- Gain all Sisyphus boons
+	ModsNikkelMHadesBiomes_QuestSisyphusUpgrades = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "MetaCurrency",
+		RewardResourceAmount = 400,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "SisyphusGift02" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "TraitsTaken" },
+				HasAll = {
+					"ModsNikkelMHadesBiomesSisyphusMoney",
+					"ModsNikkelMHadesBiomesSisyphusHealing",
+					"ModsNikkelMHadesBiomesSisyphusMetapoints",
+				},
+			},
+		},
+	},
+	-- Gain all Eurydice boons
+	ModsNikkelMHadesBiomes_QuestEurydiceUpgrades = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "MetaCurrency",
+		RewardResourceAmount = 400,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "EurydiceGift02" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "TraitsTaken" },
+				HasAll = {
+					"ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
+					"ModsNikkelMHadesBiomesBuffMegaPom",
+					"ModsNikkelMHadesBiomesBuffFutureBoonRarity",
+				},
+			},
+		},
+	},
+	-- Gain all Patroclus boons
+	ModsNikkelMHadesBiomes_QuestPatroclusUpgrades = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "MetaCurrency",
+		RewardResourceAmount = 400,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "PatroclusGift02" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "TraitsTaken" },
+				HasAll = {
+					"ModsNikkelMHadesBiomesTemporaryDoorHealTrait_Patroclus",
+					"ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
+					"ModsNikkelMHadesBiomesBuffExtraChance",
+					"ModsNikkelMHadesBiomesGainMaxHealthMinMana",
+					"ModsNikkelMHadesBiomesGainMinHealthMaxMana",
+				},
+			},
+		},
+	},
+	-- Gift Bouldy enough times
+	ModsNikkelMHadesBiomes_QuestBouldyUpgrades = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_DefaultQuestItem" },
+		RewardResourceName = "CardUpgradePoints",
+		RewardResourceAmount = 3,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "SisyphusAboutBouldy01" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "GiftRecord", "ModsNikkelMHadesBiomes_NPC_Bouldy_01", "GiftPoints" },
+				Comparison = ">=",
+				Value = 5,
+			},
+		},
+		CustomIncompleteString = "QuestBouldyUpgrades_Condition",
+		CustomCompleteString = "QuestBouldyUpgrades_Cleared",
 	},
 	-- #endregion
 }
