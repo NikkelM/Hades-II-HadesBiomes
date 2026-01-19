@@ -190,24 +190,27 @@ modutil.mod.Path.Wrap("EndRun", function(base, run)
 end)
 
 modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
-	if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
-		local clearCountRecordName = "ModsNikkelMHadesBiomesClearCount"
-		local fastestTimeRecordName = "ModsNikkelMHadesBiomesFastestTime"
-		local shrinePointsRecordName = "ModsNikkelMHadesBiomesHighestShrinePoints"
+	if run.ModsNikkelMHadesBiomesIsModdedRun then
+		-- Bounty runs shouldn't count towards lifetime stats
+		if game.CurrentRun.ActiveBounty == nil then
+			local clearCountRecordName = "ModsNikkelMHadesBiomesClearCount"
+			local fastestTimeRecordName = "ModsNikkelMHadesBiomesFastestTime"
+			local shrinePointsRecordName = "ModsNikkelMHadesBiomesHighestShrinePoints"
 
-		if run.TraitCache ~= nil then
-			for traitName in pairs(run.TraitCache) do
-				game.GameState.LifetimeTraitStats[traitName] = game.GameState.LifetimeTraitStats[traitName] or {}
-				local stats = game.GameState.LifetimeTraitStats[traitName]
-				stats.UseCount = (stats.UseCount or 0) + 1
-				if run.Cleared then
-					stats[clearCountRecordName] = (stats[clearCountRecordName] or 0) + 1
-					stats.ClearCount = (stats.ClearCount or 0) + 1
-					if run.GameplayTime < (stats[fastestTimeRecordName] or 999999) then
-						stats[fastestTimeRecordName] = run.GameplayTime
-					end
-					if run.ShrinePointsCache > (stats[shrinePointsRecordName] or 0) then
-						stats[shrinePointsRecordName] = run.ShrinePointsCache
+			if run.TraitCache ~= nil then
+				for traitName in pairs(run.TraitCache) do
+					game.GameState.LifetimeTraitStats[traitName] = game.GameState.LifetimeTraitStats[traitName] or {}
+					local stats = game.GameState.LifetimeTraitStats[traitName]
+					stats.UseCount = (stats.UseCount or 0) + 1
+					if run.Cleared then
+						stats[clearCountRecordName] = (stats[clearCountRecordName] or 0) + 1
+						stats.ClearCount = (stats.ClearCount or 0) + 1
+						if run.GameplayTime < (stats[fastestTimeRecordName] or 999999) then
+							stats[fastestTimeRecordName] = run.GameplayTime
+						end
+						if run.ShrinePointsCache > (stats[shrinePointsRecordName] or 0) then
+							stats[shrinePointsRecordName] = run.ShrinePointsCache
+						end
 					end
 				end
 			end
@@ -218,8 +221,16 @@ modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
 end)
 
 modutil.mod.Path.Wrap("GetRunResult", function(base, run)
+	if run.ActiveBounty ~= nil then
+		if run.BountyCleared then
+			return game.RunResultData.BountySuccess
+		else
+			return game.RunResultData.BountyFail
+		end
+	end
+
 	-- Run this before the base function, as the base function defaults to a surface run if it's not the underworld
-	if run.BiomesReached ~= nil and (run.BiomesReached.Tartarus or run.BiomesReached.Asphodel or run.BiomesReached.Elysium or run.BiomesReached.Styx) then
+	if run.ModsNikkelMHadesBiomesIsModdedRun then
 		if run.Cleared then
 			return game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess
 		else
