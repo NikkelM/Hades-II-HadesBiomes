@@ -23,10 +23,9 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	-- Always do this, so the Codex also doesn't lag when opening it during a normal run
 	LoadPackages({ Name = "ModsNikkelMHadesBiomesPortraits" })
 
-	-- Always initialize for compatibility with BiomeRandomizer
-	currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
-
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.ValidModdedRunBiomes[currentRoom.RoomSetName] then
+		currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
+
 		if currentRoom.AlwaysLoadModdedPackages then
 			LoadPackages({ Names = currentRoom.AlwaysLoadModdedPackages })
 		end
