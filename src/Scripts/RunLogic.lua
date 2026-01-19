@@ -171,13 +171,15 @@ modutil.mod.Path.Wrap("RecordRunCleared", function(base)
 
 	-- Most of the stats tracked here are for Quests
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.ActiveBounty == nil then
+		local currentBiome = game.CurrentRun.CurrentRoom.RoomSetName
+
 		-- Record with which level of each ShrineUpgrades/Vows/Fear the run was cleared
-		game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[game.CurrentRun.CurrentRoom.RoomSetName] = game
-				.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[game.CurrentRun.CurrentRoom.RoomSetName] or {}
+		game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome] = game
+				.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome] or {}
 		for shrineUpgradeName, shrineUpgradeLevel in pairs(game.GameState.ShrineUpgrades) do
 			-- Only record non-zero levels
-			if shrineUpgradeLevel > (game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[game.CurrentRun.CurrentRoom.RoomSetName][shrineUpgradeName] or 0) then
-				game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[game.CurrentRun.CurrentRoom.RoomSetName][shrineUpgradeName] =
+			if shrineUpgradeLevel > (game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome][shrineUpgradeName] or 0) then
+				game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome][shrineUpgradeName] =
 						shrineUpgradeLevel
 			end
 		end

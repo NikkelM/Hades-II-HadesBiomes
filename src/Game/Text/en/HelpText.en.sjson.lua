@@ -1271,7 +1271,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestWeaponClearsHighHeat",
-		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} The Fulfilled Vow ",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Nightmare Princess ",
 		Description =
 		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, using each of the {#Emph}Nocturnal Arms {#Prev}and, I don't know, {#UseShrinePointFormat}32{#Prev}{!Icons.ShrinePoint} from the {#Emph}Oath of the Unseen{#Prev}?",
 	},
@@ -1374,6 +1374,24 @@ local newData = {
 	{
 		Id = "QuestBouldyUpgrades_Complete",
 		DisplayName = "{!Icons.QuestProgressComplete} Start Believing in {$Keywords.CharBouldy}, and {$Keywords.CharBouldy} Will Start Believing in You",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestAspectClears",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Master of Armaments ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, using each and every {#Emph}Aspect {#Prev}of the {#Emph}Nocturnal Arms {#Prev}available to her.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestAspectClearsHighHeat",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Nightmare Queen ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, using each and every {#Emph}Aspect {#Prev}of the {#Emph}Nocturnal Arms {#Prev}available to her and, I don't know, {#UseShrinePointFormat}32{#Prev}{!Icons.ShrinePoint} from the {#Emph}Oath of the Unseen{#Prev}?",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestAspectClearsFast",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Short Labor ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, in no more than {#BoldFormatGraft}22 min.{#Prev}, using each and every {#Emph}Aspect {#Prev}of the {#Emph}Nocturnal Arms {#Prev}available to her.",
 	},
 	-- #endregion
 }

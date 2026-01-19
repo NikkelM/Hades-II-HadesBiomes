@@ -12,8 +12,11 @@ local newQuestOrderData = {
 	-- major / priority
 	"ModsNikkelMHadesBiomes_QuestMeetChthonicGods",
 	"ModsNikkelMHadesBiomes_QuestWeaponClears",
+	"ModsNikkelMHadesBiomes_QuestAspectClears",
 	"ModsNikkelMHadesBiomes_QuestWeaponClearsFast",
+	"ModsNikkelMHadesBiomes_QuestAspectClearsFast",
 	"ModsNikkelMHadesBiomes_QuestWeaponClearsHighHeat",
+	"ModsNikkelMHadesBiomes_QuestAspectClearsHighHeat",
 	"ModsNikkelMHadesBiomes_QuestMetaUpgrades",
 	"ModsNikkelMHadesBiomes_QuestPactUpgrades",
 	"ModsNikkelMHadesBiomes_QuestChaosKeepsakeFullRun",
@@ -43,7 +46,7 @@ local newQuestData = {
 	-- #region Base Hades Quests
 	-- Clear once
 	ModsNikkelMHadesBiomes_QuestFirstClear = {
-		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest"  },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 1000,
 		UnlockGameStateRequirements = {
@@ -106,7 +109,7 @@ local newQuestData = {
 	},
 	-- Clear with each weapon (any aspect)
 	ModsNikkelMHadesBiomes_QuestWeaponClears = {
-		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest"  },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "WeaponPointsRare",
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
@@ -389,7 +392,7 @@ local newQuestData = {
 	},
 	-- Clear on 32 fear with all weapons
 	ModsNikkelMHadesBiomes_QuestWeaponClearsHighHeat = {
-		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest"  },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "WeaponPointsRare",
 		RewardResourceAmount = 6,
 		UnlockGameStateRequirements = {
@@ -446,7 +449,7 @@ local newQuestData = {
 	},
 	-- Clear in under 22 minutes with all weapons
 	ModsNikkelMHadesBiomes_QuestWeaponClearsFast = {
-		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest"  },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "WeaponPointsRare",
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
@@ -520,7 +523,7 @@ local newQuestData = {
 	},
 	-- Finish mod story/escape 10 times
 	ModsNikkelMHadesBiomes_QuestTenClears = {
-		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest"  },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "SuperGiftPoints",
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
@@ -604,7 +607,7 @@ local newQuestData = {
 	},
 	-- Clear a run on EM4
 	ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun = {
-		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest"  },
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "CardUpgradePoints",
 		RewardResourceAmount = 4,
 		UnlockGameStateRequirements = {
@@ -740,6 +743,424 @@ local newQuestData = {
 		},
 		CustomIncompleteString = "QuestBouldyUpgrades_Condition",
 		CustomCompleteString = "QuestBouldyUpgrades_Cleared",
+	},
+	-- Clear with each aspect
+	ModsNikkelMHadesBiomes_QuestAspectClears = {
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 5,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestWeaponClears" },
+				IsAny = { "CashedOut" }
+			},
+			{
+				Path = { "GameState", "QuestsCompleted" },
+				HasAll = { "QuestUnlockAllWeaponAspects" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "BaseStaffAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "StaffClearCastAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "StaffSelfHitAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "StaffRaiseDeadAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "DaggerBackstabAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "DaggerBlockAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "DaggerHomingThrowAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "DaggerTripleAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "TorchSpecialDurationAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "TorchDetonateAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "TorchSprintRecallAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "TorchAutofireAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "AxeRecoveryAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "AxeArmCastAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "AxePerfectCriticalAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "AxeRallyAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "LobAmmoBoostAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "LobCloseAttackAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "LobImpulseAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "LobGunAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "BaseSuitAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "SuitHexAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "SuitMarkCritAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeTraitStats", "SuitComboAspect", "ModsNikkelMHadesBiomesClearCount", },
+			},
+		},
+		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {
+			"BaseStaffAspect",
+			"StaffClearCastAspect",
+			"StaffSelfHitAspect",
+			"StaffRaiseDeadAspect",
+			"DaggerBackstabAspect",
+			"DaggerBlockAspect",
+			"DaggerHomingThrowAspect",
+			"DaggerTripleAspect",
+			"TorchSpecialDurationAspect",
+			"TorchDetonateAspect",
+			"TorchSprintRecallAspect",
+			"TorchAutofireAspect",
+			"AxeRecoveryAspect",
+			"AxeArmCastAspect",
+			"AxePerfectCriticalAspect",
+			"AxeRallyAspect",
+			"LobAmmoBoostAspect",
+			"LobCloseAttackAspect",
+			"LobImpulseAspect",
+			"LobGunAspect",
+			"BaseSuitAspect",
+			"SuitHexAspect",
+			"SuitMarkCritAspect",
+			"SuitComboAspect",
+		},
+	},
+	-- Clear on 32 fear with all aspects
+	ModsNikkelMHadesBiomes_QuestAspectClearsHighHeat = {
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
+		RewardResourceName = "Mixer5Common",
+		RewardResourceAmount = 7,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestWeaponClearsHighHeat" },
+				IsAny = { "CashedOut" }
+			},
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "LifetimeTraitStats", "BaseStaffAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "StaffClearCastAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "StaffSelfHitAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "StaffRaiseDeadAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "DaggerBackstabAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "DaggerBlockAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "DaggerHomingThrowAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "DaggerTripleAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "TorchSpecialDurationAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "TorchDetonateAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "TorchSprintRecallAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "TorchAutofireAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "AxeRecoveryAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "AxeArmCastAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "AxePerfectCriticalAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "AxeRallyAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "LobAmmoBoostAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "LobCloseAttackAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "LobImpulseAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "LobGunAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "BaseSuitAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "SuitHexAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "SuitMarkCritAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+			{
+				Path = { "GameState", "LifetimeTraitStats", "SuitComboAspect", "ModsNikkelMHadesBiomesHighestShrinePoints", },
+				Comparison = ">=",
+				Value = 32,
+			},
+		},
+		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {
+			"BaseStaffAspect",
+			"StaffClearCastAspect",
+			"StaffSelfHitAspect",
+			"StaffRaiseDeadAspect",
+			"DaggerBackstabAspect",
+			"DaggerBlockAspect",
+			"DaggerHomingThrowAspect",
+			"DaggerTripleAspect",
+			"TorchSpecialDurationAspect",
+			"TorchDetonateAspect",
+			"TorchSprintRecallAspect",
+			"TorchAutofireAspect",
+			"AxeRecoveryAspect",
+			"AxeArmCastAspect",
+			"AxePerfectCriticalAspect",
+			"AxeRallyAspect",
+			"LobAmmoBoostAspect",
+			"LobCloseAttackAspect",
+			"LobImpulseAspect",
+			"LobGunAspect",
+			"BaseSuitAspect",
+			"SuitHexAspect",
+			"SuitMarkCritAspect",
+			"SuitComboAspect",
+		},
+	},
+	-- Clear in under 22 minutes with all aspects
+	ModsNikkelMHadesBiomes_QuestAspectClearsFast = {
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
+		RewardResourceName = "Mixer5Common",
+		RewardResourceAmount = 5,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestWeaponClearsFast" },
+				IsAny = { "CashedOut" }
+			},
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "BaseStaffAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "StaffClearCastAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "StaffSelfHitAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "StaffRaiseDeadAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "DaggerBackstabAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "DaggerBlockAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "DaggerHomingThrowAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "DaggerTripleAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "TorchSpecialDurationAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "TorchDetonateAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "TorchSprintRecallAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "TorchAutofireAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "AxeRecoveryAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "AxeArmCastAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "AxePerfectCriticalAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "AxeRallyAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "LobAmmoBoostAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "LobCloseAttackAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "LobImpulseAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "LobGunAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "BaseSuitAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "SuitHexAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "SuitMarkCritAspect", RequiredClearTime = 1320, },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
+				FunctionArgs = { WeaponName = "SuitComboAspect", RequiredClearTime = 1320, },
+			},
+		},
+		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {
+			"BaseStaffAspect",
+			"StaffClearCastAspect",
+			"StaffSelfHitAspect",
+			"StaffRaiseDeadAspect",
+			"DaggerBackstabAspect",
+			"DaggerBlockAspect",
+			"DaggerHomingThrowAspect",
+			"DaggerTripleAspect",
+			"TorchSpecialDurationAspect",
+			"TorchDetonateAspect",
+			"TorchSprintRecallAspect",
+			"TorchAutofireAspect",
+			"AxeRecoveryAspect",
+			"AxeArmCastAspect",
+			"AxePerfectCriticalAspect",
+			"AxeRallyAspect",
+			"LobAmmoBoostAspect",
+			"LobCloseAttackAspect",
+			"LobImpulseAspect",
+			"LobGunAspect",
+			"BaseSuitAspect",
+			"SuitHexAspect",
+			"SuitMarkCritAspect",
+			"SuitComboAspect",
+		},
 	},
 	-- #endregion
 }
