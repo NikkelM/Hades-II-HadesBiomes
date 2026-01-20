@@ -24,6 +24,7 @@ Other fixes and improvements:
 - Fixed: Contextual voicelines with story NPCs relating to their respective keepsakes being equipped cannot trigger.
 - Fixed: In rare cases, some ineligible combinations of voicelines can play during NPC or boss encounters.
 - Fixed: Dying in a boss or miniboss room does not always show the correct portrait in the Run History screen.
+- Fixed: Returning to the Crossroads after a cleared Zagreus' Journey run post-ending plays a Melinoë voiceline meant for returning after a death.
 - Fixed: For saves with Zagreus' Journey runs from the alpha, some run results can show placeholder text.
 - Fixed: The Run History screen shows ??? instead of the Zagreus' Journey icon next to the run number for runs from the second page onwards. (@adi1998)
 - Fixed: The Run History screen shows "Prevailed!!" instead of "Escaped" for cleared Zagreus' Journey runs from the second page onwards.

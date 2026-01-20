@@ -4639,5 +4639,41 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 		},
 		-- #endregion
 	},
+	-- Playing the Return to Shadow now animation after a cleared run post-ending
+	-- For compatibility, also including the generic voicelines just in case
+	ModsNikkelMHadesBiomes_DeathReturnVoiceLines = {
+		{
+			Queue = "Always",
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			GameStateRequirements = {
+				{
+					PathTrue = { "CurrentRun", "Cleared" },
+				},
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+				},
+			},
+			{ Cue = "/VO/MelinoeField_3311", Text = "Return to shadow... now." },
+			{ Cue = "/VO/MelinoeField_3312", Text = "Return to shadow, now..." },
+			{ Cue = "/VO/MelinoeField_3313", Text = "Return to shadow, now?" },
+			{ Cue = "/VO/MelinoeField_3314", Text = "Return to shadow, now!" },
+			{ Cue = "/VO/MelinoeField_3836", Text = "Return to shadow, now." },
+			{ Cue = "/VO/MelinoeField_3837", Text = "Return to shadow, now." },
+			{ Cue = "/VO/MelinoeField_3838", Text = "Return to shadow, now." },
+			{ Cue = "/VO/MelinoeField_3839", Text = "Return to shadow, now." },
+			{ Cue = "/VO/Melinoe_1694",      Text = "Return to shadow, now." },
+		},
+		{
+			Queue = "Always",
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			GameStateRequirements = { {}, },
+			{ Cue = "/VO/Melinoe_1695",      Text = "Return to shadow, now...!" },
+			{ Cue = "/VO/Melinoe_1693",      Text = "Return to shadow, now!" },
+			{ Cue = "/VO/Melinoe_1696",      Text = "Return to shadow, now..." },
+			{ Cue = "/VO/MelinoeField_1393", Text = "Return to shadow, now...!" },
+		},
+	},
 	-- #endregion
 }
