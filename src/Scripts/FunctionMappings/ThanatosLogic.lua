@@ -196,7 +196,7 @@ function mod.ThanatosExit(source, args)
 
 	if args.UseMaxedPresentation then
 		game.MaxedRelationshipPresentation(source,
-			{ Text = "NPC_Thanatos_01", Icon = "Keepsake_zannc-SharedKeepsakePort-Thanatos" })
+			{ Text = "NPC_Thanatos_01", Icon = mod.SharedKeepsakePortThanatosKeepsakeBondIcon })
 	end
 
 	source.Mute = true
@@ -247,6 +247,12 @@ function mod.HandleThanatosEncounterReward(thanatos, args)
 		else
 			game.thread(game.PlayVoiceLines, thanatos.EncounterLostVoiceLines, nil, thanatos)
 		end
+
+		-- For the Quest tracking
+		if encounter.ThanatosKills == 0 then
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_ShutdownThanatosFlag = true
+		end
+
 	end
 
 	-- Need to move his kills into CurrentRun as otherwise they are not kept in the save

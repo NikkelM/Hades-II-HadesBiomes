@@ -68,10 +68,9 @@ modutil.mod.Path.Wrap("CreateRoom", function(base, roomData, args)
 	return room
 end)
 
--- Recording stats after a run
+-- Recording stats after a run (clearing or losing)
 modutil.mod.Path.Wrap("RecordRunStats", function(base)
-	-- Bounties are handled in the base function
-	if game.CurrentRun.BiomesReached ~= nil and (game.CurrentRun.BiomesReached.Tartarus or game.CurrentRun.BiomesReached.Asphodel or game.CurrentRun.BiomesReached.Elysium or game.CurrentRun.BiomesReached.Styx) then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		game.CurrentRun.RunResult = game.GetRunResult(game.CurrentRun)
 		game.CurrentRun.EndingRoomName = game.CurrentRun.CurrentRoom.Name
 		game.CurrentRun.WeaponsCache = game.DeepCopyTable(game.CurrentRun.Hero.Weapons)
@@ -164,6 +163,31 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 		end
 		-- Custom field
 		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = moddedRunsCleared
+	end
+end)
+
+modutil.mod.Path.Wrap("RecordRunCleared", function(base)
+	base()
+
+	-- Most of the stats tracked here are for Quests
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.ActiveBounty == nil then
+		local currentBiome = game.CurrentRun.CurrentRoom.RoomSetName
+
+		-- Record with which level of each ShrineUpgrades/Vows/Fear the run was cleared
+		game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome] = game
+				.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome] or {}
+		for shrineUpgradeName, shrineUpgradeLevel in pairs(game.GameState.ShrineUpgrades) do
+			-- Only record non-zero levels
+			if shrineUpgradeLevel > (game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome][shrineUpgradeName] or 0) then
+				game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome][shrineUpgradeName] =
+						shrineUpgradeLevel
+			end
+		end
+
+		-- Record full run clears for modded runs separately
+		if #game.CurrentRun.KeepsakeCache == 1 then
+			game.GameState.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes[game.CurrentRun.KeepsakeCache[1]] = true
+		end
 	end
 end)
 

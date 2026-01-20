@@ -5,6 +5,7 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - You can now **challenge Lord Charon** to a "friendly duel" by "borrowing" some his his Gold! Defeat your favourite shopkeeper for a special discount on all his wares for the duration of your current run.
+- Discover and complete over **25 new Minor Prophecies** at the Fated List, with more coming in the future.
 - Added 8 new cosmetics to discover and unlock in the Crossroads, created by @burn.
 - You can now unlock **new music tracks** from the first game with the Music Maker in the Crossroads, through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (installed automatically with this mod). Perform the "Recovery of Orpheus' Scriptures" incantation to unlock the new music.
 
@@ -18,14 +19,19 @@ Other fixes and improvements:
 - Fixed: Erebus room exit doors (back to the previous biome) always offering Bones, Ash or Nectar as rewards instead of using the proper calculation method.
 - Fixed: If the keepsake equipped at the start of the run adds a random boon or hammer, the floating text indicating which one was gained is missing.
 - Fixed: Ambient sound effects for the Elysium and Styx boss resource drops persist after the resource is picked up.
-- Fixed: When returning from a Chaos Trial, Zagreus' Journey cosmetics and other assets are not loaded until switching rooms.
-- Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".
 - Fixed: Gods don't comment on you choosing them over another god during a Family Dispute during Zagreus' Journey runs.
 - Fixed: Contextual voicelines with story NPCs relating to their respective keepsakes being equipped cannot trigger.
 - Fixed: In rare cases, some ineligible combinations of voicelines can play during NPC or boss encounters.
+- Fixed: Some NPC and boss conversations are not properly prioritized and will not be forced to play before more generic dialogue.
+- Fixed: When returning to the Crossroads after a cleared Zagreus' Journey run after the story ending, the game plays a Hades voiceline indicating he killed you.
+- Fixed: When returning from a Chaos Trial, Zagreus' Journey cosmetics and other assets are not loaded until switching rooms.
+- Fixed: When a Thanatos encounter starts, Melinoë can sometimes play a Zagreus voiceline.
+- Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".
 - Fixed: Dying in a boss or miniboss room does not always show the correct portrait in the Run History screen.
 - Fixed: Returning to the Crossroads after a cleared Zagreus' Journey run post-ending plays a Melinoë voiceline meant for returning after a death.
+- Fixed: Some voicelines spoken by Melinoë when waking up in the Crossroads feel out of place after clearing a Zagreus' Journey run before the story ending.
 - Fixed: For saves with Zagreus' Journey runs from the alpha, some run results can show placeholder text.
+- Fixed: Theseus' and Asterius' Codex entries cannot be unlocked.
 - Fixed: The Run History screen shows ??? instead of the Zagreus' Journey icon next to the run number for runs from the second page onwards. (@adi1998)
 - Fixed: The Run History screen shows "Prevailed!!" instead of "Escaped" for cleared Zagreus' Journey runs from the second page onwards.
 - Fixed: If a Chaos Trial includes a biome from Zagreus' Journey, the run is always marked as a Zagreus' Journey run in the Run History, instead of a Chaos Trial run.

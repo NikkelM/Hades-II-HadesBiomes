@@ -5,13 +5,19 @@ local superIcon = {
 }
 game.IconData.Super = game.IconData.Super or superIcon
 
--- Run History Screen
-game.IconData.ModsNikkelMHadesBiomesRunHistoryDoor = {
-	TexturePath = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_64x64",
-}
-
--- ShrineChallenge/Erebus Gates
-local newShrinePointIcons = {
+local newIcons = {
+	-- #region Run History Screen/Codex/Inventory/Quest Log/Cauldron
+	ModsNikkelMHadesBiomesRunHistoryDoorLarge = {
+		TexturePath = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_72x72",
+	},
+	ModsNikkelMHadesBiomesRunHistoryDoor = {
+		TexturePath = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_64x64",
+	},
+	ModsNikkelMHadesBiomesRunHistoryDoorSmall = {
+		TexturePath = "Portraits\\ModsNikkelMHadesBiomesRunHistory\\RunHistory_Door_Red_48x48",
+	},
+	-- #endregion
+	-- #region ShrineChallenge/Erebus Gates
 	ShrinePointSmall = {
 		TexturePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Icons\\ShrinePoint_Small",
 		UseTooltip = true,
@@ -23,7 +29,8 @@ local newShrinePointIcons = {
 	ShrinePointSmall_Active_Grayscale = {
 		TexturePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Icons\\ShrinePoint_Small_Active_Grayscale",
 	},
+	-- #endregion
 }
-for iconName, iconData in pairs(newShrinePointIcons) do
+for iconName, iconData in pairs(newIcons) do
 	game.IconData[iconName] = game.IconData[iconName] or iconData
 end

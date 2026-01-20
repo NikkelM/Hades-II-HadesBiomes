@@ -6,6 +6,13 @@ local newKeywords = {
 	"ModsNikkelMHadesBiomesLocation_Hades_Styx_Short",
 	"ModsNikkelMHadesBiomesLocation_Hades_Surface_Short",
 	"ModsNikkelMHadesBiomesLocation_Hades_Challenge_Short",
+	"CharAchilles",
+	"CharOrpheus",
+	"CharThanatos",
+	"CharSisyphus",
+	"CharEurydice",
+	"CharPatroclus",
+	"CharBouldy",
 	"ShrinePointGate",
 }
 game.ConcatTableValuesIPairs(game.KeywordList, newKeywords)

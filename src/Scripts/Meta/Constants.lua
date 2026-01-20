@@ -1,3 +1,6 @@
+local mods = rom.mods
+local hadesOSTModReference = mods["NikkelM-Hades_OST_for_the_Music_Maker"]
+
 mod.NilValue = {}
 mod.TableValue = {}
 
@@ -411,13 +414,23 @@ mod.GatherableResourceNames = {
 	"Fish_Surface_Legendary_01",
 }
 
--- Can either be directly gathered in rooms, or grown in the Crossroads
-mod.NonBossResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.GatherableResourceNames), {
+mod.SeedResourceNames = {
+	"ModsNikkelMHadesBiomes_SeedTartarus",
+	"ModsNikkelMHadesBiomes_SeedAsphodel",
+	"ModsNikkelMHadesBiomes_SeedElysium",
+	"ModsNikkelMHadesBiomes_SeedStyx",
+}
+
+mod.GrowableResourceNames = {
 	"ModsNikkelMHadesBiomes_CropTartarus",
 	"ModsNikkelMHadesBiomes_CropAsphodel",
 	"ModsNikkelMHadesBiomes_CropElysium",
 	"ModsNikkelMHadesBiomes_CropStyx",
-})
+}
+
+-- Can either be directly gathered in rooms, or grown in the Crossroads
+mod.NonBossResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.GatherableResourceNames),
+	game.DeepCopyTable(mod.GrowableResourceNames))
 
 -- Only obtainable from bosses
 mod.BossResourceNames = {
@@ -430,3 +443,19 @@ mod.BossResourceNames = {
 -- All new resources
 mod.AllNewResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.NonBossResourceNames),
 	game.DeepCopyTable(mod.BossResourceNames))
+
+-- Populated in the loops in CosmeticData.lua
+mod.ModdedCosmeticIds = {}
+
+-- Song names/Ids from Hades OST for the Music Maker
+mod.HadesOstSongNames = hadesOSTModReference.HadesOstSongNames
+
+-- Keepsake names from SharedKeepsakePort
+mod.SharedKeepsakePortSisyphusKeepsakeTrait = "zannc-SharedKeepsakePort-SisyphusVanillaKeepsake"
+mod.SharedKeepsakePortSisyphusKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Sisyphus"
+mod.SharedKeepsakePortEurydiceKeepsakeTrait = "zannc-SharedKeepsakePort-ShieldBossKeepsake"
+mod.SharedKeepsakePortEurydiceKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Eurydice"
+mod.SharedKeepsakePortPatroclusKeepsakeTrait = "zannc-SharedKeepsakePort-ShieldAfterHitKeepsake"
+mod.SharedKeepsakePortPatroclusKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Patroclus"
+mod.SharedKeepsakePortThanatosKeepsakeTrait = "zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake"
+mod.SharedKeepsakePortThanatosKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Thanatos"

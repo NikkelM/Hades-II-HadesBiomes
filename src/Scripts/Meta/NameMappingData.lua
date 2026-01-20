@@ -456,6 +456,7 @@ mod.HadesHelpTextCopyKeys = {
 	-- NPC_Bouldy_01 = true, -- Duplicate
 	-- NPC_Hades_01 = true, -- Duplicate
 	-- NPC_Hades_Story_02 = true, -- Using alias
+	Achilles = true,
 	-- #endregion
 	-- #region GameOutroData (Post-Ending)
 	Outro_PostEnding01 = true,
@@ -660,6 +661,9 @@ mod.HadesHelpTextCopyKeys = {
 	-- ClearConsecutiveLow = "ModsNikkelMHadesBiomes_RunClear_ClearConsecutiveLow",
 	-- ClearGiftDrops = "ModsNikkelMHadesBiomes_RunClear_ClearGiftDrops",
 	-- ClearLockKeyDrops = "ModsNikkelMHadesBiomes_RunClear_ClearLockKeyDrops",
+	-- #endregion
+	-- #region QuestData/Minor Prophecies
+	UnknownCondition_Meet = true,
 	-- #endregion
 	-- #region Misc
 	PassiveItem = true,
@@ -1094,6 +1098,14 @@ mod.HadesHelpTextAliases = {
 	ClearedCerberus_Alt1_Title = "ClearedCerberus_Title",
 	ClearedCerberus_Alt2_Title = "ClearedCerberus_Title",
 	CharProtag = "NPC_Zagreus_Past_01",
+	HitAndRunUnitElite = "HitAndRunUnit",
+	CharAchilles = "Achilles",
+	CharOrpheus = "Orpheus",
+	CharThanatos = "Thanatos",
+	CharSisyphus = "Sisyphus",
+	CharEurydice = "NPC_Eurydice_01",
+	CharPatroclus = "NPC_Patroclus_01",
+	CharBouldy = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 }
 
 -- List of Speakers for which the entries in the _NPCData files should be copied
@@ -1101,6 +1113,7 @@ mod.HadesNPCTextSpeakers = {
 	Sisyphus = true,
 	Eurydice = true,
 	Patroclus = true,
+	Thanatos = true,
 	Persephone = true, -- For now - we don't need all of her voicelines, as they are split between Surface and Home
 	-- Cerberus Storyteller voicelines from mod.StorytellerVoicelines
 	-- ZagreusField voicelines from mod.ZagreusFieldVoicelines

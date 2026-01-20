@@ -33,7 +33,7 @@ local newObjectiveSetData = {
 				-- To not show it when pacifying a shade
 				Path = { "GameState", "LifetimeResourcesGained" },
 				HasAny = mod.AllNewResourceNames,
-			}
+			},
 		}
 	}
 }

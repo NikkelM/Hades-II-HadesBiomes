@@ -430,6 +430,7 @@ for _, cosmeticData in ipairs(tentCosmetics) do
 	table.insert(cosmeticData.GameStateRequirements, {
 		PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
 	})
+	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
 
@@ -995,6 +996,7 @@ for _, cosmeticData in ipairs(mainHubAreaCosmetics) do
 	table.insert(cosmeticData.GameStateRequirements, {
 		PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
 	})
+	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
 
@@ -1421,6 +1423,7 @@ for _, cosmeticData in ipairs(tavernaCosmetics) do
 	table.insert(cosmeticData.GameStateRequirements, {
 		PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
 	})
+	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
 
@@ -1989,5 +1992,6 @@ for _, cosmeticData in ipairs(preRunCosmetics) do
 	table.insert(cosmeticData.GameStateRequirements, {
 		PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
 	})
+	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
