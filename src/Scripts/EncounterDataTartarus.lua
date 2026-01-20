@@ -267,6 +267,8 @@ local encounterModifications = {
 		DifficultyModifier = -40,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
 		PreSpawnEnemies = false,
+		-- To not block Codex/Inventory before picking up the reward
+		DelayedStart = true,
 		NoFirstWaveStartDelay = true,
 		SpawnOverrides = { UseActivatePresentation = false, },
 		CanEncounterSkip = false,
