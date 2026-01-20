@@ -1,6 +1,16 @@
--- Set a backing for the door's reward preview
 modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
+	if run.ModsNikkelMHadesBiomesIsModdedRun then
+		-- For ShrineChallenge/Erebus rooms, they don't have the TargetMetaRewardsRatio set, so we need to copy it from the previous room
+		if run.TargetMetaRewardsRatio == nil and run.CurrentRoom.TargetMetaRewardsRatio == nil then
+			local prevRoom = game.GetPreviousRoom(run)
+			run.CurrentRoom.TargetMetaRewardsRatio = prevRoom.TargetMetaRewardsRatio
+		end
+	end
+
+
 	local rewardStoreName = base(run)
+
+	-- Set a backing for the door's reward preview
 	if run.ModsNikkelMHadesBiomesExitDoors ~= nil then
 		for _, exitDoor in ipairs(run.ModsNikkelMHadesBiomesExitDoors) do
 			if run.NextRewardStoreName == "RunProgress" and exitDoor.CustomLockedAnimation_Run ~= nil then
