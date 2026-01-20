@@ -423,8 +423,7 @@ function mod.EnrageUnit(enemy, currentRun, startDelay)
 
 	if enemy.PermanentEnraged then
 		local notifyName = "AllRequiredKillEnemiesDead"
-		-- NotifyOnAllDead({ Ids = { enemy.ObjectId }, Notify = notifyName })
-		game.waitUntil(notifyName)
+		game.waitUntil(notifyName, game.RoomThreadName)
 		AdjustColorGrading({ Name = "Off", Duration = 0.45 })
 	else
 		mod.EndEnemyEnrage(enemy, currentRun)

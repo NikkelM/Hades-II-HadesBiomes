@@ -359,5 +359,7 @@ game.HeroVoiceLines.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines = mod.HeroV
 		.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_DeathReturnVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_DeathReturnVoiceLines
 -- #endregion
 -- #endregion

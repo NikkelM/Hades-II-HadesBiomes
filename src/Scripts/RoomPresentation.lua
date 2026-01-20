@@ -52,9 +52,14 @@ modutil.mod.Path.Context.Wrap("DeathPresentation", function(currentRun, killer, 
 				-- Play these voicelines instead of GlobalVoiceLines.DeathReturnVoiceLines later
 				currentRun.ModsNikkelMHadesBiomesDeferredCauseOfDeathVoiceLines = voiceLines
 				return
-			elseif voiceLines == game.GlobalVoiceLines.DeathReturnVoiceLines and currentRun.ModsNikkelMHadesBiomesDeferredCauseOfDeathVoiceLines ~= nil then
-				voiceLines = currentRun.ModsNikkelMHadesBiomesDeferredCauseOfDeathVoiceLines
-				currentRun.ModsNikkelMHadesBiomesDeferredCauseOfDeathVoiceLines = nil
+			elseif voiceLines == game.GlobalVoiceLines.DeathReturnVoiceLines then
+				-- If we should play the voicelines we deferred earlier
+				if currentRun.ModsNikkelMHadesBiomesDeferredCauseOfDeathVoiceLines ~= nil then
+					voiceLines = currentRun.ModsNikkelMHadesBiomesDeferredCauseOfDeathVoiceLines
+					currentRun.ModsNikkelMHadesBiomesDeferredCauseOfDeathVoiceLines = nil
+				elseif currentRun.Cleared and game.GameState.TextLinesRecord.Ending01 then
+					voiceLines = game.HeroVoiceLines.ModsNikkelMHadesBiomes_DeathReturnVoiceLines
+				end
 			end
 		end
 

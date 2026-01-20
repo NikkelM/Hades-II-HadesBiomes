@@ -15,6 +15,8 @@ Other fixes and improvements:
 - If the mod installation is interrupted by closing the game, it will now continue where it left off instead of restarting from the beginning.
 - Balancing: The Bone-Raker can no longer gain the "Scraper" elite perk.
 - Fixed: Tisiphone's whip lash attack does not stun the player.
+- Fixed: Alecto's "enraged" color grading effect is not removed after defeating her.
+- Fixed: Erebus room exit doors (back to the previous biome) always offering Bones, Ash or Nectar as rewards instead of using the proper calculation method.
 - Fixed: If the keepsake equipped at the start of the run adds a random boon or hammer, the floating text indicating which one was gained is missing.
 - Fixed: Ambient sound effects for the Elysium and Styx boss resource drops persist after the resource is picked up.
 - Fixed: Gods don't comment on you choosing them over another god during a Family Dispute during Zagreus' Journey runs.
@@ -26,6 +28,7 @@ Other fixes and improvements:
 - Fixed: When a Thanatos encounter starts, Melinoë can sometimes play a Zagreus voiceline.
 - Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".
 - Fixed: Dying in a boss or miniboss room does not always show the correct portrait in the Run History screen.
+- Fixed: Returning to the Crossroads after a cleared Zagreus' Journey run post-ending plays a Melinoë voiceline meant for returning after a death.
 - Fixed: For saves with Zagreus' Journey runs from the alpha, some run results can show placeholder text.
 - Fixed: Theseus' and Asterius' Codex entries cannot be unlocked.
 - Fixed: The Run History screen shows ??? instead of the Zagreus' Journey icon next to the run number for runs from the second page onwards. (@adi1998)
