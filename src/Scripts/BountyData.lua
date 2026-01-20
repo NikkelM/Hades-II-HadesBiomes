@@ -931,5 +931,19 @@ mod.AddTableKeysSkipDupes(game.BountyData, newShrineBounties)
 -- #endregion
 
 -- #region Chaos Trials
-
+for _, textLineGroup in ipairs(game.GlobalVoiceLines.StartPackagedBountyRunVoiceLines) do
+	for _, textLine in ipairs(textLineGroup) do
+		if textLine.GameStateRequirements ~= nil then
+			for _, requirement in ipairs(textLine.GameStateRequirements) do
+				-- Fix bounty start voicelines referring to skipping ahead on any biome not F or N
+				if requirement.Path ~= nil and #requirement.Path == 3 and requirement.Path[1] == "CurrentRun" and requirement.Path[2] == "CurrentRoom" and requirement.Path[3] == "RoomSetName"
+						and requirement.IsNone ~= nil and #requirement.IsNone == 2 and requirement.IsNone[1] == "F" and requirement.IsNone[2] == "N" then
+					requirement.IsNone = { "F", "N", "Tartarus" }
+				end
+				-- TODO: Do a similar thing to include the random trials from "I leave the details of this Trial for you to discover" onwards through #429
+			end
+		end
+	end
+end
+mod.PrintTable(game.GlobalVoiceLines.StartPackagedBountyRunVoiceLines)
 -- #endregion
