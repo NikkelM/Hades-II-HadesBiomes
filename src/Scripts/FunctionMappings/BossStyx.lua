@@ -969,7 +969,9 @@ function mod.RevulnerablePlayerAfterShout()
 end
 
 function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
-	if game.CurrentRun.ActiveBounty ~= nil then
+	local bountyId = game.CurrentRun.ActiveBounty
+	local bountyData = bountyId and game.BountyData[bountyId]
+	if bountyData and not bountyData.ModsNikkelMHadesBiomesForceRunClearScreen then
 		-- This is a Chaos Trial run
 		return
 	end
