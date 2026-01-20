@@ -29,6 +29,7 @@ Other fixes and improvements:
 - Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".
 - Fixed: Dying in a boss or miniboss room does not always show the correct portrait in the Run History screen.
 - Fixed: Returning to the Crossroads after a cleared Zagreus' Journey run post-ending plays a Melinoë voiceline meant for returning after a death.
+- Fixed: Some voicelines spoken by Melinoë when waking up in the Crossroads feel out of place after clearing a Zagreus' Journey run before the story ending.
 - Fixed: For saves with Zagreus' Journey runs from the alpha, some run results can show placeholder text.
 - Fixed: Theseus' and Asterius' Codex entries cannot be unlocked.
 - Fixed: The Run History screen shows ??? instead of the Zagreus' Journey icon next to the run number for runs from the second page onwards. (@adi1998)

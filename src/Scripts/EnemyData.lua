@@ -1917,7 +1917,7 @@ local enemyModifications = {
 				},
 				RequiredTextLines = mod.NilValue,
 				RequiredTrait = mod.NilValue,
-				EndVoiceLines = { [1] = { Cue = "/VO/Chaos_0151", Text = "{#Emph}<Laughter>" }, },
+				EndVoiceLines = { [1] = { PreLineWait = 4.6, Cue = "/VO/Chaos_0151", Text = "{#Emph}<Laughter>" }, },
 			},
 		},
 	},
