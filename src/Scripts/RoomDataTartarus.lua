@@ -364,6 +364,9 @@ local roomReplacements = {
 				{ Cue = "/VO/Melinoe_5505",      Text = "...So strange..." },
 			},
 		},
+		ExitVoiceLines = {
+			{ GlobalVoiceLines = "StorytellerRunStartVoiceLines" },
+		},
 
 		HarvestPointChances = { 0.1, },
 		ShovelPointChance = 0.1,
