@@ -130,8 +130,7 @@ local newQuestData = {
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
 			{
-				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
-				IsAny = { "CashedOut" }
+				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestFirstClear" },
 			},
 			NamedRequirements = { "AllWeaponsUnlocked" },
 		},
@@ -213,8 +212,7 @@ local newQuestData = {
 		RewardResourceAmount = 2000,
 		UnlockGameStateRequirements = {
 			{
-				Path = { "GameState", "QuestStatus", "QuestCosmeticsSmall" },
-				IsAny = { "CashedOut" }
+				PathTrue = { "GameState", "QuestsCompleted", "QuestCosmeticsSmall" },
 			},
 			{
 				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
@@ -271,8 +269,7 @@ local newQuestData = {
 				Value = 3,
 			},
 			{
-				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
-				IsAny = { "CashedOut" }
+				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestFirstClear" },
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -325,8 +322,7 @@ local newQuestData = {
 				Value = 2,
 			},
 			{
-				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
-				IsAny = { "CashedOut" }
+				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestFirstClear" },
 			},
 			NamedRequirements = { "ShrineUnlocked" },
 		},
@@ -413,8 +409,7 @@ local newQuestData = {
 		RewardResourceAmount = 6,
 		UnlockGameStateRequirements = {
 			{
-				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestWeaponClears" },
-				IsAny = { "CashedOut" }
+				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestWeaponClears" },
 			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
@@ -470,8 +465,7 @@ local newQuestData = {
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
 			{
-				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestWeaponClears" },
-				IsAny = { "CashedOut" }
+				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestWeaponClears" },
 			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache" },
@@ -544,8 +538,7 @@ local newQuestData = {
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
 			{
-				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
-				IsAny = { "CashedOut" }
+				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestFirstClear" },
 			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
@@ -628,8 +621,7 @@ local newQuestData = {
 		RewardResourceAmount = 4,
 		UnlockGameStateRequirements = {
 			{
-				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
-				IsAny = { "CashedOut" }
+				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestFirstClear" },
 			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
@@ -654,8 +646,7 @@ local newQuestData = {
 		RewardResourceAmount = 1200,
 		UnlockGameStateRequirements = {
 			{
-				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestFirstClear" },
-				IsAny = { "CashedOut" }
+				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestFirstClear" },
 			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
@@ -767,8 +758,7 @@ local newQuestData = {
 		RewardResourceAmount = 5,
 		UnlockGameStateRequirements = {
 			{
-				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestWeaponClears" },
-				IsAny = { "CashedOut" }
+				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestWeaponClears" },
 			},
 			{
 				Path = { "GameState", "QuestsCompleted" },
@@ -883,8 +873,7 @@ local newQuestData = {
 		RewardResourceAmount = 7,
 		UnlockGameStateRequirements = {
 			{
-				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestWeaponClearsHighHeat" },
-				IsAny = { "CashedOut" }
+				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestWeaponClearsHighHeat" },
 			},
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
@@ -1046,8 +1035,7 @@ local newQuestData = {
 		RewardResourceAmount = 5,
 		UnlockGameStateRequirements = {
 			{
-				Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestWeaponClearsFast" },
-				IsAny = { "CashedOut" }
+				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestWeaponClearsFast" },
 			},
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
@@ -1226,8 +1214,7 @@ if flippedArcanaActive then
 			RewardResourceAmount = 5,
 			UnlockGameStateRequirements = {
 				{
-					Path = { "GameState", "QuestStatus", "ModsNikkelMHadesBiomes_QuestMetaUpgrades" },
-					IsAny = { "CashedOut" }
+					PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestMetaUpgrades" },
 				},
 			},
 			CompleteGameStateRequirements = {
