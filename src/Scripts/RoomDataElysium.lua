@@ -332,6 +332,13 @@ local roomReplacements = {
 			},
 		},
 	},
+	Y_Intro = {
+		EnterVoiceLines = {
+			-- Chaos Trial/Bounty
+			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
+			-- TODO: Normal Melinoe voicelines
+		},
+	},
 
 	-- SHOPS
 	Y_Shop01 = {

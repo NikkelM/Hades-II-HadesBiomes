@@ -322,6 +322,14 @@ local roomReplacements = {
 		},
 	},
 
+	D_Intro = {
+		EnterVoiceLines = {
+			-- Chaos Trial/Bounty
+			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
+			-- TODO: Normal Melinoe voicelines
+		},
+	},
+
 	D_Hub = {
 		Binks = { "Cerberus_HubIdle_Bink", },
 

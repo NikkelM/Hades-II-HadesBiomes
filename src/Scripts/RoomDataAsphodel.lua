@@ -319,6 +319,13 @@ local roomReplacements = {
 
 		CombatOverMusicEvents = mod.CombatOverMusicEvents.Generic,
 	},
+	X_Intro = {
+		EnterVoiceLines = {
+			-- Chaos Trial/Bounty
+			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
+			-- TODO: Normal Melinoe voicelines
+		},
+	},
 
 	X_Reprieve01 = {
 		GameStateRequirements = {

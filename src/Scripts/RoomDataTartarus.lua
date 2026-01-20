@@ -315,6 +315,8 @@ local roomReplacements = {
 		UnthreadedEvents = mod.NilValue,
 
 		EnterVoiceLines = {
+			-- Chaos Trial/Bounty
+			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
 			-- First run
 			{
 				BreakIfPlayed = true,
@@ -536,7 +538,7 @@ local roomModifications = {
 	RoomOpening = {
 		InheritFrom = { "BaseTartarus", "BiomeStartRoom", },
 		LegalEncounters = { "OpeningGenerated" },
-		EntranceFunctionName =  _PLUGIN.guid .. "." .. "RoomEntranceDropRoomOpening",
+		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceDropRoomOpening",
 		EntranceFunctionArgs = { LandingAnimation = "Melinoe_HeroLanding", Sound = "/SFX/Player Sounds/MelWhooshDropIn", IntroHoldDuration = 2.34, StartZoomFraction = 0.65, ZoomDuration = 4 },
 		ThreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut" }, },
@@ -563,6 +565,7 @@ local roomModifications = {
 		MaxAppearancesThisBiome = 1,
 		BlockRunProgressUI = true,
 		DisableRewardMagnetisim = true,
+		TeleportCatFamiliarOnEncounterStart = true,
 		StartThreadedEvents = {
 			{ FunctionName = "CheckBiomeStateStart" },
 			{ FunctionName = "ShadeMercManager",    Args = { StartingCountMin = 3, StartingCountMax = 12, ObjectNames = { "ShadeMerc" }, MaxActive = 12 } },
