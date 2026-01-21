@@ -21,6 +21,7 @@ Other fixes and improvements:
 - Fixed: Hades' dialogue that is supposed to play when first defeating him may be overridden by the Vow of Rivals dialogue, and will never play again, which can prevent some minor progression and consistency issues for the end of the first cleared run. *It will now always play first, and be retroactively set for saves that have already defeated Hades.*
 - Fixed: Exiting the final boss fight before the story ending will always play the same incantation voiceline by Melinoë, instead of choosing a random one from the full set.
 - Fixed: The Codex and Inventory cannot be opened in the opening room in Tartarus until after defeating the enemies.
+- Fixed: In some rare cases, music may go missing after entering multiple rooms in a row with special music events.
 - Fixed: Erebus room exit doors (back to the previous biome) always offering Bones, Ash or Nectar as rewards instead of using the proper calculation method.
 - Fixed: If the keepsake equipped at the start of the run adds a random boon or hammer, the floating text indicating which one was gained is missing.
 - Fixed: Ambient sound effects for the Elysium and Styx boss resource drops persist after the resource is picked up.

@@ -297,18 +297,21 @@ local encounterModifications = {
 			[7] = mod.NilValue,
 			[8] = mod.NilValue,
 		},
+		NextRoomResumeMusic = true,
 	},
 	BaseThanatos = {
 		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "ZagreusField" },
 		RequiredKillFunctionName = _PLUGIN.guid .. "." .. "TrackThanatosChallengeProgress",
 		BlockAthenaEncounterKeepsake = true,
 		SkipExitReadyCheckpoint = true,
+		NextRoomResumeMusic = true,
 	},
 	BaseSurvival = {
 		LoadModdedVoiceBanks = { "HadesField" },
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,
 		PreSpawnEnemies = false,
+		NextRoomResumeMusic = true,
 	},
 
 	-- MINIBOSSES
@@ -316,22 +319,26 @@ local encounterModifications = {
 		LoadPackages = { "BiomeB" },
 		CanEncounterSkip = false,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		NextRoomResumeMusic = true,
 	},
 	MiniBossHeavyRangedSplitter = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 		CanEncounterSkip = false,
+		NextRoomResumeMusic = true,
 	},
 	MiniBossHeavyRangedSplitter2 = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 		CanEncounterSkip = false,
+		NextRoomResumeMusic = true,
 	},
 	MiniBossWretchAssassin = {
 		WipeEnemiesOnKillAllTypes = { "WretchAssassinMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "WretchAssassinMiniboss" },
 		CanEncounterSkip = false,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		NextRoomResumeMusic = true,
 	},
 
 	-- BOSSES

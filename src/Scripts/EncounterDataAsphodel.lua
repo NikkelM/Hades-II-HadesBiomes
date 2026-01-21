@@ -87,6 +87,9 @@ local encounterModifications = {
 	DevotionTestAsphodel = {
 		CanEncounterSkip = false,
 	},
+	Story_Eurydice_01 = {
+		NextRoomResumeMusic = true,
+	},
 
 	-- MINIBOSSES
 	MiniBossHitAndRun = {
@@ -94,6 +97,7 @@ local encounterModifications = {
 		MinWaves = 1,
 		MaxWaves = 1,
 		CanEncounterSkip = false,
+		NextRoomResumeMusic = true,
 	},
 	MiniBossSpreadShot = {
 		InheritFrom = { "MinibossEncounter", "GeneratedAsphodel" },
@@ -101,14 +105,17 @@ local encounterModifications = {
 		MaxWaves = 1,
 		CanEncounterSkip = false,
 		BlockEliteAttributes = true,
+		NextRoomResumeMusic = true,
 	},
 	WrappingAsphodel = {
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,
+		NextRoomResumeMusic = true,
 	},
 	WrappingAsphodel2 = {
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,
+		NextRoomResumeMusic = true,
 	},
 
 	-- BOSSES

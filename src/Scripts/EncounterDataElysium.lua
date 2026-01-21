@@ -108,11 +108,13 @@ local encounterModifications = {
 	},
 	Story_Patroclus_01 = {
 		ExitVoiceLines = { ObjectType = "NPC_Patroclus_01", },
+		NextRoomResumeMusic = true,
 	},
 
 	-- MINIBOSSES
 	MiniBossNakedSpawners = {
 		CanEncounterSkip = false,
+		NextRoomResumeMusic = true,
 	},
 	MiniBossMinotaur = {
 		InheritFrom = { "MinibossEncounter" },
@@ -122,6 +124,7 @@ local encounterModifications = {
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		SkipBossTraits = true,
 		DelayedStart = true,
+		NextRoomResumeMusic = true,
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedByShrineLevel", },
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "AngleIdsTowardPlayer", },

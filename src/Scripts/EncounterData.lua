@@ -33,6 +33,7 @@ local encounterModifications = {
 		BlockAthenaEncounterKeepsake = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		SpawnAggroed = true,
+		NextRoomResumeMusic = true,
 		-- For the taunt if the encounter was failed
 		ModsNikkelMHadesBiomesPostEncounterPlayHadesTaunt = true,
 	},
