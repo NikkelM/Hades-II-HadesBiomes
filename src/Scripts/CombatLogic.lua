@@ -35,6 +35,24 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 			game.thread(game.FuseSpawns, victim, { Interval = victim.FuseSpawnsInterval or nil })
 		end
 
+		if victim.WipeEnemyTypesOnKill ~= nil then
+			for k, enemyType in pairs(victim.WipeEnemyTypesOnKill) do
+				for k, enemyId in pairs(GetIdsByType({ Name = enemyType })) do
+					if game.ActiveEnemies[enemyId] ~= nil then
+						game.Kill(game.ActiveEnemies[enemyId])
+					end
+				end
+			end
+		end
+
+		if victim.ExpireProjectilesOnKill ~= nil then
+			ExpireProjectiles({ Names = victim.ExpireProjectilesOnKill })
+		end
+
+		if victim.CancelWeaponFireRequestsOnKill ~= nil then
+			CancelWeaponFireRequests({ Id = victim.ObjectId })
+		end
+
 		if victim.EnrageOnDeath ~= nil then
 			local unitIdToEnrage = GetClosestUnitOfType({ Id = victim.ObjectId, DestinationName = victim.EnrageOnDeath })
 			if unitIdToEnrage ~= 0 and game.ActiveEnemies[unitIdToEnrage] ~= nil then

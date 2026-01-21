@@ -14,8 +14,12 @@ Other fixes and improvements:
 - Slightly boosted the volume of some music tracks.
 - If the mod installation is interrupted by closing the game, it will now continue where it left off instead of restarting from the beginning.
 - Balancing: The Bone-Raker can no longer gain the "Scraper" elite perk.
+- Balancing: Slightly increased Hades' maximum health if the Vow of Rivals is at full strength.
 - Fixed: Tisiphone's whip lash attack does not stun the player.
 - Fixed: Alecto's "enraged" color grading effect is not removed after defeating her.
+- Fixed: Killing a Doomstone in the encounter with Hades does not destroy it's fragments.
+- Fixed: Hades' dialogue that is supposed to play when first defeating him may be overridden by the Vow of Rivals dialogue, and will never play again, which can prevent some minor progression and consistency issues for the end of the first cleared run. *It will now always play first, and be retroactively set for saves that have already defeated Hades.*
+- Fixed: Exiting the final boss fight before the story ending will always play the same incantation voiceline by Melinoë, instead of choosing a random one from the full set.
 - Fixed: The Codex and Inventory cannot be opened in the opening room in Tartarus until after defeating the enemies.
 - Fixed: Erebus room exit doors (back to the previous biome) always offering Bones, Ash or Nectar as rewards instead of using the proper calculation method.
 - Fixed: If the keepsake equipped at the start of the run adds a random boon or hammer, the floating text indicating which one was gained is missing.

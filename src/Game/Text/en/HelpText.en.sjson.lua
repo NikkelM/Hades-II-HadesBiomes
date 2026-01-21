@@ -1315,7 +1315,8 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_SoldLegendaryBoonFlag",
-		DisplayName = "Purge a Legendary Boon In a {$Keywords.SellTraitShop} In the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
+		DisplayName =
+		"Purge a Legendary Boon In a {$Keywords.SellTraitShop} In the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
@@ -1325,7 +1326,8 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ThanatosKeepsakeAchievedHighPercentage",
-		DisplayName = "Achieve 30% Bonus Damage From the {$TraitData.zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake.Name} In the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
+		DisplayName =
+		"Achieve 30% Bonus Damage From the {$TraitData.zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake.Name} In the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun",
@@ -1334,8 +1336,14 @@ local newData = {
 		"The daughter of the god of the dead shall someday dream of overcoming her father and his strongest allies whilst they are empowered by the {#Emph}{$MetaUpgradeData.BossDifficultyShrineUpgrade.Name}{#Prev}.",
 	},
 	{
-		Id = "LordHadesExtremeMeasuresDefeat01",
-		DisplayName = "Defeat {$Keywords.CharHades} With {#LegendaryFormat}Rank IV {#Prev}of the {$MetaUpgradeData.BossDifficultyShrineUpgrade.Name} Active",
+		Id = "ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun_Condition",
+		DisplayName =
+		"{!Icons.QuestProgressIncomplete} Defeat {$Keywords.CharHades} With {#LegendaryFormat}Rank IV {#Prev}of the {$MetaUpgradeData.BossDifficultyShrineUpgrade.Name} Active",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun_Cleared",
+		DisplayName =
+		"{!Icons.QuestProgressComplete} Defeat {$Keywords.CharHades} With {#LegendaryFormat}Rank IV {#Prev}of the {$MetaUpgradeData.BossDifficultyShrineUpgrade.Name} Active",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
@@ -1368,12 +1376,14 @@ local newData = {
 		"The daughter of the god of the dead shall someday dream of investing herself and enough {!Icons.GiftPoints} to start believing in the steadfast friend that is {#Emph}{$Keywords.CharBouldy}{#Prev}, and have him believe in her.",
 	},
 	{
-		Id = "QuestBouldyUpgrades_Condition",
-		DisplayName = "{!Icons.QuestProgressIncomplete} Start Believing in {$Keywords.CharBouldy}, and {$Keywords.CharBouldy} Will Start Believing in You",
+		Id = "ModsNikkelMHadesBiomes_QuestBouldyUpgrades_Condition",
+		DisplayName =
+		"{!Icons.QuestProgressIncomplete} Start Believing in {$Keywords.CharBouldy}, and {$Keywords.CharBouldy} Will Start Believing in You",
 	},
 	{
-		Id = "QuestBouldyUpgrades_Complete",
-		DisplayName = "{!Icons.QuestProgressComplete} Start Believing in {$Keywords.CharBouldy}, and {$Keywords.CharBouldy} Will Start Believing in You",
+		Id = "ModsNikkelMHadesBiomes_QuestBouldyUpgrades_Complete",
+		DisplayName =
+		"{!Icons.QuestProgressComplete} Start Believing in {$Keywords.CharBouldy}, and {$Keywords.CharBouldy} Will Start Believing in You",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestAspectClears",

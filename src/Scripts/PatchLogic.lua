@@ -100,7 +100,7 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			-- #endregion
 		end
 
-		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 2 then
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 3 then
 			game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades = game.GameState
 					.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades or {}
 			game.GameState.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes = game.GameState
@@ -108,10 +108,14 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			-- To track some custom misc flag, e.g. for certain Quest progress
 			game.GameState.ModsNikkelMHadesBiomesCustomFlags = game.GameState
 					.ModsNikkelMHadesBiomesCustomFlags or {}
+			-- Ensure LordHadesDefeated01 is true in case it was skipped before due to the Extreme Measure conversation having played instead
+			if game.GameState.TextLinesRecord["LordHadesExtremeMeasuresDefeat01"] == true and game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == true and game.GameState.TextLinesRecord["LordHadesDefeated01"] == nil then
+				game.GameState.TextLinesRecord["LordHadesDefeated01"] = true
+			end
 		end
 
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 2
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 3
 	end
 
 	return base()

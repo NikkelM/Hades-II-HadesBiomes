@@ -1826,7 +1826,7 @@ local enemyModifications = {
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 30000,
 		ShrineDataOverwrites = {
-			MaxHealth = 33500,
+			MaxHealth = 36000,
 		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.HadesVoice,
@@ -1899,6 +1899,14 @@ local enemyModifications = {
 			},
 		},
 		BossPresentationOutroTextLineSets = {
+			LordHadesDefeated01 = {
+				-- Just in case
+				SuperPriority = true,
+			},
+			LordHadesExtremeMeasuresDefeat01 = {
+				-- To not be able to play this as the first conversation, we need LordHadesDefeated01 to be played first
+				RequiredTextLines = { "PersephoneFirstMeeting" },
+			},
 			LordHadesChaosSurfaceQuestDefeat01 = {
 				GameStateRequirements = {
 					{

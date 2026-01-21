@@ -634,10 +634,21 @@ local newQuestData = {
 			NamedRequirements = { "ShrineUnlocked" },
 		},
 		CompleteGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "TextLinesRecord", "LordHadesExtremeMeasuresDefeat01" },
+			OrRequirements = {
+				-- Using this instead of the textline as the textline may be delayed by the first clear dialogue
+				{
+					Path = { "GameState", "ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades", "Styx", "BossDifficultyShrineUpgrade" },
+					Comparison = ">=",
+					Value = 4,
+				},
+				-- For backwards compatibility of saves that have already beaten EM4 before the dialogue was patched to be delayed
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "LordHadesExtremeMeasuresDefeat01" },
+				},
 			},
 		},
+		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun_Condition",
+		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun_Cleared",
 	},
 	-- Successfully clear ShrineChallenge/Erebus encounters in a row
 	ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters = {
@@ -748,8 +759,8 @@ local newQuestData = {
 				Value = 5,
 			},
 		},
-		CustomIncompleteString = "QuestBouldyUpgrades_Condition",
-		CustomCompleteString = "QuestBouldyUpgrades_Cleared",
+		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestBouldyUpgrades_Condition",
+		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestBouldyUpgrades_Cleared",
 	},
 	-- Clear with each aspect
 	ModsNikkelMHadesBiomes_QuestAspectClears = {
