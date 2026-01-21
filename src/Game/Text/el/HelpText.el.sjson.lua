@@ -1408,6 +1408,31 @@ local newData = {
 	-- 	Description =
 	-- 	"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, whilst influenced by each {#Emph}reversed {$Keywords.Card}{#Prev}.",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestLog_BaseStaffAspect",
+	-- 	DisplayName = "Aspect of Melinoë (Descura)",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestLog_DaggerBackstabAspect",
+	-- 	-- Using & due to character length limitation
+	-- 	DisplayName = "Aspect of Melinoë (Lim & Oros)",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestLog_TorchSpecialDurationAspect",
+	-- 	DisplayName = "Aspect of Melinoë (Zorephet)",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestLog_AxeRecoveryAspect",
+	-- 	DisplayName = "Aspect of Melinoë (Ygnium)",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestLog_LobAmmoBoostAspect",
+	-- 	DisplayName = "Aspect of Melinoë (Revaal)",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestLog_BaseSuitAspect",
+	-- 	DisplayName = "Aspect of Melinoë (Xinth)",
+	-- },
 	-- #endregion
 }
 
