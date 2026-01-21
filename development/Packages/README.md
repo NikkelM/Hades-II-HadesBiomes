@@ -1,3 +1,10 @@
+# Custom Packages
+
+Some important notes:
+- The Portraits package is always loaded in both the Crossroads AND modded runs.
+- The Cosmetics package is only loaded in the Crossroads.
+- The GUIModded package is only loaded in modded runs.
+
 # Creating new packages
 
 Each new image/texture should be a single .png file.

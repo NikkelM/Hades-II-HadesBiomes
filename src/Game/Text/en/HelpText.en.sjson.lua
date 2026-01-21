@@ -1273,13 +1273,13 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_QuestWeaponClearsHighHeat",
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Nightmare Princess ",
 		Description =
-		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, using each of the {#Emph}Nocturnal Arms {#Prev}and, I don't know, {#UseShrinePointFormat}32{#Prev}{!Icons.ShrinePoint} from the {#Emph}Oath of the Unseen{#Prev}?",
+		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, using each of the {#Emph}Nocturnal Arms {#Prev}and {#UseShrinePointFormat}32{#Prev}{!Icons.ShrinePointSmall} from the {#Emph}Oath of the Unseen{#Prev}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestWeaponClearsFast",
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Short Work ",
 		Description =
-		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, in no more than {#BoldFormatGraft}22 min.{#Prev}, using each of the {#Emph}Nocturnal Arms {#Prev}.",
+		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, in no more than {#BoldFormatGraft}20 minutes{#Prev}, using each of the {#Emph}Nocturnal Arms {#Prev}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestShutdownThanatos",
@@ -1395,13 +1395,13 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_QuestAspectClearsHighHeat",
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Nightmare Queen ",
 		Description =
-		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, using each and every {#Emph}Aspect {#Prev}of the {#Emph}Nocturnal Arms {#Prev}available to her and, I don't know, {#UseShrinePointFormat}32{#Prev}{!Icons.ShrinePoint} from the {#Emph}Oath of the Unseen{#Prev}?",
+		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, using each and every {#Emph}Aspect {#Prev}of the {#Emph}Nocturnal Arms {#Prev}available to her and {#UseShrinePointFormat}32{#Prev}{!Icons.ShrinePointSmall} from the {#Emph}Oath of the Unseen{#Prev}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestAspectClearsFast",
 		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Short Labor ",
 		Description =
-		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, in no more than {#BoldFormatGraft}22 min.{#Prev}, using each and every {#Emph}Aspect {#Prev}of the {#Emph}Nocturnal Arms {#Prev}available to her.",
+		"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, in no more than {#BoldFormatGraft}20 minutes{#Prev}, using each and every {#Emph}Aspect {#Prev}of the {#Emph}Nocturnal Arms {#Prev}available to her.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestCropsSmall",

@@ -19,15 +19,12 @@ local newIcons = {
 	-- #endregion
 	-- #region ShrineChallenge/Erebus Gates
 	ShrinePointSmall = {
-		TexturePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Icons\\ShrinePoint_Small",
+		TexturePath = "GUIModded\\Icons\\ShrinePoint_Small",
 		UseTooltip = true,
 	},
 	ShrinePointSmall_Active = {
-		TexturePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Icons\\ShrinePoint_Small_Active",
+		TexturePath = "GUIModded\\Icons\\ShrinePoint_Small_Active",
 		UseTooltip = true,
-	},
-	ShrinePointSmall_Active_Grayscale = {
-		TexturePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Icons\\ShrinePoint_Small_Active_Grayscale",
 	},
 	-- #endregion
 }

@@ -261,15 +261,12 @@ local newQuestData = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
 				Comparison = ">=",
-				Value = 2,
+				Value = 3,
 			},
 			{
 				Path = { "GameState", "MetaUpgradeMaxLevelCountCache" },
 				Comparison = ">=",
 				Value = 3,
-			},
-			{
-				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestFirstClear" },
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -320,9 +317,6 @@ local newQuestData = {
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
 				Comparison = ">=",
 				Value = 2,
-			},
-			{
-				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestFirstClear" },
 			},
 			NamedRequirements = { "ShrineUnlocked" },
 		},
@@ -414,7 +408,7 @@ local newQuestData = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
 				Comparison = ">=",
-				Value = 16,
+				Value = 12,
 			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
@@ -481,27 +475,27 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "WeaponStaffSwing", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "WeaponStaffSwing", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "WeaponDagger", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "WeaponDagger", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "WeaponTorch", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "WeaponTorch", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "WeaponAxe", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "WeaponAxe", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "WeaponLob", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "WeaponLob", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "WeaponSuit", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "WeaponSuit", RequiredClearTime = 1200, },
 			},
 		},
 		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {
@@ -537,9 +531,6 @@ local newQuestData = {
 		RewardResourceName = "SuperGiftPoints",
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestFirstClear" },
-			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
 				Comparison = ">=",
@@ -621,9 +612,6 @@ local newQuestData = {
 		RewardResourceAmount = 4,
 		UnlockGameStateRequirements = {
 			{
-				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestFirstClear" },
-			},
-			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
 				Comparison = ">=",
 				Value = 1,
@@ -656,9 +644,6 @@ local newQuestData = {
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 1200,
 		UnlockGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestFirstClear" },
-			},
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
 				Comparison = ">=",
@@ -1055,99 +1040,99 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "BaseStaffAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "BaseStaffAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "StaffClearCastAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "StaffClearCastAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "StaffSelfHitAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "StaffSelfHitAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "StaffRaiseDeadAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "StaffRaiseDeadAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "DaggerBackstabAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "DaggerBackstabAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "DaggerBlockAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "DaggerBlockAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "DaggerHomingThrowAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "DaggerHomingThrowAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "DaggerTripleAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "DaggerTripleAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "TorchSpecialDurationAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "TorchSpecialDurationAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "TorchDetonateAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "TorchDetonateAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "TorchSprintRecallAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "TorchSprintRecallAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "TorchAutofireAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "TorchAutofireAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "AxeRecoveryAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "AxeRecoveryAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "AxeArmCastAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "AxeArmCastAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "AxePerfectCriticalAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "AxePerfectCriticalAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "AxeRallyAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "AxeRallyAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "LobAmmoBoostAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "LobAmmoBoostAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "LobCloseAttackAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "LobCloseAttackAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "LobImpulseAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "LobImpulseAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "LobGunAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "LobGunAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "BaseSuitAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "BaseSuitAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "SuitHexAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "SuitHexAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "SuitMarkCritAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "SuitMarkCritAspect", RequiredClearTime = 1200, },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "WeaponHasModdedClearTime",
-				FunctionArgs = { WeaponName = "SuitComboAspect", RequiredClearTime = 1320, },
+				FunctionArgs = { WeaponName = "SuitComboAspect", RequiredClearTime = 1200, },
 			},
 		},
 		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {
