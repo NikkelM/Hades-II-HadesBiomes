@@ -110,10 +110,13 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- Mark as modded textline
 		data.ModsNikkelMHadesBiomesIsModdedTextLine = true
 
+		data.GameStateRequirements = data.GameStateRequirements or {}
 		-- All modded text lines can only appear in modded runs, unless specified otherwise in the metadata
 		if not metadata.SkipModdedRunRequirement then
-			data.CurrentRunValueTrue = "ModsNikkelMHadesBiomesIsModdedRun"
+			table.insert(data.GameStateRequirements, { PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" } })
 		end
+		-- This requirements was missing in Hades' textlines
+		table.insert(data.GameStateRequirements, { PathFalse = { "CurrentRun", "UseRecord", narrativeDataKey } })
 
 		for _, line in ipairs(data) do
 			line.UseRoomContextArt = true
