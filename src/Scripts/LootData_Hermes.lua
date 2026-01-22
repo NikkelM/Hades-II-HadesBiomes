@@ -1,0 +1,60 @@
+local newInteractTextLines = {
+	-- #region Charon Fight Questline
+	HermesAboutCharonFight01 = {
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterTextLineGroupContaining = "HermesAboutHecate01",
+			CreateNewPriorityGroup = true,
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredAnyTextLines = { "HermesLootBought01" },
+		RequiredSeenRooms = { "CharonFight01" },
+		{
+			Cue = "/VO/Hermes_0197",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"I can't believe you got into a fight with my professional associate, you daft or something, Coz? Just about everybody that I know, they're all at least a little bit afraid of that one and his boat, yet you think you can take him, huh?"
+		},
+	},
+	HermesAboutCharonFight02 = {
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "HermesAboutCharonFight01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesAboutCharonFight01", "BossCharonOutro01" },
+		RequiredFalseTextLines = { "HermesBeatCharonQuestComplete" },
+		{
+			Cue = "/VO/Hermes_0198",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"So you took on my good professional associate, is that right, Coz? And you beat the big boatman himself! I knew you were pretty tough, but not {#DialogueItalicFormat}that {#PreviousFormat}tough! Impressive work! He's impressed, too. He isn't even mad!"
+		},
+	},
+	HermesBeatCharonQuest01 = {
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "HermesAboutCharonFight01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesAboutCharonFight01", "HermesGift03" },
+		{
+			Cue = "/VO/Hermes_0199",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Hey, uh, so I kind of placed a bet with the old boatman, my associate that is, that you could beat him in a fight, twice in a row! No pressure, or anything, but just in case you prove me right one of these days, I would appreciate it, Coz!"
+		},
+	},
+	-- #endregion
+}
+mod.AddNarrativeDataEntries(
+	newInteractTextLines, "HermesUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
+	{ OnLoadVoiceBank = "Hermes", LoadVoiceBank = "Dusa" }, { Hermes_ = "Dusa_0" },
+	{ Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01" }
+)

@@ -459,3 +459,6 @@ mod.SharedKeepsakePortPatroclusKeepsakeTrait = "zannc-SharedKeepsakePort-ShieldA
 mod.SharedKeepsakePortPatroclusKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Patroclus"
 mod.SharedKeepsakePortThanatosKeepsakeTrait = "zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake"
 mod.SharedKeepsakePortThanatosKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Thanatos"
+
+-- Not actually a constant, will be populated in mod.AddNarrativeDataEntries()
+mod.LootVoiceBankMappings = mod.LootVoiceBankMappings or {}
