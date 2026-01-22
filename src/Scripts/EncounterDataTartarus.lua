@@ -301,6 +301,9 @@ local encounterModifications = {
 	},
 	BaseThanatos = {
 		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "ZagreusField" },
+		GameStateRequirements = {
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
+		},
 		RequiredKillFunctionName = _PLUGIN.guid .. "." .. "TrackThanatosChallengeProgress",
 		BlockAthenaEncounterKeepsake = true,
 		SkipExitReadyCheckpoint = true,
@@ -308,6 +311,9 @@ local encounterModifications = {
 	},
 	BaseSurvival = {
 		LoadModdedVoiceBanks = { "HadesField" },
+		GameStateRequirements = {
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
+		},
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,
 		PreSpawnEnemies = false,

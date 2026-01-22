@@ -539,6 +539,7 @@ local roomModifications = {
 		GameStateRequirements = {
 			RequiredSeenRooms = mod.NilValue,
 			RequiredSeenEncounter = "BossHydra",
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
 
 		HarvestPointChances = { 0.4, 0.1, },
