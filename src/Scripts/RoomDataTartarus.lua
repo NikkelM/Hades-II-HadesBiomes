@@ -49,10 +49,8 @@ local roomReplacements = {
 			{
 				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
 			},
-			{
-				PathFalse = { "CurrentRun", "ActiveBounty" },
-			},
 			RequiredMinRoomsSinceShrinePointDoor = 8,
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
 
 		HasHarvestPoint = true,
