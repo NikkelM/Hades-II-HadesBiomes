@@ -190,15 +190,6 @@ function mod.HasSeenRoomInRun(run, roomName)
 end
 
 function mod.GetFastestRunClearTime(currentRun)
-	-- local fastestTime = 999999
-	-- if currentRun.Cleared then
-	-- 	fastestTime = currentRun.GameplayTime
-	-- end
-	-- for k, prevRun in pairs(game.GameState.RunHistory) do
-	-- 	if prevRun.Cleared and prevRun.BiomesReached.Tartarus and prevRun.GameplayTime ~= nil and prevRun.GameplayTime < fastestTime then
-	-- 		fastestTime = prevRun.GameplayTime
-	-- 	end
-	-- end
 	return game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache or 999999
 end
 
@@ -253,20 +244,6 @@ function mod.WeaponHasModdedShrinePointClear(source, args)
 end
 
 function mod.GetHighestShrinePointRunClear(currentRun, args)
-	-- args = args or {}
-	-- local highestPoints = 0
-	-- if currentRun ~= nil and currentRun.Cleared and currentRun.ShrinePointsCache ~= nil then
-	-- 	if args.RequiredBiome == nil or currentRun.BiomesReached[args.RequiredBiome] then
-	-- 		highestPoints = currentRun.ShrinePointsCache
-	-- 	end
-	-- end
-	-- for runIndex, prevRun in ipairs(game.GameState.RunHistory) do
-	-- 	if prevRun.BiomesReached.Tartarus and (args.RequiredBiome == nil or (prevRun.BiomesReached ~= nil and prevRun.BiomesReached[args.RequiredBiome])) then
-	-- 		if prevRun.Cleared and prevRun.ShrinePointsCache ~= nil and prevRun.ShrinePointsCache > highestPoints then
-	-- 			highestPoints = prevRun.ShrinePointsCache
-	-- 		end
-	-- 	end
-	-- end
 	return game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache or 0
 end
 
@@ -305,12 +282,11 @@ end
 function mod.GetPreviousModdedRun()
 	for i = #game.GameState.RunHistory, 1, -1 do
 		local run = game.GameState.RunHistory[i]
-		-- BiomesReached is on the save whitelist, ModsNikkelMHadesBiomesIsModdedRun is not
-		if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+		if mod.WasModdedRun(run) then
 			return run
 		end
 	end
-	return
+	return nil
 end
 
 function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
@@ -751,7 +727,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		for i = #game.GameState.RunHistory, 1, -1 do
 			local run = game.GameState.RunHistory[i]
 			-- We only count modded runs, and skip all others to retain integrity of the streak
-			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+			if mod.WasModdedRun(run) then
 				if mod.HasSeenRoomInRun(run, requirements.ConsecutiveDeathsInRoom.Name) then
 					-- For the encoded EndingRoomName for uninstall compatibility
 					if not run.Cleared and run.EndingRoomName == nil and run.VictoryMessage ~= nil then
@@ -796,7 +772,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		for i = #game.GameState.RunHistory, 1, -1 do
 			local run = game.GameState.RunHistory[i]
 			-- We only count modded runs, and skip all others to retain integrity of the streak
-			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+			if mod.WasModdedRun(run) then
 				if mod.HasSeenRoomInRun(run, requirements.ConsecutiveClearsOfRoom.Name) then
 					-- For the encoded EndingRoomName for uninstall compatibility
 					if not run.Cleared and run.EndingRoomName == nil and run.VictoryMessage ~= nil then
@@ -1356,37 +1332,19 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredFalseCompletedRuns ~= nil then
-		local completedModdedRuns = 0
-		for i, run in pairs(game.GameState.RunHistory) do
-			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
-				completedModdedRuns = completedModdedRuns + 1
-			end
-		end
-		if completedModdedRuns == requirements.RequiredFalseCompletedRuns then
+		if requirements.RequiredFalseCompletedRuns > 0 and (game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache or 0) == requirements.RequiredFalseCompletedRuns then
 			return false
 		end
 	end
 
 	if requirements.RequiredMinCompletedRuns ~= nil then
-		local completedModdedRuns = 0
-		for i, run in pairs(game.GameState.RunHistory) do
-			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
-				completedModdedRuns = completedModdedRuns + 1
-			end
-		end
-		if completedModdedRuns < requirements.RequiredMinCompletedRuns then
+		if requirements.RequiredMinCompletedRuns > 0 and (game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache or 0) < requirements.RequiredMinCompletedRuns then
 			return false
 		end
 	end
 
 	if requirements.RequiredMaxCompletedRuns ~= nil then
-		local completedModdedRuns = 0
-		for i, run in pairs(game.GameState.RunHistory) do
-			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
-				completedModdedRuns = completedModdedRuns + 1
-			end
-		end
-		if completedModdedRuns > requirements.RequiredMaxCompletedRuns then
+		if requirements.RequiredMaxCompletedRuns >= 0 and (game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache or 0) > requirements.RequiredMaxCompletedRuns then
 			return false
 		end
 	end
@@ -2465,7 +2423,6 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		return false
 	end
 
-	-- if requirements.RequiredMinRunsCleared ~= nil and game.GameState.CompletedRunsCache < requirements.RequiredMinRunsCleared then
 	if requirements.RequiredMinRunsCleared ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache ~= nil and game.GameState.ModsNikkelMHadesBiomesClearedRunsCache < requirements.RequiredMinRunsCleared then
 		return false
 	end
@@ -2480,7 +2437,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredMinConsecutiveClears ~= nil then
 		local consecutiveModdedClears = 0
 		for k, run in game.GameState.RunHistory do
-			if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+			if mod.WasModdedRun(run) then
 				if run.Cleared then
 					consecutiveModdedClears = consecutiveModdedClears + 1
 				else
@@ -2501,7 +2458,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			return false
 		end
 		-- for k, run in game.GameState.RunHistory do
-		-- 	if run.BiomesReached ~= nil and run.BiomesReached.Tartarus then
+		-- 	if mod.WasModdedRun(run) then
 		-- 		if run.Cleared then
 		-- 			consecutiveModdedClears = consecutiveModdedClears + 1
 		-- 		else
@@ -2789,7 +2746,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 					return false
 				end
 			end
-			if prevRun.BiomesReached ~= nil and prevRun.BiomesReached.Tartarus then
+			if mod.WasModdedRun(prevRun) then
 				runsSinceOccurred = runsSinceOccurred + 1
 			end
 		end
@@ -2809,7 +2766,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 					return false
 				end
 			end
-			if prevRun.BiomesReached ~= nil and prevRun.BiomesReached.Tartarus then
+			if mod.WasModdedRun(prevRun) then
 				runsSinceOccurred = runsSinceOccurred + 1
 			end
 		end
@@ -2829,7 +2786,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 						return false
 					end
 				end
-				if prevRun.BiomesReached ~= nil and prevRun.BiomesReached.Tartarus then
+				if mod.WasModdedRun(prevRun) then
 					runsSinceOccurred = runsSinceOccurred + 1
 					if runsSinceOccurred >= requirements.MinRunsSinceAnyTextLines.Count then
 						-- Already exceeded safely
@@ -2853,7 +2810,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 						break
 					end
 				end
-				if prevRun.BiomesReached ~= nil and prevRun.BiomesReached.Tartarus then
+				if mod.WasModdedRun(prevRun) then
 					runsSinceOccurred = runsSinceOccurred + 1
 				end
 			end
