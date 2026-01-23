@@ -2,7 +2,7 @@ local newInteractTextLines = {
 	-- #region Charon Fight Questline
 	HermesAboutCharonFight01 = {
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "HermesAboutHecate01",
+			InsertAfterNarrativeTextLine = "HermesAboutTyphonReveal01",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
@@ -49,6 +49,23 @@ local newInteractTextLines = {
 			UseEventEndSound = true,
 			Text =
 			"Hey, uh, so I kind of placed a bet with the old boatman, my associate that is, that you could beat him in a fight, twice in a row! No pressure, or anything, but just in case you prove me right one of these days, I would appreciate it, Coz!"
+		},
+	},
+	HermesBeatCharonQuestComplete = {
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "HermesAboutCharonFight01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "BossCharonHermesQuestComplete01" },
+		{
+			Cue = "/VO/Hermes_0200",
+			Emote = "PortraitEmoteCheerful",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"You did it, Coz! And by {#DialogueItalicFormat}it {#PreviousFormat}I'm referring to the act of beating down my seemingly invincible boatman associate, who fancies himself pretty tough as Underworld deities go! He wasn't sure you had it in you, and if I may be so bold, neither was I!"
 		},
 	},
 	-- #endregion
