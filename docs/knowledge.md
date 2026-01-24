@@ -780,6 +780,12 @@ For ID `558394`, change the `GroupNames` property to `Foreground_01`.
 
 Remove the `Fx_Terrain` group from the `map_text` files, as it causes layering issues with the Cast, and some enemy Fx (like Chariot tracks).
 
+#### Y_Combat14
+
+ElysiumFogCloudRollC:
+For ID `536469`, change the `GroupNames` property to `Terrain_Beneath_01`.
+For ID `536470`, change the `GroupNames` property to `Terrain_Beneath_01`.
+
 #### Y_PostBoss01
 
 TravelChain01Anim:
