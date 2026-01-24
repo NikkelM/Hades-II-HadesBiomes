@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Slightly boosted the volume of some music tracks.
 - If the mod installation is interrupted by closing the game, it will now continue where it left off instead of restarting from the beginning.
 - Balancing: The Bone-Raker can no longer gain the "Scraper" elite perk.
+- Balancing: The Tiny Vermin no longer gains increased movement and attack speed from the Vow of Frenzy.
 - Balancing: Slightly increased Hades' maximum health if the Vow of Rivals is at full strength.
 - Fixed: Tisiphone's whip lash attack does not stun the player.
 - Fixed: Alecto's "enraged" color grading effect is not removed after defeating her.

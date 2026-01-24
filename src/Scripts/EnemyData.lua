@@ -1815,6 +1815,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		BlockRespawnShrineUpgrade = true,
+		IgnoreSpeedShrine = true,
 		IsBoss = false,
 	},
 	-- #endregion
