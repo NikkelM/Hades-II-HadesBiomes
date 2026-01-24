@@ -44,6 +44,8 @@ local hadesTwoObstacleModifications = {
 	TravelPillarBase02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	TravelPillar01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	TravelPillar02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TravelGear04 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	TravelGear04a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 }
 
 sjson.hook(hadesTwoTravelObstacleFile, function(data)
