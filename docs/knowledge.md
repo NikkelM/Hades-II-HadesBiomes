@@ -786,6 +786,15 @@ ElysiumFogCloudRollC:
 For ID `536469`, change the `GroupNames` property to `Terrain_Beneath_01`.
 For ID `536470`, change the `GroupNames` property to `Terrain_Beneath_01`.
 
+#### Y_Boss01
+
+ElysiumGhost01:
+For ID `543676`, change the `GroupNames` property to `Foreground_02`.
+For ID `542946`, change the `GroupNames` property to `Foreground_02`.
+
+ElysiumFence01:
+Delete ID `543610`.
+
 #### Y_PostBoss01
 
 TravelChain01Anim:
