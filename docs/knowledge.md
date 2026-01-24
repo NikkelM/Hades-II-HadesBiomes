@@ -449,6 +449,11 @@ For ID `558957`, change the `GroupNames` property to `Terrain_Decor_01`.
 TravelChain01:
 Delete ID `556625`.
 
+#### X_Reprieve01
+
+TartarusBrazier02b:
+For ID `514903`, change the `GroupNames` property to `Standing`.
+
 #### X_PreBoss01
 
 546475
