@@ -705,6 +705,22 @@ New map_text groups:
 },
 ```
 
+#### A_PostBoss01
+
+TravelChain01Anim:
+For ID `558959`, change the `GroupNames` property to `Terrain_Lighting_01`.
+For ID `558958`, change the `GroupNames` property to `Terrain_Decor_01`.
+
+TravelChain01:
+Delete ID `558978`.
+Delete ID `558977`.
+
+TravelGear02:
+For ID `558393`, change the `GroupNames` property to `Lighting_01`.
+
+TravelLever01:
+For ID `558394`, change the `GroupNames` property to `Foreground_01`.
+
 #### Y_Combat01
 
 Remove the `Fx_Terrain` group from the `map_text` files, as it causes layering issues with the Cast, and some enemy Fx (like Chariot tracks).
