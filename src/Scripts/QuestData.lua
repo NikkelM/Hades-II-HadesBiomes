@@ -353,7 +353,6 @@ local newQuestData = {
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "TextLinesRecord" },
-				-- TODO: ChaosSurfaceQuest01 text line does not exist yet - should be added as possible text line for Chaos in modded runs
 				HasAll = { "ChaosSurfaceQuest01", "LordHadesDefeated02", }
 			},
 		},

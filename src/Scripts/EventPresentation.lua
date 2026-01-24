@@ -60,7 +60,7 @@ modutil.mod.Path.Wrap("GodLootPickupPresentation", function(base, loot, args)
 				loot.NextInteractLines = game.GetRandomEligibleTextLines(loot, loot.BoughtTextLines,
 					game.GetNarrativeDataValue(loot, "BoughtTextLinePriorities"))
 				if loot.NextInteractLines ~= nil then
-					CurrentRun.HadBoughtLootConversation = true
+					game.CurrentRun.HadBoughtLootConversation = true
 				end
 			end
 		elseif game.MapState.RejectedLoot ~= nil and game.MapState.RejectedLoot.Name == loot.Name and loot.MakeUpTextLines ~= nil then
