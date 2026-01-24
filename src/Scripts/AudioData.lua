@@ -35,8 +35,7 @@ local tartarusRoomStartMusicEvents = {
 				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
 			},
 			{
-				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
-				IsAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" }
+				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
 			},
 			{
 				-- In intro and boss rooms we have custom logic to play music with a slight delay, don't start early using this event
@@ -65,8 +64,7 @@ local tartarusRoomStartMusicEvents = {
 				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
 			},
 			{
-				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
-				IsAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" }
+				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
 			},
 			{
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
@@ -91,8 +89,7 @@ local tartarusRoomStartMusicEvents = {
 				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
 			},
 			{
-				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
-				IsAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" }
+				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
 			},
 			{
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
