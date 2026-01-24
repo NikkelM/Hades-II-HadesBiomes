@@ -64,7 +64,7 @@ function mod.CompareChecksums()
 			config.firstTimeSetup = true
 		else
 			mod.DebugPrint(
-				"Game \"checksums.txt\" matches the mod's cached \"checksums.txt\". No game update detected, proceeding normally.",
+				"Game \"checksums.txt\" matches the mod's cached \"checksums.txt\". No game update detected, proceeding normally, please wait...",
 				3)
 		end
 

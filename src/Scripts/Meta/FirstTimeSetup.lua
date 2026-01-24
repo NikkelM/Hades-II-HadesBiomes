@@ -212,7 +212,8 @@ local function copyHadesNPCTexts()
 end
 
 -- Common function to copy and filter animations
-local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, modifications, additions, animationType)
+local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, modifications, parentAdditions, additions,
+																			 animationType)
 	local animationsTable = mod.DecodeSjsonFile(srcPath)
 
 	if rom.path.exists(destPath) then
@@ -259,6 +260,11 @@ local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 		end
 	end
 
+	-- Parents always need to be added at the start, some other Hades animations might inherit from this new one (through modifications)
+	for _, addition in ipairs(parentAdditions) do
+		table.insert(filteredAnimations, 1, addition)
+	end
+
 	animationsTable.Animations = filteredAnimations
 
 	sjson.encode_file(destPath, animationsTable)
@@ -270,10 +276,11 @@ local function copyHadesFxAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\Fx.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
 	local modifications = mod.HadesFxAnimationModifications or {}
+	local parentAdditions = mod.HadesFxAnimationParentAdditions or {}
 	local additions = mod.HadesFxAnimationAdditions or {}
 
 	-- Will return false if an Olympus Extra animation is detected
-	if not copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates, modifications, additions, "Fx.sjson") then
+	if not copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates, modifications, parentAdditions, additions, "Fx.sjson") then
 		return false
 	end
 
@@ -284,27 +291,31 @@ local function copyHadesGUIAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\GUIAnimations.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename)
 	local modifications = mod.HadesGUIAnimationModifications or {}
+	local parentAdditions = mod.HadesGUIAnimationParentAdditions or {}
 	local additions = mod.HadesGUIAnimationAdditions or {}
 	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.GUIAnimationMappings, mod.HadesGUIAnimationDuplicates,
-		modifications, additions, "GUIAnimations.sjson")
+		modifications, parentAdditions, additions, "GUIAnimations.sjson")
 end
 
 local function copyHadesPortraitAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\PortraitAnimations.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename)
 	local modifications = mod.HadesPortraitAnimationModifications or {}
+	local parentAdditions = mod.HadesPortraitAnimationAdditionsParents or {}
 	local additions = mod.HadesPortraitAnimationAdditions or {}
 	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.PortraitAnimationMappings,
-		mod.HadesPortraitAnimationDuplicates, modifications, additions, "PortraitAnimations.sjson")
+		mod.HadesPortraitAnimationDuplicates, modifications, parentAdditions, additions, "PortraitAnimations.sjson")
 end
 
 local function copyHadesCharacterAnimationsNPCs()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\CharacterAnimationsNPCs.sjson")
 	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesCharacterAnimationsNPCsDestinationFilename)
 	local modifications = mod.HadesCharacterAnimationsNPCsModifications or {}
+	local parentAdditions = mod.HadesCharacterAnimationsNPCsParentAdditions or {}
 	local additions = mod.HadesCharacterAnimationsNPCsAdditions or {}
 	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.CharacterAnimationsNPCsMappings,
-		mod.HadesCharacterAnimationsNPCsDuplicates, modifications, additions, "CharacterAnimationsNPCs.sjson")
+		mod.HadesCharacterAnimationsNPCsDuplicates, modifications, parentAdditions, additions,
+		"CharacterAnimationsNPCs.sjson")
 end
 
 function mod.FirstTimeSetup()

@@ -6,7 +6,8 @@
 ### Patch Highlights:
 - You can now **challenge Lord Charon** to a "friendly duel" by "borrowing" some his his Gold! Defeat your favourite shopkeeper for a special discount on all his wares for the duration of your current run.
 - Discover and complete over **25 new Minor Prophecies** at the Fated List, with more coming in the future.
-- Added 8 new cosmetics to discover and unlock in the Crossroads, created by @burn.
+- Look out for some new voicelines from Hermes and Primordial Chaos, they might have tasks for you! Even more voicelines are coming in future updates.
+- Added **8** new cosmetics to discover and unlock in the Crossroads, created by @burn.
 - You can now unlock **new music tracks** from the first game with the Music Maker in the Crossroads, through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (installed automatically with this mod). Perform the "Recovery of Orpheus' Scriptures" incantation to unlock the new music.
 
 Other fixes and improvements:
@@ -18,23 +19,23 @@ Other fixes and improvements:
 - Fixed: Tisiphone's whip lash attack does not stun the player.
 - Fixed: Alecto's "enraged" color grading effect is not removed after defeating her.
 - Fixed: Killing a Doomstone in the encounter with Hades does not destroy it's fragments.
-- Fixed: Hades' dialogue that is supposed to play when first defeating him may be overridden by the Vow of Rivals dialogue, and will never play again, which can prevent some minor progression and consistency issues for the end of the first cleared run. *It will now always play first, and be retroactively set for saves that have already defeated Hades.*
+- Fixed: Hades' dialogue that is supposed to play when first defeating him may be overridden by the Vow of Rivals dialogue and will never play again, which can prevent some minor progression and consistency issues for the end of the first cleared run. *It will now always play first, and be retroactively set for saves that have already defeated Hades.*
 - Fixed: Exiting the final boss fight before the story ending will always play the same incantation voiceline by Melinoë, instead of choosing a random one from the full set.
 - Fixed: The Codex and Inventory cannot be opened in the opening room in Tartarus until after defeating the enemies.
-- Fixed: In some rare cases, music may go missing after entering multiple rooms in a row with special music events.
-- Fixed: Erebus room exit doors (back to the previous biome) always offering Bones, Ash or Nectar as rewards instead of using the proper calculation method.
-- Fixed: If the keepsake equipped at the start of the run adds a random boon or hammer, the floating text indicating which one was gained is missing.
+- Fixed: In some rare cases, music may go missing after entering multiple rooms with special music events in a row.
+- Fixed: Erebus room exit doors (back to the previous biome) always offer Bones, Ash or Nectar as rewards instead of using the proper calculation method of choosing rewards.
+- Fixed: If the keepsake equipped at the start of the run adds a random boon or hammer, the floating text indicating which one was gained does not show.
 - Fixed: Ambient sound effects for the Elysium and Styx boss resource drops persist after the resource is picked up.
 - Fixed: Gods don't comment on you choosing them over another god during a Family Dispute during Zagreus' Journey runs.
 - Fixed: Contextual voicelines with story NPCs relating to their respective keepsakes being equipped cannot trigger.
-- Fixed: In rare cases, some ineligible combinations of voicelines can play during NPC or boss encounters.
-- Fixed: Some NPC and boss conversations are not properly prioritized and will not be forced to play before more generic dialogue.
-- Fixed: When returning to the Crossroads after a cleared Zagreus' Journey run after the story ending, the game plays a Hades voiceline indicating he killed you.
+- Fixed: In rare cases, some ineligible combinations of contextual voicelines can play during NPC or boss encounters.
+- Fixed: Some NPC and boss conversations are not properly prioritized and will not be forced to play before more generic dialogue (maybe now Sisyphus will finally tell you about Bouldy).
+- Fixed: When returning to the Crossroads after a cleared Zagreus' Journey run after the story ending, the game plays a Hades voiceline indicating he had killed you.
 - Fixed: When returning from a Chaos Trial, Zagreus' Journey cosmetics and other assets are not loaded until switching rooms.
 - Fixed: When a Thanatos encounter starts, Melinoë can sometimes play a Zagreus voiceline.
 - Fixed: The "Dais, Olympian" cosmetic for Skelly is incorrectly named "Dais, Fancy".
 - Fixed: Dying in a boss or miniboss room does not always show the correct portrait in the Run History screen.
-- Fixed: Returning to the Crossroads after a cleared Zagreus' Journey run post-ending plays a Melinoë voiceline meant for returning after a death.
+- Fixed: Returning to the Crossroads after a cleared Zagreus' Journey run post-ending plays Melinoë voicelines meant for returning after a death.
 - Fixed: Some voicelines spoken by Melinoë when waking up in the Crossroads feel out of place after clearing a Zagreus' Journey run before the story ending.
 - Fixed: For saves with Zagreus' Journey runs from the alpha, some run results can show placeholder text.
 - Fixed: Theseus' and Asterius' Codex entries cannot be unlocked.
@@ -42,7 +43,7 @@ Other fixes and improvements:
 - Fixed: The Run History screen shows "Prevailed!!" instead of "Escaped" for cleared Zagreus' Journey runs from the second page onwards.
 - Fixed: If a Chaos Trial includes a biome from Zagreus' Journey, the run is always marked as a Zagreus' Journey run in the Run History, instead of a Chaos Trial run.
 - Fixed: Boon icons for Sisyphus, Eurydice and Patroclus are missing when viewing the Codex in the Crossroads.
-- Fixed: Icons for some cosmetics added by the mod are very noisy/grainy and hard to decipher.
+- Fixed: Shop icons for some cosmetics added by the mod are very noisy/grainy and hard to decipher.
 <!--Releasenotes end-->
 
 ## v0.3.0

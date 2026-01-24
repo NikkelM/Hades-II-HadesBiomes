@@ -353,7 +353,6 @@ local newQuestData = {
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "TextLinesRecord" },
-				-- TODO: ChaosSurfaceQuest01 text line does not exist yet - should be added as possible text line for Chaos in modded runs
 				HasAll = { "ChaosSurfaceQuest01", "LordHadesDefeated02", }
 			},
 		},
@@ -385,9 +384,7 @@ local newQuestData = {
 		RewardResourceAmount = 3,
 		UnlockGameStateRequirements = {
 			{
-				Path = { "GameState", "TextLinesRecord" },
-				-- TODO: HermesBeatCharonQuest01 text line does not exist yet - should be added as possible text line for Hermes in modded runs
-				HasAll = { "HermesBeatCharonQuest01", }
+				PathTrue = { "GameState", "TextLinesRecord", "HermesBeatCharonQuest01", }
 			},
 		},
 		CompleteGameStateRequirements = {

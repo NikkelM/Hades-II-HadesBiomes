@@ -1,5 +1,5 @@
 # Bank/FSB name that is being looked at
-$speakerName = "ZagreusField"
+$speakerName = "Dusa"
 $inputFile = ".\dev\FMOD\Fmod Bank Tools\wav\$speakerName\$speakerName.txt"
 $outputFile = ".\..\data\Content\Audio\Desktop\VO\$speakerName.txt"
 
