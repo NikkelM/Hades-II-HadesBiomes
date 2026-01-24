@@ -877,6 +877,21 @@ In this map, we need to change the name for the Cerberus NPC, as it is used in b
 
 For ID `547487`, change the `Name` property from `NPC_Cerberus_Field_01` to `ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01`.
 
+
+#### D_MiniBoss01
+
+StyxClothesline01:
+For ID `555724`, change the `GroupNames` property to `Stairs`.
+
+StyxHook01:
+For ID `555818`, change the `GroupNames` property to `Lighting_01`.
+
+StyxCrate01:
+For ID `555819`, change the `GroupNames` property to `Lighting_02`.
+
+ElysiumIvy01:
+For ID `555868`, change the `GroupNames` property to `Lighting_01`.
+
 #### D_MiniBoss03
 
 In this map, we need to change the name for the CrawlerMiniboss, as it is used in both Hades and Hades II.
