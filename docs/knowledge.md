@@ -700,6 +700,78 @@ New map_text groups:
 
 Remove the `Fx_Terrain` group from the `map_text` files, as it causes layering issues with the Cast, and some enemy Fx (like Chariot tracks).
 
+#### D_Intro
+
+TravelChain01:
+For ID `561303`, change the `GroupNames` property to `Gears_02`.
+For ID `561173`, change the `GroupNames` property to `Gears_02`.
+For ID `561179`, change the `GroupNames` property to `Gears_02`.
+
+TravelChain01Anim:
+For ID `561803`, change the `GroupNames` property to `Terrain_Shading_01`.
+For ID `561805`, change the `GroupNames` property to `Terrain_Lighting_01`.
+
+TravelGear02:
+For ID `561146`, change the `GroupNames` property to `Additive_01`.
+For ID `561144`, change the `GroupNames` property to `Gears_02`.
+
+TravelLever01:
+For ID `561145`, change the `GroupNames` property to `Additive_01`.
+
+New map_text groups:
+
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410824,
+		"Name": "Gears_01"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410825,
+		"Name": "Gears_02"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+```
+
+```
+{
+	"Id": 410826,
+	"Name": "Gears_02"
+},
+{
+	"Id": 410824,
+	"Name": "Gears_01"
+},
+```
+
 #### D_Hub
 
 In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II.
