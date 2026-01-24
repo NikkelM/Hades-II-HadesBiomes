@@ -406,6 +406,15 @@ In this map, we need to change the name for the Bouldy NPC, as it is used in bot
 
 For ID `506340`, change the `Name` property from `NPC_Bouldy_01` to `ModsNikkelMHadesBiomes_NPC_Bouldy_01`.
 
+#### A_PostBoss01
+
+TravelChain01Anim:
+For ID `558956`, change the `GroupNames` property to `Terrain_Lighting_01`.
+For ID `558957`, change the `GroupNames` property to `Terrain_Decor_01`.
+
+TravelChain01:
+Delete ID `556625`.
+
 #### X_PreBoss01
 
 546475
