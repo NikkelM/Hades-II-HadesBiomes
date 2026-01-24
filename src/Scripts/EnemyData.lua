@@ -1327,7 +1327,7 @@ local enemyModifications = {
 		PostActivateEvents = {
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesShadeNakedPostActivate",
-				Args = { ForceMin = 3200, ForceMax = 3300, AngleOffsetMin = -60, AngleOffsetMax = 60, },
+				Args = { ForceMin = 3000, ForceMax = 3300, AngleOffsetMin = -60, AngleOffsetMax = 60, },
 			},
 		},
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
