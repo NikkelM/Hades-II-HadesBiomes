@@ -49,10 +49,8 @@ local roomReplacements = {
 			{
 				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
 			},
-			{
-				PathFalse = { "CurrentRun", "ActiveBounty" },
-			},
 			RequiredMinRoomsSinceShrinePointDoor = 8,
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
 
 		HasHarvestPoint = true,
@@ -754,11 +752,15 @@ local roomModifications = {
 
 	-- OTHER
 	A_Story01 = {
+		LoadModdedVoiceBanks = { "Sisyphus", "ZagreusField" },
+		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
+		GameStateRequirements = {
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
+		},
+
 		ThreadedEvents = {
 			[1] = mod.NilValue
 		},
-		LoadModdedVoiceBanks = { "Sisyphus", "ZagreusField" },
-		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 
 		HasFishingPoint = false,
 		HarvestPointChances = { 0.4, 0.1, },

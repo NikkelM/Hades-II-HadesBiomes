@@ -46,10 +46,8 @@ local roomReplacements = {
 			{
 				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
 			},
-			{
-				PathFalse = { "CurrentRun", "ActiveBounty" },
-			},
 			RequiredMinRoomsSinceShrinePointDoor = 8,
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
 
 		HasHarvestPoint = true,
@@ -542,6 +540,9 @@ local roomModifications = {
 	Y_Story01 = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
+		GameStateRequirements = {
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
+		},
 
 		HarvestPointChances = { 0.5 },
 		ShovelPointChance = 0.4,

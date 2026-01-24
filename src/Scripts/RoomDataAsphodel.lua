@@ -46,10 +46,8 @@ local roomReplacements = {
 			{
 				PathTrue = { "GameState", "ScreensViewed", "Shrine" },
 			},
-			{
-				PathFalse = { "CurrentRun", "ActiveBounty" },
-			},
 			RequiredMinRoomsSinceShrinePointDoor = 8,
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
 
 		HasHarvestPoint = true,
@@ -541,6 +539,7 @@ local roomModifications = {
 		GameStateRequirements = {
 			RequiredSeenRooms = mod.NilValue,
 			RequiredSeenEncounter = "BossHydra",
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
 
 		HarvestPointChances = { 0.4, 0.1, },
