@@ -440,6 +440,11 @@ For ID `430779`, change the `GroupNames` property to `FX_Terrain`.
 TartarusFlame:
 For ID `430780`, change the `GroupNames` property to `Lighting`.
 
+#### A_MiniBoss02
+
+TartarusCapital01:
+For ID `524104`, change the `GroupNames` property to `Terrain_Base`.
+
 #### A_PostBoss01
 
 TravelChain01Anim:
