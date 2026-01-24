@@ -175,6 +175,16 @@ In the end, for each map, there should be a `.thing_bin` file for each map in th
 
 ### Special maps
 
+To print out Obstacle IDs above them, add this to `RoomLogic.lua` below the `StartRoom`/`RestoreUnlockRoomExits` calls:
+
+```lua
+-- Get all Obstacles of a type, and print their ID above them for debugging
+local obstacleIds = GetIdsByType({ Name = "SmokeRisingHardBright" })
+for i, obstacleId in ipairs( obstacleIds ) do
+	thread(InCombatTextArgs, { Text = tostring(obstacleId), TargetId = obstacleId, SkipRise = true, SkipFlash = true, SkipShadow = true, Duration = 9999.0, OffsetY = 0, PreDelay = 00 })
+end
+```
+
 #### RoomOpening
 
 In the `RoomOpening.thing_bin` file (decompiled), there are two `TartarusCubeBrick03` objects, with the comments `FirstDoor` (ID `210004`) and `SecondDoor` (ID `210099`).
@@ -464,6 +474,11 @@ For ID `558957`, change the `GroupNames` property to `Terrain_Decor_01`.
 
 TravelChain01:
 Delete ID `556625`.
+
+#### X_Combat04
+
+SmokeRisingHardBright:
+For ID `547679`, change the `GroupNames` property to `Lighting_01`.
 
 #### X_Reprieve01
 

@@ -32,7 +32,7 @@ Other fixes and improvements:
 - Fixed: Contextual voicelines with story NPCs relating to their respective keepsakes being equipped cannot trigger.
 - Fixed: In rare cases, some ineligible combinations of contextual voicelines can play during NPC or boss encounters.
 - Fixed: Some NPC and boss conversations are not properly prioritized and will not be forced to play before more generic dialogue (maybe now Sisyphus will finally tell you about Bouldy).
-- Fixed: Some props and background animations flicker or are misaligned on some maps.
+- Fixed: Some props and background animations flicker or are misaligned on some maps. If you notice any additional flickering, please create an issue on GitHub with a log attached from while you are in the affected room, and include a screenshot or video of the flickering object.
 - Fixed: When returning to the Crossroads after a cleared Zagreus' Journey run after the story ending, the game plays a Hades voiceline indicating he had killed you.
 - Fixed: When returning from a Chaos Trial, Zagreus' Journey cosmetics and other assets are not loaded until switching rooms.
 - Fixed: When a Thanatos encounter starts, Melinoë can sometimes play a Zagreus voiceline.
