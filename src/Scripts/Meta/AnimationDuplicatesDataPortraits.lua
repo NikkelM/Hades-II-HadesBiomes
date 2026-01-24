@@ -366,7 +366,6 @@ mod.HadesPortraitAnimationAdditions = {
 		EndFrame = 1,
 		StartFrame = 1,
 	},
-	-- TODO: Add to Charon fight voicelines (added through EnemyData already)
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Charon_Default_01",
 		InheritFrom = "Portrait_Base_01",
