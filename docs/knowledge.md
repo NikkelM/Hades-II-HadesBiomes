@@ -432,6 +432,14 @@ ID `430397`
 ID `507735`
 ID `507740`
 
+#### A_Combat15
+
+TartarusBrazier02b:
+For ID `430779`, change the `GroupNames` property to `FX_Terrain`.
+
+TartarusFlame:
+For ID `430780`, change the `GroupNames` property to `Lighting`.
+
 #### A_PostBoss01
 
 TravelChain01Anim:
