@@ -919,6 +919,9 @@ In this map, we need to change the name for the Persephone NPC, as it is used in
 
 For ID `559274`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
 
+SurfaceTerrainSnowLumps02:
+For ID `560916`, change the `GroupNames` property to `Terrain_Decor_03`.
+
 #### Return01
 
 In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
