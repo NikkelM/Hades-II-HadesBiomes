@@ -406,6 +406,32 @@ In this map, we need to change the name for the Bouldy NPC, as it is used in bot
 
 For ID `506340`, change the `Name` property from `NPC_Bouldy_01` to `ModsNikkelMHadesBiomes_NPC_Bouldy_01`.
 
+#### A_Combat07
+
+TartarusGable04:
+For ID `430222`, change the `GroupNames` property to `Bloodriver_01`.
+For ID `430223`, change the `GroupNames` property to `Bloodriver_01`.
+
+TartarusFencePicket02:
+For ID `430221`, change the `GroupNames` property to `Bloodriver_01`.
+For ID `430224`, change the `GroupNames` property to `Bloodriver_01`.
+
+TartarusStatueHand01:
+For ID `507730`, change the `GroupNames` property to `Standing`.
+
+AsphodelLavaSmoke:
+For ID `430402`, change the `GroupNames` property to `TerrainDecor_01`.
+
+TartarusGhostHandsMulti01:
+For ID `507733`, change the `GroupNames` property to `TerrainDecor_02`.
+For ID `507734`, change the `GroupNames` property to `Standing`.
+For ID `507736`, change the `GroupNames` property to `Standing`.
+
+Delete the following IDs:
+ID `430397`
+ID `507735`
+ID `507740`
+
 #### A_PostBoss01
 
 TravelChain01Anim:
