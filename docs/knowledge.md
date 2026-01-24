@@ -406,6 +406,10 @@ In this map, we need to change the name for the Bouldy NPC, as it is used in bot
 
 For ID `506340`, change the `Name` property from `NPC_Bouldy_01` to `ModsNikkelMHadesBiomes_NPC_Bouldy_01`.
 
+TartarusWallBars01:
+For ID `506312`, change the `GroupNames` property to `Additive_01`.
+For ID `506314`, change the `GroupNames` property to `Foreground_01`.
+
 #### A_Combat07
 
 TartarusGable04:
