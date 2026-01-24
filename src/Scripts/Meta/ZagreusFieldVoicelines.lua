@@ -875,7 +875,7 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_4652 = true,
 	ZagreusField_4653 = true,
 
-	-- PresetEventargs
+	-- PresetEventArgs
 	ZagreusField_3600 = true,
 	ZagreusField_3601 = true,
 	ZagreusField_3612 = true,
@@ -1040,5 +1040,11 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_02479 = true, -- ZagreusHome_2479
 	ZagreusField_02480 = true, -- ZagreusHome_2480
 	ZagreusField_02481 = true, -- ZagreusHome_2481
+	-- #endregion
+
+	-- #region LootData/Boon pickup/InteractTextLineSets
+	-- #region Chaos/TrialUpgrade
+	ZagreusField_3804 = true,
+	-- #endregion
 	-- #endregion
 }

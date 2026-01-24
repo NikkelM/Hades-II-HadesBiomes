@@ -13,7 +13,7 @@ mod.AudioFileMappings = {
 -- Some speaker names do not work (e.g. MegaeraHome)!
 mod.VoiceoverFileNames = {
 	Alecto = "Alecto",
-	-- Charon = "Charon", -- Charon already exists and was moved into Megaera_1xxxx
+	Dusa = "Dusa", -- Contains voicelines from H1 Gods, used in LootData text lines
 	Eurydice = "Eurydice",
 	HadesField = "HadesField",
 	Megaera = "Megaera",

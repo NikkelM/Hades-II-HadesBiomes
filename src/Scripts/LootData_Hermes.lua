@@ -72,6 +72,6 @@ local newInteractTextLines = {
 }
 mod.AddNarrativeDataEntries(
 	newInteractTextLines, "HermesUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ OnLoadVoiceBank = "Hermes", LoadVoiceBank = "Dusa" }, { Hermes_ = "Dusa_0" },
+	{ Hermes = { "Dusa" } }, { Hermes_ = "Dusa_0" },
 	{ Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01" }
 )

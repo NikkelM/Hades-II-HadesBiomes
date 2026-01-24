@@ -4,12 +4,12 @@
 ---@param narrativeDataKey string Key in `game.NarrativeData` and `game.LootData`/`game.EnemyData`
 ---@param textLineType string Field name on LootData/EnemyData to store sets (e.g. "InteractTextLineSets")
 ---@param textLinePriorityType string Field name on NarrativeData priority table (e.g. "InteractTextLinePriorities")
----@param voiceBankMapping { OnLoadVoiceBank: string, LoadVoiceBank: string } Voicebank mapping to load modded cues with vanilla loads
+---@param voiceBankMappings table<string, table<string>> Voicebank mapping to load modded voicebanks with vanilla loads
 ---@param cueMappings table<string, string> Cue prefix mapping, applied to `/VO/<Find>` -> `/VO/<ReplaceWith>`
 ---@param portraitMappings table<string, string> Mappings of Cue prefixes to Portrait names
-function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineType, textLinePriorityType, voiceBankMapping,
-																		 cueMappings, portraitMappings)
-	if narrativeDataKey == nil or textLineType == nil or textLinePriorityType == nil or voiceBankMapping == nil or cueMappings == nil or portraitMappings == nil then
+function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineType, textLinePriorityType,
+																		 voiceBankMappings, cueMappings, portraitMappings)
+	if narrativeDataKey == nil or textLineType == nil or textLinePriorityType == nil or voiceBankMappings == nil or cueMappings == nil or portraitMappings == nil then
 		mod.DebugPrint("A required parameter is missing!", 1)
 		return
 	end
@@ -26,11 +26,14 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		return
 	end
 
-	-- To load the new required voicebank whenever this loot's voicebank is loaded
-	mod.LootVoiceBankMappings[voiceBankMapping.OnLoadVoiceBank] = mod.LootVoiceBankMappings
-			[voiceBankMapping.OnLoadVoiceBank] or {}
-	if not game.Contains(mod.LootVoiceBankMappings[voiceBankMapping.OnLoadVoiceBank], voiceBankMapping.LoadVoiceBank) then
-		table.insert(mod.LootVoiceBankMappings[voiceBankMapping.OnLoadVoiceBank], voiceBankMapping.LoadVoiceBank)
+	-- To load the new required voicebanks whenever this loot's voicebank is loaded
+	for vanillaVoiceBank, mappedVoiceBanks in pairs(voiceBankMappings) do
+		mod.LootVoiceBankMappings[vanillaVoiceBank] = mod.LootVoiceBankMappings[vanillaVoiceBank] or {}
+		for _, mappedVoiceBank in ipairs(mappedVoiceBanks) do
+			if not game.Contains(mod.LootVoiceBankMappings[vanillaVoiceBank], mappedVoiceBank) then
+				table.insert(mod.LootVoiceBankMappings[vanillaVoiceBank], mappedVoiceBank)
+			end
+		end
 	end
 
 	-- #region Helper functions
@@ -109,6 +112,10 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- #region Required modifications to all text lines
 		-- Mark as modded textline
 		data.ModsNikkelMHadesBiomesIsModdedTextLine = true
+		if narrativeDataKey == "TrialUpgrade" then
+			-- This will prevent using the Chaos effects on boon pickup, which would double up
+			data.ModsNikkelMHadesBiomesIsModdedTrialUpgradeTextLine = true
+		end
 
 		data.GameStateRequirements = data.GameStateRequirements or {}
 		-- All modded text lines can only appear in modded runs
@@ -122,6 +129,11 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 			for cuePrefix, portraitName in pairs(portraitMappings) do
 				if line.Cue:find("^/VO/" .. cuePrefix) then
 					line.Portrait = portraitName
+				elseif line.Portrait then
+					-- Update Zagreus portrait references
+					if line.Portrait:find("^Portrait_Zag_") then
+						line.Portrait = line.Portrait:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
+					end
 				end
 			end
 			-- Translate Cues to reference the new VoiceBank(s)
