@@ -491,6 +491,65 @@ For ID `544998`, change the `GroupNames` property to `Foreground_01`.
 AtmosphereShadowRound01:
 For ID `545015`, change the `GroupNames` property to `Terrain_Decor_03`.
 
+#### X_Wrapping01
+
+AsphodelGhost01:
+For ID `514330`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514392`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514395`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514391`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514364`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514350`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514353`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514354`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514367`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514433`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514436`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514437`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514342`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514401`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514407`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514335`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514336`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514339`, change the `GroupNames` property to `FX_Terrain`.
+For ID `514424`, change the `GroupNames` property to `Terrain_Overlay_01`.
+For ID `514415`, change the `GroupNames` property to `Terrain_Overlay_01`.
+For ID `514322`, change the `GroupNames` property to `Terrain_Overlay_01`.
+For ID `514443`, change the `GroupNames` property to `Terrain_Overlay_01`.
+For ID `514319`, change the `GroupNames` property to `Terrain_Overlay_01`.
+For ID `514323`, change the `GroupNames` property to `Terrain_Overlay_01`.
+For ID `514318`, change the `GroupNames` property to `Terrain_Overlay_01`.
+For ID `514337`, change the `GroupNames` property to `Terrain_Overlay_01`.
+For ID `514341`, change the `GroupNames` property to `Terrain_Overlay_01`.
+For ID `514420`, change the `GroupNames` property to `Terrain_Overlay_01`.
+For ID `514324`, change the `GroupNames` property to `Terrain_Overlay_01`.
+For ID `514332`, change the `GroupNames` property to `Terrain_Lighting_02`.
+For ID `514333`, change the `GroupNames` property to `Terrain_Lighting_02`.
+For ID `514334`, change the `GroupNames` property to `Terrain_Lighting_02`.
+For ID `514421`, change the `GroupNames` property to `Terrain_Lighting_02`.
+For ID `514338`, change the `GroupNames` property to `Terrain_Lighting_02`.
+
+AsphodelTerrain05:
+For ID `511643`, change the `GroupNames` property to `Terrain_02`.
+
+AsphodelPillar03:
+For ID `514059`, change the `GroupNames` property to `Terrain_Lighting_02`.
+
+AsphodelLavaJelly01:
+For ID `511199`, change the `GroupNames` property to `FX_Terrain`.
+For ID `511197`, change the `GroupNames` property to `Lighting_01`.
+
+AsphodelPillar05a:
+For all IDs, change the `GroupNames` property to `Foreground_01` (instead of `Standing`).
+
+AsphodelGable01b:
+For ID `545822`, change the `GroupNames` property to `FX_Terrain`.
+
+AsphodelTombstone01b:
+For ID `514635`, change the `GroupNames` property to `FX_Terrain`.
+For ID `545712`, change the `GroupNames` property to `FX_Terrain`.
+For ID `545714`, change the `GroupNames` property to `FX_Terrain`.
+
 #### X_Reprieve01
 
 TartarusBrazier02b:

@@ -27,6 +27,7 @@ mod.ApplyNestedSjsonModifications(hadesAsphodelObstacleTable.Obstacles, obstacle
 
 -- Modifications to existing obstacles in Hades II
 local hadesTwoObstacleModifications = {
+	AsphodelStalagmite05 = { Life = { DieOnCollision = false, } },
 	-- Destructible pillars that crumble when hit
 	AsphodelPillar06 = { InheritFrom = "1_BaseVulnerableObstacle", },
 	-- Obstacles that shouldn't be passable
