@@ -125,6 +125,7 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 
 		for _, line in ipairs(data) do
 			line.UseRoomContextArt = true
+
 			-- Update portraits, must be done before the Cues are modified
 			for cuePrefix, portraitName in pairs(portraitMappings) do
 				if line.Cue:find("^/VO/" .. cuePrefix) then
@@ -135,16 +136,18 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 						line.Portrait = line.Portrait:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
 					end
 				end
-				-- Fix Prev/PreviousFormat
-				if line.Text then
-					line.Text = string.gsub(line.Text, "{#PreviousFormat}", "{#Prev}")
-				end
 			end
+
 			-- Translate Cues to reference the new VoiceBank(s)
 			for cuePrefix, cueMapping in pairs(cueMappings) do
 				if line.Cue:find("^/VO/" .. cuePrefix) then
 					line.Cue = line.Cue:gsub("^/VO/" .. cuePrefix, "/VO/" .. cueMapping)
 				end
+			end
+
+			-- Fix Prev/PreviousFormat
+			if line.Text then
+				line.Text = string.gsub(line.Text, "{#PreviousFormat}", "{#Prev}")
 			end
 		end
 		-- #endregion

@@ -219,6 +219,7 @@ mod.ElysiumRoomNameMappings = {
 mod.HadesHelpTextFileNames = {
 	"_EnemyData",
 	"_EncounterData",
+	"_LootData",
 	"_RoomData",
 	"_RoomDataAsphodel",
 	"_RoomDataElysium",
@@ -235,6 +236,9 @@ mod.HadesHelpTextFileSkipMap = {
 		en = true,
 	},
 	_EncounterData = {
+		en = true,
+	},
+	_LootData = {
 		en = true,
 	},
 	_RoomData = {

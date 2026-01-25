@@ -155,6 +155,11 @@ local function copyHadesHelpTexts()
 						if entry.Id then
 							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
 							entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
+							entry.Id = entry.Id:gsub("Persephone_", "Megaera_2")
+							entry.Id = entry.Id:gsub("ZagreusHome_", "ZagreusField_0")
+							-- LootData
+							entry.Id = entry.Id:gsub("Hermes_", "Dusa_0")
+							entry.Id = entry.Id:gsub("Chaos_", "Dusa_1")
 						end
 						if entry.Description then
 							entry.Description = string.gsub(entry.Description, "{#PreviousFormat}", "{#Prev}")
