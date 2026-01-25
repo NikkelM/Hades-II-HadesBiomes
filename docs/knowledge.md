@@ -175,7 +175,7 @@ In the end, for each map, there should be a `.thing_bin` file for each map in th
 
 ### Special maps
 
-To print out Obstacle IDs above them, add this to `RoomLogic.lua` below the `StartRoom`/`RestoreUnlockRoomExits` calls:
+To print out Obstacle IDs above them, add this to `RoomLogic.lua` above the `StartRoom`/`RestoreUnlockRoomExits` calls:
 
 ```lua
 -- Get all Obstacles of a type, and print their ID above them for debugging
@@ -855,6 +855,8 @@ New map_text groups:
 TravelChain01Anim:
 For ID `558959`, change the `GroupNames` property to `Terrain_Lighting_01`.
 For ID `558958`, change the `GroupNames` property to `Terrain_Decor_01`.
+For ID `558976`, change the `GroupNames` property to `Terrain_Lighting_01`.
+For ID `558975`, change the `GroupNames` property to `Terrain_Decor_01`.
 
 TravelChain01:
 Delete ID `558978`.
