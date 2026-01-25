@@ -480,6 +480,11 @@ Delete ID `556625`.
 SmokeRisingHardBright:
 For ID `547679`, change the `GroupNames` property to `Lighting_01`.
 
+#### X_Combat08
+
+AsphodelLavaSmoke:
+For ID `501154`, change the `GroupNames` property to `Terrain_Overlay_01`.
+
 #### X_Combat21
 
 SmokeRisingHardBright:
