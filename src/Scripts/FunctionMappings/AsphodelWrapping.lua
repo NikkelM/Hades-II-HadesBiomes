@@ -103,6 +103,8 @@ end
 function mod.WrappingPostCombatReloadPresentation(eventSource)
 	local encounter = eventSource.Encounter
 	Destroy({ Ids = GetIds({ Name = encounter.WrappingData.StartingGroupName }) })
+	-- Custom: Need to teleport the player out of the boat sicne the exit is somehow blocked
+	Teleport({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = 515359, OffsetY = 20, OffsetX = -250 })
 end
 
 function mod.WrapObstacle(id, obstacleWrapData, resetTargetId, wrapCount)

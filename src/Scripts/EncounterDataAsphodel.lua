@@ -111,11 +111,13 @@ local encounterModifications = {
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,
 		NextRoomResumeMusic = true,
+		SkipExitReadyCheckpoint = true,
 	},
 	WrappingAsphodel2 = {
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,
 		NextRoomResumeMusic = true,
+		SkipExitReadyCheckpoint = true,
 	},
 
 	-- BOSSES

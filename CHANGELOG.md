@@ -20,6 +20,7 @@ Other fixes and improvements:
 - Balancing: Slightly increased Hades' maximum health if the Vow of Rivals is at full strength.
 - Fixed: Tisiphone's whip lash attack does not stun the player.
 - Fixed: Alecto's "enraged" color grading effect is not removed after defeating her.
+- Fixed: If reloading a save after completing the Barge of Death encounter, the room cannot be exited. You can no longer quit the room without exiting after encounter to prevent this.
 - Fixed: Killing a Doomstone in the encounter with Hades does not destroy it's fragments.
 - Fixed: Hades' dialogue that is supposed to play when first defeating him may be overridden by the Vow of Rivals dialogue and will never play again, which can prevent some minor progression and consistency issues for the end of the first cleared run. *It will now always play first, and be retroactively set for saves that have already defeated Hades.*
 - Fixed: Exiting the final boss fight before the story ending will always play the same incantation voiceline by Melinoë, instead of choosing a random one from the full set.
