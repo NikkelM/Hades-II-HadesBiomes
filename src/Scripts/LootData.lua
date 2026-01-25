@@ -135,6 +135,10 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 						line.Portrait = line.Portrait:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
 					end
 				end
+				-- Fix Prev/PreviousFormat
+				if line.Text then
+					line.Text = string.gsub(line.Text, "{#PreviousFormat}", "{#Prev}")
+				end
 			end
 			-- Translate Cues to reference the new VoiceBank(s)
 			for cuePrefix, cueMapping in pairs(cueMappings) do
