@@ -480,6 +480,17 @@ Delete ID `556625`.
 SmokeRisingHardBright:
 For ID `547679`, change the `GroupNames` property to `Lighting_01`.
 
+#### X_Combat21
+
+SmokeRisingHardBright:
+Delete ID `547914`.
+
+AsphodelAshes01:
+For ID `544998`, change the `GroupNames` property to `Foreground_01`.
+
+AtmosphereShadowRound01:
+For ID `545015`, change the `GroupNames` property to `Terrain_Decor_03`.
+
 #### X_Reprieve01
 
 TartarusBrazier02b:
