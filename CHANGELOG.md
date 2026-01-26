@@ -1,8 +1,14 @@
 # Changelog
 
-## v0.4.0
+## v0.4.1
 
 <!--Releasenotes start-->
+### Patch Highlights:
+- Fixed: If there are more than 10 vanilla runs between two Zagreus' Journey runs, the game may crash in certain circumstances.
+<!--Releasenotes end-->
+
+## v0.4.0
+
 ### Patch Highlights:
 - You can now **challenge Lord Charon** to a "friendly duel" by "borrowing" some his his Gold! Defeat your favourite shopkeeper for a special discount on all his wares for the duration of your current run.
 - Discover and complete over **25 new Minor Prophecies** at the Fated List, with more coming in the future.
@@ -48,7 +54,6 @@ Other fixes and improvements:
 - Fixed: If a Chaos Trial includes a biome from Zagreus' Journey, the run is always marked as a Zagreus' Journey run in the Run History, instead of a Chaos Trial run.
 - Fixed: Boon icons for Sisyphus, Eurydice and Patroclus are missing when viewing the Codex in the Crossroads.
 - Fixed: Shop icons for some cosmetics added by the mod are very noisy/grainy and hard to decipher.
-<!--Releasenotes end-->
 
 ## v0.3.0
 

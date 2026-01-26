@@ -282,7 +282,10 @@ end
 function mod.GetPreviousModdedRun()
 	for i = #game.GameState.RunHistory, 1, -1 do
 		local run = game.GameState.RunHistory[i]
-		if mod.WasModdedRun(run) then
+		-- We use BiomesReached for compatibility - before 0.4.1, modded runs would get stripped too far down for requirement checks if they were not within the last 10 runs
+		-- BiomesReached will only be true if the rest of the required tables are present
+		-- With the new save logic from 0.4.1 onwards, this ensures we only return a previous run if there is one with the required data present
+		if mod.WasModdedRun(run) and run.BiomesReached ~= nil then
 			return run
 		end
 	end
