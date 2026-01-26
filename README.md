@@ -1,5 +1,5 @@
 <!-- # Zagreus' Journey -->
-<img src="https://github.com/user-attachments/assets/2a72faa9-559f-4b73-8e6e-8d5e31c4c76c" alt="Zagreus' Journey">
+![Zagreus' Journey](./img/Readme/ZagreusJourneyTartarus.png)
 
 _Zagreus' Journey_ is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
 Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past.
@@ -10,10 +10,10 @@ Take a look at what Haelian and Boated think of the mod:
 - [So, someone put Hades 1 in Hades 2 and it's amazing. | Haelian](https://www.youtube.com/watch?v=SIVrJya47YQ)
 - [They put Hades 1 in Hades 2 and it's PERFECT | Boated](https://www.youtube.com/watch?v=HYf_z8IV4LE)
 
-<img src="https://github.com/user-attachments/assets/87d52379-d73a-4040-afac-d4a40e5f7e89" alt="Zagreus' Journey">
+![Zagreus' Journey](./img/Key%20Art/Readme/Melinoe_Asphodel_Capsule_Glowing_Text.png)
 <div style="display: flex; justify-content: space-between;">
-  <img src="https://github.com/user-attachments/assets/3272b242-f706-4bbe-aa14-782cb80af2e4" alt="Face your Father" width="49.7%">
-  <img src="https://github.com/user-attachments/assets/52235073-d1ad-473c-9e37-fcb538d80f1f" alt="Battle out of Tartarus" width="49.7%">
+  <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/face_your_father.jpg" alt="Face your Father" width="49.7%">
+  <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/battle_out_of_tartarus.jpg" alt="Battle out of Tartarus" width="49.7%">
 </div>
 
 <br>
@@ -26,7 +26,7 @@ It is highly recommended that you complete the main story of Hades before playin
 > You can find all of the latest changes in the [Changelog](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/changelog/) on the mod page.
 
 <!-- ## Features -->
-<img src="https://github.com/user-attachments/assets/3d458e61-25c5-41d5-b312-13d2d8106561" alt="Features">
+![Features](./img/Readme/FeaturesStyx.png)
 
 - Play through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
 - Discover and overcome the challenge of fighting all of the original game's enemies and bosses using Melinoë's unique abilities and weapons.
@@ -63,7 +63,7 @@ Some other mods integrate with _Zagreus' Journey_ to provide additional features
 > Are you developing a mod that integrates with _Zagreus' Journey_, or would like to add such an integration? Let me know on [Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
 <!-- ## Installation -->
-<img src="https://github.com/user-attachments/assets/6daed6fd-84ef-43de-a7e8-6ff02ee5cad5" alt="Installation">
+![Installation](./img/Readme/InstallationAsphodel.png)
 
 > Installing on Steam Deck? Please also refer to the [Steam Deck Installation Guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/steam-deck) on the Hades II Mod wiki.
 
@@ -99,7 +99,7 @@ If you would like more information or experience any issues, please refer to the
 Only uninstall the mod while in the Crossroads to prevent issues.
 
 <!-- ## Configuration -->
-<img src="https://github.com/user-attachments/assets/52bd67a2-540a-4498-b864-d4eeb9a778c8" alt="Configuration">
+![Configuration](./img/Readme/ConfigurationElysium.png)
 
 Note that the configuration file is only created after the first game start with the mod enabled in your mod manager.
 If you need to make any changes (such as to the `hadesGameFolder` setting), you will need to start the game once first to generate the config file.
@@ -116,7 +116,7 @@ Please directly leave bug reports as a [new issue on the project's GitHub reposi
 If you do not have a GitHub account, you can also join the [Hades II Modding Discord server](https://discord.gg/KuMbyrN) and post in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
 <!-- ## Contributors -->
-<img src="https://github.com/user-attachments/assets/c5e11388-78c2-49a7-bbc4-3176e34a1976" alt="Contributors">
+![Contributors](./img/Readme/ContributorsErebus.png)
 
 - NikkelM ([GitHub](https://github.com/NikkelM), @NikkelM on [Discord](https://discord.gg/KuMbyrN)), Mod Creator
 
@@ -142,32 +142,32 @@ For Cosmetics, texts are located in [src/Scripts/CosmeticsData.lua](https://gith
 After translating your chosen texts, open a Pull Request with your changes on GitHub, and they will be included in the next release!
 
 <!-- ## Image Gallery -->
-<img src="https://github.com/user-attachments/assets/d1c023b9-b9c5-4784-9f47-d55e2482baa5" alt="Image Gallery">
+![Image Gallery](./img/Readme/ImageGallerySurface.png)
 
-<img src="https://github.com/user-attachments/assets/3e999e36-4031-43e8-8f7b-87f4763429e1" alt="Meet your brother's old friends">
+![Meet your brother's old friends](./img/screenshots/meet_old_friends.jpg)
 
 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-  <img src="https://github.com/user-attachments/assets/72407431-8737-41d6-b417-d5890494a501" alt="Withstand Asphodel's Heat" width="49.7%">
-  <img src="https://github.com/user-attachments/assets/190eb2e5-c148-4c4c-9735-c96254016a92" alt="Unleash your abilities on new enemies" width="49.7%">
+  <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/withstand_asphodel.jpg" alt="Withstand Asphodel's Heat" width="49.7%">
+  <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/unleash_your_power.jpg" alt="Unleash your abilities on new enemies" width="49.7%">
 </div>
 
-<img src="https://github.com/user-attachments/assets/b49ab8cb-848a-4fde-bb9b-1dcaff037613" alt="Become Elysium's true Champion">
+![Become Elysium's true Champion](./img/screenshots/become_elysium_champion.jpg)
 
 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-  <img src="https://github.com/user-attachments/assets/e5e33c4d-af6d-4086-ad54-897d07dbf36e" alt="Be deadlier than Death himself" width="49.7%">
-  <img src="https://github.com/user-attachments/assets/f94e087a-450a-4f62-bd11-af6b998477b9" alt="Send Exalted Shades back to where they belong" width="49.7%">
+  <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/challenge_death_himself.jpg" alt="Be deadlier than Death himself" width="49.7%">
+  <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/defeat_exalted_shades.jpg" alt="Send Exalted Shades back to where they belong" width="49.7%">
 </div>
 
 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-  <img src="https://github.com/user-attachments/assets/006246aa-22f4-4412-8b66-d480541413c7" alt="Choose your Path" width="49.7%">
-  <img src="https://github.com/user-attachments/assets/ef5f9804-40ea-462e-8b02-a42a0d896769" alt="Don't get poisoned" width="49.7%">
+  <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/choose_your_path.jpg" alt="Choose your Path" width="49.7%">
+  <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/dont_get_poisoned.jpg" alt="Don't get poisoned" width="49.7%">
 </div>
 
-<img src="https://github.com/user-attachments/assets/33e7c87d-e4c8-452f-87d8-5d809e022570" alt="Defy Death">
+![Defy Death](./img/screenshots/defy_death.jpg)
 
 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-  <img src="https://github.com/user-attachments/assets/21dc3117-a2f6-4910-8119-20082537f312" alt="Descend into Tartarus" width="49.7%">
-  <img src="https://github.com/user-attachments/assets/ef057f60-8723-4fb0-bcb0-ae754297d501" alt="Escape the Underworld" width="49.7%">
+  <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/descend_into_tartarus.jpg" alt="Descend into Tartarus" width="49.7%">
+  <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/escape_the_underworld.jpg" alt="Escape the Underworld" width="49.7%">
 </div>
 
 <br>

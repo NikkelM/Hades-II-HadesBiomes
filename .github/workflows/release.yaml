@@ -7,6 +7,10 @@ on:
       tag:
         description: "Tag / Version number"
         required: true
+      image-folder-name:
+        description: "Image folder name (for replacing image paths embedded in the README)"
+        required: false
+        default: "img"
       is-dry-run:
         description: "Dry-run (do not publish, only test build)"
         type: boolean
@@ -45,6 +49,10 @@ jobs:
         run: |
           sed -i 's/versionNumber = ".*"/versionNumber = "${{ inputs.tag }}"/' ${{ env.thunderstore-config }}
 
+      - name: Replace relative image paths with absolute paths in README
+        run: |
+          sed -i 's#](\(\./\)\?${{ inputs.image-folder-name }}/#](https://github.com/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}/raw/${{ github.event.repository.default_branch }}/${{ inputs.image-folder-name }}/#g' README.md
+
       - name: Install Thunderstore CLI
         run: dotnet tool install -g tcli
 
@@ -82,7 +90,7 @@ jobs:
       - name: Create Release notes
         run: |
           echo "## What's Changed
-          
+
           " > RELEASE_NOTES.md
           sed -n '/<!--Releasenotes start-->/,/<!--Releasenotes end-->/p' CHANGELOG.md >> RELEASE_NOTES.md
           echo "
