@@ -1,11 +1,16 @@
 # Changelog
 
-## v0.4.1
+## v0.4.2
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- Fixed: If there are more than 10 vanilla runs between two Zagreus' Journey runs, the game may crash in certain circumstances.
+- Fixed: Certain dialogue eligibility checks will crash the game.
 <!--Releasenotes end-->
+
+## v0.4.1
+
+### Patch Highlights:
+- Fixed: If there are more than 10 vanilla runs between two Zagreus' Journey runs, the game may crash in certain circumstances.
 
 ## v0.4.0
 

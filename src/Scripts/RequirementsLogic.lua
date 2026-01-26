@@ -2782,7 +2782,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		for _, textLines in pairs(requirements.MinRunsSinceAnyTextLines.TextLines) do
 			local runsSinceOccurred = 0
 			for runIndex = #game.GameState.RunHistory + 1, 1, -1 do
-				local previousRun = game.GameState.RunHistory[runIndex]
+				local previousRun = game.GameState.RunHistory[runIndex] or game.CurrentRun
 				if previousRun.TextLinesRecord ~= nil and previousRun.TextLinesRecord[textLines] then
 					if runsSinceOccurred < requirements.MinRunsSinceAnyTextLines.Count then
 						return false
@@ -2805,7 +2805,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			local runsSinceOccurred = 0
 			local found = false
 			for runIndex = #game.GameState.RunHistory + 1, 1, -1 do
-				local previousRun = game.GameState.RunHistory[runIndex]
+				local previousRun = game.GameState.RunHistory[runIndex] or game.CurrentRun
 				if previousRun.TextLinesRecord ~= nil and previousRun.TextLinesRecord[textLines] then
 					found = true
 					if runsSinceOccurred > requirements.MaxRunsSinceAnyTextLines.Count then
