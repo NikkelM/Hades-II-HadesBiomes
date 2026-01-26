@@ -1,5 +1,7 @@
 <!-- # Zagreus' Journey -->
-<img src="https://github.com/user-attachments/assets/2a72faa9-559f-4b73-8e6e-8d5e31c4c76c" alt="Zagreus' Journey">
+<!-- <img src="https://github.com/user-attachments/assets/2a72faa9-559f-4b73-8e6e-8d5e31c4c76c" alt="Zagreus' Journey"> -->
+
+![Zagreus' Journey](./img/Readme/ZagreusJourneyTartarus.png)
 
 _Zagreus' Journey_ is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
 Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past.

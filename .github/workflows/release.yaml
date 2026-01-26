@@ -15,6 +15,10 @@ on:
       #   description: "Release to GitHub only (do not upload to Thunderstore). Do not tick Dry-run for this to work"
       #   type: boolean
       #   default: true
+      img-folder-name:
+        description: "Image folder name (for replacing images embedded in the README)"
+        required: false
+        default: "img"
 
 permissions:
   contents: write # required for pushing to the repository and creating releases
@@ -44,6 +48,10 @@ jobs:
       - name: Rotate version in Thunderstore CLI config
         run: |
           sed -i 's/versionNumber = ".*"/versionNumber = "${{ inputs.tag }}"/' ${{ env.thunderstore-config }}
+
+      - name: Ensure image links don't break in Thunderstore
+        run: |
+          sed -i 's#](\(\./\)\?${{ inputs.img-folder-name }}/#](https://github.com/${{ github.event.repository.owner }}/${{ github.event.repository.name }}/raw/${{ github.event.repository.master_branch }}/${{ inputs.img-folder-name }}/#g' README.md
 
       - name: Install Thunderstore CLI
         run: dotnet tool install -g tcli
@@ -82,7 +90,7 @@ jobs:
       - name: Create Release notes
         run: |
           echo "## What's Changed
-          
+
           " > RELEASE_NOTES.md
           sed -n '/<!--Releasenotes start-->/,/<!--Releasenotes end-->/p' CHANGELOG.md >> RELEASE_NOTES.md
           echo "
