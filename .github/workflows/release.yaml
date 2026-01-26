@@ -7,6 +7,10 @@ on:
       tag:
         description: "Tag / Version number"
         required: true
+      img-folder-name:
+        description: "Image folder name (for replacing image paths embedded in the README)"
+        required: false
+        default: "img"
       is-dry-run:
         description: "Dry-run (do not publish, only test build)"
         type: boolean
@@ -15,10 +19,6 @@ on:
       #   description: "Release to GitHub only (do not upload to Thunderstore). Do not tick Dry-run for this to work"
       #   type: boolean
       #   default: true
-      img-folder-name:
-        description: "Image folder name (for replacing image paths embedded in the README)"
-        required: false
-        default: "img"
 
 permissions:
   contents: write # required for pushing to the repository and creating releases
