@@ -8,7 +8,7 @@
 - Discover and complete over **25 new Minor Prophecies** at the Fated List, with more coming in the future.
 - Look out for some new voicelines from Hermes and Primordial Chaos, they might have tasks for you! Even more voicelines are coming in future updates.
 - Added **8** new cosmetics to discover and unlock in the Crossroads, created by @burn.
-- You can now unlock **new music tracks** from the first game with the Music Maker in the Crossroads, through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (installed automatically with this mod). Perform the "Recovery of Orpheus' Scriptures" incantation to unlock the new music.
+- You can now unlock **29 new music tracks** from the first game with the Music Maker in the Crossroads, through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (installed automatically with this mod). Perform the "Recovery of Orpheus' Scriptures" incantation to unlock the new music.
 
 Other fixes and improvements:
 - Charon's shops now play the original music from the first game during Zagreus' Journey runs.
@@ -21,7 +21,7 @@ Other fixes and improvements:
 - Fixed: Tisiphone's whip lash attack does not stun the player.
 - Fixed: Alecto's "enraged" color grading effect is not removed after defeating her.
 - Fixed: If reloading a save after completing the Barge of Death encounter, the room cannot be exited. You can no longer quit the room without exiting after encounter to prevent this.
-- Fixed: Killing a Doomstone in the encounter with Hades does not destroy it's fragments.
+- Fixed: Killing a Doomstone in the encounter with Hades does not destroy its fragments.
 - Fixed: Hades' dialogue that is supposed to play when first defeating him may be overridden by the Vow of Rivals dialogue and will never play again, which can prevent some minor progression and consistency issues for the end of the first cleared run. *It will now always play first, and be retroactively set for saves that have already defeated Hades.*
 - Fixed: Exiting the final boss fight before the story ending will always play the same incantation voiceline by Melinoë, instead of choosing a random one from the full set.
 - Fixed: The Codex and Inventory cannot be opened in the opening room in Tartarus until after defeating the enemies.
