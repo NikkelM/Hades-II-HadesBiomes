@@ -282,7 +282,10 @@ end
 function mod.GetPreviousModdedRun()
 	for i = #game.GameState.RunHistory, 1, -1 do
 		local run = game.GameState.RunHistory[i]
-		if mod.WasModdedRun(run) then
+		-- We use BiomesReached for compatibility - before 0.4.1, modded runs would get stripped too far down for requirement checks if they were not within the last 10 runs
+		-- BiomesReached will only be true if the rest of the required tables are present
+		-- With the new save logic from 0.4.1 onwards, this ensures we only return a previous run if there is one with the required data present
+		if mod.WasModdedRun(run) and run.BiomesReached ~= nil then
 			return run
 		end
 	end
@@ -727,7 +730,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		for i = #game.GameState.RunHistory, 1, -1 do
 			local run = game.GameState.RunHistory[i]
 			-- We only count modded runs, and skip all others to retain integrity of the streak
-			if mod.WasModdedRun(run) then
+			if mod.WasModdedRun(run) and run.BiomesReached ~= nil then
 				if mod.HasSeenRoomInRun(run, requirements.ConsecutiveDeathsInRoom.Name) then
 					-- For the encoded EndingRoomName for uninstall compatibility
 					if not run.Cleared and run.EndingRoomName == nil and run.VictoryMessage ~= nil then
@@ -772,7 +775,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		for i = #game.GameState.RunHistory, 1, -1 do
 			local run = game.GameState.RunHistory[i]
 			-- We only count modded runs, and skip all others to retain integrity of the streak
-			if mod.WasModdedRun(run) then
+			if mod.WasModdedRun(run) and run.BiomesReached ~= nil then
 				if mod.HasSeenRoomInRun(run, requirements.ConsecutiveClearsOfRoom.Name) then
 					-- For the encoded EndingRoomName for uninstall compatibility
 					if not run.Cleared and run.EndingRoomName == nil and run.VictoryMessage ~= nil then
@@ -2437,7 +2440,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredMinConsecutiveClears ~= nil then
 		local consecutiveModdedClears = 0
 		for k, run in game.GameState.RunHistory do
-			if mod.WasModdedRun(run) then
+			if mod.WasModdedRun(run) and run.BiomesReached ~= nil then
 				if run.Cleared then
 					consecutiveModdedClears = consecutiveModdedClears + 1
 				else
@@ -2458,7 +2461,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			return false
 		end
 		-- for k, run in game.GameState.RunHistory do
-		-- 	if mod.WasModdedRun(run) then
+		-- 	if mod.WasModdedRun(run) and run.BiomesReached ~= nil then
 		-- 		if run.Cleared then
 		-- 			consecutiveModdedClears = consecutiveModdedClears + 1
 		-- 		else
@@ -2746,7 +2749,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 					return false
 				end
 			end
-			if mod.WasModdedRun(prevRun) then
+			if mod.WasModdedRun(prevRun) and prevRun.BiomesReached ~= nil then
 				runsSinceOccurred = runsSinceOccurred + 1
 			end
 		end
@@ -2766,7 +2769,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 					return false
 				end
 			end
-			if mod.WasModdedRun(prevRun) then
+			if mod.WasModdedRun(prevRun) and prevRun.BiomesReached ~= nil then
 				runsSinceOccurred = runsSinceOccurred + 1
 			end
 		end
@@ -2776,17 +2779,17 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.MinRunsSinceAnyTextLines ~= nil then
-		for k, textLines in pairs(requirements.MinRunsSinceAnyTextLines.TextLines) do
+		for _, textLines in pairs(requirements.MinRunsSinceAnyTextLines.TextLines) do
 			local runsSinceOccurred = 0
 			for runIndex = #game.GameState.RunHistory + 1, 1, -1 do
-				local prevRun = game.PrevRun
-				if prevRun.TextLinesRecord ~= nil and prevRun.TextLinesRecord[textLines] then
+				local previousRun = game.GameState.RunHistory[runIndex]
+				if previousRun.TextLinesRecord ~= nil and previousRun.TextLinesRecord[textLines] then
 					if runsSinceOccurred < requirements.MinRunsSinceAnyTextLines.Count then
-						DebugPrint({ Text = "textLines = " .. textLines .. ", " .. "runsSinceOccurred = " .. runsSinceOccurred })
 						return false
 					end
+					break
 				end
-				if mod.WasModdedRun(prevRun) then
+				if mod.WasModdedRun(previousRun) and previousRun.BiomesReached ~= nil then
 					runsSinceOccurred = runsSinceOccurred + 1
 					if runsSinceOccurred >= requirements.MinRunsSinceAnyTextLines.Count then
 						-- Already exceeded safely
@@ -2796,21 +2799,21 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			end
 		end
 	end
+
 	if requirements.MaxRunsSinceAnyTextLines ~= nil then
-		for k, textLines in pairs(requirements.MaxRunsSinceAnyTextLines.TextLines) do
+		for _, textLines in pairs(requirements.MaxRunsSinceAnyTextLines.TextLines) do
 			local runsSinceOccurred = 0
+			local found = false
 			for runIndex = #game.GameState.RunHistory + 1, 1, -1 do
-				local prevRun = game.PrevRun
-				if prevRun.TextLinesRecord ~= nil and prevRun.TextLinesRecord[textLines] then
+				local previousRun = game.GameState.RunHistory[runIndex]
+				if previousRun.TextLinesRecord ~= nil and previousRun.TextLinesRecord[textLines] then
+					found = true
 					if runsSinceOccurred > requirements.MaxRunsSinceAnyTextLines.Count then
-						DebugPrint({ Text = "textLines = " .. textLines .. ", " .. "runsSinceOccurred = " .. runsSinceOccurred })
 						return false
-					else
-						-- Did occur recently enough
-						break
 					end
+					break
 				end
-				if mod.WasModdedRun(prevRun) then
+				if mod.WasModdedRun(previousRun) and previousRun.BiomesReached ~= nil then
 					runsSinceOccurred = runsSinceOccurred + 1
 				end
 			end
