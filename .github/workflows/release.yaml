@@ -7,7 +7,7 @@ on:
       tag:
         description: "Tag / Version number"
         required: true
-      img-folder-name:
+      image-folder-name:
         description: "Image folder name (for replacing image paths embedded in the README)"
         required: false
         default: "img"
@@ -51,7 +51,7 @@ jobs:
 
       - name: Replace relative image paths with absolute paths in README
         run: |
-          sed -i 's#](\(\./\)\?${{ inputs.img-folder-name }}/#](https://github.com/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}/raw/${{ github.event.repository.default_branch }}/${{ inputs.img-folder-name }}/#g' README.md
+          sed -i 's#](\(\./\)\?${{ inputs.image-folder-name }}/#](https://github.com/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}/raw/${{ github.event.repository.default_branch }}/${{ inputs.image-folder-name }}/#g' README.md
 
       - name: Install Thunderstore CLI
         run: dotnet tool install -g tcli
