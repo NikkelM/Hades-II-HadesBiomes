@@ -1,11 +1,19 @@
 # Changelog
 
-## v0.4.2
+## v0.5.0
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- Fixed: Certain dialogue eligibility checks will crash the game.
+
+
+Other fixes and improvements:
+- Fixed: "Out of Tartarus" music track plays in Elysium instead of Tartarus.
 <!--Releasenotes end-->
+
+## v0.4.2
+
+### Patch Highlights:
+- Fixed: Certain dialogue eligibility checks will crash the game.
 
 ## v0.4.1
 

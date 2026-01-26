@@ -1,5 +1,6 @@
 -- #region Music
 game.MusicTrackData.Tartarus = {
+	{ Name = "/Music/MusicHadesReset_MC", },
 	{ Name = "/Music/MusicHadesReset2_MC", },
 	{ Name = "/Music/MusicHadesReset3_MC", },
 	-- "/Music/MusicTartarus4_MC"
@@ -13,7 +14,6 @@ game.MusicTrackData.Asphodel = {
 	{ Name = "{9095ed41-3258-4161-ae60-23f686dfa394}", },
 }
 game.MusicTrackData.Elysium = {
-	{ Name = "/Music/MusicHadesReset_MC", },
 	-- "/Music/MusicElysium1_MC"
 	{ Name = "{9f9f6ebf-11f0-4c2f-8f2c-42f703be4b7d}", },
 	-- "/Music/MusicElysium2_MC"
