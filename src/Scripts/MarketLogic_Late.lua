@@ -3,9 +3,9 @@ modutil.mod.Path.Context.Wrap.Static("OpenMarketScreen", function(marketScreenAr
 		local currencyResourceName = modutil.mod.Locals.Stacked(2).currencyResourceName
 		if currencyResourceName == "ModsNikkelMHadesBiomes_BrokerResource" then
 			local screen = modutil.mod.Locals.Stacked(2).screen
-			-- If we are showing the amount we have of the dummy modded resource, display an empty string
+			-- If we are showing the amount we have of the dummy modded resource, display ??? since there is no amount
 			if args.Id == screen.Components.BasicResourceButton.Id then
-				args.Text = " "
+				args.Text = "???"
 			end
 		end
 
@@ -39,5 +39,26 @@ modutil.mod.Path.Context.Wrap.Static("OpenMarketScreen", function(marketScreenAr
 		end
 
 		return marketItems
+	end)
+end)
+
+modutil.mod.Path.Context.Wrap.Static("MarketScreenUpdateResourceStatus", function(originalScreen)
+	modutil.mod.Path.Wrap("ModifyTextBox", function(base, args)
+		local category = modutil.mod.Locals.Stacked(2).category or {}
+		local currencyResourceName = category.CurrencyResourceName
+		if currencyResourceName == "ModsNikkelMHadesBiomes_BrokerResource" then
+			local screen = modutil.mod.Locals.Stacked(2).screen
+			-- If we are showing the amount we have of the dummy modded resource, display ??? since there is no amount, and set the new animation
+			if args.Id == screen.Components.BasicResourceButton.Id then
+				local resourceData = game.ResourceData[currencyResourceName]
+				SetAnimation({
+					DestinationId = screen.Components.BasicResourceButton.Id,
+					Name = resourceData.TextIconPath or resourceData.IconPath or resourceData.Icon
+				})
+				args.Text = "???"
+			end
+		end
+
+		return base(args)
 	end)
 end)
