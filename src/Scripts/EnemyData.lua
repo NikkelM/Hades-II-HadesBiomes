@@ -837,7 +837,7 @@ local enemyModifications = {
 			Fury3Encounter10 = {
 				EndVoiceLines = {
 					[1] = {
-						[1] = { Cue = "/VO/Megaera_0289" }
+						[1] = { Cue = "/VO/Megaera_30289" }
 					},
 				},
 			},
