@@ -152,7 +152,7 @@ function mod.HydraFinalStageTransition(boss, currentRun, aiStage)
 end
 
 function mod.HydraKillPresentation(unit, args)
-	game.AddTimerBlock(CurrentRun, "HydraKillPresentation")
+	game.AddTimerBlock(game.CurrentRun, "HydraKillPresentation")
 	game.SetPlayerInvulnerable("HydraKillPresentation")
 	PlaySound({ Name = "/SFX/StabSplatterEndSequence" })
 	PlaySound({ Name = "/SFX/Enemy Sounds/HydraHead/EmoteFinalDying1", Id = unit.ObjectId })
@@ -175,7 +175,7 @@ function mod.HydraKillPresentation(unit, args)
 		Move({ Id = id, DestinationId = id, OffsetX = offset.X, OffsetY = offset.Y, Duration = 2.5, EaseOut = 0.8 })
 	end
 
-	game.RemoveTimerBlock(CurrentRun, "HydraKillPresentation")
+	game.RemoveTimerBlock(game.CurrentRun, "HydraKillPresentation")
 	game.SetPlayerVulnerable("HydraKillPresentation")
 end
 

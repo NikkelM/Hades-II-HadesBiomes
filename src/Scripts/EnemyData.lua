@@ -1258,6 +1258,9 @@ local enemyModifications = {
 		MaxHealth = 1000,
 		HealthBuffer = 1000,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
+		-- To unify all Hydra heads under the same "Damage Taken" entry
+		GenusName = "HydraHeadImmortal",
+		RunHistoryKilledByName = "HydraHeadImmortal",
 		StunAnimations = { Default = "EnemyHydraOnHit" },
 		ManualDeathAnimation = false,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
