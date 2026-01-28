@@ -959,7 +959,119 @@ end
 -- #endregion
 
 -- #region Randomized Trials
+local newRandomizedBounties = {
+	{
+		Name = "ModsNikkelMHadesBiomes_BasePackageBountyRandom",
+		InheritFrom = { "BasePackageBountyRandom" },
+		DebugOnly = true,
+		-- Used for the Hades II vanilla quest
+		RandomBountyStreakEligible = false,
+		-- TODO: New quest
+		ModsNikkelMHadesBiomes_RandomBountyStreakEligible = true,
+		-- So we can show the run clear screen after a clear
+		ModsNikkelMHadesBiomesForceRunClearScreen = true,
+		-- Also allow the new keepsakes to be chosen
+		RandomKeepsakeNames = game.ConcatTableValuesIPairs({
+			"ManaOverTimeRefundKeepsake",
+			"BossPreDamageKeepsake",
+			"ReincarnationKeepsake",
+			"DoorHealReserveKeepsake",
+			"DeathVengeanceKeepsake",
+			"BlockDeathKeepsake",
+			"EscalatingKeepsake",
+			"BonusMoneyKeepsake",
+			"TimedBuffKeepsake",
+			"LowHealthCritKeepsake",
+			"SpellTalentKeepsake",
+			"ForceZeusBoonKeepsake",
+			"ForceHeraBoonKeepsake",
+			"ForcePoseidonBoonKeepsake",
+			"ForceDemeterBoonKeepsake",
+			"ForceApolloBoonKeepsake",
+			"ForceAphroditeBoonKeepsake",
+			"ForceHephaestusBoonKeepsake",
+			"ForceHestiaBoonKeepsake",
+			"ForceAresBoonKeepsake",
+			"AthenaEncounterKeepsake",
+			"SkipEncounterKeepsake",
+			"ArmorGainKeepsake",
+			"FountainRarityKeepsake",
+			"UnpickedBoonKeepsake",
+			"DecayingBoostKeepsake",
+			"DamagedDamageBoostKeepsake",
+			"BossMetaUpgradeKeepsake",
+			"TempHammerKeepsake",
+			"RandomBlessingKeepsake",
+		}, mod.SharedKeepsakePortKeepsakeTraitNames),
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "PackageBountyRandomUnderworld_Difficulty1",
+		InheritFrom = { "ModsNikkelMHadesBiomes_BasePackageBountyRandom", "ModsNikkelMHadesBiomesHadesEncounters" },
+		Text = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1_Short",
 
+		StartingBiome = "Tartarus",
+		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Journey",
+		-- "Nightmare"
+		BiomeText = "WeaponPointsRare",
+
+		RandomMetaUpgradeCostTotal = 30,
+		RandomShrineUpgradePointTotal = 0,
+
+		LootOptions = {
+			{
+				Name = "GemPointsBigDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						GemPoints = 40,
+					},
+				},
+			},
+		},
+
+		UnlockGameStateRequirements = {
+			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyRandom" },
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
+		InheritFrom = { "ModsNikkelMHadesBiomes_BasePackageBountyRandom", "ModsNikkelMHadesBiomesHadesEncounters" },
+		Text = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2_Short",
+
+		StartingBiome = "Tartarus",
+		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Journey",
+		-- "Nightmare"
+		BiomeText = "WeaponPointsRare",
+
+		RandomMetaUpgradeCostTotal = 30,
+		RandomShrineUpgradePointTotal = 20,
+
+		UnlockGameStateRequirements = {
+			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyRandom" },
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
+				Comparison = ">=",
+				Value = 10,
+			},
+		},
+	},
+	-- TODO: Difficulty 3
+}
+for _, bountyData in ipairs(newRandomizedBounties) do
+	game.BountyData[bountyData.Name] = bountyData
+	-- Insert into Bounty Board
+	if bountyData.ModsNikkelMHadesBiomesInsertAfterBounty then
+		local insertIndex = 1
+		for _, bountyName in ipairs(game.ScreenData.BountyBoard.ItemCategories[1]) do
+			if bountyName == bountyData.ModsNikkelMHadesBiomesInsertAfterBounty then
+				break
+			end
+			insertIndex = insertIndex + 1
+		end
+		table.insert(game.ScreenData.BountyBoard.ItemCategories[1], insertIndex, bountyData.Name)
+	end
+end
 -- #endregion
-
 -- #endregion
