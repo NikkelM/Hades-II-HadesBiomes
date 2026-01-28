@@ -676,15 +676,15 @@ local roomModifications = {
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
-		-- Replaces MegaeraHome with Megaera voicelines
+		-- Replaces MegaeraHome_ with Megaera_3 voicelines
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
 				Args = {
 					VoiceLines = {
-						[1] = { Cue = "/VO/Megaera_0061" },
-						[2] = { Cue = "/VO/Megaera_0053", RequiredPlayed = { "/VO/Megaera_0061" }, },
-						[4] = { Cue = "/VO/Megaera_0057", },
+						[1] = { Cue = "/VO/Megaera_30061" },
+						[2] = { Cue = "/VO/Megaera_30053", RequiredPlayed = { "/VO/Megaera_30061" }, },
+						[4] = { Cue = "/VO/Megaera_30057", },
 					},
 					DelayedStart = true,
 				},

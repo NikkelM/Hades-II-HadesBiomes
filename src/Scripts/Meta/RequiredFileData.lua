@@ -29,7 +29,45 @@ mod.VoiceoverFileNames = {
 	ZagreusField = "ZagreusField",
 }
 
--- All biome .pkg files have been de-duplicated and added to the plugins_data folder
+mod.SubtitleCsvFileNameMappings = {
+	-- Achilles = "Patroclus_0",
+	Alecto = "Alecto_",
+	-- Dusa = "Dusa_",
+	Eurydice = "Eurydice_",
+	-- Hades = "HadesField_2",
+	HadesField = "HadesField_",
+	-- Hypnos = "Sisyphus_0",
+	Intercom = "HadesField_1",
+	MegaeraField = "MegaeraField_",
+	MegaeraHome = "Megaera_3",
+	Minotaur = "Minotaur_",
+	-- Nyx = "Megaera_6",
+	-- Orpheus = "Eurydice_0",
+	Patroclus = "Patroclus_",
+	Persephone = "Megaera_2",
+	Sisyphus = "Sisyphus_",
+	Storyteller = "Megaera_0",
+	Thanatos = "Thanatos_",
+	ThanatosField = "ThanatosField_",
+	Theseus = "Theseus_",
+	Tisiphone = "Tisiphone_",
+	ZagreusField = "ZagreusField_",
+	ZagreusHome = "ZagreusField_0",
+}
+
+mod.SubtitleCsvFolderNames = {
+	de = { "de" },
+	en = { "el", "en", "tr", "uk", "zh-TW" },
+	es = { "es" },
+	fr = { "fr" },
+	it = { "it" },
+	ja = { "ja" },
+	ko = { "ko" },
+	pl = { "pl" },
+	["pt-BR"] = { "pt-BR" },
+	ru = { "ru" },
+	["zh-CN"] = { "zh-CN" },
+}
 
 mod.BikFileNames = {
 	-- #region TARTARUS

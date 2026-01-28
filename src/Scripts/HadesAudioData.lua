@@ -2582,9 +2582,9 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			PreLineWait = 1.2,
 			NoTarget = true,
 			-- Thus was Hades, feared ruler of the dead, reunited with his long-lost bride, Persephone, the Queen; and, together with their firstborn son, Prince Zagreus, they would go on to reign eternally beneath the Earth, in relative harmony.
-			{ Cue = "/VO/Megaera_00340",    SubtitleColor = Color.NarratorVoice, },
+			{ Cue = "/VO/Megaera_00340",    SubtitleColor = game.Color.NarratorVoice, },
 			-- The Queen's return marked an occasion of enthusiastic joy... so much as possible, in that dark, gloom-filled realm of the dead.
-			{ Cue = "/VO/Megaera_00341",    SubtitleColor = Color.NarratorVoice,                                                                                                                                                                                PreLineWait = 1 },
+			{ Cue = "/VO/Megaera_00341",    SubtitleColor = game.Color.NarratorVoice,                                                                                                                                                                                PreLineWait = 1 },
 			-- And, even after all this time, Olympus never did discover what transpired there in the Underworld.
 			-- { Cue = "/VO/Megaera_00342", SubtitleColor = Color.NarratorVoice, PreLineWait = 1 },
 			{ Cue = "/VO/Storyteller_0097", Text = "{#Emph}One rightly may imagine that this tale has a very thrilling end; although I am afraid for now, that we are out of Time.",                                                                            TextLimit = 300, PreLineWait = 0.8, NoTarget = true },

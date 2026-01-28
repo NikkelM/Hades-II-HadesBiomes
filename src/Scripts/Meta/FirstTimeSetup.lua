@@ -108,6 +108,181 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, de
 	end
 end
 
+-- Subtitle CSV parsing utilities
+local function trimString(inputString)
+	return (inputString and inputString:match("^%s*(.-)%s*$")) or inputString
+end
+
+local function normalizeColumns(fields, expectedColumns)
+	if expectedColumns then
+		while #fields > expectedColumns and (fields[#fields] == "" or fields[#fields] == nil) do
+			fields[#fields] = nil
+		end
+		if #fields > expectedColumns then
+			fields[expectedColumns] = table.concat(fields, ",", expectedColumns)
+			for i = #fields, expectedColumns + 1, -1 do
+				fields[i] = nil
+			end
+		end
+	end
+	return fields
+end
+
+local function parseCsvLine(rawLine, expectedColumnCount)
+	-- Fast path: no quotes present; simple comma splitting
+	if not rawLine:find('"', 1, true) then
+		-- Known column count: split first expectedColumnCount-1 by comma, remainder is last column
+		if expectedColumnCount then
+			local columns = {}
+			local cursor = 1
+			for columnIndex = 1, expectedColumnCount - 1 do
+				local commaIndex = rawLine:find(",", cursor, true)
+				if not commaIndex then
+					columns[columnIndex] = trimString(rawLine:sub(cursor))
+					return columns
+				end
+				columns[columnIndex] = trimString(rawLine:sub(cursor, commaIndex - 1))
+				cursor = commaIndex + 1
+			end
+			local tail = rawLine:sub(cursor)
+			-- Strip trailing empty columns (commas and optional whitespace)
+			while tail:find(",%s*$") do
+				local before = tail:match("^(.-),%s*$")
+				if before then tail = before else break end
+			end
+			columns[expectedColumnCount] = tail
+			return columns
+		end
+
+		-- Unknown column count: naive split
+		local columns = {}
+		for column in (rawLine .. ","):gmatch("([^,]*),") do
+			table.insert(columns, trimString(column))
+		end
+		return columns
+	end
+
+	-- Fallback: quoted CSV parser (supports escaped quotes "" inside quoted fields)
+	local columns = {}
+	local current = ""
+	local inQuotes = false
+	local i = 1
+	while i <= #rawLine do
+		local ch = rawLine:sub(i, i)
+		if ch == '"' then
+			local nextCh = rawLine:sub(i + 1, i + 1)
+			if inQuotes and nextCh == '"' then
+				current = current .. '"'
+				i = i + 1
+			else
+				inQuotes = not inQuotes
+			end
+		elseif ch == ',' and not inQuotes then
+			table.insert(columns, trimString(current))
+			current = ""
+		else
+			current = current .. ch
+		end
+		i = i + 1
+	end
+	table.insert(columns, trimString(current))
+	return normalizeColumns(columns, expectedColumnCount)
+end
+
+local function parseSubtitleCsvFile(filePath, fileName, translatePrefix)
+	local file = io.open(filePath, "r")
+	if not file then
+		mod.DebugPrint("Could not open subtitle CSV: " .. filePath, 1)
+		return {}
+	end
+
+	local order = {
+		"Id",
+		"InheritFrom",
+		"DisplayName",
+	}
+	local entries = {}
+	local expectedColumns = 8
+
+	-- Skip header row
+	local header = file:read("*l")
+
+	for rawLine in file:lines() do
+		-- Normalize line endings and strip UTF-8 BOM if present
+		local line = rawLine:gsub("\r$", ""):gsub("^\239\187\191", "")
+		if line ~= "" then
+			-- Columns: 1 = Status, 2 = BaseId, 3 = IdNum, 4 = Id, 8 = DisplayName
+			local cols = parseCsvLine(line, expectedColumns)
+			local status = trimString(cols[1]) or ""
+			-- We only want to include substitles that are used in the game, which are marked by "Integrated" in the status column
+			if status ~= "" and status:lower() == "integrated" then
+				local baseId = trimString(cols[2]) or ""
+				local idNum = tonumber(cols[3] or "")
+				local id = trimString(cols[4]) or ""
+				local displayName = trimString(cols[8]) or ""
+
+				if baseId == "" or id == "" or displayName == "" then
+					mod.DebugPrint(
+						"Subtitle CSV missing baseId, id or displayName for integrated row in " ..
+						tostring(fileName) .. ": " .. tostring(line), 4)
+				else
+					-- Translate prefix: replace baseId or filename prefix with translatePrefix if requested
+					if translatePrefix and id ~= "" then
+						local pattern = "^" .. (baseId:gsub("(%W)", "%%%1"))
+						local newId, count = id:gsub(pattern, translatePrefix)
+						if count > 0 then
+							id = newId
+						end
+					end
+
+					table.insert(entries,
+						sjson.to_object({ Id = id, InheritFrom = "BaseSubtitle", DisplayName = displayName }, order))
+				end
+			end
+		end
+	end
+
+	file:close()
+	return entries
+end
+
+local function loadSubtitleCsvFilesAndWriteToSjson()
+	local hadesSubtitleData = {}
+	-- SourceFolderName is a subtitle folder in H1
+	-- TargetFolderNames is a list of languages that the source subtitles should be used for in H2
+	-- As not all H2 languages have a localization in H1, these will use the english subtitles instead
+	for sourceFolderName, targetFolderNames in pairs(mod.SubtitleCsvFolderNames or {}) do
+		for _, targetFolderName in ipairs(targetFolderNames) do
+			hadesSubtitleData[targetFolderName] = hadesSubtitleData[targetFolderName] or {}
+		end
+		for fileName, translatePrefix in pairs(mod.SubtitleCsvFileNameMappings or {}) do
+			local filePath = rom.path.combine(mod.hadesGameFolder,
+				"Content\\Subtitles\\" .. sourceFolderName .. "\\" .. fileName .. ".csv")
+
+			local parsedSubtitles = parseSubtitleCsvFile(filePath, fileName, translatePrefix)
+			mod.DebugPrint("Parsed " .. tostring(#parsedSubtitles) .. " subtitle rows from " .. fileName, 4)
+
+			for _, targetFolderName in ipairs(targetFolderNames) do
+				hadesSubtitleData[targetFolderName][fileName] = parsedSubtitles
+			end
+		end
+	end
+
+	local order = {
+		"lang",
+		"Texts",
+	}
+	-- Afterwards, write the subtitle sjson files for each language into the Hades II Content folder
+	for language, subtitleFiles in pairs(hadesSubtitleData) do
+		for speakerName, entries in pairs(subtitleFiles) do
+			local destPath = mod.GetSubtitleSjsonPath(language, speakerName)
+			local subtitleData = sjson.to_object({ lang = language, Texts = entries }, order)
+			mod.DebugPrint("Writing subtitle sjson file: " .. destPath .. " with " .. tostring(#entries) .. " entries", 4)
+			sjson.encode_file(destPath, subtitleData)
+		end
+	end
+end
+
 -- Creates a new helpTextFile for all given languages with any IDs that do not exist in the Hades II help text files
 local function copyHadesHelpTexts()
 	for _, fileName in ipairs(mod.HadesHelpTextFileNames) do
@@ -160,6 +335,9 @@ local function copyHadesHelpTexts()
 							-- LootData
 							entry.Id = entry.Id:gsub("Hermes_", "Dusa_0")
 							entry.Id = entry.Id:gsub("Chaos_", "Dusa_1")
+						end
+						if entry.DisplayName then
+							entry.DisplayName = string.gsub(entry.DisplayName, "{#PreviousFormat}", "{#Prev}")
 						end
 						if entry.Description then
 							entry.Description = string.gsub(entry.Description, "{#PreviousFormat}", "{#Prev}")
@@ -386,6 +564,9 @@ function mod.FirstTimeSetup()
 
 	copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", "Voiceline ", true)
 	copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", "Voiceline ", true)
+
+	mod.DebugPrint("Parsing subtitle CSV files...", 3)
+	loadSubtitleCsvFilesAndWriteToSjson()
 
 	applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", "Game\\", mod.SjsonFileModifications)
 
