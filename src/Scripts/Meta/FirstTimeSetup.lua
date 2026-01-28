@@ -336,6 +336,9 @@ local function copyHadesHelpTexts()
 							entry.Id = entry.Id:gsub("Hermes_", "Dusa_0")
 							entry.Id = entry.Id:gsub("Chaos_", "Dusa_1")
 						end
+						if entry.DisplayName then
+							entry.DisplayName = string.gsub(entry.DisplayName, "{#PreviousFormat}", "{#Prev}")
+						end
 						if entry.Description then
 							entry.Description = string.gsub(entry.Description, "{#PreviousFormat}", "{#Prev}")
 							entry.Description = string.gsub(entry.Description, " \\Column 380", "")

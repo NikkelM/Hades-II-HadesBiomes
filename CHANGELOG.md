@@ -9,6 +9,7 @@
 Other fixes and improvements:
 - When trading Zagreus' Journey resources with the broker, the resource display on the top right will now show how many of the given boss resource you currently have in your inventory, instead of always showing a placeholder.
 - Fixed: "Out of Tartarus" music track plays in Elysium instead of Tartarus.
+- Fixed: Localized dialogues in languages other than English do not terminate *italic* text correctly, causing all text after the first occurrence to be italicized for the current dialogue box.
 <!--Releasenotes end-->
 
 ## v0.4.2

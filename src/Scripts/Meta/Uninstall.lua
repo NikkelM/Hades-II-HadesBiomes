@@ -24,7 +24,7 @@ local function removeFile(filePath, extension)
 end
 
 local function removeSubtitleSjsonFiles()
-	mod.DebugPrint("Removing subtitle sjson files...", 3)
+	mod.DebugPrint("Removing .sjson subtitle files...", 3)
 	local languages = {}
 	for key, value in pairs(mod.SubtitleCsvFolderNames or {}) do
 		for _, language in ipairs(value) do
@@ -70,7 +70,7 @@ function mod.Uninstall()
 
 	removeSubtitleSjsonFiles()
 
-	mod.DebugPrint("Removing help text files...", 3)
+	mod.DebugPrint("Removing .sjson helptext files...", 3)
 	-- _NPCData files are installed differently, so not part of this table by default
 	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames) or {}
 	table.insert(allHelpTextFileNames, "_NPCData")
