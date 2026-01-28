@@ -4552,7 +4552,9 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				GameStateRequirements = {
 					{
 						Path = { "CurrentRun", "ActiveBounty" },
-						IsAny = { "PackageBountyRandomUnderworld_Difficulty2", "PackageBountyRandomSurface_Difficulty2" },
+						IsAny = game.ConcatTableValuesIPairs(
+							{ "PackageBountyRandomUnderworld_Difficulty2", "PackageBountyRandomSurface_Difficulty2" },
+							mod.DifficultRandomizedChaosTrialBountyNames),
 					},
 				},
 			},

@@ -383,6 +383,11 @@ mod.RandomizedChaosTrialBountyNames = {
 	-- "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3", -- More heat?
 }
 
+mod.DifficultRandomizedChaosTrialBountyNames = {
+	"ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
+	-- "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3", -- More heat?
+}
+
 mod.CodexChapterName = "ModsNikkelMHadesBiomesCodexEntry"
 
 -- Can be directly gathered in rooms
