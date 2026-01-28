@@ -1,4 +1,5 @@
 <!-- # Zagreus' Journey -->
+
 ![Zagreus' Journey](./img/Readme/ZagreusJourneyTartarus.png)
 
 _Zagreus' Journey_ is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
@@ -11,6 +12,7 @@ Take a look at what Haelian and Boated think of the mod:
 - [They put Hades 1 in Hades 2 and it's PERFECT | Boated](https://www.youtube.com/watch?v=HYf_z8IV4LE)
 
 ![Zagreus' Journey](./img/Key%20Art/Readme/Melinoe_Asphodel_Capsule_Glowing_Text.png)
+
 <div style="display: flex; justify-content: space-between;">
   <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/face_your_father.jpg" alt="Face your Father" width="49.7%">
   <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/battle_out_of_tartarus.jpg" alt="Battle out of Tartarus" width="49.7%">
@@ -26,6 +28,7 @@ It is highly recommended that you complete the main story of Hades before playin
 > You can find all of the latest changes in the [Changelog](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/changelog/) on the mod page.
 
 <!-- ## Features -->
+
 ![Features](./img/Readme/FeaturesStyx.png)
 
 - Play through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
@@ -38,6 +41,7 @@ It is highly recommended that you complete the main story of Hades before playin
 - Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
 - Discover and perform **10+** new incantations to unlock gameplay features and new rooms in Zagreus' Journey runs.
 - Unlock **four** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
+- Challenge yourself with a set of new **Chaos Trials**, including randomized "Chaos Within" trials in the spirit of (Great) Chaos Above and Below.
 - Read all about the new biomes, enemies, bosses and friends in a new chapter in your Codex.
 
 ### Feature Roadmap
@@ -48,7 +52,8 @@ Among many smaller improvements and fixes, the following major features are plan
 - [DONE!] Erebus gates (when there is enough Fear in the Night)
 - [DONE!] New incantations for meta-progression on the new route
 - [DONE!] New minor prophecies for progression through Zagreus' Journey
-- New Chaos Trials (including randomized trials) for the new biomes and bosses.
+- [DONE!] New randomized Chaos Trials for the new route.
+- Additional Chaos Trials for fun challenges and themed runs.
 - New story events and dialogue between Melinoë and other characters from Hades II, concerning the new route and gameplay features
 
 You can track all planned features and fixes on the [project's GitHub Issues page](https://github.com/NikkelM/Hades-II-HadesBiomes/issues).
@@ -59,10 +64,12 @@ Some other mods integrate with _Zagreus' Journey_ to provide additional features
 
 - [Charon's Tip Jar](https://thunderstore.io/c/hades-ii/p/NikkelM/Charons_Tip_Jar/) adds a tip jar to Charon's shop rooms during _Zagreus' Journey_ underworld runs.
 - [Flip the Arcana](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Flip_the_Arcana_Mod/) adds flipped versions of the Arcana cards with wildly different effects, and will require resources from _Zagreus' Journey_ to unlock them if both mods are installed.
+- [Biome Randomizer](https://thunderstore.io/c/hades-ii/p/zerp/BiomeRandomizer/) adds new randomized Chaos Trials that change between biomes of the different routes after each boss fight, including the new biomes from _Zagreus' Journey_ if both mods are installed.
 
 > Are you developing a mod that integrates with _Zagreus' Journey_, or would like to add such an integration? Let me know on [Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
 <!-- ## Installation -->
+
 ![Installation](./img/Readme/InstallationAsphodel.png)
 
 > Installing on Steam Deck? Please also refer to the [Steam Deck Installation Guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/steam-deck) on the Hades II Mod wiki.
@@ -99,6 +106,7 @@ If you would like more information or experience any issues, please refer to the
 Only uninstall the mod while in the Crossroads to prevent issues.
 
 <!-- ## Configuration -->
+
 ![Configuration](./img/Readme/ConfigurationElysium.png)
 
 Note that the configuration file is only created after the first game start with the mod enabled in your mod manager.
@@ -116,6 +124,7 @@ Please directly leave bug reports as a [new issue on the project's GitHub reposi
 If you do not have a GitHub account, you can also join the [Hades II Modding Discord server](https://discord.gg/KuMbyrN) and post in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
 <!-- ## Contributors -->
+
 ![Contributors](./img/Readme/ContributorsErebus.png)
 
 - NikkelM ([GitHub](https://github.com/NikkelM), @NikkelM on [Discord](https://discord.gg/KuMbyrN)), Mod Creator
@@ -142,6 +151,7 @@ For Cosmetics, texts are located in [src/Scripts/CosmeticsData.lua](https://gith
 After translating your chosen texts, open a Pull Request with your changes on GitHub, and they will be included in the next release!
 
 <!-- ## Image Gallery -->
+
 ![Image Gallery](./img/Readme/ImageGallerySurface.png)
 
 ![Meet your brother's old friends](./img/screenshots/meet_old_friends.jpg)

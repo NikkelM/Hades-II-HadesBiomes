@@ -4,6 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Added new randomized Chaos Trials, "Chaos Within" and "Great Chaos Within". These work the same way as the base game randomized Trials, allowing you to battle out of Tartarus with a random weapon, keepsake, familiar, arcana and vow setup. Complete the story of Zagreus' Journey (10 clears) to unlock these Trials.
 - Added subtitles. For languages available in Hades II that did not have a localization in the first game, the English subtitles will be shown.
 
 Other fixes and improvements:
