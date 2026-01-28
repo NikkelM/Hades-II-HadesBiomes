@@ -964,8 +964,6 @@ local newRandomizedBounties = {
 		Name = "ModsNikkelMHadesBiomes_BasePackageBountyRandom",
 		InheritFrom = { "BasePackageBountyRandom" },
 		DebugOnly = true,
-		-- Used for the Hades II vanilla quest
-		RandomBountyStreakEligible = false,
 		-- TODO: New quest
 		ModsNikkelMHadesBiomes_RandomBountyStreakEligible = true,
 		-- So we can show the run clear screen after a clear
