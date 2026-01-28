@@ -10,6 +10,10 @@ game.NamedRequirementsData.IsDevotionEncounter[1].IsAny = game.CombineTables(
 	game.NamedRequirementsData.IsDevotionEncounter[1].IsAny, {
 		"DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium"
 	})
+
+-- Add the new randomized Chaos Trials/Bounties to the check for the current bounty type
+game.NamedRequirementsData.StandardPackageBountyActive[2].IsNone = game.ConcatTableValuesIPairs(
+	game.NamedRequirementsData.StandardPackageBountyActive[2].IsNone, mod.RandomizedChaosTrialBountyNames)
 -- #endregion
 
 -- #region New requirements

@@ -931,6 +931,7 @@ mod.AddTableKeysSkipDupes(game.BountyData, newShrineBounties)
 -- #endregion
 
 -- #region Chaos Trials
+-- #region Bounty start VoiceLines
 local function modifyBountyTextLineRequirements(textLine)
 	if textLine.GameStateRequirements ~= nil then
 		for _, requirement in ipairs(textLine.GameStateRequirements) do
@@ -939,7 +940,11 @@ local function modifyBountyTextLineRequirements(textLine)
 					and requirement.IsNone ~= nil and #requirement.IsNone == 2 and requirement.IsNone[1] == "F" and requirement.IsNone[2] == "N" then
 				requirement.IsNone = { "F", "N", "Tartarus" }
 			end
-			-- TODO: Do a similar thing to include the random trials from "I leave the details of this Trial for you to discover" onwards through #429
+			-- Add the new randomized trials to be eligible for voicelines for random trials
+			if requirement.Path ~= nil and #requirement.Path == 2 and requirement.Path[1] == "CurrentRun" and requirement.Path[2] == "ActiveBounty"
+					and requirement.IsAny ~= nil and game.Contains(requirement.IsAny, "PackageBountyRandomUnderworld_Difficulty1") then
+				requirement.IsAny = game.ConcatTableValuesIPairs(requirement.IsAny, mod.RandomizedChaosTrialBountyNames)
+			end
 		end
 	end
 end
@@ -951,4 +956,10 @@ for _, textLineGroup in ipairs(game.GlobalVoiceLines.StartPackagedBountyRunVoice
 		modifyBountyTextLineRequirements(textLine)
 	end
 end
+-- #endregion
+
+-- #region Randomized Trials
+
+-- #endregion
+
 -- #endregion

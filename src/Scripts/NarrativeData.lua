@@ -181,3 +181,7 @@ for property, textLines in pairs(newGameData) do
 		mod.DebugPrint("GameData property " .. property .. " already exists, not overwriting", 2)
 	end
 end
+
+-- GameData changes for randomized Chaos Trials/Bounties
+game.GameData.AllRandomPackagedBounties = game.ConcatTableValuesIPairs(
+	game.GameData.AllRandomPackagedBounties, mod.RandomizedChaosTrialBountyNames)
