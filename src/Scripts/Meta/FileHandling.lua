@@ -263,3 +263,12 @@ function mod.ConfirmExitInstallSuccessScreen(screen)
 	game.CloseScreen(game.GetAllIds(screen.Components), 0.15)
 	game.OnScreenCloseFinished(screen)
 end
+
+---Used by both the install and uninstall scripts to get the paths for sjson subtitle files that are created from Hades CSV files
+---@param language string The language shorthand, e.g. "en"
+---@param speakerName string The name of the speaker with which the subtitle CSV file is associated, e.g. "MegaeraField"
+---@return string destPath The absolute path to the sjson subtitle file in the Hades II Content folder
+function mod.GetSubtitleSjsonPath(language, speakerName)
+	return rom.path.combine(rom.paths.Content(),
+		"Game\\Text\\" .. language .. "\\Z_ModsNikkelMHadesBiomes" .. speakerName .. "." .. language .. ".sjson")
+end

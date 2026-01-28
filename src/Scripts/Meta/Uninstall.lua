@@ -23,6 +23,23 @@ local function removeFile(filePath, extension)
 	end
 end
 
+local function removeSubtitleSjsonFiles()
+	mod.DebugPrint("Removing subtitle sjson files...", 3)
+	local languages = {}
+	for key, value in pairs(mod.SubtitleCsvFolderNames or {}) do
+		for _, language in ipairs(value) do
+			languages[language] = true
+		end
+	end
+
+	for language, _ in pairs(languages) do
+		for speakerName, _ in pairs(mod.SubtitleCsvFileNameMappings or {}) do
+			local destPath = mod.GetSubtitleSjsonPath(language, speakerName)
+			removeFile(destPath, "")
+		end
+	end
+end
+
 function mod.Uninstall()
 	mod.DebugPrint("Uninstalling mod - removing files added by the mod", 3)
 
@@ -50,6 +67,8 @@ function mod.Uninstall()
 
 	removeFiles(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".txt")
 	removeFiles(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb")
+
+	removeSubtitleSjsonFiles()
 
 	mod.DebugPrint("Removing help text files...", 3)
 	-- _NPCData files are installed differently, so not part of this table by default
