@@ -1486,7 +1486,7 @@ local newData = {
 		"Let {$Keywords.CharChaos} influence almost every factor in your battle through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, including {#ShrineHighlightFormat}{$BountyData.ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2.RandomShrineUpgradePointTotal}{#Prev}{!Icons.ShrinePointNoTooltip} {#Emph}Fear {#Prev}of randomly selected {#Emph}Vows{#Prev}.",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2_Short",
+		Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3_Short",
 		DisplayName = "Greater Chaos Within",
 	},
 	-- #endregion

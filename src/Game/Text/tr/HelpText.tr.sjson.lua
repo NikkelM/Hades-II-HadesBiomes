@@ -1433,6 +1433,39 @@ local newData = {
 	-- 	DisplayName = "Aspect of Melinoë (Xinth)",
 	-- },
 	-- #endregion
+
+	-- #region Chaos Trials/Bounties
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
+	-- 	DisplayName = "Chaos Within",
+	-- 	Description =
+	-- 	"Let {$Keywords.CharChaos} influence almost every factor in your battle through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, though with {#ShrineHighlightFormat}{$BountyData.ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1.RandomShrineUpgradePointTotal}{#Prev}{!Icons.ShrinePointNoTooltip} {#Emph}Fear{#Prev}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1_Short",
+	-- 	DisplayName = "Chaos Within",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
+	-- 	DisplayName = "Great Chaos Within",
+	-- 	Description =
+	-- 	"Let {$Keywords.CharChaos} influence almost every factor in your battle through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, including {#ShrineHighlightFormat}{$BountyData.ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2.RandomShrineUpgradePointTotal}{#Prev}{!Icons.ShrinePointNoTooltip} {#Emph}Fear {#Prev}of randomly selected {#Emph}Vows{#Prev}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2_Short",
+	-- 	DisplayName = "Great Chaos Within",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3",
+	-- 	DisplayName = "Greater Chaos Within",
+	-- 	Description =
+	-- 	"Let {$Keywords.CharChaos} influence almost every factor in your battle through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, including {#ShrineHighlightFormat}{$BountyData.ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2.RandomShrineUpgradePointTotal}{#Prev}{!Icons.ShrinePointNoTooltip} {#Emph}Fear {#Prev}of randomly selected {#Emph}Vows{#Prev}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3_Short",
+	-- 	DisplayName = "Greater Chaos Within",
+	-- },
+	-- #endregion
 }
 
 sjson.hook(helpTextFile, function(data)
