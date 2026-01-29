@@ -1459,7 +1459,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3",
 	-- 	DisplayName = "Greater Chaos Within",
 	-- 	Description =
-	-- 	"Let {$Keywords.CharChaos} influence almost every factor in your battle through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, including {#ShrineHighlightFormat}{$BountyData.ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2.RandomShrineUpgradePointTotal}{#Prev}{!Icons.ShrinePointNoTooltip} {#Emph}Fear {#Prev}of randomly selected {#Emph}Vows{#Prev}.",
+	-- 	"Let {$Keywords.CharChaos} influence almost every factor in your battle through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, including {#ShrineHighlightFormat}{$BountyData.ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3.RandomShrineUpgradePointTotal}{#Prev}{!Icons.ShrinePointNoTooltip} {#Emph}Fear {#Prev}of randomly selected {#Emph}Vows{#Prev}.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3_Short",
