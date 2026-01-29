@@ -21,8 +21,9 @@ function mod.ModsNikkelMHadesBiomesToggleNarrativeFadeInColorForZagreus(source, 
 	if args.ToggleOn then
 		mod.OriginalPlayerNarrativeFadeInColor = source.NarrativeFadeInColor
 		source.NarrativeFadeInColor = game.Color.ZagreusVoice
-	else
+	elseif mod.OriginalPlayerNarrativeFadeInColor ~= nil then
 		source.NarrativeFadeInColor = mod.OriginalPlayerNarrativeFadeInColor
+		mod.OriginalPlayerNarrativeFadeInColor = nil
 	end
 end
 
