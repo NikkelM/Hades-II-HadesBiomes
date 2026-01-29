@@ -12781,7 +12781,7 @@ mod.NPCData = mod.NPCData or {
 						PreLineWait = 1.8,
 						Queue = "Always",
 						NoTarget = true,
-						Source = { SubtitleColor = Color.PersephoneVoice },
+						Source = { SubtitleColor = game.Color.PersephoneVoice },
 						-- Goodbye...!
 						{ Cue = "/VO/Persephone_0075" },
 					},

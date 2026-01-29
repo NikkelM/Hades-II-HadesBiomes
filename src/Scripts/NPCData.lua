@@ -264,6 +264,16 @@ local npcModifications = {
 					PostLineAnim = mod.NilValue,
 				},
 			},
+			PersephoneMeeting07 = {
+				EndVoiceLines = {
+					[2] = {
+						ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
+						UsePlayerSource = false,
+						SpeakerName = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
+						LineHistoryName = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
+					},
+				},
+			},
 			PersephoneReturnsHome01 = {
 				[8] = {
 					PostLineFunctionName = _PLUGIN.guid .. "." .. "SurfaceBoatScenePan",
@@ -395,6 +405,7 @@ local npcChoiceMappings = {
 				PreLineFunctionArgs = { ToggleOn = true, },
 				PostLineFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesToggleNarrativeFadeInColorForZagreus",
 				PostLineFunctionArgs = { ToggleOn = false, },
+				UsePlayerSource = true,
 				SpeakerName = "NPC_Zagreus_Past_01",
 				LineHistoryName = "NPC_Zagreus_Past_01",
 			}
