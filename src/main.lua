@@ -462,6 +462,8 @@ local function on_ready()
 			-- "Normal" code changes
 			import "Scripts/AudioLogic.lua"
 			import "Scripts/BiomeMapPresentation.lua"
+			import "Scripts/BountyLogic.lua"
+			import "Scripts/BountyPresentation.lua"
 			import "Scripts/CodexLogic.lua"
 			import "Scripts/Combat.lua"
 			import "Scripts/CombatLogic.lua"
