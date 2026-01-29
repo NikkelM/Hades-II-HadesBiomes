@@ -969,6 +969,7 @@ local newRandomizedBounties = {
 		-- So we can show the run clear screen after a clear
 		ModsNikkelMHadesBiomesForceRunClearScreen = true,
 		-- Also allow the new keepsakes to be chosen
+		-- TODO: If https://github.com/excellent-ae/zannc-GodsAPI/issues/22 is implemented, we can remove this override
 		RandomKeepsakeNames = game.ConcatTableValuesIPairs({
 			"ManaOverTimeRefundKeepsake",
 			"BossPreDamageKeepsake",
@@ -1002,6 +1003,7 @@ local newRandomizedBounties = {
 			"RandomBlessingKeepsake",
 		}, mod.SharedKeepsakePortKeepsakeTraitNames),
 	},
+	-- TODO: Ensure these are valid for run clear statistics
 	{
 		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
 		ModsNikkelMHadesBiomesInsertAfterBounty = "PackageBountyRandomUnderworld_Difficulty1",
@@ -1055,7 +1057,29 @@ local newRandomizedBounties = {
 			},
 		},
 	},
-	-- TODO: Difficulty 3
+	{
+		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
+		InheritFrom = { "ModsNikkelMHadesBiomes_BasePackageBountyRandom", "ModsNikkelMHadesBiomesHadesEncounters" },
+		Text = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3_Short",
+
+		StartingBiome = "Tartarus",
+		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Journey",
+		-- "Nightmare"
+		BiomeText = "WeaponPointsRare",
+
+		RandomMetaUpgradeCostTotal = 30,
+		RandomShrineUpgradePointTotal = 32,
+
+		UnlockGameStateRequirements = {
+			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyRandom" },
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
+				Comparison = ">=",
+				Value = 20,
+			},
+		},
+	},
 }
 for _, bountyData in ipairs(newRandomizedBounties) do
 	game.BountyData[bountyData.Name] = bountyData

@@ -380,12 +380,12 @@ mod.ModdedShrineBountyNames = {
 mod.RandomizedChaosTrialBountyNames = {
 	"ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
 	"ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
-	-- "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3", -- More heat?
+	"ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3",
 }
 
 mod.DifficultRandomizedChaosTrialBountyNames = {
 	"ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
-	-- "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3", -- More heat?
+	"ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3",
 }
 
 mod.CodexChapterName = "ModsNikkelMHadesBiomesCodexEntry"
