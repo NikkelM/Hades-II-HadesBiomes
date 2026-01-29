@@ -133,6 +133,12 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 				game.GameState.GiftPresentation[mod.SharedKeepsakePortThanatosKeepsakeTrait] = true
 				game.GameState.GiftPresentation.PerfectClearDamageBonusKeepsake = nil
 			end
+
+			-- New GameState variables for randomized bounty streaks
+			game.GameState.ModsNikkelMHadesBiomes_RandomBountyClearStreak = game.GameState
+					.ModsNikkelMHadesBiomes_RandomBountyClearStreak or 0
+			game.GameState.ModsNikkelMHadesBiomes_RandomBountyHighestClearStreak = game.GameState
+					.ModsNikkelMHadesBiomes_RandomBountyHighestClearStreak or 0
 		end
 
 		-- IMPORTANT: This must be incremented every time this function is changed
