@@ -1005,7 +1005,6 @@ local newRandomizedBounties = {
 			"RandomBlessingKeepsake",
 		}, mod.SharedKeepsakePortKeepsakeTraitNames),
 	},
-	-- TODO: Ensure these are valid for run clear statistics
 	{
 		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
 		ModsNikkelMHadesBiomesInsertAfterBounty = "PackageBountyRandomUnderworld_Difficulty1",
@@ -1050,6 +1049,18 @@ local newRandomizedBounties = {
 		RandomMetaUpgradeCostTotal = 30,
 		RandomShrineUpgradePointTotal = 20,
 
+		LootOptions = {
+			{
+				Name = "GemPointsBigDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						GemPoints = 100,
+					},
+				},
+			},
+		},
+
 		UnlockGameStateRequirements = {
 			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyRandom" },
 			{
@@ -1072,6 +1083,18 @@ local newRandomizedBounties = {
 
 		RandomMetaUpgradeCostTotal = 30,
 		RandomShrineUpgradePointTotal = 32,
+
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 1,
+					},
+				},
+			},
+		},
 
 		UnlockGameStateRequirements = {
 			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyRandom" },
