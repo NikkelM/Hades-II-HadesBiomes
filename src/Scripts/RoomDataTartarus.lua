@@ -366,6 +366,16 @@ local roomReplacements = {
 			{ GlobalVoiceLines = "StorytellerRunStartVoiceLines" },
 		},
 
+		ForcedRewards = {
+			{
+				Name = "Boon",
+				LootName = "TrialUpgrade",
+				GameStateRequirements = {
+					RequiredFalseTextLines = { "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01", },
+				}
+			},
+		},
+
 		HarvestPointChances = { 0.1, },
 		ShovelPointChance = 0.1,
 		PickaxePointChance = 0.1,
@@ -560,7 +570,6 @@ local roomModifications = {
 		MusicStartDelay = 1.75,
 		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		ChooseRewardRequirements = mod.NilValue,
-		ForcedRewards = mod.NilValue,
 		IneligibleRewards = game.RewardSets.OpeningRoomBans,
 		MaxAppearancesThisBiome = 1,
 		BlockRunProgressUI = true,

@@ -1,6 +1,7 @@
-local newInteractTextLines = {
+local newPortedInteractTextLines = {
 	-- #region Charon Fight Questline
-	HermesAboutCharonFight01 = {
+	{
+		Name = "HermesAboutCharonFight01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "HermesAboutTyphonReveal01",
 			CreateNewPriorityGroup = true,
@@ -18,7 +19,8 @@ local newInteractTextLines = {
 			"I can't believe you got into a fight with my professional associate, you daft or something, Coz? Just about everybody that I know, they're all at least a little bit afraid of that one and his boat, yet you think you can take him, huh?"
 		},
 	},
-	HermesAboutCharonFight02 = {
+	{
+		Name = "HermesAboutCharonFight02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "HermesAboutCharonFight01",
 		},
@@ -35,7 +37,8 @@ local newInteractTextLines = {
 			"So you took on my good professional associate, is that right, Coz? And you beat the big boatman himself! I knew you were pretty tough, but not {#DialogueItalicFormat}that {#PreviousFormat}tough! Impressive work! He's impressed, too. He isn't even mad!"
 		},
 	},
-	HermesBeatCharonQuest01 = {
+	{
+		Name = "HermesBeatCharonQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "HermesAboutCharonFight01",
 		},
@@ -51,7 +54,8 @@ local newInteractTextLines = {
 			"Hey, uh, so I kind of placed a bet with the old boatman, my associate that is, that you could beat him in a fight, twice in a row! No pressure, or anything, but just in case you prove me right one of these days, I would appreciate it, Coz!"
 		},
 	},
-	HermesBeatCharonQuestComplete = {
+	{
+		Name = "HermesBeatCharonQuestComplete",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "HermesAboutCharonFight01",
 		},
@@ -71,7 +75,7 @@ local newInteractTextLines = {
 	-- #endregion
 }
 mod.AddNarrativeDataEntries(
-	newInteractTextLines, "HermesUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
+	newPortedInteractTextLines, "HermesUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
 	{ Hermes = { "Dusa" } }, { Hermes_ = "Dusa_0" },
 	{ Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01" }
 )

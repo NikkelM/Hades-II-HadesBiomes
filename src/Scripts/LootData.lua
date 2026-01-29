@@ -81,33 +81,12 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 	end
 	-- #endregion
 
-	local keysCreateNewGroup = {}
-	local keysOthers = {}
-	for key, data in pairs(newTextLines) do
-		local metadata = data.ModsNikkelMHadesBiomes_TextLineMetadata
-		if metadata == nil then
-			mod.DebugPrint("Missing ModsNikkelMHadesBiomes_TextLineMetadata for " .. key, 1)
+	for index, data in ipairs(newTextLines) do
+		local key = data.Name
+		if key == nil then
+			mod.DebugPrint("A text line set is missing the Name field! (At index " .. index .. ")", 1)
 			return
 		end
-
-		-- We need to insert all those textlines that create new groups first, so others can be added to those groups
-		if metadata.CreateNewPriorityGroup then
-			table.insert(keysCreateNewGroup, key)
-		else
-			table.insert(keysOthers, key)
-		end
-	end
-
-	local orderedKeys = {}
-	for _, key in ipairs(keysCreateNewGroup) do
-		table.insert(orderedKeys, key)
-	end
-	for _, key in ipairs(keysOthers) do
-		table.insert(orderedKeys, key)
-	end
-
-	for _, key in ipairs(orderedKeys) do
-		local data = newTextLines[key]
 		local metadata = data.ModsNikkelMHadesBiomes_TextLineMetadata
 		-- #region Required modifications to all text lines
 		-- Mark as modded textline

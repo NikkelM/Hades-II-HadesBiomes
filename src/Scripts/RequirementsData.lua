@@ -38,6 +38,10 @@ local newNamedRequirements = {
 			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
 		},
 		{
+			-- Back-compat: Has started at least one normal run to get the new forced Chaos boon in RoomOpening
+			PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01" },
+		},
+		{
 			Path = { "GameState", "MetaUpgradeLimitLevel", },
 			Comparison = ">=",
 			Value = 15,
