@@ -127,6 +127,7 @@ local roomModifications = {
 		UnloadWeapons = true,
 		BlockFamiliars = true,
 		BlockRunProgressUI = true,
+		SkipUnusedWeaponBonusReward = true,
 	},
 
 	-- OPENING ROOMS

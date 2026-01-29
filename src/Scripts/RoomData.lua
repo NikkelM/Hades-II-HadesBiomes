@@ -151,6 +151,7 @@ local surfaceRoomModifications = {
 		BlockFamiliars = true,
 		BlockRunProgressUI = true,
 		BlockDoorHealFromPrevious = true,
+		SkipUnusedWeaponBonusReward = true,
 		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 	},
 	Return02 = {
@@ -177,6 +178,7 @@ local surfaceRoomModifications = {
 		BlockFamiliars = true,
 		BlockRunProgressUI = true,
 		BlockDoorHealFromPrevious = true,
+		SkipUnusedWeaponBonusReward = true,
 		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 	},
 	Return03 = {
@@ -203,6 +205,7 @@ local surfaceRoomModifications = {
 		BlockFamiliars = true,
 		BlockRunProgressUI = true,
 		BlockDoorHealFromPrevious = true,
+		SkipUnusedWeaponBonusReward = true,
 		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 	},
 	Return04 = {
@@ -228,6 +231,7 @@ local surfaceRoomModifications = {
 		BlockFamiliars = true,
 		BlockRunProgressUI = true,
 		BlockDoorHealFromPrevious = true,
+		SkipUnusedWeaponBonusReward = true,
 		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 	},
 	Return05 = {
@@ -253,6 +257,7 @@ local surfaceRoomModifications = {
 		BlockFamiliars = true,
 		BlockRunProgressUI = true,
 		BlockDoorHealFromPrevious = true,
+		SkipUnusedWeaponBonusReward = true,
 		NextRoomEntranceFunctionArgsOverride = { NotifyName = "ThisWillNeverHappen" },
 	},
 	Return06 = {
@@ -281,6 +286,7 @@ local surfaceRoomModifications = {
 		BlockFamiliars = true,
 		BlockRunProgressUI = true,
 		BlockDoorHealFromPrevious = true,
+		SkipUnusedWeaponBonusReward = true,
 	},
 }
 
