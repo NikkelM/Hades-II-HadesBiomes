@@ -170,7 +170,7 @@ modutil.mod.Path.Wrap("RecordRunCleared", function(base)
 	base()
 
 	-- Most of the stats tracked here are for Quests
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.ActiveBounty == nil then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty]) and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics) then
 		local currentBiome = game.CurrentRun.CurrentRoom.RoomSetName
 
 		-- Record with which level of each ShrineUpgrades/Vows/Fear the run was cleared

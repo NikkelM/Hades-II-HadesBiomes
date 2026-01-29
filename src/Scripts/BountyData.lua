@@ -968,6 +968,8 @@ local newRandomizedBounties = {
 		ModsNikkelMHadesBiomes_RandomBountyStreakEligible = true,
 		-- So we can show the run clear screen after a clear
 		ModsNikkelMHadesBiomesForceRunClearScreen = true,
+		-- Allow the randomized bounties to count into the run clear statistics (all other bounties are not recording statistics)
+		ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics = true,
 		-- Also allow the new keepsakes to be chosen
 		-- TODO: If https://github.com/excellent-ae/zannc-GodsAPI/issues/22 is implemented, we can remove this override
 		RandomKeepsakeNames = game.ConcatTableValuesIPairs({
