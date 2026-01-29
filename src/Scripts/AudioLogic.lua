@@ -56,7 +56,8 @@ end)
 function mod.SafetyResumeBossMusic()
 	if game.AudioState.MusicId ~= nil and game.AudioState.MusicPaused then
 		game.ResumeMusic()
-	elseif game.AudioState.MusicId == nil then
+	end
+	if game.AudioState.MusicId == nil then
 		game.MusicMixer({ PlayBiomeMusic = true, MusicSection = 0, UseRoomMusicSection = true, })
 	end
 end
