@@ -5,13 +5,15 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - Added new randomized Chaos Trials, "Chaos Within", "Great Chaos Within" and "Greater Chaos Within". These function the same way as the base game randomized Trials, allowing you to battle out of Tartarus with a random weapon, keepsake, familiar, arcana and vow setup. Complete the story of Zagreus' Journey (10 clears) and have all keepsakes, weapons and familiars unlocked to find these Trials in the Pitch-Black Stone.
-- Added subtitles. For languages available in Hades II that did not have a localization in the first game, the English subtitles will be shown.
 - Added new dialogue from Chaos, explaining the nature of Zagreus' Journey runs.
+- Added a new minor prophecy related to clearing the new Chaos Trials.
+- Added subtitles. For languages available in Hades II that did not have a localization in the first game, the English subtitles will be shown.
 
 Other fixes and improvements:
 - When trading Zagreus' Journey resources with the broker, the resource display on the top right will now show how many of the given boss resource you currently have in your inventory, instead of always showing a placeholder.
 - Fixed: Damage taken from small Hydra heads during the Asphodel boss fight is not correctly attributed to the main head in the "Damage Taken" section of the run clear screen.
 - Fixed: "Out of Tartarus" music track plays in Elysium instead of Tartarus.
+- Fixed: The "Heart Of Stone" minor prophecy has a placeholder objective text after it has been completed.
 - Fixed: Localized dialogues in languages other than English do not terminate *italic* text correctly, causing all text after the first occurrence to be italicized for the current dialogue box.
 <!--Releasenotes end-->
 

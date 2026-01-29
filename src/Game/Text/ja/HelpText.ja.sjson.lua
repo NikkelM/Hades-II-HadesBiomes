@@ -1360,7 +1360,7 @@ local newData = {
 	-- 	"{!Icons.QuestProgressIncomplete} Start Believing in {$Keywords.CharBouldy}, and {$Keywords.CharBouldy} Will Start Believing in You",
 	-- },
 	-- {
-	-- 	Id = "ModsNikkelMHadesBiomes_QuestBouldyUpgrades_Complete",
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestBouldyUpgrades_Cleared",
 	-- 	DisplayName =
 	-- 	"{!Icons.QuestProgressComplete} Start Believing in {$Keywords.CharBouldy}, and {$Keywords.CharBouldy} Will Start Believing in You",
 	-- },
@@ -1434,6 +1434,22 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_QuestLog_BaseSuitAspect",
 	-- 	DisplayName = "Aspect of Melinoë (Xinth)",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Implausible Outcomes ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday clear any of the {#Emph}{$BountyData.ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1.Name} {#Prev}Trials appearing in the {#Emph}{$Keywords.BountyBoard} {#Prev}at least three times, without fail.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak_Condition",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressIncomplete} Successively Clear Any Three All-Random {$Keywords.PackagedBounties} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak_Cleared",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressComplete} Successively Clear Any Three All-Random {$Keywords.PackagedBounties} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
 	-- },
 	-- #endregion
 

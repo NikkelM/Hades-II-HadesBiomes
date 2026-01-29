@@ -22,6 +22,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestMetaUpgrades",
 	"ModsNikkelMHadesBiomes_QuestPactUpgrades",
 	"ModsNikkelMHadesBiomes_QuestChaosKeepsakeFullRun",
+	"ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak",
 	"ModsNikkelMHadesBiomes_QuestHermesBeatCharon",
 	"ModsNikkelMHadesBiomes_QuestPurgeLegendaryBoon",
 	-- self-improvement & stockpiling
@@ -1194,6 +1195,38 @@ local newQuestData = {
 			"ModsNikkelMHadesBiomes_QuestCropsSmall_Styx",
 		}
 	},
+	-- Clear streak on modded random Chaos Trials/Bounties
+	ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak = {
+		InheritFrom = { "DefaultQuestItem", "DefaultChaosQuest" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 4,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_ChaosAboutModdedRandomBounties01" }
+			},
+			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyRandom" },
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomes_RandomBountyHighestClearStreak" },
+				Comparison = ">=",
+				Value = 3,
+			},
+		},
+		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak_Condition",
+		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak_Cleared",
+		CashedOutVoiceLines = {
+			{
+				PreLineWait = 0.4,
+				GameStateRequirements = { {}, },
+				Cooldowns = { { Name = "MorosProphecyFulfilledSpeech", Time = 3 }, },
+				SkipAnim = true,
+				RequiredSourceValueFalse = "InPartnerConversation",
+				ObjectType = "NPC_Moros_01",
+				{ Cue = "/VO/Moros_0628", Text = "Even the Fates themselves perhaps did not expect this." },
+			},
+		},
+	}
 	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.QuestData, newQuestData)

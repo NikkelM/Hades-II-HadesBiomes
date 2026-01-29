@@ -52,8 +52,8 @@ Among many smaller improvements and fixes, the following major features are plan
 - [DONE!] Erebus gates (when there is enough Fear in the Night)
 - [DONE!] New incantations for meta-progression on the new route
 - [DONE!] New minor prophecies for progression through Zagreus' Journey
-- [DONE!] New randomized Chaos Trials for the new route.
-- Additional Chaos Trials for fun challenges and themed runs.
+- [DONE!] New randomized Chaos Trials for the new route
+- Additional Chaos Trials for fun challenges and themed runs
 - New story events and dialogue between Melinoë and other characters from Hades II, concerning the new route and gameplay features
 
 You can track all planned features and fixes on the [project's GitHub Issues page](https://github.com/NikkelM/Hades-II-HadesBiomes/issues).

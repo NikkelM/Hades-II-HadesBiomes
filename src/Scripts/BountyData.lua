@@ -964,7 +964,6 @@ local newRandomizedBounties = {
 		Name = "ModsNikkelMHadesBiomes_BasePackageBountyRandom",
 		InheritFrom = { "BasePackageBountyRandom" },
 		DebugOnly = true,
-		-- TODO: New quest
 		ModsNikkelMHadesBiomes_RandomBountyStreakEligible = true,
 		-- So we can show the run clear screen after a clear
 		ModsNikkelMHadesBiomesForceRunClearScreen = true,

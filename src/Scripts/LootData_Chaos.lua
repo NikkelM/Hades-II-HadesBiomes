@@ -81,7 +81,6 @@ mod.AddNarrativeDataEntries(
 	{ Chaos_ = "ModsNikkelMHadesBiomes_Portrait_Chaos_Default_01" }
 )
 
--- TODO: HelpText/LootData entries for these for localizations
 local newModdedInteractTextLines = {
 	-- #region Intro conversations/New route explanation
 	-- Should play during the ForcedReward of the first time dropping into RoomOpening
@@ -136,7 +135,7 @@ local newModdedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns02A",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01",
+			InsertAfterNarrativeTextLine = "ChaosAboutSurface01",
 			CreateNewPriorityGroup = true,
 		},
 		GameStateRequirements = {
@@ -267,7 +266,7 @@ local newModdedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ChaosAboutZagreusEscapeAttempts01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "ChaosAboutBounties01",
+			InsertAfterNarrativeTextLine = "ChaosGrantsDarkness01_B",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
