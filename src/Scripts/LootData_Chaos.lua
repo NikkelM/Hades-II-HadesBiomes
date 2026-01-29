@@ -126,6 +126,7 @@ local newModdedInteractTextLines = {
 			SkipContextArt = true,
 			SecretMusic = "/Music/ChaosTheme_MC",
 			SecretMusicActiveStems = { "ChaosBass" },
+			PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "EndSecretMusicAndResumeMusic",
 			PreContentSound = "/SFX/Menu Sounds/ChaosBoonChange",
 			Text =
 			"I have altered your perception of reality for this night, aided by your own ability to peer through the veil of dreams and time. Your brother's journey becomes your own. Take my mark, and find me again."
@@ -293,7 +294,7 @@ local newModdedInteractTextLines = {
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosMiscSFX",
 			Text =
-			"I remember the many times that your brother entered my realm during his quest; much in the same way that many of his attempts likened to each other, so do yours compare to his. Yet, none shall ever be the same, for each is unique in its own way. I often ponder the implications of this."
+			"I recall the many times that your brother entered my realm during his quest; much in the same way that many of his attempts likened to each other, so do yours compare to his. Yet, none shall ever be the same, for each is unique in its own way. I often ponder the implications of this."
 		},
 	},
 	{

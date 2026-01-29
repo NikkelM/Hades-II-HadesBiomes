@@ -60,3 +60,11 @@ function mod.SafetyResumeBossMusic()
 		game.MusicMixer({ PlayBiomeMusic = true, MusicSection = 0, UseRoomMusicSection = true, })
 	end
 end
+
+function mod.EndSecretMusicAndResumeMusic()
+	SetSoundCueValue({ Names = { "Section" }, Id = game.AudioState.SecretMusicId, Value = 10 })
+	StopSound({ Id = game.AudioState.SecretMusicId, Duration = 2 })
+	game.AudioState.SecretMusicId = nil
+	game.AudioState.SecretMusicName = nil
+	game.ResumeMusic()
+end
