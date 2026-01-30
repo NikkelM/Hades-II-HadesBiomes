@@ -12,6 +12,7 @@
 Other fixes and improvements:
 - When trading Zagreus' Journey resources with the broker, the resource display on the top right will now show how many of the given boss resource you currently have in your inventory, instead of always showing a placeholder.
 - Balancing: Slightly adjusted the feel of the Doomstone's spawning fragment launch.
+- Balancing: The Wretched Sneak now waits longer after it's ranged attack before teleporting away.
 - Fixed: Bloodroot and shovel points can spawn over gaps in the room in Doomstone miniboss chambers in Tartarus.
 - Fixed: "Out of Tartarus" music track plays in Elysium instead of Tartarus.
 - Fixed: After defeating the Tiny Vermin in Styx, the biome music starts with an incorrect section when returning to the hub room.
