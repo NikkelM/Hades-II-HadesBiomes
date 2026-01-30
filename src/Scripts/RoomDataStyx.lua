@@ -595,11 +595,15 @@ local roomModifications = {
 		DistanceTriggers = {
 			[1] = {
 				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
+				Stinger = mod.NilValue,
+				FunctionName = _PLUGIN.guid .. "." .. "PlaySoundWithSource",
+				Args = { Name = "/VO/CerberusBarks", },
 			},
 			[2] = {
 				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
 			},
 		},
+		DistanceTriggersPostCombatReload = true,
 		TimerBlock = "ShopEncounter",
 		StoreDataName = "Q_WorldShop",
 		PostCombatReloadThreadedEvents = { { FunctionName = "CheckConversations" } },

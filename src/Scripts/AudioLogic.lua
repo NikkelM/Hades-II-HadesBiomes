@@ -69,3 +69,7 @@ function mod.EndSecretMusicAndResumeMusic()
 	game.AudioState.SecretMusicName = nil
 	game.ResumeMusic()
 end
+
+function mod.PlaySoundWithSource(source, args)
+	PlaySound(args)
+end
