@@ -2,7 +2,7 @@ modutil.mod.Path.Wrap("CheckPackagedBountyCompletion", function(base)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		local bountyData = game.BountyData[game.CurrentRun.ActiveBounty]
 		if bountyData == nil or not game.Contains(bountyData.Encounters, game.CurrentRun.CurrentRoom.Encounter.Name) then
-			return false
+			return base()
 		end
 
 		if bountyData.ModsNikkelMHadesBiomes_RandomBountyStreakEligible then
