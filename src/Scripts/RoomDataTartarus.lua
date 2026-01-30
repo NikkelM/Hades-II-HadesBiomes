@@ -670,6 +670,9 @@ local roomModifications = {
 	},
 	A_MiniBoss02 = {
 		BackupCauseOfDeath = "HeavyRangedSplitterMiniboss",
+
+		HasHarvestPoint = false,
+		HasShovelPoint = false,
 	},
 	A_MiniBoss03 = {
 		-- Even though the enemy is called WretchAssassin, the Codex entry is called WretchAssassinMiniboss, which we need for the prtrait
@@ -677,6 +680,9 @@ local roomModifications = {
 	},
 	A_MiniBoss04 = {
 		BackupCauseOfDeath = "HeavyRangedSplitterMiniboss",
+
+		HasHarvestPoint = false,
+		HasShovelPoint = false,
 	},
 
 	-- BOSSES

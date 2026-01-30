@@ -84,6 +84,12 @@ local hadesProjectilesModifications = {
 	HeavyRangedSplitterFragment = {
 		DieWithOwner = true,
 	},
+	SpawnSplitterFragment = {
+		Speed = 1200,
+		Gravity = 2400,
+		LaunchAngle = -45,
+		MaxSpeed = mod.NilValue,
+	},
 	SpawnSplitterFragmentSuperElite = {
 		Thing = {
 			Saturation = -1.0,
