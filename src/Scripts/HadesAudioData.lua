@@ -2584,7 +2584,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- Thus was Hades, feared ruler of the dead, reunited with his long-lost bride, Persephone, the Queen; and, together with their firstborn son, Prince Zagreus, they would go on to reign eternally beneath the Earth, in relative harmony.
 			{ Cue = "/VO/Megaera_00340",    SubtitleColor = game.Color.NarratorVoice, },
 			-- The Queen's return marked an occasion of enthusiastic joy... so much as possible, in that dark, gloom-filled realm of the dead.
-			{ Cue = "/VO/Megaera_00341",    SubtitleColor = game.Color.NarratorVoice,                                                                                                                                                                                PreLineWait = 1 },
+			{ Cue = "/VO/Megaera_00341",    SubtitleColor = game.Color.NarratorVoice,                                                                                                                                                                           PreLineWait = 1 },
 			-- And, even after all this time, Olympus never did discover what transpired there in the Underworld.
 			-- { Cue = "/VO/Megaera_00342", SubtitleColor = Color.NarratorVoice, PreLineWait = 1 },
 			{ Cue = "/VO/Storyteller_0097", Text = "{#Emph}One rightly may imagine that this tale has a very thrilling end; although I am afraid for now, that we are out of Time.",                                                                            TextLimit = 300, PreLineWait = 0.8, NoTarget = true },
@@ -3802,6 +3802,24 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			BreakIfPlayed = true,
 			RandomRemaining = true,
 			PreLineWait = 1.15,
+			SuccessiveChanceToPlayAll = 0.5,
+			GameStateRequirements = {
+				{
+					Path = { "CurrentRun", "ActiveBounty" },
+					IsAny = mod.RandomizedChaosTrialBountyNames,
+				},
+			},
+			{ Cue = "/VO/MelinoeField_3746", Text = "For Almighty Chaos." },
+			{ Cue = "/VO/MelinoeField_3747", Text = "By the will of Chaos.",     PlayFirst = true },
+			{ Cue = "/VO/MelinoeField_3748", Text = "Everything is possible." },
+			{ Cue = "/VO/MelinoeField_3749", Text = "Did Chaos witness this?" },
+			{ Cue = "/VO/MelinoeField_4818", Text = "See that, Almighty Chaos?" },
+			{ Cue = "/VO/MelinoeField_4819", Text = "This one's for you, Chaos." },
+		},
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 1.15,
 			GameStateRequirements = {},
 			-- Only plays if we've not seen the ending yet, as after it, we no longer switch to Zagreus
 			{ Cue = "/VO/MelinoeField_3881", Text = "...now for Zagreus to do his part.", RequiredFalseTextLines = { "Ending01" }, },
@@ -4534,7 +4552,9 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				GameStateRequirements = {
 					{
 						Path = { "CurrentRun", "ActiveBounty" },
-						IsAny = { "PackageBountyRandomUnderworld_Difficulty2", "PackageBountyRandomSurface_Difficulty2" },
+						IsAny = game.ConcatTableValuesIPairs(
+							{ "PackageBountyRandomUnderworld_Difficulty2", "PackageBountyRandomSurface_Difficulty2" },
+							mod.DifficultRandomizedChaosTrialBountyNames),
 					},
 				},
 			},

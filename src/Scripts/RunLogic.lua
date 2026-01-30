@@ -70,7 +70,8 @@ end)
 
 -- Recording stats after a run (clearing or losing)
 modutil.mod.Path.Wrap("RecordRunStats", function(base)
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+	-- Don't record bounty runs, except for randomized bounties
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics)) then
 		game.CurrentRun.RunResult = game.GetRunResult(game.CurrentRun)
 		game.CurrentRun.EndingRoomName = game.CurrentRun.CurrentRoom.Name
 		game.CurrentRun.WeaponsCache = game.DeepCopyTable(game.CurrentRun.Hero.Weapons)
@@ -170,7 +171,7 @@ modutil.mod.Path.Wrap("RecordRunCleared", function(base)
 	base()
 
 	-- Most of the stats tracked here are for Quests
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.ActiveBounty == nil then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics)) then
 		local currentBiome = game.CurrentRun.CurrentRoom.RoomSetName
 
 		-- Record with which level of each ShrineUpgrades/Vows/Fear the run was cleared
@@ -215,12 +216,11 @@ end)
 
 modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
 	if run.ModsNikkelMHadesBiomesIsModdedRun then
-		-- Bounty runs shouldn't count towards lifetime stats
-		if game.CurrentRun.ActiveBounty == nil then
+		-- Bounty runs shouldn't count towards lifetime stats, except for randomized bounties
+		if game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics) then
 			local clearCountRecordName = "ModsNikkelMHadesBiomesClearCount"
 			local fastestTimeRecordName = "ModsNikkelMHadesBiomesFastestTime"
 			local shrinePointsRecordName = "ModsNikkelMHadesBiomesHighestShrinePoints"
-
 			if run.TraitCache ~= nil then
 				for traitName in pairs(run.TraitCache) do
 					game.GameState.LifetimeTraitStats[traitName] = game.GameState.LifetimeTraitStats[traitName] or {}

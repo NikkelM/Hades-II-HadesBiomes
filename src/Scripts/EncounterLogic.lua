@@ -37,7 +37,12 @@ modutil.mod.Path.Wrap("OnAllEnemiesDead", function(base, currentRoom, currentEnc
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		if currentEncounter.EncounterType == "PerfectClear" then
 			game.thread(game.HadesSpeakingPresentation, currentRoom,
-				{ VoiceLines = { GlobalVoiceLines = "PerfectClearEncounterClearedVoiceLines" }, ColorGrade = "PerfectClear" })
+				{
+					VoiceLines = { GlobalVoiceLines = "PerfectClearEncounterClearedVoiceLines" },
+					ColorGrade = "PerfectClear",
+					SubtitleColor = game.Color.HadesVoice,
+					LineHistoryName = "Hades"
+				})
 		end
 	end
 end)

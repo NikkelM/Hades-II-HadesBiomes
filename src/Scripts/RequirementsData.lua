@@ -10,6 +10,10 @@ game.NamedRequirementsData.IsDevotionEncounter[1].IsAny = game.CombineTables(
 	game.NamedRequirementsData.IsDevotionEncounter[1].IsAny, {
 		"DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium"
 	})
+
+-- Add the new randomized Chaos Trials/Bounties to the check for the current bounty type
+game.NamedRequirementsData.StandardPackageBountyActive[2].IsNone = game.ConcatTableValuesIPairs(
+	game.NamedRequirementsData.StandardPackageBountyActive[2].IsNone, mod.RandomizedChaosTrialBountyNames)
 -- #endregion
 
 -- #region New requirements
@@ -24,6 +28,100 @@ local newNamedRequirements = {
 		},
 		{
 			PathFalse = { "GameState", "TextLinesRecord", "PersephoneReturnsHome01" },
+		},
+	},
+	-- To be able to unlock the new randomized Chaos Trials
+	ModsNikkelMHadesBiomes_PackageBountyRandom = {
+		NamedRequirements = { "HasAllMetaCardsUnlocked" },
+		{
+			-- Has reached modded ending
+			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+		},
+		{
+			-- Back-compat: Has started at least one normal run to get the new forced Chaos boon in RoomOpening
+			PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01" },
+		},
+		{
+			Path = { "GameState", "MetaUpgradeLimitLevel", },
+			Comparison = ">=",
+			Value = 15,
+		},
+		{
+			Path = { "GameState", "WeaponsUnlocked", },
+			HasAll = {
+				"WeaponStaffSwing",
+				"StaffClearCastAspect",
+				"StaffSelfHitAspect",
+				"StaffRaiseDeadAspect",
+				"WeaponDagger",
+				"DaggerBlockAspect",
+				"DaggerHomingThrowAspect",
+				"DaggerTripleAspect",
+				"WeaponTorch",
+				"TorchDetonateAspect",
+				"TorchSprintRecallAspect",
+				"TorchAutofireAspect",
+				"WeaponAxe",
+				"AxeArmCastAspect",
+				"AxePerfectCriticalAspect",
+				"AxeRallyAspect",
+				"WeaponLob",
+				"LobCloseAttackAspect",
+				"LobImpulseAspect",
+				"LobGunAspect",
+				"WeaponSuit",
+				"SuitHexAspect",
+				"SuitMarkCritAspect",
+				"SuitComboAspect",
+			},
+		},
+		{
+			Path = { "GameState", "GiftPresentation" },
+			HasAll = game.ConcatTableValuesIPairs({
+				"ManaOverTimeRefundKeepsake",
+				"BossPreDamageKeepsake",
+				"ReincarnationKeepsake",
+				"DoorHealReserveKeepsake",
+				"DeathVengeanceKeepsake",
+				"BlockDeathKeepsake",
+				"EscalatingKeepsake",
+				"BonusMoneyKeepsake",
+				"TimedBuffKeepsake",
+				"LowHealthCritKeepsake",
+				"SpellTalentKeepsake",
+				"ForceZeusBoonKeepsake",
+				"ForceHeraBoonKeepsake",
+				"ForcePoseidonBoonKeepsake",
+				"ForceDemeterBoonKeepsake",
+				"ForceApolloBoonKeepsake",
+				"ForceAphroditeBoonKeepsake",
+				"ForceHephaestusBoonKeepsake",
+				"ForceHestiaBoonKeepsake",
+				"ForceAresBoonKeepsake",
+				"AthenaEncounterKeepsake",
+				"SkipEncounterKeepsake",
+				"ArmorGainKeepsake",
+				"FountainRarityKeepsake",
+				"UnpickedBoonKeepsake",
+				"DecayingBoostKeepsake",
+				"DamagedDamageBoostKeepsake",
+				"BossMetaUpgradeKeepsake",
+				"TempHammerKeepsake",
+				"RandomBlessingKeepsake",
+				"RarifyKeepsake",
+				"HadesAndPersephoneKeepsake",
+				"GoldifyKeepsake"
+			}, mod.SharedKeepsakePortKeepsakeTraitNames),
+		},
+		{
+			Path = { "GameState", "FamiliarsUnlocked", },
+			HasAll = {
+				"FrogFamiliar",
+				"CatFamiliar",
+				"RavenFamiliar",
+				"HoundFamiliar",
+				"PolecatFamiliar",
+			},
 		},
 	},
 }

@@ -114,8 +114,35 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 4 then
+			-- Patch GiftPresentation to rename SharedKeepsakePort keepsake entries after they were renamed
+			game.GameState.GiftPresentation = game.GameState.GiftPresentation or {}
+			if game.GameState.GiftPresentation.SisyphusVanillaKeepsake then
+				game.GameState.GiftPresentation[mod.SharedKeepsakePortSisyphusKeepsakeTrait] = true
+				game.GameState.GiftPresentation.SisyphusVanillaKeepsake = nil
+			end
+			if game.GameState.GiftPresentation.ShieldBossKeepsake then
+				game.GameState.GiftPresentation[mod.SharedKeepsakePortEurydiceKeepsakeTrait] = true
+				game.GameState.GiftPresentation.ShieldBossKeepsake = nil
+			end
+			if game.GameState.GiftPresentation.ShieldAfterHitKeepsake then
+				game.GameState.GiftPresentation[mod.SharedKeepsakePortPatroclusKeepsakeTrait] = true
+				game.GameState.GiftPresentation.ShieldAfterHitKeepsake = nil
+			end
+			if game.GameState.GiftPresentation.PerfectClearDamageBonusKeepsake then
+				game.GameState.GiftPresentation[mod.SharedKeepsakePortThanatosKeepsakeTrait] = true
+				game.GameState.GiftPresentation.PerfectClearDamageBonusKeepsake = nil
+			end
+
+			-- New GameState variables for randomized bounty streaks
+			game.GameState.ModsNikkelMHadesBiomes_RandomBountyClearStreak = game.GameState
+					.ModsNikkelMHadesBiomes_RandomBountyClearStreak or 0
+			game.GameState.ModsNikkelMHadesBiomes_RandomBountyHighestClearStreak = game.GameState
+					.ModsNikkelMHadesBiomes_RandomBountyHighestClearStreak or 0
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 3
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 4
 	end
 
 	return base()

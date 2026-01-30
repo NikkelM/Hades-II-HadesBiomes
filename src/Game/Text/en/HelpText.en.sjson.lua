@@ -1386,7 +1386,7 @@ local newData = {
 		"{!Icons.QuestProgressIncomplete} Start Believing in {$Keywords.CharBouldy}, and {$Keywords.CharBouldy} Will Start Believing in You",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomes_QuestBouldyUpgrades_Complete",
+		Id = "ModsNikkelMHadesBiomes_QuestBouldyUpgrades_Cleared",
 		DisplayName =
 		"{!Icons.QuestProgressComplete} Start Believing in {$Keywords.CharBouldy}, and {$Keywords.CharBouldy} Will Start Believing in You",
 	},
@@ -1460,6 +1460,55 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_QuestLog_BaseSuitAspect",
 		DisplayName = "Aspect of Melinoë (Xinth)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Implausible Outcomes ",
+		Description =
+		"The daughter of the god of the dead shall someday clear any of the {#Emph}{$BountyData.ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1.Name} {#Prev}Trials appearing in the {#Emph}{$Keywords.BountyBoard} {#Prev}at least three times, without fail.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak_Condition",
+		DisplayName =
+		"{!Icons.QuestProgressIncomplete} Successively Clear Any Three All-Random {$Keywords.PackagedBounties} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak_Cleared",
+		DisplayName =
+		"{!Icons.QuestProgressComplete} Successively Clear Any Three All-Random {$Keywords.PackagedBounties} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
+	},
+	-- #endregion
+
+	-- #region Chaos Trials/Bounties
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
+		DisplayName = "Chaos Within",
+		Description =
+		"Let {$Keywords.CharChaos} influence almost every factor in your battle through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, though with {#ShrineHighlightFormat}{$BountyData.ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1.RandomShrineUpgradePointTotal}{#Prev}{!Icons.ShrinePointNoTooltip} {#Emph}Fear{#Prev}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1_Short",
+		DisplayName = "Chaos Within",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
+		DisplayName = "Great Chaos Within",
+		Description =
+		"Let {$Keywords.CharChaos} influence almost every factor in your battle through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, including {#ShrineHighlightFormat}{$BountyData.ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2.RandomShrineUpgradePointTotal}{#Prev}{!Icons.ShrinePointNoTooltip} {#Emph}Fear {#Prev}of randomly selected {#Emph}Vows{#Prev}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2_Short",
+		DisplayName = "Great Chaos Within",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3",
+		DisplayName = "Greater Chaos Within",
+		Description =
+		"Let {$Keywords.CharChaos} influence almost every factor in your battle through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, including {#ShrineHighlightFormat}{$BountyData.ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3.RandomShrineUpgradePointTotal}{#Prev}{!Icons.ShrinePointNoTooltip} {#Emph}Fear {#Prev}of randomly selected {#Emph}Vows{#Prev}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3_Short",
+		DisplayName = "Greater Chaos Within",
 	},
 	-- #endregion
 }

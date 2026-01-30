@@ -324,6 +324,22 @@ local function on_ready()
 			import "Game/Text/zh-TW/TraitText.zh-TW.sjson.lua"
 			DebugLogScriptImportProgress("TraitText SJSON")
 
+			import "Game/Text/de/_LootData_Chaos.de.sjson.lua"
+			import "Game/Text/el/_LootData_Chaos.el.sjson.lua"
+			import "Game/Text/es/_LootData_Chaos.es.sjson.lua"
+			import "Game/Text/fr/_LootData_Chaos.fr.sjson.lua"
+			import "Game/Text/it/_LootData_Chaos.it.sjson.lua"
+			import "Game/Text/ja/_LootData_Chaos.ja.sjson.lua"
+			import "Game/Text/ko/_LootData_Chaos.ko.sjson.lua"
+			import "Game/Text/pl/_LootData_Chaos.pl.sjson.lua"
+			import "Game/Text/pt-BR/_LootData_Chaos.pt-BR.sjson.lua"
+			import "Game/Text/ru/_LootData_Chaos.ru.sjson.lua"
+			import "Game/Text/tr/_LootData_Chaos.tr.sjson.lua"
+			import "Game/Text/uk/_LootData_Chaos.uk.sjson.lua"
+			import "Game/Text/zh-CN/_LootData_Chaos.zh-CN.sjson.lua"
+			import "Game/Text/zh-TW/_LootData_Chaos.zh-TW.sjson.lua"
+			DebugLogScriptImportProgress("Chaos LootData SJSON")
+
 			-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 			-- Done first, as the EncounterData depends on the EnemySets
 			import "Scripts/EnemySets.lua"
@@ -446,6 +462,8 @@ local function on_ready()
 			-- "Normal" code changes
 			import "Scripts/AudioLogic.lua"
 			import "Scripts/BiomeMapPresentation.lua"
+			import "Scripts/BountyLogic.lua"
+			import "Scripts/BountyPresentation.lua"
 			import "Scripts/CodexLogic.lua"
 			import "Scripts/Combat.lua"
 			import "Scripts/CombatLogic.lua"

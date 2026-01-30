@@ -377,6 +377,17 @@ mod.ModdedShrineBountyNames = {
 	"ModsNikkelMHadesBiomes_BountyShrineStaff_StyxBoss",
 }
 
+mod.RandomizedChaosTrialBountyNames = {
+	"ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
+	"ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
+	"ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3",
+}
+
+mod.DifficultRandomizedChaosTrialBountyNames = {
+	"ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
+	"ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3",
+}
+
 mod.CodexChapterName = "ModsNikkelMHadesBiomesCodexEntry"
 
 -- Can be directly gathered in rooms
@@ -459,6 +470,13 @@ mod.SharedKeepsakePortPatroclusKeepsakeTrait = "zannc-SharedKeepsakePort-ShieldA
 mod.SharedKeepsakePortPatroclusKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Patroclus"
 mod.SharedKeepsakePortThanatosKeepsakeTrait = "zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake"
 mod.SharedKeepsakePortThanatosKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Thanatos"
+
+mod.SharedKeepsakePortKeepsakeTraitNames = {
+	mod.SharedKeepsakePortSisyphusKeepsakeTrait,
+	mod.SharedKeepsakePortEurydiceKeepsakeTrait,
+	mod.SharedKeepsakePortPatroclusKeepsakeTrait,
+	mod.SharedKeepsakePortThanatosKeepsakeTrait,
+}
 
 -- Not actually a constant, will be populated in mod.AddNarrativeDataEntries()
 mod.LootVoiceBankMappings = mod.LootVoiceBankMappings or {}

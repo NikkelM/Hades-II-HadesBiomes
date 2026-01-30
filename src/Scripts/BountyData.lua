@@ -931,6 +931,7 @@ mod.AddTableKeysSkipDupes(game.BountyData, newShrineBounties)
 -- #endregion
 
 -- #region Chaos Trials
+-- #region Bounty start VoiceLines
 local function modifyBountyTextLineRequirements(textLine)
 	if textLine.GameStateRequirements ~= nil then
 		for _, requirement in ipairs(textLine.GameStateRequirements) do
@@ -939,7 +940,11 @@ local function modifyBountyTextLineRequirements(textLine)
 					and requirement.IsNone ~= nil and #requirement.IsNone == 2 and requirement.IsNone[1] == "F" and requirement.IsNone[2] == "N" then
 				requirement.IsNone = { "F", "N", "Tartarus" }
 			end
-			-- TODO: Do a similar thing to include the random trials from "I leave the details of this Trial for you to discover" onwards through #429
+			-- Add the new randomized trials to be eligible for voicelines for random trials
+			if requirement.Path ~= nil and #requirement.Path == 2 and requirement.Path[1] == "CurrentRun" and requirement.Path[2] == "ActiveBounty"
+					and requirement.IsAny ~= nil and game.Contains(requirement.IsAny, "PackageBountyRandomUnderworld_Difficulty1") then
+				requirement.IsAny = game.ConcatTableValuesIPairs(requirement.IsAny, mod.RandomizedChaosTrialBountyNames)
+			end
 		end
 	end
 end
@@ -951,4 +956,168 @@ for _, textLineGroup in ipairs(game.GlobalVoiceLines.StartPackagedBountyRunVoice
 		modifyBountyTextLineRequirements(textLine)
 	end
 end
+-- #endregion
+
+-- #region Randomized Trials
+local newRandomizedBounties = {
+	{
+		Name = "ModsNikkelMHadesBiomes_BasePackageBountyRandom",
+		InheritFrom = { "BasePackageBountyRandom" },
+		DebugOnly = true,
+		ModsNikkelMHadesBiomes_RandomBountyStreakEligible = true,
+		-- So we can show the run clear screen after a clear
+		ModsNikkelMHadesBiomesForceRunClearScreen = true,
+		-- Allow the randomized bounties to count into the run clear statistics (all other bounties are not recording statistics)
+		ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics = true,
+		-- Also allow the new keepsakes to be chosen
+		-- TODO: If https://github.com/excellent-ae/zannc-GodsAPI/issues/22 is implemented, we can remove this override
+		RandomKeepsakeNames = game.ConcatTableValuesIPairs({
+			"ManaOverTimeRefundKeepsake",
+			"BossPreDamageKeepsake",
+			"ReincarnationKeepsake",
+			"DoorHealReserveKeepsake",
+			"DeathVengeanceKeepsake",
+			"BlockDeathKeepsake",
+			"EscalatingKeepsake",
+			"BonusMoneyKeepsake",
+			"TimedBuffKeepsake",
+			"LowHealthCritKeepsake",
+			"SpellTalentKeepsake",
+			"ForceZeusBoonKeepsake",
+			"ForceHeraBoonKeepsake",
+			"ForcePoseidonBoonKeepsake",
+			"ForceDemeterBoonKeepsake",
+			"ForceApolloBoonKeepsake",
+			"ForceAphroditeBoonKeepsake",
+			"ForceHephaestusBoonKeepsake",
+			"ForceHestiaBoonKeepsake",
+			"ForceAresBoonKeepsake",
+			"AthenaEncounterKeepsake",
+			"SkipEncounterKeepsake",
+			"ArmorGainKeepsake",
+			"FountainRarityKeepsake",
+			"UnpickedBoonKeepsake",
+			"DecayingBoostKeepsake",
+			"DamagedDamageBoostKeepsake",
+			"BossMetaUpgradeKeepsake",
+			"TempHammerKeepsake",
+			"RandomBlessingKeepsake",
+		}, mod.SharedKeepsakePortKeepsakeTraitNames),
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "PackageBountyRandomUnderworld_Difficulty1",
+		InheritFrom = { "ModsNikkelMHadesBiomes_BasePackageBountyRandom", "ModsNikkelMHadesBiomesHadesEncounters" },
+		Text = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1_Short",
+
+		StartingBiome = "Tartarus",
+		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Journey",
+		-- "Nightmare"
+		BiomeText = "WeaponPointsRare",
+
+		RandomMetaUpgradeCostTotal = 30,
+		RandomShrineUpgradePointTotal = 0,
+
+		LootOptions = {
+			{
+				Name = "GemPointsBigDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						GemPoints = 40,
+					},
+				},
+			},
+		},
+
+		UnlockGameStateRequirements = {
+			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyRandom" },
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
+		InheritFrom = { "ModsNikkelMHadesBiomes_BasePackageBountyRandom", "ModsNikkelMHadesBiomesHadesEncounters" },
+		Text = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2_Short",
+
+		StartingBiome = "Tartarus",
+		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Journey",
+		-- "Nightmare"
+		BiomeText = "WeaponPointsRare",
+
+		RandomMetaUpgradeCostTotal = 30,
+		RandomShrineUpgradePointTotal = 20,
+
+		LootOptions = {
+			{
+				Name = "GemPointsBigDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						GemPoints = 100,
+					},
+				},
+			},
+		},
+
+		UnlockGameStateRequirements = {
+			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyRandom" },
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
+				Comparison = ">=",
+				Value = 10,
+			},
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
+		InheritFrom = { "ModsNikkelMHadesBiomes_BasePackageBountyRandom", "ModsNikkelMHadesBiomesHadesEncounters" },
+		Text = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3_Short",
+
+		StartingBiome = "Tartarus",
+		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Journey",
+		-- "Nightmare"
+		BiomeText = "WeaponPointsRare",
+
+		RandomMetaUpgradeCostTotal = 30,
+		RandomShrineUpgradePointTotal = 32,
+
+		LootOptions = {
+			{
+				Name = "WeaponPointsRareDrop",
+				Overrides = {
+					CanDuplicate = false,
+					AddResources = {
+						WeaponPointsRare = 1,
+					},
+				},
+			},
+		},
+
+		UnlockGameStateRequirements = {
+			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyRandom" },
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
+				Comparison = ">=",
+				Value = 20,
+			},
+		},
+	},
+}
+for _, bountyData in ipairs(newRandomizedBounties) do
+	game.BountyData[bountyData.Name] = bountyData
+	-- Insert into Bounty Board
+	if bountyData.ModsNikkelMHadesBiomesInsertAfterBounty then
+		local insertIndex = 1
+		for _, bountyName in ipairs(game.ScreenData.BountyBoard.ItemCategories[1]) do
+			if bountyName == bountyData.ModsNikkelMHadesBiomesInsertAfterBounty then
+				break
+			end
+			insertIndex = insertIndex + 1
+		end
+		table.insert(game.ScreenData.BountyBoard.ItemCategories[1], insertIndex, bountyData.Name)
+	end
+end
+-- #endregion
 -- #endregion

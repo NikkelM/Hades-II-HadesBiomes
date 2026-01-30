@@ -366,6 +366,16 @@ local roomReplacements = {
 			{ GlobalVoiceLines = "StorytellerRunStartVoiceLines" },
 		},
 
+		ForcedRewards = {
+			{
+				Name = "Boon",
+				LootName = "TrialUpgrade",
+				GameStateRequirements = {
+					RequiredFalseTextLines = { "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01", },
+				}
+			},
+		},
+
 		HarvestPointChances = { 0.1, },
 		ShovelPointChance = 0.1,
 		PickaxePointChance = 0.1,
@@ -560,7 +570,6 @@ local roomModifications = {
 		MusicStartDelay = 1.75,
 		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		ChooseRewardRequirements = mod.NilValue,
-		ForcedRewards = mod.NilValue,
 		IneligibleRewards = game.RewardSets.OpeningRoomBans,
 		MaxAppearancesThisBiome = 1,
 		BlockRunProgressUI = true,
@@ -847,7 +856,7 @@ local roomModifications = {
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
 		ThreadedEvents = {
-			[1] = { FunctionName = "HadesSpeakingPresentation", Args = { VoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines, StartDelay = 2.5 } },
+			[1] = { FunctionName = "HadesSpeakingPresentation", Args = { VoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines, StartDelay = 2.5, SubtitleColor = game.Color.HadesVoice, LineHistoryName = "Hades" } },
 		},
 		NextRoomSet = { "Asphodel" },
 		-- In vanilla the game adds a SetupGameStateRequirement to the obstacle, but we don't do that in modded rooms
