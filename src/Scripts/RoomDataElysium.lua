@@ -633,7 +633,7 @@ local roomModifications = {
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",
 		ThreadedEvents = {
-			[1] = { FunctionName = "HadesSpeakingPresentation", Args = { VoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines, StartDelay = 2.5 } },
+			[1] = { FunctionName = "HadesSpeakingPresentation", Args = { VoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines, StartDelay = 2.5, SubtitleColor = game.Color.HadesVoice, LineHistoryName = "Hades" } },
 		},
 		-- In vanilla the game adds a SetupGameStateRequirement to the obstacle, but we don't do that in modded rooms
 		-- So to prevent the well from spawning even without the incantation, we set ForceWellShop to false and just use the WellShopSpawnChance

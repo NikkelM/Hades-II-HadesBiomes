@@ -61,6 +61,7 @@ function mod.ModsNikkelMHadesBiomesSurvivalEncounterStartPresentation(eventSourc
 	game.wait(1.4, game.RoomThreadName)
 	local source = {} -- Dummy source for disembodied voice
 	source.SubtitleColor = game.Color.HadesVoice
+	source.LineHistoryName = "Hades"
 	if opponentGlobalVoiceLines ~= nil then
 		game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[opponentGlobalVoiceLines], false, source)
 	else
@@ -112,7 +113,11 @@ modutil.mod.Path.Context.Wrap("HandleTimedSpawns", function(eventSource, args)
 			local currentEncounter = eventSource
 			if currentEncounter.EncounterType == "SurvivalChallenge" then
 				game.thread(game.HadesSpeakingPresentation, eventSource,
-					{ VoiceLines = game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines })
+					{
+						VoiceLines = game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines,
+						SubtitleColor = game.Color.HadesVoice,
+						LineHistoryName = "Hades"
+					})
 			end
 
 			return base(objectiveName)
@@ -140,6 +145,7 @@ modutil.mod.Path.Wrap("PerfectClearObjectiveFailedPresentation", function(base, 
 	if run and run.ModsNikkelMHadesBiomesIsModdedRun and run.CurrentRoom and run.CurrentRoom.Encounter and run.CurrentRoom.Encounter.ModsNikkelMHadesBiomesPostEncounterPlayHadesTaunt then
 		local source = {} -- Dummy source for disembodied voice
 		source.SubtitleColor = game.Color.HadesVoice
+		source.LineHistoryName = "Hades"
 
 		-- This used to be 11, but that was way too low to ever trigger, probably due to a change in when the encounter start time is recorded
 		if run.CurrentRoom.Encounter.StartTime ~= nil and game._worldTime - run.CurrentRoom.Encounter.StartTime < 35 then
