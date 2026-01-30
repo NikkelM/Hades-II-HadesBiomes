@@ -18,11 +18,12 @@ function mod.RoomEntranceCrawlerMiniBoss(currentRun, currentRoom)
 			{ DestinationId = currentRoom.HeroEndPoint, DisableCollision = true, UseDefaultSpeed = true })
 	end
 
+	game.SecretMusicPlayer("/EmptyCue")
+
 	-- These voicelines are duplicates
 	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.CrawlerMiniBossEncounterStartVoiceLines, true)
 	game.wait(roomIntroSequenceDuration)
 	game.wait(0.5)
-	game.SecretMusicPlayer("/EmptyCue")
 
 	-- This is used to give enough time for the intro voicelines on the first encounter
 	if game.GameState.EncountersOccurredCache.ModsNikkelMHadesBiomesMiniBossCrawler > 1 or game.GameState.EncountersOccurredCache.MiniBossCrawler > 1 then
@@ -53,8 +54,6 @@ function mod.RoomEntranceCrawlerMiniBoss(currentRun, currentRoom)
 	SetSoundCueValue({ Names = { "Section", }, Id = game.AudioState.SecretMusicId, Value = 2 })
 
 	game.wait(0.5)
-	game.ResumeMusic({ Delay = 0, Duration = 0 })
-	game.EndMusic(game.AudioState.MusicId, game.AudioState.MusicName, 0.0)
 	game.thread(game.EndTinyVerminRadialBlur)
 
 	if game.GameState.EncountersOccurredCache.ModsNikkelMHadesBiomesMiniBossCrawler > 1 then

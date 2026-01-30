@@ -103,6 +103,7 @@ local encounterModifications = {
 		CancelSpawnsOnKillAllTypes = { "HadesCrawlerMiniBoss" },
 		CanEncounterSkip = false,
 		SkipBossTraits = true,
+		NextRoomResumeMusic = true,
 	},
 	MiniBossHeavyRangedForked = {
 		CanEncounterSkip = false,

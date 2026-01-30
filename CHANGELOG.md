@@ -14,6 +14,7 @@ Other fixes and improvements:
 - Balancing: Slightly adjusted the feel of the Doomstone's spawning fragment launch.
 - Fixed: Bloodroot and shovel points can spawn over gaps in the room in Doomstone miniboss chambers in Tartarus.
 - Fixed: "Out of Tartarus" music track plays in Elysium instead of Tartarus.
+- Fixed: After defeating the Tiny Vermin in Styx, the biome music starts with an incorrect section when returning to the hub room.
 - Fixed: Cerberus does not bark when returning to the Styx hub room to alert you that you have the Satyr Sack and can leave.
 - Fixed: Damage taken from small Hydra heads during the Asphodel boss fight is not correctly attributed to the main head in the "Damage Taken" section of the run clear screen.
 - Fixed: Furies that support the main Fury in the Tartarus boss fight (with the Vow of Rivals) are shown with a placeholder name in the "Damage Taken" table in the run clear screen.
