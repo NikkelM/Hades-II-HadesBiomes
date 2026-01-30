@@ -37,6 +37,8 @@ modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 		triggerArgs.AttackerTable = killer
 	end
 
+	mod.ModsNikkelMHadesBiomesToggleNarrativeFadeInColorForZagreus(game.CurrentRun.Hero, { ToggleOn = false })
+
 	return base(victim, triggerArgs)
 end)
 

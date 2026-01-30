@@ -85,12 +85,17 @@ local newData = {
 	},
 	-- #endregion
 
-	-- #region NPC Names
+	-- #region NPC/Unit Names
 	{
 		Id = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 		DisplayName = "돌덩이",
 		Description = "",
 	},
+	-- {
+	-- 	Id = "HarpySupportUnit",
+	-- 	DisplayName = "The other Furies",
+	-- 	Description = "",
+	-- },
 	-- #endregion
 
 	-- #region Credits

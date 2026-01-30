@@ -127,6 +127,91 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			enemyData.NarrativeFadeInColor = enemyData.SubtitleColor
 		end
 
+		local function performTextLineModifications(entry)
+			if entry.Text then
+				entry.Text = string.gsub(entry.Text, "{#PreviousFormat}", "{#Prev}")
+			end
+			if entry.Speaker then
+				if entry.Speaker == "CharProtag" then
+					entry.Speaker = "NPC_Zagreus_Past_01"
+					entry.LineHistoryName = "NPC_Zagreus_Past_01"
+				elseif entry.Speaker == "NPC_FurySister_01" then
+					entry.Source = "Harpy"
+				elseif entry.Speaker == "NPC_FurySister_02" then
+					entry.Source = "Harpy2"
+				elseif entry.Speaker == "NPC_FurySister_03" then
+					entry.Source = "Harpy3"
+				elseif entry.Speaker == "Minotaur" then
+					entry.Source = "Minotaur"
+				elseif entry.Speaker == "Theseus" then
+					entry.Source = "Theseus"
+				elseif entry.Speaker == "Hades" then
+					entry.Source = "Hades"
+				elseif entry.Speaker == "NPC_Bouldy_01" then
+					entry.Speaker = "ModsNikkelMHadesBiomes_NPC_Bouldy_01"
+					entry.Source = "NPC_Bouldy_01" -- Use the Hades II NarrativeFadeInColor
+				elseif entry.Speaker == "NPC_Patroclus_Unnamed_01" then
+					entry.Source = "NPC_Patroclus_01"
+				elseif entry.Speaker == "NPC_Persephone_Unnamed_01" then
+					entry.Source = "ModsNikkelMHadesBiomes_NPC_Persephone_01"
+				end
+			end
+			if entry.Portrait then
+				if entry.Portrait:find("^Portrait_Zag_") then
+					entry.Portrait = entry.Portrait:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
+				elseif entry.Portrait == "Portrait_Bouldy_Default_01" then
+					entry.Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy"
+				end
+			end
+			if entry.PortraitExitAnimation then
+				if entry.PortraitExitAnimation:find("^Portrait_Zag_") then
+					entry.PortraitExitAnimation = entry.PortraitExitAnimation:gsub("^Portrait_Zag_",
+						"ModsNikkelMHadesBiomes_Portrait_Zag_")
+				end
+			end
+			if entry.PreLineFunctionName then
+				if entry.PreLineFunctionName == "StartFinalBossRoomIntroMusic" then
+					entry.PreLineFunctionName = _PLUGIN.guid .. "." .. "StartFinalBossRoomIntroMusic"
+				end
+			end
+			if entry.PostLineFunctionName then
+				if entry.PostLineFunctionName == "StartFinalBossRoomMusic" then
+					entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "StartFinalBossRoomMusic"
+				end
+			end
+			if entry.PreLineFunctionName then
+				if entry.PreLineFunctionName == "StartCharonBossRoomMusic" then
+					entry.PreLineFunctionName = _PLUGIN.guid .. "." .. "StartCharonBossRoomMusic"
+				end
+			end
+			if entry.PreLineThreadedFunctionName then
+				if entry.PreLineThreadedFunctionName == "PlayPreLineTauntAnimFromSource" then
+					entry.PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayPreLineTauntAnimFromSource"
+				end
+			end
+			if entry.SetFlagTrue then
+				entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSetFlag"
+				entry.PostLineFunctionArgs = { FlagName = entry.SetFlagTrue, Value = true }
+			end
+			if entry.SetFlagFalse then
+				entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSetFlag"
+				entry.PostLineFunctionArgs = { FlagName = entry.SetFlagFalse, Value = false }
+			end
+			if entry.Cue then
+				if entry.Cue:find("^/VO/Storyteller_") then
+					entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+				elseif entry.Cue:find("^/VO/Charon_") then
+					entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+					-- Use the H1 portrait
+					entry.Portrait = "ModsNikkelMHadesBiomes_Portrait_Charon_Default_01"
+				elseif entry.Cue:find("^/VO/Persephone_") then
+					entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+				elseif entry.Cue:find("^/VO/ZagreusHome_") then
+					entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+				end
+			end
+		end
+
 		-- Dialogues playing before boss fights or when meeting NPCs
 		local bossPresentationProperties = {
 			"BossPresentationSuperPriorityIntroTextLineSets",
@@ -147,88 +232,16 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			if enemyData[property] then
 				for key, textLineSet in pairs(enemyData[property]) do
 					textLineSet.Name = key
-					for _, entry in ipairs(textLineSet) do
-						if type(entry) == "table" then
-							if entry.Text then
-								entry.Text = string.gsub(entry.Text, "{#PreviousFormat}", "{#Prev}")
-							end
-							if entry.Speaker then
-								if entry.Speaker == "CharProtag" then
-									entry.Speaker = "NPC_Zagreus_Past_01"
-									entry.LineHistoryName = "NPC_Zagreus_Past_01"
-								elseif entry.Speaker == "NPC_FurySister_01" then
-									entry.Source = "Harpy"
-								elseif entry.Speaker == "NPC_FurySister_02" then
-									entry.Source = "Harpy2"
-								elseif entry.Speaker == "NPC_FurySister_03" then
-									entry.Source = "Harpy3"
-								elseif entry.Speaker == "Minotaur" then
-									entry.Source = "Minotaur"
-								elseif entry.Speaker == "Theseus" then
-									entry.Source = "Theseus"
-								elseif entry.Speaker == "Hades" then
-									entry.Source = "Hades"
-								elseif entry.Speaker == "NPC_Bouldy_01" then
-									entry.Speaker = "ModsNikkelMHadesBiomes_NPC_Bouldy_01"
-									entry.Source = "NPC_Bouldy_01" -- Use the Hades II NarrativeFadeInColor
-								elseif entry.Speaker == "NPC_Patroclus_Unnamed_01" then
-									entry.Source = "NPC_Patroclus_01"
-								elseif entry.Speaker == "NPC_Persephone_Unnamed_01" then
-									entry.Source = "ModsNikkelMHadesBiomes_NPC_Persephone_01"
-								end
-							end
-							if entry.Portrait then
-								if entry.Portrait:find("^Portrait_Zag_") then
-									entry.Portrait = entry.Portrait:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
-								elseif entry.Portrait == "Portrait_Bouldy_Default_01" then
-									entry.Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy"
-								end
-							end
-							if entry.PortraitExitAnimation then
-								if entry.PortraitExitAnimation:find("^Portrait_Zag_") then
-									entry.PortraitExitAnimation = entry.PortraitExitAnimation:gsub("^Portrait_Zag_",
-										"ModsNikkelMHadesBiomes_Portrait_Zag_")
-								end
-							end
-							if entry.PreLineFunctionName then
-								if entry.PreLineFunctionName == "StartFinalBossRoomIntroMusic" then
-									entry.PreLineFunctionName = _PLUGIN.guid .. "." .. "StartFinalBossRoomIntroMusic"
-								end
-							end
-							if entry.PostLineFunctionName then
-								if entry.PostLineFunctionName == "StartFinalBossRoomMusic" then
-									entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "StartFinalBossRoomMusic"
-								end
-							end
-							if entry.PreLineFunctionName then
-								if entry.PreLineFunctionName == "StartCharonBossRoomMusic" then
-									entry.PreLineFunctionName = _PLUGIN.guid .. "." .. "StartCharonBossRoomMusic"
-								end
-							end
-							if entry.PreLineThreadedFunctionName then
-								if entry.PreLineThreadedFunctionName == "PlayPreLineTauntAnimFromSource" then
-									entry.PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayPreLineTauntAnimFromSource"
-								end
-							end
-							if entry.SetFlagTrue then
-								entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSetFlag"
-								entry.PostLineFunctionArgs = { FlagName = entry.SetFlagTrue, Value = true }
-							end
-							if entry.SetFlagFalse then
-								entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSetFlag"
-								entry.PostLineFunctionArgs = { FlagName = entry.SetFlagFalse, Value = false }
-							end
-							if entry.Cue then
-								if entry.Cue:find("^/VO/Storyteller_") then
-									entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
-								elseif entry.Cue:find("^/VO/Charon_") then
-									entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
-									-- Use the H1 portrait
-									entry.Portrait = "ModsNikkelMHadesBiomes_Portrait_Charon_Default_01"
-								elseif entry.Cue:find("^/VO/Persephone_") then
-									entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
-								elseif entry.Cue:find("^/VO/ZagreusHome_") then
-									entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+					for index, entry in ipairs(textLineSet) do
+						if type(index) == "number" and type(entry) == "table" then
+							performTextLineModifications(entry)
+						end
+					end
+					if textLineSet.EndVoiceLines then
+						for _, endVoiceLineSet in ipairs(textLineSet.EndVoiceLines) do
+							for endIndex, endVoiceLine in ipairs(endVoiceLineSet) do
+								if type(endIndex) == "number" and type(endVoiceLine) == "table" then
+									performTextLineModifications(endVoiceLine)
 								end
 							end
 						end

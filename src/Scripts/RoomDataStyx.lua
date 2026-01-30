@@ -618,6 +618,7 @@ local roomModifications = {
 		StartRoomPresentationOnReload = true,
 		EncounterCompleteWait = 0.02,
 		UnlockExitsWait = 0.02,
+		SkipUnusedWeaponBonusReward = true,
 	},
 
 	-- MINIBOSSES
