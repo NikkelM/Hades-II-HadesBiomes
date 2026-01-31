@@ -138,6 +138,7 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 		game.GameState.ClearedUnderworldRunsCache = underworldRunsCleared
 		game.GameState.ClearedSurfaceRunsCache = surfaceRunsCleared
 		-- Custom fields
+		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache + 1
 		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = moddedRunsCleared
 
 		game.UpdateLifetimeTraitRecords(game.CurrentRun)
@@ -206,9 +207,6 @@ modutil.mod.Path.Wrap("EndRun", function(base, run)
 		end
 		-- The actual room name needs to be set to nil to ensure the base function assigns nil to EndingRoomName
 		run.CurrentRoom.Name = nil
-
-		-- Increase counter for completed modded runs
-		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache + 1
 	end
 
 	return base(run)

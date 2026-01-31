@@ -141,8 +141,17 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 					.ModsNikkelMHadesBiomes_RandomBountyHighestClearStreak or 0
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 5 then
+			-- Before, CompletedRunsCache was only increased when EndRun() was called, which is only after leaving the crossroads to the next run
+			-- Using this here to make sure we don't get the count out of sync in case the player is in the Crossroads now after completing a modded run after this was moved
+			if game.CurrentHubRoom ~= nil and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+				game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState
+						.ModsNikkelMHadesBiomesCompletedRunsCache + 1
+			end
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 4
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 5
 	end
 
 	return base()

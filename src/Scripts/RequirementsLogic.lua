@@ -138,7 +138,7 @@ function mod.IsAnyWorldUpgradeEligible(source, args)
 		if ghostAdminCategory.Name == category then
 			for _, upgradeName in ipairs(ghostAdminCategory) do
 				local worldUpgrade = game.WorldUpgradeData[upgradeName]
-				if worldUpgrade and worldUpgrade.GameStateRequirements == nil or game.IsGameStateEligible(worldUpgrade, worldUpgrade.GameStateRequirements) then
+				if worldUpgrade and (worldUpgrade.GameStateRequirements == nil or game.IsGameStateEligible(worldUpgrade, worldUpgrade.GameStateRequirements)) then
 					return true
 				end
 			end

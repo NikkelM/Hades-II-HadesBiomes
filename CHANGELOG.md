@@ -24,6 +24,7 @@ Other fixes and improvements:
 - Fixed: Grave Thirst trigger during room transitions on the Surface and during the ending sequence.
 - Fixed: The "Extreme Measures" minor prophecy is always marked as completed immediately after unlocking it.
 - Fixed: The "Heart Of Stone" minor prophecy has a placeholder objective text after it has been completed.
+- Fixed: Some unlocks are delayed until starting the next run instead of being available immediately after returning from a Zagreus' Journey run.
 - Fixed: Localized dialogues in languages other than English do not terminate *italic* text correctly, causing all text after the first occurrence to be italicized for the current dialogue box.
 <!--Releasenotes end-->
 
