@@ -371,8 +371,13 @@ local roomReplacements = {
 				Name = "Boon",
 				LootName = "TrialUpgrade",
 				GameStateRequirements = {
-					RequiredFalseTextLines = { "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01", },
-				}
+					{
+						PathFalse = { "CurrentRun", "ActiveBounty" },
+					},
+					{
+						PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01" },
+					},
+				},
 			},
 		},
 
