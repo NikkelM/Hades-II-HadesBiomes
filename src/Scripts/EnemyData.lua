@@ -2177,11 +2177,37 @@ local enemyModifications = {
 				},
 			},
 		},
-		-- TODO: For all - only one of these should be active at a time, depending on the unlocks
 		ValueOptions = {
-			[1] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
-			[2] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
-			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[1] = {
+				Chance = 0.04,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue3Incantation" }
+					},
+					RequiredCosmetics = mod.NilValue,
+					RequiredFalseCosmetics = mod.NilValue,
+				},
+			},
+			[2] = {
+				Chance = 0.04,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue2Incantation" }
+					},
+					RequiredCosmetics = mod.NilValue,
+					RequiredFalseCosmetics = mod.NilValue,
+				},
+			},
+			[3] = {
+				Chance = 0.05,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue1Incantation" }
+					},
+					RequiredCosmetics = mod.NilValue,
+					RequiredFalseCosmetics = mod.NilValue,
+				},
+			},
 		},
 	},
 	BreakableAsphodel = {
@@ -2202,9 +2228,36 @@ local enemyModifications = {
 			},
 		},
 		ValueOptions = {
-			[1] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
-			[2] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
-			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[1] = {
+				Chance = 0.04,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue3Incantation" }
+					},
+					RequiredCosmetics = mod.NilValue,
+					RequiredFalseCosmetics = mod.NilValue,
+				},
+			},
+			[2] = {
+				Chance = 0.04,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue2Incantation" }
+					},
+					RequiredCosmetics = mod.NilValue,
+					RequiredFalseCosmetics = mod.NilValue,
+				},
+			},
+			[3] = {
+				Chance = 0.05,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue1Incantation" }
+					},
+					RequiredCosmetics = mod.NilValue,
+					RequiredFalseCosmetics = mod.NilValue,
+				},
+			},
 		},
 	},
 	BreakableElysium = {
@@ -2225,9 +2278,36 @@ local enemyModifications = {
 			},
 		},
 		ValueOptions = {
-			[1] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
-			[2] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
-			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[1] = {
+				Chance = 0.04,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue3Incantation" }
+					},
+					RequiredCosmetics = mod.NilValue,
+					RequiredFalseCosmetics = mod.NilValue,
+				},
+			},
+			[2] = {
+				Chance = 0.05,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue2Incantation" }
+					},
+					RequiredCosmetics = mod.NilValue,
+					RequiredFalseCosmetics = mod.NilValue,
+				},
+			},
+			[3] = {
+				Chance = 0.05,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue1Incantation" }
+					},
+					RequiredCosmetics = mod.NilValue,
+					RequiredFalseCosmetics = mod.NilValue,
+				},
+			},
 		},
 	},
 	BreakableStyx = {
@@ -2248,9 +2328,36 @@ local enemyModifications = {
 			},
 		},
 		ValueOptions = {
-			[1] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
-			[2] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
-			[3] = { GameStateRequirements = { PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" }, RequiredCosmetics = mod.NilValue, RequiredFalseCosmetics = mod.NilValue, }, },
+			[1] = {
+				Chance = 0.15,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue3Incantation" }
+					},
+					RequiredCosmetics = mod.NilValue,
+					RequiredFalseCosmetics = mod.NilValue,
+				},
+			},
+			[2] = {
+				Chance = 0.18,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue2Incantation" }
+					},
+					RequiredCosmetics = mod.NilValue,
+					RequiredFalseCosmetics = mod.NilValue,
+				},
+			},
+			[3] = {
+				Chance = 0.20,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue1Incantation" }
+					},
+					RequiredCosmetics = mod.NilValue,
+					RequiredFalseCosmetics = mod.NilValue,
+				},
+			},
 		},
 	},
 	BlastCubeFusedRegenerating = {

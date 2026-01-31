@@ -1,4 +1,4 @@
---[[ Modded incantation order:
+--[[ Modded incantation order (in the menu):
 ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation - Post-Boss Keepsake Rack - after 1 run
 ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation - Well of Charon during runs - after 2 runs
 ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation - Well of Charon after bosses - after 5 runs
@@ -7,6 +7,9 @@ ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation - Sell Shops after bos
 ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation - Tartarus Fountain Chamber - after 3 runs
 ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation - Asphodel Fountain Chamber - after 6 runs
 ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation - Elysium Fountain Chamber - after 9 runs
+ModsNikkelMHadesBiomes_BreakableValue1Incantation - Unlock low-value Gold Urns/Breakables
+ModsNikkelMHadesBiomes_BreakableValue2Incantation - Unlock medium-value Gold Urns/Breakables
+ModsNikkelMHadesBiomes_BreakableValue3Incantation - Unlock high-value Gold Urns/Breakables
 ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation - Infernal Troves - after 3 runs
 ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation - Moon Moncuments - after completing 6 runs and clearing 2 runs
 ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after completing 7 and clearing 4 runs
@@ -268,9 +271,85 @@ local newIncantations = {
 		},
 	},
 	-- #endregion
+	-- #region Breakables/Gold Urns
+	ModsNikkelMHadesBiomes_BreakableValue1Incantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_goldUrnUpgrades_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantTartarus = 2,
+			ModsNikkelMHadesBiomes_CropTartarus = 1,
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation" },
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradeBreakableValue1" },
+			},
+		},
+		IncantationVoiceLines = {
+			{
+				PreLineWait = 0.3,
+				{ Cue = "/VO/Melinoe_5604", Text = "{#Emph}Whatever gleams with Gold shall soon be found!" },
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_BreakableValue2Incantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_BreakableValue1Incantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_goldUrnUpgrades_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+			ModsNikkelMHadesBiomes_CropElysium = 2,
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_BreakableValue1Incantation" },
+			},
+			{
+				SumPrevRuns = 3,
+				Path = { "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue1Incantation" },
+				CountPathTrue = true,
+				Comparison = "<",
+				Value = 1,
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_BreakableValue3Incantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_BreakableValue2Incantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_goldUrnUpgrades_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantStyx = 1,
+			ModsNikkelMHadesBiomes_OreElysium = 3,
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_BreakableValue2Incantation" },
+			},
+			{
+				SumPrevRuns = 4,
+				Path = { "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_BreakableValue2Incantation" },
+				CountPathTrue = true,
+				Comparison = "<",
+				Value = 1,
+			},
+		},
+	},
+	-- #endregion
 	-- #region Challenges/Infernal Troves/Moon Monuments
 	ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation = {
-		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation",
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_BreakableValue3Incantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
@@ -423,7 +502,8 @@ local newIncantations = {
 mod.AddTableKeysSkipDupes(game.WorldUpgradeData, newIncantations)
 -- The OST mod is now a dependency, so we can safely call this
 -- Need to add it to the table so we can sort and insert it into Cauldron category correctly
-newIncantations["WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic"] = game.WorldUpgradeData["WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic"]
+newIncantations["WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic"] = game.WorldUpgradeData
+		["WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic"]
 
 -- Adds the new incantations to the Cauldron screen categories
 -- Build a sorted list based on dependencies to ensure items are inserted in the correct order
