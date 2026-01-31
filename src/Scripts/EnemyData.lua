@@ -2078,6 +2078,10 @@ local enemyModifications = {
 				},
 			},
 		},
+		BossPresentationIntroTextLineSets = {
+			-- The alt version fits better, and this one is missing PostLineAnim = "HadesBattleIntro"
+			LordHadesAboutEternalWinter01 = mod.NilValue,
+		},
 		BossPresentationOutroTextLineSets = {
 			LordHadesDefeated01 = {
 				-- Just in case
