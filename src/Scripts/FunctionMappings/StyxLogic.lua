@@ -316,6 +316,7 @@ function mod.ModsNikkelMHadesBiomesReturnToStyxHubPresentation(currentRun, curre
 				IconBackingAnimationOutName = currentRoom.LocationTextAnimOutName,
 			})
 	end
+	game.thread(game.PlayVoiceLines, roomData.EnterVoiceLines, true)
 	game.wait(roomIntroSequenceDuration)
 
 	-- Allow cancelling the animation the same way you can after returning from a run

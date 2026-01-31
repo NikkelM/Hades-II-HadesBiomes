@@ -331,6 +331,176 @@ local roomReplacements = {
 	D_Hub = {
 		Binks = { "Cerberus_HubIdle_Bink", },
 
+		DistanceTriggers = {
+			{
+				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
+				WithinDistance = 1500,
+				GameStateRequirements = {
+					RequiredRoomThisRun = "D_Reprieve01",
+				},
+				FunctionName = _PLUGIN.guid .. "." .. "PlaySoundWithSource",
+				Args = { Name = "/VO/CerberusBarks" },
+			},
+			{
+				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
+				WithinDistance = 400,
+				LeaveDistanceBuffer = 60,
+				VoiceLines = {
+					Cooldowns = { { Name = "ApproachedCerberusSpeech", Time = 15 }, },
+					{
+						PlayOnceFromTableThisRun = true,
+						SuccessiveChanceToPlay = 0.33,
+						RequiredFalseTextLinesThisRun = { "CerberusStyxMeeting01" },
+						RequiredFalseSeenRoomThisRun = "D_Reprieve01",
+						{
+							SkipAnim = true,
+							{ Cue = "/VO/CerberusBarks" },
+						},
+						{
+							UsePlayerSource = true,
+							RandomRemaining = true,
+							PreLineWait = 0.25,
+							{ Cue = "/VO/MelinoeField_1750", Text = "I'd rather keep my hand..." },
+							{ Cue = "/VO/MelinoeField_1751", Text = "Won't let me." },
+							{ Cue = "/VO/MelinoeField_1752", Text = "OK, OK..." },
+							{ Cue = "/VO/MelinoeField_1753", Text = "Sorry, boy..." },
+							{ Cue = "/VO/MelinoeField_1755", Text = "Stay back, got it..." },
+							{ Cue = "/VO/MelinoeField_3895", Text = "Don't snap my head off, boy..." },
+							{ Cue = "/VO/MelinoeField_0920", Text = "You're not going to step aside, are you?", },
+							{ Cue = "/VO/MelinoeField_0926", Text = "You're very vigilant, I'll grant you that." },
+							{
+								Cue = "/VO/MelinoeField_3033",
+								Text = "Hecuba, meet Cerberus!",
+								PlayFirst = true,
+								GameStateRequirements = {
+									{
+										Path = { "GameState", "EquippedFamiliar" },
+										IsAny = { "HoundFamiliar" },
+									},
+								},
+							},
+							{
+								Cue = "/VO/MelinoeField_3034",
+								Text = "You're not afraid of dogs are you, Toula?",
+								GameStateRequirements = {
+									{
+										Path = { "GameState", "EquippedFamiliar" },
+										IsAny = { "CatFamiliar" },
+									},
+								},
+							},
+						},
+					},
+					{
+						UsePlayerSource = true,
+						RandomRemaining = true,
+						PlayOnceFromTableThisRun = true,
+						RequiredRoomThisRun = "D_Reprieve01",
+						SuccessiveChanceToPlay = 0.33,
+						{ Cue = "/VO/Melinoe_0246",   Text = "I got you something.", },
+						{ Cue = "/VO/Melinoe_0248",   Text = "Got something for you.", },
+						{ Cue = "/VO/Melinoe_2357",   Text = "Got you something!" },
+						{ Cue = "/VO/Melinoe_3592",   Text = "You're going to like this." },
+						{ Cue = "/VO/Melinoe_0246_B", Text = "I got you something.", },
+						{ Cue = "/VO/Melinoe_0247_B", Text = "I got you this.", },
+						{ Cue = "/VO/Melinoe_0248_B", Text = "Got something for you.", },
+						{ Cue = "/VO/Melinoe_2357_B", Text = "Got you something!" },
+						{ Cue = "/VO/Melinoe_2358_B", Text = "This is for you!" },
+						{ Cue = "/VO/Melinoe_3592_B", Text = "You're going to like this." },
+						{ Cue = "/VO/Melinoe_3789_B", Text = "This is for you." },
+					},
+				},
+			},
+			{
+				TriggerObjectType = "TravelDoor03",
+				WithinDistance = 360,
+				GlobalVoiceLines = "ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines",
+			},
+		},
+
+		EnterVoiceLines = {
+			-- when you return to the Hub with the key item
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 1.35,
+				PlayOnceFromTableThisRun = true,
+				RequiredRoomThisRun = "D_Reprieve01",
+				SuccessiveChanceToPlay = 1, -- 0.33,
+
+				{ Cue = "/VO/MelinoeField_0620", Text = "Now to get out of here." },
+				{ Cue = "/VO/MelinoeField_0623", Text = "Time to go." },
+				{ Cue = "/VO/MelinoeField_0624", Text = "Finished here." },
+				{ Cue = "/VO/MelinoeField_0625", Text = "Should be able to get out." },
+			},
+			-- when you return to the Hub with the Key item with Wings open
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 1.35,
+				RequiredRoomThisRun = "D_Reprieve01",
+				PlayOnceFromTableThisRun = true,
+				SuccessiveChanceToPlayAll = 1, --0.33,
+				RequiredMaxDoorsClosedInRoom = 4,
+
+				{ Cue = "/VO/MelinoeField_2115", Text = "More to discover...", },
+				{ Cue = "/VO/MelinoeField_1077", Text = "There's more to find here still." },
+				{ Cue = "/VO/MelinoeField_1080", Text = "Still Boons and such to find." },
+				{ Cue = "/VO/MelinoeField_0512", Text = "Now what..." },
+				{ Cue = "/VO/MelinoeField_1562", Text = "He'll send more and more foes the longer I stay..." },
+				{ Cue = "/VO/MelinoeField_1544", Text = "Best not stay any longer than I must..." },
+			},
+			-- when you return to the Hub in the same run
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 1.35,
+				RequiredRoomThisRun = "D_Hub",
+				RequiredFalseSeenRoomThisRun = "D_Reprieve01",
+				SuccessiveChanceToPlay = 1, --0.25,
+				{ Cue = "/VO/MelinoeField_0374", Text = "They're trying to slow me down..." },
+				{ Cue = "/VO/MelinoeField_0511", Text = "What next..." },
+				{ Cue = "/VO/MelinoeField_0513", Text = "Where next..." },
+				{ Cue = "/VO/MelinoeField_0514", Text = "Where else." },
+				{ Cue = "/VO/MelinoeField_0515", Text = "Where to from here..." },
+				{ Cue = "/VO/MelinoeField_0516", Text = "Next up..." },
+				{ Cue = "/VO/MelinoeField_0517", Text = "Getting somewhere." },
+				{ Cue = "/VO/MelinoeField_0376", Text = "Where to this time..." },
+				{ Cue = "/VO/MelinoeField_0859", Text = "Can't get out yet...!" },
+				{ Cue = "/VO/MelinoeField_0197", Text = "Must be a way out." },
+			},
+			-- when you first enter the Hub
+			{
+				BreakIfPlayed = true,
+				PreLineWait = 1.6,
+				RequiredFalseTextLines = { "CerberusStyxMeeting01" },
+				{ Cue = "/VO/MelinoeField_1109", Text = "Cerberus, is that you?!" },
+			},
+			-- subsequent first-time visits
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 1.45,
+				PlayOnceFromTableThisRun = true,
+				RequiredTextLines = { "CerberusStyxMeeting01" },
+				GameStateRequirements = {
+					{
+						Path = { "CurrentRun", "CurrentRoom", "TimesVisited" },
+						Comparison = "<=",
+						Value = 1,
+					}
+				},
+				SuccessiveChanceToPlayAll = 1, -- 0.33,
+
+				{ Cue = "/VO/MelinoeField_0368", Text = "Best have a look around..." },
+				{ Cue = "/VO/MelinoeField_2117", Text = "Few things to find..." },
+				{ Cue = "/VO/MelinoeField_0198", Text = "Won't be staying long..." },
+				{ Cue = "/VO/Melinoe_1843",      Text = "OK...", },
+				{ Cue = "/VO/MelinoeField_0108", Text = "I can do this..." },
+				{ Cue = "/VO/MelinoeField_0977", Text = "Almost out of here..." },
+			},
+		},
+
 		HasHarvestPoint = false,
 		HasShovelPoint = false,
 		HasPickaxePoint = false,
@@ -389,6 +559,42 @@ local roomReplacements = {
 
 	D_MiniBoss03 = {
 		LegalEncounters = { "ModsNikkelMHadesBiomesMiniBossCrawler", "MiniBossHeavyRangedForked" },
+	},
+
+	D_Reprieve01 = {
+		EnterVoiceLines = {
+			{
+				-- found early
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 1.2,
+				SuccessiveChanceToPlayAll = 0.5,
+				RequiredMaxDoorsClosedInRoom = 2,
+				RequiredMaxDoorsClosedRoom = "D_Hub",
+				{ Cue = "/VO/MelinoeField_2108", Text = "Here already..." },
+				{ Cue = "/VO/Melinoe_5503",      Text = "...That's convenient." },
+				{ Cue = "/VO/MelinoeField_0561", Text = "{#Emph}Huh!" },
+				{ Cue = "/VO/MelinoeField_0563", Text = "Straightforward." },
+			},
+			{
+				-- found late
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 1.2,
+				SuccessiveChanceToPlayAll = 0.5,
+				RequiredMinDoorsClosedInRoom = 5,
+				RequiredMinDoorsClosedRoom = "D_Hub",
+				{ Cue = "/VO/Melinoe_1102",      Text = "Finally..." },
+				{ Cue = "/VO/MelinoeField_0427", Text = "Finally." },
+				{ Cue = "/VO/MelinoeField_0211", Text = "...Finally." },
+				{ Cue = "/VO/Melinoe_5709",      Text = "At last..." },
+				{ Cue = "/VO/MelinoeField_0212", Text = "...At last." },
+				{ Cue = "/VO/MelinoeField_0425", Text = "At last." },
+				{ Cue = "/VO/MelinoeField_0110", Text = "At last..." },
+				{ Cue = "/VO/Melinoe_1464",      Text = "At last..." },
+			},
+			{ GlobalVoiceLines = "EnteredReprieveRoomVoiceLines", },
+		},
 	},
 
 	D_Boss01 = {
@@ -464,7 +670,7 @@ local roomReplacements = {
 				PreLineWait = 4.35,
 				PlayOnce = true,
 				PlayOnceContext = "ModsNikkelMHadesBiomes_D_Boss01",
-				{ Cue = "/VO/MelinoeField_0920", Text = "You're not going to step aside, are you?", RequiredTextLines = { "PersephoneMeeting06" }, RequiredFalseTextLines = { "Ending01" }, },
+				{ Cue = "/VO/MelinoeField_0920", Text = "You're not going to step aside, are you?", RequiredTextLines = { "PersephoneMeeting06" }, RequiredFalseTextLines = { "Ending01" }, RequiredFalsePlayedThisRun = { "/VO/MelinoeField_0920" }, },
 				{ Cue = "/VO/MelinoeField_1904", Text = "You're in my way.",                        RequiredTextLines = { "PersephoneMeeting09" }, RequiredFalseTextLines = { "Ending01" }, },
 			},
 			{
@@ -487,7 +693,7 @@ local roomReplacements = {
 				{ Cue = "/VO/MelinoeField_1519", Text = "Father...!" },
 				{ Cue = "/VO/MelinoeField_1521", Text = "{#Emph}Erm... {#Prev}greetings, Father..." },
 				-- From Cerberus boss fight
-				{ Cue = "/VO/MelinoeField_0920", Text = "You're not going to step aside, are you?" },
+				{ Cue = "/VO/MelinoeField_0920", Text = "You're not going to step aside, are you?", RequiredFalsePlayedThisRun = { "/VO/MelinoeField_0920" } },
 				{ Cue = "/VO/MelinoeField_0923", Text = "Heads up..." },
 				{ Cue = "/VO/MelinoeField_0922", Text = "I'm sorry, but I have to get through.",    RequiredFalseTextLines = { "Ending01" }, },
 				{ Cue = "/VO/MelinoeField_0924", Text = "I'm not afraid of you..." },
@@ -592,17 +798,6 @@ local roomModifications = {
 		-- Shorter as we add more wait time after the animation starts
 		IntroSequenceDuration = 0.3,
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceD_Hub",
-		DistanceTriggers = {
-			[1] = {
-				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
-				Stinger = mod.NilValue,
-				FunctionName = _PLUGIN.guid .. "." .. "PlaySoundWithSource",
-				Args = { Name = "/VO/CerberusBarks", },
-			},
-			[2] = {
-				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
-			},
-		},
 		DistanceTriggersPostCombatReload = true,
 		TimerBlock = "ShopEncounter",
 		StoreDataName = "Q_WorldShop",
@@ -717,9 +912,6 @@ local roomModifications = {
 		},
 		DisableRewardMagnetisim = true,
 		SuppressRewardSpawnSounds = false,
-		-- This is Zagreus speaking, replace with Melinoe
-		EnterVoiceLines = mod.NilValue,
-		EnterGlobalVoiceLines = "EnteredReprieveRoomVoiceLines",
 
 		HarvestPointChances = { 0.5, 0.3, },
 		HarvestPointRequirements = {

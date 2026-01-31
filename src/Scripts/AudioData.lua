@@ -224,7 +224,7 @@ local function processCue(data, replacement)
 end
 
 for voicelineGroup, replacement in pairs(requiredGlobalVoiceLineModifications) do
-	for index, data in ipairs(mod.GlobalVoiceLines[voicelineGroup]) do
+	for _, data in ipairs(mod.GlobalVoiceLines[voicelineGroup]) do
 		processCue(data, replacement)
 	end
 end
@@ -319,8 +319,7 @@ game.GlobalVoiceLines.PatroclusFishCaughtVoiceLines = game.GlobalVoiceLines.Patr
 game.GlobalVoiceLines.PersephoneFishCaughtVoiceLines = game.GlobalVoiceLines.PersephoneFishCaughtVoiceLines or
 		mod.GlobalVoiceLines.PersephoneFishCaughtVoiceLines
 game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishCaughtVoiceLines = game.GlobalVoiceLines
-		.ModsNikkelMHadesBiomes_FishCaughtVoiceLines or
-		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishCaughtVoiceLines
+		.ModsNikkelMHadesBiomes_FishCaughtVoiceLines or mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishCaughtVoiceLines
 game.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishIdentifiedVoiceLines = game.GlobalVoiceLines
 		.ModsNikkelMHadesBiomes_FishIdentifiedVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishIdentifiedVoiceLines
@@ -341,6 +340,9 @@ table.insert(game.HeroVoiceLines.FishNotCaughtTooLateVoiceLines, 1,
 	mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines_PatroclusReaction)
 table.insert(game.HeroVoiceLines.FishNotCaughtVoiceLines, 1,
 	mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines_PatroclusReaction)
+
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines or mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines
 -- #endregion
 
 -- #region HeroVoiceLines

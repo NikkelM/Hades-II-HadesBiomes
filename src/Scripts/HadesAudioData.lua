@@ -3484,7 +3484,32 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- I thought you had that one...
 			{ Cue = "/VO/Patroclus_0268", },
 		},
-	}
+	},
+	-- #endregion
+	-- #region In-Run contextual
+	ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines = {
+		RequiredMinOfferedRewardTypes = 2,
+		Queue = "Never",
+		{
+			Cooldowns = { { Name = "MelinoeAnyQuipSpeech" }, },
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				SuccessiveChanceToPlay = 0.33,
+				PlayOnceFromTableThisRun = true,
+				RequiredMaxDoorsClosedInRoom = 4,
+				RequiredBiome = "Styx",
+				RequiredKillEnemiesNotFound = true,
+				{ Cue = "/VO/Melinoe_0254", Text = "Where to..." },
+				{ Cue = "/VO/Melinoe_0256", Text = "Which way..." },
+				{ Cue = "/VO/Melinoe_0245", Text = "So..." },
+				{ Cue = "/VO/Melinoe_0242", Text = "Let me see..." },
+				{ Cue = "/VO/Melinoe_0336", Text = "Where to go..." },
+				{ Cue = "/VO/Melinoe_0337", Text = "{#Emph}Hmm." },
+				{ Cue = "/VO/Melinoe_0338", Text = "Which way..." },
+			},
+		},
+	},
 	-- #endregion
 }
 
