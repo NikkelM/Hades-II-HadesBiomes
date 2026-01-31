@@ -22,6 +22,7 @@ Other fixes and improvements:
 - Fixed: Damage taken from small Hydra heads during the Asphodel boss fight is not correctly attributed to the main head in the "Damage Taken" section of the run clear screen.
 - Fixed: Furies that support the main Fury in the Tartarus boss fight (with the Vow of Rivals) are shown with a placeholder name in the "Damage Taken" table in the run clear screen.
 - Fixed: Grave Thirst trigger during room transitions on the Surface and during the ending sequence.
+- Fixed: The "Extreme Measures" minor prophecy is always marked as completed immediately after unlocking it.
 - Fixed: The "Heart Of Stone" minor prophecy has a placeholder objective text after it has been completed.
 - Fixed: Localized dialogues in languages other than English do not terminate *italic* text correctly, causing all text after the first occurrence to be italicized for the current dialogue box.
 <!--Releasenotes end-->
