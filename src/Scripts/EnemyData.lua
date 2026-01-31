@@ -977,6 +977,14 @@ local enemyModifications = {
 		ImmuneToPolymorph = true,
 		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HarpyKillPresentation",
+		BossPresentationIntroTextLineSets = {
+			FuryDarknessReaction01 = {
+				RequiredActiveMetaPointsMin = 30,
+			},
+			FuryWinStreak02 = {
+				RequiredActiveMetaPointsMin = 18,
+			},
+		},
 	},
 	Harpy2 = {
 		-- Base Health: 4600

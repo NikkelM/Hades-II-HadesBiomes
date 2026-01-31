@@ -164,8 +164,12 @@ game.GameData.ModsNikkelMHadesBiomesRunClearMessageData = {
 		InheritFrom = { "DefaultMessage" },
 		GameStateRequirements = {
 			{
-				Path = { "CurrentRun", "Hero", "TraitDictionary", },
-				CountOf = game.GameData.AllMetaUpgradeTraits,
+				Path = { "GameState", "MetaUpgradeUnlockedCountCache" },
+				Comparison = ">",
+				Value = 0,
+			},
+			{
+				Path = { "GameState", "MetaUpgradeCostCache", },
 				Comparison = "==",
 				Value = 0,
 			},
