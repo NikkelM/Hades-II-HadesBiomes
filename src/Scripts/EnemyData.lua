@@ -492,6 +492,111 @@ local enemyReplacements = {
 	-- Setting this to an empty table in the enemy doesn't work, so resetting the keys that break the animations here
 	Harpy = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+		OnKillGlobalVoiceLines = mod.NilValue,
+		OnKillVoiceLines = {
+			Cooldowns = { { Name = "BossVanquishedSpeech", Time = 60 }, },
+			{ GlobalVoiceLines = "BarelySurvivedBossFightVoiceLines" },
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 7.1,
+				SuccessiveChanceToPlay = 0.2,
+				RequiredMinActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 1 },
+				RequiredMinSupportAINames = 2,
+				{ Cue = "/VO/MelinoeField_1089", Text = "Where are the other two..." },
+				{ Cue = "/VO/MelinoeField_4249", Text = "Where are the others...?" },
+				{ Cue = "/VO/Melinoe_1758",      Text = "They're gone." },
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 7.1,
+				SuccessiveChanceToPlay = 0.2,
+				RequiredMinActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 1 },
+				{
+					Cue = "/VO/MelinoeField_2064",
+					Text = "Got them, Frinos.",
+					GameStateRequirements = {
+						{
+							Path = { "GameState", "EquippedFamiliar" },
+							IsAny = { "FrogFamiliar" },
+						}
+					},
+				},
+				{
+					Cue = "/VO/MelinoeField_2065",
+					Text = "We showed them, Toula.",
+					GameStateRequirements = {
+						{
+							Path = { "GameState", "EquippedFamiliar" },
+							IsAny = { "CatFamiliar" },
+						}
+					},
+				},
+				{
+					Cue = "/VO/MelinoeField_3072",
+					Text = "Got them, Gale.",
+					GameStateRequirements = {
+						{
+							Path = { "GameState", "EquippedFamiliar" },
+							IsAny = { "PolecatFamiliar" },
+						}
+					},
+				},
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 7.1,
+				SuccessiveChanceToPlay = 0.2,
+				{ Cue = "/VO/Melinoe_1276", Text = "She's angry with me now..." },
+				{ Cue = "/VO/Melinoe_1278", Text = "Now she's upset..." },
+				{ Cue = "/VO/Melinoe_0278", Text = "You shouldn't have crossed me." },
+				{ Cue = "/VO/Melinoe_0277", Text = "Enough of this." },
+				{
+					Cue = "/VO/MelinoeField_2063",
+					Text = "We did it, Frinos.",
+					GameStateRequirements =
+					{
+						{
+							Path = { "GameState", "EquippedFamiliar" },
+							IsAny = { "FrogFamiliar" },
+						},
+					},
+				},
+				{
+					Cue = "/VO/MelinoeField_3066",
+					Text = "We did it, Raki.",
+					GameStateRequirements = {
+						{
+							Path = { "GameState", "EquippedFamiliar" },
+							IsAny = { "RavenFamiliar" },
+						}
+					},
+				},
+				{
+					Cue = "/VO/MelinoeField_3068",
+					Text = "Good girl, Hecuba.",
+					GameStateRequirements = {
+						{
+							Path = { "GameState", "EquippedFamiliar" },
+							IsAny = { "HoundFamiliar" },
+						}
+					},
+				},
+				{
+					Cue = "/VO/MelinoeField_3073",
+					Text = "Good fight, Gale.",
+					GameStateRequirements = {
+						{
+							Path = { "GameState", "EquippedFamiliar" },
+							IsAny = { "PolecatFamiliar" },
+						}
+					},
+				},
+				{ Cue = "/VO/MelinoeField_4847", Text = "No escape.", },
+			},
+		},
 	},
 	Harpy3 = {
 		MapTransitionReactionVoiceLines = {
@@ -525,6 +630,28 @@ local enemyReplacements = {
 	HydraHeadImmortal = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 		AIStages = game.DeepCopyTable(hydraHeadAIStages),
+		OnKillGlobalVoiceLines = mod.NilValue,
+		OnKillVoiceLines = {
+			Cooldowns = { { Name = "BossVanquishedSpeech", Time = 60 }, },
+			{ GlobalVoiceLines = "BarelySurvivedBossFightVoiceLines" },
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 6.75,
+				SuccessiveChanceToPlay = 0.33,
+				{ Cue = "/VO/MelinoeField_2624", Text = "A magnificent beast, but a threat..." },
+				{ Cue = "/VO/MelinoeField_2479", Text = "You picked the wrong target." },
+				{ Cue = "/VO/MelinoeField_2477", Text = "Another unfortunate misunderstanding." },
+				{ Cue = "/VO/MelinoeField_0165", Text = "Took me for simple prey." },
+				{ Cue = "/VO/MelinoeField_0169", Text = "Hideous thing..." },
+				{ Cue = "/VO/MelinoeField_3023", Text = "These always grow back..." },
+				{ Cue = "/VO/MelinoeField_1123", Text = "That's enough slithering about..." },
+				{ Cue = "/VO/MelinoeField_1127", Text = "I usually like snakes..." },
+				{ Cue = "/VO/MelinoeField_1125", Text = "I'll cast you out each time." },
+				{ Cue = "/VO/MelinoeField_1137", Text = "They won't be gone for long..." },
+				{ Cue = "/VO/MelinoeField_0695", Text = "Until we meet again." },
+			},
+		},
 	},
 	-- These are all the same, but the SelectPactLevelAIStages are different and will be set accordingly in the modification handler
 	HydraHeadImmortalLavamaker = {
@@ -562,6 +689,40 @@ local enemyReplacements = {
 	},
 	CrawlerMiniBoss = {
 		DefaultAIData = { DeepInheritance = true, },
+		OnKillVoiceLines = {
+			Cooldowns = { { Name = "BossVanquishedSpeech", Time = 60 }, },
+			{ GlobalVoiceLines = "BarelySurvivedBossFightVoiceLines" },
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 5.2,
+				SuccessiveChanceToPlayAll = 0.66,
+				ThreadName = "RoomThread",
+				GameStateRequirements = {},
+				{ Cue = "/VO/MelinoeField_0179", Text = "...Terrifying...",       PlayFirst = true },
+				{ Cue = "/VO/MelinoeField_0180", Text = "Gods, what a monster..." },
+				{ Cue = "/VO/MelinoeField_0181", Text = "Positively vicious...",  PlayFirst = true },
+				{
+					Cue = "/VO/MelinoeField_0182",
+					Text = "I win this time, O King.",
+					GameStateRequirements = {
+						{
+							PathTrue = { "GameState", "TextLinesRecord", "OdysseusAboutVerminMiniboss01" },
+						}
+					},
+				},
+				{
+					Cue = "/VO/MelinoeField_0183",
+					Text = "Got you again, O King.",
+					GameStateRequirements = {
+						{
+							PathTrue = { "GameState", "TextLinesRecord", "OdysseusAboutVerminMiniboss01" },
+						}
+					},
+				},
+				{ Cue = "/VO/MelinoeField_0184", Text = "Not really dead, are you." },
+			},
+		},
 	},
 	Hades = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
