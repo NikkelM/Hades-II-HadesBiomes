@@ -1141,6 +1141,40 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation_Flavor",
 	-- 	Description =
 	-- 	"The Unseen's reach is greater than many assume, and so it is no surprise that even the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} is not beyond their grasp.",
+	-- },	
+	-- Add Gold Urns/Breakables
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BreakableValue1Incantation",
+	-- 	DisplayName = "Urns of Wealth, Lesser",
+	-- 	Description =
+	-- 	"Reveal {#BoldFormatGraftDark}Golden Urns {#Prev}in various {$Keywords.RoomPlural} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, which yield {#UpgradeFormatDark}+{$EnemyData.Breakable.BreakableValueOptions[3].MoneyDropOnDeath.MaxValue}{#Prev}{!Icons.Currency} once shattered."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BreakableValue1Incantation_Flavor",
+	-- 	Description =
+	-- 	"Gold is a currency accepted both above the Surface and below it.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BreakableValue2Incantation",
+	-- 	DisplayName = "Urns of Wealth, Greater",
+	-- 	Description =
+	-- 	"{#BoldFormatGraftDark}Golden Urns {#Prev}in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} now yield up to {#UpgradeFormatDark}+{$EnemyData.Breakable.BreakableValueOptions[2].MoneyDropOnDeath.MaxValue}{#Prev}{!Icons.Currency} once shattered."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BreakableValue2Incantation_Flavor",
+	-- 	Description =
+	-- 	"Every soul traveling into the Underworld is expected to bring with them payment for their passage - some brough more than required and discarded the excess along the way.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BreakableValue3Incantation",
+	-- 	DisplayName = "Urns of Wealth, Superior",
+	-- 	Description =
+	-- 	"{#BoldFormatGraftDark}Golden Urns {#Prev} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} now yield up to {#UpgradeFormatDark}+{$EnemyData.Breakable.BreakableValueOptions[1].MoneyDropOnDeath.MaxValue}{#Prev}{!Icons.Currency} once shattered."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_BreakableValue3Incantation_Flavor",
+	-- 	Description =
+	-- 	"The boatman Charon has many sources of income, and often finds himself with more coin than he can carry, knowing any discarded excess will eventually find its way back to him regardless.",
 	-- },
 	-- #endregion
 
