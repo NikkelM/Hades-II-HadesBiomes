@@ -7,10 +7,16 @@
 ---@param voiceBankMappings table<string, table<string>> Voicebank mapping to load modded voicebanks with vanilla loads
 ---@param cueMappings table<string, string> Cue prefix mapping, applied to `/VO/<Find>` -> `/VO/<ReplaceWith>`
 ---@param portraitMappings table<string, string> Mappings of Cue prefixes to Portrait names
+---@param dummyCue string|nil If not nil, this cue or sound will be played when the loot is picked up, in place of an actual voiced dialogue
+---@param dummyVoiceBank string|nil If `dummyCue` is set, this voicebank will be loaded for it
 function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineType, textLinePriorityType,
-																		 voiceBankMappings, cueMappings, portraitMappings)
+																		 voiceBankMappings, cueMappings, portraitMappings, dummyCue, dummyVoiceBank)
 	if narrativeDataKey == nil or textLineType == nil or textLinePriorityType == nil or voiceBankMappings == nil or cueMappings == nil or portraitMappings == nil then
 		mod.DebugPrint("A required parameter is missing!", 1)
+		return
+	end
+	if dummyCue ~= nil and dummyVoiceBank == nil then
+		mod.DebugPrint("dummyCue is set but dummyVoiceBank is nil, both must be set to use a dummy cue!", 1)
 		return
 	end
 
@@ -102,7 +108,18 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- This requirement was missing in Hades' textlines
 		table.insert(data.GameStateRequirements, { PathFalse = { "CurrentRun", "UseRecord", narrativeDataKey } })
 
+		local insertedDummyCue = (not dummyCue) or false
 		for _, line in ipairs(data) do
+			if not insertedDummyCue and not line.UserPlayerSource then
+				-- Sound that is played after pickup for textlines without actual voiced dialogue
+				line.PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayDummyLootPickupCue"
+				line.PreLineThreadedFunctionArgs = {
+					DummyCue = dummyCue,
+					DummyVoiceBank = dummyVoiceBank,
+				}
+				insertedDummyCue = true
+			end
+
 			line.UseRoomContextArt = true
 
 			-- Update portraits, must be done before the Cues are modified
@@ -163,6 +180,18 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		end
 		-- #endregion
 	end
+end
+
+function mod.PlayDummyLootPickupCue(source, args)
+	if args == nil or args.DummyCue == nil then
+		return
+	end
+
+	if args.DummyVoiceBank ~= nil then
+		LoadVoiceBank({ Names = { args.DummyVoiceBank }, IgnoreAssert = true })
+	end
+
+	PlaySound({ Name = args.DummyCue, Id = source.ObjectId, })
 end
 
 -- #endregion
