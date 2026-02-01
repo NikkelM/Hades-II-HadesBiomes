@@ -111,12 +111,16 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		local insertedDummyCue = (not dummyCue) or false
 		for _, line in ipairs(data) do
 			if not insertedDummyCue and not line.UserPlayerSource then
-				-- Sound that is played after pickup for textlines without actual voiced dialogue
-				line.PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayDummyLootPickupCue"
-				line.PreLineThreadedFunctionArgs = {
-					DummyCue = dummyCue,
-					DummyVoiceBank = dummyVoiceBank,
-				}
+				if line.PreLineThreadedFunctionName ~= nil then
+					mod.DebugPrint("Text line " .. key .. " already has PreLineThreadedFunctionName set, skipping dummy Cue", 4)
+				else
+					-- Sound that is played after pickup for textlines without actual voiced dialogue
+					line.PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayDummyLootPickupCue"
+					line.PreLineThreadedFunctionArgs = {
+						DummyCue = dummyCue,
+						DummyVoiceBank = dummyVoiceBank,
+					}
+				end
 				insertedDummyCue = true
 			end
 
