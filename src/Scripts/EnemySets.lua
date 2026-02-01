@@ -9,10 +9,10 @@ local additionalEnemySets = {
 		"Homing",
 	},
 	ShadeOnlyEliteAttributes = {
-		-- "MultiEgg",
-		-- "MultiEgg",
-		-- "MultiEgg",
-		-- "MultiEgg",
+		"MultiEgg",
+		"MultiEgg",
+		"MultiEgg",
+		"MultiEgg",
 	},
 	-- #endregion
 

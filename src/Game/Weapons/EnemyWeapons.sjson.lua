@@ -54,6 +54,9 @@ mod.AddTableKeysSkipDupes(hadesWeaponsTable.Weapons, hadesWeaponAdditions, "Name
 
 local hadesWeaponsModifications = {
 	-- #region ELYSIUM
+	EliteDeathMultiEgg = {
+		ProjectileInterval = 0.05,
+	},
 	ShadeSpearLeap = {
 		SelfVelocity = mod.NilValue,
 		SelfUpwardVelocity = mod.NilValue,

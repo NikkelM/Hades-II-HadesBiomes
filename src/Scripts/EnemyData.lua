@@ -1529,6 +1529,17 @@ local enemyModifications = {
 		DeathAnimation = "ShadeNakedDeathVFX",
 		DeathFx = "null",
 	},
+	ShadeNakedEliteTrap = {
+		UseActivatePresentation = false,
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DeathAnimation = "ShadeNakedDeathVFX",
+		DeathFx = "null",
+		BlockRaiseDead = true,
+		BlockRespawnShrineUpgrade = true,
+		BlockCharm = true,
+		AIOptions = { _PLUGIN.guid .. "." .. "RetreatThenDieAI", },
+		OnDeathFireWeapons = { "ShadeNakedEliteTrapDeath" },
+	},
 	ShadeSpearUnit = {
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
 		SpawnUnitOnDeath = "ShadeNaked",
@@ -2644,11 +2655,7 @@ mod.AddTableKeysSkipDupes(game.EnemyData.Elite.EliteAttributeData, {
 				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
 			},
 		},
-		AddEnemyOnDeathWeapons = {
-			{
-				Weapon = "EliteDeathMultiEgg"
-			}
-		},
+		AddDeathWeapons = { "EliteDeathMultiEgg" },
 	},
 })
 -- Disguise and SpreadHitShields cannot be used together

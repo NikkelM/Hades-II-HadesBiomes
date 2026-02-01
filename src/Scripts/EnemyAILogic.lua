@@ -102,3 +102,20 @@ function mod.ModsNikkelMHadesBiomesBossAIStageHandler(enemy, args)
 		Destroy({ Ids = GetIdsByType({ Name = aiStage.ClearObstacleTypes }) })
 	end
 end
+
+function mod.RetreatThenDieAI(enemy)
+	game.Retreat(enemy, enemy, game.CurrentRun.Hero.ObjectId)
+	if enemy.PostRetreatFlash then
+		Flash({
+			Id = enemy.ObjectId,
+			Speed = 2,
+			MinFraction = 0,
+			MaxFraction = 0.8,
+			Color = game.Color.White,
+			Duration = enemy.PostRetreatDuration,
+			ExpireAfterCycle = true
+		})
+	end
+	game.wait(game.CalcEnemyWait(enemy, enemy.PostRetreatDuration), game.RoomThreadName)
+	game.Kill(enemy)
+end

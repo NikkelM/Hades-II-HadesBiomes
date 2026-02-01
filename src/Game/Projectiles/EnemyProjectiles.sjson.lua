@@ -171,6 +171,26 @@ local hadesProjectilesModifications = {
 	-- #endregion
 
 	-- #region ELYSIUM
+	EliteDeathMultiEgg = {
+		-- Drop instantly
+		Gravity = 999999,
+	},
+	ShadeNakedEliteTrapDeath = {
+		-- Otherwise, doesn't explode if killed directly by the player
+		CanBeProjectileDefenseDestroyed = false,
+		CanBeProjectileDefenseDestroyedByName2 = "null",
+		CanBeProjectileDefenseDestroyedByLayer = "null",
+		Effect = {
+			Name = "HeroOnHitStun",
+			Duration = 0.7,
+			DisableMove = true,
+			DisableRotate = true,
+			DisableAttack = true,
+			Active = true,
+			CanAffectInvulnerable = false,
+			FrontFx = "DionysusStunnedFx",
+		},
+	},
 	SplitShotWeapon = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		ImpactFx = "EnemyProjectileImpact",
@@ -532,12 +552,12 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 		"hadesProjectilesTable.Projectiles: " .. (projectile.Name or tostring(i)))
 
 	-- This property was renamed in Hades II
-	if projectile.Effect and projectile.Effect.Name == "ZagreusOnHitStun" then
+	if projectile.Effect and (projectile.Effect.Name == "ZagreusOnHitStun" or projectile.Effect.Name == "OnHitStun") then
 		projectile.Effect.Name = "HeroOnHitStun"
 	end
 	if projectile.Effects then
 		for _, effect in ipairs(projectile.Effects) do
-			if effect.Name == "ZagreusOnHitStun" then
+			if effect.Name == "ZagreusOnHitStun" or effect.Name == "OnHitStun" then
 				effect.Name = "HeroOnHitStun"
 			end
 		end

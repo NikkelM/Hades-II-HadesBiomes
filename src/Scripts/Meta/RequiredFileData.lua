@@ -520,6 +520,10 @@ mod.SjsonFileModifications = {
 			ScaleX = 0,
 			Material = "null"
 		},
+		ShadeNaked_Idle_Trap = {
+			RandomPlaySpeedMax = 50,
+			RandomPlaySpeedMin = 40,
+		},
 	},
 	["Animations\\CharacterAnim_Enemies_WretchThug"] = {
 		EnemyActivationWretchThugFade = {

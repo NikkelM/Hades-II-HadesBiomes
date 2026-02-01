@@ -1989,6 +1989,26 @@ local weaponModifications = {
 			FireFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
 		},
 	},
+	EliteDeathMultiEgg = {
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "EliteDeathMultiEgg",
+			FireProjectileAtSelf = true,
+			PreAttackStop = true,
+			PreAttackDuration = 0.0,
+			-- Rifts ban
+			DumbFireWeapons = {},
+		},
+	},
+	ShadeNakedEliteTrapDeath = {
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "ShadeNakedEliteTrapDeath",
+			FireProjectileAtSelf = true,
+			PreAttackStop = true,
+			PreAttackDuration = 0.0,
+		},
+	},
 	-- #endregion
 }
 
