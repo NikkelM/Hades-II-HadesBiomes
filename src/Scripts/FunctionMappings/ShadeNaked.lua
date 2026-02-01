@@ -206,7 +206,7 @@ function mod.ProcessPickup(enemy, pickupTarget)
 		newEnemy.UseActivatePresentation = false
 		newEnemy.SpawnAggroed = true
 
-		newEnemy.ObjectId = SpawnUnit({ Name = newEnemyName, InheritGroupNames = true, DestinationId = oldEnemy.ObjectId })
+		newEnemy.ObjectId = SpawnUnit({ Name = newEnemyName, Group = "Standing", DestinationId = oldEnemy.ObjectId })
 		game.thread(game.SetupUnit, newEnemy, game.CurrentRun)
 
 		-- If the enemy respawns in a challenge encounter, we need to add it to the active spawns
