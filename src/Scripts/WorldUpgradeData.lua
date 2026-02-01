@@ -290,6 +290,13 @@ local newIncantations = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradeBreakableValue1" },
 			},
+			{
+				SumPrevRuns = 2,
+				Path = { "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation" },
+				CountPathTrue = true,
+				Comparison = "<",
+				Value = 1,
+			},
 		},
 		IncantationVoiceLines = {
 			{
