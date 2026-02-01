@@ -344,6 +344,7 @@ local encounterModifications = {
 		CancelSpawnsOnKillAllTypes = { "WretchAssassinMiniboss" },
 		CanEncounterSkip = false,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		BlockEliteAttributes = true,
 		NextRoomResumeMusic = true,
 	},
 

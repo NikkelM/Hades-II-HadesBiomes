@@ -487,3 +487,10 @@ for setName, setData in pairs(additionalEnemySets) do
 		mod.DebugPrint("Enemy set '" .. setName .. "' already exists, skipping addition.", 2)
 	end
 end
+
+-- For easier access, add the new H1 elite attributes directly to GenericEliteAttributes, they have requirements on them that only allow them in modded runs
+game.ConcatTableValuesIPairs(game.EnemySets.GenericEliteAttributes, {
+	"Beams",
+	"Disguise",
+	"Smoked",
+})

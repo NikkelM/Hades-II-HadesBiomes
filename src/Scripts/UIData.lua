@@ -27,6 +27,20 @@ local newIcons = {
 		UseTooltip = true,
 	},
 	-- #endregion
+	-- #region Elite Attributes
+	EliteSoulbound = {
+		TexturePath = "GUI\\Icons\\Attributes\\Soulbound",
+	},
+	EliteCloner = {
+		TexturePath = "GUI\\Icons\\Attributes\\Doppelganger",
+	},
+	EliteSpawner = {
+		TexturePath = "GUI\\Icons\\Attributes\\Spawner",
+	},
+	EliteSmoked = {
+		TexturePath = "GUI\\Icons\\Attributes\\Smoked",
+	},
+	-- #endregion
 }
 for iconName, iconData in pairs(newIcons) do
 	game.IconData[iconName] = game.IconData[iconName] or iconData

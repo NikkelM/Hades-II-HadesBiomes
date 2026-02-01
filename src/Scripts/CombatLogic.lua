@@ -13,6 +13,18 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (victim.ModsNikkelMHadesBiomesIsModdedEnemy or victim.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy) then
 		local killer = triggerArgs.AttackerTable or {}
 
+		if victim.KillSpawnsOnDeath then
+			local killInterval = victim.KillSpawnsInterval or 0.1
+			local delay = 0
+			local spawns = GetIds({ Name = "Spawner" .. victim.ObjectId })
+			for _, spawnId in pairs(spawns) do
+				if game.RequiredKillEnemies[spawnId] ~= nil then
+					delay = delay + killInterval
+					game.thread(mod.DelayedKill, game.RequiredKillEnemies[spawnId], { BlockRespawns = true, SkipDeathWeapons = true }, delay)
+				end
+			end
+		end
+
 		if victim.SupportAIUnitId ~= nil then
 			game.thread(game.Kill, game.ActiveEnemies[victim.SupportAIUnitId])
 		end
@@ -120,3 +132,10 @@ modutil.mod.Path.Wrap("CheckImpactReaction",
 
 		return base(attackerWeaponData, sourceProjectileData, victim, triggerArgs)
 	end)
+
+function mod.DelayedKill(victim, triggerArgs, delay)
+	game.wait(delay, game.RoomThreadName)
+	if game.ActiveEnemies[victim.ObjectId] ~= nil then
+		game.thread(game.Kill, victim, triggerArgs)
+	end
+end

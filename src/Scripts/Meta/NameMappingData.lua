@@ -669,6 +669,11 @@ mod.HadesHelpTextCopyKeys = {
 	-- #region QuestData/Minor Prophecies
 	UnknownCondition_Meet = true,
 	-- #endregion
+	-- #region Elite Attributes
+	EliteAttribute_Beams = "Beams",
+	EliteAttribute_Disguise = "Disguise",
+	EliteAttribute_MultiEgg = "MultiEgg",
+	-- #endregion
 	-- #region Misc
 	PassiveItem = true,
 	Assist = true,

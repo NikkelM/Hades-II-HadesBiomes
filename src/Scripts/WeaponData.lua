@@ -1982,6 +1982,14 @@ local weaponModifications = {
 	DevotionDionysus2 = mod.NilValue,
 	DevotionDemeter = mod.NilValue,
 	-- #endregion
+
+	-- #region ELITE ATTRIBUTES
+	EliteClones = {
+		AIData = {
+			FireFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
+		},
+	},
+	-- #endregion
 }
 
 local renamedWeaponModifications = {}

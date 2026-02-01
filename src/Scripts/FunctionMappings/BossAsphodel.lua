@@ -255,16 +255,16 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 		local newEnemy = game.DeepCopyTable(enemyData) or {}
 		newEnemy.SkipChallengeKillCounts = true
 		newEnemy.PreferredSpawnPoint = nil
+		newEnemy.Encounter = enemy.Encounter
 
 		local spawnPointId = 0
 		if weaponAIData.SpawnOnSelf then
 			spawnPointId = enemy.ObjectId
 		else
 			spawnPointId = game.SelectSpawnPoint(currentRun.CurrentRoom, newEnemy,
-				{ SpawnNearId = enemy.ObjectId, SpawnRadius = weaponAIData.SpawnRadius }) or 0
+				{ SpawnNearId = enemy.ObjectId, SpawnRadius = spawnRadius }) or 0
 		end
 		if spawnPointId == nil or spawnPointId == 0 then
-			--DebugPrint({ Text="No eligible spawn points to continue spawning "..enemy.Name.."'s enemies!" })
 			return
 		end
 		newEnemy.ObjectId = SpawnUnit({
@@ -280,7 +280,6 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 
 		if weaponAIData.SpawnClones then
 			newEnemy.IsClone = true
-			SetAlpha({ Id = newEnemy.ObjectId, Fraction = weaponAIData.CloneAlphaFraction or 0.4 })
 		end
 
 		if weaponAIData.SpawnAggroed then
@@ -299,17 +298,24 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 			end
 		end
 
-		game.SetupUnit(newEnemy, game.CurrentRun, args)
-		AddToGroup({ Id = newEnemy.ObjectId, Name = spawnGroupName })
-		--newEnemy.SkipActiveCount = true
-
 		if weaponAIData.SpawnClones then
 			newEnemy.MaxHealth = 1
 			newEnemy.Health = 1
 			newEnemy.HealthBuffer = 1
 		end
 
-		game.wait(game.CalcEnemyWait(enemy, weaponAIData.SpawnInterval), RoomThreadName)
+		game.SetupUnit(newEnemy, game.CurrentRun, args)
+		AddToGroup({ Id = newEnemy.ObjectId, Name = spawnGroupName })
+
+		if newEnemy.IsClone then
+			if enemy.IsDead and enemy.KillSpawnsOnDeath then
+				game.Kill(newEnemy, { BlockRespawns = true, SkipDeathWeapons = true })
+				return
+			end
+			SetAlpha({ Id = newEnemy.ObjectId, Fraction = weaponAIData.CloneAlphaFraction or 0.4 })
+		end
+
+		game.wait(game.CalcEnemyWait(enemy, weaponAIData.SpawnInterval), game.RoomThreadName)
 		if enemy.IsDead then
 			return
 		end
@@ -324,7 +330,7 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 		while IsAlive({ Ids = spawnGroupIds }) do
 			game.Heal(enemy, { HealAmount = weaponAIData.HealPerTick, SourceName = "BossSpawnHeal", Silent = true })
 			game.UpdateHealthBar(enemy)
-			game.wait(game.CalcEnemyWait(enemy, weaponAIData.HealInterval), RoomThreadName)
+			game.wait(game.CalcEnemyWait(enemy, weaponAIData.HealInterval), game.RoomThreadName)
 		end
 	end
 
@@ -337,7 +343,6 @@ function mod.ModsNikkelMHadesBiomesHydraToothAI(enemy)
 	for i = 1, duration do
 		game.thread(game.InCombatText, enemy.ObjectId, duration + 1 - i, 0.5,
 			{ OffsetY = 20, SkipShadow = true, FontSize = 40, FlashAnimation = "TyphonEggTimerFlash", })
-		-- CreateAnimation({ Name = "TyphonHeadEggPulse", DestinationId = enemy.ObjectId })
 		game.AIWait(1.0, enemy, enemy.AIThreadName)
 	end
 

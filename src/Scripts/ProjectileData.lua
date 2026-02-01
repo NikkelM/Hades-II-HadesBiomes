@@ -63,6 +63,9 @@ local projectileModifications = {
 		InheritFrom = { "HeavyRangedWeaponSplitter", },
 		ModsNikkelMHadesBiomesPreOnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedSplitterFragmentOnWeaponHit" },
 	},
+	EliteBeams = {
+		ModsNikkelMHadesBiomesPreOnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedSplitterFragmentOnWeaponHit" },
+	},
 	HarpyLightning = {
 		InheritFrom = { "NoSlowFrameProjectile", },
 	},

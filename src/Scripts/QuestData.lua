@@ -38,6 +38,7 @@ local newQuestOrderData = {
 	-- "ModsNikkelMHadesBiomes_QuestPatroclusUpgrades",
 	"ModsNikkelMHadesBiomes_QuestBouldyUpgrades",
 	-- weapons & combat
+	"ModsNikkelMHadesBiomes_QuestEliteAttributeKills",
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
 	"ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun",
 	"ModsNikkelMHadesBiomes_QuestShutdownThanatos",
@@ -1230,7 +1231,43 @@ local newQuestData = {
 				{ Cue = "/VO/Moros_0628", Text = "Even the Fates themselves perhaps did not expect this." },
 			},
 		},
-	}
+	},
+	ModsNikkelMHadesBiomes_QuestEliteAttributeKills = {
+		InheritFrom = { "DefaultQuestItem", "DefaultKillQuest" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 1,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			NamedRequirements = { "ShrineUnlocked" },
+		},
+		CompletionRequirementTextSymbolScale = 0.85,
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "EnemyEliteAttributeKills", },
+				HasAll = {
+					"Beams",
+					"Disguise",
+					"Smoked",
+					"MultiEgg",
+				},
+			},
+		},
+		CashedOutVoiceLines = {
+			{
+				PreLineWait = 0.4,
+				GameStateRequirements = { {}, },
+				Cooldowns = { { Name = "MorosProphecyFulfilledSpeech", Time = 3 }, },
+				SkipAnim = true,
+				RequiredSourceValueFalse = "InPartnerConversation",
+				ObjectType = "NPC_Moros_01",
+				{ Cue = "/VO/Moros_0225", Text = "Serve the Night, and the Night shall give back." },
+			},
+		},
+	},
 	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.QuestData, newQuestData)

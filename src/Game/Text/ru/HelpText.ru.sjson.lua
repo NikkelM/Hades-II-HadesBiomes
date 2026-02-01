@@ -1490,6 +1490,12 @@ local newData = {
 	-- 	DisplayName =
 	-- 	"{!Icons.QuestProgressComplete} Successively Clear Any Three All-Random {$Keywords.PackagedBounties} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestEliteAttributeKills",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Exposed Fangs ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of vanquishing foes imbued with each of the different dangerous Perks {#Emph}unique to the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} {#Prev}from the {#Emph}{$MetaUpgradeData.EnemyEliteShrineUpgrade.Name} {#Prev}in the {#Emph}Oath of the Unseen{#Prev}."
+	-- },
 	-- #endregion
 
 	-- #region Chaos Trials/Bounties

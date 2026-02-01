@@ -40,6 +40,10 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_LeaveFeedback",
 		DisplayName = "[BETA] Please leave feedback and bug reports on GitHub or on Discord in #h1-run-h2",
 	},
+	{
+		Id = "Smoked",
+		DisplayName = "{!Icons.EliteSmoked} Smoker",
+	},
 	-- #endregion
 
 	-- #region Button/Use Prompts
@@ -1510,6 +1514,12 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak_Cleared",
 		DisplayName =
 		"{!Icons.QuestProgressComplete} Successively Clear Any Three All-Random {$Keywords.PackagedBounties} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestEliteAttributeKills",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Exposed Fangs ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of vanquishing foes imbued with each of the different dangerous Perks {#Emph}unique to the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} {#Prev}from the {#Emph}{$MetaUpgradeData.EnemyEliteShrineUpgrade.Name} {#Prev}in the {#Emph}Oath of the Unseen{#Prev}."
 	},
 	-- #endregion
 

@@ -207,6 +207,7 @@ local function on_ready()
 			DebugLogScriptImportProgress("Enemy Animation SJSON")
 
 			import "Game/Animations/GUI_Boons_VFX.sjson.lua"
+			import "Game/Animations/GUI_HUD_VFX.sjson.lua"
 			import "Game/Animations/GUI_Portraits_VFX.sjson.lua"
 			import "Game/Animations/GUI_Screens_VFX.sjson.lua"
 			import "Game/Animations/GUI_VFX.sjson.lua"

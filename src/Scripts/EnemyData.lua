@@ -836,13 +836,6 @@ local enemyModifications = {
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
 		WeaponOptions = { "HadesSwarmerMelee" },
-		BlockAttributes = { "Orbit", "Vacuum", },
-	},
-	SwarmerElite = {
-		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
-	},
-	SwarmerSuperElite = {
-		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
 	LightSpawner = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
@@ -2605,5 +2598,66 @@ local enemyKeyReplacements = {
 -- Needs to be done before the enemy data is added to the game
 game.EnemyData.SpikeTrap.DefaultAIData.TargetGroups = { "GroundEnemies", "HeroTeam", }
 game.EnemyData.SpikeTrap.AIOptions = { "GuardAI", }
+
+mod.AddTableKeysSkipDupes(game.EnemyData.Elite.EliteAttributeData, {
+	Smoked = {
+		GameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
+			},
+			{
+				PathTrue = { "GameState", "EncountersCompletedCache", "BossHarpy1" },
+			},
+		},
+		AddDumbFireWeaponsOnSpawn = { "EliteSmoke" },
+	},
+	Disguise = {
+		GameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
+			},
+			{
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsAny = { "Tartarus", },
+			},
+		},
+		SkipApplyOnClones = true,
+		DifficultyRatingMultiplier = 5.0,
+		AddDumbFireWeaponsOnSpawn = { "EliteClones" },
+		DataOverrides = {
+			KillSpawnsOnDeath = true,
+		},
+		BlockAttributes = { "SpreadHitShields" },
+	},
+	Beams = {
+		GameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
+			},
+		},
+		AddDumbFireWeaponsOnSpawn = { "EliteBeams" },
+		BlockAttributes = { "Blink" },
+	},
+	MultiEgg = {
+		GameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
+			},
+		},
+		AddEnemyOnDeathWeapons = {
+			{
+				Weapon = "EliteDeathMultiEgg"
+			}
+		},
+	},
+})
+-- Disguise and SpreadHitShields cannot be used together
+game.EnemyData.Elite.EliteAttributeData.SpreadHitShields.BlockAttributes = game.EnemyData.Elite.EliteAttributeData
+		.SpreadHitShields.BlockAttributes or {}
+table.insert(game.EnemyData.Elite.EliteAttributeData.SpreadHitShields.BlockAttributes, "Disguise")
+-- Beams and Blink cannot be used together
+game.EnemyData.Elite.EliteAttributeData.Blink.BlockAttributes = game.EnemyData.Elite.EliteAttributeData
+		.Blink.BlockAttributes or {}
+table.insert(game.EnemyData.Elite.EliteAttributeData.Blink.BlockAttributes, "Beams")
 
 mod.ApplyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)

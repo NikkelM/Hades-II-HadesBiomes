@@ -5,10 +5,11 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - Added new randomized Chaos Trials, "Chaos Within", "Great Chaos Within" and "Greater Chaos Within". These function the same way as the base game randomized Trials, allowing you to battle out of Tartarus with a random weapon, keepsake, familiar, arcana and vow setup. Complete the story of Zagreus' Journey (10 clears) and have all keepsakes, weapons and familiars unlocked to find these Trials in the Pitch-Black Stone.
-- Added new dialogue from Chaos, explaining the nature of Zagreus' Journey runs.
-- Added a new minor prophecy related to clearing the new Chaos Trials.
+- Added four new Elite Perks: "Linker", "Cloner", "Smoker" and "Popper", which can appear on elite enemies in Zagreus' Journey runs.
+- Added new minor prophecies related to clearing the new Chaos Trials, and defeating enemies imbued with the new Elite Perks.
 - Added new incantations to unlock Golden Urns in Zagreus' Journey runs.
-- Added subtitles. For languages available in Hades II that did not have a localization in the first game, the English subtitles will be shown.
+- Added new dialogues with Chaos, explaining the nature of Zagreus' Journey runs.
+- Added subtitles. For languages available in Hades II that did not have a localization in the first game, English subtitles will be shown.
 
 Other fixes and improvements:
 - When trading Zagreus' Journey resources with the broker, the resource display on the top right will now show how many of the given boss resource you currently have in your inventory, instead of always showing a placeholder.
