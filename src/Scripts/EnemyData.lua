@@ -814,6 +814,7 @@ local enemyModifications = {
 			PostAttackDuration = 0.5,
 		},
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
+		BlockAttributes = { "Blink" },
 	},
 	HeavyRanged = {
 		StunAnimations = { Default = "HeavyRangedCrystal4" },
@@ -1032,6 +1033,7 @@ local enemyModifications = {
 		WeaponOptions = { "HadesLightSpawnerEliteSpawnerWeapon", },
 		DefaultAIData = { DeepInheritance = true, },
 		OnDamagedFunctionName = "AggroSpawns",
+		BlockAttributes = { "Disguise" },
 	},
 	-- Need to manually modify these fields, as the enemies are DeepCopyTable'd from Hades II above
 	HadesBloodlessNaked = {
@@ -1211,7 +1213,7 @@ local enemyModifications = {
 		UseActivatePresentation = false,
 	},
 	RangedBurrowerElite = {
-		BlockAttributes = { "Blink", "Orbit", },
+		BlockAttributes = { "Blink", "Orbit", "Beams" },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
 	},
 	RangedBurrowerSuperElite = {
@@ -1347,7 +1349,7 @@ local enemyModifications = {
 	CrusherUnitElite = {
 		MaxHealth = 800,
 		HealthBuffer = 1550,
-		BlockAttributes = { "Blink", "Orbit", "Fog", "Frenzy", "ManaDrain", "Molten", "Unflinching", "Vacuuming", },
+		BlockAttributes = { "Blink", "Orbit", "Fog", "Frenzy", "ManaDrain", "Molten", "Unflinching", "Vacuuming", "Beams", "Smoked" },
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,

@@ -67,4 +67,9 @@ local encounterModifications = {
 	-- #endregion
 }
 
+-- Modifications to Hades II encounters
+-- Be careful, this also influences vanilla runs
+table.insert(game.EncounterData.EliteChallenge.BannedEliteAttributes, "Beams")
+table.insert(game.EncounterData.EliteChallenge.BannedEliteAttributes, "Smoked")
+
 mod.ApplyModificationsAndInheritEncounterData(encounterDataChallengeCharon, encounterModifications, encounterReplacements)
