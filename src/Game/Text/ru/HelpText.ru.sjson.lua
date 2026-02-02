@@ -1460,11 +1460,11 @@ local newData = {
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_QuestLog_TorchSpecialDurationAspect",
-	-- 	DisplayName = "Aspect of Melinoë (Zorephet)",
+	-- 	DisplayName = "Aspect of Melinoë (Ygnium)",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_QuestLog_AxeRecoveryAspect",
-	-- 	DisplayName = "Aspect of Melinoë (Ygnium)",
+	-- 	DisplayName = "Aspect of Melinoë (Zorephet)",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_QuestLog_LobAmmoBoostAspect",
