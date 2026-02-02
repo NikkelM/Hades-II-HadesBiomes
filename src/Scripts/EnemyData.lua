@@ -1286,6 +1286,9 @@ local enemyModifications = {
 			},
 		},
 	},
+	ShieldRangedElite = {
+		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching" },
+	},
 	ShieldRangedSuperElite = {
 		HealthBuffer = 900,
 		Tethers = {
