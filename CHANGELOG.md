@@ -23,6 +23,7 @@ Other fixes and improvements:
 - Fixed: Exalted Shades that respawned from a respawn egg will render in front of obstacles when they should be behind them instead.
 - Fixed: After defeating the Tiny Vermin in Styx, the biome music starts with an incorrect section when returning to the hub room.
 - Fixed: Hades is missing his intro animation after a particular dialogue before his boss fight.
+- Fixed: Zagreus' portrait disappears during a certain dialogue on the Surface.
 - Fixed: Damage taken from small Hydra heads during the Asphodel boss fight is not correctly attributed to the main head in the "Damage Taken" section of the run clear screen.
 - Fixed: Furies that support the main Fury in the Tartarus boss fight (with the Vow of Rivals) are shown with a placeholder name in the "Damage Taken" table in the run clear screen.
 - Fixed: Grave Thirst trigger during room transitions on the Surface and during the ending sequence.

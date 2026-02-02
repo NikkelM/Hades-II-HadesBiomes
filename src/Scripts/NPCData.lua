@@ -264,6 +264,11 @@ local npcModifications = {
 					PostLineAnim = mod.NilValue,
 				},
 			},
+			PersephoneMeeting03 = {
+				[7] = {
+					PreLineThreadedFunctionArgs = { Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Unwell_01", },
+				},
+			},
 			PersephoneMeeting07 = {
 				EndVoiceLines = {
 					[2] = {
