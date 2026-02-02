@@ -242,6 +242,11 @@ modutil.mod.Path.Wrap("HandleSecretSpawns", function(base, currentRun)
 			end
 		end
 
+		-- Save that a SellTraitShop was spawned (vanilla doesn't do that anymore)
+		if currentRoom.ForceSellShop then
+			currentRun.LastSellTraitShopDepth = currentRun.RunDepthCache
+		end
+
 		-- ShrineChallenge/Erebus Gates
 		if not game.IsEmpty(secretPointIds) and mod.IsShrinePointDoorEligible(currentRun, currentRoom) then
 			currentRoom.ForceShrinePointDoor = true
