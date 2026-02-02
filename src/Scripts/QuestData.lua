@@ -515,7 +515,7 @@ local newQuestData = {
 		RewardResourceAmount = 1500,
 		UnlockGameStateRequirements = {
 			{
-				PathTrue = { "GameState", "TextLinesRecord", "ThanatosFirstAppearance" },
+				PathTrue = { "GameState", "TextLinesRecord", "ThanatosGift03" },
 			},
 		},
 		CompleteGameStateRequirements = {
