@@ -2638,7 +2638,7 @@ mod.AddTableKeysSkipDupes(game.EnemyData.Elite.EliteAttributeData, {
 		DataOverrides = {
 			KillSpawnsOnDeath = true,
 		},
-		BlockAttributes = { "SpreadHitShields" },
+		BlockAttributes = { "SpreadHitShields", "Metallic" },
 	},
 	Beams = {
 		GameStateRequirements = {
@@ -2666,5 +2666,9 @@ table.insert(game.EnemyData.Elite.EliteAttributeData.SpreadHitShields.BlockAttri
 game.EnemyData.Elite.EliteAttributeData.Blink.BlockAttributes = game.EnemyData.Elite.EliteAttributeData
 		.Blink.BlockAttributes or {}
 table.insert(game.EnemyData.Elite.EliteAttributeData.Blink.BlockAttributes, "Beams")
+-- Metallic and Disguise cannot be used together
+game.EnemyData.Elite.EliteAttributeData.Metallic.BlockAttributes = game.EnemyData.Elite.EliteAttributeData
+		.Metallic.BlockAttributes or {}
+table.insert(game.EnemyData.Elite.EliteAttributeData.Metallic.BlockAttributes, "Disguise")
 
 mod.ApplyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
