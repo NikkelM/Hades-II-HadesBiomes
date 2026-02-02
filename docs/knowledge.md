@@ -207,7 +207,7 @@ To ID `210099`:
 Also:
 - Change the `GroupNames` for `508013` to `Terrain_04` (Rightmost TartarusGhostHandsMulti in the pit).
 - Change the `GroupNames` for `410695` to `Terrain_01` (TartarusGhostHandsMulti under the light to the right of the fishing pier).
-- Change the `GroupNames` for `210333` to `Terrain_01` (TartarusRockRipple left of bridge).
+- Delete ID `210333` (TartarusRockRipple left of bridge).
 
 Additionally, the new `Terrain_04` and `Terrain_05` groups must be added to the `RoomOpening.map_text` file, in the correct positions:
 
