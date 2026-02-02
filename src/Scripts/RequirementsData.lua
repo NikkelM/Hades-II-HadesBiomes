@@ -42,6 +42,10 @@ local newNamedRequirements = {
 			PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01" },
 		},
 		{
+			-- Has the post-boss keepsake racks
+			PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation" },
+		},
+		{
 			Path = { "GameState", "MetaUpgradeLimitLevel", },
 			Comparison = ">=",
 			Value = 15,
