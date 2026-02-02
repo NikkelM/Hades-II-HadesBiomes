@@ -514,11 +514,6 @@ function mod.SurfaceExitIncantationPresentation(usee, args, user)
 	StopSound({ Id = loopingSoundId, Duration = 0.4 })
 	loopingSoundId = nil
 
-	PlaySound({ Name = "/Leftovers/SFX/LightOn", Id = usee.ObjectId, Delay = 0.25 })
-	PlaySound({ Name = "/Leftovers/SFX/LightOn", Id = usee.ObjectId, Delay = 0.5 })
-	PlaySound({ Name = "/Leftovers/SFX/LightOn", Id = usee.ObjectId, Delay = 0.75 })
-	PlaySound({ Name = "/Leftovers/SFX/LightOn", Id = usee.ObjectId })
-
 	game.wait(0.4)
 
 	RemoveInputBlock({ Name = "MelUsedSystemObject" })
