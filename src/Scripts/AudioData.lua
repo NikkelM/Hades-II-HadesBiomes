@@ -147,16 +147,27 @@ mod.StartNewHadesRunVoiceLines = {
 	Queue = "Never",
 	{
 		BreakIfPlayed = true,
-		RandomRemaining = true,
 		PreLineWait = 0.35,
-		RequiredCompletedRuns = 0,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = "==",
+				Value = 0,
+			},
+		},
 		{ Cue = "/VO/Melinoe_2888", Text = "What could go wrong...?" },
 	},
 	{
 		BreakIfPlayed = true,
 		RandomRemaining = true,
 		PreLineWait = 0.35,
-		RequiredMinCompletedRuns = 1,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+		},
 		-- Custom
 		{ Cue = "/VO/MelinoeField_0205", Text = "Every bad dream has an escape..." },
 		-- From the underworld route
