@@ -8,6 +8,40 @@ modutil.mod.Path.Wrap("DestroyDoorRewardPresenation", function(base, door)
 	base(door)
 end)
 
+modutil.mod.Path.Wrap("ExitDoorUnlockedPresentation", function(base, exitDoor)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesExitDoors ~= nil then
+		local foundExitDoor = false
+		for _, moddedExitDoor in ipairs(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesExitDoors) do
+			if moddedExitDoor.ObjectId == exitDoor.ObjectId then
+				foundExitDoor = true
+				if exitDoor.UnlockedAnimationMetaReward ~= nil and exitDoor.Room ~= nil and exitDoor.Room.RewardStoreName == "MetaProgress" then
+					SetAnimation({ Name = exitDoor.UnlockedAnimationMetaReward, DestinationId = exitDoor.ObjectId })
+				elseif exitDoor.UnlockedAnimation ~= nil then
+					SetAnimation({ Name = exitDoor.UnlockedAnimation, DestinationId = exitDoor.ObjectId })
+				end
+				if exitDoor.RewardPreviewIconIds ~= nil then
+					SetColor({ Ids = exitDoor.RewardPreviewIconIds, Color = { 1.0, 1.0, 1.0, 0 }, Duration = 0 })
+					SetColor({ Ids = exitDoor.RewardPreviewIconIds, Color = { 0, 0, 0, 1 }, Duration = 0.2 })
+				end
+				if exitDoor.UnlockedSound ~= nil then
+					PlaySound({ Name = exitDoor.UnlockedSound, Id = exitDoor.ObjectId })
+				end
+				if exitDoor.UnlockedGlobalVoiceLines ~= nil then
+					game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[exitDoor.UnlockedGlobalVoiceLines], true)
+				end
+				game.wait(0.1)
+				game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ExitsUnlockedVoiceLines)
+				break
+			end
+		end
+		if not foundExitDoor then
+			return base(exitDoor)
+		end
+	else
+		return base(exitDoor)
+	end
+end)
+
 modutil.mod.Path.Wrap("StartRoomPresentation", function(base, currentRun, currentRoom, metaPointsAwarded)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and currentRoom.StartRoomPresentationOnReload and currentRoom.ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub then
 		game.RunThreadedEvents(game.RoomData[currentRoom.Name].ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub,
@@ -252,7 +286,6 @@ function mod.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId,
 	AngleTowardTarget({ Id = currentRun.Hero.ObjectId, DestinationId = boatMovePoint })
 	AdjustZLocation({ Id = boatId, Distance = 10, Duration = 0.0 })
 	Move({ Id = boatId, DestinationId = boatMovePoint, Duration = 1.0, EaseOut = 1.0 })
-	-- Shake({ Id = raftMovePoint, Distance = 2, Speed = 100, Duration = 0.3 })
 	game.wait(0.9)
 
 	AdjustZLocation({ Id = boatId, Distance = -10, Duration = 0.5 })

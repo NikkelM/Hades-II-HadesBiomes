@@ -3,7 +3,7 @@
 modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosenRewardType, chosenLootName, index, args)
 	args = args or {}
 
-	if not args.ReUseIds and (exitDoor.Name == "TartarusDoor03b" or exitDoor.Name == "AsphodelBoat01b") then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.HadesExitDoorObstacleNames[exitDoor.Name] and not args.ReUseIds then
 		local room = exitDoor.Room
 		chosenRewardType = chosenRewardType or room.ChosenRewardType
 
@@ -165,6 +165,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 
 			local rewardContainerAnim = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front"
 			-- Same for both in Asphodel!
+			-- TODO: Pretty sure this is likely not the case?
 			-- if room.RewardStoreName == "MetaProgress" then
 			-- 	rewardContainerAnim = rewardContainerAnim .. "_MetaReward"
 			-- end

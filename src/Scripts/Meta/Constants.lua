@@ -480,3 +480,9 @@ mod.SharedKeepsakePortKeepsakeTraitNames = {
 
 -- Not actually a constant, will be populated in mod.AddNarrativeDataEntries()
 mod.LootVoiceBankMappings = mod.LootVoiceBankMappings or {}
+
+mod.HadesExitDoorObstacleNames = {
+	TartarusDoor03b = true,
+	AsphodelBoat01b = true,
+	-- TODO: Elysium, Erebus gate, Styx all door types
+}

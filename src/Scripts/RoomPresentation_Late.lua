@@ -84,3 +84,20 @@ modutil.mod.Path.Context.Wrap.Static("EndEarlyAccessPresentation", function()
 			return base(items, priorities, playedStore, randomRemainingStore, args)
 		end)
 end)
+
+-- modutil.mod.Path.Context.Wrap.Static("DestroyDoorRewardPresenation", function(originalDoor)
+-- 	modutil.mod.Path.Wrap("CreateAnimation", function(base, args)
+-- 		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+-- 			if args.Name == "RoomRewardShatter" then
+-- 				local door = modutil.mod.Locals.Stacked(3).door
+-- 				-- TODO: Compare to modded room doors table
+-- 				if door.Room ~= nil and door.Room.RewardStoreName == "MetaProgress" then
+-- 					args.Name = "ModsNikkelMHadesBiomes_RoomRewardShatter_MetaReward"
+-- 				else
+-- 					args.Name = "ModsNikkelMHadesBiomes_RoomRewardShatter"
+-- 				end
+-- 			end
+-- 		end
+-- 		return base(args)
+-- 	end)
+-- end)

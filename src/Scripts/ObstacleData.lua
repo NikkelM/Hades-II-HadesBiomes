@@ -29,10 +29,9 @@ end
 local obstacleModifications = {
 	-- #region TARTARUS
 	TartarusDoor03b = {
-		-- Red and blue reward preview backing
-		CustomLockedAnimation_Run = "HadesDoorLocked",
-		CustomLockedAnimation_Meta = "DoorLocked_MetaReward",
-		UnlockedAnimation = "DoorLocked_MetaReward",
+		MetaRewardAnimation = "DoorLocked_MetaReward",
+		UnlockedAnimation = "HadesDoorUnlocked",
+		UnlockedAnimationMetaReward = "DoorUnlocked_MetaReward",
 	},
 	-- Rubble that falls when hitting destructible pillars
 	TartarusRubble02 = {
