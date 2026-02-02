@@ -27,6 +27,11 @@ mod.ApplyNestedSjsonModifications(hadesTartarusObstacleTable.Obstacles, obstacle
 
 -- Modifications to existing obstacles in Hades II
 local hadesTwoObstacleModifications = {
+	TartarusDoor03b = {
+		Thing = {
+			Graphic = "HadesDoorLocked",
+		},
+	},
 	-- Destructible pillars that crumble when hit
 	TartarusPillarBase04 = { InheritFrom = "1_BaseVulnerableObstacle", },
 	-- Obstacles that shouldn't be passable
