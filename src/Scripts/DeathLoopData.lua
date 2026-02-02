@@ -133,7 +133,6 @@ function mod.StartHadesRunSecretDoorPresentation(secretDoor, useAltDiveAnimation
 	game.CleanupCustomRoomSounds()
 	PlaySound({ Name = "/SFX/Menu Sounds/ChaosRoomEnterExit" })
 	game.thread(game.PlayVoiceLines, mod.StartNewHadesRunVoiceLines)
-	-- game.thread(game.InCombatText, secretDoor.ObjectId, "SecretPassageOpened", 1)
 	Stop({ Id = game.CurrentRun.Hero.ObjectId })
 
 	local unequipAnimation = game.GetEquippedWeaponValue("UnequipAnimation") or "MelinoeIdleWeaponless"

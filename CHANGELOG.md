@@ -13,6 +13,7 @@
 
 Other fixes and improvements:
 - When trading Zagreus' Journey resources with the broker, the resource display on the top right will now show how many of the given boss resource you currently have in your inventory, instead of always showing a placeholder.
+- Updated voicelines during the first Zagreus' Journey run to better fit the added context.
 - Added contextual voicelines for entering and returning to the Styx hub room, approaching Cerberus, and finding the fountain room very early or very late.
 - Added voicelines after defeating the Furies, the Bone Hydra, and the Tiny Vermin.
 - Balancing: Slightly adjusted the feel of the Doomstone's spawning fragment launch.

@@ -145,25 +145,32 @@ mod.CombatOverMusicEvents = {
 -- Played when starting a Hades run (when entering the Chaos gate at the crossroads)
 mod.StartNewHadesRunVoiceLines = {
 	Queue = "Never",
-	PreLineWait = 0.35,
-	RandomRemaining = true,
-	GameStateRequirements = { {}, },
-
-	-- Custom
-	{ Cue = "/VO/MelinoeField_0205", Text = "Every bad dream has an escape...", PlayFirst = true },
-
-	-- From the underworld route
-	{ Cue = "/VO/Melinoe_3391",      Text = "Hence I go...", },
-	{ Cue = "/VO/Melinoe_0108",      Text = "I go.", },
-	{ Cue = "/VO/Melinoe_0110",      Text = "Commencing.", },
-	{ Cue = "/VO/Melinoe_0111",      Text = "Once more.", },
-	{ Cue = "/VO/Melinoe_2482",      Text = "Once more, then." },
-	{ Cue = "/VO/Melinoe_0375",      Text = "Farewell, Commander.", },
-	{ Cue = "/VO/Melinoe_3058_B",    Text = "Here we go." },
-
-	-- From the overworld route
-	{ Cue = "/VO/Melinoe_1665",      Text = "With the grace of the Moon." },
-	{ Cue = "/VO/Melinoe_2487",      Text = "New night, new path.", },
+	{
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.35,
+		RequiredCompletedRuns = 0,
+		{ Cue = "/VO/Melinoe_2888", Text = "What could go wrong...?" },
+	},
+	{
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.35,
+		RequiredMinCompletedRuns = 1,
+		-- Custom
+		{ Cue = "/VO/MelinoeField_0205", Text = "Every bad dream has an escape..." },
+		-- From the underworld route
+		{ Cue = "/VO/Melinoe_3391",      Text = "Hence I go...", },
+		{ Cue = "/VO/Melinoe_0108",      Text = "I go.", },
+		{ Cue = "/VO/Melinoe_0110",      Text = "Commencing.", },
+		{ Cue = "/VO/Melinoe_0111",      Text = "Once more.", },
+		{ Cue = "/VO/Melinoe_2482",      Text = "Once more, then." },
+		{ Cue = "/VO/Melinoe_0375",      Text = "Farewell, Commander.", },
+		{ Cue = "/VO/Melinoe_3058_B",    Text = "Here we go." },
+		-- From the surface route
+		{ Cue = "/VO/Melinoe_1665",      Text = "With the grace of the Moon." },
+		{ Cue = "/VO/Melinoe_2487",      Text = "New night, new path.", },
+	},
 }
 
 game.GlobalVoiceLines.EmptyStartNewHadesRunVoiceLines = {}
@@ -342,7 +349,8 @@ table.insert(game.HeroVoiceLines.FishNotCaughtVoiceLines, 1,
 	mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_FishNotCaughtTooLateVoiceLines_PatroclusReaction)
 
 game.GlobalVoiceLines.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines = game.GlobalVoiceLines
-		.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines or mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines
+		.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines
 -- #endregion
 
 -- #region HeroVoiceLines

@@ -320,7 +320,7 @@ local roomReplacements = {
 				BreakIfPlayed = true,
 				RequiredCompletedRuns = 0,
 				PreLineWait = 0.9,
-				{ Cue = "/VO/MelinoeField_1418", Text = "For my brother!" }
+				{ Cue = "/VO/Melinoe_3682", Text = "Is this...? Where am I?" },
 			},
 			-- Afterwards
 			{
@@ -328,9 +328,8 @@ local roomReplacements = {
 				RandomRemaining = true,
 				PreLineWait = 0.7,
 				RequiredMinCompletedRuns = 1,
-				Cooldowns = {
-					{ Name = "MelRunStartSpeech", Time = 12 },
-				},
+				Cooldowns = { { Name = "MelRunStartSpeech", Time = 12 }, },
+				{ Cue = "/VO/MelinoeField_1418", Text = "For my brother!" },
 				{ Cue = "/VO/MelinoeField_4814", Text = "In the name of Hades." },
 				{ Cue = "/VO/Melinoe_0115",      Text = "For my family." },
 				{
