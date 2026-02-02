@@ -4230,6 +4230,9 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				{
 					PathTrue = { "CurrentRun", "CurrentRoom", "Encounter", "TookChaosCurseDamage" },
 				},
+				{
+					PathFalse = { "CurrentRun", "Cleared" },
+				},
 			},
 			RandomRemaining = true,
 			BreakIfPlayed = true,
@@ -4339,6 +4342,9 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					Path = { "CurrentRun", "ModsNikkelMHadesBiomesActualCurrentRoomName" },
 					IsAny = { "A_Boss01", "A_Boss02", "A_Boss03" },
 				},
+				{
+					PathFalse = { "CurrentRun", "Cleared" },
+				},
 			},
 			RandomRemaining = true,
 			BreakIfPlayed = true,
@@ -4355,6 +4361,9 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				{
 					Path = { "CurrentRun", "ModsNikkelMHadesBiomesActualCurrentRoomName" },
 					IsAny = { "X_Boss01", "X_Boss02" },
+				},
+				{
+					PathFalse = { "CurrentRun", "Cleared" },
 				},
 			},
 			RandomRemaining = true,
@@ -4373,6 +4382,9 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					Path = { "CurrentRun", "ModsNikkelMHadesBiomesActualCurrentRoomName" },
 					IsAny = { "Y_Boss01" },
 				},
+				{
+					PathFalse = { "CurrentRun", "Cleared" },
+				},
 			},
 			RandomRemaining = true,
 			BreakIfPlayed = true,
@@ -4388,6 +4400,9 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				{
 					Path = { "CurrentRun", "ModsNikkelMHadesBiomesActualCurrentRoomName" },
 					IsAny = { "D_Boss01" },
+				},
+				{
+					PathFalse = { "CurrentRun", "Cleared" },
 				},
 			},
 			RandomRemaining = true,
@@ -4443,9 +4458,6 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					MaxOf = "All",
 					Comparison = ">",
 					Value = 0,
-				},
-				{
-					PathFalse = { "CurrentRun", "ActiveBounty" },
 				},
 				{
 					PathFalse = { "CurrentRun", "Cleared" },
@@ -4606,6 +4618,9 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
 					Comparison = ">=",
 					Value = 1,
+				},
+				{
+					PathFalse = { "CurrentRun", "Cleared" },
 				},
 			},
 			RandomRemaining = true,
