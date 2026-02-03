@@ -5453,7 +5453,7 @@ mod.EnemyData = {
 					-- Um hi again, Miss Meg!
 					{ Cue = "/VO/Dusa_0219" },
 					-- Prince, this is so mean!!
-					{ Cue = "/VO/Dusa_0220" },
+					-- { Cue = "/VO/Dusa_0220" },
 					-- Now break it up, you two!
 					{ Cue = "/VO/Dusa_0221" },
 					-- I hate to see you fight!
@@ -5488,7 +5488,7 @@ mod.EnemyData = {
 					-- Come and get it, ladies!!
 					{ Cue = "/VO/Dusa_0268" },
 					-- Gorgons causing problems for you, Prince?
-					{ Cue = "/VO/Dusa_0269" },
+					-- { Cue = "/VO/Dusa_0269" },
 				},
 				{
 					RandomRemaining = true,
@@ -5504,11 +5504,11 @@ mod.EnemyData = {
 					-- Whoa, big momma!
 					{ Cue = "/VO/Dusa_0270" },
 					-- May I remind you, no relation, Prince?
-					{ Cue = "/VO/Dusa_0271" },
+					-- { Cue = "/VO/Dusa_0271" },
 					-- Hey, sister, let's see what you've got!
 					{ Cue = "/VO/Dusa_0272" },
 					-- This lady's trouble, Prince!
-					{ Cue = "/VO/Dusa_0273" },
+					-- { Cue = "/VO/Dusa_0273" },
 					-- I'm not afraid of you!!
 					{ Cue = "/VO/Dusa_0274" },
 					-- You're not so tough!
@@ -5531,7 +5531,7 @@ mod.EnemyData = {
 					-- Oh wow that thing is huge!
 					{ Cue = "/VO/Dusa_0226" },
 					-- That big snake making trouble, Prince?
-					{ Cue = "/VO/Dusa_0227" },
+					-- { Cue = "/VO/Dusa_0227" },
 					-- I'm not afraid of snakes!
 					{ Cue = "/VO/Dusa_0228" },
 					-- I'm not afraid of snakes!! That would be weird.
@@ -5554,7 +5554,7 @@ mod.EnemyData = {
 					-- Look at the size of this guy!
 					{ Cue = "/VO/Dusa_0232" },
 					-- This looks like trouble, Prince!
-					{ Cue = "/VO/Dusa_0233" },
+					-- { Cue = "/VO/Dusa_0233" },
 					-- Let's slow this bruiser down!
 					{ Cue = "/VO/Dusa_0234" },
 					-- Hey, toughguy, over here!
@@ -5582,7 +5582,7 @@ mod.EnemyData = {
 					-- Wow look at all this!
 					{ Cue = "/VO/Dusa_0240" },
 					-- Wow this place is amazing, Prince!
-					{ Cue = "/VO/Dusa_0241" },
+					-- { Cue = "/VO/Dusa_0241" },
 				},
 				{
 					RandomRemaining = true,
@@ -5595,9 +5595,9 @@ mod.EnemyData = {
 					Source = { SubtitleColor = Color.DusaVoice },
 
 					-- Oh wow, that's Charon, Prince!
-					{ Cue = "/VO/Dusa_0502" },
+					-- { Cue = "/VO/Dusa_0502" },
 					-- You stay away from him, please, Charon sir!
-					{ Cue = "/VO/Dusa_0503" },
+					-- { Cue = "/VO/Dusa_0503" },
 					-- You'll please forgive us, won't you, Charon sir?
 					{ Cue = "/VO/Dusa_0504" },
 					-- Um, no hard feelings, OK, Charon sir?
@@ -5614,15 +5614,15 @@ mod.EnemyData = {
 					Source = { SubtitleColor = Color.DusaVoice },
 
 					-- Ah, it's your father, Prince!!
-					{ Cue = "/VO/Dusa_0248" },
+					-- { Cue = "/VO/Dusa_0248" },
 					-- Am I supposed to be here, Prince?!
-					{ Cue = "/VO/Dusa_0249" },
+					-- { Cue = "/VO/Dusa_0249" },
 					-- Um, I could get in lots of trouble here!
 					{ Cue = "/VO/Dusa_0250" },
 					-- Oh wow, Lord Hades, sir!!
 					{ Cue = "/VO/Dusa_0251" },
 					-- Ahh, oh no, it's him!
-					{ Cue = "/VO/Dusa_0252" },
+					-- { Cue = "/VO/Dusa_0252" },
 					-- Ahh it's the big boss!!
 					{ Cue = "/VO/Dusa_0253" },
 				},
@@ -5680,7 +5680,7 @@ mod.EnemyData = {
 					-- I'm tougher than I look!
 					{ Cue = "/VO/Dusa_0212" },
 					-- I'll get right on it, Prince!
-					{ Cue = "/VO/Dusa_0214" },
+					-- { Cue = "/VO/Dusa_0214" },
 					-- You can count on me!
 					{ Cue = "/VO/Dusa_0205" },
 					-- You can count on me!
@@ -5708,13 +5708,13 @@ mod.EnemyData = {
 			-- Oh stop!
 			{ Cue = "/VO/Dusa_0326" },
 			-- Not me, Prince!
-			{ Cue = "/VO/Dusa_0327" },
+			-- { Cue = "/VO/Dusa_0327" },
 			-- Nuh-uh!
 			{ Cue = "/VO/Dusa_0328" },
 			-- No sir!
 			{ Cue = "/VO/Dusa_0329" },
 			-- Uh, Prince?
-			{ Cue = "/VO/Dusa_0330" },
+			-- { Cue = "/VO/Dusa_0330" },
 			-- Your Highness!
 			{ Cue = "/VO/Dusa_0331" },
 			-- Honest mistake!
@@ -5775,7 +5775,7 @@ mod.EnemyData = {
 			-- Oh no are you OK?
 			{ Cue = "/VO/Dusa_0299", PreLineWait = 2.0 },
 			-- Prince, no!
-			{ Cue = "/VO/Dusa_0300" },
+			-- { Cue = "/VO/Dusa_0300" },
 			-- Ah, watch out!
 			{ Cue = "/VO/Dusa_0301" },
 			-- Oh no!!
@@ -5787,7 +5787,7 @@ mod.EnemyData = {
 			-- No, keep fighting!
 			{ Cue = "/VO/Dusa_0305", PreLineWait = 2.0 },
 			-- Keep fighting, Prince!
-			{ Cue = "/VO/Dusa_0306", PreLineWait = 2.0 },
+			-- { Cue = "/VO/Dusa_0306", PreLineWait = 2.0 },
 			-- Oh, ow!!
 			{ Cue = "/VO/Dusa_0307" },
 			-- No, I...!
@@ -5795,9 +5795,9 @@ mod.EnemyData = {
 			-- I can't look...!
 			{ Cue = "/VO/Dusa_0309", PreLineWait = 2.0 },
 			-- Prince!
-			{ Cue = "/VO/Dusa_0310", PreLineWait = 2.0 },
+			-- { Cue = "/VO/Dusa_0310", PreLineWait = 2.0 },
 			-- Zagreus!
-			{ Cue = "/VO/Dusa_0311", PreLineWait = 2.0 },
+			-- { Cue = "/VO/Dusa_0311", PreLineWait = 2.0 },
 			-- Keep fighting!
 			{ Cue = "/VO/Dusa_0312", PreLineWait = 2.0 },
 		},
@@ -5817,7 +5817,7 @@ mod.EnemyData = {
 				-- Athena's helping you?
 				{ Cue = "/VO/Dusa_0320" },
 				-- Careful with that one, Prince.
-				{ Cue = "/VO/Dusa_0321" },
+				-- { Cue = "/VO/Dusa_0321" },
 				-- Help from Athena, huh?
 				{ Cue = "/VO/Dusa_0322" },
 			},
@@ -5830,13 +5830,13 @@ mod.EnemyData = {
 				-- Oh wow, look at you go!
 				{ Cue = "/VO/Dusa_0313" },
 				-- Whoa, that is something, Prince!
-				{ Cue = "/VO/Dusa_0314" },
+				-- { Cue = "/VO/Dusa_0314" },
 				-- Woo, you get them, Prince!
-				{ Cue = "/VO/Dusa_0315" },
+				-- { Cue = "/VO/Dusa_0315" },
 				-- Wow, would you look at that!
 				{ Cue = "/VO/Dusa_0316" },
 				-- Calling in extra favors, Prince?
-				{ Cue = "/VO/Dusa_0317" },
+				-- { Cue = "/VO/Dusa_0317" },
 				-- That'll show them!
 				{ Cue = "/VO/Dusa_0318" },
 			},
@@ -5859,7 +5859,7 @@ mod.EnemyData = {
 				-- Aah I have to go!
 				{ Cue = "/VO/Dusa_0354" },
 				-- Bye, Prince!
-				{ Cue = "/VO/Dusa_0355" },
+				-- { Cue = "/VO/Dusa_0355" },
 				-- Keep going!
 				{ Cue = "/VO/Dusa_0356" },
 				-- Hope I could help!
@@ -5871,11 +5871,11 @@ mod.EnemyData = {
 				-- Oh no I'm late!
 				{ Cue = "/VO/Dusa_0360" },
 				-- Keep fighting, Zagreus!
-				{ Cue = "/VO/Dusa_0361" },
+				-- { Cue = "/VO/Dusa_0361" },
 				-- OK byeee!
 				{ Cue = "/VO/Dusa_0362" },
 				-- Go on without me, Prince!
-				{ Cue = "/VO/Dusa_0363" },
+				-- { Cue = "/VO/Dusa_0363" },
 				-- Hope I did OK!
 				{ Cue = "/VO/Dusa_0364" },
 			},
@@ -7605,7 +7605,7 @@ mod.EnemyData = {
 						-- I don't think so.
 						{ Cue = "/VO/MegaeraField_0276" },
 						-- You're weak, Zag.
-						{ Cue = "/VO/MegaeraField_0277", ConsecutiveDeathsInRoom = { Name = "A_Boss01", Count = 2, }, },
+						-- { Cue = "/VO/MegaeraField_0277", ConsecutiveDeathsInRoom = { Name = "A_Boss01", Count = 2, }, },
 						-- Weak.
 						{ Cue = "/VO/MegaeraField_0278", ConsecutiveDeathsInRoom = { Name = "A_Boss01", Count = 1, }, },
 						-- Not a chance.
@@ -7711,9 +7711,9 @@ mod.EnemyData = {
 						-- Requesting backup, damn it!
 						{ Cue = "/VO/MegaeraField_0286" },
 						-- Come and kill him, wretches!
-						{ Cue = "/VO/MegaeraField_0287" },
+						-- { Cue = "/VO/MegaeraField_0287" },
 						-- Wretches, bring him down!
-						{ Cue = "/VO/MegaeraField_0288" },
+						-- { Cue = "/VO/MegaeraField_0288" },
 						-- Meet some of my friends.
 						{ Cue = "/VO/MegaeraField_0289" },
 						-- Wretches of Tartarus, I summon you!
@@ -7819,7 +7819,7 @@ mod.EnemyData = {
 						-- I'm not finished with you yet.
 						{ Cue = "/VO/MegaeraField_0650" },
 						-- You've gotten stronger, Zag.
-						{ Cue = "/VO/MegaeraField_0651" },
+						-- { Cue = "/VO/MegaeraField_0651" },
 						-- You used to be a total pushover.
 						{ Cue = "/VO/MegaeraField_0654" },
 						-- How did you get this tough.
@@ -8172,23 +8172,23 @@ mod.EnemyData = {
 				Source = { SubtitleColor = game.Color.MegVoice },
 
 				-- We got him.
-				{ Cue = "/VO/MegaeraField_0369" },
+				-- { Cue = "/VO/MegaeraField_0369" },
 				-- We are the Furies.
 				{ Cue = "/VO/MegaeraField_0370" },
 				-- Our work here is done.
 				{ Cue = "/VO/MegaeraField_0371" },
 				-- He had no chance against us.
-				{ Cue = "/VO/MegaeraField_0375" },
+				-- { Cue = "/VO/MegaeraField_0375" },
 				-- <Laughter>
 				{ Cue = "/VO/MegaeraField_0373" },
 				-- We got him, sisters.
-				{ Cue = "/VO/MegaeraField_0669" },
+				-- { Cue = "/VO/MegaeraField_0669" },
 				-- Got him, Alecto. Good.
-				{ Cue = "/VO/MegaeraField_0670", RequiredMaxSupportAINames = 1, RequiredSupportAINames = { "Alecto" }, },
+				-- { Cue = "/VO/MegaeraField_0670", RequiredMaxSupportAINames = 1, RequiredSupportAINames = { "Alecto" }, },
 				-- Stand down, Tisiphone. He's done.
-				{ Cue = "/VO/MegaeraField_0671", RequiredMaxSupportAINames = 1, RequiredSupportAINames = { "Tisiphone" }, },
+				-- { Cue = "/VO/MegaeraField_0671", RequiredMaxSupportAINames = 1, RequiredSupportAINames = { "Tisiphone" }, },
 				-- He's finished, Tis. Well done.
-				{ Cue = "/VO/MegaeraField_0672", RequiredMaxSupportAINames = 1, RequiredSupportAINames = { "Tisiphone" }, },
+				-- { Cue = "/VO/MegaeraField_0672", RequiredMaxSupportAINames = 1, RequiredSupportAINames = { "Tisiphone" }, },
 			},
 			{
 				RandomRemaining = true,
@@ -12282,13 +12282,13 @@ mod.EnemyData = {
 				Source = { SubtitleColor = game.Color.AlectoVoice },
 
 				-- We got him.
-				{ Cue = "/VO/Alecto_0303" },
+				-- { Cue = "/VO/Alecto_0303" },
 				-- We are the Furies.
 				{ Cue = "/VO/Alecto_0304" },
 				-- I guess we're finished here.
 				{ Cue = "/VO/Alecto_0305" },
 				-- He never stood a chance.
-				{ Cue = "/VO/Alecto_0306" },
+				-- { Cue = "/VO/Alecto_0306" },
 			},
 			{
 				RandomRemaining = true,
@@ -15814,7 +15814,7 @@ mod.EnemyData = {
 						RequiredFalseSupportAINames = { "Alecto" },
 						RequiredSupportAINames = { "Megaera" },
 						-- You did it, Zag.
-						{ Cue = "/VO/MegaeraHome_0289" },
+						-- { Cue = "/VO/MegaeraHome_0289" },
 					},
 				},
 				{
@@ -17931,7 +17931,7 @@ mod.EnemyData = {
 				-- What is Death doing here?
 				{ Cue = "/VO/Theseus_0373", RequiredPlayed = { "/VO/Theseus_0380" } },
 				-- Why is Death on his side?!
-				{ Cue = "/VO/Theseus_0374", RequiredPlayed = { "/VO/Theseus_0380" } },
+				-- { Cue = "/VO/Theseus_0374", RequiredPlayed = { "/VO/Theseus_0380" } },
 				-- Death has no business here!
 				{ Cue = "/VO/Theseus_0375", RequiredPlayed = { "/VO/Theseus_0380" } },
 				-- I'm not afraid of Death!
@@ -18014,7 +18014,7 @@ mod.EnemyData = {
 				-- Achilles, but, I -- why?!
 				{ Cue = "/VO/Theseus_0518", RequiredPlayed = { "/VO/Theseus_0516" }, },
 				-- My noble warriors, you would side with him?
-				{ Cue = "/VO/Theseus_0519", RequiredPlayed = { "/VO/Theseus_0516" }, },
+				-- { Cue = "/VO/Theseus_0519", RequiredPlayed = { "/VO/Theseus_0516" }, },
 				-- These warriors again!
 				{ Cue = "/VO/Theseus_0520", RequiredPlayed = { "/VO/Theseus_0516" }, },
 			},
@@ -24316,11 +24316,11 @@ mod.EnemyData = {
 				-- Megaera, what are you doing here?
 				{ Cue = "/VO/HadesField_0443", RequiredPlayed = { "/VO/HadesField_0447" }, },
 				-- Why spring to his assistance, Megaera?
-				{ Cue = "/VO/HadesField_0444", RequiredPlayed = { "/VO/HadesField_0447" }, },
+				-- { Cue = "/VO/HadesField_0444", RequiredPlayed = { "/VO/HadesField_0447" }, },
 				-- You're surely needed elsewhere, Megaera!
 				{ Cue = "/VO/HadesField_0445", RequiredPlayed = { "/VO/HadesField_0447" }, },
 				-- Don't bother to assist him, Megaera!
-				{ Cue = "/VO/HadesField_0446", RequiredPlayed = { "/VO/HadesField_0447" }, },
+				-- { Cue = "/VO/HadesField_0446", RequiredPlayed = { "/VO/HadesField_0447" }, },
 				-- You're wasting Megaera's valuable time!
 				{ Cue = "/VO/HadesField_0447" },
 			},
@@ -24338,7 +24338,7 @@ mod.EnemyData = {
 				-- Don't you have mortals to attend to, Thanatos?
 				{ Cue = "/VO/HadesField_0449", RequiredPlayed = { "/VO/HadesField_0451" }, },
 				-- No need to listen to him, Thanatos!
-				{ Cue = "/VO/HadesField_0450", RequiredPlayed = { "/VO/HadesField_0451" }, },
+				-- { Cue = "/VO/HadesField_0450", RequiredPlayed = { "/VO/HadesField_0451" }, },
 				-- Distracting Thanatos from his duties, I see!
 				{ Cue = "/VO/HadesField_0451" },
 				-- You needn't drag poor Thanatos into this mess!

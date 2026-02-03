@@ -162,7 +162,7 @@ local encounterReplacements = {
 				-- So long, Highness!
 				{ Cue = "/VO/Sisyphus_0249" },
 				-- Think he'll go all the way this time, Bouldy?
-				{ Cue = "/VO/Sisyphus_0250", RequiredTextLines = { "SisyphusMeeting06" }, },
+				-- { Cue = "/VO/Sisyphus_0250", RequiredTextLines = { "SisyphusMeeting06" }, },
 				-- Keep fighting, Highness!
 				{ Cue = "/VO/Sisyphus_0251" },
 				-- Thanks for stopping by!
@@ -216,7 +216,7 @@ local encounterReplacements = {
 						-- You're back, welcome!
 						{ Cue = "/VO/Sisyphus_0208", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
 						-- He's back again, Bouldy!
-						{ Cue = "/VO/Sisyphus_0209", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredTextLines = { "SisyphusMeeting06" }, },
+						-- { Cue = "/VO/Sisyphus_0209", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredTextLines = { "SisyphusMeeting06" }, },
 						-- Good to see you!
 						{ Cue = "/VO/Sisyphus_0210", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
 						-- Caught me on a break again!
