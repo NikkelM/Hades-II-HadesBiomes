@@ -5,7 +5,15 @@ modutil.mod.Path.Wrap("DestroyDoorRewardPresenation", function(base, door)
 	if door.DoorIconFront ~= nil then
 		Destroy({ Id = door.DoorIconFront })
 	end
-	base(door)
+	if game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesExitDoors ~= nil then
+		for _, moddedExitDoor in ipairs(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesExitDoors) do
+			if moddedExitDoor.ObjectId == door.ObjectId then
+				StopAnimation({ DestinationId = door.ObjectId, Names = { "RoomRewardAvailable-Front", "RoomRewardAvailable-Front_MetaReward", "RoomRewardAvailable-Back" }, IncludeCreatedAnimations = true })
+			end
+		end
+	end
+
+	return base(door)
 end)
 
 modutil.mod.Path.Wrap("ExitDoorUnlockedPresentation", function(base, exitDoor)

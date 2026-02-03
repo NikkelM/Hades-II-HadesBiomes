@@ -85,19 +85,32 @@ modutil.mod.Path.Context.Wrap.Static("EndEarlyAccessPresentation", function()
 		end)
 end)
 
--- modutil.mod.Path.Context.Wrap.Static("DestroyDoorRewardPresenation", function(originalDoor)
--- 	modutil.mod.Path.Wrap("CreateAnimation", function(base, args)
--- 		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
--- 			if args.Name == "RoomRewardShatter" then
--- 				local door = modutil.mod.Locals.Stacked(3).door
--- 				-- TODO: Compare to modded room doors table
--- 				if door.Room ~= nil and door.Room.RewardStoreName == "MetaProgress" then
--- 					args.Name = "ModsNikkelMHadesBiomes_RoomRewardShatter_MetaReward"
--- 				else
--- 					args.Name = "ModsNikkelMHadesBiomes_RoomRewardShatter"
--- 				end
--- 			end
--- 		end
--- 		return base(args)
--- 	end)
--- end)
+modutil.mod.Path.Context.Wrap.Static("DestroyDoorRewardPresenation", function(originalDoor)
+	modutil.mod.Path.Wrap("CreateAnimation", function(base, args)
+		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesExitDoors ~= nil then
+			if args.Name == "RoomRewardShatter" then
+				local door = modutil.mod.Locals.Stacked(3).door
+				for _, moddedExitDoor in ipairs(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesExitDoors) do
+					if moddedExitDoor.ObjectId == door.ObjectId then
+						-- Create a new blank obstacle at the same location as the door
+						local flipDummyHorizontal = IsHorizontallyFlipped({ Id = args.DestinationId })
+						local shatterSourceId = SpawnObstacle({ Name = "InvisibleTarget", DestinationId = args.DestinationId, OffsetY = -165 })
+						if flipDummyHorizontal then
+							FlipHorizontal({ Id = shatterSourceId })
+						end
+						args.DestinationId = shatterSourceId
+						game.thread(game.DestroyOnDelay, { shatterSourceId }, 2.0)
+
+						if door.Room ~= nil and door.Room.RewardStoreName == "MetaProgress" then
+							args.Name = "ModsNikkelMHadesBiomes_RoomRewardShatter_MetaReward"
+						else
+							args.Name = "ModsNikkelMHadesBiomes_RoomRewardShatter"
+						end
+						break
+					end
+				end
+			end
+		end
+		return base(args)
+	end)
+end)

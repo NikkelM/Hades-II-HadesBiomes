@@ -4,6 +4,67 @@
 mod.HadesFxDestinationFilename = "Game\\Animations\\Z_ModsNikkelmHadesBiomesFx.sjson"
 
 mod.HadesFxAnimationModifications = {
+	-- #region GENERAL
+	["RoomRewardAvailable-Back"] = {
+		FilePath = "NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Back\\RoomRewardAvailable-Back",
+		OffsetY = -155.0,
+	},
+	["AsphodelRoomRewardAvailable-Back"] = {
+		FilePath = "NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Back\\RoomRewardAvailable-Back",
+		OffsetY = -407.0,
+	},
+	["RoomRewardAvailable-Front"] = {
+		FilePath = "NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Front\\RoomRewardAvailable-Front",
+		OffsetY = -155.0,
+		Scale = 1.1,
+		GroupName = "Combat_Menu_Backing",
+	},
+	["RoomRewardAvailable-Front_MetaReward"] = {
+		FilePath =
+		"NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Front_MetaReward\\RoomRewardAvailable-Front_MetaReward",
+		Hue = 1,
+		Scale = 0.55,
+	},
+	RoomRewardUnavailable = {
+		Scale = 0.75,
+	},
+	HadesDoorUnlocked = {
+		ChildAnimation = "null",
+		CreateAnimation = "RoomRewardTransition",
+	},
+	DoorUnlocked_MetaReward = {
+		ChildAnimation = "null",
+		CreateAnimation = "RoomRewardTransition_MetaReward",
+	},
+	RoomRewardTransition = {
+		ChainTo = "null",
+		Scale = 0.74,
+		CreateAnimations = {
+			{ Name = "RoomRewardAvailable-Front" },
+			{ Name = "RoomRewardAvailable-Back" },
+		},
+	},
+	RoomRewardTransition_MetaReward = {
+		InheritFrom = "RoomRewardAvailable-Front",
+		FilePath = "Fx\\RoomRewardTransition\\RoomRewardTransition",
+		Scale = 0.74,
+		EndFrame = 9,
+		Loop = false,
+		NumFrames = 9,
+		StartFrame = 1,
+		OffsetY = -155.0,
+		CreateAnimations = {
+			{ Name = "RoomRewardAvailable-Front_MetaReward" },
+			{ Name = "RoomRewardAvailable-Back" },
+		},
+	},
+	ModsNikkelMHadesBiomes_RoomRewardShatter = {
+		FilePath = "NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardShatter\\RoomRewardShatter",
+		Scale = 0.75,
+		OffsetY = 0.0,
+	},
+	-- #endregion
+
 	-- #region TARTARUS
 	TisiphoneFogIn = {
 		EndAlpha = 0.899,
@@ -17,10 +78,6 @@ mod.HadesFxAnimationModifications = {
 	-- #endregion
 
 	-- #region ASPHODEL
-	["AsphodelRoomRewardAvailable-Back"] = {
-		FilePath = "NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Back\\RoomRewardAvailable-Back",
-		OffsetY = -407.0,
-	},
 	-- The death animation of the Gorgon heads
 	RubbleFallImpactDecalMedusaHeadDeath = {
 		OffsetY = 0.0,

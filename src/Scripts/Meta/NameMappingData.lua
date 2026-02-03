@@ -145,8 +145,8 @@ mod.FxAnimationMappings = {
 	DoorLocked = "HadesDoorLocked",
 	DoorUnlocked = "HadesDoorUnlocked",
 
-	-- RoomRewardShatter = "ModsNikkelMHadesBiomes_RoomRewardShatter",
-	-- RoomRewardShatter_MetaReward = "ModsNikkelMHadesBiomes_RoomRewardShatter_MetaReward",
+	RoomRewardShatter = "ModsNikkelMHadesBiomes_RoomRewardShatter",
+	RoomRewardShatter_MetaReward = "ModsNikkelMHadesBiomes_RoomRewardShatter_MetaReward",
 
 	EnemyProjectile = "HadesEnemyProjectile",
 	EnemyProjectileIn = "HadesEnemyProjectileIn",

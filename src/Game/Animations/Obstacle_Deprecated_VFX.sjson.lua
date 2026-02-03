@@ -81,7 +81,25 @@ local hadesTwoObstacleModifications = {
 }
 
 local addAnimationsParents = {
-	-- For Styx
+	-- #region GENERAL
+	{
+		Name = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front",
+		FilePath = "NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Front\\RoomRewardAvailable-Front",
+		Scale = 1.1,
+		AngleFromOwner = "Ignore",
+		ColorFromOwner = "Ignore",
+		EndFrame = 40,
+		Loop = true,
+		NumFrames = 40,
+		PlaySpeed = 30.0,
+		StartFrame = 1,
+		ScaleFromOwner = "Ignore",
+		Ambient = 0.0,
+		OnlyWhenVisible = true,
+	},
+	-- #endregion
+
+	-- #region STYX
 	{
 		Name = "PoisonCureFountainFull",
 		ChildAnimation = "PoisonCureFountainFullAnim",
@@ -109,24 +127,15 @@ local addAnimationsParents = {
 		VisualFxIntervalMin = 0.1,
 		SoundAllowedAfterFrame = -1,
 	},
+	-- #endregion
 }
 
 local addAnimations = {
 	-- #region GENERAL
 	{
-		Name = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front",
-		FilePath = "NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Front\\RoomRewardAvailable-Front",
-		Scale = 1.1,
-		AngleFromOwner = "Ignore",
-		ColorFromOwner = "Ignore",
-		EndFrame = 40,
-		Loop = true,
-		NumFrames = 40,
-		PlaySpeed = 30.0,
-		StartFrame = 1,
-		ScaleFromOwner = "Ignore",
-		Ambient = 0.0,
-		OnlyWhenVisible = true,
+		Name = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front_MetaReward",
+		InheritFrom = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front",
+		Hue = -0.5,
 	},
 	-- #endregion
 

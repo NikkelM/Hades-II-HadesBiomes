@@ -163,12 +163,10 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			})
 			SetThingProperty({ Property = "SortBoundsScale", Value = 2, DestinationId = exitDoor.DoorIconFront })
 
-			local rewardContainerAnim = "ModsNikkelMHadesBiomes-RoomRewardAvailable-Front"
-			-- Same for both in Asphodel!
-			-- TODO: Pretty sure this is likely not the case?
-			-- if room.RewardStoreName == "MetaProgress" then
-			-- 	rewardContainerAnim = rewardContainerAnim .. "_MetaReward"
-			-- end
+			local rewardContainerAnim = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front"
+			if room.RewardStoreName == "MetaProgress" then
+				rewardContainerAnim = rewardContainerAnim .. "_MetaReward"
+			end
 
 			SetAnimation({
 				Name = rewardContainerAnim,
