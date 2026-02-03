@@ -453,6 +453,21 @@ local roomModifications = {
 			},
 		},
 		ForbiddenShopItemSpawnChance = 0.22,
+		DistanceTriggers = {
+			[2] = {
+				TriggerObjectType = "ForbiddenShopItem",
+				WithinDistance = 800,
+				VoiceLines = {
+					Queue = "Always",
+					PlayOnce = true,
+					PlayOnceContext = "ModsNikkelMHadesBiomes_ForbiddenShopItemApproach",
+					UsePlayerSource = true,
+					{ Cue = "/VO/Melinoe_0827", Text = "Something there.", },
+					{ Cue = "/VO/Melinoe_2154", Text = "Gold coins...",    PreLineWait = 0.4, },
+					{ Cue = "/VO/Melinoe_1219", Text = "May I?",           PreLineWait = 0.4, },
+				},
+			},
+		},
 	},
 	X_PreBoss01 = {
 		SkipLastKillPresentation = true,

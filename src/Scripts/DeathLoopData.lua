@@ -79,7 +79,7 @@ function mod.SpawnHadesRunStartDoor(source, args)
 			PlayOnceContext = "ModsNikkelMHadesBiomes_HadesRunStartDoorApproach",
 			UsePlayerSource = true,
 			{ Cue = "/VO/MelinoeField_2868", Text = "A Chaos Gate, up here?", },
-		}
+		},
 	}
 	chaosGate.UnlockedSound = nil
 	chaosGate.HealthCost = nil

@@ -16,6 +16,7 @@ Other fixes and improvements:
 - Updated voicelines during the first Zagreus' Journey run to better fit the added context.
 - Added contextual voicelines for entering and returning to the Styx hub room, approaching Cerberus, and finding the fountain room very early or very late.
 - Added voicelines after defeating the Furies, the Bone Hydra, and the Tiny Vermin.
+- Added voicelines when first spotting the sack of Gold in Charon's shops.
 - Balancing: Slightly adjusted the feel of the Doomstone's spawning fragment launch.
 - Balancing: The Wretched Sneak now waits longer after it's ranged attack before teleporting away.
 - Fixed: Bloodroot and shovel points can spawn over gaps in the room in Doomstone miniboss chambers in Tartarus.
