@@ -80,12 +80,12 @@ local hadesTwoObstacleModifications = {
 	-- #endregion
 }
 
-local addAnimationsParents = {
+local addAnimationsParentParents = {
 	-- #region GENERAL
 	{
 		Name = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front",
 		FilePath = "NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Front\\RoomRewardAvailable-Front",
-		Scale = 1.1,
+		Scale = 1.15,
 		AngleFromOwner = "Ignore",
 		ColorFromOwner = "Ignore",
 		EndFrame = 40,
@@ -96,6 +96,16 @@ local addAnimationsParents = {
 		ScaleFromOwner = "Ignore",
 		Ambient = 0.0,
 		OnlyWhenVisible = true,
+	},
+	-- #endregion
+}
+
+local addAnimationsParents = {
+	-- #region GENERAL
+	{
+		Name = "ModsNikkelMHadesBiomesElysium-RoomRewardAvailable-Front",
+		InheritFrom = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front",
+		OffsetY = -60,
 	},
 	-- #endregion
 
@@ -135,7 +145,16 @@ local addAnimations = {
 	{
 		Name = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front_MetaReward",
 		InheritFrom = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front",
-		Hue = -0.5,
+		FilePath =
+		"NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Front_MetaReward\\RoomRewardAvailable-Front_MetaReward",
+		Scale = 0.575,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesElysium-RoomRewardAvailable-Front_MetaReward",
+		InheritFrom = "ModsNikkelMHadesBiomesElysium-RoomRewardAvailable-Front",
+		FilePath =
+		"NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Front_MetaReward\\RoomRewardAvailable-Front_MetaReward",
+		Scale = 0.575,
 	},
 	-- #endregion
 
@@ -462,6 +481,7 @@ sjson.hook(hadesTwoTartarusObstacleFile, function(data)
 	sjsonLoads["Obstacle_Deprecated_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
 
+	mod.AddTableKeysSkipDupes(data.Animations, addAnimationsParentParents, "Name")
 	mod.AddTableKeysSkipDupes(data.Animations, addAnimationsParents, "Name")
 	mod.AddTableKeysSkipDupes(data.Animations, addAnimations, "Name")
 	mod.ApplyNestedSjsonModifications(data.Animations, hadesTwoObstacleModifications)

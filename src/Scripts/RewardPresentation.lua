@@ -98,7 +98,16 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				doorIconOffsetX = -5,
 				doorIconOffsetY = 50,
 				doorIconScale = 0.85,
-				doorIconFrontOffsetY = -132,
+				doorIconFrontOffsetY = -130,
+			}
+		elseif exitDoor.Name == "ElysiumExitDoor" then
+			-- TODO: Block this whole thing in C_Boss01 in case the preview shows up there?
+			properties = {
+				doorIconOffsetX = 0,
+				doorIconOffsetY = -120, -- TODO: I think this worked for runProgress, or potentially for left to right exits
+				-- doorIconOffsetY = -185,
+				doorIconScale = 1,
+				doorIconFrontOffsetY = -300, -- TODO: This is also wrong between doors or reward types
 			}
 		end
 
@@ -144,13 +153,14 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		exitDoor.RewardPreviewIconIds = exitDoor.RewardPreviewIconIds or {}
 		table.insert(exitDoor.RewardPreviewIconIds, doorIconId)
 
-		-- Not adding for Tartarus, as the previews work differently there and it's always breaking
-		if exitDoor.Name == "AsphodelBoat01b" then
+		-- Not adding for Tartarus, as the previews work differently there
+		if exitDoor.Name == "AsphodelBoat01b" or exitDoor.Name == "ElysiumExitDoor" then
 			-- Shimmer animation in front of the backing and reward
 			exitDoor.AdditionalAttractIds = exitDoor.AdditionalAttractIds or {}
 			exitDoor.DoorIconFront = SpawnObstacle({
 				Name = "BlankGeoObstacle",
-				Group = "Combat_Menu_Backing"
+				Group = "Combat_Menu_Backing",
+				DestinationId = doorIconId,
 			})
 			table.insert(exitDoor.AdditionalAttractIds, exitDoor.DoorIconFront)
 			-- Custom: To destroy it on death (would otherwise overlay on the blacked out screen)
@@ -163,7 +173,13 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			})
 			SetThingProperty({ Property = "SortBoundsScale", Value = 2, DestinationId = exitDoor.DoorIconFront })
 
-			local rewardContainerAnim = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front"
+			local rewardContainerAnim = ""
+			if exitDoor.Name == "AsphodelBoat01b" then
+				rewardContainerAnim = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front"
+			elseif exitDoor.Name == "ElysiumExitDoor" then
+				rewardContainerAnim = "ModsNikkelMHadesBiomesElysium-RoomRewardAvailable-Front"
+			end
+
 			if room.RewardStoreName == "MetaProgress" then
 				rewardContainerAnim = rewardContainerAnim .. "_MetaReward"
 			end
@@ -171,7 +187,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			SetAnimation({
 				Name = rewardContainerAnim,
 				DestinationId = exitDoor.DoorIconFront,
-				OffsetY = properties.doorIconFrontOffsetY
+				OffsetY = properties.doorIconFrontOffsetY,
 			})
 		end
 

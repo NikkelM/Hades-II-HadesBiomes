@@ -10,7 +10,6 @@ mod.HadesFxAnimationModifications = {
 		OffsetY = -155.0,
 	},
 	["AsphodelRoomRewardAvailable-Back"] = {
-		FilePath = "NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Back\\RoomRewardAvailable-Back",
 		OffsetY = -407.0,
 	},
 	["RoomRewardAvailable-Front"] = {
