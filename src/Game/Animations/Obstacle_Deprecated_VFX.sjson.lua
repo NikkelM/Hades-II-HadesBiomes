@@ -126,6 +126,11 @@ local addAnimationsParents = {
 		InheritFrom = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front",
 		OffsetY = -250,
 	},
+	{
+		Name = "ModsNikkelMHadesBiomesShrinePointExitDoor-RoomRewardAvailable-Front",
+		InheritFrom = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front",
+		OffsetY = -250,
+	},
 	-- #endregion
 
 	-- #region STYX
@@ -171,6 +176,13 @@ local addAnimations = {
 	{
 		Name = "ModsNikkelMHadesBiomesElysium-RoomRewardAvailable-Front_MetaReward",
 		InheritFrom = "ModsNikkelMHadesBiomesElysium-RoomRewardAvailable-Front",
+		FilePath =
+		"NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Front_MetaReward\\RoomRewardAvailable-Front_MetaReward",
+		Scale = 0.575,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesShrinePointExitDoor-RoomRewardAvailable-Front_MetaReward",
+		InheritFrom = "ModsNikkelMHadesBiomesShrinePointExitDoor-RoomRewardAvailable-Front",
 		FilePath =
 		"NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Front_MetaReward\\RoomRewardAvailable-Front_MetaReward",
 		Scale = 0.575,

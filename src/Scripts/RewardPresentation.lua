@@ -302,6 +302,14 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 					end
 				end
 			end
+		elseif exitDoor.Name == "ShrinePointDoor" or exitDoor.Name == "ShrinePointExitDoor" then
+			properties = {
+				doorIconOffsetX = 10,
+				doorIconOffsetY = 90,
+				doorIconScale = 1,
+				doorIconFrontOffsetX = 6,
+				doorIconFrontOffsetY = 161,
+			}
 		end
 
 		-- Add the additional modifications for the chosen reward type
@@ -329,6 +337,29 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		exitDoor.RewardPreviewBackingIds = exitDoor.RewardPreviewBackingIds or {}
 		table.insert(exitDoor.RewardPreviewBackingIds, backingId)
 
+		exitDoor.AdditionalAttractIds = exitDoor.AdditionalAttractIds or {}
+
+		-- For the Erebus/ShrinePointDoor exits
+		if exitDoor.BackingAnimation ~= nil then
+			exitDoor.DoorIconBackingId = SpawnObstacle({ Name = "BlankGeoObstacle", Group = "Combat_UI_Backing" })
+			Attach({
+				Id = exitDoor.DoorIconBackingId,
+				DestinationId = exitDoor.ObjectId,
+				OffsetY = properties.doorIconOffsetY,
+				OffsetX = properties.doorIconOffsetX + doorIconIsometricShiftX,
+				OffsetZ = doorIconOffsetZ + doorIconIsometricShiftZ
+			})
+			SetThingProperty({
+				Property = "SortMode",
+				Value = exitDoor.IconSortMode or "FromParent",
+				DestinationId = exitDoor.DoorIconBackingId
+			})
+			SetThingProperty({ Property = "SortBoundsScale", Value = 10, DestinationId = exitDoor.DoorIconBackingId })
+			table.insert(exitDoor.AdditionalAttractIds, exitDoor.DoorIconBackingId)
+			table.insert(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath, exitDoor.DoorIconBackingId)
+			SetAnimation({ Name = exitDoor.BackingAnimation, DestinationId = exitDoor.DoorIconBackingId })
+		end
+
 		-- Reward icon
 		local doorIconId = SpawnObstacle({
 			Name = "RoomRewardPreview",
@@ -348,15 +379,13 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		table.insert(exitDoor.RewardPreviewIconIds, doorIconId)
 
 		-- Not adding for Tartarus, as the previews work differently there
-		if game.Contains({ "AsphodelBoat01b", "ElysiumExitDoor", "TravelDoor03", "StyxDoor01" }, exitDoor.Name) then
+		if game.Contains({ "AsphodelBoat01b", "ElysiumExitDoor", "TravelDoor03", "StyxDoor01", "ShrinePointDoor", "ShrinePointExitDoor" }, exitDoor.Name) then
 			-- Shimmer animation in front of the backing and reward
-			exitDoor.AdditionalAttractIds = exitDoor.AdditionalAttractIds or {}
 			exitDoor.DoorIconFront = SpawnObstacle({
 				Name = "BlankGeoObstacle",
 				Group = "Combat_Menu_Backing",
 				DestinationId = doorIconId,
 			})
-			table.insert(exitDoor.AdditionalAttractIds, exitDoor.DoorIconFront)
 			-- Custom: To destroy it on death (would otherwise overlay on the blacked out screen)
 			table.insert(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath, exitDoor.DoorIconFront)
 			Attach({ Id = exitDoor.DoorIconFront, DestinationId = exitDoor.ObjectId, DynamicScaleOffset = true })
@@ -376,6 +405,11 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				rewardContainerAnim = "ModsNikkelMHadesBiomesStyxTravelDoor-RoomRewardAvailable-Front"
 			elseif exitDoor.Name == "StyxDoor01" then
 				rewardContainerAnim = "ModsNikkelMHadesBiomesStyxDoor-RoomRewardAvailable-Front"
+				-- Just reusing the same front, originally overlooked, but it works with the offsets now
+			elseif exitDoor.Name == "ShrinePointDoor" then
+				rewardContainerAnim = "ModsNikkelMHadesBiomesStyxDoor-RoomRewardAvailable-Front"
+			elseif exitDoor.Name == "ShrinePointExitDoor" then
+				rewardContainerAnim = "ModsNikkelMHadesBiomesShrinePointExitDoor-RoomRewardAvailable-Front"
 			end
 
 			if room.RewardStoreName == "MetaProgress" then

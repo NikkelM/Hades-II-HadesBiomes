@@ -487,5 +487,6 @@ mod.HadesExitDoorObstacleNames = {
 	ElysiumExitDoor = true,
 	TravelDoor03 = true,
 	StyxDoor01 = true,
-	-- TODO: Erebus gate
+	ShrinePointDoor = true,
+	ShrinePointExitDoor = true,
 }

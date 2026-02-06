@@ -32,6 +32,8 @@ local challengeRoomModifications = {
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
 
+		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerErebusIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerErebusOut",
 

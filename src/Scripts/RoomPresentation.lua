@@ -1,6 +1,6 @@
 modutil.mod.Path.Wrap("DestroyDoorRewardPresenation", function(base, door)
 	if door.AdditionalAttractIds ~= nil then
-		Destroy({ Ids = GetAllValues(door.RewardPreviewBackingIds) })
+		Destroy({ Ids = GetAllValues(door.AdditionalAttractIds) })
 	end
 	if door.DoorIconFront ~= nil then
 		Destroy({ Id = door.DoorIconFront })

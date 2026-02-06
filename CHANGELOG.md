@@ -9,7 +9,7 @@
 - Added new minor prophecies related to clearing the new Chaos Trials, and defeating enemies imbued with the new Elite Perks.
 - Added new incantations to unlock Golden Urns in Zagreus' Journey runs.
 - Added new dialogues with Chaos, explaining the nature of Zagreus' Journey runs.
-- Added subtitles. For languages available in Hades II that did not have a localization in the first game, English subtitles will be shown.
+- Added subtitles. *For languages available in Hades II that did not have a localization in the first game, English subtitles will be shown.*
 
 Other fixes and improvements:
 - Room reward preview animations have been updated and will now use the original animations from the first game.
