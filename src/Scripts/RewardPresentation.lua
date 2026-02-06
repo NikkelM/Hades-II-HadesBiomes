@@ -41,6 +41,19 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			Devotion = {
 				doorIconOffsetY = -5,
 			},
+			-- The below are for Styx and Erebus doors
+			RoomMoneyBigDrop = {
+				doorIconScale = -0.1,
+			},
+			MaxHealthDropBig = {
+				doorIconScale = -0.1,
+			},
+			MaxManaDropBig = {
+				doorIconScale = -0.1,
+			},
+			StackUpgradeBig = {
+				doorIconScale = -0.05,
+			},
 		}
 
 		if exitDoor.Name == "TartarusDoor03b" then
@@ -216,6 +229,79 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 					end
 				end
 			end
+		elseif exitDoor.Name == "TravelDoor03" then
+			properties = {
+				doorIconOffsetX = 3,
+				doorIconOffsetY = -95,
+				doorIconScale = 0.85,
+				doorIconFrontOffsetX = 0,
+				doorIconFrontOffsetY = 0,
+			}
+		elseif exitDoor.Name == "StyxDoor01" then
+			properties = {
+				doorIconOffsetX = 3,
+				doorIconOffsetY = -78,
+				doorIconScale = 0.85,
+				doorIconFrontOffsetX = 0,
+				doorIconFrontOffsetY = -10,
+			}
+
+			offsetMappings = {
+				D_Mini01 = {
+					doorIconOffsetY = -78,
+					doorIconFrontOffsetY = -6,
+				},
+				D_Mini05 = {
+					doorIconOffsetY = -85,
+					doorIconFrontOffsetX = 2,
+					doorIconFrontOffsetY = -10,
+				},
+				D_Mini06 = {
+					doorIconOffsetY = -89,
+					doorIconFrontOffsetY = -22,
+				},
+				D_Mini07 = {
+					doorIconOffsetY = -85,
+					doorIconFrontOffsetY = -18,
+				},
+				D_Mini08 = {
+					doorIconOffsetY = -80,
+					doorIconFrontOffsetX = 3,
+					doorIconFrontOffsetY = -10,
+				},
+				D_Mini09 = {
+					doorIconOffsetY = -73,
+					doorIconFrontOffsetY = 0,
+				},
+				D_Mini10 = {
+					doorIconOffsetY = -80,
+					doorIconFrontOffsetY = -10,
+				},
+				D_Mini11 = {
+					doorIconOffsetY = -80,
+					doorIconFrontOffsetY = -10,
+				},
+				D_Mini12 = {
+					doorIconOffsetY = -73,
+					doorIconFrontOffsetY = 0,
+				},
+				D_Mini13 = {
+					doorIconOffsetY = -83,
+					doorIconFrontOffsetY = -10,
+				},
+				D_Mini14 = {
+					doorIconOffsetY = -50,
+					doorIconFrontOffsetY = 20,
+				},
+			}
+
+			if offsetMappings[game.CurrentRun.CurrentRoom.Name] then
+				for property, value in pairs(properties) do
+					if offsetMappings[game.CurrentRun.CurrentRoom.Name].overrideSkip or not skipModifiers[chosenRewardType] or (skipModifiers[chosenRewardType] and not skipModifiers[chosenRewardType][property]) then
+						properties[property] = offsetMappings[game.CurrentRun.CurrentRoom.Name][property] or properties[property]
+					end
+				end
+			end
 		end
 
 		-- Add the additional modifications for the chosen reward type
@@ -262,7 +348,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		table.insert(exitDoor.RewardPreviewIconIds, doorIconId)
 
 		-- Not adding for Tartarus, as the previews work differently there
-		if exitDoor.Name == "AsphodelBoat01b" or exitDoor.Name == "ElysiumExitDoor" then
+		if game.Contains({ "AsphodelBoat01b", "ElysiumExitDoor", "TravelDoor03", "StyxDoor01" }, exitDoor.Name) then
 			-- Shimmer animation in front of the backing and reward
 			exitDoor.AdditionalAttractIds = exitDoor.AdditionalAttractIds or {}
 			exitDoor.DoorIconFront = SpawnObstacle({
@@ -286,6 +372,10 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				rewardContainerAnim = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front"
 			elseif exitDoor.Name == "ElysiumExitDoor" then
 				rewardContainerAnim = "ModsNikkelMHadesBiomesElysium-RoomRewardAvailable-Front"
+			elseif exitDoor.Name == "TravelDoor03" then
+				rewardContainerAnim = "ModsNikkelMHadesBiomesStyxTravelDoor-RoomRewardAvailable-Front"
+			elseif exitDoor.Name == "StyxDoor01" then
+				rewardContainerAnim = "ModsNikkelMHadesBiomesStyxDoor-RoomRewardAvailable-Front"
 			end
 
 			if room.RewardStoreName == "MetaProgress" then

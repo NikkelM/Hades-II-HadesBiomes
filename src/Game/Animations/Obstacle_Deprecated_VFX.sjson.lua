@@ -56,6 +56,9 @@ local hadesTwoObstacleModifications = {
 		ChildAnimation = "null",
 		CreateAnimation = "StyxDoorCloseAnim",
 	},
+	StyxDoorUnlocked = {
+		ChildAnimation = "StyxRoomRewardAvailable-Back",
+	},
 	StyxPillarB = {
 		ChildAnimation = "null",
 		CreateAnimation = "Styx_Pillar03TransitionA",
@@ -112,6 +115,16 @@ local addAnimationsParents = {
 		Name = "ModsNikkelMHadesBiomesElysium-RoomRewardAvailable-Front",
 		InheritFrom = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front",
 		OffsetY = -60,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesStyxTravelDoor-RoomRewardAvailable-Front",
+		InheritFrom = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front",
+		OffsetY = -270,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesStyxDoor-RoomRewardAvailable-Front",
+		InheritFrom = "ModsNikkelMHadesBiomesAsphodel-RoomRewardAvailable-Front",
+		OffsetY = -250,
 	},
 	-- #endregion
 

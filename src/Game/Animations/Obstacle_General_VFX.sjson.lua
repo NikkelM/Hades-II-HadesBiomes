@@ -3,7 +3,11 @@ local hadesTwoTartarusObstacleFile = rom.path.combine(rom.paths.Content(),
 
 -- Modifications to existing obstacle animations in Hades II
 -- These should NOT be in use by Hades II to not break functionality there!
-local hadesTwoObstacleModifications = {}
+local hadesTwoObstacleModifications = {
+	TravelDoor03Unlocked = {
+		ChildAnimation = "TravelRoomRewardAvailable-Back",
+	},
+}
 
 -- Make sure to add a Name key!
 local addAnimations = {

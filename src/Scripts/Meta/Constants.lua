@@ -485,5 +485,7 @@ mod.HadesExitDoorObstacleNames = {
 	TartarusDoor03b = true,
 	AsphodelBoat01b = true,
 	ElysiumExitDoor = true,
-	-- TODO: Elysium, Erebus gate, Styx all door types
+	TravelDoor03 = true,
+	StyxDoor01 = true,
+	-- TODO: Erebus gate
 }
