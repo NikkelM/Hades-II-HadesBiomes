@@ -484,5 +484,6 @@ mod.LootVoiceBankMappings = mod.LootVoiceBankMappings or {}
 mod.HadesExitDoorObstacleNames = {
 	TartarusDoor03b = true,
 	AsphodelBoat01b = true,
+	ElysiumExitDoor = true,
 	-- TODO: Elysium, Erebus gate, Styx all door types
 }

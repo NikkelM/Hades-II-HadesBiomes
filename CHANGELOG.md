@@ -12,7 +12,7 @@
 - Added subtitles. For languages available in Hades II that did not have a localization in the first game, English subtitles will be shown.
 
 Other fixes and improvements:
-- Room reward preview animations in Tartarus and Asphodel have been updated and will now use the original animations from the first game.
+- Room reward preview animations in Tartarus, Asphodel and Elysium have been updated and will now use the original animations from the first game.
 - When trading Zagreus' Journey resources with the broker, the resource display on the top right will now show how many of the given boss resource you currently have in your inventory, instead of always showing a placeholder.
 - Updated voicelines during the first Zagreus' Journey run to better fit the added context.
 - Added contextual voicelines for entering and returning to the Styx hub room, approaching Cerberus, and finding the fountain room very early or very late.

@@ -3,6 +3,11 @@
 modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosenRewardType, chosenLootName, index, args)
 	args = args or {}
 
+	-- Don't create a preview for the Zag fight
+	if game.CurrentRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.Name == "C_Boss01" then
+		return
+	end
+
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.HadesExitDoorObstacleNames[exitDoor.Name] and not args.ReUseIds then
 		local room = exitDoor.Room
 		chosenRewardType = chosenRewardType or room.ChosenRewardType
@@ -14,6 +19,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			doorIconOffsetX = 0,
 			doorIconOffsetY = 30,
 			doorIconScale = 0.85,
+			doorIconFrontOffsetX = 0,
 			doorIconFrontOffsetY = -140,
 		}
 		local doorIconOffsetZ = 210
@@ -25,6 +31,13 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		local offsetMappings = {}
 		local skipModifiers = {}
 		local additionalModifications = {
+			MetaCurrencyDrop = {
+				-- Make smaller, they often clip out of the bottom of the door preview
+				doorIconScale = -0.1,
+			},
+			WeaponUpgrade = {
+				doorIconScale = -0.1,
+			},
 			Devotion = {
 				doorIconOffsetY = -5,
 			},
@@ -101,17 +114,111 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				doorIconFrontOffsetY = -130,
 			}
 		elseif exitDoor.Name == "ElysiumExitDoor" then
-			-- TODO: Block this whole thing in C_Boss01 in case the preview shows up there?
+			-- Used for Y_Combat02, Y_Combat14, Y_Shop01
 			properties = {
 				doorIconOffsetX = 0,
-				doorIconOffsetY = -120, -- TODO: I think this worked for runProgress, or potentially for left to right exits
-				-- doorIconOffsetY = -185,
-				doorIconScale = 1,
-				doorIconFrontOffsetY = -300, -- TODO: This is also wrong between doors or reward types
+				doorIconOffsetY = -130,
+				doorIconScale = 0.9,
+				doorIconFrontOffsetX = 3,
+				doorIconFrontOffsetY = -250,
 			}
+
+			offsetMappings = {
+				Y_Intro = {
+					doorIconOffsetY = -125,
+					doorIconFrontOffsetY = -240,
+				},
+				Y_Combat01 = {
+					doorIconOffsetY = -110,
+					doorIconFrontOffsetY = -230,
+				},
+				Y_Combat03 = {
+					doorIconOffsetY = -140,
+					doorIconFrontOffsetY = -260,
+				},
+				Y_Combat04 = {
+					doorIconOffsetY = -135,
+					doorIconFrontOffsetY = -255,
+				},
+				Y_Combat05 = {
+					doorIconOffsetY = -183,
+					doorIconFrontOffsetX = 0,
+					doorIconFrontOffsetY = -298,
+				},
+				Y_Combat06 = {
+					doorIconOffsetY = -140,
+					doorIconFrontOffsetY = -260,
+				},
+				Y_Combat08 = {
+					doorIconOffsetY = -147,
+					doorIconFrontOffsetY = -262,
+				},
+				Y_Combat09 = {
+					doorIconOffsetY = -170,
+					doorIconFrontOffsetX = 0,
+					doorIconFrontOffsetY = -285,
+				},
+				Y_Combat10 = {
+					doorIconOffsetY = -180,
+					doorIconFrontOffsetY = -300,
+				},
+				Y_Combat11 = {
+					doorIconOffsetY = -175,
+					doorIconFrontOffsetY = -283,
+				},
+				Y_Combat12 = {
+					doorIconOffsetY = -180,
+					doorIconFrontOffsetY = -300,
+				},
+				Y_Combat13 = {
+					doorIconOffsetY = -184,
+					doorIconFrontOffsetX = 0,
+					doorIconFrontOffsetY = -298,
+				},
+				Y_Reprieve01 = {
+					doorIconOffsetY = -105,
+					doorIconFrontOffsetY = -220,
+				},
+				Y_MiniBoss01 = {
+					doorIconOffsetY = -185,
+					doorIconFrontOffsetY = -300,
+				},
+				Y_MiniBoss02 = {
+					doorIconOffsetY = -180,
+					doorIconFrontOffsetY = -300,
+				},
+				Y_Story01 = {
+					doorIconOffsetY = -148,
+					doorIconFrontOffsetY = -268,
+				},
+				Y_PreBoss01 = {
+					doorIconOffsetY = -100,
+					doorIconFrontOffsetY = -213,
+				},
+				Y_Boss01 = {
+					doorIconOffsetY = -155,
+					doorIconFrontOffsetY = -275,
+				},
+			}
+
+			-- Additional modification for one of the exit doors in Y_Story01, as the two doors have different scales
+			if game.CurrentRun.CurrentRoom.Name == "Y_Story01" and exitDoor.ObjectId == 528520 then
+				offsetMappings.Y_Story01 = {
+					doorIconOffsetY = -130,
+					doorIconFrontOffsetY = -250,
+				}
+			end
+
+			if offsetMappings[game.CurrentRun.CurrentRoom.Name] then
+				for property, value in pairs(properties) do
+					if offsetMappings[game.CurrentRun.CurrentRoom.Name].overrideSkip or not skipModifiers[chosenRewardType] or (skipModifiers[chosenRewardType] and not skipModifiers[chosenRewardType][property]) then
+						properties[property] = offsetMappings[game.CurrentRun.CurrentRoom.Name][property] or properties[property]
+					end
+				end
+			end
 		end
 
-		-- Add the additional modifications for the chosen reward type (or multiply for scale)
+		-- Add the additional modifications for the chosen reward type
 		if additionalModifications[chosenRewardType] then
 			for property, value in pairs(properties) do
 				properties[property] = properties[property] + (additionalModifications[chosenRewardType][property] or 0)
@@ -125,6 +232,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 
 		if IsHorizontallyFlipped({ Id = exitDoor.ObjectId }) then
 			properties.doorIconOffsetX = properties.doorIconOffsetX * -1
+			properties.doorIconFrontOffsetX = properties.doorIconFrontOffsetX * -1
 			doorIconIsometricShiftX = doorIconIsometricShiftX * -1
 		end
 
@@ -187,6 +295,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			SetAnimation({
 				Name = rewardContainerAnim,
 				DestinationId = exitDoor.DoorIconFront,
+				OffsetX = properties.doorIconFrontOffsetX,
 				OffsetY = properties.doorIconFrontOffsetY,
 			})
 		end

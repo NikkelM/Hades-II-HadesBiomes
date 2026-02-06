@@ -30,6 +30,12 @@ local hadesTwoObstacleModifications = {
 	-- #endregion
 
 	-- #region ELYSIUM
+	ElysiumDoorUnlocked = {
+		ChildAnimation = "ElysiumRoomRewardAvailable-Back",
+	},
+	ElysiumDoorLocked = {
+		ChildAnimation = "RoomRewardUnavailableElysium",
+	},
 	-- For the reaction animations, they cannot be set as a ChildAnimation, must be in CreateAnimations
 	ElysiumPillarB = {
 		ChildAnimation = "null",

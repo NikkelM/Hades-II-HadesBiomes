@@ -91,6 +91,7 @@ local obstacleModifications = {
 		RewardPreviewOffsetY = -360,
 		RewardPreviewOffsetX = 0,
 		UnlockedUseTextCannotReroll = "UseLeaveRoom_CannotReroll",
+		MetaRewardAnimation = "ElysiumDoorLocked_MetaReward",
 		UnlockedAnimation = "ElysiumDoorUnlocked",
 		ExitDoorOpenAnimation = "ElysiumDoorOpen",
 		ExitDoorCloseAnimation = "ElysiumDoorClose",

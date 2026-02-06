@@ -88,8 +88,6 @@ local newRoomSets = {
 
 		"Y_MiniBoss01",
 		"Y_MiniBoss02",
-		-- Not implemented in Hades
-		-- "Y_MiniBoss03",
 
 		"Y_Reprieve01",
 		"Y_Story01",
@@ -100,7 +98,6 @@ local newRoomSets = {
 		"Y_Combat04",
 		"Y_Combat05",
 		"Y_Combat06",
-		"Y_Combat07",
 		"Y_Combat08",
 		"Y_Combat09",
 		"Y_Combat10",
@@ -108,7 +105,6 @@ local newRoomSets = {
 		"Y_Combat12",
 		"Y_Combat13",
 		"Y_Combat14",
-		"Y_Combat15",
 	},
 
 	Styx = {
