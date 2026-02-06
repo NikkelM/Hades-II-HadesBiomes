@@ -1373,7 +1373,7 @@ local newData = {
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
-	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Following Through ",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Hold The Onions ",
 	-- 	Description =
 	-- 	"The daughter of the god of the dead shall someday dream of overcoming her foes without being hit during {#Emph}{$QuestData.ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters.CompleteGameStateRequirements.1.Value} consecutive {#Prev} {$Keywords.ShrinePointGate} challenges that she has accepted.",
 	-- },
