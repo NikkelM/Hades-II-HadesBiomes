@@ -864,6 +864,7 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
+		IgnoreSprintPhasingStasisStun = true,
 		DefaultAIData = {
 			-- How long it waits before moving again while firing the beams
 			FireDuration = 5.75,
@@ -894,6 +895,7 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
+		IgnoreSprintPhasingStasisStun = true,
 		DefaultAIData = {
 			-- How long it waits before moving again while firing the beams
 			FireDuration = 5.75,
@@ -938,6 +940,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		IgnoreSprintPhasingStasisStun = true,
 		DefaultAIData = {
 			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 		},
@@ -945,6 +948,7 @@ local enemyModifications = {
 	WretchAssassinMinibossSuperElite = {
 		-- Still targets the player for some reason
 		BlockRaiseDead = true,
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	-- #endregion
 	-- #region TARTARUS - Bosses
@@ -1314,6 +1318,7 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		BlockRaiseDead = true,
 		BlockCharm = true,
+		IgnoreSprintPhasingStasisStun = true,
 		Tethers = {
 			[1] = { Distance = 30 },
 			[2] = { Distance = 30 },
@@ -1345,9 +1350,11 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		BlockRespawnShrineUpgrade = true,
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	HitAndRunUnitSuperElite = {
 		BlockRaiseDead = false,
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	CrusherUnitElite = {
 		MaxHealth = 800,
@@ -1358,6 +1365,7 @@ local enemyModifications = {
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
 		IgnoreSpeedShrine = true,
+		IgnoreSprintPhasingStasisStun = true,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "CrusherUnitTouchdown",
@@ -1462,6 +1470,7 @@ local enemyModifications = {
 		BlockCharm = true,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	HydraTooth = {
 		StunAnimations = { Default = "HydraToothLanded" },
@@ -1789,6 +1798,7 @@ local enemyModifications = {
 		BlockAttributes = { "Rifts", "Homing", "Tracking", "Unflinching", "Frenzy" },
 		-- Explicitly allow raising with Night Bloom
 		BlockRaiseDead = false,
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	-- #endregion
 	-- #region ELYSIUM - Minibosses
@@ -1799,6 +1809,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		IgnoreSprintPhasingStasisStun = true,
 		-- To not block the Dash/Blink
 		IgnoreCastSlow = true,
 	},
@@ -1967,6 +1978,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	RatThugMiniboss = {
 		Health = 1800,
@@ -1974,6 +1986,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	HeavyRangedForkedMiniboss = {
 		Health = 1200,
@@ -1984,6 +1997,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	ThiefImpulseMineLayerMiniboss = {
 		Health = 1450,
@@ -2000,6 +2014,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	CrawlerMiniBoss = {
 		MaxHealth = 14000,
@@ -2011,6 +2026,7 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		IgnoreSpeedShrine = true,
 		IsBoss = false,
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	-- #endregion
 	-- #region STYX - Bosses
@@ -2159,6 +2175,7 @@ local enemyModifications = {
 			[2] = { TransitionUnthreadedFunctionNames = { _PLUGIN.guid .. "." .. "RandomizeCover" }, },
 			[3] = { TransitionUnthreadedFunctionNames = { _PLUGIN.guid .. "." .. "RandomizeCover" }, },
 		},
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	CharonGhostChargeSource = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -2384,7 +2401,8 @@ local enemyModifications = {
 	BlastCubeFusedRegenerating = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		OnDeathFireWeapons = { "BlastCubeExplosionElysium" },
-		FuseWarningProjectileName = "ModsNikkelMHadesBiomesBlastWarningDecalElysium"
+		FuseWarningProjectileName = "ModsNikkelMHadesBiomesBlastWarningDecalElysium",
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	PhalanxTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -2394,6 +2412,7 @@ local enemyModifications = {
 		AIAttackDistance = 150,
 		OutgoingDamageModifiers = { { NonPlayerMultiplier = 15.0, }, },
 		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	PhalanxTrapPassive = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -2415,6 +2434,7 @@ local enemyModifications = {
 			TargetOffsetForward = 100,
 		},
 		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	ArcherTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -2439,6 +2459,7 @@ local enemyModifications = {
 			IdleAnimation = "ArcherTrapIdle",
 		},
 		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	GasTrapPassive = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -2459,6 +2480,7 @@ local enemyModifications = {
 			PostAttackFlash = false,
 		},
 		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	PoisonTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -2498,6 +2520,7 @@ local enemyModifications = {
 			TargetOffsetForward = 100,
 		},
 		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	AxeTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -2510,6 +2533,7 @@ local enemyModifications = {
 		},
 		WeaponName = "AxeTrapWeapon",
 		ModsNikkelMHadesBiomesFlipIfRoomFlipped = true,
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	AxeTrapTrigger = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -2532,6 +2556,7 @@ local enemyModifications = {
 		},
 		AIOptions = { _PLUGIN.guid .. "." .. "RemoteAttackModsNikkelMHadesBiomes" },
 		WeaponName = "AxeTrapWeapon",
+		IgnoreSprintPhasingStasisStun = true,
 	},
 	-- #endregion
 
