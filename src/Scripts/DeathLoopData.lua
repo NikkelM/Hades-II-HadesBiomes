@@ -141,7 +141,7 @@ function mod.StartHadesRunSecretDoorPresentation(secretDoor, useAltDiveAnimation
 	SetAnimation({ Name = "Melinoe_Witchcraft_Start", DestinationId = game.CurrentRun.Hero.ObjectId, })
 
 	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, Fraction = 0.15, Duration = 0.7 }, })
-	Flash({ Id = game.CurrentRun.Hero.ObjectId, Speed = 0.5, MinFraction = 0, MaxFraction = 1.0, Color = Color.White, Duration = 1.0, ExpireAfterCycle = false })
+	Flash({ Id = game.CurrentRun.Hero.ObjectId, Speed = 0.5, MinFraction = 0, MaxFraction = 1.0, Color = game.Color.White, Duration = 1.0, ExpireAfterCycle = false })
 	AdjustColorGrading({ Name = "WeatherSnowCinders", Duration = 0.7 })
 
 	game.wait(0.6)
@@ -156,7 +156,7 @@ function mod.StartHadesRunSecretDoorPresentation(secretDoor, useAltDiveAnimation
 	PanCamera({ Id = secretDoor.ObjectId, Duration = 1.1, OffsetY = -50, EaseOut = 0 })
 	game.wait(0.5)
 	if useAltDiveAnimation then
-		SetAnimation({ Name = "Melinoe_DiveExit_Portal_Start", DestinationId = CurrentRun.Hero.ObjectId, SpeedMultiplier = 0.75 })
+		SetAnimation({ Name = "Melinoe_DiveExit_Portal_Start", DestinationId = game.CurrentRun.Hero.ObjectId, SpeedMultiplier = 0.75 })
 	else
 		SetAnimation({ Name = "Melinoe_Drop_Exit_Start", DestinationId = game.CurrentRun.Hero.ObjectId, SpeedMultiplier = 0.5 })
 	end
