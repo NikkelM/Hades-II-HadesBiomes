@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Room reward preview animations have been updated and will now use the original animations from the first game.
 - When trading Zagreus' Journey resources with the broker, the resource display on the top right will now show how many of the given boss resource you currently have in your inventory, instead of always showing a placeholder.
 - Updated voicelines during the first Zagreus' Journey run to better fit the added context.
+- Updated the background video playing during the outro sequences when exiting a cleared Zagreus' Journey run after completing the story to the one from the first game.
 - Added contextual voicelines for entering and returning to the Styx hub room, approaching Cerberus, and finding the fountain room very early or very late.
 - Added voicelines after defeating the Furies, the Bone Hydra, and the Tiny Vermin.
 - Added voicelines when first spotting the sack of Gold in Charon's shops.
