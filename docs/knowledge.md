@@ -421,6 +421,28 @@ TartarusWallBars01:
 For ID `506312`, change the `GroupNames` property to `Additive_01`.
 For ID `506314`, change the `GroupNames` property to `Foreground_01`.
 
+#### A_Combat01
+
+TartarusStatueMan01:
+For ID `460116`, change the `Scale` property to `0.125`.
+
+TartarusCandles01:
+For ID `460114`, change the `Location.Y` property to `3758.2958984375` (+50).
+
+CandleFlame:
+For ID `480322`, change the `Location.Y` property to `3810.1005859375` (+50).
+For ID `480323`, change the `Location.Y` property to `3831.57763671875` (+50).
+For ID `480324`, change the `Location.Y` property to `3791.427001953125` (+50).
+For ID `480325`, change the `Location.Y` property to `3813.680419921875` (+50).
+
+TartarusFireGlow:
+For ID `480357`, change the `Location.Y` property to `3448.892822265625` (+50).
+
+LightEllipse02Anim:
+For ID `480461`, change the `Location.Y` property to `3486.90234375` (+50).
+For ID `480462`, change the `Location.Y` property to `3485.314697265625` (+50).
+For ID `480463`, change the `Location.Y` property to `3483.915283203125` (+50).
+
 #### A_Combat07
 
 TartarusGable04:
