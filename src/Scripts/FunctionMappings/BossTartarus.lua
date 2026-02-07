@@ -120,8 +120,6 @@ function mod.HarpyKillPresentation(unit, args)
 	if unit.Frozen then
 		game.UnfrozenPresentation(unit, { SkipPresentation = true })
 	end
-	-- Stops an active call - not applicable - or is there an alternative for Hexes?
-	-- StopSuper()
 	game.SetUnitInvulnerable(unit)
 
 	if game.ScreenAnchors.BossRageTitle ~= nil then
@@ -272,7 +270,7 @@ function mod.HarpyKillPresentation(unit, args)
 			AnimationName = "LocationTextBGVictoryIn",
 			AnimationOutName = "LocationTextBGVictoryOut",
 			FontScale = 0.85,
-			TextOffsetY = 0,
+			TextOffsetY = -5,
 		})
 
 	if deathPanSettings.BatsAfterDeath then
