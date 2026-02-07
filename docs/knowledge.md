@@ -888,6 +888,13 @@ For ID `542946`, change the `GroupNames` property to `Foreground_02`.
 ElysiumFence01:
 Delete ID `543610`.
 
+ElysiumIvy01:
+For ID `536814`, change the `GroupNames` property to `Foreground_01`.
+For ID `536815`, change the `GroupNames` property to `Foreground_01`.
+
+ElysiumDrapery02a:
+For ID `536875`, change the `GroupNames` property to `Foreground_04`.
+
 #### Y_PostBoss01
 
 TravelChain01Anim:
