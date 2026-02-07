@@ -9,11 +9,15 @@ modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
 
 	local rewardStoreName = base(run)
 
-	-- If the next room is a Boss or PostBoss room, we always want to use the "RunProgress" reward store for the animations
-	if run.ModsNikkelMHadesBiomesIsModdedRun and run.CurrentRoom
-			and game.Contains({ "A_PreBoss01", "A_Boss01", "A_Boss02", "A_Boss03", "X_PreBoss01", "X_Boss01", "X_Boss02", "Y_PreBoss01", "Y_Boss01" }, run.CurrentRoom.Name) then
-		run.NextRewardStoreName = "RunProgress"
-		rewardStoreName = "RunProgress"
+	-- Fixed animations for PreBoss and Boss rooms
+	if run.ModsNikkelMHadesBiomesIsModdedRun and run.CurrentRoom then
+		if game.Contains({ "A_PreBoss01", "X_PreBoss01", "Y_PreBoss01" }, run.CurrentRoom.Name) then
+			run.NextRewardStoreName = "RunProgress"
+			rewardStoreName = "RunProgress"
+		elseif game.Contains({ "A_Boss01", "A_Boss02", "A_Boss03", "X_Boss01", "X_Boss02", "Y_Boss01" }, run.CurrentRoom.Name) then
+			run.NextRewardStoreName = "MetaProgress"
+			rewardStoreName = "MetaProgress"
+		end
 	end
 
 	-- Set a backing for the door's reward preview

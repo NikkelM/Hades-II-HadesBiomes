@@ -18,7 +18,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		local properties = {
 			doorIconOffsetX = 0,
 			doorIconOffsetY = 30,
-			doorIconScale = 0.85,
+			doorIconScale = mod.HadesDoorRoomRewardIconScales["TartarusDoor03b"],
 			doorIconFrontOffsetX = 0,
 			doorIconFrontOffsetY = -140,
 		}
@@ -29,10 +29,12 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		local doorIconIsometricShiftZ = -3
 
 		local offsetMappings = {}
-		local skipModifiers = {}
 		local additionalModifications = {
 			MetaCurrencyDrop = {
-				-- Make smaller, they often clip out of the bottom of the door preview
+				doorIconOffsetY = -5,
+				doorIconScale = -0.1,
+			},
+			RoomRewardHealDrop = {
 				doorIconScale = -0.1,
 			},
 			WeaponUpgrade = {
@@ -62,41 +64,58 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 					doorIconOffsetY = 20,
 				},
 				RoomSimple01 = {
-					doorIconOffsetY = 55,
+					doorIconOffsetY = 50,
+				},
+				A_Combat02 = {
+					doorIconOffsetY = 25,
 				},
 				A_Combat03 = {
-					doorIconOffsetY = 40,
+					doorIconOffsetY = 45,
 				},
 				A_Combat06 = {
-					doorIconOffsetY = 55,
+					doorIconOffsetY = 60,
 				},
 				A_Combat10 = {
+					doorIconOffsetY = 33,
+				},
+				A_Combat12 = {
+					doorIconOffsetY = 25,
+				},
+				A_Combat13 = {
 					doorIconOffsetY = 35,
 				},
-				A_Combat11 = {
-					doorIconOffsetY = 35,
+				A_Combat15 = {
+					doorIconOffsetY = 25,
 				},
 				A_Combat19 = {
 					doorIconOffsetY = 35,
 				},
 				A_Combat24 = {
-					doorIconOffsetY = 40,
+					doorIconOffsetX = 5,
+					doorIconOffsetY = 35,
 				},
 				A_MiniBoss01 = {
-					doorIconOffsetY = 62,
+					doorIconOffsetX = 5,
+					doorIconOffsetY = 65,
 					overrideSkip = true,
 				},
 				A_MiniBoss02 = {
-					doorIconOffsetY = 62,
+					doorIconOffsetX = 5,
+					doorIconOffsetY = 65,
 					overrideSkip = true,
 				},
 				A_MiniBoss03 = {
-					doorIconOffsetY = 62,
+					doorIconOffsetX = 5,
+					doorIconOffsetY = 65,
 					overrideSkip = true,
 				},
 				A_MiniBoss04 = {
-					doorIconOffsetY = 62,
+					doorIconOffsetX = 5,
+					doorIconOffsetY = 65,
 					overrideSkip = true,
+				},
+				A_Story01 = {
+					doorIconOffsetY = 20,
 				},
 				A_PreBoss01 = {
 					doorIconOffsetY = 20,
@@ -105,33 +124,42 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				A_Boss01 = {
 					doorIconOffsetY = -20,
 				},
+				A_Boss03 = {
+					doorIconOffsetY = 10,
+				},
 			}
 
-			skipModifiers = {
-				Shop = { doorIconOffsetX = true, doorIconOffsetY = true, doorIconScale = true },
-				StackUpgrade = { doorIconScale = true },
-			}
+			-- Additional modification for some exit doors in rooms where different doors have different scale
+			if game.CurrentRun.CurrentRoom.Name == "A_Combat10" and exitDoor.ObjectId == 480627 then
+				offsetMappings.A_Combat10 = {
+					doorIconOffsetY = 45,
+				}
+			end
 
 			if offsetMappings[game.CurrentRun.CurrentRoom.Name] then
 				for property, value in pairs(properties) do
-					if offsetMappings[game.CurrentRun.CurrentRoom.Name].overrideSkip or not skipModifiers[chosenRewardType] or (skipModifiers[chosenRewardType] and not skipModifiers[chosenRewardType][property]) then
-						properties[property] = offsetMappings[game.CurrentRun.CurrentRoom.Name][property] or properties[property]
-					end
+					properties[property] = offsetMappings[game.CurrentRun.CurrentRoom.Name][property] or properties[property]
 				end
 			end
 		elseif exitDoor.Name == "AsphodelBoat01b" then
 			properties = {
-				doorIconOffsetX = -5,
+				doorIconOffsetX = 0,
 				doorIconOffsetY = 50,
-				doorIconScale = 0.85,
+				doorIconScale = mod.HadesDoorRoomRewardIconScales["AsphodelBoat01b"],
+				doorIconFrontOffsetX = 0,
 				doorIconFrontOffsetY = -130,
 			}
+
+			-- For some reason, the MetaReward icons are a little too low compared to RunProgress, but only in Asphodel
+			if game.CurrentRun.NextRewardStoreName == "MetaProgress" and not (game.Contains({ "X_PreBoss01", "X_Boss01", "X_Boss02", "X_PostBoss01" }, exitDoor.Room.Name)) then
+				properties.doorIconOffsetY = properties.doorIconOffsetY - 10
+			end
 		elseif exitDoor.Name == "ElysiumExitDoor" then
 			-- Used for Y_Combat02, Y_Combat14, Y_Shop01
 			properties = {
 				doorIconOffsetX = 0,
 				doorIconOffsetY = -130,
-				doorIconScale = 0.9,
+				doorIconScale = mod.HadesDoorRoomRewardIconScales["ElysiumExitDoor"],
 				doorIconFrontOffsetX = 3,
 				doorIconFrontOffsetY = -250,
 			}
@@ -224,16 +252,14 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 
 			if offsetMappings[game.CurrentRun.CurrentRoom.Name] then
 				for property, value in pairs(properties) do
-					if offsetMappings[game.CurrentRun.CurrentRoom.Name].overrideSkip or not skipModifiers[chosenRewardType] or (skipModifiers[chosenRewardType] and not skipModifiers[chosenRewardType][property]) then
-						properties[property] = offsetMappings[game.CurrentRun.CurrentRoom.Name][property] or properties[property]
-					end
+					properties[property] = offsetMappings[game.CurrentRun.CurrentRoom.Name][property] or properties[property]
 				end
 			end
 		elseif exitDoor.Name == "TravelDoor03" then
 			properties = {
 				doorIconOffsetX = 3,
 				doorIconOffsetY = -95,
-				doorIconScale = 0.85,
+				doorIconScale = mod.HadesDoorRoomRewardIconScales["TravelDoor03"],
 				doorIconFrontOffsetX = 0,
 				doorIconFrontOffsetY = 0,
 			}
@@ -241,7 +267,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			properties = {
 				doorIconOffsetX = 3,
 				doorIconOffsetY = -78,
-				doorIconScale = 0.85,
+				doorIconScale = mod.HadesDoorRoomRewardIconScales["StyxDoor01"],
 				doorIconFrontOffsetX = 0,
 				doorIconFrontOffsetY = -10,
 			}
@@ -297,16 +323,14 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 
 			if offsetMappings[game.CurrentRun.CurrentRoom.Name] then
 				for property, value in pairs(properties) do
-					if offsetMappings[game.CurrentRun.CurrentRoom.Name].overrideSkip or not skipModifiers[chosenRewardType] or (skipModifiers[chosenRewardType] and not skipModifiers[chosenRewardType][property]) then
-						properties[property] = offsetMappings[game.CurrentRun.CurrentRoom.Name][property] or properties[property]
-					end
+					properties[property] = offsetMappings[game.CurrentRun.CurrentRoom.Name][property] or properties[property]
 				end
 			end
 		elseif exitDoor.Name == "ShrinePointDoor" or exitDoor.Name == "ShrinePointExitDoor" then
 			properties = {
 				doorIconOffsetX = 10,
 				doorIconOffsetY = 90,
-				doorIconScale = 1,
+				doorIconScale = mod.HadesDoorRoomRewardIconScales["ShrinePointDoor"],
 				doorIconFrontOffsetX = 6,
 				doorIconFrontOffsetY = 161,
 			}
@@ -371,9 +395,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		})
 		SetAlpha({ Id = doorIconId, Fraction = 0.0, Duration = 0.0 })
 		SetAlpha({ Id = doorIconId, Fraction = 1.0, Duration = 0.1 })
-		if skipModifiers[chosenRewardType] == nil or (skipModifiers[chosenRewardType] and not skipModifiers[chosenRewardType].doorIconScale) then
-			SetScale({ Id = doorIconId, Fraction = properties.doorIconScale })
-		end
+		SetScale({ Id = doorIconId, Fraction = properties.doorIconScale })
 
 		exitDoor.RewardPreviewIconIds = exitDoor.RewardPreviewIconIds or {}
 		table.insert(exitDoor.RewardPreviewIconIds, doorIconId)

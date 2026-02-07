@@ -481,6 +481,17 @@ mod.SharedKeepsakePortKeepsakeTraitNames = {
 -- Not actually a constant, will be populated in mod.AddNarrativeDataEntries()
 mod.LootVoiceBankMappings = mod.LootVoiceBankMappings or {}
 
+-- Some rooms might deviate from this, but this is the base scaling for most doors
+mod.HadesDoorRoomRewardIconScales = {
+	TartarusDoor03b = 0.85,
+	AsphodelBoat01b = 0.85,
+	ElysiumExitDoor = 0.9,
+	TravelDoor03 = 0.85,
+	StyxDoor01 = 0.85,
+	ShrinePointDoor = 0.9,
+	ShrinePointExitDoor = 0.9,
+}
+
 mod.HadesExitDoorObstacleNames = {
 	TartarusDoor03b = true,
 	AsphodelBoat01b = true,
