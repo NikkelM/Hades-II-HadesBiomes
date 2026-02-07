@@ -404,6 +404,7 @@ mod.BikFileNames = {
 	"EndingBoatFront_Bink",
 	"EndingBoatWhole_Bink",
 	"HouseDoor02Open",
+	"RemBGIntro",
 	-- #endregion
 	-- #region ZAGREUS
 	"ZagreusStart_Bink",
@@ -440,6 +441,7 @@ mod.CustomBikFileNames = {
 	"RunHistoryLoopModdedFailX",
 	"RunHistoryTransitionBlankToModdedX",
 	"RunHistoryTransitionBlankToModdedFailX",
+	"RemZJ", -- The Outro video loop/Remembrance. ZJ for Zagreus Journey. RemBG is also used in H2
 }
 
 mod.SjsonFileMappings = {

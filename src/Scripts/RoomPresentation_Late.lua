@@ -83,6 +83,15 @@ modutil.mod.Path.Context.Wrap.Static("EndEarlyAccessPresentation", function()
 
 			return base(items, priorities, playedStore, randomRemainingStore, args)
 		end)
+
+	-- Use the modded/H1 remembrance animation instead of the H2 one for modded runs
+	modutil.mod.Path.Wrap("RunInterstitialPresentation", function(base, data, args)
+		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+			args.Animations[1].AnimationName = "ModsNikkelMHadesBiomes_RemBGIntro"
+		end
+
+		return base(data, args)
+	end)
 end)
 
 modutil.mod.Path.Context.Wrap.Static("DestroyDoorRewardPresenation", function(originalDoor)

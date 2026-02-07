@@ -60,7 +60,8 @@ local addParentAnimations = {
 	ModsNikkelMHadesBiomes_DialogueBackground_ElysiumChampions_In = {
 		Name = "ModsNikkelMHadesBiomes_DialogueBackground_ElysiumChampions_In",
 		Scale = 1,
-		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\DialogueBackgrounds\\DialogueBackgroundElysiumChampions",
+		FilePath =
+		"NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\DialogueBackgrounds\\DialogueBackgroundElysiumChampions",
 		VideoTexture = "HadesBiomesDiaBackEChamps",
 		NumFrames = 32,
 		StartFrame = 1,
@@ -154,7 +155,8 @@ local addAnimations = {
 		Duration = 2,
 		FlipHorizontal = true,
 		Loop = true,
-		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\DialogueBackgrounds\\DialogueBackgroundElysiumChampions",
+		FilePath =
+		"NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\DialogueBackgrounds\\DialogueBackgroundElysiumChampions",
 		ChainTo = "null",
 	},
 	ModsNikkelMHadesBiomes_DialogueBackground_ElysiumChampions_Out = {
@@ -190,6 +192,35 @@ local addAnimations = {
 		FilePath = "GUIModded\\FamilyPortraits\\FamilyPortrait_01",
 		Ambient = 0.0,
 		AngleFromOwner = "Ignore",
+	},
+	-- #endregion
+	-- #region Outro/Remembrance Video
+	{
+		Name = "ModsNikkelMHadesBiomes_RemBGIntro",
+		ChainTo = "ModsNikkelMHadesBiomes_RemBG",
+		FilePath = "Screens\\RemBG-Intro\\RemBG-Intro",
+		Type = "Book",
+		VideoTexture = "RemBGIntro",
+		Sound = "/SFX/Menu Sounds/MirrorMenuOpenREMEMBRANCE",
+		EndFrame = 10,
+		NumFrames = 10,
+		PlaySpeed = 24.0,
+		StartFrame = 1,
+		Ambient = 0.0,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_RemBG",
+		FilePath = "Screens\\RemBG\\RemBG",
+		Type = "Book",
+		VideoTexture = "RemZJ",
+		Sound = "/Ambience/RemembranceScreenAmbience2",
+		StopSoundOnFinishFade = 0.5,
+		EndFrame = 120,
+		Loop = true,
+		NumFrames = 120,
+		PlaySpeed = 24.0,
+		StartFrame = 1,
+		Ambient = 0.0,
 	},
 	-- #endregion
 }
