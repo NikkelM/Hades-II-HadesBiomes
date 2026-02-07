@@ -27,4 +27,23 @@ modutil.mod.Path.Context.Wrap.Static("AttemptRerollDoor", function(rerollRun, do
 
 		return base(currentRun, room, previouslyChosenRewards, args)
 	end)
+
+	modutil.mod.Path.Wrap("CreateDoorRewardPreview",
+		function(base, exitDoor, chosenRewardType, chosenLootName, index, args)
+			if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.HadesExitDoorObstacleNames[exitDoor.Name] then
+				local prevChosenRewardType = modutil.mod.Locals.Stacked(2).prevChosenRewardType
+				-- Rescale the reward icon for doors in modded runs that need them to be smaller to fit in the new frames
+				if game.CurrentRun.CurrentRoom.ChosenRewardType == "Devotion" and prevChosenRewardType ~= "Devotion" then
+					SetScale({ Ids = exitDoor.RewardPreviewIconIds, Fraction = 0.0, Duration = 0.1 })
+				else
+					SetScale({
+						Ids = exitDoor.RewardPreviewIconIds,
+						Fraction = mod.HadesDoorRoomRewardIconScales[exitDoor.Name] or 1.0,
+						Duration = 0.1
+					})
+				end
+			end
+
+			return base(exitDoor, chosenRewardType, chosenLootName, index, args)
+		end)
 end)
