@@ -1,8 +1,16 @@
 # Changelog
 
-## v0.5.0
+## v0.6.0
 
 <!--Releasenotes start-->
+### Patch Highlights:
+- The Archivist now shows run clear statistics for Zagreus' Journey runs; for each Weapon Aspect, Boon, Hammer and Keepsake.
+
+Other fixes and improvements:
+<!--Releasenotes end-->
+
+## v0.5.0
+
 ### Patch Highlights:
 - Added new randomized Chaos Trials, "Chaos Within", "Great Chaos Within" and "Greater Chaos Within". These function the same way as the base game randomized Trials, allowing you to battle out of Tartarus with a random weapon, keepsake, familiar, arcana and vow setup. Complete the story of Zagreus' Journey (10 clears) and have all keepsakes, weapons and familiars unlocked to find these Trials in the Pitch-Black Stone.
 - Added four new Elite Perks: "Linker", "Cloner", "Smoker" and "Popper", which can appear on elite enemies in Zagreus' Journey runs.
@@ -37,7 +45,6 @@ Other fixes and improvements:
 - Fixed: The names of the base aspects of Ygnium and Zorephet are swapped in descriptions of various minor prophecies.
 - Fixed: Some unlocks are delayed until starting the next run instead of being available immediately after returning from a Zagreus' Journey run.
 - Fixed: Localized dialogues in languages other than English do not terminate *italic* text correctly, causing all text after the first occurrence to be italicized for the current dialogue box.
-<!--Releasenotes end-->
 
 ## v0.4.2
 
