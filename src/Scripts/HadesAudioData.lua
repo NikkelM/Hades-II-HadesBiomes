@@ -2899,7 +2899,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/MelinoeField_0683", Text = "This again." },
 			{ Cue = "/VO/MelinoeField_0684", Text = "Let's begin...!" },
 			{ Cue = "/VO/MelinoeField_0685", Text = "Let's go, then." },
-			{ Cue = "/VO/MelinoeField_0687", Text = "I've returned." },
 			{ Cue = "/VO/MelinoeField_0688", Text = "You won't stop me." },
 			{ Cue = "/VO/MelinoeField_0249", Text = "You don't know who you're dealing with..." },
 			{ Cue = "/VO/MelinoeField_0901", Text = "Got their attention, huh..." },
