@@ -526,7 +526,7 @@ local roomModifications = {
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
 		-- To not have the preview be created while the boat is still moving
-		UnlockExitsWait = 0.75,
+		UnlockExitsWait = 1,
 		BackupCauseOfDeath = "HydraHeadImmortal",
 
 		HasPickaxePoint = false,
