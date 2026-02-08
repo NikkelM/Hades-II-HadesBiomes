@@ -34,6 +34,16 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				doorIconOffsetY = -5,
 				doorIconScale = -0.1,
 			},
+			MetaCurrencyBigDrop = {
+				doorIconOffsetX = 5,
+				doorIconOffsetY = -10,
+				doorIconScale = -0.1,
+			},
+			MetaCardPointsCommonBigDrop = {
+				doorIconOffsetX = 5,
+				doorIconOffsetY = -10,
+				doorIconScale = -0.05,
+			},
 			RoomRewardHealDrop = {
 				doorIconScale = -0.1,
 			},
@@ -41,7 +51,11 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				doorIconScale = -0.1,
 			},
 			Devotion = {
+				doorIconOffsetX = 10,
 				doorIconOffsetY = -5,
+			},
+			TalentDrop = {
+				doorIconScale = -0.2,
 			},
 			-- The below are for Styx and Erebus doors
 			RoomMoneyBigDrop = {
@@ -201,7 +215,8 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 					doorIconFrontOffsetY = -300,
 				},
 				Y_Combat11 = {
-					doorIconOffsetY = -175,
+					doorIconOffsetX = 5,
+					doorIconOffsetY = -170,
 					doorIconFrontOffsetY = -283,
 				},
 				Y_Combat12 = {

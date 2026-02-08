@@ -8,6 +8,7 @@
 
 Other fixes and improvements:
 - Fixed: Allied units remain alive after defeating a boss.
+- Fixed: Some room reward types are misaligned on the preview for some doors.
 <!--Releasenotes end-->
 
 ## v0.5.0
