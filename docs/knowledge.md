@@ -902,6 +902,9 @@ For ID `486504`, change the `Location.Y` property to `4106.40869140625` (+25).
 
 Remove the `Fx_Terrain` group from the `map_text` files, as it causes layering issues with the Cast, and some enemy Fx (like Chariot tracks).
 
+ElysiumCandle01:
+For ID `542827`, change the `GroupNames` property to `Shading_01`.
+
 #### Y_Combat14
 
 ElysiumFogCloudRollC:
