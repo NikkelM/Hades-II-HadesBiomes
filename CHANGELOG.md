@@ -7,6 +7,7 @@
 - The Archivist now shows run clear statistics for Zagreus' Journey runs; for each Weapon Aspect, Boon, Hammer and Keepsake.
 
 Other fixes and improvements:
+- Added some missing subtitles for Charon.
 - Fixed: Allied units remain alive after defeating a boss.
 - Fixed: Some room reward types are misaligned on the preview for some doors.
 <!--Releasenotes end-->

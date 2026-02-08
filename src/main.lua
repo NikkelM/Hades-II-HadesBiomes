@@ -257,6 +257,8 @@ local function on_ready()
 			DebugLogScriptImportProgress("HadesTextUtils and UIData")
 
 			-- Localizations, custom texts
+			import "Game/Text/en/CharonSubtitles.en.sjson.lua"
+
 			import "Game/Text/de/CodexText.de.sjson.lua"
 			import "Game/Text/el/CodexText.el.sjson.lua"
 			import "Game/Text/en/CodexText.en.sjson.lua"
