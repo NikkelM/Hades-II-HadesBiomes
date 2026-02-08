@@ -7,6 +7,7 @@
 - The Archivist now shows run clear statistics for Zagreus' Journey runs; for each Weapon Aspect, Boon, Hammer and Keepsake.
 
 Other fixes and improvements:
+- Fixed: Allied units remain alive after defeating a boss.
 <!--Releasenotes end-->
 
 ## v0.5.0

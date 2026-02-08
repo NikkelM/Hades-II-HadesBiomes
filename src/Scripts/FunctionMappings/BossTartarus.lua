@@ -234,7 +234,7 @@ function mod.HarpyKillPresentation(unit, args)
 	game.thread(game.DoRumble,
 		{ { ScreenPreWait = 0.04, RightFraction = 0.17, Duration = 0.65 }, { ScreenPreWait = 2.8, LeftFraction = 0.3, Duration = 0.6 } })
 
-	Flash({ Id = victimId, Speed = 0.02, MinFraction = 1.0, MaxFraction = 1.0, Color = Color.Red, Duration = 1.55, ExpireAfterCycle = true })
+	Flash({ Id = victimId, Speed = 0.02, MinFraction = 1.0, MaxFraction = 1.0, Color = game.Color.Red, Duration = 1.55, ExpireAfterCycle = true })
 	game.thread(game.BossDeathFlash,
 		{ DestinationId = victimId, StartDelay = 0.52, StopDelay = 0.3, OffsetY = args.DeathFlashOffsetY or 0 })
 
@@ -245,6 +245,13 @@ function mod.HarpyKillPresentation(unit, args)
 		SetAlpha({ Id = killerId, Fraction = 0, Duration = 0.3 })
 	end
 	ClearEffect({ Id = killerId, Name = "KillDamageBonus" })
+
+	-- Custom: Kill allied units
+	for _, enemy in pairs(game.ActiveEnemies) do
+		if enemy.AlwaysTraitor and not enemy.IsDead then
+			game.thread(game.Kill, enemy, { BlockRespawns = true, SkipDeathWeapons = true })
+		end
+	end
 
 	game.wait(cameraPanTime)
 
