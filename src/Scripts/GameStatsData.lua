@@ -18,3 +18,6 @@ game.ScreenData.GameStats.WeaponColumnHeaders = {
 table.insert(game.ScreenData.GameStats.SortKeys, "ModsNikkelMHadesBiomesFastestTime")
 table.insert(game.ScreenData.GameStats.SortKeys, "ModsNikkelMHadesBiomesHighestShrinePoints")
 game.ScreenData.GameStats.SortInReverse["ModsNikkelMHadesBiomesFastestTime"] = true
+
+-- Update the background image
+game.ScreenData.GameStats.ComponentData.BackgroundFront.AnimationName = "ModsNikkelMHadesBiomes_GameStatsFront"
