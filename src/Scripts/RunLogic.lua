@@ -31,12 +31,9 @@ end
 modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle, replaceOnlyNull, args)
 	base(obstacle, replaceOnlyNull, args)
 
-	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.HadesExitDoorObstacleNames[obstacle.Name] then
-		if game.CurrentRun.CurrentRoom then
-			game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesExitDoors = game.CurrentRun.CurrentRoom
-					.ModsNikkelMHadesBiomesExitDoors or {}
-			table.insert(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesExitDoors, obstacle)
-		end
+	if obstacle.Name == "TartarusDoor03b" or obstacle.Name == "AsphodelBoat01b" then
+		game.CurrentRun.ModsNikkelMHadesBiomesExitDoors = game.CurrentRun.ModsNikkelMHadesBiomesExitDoors or {}
+		table.insert(game.CurrentRun.ModsNikkelMHadesBiomesExitDoors, obstacle)
 	end
 end)
 
@@ -71,10 +68,10 @@ modutil.mod.Path.Wrap("CreateRoom", function(base, roomData, args)
 	return room
 end)
 
--- Recording stats after a run (clearing or losing)
+-- Recording stats after a run
 modutil.mod.Path.Wrap("RecordRunStats", function(base)
-	-- Don't record bounty runs, except for randomized bounties
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics)) then
+	-- Bounties are handled in the base function
+	if game.CurrentRun.BiomesReached ~= nil and (game.CurrentRun.BiomesReached.Tartarus or game.CurrentRun.BiomesReached.Asphodel or game.CurrentRun.BiomesReached.Elysium or game.CurrentRun.BiomesReached.Styx) then
 		game.CurrentRun.RunResult = game.GetRunResult(game.CurrentRun)
 		game.CurrentRun.EndingRoomName = game.CurrentRun.CurrentRoom.Name
 		game.CurrentRun.WeaponsCache = game.DeepCopyTable(game.CurrentRun.Hero.Weapons)
@@ -141,7 +138,6 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 		game.GameState.ClearedUnderworldRunsCache = underworldRunsCleared
 		game.GameState.ClearedSurfaceRunsCache = surfaceRunsCleared
 		-- Custom fields
-		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache + 1
 		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = moddedRunsCleared
 
 		game.UpdateLifetimeTraitRecords(game.CurrentRun)
@@ -171,31 +167,6 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 	end
 end)
 
-modutil.mod.Path.Wrap("RecordRunCleared", function(base)
-	base()
-
-	-- Most of the stats tracked here are for Quests
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics)) then
-		local currentBiome = game.CurrentRun.CurrentRoom.RoomSetName
-
-		-- Record with which level of each ShrineUpgrades/Vows/Fear the run was cleared
-		game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome] = game
-				.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome] or {}
-		for shrineUpgradeName, shrineUpgradeLevel in pairs(game.GameState.ShrineUpgrades) do
-			-- Only record non-zero levels
-			if shrineUpgradeLevel > (game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome][shrineUpgradeName] or 0) then
-				game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome][shrineUpgradeName] =
-						shrineUpgradeLevel
-			end
-		end
-
-		-- Record full run clears for modded runs separately
-		if #game.CurrentRun.KeepsakeCache == 1 then
-			game.GameState.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes[game.CurrentRun.KeepsakeCache[1]] = true
-		end
-	end
-end)
-
 modutil.mod.Path.Wrap("EndRun", function(base, run)
 	if run.ModsNikkelMHadesBiomesIsModdedRun then
 		if run.ModsNikkelMHadesBiomesActualCurrentRoomName ~= nil then
@@ -210,6 +181,9 @@ modutil.mod.Path.Wrap("EndRun", function(base, run)
 		end
 		-- The actual room name needs to be set to nil to ensure the base function assigns nil to EndingRoomName
 		run.CurrentRoom.Name = nil
+
+		-- Increase counter for completed modded runs
+		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache + 1
 	end
 
 	return base(run)
@@ -217,11 +191,12 @@ end)
 
 modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
 	if run.ModsNikkelMHadesBiomesIsModdedRun then
-		-- Bounty runs shouldn't count towards lifetime stats, except for randomized bounties
-		if game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics) then
+		-- Bounty runs shouldn't count towards lifetime stats
+		if game.CurrentRun.ActiveBounty == nil then
 			local clearCountRecordName = "ModsNikkelMHadesBiomesClearCount"
 			local fastestTimeRecordName = "ModsNikkelMHadesBiomesFastestTime"
 			local shrinePointsRecordName = "ModsNikkelMHadesBiomesHighestShrinePoints"
+
 			if run.TraitCache ~= nil then
 				for traitName in pairs(run.TraitCache) do
 					game.GameState.LifetimeTraitStats[traitName] = game.GameState.LifetimeTraitStats[traitName] or {}
@@ -278,7 +253,7 @@ modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, ne
 	local isForced = base(currentRun, currentRoom, nextRoomData, args, otherDoors)
 
 	-- Only check if we need to force the room if it isn't forced already
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and not isForced then
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and not isForced then
 		-- Force a miniboss if the current wing should have one, and we've either seen the fountain room already, or can force it in another wing
 		if currentRoom ~= nil and currentRoom.ForceWingEndMiniBoss and nextRoomData.WingEndMiniBoss and (currentRun.CompletedStyxWings < 4 or mod.HasSeenRoomInRun(currentRun, "D_Reprieve01")) then
 			return true
@@ -286,29 +261,28 @@ modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, ne
 
 		-- Randomly force the next room to be a fountain room, with a 100% chance if this is the last wing
 		if nextRoomData.ForceChanceByRemainingWings then
-			if config.z_SpeedrunForceTwoSack then
+			if config.z_SpeedrunForceTwoSack and not currentRun.ModsNikkelMHadesBiomesForceStyxFountainDepth then
 				-- If the config option is enabled, always force the fountain room in the second wing
 				if currentRun.CompletedStyxWings == 1 then
 					mod.DebugPrint("Forcing fountain room in Styx wing 2 due to config option.", 2)
 					return true
 				end
 			end
-			local chance = 1 / (5 - currentRun.CompletedStyxWings)
-			if game.RandomChance(chance) then
-				return true
+			-- If the current run (most likely a bounty) has a forced fountain room depth set, only allow the fountain if the depth has been met
+			-- E.g. a value of 2 means the second wing end will be the fountain room (one wing has been completed)
+			-- Can be between 1 and 5, where 5 means the fountain will be forced in the final room
+			if currentRun.ModsNikkelMHadesBiomesForceStyxFountainDepth ~= nil then
+				if currentRun.CompletedStyxWings >= currentRun.ModsNikkelMHadesBiomesForceStyxFountainDepth - 1 then
+					return true
+				end
+			else
+				local chance = 1 / (5 - currentRun.CompletedStyxWings)
+				if game.RandomChance(chance) then
+					return true
+				end
 			end
 		end
 	end
 
 	return isForced
 end)
-
--- We don't need this anymore as all the crashes have been fixed
--- Don't invalidate checkpoints in modded runs, as we still have some crashes every now and then that could reset run progress
--- modutil.mod.Path.Wrap("InvalidateCheckpoint", function(base)
--- 	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
--- 		ValidateCheckpoint({ Value = true })
--- 	else
--- 		base()
--- 	end
--- end)
