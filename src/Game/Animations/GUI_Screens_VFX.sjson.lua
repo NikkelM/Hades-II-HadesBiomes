@@ -119,6 +119,13 @@ local addAnimations = {
 	-- #endregion
 	-- #endregion
 	-- #endregion
+	-- #region GameStats Screen
+	ModsNikkelMHadesBiomes_GameStatsFront = {
+		Name = "ModsNikkelMHadesBiomes_GameStatsFront",
+		FilePath = "NikkelM-HadesBiomesCosmetics\\GUI\\Screens\\GameStats\\GameStats_Front_Modded",
+		Material = "Unlit",
+	},
+	-- #endregion
 }
 
 sjson.hook(hadesTwoScreensVFXFile, function(data)

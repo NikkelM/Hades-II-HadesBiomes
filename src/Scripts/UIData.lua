@@ -22,6 +22,10 @@ local newIcons = {
 		TexturePath = "GUIModded\\Icons\\ShrinePoint_Small",
 		UseTooltip = true,
 	},
+	ShrinePointLarge = {
+		TexturePath = "GUIModded\\Icons\\ShrinePoint_Large",
+		UseTooltip = true,
+	},
 	ShrinePointSmall_Active = {
 		TexturePath = "GUIModded\\Icons\\ShrinePoint_Small_Active",
 		UseTooltip = true,
