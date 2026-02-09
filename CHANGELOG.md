@@ -5,12 +5,14 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - The Archivist now shows run clear statistics for Zagreus' Journey runs; for each Weapon Aspect, Boon, Hammer and Keepsake.
+- Added new Chaos Trials that equip you with a preset loadout and challenge you to fight through a specific biome from Zagreus' Journey.
 
 Other fixes and improvements:
 - Added some missing subtitles for Charon.
 - Balancing: Strongbow enemies can no longer appear in Asphodel through the Vow of Menace, as they were prone to retreat into lava and die.
 - Fixed: Allied units remain alive after defeating a boss.
 - Fixed: Some room reward types are misaligned on the preview for some doors.
+- Fixed: The position of the "Chaos Within" trials in the list in the Pitch-Black Stone is incorrect.
 <!--Releasenotes end-->
 
 ## v0.5.0
