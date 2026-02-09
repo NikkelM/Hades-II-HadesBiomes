@@ -1499,6 +1499,7 @@ local newData = {
 	-- #endregion
 
 	-- #region Chaos Trials/Bounties
+	-- #region Randomized Bounties
 	{
 		Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
 		DisplayName = "Chaos Within",
@@ -1529,6 +1530,19 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3_Short",
 		DisplayName = "Greater Chaos Within",
 	},
+	-- #endregion
+	-- #region Normal packaged bounties
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyFamily",
+		DisplayName = "Trial of Family",
+		Description =
+		"Channel the power of your brother, mother and grandmother to stand against your father in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyFamily_Short",
+		DisplayName = "Trial of Family",
+	},
+	-- #endregion
 	-- #endregion
 }
 

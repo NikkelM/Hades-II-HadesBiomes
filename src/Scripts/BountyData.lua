@@ -931,6 +931,7 @@ mod.AddTableKeysSkipDupes(game.BountyData, newShrineBounties)
 -- #endregion
 
 -- #region Chaos Trials
+
 -- #region Bounty start VoiceLines
 local function modifyBountyTextLineRequirements(textLine)
 	if textLine.GameStateRequirements ~= nil then
@@ -1005,26 +1006,25 @@ local newRandomizedBounties = {
 		}, mod.SharedKeepsakePortKeepsakeTraitNames),
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
+		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3",
 		ModsNikkelMHadesBiomesInsertAfterBounty = "PackageBountyRandomUnderworld_Difficulty1",
 		InheritFrom = { "ModsNikkelMHadesBiomes_BasePackageBountyRandom", "ModsNikkelMHadesBiomesHadesEncounters" },
-		Text = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1_Short",
+		Text = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3_Short",
 
 		StartingBiome = "Tartarus",
 		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Journey",
-		-- "Nightmare"
-		BiomeText = "WeaponPointsRare",
+		BiomeText = "ModsNikkelMHadesBiomesModdedRoute",
 
 		RandomMetaUpgradeCostTotal = 30,
-		RandomShrineUpgradePointTotal = 0,
+		RandomShrineUpgradePointTotal = 32,
 
 		LootOptions = {
 			{
-				Name = "GemPointsBigDrop",
+				Name = "WeaponPointsRareDrop",
 				Overrides = {
 					CanDuplicate = false,
 					AddResources = {
-						GemPoints = 40,
+						WeaponPointsRare = 1,
 					},
 				},
 			},
@@ -1032,18 +1032,22 @@ local newRandomizedBounties = {
 
 		UnlockGameStateRequirements = {
 			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyRandom" },
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
+				Comparison = ">=",
+				Value = 20,
+			},
 		},
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
-		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3",
 		InheritFrom = { "ModsNikkelMHadesBiomes_BasePackageBountyRandom", "ModsNikkelMHadesBiomesHadesEncounters" },
 		Text = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2_Short",
 
 		StartingBiome = "Tartarus",
 		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Journey",
-		-- "Nightmare"
-		BiomeText = "WeaponPointsRare",
+		BiomeText = "ModsNikkelMHadesBiomesModdedRoute",
 
 		RandomMetaUpgradeCostTotal = 30,
 		RandomShrineUpgradePointTotal = 20,
@@ -1070,26 +1074,25 @@ local newRandomizedBounties = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3",
+		Name = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
 		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty2",
 		InheritFrom = { "ModsNikkelMHadesBiomes_BasePackageBountyRandom", "ModsNikkelMHadesBiomesHadesEncounters" },
-		Text = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3_Short",
+		Text = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1_Short",
 
 		StartingBiome = "Tartarus",
 		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Journey",
-		-- "Nightmare"
-		BiomeText = "WeaponPointsRare",
+		BiomeText = "ModsNikkelMHadesBiomesModdedRoute",
 
 		RandomMetaUpgradeCostTotal = 30,
-		RandomShrineUpgradePointTotal = 32,
+		RandomShrineUpgradePointTotal = 0,
 
 		LootOptions = {
 			{
-				Name = "WeaponPointsRareDrop",
+				Name = "GemPointsBigDrop",
 				Overrides = {
 					CanDuplicate = false,
 					AddResources = {
-						WeaponPointsRare = 1,
+						GemPoints = 40,
 					},
 				},
 			},
@@ -1097,11 +1100,6 @@ local newRandomizedBounties = {
 
 		UnlockGameStateRequirements = {
 			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyRandom" },
-			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
-				Comparison = ">=",
-				Value = 20,
-			},
 		},
 	},
 }
@@ -1111,10 +1109,250 @@ for _, bountyData in ipairs(newRandomizedBounties) do
 	if bountyData.ModsNikkelMHadesBiomesInsertAfterBounty then
 		local insertIndex = 1
 		for _, bountyName in ipairs(game.ScreenData.BountyBoard.ItemCategories[1]) do
+			insertIndex = insertIndex + 1
 			if bountyName == bountyData.ModsNikkelMHadesBiomesInsertAfterBounty then
 				break
 			end
+		end
+		table.insert(game.ScreenData.BountyBoard.ItemCategories[1], insertIndex, bountyData.Name)
+	end
+end
+-- #endregion
+
+-- #region Normal/One-Biome Trials
+local newTargetedBiomeBounties = {
+	-- #region Base Trials
+	{
+		Name = "ModsNikkelMHadesBiomes_BasePackageBountyBiomeTartarus",
+		DebugOnly = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesMegaeraEncounters" },
+		StartingBiome = "Tartarus",
+		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Tartarus",
+		BiomeText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Short",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_BasePackageBountyBiomeAsphodel",
+		DebugOnly = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesHydraEncounters" },
+		StartingBiome = "Asphodel",
+		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Asphodel",
+		BiomeText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Short",
+		RunOverrides = {
+			DeepInheritance = true,
+			ClearedBiomes = 1,
+			BiomesReached = { Tartarus = true, },
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_BasePackageBountyBiomeElysium",
+		DebugOnly = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesTheseusAndMinotaurEncounters" },
+		StartingBiome = "Elysium",
+		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Elysium",
+		BiomeText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Short",
+		RunOverrides = {
+			DeepInheritance = true,
+			ClearedBiomes = 2,
+			BiomesReached = { Tartarus = true, Asphodel = true, },
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_BasePackageBountyBiomeStyx",
+		DebugOnly = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesHadesEncounters" },
+		StartingBiome = "Styx",
+		BiomeIcon = "GUIModded\\Screens\\BountyBoard\\Biome_Styx",
+		BiomeText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Short",
+		RunOverrides = {
+			DeepInheritance = true,
+			ClearedBiomes = 3,
+			BiomesReached = { Tartarus = true, Asphodel = true, Elysium = true },
+		},
+	},
+	-- #endregion
+	-- Trial of Family
+	{
+		Name = "ModsNikkelMHadesBiomes_PackageBountyFamily",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
+		InheritFrom = { "DefaultPackagedBounty", "ModsNikkelMHadesBiomes_BasePackageBountyBiomeStyx", },
+
+		Text = "ModsNikkelMHadesBiomes_PackageBountyFamily",
+
+		DifficultyRating = 5,
+
+		WeaponKitName = "WeaponLob",
+		WeaponUpgradeName = "LobImpulseAspect", -- Aspect of Persephone
+		KeepsakeName = "RarifyKeepsake",      -- Calling Card
+		FamiliarName = "HoundFamiliar",       -- Hecuba
+
+		RunOverrides = {
+			MaxGodsPerRun = 1,
+			LootTypeHistory = {
+				NPC_Hades_Field_01 = 1,
+				DemeterUpgrade = 5,
+				HermesUpgrade = 2,
+				WeaponUpgrade = 2,
+			},
+			-- Force fountain to be early, allowing a decision for going for more rooms to rarify more boons
+			ModsNikkelMHadesBiomesForceStyxFountainDepth = 2,
+		},
+
+		StartingTraits = {
+			{ Name = "HadesDashSweepBoon", },
+			{ Name = "DemeterWeaponBoon",        Rarity = "Common", },
+			{ Name = "DemeterSpecialBoon",       Rarity = "Common", },
+			{ Name = "DemeterCastBoon",          Rarity = "Common", },
+			{ Name = "DemeterSprintBoon",        Rarity = "Common", },
+			{ Name = "BoonGrowthBoon",           Rarity = "Heroic", },
+			{ Name = "RestockBoon",              Rarity = "Heroic" },
+			{ Name = "TimedKillBuffBoon",        Rarity = "Heroic" },
+			-- Hammers
+			{ Name = "LobAmmoTrait", },
+			{ Name = "LobPulseAmmoCollectTrait", },
+			-- Max Health/Mana
+			{ Name = "RoomRewardMaxHealthTrait", },
+			{ Name = "RoomRewardMaxHealthTrait", },
+			{ Name = "RoomRewardMaxHealthTrait", },
+			{ Name = "RoomRewardMaxManaTrait", },
+			{ Name = "RoomRewardMaxManaTrait", },
+			{ Name = "RoomRewardMaxManaTrait", },
+			{ Name = "RoomRewardMaxManaTrait", },
+		},
+
+		RewardStoreOverrides = {
+			RunProgress = {
+				{
+					Name = "MaxHealthDrop",
+				},
+				{
+					Name = "MaxManaDrop",
+				},
+				{
+					Name = "Boon",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+			},
+		},
+
+		MetaUpgradeStateEquipped = {
+			"HealthRegen",
+			"LowManaDamageBonus",
+			"SorceryRegenUpgrade",
+			"CastBuff",
+			"BonusHealth",
+			"ManaOverTime",
+			"SprintShield",
+			"LastStand",
+			"MaxHealthPerRoom",
+			"StatusVulnerability",
+			"ChanneledBlock",
+			"StartingGold",
+			"EpicRarityBoost",
+		},
+
+		ShrineUpgradesActive = {
+			BossDifficultyShrineUpgrade = 4,
+		},
+
+		UnlockGameStateRequirements = {
+			-- Biome and Shrine unlocks
+			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyBiomeStyx", "ShrineUnlocked", "ModsNikkelMHadesBiomesHadesEM4Beaten" },
+			-- Bounty progress
+			{
+				Path = { "GameState", "PackagedBountyClears" },
+				HasAny = { "PackageBountyChaosIntro", "PackageBountyOceanus", "PackageBountyStarter", },
+			},
+			-- Weapon
+			{
+				Path = { "GameState", "WeaponsUnlocked", },
+				HasAll = { "WeaponLob", "LobImpulseAspect", },
+			},
+			-- Keepsake
+			{
+				PathTrue = { "GameState", "GiftPresentation", "RarifyKeepsake", },
+			},
+			-- Familiar
+			{
+				PathTrue = { "GameState", "FamiliarsUnlocked", "HoundFamiliar", },
+			},
+			-- FirstLoot
+			{
+				Path = { "GameState", "TextLinesRecord", },
+				HasAll = { "DemeterFirstPickUp", },
+			},
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "HadesFirstMeeting", "HadesFirstMeeting_B", "HadesFirstMeeting_C " },
+			},
+			-- MetaUpgrades
+			{
+				Path = { "GameState", "MetaUpgradeLimitLevel", },
+				Comparison = ">=",
+				Value = 10,
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "HealthRegen", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "LowManaDamageBonus", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "SorceryRegenUpgrade", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "CastBuff", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "BonusHealth", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "ManaOverTime", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "SprintShield", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "LastStand", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "MaxHealthPerRoom", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "StatusVulnerability", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "ChanneledBlock", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "StartingGold", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "EpicRarityBoost", "Unlocked" },
+			},
+		},
+	},
+}
+for _, bountyData in ipairs(newTargetedBiomeBounties) do
+	game.BountyData[bountyData.Name] = bountyData
+	-- Insert into Bounty Board
+	if bountyData.ModsNikkelMHadesBiomesInsertAfterBounty then
+		local insertIndex = 1
+		for _, bountyName in ipairs(game.ScreenData.BountyBoard.ItemCategories[1]) do
 			insertIndex = insertIndex + 1
+			if bountyName == bountyData.ModsNikkelMHadesBiomesInsertAfterBounty then
+				break
+			end
 		end
 		table.insert(game.ScreenData.BountyBoard.ItemCategories[1], insertIndex, bountyData.Name)
 	end
