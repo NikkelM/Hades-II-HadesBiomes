@@ -31,9 +31,12 @@ end
 modutil.mod.Path.Wrap("SetupObstacle", function(base, obstacle, replaceOnlyNull, args)
 	base(obstacle, replaceOnlyNull, args)
 
-	if obstacle.Name == "TartarusDoor03b" or obstacle.Name == "AsphodelBoat01b" then
-		game.CurrentRun.ModsNikkelMHadesBiomesExitDoors = game.CurrentRun.ModsNikkelMHadesBiomesExitDoors or {}
-		table.insert(game.CurrentRun.ModsNikkelMHadesBiomesExitDoors, obstacle)
+	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.HadesExitDoorObstacleNames[obstacle.Name] then
+		if game.CurrentRun.CurrentRoom then
+			game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesExitDoors = game.CurrentRun.CurrentRoom
+					.ModsNikkelMHadesBiomesExitDoors or {}
+			table.insert(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesExitDoors, obstacle)
+		end
 	end
 end)
 
@@ -68,10 +71,10 @@ modutil.mod.Path.Wrap("CreateRoom", function(base, roomData, args)
 	return room
 end)
 
--- Recording stats after a run
+-- Recording stats after a run (clearing or losing)
 modutil.mod.Path.Wrap("RecordRunStats", function(base)
-	-- Bounties are handled in the base function
-	if game.CurrentRun.BiomesReached ~= nil and (game.CurrentRun.BiomesReached.Tartarus or game.CurrentRun.BiomesReached.Asphodel or game.CurrentRun.BiomesReached.Elysium or game.CurrentRun.BiomesReached.Styx) then
+	-- Don't record bounty runs, except for randomized bounties
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics)) then
 		game.CurrentRun.RunResult = game.GetRunResult(game.CurrentRun)
 		game.CurrentRun.EndingRoomName = game.CurrentRun.CurrentRoom.Name
 		game.CurrentRun.WeaponsCache = game.DeepCopyTable(game.CurrentRun.Hero.Weapons)
@@ -138,6 +141,7 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 		game.GameState.ClearedUnderworldRunsCache = underworldRunsCleared
 		game.GameState.ClearedSurfaceRunsCache = surfaceRunsCleared
 		-- Custom fields
+		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache + 1
 		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = moddedRunsCleared
 
 		game.UpdateLifetimeTraitRecords(game.CurrentRun)
@@ -167,6 +171,31 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 	end
 end)
 
+modutil.mod.Path.Wrap("RecordRunCleared", function(base)
+	base()
+
+	-- Most of the stats tracked here are for Quests
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics)) then
+		local currentBiome = game.CurrentRun.CurrentRoom.RoomSetName
+
+		-- Record with which level of each ShrineUpgrades/Vows/Fear the run was cleared
+		game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome] = game
+				.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome] or {}
+		for shrineUpgradeName, shrineUpgradeLevel in pairs(game.GameState.ShrineUpgrades) do
+			-- Only record non-zero levels
+			if shrineUpgradeLevel > (game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome][shrineUpgradeName] or 0) then
+				game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[currentBiome][shrineUpgradeName] =
+						shrineUpgradeLevel
+			end
+		end
+
+		-- Record full run clears for modded runs separately
+		if #game.CurrentRun.KeepsakeCache == 1 then
+			game.GameState.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes[game.CurrentRun.KeepsakeCache[1]] = true
+		end
+	end
+end)
+
 modutil.mod.Path.Wrap("EndRun", function(base, run)
 	if run.ModsNikkelMHadesBiomesIsModdedRun then
 		if run.ModsNikkelMHadesBiomesActualCurrentRoomName ~= nil then
@@ -181,9 +210,6 @@ modutil.mod.Path.Wrap("EndRun", function(base, run)
 		end
 		-- The actual room name needs to be set to nil to ensure the base function assigns nil to EndingRoomName
 		run.CurrentRoom.Name = nil
-
-		-- Increase counter for completed modded runs
-		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache + 1
 	end
 
 	return base(run)
@@ -191,12 +217,11 @@ end)
 
 modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
 	if run.ModsNikkelMHadesBiomesIsModdedRun then
-		-- Bounty runs shouldn't count towards lifetime stats
-		if game.CurrentRun.ActiveBounty == nil then
+		-- Bounty runs shouldn't count towards lifetime stats, except for randomized bounties
+		if game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics) then
 			local clearCountRecordName = "ModsNikkelMHadesBiomesClearCount"
 			local fastestTimeRecordName = "ModsNikkelMHadesBiomesFastestTime"
 			local shrinePointsRecordName = "ModsNikkelMHadesBiomesHighestShrinePoints"
-
 			if run.TraitCache ~= nil then
 				for traitName in pairs(run.TraitCache) do
 					game.GameState.LifetimeTraitStats[traitName] = game.GameState.LifetimeTraitStats[traitName] or {}
