@@ -1198,14 +1198,13 @@ local newTargetedBiomeBounties = {
 		},
 
 		StartingTraits = {
-			{ Name = "HadesDashSweepBoon", },
+			{ Name = "HadesCastProjectileBoon", },
 			{ Name = "DemeterWeaponBoon",        Rarity = "Common", },
 			{ Name = "DemeterSpecialBoon",       Rarity = "Common", },
 			{ Name = "DemeterCastBoon",          Rarity = "Common", },
 			{ Name = "DemeterSprintBoon",        Rarity = "Common", },
 			{ Name = "BoonGrowthBoon",           Rarity = "Heroic", },
 			{ Name = "RestockBoon",              Rarity = "Heroic" },
-			{ Name = "TimedKillBuffBoon",        Rarity = "Heroic" },
 			-- Hammers
 			{ Name = "LobAmmoTrait", },
 			{ Name = "LobPulseAmmoCollectTrait", },
@@ -1213,7 +1212,7 @@ local newTargetedBiomeBounties = {
 			{ Name = "RoomRewardMaxHealthTrait", },
 			{ Name = "RoomRewardMaxHealthTrait", },
 			{ Name = "RoomRewardMaxHealthTrait", },
-			{ Name = "RoomRewardMaxManaTrait", },
+			{ Name = "RoomRewardMaxHealthTrait", },
 			{ Name = "RoomRewardMaxManaTrait", },
 			{ Name = "RoomRewardMaxManaTrait", },
 			{ Name = "RoomRewardMaxManaTrait", },
@@ -1248,14 +1247,15 @@ local newTargetedBiomeBounties = {
 		MetaUpgradeStateEquipped = {
 			"HealthRegen",
 			"LowManaDamageBonus",
+			"CastCount",
 			"SorceryRegenUpgrade",
 			"CastBuff",
 			"BonusHealth",
 			"ManaOverTime",
+			"MagicCrit",
 			"SprintShield",
 			"LastStand",
 			"MaxHealthPerRoom",
-			"StatusVulnerability",
 			"ChanneledBlock",
 			"StartingGold",
 			"EpicRarityBoost",
@@ -1308,6 +1308,9 @@ local newTargetedBiomeBounties = {
 				PathTrue = { "GameState", "MetaUpgradeState", "LowManaDamageBonus", "Unlocked", },
 			},
 			{
+				PathTrue = { "GameState", "MetaUpgradeState", "CastCount", "Unlocked", },
+			},
+			{
 				PathTrue = { "GameState", "MetaUpgradeState", "SorceryRegenUpgrade", "Unlocked", },
 			},
 			{
@@ -1320,6 +1323,9 @@ local newTargetedBiomeBounties = {
 				PathTrue = { "GameState", "MetaUpgradeState", "ManaOverTime", "Unlocked", },
 			},
 			{
+				PathTrue = { "GameState", "MetaUpgradeState", "MagicCrit", "Unlocked", },
+			},
+			{
 				PathTrue = { "GameState", "MetaUpgradeState", "SprintShield", "Unlocked", },
 			},
 			{
@@ -1327,9 +1333,6 @@ local newTargetedBiomeBounties = {
 			},
 			{
 				PathTrue = { "GameState", "MetaUpgradeState", "MaxHealthPerRoom", "Unlocked" },
-			},
-			{
-				PathTrue = { "GameState", "MetaUpgradeState", "StatusVulnerability", "Unlocked" },
 			},
 			{
 				PathTrue = { "GameState", "MetaUpgradeState", "ChanneledBlock", "Unlocked" },
