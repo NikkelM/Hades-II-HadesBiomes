@@ -1552,6 +1552,16 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_PackageBountyAggression_Short",
 		DisplayName = "Trial of Aggression",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyFire",
+		DisplayName = "Trial of Fire",
+		Description =
+		"Combine the powers of the Goddess of Hearth and the Umbral Flames to unlock your full potential as the fire-stepping Princess in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyFire_Short",
+		DisplayName = "Trial of Fire",
+	},
 	-- #endregion
 	-- #endregion
 }

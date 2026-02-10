@@ -1178,7 +1178,7 @@ local newTargetedBiomeBounties = {
 
 		Text = "ModsNikkelMHadesBiomes_PackageBountyAggression",
 
-		DifficultyRating = 3,
+		DifficultyRating = 4,
 
 		WeaponKitName = "WeaponAxe",
 		WeaponUpgradeName = "AxePerfectCriticalAspect", -- Aspect of Thanatos
@@ -1280,6 +1280,7 @@ local newTargetedBiomeBounties = {
 		ShrineUpgradesActive = {
 			EnemyDamageShrineUpgrade = 3,
 			EnemySpeedShrineUpgrade = 2,
+			BiomeSpeedShrineUpgrade = 3,
 		},
 
 		UnlockGameStateRequirements = {
@@ -1346,6 +1347,192 @@ local newTargetedBiomeBounties = {
 			},
 			{
 				PathTrue = { "GameState", "MetaUpgradeState", "LowHealthBonus", "Unlocked" },
+			},
+		},
+	},
+	-- Trial of Fire
+	{
+		Name = "ModsNikkelMHadesBiomes_PackageBountyFire",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyAggression",
+		InheritFrom = { "DefaultPackagedBounty", "ModsNikkelMHadesBiomes_BasePackageBountyBiomeAsphodel", },
+
+		Text = "ModsNikkelMHadesBiomes_PackageBountyFire",
+
+		DifficultyRating = 3,
+
+		WeaponKitName = "WeaponTorch",
+		WeaponUpgradeName = "TorchDetonateAspect", -- Aspect of Moros
+		KeepsakeName = "DecayingBoostKeepsake",  -- Lion Fang
+		RemoveFamiliar = true,
+
+		RunOverrides = {
+			MaxGodsPerRun = 2,
+			LootTypeHistory = {
+				HestiaUpgrade = 3,
+				ApolloUpgrade = 1,
+				WeaponUpgrade = 2,
+			},
+		},
+
+		StartingTraits = {
+			{ Name = "HestiaWeaponBoon",         Rarity = "Epic", },
+			{ Name = "HestiaCastBoon",           Rarity = "Epic", },
+			{ Name = "HestiaSprintBoon",         Rarity = "Epic", },
+			{ Name = "ApolloCastAreaBoon",       Rarity = "Rare", },
+			{ Name = "TorchEnhancedAttackTrait" },
+			{ Name = "TorchLongevityTrait" },
+			{ Name = "RoomRewardMaxHealthTrait", },
+			{ Name = "RoomRewardMaxManaTrait", },
+		},
+
+		RewardStoreOverrides = {
+			RunProgress = {
+				{
+					Name = "RoomMoneyDrop",
+					GameStateRequirements = {},
+				},
+				{
+					Name = "MaxManaDrop",
+					GameStateRequirements = {},
+				},
+				{
+					Name = "MaxManaDrop",
+					GameStateRequirements = {},
+				},
+				{
+					Name = "MaxHealthDrop",
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "ApolloUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "ApolloUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "HestiaUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "HestiaUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "HestiaUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "HestiaUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "HermesUpgrade",
+					GameStateRequirements = {
+						NamedRequirements = { "HermesUpgradeRequirements", },
+					}
+				},
+			},
+		},
+
+		MetaUpgradeStateEquipped = {
+			"HealthRegen",
+			"BonusHealth",
+			"SprintShield",
+			"MaxHealthPerRoom",
+			"StatusVulnerability",
+			"DoorReroll",
+			"StartingGold",
+			"RarityBoost",
+			"TradeOff",
+			"ScreenReroll",
+			"LowHealthBonus",
+			"EpicRarityBoost",
+		},
+
+		ShrineUpgradesActive = {
+			EnemyRespawnShrineUpgrade = 2,
+			MinibossCountShrineUpgrade = 1,
+			BiomeSpeedShrineUpgrade = 2,
+			BossDifficultyShrineUpgrade = 2,
+		},
+
+		UnlockGameStateRequirements = {
+			-- Biome and Shrine unlocks
+			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyBiomeAsphodel", "ShrineUnlocked" },
+			-- Bounty progress
+			{
+				Path = { "GameState", "PackagedBountyClears" },
+				HasAny = { "PackageBountyChaosIntro", "PackageBountyOceanus", "PackageBountyStarter", },
+			},
+			-- Weapon
+			{
+				Path = { "GameState", "WeaponsUnlocked", },
+				HasAll = { "WeaponTorch", "TorchDetonateAspect", },
+			},
+			-- Keepsake
+			{
+				PathTrue = { "GameState", "GiftPresentation", "DecayingBoostKeepsake", },
+			},
+			-- FirstLoot
+			{
+				Path = { "GameState", "TextLinesRecord", },
+				HasAll = { "HestiaFirstPickUp", "ApolloFirstPickUp" },
+			},
+			-- MetaUpgrades
+			{
+				Path = { "GameState", "MetaUpgradeLimitLevel", },
+				Comparison = ">=",
+				Value = 10,
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "HealthRegen", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "BonusHealth", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "SprintShield", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "MaxHealthPerRoom", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "StatusVulnerability", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "DoorReroll", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "StartingGold", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "RarityBoost", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "TradeOff", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "ScreenReroll", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "LowHealthBonus", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "EpicRarityBoost", "Unlocked" },
 			},
 		},
 	},
