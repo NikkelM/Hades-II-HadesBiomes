@@ -377,7 +377,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 
 		-- For the Erebus/ShrinePointDoor exits
 		if exitDoor.BackingAnimation ~= nil then
-			exitDoor.DoorIconBackingId = SpawnObstacle({ Name = "BlankGeoObstacle", Group = "Combat_UI_Backing" })
+			exitDoor.DoorIconBackingId = SpawnObstacle({ Name = "BlankGeoObstacle", Group = "Combat_UI_World" })
 			Attach({
 				Id = exitDoor.DoorIconBackingId,
 				DestinationId = exitDoor.ObjectId,
@@ -399,7 +399,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		-- Reward icon
 		local doorIconId = SpawnObstacle({
 			Name = "RoomRewardPreview",
-			Group = "Combat_UI",
+			Group = "Combat_UI_Backing",
 			DestinationId = exitDoor.ObjectId,
 			OffsetY = properties.doorIconOffsetY,
 			OffsetX = properties.doorIconOffsetX + doorIconIsometricShiftX,
@@ -417,7 +417,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			-- Shimmer animation in front of the backing and reward
 			exitDoor.DoorIconFront = SpawnObstacle({
 				Name = "BlankGeoObstacle",
-				Group = "Combat_Menu_Backing",
+				Group = "Combat_UI",
 				DestinationId = doorIconId,
 			})
 			-- Custom: To destroy it on death (would otherwise overlay on the blacked out screen)
