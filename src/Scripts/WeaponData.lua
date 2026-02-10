@@ -425,6 +425,7 @@ local weaponReplacements = {
 			PreAttackAnimation = "EnemyCrawlerIdle",
 			FireAnimation = "EnemyCrawlerRun",
 			PostAttackAnimation = "EnemyCrawlerIdle",
+			ImmuneToProjectileSlow = true,
 			-- Forces a reburrow if it can't reach the player on the other side of the gap in the middle of the room
 			RequireProjectileLoS = true,
 		},
@@ -447,6 +448,7 @@ local weaponModifications = {
 			DeepInheritance = true,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.RootedAttacker, },
 			ProjectileName = "BloodMineToss",
+			ImmuneToProjectileSlow = true,
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
 	},
@@ -523,6 +525,7 @@ local weaponModifications = {
 			ExpireProjectilesOnHitStun = true,
 			ExpireProjectilesOnFreeze = true,
 			ExpireProjectilesOnPolymorph = true,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	-- #endregion
@@ -536,6 +539,7 @@ local weaponModifications = {
 			PostTeleportAngleTowardTarget = true,
 			PreAttackFunctionName = mod.NilValue,
 			PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	WretchAssassinRanged = {
@@ -551,6 +555,21 @@ local weaponModifications = {
 	-- #endregion
 	-- #endregion
 	-- #region TARTARUS - Megaera
+	HarpyLunge = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	HarpyWhipWhirl = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	SummonMegaeraWhipWhirl = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
 	HarpyLightning = {
 		AIData = {
 			AttackSlotInterval = 0.01,
@@ -571,6 +590,7 @@ local weaponModifications = {
 		AIData = {
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			PreAttackStop = true,
+			ImmuneToProjectileSlow = true,
 			-- So the Rage version works correctly
 			DeepInheritance = true,
 			EnragedWeaponSwap = "HarpyLungeAlectoRage",
@@ -580,6 +600,7 @@ local weaponModifications = {
 	HarpyWhipArc = {
 		AIData = {
 			PreAttackStop = true,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HarpyBuildRage = {
@@ -640,11 +661,18 @@ local weaponModifications = {
 	HarpyWhipShot = {
 		AIData = {
 			PreAttackStop = true,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HarpyWhipShotRage = {
 		AIData = {
 			PreAttackStop = true,
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	SummonAlectoWhipShot = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	-- #endregion
@@ -672,6 +700,7 @@ local weaponModifications = {
 			ChainedWeapon = mod.NilValue,
 			AITrackTargetDuringCharge = false,
 			ForceFirst = true,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	-- Chained from HarpyWhipLasso
@@ -690,6 +719,7 @@ local weaponModifications = {
 		AIData = {
 			DeepInheritance = true,
 			FireSelfVelocity = 3600,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HarpyLungeSurgeBeam = {
@@ -755,6 +785,17 @@ local weaponModifications = {
 	HarpyWhipCombo1 = {
 		AIData = {
 			BlockAsFirstWeapon = true,
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	HarpyWhipCombo2 = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	HarpyWhipCombo3 = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	SummonTisiphoneBombingRun = {
@@ -833,6 +874,7 @@ local weaponModifications = {
 			PreAttackDuration = 0.8,
 			MoveWithinRangeTimeout = 0.5,
 			MaxConsecutiveUses = 3,
+			ImmuneToProjectileSlow = true,
 			-- Needs to be lowered due to tethers not locking the head in place
 			-- It would otherwise fly over the whole map
 			FireSelfVelocity = 2950.0,
@@ -843,6 +885,7 @@ local weaponModifications = {
 		AIData = {
 			PreAttackDuration = 0.8,
 			MaxConsecutiveUses = 3,
+			ImmuneToProjectileSlow = true,
 			FireSelfVelocity = 2450.0,
 			FireRotationDampening = 0.5,
 		},
@@ -853,16 +896,19 @@ local weaponModifications = {
 			MoveWithinRange = false,
 			FireSelfUpwardVelocity = 3500,
 			FireRotationDampening = 0.1,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HydraSlamFrenzy = {
 		AIData = {
 			PostAttackDuration = 0.5,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HydraSlamUntethered = {
 		AIData = {
 			PostAttackDuration = 0.5,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HydraDart = {
@@ -876,6 +922,23 @@ local weaponModifications = {
 		AIData = {
 			FireProjectileTowardTarget = true,
 			FireRotationDampening = 0.01,
+		},
+	},
+	-- #endregion
+	-- #region ASPHODEL - Hydra (Blue/Slammer)
+	HydraBite = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	HydraSlamScattered = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	HydraSlamRockFallScattered = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	-- #endregion
@@ -896,11 +959,13 @@ local weaponModifications = {
 	HydraSpawns = {
 		AIData = {
 			FireFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HydraSummon = {
 		AIData = {
 			PreAttackDuration = 0.2,
+			ImmuneToProjectileSlow = true,
 			-- While tethers are broken
 			AIAttackDistance = 50,
 			AIBufferDistance = 50,
@@ -909,6 +974,7 @@ local weaponModifications = {
 	HydraSummon2 = {
 		AIData = {
 			PreAttackDuration = 0.2,
+			ImmuneToProjectileSlow = true,
 			-- While tethers are broken
 			AIAttackDistance = 50,
 			AIBufferDistance = 50,
@@ -918,6 +984,7 @@ local weaponModifications = {
 		AIData = {
 			PreAttackDuration = 0.2,
 			FireProjectileTowardTarget = true,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HydraCrusher = {
@@ -927,6 +994,7 @@ local weaponModifications = {
 			CreateOwnTargetFromOriginalTarget = true,
 			FireProjectileTowardTarget = true,
 			TrackTargetDuringCharge = true,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HydraCrusher2 = {
@@ -939,6 +1007,7 @@ local weaponModifications = {
 			FireProjectileTowardTarget = true,
 			TrackTargetDuringFire = true,
 			TrackTargetDuringCharge = true,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HydraCrusher3 = {
@@ -951,6 +1020,7 @@ local weaponModifications = {
 			TrackTargetDuringFire = true,
 			FireProjectileTowardTarget = true,
 			TrackTargetDuringCharge = true,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	-- #endregion
@@ -995,6 +1065,7 @@ local weaponModifications = {
 		AIData = {
 			FireSelfVelocity = 3000.0,
 			FireRotationDampening = 0.01,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	-- #endregion
@@ -1002,29 +1073,48 @@ local weaponModifications = {
 
 	-- #region ELYSIUM
 	-- #region ELYSIUM - Regular
+	ShadeSwordWeapon = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	ShadeSwordWeapon2 = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	ShadeSwordOverhead = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
 	ShadeSideDash = {
 		AIData = {
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
 			FireSelfVelocity = 2500,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	ShadeBowRanged = {
 		AIData = {
 			PreAttackRotationDampening = 0.7,
 			FireRotationDampening = 1E-06,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	ShadeBowRangedRapidFire = {
 		AIData = {
 			PreAttackRotationDampening = 0.5,
 			FireRotationDampening = 0.5,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	ShadeBowRangedRapidSalvo = {
 		AIData = {
 			PreAttackRotationDampening = 0.5,
 			FireRotationDampening = 0.5,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	ShadeBowSideDash = {
@@ -1032,6 +1122,7 @@ local weaponModifications = {
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
 			FireSelfVelocity = 2500,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	ShadeSpearLeap = {
@@ -1056,6 +1147,7 @@ local weaponModifications = {
 			MinAttacksBetweenUse = 3,
 			MinPlayerDistance = 400,
 			MaxPlayerDistance = 800,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	ShadeSpearLeapSuper = {
@@ -1077,24 +1169,42 @@ local weaponModifications = {
 			StopBeforeFire = true,
 			PostAttackStop = true,
 			MinPlayerDistance = 300,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	ShadeSpearThrustSingle = {
 		AIData = {
 			PreAttackRotationDampening = 1E-06,
 			FireRotationDampening = 1E-06,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	ShadeSpearThrust = {
 		AIData = {
 			PreAttackRotationDampening = 1E-06,
 			FireRotationDampening = 1E-06,
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	ShadeSpearThrust2 = {
+		AIData = {
+			PreAttackRotationDampening = 1E-06,
+			FireRotationDampening = 1E-06,
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	ShadeSpearThrust3 = {
+		AIData = {
+			PreAttackRotationDampening = 1E-06,
+			FireRotationDampening = 1E-06,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	ShadeSpearForwardDash = {
 		AIData = {
 			AITrackTargetDuringCharge = false,
 			FireRotationDampening = 0.001,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	ShadeShieldMelee = {
@@ -1109,6 +1219,11 @@ local weaponModifications = {
 			FireRotationDampening = 1E-06,
 		},
 	},
+	ShadeShieldSpin = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
 	ShieldAlliesAoE = {
 		AIData = {
 			-- Don't remove this - doesn't work without, even though it's the same name
@@ -1121,6 +1236,28 @@ local weaponModifications = {
 			ProjectileName = "ShieldAlliesAoELarge",
 		},
 	},
+	ChariotRam = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	ChariotRamSelfDestruct = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	-- #endregion
+	-- #region ELYSIUM - Minibosses
+	FlurrySpawnerDash = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	FLurrySpawnerDashTrail = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
 	-- #endregion
 	-- #region ELYSIUM - Minotaur
 	Minotaur5AxeCombo1 = {
@@ -1128,6 +1265,7 @@ local weaponModifications = {
 			AITrackTargetDuringCharge = false,
 			AngleTowardsTargetWhileFiring = false,
 			FireRotationDampening = 0.001,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	Minotaur5AxeCombo2 = {
@@ -1136,6 +1274,7 @@ local weaponModifications = {
 			AngleTowardsTargetWhileFiring = false,
 			PreAttackRotationDampening = 0.001,
 			FireRotationDampening = 0.001,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	Minotaur5AxeCombo3 = {
@@ -1157,6 +1296,7 @@ local weaponModifications = {
 			-- Slightly adjusted so he doesn't hover at the end before the touchdown
 			FireDuration = 0.28,
 			FireRotationDampening = 0.001,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	MinotaurArmored5AxeCombo3 = {
@@ -1170,6 +1310,7 @@ local weaponModifications = {
 			WaitForAngleTowardTarget = true,
 			WaitForAngleTowardTargetTimeOut = 0.3,
 			FireRotationDampening = 0.001,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	Minotaur5AxeCombo5 = {
@@ -1177,6 +1318,7 @@ local weaponModifications = {
 			PostAttackDuration = 1.8,
 			PreAttackRotationDampening = 0.001,
 			FireRotationDampening = 0.001,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	MinotaurLeapCombo3 = {
@@ -1189,6 +1331,7 @@ local weaponModifications = {
 			FireSelfVelocity = 2500,
 			FireSelfUpwardVelocity = 2000,
 			FireDuration = 0.28,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	MinotaurLeapCombo4 = {
@@ -1201,6 +1344,7 @@ local weaponModifications = {
 			FireSelfVelocity = 2500,
 			FireSelfUpwardVelocity = 2000,
 			FireDuration = 0.28,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	MinotaurLeapCombo5 = {
@@ -1218,6 +1362,7 @@ local weaponModifications = {
 			MoveWithinRange = false,
 			PreFireDuration = 0.0,
 			FireDuration = 0.28,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	MinotaurArmoredLeapCombo5 = {
@@ -1236,6 +1381,7 @@ local weaponModifications = {
 			MoveWithinRange = false,
 			PreFireDuration = 0.0,
 			FireDuration = 0.28,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	MinotaurArmoredAxeOverhead = {
@@ -1246,6 +1392,7 @@ local weaponModifications = {
 	MinotaurCrescentCombo3 = {
 		AIData = {
 			PreAttackDuration = 0.0,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	MinotaurBullRush = {
@@ -1271,6 +1418,7 @@ local weaponModifications = {
 			PostAttackDuration = 1.2,
 			PostAttackFx = "MinotaurBullRushHornStrike",
 			PostAttackAnimation = "MinotaurBullRush_PreStrike",
+			ImmuneToProjectileSlow = true,
 
 			PostAttackAI = mod.NilValue,
 			PostAttackAICanOnlyMoveForward = mod.NilValue,
@@ -1294,6 +1442,7 @@ local weaponModifications = {
 			FireMoveTowardTarget = true,
 			FireRotationDampening = 0.8,
 			MoveWithinRange = true,
+			ImmuneToProjectileSlow = true,
 			-- A lower value causes consistent crashes
 			MoveSuccessDistance = 35,
 			PostAttackStop = true,
@@ -1319,6 +1468,7 @@ local weaponModifications = {
 			PartnerForceWeaponInterrupt = "MinotaurTheseusThrow_Theseus",
 			WaitForComboPartnerMoveAnimation = "Minotaur_Crouch",
 			MaxDistanceFromComboPartner = 500,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	MinotaurTheseusSlamNova = {
@@ -1336,6 +1486,7 @@ local weaponModifications = {
 			},
 			PostAttackAnimation = "MinotaurArmoredBullRush_PreStrike",
 			FireRotationDampening = 0.6,
+			ImmuneToProjectileSlow = true,
 			EffectExpiredName = mod.NilValue,
 		},
 	},
@@ -1361,6 +1512,7 @@ local weaponModifications = {
 			PostAttackDuration = 0.0,
 			PostAttackFx = "MinotaurBullRushHornStrike",
 			PostAttackAnimation = "MinotaurBullRush_PreStrike",
+			ImmuneToProjectileSlow = true,
 
 			PostAttackAI = mod.NilValue,
 			PostAttackAICanOnlyMoveForward = mod.NilValue,
@@ -1377,6 +1529,7 @@ local weaponModifications = {
 			},
 			PostAttackAnimation = "MinotaurArmoredBullRush_PreStrike",
 			FireRotationDampening = 0.6,
+			ImmuneToProjectileSlow = true,
 			EffectExpiredName = mod.NilValue,
 		},
 	},
@@ -1384,13 +1537,20 @@ local weaponModifications = {
 		AIData = {
 			FireSelfVelocity = 900,
 			FireRotationDampening = 0.2,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	-- #endregion
 	-- #region ELYSIUM - Theseus
+	TheseusSpearThrow = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
 	TheseusSpearThrowReturn = {
 		AIData = {
 			FireProjectileTowardTarget = true,
+			ImmuneToProjectileSlow = true,
 			-- Modded properties, to make sure the spear is fired from the obstacle and towards Theseus
 			ModsNikkelMHadesBiomesFireAtSelf = true,
 			ModsNikkelMHadesBiomesFireFromObstacle = "TheseusSpearReturnPoint",
@@ -1406,6 +1566,7 @@ local weaponModifications = {
 			PostAttackCooldownMax = 1.25,
 			AITrackTargetDuringCharge = false,
 			FireRotationDampening = 0.001,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	-- Has it's properties in the root instead of in AIData
@@ -1439,6 +1600,7 @@ local weaponModifications = {
 			ForceIfComboPartnerNotifyName = "MinotaurTheseusThrow_Theseus",
 			MoveSuccessDistance = 32,
 			MoveWithinRange = true,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	TheseusChariotWait = {
@@ -1519,8 +1681,14 @@ local weaponModifications = {
 			RequireUnitLoS = true,
 			LoSBuffer = 80,
 			LoSEndBuffer = 32,
+			ImmuneToProjectileSlow = true,
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/RatThug/EmoteAttacking" }, }, },
+	},
+	RatThugMelee = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
 	},
 	HeavyRangedWeaponFork = {
 		AIData = {
@@ -1550,6 +1718,11 @@ local weaponModifications = {
 		AIData = {
 			PreAttackRotationDampening = 0.4,
 			FireRotationDampening = 1E-07,
+		},
+	},
+	SatyrDash = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	GrenadierWeapon = {
@@ -1582,6 +1755,7 @@ local weaponModifications = {
 		AIData = {
 			AIAttackDistance = 500,
 			AIBufferDistance = 50,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	GrenadierWeaponMiniboss = {
@@ -1593,6 +1767,11 @@ local weaponModifications = {
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/EnemyGrenadeMortarLaunch" }, }, },
 	},
+	SatyrMinigun = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
 	-- #endregion
 	-- #region HADES
 	HadesBidentStrike = {
@@ -1603,6 +1782,12 @@ local weaponModifications = {
 			PostAttackStop = true,
 			PostAttackDuration = 0.5,
 			FireRotationDampening = 0.001,
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	HadesBidentFlurry = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HadesCast = {
@@ -1643,6 +1828,7 @@ local weaponModifications = {
 			PreAttackAngleTowardTarget = true,
 			WaitForAngleTowardTarget = true,
 			FireRotationDampening = 0.001,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HadesBidentSpin = {
@@ -1652,11 +1838,13 @@ local weaponModifications = {
 			PreAttackEndStop = true,
 			PostAttackStop = true,
 			FireRotationDampening = 0.001,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HadesBidentArcCombo1 = {
 		AIData = {
 			FireRotationDampening = 0.001,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HadesBidentArcCombo2 = {
@@ -1707,6 +1895,7 @@ local weaponModifications = {
 			MoveWithinRange = false,
 			AttackDistance = 9999,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+			ImmuneToProjectileSlow = true,
 		},
 		Sounds = {
 			-- Need to change from FireSounds to WeaponFireSounds, as it's not a projectile weapon
@@ -1731,6 +1920,7 @@ local weaponModifications = {
 			MoveWithinRange = false,
 			AttackDistance = 9999,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+			ImmuneToProjectileSlow = true,
 			-- Causes an infinite loop, as this would be set to itself
 			AttackFailWeapon = mod.NilValue,
 		},
@@ -1751,6 +1941,7 @@ local weaponModifications = {
 		AIData = {
 			TrackTargetDuringFire = false,
 			PostAttackStop = true,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HadesBidentRecoveryDash = {
@@ -1771,6 +1962,7 @@ local weaponModifications = {
 			MoveWithinRange = false,
 			AttackDistance = 9999,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
+			ImmuneToProjectileSlow = true,
 		},
 		Sounds = {
 			-- Need to change from FireSounds to WeaponFireSounds, as it's not a projectile weapon
@@ -1792,12 +1984,14 @@ local weaponModifications = {
 		RapidDamageType = true,
 		AIData = {
 			FireRotationDampening = 0.02,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HadesCastBeam360 = {
 		RapidDamageType = true,
 		AIData = {
 			FireRotationDampening = 0.015,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	HadesMobilityCombo1 = {
@@ -1829,6 +2023,17 @@ local weaponModifications = {
 			PreAttackFunctionName = _PLUGIN.guid .. "." .. "HandleHadesAssistPresentation",
 			AssistPresentationPortrait = "ModsNikkelMHadesBiomes_Portrait_Cerberus",
 			PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	HadesCerberusAssistRockFall = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	HadesCerberusAssistMovement = {
+		AIData = {
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	-- #endregion
@@ -1853,16 +2058,19 @@ local weaponModifications = {
 		AIData = {
 			PreAttackRotationDampening = 0.4,
 			FireRotationDampening = 0.001,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	CharonMeleeStraight = {
 		AIData = {
 			-- Moved here from CharonWaveStraight, as that is a DumbFireWeapon and the requirement doesn't do anything
 			MaxConsecutiveUses = 3,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	CharonWaveStraight = {
 		AIData = {
+			ImmuneToProjectileSlow = true,
 			PreAttackVoiceLines = {
 				Cooldowns = {
 					{ Name = "CharonPreAttackSpeech", Time = 5 },
@@ -1875,6 +2083,7 @@ local weaponModifications = {
 	CharonGhostCharge = {
 		AIData = {
 			DeepInheritance = true,
+			ImmuneToProjectileSlow = true,
 		},
 	},
 	CharonGhostChargeLeft = {
@@ -1950,7 +2159,29 @@ local weaponModifications = {
 			PostAttackAnimation = "BlastCubeFusedRegeneratingExplode",
 		},
 	},
+	DartTrapWeapon = {
+		AIData = {
+			DeepInheritance = true,
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	SawTrapWeapon = {
+		AIData = {
+			DeepInheritance = true,
+			ImmuneToProjectileSlow = true,
+		},
+	},
+	ArcherTrapWeapon = {
+		AIData = {
+			DeepInheritance = true,
+			ImmuneToProjectileSlow = true,
+		},
+	},
 	AxeTrapWeapon = {
+		AIData = {
+			DeepInheritance = true,
+			ImmuneToProjectileSlow = true,
+		},
 		Sounds = {
 			ImpactSounds = {
 				Invulnerable = "/SFX/SwordWallHitClank",
