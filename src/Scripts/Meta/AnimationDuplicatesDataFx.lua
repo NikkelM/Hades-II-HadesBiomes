@@ -16,7 +16,7 @@ mod.HadesFxAnimationModifications = {
 		FilePath = "NikkelM-HadesBiomesFxModded\\Fx\\RoomRewardAvailable-Front\\RoomRewardAvailable-Front",
 		OffsetY = -155.0,
 		Scale = 1.1,
-		GroupName = "Combat_Menu_Backing",
+		GroupName = "Combat_UI",
 	},
 	["RoomRewardAvailable-Front_MetaReward"] = {
 		FilePath =
