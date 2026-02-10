@@ -62,7 +62,7 @@ modutil.mod.Path.Wrap("CreateRoom", function(base, roomData, args)
 		room.ShrinePointDoorChanceSuccess = game.RandomChance(shrinePointDoorChance)
 
 		local forbiddenShopItemRequirements = room.ForbiddenShopItemRequirements
-		if forbiddenShopItemRequirements ~= nil and game.IsGameStateEligible(forbiddenShopItemRequirements) then
+		if forbiddenShopItemRequirements ~= nil and game.IsGameStateEligible(nil, forbiddenShopItemRequirements) then
 			local forbiddenShopItemChance = room.ForbiddenShopItemSpawnChance or 0.0
 			room.ForbiddenShopItemChanceSuccess = game.RandomChance(forbiddenShopItemChance)
 		end
