@@ -443,6 +443,7 @@ local roomModifications = {
 
 		-- Charon's Sack of Gold
 		ForbiddenShopItemRequirements = {
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 			{
 				PathFalse = { "CurrentRun", "ForbiddenShopItemOffered" },
 			},
