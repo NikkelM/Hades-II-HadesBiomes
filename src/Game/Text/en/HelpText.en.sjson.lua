@@ -1542,6 +1542,16 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_PackageBountyFamily_Short",
 		DisplayName = "Trial of Family",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyAggression",
+		DisplayName = "Trial of Aggression",
+		Description =
+		"Be swift and decisive as you make your way through emboldened wretches to face the most destructive of the Fury Sisters in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyAggression_Short",
+		DisplayName = "Trial of Aggression",
+	},
 	-- #endregion
 	-- #endregion
 }

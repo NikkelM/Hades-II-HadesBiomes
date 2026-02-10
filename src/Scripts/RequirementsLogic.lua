@@ -189,6 +189,15 @@ function mod.HasSeenRoomInRun(run, roomName)
 	return false
 end
 
+-- Check if a given Tartarus boss/Fury is eligible
+-- Always returns true if there is no forced boss room on the current run, otherwise checks if the checked boss room is the one that is currently forced
+function mod.IsTartarusBossRoomEligible(source, args)
+	if not game.CurrentRun or not game.CurrentRun.ModsNikkelMHadesBiomesForcedTartarusBossRoom or not args.BossRoom then
+		return true
+	end
+	return game.CurrentRun.ModsNikkelMHadesBiomesForcedTartarusBossRoom == args.BossRoom
+end
+
 function mod.GetFastestRunClearTime(currentRun)
 	return game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache or 999999
 end

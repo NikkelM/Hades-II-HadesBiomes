@@ -18,6 +18,7 @@ game.NamedRequirementsData.StandardPackageBountyActive[2].IsNone = game.ConcatTa
 
 -- #region New requirements
 local newNamedRequirements = {
+	-- #region GENERAL
 	-- Can't get a Hades bounty if the next encounter would be BossHadesPeaceful
 	ModsNikkelMHadesBiomesStyxBossBountyLockedByEnding = {
 		{
@@ -49,6 +50,9 @@ local newNamedRequirements = {
 			},
 		},
 	},
+	-- #endregion
+
+	-- #region Bounties/Chaos Trials
 	-- For normal packaged bounty unlocks, must have completed the relevant biome/beaten it's boss
 	ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusMegaera = {
 		{
@@ -58,6 +62,12 @@ local newNamedRequirements = {
 		},
 	},
 	ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusAlecto = {
+		-- So the room is always eligible in the base game
+		-- Not checking for Sisyphys since his room is blocked in bounty runs
+		{
+			Path = { "GameState", "TextLinesRecord" },
+			HasAll = { "HermesFirstPickUp", "ChaosFirstPickUp" }
+		},
 		{
 			Path = { "GameState", "EncountersCompletedCache", "BossHarpy2" },
 			Comparison = ">=",
@@ -65,6 +75,12 @@ local newNamedRequirements = {
 		},
 	},
 	ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusTisiphone = {
+		-- So the room is always eligible in the base game
+		-- Not checking for Sisyphys since his room is blocked in bounty runs
+		{
+			Path = { "GameState", "TextLinesRecord" },
+			HasAll = { "HermesFirstPickUp", "ChaosFirstPickUp" }
+		},
 		{
 			Path = { "GameState", "EncountersCompletedCache", "BossHarpy3" },
 			Comparison = ">=",
@@ -75,6 +91,13 @@ local newNamedRequirements = {
 		{
 			Path = { "GameState", "EncountersCompletedCache" },
 			HasAll = { "BossHarpy1", "BossHarpy2", "BossHarpy3" },
+		},
+	},
+	-- Are Alecto/Tisiphone eligible for Vow of Rivals/Extreme Measures for bounties
+	ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusExtremeMeasuresAltFights = {
+		-- Alternate fury EM fights are only eligible after having met Meg with the other furies
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "FurySistersUnion01" },
 		},
 	},
 	ModsNikkelMHadesBiomes_PackageBountyBiomeAsphodel = {
@@ -195,6 +218,7 @@ local newNamedRequirements = {
 			},
 		},
 	},
+	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.NamedRequirementsData, newNamedRequirements)
 -- #endregion

@@ -1170,10 +1170,188 @@ local newTargetedBiomeBounties = {
 		},
 	},
 	-- #endregion
+	-- Trial of Aggression
+	{
+		Name = "ModsNikkelMHadesBiomes_PackageBountyAggression",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
+		InheritFrom = { "DefaultPackagedBounty", "ModsNikkelMHadesBiomes_BasePackageBountyBiomeTartarus", },
+
+		Text = "ModsNikkelMHadesBiomes_PackageBountyAggression",
+
+		DifficultyRating = 3,
+
+		WeaponKitName = "WeaponAxe",
+		WeaponUpgradeName = "AxePerfectCriticalAspect", -- Aspect of Thanatos
+		KeepsakeName = "TimedBuffKeepsake",           -- Metallic Droplet
+		FamiliarName = "FrogFamiliar",                -- Frinos
+
+		RunOverrides = {
+			MaxGodsPerRun = 2,
+			LootTypeHistory = {
+				AresUpgrade = 1,
+				HeraUpgrade = 1,
+				HermesUpgrade = 1,
+			},
+			ModsNikkelMHadesBiomesForcedTartarusBossRoom = "A_Boss03",
+		},
+
+		StartingTraits = {
+			{ Name = "AresWeaponBoon",   Rarity = "Epic", },
+			{ Name = "HeraSpecialBoon",  Rarity = "Epic", },
+			{ Name = "HermesWeaponBoon", Rarity = "Heroic", },
+		},
+
+		RewardStoreOverrides = {
+			RunProgress = {
+				{
+					Name = "RoomMoneyDrop",
+					GameStateRequirements = {},
+				},
+				{
+					Name = "StackUpgrade",
+					GameStateRequirements = {
+						NamedRequirements = { "StackUpgradeLegal", },
+					}
+				},
+				{
+					Name = "StackUpgrade",
+					GameStateRequirements = {
+						NamedRequirements = { "StackUpgradeLegal", },
+					}
+				},
+				{
+					Name = "MaxManaDrop",
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "HeraUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "HeraUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "AresUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "AresUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "AresUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "WeaponUpgrade",
+					GameStateRequirements = {
+						NamedRequirements = { "HammerLootRequirements" },
+					}
+				},
+			},
+		},
+
+		MetaUpgradeStateEquipped = {
+			"ChanneledCast",
+			"LowManaDamageBonus",
+			"CastCount",
+			"SorceryRegenUpgrade",
+			"CastBuff",
+			"BonusDodge",
+			"MagicCrit",
+			"MaxHealthPerRoom",
+			"StatusVulnerability",
+			"RarityBoost",
+			"LowHealthBonus",
+		},
+
+		ShrineUpgradesActive = {
+			EnemyDamageShrineUpgrade = 3,
+			EnemySpeedShrineUpgrade = 2,
+		},
+
+		UnlockGameStateRequirements = {
+			-- Biome and Shrine unlocks
+			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusTisiphone", "ShrineUnlocked" },
+			-- Bounty progress
+			{
+				Path = { "GameState", "PackagedBountyClears" },
+				HasAny = { "PackageBountyChaosIntro", "PackageBountyOceanus", "PackageBountyStarter", },
+			},
+			-- Weapon
+			{
+				Path = { "GameState", "WeaponsUnlocked", },
+				HasAll = { "WeaponAxe", "AxePerfectCriticalAspect", },
+			},
+			-- Keepsake
+			{
+				PathTrue = { "GameState", "GiftPresentation", "TimedBuffKeepsake", },
+			},
+			-- Familiar
+			{
+				PathTrue = { "GameState", "FamiliarsUnlocked", "FrogFamiliar", },
+			},
+			-- FirstLoot
+			{
+				Path = { "GameState", "TextLinesRecord", },
+				HasAll = { "AresFirstPickUp", "HeraFirstPickUp" },
+			},
+			-- MetaUpgrades
+			{
+				Path = { "GameState", "MetaUpgradeLimitLevel", },
+				Comparison = ">=",
+				Value = 10,
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "ChanneledCast", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "LowManaDamageBonus", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "CastCount", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "SorceryRegenUpgrade", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "CastBuff", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "BonusDodge", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "MagicCrit", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "MaxHealthPerRoom", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "StatusVulnerability", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "RarityBoost", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "LowHealthBonus", "Unlocked" },
+			},
+		},
+	},
 	-- Trial of Family
 	{
 		Name = "ModsNikkelMHadesBiomes_PackageBountyFamily",
-		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyAggression",
 		InheritFrom = { "DefaultPackagedBounty", "ModsNikkelMHadesBiomes_BasePackageBountyBiomeStyx", },
 
 		Text = "ModsNikkelMHadesBiomes_PackageBountyFamily",
@@ -1222,9 +1400,11 @@ local newTargetedBiomeBounties = {
 			RunProgress = {
 				{
 					Name = "MaxHealthDrop",
+					GameStateRequirements = {},
 				},
 				{
 					Name = "MaxManaDrop",
+					GameStateRequirements = {},
 				},
 				{
 					Name = "Boon",
