@@ -1279,7 +1279,7 @@ local newTargetedBiomeBounties = {
 
 		ShrineUpgradesActive = {
 			EnemyDamageShrineUpgrade = 3,
-			EnemySpeedShrineUpgrade = 3,
+			EnemySpeedShrineUpgrade = 2,
 		},
 
 		UnlockGameStateRequirements = {
