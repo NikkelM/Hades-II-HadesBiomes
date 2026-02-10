@@ -979,6 +979,8 @@ local enemyModifications = {
 			FuryDarknessReaction01 = {
 				RequiredActiveMetaPointsMin = 30,
 			},
+		},
+		BossPresentationTextLineSets = {
 			FuryWinStreak02 = {
 				RequiredActiveMetaPointsMin = 18,
 			},

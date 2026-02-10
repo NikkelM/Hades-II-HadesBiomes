@@ -9,6 +9,7 @@
 Other fixes and improvements:
 - Added some missing subtitles for Charon.
 - Balancing: Strongbow enemies can no longer appear in Asphodel through the Vow of Menace, as they were prone to retreat into lava and die.
+- Fixed: In some cases, entering Megaera's boss fight room would not play any dialogue before the fight starts.
 - Fixed: Allied units remain alive after defeating a boss.
 - Fixed: Some room reward types are misaligned on the preview for some doors.
 <!--Releasenotes end-->
