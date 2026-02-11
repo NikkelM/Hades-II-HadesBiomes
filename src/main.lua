@@ -432,6 +432,7 @@ local function on_ready()
 			import "Scripts/QuestData.lua"
 			import "Scripts/RunClearData.lua"
 			import "Scripts/RunHistoryData.lua"
+			import "Scripts/WeaponUpgradeData.lua"
 			import "Scripts/WorldUpgradeData.lua"
 			DebugLogScriptImportProgress("other required Data files")
 
@@ -562,6 +563,7 @@ local function on_ready_late()
 	import "Scripts/ObjectiveLogic_Late.lua"
 	import "Scripts/RoomLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
+	import "Scripts/WeaponUpgradeLogic_Late.lua"
 end
 
 local function on_reload()

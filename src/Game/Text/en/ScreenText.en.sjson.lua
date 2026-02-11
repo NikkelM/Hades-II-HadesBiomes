@@ -127,6 +127,17 @@ local newData = {
 		OverwriteLocalization = true,
 	},
 	-- #endregion
+
+	-- #region WeaponUpgrade (Silver Pool/Aspect selection) stats screen
+	{
+		Id = "WeaponUpgradeScreen_ClearTimeRecord_ModsNikkelMHadesBiomesModdedRoute",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor} Swiftest Victory:",
+	},
+	{
+		Id = "WeaponUpgradeScreen_ShrinePointRecord_ModsNikkelMHadesBiomesModdedRoute",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor} Highest {!Icons.ShrinePoint}{#BoldFormatGraft}Fear{#Prev}:",
+	},
+	-- #endregion
 }
 
 sjson.hook(screenTextFile, function(data)
