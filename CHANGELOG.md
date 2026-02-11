@@ -8,6 +8,7 @@
 - Added new Chaos Trials that equip you with a preset loadout and challenge you to fight through a specific biome from Zagreus' Journey.
 
 Other fixes and improvements:
+- The Silver Pool now shows the fastest and highest fear clear for each weapon for Zagreus' Journey runs alongside the Underworld and Surface statistics in the Aspect selection menu.
 - Added some missing subtitles for Charon.
 - The mod will now show a warning screen if it detects incompatible mods. Please go to [github.com/NikkelM/Hades-II-HadesBiomes/wiki/Incompatible-Mods](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Incompatible-Mods) to see the current list of incompatible mods.
 - Added `ellomenop-SortedStatScreen` to the list of incompatible mods.

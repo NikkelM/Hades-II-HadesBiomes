@@ -97,6 +97,18 @@ local newData = {
 	-- 	"The game was {#DialogLegendaryFormat}unable to load {#Prev}some files required by {#DialogLegendaryFormat}Zagreus\' Journey{#Prev}!\n\nThis means that the game may crash, enemies not deal damage, or assets not load.\n\nAs a workaround, {#DialogLegendaryFormat}restarting the game should fix this{#Prev}! If not, try reinstalling the mod by setting {#DialogLegendaryFormat}firstTimeSetup {#Prev}and {#DialogLegendaryFormat}uninstall {#Prev} to {#DialogLegendaryFormat}true {#Prev}in the mod config.\n\nIf the issue persists, please start a discussion on\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nand attach the log file from {#DialogLegendaryFormat}Settings -> Copy log file {#Prev}in your mod manager.",
 	-- },
 	-- #endregion
+
+	-- #region WeaponUpgrade (Silver Pool/Aspect selection) stats screen
+	{
+		Id = "WeaponUpgradeScreen_ClearTimeRecord_ModsNikkelMHadesBiomesModdedRoute",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor} Vittoria Più Celere:",
+	},
+	{
+		Id = "WeaponUpgradeScreen_ShrinePointRecord_ModsNikkelMHadesBiomesModdedRoute",
+		DisplayName =
+		"{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor} {!Icons.ShrinePoint}{#BoldFormatGraft}Terrore {#Prev}Provato:",
+	},
+	-- #endregion
 }
 
 sjson.hook(screenTextFile, function(data)
