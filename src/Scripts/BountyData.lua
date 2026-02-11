@@ -1413,6 +1413,18 @@ local newTargetedBiomeBounties = {
 					Name = "Boon",
 					ForceLootName = "ApolloUpgrade",
 					AllowDuplicates = true,
+					GameStateRequirements = {
+						{
+							Path = { "CurrentRun", "LootTypeHistory", "HestiaUpgrade" },
+							Comparison = ">=",
+							Value = 5,
+						}
+					},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "HestiaUpgrade",
+					AllowDuplicates = true,
 					GameStateRequirements = {},
 				},
 				{
