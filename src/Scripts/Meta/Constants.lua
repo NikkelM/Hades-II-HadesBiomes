@@ -7,6 +7,7 @@ mod.TableValue = {}
 mod.DefaultHiddenConfig = {
 	HasShownSuccessfulInstallScreen = false,
 	IsValidInstallation = false,
+	MustShowIncompatibleModsInstallScreen = false,
 	InstallationFailReason = "",
 	MustShowUninstallFailureScreen = false,
 	-- For debugging purposes

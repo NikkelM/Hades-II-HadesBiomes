@@ -515,6 +515,16 @@ local function on_ready()
 				mod.HiddenConfig.IsValidInstallation = true
 				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 
+				-- Check for any incompatible installed mods to display a warning to the user
+				if mod.AreIncompatibleModsInstalled() then
+					mod.HiddenConfig.MustShowIncompatibleModsInstallScreen = true
+					mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+
+					mod.DebugPrint(
+						"Incompatible mods have been detected, see the logs above for the most likely candidates. Please visit github.com/NikkelM/Hades-II-HadesBiomes/wiki/Incompatible-Mods and uninstall all listed incompatible mods.",
+						1)
+				end
+
 				mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)
 			end
 		else

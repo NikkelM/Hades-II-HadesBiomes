@@ -41,6 +41,25 @@ function mod.ConfirmHadesInstallation()
 	return true
 end
 
+function mod.AreIncompatibleModsInstalled()
+	-- Thunderstore mod dependency strings (without versions) of incompatible mods
+	local incompatibleModDependencyStrings = {
+		"ellomenop-SortedStatScreen",
+	}
+
+	local anyIncompatible = false
+	local mods = rom.mods
+	for _, modDependencyString in ipairs(incompatibleModDependencyStrings) do
+		if mods[modDependencyString] then
+			anyIncompatible = true
+			mod.DebugPrint("The mod detected that you have a potentially incompatible mod installed: " .. modDependencyString,
+				1)
+		end
+	end
+
+	return anyIncompatible
+end
+
 -- Compare the contents of plugins_data/checksums.txt and Content/Scripts/checksums.txt
 -- If they differ, the game has likely updated and the mod needs to be re-installed
 function mod.CompareChecksums()
@@ -201,16 +220,21 @@ OnAnyLoad {
 				-- Workaround to have this show up now, but not again on the next game start
 				mod.HiddenConfig.MustShowUninstallFailureScreen = true
 				mod.OpenModInstallScreen(mod.HiddenConfig)
+				-- Don't need to save to the file as it's already saved above
 				mod.HiddenConfig.MustShowUninstallFailureScreen = false
 			else
-				-- If we haven't shown the install screen yet, or the installation is invalid
-				if (not mod.HiddenConfig.HasShownSuccessfulInstallScreen) or (not mod.HiddenConfig.IsValidInstallation) then
+				-- If we haven't shown the install screen yet, or the installation is invalid, or we must show the warning about incompatible mods
+				if not mod.HiddenConfig.HasShownSuccessfulInstallScreen or not mod.HiddenConfig.IsValidInstallation or mod.HiddenConfig.MustShowIncompatibleModsInstallScreen then
 					-- Update the config with the type of screen we are showing
 					-- Do it before showing the screen to also have this saved if the user closes the game without closing the screen first
 					mod.HiddenConfig.HasShownSuccessfulInstallScreen = mod.HiddenConfig.IsValidInstallation
 					mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 
 					mod.OpenModInstallScreen(mod.HiddenConfig)
+					if mod.HiddenConfig.MustShowIncompatibleModsInstallScreen then
+						mod.HiddenConfig.MustShowIncompatibleModsInstallScreen = false
+						mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+					end
 				end
 			end
 		end
@@ -228,7 +252,12 @@ function mod.OpenModInstallScreen(args)
 	elseif args.MustShowUninstallFailureScreen then
 		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesUninstallFailure) or {}
 	elseif args.IsValidInstallation then
-		screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess) or {}
+		if args.MustShowIncompatibleModsInstallScreen then
+			-- Mods that are marked as incompatible with Zagreus' Journey are installed
+			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailureIncompatibleModsInstalled) or {}
+		else
+			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess) or {}
+		end
 	else
 		if args.InstallationFailReason == "NoHadesInstallationFound" then
 			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailureHadesNotFound) or {}
