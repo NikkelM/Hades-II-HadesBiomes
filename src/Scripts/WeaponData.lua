@@ -916,6 +916,8 @@ local weaponModifications = {
 			AIMoveWithinRangeTimeout = 1.0,
 			PostAttackDuration = 0.5,
 			FireRotationDampening = 0.01,
+			-- Is set through the enemy DefaultAIData, otherwise small heads also move to the center for their attacks
+			MoveToId = mod.NilValue,
 		},
 	},
 	HydraDartVolley = {
