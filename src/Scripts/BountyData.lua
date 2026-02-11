@@ -1548,10 +1548,226 @@ local newTargetedBiomeBounties = {
 			},
 		},
 	},
+	-- Trial of Heavens
+	{
+		Name = "ModsNikkelMHadesBiomes_PackageBountyHeavens",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyFire",
+		InheritFrom = { "DefaultPackagedBounty", "ModsNikkelMHadesBiomes_BasePackageBountyBiomeElysium", },
+
+		Text = "ModsNikkelMHadesBiomes_PackageBountyHeavens",
+
+		DifficultyRating = 2,
+
+		WeaponKitName = "WeaponSuit",
+		WeaponUpgradeName = "SuitHexAspect", -- Aspect of Selene
+		KeepsakeName = "SpellTalentKeepsake", -- Moon Beam
+		FamiliarName = "RavenFamiliar",     -- Raki
+
+		RunOverrides = {
+			MaxGodsPerRun = 2,
+			LootTypeHistory = {
+				ZeusUpgrade = 2,
+				AphroditeUpgrade = 3,
+				HermesUpgrade = 1,
+				WeaponUpgrade = 2,
+			},
+		},
+
+		StartingTraits = {
+			{ Name = "AphroditeWeaponBoon",      Rarity = "Heroic", },
+			{ Name = "ZeusSpecialBoon",          Rarity = "Heroic", },
+			{ Name = "AphroditeManaBoon",        Rarity = "Heroic", },
+			{ Name = "EchoExpirationBoon",       Rarity = "Heroic", },
+			{ Name = "HighHealthOffenseBoon",    Rarity = "Heroic", },
+			{ Name = "HermesSpecialBoon",        Rarity = "Heroic", },
+			{ Name = "SuitSpecialBlockTrait" },
+			{ Name = "SuitFullChargeTrait" },
+			{ Name = "RoomRewardMaxHealthTrait", },
+			{ Name = "RoomRewardMaxHealthTrait", },
+			{ Name = "RoomRewardMaxManaTrait", },
+			{ Name = "RoomRewardMaxManaTrait", },
+			{ Name = "RoomRewardMaxManaTrait", },
+			{ Name = "RoomRewardMaxManaTrait", },
+			{ Name = "RoomRewardMaxManaTrait", },
+			{ Name = "RoomRewardMaxManaTrait", },
+		},
+
+		RewardStoreOverrides = {
+			RunProgress = {
+				{
+					Name = "RoomMoneyDrop",
+					GameStateRequirements = {},
+				},
+				{
+					Name = "RoomMoneyDrop",
+					GameStateRequirements = {},
+				},
+				{
+					Name = "TalentDrop",
+					GameStateRequirements = {
+						{
+							PathFalse = { "CurrentRun", "AllSpellInvestedCache", },
+						},
+					},
+				},
+				{
+					Name = "TalentDrop",
+					GameStateRequirements = {
+						{
+							PathFalse = { "CurrentRun", "AllSpellInvestedCache", },
+						},
+					},
+				},
+				{
+					Name = "TalentDrop",
+					GameStateRequirements = {
+						{
+							PathFalse = { "CurrentRun", "AllSpellInvestedCache", },
+						},
+					},
+				},
+				{
+					Name = "TalentDrop",
+					GameStateRequirements = {
+						{
+							PathFalse = { "CurrentRun", "AllSpellInvestedCache", },
+						},
+					},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "AphroditeUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "AphroditeUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "AphroditeUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "ZeusUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "ZeusUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "ZeusUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+			},
+		},
+
+		MetaUpgradeStateEquipped = {
+			"ChanneledCast",
+			"HealthRegen",
+			"LowManaDamageBonus",
+			"CastCount",
+			"SorceryRegenUpgrade",
+			"CastBuff",
+			"BonusHealth",
+			"ManaOverTime",
+			"MagicCrit",
+			"MaxHealthPerRoom",
+			"StatusVulnerability",
+			"ChanneledBlock",
+			"LowHealthBonus",
+			"EpicRarityBoost",
+		},
+
+		ShrineUpgradesActive = {},
+
+		UnlockGameStateRequirements = {
+			-- Biome and Shrine unlocks
+			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyBiomeElysium", },
+			-- Bounty progress
+			{
+				Path = { "GameState", "PackagedBountyClears" },
+				HasAny = { "PackageBountyChaosIntro", "PackageBountyOceanus", "PackageBountyStarter", },
+			},
+			-- Weapon
+			{
+				Path = { "GameState", "WeaponsUnlocked", },
+				HasAll = { "WeaponSuit", "SuitHexAspect", },
+			},
+			-- Keepsake
+			{
+				PathTrue = { "GameState", "GiftPresentation", "SpellTalentKeepsake", },
+			},
+			-- FirstLoot
+			{
+				Path = { "GameState", "TextLinesRecord", },
+				HasAll = { "SeleneFirstPickUp", "AphroditeFirstPickUp", "ZeusFirstPickUp" },
+			},
+			-- MetaUpgrades
+			{
+				Path = { "GameState", "MetaUpgradeLimitLevel", },
+				Comparison = ">=",
+				Value = 10,
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "ChanneledCast", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "HealthRegen", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "LowManaDamageBonus", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "CastCount", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "SorceryRegenUpgrade", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "CastBuff", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "BonusHealth", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "ManaOverTime", "Unlocked", },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "MagicCrit", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "MaxHealthPerRoom", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "StatusVulnerability", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "ChanneledBlock", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "LowHealthBonus", "Unlocked" },
+			},
+			{
+				PathTrue = { "GameState", "MetaUpgradeState", "EpicRarityBoost", "Unlocked" },
+			},
+		},
+	},
 	-- Trial of Family
 	{
 		Name = "ModsNikkelMHadesBiomes_PackageBountyFamily",
-		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyAggression",
+		ModsNikkelMHadesBiomesInsertAfterBounty = "ModsNikkelMHadesBiomes_PackageBountyHeavens",
 		InheritFrom = { "DefaultPackagedBounty", "ModsNikkelMHadesBiomes_BasePackageBountyBiomeStyx", },
 
 		Text = "ModsNikkelMHadesBiomes_PackageBountyFamily",

@@ -1562,6 +1562,16 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_PackageBountyFire_Short",
 		DisplayName = "Trial of Fire",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyHeavens",
+		DisplayName = "Trial of Heavens",
+		Description =
+		"Mark Exalted Shades with Selene's touch, then obliterate them with the aid of the King of the Olympians in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_PackageBountyHeavens_Short",
+		DisplayName = "Trial of Heavens",
+	},
 	-- #endregion
 	-- #endregion
 }
