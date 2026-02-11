@@ -9,7 +9,10 @@
 
 Other fixes and improvements:
 - Added some missing subtitles for Charon.
+- The mod will now show a warning screen if it detects incompatible mods. Please go to [github.com/NikkelM/Hades-II-HadesBiomes/wiki/Incompatible-Mods](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Incompatible-Mods) to see the current list of incompatible mods.
+- Added `ellomenop-SortedStatScreen` to the list of incompatible mods.
 - Balancing: Strongbow enemies can no longer appear in Asphodel through the Vow of Menace, as they were prone to retreat into lava and die.
+- Fixed: Howling Soul's Cast can be embedded in Skull-Crushers, potentially preventing them from launching into the air.
 - Fixed: Small "Dart" Hydra heads spawned during the Asphodel boss fight move to the center of the arena before some attacks, instead of to their spawn points.
 - Fixed: Some projectiles are not excluded from slow effects.
 - Fixed: Charon's sack of Gold always has a chance to appear in mid-shops, even when it should not be eligible.
