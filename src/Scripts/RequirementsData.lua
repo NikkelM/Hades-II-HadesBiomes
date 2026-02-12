@@ -63,7 +63,7 @@ local newNamedRequirements = {
 	},
 	ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusAlecto = {
 		-- So the room is always eligible in the base game
-		-- Not checking for Sisyphys since his room is blocked in bounty runs
+		-- Not checking for Sisyphus since his room is blocked in bounty runs
 		{
 			Path = { "GameState", "TextLinesRecord" },
 			HasAll = { "HermesFirstPickUp", "ChaosFirstPickUp" }
@@ -76,7 +76,7 @@ local newNamedRequirements = {
 	},
 	ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusTisiphone = {
 		-- So the room is always eligible in the base game
-		-- Not checking for Sisyphys since his room is blocked in bounty runs
+		-- Not checking for Sisyphus since his room is blocked in bounty runs
 		{
 			Path = { "GameState", "TextLinesRecord" },
 			HasAll = { "HermesFirstPickUp", "ChaosFirstPickUp" }
@@ -88,6 +88,10 @@ local newNamedRequirements = {
 		},
 	},
 	ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusAll = {
+		{
+			Path = { "GameState", "TextLinesRecord" },
+			HasAll = { "HermesFirstPickUp", "ChaosFirstPickUp" }
+		},
 		{
 			Path = { "GameState", "EncountersCompletedCache" },
 			HasAll = { "BossHarpy1", "BossHarpy2", "BossHarpy3" },
