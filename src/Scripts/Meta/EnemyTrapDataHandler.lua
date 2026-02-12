@@ -9,7 +9,8 @@ function mod.ModifyEnemyTrapData(enemyData)
 	game.EnemyData.SpikeTrap.DefaultAIData.PostAttackAnimation = "HadesSpikeTrapPressed"
 	game.EnemyData.SpikeTrap.DefaultAIData.DisabledAnimation = "HadesSpikeTrapDeactivated"
 	-- We need to flip this with the room, as we need for the AxeTraps
-	game.EnemyData.SpikeTrap.DefaultAIData.PreAttackFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCheckFlipTrapWithRoom"
+	game.EnemyData.SpikeTrap.DefaultAIData.PreAttackFunctionName = _PLUGIN.guid ..
+			"." .. "ModsNikkelMHadesBiomesCheckFlipTrapWithRoom"
 	game.EnemyData.SpikeTrap.ModsNikkelMHadesBiomesFlipIfRoomFlipped = true
 
 	enemyData.DartTrap = {
@@ -91,7 +92,7 @@ function mod.ModifyEnemyTrapData(enemyData)
 end
 
 -- For the PhalanxTrap/SpearTrap in Elysium
-function mod.AttackOnlyGroups(enemy, currentRun)
+function mod.AttackOnlyGroups(enemy)
 	if enemy.IdleAnimation ~= nil then
 		SetAnimation({ Name = enemy.IdleAnimation, DestinationId = enemy.ObjectId })
 	end
@@ -254,9 +255,16 @@ function mod.AttackOnlyGroups(enemy, currentRun)
 end
 
 -- For the ArcherTrap in Elysium among others
-function mod.PassiveAttack(enemy, currentRun)
+function mod.PassiveAttack(enemy)
 	enemy.WeaponName = enemy.WeaponName or game.SelectWeapon(enemy)
 	local weaponAIData = game.GetWeaponAIData(enemy) or {}
+
+	if game.CurrentRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.Encounter and game.CurrentRun.CurrentRoom.Encounter.Completed then
+		if enemy.DisabledAnimation ~= nil then
+			SetAnimation({ Name = enemy.DisabledAnimation, DestinationId = enemy.ObjectId })
+		end
+		return
+	end
 
 	if weaponAIData.PreAttackAnimation ~= nil then
 		SetAnimation({ Name = weaponAIData.PreAttackAnimation, DestinationId = enemy.ObjectId })

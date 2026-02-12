@@ -16,6 +16,7 @@ Other fixes and improvements:
 - Fixed: Howling Soul's Cast can be embedded in Skull-Crushers, potentially preventing them from launching into the air.
 - Fixed: Small "Dart" Hydra heads spawned during the Asphodel boss fight move to the center of the arena before some attacks, instead of to their spawn points.
 - Fixed: Some projectiles are not excluded from slow effects.
+- Fixed: The Elysium Archer Trap plays a pre-attack animation before being disabled when loading into a room with a completed encounter.
 - Fixed: Charon's sack of Gold always has a chance to appear in mid-shops, even when it should not be eligible.
 - Fixed: In some cases, entering Megaera's boss fight room would not play any dialogue before the fight starts.
 - Fixed: Parts of room reward preview animations overlays on top of shop screens.
