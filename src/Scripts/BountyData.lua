@@ -1868,7 +1868,7 @@ local newTargetedBiomeBounties = {
 
 		UnlockGameStateRequirements = {
 			-- Biome and Shrine unlocks
-			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyBiomeStyx", "ShrineUnlocked", "ModsNikkelMHadesBiomesHadesEM4Beaten" },
+			NamedRequirements = { "ModsNikkelMHadesBiomes_PackageBountyBiomeStyx", "ShrineUnlocked" },
 			-- Bounty progress
 			{
 				Path = { "GameState", "PackagedBountyClears" },
