@@ -278,7 +278,7 @@ modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, ne
 	local isForced = base(currentRun, currentRoom, nextRoomData, args, otherDoors)
 
 	-- Only check if we need to force the room if it isn't forced already
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and not isForced then
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and not isForced then
 		-- Force a miniboss if the current wing should have one, and we've either seen the fountain room already, or can force it in another wing
 		if currentRoom ~= nil and currentRoom.ForceWingEndMiniBoss and nextRoomData.WingEndMiniBoss and (currentRun.CompletedStyxWings < 4 or mod.HasSeenRoomInRun(currentRun, "D_Reprieve01")) then
 			return true
@@ -286,29 +286,28 @@ modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, ne
 
 		-- Randomly force the next room to be a fountain room, with a 100% chance if this is the last wing
 		if nextRoomData.ForceChanceByRemainingWings then
-			if config.z_SpeedrunForceTwoSack then
+			if config.z_SpeedrunForceTwoSack and not currentRun.ModsNikkelMHadesBiomesForceStyxFountainDepth then
 				-- If the config option is enabled, always force the fountain room in the second wing
 				if currentRun.CompletedStyxWings == 1 then
 					mod.DebugPrint("Forcing fountain room in Styx wing 2 due to config option.", 2)
 					return true
 				end
 			end
-			local chance = 1 / (5 - currentRun.CompletedStyxWings)
-			if game.RandomChance(chance) then
-				return true
+			-- If the current run (most likely a bounty) has a forced fountain room depth set, only allow the fountain if the depth has been met
+			-- E.g. a value of 2 means the second wing end will be the fountain room (one wing has been completed)
+			-- Can be between 1 and 5, where 5 means the fountain will be forced in the final room
+			if currentRun.ModsNikkelMHadesBiomesForceStyxFountainDepth ~= nil then
+				if currentRun.CompletedStyxWings >= currentRun.ModsNikkelMHadesBiomesForceStyxFountainDepth - 1 then
+					return true
+				end
+			else
+				local chance = 1 / (5 - currentRun.CompletedStyxWings)
+				if game.RandomChance(chance) then
+					return true
+				end
 			end
 		end
 	end
 
 	return isForced
 end)
-
--- We don't need this anymore as all the crashes have been fixed
--- Don't invalidate checkpoints in modded runs, as we still have some crashes every now and then that could reset run progress
--- modutil.mod.Path.Wrap("InvalidateCheckpoint", function(base)
--- 	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
--- 		ValidateCheckpoint({ Value = true })
--- 	else
--- 		base()
--- 	end
--- end)

@@ -18,6 +18,7 @@ game.NamedRequirementsData.StandardPackageBountyActive[2].IsNone = game.ConcatTa
 
 -- #region New requirements
 local newNamedRequirements = {
+	-- #region GENERAL
 	-- Can't get a Hades bounty if the next encounter would be BossHadesPeaceful
 	ModsNikkelMHadesBiomesStyxBossBountyLockedByEnding = {
 		{
@@ -28,6 +29,95 @@ local newNamedRequirements = {
 		},
 		{
 			PathFalse = { "GameState", "TextLinesRecord", "PersephoneReturnsHome01" },
+		},
+	},
+	-- Has beaten Hades on EM4
+	ModsNikkelMHadesBiomesHadesEM4Beaten = {
+		OrRequirements = {
+			{
+				-- Using this instead of the textline as the textline may be delayed by the first clear dialogue
+				{
+					Path = { "GameState", "ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades", "Styx", "BossDifficultyShrineUpgrade" },
+					Comparison = ">=",
+					Value = 4,
+				},
+			},
+			{
+				-- For backwards compatibility of saves that have already beaten EM4 before the dialogue was patched to be delayed
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "LordHadesExtremeMeasuresDefeat01" },
+				},
+			},
+		},
+	},
+	-- #endregion
+
+	-- #region Bounties/Chaos Trials
+	-- For normal packaged bounty unlocks, must have completed the relevant biome/beaten it's boss
+	ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusMegaera = {
+		{
+			Path = { "GameState", "EncountersCompletedCache", "BossHarpy1" },
+			Comparison = ">=",
+			Value = 1
+		},
+	},
+	ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusAlecto = {
+		-- So the room is always eligible in the base game
+		-- Not checking for Sisyphys since his room is blocked in bounty runs
+		{
+			Path = { "GameState", "TextLinesRecord" },
+			HasAll = { "HermesFirstPickUp", "ChaosFirstPickUp" }
+		},
+		{
+			Path = { "GameState", "EncountersCompletedCache", "BossHarpy2" },
+			Comparison = ">=",
+			Value = 1
+		},
+	},
+	ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusTisiphone = {
+		-- So the room is always eligible in the base game
+		-- Not checking for Sisyphys since his room is blocked in bounty runs
+		{
+			Path = { "GameState", "TextLinesRecord" },
+			HasAll = { "HermesFirstPickUp", "ChaosFirstPickUp" }
+		},
+		{
+			Path = { "GameState", "EncountersCompletedCache", "BossHarpy3" },
+			Comparison = ">=",
+			Value = 1
+		},
+	},
+	ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusAll = {
+		{
+			Path = { "GameState", "EncountersCompletedCache" },
+			HasAll = { "BossHarpy1", "BossHarpy2", "BossHarpy3" },
+		},
+	},
+	-- Are Alecto/Tisiphone eligible for Vow of Rivals/Extreme Measures for bounties
+	ModsNikkelMHadesBiomes_PackageBountyBiomeTartarusExtremeMeasuresAltFights = {
+		-- Alternate fury EM fights are only eligible after having met Meg with the other furies
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "FurySistersUnion01" },
+		},
+	},
+	ModsNikkelMHadesBiomes_PackageBountyBiomeAsphodel = {
+		{
+			Path = { "GameState", "EncountersCompletedCache", "BossHydra" },
+			Comparison = ">=",
+			Value = 1
+		},
+	},
+	ModsNikkelMHadesBiomes_PackageBountyBiomeElysium = {
+		{
+			Path = { "GameState", "EncountersCompletedCache", "BossTheseusAndMinotaur" },
+			Comparison = ">=",
+			Value = 1
+		},
+	},
+	-- Styx is special as we only allow packaged bounties after completing the story
+	ModsNikkelMHadesBiomes_PackageBountyBiomeStyx = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
 		},
 	},
 	-- To be able to unlock the new randomized Chaos Trials
@@ -128,6 +218,7 @@ local newNamedRequirements = {
 			},
 		},
 	},
+	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.NamedRequirementsData, newNamedRequirements)
 -- #endregion

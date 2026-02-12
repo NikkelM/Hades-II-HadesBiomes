@@ -709,6 +709,12 @@ local roomModifications = {
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
+		GameStateRequirements = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "IsTartarusBossRoomEligible",
+				FunctionArgs = { BossRoom = "A_Boss01", },
+			},
+		},
 		-- Replaces MegaeraHome_ with Megaera_3 voicelines
 		UnthreadedEvents = {
 			[1] = {
@@ -739,6 +745,10 @@ local roomModifications = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		GameStateRequirements = {
 			RequiredKills = { Harpy = 4 },
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "IsTartarusBossRoomEligible",
+				FunctionArgs = { BossRoom = "A_Boss02", },
+			},
 		},
 		UnthreadedEvents = {
 			[1] = {
@@ -759,6 +769,10 @@ local roomModifications = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		GameStateRequirements = {
 			RequiredKills = { Harpy = 4 },
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "IsTartarusBossRoomEligible",
+				FunctionArgs = { BossRoom = "A_Boss03", },
+			},
 		},
 		UnthreadedEvents = {
 			[1] = {

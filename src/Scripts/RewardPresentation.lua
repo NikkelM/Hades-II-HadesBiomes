@@ -57,6 +57,10 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			TalentDrop = {
 				doorIconScale = -0.2,
 			},
+			-- Start Dust
+			Mixer5CommonDrop = {
+				doorIconScale = -0.1,
+			},
 			-- The below are for Styx and Erebus doors
 			RoomMoneyBigDrop = {
 				doorIconScale = -0.1,

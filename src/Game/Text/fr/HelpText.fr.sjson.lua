@@ -1482,6 +1482,7 @@ local newData = {
 	-- #endregion
 
 	-- #region Chaos Trials/Bounties
+	-- #region Randomized Bounties
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty1",
 	-- 	DisplayName = "Chaos Within",
@@ -1512,6 +1513,49 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyRandom_Difficulty3_Short",
 	-- 	DisplayName = "Greater Chaos Within",
 	-- },
+	-- #endregion
+	-- #region Normal packaged bounties
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyFamily",
+	-- 	DisplayName = "Trial of Family",
+	-- 	Description =
+	-- 	"Channel the power of your brother, mother and grandmother to stand against your father in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyFamily_Short",
+	-- 	DisplayName = "Trial of Family",
+	-- },	
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyAggression",
+	-- 	DisplayName = "Trial of Aggression",
+	-- 	Description =
+	-- 	"Be swift and decisive as you make your way through emboldened wretches to face the most destructive of the Fury Sisters in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyAggression_Short",
+	-- 	DisplayName = "Trial of Aggression",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyFire",
+	-- 	DisplayName = "Trial of Fire",
+	-- 	Description =
+	-- 	"Combine the powers of the Goddess of Hearth and the Umbral Flames to unlock your full potential as the fire-stepping Princess in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyFire_Short",
+	-- 	DisplayName = "Trial of Fire",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyHeavens",
+	-- 	DisplayName = "Trial of Heavens",
+	-- 	Description =
+	-- 	"Mark Exalted Shades with Selene's touch, then obliterate them with the aid of the King of the Olympians in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PackageBountyHeavens_Short",
+	-- 	DisplayName = "Trial of Heavens",
+	-- },
+	-- #endregion
 	-- #endregion
 }
 

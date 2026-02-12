@@ -5,6 +5,7 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - The Archivist now shows run clear statistics for Zagreus' Journey runs; for each Weapon Aspect, Boon, Hammer and Keepsake.
+- Added new Chaos Trials that equip you with a preset loadout and challenge you to fight through a specific biome from Zagreus' Journey.
 
 Other fixes and improvements:
 - The Silver Pool now shows the fastest and highest fear clear for each weapon for Zagreus' Journey runs alongside the Underworld and Surface statistics in the Aspect selection menu.
@@ -20,6 +21,7 @@ Other fixes and improvements:
 - Fixed: Parts of room reward preview animations overlays on top of shop screens.
 - Fixed: Allied units remain alive after defeating a boss.
 - Fixed: Some room reward types are misaligned on the preview for some doors.
+- Fixed: The position of the "Chaos Within" trials in the list in the Pitch-Black Stone is incorrect.
 <!--Releasenotes end-->
 
 ## v0.5.0

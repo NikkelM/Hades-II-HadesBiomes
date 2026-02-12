@@ -621,22 +621,7 @@ local newQuestData = {
 			NamedRequirements = { "ShrineUnlocked" },
 		},
 		CompleteGameStateRequirements = {
-			OrRequirements = {
-				{
-					-- Using this instead of the textline as the textline may be delayed by the first clear dialogue
-					{
-						Path = { "GameState", "ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades", "Styx", "BossDifficultyShrineUpgrade" },
-						Comparison = ">=",
-						Value = 4,
-					},
-				},
-				{
-					-- For backwards compatibility of saves that have already beaten EM4 before the dialogue was patched to be delayed
-					{
-						PathTrue = { "GameState", "TextLinesRecord", "LordHadesExtremeMeasuresDefeat01" },
-					},
-				},
-			},
+			NamedRequirements = { "ModsNikkelMHadesBiomesHadesEM4Beaten" },
 		},
 		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun_Condition",
 		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun_Cleared",
