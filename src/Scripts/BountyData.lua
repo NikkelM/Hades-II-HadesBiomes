@@ -1209,18 +1209,6 @@ local newTargetedBiomeBounties = {
 					GameStateRequirements = {},
 				},
 				{
-					Name = "StackUpgrade",
-					GameStateRequirements = {
-						NamedRequirements = { "StackUpgradeLegal", },
-					}
-				},
-				{
-					Name = "StackUpgrade",
-					GameStateRequirements = {
-						NamedRequirements = { "StackUpgradeLegal", },
-					}
-				},
-				{
 					Name = "MaxManaDrop",
 					GameStateRequirements = {},
 				},
@@ -1233,6 +1221,18 @@ local newTargetedBiomeBounties = {
 				{
 					Name = "Boon",
 					ForceLootName = "HeraUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "HeraUpgrade",
+					AllowDuplicates = true,
+					GameStateRequirements = {},
+				},
+				{
+					Name = "Boon",
+					ForceLootName = "AresUpgrade",
 					AllowDuplicates = true,
 					GameStateRequirements = {},
 				},
@@ -1279,7 +1279,9 @@ local newTargetedBiomeBounties = {
 
 		ShrineUpgradesActive = {
 			EnemyDamageShrineUpgrade = 3,
+			EnemyHealthShrineUpgrade = 1,
 			EnemySpeedShrineUpgrade = 2,
+			EnemyEliteShrineUpgrade = 2,
 			BiomeSpeedShrineUpgrade = 3,
 		},
 
@@ -1592,6 +1594,11 @@ local newTargetedBiomeBounties = {
 			{ Name = "RoomRewardMaxManaTrait", },
 		},
 
+		ForcedRewards = {
+			{
+				Name = "SpellDrop",
+			},
+		},
 		RewardStoreOverrides = {
 			RunProgress = {
 				{
@@ -1601,6 +1608,14 @@ local newTargetedBiomeBounties = {
 				{
 					Name = "RoomMoneyDrop",
 					GameStateRequirements = {},
+				},
+				{
+					Name = "SpellDrop",
+					GameStateRequirements = {
+						{
+							PathFalse = { "CurrentRun", "AllSpellInvestedCache", },
+						},
+					},
 				},
 				{
 					Name = "TalentDrop",
