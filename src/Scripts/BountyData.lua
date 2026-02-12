@@ -1594,11 +1594,6 @@ local newTargetedBiomeBounties = {
 			{ Name = "RoomRewardMaxManaTrait", },
 		},
 
-		ForcedRewards = {
-			{
-				Name = "SpellDrop",
-			},
-		},
 		RewardStoreOverrides = {
 			RunProgress = {
 				{
@@ -1608,14 +1603,6 @@ local newTargetedBiomeBounties = {
 				{
 					Name = "RoomMoneyDrop",
 					GameStateRequirements = {},
-				},
-				{
-					Name = "SpellDrop",
-					GameStateRequirements = {
-						{
-							PathFalse = { "CurrentRun", "AllSpellInvestedCache", },
-						},
-					},
 				},
 				{
 					Name = "TalentDrop",
