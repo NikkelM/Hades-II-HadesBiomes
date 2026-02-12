@@ -13054,7 +13054,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 					-- Awaken, wretches, and fight once more upon this surface-realm where you were slain!
 					{ Cue = "/VO/HadesField_0395" },
 					-- Heed now my summons, wretches, and come bring my wayward son down to your depths!
-					{ Cue = "/VO/HadesField_0396" },
+					-- { Cue = "/VO/HadesField_0396" },
 					-- Deathless wretches, I compel you to fight!
 					{ Cue = "/VO/HadesField_0647" },
 					-- Heed me, wretches, on my authority!
