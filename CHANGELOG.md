@@ -19,6 +19,7 @@ Other fixes and improvements:
 - Fixed: The Elysium Archer Trap plays a pre-attack animation before being disabled when loading into a room with a completed encounter.
 - Fixed: Charon's sack of Gold always has a chance to appear in mid-shops, even when it should not be eligible.
 - Fixed: In some cases, entering Megaera's boss fight room would not play any dialogue before the fight starts.
+- Fixed: Some elite enemies from Asphodel have placeholder names in the "Most Damage Suffered" section of the run clear screen.
 - Fixed: Parts of room reward preview animations overlays on top of shop screens.
 - Fixed: Allied units remain alive after defeating a boss.
 - Fixed: Some room reward types are misaligned on the preview for some doors.

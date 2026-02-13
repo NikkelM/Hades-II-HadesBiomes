@@ -1056,6 +1056,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessNakedElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		GenusName = "BloodlessNaked_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
@@ -1067,11 +1068,13 @@ local enemyModifications = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
 	HadesBloodlessNakedEliteSuperElite = {
+		GenusName = "BloodlessNaked_Elite",
 		BlockAttributes = { "Blink", "Orbit", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
 	BloodlessNakedBerserker = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		GenusName = "BloodlessBerserker",
 		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "BerserkerIntro",
 		ActivateFx = "EnemySummonRuneMedium",
@@ -1083,6 +1086,7 @@ local enemyModifications = {
 	},
 	BloodlessNakedBerserkerElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		GenusName = "BloodlessBerserker_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
@@ -1106,6 +1110,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessWaveFistElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		GenusName = "BloodlessWaveFist_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -1127,6 +1132,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessGrenadierElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		GenusName = "BloodlessGrenadier_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -1149,6 +1155,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessSelfDestructElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		GenusName = "BloodlessSelfDestruct_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -1171,6 +1178,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessPitcherElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		GenusName = "BloodlessPitcher_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -1182,6 +1190,7 @@ local enemyModifications = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
 	HadesBloodlessPitcherSuperElite = {
+		GenusName = "BloodlessPitcher_Elite",
 		BlockAttributes = { "Blink", "Orbit", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
@@ -1197,6 +1206,7 @@ local enemyModifications = {
 	},
 	HadesSpreadShotUnitElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		GenusName = "SpreadShotUnit_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
