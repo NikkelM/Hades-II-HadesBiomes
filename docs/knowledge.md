@@ -421,6 +421,7 @@ Duplicate `370001` (`NPC_Sisyphus_01`) and:
 - Change the ID to `390000` .
 - Change the Name to `NPC_Orpheus_01`.
 - Change the Angle to `270.0`.
+- Change the Location.X to `4992.65234375`.
 
 TartarusWallBars01:
 For ID `506312`, change the `GroupNames` property to `Additive_01`.
