@@ -71,8 +71,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		PostTriggerFunctionArgs = { WaitTime = 4 },
 		WithinDistance = 750,
 		PreTriggerAnimation = "ThanatosTalkDismissal_Start",
-		VoiceLines =
-		{
+		VoiceLines = {
 			BreakIfPlayed = true,
 			RandomRemaining = true,
 			SuccessiveChanceToPlay = 0.9,
@@ -20206,6 +20205,3414 @@ mod.NPCData = mod.NPCData or {
 			{ Cue = "/VO/ThanatosField_0156" },
 			-- Next?
 			{ Cue = "/VO/ThanatosField_0157" },
+		},
+	},
+
+	-- Orpheus, Id = 390000
+	NPC_Orpheus_01 = {
+		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
+
+		-- TODO:
+		UseText = "UseTalkToMusician",
+		Portrait = "Portrait_Musician_Default_01",
+		AnimOffsetZ = 230,
+		EmoteOffsetX = -30,
+		EmoteOffsetY = -160,
+		-- TODO:
+		SingingAnimation = "OrpheusPlaying_Start",
+		SingingFx = "StatusSinging",
+		SingingAnimOffsetX = 30,
+		-- TODO: Like for Eurydice
+		TextLinesPauseAmbientMusicVocals = true,
+		Groups = { "NPCs" },
+
+		Binks = {
+			"NPC_OrpheusIdle_Bink",
+			"NPC_OrpheusIdlePlaying_Bink",
+		},
+
+		ActivateRequirements = {
+			-- -- TODO:
+			-- RequiredCosmetics = { "OrpheusUnlockItem", },
+			-- -- TODO:
+			-- RequiredFalseCosmeticPurchaseable = "OrpheusEurydiceQuestItem",
+			-- -- TODO:
+			-- RequiredFalseFlags = { "InFlashback", "OrpheusReunionInProgress" },
+			-- -- TODO:
+			-- RequiredFalseTextLinesThisRun = GameData.OrpheusWithEurydiceAltTextLines,
+		},
+
+		InteractTextLineSets = {
+			OrpheusFirstMeeting = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredFalseTextLines = { "Ending01", "OrpheusFirstMeeting_Alt" },
+				-- It's all right. Father can't make you sing if you don't want to.
+				EndCue = "/VO/ZagreusHome_1035",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/Orpheus_0186",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"Oh, hello, Zagreus. I understand you liberated me from my eternal punishment. And so I have returned to serve your father here. Thanks."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1034",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Orpheus, you're back! Look, don't get on Father's bad side like that and you're going to be fine. Besides... right now I think he's angrier with me."
+				},
+				{
+					Cue = "/VO/Orpheus_0187",
+					PreLineAnim = "OrpheusFidget",
+					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
+					PostLineFunctionArgs = { Delay = 2.5, Title = "MainSubPlotComplete", Text = "OrpheusUnlockItem", TextRevealSound = "/Leftovers/Menu Sounds/TextReveal3", AnimationName = "LocationTextBG", AnimationOutName = "LocationTextBGOut" },
+					Text =
+					"I grieve for you, my friend. But if you've come to ask me for a song, why, I'm afraid I must stand firm about my answer."
+				},
+			},
+			OrpheusFirstMeeting_Alt = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "Ending01" },
+				RequiredFalseTextLines = { "OrpheusFirstMeeting" },
+				-- It's all right. Father can't make you sing if you don't want to.
+				EndCue = "/VO/ZagreusHome_1035",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/Orpheus_0186",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"Oh, hello, Zagreus. I understand you liberated me from my eternal punishment. And so I have returned to serve your father here. Thanks."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3572",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Orpheus, you're back! Look, don't get on Father's bad side like that, and you're going to be fine. I've fought with him enough for all our sakes."
+				},
+				{
+					Cue = "/VO/Orpheus_0187",
+					PreLineAnim = "OrpheusFidget",
+					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
+					PostLineFunctionArgs = { Delay = 2.5, Title = "MainSubPlotComplete", Text = "OrpheusUnlockItem", TextRevealSound = "/Leftovers/Menu Sounds/TextReveal3", AnimationName = "LocationTextBG", AnimationOutName = "LocationTextBGOut" },
+					Text =
+					"I grieve for you, my friend. But if you've come to ask me for a song, why, I'm afraid I must stand firm about my answer."
+				},
+			},
+
+			OrpheusMiscMeeting01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+				RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				{
+					Cue = "/VO/Orpheus_0066",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, hello Zagreus. I was just wondering if you had ever heard of any other court musicians who had lost the will to sing? Your father's asked me to explain myself and honestly it has been rather difficult."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0414",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text =
+					"If it's any consolation, mate, I'm certain every single undead court musician serving in the throne room of the god of the dead has been through everything you're going through."
+				},
+			},
+			OrpheusMiscMeeting02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+				RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					ObjectType = "NPC_Orpheus_01",
+					-- If you insist, my friend.
+					{ Cue = "/VO/Orpheus_0177" },
+				},
+				{
+					Cue = "/VO/Orpheus_0067",
+					Text =
+					"It's awfully quiet here, you know, when you're out and about? Makes me a bit self-conscious, truth be told, seeing as ostensibly I'm the musician of this court."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3547",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Look, if you decide to start strumming on that lyre again, I'm sure nobody here is going to mind. Though you take care, OK?"
+				},
+			},
+			OrpheusMiscMeeting03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+				RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				{
+					Cue = "/VO/Orpheus_0068",
+					Text =
+					"Oh, hello Zagreus. You look a little down. And so I was just wondering, would you perchance fancy a song right now?"
+				},
+				{
+					Text = "Orpheus_OfferText01",
+					Choices = {
+						{
+							ChoiceText = "OrpheusJukebox_00",
+							{
+								Cue = "/VO/ZagreusHome_3548",
+								Portrait = "Portrait_Zag_Default_01",
+								Speaker = "CharProtag",
+								PreLineAnim = "ZagreusTalkEmpathyStart",
+								PreLineAnimTarget = "Hero",
+								PostLineAnim = "ZagreusTalkEmpathy_Return",
+								PostLineAnimTarget = "Hero",
+								Text = "How about {#DialogueItalicFormat}The Lament{#PreviousFormat}? You used to play that one a lot!"
+							},
+							{
+								Cue = "/VO/Orpheus_0069",
+								Text =
+								"Oh, fancy that one do you? Alas, I've not the heart to sing it anymore. I'm glad you like it, though."
+							},
+						},
+						{
+							ChoiceText = "OrpheusJukebox_01",
+							{
+								Cue = "/VO/ZagreusHome_3549",
+								Portrait = "Portrait_Zag_Default_01",
+								Speaker = "CharProtag",
+								PreLineAnim = "ZagreusTalkEmpathyStart",
+								PreLineAnimTarget = "Hero",
+								PostLineAnim = "ZagreusTalkEmpathy_Return",
+								PostLineAnimTarget = "Hero",
+								Text =
+								"How about {#DialogueItalicFormat}In the Blood{#PreviousFormat}? That's one of your old hits, right?"
+							},
+							{
+								Cue = "/VO/Orpheus_0069",
+								Text =
+								"Oh, fancy that one do you? Alas, I've not the heart to sing it anymore. I'm glad you like it, though."
+							},
+						},
+						{
+							ChoiceText = "OrpheusJukebox_02",
+							{
+								Cue = "/VO/ZagreusHome_3550",
+								Portrait = "Portrait_Zag_Default_01",
+								Speaker = "CharProtag",
+								PreLineAnim = "ZagreusTalkEmpathyStart",
+								PreLineAnimTarget = "Hero",
+								PostLineAnim = "ZagreusTalkEmpathy_Return",
+								PostLineAnimTarget = "Hero",
+								Text = "How about {#DialogueItalicFormat}Argonauts{#PreviousFormat}, didn't you sail with them?"
+							},
+							{
+								Cue = "/VO/Orpheus_0069",
+								Text =
+								"Oh, fancy that one do you? Alas, I've not the heart to sing it anymore. I'm glad you like it, though."
+							},
+						},
+					},
+				},
+			},
+			OrpheusMiscMeeting04 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusMiscMeeting02", "OrpheusMiscMeeting03" },
+				RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B", "OrpheusGift05", "OrpheusAboutEurydice04" },
+				{
+					Cue = "/VO/ZagreusHome_0203",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Orpheus, forgive my bluntness here, but I have to ask. Why won't you sing? You were a legend, mate! Our court musician!"
+				},
+				{
+					Cue = "/VO/Orpheus_0070",
+					Text =
+					"Why, it's that I have lost my muse, my friend. It isn't harder to explain than that. Have you not had such moments in your life, where you had lost the will to chase your passions?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0204",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I, I suppose I have, yeah. But recently I found my drive again, and that's why I have to get out of here."
+				},
+				{
+					Cue = "/VO/Orpheus_0071",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"And I am truly happy for you, friend. Alas, I've had no luck in my own search, not that I'm searching any longer, so, I'll just be over here, OK?"
+				},
+			},
+			OrpheusMiscMeeting05 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusMiscMeeting04" },
+				RequiredFalseTextLines = { "EurydiceMentionsOrpheus01", "EurydiceFirstMeeting01_C", "EurydiceAboutOrpheus01" },
+				{
+					Cue = "/VO/ZagreusHome_0205",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Anything I can do to help you find your muse, mate?"
+				},
+				{
+					Cue = "/VO/Orpheus_0072",
+					Text =
+					"I fear my muse is long since lost to me, my friend, though truly thanks for asking. I suppose she must be out there somewhere still, since I once traveled 'cross this land in search of her, and found her then. But that was quite a while back."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0206",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenial_Full",
+					PreLineAnimTarget = "Hero",
+					Text = "Wait, you found her? What happened?"
+				},
+				{
+					Cue = "/VO/Orpheus_0073",
+					Text =
+					"Well, this was back when I was still alive, you understand. Your father, why, he doesn't care for anyone to leave this realm, and, basically now I'm stuck here as well! Not seen her since, and, I'm not much for travel anymore."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1859",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"That's... I'm sorry to hear that. Thank you for letting me know. I hope you get to see her again someday."
+				},
+				{
+					Cue = "/VO/Orpheus_0074",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"I appreciate the sentiment, my friend, though please don't worry about her or me. I mean, we're dead! We're fine."
+				},
+			},
+			-- not learned of Eurydice's connection to him from her
+			OrpheusMiscMeeting06 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusMiscMeeting05", "OrpheusAboutEurydice01", "EurydiceFirstMeeting01_C" },
+				RequiredFalseTextLines = { "OrpheusMiscMeeting06_B", "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B" },
+				{
+					Cue = "/VO/ZagreusExtra_0011",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text = "Mate, if you don't mind, I'd love it if you told me more about your muse."
+				},
+				{
+					Cue = "/VO/Orpheus_0233",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"My muse... never has somebody been as splendorous as my Eurydice...! She was so gentle, yet so stout of heart that it would make yours ache, just thinking on it. She inspired innumerable songs of mine."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0209",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					Text =
+					"That's quite a few. She sounds like she was a real catch all right. I'm sorry for your loss. Thank you for sharing your memory of her with me."
+				},
+				{
+					Cue = "/VO/Orpheus_0076",
+					PreLineAnim = "OrpheusFidget",
+					Text = "Thank you for listening, my friend. Eurydice, she likewise used to listen to me all the time...."
+				},
+			},
+			-- learned of Eurydice's connection to him from her
+			OrpheusMiscMeeting06_B = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusMiscMeeting05" },
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", },
+				RequiredFalseTextLines = { "EurydiceFirstMeeting01_C", "OrpheusMiscMeeting06", "EurydiceMentionsOrpheus01" },
+				{
+					Cue = "/VO/ZagreusExtra_0011",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text = "Mate, if you don't mind, I'd love it if you told me more about your muse."
+				},
+				{
+					Cue = "/VO/Orpheus_0233",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"My muse... never has somebody been as splendorous as my Eurydice...! She was so gentle, yet so stout of heart that it would make yours ache, just thinking on it. She inspired innumerable songs of mine."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1511",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"Eurydice...? I know a... anyway, she must have been a real catch! I'm sorry for your loss. I have to go look into something here."
+				},
+				{
+					Cue = "/VO/Orpheus_0076",
+					PreLineAnim = "OrpheusFidget",
+					Text = "Thank you for listening, my friend. Eurydice, she likewise used to listen to me all the time...."
+				},
+			},
+			OrpheusMiscMeeting07 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusMiscMeeting05" },
+				RequiredAnyRoomsThisRun = { "B_Wrapping01", "B_MiniBoss01", "B_Boss01", "B_Boss02" },
+				RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B", "OrpheusGift05", "OrpheusAboutEurydice04" },
+				-- Of course!
+				EndCue = "/VO/ZagreusHome_3458",
+				EndWait = 0.5,
+				{
+					Cue = "/VO/Orpheus_0077",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"I understand you've journeyed well beyond the pits of Tartarus, my friend? Another most heroic feat of yours, and truth be told I find it quite inspiring."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0210",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Inspiring enough to... make you want to sing, again?"
+				},
+				{
+					Cue = "/VO/Orpheus_0078",
+					Text =
+					"Oh, that's a rather bold insinuation, Zagreus. I don't know that I've the will for that, I... just, I need some time to think, is that all right?"
+				},
+			},
+
+			OrpheusAboutHades01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusWithHades02" },
+				RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B", "OrpheusGift05", "OrpheusAboutEurydice04" },
+				-- I understand. I'm sorry.
+				EndCue = "/VO/ZagreusHome_1240",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/ZagreusHome_1238",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It sounds like Father's very cross with you, Orpheus. Won't you consider singing once again? You know his threat of further punishment is not a bluff."
+				},
+				{
+					Cue = "/VO/Orpheus_0184",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"Your father can be.... most persuasive, yes, my friend. However, this time, I am... putting my foot down! I have no plans to sing for him again."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1239",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Well then how about for me? Or for your other friends among the court?"
+				},
+				{
+					Cue = "/VO/Orpheus_0185",
+					Emote = "PortraitEmoteSurprise",
+					Text = "I... no. Please. My muse is gone to me. I can do no such thing."
+				},
+			},
+
+			OrpheusAboutPressure01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusGift03" },
+				RequiredAnyTextLines = { "OrpheusAboutEurydice01", "OrpheusAboutEurydice01_B", "OrpheusMiscMeeting06", "OrpheusMiscMeeting06_B" },
+				RequiresRunNotCleared = true,
+				ConsecutiveDeathsInRoom = {
+					Name = "D_Boss01",
+					Count = 2,
+				},
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- Appreciate it, mate.
+					{ Cue = "/VO/ZagreusHome_3121" },
+				},
+				{
+					Cue = "/VO/Orpheus_0266",
+					Text = "You seem quite agitated, as of late, my friend. Is anything amiss with you, perhaps?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3120",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Oh{#PreviousFormat}! No, I'm all right, Orpheus. Just a lot on my mind is all, sorting out what's next. Stuff I need to work through on my own."
+				},
+				{
+					Cue = "/VO/Orpheus_0267",
+					Text =
+					"Ah, well, I truly understand. I was reluctant to discuss my long-lost muse, really for quite some time. Well, if you do require some emotional support, know that I likely shall be standing over here..."
+				},
+			},
+
+			OrpheusAboutHermes01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "HermesAboutOrpheus01", "OrpheusGift02" },
+				-- I'm glad you took it so well...
+				EndCue = "/VO/ZagreusHome_2617",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/ZagreusHome_2616",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, Orpheus? I heard from Hermes, messenger and god of travel, and all that? It's odd {#DialogueItalicFormat}I'm {#PreviousFormat}giving you his message in this case, but he says hey! Admires your musical ability, as well."
+				},
+				{
+					Cue = "/VO/Orpheus_0229",
+					Text =
+					"{#DialogueItalicFormat}Oh{#PreviousFormat}, that was kind of him, my friend! When I first ventured deep into this realm, whilst searching for the soul of my lost muse... after I failed utterly, it was Lord Hermes who whisked her away. It happened so fast. He did an {#DialogueItalicFormat}excellent {#PreviousFormat}job!"
+				},
+			},
+
+			OrpheusAboutSinging01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				-- It's certainly paid off.
+				EndCue = "/VO/ZagreusHome_1040",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/ZagreusHome_1039",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I always meant to ask you, Orpheus. Where did you learn to sing like that? Was it really Apollo himself who taught you?"
+				},
+				{
+					Cue = "/VO/Orpheus_0212",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"{#DialogueItalicFormat}Oh{#PreviousFormat}, why, I learned from many different sources, Zagreus. That is before all of my inspiration started coming from a single source. I credit my accomplishments to her, and to Apollo, and the gods. And to considerable time spent practicing!"
+				},
+			},
+
+			OrpheusAboutNyx01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusAboutSinging01", "NyxGift01", "OrpheusGift01" },
+				-- That she is.
+				EndCue = "/VO/ZagreusHome_2626",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/ZagreusHome_2625",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Orpheus? I know Father appreciates your songs, to the extent he's capable of appreciating anything. Though, has Nyx ever responded to them? She's always right nearby yet you two don't seem to talk..."
+				},
+				{
+					Cue = "/VO/Orpheus_0257",
+					Text =
+					"Almighty Nyx appears to tolerate my presence, Zagreus. For she could cast me into everlasting darkness if my song failed to be pleasing to her. She is a most-discerning listener!"
+				},
+			},
+
+			OrpheusAboutMusicStand01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredCosmetics = { "Cosmetic_MusicPlayer" },
+				-- Amazing. And a bit unsettling.
+				EndCue = "/VO/ZagreusHome_1029",
+				EndWait = 0.5,
+				{
+					Cue = "/VO/Orpheus_0152",
+					Text =
+					"Are you the one whom I should thank for this most wondrous music stand, my friend? Why, it is positively splendid, isn't it?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1028",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Our renowned court musician ought to have the finest means available, I think. I'm pleased you like it, Orpheus. Though, tell me something, how can it play your music when you're not even here?"
+				},
+				{
+					Cue = "/VO/Orpheus_0153",
+					PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
+					PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteCheerful", WaitTime = 10.0 },
+					Text =
+					"Who can explain the secret art of Daedalus, my friend? Know only that, whenever it produces music for your listening enjoyment, that the sound you hear is coming from my soul!"
+				},
+			},
+
+			OrpheusPostEpilogue01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusGift01", "OlympianReunionQuestComplete" },
+				RequiredFalseFlags = { "PersephoneAway" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					RequiredMinElapsedTime = 2.5,
+					UsePlayerSource = true,
+					-- Same goes for me, mate. Same goes for me.
+					{ Cue = "/VO/ZagreusHome_3266" },
+				},
+				{
+					Cue = "/VO/Orpheus_0269",
+					Text =
+					"So, I am quite confused, I must admit, my friend. The Queen Persephone, she is your mother, then? How is it that she came to reside, here?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3263",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Well, {#DialogueItalicFormat}erm{#PreviousFormat}... it all started when my father saw her on Olympus, and... they fell madly in love. He swept her off her feet, and brought her here. The Olympians, they got pretty worried when they saw she was gone. But now it's OK! Everything's out in the open."
+				},
+				{
+					Cue = "/VO/Orpheus_0270",
+					Text =
+					"But, surely the Queen's mother on Olympus, the great goddess Demeter... surely she would quite like it if she saw her daughter still, from time to time?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3264",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, that! Thing is, Mother ate some... pomegranate seeds when she was here. And we have rules about that stuff, you know! It means she cannot leave this place for very long at all. I'm sure Demeter will understand. And unfreeze everything when her daughter's around."
+				},
+				{
+					Cue = "/VO/Orpheus_0271",
+					Text =
+					"Ah, yes, pomegranate seeds, of course, of course! Though, there is one more subject I don't understand, which is... how {#DialogueItalicFormat}you {#PreviousFormat}fit into all of this. Were you not trying to escape from here?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3265",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Forget about me, Orpheus! This isn't about me, it's about Mother. What's important is she's here, where she belongs."
+				},
+				{
+					Cue = "/VO/Orpheus_0272",
+					Text =
+					"I see! I understand. Well, thank you, then, for clearing all that up. It is a splendid tale, I must say, and every part of it makes sense to me, at last."
+				},
+			},
+
+			--[[
+			singing prereqs: OrpheusMiscMeeting07, OrpheusGift05
+			]] --
+			OrpheusSingsAgain01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusMiscMeeting07", "OrpheusGift05" },
+				RequiredFalseTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0088",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text = "I've decided I should give this singing thing another shot for now, my friend. I hope you like it."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0219",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "This is amazing, mate. So does this mean you found your muse?"
+				},
+				{
+					Cue = "/VO/Orpheus_0089",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh no, I never found my muse, my friend. It's just... seeing you carrying on like this time after time, I was reminded I ought to get on with my life, too, such as it is right now."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				-- TODO:
+				OnQueuedFunctionArgs = PresetEventArgs.Singing_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			-- alt if you met eurydice
+			OrpheusSingsAgain01_B = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusMiscMeeting07", "OrpheusGift05" },
+				RequiredAnyTextLines = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C", },
+				RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0088",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text = "I've decided I should give this singing thing another shot for now, my friend. I hope you like it."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1027",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "This is amazing, mate. You sing quite beautifully, with or without your muse."
+				},
+				{
+					Cue = "/VO/Orpheus_0230",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"How kind of you. It's just... seeing you carry on like this, time after time, I was reminded that I might as well get on with my existence, too. Such as it is right now."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			-- via eurydice; no 'good riddance' yet
+			OrpheusSingsAgain01_C = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusAboutEurydice03" },
+				RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_D", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0088",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text = "I've decided I should give this singing thing another shot for now, my friend. I hope you like it."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3472",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "It's beautiful, mate. If only Eurydice could hear you right now."
+				},
+				{
+					Cue = "/VO/Orpheus_0151",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"How kind of you, my friend. It's just... seeing you carry on like this, time after time, I was reminded I ought to get on with my existence, too. Such as it is right now."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			-- via eurydice; 'good riddance' played first
+			OrpheusSingsAgain01_D = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusAboutEurydice03" },
+				RequiredAnyTextLines = { "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0231",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"I became so enthralled with song once more, my friend, that I have been inspired to compose another one. For old time's sake, perhaps."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1027",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "This is amazing, mate. You sing quite beautifully, with or without your muse."
+				},
+				{
+					Cue = "/VO/Orpheus_0232",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"How kind of you, although... my voice is nothing but the crunch of gravel underfoot compared to hers, which soars as though on wings."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+
+			OrpheusTallTale01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusGift01" },
+				RequiredAnyTextLines = { "OrpheusMiscMeeting07", "OrpheusAboutEurydice01", "OrpheusAboutEurydice01_B" },
+				RequiredAnyRoomsLastRun = { "B_Boss01", "B_Boss02" },
+				-- Poor Orpheus.
+				-- EndCue = "/VO/ZagreusHome_0554",
+				-- EndWait = 0.6,
+				{
+					Cue = "/VO/ZagreusHome_0211",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Say, Orpheus? I ever tell you I once single-handedly slew a multi-headed bone hydra within the magma fields of Asphodel without so much as breaking a sweat?"
+				},
+				{
+					Cue = "/VO/Orpheus_0079",
+					Emote = "PortraitEmoteSurprise",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"My, that is wonderful to hear, my friend! Another in a litany of such heroic deeds, more noble than the heroes of our verse, and even great Achilles over there!"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1619",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusExpressiveEmpathy",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"I'm glad you think so, mate! These tales of my valorous accomplishments do seem to cheer you up, so, I will keep reporting back once I rack up some more."
+				},
+			},
+			OrpheusTallTale02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusTallTale01" },
+				-- Would that there were, mate.
+				EndCue = "/VO/ZagreusHome_0723",
+				EndWait = 0.45,
+				{
+					Cue = "/VO/ZagreusHome_0213",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey Orpheus? You know about the time I vanquished seven legions of Bloodless warriors with both hands tied behind my back while hopping on one foot? Lord Poseidon dared me to do it, you know."
+				},
+				{
+					Cue = "/VO/Orpheus_0080",
+					Emote = "PortraitEmoteSurprise",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"Why, that is a spectacularly vivid tale, Zagreus, and most deserving to be chronicled in song! Would that there were a poet here still willing to commit such deeds to verse."
+				},
+			},
+			OrpheusTallTale03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusTallTale02" },
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredAnyOtherTextLines = { "HadesPostFlashback01", "Ending01" },
+				-- Great!
+				EndCue = "/VO/ZagreusHome_0724",
+				EndWait = 0.5,
+				{
+					Cue = "/VO/ZagreusHome_0214",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, Orpheus? I take it you know all about the time I burned my father's hands to a crisp the moment I was born? He grasped me by the feet, and they caught fire! And that's why he still wears those fancy rings: to cover up the hideous scar tissue."
+				},
+				{
+					Cue = "/VO/Orpheus_0081",
+					Text =
+					"But that is such a splendid tale, Zagreus, deserving to be sung both far and wide, until it turns into the stuff of myth, as deathless as the gods themselves! I'll gladly tell that one about!"
+				},
+			},
+			OrpheusTallTale04 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusTallTale03", "DionysusAboutOrpheus01" },
+				-- Dionysus and I appreciate it, mate.
+				EndCue = "/VO/ZagreusHome_0725",
+				EndWait = 0.5,
+				{
+					Cue = "/VO/ZagreusHome_0215",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey Orpheus, you've noticed the resemblance between me and Dionysus, haven't you, mate? I'll tell you a little secret but you have to promise not to tell... We're really the same god. I love a good feast, don't I?"
+				},
+				{
+					Cue = "/VO/Orpheus_0082",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"But, Zagreus, that is a striking revelation, the connection you describe. I see it! I can see it now! To think the god of wine and you are intricately linked, it isn't obvious, is it?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0216",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, there's more to it! A bit grim, really, as I'm a little older than I look. You see, the Titans, they once tore me limb from limb, but then my heart was saved, and that's where Dionysus comes from! That is the connection between us, you understand me, mate?"
+				},
+				{
+					Cue = "/VO/Orpheus_0083",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"Your tale stirs my soul, it truly does, my friend. It is a marvel to me that such heroism isn't widely known, and I'm committed to the spread of all such truths."
+				},
+			},
+			OrpheusTallTale05 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusTallTale04" },
+				-- I was kidding. Seriously.
+				EndCue = "/VO/ZagreusHome_0726",
+				EndWait = 0.5,
+				{
+					Cue = "/VO/ZagreusHome_0217",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Hey Orpheus, you know I've just been messing with you, with those Dionysus tales, and all that? Just trying to liven things up for us, mate."
+				},
+				{
+					Cue = "/VO/Orpheus_0084",
+					PreLineAnim = "ZagreusTalkEmpathy_Return",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Oh, Zagreus! There isn't need for such humility, not when one's deeds of heroism are as great and numerous as yours! It is an honor to have heard such deeds first-hand!"
+				},
+			},
+			OrpheusTallTale06 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusTallTale03" },
+				-- What have I done.
+				EndCue = "/VO/ZagreusHome_0727",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/ZagreusHome_0218",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"You know, mate, sometimes I worry that you're taking my tall tales rather seriously. You're not really going about and telling everyone this stuff, are you?"
+				},
+				{
+					Cue = "/VO/Orpheus_0085",
+					PreLineAnim = "ZagreusTalkEmpathy_Return",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Come now, my friend! I know this is a test of faith! Of course I am committed to the spread of such heroic deeds as yours. And I do so enjoy getting to hear them first!"
+				},
+			},
+			OrpheusTallTale07 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusTallTale03" },
+				RequiredRoomThisRun = "D_Intro",
+				-- ...Did he make fun of me just now?
+				EndCue = "/VO/ZagreusHome_1051",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/ZagreusHome_1050",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, Orpheus? I figure that you've heard by now about how I bested the Minotaur Asterius, alongside Theseus, the Champion of Elysium, himself? I don't think I even broke a sweat."
+				},
+				{
+					Cue = "/VO/Orpheus_0223",
+					PreLineAnim = "OrpheusFidget",
+					Text = "I scarce can possibly imagine such a spectacle, my friend! But certainly I shall attempt to try!"
+				},
+			},
+			OrpheusTallTale08 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusTallTale03" },
+				RequiresRunCleared = true,
+				RequiredMinRunsCleared = 2,
+				-- ...Fine, all right.
+				EndCue = "/VO/ZagreusHome_1053",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/ZagreusHome_1052",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Orpheus, you have to hear this straight from me. I vanquished my own father, on the outskirts of the Temple of Styx. At the surface! I know how this looks, since I'm back here, and so is he. You believe me, don't you?"
+				},
+				{
+					Cue = "/VO/Orpheus_0224",
+					Text =
+					"Of {#DialogueItalicFormat}course {#PreviousFormat}I do, my friend! Though, you must know, your father has requested his relationship to you be kept quite clandestine. You'll understand if I not sing your praises in this case, won't you?"
+				},
+			},
+			OrpheusSingsAgain02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "OrpheusTallTale05", "OrpheusTallTale06" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				-- Um. Cheers.
+				EndCue = "/VO/ZagreusHome_0732",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/ZagreusHome_0730",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Orpheus, sorry to interrupt, it's just... I couldn't help but notice that new ballad that you're playing, there."
+				},
+				{
+					Cue = "/VO/Orpheus_0099",
+					Text =
+					"Technically, one ought consider it a hymn, my friend! In honor of your numerous travails, prior to your current set of circumstances, which must pale in comparison to all the rigors you've endured to date!"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0731",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Erm{#PreviousFormat}, the thing is... none of the information in your hymn is accurate. It's nonsense. I was just kidding with you, mate! I tried to make that clear. You get so lively when I tell you my tall tales, you know? You're not angry with me, are you...?"
+				},
+				{
+					Cue = "/VO/Orpheus_0100",
+					Emote = "PortraitEmoteSurprise",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"Heavens, no, my friend! Your humility is matched only by your perseverance in the face of adversity! May your great deeds live on forever, much like you!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+
+			-- if you haven't learned of Eurydice from Orpheus
+			OrpheusAboutEurydice01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceMentionsOrpheus01" },
+				RequiredAnyTextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+				RequiredFalseTextLines = { "OrpheusAboutEurydice01_B", "OrpheusMiscMeeting06", "OrpheusMiscMeeting06_B" },
+				-- You can't be serious.
+				EndCue = "/VO/ZagreusHome_1001",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/ZagreusHome_0998",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Say, Orpheus. You wouldn't happen to know the nymph Eurydice, would you? Tall, woodsy type? I get the impression maybe you know each other."
+				},
+				{
+					Cue = "/VO/Orpheus_0124",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"{#DialogueItalicFormat}What{#PreviousFormat}? Why... yes. I know Eurydice. Or, I once knew her, I should say. Whyever would you ask me such a thing, my friend?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0999",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I saw her, mate. In Asphodel. She's doing fine up there! All on her own. The two of you, you used to know each other, then?"
+				},
+				{
+					Cue = "/VO/Orpheus_0125",
+					Text =
+					"We more than knew each other, Zagreus. We were husband and wife. She was my muse. To think that we are doomed to be apart during our afterlives. Ah, well!"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1000",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Ah, well{#PreviousFormat}? Don't you have a message I could bring to her, if we should meet again? Something like that?"
+				},
+				{
+					Cue = "/VO/Orpheus_0126",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"I do not wish to trouble her again, my friend. Speak not to her of me, all right? I have my memory of her; it is enough."
+				},
+			},
+			-- if you have learned of Eurydice from Orpheus
+			OrpheusAboutEurydice01_B = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "EurydiceAboutOrpheus01", "EurydiceAboutOrpheus01_B", "EurydiceFirstMeeting01_C" },
+				RequiredAnyOtherTextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+				RequiredFalseTextLines = { "OrpheusAboutEurydice01", },
+				-- You can't be serious.
+				EndCue = "/VO/ZagreusHome_1001",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/ZagreusHome_1002",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Say, Orpheus. You're not going to believe this. I happened on a certain nymph during my journeys recently. It was Eurydice. Tall, woodsy type?"
+				},
+				{
+					Cue = "/VO/Orpheus_0127",
+					Text =
+					"{#DialogueItalicFormat}What{#PreviousFormat}? Why... truly. I knew Eurydice resided in your father's realm, but... I had not anticipated you would cross her path. You're certain of this, then?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1003",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I saw her, mate. In Asphodel. She's doing fine up there! All on her own. You said the two of you were very close, isn't that right?"
+				},
+				{
+					Cue = "/VO/Orpheus_0128",
+					Text =
+					"We were much more than that, Zagreus. We were husband and wife. She was my muse. To think that we are doomed to be apart during our afterlives. Ah, well!"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1000",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Ah, well{#PreviousFormat}? Don't you have a message I could bring to her, if we should meet again? Something like that?"
+				},
+				{
+					Cue = "/VO/Orpheus_0126",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"I do not wish to trouble her again, my friend. Speak not to her of me, all right? I have my memory of her; it is enough."
+				},
+			},
+
+			-- if you don't know their backstory
+			OrpheusAboutEurydice02 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceAboutOrpheus02" },
+				RequiredFalseTextLines = { "OrpheusAboutEurydice02_B", "OrpheusGift05" },
+				-- I'll have to get to the bottom of this later.
+				EndCue = "/VO/ZagreusHome_1006",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/ZagreusHome_1004",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Orpheus, I saw Eurydice again. I... couldn't bring myself to do exactly as you asked, I... sort of mentioned you."
+				},
+				{
+					Cue = "/VO/Orpheus_0129",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"You {#DialogueItalicFormat}what{#PreviousFormat}?! Or, what I meant to say was: Oh. Did you perchance get the impression she yet harbors toward me feelings of resentment, and the like?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1005",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You seemed to be a bit of a sore subject, yes. What happened to the two of you, if I may ask?"
+				},
+				{
+					Cue = "/VO/Orpheus_0130",
+					Text =
+					"Oh, it's just... I almost saved her soul from this domain, back when I lived and breathed. But in the final moments of my rescue, my faith faltered. She is lost to me forever, now. Though, I'm pleased to hear she isn't lost to you!"
+				},
+			},
+			-- if you do know their backstory
+			OrpheusAboutEurydice02_B = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceAboutOrpheus02", "OrpheusGift05" },
+				RequiredFalseTextLines = { "OrpheusAboutEurydice02" },
+				-- Take it easy, mate.
+				EndCue = "/VO/ZagreusHome_1008",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/ZagreusHome_1004",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Orpheus, I saw Eurydice again. I... couldn't bring myself to do exactly as you asked, I... sort of mentioned you."
+				},
+				{
+					Cue = "/VO/Orpheus_0129",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"You {#DialogueItalicFormat}what{#PreviousFormat}?! Or, what I meant to say was: Oh. Did you perchance get the impression she yet harbors toward me feelings of resentment, and the like?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1007",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You seemed to be a bit of a sore subject, yes. You really almost freed her from the Underworld, huh?"
+				},
+				{
+					Cue = "/VO/Orpheus_0131",
+					Text =
+					"Almost, my friend, almost. But in the final moments of my rescue, my faith faltered. She is lost to me forever, now. Though, I'm pleased to hear she isn't lost to you!"
+				},
+			},
+
+			OrpheusAboutEurydice03 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "EurydiceAboutOrpheus03", "OrpheusAboutEurydice06" },
+				-- You're not making this easy, Orpheus.
+				EndCue = "/VO/ZagreusHome_1011",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/Orpheus_0132",
+					Text =
+					"Pray tell me something, Zagreus. How is she lately, hm? Eurydice, I mean. Her hair, fall colors, or full bloom? Her poise, as proud and supple as the oak?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1009",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"She's all right, Orpheus. Seems comfortable within her little place in Asphodel. The only thing that seems to bother her at all is... when I mention you. Is there nothing you can do to patch things up?"
+				},
+				{
+					Cue = "/VO/Orpheus_0133",
+					Text =
+					"Alas, I cannot change the past, my friend. So, no. As you can plainly see by now, I'm dead to her. Rightfully so, at that."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1010",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"But that's just a technicality! I mean, you're here, she's there! So what if you're not breathing anymore, you have all eternity ahead of you. Don't you want to see her again?"
+				},
+				{
+					Cue = "/VO/Orpheus_0134",
+					Text =
+					"Don't I want to see my Eurydice again...? Why, yes. That, more than anything, my friend. Provided she wanted to see me. I tried once to disturb her everlasting rest, as you well know. And that did not pan out as I had hoped...."
+				},
+			},
+
+			OrpheusAboutEurydice04 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceAboutOrpheus04" },
+				RequiredFalseTextLines = { "OrpheusAboutSingersReunionQuest01" },
+				-- I'm working on it, mate.
+				EndCue = "/VO/ZagreusHome_1013",
+				EndWait = 0.45,
+				{
+					Cue = "/VO/Orpheus_0135",
+					Text =
+					"What news of late about Eurydice, my friend? She is as delicate as I described, no doubt? {#DialogueItalicFormat}Ah{#PreviousFormat}, but... I am dwelling on her once again, it seems."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1012",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I knew she was a talented musician, mate, but you never let on that she is an amazing chef, as well. She's been hospitable to me each time we've met. Though you still seem to be a bit of a sore subject."
+				},
+				{
+					Cue = "/VO/Orpheus_0136",
+					Text =
+					"How very understandable, indeed. Were I to have been failed to be rescued from the depths of hell, mere moments from escape, I too would be quite cross with my attempted rescuer. And for quite some time."
+				},
+			},
+
+			OrpheusAboutEurydice05 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusAboutEurydice02", "OrpheusAboutEurydice02_B" },
+				RequiredRoomThisRun = "B_Story01",
+				-- The Fates can't be that cruel...
+				EndCue = "/VO/ZagreusHome_1015",
+				EndWait = 0.45,
+				{
+					Cue = "/VO/ZagreusHome_1014",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Orpheus, I don't suppose you know how come I keep running into Eurydice in particular out there? For all the shades resting eternally in Asphodel, it seems beyond coincidence I always find the one that's dear to you."
+				},
+				{
+					Cue = "/VO/Orpheus_0137",
+					Text =
+					"I have no knowledge of the weavings of the Fates, my friend. Perhaps they trample on what used to be my heart for leisure or for sport, do you suppose?"
+				},
+			},
+
+			OrpheusAboutEurydice06 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceAboutOrpheus03" },
+				EndVoiceLines = {
+					PreLineWait = 0.55,
+					-- I know no other way, my friend.
+					{ Cue = "/VO/Orpheus_0211" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1036",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Say, Orpheus, Eurydice told me your songs, some of them came from her? She seems quite brilliant. You choose your muses well!"
+				},
+				{
+					Cue = "/VO/Orpheus_0209",
+					Text =
+					"I owe my everything to my Eurydice. She authored many of my songs, indeed; and she inspired many, many more. Whilst living, we collaborated frequently, you see."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1037",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "But weren't you the famous one? I don't understand why she doesn't share your renown."
+				},
+				{
+					Cue = "/VO/Orpheus_0210",
+					Text =
+					"It is but one of life's injustices, I fear. I always sang her praises every chance I had. And she asserted herself splendidly. Yet even still, our listeners believed our songs, they came from me... what else could I have done?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1038",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text =
+					"I don't exactly know the ways of mortals, mate. But I'm pleased to hear you always giving credit where it's due."
+				},
+			},
+			OrpheusAboutEurydice06Extra = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusAboutEurydice06" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- Then, word will spread. I'm sure of it.
+					{ Cue = "/VO/ZagreusHome_2624" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2622",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Orpheus, you said that it was one of life's injustices that Eurydice doesn't get her fair share of the credit for the songs she wrote. Isn't there something we can do?"
+				},
+				{
+					Cue = "/VO/Orpheus_0247",
+					Text =
+					"Why, I don't know, my friend. Once people set their minds to certain things... it can be difficult to show them other possibilities exist. What's to be done?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2623",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I don't know... tell them they're wrong? Politely, perhaps not? Or... tell them what's right. Get the word out about what's right? Can't we do that?"
+				},
+				{
+					Cue = "/VO/Orpheus_0248",
+					Text =
+					"Get the word out...? But I am court musician of this House. My songs no longer reach too many ears. Although... I do suppose all of these shades about... they are my audience, as well. I shall make certain that they know whose songs I sing."
+				},
+			},
+
+			-- song request subplot begins
+			OrpheusProgressWithEurydice01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceAboutOrpheus04" },
+				-- I know...
+				EndCue = "/VO/ZagreusHome_1017",
+				EndWait = 0.5,
+				{
+					Cue = "/VO/Orpheus_0138",
+					Text =
+					"I must confess something to you, my friend. My mind still wanders to Eurydice quite often, and my memories of her. Despite my best attempts to move along with my existence here. I would call it a fatal flaw, except, I am already dead."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1016",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Don't torture yourself, mate. You've been through enough. As has she! You still care for one another just don't have a way to get the point across. But I have an idea."
+				},
+				{
+					Cue = "/VO/Orpheus_0139",
+					Text = "I, too, once had ideas, Zagreus. Ideas, and inspirations. It was so very wonderful, to have a muse..."
+				},
+			},
+			OrpheusProgressWithEurydice02 = {
+				SuperPriority = true,
+				GiftableOffSource = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "EurydiceProgressWithOrpheus02" },
+				-- Take all the time you need, mate.
+				EndCue = "/VO/ZagreusHome_1019",
+				EndWait = 0.5,
+				{
+					Cue = "/VO/ZagreusHome_1018",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PostLineAnim = "ZagreusInteractEquip",
+					PostLineAnimTarget = "Hero",
+					Text = "I got you something, Orpheus. It's a new song. From someone who still cares for you."
+				},
+				{
+					Cue = "/VO/Orpheus_0140",
+					PreLineWait = 0.5,
+					PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
+					PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteSurprise", WaitTime = 7.0 },
+					Text =
+					"My friend, you wrote a song, for me...? Oh, but this is not from you, it's from... {#DialogueItalicFormat}Eurydice{#PreviousFormat}... I, no, I don't know what to say, I... I..."
+				},
+			},
+			-- add alt in case it's the first time Orpheus is singing; check for other contexts
+			OrpheusSingsAgain03 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "OrpheusProgressWithEurydice02" },
+				RequiredFalseTextLines = { "OrpheusSingsAgain03_B" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				-- Perhaps she can.
+				EndCue = "/VO/ZagreusHome_1021",
+				EndWait = 0.55,
+				{
+					Cue = "/VO/ZagreusHome_1020",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You sing beautifully, mate. If only Eurydice could hear you singing this right now."
+				},
+				{
+					Cue = "/VO/Orpheus_0141",
+					Text =
+					"Oh. Thanks for the sentiment, my friend, it's just... when I sing this song of hers, why, I've this feeling where my heart once was that, well... perhaps she {#DialogueItalicFormat}can{#PreviousFormat}."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			-- alt if this is first song he sings
+			OrpheusSingsAgain03_B = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "OrpheusProgressWithEurydice02" },
+				RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain03" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				-- Perhaps she can.
+				EndCue = "/VO/ZagreusHome_1021",
+				EndWait = 0.55,
+				{
+					Cue = "/VO/Orpheus_0088",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text = "I've decided I should give this singing thing another shot for now, my friend. I hope you like it."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1020",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You sing beautifully, mate. If only Eurydice could hear you singing this right now."
+				},
+				{
+					Cue = "/VO/Orpheus_0141",
+					Text =
+					"Oh. Thanks for the sentiment, my friend, it's just... when I sing this song of hers, why, I've this feeling where my heart once was that, well... perhaps she {#DialogueItalicFormat}can{#PreviousFormat}."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+
+			OrpheusAboutSingersReunionQuest01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalkImportant",
+				RequiredCosmetics = { "OrpheusEurydiceQuestItem", },
+				RequiresNullAmbientMusicId = true,
+				EndVoiceLines = {
+					PreLineWait = 0.55,
+					-- Thank you. I shall. I shall!
+					{ Cue = "/VO/Orpheus_0144" },
+				},
+				{
+					Cue = "/VO/Orpheus_0142",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"Zagreus! The most amazing circumstances have occurred. The terms of my employment, they've been altered such that... I may visit Asphodel sometimes. May visit {#DialogueItalicFormat}her{#PreviousFormat}."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1022",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"That's great! Orpheus, what are you waiting for, mate? Go and find your muse out there! You two have lots to catch up on, I think."
+				},
+				{
+					Cue = "/VO/Orpheus_0143",
+					Text =
+					"I think you're right. I am so very anxious, I must say. But I must also thank you, for this opportunity, and... for speaking with me all this time. So, how might I repay you?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1023",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "OrpheusExit",
+					PostLineFunctionArgs = { AnimationState = "NPCOrpheusExited", WaitTime = 3.5 },
+					SetFlagTrue = "OrpheusReunionInProgress",
+					Text =
+					"Why is it always talk of payment around here? You're my mate. And your songs have lifted many spirits here, including mine. Now go, and make the most of this, will you?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.OrpheusAlerting,
+			},
+
+			OrpheusAboutSingersReunionQuestComplete01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusWithEurydice01" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- Great to hear it. I can only imagine.
+					{ Cue = "/VO/ZagreusHome_1026" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1024",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey Orpheus, you're back! How was your trip? I hope it was all right."
+				},
+				{
+					Cue = "/VO/Orpheus_0147",
+					Text =
+					"It was more than all right, my friend. Why, it was positively inspirational. But I've returned as promised to this House. My love is there, whilst my responsibilities are here."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1025",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You sound despondent again, mate. You must wish you were there right now. I'm sorry you had to come all the way back."
+				},
+				{
+					Cue = "/VO/Orpheus_0148",
+					Emote = "PortraitEmoteCheerful",
+					Text =
+					"Oh, on the contrary, Zagreus. It dawned upon me that having some distance between my responsibilities and my domestic life, why... it is not so bad. Besides, Charon makes travel to and fro quite simple for me, really."
+				},
+			},
+			OrpheusAboutSingersReunionQuestComplete02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusWithEurydice03" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- You're doing wonderfully at it, mate.
+					{ Cue = "/VO/ZagreusHome_1049" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1048",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I have to ask you something, Orpheus. It seems like everything has been all right for you, except... you don't look very happy to me, mate. Is everything all right? Between you and Eurydice, I mean?"
+				},
+				{
+					Cue = "/VO/Orpheus_0222",
+					Emote = "PortraitEmoteSparkly",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"Oh, {#DialogueItalicFormat}haha{#PreviousFormat}, but your concern is much appreciated, friend. I feel I am in everlasting bliss. It simply does not show upon my countenance. Perhaps through song is how I best express myself."
+				},
+			},
+			OrpheusAboutSingersReunionQuestComplete03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "ThanatosAboutSingersReunionQuestComplete01" },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					-- Well, thank you also, mate.
+					{ Cue = "/VO/ZagreusHome_2621" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2619",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, Orpheus. You know I'm very happy that things turned out well between you and Eurydice, but... looking back, I think I might have overstepped my bounds with you a bit, and wanted to say I'm sorry."
+				},
+				{
+					Cue = "/VO/Orpheus_0245",
+					Emote = "PortraitEmoteSurprise",
+					Text = "You're sorry, Zagreus? Whatever for? If not for you, I fear I never would have seen my muse again."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2620",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, it's just... when I met her, and I found out the two of you were having problems, I... well, I just wanted to see you patch things up. But, it wasn't any of my business, and you never asked my help. Neither did she. I could have made things worse."
+				},
+				{
+					Cue = "/VO/Orpheus_0246",
+					Text =
+					"But, you didn't make things worse, my friend. And... truth be told, I do not think I ever would have asked for help, at any point, because... I don't entirely know how. So I am grateful to you, and your generous instinct."
+				},
+			},
+
+			OrpheusPostEnding01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "Ending01" },
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.4,
+						ObjectType = "NPC_Orpheus_01",
+						RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+						-- I highly doubt it, no.
+						{ Cue = "/VO/Orpheus_0259" },
+					},
+					{
+						PreLineWait = 0.4,
+						ObjectType = "NPC_Orpheus_01",
+						RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+						-- I shall give it some thought, I think.
+						{ Cue = "/VO/Orpheus_0260" },
+					},
+				},
+				{
+					Cue = "/VO/ZagreusHome_3259",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Say, Orpheus! I heard what must have been a song of yours, it went {#DialogueItalicFormat}something, something, in the blood{#PreviousFormat}, you know that one? It was amazing, mate."
+				},
+				{
+					Cue = "/VO/Orpheus_0258",
+					Text =
+					"Oh, that one, yes, I know! I mean, it was a favorite, I was told, by those who listened to the music I created with my muse. It was a most productive time, back when we were alive!"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3260",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "Would you ever sing it again?"
+				},
+			},
+
+			OrpheusAboutDistantMemory01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredKeepsake = "DistanceDamageTrait",
+				-- RequiresMaxKeepsake = true,
+				-- ...Err, didn't think so.
+				EndCue = "/VO/ZagreusHome_1031",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/ZagreusHome_1030",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, Orpheus. The keepsake that you gave me... it's come in useful, thanks. I can't quite see what's in the container, though. I shouldn't open it, should I?"
+				},
+				{
+					Cue = "/VO/Orpheus_0154",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"No, Zagreus. Unless of course you wanted to set loose a cherished living memory of mine, and take from me that fleeting bit of joy?"
+				},
+			},
+			OrpheusAboutDistantMemory02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusAboutDistantMemory01", "OrpheusAboutEurydice03" },
+				RequiredAnyTextLines = { "OrpheusGift05", "OrpheusAboutEurydice02", "OrpheusAboutEurydice02_B" },
+				RequiredKeepsake = "DistanceDamageTrait",
+				RequiresMaxKeepsake = true,
+				-- I guess I can see that. Cheers.
+				EndCue = "/VO/ZagreusHome_1033",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/ZagreusHome_1032",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Orpheus, the Distant Memory you gave me... it's a bit of your past with Eurydice in there, isn't it. I'm grateful, but... why give me such a precious gift as that?"
+				},
+				{
+					Cue = "/VO/Orpheus_0155",
+					Text =
+					"I'm glad you like it, Zagreus. Some memories are cherished, yes, indeed. But there can come a point where they provide more benefit to others than ourselves. Don't you agree?"
+				},
+			},
+
+			-- music quest / music lessons
+			OrpheusAboutMusicPlaying01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusTallTale01" },
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiredFalseTextLinesLastRun = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiredFalseTextLines = { "OrpheusMusicProgress01" },
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.4,
+						ObjectType = "NPC_Orpheus_01",
+						-- Of course, my friend.
+						{ Cue = "/VO/Orpheus_0214" },
+					},
+				},
+				{
+					Cue = "/VO/Orpheus_0213",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"Have you considered doing music-making as a recreational pursuit, my friend? You have such slender hands, why, I believe you'd do quite well at it."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1041",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Not really been at the top of my list of late, mate, but who knows. It's something I've been meaning to try at some point, I suppose. Thanks for the words of encouragement!"
+				},
+			},
+			OrpheusMusicProgress01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredCosmetics = { "HouseLyre01", },
+				RequiredMinItemInteractions = { HouseLyre01 = 10 },
+				-- Thanks for the impromptu lesson, mate.
+				EndCue = "/VO/ZagreusHome_1043",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/ZagreusHome_1042",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey Orpheus! I got myself a lyre much like yours, except I'm absolutely miserable when I try to play! Got any advice?"
+				},
+				{
+					Cue = "/VO/Orpheus_0215",
+					PostLineThreadedFunctionName = "MusicPracticePresentation",
+					Text =
+					"Oh, why, that's splendid, Zagreus. And I can certainly show you a thing or two. First, the proper posture is important, here..."
+				},
+				{
+					Cue = "/VO/Orpheus_0216",
+					FadeOutTime = 0.5,
+					FullFadeTime = 7.0,
+					FadeInTime = 1.0,
+					PreLineWait = 0.1,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteExcitement",
+					InterSceneWaitTime = 0.3,
+					Text =
+					"...now remember to practice the plucking technique which I taught you, and mind your off-hand constantly. And, above all, continue practicing! The joyfulness is in the practicing itself."
+				},
+			},
+			OrpheusMusicProgress02 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredCosmetics = { "HouseLyre01" },
+				RequiredTextLines = { "OrpheusMusicProgress01", },
+				RequiredFalseTextLinesLastRun = { "OrpheusMusicProgress01" },
+				RequiredMinItemInteractions = { HouseLyre01 = 60 },
+				-- I hope you're right.
+				EndCue = "/VO/ZagreusHome_1045",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/Orpheus_0217",
+					Text =
+					"Zagreus, I heard your recent lyre-playing from your bedchambers. Let no one lead you to believe it's not a reassuring start."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1044",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Oh, come now, mate, I'm terrible and you know it. You pulling one over on me as payback?"
+				},
+				{
+					Cue = "/VO/Orpheus_0218",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"I'm being serious, my friend. It is a challenging pursuit requiring a dedicated state of mind. The progress shall come. You shall discover what I mean."
+				},
+			},
+			OrpheusMusicProgress03 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredCosmetics = { "HouseLyre01" },
+				RequiredTextLines = { "OrpheusMusicProgress02" },
+				RequiredFalseTextLinesLastRun = { "OrpheusMusicProgress02" },
+				RequiredMinItemInteractions = { HouseLyre01 = 110 },
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.4,
+						ObjectType = "NPC_Orpheus_01",
+						-- It's almost everything to me, my friend.
+						{ Cue = "/VO/Orpheus_0220" },
+					},
+				},
+				{
+					Cue = "/VO/Orpheus_0219",
+					Text = "Your music-playing has improved substantially. Perhaps in time you shall surpass my own abilities!"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1046",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I highly doubt that, mate, though thanks for noticing. Creating music's quite rewarding once you get the hang of it!"
+				},
+			},
+			OrpheusMusicProgress04 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredCosmetics = { "HouseLyre01" },
+				RequiredTextLines = { "OrpheusMusicProgress03" },
+				RequiredFalseTextLinesLastRun = { "OrpheusMusicProgress03" },
+				RequiredMinItemInteractions = { HouseLyre01 = 210 },
+
+				{
+					Cue = "/VO/Orpheus_0221",
+					Text =
+					"I must commend you on the most splendid lyre-playing emanating from your bedchambers, my friend. It seems we have a second court musician, now."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1047",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Thank you for encouraging me to give it a shot, mate. And for the kind words."
+				},
+			},
+
+			-- partner conversations
+			OrpheusWithHades01 = {
+				Priority = true,
+				PlayOnce = true,
+				Partner = "NPC_Hades_01",
+				RequiredAnyTextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+				RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				IsIdAlive = 370006,
+				TeleportToId = 393481,
+				TeleportOffsetX = 80,
+				TeleportOffsetY = -80,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				-- He's in trouble.
+				EndCue = "/VO/ZagreusHome_0553",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/Orpheus_0096",
+					PreLineWait = 0.3,
+					Text =
+					"...You called upon your humble court musician, as I understand, Lord Hades sir? Referring to myself of course?"
+				},
+				{
+					Cue = "/VO/Hades_0281",
+					Portrait = "Portrait_Hades_Default_01",
+					PreLineWait = 0.35,
+					Speaker = "NPC_Hades_01",
+					Text =
+					"Well, Orpheus... if you're quite finished with your little stint within the depths of Tartarus, I'd like to ask again: Play us a song, already. Or else next time I'll not be quite so charitable with your punishment."
+				},
+				{
+					Cue = "/VO/Orpheus_0097",
+					Text =
+					"Oh, that. I must apologize, again, Lord Hades sir. For I'm afraid that I've no wish to sing as yet. In spite of your persuasiveness even. And, that, um, is my final word upon the subject. At this time."
+				},
+				{
+					Cue = "/VO/Hades_0282",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					Text = "Is that so...? Why, then, I'll go ahead and wait. I've all the patience in the world."
+				},
+			},
+
+			OrpheusWithHades02 = {
+				Priority = true,
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "OrpheusWithHades01" },
+				RequiredAnyTextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HadesMiscPartnerTextLines, Count = 4 },
+				RequiredFalseTextLines = { "OrpheusGift05", "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				StatusAnimation = false,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -380,
+				TeleportOffsetY = 260,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				-- Poor Orpheus.
+				EndCue = "/VO/ZagreusHome_0554",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/Hades_0283",
+					Portrait = "Portrait_Hades_Default_01",
+					PreLineWait = 0.35,
+					Speaker = "NPC_Hades_01",
+					Text =
+					"Help me to understand something here, Orpheus. Why do I bother keeping such a worthless shadow of a court musician in my House? You prattle ceaselessly, yet I can't get even a single note out of you?"
+				},
+				{
+					Cue = "/VO/Orpheus_0098",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"If I may be so bold, my lord? Perhaps the merest sight of me still stirs in you a memory of my performances of yore. It gladdens me you used to like my songs."
+				},
+				{
+					Cue = "/VO/Hades_0284",
+					PreLineAnim = "Hades_HouseFistSlam",
+					PreLineAnimTarget = 370006,
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					Text =
+					"I used to tolerate your insolence. We're finished here. You find your voice. Immediately! You have one hundred years, and not a moment more."
+				},
+			},
+			OrpheusWithHades03 = {
+				PlayOnce = true,
+				RequiredTextLines = { "HadesAboutOrpheus01", "OrpheusAboutEurydice03" },
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiredFalseTextLines = { "OrpheusWithEurydice01" },
+				RequiredFalseCosmetics = { "OrpheusEurydiceQuestItem" },
+				Partner = "NPC_Hades_01",
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				StatusAnimation = false,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -380,
+				TeleportOffsetY = 260,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				-- That's why he's stuck here, huh.
+				EndCue = "/VO/ZagreusHome_0991",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/Hades_0484",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					Text =
+					"Finally returned to your senses, haven't you, Orpheus. A court musician who refused to sing! Such nonsense. I trust there shall be no more insubordination from you, moving forward?"
+				},
+				{
+					Cue = "/VO/Orpheus_0194",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"I'm gladdened that my songs yet stir your soul, my lord. But, I have to confess my choice to sing again was motivated largely by the Prince. And by my muse, of course."
+				},
+				{
+					Cue = "/VO/Hades_0485",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					Text =
+					"Still going on about your so-called muse, I see. You had your chance with Eurydice. You squandered it. And now you're here; a deal is a deal. I expect you to comply with your end of our agreement."
+				},
+			},
+			OrpheusWithHades04 = {
+				PlayOnce = true,
+				RequiredTextLines = { "OrpheusAboutSingersReunionQuestComplete01" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HadesMiscPartnerTextLines, Count = 4 },
+				Partner = "NPC_Hades_01",
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -380,
+				TeleportOffsetY = 260,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.55,
+						ObjectType = "NPC_Hades_01",
+						-- Nrgh...
+						{ Cue = "/VO/Hades_0881" },
+					},
+					{
+						PreLineWait = 0.15,
+						UsePlayerSource = true,
+						-- Good thing that's settled, then.
+						{ Cue = "/VO/ZagreusHome_2618" },
+					}
+				},
+				{
+					Cue = "/VO/Orpheus_0243",
+					PreLineWait = 0.3,
+					Text =
+					"...I'm pleased to know my new, more flexible arrangement remains to your satisfaction, still, my lord. I must admit I feared that my departure would result once more in a protracted stay within the pits of Tartarus."
+				},
+				{
+					Cue = "/VO/Hades_0880",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					PreLineAnim = "Hades_HouseFistSlam",
+					PreLineAnimTarget = 370006,
+					Text =
+					"Don't give me such ideas, Orpheus! Instead, you go about your business, there, and play your blasted songs when circumstances call for it."
+				},
+				{
+					Cue = "/VO/Orpheus_0244",
+					PreLineAnim = "OrpheusFidget",
+					Text = "I shall be happy to oblige, my lord. Eurydice and I are grateful for your magnanimity."
+				},
+			},
+
+			OrpheusWithAchilles01 = {
+				Partner = "NPC_Achilles_01",
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				UseText = "UseListenNPC",
+				RequiredTextLines = { "AchillesGrantsCodex" },
+				RequiredAnyTextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+				RequiredAnyOtherTextLines = { "AchillesFirstMeeting", "AchillesFirstMeeting_Alt" },
+				TeleportToId = 370009,
+				TeleportOffsetX = 40,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370009,
+				-- What can I say, I try.
+				EndCue = "/VO/ZagreusHome_0258",
+				EndWait = 0.4,
+
+				{
+					Cue = "/VO/Orpheus_0090",
+					PreLineWait = 0.3,
+					Text =
+					"...You're much too modest, Lord Achilles, for someone with such a number of heroic deeds and glorious decapitations to his name! You ought to be more like ever-boastful Zagreus, and talk it up some more!"
+				},
+				{
+					Cue = "/VO/Achilles_0080",
+					Portrait = "Portrait_MaleGhost_Default_01",
+					Speaker = "NPC_Achilles_01",
+					Text =
+					"Oh, fear not, Orpheus, I was quite boastful in my day. And would you look at where it got me? Besides, I've not the imagination to come up with tales as tall as those of our Prince Zagreus."
+				},
+			},
+			OrpheusWithAchilles02 = {
+				Partner = "NPC_Achilles_01",
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				UseText = "UseListenNPC",
+				RequiredAnyTextLines = { "AchillesFirstMeeting", "AchillesFirstMeeting_Alt" },
+				RequiredAnyOtherTextLines = { "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				TeleportToId = 370009,
+				TeleportOffsetX = 40,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370009,
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.55,
+						ObjectType = "NPC_Achilles_01",
+						-- Now that you mention it... I can't.
+						{ Cue = "/VO/Achilles_0129" },
+					},
+					{
+						PreLineWait = 0.15,
+						UsePlayerSource = true,
+						-- I can!
+						{ Cue = "/VO/ZagreusHome_0990" },
+					}
+				},
+				{
+					Cue = "/VO/Orpheus_0225",
+					PreLineWait = 0.3,
+					Text =
+					"...Do you miss it, yourself, Lord Achilles, sir? The freshness of the air. The need to have meals several times a day, and such."
+				},
+				{
+					Cue = "/VO/Achilles_0128",
+					Portrait = "Portrait_MaleGhost_Default_01",
+					Speaker = "NPC_Achilles_01",
+					Text =
+					"I scarce remember it, my friend. Although your songs do stir up memories, sometimes. I'm used to things the way they are, I think. But you, not so much?"
+				},
+				{
+					Cue = "/VO/Orpheus_0226",
+					PreLineWait = 0.3,
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"Oh, on the contrary, sir, I am profoundly satisfied. We are most fortunate to have employment even after death. Imagine, merely resting for eternity, when you could work!"
+				},
+			},
+
+			OrpheusWithPersephone01 = {
+				Partner = "NPC_Persephone_Home_01",
+				RequiredTextLines = { "Ending01", "PersephoneHomeMeeting01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 3 },
+				MaxRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 25 },
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				StatusAnimation = false,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 555714,
+				TeleportOffsetX = -40,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 555714,
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					ObjectType = "NPC_Persephone_Home_01",
+					-- Oh, you're too kind!
+					{ Cue = "/VO/Persephone_0198", PreLineAnim = "PersephoneUnderworld_Greeting" },
+				},
+				{
+					Cue = "/VO/Persephone_0197",
+					Portrait = "Portrait_Persephone_Queen_01",
+					Speaker = "NPC_Persephone_Home_01",
+					PreLineAnim = "PersephoneUnderworld_Vulnerable",
+					PreLineAnimTarget = 555714,
+					PreLineWait = 0.35,
+					Text =
+					"...{#DialogueItalicFormat}Ah{#PreviousFormat}, but to think that our esteemed musician of the court is none other than {#DialogueItalicFormat}you{#PreviousFormat}, Orpheus! In matters of music, at least, Hades and I have similar tastes. Anyway, I don't mean to keep you!"
+				},
+				{
+					Cue = "/VO/Orpheus_0268",
+					PreLineWait = 0.35,
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"I shall be honored to perform my songs, Your Grace. And, might I add, Your Grace bears many of the striking features of your son? I understand now where he gets his charm."
+				},
+			},
+
+		},
+
+		RepeatableTextLineSets = {
+			OrpheusChat01 = {
+				UseableOffSource = true,
+				RequiredFalseTextLines = { "OrpheusMiscMeeting07", "OrpheusGift05", },
+				{
+					Cue = "/VO/Orpheus_0003",
+					Text = "I'm sorry I've no will for singing, Zagreus."
+				},
+			},
+			OrpheusChat02 = {
+				UseableOffSource = true,
+				RequiredFalseTextLines = { "OrpheusMiscMeeting07", "OrpheusGift05", },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0004",
+					Text = "I feel a bit self-conscious seeing as I must refuse to sing...!"
+				},
+			},
+			OrpheusChat03 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0005",
+					Text = "I remain your humble court musician, Zagreus."
+				},
+			},
+			OrpheusChat04 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0006",
+					PreLineAnim = "OrpheusFidget",
+					Text = "I'm truly pleased to see you, Zagreus."
+				},
+			},
+			OrpheusChat05 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0007",
+					Text = "Would that I could aid you in some way, my friend."
+				},
+			},
+			OrpheusChat06 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0008",
+					Text = "It's awfully quiet whilst you're not around. Still rather quiet now!"
+				},
+			},
+			OrpheusChat07 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0009",
+					Text = "Nice speaking with you, Zagreus."
+				},
+			},
+			OrpheusChat08 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0010",
+					Text = "I'm afraid I haven't much to say on this occasion, Zagreus."
+				},
+			},
+			OrpheusChat09 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0011",
+					Text = "I hope your day or night, I guess, is going nicely, Zagreus."
+				},
+			},
+			OrpheusChat10 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0012",
+					Text = "Please do be careful out there, Zagreus."
+				},
+			},
+			OrpheusChat11 = {
+				UseableOffSource = true,
+				RequiredFalseTextLines = { "OrpheusMiscMeeting07", "OrpheusGift05", },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0013",
+					Text = "I wish I could direct you towards a much more lively court musician."
+				},
+			},
+			OrpheusChat12 = {
+				UseableOffSource = true,
+				RequiredFalseTextLines = { "OrpheusMiscMeeting07", "OrpheusGift05", },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0014",
+					Text = "Normally I'd offer up a song for such occasions, Zagreus."
+				},
+			},
+			OrpheusChat13 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0015",
+					Text = "Be strong out there, my friend, OK?"
+				},
+			},
+			OrpheusChat14 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0016",
+					Text = "I'm cheering for you all the way, my friend."
+				},
+			},
+			OrpheusChat15 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0017",
+					Text = "Good luck to you out in that deadly hellscape, Zagreus."
+				},
+			},
+			OrpheusChat16 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0018",
+					Text = "Thank you for checking up on me, my friend, although I'm quite all right."
+				},
+			},
+			OrpheusChat17 = {
+				UseableOffSource = true,
+				RequiredFalseTextLines = { "OrpheusMiscMeeting07", "OrpheusGift05", },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0019",
+					Text = "I'm still fresh out of songs or will to sing them, Zagreus."
+				},
+			},
+			OrpheusChat18 = {
+				UseableOffSource = true,
+				RequiredFalseTextLines = { "OrpheusMiscMeeting07", "OrpheusGift05", },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0020",
+					Text = "I'd ask if you remember what it's like to feel inspired, my friend, but I don't want to know."
+				},
+			},
+			OrpheusChat19 = {
+				UseableOffSource = true,
+				RequiresNullAmbientMusicId = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0021",
+					Text = "Oh, hello, Zagreus...."
+				},
+			},
+			OrpheusChat20 = {
+				UseableOffSource = true,
+				RequiredTextLines = { "OrpheusGift03" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0027",
+					Text = "Wishing you a pleasant day or night as ever, my good friend...!"
+				},
+			},
+			OrpheusNonSingingChat01 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0116",
+					Text = "May you emerge from all of this unscathed, my friend."
+				},
+			},
+			OrpheusNonSingingChat02 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0117",
+					Text = "I trust your neverending toil in the Underworld is proceeding well, my friend?"
+				},
+			},
+			OrpheusNonSingingChat03 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredTextLines = { "OrpheusGift03" },
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				{
+					Cue = "/VO/Orpheus_0118",
+					Text = "I have an optimistic feeling about your next attempt to run away, my friend!"
+				},
+			},
+			OrpheusNonSingingChat04 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0119",
+					Text = "May you yet find your muse somewhere out there, my friend."
+				},
+			},
+			OrpheusNonSingingChat05 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredTextLines = { "OrpheusGift02" },
+				{
+					Cue = "/VO/Orpheus_0120",
+					Text = "Each failure brings new opportunities for self-reflection, right, my friend?"
+				},
+			},
+			OrpheusNonSingingChat06 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredTextLines = { "OrpheusTallTale03" },
+				{
+					Cue = "/VO/Orpheus_0121",
+					Text = "Please keep me well apprised of all of your incredible achievements, Zagreus."
+				},
+			},
+			OrpheusNonSingingChat07 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredTextLines = { "OrpheusGift01" },
+				{
+					Cue = "/VO/Orpheus_0122",
+					Text = "It lifts my spirits when we briefly interact, my friend."
+				},
+			},
+			OrpheusNonSingingChat08 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredFalseTextLines = { "OrpheusWithEurydice01" },
+				RequiredFalseCosmetics = { "OrpheusEurydiceQuestItem" },
+				{
+					Cue = "/VO/Orpheus_0123",
+					Text = "I pray the Fates not ruin all your dreams as they did mine!"
+				},
+			},
+
+			-- singing
+			OrpheusChat20 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0028",
+					Text = "I'm in the middle of a song my friend...!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusChat21 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0029",
+					Text = "I'd best get back to singing, Zagreus."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusChat22 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0030",
+					Text = "Let's talk when I'm not singing, Zagreus?"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusChat23 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0031",
+					Text = "Hello, my friend, let's get back to my song?"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusChat24 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0032",
+					Text = "I'm kind of singing at the moment, Zagreus."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusChat25 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0033",
+					Text = "Terribly sorry I can't speak with you right now."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusChat26 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0022",
+					Text = "I thought I'd lost even the gift of music, Zagreus. So, thanks again for helping find that one for me!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusChat27 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0023",
+					Text = "I must say, it's nice having some music in my life again, and hopefully in yours!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusChat28 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0024",
+					Text = "We all could use a little song from time to time, isn't that so?"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusChat29 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0025",
+					Text = "It's nice that I no longer have to live and breathe, and can be focused purely on my song...!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusChat30 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				{
+					Cue = "/VO/Orpheus_0026",
+					Text = "You rescued me from an eternity of not getting to sing, my friend."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+
+			-- max relationship
+			OrpheusMaxChat01 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "OrpheusGift07" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0204",
+					Text = "I hope your day or night is just as splendid as my own, my friend."
+				},
+			},
+			OrpheusMaxChat02 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "OrpheusGift07" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0205",
+					Text = "I pray the Fates fulfill your dreams as they did mine!"
+				},
+			},
+			OrpheusMaxChat03 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "OrpheusGift07" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0206",
+					Text = "Oh, Zagreus, how wonderful to see you once again!"
+				},
+			},
+			OrpheusMaxChat04 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "OrpheusGift07" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0207",
+					Text = "I was just thinking of you, Zagreus."
+				},
+			},
+			OrpheusMaxChat05 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "OrpheusGift07" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0208",
+					Text = "My greetings to my very dearest friend."
+				},
+			},
+
+			-- singing
+			OrpheusSingingChat01 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0101",
+					Text = "I am in concert as perhaps you see, my friend!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat02 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0102",
+					Text = "Begging your pardon, Zagreus, but I'm amid performance at this time!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat03 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0103",
+					Text = "I'm quite preoccupied with singing all your praises, Zagreus!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat04 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0104",
+					Text = "This hymn is dedicated to your deeds, my friend!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat05 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0105",
+					Text = "I cannot talk right now, my friend, for I must sing!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat06 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0106",
+					Text = "I trust my music brings some lightness to our gloom-filled times, my friend?"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat07 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0107",
+					Text = "The tale of your birth is so complex, my friend!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat08 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0108",
+					Text = "I ask you please hold your applause until the end!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat09 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0109",
+					Text = "To think Lord Dionysus and yourself share such a bond!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat09 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0110",
+					Text = "May my performances spread wide your fame, my friend!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat10 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0111",
+					Text = "Your parentage need not be secret any longer, Zagreus!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat11 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0112",
+					Text = "I shall keep singing of your praises, far and wide!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat12 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0113",
+					Text = "You've helped inspire me to song, my friend!"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat13 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0114",
+					Text = "I must stay focused on my singing, Zagreus."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusSingingChat14 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "OrpheusSingsAgain02" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0115",
+					Text = "I trust my hymn provides some solace to your days or nights?"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				RequiredAmbientTrackNameMatch = true,
+			},
+
+			-- eurydice song
+			OrpheusEurydiceSingingChat01 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0199",
+					Text = "My muse writes absolutely wondrous songs, don't you agree?"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusEurydiceSingingChat02 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0200",
+					Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}, this reminds me so of my Eurydice..."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusEurydiceSingingChat03 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0201",
+					Text = "Would that I were together with her now..."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusEurydiceSingingChat04 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0202",
+					Text = "The songs of my Eurydice are without peer..."
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus,
+				RequiredAmbientTrackNameMatch = true,
+			},
+			OrpheusEurydiceSingingChat05 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredAnyTextLines = { "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiredFalseQueuedTextLines = { "OlympianReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
+				{
+					Cue = "/VO/Orpheus_0203",
+					Text = "This is a favorite song of mine, and perhaps yours?"
+				},
+				OnQueuedFunctionName = "MusicianMusic",
+				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus_SongFromStart,
+				RequiredAmbientTrackNameMatch = true,
+			},
+
+		},
+
+		GiftTextLineSets = {
+			-- grants a gift
+			OrpheusGift01 = {
+				PlayOnce = true,
+				{
+					Cue = "/VO/ZagreusHome_0115",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey, mate, here. I got this for my favorite court musician."
+				},
+				{
+					Cue = "/VO/Orpheus_0057",
+					Text =
+					"Oh, my, but you can't simply be this kind to me without retaliation on my part, my friend! And so, in turn, I have a gift for you!"
+				},
+			},
+			OrpheusGift02 = {
+				PlayOnce = true,
+				RequiredTextLines = { "OrpheusGift01", },
+				{
+					Cue = "/VO/Orpheus_0051",
+					Text =
+					"Why, this is absolutely splendid, Zagreus. Is this really for me? It's so very kind of you to think of me like this."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0239",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text =
+					"I want you to have it, Orpheus. You've brightened up our lives down here more than you know. I only wish that you could see that."
+				},
+			},
+			OrpheusGift03 = {
+				PlayOnce = true,
+				RequiredTextLines = { "OrpheusGift02", },
+				{
+					Cue = "/VO/Orpheus_0055",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"{#DialogueItalicFormat}Oh{#PreviousFormat}, why! I'm very much obliged that you have thought of me again, for such a wonderfully thoughtful gift!"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0240",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "It's nothing, Orpheus. Thank you for all the inspiration through your song. I love your work, mate."
+				},
+			},
+			-- alt below in case he's already started singing
+			OrpheusGift04 = {
+				PlayOnce = true,
+				RequiredTextLines = { "OrpheusGift03", },
+				RequiredFalseTextLines = { "OrpheusGift04_B", "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				{
+					Cue = "/VO/Orpheus_0056",
+					Text =
+					"You're always much too kind, you know, my friend? Now typically I would express my gratitude through song, except, you understand, don't you?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0522",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "I understand completely, Orpheus. I think we'll both get through this rough patch in due time."
+				},
+			},
+			OrpheusGift04_B = {
+				PlayOnce = true,
+				RequiredTextLines = { "OrpheusGift03" },
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiredFalseTextLines = { "OrpheusGift04" },
+				{
+					Cue = "/VO/Orpheus_0195",
+					Text = "You always offer means to quench my thirst, my friend. A wonder that I have such feelings, even now."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0082",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text =
+					"Now that you've started singing once again, I figured it was thirst-inducing work! Your music stirs so many souls around here, mate."
+				},
+			},
+			OrpheusGift05 = {
+				-- cutaway scene
+				PlayOnce = true,
+				RequiredAnyTextLines = { "OrpheusGift04", "OrpheusGift04_B" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					-- Take care, mate.
+					{ Cue = "/VO/ZagreusHome_3058" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0202",
+					Portrait = "Portrait_Zag_Default_01",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PreLineWait = 0.35,
+					Speaker = "CharProtag",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey, mate! What do you say we share this over in the lounge?"
+				},
+				{
+					Cue = "/VO/Orpheus_0052",
+					PostLineAnim = "ZagreusTalkEmpathyStart",
+					PostLineAnimTarget = "Hero",
+					PreLineAnim = "OrpheusFidget",
+					Text =
+					"Oh, I, certainly, why, I don't see why not. I mean, it's not as though I've got something to do that isn't that."
+				},
+				{
+					Cue = "/VO/Orpheus_0053",
+					FadeOutTime = 0.5,
+					FullFadeTime = 0.5,
+					TeleportToId = 556834,
+					AngleTowardTargetId = 556835,
+					TeleportOffsetY = 30,
+					TeleportOffsetX = -20,
+					TeleportHeroToId = 556835,
+					AngleHeroTowardTargetId = 556834,
+					FadeInTime = 0.5,
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					AttachedDim = "Lounge",
+					FadeInSound = "/Leftovers/World Sounds/MapZoomInShortHigh",
+					Text =
+					"...And, anyways, I oughtn't have looked back, I mean, the moral of the story is to not look back when you are told not to look back, you understand, don't you, my friend?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3117",
+					Portrait = "Portrait_Zag_Serious_01",
+					PortraitExitAnimation = "Portrait_Zag_Serious_01_Exit",
+					Speaker = "CharProtag",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "LoungeRevelryPresentation",
+					PostLineFunctionArgs = { Sound2 = "/EmptyCue", Sound3 = "/EmptyCue" },
+					Text =
+					"Don't look back, huh. I'll try not to. Though, you can't be blamed for doing it yourself, just the one time. What happened to you... it wasn't fair. If you ask me."
+				},
+				{
+					Cue = "/VO/Orpheus_0054",
+					FadeOutTime = 0.5,
+					FullFadeTime = 7.8,
+					InterSceneWaitTime = 0.5,
+					TeleportToId = 391546,
+					TeleportHeroToId = 391546,
+					TeleportHeroOffsetX = -30,
+					TeleportHeroOffsetY = 90,
+					AngleHeroTowardTargetId = 391546,
+					FadeInTime = 0.5,
+					PreLineWait = 0.35,
+					FadeInSound = "/Leftovers/World Sounds/MapZoomInShortHigh",
+					Text = "...I quite enjoyed our outing, Zagreus. So, I suppose I shall be seeing you around?"
+				},
+			},
+
+			OrpheusGift06 = {
+				PlayOnce = true,
+				RequiredTextLines = { "OrpheusGift05", },
+				{
+					Cue = "/VO/Orpheus_0196",
+					Text = "I am indebted to you, Zagreus, both for your friendship and embarrassment of generosity."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2319",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"And I, in turn, am indebted to you, Orpheus, for your calm demeanor and ability to accept life's greatest challenges. You inspire me, and I wish you the best."
+				},
+			},
+
+			-- high relationship / locked gifts
+			OrpheusGift07 = {
+				PlayOnce = true,
+				RequiredTextLines = { "OrpheusGift06", },
+				-- You're too kind.
+				EndCue = "/VO/ZagreusHome_0334",
+				EndWait = 0.35,
+				{
+					Cue = "/VO/ZagreusHome_2320",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, Orpheus, mate! I have something good for you right here... Ambrosia! All the way from the surface. I want you to have it."
+				},
+				{
+					Cue = "/VO/Orpheus_0197",
+					Text =
+					"Ah, but this is splendid, Zagreus. And I must say, apart from my Eurydice, I've never felt as strong a bond of kinship as with you."
+				},
+			},
+			OrpheusGift08 = {
+				PlayOnce = true,
+				RequiredTextLines = { "OrpheusGift07", },
+				{
+					Cue = "/VO/ZagreusHome_2322",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey Orpheus, you know I once wrested this bottle of Ambrosia from the Champions of Elysium, defeating them two against one, just so I could bring it here to you personally?"
+				},
+				{
+					Cue = "/VO/Orpheus_0198",
+					Text =
+					"Please, my friend! I feel I am undeserving of such a relentless show of kindness on your part. I shall accept, but you'll relent, won't you? As well as forgive me?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2323",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Mate, if that is your wish, then it will be my pleasure to oblige. Though, may this gift symbolize the strength of our friendship for an eternity to come. I've learned so much from you."
+				},
+				{
+					Cue = "/VO/Orpheus_0179",
+					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
+					PostLineFunctionArgs = { Text = "NPC_Orpheus_01", Icon = "Keepsake_OrpheusSticker_Max" },
+					Text = "Thank you, my friend. Would that I had capacity to take some joy from this."
+				},
+			},
+
+		},
+
+		MissingDistanceTrigger = {
+			WithinDistance = 300,
+			RequiredFalseFlags = { "InFlashback", },
+			VoiceLines = {
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					UsePlayerSource = true,
+					SuccessiveChanceToPlayAll = 0.1,
+					RequiredTextLines = { "OrpheusAboutSingersReunionQuestComplete01" },
+					RequiredFalseQueuedTextLines = { "DusaWithNyx01", "DusaWithNyx02", "DusaWithNyx03", "DusaWithNyx04" },
+					AreIdsNotAlive = { 390000 },
+					Cooldowns = {
+						{ Name = "ZagreusAnyQuipSpeech", Time = 30 },
+					},
+					-- Orpheus must be in Asphodel.
+					{ Cue = "/VO/ZagreusHome_2349" },
+					-- Orpheus is with Eurydice I guess.
+					{ Cue = "/VO/ZagreusHome_2350" },
+					-- Orpheus is on break.
+					{ Cue = "/VO/ZagreusHome_2351" },
+				},
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					UsePlayerSource = true,
+					SuccessiveChanceToPlayAll = 0.1,
+					RequiredFalseTextLines = { "OrpheusAboutSingersReunionQuestComplete01" },
+					AreIdsNotAlive = { 390000 },
+					Cooldowns = {
+						{ Name = "ZagreusAnyQuipSpeech", Time = 30 },
+					},
+
+					-- Hope Orpheus is OK.
+					{ Cue = "/VO/ZagreusHome_0566" },
+					-- Where'd Orpheus go.
+					{ Cue = "/VO/ZagreusHome_0567" },
+					-- Where's our court musician?
+					{ Cue = "/VO/ZagreusHome_0568" },
+				},
+			},
+		},
+
+		GiftGivenVoiceLines = {
+			BreakIfPlayed = true,
+			PreLineWait = 1.0,
+			PlayFromTarget = true,
+
+			-- You're too kind, mate.
+			{ Cue = "/VO/ZagreusHome_0321" },
 		},
 	},
 }

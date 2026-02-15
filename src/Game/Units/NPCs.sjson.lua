@@ -15,7 +15,7 @@ local hadesNPCsToCopy = {
 	-- "NPC_Achilles_01",
 	-- "NPC_Achilles_Story_01",
 	-- "NPC_Orpheus_Story_01",
-	-- "NPC_Orpheus_01",
+	"NPC_Orpheus_01",
 	"NPC_Hades_Story_02",
 	-- These are still defined in Hades II, creating a ModsNikkelMHadesBiomes_ version of them
 	-- "NPC_Persephone_01",
@@ -39,8 +39,7 @@ local hadesNPCModifications = {
 	NPC_Patroclus_01 = { InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC", },
 	-- NPC_Achilles_01 = { InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC", },
 	-- NPC_Achilles_Story_01 = { InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC", },
-	-- NPC_Orpheus_Story_01 = { InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC", },
-	-- NPC_Orpheus_01 = { InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC", },
+	NPC_Orpheus_01 = { InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC", },
 	NPC_Hades_Story_02 = { InheritFrom = "ModsNikkelMHadesBiomes_NPC_Hades_01", },
 }
 local hadesNPCAdditions = {

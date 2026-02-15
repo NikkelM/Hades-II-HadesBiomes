@@ -289,7 +289,34 @@ local encounterModifications = {
 	},
 	Story_Sisyphus_01 = {
 		StartRoomUnthreadedEvents = {
-			[1] = { FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" }, } },
+			[1] = {
+				FunctionName = _PLUGIN.guid .. "." .. "ActivateRandomPrePlacedFromWeightedList",
+				Args = {
+					-- Sisyphus and Bouldy
+					{
+						GameStateRequirements = {
+							-- TODO: Make ineligible during major Orpheus story events
+						},
+						Weight = 0,
+						InnerArgs = {
+							FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" },
+						},
+					},
+					-- Orpheus and Bouldy
+					{
+						GameStateRequirements = {
+							-- TODO: Make ineligible during major Sisyphus story events
+						},
+						Weight = 1,
+						InnerArgs = {
+							FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Orpheus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" },
+						},
+					},
+					FractionMin = mod.NilValue,
+					FractionMax = mod.NilValue,
+					LegalTypes = mod.NilValue,
+				},
+			},
 			[3] = mod.NilValue,
 			[4] = mod.NilValue,
 			[5] = mod.NilValue,

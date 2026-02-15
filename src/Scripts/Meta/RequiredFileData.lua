@@ -426,6 +426,10 @@ mod.BikFileNames = {
 	"ZagreusEndingBoatIdleFidget1_Bink",
 	"ZagreusEndingBoatIdleFidget2_Bink",
 	-- #endregion
+	-- #region ORPHEUS
+	"NPC_OrpheusIdle_Bink",
+	"NPC_OrpheusIdlePlaying_Bink",
+	-- #endregion
 }
 
 mod.CustomBikFileNames = {

@@ -79,3 +79,10 @@ function mod.ActivatePrePlacedByShrineLevel(eventSource, args)
 	local shrineLevel = game.GetNumShrineUpgrades(eventSource.ShrineMetaUpgradeName)
 	game.ActivatePrePlaced(eventSource, args[shrineLevel])
 end
+
+function mod.ActivateRandomPrePlacedFromWeightedList(eventSource, args)
+	local chosenPrePlacedObject = game.GetRandomEligibleValueFromWeightedList(args)
+	if chosenPrePlacedObject ~= nil then
+		game.ActivatePrePlaced(eventSource, chosenPrePlacedObject.InnerArgs or chosenPrePlacedObject)
+	end
+end
