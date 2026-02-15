@@ -1,8 +1,17 @@
 # Changelog
 
-## v0.6.0
+## v0.7.0
 
 <!--Releasenotes start-->
+### Patch Highlights:
+
+
+Other fixes and improvements:
+- Fixed some dialogues never being eligible to play.
+<!--Releasenotes end-->
+
+## v0.6.0
+
 ### Patch Highlights:
 - Added new Chaos Trials that equip you with a preset loadout and challenge you to fight through a specific biome from Zagreus' Journey.
 - The Archivist now shows run clear statistics for Zagreus' Journey runs; for each Weapon Aspect, Boon, Hammer and Keepsake.
@@ -24,7 +33,6 @@ Other fixes and improvements:
 - Fixed: Allied units remain alive after defeating a boss.
 - Fixed: Some room reward types are misaligned on the preview for some doors.
 - Fixed: The position of the "Chaos Within" trials in the list in the Pitch-Black Stone is incorrect.
-<!--Releasenotes end-->
 
 ## v0.5.0
 

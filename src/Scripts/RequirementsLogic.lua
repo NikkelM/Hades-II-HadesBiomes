@@ -2980,14 +2980,14 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredTrueFlags ~= nil then
 		for k, flag in pairs(requirements.RequiredTrueFlags) do
-			if not game.GameState.Flags[flag] then
+			if not game.GameState.Flags[flag] and not game.GameState[flag] then
 				return false
 			end
 		end
 	end
 	if requirements.RequiredFalseFlags ~= nil then
 		for k, flag in pairs(requirements.RequiredFalseFlags) do
-			if game.GameState.Flags[flag] then
+			if game.GameState.Flags[flag] or game.GameState[flag] then
 				return false
 			end
 		end
@@ -2995,7 +2995,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredAnyTrueFlags ~= nil then
 		local anyTrue = false
 		for k, flag in pairs(requirements.RequiredAnyTrueFlags) do
-			if game.GameState.Flags[flag] then
+			if game.GameState.Flags[flag] or game.GameState[flag] then
 				anyTrue = true
 				break
 			end
