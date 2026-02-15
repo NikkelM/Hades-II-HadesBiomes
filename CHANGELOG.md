@@ -4,11 +4,11 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- The Archivist now shows run clear statistics for Zagreus' Journey runs; for each Weapon Aspect, Boon, Hammer and Keepsake.
 - Added new Chaos Trials that equip you with a preset loadout and challenge you to fight through a specific biome from Zagreus' Journey.
+- The Archivist now shows run clear statistics for Zagreus' Journey runs; for each Weapon Aspect, Boon, Hammer and Keepsake.
+- The Silver Pool now shows the fastest and highest fear clear for each weapon for Zagreus' Journey runs alongside the Underworld and Surface statistics in the Aspect selection menu.
 
 Other fixes and improvements:
-- The Silver Pool now shows the fastest and highest fear clear for each weapon for Zagreus' Journey runs alongside the Underworld and Surface statistics in the Aspect selection menu.
 - Added some missing subtitles for Charon.
 - The mod will now show a warning screen if it detects incompatible mods. Please go to [github.com/NikkelM/Hades-II-HadesBiomes/wiki/Incompatible-Mods](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Incompatible-Mods) to see the current list of incompatible mods.
 - Added `ellomenop-SortedStatScreen` to the list of incompatible mods.
@@ -20,7 +20,7 @@ Other fixes and improvements:
 - Fixed: Charon's sack of Gold always has a chance to appear in mid-shops, even when it should not be eligible.
 - Fixed: In some cases, entering Megaera's boss fight room would not play any dialogue before the fight starts.
 - Fixed: Some elite enemies from Asphodel have placeholder names in the "Most Damage Suffered" section of the run clear screen.
-- Fixed: Parts of room reward preview animations overlays on top of shop screens.
+- Fixed: Parts of room reward preview animations overlay on top of shop screens.
 - Fixed: Allied units remain alive after defeating a boss.
 - Fixed: Some room reward types are misaligned on the preview for some doors.
 - Fixed: The position of the "Chaos Within" trials in the list in the Pitch-Black Stone is incorrect.
