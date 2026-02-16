@@ -165,6 +165,8 @@ local npcModifications = {
 		UpgradeScreenOpenSound = "/SFX/Menu Sounds/PortraitEmoteCheerfulSFX",
 		UpgradeSelectedSound = "/Leftovers/Menu Sounds/TalismanPaperEquipLEGENDARY",
 		MenuTitle = "NPC_Eurydice_01",
+		-- TODO: If Orpheus is there, the other text should be shown. Must probably wrap OpenUpgradeChoiceMenu to change how the flavor text is being selected
+		-- Should be this preset one, or the one from the dialogue that's playing
 		FlavorTextIds = {
 			"Eurydice_OfferText01",
 		},
@@ -361,6 +363,55 @@ local npcModifications = {
 			ThanatosFieldAboutKeepsake01 = { RequiredTrait = mod.SharedKeepsakePortThanatosKeepsakeTrait, },
 		},
 	},
+	NPC_Orpheus_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		SubtitleColor = game.Color.OrpheusVoice,
+		AnimOffsetZ = 275,
+		TextLinesPauseAmbientMusicVocals = mod.NilValue,
+		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
+		RequiredRoomInteraction = true,
+		BlockedLootInteractionText = "NPCUseTextTalkLocked",
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		RepulseOnMeleeInvulnerableHit = 150,
+		-- TODO: Music themed
+		UpgradeScreenOpenSound = "/SFX/Menu Sounds/PortraitEmoteCheerfulSFX",
+		UpgradeSelectedSound = "/Leftovers/Menu Sounds/TalismanPaperEquipLEGENDARY",
+		MenuTitle = "NPC_Orpheus_01",
+		FlavorTextIds = {
+			"Orpheus_OfferText01",
+		},
+		-- "Songs of Orpheus",
+		BoonInfoTitleText = "ModsNikkelMHadesBiomes_Codex_BoonInfo_Orpheus",
+		Traits = {
+			-- TODO:
+			"ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
+			"ModsNikkelMHadesBiomesBuffMegaPom",
+			"ModsNikkelMHadesBiomesBuffFutureBoonRarity",
+		},
+		-- From Hades GiftData.lua
+		GiftTextLineSets = {
+			-- TODO: GameStateRequirements/UnlockGameStateRequirements for the reunion quest - which gift event? Same for Euydice
+			OrpheusGift07 = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			OrpheusGift08 = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+				-- TODO:
+				-- [3] = { PostLineFunctionArgs = { Icon = mod.SharedKeepsakePortEurydiceKeepsakeBondIcon }, },
+			},
+		},
+		MissingDistanceTrigger = mod.NilValue,
+	},
+	NPC_Orpheus_Story_01 = {
+		TextLinesPauseAmbientMusicVocals = mod.NilValue,
+		TextLinesPauseAmbientMusicVocals2 = mod.NilValue,
+		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
+		ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines = true,
+	},
 }
 
 -- Before adding them to the game, we need to apply some additional modifications to NPCs
@@ -432,6 +483,33 @@ local npcChoiceMappings = {
 			PostLineThreadedFunctionName = {
 				Find = "ThanatosExit",
 				Replace = _PLUGIN.guid .. "." .. "ThanatosExit",
+			},
+		},
+	},
+	NPC_Orpheus_01 = {
+		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
+		-- TODO: Nothing to match, need to add
+		TextToMatch = { "Eurydice_OfferText01", "Eurydice_OfferText02", },
+		PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
+		-- TODO:
+		PrePortraitExitFunctionArgs = mod.PresetEventArgs.OrpheusBenefitChoices,
+		-- TODO: Play selected song on exit
+		-- AlwaysReplaceIfExist = {
+		-- 	OnQueuedFunctionName = {
+		-- 		Find = "MusicianMusic",
+		-- 		Replace = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
+		-- 	},
+		-- },
+	},
+	NPC_Orpheus_Story_01 = {
+		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
+		TextToMatch = { "Eurydice_OfferText03", },
+		PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
+		PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
+		AlwaysReplaceIfExist = {
+			OnQueuedFunctionName = {
+				Find = "MusicianMusic",
+				Replace = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
 			},
 		},
 	},
