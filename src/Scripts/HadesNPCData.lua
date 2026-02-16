@@ -434,6 +434,38 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			},
 		},
 	},
+	OrpheusBenefitChoices = {
+		SkipComponents = {
+			"OlympusBackground",
+			"ShopBackground",
+			"ShopLighting",
+		},
+		DefaultGroup = "Combat_Menu_Overlay_Backing",
+		ButtonGroupName = "Combat_Menu_Overlay_Backing",
+		PurchaseAnimationGroupName = "Combat_Menu_Overlay_Additive",
+		PortraitName = "Portrait_Musician_Default_01",
+		PortraitShift = { Distance = 250, Angle = 180, Duration = 0.3, EaseIn = 0.5, EaseOut = 1.0, },
+		OverwriteTableKeys = { SkipUpgradePresentationAndExitUnlock = true, },
+		OnCloseFinishedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesNPCPostChoicePresentation",
+		UpgradeOptions = {
+			-- TODO:
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesBuffMegaPom",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
+				Rarity = "Common",
+			},
+		},
+	},
 	-- #endregion
 }
 
@@ -13405,8 +13437,6 @@ mod.NPCData = mod.NPCData or {
 					Portrait = "Portrait_Persephone_FiredUp_01",
 					PreLineThreadedFunctionName = "PowerWordPresentation",
 					PreLineThreadedFunctionArgs = { WaitTime = 4.5 },
-					-- PostLineThreadedFunctionName = "RoomOpeningEntrancePresentation"
-					-- PreLineAnim = "PersephoneGarden_Dismiss",
 					Text =
 					"That's quite all right; I do. {#DialogueItalicFormat}In the name of Persephone, the Queen{#PreviousFormat}!! Open the gates!"
 				},
@@ -20222,13 +20252,11 @@ mod.NPCData = mod.NPCData or {
 	NPC_Orpheus_01 = {
 		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
 
-		-- TODO:
 		UseText = "UseTalkToMusician",
 		Portrait = "Portrait_Musician_Default_01",
 		AnimOffsetZ = 230,
 		EmoteOffsetX = -30,
 		EmoteOffsetY = -160,
-		-- TODO:
 		SingingAnimation = "OrpheusPlaying_Start",
 		SingingFx = "StatusSinging",
 		SingingAnimOffsetX = 30,
