@@ -294,9 +294,8 @@ local encounterModifications = {
 				Args = {
 					-- Sisyphus and Bouldy
 					{
-						GameStateRequirements = {
-							-- TODO: Make ineligible during major Orpheus story events
-						},
+						-- Always eligible, since we need to be able to fall back to this
+						GameStateRequirements = {},
 						Weight = 0,
 						InnerArgs = {
 							FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" },
@@ -306,6 +305,11 @@ local encounterModifications = {
 					{
 						GameStateRequirements = {
 							-- TODO: Make ineligible during major Sisyphus story events
+							-- TODO: Create these incantations
+							-- RequiredCosmetics = { "OrpheusUnlockItem", },
+							-- RequiredFalseCosmeticPurchaseable = "OrpheusEurydiceQuestItem",
+							RequiredFalseFlags = { "InFlashback", "OrpheusReunionInProgress" },
+							RequiredFalseTextLinesThisRun = game.GameData.OrpheusWithEurydiceAltTextLines,
 						},
 						Weight = 1,
 						InnerArgs = {
