@@ -294,6 +294,7 @@ mod.HadesHelpTextCopyKeys = {
 	UseFinalBossDoor = true,
 	UseCerberusDoor = true,
 	UseStyxWarpDoor = true,
+	UseTalkToMusician = true,
 	-- UseForbiddenItem = true, -- Duplicate
 	-- UseCharonStoreDiscount = true, -- Duplicate
 	-- #endregion
@@ -671,6 +672,11 @@ mod.HadesHelpTextCopyKeys = {
 	-- #endregion
 	-- #region QuestData/Minor Prophecies
 	UnknownCondition_Meet = true,
+	MainSubPlotComplete = true,
+	OrpheusUnlockItem = true,
+	SisyphusQuestItem = true,
+	OrpheusEurydiceQuestItem = true,
+	AchillesPatroclusQuestItem = true,
 	-- #endregion
 	-- #region Elite Attributes
 	EliteAttribute_Beams = "Beams",
