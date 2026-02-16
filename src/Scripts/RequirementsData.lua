@@ -223,6 +223,15 @@ local newNamedRequirements = {
 		},
 	},
 	-- #endregion
+
+	-- #region NPC interactions
+	ModsNikkelMHadesBiomesOrpheusSingsAgain = {
+		{
+			Path = { "GameState", "TextLinesRecord" },
+			HasAny = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+		},
+	},
+	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.NamedRequirementsData, newNamedRequirements)
 -- #endregion

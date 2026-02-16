@@ -12,6 +12,24 @@ local function applyNPCChoiceMappings(npcData, mappings)
 								"Skipping generalized modification of textline " ..
 								textlineSetName .. " because it is in the ExcludeNamedTextLines list.", 4)
 						else
+							-- Add the PostLineFunctionName/PostLineThreadedFunctionName to the args for ModsNikkelMHadesBiomesNPCPostChoicePresentation
+							-- Do this before replacing the choice mappings as they are always in the last textline table and would be removed
+							-- The value of the mappingData entry is the index in which textline the function is located
+							local postLineThreadedFunctionName = nil
+							local postLineFunctionArgs = nil
+							if mappingData.MovePostLineThreadedFunctionNameToNPCPostChoicePresentationForTextLineSets then
+								if mappingData.MovePostLineThreadedFunctionNameToNPCPostChoicePresentationForTextLineSets[textlineSetName] ~= nil and textLineSet[mappingData.MovePostLineThreadedFunctionNameToNPCPostChoicePresentationForTextLineSets[textlineSetName]].PostLineThreadedFunctionName ~= nil then
+									postLineThreadedFunctionName = textLineSet
+											[mappingData.MovePostLineThreadedFunctionNameToNPCPostChoicePresentationForTextLineSets[textlineSetName]]
+											.PostLineThreadedFunctionName
+									postLineFunctionArgs = textLineSet
+											[mappingData.MovePostLineThreadedFunctionNameToNPCPostChoicePresentationForTextLineSets[textlineSetName]]
+											.PostLineFunctionArgs
+									textLineSet[mappingData.MovePostLineThreadedFunctionNameToNPCPostChoicePresentationForTextLineSets[textlineSetName]].PostLineThreadedFunctionName = nil
+									textLineSet[mappingData.MovePostLineThreadedFunctionNameToNPCPostChoicePresentationForTextLineSets[textlineSetName]].PostLineFunctionArgs = nil
+								end
+							end
+
 							-- Replace the choice mappings
 							local last = textLineSet[#textLineSet]
 							if last and game.Contains(mappingData.TextToMatch, last.Text) then
@@ -56,6 +74,42 @@ local function applyNPCChoiceMappings(npcData, mappings)
 										end
 									end
 								end
+							end
+
+							-- Add new key/value pairs to each table within the group if requested
+							for subTable, newKVPair in pairs(mappingData.AlwaysAddKVPairs or {}) do
+								if subTable == groupName then
+									for key, value in pairs(newKVPair) do
+										textLineSet[key] = value
+									end
+								end
+							end
+
+							-- Move EndVoiceLines and EndCues to the PrePortraitExitFunctionArgs for the benefit choice presentation if requested
+							if mappingData.MoveEndVoiceLinesAndCuesToBenefitChoiceArgs then
+								if textLineSet.EndVoiceLines ~= nil then
+									textLineSet.PrePortraitExitFunctionArgs = game.DeepCopyTable(textLineSet.PrePortraitExitFunctionArgs) or
+											{}
+									textLineSet.PrePortraitExitFunctionArgs.ModsNikkelMHadesBiomes_TextLineSetEndVoiceLines = textLineSet
+											.EndVoiceLines
+									textLineSet.EndVoiceLines = nil
+								end
+								if textLineSet.EndCue ~= nil then
+									textLineSet.PrePortraitExitFunctionArgs = game.DeepCopyTable(textLineSet.PrePortraitExitFunctionArgs) or
+											{}
+									textLineSet.PrePortraitExitFunctionArgs.ModsNikkelMHadesBiomes_TextLineSetEndCue = textLineSet.EndCue
+									textLineSet.EndCue = nil
+								end
+							end
+
+							-- Actually move the PostLineThreadedFunctionName to the NPC for handling in the post choice presentation
+							if postLineThreadedFunctionName ~= nil then
+								textLineSet.PrePortraitExitFunctionArgs = game.DeepCopyTable(textLineSet.PrePortraitExitFunctionArgs) or
+										{}
+								textLineSet.PrePortraitExitFunctionArgs.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionName =
+										postLineThreadedFunctionName
+								textLineSet.PrePortraitExitFunctionArgs.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionArgs =
+										postLineFunctionArgs or {}
 							end
 						end
 					end
@@ -110,6 +164,9 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesSisyphusMetapoints",
 		},
 		InteractTextLineSets = {
+			SisyphusAboutBouldy01 = {
+				[4] = { PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "SetUpBouldyConversation", }
+			},
 			SisyphusAboutBouldy02 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
 			SisyphusLiberationQuest_Beginning_01 = { RequiredTextLines = { "SisyphusBackstory03", "SisyphusMeeting06", "SisyphusGift06", "ModsNikkelMHadesBiomes_BouldyFirstMeeting" }, },
 			-- The new name from SharedKeepsakePort
@@ -367,17 +424,24 @@ local npcModifications = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		SubtitleColor = game.Color.OrpheusVoice,
 		AnimOffsetZ = 275,
+		ActivateRequirements = mod.NilValue,
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
 		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
+		-- Only start/stop the singing animation if Orpheus is singing again
+		ModsNikkelMHadesBiomes_OrpheusStartTextLinesAnimation = "OrpheusPlaying_PlayingLoop_End",
+		ModsNikkelMHadesBiomes_OrpheusEndTextLinesAnimation = "OrpheusPlaying_Start",
+		OrpheusSingsAgainRequirement = {
+			NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", },
+		},
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		RepulseOnMeleeInvulnerableHit = 150,
-		-- TODO: Music themed
 		UpgradeScreenOpenSound = "/SFX/Menu Sounds/PortraitEmoteCheerfulSFX",
 		UpgradeSelectedSound = "/Leftovers/Menu Sounds/TalismanPaperEquipLEGENDARY",
 		MenuTitle = "NPC_Orpheus_01",
 		FlavorTextIds = {
+			-- TODO: Different for if he sings again or not
 			"Orpheus_OfferText01",
 		},
 		-- "Songs of Orpheus",
@@ -388,9 +452,19 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesBuffMegaPom",
 			"ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		},
+		InteractTextLineSets = {
+			OrpheusFirstMeeting = {
+				SuperPriority = true,
+				Priority = mod.NilValue,
+			},
+			OrpheusFirstMeeting_Alt = {
+				SuperPriority = true,
+				Priority = mod.NilValue,
+			},
+		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
-			-- TODO: GameStateRequirements/UnlockGameStateRequirements for the reunion quest - which gift event? Same for Euydice
+			-- TODO: GameStateRequirements/UnlockGameStateRequirements for the reunion quest - which gift event? Same for Eurydice
 			OrpheusGift07 = {
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
@@ -419,11 +493,11 @@ local npcChoiceMappings = {
 	NPC_Sisyphus_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
 		TextToMatch = { "Sisyphus_OfferText01", },
-		ExcludeNamedTextLines = {
-			"SisyphusLiberationQuestComplete",
-		},
 		PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
 		PrePortraitExitFunctionArgs = mod.PresetEventArgs.SisyphusBenefitChoices,
+		MovePostLineThreadedFunctionNameToNPCPostChoicePresentationForTextLineSets = {
+			SisyphusLiberationQuestComplete = 7,
+		},
 	},
 	NPC_Eurydice_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
@@ -464,7 +538,7 @@ local npcChoiceMappings = {
 				UsePlayerSource = true,
 				SpeakerName = "NPC_Zagreus_Past_01",
 				LineHistoryName = "NPC_Zagreus_Past_01",
-			}
+			},
 		},
 	},
 	NPC_Thanatos_01 = {
@@ -488,18 +562,23 @@ local npcChoiceMappings = {
 	},
 	NPC_Orpheus_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
-		-- TODO: Nothing to match, need to add
-		TextToMatch = { "Eurydice_OfferText01", "Eurydice_OfferText02", },
-		PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
-		-- TODO:
-		PrePortraitExitFunctionArgs = mod.PresetEventArgs.OrpheusBenefitChoices,
-		-- TODO: Play selected song on exit
-		-- AlwaysReplaceIfExist = {
-		-- 	OnQueuedFunctionName = {
-		-- 		Find = "MusicianMusic",
-		-- 		Replace = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
-		-- 	},
-		-- },
+		AlwaysAddKVPairs = {
+			InteractTextLineSets = {
+				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
+				PrePortraitExitFunctionArgs = mod.PresetEventArgs.OrpheusBenefitChoices,
+			},
+			RepeatableTextLineSets = {
+				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
+				PrePortraitExitFunctionArgs = mod.PresetEventArgs.OrpheusBenefitChoices,
+			},
+		},
+		MoveEndVoiceLinesAndCuesToBenefitChoiceArgs = true,
+		MovePostLineThreadedFunctionNameToNPCPostChoicePresentationForTextLineSets = {
+			OrpheusFirstMeeting = 3,
+			OrpheusFirstMeeting_Alt = 3,
+			OrpheusAboutSingersReunionQuest01 = 4,
+		},
+		-- TODO: Play selected song on exit, if Orpheus sings again
 	},
 	NPC_Orpheus_Story_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },

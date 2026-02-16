@@ -14,6 +14,16 @@ modutil.mod.Path.Wrap("StartedTextLinesPresentation", function(base, source, tex
 		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 0 })
 	end
 
+	-- For Orpheus
+	if source.CheckOrpheusSinging == true and game.IsGameStateEligible(source, source.OrpheusSingsAgainRequirement) then
+		if source.ModsNikkelMHadesBiomes_OrpheusStartTextLinesAnimation then
+			SetAnimation({
+				DestinationId = source.ObjectId,
+				Name = source.ModsNikkelMHadesBiomes_OrpheusStartTextLinesAnimation
+			})
+		end
+	end
+
 	return base(source, textLines)
 end)
 

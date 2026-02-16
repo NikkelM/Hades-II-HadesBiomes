@@ -1,9 +1,46 @@
 function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	RemoveInputBlock({ Name = "PlayTextLines" })
+	source = source or {}
+	args = args or {}
 
-	-- Restart Eurydice's singing if we are talking to her
+	-- Change the portrait if requested
+	if args.PortraitName ~= nil then
+		SetAnimation({ DestinationId = screen.PortraitId, Name = screen.CurrentPortrait .. "_Exit" })
+		game.waitUnmodified(source.PortraitExitWait or 0.3)
+		SetAnimation({ DestinationId = screen.PortraitId, Name = args.PortraitName })
+	end
+
+	-- Play EndVoiceLines or EndCues if requested
+	if args.ModsNikkelMHadesBiomes_TextLineSetEndVoiceLines ~= nil then
+		game.thread(game.PlayEndVoiceLines, args.ModsNikkelMHadesBiomes_TextLineSetEndVoiceLines, source, args)
+	end
+	if args.ModsNikkelMHadesBiomes_TextLineSetEndCue ~= nil then
+		game.thread(
+			game.PlayVoiceLines, { Cue = args.ModsNikkelMHadesBiomes_TextLineSetEndCue }, nil, game.CurrentRun.Hero, args
+		)
+	end
+
+	-- Check if Orpheus should start singing
+	if args.CheckOrpheusSinging == true and game.IsGameStateEligible(source, source.OrpheusSingsAgainRequirement) then
+		if source.ModsNikkelMHadesBiomes_OrpheusEndTextLinesAnimation then
+			SetAnimation({ DestinationId = source.ObjectId, Name = source.ModsNikkelMHadesBiomes_OrpheusEndTextLinesAnimation })
+		end
+	end
+
+	-- Restart Eurydice's and Orpheus' singing if we are talking to her
 	if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
 		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
+	end
+	if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines then
+		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
+	end
+	if textLines ~= nil and textLines.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
+		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
+		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 1 })
+	end
+	if textLines ~= nil and textLines.ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines then
+		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1 })
+		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
 	end
 
 	RandomSynchronize(9)
@@ -65,6 +102,13 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 		source.MenuTitle = offerTextMenuTitleMappings[source.NextInteractLines.ModsNikkelMHadesBiomesPreviousOfferText]
 	end
 
+	if args.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionName then
+		screen.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionName = args
+				.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionName
+		screen.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionArgs = args
+				.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionArgs
+	end
+
 	game.OpenUpgradeChoiceMenu(source, args)
 	if args.OnCloseFinishedFunctionName then
 		screen.OnCloseFinishedFunctionName = args.OnCloseFinishedFunctionName
@@ -78,6 +122,13 @@ function mod.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
 	local heroId = game.CurrentRun.Hero.ObjectId
 	local npcId = screen.Source.ObjectId
 	game.FreezePlayerUnit("ModsNikkelMHadesBiomesNPCPostChoicePresentation")
+
+	if screen.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionName ~= nil then
+		game.thread(game.CallFunctionName,
+			screen.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionName, screen,
+			screen.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionArgs)
+	end
+
 	AngleTowardTarget({ Id = heroId, DestinationId = npcId })
 	game.wait(0.25)
 	SetAnimation({ Name = "MelinoeSaluteToEquip", DestinationId = heroId })
@@ -108,6 +159,13 @@ modutil.mod.Path.Wrap("BouldyHitPresentation", function(base, victim)
 		return base(victim)
 	end
 end)
+
+function mod.SetUpBouldyConversation()
+	local source = game.ActiveEnemies
+			[GetClosestUnitOfType({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "ModsNikkelMHadesBiomes_NPC_Bouldy_01", Distance = 3000 })]
+	game.CheckAvailableTextLines(source)
+	game.SetAvailableUseText(source)
+end
 
 function mod.ModsNikkelMHadesBiomesSisyphusBuff(args, source)
 	args = args or {}
@@ -255,6 +313,75 @@ function mod.ModsNikkelMHadesBiomesPatroclusAddMaxHealthMana(source, args)
 	game.AddMaxHealth(healthGained, "ResourceMaxHealth", { Silent = true })
 	game.AddMaxMana(manaGained, "ResourceMaxMana", { Silent = true })
 	game.thread(game.BonusHealthAndManaPresentation, healthGained, manaGained, 0.5)
+end
+
+-- #endregion
+
+-- #region Orpheus
+-- TODO: Test
+-- Adding to game namespace as the mapping order of operations would make it difficult to change this beforehand
+function game.OrpheusExit(source, args)
+	args = args or {}
+	game.wait(args.WaitTime or 0)
+
+	SetAnimation({ Name = "NPCOrpheusExit", DestinationId = source.ObjectId })
+
+	source.NextInteractLines = nil
+	UseableOff({ Id = source.ObjectId })
+	game.RefreshUseButton(source.ObjectId, source)
+	game.StopStatusAnimation(source)
+
+	source.Mute = true
+	if args.AnimationState ~= nil then
+		game.CurrentRun.AnimationState[source.ObjectId] = args.AnimationState
+	end
+
+	game.wait(1.0, game.RoomThreadName)
+
+	game.thread(game.MaxedRelationshipPresentation, source,
+		{
+			Delay = 1,
+			Title = "MainSubPlotComplete",
+			Text = "OrpheusEurydiceQuestItem",
+			TextRevealSound = "/Leftovers/Menu Sounds/TextReveal3",
+			AnimationName = "LocationTextBG",
+			AnimationOutName = "LocationTextBGOut"
+		})
+
+	-- TODO: Test if needed
+	-- if game.ActivatedObjects[source.ObjectId] ~= nil and not game.CurrentRun.Hero.IsDead then
+	-- 	game.ActivatedObjects[source.ObjectId] = nil
+	-- 	game.wait(0.2, game.RoomThreadName)
+	-- 	if game.CheckRoomExitsReady(game.CurrentRun.CurrentRoom) then
+	-- 		game.UnlockRoomExits(game.CurrentRun, game.CurrentRun.CurrentRoom)
+	-- 	end
+	-- end
+end
+
+-- TODO: Test - the voiceline using this won't be able to play yet anyways
+function MusicPracticePresentation()
+	game.wait(1)
+	PlaySound({ Name = "/SFX/LyreGood" })
+	game.wait(2)
+
+	game.thread(game.DisplayInfoBanner, nil, {
+		TitleText = "LoungeIntermissionMessage",
+		TextRevealSound = "/Leftovers/Menu Sounds/EmoteExcitement",
+		Color = game.Color.Gold,
+		TextColor = game.Color.White,
+		TextOffsetY = 20,
+		TitleFont = "SpectralSCLightTitling",
+		SubtitleFont = "SpectralSCLightTitling",
+		Layer = "ScreenOverlay",
+		AdditionalAnimation = "GodHoodRays",
+	})
+
+	game.wait(2)
+	AdjustFullscreenBloom({ Name = "Menu", Duration = 0.3 })
+	AdjustColorGrading({ Name = "Ascension", Duration = 0.3 })
+	AdjustColorGrading({ Name = "Off", Duration = 5.0 })
+	AdjustFullscreenBloom({ Name = "Off", Duration = 5.0 })
+	game.wait(1.0)
 end
 
 -- #endregion
