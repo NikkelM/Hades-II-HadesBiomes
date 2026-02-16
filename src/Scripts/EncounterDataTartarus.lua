@@ -296,6 +296,7 @@ local encounterModifications = {
 					{
 						-- Always eligible, since we need to be able to fall back to this
 						GameStateRequirements = {},
+						-- TODO: Reset after testing is done
 						Weight = 0,
 						InnerArgs = {
 							FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" },
