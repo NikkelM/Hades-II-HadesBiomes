@@ -37,6 +37,10 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_MarketScreen_Resources",
 		DisplayName = "Tauschhandel",
 	},
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Codex_BoonInfo_Orpheus",
+	-- 	DisplayName = "Songs of {$TempTextData.BoonName}",
+	-- },
 	-- #endregion
 
 	-- #region Install screens

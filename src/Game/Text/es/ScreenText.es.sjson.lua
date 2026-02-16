@@ -36,6 +36,10 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_MarketScreen_Resources",
 	-- 	DisplayName = "Barter Exchange",
+	-- },	
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Codex_BoonInfo_Orpheus",
+	-- 	DisplayName = "Songs of {$TempTextData.BoonName}",
 	-- },
 	-- #endregion
 
