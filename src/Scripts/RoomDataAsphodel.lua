@@ -547,7 +547,7 @@ local roomModifications = {
 
 	-- OTHER
 	X_Story01 = {
-		LoadModdedVoiceBanks = { "Eurydice", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Eurydice", "Orpheus", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		-- We play our own music in this room, don't play any by default
 		IgnoreMusic = true,

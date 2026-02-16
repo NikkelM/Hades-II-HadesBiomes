@@ -799,7 +799,7 @@ local roomModifications = {
 
 	-- OTHER
 	A_Story01 = {
-		LoadModdedVoiceBanks = { "Sisyphus", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Sisyphus", "Orpheus", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
