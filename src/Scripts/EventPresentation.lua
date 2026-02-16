@@ -15,7 +15,7 @@ modutil.mod.Path.Wrap("StartedTextLinesPresentation", function(base, source, tex
 	end
 
 	-- For Orpheus
-	if source.CheckOrpheusSinging == true and game.IsGameStateEligible(source, source.OrpheusSingsAgainRequirement) then
+	if source.CheckOrpheusSinging == true and game.IsGameStateEligible(source, source.OrpheusSingsAgainRequirements) then
 		if source.ModsNikkelMHadesBiomes_OrpheusStartTextLinesAnimation then
 			SetAnimation({
 				DestinationId = source.ObjectId,

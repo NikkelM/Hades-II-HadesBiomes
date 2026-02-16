@@ -451,17 +451,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			-- TODO:
 			{
 				Type = "Trait",
-				ItemName = "ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
-				Rarity = "Common",
-			},
-			{
-				Type = "Trait",
-				ItemName = "ModsNikkelMHadesBiomesBuffMegaPom",
-				Rarity = "Common",
-			},
-			{
-				Type = "Trait",
-				ItemName = "ModsNikkelMHadesBiomesBuffFutureBoonRarity",
+				ItemName = "ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost",
 				Rarity = "Common",
 			},
 		},

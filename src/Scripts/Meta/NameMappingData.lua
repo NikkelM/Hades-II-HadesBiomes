@@ -670,13 +670,43 @@ mod.HadesHelpTextCopyKeys = {
 	-- ClearGiftDrops = "ModsNikkelMHadesBiomes_RunClear_ClearGiftDrops",
 	-- ClearLockKeyDrops = "ModsNikkelMHadesBiomes_RunClear_ClearLockKeyDrops",
 	-- #endregion
-	-- #region QuestData/Minor Prophecies
+	-- #region QuestData/Minor Prophecies/Unlocks
 	UnknownCondition_Meet = true,
 	MainSubPlotComplete = true,
 	OrpheusUnlockItem = true,
 	SisyphusQuestItem = true,
 	OrpheusEurydiceQuestItem = true,
 	AchillesPatroclusQuestItem = true,
+	-- #endregion
+	-- #region Orpheus Boons/Songs
+	MusicMusicPlayerMainThemeMusicPlayer = true,
+	MusicMusicPlayerHadesThemeMusicPlayer = true,
+	MusicMusicPlayerMusicExploration4MusicPlayer = true,
+	MusicMusicPlayerMusicHadesResetMusicPlayer = true,
+	MusicMusicPlayerMusicHadesReset2MusicPlayer = true,
+	MusicMusicPlayerMusicHadesReset3MusicPlayer = true,
+	MusicMusicPlayerMusicTartarus4MusicPlayer = true,
+	MusicMusicPlayerMusicAsphodel1MusicPlayer = true,
+	MusicMusicPlayerMusicAsphodel2MusicPlayer = true,
+	MusicMusicPlayerMusicAsphodel3MusicPlayer = true,
+	MusicMusicPlayerMusicElysium1MusicPlayer = true,
+	MusicMusicPlayerMusicElysium2MusicPlayer = true,
+	MusicMusicPlayerMusicElysium3MusicPlayer = true,
+	MusicMusicPlayerMusicStyx1MusicPlayer = true,
+	MusicMusicPlayerBossFightMusicMusicPlayer = true,
+	MusicMusicPlayerTheUnseenOnesMusicPlayer = true,
+	MusicMusicPlayerCharonShopThemeMusicPlayer = true,
+	MusicMusicPlayerCharonFightThemeMusicPlayer = true,
+	MusicMusicPlayerChaosThemeMusicPlayer = true, -- Boon added
+	MusicMusicPlayerThanatosThemeMusicPlayer = true,
+	MusicMusicPlayerMusicExploration1MusicPlayer = true,
+	MusicMusicPlayerMusicExploration2MusicPlayer = true,
+	MusicMusicPlayerMusicExploration3MusicPlayer = true,
+	MusicMusicPlayerOrpheusSong1MusicPlayer = true,
+	MusicMusicPlayerOrpheusSong2MusicPlayer = true,
+	MusicMusicPlayerEurydiceSong1MusicPlayer = true,
+	MusicMusicPlayerPersephoneThemeMusicPlayer = true,
+	MusicMusicPlayerEndThemeMusicPlayer = true,
 	-- #endregion
 	-- #region Elite Attributes
 	EliteAttribute_Beams = "Beams",

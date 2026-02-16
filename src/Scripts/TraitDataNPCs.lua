@@ -462,6 +462,40 @@ local newTraitData = {
 		},
 	},
 	-- #endregion
+
+	-- #region Orpheus
+	ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		-- TODO:
+		Icon = "Boon_Eurydice_01",
+		BoonInfoIgnoreRequirements = true,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "ChaosFirstPickUp" },
+			},
+		},
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
+		AcquireFunctionArgs = {
+			TrackName = "{2c8f3fd6-6c6c-4146-a750-20be93cd8ca8}",
+			AddAdditionalTraits = {
+				"ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost_EntryCostSubBoon",
+			},
+		},
+		ForceSecretDoor = true,
+		RemainingUses = 1,
+	},
+	ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost_EntryCostSubBoon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		-- TODO:
+		Icon = "Boon_Eurydice_01",
+		SecretDoorCostMultiplier = {
+			BaseMin = 0,
+			BaseMax = 0,
+		},
+	},
+	-- #endregion
 }
 
 game.OverwriteTableKeys(game.TraitData, newTraitData)

@@ -4,7 +4,7 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	args = args or {}
 
 	-- Change the portrait if requested
-	if args.PortraitName ~= nil then
+	if args.PortraitName ~= nil and screen.CurrentPortrait ~= args.PortraitName then
 		SetAnimation({ DestinationId = screen.PortraitId, Name = screen.CurrentPortrait .. "_Exit" })
 		game.waitUnmodified(source.PortraitExitWait or 0.3)
 		SetAnimation({ DestinationId = screen.PortraitId, Name = args.PortraitName })
@@ -21,7 +21,7 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	end
 
 	-- Check if Orpheus should start singing
-	if args.CheckOrpheusSinging == true and game.IsGameStateEligible(source, source.OrpheusSingsAgainRequirement) then
+	if args.CheckOrpheusSinging == true and game.IsGameStateEligible(source, source.OrpheusSingsAgainRequirements) then
 		if source.ModsNikkelMHadesBiomes_OrpheusEndTextLinesAnimation then
 			SetAnimation({ DestinationId = source.ObjectId, Name = source.ModsNikkelMHadesBiomes_OrpheusEndTextLinesAnimation })
 		end
@@ -232,7 +232,12 @@ function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 	end
 
 	game.AudioState.SecretMusicName = args.TrackName
-	game.AudioState.SecretMusicId = PlaySound({ Name = game.AudioState.SecretMusicName, AddCallbacks = true })
+	game.AudioState.SecretMusicId = PlaySound({
+		Name = game.AudioState.SecretMusicName,
+		AddCallbacks = true,
+		Delay = args.StartDelay or 0,
+		Duration = args.Duration or 0
+	})
 	game.SetDefaultMusicParams(game.AudioState.SecretMusicName, game.AudioState.SecretMusicId, args)
 	if args.TrackOffsetMin ~= nil then
 		SetSoundPosition({
@@ -318,6 +323,26 @@ end
 -- #endregion
 
 -- #region Orpheus
+function mod.ModsNikkelMHadesBiomesOrpheusBuff(args, source)
+	args = args or {}
+	local orpheus = game.ActiveEnemies[390000]
+
+	if args.FunctionName then
+		game.CallFunctionName(args.FunctionName, source, args)
+	end
+	if args.AddAdditionalTraits then
+		for _, trait in pairs(args.AddAdditionalTraits) do
+			game.AddTraitToHero({ TraitName = trait })
+		end
+	end
+
+	-- If Orpheus sings again, start playing the selected boon's song
+	if game.IsGameStateEligible(orpheus, orpheus.OrpheusSingsAgainRequirements) then
+		mod.ModsNikkelMHadesBiomesEurydiceMusic(orpheus,
+			{ TrackName = args.TrackName, StartDelay = 1.5, Duration = 2 })
+	end
+end
+
 -- TODO: Test
 -- Adding to game namespace as the mapping order of operations would make it difficult to change this beforehand
 function game.OrpheusExit(source, args)

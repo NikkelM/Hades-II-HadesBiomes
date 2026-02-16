@@ -430,7 +430,7 @@ local npcModifications = {
 		-- Only start/stop the singing animation if Orpheus is singing again
 		ModsNikkelMHadesBiomes_OrpheusStartTextLinesAnimation = "OrpheusPlaying_PlayingLoop_End",
 		ModsNikkelMHadesBiomes_OrpheusEndTextLinesAnimation = "OrpheusPlaying_Start",
-		OrpheusSingsAgainRequirement = {
+		OrpheusSingsAgainRequirements = {
 			NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", },
 		},
 		RequiredRoomInteraction = true,
@@ -448,9 +448,7 @@ local npcModifications = {
 		BoonInfoTitleText = "ModsNikkelMHadesBiomes_Codex_BoonInfo_Orpheus",
 		Traits = {
 			-- TODO:
-			"ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
-			"ModsNikkelMHadesBiomesBuffMegaPom",
-			"ModsNikkelMHadesBiomesBuffFutureBoonRarity",
+			"ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost",
 		},
 		InteractTextLineSets = {
 			OrpheusFirstMeeting = {
