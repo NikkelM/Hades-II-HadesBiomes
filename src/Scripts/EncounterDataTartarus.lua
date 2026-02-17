@@ -301,6 +301,14 @@ local encounterModifications = {
 						InnerArgs = {
 							FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" },
 						},
+						ThreadedEvents = {
+							{
+								FunctionName = _PLUGIN.guid .. "." .. "SecretMusicPlayerEvent",
+								Args = {
+									TrackName = "/Music/MusicExploration1_MC",
+								},
+							},
+						},
 					},
 					-- Orpheus and Bouldy
 					{
@@ -315,6 +323,21 @@ local encounterModifications = {
 						Weight = 1,
 						InnerArgs = {
 							FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Orpheus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" },
+						},
+						ThreadedEvents = {
+							{
+								FunctionName = _PLUGIN.guid .. "." .. "LoadHadesOSTSoundBank",
+							},
+							{
+								FunctionName = _PLUGIN.guid .. "." .. "OrpheusRoomStartMusicPlayer",
+								Args = {
+									OrpheusSingsAgainRequirements = {
+										NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", },
+									},
+									TrackOffsetMin = 10.0,
+									TrackOffsetMax = 120.0,
+								},
+							},
 						},
 					},
 					FractionMin = mod.NilValue,

@@ -427,6 +427,7 @@ local npcModifications = {
 		ActivateRequirements = mod.NilValue,
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
 		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
+		TextLinesPauseSingingFx = true,
 		-- Only start/stop the singing animation if Orpheus is singing again
 		ModsNikkelMHadesBiomes_OrpheusStartTextLinesAnimation = "OrpheusPlaying_PlayingLoop_End",
 		ModsNikkelMHadesBiomes_OrpheusEndTextLinesAnimation = "OrpheusPlaying_Start",

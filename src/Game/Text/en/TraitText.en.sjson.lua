@@ -131,18 +131,19 @@ local newData = {
 	},
 	-- #endregion
 
+	-- TODO: Add to localization files
 	-- #region Orpheus
 	{
 		Id = "ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost",
 		InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
 		Description =
-		"Ensure a {$Keywords.HealthGate} spawns ahead as soon as possible. All {$Keywords.HealthGatePlural} this night cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter.",
+		"Ensure a {$Keywords.HealthGate} spawns ahead as soon as possible. {#Emph}All{#Prev} {$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost_EntryCostSubBoon",
 		InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
 		Description =
-		"All {$Keywords.HealthGatePlural} this night cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter.",
+		"{#Emph}All{#Prev} {$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
 	},
 	-- #endregion
 }

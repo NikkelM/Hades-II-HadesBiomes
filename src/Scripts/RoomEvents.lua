@@ -84,5 +84,8 @@ function mod.ActivateRandomPrePlacedFromWeightedList(eventSource, args)
 	local chosenPrePlacedObject = game.GetRandomEligibleValueFromWeightedList(args)
 	if chosenPrePlacedObject ~= nil then
 		game.ActivatePrePlaced(eventSource, chosenPrePlacedObject.InnerArgs or chosenPrePlacedObject)
+		if chosenPrePlacedObject.ThreadedEvents ~= nil then
+			game.RunEventsGeneric(chosenPrePlacedObject.ThreadedEvents, game.CurrentRun.CurrentRoom.Encounter)
+		end
 	end
 end

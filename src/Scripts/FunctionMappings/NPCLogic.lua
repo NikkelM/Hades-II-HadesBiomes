@@ -340,6 +340,7 @@ function mod.ModsNikkelMHadesBiomesOrpheusBuff(args, source)
 	if game.IsGameStateEligible(orpheus, orpheus.OrpheusSingsAgainRequirements) then
 		mod.ModsNikkelMHadesBiomesEurydiceMusic(orpheus,
 			{ TrackName = args.TrackName, StartDelay = 1.5, Duration = 2 })
+		game.GameState.ModsNikkelMHadesBiomesLastPlayedOrpheusTrack = args.TrackName
 	end
 end
 

@@ -150,8 +150,13 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 6 then
+			game.GameState.ModsNikkelMHadesBiomesLastPlayedOrpheusTrack = game.GameState
+					.ModsNikkelMHadesBiomesLastPlayedOrpheusTrack or nil
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 5
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 6
 	end
 
 	return base()

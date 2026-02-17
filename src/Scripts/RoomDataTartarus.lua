@@ -800,12 +800,14 @@ local roomModifications = {
 	-- OTHER
 	A_Story01 = {
 		LoadModdedVoiceBanks = { "Sisyphus", "Orpheus", "ZagreusField" },
-		-- For Orpheus
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
+
+		-- We do our own music events depending on which NPC is in the room
+		IgnoreMusic = true,
+		SecretMusic = mod.NilValue,
 
 		ThreadedEvents = {
 			[1] = mod.NilValue
