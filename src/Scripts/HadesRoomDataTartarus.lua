@@ -2477,10 +2477,12 @@ mod.RoomData.Tartarus = mod.RoomData.Tartarus or {
 
 		GameStateRequirements =
 		{
-			RequiredMinBiomeDepth = 4,
-			RequiredMinCompletedRuns = 1,
-			RequiredSeenRooms = { "A_Boss01" },
+			-- RequiredMinBiomeDepth = 4,
+			-- RequiredMinCompletedRuns = 1,
+			-- RequiredSeenRooms = { "A_Boss01" },
 		},
+		ForceAtBiomeDepthMin = 0,
+		ForceAtBiomeDepthMax = 0,
 
 		SecretMusic = "/Music/MusicExploration1_MC",
 		ZoomFraction = 0.85,

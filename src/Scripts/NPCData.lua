@@ -215,6 +215,7 @@ local npcModifications = {
 		ActivateRequirements = mod.NilValue,
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
 		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
+		ModsNikkelMHadesBiomesPlayVocals = true,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
@@ -426,7 +427,8 @@ local npcModifications = {
 		AnimOffsetZ = 275,
 		ActivateRequirements = mod.NilValue,
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
-		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
+		ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines = true,
+		ModsNikkelMHadesBiomesPlayVocals2 = true,
 		TextLinesPauseSingingFx = true,
 		-- Only start/stop the singing animation if Orpheus is singing again
 		ModsNikkelMHadesBiomes_OrpheusStartTextLinesAnimation = "OrpheusPlaying_PlayingLoop_End",
@@ -460,9 +462,67 @@ local npcModifications = {
 				SuperPriority = true,
 				Priority = mod.NilValue,
 			},
+			OrpheusSingsAgain01 = {
+				-- Force playing this music
+				RequiredAmbientTrackNameMatch = mod.NilValue,
+			},
+			OrpheusSingsAgain01_B = {
+				RequiredAmbientTrackNameMatch = mod.NilValue,
+			},
+			OrpheusSingsAgain01_C = {
+				RequiredAmbientTrackNameMatch = mod.NilValue,
+			},
+			OrpheusSingsAgain01_D = {
+				RequiredAmbientTrackNameMatch = mod.NilValue,
+			},
+			OrpheusSingsAgain02 = {
+				RequiredAmbientTrackNameMatch = mod.NilValue,
+			},
+			OrpheusSingsAgain03 = {
+				RequiredAmbientTrackNameMatch = mod.NilValue,
+			},
+			OrpheusSingsAgain03_B = {
+				RequiredAmbientTrackNameMatch = mod.NilValue,
+			},
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {
+			OrpheusGift05 = {
+				[2] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "TimePassesPresentation",
+					PostLineFunctionArgs = { PreTextWait = 0.75 },
+				},
+				[3] = {
+					FadeOutTime = mod.NilValue,
+					FullFadeTime = mod.NilValue,
+					TeleportToId = mod.NilValue,
+					AngleTowardTargetId = mod.NilValue,
+					TeleportOffsetY = mod.NilValue,
+					TeleportOffsetX = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+					FadeInTime = mod.NilValue,
+					AttachedDim = mod.NilValue,
+					FadeInSound = mod.NilValue,
+				},
+				[4] = {
+					PostLineThreadedFunctionName = mod.NilValue,
+					PostLineFunctionArgs = mod.NilValue,
+				},
+				[5] = {
+					FadeOutTime = mod.NilValue,
+					FullFadeTime = mod.NilValue,
+					InterSceneWaitTime = mod.NilValue,
+					TeleportToId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					TeleportHeroOffsetX = mod.NilValue,
+					TeleportHeroOffsetY = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+					FadeInTime = mod.NilValue,
+					PreLineWait = mod.NilValue,
+					FadeInSound = mod.NilValue,
+				},
+			},
 			-- TODO: GameStateRequirements/UnlockGameStateRequirements for the reunion quest - which gift event? Same for Eurydice
 			OrpheusGift07 = {
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
@@ -478,12 +538,42 @@ local npcModifications = {
 			},
 		},
 		MissingDistanceTrigger = mod.NilValue,
+		-- Copied from Story variant, since in H1 you couldn't attack him since he was located in the House
+		OnHitVoiceLines = {
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.45,
+			SuccessiveChanceToPlay = 0.25,
+			PlayFromTarget = true,
+			Cooldowns = {
+				{ Name = "OrpheusAnyQuipSpeech", Time = 12 },
+			},
+			-- My friend?
+			{ Cue = "/VO/Orpheus_0235" },
+			-- That makes it difficult to sing, my friend.
+			{ Cue = "/VO/Orpheus_0236" },
+			-- Have I wronged you somehow?
+			{ Cue = "/VO/Orpheus_0238" },
+			-- I resolved never to fight, my friend.
+			{ Cue = "/VO/Orpheus_0239" },
+			-- I fight only through song, my friend.
+			{ Cue = "/VO/Orpheus_0240" },
+			-- I am attempting here to sing, my friend?
+			{ Cue = "/VO/Orpheus_0242" },
+		},
 	},
 	NPC_Orpheus_Story_01 = {
+		AnimOffsetZ = 230,
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
 		TextLinesPauseAmbientMusicVocals2 = mod.NilValue,
 		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
 		ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines = true,
+		ModsNikkelMHadesBiomesPlayVocals = true,
+		ModsNikkelMHadesBiomesPlayVocals2 = true,
+		MenuTitle = "ModsNikkelMHadesBiomes_Eurydice_Orpheus",
+		FlavorTextIds = {
+			"Eurydice_OfferText03",
+		},
 	},
 }
 
@@ -561,6 +651,12 @@ local npcChoiceMappings = {
 	},
 	NPC_Orpheus_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
+		AlwaysReplaceIfExist = {
+			OnQueuedFunctionName = {
+				Find = "MusicianMusic",
+				Replace = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
+			},
+		},
 		AlwaysAddKVPairs = {
 			InteractTextLineSets = {
 				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
@@ -577,7 +673,6 @@ local npcChoiceMappings = {
 			OrpheusFirstMeeting_Alt = 3,
 			OrpheusAboutSingersReunionQuest01 = 4,
 		},
-		-- TODO: Play selected song on exit, if Orpheus sings again
 	},
 	NPC_Orpheus_Story_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },

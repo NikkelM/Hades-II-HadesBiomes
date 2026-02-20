@@ -34,14 +34,6 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines then
 		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
 	end
-	if textLines ~= nil and textLines.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
-		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
-		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 1 })
-	end
-	if textLines ~= nil and textLines.ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines then
-		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1 })
-		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
-	end
 
 	RandomSynchronize(9)
 
@@ -210,7 +202,8 @@ function mod.ModsNikkelMHadesBiomesSingingPresentation(source, ars)
 end
 
 function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
-	source = source or game.ActiveEnemies[514436]
+	-- NPC_Orpheus_Story_01 or NPC_Eurydice_01 or NPC_Orpheus_01
+	source = source or game.ActiveEnemies[554419] or game.ActiveEnemies[514436] or game.ActiveEnemies[390000]
 
 	game.CurrentRun.EventState[source.ObjectId] = {
 		FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSingingPresentation",
@@ -246,7 +239,17 @@ function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 		})
 	end
 
-	SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
+	if source.ModsNikkelMHadesBiomesPlayVocals then
+		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
+	else
+		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 0 })
+	end
+
+	if source.ModsNikkelMHadesBiomesPlayVocals2 then
+		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
+	else
+		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 0 })
+	end
 end
 
 function mod.ModsNikkelMHadesBiomesEurydiceBuff(args, source)

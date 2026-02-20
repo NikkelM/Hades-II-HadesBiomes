@@ -22,3 +22,23 @@ modutil.mod.Path.Context.Wrap.Static("CannotUseDoorPresentation", function(conte
 		return base(door)
 	end)
 end)
+
+
+modutil.mod.Path.Context.Wrap.Static("PartnersChattingPresentation", function(origNpc, origArgs, origContextArgs)
+	modutil.mod.Path.Wrap("SpawnObstacle", function(base, obstacleArgs)
+		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+			local npc = modutil.mod.Locals.Stacked(3).npc
+			local partner = modutil.mod.Locals.Stacked(3).partner
+			if npc.ObjectId == obstacleArgs.DestinationId and npc.ModsNikkelMHadesBiomesIsModdedEnemy then
+				obstacleArgs.Attach = nil
+				obstacleArgs.AttachToMarkerName = nil
+			end
+			if partner.ObjectId == obstacleArgs.DestinationId and partner.ModsNikkelMHadesBiomesIsModdedEnemy then
+				obstacleArgs.Attach = nil
+				obstacleArgs.AttachToMarkerName = nil
+			end
+		end
+
+		return base(obstacleArgs)
+	end)
+end)

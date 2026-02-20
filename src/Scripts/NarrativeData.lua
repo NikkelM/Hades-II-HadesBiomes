@@ -2,6 +2,7 @@
 local hadesNPCNames = {
 	"NPC_Sisyphus_01",
 	"NPC_Orpheus_01",
+	"NPC_Orpheus_Story_01",
 	"NPC_Eurydice_01",
 	"NPC_Patroclus_01",
 	"NPC_Thanatos_01",
@@ -27,6 +28,17 @@ local hadesNPCGiftLinePriorities = {
 	},
 	-- TODO: Integrate into shared keepsake port
 	NPC_Orpheus_01 = {
+		"OrpheusGift01",
+		"OrpheusGift02",
+		"OrpheusGift03",
+		"OrpheusGift04",
+		"OrpheusGift04_B",
+		"OrpheusGift05",
+		"OrpheusGift06",
+		"OrpheusGift07",
+		"OrpheusGift08",
+	},
+	NPC_Orpheus_Story_01 = {
 		"OrpheusGift01",
 		"OrpheusGift02",
 		"OrpheusGift03",

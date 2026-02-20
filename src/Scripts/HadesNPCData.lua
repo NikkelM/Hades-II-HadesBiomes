@@ -303,6 +303,28 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		TrackOffsetMax = 120.0,
 	},
 	-- #endregion
+	-- #region Orpheus
+	Singing_SongFromStart = {
+		TrackName = "{01bdb2dd-ba29-44eb-b533-d759a6869a6a}",
+		Restore = true,
+	},
+	Singing = {
+		TrackName = "{01bdb2dd-ba29-44eb-b533-d759a6869a6a}",
+		Restore = true,
+		TrackOffsetMin = 10.0,
+		TrackOffsetMax = 120.0,
+	},
+	SingingHymn_SongFromStart = {
+		TrackName = "{e044c3d0-8cf0-44ac-9d8e-75eda8c80501}",
+		Restore = true,
+	},
+	SingingHymn = {
+		TrackName = "{e044c3d0-8cf0-44ac-9d8e-75eda8c80501}",
+		Restore = true,
+		TrackOffsetMin = 10.0,
+		TrackOffsetMax = 120.0,
+	},
+	-- #endregion
 	-- #region NPC Benefit choices
 	SisyphusBenefitChoices = {
 		SkipComponents = {
@@ -4301,7 +4323,7 @@ mod.NPCData = mod.NPCData or {
 		},
 	},
 
-	-- Manually replaced PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] with mod.PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] to make it easier
+	-- Manually replaced PresetEventArgs.Singing/SingingHymn[_SongFromStart] with mod.PresetEventArgs.Singing/SingingHymn[_SongFromStart] to make it easier
 	-- FunctionName is still replaced in NPCData.lua
 	-- Eurydice, Id = 514436
 	NPC_Eurydice_01 = {
@@ -20238,6 +20260,8 @@ mod.NPCData = mod.NPCData or {
 		},
 	},
 
+	-- Manually replaced PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] with mod.PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] to make it easier
+	-- FunctionName is still replaced in NPCData.lua
 	-- Orpheus, Id = 390000
 	NPC_Orpheus_01 = {
 		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
@@ -20926,8 +20950,7 @@ mod.NPCData = mod.NPCData or {
 					"Oh no, I never found my muse, my friend. It's just... seeing you carrying on like this time after time, I was reminded I ought to get on with my life, too, such as it is right now."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				-- TODO:
-				OnQueuedFunctionArgs = PresetEventArgs.Singing_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			-- alt if you met eurydice
@@ -20960,7 +20983,7 @@ mod.NPCData = mod.NPCData or {
 					"How kind of you. It's just... seeing you carry on like this, time after time, I was reminded that I might as well get on with my existence, too. Such as it is right now."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			-- via eurydice; no 'good riddance' yet
@@ -20992,7 +21015,7 @@ mod.NPCData = mod.NPCData or {
 					"How kind of you, my friend. It's just... seeing you carry on like this, time after time, I was reminded I ought to get on with my existence, too. Such as it is right now."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			-- via eurydice; 'good riddance' played first
@@ -21026,7 +21049,7 @@ mod.NPCData = mod.NPCData or {
 					"How kind of you, although... my voice is nothing but the crunch of gravel underfoot compared to hers, which soars as though on wings."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 
@@ -21302,7 +21325,7 @@ mod.NPCData = mod.NPCData or {
 					"Heavens, no, my friend! Your humility is matched only by your perseverance in the face of adversity! May your great deeds live on forever, much like you!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingHymn_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 
@@ -21798,7 +21821,7 @@ mod.NPCData = mod.NPCData or {
 					"Oh. Thanks for the sentiment, my friend, it's just... when I sing this song of hers, why, I've this feeling where my heart once was that, well... perhaps she {#DialogueItalicFormat}can{#PreviousFormat}."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Orpheus_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			-- alt if this is first song he sings
@@ -21834,7 +21857,7 @@ mod.NPCData = mod.NPCData or {
 					"Oh. Thanks for the sentiment, my friend, it's just... when I sing this song of hers, why, I've this feeling where my heart once was that, well... perhaps she {#DialogueItalicFormat}can{#PreviousFormat}."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Orpheus_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 
@@ -22839,7 +22862,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I'm in the middle of a song my friend...!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusChat21 = {
@@ -22853,7 +22876,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I'd best get back to singing, Zagreus."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusChat22 = {
@@ -22867,7 +22890,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Let's talk when I'm not singing, Zagreus?"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusChat23 = {
@@ -22881,7 +22904,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Hello, my friend, let's get back to my song?"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusChat24 = {
@@ -22895,7 +22918,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I'm kind of singing at the moment, Zagreus."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusChat25 = {
@@ -22909,7 +22932,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Terribly sorry I can't speak with you right now."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusChat26 = {
@@ -22923,7 +22946,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I thought I'd lost even the gift of music, Zagreus. So, thanks again for helping find that one for me!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusChat27 = {
@@ -22937,7 +22960,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I must say, it's nice having some music in my life again, and hopefully in yours!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusChat28 = {
@@ -22951,7 +22974,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "We all could use a little song from time to time, isn't that so?"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusChat29 = {
@@ -22965,7 +22988,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "It's nice that I no longer have to live and breathe, and can be focused purely on my song...!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusChat30 = {
@@ -22979,7 +23002,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You rescued me from an eternity of not getting to sing, my friend."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 
@@ -23048,7 +23071,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I am in concert as perhaps you see, my friend!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingHymn,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat02 = {
@@ -23063,7 +23086,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Begging your pardon, Zagreus, but I'm amid performance at this time!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingHymn_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat03 = {
@@ -23078,7 +23101,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I'm quite preoccupied with singing all your praises, Zagreus!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingHymn,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat04 = {
@@ -23093,7 +23116,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "This hymn is dedicated to your deeds, my friend!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingHymn_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat05 = {
@@ -23108,7 +23131,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I cannot talk right now, my friend, for I must sing!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat06 = {
@@ -23123,7 +23146,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I trust my music brings some lightness to our gloom-filled times, my friend?"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingHymn,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat07 = {
@@ -23138,7 +23161,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "The tale of your birth is so complex, my friend!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingHymn,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat08 = {
@@ -23153,10 +23176,11 @@ mod.NPCData = mod.NPCData or {
 					Text = "I ask you please hold your applause until the end!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
-			OrpheusSingingChat09 = {
+			-- Custom: This was a duplicate of the below, meaning it got overridden in H1
+			OrpheusSingingChat09_A = {
 				UseableOffSource = true,
 				GiftableOffSource = true,
 				InitialGiftableOffSource = true,
@@ -23168,7 +23192,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "To think Lord Dionysus and yourself share such a bond!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingHymn,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat09 = {
@@ -23183,7 +23207,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "May my performances spread wide your fame, my friend!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingHymn,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat10 = {
@@ -23198,7 +23222,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Your parentage need not be secret any longer, Zagreus!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingHymn_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat11 = {
@@ -23213,7 +23237,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I shall keep singing of your praises, far and wide!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingHymn,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat12 = {
@@ -23228,7 +23252,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You've helped inspire me to song, my friend!"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat13 = {
@@ -23243,7 +23267,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I must stay focused on my singing, Zagreus."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.Singing,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Singing,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusSingingChat14 = {
@@ -23258,7 +23282,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I trust my hymn provides some solace to your days or nights?"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingHymn,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingHymn,
 				RequiredAmbientTrackNameMatch = true,
 			},
 
@@ -23275,7 +23299,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "My muse writes absolutely wondrous songs, don't you agree?"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Orpheus,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusEurydiceSingingChat02 = {
@@ -23290,7 +23314,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}, this reminds me so of my Eurydice..."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Orpheus,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusEurydiceSingingChat03 = {
@@ -23305,7 +23329,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Would that I were together with her now..."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Orpheus_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusEurydiceSingingChat04 = {
@@ -23320,7 +23344,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "The songs of my Eurydice are without peer..."
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Orpheus,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusEurydiceSingingChat05 = {
@@ -23335,7 +23359,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "This is a favorite song of mine, and perhaps yours?"
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Orpheus_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Orpheus_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 
@@ -23346,7 +23370,6 @@ mod.NPCData = mod.NPCData or {
 			OrpheusGift01 = {
 				PlayOnce = true,
 				{
-					-- TODO: Voicelines
 					Cue = "/VO/ZagreusHome_0115",
 					Portrait = "Portrait_Zag_Default_01",
 					Speaker = "CharProtag",
@@ -23357,7 +23380,6 @@ mod.NPCData = mod.NPCData or {
 					Text = "Hey, mate, here. I got this for my favorite court musician."
 				},
 				{
-					-- TODO: Voicelines
 					Cue = "/VO/Orpheus_0057",
 					Text =
 					"Oh, my, but you can't simply be this kind to me without retaliation on my part, my friend! And so, in turn, I have a gift for you!"
@@ -23673,7 +23695,7 @@ mod.NPCData = mod.NPCData or {
 			-- That makes it difficult to sing, my friend.
 			{ Cue = "/VO/Orpheus_0236" },
 			-- Begging your pardon, Zagreus.
-			{ Cue = "/VO/Orpheus_0237" },
+			-- { Cue = "/VO/Orpheus_0237" },
 			-- Have I wronged you somehow?
 			{ Cue = "/VO/Orpheus_0238" },
 			-- I resolved never to fight, my friend.
@@ -23681,7 +23703,7 @@ mod.NPCData = mod.NPCData or {
 			-- I fight only through song, my friend.
 			{ Cue = "/VO/Orpheus_0240" },
 			-- Please, Zagreus.
-			{ Cue = "/VO/Orpheus_0241" },
+			-- { Cue = "/VO/Orpheus_0241" },
 			-- I am attempting here to sing, my friend?
 			{ Cue = "/VO/Orpheus_0242" },
 		},
@@ -23718,7 +23740,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydice02 = {
@@ -23765,7 +23787,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydice03 = {
@@ -23806,7 +23828,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceEndTheme01 = {
@@ -23842,7 +23864,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEndTheme_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEndTheme_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 
@@ -23873,7 +23895,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat02 = {
@@ -23900,7 +23922,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat03 = {
@@ -23927,7 +23949,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat04 = {
@@ -23954,7 +23976,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat05 = {
@@ -23981,7 +24003,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat06 = {
@@ -24008,7 +24030,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat07 = {
@@ -24035,7 +24057,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat08 = {
@@ -24062,7 +24084,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat09 = {
@@ -24089,7 +24111,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat10 = {
@@ -24114,7 +24136,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat11 = {
@@ -24138,7 +24160,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat12 = {
@@ -24162,7 +24184,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat13 = {
@@ -24186,7 +24208,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat14 = {
@@ -24210,7 +24232,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat15 = {
@@ -24234,7 +24256,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat16 = {
@@ -24258,7 +24280,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat17 = {
@@ -24282,7 +24304,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat18 = {
@@ -24309,7 +24331,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat19 = {
@@ -24336,7 +24358,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat20 = {
@@ -24363,7 +24385,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat21 = {
@@ -24390,7 +24412,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat22 = {
@@ -24417,7 +24439,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat23 = {
@@ -24444,7 +24466,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat24 = {
@@ -24471,7 +24493,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet_SongFromStart,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceMiscChat25 = {
@@ -24498,7 +24520,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 
@@ -24528,7 +24550,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEndTheme_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEndTheme_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceInTheBloodChat02 = {
@@ -24555,7 +24577,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEndTheme_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEndTheme_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceInTheBloodChat03 = {
@@ -24582,7 +24604,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEndTheme_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEndTheme_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceInTheBloodChat04 = {
@@ -24609,7 +24631,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEndTheme_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEndTheme_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceInTheBloodChat05 = {
@@ -24632,7 +24654,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEndTheme_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEndTheme_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceInTheBloodChat06 = {
@@ -24655,7 +24677,7 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEndTheme_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEndTheme_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
 			OrpheusWithEurydiceInTheBloodChat07 = {
@@ -24678,11 +24700,9 @@ mod.NPCData = mod.NPCData or {
 					PreLineFunctionName = "ShowUIForDecision",
 				},
 				OnQueuedFunctionName = "MusicianMusic",
-				OnQueuedFunctionArgs = PresetEventArgs.SingingEndTheme_Duet,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEndTheme_Duet,
 				RequiredAmbientTrackNameMatch = true,
 			},
-
 		},
-
 	},
 }
