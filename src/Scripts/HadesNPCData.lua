@@ -485,6 +485,23 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 				Type = "Trait",
 				ItemName = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
 				Rarity = "Common",
+				PrioritySlotEntranceAnimation = "BoonEntranceLegendary",
+				PriorityRequirements = {
+					{
+						PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon" },
+					},
+				},
+			},
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
+				Rarity = "Common",
+				PrioritySlotEntranceAnimation = "BoonEntranceLegendary",
+				PriorityRequirements = {
+					{
+						PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon" },
+					},
+				},
 			},
 		},
 	},

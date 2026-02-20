@@ -34,9 +34,10 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
 	-- TODO: Disabled until we have more options through #155/#300
 	-- "ModsNikkelMHadesBiomes_QuestSisyphusUpgrades",
+	"ModsNikkelMHadesBiomes_QuestBouldyUpgrades",
+	-- "ModsNikkelMHadesBiomes_QuestOrpheusUpgrades",
 	-- "ModsNikkelMHadesBiomes_QuestEurydiceUpgrades",
 	-- "ModsNikkelMHadesBiomes_QuestPatroclusUpgrades",
-	"ModsNikkelMHadesBiomes_QuestBouldyUpgrades",
 	-- weapons & combat
 	"ModsNikkelMHadesBiomes_QuestEliteAttributeKills",
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
@@ -663,11 +664,7 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				Path = { "GameState", "TraitsTaken" },
-				HasAll = {
-					"ModsNikkelMHadesBiomesSisyphusMoney",
-					"ModsNikkelMHadesBiomesSisyphusHealing",
-					"ModsNikkelMHadesBiomesSisyphusMetapoints",
-				},
+				HasAll = game.EnemyData.NPC_Sisyphus_01.Traits,
 			},
 		},
 	},
@@ -684,11 +681,7 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				Path = { "GameState", "TraitsTaken" },
-				HasAll = {
-					"ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
-					"ModsNikkelMHadesBiomesBuffMegaPom",
-					"ModsNikkelMHadesBiomesBuffFutureBoonRarity",
-				},
+				HasAll = game.EnemyData.NPC_Eurydice_01.Traits,
 			},
 		},
 	},
@@ -705,13 +698,24 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				Path = { "GameState", "TraitsTaken" },
-				HasAll = {
-					"ModsNikkelMHadesBiomesTemporaryDoorHealTrait_Patroclus",
-					"ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
-					"ModsNikkelMHadesBiomesBuffExtraChance",
-					"ModsNikkelMHadesBiomesGainMaxHealthMinMana",
-					"ModsNikkelMHadesBiomesGainMinHealthMaxMana",
-				},
+				HasAll = game.EnemyData.NPC_Patroclus_01.Traits,
+			},
+		},
+	},
+	-- Gain all Orpheus boons
+	ModsNikkelMHadesBiomes_QuestOrpheusUpgrades = {
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
+		RewardResourceName = "MetaCurrency",
+		RewardResourceAmount = 400,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusGift02" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "TraitsTaken" },
+				HasAll = game.EnemyData.NPC_Orpheus_01.Traits,
 			},
 		},
 	},

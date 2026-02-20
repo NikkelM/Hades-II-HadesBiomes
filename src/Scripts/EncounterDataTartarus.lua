@@ -296,7 +296,7 @@ local encounterModifications = {
 					{
 						-- Always eligible, since we need to be able to fall back to this
 						GameStateRequirements = {},
-						-- TODO: Reset after testing is done
+						-- TODO: Set to 4 after testing is done
 						Weight = 0,
 						InnerArgs = {
 							FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" },
@@ -321,7 +321,7 @@ local encounterModifications = {
 							RequiredFalseFlags = { "InFlashback", "OrpheusReunionInProgress" },
 							RequiredFalseTextLinesThisRun = game.GameData.OrpheusWithEurydiceAltTextLines,
 						},
-						Weight = 1,
+						Weight = 5,
 						InnerArgs = {
 							FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Orpheus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" },
 						},

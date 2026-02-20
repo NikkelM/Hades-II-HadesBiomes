@@ -1198,6 +1198,23 @@ local newData = {
 	-- 	DisplayName = "Erebus Gate",
 	-- 	Description = "The {$Keywords.Shrine} is key to entering these challenges at the outer reaches.",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesCoreBoon",
+	-- 	DisplayName = "Core Boon",
+	-- 	Description =
+	-- 	"A boon that empowers your {$Keywords.Attack}, {$Keywords.Special}, {$Keywords.Cast}, {$Keywords.Sprint} or aids with {$Keywords.Mana} regeneration."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesCoreBoonPlural",
+	-- 	DisplayName = "Core Boons",
+	-- 	Description =
+	-- 	"Boons that empower your {$Keywords.Attack}, {$Keywords.Special}, {$Keywords.Cast}, {$Keywords.Sprint} or aid with {$Keywords.Mana} regeneration."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesLowHealthBonus",
+	-- 	DisplayName = "Strength",
+	-- 	Description = "While you have no {$Keywords.ExtraChanceMisc}, you take less damage and deal more.",
+	-- },
 	-- #endregion
 
 	-- #region Quests/Minor Prophecies
@@ -1403,6 +1420,12 @@ local newData = {
 	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Warrior of Old ",
 	-- 	Description =
 	-- 	"The daughter of the god of the dead shall someday dream of receiving a number of unwanted blessings handed out by the forgotten warrior {#Emph}{$Keywords.CharPatroclus}{#Prev}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestOrpheusUpgrades",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Singer of Sorrows ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of listening to a collection of songs performed by the former court musician {#Emph}{$Keywords.CharOrpheus}{#Prev}.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_QuestBouldyUpgrades",

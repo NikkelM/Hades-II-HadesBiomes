@@ -431,6 +431,7 @@ function MusicPracticePresentation()
 end
 
 -- #region Orpheus Traits
+-- #region ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon
 function mod.OrpheusRaiseKilledEnemy(enemy, args)
 	if game.MapState.OrpheusRaiseDeadCount then
 		return
@@ -485,6 +486,9 @@ function mod.OrpheusRaiseDeadPresentation(newEnemy)
 		{ PreDelay = 0.25, ShadowScaleX = 1.0, SkipFlash = true })
 end
 
+-- #endregion
+
+-- #region ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon
 function mod.OrpheusApplyRoot(victim, functionArgs, triggerArgs)
 	if not game.CurrentRun.CurrentRoom or not game.CurrentRun.CurrentRoom.Encounter or not victim then
 		return
@@ -522,6 +526,44 @@ function mod.OrpheusRetaliateRootSetup(hero, args)
 		game.TraitUIActivateTrait(attackTrait)
 	end
 end
+
+-- #endregion
+
+-- #regionModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon
+modutil.mod.Path.Wrap("CheckLastStand", function(base, victim, triggerArgs)
+	local hasLastStand = base(victim, triggerArgs)
+
+	-- If false is returned, it means the player died without any Death Defiance effects remaining
+	-- If the player has the Orpheus boon, quickly add a Death Defiance and use it immediately
+	if not hasLastStand and game.HeroHasTrait("ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon") then
+		game.AddLastStand({
+			Name = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
+			Icon = "ExtraLifeMel",
+			InsertAtEnd = true,
+			HealFraction = GetTotalHeroTraitValue("ModsNikkelMHadesBiomesOrpheusLastStandHealFraction"),
+			ManaFraction = GetTotalHeroTraitValue("ModsNikkelMHadesBiomesOrpheusLastStandHealFraction"),
+			Silent = true
+		})
+
+		-- Remove all core boons as well as the ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon
+		local traitsToRemove = {}
+		for _, traitData in pairs(game.CurrentRun.Hero.Traits) do
+			if game.Contains({ "Melee", "Secondary", "Ranged", "Rush", "Mana" }, traitData.Slot) then
+				table.insert(traitsToRemove, traitData)
+			end
+		end
+		for _, traitData in pairs(traitsToRemove) do
+			game.RemoveTraitData(game.CurrentRun.Hero, traitData, { Silent = true })
+		end
+		game.UseTrait(game.CurrentRun.Hero, "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon")
+
+		hasLastStand = game.CheckLastStand(victim, triggerArgs)
+	end
+
+	return hasLastStand
+end)
+
+-- #endregion
 
 -- #endregion
 

@@ -14,5 +14,8 @@ local newKeywords = {
 	"CharPatroclus",
 	"CharBouldy",
 	"ShrinePointGate",
+	"ModsNikkelMHadesBiomesCoreBoon",
+	"ModsNikkelMHadesBiomesCoreBoonPlural",
+	"ModsNikkelMHadesBiomesLowHealthBonus",
 }
 game.ConcatTableValuesIPairs(game.KeywordList, newKeywords)

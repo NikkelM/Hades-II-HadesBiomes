@@ -161,6 +161,12 @@ local newData = {
 		Description =
 		"After you take damage, inflict {$Keywords.Root} on your foe. After {#BoldFormatGraft}{$TooltipData.ExtractData.Cooldown} Sec. {#Prev}and once the foe has been slain, this can repeat.",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
+		InheritFrom = "MusicMusicPlayerOrpheusSong2MusicPlayer",
+		Description =
+		"When you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} (as well as this one) and restore {#BoldFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
+	},
 	-- #endregion
 }
 

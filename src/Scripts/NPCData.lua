@@ -210,7 +210,7 @@ local npcModifications = {
 	ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		ActivateRequirements = mod.NilValue,
-		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = false,
 		RepulseOnMeleeInvulnerableHit = 200,
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy",
 		InteractTextLineSets = {
@@ -464,6 +464,7 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 			"ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon",
 			"ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
+			"ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
 		},
 		InteractTextLineSets = {
 			OrpheusFirstMeeting = {
@@ -586,15 +587,15 @@ local npcModifications = {
 			-- My friend?
 			{ Cue = "/VO/Orpheus_0235" },
 			-- That makes it difficult to sing, my friend.
-			{ Cue = "/VO/Orpheus_0236" },
+			{ Cue = "/VO/Orpheus_0236", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
 			-- Have I wronged you somehow?
 			{ Cue = "/VO/Orpheus_0238" },
 			-- I resolved never to fight, my friend.
 			{ Cue = "/VO/Orpheus_0239" },
 			-- I fight only through song, my friend.
-			{ Cue = "/VO/Orpheus_0240" },
+			{ Cue = "/VO/Orpheus_0240", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
 			-- I am attempting here to sing, my friend?
-			{ Cue = "/VO/Orpheus_0242" },
+			{ Cue = "/VO/Orpheus_0242", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
 		},
 	},
 	NPC_Orpheus_Story_01 = {

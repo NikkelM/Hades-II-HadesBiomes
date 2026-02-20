@@ -483,6 +483,7 @@ local newTraitData = {
 				"ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon",
 			},
 		},
+
 		ForceSecretDoor = true,
 		RemainingUses = 1,
 	},
@@ -506,10 +507,11 @@ local newTraitData = {
 		AcquireFunctionArgs = {
 			TrackName = "{fc71b797-75db-43af-8cc0-f50fdacb5dbc}",
 		},
+
 		OnEnemyDeathFunction = {
 			Name = _PLUGIN.guid .. "." .. "OrpheusRaiseKilledEnemy",
 			FunctionArgs = {
-				SummonChance = 0.08,
+				SummonChance = 0.1,
 				MaxHealthMultiplier = 2,
 				SpeedMultiplier = 1.2,
 				ScaleMultiplier = 1.1,
@@ -529,6 +531,7 @@ local newTraitData = {
 		},
 	},
 	-- Lament of Orpheus
+	-- TODO: Force this boon as the only option for the OrpheusSingsAgain_01 voicelines
 	ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
@@ -537,22 +540,21 @@ local newTraitData = {
 		Icon = "Boon_Eurydice_03",
 		BoonInfoIgnoreRequirements = true,
 		GameStateRequirements = {
-			{
-				PathTrue = { "GameState", "TextLinesRecord", "DemeterFirstPickUp" },
-			},
-		},
-		SetupFunction = {
-			Name = _PLUGIN.guid .. "." .. "OrpheusRetaliateRootSetup",
+			NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart", },
 		},
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
 		AcquireFunctionArgs = {
 			TrackName = "{01bdb2dd-ba29-44eb-b533-d759a6869a6a}",
 		},
+
+		SetupFunction = {
+			Name = _PLUGIN.guid .. "." .. "OrpheusRetaliateRootSetup",
+		},
 		OnSelfDamagedFunction = {
 			Name = _PLUGIN.guid .. "." .. "OrpheusApplyRoot",
 			FunctionArgs = {
 				EffectName = "ChillEffect",
-				Cooldown = 15,
+				Cooldown = 10,
 				ReportValues = {
 					Cooldown = "Cooldown",
 				},
@@ -585,7 +587,36 @@ local newTraitData = {
 				BaseName = "ChillEffect",
 				BaseProperty = "ActiveDuration",
 			},
-		}
+		},
+	},
+	-- Hymn to Zagreus
+	-- TODO: Force this boon as the only option for OrpheusSingsAgain_02
+	ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		ShowInHUD = true,
+		-- TODO:
+		Icon = "Boon_Eurydice_03",
+		BoonInfoIgnoreRequirements = true,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusSingsAgain_02" },
+			},
+		},
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
+		AcquireFunctionArgs = {
+			TrackName = "{e044c3d0-8cf0-44ac-9d8e-75eda8c80501}",
+		},
+
+		ModsNikkelMHadesBiomesOrpheusLastStandHealFraction = { BaseValue = 0.1, },
+		ExtractValues = {
+			{
+				Key = "ModsNikkelMHadesBiomesOrpheusLastStandHealFraction",
+				ExtractAs = "LastStandHeal",
+				Format = "Percent",
+			},
+		},
+		RemainingUses = 1,
 	},
 	-- #endregion
 }
