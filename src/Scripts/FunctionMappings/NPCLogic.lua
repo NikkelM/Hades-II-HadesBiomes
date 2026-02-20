@@ -413,4 +413,61 @@ function MusicPracticePresentation()
 	game.wait(1.0)
 end
 
+-- #region Orpheus Traits
+function mod.OrpheusRaiseKilledEnemy(enemy, args)
+	if game.MapState.OrpheusRaiseDeadCount then
+		return
+	end
+	if not game.RandomChance(args.SummonChance) then
+		return
+	end
+	if enemy.UniqueRaise and not IsEmpty(game.MapState.SpellSummons) then
+		for i, unit in pairs(game.MapState.SpellSummons) do
+			if unit.Name == enemy.Name then
+				return
+			end
+		end
+	end
+
+	local enemyName = enemy.Name
+	local enemyData = game.EnemyData[enemyName]
+	if enemyData and ((not enemyData.IsBoss and not enemyData.BlockRaiseDead) or enemyData.ForceAllowRaiseDead) then
+		game.IncrementTableValue(MapState, "OrpheusRaiseDeadCount")
+		local tempObstacle = SpawnObstacle({ Name = "BlankObstacle", DestinationId = enemy.ObjectId })
+		local summonArgs = game.ShallowCopyTable(game.WeaponData.WeaponSpellSummon.SummonMultipliers) or {}
+		if args.MaxHealthMultiplier then
+			summonArgs.MaxHealthMultiplier = args.MaxHealthMultiplier
+		end
+		if args.SpeedMultiplier then
+			summonArgs.SpeedMultiplier = args.SpeedMultiplier
+		end
+		if args.ScaleMultiplier then
+			summonArgs.ScaleMultiplier = args.ScaleMultiplier
+		end
+		if args.DamageMultiplier then
+			summonArgs.DamageMultiplier = args.DamageMultiplier
+		end
+		summonArgs.SpawnPointId = tempObstacle
+		local newEnemy = game.CreateAlliedEnemy(enemyName, summonArgs) or {}
+		game.DestroyOnDelay({ tempObstacle }, 0.1)
+		game.CurrentRun.CurrentRoom.DestroyAssistUnitOnEncounterEndId = newEnemy.ObjectId
+		game.CurrentRun.CurrentRoom.AssistUnitName = enemyName
+		mod.OrpheusRaiseDeadPresentation(newEnemy)
+
+		if game.CurrentRun.CurrentRoom.Encounter ~= nil and game.CurrentRun.CurrentRoom.Encounter.ActiveEnemyCap ~= nil then
+			local activeCapWeight = newEnemy.ActiveCapWeight or 1
+			game.CurrentRun.CurrentRoom.Encounter.ActiveEnemyCap = math.min(ConstantsData.MaxActiveEnemyCount,
+				game.CurrentRun.CurrentRoom.Encounter.ActiveEnemyCap + activeCapWeight)
+		end
+	end
+end
+
+function mod.OrpheusRaiseDeadPresentation(newEnemy)
+	PlaySound({ Name = newEnemy.IsAggroedSound, Id = newEnemy.ObjectId })
+	game.thread(game.InCombatText, newEnemy.ObjectId, "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonRaiseDeadActivated", 1.2,
+		{ PreDelay = 0.25, ShadowScaleX = 1.0, SkipFlash = true })
+end
+
+-- #endregion
+
 -- #endregion

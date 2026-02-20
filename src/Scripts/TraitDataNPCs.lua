@@ -464,7 +464,8 @@ local newTraitData = {
 	-- #endregion
 
 	-- #region Orpheus
-	ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost = {
+	-- Primordial Chaos
+	ModsNikkelMHadesBiomesOrpheusChaosThemeBoon = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		-- TODO:
@@ -479,13 +480,13 @@ local newTraitData = {
 		AcquireFunctionArgs = {
 			TrackName = "{2c8f3fd6-6c6c-4146-a750-20be93cd8ca8}",
 			AddAdditionalTraits = {
-				"ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost_EntryCostSubBoon",
+				"ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon",
 			},
 		},
 		ForceSecretDoor = true,
 		RemainingUses = 1,
 	},
-	ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost_EntryCostSubBoon = {
+	ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		-- TODO:
@@ -493,6 +494,38 @@ local newTraitData = {
 		SecretDoorCostMultiplier = {
 			BaseMin = 0,
 			BaseMax = 0,
+		},
+	},
+	-- God of the Dead
+	ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		-- TODO:
+		Icon = "Boon_Eurydice_02",
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
+		AcquireFunctionArgs = {
+			TrackName = "{fc71b797-75db-43af-8cc0-f50fdacb5dbc}",
+		},
+		OnEnemyDeathFunction = {
+			Name = _PLUGIN.guid .. "." .. "OrpheusRaiseKilledEnemy",
+			FunctionArgs = {
+				SummonChance = 0.08,
+				MaxHealthMultiplier = 2,
+				SpeedMultiplier = 1.2,
+				ScaleMultiplier = 1.1,
+				DamageMultiplier = 1.2,
+				ReportValues = {
+					SummonChance = "SummonChance",
+				},
+				UsingEffectName = "Charm"
+			}
+		},
+		ExtractValues = {
+			{
+				Key = "SummonChance",
+				ExtractAs = "SummonChance",
+				Format = "Percent",
+			},
 		},
 	},
 	-- #endregion

@@ -451,7 +451,8 @@ local npcModifications = {
 		BoonInfoTitleText = "ModsNikkelMHadesBiomes_Codex_BoonInfo_Orpheus",
 		Traits = {
 			-- TODO:
-			"ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost",
+			"ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
+			"ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon",
 		},
 		InteractTextLineSets = {
 			OrpheusFirstMeeting = {

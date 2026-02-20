@@ -133,16 +133,27 @@ local newData = {
 
 	-- #region Orpheus
 	{
-		Id = "ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost",
+		Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 		InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
 		Description =
 		"Ensure a {$Keywords.HealthGate} spawns ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost_EntryCostSubBoon",
+		Id = "ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon",
 		InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
 		Description =
 		"{#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon",
+		InheritFrom = "MusicMusicPlayerBossFightMusicMusicPlayer",
+		Description =
+		"Most foes you slay have a {#UpgradeFormat}{$TooltipData.ExtractData.SummonChance}% {#Prev}chance to return to fight for you, up to once per {$Keywords.EncounterAlt}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonRaiseDeadActivated",
+		DisplayName =
+		"{#CombatTextHighlightFormat}{$TraitData.ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon.Name}{#Prev}!",
 	},
 	-- #endregion
 }

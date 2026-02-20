@@ -473,7 +473,12 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			-- TODO:
 			{
 				Type = "Trait",
-				ItemName = "ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost",
+				ItemName = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon",
 				Rarity = "Common",
 			},
 		},
