@@ -155,6 +155,12 @@ local newData = {
 	-- 	DisplayName =
 	-- 	"{#CombatTextHighlightFormat}{$TraitData.ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon.Name}{#Prev}!",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
+	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong1MusicPlayer",
+	-- 	Description =
+	-- 	"After you take damage, inflict {$Keywords.Root} on your foe. After {#BoldFormatGraft}{$TooltipData.ExtractData.Cooldown} Sec. {#Prev}and once the foe has been slain, this can repeat.",
+	-- },
 	-- #endregion
 }
 

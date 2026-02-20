@@ -528,6 +528,65 @@ local newTraitData = {
 			},
 		},
 	},
+	-- Lament of Orpheus
+	ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		ShowInHUD = true,
+		-- TODO:
+		Icon = "Boon_Eurydice_03",
+		BoonInfoIgnoreRequirements = true,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "DemeterFirstPickUp" },
+			},
+		},
+		SetupFunction = {
+			Name = _PLUGIN.guid .. "." .. "OrpheusRetaliateRootSetup",
+		},
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
+		AcquireFunctionArgs = {
+			TrackName = "{01bdb2dd-ba29-44eb-b533-d759a6869a6a}",
+		},
+		OnSelfDamagedFunction = {
+			Name = _PLUGIN.guid .. "." .. "OrpheusApplyRoot",
+			FunctionArgs = {
+				EffectName = "ChillEffect",
+				Cooldown = 15,
+				ReportValues = {
+					Cooldown = "Cooldown",
+				},
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "Cooldown",
+				ExtractAs = "Cooldown",
+				Format = "Duration",
+			},
+			{
+				Key = "ReportedWeaponMultiplier",
+				ExtractAs = "TooltipDamageBonus",
+				Format = "PercentDelta",
+			},
+			{
+				ExtractAs = "ChillDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "EffectData",
+				BaseName = "ChillEffect",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "ChillActiveDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "EffectData",
+				BaseName = "ChillEffect",
+				BaseProperty = "ActiveDuration",
+			},
+		}
+	},
 	-- #endregion
 }
 

@@ -481,6 +481,11 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 				ItemName = "ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon",
 				Rarity = "Common",
 			},
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
+				Rarity = "Common",
+			},
 		},
 	},
 	-- #endregion
