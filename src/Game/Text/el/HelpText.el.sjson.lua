@@ -94,6 +94,11 @@ local newData = {
 	-- 	DisplayName = "The other Furies",
 	-- 	Description = "",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Eurydice_Orpheus",
+	-- 	DisplayName = "Orpheus & Eurydice",
+	-- 	Description = "",
+	-- },
 	-- #endregion
 
 	-- #region Credits
@@ -1165,6 +1170,18 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_BreakableValue3Incantation_Flavor",
 	-- 	Description =
 	-- 	"The boatman Charon has many sources of income, and often finds himself with more coin than he can carry, knowing any discarded excess will eventually find its way back to him regardless.",
+	-- },
+	-- Unlock/Free Orpheus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OrpheusUnlockItem",
+	-- 	DisplayName = "Court Musician's Sentence",
+	-- 	Description =
+	-- 	"Free {$Keywords.CharOrpheus} from solitary confinement, allowing you to visit him in {$Keywords.ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Short} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OrpheusUnlockItem_Flavor",
+	-- 	Description =
+	-- 	"Orpheus had long been Court Musician in the House of Hades, until one day, he was banished to solitary confinement after refusing to perform for Lord Hades.",
 	-- },
 	-- #endregion
 

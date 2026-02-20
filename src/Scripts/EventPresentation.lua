@@ -43,7 +43,7 @@ modutil.mod.Path.Wrap("FinishedTextLinesPresentation", function(base, source, te
 		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
 	end
 	-- Custom, for Eurydice we currently use SecretMusicId instead of AmbientMusicId
-	if textLines ~= nil and source.TextLinesPauseSingingFx and game.AudioState.SecretMusicId ~= nil then
+	if textLines ~= nil and source.TextLinesPauseSingingFx and game.AudioState.SecretMusicId ~= nil and (source.OrpheusSingsAgainRequirements == nil or game.IsGameStateEligible(source, source.OrpheusSingsAgainRequirements)) then
 		CreateAnimation({
 			Name = source.SingingFx,
 			DestinationId = source.ObjectId,

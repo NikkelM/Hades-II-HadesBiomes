@@ -130,6 +130,21 @@ local newData = {
 		"모든 상품을 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} 할인된 가격으로 구매할 수 있습니다{#ItalicFormat}(현재 탈출 시도에서){#Prev}."
 	},
 	-- #endregion
+
+	-- #region Orpheus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost",
+	-- 	InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
+	-- 	Description =
+	-- 	"Ensure a {$Keywords.HealthGate} spawns ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost_EntryCostSubBoon",
+	-- 	InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
+	-- 	Description =
+	-- 	"{#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- },
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

@@ -1,4 +1,5 @@
 --[[ Modded incantation order (in the menu):
+ModsNikkelMHadesBiomes_OrpheusUnlockItem - Allow Orpheus to spawn in Tartarus - after 1 run
 ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation - Post-Boss Keepsake Rack - after 1 run
 ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation - Well of Charon during runs - after 2 runs
 ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation - Well of Charon after bosses - after 5 runs
@@ -18,9 +19,28 @@ WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic - New Music for the Music Mak
 ]] --
 
 local newIncantations = {
+	-- #region Critical/Story Items
+	ModsNikkelMHadesBiomes_OrpheusUnlockItem = {
+		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_sealedDocument_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantTartarus = 1,
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 1,
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "RoomsEntered", "X_Intro" },
+			},
+		},
+	},
+	-- #endregion
 	-- #region Post-Boss Keepsake Rack/GiftRack
 	ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation = {
-		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_OrpheusUnlockItem",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },

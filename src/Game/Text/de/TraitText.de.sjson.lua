@@ -130,6 +130,21 @@ local newData = {
 		"Alle Artikel kosten {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(bei diesem Fluchtversuch){#Prev}."
 	},
 	-- #endregion
+
+	-- #region Orpheus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost",
+	-- 	InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
+	-- 	Description =
+	-- 	"Ensure a {$Keywords.HealthGate} spawns ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosGateEntryCost_EntryCostSubBoon",
+	-- 	InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
+	-- 	Description =
+	-- 	"{#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- },
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

@@ -3309,8 +3309,11 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredAmbientTrackNameMatch and source ~= nil and source.OnQueuedFunctionArgs ~= nil then
-		if game.AudioState.AmbientTrackName ~= nil and source.OnQueuedFunctionArgs.TrackName ~= game.AudioState.AmbientTrackName then
+	-- This is for Orpheus dialogues requiring the correct song to be playing
+	-- if requirements.RequiredAmbientTrackNameMatch and source ~= nil and source.OnQueuedFunctionArgs ~= nil then
+	if requirements.RequiredAmbientTrackNameMatch and requirements.OnQueuedFunctionArgs ~= nil then
+		-- Changed from AmbientTrackName to SecretMusicName since that's what we use in the story rooms
+		if game.AudioState.SecretMusicName ~= nil and requirements.OnQueuedFunctionArgs.TrackName ~= game.AudioState.SecretMusicName then
 			return false
 		end
 	end

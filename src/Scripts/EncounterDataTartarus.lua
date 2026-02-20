@@ -314,8 +314,9 @@ local encounterModifications = {
 					{
 						GameStateRequirements = {
 							-- TODO: Make ineligible during major Sisyphus story events
-							-- TODO: Create these incantations
-							-- RequiredCosmetics = { "OrpheusUnlockItem", },
+							{
+								PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+							},
 							-- RequiredFalseCosmeticPurchaseable = "OrpheusEurydiceQuestItem",
 							RequiredFalseFlags = { "InFlashback", "OrpheusReunionInProgress" },
 							RequiredFalseTextLinesThisRun = game.GameData.OrpheusWithEurydiceAltTextLines,
