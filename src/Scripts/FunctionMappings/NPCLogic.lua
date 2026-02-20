@@ -8,11 +8,12 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 		SetAnimation({ DestinationId = screen.PortraitId, Name = screen.CurrentPortrait .. "_Exit" })
 		game.waitUnmodified(source.PortraitExitWait or 0.3)
 		SetAnimation({ DestinationId = screen.PortraitId, Name = args.PortraitName })
+		screen.CurrentPortrait = args.PortraitName
 	end
 
 	-- Play EndVoiceLines or EndCues if requested
 	if args.ModsNikkelMHadesBiomes_TextLineSetEndVoiceLines ~= nil then
-		game.thread(game.PlayEndVoiceLines, args.ModsNikkelMHadesBiomes_TextLineSetEndVoiceLines, source, args)
+		game.thread(game.PlayVoiceLines, args.ModsNikkelMHadesBiomes_TextLineSetEndVoiceLines, nil, source, args)
 	end
 	if args.ModsNikkelMHadesBiomes_TextLineSetEndCue ~= nil then
 		game.thread(
@@ -111,15 +112,29 @@ end
 
 function mod.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
 	args = args or {}
+	game.FreezePlayerUnit("ModsNikkelMHadesBiomesNPCPostChoicePresentation")
+
 	local heroId = game.CurrentRun.Hero.ObjectId
 	local npcId = screen.Source.ObjectId
-	game.FreezePlayerUnit("ModsNikkelMHadesBiomesNPCPostChoicePresentation")
+	local npc = game.ActiveEnemies[npcId]
+
+	PlaySound({ Name = screen.Source.ConfirmSound or "/SFX/Menu Sounds/GodBoonChoiceConfirm" })
+	if npc and npc.CharacterInteractions and npc.CharacterInteractions.Rescue and npc.CharacterInteractions.Rescue.VoiceLines then
+		game.thread(game.PlayVoiceLines, npc.CharacterInteractions.Rescue.VoiceLines, nil, screen.OpenedFrom, args)
+	end
 
 	if screen.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionName ~= nil then
 		game.thread(game.CallFunctionName,
 			screen.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionName, screen,
 			screen.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionArgs)
 	end
+
+	wait(0.02)
+	AdjustColorGrading({ Name = screen.Source.ColorGrade or "ItemGet", Duration = 0.2 })
+	CreateAnimation({ Name = "ItemGet", DestinationId = CurrentRun.Hero.ObjectId, Scale = 2.0 })
+	CreateAnimation({ Name = "ItemGetVignette", OffsetX = ScreenCenterX, OffsetY = ScreenCenterY, Scale = 2.0, UseScreenLocation = true })
+	wait(screen.Source.UpgradeAcquiredAnimationDelay or 0.25)
+	AdjustColorGrading({ Name = "Off", Duration = 0.5 })
 
 	AngleTowardTarget({ Id = heroId, DestinationId = npcId })
 	game.wait(0.25)
@@ -133,7 +148,7 @@ function mod.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
 
 	-- Check if a new entry for this NPC should be added to the Codex
 	for chapterName, chapterData in pairs(game.CodexData) do
-		for entryName, entryData in pairs(chapterData.Entries) do
+		for entryName, _ in pairs(chapterData.Entries) do
 			game.CheckCodexUnlock(chapterName, entryName)
 		end
 	end
@@ -229,8 +244,10 @@ function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 		Name = game.AudioState.SecretMusicName,
 		AddCallbacks = true,
 		Delay = args.StartDelay or 0,
-		Duration = args.Duration or 0
 	})
+	SetVolume({ Id = game.AudioState.SecretMusicId, Value = 0.0, Duration = 0.0 })
+	SetVolume({ Id = game.AudioState.SecretMusicId, Value = 1.0, Duration = args.Duration or 0.0 })
+
 	game.SetDefaultMusicParams(game.AudioState.SecretMusicName, game.AudioState.SecretMusicId, args)
 	if args.TrackOffsetMin ~= nil then
 		SetSoundPosition({
@@ -466,6 +483,44 @@ function mod.OrpheusRaiseDeadPresentation(newEnemy)
 	PlaySound({ Name = newEnemy.IsAggroedSound, Id = newEnemy.ObjectId })
 	game.thread(game.InCombatText, newEnemy.ObjectId, "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonRaiseDeadActivated", 1.2,
 		{ PreDelay = 0.25, ShadowScaleX = 1.0, SkipFlash = true })
+end
+
+function mod.OrpheusApplyRoot(victim, functionArgs, triggerArgs)
+	if not game.CurrentRun.CurrentRoom or not game.CurrentRun.CurrentRoom.Encounter or not victim then
+		return
+	end
+
+	local retaliateRootedEnemyAlive = false
+	for _, enemy in pairs(game.ShallowCopyTable(game.ActiveEnemies) or {}) do
+		if enemy.ModsNikkelMHadesBiomesRetaliateRooted then
+			retaliateRootedEnemyAlive = true
+			break
+		end
+	end
+	if retaliateRootedEnemyAlive then
+		return
+	end
+
+	if not victim or victim.SkipModifiers or not game.CheckCooldown("ModsNikkelMHadesBiomesOrpheusRetaliateRoot", functionArgs.Cooldown) then
+		return
+	end
+
+	victim.ModsNikkelMHadesBiomesRetaliateRooted = true
+
+	local traitData = game.GetHeroTrait("ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon") or {}
+	if traitData then
+		game.TraitUIActivateTrait(traitData, { FlashOnActive = true, Duration = functionArgs.Cooldown })
+	end
+
+	return game.ApplyRoot(victim, functionArgs, triggerArgs)
+end
+
+function mod.OrpheusRetaliateRootSetup(hero, args)
+	game.ResetCooldown("ModsNikkelMHadesBiomesOrpheusRetaliateRoot")
+	local attackTrait = game.GetExistingUITraitName("ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon")
+	if attackTrait then
+		game.TraitUIActivateTrait(attackTrait)
+	end
 end
 
 -- #endregion

@@ -88,6 +88,10 @@ local function applyNPCChoiceMappings(npcData, mappings)
 							-- Move EndVoiceLines and EndCues to the PrePortraitExitFunctionArgs for the benefit choice presentation if requested
 							if mappingData.MoveEndVoiceLinesAndCuesToBenefitChoiceArgs then
 								if textLineSet.EndVoiceLines ~= nil then
+									-- Need to allow these to be played over the dialogue textlines
+									for _, lineData in ipairs(textLineSet.EndVoiceLines) do
+										lineData.AllowTalkOverTextLines = true
+									end
 									textLineSet.PrePortraitExitFunctionArgs = game.DeepCopyTable(textLineSet.PrePortraitExitFunctionArgs) or
 											{}
 									textLineSet.PrePortraitExitFunctionArgs.ModsNikkelMHadesBiomes_TextLineSetEndVoiceLines = textLineSet
@@ -137,6 +141,12 @@ local function applyNPCGlobalModifications(base)
 				npcData.InteractTextLineSets[key] = textLineSet
 			end
 			npcData.RepeatableTextLineSets = nil
+		end
+
+		-- Fix up the CharacterInteractions voicelines to allow them to play after choosing a boon
+		if npcData.CharacterInteractions and npcData.CharacterInteractions.Rescue and npcData.CharacterInteractions.Rescue.VoiceLines then
+			npcData.CharacterInteractions.Rescue.VoiceLines.AllowTalkOverTextLines = true
+			npcData.CharacterInteractions.Rescue.VoiceLines.ObjectType = npcName
 		end
 	end
 end
@@ -453,6 +463,7 @@ local npcModifications = {
 			-- TODO:
 			"ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 			"ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon",
+			"ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
 		},
 		InteractTextLineSets = {
 			OrpheusFirstMeeting = {
@@ -462,6 +473,9 @@ local npcModifications = {
 			OrpheusFirstMeeting_Alt = {
 				SuperPriority = true,
 				Priority = mod.NilValue,
+			},
+			OrpheusMiscMeeting03 = {
+				[2] = mod.NilValue,
 			},
 			OrpheusSingsAgain01 = {
 				-- Force playing this music
@@ -484,6 +498,26 @@ local npcModifications = {
 			},
 			OrpheusSingsAgain03_B = {
 				RequiredAmbientTrackNameMatch = mod.NilValue,
+			},
+		},
+		CharacterInteractions = {
+			Rescue = {
+				VoiceLines = {
+					RandomRemaining = true,
+					PreLineWait = 0.4,
+					AllowTalkOverTextLines = true,
+					ObjectType = "NPC_Orpheus_01",
+					{
+						GameStateRequirements = {
+							{
+								PathTrue = { "CurrentRun", "CurrentRoom", "TextLinesRecord", "OrpheusMiscMeeting03", },
+							},
+						},
+						Cue = "/VO/Orpheus_0069",
+						Text =
+						"Oh, fancy that one do you? Alas, I've not the heart to sing it anymore. I'm glad you like it, though."
+					},
+				},
 			},
 		},
 		-- From Hades GiftData.lua

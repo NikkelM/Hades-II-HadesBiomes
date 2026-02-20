@@ -1156,17 +1156,6 @@ mod.HadesHelpTextAliases = {
 	CharBouldy = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 }
 
--- List of Speakers for which the entries in the _NPCData files should be copied
-mod.HadesNPCTextSpeakers = {
-	Sisyphus = true,
-	Eurydice = true,
-	Patroclus = true,
-	Thanatos = true,
-	Persephone = true, -- For now - we don't need all of her voicelines, as they are split between Surface and Home
-	-- Cerberus Storyteller voicelines from mod.StorytellerVoicelines
-	-- ZagreusField voicelines from mod.ZagreusFieldVoicelines
-}
-
 -- Keys to be removed from the CodexText files before hooking them into Hades II
 -- These keys are either duplicates or simply not required
 mod.HadesCodexTextKeyRemovals = {

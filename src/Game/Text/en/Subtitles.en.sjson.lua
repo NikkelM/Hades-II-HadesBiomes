@@ -1,3 +1,4 @@
+-- Need to add some additional english subtitles, localized subtitles for these already exist
 -- Hooking into one of our own subtitle files
 local zagreusFieldSubtitleFile = rom.path.combine(rom.paths.Content(),
 	"Game\\Text\\en\\Z_ModsNikkelMHadesBiomesZagreusField.en.sjson")
@@ -9,6 +10,16 @@ local order = {
 }
 
 local newData = {
+	-- #region NPCs
+	-- #region Orpheus
+	{
+		Id = "Orpheus_0069",
+		InheritFrom = "BaseSubtitle",
+		DisplayName = "Oh, fancy that one do you? Alas, I've not the heart to sing it anymore. I'm glad you like it, though.",
+	},
+	-- #endregion
+	-- #endregion
+	-- #region Charon
 	-- Player injured
 	{
 		Id = "Megaera_10079",

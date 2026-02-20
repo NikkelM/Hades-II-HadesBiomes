@@ -281,8 +281,8 @@ local encounterModifications = {
 			OverrideValues = game.BaseWaveOverrideValues,
 			StartDelay = 0.0
 		},
-		-- They can sometimes briefly move/pop in suddenly
-		Blacklist = { LightSpawner = true, HadesSwarmer = true, },
+		-- They can sometimes briefly move
+		Blacklist = { LightSpawner = true },
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,
@@ -333,8 +333,9 @@ local encounterModifications = {
 								FunctionName = _PLUGIN.guid .. "." .. "OrpheusRoomStartMusicPlayer",
 								Args = {
 									OrpheusSingsAgainRequirements = {
-										NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", },
+										NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart", },
 									},
+									Duration = 2,
 									TrackOffsetMin = 10.0,
 									TrackOffsetMax = 120.0,
 								},
