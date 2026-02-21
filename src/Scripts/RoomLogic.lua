@@ -580,3 +580,7 @@ function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	game.RunThreadedEvents(encounterData.ExitsUnlockedThreadedEvents, room.Encounter)
 	game.RunThreadedEvents(roomData.ExitsUnlockedThreadedEvents, room)
 end
+
+function mod.ForceFlipMap(encounter, args, room)
+	room.Flipped = true
+end

@@ -650,6 +650,7 @@ local newTraitData = {
 	ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
+		-- TODO:
 		Icon = "Boon_Orpheus_GoodRiddance",
 		BoonInfoIgnoreRequirements = true,
 		GameStateRequirements = {

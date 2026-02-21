@@ -80,12 +80,13 @@ function mod.ActivatePrePlacedByShrineLevel(eventSource, args)
 	game.ActivatePrePlaced(eventSource, args[shrineLevel])
 end
 
-function mod.ActivateRandomPrePlacedFromWeightedList(eventSource, args)
-	local chosenPrePlacedObject = game.GetRandomEligibleValueFromWeightedList(args)
-	if chosenPrePlacedObject ~= nil then
-		game.ActivatePrePlaced(eventSource, chosenPrePlacedObject.InnerArgs or chosenPrePlacedObject)
-		if chosenPrePlacedObject.ThreadedEvents ~= nil then
-			game.RunEventsGeneric(chosenPrePlacedObject.ThreadedEvents, game.CurrentRun.CurrentRoom.Encounter)
+function mod.ActivatePrePlacedAndFlipTypes(eventSource, args)
+	game.ActivatePrePlaced(eventSource, args)
+
+	if args.FlipTypes ~= nil then
+		for _, type in pairs(args.FlipTypes) do
+			local typeIds = GetIdsByType({ Name = type }) or {}
+			FlipHorizontal({ Ids = typeIds })
 		end
 	end
 end

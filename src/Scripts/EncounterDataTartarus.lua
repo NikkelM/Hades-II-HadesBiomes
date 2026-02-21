@@ -253,6 +253,7 @@ local encounterReplacements = {
 			},
 		},
 	},
+	Story_Orpheus_01 = game.DeepCopyTable(encounterData.Story_Sisyphus_01),
 }
 
 local encounterModifications = {
@@ -288,65 +289,10 @@ local encounterModifications = {
 		CanEncounterSkip = false,
 	},
 	Story_Sisyphus_01 = {
+		-- Always eligible, since we need to be able to fall back to this
+		GameStateRequirements = {},
 		StartRoomUnthreadedEvents = {
-			[1] = {
-				FunctionName = _PLUGIN.guid .. "." .. "ActivateRandomPrePlacedFromWeightedList",
-				Args = {
-					-- Sisyphus and Bouldy
-					{
-						-- Always eligible, since we need to be able to fall back to this
-						GameStateRequirements = {},
-						-- TODO: Set to 4 after testing is done
-						Weight = 0,
-						InnerArgs = {
-							FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" },
-						},
-						ThreadedEvents = {
-							{
-								FunctionName = _PLUGIN.guid .. "." .. "SecretMusicPlayerEvent",
-								Args = {
-									TrackName = "/Music/MusicExploration1_MC",
-								},
-							},
-						},
-					},
-					-- Orpheus and Bouldy
-					{
-						GameStateRequirements = {
-							-- TODO: Make ineligible during major Sisyphus story events
-							{
-								PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
-							},
-							-- RequiredFalseCosmeticPurchaseable = "OrpheusEurydiceQuestItem",
-							RequiredFalseFlags = { "InFlashback", "OrpheusReunionInProgress" },
-							RequiredFalseTextLinesThisRun = game.GameData.OrpheusWithEurydiceAltTextLines,
-						},
-						Weight = 5,
-						InnerArgs = {
-							FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Orpheus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" },
-						},
-						ThreadedEvents = {
-							{
-								FunctionName = _PLUGIN.guid .. "." .. "LoadHadesOSTSoundBank",
-							},
-							{
-								FunctionName = _PLUGIN.guid .. "." .. "OrpheusRoomStartMusicPlayer",
-								Args = {
-									OrpheusSingsAgainRequirements = {
-										NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart", },
-									},
-									Duration = 2,
-									TrackOffsetMin = 10.0,
-									TrackOffsetMax = 120.0,
-								},
-							},
-						},
-					},
-					FractionMin = mod.NilValue,
-					FractionMax = mod.NilValue,
-					LegalTypes = mod.NilValue,
-				},
-			},
+			[1] = { FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" }, }, },
 			[3] = mod.NilValue,
 			[4] = mod.NilValue,
 			[5] = mod.NilValue,
@@ -354,6 +300,59 @@ local encounterModifications = {
 			[7] = mod.NilValue,
 			[8] = mod.NilValue,
 		},
+		StartRoomThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "SecretMusicPlayerEvent",
+				Args = {
+					TrackName = "/Music/MusicExploration1_MC",
+				},
+			},
+		},
+		NextRoomResumeMusic = true,
+	},
+	Story_Orpheus_01 = {
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+			},
+			-- TODO:
+			-- RequiredFalseCosmeticPurchaseable = "OrpheusEurydiceQuestItem",
+			RequiredFalseFlags = { "InFlashback", "OrpheusReunionInProgress" },
+			RequiredFalseTextLinesThisRun = game.GameData.OrpheusWithEurydiceAltTextLines,
+		},
+
+		SetupEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "ForceFlipMap",
+			},
+		},
+
+		StartRoomUnthreadedEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedAndFlipTypes", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Orpheus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01", }, FlipTypes = { "ModsNikkelMHadesBiomes_NPC_Bouldy_01" } }, },
+			[3] = mod.NilValue,
+			[4] = mod.NilValue,
+			[5] = mod.NilValue,
+			[6] = mod.NilValue,
+			[7] = mod.NilValue,
+			[8] = mod.NilValue,
+		},
+		StartRoomThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "LoadHadesOSTSoundBank",
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "OrpheusRoomStartMusicPlayer",
+				Args = {
+					OrpheusSingsAgainRequirements = {
+						NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart", },
+					},
+					Duration = 2,
+					TrackOffsetMin = 10.0,
+					TrackOffsetMax = 120.0,
+				},
+			},
+		},
+
 		NextRoomResumeMusic = true,
 	},
 	BaseThanatos = {

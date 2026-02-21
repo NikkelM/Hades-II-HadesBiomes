@@ -805,6 +805,19 @@ local roomModifications = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
 
+		LegalEncounters = {
+			-- TODO: Enable after testing
+			-- "Story_Sisyphus_01",
+			-- "Story_Sisyphus_01",
+			-- "Story_Sisyphus_01",
+			-- "Story_Sisyphus_01",
+			"Story_Orpheus_01",
+			"Story_Orpheus_01",
+			"Story_Orpheus_01",
+			"Story_Orpheus_01",
+			"Story_Orpheus_01",
+		},
+
 		-- We do our own music events depending on which NPC is in the room
 		IgnoreMusic = true,
 		SecretMusic = mod.NilValue,

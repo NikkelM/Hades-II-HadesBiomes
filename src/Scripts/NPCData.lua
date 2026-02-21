@@ -221,6 +221,7 @@ local npcModifications = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		ActivateRequirements = mod.NilValue,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = false,
+		IgnoreInvincibubbleOnHit = true,
 		RepulseOnMeleeInvulnerableHit = 200,
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy",
 		InteractTextLineSets = {
