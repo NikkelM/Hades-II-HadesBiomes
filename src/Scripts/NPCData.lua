@@ -463,6 +463,8 @@ local npcModifications = {
 			-- TODO:
 			"ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 			"ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon",
+			"ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
+			-- Priority Traits
 			"ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
 			"ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
 		},

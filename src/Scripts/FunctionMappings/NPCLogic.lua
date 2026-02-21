@@ -245,6 +245,12 @@ function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 		AddCallbacks = true,
 		Delay = args.StartDelay or 0,
 	})
+
+	-- Wait so we don't set the volume for the old SecretMusicId
+	if args.StartDelay ~= nil then
+		-- Small buffer to make sure the music has actually started playing
+		game.wait(args.StartDelay + 0.02)
+	end
 	SetVolume({ Id = game.AudioState.SecretMusicId, Value = 0.0, Duration = 0.0 })
 	SetVolume({ Id = game.AudioState.SecretMusicId, Value = 1.0, Duration = args.Duration or 0.0 })
 
@@ -516,7 +522,12 @@ function mod.OrpheusApplyRoot(victim, functionArgs, triggerArgs)
 		game.TraitUIActivateTrait(traitData, { FlashOnActive = true, Duration = functionArgs.Cooldown })
 	end
 
-	return game.ApplyRoot(victim, functionArgs, triggerArgs)
+	-- Apply Root to all enemies in the room
+	for _, enemy in pairs(game.ActiveEnemies) do
+		if not enemy.IsDead and not enemy.SkipModifiers then
+			game.ApplyRoot(enemy, functionArgs, triggerArgs)
+		end
+	end
 end
 
 function mod.OrpheusRetaliateRootSetup(hero, args)

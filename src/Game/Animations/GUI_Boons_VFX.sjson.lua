@@ -93,6 +93,11 @@ local addAnimations = {
 		InheritFrom = "BoonIcon",
 		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_LamentOfOrpheus",
 	},
+	Boon_Orpheus_FinalExpense = {
+		Name = "Boon_Orpheus_FinalExpense",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_FinalExpense",
+	},
 	-- #endregion
 }
 

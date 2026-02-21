@@ -136,7 +136,13 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 	-- 	InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
 	-- 	Description =
-	-- 	"Ensure a {$Keywords.HealthGate} spawns ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- 	"Ensure {$Keywords.HealthGatePlural} spawn ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonChaosGatesStatDisplay",
+	-- 	InheritFrom = "BaseStatLine",
+	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Forced {$Keywords.HealthGatePlural}:",
+	-- 	Description = "{#UpgradeFormat}{$TraitData.ModsNikkelMHadesBiomesOrpheusChaosThemeBoon.RemainingUses}{#Prev}",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon",
@@ -148,7 +154,13 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon",
 	-- 	InheritFrom = "MusicMusicPlayerBossFightMusicMusicPlayer",
 	-- 	Description =
-	-- 	"Most foes you slay have a {#UpgradeFormat}{$TooltipData.ExtractData.SummonChance}% {#Prev}chance to return to fight for you, up to once per {$Keywords.EncounterAlt}.",
+	-- 	"Most foes you slay have a chance to return to fight for you, up to once per {$Keywords.EncounterAlt}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusBossFightMusicBoonResurrectStatDisplay",
+	-- 	InheritFrom = "BaseStatLine",
+	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Resurrection Chance:",
+	-- 	Description = "{#UpgradeFormat}{$TooltipData.ExtractData.SummonChance}%{#Prev}",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonRaiseDeadActivated",
@@ -159,13 +171,25 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
 	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong1MusicPlayer",
 	-- 	Description =
-	-- 	"After you take damage, inflict {$Keywords.Root} on your foe. After {#BoldFormatGraft}{$TooltipData.ExtractData.Cooldown} Sec. {#Prev}and once the foe has been slain, this can repeat.",
+	-- 	"After you take damage, inflict {$Keywords.Root} on {#BoldFormat}ALL {#Prev}foes. After {#BoldFormatGraft}{$TooltipData.ExtractData.Cooldown} Sec. {#Prev}and once the foe that damaged you has been slain, this can repeat.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
 	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong2MusicPlayer",
 	-- 	Description =
-	-- 	"When you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} (as well as this one) and restore {#BoldFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
+	-- 	"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#BoldFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
+	-- 	InheritFrom = "MusicMusicPlayerCharonShopThemeMusicPlayer",
+	-- 	Description =
+	-- 	"All items sold by {$Keywords.CharCharon} have a chance to cost less.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoonDiscountStatDisplay",
+	-- 	InheritFrom = "BaseStatLine",
+	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Maximum Discount:",
+	-- 	Description = "{#UpgradeFormat}-{$TooltipData.ExtractData.TooltipMaxDiscount}%{#Prev}",
 	-- },
 	-- #endregion
 }

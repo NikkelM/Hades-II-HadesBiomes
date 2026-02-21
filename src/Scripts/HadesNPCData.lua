@@ -483,6 +483,12 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			},
 			{
 				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
+				Rarity = "Common",
+			},
+			-- Priority Traits
+			{
+				Type = "Trait",
 				ItemName = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
 				Rarity = "Common",
 				PrioritySlotEntranceAnimation = "BoonEntranceLegendary",

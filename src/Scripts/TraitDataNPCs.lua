@@ -483,8 +483,11 @@ local newTraitData = {
 			},
 		},
 
+		StatLines = {
+			"ModsNikkelMHadesBiomesOrpheusChaosThemeBoonChaosGatesStatDisplay",
+		},
 		ForceSecretDoor = true,
-		RemainingUses = 1,
+		RemainingUses = 2,
 	},
 	ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon = {
 		BlockStacking = true,
@@ -509,17 +512,27 @@ local newTraitData = {
 			Name = _PLUGIN.guid .. "." .. "OrpheusRaiseKilledEnemy",
 			FunctionArgs = {
 				SummonChance = 0.1,
-				MaxHealthMultiplier = 2,
-				SpeedMultiplier = 1.2,
+				MaxHealthMultiplier = 1.8,
+				SpeedMultiplier = 1,
 				ScaleMultiplier = 1.1,
-				DamageMultiplier = 1.2,
+				DamageMultiplier = 1.15,
 				ReportValues = {
 					SummonChance = "SummonChance",
+					DamageMultiplier = "DamageMultiplier",
 				},
 				UsingEffectName = "Charm"
 			}
 		},
+		StatLines = {
+			"ModsNikkelMHadesBiomesOrpheusBossFightMusicBoonResurrectStatDisplay",
+			"SummonStatDisplay1",
+		},
 		ExtractValues = {
+			{
+				Key = "DamageMultiplier",
+				ExtractAs = "DamageBonus",
+				Format = "PercentDelta",
+			},
 			{
 				Key = "SummonChance",
 				ExtractAs = "SummonChance",
@@ -612,6 +625,28 @@ local newTraitData = {
 			},
 		},
 		RemainingUses = 1,
+	},
+	-- Final Expense
+	ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Icon = "Boon_Orpheus_FinalExpense",
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
+		AcquireFunctionArgs = {
+			TrackName = "{1d2d987b-853b-4a65-aa2d-a3e8c7e0e99b}",
+		},
+
+		ModsNikkelMHadesBiomesMaxStoreDiscount = 0.1,
+		StatLines = {
+			"ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoonDiscountStatDisplay",
+		},
+		ExtractValues = {
+			{
+				Key = "ModsNikkelMHadesBiomesMaxStoreDiscount",
+				ExtractAs = "TooltipMaxDiscount",
+				Format = "Percent",
+			},
+		},
 	},
 	-- #endregion
 }

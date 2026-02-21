@@ -136,7 +136,13 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 	-- 	InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
 	-- 	Description =
-	-- 	"Ensure a {$Keywords.HealthGate} spawns ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- 	"Ensure {$Keywords.HealthGatePlural} spawn ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonChaosGatesStatDisplay",
+	-- 	InheritFrom = "BaseStatLine",
+	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Forced {$Keywords.HealthGatePlural}:",
+	-- 	Description = "{#UpgradeFormat}{$TraitData.ModsNikkelMHadesBiomesOrpheusChaosThemeBoon.RemainingUses}{#Prev}",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon",
@@ -148,7 +154,13 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon",
 	-- 	InheritFrom = "MusicMusicPlayerBossFightMusicMusicPlayer",
 	-- 	Description =
-	-- 	"Most foes you slay have a {#UpgradeFormat}{$TooltipData.ExtractData.SummonChance}% {#Prev}chance to return to fight for you, up to once per {$Keywords.EncounterAlt}.",
+	-- 	"Most foes you slay have a chance to return to fight for you, up to once per {$Keywords.EncounterAlt}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusBossFightMusicBoonResurrectStatDisplay",
+	-- 	InheritFrom = "BaseStatLine",
+	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Resurrection Chance:",
+	-- 	Description = "{#UpgradeFormat}{$TooltipData.ExtractData.SummonChance}%{#Prev}",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonRaiseDeadActivated",
