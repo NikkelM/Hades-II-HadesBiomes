@@ -360,6 +360,9 @@ local npcModifications = {
 					},
 				},
 			},
+			PersephoneMeeting08 = {
+				[10] = { SetFlagTrue = mod.NilValue, },
+			},
 			PersephoneReturnsHome01 = {
 				[8] = {
 					PostLineFunctionName = _PLUGIN.guid .. "." .. "SurfaceBoatScenePan",
@@ -524,7 +527,11 @@ local npcModifications = {
 				Priority = mod.NilValue,
 				RequiresNullAmbientMusicId = mod.NilValue,
 				RequiredCosmetics = { "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem", },
-				[4] = { PostLineFunctionArgs = { WaitTime = 2, }, },
+				[4] = {
+					PostLineFunctionArgs = { WaitTime = 2, },
+					-- Called manually in OrpheusExit, as the PostLineFunctionArgs would be overwritten
+					SetFlagTrue = mod.NilValue
+				},
 			},
 			OrpheusWithHades03 = {
 				RequiredFalseCosmetics = { "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem", },
@@ -631,6 +638,10 @@ local npcModifications = {
 	},
 	NPC_Orpheus_Story_01 = {
 		AnimOffsetZ = 230,
+		ActivateRequirements = {
+			RequiredFalseTextLinesLastRun = mod.NilValue,
+			RequiredFalseTextLinesThisRun = { "OrpheusAboutSingersReunionQuest01" },
+		},
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
 		TextLinesPauseAmbientMusicVocals2 = mod.NilValue,
 		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
@@ -641,6 +652,12 @@ local npcModifications = {
 		FlavorTextIds = {
 			"Eurydice_OfferText03",
 		},
+		InteractTextLineSets = {
+			OrpheusWithEurydice01 = {
+				RequiredFalseTextLinesLastRun = mod.NilValue,
+				RequiredFalseTextLinesThisRun = { "OrpheusAboutSingersReunionQuest01" },
+			},
+		}
 	},
 }
 

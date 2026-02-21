@@ -380,6 +380,8 @@ function game.OrpheusExit(source, args)
 	args = args or {}
 	source = game.ActiveEnemies[390000]
 
+	mod.ModsNikkelMHadesBiomesSetFlag(source, { FlagName = "OrpheusReunionInProgress", Value = true })
+
 	game.wait(args.WaitTime or 0)
 
 	SetAnimation({ Name = "NPCOrpheusExit", DestinationId = source.ObjectId })

@@ -11,6 +11,7 @@
 Other fixes and improvements:
 - Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlayed over the blacked-out death screen.
 - Fixed: Some dialogues are never eligible to play.
+- Fixed: The game may get into a bad state by not setting required flags correctly.
 <!--Releasenotes end-->
 
 ## v0.6.0
