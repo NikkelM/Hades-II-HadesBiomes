@@ -4,10 +4,13 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- You can now encounter **Orpheus** in Tartarus, where he will offer you a select number of his songs that will empower your current run. Free Orpheus through a new incantation at the Cauldron
+- You can now encounter **Orpheus** in Tartarus, where he will offer you a select number of his songs that will empower your current run. Free Orpheus through a new incantation at the Cauldron.
+- Progress Orpheus' and Eurydice's storyline and reunite them!
+- Added new dialogues with Hermes. 
 
 Other fixes and improvements:
-- Fixed some dialogues never being eligible to play.
+- Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlayed over the blacked-out death screen.
+- Fixed: Some dialogues are never eligible to play.
 <!--Releasenotes end-->
 
 ## v0.6.0

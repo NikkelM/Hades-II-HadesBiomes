@@ -416,8 +416,15 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		exitDoor.RewardPreviewIconIds = exitDoor.RewardPreviewIconIds or {}
 		table.insert(exitDoor.RewardPreviewIconIds, doorIconId)
 
-		-- Not adding for Tartarus, as the previews work differently there
-		if game.Contains({ "AsphodelBoat01b", "ElysiumExitDoor", "TravelDoor03", "StyxDoor01", "ShrinePointDoor", "ShrinePointExitDoor" }, exitDoor.Name) then
+		if exitDoor.Name == "TartarusDoor03b" then
+			game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath[exitDoor.ObjectId] = game
+					.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath[exitDoor.ObjectId] or {}
+			table.insert(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath[exitDoor.ObjectId],
+				"RoomRewardAvailable-Front")
+			table.insert(game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath[exitDoor.ObjectId],
+				"RoomRewardAvailable-Front_MetaReward")
+			-- Not adding for Tartarus, as the previews work differently there
+		elseif game.Contains({ "AsphodelBoat01b", "ElysiumExitDoor", "TravelDoor03", "StyxDoor01", "ShrinePointDoor", "ShrinePointExitDoor" }, exitDoor.Name) then
 			-- Shimmer animation in front of the backing and reward
 			exitDoor.DoorIconFront = SpawnObstacle({
 				Name = "BlankGeoObstacle",
