@@ -226,40 +226,36 @@ function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 	}
 	mod.ModsNikkelMHadesBiomesSingingPresentation(source, args)
 
-	-- Taken from game.SecretMusicPlayer
-	-- Only thing this doesn't do is having Eurydice be the source of the music
-	if game.AudioState.SecretMusicName == args.TrackName then
-		return
-	end
+	if game.AudioState.SecretMusicName ~= args.TrackName then
+		if game.AudioState.MusicId ~= nil then
+			game.PauseMusic()
+		end
+		if game.AudioState.SecretMusicId ~= nil then
+			StopSound({ Id = game.AudioState.SecretMusicId, Duration = 0.25 })
+		end
 
-	if game.AudioState.MusicId ~= nil then
-		game.PauseMusic()
-	end
-	if game.AudioState.SecretMusicId ~= nil then
-		StopSound({ Id = game.AudioState.SecretMusicId, Duration = 0.25 })
-	end
-
-	game.AudioState.SecretMusicName = args.TrackName
-	game.AudioState.SecretMusicId = PlaySound({
-		Name = game.AudioState.SecretMusicName,
-		AddCallbacks = true,
-		Delay = args.StartDelay or 0,
-	})
-
-	-- Wait so we don't set the volume for the old SecretMusicId
-	if args.StartDelay ~= nil then
-		-- Small buffer to make sure the music has actually started playing
-		game.wait(args.StartDelay + 0.02)
-	end
-	SetVolume({ Id = game.AudioState.SecretMusicId, Value = 0.0, Duration = 0.0 })
-	SetVolume({ Id = game.AudioState.SecretMusicId, Value = 1.0, Duration = args.Duration or 0.0 })
-
-	game.SetDefaultMusicParams(game.AudioState.SecretMusicName, game.AudioState.SecretMusicId, args)
-	if args.TrackOffsetMin ~= nil then
-		SetSoundPosition({
-			Id = game.AudioState.SecretMusicId,
-			Position = game.RandomFloat(args.TrackOffsetMin, args.TrackOffsetMax)
+		game.AudioState.SecretMusicName = args.TrackName
+		game.AudioState.SecretMusicId = PlaySound({
+			Name = game.AudioState.SecretMusicName,
+			AddCallbacks = true,
+			Delay = args.StartDelay or 0,
 		})
+
+		-- Wait so we don't set the volume for the old SecretMusicId
+		if args.StartDelay ~= nil then
+			-- Small buffer to make sure the music has actually started playing
+			game.wait(args.StartDelay + 0.02)
+		end
+		SetVolume({ Id = game.AudioState.SecretMusicId, Value = 0.0, Duration = 0.0 })
+		SetVolume({ Id = game.AudioState.SecretMusicId, Value = 1.0, Duration = args.Duration or 0.0 })
+
+		game.SetDefaultMusicParams(game.AudioState.SecretMusicName, game.AudioState.SecretMusicId, args)
+		if args.TrackOffsetMin ~= nil then
+			SetSoundPosition({
+				Id = game.AudioState.SecretMusicId,
+				Position = game.RandomFloat(args.TrackOffsetMin, args.TrackOffsetMax)
+			})
+		end
 	end
 
 	if source.ModsNikkelMHadesBiomesPlayVocals then
