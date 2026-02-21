@@ -315,10 +315,10 @@ local encounterModifications = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
 			},
-			-- TODO:
-			-- RequiredFalseCosmeticPurchaseable = "OrpheusEurydiceQuestItem",
-			RequiredFalseFlags = { "InFlashback", "OrpheusReunionInProgress" },
-			RequiredFalseTextLinesThisRun = game.GameData.OrpheusWithEurydiceAltTextLines,
+			RequiredFalseCosmeticPurchaseable = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem",
+			RequiredFalseFlags = { "OrpheusReunionInProgress" },
+			-- Changed from ThisRun to LastRun to make Orpheus ineligible if he was in Asphodel in the previous run
+			RequiredFalseTextLinesLastRun = game.GameData.OrpheusWithEurydiceAltTextLines,
 		},
 
 		SetupEvents = {

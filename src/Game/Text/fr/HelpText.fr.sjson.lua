@@ -1193,6 +1193,18 @@ local newData = {
 	-- 	Description =
 	-- 	"Orpheus had long been Court Musician in the House of Hades, until one day, he was banished to solitary confinement after refusing to perform for Lord Hades.",
 	-- },
+	-- Reunite Orpheus and Eurydice
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem",
+	-- 	DisplayName = "Singer's Gamble",
+	-- 	Description =
+	-- 	"Permit {$Keywords.CharOrpheus} to be with his muse again, in {$Keywords.ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Short} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem_Flavor",
+	-- 	Description =
+	-- 	"Nestled among the towering administrative parchmentwork in the House of Hades once lay an old document concerning a special pact signed by a once-living court musician, who attempted vainly to rescue his wife from death.",
+	-- },
 	-- #endregion
 
 	-- #region Keywords

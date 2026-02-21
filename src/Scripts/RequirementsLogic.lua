@@ -1187,7 +1187,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredRunMinValues ~= nil then
 		if game.CurrentRun then
 			for key, value in pairs(requirements.RequiredRunMinValues) do
-				if (CurrentRun[key] or 0) < value then
+				if (game.CurrentRun[key] or 0) < value then
 					return false
 				end
 			end
@@ -1196,7 +1196,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredRunMaxValues ~= nil then
 		if game.CurrentRun then
 			for key, value in pairs(requirements.RequiredRunMaxValues) do
-				if (CurrentRun[key] or 0) > value then
+				if (game.CurrentRun[key] or 0) > value then
 					return false
 				end
 			end
@@ -2649,7 +2649,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		for itemName, itemData in pairs(game.WorldUpgradeData) do
 			if not itemData.DebugOnly and itemData.ResourceCost ~= nil and not game.GameState.CosmeticsAdded[itemName] and not itemData.IgnoreAffordable then
 				if itemData.Slot == requirements.AnyAffordableGhostAdminItem and HasResource(itemData.ResourceName, itemData.ResourceCost) then
-					if itemData.game.GameStateRequirements == nil or IsGameStateEligible(CurrentRun, itemData, itemData.game.GameStateRequirements) then
+					if itemData.GameStateRequirements == nil or game.IsGameStateEligible(itemData, itemData.GameStateRequirements) then
 						canAffordAny = true
 						break
 					end
@@ -2889,13 +2889,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		if cosmeticData == nil then
 			return false
 		end
-		if game.GameState.WorldUpgradesAdded[cosmeticData.Name] or not IsGameStateEligible(CurrentRun, cosmeticData, cosmeticData.game.GameStateRequirements) then
+		if game.GameState.WorldUpgradesAdded[cosmeticData.Name] or not game.IsGameStateEligible(cosmeticData, cosmeticData.GameStateRequirements) then
 			return false
 		end
 	end
 	if requirements.RequiredFalseCosmeticPurchaseable ~= nil then
 		local cosmeticData = game.WorldUpgradeData[requirements.RequiredFalseCosmeticPurchaseable]
-		if cosmeticData ~= nil and not game.GameState.WorldUpgradesAdded[cosmeticData.Name] and IsGameStateEligible(CurrentRun, cosmeticData, cosmeticData.game.GameStateRequirements) then
+		if cosmeticData ~= nil and not game.GameState.WorldUpgradesAdded[cosmeticData.Name] and game.IsGameStateEligible(cosmeticData, cosmeticData.GameStateRequirements) then
 			return false
 		end
 	end

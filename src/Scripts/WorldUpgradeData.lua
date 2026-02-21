@@ -1,4 +1,5 @@
 --[[ Modded incantation order (in the menu):
+ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem - Reunite Orpheus and Eurydice - on Quest progress
 ModsNikkelMHadesBiomes_OrpheusUnlockItem - Allow Orpheus to spawn in Tartarus - after 1 run
 ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation - Post-Boss Keepsake Rack - after 1 run
 ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation - Well of Charon during runs - after 2 runs
@@ -20,8 +21,32 @@ WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic - New Music for the Music Mak
 
 local newIncantations = {
 	-- #region Critical/Story Items
-	ModsNikkelMHadesBiomes_OrpheusUnlockItem = {
+	ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem = {
 		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_sealedDocument_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 3,
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
+			ModsNikkelMHadesBiomes_CropAsphodel = 4,
+			ModsNikkelMHadesBiomes_PlantStyx = 3,
+		},
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				-- In the first game, also required some dialogue with Hades (in the House) and Nyx, as well as an inspect point in the administrative chamber
+				HasAll = { "EurydiceProgressWithOrpheus03", "OrpheusGift05", "EurydiceGift05" },
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_OrpheusUnlockItem = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
@@ -33,7 +58,8 @@ local newIncantations = {
 		},
 		GameStateRequirements = {
 			{
-				PathTrue = { "GameState", "RoomsEntered", "X_Intro" },
+				Path = { "GameState", "RoomsEntered" },
+				HasAll = { "A_Story01", "X_Intro" },
 			},
 		},
 	},
