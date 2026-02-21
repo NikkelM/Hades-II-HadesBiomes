@@ -106,6 +106,16 @@ local function applyNPCChoiceMappings(npcData, mappings)
 								end
 							end
 
+							if mappingData.SetForcedRewardsForTextLineSets then
+								for name, forcedRewards in pairs(mappingData.SetForcedRewardsForTextLineSets) do
+									if name == textlineSetName then
+										textLineSet.PrePortraitExitFunctionArgs = game.DeepCopyTable(textLineSet.PrePortraitExitFunctionArgs) or
+												{}
+										textLineSet.PrePortraitExitFunctionArgs.ModsNikkelMHadesBiomes_ForcedRewards = forcedRewards
+									end
+								end
+							end
+
 							-- Actually move the PostLineThreadedFunctionName to the NPC for handling in the post choice presentation
 							if postLineThreadedFunctionName ~= nil then
 								textLineSet.PrePortraitExitFunctionArgs = game.DeepCopyTable(textLineSet.PrePortraitExitFunctionArgs) or
@@ -709,6 +719,99 @@ local npcChoiceMappings = {
 			OrpheusFirstMeeting = 3,
 			OrpheusFirstMeeting_Alt = 3,
 			OrpheusAboutSingersReunionQuest01 = 4,
+		},
+		SetForcedRewardsForTextLineSets = {
+			OrpheusSingsAgain01 = {
+				{
+					Type = "Trait",
+					ItemName = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
+					Rarity = "Common",
+					PrioritySlotEntranceAnimation = "BoonEntranceLegendary",
+					PriorityRequirements = {
+						{
+							PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boxon" },
+						},
+					},
+				},
+			},
+			OrpheusSingsAgain01_B = {
+				{
+					Type = "Trait",
+					ItemName = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
+					Rarity = "Common",
+					PrioritySlotEntranceAnimation = "BoonEntranceLegendary",
+					PriorityRequirements = {
+						{
+							PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boxon" },
+						},
+					},
+				},
+			},
+			OrpheusSingsAgain01_C = {
+				{
+					Type = "Trait",
+					ItemName = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
+					Rarity = "Common",
+					PrioritySlotEntranceAnimation = "BoonEntranceLegendary",
+					PriorityRequirements = {
+						{
+							PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boxon" },
+						},
+					},
+				},
+			},
+			OrpheusSingsAgain01_D = {
+				{
+					Type = "Trait",
+					ItemName = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
+					Rarity = "Common",
+					PrioritySlotEntranceAnimation = "BoonEntranceLegendary",
+					PriorityRequirements = {
+						{
+							PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boxon" },
+						},
+					},
+				},
+			},
+			OrpheusSingsAgain02 = {
+				{
+					Type = "Trait",
+					ItemName = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
+					Rarity = "Common",
+					PrioritySlotEntranceAnimation = "BoonEntranceLegendary",
+					PriorityRequirements = {
+						{
+							PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon" },
+						},
+					},
+				},
+			},
+			OrpheusSingsAgain03 = {
+				{
+					Type = "Trait",
+					ItemName = "ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon",
+					Rarity = "Common",
+					PrioritySlotEntranceAnimation = "BoonEntranceLegendary",
+					PriorityRequirements = {
+						{
+							PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon" },
+						},
+					},
+				},
+			},
+			OrpheusSingsAgain03_B = {
+				{
+					Type = "Trait",
+					ItemName = "ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon",
+					Rarity = "Common",
+					PrioritySlotEntranceAnimation = "BoonEntranceLegendary",
+					PriorityRequirements = {
+						{
+							PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon" },
+						},
+					},
+				},
+			},
 		},
 	},
 	NPC_Orpheus_Story_01 = {

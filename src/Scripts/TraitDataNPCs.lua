@@ -541,7 +541,6 @@ local newTraitData = {
 		},
 	},
 	-- Lament of Orpheus
-	-- TODO: Force this boon as the only option for the OrpheusSingsAgain_01 voicelines
 	ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
@@ -599,7 +598,6 @@ local newTraitData = {
 		},
 	},
 	-- Hymn to Zagreus
-	-- TODO: Force this boon as the only option for OrpheusSingsAgain_02
 	ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
@@ -645,6 +643,38 @@ local newTraitData = {
 				Key = "ModsNikkelMHadesBiomesMaxStoreDiscount",
 				ExtractAs = "TooltipMaxDiscount",
 				Format = "Percent",
+			},
+		},
+	},
+	-- Good Riddance
+	ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Icon = "Boon_Orpheus_GoodRiddance",
+		BoonInfoIgnoreRequirements = true,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "OrpheusSingsAgain03", "OrpheusSingsAgain03_B", },
+			},
+		},
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
+		AcquireFunctionArgs = {
+			TrackName = "{c105b668-488c-4359-b7ff-02ccbb3c9eb9}",
+			FunctionName = "AddRerolls",
+			FunctionArgs = {
+				Amount = 5,
+			},
+		},
+
+		-- Also change in FunctionArgs above when updated
+		AddRerolls = 5,
+		AllowDoorReroll = true,
+		ExtractValues = {
+			{
+				Key = "AddRerolls",
+				ExtractAs = "Rerolls",
+				IncludeSigns = true,
 			},
 		},
 	},

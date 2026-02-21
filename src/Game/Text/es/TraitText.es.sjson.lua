@@ -191,6 +191,12 @@ local newData = {
 	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Maximum Discount:",
 	-- 	Description = "{#UpgradeFormat}-{$TooltipData.ExtractData.TooltipMaxDiscount}%{#Prev}",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon",
+	-- 	InheritFrom = "MusicMusicPlayerEurydiceSong1MusicPlayer",
+	-- 	Description =
+	-- 	"You gain {#UpgradeFormat}{$TooltipData.StatDisplay1}{#Prev}{!Icons.ReRollAlt}, and can alter {#BoldFormat}Location Rewards{#Prev}. This does not break {$Keywords.Random}.",
+	-- },
 	-- #endregion
 }
 

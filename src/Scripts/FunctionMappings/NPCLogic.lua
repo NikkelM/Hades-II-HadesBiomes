@@ -38,38 +38,47 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 
 	RandomSynchronize(9)
 
-	source.UpgradeOptions = {}
+	source.UpgradeOptions = args.ModsNikkelMHadesBiomes_ForcedRewards or {}
 	source.BlockReroll = true
 	local options = ShallowCopyTable(args.UpgradeOptions) or {}
 	local eligibleOptions = {}
 	local priorityOptions = {}
 
-	for i, option in pairs(options) do
-		-- Is the UpgradeOption itself eligible?
-		if option.GameStateRequirements == nil or game.IsGameStateEligible(source, option.GameStateRequirements) then
-			-- Does this UpgradeOption have a TraitData entry, and if so, is it eligible?
-			if game.TraitData[option.ItemName] and game.IsTraitEligible(game.TraitData[option.ItemName]) then
-				-- Should this UpgradeOption be prioritized?
-				if option.PriorityRequirements ~= nil and game.IsGameStateEligible(source, option.PriorityRequirements) then
-					table.insert(priorityOptions, option)
-				else
-					table.insert(eligibleOptions, option)
+	if not args.ModsNikkelMHadesBiomes_ForcedRewards then
+		for _, option in pairs(options) do
+			-- Is the UpgradeOption itself eligible?
+			if option.GameStateRequirements == nil or game.IsGameStateEligible(source, option.GameStateRequirements) then
+				-- Does this UpgradeOption have a TraitData entry, and if so, is it eligible?
+				if game.TraitData[option.ItemName] and game.IsTraitEligible(game.TraitData[option.ItemName]) then
+					-- Should this UpgradeOption be prioritized?
+					if option.PriorityRequirements ~= nil and game.IsGameStateEligible(source, option.PriorityRequirements) then
+						table.insert(priorityOptions, option)
+					else
+						table.insert(eligibleOptions, option)
+					end
 				end
 			end
 		end
-	end
 
-	for i = 1, 3 do
-		if not game.IsEmpty(priorityOptions) then
-			local option = game.RemoveRandomValue(priorityOptions) or {}
-			table.insert(source.UpgradeOptions, option)
-			option.SlotEntranceAnimation = option.PrioritySlotEntranceAnimation
-		elseif not game.IsEmpty(eligibleOptions) then
-			local option = game.RemoveRandomValue(eligibleOptions) or {}
-			if option.Rarity and game.TableLength(eligibleOptions) > 0 and not game.PassRarityCheck(option.Rarity) then
-				option = game.RemoveRandomValue(eligibleOptions)
+		for _ = 1, 3 do
+			if not game.IsEmpty(priorityOptions) then
+				local option = game.RemoveRandomValue(priorityOptions) or {}
+				table.insert(source.UpgradeOptions, option)
+				option.SlotEntranceAnimation = option.PrioritySlotEntranceAnimation
+			elseif not game.IsEmpty(eligibleOptions) then
+				local option = game.RemoveRandomValue(eligibleOptions) or {}
+				if option.Rarity and game.TableLength(eligibleOptions) > 0 and not game.PassRarityCheck(option.Rarity) then
+					option = game.RemoveRandomValue(eligibleOptions)
+				end
+				table.insert(source.UpgradeOptions, option)
 			end
-			table.insert(source.UpgradeOptions, option)
+		end
+	else
+		-- Make sure we use any potential prioritySlotEntranceAnimations for the forced rewards
+		for _, option in pairs(source.UpgradeOptions) do
+			if option.PriorityRequirements ~= nil and game.IsGameStateEligible(source, option.PriorityRequirements) and option.PrioritySlotEntranceAnimation then
+				option.SlotEntranceAnimation = option.PrioritySlotEntranceAnimation
+			end
 		end
 	end
 
@@ -275,7 +284,7 @@ function mod.ModsNikkelMHadesBiomesEurydiceBuff(args, source)
 	args = args or {}
 	mod.ModsNikkelMHadesBiomesEurydicePreBuffPresentation(source, args)
 	if args.FunctionName then
-		game.CallFunctionName(args.FunctionName, source, args)
+		game.CallFunctionName(args.FunctionName, source, args.FunctionArgs or args)
 	end
 	mod.ModsNikkelMHadesBiomesEurydicePostBuffPresentation(source, args)
 end
@@ -296,7 +305,7 @@ end
 function mod.ModsNikkelMHadesBiomesPatroclusBuff(args, source)
 	args = args or {}
 	if args.FunctionName then
-		game.CallFunctionName(args.FunctionName, source, args)
+		game.CallFunctionName(args.FunctionName, source, args.FunctionArgs or args)
 	end
 	game.wait(1.0)
 	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteExcitement" })
@@ -350,7 +359,7 @@ function mod.ModsNikkelMHadesBiomesOrpheusBuff(args, source)
 	local orpheus = game.ActiveEnemies[390000]
 
 	if args.FunctionName then
-		game.CallFunctionName(args.FunctionName, source, args)
+		game.CallFunctionName(args.FunctionName, source, args.FunctionArgs or args)
 	end
 	if args.AddAdditionalTraits then
 		for _, trait in pairs(args.AddAdditionalTraits) do

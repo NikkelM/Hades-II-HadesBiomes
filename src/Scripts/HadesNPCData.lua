@@ -302,6 +302,16 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		TrackOffsetMin = 10.0,
 		TrackOffsetMax = 120.0,
 	},
+	SingingEndTheme_Duet_SongFromStart = {
+		TrackName = "{a16b3f95-bffa-4b22-b6b2-ac812d8701f2}",
+		Restore = true,
+	},
+	SingingEndTheme_Duet = {
+		TrackName = "{a16b3f95-bffa-4b22-b6b2-ac812d8701f2}",
+		Restore = true,
+		TrackOffsetMin = 10.0,
+		TrackOffsetMax = 120.0,
+	},
 	-- #endregion
 	-- #region Orpheus
 	Singing_SongFromStart = {
@@ -320,6 +330,16 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	},
 	SingingHymn = {
 		TrackName = "{e044c3d0-8cf0-44ac-9d8e-75eda8c80501}",
+		Restore = true,
+		TrackOffsetMin = 10.0,
+		TrackOffsetMax = 120.0,
+	},
+	SingingEurydiceSong01_Orpheus_SongFromStart = {
+		TrackName = "{c105b668-488c-4359-b7ff-02ccbb3c9eb9}",
+		Restore = true,
+	},
+	SingingEurydiceSong01_Orpheus = {
+		TrackName = "{c105b668-488c-4359-b7ff-02ccbb3c9eb9}",
 		Restore = true,
 		TrackOffsetMin = 10.0,
 		TrackOffsetMax = 120.0,
@@ -506,6 +526,17 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 				PriorityRequirements = {
 					{
 						PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon" },
+					},
+				},
+			},
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon",
+				Rarity = "Common",
+				PrioritySlotEntranceAnimation = "BoonEntranceLegendary",
+				PriorityRequirements = {
+					{
+						PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon" },
 					},
 				},
 			},
