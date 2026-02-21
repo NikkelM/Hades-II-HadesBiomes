@@ -72,6 +72,28 @@ local addAnimations = {
 		FilePath = "GUIModded\\Screens\\BoonIcons\\Bouldy_01",
 	},
 	-- #endregion
+	-- #region Orpheus
+	Boon_Orpheus_GodOfTheDead = {
+		Name = "Boon_Orpheus_GodOfTheDead",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_GodOfTheDead",
+	},
+	Boon_Orpheus_HymnToZagreus = {
+		Name = "Boon_Orpheus_HymnToZagreus",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_HymnToZagreus",
+	},
+	Boon_Orpheus_PrimordialChaos = {
+		Name = "Boon_Orpheus_PrimordialChaos",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_PrimordialChaos",
+	},
+	Boon_Orpheus_LamentOfOrpheus = {
+		Name = "Boon_Orpheus_LamentOfOrpheus",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_LamentOfOrpheus",
+	},
+	-- #endregion
 }
 
 sjson.hook(hadesTwoBoonFile, function(data)

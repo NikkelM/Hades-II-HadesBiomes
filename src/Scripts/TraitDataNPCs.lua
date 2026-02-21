@@ -468,8 +468,7 @@ local newTraitData = {
 	ModsNikkelMHadesBiomesOrpheusChaosThemeBoon = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
-		-- TODO:
-		Icon = "Boon_Eurydice_01",
+		Icon = "Boon_Orpheus_PrimordialChaos",
 		BoonInfoIgnoreRequirements = true,
 		GameStateRequirements = {
 			{
@@ -490,8 +489,7 @@ local newTraitData = {
 	ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
-		-- TODO:
-		Icon = "Boon_Eurydice_01",
+		Icon = "Boon_Orpheus_PrimordialChaos",
 		SecretDoorCostMultiplier = {
 			BaseMin = 0,
 			BaseMax = 0,
@@ -501,8 +499,7 @@ local newTraitData = {
 	ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
-		-- TODO:
-		Icon = "Boon_Eurydice_02",
+		Icon = "Boon_Orpheus_GodOfTheDead",
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
 		AcquireFunctionArgs = {
 			TrackName = "{fc71b797-75db-43af-8cc0-f50fdacb5dbc}",
@@ -536,8 +533,7 @@ local newTraitData = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		ShowInHUD = true,
-		-- TODO:
-		Icon = "Boon_Eurydice_03",
+		Icon = "Boon_Orpheus_LamentOfOrpheus",
 		BoonInfoIgnoreRequirements = true,
 		GameStateRequirements = {
 			NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart", },
@@ -595,8 +591,7 @@ local newTraitData = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		ShowInHUD = true,
-		-- TODO:
-		Icon = "Boon_Eurydice_03",
+		Icon = "Boon_Orpheus_HymnToZagreus",
 		BoonInfoIgnoreRequirements = true,
 		GameStateRequirements = {
 			{
