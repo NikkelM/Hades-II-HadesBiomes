@@ -375,10 +375,11 @@ function mod.ModsNikkelMHadesBiomesOrpheusBuff(args, source)
 	end
 end
 
--- TODO: Test
 -- Adding to game namespace as the mapping order of operations would make it difficult to change this beforehand
 function game.OrpheusExit(source, args)
 	args = args or {}
+	source = game.ActiveEnemies[390000]
+
 	game.wait(args.WaitTime or 0)
 
 	SetAnimation({ Name = "NPCOrpheusExit", DestinationId = source.ObjectId })
@@ -399,20 +400,11 @@ function game.OrpheusExit(source, args)
 		{
 			Delay = 1,
 			Title = "MainSubPlotComplete",
-			Text = "OrpheusEurydiceQuestItem",
+			Text = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem",
 			TextRevealSound = "/Leftovers/Menu Sounds/TextReveal3",
 			AnimationName = "LocationTextBG",
 			AnimationOutName = "LocationTextBGOut"
 		})
-
-	-- TODO: Test if needed
-	-- if game.ActivatedObjects[source.ObjectId] ~= nil and not game.CurrentRun.Hero.IsDead then
-	-- 	game.ActivatedObjects[source.ObjectId] = nil
-	-- 	game.wait(0.2, game.RoomThreadName)
-	-- 	if game.CheckRoomExitsReady(game.CurrentRun.CurrentRoom) then
-	-- 		game.UnlockRoomExits(game.CurrentRun, game.CurrentRun.CurrentRoom)
-	-- 	end
-	-- end
 end
 
 -- TODO: Test - the voiceline using this won't be able to play yet anyways

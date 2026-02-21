@@ -556,6 +556,9 @@ local roomModifications = {
 			RequiredSeenRooms = mod.NilValue,
 			RequiredSeenEncounter = "BossHydra",
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
+			-- Since Orpheus is now appearing during the current run instead of in the house (previous run), fix the requirement
+			RequiredFalseTextLinesLastRun = mod.NilValue,
+			RequiredFalseTextLinesThisRun = { "OrpheusAboutSingersReunionQuest01" },
 		},
 
 		HarvestPointChances = { 0.4, 0.1, },

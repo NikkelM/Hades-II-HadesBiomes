@@ -16,7 +16,7 @@ ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation - Infernal Troves - after
 ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation - Moon Moncuments - after completing 6 runs and clearing 2 runs
 ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after completing 7 and clearing 4 runs
 ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after completing 2 runs
-WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic - New Music for the Music Maker - from Hades_OST_for_the_Music_Maker - after 1 run and meeting Eurydice
+WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic - New Music for the Music Maker - from Hades_OST_for_the_Music_Maker - after 1 run and meeting Orpheus
 ]] --
 
 local newIncantations = {

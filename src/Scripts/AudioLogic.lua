@@ -78,14 +78,12 @@ function mod.SecretMusicPlayerEvent(source, args)
 	game.SecretMusicPlayer(args.TrackName, args)
 end
 
-function mod.LoadHadesOSTSoundBank(source, args)
+function mod.OrpheusRoomStartMusicPlayer(source, args)
 	local mods = rom.mods
 	local hadesOSTModReference = mods["NikkelM-Hades_OST_for_the_Music_Maker"]
 	rom.audio.load_bank(rom.path.combine(hadesOSTModReference._PLUGIN.plugins_data_mod_folder_path,
 		"Audio\\ModsNikkelMUnlockHadesMusic.bank"))
-end
 
-function mod.OrpheusRoomStartMusicPlayer(source, args)
 	source = game.ActiveEnemies[390000]
 
 	if args.TrackName == nil then

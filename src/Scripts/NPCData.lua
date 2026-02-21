@@ -483,10 +483,16 @@ local npcModifications = {
 			OrpheusFirstMeeting = {
 				SuperPriority = true,
 				Priority = mod.NilValue,
+				[3] = {
+					PostLineFunctionArgs = { Text = "ModsNikkelMHadesBiomes_OrpheusUnlockItem", },
+				},
 			},
 			OrpheusFirstMeeting_Alt = {
 				SuperPriority = true,
 				Priority = mod.NilValue,
+				[3] = {
+					PostLineFunctionArgs = { Text = "ModsNikkelMHadesBiomes_OrpheusUnlockItem", },
+				},
 			},
 			OrpheusMiscMeeting03 = {
 				[2] = mod.NilValue,
@@ -512,6 +518,19 @@ local npcModifications = {
 			},
 			OrpheusSingsAgain03_B = {
 				RequiredAmbientTrackNameMatch = mod.NilValue,
+			},
+			OrpheusAboutSingersReunionQuest01 = {
+				SuperPriority = true,
+				Priority = mod.NilValue,
+				RequiresNullAmbientMusicId = mod.NilValue,
+				RequiredCosmetics = { "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem", },
+				[4] = { PostLineFunctionArgs = { WaitTime = 2, }, },
+			},
+			OrpheusWithHades03 = {
+				RequiredFalseCosmetics = { "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem", },
+			},
+			OrpheusNonSingingChat08 = {
+				RequiredFalseCosmetics = { "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem", },
 			},
 		},
 		CharacterInteractions = {

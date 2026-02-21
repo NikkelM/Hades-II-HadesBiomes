@@ -291,23 +291,22 @@ local encounterModifications = {
 	Story_Sisyphus_01 = {
 		-- Always eligible, since we need to be able to fall back to this
 		GameStateRequirements = {},
+
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" }, }, },
-			[3] = mod.NilValue,
+			[3] = {
+				FunctionName = _PLUGIN.guid .. "." .. "SecretMusicPlayerEvent",
+				Args = {
+					TrackName = "/Music/MusicExploration1_MC",
+				},
+			},
 			[4] = mod.NilValue,
 			[5] = mod.NilValue,
 			[6] = mod.NilValue,
 			[7] = mod.NilValue,
 			[8] = mod.NilValue,
 		},
-		StartRoomThreadedEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "SecretMusicPlayerEvent",
-				Args = {
-					TrackName = "/Music/MusicExploration1_MC",
-				},
-			},
-		},
+
 		NextRoomResumeMusic = true,
 	},
 	Story_Orpheus_01 = {
@@ -329,18 +328,7 @@ local encounterModifications = {
 
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedAndFlipTypes", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Orpheus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01", }, FlipTypes = { "ModsNikkelMHadesBiomes_NPC_Bouldy_01" } }, },
-			[3] = mod.NilValue,
-			[4] = mod.NilValue,
-			[5] = mod.NilValue,
-			[6] = mod.NilValue,
-			[7] = mod.NilValue,
-			[8] = mod.NilValue,
-		},
-		StartRoomThreadedEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "LoadHadesOSTSoundBank",
-			},
-			{
+			[3] = {
 				FunctionName = _PLUGIN.guid .. "." .. "OrpheusRoomStartMusicPlayer",
 				Args = {
 					OrpheusSingsAgainRequirements = {
@@ -351,6 +339,11 @@ local encounterModifications = {
 					TrackOffsetMax = 120.0,
 				},
 			},
+			[4] = mod.NilValue,
+			[5] = mod.NilValue,
+			[6] = mod.NilValue,
+			[7] = mod.NilValue,
+			[8] = mod.NilValue,
 		},
 
 		NextRoomResumeMusic = true,

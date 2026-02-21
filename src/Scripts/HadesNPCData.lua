@@ -344,6 +344,13 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		TrackOffsetMin = 10.0,
 		TrackOffsetMax = 120.0,
 	},
+	OrpheusAlerting = {
+		WithinDistance = 500,
+		VoiceLines = {
+			-- My friend?
+			{ Cue = "/VO/Orpheus_0235", PreLineAnim = "OrpheusFidget" },
+		},
+	},
 	-- #endregion
 	-- #region NPC Benefit choices
 	SisyphusBenefitChoices = {
@@ -21975,7 +21982,7 @@ mod.NPCData = mod.NPCData or {
 					"Why is it always talk of payment around here? You're my mate. And your songs have lifted many spirits here, including mine. Now go, and make the most of this, will you?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.OrpheusAlerting,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.OrpheusAlerting,
 			},
 
 			OrpheusAboutSingersReunionQuestComplete01 = {

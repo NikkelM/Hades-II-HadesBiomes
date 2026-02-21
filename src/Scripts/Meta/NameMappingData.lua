@@ -673,9 +673,7 @@ mod.HadesHelpTextCopyKeys = {
 	-- #region QuestData/Minor Prophecies/Unlocks
 	UnknownCondition_Meet = true,
 	MainSubPlotComplete = true,
-	OrpheusUnlockItem = true,
 	SisyphusQuestItem = true,
-	OrpheusEurydiceQuestItem = true,
 	AchillesPatroclusQuestItem = true,
 	-- #endregion
 	-- #region Orpheus Boons/Songs
