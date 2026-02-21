@@ -166,12 +166,7 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				Path = { "GameState", "TraitsTaken" },
-				HasAll = {
-					mod.SharedKeepsakePortSisyphusKeepsakeTrait,
-					mod.SharedKeepsakePortEurydiceKeepsakeTrait,
-					mod.SharedKeepsakePortPatroclusKeepsakeTrait,
-					mod.SharedKeepsakePortThanatosKeepsakeTrait,
-				},
+				HasAll = mod.SharedKeepsakePortKeepsakeTraitNames,
 			},
 		},
 		IncompleteName = "Quest_UnknownCondition",

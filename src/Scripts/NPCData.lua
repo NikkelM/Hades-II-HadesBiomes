@@ -569,8 +569,7 @@ local npcModifications = {
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
-				-- TODO:
-				-- [3] = { PostLineFunctionArgs = { Icon = mod.SharedKeepsakePortEurydiceKeepsakeBondIcon }, },
+				[4] = { PostLineFunctionArgs = { Icon = mod.SharedKeepsakePortOrpheusKeepsakeBondIcon }, },
 			},
 		},
 		MissingDistanceTrigger = mod.NilValue,

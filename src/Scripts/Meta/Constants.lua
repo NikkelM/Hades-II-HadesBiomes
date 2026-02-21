@@ -471,12 +471,15 @@ mod.SharedKeepsakePortPatroclusKeepsakeTrait = "zannc-SharedKeepsakePort-ShieldA
 mod.SharedKeepsakePortPatroclusKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Patroclus"
 mod.SharedKeepsakePortThanatosKeepsakeTrait = "zannc-SharedKeepsakePort-PerfectClearDamageBonusKeepsake"
 mod.SharedKeepsakePortThanatosKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Thanatos"
+mod.SharedKeepsakePortOrpheusKeepsakeTrait = "zannc-SharedKeepsakePort-DistanceDamageKeepsake"
+mod.SharedKeepsakePortOrpheusKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Orpheus"
 
 mod.SharedKeepsakePortKeepsakeTraitNames = {
 	mod.SharedKeepsakePortSisyphusKeepsakeTrait,
 	mod.SharedKeepsakePortEurydiceKeepsakeTrait,
 	mod.SharedKeepsakePortPatroclusKeepsakeTrait,
 	mod.SharedKeepsakePortThanatosKeepsakeTrait,
+	mod.SharedKeepsakePortOrpheusKeepsakeTrait,
 }
 
 -- Not actually a constant, will be populated in mod.AddNarrativeDataEntries()

@@ -37,10 +37,10 @@ It is highly recommended that you complete the main story of Hades before playin
 - Collect **30+** new resources specific to the new biomes, use them for unlocks in this and [other mods](#integrations-with-other-mods), and trade them with the Broker.
 - Unlock **29** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
 - Decorate the Crossroads with **45+** new cosmetics, including new **Cauldrons**, **Fan Posters** for your tent, and **Charms** inspired by Zagreus' companions from the first game.
-- Discover and complete **25+** new Minor Prophecies at the Fated List.
+- Discover and complete **30+** new Minor Prophecies at the Fated List.
 - Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
-- Discover and perform **10+** new incantations to unlock gameplay features and new rooms in Zagreus' Journey runs.
-- Unlock **four** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
+- Discover and perform **15+** new incantations to unlock gameplay features and new rooms in Zagreus' Journey runs.
+- Unlock **five** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus, Orpheus and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
 - Challenge yourself with a set of new **Chaos Trials**, including randomized "Chaos Within" trials in the spirit of (Great) Chaos Above and Below.
 - Read all about the new biomes, enemies, bosses and friends in a new chapter in your Codex.
 
