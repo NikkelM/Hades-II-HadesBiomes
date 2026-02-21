@@ -1508,6 +1508,28 @@ local newData = {
 	-- 	Description =
 	-- 	"The daughter of the god of the dead shall someday dream of vanquishing foes imbued with each of the different dangerous Perks {#Emph}unique to the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} {#Prev}from the {#Emph}{$MetaUpgradeData.EnemyEliteShrineUpgrade.Name} {#Prev}in the {#Emph}Oath of the Unseen{#Prev}."
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestMeetStoryNPCs",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Friendly Faces ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of meeting some of her brother's old friends and companions.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Sisyphus",
+	-- 	DisplayName = "Met Sisyphus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Eurydice",
+	-- 	DisplayName = "Met Eurydice",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Patroclus",
+	-- 	DisplayName = "Met Patroclus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Orpheus",
+	-- 	DisplayName = "Met Orpheus",
+	-- },
 	-- #endregion
 
 	-- #region Chaos Trials/Bounties

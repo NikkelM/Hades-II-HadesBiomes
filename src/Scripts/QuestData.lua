@@ -13,6 +13,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestFirstClear",
 	-- major / priority
 	"ModsNikkelMHadesBiomes_QuestMeetChthonicGods",
+	"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs",
 	"ModsNikkelMHadesBiomes_QuestWeaponClears",
 	"ModsNikkelMHadesBiomes_QuestAspectClears",
 	"ModsNikkelMHadesBiomes_QuestWeaponClearsFast",
@@ -1182,7 +1183,7 @@ local newQuestData = {
 			"ModsNikkelMHadesBiomes_QuestCropsSmall_Asphodel",
 			"ModsNikkelMHadesBiomes_QuestCropsSmall_Elysium",
 			"ModsNikkelMHadesBiomes_QuestCropsSmall_Styx",
-		}
+		},
 	},
 	-- Clear streak on modded random Chaos Trials/Bounties
 	ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak = {
@@ -1250,6 +1251,46 @@ local newQuestData = {
 				ObjectType = "NPC_Moros_01",
 				{ Cue = "/VO/Moros_0225", Text = "Serve the Night, and the Night shall give back." },
 			},
+		},
+	},
+	-- Meet all Story NPCs (Sisyphus, Eurydice, Patroclus, Orpheus)
+	ModsNikkelMHadesBiomes_QuestMeetStoryNPCs = {
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
+		RewardResourceName = "MetaCurrency",
+		RewardResourceAmount = 800,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "SisyphusFirstMeeting", "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C", "PatroclusFirstMeeting", "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			-- Sisyphus
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "SisyphusFirstMeeting" },
+			},
+			-- Eurydice
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C" },
+			},
+			-- Patroclus
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "PatroclusFirstMeeting" },
+			},
+			-- Orpheus
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+			},
+			-- TODO: Once implemented, Achilles, Dusa
+		},
+		IncompleteName = "UnknownCondition_Meet",
+		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {
+			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Sisyphus",
+			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Eurydice",
+			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Patroclus",
+			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Orpheus",
 		},
 	},
 	-- #endregion
