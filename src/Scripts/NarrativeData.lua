@@ -37,18 +37,6 @@ local hadesNPCGiftLinePriorities = {
 		"OrpheusGift07",
 		"OrpheusGift08",
 	},
-	NPC_Orpheus_Story_01 = {
-		"OrpheusGift01",
-		"OrpheusGift02",
-		"OrpheusGift03",
-		"OrpheusGift04",
-		"OrpheusGift04_B",
-		"OrpheusGift05",
-		"OrpheusGift06",
-		"OrpheusGift07",
-		"OrpheusGift08",
-	},
-	-- ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {},
 	NPC_Eurydice_01 = {
 		"EurydiceGift01",
 		"EurydiceGift02",
@@ -73,8 +61,7 @@ local hadesNPCGiftLinePriorities = {
 		"ThanatosGift01",
 		"ThanatosGift02",
 		"ThanatosGift03",
-		-- In Hades II, gift text lines only have one variant, so if we keep both, there will always be a locked heart in the Codex
-		-- "ThanatosGift04",
+		"ThanatosGift04",
 		"ThanatosGift04_B",
 		"ThanatosGift05",
 		"ThanatosGift06",

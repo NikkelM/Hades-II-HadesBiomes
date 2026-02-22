@@ -197,9 +197,15 @@ local npcModifications = {
 			SisyphusAboutKeepsake01 = { RequiredTrait = mod.SharedKeepsakePortSisyphusKeepsakeTrait, },
 			SisyphusAboutKeepsake02 = { RequiredTrait = mod.SharedKeepsakePortSisyphusKeepsakeTrait, },
 		},
-		-- From Hades GiftData.lua
 		GiftTextLineSets = {
 			SisyphusGift07_A = {
+				GameStateRequirements = {
+					{
+						-- TODO: Questline not implemented
+						PathTrue = { "GameState", "TextLinesRecord", "SisyphusLiberationQuestComplete" },
+					},
+				},
+				LockedHintId = "ModsNikkelMHadesBiomes_Codex_SisyphusUnlockHint01",
 				RequiredAnyTextLines = mod.NilValue,
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
@@ -214,6 +220,7 @@ local npcModifications = {
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
 			SisyphusGift09_A = {
+				CompletedHintId = "ModsNikkelMHadesBiomes_Codex_BondForgedSisyphus",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
@@ -271,14 +278,20 @@ local npcModifications = {
 				AngleTowardTargetId = mod.NilValue,
 			},
 		},
-		-- From Hades GiftData.lua
 		GiftTextLineSets = {
 			EurydiceGift07 = {
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "EurydiceAboutSingersReunionQuestComplete01" },
+					},
+				},
+				LockedHintId = "ModsNikkelMHadesBiomes_Codex_EurydiceUnlockHint01",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
 			EurydiceGift08 = {
+				CompletedHintId = "ModsNikkelMHadesBiomes_Codex_BondForgedEurydice",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
@@ -314,14 +327,20 @@ local npcModifications = {
 			PatroclusAboutKeepsake01 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
 			PatroclusAboutKeepsake02 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
 		},
-		-- From Hades GiftData.lua
 		GiftTextLineSets = {
 			PatroclusGift07_A = {
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "PatroclusWithAchilles01" },
+					},
+				},
+				LockedHintId = "ModsNikkelMHadesBiomes_Codex_PatroclusUnlockHint01",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
 			PatroclusGift08_A = {
+				CompletedHintId = "ModsNikkelMHadesBiomes_Codex_BondForgedPatroclus",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
@@ -390,12 +409,28 @@ local npcModifications = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		ExcludeFromDamageDealtRecord = true,
-		-- From Hades GiftData.lua
 		GiftTextLineSets = {
-			-- We only use the alternate version since Hades II doesn't support alternate gift lines
-			ThanatosGift04 = mod.NilValue,
-			-- The requirements for ThanatosGift04_B are modified manually below to be applied before setting its GameStateRequirements
+			ThanatosGift04 = {
+				[2] = {
+					-- Manually add the alternate to the TextLineRecord to not break the NarrativeData/locked hint ordering in the Codex
+					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+					PostLineFunctionArgs = { TextLine = "ThanatosGift04_B" },
+				},
+			},
+			ThanatosGift04_B = {
+				[2] = {
+					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+					PostLineFunctionArgs = { TextLine = "ThanatosGift04" },
+				},
+			},
 			ThanatosGift07_A = {
+				GameStateRequirements = {
+					{
+						-- TODO: This needs a voiceline from the house version of Thanatos
+						PathTrue = { "GameState", "TextLinesRecord", "ThanatosFieldBuildingTrust01" },
+					},
+				},
+				LockedHintId = "ModsNikkelMHadesBiomes_Codex_ThanatosUnlockHint01",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
@@ -411,6 +446,7 @@ local npcModifications = {
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
 			ThanatosGift10 = {
+				CompletedHintId = "ModsNikkelMHadesBiomes_Codex_BondForgedThanatos",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
@@ -484,7 +520,6 @@ local npcModifications = {
 		-- "Songs of Orpheus",
 		BoonInfoTitleText = "ModsNikkelMHadesBiomes_Codex_BoonInfo_Orpheus",
 		Traits = {
-			-- TODO:
 			"ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 			"ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon",
 			"ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
@@ -496,16 +531,10 @@ local npcModifications = {
 			OrpheusFirstMeeting = {
 				SuperPriority = true,
 				Priority = mod.NilValue,
-				[3] = {
-					PostLineFunctionArgs = { Text = "ModsNikkelMHadesBiomes_OrpheusUnlockItem", },
-				},
 			},
 			OrpheusFirstMeeting_Alt = {
 				SuperPriority = true,
 				Priority = mod.NilValue,
-				[3] = {
-					PostLineFunctionArgs = { Text = "ModsNikkelMHadesBiomes_OrpheusUnlockItem", },
-				},
 			},
 			OrpheusMiscMeeting03 = {
 				[2] = mod.NilValue,
@@ -570,8 +599,20 @@ local npcModifications = {
 				},
 			},
 		},
-		-- From Hades GiftData.lua
 		GiftTextLineSets = {
+			OrpheusGift04 = {
+				[2] = {
+					-- Manually add the alternate to the TextLineRecord to not break the NarrativeData/locked hint ordering in the Codex
+					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+					PostLineFunctionArgs = { TextLine = "OrpheusGift04_B" },
+				},
+			},
+			OrpheusGift04_B = {
+				[2] = {
+					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+					PostLineFunctionArgs = { TextLine = "OrpheusGift04" },
+				},
+			},
 			OrpheusGift05 = {
 				[2] = {
 					PostLineFunctionName = _PLUGIN.guid .. "." .. "TimePassesPresentation",
@@ -608,13 +649,19 @@ local npcModifications = {
 					FadeInSound = mod.NilValue,
 				},
 			},
-			-- TODO: GameStateRequirements/UnlockGameStateRequirements for the reunion quest - which gift event? Same for Eurydice
 			OrpheusGift07 = {
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "OrpheusAboutSingersReunionQuest01" },
+					},
+				},
+				LockedHintId = "ModsNikkelMHadesBiomes_Codex_OrpheusUnlockHint01",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
 			OrpheusGift08 = {
+				CompletedHintId = "ModsNikkelMHadesBiomes_Codex_BondForgedOrpheus",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
@@ -885,9 +932,6 @@ mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikk
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikkelMHadesBiomes_BouldyChat01.RequiredTextLines = {
 	"ModsNikkelMHadesBiomes_BouldyFirstMeeting", }
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.BouldyChat01 = nil
-
--- Fix the requirements for ThanatosGift04_B to always be available, even before Ending01
-mod.NPCData.NPC_Thanatos_01.GiftTextLineSets.ThanatosGift04_B.RequiredTextLines = { "ThanatosGift03" }
 
 applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)
 applyNPCGlobalModifications(mod.NPCData)

@@ -517,7 +517,6 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		OverwriteTableKeys = { SkipUpgradePresentationAndExitUnlock = true, },
 		OnCloseFinishedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesNPCPostChoicePresentation",
 		UpgradeOptions = {
-			-- TODO:
 			{
 				Type = "Trait",
 				ItemName = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
@@ -23638,7 +23637,6 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- high relationship / locked gifts
-			-- TODO: Lock through using GameStateRequirements and LockedHintId as in example for ErisGift07 - also do for Eurydice (and Sisyphus/Thanatos?)
 			OrpheusGift07 = {
 				PlayOnce = true,
 				RequiredTextLines = { "OrpheusGift06", },

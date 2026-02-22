@@ -59,6 +59,53 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_Codex_BoonInfo_Orpheus",
 		DisplayName = "Songs of {$TempTextData.BoonName}",
 	},
+	-- #region Relationship hints
+	{
+		Id = "ModsNikkelMHadesBiomes_Codex_EurydiceUnlockHint01",
+		DisplayName =
+		"{$TempTextData.CharacterName} would love to cook with {!TempTextData.ResourceIcon} once she has reconnected with her long lost love."
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_Codex_BondForgedEurydice",
+		DisplayName = "You and {$TempTextData.CharacterName} share an inspiring bond.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_Codex_OrpheusUnlockHint01",
+		DisplayName =
+		"{$TempTextData.CharacterName} does not feel he deserves {!TempTextData.ResourceIcon} until he has come to terms with his past mistakes."
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_Codex_BondForgedOrpheus",
+		DisplayName = "You and {$TempTextData.CharacterName} share a sonorous bond.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_Codex_PatroclusUnlockHint01",
+		DisplayName =
+		"{$TempTextData.CharacterName} has little use for {!TempTextData.ResourceIcon} while he still mourns his loss."
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_Codex_BondForgedPatroclus",
+		DisplayName = "You and {$TempTextData.CharacterName} share an enlightened bond.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_Codex_ThanatosUnlockHint01",
+		DisplayName =
+		"{$TempTextData.CharacterName} won't accept any {!TempTextData.ResourceIcon} until he understands more about his feelings for you."
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_Codex_BondForgedThanatos",
+		DisplayName = "You and {$TempTextData.CharacterName} share an undying bond.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_Codex_SisyphusUnlockHint01",
+		DisplayName =
+		"{$TempTextData.CharacterName} might be interested in {!TempTextData.ResourceIcon} once a great weight has been lifted off his shoulders."
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_Codex_BondForgedSisyphus",
+		DisplayName = "You and {$TempTextData.CharacterName} share a rock-solid bond.",
+	},
+	-- #endregion
 	-- #endregion
 
 	-- #region Install screens

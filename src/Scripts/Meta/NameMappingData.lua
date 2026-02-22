@@ -675,6 +675,7 @@ mod.HadesHelpTextCopyKeys = {
 	MainSubPlotComplete = true,
 	SisyphusQuestItem = true,
 	AchillesPatroclusQuestItem = true,
+	OrpheusUnlockItem = true,
 	-- #endregion
 	-- #region Orpheus Boons/Songs
 	MusicMusicPlayerMainThemeMusicPlayer = true,
