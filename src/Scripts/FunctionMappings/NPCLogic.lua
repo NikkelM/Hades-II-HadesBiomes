@@ -28,7 +28,7 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 		end
 	end
 
-	-- Restart Eurydice's and Orpheus' singing if we are talking to her
+	-- Restart Eurydice's and Orpheus' singing if we are talking to one of them
 	if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
 		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
 	end

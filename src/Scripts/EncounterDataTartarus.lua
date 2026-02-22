@@ -10,6 +10,7 @@ local encounterDataTartarus = {
 	SurvivalTartarus = encounterData.SurvivalTartarus,
 
 	Story_Sisyphus_01 = encounterData.Story_Sisyphus_01,
+	Story_Orpheus_01 = game.DeepCopyTable(encounterData.Story_Sisyphus_01),
 	GeneratedTartarus = encounterData.GeneratedTartarus,
 	OpeningGenerated = encounterData.OpeningGenerated,
 	DevotionTestTartarus = encounterData.DevotionTestTartarus,
@@ -238,22 +239,53 @@ local encounterReplacements = {
 						-- Why, look who's here, Bouldy!
 						{ Cue = "/VO/Sisyphus_0219", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredTextLines = { "SisyphusMeeting06" }, },
 					},
+				},
+			},
+		},
+	},
+	Story_Orpheus_01 = {
+		ExitVoiceLines = mod.NilValue,
+		DistanceTriggers = {
+			{
+				TriggerObjectType = "NPC_Orpheus_01",
+				WithinDistance = 600,
+				LeaveDistanceBuffer = 60,
+				VoiceLines = {
 					{
-						UsePlayerSource = true,
 						RandomRemaining = true,
-						SuccessiveChanceToPlay = 0.66,
-						RequiredTextLines = { "SisyphusFirstMeeting" },
-
-						-- Hello, sir.
-						{ Cue = "/VO/ZagreusField_0463" },
-						-- Hey sir!
-						{ Cue = "/VO/ZagreusField_0464" },
+						-- Hello...!
+						{ Cue = "/VO/Orpheus_0060", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						-- Hello...
+						{ Cue = "/VO/Orpheus_0061", RequiredFalseTextLines = { "OrpheusAboutSingersReunionQuest01" }, },
+						-- Hmm.
+						{ Cue = "/VO/Orpheus_0062", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						-- Ah.
+						{ Cue = "/VO/Orpheus_0063", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						-- Oh, um, hello.
+						{ Cue = "/VO/Orpheus_0064", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						-- Hello there.
+						{ Cue = "/VO/Orpheus_0065", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						-- Hello my friend.
+						{ Cue = "/VO/Orpheus_0093", RequiredPlayed = { "/VO/Orpheus_0061" },                                                         RequiredTextLines = { "OrpheusGift02" }, },
+						-- Hello friend.
+						{ Cue = "/VO/Orpheus_0094", RequiredPlayed = { "/VO/Orpheus_0061" },                                                         RequiredTextLines = { "OrpheusGift06" }, },
+						-- Greetings.
+						{ Cue = "/VO/Orpheus_0095", RequiredPlayed = { "/VO/Orpheus_0061" },                                                         RequiredTextLines = { "OrpheusGift02" }, },
+						-- Perhaps a song would be in order at this time?
+						{ Cue = "/VO/Orpheus_0034", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						-- Would you be interested in one of my songs?
+						{ Cue = "/VO/Orpheus_0035", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						-- What might I do for you, my friend?
+						{ Cue = "/VO/Orpheus_0036", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						-- Is there a song which you would like to hear?
+						{ Cue = "/VO/Orpheus_0037", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						-- How about a little song, is that all right?
+						{ Cue = "/VO/Orpheus_0038", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
 					},
 				},
 			},
 		},
 	},
-	Story_Orpheus_01 = game.DeepCopyTable(encounterData.Story_Sisyphus_01),
 }
 
 local encounterModifications = {

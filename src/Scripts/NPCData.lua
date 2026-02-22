@@ -582,19 +582,81 @@ local npcModifications = {
 		CharacterInteractions = {
 			Rescue = {
 				VoiceLines = {
-					RandomRemaining = true,
-					PreLineWait = 0.4,
-					AllowTalkOverTextLines = true,
-					ObjectType = "NPC_Orpheus_01",
 					{
-						GameStateRequirements = {
-							{
-								PathTrue = { "CurrentRun", "CurrentRoom", "TextLinesRecord", "OrpheusMiscMeeting03", },
+						PreLineWait = 0.4,
+						AllowTalkOverTextLines = true,
+						BreakIfPlayed = true,
+						ObjectType = "NPC_Orpheus_01",
+						{
+							GameStateRequirements = {
+								{
+									PathTrue = { "CurrentRun", "CurrentRoom", "TextLinesRecord", "OrpheusMiscMeeting03", },
+								},
 							},
+							Cue = "/VO/Orpheus_0069",
+							Text =
+							"Oh, fancy that one do you? Alas, I've not the heart to sing it anymore. I'm glad you like it, though."
 						},
-						Cue = "/VO/Orpheus_0069",
-						Text =
-						"Oh, fancy that one do you? Alas, I've not the heart to sing it anymore. I'm glad you like it, though."
+					},
+					{
+						BreakIfPlayed = true,
+						RandomRemaining = true,
+						PreLineWait = 0.4,
+						AllowTalkOverTextLines = true,
+						ObjectType = "NPC_Orpheus_01",
+						GameStateRequirements = {
+							NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart", },
+						},
+						-- By the Fates...
+						{ Cue = "/VO/Orpheus_0159" },
+						-- The gift of song...
+						{ Cue = "/VO/Orpheus_0160" },
+						-- Has inspiration struck?
+						{ Cue = "/VO/Orpheus_0163" },
+						-- By my muse...
+						{ Cue = "/VO/Orpheus_0164" },
+						-- Another song...
+						{ Cue = "/VO/Orpheus_0165" },
+						-- A song...
+						{ Cue = "/VO/Orpheus_0166" },
+						-- How splendid.
+						{ Cue = "/VO/Orpheus_0169" },
+						-- A fine selection.
+						{ Cue = "/VO/Orpheus_0170" },
+						-- OK I like that one.
+						{ Cue = "/VO/Orpheus_0041" },
+						-- Why certainly, of course.
+						{ Cue = "/VO/Orpheus_0042" },
+						-- Why, very well.
+						{ Cue = "/VO/Orpheus_0043" },
+						-- Good, let's begin, my friend!
+						{ Cue = "/VO/Orpheus_0044" },
+						-- All right I like that one!
+						{ Cue = "/VO/Orpheus_0045" },
+						-- I thought you might say that.
+						{ Cue = "/VO/Orpheus_0046" },
+						-- Once more, then, I suppose?
+						{ Cue = "/VO/Orpheus_0047" },
+						-- You like that one, do you?
+						{ Cue = "/VO/Orpheus_0048" },
+						-- I'm happy to oblige you.
+						{ Cue = "/VO/Orpheus_0049" },
+						-- Why, I don't see why not!
+						{ Cue = "/VO/Orpheus_0050" },
+						-- Fancy that one, do you?
+						{ Cue = "/VO/Orpheus_0171" },
+						-- Oh, that one.
+						{ Cue = "/VO/Orpheus_0172" },
+						-- That one, then.
+						{ Cue = "/VO/Orpheus_0173" },
+						-- Ah, yes.
+						{ Cue = "/VO/Orpheus_0174" },
+						-- Oh, indeed.
+						{ Cue = "/VO/Orpheus_0175" },
+						-- This makes me think of her.
+						{ Cue = "/VO/Orpheus_0176" },
+						-- If you insist, my friend.
+						{ Cue = "/VO/Orpheus_0177" },
 					},
 				},
 			},
