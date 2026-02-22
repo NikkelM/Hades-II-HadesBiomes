@@ -109,6 +109,146 @@ local newTraitData = {
 			},
 		},
 	},
+	ModsNikkelMHadesBiomesSisyphusPomSlices = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Hidden = true,
+		Icon = "Boon_Sisyphus_04",
+		GameStateRequirements = {
+			NamedRequirements = { "StackUpgradeLegal", },
+		},
+		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionArgs = {
+			Delay = 0.5,
+			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
+			NotRequiredPickup = true,
+			ForceToValidLocation = true,
+			DestinationId = 370001,
+			Range = 0,
+			UpwardForceMin = 650,
+			UpwardForceMax = 750,
+			ForceMin = 350,
+			ForceMax = 500,
+			AngleMin = -20,
+			AngleMax = 0,
+			LootOptions = {
+				{
+					Name = "StoreRewardRandomStack",
+					Amount = 2,
+				},
+			},
+		},
+	},
+	ModsNikkelMHadesBiomesSisyphusCentaurSoul = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Hidden = true,
+		Icon = "Boon_Sisyphus_05",
+		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionArgs = {
+			Delay = 0.5,
+			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
+			NotRequiredPickup = true,
+			ForceToValidLocation = true,
+			DestinationId = 370001,
+			Range = 0,
+			Force = 350,
+			UpwardForce = 600,
+			Angle = -20,
+			LootOptions = {
+				{
+					Name = "EmptyMaxHealthSmallDrop",
+					Overrides = {
+						AddMaxHealth = 20,
+						ReportValues = {
+							ReportedMaxHealth = "AddMaxHealth",
+						},
+					},
+				},
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMaxHealth",
+				Format = "MaxHealth",
+				ExtractAs = "TooltipMaxHealth",
+			},
+		},
+	},
+	ModsNikkelMHadesBiomesSisyphusMaxMana = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Hidden = true,
+		Icon = "Boon_Sisyphus_06",
+		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionArgs = {
+			Delay = 0.5,
+			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
+			NotRequiredPickup = true,
+			ForceToValidLocation = true,
+			DestinationId = 370001,
+			Range = 0,
+			Force = 350,
+			UpwardForce = 600,
+			Angle = -20,
+			LootOptions = {
+				{
+					Name = "MaxManaDrop",
+					Overrides = {
+						AddMaxMana = 20,
+						ReportValues = {
+							ReportedMaxMana = "AddMaxMana",
+						},
+					},
+				},
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMaxMana",
+				Format = "MaxMana",
+				ExtractAs = "TooltipMaxMana",
+			},
+		},
+	},
+	ModsNikkelMHadesBiomesSisyphusTalentDrop = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Hidden = true,
+		Icon = "Boon_Sisyphus_07",
+		GameStateRequirements = {
+			NamedRequirements = { "TalentLegal" },
+		},
+		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionArgs = {
+			Delay = 0.5,
+			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
+			NotRequiredPickup = true,
+			ForceToValidLocation = true,
+			DestinationId = 370001,
+			Range = 0,
+			Force = 350,
+			UpwardForce = 600,
+			Angle = -20,
+			LootOptions = {
+				{
+					Name = "MinorTalentDrop",
+					Overrides = {
+						AddTalentPoints = 2,
+						ReportValues = {
+							ReportedTalentPoints = "AddTalentPoints",
+						},
+					},
+				},
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedTalentPoints",
+				ExtractAs = "TooltipTalentPoints",
+			},
+		},
+	},
 	-- #endregion
 
 	-- #region Eurydice
@@ -650,7 +790,6 @@ local newTraitData = {
 	ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon = {
 		BlockStacking = true,
 		BlockInRunRarify = true,
-		-- TODO:
 		Icon = "Boon_Orpheus_GoodRiddance",
 		BoonInfoIgnoreRequirements = true,
 		GameStateRequirements = {

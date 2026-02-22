@@ -64,6 +64,26 @@ local addAnimations = {
 		InheritFrom = "BoonIcon",
 		FilePath = "GUIModded\\Screens\\BoonIcons\\Sisyphus_03",
 	},
+	Boon_Sisyphus_04 = {
+		Name = "Boon_Sisyphus_04",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Sisyphus_04",
+	},
+	Boon_Sisyphus_05 = {
+		Name = "Boon_Sisyphus_05",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Sisyphus_05",
+	},
+	Boon_Sisyphus_06 = {
+		Name = "Boon_Sisyphus_06",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Sisyphus_06",
+	},
+	Boon_Sisyphus_07 = {
+		Name = "Boon_Sisyphus_07",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Sisyphus_07",
+	},
 	-- #endregion
 	-- #region Bouldy
 	Boon_Bouldy_01 = {
@@ -97,6 +117,11 @@ local addAnimations = {
 		Name = "Boon_Orpheus_FinalExpense",
 		InheritFrom = "BoonIcon",
 		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_FinalExpense",
+	},
+	Boon_Orpheus_GoodRiddance = {
+		Name = "Boon_Orpheus_GoodRiddance",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_GoodRiddance",
 	},
 	-- #endregion
 }

@@ -26,7 +26,6 @@ local hadesNPCGiftLinePriorities = {
 		"SisyphusGift08_B",
 		"SisyphusGift09_A",
 	},
-	-- TODO: Integrate into shared keepsake port
 	NPC_Orpheus_01 = {
 		"OrpheusGift01",
 		"OrpheusGift02",

@@ -373,12 +373,32 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			},
 			{
 				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesSisyphusCentaurSoul",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
 				ItemName = "ModsNikkelMHadesBiomesSisyphusMoney",
 				Rarity = "Common",
 			},
 			{
 				Type = "Trait",
 				ItemName = "ModsNikkelMHadesBiomesSisyphusMetapoints",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesSisyphusPomSlices",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesSisyphusMaxMana",
+				Rarity = "Common",
+			},
+			{
+				Type = "Trait",
+				ItemName = "ModsNikkelMHadesBiomesSisyphusTalentDrop",
 				Rarity = "Common",
 			},
 		},
@@ -23618,6 +23638,7 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- high relationship / locked gifts
+			-- TODO: Lock through using GameStateRequirements and LockedHintId as in example for ErisGift07 - also do for Eurydice (and Sisyphus/Thanatos?)
 			OrpheusGift07 = {
 				PlayOnce = true,
 				RequiredTextLines = { "OrpheusGift06", },

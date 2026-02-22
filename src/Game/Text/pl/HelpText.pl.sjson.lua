@@ -1227,6 +1227,12 @@ local newData = {
 	-- 	DisplayName = "Strength",
 	-- 	Description = "While you have no {$Keywords.ExtraChanceMisc}, you take less damage and deal more.",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesMetaToRunUpgrade",
+	-- 	DisplayName = "The Artificer",
+	-- 	Description =
+	-- 	"You have multiple chances to turn any {$Keywords.MetaReward} into a random {$Keywords.RunReward} this night.",
+	-- },
 	-- #endregion
 
 	-- #region Quests/Minor Prophecies

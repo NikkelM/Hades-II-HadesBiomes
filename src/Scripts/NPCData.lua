@@ -180,8 +180,12 @@ local npcModifications = {
 		BoonInfoTitleText = "Codex_BoonInfo_Narcissus",
 		Traits = {
 			"ModsNikkelMHadesBiomesSisyphusHealing",
+			"ModsNikkelMHadesBiomesSisyphusCentaurSoul",
+			"ModsNikkelMHadesBiomesSisyphusMaxMana",
 			"ModsNikkelMHadesBiomesSisyphusMoney",
 			"ModsNikkelMHadesBiomesSisyphusMetapoints",
+			"ModsNikkelMHadesBiomesSisyphusPomSlices",
+			"ModsNikkelMHadesBiomesSisyphusTalentDrop",
 		},
 		InteractTextLineSets = {
 			SisyphusAboutBouldy01 = {

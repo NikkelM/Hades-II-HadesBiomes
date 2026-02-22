@@ -20,13 +20,37 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesSisyphusMetapoints",
 		DisplayName = "Crushed Dreams",
 		Description =
-		"Receive a gift of {#UpgradeFormat}+{$TraitData.ModsNikkelMHadesBiomesSisyphusMetapoints.AcquireFunctionArgs.LootOptions.[1].Overrides.AddResources.MetaCurrency}{#Prev}{!Icons.MetaCurrencyIconAlt} Bones.",
+		"Receive a gift of {#UpgradeFormat}+{$TraitData.ModsNikkelMHadesBiomesSisyphusMetapoints.AcquireFunctionArgs.LootOptions.[1].Overrides.AddResources.MetaCurrency}{#Prev}{!Icons.MetaCurrencyIconAlt} Bones {#ItalicFormat}(that can be transformed by {#Prev}{$Keywords.ModsNikkelMHadesBiomesMetaToRunUpgrade}{#ItalicFormat}){#Prev}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesSisyphusMoney",
 		DisplayName = "Spare Change",
 		Description =
 		"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesSisyphusPomSlices",
+		DisplayName = "Midnight Snack",
+		Description =
+		"Receive a gift of {#UpgradeFormat}+{$TraitData.ModsNikkelMHadesBiomesSisyphusPomSlices.AcquireFunctionArgs.LootOptions.[1].Amount}{#Prev}{!Icons.RandomPom} Pom Slices.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesSisyphusCentaurSoul",
+		DisplayName = "Heart to Heart",
+		Description =
+		"Receive a gift of {#UpgradeFormat}+{$TooltipData.ExtractData.TooltipMaxHealth}{#Prev}{!Icons.HealthUpAlt} {#ItalicFormat}(without restoring {!Icons.Health}){#Prev}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesSisyphusMaxMana",
+		DisplayName = "Focused Thoughts",
+		Description =
+		"Receive a gift of {#UpgradeFormat}+{$TooltipData.ExtractData.TooltipMaxMana}{#Prev}{!Icons.ManaUp}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesSisyphusTalentDrop",
+		DisplayName = "Moonlit Inspiration",
+		Description =
+		"Receive a gift of a {$Keywords.TalentPoint} that grants {#UpgradeFormat}+{$TooltipData.ExtractData.TooltipTalentPoints} {#Prev}upgrades for your {$Keywords.Spell}.",
 	},
 	-- #endregion
 
