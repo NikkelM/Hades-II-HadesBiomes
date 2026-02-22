@@ -167,6 +167,36 @@ local newData = {
 	-- 	DisplayName =
 	-- 	"{#CombatTextHighlightFormat}{$TraitData.ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon.Name}{#Prev}!",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
+	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong1MusicPlayer",
+	-- 	Description =
+	-- 	"After you take damage, inflict {$Keywords.Root} on {#BoldFormat}ALL {#Prev}foes. After {#BoldFormatGraft}{$TooltipData.ExtractData.Cooldown} Sec. {#Prev}and once the foe that damaged you has been slain, this can repeat.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
+	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong2MusicPlayer",
+	-- 	Description =
+	-- 	"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#BoldFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
+	-- 	InheritFrom = "MusicMusicPlayerCharonShopThemeMusicPlayer",
+	-- 	Description =
+	-- 	"All items sold by {$Keywords.CharCharon} have a chance to cost less.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoonDiscountStatDisplay",
+	-- 	InheritFrom = "BaseStatLine",
+	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Maximum Discount:",
+	-- 	Description = "{#UpgradeFormat}-{$TooltipData.ExtractData.TooltipMaxDiscount}%{#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon",
+	-- 	InheritFrom = "MusicMusicPlayerEurydiceSong1MusicPlayer",
+	-- 	Description =
+	-- 	"You gain {#UpgradeFormat}{$TooltipData.StatDisplay1}{#Prev}{!Icons.ReRollAlt}, and can alter {#BoldFormat}Location Rewards{#Prev}. This does not break {$Keywords.Random}.",
+	-- },
 	-- #endregion
 }
 
