@@ -2448,7 +2448,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	-- if requirements.RequiredMinConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= nil and game.GameState.ConsecutiveClears < requirements.RequiredMinConsecutiveClears then
 	if requirements.RequiredMinConsecutiveClears ~= nil then
 		local consecutiveModdedClears = 0
-		for k, run in game.GameState.RunHistory do
+		for _, run in pairs(game.GameState.RunHistory) do
 			if mod.WasModdedRun(run) and run.BiomesReached ~= nil then
 				if run.Cleared then
 					consecutiveModdedClears = consecutiveModdedClears + 1
@@ -2464,23 +2464,19 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	-- if requirements.RequiredConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= requirements.RequiredConsecutiveClears then
 	if requirements.RequiredConsecutiveClears ~= nil then
-		local hasConsecutiveClears = game.RequiredConsecutiveClearsOfRoom(source,
-			{ Name = "D_Boss01", Count = requirements.RequiredConsecutiveClears })
-		if not hasConsecutiveClears then
+		local consecutiveModdedClears = 0
+		for _, run in pairs(game.GameState.RunHistory) do
+			if mod.WasModdedRun(run) and run.BiomesReached ~= nil then
+				if run.Cleared then
+					consecutiveModdedClears = consecutiveModdedClears + 1
+				else
+					break
+				end
+			end
+		end
+		if consecutiveModdedClears ~= requirements.RequiredConsecutiveClears then
 			return false
 		end
-		-- for k, run in game.GameState.RunHistory do
-		-- 	if mod.WasModdedRun(run) and run.BiomesReached ~= nil then
-		-- 		if run.Cleared then
-		-- 			consecutiveModdedClears = consecutiveModdedClears + 1
-		-- 		else
-		-- 			break
-		-- 		end
-		-- 	end
-		-- end
-		-- if consecutiveModdedClears ~= requirements.RequiredConsecutiveClears then
-		-- 	return false
-		-- end
 	end
 
 	if requirements.PlayerMaxHealthFraction ~= nil and game.CurrentRun.Hero.Health / game.CurrentRun.Hero.MaxHealth >= requirements.PlayerMaxHealthFraction then
