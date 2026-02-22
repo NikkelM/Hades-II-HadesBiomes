@@ -441,7 +441,7 @@ function mod.OrpheusRaiseKilledEnemy(enemy, args)
 	if game.MapState.OrpheusRaiseDeadCount then
 		return
 	end
-	if not game.RandomChance(args.SummonChance) then
+	if not game.RandomChance(args.SummonChance * game.GetTotalHeroTraitValue("LuckMultiplier", { IsMultiplier = true })) then
 		return
 	end
 	if enemy.UniqueRaise and not IsEmpty(game.MapState.SpellSummons) then
