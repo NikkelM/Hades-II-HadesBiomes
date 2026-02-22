@@ -1136,7 +1136,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation_Flavor",
 	-- 	Description =
 	-- 	"The Unseen's reach is greater than many assume, and so it is no surprise that even the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} is not beyond their grasp.",
-	-- },	
+	-- },
 	-- Add Gold Urns/Breakables
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BreakableValue1Incantation",
@@ -1183,6 +1183,30 @@ local newData = {
 	-- 	Description =
 	-- 	"Orpheus had long been Court Musician in the House of Hades, until one day, he was banished to solitary confinement after refusing to perform for Lord Hades.",
 	-- },
+	-- Reunite Orpheus and Eurydice
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem",
+	-- 	DisplayName = "Singer's Gamble",
+	-- 	Description =
+	-- 	"Permit {$Keywords.CharOrpheus} to be with his muse again, in {$Keywords.ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Short} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem_Flavor",
+	-- 	Description =
+	-- 	"Nestled among the towering administrative parchmentwork in the House of Hades once lay an old document concerning a special pact signed by a once-living court musician, who attempted vainly to rescue his wife from death.",
+	-- },
+	-- Release Sisyphus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SisyphusQuestItem",
+	-- 	DisplayName = "Knave-King's Sentence",
+	-- 	Description =
+	-- 	"Free {$Keywords.CharSisyphus} from an eternity of hard labor."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SisyphusQuestItem_Flavor",
+	-- 	Description =
+	-- 	"Amongst the parchment-records of the dead and punished in the House of Hades once lay the sealed documents known as the Knave-King's Sentence, forcing said king to endlessly toil with a boulder till the end of time.",
+	-- },
 	-- #endregion
 
 	-- #region Keywords
@@ -1212,6 +1236,12 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesLowHealthBonus",
 	-- 	DisplayName = "Strength",
 	-- 	Description = "While you have no {$Keywords.ExtraChanceMisc}, you take less damage and deal more.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesMetaToRunUpgrade",
+	-- 	DisplayName = "The Artificer",
+	-- 	Description =
+	-- 	"You have multiple chances to turn any {$Keywords.MetaReward} into a random {$Keywords.RunReward} this night.",
 	-- },
 	-- #endregion
 

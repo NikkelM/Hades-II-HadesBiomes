@@ -158,7 +158,6 @@ local newData = {
 	-- -- Taken from the Hades HelpText Fish_Tartarus_Common_01
 	-- {
 	-- _Short variants are limited to 10 characters
-	-- _Short variants are limited to 10 characters
 	-- 	Id = "Fish_Tartarus_Common_01_Short",
 	-- 	DisplayName = "Hellfish",
 	-- },
@@ -693,7 +692,7 @@ local newData = {
 	-- 	Description = "The toxic environs of Styx give rise to all manner of strange flora.",
 	-- },
 	-- #endregion
-	-- #endregion	
+	-- #endregion
 	-- #region Seeds/ShovelPoint
 	-- #region Tartarus
 	-- {

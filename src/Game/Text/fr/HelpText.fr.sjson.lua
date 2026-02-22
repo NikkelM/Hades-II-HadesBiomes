@@ -1146,7 +1146,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation_Flavor",
 	-- 	Description =
 	-- 	"The Unseen's reach is greater than many assume, and so it is no surprise that even the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} is not beyond their grasp.",
-	-- },	
+	-- },
 	-- Add Gold Urns/Breakables
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BreakableValue1Incantation",
