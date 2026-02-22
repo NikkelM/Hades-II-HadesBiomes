@@ -140,8 +140,6 @@ function mod.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
 
 	wait(0.02)
 	AdjustColorGrading({ Name = screen.Source.ColorGrade or "ItemGet", Duration = 0.2 })
-	CreateAnimation({ Name = "ItemGet", DestinationId = CurrentRun.Hero.ObjectId, Scale = 2.0 })
-	CreateAnimation({ Name = "ItemGetVignette", OffsetX = ScreenCenterX, OffsetY = ScreenCenterY, Scale = 2.0, UseScreenLocation = true })
 	wait(screen.Source.UpgradeAcquiredAnimationDelay or 0.25)
 	AdjustColorGrading({ Name = "Off", Duration = 0.5 })
 
