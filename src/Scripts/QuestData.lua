@@ -9,6 +9,8 @@ local flippedArcanaActive = rom.mods["ReadEmAndWeep-Flip_the_Arcana_Mod"]
 -- The order of the quests in the Quest log, these will be appended to the end of the vanilla list
 local newQuestOrderData = {
 	-- key / mission-critical
+	"ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice",
+	"ModsNikkelMHadesBiomes_QuestOrpheusRelease",
 	"ModsNikkelMHadesBiomes_QuestTenClears",
 	"ModsNikkelMHadesBiomes_QuestFirstClear",
 	-- major / priority
@@ -33,12 +35,11 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestCropsSmall",
 	-- boons & character traits
 	"ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
-	-- TODO: Disabled until we have more options through #155/#300
-	-- "ModsNikkelMHadesBiomes_QuestSisyphusUpgrades",
+	"ModsNikkelMHadesBiomes_QuestSisyphusUpgrades",
 	"ModsNikkelMHadesBiomes_QuestBouldyUpgrades",
-	-- "ModsNikkelMHadesBiomes_QuestOrpheusUpgrades",
-	-- "ModsNikkelMHadesBiomes_QuestEurydiceUpgrades",
-	-- "ModsNikkelMHadesBiomes_QuestPatroclusUpgrades",
+	"ModsNikkelMHadesBiomes_QuestOrpheusUpgrades",
+	"ModsNikkelMHadesBiomes_QuestEurydiceUpgrades",
+	"ModsNikkelMHadesBiomes_QuestPatroclusUpgrades",
 	-- weapons & combat
 	"ModsNikkelMHadesBiomes_QuestEliteAttributeKills",
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
@@ -1291,6 +1292,42 @@ local newQuestData = {
 			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Eurydice",
 			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Patroclus",
 			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Orpheus",
+		},
+	},
+	-- Free Orpheus
+	ModsNikkelMHadesBiomes_QuestOrpheusRelease = {
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
+		RewardResourceName = "CardUpgradePoints",
+		RewardResourceAmount = 2,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "RoomsEntered" },
+				HasAll = { "A_Story01", "X_Intro" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+			},
+		},
+		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestOrpheusRelease_Condition",
+		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestOrpheusRelease_Cleared",
+	},
+	-- Reunite Orpheus and Eurydice
+	ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice = {
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 3,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "EurydiceAboutOrpheus04" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusAboutSingersReunionQuest01" },
+			},
 		},
 	},
 	-- #endregion

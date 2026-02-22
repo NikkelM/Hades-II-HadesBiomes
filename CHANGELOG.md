@@ -6,6 +6,8 @@
 ### Patch Highlights:
 - You can now encounter **Orpheus** in Tartarus, where he will offer you a select number of his songs that will empower your current run. Free Orpheus through a new incantation at the Cauldron.
 - Progress Orpheus' and Eurydice's storyline and reunite them!
+- Added additional gifts offered by Sisyphus.
+- Added new minor prophecies tasking you with receiving various gifts from Zagreus' Journey's story NPCs.
 - Added new dialogues with Hermes. 
 
 Other fixes and improvements:

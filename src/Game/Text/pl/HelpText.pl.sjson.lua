@@ -1551,6 +1551,32 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Orpheus",
 	-- 	DisplayName = "Met Orpheus",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestOrpheusRelease",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} The Reluctant Musician ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of commuting a master musician's sentence to solitary confinement in Tartarus.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestOrpheusRelease_Condition",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressIncomplete} Release Orpheus and Visit Him in Tartarus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestOrpheusRelease_Cleared",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressComplete} Release Orpheus and Visit Him in Tartarus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Musician and Muse ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of aiding a master musician who once failed to whisk his deceased wife from the Underworld.",
+	-- },
+	-- {
+	-- 	Id = "OrpheusAboutSingersReunionQuest01",
+	-- 	DisplayName = "Find a Way to Reunite Orpheus and Eurydice",
+	-- },
 	-- #endregion
 
 	-- #region Chaos Trials/Bounties
