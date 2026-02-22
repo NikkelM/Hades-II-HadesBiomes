@@ -104,6 +104,10 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 		source.MenuTitle = offerTextMenuTitleMappings[source.NextInteractLines.ModsNikkelMHadesBiomesPreviousOfferText]
 	end
 
+	if args.ModsNikkelMHadesBiomesFlavorTextIds ~= nil then
+		source.FlavorTextIds = args.ModsNikkelMHadesBiomesFlavorTextIds
+	end
+
 	if args.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionName then
 		screen.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionName = args
 				.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionName

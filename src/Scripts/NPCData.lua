@@ -36,6 +36,9 @@ local function applyNPCChoiceMappings(npcData, mappings)
 								textLineSet.ModsNikkelMHadesBiomesPreviousOfferText = last.Text
 								textLineSet.PrePortraitExitFunctionName = mappingData.PrePortraitExitFunctionName
 								textLineSet.PrePortraitExitFunctionArgs = mappingData.PrePortraitExitFunctionArgs
+								if not mappingData.IgnoreSettingFlavorTextIds then
+									textLineSet.PrePortraitExitFunctionArgs.ModsNikkelMHadesBiomesFlavorTextIds = { last.Text }
+								end
 								table.remove(textLineSet, #textLineSet)
 							end
 
@@ -255,8 +258,6 @@ local npcModifications = {
 		UpgradeScreenOpenSound = "/SFX/Menu Sounds/PortraitEmoteCheerfulSFX",
 		UpgradeSelectedSound = "/Leftovers/Menu Sounds/TalismanPaperEquipLEGENDARY",
 		MenuTitle = "NPC_Eurydice_01",
-		-- TODO: If Orpheus is there, the other text should be shown. Must probably wrap OpenUpgradeChoiceMenu to change how the flavor text is being selected
-		-- Should be this preset one, or the one from the dialogue that's playing
 		FlavorTextIds = {
 			"Eurydice_OfferText01",
 		},
@@ -514,7 +515,6 @@ local npcModifications = {
 		UpgradeSelectedSound = "/Leftovers/Menu Sounds/TalismanPaperEquipLEGENDARY",
 		MenuTitle = "NPC_Orpheus_01",
 		FlavorTextIds = {
-			-- TODO: Different for if he sings again or not
 			"Orpheus_OfferText01",
 		},
 		-- "Songs of Orpheus",
