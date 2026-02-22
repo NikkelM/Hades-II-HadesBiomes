@@ -264,6 +264,12 @@ local npcModifications = {
 			-- The new name from SharedKeepsakePort
 			EurydiceAboutAcorn01 = { RequiredKeepsake = mod.SharedKeepsakePortEurydiceKeepsakeTrait, },
 			EurydiceAboutAcorn02 = { RequiredKeepsake = mod.SharedKeepsakePortEurydiceKeepsakeTrait, },
+			EurydiceProgressWithOrpheus_SongReaction01 = {
+				TeleportToId = mod.NilValue,
+				TeleportOffsetX = mod.NilValue,
+				TeleportOffsetY = mod.NilValue,
+				AngleTowardTargetId = mod.NilValue,
+			},
 		},
 		-- From Hades GiftData.lua
 		GiftTextLineSets = {

@@ -138,11 +138,6 @@ function mod.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
 			screen.ModsNikkelMHadesBiomesNPCPostChoicePresentation_PostLineThreadedFunctionArgs)
 	end
 
-	wait(0.02)
-	AdjustColorGrading({ Name = screen.Source.ColorGrade or "ItemGet", Duration = 0.2 })
-	wait(screen.Source.UpgradeAcquiredAnimationDelay or 0.25)
-	AdjustColorGrading({ Name = "Off", Duration = 0.5 })
-
 	AngleTowardTarget({ Id = heroId, DestinationId = npcId })
 	game.wait(0.25)
 	SetAnimation({ Name = "MelinoeSaluteToEquip", DestinationId = heroId })
