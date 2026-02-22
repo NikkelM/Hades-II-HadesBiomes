@@ -427,6 +427,71 @@ TartarusWallBars01:
 For ID `506312`, change the `GroupNames` property to `Additive_01`.
 For ID `506314`, change the `GroupNames` property to `Foreground_01`.
 
+TartarusPillarBase13:
+For ID `506330`, change the `GroupNames` property to `Foreground_02`.
+
+TartarusCapital03:
+For ID `506329`, change the `GroupNames` property to `Foreground_03`.
+
+TartarusGhost01:
+Delete ID `506318` (overlays with the wall bars).
+
+
+Additionally, the new `Foreground_03` group must be added to the `A_Story01.map_text` file, in the correct positions:
+
+```text
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 480003,
+		"Name": "Foreground_02"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 480011,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 480004,
+		"Name": "Foreground_03"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 480011,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+```
+
+```text
+{
+	"Id": 480004,
+	"Name": "Foreground_03"
+},
+{
+	"Id": 480003,
+	"Name": "Foreground_02"
+},
+
+```
+
 #### A_Combat01
 
 TartarusStatueMan01:
