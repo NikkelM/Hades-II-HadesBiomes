@@ -1,6 +1,7 @@
 --[[ Modded incantation order (in the menu):
 ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem - Reunite Orpheus and Eurydice - on Quest progress
-ModsNikkelMHadesBiomes_OrpheusUnlockItem - Allow Orpheus to spawn in Tartarus - after 1 run
+ModsNikkelMHadesBiomes_SisyphusQuestItem - Release Sisyphus - on Quest progress
+ModsNikkelMHadesBiomes_OrpheusUnlockItem - Allow Orpheus to spawn in Tartarus - after visiting Sisyphus and Asphodel
 ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation - Post-Boss Keepsake Rack - after 1 run
 ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation - Well of Charon during runs - after 2 runs
 ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation - Well of Charon after bosses - after 5 runs
@@ -30,7 +31,7 @@ local newIncantations = {
 		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_sealedDocument_01",
 		Cost = {
 			ModsNikkelMHadesBiomes_BossResourceAsphodel = 3,
-			ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
+			ModsNikkelMHadesBiomes_BossResourceElysium = 3,
 			ModsNikkelMHadesBiomes_CropAsphodel = 4,
 			ModsNikkelMHadesBiomes_PlantStyx = 3,
 		},
@@ -45,8 +46,30 @@ local newIncantations = {
 			},
 		},
 	},
-	ModsNikkelMHadesBiomes_OrpheusUnlockItem = {
+	ModsNikkelMHadesBiomes_SisyphusQuestItem = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_sealedDocument_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_OreAsphodel = 6,
+			ModsNikkelMHadesBiomes_OreElysium = 5,
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 5,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 3,
+		},
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				-- In the first game, also required some dialogue with Hades (in the House) and Nyx, as well as an inspect point in the administrative chamber
+				-- TODO: The Megaera line is not yet obtainable as the NPC version of her does not yet exist
+				HasAll = { "SisyphusLiberationQuest_Beginning_01", "MegaeraAboutSisyphusLiberationQuest01", "SisyphusGift06" },
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_OrpheusUnlockItem = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_SisyphusQuestItem",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },

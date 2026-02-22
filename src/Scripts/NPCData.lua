@@ -193,6 +193,7 @@ local npcModifications = {
 			},
 			SisyphusAboutBouldy02 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
 			SisyphusLiberationQuest_Beginning_01 = { RequiredTextLines = { "SisyphusBackstory03", "SisyphusMeeting06", "SisyphusGift06", "ModsNikkelMHadesBiomes_BouldyFirstMeeting" }, },
+			SisyphusLiberationQuestComplete = { RequiredCosmetics = { "ModsNikkelMHadesBiomes_SisyphusQuestItem", }, },
 			-- The new name from SharedKeepsakePort
 			SisyphusAboutKeepsake01 = { RequiredTrait = mod.SharedKeepsakePortSisyphusKeepsakeTrait, },
 			SisyphusAboutKeepsake02 = { RequiredTrait = mod.SharedKeepsakePortSisyphusKeepsakeTrait, },
@@ -201,7 +202,6 @@ local npcModifications = {
 			SisyphusGift07_A = {
 				GameStateRequirements = {
 					{
-						-- TODO: Questline not implemented
 						PathTrue = { "GameState", "TextLinesRecord", "SisyphusLiberationQuestComplete" },
 					},
 				},

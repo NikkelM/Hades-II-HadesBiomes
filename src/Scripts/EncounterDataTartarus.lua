@@ -148,7 +148,7 @@ local encounterReplacements = {
 				-- See you again, all right?
 				{ Cue = "/VO/Sisyphus_0242" },
 				-- Do tell the Furies I said hi!
-				{ Cue = "/VO/Sisyphus_0243", RequiredCosmetics = { "SisyphusQuestItem" } },
+				{ Cue = "/VO/Sisyphus_0243", RequiredCosmetics = { "ModsNikkelMHadesBiomes_SisyphusQuestItem" } },
 				-- You have this, Prince!
 				-- { Cue = "/VO/Sisyphus_0244", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 				-- Stop by again sometime!

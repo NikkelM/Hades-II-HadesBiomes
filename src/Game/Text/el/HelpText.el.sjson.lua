@@ -1557,6 +1557,16 @@ local newData = {
 	-- 	Id = "OrpheusAboutSingersReunionQuest01",
 	-- 	DisplayName = "Find a Way to Reunite Orpheus and Eurydice",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} End to Torment ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of aiding the shade of a crafty king, forced to toil eternally, hefting his boulder in Tartarus.",
+	-- },
+	-- {
+	-- 	Id = "SisyphusLiberationQuestComplete",
+	-- 	DisplayName = "Find a Way to Pardon Sisyphus",
+	-- },
 	-- #endregion
 
 	-- #region Chaos Trials/Bounties

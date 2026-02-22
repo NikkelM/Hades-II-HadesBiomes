@@ -10,6 +10,7 @@ local flippedArcanaActive = rom.mods["ReadEmAndWeep-Flip_the_Arcana_Mod"]
 local newQuestOrderData = {
 	-- key / mission-critical
 	"ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice",
+	"ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
 	"ModsNikkelMHadesBiomes_QuestOrpheusRelease",
 	"ModsNikkelMHadesBiomes_QuestTenClears",
 	"ModsNikkelMHadesBiomes_QuestFirstClear",
@@ -1270,6 +1271,11 @@ local newQuestData = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "SisyphusFirstMeeting" },
 			},
+			-- Orpheus
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+			},
 			-- Eurydice
 			{
 				Path = { "GameState", "TextLinesRecord" },
@@ -1279,19 +1285,14 @@ local newQuestData = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "PatroclusFirstMeeting" },
 			},
-			-- Orpheus
-			{
-				Path = { "GameState", "TextLinesRecord" },
-				HasAny = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
-			},
 			-- TODO: Once implemented, Achilles, Dusa
 		},
 		IncompleteName = "UnknownCondition_Meet",
 		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {
 			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Sisyphus",
+			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Orpheus",
 			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Eurydice",
 			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Patroclus",
-			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Orpheus",
 		},
 	},
 	-- Free Orpheus
@@ -1327,6 +1328,22 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "OrpheusAboutSingersReunionQuest01" },
+			},
+		},
+	},
+	-- Release Sisyphus
+	ModsNikkelMHadesBiomes_QuestSisyphusLiberation = {
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 2,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "SisyphusLiberationQuest_Beginning_01" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "SisyphusLiberationQuestComplete" },
 			},
 		},
 	},

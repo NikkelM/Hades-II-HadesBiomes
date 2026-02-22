@@ -1205,6 +1205,18 @@ local newData = {
 	-- 	Description =
 	-- 	"Nestled among the towering administrative parchmentwork in the House of Hades once lay an old document concerning a special pact signed by a once-living court musician, who attempted vainly to rescue his wife from death.",
 	-- },
+	-- Release Sisyphus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SisyphusQuestItem",
+	-- 	DisplayName = "Knave-King's Sentence",
+	-- 	Description =
+	-- 	"Free {$Keywords.CharSisyphus} from an eternity of hard labor."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SisyphusQuestItem_Flavor",
+	-- 	Description =
+	-- 	"Amongst the parchment-records of the dead and punished in the House of Hades once lay the sealed documents known as the Knave-King's Sentence, forcing said king to endlessly toil with a boulder till the end of time.",
+	-- },
 	-- #endregion
 
 	-- #region Keywords
@@ -1584,6 +1596,16 @@ local newData = {
 	-- {
 	-- 	Id = "OrpheusAboutSingersReunionQuest01",
 	-- 	DisplayName = "Find a Way to Reunite Orpheus and Eurydice",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} End to Torment ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of aiding the shade of a crafty king, forced to toil eternally, hefting his boulder in Tartarus.",
+	-- },
+	-- {
+	-- 	Id = "SisyphusLiberationQuestComplete",
+	-- 	DisplayName = "Find a Way to Pardon Sisyphus",
 	-- },
 	-- #endregion
 
