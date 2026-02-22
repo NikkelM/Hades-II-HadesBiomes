@@ -296,6 +296,7 @@ local encounterModifications = {
 			[1] = { FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" }, }, },
 			[3] = {
 				FunctionName = _PLUGIN.guid .. "." .. "SecretMusicPlayerEvent",
+				GameStateRequirements = mod.NilValue,
 				Args = {
 					TrackName = "/Music/MusicExploration1_MC",
 				},
@@ -330,6 +331,7 @@ local encounterModifications = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedAndFlipTypes", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Orpheus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01", }, FlipTypes = { "ModsNikkelMHadesBiomes_NPC_Bouldy_01" } }, },
 			[3] = {
 				FunctionName = _PLUGIN.guid .. "." .. "OrpheusRoomStartMusicPlayer",
+				GameStateRequirements = mod.NilValue,
 				Args = {
 					OrpheusSingsAgainRequirements = {
 						NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart", },
