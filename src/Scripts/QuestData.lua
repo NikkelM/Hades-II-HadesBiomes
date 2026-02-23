@@ -1303,7 +1303,7 @@ local newQuestData = {
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "RoomsEntered" },
-				HasAll = { "A_Story01", "X_Intro" },
+				HasAll = { "X_Intro" },
 			},
 		},
 		CompleteGameStateRequirements = {
