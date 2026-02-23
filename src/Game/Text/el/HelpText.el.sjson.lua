@@ -1207,6 +1207,18 @@ local newData = {
 	-- 	Description =
 	-- 	"Amongst the parchment-records of the dead and punished in the House of Hades once lay the sealed documents known as the Knave-King's Sentence, forcing said king to endlessly toil with a boulder till the end of time.",
 	-- },
+	-- Unlock Lyre in Orpheus' story chamber
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_HouseLyre01",
+	-- 	DisplayName = "Relocation of a Splendid Lyre",
+	-- 	Description =
+	-- 	"Placed near {$Keywords.CharOrpheus} in {$Keywords.ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Short} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, this lyre creates beautiful music, if you know how...",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_HouseLyre01_Flavor",
+	-- 	Description =
+	-- 	"The Prince of the Underworld had not been very musically inclined before being encouraged by Orpheus, much unlike his sister, who's tender singing voice can often be heard in the Crossroads.",
+	-- },
 	-- #endregion
 
 	-- #region Keywords
@@ -1596,6 +1608,16 @@ local newData = {
 	-- {
 	-- 	Id = "SisyphusLiberationQuestComplete",
 	-- 	DisplayName = "Find a Way to Pardon Sisyphus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestOrpheusLyreMastery",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Musical Prodigy ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of studying the art of creating music through strings from the court musician Orpheus.",
+	-- },
+	-- {
+	-- 	Id = "OrpheusMusicProgress04",
+	-- 	DisplayName = "Achieve Mastery in Playing the Lyre",
 	-- },
 	-- #endregion
 

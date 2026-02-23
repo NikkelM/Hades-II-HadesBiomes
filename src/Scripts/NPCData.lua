@@ -562,10 +562,24 @@ local npcModifications = {
 				RequiredAmbientTrackNameMatch = mod.NilValue,
 			},
 			OrpheusMusicProgress01 = {
+				RequiredCosmetics = { "ModsNikkelMHadesBiomes_HouseLyre01", },
+				RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 10, HouseLyre01 = mod.NilValue, },
 				[2] = {
 					PostLineThreadedFunctionName = mod.NilValue,
 					PostLineFunctionName = _PLUGIN.guid .. "." .. "MusicPracticePresentation",
 				},
+			},
+			OrpheusMusicProgress02 = {
+				RequiredCosmetics = { "ModsNikkelMHadesBiomes_HouseLyre01", },
+				RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 40, HouseLyre01 = mod.NilValue, },
+			},
+			OrpheusMusicProgress03 = {
+				RequiredCosmetics = { "ModsNikkelMHadesBiomes_HouseLyre01", },
+				RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 80, HouseLyre01 = mod.NilValue, },
+			},
+			OrpheusMusicProgress04 = {
+				RequiredCosmetics = { "ModsNikkelMHadesBiomes_HouseLyre01", },
+				RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 150, HouseLyre01 = mod.NilValue, },
 			},
 			OrpheusAboutSingersReunionQuest01 = {
 				SuperPriority = true,
@@ -603,6 +617,26 @@ local npcModifications = {
 							Text =
 							"Oh, fancy that one do you? Alas, I've not the heart to sing it anymore. I'm glad you like it, though."
 						},
+					},
+					{
+						BreakIfPlayed = true,
+						RandomRemaining = true,
+						PreLineWait = 0.4,
+						AllowTalkOverTextLines = true,
+						ObjectType = "NPC_Orpheus_01",
+						GameStateRequirements = {
+							NamedRequirementsFalse = { "ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart", },
+						},
+						-- I thought you might say that.
+						{ Cue = "/VO/Orpheus_0046" },
+						-- Fancy that one, do you?
+						{ Cue = "/VO/Orpheus_0171" },
+						-- Oh, that one.
+						{ Cue = "/VO/Orpheus_0172" },
+						-- Oh, indeed.
+						{ Cue = "/VO/Orpheus_0175" },
+						-- This makes me think of her.
+						{ Cue = "/VO/Orpheus_0176" },
 					},
 					{
 						BreakIfPlayed = true,

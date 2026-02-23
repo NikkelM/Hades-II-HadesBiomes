@@ -444,6 +444,71 @@ function mod.MusicPracticePresentation(source, args)
 	FadeIn({ Color = game.Color.Black, Duration = 0.5 })
 end
 
+function mod.SpawnOrpheusLyre(source, args)
+	-- Exit door
+	local spawnId = 485517
+	local houseLyre = {
+		Name = "HouseLyre01",
+		InteractDistance = 130,
+		InteractOffsetX = -20,
+		InteractOffsetY = 70,
+		UseText = "UseLute01",
+		OnUsedFunctionName = _PLUGIN.guid .. "." .. "UseLyre",
+	}
+
+	houseLyre.ObjectId = SpawnObstacle({
+		Name = "HouseLyre01",
+		Group = "Standing",
+		DestinationId = spawnId,
+		AttachedTable = houseLyre,
+		OffsetX = 690,
+		OffsetY = -160,
+	})
+	houseLyre.ActivateIds = { houseLyre.ObjectId }
+
+	SetScale({ Id = houseLyre.ObjectId, Fraction = 0.2 })
+	game.SetupObstacle(houseLyre)
+end
+
+function mod.UseLyre(usee, args)
+	local coolDown = 1.5
+
+	UseableOff({ Id = usee.ObjectId })
+	HideUseButton(usee.ObjectId, usee)
+	AddInputBlock({ Name = "ZagreusUsingLyre" })
+	CreateAnimation({ DestinationId = usee.ObjectId, Name = "HouseMusicNotesShower" })
+
+	game.IncrementTableValue(game.GameState.ItemInteractions, "ModsNikkelMHadesBiomes_HouseLyre01", 1)
+	game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesNumLyreUses = (game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesNumLyreUses or 0) + 1
+
+	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = usee.ObjectId })
+	SetAnimation({ Name = "Melinoe_InteractToEquip", DestinationId = game.CurrentRun.Hero.ObjectId })
+	Shake({ Id = usee.ObjectId, Distance = 1.5, Speed = 150, Duration = 0.15 })
+
+	-- TODO: Create
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines, true)
+
+	if game.GameState.TextLinesRecord.OrpheusMusicProgress03 and game.GameState.ItemInteractions.ModsNikkelMHadesBiomes_HouseLyre01 >= 140 then
+		coolDown = 11.5
+		PlaySound({ Name = "/SFX/LyreGood", Id = usee.ObjectId })
+		Shake({ Id = usee.ObjectId, Distance = 0.5, Speed = 30, Duration = 5, FalloffSpeed = 30 })
+	elseif game.GameState.TextLinesRecord.OrpheusMusicProgress02 and game.GameState.ItemInteractions.ModsNikkelMHadesBiomes_HouseLyre01 >= 70 then
+		coolDown = 4.5
+		PlaySound({ Name = "/SFX/LyreMedium", Id = usee.ObjectId })
+	else
+		PlaySound({ Name = "/SFX/LyreSuck", Id = usee.ObjectId })
+	end
+
+	game.wait(0.5, game.RoomThreadName)
+	RemoveInputBlock({ Name = "ZagreusUsingLyre" })
+
+	game.wait(coolDown, game.RoomThreadName)
+
+	if not usee.UseableToggleBlocked and not (game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesNumLyreUses > 5) then
+		UseableOn({ Id = usee.ObjectId })
+	end
+end
+
 -- #region Orpheus Traits
 -- #region ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon
 function mod.OrpheusRaiseKilledEnemy(enemy, args)

@@ -343,6 +343,8 @@ local encounterModifications = {
 		NextRoomResumeMusic = true,
 	},
 	Story_Orpheus_01 = {
+		-- For the Lyre
+		LoadPackages = { "BiomeIHouse" },
 		GameStateRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
@@ -378,6 +380,17 @@ local encounterModifications = {
 			[6] = mod.NilValue,
 			[7] = mod.NilValue,
 			[8] = mod.NilValue,
+		},
+
+		StartRoomThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "SpawnOrpheusLyre",
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_HouseLyre01" },
+					},
+				},
+			},
 		},
 
 		NextRoomResumeMusic = true,

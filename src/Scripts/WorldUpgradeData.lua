@@ -17,6 +17,7 @@ ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation - Infernal Troves - after
 ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation - Moon Moncuments - after completing 6 runs and clearing 2 runs
 ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after completing 7 and clearing 4 runs
 ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after completing 2 runs
+ModsNikkelMHadesBiomes_HouseLyre01 - Unlock Lyre in Orpheus' story chamber for practicing - after OrpheusAboutMusicPlaying01
 WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic - New Music for the Music Maker - from Hades_OST_for_the_Music_Maker - after 1 run and meeting Orpheus
 ]] --
 
@@ -529,9 +530,30 @@ local newIncantations = {
 	},
 	-- #endregion
 	-- #region Cosmetics
+	ModsNikkelMHadesBiomes_HouseLyre01 = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_Lyre_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_CropAsphodel = 1,
+			ModsNikkelMHadesBiomes_PlantElysium = 2,
+			ModsNikkelMHadesBiomes_OreStyx = 3,
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+			},
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusAboutMusicPlaying01" },
+			},
+		},
+	},
 	-- DO NOT change the name of this, as this would invalidate the unlock for anyone who has already performed the incantation
 	ModsNikkelMHadesBiomesUnlockCosmeticsIncantation = {
-		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation",
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_HouseLyre01",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },

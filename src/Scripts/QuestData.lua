@@ -30,6 +30,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestHermesBeatCharon",
 	"ModsNikkelMHadesBiomes_QuestPurgeLegendaryBoon",
 	-- self-improvement & stockpiling
+	"ModsNikkelMHadesBiomes_QuestOrpheusLyreMastery",
 	"ModsNikkelMHadesBiomes_QuestCodexSmall",
 	"ModsNikkelMHadesBiomes_QuestSongsSmall",
 	"ModsNikkelMHadesBiomes_QuestCosmeticsSmall",
@@ -1344,6 +1345,22 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "SisyphusLiberationQuestComplete" },
+			},
+		},
+	},
+	-- Master playing the Lyre in Orpheus Chamber
+	ModsNikkelMHadesBiomes_QuestOrpheusLyreMastery = {
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
+		RewardResourceName = "CardUpgradePoints",
+		RewardResourceAmount = 4,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusMusicProgress01" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusMusicProgress04" },
 			},
 		},
 	},

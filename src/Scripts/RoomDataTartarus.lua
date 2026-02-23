@@ -825,6 +825,12 @@ local roomModifications = {
 			[1] = mod.NilValue
 		},
 
+		InspectPoints = {
+			[506297] = {
+				RequiredEncounters = { "Story_Sisyphus_01" },
+			},
+		},
+
 		HasFishingPoint = false,
 		HarvestPointChances = { 0.4, 0.1, },
 		ShovelPointChance = 0.35,
