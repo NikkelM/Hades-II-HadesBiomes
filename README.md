@@ -34,6 +34,7 @@ It is highly recommended that you complete the main story of Hades before playin
 - Play through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
 - Discover and overcome the challenge of fighting all of the original game's enemies and bosses using Melinoë's unique abilities and weapons.
 - Relive Zagreus' story by ascending to the Surface, meeting your brother's old friends and conversing with the Fury Sisters, the Champions of Elysium and [REDACTED] himself.
+- Benefit from a multitude of entirely new boons and effects offered to you by Sisyphus, Eurydice, Patroclus... and other familiar faces that you will now be able to meet along the way!
 - Collect **30+** new resources specific to the new biomes, use them for unlocks in this and [other mods](#integrations-with-other-mods), and trade them with the Broker.
 - Unlock **29** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
 - Decorate the Crossroads with **45+** new cosmetics, including new **Cauldrons**, **Fan Posters** for your tent, and **Charms** inspired by Zagreus' companions from the first game.
