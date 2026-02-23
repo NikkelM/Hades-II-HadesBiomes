@@ -561,6 +561,12 @@ local npcModifications = {
 			OrpheusSingsAgain03_B = {
 				RequiredAmbientTrackNameMatch = mod.NilValue,
 			},
+			OrpheusMusicProgress01 = {
+				[2] = {
+					PostLineThreadedFunctionName = mod.NilValue,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "MusicPracticePresentation",
+				},
+			},
 			OrpheusAboutSingersReunionQuest01 = {
 				SuperPriority = true,
 				Priority = mod.NilValue,

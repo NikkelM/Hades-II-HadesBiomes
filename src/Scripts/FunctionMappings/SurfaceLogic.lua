@@ -356,7 +356,6 @@ function mod.TimePassesPresentation(source, args)
 		Layer = "ScreenOverlay",
 		AnimationName = game.CurrentRun.CurrentRoom.LocationAnimName or "LocationBackingIrisSmallIn",
 		AnimationOutName = game.CurrentRun.CurrentRoom.LocationAnimOutName or "LocationBackingIrisSmallOut",
-		AdditionalAnimation = "GodHoodRays",
 	})
 
 	game.wait(args.PostTextWait or 5)

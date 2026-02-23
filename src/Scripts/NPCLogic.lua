@@ -406,14 +406,23 @@ function game.OrpheusExit(source, args)
 		})
 end
 
--- TODO: Test - the voiceline using this won't be able to play yet anyways
-function MusicPracticePresentation()
-	game.wait(1)
+function mod.MusicPracticePresentation(source, args)
+	FadeOut({ Color = game.Color.Black, Duration = 0.5 })
+
+	game.wait(0.75)
 	PlaySound({ Name = "/SFX/LyreGood" })
-	game.wait(2)
+	game.wait(0.5)
 
 	game.thread(game.DisplayInfoBanner, nil, {
 		TitleText = "LoungeIntermissionMessage",
+		TitleTextOffsetX = 81,
+		LangTitleTextOffsetX = {
+			{ Code = "el", Value = 0 },
+			{ Code = "ja", Value = 0 },
+			{ Code = "ko", Value = 0 },
+			{ Code = "ru", Value = 0 },
+			{ Code = "uk", Value = 0 },
+		},
 		TextRevealSound = "/Leftovers/Menu Sounds/EmoteExcitement",
 		Color = game.Color.Gold,
 		TextColor = game.Color.White,
@@ -421,7 +430,8 @@ function MusicPracticePresentation()
 		TitleFont = "SpectralSCLightTitling",
 		SubtitleFont = "SpectralSCLightTitling",
 		Layer = "ScreenOverlay",
-		AdditionalAnimation = "GodHoodRays",
+		AnimationName = game.CurrentRun.CurrentRoom.LocationAnimName or "LocationBackingIrisSmallIn",
+		AnimationOutName = game.CurrentRun.CurrentRoom.LocationAnimOutName or "LocationBackingIrisSmallOut",
 	})
 
 	game.wait(2)
@@ -429,7 +439,9 @@ function MusicPracticePresentation()
 	AdjustColorGrading({ Name = "Ascension", Duration = 0.3 })
 	AdjustColorGrading({ Name = "Off", Duration = 5.0 })
 	AdjustFullscreenBloom({ Name = "Off", Duration = 5.0 })
-	game.wait(1.0)
+	game.wait(2)
+
+	FadeIn({ Color = game.Color.Black, Duration = 0.5 })
 end
 
 -- #region Orpheus Traits
