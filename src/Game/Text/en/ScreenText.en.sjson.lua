@@ -59,7 +59,12 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_Codex_BoonInfo_Orpheus",
 		DisplayName = "Songs of {$TempTextData.BoonName}",
 	},
-	-- #region Relationship hints
+	-- #region Relationship/Unlock hints
+	{
+		Id = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement",
+		DisplayName =
+		"\\n {#CodexStandardFormat}{!Icons.CodexEntryIncompleteIcon}  {#CodexChapterClearFormat} Learn more by deepening your connection with {$TempTextData.Name} {#CodexStandardFormat}",
+	},
 	{
 		Id = "ModsNikkelMHadesBiomes_Codex_EurydiceUnlockHint01",
 		DisplayName =

@@ -13,6 +13,7 @@
 Other fixes and improvements:
 - Started the addition of the Sisyphus liberation questline - you will be able to receive the new minor prophecy, but will not be able to complete it yet.
 - Sisyphus, Eurydice and Patroclus will now say a short line after you choose one of their boons.
+- Codex entries that are locked by relationship or storyline progress now have fitting hints associated with them.
 - Updated a number of boon icons with enhanced visuals.
 - Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlayed over the blacked-out death screen.
 - Fixed: Some dialogues are never eligible to play.

@@ -41,7 +41,12 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_Codex_BoonInfo_Orpheus",
 	-- 	DisplayName = "Songs of {$TempTextData.BoonName}",
 	-- },
-	-- #region Relationship hints
+	-- #region Relationship/Unlock hints
+	{
+		Id = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement",
+		DisplayName =
+		"\\n {#CodexStandardFormat}{!Icons.CodexEntryIncompleteIcon}  {#CodexChapterClearFormat} 通过改善你与{$TempTextData.Name}{#CodexStandardFormat}的关系了解更多情况",
+	},
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_Codex_EurydiceUnlockHint01",
 	-- 	DisplayName =

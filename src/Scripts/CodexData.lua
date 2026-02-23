@@ -124,9 +124,15 @@ for oldName, newName in pairs(mod.HadesCodexTextNameMappings) do
 	mod.UpdateField(hadesCodexData, oldName, newName, { "Entries", "*", "Entries", "*", "Text" }, "CodexData entries")
 end
 
--- Remove Romance/Custom Relationship entries
-hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01.Entries[4] = nil
-hadesCodexData.ChthonicGods.Entries.NPC_Thanatos_01.Entries[4] = nil
+-- Romance/Custom Relationship/Locked entries
+hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.ChthonicGods.Entries.NPC_Thanatos_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+-- hadesCodexData.OtherDenizens.Entries.NPC_Achilles_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.OtherDenizens.Entries.NPC_Sisyphus_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.OtherDenizens.Entries.NPC_Orpheus_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.OtherDenizens.Entries.NPC_Eurydice_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.OtherDenizens.Entries.NPC_Patroclus_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+-- hadesCodexData.OtherDenizens.Entries.NPC_Dusa_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
 
 local updatedCodexData = {}
 -- Manually copy some entries from other groups

@@ -551,6 +551,7 @@ end
 local function on_ready_late()
 	if config.enabled == false or (mod.HiddenConfig and not mod.HiddenConfig.IsValidInstallation) then return end
 
+	import "Scripts/CodexLogic_Late.lua"
 	import "Scripts/CombatLogic_Late.lua"
 	import "Scripts/DeathLoopLogic_Late.lua"
 	import "Scripts/EventPresentation_Late.lua"
