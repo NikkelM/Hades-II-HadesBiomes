@@ -27,3 +27,14 @@ modutil.mod.Path.Wrap("CalcNumCodexEntriesUnlocked", function(base)
 
 	return base()
 end)
+
+modutil.mod.Path.Wrap("CodexOpenEntry", function(base, screen, button, args)
+	base(screen, button, args)
+
+	-- The Hades codex entries are sometimes too long for the Hades II font size, so we scale the text box down for entries in our custom chapter
+	if button and button.ChapterName == mod.CodexChapterName then
+		ModifyTextBox({ Id = screen.Components.EntryText.Id, ScaleTarget = 0.9, ScaleDuration = 0 })
+	else
+		ModifyTextBox({ Id = screen.Components.EntryText.Id, ScaleTarget = 1.0, ScaleDuration = 0 })
+	end
+end)
