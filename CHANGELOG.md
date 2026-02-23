@@ -19,6 +19,7 @@ Other fixes and improvements:
 - Fixed: Some codex entries overflow the intended area in the Codex.
 - Fixed: Some dialogues are never eligible to play.
 - Fixed: Some boss attack voiceline quips refer to Zagreus directly.
+- Fixed: Reward previews in Elysium and Styx are sometimes misaligned.
 - Fixed: The game may get into a bad state by not setting required flags correctly.
 <!--Releasenotes end-->
 

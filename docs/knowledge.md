@@ -1103,6 +1103,10 @@ In this map, we need to change the name for the Cerberus NPC, as it is used in b
 
 For ID `547487`, change the `Name` property from `NPC_Cerberus_Field_01` to `ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01`.
 
+#### D_Mini03
+
+StyxAxeSwing:
+Delete ID `549355`, it overlaps with the exit reward preview.
 
 #### D_MiniBoss01
 

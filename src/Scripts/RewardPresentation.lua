@@ -12,6 +12,15 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		local room = exitDoor.Room
 		chosenRewardType = chosenRewardType or room.ChosenRewardType
 
+		local metaProgressRewardTypes = {
+			"MetaCurrencyDrop",
+			"MetaCurrencyBigDrop",
+			"MetaCardPointsCommonDrop",
+			"MetaCardPointsCommonBigDrop",
+			"GiftDrop",
+			"RoomRewardHealDrop",
+		}
+
 		index = index or 1
 		-- Positive X is to the left, negative to the right
 		-- Positive Y is down, negative up
@@ -36,12 +45,10 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			},
 			MetaCurrencyBigDrop = {
 				doorIconOffsetX = 5,
-				doorIconOffsetY = -10,
 				doorIconScale = -0.1,
 			},
 			MetaCardPointsCommonBigDrop = {
 				doorIconOffsetX = 5,
-				doorIconOffsetY = -10,
 				doorIconScale = -0.05,
 			},
 			RoomRewardHealDrop = {
@@ -165,8 +172,8 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				doorIconFrontOffsetY = -130,
 			}
 
-			-- For some reason, the MetaReward icons are a little too low compared to RunProgress, but only in Asphodel
-			if game.CurrentRun.NextRewardStoreName == "MetaProgress" and not (game.Contains({ "X_PreBoss01", "X_Boss01", "X_Boss02", "X_PostBoss01" }, exitDoor.Room.Name)) then
+			-- For some reason, the MetaReward icons are a little too low compared to RunProgress in Asphodel
+			if game.Contains(metaProgressRewardTypes, chosenRewardType) then
 				properties.doorIconOffsetY = properties.doorIconOffsetY - 10
 			end
 		elseif exitDoor.Name == "ElysiumExitDoor" then
@@ -281,7 +288,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			}
 		elseif exitDoor.Name == "StyxDoor01" then
 			properties = {
-				doorIconOffsetX = 3,
+				doorIconOffsetX = 0,
 				doorIconOffsetY = -78,
 				doorIconScale = mod.HadesDoorRoomRewardIconScales["StyxDoor01"],
 				doorIconFrontOffsetX = 0,
@@ -293,6 +300,15 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 					doorIconOffsetY = -78,
 					doorIconFrontOffsetY = -6,
 				},
+				D_Mini02 = {
+					doorIconFrontOffsetX = 4,
+				},
+				D_Mini03 = {
+					doorIconFrontOffsetX = 2,
+				},
+				D_Mini04 = {
+					doorIconFrontOffsetX = 4,
+				},
 				D_Mini05 = {
 					doorIconOffsetY = -85,
 					doorIconFrontOffsetX = 2,
@@ -300,16 +316,16 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				},
 				D_Mini06 = {
 					doorIconOffsetY = -89,
+					doorIconFrontOffsetX = 2,
 					doorIconFrontOffsetY = -22,
 				},
 				D_Mini07 = {
 					doorIconOffsetY = -85,
-					doorIconFrontOffsetY = -18,
+					doorIconFrontOffsetY = -6,
 				},
 				D_Mini08 = {
 					doorIconOffsetY = -80,
-					doorIconFrontOffsetX = 3,
-					doorIconFrontOffsetY = -10,
+					doorIconFrontOffsetY = -5,
 				},
 				D_Mini09 = {
 					doorIconOffsetY = -73,
@@ -317,19 +333,22 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				},
 				D_Mini10 = {
 					doorIconOffsetY = -80,
+					doorIconFrontOffsetX = 2,
 					doorIconFrontOffsetY = -10,
 				},
 				D_Mini11 = {
 					doorIconOffsetY = -80,
+					doorIconFrontOffsetX = 2,
 					doorIconFrontOffsetY = -10,
 				},
 				D_Mini12 = {
 					doorIconOffsetY = -73,
-					doorIconFrontOffsetY = 0,
+					doorIconFrontOffsetY = -5,
 				},
 				D_Mini13 = {
 					doorIconOffsetY = -83,
 					doorIconFrontOffsetY = -10,
+					doorIconFrontOffsetX = 3,
 				},
 				D_Mini14 = {
 					doorIconOffsetY = -50,
