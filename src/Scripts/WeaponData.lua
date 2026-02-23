@@ -2177,6 +2177,7 @@ local weaponModifications = {
 		AIData = {
 			DeepInheritance = true,
 			ImmuneToProjectileSlow = true,
+			BarrelLength = 210,
 		},
 	},
 	AxeTrapWeapon = {
