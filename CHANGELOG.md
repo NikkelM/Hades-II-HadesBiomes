@@ -18,6 +18,7 @@ Other fixes and improvements:
 - Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlayed over the blacked-out death screen.
 - Fixed: Some codex entries overflow the intended area in the Codex.
 - Fixed: Some dialogues are never eligible to play.
+- Fixed: Some boss attack voiceline quips refer to Zagreus directly.
 - Fixed: The game may get into a bad state by not setting required flags correctly.
 <!--Releasenotes end-->
 

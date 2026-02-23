@@ -29,7 +29,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesPoisonedNoCureHint",
-		DisplayName = "Poison will disappear automatically!",
+		DisplayName = "Poison will wear off automatically!",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesStyxFountainForcedThroughConfig",

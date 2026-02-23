@@ -5223,7 +5223,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 					-- You want a taste of this?
 					{ Cue = "/VO/MegaeraField_0087" },
 					-- Come closer, Zagreus.
-					{ Cue = "/VO/MegaeraField_0088" },
+					-- { Cue = "/VO/MegaeraField_0088" },
 					-- You stay right there.
 					{ Cue = "/VO/MegaeraField_0089" },
 					-- Come closer.
@@ -5251,7 +5251,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 					-- Hold it right there.
 					{ Cue = "/VO/MegaeraField_0084" },
 					-- Come closer, Zagreus.
-					{ Cue = "/VO/MegaeraField_0088" },
+					-- { Cue = "/VO/MegaeraField_0088" },
 					-- You stay right there.
 					{ Cue = "/VO/MegaeraField_0089" },
 					-- Come closer.
@@ -5573,7 +5573,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 					-- I said die!
 					{ Cue = "/VO/MegaeraField_0242", RequiredPlayed = { "/VO/MegaeraField_0070" }, },
 					-- Catch, Zagreus!
-					{ Cue = "/VO/MegaeraField_0243" },
+					-- { Cue = "/VO/MegaeraField_0243" },
 					-- How about this!
 					{ Cue = "/VO/MegaeraField_0244" },
 				},
@@ -5589,7 +5589,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 					-- For you!
 					{ Cue = "/VO/MegaeraField_0758" },
 					-- Zagreus!
-					{ Cue = "/VO/MegaeraField_0759" },
+					-- { Cue = "/VO/MegaeraField_0759" },
 					-- Here!
 					{ Cue = "/VO/MegaeraField_0760" },
 					-- All right!
@@ -5603,7 +5603,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 					-- Now...
 					{ Cue = "/VO/MegaeraField_0603" },
 					-- Zagreus!
-					{ Cue = "/VO/MegaeraField_0604" },
+					-- { Cue = "/VO/MegaeraField_0604" },
 					-- How about this!
 					{ Cue = "/VO/MegaeraField_0605" },
 					-- Swarm!
@@ -6285,7 +6285,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 					SuccessiveChanceToPlay = 0.5,
 
 					-- Here, Zag!
-					{ Cue = "/VO/MegaeraField_0610" },
+					-- { Cue = "/VO/MegaeraField_0610" },
 					-- Start running!
 					{ Cue = "/VO/MegaeraField_0611" },
 					-- All right!
@@ -6317,7 +6317,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 					-- That does it.
 					{ Cue = "/VO/MegaeraField_0762" },
 					-- Run, Zag.
-					{ Cue = "/VO/MegaeraField_0763" },
+					-- { Cue = "/VO/MegaeraField_0763" },
 					-- All right.
 					{ Cue = "/VO/MegaeraField_0764" },
 					-- Try this.
@@ -11505,7 +11505,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 						-- You are blind even to simple truths.
 						{ Cue = "/VO/HadesField_0039", RequiredPlayed = { "/VO/HadesField_0009" }, RequiredFalseTextLines = { "Ending01" }, },
 						-- Your eyes deceive you, boy.
-						{ Cue = "/VO/HadesField_0040", RequiredPlayed = { "/VO/HadesField_0009" } },
+						-- { Cue = "/VO/HadesField_0040", RequiredPlayed = { "/VO/HadesField_0009" } },
 						-- Excuse me for a moment.
 						{ Cue = "/VO/HadesField_0041", RequiredPlayed = { "/VO/HadesField_0009" } },
 						-- I shall be right back.
@@ -11623,7 +11623,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 				-- These mortal souls are mine!
 				{ Cue = "/VO/HadesField_0639" },
 				-- You cannot break me, boy!
-				{ Cue = "/VO/HadesField_0640" },
+				-- { Cue = "/VO/HadesField_0640" },
 				-- All you damned souls, come on!
 				{ Cue = "/VO/HadesField_0641" },
 				-- All you dead souls are mine!
@@ -12187,7 +12187,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 				-- Here!
 				{ Cue = "/VO/HadesField_0050" },
 				-- Here, boy!
-				{ Cue = "/VO/HadesField_0051" },
+				-- { Cue = "/VO/HadesField_0051" },
 				-- Observe!
 				{ Cue = "/VO/HadesField_0052" },
 				-- You...!
@@ -12197,7 +12197,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 				-- Prepare!
 				{ Cue = "/VO/HadesField_0568" },
 				-- Boy...!
-				{ Cue = "/VO/HadesField_0569" },
+				-- { Cue = "/VO/HadesField_0569" },
 				-- You brought this on yourself!!
 				{ Cue = "/VO/HadesField_0290" },
 				-- Raauuugghhhh!!
@@ -12207,7 +12207,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 				-- Grraaauuuugggghhh!
 				{ Cue = "/VO/HadesField_0059" },
 				-- Zagreus...!
-				{ Cue = "/VO/HadesField_0570", RequiredTextLines = { "Ending01" }, },
+				-- { Cue = "/VO/HadesField_0570", RequiredTextLines = { "Ending01" }, },
 				-- Go back!
 				{ Cue = "/VO/HadesField_0566", RequiredBossPhase = 2 },
 			},
