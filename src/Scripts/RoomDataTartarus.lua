@@ -806,11 +806,10 @@ local roomModifications = {
 		},
 
 		LegalEncounters = {
-			-- TODO: Enable after testing
 			"Story_Sisyphus_01",
-			-- "Story_Sisyphus_01",
-			-- "Story_Sisyphus_01",
-			-- "Story_Sisyphus_01",
+			"Story_Sisyphus_01",
+			"Story_Sisyphus_01",
+			"Story_Sisyphus_01",
 			"Story_Orpheus_01",
 			"Story_Orpheus_01",
 			"Story_Orpheus_01",
