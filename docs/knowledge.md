@@ -209,6 +209,60 @@ Also:
 - Change the `GroupNames` for `410695` to `Terrain_01` (TartarusGhostHandsMulti under the light to the right of the fishing pier).
 - Delete ID `210333` (TartarusRockRipple left of bridge).
 
+Under the `HouseDoor02` entry, add the following entry to allow Thanatos to spawn in this room.
+Take special note of the ID entry:
+
+```text
+{
+	"Active": true,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 320,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+			"A": 255,
+			"B": 255,
+			"G": 255,
+			"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Unit",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+			"Standing"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 423052,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 2990,
+		"Y": 4915
+	},
+	"Name": "NPC_Thanatos_01",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.9400925040245056,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+```
+
 Additionally, the new `Terrain_04` and `Terrain_05` groups must be added to the `RoomOpening.map_text` file, in the correct positions:
 
 ```text
