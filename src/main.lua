@@ -257,7 +257,7 @@ local function on_ready()
 			DebugLogScriptImportProgress("HadesTextUtils and UIData")
 
 			-- Localizations, custom texts
-			import "Game/Text/en/CharonSubtitles.en.sjson.lua"
+			import "Game/Text/en/Subtitles.en.sjson.lua"
 
 			import "Game/Text/de/CodexText.de.sjson.lua"
 			import "Game/Text/el/CodexText.el.sjson.lua"
@@ -455,7 +455,6 @@ local function on_ready()
 			import "Scripts/FunctionMappings/HeavyRanged.lua"
 			import "Scripts/FunctionMappings/LightSpawner.lua"
 			import "Scripts/FunctionMappings/MiniBossTartarus.lua"
-			import "Scripts/FunctionMappings/NPCLogic.lua"
 			import "Scripts/FunctionMappings/ShadeNaked.lua"
 			import "Scripts/FunctionMappings/StyxLogic.lua"
 			import "Scripts/FunctionMappings/SurfaceLogic.lua"
@@ -485,6 +484,7 @@ local function on_ready()
 			import "Scripts/HubPresentation.lua"
 			import "Scripts/MarketPresentation.lua"
 			import "Scripts/NarrativeLogic.lua"
+			import "Scripts/NPCLogic.lua"
 			import "Scripts/PatchLogic.lua"
 			import "Scripts/PowersLogic.lua"
 			import "Scripts/QuestLogic.lua"
@@ -551,6 +551,7 @@ end
 local function on_ready_late()
 	if config.enabled == false or (mod.HiddenConfig and not mod.HiddenConfig.IsValidInstallation) then return end
 
+	import "Scripts/CodexLogic_Late.lua"
 	import "Scripts/CombatLogic_Late.lua"
 	import "Scripts/DeathLoopLogic_Late.lua"
 	import "Scripts/EventPresentation_Late.lua"

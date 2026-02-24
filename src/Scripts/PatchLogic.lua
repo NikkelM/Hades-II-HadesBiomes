@@ -150,8 +150,20 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 6 then
+			game.GameState.ModsNikkelMHadesBiomesLastPlayedOrpheusTrack = game.GameState
+					.ModsNikkelMHadesBiomesLastPlayedOrpheusTrack or nil
+		end
+
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 7 then
+			-- The alternate textline has been reintroduced, but if the original was seen before, we need to add it to the TextLineRecord to not break Gift track logic
+			if game.GameState.TextLinesRecord["ThanatosGift04_B"] ~= nil then
+				game.GameState.TextLinesRecord["ThanatosGift04"] = true
+			end
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 5
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 7
 	end
 
 	return base()

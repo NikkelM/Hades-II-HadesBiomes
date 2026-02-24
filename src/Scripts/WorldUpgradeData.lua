@@ -1,4 +1,7 @@
 --[[ Modded incantation order (in the menu):
+ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem - Reunite Orpheus and Eurydice - on Quest progress
+ModsNikkelMHadesBiomes_SisyphusQuestItem - Release Sisyphus - on Quest progress
+ModsNikkelMHadesBiomes_OrpheusUnlockItem - Allow Orpheus to spawn in Tartarus - after visiting Sisyphus and Asphodel
 ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation - Post-Boss Keepsake Rack - after 1 run
 ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation - Well of Charon during runs - after 2 runs
 ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation - Well of Charon after bosses - after 5 runs
@@ -14,13 +17,80 @@ ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation - Infernal Troves - after
 ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation - Moon Moncuments - after completing 6 runs and clearing 2 runs
 ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after completing 7 and clearing 4 runs
 ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after completing 2 runs
-WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic - New Music for the Music Maker - from Hades_OST_for_the_Music_Maker - after 1 run and meeting Eurydice
+ModsNikkelMHadesBiomes_HouseLyre01 - Unlock Lyre in Orpheus' story chamber for practicing - after OrpheusAboutMusicPlaying01
+WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic - New Music for the Music Maker - from Hades_OST_for_the_Music_Maker - after 1 run and meeting Orpheus
 ]] --
 
 local newIncantations = {
+	-- #region Critical/Story Items
+	ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem = {
+		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_sealedDocument_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 3,
+			ModsNikkelMHadesBiomes_BossResourceElysium = 3,
+			ModsNikkelMHadesBiomes_CropAsphodel = 4,
+			ModsNikkelMHadesBiomes_PlantStyx = 3,
+		},
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				-- In the first game, also required some dialogue with Hades (in the House) and Nyx, as well as an inspect point in the administrative chamber
+				HasAll = { "EurydiceProgressWithOrpheus03", "OrpheusGift05", "EurydiceGift05" },
+			},
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_SisyphusQuestItem = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_sealedDocument_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_OreAsphodel = 6,
+			ModsNikkelMHadesBiomes_OreElysium = 5,
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 5,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 3,
+		},
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				-- In the first game, also required some dialogue with Hades (in the House) and Nyx, as well as an inspect point in the administrative chamber
+				-- TODO: The Megaera line is not yet obtainable as the NPC version of her does not yet exist
+				HasAll = { "SisyphusLiberationQuest_Beginning_01", "MegaeraAboutSisyphusLiberationQuest01", "SisyphusGift06" },
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_OrpheusUnlockItem = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_SisyphusQuestItem",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_sealedDocument_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantTartarus = 1,
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 1,
+		},
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "RoomsEntered" },
+				HasAll = { "A_Story01", "X_Intro" },
+			},
+		},
+	},
+	-- #endregion
 	-- #region Post-Boss Keepsake Rack/GiftRack
 	ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation = {
-		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_OrpheusUnlockItem",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
@@ -460,9 +530,30 @@ local newIncantations = {
 	},
 	-- #endregion
 	-- #region Cosmetics
+	ModsNikkelMHadesBiomes_HouseLyre01 = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_Lyre_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_CropAsphodel = 1,
+			ModsNikkelMHadesBiomes_PlantElysium = 2,
+			ModsNikkelMHadesBiomes_OreStyx = 3,
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+			},
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusAboutMusicPlaying01" },
+			},
+		},
+	},
 	-- DO NOT change the name of this, as this would invalidate the unlock for anyone who has already performed the incantation
 	ModsNikkelMHadesBiomesUnlockCosmeticsIncantation = {
-		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation",
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_HouseLyre01",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },

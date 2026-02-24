@@ -26,7 +26,7 @@ local newData = {
 	},
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesPoisonedNoCureHint",
-	-- 	DisplayName = "Poison will disappear automatically!",
+	-- 	DisplayName = "Poison will wear off automatically!",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesStyxFountainForcedThroughConfig",
@@ -94,6 +94,11 @@ local newData = {
 	-- {
 	-- 	Id = "HarpySupportUnit",
 	-- 	DisplayName = "The other Furies",
+	-- 	Description = "",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Eurydice_Orpheus",
+	-- 	DisplayName = "Orpheus & Eurydice",
 	-- 	Description = "",
 	-- },
 	-- #endregion
@@ -1141,7 +1146,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation_Flavor",
 	-- 	Description =
 	-- 	"The Unseen's reach is greater than many assume, and so it is no surprise that even the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} is not beyond their grasp.",
-	-- },	
+	-- },
 	-- Add Gold Urns/Breakables
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BreakableValue1Incantation",
@@ -1176,6 +1181,54 @@ local newData = {
 	-- 	Description =
 	-- 	"The boatman Charon has many sources of income, and often finds himself with more coin than he can carry, knowing any discarded excess will eventually find its way back to him regardless.",
 	-- },
+	-- Unlock/Free Orpheus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OrpheusUnlockItem",
+	-- 	DisplayName = "Court Musician's Sentence",
+	-- 	Description =
+	-- 	"Free {$Keywords.CharOrpheus} from solitary confinement, allowing you to visit him in {$Keywords.ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Short} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OrpheusUnlockItem_Flavor",
+	-- 	Description =
+	-- 	"Orpheus had long been Court Musician in the House of Hades, until one day, he was banished to solitary confinement after refusing to perform for Lord Hades.",
+	-- },
+	-- Reunite Orpheus and Eurydice
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem",
+	-- 	DisplayName = "Singer's Gamble",
+	-- 	Description =
+	-- 	"Permit {$Keywords.CharOrpheus} to be with his muse again, in {$Keywords.ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Short} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem_Flavor",
+	-- 	Description =
+	-- 	"Nestled among the towering administrative parchmentwork in the House of Hades once lay an old document concerning a special pact signed by a once-living court musician, who attempted vainly to rescue his wife from death.",
+	-- },
+	-- Release Sisyphus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SisyphusQuestItem",
+	-- 	DisplayName = "Knave-King's Sentence",
+	-- 	Description =
+	-- 	"Free {$Keywords.CharSisyphus} from an eternity of hard labor."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_SisyphusQuestItem_Flavor",
+	-- 	Description =
+	-- 	"Amongst the parchment-records of the dead and punished in the House of Hades once lay the sealed documents known as the Knave-King's Sentence, forcing said king to endlessly toil with a boulder till the end of time.",
+	-- },
+	-- Unlock Lyre in Orpheus' story chamber
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_HouseLyre01",
+	-- 	DisplayName = "Relocation of a Splendid Lyre",
+	-- 	Description =
+	-- 	"Placed near {$Keywords.CharOrpheus} in {$Keywords.ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Short} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}, this lyre creates beautiful music, if you know how...",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_HouseLyre01_Flavor",
+	-- 	Description =
+	-- 	"The Prince of the Underworld had not been very musically inclined before being encouraged by Orpheus, much unlike his sister, who's tender singing voice can often be heard in the Crossroads.",
+	-- },
 	-- #endregion
 
 	-- #region Keywords
@@ -1188,6 +1241,29 @@ local newData = {
 	-- 	Id = "ShrinePointGate",
 	-- 	DisplayName = "Erebus Gate",
 	-- 	Description = "The {$Keywords.Shrine} is key to entering these challenges at the outer reaches.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesCoreBoon",
+	-- 	DisplayName = "Core Boon",
+	-- 	Description =
+	-- 	"A boon that empowers your {$Keywords.Attack}, {$Keywords.Special}, {$Keywords.Cast}, {$Keywords.Sprint} or aids with {$Keywords.Mana} regeneration."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesCoreBoonPlural",
+	-- 	DisplayName = "Core Boons",
+	-- 	Description =
+	-- 	"Boons that empower your {$Keywords.Attack}, {$Keywords.Special}, {$Keywords.Cast}, {$Keywords.Sprint} or aid with {$Keywords.Mana} regeneration."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesLowHealthBonus",
+	-- 	DisplayName = "Strength",
+	-- 	Description = "While you have no {$Keywords.ExtraChanceMisc}, you take less damage and deal more.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesMetaToRunUpgrade",
+	-- 	DisplayName = "The Artificer",
+	-- 	Description =
+	-- 	"You have multiple chances to turn any {$Keywords.MetaReward} into a random {$Keywords.RunReward} this night.",
 	-- },
 	-- #endregion
 
@@ -1396,6 +1472,12 @@ local newData = {
 	-- 	"The daughter of the god of the dead shall someday dream of receiving a number of unwanted blessings handed out by the forgotten warrior {#Emph}{$Keywords.CharPatroclus}{#Prev}.",
 	-- },
 	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestOrpheusUpgrades",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Singer of Sorrows ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of listening to a collection of songs performed by the former court musician {#Emph}{$Keywords.CharOrpheus}{#Prev}.",
+	-- },
+	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_QuestBouldyUpgrades",
 	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Heart of Stone ",
 	-- 	Description =
@@ -1478,6 +1560,74 @@ local newData = {
 	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Exposed Fangs ",
 	-- 	Description =
 	-- 	"The daughter of the god of the dead shall someday dream of vanquishing foes imbued with each of the different dangerous Perks {#Emph}unique to the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} {#Prev}from the {#Emph}{$MetaUpgradeData.EnemyEliteShrineUpgrade.Name} {#Prev}in the {#Emph}Oath of the Unseen{#Prev}."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestMeetStoryNPCs",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Friendly Faces ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of meeting some of her brother's old friends and companions.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Sisyphus",
+	-- 	DisplayName = "Met Sisyphus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Eurydice",
+	-- 	DisplayName = "Met Eurydice",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Patroclus",
+	-- 	DisplayName = "Met Patroclus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Orpheus",
+	-- 	DisplayName = "Met Orpheus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestOrpheusRelease",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} The Reluctant Musician ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of commuting a master musician's sentence to solitary confinement in Tartarus.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestOrpheusRelease_Condition",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressIncomplete} Release Orpheus and Visit Him in Tartarus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestOrpheusRelease_Cleared",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressComplete} Release Orpheus and Visit Him in Tartarus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Musician and Muse ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of aiding a master musician who once failed to whisk his deceased wife from the Underworld.",
+	-- },
+	-- {
+	-- 	Id = "OrpheusAboutSingersReunionQuest01",
+	-- 	DisplayName = "Find a Way to Reunite Orpheus and Eurydice",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} End to Torment ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of aiding the shade of a crafty king, forced to toil eternally, hefting his boulder in Tartarus.",
+	-- },
+	-- {
+	-- 	Id = "SisyphusLiberationQuestComplete",
+	-- 	DisplayName = "Find a Way to Pardon Sisyphus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestOrpheusLyreMastery",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Musical Prodigy ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of studying the art of creating music through strings from the court musician Orpheus.",
+	-- },
+	-- {
+	-- 	Id = "OrpheusMusicProgress04",
+	-- 	DisplayName = "Achieve Mastery in Playing the Lyre",
 	-- },
 	-- #endregion
 

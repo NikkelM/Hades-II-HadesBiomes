@@ -799,14 +799,36 @@ local roomModifications = {
 
 	-- OTHER
 	A_Story01 = {
-		LoadModdedVoiceBanks = { "Sisyphus", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Sisyphus", "Orpheus", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
 
+		LegalEncounters = {
+			"Story_Sisyphus_01",
+			"Story_Sisyphus_01",
+			"Story_Sisyphus_01",
+			"Story_Sisyphus_01",
+			"Story_Orpheus_01",
+			"Story_Orpheus_01",
+			"Story_Orpheus_01",
+			"Story_Orpheus_01",
+			"Story_Orpheus_01",
+		},
+
+		-- We do our own music events depending on which NPC is in the room
+		IgnoreMusic = true,
+		SecretMusic = mod.NilValue,
+
 		ThreadedEvents = {
 			[1] = mod.NilValue
+		},
+
+		InspectPoints = {
+			[506297] = {
+				RequiredEncounters = { "Story_Sisyphus_01" },
+			},
 		},
 
 		HasFishingPoint = false,

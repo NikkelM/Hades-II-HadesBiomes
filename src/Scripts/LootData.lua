@@ -165,6 +165,13 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		if textLineSetsTable == nil then
 			mod.DebugPrint("Sets table " .. tostring(textLineType) .. " not found for " .. narrativeDataKey, 1)
 			return
+		else
+			-- Make sure this textline key doesn't already exist
+			if textLineSetsTable[key] ~= nil then
+				mod.DebugPrint("Text line set with name " .. key .. " already exists in " .. narrativeDataKey ..
+					" loot/enemy data, cannot add new text lines!", 1)
+				return
+			end
 		end
 
 		data.ModsNikkelMHadesBiomes_TextLineMetadata = nil

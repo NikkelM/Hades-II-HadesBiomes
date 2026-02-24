@@ -19,6 +19,7 @@ mod.VoiceoverFileNames = {
 	Megaera = "Megaera",
 	MegaeraField = "MegaeraField",
 	Minotaur = "Minotaur",
+	Orpheus = "Orpheus",
 	Patroclus = "Patroclus",
 	-- Persephone = "Persephone", -- Persephone already exists and was moved into Megaera_2xxxx
 	Sisyphus = "Sisyphus",
@@ -41,8 +42,8 @@ mod.SubtitleCsvFileNameMappings = {
 	MegaeraField = "MegaeraField_",
 	MegaeraHome = "Megaera_3",
 	Minotaur = "Minotaur_",
-	-- Nyx = "Megaera_6",
-	-- Orpheus = "Eurydice_0",
+	-- Nyx = "Megaera_4",
+	Orpheus = "Orpheus_",
 	Patroclus = "Patroclus_",
 	Persephone = "Megaera_2",
 	Sisyphus = "Sisyphus_",
@@ -426,6 +427,10 @@ mod.BikFileNames = {
 	"ZagreusEndingBoatIdleFidget1_Bink",
 	"ZagreusEndingBoatIdleFidget2_Bink",
 	-- #endregion
+	-- #region ORPHEUS
+	"NPC_OrpheusIdle_Bink",
+	"NPC_OrpheusIdlePlaying_Bink",
+	-- #endregion
 }
 
 mod.CustomBikFileNames = {
@@ -713,14 +718,16 @@ mod.MapFileMappings = {
 mod.MapTextFileNames = {
 	-- A new Terrain group was added to resolve flickering tiles next to where the player spawns
 	RoomOpening = true,
-	-- A new Terrain group was added to resolve flickering tiles next to the exit door (same as for RoomOpening)
-	Return06 = true,
+	-- Need to add a new Foreground group for the area with wall bars to the left of the exit
+	A_Story01 = true,
 	-- Catacombs next to the entrance are flickering
 	B_PreBoss01 = true,
 	-- Need to remove Fx_Terrain group as it causes layering issues with the Cast and some enemy Fx (Like Chariot tracks)
 	C_Combat01 = true,
 	-- Need to add a Gears_02 group to better sort some chains and Gears
 	D_Intro = true,
+	-- A new Terrain group was added to resolve flickering tiles next to the exit door (same as for RoomOpening)
+	Return06 = true,
 }
 
 -- Languages supported by Hades

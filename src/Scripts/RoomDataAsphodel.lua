@@ -547,7 +547,7 @@ local roomModifications = {
 
 	-- OTHER
 	X_Story01 = {
-		LoadModdedVoiceBanks = { "Eurydice", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Eurydice", "Orpheus", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		-- We play our own music in this room, don't play any by default
 		IgnoreMusic = true,
@@ -556,6 +556,9 @@ local roomModifications = {
 			RequiredSeenRooms = mod.NilValue,
 			RequiredSeenEncounter = "BossHydra",
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
+			-- Since Orpheus is now appearing during the current run instead of in the house (previous run), fix the requirement
+			RequiredFalseTextLinesLastRun = mod.NilValue,
+			RequiredFalseTextLinesThisRun = { "OrpheusAboutSingersReunionQuest01" },
 		},
 
 		HarvestPointChances = { 0.4, 0.1, },

@@ -20,13 +20,37 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesSisyphusMetapoints",
 	-- 	DisplayName = "Crushed Dreams",
 	-- 	Description =
-	-- 	"Receive a gift of {#UpgradeFormat}+{$TraitData.ModsNikkelMHadesBiomesSisyphusMetapoints.AcquireFunctionArgs.LootOptions.[1].Overrides.AddResources.MetaCurrency}{#Prev}{!Icons.MetaCurrencyIconAlt} Bones.",
+	-- 	"Receive a gift of {#UpgradeFormat}+{$TraitData.ModsNikkelMHadesBiomesSisyphusMetapoints.AcquireFunctionArgs.LootOptions.[1].Overrides.AddResources.MetaCurrency}{#Prev}{!Icons.MetaCurrencyIconAlt} Bones {#ItalicFormat}(that can be transformed by {#Prev}{$Keywords.ModsNikkelMHadesBiomesMetaToRunUpgrade}{#ItalicFormat}){#Prev}.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesSisyphusMoney",
 	-- 	DisplayName = "Spare Change",
 	-- 	Description =
 	-- 	"Receive a gift of {#MoneyFormatBold}+{$TooltipData.ExtractData.TooltipMoneyAmount}{#Prev}{!Icons.Currency}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesSisyphusPomSlices",
+	-- 	DisplayName = "Midnight Snack",
+	-- 	Description =
+	-- 	"Receive a gift of {#UpgradeFormat}+{$TraitData.ModsNikkelMHadesBiomesSisyphusPomSlices.AcquireFunctionArgs.LootOptions.[1].Amount}{#Prev}{!Icons.RandomPom} Pom Slices.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesSisyphusCentaurSoul",
+	-- 	DisplayName = "Heart to Heart",
+	-- 	Description =
+	-- 	"Receive a gift of {#UpgradeFormat}+{$TooltipData.ExtractData.TooltipMaxHealth}{#Prev}{!Icons.HealthUpAlt} {#ItalicFormat}(without restoring {!Icons.Health}){#Prev}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesSisyphusMaxMana",
+	-- 	DisplayName = "Focused Thoughts",
+	-- 	Description =
+	-- 	"Receive a gift of {#UpgradeFormat}+{$TooltipData.ExtractData.TooltipMaxMana}{#Prev}{!Icons.ManaUp}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesSisyphusTalentDrop",
+	-- 	DisplayName = "Moonlit Inspiration",
+	-- 	Description =
+	-- 	"Receive a gift of a {$Keywords.TalentPoint} that grants {#UpgradeFormat}+{$TooltipData.ExtractData.TooltipTalentPoints} {#Prev}upgrades for your {$Keywords.Spell}.",
 	-- },
 	-- #endregion
 
@@ -129,6 +153,74 @@ local newData = {
 		Description =
 		"모든 상품을 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} 할인된 가격으로 구매할 수 있습니다{#ItalicFormat}(현재 탈출 시도에서){#Prev}."
 	},
+	-- #endregion
+
+	-- #region Orpheus
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
+	-- 	InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
+	-- 	Description =
+	-- 	"Ensure {$Keywords.HealthGatePlural} spawn ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonChaosGatesStatDisplay",
+	-- 	InheritFrom = "BaseStatLine",
+	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Forced {$Keywords.HealthGatePlural}:",
+	-- 	Description = "{#UpgradeFormat}{$TraitData.ModsNikkelMHadesBiomesOrpheusChaosThemeBoon.RemainingUses}{#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon",
+	-- 	InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
+	-- 	Description =
+	-- 	"{#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon",
+	-- 	InheritFrom = "MusicMusicPlayerBossFightMusicMusicPlayer",
+	-- 	Description =
+	-- 	"Most foes you slay have a chance to return to fight for you, up to once per {$Keywords.EncounterAlt}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusBossFightMusicBoonResurrectStatDisplay",
+	-- 	InheritFrom = "BaseStatLine",
+	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Resurrection Chance:",
+	-- 	Description = "{#UpgradeFormat}{$TooltipData.ExtractData.SummonChance}%{#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonRaiseDeadActivated",
+	-- 	DisplayName =
+	-- 	"{#CombatTextHighlightFormat}{$TraitData.ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon.Name}{#Prev}!",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
+	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong1MusicPlayer",
+	-- 	Description =
+	-- 	"After you take damage, inflict {$Keywords.Root} on {#BoldFormat}ALL {#Prev}foes. After {#BoldFormatGraft}{$TooltipData.ExtractData.Cooldown} Sec. {#Prev}and once the foe that damaged you has been slain, this can repeat.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
+	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong2MusicPlayer",
+	-- 	Description =
+	-- 	"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#BoldFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
+	-- 	InheritFrom = "MusicMusicPlayerCharonShopThemeMusicPlayer",
+	-- 	Description =
+	-- 	"All items sold by {$Keywords.CharCharon} have a chance to cost less.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoonDiscountStatDisplay",
+	-- 	InheritFrom = "BaseStatLine",
+	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Maximum Discount:",
+	-- 	Description = "{#UpgradeFormat}-{$TooltipData.ExtractData.TooltipMaxDiscount}%{#Prev}",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon",
+	-- 	InheritFrom = "MusicMusicPlayerEurydiceSong1MusicPlayer",
+	-- 	Description =
+	-- 	"You gain {#UpgradeFormat}{$TooltipData.StatDisplay1}{#Prev}{!Icons.ReRollAlt}, and can alter {#BoldFormat}Location Rewards{#Prev}. This does not break {$Keywords.Random}.",
+	-- },
 	-- #endregion
 }
 

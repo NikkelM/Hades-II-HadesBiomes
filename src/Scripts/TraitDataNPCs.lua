@@ -109,6 +109,146 @@ local newTraitData = {
 			},
 		},
 	},
+	ModsNikkelMHadesBiomesSisyphusPomSlices = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Hidden = true,
+		Icon = "Boon_Sisyphus_04",
+		GameStateRequirements = {
+			NamedRequirements = { "StackUpgradeLegal", },
+		},
+		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionArgs = {
+			Delay = 0.5,
+			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
+			NotRequiredPickup = true,
+			ForceToValidLocation = true,
+			DestinationId = 370001,
+			Range = 0,
+			UpwardForceMin = 650,
+			UpwardForceMax = 750,
+			ForceMin = 350,
+			ForceMax = 500,
+			AngleMin = -20,
+			AngleMax = 0,
+			LootOptions = {
+				{
+					Name = "StoreRewardRandomStack",
+					Amount = 2,
+				},
+			},
+		},
+	},
+	ModsNikkelMHadesBiomesSisyphusCentaurSoul = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Hidden = true,
+		Icon = "Boon_Sisyphus_05",
+		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionArgs = {
+			Delay = 0.5,
+			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
+			NotRequiredPickup = true,
+			ForceToValidLocation = true,
+			DestinationId = 370001,
+			Range = 0,
+			Force = 350,
+			UpwardForce = 600,
+			Angle = -20,
+			LootOptions = {
+				{
+					Name = "EmptyMaxHealthSmallDrop",
+					Overrides = {
+						AddMaxHealth = 20,
+						ReportValues = {
+							ReportedMaxHealth = "AddMaxHealth",
+						},
+					},
+				},
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMaxHealth",
+				Format = "MaxHealth",
+				ExtractAs = "TooltipMaxHealth",
+			},
+		},
+	},
+	ModsNikkelMHadesBiomesSisyphusMaxMana = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Hidden = true,
+		Icon = "Boon_Sisyphus_06",
+		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionArgs = {
+			Delay = 0.5,
+			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
+			NotRequiredPickup = true,
+			ForceToValidLocation = true,
+			DestinationId = 370001,
+			Range = 0,
+			Force = 350,
+			UpwardForce = 600,
+			Angle = -20,
+			LootOptions = {
+				{
+					Name = "MaxManaDrop",
+					Overrides = {
+						AddMaxMana = 20,
+						ReportValues = {
+							ReportedMaxMana = "AddMaxMana",
+						},
+					},
+				},
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedMaxMana",
+				Format = "MaxMana",
+				ExtractAs = "TooltipMaxMana",
+			},
+		},
+	},
+	ModsNikkelMHadesBiomesSisyphusTalentDrop = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Hidden = true,
+		Icon = "Boon_Sisyphus_07",
+		GameStateRequirements = {
+			NamedRequirements = { "TalentLegal" },
+		},
+		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionArgs = {
+			Delay = 0.5,
+			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
+			NotRequiredPickup = true,
+			ForceToValidLocation = true,
+			DestinationId = 370001,
+			Range = 0,
+			Force = 350,
+			UpwardForce = 600,
+			Angle = -20,
+			LootOptions = {
+				{
+					Name = "MinorTalentDrop",
+					Overrides = {
+						AddTalentPoints = 2,
+						ReportValues = {
+							ReportedTalentPoints = "AddTalentPoints",
+						},
+					},
+				},
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedTalentPoints",
+				ExtractAs = "TooltipTalentPoints",
+			},
+		},
+	},
 	-- #endregion
 
 	-- #region Eurydice
@@ -458,6 +598,223 @@ local newTraitData = {
 				ExtractAs = "TooltipDiscount",
 				Format = "NegativePercentDelta",
 				HideSigns = true,
+			},
+		},
+	},
+	-- #endregion
+
+	-- #region Orpheus
+	-- Primordial Chaos
+	ModsNikkelMHadesBiomesOrpheusChaosThemeBoon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Icon = "Boon_Orpheus_PrimordialChaos",
+		BoonInfoIgnoreRequirements = true,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "ChaosFirstPickUp" },
+			},
+		},
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
+		AcquireFunctionArgs = {
+			TrackName = "{2c8f3fd6-6c6c-4146-a750-20be93cd8ca8}",
+			AddAdditionalTraits = {
+				"ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon",
+			},
+		},
+
+		StatLines = {
+			"ModsNikkelMHadesBiomesOrpheusChaosThemeBoonChaosGatesStatDisplay",
+		},
+		ForceSecretDoor = true,
+		RemainingUses = 2,
+	},
+	ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Icon = "Boon_Orpheus_PrimordialChaos",
+		SecretDoorCostMultiplier = {
+			BaseMin = 0,
+			BaseMax = 0,
+		},
+	},
+	-- God of the Dead
+	ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Icon = "Boon_Orpheus_GodOfTheDead",
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
+		AcquireFunctionArgs = {
+			TrackName = "{fc71b797-75db-43af-8cc0-f50fdacb5dbc}",
+		},
+
+		OnEnemyDeathFunction = {
+			Name = _PLUGIN.guid .. "." .. "OrpheusRaiseKilledEnemy",
+			FunctionArgs = {
+				SummonChance = 0.1,
+				MaxHealthMultiplier = 1.8,
+				SpeedMultiplier = 1,
+				ScaleMultiplier = 1.1,
+				DamageMultiplier = 1.15,
+				ReportValues = {
+					SummonChance = "SummonChance",
+					DamageMultiplier = "DamageMultiplier",
+				},
+				UsingEffectName = "Charm"
+			}
+		},
+		StatLines = {
+			"ModsNikkelMHadesBiomesOrpheusBossFightMusicBoonResurrectStatDisplay",
+			"SummonStatDisplay1",
+		},
+		ExtractValues = {
+			{
+				Key = "DamageMultiplier",
+				ExtractAs = "DamageBonus",
+				Format = "PercentDelta",
+			},
+			{
+				Key = "SummonChance",
+				ExtractAs = "SummonChance",
+				Format = "Percent",
+			},
+		},
+	},
+	-- Lament of Orpheus
+	ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		ShowInHUD = true,
+		Icon = "Boon_Orpheus_LamentOfOrpheus",
+		BoonInfoIgnoreRequirements = true,
+		GameStateRequirements = {
+			NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart", },
+		},
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
+		AcquireFunctionArgs = {
+			TrackName = "{01bdb2dd-ba29-44eb-b533-d759a6869a6a}",
+		},
+
+		SetupFunction = {
+			Name = _PLUGIN.guid .. "." .. "OrpheusRetaliateRootSetup",
+		},
+		OnSelfDamagedFunction = {
+			Name = _PLUGIN.guid .. "." .. "OrpheusApplyRoot",
+			FunctionArgs = {
+				EffectName = "ChillEffect",
+				Cooldown = 10,
+				ReportValues = {
+					Cooldown = "Cooldown",
+				},
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "Cooldown",
+				ExtractAs = "Cooldown",
+				Format = "Duration",
+			},
+			{
+				Key = "ReportedWeaponMultiplier",
+				ExtractAs = "TooltipDamageBonus",
+				Format = "PercentDelta",
+			},
+			{
+				ExtractAs = "ChillDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "EffectData",
+				BaseName = "ChillEffect",
+				BaseProperty = "Duration",
+			},
+			{
+				ExtractAs = "ChillActiveDuration",
+				SkipAutoExtract = true,
+				External = true,
+				BaseType = "EffectData",
+				BaseName = "ChillEffect",
+				BaseProperty = "ActiveDuration",
+			},
+		},
+	},
+	-- Hymn to Zagreus
+	ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		ShowInHUD = true,
+		Icon = "Boon_Orpheus_HymnToZagreus",
+		BoonInfoIgnoreRequirements = true,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusSingsAgain_02" },
+			},
+		},
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
+		AcquireFunctionArgs = {
+			TrackName = "{e044c3d0-8cf0-44ac-9d8e-75eda8c80501}",
+		},
+
+		ModsNikkelMHadesBiomesOrpheusLastStandHealFraction = { BaseValue = 0.1, },
+		ExtractValues = {
+			{
+				Key = "ModsNikkelMHadesBiomesOrpheusLastStandHealFraction",
+				ExtractAs = "LastStandHeal",
+				Format = "Percent",
+			},
+		},
+		RemainingUses = 1,
+	},
+	-- Final Expense
+	ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Icon = "Boon_Orpheus_FinalExpense",
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
+		AcquireFunctionArgs = {
+			TrackName = "{1d2d987b-853b-4a65-aa2d-a3e8c7e0e99b}",
+		},
+
+		ModsNikkelMHadesBiomesMaxStoreDiscount = 0.1,
+		StatLines = {
+			"ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoonDiscountStatDisplay",
+		},
+		ExtractValues = {
+			{
+				Key = "ModsNikkelMHadesBiomesMaxStoreDiscount",
+				ExtractAs = "TooltipMaxDiscount",
+				Format = "Percent",
+			},
+		},
+	},
+	-- Good Riddance
+	ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon = {
+		BlockStacking = true,
+		BlockInRunRarify = true,
+		Icon = "Boon_Orpheus_GoodRiddance",
+		BoonInfoIgnoreRequirements = true,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "OrpheusSingsAgain03", "OrpheusSingsAgain03_B", },
+			},
+		},
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
+		AcquireFunctionArgs = {
+			TrackName = "{c105b668-488c-4359-b7ff-02ccbb3c9eb9}",
+			FunctionName = "AddRerolls",
+			FunctionArgs = {
+				Amount = 5,
+			},
+		},
+
+		-- Also change in FunctionArgs above when updated
+		AddRerolls = 5,
+		AllowDoorReroll = true,
+		ExtractValues = {
+			{
+				Key = "AddRerolls",
+				ExtractAs = "Rerolls",
+				IncludeSigns = true,
 			},
 		},
 	},

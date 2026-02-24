@@ -373,6 +373,9 @@ game.HeroVoiceLines.HitByHadesAmmoVoiceLines = game.HeroVoiceLines.HitByHadesAmm
 game.HeroVoiceLines.ThanatosSpawningVoiceLines = game.HeroVoiceLines.ThanatosSpawningVoiceLines or
 		mod.HeroVoiceLines.ThanatosSpawningVoiceLines
 
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines = game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines or
+		mod.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines
+
 game.HeroVoiceLines.ForbiddenShopItemTakenVoiceLines = game.HeroVoiceLines.ForbiddenShopItemTakenVoiceLines or
 		mod.HeroVoiceLines.ForbiddenShopItemTakenVoiceLines
 game.HeroVoiceLines.ForbiddenShopItemCaughtVoiceLines = game.HeroVoiceLines.ForbiddenShopItemCaughtVoiceLines or

@@ -10,6 +10,7 @@ local encounterDataTartarus = {
 	SurvivalTartarus = encounterData.SurvivalTartarus,
 
 	Story_Sisyphus_01 = encounterData.Story_Sisyphus_01,
+	Story_Orpheus_01 = game.DeepCopyTable(encounterData.Story_Sisyphus_01),
 	GeneratedTartarus = encounterData.GeneratedTartarus,
 	OpeningGenerated = encounterData.OpeningGenerated,
 	DevotionTestTartarus = encounterData.DevotionTestTartarus,
@@ -148,7 +149,7 @@ local encounterReplacements = {
 				-- See you again, all right?
 				{ Cue = "/VO/Sisyphus_0242" },
 				-- Do tell the Furies I said hi!
-				{ Cue = "/VO/Sisyphus_0243", RequiredCosmetics = { "SisyphusQuestItem" } },
+				{ Cue = "/VO/Sisyphus_0243", RequiredCosmetics = { "ModsNikkelMHadesBiomes_SisyphusQuestItem" } },
 				-- You have this, Prince!
 				-- { Cue = "/VO/Sisyphus_0244", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 				-- Stop by again sometime!
@@ -238,16 +239,48 @@ local encounterReplacements = {
 						-- Why, look who's here, Bouldy!
 						{ Cue = "/VO/Sisyphus_0219", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredTextLines = { "SisyphusMeeting06" }, },
 					},
+				},
+			},
+		},
+	},
+	Story_Orpheus_01 = {
+		ExitVoiceLines = mod.NilValue,
+		DistanceTriggers = {
+			{
+				TriggerObjectType = "NPC_Orpheus_01",
+				WithinDistance = 600,
+				LeaveDistanceBuffer = 60,
+				VoiceLines = {
 					{
-						UsePlayerSource = true,
 						RandomRemaining = true,
-						SuccessiveChanceToPlay = 0.66,
-						RequiredTextLines = { "SisyphusFirstMeeting" },
-
-						-- Hello, sir.
-						{ Cue = "/VO/ZagreusField_0463" },
-						-- Hey sir!
-						{ Cue = "/VO/ZagreusField_0464" },
+						-- Hello...!
+						{ Cue = "/VO/Orpheus_0060", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						-- Hello...
+						{ Cue = "/VO/Orpheus_0061", RequiredFalseTextLines = { "OrpheusAboutSingersReunionQuest01" }, },
+						-- Hmm.
+						{ Cue = "/VO/Orpheus_0062", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						-- Ah.
+						{ Cue = "/VO/Orpheus_0063", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						-- Oh, um, hello.
+						{ Cue = "/VO/Orpheus_0064", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						-- Hello there.
+						{ Cue = "/VO/Orpheus_0065", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						-- Hello my friend.
+						{ Cue = "/VO/Orpheus_0093", RequiredPlayed = { "/VO/Orpheus_0061" },                                                         RequiredTextLines = { "OrpheusGift02" }, },
+						-- Hello friend.
+						{ Cue = "/VO/Orpheus_0094", RequiredPlayed = { "/VO/Orpheus_0061" },                                                         RequiredTextLines = { "OrpheusGift06" }, },
+						-- Greetings.
+						{ Cue = "/VO/Orpheus_0095", RequiredPlayed = { "/VO/Orpheus_0061" },                                                         RequiredTextLines = { "OrpheusGift02" }, },
+						-- Perhaps a song would be in order at this time?
+						{ Cue = "/VO/Orpheus_0034", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						-- Would you be interested in one of my songs?
+						{ Cue = "/VO/Orpheus_0035", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						-- What might I do for you, my friend?
+						{ Cue = "/VO/Orpheus_0036", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						-- Is there a song which you would like to hear?
+						{ Cue = "/VO/Orpheus_0037", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						-- How about a little song, is that all right?
+						{ Cue = "/VO/Orpheus_0038", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
 					},
 				},
 			},
@@ -281,22 +314,85 @@ local encounterModifications = {
 			OverrideValues = game.BaseWaveOverrideValues,
 			StartDelay = 0.0
 		},
-		-- They can sometimes briefly move/pop in suddenly
-		Blacklist = { LightSpawner = true, HadesSwarmer = true, },
+		-- They can sometimes briefly move
+		Blacklist = { LightSpawner = true },
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,
 	},
 	Story_Sisyphus_01 = {
+		-- Always eligible, since we need to be able to fall back to this
+		GameStateRequirements = {},
+
 		StartRoomUnthreadedEvents = {
-			[1] = { FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" }, } },
-			[3] = mod.NilValue,
+			[1] = { FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" }, }, },
+			[3] = {
+				FunctionName = _PLUGIN.guid .. "." .. "SecretMusicPlayerEvent",
+				GameStateRequirements = mod.NilValue,
+				Args = {
+					TrackName = "/Music/MusicExploration1_MC",
+				},
+			},
 			[4] = mod.NilValue,
 			[5] = mod.NilValue,
 			[6] = mod.NilValue,
 			[7] = mod.NilValue,
 			[8] = mod.NilValue,
 		},
+
+		NextRoomResumeMusic = true,
+	},
+	Story_Orpheus_01 = {
+		-- For the Lyre
+		LoadPackages = { "BiomeIHouse" },
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+			},
+			RequiredFalseCosmeticPurchaseable = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem",
+			RequiredFalseFlags = { "OrpheusReunionInProgress" },
+			-- Changed from ThisRun to LastRun to make Orpheus ineligible if he was in Asphodel in the previous run
+			RequiredFalseTextLinesLastRun = game.GameData.OrpheusWithEurydiceAltTextLines,
+		},
+
+		SetupEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "ForceFlipMap",
+			},
+		},
+
+		StartRoomUnthreadedEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedAndFlipTypes", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Orpheus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01", }, FlipTypes = { "ModsNikkelMHadesBiomes_NPC_Bouldy_01" } }, },
+			[3] = {
+				FunctionName = _PLUGIN.guid .. "." .. "OrpheusRoomStartMusicPlayer",
+				GameStateRequirements = mod.NilValue,
+				Args = {
+					OrpheusSingsAgainRequirements = {
+						NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart", },
+					},
+					Duration = 2,
+					TrackOffsetMin = 10.0,
+					TrackOffsetMax = 120.0,
+				},
+			},
+			[4] = mod.NilValue,
+			[5] = mod.NilValue,
+			[6] = mod.NilValue,
+			[7] = mod.NilValue,
+			[8] = mod.NilValue,
+		},
+
+		StartRoomThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "SpawnOrpheusLyre",
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_HouseLyre01" },
+					},
+				},
+			},
+		},
+
 		NextRoomResumeMusic = true,
 	},
 	BaseThanatos = {

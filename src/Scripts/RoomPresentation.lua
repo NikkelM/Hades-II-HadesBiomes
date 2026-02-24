@@ -111,7 +111,13 @@ end)
 
 modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		-- Destroy any IDs that we marked as such. E.g. Alecto rage meter or Asphodel door reward front animation
+		-- Stop any animations/destroy any IDs that we marked as such. E.g. Alecto rage meter or door reward front animations
+		local stopAnimationsOnDeath = currentRun.CurrentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath or {}
+		if not game.IsEmpty(stopAnimationsOnDeath) then
+			for destinationId, animations in pairs(stopAnimationsOnDeath) do
+				StopAnimation({ DestinationId = destinationId, Names = animations, IncludeCreatedAnimations = true })
+			end
+		end
 		local destroyIdsOnDeath = currentRun.CurrentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
 		if not game.IsEmpty(destroyIdsOnDeath) then
 			Destroy({ Ids = destroyIdsOnDeath })

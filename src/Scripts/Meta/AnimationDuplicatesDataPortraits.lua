@@ -544,10 +544,10 @@ mod.HadesPortraitAnimationAdditions = {
 	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Skelly",
 	-- 	InheritFrom = "Codex_Portrait_Skelly",
 	-- },
-	-- {
-	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Orpheus",
-	-- 	InheritFrom = "Codex_Portrait_Orpheus",
-	-- },
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Orpheus",
+		InheritFrom = "Codex_Portrait_Orpheus",
+	},
 	-- {
 	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Nyx",
 	-- 	InheritFrom = "Codex_Portrait_Nyx",

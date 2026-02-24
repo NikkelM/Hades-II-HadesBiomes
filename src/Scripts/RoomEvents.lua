@@ -79,3 +79,14 @@ function mod.ActivatePrePlacedByShrineLevel(eventSource, args)
 	local shrineLevel = game.GetNumShrineUpgrades(eventSource.ShrineMetaUpgradeName)
 	game.ActivatePrePlaced(eventSource, args[shrineLevel])
 end
+
+function mod.ActivatePrePlacedAndFlipTypes(eventSource, args)
+	game.ActivatePrePlaced(eventSource, args)
+
+	if args.FlipTypes ~= nil then
+		for _, type in pairs(args.FlipTypes) do
+			local typeIds = GetIdsByType({ Name = type }) or {}
+			FlipHorizontal({ Ids = typeIds })
+		end
+	end
+end

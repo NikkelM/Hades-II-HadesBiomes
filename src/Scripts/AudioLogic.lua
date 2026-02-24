@@ -73,3 +73,31 @@ end
 function mod.PlaySoundWithSource(source, args)
 	PlaySound(args)
 end
+
+function mod.SecretMusicPlayerEvent(source, args)
+	game.SecretMusicPlayer(args.TrackName, args)
+end
+
+function mod.OrpheusRoomStartMusicPlayer(source, args)
+	local mods = rom.mods
+	local hadesOSTModReference = mods["NikkelM-Hades_OST_for_the_Music_Maker"]
+	rom.audio.load_bank(rom.path.combine(hadesOSTModReference._PLUGIN.plugins_data_mod_folder_path,
+		"Audio\\ModsNikkelMUnlockHadesMusic.bank"))
+
+	source = game.ActiveEnemies[390000]
+
+	if args.TrackName == nil then
+		if game.IsGameStateEligible(nil, args.OrpheusSingsAgainRequirements or {}) and game.GameState.ModsNikkelMHadesBiomesLastPlayedOrpheusTrack ~= nil then
+			args.TrackName = game.GameState.ModsNikkelMHadesBiomesLastPlayedOrpheusTrack
+		else
+			args.TrackName = "/Music/BlankMusicCue"
+		end
+	end
+
+	if args.TrackName ~= "/Music/BlankMusicCue" then
+		mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
+	else
+		-- To not have Orpheus do the singing animation
+		game.SecretMusicPlayer(args.TrackName, args)
+	end
+end

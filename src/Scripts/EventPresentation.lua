@@ -2,6 +2,25 @@ modutil.mod.Path.Wrap("StartedTextLinesPresentation", function(base, source, tex
 	if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
 		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 0 })
 	end
+	if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines then
+		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 0 })
+	end
+	if textLines ~= nil and textLines.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
+		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 0 })
+	end
+	if textLines ~= nil and textLines.ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines then
+		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 0 })
+	end
+
+	-- For Orpheus
+	if source.CheckOrpheusSinging == true and game.IsGameStateEligible(source, source.OrpheusSingsAgainRequirements) then
+		if source.ModsNikkelMHadesBiomes_OrpheusStartTextLinesAnimation then
+			SetAnimation({
+				DestinationId = source.ObjectId,
+				Name = source.ModsNikkelMHadesBiomes_OrpheusStartTextLinesAnimation
+			})
+		end
+	end
 
 	return base(source, textLines)
 end)
@@ -10,8 +29,17 @@ modutil.mod.Path.Wrap("FinishedTextLinesPresentation", function(base, source, te
 	if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
 		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
 	end
+	if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines then
+		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
+	end
+	if textLines ~= nil and textLines.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
+		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
+	end
+	if textLines ~= nil and textLines.ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines then
+		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 1, Duration = 0.25 })
+	end
 	-- Custom, for Eurydice we currently use SecretMusicId instead of AmbientMusicId
-	if textLines ~= nil and source.TextLinesPauseSingingFx and game.AudioState.SecretMusicId ~= nil then
+	if textLines ~= nil and source.TextLinesPauseSingingFx and game.AudioState.SecretMusicId ~= nil and (source.OrpheusSingsAgainRequirements == nil or game.IsGameStateEligible(source, source.OrpheusSingsAgainRequirements)) then
 		CreateAnimation({
 			Name = source.SingingFx,
 			DestinationId = source.ObjectId,

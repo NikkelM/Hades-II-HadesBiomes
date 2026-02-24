@@ -294,6 +294,8 @@ mod.HadesHelpTextCopyKeys = {
 	UseFinalBossDoor = true,
 	UseCerberusDoor = true,
 	UseStyxWarpDoor = true,
+	UseTalkToMusician = true,
+	UseLute01 = true,
 	-- UseForbiddenItem = true, -- Duplicate
 	-- UseCharonStoreDiscount = true, -- Duplicate
 	-- #endregion
@@ -669,8 +671,42 @@ mod.HadesHelpTextCopyKeys = {
 	-- ClearGiftDrops = "ModsNikkelMHadesBiomes_RunClear_ClearGiftDrops",
 	-- ClearLockKeyDrops = "ModsNikkelMHadesBiomes_RunClear_ClearLockKeyDrops",
 	-- #endregion
-	-- #region QuestData/Minor Prophecies
+	-- #region QuestData/Minor Prophecies/Unlocks
 	UnknownCondition_Meet = true,
+	MainSubPlotComplete = true,
+	SisyphusQuestItem = true,
+	AchillesPatroclusQuestItem = true,
+	OrpheusUnlockItem = true,
+	-- #endregion
+	-- #region Orpheus Boons/Songs
+	MusicMusicPlayerMainThemeMusicPlayer = true,
+	MusicMusicPlayerHadesThemeMusicPlayer = true,
+	MusicMusicPlayerMusicExploration4MusicPlayer = true,
+	MusicMusicPlayerMusicHadesResetMusicPlayer = true,
+	MusicMusicPlayerMusicHadesReset2MusicPlayer = true,
+	MusicMusicPlayerMusicHadesReset3MusicPlayer = true,
+	MusicMusicPlayerMusicTartarus4MusicPlayer = true,
+	MusicMusicPlayerMusicAsphodel1MusicPlayer = true,
+	MusicMusicPlayerMusicAsphodel2MusicPlayer = true,
+	MusicMusicPlayerMusicAsphodel3MusicPlayer = true,
+	MusicMusicPlayerMusicElysium1MusicPlayer = true,
+	MusicMusicPlayerMusicElysium2MusicPlayer = true,
+	MusicMusicPlayerMusicElysium3MusicPlayer = true,
+	MusicMusicPlayerMusicStyx1MusicPlayer = true,
+	MusicMusicPlayerBossFightMusicMusicPlayer = true,
+	MusicMusicPlayerTheUnseenOnesMusicPlayer = true,
+	MusicMusicPlayerCharonShopThemeMusicPlayer = true,
+	MusicMusicPlayerCharonFightThemeMusicPlayer = true,
+	MusicMusicPlayerChaosThemeMusicPlayer = true,
+	MusicMusicPlayerThanatosThemeMusicPlayer = true,
+	MusicMusicPlayerMusicExploration1MusicPlayer = true,
+	MusicMusicPlayerMusicExploration2MusicPlayer = true,
+	MusicMusicPlayerMusicExploration3MusicPlayer = true,
+	MusicMusicPlayerOrpheusSong1MusicPlayer = true,
+	MusicMusicPlayerOrpheusSong2MusicPlayer = true,
+	MusicMusicPlayerEurydiceSong1MusicPlayer = true,
+	MusicMusicPlayerPersephoneThemeMusicPlayer = true,
+	MusicMusicPlayerEndThemeMusicPlayer = true,
 	-- #endregion
 	-- #region Elite Attributes
 	EliteAttribute_Beams = "Beams",
@@ -1118,17 +1154,6 @@ mod.HadesHelpTextAliases = {
 	CharEurydice = "NPC_Eurydice_01",
 	CharPatroclus = "NPC_Patroclus_01",
 	CharBouldy = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
-}
-
--- List of Speakers for which the entries in the _NPCData files should be copied
-mod.HadesNPCTextSpeakers = {
-	Sisyphus = true,
-	Eurydice = true,
-	Patroclus = true,
-	Thanatos = true,
-	Persephone = true, -- For now - we don't need all of her voicelines, as they are split between Surface and Home
-	-- Cerberus Storyteller voicelines from mod.StorytellerVoicelines
-	-- ZagreusField voicelines from mod.ZagreusFieldVoicelines
 }
 
 -- Keys to be removed from the CodexText files before hooking them into Hades II

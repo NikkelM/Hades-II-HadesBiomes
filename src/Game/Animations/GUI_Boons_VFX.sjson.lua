@@ -64,12 +64,64 @@ local addAnimations = {
 		InheritFrom = "BoonIcon",
 		FilePath = "GUIModded\\Screens\\BoonIcons\\Sisyphus_03",
 	},
+	Boon_Sisyphus_04 = {
+		Name = "Boon_Sisyphus_04",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Sisyphus_04",
+	},
+	Boon_Sisyphus_05 = {
+		Name = "Boon_Sisyphus_05",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Sisyphus_05",
+	},
+	Boon_Sisyphus_06 = {
+		Name = "Boon_Sisyphus_06",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Sisyphus_06",
+	},
+	Boon_Sisyphus_07 = {
+		Name = "Boon_Sisyphus_07",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Sisyphus_07",
+	},
 	-- #endregion
 	-- #region Bouldy
 	Boon_Bouldy_01 = {
 		Name = "Boon_Bouldy_01",
 		InheritFrom = "BoonIcon",
 		FilePath = "GUIModded\\Screens\\BoonIcons\\Bouldy_01",
+	},
+	-- #endregion
+	-- #region Orpheus
+	Boon_Orpheus_GodOfTheDead = {
+		Name = "Boon_Orpheus_GodOfTheDead",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_GodOfTheDead",
+	},
+	Boon_Orpheus_HymnToZagreus = {
+		Name = "Boon_Orpheus_HymnToZagreus",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_HymnToZagreus",
+	},
+	Boon_Orpheus_PrimordialChaos = {
+		Name = "Boon_Orpheus_PrimordialChaos",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_PrimordialChaos",
+	},
+	Boon_Orpheus_LamentOfOrpheus = {
+		Name = "Boon_Orpheus_LamentOfOrpheus",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_LamentOfOrpheus",
+	},
+	Boon_Orpheus_FinalExpense = {
+		Name = "Boon_Orpheus_FinalExpense",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_FinalExpense",
+	},
+	Boon_Orpheus_GoodRiddance = {
+		Name = "Boon_Orpheus_GoodRiddance",
+		InheritFrom = "BoonIcon",
+		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_GoodRiddance",
 	},
 	-- #endregion
 }

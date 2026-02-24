@@ -43,6 +43,7 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.ValidModdedRunBiomes[currentRoom.RoomSetName] then
 		currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
+		currentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath = currentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath or {}
 
 		if currentRoom.AlwaysLoadModdedPackages then
 			LoadPackages({ Names = currentRoom.AlwaysLoadModdedPackages })
@@ -240,7 +241,7 @@ modutil.mod.Path.Wrap("HandleSecretSpawns", function(base, currentRun)
 
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		local currentRoom = currentRun.CurrentRoom
-		local secretPointIds = GetIdsByType({ Name = "SecretPoint" })
+		local secretPointIds = GetIdsByType({ Name = "SecretPoint" }) or {}
 
 		if currentRun.CurrentRoom and currentRun.CurrentRoom.ModsNikkelMHadesBiomesSecretDoorOnId then
 			-- Exclude the ID of the Chaos Gate that was spawned in this room from being used for the ShrinePointDoor
@@ -273,13 +274,13 @@ modutil.mod.Path.Wrap("HandleSecretSpawns", function(base, currentRun)
 			local shrinePointRoomData = game.RoomSetData.Challenge[shrinePointRoomName]
 			if shrinePointRoomData ~= nil then
 				local secretPointId = game.RemoveRandomValue(secretPointIds)
-				local shrinePointDoor = game.DeepCopyTable(game.ObstacleData.ShrinePointDoor)
+				local shrinePointDoor = game.DeepCopyTable(game.ObstacleData.ShrinePointDoor) or {}
 				shrinePointDoor.ObjectId = SpawnObstacle({
 					Name = "ShrinePointDoor",
 					Group = "FX_Terrain",
 					DestinationId = secretPointId,
 					AttachedTable = shrinePointDoor
-				})
+				}) or {}
 				game.SetupObstacle(shrinePointDoor)
 				shrinePointDoor.ShrinePointReq = currentRoom.ShrinePointDoorCost or
 						(shrinePointDoor.CostBase + (shrinePointDoor.CostPerDepth * (currentRun.RunDepthCache - 1)))
@@ -288,7 +289,7 @@ modutil.mod.Path.Wrap("HandleSecretSpawns", function(base, currentRun)
 				if shrinePointDoor.ShrinePointReq > activeShrinePoints then
 					costFontColor = game.Color.CostUnaffordable
 				end
-				local shrinePointRoom = game.CreateRoom(shrinePointRoomData, { SkipChooseReward = true })
+				local shrinePointRoom = game.CreateRoom(shrinePointRoomData, { SkipChooseReward = true }) or {}
 				shrinePointRoom.NeedsReward = true
 				game.AssignRoomToExitDoor(shrinePointDoor, shrinePointRoom)
 				shrinePointDoor.OnUsedPresentationFunctionName = "ShrinePointDoorUsedPresentation"
@@ -312,7 +313,7 @@ modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentR
 
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		if game.HeroHasTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) then
-			local traitData = game.GetHeroTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait)
+			local traitData = game.GetHeroTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) or {}
 			if traitData.AccumulatedDamageBonus >= 1.296 then
 				game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_ThanatosKeepsakeAchievedHighPercentage = true
 			end
@@ -579,4 +580,8 @@ function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 
 	game.RunThreadedEvents(encounterData.ExitsUnlockedThreadedEvents, room.Encounter)
 	game.RunThreadedEvents(roomData.ExitsUnlockedThreadedEvents, room)
+end
+
+function mod.ForceFlipMap(encounter, args, room)
+	room.Flipped = true
 end

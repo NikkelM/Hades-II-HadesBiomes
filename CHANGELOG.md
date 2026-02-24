@@ -4,10 +4,25 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-
+- You can now encounter **Orpheus** in Tartarus, where he will offer you a select number of his songs that will empower your current run. Free Orpheus through a new incantation at the Cauldron.
+- Learn how to play the Lyre from Orpheus!
+- Progress Orpheus' and Eurydice's storyline and reunite them!
+- Added additional boons offered by Sisyphus.
+- Added new minor prophecies tasking you with receiving various boons from Zagreus' Journey's story NPCs.
+- Added new dialogues with Hermes. 
 
 Other fixes and improvements:
-- Fixed some dialogues never being eligible to play.
+- Started the addition of the Sisyphus liberation questline - you will be able to receive the new minor prophecy, but will not be able to complete it yet.
+- Sisyphus, Eurydice and Patroclus will now say a short line after you choose one of their boons.
+- Codex entries that are locked by relationship or storyline progress now have fitting hints associated with them.
+- Updated a number of boon icons with enhanced visuals.
+- Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlayed over the blacked-out death screen.
+- Fixed: Archer traps in Elysium sometimes fail to fire the arrow.
+- Fixed: Some codex entries overflow the intended area in the Codex.
+- Fixed: Some dialogues are never eligible to play.
+- Fixed: Some boss attack voiceline quips refer to Zagreus directly.
+- Fixed: Reward previews in Elysium and Styx are sometimes misaligned.
+- Fixed: The game may get into a bad state by not setting required flags correctly.
 <!--Releasenotes end-->
 
 ## v0.6.0

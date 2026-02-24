@@ -184,3 +184,15 @@ modutil.mod.Path.Wrap("PlayRandomRemainingTextLines", function(base, source, tex
 		return base(source, textLineSets)
 	end
 end)
+
+function mod.AddTextLineToTextLineRecord(source, args)
+	if args.TextLine ~= nil then
+		game.GameState.TextLinesRecord[args.TextLine] = true
+		game.CurrentRun.TextLinesRecord[args.TextLine] = true
+		if game.CurrentHubRoom ~= nil then
+			game.CurrentRun.HubTextLinesRecord[args.TextLine] = true
+		elseif game.CurrentRun.CurrentRoom ~= nil then
+			game.CurrentRun.CurrentRoom.TextLinesRecord[args.TextLine] = true
+		end
+	end
+end

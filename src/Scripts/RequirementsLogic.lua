@@ -1187,7 +1187,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredRunMinValues ~= nil then
 		if game.CurrentRun then
 			for key, value in pairs(requirements.RequiredRunMinValues) do
-				if (CurrentRun[key] or 0) < value then
+				if (game.CurrentRun[key] or 0) < value then
 					return false
 				end
 			end
@@ -1196,7 +1196,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredRunMaxValues ~= nil then
 		if game.CurrentRun then
 			for key, value in pairs(requirements.RequiredRunMaxValues) do
-				if (CurrentRun[key] or 0) > value then
+				if (game.CurrentRun[key] or 0) > value then
 					return false
 				end
 			end
@@ -2448,7 +2448,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	-- if requirements.RequiredMinConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= nil and game.GameState.ConsecutiveClears < requirements.RequiredMinConsecutiveClears then
 	if requirements.RequiredMinConsecutiveClears ~= nil then
 		local consecutiveModdedClears = 0
-		for k, run in game.GameState.RunHistory do
+		for _, run in pairs(game.GameState.RunHistory) do
 			if mod.WasModdedRun(run) and run.BiomesReached ~= nil then
 				if run.Cleared then
 					consecutiveModdedClears = consecutiveModdedClears + 1
@@ -2464,23 +2464,19 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	-- if requirements.RequiredConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= nil and game.GameState.ConsecutiveClears ~= requirements.RequiredConsecutiveClears then
 	if requirements.RequiredConsecutiveClears ~= nil then
-		local hasConsecutiveClears = game.RequiredConsecutiveClearsOfRoom(source,
-			{ Name = "D_Boss01", Count = requirements.RequiredConsecutiveClears })
-		if not hasConsecutiveClears then
+		local consecutiveModdedClears = 0
+		for _, run in pairs(game.GameState.RunHistory) do
+			if mod.WasModdedRun(run) and run.BiomesReached ~= nil then
+				if run.Cleared then
+					consecutiveModdedClears = consecutiveModdedClears + 1
+				else
+					break
+				end
+			end
+		end
+		if consecutiveModdedClears ~= requirements.RequiredConsecutiveClears then
 			return false
 		end
-		-- for k, run in game.GameState.RunHistory do
-		-- 	if mod.WasModdedRun(run) and run.BiomesReached ~= nil then
-		-- 		if run.Cleared then
-		-- 			consecutiveModdedClears = consecutiveModdedClears + 1
-		-- 		else
-		-- 			break
-		-- 		end
-		-- 	end
-		-- end
-		-- if consecutiveModdedClears ~= requirements.RequiredConsecutiveClears then
-		-- 	return false
-		-- end
 	end
 
 	if requirements.PlayerMaxHealthFraction ~= nil and game.CurrentRun.Hero.Health / game.CurrentRun.Hero.MaxHealth >= requirements.PlayerMaxHealthFraction then
@@ -2649,7 +2645,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		for itemName, itemData in pairs(game.WorldUpgradeData) do
 			if not itemData.DebugOnly and itemData.ResourceCost ~= nil and not game.GameState.CosmeticsAdded[itemName] and not itemData.IgnoreAffordable then
 				if itemData.Slot == requirements.AnyAffordableGhostAdminItem and HasResource(itemData.ResourceName, itemData.ResourceCost) then
-					if itemData.game.GameStateRequirements == nil or IsGameStateEligible(CurrentRun, itemData, itemData.game.GameStateRequirements) then
+					if itemData.GameStateRequirements == nil or game.IsGameStateEligible(itemData, itemData.GameStateRequirements) then
 						canAffordAny = true
 						break
 					end
@@ -2889,13 +2885,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		if cosmeticData == nil then
 			return false
 		end
-		if game.GameState.WorldUpgradesAdded[cosmeticData.Name] or not IsGameStateEligible(CurrentRun, cosmeticData, cosmeticData.game.GameStateRequirements) then
+		if game.GameState.WorldUpgradesAdded[cosmeticData.Name] or not game.IsGameStateEligible(cosmeticData, cosmeticData.GameStateRequirements) then
 			return false
 		end
 	end
 	if requirements.RequiredFalseCosmeticPurchaseable ~= nil then
 		local cosmeticData = game.WorldUpgradeData[requirements.RequiredFalseCosmeticPurchaseable]
-		if cosmeticData ~= nil and not game.GameState.WorldUpgradesAdded[cosmeticData.Name] and IsGameStateEligible(CurrentRun, cosmeticData, cosmeticData.game.GameStateRequirements) then
+		if cosmeticData ~= nil and not game.GameState.WorldUpgradesAdded[cosmeticData.Name] and game.IsGameStateEligible(cosmeticData, cosmeticData.GameStateRequirements) then
 			return false
 		end
 	end
@@ -3309,8 +3305,11 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredAmbientTrackNameMatch and source ~= nil and source.OnQueuedFunctionArgs ~= nil then
-		if game.AudioState.AmbientTrackName ~= nil and source.OnQueuedFunctionArgs.TrackName ~= game.AudioState.AmbientTrackName then
+	-- This is for Orpheus dialogues requiring the correct song to be playing
+	-- if requirements.RequiredAmbientTrackNameMatch and source ~= nil and source.OnQueuedFunctionArgs ~= nil then
+	if requirements.RequiredAmbientTrackNameMatch and requirements.OnQueuedFunctionArgs ~= nil then
+		-- Changed from AmbientTrackName to SecretMusicName since that's what we use in the story rooms
+		if game.AudioState.SecretMusicName ~= nil and requirements.OnQueuedFunctionArgs.TrackName ~= game.AudioState.SecretMusicName then
 			return false
 		end
 	end

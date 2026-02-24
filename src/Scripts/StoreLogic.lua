@@ -58,7 +58,16 @@ modutil.mod.Path.Wrap("GetShopCostMultiplier", function(base)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and roomName and game.RoomData[roomName] and game.RoomData[roomName].PersistentStore and game.CurrentRun.ModsNikkelMHadesBiomesDHubFirstPurchaseDone then
 		game.CurrentRun.CurrentRoom.FirstPurchase = true
 	end
-	return base()
+
+	local multiplier = base()
+
+	if game.HeroHasTrait("ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon") then
+		local traitData = game.GetHeroTrait("ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon") or {}
+		local orpheusMultiplier = game.RandomFloat(0, traitData.ModsNikkelMHadesBiomesMaxStoreDiscount)
+		multiplier = multiplier - orpheusMultiplier
+	end
+
+	return multiplier
 end)
 
 modutil.mod.Path.Context.Wrap("RestockWorldItem", function(replacedIndex, restockKitId, args)

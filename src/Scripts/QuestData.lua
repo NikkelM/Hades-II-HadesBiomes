@@ -9,10 +9,14 @@ local flippedArcanaActive = rom.mods["ReadEmAndWeep-Flip_the_Arcana_Mod"]
 -- The order of the quests in the Quest log, these will be appended to the end of the vanilla list
 local newQuestOrderData = {
 	-- key / mission-critical
+	"ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice",
+	"ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
+	"ModsNikkelMHadesBiomes_QuestOrpheusRelease",
 	"ModsNikkelMHadesBiomes_QuestTenClears",
 	"ModsNikkelMHadesBiomes_QuestFirstClear",
 	-- major / priority
 	"ModsNikkelMHadesBiomes_QuestMeetChthonicGods",
+	"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs",
 	"ModsNikkelMHadesBiomes_QuestWeaponClears",
 	"ModsNikkelMHadesBiomes_QuestAspectClears",
 	"ModsNikkelMHadesBiomes_QuestWeaponClearsFast",
@@ -26,17 +30,18 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestHermesBeatCharon",
 	"ModsNikkelMHadesBiomes_QuestPurgeLegendaryBoon",
 	-- self-improvement & stockpiling
+	"ModsNikkelMHadesBiomes_QuestOrpheusLyreMastery",
 	"ModsNikkelMHadesBiomes_QuestCodexSmall",
 	"ModsNikkelMHadesBiomes_QuestSongsSmall",
 	"ModsNikkelMHadesBiomes_QuestCosmeticsSmall",
 	"ModsNikkelMHadesBiomes_QuestCropsSmall",
 	-- boons & character traits
 	"ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
-	-- TODO: Disabled until we have more options through #155/#300
-	-- "ModsNikkelMHadesBiomes_QuestSisyphusUpgrades",
-	-- "ModsNikkelMHadesBiomes_QuestEurydiceUpgrades",
-	-- "ModsNikkelMHadesBiomes_QuestPatroclusUpgrades",
+	"ModsNikkelMHadesBiomes_QuestSisyphusUpgrades",
 	"ModsNikkelMHadesBiomes_QuestBouldyUpgrades",
+	"ModsNikkelMHadesBiomes_QuestOrpheusUpgrades",
+	"ModsNikkelMHadesBiomes_QuestEurydiceUpgrades",
+	"ModsNikkelMHadesBiomes_QuestPatroclusUpgrades",
 	-- weapons & combat
 	"ModsNikkelMHadesBiomes_QuestEliteAttributeKills",
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
@@ -165,12 +170,7 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				Path = { "GameState", "TraitsTaken" },
-				HasAll = {
-					mod.SharedKeepsakePortSisyphusKeepsakeTrait,
-					mod.SharedKeepsakePortEurydiceKeepsakeTrait,
-					mod.SharedKeepsakePortPatroclusKeepsakeTrait,
-					mod.SharedKeepsakePortThanatosKeepsakeTrait,
-				},
+				HasAll = mod.SharedKeepsakePortKeepsakeTraitNames,
 			},
 		},
 		IncompleteName = "Quest_UnknownCondition",
@@ -663,11 +663,7 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				Path = { "GameState", "TraitsTaken" },
-				HasAll = {
-					"ModsNikkelMHadesBiomesSisyphusMoney",
-					"ModsNikkelMHadesBiomesSisyphusHealing",
-					"ModsNikkelMHadesBiomesSisyphusMetapoints",
-				},
+				HasAll = game.EnemyData.NPC_Sisyphus_01.Traits,
 			},
 		},
 	},
@@ -684,11 +680,7 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				Path = { "GameState", "TraitsTaken" },
-				HasAll = {
-					"ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
-					"ModsNikkelMHadesBiomesBuffMegaPom",
-					"ModsNikkelMHadesBiomesBuffFutureBoonRarity",
-				},
+				HasAll = game.EnemyData.NPC_Eurydice_01.Traits,
 			},
 		},
 	},
@@ -705,13 +697,24 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				Path = { "GameState", "TraitsTaken" },
-				HasAll = {
-					"ModsNikkelMHadesBiomesTemporaryDoorHealTrait_Patroclus",
-					"ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus",
-					"ModsNikkelMHadesBiomesBuffExtraChance",
-					"ModsNikkelMHadesBiomesGainMaxHealthMinMana",
-					"ModsNikkelMHadesBiomesGainMinHealthMaxMana",
-				},
+				HasAll = game.EnemyData.NPC_Patroclus_01.Traits,
+			},
+		},
+	},
+	-- Gain all Orpheus boons
+	ModsNikkelMHadesBiomes_QuestOrpheusUpgrades = {
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
+		RewardResourceName = "MetaCurrency",
+		RewardResourceAmount = 400,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusGift02" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "TraitsTaken" },
+				HasAll = game.EnemyData.NPC_Orpheus_01.Traits,
 			},
 		},
 	},
@@ -1183,7 +1186,7 @@ local newQuestData = {
 			"ModsNikkelMHadesBiomes_QuestCropsSmall_Asphodel",
 			"ModsNikkelMHadesBiomes_QuestCropsSmall_Elysium",
 			"ModsNikkelMHadesBiomes_QuestCropsSmall_Styx",
-		}
+		},
 	},
 	-- Clear streak on modded random Chaos Trials/Bounties
 	ModsNikkelMHadesBiomes_QuestModdedRandomBountyClearStreak = {
@@ -1250,6 +1253,114 @@ local newQuestData = {
 				RequiredSourceValueFalse = "InPartnerConversation",
 				ObjectType = "NPC_Moros_01",
 				{ Cue = "/VO/Moros_0225", Text = "Serve the Night, and the Night shall give back." },
+			},
+		},
+	},
+	-- Meet all Story NPCs (Sisyphus, Eurydice, Patroclus, Orpheus)
+	ModsNikkelMHadesBiomes_QuestMeetStoryNPCs = {
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
+		RewardResourceName = "MetaCurrency",
+		RewardResourceAmount = 800,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "SisyphusFirstMeeting", "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C", "PatroclusFirstMeeting", "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			-- Sisyphus
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "SisyphusFirstMeeting" },
+			},
+			-- Orpheus
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+			},
+			-- Eurydice
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C" },
+			},
+			-- Patroclus
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "PatroclusFirstMeeting" },
+			},
+			-- TODO: Once implemented, Achilles, Dusa
+		},
+		IncompleteName = "UnknownCondition_Meet",
+		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {
+			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Sisyphus",
+			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Orpheus",
+			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Eurydice",
+			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Patroclus",
+		},
+	},
+	-- Free Orpheus
+	ModsNikkelMHadesBiomes_QuestOrpheusRelease = {
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
+		RewardResourceName = "CardUpgradePoints",
+		RewardResourceAmount = 2,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "RoomsEntered" },
+				HasAll = { "X_Intro" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+			},
+		},
+		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestOrpheusRelease_Condition",
+		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestOrpheusRelease_Cleared",
+	},
+	-- Reunite Orpheus and Eurydice
+	ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice = {
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 3,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "EurydiceAboutOrpheus04" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusAboutSingersReunionQuest01" },
+			},
+		},
+	},
+	-- Release Sisyphus
+	ModsNikkelMHadesBiomes_QuestSisyphusLiberation = {
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 2,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "SisyphusLiberationQuest_Beginning_01" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "SisyphusLiberationQuestComplete" },
+			},
+		},
+	},
+	-- Master playing the Lyre in Orpheus Chamber
+	ModsNikkelMHadesBiomes_QuestOrpheusLyreMastery = {
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
+		RewardResourceName = "CardUpgradePoints",
+		RewardResourceAmount = 4,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusMusicProgress01" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusMusicProgress04" },
 			},
 		},
 	},

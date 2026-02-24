@@ -370,19 +370,20 @@ local function copyHadesNPCTexts()
 					"Content\\Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
 				local hadesHelpTextDataRaw = mod.DecodeSjsonFile(hadesHelpTextFile)
 
-				-- Filter the Texts array in place, keeping only entries we care about
 				-- Need to do in-place to ensure the lang key is before the Texts key, otherwise the file is not loaded correctly by the game
 				local filteredTexts = {}
 				for _, entry in ipairs(hadesHelpTextDataRaw.Texts) do
-					if (entry.Speaker and mod.HadesNPCTextSpeakers[entry.Speaker]) or
-							(entry.Id and (mod.StorytellerVoicelines[entry.Id] or mod.ZagreusFieldVoicelines[entry.Id])) then
-						if entry.Id then
-							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
-							entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
-							entry.Id = entry.Id:gsub("Persephone_", "Megaera_2")
-						end
-						table.insert(filteredTexts, entry)
+					if entry.Id then
+						entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
+						entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
+						entry.Id = entry.Id:gsub("Persephone_", "Megaera_2")
+						entry.Id = entry.Id:gsub("MegaeraHome_", "Megaera_3")
+						entry.Id = entry.Id:gsub("Nyx_", "Megaera_4")
+						entry.Id = entry.Id:gsub("Hades_", "HadesField_0")
+						entry.Id = entry.Id:gsub("Hypnos_", "Sisyphus_0")
+						entry.Id = entry.Id:gsub("ZagreusHome_", "ZagreusField_0")
 					end
+					table.insert(filteredTexts, entry)
 				end
 
 				-- Replace the Texts array with the filtered version

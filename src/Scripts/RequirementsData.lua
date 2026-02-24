@@ -223,6 +223,25 @@ local newNamedRequirements = {
 		},
 	},
 	-- #endregion
+
+	-- #region NPC interactions
+	ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart = {
+		{
+			Path = { "GameState", "TextLinesRecord" },
+			HasAny = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+		},
+	},
+	ModsNikkelMHadesBiomesOrpheusSingsAgain = {
+		{
+			Path = { "GameState", "TextLinesRecord" },
+			HasAny = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+		},
+		{
+			-- He teleports away after this dialogue
+			PathFalse = { "CurrentRun", "TextLinesRecord", "OrpheusAboutSingersReunionQuest01" },
+		},
+	},
+	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.NamedRequirementsData, newNamedRequirements)
 -- #endregion
