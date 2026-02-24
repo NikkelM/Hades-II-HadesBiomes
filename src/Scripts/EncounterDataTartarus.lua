@@ -76,9 +76,10 @@ local encounterReplacements = {
 		-- Blocks the LocationText from being shown an extra time in RoomEntranceDrop
 		BlockLocationText = true,
 		UnthreadedEvents = {
+			-- If Thanatos is present, wait for him to create the reward, otherwise spawn it immediately
 			{
-				FunctionName = "SpawnRoomReward",
-				Args = { WaitUntilPickup = true, }
+				FunctionName = _PLUGIN.guid .. "." .. "CheckThanatosOrSpawnRoomReward",
+				Args = { DelayedStart = true, },
 			},
 			{ FunctionName = "EncounterAudio" },
 			{ FunctionName = "BeginOpeningEncounter" },
@@ -316,6 +317,12 @@ local encounterModifications = {
 		},
 		-- They can sometimes briefly move
 		Blacklist = { LightSpawner = true },
+
+		-- Spawn Thanatos' House version if eligible (check through his ActivateRequirements)
+		StartRoomUnthreadedEvents = {
+			{ FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Thanatos_01" }, }, },
+			{ FunctionName = "CheckConversations" },
+		},
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,

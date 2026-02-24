@@ -43,7 +43,8 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.ValidModdedRunBiomes[currentRoom.RoomSetName] then
 		currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
-		currentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath = currentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath or {}
+		currentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath = currentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath or
+				{}
 
 		if currentRoom.AlwaysLoadModdedPackages then
 			LoadPackages({ Names = currentRoom.AlwaysLoadModdedPackages })

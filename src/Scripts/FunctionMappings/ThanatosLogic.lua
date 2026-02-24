@@ -1,3 +1,4 @@
+-- #region Field version
 function mod.ThanatosPreSpawnPresentation(eventSource)
 	game.HideCombatUI("ThanatosIntro")
 
@@ -252,7 +253,6 @@ function mod.HandleThanatosEncounterReward(thanatos, args)
 		if encounter.ThanatosKills == 0 then
 			game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_ShutdownThanatosFlag = true
 		end
-
 	end
 
 	-- Need to move his kills into CurrentRun as otherwise they are not kept in the save
@@ -344,6 +344,35 @@ function mod.TrackThanatosChallengeProgress(encounter, victim, killer)
 		encounter.PlayerKills = encounter.PlayerKills + 1
 		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
 	end
+end
+
+-- #endregion
+-- #endregion
+
+-- #region House version/RoomOpening
+function mod.CheckThanatosOrSpawnRoomReward(eventSource, args)
+	local thanatos = GetClosest({
+		Id = game.CurrentRun.Hero.ObjectId,
+		DestinationName = "NPC_Thanatos_01"
+	})
+
+	if thanatos then
+		-- Wait until his conversation is done
+		game.waitUntil("ThanatosRoomOpeningConversationDone")
+	end
+
+	game.SpawnRoomReward(eventSource, { WaitUntilPickup = true, })
+end
+
+function mod.ThanatosRoomOpeningConversationDone(source, args)
+	SetAnimation({ DestinationId = source.ObjectId, Name = "ThanatosIdleInhouseFidget_HairFlick" })
+	game.wait(1.0)
+
+	-- This notification actually spawns the room reward in the room's UnthreadedEvent
+	game.notifyExistingWaiters("ThanatosRoomOpeningConversationDone")
+
+	game.wait(2.0)
+	mod.ThanatosExit(source, args)
 end
 
 -- #endregion
