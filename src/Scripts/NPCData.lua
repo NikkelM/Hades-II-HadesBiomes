@@ -63,7 +63,7 @@ local function applyNPCChoiceMappings(npcData, mappings)
 								if subTable == groupName then
 									local lastIndex = #textLineSet
 									for key, value in pairs(newKVPair) do
-										textLineSet[lastIndex][key] = value
+										textLineSet[lastIndex][key] = textLineSet[lastIndex][key] or value
 									end
 								end
 							end
@@ -73,7 +73,7 @@ local function applyNPCChoiceMappings(npcData, mappings)
 								if textLineSet[subTable] then
 									for _, lineData in ipairs(textLineSet[subTable]) do
 										for key, value in pairs(newKVPair) do
-											lineData[key] = value
+											lineData[key] = lineData[key] or value
 										end
 									end
 								end
@@ -83,7 +83,7 @@ local function applyNPCChoiceMappings(npcData, mappings)
 							for subTable, newKVPair in pairs(mappingData.AlwaysAddKVPairs or {}) do
 								if subTable == groupName then
 									for key, value in pairs(newKVPair) do
-										textLineSet[key] = value
+										textLineSet[key] = textLineSet[key] or value
 									end
 								end
 							end
@@ -831,6 +831,19 @@ local npcChoiceMappings = {
 			SisyphusLiberationQuestComplete = 7,
 		},
 	},
+	ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {
+		AlwaysAddKVPairs = {
+			InteractTextLineSets = {
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Bouldy",
+			},
+			RepeatableTextLineSets = {
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Bouldy",
+			},
+			GiftTextLineSets = {
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Bouldy",
+			},
+		},
+	},
 	NPC_Eurydice_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
 		TextToMatch = { "Eurydice_OfferText01", "Eurydice_OfferText02", },
@@ -1027,7 +1040,8 @@ local npcChoiceMappings = {
 -- Custom, more complicated changes before anything else
 -- Replace duplicated Bouldy conversations
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.ModsNikkelMHadesBiomes_BouldyFirstMeeting = game
-		.DeepCopyTable(mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.BouldyFirstMeeting)
+		.DeepCopyTable(mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.BouldyFirstMeeting) or {}
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.ModsNikkelMHadesBiomes_BouldyFirstMeeting.EndGlobalVoiceLines = "MiscEndVoiceLines_Bouldy"
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.BouldyFirstMeeting = nil
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikkelMHadesBiomes_BouldyChat01 = game
 		.DeepCopyTable(mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.BouldyChat01) or {}
