@@ -485,7 +485,6 @@ function mod.UseLyre(usee, args)
 	SetAnimation({ Name = "Melinoe_InteractToEquip", DestinationId = game.CurrentRun.Hero.ObjectId })
 	Shake({ Id = usee.ObjectId, Distance = 1.5, Speed = 150, Duration = 0.15 })
 
-	-- TODO: Create
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines, true)
 
 	if game.GameState.TextLinesRecord.OrpheusMusicProgress03 and game.GameState.ItemInteractions.ModsNikkelMHadesBiomes_HouseLyre01 >= 140 then
