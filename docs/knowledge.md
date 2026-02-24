@@ -244,8 +244,8 @@ Take special note of the ID entry:
 	"IgnoreGridManager": false,
 	"Invert": false,
 	"Location": {
-		"X": 2990,
-		"Y": 4915
+		"X": 3060,
+		"Y": 4960
 	},
 	"Name": "NPC_Thanatos_01",
 	"OffsetZ": 0.0,
