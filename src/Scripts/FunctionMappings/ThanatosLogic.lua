@@ -189,6 +189,7 @@ function mod.ThanatosExit(source, args)
 	game.StopStatusAnimation(source)
 
 	if not args.SkipExitReaction then
+		-- TODO:
 		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ThanatosExitReactionVoiceLines, true)
 	end
 
@@ -371,7 +372,7 @@ function mod.ThanatosRoomOpeningConversationDone(source, args)
 	-- This notification actually spawns the room reward in the room's UnthreadedEvent
 	game.notifyExistingWaiters("ThanatosRoomOpeningConversationDone")
 
-	game.wait(2.0)
+	game.wait(3.0)
 	mod.ThanatosExit(source, args)
 end
 

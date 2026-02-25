@@ -272,8 +272,8 @@ game.GlobalVoiceLines.ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines = game
 		.ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines
 
--- game.GlobalVoiceLines.ThanatosGreetingVoiceLines = game.GlobalVoiceLines.ThanatosGreetingVoiceLines or
--- 		mod.GlobalVoiceLines.ThanatosGreetingVoiceLines
+game.GlobalVoiceLines.ThanatosGreetingVoiceLines = game.GlobalVoiceLines.ThanatosGreetingVoiceLines or
+		mod.GlobalVoiceLines.ThanatosGreetingVoiceLines
 game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines = game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines or
 		mod.GlobalVoiceLines.ThanatosDeathTauntVoiceLines
 game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines = game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines or
