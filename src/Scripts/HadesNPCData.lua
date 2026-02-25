@@ -50,21 +50,16 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- #endregion
 	-- #region Thanatos
 	Brooding = {
-		ChanceToTrigger = 0.5,
 		PostTriggerAnimation = "ThanatosIdleInhouseFidget_HairFlick",
-		StatusAnimation = "StatusIconWantsToTalk",
-		WithinDistance = 620,
+		WithinDistance = 900,
 		VoiceLines = {
-			-- TODO:
 			[1] = game.GlobalVoiceLines.ThanatosGreetingVoiceLines,
 		}
 	},
 	BroodingRepeatable = {
-		ChanceToTrigger = 0.5,
 		PostTriggerAnimation = "ThanatosIdleInhouseFidget_HairFlick",
-		WithinDistance = 420,
+		WithinDistance = 900,
 		VoiceLines = {
-			-- TODO:
 			[1] = game.GlobalVoiceLines.ThanatosGreetingVoiceLines,
 		}
 	},

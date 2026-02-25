@@ -63,7 +63,7 @@ local function applyNPCChoiceMappings(npcData, mappings)
 								if subTable == groupName then
 									local lastIndex = #textLineSet
 									for key, value in pairs(newKVPair) do
-										textLineSet[lastIndex][key] = textLineSet[lastIndex][key] or value
+										textLineSet[lastIndex][key] = value
 									end
 								end
 							end
@@ -73,7 +73,7 @@ local function applyNPCChoiceMappings(npcData, mappings)
 								if textLineSet[subTable] then
 									for _, lineData in ipairs(textLineSet[subTable]) do
 										for key, value in pairs(newKVPair) do
-											lineData[key] = lineData[key] or value
+											lineData[key] = value
 										end
 									end
 								end
@@ -83,7 +83,7 @@ local function applyNPCChoiceMappings(npcData, mappings)
 							for subTable, newKVPair in pairs(mappingData.AlwaysAddKVPairs or {}) do
 								if subTable == groupName then
 									for key, value in pairs(newKVPair) do
-										textLineSet[key] = textLineSet[key] or value
+										textLineSet[key] = value
 									end
 								end
 							end
@@ -410,6 +410,15 @@ local npcModifications = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		ExcludeFromDamageDealtRecord = true,
+		ActivateRequirements = mod.NilValue,
+
+		InteractTextLineSets = {
+			ThanatosBackstory01_B = {
+				EndVoiceLines = {
+					RequiredMinElapsedTime = mod.NilValue,
+				},
+			},
+		},
 		GiftTextLineSets = {
 			ThanatosGift04 = {
 				[2] = {
@@ -887,8 +896,16 @@ local npcChoiceMappings = {
 		},
 	},
 	NPC_Thanatos_01 = {
-		TextLineGroups = { "GiftTextLineSets" },
+		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets", "GiftTextLineSets" },
 		AlwaysAddKVPairsToLastIPair = {
+			-- Thanatos should leave after the conversation in RoomOpening, and spawn the reward
+			InteractTextLineSets = {
+				PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+				PostLineFunctionArgs = mod.NilValue,
+			},
+			RepeatableTextLineSets = {
+				PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+			},
 			-- Thanatos should leave if he has no more dialogue after being gifted
 			GiftTextLineSets = {
 				PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCheckThanatosPostGiftExit",
@@ -1041,7 +1058,8 @@ local npcChoiceMappings = {
 -- Replace duplicated Bouldy conversations
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.ModsNikkelMHadesBiomes_BouldyFirstMeeting = game
 		.DeepCopyTable(mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.BouldyFirstMeeting) or {}
-mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.ModsNikkelMHadesBiomes_BouldyFirstMeeting.EndGlobalVoiceLines = "MiscEndVoiceLines_Bouldy"
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.ModsNikkelMHadesBiomes_BouldyFirstMeeting.EndGlobalVoiceLines =
+"MiscEndVoiceLines_Bouldy"
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.BouldyFirstMeeting = nil
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikkelMHadesBiomes_BouldyChat01 = game
 		.DeepCopyTable(mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.BouldyChat01) or {}

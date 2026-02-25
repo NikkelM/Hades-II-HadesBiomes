@@ -321,7 +321,20 @@ local encounterModifications = {
 
 		-- Spawn Thanatos' House version if eligible (check through his ActivateRequirements)
 		StartRoomUnthreadedEvents = {
-			{ FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Thanatos_01" }, }, },
+			{
+				FunctionName = "ActivatePrePlaced",
+				GameStateRequirements = {
+					-- Adapted from NPC_Thanatos_01 ActivateRequirements
+					RequiredTextLines = { "ThanatosFieldFirstMeeting", },
+					RequiredFalseTextLinesLastRun = { "PersephoneFirstMeeting", },
+					-- Will appear the run after you met him during a run in his Field version
+					{
+						Path = { "PrevRun", "EncountersOccurredCache", },
+						HasAny = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro", },
+					},
+				},
+				Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Thanatos_01" }, },
+			},
 			{ FunctionName = "CheckConversations" },
 		},
 	},
