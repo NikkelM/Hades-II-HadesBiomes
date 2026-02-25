@@ -175,6 +175,13 @@ function mod.ThanatosExit(source, args)
 	source.InteractTextLineSets = nil
 	game.wait(args.WaitTime or 0)
 
+	if args.PreExitRemoveFromGroup then
+		RemoveFromGroup({ Id = source.ObjectId, Names = { args.PreExitRemoveFromGroup } })
+	end
+	if args.PreExitAddToGroup then
+		AddToGroup({ Id = source.ObjectId, Name = args.PreExitAddToGroup })
+	end
+
 	SetAnimation({ Name = "NPCThanatosExit", DestinationId = source.ObjectId })
 	CreateAnimation({ Name = "ThanatosTeleport", DestinationId = source.ObjectId })
 	SetAlpha({ Id = source.ObjectId, Fraction = 0.0, Duration = 0.35 })
@@ -352,12 +359,9 @@ end
 
 -- #region House version/RoomOpening
 function mod.CheckThanatosOrSpawnRoomReward(eventSource, args)
-	local thanatos = GetClosest({
-		Id = game.CurrentRun.Hero.ObjectId,
-		DestinationName = "NPC_Thanatos_01"
-	})
+	local thanatos = GetIdsByType({ Name = "NPC_Thanatos_01" })[1]
 
-	if thanatos then
+	if thanatos ~= nil then
 		-- Wait until his conversation is done
 		game.waitUntil("ThanatosRoomOpeningConversationDone")
 	end
@@ -366,6 +370,7 @@ function mod.CheckThanatosOrSpawnRoomReward(eventSource, args)
 end
 
 function mod.ThanatosRoomOpeningConversationDone(source, args)
+	args = args or {}
 	SetAnimation({ DestinationId = source.ObjectId, Name = "ThanatosIdleInhouseFidget_HairFlick" })
 	game.wait(1.0)
 
@@ -373,6 +378,9 @@ function mod.ThanatosRoomOpeningConversationDone(source, args)
 	game.notifyExistingWaiters("ThanatosRoomOpeningConversationDone")
 
 	game.wait(3.0)
+
+	args.PreExitRemoveFromGroup = "Standing"
+	args.PreExitAddToGroup = "PillarTops_01"
 	mod.ThanatosExit(source, args)
 end
 

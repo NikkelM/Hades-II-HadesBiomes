@@ -214,10 +214,10 @@ Take special note of the ID entry:
 
 ```text
 {
-	"Active": true,
+	"Active": false,
 	"AllowMovementReaction": false,
 	"Ambient": -1.0,
-	"Angle": 320,
+	"Angle": 320.0,
 	"AttachToID": 0,
 	"AttachedIDs": [],
 	"CausesOcculsion": false,
@@ -236,7 +236,7 @@ Take special note of the ID entry:
 	"FlipHorizontal": false,
 	"FlipVertical": false,
 	"GroupNames": [
-			"PillarTops_01"
+		"Standing"
 	],
 	"HelpTextID": null,
 	"Hue": 0.0,
@@ -244,8 +244,8 @@ Take special note of the ID entry:
 	"IgnoreGridManager": false,
 	"Invert": false,
 	"Location": {
-		"X": 3060,
-		"Y": 4960
+		"X": 3060.0,
+		"Y": 4960.0
 	},
 	"Name": "NPC_Thanatos_01",
 	"OffsetZ": 0.0,
