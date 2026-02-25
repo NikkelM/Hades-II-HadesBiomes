@@ -236,7 +236,7 @@ Take special note of the ID entry:
 	"FlipHorizontal": false,
 	"FlipVertical": false,
 	"GroupNames": [
-			"Standing"
+			"PillarTops_01"
 	],
 	"HelpTextID": null,
 	"Hue": 0.0,
