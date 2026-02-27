@@ -327,11 +327,12 @@ local encounterModifications = {
 					-- Adapted from NPC_Thanatos_01 ActivateRequirements
 					RequiredTextLines = { "ThanatosFieldFirstMeeting", },
 					RequiredFalseTextLinesLastRun = { "PersephoneFirstMeeting", },
-					-- Will appear the run after you met him during a run in his Field version
+					-- Will appear in any run after you met him during a run in his Field version
 					{
 						Path = { "PrevRun", "EncountersOccurredCache", },
 						HasAny = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro", },
 					},
+					NamedRequirementsFalse = { "StandardPackageBountyActive", },
 				},
 				Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Thanatos_01" }, },
 			},

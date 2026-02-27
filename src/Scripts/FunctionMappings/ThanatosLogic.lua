@@ -376,6 +376,7 @@ function mod.ThanatosRoomOpeningConversationDone(source, args)
 	-- This notification actually spawns the room reward in the room's UnthreadedEvent
 	game.notifyExistingWaiters("ThanatosRoomOpeningConversationDone")
 
+	-- Wait a little for any EndVoiceLines from Thanatos to play
 	game.wait(3.0)
 
 	args.PreExitRemoveFromGroup = "Standing"
