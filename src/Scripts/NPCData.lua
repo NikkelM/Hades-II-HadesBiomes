@@ -58,6 +58,14 @@ local function applyNPCChoiceMappings(npcData, mappings)
 								end
 							end
 
+							-- Replace keys if requested, keeping the value
+							for property, replacementProperty in pairs(mappingData.AlwaysReplaceKeysIfExist or {}) do
+								if textLineSet[property] ~= nil then
+									textLineSet[replacementProperty] = textLineSet[property]
+									textLineSet[property] = nil
+								end
+							end
+
 							-- Add new key/value pairs to the last textline in a given group if requested
 							for subTable, newKVPair in pairs(mappingData.AlwaysAddKVPairsToLastIPair or {}) do
 								if subTable == groupName then
@@ -136,7 +144,7 @@ local function applyNPCChoiceMappings(npcData, mappings)
 	end
 end
 
-local function applyNPCGlobalModifications(base)
+local function applyNPCGlobalModifications(base, npcModifications)
 	for npcName, npcData in pairs(base) do
 		-- Hades II has more gift options, make every gift cost 1 Nectar
 		for textlineName, textline in pairs(npcData.GiftTextLineSets or {}) do
@@ -145,7 +153,11 @@ local function applyNPCGlobalModifications(base)
 			textline.UnfilledIcon = "EmptyHeartIcon"
 			textline.FilledIcon = "FilledHeartIcon"
 			-- To ensure only one gift line is shown as eligible in the Codex (prevent the Ambrosia events from showing when they shouldn't yet)
-			textline.GameStateRequirements = game.DeepCopyTable(textline)
+			if npcModifications[npcName] and npcModifications[npcName].GiftTextLineSets and npcModifications[npcName].GiftTextLineSets[textlineName] and npcModifications[npcName].GiftTextLineSets[textlineName].GameStateRequirements then
+				textline.GameStateRequirements = npcModifications[npcName].GiftTextLineSets[textlineName].GameStateRequirements
+			else
+				textline.GameStateRequirements = textline.GameStateRequirements or game.DeepCopyTable(textline)
+			end
 		end
 
 		-- Move all interaction textlines into the InteractTextLineSets, out of the RepeatableTextLineSets
@@ -205,7 +217,8 @@ local npcModifications = {
 			SisyphusGift07_A = {
 				GameStateRequirements = {
 					{
-						PathTrue = { "GameState", "TextLinesRecord", "SisyphusLiberationQuestComplete" },
+						Path = { "GameState", "TextLinesRecord", },
+						HasAll = { "SisyphusGift06", "SisyphusLiberationQuestComplete" }
 					},
 				},
 				LockedHintId = "ModsNikkelMHadesBiomes_Codex_SisyphusUnlockHint01",
@@ -283,7 +296,8 @@ local npcModifications = {
 			EurydiceGift07 = {
 				GameStateRequirements = {
 					{
-						PathTrue = { "GameState", "TextLinesRecord", "EurydiceAboutSingersReunionQuestComplete01" },
+						Path = { "GameState", "TextLinesRecord", },
+						HasAll = { "EurydiceGift06", "EurydiceAboutSingersReunionQuestComplete01" }
 					},
 				},
 				LockedHintId = "ModsNikkelMHadesBiomes_Codex_EurydiceUnlockHint01",
@@ -332,7 +346,8 @@ local npcModifications = {
 			PatroclusGift07_A = {
 				GameStateRequirements = {
 					{
-						PathTrue = { "GameState", "TextLinesRecord", "PatroclusWithAchilles01" },
+						Path = { "GameState", "TextLinesRecord", },
+						HasAll = { "PatroclusGift06", "PatroclusWithAchilles01" }
 					},
 				},
 				LockedHintId = "ModsNikkelMHadesBiomes_Codex_PatroclusUnlockHint01",
@@ -418,6 +433,29 @@ local npcModifications = {
 					RequiredMinElapsedTime = mod.NilValue,
 				},
 			},
+			ThanatosBackstory02 = {
+				[2] = {
+					PostLineThreadedFunctionName = mod.NilValue,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "TimePassesPresentation",
+				},
+				[3] = {
+					InterSceneWaitTime = mod.NilValue,
+					TeleportToId = mod.NilValue,
+					AngleTowardTargetId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+				[6] = {
+					TeleportToId = mod.NilValue,
+					AngleTowardTargetId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			ThanatosPostEnding02 = {
+				AreIdsAlive = mod.NilValue,
+			},
+			-- TODO: ThanatosHomeIntermissionChat0x - need to update requirements
 		},
 		GiftTextLineSets = {
 			ThanatosGift04 = {
@@ -436,8 +474,8 @@ local npcModifications = {
 			ThanatosGift07_A = {
 				GameStateRequirements = {
 					{
-						-- TODO: This needs a voiceline from the house version of Thanatos
-						PathTrue = { "GameState", "TextLinesRecord", "ThanatosFieldBuildingTrust01" },
+						Path = { "GameState", "TextLinesRecord", },
+						HasAll = { "ThanatosGift06", "ThanatosFieldBuildingTrust01" }
 					},
 				},
 				LockedHintId = "ModsNikkelMHadesBiomes_Codex_ThanatosUnlockHint01",
@@ -763,7 +801,8 @@ local npcModifications = {
 			OrpheusGift07 = {
 				GameStateRequirements = {
 					{
-						PathTrue = { "GameState", "TextLinesRecord", "OrpheusAboutSingersReunionQuest01" },
+						Path = { "GameState", "TextLinesRecord", },
+						HasAll = { "OrpheusGift06", "OrpheusAboutSingersReunionQuest01" }
 					},
 				},
 				LockedHintId = "ModsNikkelMHadesBiomes_Codex_OrpheusUnlockHint01",
@@ -911,6 +950,21 @@ local npcChoiceMappings = {
 				PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCheckThanatosPostGiftExit",
 				PostLineThreadedFunctionArgs = { Delay = 2, },
 			},
+		},
+		AlwaysReplaceIfExist = {
+			RequiredRoom = {
+				Find = "DeathArea",
+				Replace = "RoomOpening",
+			},
+		},
+		-- Replace requirements referencing the CurrentRun to reference PrevRun instead
+		AlwaysReplaceKeysIfExist = {
+			RequiresRunCleared = "RequiresLastRunCleared",
+			RequiresRunNotCleared = "RequiresLastRunNotCleared",
+			RequiredTextLinesThisRun = "RequiredTextLinesLastRun",
+			RequiredFalseTextLinesThisRun = "RequiredFalseTextLinesLastRun",
+			RequiredEncounterThisRun = "RequiredEncounterLastRun",
+			RequiredKillsThisRun = "RequiredKillsLastRun",
 		},
 	},
 	NPC_Thanatos_Field_01 = {
@@ -1068,6 +1122,6 @@ mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikk
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.BouldyChat01 = nil
 
 applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)
-applyNPCGlobalModifications(mod.NPCData)
+applyNPCGlobalModifications(mod.NPCData, npcModifications)
 
 mod.ApplyModificationsAndInheritEnemyData(mod.NPCData, npcModifications, {}, {})

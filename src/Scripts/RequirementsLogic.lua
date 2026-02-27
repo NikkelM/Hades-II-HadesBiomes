@@ -572,6 +572,19 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			return false
 		end
 	end
+
+	-- Custom added
+	if requirements.RequiredTextLinesLastRun ~= nil and prevRun ~= nil and prevRun.TextLinesRecord ~= nil then
+		if type(requirements.RequiredTextLinesLastRun) == "string" then
+			requirements.RequiredTextLinesLastRun = { requirements.RequiredTextLinesLastRun }
+		end
+		for k, textLineSet in pairs(requirements.RequiredTextLinesLastRun) do
+			if not prevRun.TextLinesRecord[textLineSet] then
+				return false
+			end
+		end
+	end
+
 	if requirements.RequiredFalseTextLinesLastRun ~= nil and prevRun ~= nil and prevRun.TextLinesRecord ~= nil then
 		for k, textLineSet in pairs(requirements.RequiredFalseTextLinesLastRun) do
 			if prevRun.TextLinesRecord[textLineSet] ~= nil then
@@ -1190,6 +1203,14 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		if game.CurrentRun.CurrentRoom.Encounter == nil or Contains(requirements.RequiredFalseDeathEncounters, game.CurrentRun.CurrentRoom.Encounter.Name) then
 			return false
 		end
+	end
+
+	-- Custom: For Thanatos in RoomOpening
+	if requirements.RequiredFalseDeathEncountersThanatos ~= nil then
+		-- TODO: Saw this encounter last run and didn't die in it
+		-- if game.CurrentRun.CurrentRoom.Encounter == nil or Contains(requirements.RequiredFalseDeathEncountersThanatos, game.CurrentRun.CurrentRoom.Encounter.Name) then
+		-- 	return false
+		-- end
 	end
 
 	if requirements.RequiresInRun then
@@ -2058,6 +2079,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredEncounterThisRun ~= nil then
 		if not HasEncounterOccurred(game.CurrentRun, requirements.RequiredEncounterThisRun) then
+			return false
+		end
+	end
+
+	-- Custom
+	if requirements.RequiredEncounterLastRun ~= nil then
+		if not HasEncounterOccurred(prevRun, requirements.RequiredEncounterLastRun) then
 			return false
 		end
 	end

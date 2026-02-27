@@ -14440,7 +14440,6 @@ mod.NPCData = mod.NPCData or {
 				PlayOnce = true,
 				UseInitialInteractSetup = true,
 				UseableOffSource = true,
-				-- TODO: Everything referring to the current run needs to refer to the previous run instead for Thanatos
 				RequiredEncounterThisRun = "BossCharon",
 				RequiredFalseDeathRoom = "CharonFight01",
 				EndVoiceLines = {
@@ -14545,6 +14544,7 @@ mod.NPCData = mod.NPCData or {
 				PlayOnce = true,
 				UseInitialInteractSetup = true,
 				UseableOffSource = true,
+				-- TODO: Add the Sisyphus meetings
 				RequiredTextLines = { "ThanatosGift08", "SisyphusMeeting_AboutMegAndThanatos01", "SisyphusGift06" },
 				{
 					Cue = "/VO/ZagreusHome_1463",
@@ -14867,6 +14867,7 @@ mod.NPCData = mod.NPCData or {
 				PlayOnce = true,
 				UseInitialInteractSetup = true,
 				UseableOffSource = true,
+				-- TODO:
 				RequiredTextLines = { "AresAboutThanatos02", },
 				-- Disturbingly all right!
 				EndCue = "/VO/ZagreusHome_1446",
@@ -15196,6 +15197,7 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.Brooding,
 			},
+			-- TODO:
 			-- brothers quest
 			ThanatosAboutHypnos02 = {
 				Priority = true,
@@ -15356,6 +15358,7 @@ mod.NPCData = mod.NPCData or {
 				UseableOffSource = true,
 				UseInitialInteractSetup = true,
 				RequiredMinNPCInteractions = { NPC_Thanatos_01 = 1 },
+				-- TODO: ?
 				RequiredCosmetics = { "QuestLog", },
 				RequiredFalseFlags = { "InFlashback" },
 				EndVoiceLines = {
@@ -16074,6 +16077,7 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
+			-- TODO: Thanatos should visit Hypnos (and the others) where they are for these, since he can travel easily
 			ThanatosWithHypnos01 = {
 				Partner = "NPC_Hypnos_01",
 				PlayOnce = true,
@@ -16118,6 +16122,7 @@ mod.NPCData = mod.NPCData or {
 			},
 			ThanatosWithHypnos02 = {
 				Partner = "NPC_Hypnos_01",
+				-- TODO: Hades voiceline is not playable
 				RequiredTextLines = { "ThanatosWithHades01", "ThanatosWithHypnos01" },
 				PlayOnce = true,
 				UseText = "UseListenNPC",
