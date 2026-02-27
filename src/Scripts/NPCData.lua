@@ -436,7 +436,6 @@ local npcModifications = {
 			-- #region Moved from DeathLoopData - Romance
 			-- Thanatos (Bedroom) / Thanatos in Bedroom / Bedroom Scenes / Thanatos Relationship / max relationship
 			-- variant below for if Megaera max relationship was already reached
-			-- TODO: Choice voicelines must be added to the TextLinesRecord
 			ModsNikkelMHadesBiomes_BecameCloseWithThanatos01_Trigger = {
 				SuperPriority = true,
 				PlayOnce = true,
@@ -514,6 +513,9 @@ local npcModifications = {
 												PostLineAnim = "ZagreusTalkEmpathy_Return",
 												PostLineAnimTarget = "Hero",
 												PreLineWait = 0.8,
+												-- Manually add to TextLinesRecord, since H2 skips adding choice results
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithThanatos01Than_BackOff" },
 												Text =
 												"...I did. Sometimes I need to slow things down. I'm thankful that we've been on better terms, lately. But, I've been coming on too strong. Forgive me. You're my dear friend. I don't want to do anything to hurt you. Or anybody else."
 											},
@@ -542,6 +544,8 @@ local npcModifications = {
 												Speaker = "CharProtag",
 												SkipContextArt = true,
 												PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionApproach",
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithThanatos01Than_GoToHim" },
 												Text =
 												"I just... don't mean to push you, Than. I know all this is kind of a lot. And I wanted you to know... this isn't some impulsive thing for me. I'll wait for you however long it takes."
 											},
@@ -687,6 +691,8 @@ local npcModifications = {
 												PostLineAnim = "ZagreusTalkEmpathy_Return",
 												PostLineAnimTarget = "Hero",
 												PreLineWait = 0.8,
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithThanatos01_BThan_BackOff" },
 												Text =
 												"...I did. Sometimes I need to slow things down. I'm thankful that we've been on better terms, lately. But, I've been coming on too strong. Forgive me. You're my dear friend. I don't want to do anything to hurt you. Or anybody else."
 											},
@@ -715,6 +721,8 @@ local npcModifications = {
 												Speaker = "CharProtag",
 												SkipContextArt = true,
 												PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionApproach",
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithThanatos01_BThan_GoToHim" },
 												Text =
 												"I just... don't mean to push you, Than. I know all this is kind of a lot. And I wanted you to know... this isn't some impulsive thing for me. I'll wait for you however long it takes."
 											},
