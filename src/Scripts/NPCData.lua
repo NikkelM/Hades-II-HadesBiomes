@@ -163,6 +163,9 @@ local function applyNPCGlobalModifications(base, npcModifications)
 		-- Move all interaction textlines into the InteractTextLineSets, out of the RepeatableTextLineSets
 		if npcData.InteractTextLineSets and npcData.RepeatableTextLineSets then
 			for key, textLineSet in pairs(npcData.RepeatableTextLineSets or {}) do
+				if npcData.InteractTextLineSets[key] ~= nil then
+					mod.DebugPrint("The key for the RepeatableTextLineSet " .. key .. " already exists in the InteractTextLineSets for " .. npcName .. " and will be overwritten!", 2)
+				end
 				npcData.InteractTextLineSets[key] = textLineSet
 			end
 			npcData.RepeatableTextLineSets = nil
@@ -965,6 +968,7 @@ local npcChoiceMappings = {
 			RequiredFalseTextLinesThisRun = "RequiredFalseTextLinesLastRun",
 			RequiredEncounterThisRun = "RequiredEncounterLastRun",
 			RequiredKillsThisRun = "RequiredKillsLastRun",
+			RequiredFalseDeathEncounters = "RequiredFalseDeathEncountersThanatos",
 		},
 	},
 	NPC_Thanatos_Field_01 = {

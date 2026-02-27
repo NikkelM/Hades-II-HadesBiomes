@@ -1207,10 +1207,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	-- Custom: For Thanatos in RoomOpening
 	if requirements.RequiredFalseDeathEncountersThanatos ~= nil then
-		-- TODO: Saw this encounter last run and didn't die in it
-		-- if game.CurrentRun.CurrentRoom.Encounter == nil or Contains(requirements.RequiredFalseDeathEncountersThanatos, game.CurrentRun.CurrentRoom.Encounter.Name) then
-		-- 	return false
-		-- end
+		if prevRun.RoomHistory and prevRun.RoomHistory[#prevRun.RoomHistory] and prevRun.RoomHistory[#prevRun.RoomHistory].Encounter and game.Contains(requirements.RequiredFalseDeathEncountersThanatos, prevRun.RoomHistory[#prevRun.RoomHistory].Encounter.Name or "") then
+			return false
+		end
 	end
 
 	if requirements.RequiresInRun then
