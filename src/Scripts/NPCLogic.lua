@@ -893,11 +893,11 @@ function mod.BedroomIntermissionPresentation(source, args)
 		game.wait(1.5)
 	end
 
-	FadeIn({ Color = game.Color.Black, Duration = 0.5 })
-
 	if args ~= nil and args.ExtraWaitTime ~= nil then
 		game.wait(args.ExtraWaitTime)
 	end
+
+	FadeIn({ Color = game.Color.Black, Duration = 0.5 })
 
 	game.DisplayInfoBanner(nil, {
 		TitleText = "BedroomIntermissionMessage",

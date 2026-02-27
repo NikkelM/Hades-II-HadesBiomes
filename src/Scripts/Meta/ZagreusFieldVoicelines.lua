@@ -1158,6 +1158,18 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_03431 = true, -- ZagreusHome_3431
 	ZagreusField_03433 = true, -- ZagreusHome_3433
 
+	-- Relationship
+	ZagreusField_00822 = true, -- ZagreusHome_0822
+	ZagreusField_01476 = true, -- ZagreusHome_1476
+	ZagreusField_01477 = true, -- ZagreusHome_1477
+	ZagreusField_01478 = true, -- ZagreusHome_1478
+	ZagreusField_01479 = true, -- ZagreusHome_1479
+	ZagreusField_01480 = true, -- ZagreusHome_1480
+	ZagreusField_01481 = true, -- ZagreusHome_1481
+	ZagreusField_01482 = true, -- ZagreusHome_1482
+	ZagreusField_01520 = true, -- ZagreusHome_1520
+	ZagreusField_02531 = true, -- ZagreusHome_2531
+
 	-- GiftTextLineSets
 	-- EndVoiceLines
 	-- ZagreusField_01470 = true,

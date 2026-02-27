@@ -421,6 +421,11 @@ local encounterModifications = {
 		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "ZagreusField" },
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
+			{
+				-- Didn't have the romance voiceline this run
+				Path = { "CurrentRun", "TextLinesRecord" },
+				HasNone = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" }
+			},
 		},
 		RequiredKillFunctionName = _PLUGIN.guid .. "." .. "TrackThanatosChallengeProgress",
 		BlockAthenaEncounterKeepsake = true,
