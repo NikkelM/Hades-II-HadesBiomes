@@ -196,7 +196,6 @@ function mod.ThanatosExit(source, args)
 	game.StopStatusAnimation(source)
 
 	if not args.SkipExitReaction then
-		-- TODO:
 		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ThanatosExitReactionVoiceLines, true)
 	end
 
@@ -381,6 +380,7 @@ function mod.ThanatosRoomOpeningConversationDone(source, args)
 
 	args.PreExitRemoveFromGroup = "Standing"
 	args.PreExitAddToGroup = "PillarTops_01"
+	args.SkipExitReaction = true
 	mod.ThanatosExit(source, args)
 end
 

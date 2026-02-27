@@ -3675,6 +3675,26 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_3240", Text = "Oh {#Emph}hello!", },
 		},
 	},
+	ThanatosExitReactionVoiceLines = {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 1.6,
+		SuccessiveChanceToPlay = 0.25,
+		RequiredFalseTextLinesThisRun = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" },
+		Cooldowns = {
+			{ Name = "MelinoeThanatosExitReactionSpeech", Time = 10 },
+		},
+		{ Cue = "/VO/MelinoeField_4786", Text = "See you again.",            PreLineWait = 1.4, },
+		{ Cue = "/VO/MelinoeField_2823", Text = "See you around.",           PreLineWait = 1.4, },
+		{ Cue = "/VO/MelinoeField_2821", Text = "Get home safe!",            PreLineWait = 1.4, RequiredTextLines = { "ThanatosGift06", }, },
+
+		{ Cue = "/VO/MelinoeField_2235", Text = "Bye...",                    PreLineWait = 1.4, },
+		{ Cue = "/VO/MelinoeField_2237", Text = "Off he goes.",              PreLineWait = 1.4, },
+		{ Cue = "/VO/MelinoeField_2238", Text = "Careful out there...",      PreLineWait = 1.4, },
+		{ Cue = "/VO/MelinoeField_2239", Text = "See you...",                PreLineWait = 1.4, },
+		{ Cue = "/VO/MelinoeField_2240", Text = "{#Emph}<Sigh>",             PreLineWait = 1.4, RequiredTextLines = { "ThanatosGift06", }, },
+		{ Cue = "/VO/MelinoeField_2590", Text = "Keep up the good work...!", PreLineWait = 1.4, RequiredTextLines = { "ThanatosGift02", }, },
+	},
 	-- #endregion
 	-- #region Orpheus
 	ModsNikkelMHadesBiomes_UsedLyreVoiceLines = {

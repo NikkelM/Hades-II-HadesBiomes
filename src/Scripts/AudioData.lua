@@ -372,6 +372,8 @@ game.HeroVoiceLines.HitByHadesAmmoVoiceLines = game.HeroVoiceLines.HitByHadesAmm
 
 game.HeroVoiceLines.ThanatosSpawningVoiceLines = game.HeroVoiceLines.ThanatosSpawningVoiceLines or
 		mod.HeroVoiceLines.ThanatosSpawningVoiceLines
+game.HeroVoiceLines.ThanatosExitReactionVoiceLines = game.HeroVoiceLines.ThanatosExitReactionVoiceLines or
+		mod.HeroVoiceLines.ThanatosExitReactionVoiceLines
 
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines = game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines or
 		mod.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines
