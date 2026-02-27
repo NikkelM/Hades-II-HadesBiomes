@@ -482,6 +482,7 @@ local function on_ready()
 			import "Scripts/GardenLogic.lua"
 			import "Scripts/HarvestPresentation.lua"
 			import "Scripts/HubPresentation.lua"
+			import "Scripts/KeepsakeData.lua"
 			import "Scripts/MarketPresentation.lua"
 			import "Scripts/NarrativeLogic.lua"
 			import "Scripts/NPCLogic.lua"

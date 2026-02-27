@@ -54,14 +54,14 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		WithinDistance = 900,
 		VoiceLines = {
 			[1] = game.GlobalVoiceLines.ThanatosGreetingVoiceLines,
-		}
+		},
 	},
 	BroodingRepeatable = {
 		PostTriggerAnimation = "ThanatosIdleInhouseFidget_HairFlick",
 		WithinDistance = 900,
 		VoiceLines = {
 			[1] = game.GlobalVoiceLines.ThanatosGreetingVoiceLines,
-		}
+		},
 	},
 	ThanatosFarewells = {
 		PostTriggerFunctionName = _PLUGIN.guid .. "." .. "ThanatosExit",

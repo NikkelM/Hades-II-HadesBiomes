@@ -33,7 +33,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- #region Codex/Inventory/Cauldron
+	-- #region Codex/Inventory/Cauldron/Dialogue
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_MarketScreen_Resources",
 	-- 	DisplayName = "Barter Exchange",
@@ -93,6 +93,40 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_Codex_BondForgedSisyphus",
 	-- 	DisplayName = "You and {$TempTextData.CharacterName} share a rock-solid bond.",
 	-- },
+	-- #endregion
+	-- #region Relationship Dialogue Choices
+	{
+		Id = "Meg_GoToHer",
+		DisplayName = "{CF} Va' da lei",
+	},
+	{
+		Id = "Meg_BackOff",
+		DisplayName = "{CN} Fa' un passo indietro",
+	},
+	{
+		Id = "Than_GoToHim",
+		DisplayName = "{CF} Confortalo",
+	},
+	{
+		Id = "Than_BackOff",
+		DisplayName = "{CN} Fa' un passo indietro",
+	},
+	{
+		Id = "Dusa_Accept",
+		DisplayName = "{CF} Accetta cortesemente",
+	},
+	{
+		Id = "Dusa_Decline",
+		DisplayName = "{CN} Rifiuta educatamente",
+	},
+	{
+		Id = "MegThan_GoToThem",
+		DisplayName = "{CF} Va' da loro",
+	},
+	{
+		Id = "MegThan_BackOff",
+		DisplayName = "{CN} Fa' un passo indietro",
+	},
 	-- #endregion
 	-- #endregion
 
