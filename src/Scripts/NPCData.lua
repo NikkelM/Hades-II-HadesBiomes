@@ -947,6 +947,7 @@ local npcChoiceMappings = {
 			},
 			RepeatableTextLineSets = {
 				PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+				PostLineFunctionArgs = mod.NilValue,
 			},
 			-- Thanatos should leave if he has no more dialogue after being gifted
 			GiftTextLineSets = {

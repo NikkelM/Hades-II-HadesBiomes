@@ -77,7 +77,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_Codex_ThanatosUnlockHint01",
 	-- 	DisplayName =
-	-- 	"{$TempTextData.CharacterName} won't accept any {!TempTextData.ResourceIcon} until he understands more about his feelings for you."
+	-- 	"{$TempTextData.CharacterName} won't accept any {!TempTextData.ResourceIcon} until he understands what you are to each other."
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_Codex_BondForgedThanatos",
