@@ -807,7 +807,6 @@ function mod.BedroomIntermissionPresentation(source, args)
 		game.wait(1)
 		PlaySound({ Name = "/Leftovers/SFX/RobeFlutter" })
 		game.wait(0.5)
-		-- TODO: Find out where this sound is
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		PlaySound({ Name = zagSound1 or "/VO/ZagreusField_2137" })
 		game.wait(0.5)
