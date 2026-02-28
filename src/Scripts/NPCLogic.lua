@@ -659,9 +659,6 @@ function mod.SurpriseNPCPresentation(source, args)
 		source = game.ActiveEnemies[args.SourceId]
 	end
 
-	local checkingMeterUnlock = game.GiftData[source.Name] and
-			not game.IsGameStateEligible(game.CurrentRun, game.GiftData[source.Name].UnlockGameStateRequirements)
-
 	AddInputBlock({ Name = "SurpriseNPCPresentation" })
 
 	game.EndAutoSprint()
@@ -691,11 +688,6 @@ function mod.SurpriseNPCPresentation(source, args)
 	LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = 1.25 })
 
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
-
-	-- TODO: Add Heart arrow in codex before the relationship dialogues
-	if checkingMeterUnlock and game.GiftData[source.Name] and game.IsGameStateEligible(game.CurrentRun, game.GiftData[source.Name].UnlockGameStateRequirements) then
-		game.thread(game.GiftTrackUnlockedPresentation, source.Name)
-	end
 end
 
 function mod.BedroomIntermissionApproach(source, args)
