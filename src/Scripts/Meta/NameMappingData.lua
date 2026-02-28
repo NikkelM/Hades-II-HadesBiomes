@@ -296,6 +296,7 @@ mod.HadesHelpTextCopyKeys = {
 	UseStyxWarpDoor = true,
 	UseTalkToMusician = true,
 	UseLute01 = true,
+	UseTalkToFury = true,
 	-- UseForbiddenItem = true, -- Duplicate
 	-- UseCharonStoreDiscount = true, -- Duplicate
 	-- #endregion

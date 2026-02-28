@@ -432,6 +432,10 @@ mod.BikFileNames = {
 	"NPC_OrpheusIdle_Bink",
 	"NPC_OrpheusIdlePlaying_Bink",
 	-- #endregion
+	-- #region Megaera Story
+	-- "Enemy_Fury_IdleInHouse_Bink",
+	-- "Enemy_Fury_IdleInHouseGreeting_Bink",
+	-- #endregion
 }
 
 mod.CustomBikFileNames = {
