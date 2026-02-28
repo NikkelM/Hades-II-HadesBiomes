@@ -22942,7 +22942,8 @@ mod.NPCData = mod.NPCData or {
 			},
 
 			-- singing
-			OrpheusChat20 = {
+			-- Renamed from OrpheusChat20 which was a duplicate
+			OrpheusChat20_B = {
 				UseableOffSource = true,
 				GiftableOffSource = true,
 				EndGlobalVoiceLines = "MiscEndVoiceLines_Orpheus",
