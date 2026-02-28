@@ -146,6 +146,12 @@ end
 
 local function applyNPCGlobalModifications(base, npcModifications)
 	for npcName, npcData in pairs(base) do
+		if npcModifications[npcName].RepeatableTextLineSets ~= nil then
+			mod.DebugPrint(
+				"Modifications to RepeatableTextLineSets for NPCs must be made under InteractTextLineSets, as the will be moved there before modifications are applied: " ..
+				npcName, 1)
+		end
+
 		-- Hades II has more gift options, make every gift cost 1 Nectar
 		for textlineName, textline in pairs(npcData.GiftTextLineSets or {}) do
 			textline.Cost = { GiftPoints = 1, }
@@ -446,8 +452,6 @@ local npcModifications = {
 					RequiredFalseTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B", "BecameCloseWithMegaera01Meg_GoToHer" },
 					RequiredFalseTextLinesLastRun = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B", "BecameCloseWithDusa01", "Ending01" },
 				},
-				-- TODO: Adapt from H2 romance scenes
-				EndGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
 
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
 				OnQueuedFunctionArgs = {
@@ -625,8 +629,6 @@ local npcModifications = {
 					RequiredFalseTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B", },
 					RequiredFalseTextLinesLastRun = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B", "BecameCloseWithDusa01", "Ending01", "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B" },
 				},
-				-- TODO: Adapt from H2 romance scenes
-				EndGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
 
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
 				OnQueuedFunctionArgs = {
@@ -841,7 +843,91 @@ local npcModifications = {
 			ThanatosPostEnding02 = {
 				AreIdsAlive = mod.NilValue,
 			},
-			-- TODO: ThanatosHomeIntermissionChat0x - need to update requirements
+			ThanatosHomeIntermissionChat01 = {
+				AreIdsAlive = mod.NilValue,
+				[1] = {
+					SkipContextArt = true,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			ThanatosHomeIntermissionChat02 = {
+				AreIdsAlive = mod.NilValue,
+				[1] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			ThanatosHomeIntermissionChat03 = {
+				AreIdsAlive = mod.NilValue,
+				[1] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			ThanatosHomeIntermissionChat04 = {
+				AreIdsAlive = mod.NilValue,
+				[1] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			ThanatosHomeIntermissionChat05 = {
+				AreIdsAlive = mod.NilValue,
+				[1] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			ThanatosHomeIntermissionChat06 = {
+				AreIdsAlive = mod.NilValue,
+				[1] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
 		},
 		GiftTextLineSets = {
 			ThanatosGift04 = {
@@ -1331,7 +1417,7 @@ local npcChoiceMappings = {
 	NPC_Thanatos_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets", "GiftTextLineSets" },
 		AlwaysAddKVPairsToLastIPair = {
-			-- Thanatos should leave after the conversation in RoomOpening, and spawn the reward
+			-- Thanatos should leave after the conversation in RoomOpening, and spawn the reward (this will override any existing ThanatosExit function call)
 			InteractTextLineSets = {
 				PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
 				PostLineFunctionArgs = mod.NilValue,
@@ -1350,6 +1436,10 @@ local npcChoiceMappings = {
 			RequiredRoom = {
 				Find = "DeathArea",
 				Replace = "RoomOpening",
+			},
+			StatusAnimation = {
+				Find = "StatusIconWantsToSmooch",
+				Replace = "StatusIconWantsAffection",
 			},
 		},
 		-- Replace requirements referencing the CurrentRun to reference PrevRun instead

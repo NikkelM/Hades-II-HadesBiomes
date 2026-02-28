@@ -370,6 +370,10 @@ end
 
 function mod.ThanatosRoomOpeningConversationDone(source, args)
 	args = args or {}
+
+	-- Cannot gift him when he's about to leave
+	source.CanReceiveGift = false
+
 	SetAnimation({ DestinationId = source.ObjectId, Name = "ThanatosIdleInhouseFidget_HairFlick" })
 	game.wait(1.0)
 

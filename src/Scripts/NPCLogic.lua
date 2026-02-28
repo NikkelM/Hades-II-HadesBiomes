@@ -777,17 +777,19 @@ function mod.BedroomIntermissionPresentation(source, args)
 		thanSound2 = game.RemoveRandomValue(thanLaughSounds)
 	end
 	local melLaughSounds = {
-		"/VO/Melinoe_4418",
-		"/VO/Melinoe_1963",
-		"/VO/Melinoe_1868",
-
-		"/VO/Melinoe_1951",
-		"/VO/Melinoe_4415",
-		"/VO/Melinoe_1964",
-		"/VO/Melinoe_4416",
+		"/VO/Melinoe_0350",
+		"/VO/Melinoe_0351",
+		"/VO/Melinoe_0352",
+		"/VO/Melinoe_0353",
+		"/VO/Melinoe_4412",
+		"/VO/Melinoe_4413",
 		"/VO/Melinoe_4414",
 
-		"/VO/Melinoe_1961",
+		"/VO/Melinoe_4416",
+		"/VO/Melinoe_4418",
+		"/VO/Melinoe_1963",
+		"/VO/Melinoe_1964",
+		"/VO/Melinoe_1965",
 	}
 	melSound1 = game.RemoveRandomValue(melLaughSounds)
 	melSound2 = game.RemoveRandomValue(melLaughSounds)
