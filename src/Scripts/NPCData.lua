@@ -166,7 +166,7 @@ local function applyNPCGlobalModifications(base, npcModifications)
 				if npcData.InteractTextLineSets[key] ~= nil then
 					mod.DebugPrint(
 						"The key for the RepeatableTextLineSet " ..
-						key .. " already exists in the InteractTextLineSets for " .. npcName .. " and will be overwritten!", 2)
+						key .. " already exists in the InteractTextLineSets for " .. npcName .. " and will be overwritten.", 4)
 				end
 				npcData.InteractTextLineSets[key] = textLineSet
 			end
