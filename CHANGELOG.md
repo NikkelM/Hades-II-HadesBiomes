@@ -7,15 +7,17 @@
 - You can now encounter **Orpheus** in Tartarus, where he will offer you a select number of his songs that will empower your current run. Free Orpheus through a new incantation at the Cauldron.
 - Progress Orpheus' and Eurydice's storyline and reunite them!
 - Thanatos will now find you in the first room of a run if you encountered him during your previous run, enabling you to progress his storyline.
-- Added additional boons offered by Sisyphus.
+- Added four additional boons offered by Sisyphus.
 - Added new minor prophecies tasking you with receiving various boons from Zagreus' Journey's story NPCs.
 - Added new dialogues with Hermes. 
 
 Other fixes and improvements:
-- Learn how to play the Lyre from Orpheus!
+- Learn how to play the Lyre from Orpheus.
+- Forge a bond, and perhaps a deeper relationship, with Thanatos.
 - Started the addition of the Sisyphus liberation questline - you will be able to receive the new minor prophecy, but will not be able to complete it yet.
 - Sisyphus, Eurydice and Patroclus will now say a short line after you choose one of their boons.
 - Codex entries that are locked by relationship or storyline progress now have fitting hints associated with them.
+- Added a new incantation that allows you to remember Lernie's nickname.
 - Updated a number of boon icons with enhanced visuals.
 - Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlayed over the blacked-out death screen.
 - Fixed: The Hydra can get stuck between obstacles after dashing into the lava in very rare circumstances. 

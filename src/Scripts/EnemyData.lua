@@ -1399,9 +1399,13 @@ local enemyModifications = {
 		MaxHealth = 18000,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
-			[1] = {
-				GameStateRequirements = { RequiredPlayed = { "/VO/ZagreusField_3147" } },
+			{
 				Requirements = mod.NilValue,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation", },
+					},
+				},
 			},
 		},
 		BossDifficultyShrineRequiredCount = 2,

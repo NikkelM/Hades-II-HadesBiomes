@@ -1219,6 +1219,19 @@ local newData = {
 	-- 	Description =
 	-- 	"The Prince of the Underworld had not been very musically inclined before being encouraged by Orpheus, much unlike his sister, who's tender singing voice can often be heard in the Crossroads.",
 	-- },
+	-- Rename the Bone Hydra to Lernie
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation",
+	-- 	DisplayName = "Endearment of a Ferocious Beast",
+	-- 	Description =
+	-- 	"Remember the name your brother once gave to the most terrifying {#ItalicFormat}Lernaean Bone Hydra {#Prev}in {$Keywords.ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Short} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation_Flavor",
+	-- 	-- This is ZagreusField_3147 and ZagreusField_3148
+	-- 	Description =
+	-- 	"Bone Hydra... can I call you Bone Hydra? Lernie, maybe? Lernie, I like that. You don't mind if I call you Lernie from now on, right?",
+	-- },
 	-- #endregion
 
 	-- #region Keywords

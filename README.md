@@ -33,14 +33,14 @@ It is highly recommended that you complete the main story of Hades before playin
 
 - Play through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
 - Discover and overcome the challenge of fighting all of the original game's enemies and bosses using Melinoë's unique abilities and weapons.
-- Relive Zagreus' story by ascending to the Surface, meeting your brother's old friends and conversing with the Fury Sisters, the Champions of Elysium and [REDACTED] himself.
+- Relive Zagreus' story by escaping to the Surface, meeting your brother's old friends and conversing with the Fury Sisters, the Champions of Elysium and [REDACTED] himself.
 - Benefit from a multitude of entirely new boons and effects offered to you by Sisyphus, Eurydice, Patroclus... and other familiar faces that you will now be able to meet along the way!
-- Collect **30+** new resources specific to the new biomes, use them for unlocks in this and [other mods](#integrations-with-other-mods), and trade them with the Broker.
+- Collect **30+** new resources specific to the new biomes, use them for unlocks in this and other mods (see section below), and trade them with the Broker.
 - Unlock **29** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
 - Decorate the Crossroads with **45+** new cosmetics, including new **Cauldrons**, **Fan Posters** for your tent, and **Charms** inspired by Zagreus' companions from the first game.
 - Discover and complete **35+** new Minor Prophecies at the Fated List.
 - Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
-- Discover and perform **20** new incantations to unlock gameplay features and progress story events in Zagreus' Journey.
+- Discover and perform **20+** new incantations to unlock gameplay features and progress story events in Zagreus' Journey.
 - Unlock **five** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus, Orpheus and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
 - Challenge yourself with a set of new **Chaos Trials**, including randomized "Chaos Within" trials in the spirit of (Great) Chaos Above and Below.
 - Read all about the new biomes, enemies, bosses and friends in a new chapter in your Codex.
@@ -119,7 +119,9 @@ You can find an explanation of all configuration options [on this wiki page](htt
 
 ### Feedback & Bug Reports
 
-Though the mod can be played through from start to finish and is very polished already, it is still in a beta state, so there are some missing features, and you may occasionally encounter bugs.
+The mod is feature complete and can be played through from start to finish.
+However, it is still in beta, and you may encounter the occasional bug.
+I am also working on some additional features (see the roadmap above) before the 1.0 release, so stay tuned!
 
 Please directly leave bug reports as a [new issue on the project's GitHub repository](https://github.com/NikkelM/Hades-II-HadesBiomes/issues/new?template=bug_report.md), or [start a discussion](https://github.com/NikkelM/Hades-II-HadesBiomes/discussions) for general feedback, suggestions and questions.
 

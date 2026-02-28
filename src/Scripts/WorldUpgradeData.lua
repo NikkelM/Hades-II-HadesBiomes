@@ -18,6 +18,7 @@ ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation - Moon Moncuments - after 
 ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after completing 7 and clearing 4 runs
 ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after completing 2 runs
 ModsNikkelMHadesBiomes_HouseLyre01 - Unlock Lyre in Orpheus' story chamber for practicing - after OrpheusAboutMusicPlaying01
+ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation - Rename the Bone Hydra to Lernie in Asphodel - beating the Hydra 20 times
 WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic - New Music for the Music Maker - from Hades_OST_for_the_Music_Maker - after 1 run and meeting Orpheus
 ]] --
 
@@ -551,9 +552,32 @@ local newIncantations = {
 			},
 		},
 	},
+	ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_HouseLyre01",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		-- TODO:
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_sealedDocument_01",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantAsphodel = 4,
+			ModsNikkelMHadesBiomes_OreAsphodel = 5,
+			ModsNikkelMHadesBiomes_CropAsphodel = 3,
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 5,
+		},
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "EnemyKills" },
+				SumOf = { "HydraHeadImmortal", "HydraHeadImmortalLavamaker", "HydraHeadImmortalSummoner", "HydraHeadImmortalSlammer", "HydraHeadImmortalWavemaker" },
+				Comparison = ">=",
+				Value = 20,
+			},
+		},
+	},
 	-- DO NOT change the name of this, as this would invalidate the unlock for anyone who has already performed the incantation
 	ModsNikkelMHadesBiomesUnlockCosmeticsIncantation = {
-		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_HouseLyre01",
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },

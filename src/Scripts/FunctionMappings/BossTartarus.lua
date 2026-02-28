@@ -257,7 +257,7 @@ function mod.HarpyKillPresentation(unit, args)
 
 	-- hydra-specific
 	local textMessage = deathPanSettings.Message
-	if deathPanSettings.AltMessage and game.GameState.SpeechRecord["/VO/ZagreusField_3147"] then
+	if deathPanSettings.AltMessage and game.GameState.WorldUpgradesAdded["ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation"] then -- game.GameState.SpeechRecord["/VO/ZagreusField_3147"] then
 		textMessage = deathPanSettings.AltMessage
 	end
 
