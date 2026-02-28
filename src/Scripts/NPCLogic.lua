@@ -479,7 +479,8 @@ function mod.UseLyre(usee, args)
 	CreateAnimation({ DestinationId = usee.ObjectId, Name = "HouseMusicNotesShower" })
 
 	game.IncrementTableValue(game.GameState.ItemInteractions, "ModsNikkelMHadesBiomes_HouseLyre01", 1)
-	game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesNumLyreUses = (game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesNumLyreUses or 0) + 1
+	game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesNumLyreUses = (game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesNumLyreUses or 0) +
+			1
 
 	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = usee.ObjectId })
 	SetAnimation({ Name = "Melinoe_InteractToEquip", DestinationId = game.CurrentRun.Hero.ObjectId })
@@ -649,5 +650,264 @@ end)
 -- #endregion
 
 -- #endregion
+
+-- #endregion
+
+-- #region Megaera/Thanatos Relationship/Romance
+function mod.SurpriseNPCPresentation(source, args)
+	if args.SourceId ~= nil then
+		source = game.ActiveEnemies[args.SourceId]
+	end
+
+	AddInputBlock({ Name = "SurpriseNPCPresentation" })
+
+	game.EndAutoSprint()
+	CancelWeaponFireRequests({ Id = game.CurrentRun.Hero.ObjectId })
+	Stop({ Id = game.CurrentRun.Hero.ObjectId })
+	Halt({ Id = game.CurrentRun.Hero.ObjectId })
+	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
+
+	game.killWaitUntilThreads("ReattachCameraOnInput")
+
+	game.wait(args.IntroWait or 0.4, game.RoomThreadName)
+
+	AngleTowardTarget({ Id = source.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
+	if not args.SkipPan then
+		PanCamera({ Ids = args.PanIds or { source.ObjectId, game.CurrentRun.Hero.ObjectId }, Duration = 1.5, EaseIn = 0.05, EaseOut = 0.3 })
+	end
+
+	game.PlayVoiceLines(args.VoiceLines, false, source)
+
+	RemoveInputBlock({ Name = "SurpriseNPCPresentation" })
+
+	if args.TextLineSet ~= nil then
+		game.ProcessTextLines(args.TextLineSet)
+		game.PlayRandomRemainingTextLines(source, args.TextLineSet)
+	end
+
+	LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = 1.25 })
+
+	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
+end
+
+function mod.BedroomIntermissionApproach(source, args)
+	wait(0.35)
+
+	AddInputBlock({ Name = "MoveHeroToRoomPosition" })
+	local initialSpeed = GetUnitDataValue({ Id = game.CurrentRun.Hero.ObjectId, Property = "Speed" })
+	SetUnitProperty({ DestinationId = game.CurrentRun.Hero.ObjectId, Property = "CollideWithObstacles", Value = false })
+	SetUnitProperty({ Property = "StartGraphic", Value = nil, DestinationId = game.CurrentRun.Hero.ObjectId })
+	SetUnitProperty({ Property = "MoveGraphic", Value = "MelinoeWalk", DestinationId = game.CurrentRun.Hero.ObjectId })
+	SetUnitProperty({ Property = "Speed", Value = 90, DestinationId = game.CurrentRun.Hero.ObjectId })
+
+	Move({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = source.ObjectId, Mode = "Precise" })
+
+	local notifyName = "WithinDistance" .. source.ObjectId
+	NotifyWithinDistance({
+		Id = game.CurrentRun.Hero.ObjectId,
+		DestinationId = source.ObjectId,
+		Distance = 100,
+		Notify = notifyName
+	})
+	waitUntil(notifyName)
+	Stop({ Id = game.CurrentRun.Hero.ObjectId })
+	Halt({ Id = game.CurrentRun.Hero.ObjectId })
+
+	SetUnitProperty({ Property = "StartGraphic", Value = "MelinoeStart", DestinationId = game.CurrentRun.Hero.ObjectId })
+	SetUnitProperty({ Property = "MoveGraphic", Value = "MelinoeRun", DestinationId = game.CurrentRun.Hero.ObjectId })
+	SetUnitProperty({ Property = "Speed", Value = initialSpeed, DestinationId = game.CurrentRun.Hero.ObjectId })
+	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = game.CurrentRun.Hero.ObjectId })
+	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
+
+	wait(0.1)
+
+	SetAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "MelinoeIdleWeaponless" })
+	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = source.ObjectId })
+end
+
+function mod.BedroomIntermissionPresentation(source, args)
+	args = args or {}
+
+	FadeOut({ Color = game.Color.Black, Duration = 0.5 })
+	game.PauseMusic()
+
+	local megaeraFlirtVoiceLines = {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 0.55,
+		ObjectType = "NPC_FurySister_01",
+		-- Let's see, now...
+		{ Cue = "/VO/Megaera_30232" },
+		-- What are we going to do.
+		{ Cue = "/VO/Megaera_30233" },
+		-- What am I going to do with you.
+		{ Cue = "/VO/Megaera_30234" },
+		-- Get over here, right now.
+		{ Cue = "/VO/Megaera_30235" },
+		-- Oh I have an idea.
+		{ Cue = "/VO/Megaera_30236" },
+		-- Ah, I know just the thing.
+		{ Cue = "/VO/Megaera_30237" },
+	}
+
+	local megSound1 = nil
+	local megSound2 = nil
+	local thanSound1 = nil
+	local thanSound2 = nil
+	local melSound1 = nil
+	local melSound2 = nil
+	local melSound3 = nil
+	if args.UseRandomSounds then
+		local megLaughSounds = {
+			"/VO/Megaera_30228",
+			"/VO/Megaera_30229",
+			"/VO/Megaera_30230",
+			"/VO/Megaera_30231",
+		}
+		megSound1 = game.RemoveRandomValue(megLaughSounds)
+		megSound2 = game.RemoveRandomValue(megLaughSounds)
+		local thanLaughSounds = {
+			"/VO/Thanatos_0468",
+			"/VO/Thanatos_0469",
+			"/VO/Thanatos_0470",
+			"/VO/Thanatos_0471",
+			"/VO/Thanatos_0472",
+		}
+		thanSound1 = game.RemoveRandomValue(thanLaughSounds)
+		thanSound2 = game.RemoveRandomValue(thanLaughSounds)
+	end
+	local melLaughSounds = {
+		"/VO/Melinoe_0350",
+		"/VO/Melinoe_0351",
+		"/VO/Melinoe_0352",
+		"/VO/Melinoe_0353",
+		"/VO/Melinoe_4412",
+		"/VO/Melinoe_4413",
+		"/VO/Melinoe_4414",
+
+		"/VO/Melinoe_4416",
+		"/VO/Melinoe_4418",
+		"/VO/Melinoe_1963",
+		"/VO/Melinoe_1964",
+		"/VO/Melinoe_1965",
+	}
+	melSound1 = game.RemoveRandomValue(melLaughSounds)
+	melSound2 = game.RemoveRandomValue(melLaughSounds)
+	melSound3 = game.RemoveRandomValue(melLaughSounds)
+
+	if args ~= nil and args.ExtraWaitTime ~= nil then
+		game.wait(args.ExtraWaitTime)
+	end
+
+	if args ~= nil and args.Partner == "Thanatos" then
+		game.wait(1)
+		PlaySound({ Name = "/Leftovers/SFX/RobeFlutter" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		PlaySound({ Name = melSound1 })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		PlaySound({ Name = thanSound1 or "/VO/Thanatos_0469" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		PlaySound({ Name = melSound2 })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = thanSound2 or "/VO/Thanatos_0468" })
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(1.5)
+	elseif args ~= nil and args.Partner == "MegThan" then
+		game.thread(game.PlayVoiceLines, megaeraFlirtVoiceLines, true)
+		game.wait(2)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		PlaySound({ Name = "/VO/Megaera_30228" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/VO/Thanatos_0472" })
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = melSound1 })
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/SFX/Enemy Sounds/Megaera/MegaeraWhipFlurryAttack" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		PlaySound({ Name = melSound2 })
+		game.wait(0.3)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/VO/Megaera_30231" })
+		game.wait(1.5)
+		PlaySound({ Name = melSound3 })
+		game.wait(1.5)
+	else
+		game.thread(game.PlayVoiceLines, megaeraFlirtVoiceLines, true)
+		-- Megaera
+		game.wait(2)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		PlaySound({ Name = megSound1 or "/VO/Megaera_30228" })
+		game.wait(0.5)
+		PlaySound({ Name = "/SFX/Enemy Sounds/Megaera/MegaeraWhipFlurryAttack" })
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.6)
+		PlaySound({ Name = "/VO/MelinoeEmotes/EmoteHurt" })
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		game.wait(0.5)
+		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
+		PlaySound({ Name = megSound2 or "/VO/Megaera_30227" })
+		game.wait(0.8)
+		PlaySound({ Name = melSound1 })
+		game.wait(1.5)
+	end
+
+	if args ~= nil and args.ExtraWaitTime ~= nil then
+		game.wait(args.ExtraWaitTime)
+	end
+
+	FadeIn({ Color = game.Color.Black, Duration = 0.5 })
+
+	game.DisplayInfoBanner(nil, {
+		TitleText = "BedroomIntermissionMessage",
+		TextRevealSound = "/Leftovers/Menu Sounds/EmoteExcitement",
+		Color = game.Color.Pink,
+		TextColor = game.Color.White,
+		TextOffsetY = 25,
+		TitleFont = "SpectralSCLightTitling",
+		SubtitleFont = "SpectralSCLightTitling",
+		Layer = "Overlay",
+		AnimationName = game.CurrentRun.CurrentRoom.LocationAnimName or "LocationBackingIrisSmallIn",
+		AnimationOutName = game.CurrentRun.CurrentRoom.LocationAnimOutName or "LocationBackingIrisSmallOut",
+	})
+
+	game.ResumeMusic()
+end
 
 -- #endregion

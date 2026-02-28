@@ -58,12 +58,20 @@ local function applyNPCChoiceMappings(npcData, mappings)
 								end
 							end
 
+							-- Replace keys if requested, keeping the value
+							for property, replacementProperty in pairs(mappingData.AlwaysReplaceKeysIfExist or {}) do
+								if textLineSet[property] ~= nil then
+									textLineSet[replacementProperty] = textLineSet[property]
+									textLineSet[property] = nil
+								end
+							end
+
 							-- Add new key/value pairs to the last textline in a given group if requested
 							for subTable, newKVPair in pairs(mappingData.AlwaysAddKVPairsToLastIPair or {}) do
 								if subTable == groupName then
 									local lastIndex = #textLineSet
 									for key, value in pairs(newKVPair) do
-										textLineSet[lastIndex][key] = textLineSet[lastIndex][key] or value
+										textLineSet[lastIndex][key] = value
 									end
 								end
 							end
@@ -73,7 +81,7 @@ local function applyNPCChoiceMappings(npcData, mappings)
 								if textLineSet[subTable] then
 									for _, lineData in ipairs(textLineSet[subTable]) do
 										for key, value in pairs(newKVPair) do
-											lineData[key] = lineData[key] or value
+											lineData[key] = value
 										end
 									end
 								end
@@ -83,7 +91,7 @@ local function applyNPCChoiceMappings(npcData, mappings)
 							for subTable, newKVPair in pairs(mappingData.AlwaysAddKVPairs or {}) do
 								if subTable == groupName then
 									for key, value in pairs(newKVPair) do
-										textLineSet[key] = textLineSet[key] or value
+										textLineSet[key] = value
 									end
 								end
 							end
@@ -136,8 +144,14 @@ local function applyNPCChoiceMappings(npcData, mappings)
 	end
 end
 
-local function applyNPCGlobalModifications(base)
+local function applyNPCGlobalModifications(base, npcModifications)
 	for npcName, npcData in pairs(base) do
+		if npcModifications[npcName].RepeatableTextLineSets ~= nil then
+			mod.DebugPrint(
+				"Modifications to RepeatableTextLineSets for NPCs must be made under InteractTextLineSets, as the will be moved there before modifications are applied: " ..
+				npcName, 1)
+		end
+
 		-- Hades II has more gift options, make every gift cost 1 Nectar
 		for textlineName, textline in pairs(npcData.GiftTextLineSets or {}) do
 			textline.Cost = { GiftPoints = 1, }
@@ -145,12 +159,21 @@ local function applyNPCGlobalModifications(base)
 			textline.UnfilledIcon = "EmptyHeartIcon"
 			textline.FilledIcon = "FilledHeartIcon"
 			-- To ensure only one gift line is shown as eligible in the Codex (prevent the Ambrosia events from showing when they shouldn't yet)
-			textline.GameStateRequirements = game.DeepCopyTable(textline)
+			if npcModifications[npcName] and npcModifications[npcName].GiftTextLineSets and npcModifications[npcName].GiftTextLineSets[textlineName] and npcModifications[npcName].GiftTextLineSets[textlineName].GameStateRequirements then
+				textline.GameStateRequirements = npcModifications[npcName].GiftTextLineSets[textlineName].GameStateRequirements
+			else
+				textline.GameStateRequirements = textline.GameStateRequirements or game.DeepCopyTable(textline)
+			end
 		end
 
 		-- Move all interaction textlines into the InteractTextLineSets, out of the RepeatableTextLineSets
 		if npcData.InteractTextLineSets and npcData.RepeatableTextLineSets then
 			for key, textLineSet in pairs(npcData.RepeatableTextLineSets or {}) do
+				if npcData.InteractTextLineSets[key] ~= nil then
+					mod.DebugPrint(
+						"The key for the RepeatableTextLineSet " ..
+						key .. " already exists in the InteractTextLineSets for " .. npcName .. " and will be overwritten.", 4)
+				end
 				npcData.InteractTextLineSets[key] = textLineSet
 			end
 			npcData.RepeatableTextLineSets = nil
@@ -205,7 +228,8 @@ local npcModifications = {
 			SisyphusGift07_A = {
 				GameStateRequirements = {
 					{
-						PathTrue = { "GameState", "TextLinesRecord", "SisyphusLiberationQuestComplete" },
+						Path = { "GameState", "TextLinesRecord", },
+						HasAll = { "SisyphusGift06", "SisyphusLiberationQuestComplete" }
 					},
 				},
 				LockedHintId = "ModsNikkelMHadesBiomes_Codex_SisyphusUnlockHint01",
@@ -283,7 +307,8 @@ local npcModifications = {
 			EurydiceGift07 = {
 				GameStateRequirements = {
 					{
-						PathTrue = { "GameState", "TextLinesRecord", "EurydiceAboutSingersReunionQuestComplete01" },
+						Path = { "GameState", "TextLinesRecord", },
+						HasAll = { "EurydiceGift06", "EurydiceAboutSingersReunionQuestComplete01" }
 					},
 				},
 				LockedHintId = "ModsNikkelMHadesBiomes_Codex_EurydiceUnlockHint01",
@@ -332,7 +357,8 @@ local npcModifications = {
 			PatroclusGift07_A = {
 				GameStateRequirements = {
 					{
-						PathTrue = { "GameState", "TextLinesRecord", "PatroclusWithAchilles01" },
+						Path = { "GameState", "TextLinesRecord", },
+						HasAll = { "PatroclusGift06", "PatroclusWithAchilles01" }
 					},
 				},
 				LockedHintId = "ModsNikkelMHadesBiomes_Codex_PatroclusUnlockHint01",
@@ -410,25 +436,521 @@ local npcModifications = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		ExcludeFromDamageDealtRecord = true,
+		ActivateRequirements = mod.NilValue,
+
+		InteractTextLineSets = {
+			-- #region Moved from DeathLoopData - Romance
+			-- Thanatos (Bedroom) / Thanatos in Bedroom / Bedroom Scenes / Thanatos Relationship / max relationship
+			-- variant below for if Megaera max relationship was already reached
+			ModsNikkelMHadesBiomes_BecameCloseWithThanatos01_Trigger = {
+				SuperPriority = true,
+				PlayOnce = true,
+				GiftableOffSource = true,
+				StatusAnimation = "StatusIconWantsAffection",
+				GameStateRequirements = {
+					RequiredTextLines = { "ThanatosFieldAboutRelationship01", "ThanatosGift10" },
+					RequiredFalseTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B", "BecameCloseWithMegaera01Meg_GoToHer" },
+					RequiredFalseTextLinesLastRun = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B", "BecameCloseWithDusa01", "Ending01" },
+				},
+
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = {
+					PostTriggerAnimation = "ThanatosIdleInhouseFidget_HairFlick",
+					WithinDistance = 350,
+					FunctionName = _PLUGIN.guid .. "." .. "SurpriseNPCPresentation",
+					Args = {
+						VoiceLines = {
+							Queue = "Interrupt",
+							{
+								PreLineWait = 0.55,
+								BreakIfPlayed = true,
+								SkipAnim = true,
+								ObjectType = "NPC_Thanatos_01",
+								-- I need to ask something of you.
+								{ Cue = "/VO/Thanatos_0534" },
+							},
+						},
+						TextLineSet = {
+							BecameCloseWithThanatos01 = {
+								Name = "BecameCloseWithThanatos01",
+								GameStateRequirements = {},
+								-- Removed for context
+								-- {
+								-- 	Cue = "/VO/ZagreusField_01476",
+								-- 	Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+								-- 	Speaker = "CharProtag",
+								-- 	PreLineAnim = "ZagreusTalkEmpathyStart",
+								-- 	PreLineAnimTarget = "Hero",
+								-- 	PostLineAnim = "ZagreusTalkEmpathy_Return",
+								-- 	PostLineAnimTarget = "Hero",
+								-- 	Text = "Thanatos...! I'd ask you to come in, but... you're already here. It's really good to see you."
+								-- },
+								{
+									Cue = "/VO/Thanatos_0417",
+									AngleTowardHero = true,
+									AngleHeroTowardTargetId = 390000,
+									Text =
+									"Just tell me one thing, Zagreus. Did you really mean what you told me before, that... maybe we ought to... take our time?"
+								},
+								{
+									Text = "Thanatos_ChoiceText01",
+									Portrait = "Portrait_Thanatos_Default_01",
+									IgnoreRawText = true,
+									BoxAnimation = "NarrationBubbleRomance",
+									BoxExitAnimation = "NarrationBubbleRomanceOut",
+									DisableCharacterFadeColorLag = true,
+									IsNarration = true,
+									SkipContextArt = true,
+									IgnoreContinueArrow = true,
+									TextOffsetY = 0,
+									PreContentSound = "/Leftovers/Menu Sounds/EmoteThoughtful",
+									Choices = {
+										{
+											ChoiceText = "Than_BackOff",
+											{
+												-- Manual replacements of ZagreusHome_ with ZagreusField_0
+												Cue = "/VO/ZagreusField_01520",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Serious_01",
+												Speaker = "CharProtag",
+												PreLineAnim = "ZagreusTalkEmpathyStart",
+												PreLineAnimTarget = "Hero",
+												PostLineAnim = "ZagreusTalkEmpathy_Return",
+												PostLineAnimTarget = "Hero",
+												PreLineWait = 0.8,
+												-- Manually add to TextLinesRecord, since H2 skips adding choice results
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithThanatos01Than_BackOff" },
+												Text =
+												"...I did. Sometimes I need to slow things down. I'm thankful that we've been on better terms, lately. But, I've been coming on too strong. Forgive me. You're my dear friend. I don't want to do anything to hurt you. Or anybody else."
+											},
+											{
+												Cue = "/VO/Thanatos_0627",
+												Portrait = "Portrait_Thanatos_Pleased_01",
+												PortraitExitAnimation = "Portrait_Thanatos_Pleased_01_Exit",
+												PreLineWait = 0.5,
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+												Text =
+												"I... oh. I see. I understand. You're my dear friend, as well. Though we have done an awful lot to jeopardize that lately, haven't we? Look, take care, Zag. Be seeing you."
+											},
+											{
+												Cue = "/VO/ZagreusField_02531",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												PreLineWait = 0.8,
+												Text = "...Be seeing you, too."
+											},
+										},
+										{
+											ChoiceText = "Than_GoToHim",
+											{
+												Cue = "/VO/ZagreusField_01477",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
+												Speaker = "CharProtag",
+												SkipContextArt = true,
+												PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionApproach",
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithThanatos01Than_GoToHim" },
+												Text =
+												"I just... don't mean to push you, Than. I know all this is kind of a lot. And I wanted you to know... this isn't some impulsive thing for me. I'll wait for you however long it takes."
+											},
+											{
+												Cue = "/VO/Thanatos_0418",
+												AngleTowardHero = true,
+												PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+												SkipContextArt = true,
+												Text =
+												"{#DialogueItalicFormat}Khh! {#Prev}You have no concept of which impulses to act upon, and which to keep in check. You say you'll wait, well, let me ask you this: What are you waiting for? What are you waiting for, I'm here, already. Right...?"
+											},
+											{
+												Cue = "/VO/ZagreusField_01478",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												SkipContextArt = true,
+												PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01_Exit",
+												PreLineAnim = "MelTalkExplaining01",
+												PreLineAnimTarget = "Hero",
+												PostLineAnim = "MelTalkExplaining01ReturnToIdle",
+												PostLineAnimTarget = "Hero",
+												PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+												PostLineFunctionArgs = { ExtraWaitTime = 1.2, Partner = "Thanatos" },
+												Text = "Than...! {#DialogueItalicFormat}Hahaha{#Prev}, oh, you're right!"
+											},
+											-- intermission
+											{
+												Cue = "/VO/ZagreusField_01479",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												SkipContextArt = true,
+												PreLineAnim = "ZagreusTalkEmpathyStart",
+												PreLineAnimTarget = "Hero",
+												PostLineAnim = "ZagreusTalkEmpathy_Return",
+												PostLineAnimTarget = "Hero",
+												FadeOutTime = 0.5,
+												FadeOutSound = "/Leftovers/World Sounds/MapText",
+												FullFadeTime = 9.5,
+												FadeInTime = 2.5,
+												FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+												PreLineWait = 0.4,
+												InterSceneWaitTime = 0.5,
+												AngleHeroTowardSource = true,
+												Text =
+												"Hey, Than, look... speak up, already, I don't like it when you're quiet for too long, what's on your mind?"
+											},
+											{
+												Cue = "/VO/Thanatos_0419",
+												Portrait = "Portrait_Thanatos_Pleased_01",
+												SkipContextArt = true,
+												Text =
+												"A lot of things. And you will have to grow to like it, Zag. Or, what I mean is... don't take my silence the wrong way, all right? I'd better get going, though, I'm way behind on work, but... see you again. If that's all right."
+											},
+											{
+												Cue = "/VO/ZagreusField_01480",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												SkipContextArt = true,
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+												Text = "It is. It is."
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			ModsNikkelMHadesBiomes_BecameCloseWithThanatos01_B_Trigger = {
+				SuperPriority = true,
+				PlayOnce = true,
+				GiftableOffSource = true,
+				StatusAnimation = "StatusIconWantsAffection",
+				GameStateRequirements = {
+					RequiredTextLines = { "ThanatosFieldAboutRelationship01", "ThanatosGift10", "BecameCloseWithMegaera01Meg_GoToHer" },
+					RequiredFalseTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B", },
+					RequiredFalseTextLinesLastRun = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B", "BecameCloseWithDusa01", "Ending01", "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B" },
+				},
+
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = {
+					PostTriggerAnimation = "ThanatosIdleInhouseFidget_HairFlick",
+					WithinDistance = 350,
+					FunctionName = _PLUGIN.guid .. "." .. "SurpriseNPCPresentation",
+					Args = {
+						VoiceLines = {
+							Queue = "Interrupt",
+							{
+								PreLineWait = 0.55,
+								BreakIfPlayed = true,
+								SkipAnim = true,
+								ObjectType = "NPC_Thanatos_01",
+								-- I need to ask something of you.
+								{ Cue = "/VO/Thanatos_0534" },
+							},
+						},
+						TextLineSet = {
+							BecameCloseWithThanatos01_B = {
+								Name = "BecameCloseWithThanatos01_B",
+								GameStateRequirements = {},
+								-- Removed for context
+								-- {
+								-- 	Cue = "/VO/ZagreusField_01476",
+								-- 	Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+								-- 	Speaker = "CharProtag",
+								-- 	PreLineAnim = "ZagreusTalkEmpathyStart",
+								-- 	PreLineAnimTarget = "Hero",
+								-- 	PostLineAnim = "ZagreusTalkEmpathy_Return",
+								-- 	PostLineAnimTarget = "Hero",
+								-- 	Text = "Thanatos...! I'd ask you to come in, but... you're already here. It's really good to see you."
+								-- },
+								{
+									Cue = "/VO/Thanatos_0417",
+									AngleTowardHero = true,
+									AngleHeroTowardTargetId = 390000,
+									Text =
+									"Just tell me one thing, Zagreus. Did you really mean what you told me before, that... maybe we ought to... take our time?"
+								},
+								{
+									Text = "Thanatos_ChoiceText02",
+									Portrait = "Portrait_Thanatos_Default_01",
+									IgnoreRawText = true,
+									BoxAnimation = "NarrationBubbleRomance",
+									BoxExitAnimation = "NarrationBubbleRomanceOut",
+									DisableCharacterFadeColorLag = true,
+									IsNarration = true,
+									SkipContextArt = true,
+									IgnoreContinueArrow = true,
+									TextOffsetY = 0,
+									PreContentSound = "/Leftovers/Menu Sounds/EmoteThoughtful",
+									Choices = {
+										{
+											ChoiceText = "Than_BackOff",
+											{
+												Cue = "/VO/ZagreusField_01520",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Serious_01",
+												Speaker = "CharProtag",
+												PreLineAnim = "ZagreusTalkEmpathyStart",
+												PreLineAnimTarget = "Hero",
+												PostLineAnim = "ZagreusTalkEmpathy_Return",
+												PostLineAnimTarget = "Hero",
+												PreLineWait = 0.8,
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithThanatos01_BThan_BackOff" },
+												Text =
+												"...I did. Sometimes I need to slow things down. I'm thankful that we've been on better terms, lately. But, I've been coming on too strong. Forgive me. You're my dear friend. I don't want to do anything to hurt you. Or anybody else."
+											},
+											{
+												-- Translated from ThanatosExtra_0001 to Thanatos_00001
+												Cue = "/VO/Thanatos_00001",
+												Portrait = "Portrait_Thanatos_Pleased_01",
+												PortraitExitAnimation = "Portrait_Thanatos_Pleased_01_Exit",
+												PreLineWait = 0.5,
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+												Text = "You're certain? Well... I understand. I'd best get back to my responsibilities for now."
+											},
+											{
+												Cue = "/VO/ZagreusField_00822",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												PreLineWait = 0.8,
+												Text = "...See you, Than."
+											},
+										},
+										{
+											ChoiceText = "Than_GoToHim",
+											{
+												Cue = "/VO/ZagreusField_01477",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
+												Speaker = "CharProtag",
+												SkipContextArt = true,
+												PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionApproach",
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithThanatos01_BThan_GoToHim" },
+												Text =
+												"I just... don't mean to push you, Than. I know all this is kind of a lot. And I wanted you to know... this isn't some impulsive thing for me. I'll wait for you however long it takes."
+											},
+											{
+												Cue = "/VO/Thanatos_0418",
+												AngleTowardHero = true,
+												PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+												SkipContextArt = true,
+												Text =
+												"{#DialogueItalicFormat}Khh! {#Prev}You have no concept of which impulses to act upon, and which to keep in check. You say you'll wait, well, let me ask you this: What are you waiting for? What are you waiting for, I'm here, already. Right...?"
+											},
+											{
+												Cue = "/VO/ZagreusField_01481",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												SkipContextArt = true,
+												PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01_Exit",
+												PreLineAnim = "MelTalkExplaining01",
+												PreLineAnimTarget = "Hero",
+												PostLineAnim = "MelTalkExplaining01ReturnToIdle",
+												PostLineAnimTarget = "Hero",
+												Text =
+												"Than... {#DialogueItalicFormat}hahaha{#Prev}, I'm so glad! It's just... you know that Megaera has been here, too...?"
+											},
+											{
+												Cue = "/VO/Thanatos_0420",
+												Portrait = "Portrait_Thanatos_Pleased_01",
+												SkipContextArt = true,
+												Text =
+												"{#DialogueItalicFormat}Tsch. {#Prev}I've known Megaera much longer than you. Who do you think talked me into this?"
+											},
+											{
+												Cue = "/VO/ZagreusField_01482",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												SkipContextArt = true,
+												PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01_Exit",
+												PreLineAnim = "MelTalkExplaining01",
+												PreLineAnimTarget = "Hero",
+												PostLineAnim = "MelTalkExplaining01ReturnToIdle",
+												PostLineAnimTarget = "Hero",
+												PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+												PostLineFunctionArgs = { ExtraWaitTime = 1.2, Partner = "Thanatos" },
+												Text = "Hah! She did, did she? That's good! That's good."
+											},
+											-- intermission
+											{
+												Cue = "/VO/ZagreusField_01479",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												SkipContextArt = true,
+												PreLineAnim = "ZagreusTalkEmpathyStart",
+												PreLineAnimTarget = "Hero",
+												PostLineAnim = "ZagreusTalkEmpathy_Return",
+												PostLineAnimTarget = "Hero",
+												FadeOutTime = 0.5,
+												FadeOutSound = "/Leftovers/World Sounds/MapText",
+												FullFadeTime = 9.5,
+												FadeInTime = 2.5,
+												FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+												PreLineWait = 0.4,
+												InterSceneWaitTime = 0.5,
+												AngleHeroTowardSource = true,
+												Text =
+												"Hey, Than, look... speak up, already, I don't like it when you're quiet for too long, what's on your mind?"
+											},
+											{
+												Cue = "/VO/Thanatos_0419",
+												Portrait = "Portrait_Thanatos_Pleased_01",
+												SkipContextArt = true,
+												Text =
+												"A lot of things. And you will have to grow to like it, Zag. Or, what I mean is... don't take my silence the wrong way, all right? I'd better get going, though, I'm way behind on work, but... see you again. If that's all right."
+											},
+											{
+												Cue = "/VO/ZagreusField_01480",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												SkipContextArt = true,
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+												Text = "It is. It is."
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			-- #endregion
+
+			ThanatosBackstory01_B = {
+				EndVoiceLines = {
+					RequiredMinElapsedTime = mod.NilValue,
+				},
+			},
+			ThanatosBackstory02 = {
+				[2] = {
+					PostLineThreadedFunctionName = mod.NilValue,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "TimePassesPresentation",
+				},
+				[3] = {
+					InterSceneWaitTime = mod.NilValue,
+					TeleportToId = mod.NilValue,
+					AngleTowardTargetId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+				[6] = {
+					TeleportToId = mod.NilValue,
+					AngleTowardTargetId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			ThanatosPostEnding02 = {
+				AreIdsAlive = mod.NilValue,
+			},
+			ThanatosHomeIntermissionChat01 = {
+				AreIdsAlive = mod.NilValue,
+				[1] = {
+					SkipContextArt = true,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			ThanatosHomeIntermissionChat02 = {
+				AreIdsAlive = mod.NilValue,
+				[1] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			ThanatosHomeIntermissionChat03 = {
+				AreIdsAlive = mod.NilValue,
+				[1] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			ThanatosHomeIntermissionChat04 = {
+				AreIdsAlive = mod.NilValue,
+				[1] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			ThanatosHomeIntermissionChat05 = {
+				AreIdsAlive = mod.NilValue,
+				[1] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			ThanatosHomeIntermissionChat06 = {
+				AreIdsAlive = mod.NilValue,
+				[1] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+		},
 		GiftTextLineSets = {
 			ThanatosGift04 = {
 				[2] = {
 					-- Manually add the alternate to the TextLineRecord to not break the NarrativeData/locked hint ordering in the Codex
 					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
-					PostLineFunctionArgs = { TextLine = "ThanatosGift04_B" },
+					PostLineFunctionArgs = { TextLine = "ThanatosGift04_B", AddToGiftTextLinesOrderRecord = true },
 				},
 			},
 			ThanatosGift04_B = {
+				-- Only one of the alternates should be on the GiftTrack
+				-- Which one doesn't matter, as both are added to the TextLinesRecord at the same time
+				OnGiftTrack = false,
 				[2] = {
 					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
-					PostLineFunctionArgs = { TextLine = "ThanatosGift04" },
+					PostLineFunctionArgs = { TextLine = "ThanatosGift04", AddToGiftTextLinesOrderRecord = true },
 				},
 			},
 			ThanatosGift07_A = {
 				GameStateRequirements = {
 					{
-						-- TODO: This needs a voiceline from the house version of Thanatos
-						PathTrue = { "GameState", "TextLinesRecord", "ThanatosFieldBuildingTrust01" },
+						Path = { "GameState", "TextLinesRecord", },
+						HasAll = { "ThanatosGift06", "ThanatosFieldBuildingTrust01" }
 					},
 				},
 				LockedHintId = "ModsNikkelMHadesBiomes_Codex_ThanatosUnlockHint01",
@@ -447,6 +969,8 @@ local npcModifications = {
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
 			ThanatosGift10 = {
+				StartBecomingCloserTrack = true,
+				HintId = "Codex_GrowingCloser01",
 				CompletedHintId = "ModsNikkelMHadesBiomes_Codex_BondForgedThanatos",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
@@ -706,13 +1230,16 @@ local npcModifications = {
 				[2] = {
 					-- Manually add the alternate to the TextLineRecord to not break the NarrativeData/locked hint ordering in the Codex
 					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
-					PostLineFunctionArgs = { TextLine = "OrpheusGift04_B" },
+					PostLineFunctionArgs = { TextLine = "OrpheusGift04_B", AddToGiftTextLinesOrderRecord = true },
 				},
 			},
 			OrpheusGift04_B = {
+				-- Only one of the alternates should be on the GiftTrack
+				-- Which one doesn't matter, as both are added to the TextLinesRecord at the same time
+				OnGiftTrack = false,
 				[2] = {
 					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
-					PostLineFunctionArgs = { TextLine = "OrpheusGift04" },
+					PostLineFunctionArgs = { TextLine = "OrpheusGift04", AddToGiftTextLinesOrderRecord = true },
 				},
 			},
 			OrpheusGift05 = {
@@ -754,7 +1281,8 @@ local npcModifications = {
 			OrpheusGift07 = {
 				GameStateRequirements = {
 					{
-						PathTrue = { "GameState", "TextLinesRecord", "OrpheusAboutSingersReunionQuest01" },
+						Path = { "GameState", "TextLinesRecord", },
+						HasAll = { "OrpheusGift06", "OrpheusAboutSingersReunionQuest01" }
 					},
 				},
 				LockedHintId = "ModsNikkelMHadesBiomes_Codex_OrpheusUnlockHint01",
@@ -887,13 +1415,42 @@ local npcChoiceMappings = {
 		},
 	},
 	NPC_Thanatos_01 = {
-		TextLineGroups = { "GiftTextLineSets" },
+		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets", "GiftTextLineSets" },
 		AlwaysAddKVPairsToLastIPair = {
+			-- Thanatos should leave after the conversation in RoomOpening, and spawn the reward (this will override any existing ThanatosExit function call)
+			InteractTextLineSets = {
+				PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+				PostLineFunctionArgs = mod.NilValue,
+			},
+			RepeatableTextLineSets = {
+				PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+				PostLineFunctionArgs = mod.NilValue,
+			},
 			-- Thanatos should leave if he has no more dialogue after being gifted
 			GiftTextLineSets = {
 				PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCheckThanatosPostGiftExit",
 				PostLineThreadedFunctionArgs = { Delay = 2, },
 			},
+		},
+		AlwaysReplaceIfExist = {
+			RequiredRoom = {
+				Find = "DeathArea",
+				Replace = "RoomOpening",
+			},
+			StatusAnimation = {
+				Find = "StatusIconWantsToSmooch",
+				Replace = "StatusIconWantsAffection",
+			},
+		},
+		-- Replace requirements referencing the CurrentRun to reference PrevRun instead
+		AlwaysReplaceKeysIfExist = {
+			RequiresRunCleared = "RequiresLastRunCleared",
+			RequiresRunNotCleared = "RequiresLastRunNotCleared",
+			RequiredTextLinesThisRun = "RequiredTextLinesLastRun",
+			RequiredFalseTextLinesThisRun = "RequiredFalseTextLinesLastRun",
+			RequiredEncounterThisRun = "RequiredEncounterLastRun",
+			RequiredKillsThisRun = "RequiredKillsLastRun",
+			RequiredFalseDeathEncounters = "RequiredFalseDeathEncountersThanatos",
 		},
 	},
 	NPC_Thanatos_Field_01 = {
@@ -1041,7 +1598,8 @@ local npcChoiceMappings = {
 -- Replace duplicated Bouldy conversations
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.ModsNikkelMHadesBiomes_BouldyFirstMeeting = game
 		.DeepCopyTable(mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.BouldyFirstMeeting) or {}
-mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.ModsNikkelMHadesBiomes_BouldyFirstMeeting.EndGlobalVoiceLines = "MiscEndVoiceLines_Bouldy"
+mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.ModsNikkelMHadesBiomes_BouldyFirstMeeting.EndGlobalVoiceLines =
+"MiscEndVoiceLines_Bouldy"
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.BouldyFirstMeeting = nil
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikkelMHadesBiomes_BouldyChat01 = game
 		.DeepCopyTable(mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.BouldyChat01) or {}
@@ -1050,6 +1608,6 @@ mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.ModsNikk
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.BouldyChat01 = nil
 
 applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)
-applyNPCGlobalModifications(mod.NPCData)
+applyNPCGlobalModifications(mod.NPCData, npcModifications)
 
 mod.ApplyModificationsAndInheritEnemyData(mod.NPCData, npcModifications, {}, {})

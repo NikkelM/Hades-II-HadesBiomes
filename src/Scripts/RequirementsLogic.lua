@@ -556,7 +556,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	-- local prevRun = game.PrevRun
-	local prevRun = mod.GetPreviousModdedRun()
+	local prevRun = mod.GetPreviousModdedRun() or {}
 	if requirements.RequiredAnyTextLinesLastRun ~= nil then
 		if prevRun == nil or prevRun.TextLinesRecord == nil then
 			return false
@@ -572,6 +572,19 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			return false
 		end
 	end
+
+	-- Custom added
+	if requirements.RequiredTextLinesLastRun ~= nil and prevRun ~= nil and prevRun.TextLinesRecord ~= nil then
+		if type(requirements.RequiredTextLinesLastRun) == "string" then
+			requirements.RequiredTextLinesLastRun = { requirements.RequiredTextLinesLastRun }
+		end
+		for k, textLineSet in pairs(requirements.RequiredTextLinesLastRun) do
+			if not prevRun.TextLinesRecord[textLineSet] then
+				return false
+			end
+		end
+	end
+
 	if requirements.RequiredFalseTextLinesLastRun ~= nil and prevRun ~= nil and prevRun.TextLinesRecord ~= nil then
 		for k, textLineSet in pairs(requirements.RequiredFalseTextLinesLastRun) do
 			if prevRun.TextLinesRecord[textLineSet] ~= nil then
@@ -1087,20 +1100,98 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 	if requirements.RequiredDeathRoom ~= nil then
-		if not DidFailRun(game.CurrentRun) or game.CurrentRun.CurrentRoom.Name ~= requirements.RequiredDeathRoom then
-			return false
+		-- if not DidFailRun(game.CurrentRun) or game.CurrentRun.CurrentRoom.Name ~= requirements.RequiredDeathRoom then
+		-- 	return false
+		-- end
+		if prevRun.BiomesReached ~= nil then
+			if mod.HasSeenRoomInRun(prevRun, requirements.RequiredDeathRoom) then
+				-- For the encoded EndingRoomName for uninstall compatibility
+				if not prevRun.Cleared and prevRun.EndingRoomName == nil and prevRun.VictoryMessage ~= nil then
+					local separatorIndex = string.find(prevRun.VictoryMessage, "#")
+					if separatorIndex ~= nil and string.sub(prevRun.VictoryMessage, separatorIndex + 1) == requirements.RequiredDeathRoom then
+						-- Saw the room and died in it
+					else
+						-- Saw the room run and didn't die in it
+						return false
+					end
+				elseif not prevRun.Cleared and prevRun.EndingRoomName == requirements.RequiredDeathRoom then
+					-- Saw the room and died in it
+				else
+					-- Saw the room and didn't die in it
+					return false
+				end
+			end
 		end
 	end
 	if requirements.RequiredAnyDeathRooms ~= nil then
-		if not DidFailRun(game.CurrentRun) or not Contains(requirements.RequiredAnyDeathRooms, game.CurrentRun.CurrentRoom.Name) then
-			return false
+		-- if not DidFailRun(game.CurrentRun) or not Contains(requirements.RequiredAnyDeathRooms, game.CurrentRun.CurrentRoom.Name) then
+		-- 	return false
+		-- end
+		if prevRun.BiomesReached ~= nil then
+			for _, roomName in ipairs(requirements.RequiredAnyDeathRooms) do
+				if mod.HasSeenRoomInRun(prevRun, roomName) then
+					-- For the encoded EndingRoomName for uninstall compatibility
+					if not prevRun.Cleared and prevRun.EndingRoomName == nil and prevRun.VictoryMessage ~= nil then
+						local separatorIndex = string.find(prevRun.VictoryMessage, "#")
+						if separatorIndex ~= nil and string.sub(prevRun.VictoryMessage, separatorIndex + 1) == roomName then
+							-- Saw the room and died in it
+						else
+							-- Saw the room run and didn't die in it
+							return false
+						end
+					elseif not prevRun.Cleared and prevRun.EndingRoomName == roomName then
+						-- Saw the room and died in it
+					else
+						-- Saw the room and didn't die in it
+						return false
+					end
+				end
+			end
 		end
 	end
-	if requirements.RequiredFalseDeathRoom ~= nil and DidFailRun(game.CurrentRun) and game.CurrentRun.CurrentRoom.Name == requirements.RequiredFalseDeathRoom then
-		return false
+	if requirements.RequiredFalseDeathRoom ~= nil then -- and DidFailRun(game.CurrentRun) and game.CurrentRun.CurrentRoom.Name == requirements.RequiredFalseDeathRoom then
+		if prevRun.BiomesReached ~= nil then
+			if mod.HasSeenRoomInRun(prevRun, requirements.RequiredFalseDeathRoom) then
+				-- For the encoded EndingRoomName for uninstall compatibility
+				if not prevRun.Cleared and prevRun.EndingRoomName == nil and prevRun.VictoryMessage ~= nil then
+					local separatorIndex = string.find(prevRun.VictoryMessage, "#")
+					if separatorIndex ~= nil and string.sub(prevRun.VictoryMessage, separatorIndex + 1) == requirements.RequiredFalseDeathRoom then
+						-- Saw the room and died in it
+						return false
+					else
+						-- Saw the room run and didn't die in it
+					end
+				elseif not prevRun.Cleared and prevRun.EndingRoomName == requirements.RequiredFalseDeathRoom then
+					-- Saw the room and died in it
+					return false
+				else
+					-- Saw the room and didn't die in it
+				end
+			end
+		end
 	end
-	if requirements.RequiredFalseDeathRooms ~= nil and DidFailRun(game.CurrentRun) and Contains(requirements.RequiredFalseDeathRooms, game.CurrentRun.CurrentRoom.Name) then
-		return false
+	if requirements.RequiredFalseDeathRooms ~= nil then -- and DidFailRun(game.CurrentRun) and Contains(requirements.RequiredFalseDeathRooms, game.CurrentRun.CurrentRoom.Name) then
+		if prevRun.BiomesReached ~= nil then
+			for _, roomName in ipairs(requirements.RequiredFalseDeathRooms) do
+				if mod.HasSeenRoomInRun(prevRun, roomName) then
+					-- For the encoded EndingRoomName for uninstall compatibility
+					if not prevRun.Cleared and prevRun.EndingRoomName == nil and prevRun.VictoryMessage ~= nil then
+						local separatorIndex = string.find(prevRun.VictoryMessage, "#")
+						if separatorIndex ~= nil and string.sub(prevRun.VictoryMessage, separatorIndex + 1) == roomName then
+							-- Saw the room and died in it
+							return false
+						else
+							-- Saw the room run and didn't die in it
+						end
+					elseif not prevRun.Cleared and prevRun.EndingRoomName == roomName then
+						-- Saw the room and died in it
+						return false
+					else
+						-- Saw the room and didn't die in it
+					end
+				end
+			end
+		end
 	end
 
 	if requirements.RequiredAnyDeathEncounters ~= nil and game.CurrentRun.Hero.IsDead then
@@ -1110,6 +1201,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 	if requirements.RequiredFalseDeathEncounters ~= nil and game.CurrentRun.Hero.IsDead then
 		if game.CurrentRun.CurrentRoom.Encounter == nil or Contains(requirements.RequiredFalseDeathEncounters, game.CurrentRun.CurrentRoom.Encounter.Name) then
+			return false
+		end
+	end
+
+	-- Custom: For Thanatos in RoomOpening
+	if requirements.RequiredFalseDeathEncountersThanatos ~= nil then
+		if prevRun.RoomHistory and prevRun.RoomHistory[#prevRun.RoomHistory] and prevRun.RoomHistory[#prevRun.RoomHistory].Encounter and game.Contains(requirements.RequiredFalseDeathEncountersThanatos, prevRun.RoomHistory[#prevRun.RoomHistory].Encounter.Name or "") then
 			return false
 		end
 	end
@@ -1980,6 +2078,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredEncounterThisRun ~= nil then
 		if not HasEncounterOccurred(game.CurrentRun, requirements.RequiredEncounterThisRun) then
+			return false
+		end
+	end
+
+	-- Custom
+	if requirements.RequiredEncounterLastRun ~= nil then
+		if not HasEncounterOccurred(prevRun, requirements.RequiredEncounterLastRun) then
 			return false
 		end
 	end

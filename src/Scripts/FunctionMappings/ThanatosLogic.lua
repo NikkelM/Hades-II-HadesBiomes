@@ -1,3 +1,4 @@
+-- #region Field version
 function mod.ThanatosPreSpawnPresentation(eventSource)
 	game.HideCombatUI("ThanatosIntro")
 
@@ -174,6 +175,13 @@ function mod.ThanatosExit(source, args)
 	source.InteractTextLineSets = nil
 	game.wait(args.WaitTime or 0)
 
+	if args.PreExitRemoveFromGroup then
+		RemoveFromGroup({ Id = source.ObjectId, Names = { args.PreExitRemoveFromGroup } })
+	end
+	if args.PreExitAddToGroup then
+		AddToGroup({ Id = source.ObjectId, Name = args.PreExitAddToGroup })
+	end
+
 	SetAnimation({ Name = "NPCThanatosExit", DestinationId = source.ObjectId })
 	CreateAnimation({ Name = "ThanatosTeleport", DestinationId = source.ObjectId })
 	SetAlpha({ Id = source.ObjectId, Fraction = 0.0, Duration = 0.35 })
@@ -252,7 +260,6 @@ function mod.HandleThanatosEncounterReward(thanatos, args)
 		if encounter.ThanatosKills == 0 then
 			game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_ShutdownThanatosFlag = true
 		end
-
 	end
 
 	-- Need to move his kills into CurrentRun as otherwise they are not kept in the save
@@ -344,6 +351,42 @@ function mod.TrackThanatosChallengeProgress(encounter, victim, killer)
 		encounter.PlayerKills = encounter.PlayerKills + 1
 		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
 	end
+end
+
+-- #endregion
+-- #endregion
+
+-- #region House version/RoomOpening
+function mod.CheckThanatosOrSpawnRoomReward(eventSource, args)
+	local thanatos = GetIdsByType({ Name = "NPC_Thanatos_01" })[1]
+
+	if thanatos ~= nil then
+		-- Wait until his conversation is done
+		game.waitUntil("ThanatosRoomOpeningConversationDone")
+	end
+
+	game.SpawnRoomReward(eventSource, { WaitUntilPickup = true, })
+end
+
+function mod.ThanatosRoomOpeningConversationDone(source, args)
+	args = args or {}
+
+	-- Cannot gift him when he's about to leave
+	source.CanReceiveGift = false
+
+	SetAnimation({ DestinationId = source.ObjectId, Name = "ThanatosIdleInhouseFidget_HairFlick" })
+	game.wait(1.0)
+
+	-- This notification actually spawns the room reward in the room's UnthreadedEvent
+	game.notifyExistingWaiters("ThanatosRoomOpeningConversationDone")
+
+	-- Wait a little for any EndVoiceLines from Thanatos to play
+	game.wait(3.0)
+
+	args.PreExitRemoveFromGroup = "Standing"
+	args.PreExitAddToGroup = "PillarTops_01"
+	args.SkipExitReaction = true
+	mod.ThanatosExit(source, args)
 end
 
 -- #endregion

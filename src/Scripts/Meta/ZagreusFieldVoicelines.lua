@@ -1,7 +1,10 @@
 -- Note: ZagreusHome bank can't be loaded!
 -- ZagreusHome_ lines should be translated to ZagreusField_0 lines through the mod
+-- To find ZagreusField/Home matches in an input text, use this regex (use global flag!): \bZagreusField_\d+\b
+-- To transform ZagreusHome_ voicelines into the "ZagreusField_0xxx = true, -- Original" format, use this VSCode regex find and replace pattern:
+-- ^\s*(Zagreus)Home_(\d{4})\s*$ -> $1Field_0$2 = true, -- $1Home_$2
 mod.ZagreusFieldVoicelines = {
-	-- #regiongAlecto
+	-- #region Alecto
 	ZagreusField_1408 = true,
 	ZagreusField_1409 = true,
 	ZagreusField_1410 = true,
@@ -1016,6 +1019,157 @@ mod.ZagreusFieldVoicelines = {
 	-- #endregion
 
 	-- #region Thanatos Home (+ Field Gifting)
+	-- InteractTextLineSets/RepeatableTextLineSets
+	-- EndCue/EndVoiceLines
+	-- ZagreusField_1146 = true,
+	-- ZagreusField_1637 = true,
+	-- ZagreusField_00561 = true, -- ZagreusHome_0561
+	-- ZagreusField_00788 = true, -- ZagreusHome_0788
+	-- ZagreusField_00812 = true, -- ZagreusHome_0812
+	-- ZagreusField_00815 = true, -- ZagreusHome_0815
+	-- ZagreusField_00818 = true, -- ZagreusHome_0818
+	-- ZagreusField_00822 = true, -- ZagreusHome_0822
+	-- ZagreusField_01446 = true, -- ZagreusHome_1446
+	-- ZagreusField_01449 = true, -- ZagreusHome_1449
+	-- ZagreusField_01452 = true, -- ZagreusHome_1452
+	-- ZagreusField_01455 = true, -- ZagreusHome_1455
+	-- ZagreusField_01459 = true, -- ZagreusHome_1459
+	-- ZagreusField_01462 = true, -- ZagreusHome_1462
+	-- ZagreusField_01486 = true, -- ZagreusHome_1486
+	-- ZagreusField_01550 = true, -- ZagreusHome_1550
+	-- ZagreusField_02485 = true, -- ZagreusHome_2485
+	-- ZagreusField_02487 = true, -- ZagreusHome_2487
+	-- ZagreusField_02490 = true, -- ZagreusHome_2490
+	-- ZagreusField_02492 = true, -- ZagreusHome_2492
+	-- ZagreusField_02494 = true, -- ZagreusHome_2494
+	-- ZagreusField_02497 = true, -- ZagreusHome_2497
+	-- ZagreusField_02499 = true, -- ZagreusHome_2499
+	-- ZagreusField_02502 = true, -- ZagreusHome_2502
+	-- ZagreusField_02504 = true, -- ZagreusHome_2504
+	-- ZagreusField_02506 = true, -- ZagreusHome_2506
+	-- ZagreusField_02508 = true, -- ZagreusHome_2508
+	-- ZagreusField_02510 = true, -- ZagreusHome_2510
+	-- ZagreusField_02512 = true, -- ZagreusHome_2512
+	-- ZagreusField_02515 = true, -- ZagreusHome_2515
+	-- ZagreusField_02518 = true, -- ZagreusHome_2518
+	-- ZagreusField_02520 = true, -- ZagreusHome_2520
+	-- ZagreusField_02523 = true, -- ZagreusHome_2523
+	-- ZagreusField_02525 = true, -- ZagreusHome_2525
+	-- ZagreusField_02529 = true, -- ZagreusHome_2529
+	-- ZagreusField_02534 = true, -- ZagreusHome_2534
+	-- ZagreusField_02537 = true, -- ZagreusHome_2537
+	-- ZagreusField_02540 = true, -- ZagreusHome_2540
+	-- ZagreusField_02542 = true, -- ZagreusHome_2542
+	-- ZagreusField_02545 = true, -- ZagreusHome_2545
+	-- ZagreusField_02548 = true, -- ZagreusHome_2548
+	-- ZagreusField_02774 = true, -- ZagreusHome_2774
+	-- ZagreusField_02776 = true, -- ZagreusHome_2776
+	-- ZagreusField_02777 = true, -- ZagreusHome_2777
+	-- ZagreusField_02807 = true, -- ZagreusHome_2807
+	-- ZagreusField_03190 = true, -- ZagreusHome_3190
+	-- ZagreusField_03231 = true, -- ZagreusHome_3231
+	-- ZagreusField_03233 = true, -- ZagreusHome_3233
+	-- ZagreusField_03235 = true, -- ZagreusHome_3235
+	-- ZagreusField_03240 = true, -- ZagreusHome_3240
+	-- ZagreusField_03432 = true, -- ZagreusHome_3432
+	-- ZagreusField_03434 = true, -- ZagreusHome_3434
+
+	ZagreusField_00220 = true, -- ZagreusHome_0220
+	ZagreusField_00221 = true, -- ZagreusHome_0221
+	ZagreusField_00222 = true, -- ZagreusHome_0222
+	ZagreusField_00223 = true, -- ZagreusHome_0223
+	ZagreusField_00784 = true, -- ZagreusHome_0784
+	ZagreusField_00810 = true, -- ZagreusHome_0810
+	ZagreusField_00811 = true, -- ZagreusHome_0811
+	ZagreusField_00813 = true, -- ZagreusHome_0813
+	ZagreusField_00814 = true, -- ZagreusHome_0814
+	ZagreusField_00816 = true, -- ZagreusHome_0816
+	ZagreusField_00817 = true, -- ZagreusHome_0817
+	ZagreusField_00821 = true, -- ZagreusHome_0821
+	ZagreusField_01444 = true, -- ZagreusHome_1444
+	ZagreusField_01445 = true, -- ZagreusHome_1445
+	ZagreusField_01447 = true, -- ZagreusHome_1447
+	ZagreusField_01448 = true, -- ZagreusHome_1448
+	ZagreusField_01450 = true, -- ZagreusHome_1450
+	ZagreusField_01451 = true, -- ZagreusHome_1451
+	ZagreusField_01453 = true, -- ZagreusHome_1453
+	ZagreusField_01454 = true, -- ZagreusHome_1454
+	ZagreusField_01456 = true, -- ZagreusHome_1456
+	ZagreusField_01457 = true, -- ZagreusHome_1457
+	ZagreusField_01458 = true, -- ZagreusHome_1458
+	ZagreusField_01460 = true, -- ZagreusHome_1460
+	ZagreusField_01461 = true, -- ZagreusHome_1461
+	ZagreusField_01463 = true, -- ZagreusHome_1463
+	ZagreusField_01464 = true, -- ZagreusHome_1464
+	ZagreusField_01483 = true, -- ZagreusHome_1483
+	ZagreusField_01484 = true, -- ZagreusHome_1484
+	ZagreusField_01485 = true, -- ZagreusHome_1485
+	ZagreusField_01549 = true, -- ZagreusHome_1549
+	ZagreusField_02483 = true, -- ZagreusHome_2483
+	ZagreusField_02484 = true, -- ZagreusHome_2484
+	ZagreusField_02486 = true, -- ZagreusHome_2486
+	ZagreusField_02488 = true, -- ZagreusHome_2488
+	ZagreusField_02489 = true, -- ZagreusHome_2489
+	ZagreusField_02491 = true, -- ZagreusHome_2491
+	ZagreusField_02493 = true, -- ZagreusHome_2493
+	ZagreusField_02495 = true, -- ZagreusHome_2495
+	ZagreusField_02496 = true, -- ZagreusHome_2496
+	ZagreusField_02498 = true, -- ZagreusHome_2498
+	ZagreusField_02500 = true, -- ZagreusHome_2500
+	ZagreusField_02501 = true, -- ZagreusHome_2501
+	ZagreusField_02503 = true, -- ZagreusHome_2503
+	ZagreusField_02505 = true, -- ZagreusHome_2505
+	ZagreusField_02507 = true, -- ZagreusHome_2507
+	ZagreusField_02509 = true, -- ZagreusHome_2509
+	ZagreusField_02511 = true, -- ZagreusHome_2511
+	ZagreusField_02513 = true, -- ZagreusHome_2513
+	ZagreusField_02514 = true, -- ZagreusHome_2514
+	ZagreusField_02516 = true, -- ZagreusHome_2516
+	ZagreusField_02517 = true, -- ZagreusHome_2517
+	ZagreusField_02519 = true, -- ZagreusHome_2519
+	ZagreusField_02521 = true, -- ZagreusHome_2521
+	ZagreusField_02522 = true, -- ZagreusHome_2522
+	ZagreusField_02524 = true, -- ZagreusHome_2524
+	ZagreusField_02526 = true, -- ZagreusHome_2526
+	ZagreusField_02527 = true, -- ZagreusHome_2527
+	ZagreusField_02528 = true, -- ZagreusHome_2528
+	ZagreusField_02532 = true, -- ZagreusHome_2532
+	ZagreusField_02533 = true, -- ZagreusHome_2533
+	ZagreusField_02535 = true, -- ZagreusHome_2535
+	ZagreusField_02536 = true, -- ZagreusHome_2536
+	ZagreusField_02538 = true, -- ZagreusHome_2538
+	ZagreusField_02539 = true, -- ZagreusHome_2539
+	ZagreusField_02541 = true, -- ZagreusHome_2541
+	ZagreusField_02543 = true, -- ZagreusHome_2543
+	ZagreusField_02544 = true, -- ZagreusHome_2544
+	ZagreusField_02546 = true, -- ZagreusHome_2546
+	ZagreusField_02547 = true, -- ZagreusHome_2547
+	ZagreusField_02805 = true, -- ZagreusHome_2805
+	ZagreusField_02806 = true, -- ZagreusHome_2806
+	ZagreusField_03228 = true, -- ZagreusHome_3228
+	ZagreusField_03229 = true, -- ZagreusHome_3229
+	ZagreusField_03230 = true, -- ZagreusHome_3230
+	ZagreusField_03232 = true, -- ZagreusHome_3232
+	ZagreusField_03234 = true, -- ZagreusHome_3234
+	ZagreusField_03236 = true, -- ZagreusHome_3236
+	ZagreusField_03238 = true, -- ZagreusHome_3238
+	ZagreusField_03239 = true, -- ZagreusHome_3239
+	ZagreusField_03429 = true, -- ZagreusHome_3429
+	ZagreusField_03431 = true, -- ZagreusHome_3431
+	ZagreusField_03433 = true, -- ZagreusHome_3433
+
+	-- Relationship
+	ZagreusField_00822 = true, -- ZagreusHome_0822
+	ZagreusField_01476 = true, -- ZagreusHome_1476
+	ZagreusField_01477 = true, -- ZagreusHome_1477
+	ZagreusField_01478 = true, -- ZagreusHome_1478
+	ZagreusField_01479 = true, -- ZagreusHome_1479
+	ZagreusField_01480 = true, -- ZagreusHome_1480
+	ZagreusField_01481 = true, -- ZagreusHome_1481
+	ZagreusField_01482 = true, -- ZagreusHome_1482
+	ZagreusField_01520 = true, -- ZagreusHome_1520
+	ZagreusField_02531 = true, -- ZagreusHome_2531
+
 	-- GiftTextLineSets
 	-- EndVoiceLines
 	-- ZagreusField_01470 = true,

@@ -161,21 +161,21 @@ modutil.mod.Path.Wrap("PlayRandomRemainingTextLines", function(base, source, tex
 			return false
 		end
 
-		local randomLines = nil
+		local randomLines = {}
 		-- Custom logic start
 		if not game.IsEmpty(superPriorityTextLines) then
-			randomLines = game.GetRandomValue(superPriorityTextLines)
+			randomLines = game.GetRandomValue(superPriorityTextLines) or {}
 		elseif not game.IsEmpty(priorityTextLines) then
-			randomLines = game.GetRandomValue(priorityTextLines)
+			randomLines = game.GetRandomValue(priorityTextLines) or {}
 			-- Custom logic end
 		elseif game.IsEmpty(eligibleUnplayedLines) then
 			-- All lines played, start the record over
 			for textLinesName, textLines in pairs(textLineSets) do
 				game.GameState.PlayedRandomTextLines[textLinesName] = nil
 			end
-			randomLines = game.GetRandomValue(allEligibleLines)
+			randomLines = game.GetRandomValue(allEligibleLines) or {}
 		else
-			randomLines = game.GetRandomValue(eligibleUnplayedLines)
+			randomLines = game.GetRandomValue(eligibleUnplayedLines) or {}
 		end
 		game.GameState.PlayedRandomTextLines[randomLines.Name] = true
 		game.PlayTextLines(source, randomLines)
@@ -193,6 +193,10 @@ function mod.AddTextLineToTextLineRecord(source, args)
 			game.CurrentRun.HubTextLinesRecord[args.TextLine] = true
 		elseif game.CurrentRun.CurrentRoom ~= nil then
 			game.CurrentRun.CurrentRoom.TextLinesRecord[args.TextLine] = true
+		end
+
+		if args.AddToGiftTextLinesOrderRecord then
+			table.insert(game.GameState.GiftTextLinesOrderRecord[game.GetGenusName(source)], args.TextLine)
 		end
 	end
 end

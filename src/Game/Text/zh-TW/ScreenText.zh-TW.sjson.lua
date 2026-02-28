@@ -32,7 +32,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- #region Codex/Inventory/Cauldron
+	-- #region Codex/Inventory/Cauldron/Dialogue
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_MarketScreen_Resources",
 	-- 	DisplayName = "Barter Exchange",
@@ -77,7 +77,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_Codex_ThanatosUnlockHint01",
 	-- 	DisplayName =
-	-- 	"{$TempTextData.CharacterName} won't accept any {!TempTextData.ResourceIcon} until he understands more about his feelings for you."
+	-- 	"{$TempTextData.CharacterName} won't accept any {!TempTextData.ResourceIcon} until he understands what you are to each other."
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_Codex_BondForgedThanatos",
@@ -91,6 +91,40 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_Codex_BondForgedSisyphus",
 	-- 	DisplayName = "You and {$TempTextData.CharacterName} share a rock-solid bond.",
+	-- },
+	-- #endregion
+	-- #region Relationship Dialogue Choices
+	-- {
+	-- 	Id = "Meg_GoToHer",
+	-- 	DisplayName = "{CF} Go to Her",
+	-- },
+	-- {
+	-- 	Id = "Meg_BackOff",
+	-- 	DisplayName = "{CN} Ease Off",
+	-- },
+	-- {
+	-- 	Id = "Than_GoToHim",
+	-- 	DisplayName = "{CF} Comfort Him",
+	-- },
+	-- {
+	-- 	Id = "Than_BackOff",
+	-- 	DisplayName = "{CN} Ease Off",
+	-- },
+	-- {
+	-- 	Id = "Dusa_Accept",
+	-- 	DisplayName = "{CF} Politely Accept",
+	-- },
+	-- {
+	-- 	Id = "Dusa_Decline",
+	-- 	DisplayName = "{CN} Kindly Decline",
+	-- },
+	-- {
+	-- 	Id = "MegThan_GoToThem",
+	-- 	DisplayName = "{CF} Go to Them",
+	-- },
+	-- {
+	-- 	Id = "MegThan_BackOff",
+	-- 	DisplayName = "{CN} Ease Off",
 	-- },
 	-- #endregion
 	-- #endregion

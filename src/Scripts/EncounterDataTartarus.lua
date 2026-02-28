@@ -76,9 +76,10 @@ local encounterReplacements = {
 		-- Blocks the LocationText from being shown an extra time in RoomEntranceDrop
 		BlockLocationText = true,
 		UnthreadedEvents = {
+			-- If Thanatos is present, wait for him to create the reward, otherwise spawn it immediately
 			{
-				FunctionName = "SpawnRoomReward",
-				Args = { WaitUntilPickup = true, }
+				FunctionName = _PLUGIN.guid .. "." .. "CheckThanatosOrSpawnRoomReward",
+				Args = { DelayedStart = true, },
 			},
 			{ FunctionName = "EncounterAudio" },
 			{ FunctionName = "BeginOpeningEncounter" },
@@ -296,6 +297,7 @@ local encounterModifications = {
 		CountsForRoomEncounterDepth = true,
 	},
 	OpeningGenerated = {
+		LoadModdedVoiceBanks = { "Thanatos", "ZagreusField" },
 		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
 		DifficultyModifier = -40,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
@@ -316,6 +318,26 @@ local encounterModifications = {
 		},
 		-- They can sometimes briefly move
 		Blacklist = { LightSpawner = true },
+
+		-- Spawn Thanatos' House version if eligible (check through his ActivateRequirements)
+		StartRoomUnthreadedEvents = {
+			{
+				FunctionName = "ActivatePrePlaced",
+				GameStateRequirements = {
+					-- Adapted from NPC_Thanatos_01 ActivateRequirements
+					RequiredTextLines = { "ThanatosFieldFirstMeeting", },
+					RequiredFalseTextLinesLastRun = { "PersephoneFirstMeeting", },
+					-- Will appear in any run after you met him during a run in his Field version
+					{
+						Path = { "PrevRun", "EncountersOccurredCache", },
+						HasAny = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro", },
+					},
+					NamedRequirementsFalse = { "StandardPackageBountyActive", },
+				},
+				Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Thanatos_01" }, },
+			},
+			{ FunctionName = "CheckConversations" },
+		},
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,
@@ -399,6 +421,11 @@ local encounterModifications = {
 		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "ZagreusField" },
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
+			{
+				-- Didn't have the romance voiceline this run
+				Path = { "CurrentRun", "TextLinesRecord" },
+				HasNone = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" }
+			},
 		},
 		RequiredKillFunctionName = _PLUGIN.guid .. "." .. "TrackThanatosChallengeProgress",
 		BlockAthenaEncounterKeepsake = true,
