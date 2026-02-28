@@ -194,5 +194,9 @@ function mod.AddTextLineToTextLineRecord(source, args)
 		elseif game.CurrentRun.CurrentRoom ~= nil then
 			game.CurrentRun.CurrentRoom.TextLinesRecord[args.TextLine] = true
 		end
+
+		if args.AddToGiftTextLinesOrderRecord then
+			table.insert(game.GameState.GiftTextLinesOrderRecord[game.GetGenusName(source)], args.TextLine)
+		end
 	end
 end

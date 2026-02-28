@@ -848,13 +848,16 @@ local npcModifications = {
 				[2] = {
 					-- Manually add the alternate to the TextLineRecord to not break the NarrativeData/locked hint ordering in the Codex
 					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
-					PostLineFunctionArgs = { TextLine = "ThanatosGift04_B" },
+					PostLineFunctionArgs = { TextLine = "ThanatosGift04_B", AddToGiftTextLinesOrderRecord = true },
 				},
 			},
 			ThanatosGift04_B = {
+				-- Only one of the alternates should be on the GiftTrack
+				-- Which one doesn't matter, as both are added to the TextLinesRecord at the same time
+				OnGiftTrack = false,
 				[2] = {
 					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
-					PostLineFunctionArgs = { TextLine = "ThanatosGift04" },
+					PostLineFunctionArgs = { TextLine = "ThanatosGift04", AddToGiftTextLinesOrderRecord = true },
 				},
 			},
 			ThanatosGift07_A = {
@@ -880,6 +883,8 @@ local npcModifications = {
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
 			ThanatosGift10 = {
+				StartBecomingCloserTrack = true,
+				HintId = "Codex_GrowingCloser01",
 				CompletedHintId = "ModsNikkelMHadesBiomes_Codex_BondForgedThanatos",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
@@ -1139,13 +1144,16 @@ local npcModifications = {
 				[2] = {
 					-- Manually add the alternate to the TextLineRecord to not break the NarrativeData/locked hint ordering in the Codex
 					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
-					PostLineFunctionArgs = { TextLine = "OrpheusGift04_B" },
+					PostLineFunctionArgs = { TextLine = "OrpheusGift04_B", AddToGiftTextLinesOrderRecord = true },
 				},
 			},
 			OrpheusGift04_B = {
+				-- Only one of the alternates should be on the GiftTrack
+				-- Which one doesn't matter, as both are added to the TextLinesRecord at the same time
+				OnGiftTrack = false,
 				[2] = {
 					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
-					PostLineFunctionArgs = { TextLine = "OrpheusGift04" },
+					PostLineFunctionArgs = { TextLine = "OrpheusGift04", AddToGiftTextLinesOrderRecord = true },
 				},
 			},
 			OrpheusGift05 = {

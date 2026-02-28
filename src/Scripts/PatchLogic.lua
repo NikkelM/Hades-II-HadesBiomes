@@ -162,8 +162,43 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 8 then
+			-- Additional fix for the Thanatos gift alternates above
+			if game.GameState.TextLinesRecord["ThanatosGift04_B"] ~= nil and not game.Contains(game.GameState.GiftTextLinesOrderRecord["NPC_Thanatos_01"] or {}, "ThanatosGift04_B") then
+				for index, entry in ipairs(game.GameState.GiftTextLinesOrderRecord["NPC_Thanatos_01"]) do
+					if entry == "ThanatosGift04" then
+						table.insert(game.GameState.GiftTextLinesOrderRecord["NPC_Thanatos_01"], index, "ThanatosGift04_B")
+						break
+					end
+				end
+			elseif game.GameState.TextLinesRecord["ThanatosGift04"] ~= nil and not game.Contains(game.GameState.GiftTextLinesOrderRecord["NPC_Thanatos_01"] or {}, "ThanatosGift04") then
+				for index, entry in ipairs(game.GameState.GiftTextLinesOrderRecord["NPC_Thanatos_01"]) do
+					if entry == "ThanatosGift04_B" then
+						table.insert(game.GameState.GiftTextLinesOrderRecord["NPC_Thanatos_01"], index, "ThanatosGift04")
+						break
+					end
+				end
+			end
+
+			if game.GameState.TextLinesRecord["OrpheusGift04_B"] ~= nil and not game.Contains(game.GameState.GiftTextLinesOrderRecord["NPC_Orpheus_01"] or {}, "OrpheusGift04_B") then
+				for index, entry in ipairs(game.GameState.GiftTextLinesOrderRecord["NPC_Orpheus_01"]) do
+					if entry == "OrpheusGift04" then
+						table.insert(game.GameState.GiftTextLinesOrderRecord["NPC_Orpheus_01"], index, "OrpheusGift04_B")
+						break
+					end
+				end
+			elseif game.GameState.TextLinesRecord["OrpheusGift04"] ~= nil and not game.Contains(game.GameState.GiftTextLinesOrderRecord["NPC_Orpheus_01"] or {}, "OrpheusGift04") then
+				for index, entry in ipairs(game.GameState.GiftTextLinesOrderRecord["NPC_Orpheus_01"]) do
+					if entry == "OrpheusGift04_B" then
+						table.insert(game.GameState.GiftTextLinesOrderRecord["NPC_Orpheus_01"], index, "OrpheusGift04")
+						break
+					end
+				end
+			end
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 7
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 8
 	end
 
 	return base()
