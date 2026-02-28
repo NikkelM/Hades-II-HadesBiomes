@@ -18,6 +18,7 @@ Other fixes and improvements:
 - Codex entries that are locked by relationship or storyline progress now have fitting hints associated with them.
 - Updated a number of boon icons with enhanced visuals.
 - Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlayed over the blacked-out death screen.
+- Fixed: The Hydra can get stuck between obstacles after dashing into the lava in very rare circumstances. 
 - Fixed: Archer traps in Elysium sometimes fail to fire the arrow.
 - Fixed: Some codex entries overflow the intended area in the Codex.
 - Fixed: Some dialogues are never eligible to play.

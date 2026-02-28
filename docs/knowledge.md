@@ -1002,6 +1002,21 @@ New map_text groups:
 },
 ```
 
+#### X_Boss01
+
+For all obstacles of the following types, change `Collision` to `false`, to prevent the Hydra from getting stuck:
+- `AsphodelTombstone01b`
+- `AsphodelTombstone03`
+- `AsphodelTombstone04`
+
+#### X_Boss02
+
+For all obstacles of the following types, change `Collision` to `false`, to prevent the Hydra from getting stuck:
+- `AsphodelTombstone01b`
+- `AsphodelTombstone03`
+- `AsphodelTombstone04`
+- `AsphodelGable01b`
+
 #### X_PostBoss01
 
 TravelChain01Anim:
