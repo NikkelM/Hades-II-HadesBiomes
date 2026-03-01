@@ -436,6 +436,10 @@ mod.BikFileNames = {
 	-- "Enemy_Fury_IdleInHouse_Bink",
 	-- "Enemy_Fury_IdleInHouseGreeting_Bink",
 	-- #endregion
+	-- #region Achilles
+	"NPC_AchillesIdle_Bink",
+	"NPC_AchillesIdleGreeting_Bink",
+	-- #endregion
 }
 
 mod.CustomBikFileNames = {

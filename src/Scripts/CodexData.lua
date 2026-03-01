@@ -23,7 +23,8 @@ local function loadHadesCodexData(fileName)
 	end
 end
 
-local storyNPCNames = {
+local otherDenizensNames = {
+	"NPC_Achilles_01",
 	"NPC_Sisyphus_01",
 	"NPC_Eurydice_01",
 	"NPC_Patroclus_01",
@@ -36,7 +37,7 @@ local hadesCodexOrdering = {
 		-- Locations
 		"Tartarus", "Asphodel", "Elysium", "Styx", "Challenge", "Surface",
 		-- NPCs
-		"NPC_Sisyphus_01", "NPC_Orpheus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01",
+		"NPC_Achilles_01", "NPC_Sisyphus_01", "NPC_Orpheus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01",
 		-- Enemies
 		"HeavyMelee", "LightRanged", "PunchingBagUnit", "ThiefMineLayer", "WretchAssassinMiniboss", "Swarmer", "LightSpawner",
 		"DisembodiedHand", "HeavyRanged", "HeavyRangedSplitterMiniboss", "NPC_FurySister_01", "Harpy2", "Harpy3",
@@ -127,7 +128,7 @@ end
 -- Romance/Custom Relationship/Locked entries
 hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
 hadesCodexData.ChthonicGods.Entries.NPC_Thanatos_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
--- hadesCodexData.OtherDenizens.Entries.NPC_Achilles_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.OtherDenizens.Entries.NPC_Achilles_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
 hadesCodexData.OtherDenizens.Entries.NPC_Sisyphus_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
 hadesCodexData.OtherDenizens.Entries.NPC_Orpheus_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
 hadesCodexData.OtherDenizens.Entries.NPC_Eurydice_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
@@ -280,7 +281,7 @@ for groupName, groupData in pairs(hadesCodexData) do
 
 		for name, entry in pairs(groupData.Entries) do
 			-- For the NPCs, add the NoRequirements flag to the top-level, to allow to always view their boons, even if the codex entry has not been unlocked yet
-			if game.Contains(storyNPCNames, name) then
+			if game.Contains(otherDenizensNames, name) then
 				entry.NoRequirements = true
 			end
 			-- Update the image path
@@ -315,7 +316,7 @@ end
 updatedCodexData[codexGroupNameMappings.Biomes] = nil
 -- We don't have all OtherDenizens in the mod, so we only add the ones that are in the hadesCodexOrdering
 for entryName, entry in pairs(updatedCodexData[codexGroupNameMappings.OtherDenizens].Entries) do
-	if game.Contains(storyNPCNames, entryName) then
+	if game.Contains(otherDenizensNames, entryName) then
 		updatedCodexData[codexGroupNameMappings.Enemies].Entries[entryName] = entry
 	end
 end

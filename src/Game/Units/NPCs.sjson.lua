@@ -11,9 +11,7 @@ local hadesNPCsToCopy = {
 	"NPC_Sisyphus_01",
 	"NPC_Eurydice_01",
 	"NPC_Patroclus_01",
-	-- Not using these yet in our NPC logic
-	-- "NPC_Achilles_01",
-	-- "NPC_Achilles_Story_01",
+	"NPC_Achilles_Story_01",
 	"NPC_Orpheus_Story_01",
 	"NPC_Orpheus_01",
 	"NPC_Hades_Story_02",
@@ -21,6 +19,7 @@ local hadesNPCsToCopy = {
 	-- -- "NPC_Persephone_01",
 	-- -- "NPC_Thanatos_01",
 	-- -- "NPC_Thanatos_Field_01",
+	-- -- "NPC_Achilles_01",
 }
 
 local hadesNPCCopySet = {}
@@ -37,8 +36,7 @@ local hadesNPCModifications = {
 	NPC_Sisyphus_01 = { InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC", },
 	NPC_Eurydice_01 = { InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC", },
 	NPC_Patroclus_01 = { InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC", },
-	-- NPC_Achilles_01 = { InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC", },
-	-- NPC_Achilles_Story_01 = { InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC", },
+	NPC_Achilles_Story_01 = { InheritFrom = "ModsNikkelMHadesBiomes_NPC_Achilles_01", },
 	NPC_Orpheus_01 = { InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC", },
 	NPC_Hades_Story_02 = { InheritFrom = "ModsNikkelMHadesBiomes_NPC_Hades_01", },
 }
@@ -165,6 +163,25 @@ local hadesNPCAdditions = {
 				{ X = -54, Y = 3 },
 			},
 			SubtitleColor = { Red = 0.88, Green = 0.84, Blue = 0.25 },
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_NPC_Achilles_01",
+		InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC",
+		DisplayInEditor = true,
+		Thing = {
+			AttachedAnim = "NPCShadow",
+			EditorOutlineDrawBounds = false,
+			Graphic = "AchillesIdle",
+			OffsetZ = 20.0,
+			Tallness = 221.0,
+			Points = {
+				{ X = 4,   Y = 26 },
+				{ X = 68,  Y = -6 },
+				{ X = -8,  Y = -44 },
+				{ X = -72, Y = -12 },
+			},
+			SubtitleColor = { Red = 0.67, Green = 0.84, Blue = 0.34, },
 		},
 	},
 	-- The exact same as BaseNPC, but we need to redefine it as we hook into the Enemies.sjson file where BaseNPC is not yet defined
