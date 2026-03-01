@@ -558,8 +558,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		-- TODO:
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_sealedDocument_01",
+		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_lernie",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantAsphodel = 4,
 			ModsNikkelMHadesBiomes_OreAsphodel = 5,
