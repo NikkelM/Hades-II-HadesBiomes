@@ -14,11 +14,11 @@
 Other fixes and improvements:
 - Learn how to play the Lyre from Orpheus.
 - Forge a bond, and perhaps a deeper relationship, with Thanatos.
-- Started the addition of the Sisyphus liberation questline - you will be able to receive the new minor prophecy, but will not be able to complete it yet.
 - Sisyphus, Eurydice and Patroclus will now say a short line after you choose one of their boons.
 - Codex entries that are locked by relationship or storyline progress now have fitting hints associated with them.
 - Added a new incantation that allows you to remember Lernie's nickname.
 - Updated a number of boon icons with enhanced visuals.
+- Fixed: The game may crash if the last Zagreus' Journey run was more than ten runs ago.
 - Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlayed over the blacked-out death screen.
 - Fixed: The Hydra can get stuck between obstacles after dashing into the lava in very rare circumstances. 
 - Fixed: Archer traps in Elysium sometimes fail to fire the arrow.

@@ -556,7 +556,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	-- local prevRun = game.PrevRun
-	local prevRun = mod.GetPreviousModdedRun() or {}
+	local prevRun = mod.GetPreviousModdedRun()
 	if requirements.RequiredAnyTextLinesLastRun ~= nil then
 		if prevRun == nil or prevRun.TextLinesRecord == nil then
 			return false
