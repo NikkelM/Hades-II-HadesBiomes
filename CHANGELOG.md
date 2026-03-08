@@ -1,8 +1,13 @@
 # Changelog
 
-## v0.7.0
+## v0.7.1
 
 <!--Releasenotes start-->
+- Fixed: Thanatos keepsake cannot be unlocked and does not appear in the Keepsake Cabinet.
+<!--Releasenotes end-->
+
+## v0.7.0
+
 ### Patch Highlights:
 - You can now encounter **Orpheus** in Tartarus, where he will offer you a select number of his songs that will empower your current run. Free Orpheus through a new incantation at the Cauldron.
 - Progress Orpheus' and Eurydice's storyline and reunite them!
@@ -27,7 +32,6 @@ Other fixes and improvements:
 - Fixed: Some boss attack voiceline quips refer to Zagreus directly.
 - Fixed: Reward previews in Elysium and Styx are sometimes misaligned.
 - Fixed: The game may get into a bad state by not setting required flags correctly.
-<!--Releasenotes end-->
 
 ## v0.6.0
 
