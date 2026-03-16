@@ -343,8 +343,27 @@ local encounterModifications = {
 		CanEncounterSkip = false,
 	},
 	Story_Sisyphus_01 = {
-		-- Always eligible, since we need to be able to fall back to this
-		GameStateRequirements = {},
+		-- Set ineligible if the player has unlocked Orpheus but never met him - force Orpheus on the next run
+		GameStateRequirements = {
+			OrRequirements = {
+				-- Either hasn't unlocked Orpheus yet
+				{
+					{
+						PathFalse = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+					},
+				},
+				-- Or has unlocked AND met Orpheus
+				{
+					{
+						PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+					},
+					{
+						Path = { "GameState", "TextLinesRecord" },
+						HasAny = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+					},
+				},
+			},
+		},
 
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" }, }, },

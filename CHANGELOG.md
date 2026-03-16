@@ -3,6 +3,7 @@
 ## v0.7.2
 
 <!--Releasenotes start-->
+- After freeing Orpheus, you are guaranteed to encounter him before Sisyphus can appear again.
 - Fixed: "Friendly Faces" Quest shows the names of characters before they have been met.
 <!--Releasenotes end-->
 
