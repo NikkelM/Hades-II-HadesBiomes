@@ -424,6 +424,7 @@ local function on_ready()
 			import "Scripts/ResourceData.lua"
 			import "Scripts/RequirementsData.lua"
 			import "Scripts/ShrineData.lua"
+			import "Scripts/TraitData_Store.lua"
 			import "Scripts/TraitData.lua"
 			import "Scripts/TraitDataNPCs.lua"
 			import "Scripts/ObstacleData.lua"

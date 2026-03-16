@@ -124,6 +124,15 @@ local addAnimations = {
 		FilePath = "GUIModded\\Screens\\BoonIcons\\Orpheus_GoodRiddance",
 	},
 	-- #endregion
+	-- #region WellShops
+	ModsNikkelMHadesBiomes_Shop_FlameWheels = {
+		Name = "ModsNikkelMHadesBiomes_Shop_FlameWheels",
+		InheritFrom = "BoonIcon",
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\ShopIcons\\release_parchment_23",
+		EndFrame = 1,
+		StartFrame = 1,
+	},
+	-- #endregion
 }
 
 sjson.hook(hadesTwoBoonFile, function(data)

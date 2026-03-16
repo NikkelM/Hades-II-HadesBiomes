@@ -222,6 +222,14 @@ local newData = {
 	-- 	"You gain {#UpgradeFormat}{$TooltipData.StatDisplay1}{#Prev}{!Icons.ReRollAlt}, and can alter {#BoldFormat}Location Rewards{#Prev}. This does not break {$Keywords.Random}.",
 	-- },
 	-- #endregion
+
+	-- #region WellShops
+	{
+		Id = "ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait",
+		DisplayName = "Flammenrad-Erlösung",
+		Description = "Verhindert, dass {$TooltipData.BlockedEnemyTypes[1]} Gegner in {$Keywords.EncounterPlural} auftauchen.",
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)
