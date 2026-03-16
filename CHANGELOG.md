@@ -1,10 +1,14 @@
 # Changelog
 
-## v0.7.1
+## v0.7.2
 
 <!--Releasenotes start-->
-- Fixed: Thanatos keepsake cannot be unlocked and does not appear in the Keepsake Cabinet.
+- Fixed: "Friendly Faces" Quest shows the names of characters before they have been met.
 <!--Releasenotes end-->
+
+## v0.7.1
+
+- Fixed: Thanatos keepsake cannot be unlocked and does not appear in the Keepsake Cabinet.
 
 ## v0.7.0
 
