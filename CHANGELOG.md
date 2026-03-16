@@ -5,6 +5,7 @@
 <!--Releasenotes start-->
 - After freeing Orpheus, you are guaranteed to encounter him before Sisyphus can appear again.
 - Fixed: When a Skull-Crusher is polymorphed while taking off, its animations break (Skull-Crushers can no longer be polymorphed).
+- Fixed: The button prompt to reroll rewards in Asphodel does not change if the keybinding is changed.
 - Fixed: The game crashes if a specific Thanatos dialogue is queued to play next.
 - Fixed: "Friendly Faces" Quest shows the names of characters before they have been met.
 <!--Releasenotes end-->

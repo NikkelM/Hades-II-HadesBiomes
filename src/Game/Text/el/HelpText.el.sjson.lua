@@ -14,6 +14,10 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText",
 	-- 	DisplayName = "{I} {#UseTextPreReqFormat}Descend into Nightmare",
 	-- },
+	-- {
+	-- 	Id = "UseLeaveRoomAsphodel_Reroll",
+	-- 	DisplayName = "{I} Embark \n {RR} Alter {#UseGiftPointFormat}(-1{!Icons.ReRoll})",
+	-- },
 	-- #endregion
 
 	-- #region UI

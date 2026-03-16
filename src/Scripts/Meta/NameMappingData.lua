@@ -281,7 +281,7 @@ mod.HadesHelpTextCopyKeys = {
 	-- #endregion
 	-- #region Interaction prompts
 	UseLeaveRoomAsphodel = true,
-	UseLeaveRoomAsphodel_Reroll = true,
+	-- UseLeaveRoomAsphodel_Reroll = true, -- Broken keybind reference, replaced
 	UseLeaveRoomAsphodel_CannotReroll = true,
 	GiftBouldyUseText = true,
 	UseTalkToSisyphus = true,
