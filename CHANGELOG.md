@@ -3,8 +3,11 @@
 ## v0.7.2
 
 <!--Releasenotes start-->
+### Patch Highlights:
 - Added "Flame Wheels Release" item to Wells of Charon.
 - After freeing Orpheus, you are guaranteed to encounter him before Sisyphus can appear again.
+
+Other fixes and improvements:
 - Fixed: When a Skull-Crusher is polymorphed while taking off, its animations break (Skull-Crushers can no longer be polymorphed).
 - Fixed: The button prompt to reroll rewards in Asphodel does not change if the keybinding is changed.
 - Fixed: The game crashes if a specific Thanatos dialogue is queued to play next.
