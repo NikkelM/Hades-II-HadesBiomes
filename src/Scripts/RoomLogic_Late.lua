@@ -11,15 +11,3 @@ modutil.mod.Path.Context.Wrap.Static("HandleSecretSpawns", function(currentRun)
 		return base(args)
 	end)
 end)
-
-modutil.mod.Path.Context.Wrap.Static("LoadCurrentRoomResources", function(currentRun)
-	modutil.mod.Path.Wrap("LoadVoiceBanks", function(base, characters, persist, ignoreAssert)
-		if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-			if mod.LootVoiceBankMappings[characters] ~= nil then
-				game.LoadVoiceBanks(mod.LootVoiceBankMappings[characters])
-			end
-		end
-
-		return base(characters, persist, ignoreAssert)
-	end)
-end)

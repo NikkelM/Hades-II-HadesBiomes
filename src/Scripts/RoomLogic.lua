@@ -322,6 +322,24 @@ modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentR
 	end
 end)
 
+modutil.mod.Path.Wrap("LoadVoiceBanks", function(base, characters, persist, ignoreAssert)
+	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		if type(characters) == "table" then
+			for _, character in ipairs(characters) do
+				if mod.LootVoiceBankMappings[character] ~= nil then
+					game.LoadVoiceBanks(mod.LootVoiceBankMappings[character])
+				end
+			end
+		else
+			if mod.LootVoiceBankMappings[characters] ~= nil then
+				game.LoadVoiceBanks(mod.LootVoiceBankMappings[characters])
+			end
+		end
+	end
+
+	return base(characters, persist, ignoreAssert)
+end)
+
 -- This is essentially the same function as vanilla, and only inserts the logic to upgrade consumable rewards for Styx miniboss rooms and ShrineChallenge/Erebus rooms
 function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	-- Synchronize the RNG to its initial state. Makes room reward choices deterministic on save/load
