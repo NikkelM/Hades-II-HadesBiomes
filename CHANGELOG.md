@@ -6,7 +6,9 @@
 ### Patch Highlights:
 
 Other fixes and improvements:
-- Balancing: Elyisan Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.  
+- Balancing: Elyisan Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
+- Balancing: Reduced the chance for the "Popper" elite perk to appear.
+- Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk no longer trigger "Unseen Ire".
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
 <!--Releasenotes end-->
 

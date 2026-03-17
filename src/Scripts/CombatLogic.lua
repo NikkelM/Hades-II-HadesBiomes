@@ -16,7 +16,7 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 		if victim.KillSpawnsOnDeath then
 			local killInterval = victim.KillSpawnsInterval or 0.1
 			local delay = 0
-			local spawns = GetIds({ Name = "Spawner" .. victim.ObjectId })
+			local spawns = GetIds({ Name = "Spawner" .. victim.ObjectId }) or {}
 			for _, spawnId in pairs(spawns) do
 				if game.RequiredKillEnemies[spawnId] ~= nil then
 					delay = delay + killInterval
@@ -49,7 +49,7 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 
 		if victim.WipeEnemyTypesOnKill ~= nil then
 			for k, enemyType in pairs(victim.WipeEnemyTypesOnKill) do
-				for k, enemyId in pairs(GetIdsByType({ Name = enemyType })) do
+				for k, enemyId in pairs(GetIdsByType({ Name = enemyType }) or {}) do
 					if game.ActiveEnemies[enemyId] ~= nil then
 						game.Kill(game.ActiveEnemies[enemyId])
 					end
