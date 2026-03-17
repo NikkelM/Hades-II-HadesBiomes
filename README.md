@@ -188,7 +188,9 @@ After translating your chosen texts, open a Pull Request with your changes on Gi
 
 Congratulations, you've made it to the bottom of the page!
 
-If you are enjoying this mod and want to say thank you, you can leave a donation on [GitHub Sponsors](https://github.com/sponsors/NikkelM) or [Ko-Fi](https://ko-fi.com/nikkelm).
+If you are enjoying this mod and want to say thank you, you can leave a donation on [Ko-Fi](https://ko-fi.com/nikkelm) or [GitHub Sponsors](https://github.com/sponsors/NikkelM).
+
+This mod does not, and never will, use generative AI for any art, voice or music.
 
 ## Disclaimer
 
