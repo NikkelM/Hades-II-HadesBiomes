@@ -67,6 +67,7 @@ Some other mods integrate with _Zagreus' Journey_ to provide additional features
 - [Charon's Tip Jar](https://thunderstore.io/c/hades-ii/p/NikkelM/Charons_Tip_Jar/) adds a tip jar to Charon's shop rooms during _Zagreus' Journey_ underworld runs.
 - [Flip the Arcana](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Flip_the_Arcana_Mod/) adds flipped versions of the Arcana cards with wildly different effects, and will require resources from _Zagreus' Journey_ to unlock them if both mods are installed.
 - [Biome Randomizer](https://thunderstore.io/c/hades-ii/p/zerp/BiomeRandomizer/) adds new randomized Chaos Trials that change between biomes of the different routes after each boss fight, including the new biomes from _Zagreus' Journey_ if both mods are installed.
+- [NPC Room Randomizer](https://thunderstore.io/c/hades-ii/p/zerp/NPCRoomRandomizer/) randomizes which NPCs appear in which biome, and will include NPCs from _Zagreus' Journey_ if both mods are installed.
 
 > Are you developing a mod that integrates with _Zagreus' Journey_, or would like to add such an integration? Let me know on [Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
