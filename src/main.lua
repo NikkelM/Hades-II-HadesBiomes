@@ -501,6 +501,7 @@ local function on_ready()
 			import "Scripts/SaveLogic.lua"
 			import "Scripts/SellTraitLogic.lua"
 			import "Scripts/ShrinePresentation.lua"
+			import "Scripts/SpellLogic.lua"
 			import "Scripts/StoreLogic.lua"
 			import "Scripts/TraitLogic.lua"
 			import "Scripts/WeaponLogic.lua"
