@@ -9,6 +9,7 @@ modutil.mod.Path.Context.Wrap.Static("OpenRunClearScreen", function()
 					[game.ModsNikkelMHadesBiomesBadgeOrderData[game.GameState.ModsNikkelMHadesBiomesBadgeRank]]
 
 			if badgeData ~= nil then
+				SetAnimation({ DestinationId = components.ModsNikkelMHadesBiomesBadgeRankVignette.Id, Name = "ModsNikkelMHadesBiomes_RankBadgeVignette" })
 				SetAnimation({ DestinationId = components.ModsNikkelMHadesBiomesBadgeRankIcon.Id, Name = badgeData.Icon })
 				SetAnimation({
 					DestinationId = components.ModsNikkelMHadesBiomesBadgeRankNameplate.Id,

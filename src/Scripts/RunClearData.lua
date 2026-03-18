@@ -888,6 +888,14 @@ game.ProcessDataStore(game.GameData.ModsNikkelMHadesBiomesRunClearMessageData)
 
 -- #region Badge Ranks/Spirit Mixer
 -- Top right of the screen, aligned to have the rank text centered with the headers below
+game.ScreenData.RunClear.ComponentData.ModsNikkelMHadesBiomesBadgeRankVignette = {
+	GroupName = "Combat_Menu_TraitTray_Overlay",
+	Alpha = 0.0,
+	AlphaTarget = 1.0,
+	AlphaTargetDuration = 0.6,
+	RightOffset = 303,
+	Y = 119,
+}
 game.ScreenData.RunClear.ComponentData.ModsNikkelMHadesBiomesBadgeRankIcon = {
 	GroupName = "Combat_Menu_TraitTray_Overlay",
 	Y = 65,
@@ -907,6 +915,7 @@ game.ScreenData.RunClear.ComponentData.ModsNikkelMHadesBiomesBadgeRankNameplate 
 	AlphaTargetDuration = 0.6,
 	Scale = 0.50,
 }
+table.insert(game.ScreenData.RunClear.ComponentData.Order, "ModsNikkelMHadesBiomesBadgeRankVignette")
 table.insert(game.ScreenData.RunClear.ComponentData.Order, "ModsNikkelMHadesBiomesBadgeRankNameplate")
 table.insert(game.ScreenData.RunClear.ComponentData.Order, "ModsNikkelMHadesBiomesBadgeRankIcon")
 -- #endregion

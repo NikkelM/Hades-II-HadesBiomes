@@ -13,6 +13,13 @@ local addAnimations = {
 		InheritFrom = "VictoryScreenIllustration_Underworld",
 		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\VictoryScreen\\VictoryScreenBackground_Elysium",
 	},
+	-- Badge Rank Vignette
+	ModsNikkelMHadesBiomes_RankBadgeVignette = {
+		Name = "ModsNikkelMHadesBiomes_RankBadgeVignette",
+		Type = "Constant",
+		FilePath = "GUI\\HUD\\Badges\\ModsNikkelMHadesBiomes_BadgeRankVignette",
+		Material = "Unlit",
+	},
 	-- Badge Rank Nameplate
 	ModsNikkelMHadesBiomes_BadgeNamePlate01 = {
 		Name = "ModsNikkelMHadesBiomes_BadgeNamePlate01",
