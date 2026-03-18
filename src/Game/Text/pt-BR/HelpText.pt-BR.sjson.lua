@@ -1300,6 +1300,18 @@ local newData = {
 	-- 	Description =
 	-- 	"Bone Hydra... can I call you Bone Hydra? Lernie, maybe? Lernie, I like that. You don't mind if I call you Lernie from now on, right?",
 	-- },
+	-- Unlock Hades badges at the Badge Seller/Spirit Mixer
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller",
+	-- 	DisplayName = "Resources Director's Familial Bond",
+	-- 	Description =
+	-- 	"Rise above your station by donating {!Icons.CosmeticsPointsIcon} and other resources collected during your travels through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} to the {$Keywords.Bartender}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller_Flavor",
+	-- 	Description =
+	-- 	"The {$Keywords.Bartender} and the Resources Director staying in your Father's house often meet and are on good terms, though who came up with the idea of rank advancements first is an often disputed topic of discussion.",
+	-- },
 	-- #endregion
 
 	-- #region Keywords

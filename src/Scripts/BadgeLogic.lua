@@ -4,13 +4,10 @@ modutil.mod.Path.Wrap("BadgeSellerSetupUseText", function(base, source, args)
 	-- If no vanilla badge is available anymore, returns early and sets source.OnUsedFunctionName = nil
 	base(source, args)
 
-	-- TODO: Add new WorldUpgrade for modded badges
-	-- 	{
-	-- 	PathTrue = { "GameState", "ReachedTrueEnding", },
-	-- },
-	-- {
-	-- 	PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBadgeSeller" },
-	-- }
+	-- If the player hasn't performed the Hades badge incantation yet, don't do anything (the ReceiveGiftFunctionName will not be set and not useable)
+	if not game.GameState.WorldUpgrades.ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller then
+		return
+	end
 
 	-- Check if a next modded badge is available
 	local nextModdedRank = (game.GameState.ModsNikkelMHadesBiomesBadgeRank or 0) + 1
