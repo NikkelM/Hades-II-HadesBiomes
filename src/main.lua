@@ -403,6 +403,7 @@ local function on_ready()
 			DebugLogScriptImportProgress("Weapon Data")
 
 			-- Other data that must be loaded before SetupRunData()
+			import "Scripts/BadgeData.lua"
 			import "Scripts/BountyData.lua"
 			import "Scripts/CodexData.lua"
 			import "Scripts/ConsumableData.lua"
@@ -466,6 +467,7 @@ local function on_ready()
 
 			-- "Normal" code changes
 			import "Scripts/AudioLogic.lua"
+			import "Scripts/BadgeLogic.lua"
 			import "Scripts/BiomeMapPresentation.lua"
 			import "Scripts/BountyLogic.lua"
 			import "Scripts/BountyPresentation.lua"
@@ -565,8 +567,10 @@ local function on_ready_late()
 	import "Scripts/InteractLogic_Late.lua"
 	import "Scripts/MarketLogic_Late.lua"
 	import "Scripts/ObjectiveLogic_Late.lua"
+	import "Scripts/ResourceLogic_Late.lua"
 	import "Scripts/RoomLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
+	import "Scripts/RunClearLogic_Late.lua"
 	import "Scripts/WeaponUpgradeLogic_Late.lua"
 end
 

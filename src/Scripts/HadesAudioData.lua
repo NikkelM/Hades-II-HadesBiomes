@@ -405,8 +405,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		PreLineWait = 0.25,
 		SuccessiveChanceToPlay = 0.66,
 		RequiredFalseBossPhase = 3,
-		Cooldowns =
-		{
+		Cooldowns = {
 			{ Name = "HadesAnyQuipSpeech" },
 			{ Name = "HadesWrathSpeech",  Time = 150 },
 		},
@@ -446,8 +445,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			SuccessiveChanceToPlay = 0.8,
 			TriggerCooldowns = { "HadesAnyQuipSpeech" },
 			RequiredFalseBossPhase = 3,
-			Cooldowns =
-			{
+			Cooldowns = {
 				{ Name = "HadesCastBeamSpeech", Time = 60 },
 			},
 
@@ -1920,8 +1918,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- #region Patroclus
 	PatroclusGreetingLines = {
 		Queue = "Interrupt",
-		Cooldowns =
-		{
+		Cooldowns = {
 			{ Name = "PatroclusGreetedRecently", Time = 30 },
 		},
 		{
@@ -3510,6 +3507,24 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		},
 	},
 	-- #endregion
+	-- #region Badges/Ranks/Spirit Mixer
+	ModsNikkelMHadesBiomes_BadgeUpgradedVoiceLines = {
+		PreLineFunctionName = "GenericPresentation",
+		PreLineFunctionArgs = { PreWait = 0.65 },
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		{ Cue = "/VO/Melinoe_5318", Text = "{#Emph}We are as Wraiths in the night. Let it thus be known!" },
+		{ Cue = "/VO/Melinoe_5319", Text = "{#Emph}We are as Specters drifting in the dark. Let it thus be known!" },
+		{ Cue = "/VO/Melinoe_5320", Text = "{#Emph}We are as Revenants of darkest shadow. Let it thus be known!" },
+		{ Cue = "/VO/Melinoe_5321", Text = "{#Emph}We are as Nightmares that linger forever. Let it thus be known!" },
+		{ Cue = "/VO/Melinoe_5322", Text = "{#Emph}We are all Unseen, in status and in name. Let it thus be known!" },
+
+		{ Cue = "/VO/Melinoe_5302", Text = "{#Emph}We are the Unseen, and we shall be feared." },
+		{ Cue = "/VO/Melinoe_5303", Text = "{#Emph}Let fear of the Unseen spread farther still!" },
+		{ Cue = "/VO/Melinoe_5304", Text = "{#Emph}The tales of the Unseen shall grow." },
+		{ Cue = "/VO/Melinoe_5305", Text = "{#Emph}Our exploits soon shall turn to terrifying tales." },
+	},
+	-- #endregion
 }
 
 mod.HeroVoiceLines = mod.HeroVoiceLines or {
@@ -4038,8 +4053,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{
 				Cue = "/VO/MelinoeField_1424",
 				Text = "For Charon!",
-				GameStateRequirements =
-				{
+				GameStateRequirements = {
 					{
 						Path = { "GameState", "EnemyKills", "Hades" },
 						Comparison = ">=",
@@ -4053,8 +4067,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{
 				Cue = "/VO/MelinoeField_1427",
 				Text = "For Schelemeus!",
-				GameStateRequirements =
-				{
+				GameStateRequirements = {
 					{
 						Path = { "GameState", "EnemyKills", "Hades" },
 						Comparison = ">=",
@@ -4609,8 +4622,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{
 				Cue = "/VO/Melinoe_2638",
 				Text = "{#Emph}Ungh... {#Prev}almost had him...!",
-				GameStateRequirements =
-				{
+				GameStateRequirements = {
 					{
 						Path = { "CurrentRun", "ModsNikkelMHadesBiomesActualCurrentRoomName" },
 						IsAny = { "D_Boss01" },
@@ -4620,8 +4632,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{
 				Cue = "/VO/Melinoe_2639",
 				Text = "{#Emph}Khh... {#Prev}almost had her...!",
-				GameStateRequirements =
-				{
+				GameStateRequirements = {
 					{
 						Path = { "CurrentRun", "ModsNikkelMHadesBiomesActualCurrentRoomName" },
 						IsAny = { "A_Boss01", "A_Boss02", "A_Boss02" },
@@ -4779,8 +4790,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				Cue = "/VO/Melinoe_0008_V3",
 				Text = "{#Emph}<Gasp> Augh...",
 				PreLineWait = 0.5,
-				GameStateRequirements =
-				{
+				GameStateRequirements = {
 					{
 						Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache", },
 						Comparison = ">=",

@@ -21,6 +21,68 @@ local newData = {
 		Id = "UseLeaveRoomAsphodel_Reroll",
 		DisplayName = "{I} Отплыть \n {RR} Изменить {#UseGiftPointFormat}(-1{!Icons.ReRoll})",
 	},
+	-- #region Badge Ranks/Spirit Mixer
+	{
+		Id = "BadgeSeller_UseTextTalkAndGift_Both",
+		DisplayName =
+		"{I} Провозгласить {#UseGiftPointFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Повысить {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkGiftAndSpecial_Both",
+		DisplayName =
+		"{I} Провозгласить {#UseGiftPointFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Повысить {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} Приветствовать",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkAndGift_ModdedOnly",
+		DisplayName =
+		"{I} Провозгласить {#ShopCostCantAffordFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Повысить {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkGiftAndSpecial_ModdedOnly",
+		DisplayName =
+		"{I} Провозгласить {#ShopCostCantAffordFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Повысить {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} Приветствовать",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkAndGift_VanillaOnly",
+		DisplayName =
+		"{I} Провозгласить {#UseGiftPointFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Повысить {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkGiftAndSpecial_VanillaOnly",
+		DisplayName =
+		"{I} Провозгласить {#UseGiftPointFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Повысить {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} Приветствовать",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkAndGift_None",
+		DisplayName =
+		"{I} Провозгласить {#ShopCostCantAffordFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Повысить {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkGiftAndSpecial_None",
+		DisplayName =
+		"{I} Провозгласить {#ShopCostCantAffordFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Повысить {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} Приветствовать",
+	},
+	{
+		Id = "BadgeSeller_UseTextGift_VanillaMaxed_ModdedAvailable",
+		DisplayName =
+		"{G} Повысить {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextGiftAndSpecial_VanillaMaxed_ModdedAvailable",
+		DisplayName =
+		"{G} Повысить {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} Приветствовать",
+	},
+	{
+		Id = "BadgeSeller_UseTextGift_VanillaMaxed_ModdedNotAvailable",
+		DisplayName =
+		"{G} Повысить {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextGiftAndSpecial_VanillaMaxed_ModdedNotAvailable",
+		DisplayName =
+		"{G} Повысить {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} Приветствовать",
+	},
+	-- #endregion
 	-- #endregion
 
 	-- #region UI

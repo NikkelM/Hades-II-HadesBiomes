@@ -7,10 +7,18 @@ local addParentAnimations = {}
 
 local addAnimations = {
 	-- #region Run End Screens
+	-- Background image
 	ModsNikkelMHadesBiomes_VictoryScreenIllustration_Elysium = {
 		Name = "ModsNikkelMHadesBiomes_VictoryScreenIllustration_Elysium",
 		InheritFrom = "VictoryScreenIllustration_Underworld",
 		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\VictoryScreen\\VictoryScreenBackground_Elysium",
+	},
+	-- Badge Rank Nameplate
+	ModsNikkelMHadesBiomes_BadgeNamePlate01 = {
+		Name = "ModsNikkelMHadesBiomes_BadgeNamePlate01",
+		Type = "Constant",
+		FilePath = "GUI\\HUD\\Badges\\Nameplate01_Modded",
+		Material = "Unlit",
 	},
 	-- #endregion
 	-- #region Run History Screens
