@@ -10,6 +10,8 @@
 Other fixes and improvements:
 - Balancing: Elyisan Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Reduced the chance for the "Popper" elite perk to appear.
+- Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
+- Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk no longer trigger "Unseen Ire".
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
 <!--Releasenotes end-->

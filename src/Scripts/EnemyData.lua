@@ -2177,6 +2177,10 @@ local enemyModifications = {
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
 		RunHistoryKilledByName = "NPC_Hades_01",
+		DefaultAIData = {
+			-- Otherwise the blast is delayed if the player moves out of range, as the static cast tries to "move" towards the player
+			MoveWithinRange = false,
+		},
 	},
 	NPC_Hades_Story_02 = {
 		IsBoss = false,
