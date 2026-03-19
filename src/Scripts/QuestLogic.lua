@@ -38,7 +38,11 @@ modutil.mod.Path.Wrap("ShowQuestProgress", function(base, screen, questData, req
 
 				local completionRequirementFormat = game.ShallowCopyTable(screen.CompletionRequirementFormat)
 				completionRequirementFormat.Id = screen.Components.DescriptionBox.Id
-				completionRequirementFormat.Text = customStrings[i]
+				if not complete and questData.IncompleteName then
+					completionRequirementFormat.Text = questData.IncompleteName
+				else
+					completionRequirementFormat.Text = customStrings[i]
+				end
 				completionRequirementFormat.OffsetX = screen.CompleteRequirementsOffsetX + ((currentColumn - 1) * columnWidth)
 				completionRequirementFormat.OffsetY = offsetY
 				completionRequirementFormat.Color = complete and completeColor or incompleteColor

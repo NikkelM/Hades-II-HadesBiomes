@@ -362,6 +362,10 @@ table.insert(game.HeroVoiceLines.FishNotCaughtVoiceLines, 1,
 game.GlobalVoiceLines.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines = game.GlobalVoiceLines
 		.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines
+
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_BadgeUpgradedVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_BadgeUpgradedVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_BadgeUpgradedVoiceLines
 -- #endregion
 
 -- #region HeroVoiceLines
@@ -375,7 +379,8 @@ game.HeroVoiceLines.ThanatosSpawningVoiceLines = game.HeroVoiceLines.ThanatosSpa
 game.HeroVoiceLines.ThanatosExitReactionVoiceLines = game.HeroVoiceLines.ThanatosExitReactionVoiceLines or
 		mod.HeroVoiceLines.ThanatosExitReactionVoiceLines
 
-game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines = game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines or
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines = game.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_UsedLyreVoiceLines or
 		mod.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines
 
 game.HeroVoiceLines.ForbiddenShopItemTakenVoiceLines = game.HeroVoiceLines.ForbiddenShopItemTakenVoiceLines or

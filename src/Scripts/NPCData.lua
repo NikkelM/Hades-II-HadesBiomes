@@ -1015,6 +1015,12 @@ local npcModifications = {
 			-- The new name from SharedKeepsakePort
 			ThanatosFieldAboutKeepsake01 = { RequiredTrait = mod.SharedKeepsakePortThanatosKeepsakeTrait, },
 		},
+		InteractTextLineSets = {
+			ThanatosFieldBuildingTrust01 = {
+				-- This is never initialized in H2, and only checked for this one textline, making sure you've beat Thanatos last time as well - it's not that important for consistency
+				ObjectiveCompletedLastOffer = mod.NilValue,
+			},
+		},
 	},
 	NPC_Orpheus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,

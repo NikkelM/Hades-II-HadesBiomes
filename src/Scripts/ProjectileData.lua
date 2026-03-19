@@ -69,6 +69,11 @@ local projectileModifications = {
 	HarpyLightning = {
 		InheritFrom = { "NoSlowFrameProjectile", },
 	},
+	EliteSmoke = {
+		InheritFrom = { "SmokeTrapWeapon", },
+		-- So it doesn't trigger Unseen Ire
+		BypassRetaliate = true,
+	},
 	-- #endregion
 
 	-- #region STYX

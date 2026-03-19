@@ -222,6 +222,14 @@ local newData = {
 	-- 	"You gain {#UpgradeFormat}{$TooltipData.StatDisplay1}{#Prev}{!Icons.ReRollAlt}, and can alter {#BoldFormat}Location Rewards{#Prev}. This does not break {$Keywords.Random}.",
 	-- },
 	-- #endregion
+
+	-- #region WellShops
+	{
+		Id = "ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait",
+		DisplayName = "Amnistia (Ruote Fiammanti)",
+		Description = "Impedisce la comparsa di nemici del tipo {$TooltipData.BlockedEnemyTypes[1]}.",
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

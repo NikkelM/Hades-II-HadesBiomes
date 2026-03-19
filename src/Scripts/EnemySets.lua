@@ -12,7 +12,6 @@ local additionalEnemySets = {
 		"MultiEgg",
 		"MultiEgg",
 		"MultiEgg",
-		"MultiEgg",
 	},
 	-- #endregion
 

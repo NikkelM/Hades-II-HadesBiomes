@@ -1,10 +1,33 @@
 # Changelog
 
-## v0.7.1
+## v0.8.0
 
 <!--Releasenotes start-->
-- Fixed: Thanatos keepsake cannot be unlocked and does not appear in the Keepsake Cabinet.
+### Patch Highlights:
+- Advance through **50** new cosmetic ranks at the _Spirit Mixer_, from the lowly "Alpha Warden" to the feared "Unseen One". These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
+
+Other fixes and improvements:
+- Balancing: Elyisan Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
+- Balancing: Reduced the chance for the "Popper" elite perk to appear.
+- Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk no longer trigger "Unseen Ire".
+- Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
 <!--Releasenotes end-->
+
+## v0.7.2
+
+### Patch Highlights:
+- Added "Flame Wheels Release" item to Wells of Charon.
+- After freeing Orpheus, you are guaranteed to encounter him before Sisyphus can appear again.
+
+Other fixes and improvements:
+- Fixed: When a Skull-Crusher is polymorphed while taking off, its animations break (Skull-Crushers can no longer be polymorphed).
+- Fixed: The button prompt to reroll rewards in Asphodel does not change if the keybinding is changed.
+- Fixed: The game crashes if a specific Thanatos dialogue is queued to play next.
+- Fixed: "Friendly Faces" Quest shows the names of characters before they have been met.
+
+## v0.7.1
+
+- Fixed: Thanatos keepsake cannot be unlocked and does not appear in the Keepsake Cabinet.
 
 ## v0.7.0
 
@@ -80,7 +103,7 @@ Other fixes and improvements:
 - Balancing: The Wretched Sneak now waits longer after it's ranged attack before teleporting away.
 - Fixed: Bloodroot and shovel points can spawn over gaps in the room in Doomstone miniboss chambers in Tartarus.
 - Fixed: "Out of Tartarus" music track plays in Elysium instead of Tartarus.
-- Fixed: Exalted Shades that respawned from a respawn egg will render in front of obstacles when they should be behind them instead.
+- Fixed: Elysian Shades that respawned from an Exalted Shade will render in front of obstacles when they should be behind them instead.
 - Fixed: After defeating the Tiny Vermin in Styx, the biome music starts with an incorrect section when returning to the hub room.
 - Fixed: Hades is missing his intro animation after a particular dialogue before his boss fight.
 - Fixed: Zagreus' portrait disappears during a certain dialogue on the Surface.
@@ -188,7 +211,7 @@ Other fixes and improvements:
 - Fixed: If an Exalted Shade is killed while picking up a weapon, the weapon does not return to its ghostly form.
 - Fixed: When a Crawler is stunned, it becomes invisible.
 - Fixed: Bouldy's special damage boon grants up to 1000% bonus damage instead of up to 10%.
-- Fixed: Elysium Shades killed by Thanatos can sometimes spawn an Exalted Shade.
+- Fixed: Elysian Shades killed by Thanatos can sometimes spawn an Exalted Shade.
 - Fixed: Enemies killed by familiars or charmed enemies are not counted towards Melinoë's kills when dueling Thanatos.
 - Fixed: Enemies killed by Melinoë while they are cursed by Thanatos will still trigger the "skull" death animation effect that should only trigger for Thanatos' kills.
 - Fixed: Biome music continues to play in shop rooms with free rewards before a boss encounter.

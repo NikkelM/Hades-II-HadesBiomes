@@ -222,6 +222,14 @@ local newData = {
 	-- 	"You gain {#UpgradeFormat}{$TooltipData.StatDisplay1}{#Prev}{!Icons.ReRollAlt}, and can alter {#BoldFormat}Location Rewards{#Prev}. This does not break {$Keywords.Random}.",
 	-- },
 	-- #endregion
+
+	-- #region WellShops
+	{
+		Id = "ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait",
+		DisplayName = "火焰战车卸任",
+		Description = "{$TooltipData.BlockedEnemyTypes[1]} 不会在{$Keywords.EncounterPlural}出现。",
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

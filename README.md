@@ -43,6 +43,7 @@ It is highly recommended that you complete the main story of Hades before playin
 - Discover and perform **20+** new incantations to unlock gameplay features and progress story events in Zagreus' Journey.
 - Unlock **five** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus, Orpheus and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
 - Challenge yourself with a set of new **Chaos Trials**, including randomized "Chaos Within" trials in the spirit of (Great) Chaos Above and Below.
+- Advance through **50** new cosmetic-only ranks at the Spirit Mixer, from the lowly "_Alpha Warden_" to the feared "_Unseen One_". 
 - Read all about the new biomes, enemies, bosses and friends in a new chapter in your Codex.
 
 ### Feature Roadmap
@@ -67,6 +68,7 @@ Some other mods integrate with _Zagreus' Journey_ to provide additional features
 - [Charon's Tip Jar](https://thunderstore.io/c/hades-ii/p/NikkelM/Charons_Tip_Jar/) adds a tip jar to Charon's shop rooms during _Zagreus' Journey_ underworld runs.
 - [Flip the Arcana](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Flip_the_Arcana_Mod/) adds flipped versions of the Arcana cards with wildly different effects, and will require resources from _Zagreus' Journey_ to unlock them if both mods are installed.
 - [Biome Randomizer](https://thunderstore.io/c/hades-ii/p/zerp/BiomeRandomizer/) adds new randomized Chaos Trials that change between biomes of the different routes after each boss fight, including the new biomes from _Zagreus' Journey_ if both mods are installed.
+- [NPC Room Randomizer](https://thunderstore.io/c/hades-ii/p/zerp/NPCRoomRandomizer/) randomizes which NPCs appear in which biome, and will include NPCs from _Zagreus' Journey_ if both mods are installed.
 
 > Are you developing a mod that integrates with _Zagreus' Journey_, or would like to add such an integration? Let me know on [Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
@@ -188,7 +190,9 @@ After translating your chosen texts, open a Pull Request with your changes on Gi
 
 Congratulations, you've made it to the bottom of the page!
 
-If you are enjoying this mod and want to say thank you, you can leave a donation on [GitHub Sponsors](https://github.com/sponsors/NikkelM) or [Ko-Fi](https://ko-fi.com/nikkelm).
+If you are enjoying this mod and want to say thank you, you can leave a donation on [Ko-Fi](https://ko-fi.com/nikkelm) or [GitHub Sponsors](https://github.com/sponsors/NikkelM).
+
+This mod does not, and never will, use generative AI for any art, voice or music.
 
 ## Disclaimer
 

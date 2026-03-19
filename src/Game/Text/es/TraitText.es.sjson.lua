@@ -222,6 +222,14 @@ local newData = {
 	-- 	"You gain {#UpgradeFormat}{$TooltipData.StatDisplay1}{#Prev}{!Icons.ReRollAlt}, and can alter {#BoldFormat}Location Rewards{#Prev}. This does not break {$Keywords.Random}.",
 	-- },
 	-- #endregion
+
+	-- #region WellShops
+	{
+		Id = "ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait",
+		DisplayName = "Cancelador de Carros Ígneos",
+		Description = "Evita que los enemigos de tipo {$TooltipData.BlockedEnemyTypes[1]} aparezcan en los próximos {$Keywords.EncounterPlural}.",
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)
