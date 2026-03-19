@@ -18,6 +18,69 @@ local newData = {
 	-- 	Id = "UseLeaveRoomAsphodel_Reroll",
 	-- 	DisplayName = "{I} Embark \n {RR} Alter {#UseGiftPointFormat}(-1{!Icons.ReRoll})",
 	-- },
+	-- #region Badge Ranks/Spirit Mixer
+	-- TODO: Localizations for "Advance" are required
+	{
+		Id = "BadgeSeller_UseTextTalkAndGift_Both",
+		DisplayName =
+		"{I} Διακήρυξη {#UseGiftPointFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Advance {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkGiftAndSpecial_Both",
+		DisplayName =
+		"{I} Διακήρυξη {#UseGiftPointFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Advance {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} Χαιρετισμός",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkAndGift_ModdedOnly",
+		DisplayName =
+		"{I} Διακήρυξη {#ShopCostCantAffordFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Advance {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkGiftAndSpecial_ModdedOnly",
+		DisplayName =
+		"{I} Διακήρυξη {#ShopCostCantAffordFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Advance {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} Χαιρετισμός",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkAndGift_VanillaOnly",
+		DisplayName =
+		"{I} Διακήρυξη {#UseGiftPointFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Advance {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkGiftAndSpecial_VanillaOnly",
+		DisplayName =
+		"{I} Διακήρυξη {#UseGiftPointFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Advance {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} Χαιρετισμός",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkAndGift_None",
+		DisplayName =
+		"{I} Διακήρυξη {#ShopCostCantAffordFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Advance {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkGiftAndSpecial_None",
+		DisplayName =
+		"{I} Διακήρυξη {#ShopCostCantAffordFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} Advance {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} Χαιρετισμός",
+	},
+	{
+		Id = "BadgeSeller_UseTextGift_VanillaMaxed_ModdedAvailable",
+		DisplayName =
+		"{G} Advance {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextGiftAndSpecial_VanillaMaxed_ModdedAvailable",
+		DisplayName =
+		"{G} Advance {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} Χαιρετισμός",
+	},
+	{
+		Id = "BadgeSeller_UseTextGift_VanillaMaxed_ModdedNotAvailable",
+		DisplayName =
+		"{G} Advance {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextGiftAndSpecial_VanillaMaxed_ModdedNotAvailable",
+		DisplayName =
+		"{G} Advance {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} Χαιρετισμός",
+	},
+	-- #endregion
 	-- #endregion
 
 	-- #region UI
@@ -1235,6 +1298,18 @@ local newData = {
 	-- 	-- This is ZagreusField_3147 and ZagreusField_3148
 	-- 	Description =
 	-- 	"Bone Hydra... can I call you Bone Hydra? Lernie, maybe? Lernie, I like that. You don't mind if I call you Lernie from now on, right?",
+	-- },
+	-- Unlock Hades badges at the Badge Seller/Spirit Mixer
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller",
+	-- 	DisplayName = "Resources Director's Familial Bond",
+	-- 	Description =
+	-- 	"Rise above your station by donating {!Icons.CosmeticsPointsIcon} and other resources collected during your travels through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} to the {$Keywords.Bartender}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller_Flavor",
+	-- 	Description =
+	-- 	"The {$Keywords.Bartender} and the Resources Director staying in your Father's house often meet and are on good terms, though who came up with the idea of rank advancements first is an often disputed topic of discussion.",
 	-- },
 	-- #endregion
 

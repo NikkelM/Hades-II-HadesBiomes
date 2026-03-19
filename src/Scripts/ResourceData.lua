@@ -333,7 +333,7 @@ mod.NewBossResourceData = {
 mod.AddTableKeysSkipDupes(game.ResourceData, mod.NewBossResourceData)
 -- #endregion
 
--- #region All
+-- #region All new Resources
 -- The order in which resources are shown in cost menus when buying things, and the order of the items in the new inventory tab
 -- In Hades II, this is each resource for a region after another, then the next region
 -- Order should be Plant, Seed, Crop, Ore, Boss Resource. We move the fish to the end as there are a lot of them
@@ -377,7 +377,6 @@ local newResourceDisplayOrderData = {
 	"Fish_Surface_Common_01",
 	"Fish_Surface_Rare_01",
 	"Fish_Surface_Legendary_01",
-	-- #endregion
 }
 
 local newModdedInventoryItemCategory = {
@@ -398,4 +397,27 @@ newModdedInventoryItemCategory = game.ConcatTableValuesIPairs(newModdedInventory
 table.insert(game.ScreenData.InventoryScreen.ItemCategories, 5, newModdedInventoryItemCategory)
 
 game.ResourceDisplayOrderData = game.ConcatTableValuesIPairs(game.ResourceDisplayOrderData, newResourceDisplayOrderData)
+-- #endregion
+
+-- #region Badge Ranks/Spirit Mixer
+-- Add new Badge icons to Inventory layout
+game.ScreenData.InventoryScreen.ComponentData.ModsNikkelMHadesBiomesBadgeRankIconLeft = {
+	X = 1310,
+	Y = 60,
+	Alpha = 0.0,
+	AlphaTarget = 1.0,
+	AlphaTargetDuration = 0.6,
+	Scale = 0.67,
+}
+game.ScreenData.InventoryScreen.ComponentData.ModsNikkelMHadesBiomesBadgeRankIconRight = {
+	X = 1800,
+	Y = 60,
+	Alpha = 0.0,
+	AlphaTarget = 1.0,
+	AlphaTargetDuration = 0.6,
+	Scale = 0.67,
+	FlipHorizontal = true,
+}
+table.insert(game.ScreenData.InventoryScreen.ComponentData.Order, "ModsNikkelMHadesBiomesBadgeRankIconLeft")
+table.insert(game.ScreenData.InventoryScreen.ComponentData.Order, "ModsNikkelMHadesBiomesBadgeRankIconRight")
 -- #endregion

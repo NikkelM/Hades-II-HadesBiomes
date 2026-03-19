@@ -21,6 +21,68 @@ local newData = {
 		Id = "UseLeaveRoomAsphodel_Reroll",
 		DisplayName = "{I} 탑승 \n {RR} 변경 {#UseGiftPointFormat}(-1{!Icons.ReRoll})",
 	},
+	-- #region Badge Ranks/Spirit Mixer
+	{
+		Id = "BadgeSeller_UseTextTalkAndGift_Both",
+		DisplayName =
+		"{I} 선포 {#UseGiftPointFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} 진급 {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkGiftAndSpecial_Both",
+		DisplayName =
+		"{I} 선포 {#UseGiftPointFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} 진급 {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} 인사",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkAndGift_ModdedOnly",
+		DisplayName =
+		"{I} 선포 {#ShopCostCantAffordFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} 진급 {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkGiftAndSpecial_ModdedOnly",
+		DisplayName =
+		"{I} 선포 {#ShopCostCantAffordFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} 진급 {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} 인사",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkAndGift_VanillaOnly",
+		DisplayName =
+		"{I} 선포 {#UseGiftPointFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} 진급 {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkGiftAndSpecial_VanillaOnly",
+		DisplayName =
+		"{I} 선포 {#UseGiftPointFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} 진급 {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} 인사",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkAndGift_None",
+		DisplayName =
+		"{I} 선포 {#ShopCostCantAffordFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} 진급 {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextTalkGiftAndSpecial_None",
+		DisplayName =
+		"{I} 선포 {#ShopCostCantAffordFormat}({$TempTextData.ResourceAmount1}{!TempTextData.ResourceIconPath1} {$TempTextData.ResourceAmount2}{!TempTextData.ResourceIconPath2})\n {G} 진급 {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} 인사",
+	},
+	{
+		Id = "BadgeSeller_UseTextGift_VanillaMaxed_ModdedAvailable",
+		DisplayName =
+		"{G} 진급 {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextGiftAndSpecial_VanillaMaxed_ModdedAvailable",
+		DisplayName =
+		"{G} 진급 {#UseGiftPointFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} 인사",
+	},
+	{
+		Id = "BadgeSeller_UseTextGift_VanillaMaxed_ModdedNotAvailable",
+		DisplayName =
+		"{G} 진급 {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})",
+	},
+	{
+		Id = "BadgeSeller_UseTextGiftAndSpecial_VanillaMaxed_ModdedNotAvailable",
+		DisplayName =
+		"{G} 진급 {#ShopCostCantAffordFormat}({$TempTextData.ModsNikkelMHadesBiomesResourceAmount1}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath1} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount2}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath2} {$TempTextData.ModsNikkelMHadesBiomesResourceAmount3}{!TempTextData.ModsNikkelMHadesBiomesResourceIconPath3})\n {SI} 인사",
+	},
+	-- #endregion
 	-- #endregion
 
 	-- #region UI
@@ -1237,6 +1299,18 @@ local newData = {
 	-- 	-- This is ZagreusField_3147 and ZagreusField_3148
 	-- 	Description =
 	-- 	"Bone Hydra... can I call you Bone Hydra? Lernie, maybe? Lernie, I like that. You don't mind if I call you Lernie from now on, right?",
+	-- },
+	-- Unlock Hades badges at the Badge Seller/Spirit Mixer
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller",
+	-- 	DisplayName = "Resources Director's Familial Bond",
+	-- 	Description =
+	-- 	"Rise above your station by donating {!Icons.CosmeticsPointsIcon} and other resources collected during your travels through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} to the {$Keywords.Bartender}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller_Flavor",
+	-- 	Description =
+	-- 	"The {$Keywords.Bartender} and the Resources Director staying in your Father's house often meet and are on good terms, though who came up with the idea of rank advancements first is an often disputed topic of discussion.",
 	-- },
 	-- #endregion
 
