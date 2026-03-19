@@ -5,6 +5,7 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - Advance through **50** new cosmetic ranks at the _Spirit Mixer_, from the lowly "Alpha Warden" to the feared "Unseen One". These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
+- Added a new logo to the Main Menu to signal that the mod is installed.
 
 Other fixes and improvements:
 - Balancing: Elyisan Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.

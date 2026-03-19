@@ -510,7 +510,7 @@ local function on_ready()
 			import "Scripts/WeaponSets.lua"
 			DebugLogScriptImportProgress("main logic and presentation scripts")
 
-			-- Ensure the FxOriginal package is loaded with every biome package
+			-- Ensure the required additional packages are loaded with every biome package immediately before map load
 			mod.SetBiomePackageLoadOverrides()
 			mod.DebugPrint(
 				"[Script Loading] Set biome package load overrides, took " .. (os.clock() - lastImportTime) .. " seconds", 4)
@@ -529,6 +529,12 @@ local function on_ready()
 					mod.DebugPrint(
 						"Incompatible mods have been detected, see the logs above for the most likely candidates. Please visit github.com/NikkelM/Hades-II-HadesBiomes/wiki/Incompatible-Mods and uninstall all listed incompatible mods.",
 						1)
+				end
+
+				-- Load the modded MainMenu package manually on first game start, the hash overrides do not work yet
+				-- The package will immediately be unloaded when loading into a save completes, so no worries on that being unnecessary
+				if game.GameState == nil then
+					game.LoadPackages({ Name = "NikkelM-HadesBiomesMainMenu", IgnoreAssert = true })
 				end
 
 				mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)

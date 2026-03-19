@@ -96,7 +96,7 @@ Starting the game the first time with the mod enabled will install a number of f
 **This may take some time depending on your hardware, and the game will display a black screen during this time.**
 You can follow along the installation progress in the console window that opens when playing the game modded.
 
-If the mod was installed successfully, a popup will open in the Training Grounds to let you know.
+If the mod was installed successfully, you will see a new logo appear in the main menu.
 
 This mod requires an additional 1GB of disk space.
 

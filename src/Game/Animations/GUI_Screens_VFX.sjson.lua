@@ -1,6 +1,11 @@
 local hadesTwoScreensVFXFile = rom.path.combine(rom.paths.Content(), "Game\\Animations\\GUI_Screens_VFX.sjson")
 
-local hadesTwoScreenVFXModifications = {}
+local hadesTwoScreenVFXModifications = {
+	-- Change the ChildAnimation to the X, so that it gets rendered below the two logos
+	MainMenuLoop = {
+		ChildAnimation = "ModsNikkelMHadesBiomes_MainMenuMashupX",
+	},
+}
 
 -- These need to be added before the others, as they are inherited from
 local addParentAnimations = {}
@@ -139,6 +144,42 @@ local addAnimations = {
 		Name = "ModsNikkelMHadesBiomes_GameStatsFront",
 		FilePath = "NikkelM-HadesBiomesCosmetics\\GUI\\Screens\\GameStats\\GameStats_Front_Modded",
 		Material = "Unlit",
+	},
+	-- #endregion
+	-- #region Main Menu
+	ModsNikkelMHadesBiomes_MainMenuMashupX = {
+		Name = "ModsNikkelMHadesBiomes_MainMenuMashupX",
+		FilePath = "NikkelM-HadesBiomesMainMenu\\Screens\\Logo\\MashupX",
+		StartScale = 0.5,
+		EndScale = 0.505,
+		OffsetX = -180,
+		OffsetY = -425,
+		Duration = 0.5,
+		Loop = false,
+		HoldLastFrame = true,
+		StartAlpha = 0,
+		EndAlpha = 1,
+		EaseIn = 0,
+		EaseOut = 1,
+		FlipHorizontal = true,
+		ChildAnimation = "ModsNikkelMHadesBiomes_MainMenuMashupLogo",
+	},
+	ModsNikkelMHadesBiomes_MainMenuMashupLogo = {
+		Name = "ModsNikkelMHadesBiomes_MainMenuMashupLogo",
+		FilePath = "NikkelM-HadesBiomesMainMenu\\Screens\\Logo\\HadesLogo",
+		StartScale = 0.55,
+		EndScale = 0.56,
+		OffsetX = 250,
+		OffsetY = -370,
+		Duration = 0.5,
+		Loop = false,
+		HoldLastFrame = true,
+		StartAlpha = 0,
+		EndAlpha = 1,
+		EaseIn = 0,
+		EaseOut = 1,
+		-- The original H2 outline/logo
+		ChildAnimation = "MainMenuLogoOutline",
 	},
 	-- #endregion
 }
