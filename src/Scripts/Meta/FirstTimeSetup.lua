@@ -576,7 +576,7 @@ local bikBatches720p = splitIntoSlices(mod.BikFileNames, 5)
 
 ---Helper to copy .map_text files (special handling: some from plugins_data, some from Hades).
 local function copyMapTextFiles()
-	mod.DebugPrint("Copying .map_text files...", 3)
+	mod.DebugPrint("[Install] Copying .map_text files...", 3)
 	for src, dest in pairs(mod.MapFileMappings) do
 		local srcPath, destPath
 		if mod.MapTextFileNames[src] then
@@ -646,26 +646,26 @@ local installSteps = {
 	end },
 
 	Temple = { "Helptext .sjson files", function()
-		mod.DebugPrint("Copying help text files...", 3)
+		mod.DebugPrint("[Install] Copying help text files...", 3)
 		copyHadesHelpTexts()
 	end },
 
 	Travel = { "NPC helptext, GUI + Portrait animation .sjson files", function()
-		mod.DebugPrint("Copying NPC text files...", 3)
+		mod.DebugPrint("[Install] Copying NPC text files...", 3)
 		copyHadesNPCTexts()
-		mod.DebugPrint("Copying GUI animations...", 3)
+		mod.DebugPrint("[Install] Copying GUI animations...", 3)
 		copyHadesGUIAnimations()
-		mod.DebugPrint("Copying Portrait animations...", 3)
+		mod.DebugPrint("[Install] Copying Portrait animations...", 3)
 		copyHadesPortraitAnimations()
 	end },
 
 	MapGroups = { "Character animation .sjson files", function()
-		mod.DebugPrint("Copying Character animations...", 3)
+		mod.DebugPrint("[Install] Copying Character animations...", 3)
 		copyHadesCharacterAnimationsNPCs()
 	end },
 
 	Hero_Melinoe_Animation_Personality = { "Parse subtitle CSV files", function()
-		mod.DebugPrint("Parsing subtitle CSV files...", 3)
+		mod.DebugPrint("[Install] Parsing subtitle CSV files...", 3)
 		loadSubtitleCsvFilesAndWriteToSjson()
 	end },
 
