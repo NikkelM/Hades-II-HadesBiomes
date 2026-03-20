@@ -93,8 +93,7 @@ The mod manager will automatically install any other mods this mod needs to work
 Start the game through the mod manager to make sure mods are enabled - use the `Start Modded` button on the top left.
 
 Starting the game the first time with the mod enabled will install a number of files.
-**This may take some time depending on your hardware, and the game will display a black screen during this time.**
-You can follow along the installation progress in the console window that opens when playing the game modded.
+**This may take a few minutes depending on your hardware, and will cause the initial loading/splash screen to take longer than usual.**
 
 If the mod was installed successfully, you will see a new logo appear in the main menu.
 

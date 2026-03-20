@@ -22,6 +22,8 @@ for i = #hadesProjectilesTable.Projectiles, 1, -1 do
 end
 
 sjson.hook(hadesTwoProjectilesFile, function(data)
+	mod.RunInstallStep("Projectiles")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Projectiles"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

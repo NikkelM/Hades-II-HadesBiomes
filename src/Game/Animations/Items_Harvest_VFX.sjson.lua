@@ -240,6 +240,8 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoItemsHarvestVfxFile, function(data)
+	mod.RunInstallStep("Items_Harvest_VFX")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Items_Harvest_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

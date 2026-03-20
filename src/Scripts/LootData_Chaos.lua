@@ -277,7 +277,7 @@ local newModdedInteractTextLines = {
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosBoonChange",
 			Text =
-			"I have inferred from our previous interactions that you have taken an interest in your brother's history. I concluded that it would be quite amusing to let you walk the path he took when once he attempted to learn more about your shared past. This conclusion has proven correct."
+			"I have inferred from our previous interactions that you have taken an interest in your brother's story. I concluded that it would be quite amusing to let you walk the path he took when once he attempted to learn more about your shared past. This conclusion has proven correct."
 		},
 	},
 	{
@@ -375,6 +375,6 @@ local newModdedInteractTextLines = {
 mod.AddNarrativeDataEntries(
 	newModdedInteractTextLines, "TrialUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
 	{ Chaos = { "Dusa", "ZagreusField" } }, { Chaos_ = "Dusa_1" },
-	{ ModsNikkelMHadesBiomes_Chaos_ = "ModsNikkelMHadesBiomes_Portrait_Chaos_Default_01" }, 
+	{ ModsNikkelMHadesBiomes_Chaos_ = "ModsNikkelMHadesBiomes_Portrait_Chaos_Default_01" },
 	"/VO/ChaosKeepsake_0280", "ChaosKeepsake"
 )
