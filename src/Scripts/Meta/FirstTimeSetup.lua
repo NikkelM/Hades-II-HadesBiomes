@@ -550,22 +550,22 @@ function mod.CreateRequiredHookTargetFiles()
 end
 
 -- #region Install steps
---- Splits an array into `numSlices` roughly equal-sized sub-arrays.
+---Splits an array into `numSlices` roughly equal-sized sub-arrays.
 local function splitIntoSlices(array, numSlices)
 	local total = #array
 	local baseSize = math.floor(total / numSlices)
 	-- Remainder gets added to slices one at a time until used up
 	local remainder = total % numSlices
 	local slices = {}
-	local idx = 1
-	for s = 1, numSlices do
-		local sliceSize = baseSize + (s <= remainder and 1 or 0)
+	local index = 1
+	for sliceNum = 1, numSlices do
+		local sliceSize = baseSize + (sliceNum <= remainder and 1 or 0)
 		local slice = {}
-		for i = idx, idx + sliceSize - 1 do
+		for i = index, index + sliceSize - 1 do
 			table.insert(slice, array[i])
 		end
-		slices[s] = slice
-		idx = idx + sliceSize
+		slices[sliceNum] = slice
+		index = index + sliceSize
 	end
 	return slices
 end
@@ -574,7 +574,7 @@ end
 local bikBatches1080p = splitIntoSlices(mod.BikFileNames, 7)
 local bikBatches720p = splitIntoSlices(mod.BikFileNames, 5)
 
---- Helper to copy .map_text files (special handling: some from plugins_data, some from Hades).
+---Helper to copy .map_text files (special handling: some from plugins_data, some from Hades).
 local function copyMapTextFiles()
 	mod.DebugPrint("Copying .map_text files...", 3)
 	for src, dest in pairs(mod.MapFileMappings) do
@@ -690,8 +690,8 @@ local installSteps = {
 	end },
 }
 
---- Runs the install step assigned to the given hookId.
---- Called at the top of each sjson.hook callback. No-op if not installing.
+---Runs the install step assigned to the given hookId.
+---Called at the top of each sjson.hook callback. No-op if not installing.
 ---@param hookId string The identifier matching an entry in the installSteps table
 function mod.RunInstallStep(hookId)
 	if not mod.InstallationPending then return end
