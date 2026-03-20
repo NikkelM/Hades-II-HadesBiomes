@@ -185,13 +185,19 @@ local function on_ready()
 
 	local setupSuccessful = true
 	if config.firstTimeSetup then
-		setupSuccessful = mod.FirstTimeSetup()
+		-- Pre-install: Create/Copy files that are required before the loading bar starts
+		mod.InstallationPending = true
+		setupSuccessful = mod.CreateRequiredHookTargetFiles()
 	end
 
-	-- Only check for files if the first time setup was successful, or the mod was already installed
 	if setupSuccessful then
-		-- Before proceeding, check that required files exist
-		local numMissingFiles = mod.CheckRequiredFiles(false)
+		local numMissingFiles = 0
+		-- Only check if all required files exist here if we are not waiting on an install
+		-- After the installation completes, mod.CheckRequiredFiles is called again, so we are not missing the check
+		if not mod.InstallationPending then
+			numMissingFiles = mod.CheckRequiredFiles(false)
+		end
+
 		if numMissingFiles == 0 then
 			-- General data needed for map generation/display
 			import "Game/MapGroups.sjson.lua"

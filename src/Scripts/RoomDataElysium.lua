@@ -2,7 +2,21 @@
 local roomReplacements = {
 	-- GENERIC
 	BaseElysium = {
-		SecretDoorRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.SecretDoorRequirements),
+		SecretDoorRequirements = {
+			{
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsNone = {
+					"A_PreBoss01", "A_Boss01", "A_Boss02", "A_Boss03", "A_Shop01", "A_PostBoss01",
+					"X_PreBoss01", "X_Boss01", "X_Boss02", "X_Shop01", "X_PostBoss01",
+					"Y_PreBoss01", "Y_Boss01", "Y_Shop01", "Y_PostBoss01",
+				},
+			},
+			{
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsNone = { "Styx", "Challenge", "Surface" },
+			},
+			NamedRequirements = { "ChaosUnlocked", "NoRecentChaosEncounter" },
+		},
 		-- The Asphodel teleport in Hades II - we don't want it in Zagreus' Journey
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Elysium",

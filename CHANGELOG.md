@@ -6,6 +6,7 @@
 ### Patch Highlights:
 - Advance through **50** new cosmetic ranks at the _Spirit Mixer_, from the lowly "Alpha Warden" to the feared "Unseen One". These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
 - Added a new logo to the Main Menu to signal that the mod is installed.
+- Mod installation/updating has been moved to the game's main loading screen, you will no longer see a black screen after a mod update. The total time to install remains the same.
 
 Other fixes and improvements:
 - Balancing: Elyisan Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
@@ -14,6 +15,8 @@ Other fixes and improvements:
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk no longer trigger "Unseen Ire".
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
+- Fixed: Chaos Gates did not have specific spawn requirements adapted to Zagreus' Journey runs.
+- Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
 <!--Releasenotes end-->
 
 ## v0.7.2

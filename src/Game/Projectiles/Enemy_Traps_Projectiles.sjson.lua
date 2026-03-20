@@ -23,6 +23,8 @@ local addProjectiles = {
 }
 
 sjson.hook(hadesTwoProjectilesFile, function(data)
+	mod.RunInstallStep("Enemy_Traps_Projectiles")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Enemy_Traps_Projectiles"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

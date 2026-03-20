@@ -80,7 +80,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_Chaos_ChaosAboutZagreusEscapeAttempts01_0000",
 	-- 	InheritFrom = "BaseNarrative",
 	-- 	DisplayName =
-	-- 	"I have inferred from our previous interactions that you have taken an interest in your brother's history. I concluded that it would be quite amusing to let you walk the path he took when once he attempted to learn more about your shared past. This conclusion has proven correct."
+	-- 	"I have inferred from our previous interactions that you have taken an interest in your brother's story. I concluded that it would be quite amusing to let you walk the path he took when once he attempted to learn more about your shared past. This conclusion has proven correct."
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_Chaos_ChaosAboutZagreusEscapeAttempts02_0000",

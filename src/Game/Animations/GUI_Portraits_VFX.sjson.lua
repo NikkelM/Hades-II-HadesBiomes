@@ -226,6 +226,8 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoPortraitsFile, function(data)
+	mod.RunInstallStep("GUI_Portraits_VFX")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["GUI_Portraits_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

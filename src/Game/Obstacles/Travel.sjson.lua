@@ -49,6 +49,8 @@ local hadesTwoObstacleModifications = {
 }
 
 sjson.hook(hadesTwoTravelObstacleFile, function(data)
+	mod.RunInstallStep("Travel")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Travel"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
