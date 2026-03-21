@@ -332,6 +332,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		return true
 	end
 
+	-- #region Custom logic
 	-- Map Asphodel & Elysium room names for any requirement that has rooms in it
 	local roomRequirementOptions = {
 		RequiredRoom = "string",
@@ -387,10 +388,28 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
+	if requirements.RequiredTrait then
+		-- Replace Shout/Wrath/Hex/Spell trait names with Hades II equivalents
+		local shoutTraitMappings = {
+			ZeusShoutTrait = "PolymorphZeusTalent",
+			PoseidonShoutTrait = "PotionPoseidonTalent",
+			AphroditeShoutTrait = "TransformAphroditeTalent",
+			AresShoutTrait = "MoonBeamAresTalent",
+			DemeterShoutTrait = "TimeSlowDemeterTalent",
+			-- Unused H2 traits: LaserApolloTalent, LeapHephaestusTalent, SummonHeraTalent, MeteorHestiaTalent, 
+			-- Unused H1 shouts: HadesShoutTrait, AthenaShoutTrait, ArtemisShoutTrait, DionysusShoutTrait
+		}
+		if shoutTraitMappings[requirements.RequiredTrait] ~= nil then
+			requirements.RequiredTrait = shoutTraitMappings[requirements.RequiredTrait]
+		end
+	end
+
 	-- ChanceToPlay is already taken care of in the Hades II function call
 	-- if requirements.ChanceToPlay ~= nil and not RandomChance(requirements.ChanceToPlay) then
 	-- 	return false
 	-- end
+
+	-- #endregion
 
 	local currentRunDepth = 0
 	if game.CurrentRun.RunDepthCache ~= nil then
@@ -1103,7 +1122,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		-- if not DidFailRun(game.CurrentRun) or game.CurrentRun.CurrentRoom.Name ~= requirements.RequiredDeathRoom then
 		-- 	return false
 		-- end
-		if prevRun.BiomesReached ~= nil then
+		if prevRun ~= nil and prevRun.BiomesReached ~= nil then
 			if mod.HasSeenRoomInRun(prevRun, requirements.RequiredDeathRoom) then
 				-- For the encoded EndingRoomName for uninstall compatibility
 				if not prevRun.Cleared and prevRun.EndingRoomName == nil and prevRun.VictoryMessage ~= nil then
@@ -1127,7 +1146,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		-- if not DidFailRun(game.CurrentRun) or not Contains(requirements.RequiredAnyDeathRooms, game.CurrentRun.CurrentRoom.Name) then
 		-- 	return false
 		-- end
-		if prevRun.BiomesReached ~= nil then
+		if prevRun ~= nil and prevRun.BiomesReached ~= nil then
 			for _, roomName in ipairs(requirements.RequiredAnyDeathRooms) do
 				if mod.HasSeenRoomInRun(prevRun, roomName) then
 					-- For the encoded EndingRoomName for uninstall compatibility
@@ -1150,7 +1169,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 	if requirements.RequiredFalseDeathRoom ~= nil then -- and DidFailRun(game.CurrentRun) and game.CurrentRun.CurrentRoom.Name == requirements.RequiredFalseDeathRoom then
-		if prevRun.BiomesReached ~= nil then
+		if prevRun ~= nil and prevRun.BiomesReached ~= nil then
 			if mod.HasSeenRoomInRun(prevRun, requirements.RequiredFalseDeathRoom) then
 				-- For the encoded EndingRoomName for uninstall compatibility
 				if not prevRun.Cleared and prevRun.EndingRoomName == nil and prevRun.VictoryMessage ~= nil then
@@ -1171,7 +1190,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 	if requirements.RequiredFalseDeathRooms ~= nil then -- and DidFailRun(game.CurrentRun) and Contains(requirements.RequiredFalseDeathRooms, game.CurrentRun.CurrentRoom.Name) then
-		if prevRun.BiomesReached ~= nil then
+		if prevRun ~= nil and prevRun.BiomesReached ~= nil then
 			for _, roomName in ipairs(requirements.RequiredFalseDeathRooms) do
 				if mod.HasSeenRoomInRun(prevRun, roomName) then
 					-- For the encoded EndingRoomName for uninstall compatibility
@@ -1207,7 +1226,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	-- Custom: For Thanatos in RoomOpening
 	if requirements.RequiredFalseDeathEncountersThanatos ~= nil then
-		if prevRun.RoomHistory and prevRun.RoomHistory[#prevRun.RoomHistory] and prevRun.RoomHistory[#prevRun.RoomHistory].Encounter and game.Contains(requirements.RequiredFalseDeathEncountersThanatos, prevRun.RoomHistory[#prevRun.RoomHistory].Encounter.Name or "") then
+		if prevRun ~= nil and prevRun.RoomHistory and prevRun.RoomHistory[#prevRun.RoomHistory] and prevRun.RoomHistory[#prevRun.RoomHistory].Encounter and game.Contains(requirements.RequiredFalseDeathEncountersThanatos, prevRun.RoomHistory[#prevRun.RoomHistory].Encounter.Name or "") then
 			return false
 		end
 	end

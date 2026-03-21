@@ -9,6 +9,7 @@
 - Mod installation/updating has been moved to the game's main loading screen, you will no longer see a black screen after a mod update. The total time to install remains the same.
 
 Other fixes and improvements:
+- Hades and Theseus will now react with specific voicelines for certain Gods when using Godsent Hex effects against them.
 - Balancing: Elyisan Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Reduced the chance for the "Popper" elite perk to appear.
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
@@ -17,6 +18,7 @@ Other fixes and improvements:
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
 - Fixed: Chaos Gates did not have specific spawn requirements adapted to Zagreus' Journey runs.
 - Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
+- Fixed: In rare circumstances, the game can crash when checking requirements for actions taken during the previous Zagreus' Journey run.
 <!--Releasenotes end-->
 
 ## v0.7.2
