@@ -505,3 +505,21 @@ mod.HadesExitDoorObstacleNames = {
 	ShrinePointDoor = true,
 	ShrinePointExitDoor = true,
 }
+
+mod.FormalNPCRelationships = {
+	"NPC_Sisyphus_01",
+	"NPC_Eurydice_01",
+	"NPC_Patroclus_01",
+	"NPC_Thanatos_Field_01",
+	"NPC_Orpheus_01",
+}
+
+mod.InformalNPCRelationshipsF = {
+	"ModsNikkelMHadesBiomes_NPC_Persephone_01",
+}
+
+mod.InformalNPCRelationshipsM = {
+	"ModsNikkelMHadesBiomes_NPC_Bouldy_01",
+	"NPC_Thanatos_01",
+	"NPC_Orpheus_Story_01",
+}

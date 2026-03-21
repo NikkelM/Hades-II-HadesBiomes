@@ -366,6 +366,10 @@ game.GlobalVoiceLines.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines = game.
 game.GlobalVoiceLines.ModsNikkelMHadesBiomes_BadgeUpgradedVoiceLines = game.GlobalVoiceLines
 		.ModsNikkelMHadesBiomes_BadgeUpgradedVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_BadgeUpgradedVoiceLines
+
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_SaluteVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_SaluteVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_SaluteVoiceLines
 -- #endregion
 
 -- #region HeroVoiceLines

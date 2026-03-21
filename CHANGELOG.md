@@ -6,9 +6,10 @@
 ### Patch Highlights:
 - Advance through **50** new cosmetic ranks at the _Spirit Mixer_, from the lowly "Alpha Warden" to the feared "Unseen One". These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
 - Added a new logo to the Main Menu to signal that the mod is installed.
-- Mod installation/updating has been moved to the game's main loading screen, you will no longer see a black screen after a mod update. The total time to install remains the same.
+- Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
 
 Other fixes and improvements:
+- You can now salute story NPCs you meet along your journey.
 - Hades and Theseus will now react with specific voicelines for certain Gods when using Godsent Hex effects against them.
 - Balancing: Elyisan Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Reduced the chance for the "Popper" elite perk to appear.
