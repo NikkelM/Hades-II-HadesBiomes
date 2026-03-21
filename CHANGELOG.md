@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Balancing: Reduced the chance for the "Popper" elite perk to appear.
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
+- Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk no longer trigger "Unseen Ire".
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
 - Fixed: Chaos Gates did not have specific spawn requirements adapted to Zagreus' Journey runs.

@@ -76,6 +76,10 @@ local obstacleModifications = {
 		DeathFx = "AsphodelTerrainRockCollapse",
 		OnTouchdown = { ProjectileName = "ModsNikkelMHadesBiomesRubbleFallLarge", },
 	},
+	AsphodelDestructibleStalagmite = {
+		-- Don't disappear when sprinted into
+		CollisionReactions = mod.NilValue,
+	},
 	HealthFountainAsphodel = {
 		InheritFrom = { "HealthFountain" },
 		HealingSpentAnimation = "HealthFountainEmptyAsphodel",
