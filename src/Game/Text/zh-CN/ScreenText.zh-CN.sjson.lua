@@ -94,38 +94,38 @@ local newData = {
 	-- },
 	-- #endregion
 	-- #region Relationship Dialogue Choices
-    {
-      Id = "Meg_GoToHer",
-      DisplayName = "{CF} 上前接受",
-    },
-    {
-      Id = "Meg_BackOff",
-      DisplayName = "{CN} 淡然处之",
-    },
-    {
-      Id = "Than_GoToHim",
-      DisplayName = "{CF} 上前安慰",
-    },
-    {
-      Id = "Than_BackOff",
-      DisplayName = "{CN} 淡然处之",
-    },
-    {
-      Id = "Dusa_Accept",
-      DisplayName = "{CF} 礼貌地接受",
-    },
-    {
-      Id = "Dusa_Decline",
-      DisplayName = "{CN} 善意地拒绝",
-    },
-    {
-      Id = "MegThan_GoToThem",
-      DisplayName = "{CF} 去找他们",
-    },
-    {
-      Id = "MegThan_BackOff",
-      DisplayName = "{CN} 淡然处之",
-    },
+	{
+		Id = "Meg_GoToHer",
+		DisplayName = "{CF} 上前接受",
+	},
+	{
+		Id = "Meg_BackOff",
+		DisplayName = "{CN} 淡然处之",
+	},
+	{
+		Id = "Than_GoToHim",
+		DisplayName = "{CF} 上前安慰",
+	},
+	{
+		Id = "Than_BackOff",
+		DisplayName = "{CN} 淡然处之",
+	},
+	{
+		Id = "Dusa_Accept",
+		DisplayName = "{CF} 礼貌地接受",
+	},
+	{
+		Id = "Dusa_Decline",
+		DisplayName = "{CN} 善意地拒绝",
+	},
+	{
+		Id = "MegThan_GoToThem",
+		DisplayName = "{CF} 去找他们",
+	},
+	{
+		Id = "MegThan_BackOff",
+		DisplayName = "{CN} 淡然处之",
+	},
 	-- #endregion
 	-- #endregion
 
@@ -134,7 +134,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_InstallSuccess",
 	-- 	DisplayName = "Installation successful!",
 	-- 	Description =
-	-- 	"Welcome to {#DialogLegendaryFormat}Zagreus\' Journey{#Prev}!\n\nYou may now interact with the Chaos Gate in the training grounds to experience Zagreus' original journey to {#DialogLegendaryFormat}escape the Underworld {#Prev}through Melinoë's eyes.\n\n\nIf you experience any issues, please start a discussion on {#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nand attach the log file from {#DialogLegendaryFormat}Settings -> Copy log file {#Prev}in your mod manager.",
+	-- 	"Welcome to {#DialogLegendaryFormat}Zagreus\' Journey{#Prev}!\n\nYou may now interact with the Chaos Gate in the training grounds to experience Zagreus' original journey to {#DialogLegendaryFormat}escape the Underworld {#Prev}through Melinoë's eyes!\n\nEnjoying the mod? Say thanks and support the development on {#DialogLegendaryFormat}ko-fi.com/nikkelm{#Prev}.\n\nIf you experience any issues, please start a discussion on {#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nand attach the log file from {#DialogLegendaryFormat}Settings -> Copy log file {#Prev}in your mod manager.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InstallFailure",
