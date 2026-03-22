@@ -2,8 +2,8 @@ modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
 	if run.ModsNikkelMHadesBiomesIsModdedRun then
 		-- For ShrineChallenge/Erebus rooms, they don't have the TargetMetaRewardsRatio set, so we need to copy it from the previous room
 		if run.TargetMetaRewardsRatio == nil and run.CurrentRoom.TargetMetaRewardsRatio == nil then
-			local prevRoom = game.GetPreviousRoom(run)
-			run.CurrentRoom.TargetMetaRewardsRatio = prevRoom.TargetMetaRewardsRatio
+			local prevRoom = game.GetPreviousRoom(run) or {}
+			run.CurrentRoom.TargetMetaRewardsRatio = prevRoom.TargetMetaRewardsRatio or 0.4
 		end
 	end
 

@@ -731,6 +731,10 @@ mod.MapTextFileNames = {
 	C_Combat01 = true,
 	-- Need to add a Gears_02 group to better sort some chains and Gears
 	D_Intro = true,
+	-- New Standing group for the shop item stele
+	D_Hub = true,
+	-- New foreground groups for the flickering ghosts and other textures
+	Return03 = true,
 	-- A new Terrain group was added to resolve flickering tiles next to the exit door (same as for RoomOpening)
 	Return06 = true,
 }
