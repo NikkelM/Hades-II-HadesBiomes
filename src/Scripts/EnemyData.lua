@@ -2222,6 +2222,17 @@ local enemyModifications = {
 	-- #endregion
 
 	-- #region ENVIRONMENT
+	BaseBreakable = {
+		CollisionReaction = mod.NilValue,
+		CollisionReactions = {
+			{
+				MinVelocity = 780,
+				KillSelf = true,
+			}
+		},
+		-- So that they also break when sprinted into when The Swift Runner/SprintShieldMetaUpgrade is active
+		ModsNikkelMHadesBiomesForceCollisionOnSprintPhase = true,
+	},
 	Breakable = {
 		CannotDieFromDamage = true,
 		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "BreakableOnHitModsNikkelMHadesBiomes",

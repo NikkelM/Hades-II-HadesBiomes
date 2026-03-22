@@ -579,6 +579,7 @@ local function on_ready_late()
 	import "Scripts/InteractLogic_Late.lua"
 	import "Scripts/MarketLogic_Late.lua"
 	import "Scripts/ObjectiveLogic_Late.lua"
+	import "Scripts/PowersLogic_Late.lua"
 	import "Scripts/ResourceLogic_Late.lua"
 	import "Scripts/RoomLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
