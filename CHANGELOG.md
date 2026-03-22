@@ -11,6 +11,7 @@
 Other fixes and improvements:
 - You can now salute story NPCs you meet along your journey.
 - Hades and Theseus will now react with specific voicelines for certain Gods when using Godsent Hex effects against them.
+- Melinoë will now react to Hades calling Cerberus to his aid.
 - Balancing: Elyisian Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Slightly reduced the chance for the "Popper" elite perk to appear.
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
@@ -19,6 +20,7 @@ Other fixes and improvements:
 - Fixed: Some fog and branches flicker on a specific Elysium map.
 - Fixed: Some shop items in the Styx shop can clip behind the base they sit on.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
+- Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.
 - Fixed: Urns are not destroyed when sprinted into.
 - Fixed: Family Dispute door reward previews are too large and clip out of the glass sphere.
 - Fixed: Ash and Bone door reward previews in Asphodel are located too high in the glass sphere. 
