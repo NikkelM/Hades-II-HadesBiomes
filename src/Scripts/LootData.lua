@@ -1,5 +1,5 @@
 -- #region New/Imported text lines
---- Add modded narrative text lines into NarrativeData and LootData/EnemyData with priority placement and voicebank mapping.
+---Add modded narrative text lines into NarrativeData and LootData/EnemyData with priority placement and voicebank mapping.
 ---@param newTextLines table<string, table> Text line sets keyed by text line id, each including `ModsNikkelMHadesBiomes_TextLineMetadata`
 ---@param narrativeDataKey string Key in `game.NarrativeData` and `game.LootData`/`game.EnemyData`
 ---@param textLineType string Field name on LootData/EnemyData to store sets (e.g. "InteractTextLineSets")

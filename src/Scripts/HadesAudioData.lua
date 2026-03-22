@@ -1772,8 +1772,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		{ Cue = "/VO/Thanatos_0188", RequiredPlayed = { "/VO/Thanatos_0183" } },
 		-- What do you need exactly.
 		{ Cue = "/VO/Thanatos_0147", RequiredPlayed = { "/VO/Thanatos_0183" },                                                RequiredFalseTextLines = { "ThanatosGift07_A" } },
-		-- Hmph.
-		{ Cue = "/VO/Thanatos_0161", RequiredPlayed = { "/VO/Thanatos_0183" } },
 		-- Hm.
 		{ Cue = "/VO/Thanatos_0179", RequiredPlayed = { "/VO/Thanatos_0183" } },
 		-- Yes?
@@ -3523,6 +3521,123 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		{ Cue = "/VO/Melinoe_5303", Text = "{#Emph}Let fear of the Unseen spread farther still!" },
 		{ Cue = "/VO/Melinoe_5304", Text = "{#Emph}The tales of the Unseen shall grow." },
 		{ Cue = "/VO/Melinoe_5305", Text = "{#Emph}Our exploits soon shall turn to terrifying tales." },
+	},
+	-- #endregion
+	-- #region Salute/Interact voicelines
+	ModsNikkelMHadesBiomes_SaluteVoiceLines = {
+		Cooldowns = {
+			{ Name = "MelinoeSaluteSpeech", Time = 6 },
+		},
+		TriggerCooldowns = { "MelinoeRoomExitVoiceLines" },
+		-- formal relationships
+		{
+			PreLineWait = 0.15,
+			RandomRemaining = true,
+			UsePlayerSource = true,
+			GameStateRequirements = {
+				{
+					PathFromArgs = true,
+					Path = { "OriginalSource", "Name" },
+					IsAny = mod.FormalNPCRelationships,
+				},
+			},
+			{
+				Cue = "/VO/Melinoe_1698",
+				Text = "Salutations.",
+				GameStateRequirements = {
+					{
+						PathFromArgs = true,
+						Path = { "OriginalSource", },
+						HasNone = { "ConversationThisRun", "GiftedThisRun", },
+					},
+				},
+			},
+			{
+				Cue = "/VO/Melinoe_1699",
+				Text = "Salutations!",
+				GameStateRequirements = {
+					{
+						PathFromArgs = true,
+						Path = { "OriginalSource", },
+						HasNone = { "ConversationThisRun", "GiftedThisRun", },
+					},
+				},
+			},
+			{ Cue = "/VO/Melinoe_1701", Text = "Moonlight guide you." },
+			{ Cue = "/VO/Melinoe_1703", Text = "May moonlight guide you." },
+			{ Cue = "/VO/Melinoe_1704", Text = "Moonlight guide us." },
+			{ Cue = "/VO/Melinoe_1705", Text = "May moonlight guide us." },
+			{ Cue = "/VO/Melinoe_1709", Text = "Moonlight guide us." },
+		},
+		-- informal relationships F
+		{
+			PreLineWait = 0.15,
+			RandomRemaining = true,
+			UsePlayerSource = true,
+			GameStateRequirements = {
+				{
+					PathFromArgs = true,
+					Path = { "OriginalSource", "Name" },
+					IsAny = mod.InformalNPCRelationshipsF,
+				},
+			},
+			{
+				Cue = "/VO/Melinoe_2784",
+				Text = "Salutations!",
+				GameStateRequirements =
+				{
+					{
+						PathFromArgs = true,
+						Path = { "OriginalSource", },
+						HasNone = { "ConversationThisRun", "GiftedThisRun", },
+					},
+				},
+			},
+			{ Cue = "/VO/Melinoe_2785", Text = "Moonlight guide you." },
+			{ Cue = "/VO/Melinoe_2786", Text = "May moonlight guide you!" },
+			{ Cue = "/VO/Melinoe_2787", Text = "May moonlight guide us." },
+			{ Cue = "/VO/Melinoe_2788", Text = "Moonlight guide us, and all." },
+		},
+		-- informal relationships M
+		{
+			PreLineWait = 0.15,
+			RandomRemaining = true,
+			UsePlayerSource = true,
+			GameStateRequirements = {
+				{
+					PathFromArgs = true,
+					Path = { "OriginalSource", "Name" },
+					IsAny = mod.InformalNPCRelationshipsM,
+				},
+			},
+			{
+				Cue = "/VO/Melinoe_1698_2",
+				Text = "Salutations.",
+				GameStateRequirements = {
+					{
+						PathFromArgs = true,
+						Path = { "OriginalSource", },
+						HasNone = { "ConversationThisRun", "GiftedThisRun", },
+					},
+				},
+			},
+			{
+				Cue = "/VO/Melinoe_1699_2",
+				Text = "Salutations!",
+				GameStateRequirements = {
+					{
+						PathFromArgs = true,
+						Path = { "OriginalSource", },
+						HasNone = { "ConversationThisRun", "GiftedThisRun", },
+					},
+				},
+			},
+			{ Cue = "/VO/Melinoe_1701_2", Text = "Moonlight guide you." },
+			{ Cue = "/VO/Melinoe_1703_2", Text = "May moonlight guide you." },
+			{ Cue = "/VO/Melinoe_1704_2", Text = "Moonlight guide us." },
+			{ Cue = "/VO/Melinoe_1705_2", Text = "May moonlight guide us." },
+			{ Cue = "/VO/Melinoe_1709_2", Text = "Moonlight guide us." },
+		},
 	},
 	-- #endregion
 }

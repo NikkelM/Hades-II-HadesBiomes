@@ -185,6 +185,9 @@ end
 mod.CachedSjsonLoadsFile = nil
 OnAnyLoad {
 	function(triggerArgs)
+		-- This engine function hook does not get reset on lua state reset it seems, so if the mod was uninstalled during game start, we don't want to run it when loading a save
+		if not config.enabled then return end
+
 		-- #region SJSON Hook validation
 		-- Note: Enemies.sjson is currently the sjson file that is loaded before all others, meaning we reset the table there
 		local sjsonLoads = mod.CachedSjsonLoadsFile or mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}

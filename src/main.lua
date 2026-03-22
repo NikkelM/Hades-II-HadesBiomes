@@ -185,13 +185,19 @@ local function on_ready()
 
 	local setupSuccessful = true
 	if config.firstTimeSetup then
-		setupSuccessful = mod.FirstTimeSetup()
+		-- Pre-install: Create/Copy files that are required before the loading bar starts
+		mod.InstallationPending = true
+		setupSuccessful = mod.CreateRequiredHookTargetFiles()
 	end
 
-	-- Only check for files if the first time setup was successful, or the mod was already installed
 	if setupSuccessful then
-		-- Before proceeding, check that required files exist
-		local numMissingFiles = mod.CheckRequiredFiles(false)
+		local numMissingFiles = 0
+		-- Only check if all required files exist here if we are not waiting on an install
+		-- After the installation completes, mod.CheckRequiredFiles is called again, so we are not missing the check
+		if not mod.InstallationPending then
+			numMissingFiles = mod.CheckRequiredFiles(false)
+		end
+
 		if numMissingFiles == 0 then
 			-- General data needed for map generation/display
 			import "Game/MapGroups.sjson.lua"
@@ -510,7 +516,7 @@ local function on_ready()
 			import "Scripts/WeaponSets.lua"
 			DebugLogScriptImportProgress("main logic and presentation scripts")
 
-			-- Ensure the FxOriginal package is loaded with every biome package
+			-- Ensure the required additional packages are loaded with every biome package immediately before map load
 			mod.SetBiomePackageLoadOverrides()
 			mod.DebugPrint(
 				"[Script Loading] Set biome package load overrides, took " .. (os.clock() - lastImportTime) .. " seconds", 4)
@@ -529,6 +535,12 @@ local function on_ready()
 					mod.DebugPrint(
 						"Incompatible mods have been detected, see the logs above for the most likely candidates. Please visit github.com/NikkelM/Hades-II-HadesBiomes/wiki/Incompatible-Mods and uninstall all listed incompatible mods.",
 						1)
+				end
+
+				-- Load the modded MainMenu package manually on first game start, the hash overrides do not work yet
+				-- The package will immediately be unloaded when loading into a save completes, so no worries on that being unnecessary
+				if game.GameState == nil then
+					game.LoadPackages({ Name = "NikkelM-HadesBiomesMainMenu", IgnoreAssert = true })
 				end
 
 				mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)
@@ -567,7 +579,9 @@ local function on_ready_late()
 	import "Scripts/InteractLogic_Late.lua"
 	import "Scripts/MarketLogic_Late.lua"
 	import "Scripts/ObjectiveLogic_Late.lua"
+	import "Scripts/PowersLogic_Late.lua"
 	import "Scripts/ResourceLogic_Late.lua"
+	import "Scripts/RewardPresentation_Late.lua"
 	import "Scripts/RoomLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
 	import "Scripts/RunClearLogic_Late.lua"

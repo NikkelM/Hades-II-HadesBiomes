@@ -2177,6 +2177,10 @@ local enemyModifications = {
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
 		RunHistoryKilledByName = "NPC_Hades_01",
+		DefaultAIData = {
+			-- Otherwise the blast is delayed if the player moves out of range, as the static cast tries to "move" towards the player
+			MoveWithinRange = false,
+		},
 	},
 	NPC_Hades_Story_02 = {
 		IsBoss = false,
@@ -2218,6 +2222,17 @@ local enemyModifications = {
 	-- #endregion
 
 	-- #region ENVIRONMENT
+	BaseBreakable = {
+		CollisionReaction = mod.NilValue,
+		CollisionReactions = {
+			{
+				MinVelocity = 780,
+				KillSelf = true,
+			}
+		},
+		-- So that they also break when sprinted into when The Swift Runner/SprintShieldMetaUpgrade is active
+		ModsNikkelMHadesBiomesForceCollisionOnSprintPhase = true,
+	},
 	Breakable = {
 		CannotDieFromDamage = true,
 		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "BreakableOnHitModsNikkelMHadesBiomes",

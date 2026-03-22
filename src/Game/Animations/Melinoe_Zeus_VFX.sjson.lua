@@ -23,6 +23,8 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoTartarusObstacleFile, function(data)
+	mod.RunInstallStep("Melinoe_Zeus_VFX")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Melinoe_Zeus_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

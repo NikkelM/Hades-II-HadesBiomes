@@ -908,6 +908,8 @@ local newData = {
 }
 
 sjson.hook(animationsFile, function(data)
+	mod.RunInstallStep("Hero_Melinoe_Animation_Personality")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Hero_Melinoe_Animation_Personality"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

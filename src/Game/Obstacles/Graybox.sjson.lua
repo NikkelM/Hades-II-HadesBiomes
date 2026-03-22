@@ -49,6 +49,8 @@ mod.ApplyNestedSjsonModifications(hadesGrayboxObstacleTable.Obstacles, obstacleM
 local hadesTwoObstacleModifications = {}
 
 sjson.hook(hadesTwoGrayboxObstacleFile, function(data)
+	mod.RunInstallStep("Graybox")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Graybox"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

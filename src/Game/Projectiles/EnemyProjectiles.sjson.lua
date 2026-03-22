@@ -322,9 +322,6 @@ local hadesProjectilesModifications = {
 		InheritFrom = "CrusherUnitTouchdown",
 		DetonateGraphic = "nil",
 	},
-	HadesAmmoWeapon = {
-		AffectsFriends = false,
-	},
 	HadesBidentStrike = {
 		Range = 900,
 	},

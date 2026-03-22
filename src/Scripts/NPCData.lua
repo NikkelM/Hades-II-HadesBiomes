@@ -183,6 +183,12 @@ local function applyNPCGlobalModifications(base, npcModifications)
 		if npcData.CharacterInteractions and npcData.CharacterInteractions.Rescue and npcData.CharacterInteractions.Rescue.VoiceLines then
 			npcData.CharacterInteractions.Rescue.VoiceLines.AllowTalkOverTextLines = true
 			npcData.CharacterInteractions.Rescue.VoiceLines.ObjectType = npcName
+			for _, group in ipairs(npcData.CharacterInteractions.Rescue.VoiceLines) do
+				for _, line in ipairs(group) do
+					-- Some of these are reused for Salute voicelines, and we don't want to play the same one twice
+					line.RequiredFalsePlayedThisRoom = { line.Cue }
+				end
+			end
 		end
 	end
 end
@@ -194,6 +200,64 @@ local npcModifications = {
 		ActivateRequirements = mod.NilValue,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
+		SpecialInteractFunctionName = "SpecialInteractSalute",
+		SpecialInteractGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "SisyphusGift01" },
+			},
+		},
+		SpecialInteractCooldown = 60,
+		InteractVoiceLines = {
+			{ GlobalVoiceLines = "ModsNikkelMHadesBiomes_SaluteVoiceLines" },
+			{
+				RandomRemaining = true,
+				PreLineWait = 0.3,
+				ObjectType = "NPC_Sisyphus_01",
+				PreLineAnim = "SisyphusIdleGreeting",
+				-- Sure thing!
+				{ Cue = "/VO/Sisyphus_0038", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0038" } },
+				-- You got it.
+				{ Cue = "/VO/Sisyphus_0039", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0039" } },
+				-- Say no more!
+				{ Cue = "/VO/Sisyphus_0040", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0040" } },
+				-- Easy does it!
+				{ Cue = "/VO/Sisyphus_0041", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0041" } },
+				-- Most excellent!
+				{ Cue = "/VO/Sisyphus_0048", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0048" } },
+				-- Certainly, Highness!
+				{ Cue = "/VO/Sisyphus_0223", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0223" } },
+				-- No worries whatsoever!
+				{ Cue = "/VO/Sisyphus_0226", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0226" } },
+
+				-- Your Highness!
+				{ Cue = "/VO/Sisyphus_0058", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0058" } },
+				-- Good morning or whenever!
+				{ Cue = "/VO/Sisyphus_0063", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0063" } },
+				-- Good to see you!
+				{ Cue = "/VO/Sisyphus_0210", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0210" } },
+
+				-- Well you take care!
+				{ Cue = "/VO/Sisyphus_0122", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0122" } },
+				-- Careful out there!
+				{ Cue = "/VO/Sisyphus_0128", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0128" } },
+				-- Take care out there!
+				{ Cue = "/VO/Sisyphus_0111", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0111" } },
+				-- Good luck out there!
+				{ Cue = "/VO/Sisyphus_0112", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0112" } },
+				-- Take care of yourself!
+				{ Cue = "/VO/Sisyphus_0114", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0114" } },
+				-- Safe travels!
+				{ Cue = "/VO/Sisyphus_0117", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0117" } },
+				-- You can do this!
+				{ Cue = "/VO/Sisyphus_0119", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0119" } },
+				-- Careful out there, all right?
+				{ Cue = "/VO/Sisyphus_0246", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0246" } },
+				-- May you get out of here this time, Highness!
+				{ Cue = "/VO/Sisyphus_0247", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0247" }, RequiredTextLines = { "SisyphusGift02" }, },
+				-- Keep fighting, Highness!
+				{ Cue = "/VO/Sisyphus_0251", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0251" } },
+			},
+		},
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		RepulseOnMeleeInvulnerableHit = 200,
 		UpgradeScreenOpenSound = "/Leftovers/Menu Sounds/InfoPanelInURSA",
@@ -277,6 +341,36 @@ local npcModifications = {
 		ModsNikkelMHadesBiomesPlayVocals = true,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
+		SpecialInteractFunctionName = "SpecialInteractSalute",
+		AllowSpecialInteractInPartnerConversation = true,
+		SpecialInteractGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "EurydiceGift01" },
+			},
+		},
+		SpecialInteractCooldown = 60,
+		InteractVoiceLines = {
+			{ GlobalVoiceLines = "ModsNikkelMHadesBiomes_SaluteVoiceLines" },
+			{
+				RandomRemaining = true,
+				PreLineWait = 0.3,
+				ObjectType = "NPC_Eurydice_01",
+				-- You got it!
+				{ Cue = "/VO/Eurydice_0128", RequiredFalsePlayedThisRoom = { "/VO/Eurydice_0128" } },
+				-- Sure thing!
+				{ Cue = "/VO/Eurydice_0129", RequiredFalsePlayedThisRoom = { "/VO/Eurydice_0129" } },
+				-- Sounds good!
+				{ Cue = "/VO/Eurydice_0130", RequiredFalsePlayedThisRoom = { "/VO/Eurydice_0130" } },
+				-- You got it, hon!
+				{ Cue = "/VO/Eurydice_0140", RequiredFalsePlayedThisRoom = { "/VO/Eurydice_0140" } },
+				-- Sure thing, hon.
+				{ Cue = "/VO/Eurydice_0142", RequiredFalsePlayedThisRoom = { "/VO/Eurydice_0142" } },
+				-- You bet!
+				{ Cue = "/VO/Eurydice_0146", RequiredFalsePlayedThisRoom = { "/VO/Eurydice_0146" } },
+				-- Excellent.
+				{ Cue = "/VO/Eurydice_0226", RequiredFalsePlayedThisRoom = { "/VO/Eurydice_0226" } },
+			},
+		},
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		RepulseOnMeleeInvulnerableHit = 150,
 		UpgradeScreenOpenSound = "/SFX/Menu Sounds/PortraitEmoteCheerfulSFX",
@@ -331,6 +425,53 @@ local npcModifications = {
 		ActivateRequirements = mod.NilValue,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
+		SpecialInteractFunctionName = "SpecialInteractSalute",
+		SpecialInteractGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "PatroclusGift01" },
+			},
+		},
+		SpecialInteractCooldown = 60,
+		InteractVoiceLines = {
+			{ GlobalVoiceLines = "ModsNikkelMHadesBiomes_SaluteVoiceLines" },
+			{
+				RandomRemaining = true,
+				PreLineWait = 0.3,
+				ObjectType = "NPC_Patroclus_01",
+				-- Oh.
+				{ Cue = "/VO/Patroclus_0152", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0152" } },
+				-- Although...
+				{ Cue = "/VO/Patroclus_0153", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0153" } },
+				-- ...Ah.
+				{ Cue = "/VO/Patroclus_0156", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0156" } },
+				-- ...You.
+				{ Cue = "/VO/Patroclus_0157", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0157" } },
+				-- Well...
+				{ Cue = "/VO/Patroclus_0158", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0158" } },
+				-- <Chuckle>
+				{ Cue = "/VO/Patroclus_0076", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0076" } },
+				-- <Chuckle>
+				{ Cue = "/VO/Patroclus_0342", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0342" } },
+				-- Hrn?
+				{ Cue = "/VO/Patroclus_0333", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0333" } },
+				-- Eh...
+				{ Cue = "/VO/Patroclus_0334", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0334" } },
+				-- Heh...
+				{ Cue = "/VO/Patroclus_0335", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0335" } },
+				-- Hm.
+				{ Cue = "/VO/Patroclus_0336", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0336" } },
+				-- Ah yes.
+				{ Cue = "/VO/Patroclus_0337", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0337" } },
+				-- Ah.
+				{ Cue = "/VO/Patroclus_0222", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0222" } },
+				-- Oh.
+				{ Cue = "/VO/Patroclus_0223", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0223" } },
+				-- Stranger.
+				{ Cue = "/VO/Patroclus_0231", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0231" } },
+				-- Very well.
+				{ Cue = "/VO/Patroclus_0287", RequiredFalsePlayedThisRoom = { "/VO/Patroclus_0287" } },
+			},
+		},
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		RepulseOnMeleeInvulnerableHit = 200,
 		UpgradeScreenOpenSound = "/Leftovers/Menu Sounds/InfoPanelInURSA",
@@ -434,6 +575,60 @@ local npcModifications = {
 	},
 	NPC_Thanatos_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		SpecialInteractFunctionName = "SpecialInteractSalute",
+		SpecialInteractGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "ThanatosGift01" },
+			},
+			{
+				-- Can't Salute when he's about to disappear
+				PathFalse = { "CurrentRun", "CurrentRoom", "UseRecord", "NPC_Thanatos_01" }
+			},
+		},
+		SpecialInteractCooldown = 60,
+		InteractVoiceLines = {
+			{ GlobalVoiceLines = "ModsNikkelMHadesBiomes_SaluteVoiceLines" },
+			{
+				RandomRemaining = true,
+				PreLineWait = 0.3,
+				ObjectType = "NPC_Thanatos_01",
+				PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+				-- Hmph.
+				{ Cue = "/VO/Thanatos_0161", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0161" } },
+				-- What.
+				{ Cue = "/VO/Thanatos_0183", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0183" } },
+				-- What do you need exactly.
+				{ Cue = "/VO/Thanatos_0147", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0147" }, RequiredFalseTextLines = { "ThanatosGift07_A" } },
+				-- Hm.
+				{ Cue = "/VO/Thanatos_0179", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0179" } },
+				-- Yes?
+				{ Cue = "/VO/Thanatos_0182", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0182" }, RequiredFalseTextLines = { "ThanatosGift06" }, },
+				-- Tsch.
+				{ Cue = "/VO/Thanatos_0180", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0180" }, RequiredFalseTextLines = { "ThanatosGift05" }, },
+				-- What?
+				{ Cue = "/VO/Thanatos_0184", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0184" }, RequiredFalseTextLines = { "ThanatosGift05" }, },
+				-- What's up.
+				{ Cue = "/VO/Thanatos_0152", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0152" }, RequiredTextLines = { "ThanatosGift04" }, },
+				-- Heh.
+				{ Cue = "/VO/Thanatos_0181", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0181" }, RequiredTextLines = { "ThanatosGift05" }, },
+				-- You all right?
+				{ Cue = "/VO/Thanatos_0189", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0189" }, RequiredTextLines = { "ThanatosGift06" },                                               RequiresLastRunNotCleared = true },
+				-- You OK?
+				{ Cue = "/VO/Thanatos_0190", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0190" }, RequiredTextLines = { "ThanatosGift06" },                                               RequiresLastRunNotCleared = true },
+				-- Hey.
+				{ Cue = "/VO/Thanatos_0194", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0194" }, RequiredTextLines = { "ThanatosGift06" }, },
+				-- Hey.
+				{ Cue = "/VO/Thanatos_0427", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0427" }, RequiredTextLines = { "ThanatosGift10" }, },
+				-- Good work out there.
+				{ Cue = "/VO/Thanatos_0429", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0429" }, RequiredTextLines = { "ThanatosGift06" },                                               RequiresLastRunCleared = true, },
+				-- Well done that time.
+				{ Cue = "/VO/Thanatos_0430", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0430" }, RequiredTextLines = { "ThanatosGift06" },                                               RequiresLastRunCleared = true, },
+				-- Glad you're back.
+				{ Cue = "/VO/Thanatos_0434", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0434" }, RequiredAnyTextLines = { "BecameCloserWithThanatos01", "BecameCloserWithThanatos01_B" } },
+				-- Back in one piece.
+				{ Cue = "/VO/Thanatos_0435", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0435" }, RequiredTextLines = { "ThanatosGift07_A" }, },
+			},
+		},
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		ExcludeFromDamageDealtRecord = true,
 		ActivateRequirements = mod.NilValue,
@@ -979,6 +1174,10 @@ local npcModifications = {
 		},
 	},
 	NPC_Thanatos_Field_01 = {
+		SpecialInteractFunctionName = mod.NilValue,
+		SpecialInteractGameStateRequirements = {
+			Skip = true,
+		},
 		AIOptions = { "AttackerAI" },
 		PostCombatAI = _PLUGIN.guid .. "." .. "ThanatosPostCombat",
 		KillChallengeArgs = {
@@ -1039,6 +1238,44 @@ local npcModifications = {
 		},
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
+		SpecialInteractFunctionName = "SpecialInteractSalute",
+		SpecialInteractGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusGift01" },
+			},
+			{
+				-- Can't Salute when he's about to disappear
+				PathFalse = { "CurrentRun", "TextLinesRecord", "OrpheusAboutSingersReunionQuest01" },
+			},
+		},
+		SpecialInteractCooldown = 60,
+		InteractVoiceLines = {
+			{ GlobalVoiceLines = "ModsNikkelMHadesBiomes_SaluteVoiceLines" },
+			{
+				RandomRemaining = true,
+				PreLineWait = 0.3,
+				ObjectType = "NPC_Orpheus_01",
+				PreLineAnim = "OrpheusFidget",
+				-- Hello...!
+				{ Cue = "/VO/Orpheus_0060", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0060" }, },
+				-- Hello...
+				{ Cue = "/VO/Orpheus_0061", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0061" }, },
+				-- Hmm.
+				{ Cue = "/VO/Orpheus_0062", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0062" }, },
+				-- Ah.
+				{ Cue = "/VO/Orpheus_0063", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0063" }, },
+				-- Oh, um, hello.
+				{ Cue = "/VO/Orpheus_0064", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0064" }, },
+				-- Hello there.
+				{ Cue = "/VO/Orpheus_0065", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0065" }, },
+				-- Hello my friend.
+				{ Cue = "/VO/Orpheus_0093", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0093" }, RequiredTextLines = { "OrpheusGift02" }, },
+				-- Hello friend.
+				{ Cue = "/VO/Orpheus_0094", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0094" }, RequiredTextLines = { "OrpheusGift06" }, },
+				-- Greetings.
+				{ Cue = "/VO/Orpheus_0095", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0095" }, RequiredTextLines = { "OrpheusGift02" }, },
+			},
+		},
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		RepulseOnMeleeInvulnerableHit = 150,
 		UpgradeScreenOpenSound = "/SFX/Menu Sounds/PortraitEmoteCheerfulSFX",
@@ -1344,6 +1581,33 @@ local npcModifications = {
 		MenuTitle = "ModsNikkelMHadesBiomes_Eurydice_Orpheus",
 		FlavorTextIds = {
 			"Eurydice_OfferText03",
+		},
+		AllowSpecialInteractInPartnerConversation = true,
+		InteractVoiceLines = {
+			{ GlobalVoiceLines = "ModsNikkelMHadesBiomes_SaluteVoiceLines" },
+			{
+				RandomRemaining = true,
+				PreLineWait = 0.3,
+				ObjectType = "NPC_Orpheus_Story_01",
+				-- Hello...!
+				{ Cue = "/VO/Orpheus_0060", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0060" }, },
+				-- Hello...
+				{ Cue = "/VO/Orpheus_0061", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0061" }, },
+				-- Hmm.
+				{ Cue = "/VO/Orpheus_0062", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0062" }, },
+				-- Ah.
+				{ Cue = "/VO/Orpheus_0063", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0063" }, },
+				-- Oh, um, hello.
+				{ Cue = "/VO/Orpheus_0064", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0064" }, },
+				-- Hello there.
+				{ Cue = "/VO/Orpheus_0065", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0065" }, },
+				-- Hello my friend.
+				{ Cue = "/VO/Orpheus_0093", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0093" }, RequiredTextLines = { "OrpheusGift02" }, },
+				-- Hello friend.
+				{ Cue = "/VO/Orpheus_0094", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0094" }, RequiredTextLines = { "OrpheusGift06" }, },
+				-- Greetings.
+				{ Cue = "/VO/Orpheus_0095", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0095" }, RequiredTextLines = { "OrpheusGift02" }, },
+			},
 		},
 		InteractTextLineSets = {
 			OrpheusWithEurydice01 = {

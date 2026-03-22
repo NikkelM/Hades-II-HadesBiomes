@@ -559,7 +559,7 @@ function mod.AreHadesModsInstalled()
 	return false
 end
 
----We need to override the packages that are loaded with a biome package, to also load the Fx package, as we need the textures from it before map load.
+---We need to override the packages that are loaded with a biome package, to also load the required modded packages, as we need the textures from them before map load.
 function mod.SetBiomePackageLoadOverrides()
 	local tartarusBiomeHash = rom.data.get_hash_guid_from_string("TartarusModsNikkelMHadesBiomes")
 	local asphodelBiomeHash = rom.data.get_hash_guid_from_string("AsphodelModsNikkelMHadesBiomes")
@@ -587,6 +587,15 @@ function mod.SetBiomePackageLoadOverrides()
 		{ erebusBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
 	rom.data.load_package_overrides_set(charonBiomeHash,
 		{ charonBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+
+	-- Main Menu package, only if installation is valid (so we don't show the logo on invalid installs to prevent confusion)
+	if mod.HiddenConfig.IsValidInstallation then
+		local vanillaMainMenuHash = rom.data.get_hash_guid_from_string("MainMenu")
+		local moddedMainMenuHash = rom.data.get_hash_guid_from_string("NikkelM-HadesBiomesMainMenu")
+
+		rom.data.load_package_overrides_set(vanillaMainMenuHash,
+			{ vanillaMainMenuHash, moddedMainMenuHash })
+	end
 end
 
 modutil.mod.Path.Wrap("DebugPrint", function(base, args)

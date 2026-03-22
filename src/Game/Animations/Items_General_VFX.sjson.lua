@@ -131,6 +131,8 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoItemsGeneralVfxFile, function(data)
+	mod.RunInstallStep("Items_General_VFX")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Items_General_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
