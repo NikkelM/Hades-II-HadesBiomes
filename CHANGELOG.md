@@ -17,6 +17,7 @@ Other fixes and improvements:
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
 - Fixed: Some fog and branches flicker on a specific Elysium map.
+- Fixed: Some shop items in the Styx shop can clip behind the base they sit on.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Urns are not destroyed when sprinted into.
 - Fixed: Family Dispute door reward previews are too large and clip out of the glass sphere.

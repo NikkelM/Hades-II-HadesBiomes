@@ -1176,6 +1176,70 @@ In this map, we need to change the name for the Cerberus NPC, as it is used in b
 
 For ID `547487`, change the `Name` property from `NPC_Cerberus_Field_01` to `ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01`.
 
+We also need to update the layering of some shop items, so they don't appear underneath the shop stele.
+
+TravelPillarBase05b:
+For ID `553243`, change the `GroupNames` property to `Standing_Lower`.
+For ID `553245`, change the `GroupNames` property to `Standing_Lower`.
+For ID `553246`, change the `GroupNames` property to `Standing_Lower`.
+For ID `553247`, change the `GroupNames` property to `Standing_Lower`.
+For ID `553248`, change the `GroupNames` property to `Standing_Lower`.
+For ID `553249`, change the `GroupNames` property to `Standing_Lower`.
+
+New map_text groups:
+
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410517,
+		"Name": "Standing_Lower"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410516,
+		"Name": "Standing"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+```
+
+```
+{
+	"Id": 410516,
+	"Name": "Standing"
+},
+{
+	"Id": 410517,
+	"Name": "Standing_Lower"
+},
+```
+
 #### D_Mini03
 
 StyxAxeSwing:
