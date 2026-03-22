@@ -367,8 +367,6 @@ local npcModifications = {
 				{ Cue = "/VO/Eurydice_0142", RequiredFalsePlayedThisRoom = { "/VO/Eurydice_0142" } },
 				-- You bet!
 				{ Cue = "/VO/Eurydice_0146", RequiredFalsePlayedThisRoom = { "/VO/Eurydice_0146" } },
-				-- Sounds good, no problem!
-				{ Cue = "/VO/Eurydice_0149", RequiredFalsePlayedThisRoom = { "/VO/Eurydice_0149" } },
 				-- Excellent.
 				{ Cue = "/VO/Eurydice_0226", RequiredFalsePlayedThisRoom = { "/VO/Eurydice_0226" } },
 			},

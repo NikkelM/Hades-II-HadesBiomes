@@ -14,10 +14,13 @@ Other fixes and improvements:
 - Balancing: Elyisan Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Reduced the chance for the "Popper" elite perk to appear.
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
-- Fixed: Urns are not destroyed when sprinted into.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk no longer trigger "Unseen Ire".
+- Fixed: Some fog and branches flicker on a specific Elysium map.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
+- Fixed: Urns are not destroyed when sprinted into.
+- Fixed: Family Dispute door reward previews are too large and clip out of the glass sphere.
+- Fixed: Ash and Bone door reward previews in Asphodel are too high in the glass sphere. 
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
 - Fixed: Chaos Gates did not have specific spawn requirements adapted to Zagreus' Journey runs.
 - Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.

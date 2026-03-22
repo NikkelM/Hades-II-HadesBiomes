@@ -581,6 +581,7 @@ local function on_ready_late()
 	import "Scripts/ObjectiveLogic_Late.lua"
 	import "Scripts/PowersLogic_Late.lua"
 	import "Scripts/ResourceLogic_Late.lua"
+	import "Scripts/RewardPresentation_Late.lua"
 	import "Scripts/RoomLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
 	import "Scripts/RunClearLogic_Late.lua"
