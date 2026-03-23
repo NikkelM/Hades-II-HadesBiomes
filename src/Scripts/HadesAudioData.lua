@@ -250,154 +250,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			-- Already made it that far, have you, boy?
 			-- { Cue = "/VO/Intercom_1021", RequiredRoom = "C_PostBoss01",            RequiredTextLines = { "Ending01" }, },
 		},
-		{
-			RandomRemaining = true,
-			BreakIfPlayed = true,
-			UsePlayerSource = true,
-			RequiredFalseScreensOpen = { "AwardMenu", "SellTraitMenu", "Store" },
-
-			-- I sure did, Father.
-			{ Cue = "/VO/ZagreusField_1539", RequiredPlayedThisRoom = { "/VO/Intercom_0380" }, },
-			-- You are correct, Father.
-			{ Cue = "/VO/ZagreusField_1540", RequiredPlayedThisRoom = { "/VO/Intercom_0380" }, },
-
-			-- It most certainly did.
-			{ Cue = "/VO/ZagreusField_1541", RequiredPlayedThisRoom = { "/VO/Intercom_0381" }, },
-			-- It fell to me, indeed.
-			{ Cue = "/VO/ZagreusField_1542", RequiredPlayedThisRoom = { "/VO/Intercom_0381" }, },
-
-			-- I think I'm going to Elysium.
-			{ Cue = "/VO/ZagreusField_1543", RequiredPlayedThisRoom = { "/VO/Intercom_0382" }, RequiredRoom = "B_PostBoss01" },
-			-- You know exactly where.
-			{ Cue = "/VO/ZagreusField_1544", RequiredPlayedThisRoom = { "/VO/Intercom_0382" }, },
-
-			-- I figured, thanks.
-			{ Cue = "/VO/ZagreusField_1545", RequiredPlayedThisRoom = { "/VO/Intercom_0383" }, },
-			-- Oh I'm sure it's fine.
-			{ Cue = "/VO/ZagreusField_1546", RequiredPlayedThisRoom = { "/VO/Intercom_0383" }, },
-
-			-- Thanks for the tip.
-			{ Cue = "/VO/ZagreusField_1547", RequiredPlayedThisRoom = { "/VO/Intercom_0384" }, },
-			-- Don't know any other way.
-			{ Cue = "/VO/ZagreusField_1548", RequiredPlayedThisRoom = { "/VO/Intercom_0384" }, },
-
-			-- Good.
-			{ Cue = "/VO/ZagreusField_1549", RequiredPlayedThisRoom = { "/VO/Intercom_0385" }, },
-			-- Sounds like progress to me.
-			{ Cue = "/VO/ZagreusField_1550", RequiredPlayedThisRoom = { "/VO/Intercom_0385" }, },
-
-			-- I am, indeed.
-			{ Cue = "/VO/ZagreusField_1551", RequiredPlayedThisRoom = { "/VO/Intercom_0386" }, },
-			-- Seems that way.
-			{ Cue = "/VO/ZagreusField_1552", RequiredPlayedThisRoom = { "/VO/Intercom_0386" }, },
-
-			-- We'll see.
-			{ Cue = "/VO/ZagreusField_1553", RequiredPlayedThisRoom = { "/VO/Intercom_0387" }, },
-			-- Don't count on it.
-			{ Cue = "/VO/ZagreusField_1554", RequiredPlayedThisRoom = { "/VO/Intercom_0387" }, },
-
-			-- Or else what, Father?
-			{ Cue = "/VO/ZagreusField_1555", RequiredPlayedThisRoom = { "/VO/Intercom_0388" }, },
-			-- Sorry, can't turn back.
-			{ Cue = "/VO/ZagreusField_1556", RequiredPlayedThisRoom = { "/VO/Intercom_0388" }, },
-
-			-- So do I.
-			{ Cue = "/VO/ZagreusField_1557", RequiredPlayedThisRoom = { "/VO/Intercom_0389" }, },
-			-- Not in the mood for your jesting, Father.
-			{ Cue = "/VO/ZagreusField_1558", RequiredPlayedThisRoom = { "/VO/Intercom_0389" }, },
-
-			-- There's always the next one.
-			{ Cue = "/VO/ZagreusField_1559", RequiredPlayedThisRoom = { "/VO/Intercom_0390" }, },
-			-- What are you, the Three Fates?
-			{ Cue = "/VO/ZagreusField_1560", RequiredPlayedThisRoom = { "/VO/Intercom_0390" }, },
-
-			-- Don't worry, won't be long.
-			{ Cue = "/VO/ZagreusField_1561", RequiredPlayedThisRoom = { "/VO/Intercom_0391" }, },
-			-- Well, I did.
-			{ Cue = "/VO/ZagreusField_1562", RequiredPlayedThisRoom = { "/VO/Intercom_0391" }, },
-
-			-- Oh very much.
-			{ Cue = "/VO/ZagreusField_1563", RequiredPlayedThisRoom = { "/VO/Intercom_0392" }, },
-			-- You really need to turn down the heat in that place.
-			{ Cue = "/VO/ZagreusField_1564", RequiredPlayedThisRoom = { "/VO/Intercom_0392" }, },
-
-			-- Yes, yes I do.
-			{ Cue = "/VO/ZagreusField_1565", RequiredPlayedThisRoom = { "/VO/Intercom_0393" }, },
-			-- I absolutely do.
-			{ Cue = "/VO/ZagreusField_1566", RequiredPlayedThisRoom = { "/VO/Intercom_0393" }, },
-
-
-			-- C_PostBoss01 responses
-			-- Detecting a pattern yet, Father?
-			{ Cue = "/VO/ZagreusField_1998", RequiredPlayedThisRoom = { "/VO/Intercom_0441" }, },
-			-- They weren't that great.
-			{ Cue = "/VO/ZagreusField_1999", RequiredPlayedThisRoom = { "/VO/Intercom_0441" }, },
-
-			-- Don't forget Asterius!
-			{ Cue = "/VO/ZagreusField_2000", RequiredPlayedThisRoom = { "/VO/Intercom_0442" }, },
-			-- He's all talk.
-			{ Cue = "/VO/ZagreusField_2001", RequiredPlayedThisRoom = { "/VO/Intercom_0442" }, },
-
-			-- So you keep saying.
-			{ Cue = "/VO/ZagreusField_2002", RequiredPlayedThisRoom = { "/VO/Intercom_0443" }, },
-			-- You know nothing of my struggles.
-			{ Cue = "/VO/ZagreusField_2003", RequiredPlayedThisRoom = { "/VO/Intercom_0443" }, },
-
-			-- What gave you that idea?
-			{ Cue = "/VO/ZagreusField_2004", RequiredPlayedThisRoom = { "/VO/Intercom_0444" }, },
-			-- I do.
-			{ Cue = "/VO/ZagreusField_2005", RequiredPlayedThisRoom = { "/VO/Intercom_0444" }, },
-
-			-- I guess word travels fast.
-			{ Cue = "/VO/ZagreusField_2006", RequiredPlayedThisRoom = { "/VO/Intercom_0445" }, },
-			-- I thwarted him all right.
-			{ Cue = "/VO/ZagreusField_2007", RequiredPlayedThisRoom = { "/VO/Intercom_0445" }, },
-
-			-- Not making you do anything.
-			{ Cue = "/VO/ZagreusField_2008", RequiredPlayedThisRoom = { "/VO/Intercom_0446" }, },
-			-- Stay home, Father.
-			{ Cue = "/VO/ZagreusField_2009", RequiredPlayedThisRoom = { "/VO/Intercom_0446" }, },
-
-			-- I'll be the judge of that.
-			{ Cue = "/VO/ZagreusField_2010", RequiredPlayedThisRoom = { "/VO/Intercom_0447" }, },
-			-- I'm sure I'll find something.
-			{ Cue = "/VO/ZagreusField_2011", RequiredPlayedThisRoom = { "/VO/Intercom_0447" }, },
-
-			-- Looking forward to it!
-			{ Cue = "/VO/ZagreusField_2012", RequiredPlayedThisRoom = { "/VO/Intercom_0448" }, },
-			-- See you soon, Father.
-			{ Cue = "/VO/ZagreusField_2013", RequiredPlayedThisRoom = { "/VO/Intercom_0448" }, },
-
-			-- It's more of a brisk jog.
-			{ Cue = "/VO/ZagreusField_2014", RequiredPlayedThisRoom = { "/VO/Intercom_0449" }, },
-			-- Better off this way.
-			{ Cue = "/VO/ZagreusField_2015", RequiredPlayedThisRoom = { "/VO/Intercom_0449" }, },
-
-			-- Perhaps your expectations are too high.
-			{ Cue = "/VO/ZagreusField_2016", RequiredPlayedThisRoom = { "/VO/Intercom_0450" }, },
-			-- I pray his ego will recover soon.
-			{ Cue = "/VO/ZagreusField_2017", RequiredPlayedThisRoom = { "/VO/Intercom_0450" }, },
-
-			-- No, but you're going to anyway.
-			{ Cue = "/VO/ZagreusField_2018", RequiredPlayedThisRoom = { "/VO/Intercom_0451" }, },
-			-- You leave Cerberus out of this.
-			{ Cue = "/VO/ZagreusField_2019", RequiredPlayedThisRoom = { "/VO/Intercom_0451" }, },
-
-			-- Tell him I said hi.
-			{ Cue = "/VO/ZagreusField_2020", RequiredPlayedThisRoom = { "/VO/Intercom_0452" }, },
-			-- Mind asking him to tone it down a bit?
-			{ Cue = "/VO/ZagreusField_2021", RequiredPlayedThisRoom = { "/VO/Intercom_0452" }, },
-
-			-- What would you know of it?
-			{ Cue = "/VO/ZagreusField_2022", RequiredPlayedThisRoom = { "/VO/Intercom_0453" }, },
-			-- What are you, the Fates?
-			{ Cue = "/VO/ZagreusField_2023", RequiredPlayedThisRoom = { "/VO/Intercom_0453" }, },
-
-			-- I welcome you to try.
-			{ Cue = "/VO/ZagreusField_2024", RequiredPlayedThisRoom = { "/VO/Intercom_0454" }, },
-			-- Then I'll deal with you same as all the rest.
-			{ Cue = "/VO/ZagreusField_2025", RequiredPlayedThisRoom = { "/VO/Intercom_0454" }, },
-		},
 	},
 	HadesWrathAttackVoiceLines = {
 		RandomRemaining = true,
@@ -1629,13 +1481,45 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		{
 			RandomRemaining = true,
 			PreLineWait = 0.35,
+			BreakIfPlayed = true,
 			ObjectType = "Hades",
-			{ Cue = "/VO/HadesField_0631", Text = "What?!" },
-			{ Cue = "/VO/HadesField_0671", Text = "You are the prey, not me." },
-			{ Cue = "/VO/HadesField_0484", Text = "It seems you need all of the help that you can get!" },
-			{ Cue = "/VO/HadesField_0278", Text = "You mean to mock me with such tricks?" },
-			{ Cue = "/VO/HadesField_0466", Text = "You need assistance even now?" },
-			{ Cue = "/VO/HadesField_0583", Text = "I am still more than capable of besting you." },
+			TriggerCooldowns = { "HadesAnyQuipSpeech" },
+			-- What?!
+			{ Cue = "/VO/HadesField_0631", },
+			-- You are the prey, not me.
+			{ Cue = "/VO/HadesField_0671" },
+			-- It seems you need all of the help that you can get!
+			{ Cue = "/VO/HadesField_0484" },
+			-- You mean to mock me with such tricks?
+			{ Cue = "/VO/HadesField_0278" },
+			-- You need assistance even now?
+			{ Cue = "/VO/HadesField_0466" },
+			-- I am still more than capable of besting you.
+			{ Cue = "/VO/HadesField_0583" },
+		},
+	},
+	-- Played when using Unseen Ire/HadesRetaliate against Hades
+	ModsNikkelMHadesBiomes_HadesInvisibilityReactionVoiceLines = {
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			RequiredRooms = { "D_Boss01" },
+			RequiredKillEnemiesFound = true,
+			ObjectType = "Hades",
+			PreLineWait = 1.35,
+			SuccessiveChanceToPlay = 0.75,
+			RequiredFalseBossPhase = 3,
+			TriggerCooldowns = { "HadesAnyQuipSpeech" },
+			-- What?!
+			{ Cue = "/VO/HadesField_0631", RequiredFalsePlayedThisRoom = { "/VO/HadesField_0631" } },
+			-- Oh, shut up!
+			{ Cue = "/VO/HadesField_0634", RequiredPlayed = { "/VO/HadesField_0631" },             RequiredFalsePlayedThisRoom = { "/VO/HadesField_0634" } },
+			-- Vanish, see if I care!
+			{ Cue = "/VO/HadesField_0635", RequiredPlayed = { "/VO/HadesField_0631" },             RequiredFalsePlayedThisRoom = { "/VO/HadesField_0635" } },
+			-- You mean to mock me with such tricks?
+			{ Cue = "/VO/HadesField_0278", RequiredPlayed = { "/VO/HadesField_0631" },             RequiredFalsePlayedThisRoom = { "/VO/HadesField_0278" } },
+			-- It seems you need all of the help that you can get!
+			{ Cue = "/VO/HadesField_0484", RequiredPlayed = { "/VO/HadesField_0631" },             RequiredFalsePlayedThisRoom = { "/VO/HadesField_0484" } },
 		},
 	},
 	-- Ending

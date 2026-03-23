@@ -262,6 +262,9 @@ game.GlobalVoiceLines.HadesBeamAttackVoiceLines = game.GlobalVoiceLines.HadesBea
 game.GlobalVoiceLines.ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines = game.GlobalVoiceLines
 		.ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_HadesInvisibilityReactionVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_HadesInvisibilityReactionVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_HadesInvisibilityReactionVoiceLines
 game.GlobalVoiceLines.HadesSighVoiceLines = game.GlobalVoiceLines.HadesSighVoiceLines or
 		mod.GlobalVoiceLines.HadesSighVoiceLines
 
