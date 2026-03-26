@@ -27008,6 +27008,7 @@ mod.NPCData = mod.NPCData or {
 				UseableOffSource = true,
 				RequiredUsedAssistInRoomThisRun = "A_Boss01",
 				RequiredAssistKeepsake = "DusaAssistTrait",
+				-- TODO:
 				RequiredAnyPlayedThisRun = { "/VO/ZagreusField_3006", "/VO/ZagreusField_3007", "/VO/ZagreusField_3008", "/VO/ZagreusField_3009", "/VO/ZagreusField_3010", "/VO/ZagreusField_3011" },
 				RequiredFalseFlags = { "DusaFiredFromJob", "DusaNotYetReHired" },
 				RequiredTextLines = { "MegaeraGift05" },
