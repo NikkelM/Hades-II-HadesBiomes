@@ -90,6 +90,11 @@ local encounterReplacements = {
 		InheritFrom = { "EliteChallenge", "GeneratedStyx" },
 		EnemySet = game.EnemySets.EnemiesBiome4_EliteChallenge,
 	},
+
+	-- New encounter for the D_Hub, to spawn Megaera there
+	ModsNikkelMHadesBiomes_StyxHubShop = {
+		InheritFrom = { "Shop" },
+	},
 }
 
 local encounterModifications = {
@@ -116,6 +121,13 @@ local encounterModifications = {
 	},
 	MiniBossRatThug = {
 		CanEncounterSkip = false,
+	},
+
+	ModsNikkelMHadesBiomes_StyxHubShop = {
+		StartRoomUnthreadedEvents = {
+			{ FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_FurySister_01" }, }, },
+			{ FunctionName = "CheckConversations" },
+		},
 	},
 
 	-- BOSSES

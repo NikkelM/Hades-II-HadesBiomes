@@ -24797,4 +24797,4698 @@ mod.NPCData = mod.NPCData or {
 			},
 		},
 	},
+
+	-- Megaera House Version, Id = 390082
+	NPC_FurySister_01 = {
+		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
+
+		UseText = "UseTalkToFury",
+		Portrait = "Portrait_FurySister01_Standoffish_01",
+		AnimOffsetZ = 265,
+		EmoteOffsetX = 0,
+		EmoteOffsetY = -250,
+		Groups = { "NPCs" },
+
+		Binks = {
+			"Enemy_Fury_IdleInHouse_Bink",
+			"Enemy_Fury_IdleInHouseGreeting_Bink",
+		},
+
+		ActivateRequirements = {
+			RequiredAnyKillsThisRun = { "Harpy", "Harpy2" },
+		},
+
+		InteractTextLineSets = {
+			MegaeraMeeting01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				RequiresRunNotCleared = true,
+				RequiredFalseTextLines = { "MegaeraMeeting01_Alt", "MegaeraMeeting01_Alt_B", "MegaeraMeeting01_B" },
+				{
+					Cue = "/VO/MegaeraHome_0002",
+					Text =
+					"{#DialogueItalicFormat}Tsch{#PreviousFormat}. The prodigal son returns.... Everyone's saying I went easy on you, Zag."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0084",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Don't worry, Meg. I eventually managed to get home the painful way after all."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0003",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"Look, I've a reputation to uphold. You get past me again like that, you best go all the way. Now, leave me be, and don't think you're going to be so lucky next we meet out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraMeeting01_B = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				RequiresRunCleared = true,
+				RequiredFalseTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_Alt", "MegaeraMeeting01_Alt_B" },
+				{
+					Cue = "/VO/MegaeraHome_0002",
+					Text =
+					"{#DialogueItalicFormat}Tsch{#PreviousFormat}. The prodigal son returns.... Everyone's saying I went easy on you, Zag."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3695",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Don't worry, Meg. I eventually managed to get home the painful way after all. Though... I managed to get much farther than you'd probably expect."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0442",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"I expected you to not get past me, yes. Look, I've a reputation to uphold. Don't think you're going to be so lucky next we meet out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraMeeting01_Alt = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredMaxCompletedRuns = 3,
+				RequiresRunNotCleared = true,
+				RequiredFalseTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt_B" },
+				TeleportToId = 421077,
+				{
+					Cue = "/VO/MegaeraHome_0002",
+					Text =
+					"{#DialogueItalicFormat}Tsch{#PreviousFormat}. The prodigal son returns.... Everyone's saying I went easy on you, Zag."
+				},
+				{
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Cue = "/VO/ZagreusHome_0084",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Don't worry, Meg. I eventually managed to get home the painful way after all."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0003",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"Look, I've a reputation to uphold. You get past me again like that, you best go all the way. Now, leave me be, and don't think you're going to be so lucky next we meet out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraMeeting01_Alt_B = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredMaxCompletedRuns = 3,
+				RequiresRunCleared = true,
+				RequiredFalseTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt" },
+				TeleportToId = 421077,
+				{
+					Cue = "/VO/MegaeraHome_0002",
+					Text =
+					"{#DialogueItalicFormat}Tsch{#PreviousFormat}. The prodigal son returns.... Everyone's saying I went easy on you, Zag."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3695",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Don't worry, Meg. I eventually managed to get home the painful way after all. Though... I managed to get much farther than you'd probably expect."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0442",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"I expected you to not get past me, yes. Look, I've a reputation to uphold. Don't think you're going to be so lucky next we meet out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraMeeting02 = {
+				PlayOnce = true,
+				RequiredMinCompletedRuns = 4,
+				RequiredMinNPCInteractions = { NPC_FurySister_01 = 1 },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					ObjectType = "NPC_FurySister_01",
+					-- Leave me alone
+					{ Cue = "/VO/MegaeraHome_0282", RequiredFalsePlayedThisRun = { "/VO/MegaeraHome_0282" }, RequiredFalsePlayedLastRun = { "/VO/MegaeraHome_0282" } },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0179",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey, {#DialogueItalicFormat}uh{#PreviousFormat}, what's that you're drinking, Meg? Anything good?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0004",
+					Text = "Whatever it is, it's weak. Enough to be mistaken for your blood."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0180",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text = "Nice! Well, I'll just leave you to it, then."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraMeeting02Cont = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				BlockStatusAnimations = true,
+				StatusAnimation = false,
+				RequiredTextLinesThisRun = "MegaeraMeeting02",
+				{
+					Cue = "/VO/MegaeraHome_0065",
+					Text = "I'll tear you limb from limb out there next time, you mark my words."
+				},
+			},
+			-- alt below
+			MegaeraMeeting03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				RequiredMinNPCInteractions = { NPC_FurySister_01 = 1 },
+				RequiredFalseTextLines = { "MegaeraMeeting03_Alt", "Fury2FirstAppearance", "Fury3FirstAppearance", "MegaeraGift05" },
+				{
+					Cue = "/VO/ZagreusHome_0181",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "What are your sisters up to these days, Meg? I've not seen them around."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0005",
+					Text =
+					"We're stretched a little thin, as you can see. Some kind of war up there meant lots of business here. I'm left to hold the line. And deal with you."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraMeeting03_Alt = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMaxCompletedRuns = 3,
+				RequiredFalseTextLines = { "MegaeraMeeting03", "Fury2FirstAppearance", "Fury3FirstAppearance" },
+				TeleportToId = 421077,
+				RequiredAnyTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt", "MegaeraMeeting01_Alt_B" },
+				{
+					Cue = "/VO/ZagreusHome_0181",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "What are your sisters up to these days, Meg? I've not seen them around."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0005",
+					Text =
+					"We're stretched a little thin, as you can see. Some kind of war up there meant lots of business here. I'm left to hold the line. And deal with you."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraMeeting04 = {
+				PlayOnce = true,
+				RequiredMinCompletedRuns = 4,
+				RequiredAnyTextLines = { "MegaeraMeeting02" },
+				RequiredFalseTextLines = { "MegaeraMeeting04_Alt", "MegaeraGift05" },
+				{
+					Cue = "/VO/MegaeraHome_0006",
+					Text = "What do you want from me, leave me alone. We've nothing to discuss here anymore."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0182",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "I was just checking up on you, just... let me know if you wanted to talk, for any reason."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0007",
+					Text = "I am not interested in having company, especially from you. You stay the hell away while I'm off duty."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraMeeting04Cont = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				BlockStatusAnimations = true,
+				StatusAnimation = false,
+				RequiredTextLinesThisRun = "MegaeraMeeting04",
+				{
+					Cue = "/VO/MegaeraHome_0062",
+					Text = "I told you to back off."
+				},
+			},
+			MegaeraMeeting04_Alt = {
+				PlayOnce = true,
+				RequiredAnyTextLines = { "MegaeraMeeting02" },
+				RequiredFalseTextLines = { "MegaeraGift05" },
+				RequiredMaxCompletedRuns = 3,
+				RequiredFalseTextLines = { "MegaeraMeeting04" },
+				TeleportToId = 421077,
+				{
+					Cue = "/VO/MegaeraHome_0006",
+					Text = "What do you want from me, leave me alone. We've nothing to discuss here anymore."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0182",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "I was just checking up on you, just... let me know if you wanted to talk, for any reason."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0007",
+					Text = "I am not interested in having company, especially from you. You stay the hell away while I'm off duty."
+				},
+			},
+			MegaeraMeeting04Cont_Alt = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				BlockStatusAnimations = true,
+				StatusAnimation = false,
+				RequiredTextLinesThisRun = "MegaeraMeeting04_Alt",
+				RequiredMaxCompletedRuns = 3,
+				RequiredFalseTextLines = { "MegaeraMeeting04Cont" },
+				{
+					Cue = "/VO/MegaeraHome_0062",
+					Text = "I told you to back off."
+				},
+			},
+			MegaeraMeeting05 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift01" },
+				RequiredAnyTextLines = { "MegaeraMeeting04", "MegaeraMeeting04_Alt" },
+				RequiredFalseTextLines = { "MegaeraGift04" },
+				RequiredKillsThisRun = { "Harpy" },
+				{
+					Cue = "/VO/MegaeraHome_0008",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					Text = "Excuse me, is there something I can do for you, Prince Zagreus?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0183",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "It's nothing, I just thought I'd say, that was well fought back there."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0009",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"There's no returning to the way things used to be, Zag. Now can I offer you some words of advice? Get over yourself. And get ready to die out there next time we meet."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraMirrorProgress01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraMeeting05", "FuryDarknessReaction01" },
+				RequiredFalseTextLines = { "MegaeraGift10" },
+				RequiredAccumulatedMetaPoints = 2000,
+				RequiredActiveMetaPointsMin = 1000,
+				RequiredKillsThisRun = { "Harpy" },
+				-- Nothing wrong with having help.
+				EndCue = "/VO/ZagreusHome_0749",
+				EndWait = 0.45,
+				{
+					Cue = "/VO/MegaeraHome_0105",
+					Text =
+					"Zagreus. Good, I wanted to tell you something. Your victories against me? They don't count for anything."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0747",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Sounds like you've been giving this a lot of thought, there, Meg. How do you figure?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0106",
+					Text = "Nyx's Mirror. You couldn't possibly beat me without its help, or hers."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0748",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "I'm not competing with you, Meg. I'm trying to get past you, to the surface."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0107",
+					Text =
+					"Call it what you want. You're doing what you have to do. I understand. But you are not stronger than me. You just have more help."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			-- three variants below based on relationship
+			MegaeraMirrorProgress02 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "FuryNoDarknessReaction01" },
+				RequiredFalseTextLines = { "MegaeraMirrorProgress02B", "MegaeraMirrorProgress02C", "MegaeraGift06" },
+				RequiredActiveMetaPointMax = 0,
+				RequiredKillsThisRun = { "Harpy" },
+				-- We'll see.
+				-- EndCue = "/VO/ZagreusHome_0751",
+				-- EndWait = 0.45,
+				{
+					Cue = "/VO/MegaeraHome_0132",
+					Text =
+					"Beaten. By you. Without the help of Nyx's mirror. You humiliated me. And now you've come to rub it in, I guess? Well, go on, then. Not like you can shame me any more."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1348",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Meg, what is it going to take for you to quit treating me like I'm incompetent? Have I not grown even a little since we met? You were supposed to teach me something; what does that make you?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0133",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"{#DialogueItalicFormat}Tsch{#PreviousFormat}... why don't you raise your voice a little louder so that all the House can hear. Is that what you want? For everyone to know that you're superior to me?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1349",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You're not hearing me, Meg. I know it sounds a little disingenuous considering we keep fighting to the death and all, but... I never meant to hurt you."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0134",
+					Text = "You give yourself far too much credit, Zagreus. Leave me alone."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			-- high relationship
+			MegaeraMirrorProgress02B = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "FuryNoDarknessReaction01", "MegaeraGift06" },
+				RequiredFalseTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "MegaeraGift10", "MegaeraMirrorProgress02C" },
+				RequiredActiveMetaPointMax = 0,
+				RequiredKillsThisRun = { "Harpy" },
+				-- We'll see.
+				-- EndCue = "/VO/ZagreusHome_0751",
+				-- EndWait = 0.45,
+				{
+					Cue = "/VO/MegaeraHome_0132",
+					Text =
+					"Beaten. By you. Without the help of Nyx's mirror. You humiliated me. And now you've come to rub it in, I guess? Well, go on, then. Not like you can shame me any more."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1350",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Meg, that isn't why I'm here, you know that isn't how I am. Why can't you see it? All I've ever wanted was to prove myself to you."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0135",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"{#DialogueItalicFormat}Tsch{#PreviousFormat}... you think that you can prove yourself to me by winning in a fight?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1351",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Sometimes I think that I can never really win with you, Meg. If I held back, what would you have thought?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0136",
+					Text =
+					"If you think you know me so well, Zagreus, then you ought to know better than to keep this conversation going with me, now."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			-- became close relationship
+			MegaeraMirrorProgress02C = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "FuryNoDarknessReaction01", "MegaeraGift10" },
+				RequiredFalseTextLines = { "MegaeraMirrorProgress02", "MegaeraMirrorProgress02B" },
+				RequiredActiveMetaPointMax = 0,
+				RequiredKillsThisRun = { "Harpy" },
+				-- We'll see.
+				-- EndCue = "/VO/ZagreusHome_0751",
+				-- EndWait = 0.45,
+				{
+					Cue = "/VO/MegaeraHome_0137",
+					Text =
+					"I can't believe it, Zag. I thought for sure that Nyx's mirror was the only reason you could beat me. I knew you'd changed to some extent, but... not this much."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1352",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I had to see if I could do it, Meg. I've learned so much from you, I... thought maybe this was a way that I could prove myself to you. And to myself."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0138",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"Prove yourself, to me...? You must not be as comfortable in your own skin as you let on. I can't decide if I like that about you. Now leave me alone while I give it some thought."
+				},
+			},
+
+			MegaeraPactProgress01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt", "MegaeraMeeting01_Alt_B" },
+				RequiredTrueFlags = { "ShrineUnlocked", },
+				RequiredFalseTextLines = { "MegaeraPactProgress01_B" },
+				RequiredActiveShrinePointsMin = 3,
+				RequiredMinCompletedRuns = 4,
+				-- RequiredFalseFlags = { "HardMode" },
+				-- I do indeed.
+				EndCue = "/VO/ZagreusHome_0753",
+				EndWait = 0.45,
+				{
+					Cue = "/VO/MegaeraHome_0110",
+					Text =
+					"So, Zagreus. How's it going with that Pact of Punishment you signed? You've made some meaningful improvements to the Underworld."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0752",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'll fight my way out of this place, or earn it. The Pact is nothing to me other than a way to keep things lively."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0111",
+					Text =
+					"You are delusional. I'll never understand you or your father. Anyway, if you're looking for more punishment, you know where to find me."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraPactProgress01_B = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMaxCompletedRuns = 3,
+				RequiredAnyTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt", "MegaeraMeeting01_Alt_B" },
+				RequiredTrueFlags = { "ShrineUnlocked", },
+				RequiredFalseTextLines = { "MegaeraPactProgress01" },
+				RequiredActiveShrinePointsMin = 3,
+				TeleportToId = 421077,
+				-- RequiredFalseFlags = { "HardMode" },
+				-- I do indeed.
+				EndCue = "/VO/ZagreusHome_0753",
+				EndWait = 0.75,
+				{
+					Cue = "/VO/MegaeraHome_0110",
+					Text =
+					"So, Zagreus. How's it going with that Pact of Punishment you signed? You've made some meaningful improvements to the Underworld."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0752",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'll fight my way out of this place, or earn it. The Pact is nothing to me other than a way to keep things lively."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0111",
+					Text =
+					"You are delusional. I'll never understand you or your father. Anyway, if you're looking for more punishment, you know where to find me."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutPact01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredScreenViewed = "ShrineUpgrade",
+				RequiredTextLines = { "Fury2FirstAppearance", "Fury3FirstAppearance" },
+				RequiredAnyTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt", "MegaeraMeeting01_Alt_B" },
+				RequiredFalseTextLines = { "MegaeraPactProgress01", "MegaeraPactProgress01_B", "FurySistersUnion01", "FuryPactReaction01" },
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Anything for you, Meg.
+					{ Cue = "/VO/ZagreusHome_1388" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0166",
+					Text = "Zagreus. I heard Lord Hades served you with a Pact of Punishment. You must be very proud."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1386",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"What, you mean the gigantic infernal contract reserved only for extraordinary circumstances? Yeah, I suppose I'm pleased that Father's gone to all that trouble just for me."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0167",
+					Text =
+					"Well, when you're finished being smug about it? Know that all of us are bound by its terms. You can force a lot of things to change if you're not careful."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1387",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "A lot of things, such as how you refuse to reason with your positively charming sisters, Meg?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0168",
+					Emote = "PortraitEmoteFiredUp",
+					Text = "The Extreme Measures condition... you wouldn't dare. Do you have any idea what you're talking about?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraRunProgress01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredRoomThisRun = "C_Intro",
+				RequiredFalseSeenRoomThisRun = "D_Intro",
+				RequiredTextLines = { "FuryRunProgress03" },
+				RequiredFalseTextLines = { "MegaeraGift07", "MegaeraRunProgress01_Alt" },
+				RequiredMinNPCInteractions = { NPC_FurySister_01 = 1 },
+				RequiredMinCompletedRuns = 4,
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Yeah.
+					{ Cue = "/VO/ZagreusField_1710" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0093",
+					Text =
+					"Well, how was it up there, Zagreus? Within Elysium. You'll have to tell us all about it every time the greatest strike you down."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0762",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You've never been there, have you? It's... lush? Is that a word? It feels closer to the surface. Closer to the sky."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0094",
+					Text =
+					"How poetic. You could have visited as part of your responsibilities. Instead, you trespass. Incurring wrath of fallen champions in service of your father."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraRunProgress01_Alt = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredRoomThisRun = "C_Intro",
+				RequiredFalseSeenRoomThisRun = "D_Intro",
+				RequiredTextLines = { "FuryRunProgress03" },
+				RequiredFalseTextLines = { "MegaeraGift07", "MegaeraRunProgress01" },
+				RequiredMinNPCInteractions = { NPC_FurySister_01 = 1 },
+				RequiredMaxCompletedRuns = 3,
+				TeleportToId = 421077,
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Yeah.
+					{ Cue = "/VO/ZagreusField_1710" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0093",
+					Text =
+					"Well, how was it up there, Zagreus? Within Elysium. You'll have to tell us all about it every time the greatest strike you down."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0762",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You've never been there, have you? It's... lush? Is that a word? It feels closer to the surface. Closer to the sky."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0094",
+					Text =
+					"How poetic. You could have visited as part of your responsibilities. Instead, you trespass. Incurring wrath of fallen champions in service of your father."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraRunProgress02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredRoomThisRun = "D_Intro",
+				RequiredAnyTextLines = { "MegaeraBuildingTrust01", "MegaeraBuildingTrust01_B" },
+				RequiredKills = { SatyrRanged = 8 },
+				EndVoiceLines = {
+					PreLineWait = 0.6,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I suppose not...
+					{ Cue = "/VO/ZagreusHome_1382" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0162",
+					Text =
+					"So you cleared out some of the Satyr infestation near the surface, then. How come the change of heart? Not like you to assist Lord Hades in such things."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1381",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I wasn't trying to do my father any favors, Meg. Those Satyrs seem to hate me just as much as him. My one way out involves a detour straight into their dens."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0163",
+					Text =
+					"An interesting coincidence. At any rate, that's one less problem for the rest of us to deal with. Until the Satyrs all come back, at least, which won't be long."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraRunProgress03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift01", "SisyphusGift03" },
+				RequiredFalseTextLines = { "Ending01" },
+				RequiredAccumulatedMetaPoints = 1200,
+				RequiredMinCompletedRuns = 10,
+				-- We'll see.
+				EndCue = "/VO/ZagreusHome_0751",
+				EndWait = 0.45,
+				{
+					Cue = "/VO/MegaeraHome_0108",
+					Text =
+					"You've been through hell more times than you can count by now, haven't you, Zag. You getting used to it? No wonder that you're friends with Sisyphus."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0750",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'm getting used to it, all right. I'll keep going, for as many chances as it takes. I'll look forward to our next appointment out there."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0109",
+					Text =
+					"{#DialogueItalicFormat}Appointment{#PreviousFormat}. Indeed. Don't keep me waiting. For all your toil, I'm sure you're not even close."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraRunCleared01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiresRunCleared = true,
+				RequiredKills = { Hades = 1 },
+				RequiredMinCompletedRuns = 4,
+				RequiredFalseTextLines = { "MegaeraRunCleared01_Alt", "Ending01" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I will not let that happen.
+					{ Cue = "/VO/ZagreusHome_1548" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0345",
+					AngleTowardHero = true,
+					Text =
+					"Zagreus, please tell me that the rumors are untrue. You really vanquished him? Have you completely lost your mind? You're going to destroy this blasted House!"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1547",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Come on, Meg, Father had it coming for some time. What's your concern, besides? The House is safe."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0346",
+					Text =
+					"He's not going to take this lying down. He'll find some way to take it out on you. On all of us. You watch yourself, or all of us will pay."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraRunCleared01_Alt = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiresRunCleared = true,
+				RequiredKills = { Hades = 1 },
+				RequiredMaxCompletedRuns = 3,
+				TeleportToId = 421077,
+				RequiredFalseTextLines = { "MegaeraRunCleared01", "Ending01" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					-- I will not let that happen.
+					{ Cue = "/VO/ZagreusHome_1548" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0345",
+					AngleTowardHero = true,
+					Text =
+					"Zagreus, please tell me that the rumors are untrue. You really vanquished him? Have you completely lost your mind? You're going to destroy this blasted House!"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1547",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Come on, Meg, Father had it coming for some time. What's your concern, besides? The House is safe."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0346",
+					Text =
+					"He's not going to take this lying down. He'll find some way to take it out on you. On all of us. You watch yourself, or all of us will pay."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			-- alt below for early clears
+			MegaeraAboutPersephoneMeeting01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiresRunCleared = true,
+				RequiredMinCompletedRuns = 4,
+				RequiredTextLines = { "PersephoneFirstMeeting", "MegaeraGift01" },
+				RequiredAnyTextLines = { "MegaeraRunCleared01", "MegaeraRunCleared01_Alt" },
+				RequiredFalseTextLines = { "Ending01", "MegaeraAboutPersephoneMeeting01_Alt" },
+				RequiredFalseTextLinesThisRun = { "FuryAboutPersephoneMeeting01" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- It is.
+					{ Cue = "/VO/ZagreusHome_3172" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0409",
+					AngleTowardHero = true,
+					Text =
+					"What are you doing here? I heard you finally made it out. What, did you break out of here, only to die in some pathetic way on the surface?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3171",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Long story, but yeah. Boils down to what you said, more or less."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0410",
+					AngleTowardTargetId = 423122,
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"So you're going back out there, again. Well, it's your business, not mine. For your sake... I hope it's worth it."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraAboutPersephoneMeeting01_Alt = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiresRunCleared = true,
+				RequiredMaxCompletedRuns = 3,
+				TeleportToId = 421077,
+				RequiredTextLines = { "PersephoneFirstMeeting", "MegaeraGift01" },
+				RequiredAnyTextLines = { "MegaeraRunCleared01", "MegaeraRunCleared01_Alt" },
+				RequiredFalseTextLines = { "Ending01", "MegaeraAboutPersephoneMeeting01" },
+				RequiredFalseTextLinesThisRun = { "FuryAboutPersephoneMeeting01" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- It is.
+					{ Cue = "/VO/ZagreusHome_3172" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0409",
+					AngleTowardHero = true,
+					Text =
+					"What are you doing here? I heard you finally made it out. What, did you break out of here, only to die in some pathetic way on the surface?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3171",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Long story, but yeah. Boils down to what you said, more or less."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0410",
+					AngleTowardTargetId = 423122,
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"So you're going back out there, again. Well, it's your business, not mine. For your sake... I hope it's worth it."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutPersephoneMeeting02 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PersephoneMeeting03", "MegaeraGift03" },
+				RequiredFalseTextLines = { "Ending01" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					ObjectType = "NPC_FurySister_01",
+					-- None of my business, I said.
+					{ Cue = "/VO/MegaeraHome_0408" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3169",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Meg, did you... did you ever meet the Queen...? Remember anything about her, at all?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0407",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"It was not my place to address her. I barely ever saw her. Then, at some point... I never saw her again. And, unlike you, I know better than to get involved in things that are none of my business."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3170",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"How is it that this place has this secret Queen for I don't know how long, then suddenly she just vanishes, and no one speaks a word of it?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraAboutPersephoneMeeting03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraAboutPersephoneMeeting02", "MegaeraGift03", "PersephoneMeeting03" },
+				RequiredFalseTextLines = { "Ending01", "PersephoneMeeting07" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					-- I think that she can be the judge of that.
+					{ Cue = "/VO/ZagreusHome_3694" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0350",
+					Text = "How is she doing, Zagreus? The Queen, I mean. She was... I had admired her."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3693",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Mother... she's doing well, I think. She's in good spirits every time we meet. Happy to let her know you're thinking of her, by the way!"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0351",
+					PreLineWait = 0.5,
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"Don't, it's... it isn't necessary. She doesn't need you telling her about this place. Sounds to me like she is better off without."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraPostEnding01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "Ending01" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 18 },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- We'll make it official, all right.
+					{ Cue = "/VO/ZagreusHome_3183" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0424",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"Just so I understand. Breaking through everything in your path, taking resources from your father's realm, trying to get through me... all officially part of the job description?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3182",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "I guess that's right... but, before you ask, I'm not doing it for him."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0425",
+					AngleTowardHero = true,
+					Text =
+					"I didn't think you'd have it in you. To leave this place for good. But I didn't think you'd take responsibility for anything, either. Anyway... we'll just have to kill each other more officially, I guess."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			-- skipped Ending02
+			MegaeraPostEnding03 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraPostEnding01" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "MegaeraPostEnding01" }, Count = 22 },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					-- Hope to find out.
+					{ Cue = "/VO/ZagreusHome_3175" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0411",
+					Text =
+					"I never thought I'd see the Queen again. I still can't quite believe she's back... and staying? Is that really your doing?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3173",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's her doing, not mine. So you know her? Because... you could have told me. About her. Who she was to me."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0412",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"Don't know her all that well. But I do know Nyx, and I've been bound to secrecy as part of my oath to this House. I flay oathbreakers and liars, Zagreus. Wouldn't do for me to be no better than them, now, would it?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3174",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "No, I suppose not. So what does this mean for Nyx, now that she's back? Or for you, for that matter?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0413",
+					AngleTowardTargetId = 423122,
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"The Queen always gave Nyx her space. Your father, though... I don't know what it'll be like for him, if she decides to stick around this time."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraPostEpilogue01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OlympianReunionQuestComplete" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Exactly!
+					{ Cue = "/VO/ZagreusHome_3185" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0426",
+					Text =
+					"So the Olympians are backing you officially now? Doing their part to help the family business, finally. Lord Hades probably never thought he'd see the day. Night? You know what I mean."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3184",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Seems only fair they should help in some capacity. They all work together on the surface, and, let's face it, they're responsible for a good number of shades pouring into this realm. Least they can do is help shore up the whole {#DialogueItalicFormat}'there is no escape' {#PreviousFormat}reputation we've got."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0427",
+					Text = "By making you unfairly stronger by the time you try to get through me?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutRelationship01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.5,
+						ObjectType = "NPC_FurySister_01",
+						-- Heh. Guess you'll find out.
+						{ Cue = "/VO/MegaeraHome_0395" },
+					},
+					{
+						PreLineWait = 0.4,
+						UsePlayerSource = true,
+						-- Heh.
+						{ Cue = "/VO/ZagreusHome_3190" },
+					},
+				},
+				{
+					Cue = "/VO/MegaeraHome_0393",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "Well, Zag? You like things nice and complicated, don't you. Apparently so do I."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3153",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"If you're asking if I have any regrets about what happened between us, the answer is no. Being with you... any complications there are worth it."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0394",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"You don't need to tell me. Two rules, if you want to keep this up. First... we set the personal aside when we're out there. I better not hear a soul say I'm going soft on you. And second... keep up this slightly more mature thing you've had going for you recently."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3154",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					AngleTowardTargetId = 423122,
+					Text =
+					"Wasn't planning on sliding back into the insensitive nonsense of youth, so I don't think the second thing will be a problem. But the first... can we really just keep killing each other out there like nothing happened?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraAboutRelationship01B = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_BackOff", "BecameCloseWithMegaera01_BMeg_BackOff" },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Thanks, Meg.
+					{ Cue = "/VO/ZagreusHome_3161" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0399",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text =
+					"{#DialogueItalicFormat}Tsk{#PreviousFormat}... Come off it, Zag. Are you really going to act all uncomfortable every time you see me now? More than usual I mean."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3160",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"No, it's just... I felt terrible, turning you away. It's just... I've been so confused lately, and... I trust you. You're someone I can talk to. I guess I'm... afraid to lose that."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0400",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					AngleTowardHero = true,
+					Text =
+					"Don't be an idiot, and you won't. We've been through a lot together. Grown, maybe. This particular relationship... it can't die so easily, I think."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutRelationship02 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraAboutRelationship01", "AphroditeAboutMegRelationship01" },
+				RequiredAnyOtherTextLines = { "MegIntermissionChat01", "MegIntermissionChat02", "MegIntermissionChat03", "MegIntermissionChat04", "MegIntermissionChat05", "MegIntermissionChat06" },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					-- I refuse.
+					{ Cue = "/VO/ZagreusHome_3159" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3156",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I feel like everybody knows about us, Meg. Even Aphrodite, herself, seemed to know we were involved. It's not like I've been going around boasting. You wanted to keep things quiet, didn't you?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0396",
+					PreLineWait = 0.35,
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					AngleTowardHero = true,
+					Text = "Zagreus. Are you happy with how things are between us now? Or do you have a problem with it?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3157",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, I could do without the kill-or-be-killed stuff if we're being honest, that part is still a little weird, but otherwise... yes, I mean... I'm happy. You're {#DialogueItalicFormat}you{#PreviousFormat}."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0397",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					AngleTowardTargetId = 423122,
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"Then, that's enough. Let them say what they want. What does it matter? We're gods. The things they say about us... even other gods... you pay too much attention to it, it'll drive you out of your mind."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3158",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "But... I know how important your career is to you. This won't create a problem?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0398",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "We've already crossed that bridge, I think. Stop worrying."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutRelationship03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AphroditeAboutLove01", "MegaeraAboutRelationship02" },
+				RequiredMinAnyTextLines = { TextLines = { "MegIntermissionChat01", "MegIntermissionChat02", "MegIntermissionChat03", "MegIntermissionChat04", "MegIntermissionChat05", "MegIntermissionChat06" }, Count = 2 },
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					-- Heh.
+					{ Cue = "/VO/ZagreusHome_3190" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3188",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Megaera... you ever been in love with somebody?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0430",
+					PreLineWait = 0.75,
+					Text = "...{#DialogueItalicFormat}Hm{#PreviousFormat}. Yes."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3189",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Who?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0431",
+					PreLineWait = 0.5,
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					AngleTowardHero = true,
+					Text = "...Shut up."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutZagreusPromotion01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift10" },
+				RequiredPlayed = { "/VO/ZagreusHome_2935" },
+				RequiredValues = { CurrentEmployeeOfTheMonth = "Zagreus" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					-- Well, thanks. I guess I am.
+					{ Cue = "/VO/ZagreusHome_3187" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0428",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text =
+					"Never in my wildest fantasies did I imagine you'd ever end up on the Featured Houseservant Board, Zagreus. I still can't entirely believe it."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3186",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Whoa{#PreviousFormat}, back up! Can you elaborate a bit about these wildest fantasies, Meg?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0429",
+					PreLineWait = 0.35,
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"I'm serious. You should be proud. Not arrogantly proud to a fatal fault or anything, but a little bit is all right in a case like this."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutRepeatedLosses01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift03" },
+				RequiredFalseTextLines = { "MegaeraGift10" },
+				RequiredRoomThisRun = "A_Boss01",
+				RequiredFalseDeathRoom = "A_Boss01",
+				ConsecutiveClearsOfRoom = {
+					Name = "A_Boss01",
+					Count = 5,
+				},
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					-- I'll keep putting up a fight if it's any consolation.
+					{ Cue = "/VO/ZagreusHome_3168" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0405",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					Text =
+					"Got to tell you something, Zagreus. I'm not getting any more used to losing to you like this. I mean... you don't even stop to rub it in. You know how humiliating that is?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3167",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Wait, you're saying you would feel {#DialogueItalicFormat}less {#PreviousFormat}ashamed about the outcomes of our fights if I were to gloat {#DialogueItalicFormat}more {#PreviousFormat}about beating you? How does that make any sense? "
+				},
+				{
+					Cue = "/VO/MegaeraHome_0406",
+					AngleTowardTargetId = 423122,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"You know what doesn't make any sense? That you keep beating me. I must be getting sloppy if I'm that predictable... too bad none of the other wretches I have to deal with put up much of a fight."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutSisters01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "FuryMetSisters01", "Fury2FirstAppearance", "Fury3FirstAppearance", "MegaeraGift02" },
+				{
+					Cue = "/VO/ZagreusHome_0766",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusExpressiveEmpathy",
+					PreLineAnimTarget = "Hero",
+					Text = "You and your sisters really don't get along well, do you."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0098",
+					Text =
+					"Alecto and Tisiphone and I each have a different outlook, I would say. We've learned mostly to stay out of one another's way."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0767",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenial_Full",
+					PreLineAnimTarget = "Hero",
+					Text = "That doesn't sound like a healthy basis for a relationship between siblings."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0099",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					Text =
+					"Are you lecturing me about healthy relationships with family, Zagreus? Your family, your father's family, is the most broken and corrupted in the history of the entire concept."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0768",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineWait = 0.3,
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"...Fair point. I... didn't mean to sound like I had any meaningful advice, there, Meg. We're stuck with our bloodlines and our relatives, aren't we."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0100",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"Your family cut their Titan parents into pieces and then scattered them in Tartarus. Remember that when next you tell me about family."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutSisters02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "FurySistersUnion01" },
+				RequiredMinActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 1 },
+				RequiredSupportAINames = { "Tisiphone", "Alecto" },
+				RequiredRoomThisRun = "A_Boss01",
+				-- RequiredFalseTextLines = { "FurySistersUnion01" },
+				-- But it's a step.
+				EndCue = "/VO/ZagreusHome_1385",
+				EndWait = 0.5,
+				{
+					Cue = "/VO/ZagreusHome_1383",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"You know, while it was brutal squaring off against the three of you, I have to say, Meg... I was happy you were with your sisters. Nothing like a common cause for bringing bitter rivals together, right?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0164",
+					Text =
+					"You have your Pact of Punishment to thank for our reunion, there. We have to answer to its terms. But my sisters and I, we got on better than I had expected, I will give you that."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1384",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "So you've patched things up, then? Going to start spending more quality time together and all that?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0165",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					Text =
+					"{#DialogueItalicFormat}Hm{#PreviousFormat}, let's not get carried away. A work assignment forcing our cooperation is not exactly a big step in the quality of our relationship."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutAlecto01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				-- I see.
+				EndCue = "/VO/ZagreusHome_0564",
+				EndWait = 0.55,
+				RequiredTextLines = { "Fury2FirstAppearance", "MegaeraGift02" },
+				{
+					Cue = "/VO/ZagreusHome_0769",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Alecto's really something else. She must have been a real handful, huh?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0101",
+					Text =
+					"My youngest sister takes a lot of pleasure from her work. I've learned something of that from her. But that's as far as we relate, I think."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0770",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "She could learn a thing or two from you, I'm sure. About having a little common decency, perhaps."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0102",
+					Text =
+					"She won't be learning anything from me. The contempt you get from her is unconditional. I learned not to take it personally."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutTisiphone01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "Fury3FirstAppearance", "MegaeraGift02" },
+				{
+					Cue = "/VO/ZagreusHome_0771",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Erm{#PreviousFormat}, so, about Tisiphone, is... {#DialogueItalicFormat}uh{#PreviousFormat}... everything all right with her? Talk of murder, all the time, and all."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0103",
+					Text =
+					"Tisiphone is charged with punishing the worst that mortals have to offer. More than charged. Her work is everything to her."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0772",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"No time for family or recreation, then, I take it? Pity what happens to those overly obsessed with work."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0104",
+					Text =
+					"I get what you're insinuating, Zagreus. I'm nothing like her. Not even close. And don't you dare compare the two of us again."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraAboutTisiphone02 = {
+				PlayOnce = true,
+				RequiredTextLines = { "MegaeraGift06", "Fury3Encounter13" },
+				UseableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					ObjectType = "NPC_FurySister_01",
+					-- You know, that's a good way to put it.
+					{ Cue = "/VO/MegaeraHome_0403" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0401",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text =
+					"So you've been trying to give Tisiphone speech lessons between fights to the death. Are you bored, or just naive?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3162",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Come on, if her vocabulary consists of two different although admittedly almost identical words, there's got to be room for growth, there. Besides, I feel like... maybe she's lonely, or something. Has anyone ever tried to teach her anything?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0402",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"Maybe, just maybe, you're projecting your own insecurities onto her a little bit? Tis can take care of herself. Always has. Talking's not her strong suit like it's yours. But if you, in all your wisdom, think you've got something to teach her, you go right ahead."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3163",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "You've tried already, haven't you? She's pretty dead-set on the murder thing, then?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutThanatos01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift07", "ThanatosGift07_A" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- You'd think!
+					{ Cue = "/VO/ZagreusHome_3152" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3150",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You and Thanatos don't work together much anymore, do you, Meg?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0388",
+					Text = "No. Though he still brings me my assignments every now and then."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3151",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oathbreakers, traitors, and the like? Sending them straight to Tartarus, huh. Must be quite an experience going from living and breathing, to... being dead, to being whisked off by Thanatos, straight to you and your whip."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0389",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"If that's not the experience mortals are looking for, they need only keep their oaths and not betray the ones they're closest to. It's not that hard."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutHypnos01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraWithHypnos03" },
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.4,
+						UsePlayerSource = true,
+						-- Have you tried sulking in the lounge?
+						{ Cue = "/VO/ZagreusHome_3166" },
+					},
+					{
+						PreLineWait = 0.3,
+						ObjectType = "NPC_FurySister_01",
+						-- Hmm.
+						{ Cue = "/VO/MegaeraHome_0061" },
+					},
+				},
+				{
+					Cue = "/VO/ZagreusHome_3164",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You're not too broken up about how things ended between you and Hypnos, are you, Meg?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0404",
+					Text =
+					"I'm still in a state of shock. I'll have to pick up the pieces somehow, and figure out how to get on with my existence."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutOrpheus01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift03" },
+				RequiredAnyTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiresAmbientMusicId = true,
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- It's a change.
+					{ Cue = "/VO/ZagreusHome_3177" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0417",
+					Text =
+					"You got that court musician to pipe up again. I know {#DialogueItalicFormat}you {#PreviousFormat}can't shut up, but didn't know it was contagious."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3176",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, it was all Orpheus, not me. Can't sing like that without a lot of motivation, inner turmoil, who knows what else. Why, don't you like it? This lounge seems better with a little song."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0418",
+					Text = "This lounge is fine. And the singing... not used to it yet."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraAboutSingersReunionQuestComplete01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraAboutOrpheus01", "OrpheusAboutSingersReunionQuest01" },
+				AreIdsNotAlive = { 390000 },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					ObjectType = "NPC_FurySister_01",
+					-- You always do.
+					{ Cue = "/VO/MegaeraHome_0421" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0419",
+					Text = "Not seen the court musician sulking over there quite as much lately. Your doing, I hear?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3178",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You'll just have to sulk for the both of you, I guess, then, Meg. But if you must know, on my authority I have released Orpheus from the terms of his old, rather unfair agreement with Father, so he can see his wife at least from time to time."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0420",
+					Text =
+					"And Lord Hades is OK with you just picking out old binding contracts and nullifying them? You're exploiting your status."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3179",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'm doing no such thing. Father wanted me involved in all this business with his pacts, and presiding over the dead, then fine. But I'll do it my way."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraGhostAdminProgress01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift03" },
+				RequiredFalseValues = { CurrentEmployeeOfTheMonth = "Zagreus" },
+				RequiredMinAnyCosmetics = {
+					Cosmetics = GameData.LoungeCosmetics,
+					Count = 7,
+					RequiredLifetimeResourcesSpentMin = { Gems = 800 },
+				},
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Hoh now let's not get ahead of ourselves, Meg.
+					{ Cue = "/VO/ZagreusHome_1380" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1378",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"What do you think of all the lounge decor, there, Meg? Looking a little better these days, wouldn't you say?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0160",
+					Text =
+					"You know, it isn't bad. Though I have heard the strangest thing, that you're responsible, for all of this? I couldn't understand why you would even bother, honestly."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1379",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, it's a popular locale for off-duty Underworld officers to take a load off between shifts, and so I figure... least I can do is pitch in and make the place a little better than I left it, right?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0161",
+					Text =
+					"How very selfless of you, Zagreus. Soon doubtless it'll be your portrait hanging on that wall back there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraGhostAdminProgress02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGhostAdminProgress01", "MegaeraGift07" },
+				RequiredCosmetics = { "Cosmetic_Aquarium", "Cosmetic_BatCage", "Cosmetic_LoungeFireplace" },
+				RequiredAnyCosmetics = { "Cosmetic_LoungeDiscoBall", "Cosmetic_LoungeDiscoBallA" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Good!
+					{ Cue = "/VO/ZagreusHome_3181" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0422",
+					Text =
+					"The prism-sphere in the corner is maybe a little much. But the fireplace... the bat-cage... the aquarium... this lounge is practically comfortable. Lord Hades would strongly disapprove."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3180",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Good thing he never sets foot in here, then, huh? Wait, you don't miss when things were all sad and dreary in here, do you?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0423",
+					Text = "I'm still getting used to it. But, no."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutLegendary01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAssistKeepsake = "FuryAssistTrait",
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- That she is.
+					{ Cue = "/VO/ZagreusHome_1397" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0174",
+					Text =
+					"How's my little Battie doing, Zag? The one I gave you. Was just a little pup. I figured she'd be better off with you. Please tell me I was right."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1396",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Battie's doing great, Meg. Reminds me of you every time I think of her. Helps keep me company throughout my little jaunts outside. So you've a thing for bats, then?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0175",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text =
+					"That's good. And yes, the bats around here, they and I have always shared an understanding, you could say. I usually care for the pups myself. But Battie? She seemed more your style."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutDusaVsNyx01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "DusaWithNyx02", "ThanatosGift01", "CerberusGift01", "HypnosGift01", "AchillesGift01" },
+				RequiredAnyTextLines = { "DusaWithMegaera01", "DusaWithMegaera02", "DusaWithMegaera03", "DusaWithMegaera04" },
+				RequiredFalseFlags = { "DusaFiredFromJob" },
+				RequiredFalseTextLines = { "DusaVsNyx04", "MegaeraAboutDusaVsNyx02" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- How is this my fault?
+					{ Cue = "/VO/ZagreusHome_3142" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3140",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Meg, what's going on with Nyx and Dusa, do you know? I think they've been butting heads a bit lately."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0373",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					Text =
+					"I can't imagine why. Nyx has her under strict orders, yet you keep on stopping by for your little chats. You think she doesn't notice?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3141",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "What does she care? I talk to everybody around here at least a bit."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0374",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					AngleTowardTargetId = 423122,
+					Text = "It's not my business, Zag. Not even for Dusa. But you watch yourself."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraAboutDusaVsNyx02 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "DusaVsNyx04" },
+				RequiredAnyTextLines = { "DusaWithMegaera01", "DusaWithMegaera02", "DusaWithMegaera03", "DusaWithMegaera04" },
+				RequiredTrueFlags = { "DusaFiredFromJob" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Nrgh...
+					{ Cue = "/VO/ZagreusHome_3144" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0375",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					Text = "Damn you, Zagreus. She was my friend. And now she's gone."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3143",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Who, you mean Dusa? Like I had anything to do with that. It's Nyx you should be cross with, not me!"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0376",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"I don't think so. Nyx warned you. {#DialogueItalicFormat}Ungh{#PreviousFormat}, you know I can't go to her myself about this, so {#DialogueItalicFormat}fix it{#PreviousFormat}!"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+			MegaeraAboutDusaVsNyx03 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "DusaWithNyx03" },
+				RequiredAnyTextLines = { "DusaWithMegaera01", "DusaWithMegaera02", "DusaWithMegaera03", "DusaWithMegaera04" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "DusaWithNyx03" }, Count = 15 },
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.4,
+						ObjectType = "NPC_FurySister_01",
+						-- This never should have happened, Zagreus.
+						{ Cue = "/VO/MegaeraHome_0378", PreLineAnim = "FuryIdleInHouseFidgetGreeting" },
+					},
+				},
+				{
+					Cue = "/VO/ZagreusHome_3145",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You saw Dusa's back, right, Meg? She's getting another chance. Nyx reconsidered!"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0377",
+					Text =
+					"I saw. Nyx doesn't often change her mind when it comes to this House. But I won't second guess what happened or why."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3146",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "You don't sound all that pleased..."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutDusaPromotion01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "DusaWithNyx04" },
+				RequiredAnyTextLines = { "DusaWithMegaera01", "DusaWithMegaera02", "DusaWithMegaera03", "DusaWithMegaera04" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "DusaWithNyx04" }, Count = 20 },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Of course.
+					{ Cue = "/VO/ZagreusHome_3149" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3147",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'm so proud of Dusa lately, Meg! Chief Custodian of the House, was it? That's quite an honor coming from Nyx."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0379",
+					Text =
+					"I thought all the added responsibility would stress Dusa out worse than usual. But she's taking it in stride."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3148",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You're always looking out for her. Thanks for that."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0380",
+					Text = "Not doing it for you. Though... thanks for looking out for her, yourself."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutDusaLegendary01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredUsedAssistInRoomThisRun = "A_Boss01",
+				RequiredAssistKeepsake = "DusaAssistTrait",
+				RequiredAnyPlayedThisRun = { "/VO/ZagreusField_3006", "/VO/ZagreusField_3007", "/VO/ZagreusField_3008", "/VO/ZagreusField_3009", "/VO/ZagreusField_3010", "/VO/ZagreusField_3011" },
+				RequiredFalseFlags = { "DusaFiredFromJob", "DusaNotYetReHired" },
+				RequiredTextLines = { "MegaeraGift05" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					-- Appreciate your open-mindedness.
+					{ Cue = "/VO/ZagreusHome_3139" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0371",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					Text =
+					"I did not appreciate you sending Dusa after me out there, Zag. You leave her out of this! Though... it was good to see her out of this damned House for a change."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3138",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"See, I, too, thought she could use the fresh air. Or... however you'd describe the quality of the air on the edge of Tartarus. You know she'd never mean you any harm, right? In her mind... I think she's trying to keep it friendly between us."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0372",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"Eugh, she said the same thing to me. Look, you know what, fine. If that's the only way to get her to take a break from this place, I guess it's for the best."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutSisyphus01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift03", "SisyphusBackstory03", },
+				RequiredFalseTextLines = { "MegaeraAboutSisyphusLiberationQuest01" },
+				{
+					Cue = "/VO/ZagreusHome_0763",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, Meg, I understand you're under orders to kill me on sight out there, but... do you really have to go so hard on Sisyphus?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0095",
+					Text =
+					"That wretched shade isn't who you think he is. Do you have any idea of the magnitude of his crimes from when he led a mortal life?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0764",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "He cheated death. Tricked Thanatos and maybe Father, too."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0096",
+					Text =
+					"Before that, he did worse. He was an awful man. I think that is the real reason that your father punished him."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0765",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineWait = 0.3,
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "What if he's changed? Or... is that impossible. No coming back from certain crimes."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0097",
+					Text =
+					"No coming back from certain crimes, indeed. Though you may have more mercy in your heart to spare than I in mine."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			MegaeraAboutSisyphusLiberationQuest01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift05", "SisyphusLiberationQuest_Beginning_01", },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- It's a deal.
+					{ Cue = "/VO/ZagreusHome_1391" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1389",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I have to ask you for a favor, Meg. And I'm willing to make it worth your while, if you'll hear me out."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0169",
+					Text = "A proposition, Zagreus? Let's hear it, then. While I'm in a charitable mood."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1390",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's about Sisyphus. If I can get my father to alleviate his sentence, would you just... ease off of him, a little bit? You and your sisters. I think he's suffered quite enough under your whips."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0170",
+					Text =
+					"I don't know what you see in him, I swear. But you don't need to ask such things of me. If you can overturn his sentence with Lord Hades, I'd like nothing better than to never see that miserable shade again."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+			},
+
+			-- alt below
+			MegaeraBuildingTrust01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift06", "MegaeraBedroom01" },
+				RequiredFalseTextLines = { "Ending01", "MegaeraPostEnding01", "MegaeraBuildingTrust01_B" },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					-- ...I... I think so.
+					{ Cue = "/VO/ZagreusHome_0787" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0756",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Megaera, I have to ask you something, please. We really need to talk."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0087",
+					PreLineWait = 0.35,
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"...For once, I think you're right. Although, I'm curious, what is it that you think we have to talk about?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0757",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I still have feelings for you. At least... I think I do. Isn't there... isn't there someway for us to, you know... work through all of this?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0088",
+					AngleTowardTargetId = 423122,
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"In spite of everything that's happened, and that's happening right now? What are the outcomes, Zagreus? Either you eventually succeed, and leave this place, or else, what, exactly?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0758",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					PreLineWait = 0.35,
+					Text =
+					"...I haven't thought that far ahead. But I don't think it has to be this way. I don't hate you, Meg. I don't think I can ever hate you."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0089",
+					PreLineWait = 0.35,
+					AngleTowardHero = true,
+					Text =
+					"...Despite my best intentions. Unfortunately, I don't know that I can say the same. Look, I'm at a very difficult point in my career. I need to focus on that now. Do we understand each other?"
+				},
+			},
+			MegaeraBuildingTrust01_B = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift06", "MegaeraBedroom01" },
+				RequiredAnyTextLines = { "MegaeraPostEnding01", "Ending01" },
+				RequiredFalseTextLines = { "MegaeraBuildingTrust01" },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					-- ...I... I think so.
+					{ Cue = "/VO/ZagreusHome_0787" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0756",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Megaera, I have to ask you something, please. We really need to talk."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0087",
+					PreLineWait = 0.35,
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"...For once, I think you're right. Although, I'm curious, what is it that you think we have to talk about?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0757",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I still have feelings for you. At least... I think I do. Isn't there... isn't there someway for us to, you know... work through all of this?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0443",
+					AngleTowardTargetId = 423122,
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"In spite of everything that's happened, and that's happening right now? What are the outcomes, Zagreus? What, exactly?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0758",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					PreLineWait = 0.35,
+					Text =
+					"...I haven't thought that far ahead. But I don't think it has to be this way. I don't hate you, Meg. I don't think I can ever hate you."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0089",
+					PreLineWait = 0.35,
+					AngleTowardHero = true,
+					Text =
+					"...Despite my best intentions. Unfortunately, I don't know that I can say the same. Look, I'm at a very difficult point in my career. I need to focus on that now. Do we understand each other?"
+				},
+			},
+
+			MegaeraAboutBeingCloseWithThanatos01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithThanatos01_BThan_GoToHim" },
+				RequiredFalseTextLines = { "MegaeraWithThanatosBedroom01" },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					-- I will. Thanks, Meg.
+					{ Cue = "/VO/ZagreusHome_1395" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1392",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Meg, you know what's going on with Than and me, don't you? I just... want things to be out in the open, between us."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0171",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text =
+					"Oh I know everything about you, Zag. And Thanatos, maybe even better. Though I appreciate you telling me. It's fine."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1393",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's fine? I mean... upon Olympus, jealousy runs rampant, as I'm told. But here it's not even an issue, then?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0172",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					AngleTowardHero = true,
+					Text =
+					"If you prefer the way they do things on Olympus, then I think you know the way. As for me... dealing with jealousy is what I do. Tell me, should I feel threatened by Thanatos?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1394",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "No... he thinks so highly of you, he... he'd never wish to cause you any harm."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0173",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					AngleTowardTargetId = 423122,
+					Text =
+					"And I feel much the same. He and I, we're not the same to you. I think we both see that, and understand. Now quit your second-guessing me, all right?"
+				},
+			},
+
+			-- Fury Sisters Foreshadow
+			MegaeraWithHades01 = {
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "NyxWithHades01", },
+				RequiredAnyTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt", "MegaeraMeeting01_Alt_B" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HadesMiscPartnerTextLines, Count = 4 },
+				RequiredFalseValues = { CurrentEmployeeOfTheMonth = "Megaera" },
+				PlayOnce = true,
+				RequiredFalseTextLines = { "Ending01" },
+				RequiredKills = { Harpy = 2 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				StatusAnimation = false,
+				-- That's probably bad news for me.
+				EndCue = "/VO/ZagreusHome_0492",
+				EndWait = 0.55,
+				{
+					Cue = "/VO/Hades_0091",
+					Portrait = "Portrait_Hades_Default_01",
+					PreLineWait = 0.35,
+					Speaker = "NPC_Hades_01",
+					Text =
+					"...Make certain of it, Megaera. I am finding, lately, that the help within this House is much more lacking than it used to be. I trust that you shall set it back on course."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0019",
+					PreLineWait = 0.35,
+					Text = "...If that is your will, Lord Hades, then it will be done. To the fullest limits of my capability."
+				},
+			},
+			-- Fury Sisters Foreshadow
+			MegaeraWithHades02 = {
+				PlayOnce = true,
+				Priority = true,
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "MegaeraWithHades01", },
+				RequiredFalseTextLines = { "Fury2FirstAppearance", "Fury3FirstAppearance", "Ending01" },
+				RequiredKills = { Harpy = 4 },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HadesMiscPartnerTextLines, Count = 4 },
+				RequiredFalseValues = { CurrentEmployeeOfTheMonth = "Megaera" },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				EndVoiceLines = {
+					PreLineWait = 0.6,
+					ObjectType = "NPC_FurySister_01",
+					-- <Scoff>
+					{ Cue = "/VO/MegaeraHome_0325" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0083",
+					PreLineWait = 0.35,
+					Text = "...Give me another chance, Lord Hades. I can do better. Don't... bring them here."
+				},
+				{
+					Cue = "/VO/Hades_0343",
+					Portrait = "Portrait_Hades_Default_01",
+					PreLineWait = 0.35,
+					Speaker = "NPC_Hades_01",
+					Text =
+					"It is already too late for that, Megaera. They have been notified and are en route to Tartarus even as we speak."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0084",
+					Text = "You know what they're like. They are best left to their specific tasks. Not this."
+				},
+				{
+					Cue = "/VO/Hades_0344",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					Text =
+					"Megaera, trust me when I say I know the feeling all too well. However, surely, in your ingenuity, you may yet find a way to get your sisters to see eye to eye."
+				},
+			},
+			MegaeraWithHades03 = {
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "Fury2FirstAppearance", "Fury3FirstAppearance", "FuryAboutAlecto01", "FuryAboutTisiphone01", "MegaeraAboutSisters01" },
+				RequiredFalseTextLines = { "FurySistersUnion01" },
+				RequiredFalseValues = { CurrentEmployeeOfTheMonth = "Megaera" },
+				PlayOnce = true,
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HadesMiscPartnerTextLines, Count = 4 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				-- Sorry, Meg.
+				EndCue = "/VO/ZagreusHome_0774",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/MegaeraHome_0085",
+					PreLineWait = 0.35,
+					Text = "...I cannot work with them, Lord Hades. Please. They don't respect my words, or even listen."
+				},
+				{
+					Cue = "/VO/Hades_0352",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					Text =
+					"{#DialogueItalicFormat}Enough{#PreviousFormat}! Besides, Megaera, this is not your failing. It is mine. I must attend to these affairs more actively."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0086",
+					PreLineWait = 0.35,
+					Text = "...I've often tried, but never to a satisfactory result. You're asking the impossible of me."
+				},
+				{
+					Cue = "/VO/Hades_0353",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					Text = "I am not asking, Megaera."
+				},
+			},
+
+			MegaeraWithHades04 = {
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "MegaeraWithHades03", "Ending01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 5 },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -485,
+				TeleportOffsetY = 350,
+				AngleTowardTargetId = 370006,
+				InteractDistance = 400,
+				{
+					Cue = "/VO/MegaeraHome_0355",
+					PreLineWait = 0.35,
+					Text = "...But, I don't understand, Lord Hades. I have fallen to him countless times. How can this be...?"
+				},
+				{
+					Cue = "/VO/Hades_1180",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					Text =
+					"You and your sisters have protected Tartarus unerringly. The Prince has proven uncontainable. The fault is mine, not yours. Your duty to this realm must be commended."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0356",
+					Text = "You honor me... I have done nothing to deserve this. There must be something more that I can do?"
+				},
+				{
+					Cue = "/VO/Hades_1181",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					Text =
+					"There is, and isn't, Megaera. I ask only that you remain committed to this realm. Bar passage in and out of Tartarus. And, if the Prince continues to show up... you give him hell."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0357",
+					PreLineWait = 0.35,
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text = "Lord Hades, it will be my pleasure, sir."
+				},
+			},
+
+			MegaeraWithNyx01 = {
+				Partner = "NPC_Nyx_01",
+				PlayOnce = true,
+				RequiredAnyTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt", "MegaeraMeeting01_Alt_B" },
+				RequiredMinNPCInteractions = { NPC_Nyx_01 = 1 },
+				RequiredFalseTextLines = { "Fury2FirstAppearance", "Fury3FirstAppearance" },
+				MinRunsSinceAnyTextLines = { TextLines = { "NyxAboutDusa04" }, Count = 4 },
+				RequiredRoomThisRun = "B_Intro",
+				RequiredKillsThisRun = { "Harpy" },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -50,
+				TeleportOffsetY = 70,
+				StatusAnimation = false,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				-- What was that about.
+				EndCue = "/VO/ZagreusHome_0493",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/Nyx_0105",
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					PreLineWait = 0.35,
+					PreLineAnim = "NyxIdleGreeting",
+					PreLineAnimTarget = 370010,
+					Text =
+					"...We each have our commitments to this House, Megaera. There is no shame in yours. And whilst your sisters are away, you bear their burden of responsibility, as well."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0011",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"I understand, it's just... am I supposed to keep pretending nothing's changed? This House is cracking at the seams, and no one's going to admit it?"
+				},
+				{
+					Cue = "/VO/Nyx_0075",
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					Text =
+					"The House shall stand eternally, although in what condition, it is ours to decide. Our obligation is to keep the House in order."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0012",
+					Text =
+					"I know. You're right of course, you're right... I'll do my best. I'll do my best for both our sakes, Nyx."
+				},
+			},
+			MegaeraWithNyx02 = {
+				Partner = "NPC_Nyx_01",
+				StatusAnimation = false,
+				RequiredAnyTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt", "MegaeraMeeting01_Alt_B" },
+				RequiredTextLines = { "NyxFirstMeeting", "MegaeraGift03", "NyxGift01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "NyxAboutDusa04" }, Count = 4 },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -50,
+				TeleportOffsetY = 70,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.4,
+						ObjectType = "NPC_Nyx_01",
+						-- ...We all do that which is within our power.
+						{ Cue = "/VO/Nyx_0107" },
+					},
+					{
+						PreLineWait = 0.45,
+						UsePlayerSource = true,
+						-- ...Not my business.
+						{ Cue = "/VO/ZagreusHome_0494" },
+					},
+				},
+				{
+					Cue = "/VO/Nyx_0106",
+					PreLineWait = 0.35,
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					PreLineAnim = "NyxIdleGreeting",
+					PreLineAnimTarget = 370010,
+					Text =
+					"...and so, who else is there to be depended on...? You are a trusted overseer, Megaera. Your station is no accident and there is no one better fit for what you do. I urge you to look inwardly. How you approach your work is vital to the end result."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0013",
+					PreLineWait = 0.35,
+					Text =
+					"...Thank you for the advice, Nyx. I don't know what I'd do without you. Or what this House would be if not for you."
+				},
+			},
+			MegaeraWithNyx03 = {
+				Partner = "NPC_Nyx_01",
+				RequiredTextLines = { "MegaeraMirrorProgress01" },
+				RequiredFalseTextLines = { "MegaeraBedroom02", "MegaeraBedroom02B", "Ending01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "NyxAboutDusa04" }, Count = 4 },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -50,
+				TeleportOffsetY = 70,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.4,
+						ObjectType = "NPC_FurySister_01",
+						-- <Scoff>
+						{ Cue = "/VO/MegaeraHome_0325" },
+					},
+				},
+				{
+					Cue = "/VO/MegaeraHome_0120",
+					PreLineWait = 0.35,
+					Text =
+					"...But, how can you do this to me? Blast your Mirror. By taking sides with him, you're standing against me...!"
+				},
+				{
+					Cue = "/VO/Nyx_0130",
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					PreLineAnim = "NyxIdleGreeting",
+					PreLineAnimTarget = 370010,
+					Text =
+					"Neutrality ceases to be an option when a crisis rises to a certain point, Megaera. You, yourself, shall have to choose allegiances. I have steadfastly told you this throughout our shared ordeal."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0121",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"I thought that both of our allegiances were to this House, Nyx. It seems I was mistaken. Do you have any idea what sort of pressure I am under here...?"
+				},
+				{
+					Cue = "/VO/Nyx_0131",
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					PreLineThreadedFunctionName = "PowerWordPresentation",
+					PreLineThreadedFunctionArgs = { WaitTime = 2.2 },
+					Text =
+					"Use caution with the tone you take with me, Overseer. I am the mother of the Fates, themselves. I do not act by whim or by mistake. Mind your own station, and perform your role. All shall unfold eventually as it must. I like the intervening time no more than you."
+				},
+			},
+			MegaeraWithNyx04 = {
+				Partner = "NPC_Nyx_01",
+				RequiredTextLines = { "MegaeraGift09" },
+				RequiredFalseTextLinesThisRun = { "Ending01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "NyxAboutDusa04" }, Count = 4 },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -50,
+				TeleportOffsetY = 70,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.35,
+						ObjectType = "NPC_Nyx_01",
+						-- Mmm.
+						{ Cue = "/VO/Nyx_0255" },
+					},
+				},
+				{
+					Cue = "/VO/MegaeraHome_0182",
+					PreLineWait = 0.35,
+					Text =
+					"...Nyx, you'd tell me if I made a terrible mistake, or even just a bad one, wouldn't you? I need your guidance on this one, or maybe your approval."
+				},
+				{
+					Cue = "/VO/Nyx_0134",
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					PreLineAnim = "NyxIdleGreeting",
+					PreLineAnimTarget = 370010,
+					Text =
+					"You shall always be the best determiner of what is right about such matters, Megaera. Though, if you seek my blessings or encouragement in this particular pursuit, please rest assured... you have them both. You know the way, from here."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0183",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"I hope that you are right. You always have been, it's just that... I wish I had your confidence in this."
+				},
+			},
+			MegaeraWithNyx05 = {
+				Partner = "NPC_Nyx_01",
+				RequiredTextLines = { "MegaeraWithNyx02", "Ending01" },
+				RequiredFalseTextLinesThisRun = { "Ending01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "Ending01", "NyxAboutDusa04" }, Count = 3 },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -50,
+				TeleportOffsetY = 70,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.35,
+						ObjectType = "NPC_Nyx_01",
+						-- I do know where to find you, Megaera.
+						{ Cue = "/VO/Nyx_0133" },
+					},
+				},
+				{
+					Cue = "/VO/MegaeraHome_0180",
+					PreLineWait = 0.35,
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"...I think I understand, now, Nyx. You've been here longer than the rest of us combined. You've seen this House go through a lot. Even before Lord Hades took his place. I never should have doubted you."
+				},
+				{
+					Cue = "/VO/Nyx_0132",
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					PreLineAnim = "NyxIdleGreeting",
+					PreLineAnimTarget = 370010,
+					Text =
+					"To doubt is an important instinct, Megaera. Without it, we could not conceive of better circumstances than the ones we know. Besides... I am the Night. Others shall always doubt me. You may doubt me again. I ask only that you heed well your intuitions, from now on."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0181",
+					Text =
+					"I will. I promise, Nyx. And if there's anything you ever need that I can do, well... please, just ask of me."
+				},
+			},
+			MegaeraWithNyx06 = {
+				Partner = "NPC_Nyx_01",
+				RequiredTextLines = { "MegaeraWithNyx02", "FurySistersUnion01" },
+				RequiredFalseTextLinesThisRun = { "Ending01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "Ending01", "NyxAboutDusa04" }, Count = 3 },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				TeleportToId = 370010,
+				TeleportOffsetX = -50,
+				TeleportOffsetY = 70,
+				AngleTowardTargetId = 370010,
+				InteractDistance = 375,
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.6,
+						ObjectType = "NPC_FurySister_01",
+						-- I understand.
+						{ Cue = "/VO/MegaeraHome_0252" },
+					},
+				},
+				{
+					Cue = "/VO/MegaeraHome_0081",
+					PreLineWait = 0.35,
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"...They can't be reasoned with, Nyx. You know that. What use are they to us, trying to manage this? They'll make things worse."
+				},
+				{
+					Cue = "/VO/Nyx_0423",
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					Text =
+					"They are your sisters. They are part of your life, whether you like it or not. Your relationship with them is yours to mold."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0082",
+					Text = "I'm afraid there isn't much for me to work with. You have a lot more faith in them than I do."
+				},
+				{
+					Cue = "/VO/Nyx_0424",
+					Portrait = "Portrait_Nyx_Default_01",
+					Speaker = "NPC_Nyx_01",
+					PreLineAnim = "NyxIdleGreeting",
+					PreLineAnimTarget = 370010,
+					Text =
+					"I have a lot more faith in {#DialogueItalicFormat}you{#PreviousFormat}, Megaera. There are many obstinate personalities with whom we regularly interact. Thus, we do what is possible."
+				},
+			},
+
+			MegaeraWithHypnos01 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredTextLines = { "HypnosGift01", "MegaeraGift01", },
+				RequiredAnyTextLines = { "MegaeraMeeting01", "MegaeraMeeting01_B", "MegaeraMeeting01_Alt", "MegaeraMeeting01_Alt_B" },
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredMinCompletedRuns = 13,
+				RequiredKills = { Harpy = 8 },
+				RequiredKillsThisRun = { "Harpy" },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 100,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				-- Great.
+				EndCue = "/VO/ZagreusField_0747",
+				EndWait = 0.55,
+				{
+					Cue = "/VO/MegaeraHome_0112",
+					PreLineWait = 0.35,
+					Text =
+					"...Would you look at that, Hypnos. Care to repeat to me the unsolicited advice you just now offered, now that Zagreus is here?"
+				},
+				{
+					Cue = "/VO/Hypnos_0114",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					Emote = "PortraitEmoteSurprise",
+					PreLineAnim = "HypnosIdleGreeting",
+					PreLineAnimTarget = 370024,
+					Text =
+					"Oh, {#DialogueItalicFormat}hahaha{#PreviousFormat}, well, it is my custom to give pointers to our visitors, who come involuntarily, because, I do pick up a lot of bits and pieces, talking here to everyone! About, you know... dying?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0113",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"Zagreus. He told me that I ought to evade more of your attacks next time. So you just watch your back out there, because I know your secrets thanks to Hypnos here."
+				},
+			},
+			MegaeraWithHypnos02 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredAnyTextLines = { "MegaeraWithHypnos01", "HypnosConsolation04", },
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				MinRunsSinceAnyTextLines = { TextLines = { "MegaeraWithHypnos01" }, Count = 10 },
+				RequiredMinCompletedRuns = 25,
+				RequiredKillsThisRun = { "Harpy" },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 100,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.35,
+						ObjectType = "NPC_Hypnos_01",
+						PreLineAnim = "HypnosIdleGreeting",
+						-- I'll give it a shot!
+						{ Cue = "/VO/Hypnos_0059" },
+					},
+					{
+						PreLineWait = 0.45,
+						UsePlayerSource = true,
+						-- ...Alas.
+						{ Cue = "/VO/ZagreusHome_0742" },
+					},
+				},
+				{
+					Cue = "/VO/MegaeraHome_0114",
+					PreLineWait = 0.35,
+					Text =
+					"...I think that I can find the lounge well on my own, Hypnos. Or... wait... what is this, did you just ask me out?"
+				},
+				{
+					Cue = "/VO/Hypnos_0115",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					Emote = "PortraitEmoteSurprise",
+					PreLineAnim = "HypnosIdleGreeting",
+					PreLineAnimTarget = 370024,
+					Text =
+					"Me? No, {#DialogueItalicFormat}nonononono{#PreviousFormat}, no! I'd never even think to do that, Miss, I mean, you have your station, and I have mine. We're from two different worlds, you could say. Fated never to be seen together much."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0115",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"Every time I talk to you, you somehow take it as a compliment, is that correct? Then, let me give {#DialogueItalicFormat}you {#PreviousFormat}some advice, for once. Stop being an idiot."
+				},
+			},
+			MegaeraWithHypnos03 = {
+				Partner = "NPC_Hypnos_01",
+				RequiredTextLines = { "MegaeraWithHypnos02", "HypnosGift04", "MegaeraGift05" },
+				MinRunsSinceAnyTextLines = { TextLines = { "MegaeraWithHypnos02" }, Count = 12 },
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredKillsThisRun = { "Harpy" },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				TeleportToId = 370024,
+				TeleportOffsetX = 100,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 370024,
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					ObjectType = "NPC_Hypnos_01",
+					-- ...Will do!
+					{ Cue = "/VO/Hypnos_0183" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0176",
+					PreLineWait = 0.35,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					Text =
+					"...You haven't greeted me as often lately, Hypnos. I wouldn't have noticed if it weren't half your job. If there's something you wish to say to me, why not just come right out."
+				},
+				{
+					Cue = "/VO/Hypnos_0180",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					Emote = "PortraitEmoteSurprise",
+					PreLineAnim = "HypnosIdleGreeting",
+					PreLineAnimTarget = 370024,
+					Text =
+					"Oh, um, well, I, see, the thing is, Megaera, Miss Megaera, mind if I call you that? As I was saying, I just, thought maybe, you know, we had a thing, a real connection, lately, since you keep on dying more and more, and I keep standing here? But then... I always thought you were invincible..."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0177",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"I see. And so you're realizing now that your entire image of me came from your imagination, is that it?"
+				},
+				{
+					Cue = "/VO/Hypnos_0181",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					Emote = "PortraitEmoteFiredUp",
+					Text =
+					"Well, it's just! I really thought with all my advice that you'd go back to killing Zagreus, rather than the other way around! I just don't think things are working out the way I hoped, you know?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0178",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Text =
+					"It almost sounds as though you've broken up with me, except... well, are you sure that you'll be all right?"
+				},
+				{
+					Cue = "/VO/Hypnos_0182",
+					Portrait = "Portrait_ChildGhost_Default_01",
+					Speaker = "NPC_Hypnos_01",
+					Emote = "PortraitEmoteCheerful",
+					PreLineAnim = "HypnosIdleGreeting",
+					PreLineAnimTarget = 370024,
+					Text =
+					"Oh, yeah! Look, I'm just glad it's one of you two, sure beats having to greet shades nonstop! They never talk to me."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0179",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "All right, then... you greet me next I'm here."
+				},
+			},
+
+			MegaeraWithPersephone01 = {
+				Partner = "NPC_Persephone_Home_01",
+				RequiredTextLines = { "Ending01", "PersephoneHomeMeeting01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 5 },
+				MaxRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 28 },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 555714,
+				TeleportOffsetX = -40,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 555714,
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					ObjectType = "NPC_FurySister_01",
+					-- Heh. As you say.
+					{ Cue = "/VO/MegaeraHome_0416" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0414",
+					PreLineWait = 0.35,
+					Text =
+					"...It was my duty to prevent him from getting farther. If I succeeded... he never would have found you. So this once, I'm glad I failed. I hope you know that, my Queen."
+				},
+				{
+					Cue = "/VO/Persephone_0193",
+					Portrait = "Portrait_Persephone_Queen_01",
+					Speaker = "NPC_Persephone_Home_01",
+					PreLineAnim = "PersephoneUnderworld_Vulnerable",
+					PreLineAnimTarget = 555714,
+					Text =
+					"I hoped, but did not know for certain till I heard from you just now, Overseer Megaera! And, if I may? I understand you have achieved an awful lot since I took my, {#DialogueItalicFormat}erm{#PreviousFormat}, leave of absence from this House. I see why Nyx and Hades put their trust in you!"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0415",
+					PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text =
+					"Thank you, my Queen. Then, if there's anything else that I can do to help you reacclimate yourself, I'm always at your service. You are most welcome, here."
+				},
+				{
+					Cue = "/VO/Persephone_0194",
+					Portrait = "Portrait_Persephone_Queen_01",
+					Speaker = "NPC_Persephone_Home_01",
+					PreLineAnim = "PersephoneUnderworld_Dismiss",
+					PreLineAnimTarget = 555714,
+					Text =
+					"Likewise, you be sure to let me know if my son there happens to make more trouble for you than you welcome in your life. All right?"
+				},
+			},
+
+			DusaWithMegaera01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			DusaWithMegaera02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			DusaWithMegaera03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			DusaWithMegaera04 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			DusaWithMegaeraHighAffinity01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			AchillesWithMegaera01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			AchillesWithMegaera02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			AchillesWithMegaeraAboutMyrmidonReunionQuest01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			ThanatosWithMegaera01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+
+		},
+
+		RepeatableTextLineSets = {
+			MegChat01 = {
+				RequiredFalseTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				{
+					Cue = "/VO/MegaeraHome_0021",
+					Text = "Can't you see I'm busy now with more important things than you?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat02 = {
+				RequiredFalseTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				{
+					Cue = "/VO/MegaeraHome_0022",
+					Text = "May I help you somehow, Zagreus? Because if not, why don't you leave me be."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat02_Alt = {
+				-- Priority = true,
+				RequiredFalseTextLines = { "MegaeraGift06" },
+				UseableOffSource = true,
+				RequiredMaxCompletedRuns = 3,
+				TeleportToId = 421077,
+				{
+					Cue = "/VO/MegaeraHome_0022",
+					Text = "May I help you somehow, Zagreus, because if not, why don't you leave me be?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat03 = {
+				RequiredFalseTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				{
+					Cue = "/VO/MegaeraHome_0023",
+					Text = "Do I look like I'm in the mood to chat?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat03_Alt = {
+				-- Priority = true,
+				RequiredFalseTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				RequiredMaxCompletedRuns = 3,
+				TeleportToId = 421077,
+				{
+					Cue = "/VO/MegaeraHome_0023",
+					Text = "Do I look like I'm in the mood to chat?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat04 = {
+				RequiredFalseTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				RequiredKillsThisRun = { "Harpy" },
+				{
+					Cue = "/VO/MegaeraHome_0024",
+					Text =
+					"You've come to gloat, I guess? Too bad I can't just kill you where you stand, within this blasted House."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat05 = {
+				RequiredFalseTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				{
+					Cue = "/VO/MegaeraHome_0025",
+					Text =
+					"Have I somehow created the impression that I wish to speak with you? Because if so, there's been a terrible mistake."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat06 = {
+				RequiredFalseTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				{
+					Cue = "/VO/MegaeraHome_0026",
+					Text = "There must be someone else whose time you could be wasting, Zagreus."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat07 = {
+				RequiredFalseTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				{
+					Cue = "/VO/MegaeraHome_0027",
+					Text = "It's embarrassing enough having returned here, much less to be seen talking to you."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat08 = {
+				RequiredFalseTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				{
+					Cue = "/VO/MegaeraHome_0028",
+					Text = "Sooner or later when we meet out there again, I'll kill you, Zagreus."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat09 = {
+				RequiredFalseTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				{
+					Cue = "/VO/MegaeraHome_0030",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text = "If I have something I decide I wish to tell you, Zagreus, I'll make it clear. Leave me alone."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat10 = {
+				RequiredFalseTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				{
+					Cue = "/VO/MegaeraHome_0031",
+					Text = "Your father's absolutely right about you, Zag. You are and always will be an insufferable brat."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat11 = {
+				RequiredFalseTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				{
+					Cue = "/VO/MegaeraHome_0032",
+					Text = "Don't test me any further, Zagreus. You know the rules, no violence in the House."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat12 = {
+				-- Priority = true,
+				RequiredFalseTextLines = { "MegaeraGift04", },
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				{
+					Cue = "/VO/MegaeraHome_0033",
+					Text = "Blood and darkness, leave me be, damn you. I've better things to do than occupy your time."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			-- relationship improved
+			MegChat13 = {
+				RequiredTextLines = { "MegaeraGift05", },
+				UseableOffSource = true,
+				RequiredKillsThisRun = { "Harpy" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0034",
+					Text = "I have to hand it to you, Zag. You've gotten strong. Sending me all the way back here like this."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat14 = {
+				RequiredTextLines = { "MegaeraGift05", },
+				RequiredFalseTextLines = { "NyxAboutMegRelationship01" },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0035",
+					Text = "Nyx must be worried, seeing us like this. Lately always at each other's throats."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat15 = {
+				RequiredTextLines = { "MegaeraGift06", },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0036",
+					Text = "Oh don't worry, I'll be back in fighting shape in no time, Zag."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat16 = {
+				-- Priority = true,
+				RequiredTextLines = { "MegaeraGift03", },
+				RequiredFalseTextLines = { "MegaeraWithHades04" },
+				RequiredFalseValues = { CurrentEmployeeOfTheMonth = "Megaera" },
+				UseableOffSource = true,
+				{
+					Cue = "/VO/MegaeraHome_0037",
+					Text = "Your father's not been very pleased with my performance lately as you might have guessed."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat17 = {
+				-- Priority = true,
+				RequiredTextLines = { "MegaeraGift05", },
+				RequiredFalseTextLines = { "MegaeraGift10" },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0038",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "Sometimes, Zagreus, I'm almost not detested by the sight and smell of you."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat18 = {
+				RequiredTextLines = { "MegaeraGift03" },
+				RequiredKillsThisRun = { "Harpy" },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0039",
+					Text = "I shouldn't be back here right now. No thanks to you, of course."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat19 = {
+				RequiredTextLines = { "MegaeraGift04" },
+				RequiredKillsThisRun = { "Harpy" },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0040",
+					Text = "I'm keeping careful track of all the times you've sent me home like this."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat20 = {
+				RequiredTextLines = { "MegaeraGift04" },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0041",
+					Text = "At least the House seems well enough in order since I saw it last."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat21 = {
+				RequiredTextLines = { "MegaeraGift06" },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0042",
+					Text = "We keep on running into one another lately, don't we Zag."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat22 = {
+				RequiredTextLines = { "MegaeraGift06", },
+				RequiredKillsThisRun = { "Harpy" },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0043",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "You got me fair and square last time. Though I'm a little bitter anyway."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat23 = {
+				-- Priority = true,
+				RequiredTextLines = { "MegaeraGift05" },
+				RequiredFalseTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer", "Ending01" },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0044",
+					Text = "You know we can't be seen together like this, Zagreus."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat24 = {
+				-- Priority = true,
+				RequiredTextLines = { "SisyphusFirstMeeting" },
+				RequiredFalseTextLines = { "MegaeraGift10", "SisyphusLiberationQuestComplete", },
+				UseableOffSource = true,
+				{
+					Cue = "/VO/MegaeraHome_0029",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text = "I should be whipping Sisyphus' lazy hide right now instead of standing here."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegChat25 = {
+				RequiredTextLines = { "MegaeraGift05" },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0441",
+					Text = "Don't like having to come back here quite this often, Zagreus."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+
+			-- standoffish
+			MegStandoffish01 = {
+				RequiredFalseTextLines = { "MegaeraGift07", },
+				UseableOffSource = true,
+				{
+					Cue = "/VO/MegaeraHome_0199",
+					Text = "I'm not even remotely interested in chatting with you, Zagreus."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegStandoffish02 = {
+				-- Priority = true,
+				RequiredFalseTextLines = { "MegaeraGift07", "Ending01" },
+				UseableOffSource = true,
+				{
+					Cue = "/VO/MegaeraHome_0200",
+					Text = "Why don't you go get out of here if you despise this place so much?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegStandoffish03 = {
+				-- Priority = true,
+				RequiredFalseTextLines = { "MegaeraGift04", },
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				{
+					Cue = "/VO/MegaeraHome_0201",
+					Text = "Don't you so much as dare talk to me."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegStandoffish04 = {
+				-- Priority = true,
+				RequiredFalseTextLines = { "MegaeraGift04", },
+				UseableOffSource = true,
+				{
+					Cue = "/VO/MegaeraHome_0202",
+					Text = "Get out of my sight, Zagreus. And be thankful violence is prohibited in here."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegStandoffish05 = {
+				RequiredFalseTextLines = { "MegaeraGift05", },
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				{
+					Cue = "/VO/MegaeraHome_0203",
+					Text = "Right now I wouldn't talk to me if I were you."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegStandoffish06 = {
+				RequiredFalseTextLines = { "MegaeraGift05", },
+				UseableOffSource = true,
+				{
+					Cue = "/VO/MegaeraHome_0204",
+					Text = "I think you'd best be on your way right now, you understand me, Zagreus?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegStandoffish07 = {
+				-- Priority = true,
+				RequiredFalseTextLines = { "MegaeraGift04", },
+				UseableOffSource = true,
+				{
+					Cue = "/VO/MegaeraHome_0205",
+					Text = "I think you've wasted quite enough of both our time, don't you?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegStandoffish08 = {
+				RequiredFalseTextLines = { "MegaeraGift05", },
+				UseableOffSource = true,
+				{
+					Cue = "/VO/MegaeraHome_0206",
+					Text = "Whatever's on your mind, believe me, it's the last thing that I want to hear right now."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+
+			-- max relationship
+			MegMaxChat01 = {
+				RequiredTextLines = { "MegaeraGift10", },
+				UseableOffSource = true,
+				RequiredKillsThisRun = { "Harpy" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0207",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "I can't believe you got me like that, Zag. I'm going to get you back."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat02 = {
+				RequiredTextLines = { "MegaeraGift10", },
+				UseableOffSource = true,
+				RequiredKillsThisRun = { "Harpy" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0208",
+					Text = "Just here licking my wounds until we meet again out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat03 = {
+				RequiredTextLines = { "MegaeraGift10", },
+				UseableOffSource = true,
+				RequiredRoomThisRun = "D_Hub",
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0209",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "Heard you made it pretty far last time."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat04 = {
+				RequiredTextLines = { "MegaeraGift10", },
+				UseableOffSource = true,
+				RequiredRoomThisRun = "D_Hub",
+				RequiresRunNotCleared = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0210",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "You almost got there last time, didn't you."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat05 = {
+				RequiredTextLines = { "MegaeraGift10", },
+				UseableOffSource = true,
+				RequiredRoomThisRun = "D_Hub",
+				RequiresRunCleared = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0211",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "Heard you made it all the way last time."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat06 = {
+				RequiredTextLines = { "MegaeraGift10", },
+				UseableOffSource = true,
+				RequiredRoomThisRun = "D_Hub",
+				RequiresRunCleared = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0212",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "You're back. Got all the way to the surface back there, huh?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat07 = {
+				RequiredTextLines = { "MegaeraGift10", },
+				UseableOffSource = true,
+				RequiredKillsThisRun = { "Harpy" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0213",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "Keep letting down my guard against you, Zag."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat08 = {
+				RequiredTextLines = { "MegaeraGift10", },
+				UseableOffSource = true,
+				RequiresRunCleared = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0432",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "Went all the way to the top last time, huh? Not bad at all."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat09 = {
+				RequiredTextLines = { "MegaeraGift10", },
+				UseableOffSource = true,
+				RequiredKillsThisRun = { "Harpy" },
+				RequiredFalseTextLinesThisRun = { "FuryMiscStartLoseStreak14" },
+				ConsecutiveClearsOfRoom = {
+					Name = "A_Boss01",
+					Count = 8,
+				},
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0433",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "{#DialogueItalicFormat}Ugh{#PreviousFormat}, I don't remember the last time I beat you, Zag..."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat10 = {
+				RequiredTextLines = { "MegaeraGift10", },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0434",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "Break's just about over. See you out there?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat11 = {
+				RequiredTextLines = { "MegaeraGift10", },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0435",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "Hypnos give you any good pointers lately?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat12 = {
+				RequiredTextLines = { "MegaeraGift08", },
+				UseableOffSource = true,
+				RequiredKillsThisRun = { "Harpy2" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0436",
+					Text = "Taking a break from putting up with Alecto out there..."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat13 = {
+				RequiredTextLines = { "MegaeraGift10", "DusaLoungeRenovationQuestComplete" },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0437",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "Got to say, I like what you and Dusa did with this place."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat14 = {
+				RequiredTextLines = { "MegaeraGift10" },
+				UseableOffSource = true,
+				RequiredKillsThisRun = { "Harpy" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0438",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "Didn't rough you up too bad last time, did I?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat15 = {
+				RequiredTextLines = { "MegaeraGift10" },
+				UseableOffSource = true,
+				RequiredKillsThisRun = { "Harpy2" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0439",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "You showed Alecto again. She must be so mad."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+			MegMaxChat16 = {
+				RequiredTextLines = { "MegaeraGift10" },
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Megaera",
+				{
+					Cue = "/VO/MegaeraHome_0440",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text = "About ready to go another round with me out there?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+			},
+
+			-- intermission scenes
+			-- alt ids: { 422142 (m), 422255 (t), }
+			-- @ update AreIdsNotAlive as needed
+			MegIntermissionChat01 = {
+				UseableOffSource = true,
+				StatusAnimation = "StatusIconWantsToSmooch",
+				RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
+				RequiredFalseQueuedTextLines = { "ThanatosHomeIntermissionChat01", "ThanatosHomeIntermissionChat02", "ThanatosHomeIntermissionChat03", "ThanatosHomeIntermissionChat04", "ThanatosHomeIntermissionChat05", "ThanatosHomeIntermissionChat06" },
+				-- prevent a progstop
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				AreIdsAlive = { 423052 },
+				{
+					Cue = "/VO/MegaeraHome_0215",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					PortraitExitAnimation = "Portrait_FurySister01_Standoffish_01_Exit",
+					PostLineThreadedFunctionName = "BedroomIntermissionPresentation",
+					PostLineFunctionArgs = { UseRandomSounds = true, },
+					Text = "I have to speak with you in private, Zagreus. Urgently."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0216",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					FadeOutTime = 0.5,
+					FullFadeTime = 7.5,
+					LoadMap = "DeathAreaBedroom",
+					SpawnOnId = 422253,
+					AngleTowardHero = true,
+					TeleportHeroToId = 422254,
+					AngleHeroTowardTargetId = 422253,
+					FadeInTime = 2.5,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = { TeleportToId = 421563 },
+					PostLineGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+					Text = "It's fortunate that matter is resolved. I'll see you out there, then."
+				},
+			},
+			MegIntermissionChat02 = {
+				UseableOffSource = true,
+				StatusAnimation = "StatusIconWantsToSmooch",
+				RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
+				RequiredFalseQueuedTextLines = { "ThanatosHomeIntermissionChat01", "ThanatosHomeIntermissionChat02", "ThanatosHomeIntermissionChat03", "ThanatosHomeIntermissionChat04", "ThanatosHomeIntermissionChat05", "ThanatosHomeIntermissionChat06" },
+				-- prevent a progstop
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				AreIdsAlive = { 423052 },
+				{
+					Cue = "/VO/MegaeraHome_0217",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					PostLineThreadedFunctionName = "BedroomIntermissionPresentation",
+					PostLineFunctionArgs = { UseRandomSounds = true, },
+					PortraitExitAnimation = "Portrait_FurySister01_Standoffish_01_Exit",
+					Text = "Let's go someplace a little quieter than this. Where we can concentrate."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0218",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					FadeOutTime = 0.5,
+					FullFadeTime = 7.5,
+					LoadMap = "DeathAreaBedroom",
+					SpawnOnId = 422253,
+					AngleTowardHero = true,
+					TeleportHeroToId = 422254,
+					AngleHeroTowardTargetId = 422253,
+					FadeInTime = 2.5,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = { TeleportToId = 421563 },
+					PostLineGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+					Text = "A little peace and quiet's good from time to time, don't you agree?"
+				},
+			},
+			MegIntermissionChat03 = {
+				UseableOffSource = true,
+				StatusAnimation = "StatusIconWantsToSmooch",
+				RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
+				RequiredFalseQueuedTextLines = { "ThanatosHomeIntermissionChat01", "ThanatosHomeIntermissionChat02", "ThanatosHomeIntermissionChat03", "ThanatosHomeIntermissionChat04", "ThanatosHomeIntermissionChat05", "ThanatosHomeIntermissionChat06" },
+				-- prevent a progstop
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				AreIdsAlive = { 423052 },
+				{
+					Cue = "/VO/MegaeraHome_0219",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					PostLineThreadedFunctionName = "BedroomIntermissionPresentation",
+					PostLineFunctionArgs = { UseRandomSounds = true, },
+					PortraitExitAnimation = "Portrait_FurySister01_Standoffish_01_Exit",
+					Text = "Don't even say a word, and follow me."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0220",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					FadeOutTime = 0.5,
+					FullFadeTime = 7.5,
+					LoadMap = "DeathAreaBedroom",
+					SpawnOnId = 422253,
+					AngleTowardHero = true,
+					TeleportHeroToId = 422254,
+					AngleHeroTowardTargetId = 422253,
+					FadeInTime = 2.5,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = { TeleportToId = 421563 },
+					PostLineGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+					Text = "Well, Zagreus? Take care until we meet again, I guess."
+				},
+			},
+			MegIntermissionChat04 = {
+				UseableOffSource = true,
+				StatusAnimation = "StatusIconWantsToSmooch",
+				RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
+				RequiredFalseQueuedTextLines = { "ThanatosHomeIntermissionChat01", "ThanatosHomeIntermissionChat02", "ThanatosHomeIntermissionChat03", "ThanatosHomeIntermissionChat04", "ThanatosHomeIntermissionChat05", "ThanatosHomeIntermissionChat06" },
+				-- prevent a progstop
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				AreIdsAlive = { 423052 },
+				{
+					Cue = "/VO/MegaeraHome_0221",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					PostLineThreadedFunctionName = "BedroomIntermissionPresentation",
+					PostLineFunctionArgs = { UseRandomSounds = true, },
+					PortraitExitAnimation = "Portrait_FurySister01_Standoffish_01_Exit",
+					Text = "Zagreus, did you forget about our private tutoring, again? Come on."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0222",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					FadeOutTime = 0.5,
+					FullFadeTime = 7.5,
+					LoadMap = "DeathAreaBedroom",
+					SpawnOnId = 422253,
+					AngleTowardHero = true,
+					TeleportHeroToId = 422254,
+					AngleHeroTowardTargetId = 422253,
+					FadeInTime = 2.5,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = { TeleportToId = 421563 },
+					PostLineGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+					Text = "There. I take it you'll remember what I've taught you, hm?"
+				},
+			},
+			MegIntermissionChat05 = {
+				UseableOffSource = true,
+				StatusAnimation = "StatusIconWantsToSmooch",
+				RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
+				RequiredFalseQueuedTextLines = { "ThanatosHomeIntermissionChat01", "ThanatosHomeIntermissionChat02", "ThanatosHomeIntermissionChat03", "ThanatosHomeIntermissionChat04", "ThanatosHomeIntermissionChat05", "ThanatosHomeIntermissionChat06" },
+				-- prevent a progstop
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				AreIdsAlive = { 423052 },
+				{
+					Cue = "/VO/MegaeraHome_0223",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					PostLineThreadedFunctionName = "BedroomIntermissionPresentation",
+					PostLineFunctionArgs = { UseRandomSounds = true, },
+					PortraitExitAnimation = "Portrait_FurySister01_Standoffish_01_Exit",
+					Text = "Come with me, Zagreus. Your chambers are past due for a routine inspection."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0224",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					FadeOutTime = 0.5,
+					FullFadeTime = 7.5,
+					LoadMap = "DeathAreaBedroom",
+					SpawnOnId = 422253,
+					AngleTowardHero = true,
+					TeleportHeroToId = 422254,
+					AngleHeroTowardTargetId = 422253,
+					FadeInTime = 2.5,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = { TeleportToId = 421563 },
+					PostLineGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+					Text = "Well! Seems everything's in order. Carry on."
+				},
+			},
+			MegIntermissionChat06 = {
+				UseableOffSource = true,
+				StatusAnimation = "StatusIconWantsToSmooch",
+				RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
+				RequiredFalseQueuedTextLines = { "ThanatosHomeIntermissionChat01", "ThanatosHomeIntermissionChat02", "ThanatosHomeIntermissionChat03", "ThanatosHomeIntermissionChat04", "ThanatosHomeIntermissionChat05", "ThanatosHomeIntermissionChat06" },
+				-- prevent a progstop
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				AreIdsAlive = { 423052 },
+				{
+					Cue = "/VO/MegaeraHome_0225",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					PostLineThreadedFunctionName = "BedroomIntermissionPresentation",
+					PostLineFunctionArgs = { UseRandomSounds = true, },
+					PortraitExitAnimation = "Portrait_FurySister01_Standoffish_01_Exit",
+					Text = "If you're available right now, I have some parchmentwork that needs review."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0226",
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					FadeOutTime = 0.5,
+					FullFadeTime = 7.5,
+					LoadMap = "DeathAreaBedroom",
+					SpawnOnId = 422253,
+					AngleTowardHero = true,
+					TeleportHeroToId = 422254,
+					AngleHeroTowardTargetId = 422253,
+					FadeInTime = 2.5,
+					FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = { TeleportToId = 421563 },
+					PostLineGlobalVoiceLines = "PostBedroomIntermissionVoiceLines",
+					Text = "Hmm. Less parchmentwork than I expected. Well, thank you for your time."
+				},
+			},
+
+			-- max relationship w/ Meg
+			ThanatosChatWithMegaera01 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			ThanatosChatWithMegaera02 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			ThanatosChatWithMegaera03 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			ThanatosChatWithMegaera04 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			ThanatosChatWithMegaera05 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			ThanatosChatWithMegaera06 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+
+			DusaChatWithMegaera01 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			DusaChatWithMegaera02 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			DusaChatWithMegaera03 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			DusaChatWithMegaera04 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			DusaChatWithMegaera05 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			DusaChatWithMegaera06 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			DusaChatWithMegaera07 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			DusaChatWithMegaera08 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			DusaChatWithMegaera09 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+
+			AchillesChatWithMegaera01 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			AchillesChatWithMegaera02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			AchillesChatWithMegaera03 = {
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+		},
+
+		GiftTextLineSets = {
+			-- grants a gift
+			MegaeraGift01 = {
+				PlayOnce = true,
+				{
+					Cue = "/VO/ZagreusHome_0289",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, {#DialogueItalicFormat}uh{#PreviousFormat}, Meg? Look, I know you're just doing your job out there, and, anyway, found this, thought of you and all that, so... here."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0051",
+					PreLineWait = 0.4,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"I... I'll see to it this contraband is put away at once. Now, take your finder's fee and go about your business."
+				},
+			},
+			MegaeraGift02 = {
+				PlayOnce = true,
+				RequiredTextLines = { "MegaeraGift01", },
+				{
+					Cue = "/VO/ZagreusHome_0117",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey, Meg! I, {#DialogueItalicFormat}uh{#PreviousFormat}, thought I'd better hand this over."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0045",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					Text =
+					"I'll confiscate that if you really want. Although, I'm warning you, I'm not susceptible to bribes. Many have tried."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0290",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"Hey I'm just handing over contraband to the appropriate authorities, think nothing of it, Meg. Just doing our jobs, right?"
+				},
+			},
+			MegaeraGift03 = {
+				PlayOnce = true,
+				RequiredTextLines = { "MegaeraGift02", },
+				{
+					Cue = "/VO/MegaeraHome_0046",
+					Text =
+					"{#DialogueItalicFormat}Tsch{#PreviousFormat}. You're serious. You're really giving that to me. I mean, I'll take it off your hands if that is really what you want."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0291",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's really what I want. And, I sincerely hope we can move past our differences. Not that turning in this contraband has anything to do with that."
+				},
+			},
+			MegaeraGift04 = {
+				PlayOnce = true,
+				RequiredTextLines = { "MegaeraGift03", },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					ObjectType = "NPC_FurySister_01",
+					-- ...I hope you do.
+					{ Cue = "/VO/MegaeraHome_0368" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0047",
+					Text = "Such gifts won't stay my whip when next we meet out there, you realize that, right?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0292",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "I realize it. And I hope you never change, Meg."
+				},
+			},
+			MegaeraGift05 = {
+				PlayOnce = true,
+				RequiredTextLines = { "MegaeraGift04", },
+				{
+					Cue = "/VO/MegaeraHome_0048",
+					Text = "Flattery won't get you anywhere. We can't go back to how things used to be."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0293",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Flattery never got me anywhere with you to begin with, Meg. Doesn't mean I won't keep trying. I am ever stubborn, aren't I."
+				},
+			},
+			MegaeraGift06 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift05", },
+				{
+					Cue = "/VO/ZagreusHome_0294",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Got you some more of that contraband you like. Don't suppose I could help you put it away or anything...?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0049",
+					AngleTowardHero = true,
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					Text =
+					"Look at me, Zag.... You think that all these gifts will make things go back to the way they were? They won't. It isn't possible. We may be immortals but we're older now."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0295",
+					PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					AngleTowardTargetId = 423122,
+					Text = "I'd hope we're wiser, too."
+				},
+			},
+
+			-- high relationship / locked gifts
+			MegaeraGift07 = {
+				PlayOnce = true,
+				RequiredTextLines = { "MegaeraGift06", },
+				{
+					Cue = "/VO/MegaeraHome_0369",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+					Text =
+					"Ambrosia... you know the penalty for attempting to sway an Overseer of the House of Hades with foreign contraband, don't you?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3137",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I can't entirely say I do, though if it involves lashings and whatnot, I already get more than my share of that, so... figured I would take the risk. So what do you say?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0370",
+					PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+					Text =
+					"I say hand over the damn bottle. I'll see that it's disposed of properly. Now as for you... you wouldn't know who misplaced something like this, would you? On my authority as Overseer... hang onto it. Though if you tell so much as anyone...!"
+				},
+			},
+
+			MegaeraGift08 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift07", },
+				EndVoiceLines = {
+					PreLineWait = 0.75,
+					UsePlayerSource = true,
+					-- ...Uh, yeah. Bye...
+					{ Cue = "/VO/ZagreusHome_1360" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1357",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I had this awful contraband I wanted to turn in as soon as possible, if you don't mind taking it from me, Meg."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0141",
+					AngleTowardHero = true,
+					Text =
+					"{#DialogueItalicFormat}Tsch{#PreviousFormat}... you still have no idea how to be up front with me, do you, Zag. Why don't you tell me why you're here, and what you want."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1358",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Erm{#PreviousFormat}... so the whole contraband thing, you aren't buying it, I guess? Although I see you took the bottle there, now, anyway... I wanted just to talk to you. And patch things up, maybe."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0142",
+					Text =
+					"{#DialogueItalicFormat}Patch things up{#PreviousFormat}. What is it, by your estimation, that could use repairs, between the two of us, {#DialogueItalicFormat}hm{#PreviousFormat}?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1359",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"I... I was naive. I tried not to get too close, but then I did, and said a lot of stupid things, and then... well, we've since tried to kill each other lots of times, there's that. Look, I am sorry, Meg."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0143",
+					AngleTowardTargetId = 423122,
+					Text =
+					"You said a lot of stupid things, all right. And we Furies, we're not much for forgiveness or apologies. But... I can see you're making an attempt. Now, thank you for the contraband. Good-bye."
+				},
+			},
+
+			MegaeraGift09 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift08", },
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					-- I see. Take all the time you need.
+					{ Cue = "/VO/ZagreusHome_1364" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1361",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Here, Meg. Contraband. I wish I could do over how we started."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0144",
+					Text =
+					"I, too, wish for a lot of things. Unfortunately there's no unraveling the Fates' patterns. We can learn from our mistakes or keep repeating them. That's it."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1362",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"What if I've learned from my mistakes? Have I ever done anything to hurt you since we've been like this? Discounting the unavoidable and frequent fights to the death."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0145",
+					AngleTowardHero = true,
+					Text = "There's nothing you can do to hurt me, Zag. It's just a question of whether you're worth my time."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1363",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Well... am I worth your time, then, Meg?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0146",
+					AngleTowardTargetId = 423122,
+					Text = "You know... let me get back to you on that. I need a little time to think it through."
+				},
+			},
+
+			MegaeraGift10 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift09", },
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					-- Yeah. Thanks.
+					{ Cue = "/VO/ZagreusHome_1369" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1365",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey Meg, you're off duty, aren't you? Look, I was just... hoping you might want to split this with me, best stuff I could find out there, and I would give it all to you, it's just... maybe you wouldn't mind some company. From me."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0147",
+					AngleTowardHero = true,
+					Text = "You sound a little tongue-tied, Zagreus. Just like you always used to around me."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1366",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "You're not exactly easy to approach, you know. So... how about it, then? Care for a drink with me?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0148",
+					AngleTowardTargetId = 423122,
+					PostLineThreadedFunctionName = "LoungeRevelryPresentation",
+					PortraitExitAnimation = "Portrait_FurySister01_Standoffish_01_Exit",
+					Text = "Open it up, and we can go from there."
+				},
+				-- intermission
+				{
+					Cue = "/VO/MegaeraHome_0149",
+					FadeOutTime = 0.5,
+					FullFadeTime = 7.8,
+					FadeInTime = 2.0,
+					PreLineWait = 0.3,
+					FadeInSound = "/SFX/Menu Sounds/PortraitEmoteAffectionSFX",
+					InterSceneWaitTime = 0.5,
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					Text =
+					"...You should have seen the look on your face. You act a lot more confidently now. Though, I think, deep down, you are still that inexperienced little godling that you used to be."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1367",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"And I think, deep down, you are not the heartless harbinger of retribution that you want for everyone to think you are. But I can keep your secret if you're willing to keep mine, what do you say?"
+				},
+				{
+					Cue = "/VO/MegaeraHome_0150",
+					AngleTowardHero = true,
+					Text = "Tsch... that sounds an awful lot like blackmail, Zagreus. You'd stoop to that, with me?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1368",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "No, I... I was just, that's not what I meant at all..."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0151",
+					AngleTowardTargetId = 423122,
+					Portrait = "Portrait_FurySister01_Pleased_01",
+					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
+					PostLineFunctionArgs = { Text = "NPC_FurySister_01", Icon = "Keepsake_MegSticker_Max" },
+					Text =
+					"{#DialogueItalicFormat}Hahaha{#PreviousFormat}, I just want to see you squirm. Thanks for the company and for the drink. Guess I'll be seeing you around."
+				},
+			},
+
+		},
+
+		MissingDistanceTrigger = {
+			WithinDistance = 400,
+			RequiredFalseFlags = { "InFlashback", },
+			VoiceLines = {
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				UsePlayerSource = true,
+				SuccessiveChanceToPlayAll = 0.1,
+				RequiredFalseTextLinesThisRun = { "MegaeraBedroom01", "MegaeraBedroom02", "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B" },
+				RequiredFalseCompletedRuns = 4,
+				RequiredKillsThisRun = { "Harpy" },
+				AreIdsNotAlive = { 390082 },
+				Cooldowns = {
+					{ Name = "ZagreusAnyQuipSpeech", Time = 30 },
+				},
+
+				-- Thought I'd find Meg here.
+				{ Cue = "/VO/ZagreusHome_0569" },
+				-- Megaera's not around.
+				{ Cue = "/VO/ZagreusHome_0570" },
+				-- Meg must've gone back already.
+				{ Cue = "/VO/ZagreusHome_0571" },
+			},
+		},
+
+		GiftGivenVoiceLines = {
+			{
+				BreakIfPlayed = true,
+				PreLineWait = 1.0,
+				PlayFromTarget = true,
+				RequiredTextLines = { "MegaeraGift07" },
+
+				-- What... wow... I'll cherish her.
+				{ Cue = "/VO/ZagreusHome_1356" },
+			},
+			{
+				BreakIfPlayed = true,
+				PreLineWait = 1.0,
+				PlayFromTarget = true,
+
+				-- I, uh, thanks.
+				{ Cue = "/VO/ZagreusHome_0317" },
+			},
+		},
+	},
+	-- used in special scenes
+	NPC_FurySister_Story_01 = {
+		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
+
+		UseText = "UseTalkToFury",
+		Portrait = "Portrait_FurySister01_Default_01",
+		AnimOffsetZ = 265,
+		Groups = { "NPCs" },
+
+		ActivateRequirements = {
+			-- Force = true,
+		},
+
+		InteractTextLineSets = {
+		},
+	},
 }

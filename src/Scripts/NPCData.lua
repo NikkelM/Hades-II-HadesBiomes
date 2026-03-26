@@ -146,7 +146,7 @@ end
 
 local function applyNPCGlobalModifications(base, npcModifications)
 	for npcName, npcData in pairs(base) do
-		if npcModifications[npcName].RepeatableTextLineSets ~= nil then
+		if npcModifications[npcName] and npcModifications[npcName].RepeatableTextLineSets ~= nil then
 			mod.DebugPrint(
 				"Modifications to RepeatableTextLineSets for NPCs must be made under InteractTextLineSets, as the will be moved there before modifications are applied: " ..
 				npcName, 1)
@@ -160,7 +160,8 @@ local function applyNPCGlobalModifications(base, npcModifications)
 			textline.FilledIcon = "FilledHeartIcon"
 			-- To ensure only one gift line is shown as eligible in the Codex (prevent the Ambrosia events from showing when they shouldn't yet)
 			if npcModifications[npcName] and npcModifications[npcName].GiftTextLineSets and npcModifications[npcName].GiftTextLineSets[textlineName] and npcModifications[npcName].GiftTextLineSets[textlineName].GameStateRequirements then
-				textline.GameStateRequirements = npcModifications[npcName].GiftTextLineSets[textlineName].GameStateRequirements
+				textline.GameStateRequirements = npcModifications[npcName].GiftTextLineSets[textlineName]
+						.GameStateRequirements
 			else
 				textline.GameStateRequirements = textline.GameStateRequirements or game.DeepCopyTable(textline)
 			end
@@ -1614,7 +1615,24 @@ local npcModifications = {
 				RequiredFalseTextLinesLastRun = mod.NilValue,
 				RequiredFalseTextLinesThisRun = { "OrpheusAboutSingersReunionQuest01" },
 			},
-		}
+		},
+	},
+	NPC_FurySister_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		SubtitleColor = game.Color.MegVoice,
+		ActivateRequirements = {
+			RequiredAnyKillsThisRun = mod.NilValue,
+			{
+				Path = { "CurrentRun", "EnemyKills" },
+				HasAny = { "Harpy", "Harpy2" }
+			},
+			{
+				-- Can't appear on the first run
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+		},
 	},
 }
 
@@ -1860,6 +1878,25 @@ local npcChoiceMappings = {
 				Find = "MusicianMusic",
 				Replace = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
 			},
+		},
+	},
+	NPC_FurySister_01 = {
+		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets", "GiftTextLineSets" },
+		AlwaysReplaceIfExist = {
+			StatusAnimation = {
+				Find = "StatusIconWantsToSmooch",
+				Replace = "StatusIconWantsAffection",
+			},
+		},
+		-- Replace requirements referencing the CurrentRun to reference PrevRun instead
+		AlwaysReplaceKeysIfExist = {
+			RequiresRunCleared = "RequiresLastRunCleared",
+			RequiresRunNotCleared = "RequiresLastRunNotCleared",
+			RequiredTextLinesThisRun = "RequiredTextLinesLastRun",
+			RequiredFalseTextLinesThisRun = "RequiredFalseTextLinesLastRun",
+			RequiredEncounterThisRun = "RequiredEncounterLastRun",
+			RequiredKillsThisRun = "RequiredKillsLastRun",
+			RequiredFalseDeathEncounters = "RequiredFalseDeathEncountersThanatos",
 		},
 	},
 }

@@ -343,6 +343,7 @@ local roomReplacements = {
 	},
 
 	D_Hub = {
+		LegalEncounters = { "ModsNikkelMHadesBiomes_StyxHubShop" },
 		Binks = { "Cerberus_HubIdle_Bink", },
 
 		DistanceTriggers = {
