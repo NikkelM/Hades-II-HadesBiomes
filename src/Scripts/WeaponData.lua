@@ -2024,6 +2024,7 @@ local weaponModifications = {
 		AIData = {
 			PreAttackFunctionName = _PLUGIN.guid .. "." .. "HandleHadesAssistPresentation",
 			AssistPresentationPortrait = "ModsNikkelMHadesBiomes_Portrait_Cerberus",
+			AssistPresentationPortraitOffsetY = 117,
 			PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
 			ImmuneToProjectileSlow = true,
 		},

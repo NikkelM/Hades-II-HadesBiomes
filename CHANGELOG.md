@@ -4,27 +4,31 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- Advance through **50** new cosmetic ranks at the _Spirit Mixer_, from the lowly "Alpha Warden" to the feared "Unseen One". These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
+- Advance through **50** new cosmetic ranks offered by the _Spirit Mixer_, from the lowly "Alpha Warden" to the feared "Unseen One". These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
 - Added a new logo to the Main Menu to signal that the mod is installed.
 - Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
 
 Other fixes and improvements:
 - You can now salute story NPCs you meet along your journey.
 - Hades and Theseus will now react with specific voicelines for certain Gods when using Godsent Hex effects against them.
-- Balancing: Elyisan Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
-- Balancing: Reduced the chance for the "Popper" elite perk to appear.
+- Hades will now react to going Dark using "Unseen Ire" in the fight against him.
+- Melinoë will now react to Hades calling Cerberus to his aid.
+- Balancing: Elyisian Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
+- Balancing: Slightly reduced the chance for the "Popper" elite perk to appear.
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
-- Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk no longer trigger "Unseen Ire".
+- Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
 - Fixed: Some fog and branches flicker on a specific Elysium map.
+- Fixed: Some shop items in the Styx shop can clip behind the base they sit on.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
+- Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.
 - Fixed: Urns are not destroyed when sprinted into.
 - Fixed: Family Dispute door reward previews are too large and clip out of the glass sphere.
-- Fixed: Ash and Bone door reward previews in Asphodel are too high in the glass sphere. 
+- Fixed: Ash and Bone door reward previews in Asphodel are located too high in the glass sphere. 
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
-- Fixed: Chaos Gates did not have specific spawn requirements adapted to Zagreus' Journey runs.
-- Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
+- Fixed: Chaos Gates do not have specific spawn requirements adapted to Zagreus' Journey runs.
 - Fixed: In rare circumstances, the game can crash when checking requirements for actions taken during the previous Zagreus' Journey run.
+- Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
 <!--Releasenotes end-->
 
 ## v0.7.2
@@ -62,7 +66,7 @@ Other fixes and improvements:
 - Updated a number of boon icons with enhanced visuals.
 - Fixed: The game may crash if the last Zagreus' Journey run was more than ten runs ago.
 - Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlayed over the blacked-out death screen.
-- Fixed: The Hydra can get stuck between obstacles after dashing into the lava in very rare circumstances. 
+- Fixed: The Hydra can get stuck between obstacles after it dashes into the lava in very rare circumstances. 
 - Fixed: Archer traps in Elysium sometimes fail to fire the arrow.
 - Fixed: Some codex entries overflow the intended area in the Codex.
 - Fixed: Some dialogues are never eligible to play.

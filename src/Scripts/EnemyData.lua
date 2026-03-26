@@ -726,6 +726,65 @@ local enemyReplacements = {
 	},
 	Hades = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+		AssistActivatedVoiceLines = {
+			Queue = "Interrupt",
+			{
+				{
+					{
+						RandomRemaining = true,
+						PreLineWait = 0.05,
+						Source = { SubtitleColor = game.Color.HadesVoice },
+						Cooldowns = {
+							{ Name = "HadesAnyQuipSpeech", Time = 10 },
+						},
+						-- Cerberus!!
+						{ Cue = "/VO/HadesField_0625", RequiredPlayed = { "/VO/HadesField_0628" } },
+						-- Cerberus!!
+						{ Cue = "/VO/HadesField_0626", RequiredPlayed = { "/VO/HadesField_0628" } },
+						-- Cerberus?!
+						{ Cue = "/VO/HadesField_0627", RequiredPlayed = { "/VO/HadesField_0628" } },
+						-- Now, Cerberus!!
+						{ Cue = "/VO/HadesField_0628" },
+					},
+					{
+						SkipAnim = true,
+						NoTarget = true,
+						{ Cue = "/VO/CerberusBarks2" },
+					}
+				},
+				{
+					RandomRemaining = true,
+					PreLineWait = 0.25,
+					UsePlayerSource = true,
+					RequiredFalseBossPhase = 3,
+					Cooldowns = {
+						{ Name = "MelinoeAnyQuipSpeech" },
+					},
+					{ Cue = "/VO/MelinoeField_0918", Text = "No! Heel! Stay!" },
+					{ Cue = "/VO/MelinoeField_0535", Text = "Wha...?" },
+					{ Cue = "/VO/MelinoeField_0536", Text = "What?!" },
+					{ Cue = "/VO/MelinoeField_0539", Text = "Blast!" },
+					{ Cue = "/VO/MelinoeField_0542", Text = "Oh good...!" },
+					{ Cue = "/VO/MelinoeField_3000", Text = "{#Emph}<Gasp>" },
+					{ Cue = "/VO/MelinoeField_0528", Text = "Uh-oh...!" },
+					{ Cue = "/VO/MelinoeField_3115", Text = "Here he comes...!", },
+					{ Cue = "/VO/MelinoeField_3116", Text = "Here he comes...", },
+					{
+						Cue = "/VO/MelinoeField_3033",
+						Text = "Hecuba, meet Cerberus!",
+						GameStateRequirements = {
+							{
+								PathTrue = { "GameState", "EnemyKills", "InfestedCerberus" }
+							},
+							{
+								Path = { "GameState", "EquippedFamiliar" },
+								IsAny = { "HoundFamiliar" },
+							},
+						},
+					},
+				},
+			},
+		},
 	},
 	ModsNikkelMHadesBiomesHadesTombstone = {
 		InheritFrom = { "BaseTrap" },
