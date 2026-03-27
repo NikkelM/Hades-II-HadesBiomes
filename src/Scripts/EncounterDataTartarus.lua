@@ -84,6 +84,14 @@ local encounterReplacements = {
 			{ FunctionName = "EncounterAudio" },
 			{ FunctionName = "BeginOpeningEncounter" },
 			{ FunctionName = "HandleEnemySpawns" },
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "DespawnThanatosIfActive",
+				Args = {
+					PlayBoonGiveAnimation = false,
+					PlayFarewellVoiceLines = true,
+					ExitDelay = 3.0,
+				},
+			},
 			{ FunctionName = "CheckForAllEnemiesDead" },
 			{ FunctionName = "PostCombatAudio" },
 		},
@@ -297,7 +305,7 @@ local encounterModifications = {
 		CountsForRoomEncounterDepth = true,
 	},
 	OpeningGenerated = {
-		LoadModdedVoiceBanks = { "Thanatos", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "ZagreusField" },
 		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
 		DifficultyModifier = -40,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
