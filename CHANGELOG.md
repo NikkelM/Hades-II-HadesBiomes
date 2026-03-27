@@ -10,15 +10,18 @@
 
 Other fixes and improvements:
 - You can now salute story NPCs you meet along your journey.
+- If Thanatos has no new unique dialogue when he visits you at the start of a run, you can now pick up the reward without speaking to him first.
 - Hades and Theseus will now react with specific voicelines for certain Gods when using Godsent Hex effects against them.
 - Hades will now react to going Dark using "Unseen Ire" in the fight against him.
 - Melinoë will now react to Hades calling Cerberus to his aid.
+- Updated the description text of "Final Expense" offered by Orpheus to make it clearer all shop items are always discounted.
 - Balancing: Elyisian Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Slightly reduced the chance for the "Popper" elite perk to appear.
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
 - Fixed: Some fog and branches flicker on a specific Elysium map.
+- Fixed: If the "Vow of Scars" is active and "HydraLite Gold" is offered by Patroclus, the number of locations the item will last is not shown.
 - Fixed: Some shop items in the Styx shop can clip behind the base they sit on.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.

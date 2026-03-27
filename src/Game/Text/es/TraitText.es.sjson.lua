@@ -207,7 +207,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
 	-- 	InheritFrom = "MusicMusicPlayerCharonShopThemeMusicPlayer",
 	-- 	Description =
-	-- 	"All items sold by {$Keywords.CharCharon} have a chance to cost less.",
+	-- 	"All items sold by {$Keywords.CharCharon} cost less.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoonDiscountStatDisplay",
@@ -227,7 +227,8 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait",
 		DisplayName = "Cancelador de Carros Ígneos",
-		Description = "Evita que los enemigos de tipo {$TooltipData.BlockedEnemyTypes[1]} aparezcan en los próximos {$Keywords.EncounterPlural}.",
+		Description =
+		"Evita que los enemigos de tipo {$TooltipData.BlockedEnemyTypes[1]} aparezcan en los próximos {$Keywords.EncounterPlural}.",
 	},
 	-- #endregion
 }

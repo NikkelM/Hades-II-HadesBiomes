@@ -1796,6 +1796,42 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		-- Bye, Zag.
 		{ Cue = "/VO/ThanatosField_0236" },
 	},
+	-- Subset of ThanatosFarewells for his version in RoomOpening, when he leaves after the player picks up the reward without speaking to him
+	ModsNikkelMHadesBiomes_ThanatosFarewellsRoomOpening = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.75,
+		ObjectType = "NPC_Thanatos_01",
+		Queue = "Always",
+		-- I have to get back.
+		{ Cue = "/VO/Thanatos_0052" },
+		-- Go on.
+		{ Cue = "/VO/Thanatos_0053" },
+		-- I'm going.
+		{ Cue = "/VO/Thanatos_0058" },
+		-- Be seeing you.
+		{ Cue = "/VO/Thanatos_0060",      RequiredTextLines = { "ThanatosGift05" } },
+		-- I've got to go.
+		{ Cue = "/VO/Thanatos_0061",      RequiredTextLines = { "ThanatosGift05" } },
+		-- See you.
+		{ Cue = "/VO/Thanatos_0062",      RequiredTextLines = { "ThanatosGift06" } },
+		-- I'm off.
+		{ Cue = "/VO/ThanatosField_0237", RequiredTextLines = { "ThanatosGift06" }, },
+		-- Well, I'm off.
+		{ Cue = "/VO/ThanatosField_0238" },
+		-- I should be getting back.
+		{ Cue = "/VO/ThanatosField_0240", RequiredTextLines = { "ThanatosGift08" }, },
+		-- You have this.
+		{ Cue = "/VO/ThanatosField_0241", RequiredTextLines = { "ThanatosGift09" }, },
+		-- Ungh, I'm late.
+		{ Cue = "/VO/ThanatosField_0244", RequiredTextLines = { "ThanatosGift03" }, },
+		-- I'm gone.
+		{ Cue = "/VO/ThanatosField_0245" },
+		-- Till next time.
+		{ Cue = "/VO/ThanatosField_0180", RequiredAnyTextLines = { "ThanatosGift09" } },
+		-- You have this.
+		{ Cue = "/VO/ThanatosField_0182", RequiredAnyTextLines = { "ThanatosGift10" } },
+	},
 	-- #endregion
 	-- #region Patroclus
 	PatroclusGreetingLines = {

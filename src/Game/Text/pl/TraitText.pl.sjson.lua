@@ -207,7 +207,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
 	-- 	InheritFrom = "MusicMusicPlayerCharonShopThemeMusicPlayer",
 	-- 	Description =
-	-- 	"All items sold by {$Keywords.CharCharon} have a chance to cost less.",
+	-- 	"All items sold by {$Keywords.CharCharon} cost less.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoonDiscountStatDisplay",
@@ -227,7 +227,8 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait",
 		DisplayName = "Dymisja Płomiennych Kół",
-		Description = "Sprawia, że w kolejnych {$Keywords.EncounterPlural} nie pojawi się ten wróg: {$TooltipData.BlockedEnemyTypes[1]}.",
+		Description =
+		"Sprawia, że w kolejnych {$Keywords.EncounterPlural} nie pojawi się ten wróg: {$TooltipData.BlockedEnemyTypes[1]}.",
 	},
 	-- #endregion
 }

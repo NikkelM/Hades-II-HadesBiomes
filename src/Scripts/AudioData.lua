@@ -281,6 +281,8 @@ game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines = game.GlobalVoiceLines.Thana
 		mod.GlobalVoiceLines.ThanatosDeathTauntVoiceLines
 game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines = game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines or
 		mod.GlobalVoiceLines.ThanatosSpecialExitVoiceLines
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_ThanatosFarewellsRoomOpening = game.GlobalVoiceLines.ModsNikkelMHadesBiomes_ThanatosFarewellsRoomOpening or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_ThanatosFarewellsRoomOpening
 
 game.GlobalVoiceLines.PatroclusGreetingLines = game.GlobalVoiceLines.PatroclusGreetingLines or
 		mod.GlobalVoiceLines.PatroclusGreetingLines

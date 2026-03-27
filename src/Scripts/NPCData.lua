@@ -725,6 +725,10 @@ local npcModifications = {
 												PortraitExitAnimation = "Portrait_Thanatos_Pleased_01_Exit",
 												PreLineWait = 0.5,
 												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+												PostLineFunctionArgs = {
+													PlayBoonGiveAnimation = true,
+													ExitDelay = 3.0,
+												},
 												Text =
 												"I... oh. I see. I understand. You're my dear friend, as well. Though we have done an awful lot to jeopardize that lately, haven't we? Look, take care, Zag. Be seeing you."
 											},
@@ -805,6 +809,10 @@ local npcModifications = {
 												Speaker = "CharProtag",
 												SkipContextArt = true,
 												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+												PostLineFunctionArgs = {
+													PlayBoonGiveAnimation = true,
+													ExitDelay = 3.0,
+												},
 												Text = "It is. It is."
 											},
 										},
@@ -901,6 +909,10 @@ local npcModifications = {
 												PortraitExitAnimation = "Portrait_Thanatos_Pleased_01_Exit",
 												PreLineWait = 0.5,
 												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+												PostLineFunctionArgs = {
+													PlayBoonGiveAnimation = true,
+													ExitDelay = 3.0,
+												},
 												Text = "You're certain? Well... I understand. I'd best get back to my responsibilities for now."
 											},
 											{
@@ -1000,6 +1012,10 @@ local npcModifications = {
 												Speaker = "CharProtag",
 												SkipContextArt = true,
 												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
+												PostLineFunctionArgs = {
+													PlayBoonGiveAnimation = true,
+													ExitDelay = 3.0,
+												},
 												Text = "It is. It is."
 											},
 										},
@@ -1708,11 +1724,18 @@ local npcChoiceMappings = {
 			-- Thanatos should leave after the conversation in RoomOpening, and spawn the reward (this will override any existing ThanatosExit function call)
 			InteractTextLineSets = {
 				PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
-				PostLineFunctionArgs = mod.NilValue,
+				PostLineFunctionArgs = {
+					PlayBoonGiveAnimation = true,
+					ExitDelay = 3.0,
+				},
 			},
 			RepeatableTextLineSets = {
 				PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosRoomOpeningConversationDone",
-				PostLineFunctionArgs = mod.NilValue,
+				PostLineFunctionArgs = {
+					-- The boon is already there for repeatable textlines
+					PlayBoonGiveAnimation = false,
+					ExitDelay = 1.5,
+				},
 			},
 			-- Thanatos should leave if he has no more dialogue after being gifted
 			GiftTextLineSets = {
