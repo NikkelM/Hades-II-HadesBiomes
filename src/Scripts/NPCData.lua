@@ -290,6 +290,14 @@ local npcModifications = {
 			SisyphusAboutKeepsake02 = { RequiredTrait = mod.SharedKeepsakePortSisyphusKeepsakeTrait, },
 		},
 		GiftTextLineSets = {
+			SisyphusGift01 = {
+				UnfilledIcon = "EmptyHeartWithGiftIcon",
+				FilledIcon = "FilledHeartWithGiftIcon",
+			},
+			SisyphusGift02 = {
+				UnfilledIcon = "EmptyHeartWithProphecyIcon",
+				FilledIcon = "FilledHeartWithProphecyIcon",
+			},
 			SisyphusGift07_A = {
 				GameStateRequirements = {
 					{
@@ -399,6 +407,14 @@ local npcModifications = {
 			},
 		},
 		GiftTextLineSets = {
+			EurydiceGift01 = {
+				UnfilledIcon = "EmptyHeartWithGiftIcon",
+				FilledIcon = "FilledHeartWithGiftIcon",
+			},
+			EurydiceGift02 = {
+				UnfilledIcon = "EmptyHeartWithProphecyIcon",
+				FilledIcon = "FilledHeartWithProphecyIcon",
+			},
 			EurydiceGift07 = {
 				GameStateRequirements = {
 					{
@@ -496,6 +512,14 @@ local npcModifications = {
 			PatroclusAboutKeepsake02 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
 		},
 		GiftTextLineSets = {
+			PatroclusGift01 = {
+				UnfilledIcon = "EmptyHeartWithGiftIcon",
+				FilledIcon = "FilledHeartWithGiftIcon",
+			},
+			PatroclusGift02 = {
+				UnfilledIcon = "EmptyHeartWithProphecyIcon",
+				FilledIcon = "FilledHeartWithProphecyIcon",
+			},
 			PatroclusGift07_A = {
 				GameStateRequirements = {
 					{
@@ -1142,6 +1166,10 @@ local npcModifications = {
 			},
 		},
 		GiftTextLineSets = {
+			ThanatosGift01 = {
+				UnfilledIcon = "EmptyHeartWithGiftIcon",
+				FilledIcon = "FilledHeartWithGiftIcon",
+			},
 			ThanatosGift04 = {
 				[2] = {
 					-- Manually add the alternate to the TextLineRecord to not break the NarrativeData/locked hint ordering in the Codex
@@ -1171,6 +1199,8 @@ local npcModifications = {
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
 			ThanatosGift08 = {
+				StartBecomingCloserTrack = true,
+				HintId = "Codex_GrowingCloser01",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
@@ -1181,8 +1211,6 @@ local npcModifications = {
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
 			ThanatosGift10 = {
-				StartBecomingCloserTrack = true,
-				HintId = "Codex_GrowingCloser01",
 				CompletedHintId = "ModsNikkelMHadesBiomes_Codex_BondForgedThanatos",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
@@ -1486,6 +1514,14 @@ local npcModifications = {
 			},
 		},
 		GiftTextLineSets = {
+			OrpheusGift01 = {
+				UnfilledIcon = "EmptyHeartWithGiftIcon",
+				FilledIcon = "FilledHeartWithGiftIcon",
+			},
+			OrpheusGift02 = {
+				UnfilledIcon = "EmptyHeartWithProphecyIcon",
+				FilledIcon = "FilledHeartWithProphecyIcon",
+			},
 			OrpheusGift04 = {
 				[2] = {
 					-- Manually add the alternate to the TextLineRecord to not break the NarrativeData/locked hint ordering in the Codex
@@ -1636,18 +1672,101 @@ local npcModifications = {
 	NPC_FurySister_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		SubtitleColor = game.Color.MegVoice,
+		AnimOffsetZ = 240,
 		ActivateRequirements = {
 			RequiredAnyKillsThisRun = mod.NilValue,
+			-- TODO: Make sure to uncomment before releasing
+			-- {
+			-- 	Path = { "CurrentRun", "EnemyKills" },
+			-- 	HasAny = { "Harpy", "Harpy2" }
+			-- },
+			-- {
+			-- 	-- Can't appear on the first run
+			-- 	Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+			-- 	Comparison = ">=",
+			-- 	Value = 1,
+			-- },
+		},
+		SpecialInteractFunctionName = "SpecialInteractSalute",
+		SpecialInteractGameStateRequirements = {
 			{
-				Path = { "CurrentRun", "EnemyKills" },
-				HasAny = { "Harpy", "Harpy2" }
+				PathTrue = { "GameState", "TextLinesRecord", "MegaeraGift01" },
 			},
+			-- TODO: Any voicelines she disappears after?
+		},
+		SpecialInteractCooldown = 60,
+		InteractVoiceLines = {
+			{ GlobalVoiceLines = "ModsNikkelMHadesBiomes_SaluteVoiceLines" },
 			{
-				-- Can't appear on the first run
-				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
-				Comparison = ">=",
-				Value = 1,
+				RandomRemaining = true,
+				PreLineWait = 0.3,
+				ObjectType = "NPC_FurySister_01",
+				PreLineAnim = "FuryIdleInHouseFidgetGreeting", -- TODO: Test
+				-- TODO: Voicelines
+				-- Hello...!
+				-- { Cue = "/VO/Orpheus_0060", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0060" }, },
+				-- -- Hello...
+				-- { Cue = "/VO/Orpheus_0061", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0061" }, },
+				-- -- Hmm.
+				-- { Cue = "/VO/Orpheus_0062", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0062" }, },
+				-- -- Ah.
+				-- { Cue = "/VO/Orpheus_0063", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0063" }, },
+				-- -- Oh, um, hello.
+				-- { Cue = "/VO/Orpheus_0064", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0064" }, },
+				-- -- Hello there.
+				-- { Cue = "/VO/Orpheus_0065", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0065" }, },
+				-- -- Hello my friend.
+				-- { Cue = "/VO/Orpheus_0093", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0093" }, RequiredTextLines = { "OrpheusGift02" }, },
+				-- -- Hello friend.
+				-- { Cue = "/VO/Orpheus_0094", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0094" }, RequiredTextLines = { "OrpheusGift06" }, },
+				-- -- Greetings.
+				-- { Cue = "/VO/Orpheus_0095", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0095" }, RequiredTextLines = { "OrpheusGift02" }, },
 			},
+		},
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		RepulseOnMeleeInvulnerableHit = 150,
+		-- TODO: Intermission scenes (same for InteractTextLineSets)
+		GiftTextLineSets = {
+			MegaeraGift01 = {
+				UnfilledIcon = "EmptyHeartWithGiftIcon",
+				FilledIcon = "FilledHeartWithGiftIcon",
+			},
+			MegaeraGift07 = {
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "TextLinesRecord", },
+						-- TODO: Bedroom scenes as for Thanatos, Meg has three (plus variants)
+						HasAny = { "MegaeraBedroom02", "MegaeraBedroom02B" }
+					},
+				},
+				LockedHintId = "ModsNikkelMHadesBiomes_Codex_MegaeraUnlockHint01",
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			MegaeraGift08 = {
+				StartBecomingCloserTrack = true,
+				HintId = "Codex_GrowingCloser01",
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			MegaeraGift09 = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			MegaeraGift10 = {
+				CompletedHintId = "ModsNikkelMHadesBiomes_Codex_BondForgedMegaera",
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+				[9] = { PostLineFunctionArgs = { Icon = mod.SharedKeepsakePortMegaeraKeepsakeBondIcon }, },
+			},
+		},
+		MissingDistanceTrigger = mod.NilValue,
+		-- TODO: Copied from ???
+		OnHitVoiceLines = {
 		},
 	},
 }

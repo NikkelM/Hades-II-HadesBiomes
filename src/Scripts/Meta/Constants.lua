@@ -473,6 +473,8 @@ mod.SharedKeepsakePortThanatosKeepsakeTrait = "zannc-SharedKeepsakePort-PerfectC
 mod.SharedKeepsakePortThanatosKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Thanatos"
 mod.SharedKeepsakePortOrpheusKeepsakeTrait = "zannc-SharedKeepsakePort-DistanceDamageKeepsake"
 mod.SharedKeepsakePortOrpheusKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Orpheus"
+mod.SharedKeepsakePortMegaeraKeepsakeTrait = "zannc-SharedKeepsakePort-LowHealthDamageKeepsake"
+mod.SharedKeepsakePortMegaeraKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Megaera"
 
 mod.SharedKeepsakePortKeepsakeTraitNames = {
 	mod.SharedKeepsakePortSisyphusKeepsakeTrait,
@@ -480,6 +482,7 @@ mod.SharedKeepsakePortKeepsakeTraitNames = {
 	mod.SharedKeepsakePortPatroclusKeepsakeTrait,
 	mod.SharedKeepsakePortThanatosKeepsakeTrait,
 	mod.SharedKeepsakePortOrpheusKeepsakeTrait,
+	mod.SharedKeepsakePortMegaeraKeepsakeTrait,
 }
 
 -- Not actually a constant, will be populated in mod.AddNarrativeDataEntries()
@@ -512,10 +515,13 @@ mod.FormalNPCRelationships = {
 	"NPC_Patroclus_01",
 	"NPC_Thanatos_Field_01",
 	"NPC_Orpheus_01",
+	-- "NPC_Dusa_01",
+	-- "NPC_Achilles_01",
 }
 
 mod.InformalNPCRelationshipsF = {
 	"ModsNikkelMHadesBiomes_NPC_Persephone_01",
+	"NPC_FurySister_01",
 }
 
 mod.InformalNPCRelationshipsM = {

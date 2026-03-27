@@ -1486,7 +1486,7 @@ Add the following after the last entry in the list, take care of the Angle and L
 	"Active": false,
 	"AllowMovementReaction": false,
 	"Ambient": -1.0,
-	"Angle": 250,
+	"Angle": 285.0,
 	"AttachToID": 0,
 	"AttachedIDs": [],
 	"CausesOcculsion": false,

@@ -7,6 +7,8 @@ local hadesNPCNames = {
 	"NPC_Patroclus_01",
 	"NPC_Thanatos_01",
 	"NPC_FurySister_01",
+	-- "NPC_Achilles_01",
+	-- "NPC_Dusa_01",
 	"ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 	"ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
 	"ModsNikkelMHadesBiomes_NPC_Persephone_01",
@@ -70,7 +72,21 @@ local hadesNPCGiftLinePriorities = {
 		"ThanatosGift08",
 		"ThanatosGift09",
 		"ThanatosGift10",
-	}
+	},
+	NPC_FurySister_01 = {
+		"MegaeraGift01",
+		"MegaeraGift02",
+		"MegaeraGift03",
+		"MegaeraGift04",
+		"MegaeraGift05",
+		"MegaeraGift06",
+		"MegaeraGift07",
+		"MegaeraGift08",
+		"MegaeraGift09",
+		"MegaeraGift10",
+	},
+	-- NPC_Achilles_01 = {},
+	-- NPC_Dusa_01 = {},
 }
 -- Create dummy entries to allow the relationship bar to be built in the Codex
 for _, npcName in ipairs(hadesNPCNames) do
