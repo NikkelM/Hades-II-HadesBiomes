@@ -335,8 +335,12 @@ local newTraitData = {
 		CustomStatLinesWithShrineUpgrade = {
 			ShrineUpgradeName = "HealingReductionShrineUpgrade",
 			StatLines = {
+				"StoreUsesRemainingDisplay2",
 				"HealingReductionNotice",
 			},
+		},
+		StatLines = {
+			"StoreUsesRemainingDisplay2",
 		},
 	},
 	ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus = {
