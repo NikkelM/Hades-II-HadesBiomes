@@ -1675,7 +1675,6 @@ local npcModifications = {
 		AnimOffsetZ = 240,
 		ActivateRequirements = {
 			RequiredAnyKillsThisRun = mod.NilValue,
-			-- TODO: Make sure to uncomment before releasing
 			{
 				Path = { "CurrentRun", "EnemyKills" },
 				HasAny = { "Harpy", "Harpy2" }
@@ -1686,8 +1685,7 @@ local npcModifications = {
 				Comparison = ">",
 				Value = 1,
 			},
-			-- Can't appear if she left after a dialogue (e.g. romance)
-			-- Set in game.ExitNPCPresentation()
+			-- Can't appear if she left after a dialogue (e.g. romance), set in game.ExitNPCPresentation()
 			{
 				PathFalse = { "CurrentRun", "ModsNikkelMHadesBiomesExitNPCRecord", "NPC_FurySister_01" },
 			},
