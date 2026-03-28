@@ -1061,6 +1061,7 @@ local npcModifications = {
 				[2] = {
 					PostLineThreadedFunctionName = mod.NilValue,
 					PostLineFunctionName = _PLUGIN.guid .. "." .. "TimePassesPresentation",
+					PostLineFunctionArgs = { IsLoungeRevelryPresentation = true, PreTextWait = 0.75, Sound2 = "/EmptyCue" },
 				},
 				[3] = {
 					InterSceneWaitTime = mod.NilValue,
@@ -1541,7 +1542,7 @@ local npcModifications = {
 			OrpheusGift05 = {
 				[2] = {
 					PostLineFunctionName = _PLUGIN.guid .. "." .. "TimePassesPresentation",
-					PostLineFunctionArgs = { PreTextWait = 0.75 },
+					PostLineFunctionArgs = { IsLoungeRevelryPresentation = true, PreTextWait = 0.75, Sound2 = "/EmptyCue" },
 				},
 				[3] = {
 					FadeOutTime = mod.NilValue,
@@ -1676,16 +1677,16 @@ local npcModifications = {
 		ActivateRequirements = {
 			RequiredAnyKillsThisRun = mod.NilValue,
 			-- TODO: Make sure to uncomment before releasing
-			-- {
-			-- 	Path = { "CurrentRun", "EnemyKills" },
-			-- 	HasAny = { "Harpy", "Harpy2" }
-			-- },
-			-- {
-			-- 	-- Can't appear on the first run
-			-- 	Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
-			-- 	Comparison = ">=",
-			-- 	Value = 1,
-			-- },
+			{
+				Path = { "CurrentRun", "EnemyKills" },
+				HasAny = { "Harpy", "Harpy2" }
+			},
+			-- Can't appear the first time you reach Styx (this is incremented before the check, which is the reason for the >1 check)
+			{
+				Path = { "GameState", "RoomsEntered", "D_Hub" },
+				Comparison = ">",
+				Value = 1,
+			},
 		},
 		SpecialInteractFunctionName = "SpecialInteractSalute",
 		SpecialInteractGameStateRequirements = {
@@ -1740,6 +1741,48 @@ local npcModifications = {
 		},
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		RepulseOnMeleeInvulnerableHit = 150,
+		InteractTextLineSets = {
+			MegaeraMeeting01_Alt = {
+				TeleportToId = mod.NilValue,
+			},
+			MegaeraMeeting01_Alt_B = {
+				TeleportToId = mod.NilValue,
+			},
+			MegaeraMeeting03_Alt = {
+				TeleportToId = mod.NilValue,
+			},
+			MegaeraMeeting04_Alt = {
+				TeleportToId = mod.NilValue,
+			},
+			MegaeraPactProgress01_B = {
+				TeleportToId = mod.NilValue,
+			},
+			MegaeraRunProgress01_Alt = {
+				TeleportToId = mod.NilValue,
+			},
+			MegaeraRunCleared01_Alt = {
+				TeleportToId = mod.NilValue,
+			},
+			MegaeraAboutPersephoneMeeting01_Alt = {
+				TeleportToId = mod.NilValue,
+			},
+			-- Has a "Continued" variant that usually is eligible after this one plays, but the prioritization doesn't pick it up, so we just disable it
+			MegaeraMeeting02 = {
+				UseableOffSource = true,
+			},
+			-- Has a "Continued" variant that usually is eligible after this one plays, but the prioritization doesn't pick it up, so we just disable it
+			MegaeraMeeting04 = {
+				UseableOffSource = true,
+			},
+
+			-- RepeatableTextLineSets
+			MegChat02_Alt = {
+				TeleportToId = mod.NilValue,
+			},
+			MegChat03_Alt = {
+				TeleportToId = mod.NilValue,
+			},
+		},
 		-- TODO: Intermission scenes (same for InteractTextLineSets)
 		GiftTextLineSets = {
 			MegaeraGift01 = {
@@ -1760,13 +1803,13 @@ local npcModifications = {
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
 			MegaeraGift08 = {
-				StartBecomingCloserTrack = true,
-				HintId = "Codex_GrowingCloser01",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
 			},
 			MegaeraGift09 = {
+				StartBecomingCloserTrack = true,
+				HintId = "Codex_GrowingCloser01",
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
@@ -1776,6 +1819,19 @@ local npcModifications = {
 				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
 				FilledIcon = "FilledHeartWithAmbrosiaIcon",
 				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+				[4] = {
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "TimePassesPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+					PostLineFunctionArgs = { IsLoungeRevelryPresentation = true, PreTextWait = 0.75 },
+				},
+				[5] = {
+					FadeOutTime = mod.NilValue,
+					FullFadeTime = mod.NilValue,
+					FadeInTime = mod.NilValue,
+					PreLineWait = mod.NilValue,
+					FadeInSound = mod.NilValue,
+					InterSceneWaitTime = mod.NilValue,
+				},
 				[9] = { PostLineFunctionArgs = { Icon = mod.SharedKeepsakePortMegaeraKeepsakeBondIcon }, },
 			},
 		},
@@ -2049,11 +2105,13 @@ local npcChoiceMappings = {
 		AlwaysReplaceKeysIfExist = {
 			RequiresRunCleared = "RequiresLastRunCleared",
 			RequiresRunNotCleared = "RequiresLastRunNotCleared",
-			RequiredTextLinesThisRun = "RequiredTextLinesLastRun",
-			RequiredFalseTextLinesThisRun = "RequiredFalseTextLinesLastRun",
-			RequiredEncounterThisRun = "RequiredEncounterLastRun",
-			RequiredKillsThisRun = "RequiredKillsLastRun",
-			RequiredFalseDeathEncounters = "RequiredFalseDeathEncountersThanatos",
+			RequiredTextLinesThisRun = "RequiredTextLinesLastRun",              -- TODO: Validate if it should be this run
+			RequiredFalseTextLinesThisRun = "RequiredFalseTextLinesLastRun",    -- TOOD: Validate if it should be this run
+			RequiredEncounterThisRun = "RequiredEncounterLastRun",              -- TODO: Validate if it should be this run
+			RequiredKillsThisRun = "RequiredKillsLastRun",                      -- TODO: Validate
+			RequiredFalseDeathEncounters = "RequiredFalseDeathEncountersThanatos", -- TODO: Validate
+			RequiredRoomThisRun = "RequiredRoomLastRun",
+			RequiredFalseSeenRoomThisRun = "RequiredFalseSeenRoomLastRun",
 		},
 	},
 }

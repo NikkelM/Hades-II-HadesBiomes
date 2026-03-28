@@ -344,6 +344,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		RequiredFalseSeenRooms = "table",
 		RequiredFalseSeenRoomThisRun = "string",
 		RequiredFalseSeenRoomsThisRun = "table",
+		RequiredFalseSeenRoomLastRun = "string",
 		RequiredSeenRoomsBeforeThisRun = "table",
 		RequiredFalseSeenRoomsBeforeThisRun = "table",
 		RequiredMinTimesSeenRoom = "string",
@@ -396,7 +397,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			AphroditeShoutTrait = "TransformAphroditeTalent",
 			AresShoutTrait = "MoonBeamAresTalent",
 			DemeterShoutTrait = "TimeSlowDemeterTalent",
-			-- Unused H2 traits: LaserApolloTalent, LeapHephaestusTalent, SummonHeraTalent, MeteorHestiaTalent, 
+			-- Unused H2 traits: LaserApolloTalent, LeapHephaestusTalent, SummonHeraTalent, MeteorHestiaTalent,
 			-- Unused H1 shouts: HadesShoutTrait, AthenaShoutTrait, ArtemisShoutTrait, DionysusShoutTrait
 		}
 		if shoutTraitMappings[requirements.RequiredTrait] ~= nil then
@@ -854,6 +855,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			if mod.HasSeenRoomInRun(game.CurrentRun, roomName) then
 				return false
 			end
+		end
+	end
+
+	-- For Megaera (D_Hub version)
+	if requirements.RequiredFalseSeenRoomLastRun ~= nil then
+		if mod.HasSeenRoomInRun(prevRun, requirements.RequiredFalseSeenRoomLastRun) then
+			return false
 		end
 	end
 
