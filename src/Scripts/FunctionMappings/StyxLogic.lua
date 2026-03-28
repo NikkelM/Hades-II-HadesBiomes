@@ -203,7 +203,7 @@ end
 function game.ExitNPCPresentation(source, args)
 	AddInputBlock({ Name = "NPCExit" })
 	game.wait(args.InitialWaitTime or 0)
-	FadeOut({ Color = Color.Black, Duration = args.FadeOutTime or 0.5 })
+	FadeOut({ Color = game.Color.Black, Duration = args.FadeOutTime or 0.5 })
 	PlaySound({ Name = args.InitialExitSound or "/EmptyCue", Delay = 0.7 })
 	game.wait((args.FadeOutTime or 0.5) + 0.3)
 	if args.DeleteId ~= nil then
@@ -226,7 +226,7 @@ function game.ExitNPCPresentation(source, args)
 		PlaySound({ Name = "/Leftovers/SFX/BeaconTeleportSFX2", Delay = 2.2 })
 	end
 
-	LockCamera({ Id = CurrentRun.Hero.ObjectId })
+	LockCamera({ Id = game.CurrentRun.Hero.ObjectId })
 	Teleport({ Id = args.ObjectId or source.ObjectId, DestinationId = args.TeleportToId })
 	if args.AltObjectId ~= nil then
 		Teleport({ Id = args.AltObjectId, DestinationId = args.TeleportToId })

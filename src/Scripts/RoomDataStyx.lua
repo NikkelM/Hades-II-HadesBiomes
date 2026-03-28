@@ -441,8 +441,7 @@ local roomReplacements = {
 				PreLineWait = 1.35,
 				PlayOnceFromTableThisRun = true,
 				RequiredRoomThisRun = "D_Reprieve01",
-				SuccessiveChanceToPlay = 1, -- 0.33,
-
+				SuccessiveChanceToPlay = 0.33,
 				{ Cue = "/VO/MelinoeField_0620", Text = "Now to get out of here." },
 				{ Cue = "/VO/MelinoeField_0623", Text = "Time to go." },
 				{ Cue = "/VO/MelinoeField_0624", Text = "Finished here." },
@@ -455,9 +454,8 @@ local roomReplacements = {
 				PreLineWait = 1.35,
 				RequiredRoomThisRun = "D_Reprieve01",
 				PlayOnceFromTableThisRun = true,
-				SuccessiveChanceToPlayAll = 1, --0.33,
+				SuccessiveChanceToPlayAll = 0.33,
 				RequiredMaxDoorsClosedInRoom = 4,
-
 				{ Cue = "/VO/MelinoeField_2115", Text = "More to discover...", },
 				{ Cue = "/VO/MelinoeField_1077", Text = "There's more to find here still." },
 				{ Cue = "/VO/MelinoeField_1080", Text = "Still Boons and such to find." },
@@ -472,7 +470,7 @@ local roomReplacements = {
 				PreLineWait = 1.35,
 				RequiredRoomThisRun = "D_Hub",
 				RequiredFalseSeenRoomThisRun = "D_Reprieve01",
-				SuccessiveChanceToPlay = 1, --0.25,
+				SuccessiveChanceToPlay = 0.25,
 				{ Cue = "/VO/MelinoeField_0374", Text = "They're trying to slow me down..." },
 				{ Cue = "/VO/MelinoeField_0511", Text = "What next..." },
 				{ Cue = "/VO/MelinoeField_0513", Text = "Where next..." },
@@ -503,9 +501,22 @@ local roomReplacements = {
 						Path = { "CurrentRun", "CurrentRoom", "TimesVisited" },
 						Comparison = "<=",
 						Value = 1,
-					}
+					},
+					-- There is no Megaera "Bedroom" scene queued
+					{
+						FunctionName = "RequiredQueuedTextLine",
+						FunctionArgs = {
+							IsNone = {
+								"ModsNikkelMHadesBiomes_MegaeraBedroom01_Trigger",
+								"ModsNikkelMHadesBiomes_MegaeraBedroom02_Trigger",
+								"ModsNikkelMHadesBiomes_MegaeraBedroom02B_Trigger",
+								"ModsNikkelMHadesBiomes_BecameCloseWithMegaera01_Trigger",
+								"ModsNikkelMHadesBiomes_BecameCloseWithMegaera01_B_Trigger",
+							},
+						},
+					},
 				},
-				SuccessiveChanceToPlayAll = 1, -- 0.33,
+				SuccessiveChanceToPlayAll = 0.33,
 
 				{ Cue = "/VO/MelinoeField_0368", Text = "Best have a look around..." },
 				{ Cue = "/VO/MelinoeField_2117", Text = "Few things to find..." },

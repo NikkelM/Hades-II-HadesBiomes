@@ -672,7 +672,6 @@ local npcModifications = {
 					RequiredFalseTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B", "BecameCloseWithMegaera01Meg_GoToHer" },
 					RequiredFalseTextLinesLastRun = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B", "BecameCloseWithDusa01", "Ending01" },
 				},
-
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
 				OnQueuedFunctionArgs = {
 					PostTriggerAnimation = "ThanatosIdleInhouseFidget_HairFlick",
@@ -1693,7 +1692,6 @@ local npcModifications = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "MegaeraGift01" },
 			},
-			-- TODO: Any voicelines she disappears after?
 		},
 		SpecialInteractCooldown = 60,
 		InteractVoiceLines = {
@@ -1746,6 +1744,651 @@ local npcModifications = {
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		RepulseOnMeleeInvulnerableHit = 150,
 		InteractTextLineSets = {
+			-- #region Moved from DeathLoopData - Romance
+			-- TODO: Dialogue Backgrounds, if we get any
+			-- Meg (Bedroom) / Meg in Bedroom / Bedroom Scenes
+			ModsNikkelMHadesBiomes_MegaeraBedroom01_Trigger = {
+				SuperPriority = true,
+				PlayOnce = true,
+				GiftableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalk",
+				GameStateRequirements = {
+					RequiredFalseTextLinesLastRun = { "Ending01" },
+					RequiredAnyKillsThisRun = { "Harpy", "Harpy2" },
+					RequiredTextLines = { "MegaeraGift04" },
+					RequiredFalseTextLines = { "MegaeraBedroom01" },
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = {
+					PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
+					WithinDistance = 850,
+					FunctionName = _PLUGIN.guid .. "." .. "SurpriseNPCPresentation",
+					Args = {
+						VoiceLines = {
+							Queue = "Interrupt",
+							{
+								PreLineWait = 0.35,
+								BreakIfPlayed = true,
+								PostLineWait = 0.65,
+								ObjectType = "NPC_FurySister_01",
+								-- Hmm.
+								{ Cue = "/VO/Megaera_30061" },
+							},
+						},
+						TextLineSet = {
+							MegaeraBedroom01 = {
+								Name = "MegaeraBedroom01",
+								-- Requirements are above
+								GameStateRequirements = {},
+								{
+									-- TODO: Get voicelines
+									Cue = "/VO/ZagreusHome_0754",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
+									Speaker = "CharProtag",
+									PreLineAngleHeroTowardTargetId = 390082,
+									Text =
+									"Meg. {#DialogueItalicFormat}Oh{#Prev}. I was not expecting company. Were you, just, casually snooping, or... is there something I can help you with?"
+								},
+								{
+									Cue = "/VO/Megaera_30010",
+									PostLineFunctionName = "ExitNPCPresentation",
+									PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+									PortraitExitAnimation = "Portrait_FurySister01_Standoffish_01_Exit",
+									PreLineWait = 0.35,
+									PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+									Text =
+									"...I was just leaving, Zagreus. Happened to be in the area, no thanks to you, and thought I'd go retrieve the last of my possessions. I have to say, you've really let this place go to hell."
+								},
+								{
+									Cue = "/VO/ZagreusHome_0755",
+									PreLineWait = 1.85,
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
+									Speaker = "CharProtag",
+									Text =
+									"...She left. Great. Wonderful! I guess we'll just go back to killing each other repeatedly, then."
+								},
+							},
+						},
+					},
+				},
+			},
+			-- Meg (Bedroom) / Meg in Bedroom / Bedroom Scenes
+			-- variant below for if you've cleared a run already
+			ModsNikkelMHadesBiomes_MegaeraBedroom02_Trigger = {
+				SuperPriority = true,
+				PlayOnce = true,
+				GiftableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalk",
+				GameStateRequirements = {
+					RequiredTextLines = { "Fury2FirstAppearance", "Fury3FirstAppearance" },
+					RequiredAnyTextLines = { "MegaeraBuildingTrust01", "MegaeraBuildingTrust01_B" },
+					RequiredFalseTextLinesLastRun = { "Ending01", "MegaeraBuildingTrust01", "MegaeraBuildingTrust01_B" },
+					RequiredFalseTextLines = { "MegaeraBedroom02", "MegaeraBedroom02B" },
+					RequiredRunsCleared = 0,
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = {
+					PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
+					WithinDistance = 850,
+					FunctionName = _PLUGIN.guid .. "." .. "SurpriseNPCPresentation",
+					Args = {
+						VoiceLines = {
+							Queue = "Interrupt",
+							{
+								PreLineWait = 0.35,
+								BreakIfPlayed = true,
+								PostLineWait = 0.65,
+								ObjectType = "NPC_FurySister_01",
+								-- So...
+								{ Cue = "/VO/MegaeraField_0407" },
+							},
+						},
+						TextLineSet = {
+							MegaeraBedroom02 = {
+								Name = "MegaeraBedroom02",
+								-- Requirements are above
+								GameStateRequirements = {},
+								{
+									Cue = "/VO/ZagreusHome_0759",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
+									Speaker = "CharProtag",
+									PreLineAnim = "ZagreusTalkEmpathyStart",
+									PreLineAnimTarget = "Hero",
+									PostLineAnim = "ZagreusTalkEmpathy_Return",
+									PostLineAnimTarget = "Hero",
+									PreLineAngleHeroTowardTargetId = 390082,
+									Text = "Forget another something in my bedchambers, there, Meg?"
+								},
+								{
+									Cue = "/VO/Megaera_30090",
+									Text =
+									"No. We need to talk, again. My sisters are involved now, in all this. You've really stirred up quite a mess."
+								},
+								{
+									Cue = "/VO/ZagreusHome_0760",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Serious_01",
+									Speaker = "CharProtag",
+									Text =
+									"I'm sorry. My mother's out there, somewhere. I won't rest until I can find her. You wouldn't understand."
+								},
+								{
+									Cue = "/VO/Megaera_30091",
+									Text =
+									"You wouldn't know. What I'm trying to say is... with my sisters involved, it changes things. Takes some of the pressure off of me."
+								},
+								{
+									Cue = "/VO/ZagreusHome_0761",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Serious_01",
+									Speaker = "CharProtag",
+									PreLineAnim = "ZagreusTalkDenialStart",
+									PreLineAnimTarget = "Hero",
+									PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+									PostLineAnimTarget = "Hero",
+									Text = "What are you saying?"
+								},
+								{
+									Cue = "/VO/Megaera_30092",
+									PostLineFunctionName = "ExitNPCPresentation",
+									PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+									PortraitExitAnimation = "Portrait_FurySister01_Standoffish_01_Exit",
+									Text =
+									"I'm saying... I know you need to find your mother, Zagreus. I have my part to play in all of this, but let me see what I can do, if anything."
+								},
+								{
+									Cue = "/VO/ZagreusHome_1354",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
+									Speaker = "CharProtag",
+									PreLineWait = 1.85,
+									Text = "Meg...! She... {#DialogueItalicFormat}ah{#Prev}."
+								},
+							},
+						},
+					},
+				},
+			},
+			ModsNikkelMHadesBiomes_MegaeraBedroom02B_Trigger = {
+				SuperPriority = true,
+				PlayOnce = true,
+				GiftableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalk",
+				GameStateRequirements = {
+					RequiredTextLines = { "Fury2FirstAppearance", "Fury3FirstAppearance" },
+					-- TODO: Check requirements for building trust voicelines
+					RequiredAnyTextLines = { "MegaeraBuildingTrust01", "MegaeraBuildingTrust01_B" },
+					RequiredFalseTextLines = { "MegaeraBedroom02", "MegaeraBedroom02B" },
+					RequiredMinRunsCleared = 1,
+					RequiredFalseTextLinesLastRun = { "Ending01", "MegaeraBuildingTrust01", "MegaeraBuildingTrust01_B" },
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = {
+					PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
+					WithinDistance = 850,
+					FunctionName = _PLUGIN.guid .. "." .. "SurpriseNPCPresentation",
+					Args = {
+						VoiceLines = {
+							Queue = "Interrupt",
+							{
+								PreLineWait = 0.35,
+								BreakIfPlayed = true,
+								PostLineWait = 0.65,
+								ObjectType = "NPC_FurySister_01",
+								-- So...
+								{ Cue = "/VO/MegaeraField_0407" },
+							},
+						},
+						TextLineSet = {
+							MegaeraBedroom02B = {
+								Name = "MegaeraBedroom02B",
+								-- Requirements are above
+								GameStateRequirements = {},
+								{
+									Cue = "/VO/ZagreusHome_0759",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
+									Speaker = "CharProtag",
+									PreLineAnim = "ZagreusTalkEmpathyStart",
+									PreLineAnimTarget = "Hero",
+									PostLineAnim = "ZagreusTalkEmpathy_Return",
+									PostLineAnimTarget = "Hero",
+									PreLineAngleHeroTowardTargetId = 390082,
+									Text = "Forget another something in my bedchambers, there, Meg?"
+								},
+								{
+									Cue = "/VO/Megaera_30090",
+									Text =
+									"No. We need to talk, again. My sisters are involved now, in all this. You've really stirred up quite a mess."
+								},
+								{
+									Cue = "/VO/ZagreusHome_1495",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Serious_01",
+									Speaker = "CharProtag",
+									Text = "I know. I'm sorry. But this is something that I have to do. You wouldn't understand."
+								},
+								{
+									Cue = "/VO/Megaera_30091",
+									Text =
+									"You wouldn't know. What I'm trying to say is... with my sisters involved, it changes things. Takes some of the pressure off of me."
+								},
+								{
+									Cue = "/VO/ZagreusHome_1353",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
+									Speaker = "CharProtag",
+									PreLineAnim = "ZagreusTalkDenialStart",
+									PreLineAnimTarget = "Hero",
+									PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+									PostLineAnimTarget = "Hero",
+									Text = "Some of the pressure... wait, what are you going to do?"
+								},
+								{
+									Cue = "/VO/Megaera_30139",
+									PostLineFunctionName = "ExitNPCPresentation",
+									PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+									PortraitExitAnimation = "Portrait_FurySister01_Standoffish_01_Exit",
+									Text =
+									"I'm saying... I know you're doing what you have to do, here, Zagreus. And, my sisters and I will always try to stop you. But I am only doing it because I have to. Understand?"
+								},
+								{
+									Cue = "/VO/ZagreusHome_1354",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
+									Speaker = "CharProtag",
+									PreLineWait = 1.85,
+									Text = "Meg...! She... {#DialogueItalicFormat}ah{#Prev}."
+								},
+							},
+						},
+					},
+				},
+			},
+			-- Meg (Bedroom) / Meg in Bedroom / Bedroom Scenes / Meg Relationship / max relationship
+			-- variant tbd below for Thanatos max relationship
+			ModsNikkelMHadesBiomes_BecameCloseWithMegaera01_Trigger = {
+				SuperPriority = true,
+				PlayOnce = true,
+				GiftableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalk",
+				GameStateRequirements = {
+					RequiredTextLines = { "MegaeraGift10" },
+					RequiredFalseTextLines = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B", "BecameCloseWithThanatos01Than_GoToHim" },
+					RequiredFalseTextLinesThisRun = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B", "BecameCloseWithDusa01", "Ending01" },
+					RequiredFalseTextLinesLastRun = { "Ending01" },
+					RequiredFalseSeenRoomThisRun = "A_Boss01",
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = {
+					PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
+					WithinDistance = 850,
+					FunctionName = _PLUGIN.guid .. "." .. "SurpriseNPCPresentation",
+					Args = {
+						VoiceLines = {
+							Queue = "Interrupt",
+							{
+								PreLineWait = 0.75,
+								BreakIfPlayed = true,
+								PostLineWait = 0.15,
+								ObjectType = "NPC_FurySister_01",
+								-- Come here.
+								{ Cue = "/VO/Megaera_30195" },
+							},
+						},
+						TextLineSet = {
+							BecameCloseWithMegaera01 = {
+								Name = "BecameCloseWithMegaera01",
+								-- Requirements are above
+								GameStateRequirements = {},
+								{
+									Cue = "/VO/ZagreusHome_1370",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+									Speaker = "CharProtag",
+									PreLineAnim = "ZagreusTalkDenialStart",
+									PreLineAnimTarget = "Hero",
+									PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+									PostLineAnimTarget = "Hero",
+									PreLineAngleHeroTowardTargetId = 390082,
+									Text =
+									"Meg... what a surprise. Again. What is it? ...What's the matter? Wait. Why are you looking at me like that?"
+								},
+								{
+									Cue = "/VO/Megaera_30152",
+									PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+									Text = "Zagreus, would you shut up already with your idiotic questions, and get over here? Right now."
+								},
+								{
+									Cue = "/VO/ZagreusHome_1371",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
+									Speaker = "CharProtag",
+									PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01_Exit",
+									PreLineWait = 0.35,
+									Emote = "PortraitEmoteSurprise",
+									Text = "...I... you really... oh..."
+								},
+								{
+									Text = "Megaera_ChoiceText01",
+									Portrait = "Portrait_FurySister01_Default_01",
+									IgnoreRawText = true,
+									BoxAnimation = "NarrationBubbleRomance",
+									BoxExitAnimation = "NarrationBubbleRomanceOut",
+									DisableCharacterFadeColorLag = true,
+									IsNarration = true,
+									SkipContextArt = true,
+									IgnoreContinueArrow = true,
+									TextOffsetY = 0,
+									PreContentSound = "/Leftovers/Menu Sounds/EmoteThoughtful",
+									Choices = {
+										{
+											ChoiceText = "Meg_BackOff",
+											{
+												Cue = "/VO/ZagreusHome_1521",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
+												Speaker = "CharProtag",
+												PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+												PreLineWait = 0.35,
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithMegaera01Meg_BackOff" },
+												Text =
+												"...I... Meg, I'm deeply flattered, and you're very dear to me, it's just... this isn't what I want from our relationship. I fear I must have led you on. Forgive me. Please say you'll still be my friend?"
+											},
+											{
+												Cue = "/VO/Megaera_30390",
+												Portrait = "Portrait_FurySister01_Pleased_01",
+												PortraitExitAnimation = "Portrait_FurySister01_Pleased_01_Exit",
+												PreLineWait = 0.8,
+												PostLineFunctionName = "ExitNPCPresentation",
+												PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+												Text =
+												"...That's all you really want...? To be my friend? {#DialogueItalicFormat}Heh. {#Prev}You're hard to figure out sometimes, Zag. But, you know what, we've tried a lot of things. Why don't we try it like you said? I'll see you out there, then."
+											},
+										},
+										{
+											ChoiceText = "Meg_GoToHer",
+											{
+												-- TODO: Manual replacements of ZagreusHome_ with ZagreusField_0
+												Cue = "/VO/ZagreusHome_2804",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+												SkipContextArt = true,
+												PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionApproach",
+												-- ObjectId is a TravelFur01 near Meg, as choosing Meg herself causes pathfinding issues for Mel
+												PreLineThreadedFunctionArgs = { ObjectId = 552690, AngleTowardTargetId = 390082 },
+												PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01_Exit",
+												PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+												PostLineFunctionArgs = { ExtraWaitTime = 1.2 },
+												PreLineWait = 0.35,
+												Text = "...I thought you'd never ask. But I'm glad you did."
+											},
+											-- intermission
+											{
+												Cue = "/VO/ZagreusHome_1372",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
+												Speaker = "CharProtag",
+												PreLineAnim = "ZagreusInteractionThoughtful",
+												PreLineAnimTarget = "Hero",
+												FadeOutTime = 0.5,
+												FadeOutSound = "/Leftovers/World Sounds/MapText",
+												FullFadeTime = 9.5,
+												FadeInTime = 2.5,
+												FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+												PreLineWait = 0.4,
+												InterSceneWaitTime = 0.5,
+												PreLineAngleHeroTowardTargetId = 390082,
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithMegaera01Meg_GoToHer" },
+												Text = "Um, Meg, I... what I'm trying to say is, are you... are we good, or...?"
+											},
+											{
+												Cue = "/VO/Megaera_30153",
+												Portrait = "Portrait_FurySister01_Pleased_01",
+												PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+												Text =
+												"Stop being insecure around me, Zag. You should know better than that by now. Though, yes, if you must know... I think we're good. But if you tell another living soul, or even a dead one, I will kill you, understand?"
+											},
+											{
+												Cue = "/VO/ZagreusHome_1373",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												PreLineAnim = "ZagreusTalkDenialStart",
+												PreLineAnimTarget = "Hero",
+												PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+												PostLineAnimTarget = "Hero",
+												Text = "I... loud and clear, Meg, yes, I understand. So then... what happens now?"
+											},
+											{
+												Cue = "/VO/Megaera_30154",
+												Portrait = "Portrait_FurySister01_Pleased_01",
+												Text =
+												"What happens now? I'll see you at the edge of Tartarus, I guess. Or maybe here. However long we keep this up."
+											},
+											{
+												Cue = "/VO/ZagreusHome_1374",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												PreLineAnim = "ZagreusTalkEmpathyStart",
+												PreLineAnimTarget = "Hero",
+												PostLineAnim = "ZagreusTalkEmpathy_Return",
+												PostLineAnimTarget = "Hero",
+												Text = "However long we keep this up?"
+											},
+											{
+												Cue = "/VO/Megaera_30155",
+												Portrait = "Portrait_FurySister01_Standoffish_01",
+												PostLineFunctionName = "ExitNPCPresentation",
+												PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+												PortraitExitAnimation = "Portrait_FurySister01_Standoffish_01_Exit",
+												Text =
+												"You ask too many questions, Zag. I don't have the answers, and besides: You know more about living in the moment than I do. See you around."
+											},
+											{
+												Cue = "/VO/ZagreusHome_1375",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												PreLineAnim = "ZagreusTalkEmpathy_Return",
+												PreLineAnimTarget = "Hero",
+												PreLineWait = 0.5,
+												Text = "...See you around! ...Yes."
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			-- Meg (Bedroom) / Meg in Bedroom / Bedroom Scenes / Meg Relationship / max relationship
+			-- Re: Thanatos variant
+			ModsNikkelMHadesBiomes_BecameCloseWithMegaera01_B_Trigger = {
+				SuperPriority = true,
+				PlayOnce = true,
+				GiftableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalk",
+				GameStateRequirements = {
+					RequiredTextLines = { "MegaeraGift10", "BecameCloseWithThanatos01Than_GoToHim" },
+					RequiredFalseTextLines = { "BecameCloseWithMegaera01", "BecameCloseWithMegaera01_B" },
+					RequiredFalseTextLinesThisRun = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B", "BecameCloseWithDusa01" },
+					RequiredFalseTextLinesLastRun = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B", "Ending01" },
+					RequiredFalseSeenRoomThisRun = "A_Boss01",
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = {
+					PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
+					WithinDistance = 850,
+					FunctionName = _PLUGIN.guid .. "." .. "SurpriseNPCPresentation",
+					Args = {
+						VoiceLines = {
+							Queue = "Interrupt",
+							{
+								PreLineWait = 0.65,
+								BreakIfPlayed = true,
+								PostLineWait = 0.15,
+								ObjectType = "NPC_FurySister_01",
+								-- Come here.
+								{ Cue = "/VO/Megaera_30195" },
+							},
+						},
+						TextLineSet = {
+							BecameCloseWithMegaera01_B = {
+								Name = "BecameCloseWithMegaera01_B",
+								-- Requirements are above
+								GameStateRequirements = {},
+								{
+									Cue = "/VO/ZagreusHome_1370",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+									Speaker = "CharProtag",
+									PreLineAnim = "ZagreusTalkDenialStart",
+									PreLineAnimTarget = "Hero",
+									PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+									PostLineAnimTarget = "Hero",
+									PreLineAngleHeroTowardTargetId = 390082,
+									Text =
+									"Meg... what a surprise. Again. What is it? ...What's the matter? Wait. Why are you looking at me like that?"
+								},
+								{
+									Cue = "/VO/Megaera_30156",
+									PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+									Text = "Shut up already, Zagreus. And come here."
+								},
+								{
+									Cue = "/VO/ZagreusHome_1371",
+									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
+									Speaker = "CharProtag",
+									PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01_Exit",
+									PreLineWait = 0.35,
+									Emote = "PortraitEmoteSurprise",
+									Text = "...I... you really... oh..."
+								},
+								{
+									Text = "Megaera_ChoiceText02",
+									Portrait = "Portrait_FurySister01_Default_01",
+									IgnoreRawText = true,
+									BoxAnimation = "NarrationBubbleRomance",
+									BoxExitAnimation = "NarrationBubbleRomanceOut",
+									DisableCharacterFadeColorLag = true,
+									IsNarration = true,
+									SkipContextArt = true,
+									IgnoreContinueArrow = true,
+									TextOffsetY = 0,
+									PreContentSound = "/Leftovers/Menu Sounds/EmoteThoughtful",
+									Choices = {
+										{
+											ChoiceText = "Meg_BackOff",
+											{
+												Cue = "/VO/ZagreusHome_1521",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
+												Speaker = "CharProtag",
+												PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+												PreLineWait = 0.35,
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithMegaera01Meg_BackOff" },
+												Text =
+												"...I... Meg, I'm deeply flattered, and you're very dear to me, it's just... this isn't what I want from our relationship. I fear I must have led you on. Forgive me. Please say you'll still be my friend?"
+											},
+											{
+												-- TODO: MegaeraExtra voiceline
+												Cue = "/VO/MegaeraExtra_0001",
+												Portrait = "Portrait_FurySister01_Pleased_01",
+												PortraitExitAnimation = "Portrait_FurySister01_Pleased_01_Exit",
+												PreLineWait = 0.8,
+												PostLineFunctionName = "ExitNPCPresentation",
+												PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+												Text = "...You're sure? Look, I... it's totally all right. I'll see you out there, then."
+											},
+										},
+										{
+											ChoiceText = "Meg_GoToHer",
+											{
+												-- TODO: Manual replacements of ZagreusHome_ with ZagreusField_0
+												Cue = "/VO/ZagreusHome_2804",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+												SkipContextArt = true,
+												PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionApproach",
+												-- ObjectId is a TravelFur01 near Meg, as choosing Meg herself causes pathfinding issues for Mel
+												PreLineThreadedFunctionArgs = { ObjectId = 552690, AngleTowardTargetId = 390082 },
+												PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01_Exit",
+												PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+												PostLineFunctionArgs = { ExtraWaitTime = 1.2 },
+												PreLineWait = 0.35,
+												Text = "...I thought you'd never ask. But I'm glad you did."
+											},
+											-- intermission
+											{
+												Cue = "/VO/ZagreusHome_1372",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
+												Speaker = "CharProtag",
+												PreLineAnim = "ZagreusInteractionThoughtful",
+												PreLineAnimTarget = "Hero",
+												FadeOutTime = 0.5,
+												FadeOutSound = "/Leftovers/World Sounds/MapText",
+												FullFadeTime = 9.5,
+												FadeInTime = 2.5,
+												FadeInSound = "/Leftovers/Menu Sounds/EmoteAffection",
+												PreLineWait = 0.4,
+												InterSceneWaitTime = 0.5,
+												PreLineAngleHeroTowardTargetId = 390082,
+												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithMegaera01Meg_GoToHer" },
+												Text = "Um, Meg, I... what I'm trying to say is, are you... are we good, or...?"
+											},
+											{
+												Cue = "/VO/Megaera_30157",
+												Portrait = "Portrait_FurySister01_Pleased_01",
+												PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+												Text =
+												"You ask too many questions, Zag. But yes, I'd say we are again, for now. But if you tell another soul, I'll kill you, understand?"
+											},
+											{
+												Cue = "/VO/ZagreusHome_1376",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
+												Speaker = "CharProtag",
+												PreLineAnim = "ZagreusInteractionThoughtful",
+												PreLineAnimTarget = "Hero",
+												Text = "But... no, wait... not even Than...?"
+											},
+											{
+												Cue = "/VO/Megaera_30158",
+												Portrait = "Portrait_FurySister01_Pleased_01",
+												Text =
+												"Than's not an idiot. He wants what's best for you. And he isn't the jealous type. Besides, I have a good working relationship with him, as you well know."
+											},
+											{
+												Cue = "/VO/ZagreusHome_1377",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
+												Speaker = "CharProtag",
+												PreLineAnim = "ZagreusTalkDenialStart",
+												PreLineAnimTarget = "Hero",
+												PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+												PostLineAnimTarget = "Hero",
+												Text = "Yeah, but... what about you, you're the punisher of jealousy. What if I..."
+											},
+											{
+												Cue = "/VO/Megaera_30159",
+												Portrait = "Portrait_FurySister01_Pleased_01",
+												PostLineFunctionName = "ExitNPCPresentation",
+												PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+												PortraitExitAnimation = "Portrait_FurySister01_Pleased_01_Exit",
+												Text =
+												"We're not mere mortals, Zag. Mortals cling to one another viciously because their lives are short. What do we care? If Nyx has taught me one thing, it's that the heart has no bounds. Now quit your worrying, and get prepared for when we meet again out there. See you around."
+											},
+											{
+												Cue = "/VO/ZagreusHome_1375",
+												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
+												Speaker = "CharProtag",
+												PreLineAnim = "ZagreusTalkEmpathy_Return",
+												PreLineAnimTarget = "Hero",
+												PreLineWait = 0.5,
+												Text = "...See you around! ...Yes."
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+
+			-- #endregion
+
 			MegaeraMeeting01_Alt = {
 				TeleportToId = mod.NilValue,
 			},
