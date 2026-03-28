@@ -1781,8 +1781,7 @@ local npcModifications = {
 								-- Requirements are above
 								GameStateRequirements = {},
 								{
-									-- TODO: Get voicelines
-									Cue = "/VO/ZagreusHome_0754",
+									Cue = "/VO/ZagreusField_00754",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
 									Speaker = "CharProtag",
 									PreLineAngleHeroTowardTargetId = 390082,
@@ -1800,7 +1799,7 @@ local npcModifications = {
 									"...I was just leaving, Zagreus. Happened to be in the area, no thanks to you, and thought I'd go retrieve the last of my possessions. I have to say, you've really let this place go to hell."
 								},
 								{
-									Cue = "/VO/ZagreusHome_0755",
+									Cue = "/VO/ZagreusField_00755",
 									PreLineWait = 1.85,
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
 									Speaker = "CharProtag",
@@ -1849,7 +1848,7 @@ local npcModifications = {
 								-- Requirements are above
 								GameStateRequirements = {},
 								{
-									Cue = "/VO/ZagreusHome_0759",
+									Cue = "/VO/ZagreusField_00759",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
 									Speaker = "CharProtag",
 									PreLineAnim = "ZagreusTalkEmpathyStart",
@@ -1865,7 +1864,7 @@ local npcModifications = {
 									"No. We need to talk, again. My sisters are involved now, in all this. You've really stirred up quite a mess."
 								},
 								{
-									Cue = "/VO/ZagreusHome_0760",
+									Cue = "/VO/ZagreusField_00760",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Serious_01",
 									Speaker = "CharProtag",
 									Text =
@@ -1877,7 +1876,7 @@ local npcModifications = {
 									"You wouldn't know. What I'm trying to say is... with my sisters involved, it changes things. Takes some of the pressure off of me."
 								},
 								{
-									Cue = "/VO/ZagreusHome_0761",
+									Cue = "/VO/ZagreusField_00761",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Serious_01",
 									Speaker = "CharProtag",
 									PreLineAnim = "ZagreusTalkDenialStart",
@@ -1895,7 +1894,7 @@ local npcModifications = {
 									"I'm saying... I know you need to find your mother, Zagreus. I have my part to play in all of this, but let me see what I can do, if anything."
 								},
 								{
-									Cue = "/VO/ZagreusHome_1354",
+									Cue = "/VO/ZagreusField_01354",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
 									Speaker = "CharProtag",
 									PreLineWait = 1.85,
@@ -1942,7 +1941,7 @@ local npcModifications = {
 								-- Requirements are above
 								GameStateRequirements = {},
 								{
-									Cue = "/VO/ZagreusHome_0759",
+									Cue = "/VO/ZagreusField_00759",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
 									Speaker = "CharProtag",
 									PreLineAnim = "ZagreusTalkEmpathyStart",
@@ -1958,7 +1957,7 @@ local npcModifications = {
 									"No. We need to talk, again. My sisters are involved now, in all this. You've really stirred up quite a mess."
 								},
 								{
-									Cue = "/VO/ZagreusHome_1495",
+									Cue = "/VO/ZagreusField_01495",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Serious_01",
 									Speaker = "CharProtag",
 									Text = "I know. I'm sorry. But this is something that I have to do. You wouldn't understand."
@@ -1969,7 +1968,7 @@ local npcModifications = {
 									"You wouldn't know. What I'm trying to say is... with my sisters involved, it changes things. Takes some of the pressure off of me."
 								},
 								{
-									Cue = "/VO/ZagreusHome_1353",
+									Cue = "/VO/ZagreusField_01353",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
 									Speaker = "CharProtag",
 									PreLineAnim = "ZagreusTalkDenialStart",
@@ -1987,7 +1986,7 @@ local npcModifications = {
 									"I'm saying... I know you're doing what you have to do, here, Zagreus. And, my sisters and I will always try to stop you. But I am only doing it because I have to. Understand?"
 								},
 								{
-									Cue = "/VO/ZagreusHome_1354",
+									Cue = "/VO/ZagreusField_01354",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
 									Speaker = "CharProtag",
 									PreLineWait = 1.85,
@@ -2035,7 +2034,7 @@ local npcModifications = {
 								-- Requirements are above
 								GameStateRequirements = {},
 								{
-									Cue = "/VO/ZagreusHome_1370",
+									Cue = "/VO/ZagreusField_01370",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
 									Speaker = "CharProtag",
 									PreLineAnim = "ZagreusTalkDenialStart",
@@ -2052,7 +2051,7 @@ local npcModifications = {
 									Text = "Zagreus, would you shut up already with your idiotic questions, and get over here? Right now."
 								},
 								{
-									Cue = "/VO/ZagreusHome_1371",
+									Cue = "/VO/ZagreusField_01371",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
 									Speaker = "CharProtag",
 									PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01_Exit",
@@ -2076,7 +2075,7 @@ local npcModifications = {
 										{
 											ChoiceText = "Meg_BackOff",
 											{
-												Cue = "/VO/ZagreusHome_1521",
+												Cue = "/VO/ZagreusField_01521",
 												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
 												Speaker = "CharProtag",
 												PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
@@ -2100,8 +2099,7 @@ local npcModifications = {
 										{
 											ChoiceText = "Meg_GoToHer",
 											{
-												-- TODO: Manual replacements of ZagreusHome_ with ZagreusField_0
-												Cue = "/VO/ZagreusHome_2804",
+												Cue = "/VO/ZagreusField_02804",
 												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
 												Speaker = "CharProtag",
 												PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
@@ -2117,7 +2115,7 @@ local npcModifications = {
 											},
 											-- intermission
 											{
-												Cue = "/VO/ZagreusHome_1372",
+												Cue = "/VO/ZagreusField_01372",
 												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
 												Speaker = "CharProtag",
 												PreLineAnim = "ZagreusInteractionThoughtful",
@@ -2142,7 +2140,7 @@ local npcModifications = {
 												"Stop being insecure around me, Zag. You should know better than that by now. Though, yes, if you must know... I think we're good. But if you tell another living soul, or even a dead one, I will kill you, understand?"
 											},
 											{
-												Cue = "/VO/ZagreusHome_1373",
+												Cue = "/VO/ZagreusField_01373",
 												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
 												Speaker = "CharProtag",
 												PreLineAnim = "ZagreusTalkDenialStart",
@@ -2158,7 +2156,7 @@ local npcModifications = {
 												"What happens now? I'll see you at the edge of Tartarus, I guess. Or maybe here. However long we keep this up."
 											},
 											{
-												Cue = "/VO/ZagreusHome_1374",
+												Cue = "/VO/ZagreusField_01374",
 												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
 												Speaker = "CharProtag",
 												PreLineAnim = "ZagreusTalkEmpathyStart",
@@ -2177,7 +2175,7 @@ local npcModifications = {
 												"You ask too many questions, Zag. I don't have the answers, and besides: You know more about living in the moment than I do. See you around."
 											},
 											{
-												Cue = "/VO/ZagreusHome_1375",
+												Cue = "/VO/ZagreusField_01375",
 												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
 												Speaker = "CharProtag",
 												PreLineAnim = "ZagreusTalkEmpathy_Return",
@@ -2230,7 +2228,7 @@ local npcModifications = {
 								-- Requirements are above
 								GameStateRequirements = {},
 								{
-									Cue = "/VO/ZagreusHome_1370",
+									Cue = "/VO/ZagreusField_01370",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
 									Speaker = "CharProtag",
 									PreLineAnim = "ZagreusTalkDenialStart",
@@ -2247,7 +2245,7 @@ local npcModifications = {
 									Text = "Shut up already, Zagreus. And come here."
 								},
 								{
-									Cue = "/VO/ZagreusHome_1371",
+									Cue = "/VO/ZagreusField_01371",
 									Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
 									Speaker = "CharProtag",
 									PortraitExitAnimation = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01_Exit",
@@ -2271,7 +2269,7 @@ local npcModifications = {
 										{
 											ChoiceText = "Meg_BackOff",
 											{
-												Cue = "/VO/ZagreusHome_1521",
+												Cue = "/VO/ZagreusField_01521",
 												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
 												Speaker = "CharProtag",
 												PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
@@ -2282,8 +2280,8 @@ local npcModifications = {
 												"...I... Meg, I'm deeply flattered, and you're very dear to me, it's just... this isn't what I want from our relationship. I fear I must have led you on. Forgive me. Please say you'll still be my friend?"
 											},
 											{
-												-- TODO: MegaeraExtra voiceline
-												Cue = "/VO/MegaeraExtra_0001",
+												-- Manual replacement of MegaeraExtra_ with Megaera_5
+												Cue = "/VO/Megaera_50001",
 												Portrait = "Portrait_FurySister01_Pleased_01",
 												PortraitExitAnimation = "Portrait_FurySister01_Pleased_01_Exit",
 												PreLineWait = 0.8,
@@ -2295,8 +2293,7 @@ local npcModifications = {
 										{
 											ChoiceText = "Meg_GoToHer",
 											{
-												-- TODO: Manual replacements of ZagreusHome_ with ZagreusField_0
-												Cue = "/VO/ZagreusHome_2804",
+												Cue = "/VO/ZagreusField_02804",
 												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
 												Speaker = "CharProtag",
 												PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
@@ -2312,7 +2309,7 @@ local npcModifications = {
 											},
 											-- intermission
 											{
-												Cue = "/VO/ZagreusHome_1372",
+												Cue = "/VO/ZagreusField_01372",
 												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
 												Speaker = "CharProtag",
 												PreLineAnim = "ZagreusInteractionThoughtful",
@@ -2337,7 +2334,7 @@ local npcModifications = {
 												"You ask too many questions, Zag. But yes, I'd say we are again, for now. But if you tell another soul, I'll kill you, understand?"
 											},
 											{
-												Cue = "/VO/ZagreusHome_1376",
+												Cue = "/VO/ZagreusField_01376",
 												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Empathetic_01",
 												Speaker = "CharProtag",
 												PreLineAnim = "ZagreusInteractionThoughtful",
@@ -2351,7 +2348,7 @@ local npcModifications = {
 												"Than's not an idiot. He wants what's best for you. And he isn't the jealous type. Besides, I have a good working relationship with him, as you well know."
 											},
 											{
-												Cue = "/VO/ZagreusHome_1377",
+												Cue = "/VO/ZagreusField_01377",
 												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
 												Speaker = "CharProtag",
 												PreLineAnim = "ZagreusTalkDenialStart",
@@ -2370,7 +2367,7 @@ local npcModifications = {
 												"We're not mere mortals, Zag. Mortals cling to one another viciously because their lives are short. What do we care? If Nyx has taught me one thing, it's that the heart has no bounds. Now quit your worrying, and get prepared for when we meet again out there. See you around."
 											},
 											{
-												Cue = "/VO/ZagreusHome_1375",
+												Cue = "/VO/ZagreusField_01375",
 												Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
 												Speaker = "CharProtag",
 												PreLineAnim = "ZagreusTalkEmpathy_Return",
@@ -2386,7 +2383,6 @@ local npcModifications = {
 					},
 				},
 			},
-
 			-- #endregion
 
 			MegaeraMeeting01_Alt = {

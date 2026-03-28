@@ -1498,6 +1498,26 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_03189 = true, -- ZagreusHome_3189
 	ZagreusField_03693 = true, -- ZagreusHome_3693
 	ZagreusField_03695 = true, -- ZagreusHome_3695
+
+	-- Relationship
+	ZagreusField_00754 = true, -- ZagreusHome_0754
+	ZagreusField_00755 = true, -- ZagreusHome_0755
+	ZagreusField_00759 = true, -- ZagreusHome_0759
+	ZagreusField_00760 = true, -- ZagreusHome_0760
+	ZagreusField_00761 = true, -- ZagreusHome_0761
+	ZagreusField_01353 = true, -- ZagreusHome_1353
+	ZagreusField_01354 = true, -- ZagreusHome_1354
+	ZagreusField_01370 = true, -- ZagreusHome_1370
+	ZagreusField_01371 = true, -- ZagreusHome_1371
+	ZagreusField_01372 = true, -- ZagreusHome_1372
+	ZagreusField_01373 = true, -- ZagreusHome_1373
+	ZagreusField_01374 = true, -- ZagreusHome_1374
+	ZagreusField_01375 = true, -- ZagreusHome_1375
+	ZagreusField_01376 = true, -- ZagreusHome_1376
+	ZagreusField_01377 = true, -- ZagreusHome_1377
+	ZagreusField_01495 = true, -- ZagreusHome_1495
+	ZagreusField_01521 = true, -- ZagreusHome_1521
+	ZagreusField_02804 = true, -- ZagreusHome_2804
 	-- #endregion
 
 	-- #region LootData/Boon pickup/InteractTextLineSets

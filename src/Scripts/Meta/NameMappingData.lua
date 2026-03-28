@@ -235,6 +235,9 @@ mod.HadesHelpTextFileSkipMap = {
 	_NPCData = {
 		en = true,
 	},
+	_DeathLoopData = {
+		en = true,
+	},
 	_EnemyData = {
 		en = true,
 	},
