@@ -41,7 +41,7 @@ It is highly recommended that you complete the main story of Hades before playin
 - Discover and complete **35+** new Minor Prophecies at the Fated List.
 - Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
 - Discover and perform **20+** new incantations to unlock gameplay features and progress story events in Zagreus' Journey.
-- Unlock **five** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus, Orpheus and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
+- Unlock **six** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus, Orpheus, Megaera and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
 - Challenge yourself with a set of new **Chaos Trials**, including randomized "Chaos Within" trials in the spirit of (Great) Chaos Above and Below.
 - Advance through **50** new cosmetic-only ranks at the Spirit Mixer, from the lowly "_Alpha Warden_" to the feared "_Unseen One_". 
 - Read all about the new biomes, enemies, bosses and friends in a new chapter in your Codex.

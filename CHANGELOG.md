@@ -4,6 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Meet **Megaera** in Styx, and have a friendly chat and a bottle of Ambrosia or two. This will also allow you to progress Sisyphus' storyline, and build a relationship with Megaera (including unlocking her keepsake).
 - Advance through **50** new cosmetic ranks offered by the _Spirit Mixer_, from the lowly "Alpha Warden" to the feared "Unseen One". These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
 - Added a new logo to the Main Menu to signal that the mod is installed.
 - Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
