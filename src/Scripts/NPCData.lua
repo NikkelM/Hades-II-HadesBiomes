@@ -1677,16 +1677,16 @@ local npcModifications = {
 		ActivateRequirements = {
 			RequiredAnyKillsThisRun = mod.NilValue,
 			-- TODO: Make sure to uncomment before releasing
-			{
-				Path = { "CurrentRun", "EnemyKills" },
-				HasAny = { "Harpy", "Harpy2" }
-			},
-			-- Can't appear the first time you reach Styx (this is incremented before the check, which is the reason for the >1 check)
-			{
-				Path = { "GameState", "RoomsEntered", "D_Hub" },
-				Comparison = ">",
-				Value = 1,
-			},
+			-- {
+			-- 	Path = { "CurrentRun", "EnemyKills" },
+			-- 	HasAny = { "Harpy", "Harpy2" }
+			-- },
+			-- -- Can't appear the first time you reach Styx (this is incremented before the check, which is the reason for the >1 check)
+			-- {
+			-- 	Path = { "GameState", "RoomsEntered", "D_Hub" },
+			-- 	Comparison = ">",
+			-- 	Value = 1,
+			-- },
 		},
 		SpecialInteractFunctionName = "SpecialInteractSalute",
 		SpecialInteractGameStateRequirements = {
@@ -1704,39 +1704,43 @@ local npcModifications = {
 				ObjectType = "NPC_FurySister_01",
 				PreLineAnim = "FuryIdleInHouseFidgetGreeting",
 				-- Something you need from me?
-				{ Cue = "/VO/MegaeraHome_0242", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0242", }, RequiredTextLines = { "MegaeraGift10" }, },
+				{ Cue = "/VO/MegaeraHome_0242",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0242", }, RequiredTextLines = { "MegaeraGift10" }, },
 				-- What can I do for you?
-				{ Cue = "/VO/MegaeraHome_0244", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0244", }, RequiredTextLines = { "MegaeraGift10" }, },
+				{ Cue = "/VO/MegaeraHome_0244",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0244", }, RequiredTextLines = { "MegaeraGift10" }, },
 				-- Tsch...
-				{ Cue = "/VO/MegaeraHome_0053", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0053", }, },
+				{ Cue = "/VO/MegaeraHome_0053",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0053", }, },
 				-- Go away.
-				{ Cue = "/VO/MegaeraHome_0056", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0056", }, RequiredFalseTextLines = { "MegaeraGift05" },                                                             RequiredMinCompletedRuns = 4 },
+				{ Cue = "/VO/MegaeraHome_0056",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0056", }, RequiredFalseTextLines = { "MegaeraGift05" },                                                             RequiredMinCompletedRuns = 4 },
 				-- Hmph.
-				{ Cue = "/VO/MegaeraHome_0057", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0057", }, },
+				{ Cue = "/VO/MegaeraHome_0057",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0057", }, },
 				-- Hmm.
-				{ Cue = "/VO/MegaeraHome_0066", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0066", }, RequiredTextLines = { "MegaeraGift03" }, },
+				{ Cue = "/VO/MegaeraHome_0066",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0066", }, RequiredTextLines = { "MegaeraGift03" }, },
 				-- Yes?
-				{ Cue = "/VO/MegaeraHome_0067", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0067", }, RequiredMinCompletedRuns = 4 },
+				{ Cue = "/VO/MegaeraHome_0067",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0067", }, RequiredMinCompletedRuns = 4 },
 				-- May I help you?
-				{ Cue = "/VO/MegaeraHome_0068", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0068", }, RequiredMinCompletedRuns = 4 },
+				{ Cue = "/VO/MegaeraHome_0068",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0068", }, RequiredMinCompletedRuns = 4 },
 				-- Eh.
-				{ Cue = "/VO/MegaeraHome_0069", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0069", }, RequiredFalseTextLines = { "MegaeraGift05" } },
+				{ Cue = "/VO/MegaeraHome_0069",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0069", }, RequiredFalseTextLines = { "MegaeraGift05" } },
 				-- Khh.
-				{ Cue = "/VO/MegaeraHome_0070", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0070", }, RequiredFalseTextLines = { "MegaeraGift06" } },
+				{ Cue = "/VO/MegaeraHome_0070",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0070", }, RequiredFalseTextLines = { "MegaeraGift06" } },
 				-- What.
-				{ Cue = "/VO/MegaeraHome_0071", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0071", }, RequiredMinCompletedRuns = 4 },
+				{ Cue = "/VO/MegaeraHome_0071",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0071", }, RequiredMinCompletedRuns = 4 },
 				-- Oh.
-				{ Cue = "/VO/MegaeraHome_0072", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0072", }, RequiredFalseTextLines = { "MegaeraGift07" } },
+				{ Cue = "/VO/MegaeraHome_0072",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0072", }, RequiredFalseTextLines = { "MegaeraGift07" } },
 				-- Hmm.
-				{ Cue = "/VO/MegaeraHome_0061", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0061", }, RequiredTextLines = { "MegaeraGift05" } },
+				{ Cue = "/VO/MegaeraHome_0061",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0061", }, RequiredTextLines = { "MegaeraGift05" } },
 				-- Yes...?
-				{ Cue = "/VO/MegaeraHome_0073", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0073", }, RequiredTextLines = { "MegaeraGift06" } },
+				{ Cue = "/VO/MegaeraHome_0073",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0073", }, RequiredTextLines = { "MegaeraGift06" } },
 				-- Hey you.
-				{ Cue = "/VO/MegaeraHome_0190", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0190", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+				{ Cue = "/VO/MegaeraHome_0190",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0190", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
 				-- Hmm.
-				{ Cue = "/VO/MegaeraHome_0193", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0193", }, RequiredTextLines = { "MegaeraGift09" } },
+				{ Cue = "/VO/MegaeraHome_0193",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0193", }, RequiredTextLines = { "MegaeraGift09" } },
 				-- Oh, hey.
-				{ Cue = "/VO/MegaeraHome_0194", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0194", }, RequiredTextLines = { "MegaeraGift10" } },
+				{ Cue = "/VO/MegaeraHome_0194",  RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0194", }, RequiredTextLines = { "MegaeraGift10" } },
+				-- Do something with your hair?
+				{ Cue = "/VO/MegaeraField_0590", RequiredFalsePlayedThisRoom = { "/VO/MegaeraField_0590", } },
+				-- Have you been working out?
+				{ Cue = "/VO/MegaeraField_0595", RequiredFalsePlayedThisRoom = { "/VO/MegaeraField_0595", } },
 			},
 		},
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
@@ -1845,8 +1849,64 @@ local npcModifications = {
 			},
 		},
 		MissingDistanceTrigger = mod.NilValue,
-		-- TODO: Copied from ???
+		-- Copied from her EnemyData
 		OnHitVoiceLines = {
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.45,
+			SuccessiveChanceToPlay = 0.25,
+			PlayFromTarget = true,
+			Cooldowns = {
+				{ Name = "MegSpokeRecently", Time = 12 },
+			},
+			-- Hmm.
+			{ Cue = "/VO/MegaeraField_0778" },
+			-- Hah!
+			{ Cue = "/VO/MegaeraField_0779" },
+			-- Cute.
+			{ Cue = "/VO/MegaeraField_0223" },
+			-- Give up.
+			{ Cue = "/VO/MegaeraField_0227" },
+			-- Give up already.
+			{ Cue = "/VO/MegaeraField_0228" },
+			-- Hah!
+			{ Cue = "/VO/MegaeraField_0238" },
+			-- Do your worst.
+			{ Cue = "/VO/MegaeraField_0402" },
+			-- What is this.
+			{ Cue = "/VO/MegaeraField_0405", RequiredFalseTextLines = { "MegaeraGift07" } },
+			-- What's gotten into you.
+			{ Cue = "/VO/MegaeraField_0406", RequiredFalseTextLines = { "MegaeraGift07" } },
+			-- This again.
+			{ Cue = "/VO/MegaeraField_0410", },
+			-- You're angry.
+			{ Cue = "/VO/MegaeraField_0411", RequiredFalseTextLines = { "MegaeraGift07" } },
+			-- You have no self control.
+			{ Cue = "/VO/MegaeraField_0412", RequiredFalseTextLines = { "MegaeraGift07" } },
+			-- Control yourself.
+			{ Cue = "/VO/MegaeraField_0413" },
+			-- This again?
+			{ Cue = "/VO/MegaeraField_0702" },
+			-- <Laughter>
+			{ Cue = "/VO/MegaeraField_0134" },
+			-- <Laughter>
+			{ Cue = "/VO/MegaeraField_0135" },
+			-- <Laughter>
+			{ Cue = "/VO/MegaeraField_0136" },
+			-- Have you been working out?
+			{ Cue = "/VO/MegaeraField_0595", RequiredTextLines = { "MegaeraGift10" } },
+			-- Pfah!
+			{ Cue = "/VO/MegaeraField_0265" },
+			-- Tsch, heh.
+			{ Cue = "/VO/MegaeraField_0267" },
+			-- That all you've got?
+			{ Cue = "/VO/MegaeraField_0637" },
+			-- Am I supposed to be impressed?
+			{ Cue = "/VO/MegaeraField_0635" },
+			-- What else?
+			{ Cue = "/VO/MegaeraField_0638" },
+			-- Oh, come on.
+			{ Cue = "/VO/MegaeraField_0772" },
 		},
 	},
 }

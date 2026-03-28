@@ -801,8 +801,7 @@ local roomModifications = {
 		},
 	},
 	D_Hub = {
-		-- Megaera for Storyteller for Cerberus
-		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Megaera", "MegaeraField", "ZagreusField" },
 		-- "/Leftovers/Ambience/MatchSiteIPoolAmbience"
 		Ambience = "{e65b32ad-3a7e-4f88-9149-3260e929f04c}",
 		UnthreadedEvents = {
