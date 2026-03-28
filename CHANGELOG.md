@@ -18,6 +18,7 @@ Other fixes and improvements:
 - Balancing: Elysian Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Slightly reduced the chance for the "Popper" elite perk to appear.
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
+- Fixed: Some dialogues with Orpheus cannot be triggered.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
 - Fixed: Some fog and branches flicker on a specific Elysium map.

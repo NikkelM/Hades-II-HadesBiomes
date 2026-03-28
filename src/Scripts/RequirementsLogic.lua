@@ -3108,14 +3108,18 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredTrueFlags ~= nil then
 		for k, flag in pairs(requirements.RequiredTrueFlags) do
-			if not game.GameState.Flags[flag] and not game.GameState[flag] then
+			if flag == "ShrineUnlocked" and not game.IsGameStateEligible(source, { NamedRequirements = { "ShrineUnlocked" } }, args) then
+				return false
+			elseif not game.GameState.Flags[flag] and not game.GameState[flag] then
 				return false
 			end
 		end
 	end
 	if requirements.RequiredFalseFlags ~= nil then
 		for k, flag in pairs(requirements.RequiredFalseFlags) do
-			if game.GameState.Flags[flag] or game.GameState[flag] then
+			if flag == "ShrineUnlocked" and game.IsGameStateEligible(source, { NamedRequirements = { "ShrineUnlocked" } }, args) then
+				return false
+			elseif game.GameState.Flags[flag] or game.GameState[flag] then
 				return false
 			end
 		end
@@ -3163,7 +3167,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredAccumulatedMetaPoints ~= nil then
-		if GetTotalAccumulatedMetaPoints() < requirements.RequiredAccumulatedMetaPoints then
+		-- if GetTotalAccumulatedMetaPoints() < requirements.RequiredAccumulatedMetaPoints then
+		if not game.GameState.LifetimeResourcesGained or not game.GameState.LifetimeResourcesGained.MetaCurrency or game.GameState.LifetimeResourcesGained.MetaCurrency < requirements.RequiredAccumulatedMetaPoints then
 			return false
 		end
 	end
@@ -3177,6 +3182,12 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredActiveMetaPointsMax ~= nil then
 		-- if GetTotalSpentMetaPoints() > requirements.RequiredActiveMetaPointsMax then
 		if game.GameState.MetaUpgradeCostCache > requirements.RequiredActiveMetaPointsMax then
+			return false
+		end
+	end
+	-- Same as above, but fixed for Megaera dialogue requirements
+	if requirements.RequiredActiveMetaPointMax ~= nil then
+		if game.GameState.MetaUpgradeCostCache > requirements.RequiredActiveMetaPointMax then
 			return false
 		end
 	end
@@ -3471,12 +3482,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		return false
 	end
 
-	if requirements.RequiresAmbientMusicId ~= nil and game.AudioState.AmbientMusicId == nil then
-		return false
-	end
-	if requirements.RequiresNullAmbientMusicId ~= nil and game.AudioState.AmbientMusicId ~= nil then
-		return false
-	end
+	-- Disabled both to always allow these dialogues to play, as Ambient/Secret music is too intertwined in H2
+	-- if requirements.RequiresAmbientMusicId ~= nil and game.AudioState.AmbientMusicId == nil then
+	-- 	return false
+	-- end
+	-- if requirements.RequiresNullAmbientMusicId ~= nil and game.AudioState.AmbientMusicId ~= nil then
+	-- 	return false
+	-- end
 
 	if requirements.RequiredFalseInteractionThisRun ~= nil then
 		if game.CurrentRun.NPCInteractions[requirements.RequiredFalseInteractionThisRun] then

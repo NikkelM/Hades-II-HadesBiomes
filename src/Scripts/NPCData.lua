@@ -1774,6 +1774,15 @@ local npcModifications = {
 			MegaeraMeeting04 = {
 				UseableOffSource = true,
 			},
+			MegaeraMirrorProgress01 = {
+				RequiredActiveMetaPointsMin = 30,
+			},
+			MegaeraAboutPact01 = {
+				RequiredScreenViewed = "Shrine",
+			},
+			MegaeraAboutRepeatedLosses01 = {
+				RequiredFalseDeathRoom = mod.NilValue,
+			},
 
 			-- RepeatableTextLineSets
 			MegChat02_Alt = {
@@ -1981,6 +1990,12 @@ local npcChoiceMappings = {
 				PrePortraitExitFunctionArgs = mod.PresetEventArgs.OrpheusBenefitChoices,
 			},
 		},
+		-- Replace requirements referencing the CurrentRun to reference PrevRun instead
+		AlwaysReplaceKeysIfExist = {
+			RequiresRunCleared = "RequiresLastRunCleared",
+			RequiresRunNotCleared = "RequiresLastRunNotCleared",
+			RequiredRoomThisRun = "RequiredRoomLastRun",
+		},
 		MoveEndVoiceLinesAndCuesToBenefitChoiceArgs = true,
 		MovePostLineThreadedFunctionNameToNPCPostChoicePresentationForTextLineSets = {
 			OrpheusFirstMeeting = 3,
@@ -2105,11 +2120,6 @@ local npcChoiceMappings = {
 		AlwaysReplaceKeysIfExist = {
 			RequiresRunCleared = "RequiresLastRunCleared",
 			RequiresRunNotCleared = "RequiresLastRunNotCleared",
-			RequiredTextLinesThisRun = "RequiredTextLinesLastRun",              -- TODO: Validate if it should be this run
-			RequiredFalseTextLinesThisRun = "RequiredFalseTextLinesLastRun",    -- TOOD: Validate if it should be this run
-			RequiredEncounterThisRun = "RequiredEncounterLastRun",              -- TODO: Validate if it should be this run
-			RequiredKillsThisRun = "RequiredKillsLastRun",                      -- TODO: Validate
-			RequiredFalseDeathEncounters = "RequiredFalseDeathEncountersThanatos", -- TODO: Validate
 			RequiredRoomThisRun = "RequiredRoomLastRun",
 			RequiredFalseSeenRoomThisRun = "RequiredFalseSeenRoomLastRun",
 		},

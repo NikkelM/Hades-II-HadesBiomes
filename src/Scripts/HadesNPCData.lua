@@ -25090,7 +25090,6 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
 				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
-			-- TODO: Test these "Continued" dialogues
 			MegaeraMeeting04Cont = {
 				SuperPriority = true,
 				PlayOnce = true,
@@ -28740,6 +28739,7 @@ mod.NPCData = mod.NPCData or {
 			-- intermission scenes
 			-- alt ids: { 422142 (m), 422255 (t), }
 			-- @ update AreIdsNotAlive as needed
+			-- TODO:
 			MegIntermissionChat01 = {
 				UseableOffSource = true,
 				StatusAnimation = "StatusIconWantsToSmooch",
@@ -28747,6 +28747,7 @@ mod.NPCData = mod.NPCData or {
 				MinRunsSinceAnyTextLines = { TextLines = GameData.MegThanIntermissionTextLines, Count = 11 },
 				RequiredFalseQueuedTextLines = { "ThanatosHomeIntermissionChat01", "ThanatosHomeIntermissionChat02", "ThanatosHomeIntermissionChat03", "ThanatosHomeIntermissionChat04", "ThanatosHomeIntermissionChat05", "ThanatosHomeIntermissionChat06" },
 				-- prevent a progstop
+				-- TODO: Might need to be moved to last run?
 				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
 				AreIdsAlive = { 423052 },
 				{
