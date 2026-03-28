@@ -1513,8 +1513,8 @@ Add the following after the last entry in the list, take care of the Angle and L
 	"IgnoreGridManager": false,
 	"Invert": false,
 	"Location": {
-			"X": 9490,
-			"Y": 7220
+			"X": 9520.0,
+			"Y": 7220.0
 	},
 	"Name": "NPC_FurySister_01",
 	"OffsetZ": 0.0,

@@ -1701,26 +1701,41 @@ local npcModifications = {
 				RandomRemaining = true,
 				PreLineWait = 0.3,
 				ObjectType = "NPC_FurySister_01",
-				PreLineAnim = "FuryIdleInHouseFidgetGreeting", -- TODO: Test
-				-- TODO: Voicelines
-				-- Hello...!
-				-- { Cue = "/VO/Orpheus_0060", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0060" }, },
-				-- -- Hello...
-				-- { Cue = "/VO/Orpheus_0061", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0061" }, },
-				-- -- Hmm.
-				-- { Cue = "/VO/Orpheus_0062", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0062" }, },
-				-- -- Ah.
-				-- { Cue = "/VO/Orpheus_0063", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0063" }, },
-				-- -- Oh, um, hello.
-				-- { Cue = "/VO/Orpheus_0064", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0064" }, },
-				-- -- Hello there.
-				-- { Cue = "/VO/Orpheus_0065", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0065" }, },
-				-- -- Hello my friend.
-				-- { Cue = "/VO/Orpheus_0093", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0093" }, RequiredTextLines = { "OrpheusGift02" }, },
-				-- -- Hello friend.
-				-- { Cue = "/VO/Orpheus_0094", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0094" }, RequiredTextLines = { "OrpheusGift06" }, },
-				-- -- Greetings.
-				-- { Cue = "/VO/Orpheus_0095", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0095" }, RequiredTextLines = { "OrpheusGift02" }, },
+				PreLineAnim = "FuryIdleInHouseFidgetGreeting",
+				-- Something you need from me?
+				{ Cue = "/VO/MegaeraHome_0242", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0242", }, RequiredTextLines = { "MegaeraGift10" }, },
+				-- What can I do for you?
+				{ Cue = "/VO/MegaeraHome_0244", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0244", }, RequiredTextLines = { "MegaeraGift10" }, },
+				-- Tsch...
+				{ Cue = "/VO/MegaeraHome_0053", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0053", }, },
+				-- Go away.
+				{ Cue = "/VO/MegaeraHome_0056", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0056", }, RequiredFalseTextLines = { "MegaeraGift05" },                                                             RequiredMinCompletedRuns = 4 },
+				-- Hmph.
+				{ Cue = "/VO/MegaeraHome_0057", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0057", }, },
+				-- Hmm.
+				{ Cue = "/VO/MegaeraHome_0066", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0066", }, RequiredTextLines = { "MegaeraGift03" }, },
+				-- Yes?
+				{ Cue = "/VO/MegaeraHome_0067", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0067", }, RequiredMinCompletedRuns = 4 },
+				-- May I help you?
+				{ Cue = "/VO/MegaeraHome_0068", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0068", }, RequiredMinCompletedRuns = 4 },
+				-- Eh.
+				{ Cue = "/VO/MegaeraHome_0069", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0069", }, RequiredFalseTextLines = { "MegaeraGift05" } },
+				-- Khh.
+				{ Cue = "/VO/MegaeraHome_0070", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0070", }, RequiredFalseTextLines = { "MegaeraGift06" } },
+				-- What.
+				{ Cue = "/VO/MegaeraHome_0071", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0071", }, RequiredMinCompletedRuns = 4 },
+				-- Oh.
+				{ Cue = "/VO/MegaeraHome_0072", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0072", }, RequiredFalseTextLines = { "MegaeraGift07" } },
+				-- Hmm.
+				{ Cue = "/VO/MegaeraHome_0061", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0061", }, RequiredTextLines = { "MegaeraGift05" } },
+				-- Yes...?
+				{ Cue = "/VO/MegaeraHome_0073", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0073", }, RequiredTextLines = { "MegaeraGift06" } },
+				-- Hey you.
+				{ Cue = "/VO/MegaeraHome_0190", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0190", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+				-- Hmm.
+				{ Cue = "/VO/MegaeraHome_0193", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0193", }, RequiredTextLines = { "MegaeraGift09" } },
+				-- Oh, hey.
+				{ Cue = "/VO/MegaeraHome_0194", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0194", }, RequiredTextLines = { "MegaeraGift10" } },
 			},
 		},
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,

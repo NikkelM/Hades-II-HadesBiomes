@@ -349,6 +349,25 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		},
 	},
 	-- #endregion
+	-- #region Megaera
+	Sulking = {
+		ChanceToTrigger = 0.5,
+		PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
+		StatusAnimation = "StatusIconWantsToTalk",
+		WithinDistance = 550,
+		VoiceLines = {
+			[1] = game.GlobalVoiceLines.MegaeraGreetingVoiceLines,
+		},
+	},
+	SulkingRepeatable = {
+		ChanceToTrigger = 0.5,
+		PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
+		WithinDistance = 550,
+		VoiceLines = {
+			[1] = game.GlobalVoiceLines.MegaeraGreetingVoiceLines,
+		},
+	},
+	-- #endregion
 	-- #region NPC Benefit choices
 	SisyphusBenefitChoices = {
 		SkipComponents = {
@@ -7208,6 +7227,7 @@ mod.NPCData = mod.NPCData or {
 			}
 		},
 	},
+
 	-- Manually replaced PresetEventArgs.PatroclusGreeting/Muttering etc. with mod.PresetEventArgs.___ to make it easier
 	-- Patroclus
 	NPC_Patroclus_01 = {
@@ -24799,6 +24819,7 @@ mod.NPCData = mod.NPCData or {
 	},
 
 	-- Megaera House Version, Id = 390082
+	-- Manually replaced PresetEventArgs.Sulking/SulkingRepeatable with mod.PresetEventArgs.___ to make it easier
 	NPC_FurySister_01 = {
 		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
 
@@ -24848,7 +24869,7 @@ mod.NPCData = mod.NPCData or {
 					"Look, I've a reputation to uphold. You get past me again like that, you best go all the way. Now, leave me be, and don't think you're going to be so lucky next we meet out there."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraMeeting01_B = {
 				PlayOnce = true,
@@ -24880,7 +24901,7 @@ mod.NPCData = mod.NPCData or {
 					"I expected you to not get past me, yes. Look, I've a reputation to uphold. Don't think you're going to be so lucky next we meet out there."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraMeeting01_Alt = {
 				PlayOnce = true,
@@ -24912,7 +24933,7 @@ mod.NPCData = mod.NPCData or {
 					"Look, I've a reputation to uphold. You get past me again like that, you best go all the way. Now, leave me be, and don't think you're going to be so lucky next we meet out there."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraMeeting01_Alt_B = {
 				SuperPriority = true,
@@ -24946,7 +24967,7 @@ mod.NPCData = mod.NPCData or {
 					"I expected you to not get past me, yes. Look, I've a reputation to uphold. Don't think you're going to be so lucky next we meet out there."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraMeeting02 = {
 				PlayOnce = true,
@@ -24979,7 +25000,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Nice! Well, I'll just leave you to it, then."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraMeeting02Cont = {
 				SuperPriority = true,
@@ -25016,7 +25037,7 @@ mod.NPCData = mod.NPCData or {
 					"We're stretched a little thin, as you can see. Some kind of war up there meant lots of business here. I'm left to hold the line. And deal with you."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraMeeting03_Alt = {
 				PlayOnce = true,
@@ -25041,7 +25062,7 @@ mod.NPCData = mod.NPCData or {
 					"We're stretched a little thin, as you can see. Some kind of war up there meant lots of business here. I'm left to hold the line. And deal with you."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraMeeting04 = {
 				PlayOnce = true,
@@ -25067,8 +25088,9 @@ mod.NPCData = mod.NPCData or {
 					Text = "I am not interested in having company, especially from you. You stay the hell away while I'm off duty."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
+			-- TODO: Test these "Continued" dialogues
 			MegaeraMeeting04Cont = {
 				SuperPriority = true,
 				PlayOnce = true,
@@ -25084,7 +25106,6 @@ mod.NPCData = mod.NPCData or {
 			MegaeraMeeting04_Alt = {
 				PlayOnce = true,
 				RequiredAnyTextLines = { "MegaeraMeeting02" },
-				RequiredFalseTextLines = { "MegaeraGift05" },
 				RequiredMaxCompletedRuns = 3,
 				RequiredFalseTextLines = { "MegaeraMeeting04" },
 				TeleportToId = 421077,
@@ -25150,7 +25171,7 @@ mod.NPCData = mod.NPCData or {
 					"There's no returning to the way things used to be, Zag. Now can I offer you some words of advice? Get over yourself. And get ready to die out there next time we meet."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraMirrorProgress01 = {
@@ -25199,7 +25220,7 @@ mod.NPCData = mod.NPCData or {
 					"Call it what you want. You're doing what you have to do. I understand. But you are not stronger than me. You just have more help."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			-- three variants below based on relationship
@@ -25252,7 +25273,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You give yourself far too much credit, Zagreus. Leave me alone."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			-- high relationship
 			MegaeraMirrorProgress02B = {
@@ -25305,7 +25326,7 @@ mod.NPCData = mod.NPCData or {
 					"If you think you know me so well, Zagreus, then you ought to know better than to keep this conversation going with me, now."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			-- became close relationship
 			MegaeraMirrorProgress02C = {
@@ -25378,7 +25399,7 @@ mod.NPCData = mod.NPCData or {
 					"You are delusional. I'll never understand you or your father. Anyway, if you're looking for more punishment, you know where to find me."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraPactProgress01_B = {
 				PlayOnce = true,
@@ -25415,7 +25436,7 @@ mod.NPCData = mod.NPCData or {
 					"You are delusional. I'll never understand you or your father. Anyway, if you're looking for more punishment, you know where to find me."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutPact01 = {
@@ -25468,7 +25489,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "The Extreme Measures condition... you wouldn't dare. Do you have any idea what you're talking about?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraRunProgress01 = {
@@ -25509,7 +25530,7 @@ mod.NPCData = mod.NPCData or {
 					"How poetic. You could have visited as part of your responsibilities. Instead, you trespass. Incurring wrath of fallen champions in service of your father."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraRunProgress01_Alt = {
 				PlayOnce = true,
@@ -25550,7 +25571,7 @@ mod.NPCData = mod.NPCData or {
 					"How poetic. You could have visited as part of your responsibilities. Instead, you trespass. Incurring wrath of fallen champions in service of your father."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraRunProgress02 = {
@@ -25588,7 +25609,7 @@ mod.NPCData = mod.NPCData or {
 					"An interesting coincidence. At any rate, that's one less problem for the rest of us to deal with. Until the Satyrs all come back, at least, which won't be long."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraRunProgress03 = {
@@ -25623,7 +25644,7 @@ mod.NPCData = mod.NPCData or {
 					"{#DialogueItalicFormat}Appointment{#PreviousFormat}. Indeed. Don't keep me waiting. For all your toil, I'm sure you're not even close."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraRunCleared01 = {
@@ -25663,7 +25684,7 @@ mod.NPCData = mod.NPCData or {
 					"He's not going to take this lying down. He'll find some way to take it out on you. On all of us. You watch yourself, or all of us will pay."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraRunCleared01_Alt = {
 				Priority = true,
@@ -25702,7 +25723,7 @@ mod.NPCData = mod.NPCData or {
 					"He's not going to take this lying down. He'll find some way to take it out on you. On all of us. You watch yourself, or all of us will pay."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			-- alt below for early clears
@@ -25747,7 +25768,7 @@ mod.NPCData = mod.NPCData or {
 					"So you're going back out there, again. Well, it's your business, not mine. For your sake... I hope it's worth it."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraAboutPersephoneMeeting01_Alt = {
 				Priority = true,
@@ -25791,7 +25812,7 @@ mod.NPCData = mod.NPCData or {
 					"So you're going back out there, again. Well, it's your business, not mine. For your sake... I hope it's worth it."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutPersephoneMeeting02 = {
@@ -25834,7 +25855,7 @@ mod.NPCData = mod.NPCData or {
 					"How is it that this place has this secret Queen for I don't know how long, then suddenly she just vanishes, and no one speaks a word of it?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraAboutPersephoneMeeting03 = {
 				PlayOnce = true,
@@ -25870,7 +25891,7 @@ mod.NPCData = mod.NPCData or {
 					"Don't, it's... it isn't necessary. She doesn't need you telling her about this place. Sounds to me like she is better off without."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraPostEnding01 = {
@@ -25910,7 +25931,7 @@ mod.NPCData = mod.NPCData or {
 					"I didn't think you'd have it in you. To leave this place for good. But I didn't think you'd take responsibility for anything, either. Anyway... we'll just have to kill each other more officially, I guess."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			-- skipped Ending02
 			MegaeraPostEnding03 = {
@@ -25965,7 +25986,7 @@ mod.NPCData = mod.NPCData or {
 					"The Queen always gave Nyx her space. Your father, though... I don't know what it'll be like for him, if she decides to stick around this time."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraPostEpilogue01 = {
@@ -26001,7 +26022,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "By making you unfairly stronger by the time you try to get through me?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutRelationship01 = {
@@ -26061,7 +26082,7 @@ mod.NPCData = mod.NPCData or {
 					"Wasn't planning on sliding back into the insensitive nonsense of youth, so I don't think the second thing will be a problem. But the first... can we really just keep killing each other out there like nothing happened?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraAboutRelationship01B = {
 				Priority = true,
@@ -26100,7 +26121,7 @@ mod.NPCData = mod.NPCData or {
 					"Don't be an idiot, and you won't. We've been through a lot together. Grown, maybe. This particular relationship... it can't die so easily, I think."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutRelationship02 = {
@@ -26168,7 +26189,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "We've already crossed that bridge, I think. Stop worrying."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutRelationship03 = {
@@ -26215,7 +26236,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "...Shut up."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutZagreusPromotion01 = {
@@ -26258,7 +26279,7 @@ mod.NPCData = mod.NPCData or {
 					"I'm serious. You should be proud. Not arrogantly proud to a fatal fault or anything, but a little bit is all right in a case like this."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutRepeatedLosses01 = {
@@ -26305,7 +26326,7 @@ mod.NPCData = mod.NPCData or {
 					"You know what doesn't make any sense? That you keep beating me. I must be getting sloppy if I'm that predictable... too bad none of the other wretches I have to deal with put up much of a fight."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutSisters01 = {
@@ -26358,7 +26379,7 @@ mod.NPCData = mod.NPCData or {
 					"Your family cut their Titan parents into pieces and then scattered them in Tartarus. Remember that when next you tell me about family."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutSisters02 = {
@@ -26403,7 +26424,7 @@ mod.NPCData = mod.NPCData or {
 					"{#DialogueItalicFormat}Hm{#PreviousFormat}, let's not get carried away. A work assignment forcing our cooperation is not exactly a big step in the quality of our relationship."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutAlecto01 = {
@@ -26444,7 +26465,7 @@ mod.NPCData = mod.NPCData or {
 					"She won't be learning anything from me. The contempt you get from her is unconditional. I learned not to take it personally."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutTisiphone01 = {
@@ -26484,7 +26505,7 @@ mod.NPCData = mod.NPCData or {
 					"I get what you're insinuating, Zagreus. I'm nothing like her. Not even close. And don't you dare compare the two of us again."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraAboutTisiphone02 = {
 				PlayOnce = true,
@@ -26528,7 +26549,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You've tried already, haven't you? She's pretty dead-set on the murder thing, then?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutThanatos01 = {
@@ -26575,7 +26596,7 @@ mod.NPCData = mod.NPCData or {
 					"If that's not the experience mortals are looking for, they need only keep their oaths and not betray the ones they're closest to. It's not that hard."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutHypnos01 = {
@@ -26612,7 +26633,7 @@ mod.NPCData = mod.NPCData or {
 					"I'm still in a state of shock. I'll have to pick up the pieces somehow, and figure out how to get on with my existence."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutOrpheus01 = {
@@ -26648,7 +26669,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "This lounge is fine. And the singing... not used to it yet."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraAboutSingersReunionQuestComplete01 = {
 				PlayOnce = true,
@@ -26693,7 +26714,7 @@ mod.NPCData = mod.NPCData or {
 					"I'm doing no such thing. Father wanted me involved in all this business with his pacts, and presiding over the dead, then fine. But I'll do it my way."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraGhostAdminProgress01 = {
@@ -26746,7 +26767,7 @@ mod.NPCData = mod.NPCData or {
 					"How very selfless of you, Zagreus. Soon doubtless it'll be your portrait hanging on that wall back there."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraGhostAdminProgress02 = {
 				PlayOnce = true,
@@ -26782,7 +26803,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I'm still getting used to it. But, no."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutLegendary01 = {
@@ -26818,7 +26839,7 @@ mod.NPCData = mod.NPCData or {
 					"That's good. And yes, the bats around here, they and I have always shared an understanding, you could say. I usually care for the pups myself. But Battie? She seemed more your style."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutDusaVsNyx01 = {
@@ -26871,7 +26892,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "It's not my business, Zag. Not even for Dusa. But you watch yourself."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraAboutDusaVsNyx02 = {
 				Priority = true,
@@ -26911,7 +26932,7 @@ mod.NPCData = mod.NPCData or {
 					"I don't think so. Nyx warned you. {#DialogueItalicFormat}Ungh{#PreviousFormat}, you know I can't go to her myself about this, so {#DialogueItalicFormat}fix it{#PreviousFormat}!"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 			MegaeraAboutDusaVsNyx03 = {
 				Priority = true,
@@ -26952,7 +26973,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You don't sound all that pleased..."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutDusaPromotion01 = {
@@ -26999,7 +27020,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Not doing it for you. Though... thanks for looking out for her, yourself."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutDusaLegendary01 = {
@@ -27043,7 +27064,7 @@ mod.NPCData = mod.NPCData or {
 					"Eugh, she said the same thing to me. Look, you know what, fine. If that's the only way to get her to take a break from this place, I guess it's for the best."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutSisyphus01 = {
@@ -27093,7 +27114,7 @@ mod.NPCData = mod.NPCData or {
 					"No coming back from certain crimes, indeed. Though you may have more mercy in your heart to spare than I in mine."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			MegaeraAboutSisyphusLiberationQuest01 = {
@@ -27140,7 +27161,7 @@ mod.NPCData = mod.NPCData or {
 					"I don't know what you see in him, I swear. But you don't need to ask such things of me. If you can overturn his sentence with Lord Hades, I'd like nothing better than to never see that miserable shade again."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.Sulking,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.Sulking,
 			},
 
 			-- alt below
@@ -28100,7 +28121,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Can't you see I'm busy now with more important things than you?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat02 = {
 				RequiredFalseTextLines = { "MegaeraGift06", },
@@ -28111,7 +28132,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "May I help you somehow, Zagreus? Because if not, why don't you leave me be."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat02_Alt = {
 				-- Priority = true,
@@ -28124,7 +28145,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "May I help you somehow, Zagreus, because if not, why don't you leave me be?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat03 = {
 				RequiredFalseTextLines = { "MegaeraGift06", },
@@ -28135,7 +28156,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Do I look like I'm in the mood to chat?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat03_Alt = {
 				-- Priority = true,
@@ -28148,7 +28169,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Do I look like I'm in the mood to chat?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat04 = {
 				RequiredFalseTextLines = { "MegaeraGift06", },
@@ -28161,7 +28182,7 @@ mod.NPCData = mod.NPCData or {
 					"You've come to gloat, I guess? Too bad I can't just kill you where you stand, within this blasted House."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat05 = {
 				RequiredFalseTextLines = { "MegaeraGift06", },
@@ -28173,7 +28194,7 @@ mod.NPCData = mod.NPCData or {
 					"Have I somehow created the impression that I wish to speak with you? Because if so, there's been a terrible mistake."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat06 = {
 				RequiredFalseTextLines = { "MegaeraGift06", },
@@ -28184,7 +28205,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "There must be someone else whose time you could be wasting, Zagreus."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat07 = {
 				RequiredFalseTextLines = { "MegaeraGift06", },
@@ -28195,7 +28216,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "It's embarrassing enough having returned here, much less to be seen talking to you."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat08 = {
 				RequiredFalseTextLines = { "MegaeraGift06", },
@@ -28206,7 +28227,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Sooner or later when we meet out there again, I'll kill you, Zagreus."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat09 = {
 				RequiredFalseTextLines = { "MegaeraGift06", },
@@ -28219,7 +28240,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "If I have something I decide I wish to tell you, Zagreus, I'll make it clear. Leave me alone."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat10 = {
 				RequiredFalseTextLines = { "MegaeraGift06", },
@@ -28230,7 +28251,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Your father's absolutely right about you, Zag. You are and always will be an insufferable brat."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat11 = {
 				RequiredFalseTextLines = { "MegaeraGift06", },
@@ -28241,7 +28262,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Don't test me any further, Zagreus. You know the rules, no violence in the House."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat12 = {
 				-- Priority = true,
@@ -28253,7 +28274,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Blood and darkness, leave me be, damn you. I've better things to do than occupy your time."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			-- relationship improved
 			MegChat13 = {
@@ -28266,7 +28287,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I have to hand it to you, Zag. You've gotten strong. Sending me all the way back here like this."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat14 = {
 				RequiredTextLines = { "MegaeraGift05", },
@@ -28278,7 +28299,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Nyx must be worried, seeing us like this. Lately always at each other's throats."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat15 = {
 				RequiredTextLines = { "MegaeraGift06", },
@@ -28289,7 +28310,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Oh don't worry, I'll be back in fighting shape in no time, Zag."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat16 = {
 				-- Priority = true,
@@ -28302,7 +28323,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Your father's not been very pleased with my performance lately as you might have guessed."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat17 = {
 				-- Priority = true,
@@ -28316,7 +28337,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Sometimes, Zagreus, I'm almost not detested by the sight and smell of you."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat18 = {
 				RequiredTextLines = { "MegaeraGift03" },
@@ -28328,7 +28349,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I shouldn't be back here right now. No thanks to you, of course."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat19 = {
 				RequiredTextLines = { "MegaeraGift04" },
@@ -28340,7 +28361,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I'm keeping careful track of all the times you've sent me home like this."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat20 = {
 				RequiredTextLines = { "MegaeraGift04" },
@@ -28351,7 +28372,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "At least the House seems well enough in order since I saw it last."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat21 = {
 				RequiredTextLines = { "MegaeraGift06" },
@@ -28362,7 +28383,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "We keep on running into one another lately, don't we Zag."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat22 = {
 				RequiredTextLines = { "MegaeraGift06", },
@@ -28375,7 +28396,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You got me fair and square last time. Though I'm a little bitter anyway."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat23 = {
 				-- Priority = true,
@@ -28388,7 +28409,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You know we can't be seen together like this, Zagreus."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat24 = {
 				-- Priority = true,
@@ -28402,7 +28423,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I should be whipping Sisyphus' lazy hide right now instead of standing here."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegChat25 = {
 				RequiredTextLines = { "MegaeraGift05" },
@@ -28413,7 +28434,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Don't like having to come back here quite this often, Zagreus."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 
 			-- standoffish
@@ -28425,7 +28446,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I'm not even remotely interested in chatting with you, Zagreus."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegStandoffish02 = {
 				-- Priority = true,
@@ -28436,7 +28457,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Why don't you go get out of here if you despise this place so much?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegStandoffish03 = {
 				-- Priority = true,
@@ -28448,7 +28469,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Don't you so much as dare talk to me."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegStandoffish04 = {
 				-- Priority = true,
@@ -28459,7 +28480,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Get out of my sight, Zagreus. And be thankful violence is prohibited in here."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegStandoffish05 = {
 				RequiredFalseTextLines = { "MegaeraGift05", },
@@ -28470,7 +28491,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Right now I wouldn't talk to me if I were you."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegStandoffish06 = {
 				RequiredFalseTextLines = { "MegaeraGift05", },
@@ -28480,7 +28501,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I think you'd best be on your way right now, you understand me, Zagreus?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegStandoffish07 = {
 				-- Priority = true,
@@ -28491,7 +28512,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I think you've wasted quite enough of both our time, don't you?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegStandoffish08 = {
 				RequiredFalseTextLines = { "MegaeraGift05", },
@@ -28501,7 +28522,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Whatever's on your mind, believe me, it's the last thing that I want to hear right now."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 
 			-- max relationship
@@ -28516,7 +28537,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "I can't believe you got me like that, Zag. I'm going to get you back."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat02 = {
 				RequiredTextLines = { "MegaeraGift10", },
@@ -28528,7 +28549,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Just here licking my wounds until we meet again out there."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat03 = {
 				RequiredTextLines = { "MegaeraGift10", },
@@ -28541,7 +28562,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Heard you made it pretty far last time."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat04 = {
 				RequiredTextLines = { "MegaeraGift10", },
@@ -28555,7 +28576,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You almost got there last time, didn't you."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat05 = {
 				RequiredTextLines = { "MegaeraGift10", },
@@ -28569,7 +28590,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Heard you made it all the way last time."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat06 = {
 				RequiredTextLines = { "MegaeraGift10", },
@@ -28583,7 +28604,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You're back. Got all the way to the surface back there, huh?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat07 = {
 				RequiredTextLines = { "MegaeraGift10", },
@@ -28596,7 +28617,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Keep letting down my guard against you, Zag."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat08 = {
 				RequiredTextLines = { "MegaeraGift10", },
@@ -28609,7 +28630,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Went all the way to the top last time, huh? Not bad at all."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat09 = {
 				RequiredTextLines = { "MegaeraGift10", },
@@ -28627,7 +28648,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "{#DialogueItalicFormat}Ugh{#PreviousFormat}, I don't remember the last time I beat you, Zag..."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat10 = {
 				RequiredTextLines = { "MegaeraGift10", },
@@ -28639,7 +28660,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Break's just about over. See you out there?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat11 = {
 				RequiredTextLines = { "MegaeraGift10", },
@@ -28651,7 +28672,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Hypnos give you any good pointers lately?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat12 = {
 				RequiredTextLines = { "MegaeraGift08", },
@@ -28663,7 +28684,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Taking a break from putting up with Alecto out there..."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat13 = {
 				RequiredTextLines = { "MegaeraGift10", "DusaLoungeRenovationQuestComplete" },
@@ -28675,7 +28696,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Got to say, I like what you and Dusa did with this place."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat14 = {
 				RequiredTextLines = { "MegaeraGift10" },
@@ -28688,7 +28709,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "Didn't rough you up too bad last time, did I?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat15 = {
 				RequiredTextLines = { "MegaeraGift10" },
@@ -28701,7 +28722,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "You showed Alecto again. She must be so mad."
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 			MegMaxChat16 = {
 				RequiredTextLines = { "MegaeraGift10" },
@@ -28713,7 +28734,7 @@ mod.NPCData = mod.NPCData or {
 					Text = "About ready to go another round with me out there?"
 				},
 				OnQueuedFunctionName = "CheckDistanceTriggerThread",
-				OnQueuedFunctionArgs = PresetEventArgs.SulkingRepeatable,
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SulkingRepeatable,
 			},
 
 			-- intermission scenes

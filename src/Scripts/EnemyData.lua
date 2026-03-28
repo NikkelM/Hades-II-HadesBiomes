@@ -229,6 +229,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			"InteractTextLineSets",
 			"RepeatableTextLineSets",
 			"GiftTextLineSets",
+			"InteractVoiceLines",
 		}
 		for _, property in ipairs(bossPresentationProperties) do
 			if enemyData[property] then
