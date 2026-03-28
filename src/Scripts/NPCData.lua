@@ -1676,16 +1676,21 @@ local npcModifications = {
 		ActivateRequirements = {
 			RequiredAnyKillsThisRun = mod.NilValue,
 			-- TODO: Make sure to uncomment before releasing
-			-- {
-			-- 	Path = { "CurrentRun", "EnemyKills" },
-			-- 	HasAny = { "Harpy", "Harpy2" }
-			-- },
-			-- -- Can't appear the first time you reach Styx (this is incremented before the check, which is the reason for the >1 check)
-			-- {
-			-- 	Path = { "GameState", "RoomsEntered", "D_Hub" },
-			-- 	Comparison = ">",
-			-- 	Value = 1,
-			-- },
+			{
+				Path = { "CurrentRun", "EnemyKills" },
+				HasAny = { "Harpy", "Harpy2" }
+			},
+			-- Can't appear the first time you reach Styx (this is incremented before the check, which is the reason for using > 1)
+			{
+				Path = { "GameState", "RoomsEntered", "D_Hub" },
+				Comparison = ">",
+				Value = 1,
+			},
+			-- Can't appear if she left after a dialogue (e.g. romance)
+			-- Set in game.ExitNPCPresentation()
+			{
+				PathFalse = { "CurrentRun", "ModsNikkelMHadesBiomesExitNPCRecord", "NPC_FurySister_01" },
+			},
 		},
 		SpecialInteractFunctionName = "SpecialInteractSalute",
 		SpecialInteractGameStateRequirements = {
@@ -2434,8 +2439,116 @@ local npcModifications = {
 			MegChat03_Alt = {
 				TeleportToId = mod.NilValue,
 			},
+			-- Romance
+			MegIntermissionChat01 = {
+				AreIdsAlive = mod.NilValue,
+				RequiredFalseTextLinesThisRun = mod.NilValue,
+				RequiredFalseTextLinesLastRun = { "PersephoneMeeting08" },
+				[1] = {
+					SkipContextArt = true,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = 390082,
+					PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+				},
+			},
+			MegIntermissionChat02 = {
+				AreIdsAlive = mod.NilValue,
+				RequiredFalseTextLinesThisRun = mod.NilValue,
+				RequiredFalseTextLinesLastRun = { "PersephoneMeeting08" },
+				[1] = {
+					SkipContextArt = true,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = 390082,
+					PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+				},
+			},
+			MegIntermissionChat03 = {
+				AreIdsAlive = mod.NilValue,
+				RequiredFalseTextLinesThisRun = mod.NilValue,
+				RequiredFalseTextLinesLastRun = { "PersephoneMeeting08" },
+				[1] = {
+					SkipContextArt = true,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = 390082,
+					PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+				},
+			},
+			MegIntermissionChat04 = {
+				AreIdsAlive = mod.NilValue,
+				RequiredFalseTextLinesThisRun = mod.NilValue,
+				RequiredFalseTextLinesLastRun = { "PersephoneMeeting08" },
+				[1] = {
+					SkipContextArt = true,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = 390082,
+					PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+				},
+			},
+			MegIntermissionChat05 = {
+				AreIdsAlive = mod.NilValue,
+				RequiredFalseTextLinesThisRun = mod.NilValue,
+				RequiredFalseTextLinesLastRun = { "PersephoneMeeting08" },
+				[1] = {
+					SkipContextArt = true,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = 390082,
+					PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+				},
+			},
+			MegIntermissionChat06 = {
+				AreIdsAlive = mod.NilValue,
+				RequiredFalseTextLinesThisRun = mod.NilValue,
+				RequiredFalseTextLinesLastRun = { "PersephoneMeeting08" },
+				[1] = {
+					SkipContextArt = true,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "BedroomIntermissionPresentation",
+					PostLineThreadedFunctionName = mod.NilValue,
+				},
+				[2] = {
+					SkipContextArt = true,
+					LoadMap = mod.NilValue,
+					SpawnOnId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = 390082,
+					PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
+				},
+			},
 		},
-		-- TODO: Intermission scenes (same for InteractTextLineSets)
 		GiftTextLineSets = {
 			MegaeraGift01 = {
 				UnfilledIcon = "EmptyHeartWithGiftIcon",
@@ -2445,7 +2558,6 @@ local npcModifications = {
 				GameStateRequirements = {
 					{
 						Path = { "GameState", "TextLinesRecord", },
-						-- TODO: Bedroom scenes as for Thanatos, Meg has three (plus variants)
 						HasAny = { "MegaeraBedroom02", "MegaeraBedroom02B" }
 					},
 				},

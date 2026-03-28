@@ -232,6 +232,9 @@ function game.ExitNPCPresentation(source, args)
 		Teleport({ Id = args.AltObjectId, DestinationId = args.TeleportToId })
 	end
 
+	game.CurrentRun.ModsNikkelMHadesBiomesExitNPCRecord = game.CurrentRun.ModsNikkelMHadesBiomesExitNPCRecord or {}
+	game.CurrentRun.ModsNikkelMHadesBiomesExitNPCRecord[source.Name] = true
+
 	game.wait(args.FullFadeTime or 1.5)
 	game.thread(game.PlayVoiceLines, HeroVoiceLines[args.HeroVoiceLines])
 	FadeIn({ Duration = args.FadeInTime or 1.0 })
