@@ -166,6 +166,9 @@ function mod.HasSeenRoom(roomName, excludeThisRun)
 end
 
 function mod.HasSeenRoomEarlierInRun(run, roomName)
+	if run == nil then
+		return false
+	end
 	if run.RoomCountCache[roomName] ~= nil and run.RoomCountCache[roomName] > 0 then
 		return true
 	end
@@ -173,6 +176,9 @@ function mod.HasSeenRoomEarlierInRun(run, roomName)
 end
 
 function mod.HasSeenRoomInRun(run, roomName)
+	if run == nil then
+		return false
+	end
 	if run.CurrentRoom ~= nil and run.CurrentRoom.Name == roomName then
 		return true
 	end
