@@ -1915,7 +1915,6 @@ local npcModifications = {
 				StatusAnimation = "StatusIconWantsToTalk",
 				GameStateRequirements = {
 					RequiredTextLines = { "Fury2FirstAppearance", "Fury3FirstAppearance" },
-					-- TODO: Check requirements for building trust voicelines
 					RequiredAnyTextLines = { "MegaeraBuildingTrust01", "MegaeraBuildingTrust01_B" },
 					RequiredFalseTextLines = { "MegaeraBedroom02", "MegaeraBedroom02B" },
 					RequiredMinRunsCleared = 1,
@@ -2428,6 +2427,9 @@ local npcModifications = {
 			},
 			MegaeraAboutRepeatedLosses01 = {
 				RequiredFalseDeathRoom = mod.NilValue,
+			},
+			MegaeraAboutDusaLegendary01 = {
+				RequiredAnyPlayedThisRun = mod.NilValue,
 			},
 
 			-- RepeatableTextLineSets
