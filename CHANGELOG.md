@@ -18,6 +18,7 @@ Other fixes and improvements:
 - Hades will now react to going Dark using "Unseen Ire" in the fight against him.
 - Melinoë will now react to Hades calling Cerberus to his aid.
 - Updated the description text of "Final Expense" offered by Orpheus to make it clearer all shop items are always discounted.
+- Added [zannc](https://github.com/excellent-ae) to the Credits for the [SharedKeepsakePort](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) contribution.
 - Balancing: Elysian Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Slightly reduced the chance for the "Popper" elite perk to appear.
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.

@@ -191,7 +191,7 @@ local newData = {
 	-- #region Credits
 	{
 		Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_NikkelM",
-		DisplayName = "a mod by",
+		DisplayName = "A Mod By",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_NikkelM",
@@ -199,11 +199,11 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_InGameCredits_Info_Special_Shoutouts",
-		DisplayName = "modding community contributors",
+		DisplayName = "Modding Community Contributors",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_iDeath",
-		DisplayName = "hell2modding",
+		DisplayName = "Hell2Modding",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_iDeath",
@@ -211,7 +211,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_burn",
-		DisplayName = "artwork",
+		DisplayName = "Art",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_burn",
@@ -219,11 +219,19 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_Magic",
-		DisplayName = "modutil",
+		DisplayName = "Modutil",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_Magic",
 		DisplayName = "Magic_Gonads",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_zannc",
+		DisplayName = "Keepsake Port",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_zannc",
+		DisplayName = "zannc",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_InGameCredits_Info_Community",
@@ -1316,11 +1324,13 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller",
 		DisplayName = "Resources Director's Familial Bond",
-		Description =	"Rise above your station by donating {!Icons.CosmeticsPointsIcon} and other resources collected during your travels through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} to the {$Keywords.Bartender}.",
+		Description =
+		"Rise above your station by donating {!Icons.CosmeticsPointsIcon} and other resources collected during your travels through the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} to the {$Keywords.Bartender}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller_Flavor",
-		Description =	"The {$Keywords.Bartender} and the Resources Director staying in your Father's house often meet and are on good terms, though who came up with the idea of rank advancements first is an often disputed topic of discussion.",
+		Description =
+		"The {$Keywords.Bartender} and the Resources Director staying in your Father's house often meet and are on good terms, though who came up with the idea of rank advancements first is an often disputed topic of discussion.",
 	},
 	-- #endregion
 
