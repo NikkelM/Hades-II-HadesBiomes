@@ -344,6 +344,11 @@ local roomReplacements = {
 
 	D_Hub = {
 		LegalEncounters = { "ModsNikkelMHadesBiomes_StyxHubShop" },
+		-- Same as EncounterDataStyx.ModsNikkelMHadesBiomes_StyxHubShop.StartRoomUnthreadedEvents
+		RestoreUnlockRoomExitsUnthreadedEvents = {
+			{ FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_FurySister_01" }, }, },
+			{ FunctionName = "CheckConversations" },
+		},
 		Binks = { "Cerberus_HubIdle_Bink", },
 
 		DistanceTriggers = {
@@ -739,6 +744,9 @@ local roomModifications = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
 		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicStyxModded", },
+
+		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Styx",
+
 		-- "/Leftovers/Object Ambiences/CreepyIslandAmbience"
 		Ambience = "{ff413738-f0b8-400b-bbd6-c660e227583c}",
 		ReverbValue = 2.0,

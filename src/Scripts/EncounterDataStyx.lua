@@ -124,6 +124,7 @@ local encounterModifications = {
 	},
 
 	ModsNikkelMHadesBiomes_StyxHubShop = {
+		-- Same as RoomDataStyx.D_Hub.RestoreUnlockRoomExitsUnthreadedEvents
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_FurySister_01" }, }, },
 			{ FunctionName = "CheckConversations" },

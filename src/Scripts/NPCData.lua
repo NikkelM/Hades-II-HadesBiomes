@@ -1748,7 +1748,6 @@ local npcModifications = {
 		RepulseOnMeleeInvulnerableHit = 150,
 		InteractTextLineSets = {
 			-- #region Moved from DeathLoopData - Romance
-			-- TODO: Dialogue Backgrounds, if we get any
 			-- Meg (Bedroom) / Meg in Bedroom / Bedroom Scenes
 			ModsNikkelMHadesBiomes_MegaeraBedroom01_Trigger = {
 				SuperPriority = true,

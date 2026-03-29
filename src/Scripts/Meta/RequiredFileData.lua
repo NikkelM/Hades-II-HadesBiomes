@@ -445,6 +445,7 @@ mod.CustomBikFileNames = {
 	"HadesBiomesDiaBackAsphodel",
 	"HadesBiomesDiaBackElysium",
 	"HadesBiomesDiaBackEChamps",
+	"HadesBiomesDiaBackStyxDHub",
 	"HadesBiomesDiaBackStyxBoss",
 	"RunHistoryInHadesModdedXX",
 	"RunHistoryInModdedFailXXX",

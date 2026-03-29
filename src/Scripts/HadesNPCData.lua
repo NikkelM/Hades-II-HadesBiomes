@@ -2,13 +2,12 @@
 mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- #region Patroclus
 	PatroclusMuttering = {
-		StatusAnimation = "StatusIconWantsToTalk",
 		DistanceTrigger = {
 			WithinDistance = 450,
-			VoiceLines = { GlobalVoiceLines = "PatroclusGreetingLines" }, --game.GlobalVoiceLines.PatroclusGreetingLines,
+			VoiceLines = { GlobalVoiceLines = "PatroclusGreetingLines" },
 		},
 		VoiceLines = {
-			[1] = { GlobalVoiceLines = "PatroclusMutteringLines" }, --game.GlobalVoiceLines.PatroclusMutteringLines,
+			[1] = { GlobalVoiceLines = "PatroclusMutteringLines" },
 		},
 	},
 	PatroclusMutteringRepeatable = {
@@ -152,7 +151,6 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- Manually replaced /VO/Persephone_xxxx with /VO/Megaera_2xxxx
 	PersephoneGardenFirstGreeting = {
 		WithinDistance = 1200,
-		-- StatusAnimation = "StatusIconWantsToTalk",
 		VoiceLines = {
 			{
 				-- Who's there?
@@ -161,21 +159,18 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			{
 				PreLineWait = 0.5,
 				UsePlayerSource = true,
-
 				-- Um... hello...?
 				{ Cue = "/VO/ZagreusField_3600" },
 			},
 			{
 				PreLineWait = 0.5,
 				BreakIfPlayed = true,
-
 				-- Hello, indeed!
 				{ Cue = "/VO/Megaera_20327" },
 			},
 			{
 				PreLineWait = 0.3,
 				UsePlayerSource = true,
-
 				-- Wait, can, can we just...?
 				{ Cue = "/VO/ZagreusField_3601" },
 			},
@@ -184,14 +179,12 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- Manually replaced /VO/Persephone_xxxx with /VO/Megaera_2xxxx
 	PersephoneGardenGreeting = {
 		WithinDistance = 1250,
-		-- PostTriggerAngleTowardTarget = true,
 		VoiceLines = {
 			RequiredTextLines = { "PersephoneFirstMeeting" },
 			{
 				RequiredQueuedTextLines = "PersephoneMeeting07",
 				PreLineAnim = "PersephoneGarden_Vulnerable",
 				ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
-
 				-- Zagreus...
 				{ Cue = "/VO/Megaera_20031" },
 			},
@@ -200,7 +193,6 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 					RequiredQueuedTextLines = "PersephoneMeeting08",
 					PreLineAnim = "PersephoneGarden_Vulnerable",
 					ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
-
 					-- You're back...?
 					{ Cue = "/VO/Megaera_20034" },
 				},
@@ -209,7 +201,6 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 					PreLineWait = 0.5,
 					UsePlayerSource = true,
 					BreakIfPlayed = true,
-
 					-- Mother!
 					{ Cue = "/VO/ZagreusField_3612" },
 				},
@@ -219,7 +210,6 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 				PreLineAnim = "PersephoneGarden_Greeting",
 				ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
 				RandomRemaining = true,
-
 				-- Zagreus!
 				{ Cue = "/VO/Megaera_20030", RequiredFalseQueuedTextLines = { "PersephoneMeeting06", "PersephoneMeeting07" } },
 				-- Zagreus?
@@ -247,7 +237,6 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 				BreakIfPlayed = true,
 				RandomRemaining = true,
 				RequiredQueuedTextLines = "PersephoneReturnsHome01",
-
 				-- Mother...?
 				{ Cue = "/VO/ZagreusField_3619" },
 			},
@@ -257,7 +246,6 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 				BreakIfPlayed = true,
 				RandomRemaining = true,
 				RequiredFalseQueuedTextLines = { "PersephoneReturnsHome01", "PersephoneMeeting08" },
-
 				-- It's me.
 				{ Cue = "/VO/ZagreusField_3613" },
 				-- I'm back.
@@ -352,8 +340,8 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- #region Megaera
 	Sulking = {
 		ChanceToTrigger = 0.5,
+		TriggerOnceThisRun = true,
 		PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
-		StatusAnimation = "StatusIconWantsToTalk",
 		WithinDistance = 550,
 		VoiceLines = {
 			[1] = game.GlobalVoiceLines.MegaeraGreetingVoiceLines,
@@ -361,6 +349,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	},
 	SulkingRepeatable = {
 		ChanceToTrigger = 0.5,
+		TriggerOnceThisRun = true,
 		PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
 		WithinDistance = 550,
 		VoiceLines = {
