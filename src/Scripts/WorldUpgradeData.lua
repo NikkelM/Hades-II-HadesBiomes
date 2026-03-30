@@ -66,7 +66,6 @@ local newIncantations = {
 			{
 				Path = { "GameState", "TextLinesRecord" },
 				-- In the first game, also required some dialogue with Hades (in the House) and Nyx, as well as an inspect point in the administrative chamber
-				-- TODO: The Megaera line is not yet obtainable as the NPC version of her does not yet exist
 				HasAll = { "SisyphusLiberationQuest_Beginning_01", "MegaeraAboutSisyphusLiberationQuest01", "SisyphusGift06" },
 			},
 		},

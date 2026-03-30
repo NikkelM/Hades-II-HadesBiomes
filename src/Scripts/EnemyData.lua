@@ -208,6 +208,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 					entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
 				elseif entry.Cue:find("^/VO/ZagreusHome_") then
 					entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+				elseif entry.Cue:find("^/VO/MegaeraHome_") then
+					entry.Cue = entry.Cue:gsub("^/VO/MegaeraHome_", "/VO/Megaera_3")
 				end
 			end
 		end
@@ -227,6 +229,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			"InteractTextLineSets",
 			"RepeatableTextLineSets",
 			"GiftTextLineSets",
+			"InteractVoiceLines",
 		}
 		for _, property in ipairs(bossPresentationProperties) do
 			if enemyData[property] then

@@ -354,42 +354,44 @@ local function copyHadesHelpTexts()
 	end
 end
 
--- Similar to copyHadesHelpTexts, but only copies entries for specific NPCs and voicelines
 local function copyHadesNPCTexts()
-	local fileName = "_NPCData"
+	local fileNames = { "_DeathLoopData", "_NPCData" }
 	for _, language in ipairs(mod.HelpTextLanguages) do
-		if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
-			mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
-			local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
-				"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
+		for _, fileName in ipairs(fileNames) do
+			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
+				mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
+				local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
+					"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
 
-			if rom.path.exists(hadesTwoHelpTextFilePath) then
-				mod.DebugPrint("File already exists and will not be overwritten: " .. hadesTwoHelpTextFilePath, 2)
-			else
-				local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder,
-					"Content\\Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
-				local hadesHelpTextDataRaw = mod.DecodeSjsonFile(hadesHelpTextFile)
+				if rom.path.exists(hadesTwoHelpTextFilePath) then
+					mod.DebugPrint("File already exists and will not be overwritten: " .. hadesTwoHelpTextFilePath, 2)
+				else
+					local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder,
+						"Content\\Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
+					local hadesHelpTextDataRaw = mod.DecodeSjsonFile(hadesHelpTextFile)
 
-				-- Need to do in-place to ensure the lang key is before the Texts key, otherwise the file is not loaded correctly by the game
-				local filteredTexts = {}
-				for _, entry in ipairs(hadesHelpTextDataRaw.Texts) do
-					if entry.Id then
-						entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
-						entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
-						entry.Id = entry.Id:gsub("Persephone_", "Megaera_2")
-						entry.Id = entry.Id:gsub("MegaeraHome_", "Megaera_3")
-						entry.Id = entry.Id:gsub("Nyx_", "Megaera_4")
-						entry.Id = entry.Id:gsub("Hades_", "HadesField_0")
-						entry.Id = entry.Id:gsub("Hypnos_", "Sisyphus_0")
-						entry.Id = entry.Id:gsub("ZagreusHome_", "ZagreusField_0")
+					-- Need to do in-place to ensure the lang key is before the Texts key, otherwise the file is not loaded correctly by the game
+					local filteredTexts = {}
+					for _, entry in ipairs(hadesHelpTextDataRaw.Texts) do
+						if entry.Id then
+							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
+							entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
+							entry.Id = entry.Id:gsub("Persephone_", "Megaera_2")
+							entry.Id = entry.Id:gsub("MegaeraHome_", "Megaera_3")
+							entry.Id = entry.Id:gsub("MegaeraExtra_", "Megaera_5")
+							entry.Id = entry.Id:gsub("Nyx_", "Megaera_4")
+							entry.Id = entry.Id:gsub("Hades_", "HadesField_0")
+							entry.Id = entry.Id:gsub("Hypnos_", "Sisyphus_0")
+							entry.Id = entry.Id:gsub("ZagreusHome_", "ZagreusField_0")
+						end
+						table.insert(filteredTexts, entry)
 					end
-					table.insert(filteredTexts, entry)
+
+					-- Replace the Texts array with the filtered version
+					hadesHelpTextDataRaw.Texts = filteredTexts
+
+					sjson.encode_file(hadesTwoHelpTextFilePath, hadesHelpTextDataRaw)
 				end
-
-				-- Replace the Texts array with the filtered version
-				hadesHelpTextDataRaw.Texts = filteredTexts
-
-				sjson.encode_file(hadesTwoHelpTextFilePath, hadesHelpTextDataRaw)
 			end
 		end
 	end

@@ -1473,9 +1473,113 @@ New map_text groups:
 
 #### D_Hub
 
-In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II.
+In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II, as well as add Megaera
 
 For ID `547487`, change the `Name` property from `NPC_Cerberus_Field_01` to `ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01`.
+
+Add the following after the last entry in the list, take care of the Angle and Location values for Megaera.
+The Impassable tile object is offscreen for when she needs to teleport away
+
+```
+{
+	"ActivateAtRange": false,
+	"ActivationRange": 600.0,
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 285.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Unit",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Standing"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 390082,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 9520.0,
+		"Y": 7220.0
+	},
+	"Name": "NPC_FurySister_01",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1.0,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": true,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Impassable"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 999111,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 0,
+		"Y": 0
+	},
+	"Name": "_Impassable_Tile64Iso",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+}
+```
 
 We also need to update the layering of some shop items, so they don't appear underneath the shop stele.
 

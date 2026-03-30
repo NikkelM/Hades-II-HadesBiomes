@@ -691,7 +691,9 @@ function mod.SurpriseNPCPresentation(source, args)
 end
 
 function mod.BedroomIntermissionApproach(source, args)
-	wait(0.35)
+	args = args or {}
+	local targetObjectId = args.ObjectId or source.ObjectId
+	game.wait(0.35)
 
 	AddInputBlock({ Name = "MoveHeroToRoomPosition" })
 	local initialSpeed = GetUnitDataValue({ Id = game.CurrentRun.Hero.ObjectId, Property = "Speed" })
@@ -700,12 +702,12 @@ function mod.BedroomIntermissionApproach(source, args)
 	SetUnitProperty({ Property = "MoveGraphic", Value = "MelinoeWalk", DestinationId = game.CurrentRun.Hero.ObjectId })
 	SetUnitProperty({ Property = "Speed", Value = 90, DestinationId = game.CurrentRun.Hero.ObjectId })
 
-	Move({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = source.ObjectId, Mode = "Precise" })
+	Move({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = targetObjectId, Mode = "Precise" })
 
-	local notifyName = "WithinDistance" .. source.ObjectId
+	local notifyName = "WithinDistance" .. targetObjectId
 	NotifyWithinDistance({
 		Id = game.CurrentRun.Hero.ObjectId,
-		DestinationId = source.ObjectId,
+		DestinationId = targetObjectId,
 		Distance = 100,
 		Notify = notifyName
 	})
@@ -722,7 +724,7 @@ function mod.BedroomIntermissionApproach(source, args)
 	wait(0.1)
 
 	SetAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "MelinoeIdleWeaponless" })
-	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = source.ObjectId })
+	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = args.AngleTowardTargetId or targetObjectId })
 end
 
 function mod.BedroomIntermissionPresentation(source, args)

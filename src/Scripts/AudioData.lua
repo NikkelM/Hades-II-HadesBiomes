@@ -197,6 +197,10 @@ local requiredGlobalVoiceLineModifications = {
 		Find = "Intercom_",
 		Replace = "HadesField_1",
 	},
+	MegaeraGreetingVoiceLines = {
+		Find = "MegaeraHome_",
+		Replace = "Megaera_3",
+	},
 	SurvivalEncounterStartVoiceLines = {
 		Find = "Intercom_",
 		Replace = "HadesField_1",
@@ -270,6 +274,8 @@ game.GlobalVoiceLines.HadesSighVoiceLines = game.GlobalVoiceLines.HadesSighVoice
 
 game.GlobalVoiceLines.MultiFuryFightStartVoiceLines = game.GlobalVoiceLines.MultiFuryFightStartVoiceLines or
 		mod.GlobalVoiceLines.MultiFuryFightStartVoiceLines
+game.GlobalVoiceLines.MegaeraGreetingVoiceLines = game.GlobalVoiceLines.MegaeraGreetingVoiceLines or
+		mod.GlobalVoiceLines.MegaeraGreetingVoiceLines
 
 game.GlobalVoiceLines.ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines = game.GlobalVoiceLines
 		.ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines or

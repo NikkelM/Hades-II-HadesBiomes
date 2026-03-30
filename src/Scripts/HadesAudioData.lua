@@ -1596,6 +1596,94 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Alecto_0302" },
 		}
 	},
+	MegaeraGreetingVoiceLines = {
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 1.0,
+			PlayOnceFromTableThisRun = true,
+			SuccessiveChanceToPlay = 0.25,
+			RequiredTextLines = { "MegaeraGift10" },
+			-- You miss me, Zagreus?
+			-- { Cue = "/VO/MegaeraHome_0239", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0239", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+			-- What brings you back here, hm?
+			{ Cue = "/VO/MegaeraHome_0240", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0240", }, },
+			-- What is it, Zagreus?
+			-- { Cue = "/VO/MegaeraHome_0241", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0241", }, },
+			-- Something you need from me?
+			{ Cue = "/VO/MegaeraHome_0242", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0242", }, },
+			-- May I help you, Zagreus?
+			-- { Cue = "/VO/MegaeraHome_0243", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0243", }, },
+			-- What can I do for you?
+			{ Cue = "/VO/MegaeraHome_0244", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0244", }, },
+		},
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 1.0,
+			PlayOnceFromTableThisRun = true,
+			-- Tsch...
+			{ Cue = "/VO/MegaeraHome_0053", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0053", }, },
+			-- You...
+			{ Cue = "/VO/MegaeraHome_0054", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0054", }, RequiredFalseTextLines = { "MegaeraGift10" }, },
+			-- Rnnggh...
+			{ Cue = "/VO/MegaeraHome_0055", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0055", }, RequiredFalseTextLines = { "MegaeraGift05" } },
+			-- Go away.
+			{ Cue = "/VO/MegaeraHome_0056", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0056", }, RequiredFalseTextLines = { "MegaeraGift05" },                                                             RequiredMinCompletedRuns = 4 },
+			-- Hmph.
+			{ Cue = "/VO/MegaeraHome_0057", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0057", }, },
+			-- Hmm.
+			{ Cue = "/VO/MegaeraHome_0066", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0066", }, RequiredTextLines = { "MegaeraGift03" }, },
+			-- Yes?
+			{ Cue = "/VO/MegaeraHome_0067", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0067", }, RequiredMinCompletedRuns = 4 },
+			-- May I help you?
+			{ Cue = "/VO/MegaeraHome_0068", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0068", }, RequiredMinCompletedRuns = 4 },
+			-- Eh.
+			{ Cue = "/VO/MegaeraHome_0069", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0069", }, RequiredFalseTextLines = { "MegaeraGift05" } },
+			-- Khh.
+			{ Cue = "/VO/MegaeraHome_0070", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0070", }, RequiredFalseTextLines = { "MegaeraGift06" } },
+			-- What.
+			{ Cue = "/VO/MegaeraHome_0071", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0071", }, RequiredMinCompletedRuns = 4 },
+			-- Oh.
+			{ Cue = "/VO/MegaeraHome_0072", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0072", }, RequiredFalseTextLines = { "MegaeraGift07" } },
+			-- Zagreus.
+			-- { Cue = "/VO/MegaeraHome_0058", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0058", },  RequiredTextLines = { "MegaeraGift05" } },
+			-- You're back.
+			{ Cue = "/VO/MegaeraHome_0059", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0059", }, RequiredTextLines = { "MegaeraGift05" } },
+			-- You're back?
+			{ Cue = "/VO/MegaeraHome_0060", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0060", }, RequiredTextLines = { "MegaeraGift05" } },
+			-- Hmm.
+			{ Cue = "/VO/MegaeraHome_0061", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0061", }, RequiredTextLines = { "MegaeraGift05" } },
+			-- Yes...?
+			{ Cue = "/VO/MegaeraHome_0073", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0073", }, RequiredTextLines = { "MegaeraGift06" } },
+			-- Hard times.
+			{ Cue = "/VO/MegaeraHome_0075", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0075", }, RequiredTextLines = { "MegaeraGift06" } },
+			-- Home again.
+			-- { Cue = "/VO/MegaeraHome_0076", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0076", }, RequiredTextLines = { "MegaeraGift06" } },
+			-- Welcome back.
+			{ Cue = "/VO/MegaeraHome_0188", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0188", }, RequiredTextLines = { "MegaeraGift10" } },
+			-- Zagreus.
+			-- { Cue = "/VO/MegaeraHome_0189", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0189", }, RequiredTextLines = { "MegaeraGift07" } },
+			-- Hey you.
+			{ Cue = "/VO/MegaeraHome_0190", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0190", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+			-- Prince.
+			-- { Cue = "/VO/MegaeraHome_0191", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0191", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+			-- You're back?
+			{ Cue = "/VO/MegaeraHome_0192", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0192", }, RequiredTextLines = { "MegaeraGift07" } },
+			-- Hmm.
+			{ Cue = "/VO/MegaeraHome_0193", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0193", }, RequiredTextLines = { "MegaeraGift09" } },
+			-- Oh, hey.
+			{ Cue = "/VO/MegaeraHome_0194", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0194", }, RequiredTextLines = { "MegaeraGift10" } },
+			-- Come here.
+			{ Cue = "/VO/MegaeraHome_0195", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0195", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+			-- Come here, Zag.
+			-- { Cue = "/VO/MegaeraHome_0196", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0196", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+			-- Over here.
+			{ Cue = "/VO/MegaeraHome_0197", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0197", }, RequiredTextLines = { "MegaeraGift10" } },
+			-- Going to come talk to me?
+			{ Cue = "/VO/MegaeraHome_0198", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0198", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+		},
+	},
 	-- #endregion
 	-- #region Hydra/Lernie
 	ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines = {
