@@ -1,9 +1,4 @@
--- Add the setup function to the Hub room
-table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
-	FunctionName = _PLUGIN.guid .. "." .. "SpawnHadesRunStartDoor",
-})
-
--- Add the ending portrait function to the Hub_Main
+-- #region Ending sequence portrait event
 local endingPortraitOnLoadEvent = {
 	FunctionName = "StartDeathLoop",
 	Args = {
@@ -39,14 +34,21 @@ local endingPortraitOnLoadEvent = {
 	BreakIfPlayed = true,
 }
 table.insert(game.HubRoomData.Hub_Main.OnLoadEvents, 1, endingPortraitOnLoadEvent)
+-- #endregion
+
+-- #region Chaos Gate/Run start
+table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
+	FunctionName = _PLUGIN.guid .. "." .. "SpawnHadesRunStartDoor",
+})
 
 function mod.SpawnHadesRunStartDoor(source, args)
 	if not mod.HiddenConfig.IsValidInstallation then
-		mod.DebugPrint("The mod installation is invalid due to: " .. (mod.HiddenConfig.InstallationFailReason or "UnknownReason") .. ", not spawning the Hades run start door.", 2)
+		mod.DebugPrint(
+			"The mod installation is invalid due to: " ..
+			(mod.HiddenConfig.InstallationFailReason or "UnknownReason") .. ", not spawning the Hades run start door.", 2)
 		return false
 	end
 
-	-- Vow shrine would be: 589694
 	-- Run start door for the underworld
 	local spawnId = 420947
 
@@ -192,3 +194,115 @@ function mod.StartHadesRunSecretDoorPresentation(secretDoor, useAltDiveAnimation
 	RemoveInputBlock({ Name = "StartHadesRunSecretDoorPresentation" })
 	game.ToggleCombatControl({ "AdvancedTooltip" }, true, "LeaveRoom")
 end
+
+-- #endregion
+
+-- #region Skelly Statues
+table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
+	FunctionName = _PLUGIN.guid .. "." .. "SpawnHadesSkellyStatues",
+})
+
+function mod.SpawnHadesSkellyStatues(source, args)
+	if not mod.HiddenConfig.IsValidInstallation then
+		mod.DebugPrint(
+			"The mod installation is invalid due to: " ..
+			(mod.HiddenConfig.InstallationFailReason or "UnknownReason") .. ", not spawning the Skelly statues.", 2)
+		return false
+	end
+
+	-- Move the Mana Fountain to make space for the statues
+	local manaFountainId = GetIdsByType({ Name = "ManaFountain" })[1]
+	if manaFountainId ~= nil and manaFountainId ~= 0 then
+		Teleport({ Id = manaFountainId, DestinationId = manaFountainId, OffsetX = -50, OffsetY = 120 })
+	end
+
+	-- Run start door for the underworld
+	local spawnId = 420947
+
+	-- TODO: Conditionally spawn one or the other in each category - check how vanilla does it
+	-- TODO: Skelly dialogues for unlocking? Can I reuse existing voicelines from Hades and just slap them onto the commander?
+	-- TODO: When are they first added/unlocked - done one run with fear? Need to have completed? Check Hades and vanilla
+	-- TODO: When first added - freeze camera and do intro dialogue panning to them as for vanilla
+	-- TODO: Allow inspect/salute
+	-- #region First Statue/Bronze/8 Fear
+	-- local skellyStatueDraped01 = {}
+	-- skellyStatueDraped01.ObjectId = SpawnObstacle({
+	-- 	Name = "ModsNikkelMHadesBiomes_HouseStatueDraped01",
+	-- 	Group = "Standing",
+	-- 	DestinationId = spawnId,
+	-- 	OffsetX = -240,
+	-- 	OffsetY = -2050,
+	-- })
+	-- skellyStatueDraped01.ActivateIds = { skellyStatueDraped01.ObjectId }
+	-- -- Blue
+	-- SetHSV({ Id = skellyStatueDraped01.ObjectId, HSV = { 0.55, 0, 0.15 }, ValueChangeType = "Absolute" })
+	-- game.SetupObstacle(skellyStatueDraped01)
+
+	local skellyStatue01 = {}
+	skellyStatue01.ObjectId = SpawnObstacle({
+		Name = "ModsNikkelMHadesBiomes_HouseStatueSkelly01",
+		Group = "Standing",
+		DestinationId = spawnId,
+		OffsetX = -240,
+		OffsetY = -2050,
+	})
+	skellyStatue01.ActivateIds = { skellyStatue01.ObjectId }
+	SetScale({ Id = skellyStatue01.ObjectId, Fraction = 0.44 })
+	game.SetupObstacle(skellyStatue01)
+	-- #endregion
+
+	-- #region Second Statue/Silver/16 Fear
+	-- local skellyStatueDraped02 = {}
+	-- skellyStatueDraped02.ObjectId = SpawnObstacle({
+	-- 	Name = "ModsNikkelMHadesBiomes_HouseStatueDraped01",
+	-- 	Group = "Standing",
+	-- 	DestinationId = spawnId,
+	-- 	OffsetX = -70,
+	-- 	OffsetY = -2160,
+	-- })
+	-- skellyStatueDraped02.ActivateIds = { skellyStatueDraped02.ObjectId }
+	-- FlipHorizontal({ Id = skellyStatueDraped02.ObjectId })
+	-- -- Purple
+	-- SetHSV({ Id = skellyStatueDraped02.ObjectId, HSV = { 0.7, 0, 0 }, ValueChangeType = "Absolute" })
+	-- game.SetupObstacle(skellyStatueDraped02)
+
+	local skellyStatue02 = {}
+	skellyStatue02.ObjectId = SpawnObstacle({
+		Name = "ModsNikkelMHadesBiomes_HouseStatueSkelly02",
+		Group = "Standing",
+		DestinationId = spawnId,
+		OffsetX = -70,
+		OffsetY = -2160,
+	})
+	skellyStatue02.ActivateIds = { skellyStatue02.ObjectId }
+	SetScale({ Id = skellyStatue02.ObjectId, Fraction = 0.44 })
+	game.SetupObstacle(skellyStatue02)
+	-- #endregion
+
+	-- #region Third Statue/Gold/32 Fear
+	-- local skellyStatueDraped03 = {}
+	-- skellyStatueDraped03.ObjectId = SpawnObstacle({
+	-- 	Name = "ModsNikkelMHadesBiomes_HouseStatueDraped01",
+	-- 	Group = "Standing",
+	-- 	DestinationId = spawnId,
+	-- 	OffsetX = 150,
+	-- 	OffsetY = -2130,
+	-- })
+	-- skellyStatueDraped03.ActivateIds = { skellyStatueDraped03.ObjectId }
+	-- game.SetupObstacle(skellyStatueDraped03)
+
+	local skellyStatue03 = {}
+	skellyStatue03.ObjectId = SpawnObstacle({
+		Name = "ModsNikkelMHadesBiomes_HouseStatueSkelly04",
+		Group = "Standing",
+		DestinationId = spawnId,
+		OffsetX = 150,
+		OffsetY = -2130,
+	})
+	skellyStatue03.ActivateIds = { skellyStatue03.ObjectId }
+	SetScale({ Id = skellyStatue03.ObjectId, Fraction = 0.44 })
+	game.SetupObstacle(skellyStatue03)
+	-- #endregion
+end
+
+-- #endregion
