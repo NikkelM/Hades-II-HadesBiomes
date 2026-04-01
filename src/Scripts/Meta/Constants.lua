@@ -529,3 +529,10 @@ mod.InformalNPCRelationshipsM = {
 	"NPC_Thanatos_01",
 	"NPC_Orpheus_Story_01",
 }
+
+mod.SkellyStatueConversations = {
+	"ModsNikkelMHadesBiomes_HadesStatueIntro01",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil01",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil02",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil03",
+}

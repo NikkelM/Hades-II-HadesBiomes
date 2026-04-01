@@ -1,3 +1,4 @@
+-- #region Bounties/Testaments
 local newBountyTargetIcons = {
 	-- These must be the first encounter in the respective BountyData encounters list
 	BossHarpy1 = "GUIModded\\Screens\\Shrine\\BossHarpy",
@@ -124,3 +125,9 @@ for _, bountyEntry in ipairs(newBountyInsertOrder) do
 		table.insert(game.ScreenData.Shrine.BountyOrder, insertIndex, newBountyKey)
 	end
 end
+-- #endregion
+
+-- #region Skelly Statues/Gifts
+-- Fear requirements to unlock each of the three new statues
+game.ScreenData.Shrine.ModsNikkelMHadesBiomesShrinePointThresholds = { 8, 16, 32 }
+-- #endregion

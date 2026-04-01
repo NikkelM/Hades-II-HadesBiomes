@@ -37,7 +37,7 @@ mod.SubtitleCsvFileNameMappings = {
 	Eurydice = "Eurydice_",
 	-- Hades = "HadesField_2",
 	HadesField = "HadesField_",
-	-- Hypnos = "Sisyphus_0",
+	-- Hypnos = "Sisyphus_1",
 	Intercom = "HadesField_1",
 	MegaeraField = "MegaeraField_",
 	MegaeraHome = "Megaera_3",
@@ -754,4 +754,35 @@ mod.HelpTextLanguages = {
 	"pt-BR",
 	"ru",
 	"zh-CN"
+}
+
+-- Used in copyHadesNPCTexts. Keys are file names, values are speaker lookup tables (speaker = true)
+mod.NPCTextFileNames = {
+	_DeathLoopData = {
+		-- Hades = true,
+		Megaera = true,
+		-- Persephone = true,
+		Skelly = true,
+		-- Storyteller = true,
+		Thanatos = true,
+		Zagreus = true,
+	},
+	_NPCData = {
+		-- Achilles = true,
+		Charon = true,
+		-- Dusa = true,
+		Eurydice = true,
+		Hades = true,
+		-- Hypnos = true,
+		Megaera = true,
+		-- Nyx = true,
+		Orpheus = true,
+		Patroclus = true,
+		Persephone = true,
+		-- Scratch = true, -- This is a single Achilles line
+		Sisyphus = true,
+		Storyteller = true,
+		Thanatos = true,
+		Zagreus = true,
+	},
 }

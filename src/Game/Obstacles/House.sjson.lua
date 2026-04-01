@@ -12,6 +12,9 @@ local hadesObstacleAdditions = {
 		Name = "ModsNikkelMHadesBiomes_HouseStatueDraped01",
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 		DisplayInEditor = true,
+		Life = {
+			TriggerOnHit = true,
+		},
 		Thing = {
 			EditorOutlineDrawBounds = false,
 			Graphic = "NikkelM-HadesBiomesCosmetics\\Tilesets\\House\\House_StatueDraped_01",
@@ -29,6 +32,9 @@ local hadesObstacleAdditions = {
 		Name = "ModsNikkelMHadesBiomes_HouseStatueSkelly01",
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 		DisplayInEditor = true,
+		Life = {
+			TriggerOnHit = true,
+		},
 		Thing = {
 			EditorOutlineDrawBounds = false,
 			Graphic = "NikkelM-HadesBiomesCosmetics\\Tilesets\\House\\House_StatueSkelly_01",
@@ -46,6 +52,9 @@ local hadesObstacleAdditions = {
 		Name = "ModsNikkelMHadesBiomes_HouseStatueSkelly02",
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 		DisplayInEditor = true,
+		Life = {
+			TriggerOnHit = true,
+		},
 		Thing = {
 			EditorOutlineDrawBounds = false,
 			Graphic = "NikkelM-HadesBiomesCosmetics\\Tilesets\\House\\House_StatueSkelly_02",
@@ -63,6 +72,9 @@ local hadesObstacleAdditions = {
 		Name = "ModsNikkelMHadesBiomes_HouseStatueSkelly04",
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
 		DisplayInEditor = true,
+		Life = {
+			TriggerOnHit = true,
+		},
 		Thing = {
 			EditorOutlineDrawBounds = false,
 			Graphic = "NikkelM-HadesBiomesCosmetics\\Tilesets\\House\\House_StatueSkelly_04",
@@ -97,8 +109,6 @@ mod.AddTableKeysSkipDupes(hadesHouseObstacleTable.Obstacles, hadesObstacleAdditi
 -- local hadesTwoObstacleModifications = {}
 
 sjson.hook(hadesTwoHouseObstacleFile, function(data)
-	mod.RunInstallStep("House")
-
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["House"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

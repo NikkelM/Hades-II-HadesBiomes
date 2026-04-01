@@ -355,9 +355,8 @@ local function copyHadesHelpTexts()
 end
 
 local function copyHadesNPCTexts()
-	local fileNames = { "_DeathLoopData", "_NPCData" }
 	for _, language in ipairs(mod.HelpTextLanguages) do
-		for _, fileName in ipairs(fileNames) do
+		for fileName, allowedSpeakers in pairs(mod.NPCTextFileNames) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
 				local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
@@ -373,18 +372,19 @@ local function copyHadesNPCTexts()
 					-- Need to do in-place to ensure the lang key is before the Texts key, otherwise the file is not loaded correctly by the game
 					local filteredTexts = {}
 					for _, entry in ipairs(hadesHelpTextDataRaw.Texts) do
-						if entry.Id then
+						if entry.Id and entry.Speaker and allowedSpeakers[entry.Speaker] then
 							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
 							entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
 							entry.Id = entry.Id:gsub("Persephone_", "Megaera_2")
 							entry.Id = entry.Id:gsub("MegaeraHome_", "Megaera_3")
 							entry.Id = entry.Id:gsub("MegaeraExtra_", "Megaera_5")
-							entry.Id = entry.Id:gsub("Nyx_", "Megaera_4")
+							-- entry.Id = entry.Id:gsub("Nyx_", "Megaera_4")
 							entry.Id = entry.Id:gsub("Hades_", "HadesField_0")
-							entry.Id = entry.Id:gsub("Hypnos_", "Sisyphus_0")
+							entry.Id = entry.Id:gsub("Skelly_", "Sisyphus_0")
+							-- entry.Id = entry.Id:gsub("Hypnos_", "Sisyphus_1")
 							entry.Id = entry.Id:gsub("ZagreusHome_", "ZagreusField_0")
+							table.insert(filteredTexts, entry)
 						end
-						table.insert(filteredTexts, entry)
 					end
 
 					-- Replace the Texts array with the filtered version
