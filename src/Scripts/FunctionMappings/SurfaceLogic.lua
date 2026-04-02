@@ -316,9 +316,22 @@ function mod.CottageBloom()
 end
 
 function mod.TimePassesPresentation(source, args)
+	args = args or {}
 	FadeOut({ Color = game.Color.Black, Duration = 0.5 })
 	if args.GlobalVoiceLines ~= nil then
 		game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[args.GlobalVoiceLines])
+	end
+
+	if args.IsLoungeRevelryPresentation ~= nil then
+		game.wait(1)
+		PlaySound({ Name = args.Sound or "/SFX/Menu Sounds/Lounge_GlassWithIce" })
+		game.wait(0.5)
+		PlaySound({ Name = args.Sound or "/SFX/Menu Sounds/Lounge_BottleCork" })
+		game.wait(0.5)
+		PlaySound({ Name = args.Sound or "/SFX/Menu Sounds/Lounge_BottlePour" })
+		game.wait(1.0)
+		PlaySound({ Name = args.Sound2 or "/VO/Megaera_30230" })
+		game.wait(0.5)
 	end
 
 	if args.PersephoneMusicFullBlast ~= nil then

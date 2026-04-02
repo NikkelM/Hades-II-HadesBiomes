@@ -199,6 +199,14 @@ modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
 	end
 end)
 
+modutil.mod.Path.Wrap("RestoreUnlockRoomExits", function(base, currentRun, currentRoom)
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		game.RunEventsGeneric(game.RoomData[currentRoom.Name].RestoreUnlockRoomExitsUnthreadedEvents, currentRoom)
+	end
+
+	return base(currentRun, currentRoom)
+end)
+
 modutil.mod.Path.Wrap("DisableTrap", function(base, enemy)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.ModsNikkelMHadesBiomesIsModdedEnemy then
 		if enemy.ToggleTrap then

@@ -1596,6 +1596,94 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Alecto_0302" },
 		}
 	},
+	MegaeraGreetingVoiceLines = {
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 1.0,
+			PlayOnceFromTableThisRun = true,
+			SuccessiveChanceToPlay = 0.25,
+			RequiredTextLines = { "MegaeraGift10" },
+			-- You miss me, Zagreus?
+			-- { Cue = "/VO/MegaeraHome_0239", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0239", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+			-- What brings you back here, hm?
+			{ Cue = "/VO/MegaeraHome_0240", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0240", }, },
+			-- What is it, Zagreus?
+			-- { Cue = "/VO/MegaeraHome_0241", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0241", }, },
+			-- Something you need from me?
+			{ Cue = "/VO/MegaeraHome_0242", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0242", }, },
+			-- May I help you, Zagreus?
+			-- { Cue = "/VO/MegaeraHome_0243", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0243", }, },
+			-- What can I do for you?
+			{ Cue = "/VO/MegaeraHome_0244", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0244", }, },
+		},
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 1.0,
+			PlayOnceFromTableThisRun = true,
+			-- Tsch...
+			{ Cue = "/VO/MegaeraHome_0053", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0053", }, },
+			-- You...
+			{ Cue = "/VO/MegaeraHome_0054", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0054", }, RequiredFalseTextLines = { "MegaeraGift10" }, },
+			-- Rnnggh...
+			{ Cue = "/VO/MegaeraHome_0055", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0055", }, RequiredFalseTextLines = { "MegaeraGift05" } },
+			-- Go away.
+			{ Cue = "/VO/MegaeraHome_0056", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0056", }, RequiredFalseTextLines = { "MegaeraGift05" },                                                             RequiredMinCompletedRuns = 4 },
+			-- Hmph.
+			{ Cue = "/VO/MegaeraHome_0057", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0057", }, },
+			-- Hmm.
+			{ Cue = "/VO/MegaeraHome_0066", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0066", }, RequiredTextLines = { "MegaeraGift03" }, },
+			-- Yes?
+			{ Cue = "/VO/MegaeraHome_0067", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0067", }, RequiredMinCompletedRuns = 4 },
+			-- May I help you?
+			{ Cue = "/VO/MegaeraHome_0068", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0068", }, RequiredMinCompletedRuns = 4 },
+			-- Eh.
+			{ Cue = "/VO/MegaeraHome_0069", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0069", }, RequiredFalseTextLines = { "MegaeraGift05" } },
+			-- Khh.
+			{ Cue = "/VO/MegaeraHome_0070", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0070", }, RequiredFalseTextLines = { "MegaeraGift06" } },
+			-- What.
+			{ Cue = "/VO/MegaeraHome_0071", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0071", }, RequiredMinCompletedRuns = 4 },
+			-- Oh.
+			{ Cue = "/VO/MegaeraHome_0072", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0072", }, RequiredFalseTextLines = { "MegaeraGift07" } },
+			-- Zagreus.
+			-- { Cue = "/VO/MegaeraHome_0058", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0058", },  RequiredTextLines = { "MegaeraGift05" } },
+			-- You're back.
+			{ Cue = "/VO/MegaeraHome_0059", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0059", }, RequiredTextLines = { "MegaeraGift05" } },
+			-- You're back?
+			{ Cue = "/VO/MegaeraHome_0060", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0060", }, RequiredTextLines = { "MegaeraGift05" } },
+			-- Hmm.
+			{ Cue = "/VO/MegaeraHome_0061", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0061", }, RequiredTextLines = { "MegaeraGift05" } },
+			-- Yes...?
+			{ Cue = "/VO/MegaeraHome_0073", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0073", }, RequiredTextLines = { "MegaeraGift06" } },
+			-- Hard times.
+			{ Cue = "/VO/MegaeraHome_0075", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0075", }, RequiredTextLines = { "MegaeraGift06" } },
+			-- Home again.
+			-- { Cue = "/VO/MegaeraHome_0076", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0076", }, RequiredTextLines = { "MegaeraGift06" } },
+			-- Welcome back.
+			{ Cue = "/VO/MegaeraHome_0188", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0188", }, RequiredTextLines = { "MegaeraGift10" } },
+			-- Zagreus.
+			-- { Cue = "/VO/MegaeraHome_0189", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0189", }, RequiredTextLines = { "MegaeraGift07" } },
+			-- Hey you.
+			{ Cue = "/VO/MegaeraHome_0190", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0190", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+			-- Prince.
+			-- { Cue = "/VO/MegaeraHome_0191", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0191", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+			-- You're back?
+			{ Cue = "/VO/MegaeraHome_0192", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0192", }, RequiredTextLines = { "MegaeraGift07" } },
+			-- Hmm.
+			{ Cue = "/VO/MegaeraHome_0193", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0193", }, RequiredTextLines = { "MegaeraGift09" } },
+			-- Oh, hey.
+			{ Cue = "/VO/MegaeraHome_0194", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0194", }, RequiredTextLines = { "MegaeraGift10" } },
+			-- Come here.
+			{ Cue = "/VO/MegaeraHome_0195", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0195", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+			-- Come here, Zag.
+			-- { Cue = "/VO/MegaeraHome_0196", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0196", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+			-- Over here.
+			{ Cue = "/VO/MegaeraHome_0197", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0197", }, RequiredTextLines = { "MegaeraGift10" } },
+			-- Going to come talk to me?
+			{ Cue = "/VO/MegaeraHome_0198", RequiredFalsePlayedThisRoom = { "/VO/MegaeraHome_0198", }, RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" } },
+		},
+	},
 	-- #endregion
 	-- #region Hydra/Lernie
 	ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines = {
@@ -1795,6 +1883,42 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		AllowTalkOverTextLines = true,
 		-- Bye, Zag.
 		{ Cue = "/VO/ThanatosField_0236" },
+	},
+	-- Subset of ThanatosFarewells for his version in RoomOpening, when he leaves after the player picks up the reward without speaking to him
+	ModsNikkelMHadesBiomes_ThanatosFarewellsRoomOpening = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.75,
+		ObjectType = "NPC_Thanatos_01",
+		Queue = "Always",
+		-- I have to get back.
+		{ Cue = "/VO/Thanatos_0052" },
+		-- Go on.
+		{ Cue = "/VO/Thanatos_0053" },
+		-- I'm going.
+		{ Cue = "/VO/Thanatos_0058" },
+		-- Be seeing you.
+		{ Cue = "/VO/Thanatos_0060",      RequiredTextLines = { "ThanatosGift05" } },
+		-- I've got to go.
+		{ Cue = "/VO/Thanatos_0061",      RequiredTextLines = { "ThanatosGift05" } },
+		-- See you.
+		{ Cue = "/VO/Thanatos_0062",      RequiredTextLines = { "ThanatosGift06" } },
+		-- I'm off.
+		{ Cue = "/VO/ThanatosField_0237", RequiredTextLines = { "ThanatosGift06" }, },
+		-- Well, I'm off.
+		{ Cue = "/VO/ThanatosField_0238" },
+		-- I should be getting back.
+		{ Cue = "/VO/ThanatosField_0240", RequiredTextLines = { "ThanatosGift08" }, },
+		-- You have this.
+		{ Cue = "/VO/ThanatosField_0241", RequiredTextLines = { "ThanatosGift09" }, },
+		-- Ungh, I'm late.
+		{ Cue = "/VO/ThanatosField_0244", RequiredTextLines = { "ThanatosGift03" }, },
+		-- I'm gone.
+		{ Cue = "/VO/ThanatosField_0245" },
+		-- Till next time.
+		{ Cue = "/VO/ThanatosField_0180", RequiredAnyTextLines = { "ThanatosGift09" } },
+		-- You have this.
+		{ Cue = "/VO/ThanatosField_0182", RequiredAnyTextLines = { "ThanatosGift10" } },
 	},
 	-- #endregion
 	-- #region Patroclus
@@ -4879,5 +5003,130 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_1393", Text = "Return to shadow, now...!" },
 		},
 	},
+	-- #region Skelly Statues
+	-- When being shown the Skelly statues the first time
+	ModsNikkelMHadesBiomes_TrophyQuestUnlockedVoiceLines = {
+		{
+			{
+				UsePlayerSource = true,
+				PreLineWait = 0.4,
+				{ Cue = "/VO/Melinoe_0810", Text = "What...?" },
+			},
+			{
+				PreLineWait = 0.8,
+				ObjectType = "NPC_Skelly_01",
+				PreLineAnim = "Skelly_Explaining",
+				{ Cue = "/VO/Skelly_0300", Text = "At last, you are {#Emph}prepared{#Prev}, young one!", PlayFirst = true },
+			},
+			{
+				UsePlayerSource = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.4,
+				{ Cue = "/VO/Melinoe_3267", Text = "Commander, what is {#Emph}that?" },
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_TrophyLockedVoiceLines = {
+		{
+			UsePlayerSource = true,
+			RandomRemaining = true,
+			PreLineWait = 0.85,
+			{ Cue = "/VO/Melinoe_3518", Text = "I mustn't look..." },
+			{ Cue = "/VO/Melinoe_3519", Text = "I won't betray my vows." },
+			{ Cue = "/VO/Melinoe_3520", Text = "I've not yet earned the right." },
+		},
+	},
+	ModsNikkelMHadesBiomes_TrophyAdmirationVoiceLines = {
+		{
+			UsePlayerSource = true,
+			RandomRemaining = true,
+			PreLineWait = 0.85,
+			{ Cue = "/VO/Melinoe_3521", Text = "Quite a likeness..." },
+			{ Cue = "/VO/Melinoe_3279", Text = "Wow..." },
+			{ Cue = "/VO/Melinoe_3284", Text = "Huh..." },
+		},
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.35,
+			SuccessiveChanceToPlay = 0.85,
+			ObjectType = "NPC_Skelly_01",
+			{ Cue = "/VO/Skelly_0112", Text = "Behold...!" },
+			{ Cue = "/VO/Skelly_0113", Text = "Behold." },
+			{ Cue = "/VO/Skelly_0114", Text = "{#Emph}Behold!" },
+			{ Cue = "/VO/Skelly_0384", Text = "Pretty nice, {#Emph}huh?" },
+			{ Cue = "/VO/Skelly_0386", Text = "Look at them {#Emph}femurs!" },
+		},
+	},
+	ModsNikkelMHadesBiomes_TrophyUnlockedVoiceLines = {
+		Queue = "Interrupt",
+		AllowTalkOverTextLines = true,
+		{
+			-- statue 1
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil01" }
+				},
+				{
+					PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil02" }
+				},
+			},
+			{
+				UsePlayerSource = true,
+				PreLineWait = 0.4,
+				{ Cue = "/VO/Melinoe_3273", Text = "The deed is done...!" },
+			},
+			{
+				PreLineWait = 0.4,
+				ObjectType = "NPC_Skelly_01",
+				{ Cue = "/VO/Skelly_0309", Text = "And now... unto the Champion of Night, {#Emph}the spoils..." },
+			},
+			{
+				UsePlayerSource = true,
+				PreLineWait = 1.2,
+				{ Cue = "/VO/Melinoe_3274", Text = "Oh..." },
+			},
+		},
+		{
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil02" }
+				},
+				{
+					PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil03" }
+				},
+			},
+			-- statue 2
+			{
+				PreLineWait = 0.5,
+				ObjectType = "NPC_Skelly_01",
+				{ Cue = "/VO/Skelly_0314", Text = "Now, young one: Avert your eyes, lest you be smitten by the {#Emph}glory {#Prev}over here!" },
+			},
+			{
+				UsePlayerSource = true,
+				PreLineWait = 1.8,
+				{ Cue = "/VO/Melinoe_3279", Text = "Wow..." },
+			},
+		},
+		{
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil03" }
+				},
+			},
+			-- statue 3
+			{
+				PreLineWait = 0.73,
+				ObjectType = "NPC_Skelly_01",
+				{ Cue = "/VO/Skelly_0319", Text = "For your {#Emph}extraordinary {#Prev}feat, the most {#Emph}extraordinary Gift of all!" },
+			},
+			{
+				UsePlayerSource = true,
+				PreLineWait = 2.53,
+				{ Cue = "/VO/Melinoe_3284", Text = "{#Emph}Huh..." },
+			},
+		},
+	},
+	-- #endregion
 	-- #endregion
 }

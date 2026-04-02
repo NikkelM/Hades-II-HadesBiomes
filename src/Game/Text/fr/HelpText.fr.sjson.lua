@@ -172,7 +172,7 @@ local newData = {
 	-- #region Credits
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_NikkelM",
-	-- 	DisplayName = "a mod by",
+	-- 	DisplayName = "A Mod By",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_NikkelM",
@@ -180,11 +180,11 @@ local newData = {
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Info_Special_Shoutouts",
-	-- 	DisplayName = "modding community contributors",
+	-- 	DisplayName = "Modding Community Contributors",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_iDeath",
-	-- 	DisplayName = "hell2modding",
+	-- 	DisplayName = "Hell2Modding",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_iDeath",
@@ -192,7 +192,7 @@ local newData = {
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_burn",
-	-- 	DisplayName = "artwork",
+	-- 	DisplayName = "Art",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_burn",
@@ -200,19 +200,19 @@ local newData = {
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_Magic",
-	-- 	DisplayName = "modutil",
+	-- 	DisplayName = "Modutil",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_Magic",
 	-- 	DisplayName = "Magic_Gonads",
 	-- },
 	-- {
-	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_Magic",
-	-- 	DisplayName = "modutil",
+	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Craft_zannc",
+	-- 	DisplayName = "Keepsake Port",
 	-- },
 	-- {
-	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_Magic",
-	-- 	DisplayName = "Magic_Gonads",
+	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Name_zannc",
+	-- 	DisplayName = "zannc",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InGameCredits_Info_Community",
@@ -1785,6 +1785,21 @@ local newData = {
 	-- 	DisplayName = "Trial of Heavens",
 	-- },
 	-- #endregion
+	-- #endregion
+
+	-- #region Skelly Statues
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_01",
+	-- 	DisplayName = "Schelemeus, the Scholar",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_02",
+	-- 	DisplayName = "Call to Olympus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_03",
+	-- 	DisplayName = "The Great Commander",
+	-- },
 	-- #endregion
 }
 

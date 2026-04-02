@@ -139,6 +139,7 @@ local updatedCodexData = {}
 -- Manually copy some entries from other groups
 updatedCodexData.SavedEntries = {}
 updatedCodexData.SavedEntries.NPC_FurySister_01 = hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01
+updatedCodexData.SavedEntries.NPC_FurySister_01.ModsNikkelMHadesBiomesSkipShowKillCount = true
 updatedCodexData.SavedEntries.NPC_FurySister_01.Image = "ModsNikkelMHadesBiomes_" ..
 		updatedCodexData.SavedEntries.NPC_FurySister_01.Image
 

@@ -92,6 +92,15 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_Codex_BondForgedSisyphus",
 	-- 	DisplayName = "You and {$TempTextData.CharacterName} share a rock-solid bond.",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Codex_MegaeraUnlockHint01",
+	-- 	DisplayName =
+	-- 	"{$TempTextData.CharacterName} will not make time for {!TempTextData.ResourceIcon} while she feels that she alone bears her duty, with no one by her side."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Codex_BondForgedMegaera",
+	-- 	DisplayName = "You and {$TempTextData.CharacterName} share an intense bond.",
+	-- },
 	-- #endregion
 	-- #region Relationship Dialogue Choices
 	-- {
@@ -197,6 +206,23 @@ local newData = {
 		DisplayName =
 		"{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor} Υψηλότερος {!Icons.ShrinePoint}{#BoldFormatGraft}Φόβος{#Prev}:",
 	},
+	-- #endregion
+
+	-- #region Shrine screen Skelly statues
+	-- {
+	-- 	Id = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete",
+	-- 	DisplayName =
+	-- 	"Conquer the {#BoldFormatGraft}{$Keywords.ModsNikkelMHadesBiomesModdedRoute} {#Prev}— {#ShrineHighlightFormat}{$ActiveScreens.Shrine.NextModsNikkelMHadesBiomesModdedRouteSkellyShrinePointGoal}{!Icons.ShrinePoint}",
+	-- },
+	-- {
+	-- 	Id = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Insufficient",
+	-- 	DisplayName =
+	-- 	"Conquer the {#BoldFormatGraft}{$Keywords.ModsNikkelMHadesBiomesModdedRoute} {#Prev}— {#ShrineHighlightInsufficientFormat}{$ActiveScreens.Shrine.NextModsNikkelMHadesBiomesModdedRouteSkellyShrinePointGoal}{!Icons.ShrinePoint}",
+	-- },
+	-- {
+	-- 	Id = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Complete",
+	-- 	InheritFrom = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete",
+	-- },
 	-- #endregion
 }
 

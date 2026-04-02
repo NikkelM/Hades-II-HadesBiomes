@@ -207,7 +207,7 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
 		InheritFrom = "MusicMusicPlayerCharonShopThemeMusicPlayer",
 		Description =
-		"All items sold by {$Keywords.CharCharon} have a chance to cost less.",
+		"All items sold by {$Keywords.CharCharon} cost less.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoonDiscountStatDisplay",

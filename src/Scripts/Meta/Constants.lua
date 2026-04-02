@@ -17,7 +17,7 @@ mod.DefaultHiddenConfig = {
 
 -- This is the number of sjson.hook calls we normally make
 -- If the count in the cache/sjsonLoads.sjson file is different when OnAnyLoad is called, we know something went wrong and need to ask the user to restart the game
-mod.ExpectedNumSjsonHooks = 33
+mod.ExpectedNumSjsonHooks = 34
 
 -- All enemies have more health and armour in modded runs, scales with each biome
 -- Should not apply to bosses, which should opt out using ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and define their own modified health
@@ -473,6 +473,8 @@ mod.SharedKeepsakePortThanatosKeepsakeTrait = "zannc-SharedKeepsakePort-PerfectC
 mod.SharedKeepsakePortThanatosKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Thanatos"
 mod.SharedKeepsakePortOrpheusKeepsakeTrait = "zannc-SharedKeepsakePort-DistanceDamageKeepsake"
 mod.SharedKeepsakePortOrpheusKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Orpheus"
+mod.SharedKeepsakePortMegaeraKeepsakeTrait = "zannc-SharedKeepsakePort-LowHealthDamageKeepsake"
+mod.SharedKeepsakePortMegaeraKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Megaera"
 
 mod.SharedKeepsakePortKeepsakeTraitNames = {
 	mod.SharedKeepsakePortSisyphusKeepsakeTrait,
@@ -480,6 +482,7 @@ mod.SharedKeepsakePortKeepsakeTraitNames = {
 	mod.SharedKeepsakePortPatroclusKeepsakeTrait,
 	mod.SharedKeepsakePortThanatosKeepsakeTrait,
 	mod.SharedKeepsakePortOrpheusKeepsakeTrait,
+	mod.SharedKeepsakePortMegaeraKeepsakeTrait,
 }
 
 -- Not actually a constant, will be populated in mod.AddNarrativeDataEntries()
@@ -512,14 +515,24 @@ mod.FormalNPCRelationships = {
 	"NPC_Patroclus_01",
 	"NPC_Thanatos_Field_01",
 	"NPC_Orpheus_01",
+	-- "NPC_Dusa_01",
+	-- "NPC_Achilles_01",
 }
 
 mod.InformalNPCRelationshipsF = {
 	"ModsNikkelMHadesBiomes_NPC_Persephone_01",
+	"NPC_FurySister_01",
 }
 
 mod.InformalNPCRelationshipsM = {
 	"ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 	"NPC_Thanatos_01",
 	"NPC_Orpheus_Story_01",
+}
+
+mod.SkellyStatueConversations = {
+	"ModsNikkelMHadesBiomes_HadesStatueIntro01",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil01",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil02",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil03",
 }

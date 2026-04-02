@@ -4,31 +4,49 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Meet **Megaera** in Styx, and have a friendly chat and a bottle of Ambrosia or two. This will also allow you to build a relationship with Megaera (including unlocking her keepsake).
 - Advance through **50** new cosmetic ranks offered by the _Spirit Mixer_, from the lowly "Alpha Warden" to the feared "Unseen One". These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
+- **Commander Schelemeus** has managed to procure a new set of the *Gifts of the Veil* from an unknown underworld contact... turn up the heat, errmm, fear, and escape the Nightmare Realm to earn these prestigious trophies. 
+- You can now conclude Sisyphus' storyline by interacting with him and Megaera.
 - Added a new logo to the Main Menu to signal that the mod is installed.
 - Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
 
 Other fixes and improvements:
 - You can now salute story NPCs you meet along your journey.
+- If Thanatos has no new unique dialogue when he visits you at the start of a run, you can now pick up the reward without speaking to him first.
+- Added a new dialogue background for conversations in the Temple of Styx.
 - Hades and Theseus will now react with specific voicelines for certain Gods when using Godsent Hex effects against them.
 - Hades will now react to going Dark using "Unseen Ire" in the fight against him.
 - Melinoë will now react to Hades calling Cerberus to his aid.
-- Balancing: Elyisian Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
+- Updated the description text of "Final Expense" offered by Orpheus to make it clearer all shop items are always discounted.
+- Added [zannc](https://github.com/excellent-ae) to the Credits for the [SharedKeepsakePort](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) contribution.
+- Balancing: Elysian Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Slightly reduced the chance for the "Popper" elite perk to appear.
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
+- Fixed: Some dialogues with Orpheus cannot be triggered.
+- Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
 - Fixed: Some fog and branches flicker on a specific Elysium map.
+- Fixed: If the "Vow of Scars" is active and "HydraLite Gold" is offered by Patroclus, the number of locations the item will last is not shown.
+- Fixed: Melinoë's voicelines that play when (re-)entering the Styx Hub room play every time instead of only sometimes.
 - Fixed: Some shop items in the Styx shop can clip behind the base they sit on.
+- Fixed: If Boiling Blood is active during Hades' phase transition, the damage multiplier is not removed for the rest of the fight.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.
 - Fixed: Urns are not destroyed when sprinted into.
 - Fixed: Family Dispute door reward previews are too large and clip out of the glass sphere.
-- Fixed: Ash and Bone door reward previews in Asphodel are located too high in the glass sphere. 
+- Fixed: Ash and Bone door reward previews in Asphodel are located too high in the glass sphere.
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
 - Fixed: Chaos Gates do not have specific spawn requirements adapted to Zagreus' Journey runs.
+- Fixed: Relationship entries for story NPCs that unlock a keepsake do not show the related icon in the Codex.
+- Fixed: Relationship entries for story NPCs that unlock a minor prophecy do not show the related icon in the Codex.
+- Fixed: Thanatos' "Growing Closer" arrow in the Codex is placed after the wrong entry.
+- Fixed: Some text localizations for relationship dialogue are missing.
+- Fixed: Some Codex entries for Greek, Turkish, Ukrainian and Traditional Chinese have unterminated italic text sections.
 - Fixed: In rare circumstances, the game can crash when checking requirements for actions taken during the previous Zagreus' Journey run.
 - Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
+- Fixed: Some unnecessary localization strings are copied during the mod installation.
 <!--Releasenotes end-->
 
 ## v0.7.2
@@ -55,7 +73,7 @@ Other fixes and improvements:
 - Thanatos will now find you in the first room of a run if you encountered him during your previous run, enabling you to progress his storyline.
 - Added four additional boons offered by Sisyphus.
 - Added new minor prophecies tasking you with receiving various boons from Zagreus' Journey's story NPCs.
-- Added new dialogues with Hermes. 
+- Added new dialogues with Hermes.
 
 Other fixes and improvements:
 - Learn how to play the Lyre from Orpheus.
@@ -66,7 +84,7 @@ Other fixes and improvements:
 - Updated a number of boon icons with enhanced visuals.
 - Fixed: The game may crash if the last Zagreus' Journey run was more than ten runs ago.
 - Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlayed over the blacked-out death screen.
-- Fixed: The Hydra can get stuck between obstacles after it dashes into the lava in very rare circumstances. 
+- Fixed: The Hydra can get stuck between obstacles after it dashes into the lava in very rare circumstances.
 - Fixed: Archer traps in Elysium sometimes fail to fire the arrow.
 - Fixed: Some codex entries overflow the intended area in the Codex.
 - Fixed: Some dialogues are never eligible to play.

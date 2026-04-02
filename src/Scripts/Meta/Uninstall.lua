@@ -73,7 +73,9 @@ function mod.Uninstall()
 	mod.DebugPrint("Removing .sjson helptext files...", 3)
 	-- _NPCData files are installed differently, so not part of this table by default
 	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames) or {}
-	table.insert(allHelpTextFileNames, "_NPCData")
+	for fileName, _ in pairs(mod.NPCTextFileNames) do
+		table.insert(allHelpTextFileNames, fileName)
+	end
 	for _, fileName in ipairs(allHelpTextFileNames) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			-- Skip files that are in the skip map for the current language, as they don't exist
