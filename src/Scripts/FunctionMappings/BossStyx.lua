@@ -645,6 +645,7 @@ function mod.ClearStoredAmmoHero()
 	local hero = game.CurrentRun.Hero
 	if hero ~= nil and hero.StoredAmmo ~= nil then
 		hero.StoredAmmo = {}
+		game.RemoveIncomingDamageModifier(hero, "StoredAmmoVulnerability")
 	end
 	if game.ScreenAnchors.StoredAmmo ~= nil then
 		Destroy({ Ids = game.ScreenAnchors.StoredAmmo })
