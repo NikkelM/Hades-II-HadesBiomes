@@ -130,9 +130,8 @@ end
 -- #region Skelly Statues/Gifts
 -- Fear requirements to unlock each of the three new statues
 game.ScreenData.Shrine.ModsNikkelMHadesBiomesShrinePointThresholds = { 8, 16, 32 }
-local lastModdedThreshold = 32
 
--- Show requirement rows in ShrineScreen when: TrophyQuestUnlocked AND (vanilla not done OR (modded in progress with fear thresholds not all cleared yet))
+-- Show vanilla requirement rows in ShrineScreen when: TrophyQuestUnlocked AND (vanilla not done OR (modded started AND not all unveiled))
 local skellyQuestActiveRequirements = {
 	OrRequirements = {
 		{
@@ -147,19 +146,16 @@ local skellyQuestActiveRequirements = {
 			{
 				PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil03" },
 			},
-			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
-				Comparison = "<",
-				Value = lastModdedThreshold
-			},
 		},
 	},
 	NamedRequirements = { "TrophyQuestUnlocked" },
 }
 
--- Show "all complete" when: vanilla done AND (modded not started OR all modded fear thresholds met)
+-- Show "all complete" when: vanilla done AND (modded not started OR modded all unveiled)
 local skellyQuestAllCompleteRequirements = {
-	{ PathTrue = { "GameState", "TextLinesRecord", "TrophyQuestComplete03" } },
+	{
+		PathTrue = { "GameState", "TextLinesRecord", "TrophyQuestComplete03" },
+	},
 	OrRequirements = {
 		{
 			{
@@ -168,33 +164,26 @@ local skellyQuestAllCompleteRequirements = {
 		},
 		{
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
-				Comparison = ">=",
-				Value = lastModdedThreshold
+				PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil03" },
 			},
 		},
 	},
 }
 
--- Modded route: show when started and not all unveiled, but hide when vanilla done AND all modded fear met
+-- Modded route: show when started AND (not all unveiled OR vanilla not done)
 local skellyQuestModdedRouteRequirements = {
 	{
 		PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueIntro01" },
 	},
-	{
-		PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil03" },
-	},
 	OrRequirements = {
 		{
 			{
-				PathFalse = { "GameState", "TextLinesRecord", "TrophyQuestComplete03" },
+				PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil03" },
 			},
 		},
 		{
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache" },
-				Comparison = "<",
-				Value = lastModdedThreshold
+				PathFalse = { "GameState", "TextLinesRecord", "TrophyQuestComplete03" },
 			},
 		},
 	},
