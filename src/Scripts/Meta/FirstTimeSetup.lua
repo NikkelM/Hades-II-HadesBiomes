@@ -530,6 +530,8 @@ function mod.CreateRequiredHookTargetFiles()
 		mod.HiddenConfig.IsValidInstallation = false
 		mod.HiddenConfig.InstallationFailReason = "HadesModsInstalled"
 		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+		---@diagnostic disable-next-line: undefined-global
+		public.IsValidInstallation = false
 
 		-- Ensure we get a new clean install next time
 		config.uninstall = true
@@ -723,6 +725,8 @@ function mod.FinalizeInstallation()
 		mod.HiddenConfig.IsValidInstallation = false
 		mod.HiddenConfig.InstallationFailReason = "MissingFiles"
 		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+		---@diagnostic disable-next-line: undefined-global
+		public.IsValidInstallation = false
 
 		-- Ensure we get a new clean install next time
 		config.uninstall = true
@@ -735,6 +739,8 @@ function mod.FinalizeInstallation()
 	-- If this is a reinstall, to show the successful install screen again
 	mod.HiddenConfig.HasShownSuccessfulInstallScreen = false
 	mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+	---@diagnostic disable-next-line: undefined-global
+	public.IsValidInstallation = true
 
 	config.firstTimeSetup = false
 	mod.InstallationPending = false

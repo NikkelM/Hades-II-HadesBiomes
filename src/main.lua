@@ -71,6 +71,8 @@ local function on_ready()
 	mod.HiddenConfig = mod.HiddenConfig or mod.TryGetOrCreateCachedSjsonFile("hiddenConfig.sjson", mod.DefaultHiddenConfig)
 	mod.DebugPrint("Loaded hiddenConfig.sjson", 4)
 	mod.DebugPrint(mod.HiddenConfig, 4)
+	---@diagnostic disable-next-line: undefined-global
+	public.IsValidInstallation = mod.HiddenConfig.IsValidInstallation
 
 	if config.enabled == false then
 		local numMissingFiles = mod.CheckRequiredFiles(true)
@@ -528,6 +530,8 @@ local function on_ready()
 			if mod.EncounteredInstallationIssues ~= true then
 				mod.HiddenConfig.IsValidInstallation = true
 				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+				---@diagnostic disable-next-line: undefined-global
+				public.IsValidInstallation = true
 
 				-- Check for any incompatible installed mods to display a warning to the user
 				if mod.AreIncompatibleModsInstalled() then
@@ -551,6 +555,8 @@ local function on_ready()
 			mod.HiddenConfig.IsValidInstallation = false
 			mod.HiddenConfig.InstallationFailReason = "MissingFiles"
 			mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+			---@diagnostic disable-next-line: undefined-global
+			public.IsValidInstallation = false
 
 			mod.DebugPrint(
 				"A total of " .. numMissingFiles ..

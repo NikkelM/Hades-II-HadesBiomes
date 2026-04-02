@@ -38,6 +38,8 @@ if not encounterDataElysium.ThanatosElysiumIntro then
 	mod.HiddenConfig.IsValidInstallation = false
 	mod.HiddenConfig.InstallationFailReason = "HadesNotUpdated"
 	mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+	---@diagnostic disable-next-line: undefined-global
+	public.IsValidInstallation = false
 end
 
 mod.UpdateField(encounterDataElysium, "Generated", "ModsNikkelMHadesBiomesGenerated", { "InheritFrom" },
