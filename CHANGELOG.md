@@ -6,6 +6,7 @@
 ### Patch Highlights:
 - Meet **Megaera** in Styx, and have a friendly chat and a bottle of Ambrosia or two. This will also allow you to build a relationship with Megaera (including unlocking her keepsake).
 - Advance through **50** new cosmetic ranks offered by the _Spirit Mixer_, from the lowly "Alpha Warden" to the feared "Unseen One". These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
+- **Commander Schelemeus** has managed to procure a new set of the *Gifts of the Veil* from an unknown underworld contact... turn up the heat, errmm, fear, and escape the Nightmare Realm to earn these prestigious trophies. 
 - You can now conclude Sisyphus' storyline by interacting with him and Megaera.
 - Added a new logo to the Main Menu to signal that the mod is installed.
 - Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
@@ -42,8 +43,10 @@ Other fixes and improvements:
 - Fixed: Relationship entries for story NPCs that unlock a minor prophecy do not show the related icon in the Codex.
 - Fixed: Thanatos' "Growing Closer" arrow in the Codex is placed after the wrong entry.
 - Fixed: Some text localizations for relationship dialogue are missing.
+- Fixed: Some Codex entries for Greek, Turkish, Ukrainian and Traditional Chinese have unterminated italic text sections.
 - Fixed: In rare circumstances, the game can crash when checking requirements for actions taken during the previous Zagreus' Journey run.
 - Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
+- Fixed: Some unnecessary localization strings are copied during the mod installation.
 <!--Releasenotes end-->
 
 ## v0.7.2

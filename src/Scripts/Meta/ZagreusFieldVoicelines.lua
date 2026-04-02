@@ -1520,6 +1520,14 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_02804 = true, -- ZagreusHome_2804
 	-- #endregion
 
+	-- #Skelly/Skelly Statues
+	ZagreusField_00678 = true, -- ZagreusHome_0678
+	ZagreusField_00681 = true, -- ZagreusHome_0681
+	ZagreusField_00682 = true, -- ZagreusHome_0682
+	ZagreusField_00686 = true, -- ZagreusHome_0686
+	ZagreusField_01054 = true, -- ZagreusHome_1054
+	-- #endregion
+
 	-- #region LootData/Boon pickup/InteractTextLineSets
 	-- #region Chaos/TrialUpgrade
 	ZagreusField_3804 = true,

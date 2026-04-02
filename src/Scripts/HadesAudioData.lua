@@ -5003,5 +5003,130 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_1393", Text = "Return to shadow, now...!" },
 		},
 	},
+	-- #region Skelly Statues
+	-- When being shown the Skelly statues the first time
+	ModsNikkelMHadesBiomes_TrophyQuestUnlockedVoiceLines = {
+		{
+			{
+				UsePlayerSource = true,
+				PreLineWait = 0.4,
+				{ Cue = "/VO/Melinoe_0810", Text = "What...?" },
+			},
+			{
+				PreLineWait = 0.8,
+				ObjectType = "NPC_Skelly_01",
+				PreLineAnim = "Skelly_Explaining",
+				{ Cue = "/VO/Skelly_0300", Text = "At last, you are {#Emph}prepared{#Prev}, young one!", PlayFirst = true },
+			},
+			{
+				UsePlayerSource = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.4,
+				{ Cue = "/VO/Melinoe_3267", Text = "Commander, what is {#Emph}that?" },
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_TrophyLockedVoiceLines = {
+		{
+			UsePlayerSource = true,
+			RandomRemaining = true,
+			PreLineWait = 0.85,
+			{ Cue = "/VO/Melinoe_3518", Text = "I mustn't look..." },
+			{ Cue = "/VO/Melinoe_3519", Text = "I won't betray my vows." },
+			{ Cue = "/VO/Melinoe_3520", Text = "I've not yet earned the right." },
+		},
+	},
+	ModsNikkelMHadesBiomes_TrophyAdmirationVoiceLines = {
+		{
+			UsePlayerSource = true,
+			RandomRemaining = true,
+			PreLineWait = 0.85,
+			{ Cue = "/VO/Melinoe_3521", Text = "Quite a likeness..." },
+			{ Cue = "/VO/Melinoe_3279", Text = "Wow..." },
+			{ Cue = "/VO/Melinoe_3284", Text = "Huh..." },
+		},
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.35,
+			SuccessiveChanceToPlay = 0.85,
+			ObjectType = "NPC_Skelly_01",
+			{ Cue = "/VO/Skelly_0112", Text = "Behold...!" },
+			{ Cue = "/VO/Skelly_0113", Text = "Behold." },
+			{ Cue = "/VO/Skelly_0114", Text = "{#Emph}Behold!" },
+			{ Cue = "/VO/Skelly_0384", Text = "Pretty nice, {#Emph}huh?" },
+			{ Cue = "/VO/Skelly_0386", Text = "Look at them {#Emph}femurs!" },
+		},
+	},
+	ModsNikkelMHadesBiomes_TrophyUnlockedVoiceLines = {
+		Queue = "Interrupt",
+		AllowTalkOverTextLines = true,
+		{
+			-- statue 1
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil01" }
+				},
+				{
+					PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil02" }
+				},
+			},
+			{
+				UsePlayerSource = true,
+				PreLineWait = 0.4,
+				{ Cue = "/VO/Melinoe_3273", Text = "The deed is done...!" },
+			},
+			{
+				PreLineWait = 0.4,
+				ObjectType = "NPC_Skelly_01",
+				{ Cue = "/VO/Skelly_0309", Text = "And now... unto the Champion of Night, {#Emph}the spoils..." },
+			},
+			{
+				UsePlayerSource = true,
+				PreLineWait = 1.2,
+				{ Cue = "/VO/Melinoe_3274", Text = "Oh..." },
+			},
+		},
+		{
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil02" }
+				},
+				{
+					PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil03" }
+				},
+			},
+			-- statue 2
+			{
+				PreLineWait = 0.5,
+				ObjectType = "NPC_Skelly_01",
+				{ Cue = "/VO/Skelly_0314", Text = "Now, young one: Avert your eyes, lest you be smitten by the {#Emph}glory {#Prev}over here!" },
+			},
+			{
+				UsePlayerSource = true,
+				PreLineWait = 1.8,
+				{ Cue = "/VO/Melinoe_3279", Text = "Wow..." },
+			},
+		},
+		{
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil03" }
+				},
+			},
+			-- statue 3
+			{
+				PreLineWait = 0.73,
+				ObjectType = "NPC_Skelly_01",
+				{ Cue = "/VO/Skelly_0319", Text = "For your {#Emph}extraordinary {#Prev}feat, the most {#Emph}extraordinary Gift of all!" },
+			},
+			{
+				UsePlayerSource = true,
+				PreLineWait = 2.53,
+				{ Cue = "/VO/Melinoe_3284", Text = "{#Emph}Huh..." },
+			},
+		},
+	},
+	-- #endregion
 	-- #endregion
 }

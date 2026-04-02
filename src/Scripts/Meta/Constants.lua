@@ -17,7 +17,7 @@ mod.DefaultHiddenConfig = {
 
 -- This is the number of sjson.hook calls we normally make
 -- If the count in the cache/sjsonLoads.sjson file is different when OnAnyLoad is called, we know something went wrong and need to ask the user to restart the game
-mod.ExpectedNumSjsonHooks = 33
+mod.ExpectedNumSjsonHooks = 34
 
 -- All enemies have more health and armour in modded runs, scales with each biome
 -- Should not apply to bosses, which should opt out using ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and define their own modified health
@@ -528,4 +528,11 @@ mod.InformalNPCRelationshipsM = {
 	"ModsNikkelMHadesBiomes_NPC_Bouldy_01",
 	"NPC_Thanatos_01",
 	"NPC_Orpheus_Story_01",
+}
+
+mod.SkellyStatueConversations = {
+	"ModsNikkelMHadesBiomes_HadesStatueIntro01",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil01",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil02",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil03",
 }
