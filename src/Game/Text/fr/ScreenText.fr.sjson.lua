@@ -183,6 +183,23 @@ local newData = {
 		"{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor} Record de {!Icons.ShrinePoint} :",
 	},
 	-- #endregion
+
+	-- #region Shrine screen Skelly statues
+	-- {
+	-- 	Id = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete",
+	-- 	DisplayName =
+	-- 	"Conquer the {#BoldFormatGraft}{$Keywords.ModsNikkelMHadesBiomesModdedRoute} {#Prev}— {#ShrineHighlightFormat}{$ActiveScreens.Shrine.NextModsNikkelMHadesBiomesModdedRouteSkellyShrinePointGoal}{!Icons.ShrinePoint}",
+	-- },
+	-- {
+	-- 	Id = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Insufficient",
+	-- 	DisplayName =
+	-- 	"Conquer the {#BoldFormatGraft}{$Keywords.ModsNikkelMHadesBiomesModdedRoute} {#Prev}— {#ShrineHighlightInsufficientFormat}{$ActiveScreens.Shrine.NextModsNikkelMHadesBiomesModdedRouteSkellyShrinePointGoal}{!Icons.ShrinePoint}",
+	-- },
+	-- {
+	-- 	Id = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Complete",
+	-- 	InheritFrom = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete",
+	-- },
+	-- #endregion
 }
 
 sjson.hook(screenTextFile, function(data)

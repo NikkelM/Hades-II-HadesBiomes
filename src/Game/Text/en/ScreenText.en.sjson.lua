@@ -227,6 +227,18 @@ local newData = {
 	},
 	-- #endregion
 
+	-- #region WeaponUpgrade (Silver Pool/Aspect selection) stats screen
+	{
+		Id = "WeaponUpgradeScreen_ClearTimeRecord_ModsNikkelMHadesBiomesModdedRoute",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor} Swiftest Victory:",
+	},
+	{
+		Id = "WeaponUpgradeScreen_ShrinePointRecord_ModsNikkelMHadesBiomesModdedRoute",
+		DisplayName =
+		"{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor} Highest {!Icons.ShrinePoint}{#BoldFormatGraft}Fear{#Prev}:",
+	},
+	-- #endregion
+
 	-- #region Shrine screen Skelly statues
 	{
 		Id = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete",
@@ -241,18 +253,6 @@ local newData = {
 	{
 		Id = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Complete",
 		InheritFrom = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete",
-	},
-	-- #endregion
-
-	-- #region WeaponUpgrade (Silver Pool/Aspect selection) stats screen
-	{
-		Id = "WeaponUpgradeScreen_ClearTimeRecord_ModsNikkelMHadesBiomesModdedRoute",
-		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor} Swiftest Victory:",
-	},
-	{
-		Id = "WeaponUpgradeScreen_ShrinePointRecord_ModsNikkelMHadesBiomesModdedRoute",
-		DisplayName =
-		"{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor} Highest {!Icons.ShrinePoint}{#BoldFormatGraft}Fear{#Prev}:",
 	},
 	-- #endregion
 }

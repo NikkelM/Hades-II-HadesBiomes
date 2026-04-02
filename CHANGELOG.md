@@ -43,6 +43,7 @@ Other fixes and improvements:
 - Fixed: Relationship entries for story NPCs that unlock a minor prophecy do not show the related icon in the Codex.
 - Fixed: Thanatos' "Growing Closer" arrow in the Codex is placed after the wrong entry.
 - Fixed: Some text localizations for relationship dialogue are missing.
+- Fixed: Some Codex entries for Greek, Turkish, Ukrainian and Traditional Chinese have unterminated italic text sections.
 - Fixed: In rare circumstances, the game can crash when checking requirements for actions taken during the previous Zagreus' Journey run.
 - Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
 - Fixed: Some unnecessary localization strings are copied during the mod installation.
