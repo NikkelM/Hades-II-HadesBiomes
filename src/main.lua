@@ -509,6 +509,7 @@ local function on_ready()
 			import "Scripts/RunLogic.lua"
 			import "Scripts/SaveLogic.lua"
 			import "Scripts/SellTraitLogic.lua"
+			import "Scripts/ShrineLogic.lua"
 			import "Scripts/ShrinePresentation.lua"
 			import "Scripts/SpellLogic.lua"
 			import "Scripts/StoreLogic.lua"
