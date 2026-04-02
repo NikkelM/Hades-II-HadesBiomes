@@ -262,20 +262,22 @@ function mod.ShouldShowHadesStatues()
 end
 
 -- Force spawning Skelly if one of the Statue conversations would be queued
-table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
-	FunctionName = "CheckPriorityConversations",
-	GameStateRequirements = {},
-	Args = {
-		SkipPresentation = true,
-		Conversations = {
-			"ModsNikkelMHadesBiomes_HadesStatueIntro01",
-			"ModsNikkelMHadesBiomes_HadesStatueUnveil01",
-			"ModsNikkelMHadesBiomes_HadesStatueUnveil02",
-			"ModsNikkelMHadesBiomes_HadesStatueUnveil03",
-		},
-	},
-})
--- Spawn the statues. Do this after the CheckPriorityConversations to also load the voicebanks if needed
+for _, event in ipairs(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents) do
+	if event.FunctionName == "CheckPriorityConversations" and event.Args and event.Args.Conversations then
+		local conversations = event.Args.Conversations
+		for i, conversationName in ipairs(conversations) do
+			if conversationName == "TrophyQuestComplete03" then
+				table.insert(conversations, i + 1, "ModsNikkelMHadesBiomes_HadesStatueUnveil03")
+				table.insert(conversations, i + 1, "ModsNikkelMHadesBiomes_HadesStatueUnveil02")
+				table.insert(conversations, i + 1, "ModsNikkelMHadesBiomes_HadesStatueUnveil01")
+				table.insert(conversations, i + 1, "ModsNikkelMHadesBiomes_HadesStatueIntro01")
+				break
+			end
+		end
+		break
+	end
+end
+
 table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 	FunctionName = _PLUGIN.guid .. "." .. "SpawnHadesSkellyStatues",
 })
