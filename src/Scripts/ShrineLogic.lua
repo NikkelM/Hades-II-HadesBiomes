@@ -6,9 +6,9 @@ modutil.mod.Path.Wrap("ShrineScreenUpdateSkellyText", function(base, screen)
 	-- When all vanilla thresholds are met, the base game's for-loop falls through without setting goals
 	-- Show both Surface and Underworld as complete with strikethrough (only on first call of ShrineScreenUpdateSkellyText())
 	if components.SkellyQuestSurface ~= nil and screen.NextSurfaceSkellyShrinePointGoal == nil then
-		local lastIdx = #screen.UnderworldShrinePointThresholds
-		screen.NextSurfaceSkellyShrinePointGoal = screen.SurfaceShrinePointThresholds[lastIdx]
-		screen.NextUnderworldSkellyShrinePointGoal = screen.UnderworldShrinePointThresholds[lastIdx]
+		local lastIndex = #screen.UnderworldShrinePointThresholds
+		screen.NextSurfaceSkellyShrinePointGoal = screen.SurfaceShrinePointThresholds[lastIndex]
+		screen.NextUnderworldSkellyShrinePointGoal = screen.UnderworldShrinePointThresholds[lastIndex]
 
 		SetAnimation({ DestinationId = components.SkellyQuestSurface.Id, Name = "GUI\\Screens\\Shrine\\SkellyComplete" })
 		ModifyTextBox({ Id = components.SkellyQuestSurface.Id, Text = "ShrineScreen_SkellyStatueSurface_Complete", FadeTarget = 1.0 })
