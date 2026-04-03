@@ -22,6 +22,7 @@ Other fixes and improvements:
 - Added [zannc](https://github.com/excellent-ae) to the Credits for the [SharedKeepsakePort](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) contribution.
 - Balancing: Elysian Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Slightly reduced the chance for the "Popper" elite perk to appear.
+- Balancing: Slightly increased tick rate of poison damage.
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
 - Fixed: Some dialogues with Orpheus cannot be triggered.
 - Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
