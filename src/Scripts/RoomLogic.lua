@@ -182,15 +182,6 @@ end)
 
 -- Overriding to add in the logic for the Styx miniboss and ShrineChallenge/Erebus room rewards
 modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
-	-- TODO: Only while the mod is in early access
-	if run.ModsNikkelMHadesBiomesIsModdedRun and not mod.HiddenConfig.IgnoreShowFeedbackMessage then
-		if not game.CurrentRun.ModsNikkelMHadesBiomesHasShownFeedbackMessage then
-			game.CurrentRun.ModsNikkelMHadesBiomesHasShownFeedbackMessage = true
-			game.thread(game.InCombatTextArgs,
-				{ Text = "ModsNikkelMHadesBiomes_LeaveFeedback", TargetId = game.CurrentRun.Hero.ObjectId, SkipRise = true, SkipFlash = true, SkipShadow = true, Duration = 10.0, OffsetY = -160, PreDelay = 1.0 })
-		end
-	end
-
 	-- We are either in D_Hub and need to set up the miniboss exits, or the room has a ShrineChallenge/Erebus door, which also needs upgraded rewards
 	if run.ModsNikkelMHadesBiomesIsModdedRun and (room.Name == "D_Hub" or room.ShrinePointDoorChanceSuccess == true) then
 		return mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)

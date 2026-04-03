@@ -35,11 +35,6 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesStyxFountainForcedThroughConfig",
 		DisplayName = "Fountain room forced by mod config",
 	},
-	-- TODO: Only while the mod is in early access
-	{
-		Id = "ModsNikkelMHadesBiomes_LeaveFeedback",
-		DisplayName = "[BETA] Please leave feedback and bug reports on GitHub or on Discord in #h1-run-h2",
-	},
 	{
 		Id = "Smoked",
 		DisplayName = "{!Icons.EliteSmoked} Smoker",

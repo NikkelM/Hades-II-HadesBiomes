@@ -11,7 +11,6 @@ mod.DefaultHiddenConfig = {
 	InstallationFailReason = "",
 	MustShowUninstallFailureScreen = false,
 	-- For debugging purposes
-	IgnoreShowFeedbackMessage = false,
 	EnableVanillaDebugKeybinds = false,
 }
 
