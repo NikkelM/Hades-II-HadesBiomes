@@ -1514,10 +1514,6 @@ local enemyModifications = {
 			Delay = 0.23,
 		},
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
-		DefaultAIData = {
-			MoveWithinRange = true,
-			MoveWithinRangeTimeout = 1.5,
-		},
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
 		BlockCharm = true,

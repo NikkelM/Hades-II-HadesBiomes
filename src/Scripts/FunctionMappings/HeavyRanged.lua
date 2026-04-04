@@ -30,11 +30,16 @@ function mod.CreateTethers(newEnemy, args)
 				-- Elastic: crystals floating around parent
 				rom.tethers.add(tetherId, newEnemy.ObjectId, tether.Distance, 0, tether.Elasticity, 0)
 			elseif tether.RetractSpeed or tether.TrackZRatio then
-				-- Chain with movement: segment follows previous segment
-				rom.tethers.add(tetherId, prevTetherId, tether.Distance, tether.RetractSpeed or 0, 0, tether.TrackZRatio or 0)
+				-- Chain (H1 direction): previous element constrained toward new segment
+				-- Skip Z tracking for the head (first source) — head Z is controlled by AI/animation
+				local trackZ = tether.TrackZRatio or 0
+				if prevTetherId == newEnemy.ObjectId then
+					trackZ = 0
+				end
+				rom.tethers.add(prevTetherId, tetherId, tether.Distance, tether.RetractSpeed or 0, 0, trackZ)
 			else
-				-- Static anchor: previous segment should be constrained to THIS (acts as root)
-				-- e.g. HydraBase constrains the last neck segment
+				-- Static anchor: previous segment constrained to this
+				-- e.g. HydraBase anchors the last neck segment
 				rom.tethers.add(prevTetherId, tetherId, tether.Distance, 0, 0, 0)
 			end
 
