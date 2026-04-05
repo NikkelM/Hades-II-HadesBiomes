@@ -6,10 +6,10 @@
 ### Patch Highlights:
 - Meet **Megaera** in Styx, and have a friendly chat and a bottle of Ambrosia or two. This will also allow you to build a relationship with Megaera (including unlocking her keepsake).
 - Advance through **50** new cosmetic ranks offered by the _Spirit Mixer_, from the lowly "Alpha Warden" to the feared "Unseen One". These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
-- **Commander Schelemeus** has managed to procure a new set of the *Gifts of the Veil* from an unknown underworld contact... turn up the heat, errmm, fear, and escape the Nightmare Realm to earn these prestigious trophies. 
-- You can now conclude Sisyphus' storyline by interacting with him and Megaera.
+- **Commander Schelemeus** has managed to procure a new set of the *Gifts of the Veil* from an unknown underworld contact... turn up the heat, errmm, fear, and escape the Nightmare Realm to earn these prestigious trophies.
+- The **Lernaean Bone Hydra** has found its long-lost neck in the depths of Asphodel's lava.
+- You can now conclude **Sisyphus**' storyline by interacting with him and **Megaera**.
 - Added a new logo animation to the Main Menu to show that the mod is installed.
-- Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
 
 Other fixes and improvements:
 - You can now salute story NPCs you meet along Zagreus' Journey.
@@ -20,14 +20,18 @@ Other fixes and improvements:
 - Melinoë will now react to Hades calling Cerberus to his aid.
 - Updated the description text of "Final Expense" offered by Orpheus to make it clearer that all shop items are always discounted.
 - Added [zannc](https://github.com/excellent-ae) to the Credits for the [SharedKeepsakePort](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) contribution.
+- Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
 - Balancing: Elysian Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Slightly reduced the chance for the "Popper" elite perk to appear.
 - Balancing: Slightly increased tick rate of poison damage.
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
+- Fixed: Brimstone and Voidstone enemies have no small tethered crystals floating around them.
+- Fixed: If Gale attacks a Brimstone or Voidstone enemy with tethers attached to it, the game may crash.
 - Fixed: Some dialogues with Orpheus cannot be triggered.
 - Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
+- Fixed: The Lernaean Bone Hydra has no neck elements constraining its movements.
 - Fixed: Some fog and branches flicker on a specific Elysium map.
 - Fixed: If the "Vow of Scars" is active and "HydraLite Gold" is offered by Patroclus, the number of locations the item will last is not shown.
 - Fixed: Melinoë's voicelines that play when (re-)entering the Styx Hub room play every time instead of only sometimes.

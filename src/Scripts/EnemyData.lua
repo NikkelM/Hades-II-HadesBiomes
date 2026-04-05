@@ -884,6 +884,14 @@ local enemyModifications = {
 		ActivateTint = true,
 		ActivateStartAlpha = 0.0,
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { ParentDeathAnimation = "HeavyRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HeavyRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HeavyRangedCrystal3Shatter" },
+		},
+		OnDeathTetherUpwardForce = 2200,
+		OnDeathTetherRandomForceMin = 800,
+		OnDeathTetherRandomForceMax = 1000,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 	},
 	Swarmer = {
@@ -906,6 +914,9 @@ local enemyModifications = {
 	HeavyRangedSplitterMiniboss = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		OnDeathTetherUpwardForce = 2200,
+		OnDeathTetherRandomForceMin = 800,
+		OnDeathTetherRandomForceMax = 1000,
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
@@ -1337,6 +1348,14 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { ParentDeathAnimation = "HealRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
+		},
+		OnDeathTetherUpwardForce = 2200,
+		OnDeathTetherRandomForceMin = 800,
+		OnDeathTetherRandomForceMax = 1000,
 	},
 	ShieldRangedElite = {
 		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching" },
@@ -1344,6 +1363,11 @@ local enemyModifications = {
 	ShieldRangedSuperElite = {
 		HealthBuffer = 900,
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { ParentDeathAnimation = "HealRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
+		},
 	},
 	-- #endregion
 	-- #region ASPHODEL - Minibosses
@@ -1358,6 +1382,11 @@ local enemyModifications = {
 		BlockCharm = true,
 		IgnoreSprintPhasingStasisStun = true,
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { ParentDeathAnimation = "HealRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
+		},
 	},
 	SpreadShotUnitMiniboss = {
 		-- In Hades II, projectiles can't be destroyed by attacks by default
@@ -1430,9 +1459,14 @@ local enemyModifications = {
 			Delay = 0.16,
 		},
 		ImmuneToPolymorph = true,
+		DefaultAIData = {
+			MoveWithinRange = true,
+			MoveWithinRangeTimeout = 2.0,
+		},
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 83, FirstDrawBehind = true },
+			[1] = { Distance = 83, FirstDrawBehind = true, ParentDeathAnimation = "HydraNeckDeath" },
+			[2] = { ParentDeathAnimation = "HydraBaseDeath" },
 		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HydraKillPresentation",
 		PactDataStage2 = {
@@ -1486,9 +1520,14 @@ local enemyModifications = {
 			-- Lining up with when the head actually touches the ground
 			Delay = 0.23,
 		},
+		DefaultAIData = {
+			MoveWithinRange = true,
+			MoveWithinRangeTimeout = 1.5,
+		},
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 83, FirstDrawBehind = true },
+			[1] = { Distance = 83, FirstDrawBehind = true, ParentDeathAnimation = "HydraNeckDeath" },
+			[2] = { ParentDeathAnimation = "HydraBaseDeath" },
 		},
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
