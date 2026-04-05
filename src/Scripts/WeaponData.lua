@@ -876,6 +876,7 @@ local weaponModifications = {
 			MaxConsecutiveUses = 3,
 			ImmuneToProjectileSlow = true,
 			FireRotationDampening = 0.5,
+			FireSelfVelocity = 12000,
 		},
 	},
 	HydraLungeUntethered = {
@@ -911,13 +912,13 @@ local weaponModifications = {
 		AIData = {
 			AIMoveWithinRangeTimeout = 1.0,
 			PostAttackDuration = 0.5,
-			FireRotationDampening = 0.01,
+			FireRotationDampening = 0.1,
 		},
 	},
 	HydraDartVolley = {
 		AIData = {
 			FireProjectileTowardTarget = true,
-			FireRotationDampening = 0.01,
+			FireRotationDampening = 0.1,
 		},
 	},
 	-- #endregion
@@ -1050,7 +1051,6 @@ local weaponModifications = {
 	-- #region ASPHODEL - Hydra (Mini)
 	HydraSnap = {
 		AIData = {
-			FireSelfVelocity = 3000.0,
 			FireRotationDampening = 0.01,
 			ImmuneToProjectileSlow = true,
 		},
