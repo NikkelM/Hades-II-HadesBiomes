@@ -110,13 +110,14 @@ function mod.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimatio
 				-- Always destroy tethers without upward force to clean them up immediately
 				Destroy({ Id = id })
 			end
-			game.wait(0.04, RoomThreadName)
+			game.wait(0.04, game.RoomThreadName)
 		else
+			-- Skipped tethers keep their animation and stay alive (e.g. detached neck stubs during Hydra stage transition)
+			-- They are cleaned up when HandleTetherParentDeath is called again on actual death
 			if skipTetherAnimation ~= nil then
 				SetAnimation({ DestinationId = id, Name = skipTetherAnimation })
-				game.wait(0.25, RoomThreadName)
+				game.wait(0.25, game.RoomThreadName)
 			end
-			Destroy({ Id = id })
 		end
 	end
 end
