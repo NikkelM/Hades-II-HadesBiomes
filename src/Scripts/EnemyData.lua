@@ -883,12 +883,7 @@ local enemyModifications = {
 		ActivateFadeIn = true,
 		ActivateTint = true,
 		ActivateStartAlpha = 0.0,
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 	},
 	Swarmer = {
@@ -910,12 +905,7 @@ local enemyModifications = {
 	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
@@ -940,12 +930,7 @@ local enemyModifications = {
 	},
 	HeavyRangedSplitterMinibossSuperElite = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		-- Explicitly allow raising with Night Bloom
 		BlockRaiseDead = false,
@@ -1351,24 +1336,14 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		BlockRaiseDead = true,
 		BlockCharm = true,
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 	},
 	ShieldRangedElite = {
 		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching" },
 	},
 	ShieldRangedSuperElite = {
 		HealthBuffer = 900,
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 	},
 	-- #endregion
 	-- #region ASPHODEL - Minibosses
@@ -1382,12 +1357,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		IgnoreSprintPhasingStasisStun = true,
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 	},
 	SpreadShotUnitMiniboss = {
 		-- In Hades II, projectiles can't be destroyed by attacks by default
@@ -1461,6 +1431,9 @@ local enemyModifications = {
 		},
 		ImmuneToPolymorph = true,
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { Distance = 83, FirstDrawBehind = true },
+		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HydraKillPresentation",
 		PactDataStage2 = {
 			[2] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
@@ -1514,6 +1487,9 @@ local enemyModifications = {
 			Delay = 0.23,
 		},
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { Distance = 83, FirstDrawBehind = true },
+		},
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
 		BlockCharm = true,

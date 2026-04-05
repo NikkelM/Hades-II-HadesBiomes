@@ -22,24 +22,27 @@ function mod.CreateTethers(newEnemy, args)
 				OffsetX = offsetX,
 				OffsetY = offsetY
 			})
+
+			-- Move the first neck segment in each Hydra neck chain to always render behind the head itself
+			if i == 1 and tether.FirstDrawBehind then
+				game.ChangeDrawGroup(tetherId, "Standing_Back")
+			end
+
 			SetAlpha({ Id = tetherId, Fraction = 0 })
 			SetAlpha({ Id = tetherId, Fraction = 1.0, Duration = 0.3 })
 
-			-- rom.tethers handles all following + elastic/chain physics
 			if tether.Elasticity ~= nil then
 				-- Elastic: crystals floating around parent
 				rom.tethers.add(tetherId, newEnemy.ObjectId, tether.Distance, 0, tether.Elasticity, 0)
 			elseif tether.RetractSpeed or tether.TrackZRatio then
-				-- Chain (H1 direction): previous element constrained toward new segment
-				-- Skip Z tracking for the head (first source) — head Z is controlled by AI/animation
+				-- Chain: each segment is constrained toward the next (toward base)
 				local trackZ = tether.TrackZRatio or 0
 				if prevTetherId == newEnemy.ObjectId then
 					trackZ = 0
 				end
 				rom.tethers.add(prevTetherId, tetherId, tether.Distance, tether.RetractSpeed or 0, 0, trackZ)
 			else
-				-- Static anchor: previous segment constrained to this
-				-- e.g. HydraBase anchors the last neck segment
+				-- Static anchor (e.g. HydraBase)
 				rom.tethers.add(prevTetherId, tetherId, tether.Distance, 0, 0, 0)
 			end
 
