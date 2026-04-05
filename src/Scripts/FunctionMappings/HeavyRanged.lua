@@ -1,67 +1,61 @@
 -- Creates "Tethers", which are floating parts of the enemy (e.g. the small crystals for HeavyRanged or the neck for the Hydra heads)
 function mod.CreateTethers(newEnemy, args)
-	-- Tethers have been causing almost all of the currently reported crashes
-	-- The issue appears to be the small tethered Crystals causing touchdowner is nil errors in OnTouchdown
-	-- So for now, we are disabling tethers entirely
-	-- This is tracked in #329 
-	return
+	if newEnemy == nil or newEnemy.Tethers == nil or newEnemy.TetherIds ~= nil then
+		return
+	end
 
-	-- if newEnemy == nil or newEnemy.Tethers == nil or newEnemy.TetherIds ~= nil then
-	-- 	return
-	-- end
+	newEnemy.TetherIds = {}
+	local prevTetherId = newEnemy.ObjectId
+	for k, tether in ipairs(newEnemy.Tethers) do
+		local count = tether.Count or 1
+		for i = 1, count do
+			local offsetX = 0.0
+			local offsetY = 0.0
+			if tether.SpawnRadius ~= nil then
+				offsetX = game.RandomFloat(-tether.SpawnRadius, tether.SpawnRadius) or 0.0
+				offsetY = game.RandomFloat(-tether.SpawnRadius, tether.SpawnRadius) or 0.0
+			end
+			local tetherId = SpawnObstacle({
+				Name = tether.Name,
+				DestinationId = newEnemy.ObjectId,
+				Group = tether.GroupName or "Standing",
+				OffsetX = offsetX,
+				OffsetY = offsetY
+			})
 
-	-- newEnemy.TetherIds = {}
-	-- local prevTetherId = newEnemy.ObjectId
-	-- for k, tether in ipairs(newEnemy.Tethers) do
-	-- 	local count = tether.Count or 1
-	-- 	for i = 1, count do
-	-- 		local offsetX = 0.0
-	-- 		local offsetY = 0.0
-	-- 		if tether.SpawnRadius ~= nil then
-	-- 			offsetX = game.RandomFloat(-tether.SpawnRadius, tether.SpawnRadius) or 0.0
-	-- 			offsetY = game.RandomFloat(-tether.SpawnRadius, tether.SpawnRadius) or 0.0
-	-- 		end
-	-- 		local tetherId = SpawnObstacle({
-	-- 			Name = tether.Name,
-	-- 			DestinationId = newEnemy.ObjectId,
-	-- 			Group = tether.GroupName or "Standing",
-	-- 			OffsetX = offsetX,
-	-- 			OffsetY = offsetY
-	-- 		})
-	-- 		SetAlpha({ Id = tetherId, Fraction = 0 })
-	-- 		SetAlpha({ Id = tetherId, Fraction = 1.0, Duration = 0.3 })
-	-- 		if tether.Elasticity ~= nil then
-	-- 			Attach({
-	-- 				Id = tetherId,
-	-- 				DestinationId = newEnemy.ObjectId,
-	-- 				-- The issue with the tethers is that TetherDistance and TetherElasticity are no longer existent in Hades II - issue #22
-	-- 				TetherDistance = tether.Distance,
-	-- 				TetherElasticity = tether.Elasticity,
-	-- 				-- As a workaround, just do some static offsets
-	-- 				OffsetX = offsetX,
-	-- 				OffsetY = offsetY,
-	-- 			})
-	-- 		else
-	-- 			Attach({
-	-- 				Id = prevTetherId,
-	-- 				DestinationId = tetherId,
-	-- 				TetherDistance = tether.Distance,
-	-- 				TetherRetractSpeed = tether.RetractSpeed,
-	-- 				TetherTrackZRatio = tether.TrackZRatio,
-	-- 				OffsetX = offsetX,
-	-- 				OffsetY = offsetY,
-	-- 			})
-	-- 		end
-	-- 		table.insert(newEnemy.TetherIds, tetherId)
-	-- 		if (newEnemy.EliteIcon or (newEnemy.HealthBuffer ~= nil and newEnemy.HealthBuffer > 0)) and tetherId ~= newEnemy.ObjectId then
-	-- 			newEnemy.Outline.Id = tetherId
-	-- 			if newEnemy.Outline.Thickness > 0 then
-	-- 				AddOutline(newEnemy.Outline)
-	-- 			end
-	-- 		end
-	-- 		prevTetherId = tetherId
-	-- 	end
-	-- end
+			-- Move the first neck segment in each Hydra neck chain to always render behind the head itself
+			if i == 1 and tether.FirstDrawBehind then
+				game.ChangeDrawGroup(tetherId, "Standing_Back")
+			end
+
+			SetAlpha({ Id = tetherId, Fraction = 0 })
+			SetAlpha({ Id = tetherId, Fraction = 1.0, Duration = 0.3 })
+
+			if tether.Elasticity ~= nil then
+				-- Elastic: crystals floating around parent
+				rom.tethers.add(tetherId, newEnemy.ObjectId, tether.Distance, 0, tether.Elasticity, 0)
+			elseif tether.RetractSpeed or tether.TrackZRatio then
+				-- Chain: each segment is constrained toward the next (toward base)
+				local trackZ = tether.TrackZRatio or 0
+				if prevTetherId == newEnemy.ObjectId then
+					trackZ = 0
+				end
+				rom.tethers.add(prevTetherId, tetherId, tether.Distance, tether.RetractSpeed or 0, 0, trackZ)
+			else
+				-- Static anchor (e.g. HydraBase)
+				rom.tethers.add(prevTetherId, tetherId, tether.Distance, 0, 0, 0)
+			end
+
+			table.insert(newEnemy.TetherIds, tetherId)
+			if (newEnemy.EliteIcon or (newEnemy.HealthBuffer ~= nil and newEnemy.HealthBuffer > 0)) and tetherId ~= newEnemy.ObjectId then
+				newEnemy.Outline.Id = tetherId
+				if newEnemy.Outline.Thickness > 0 then
+					AddOutline(newEnemy.Outline)
+				end
+			end
+			prevTetherId = tetherId
+		end
+	end
 end
 
 function mod.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimation)

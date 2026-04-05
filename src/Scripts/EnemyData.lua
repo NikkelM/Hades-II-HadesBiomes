@@ -883,17 +883,7 @@ local enemyModifications = {
 		ActivateFadeIn = true,
 		ActivateTint = true,
 		ActivateStartAlpha = 0.0,
-		Tethers = {
-			[1] = { Distance = 20 },
-			[2] = { Distance = 20 },
-			[3] = { Distance = 20 }
-		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 	},
 	Swarmer = {
@@ -915,12 +905,7 @@ local enemyModifications = {
 	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
@@ -945,12 +930,7 @@ local enemyModifications = {
 	},
 	HeavyRangedSplitterMinibossSuperElite = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		-- Explicitly allow raising with Night Bloom
 		BlockRaiseDead = false,
@@ -1356,34 +1336,14 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		BlockRaiseDead = true,
 		BlockCharm = true,
-		Tethers = {
-			[1] = { Distance = 20 },
-			[2] = { Distance = 20 },
-			[3] = { Distance = 20 }
-		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 	},
 	ShieldRangedElite = {
 		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching" },
 	},
 	ShieldRangedSuperElite = {
 		HealthBuffer = 900,
-		Tethers = {
-			[1] = { Distance = 20 },
-			[2] = { Distance = 20 },
-			[3] = { Distance = 20 }
-		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 	},
 	-- #endregion
 	-- #region ASPHODEL - Minibosses
@@ -1397,17 +1357,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		IgnoreSprintPhasingStasisStun = true,
-		Tethers = {
-			[1] = { Distance = 30 },
-			[2] = { Distance = 30 },
-			[3] = { Distance = 30 }
-		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 	},
 	SpreadShotUnitMiniboss = {
 		-- In Hades II, projectiles can't be destroyed by attacks by default
@@ -1480,12 +1430,9 @@ local enemyModifications = {
 			Delay = 0.16,
 		},
 		ImmuneToPolymorph = true,
-		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
-		-- While Tethers are broken - enemy returns to spawnpoint after attacking
-		DefaultAIData = {
-			MoveToId = 480903,
-			MoveWithinRange = true,
-			MoveWithinRangeTimeout = 2.0,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { Distance = 83, FirstDrawBehind = true },
 		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HydraKillPresentation",
 		PactDataStage2 = {
@@ -1539,13 +1486,9 @@ local enemyModifications = {
 			-- Lining up with when the head actually touches the ground
 			Delay = 0.23,
 		},
-		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
-		-- While Tethers are broken - enemy returns to nearest spawnpoint after attacking
-		DefaultAIData = {
-			-- Is overwritten by the actual spawnpoint in ModsNikkelMHadesBiomesRememberHydraSpawnpoint
-			MoveToClosestId = { 506375, 506376, 506377, 506378, 506380, 506381, },
-			MoveWithinRange = true,
-			MoveWithinRangeTimeout = 1.5,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { Distance = 83, FirstDrawBehind = true },
 		},
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,

@@ -875,9 +875,6 @@ local weaponModifications = {
 			MoveWithinRangeTimeout = 0.5,
 			MaxConsecutiveUses = 3,
 			ImmuneToProjectileSlow = true,
-			-- Needs to be lowered due to tethers not locking the head in place
-			-- It would otherwise fly over the whole map
-			FireSelfVelocity = 2950.0,
 			FireRotationDampening = 0.5,
 		},
 	},
@@ -886,7 +883,6 @@ local weaponModifications = {
 			PreAttackDuration = 0.8,
 			MaxConsecutiveUses = 3,
 			ImmuneToProjectileSlow = true,
-			FireSelfVelocity = 2450.0,
 			FireRotationDampening = 0.5,
 		},
 	},
@@ -916,8 +912,6 @@ local weaponModifications = {
 			AIMoveWithinRangeTimeout = 1.0,
 			PostAttackDuration = 0.5,
 			FireRotationDampening = 0.01,
-			-- Is set through the enemy DefaultAIData, otherwise small heads also move to the center for their attacks
-			MoveToId = mod.NilValue,
 		},
 	},
 	HydraDartVolley = {
@@ -968,18 +962,12 @@ local weaponModifications = {
 		AIData = {
 			PreAttackDuration = 0.2,
 			ImmuneToProjectileSlow = true,
-			-- While tethers are broken
-			AIAttackDistance = 50,
-			AIBufferDistance = 50,
 		},
 	},
 	HydraSummon2 = {
 		AIData = {
 			PreAttackDuration = 0.2,
 			ImmuneToProjectileSlow = true,
-			-- While tethers are broken
-			AIAttackDistance = 50,
-			AIBufferDistance = 50,
 		},
 	},
 	HydraSummonSpread = {
@@ -1032,9 +1020,6 @@ local weaponModifications = {
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireRotationDampening = 0.01,
-			-- While tethers are broken
-			AIAttackDistance = 50,
-			AIBufferDistance = 50,
 		},
 	},
 	HydraRoarVolleyLeft = {
