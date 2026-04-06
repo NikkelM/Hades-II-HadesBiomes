@@ -52,6 +52,7 @@ Other fixes and improvements:
 - Fixed: Ash and Bone door reward previews in Asphodel are located too high in the glass sphere.
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
 - Fixed: Chaos Gates do not have specific spawn requirements adapted to Zagreus' Journey runs.
+- Fixed: "Enshrouded" (hidden room reward previews) Chaos Curse cannot appear in Zagreus' Journey runs.
 - Fixed: Relationship entries for story NPCs that unlock a keepsake do not show the related icon in the Codex.
 - Fixed: Relationship entries for story NPCs that unlock a minor prophecy do not show the related icon in the Codex.
 - Fixed: Thanatos' "Growing Closer" arrow in the Codex is placed after the wrong entry.
