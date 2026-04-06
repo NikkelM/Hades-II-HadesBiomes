@@ -503,6 +503,7 @@ local function on_ready()
 			import "Scripts/PowersLogic.lua"
 			import "Scripts/QuestLogic.lua"
 			import "Scripts/RequirementsLogic.lua"
+			import "Scripts/ResourcePresentation.lua"
 			import "Scripts/RewardPresentation.lua"
 			import "Scripts/RoomEvents.lua"
 			import "Scripts/RoomLogic.lua"

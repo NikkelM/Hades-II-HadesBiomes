@@ -383,6 +383,8 @@ local roomReplacements = {
 			{
 				Name = "Boon",
 				LootName = "TrialUpgrade",
+				-- Force the conversation to play
+				ModsNikkelMHadesBiomesDisableGoldConversionEligible = true,
 				GameStateRequirements = {
 					{
 						PathFalse = { "CurrentRun", "ActiveBounty" },
