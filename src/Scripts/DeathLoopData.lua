@@ -91,11 +91,9 @@ function mod.SpawnHadesRunStartDoor(source, args)
 
 	chaosGate.UseText = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText"
 	-- Normally this would check if the exit door for a room can be used - we always allow it
-	-- Might add a requirement here if we ever put Hades runs behind a requirement/enchantment
 	chaosGate.OnUseEvents = {}
 	chaosGate.OnUsedFunctionName = _PLUGIN.guid .. "." .. "StartHadesRun"
 	chaosGate.OnUsedFunctionArgs = {
-		-- TODO: For debugging, change to currently worked on biome
 		StartingBiome = "Tartarus",
 		-- Don't play a voiceline - we do this when entering the Chaos gate
 		-- We have to do it then, as otherwise MelinoeField needs to be loaded in PreThingCreation

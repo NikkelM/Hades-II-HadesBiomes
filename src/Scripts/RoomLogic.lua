@@ -311,6 +311,15 @@ end)
 modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentRoom, currentEncounter)
 	base(currentRun, currentRoom, currentEncounter)
 
+	if currentEncounter == nil or currentEncounter.EncounterType == "NonCombat" or currentEncounter.SkipEndEncounterEffects then
+		return
+	end
+
+	if currentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId ~= nil and not currentEncounter.SkipCleanupRaiseDead then
+		game.thread(mod.CleanupOrpheusRaiseDeadEncounter, currentRoom)
+	end
+
+	-- Must be in a modded run for the minor prophecy to be fulfilled
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		if game.HeroHasTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) then
 			local traitData = game.GetHeroTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) or {}

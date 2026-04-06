@@ -28,6 +28,9 @@ Other fixes and improvements:
 - Fixed: Brimstone and Voidstone enemies have no small tethered crystals floating around them.
 - Fixed: If Gale attacks a Brimstone or Voidstone enemy with tethers attached to it, the game may crash.
 - Fixed: Some dialogues with Orpheus cannot be triggered.
+- Fixed: Enemies summoned by Orpheus' "God of the Dead" boon cannot coexist with those summoned by "Sun Worshiper".
+- Fixed: Enemies summoned by Orpheus' "God of the Dead" boon reduce the amount of enemies spawned in subsequent waves in the same encounter.
+- Fixed: Enemies summoned by Orpheus' "God of the Dead" boon can be transformed by "Twilight Curse".
 - Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".

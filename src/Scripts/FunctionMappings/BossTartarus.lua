@@ -154,9 +154,16 @@ function mod.HarpyKillPresentation(unit, args)
 		Destroy({ Ids = GetIds({ Name = args.DestroyGroup }) })
 	end
 
-	-- For player assist pets
+	-- For summoned/charmed enemies
 	if game.CurrentRun.CurrentRoom.DestroyAssistUnitOnEncounterEndId then
 		local assistUnit = game.ActiveEnemies[game.CurrentRun.CurrentRoom.DestroyAssistUnitOnEncounterEndId]
+		if assistUnit ~= nil then
+			game.killTaggedThreads(assistUnit.AIThreadName)
+			game.killWaitUntilThreads(assistUnit.AINotifyName)
+		end
+	end
+	if game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
+		local assistUnit = game.ActiveEnemies[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
 		if assistUnit ~= nil then
 			game.killTaggedThreads(assistUnit.AIThreadName)
 			game.killWaitUntilThreads(assistUnit.AINotifyName)

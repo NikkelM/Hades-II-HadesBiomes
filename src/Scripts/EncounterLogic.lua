@@ -7,6 +7,15 @@ modutil.mod.Path.Wrap("CalculateActiveEnemyCap", function(base, currentRun, curr
 			(game.GetNumShrineUpgrades(modifierName) * currentEncounter.EnemyCountShineModifierAmount))
 	end
 
+	if game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
+		local assistUnit = game.ActiveEnemies
+				[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+		if assistUnit and not assistUnit.IsDead then
+			local activeCapWeight = assistUnit.ActiveCapWeight or 1
+			enemyCap = enemyCap + activeCapWeight
+		end
+	end
+
 	return enemyCap
 end)
 
@@ -35,7 +44,35 @@ modutil.mod.Path.Wrap("OnAllEnemiesDead", function(base, currentRoom, currentEnc
 	end
 end)
 
--- For ShadeNaked spawns
 modutil.mod.Path.Wrap("GetActiveEnemyCount", function(base, encounter)
-	return base(encounter) + (game.MapState.PlaceholderEnemyCount or 0)
+	local enemyCount = base(encounter)
+
+	-- For ShadeNaked
+	enemyCount = enemyCount + (game.MapState.PlaceholderEnemyCount or 0)
+
+	if game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
+		local assistUnit = game.ActiveEnemies
+				[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+		if assistUnit and not assistUnit.IsDead then
+			local activeCapWeight = assistUnit.ActiveCapWeight or 1
+			enemyCount = enemyCount + activeCapWeight
+		end
+	end
+
+	return enemyCount
+end)
+
+modutil.mod.Path.Wrap("GetEncounterActiveEnemyCount", function(base, encounter)
+	local enemyCount = base(encounter)
+
+	if game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
+		local assistUnit = game.ActiveEnemies
+				[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+		if assistUnit and not assistUnit.IsDead then
+			local activeCapWeight = assistUnit.ActiveCapWeight or 1
+			enemyCount = enemyCount + activeCapWeight
+		end
+	end
+
+	return enemyCount
 end)

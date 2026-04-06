@@ -529,7 +529,7 @@ function mod.OrpheusRaiseKilledEnemy(enemy, args)
 	local enemyName = enemy.Name
 	local enemyData = game.EnemyData[enemyName]
 	if enemyData and ((not enemyData.IsBoss and not enemyData.BlockRaiseDead) or enemyData.ForceAllowRaiseDead) then
-		game.IncrementTableValue(MapState, "OrpheusRaiseDeadCount")
+		game.IncrementTableValue(game.MapState, "OrpheusRaiseDeadCount")
 		local tempObstacle = SpawnObstacle({ Name = "BlankObstacle", DestinationId = enemy.ObjectId })
 		local summonArgs = game.ShallowCopyTable(game.WeaponData.WeaponSpellSummon.SummonMultipliers) or {}
 		if args.MaxHealthMultiplier then
@@ -546,9 +546,10 @@ function mod.OrpheusRaiseKilledEnemy(enemy, args)
 		end
 		summonArgs.SpawnPointId = tempObstacle
 		local newEnemy = game.CreateAlliedEnemy(enemyName, summonArgs) or {}
+		newEnemy.ImmuneToPolymorph = true
 		game.DestroyOnDelay({ tempObstacle }, 0.1)
-		game.CurrentRun.CurrentRoom.DestroyAssistUnitOnEncounterEndId = newEnemy.ObjectId
-		game.CurrentRun.CurrentRoom.AssistUnitName = enemyName
+		game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId = newEnemy.ObjectId
+		game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_AssistUnitName = enemyName
 		mod.OrpheusRaiseDeadPresentation(newEnemy)
 
 		if game.CurrentRun.CurrentRoom.Encounter ~= nil and game.CurrentRun.CurrentRoom.Encounter.ActiveEnemyCap ~= nil then
