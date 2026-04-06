@@ -383,8 +383,6 @@ local roomReplacements = {
 			{
 				Name = "Boon",
 				LootName = "TrialUpgrade",
-				-- Force the conversation to play
-				ModsNikkelMHadesBiomesDisableGoldConversionEligible = true,
 				GameStateRequirements = {
 					{
 						PathFalse = { "CurrentRun", "ActiveBounty" },
@@ -393,6 +391,9 @@ local roomReplacements = {
 						PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01" },
 					},
 				},
+				-- Force the conversation to play
+				ModsNikkelMHadesBiomesDisableGoldConversionEligible = true,
+				ModsNikkelMHadesBiomesIneligibleForBoonSkip = true,
 			},
 		},
 
