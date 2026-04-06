@@ -514,6 +514,8 @@ local weaponModifications = {
 		AIData = {
 			DeepInheritance = true,
 			ProjectileAngleEvenlySpaced = true,
+			ExpireProjectilesOnFreeze = true,
+			ExpireProjectilesOnPolymorph = true,
 		},
 	},
 	HeavyRangedSplitterFragment = {
@@ -1681,12 +1683,16 @@ local weaponModifications = {
 		AIData = {
 			ProjectileAngleInterval = 45,
 			ProjectileInterval = 0.05,
+			ExpireProjectilesOnFreeze = true,
+			ExpireProjectilesOnPolymorph = true,
 		},
 	},
 	HeavyRangedWeaponForkElite = {
 		AIData = {
 			ProjectileAngleInterval = 45,
 			ProjectileInterval = 0.05,
+			ExpireProjectilesOnFreeze = true,
+			ExpireProjectilesOnPolymorph = true,
 		},
 	},
 	SatyrRangedWeapon = {

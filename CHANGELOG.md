@@ -27,6 +27,7 @@ Other fixes and improvements:
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
 - Fixed: Brimstone and Voidstone enemies have no small tethered crystals floating around them.
 - Fixed: If Gale attacks a Brimstone or Voidstone enemy with tethers attached to it, the game may crash.
+- Fixed: The Doomstone's lasers do not disappear when it is frozen. 
 - Fixed: Skullomats morphed by "Twilight Curse" can still spawn Numbskulls.
 - Fixed: Skullomats morphed by "Twilight Curse" turn into very small sheep.
 - Fixed: Enemies morphed by "Twilight Curse" play their original death animations when dying while morphed, instead of the Sheep's.
@@ -42,6 +43,7 @@ Other fixes and improvements:
 - Fixed: If the "Vow of Scars" is active and "HydraLite Gold" is offered by Patroclus, the number of locations the item will last is not shown.
 - Fixed: Melinoë's voicelines that play when (re-)entering the Styx Hub room play every time instead of only sometimes.
 - Fixed: Some shop items in the Styx shop can clip behind the base they sit on.
+- Fixed: The Snakestone's lasers do not disappear when it is frozen or morphed by "Twilight Curse". 
 - Fixed: If Boiling Blood is active during Hades' phase transition, the damage multiplier is not removed for the rest of the fight.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.
