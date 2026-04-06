@@ -52,6 +52,7 @@ Other fixes and improvements:
 - Fixed: In rare circumstances, the game can crash when checking requirements for actions taken during the previous Zagreus' Journey run.
 - Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
 - Fixed: Some unnecessary localization strings are copied during the mod installation.
+- Fixed: The log shows harmless "FMOD Error 74" messages.
 - Compatibility: The mod now exposes `IsValidInstallation` to denote to other mods if Zagreus' Journey is installed successfully. Mods can use this through `mods["NikkelM-Zagreus_Journey"].IsValidInstallation`.
 <!--Releasenotes end-->
 
