@@ -342,6 +342,8 @@ local hadesProjectilesModifications = {
 		DissipateGraphic = "null",
 		ImpactFx = "null",
 		DeathFx = "HadesLaserEnd",
+		-- We detach the projectile and create the beams manually to get BarrelLength working
+		AttachToOwner = false,
 	},
 	HadesTombstoneSpawn = {
 		SpawnOnDetonate = "ModsNikkelMHadesBiomesHadesTombstone"

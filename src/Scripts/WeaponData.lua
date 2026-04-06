@@ -1978,6 +1978,11 @@ local weaponModifications = {
 		AIData = {
 			FireRotationDampening = 0.02,
 			ImmuneToProjectileSlow = true,
+			SkipFireWeapon = true,
+			FireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHadesCastBeamFire",
+			-- To offset the beams with Hades' rotation in the bink file
+			ModsNikkelMHadesBiomes_BeamGraphicOffsetX = 50,
+			ModsNikkelMHadesBiomes_BeamGraphicOffsetY = -40,
 		},
 	},
 	HadesCastBeam360 = {
@@ -1985,6 +1990,11 @@ local weaponModifications = {
 		AIData = {
 			FireRotationDampening = 0.015,
 			ImmuneToProjectileSlow = true,
+			SkipFireWeapon = true,
+			FireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHadesCastBeamFire",
+			-- To offset the beams with Hades' rotation in the bink file
+			ModsNikkelMHadesBiomes_BeamGraphicOffsetX = 50,
+			ModsNikkelMHadesBiomes_BeamGraphicOffsetY = -40,
 		},
 	},
 	HadesMobilityCombo1 = {
