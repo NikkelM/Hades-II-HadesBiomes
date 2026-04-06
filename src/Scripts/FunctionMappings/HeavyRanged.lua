@@ -36,14 +36,15 @@ function mod.CreateTethers(newEnemy, args)
 				game.ChangeDrawGroup(tetherId, "Standing_Back")
 			end
 
+			-- Fade in tethers, only applies for pre-spawned enemies
 			SetAlpha({ Id = tetherId, Fraction = 0 })
 			SetAlpha({ Id = tetherId, Fraction = 1.0, Duration = 0.3 })
 
 			if tether.Elasticity ~= nil then
-				-- Elastic: crystals floating around parent
+				-- Elastic: e.g. crystals floating around parent
 				rom.tethers.add(tetherId, newEnemy.ObjectId, tether.Distance, 0, tether.Elasticity, 0)
 			elseif tether.RetractSpeed or tether.TrackZRatio then
-				-- Chain: each segment is constrained toward the next (toward base)
+				-- Chain: each segment is constrained toward the next (e.g. toward base for Hydra)
 				local trackZ = tether.TrackZRatio or 0
 				if prevTetherId == newEnemy.ObjectId then
 					trackZ = 0
@@ -89,7 +90,7 @@ function mod.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimatio
 					Speed = game.RandomFloat(victim.OnDeathTetherRandomForceMin, victim.OnDeathTetherRandomForceMax),
 					Angle = game.RandomFloat(0, 360)
 				})
-				-- Set up the attached table so OnTouchdown plays the shatter on landing
+				-- Set up the attached table so e.g. OnTouchdown plays the shatter on landing for crystal tethers
 				local tetherTable = victim.TetherTables and victim.TetherTables[k]
 				if tetherTable ~= nil then
 					tetherTable.OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "TetherOnTouchdownShatter"
@@ -100,7 +101,7 @@ function mod.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimatio
 			else
 				-- Play death animation before destroying, CreateAnimation spawns a separate object that persists after the tether is destroyed
 				if tetherConfig ~= nil and tetherConfig.ParentDeathAnimation ~= nil then
-					-- CreateAnimation doesn't inherit the destination's OffsetZ, so read it to position correctly
+					-- CreateAnimation doesn't inherit the parent's OffsetZ, so read it to position correctly
 					local offsetZ = GetThingDataValue({ Id = id, Property = "OffsetZ" }) or 0
 					CreateAnimation({ Name = tetherConfig.ParentDeathAnimation, DestinationId = id, OffsetZ = offsetZ })
 				end

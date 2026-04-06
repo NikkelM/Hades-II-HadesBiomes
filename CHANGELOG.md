@@ -5,7 +5,7 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - Meet **Megaera** in Styx, and have a friendly chat and a bottle of Ambrosia or two. This will also allow you to build a relationship with Megaera (including unlocking her keepsake).
-- Advance through **50** new cosmetic ranks offered by the _Spirit Mixer_, from the lowly "Alpha Warden" to the feared "Unseen One". These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
+- Advance through **50** new cosmetic ranks offered by the **Spirit Mixer**, from the lowly _Alpha Warden_ to the feared _Unseen One_. These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
 - **Commander Schelemeus** has managed to procure a new set of the *Gifts of the Veil* from an unknown underworld contact... turn up the heat, errmm, fear, and escape the Nightmare Realm to earn these prestigious trophies.
 - The **Lernaean Bone Hydra** has found its long-lost neck in the depths of Asphodel's lava.
 - You can now conclude **Sisyphus**' storyline by interacting with him and **Megaera**.
