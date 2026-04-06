@@ -27,6 +27,9 @@ Other fixes and improvements:
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
 - Fixed: Brimstone and Voidstone enemies have no small tethered crystals floating around them.
 - Fixed: If Gale attacks a Brimstone or Voidstone enemy with tethers attached to it, the game may crash.
+- Fixed: Skullomats morphed by "Twilight Curse" can still spawn Numbskulls.
+- Fixed: Skullomats morphed by "Twilight Curse" turn into very small sheep.
+- Fixed: Enemies morphed by "Twilight Curse" play their original death animations when dying while morphed, instead of the Sheep's.
 - Fixed: Some dialogues with Orpheus cannot be triggered.
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon cannot coexist with those summoned by "Sun Worshiper".
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon reduce the amount of enemies spawned in subsequent waves in the same encounter.

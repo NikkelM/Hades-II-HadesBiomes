@@ -32,13 +32,11 @@ function mod.ModsNikkelMHadesBiomesSpawnerAI(enemy, aiData)
 		end
 	end
 
-	-- wait(aiData.SpawnBurstDelay, enemy.SpawnerThreadName)
-
 	local spawnOnIds = game.ShallowCopyTable(aiData.SpawnOnIds)
 	local spawnOnIdsOrdered = game.ShallowCopyTable(aiData.SpawnOnIdsOrdered)
 
 	for i = 1, spawnCount do
-		if NumAlive({ Name = spawnGroupName }) < aiData.MaxActiveSpawns and game.IsAIActive(enemy) then
+		if NumAlive({ Name = spawnGroupName }) < aiData.MaxActiveSpawns and game.IsAIActive(enemy) and not enemy.IsPolymorphed and not enemy.IsStunned then
 			if not aiData.SkipLocationBlockedCheck and IsLocationBlocked({ Id = enemy.ObjectId }) then
 				return
 			end

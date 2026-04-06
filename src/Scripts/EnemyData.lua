@@ -907,6 +907,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		BlockRespawnShrineUpgrade = true,
+		PolymorphScaleOverride = 4.0,
 		EliteAttributeOptions = { "Fog", "HeavyArmor", "Orbit", "Radial", },
 	},
 	-- #endregion
