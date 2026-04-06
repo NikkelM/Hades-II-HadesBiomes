@@ -883,17 +883,15 @@ local enemyModifications = {
 		ActivateFadeIn = true,
 		ActivateTint = true,
 		ActivateStartAlpha = 0.0,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 20 },
-			[2] = { Distance = 20 },
-			[3] = { Distance = 20 }
+			[1] = { ParentDeathAnimation = "HeavyRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HeavyRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HeavyRangedCrystal3Shatter" },
 		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		OnDeathTetherUpwardForce = 2200,
+		OnDeathTetherRandomForceMin = 800,
+		OnDeathTetherRandomForceMax = 1000,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 	},
 	Swarmer = {
@@ -915,12 +913,10 @@ local enemyModifications = {
 	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		OnDeathTetherUpwardForce = 2200,
+		OnDeathTetherRandomForceMin = 800,
+		OnDeathTetherRandomForceMax = 1000,
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
@@ -945,12 +941,7 @@ local enemyModifications = {
 	},
 	HeavyRangedSplitterMinibossSuperElite = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		-- Explicitly allow raising with Night Bloom
 		BlockRaiseDead = false,
@@ -1356,33 +1347,26 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		BlockRaiseDead = true,
 		BlockCharm = true,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 20 },
-			[2] = { Distance = 20 },
-			[3] = { Distance = 20 }
+			[1] = { ParentDeathAnimation = "HealRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
 		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		OnDeathTetherUpwardForce = 2200,
+		OnDeathTetherRandomForceMin = 800,
+		OnDeathTetherRandomForceMax = 1000,
 	},
 	ShieldRangedElite = {
 		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching" },
 	},
 	ShieldRangedSuperElite = {
 		HealthBuffer = 900,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 20 },
-			[2] = { Distance = 20 },
-			[3] = { Distance = 20 }
-		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
+			[1] = { ParentDeathAnimation = "HealRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
 		},
 	},
 	-- #endregion
@@ -1397,16 +1381,11 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		IgnoreSprintPhasingStasisStun = true,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 30 },
-			[2] = { Distance = 30 },
-			[3] = { Distance = 30 }
-		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
+			[1] = { ParentDeathAnimation = "HealRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
 		},
 	},
 	SpreadShotUnitMiniboss = {
@@ -1480,12 +1459,14 @@ local enemyModifications = {
 			Delay = 0.16,
 		},
 		ImmuneToPolymorph = true,
-		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
-		-- While Tethers are broken - enemy returns to spawnpoint after attacking
 		DefaultAIData = {
-			MoveToId = 480903,
 			MoveWithinRange = true,
 			MoveWithinRangeTimeout = 2.0,
+		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { Distance = 83, FirstDrawBehind = true, ParentDeathAnimation = "HydraNeckDeath" },
+			[2] = { ParentDeathAnimation = "HydraBaseDeath" },
 		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HydraKillPresentation",
 		PactDataStage2 = {
@@ -1539,13 +1520,14 @@ local enemyModifications = {
 			-- Lining up with when the head actually touches the ground
 			Delay = 0.23,
 		},
-		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
-		-- While Tethers are broken - enemy returns to nearest spawnpoint after attacking
 		DefaultAIData = {
-			-- Is overwritten by the actual spawnpoint in ModsNikkelMHadesBiomesRememberHydraSpawnpoint
-			MoveToClosestId = { 506375, 506376, 506377, 506378, 506380, 506381, },
 			MoveWithinRange = true,
 			MoveWithinRangeTimeout = 1.5,
+		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { Distance = 83, FirstDrawBehind = true, ParentDeathAnimation = "HydraNeckDeath" },
+			[2] = { ParentDeathAnimation = "HydraBaseDeath" },
 		},
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
