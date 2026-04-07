@@ -1274,6 +1274,7 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyMedusaOnHit" },
 		ManualDeathAnimation = false,
 		DestroyDelay = 3.0,
+		PolymorphScaleOverride = 2.0,
 	},
 	FreezeShotUnitElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),

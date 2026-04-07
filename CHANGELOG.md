@@ -32,7 +32,7 @@ Other fixes and improvements:
 - Fixed: If Gale attacks a Brimstone or Voidstone enemy with tethers attached to it, the game may crash.
 - Fixed: The Doomstone's lasers do not disappear when it is frozen. 
 - Fixed: Skullomats morphed by "Twilight Curse" can still spawn Numbskulls.
-- Fixed: Skullomats morphed by "Twilight Curse" turn into very small sheep.
+- Fixed: Skullomats morphed by "Twilight Curse" turn into sheep that are smaller than they should be.
 - Fixed: Enemies morphed by "Twilight Curse" play their original death animations when dying while morphed, instead of the Sheep's.
 - Fixed: Some dialogues with Orpheus cannot be triggered.
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon cannot coexist with those summoned by "Sun Worshiper".
@@ -41,6 +41,7 @@ Other fixes and improvements:
 - Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
+- Fixed: Gorgons morphed by "Twilight Curse" turn into sheep that are smaller than they should be.
 - Fixed: The Lernaean Bone Hydra has no neck elements constraining its movements.
 - Fixed: Some fog and branches flicker on a specific Elysium map.
 - Fixed: If the "Vow of Scars" is active and "HydraLite Gold" is offered by Patroclus, the number of locations the item will last is not shown.
