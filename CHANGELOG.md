@@ -46,7 +46,8 @@ Other fixes and improvements:
 - Fixed: If the "Vow of Scars" is active and "HydraLite Gold" is offered by Patroclus, the number of locations the item will last is not shown.
 - Fixed: Melinoë's voicelines that play when (re-)entering the Styx Hub room play every time instead of only sometimes.
 - Fixed: Some shop items in the Styx shop can clip behind the base they sit on.
-- Fixed: The Snakestone's lasers do not disappear when it is frozen or morphed by "Twilight Curse". 
+- Fixed: The Snakestone's lasers do not disappear when it is frozen or morphed by "Twilight Curse".
+- Fixed: The Gigantic Vermin's poison shake attack does not show the flying poison projectiles before they land and produce the poison puddles.
 - Fixed: If Boiling Blood is active during Hades' phase transition, the damage multiplier is not removed for the rest of the fight.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.
