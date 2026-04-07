@@ -33,12 +33,11 @@ Other fixes and improvements:
 - Fixed: The Doomstone's lasers do not disappear when it is frozen. 
 - Fixed: Skullomats morphed by "Twilight Curse" can still spawn Numbskulls.
 - Fixed: Skullomats morphed by "Twilight Curse" turn into sheep that are smaller than they should be.
-- Fixed: Enemies morphed by "Twilight Curse" play their original death animations when dying while morphed, instead of the Sheep's.
 - Fixed: Some dialogues with Orpheus cannot be triggered.
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon cannot coexist with those summoned by "Sun Worshiper".
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon reduce the amount of enemies spawned in subsequent waves in the same encounter.
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon can be transformed by "Twilight Curse".
-- Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
+- Fixed: Megaera spins in place multiple times during an attack where she summons enemies to her aid, instead of spinning only once.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
 - Fixed: Gorgons morphed by "Twilight Curse" turn into sheep that are smaller than they should be.
@@ -51,6 +50,8 @@ Other fixes and improvements:
 - Fixed: If Boiling Blood is active during Hades' phase transition, the damage multiplier is not removed for the rest of the fight.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.
+- Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
+- Fixed: Enemies morphed by "Twilight Curse" play their original death animations when dying while morphed, instead of the Sheep's.
 - Fixed: Urns are not destroyed when sprinted into.
 - Fixed: Family Dispute door reward previews are too large and clip out of the glass sphere.
 - Fixed: Ash and Bone door reward previews in Asphodel are located too high in the glass sphere.

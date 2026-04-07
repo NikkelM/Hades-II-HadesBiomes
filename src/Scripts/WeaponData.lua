@@ -581,7 +581,8 @@ local weaponModifications = {
 	},
 	HarpySpawns = {
 		AIData = {
-			FireFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
+			FireFunctionName = mod.NilValue,
+			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
 			FireAnimation = "FuryLightningLoop",
 			PostAttackAnimation = "FuryLightningReturnToIdle",
 		},
