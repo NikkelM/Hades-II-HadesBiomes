@@ -146,13 +146,21 @@ mod.HadesFxAnimationModifications = {
 		OffsetY = 175,
 		UseAttachedMarkerLocation = "null"
 	},
+	["SnowFootstepL-Spawner-Hades"] = {
+		VisualFx = "null",
+	},
+	["SnowFootstepR-Spawner-Hades"] = {
+		VisualFx = "null",
+	},
 	["SnowFootstepL-Hades"] = {
 		FilePath = "Dev\\blank_invisible",
 		ClearCreateAnimations = true,
+		CreateAnimations = {},
 	},
 	["SnowFootstepR-Hades"] = {
 		FilePath = "Dev\\blank_invisible",
 		ClearCreateAnimations = true,
+		CreateAnimations = {},
 	},
 	CerberusRockFallFx = {
 		CreateAnimations = {

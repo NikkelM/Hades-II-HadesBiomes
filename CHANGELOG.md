@@ -51,6 +51,7 @@ Other fixes and improvements:
 - Fixed: If Boiling Blood is active during Hades' phase transition, the damage multiplier is not removed for the rest of the fight.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.
+- Fixed: Hades' footsteps during his fight sometimes appear in random places.
 - Fixed: There is an incorrectly layered lava bubble animation in the Asphodel credits scene.
 - Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
 - Fixed: Enemies morphed by "Twilight Curse" play their original death animations when dying while morphed, instead of the Sheep's.
