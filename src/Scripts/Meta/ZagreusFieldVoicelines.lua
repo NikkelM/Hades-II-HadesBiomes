@@ -644,7 +644,6 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_2502 = true,
 	ZagreusField_2503 = true,
 	ZagreusField_2505 = true,
-	ZagreusField_2522 = true,
 	ZagreusField_4276 = true,
 	ZagreusField_4277 = true,
 	ZagreusField_4278 = true,
