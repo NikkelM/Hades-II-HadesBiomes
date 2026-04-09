@@ -581,6 +581,7 @@ local function on_ready_late()
 	import "Scripts/CodexLogic_Late.lua"
 	import "Scripts/CombatLogic_Late.lua"
 	import "Scripts/DeathLoopLogic_Late.lua"
+	import "Scripts/EffectPresentation_Late.lua"
 	import "Scripts/EventPresentation_Late.lua"
 	import "Scripts/GhostLogic_Late.lua"
 	import "Scripts/HarvestLogic_Late.lua"
