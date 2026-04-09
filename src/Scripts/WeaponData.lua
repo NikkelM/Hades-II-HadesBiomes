@@ -1764,8 +1764,9 @@ local weaponModifications = {
 	SatyrMinigun = {
 		AIData = {
 			ImmuneToProjectileSlow = true,
-			PreAttackRotationDampening = mod.NilValue,
-			FireRotationDampening = mod.NilValue,
+			-- "Reset"
+			PreAttackRotationDampening = 1,
+			FireRotationDampening = 1,
 		},
 	},
 	-- #endregion
@@ -2340,3 +2341,4 @@ local SjsonToAIDataPropertyMappings = {
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponReplacements,
 	weaponKeyReplacements, SjsonToAIDataPropertyMappings)
+mod.PrintTable(game.WeaponData.SatyrMinigun)
