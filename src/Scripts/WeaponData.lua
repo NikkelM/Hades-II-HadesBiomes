@@ -1764,6 +1764,8 @@ local weaponModifications = {
 	SatyrMinigun = {
 		AIData = {
 			ImmuneToProjectileSlow = true,
+			PreAttackRotationDampening = mod.NilValue,
+			FireRotationDampening = mod.NilValue,
 		},
 	},
 	-- #endregion
