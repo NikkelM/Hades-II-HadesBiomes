@@ -4,7 +4,9 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- This patch fixes a variety of issues and incompatibilities introduced by the Post-Launch Patch 2. If you notice any other new bugs, please report them on [GitHub](https://github.com/NikkelM/Hades-II-HadesBiomes/issues) or on the [Modding Discord](https://discord.gg/KuMbyrN).
+- This patch hot-fixes a small number of issues and incompatibilities introduced by the Post-Launch Patch 2 that may prevent you from playing, even in "vanilla" mode.
+- After downloading and applying this update (start the game modded once), you should be able to play "vanilla" until the next mod patch properly fixes all newly introduced issues.
+- Fixed: The mod tries to reference animations that do not exist, which crashes the game on startup, even when playing vanilla.
 
 Other fixes and improvements:
 - The mod now uses some new internal functions to optimize calls and prevent unexpected behaviour.
