@@ -8,7 +8,7 @@ modutil.mod.Path.Wrap("RunHistoryUpdateVisibility", function(base, screen)
 		if mod.WasModdedRun(run) then
 			local button = screen.Components[screen.ButtonName .. runIndex]
 			local routeName = "RunHistoryScreen_RouteModsNikkelMHadesBiomes"
-			button.AnimationIndex = 7
+			button.AnimationIndex = 9
 			if not game.WasRunSuccess(run) then
 				button.AnimationIndex = button.AnimationIndex + 1
 			end

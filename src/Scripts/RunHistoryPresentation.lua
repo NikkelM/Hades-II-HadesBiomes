@@ -3,7 +3,7 @@ modutil.mod.Path.Wrap("RunHistoryScreenOpenPresentation", function(base, screen)
 		PlaySound({ Name = "/SFX/Menu Sounds/DialoguePanelIn" })
 		game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.OpenedRunHistoryScreenVoiceLines, true)
 		-- Modded index
-		local animationIndex = 7
+		local animationIndex = 9
 		if not game.WasRunSuccess(game.CurrentRun) then
 			SetAlpha({ Id = screen.Components.ResultRibbonSuccess.Id, Fraction = 0.0 })
 			animationIndex = animationIndex + 1
