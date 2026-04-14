@@ -226,10 +226,6 @@ function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 	-- NPC_Orpheus_Story_01 or NPC_Eurydice_01 or NPC_Orpheus_01
 	source = source or game.ActiveEnemies[554419] or game.ActiveEnemies[514436] or game.ActiveEnemies[390000]
 
-	game.CurrentRun.EventState[source.ObjectId] = {
-		FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSingingPresentation",
-		Args = args
-	}
 	mod.ModsNikkelMHadesBiomesSingingPresentation(source, args)
 
 	if game.AudioState.SecretMusicName ~= args.TrackName then

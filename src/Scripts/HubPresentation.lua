@@ -66,7 +66,7 @@ modutil.mod.Path.Wrap("UpdateEscapeDoorForLimitGraspShrineUpgrade", function(bas
 			end
 		end
 		if moddedEscapeDoorId == nil then
-			return
+			return base(source, args)
 		end
 
 		mod.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(nil, { EscapeDoorIds = { moddedEscapeDoorId } })

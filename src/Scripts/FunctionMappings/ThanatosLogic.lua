@@ -208,7 +208,6 @@ function mod.ThanatosExit(source, args)
 	end
 
 	source.Mute = true
-	game.CurrentRun.EventState[source.ObjectId] = { FunctionName = _PLUGIN.guid .. "." .. "ThanatosExitSilent", Args = args }
 
 	if args.UseMaxedPresentation then
 		RemoveInputBlock({ Name = "ThanatosExit" })

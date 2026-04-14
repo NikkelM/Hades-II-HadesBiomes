@@ -102,10 +102,6 @@ modutil.mod.Path.Wrap("GetRandomEligibleTextLines", function(base, source, textL
 			return game.GetRandomValue(eligibleOneTimeConversations)
 		end
 
-		if source.RepeatableTextLinesPlayChance ~= nil and not game.RandomChance(source.RepeatableTextLinesPlayChance) then
-			return nil
-		end
-
 		local randomConversation = nil
 		if game.IsEmpty(eligibleUnplayedConversations) then
 			-- All lines played, start the record over
