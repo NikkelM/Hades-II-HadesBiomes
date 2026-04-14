@@ -7,6 +7,7 @@
 - This patch fixes a variety of issues and incompatibilities introduced by the Post-Launch Patch 2. If you notice any other new bugs, please report them on [GitHub](https://github.com/NikkelM/Hades-II-HadesBiomes/issues) or on the [Modding Discord](https://discord.gg/KuMbyrN).
 
 Other fixes and improvements:
+- The mod now uses some new internal functions to optimize calls and prevent unexpected behaviour.
 - Fixed: Room transitions in some scenarios for vanilla runs could have an incorrect fade duration.
 - Fixed: Viewing Zagreus' Journey runs in the Run History screen shows an incorrect background animation.
 - Fixed: Some removed variables are being accessed by the mod which can crash the game.

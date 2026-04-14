@@ -23,7 +23,7 @@ function mod.DisplayLocationText(source, args)
 		args.Delay = 1.5
 	end
 
-	game.DisplayInfoBanner(source, args)
+	game.DisplayBiomeLocationBanner(source, args)
 end
 
 -- Hades run doors have a backing even while still locked (Hades II doors just don't have a preview)
@@ -88,30 +88,13 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 		game.CurrentRun.ShrinePointsCache = game.GetTotalSpentShrinePoints()
 		game.CurrentRun.ShrineUpgradesCache = game.DeepCopyTable(game.GameState.ShrineUpgrades)
 		game.CurrentRun.MetaUpgradeCostCache = game.GameState.MetaUpgradeCostCache
-		-- Modded runs shouldn't count for this progress
-		-- if game.GameState.HighestRunDepthCache < game.CurrentRun.RunDepthCache then
-		-- 	game.GameState.HighestRunDepthCache = game.CurrentRun.RunDepthCache
-		-- end
-		-- local roomNames = {}
-		-- for k, room in ipairs(game.CurrentRun.RoomHistory) do
-		-- 	table.insert(roomNames, room.Name)
-		-- end
-		-- table.insert(roomNames, game.CurrentRun.CurrentRoom.Name)
-		-- SendProgressionEvents({
-		-- 	Names = roomNames,
-		-- 	CompletedRuns = game.GameState.CompletedRunsCache,
-		-- 	ClearedUnderworldRuns = game.GameState.ClearedUnderworldRunsCache,
-		-- 	ClearedSurfaceRuns = game.GameState.ClearedSurfaceRunsCache,
-		-- 	Cleared = game.CurrentRun.Cleared,
-		-- 	GameplayTime = game.GameState.GameplayTime,
-		-- 	TotalTime = game.GameState.TotalTime
-		-- })
 
 		-- 'cleared' means achieved a victory condition as opposed to dying	
 		local runsCleared = 0
 		local underworldRunsCleared = 0
 		local surfaceRunsCleared = 0
 		local moddedRunsCleared = 0
+		local dreamRunsCleared = 0
 		if game.CurrentRun.Cleared then
 			runsCleared = runsCleared + 1
 			if not game.CurrentRun.ActiveBounty and game.CurrentRun.BiomesReached ~= nil then
@@ -122,16 +105,19 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 				end
 				if game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache > game.CurrentRun.GameplayTime then
 					game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache = game.CurrentRun.GameplayTime
+					game.CurrentRun.NewRecordClearTime = true
 				end
 			end
 		end
 		for k, run in ipairs(game.GameState.RunHistory) do
-			if run.RunResult == game.RunResultData.UnderworldSuccess then
+			if run.RunResult == game.RunResultData.UnderworldSuccess or run.RunResult == game.RunResultData.RandomBountyUnderworldSuccess then
 				runsCleared = runsCleared + 1
 				underworldRunsCleared = underworldRunsCleared + 1
-			elseif run.RunResult == game.RunResultData.SurfaceSuccess then
+			elseif run.RunResult == game.RunResultData.SurfaceSuccess or run.RunResult == game.RunResultData.RandomBountySurfaceSuccess then
 				runsCleared = runsCleared + 1
 				surfaceRunsCleared = surfaceRunsCleared + 1
+			elseif run.RunResult == game.RunResultData.DreamSuccess then
+				dreamRunsCleared = dreamRunsCleared + 1
 			elseif run.RunResult == game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess then
 				runsCleared = runsCleared + 1
 				moddedRunsCleared = moddedRunsCleared + 1
@@ -140,21 +126,24 @@ modutil.mod.Path.Wrap("RecordRunStats", function(base)
 		game.GameState.ClearedRunsCache = runsCleared
 		game.GameState.ClearedUnderworldRunsCache = underworldRunsCleared
 		game.GameState.ClearedSurfaceRunsCache = surfaceRunsCleared
+		game.GameState.ClearedDreamRunsCache = dreamRunsCleared
 		-- Custom fields
 		game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache = game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache + 1
 		game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = moddedRunsCleared
 
 		game.UpdateLifetimeTraitRecords(game.CurrentRun)
 
-		for bossName, healthFraction in pairs(game.CurrentRun.BossHealthBarRecord) do
-			game.GameState.LastBossHealthBarRecord[bossName] = healthFraction
-		end
+		if not game.CurrentRun.IsDreamRun then
+			for bossName, healthFraction in pairs(game.CurrentRun.BossHealthBarRecord) do
+				game.GameState.LastBossHealthBarRecord[bossName] = healthFraction
+			end
 
-		for bossName, bossData in pairs(game.BossDifficultyShrineEncounterMap) do
-			if game.CurrentRun.EncountersOccurredCache[bossData.Encounter] then
-				game.GameState.LastBossDifficultyRecord[bossName] = false
-			elseif game.CurrentRun.EncountersOccurredCache[bossData.AltEncounter] then
-				game.GameState.LastBossDifficultyRecord[bossName] = true
+			for bossName, bossData in pairs(game.BossDifficultyShrineEncounterMap) do
+				if game.CurrentRun.EncountersOccurredCache[bossData.Encounter] then
+					game.GameState.LastBossDifficultyRecord[bossName] = false
+				elseif game.CurrentRun.EncountersOccurredCache[bossData.AltEncounter] then
+					game.GameState.LastBossDifficultyRecord[bossName] = true
+				end
 			end
 		end
 	else
@@ -227,7 +216,7 @@ modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
 					game.GameState.LifetimeTraitStats[traitName] = game.GameState.LifetimeTraitStats[traitName] or {}
 					local stats = game.GameState.LifetimeTraitStats[traitName]
 					stats.UseCount = (stats.UseCount or 0) + 1
-					if run.Cleared then
+					if run.Cleared and not run.IsDreamRun then
 						stats[clearCountRecordName] = (stats[clearCountRecordName] or 0) + 1
 						stats.ClearCount = (stats.ClearCount or 0) + 1
 						if run.GameplayTime < (stats[fastestTimeRecordName] or 999999) then
@@ -248,11 +237,27 @@ end)
 modutil.mod.Path.Wrap("GetRunResult", function(base, run)
 	if run.ActiveBounty ~= nil then
 		if run.BountyCleared then
+			if run.BiomesReached ~= nil then
+				if run.BiomesReached.I then
+					return game.RunResultData.UnderworldRandomBountySuccess
+				elseif run.BiomesReached.Q then
+					return game.RunResultData.SurfaceRandomBountySuccess
+				end
+			end
 			return game.RunResultData.BountySuccess
 		else
 			return game.RunResultData.BountyFail
 		end
 	end
+
+	if run.IsDreamRun then
+		if run.Cleared then
+			return game.RunResultData.DreamSuccess
+		else
+			return game.RunResultData.DreamFail
+		end
+	end
+
 
 	-- Run this before the base function, as the base function defaults to a surface run if it's not the underworld
 	if run.ModsNikkelMHadesBiomesIsModdedRun then

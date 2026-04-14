@@ -73,8 +73,6 @@ local encounterReplacements = {
 		DepthDifficultyRamp = 13,
 	},
 	OpeningGenerated = {
-		-- Blocks the LocationText from being shown an extra time in RoomEntranceDrop
-		BlockLocationText = true,
 		UnthreadedEvents = {
 			-- If Thanatos is present, wait for him to create the reward, otherwise spawn it immediately
 			{
