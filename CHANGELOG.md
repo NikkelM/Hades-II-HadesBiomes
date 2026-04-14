@@ -14,6 +14,7 @@ Other fixes and improvements:
 - Fixed: Viewing Zagreus' Journey runs in the Run History screen shows an incorrect background animation.
 - Fixed: Some removed variables are being accessed by the mod which can crash the game.
 - Fixed: An internal variable tracking the number of visited biomes in the current run was renamed which caused some Chaos Trials to no longer function correctly.
+- Fixed: Some modded cosmetics appear inbetween vanilla cosmetics of the same group.
 <!--Releasenotes end-->
 
 ## v0.7.2
