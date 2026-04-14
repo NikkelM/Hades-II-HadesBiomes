@@ -1818,21 +1818,6 @@ local newData = {
 	},
 	-- #endregion
 	-- #endregion
-
-	-- #region Skelly Statues
-	{
-		Id = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_01",
-		DisplayName = "Schelemeus, the Scholar",
-	},
-	{
-		Id = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_02",
-		DisplayName = "Call to Olympus",
-	},
-	{
-		Id = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_03",
-		DisplayName = "The Great Commander",
-	},
-	-- #endregion
 }
 
 local hadesHelpTextCopiedEntries = mod.ModifyHadesHelpTextEntries(hadesHelpTextTable)

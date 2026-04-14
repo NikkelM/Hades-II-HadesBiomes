@@ -465,7 +465,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		PreLineFunctionName = _PLUGIN.guid .. "." .. "HadesStatueUnveilPresentation",
 		PreLineFunctionArgs = {
 			StatueIndex = 1,
-			Subtitle = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_01",
+			Subtitle = "ShrinePointStatue_Unlocked_Subtitle_01",
 			AnimationNames = { "StatusIconOhBoy", "StatusIconEmbarrassed" },
 			ReactionChance = 0.25,
 			Delay = 1.01,
@@ -521,7 +521,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		PreLineFunctionName = _PLUGIN.guid .. "." .. "HadesStatueUnveilPresentation",
 		PreLineFunctionArgs = {
 			StatueIndex = 2,
-			Subtitle = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_02",
+			Subtitle = "ShrinePointStatue_Unlocked_Subtitle_02",
 			AnimationNames = { "StatusIconOhBoy", "StatusIconFiredUp" },
 			ReactionChance = 0.30,
 			Delay = 1.01
@@ -579,7 +579,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		PreLineFunctionName = _PLUGIN.guid .. "." .. "HadesStatueUnveilPresentation",
 		PreLineFunctionArgs = {
 			StatueIndex = 3,
-			Subtitle = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_03",
+			Subtitle = "ShrinePointStatue_Unlocked_Subtitle_03",
 			AnimationNames = { "StatusIconFiredUp", "StatusIconFear", "StatusIconEmbarrassed" },
 			ReactionChance = 0.35,
 			Delay = 1.01
