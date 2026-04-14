@@ -1,8 +1,16 @@
 # Changelog
 
-## v0.7.2
+## v0.7.3
 
 <!--Releasenotes start-->
+### Patch Highlights:
+
+Other fixes and improvements:
+
+<!--Releasenotes end-->
+
+## v0.7.2
+
 ### Patch Highlights:
 - Added "Flame Wheels Release" item to Wells of Charon.
 - After freeing Orpheus, you are guaranteed to encounter him before Sisyphus can appear again.
@@ -12,7 +20,6 @@ Other fixes and improvements:
 - Fixed: The button prompt to reroll rewards in Asphodel does not change if the keybinding is changed.
 - Fixed: The game crashes if a specific Thanatos dialogue is queued to play next.
 - Fixed: "Friendly Faces" Quest shows the names of characters before they have been met.
-<!--Releasenotes end-->
 
 ## v0.7.1
 

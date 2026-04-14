@@ -1814,6 +1814,8 @@ mod.HadesFxAnimationDuplicates = {
 	["SpearDistortion"] = true,
 	["SpearTrail"] = true,
 	["AsphodelTerrainRockCollapse"] = true,
+	-- Console release
+	["RadialNovaAthena"] = true,
 	-- Mod compatibility: Droppable Gods
 	["BoonDropArtemis"] = true,
 	["BoonDropA-Artemis"] = true,
