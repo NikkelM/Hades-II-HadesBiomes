@@ -4,9 +4,10 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- This patch fixes a variety of issues and incompatibilities introduced by the Post-Launch Patch 2. If you notice any other new bugs, please report them on [GitHub](https://github.com/NikkelM/Hades-II-HadesBiomes/issues) or on the [Modding Discord](https://discord.gg/KuMbyrN).
 
 Other fixes and improvements:
-
+- Fixed: An internal variable tracking the number of visited biomes in the current run was renamed which caused some Chaos Trials to no longer function correctly.
 <!--Releasenotes end-->
 
 ## v0.7.2
