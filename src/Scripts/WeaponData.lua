@@ -341,15 +341,7 @@ local weaponReplacements = {
 		InheritFrom = { "HarpyLassoLunge" },
 		GenusName = "HarpyLassoLunge",
 		GameStateRequirements = {
-			{
-				FunctionName = "RequiredShrineLevel",
-				FunctionArgs =
-				{
-					ShrineUpgradeName = "BossDifficultyShrineUpgrade",
-					Comparison = ">=",
-					Value = 1,
-				},
-			},
+			NamedRequirements = { "BossDifficultyActive" },
 		},
 		AIData = {
 			PostAttackDuration = 1.7,
@@ -707,14 +699,7 @@ local weaponModifications = {
 	HarpyLassoLunge = {
 		-- In the EM version, we use an alternative with an extra DumbFireAttack after the lunge
 		GameStateRequirements = {
-			{
-				FunctionName = "RequiredShrineLevel",
-				FunctionArgs = {
-					ShrineUpgradeName = "BossDifficultyShrineUpgrade",
-					Comparison = "==",
-					Value = 0,
-				},
-			},
+			NamedRequirementsFalse = { "BossDifficultyActive" },
 		},
 		AIData = {
 			DeepInheritance = true,

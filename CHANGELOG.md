@@ -10,6 +10,7 @@
 Other fixes and improvements:
 - Added new voicelines when unlocking certain cosmetics. 
 - Added additional voicelines to some contextual events.
+- Fixed: Tisiphone's lunge attack does not use the alternate version for her Extreme Measures fight.
 - Fixed: The game crashes when starting a Hades "Survival" encounter.
 - Fixed: The timer does not pause in Hades "Survival" encounters and Thanatos encounters.
 - Fixed: Melinoë can now comment on Toula landing the final hit on a boss in Zagreus' Journey runs.
