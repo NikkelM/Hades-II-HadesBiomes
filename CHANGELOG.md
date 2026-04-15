@@ -4,20 +4,19 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- This patch hot-fixes a small number of issues and incompatibilities introduced by the Post-Launch Patch 2 that may prevent you from playing, even in "vanilla" mode.
+- This patch fixes a number of issues and incompatibilities introduced by the Post-Launch Patch 2. The mod should now be fully playable again, though a small number of minor bugs will be patched at a later date.
 - Fixed: The game stalls on the loading screen when playing vanilla without previously uninstalling the mod through the config.
+- Fixed: The game crashes when starting a "Survival" encounter.
 
 Other fixes and improvements:
 - Added new voicelines when unlocking certain cosmetics. 
 - Added additional voicelines to some contextual events.
 - Updated the "voicelines" used by Melinoë during moments where she gets closer to Thanatos.
+- Melinoë can now comment on Toula landing the final hit on a boss in Zagreus' Journey runs.
 - Fixed: Tisiphone's lunge attack does not use the alternate version for her Extreme Measures fight.
-- Fixed: The game crashes when starting a Hades "Survival" encounter.
-- Fixed: The timer does not pause in Hades "Survival" encounters and Thanatos encounters.
-- Fixed: Melinoë can now comment on Toula landing the final hit on a boss in Zagreus' Journey runs.
+- Fixed: The timer does not pause in "Survival" encounters and Thanatos encounters.
 - Fixed: Voicelines that play after a boss is defeated now play more consistently.
 - Fixed: Modded cosmetics are missing after returning from a Dream Dive.
-- Fixed: The game crashes when entering a boss room or encountering Thanatos.
 - Fixed: Orpheus and Eurydice are missing animations when singing.
 - Fixed: Narrative events and dialogues play out of order.
 - Fixed: Some contextual voicelines at the end of runs or when returning to the crossroads may not play if the run was a Zagreus' Journey run.
