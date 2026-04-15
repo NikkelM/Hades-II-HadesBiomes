@@ -1464,6 +1464,14 @@ local preRunCosmetics = {
 			ModsNikkelMHadesBiomes_OreElysium = 4,
 			ModsNikkelMHadesBiomes_CropElysium = 2,
 		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0788", Text = "Can't get these in Elysium anymore... but we have our ways.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
 	},
 	{
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Dusa",
@@ -1677,6 +1685,14 @@ local preRunCosmetics = {
 			CosmeticsPoints = 600,
 			ModsNikkelMHadesBiomes_CropAsphodel = 4,
 			ModsNikkelMHadesBiomes_CropElysium = 4,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0789", Text = "{#Emph}I am the only visage of Death you shall ever require!", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraScaryAppearArgs },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
 		},
 	},
 	{
@@ -1981,6 +1997,14 @@ local preRunCosmetics = {
 			CosmeticsPoints = 2500,
 			ModsNikkelMHadesBiomes_OreStyx = 3,
 			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0797", Text = "Think they'd make a glorious statue of me if {#Emph}I {#Prev}slept all the time?", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
 		},
 	},
 	-- #endregion

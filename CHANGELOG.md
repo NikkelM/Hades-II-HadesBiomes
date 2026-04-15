@@ -8,6 +8,7 @@
 - Fixed: The game stalls on the loading screen when playing vanilla without previously uninstalling the mod through the config.
 
 Other fixes and improvements:
+- Added new voicelines when unlocking certain cosmetics. 
 - Added additional voicelines to some contextual events.
 - Fixed: Melinoë can now comment on Toula landing the final hit on a boss in Zagreus' Journey runs.
 - Fixed: Voicelines that play after a boss is defeated now play more consistently.
