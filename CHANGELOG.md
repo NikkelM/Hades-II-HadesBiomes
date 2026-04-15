@@ -1,8 +1,16 @@
 # Changelog
 
-## v0.7.3
+## v0.7.4
 
 <!--Releasenotes start-->
+### Patch Highlights:
+- This patch fixes a number of issues and incompatibilities introduced by the Post-Launch Patch 2.
+
+Other fixes and improvements:
+<!--Releasenotes end-->
+
+## v0.7.3
+
 ### Patch Highlights:
 - This patch hot-fixes a small number of issues and incompatibilities introduced by the Post-Launch Patch 2 that may prevent you from playing, even in "vanilla" mode.
 - After downloading and applying this update (start the game modded once), you should be able to play "vanilla" until the next mod patch properly fixes all newly introduced issues.
@@ -15,7 +23,6 @@ Other fixes and improvements:
 - Fixed: Some removed variables are being accessed by the mod which can crash the game.
 - Fixed: An internal variable tracking the number of visited biomes in the current run was renamed which caused some Chaos Trials to no longer function correctly.
 - Fixed: Some modded cosmetics appear inbetween vanilla cosmetics of the same group.
-<!--Releasenotes end-->
 
 ## v0.7.2
 
