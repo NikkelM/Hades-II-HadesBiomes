@@ -8,6 +8,7 @@
 
 Other fixes and improvements:
 - Added additional voicelines to some contextual events.
+- Fixed: Modded cosmetics are missing after returning from a Dream Dive.
 - Fixed: Some contextual voicelines at the end of runs or when returning to the crossroads may not play if the run was a Zagreus' Journey run.
 - Fixed: Contextual voicelines at the end of a Chaos Trial in the Nightmare Realm do not play, and vanilla voicelines play instead.
 - Fixed: Statistics in the Archived Trivia screen are misaligned with the background animation.
