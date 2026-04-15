@@ -37,10 +37,15 @@ function mod.TheseusMinotaurKillPresentation(unit, args)
 
 	unit.MutePermanent = true
 	if bothBossesDead then
+		-- For DreamRun compatibility
+		unit.OnDeathFunctionArgs = unit.OnDeathFunctionArgs or {}
+		unit.OnDeathFunctionArgs.IsBiomeBoss = true
+
 		game.AddTimerBlock(game.CurrentRun, "TheseusMinotaurKillPresentation")
 		PlaySound({ Name = "/SFX/StabSplatterEndSequence" })
 		game.DestroyRequiredKills({ BlockLoot = true })
 		unit.DestroyDelay = 0.5
+
 		mod.HarpyKillPresentation(unit, args)
 		game.RemoveTimerBlock(game.CurrentRun, "TheseusMinotaurKillPresentation")
 	else
