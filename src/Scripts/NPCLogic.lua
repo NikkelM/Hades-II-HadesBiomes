@@ -750,9 +750,9 @@ function mod.BedroomIntermissionPresentation(source, args)
 	local megSound2 = nil
 	local thanSound1 = nil
 	local thanSound2 = nil
-	local melSound1 = nil
-	local melSound2 = nil
-	local melSound3 = nil
+	local melSound1 = game.GetRandomMelBecomingCloserSound(source, { melSound1 = true })
+	local melSound2 = game.GetRandomMelBecomingCloserSound(source, { melSound2 = true })
+	local melSound3 = game.GetRandomMelBecomingCloserSound(source, { melSound1 = true })
 	if args.UseRandomSounds then
 		local megLaughSounds = {
 			"/VO/Megaera_30228",
@@ -772,24 +772,6 @@ function mod.BedroomIntermissionPresentation(source, args)
 		thanSound1 = game.RemoveRandomValue(thanLaughSounds)
 		thanSound2 = game.RemoveRandomValue(thanLaughSounds)
 	end
-	local melLaughSounds = {
-		"/VO/Melinoe_0350",
-		"/VO/Melinoe_0351",
-		"/VO/Melinoe_0352",
-		"/VO/Melinoe_0353",
-		"/VO/Melinoe_4412",
-		"/VO/Melinoe_4413",
-		"/VO/Melinoe_4414",
-
-		"/VO/Melinoe_4416",
-		"/VO/Melinoe_4418",
-		"/VO/Melinoe_1963",
-		"/VO/Melinoe_1964",
-		"/VO/Melinoe_1965",
-	}
-	melSound1 = game.RemoveRandomValue(melLaughSounds)
-	melSound2 = game.RemoveRandomValue(melLaughSounds)
-	melSound3 = game.RemoveRandomValue(melLaughSounds)
 
 	if args ~= nil and args.ExtraWaitTime ~= nil then
 		game.wait(args.ExtraWaitTime)

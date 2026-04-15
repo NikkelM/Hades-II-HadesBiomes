@@ -10,6 +10,7 @@
 Other fixes and improvements:
 - Added new voicelines when unlocking certain cosmetics. 
 - Added additional voicelines to some contextual events.
+- Updated the "voicelines" used by Melinoë during moments where she gets closer to Thanatos.
 - Fixed: Tisiphone's lunge attack does not use the alternate version for her Extreme Measures fight.
 - Fixed: The game crashes when starting a Hades "Survival" encounter.
 - Fixed: The timer does not pause in Hades "Survival" encounters and Thanatos encounters.
