@@ -7,6 +7,9 @@
 - This patch fixes a number of issues and incompatibilities introduced by the Post-Launch Patch 2.
 
 Other fixes and improvements:
+- Added additional voicelines to some contextual events.
+- Fixed: Some contextual voicelines at the end of runs or when returning to the crossroads may not play if the run was a Zagreus' Journey run.
+- Fixed: Contextual voicelines at the end of a Chaos Trial in the Nightmare Realm do not play, and vanilla voicelines play instead.
 - Fixed: Statistics in the Archived Trivia screen are misaligned with the background animation.
 - Fixed: The outro after defeating the final boss once the mod's true ending has been reached uses the incorrect background animation.
 <!--Releasenotes end-->
