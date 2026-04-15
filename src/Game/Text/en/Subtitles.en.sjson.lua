@@ -1,7 +1,7 @@
 -- Need to add some additional english subtitles, localized subtitles for these already exist
 -- Hooking into one of our own subtitle files
 local zagreusFieldSubtitleFile = rom.path.combine(rom.paths.Content(),
-	"Game\\Text\\en\\Z_ModsNikkelMHadesBiomesZagreusField.en.sjson")
+	"Game\\Text\\en\\Z_ModsNikkelMHadesBiomesHadesField.en.sjson")
 
 local order = {
 	"Id",

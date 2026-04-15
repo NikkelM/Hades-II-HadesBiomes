@@ -189,7 +189,7 @@ local function parseCsvLine(rawLine, expectedColumnCount)
 	return normalizeColumns(columns, expectedColumnCount)
 end
 
-local function parseSubtitleCsvFile(filePath, fileName, translatePrefix)
+local function parseSubtitleCsvFile(filePath, fileName, translatePrefix, whiteListedCueTable)
 	local file = io.open(filePath, "r")
 	if not file then
 		mod.DebugPrint("Could not open subtitle CSV: " .. filePath, 1)
@@ -235,8 +235,11 @@ local function parseSubtitleCsvFile(filePath, fileName, translatePrefix)
 						end
 					end
 
-					table.insert(entries,
-						sjson.to_object({ Id = id, InheritFrom = "BaseSubtitle", DisplayName = displayName }, order))
+					-- If a cue filter is provided, only include entries whose renamed ID is in the filter
+					if not whiteListedCueTable or whiteListedCueTable[id] then
+						table.insert(entries,
+							sjson.to_object({ Id = id, InheritFrom = "BaseSubtitle", DisplayName = displayName }, order))
+					end
 				end
 			end
 		end
@@ -259,7 +262,13 @@ local function loadSubtitleCsvFilesAndWriteToSjson()
 			local filePath = rom.path.combine(mod.hadesGameFolder,
 				"Content\\Subtitles\\" .. sourceFolderName .. "\\" .. fileName .. ".csv")
 
-			local parsedSubtitles = parseSubtitleCsvFile(filePath, fileName, translatePrefix)
+			-- Filter ZagreusField and ZagreusHome subtitles to only non-dialogue cues to reduce file size and prevent the game crashing when launching vanilla
+			local whiteListedCueTable = nil
+			if fileName == "ZagreusField" or fileName == "ZagreusHome" then
+				whiteListedCueTable = mod.ZagreusSubtitleCues
+			end
+
+			local parsedSubtitles = parseSubtitleCsvFile(filePath, fileName, translatePrefix, whiteListedCueTable)
 			mod.DebugPrint("Parsed " .. tostring(#parsedSubtitles) .. " subtitle rows from " .. fileName, 4)
 
 			for _, targetFolderName in ipairs(targetFolderNames) do

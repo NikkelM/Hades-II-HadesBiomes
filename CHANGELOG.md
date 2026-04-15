@@ -4,7 +4,8 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- This patch fixes a number of issues and incompatibilities introduced by the Post-Launch Patch 2.
+- This patch hot-fixes a small number of issues and incompatibilities introduced by the Post-Launch Patch 2 that may prevent you from playing, even in "vanilla" mode.
+- Fixed: The game stalls on the loading screen when playing vanilla without previously uninstalling the mod through the config.
 
 Other fixes and improvements:
 - Added additional voicelines to some contextual events.
