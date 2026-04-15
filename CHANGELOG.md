@@ -22,6 +22,7 @@ Other fixes and improvements:
 - Fixed: Contextual voicelines at the end of a Chaos Trial in the Nightmare Realm do not play, and vanilla voicelines play instead.
 - Fixed: Statistics in the Archived Trivia screen are misaligned with the background animation.
 - Fixed: The outro after defeating the final boss once the mod's true ending has been reached uses the incorrect background animation.
+- Fixed: One-Time purchase offers in the Broker screen for exchanging Zagreus' Journey resources reappear after closing and opening the screen.
 <!--Releasenotes end-->
 
 ## v0.7.3
