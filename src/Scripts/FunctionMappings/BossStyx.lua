@@ -251,8 +251,8 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 		game.wait(2.0, game.RoomThreadName)
 	end
 
-	if not game.PlayRandomRemainingTextLines(boss, boss.BossPresentationNextStageTextLineSets) then
-		game.PlayRandomRemainingTextLines(boss, boss.BossPresentationNextStageRepeatableTextLineSets)
+	if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationNextStageTextLineSets) then
+		mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationNextStageRepeatableTextLineSets)
 	end
 
 	game.wait(1.0, boss.AIThreadName)
@@ -406,8 +406,8 @@ function mod.HadesKillPresentation(unit, args)
 	game.ProcessTextLines(unit.BossPresentationOutroTextLineSets)
 	game.ProcessTextLines(unit.BossPresentationOutroRepeatableTextLineSets)
 
-	if not game.PlayRandomRemainingTextLines(unit, unit.BossPresentationOutroTextLineSets) then
-		game.PlayRandomRemainingTextLines(unit, unit.BossPresentationOutroRepeatableTextLineSets)
+	if not mod.PlayRandomRemainingTextLines(unit, unit.BossPresentationOutroTextLineSets) then
+		mod.PlayRandomRemainingTextLines(unit, unit.BossPresentationOutroRepeatableTextLineSets)
 	end
 
 	game.SetMusicSection(10)

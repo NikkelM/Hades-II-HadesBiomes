@@ -86,9 +86,9 @@ function mod.ThanatosSpawnPresentation(thanatos)
 	-- 	game.wait(2.0, game.RoomThreadName)
 	-- end
 
-	if not game.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationIntroTextLineSets) then
-		if not game.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationTextLineSets) then
-			game.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationRepeatableTextLineSets)
+	if not mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationIntroTextLineSets) then
+		if not mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationTextLineSets) then
+			mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationRepeatableTextLineSets)
 		end
 	end
 

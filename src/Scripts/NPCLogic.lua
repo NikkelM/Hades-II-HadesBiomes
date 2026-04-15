@@ -678,7 +678,7 @@ function mod.SurpriseNPCPresentation(source, args)
 
 	if args.TextLineSet ~= nil then
 		game.ProcessTextLines(args.TextLineSet)
-		game.PlayRandomRemainingTextLines(source, args.TextLineSet)
+		mod.PlayRandomRemainingTextLines(source, args.TextLineSet)
 	end
 
 	LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = 1.25 })

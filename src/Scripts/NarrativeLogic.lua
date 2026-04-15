@@ -126,60 +126,57 @@ modutil.mod.Path.Wrap("GetRandomEligibleTextLines", function(base, source, textL
 	end
 end)
 
-modutil.mod.Path.Wrap("PlayRandomRemainingTextLines", function(base, source, textLineSets)
-	-- Custom logic to respect SuperPriority and Priority flags in modded runs
-	if game.CurrentRun ~= nil and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and source and source.ModsNikkelMHadesBiomesIsModdedEnemy then
-		if textLineSets == nil then
-			return false
-		end
-
-		local superPriorityTextLines = {}
-		local priorityTextLines = {}
-		local eligibleUnplayedLines = {}
-		local allEligibleLines = {}
-		for textLinesName, textLines in pairs(textLineSets) do
-			if game.IsTextLineEligible(game.CurrentRun, source, textLines) then
-				table.insert(allEligibleLines, textLines)
-				if not game.GameState.PlayedRandomTextLines[textLinesName] then
-					table.insert(eligibleUnplayedLines, textLines)
-					-- Custom logic start
-					if textLines.SuperPriority then
-						table.insert(superPriorityTextLines, textLines)
-					elseif textLines.Priority then
-						table.insert(priorityTextLines, textLines)
-					end
-					-- Custom logic end
-				end
-			end
-		end
-
-		if game.IsEmpty(allEligibleLines) then
-			return false
-		end
-
-		local randomLines = {}
-		-- Custom logic start
-		if not game.IsEmpty(superPriorityTextLines) then
-			randomLines = game.GetRandomValue(superPriorityTextLines) or {}
-		elseif not game.IsEmpty(priorityTextLines) then
-			randomLines = game.GetRandomValue(priorityTextLines) or {}
-			-- Custom logic end
-		elseif game.IsEmpty(eligibleUnplayedLines) then
-			-- All lines played, start the record over
-			for textLinesName, textLines in pairs(textLineSets) do
-				game.GameState.PlayedRandomTextLines[textLinesName] = nil
-			end
-			randomLines = game.GetRandomValue(allEligibleLines) or {}
-		else
-			randomLines = game.GetRandomValue(eligibleUnplayedLines) or {}
-		end
-		game.GameState.PlayedRandomTextLines[randomLines.Name] = true
-		game.PlayTextLines(source, randomLines)
-		return true
-	else
-		return base(source, textLineSets)
+-- Reimplementation of Hades II's PlayRandomRemainingTextLines before it was removed in Post-Launch Patch 2
+-- Also adds custom logic to respect SuperPriority and Priority flags in modded runs
+function mod.PlayRandomRemainingTextLines(source, textLineSets)
+	if textLineSets == nil then
+		return false
 	end
-end)
+
+	local superPriorityTextLines = {}
+	local priorityTextLines = {}
+	local eligibleUnplayedLines = {}
+	local allEligibleLines = {}
+	for textLinesName, textLines in pairs(textLineSets) do
+		if game.IsTextLineEligible(game.CurrentRun, source, textLines) then
+			table.insert(allEligibleLines, textLines)
+			if not game.GameState.PlayedRandomTextLines[textLinesName] then
+				table.insert(eligibleUnplayedLines, textLines)
+				-- Custom logic start
+				if textLines.SuperPriority then
+					table.insert(superPriorityTextLines, textLines)
+				elseif textLines.Priority then
+					table.insert(priorityTextLines, textLines)
+				end
+				-- Custom logic end
+			end
+		end
+	end
+
+	if game.IsEmpty(allEligibleLines) then
+		return false
+	end
+
+	local randomLines = {}
+	-- Custom logic start
+	if not game.IsEmpty(superPriorityTextLines) then
+		randomLines = game.GetRandomValue(superPriorityTextLines) or {}
+	elseif not game.IsEmpty(priorityTextLines) then
+		randomLines = game.GetRandomValue(priorityTextLines) or {}
+		-- Custom logic end
+	elseif game.IsEmpty(eligibleUnplayedLines) then
+		-- All lines played, start the record over
+		for textLinesName, textLines in pairs(textLineSets) do
+			game.GameState.PlayedRandomTextLines[textLinesName] = nil
+		end
+		randomLines = game.GetRandomValue(allEligibleLines) or {}
+	else
+		randomLines = game.GetRandomValue(eligibleUnplayedLines) or {}
+	end
+	game.GameState.PlayedRandomTextLines[randomLines.Name] = true
+	game.PlayTextLines(source, randomLines)
+	return true
+end
 
 function mod.AddTextLineToTextLineRecord(source, args)
 	if args.TextLine ~= nil then

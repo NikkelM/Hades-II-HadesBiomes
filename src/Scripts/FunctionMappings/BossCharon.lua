@@ -1,7 +1,8 @@
 -- #region ForbiddenShopItem spawn
 function mod.SpawnForbiddenShopItem(eventSource, args)
 	args = args or {}
-	local spawnOnId = args.SpawnOnId or GetClosest({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "ForbiddenShopItemSpawnPoint" })
+	local spawnOnId = args.SpawnOnId or
+			GetClosest({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "ForbiddenShopItemSpawnPoint" })
 	if spawnOnId == nil or spawnOnId == 0 then
 		return
 	end
@@ -10,7 +11,7 @@ function mod.SpawnForbiddenShopItem(eventSource, args)
 
 	local consumableName = "ForbiddenShopItem"
 	local consumableId = SpawnObstacle({ Name = consumableName, DestinationId = spawnOnId, Group = "Standing" })
-	local consumable = game.CreateConsumableItem(consumableId, consumableName, 0)
+	local consumable = game.CreateConsumableItem(consumableId, consumableName, 0) or {}
 	if consumable.DropMoney ~= nil then
 		consumable.DropMoney = game.round(consumable.DropMoney *
 			game.GetTotalHeroTraitValue("MoneyMultiplier", { IsMultiplier = true }))
@@ -168,7 +169,7 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 	game.wait(0.70, game.RoomThreadName)
 
 	local consumableId = SpawnObstacle({ Name = "CharonStoreDiscount", DestinationId = boss.ObjectId, Group = "Standing" })
-	local consumable = game.CreateConsumableItem(consumableId, "CharonStoreDiscount", 0)
+	local consumable = game.CreateConsumableItem(consumableId, "CharonStoreDiscount", 0) or {}
 	game.MapState.RoomRequiredObjects[consumable.ObjectId] = consumable
 
 	SetAnimation({ DestinationId = boss.ObjectId, Name = "CharonMeleeFront_ReturnToIdleLeft" })
@@ -186,8 +187,8 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 
 	game.RemoveEnemyUI(boss)
 
-	if not game.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroTextLineSets) then
-		game.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+	if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroTextLineSets) then
+		mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
 	end
 
 	-- Similar lines being played through CharonStoreDiscount pickup

@@ -16,6 +16,8 @@ Other fixes and improvements:
 - Fixed: Melinoë can now comment on Toula landing the final hit on a boss in Zagreus' Journey runs.
 - Fixed: Voicelines that play after a boss is defeated now play more consistently.
 - Fixed: Modded cosmetics are missing after returning from a Dream Dive.
+- Fixed: The game crashes when entering a boss room or encountering Thanatos.
+- Fixed: Narrative events and dialogues play out of order.
 - Fixed: Some contextual voicelines at the end of runs or when returning to the crossroads may not play if the run was a Zagreus' Journey run.
 - Fixed: Contextual voicelines at the end of a Chaos Trial in the Nightmare Realm do not play, and vanilla voicelines play instead.
 - Fixed: Statistics in the Archived Trivia screen are misaligned with the background animation.
