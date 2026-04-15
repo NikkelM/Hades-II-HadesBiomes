@@ -7,6 +7,7 @@
 - This patch fixes a number of issues and incompatibilities introduced by the Post-Launch Patch 2.
 
 Other fixes and improvements:
+- Fixed: Statistics in the Archived Trivia screen are misaligned with the background animation.
 - Fixed: The outro after defeating the final boss once the mod's true ending has been reached uses the incorrect background animation.
 <!--Releasenotes end-->
 

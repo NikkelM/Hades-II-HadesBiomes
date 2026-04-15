@@ -1,6 +1,15 @@
 local hadesTwoScreensVFXFile = rom.path.combine(rom.paths.Content(), "Game\\Animations\\GUI_Screens_VFX.sjson")
 
-local hadesTwoScreenVFXModifications = {}
+local hadesTwoScreenVFXModifications = {
+	GameStatsIn = {
+		-- Need the changed column sizes
+		ChainTo = "ModsNikkelMHadesBiomes_GameStatsFront",
+		-- Need to remove some frames at the end and speed up to hide the columns moving and resizing
+		NumFrames = 12,
+		PlaySpeed = 40,
+		EndFrame = 12,
+	},
+}
 
 -- These need to be added before the others, as they are inherited from
 local addParentAnimations = {}
