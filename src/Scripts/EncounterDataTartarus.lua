@@ -99,6 +99,7 @@ local encounterReplacements = {
 	BaseSurvival = {
 		UnthreadedEvents = mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsSurvival,
 		StartRoomUnthreadedEvents = mod.NilValue,
+		BlockHighlightEncounter = true,
 	},
 
 	Story_Sisyphus_01 = {

@@ -6,7 +6,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 	BreakIfPlayed = true,
 	-- 	PreLineWait = 1.95,
 	-- 	NoTarget = true,
-
 	-- 	-- What did I tell you?
 	-- 	{ Cue = "/VO/Hades_0259" },
 	-- 	-- What did I tell you.
@@ -63,7 +62,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			SuccessiveChanceToPlay = 0.5,
 			CooldownName = "HadesPostBossCooldown",
 			CooldownTime = 30,
-
 			-- A_PostBoss01 lines
 			-- You wouldn't dare.
 			{ Cue = "/VO/Intercom_0273", RequiredPlayed = { "/VO/Intercom_0274" }, RequiredFalseTextLines = { "Ending01" }, },
@@ -137,7 +135,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Intercom_1004", RequiredRoom = "A_PostBoss01",            RequiredKillsThisRun = { "Harpy" },                                                      RequiredTextLines = { "Ending01" } },
 			-- Hrm, already made it out of Tartarus...
 			{ Cue = "/VO/Intercom_1005", RequiredRoom = "A_PostBoss01",            RequiredTextLines = { "Ending01" } },
-
 			-- B_PostBoss01 lines
 			-- You surpassed my Hydra.
 			{ Cue = "/VO/Intercom_0380", RequiredRoom = "B_PostBoss01" },
@@ -191,7 +188,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Intercom_1012", RequiredRoom = "B_PostBoss01",            RequiredTextLines = { "Ending01" } },
 			-- Emerged from Asphodel intact, have you?
 			{ Cue = "/VO/Intercom_1013", RequiredRoom = "B_PostBoss01",            RequiredTextLines = { "Ending01" } },
-
 			-- C_PostBoss01 Lines
 			-- So you withstood the finest of Elysium.
 			{ Cue = "/VO/Intercom_0441", RequiredRoom = "C_PostBoss01" },
@@ -255,72 +251,58 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			BreakIfPlayed = true,
 			UsePlayerSource = true,
 			RequiredFalseScreensOpen = { "AwardMenu", "SellTraitMenu", "Store" },
-
 			-- I sure did, Father.
 			{ Cue = "/VO/ZagreusField_1539", RequiredPlayedThisRoom = { "/VO/Intercom_0380" }, },
 			-- You are correct, Father.
 			{ Cue = "/VO/ZagreusField_1540", RequiredPlayedThisRoom = { "/VO/Intercom_0380" }, },
-
 			-- It most certainly did.
 			{ Cue = "/VO/ZagreusField_1541", RequiredPlayedThisRoom = { "/VO/Intercom_0381" }, },
 			-- It fell to me, indeed.
 			{ Cue = "/VO/ZagreusField_1542", RequiredPlayedThisRoom = { "/VO/Intercom_0381" }, },
-
 			-- I think I'm going to Elysium.
 			{ Cue = "/VO/ZagreusField_1543", RequiredPlayedThisRoom = { "/VO/Intercom_0382" }, RequiredRoom = "B_PostBoss01" },
 			-- You know exactly where.
 			{ Cue = "/VO/ZagreusField_1544", RequiredPlayedThisRoom = { "/VO/Intercom_0382" }, },
-
 			-- I figured, thanks.
 			{ Cue = "/VO/ZagreusField_1545", RequiredPlayedThisRoom = { "/VO/Intercom_0383" }, },
 			-- Oh I'm sure it's fine.
 			{ Cue = "/VO/ZagreusField_1546", RequiredPlayedThisRoom = { "/VO/Intercom_0383" }, },
-
 			-- Thanks for the tip.
 			{ Cue = "/VO/ZagreusField_1547", RequiredPlayedThisRoom = { "/VO/Intercom_0384" }, },
 			-- Don't know any other way.
 			{ Cue = "/VO/ZagreusField_1548", RequiredPlayedThisRoom = { "/VO/Intercom_0384" }, },
-
 			-- Good.
 			{ Cue = "/VO/ZagreusField_1549", RequiredPlayedThisRoom = { "/VO/Intercom_0385" }, },
 			-- Sounds like progress to me.
 			{ Cue = "/VO/ZagreusField_1550", RequiredPlayedThisRoom = { "/VO/Intercom_0385" }, },
-
 			-- I am, indeed.
 			{ Cue = "/VO/ZagreusField_1551", RequiredPlayedThisRoom = { "/VO/Intercom_0386" }, },
 			-- Seems that way.
 			{ Cue = "/VO/ZagreusField_1552", RequiredPlayedThisRoom = { "/VO/Intercom_0386" }, },
-
 			-- We'll see.
 			{ Cue = "/VO/ZagreusField_1553", RequiredPlayedThisRoom = { "/VO/Intercom_0387" }, },
 			-- Don't count on it.
 			{ Cue = "/VO/ZagreusField_1554", RequiredPlayedThisRoom = { "/VO/Intercom_0387" }, },
-
 			-- Or else what, Father?
 			{ Cue = "/VO/ZagreusField_1555", RequiredPlayedThisRoom = { "/VO/Intercom_0388" }, },
 			-- Sorry, can't turn back.
 			{ Cue = "/VO/ZagreusField_1556", RequiredPlayedThisRoom = { "/VO/Intercom_0388" }, },
-
 			-- So do I.
 			{ Cue = "/VO/ZagreusField_1557", RequiredPlayedThisRoom = { "/VO/Intercom_0389" }, },
 			-- Not in the mood for your jesting, Father.
 			{ Cue = "/VO/ZagreusField_1558", RequiredPlayedThisRoom = { "/VO/Intercom_0389" }, },
-
 			-- There's always the next one.
 			{ Cue = "/VO/ZagreusField_1559", RequiredPlayedThisRoom = { "/VO/Intercom_0390" }, },
 			-- What are you, the Three Fates?
 			{ Cue = "/VO/ZagreusField_1560", RequiredPlayedThisRoom = { "/VO/Intercom_0390" }, },
-
 			-- Don't worry, won't be long.
 			{ Cue = "/VO/ZagreusField_1561", RequiredPlayedThisRoom = { "/VO/Intercom_0391" }, },
 			-- Well, I did.
 			{ Cue = "/VO/ZagreusField_1562", RequiredPlayedThisRoom = { "/VO/Intercom_0391" }, },
-
 			-- Oh very much.
 			{ Cue = "/VO/ZagreusField_1563", RequiredPlayedThisRoom = { "/VO/Intercom_0392" }, },
 			-- You really need to turn down the heat in that place.
 			{ Cue = "/VO/ZagreusField_1564", RequiredPlayedThisRoom = { "/VO/Intercom_0392" }, },
-
 			-- Yes, yes I do.
 			{ Cue = "/VO/ZagreusField_1565", RequiredPlayedThisRoom = { "/VO/Intercom_0393" }, },
 			-- I absolutely do.
@@ -332,67 +314,54 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/ZagreusField_1998", RequiredPlayedThisRoom = { "/VO/Intercom_0441" }, },
 			-- They weren't that great.
 			{ Cue = "/VO/ZagreusField_1999", RequiredPlayedThisRoom = { "/VO/Intercom_0441" }, },
-
 			-- Don't forget Asterius!
 			{ Cue = "/VO/ZagreusField_2000", RequiredPlayedThisRoom = { "/VO/Intercom_0442" }, },
 			-- He's all talk.
 			{ Cue = "/VO/ZagreusField_2001", RequiredPlayedThisRoom = { "/VO/Intercom_0442" }, },
-
 			-- So you keep saying.
 			{ Cue = "/VO/ZagreusField_2002", RequiredPlayedThisRoom = { "/VO/Intercom_0443" }, },
 			-- You know nothing of my struggles.
 			{ Cue = "/VO/ZagreusField_2003", RequiredPlayedThisRoom = { "/VO/Intercom_0443" }, },
-
 			-- What gave you that idea?
 			{ Cue = "/VO/ZagreusField_2004", RequiredPlayedThisRoom = { "/VO/Intercom_0444" }, },
 			-- I do.
 			{ Cue = "/VO/ZagreusField_2005", RequiredPlayedThisRoom = { "/VO/Intercom_0444" }, },
-
 			-- I guess word travels fast.
 			{ Cue = "/VO/ZagreusField_2006", RequiredPlayedThisRoom = { "/VO/Intercom_0445" }, },
 			-- I thwarted him all right.
 			{ Cue = "/VO/ZagreusField_2007", RequiredPlayedThisRoom = { "/VO/Intercom_0445" }, },
-
 			-- Not making you do anything.
 			{ Cue = "/VO/ZagreusField_2008", RequiredPlayedThisRoom = { "/VO/Intercom_0446" }, },
 			-- Stay home, Father.
 			{ Cue = "/VO/ZagreusField_2009", RequiredPlayedThisRoom = { "/VO/Intercom_0446" }, },
-
 			-- I'll be the judge of that.
 			{ Cue = "/VO/ZagreusField_2010", RequiredPlayedThisRoom = { "/VO/Intercom_0447" }, },
 			-- I'm sure I'll find something.
 			{ Cue = "/VO/ZagreusField_2011", RequiredPlayedThisRoom = { "/VO/Intercom_0447" }, },
-
 			-- Looking forward to it!
 			{ Cue = "/VO/ZagreusField_2012", RequiredPlayedThisRoom = { "/VO/Intercom_0448" }, },
 			-- See you soon, Father.
 			{ Cue = "/VO/ZagreusField_2013", RequiredPlayedThisRoom = { "/VO/Intercom_0448" }, },
-
 			-- It's more of a brisk jog.
 			{ Cue = "/VO/ZagreusField_2014", RequiredPlayedThisRoom = { "/VO/Intercom_0449" }, },
 			-- Better off this way.
 			{ Cue = "/VO/ZagreusField_2015", RequiredPlayedThisRoom = { "/VO/Intercom_0449" }, },
-
 			-- Perhaps your expectations are too high.
 			{ Cue = "/VO/ZagreusField_2016", RequiredPlayedThisRoom = { "/VO/Intercom_0450" }, },
 			-- I pray his ego will recover soon.
 			{ Cue = "/VO/ZagreusField_2017", RequiredPlayedThisRoom = { "/VO/Intercom_0450" }, },
-
 			-- No, but you're going to anyway.
 			{ Cue = "/VO/ZagreusField_2018", RequiredPlayedThisRoom = { "/VO/Intercom_0451" }, },
 			-- You leave Cerberus out of this.
 			{ Cue = "/VO/ZagreusField_2019", RequiredPlayedThisRoom = { "/VO/Intercom_0451" }, },
-
 			-- Tell him I said hi.
 			{ Cue = "/VO/ZagreusField_2020", RequiredPlayedThisRoom = { "/VO/Intercom_0452" }, },
 			-- Mind asking him to tone it down a bit?
 			{ Cue = "/VO/ZagreusField_2021", RequiredPlayedThisRoom = { "/VO/Intercom_0452" }, },
-
 			-- What would you know of it?
 			{ Cue = "/VO/ZagreusField_2022", RequiredPlayedThisRoom = { "/VO/Intercom_0453" }, },
 			-- What are you, the Fates?
 			{ Cue = "/VO/ZagreusField_2023", RequiredPlayedThisRoom = { "/VO/Intercom_0453" }, },
-
 			-- I welcome you to try.
 			{ Cue = "/VO/ZagreusField_2024", RequiredPlayedThisRoom = { "/VO/Intercom_0454" }, },
 			-- Then I'll deal with you same as all the rest.
@@ -409,7 +378,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Name = "HadesAnyQuipSpeech" },
 			{ Name = "HadesWrathSpeech",  Time = 150 },
 		},
-
 		-- You test my patience!
 		{ Cue = "/VO/HadesField_0054" },
 		-- You had your chance!
@@ -448,7 +416,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			Cooldowns = {
 				{ Name = "HadesCastBeamSpeech", Time = 60 },
 			},
-
 			-- I have something for you!!
 			{ Cue = "/VO/HadesField_0061" },
 			-- Zagreus!!
@@ -493,47 +460,36 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 				{ Name = "HadesStageSwitchSpeech",  Time = 90 },
 	-- 				{ Name = "ZagStageSwitchSpeech",    Time = 90 },
 	-- 			},
-
 	-- 			-- Path A
 	-- 			-- You think I shall go easy on you, boy?
 	-- 			{ Cue = "/VO/HadesField_0506" },
-
 	-- 			-- Path B
 	-- 			-- You think your mother shall make me go soft, do you?
 	-- 			{ Cue = "/VO/HadesField_0507" },
-
 	-- 			-- Path C
 	-- 			-- Why don't you clean your chambers so ferociously?
 	-- 			{ Cue = "/VO/HadesField_0508" },
-
 	-- 			-- Path D
 	-- 			-- You'd not have made it here without Olympus, boy!
 	-- 			{ Cue = "/VO/HadesField_0509" },
-
 	-- 			-- Path E
 	-- 			-- Which of our relatives aided you this time, boy?
 	-- 			{ Cue = "/VO/HadesField_0510" },
-
 	-- 			-- Path F
 	-- 			-- You mother already begins to coddle you!
 	-- 			{ Cue = "/VO/HadesField_0511" },
-
 	-- 			-- Path G
 	-- 			-- I trust you're having a most pleasant evening, boy?
 	-- 			{ Cue = "/VO/HadesField_0512" },
-
 	-- 			-- Path H
 	-- 			-- Zagreus! Is this the best that you can do?
 	-- 			{ Cue = "/VO/HadesField_0513" },
-
 	-- 			-- Path I
 	-- 			-- Zagreus! I trust you had a pleasant journey here?
 	-- 			{ Cue = "/VO/HadesField_0515" },
-
 	-- 			-- Path J
 	-- 			-- Zagreus! How fared your plundering of my domain?
 	-- 			{ Cue = "/VO/HadesField_0516" },
-
 	-- 			-- Path K
 	-- 			-- To think you're so receptive to this form of discipline!
 	-- 			{ Cue = "/VO/HadesField_0517" },
@@ -545,7 +501,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			-- You think I shall go easy on you, boy?
 	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0506" },
-
 	-- 			-- Would be odd of you to start right now!
 	-- 			{ Cue = "/VO/ZagreusField_4548" },
 	-- 			-- What, you mean like last time?
@@ -561,7 +516,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			PreLineWait = 0.4,
 	-- 			RandomRemaining = true,
 	-- 			SuccessiveChanceToPlay = 0.85,
-
 	-- 			-- You know, I think you're right!
 	-- 			{ Cue = "/VO/HadesField_0518", RequiredLastLinePlayed = { "/VO/ZagreusField_4548" }, },
 	-- 			-- You're easily distracted, you know that?
@@ -579,27 +533,22 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			UsePlayerSource = true,
 	-- 			SuccessiveChanceToPlay = 0.55,
-
 	-- 			-- Why, thanks!
 	-- 			{ Cue = "/VO/ZagreusField_4598", RequiredLastLinePlayed = { "/VO/HadesField_0518" }, },
 	-- 			-- Good chat!
 	-- 			{ Cue = "/VO/ZagreusField_4599", RequiredLastLinePlayed = { "/VO/HadesField_0518" }, },
-
 	-- 			-- Look at that lovely sky!
 	-- 			{ Cue = "/VO/ZagreusField_4600", RequiredLastLinePlayed = { "/VO/HadesField_0519" }, },
 	-- 			-- Am not!
 	-- 			{ Cue = "/VO/ZagreusField_4601", RequiredLastLinePlayed = { "/VO/HadesField_0519" }, },
-
 	-- 			-- Great!
 	-- 			{ Cue = "/VO/ZagreusField_4602", RequiredLastLinePlayed = { "/VO/HadesField_0520" }, },
 	-- 			-- All right, then!
 	-- 			{ Cue = "/VO/ZagreusField_4603", RequiredLastLinePlayed = { "/VO/HadesField_0520" }, },
-
 	-- 			-- Save it, then!
 	-- 			{ Cue = "/VO/ZagreusField_4604", RequiredLastLinePlayed = { "/VO/HadesField_0521" }, },
 	-- 			-- Well thanks for sharing, anyway!
 	-- 			{ Cue = "/VO/ZagreusField_4605", RequiredLastLinePlayed = { "/VO/HadesField_0521" }, },
-
 	-- 			-- Let's do it then!
 	-- 			{ Cue = "/VO/ZagreusField_4606", RequiredLastLinePlayed = { "/VO/HadesField_0522" }, },
 	-- 		},
@@ -610,7 +559,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			-- You think your mother shall make me go soft, do you?
 	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0507" },
-
 	-- 			-- I'm sure she'll wear you down eventually!
 	-- 			{ Cue = "/VO/ZagreusField_4553" },
 	-- 			-- Who knows? Mother's full of surprises!
@@ -626,7 +574,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			PreLineWait = 0.4,
 	-- 			RandomRemaining = true,
 	-- 			SuccessiveChanceToPlay = 0.85,
-
 	-- 			-- You treat her with respect!
 	-- 			{ Cue = "/VO/HadesField_0523", RequiredLastLinePlayed = { "/VO/ZagreusField_4553", "/VO/ZagreusField_4554" }, },
 	-- 			-- Do not treat her as you allow yourself with me!
@@ -640,7 +587,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			UsePlayerSource = true,
 	-- 			SuccessiveChanceToPlay = 0.75,
-
 	-- 			-- Same goes for you!
 	-- 			{ Cue = "/VO/ZagreusField_4607", RequiredLastLinePlayed = { "/VO/HadesField_0523", "/VO/HadesField_0524" }, },
 	-- 			-- Worry about yourself!
@@ -661,7 +607,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			-- Why don't you clean your chambers so ferociously?
 	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0508" },
-
 	-- 			-- My chambers just aren't as enjoyable to fight!
 	-- 			{ Cue = "/VO/ZagreusField_4558" },
 	-- 			-- What, so they could look like your boring chambers?
@@ -675,7 +620,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			PreLineWait = 0.4,
 	-- 			RandomRemaining = true,
 	-- 			SuccessiveChanceToPlay = 0.85,
-
 	-- 			-- You and your clever wit!
 	-- 			{ Cue = "/VO/HadesField_0556", RequiredLastLinePlayed = { "/VO/ZagreusField_4558" }, },
 	-- 			-- Bah...!
@@ -693,17 +637,14 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			UsePlayerSource = true,
 	-- 			SuccessiveChanceToPlay = 0.75,
-
 	-- 			-- Nope!
 	-- 			{ Cue = "/VO/ZagreusField_4613", RequiredLastLinePlayed = { "/VO/HadesField_0526" }, },
 	-- 			-- They're boring, I say!
 	-- 			{ Cue = "/VO/ZagreusField_4614", RequiredLastLinePlayed = { "/VO/HadesField_0526" }, },
-
 	-- 			-- This isn't real work?
 	-- 			{ Cue = "/VO/ZagreusField_4615", RequiredLastLinePlayed = { "/VO/HadesField_0527" }, },
 	-- 			-- Just what you've taught me!
 	-- 			{ Cue = "/VO/ZagreusField_4616", RequiredLastLinePlayed = { "/VO/HadesField_0527" }, },
-
 	-- 			-- Whatever you say!
 	-- 			{ Cue = "/VO/ZagreusField_4617", RequiredLastLinePlayed = { "/VO/HadesField_0528" }, },
 	-- 			-- Really?
@@ -716,7 +657,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			-- You'd not have made it here without Olympus, boy!
 	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0509" },
-
 	-- 			-- That's funny, you wouldn't be here without Olympus, either!
 	-- 			{ Cue = "/VO/ZagreusField_4562" },
 	-- 			-- You act like you do everything yourself!
@@ -730,7 +670,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			PreLineWait = 0.4,
 	-- 			RandomRemaining = true,
 	-- 			SuccessiveChanceToPlay = 0.85,
-
 	-- 			-- Bah, blast you, boy!
 	-- 			{ Cue = "/VO/HadesField_0529", RequiredLastLinePlayed = { "/VO/ZagreusField_4562" }, },
 	-- 			-- More than you know!
@@ -746,22 +685,18 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			UsePlayerSource = true,
 	-- 			SuccessiveChanceToPlay = 0.75,
-
 	-- 			-- Blast you right back!
 	-- 			{ Cue = "/VO/ZagreusField_4619", RequiredLastLinePlayed = { "/VO/HadesField_0529" }, },
 	-- 			-- <Chuckle>
 	-- 			{ Cue = "/VO/ZagreusField_4620", RequiredLastLinePlayed = { "/VO/HadesField_0529" }, },
-
 	-- 			-- Well, cheers!
 	-- 			{ Cue = "/VO/ZagreusField_4621", RequiredLastLinePlayed = { "/VO/HadesField_0530" }, },
 	-- 			-- I know a thing or two!
 	-- 			{ Cue = "/VO/ZagreusField_4622", RequiredLastLinePlayed = { "/VO/HadesField_0530" }, },
-
 	-- 			-- I can tell!
 	-- 			{ Cue = "/VO/ZagreusField_4623", RequiredLastLinePlayed = { "/VO/HadesField_0531" }, },
 	-- 			-- Clearly!
 	-- 			{ Cue = "/VO/ZagreusField_4624", RequiredLastLinePlayed = { "/VO/HadesField_0531" }, },
-
 	-- 			-- Ominous!
 	-- 			{ Cue = "/VO/ZagreusField_4625", RequiredLastLinePlayed = { "/VO/HadesField_0532" }, },
 	-- 			-- Sounds good!
@@ -774,7 +709,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			-- Which of our relatives aided you this time, boy?
 	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0510" },
-
 	-- 			-- I'll leave that one for you to figure out!
 	-- 			{ Cue = "/VO/ZagreusField_4566" },
 	-- 			-- Who do you think, Father?
@@ -788,7 +722,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			PreLineWait = 0.5,
 	-- 			RandomRemaining = true,
 	-- 			SuccessiveChanceToPlay = 0.85,
-
 	-- 			-- Enough!
 	-- 			{ Cue = "/VO/HadesField_0551", RequiredLastLinePlayed = { "/VO/ZagreusField_4568", "/VO/ZagreusField_4569" }, },
 	-- 			-- All right!
@@ -804,12 +737,10 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			UsePlayerSource = true,
 	-- 			SuccessiveChanceToPlay = 0.75,
-
 	-- 			-- Well I would beg to differ!
 	-- 			{ Cue = "/VO/ZagreusField_4627", RequiredLastLinePlayed = { "/VO/HadesField_0533" }, },
 	-- 			-- Mm, no thanks!
 	-- 			{ Cue = "/VO/ZagreusField_4628", RequiredLastLinePlayed = { "/VO/HadesField_0533" }, },
-
 	-- 			-- All right, I won't!
 	-- 			{ Cue = "/VO/ZagreusField_4629", RequiredLastLinePlayed = { "/VO/HadesField_0534" }, },
 	-- 			-- Fine!
@@ -822,7 +753,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			-- You mother already begins to coddle you!
 	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0511" },
-
 	-- 			-- Last I checked princes were meant to be coddled!
 	-- 			{ Cue = "/VO/ZagreusField_4570" },
 	-- 			-- It's called showing affection to your children, Father!
@@ -836,7 +766,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			PreLineWait = 0.4,
 	-- 			RandomRemaining = true,
 	-- 			SuccessiveChanceToPlay = 0.85,
-
 	-- 			-- Ah, thank you for the information, there!
 	-- 			{ Cue = "/VO/HadesField_0535", RequiredLastLinePlayed = { "/VO/ZagreusField_4570", "/VO/ZagreusField_4571" }, },
 	-- 			-- Please, teach me more, then!
@@ -854,7 +783,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			UsePlayerSource = true,
 	-- 			SuccessiveChanceToPlay = 0.75,
-
 	-- 			-- You're most welcome!
 	-- 			{ Cue = "/VO/ZagreusField_4631", RequiredLastLinePlayed = { "/VO/HadesField_0535" }, },
 	-- 			-- Sure thing!
@@ -871,7 +799,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			-- I trust you're having a most pleasant evening, boy?
 	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0512" },
-
 	-- 			-- Quite lovely, Father, how about yourself?
 	-- 			{ Cue = "/VO/ZagreusField_4574" },
 	-- 			-- There's a refreshing chill now that you mention it!
@@ -885,17 +812,14 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			PreLineWait = 0.4,
 	-- 			RandomRemaining = true,
 	-- 			SuccessiveChanceToPlay = 0.85,
-
 	-- 			-- Oh, you know, same as ever, here!
 	-- 			{ Cue = "/VO/HadesField_0538", RequiredLastLinePlayed = { "/VO/ZagreusField_4574" }, },
 	-- 			-- Silence!
 	-- 			{ Cue = "/VO/HadesField_0552", RequiredLastLinePlayed = { "/VO/ZagreusField_4574" }, },
-
 	-- 			-- Just as I thought!
 	-- 			{ Cue = "/VO/HadesField_0539", RequiredLastLinePlayed = { "/VO/ZagreusField_4577", }, },
 	-- 			-- And such a shame for that!
 	-- 			{ Cue = "/VO/HadesField_0540", RequiredLastLinePlayed = { "/VO/ZagreusField_4577" }, },
-
 	-- 			-- You impudent...!
 	-- 			{ Cue = "/VO/HadesField_0549", RequiredLastLinePlayed = { "/VO/ZagreusField_4572", }, },
 	-- 			-- You impertinent...!
@@ -907,7 +831,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			UsePlayerSource = true,
 	-- 			SuccessiveChanceToPlay = 0.75,
-
 	-- 			-- Well, carry on!
 	-- 			{ Cue = "/VO/ZagreusField_4635", RequiredLastLinePlayed = { "/VO/HadesField_0538" }, },
 	-- 			-- Thanks for your concern!
@@ -922,7 +845,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			-- Zagreus! Is this the best that you can do?
 	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0513" },
-
 	-- 			-- You'll have to let me know when this is over!
 	-- 			{ Cue = "/VO/ZagreusField_4578" },
 	-- 			-- We'll soon find out I think!
@@ -937,7 +859,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			SuccessiveChanceToPlay = 0.85,
 	-- 			RequiredLastLinePlayed = { "/VO/ZagreusField_4568", "/VO/ZagreusField_4578", "/VO/ZagreusField_4579", "/VO/ZagreusField_4580", "/VO/ZagreusField_4581" },
-
 	-- 			-- Enough!
 	-- 			{ Cue = "/VO/HadesField_0551" },
 	-- 			-- Silence!
@@ -958,7 +879,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			-- Zagreus! I trust you had a pleasant journey here?
 	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0515" },
-
 	-- 			-- Oh, absolutely wonderful, thank you!
 	-- 			{ Cue = "/VO/ZagreusField_4586" },
 	-- 			-- It went all right, now that you mention it!
@@ -974,7 +894,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			UsePlayerSource = true,
 	-- 			SuccessiveChanceToPlay = 0.75,
-
 	-- 			-- How truly wonderful to hear.
 	-- 			{ Cue = "/VO/HadesField_0543", RequiredLastLinePlayed = { "/VO/ZagreusField_4586", "/VO/ZagreusField_4587", "/VO/ZagreusField_4588", "/VO/ZagreusField_4577" }, },
 	-- 		},
@@ -985,7 +904,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			-- Zagreus! How fared your plundering of my domain?
 	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0516" },
-
 	-- 			-- It fared just great, thank you for asking, there!
 	-- 			{ Cue = "/VO/ZagreusField_4590" },
 	-- 			-- Could have gone better, though what can you do?
@@ -1001,7 +919,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			UsePlayerSource = true,
 	-- 			SuccessiveChanceToPlay = 0.85,
-
 	-- 			-- You're very welcome, boy!
 	-- 			{ Cue = "/VO/HadesField_0541", RequiredLastLinePlayed = { "/VO/ZagreusField_4590" }, },
 	-- 			-- I can do this!
@@ -1017,7 +934,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			UsePlayerSource = true,
 	-- 			SuccessiveChanceToPlay = 0.75,
-
 	-- 			-- Not just yet!
 	-- 			{ Cue = "/VO/ZagreusField_4638", RequiredLastLinePlayed = { "/VO/HadesField_0545" }, },
 	-- 		},
@@ -1029,7 +945,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			SuccessiveChanceToPlay = 0.9,
 	-- 			-- To think you're so receptive to this form of discipline!
 	-- 			RequiredLastLinePlayed = { "/VO/HadesField_0517" },
-
 	-- 			-- And we finally have an activity we can do together!
 	-- 			{ Cue = "/VO/ZagreusField_4594" },
 	-- 			-- Seems like you have a lot to learn about discipline, huh?
@@ -1043,7 +958,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			PreLineWait = 0.4,
 	-- 			RandomRemaining = true,
 	-- 			SuccessiveChanceToPlay = 0.85,
-
 	-- 			-- Ah, yes, indeed!
 	-- 			{ Cue = "/VO/HadesField_0546", RequiredLastLinePlayed = { "/VO/ZagreusField_4594", "/VO/ZagreusField_4575", "/VO/ZagreusField_4576" }, },
 	-- 			-- We've all a lot to learn, I think!
@@ -1063,7 +977,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			RandomRemaining = true,
 	-- 			UsePlayerSource = true,
 	-- 			SuccessiveChanceToPlay = 0.75,
-
 	-- 			-- Well, carry on!
 	-- 			{ Cue = "/VO/ZagreusField_4635", RequiredLastLinePlayed = { "/VO/HadesField_0538" }, },
 	-- 			-- Thanks for your concern!
@@ -1085,7 +998,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 			{ Name = "HadesStageSwitchSpeech",  Time = 70 },
 	-- 			{ Name = "ZagStageSwitchSpeech",    Time = 70 },
 	-- 		},
-
 	-- 		-- Path A
 	-- 		-- You dare lash out against me like this, boy?
 	-- 		{ Cue = "/VO/HadesField_0155" },
@@ -1097,7 +1009,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		{ Cue = "/VO/HadesField_0361", RequiredPlayed = { "/VO/HadesField_0155" } },
 	-- 		-- Do you even realize what you're doing, boy?
 	-- 		{ Cue = "/VO/HadesField_0362", RequiredPlayed = { "/VO/HadesField_0155" } },
-
 	-- 		-- Path B
 	-- 		-- Why do you keep up this foolishness?
 	-- 		{ Cue = "/VO/HadesField_0158", RequiredPlayed = { "/VO/HadesField_0155" } },
@@ -1109,7 +1020,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		{ Cue = "/VO/HadesField_0365", RequiredPlayed = { "/VO/HadesField_0155" } },
 	-- 		-- Why have you come all this way, again?
 	-- 		{ Cue = "/VO/HadesField_0366", RequiredPlayed = { "/VO/HadesField_0155" } },
-
 	-- 		-- Path C
 	-- 		-- You've no control over your brutish strength!
 	-- 		{ Cue = "/VO/HadesField_0216", RequiredPlayed = { "/VO/HadesField_0155" }, CooldownName = "SaidStrengthRecently",     CooldownTime = 40, },
@@ -1119,7 +1029,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		{ Cue = "/VO/HadesField_0368", RequiredPlayed = { "/VO/HadesField_0155" }, CooldownName = "SaidStrengthRecently",     CooldownTime = 40, },
 	-- 		-- Is this another showing of your brutish strength?
 	-- 		{ Cue = "/VO/HadesField_0369", RequiredPlayed = { "/VO/HadesField_0155" }, CooldownName = "SaidStrengthRecently",     CooldownTime = 40, },
-
 	-- 		-- Path D
 	-- 		-- What shall it take for you to cease with this madness?
 	-- 		{ Cue = "/VO/HadesField_0217", RequiredPlayed = { "/VO/HadesField_0155" } },
@@ -1140,7 +1049,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		ChanceToPlay = 0.85,
 	-- 		-- You dare lash out against me like this, boy?
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0155", "/VO/HadesField_0359", "/VO/HadesField_0360", "/VO/HadesField_0361", "/VO/HadesField_0362" },
-
 	-- 		-- I do!
 	-- 		{ Cue = "/VO/ZagreusField_2291" },
 	-- 		-- That's right!
@@ -1155,7 +1063,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		ChanceToPlay = 0.75,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2293" },
-
 	-- 		-- I think that you are an ignoble brat!
 	-- 		{ Cue = "/VO/HadesField_0156" },
 	-- 		-- I think you are wasting your time.
@@ -1167,7 +1074,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		ChanceToPlay = 0.65,
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0156" },
-
 	-- 		-- Oh you'll think better of me soon!
 	-- 		{ Cue = "/VO/ZagreusField_2295" },
 	-- 		-- And I am shocked to hear it!
@@ -1181,7 +1087,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		ChanceToPlay = 0.5,
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0157" },
-
 	-- 		-- It's my time to do with as I please!
 	-- 		{ Cue = "/VO/ZagreusField_2298" },
 	-- 		-- I don't care what you think!
@@ -1197,7 +1102,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		ChanceToPlay = 0.85,
 	-- 		-- Why do you keep up this foolishness?
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0158", "/VO/HadesField_0363", "/VO/HadesField_0364", "/VO/HadesField_0365", "/VO/HadesField_0366" },
-
 	-- 		-- It beats having to live within your House!
 	-- 		{ Cue = "/VO/ZagreusField_2301" },
 	-- 		-- You know exactly why!
@@ -1208,7 +1112,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		ChanceToPlay = 0.75,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2301" },
-
 	-- 		-- Would that you could be useful there from time to time!
 	-- 		{ Cue = "/VO/HadesField_0159" },
 	-- 	},
@@ -1218,7 +1121,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		ChanceToPlay = 0.75,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2302" },
 	-- 		RequiredFalseTextLines = { "PersephoneFirstMeeting" },
-
 	-- 		-- You shall never find her! She is gone!
 	-- 		{ Cue = "/VO/HadesField_0160" },
 	-- 	},
@@ -1228,7 +1130,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		ChanceToPlay = 0.65,
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0159" },
-
 	-- 		-- You'd like that, wouldn't you?
 	-- 		{ Cue = "/VO/ZagreusField_2303" },
 	-- 		-- Would that you could shut up and fight!
@@ -1240,7 +1141,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		ChanceToPlay = 0.65,
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0160" },
-
 	-- 		-- Liar! Why should I trust a single word you say?
 	-- 		{ Cue = "/VO/ZagreusField_2305" },
 	-- 		-- No! She's out there. I know it!
@@ -1251,7 +1151,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		ChanceToPlay = 0.55,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2305" },
-
 	-- 		-- You're but a simple fool!
 	-- 		{ Cue = "/VO/HadesField_0161" },
 	-- 		-- All that I've told you is for your own good.
@@ -1262,7 +1161,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		ChanceToPlay = 0.55,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2306" },
-
 	-- 		-- She's gone, I say!
 	-- 		{ Cue = "/VO/HadesField_0163" },
 	-- 		-- You know nothing!
@@ -1273,7 +1171,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		ChanceToPlay = 0.55,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2303" },
-
 	-- 		-- You'd like to perish, wouldn't you?!
 	-- 		{ Cue = "/VO/HadesField_0165" },
 	-- 		-- What would you know of it!
@@ -1284,7 +1181,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		ChanceToPlay = 0.55,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2304" },
-
 	-- 		-- Oh I can do just that.
 	-- 		{ Cue = "/VO/HadesField_0167" },
 	-- 		-- I'll happily oblige.
@@ -1297,7 +1193,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		SuccessiveChanceToPlay = 0.85,
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0216", "/VO/HadesField_0367", "/VO/HadesField_0368", "/VO/HadesField_0369" },
-
 	-- 		-- I'll show you brutish strength!
 	-- 		{ Cue = "/VO/ZagreusField_2412" },
 	-- 		-- Not interested in the analysis now, Father!
@@ -1309,7 +1204,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		ChanceToPlay = 0.85,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2412" },
-
 	-- 		-- And I'll show you the might that vanquished the Titans themselves.
 	-- 		{ Cue = "/VO/HadesField_0218" },
 	-- 		-- No! You're holding back, as always.
@@ -1322,7 +1216,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.75,
 	-- 		-- And I'll show you the might that vanquished the Titans themselves.
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0218" },
-
 	-- 		-- I'm not afraid of you!
 	-- 		{ Cue = "/VO/ZagreusField_2416", PreLineWait = 0.7 },
 	-- 		-- I'll have you join them soon!
@@ -1335,7 +1228,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.75,
 	-- 		-- No! You're holding back, as always.
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0219" },
-
 	-- 		-- Am I brutish or am I holding back? Make up your blasted mind!
 	-- 		{ Cue = "/VO/ZagreusField_2418" },
 	-- 		-- You want me to go all out? Then fine!
@@ -1346,7 +1238,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2416" },
-
 	-- 		-- You ought to be.
 	-- 		{ Cue = "/VO/HadesField_0226" },
 	-- 	},
@@ -1355,7 +1246,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2417" },
-
 	-- 		-- You impudent...!
 	-- 		{ Cue = "/VO/HadesField_0227" },
 	-- 	},
@@ -1364,7 +1254,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2418" },
-
 	-- 		-- I'll make you regret this.
 	-- 		{ Cue = "/VO/HadesField_0228" },
 	-- 	},
@@ -1373,7 +1262,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2419" },
 	-- 		PreLineWait = 0.4,
-
 	-- 		-- Fine!
 	-- 		{ Cue = "/VO/HadesField_0229" },
 	-- 	},
@@ -1384,7 +1272,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		ChanceToPlay = 0.55,
 	-- 		-- Not interested in the analysis now, Father!
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2413" },
-
 	-- 		-- You have no inkling of what you need.
 	-- 		{ Cue = "/VO/HadesField_0220" },
 	-- 		-- Oh I think it's the perfect time.
@@ -1397,7 +1284,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.75,
 	-- 		-- You have no inkling of what you need.
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0220" },
-
 	-- 		-- I said shut up with the analysis!
 	-- 		{ Cue = "/VO/ZagreusField_2420" },
 	-- 		-- I need you to quit blathering and fight!
@@ -1410,7 +1296,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.85,
 	-- 		-- Oh I think it's the perfect time.
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0221" },
-
 	-- 		-- Oh I disagree!
 	-- 		{ Cue = "/VO/ZagreusField_2422" },
 	-- 		-- Well then, let's hear it!
@@ -1421,7 +1306,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		PreLineWait = 0.4,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2420" },
-
 	-- 		-- Unfilial oaf!
 	-- 		{ Cue = "/VO/HadesField_0235" },
 	-- 	},
@@ -1430,7 +1314,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2421" },
 	-- 		PreLineWait = 0.3,
-
 	-- 		-- Happily.
 	-- 		{ Cue = "/VO/HadesField_0231" },
 	-- 	},
@@ -1439,7 +1322,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2422" },
-
 	-- 		-- I thought you might!
 	-- 		{ Cue = "/VO/HadesField_0232" },
 	-- 	},
@@ -1448,7 +1330,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2423" },
-
 	-- 		-- You'd not listen even if I did!
 	-- 		{ Cue = "/VO/HadesField_0233" },
 	-- 	},
@@ -1459,7 +1340,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.4,
 	-- 		SuccessiveChanceToPlay = 0.85,
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0217", "/VO/HadesField_0370", "/VO/HadesField_0371", "/VO/HadesField_0372", "/VO/HadesField_0373" },
-
 	-- 		-- You know exactly what it's going to take!
 	-- 		{ Cue = "/VO/ZagreusField_2414" },
 	-- 		-- It'll take you getting out of my blasted way!
@@ -1472,7 +1352,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		ChanceToPlay = 0.85,
 	-- 		-- You know exactly what it's going to take!
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2291", "/VO/ZagreusField_2292", "/VO/ZagreusField_2294", "/VO/ZagreusField_2414" },
-
 	-- 		-- Stubborn oaf!
 	-- 		{ Cue = "/VO/HadesField_0222" },
 	-- 		-- What you desire is impossible!
@@ -1484,7 +1363,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.75,
 	-- 		-- Stubborn oaf!
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0222" },
-
 	-- 		-- Miserable husk of a man!
 	-- 		{ Cue = "/VO/ZagreusField_2424" },
 	-- 		-- Wretched excuse for a father!
@@ -1497,7 +1375,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.75,
 	-- 		-- What you desire is impossible!
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0223" },
-
 	-- 		-- We'll see!
 	-- 		{ Cue = "/VO/ZagreusField_2426" },
 	-- 		-- Like you would know!
@@ -1508,7 +1385,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.65,
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2424" },
-
 	-- 		-- What would you know of misery?!
 	-- 		{ Cue = "/VO/HadesField_0234" },
 	-- 	},
@@ -1517,7 +1393,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.65,
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2425" },
-
 	-- 		-- Such utter disrespect!
 	-- 		{ Cue = "/VO/HadesField_0230" },
 	-- 	},
@@ -1526,7 +1401,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.65,
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2426" },
-
 	-- 		-- We certainly shall!
 	-- 		{ Cue = "/VO/HadesField_0236" },
 	-- 	},
@@ -1535,7 +1409,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		PreLineWait = 0.45,
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2427" },
-
 	-- 		-- I do, you idiot!
 	-- 		{ Cue = "/VO/HadesField_0237" },
 	-- 	},
@@ -1546,7 +1419,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		ChanceToPlay = 0.85,
 	-- 		-- It'll take you getting out of my blasted way!
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2415" },
-
 	-- 		-- You cannot talk to me that way!
 	-- 		{ Cue = "/VO/HadesField_0224" },
 	-- 		-- No; that shall accomplish nothing.
@@ -1559,7 +1431,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.75,
 	-- 		-- You cannot talk to me that way!
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0224" },
-
 	-- 		-- Well I just did!
 	-- 		{ Cue = "/VO/ZagreusField_2428" },
 	-- 		-- And you cannot treat me this way!
@@ -1572,7 +1443,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.75,
 	-- 		-- No; that shall accomplish nothing.
 	-- 		RequiredLastLinePlayed = { "/VO/HadesField_0225" },
-
 	-- 		-- Let's test that theory!
 	-- 		{ Cue = "/VO/ZagreusField_2530" },
 	-- 		-- Oh I think it shall!
@@ -1584,7 +1454,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		-- Well I just did!
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2428" },
-
 	-- 		-- You won't do it again.
 	-- 		{ Cue = "/VO/HadesField_0238" },
 	-- 	},
@@ -1594,7 +1463,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		-- And you cannot treat me this way!
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2429" },
-
 	-- 		-- I'll treat you as you deserve.
 	-- 		{ Cue = "/VO/HadesField_0239" },
 	-- 	},
@@ -1604,7 +1472,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		-- Let's test that theory!
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2530" },
-
 	-- 		-- Happily.
 	-- 		{ Cue = "/VO/HadesField_0231" },
 	-- 		-- Fine!
@@ -1616,7 +1483,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- 		SuccessiveChanceToPlay = 0.35,
 	-- 		-- Oh I think it shall!
 	-- 		RequiredLastLinePlayed = { "/VO/ZagreusField_2531" },
-
 	-- 		-- I thought you might!
 	-- 		{ Cue = "/VO/HadesField_0232" },
 	-- 		-- You impudent...!
@@ -1661,7 +1527,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			RequiredRoom = "A_Boss01",
 			RequiredMinActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 1 },
 			ObjectType = "Harpy",
-
 			-- Come, sisters!
 			{ Cue = "/VO/MegaeraField_0356", RequiredSupportAINames = { "Tisiphone", "Alecto" }, },
 			-- Now, sisters!
@@ -1689,7 +1554,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			RequiredRoom = "A_Boss02",
 			RequiredMinActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 1 },
 			ObjectType = "Harpy2",
-
 			-- Let's go, sisters!
 			{ Cue = "/VO/Alecto_0289", RequiredSupportAINames = { "Tisiphone", "Megaera" }, },
 			-- Now, sisters!
@@ -1841,7 +1705,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		PreLineWait = 1.25,
 		NoTarget = true,
 		Source = { SubtitleColor = Color.ThanatosVoice },
-
 		-- Time to go home.
 		{ Cue = "/VO/Thanatos_0116" },
 		-- Can't be helped.
@@ -1927,7 +1790,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			PreLineAnim = "AchillesIdleGreeting",
 			ObjectType = "NPC_Achilles_Story_01",
 			SuccessiveChanceToPlay = 0.5,
-
 			-- Why, look who.
 			{ Cue = "/VO/Achilles_0222" },
 			-- Hah, haha.
@@ -1950,7 +1812,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			BreakIfPlayed = true,
 			RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
 			ObjectType = "NPC_Patroclus_01",
-
 			-- Oh.
 			{ Cue = "/VO/Patroclus_0152", RequiredPlayed = { "/VO/Patroclus_0158" } },
 			-- Although...
@@ -1985,7 +1846,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			ObjectType = "NPC_Patroclus_01",
 			IsIdAlive = 563036,
 			SuccessiveChanceToPlayAll = 0.25,
-
 			-- Achilles, look.
 			{ Cue = "/VO/Patroclus_0227", },
 			-- We have a visitor.
@@ -1999,7 +1859,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			RequiredTextLines = { "MyrmidonReunionQuestComplete" },
 			ObjectType = "NPC_Patroclus_01",
 			SuccessiveChanceToPlay = 0.66,
-
 			-- You're back.
 			{ Cue = "/VO/Patroclus_0220" },
 			-- You're back, stranger.
@@ -2035,7 +1894,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				IsIdAlive = 563036,
 				-- SubtitleMinDistance = 1300,
 				ObjectType = "NPC_Achilles_Story_01",
-
 				-- ...and then, when that pig-headed braggart ordered me to do it, I swear...
 				{ Cue = "/VO/Achilles_0260" },
 			},
@@ -2050,7 +1908,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				-- SubtitleMinDistance = 1300,
 				ObjectType = "NPC_Achilles_Story_01",
 				RequiredFalsePlayedThisRoom = { "/VO/Achilles_0222" },
-
 				-- ...were it not for you, Pat, I don't even like to think about what I'd have done. The war would have gone differently, then, I suppose.
 				{ Cue = "/VO/Achilles_0353" },
 			},
@@ -2066,7 +1923,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				-- SubtitleMinDistance = 1300,
 				RequiredFalsePlayedThisRoom = { "/VO/Achilles_0260" },
 				IsIdAlive = 563036,
-
 				-- ...hahaha, that was an amazing day, indeed.
 				{ Cue = "/VO/Patroclus_0304", PreLineWait = 1.0, BreakIfPlayed = true, },
 				-- ...a moment, we have other company, I think.
@@ -2101,7 +1957,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 
 				ObjectType = "NPC_Achilles_Story_01",
 				SuccessiveChanceToPlay = 0.5,
-
 				-- More than quite sure, indeed!
 				{ Cue = "/VO/Achilles_0261", RequiredPlayedThisRoom = { "/VO/Patroclus_0306" }, },
 				-- Well I suppose you're right.
@@ -2131,7 +1986,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				-- SubtitleMinDistance = 1300,
 				RequiredTextLines = { "MyrmidonReunionQuestComplete" },
 				AreIdsNotAlive = { 563036 },
-
 				-- ...We were invincible, together, weren't we? Though, I have never missed those days...
 				{ Cue = "/VO/Patroclus_0295", PreLineWait = 1.0 },
 				-- ...I thought that I was lost, just... wandering, but, not even moving, just... being here...
@@ -2206,7 +2060,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		PreLineWait = 0.1,
 		CooldownTime = 40,
 		CooldownName = "TheseusWrathLinesPlayedRecently",
-
 		-- Olympians! Aid us against this fiend!
 		{ Cue = "/VO/Theseus_0088", RequiredAnyUnitAlive = { "Minotaur", "Minotaur2" }, },
 		-- Olympians, I call upon your aid!
@@ -2244,7 +2097,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			PreLineWait = 2.0,
 			SuccessiveChanceToPlay = 0.02,
 			ObjectType = "Theseus2",
-
 			-- Gah, my chariot! You filth!
 			{ Cue = "/VO/Theseus_0305" },
 		},
@@ -2254,7 +2106,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			PreLineWait = 2.0,
 			RequiredPlayed = { "/VO/Theseus_0305" },
 			ObjectType = "Theseus2",
-
 			-- Ungh, my... no!!
 			{ Cue = "/VO/Theseus_0304" },
 			-- Urngh, why, you!!
@@ -2395,7 +2246,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			PreLineWait = 1.13,
 			UsePlayerSource = true,
 			SuccessiveChanceToPlayAll = 0.8,
-
 			-- I, uh... OK!
 			{ Cue = "/VO/ZagreusField_2808" },
 			-- Well then!
@@ -2454,7 +2304,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			RequiredKillEnemiesNotFound = true,
 			-- Custom!
 			RequiredFalseTextLinesThisRun = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting" },
-
 			-- Bouldy is much obliged!
 			{ Cue = "/VO/Sisyphus_0356" },
 			-- Thanks on behalf of Bouldy there!
@@ -2553,7 +2402,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		UsePlayerSource = true,
 		PlayOnce = true,
 		RequiredTrueFlags = { "Overlook" },
-
 		-- Wha, that thing, that's... the sun...
 		{ Cue = "/VO/ZagreusField_3592", PlayOnce = true,                              PreLineWait = 5.6 },
 		-- So... bright... ugh...
@@ -2595,7 +2443,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			PreLineWait = 0.85,
 			NoTarget = true,
 			RequiredFalseBiome = "Styx",
-
 			-- You truly are an idiot, aren't you.
 			{ Cue = "/VO/Intercom_0057", RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" }, RequiredFalseTextLines = { "Ending01" }, },
 			-- Don't make me laugh.
@@ -2726,7 +2573,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			RequiredFalseEncounters = { "SurvivalTartarus", "SurvivalAsphodel", "SurvivalElysium" },
 			RequiredFalseBiome = "Styx",
 			UsePlayerSource = true,
-
 			-- You lot, huh?
 			{ Cue = "/VO/ZagreusField_0215", PreLineWait = 4.9, },
 			-- Come and get it.
@@ -2744,7 +2590,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			PreLineWait = 1.35,
 			NoTarget = true,
 			RequiredFalseBiome = "Styx",
-
 			-- Enough!
 			{ Cue = "/VO/Intercom_0243" },
 			-- Worthless wretches.
@@ -2844,7 +2689,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			SuccessiveChanceToPlayAll = 0.66,
 			UsePlayerSource = true,
 			RequiredBiome = "Styx",
-
 			-- Yes.
 			{ Cue = "/VO/ZagreusField_1126" },
 			-- Yes...!
@@ -2934,20 +2778,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		GameStateRequirements = {
 			-- None
 		},
-		-- -- Almost there...
-		-- { Cue = "/VO/ZagreusField_0188" },
-		-- -- Few more moments...
-		-- { Cue = "/VO/ZagreusField_0189" },
-		-- -- Got to hold on...
-		-- { Cue = "/VO/ZagreusField_0190" },
-		-- -- Almost...!
-		-- { Cue = "/VO/ZagreusField_0553" },
-		-- -- Just a bit longer...!
-		-- { Cue = "/VO/ZagreusField_0554" },
-		-- -- So close...!
-		-- { Cue = "/VO/ZagreusField_0555" },
-		-- -- Nearly made it...!
-		-- { Cue = "/VO/ZagreusField_0556" },
 		{ Cue = "/VO/MelinoeField_0598", Text = "Almost finished..." },
 		{ Cue = "/VO/MelinoeField_1670", Text = "Not much time left..." },
 		{ Cue = "/VO/MelinoeField_1671", Text = "Time's almost up..." },
@@ -2964,22 +2794,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		GameStateRequirements = {
 			-- None
 		},
-		-- -- Well that's better!
-		-- { Cue = "/VO/ZagreusField_0191" },
-		-- -- There we are.
-		-- { Cue = "/VO/ZagreusField_0192" },
-		-- -- Peace and quiet.
-		-- { Cue = "/VO/ZagreusField_0193" },
-		-- -- Finally.
-		-- { Cue = "/VO/ZagreusField_0220" },
-		-- -- That's that.
-		-- { Cue = "/VO/ZagreusField_0221" },
-		-- -- There we go.
-		-- { Cue = "/VO/ZagreusField_0224" },
-		-- -- Now to collect.
-		-- { Cue = "/VO/ZagreusField_0222", },
-		-- -- There.
-		-- { Cue = "/VO/ZagreusField_0226", },
 		{ Cue = "/VO/MelinoeField_3704", Text = "Whatever you were paid was not enough." },
 		{ Cue = "/VO/MelinoeField_3705", Text = "Your little plan to slay me backfired." },
 		{ Cue = "/VO/MelinoeField_1137", Text = "They won't be gone for long..." },
@@ -3520,7 +3334,6 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			Cooldowns = {
 				{ Name = "ZagreusHitByGraveHandsSpeech", Time = 10 }
 			},
-
 			-- Let me go!
 			{ Cue = "/VO/ZagreusField_2360", RequiredPlayed = { "/VO/ZagreusField_2362" } },
 			-- Let go of me!
@@ -3558,7 +3371,6 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				GameStateRequirements = {
 					-- None
 				},
-
 				-- What's the matter, boy?
 				-- { Cue = "/VO/HadesField_0199" },
 				-- You're stuck.
@@ -3623,7 +3435,6 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				GameStateRequirements = {
 					-- None
 				},
-
 				-- Prepare...!
 				{ Cue = "/VO/HadesField_0189" },
 				-- Do you feel your blood beginning to boil?
@@ -6323,7 +6134,6 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			BreakIfPlayed = true,
 			PreLineWait = 1.0,
 			SuccessiveChanceToPlayAll = 0.33,
-
 			-- { Cue = "/VO/Melinoe_0567", Text = "Rngh... the surface... I..." },
 			{
 				Cue = "/VO/Melinoe_2423",
@@ -6527,7 +6337,6 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 		},
 		-- #endregion
 	},
-
 	-- Playing the Return to Shadow now animation after a cleared run post-ending
 	-- For compatibility, also including the generic voicelines just in case
 	ModsNikkelMHadesBiomes_DeathReturnVoiceLines = {
