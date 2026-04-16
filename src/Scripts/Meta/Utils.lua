@@ -319,6 +319,8 @@ function mod.DecodeSjsonFile(filePath)
 			mod.HiddenConfig.IsValidInstallation = false
 			mod.HiddenConfig.InstallationFailReason = "Generic"
 			mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+			---@diagnostic disable-next-line: undefined-global
+			public.IsValidInstallation = false
 		end
 
 		return {}
@@ -547,6 +549,8 @@ function mod.AreHadesModsInstalled()
 				mod.HiddenConfig.IsValidInstallation = false
 				mod.HiddenConfig.InstallationFailReason = "HadesModsInstalled"
 				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+				---@diagnostic disable-next-line: undefined-global
+				public.IsValidInstallation = false
 
 				-- Ensure we get a new clean install next time
 				config.uninstall = true

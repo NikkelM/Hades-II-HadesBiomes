@@ -35,11 +35,6 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesStyxFountainForcedThroughConfig",
 		DisplayName = "Fountain room forced by mod config",
 	},
-	-- TODO: Only while the mod is in early access
-	{
-		Id = "ModsNikkelMHadesBiomes_LeaveFeedback",
-		DisplayName = "[BETA] Please leave feedback and bug reports on GitHub or on Discord in #h1-run-h2",
-	},
 	{
 		Id = "Smoked",
 		DisplayName = "{!Icons.EliteSmoked} Smoker",
@@ -1120,6 +1115,18 @@ local newData = {
 		Description =
 		"Erebus is so much more than the woods surrounding the Crossroads. Your father, the Lord Hades, once used it to keep the ever-growing army of shades awaiting his judgement at bay."
 	},
+	-- Add Pool of Purging/SellShops/SellTraitShops to post-boss rooms
+	{
+		Id = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation",
+		DisplayName = "Surge of Blood-Red Fountains",
+		Description =
+		"Cause a {$Keywords.SellTraitShop} to always appear in the space between each {$Keywords.Biome} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute}."
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation_Flavor",
+		Description =
+		"The Titan Chronos and the boatman Charon may disagree on more things than not, but both are aware that most anything can be bought for the right price, even Olympian favors."
+	},
 	-- Add Pool of Purging/SellShops/SellTraitShops to any rooms during a run
 	{
 		Id = "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation",
@@ -1128,7 +1135,7 @@ local newData = {
 		"Cause {$Keywords.RoomPlural} in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} to sometimes contain a {$Keywords.SellTraitShop}."
 	},
 	{
-		Id = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation_Flavor",
+		Id = "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation_Flavor",
 		Description =
 		"One would think that any Olympian boon is one to be cherished, but sometimes even the Princess of the Underworld finds herself in need of coin."
 	},
@@ -1810,21 +1817,6 @@ local newData = {
 		DisplayName = "Trial of Heavens",
 	},
 	-- #endregion
-	-- #endregion
-
-	-- #region Skelly Statues
-	{
-		Id = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_01",
-		DisplayName = "Schelemeus, the Scholar",
-	},
-	{
-		Id = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_02",
-		DisplayName = "Call to Olympus",
-	},
-	{
-		Id = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_03",
-		DisplayName = "The Great Commander",
-	},
 	-- #endregion
 }
 

@@ -212,8 +212,8 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoonDiscountStatDisplay",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Maximum Discount:",
-		Description = "{#UpgradeFormat}-{$TooltipData.ExtractData.TooltipMaxDiscount}%{#Prev}",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Random Discount:",
+		Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMinDiscount}-{$TooltipData.ExtractData.TooltipMaxDiscount}%{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon",

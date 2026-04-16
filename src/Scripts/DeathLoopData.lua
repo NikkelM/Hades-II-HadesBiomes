@@ -91,11 +91,9 @@ function mod.SpawnHadesRunStartDoor(source, args)
 
 	chaosGate.UseText = "ModsNikkelMHadesBiomes_HadesRunStartDoorUseText"
 	-- Normally this would check if the exit door for a room can be used - we always allow it
-	-- Might add a requirement here if we ever put Hades runs behind a requirement/enchantment
 	chaosGate.OnUseEvents = {}
 	chaosGate.OnUsedFunctionName = _PLUGIN.guid .. "." .. "StartHadesRun"
 	chaosGate.OnUsedFunctionArgs = {
-		-- TODO: For debugging, change to currently worked on biome
 		StartingBiome = "Tartarus",
 		-- Don't play a voiceline - we do this when entering the Chaos gate
 		-- We have to do it then, as otherwise MelinoeField needs to be loaded in PreThingCreation
@@ -467,7 +465,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		PreLineFunctionName = _PLUGIN.guid .. "." .. "HadesStatueUnveilPresentation",
 		PreLineFunctionArgs = {
 			StatueIndex = 1,
-			Subtitle = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_01",
+			Subtitle = "ShrinePointStatue_Unlocked_Subtitle_01",
 			AnimationNames = { "StatusIconOhBoy", "StatusIconEmbarrassed" },
 			ReactionChance = 0.25,
 			Delay = 1.01,
@@ -523,7 +521,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		PreLineFunctionName = _PLUGIN.guid .. "." .. "HadesStatueUnveilPresentation",
 		PreLineFunctionArgs = {
 			StatueIndex = 2,
-			Subtitle = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_02",
+			Subtitle = "ShrinePointStatue_Unlocked_Subtitle_02",
 			AnimationNames = { "StatusIconOhBoy", "StatusIconFiredUp" },
 			ReactionChance = 0.30,
 			Delay = 1.01
@@ -581,7 +579,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		PreLineFunctionName = _PLUGIN.guid .. "." .. "HadesStatueUnveilPresentation",
 		PreLineFunctionArgs = {
 			StatueIndex = 3,
-			Subtitle = "ModsNikkelMHadesBiomes_HadesStatue_Unlocked_Subtitle_03",
+			Subtitle = "ShrinePointStatue_Unlocked_Subtitle_03",
 			AnimationNames = { "StatusIconFiredUp", "StatusIconFear", "StatusIconEmbarrassed" },
 			ReactionChance = 0.35,
 			Delay = 1.01

@@ -2701,18 +2701,19 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			end
 		end
 	end
-	if requirements.ObjectivesFailed ~= nil then
-		if requirements.ObjectivesFailed.Min ~= nil then
-			if (game.GameState.ObjectivesFailed[requirements.ObjectivesFailed.Name] or 0) < requirements.ObjectivesFailed.Min then
-				return false
-			end
-		end
-		if requirements.ObjectivesFailed.Max ~= nil then
-			if (game.GameState.ObjectivesFailed[requirements.ObjectivesFailed.Name] or 0) > requirements.ObjectivesFailed.Max then
-				return false
-			end
-		end
-	end
+	-- ObjectivesFailed was never set or used in either game
+	-- if requirements.ObjectivesFailed ~= nil then
+	-- 	if requirements.ObjectivesFailed.Min ~= nil then
+	-- 		if (game.GameState.ObjectivesFailed[requirements.ObjectivesFailed.Name] or 0) < requirements.ObjectivesFailed.Min then
+	-- 			return false
+	-- 		end
+	-- 	end
+	-- 	if requirements.ObjectivesFailed.Max ~= nil then
+	-- 		if (game.GameState.ObjectivesFailed[requirements.ObjectivesFailed.Name] or 0) > requirements.ObjectivesFailed.Max then
+	-- 			return false
+	-- 		end
+	-- 	end
+	-- end
 	if requirements.ObjectiveCompletedLastOffer ~= nil then
 		if (game.GameState.LastObjectiveCompletedRun[requirements.ObjectiveCompletedLastOffer] or 0) < (game.GameState.LastObjectiveFailedRun[requirements.ObjectiveCompletedLastOffer] or 0) then
 			return false

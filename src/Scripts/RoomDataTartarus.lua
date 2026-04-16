@@ -391,6 +391,9 @@ local roomReplacements = {
 						PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01" },
 					},
 				},
+				-- Force the conversation to play
+				ModsNikkelMHadesBiomesDisableGoldConversionEligible = true,
+				ModsNikkelMHadesBiomesIneligibleForBoonSkip = true,
 			},
 		},
 
@@ -815,6 +818,7 @@ local roomModifications = {
 	A_Story01 = {
 		LoadModdedVoiceBanks = { "Sisyphus", "Orpheus", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
+		ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse = true,
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},

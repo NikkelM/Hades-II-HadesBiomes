@@ -496,8 +496,9 @@ local enemyReplacements = {
 	Harpy = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 		OnKillGlobalVoiceLines = mod.NilValue,
-		OnKillVoiceLines = {
+		BossKillVoiceLines = {
 			Cooldowns = { { Name = "BossVanquishedSpeech", Time = 60 }, },
+			{ GlobalVoiceLines = "CatFamiliarBossFightLastHitVoiceLines" },
 			{ GlobalVoiceLines = "BarelySurvivedBossFightVoiceLines" },
 			{
 				BreakIfPlayed = true,
@@ -634,8 +635,9 @@ local enemyReplacements = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 		AIStages = game.DeepCopyTable(hydraHeadAIStages),
 		OnKillGlobalVoiceLines = mod.NilValue,
-		OnKillVoiceLines = {
+		BossKillVoiceLines = {
 			Cooldowns = { { Name = "BossVanquishedSpeech", Time = 60 }, },
+			{ GlobalVoiceLines = "CatFamiliarBossFightLastHitVoiceLines" },
 			{ GlobalVoiceLines = "BarelySurvivedBossFightVoiceLines" },
 			{
 				BreakIfPlayed = true,
@@ -676,11 +678,27 @@ local enemyReplacements = {
 	-- #region ELYSIUM - Minotaur
 	Minotaur = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+		OnKillVoiceLines = mod.NilValue,
+		BossKillVoiceLines = {
+			Cooldowns = { { Name = "BossVanquishedSpeech", Time = 60 }, },
+			{ GlobalVoiceLines = "CatFamiliarBossFightLastHitVoiceLines" },
+			{ GlobalVoiceLines = "SeleneVictoryVoiceLines" },
+			{ GlobalVoiceLines = "BarelySurvivedBossFightVoiceLines" },
+			-- TODO: More custom voicelines like for Harpy and Hydra - same as for Theseus. Ensure PreLineWait works
+		},
 	},
 	-- #endregion
 	-- #region ELYSIUM - Theseus
 	Theseus = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+		OnKillVoiceLines = mod.NilValue,
+		BossKillVoiceLines = {
+			Cooldowns = { { Name = "BossVanquishedSpeech", Time = 60 }, },
+			{ GlobalVoiceLines = "CatFamiliarBossFightLastHitVoiceLines" },
+			{ GlobalVoiceLines = "SeleneVictoryVoiceLines" },
+			{ GlobalVoiceLines = "BarelySurvivedBossFightVoiceLines" },
+			-- TODO: More custom voicelines like for Harpy and Hydra - same as for Minotaur. Ensure PreLineWait works
+		},
 	},
 	-- #endregion
 	-- #endregion
@@ -694,6 +712,7 @@ local enemyReplacements = {
 		DefaultAIData = { DeepInheritance = true, },
 		OnKillVoiceLines = {
 			Cooldowns = { { Name = "BossVanquishedSpeech", Time = 60 }, },
+			{ GlobalVoiceLines = "CatFamiliarBossFightLastHitVoiceLines" },
 			{ GlobalVoiceLines = "BarelySurvivedBossFightVoiceLines" },
 			{
 				BreakIfPlayed = true,
@@ -883,17 +902,15 @@ local enemyModifications = {
 		ActivateFadeIn = true,
 		ActivateTint = true,
 		ActivateStartAlpha = 0.0,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 20 },
-			[2] = { Distance = 20 },
-			[3] = { Distance = 20 }
+			[1] = { ParentDeathAnimation = "HeavyRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HeavyRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HeavyRangedCrystal3Shatter" },
 		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		OnDeathTetherUpwardForce = 2200,
+		OnDeathTetherRandomForceMin = 800,
+		OnDeathTetherRandomForceMax = 1000,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 	},
 	Swarmer = {
@@ -909,18 +926,17 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		BlockRespawnShrineUpgrade = true,
+		PolymorphScaleOverride = 4.0,
 		EliteAttributeOptions = { "Fog", "HeavyArmor", "Orbit", "Radial", },
 	},
 	-- #endregion
 	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		OnDeathTetherUpwardForce = 2200,
+		OnDeathTetherRandomForceMin = 800,
+		OnDeathTetherRandomForceMax = 1000,
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
@@ -945,12 +961,7 @@ local enemyModifications = {
 	},
 	HeavyRangedSplitterMinibossSuperElite = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		-- Explicitly allow raising with Night Bloom
 		BlockRaiseDead = false,
@@ -1037,6 +1048,14 @@ local enemyModifications = {
 		ImmuneToPolymorph = true,
 		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HarpyKillPresentation",
+		OnDeathFunctionArgs = {
+			IsBiomeBoss = true,
+		},
+		KillEnemyEvents = {
+			{
+				FunctionName = "RecordBossKillerName",
+			},
+		},
 		BossPresentationIntroTextLineSets = {
 			FuryDarknessReaction01 = {
 				RequiredActiveMetaPointsMin = 30,
@@ -1065,6 +1084,8 @@ local enemyModifications = {
 			[1] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "HandleHarpyRage", }, },
 			[4] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "EnrageHarpyPermanent", }, },
 		},
+		-- Using OnKillVoiceLines from Harpy
+		OnKillGlobalVoiceLines = mod.NilValue,
 	},
 	Harpy3 = {
 		-- Base Health: 5200
@@ -1090,6 +1111,8 @@ local enemyModifications = {
 			[2] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", }, },
 			[3] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", }, },
 		},
+		-- Using OnKillVoiceLines from Harpy
+		OnKillGlobalVoiceLines = mod.NilValue,
 	},
 	-- #endregion
 	-- #endregion
@@ -1282,6 +1305,7 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyMedusaOnHit" },
 		ManualDeathAnimation = false,
 		DestroyDelay = 3.0,
+		PolymorphScaleOverride = 2.0,
 	},
 	FreezeShotUnitElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
@@ -1356,33 +1380,26 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		BlockRaiseDead = true,
 		BlockCharm = true,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 20 },
-			[2] = { Distance = 20 },
-			[3] = { Distance = 20 }
+			[1] = { ParentDeathAnimation = "HealRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
 		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		OnDeathTetherUpwardForce = 2200,
+		OnDeathTetherRandomForceMin = 800,
+		OnDeathTetherRandomForceMax = 1000,
 	},
 	ShieldRangedElite = {
 		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching" },
 	},
 	ShieldRangedSuperElite = {
 		HealthBuffer = 900,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 20 },
-			[2] = { Distance = 20 },
-			[3] = { Distance = 20 }
-		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
+			[1] = { ParentDeathAnimation = "HealRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
 		},
 	},
 	-- #endregion
@@ -1397,16 +1414,11 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		IgnoreSprintPhasingStasisStun = true,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 30 },
-			[2] = { Distance = 30 },
-			[3] = { Distance = 30 }
-		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
+			[1] = { ParentDeathAnimation = "HealRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
 		},
 	},
 	SpreadShotUnitMiniboss = {
@@ -1480,14 +1492,24 @@ local enemyModifications = {
 			Delay = 0.16,
 		},
 		ImmuneToPolymorph = true,
-		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
-		-- While Tethers are broken - enemy returns to spawnpoint after attacking
 		DefaultAIData = {
-			MoveToId = 480903,
 			MoveWithinRange = true,
 			MoveWithinRangeTimeout = 2.0,
 		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { Distance = 83, FirstDrawBehind = true, ParentDeathAnimation = "HydraNeckDeath" },
+			[2] = { ParentDeathAnimation = "HydraBaseDeath" },
+		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HydraKillPresentation",
+		OnDeathFunctionArgs = {
+			IsBiomeBoss = true,
+		},
+		KillEnemyEvents = {
+			{
+				FunctionName = "RecordBossKillerName",
+			},
+		},
 		PactDataStage2 = {
 			[2] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
 			[3] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
@@ -1539,13 +1561,14 @@ local enemyModifications = {
 			-- Lining up with when the head actually touches the ground
 			Delay = 0.23,
 		},
-		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
-		-- While Tethers are broken - enemy returns to nearest spawnpoint after attacking
 		DefaultAIData = {
-			-- Is overwritten by the actual spawnpoint in ModsNikkelMHadesBiomesRememberHydraSpawnpoint
-			MoveToClosestId = { 506375, 506376, 506377, 506378, 506380, 506381, },
 			MoveWithinRange = true,
 			MoveWithinRangeTimeout = 1.5,
+		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { Distance = 83, FirstDrawBehind = true, ParentDeathAnimation = "HydraNeckDeath" },
+			[2] = { ParentDeathAnimation = "HydraBaseDeath" },
 		},
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
@@ -1914,6 +1937,11 @@ local enemyModifications = {
 			CalcAngle = true,
 		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
+		KillEnemyEvents = {
+			{
+				FunctionName = "RecordBossKillerName",
+			},
+		},
 		ManualDeathAnimation = false,
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
@@ -1945,6 +1973,11 @@ local enemyModifications = {
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
+		KillEnemyEvents = {
+			{
+				FunctionName = "RecordBossKillerName",
+			},
+		},
 		ManualDeathAnimation = false,
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
@@ -2103,6 +2136,11 @@ local enemyModifications = {
 		RunHistoryKilledByName = "HadesCrawlerMiniBoss",
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation",
 		OnDeathFunctionArgs = { Message = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage", },
+		KillEnemyEvents = {
+			{
+				FunctionName = "RecordBossKillerName",
+			},
+		},
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		BlockRespawnShrineUpgrade = true,
@@ -2131,6 +2169,14 @@ local enemyModifications = {
 		BossDifficultyShrineRequiredCount = 4,
 		SelectCustomSpawnOptions = _PLUGIN.guid .. "." .. "SetupHadesSpawnOptions",
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HadesKillPresentation",
+		OnDeathFunctionArgs = {
+			IsBiomeBoss = true,
+		},
+		KillEnemyEvents = {
+			{
+				FunctionName = "RecordBossKillerName",
+			},
+		},
 		DefaultAIData = {
 			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 			PostInvisibilityFunction = _PLUGIN.guid .. "." .. "HadesTeleport",
@@ -2146,6 +2192,12 @@ local enemyModifications = {
 		OutgoingDamageModifiers = mod.NilValue,
 		ImmuneToPolymorph = true,
 		RunHistoryKilledByName = "NPC_Hades_01",
+		BossKillVoiceLines = {
+			-- Replacing the GlobalVoiceLines.FinalBossDefeatedVoiceLines which don't exist anyways
+			[2] = { GlobalVoiceLines = "CatFamiliarBossFightLastHitVoiceLines" },
+			-- [3] is a potential Skelly summon commenting
+			[4] = { GlobalVoiceLines = "SeleneVictoryVoiceLines" },
+		},
 
 		-- Moving EM voiceline to a custom lower priority to prevent it playing instead of a story event
 		BossPresentationSuperPriorityIntroTextLineSets = {

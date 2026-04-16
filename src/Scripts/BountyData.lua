@@ -1139,7 +1139,7 @@ local newTargetedBiomeBounties = {
 		BiomeText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Short",
 		RunOverrides = {
 			DeepInheritance = true,
-			ClearedBiomes = 1,
+			EnteredBiomes = 1,
 			BiomesReached = { Tartarus = true, },
 		},
 	},
@@ -1152,7 +1152,7 @@ local newTargetedBiomeBounties = {
 		BiomeText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Short",
 		RunOverrides = {
 			DeepInheritance = true,
-			ClearedBiomes = 2,
+			EnteredBiomes = 2,
 			BiomesReached = { Tartarus = true, Asphodel = true, },
 		},
 	},
@@ -1165,7 +1165,7 @@ local newTargetedBiomeBounties = {
 		BiomeText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Short",
 		RunOverrides = {
 			DeepInheritance = true,
-			ClearedBiomes = 3,
+			EnteredBiomes = 3,
 			BiomesReached = { Tartarus = true, Asphodel = true, Elysium = true },
 		},
 	},

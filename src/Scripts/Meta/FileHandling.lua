@@ -21,6 +21,8 @@ function mod.ConfirmHadesInstallation()
 				mod.HiddenConfig.IsValidInstallation = false
 				mod.HiddenConfig.InstallationFailReason = "NoHadesInstallationFound"
 				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+				---@diagnostic disable-next-line: undefined-global
+				public.IsValidInstallation = false
 
 				mod.DebugPrint(
 					"The mod tried finding your Hades installation at \"" ..

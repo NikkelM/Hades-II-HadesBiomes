@@ -16,6 +16,16 @@ local newBountyEncounterDoorFlipMap = {
 }
 mod.AddTableKeysSkipDupes(game.ScreenData.Shrine.BountyEncounterDoorFlipMap, newBountyEncounterDoorFlipMap)
 
+-- This is for blocking EM encounters in Dream Dives if they've not been completed yet
+-- This doesn't work for modded runs as EM encounters are the same encounter as normal encounters, so they will always be allowed
+local newBossDifficultyShrineEncounterBiomeMap = {
+	Tartarus = { Encounter = "BossHarpy1" },
+	Asphodel = { Encounter = "BossHydra" },
+	Elysium = { Encounter = "BossTheseusAndMinotaur" },
+	Styx = { Encounter = "BossHades" },
+}
+mod.AddTableKeysSkipDupes(game.BossDifficultyShrineEncounterBiomeMap, newBossDifficultyShrineEncounterBiomeMap)
+
 -- Insert the new bounties into the shrine at the correct positions
 -- To make this more resilient against future changes, we insert them based on the previous bounty's index
 -- The key is thew new bounty to insert, the value the bounty in front of which to insert it

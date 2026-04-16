@@ -47,21 +47,6 @@ It is highly recommended that you complete the main story of Hades before playin
 - Earn a new set of **three statues** from Commander Schelemeus by escaping the Nightmare Realm at progressively higher fear.
 - Read all about the new biomes, enemies, bosses and friends in a new chapter in your Codex.
 
-### Feature Roadmap
-
-Among many smaller improvements and fixes, the following major features are planned for future releases (in no particular order):
-
-- [PARTIALLY DONE] New story NPCs (Orpheus, Achilles, ...) to visit and help you during runs.
-- [DONE!] Secret boss fight (you know the one)
-- [DONE!] Erebus gates (when there is enough Fear in the Night)
-- [DONE!] New incantations for meta-progression on the new route
-- [DONE!] New minor prophecies for progression through Zagreus' Journey
-- [DONE!] New randomized Chaos Trials for the new route
-- [DONE!] Additional Chaos Trials for fun challenges and themed runs
-- New story events and dialogue between Melinoë and other characters from Hades II, concerning the new route and gameplay features
-
-You can track all planned features and fixes on the [project's GitHub Issues page](https://github.com/NikkelM/Hades-II-HadesBiomes/issues).
-
 ### Integrations with other Mods
 
 Some other mods integrate with _Zagreus' Journey_ to provide additional features, alternative functionality, or use the resources introduced by this mod:
@@ -120,10 +105,6 @@ If you are using r2modman, you can modify the config directly through the mod ma
 You can find an explanation of all configuration options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
 
 ### Feedback & Bug Reports
-
-The mod is feature complete and can be played through from start to finish.
-However, it is still in beta, and you may encounter the occasional bug.
-I am also working on some additional features (see the roadmap above) before the 1.0 release, so stay tuned!
 
 Please directly leave bug reports as a [new issue on the project's GitHub repository](https://github.com/NikkelM/Hades-II-HadesBiomes/issues/new?template=bug_report.md), or [start a discussion](https://github.com/NikkelM/Hades-II-HadesBiomes/discussions) for general feedback, suggestions and questions.
 

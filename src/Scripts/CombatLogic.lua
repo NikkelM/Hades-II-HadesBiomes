@@ -20,7 +20,8 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 			for _, spawnId in pairs(spawns) do
 				if game.RequiredKillEnemies[spawnId] ~= nil then
 					delay = delay + killInterval
-					game.thread(mod.DelayedKill, game.RequiredKillEnemies[spawnId], { BlockRespawns = true, SkipDeathWeapons = true }, delay)
+					game.thread(mod.DelayedKill, game.RequiredKillEnemies[spawnId],
+						{ BlockRespawns = true, SkipDeathWeapons = true }, delay)
 				end
 			end
 		end
@@ -132,6 +133,24 @@ modutil.mod.Path.Wrap("CheckImpactReaction",
 
 		return base(attackerWeaponData, sourceProjectileData, victim, triggerArgs)
 	end)
+
+modutil.mod.Path.Wrap("DisableAllyUnits", function(base)
+	if game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
+		local assistUnit = game.ActiveEnemies
+				[CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+		if assistUnit ~= nil then
+			game.killTaggedThreads(assistUnit.AIThreadName)
+			game.killWaitUntilThreads(assistUnit.AINotifyName)
+			local aiData = game.GetWeaponAIData(assistUnit) or {}
+			local idleAnimation = aiData.IdleAnimation or GetThingDataValue({ Id = assistUnit.ObjectId, Property = "Graphic" })
+			if idleAnimation ~= nil then
+				SetAnimation({ Name = idleAnimation, DestinationId = assistUnit.ObjectId })
+			end
+		end
+	end
+
+	return base()
+end)
 
 function mod.DelayedKill(victim, triggerArgs, delay)
 	game.wait(delay, game.RoomThreadName)

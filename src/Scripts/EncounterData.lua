@@ -72,4 +72,7 @@ local encounterModifications = {
 table.insert(game.EncounterData.EliteChallenge.BannedEliteAttributes, "Beams")
 table.insert(game.EncounterData.EliteChallenge.BannedEliteAttributes, "Smoked")
 
+table.insert(game.TimerBlockCombatExcludes, "ThanatosEncounter")
+table.insert(game.TimerBlockCombatExcludes, "SurvivalEncounter")
+
 mod.ApplyModificationsAndInheritEncounterData(encounterDataChallengeCharon, encounterModifications, encounterReplacements)

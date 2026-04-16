@@ -63,7 +63,7 @@ modutil.mod.Path.Wrap("GetShopCostMultiplier", function(base)
 
 	if game.HeroHasTrait("ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon") then
 		local traitData = game.GetHeroTrait("ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon") or {}
-		local orpheusMultiplier = game.RandomFloat(0, traitData.ModsNikkelMHadesBiomesMaxStoreDiscount)
+		local orpheusMultiplier = game.RandomFloat(traitData.ModsNikkelMHadesBiomesMinStoreDiscount, traitData.ModsNikkelMHadesBiomesMaxStoreDiscount)
 		multiplier = multiplier - orpheusMultiplier
 	end
 

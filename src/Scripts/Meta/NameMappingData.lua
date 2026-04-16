@@ -770,6 +770,11 @@ mod.HadesHelpTextCopyKeys = {
 	Badge_Rank10_Tier04 = "ModsNikkelMHadesBiomesBadge_Rank10_Tier04",
 	Badge_Rank10_Tier05 = "ModsNikkelMHadesBiomesBadge_Rank10_Tier05",
 	-- #endregion
+	-- #region Skelly Statues
+	ShrinePointStatue_Unlocked_Subtitle_01 = true,
+	ShrinePointStatue_Unlocked_Subtitle_02 = true,
+	ShrinePointStatue_Unlocked_Subtitle_03 = true,
+	-- #endregion
 	-- #region Misc
 	PassiveItem = true,
 	Assist = true,

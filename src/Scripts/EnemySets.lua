@@ -132,7 +132,6 @@ local additionalEnemySets = {
 		"RangedBurrowerElite",
 	},
 	EnemiesBiome2Thanatos = {
-		"CrusherUnit",
 		"BloodlessNaked",
 		"BloodlessNakedElite",
 		"BloodlessNakedBerserker",

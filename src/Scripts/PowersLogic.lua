@@ -26,3 +26,39 @@ modutil.mod.Path.Wrap("HadesInvisibility", function(base)
 
 	return base()
 end)
+
+-- Same as vanilla, but for the modded assist unit from Orpheus' God of the Dead boon
+function mod.CleanupOrpheusRaiseDeadEncounter(currentRoom)
+	local assistUnit = game.ActiveEnemies[currentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+	local expireProjectiles = {}
+	local destroyDelay = 0.1
+	for projectileId, enemyId in pairs(game.SessionMapState.ProjectileSpawnRecord) do
+		if enemyId == currentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
+			table.insert(expireProjectiles, projectileId)
+		end
+	end
+
+	ExpireProjectiles({ ProjectileIds = expireProjectiles })
+	local destroyUnits = {}
+	for unitId, unit in pairs(game.ShallowCopyTable(game.ActiveEnemies) or {}) do
+		if unit.SpawnedById == currentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
+			table.insert(destroyUnits, unit)
+			if unit.DestroyDelay then
+				destroyDelay = math.max(destroyDelay, unit.DestroyDelay + 0.1)
+			end
+		end
+	end
+	for _, unit in pairs(destroyUnits) do
+		game.thread(game.Kill, unit)
+	end
+	if assistUnit then
+		game.thread(game.Kill, assistUnit)
+		if assistUnit.DestroyDelay then
+			destroyDelay = math.max(destroyDelay, assistUnit.DestroyDelay + 0.1)
+		end
+	end
+	game.wait(destroyDelay, game.RoomThreadName)
+	currentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId = nil
+	currentRoom.ModsNikkelMHadesBiomes_AssistUnitName = nil
+	game.MapState.OrpheusRaiseDeadCount = nil
+end

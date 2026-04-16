@@ -154,9 +154,16 @@ function mod.HarpyKillPresentation(unit, args)
 		Destroy({ Ids = GetIds({ Name = args.DestroyGroup }) })
 	end
 
-	-- For player assist pets
+	-- For summoned/charmed enemies
 	if game.CurrentRun.CurrentRoom.DestroyAssistUnitOnEncounterEndId then
 		local assistUnit = game.ActiveEnemies[game.CurrentRun.CurrentRoom.DestroyAssistUnitOnEncounterEndId]
+		if assistUnit ~= nil then
+			game.killTaggedThreads(assistUnit.AIThreadName)
+			game.killWaitUntilThreads(assistUnit.AINotifyName)
+		end
+	end
+	if game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
+		local assistUnit = game.ActiveEnemies[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
 		if assistUnit ~= nil then
 			game.killTaggedThreads(assistUnit.AIThreadName)
 			game.killWaitUntilThreads(assistUnit.AINotifyName)
@@ -348,6 +355,15 @@ function mod.HarpyKillPresentation(unit, args)
 	game.ToggleCombatControl(game.CombatControlsDefaults, true, "BossKill")
 	SetThingProperty({ Property = "AllowAnyFire", Value = true, DestinationId = game.CurrentRun.Hero.ObjectId, DataValue = false })
 	unit.Mute = true
+
+	-- For Dream Dive compatibility in case it comes in the future
+	if args.IsBiomeBoss and game.CurrentRun.IsDreamRun and game.CurrentRun.EnteredBiomes >= game.GameData.FullRunBiomeCount then
+		-- For e.g. Hydra arena where there is lava
+		game.SetPlayerInvulnerable("DreamRunCleared")
+		game.wait(1.8)
+		-- Using the vanilla function as it will use the new Dream Dive background and icons/texts
+		game.OpenRunClearScreen()
+	end
 end
 
 function mod.HarpyBuildRage(enemy, weaponAIData, currentRun)

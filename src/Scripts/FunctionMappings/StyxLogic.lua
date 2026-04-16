@@ -307,7 +307,7 @@ function mod.ModsNikkelMHadesBiomesReturnToStyxHubPresentation(currentRun, curre
 	end
 
 	if currentRoom.LocationText and not currentRoom.Encounter.BlockLocationText then
-		game.thread(game.DisplayInfoBanner, nil,
+		game.thread(game.DisplayBiomeLocationBanner, nil,
 			{
 				Text = currentRoom.LocationText,
 				Delay = 0.65,

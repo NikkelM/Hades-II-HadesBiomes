@@ -28,8 +28,6 @@ game.EncounterSets.EncounterEventsWrapping = {
 }
 game.EncounterSets.EncounterEventsHydraPhase = {
 	{ FunctionName = "HandleEnemySpawns" },
-	-- Added to set the spawn point the heads return to before attacking. Needed while Tethers do not work
-	{ FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesRememberHydraSpawnpoint" },
 	{ FunctionName = "CheckForEncounterEnemiesDead" },
 }
 -- #endregion
@@ -88,8 +86,8 @@ mod.EncounterSets = mod.EncounterSets or {}
 mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsSurvival = {
 	{ FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurvivalEncounterStartPresentation" },
 	{ FunctionName = "EncounterAudio" },
-	{ FunctionName = "BeginSurvivalEncounter" },
-	{ FunctionName = "HandleTimedSpawns" },
+	{ FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBeginSurvivalEncounter" },
+	{ FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHandleTimedSpawns" },
 	{ FunctionName = "DisableRoomTraps" },
 	{ FunctionName = "CheckForAllEnemiesDead" },
 	{ FunctionName = "PostCombatAudio" },

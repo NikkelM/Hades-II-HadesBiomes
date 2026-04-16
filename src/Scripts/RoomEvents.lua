@@ -27,12 +27,12 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 				game.ProcessTextLines(enemy, enemy.BossPresentationIntroTextLineSets)
 				game.ProcessTextLines(enemy, enemy.BossPresentationTextLineSets)
 				game.ProcessTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
-				if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets) then
-					if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets) then
-						if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets) then
-							if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationIntroTextLineSets) then
-								if not game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationTextLineSets) then
-									game.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
+				if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets) then
+					if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets) then
+						if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets) then
+							if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationIntroTextLineSets) then
+								if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationTextLineSets) then
+									mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
 								end
 							end
 						end

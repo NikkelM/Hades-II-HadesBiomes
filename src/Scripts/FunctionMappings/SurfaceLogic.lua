@@ -487,7 +487,7 @@ function mod.HandleReturnBoatRideOutro(eventSource, args)
 
 	game.wait(1)
 
-	game.PlayRandomRemainingTextLines(game.ActiveEnemies[persephoneId],
+	mod.PlayRandomRemainingTextLines(game.ActiveEnemies[persephoneId],
 		game.ActiveEnemies[persephoneId].InteractTextLineSets)
 
 	game.UnblockCombatUI("Surface")

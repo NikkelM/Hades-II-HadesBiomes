@@ -563,6 +563,7 @@ local roomModifications = {
 	X_Story01 = {
 		LoadModdedVoiceBanks = { "Eurydice", "Orpheus", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
+		ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse = true,
 		-- We play our own music in this room, don't play any by default
 		IgnoreMusic = true,
 

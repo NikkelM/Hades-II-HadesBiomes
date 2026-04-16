@@ -226,10 +226,6 @@ function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
 	-- NPC_Orpheus_Story_01 or NPC_Eurydice_01 or NPC_Orpheus_01
 	source = source or game.ActiveEnemies[554419] or game.ActiveEnemies[514436] or game.ActiveEnemies[390000]
 
-	game.CurrentRun.EventState[source.ObjectId] = {
-		FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSingingPresentation",
-		Args = args
-	}
 	mod.ModsNikkelMHadesBiomesSingingPresentation(source, args)
 
 	if game.AudioState.SecretMusicName ~= args.TrackName then
@@ -529,7 +525,7 @@ function mod.OrpheusRaiseKilledEnemy(enemy, args)
 	local enemyName = enemy.Name
 	local enemyData = game.EnemyData[enemyName]
 	if enemyData and ((not enemyData.IsBoss and not enemyData.BlockRaiseDead) or enemyData.ForceAllowRaiseDead) then
-		game.IncrementTableValue(MapState, "OrpheusRaiseDeadCount")
+		game.IncrementTableValue(game.MapState, "OrpheusRaiseDeadCount")
 		local tempObstacle = SpawnObstacle({ Name = "BlankObstacle", DestinationId = enemy.ObjectId })
 		local summonArgs = game.ShallowCopyTable(game.WeaponData.WeaponSpellSummon.SummonMultipliers) or {}
 		if args.MaxHealthMultiplier then
@@ -546,9 +542,10 @@ function mod.OrpheusRaiseKilledEnemy(enemy, args)
 		end
 		summonArgs.SpawnPointId = tempObstacle
 		local newEnemy = game.CreateAlliedEnemy(enemyName, summonArgs) or {}
+		newEnemy.ImmuneToPolymorph = true
 		game.DestroyOnDelay({ tempObstacle }, 0.1)
-		game.CurrentRun.CurrentRoom.DestroyAssistUnitOnEncounterEndId = newEnemy.ObjectId
-		game.CurrentRun.CurrentRoom.AssistUnitName = enemyName
+		game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId = newEnemy.ObjectId
+		game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_AssistUnitName = enemyName
 		mod.OrpheusRaiseDeadPresentation(newEnemy)
 
 		if game.CurrentRun.CurrentRoom.Encounter ~= nil and game.CurrentRun.CurrentRoom.Encounter.ActiveEnemyCap ~= nil then
@@ -682,7 +679,7 @@ function mod.SurpriseNPCPresentation(source, args)
 
 	if args.TextLineSet ~= nil then
 		game.ProcessTextLines(args.TextLineSet)
-		game.PlayRandomRemainingTextLines(source, args.TextLineSet)
+		mod.PlayRandomRemainingTextLines(source, args.TextLineSet)
 	end
 
 	LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = 1.25 })
@@ -756,9 +753,9 @@ function mod.BedroomIntermissionPresentation(source, args)
 	local megSound2 = nil
 	local thanSound1 = nil
 	local thanSound2 = nil
-	local melSound1 = nil
-	local melSound2 = nil
-	local melSound3 = nil
+	local melSound1 = game.GetRandomMelBecomingCloserSound(source, { melSound1 = true })
+	local melSound2 = game.GetRandomMelBecomingCloserSound(source, { melSound2 = true })
+	local melSound3 = game.GetRandomMelBecomingCloserSound(source, { melSound1 = true })
 	if args.UseRandomSounds then
 		local megLaughSounds = {
 			"/VO/Megaera_30228",
@@ -778,24 +775,6 @@ function mod.BedroomIntermissionPresentation(source, args)
 		thanSound1 = game.RemoveRandomValue(thanLaughSounds)
 		thanSound2 = game.RemoveRandomValue(thanLaughSounds)
 	end
-	local melLaughSounds = {
-		"/VO/Melinoe_0350",
-		"/VO/Melinoe_0351",
-		"/VO/Melinoe_0352",
-		"/VO/Melinoe_0353",
-		"/VO/Melinoe_4412",
-		"/VO/Melinoe_4413",
-		"/VO/Melinoe_4414",
-
-		"/VO/Melinoe_4416",
-		"/VO/Melinoe_4418",
-		"/VO/Melinoe_1963",
-		"/VO/Melinoe_1964",
-		"/VO/Melinoe_1965",
-	}
-	melSound1 = game.RemoveRandomValue(melLaughSounds)
-	melSound2 = game.RemoveRandomValue(melLaughSounds)
-	melSound3 = game.RemoveRandomValue(melLaughSounds)
 
 	if args ~= nil and args.ExtraWaitTime ~= nil then
 		game.wait(args.ExtraWaitTime)

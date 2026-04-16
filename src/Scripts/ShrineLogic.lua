@@ -35,10 +35,18 @@ modutil.mod.Path.Wrap("ShrineScreenUpdateSkellyText", function(base, screen)
 
 		-- If goal is still nil, all thresholds are met — show last one as complete
 		if screen.NextModsNikkelMHadesBiomesModdedRouteSkellyShrinePointGoal == nil then
-			local lastThreshold = screen.ModsNikkelMHadesBiomesShrinePointThresholds[#screen.ModsNikkelMHadesBiomesShrinePointThresholds]
+			local lastThreshold = screen.ModsNikkelMHadesBiomesShrinePointThresholds
+					[#screen.ModsNikkelMHadesBiomesShrinePointThresholds]
 			screen.NextModsNikkelMHadesBiomesModdedRouteSkellyShrinePointGoal = lastThreshold
-			SetAnimation({ DestinationId = components.SkellyQuestModsNikkelMHadesBiomesModdedRoute.Id, Name = "GUI\\Screens\\Shrine\\SkellyComplete" })
-			ModifyTextBox({ Id = components.SkellyQuestModsNikkelMHadesBiomesModdedRoute.Id, Text = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Complete", FadeTarget = 1.0 })
+			SetAnimation({
+				DestinationId = components.SkellyQuestModsNikkelMHadesBiomesModdedRoute.Id,
+				Name = "GUI\\Screens\\Shrine\\SkellyComplete"
+			})
+			ModifyTextBox({
+				Id = components.SkellyQuestModsNikkelMHadesBiomesModdedRoute.Id,
+				Text = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Complete",
+				FadeTarget = 1.0
+			})
 			SetAlpha({ Id = components.SkellyQuestModsNikkelMHadesBiomesModdedRouteStrikethrough.Id, Fraction = 1.0, Duration = 0.2 })
 		end
 	end
@@ -47,10 +55,29 @@ modutil.mod.Path.Wrap("ShrineScreenUpdateSkellyText", function(base, screen)
 	if components.SkellyQuestModsNikkelMHadesBiomesModdedRoute ~= nil and screen.NextModsNikkelMHadesBiomesModdedRouteSkellyShrinePointGoal ~= nil then
 		if (game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache or 0) < screen.NextModsNikkelMHadesBiomesModdedRouteSkellyShrinePointGoal then
 			if game.GameState.SpentShrinePointsCache < screen.NextModsNikkelMHadesBiomesModdedRouteSkellyShrinePointGoal then
-				ModifyTextBox({ Id = components.SkellyQuestModsNikkelMHadesBiomesModdedRoute.Id, Text = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Insufficient", FadeTarget = 1.0 })
+				ModifyTextBox({
+					Id = components.SkellyQuestModsNikkelMHadesBiomesModdedRoute.Id,
+					Text = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Insufficient",
+					FadeTarget = 1.0
+				})
 			else
-				ModifyTextBox({ Id = components.SkellyQuestModsNikkelMHadesBiomesModdedRoute.Id, Text = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete", FadeTarget = 1.0 })
+				ModifyTextBox({
+					Id = components.SkellyQuestModsNikkelMHadesBiomesModdedRoute.Id,
+					Text = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete",
+					FadeTarget = 1.0
+				})
 			end
 		end
 	end
+end)
+
+modutil.mod.Path.Wrap("CheckBoonSkipShrineUpgrade", function(base, source, args)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		local currentRoom = CurrentRun.CurrentRoom
+		if currentRoom.Reward and currentRoom.Reward.ModsNikkelMHadesBiomesIneligibleForBoonSkip then
+			return nil
+		end
+	end
+
+	return base(source, args)
 end)

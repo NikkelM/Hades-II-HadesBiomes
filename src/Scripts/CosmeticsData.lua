@@ -1464,6 +1464,14 @@ local preRunCosmetics = {
 			ModsNikkelMHadesBiomes_OreElysium = 4,
 			ModsNikkelMHadesBiomes_CropElysium = 2,
 		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0788", Text = "Can't get these in Elysium anymore... but we have our ways.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
 	},
 	{
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Dusa",
@@ -1678,6 +1686,14 @@ local preRunCosmetics = {
 			ModsNikkelMHadesBiomes_CropAsphodel = 4,
 			ModsNikkelMHadesBiomes_CropElysium = 4,
 		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0789", Text = "{#Emph}I am the only visage of Death you shall ever require!", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraScaryAppearArgs },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
 	},
 	{
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Cerberus",
@@ -1732,7 +1748,7 @@ local preRunCosmetics = {
 			"With symbolisms as could be found in the House of Hades in times past, the Commander should be suitably inspired to great deeds while standing upon this dais.",
 		},
 		CosmeticsGroup = "Cosmetic_SkellyFloor01",
-		InsertAfterCosmetic = "Cosmetic_SkellyFloor01b",
+		InsertAfterCosmetic = "Cosmetic_SkellyFloor01c",
 		ShopCategory = "CosmeticsShop_PreRun",
 		SetAnimationIds = { 587209 },
 		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\PreRun\\SkellyFloor_Fancy_Icon",
@@ -1859,7 +1875,7 @@ local preRunCosmetics = {
 			"Though he would never complain about it to the Princess, the Commander has been seen to shoo away the occasional bird that mistook him for a resting place.",
 		},
 		CosmeticsGroup = "Cosmetic_TrainingDummy01",
-		InsertAfterCosmetic = "Cosmetic_TrainingDummy01b",
+		InsertAfterCosmetic = "Cosmetic_TrainingDummy01c",
 		ShopCategory = "CosmeticsShop_PreRun",
 		CameraFocusId = 566610,
 		SetAnimationIds = { 566610, 566612, 567196, },
@@ -1981,6 +1997,14 @@ local preRunCosmetics = {
 			CosmeticsPoints = 2500,
 			ModsNikkelMHadesBiomes_OreStyx = 3,
 			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0797", Text = "Think they'd make a glorious statue of me if {#Emph}I {#Prev}slept all the time?", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
 		},
 	},
 	-- #endregion

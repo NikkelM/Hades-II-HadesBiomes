@@ -182,15 +182,6 @@ end)
 
 -- Overriding to add in the logic for the Styx miniboss and ShrineChallenge/Erebus room rewards
 modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
-	-- TODO: Only while the mod is in early access
-	if run.ModsNikkelMHadesBiomesIsModdedRun and not mod.HiddenConfig.IgnoreShowFeedbackMessage then
-		if not game.CurrentRun.ModsNikkelMHadesBiomesHasShownFeedbackMessage then
-			game.CurrentRun.ModsNikkelMHadesBiomesHasShownFeedbackMessage = true
-			game.thread(game.InCombatTextArgs,
-				{ Text = "ModsNikkelMHadesBiomes_LeaveFeedback", TargetId = game.CurrentRun.Hero.ObjectId, SkipRise = true, SkipFlash = true, SkipShadow = true, Duration = 10.0, OffsetY = -160, PreDelay = 1.0 })
-		end
-	end
-
 	-- We are either in D_Hub and need to set up the miniboss exits, or the room has a ShrineChallenge/Erebus door, which also needs upgraded rewards
 	if run.ModsNikkelMHadesBiomesIsModdedRun and (room.Name == "D_Hub" or room.ShrinePointDoorChanceSuccess == true) then
 		return mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
@@ -320,6 +311,15 @@ end)
 modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentRoom, currentEncounter)
 	base(currentRun, currentRoom, currentEncounter)
 
+	if currentEncounter == nil or currentEncounter.EncounterType == "NonCombat" or currentEncounter.SkipEndEncounterEffects then
+		return
+	end
+
+	if currentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId ~= nil and not currentEncounter.SkipCleanupRaiseDead then
+		game.thread(mod.CleanupOrpheusRaiseDeadEncounter, currentRoom)
+	end
+
+	-- Must be in a modded run for the minor prophecy to be fulfilled
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		if game.HeroHasTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) then
 			local traitData = game.GetHeroTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) or {}
