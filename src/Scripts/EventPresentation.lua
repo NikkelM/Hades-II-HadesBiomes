@@ -12,6 +12,19 @@ modutil.mod.Path.Wrap("StartedTextLinesPresentation", function(base, source, tex
 		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 0 })
 	end
 
+	if textLines ~= nil and source.TextLinesPauseSingingFx then
+		StopAnimation({ DestinationId = source.ObjectId, Name = source.SingingFx })
+	end
+	if source ~= nil and source.StartTextLinesAnimation and not textLines.IgnoreSourceStartEndAnimations then
+		SetAnimation({ DestinationId = source.ObjectId, Name = source.StartTextLinesAnimation })
+	end
+	if source ~= nil and textLines.StartPartnerTextLinesAnimation and source.PartnerObjectId then
+		SetAnimation({ DestinationId = source.PartnerObjectId, Name = textLines.StartPartnerTextLinesAnimation })
+	end
+	if source.StartTextLinesAngleTowardHero ~= nil and not textLines.IgnoreStartTextLinesAngleTowardHero then
+		AngleTowardTarget({ Id = source.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
+	end
+
 	-- For Orpheus
 	if source.CheckOrpheusSinging == true and game.IsGameStateEligible(source, source.OrpheusSingsAgainRequirements) then
 		if source.ModsNikkelMHadesBiomes_OrpheusStartTextLinesAnimation then
@@ -47,6 +60,16 @@ modutil.mod.Path.Wrap("FinishedTextLinesPresentation", function(base, source, te
 			OffsetZ = source.AnimOffsetZ,
 			Group = "Combat_UI_World"
 		})
+	end
+
+	if source ~= nil and source.EndTextLinesAnimation and not textLines.IgnoreSourceStartEndAnimations then
+		SetAnimation({ DestinationId = source.ObjectId, Name = source.EndTextLinesAnimation })
+	end
+	if source ~= nil and textLines.EndPartnerTextLinesAnimation and source.PartnerObjectId then
+		SetAnimation({ DestinationId = source.PartnerObjectId, Name = textLines.EndPartnerTextLinesAnimation })
+	end
+	if source ~= nil and source.EndTextLinesVfx and not textLines.IgnoreSourceStartEndAnimations then
+		CreateAnimation({ Name = source.EndTextLinesVfx, DestinationId = source.ObjectId, OffsetX = source.AnimOffsetX, OffsetZ = source.AnimOffsetZ, Group = "Combat_UI_World" })
 	end
 
 	return base(source, textLines)

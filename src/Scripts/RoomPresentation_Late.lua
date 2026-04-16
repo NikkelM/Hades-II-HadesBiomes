@@ -73,25 +73,18 @@ modutil.mod.Path.Context.Wrap.Static("EndEarlyAccessPresentation", function()
 							game.GameState.ModsNikkelMHadesBiomes_PlayedRunOutros[outroData.Header] = nil
 						end
 					end
-					gameOutroData = game.GetRandomValue(eligibleOutroData)
+					gameOutroData = game.GetRandomValue(eligibleOutroData) or {}
 				else
-					gameOutroData = game.GetRandomValue(eligibleUnplayedOutroData)
+					gameOutroData = game.GetRandomValue(eligibleUnplayedOutroData) or {}
 				end
+				-- Set this here for all modded outros
+				gameOutroData.Animations = { { AnimationName = "ModsNikkelMHadesBiomes_RemBGIntro", }, }
 
 				return gameOutroData
 			end
 
 			return base(items, priorities, playedStore, randomRemainingStore, args)
 		end)
-
-	-- Use the modded/H1 remembrance animation instead of the H2 one for modded runs
-	modutil.mod.Path.Wrap("RunInterstitialPresentation", function(base, data, args)
-		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-			args.Animations[1].AnimationName = "ModsNikkelMHadesBiomes_RemBGIntro"
-		end
-
-		return base(data, args)
-	end)
 end)
 
 modutil.mod.Path.Context.Wrap.Static("DestroyDoorRewardPresenation", function(originalDoor)

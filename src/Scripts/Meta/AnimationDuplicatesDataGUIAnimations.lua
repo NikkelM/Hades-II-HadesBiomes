@@ -597,7 +597,6 @@ mod.HadesGUIAnimationDuplicates = {
 	["BoonIcon_Frame_Shop"] = true,
 	["AwardMenuBackground"] = true,
 	["AwardMenuCursorHighlight"] = true,
-	["MusicPlayerBackground"] = true,
 	["MusicPlayerPlayButton"] = true,
 	["MusicPlayerPauseButton"] = true,
 	["MusicPlayerNowPlayingIcon"] = true,

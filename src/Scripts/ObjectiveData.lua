@@ -1,4 +1,8 @@
 local newObjectiveData = {
+	-- From Hades
+	SurvivalChallenge = { Description = "Objective_SurvivalTimer", LuaKey = "RemainingSeconds", StartingLuaValue = "-" },
+	ThanatosKills = { Description = "Objective_ThanatosKills", LuaKey = "ThanatosKills", StartingLuaValue = "0" },
+	-- Custom
 	ModsNikkelMHadesBiomesOpenInventory = { Description = "Objective_OpenInventory", },
 }
 mod.AddTableKeysSkipDupes(game.ObjectiveData, newObjectiveData)

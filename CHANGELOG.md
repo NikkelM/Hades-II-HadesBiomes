@@ -77,6 +77,45 @@ Other fixes and improvements:
 - Compatibility: The mod now exposes `IsValidInstallation` to denote to other mods if Zagreus' Journey is installed successfully. Mods can use this through `mods["NikkelM-Zagreus_Journey"].IsValidInstallation`.
 <!--Releasenotes end-->
 
+## v0.7.4
+
+### Patch Highlights:
+- This patch fixes a number of issues and incompatibilities introduced by the Post-Launch Patch 2. The mod should now be fully playable again, though a small number of minor bugs will be patched at a later date.
+- Fixed: The game stalls on the loading screen when playing vanilla without previously uninstalling the mod through the config.
+- Fixed: The game crashes when starting a "Survival" encounter.
+
+Other fixes and improvements:
+- Added new voicelines when unlocking certain cosmetics. 
+- Added additional voicelines to some contextual events.
+- Updated the "voicelines" used by Melinoë during moments where she gets closer to Thanatos.
+- Melinoë can now comment on Toula landing the final hit on a boss in Zagreus' Journey runs.
+- Fixed: Tisiphone's lunge attack does not use the alternate version for her Extreme Measures fight.
+- Fixed: The timer does not pause in "Survival" encounters and Thanatos encounters.
+- Fixed: Voicelines that play after a boss is defeated now play more consistently.
+- Fixed: Modded cosmetics are missing after returning from a Dream Dive.
+- Fixed: Orpheus and Eurydice are missing animations when singing.
+- Fixed: Narrative events and dialogues play out of order.
+- Fixed: Some contextual voicelines at the end of runs or when returning to the crossroads may not play if the run was a Zagreus' Journey run.
+- Fixed: Contextual voicelines at the end of a Chaos Trial in the Nightmare Realm do not play, and vanilla voicelines play instead.
+- Fixed: Statistics in the Archived Trivia screen are misaligned with the background animation.
+- Fixed: The outro after defeating the final boss once the mod's true ending has been reached uses the incorrect background animation.
+- Fixed: One-Time purchase offers in the Broker screen for exchanging Zagreus' Journey resources reappear after closing and opening the screen.
+
+## v0.7.3
+
+### Patch Highlights:
+- This patch hot-fixes a small number of issues and incompatibilities introduced by the Post-Launch Patch 2 that may prevent you from playing, even in "vanilla" mode.
+- After downloading and applying this update (start the game modded once), you should be able to play "vanilla" until the next mod patch properly fixes all newly introduced issues.
+- Fixed: The mod tries to reference animations that do not exist, which crashes the game on startup, even when playing vanilla.
+
+Other fixes and improvements:
+- The mod now uses some new internal functions to optimize calls and prevent unexpected behaviour.
+- Fixed: Room transitions in some scenarios for vanilla runs could have an incorrect fade duration.
+- Fixed: Viewing Zagreus' Journey runs in the Run History screen shows an incorrect background animation.
+- Fixed: Some removed variables are being accessed by the mod which can crash the game.
+- Fixed: An internal variable tracking the number of visited biomes in the current run was renamed which caused some Chaos Trials to no longer function correctly.
+- Fixed: Some modded cosmetics appear inbetween vanilla cosmetics of the same group.
+
 ## v0.7.2
 
 ### Patch Highlights:

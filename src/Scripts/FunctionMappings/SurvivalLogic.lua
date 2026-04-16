@@ -1,4 +1,8 @@
--- #region Survival encounter/Survive 60 seconds
+-- #region Survival encounter/Survive 45 seconds
+function mod.ModsNikkelMHadesBiomesBeginSurvivalEncounter(encounter)
+	game.StartEncounterEffects(encounter)
+end
+
 function mod.ModsNikkelMHadesBiomesSurvivalEncounterStartPresentation(eventSource, tollTimes, colorGrade, colorFx,
 																																			playerGlobalVoiceLines, opponentGlobalVoiceLines)
 	-- Custom, as ActiveSpawns is not initialized in TimedSpawns
@@ -106,24 +110,116 @@ function mod.SurvivalTollPulse()
 	game.wait(1.0, game.RoomThreadName)
 end
 
--- Can't make this static as we need the eventSource at runtime in the wrap
-modutil.mod.Path.Context.Wrap("HandleTimedSpawns", function(eventSource, args)
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		modutil.mod.Path.Wrap("MarkObjectiveComplete", function(base, objectiveName)
-			local currentEncounter = eventSource
-			if currentEncounter.EncounterType == "SurvivalChallenge" then
-				game.thread(game.HadesSpeakingPresentation, eventSource,
-					{
-						VoiceLines = game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines,
-						SubtitleColor = game.Color.HadesVoice,
-						LineHistoryName = "Hades"
-					})
+function mod.ModsNikkelMHadesBiomesHandleTimedSpawns(eventSource, args)
+	local currentRun = game.CurrentRun
+	local currentRoom = game.CurrentRun.CurrentRoom
+	local currentEncounter = eventSource
+
+	local newSpawns = currentEncounter.SpawnWaves
+	local nextLayerIndex = 1
+
+	local timeLimit = currentEncounter.TimeLimit
+	local startingTime = game._worldTime
+	currentEncounter.RemainingTime = timeLimit
+	currentEncounter.TimeModifier = currentEncounter.TimeModifier or 0
+
+	game.CheckObjectiveSet(currentEncounter.EncounterType)
+	game.CheckObjectiveSet(game.EncounterData[currentEncounter.Name].ObjectiveSets)
+
+	game.UpdateObjective(currentEncounter.EncounterType, "RemainingSeconds", math.ceil(currentEncounter.RemainingTime))
+	game.thread(mod.SurvivalObjectivePresentation, currentEncounter)
+
+	currentEncounter.ActiveEnemyCap = game.CalculateActiveEnemyCap(currentRun, currentRoom, currentEncounter)
+
+	if currentEncounter.SpawnHazards then
+		game.thread(game.HandleHazardSpawns, currentRoom, currentEncounter)
+	end
+
+	if game.SessionState.BlockSpawns then
+		game.waitUntil("BlockSpawnsOff")
+	end
+	game.wait(1.0, game.RoomThreadName)
+
+	local spawnIntervalStart = 0
+	local nextSpawnInterval = 0
+
+	local lastTrapActivateTime = 0
+	local trapType = game.GetRandomValue(currentEncounter.TrapTypes)
+	currentEncounter.DisabledTrapIds = GetIds({ Name = "Traps" })
+	currentEncounter.EnabledTrapIds = {}
+
+	-- While there is still time
+	currentEncounter.TimeIsUp = false
+	while currentEncounter.RemainingTime > 0 do
+		-- Check if there are new spawn layers to add
+		if newSpawns ~= nil and newSpawns[nextLayerIndex] ~= nil and currentEncounter.RemainingTime <= newSpawns[nextLayerIndex].AddAtTime then
+			game.AddEncounterLayer(currentRun, currentRoom, currentEncounter, newSpawns[nextLayerIndex])
+			nextLayerIndex = nextLayerIndex + 1
+		end
+
+		-- Spawn a new unit
+		if game._worldTime > spawnIntervalStart + nextSpawnInterval then
+			if currentEncounter.ActiveEnemyCap == nil or game.GetActiveEnemyCount(currentEncounter) < currentEncounter.ActiveEnemyCap then
+				game.HandleNextSpawn(currentEncounter)
+			elseif game.GetActiveEnemyCount(currentEncounter) >= currentEncounter.ActiveEnemyCap then
+				if currentEncounter.SpawnIntervalMin == 0 and currentEncounter.SpawnIntervalMax == 0 then
+					nextSpawnInterval = 0.2
+				end
 			end
 
-			return base(objectiveName)
-		end)
+			nextSpawnInterval = game.RandomFloat(currentEncounter.SpawnIntervalMin, currentEncounter.SpawnIntervalMax) or 0
+			spawnIntervalStart = game._worldTime
+		end
+
+		if currentRoom.ElapsedTimeMultiplier then
+			startingTime = startingTime + (1 - currentRoom.ElapsedTimeMultiplier) * 0.25
+		end
+		if game.SessionState.BlockSpawns then
+			game.waitUntil("BlockSpawnsOff")
+		end
+		game.wait(0.25, game.RoomThreadName)
+		currentEncounter.RemainingTime = timeLimit - (game._worldTime - startingTime) + currentEncounter.TimeModifier
 	end
-end)
+	currentEncounter.TimeIsUp = true
+	game.thread(game.HadesSpeakingPresentation, eventSource,
+		{
+			VoiceLines = game.GlobalVoiceLines.SurvivalEncounterSurvivedVoiceLines,
+			SubtitleColor = game.Color.HadesVoice,
+			LineHistoryName = "Hades"
+		})
+
+	if currentEncounter.EncounterType == "SurvivalChallenge" then
+		game.thread(game.DestroyRequiredKills,
+			({ BlockLoot = true, DestroyInterval = currentEncounter.DestroyEnemyInterval or 0.05, BlockDeathWeapons = true }))
+	end
+
+	game.thread(game.MarkObjectiveComplete, currentEncounter.EncounterType)
+end
+
+function mod.SurvivalObjectivePresentation(survivalEncounter)
+	local playedHurryLines = false
+
+	while survivalEncounter.RemainingTime > 0 and not survivalEncounter.TimeIsUp and not survivalEncounter.Completed do
+		if survivalEncounter.RemainingTime <= 10 then
+			if not playedHurryLines and survivalEncounter.TimeExpiringGlobalVoiceLines ~= nil then
+				game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[survivalEncounter.TimeExpiringGlobalVoiceLines], true)
+				playedHurryLines = true
+			end
+
+			game.UpdateObjective(survivalEncounter.EncounterType, "RemainingSeconds",
+				math.ceil(survivalEncounter.RemainingTime), { Pulse = true })
+			PlaySound({ Name = "/Leftovers/SFX/FieldReviveSFX" })
+			game.wait(1.0, game.RoomThreadName)
+		else
+			game.UpdateObjective(survivalEncounter.EncounterType, "RemainingSeconds",
+				math.ceil(survivalEncounter.RemainingTime))
+			PlaySound({ Name = "/Leftovers/SFX/PowerToggleNew" })
+			game.wait(1.0, game.RoomThreadName)
+		end
+	end
+	game.UpdateObjective(survivalEncounter.EncounterType, "RemainingSeconds", 1)
+end
+
 -- #endregion
 
 -- #region ShrineChallenge/PerfectClear/Erebus Gates

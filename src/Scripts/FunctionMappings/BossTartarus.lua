@@ -355,6 +355,15 @@ function mod.HarpyKillPresentation(unit, args)
 	game.ToggleCombatControl(game.CombatControlsDefaults, true, "BossKill")
 	SetThingProperty({ Property = "AllowAnyFire", Value = true, DestinationId = game.CurrentRun.Hero.ObjectId, DataValue = false })
 	unit.Mute = true
+
+	-- For Dream Dive compatibility in case it comes in the future
+	if args.IsBiomeBoss and game.CurrentRun.IsDreamRun and game.CurrentRun.EnteredBiomes >= game.GameData.FullRunBiomeCount then
+		-- For e.g. Hydra arena where there is lava
+		game.SetPlayerInvulnerable("DreamRunCleared")
+		game.wait(1.8)
+		-- Using the vanilla function as it will use the new Dream Dive background and icons/texts
+		game.OpenRunClearScreen()
+	end
 end
 
 function mod.HarpyBuildRage(enemy, weaponAIData, currentRun)
