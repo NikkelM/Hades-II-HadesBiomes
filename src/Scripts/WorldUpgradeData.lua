@@ -563,6 +563,11 @@ local newIncantations = {
 		PanDuration = 1.5,
 		PanHoldDuration = 2.0,
 		CameraFocusId = 590506, -- Bartender Ghost
+		PostRevealVoiceLines = {
+			PreLineWait = 0.55,
+			UsePlayerSource = true,
+			{ Cue = "/VO/Melinoe_0115", Text = "For my family.", PostLineFunctionName = "BadgeSellerReaction" },
+		},
 	},
 	ModsNikkelMHadesBiomes_HouseLyre01 = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller",
