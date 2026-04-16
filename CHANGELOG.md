@@ -61,6 +61,7 @@ Other fixes and improvements:
 - Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
 - Fixed: Enemies morphed by "Twilight Curse" play their original death animations when dying while morphed, instead of the Sheep's.
 - Fixed: Urns are not destroyed when sprinted into.
+- Fixed: The game crashes when starting the "Trial of Family".
 - Fixed: Family Dispute door reward previews are too large and clip out of the glass sphere.
 - Fixed: Ash and Bone door reward previews in Asphodel are located too high in the glass sphere.
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
