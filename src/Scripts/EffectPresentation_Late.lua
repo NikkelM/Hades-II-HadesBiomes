@@ -1,4 +1,4 @@
-modutil.mod.Path.Context.Wrap.Static("ChillApplyPresentation", function()
+modutil.mod.Path.Context.Wrap.Static("ChillApplyPresentation", function(origVictim, origVictimId )
 	modutil.mod.Path.Wrap("SetColor", function(base, args)
 		local victim = modutil.mod.Locals.Stacked(3).victim
 		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim and victim.ModsNikkelMHadesBiomesIsModdedEnemy and not victim.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy then
@@ -18,7 +18,7 @@ modutil.mod.Path.Context.Wrap.Static("ChillApplyPresentation", function()
 	end)
 end)
 
-modutil.mod.Path.Context.Wrap.Static("DoRootApplyPresentation", function()
+modutil.mod.Path.Context.Wrap.Static("DoRootApplyPresentation", function(origIds)
 	modutil.mod.Path.Wrap("SetColor", function(base, args)
 		if args.Ids then
 			local normalIds, moddedIds = {}, {}
@@ -58,7 +58,7 @@ modutil.mod.Path.Context.Wrap.Static("DoRootApplyPresentation", function()
 	end)
 end)
 
-modutil.mod.Path.Context.Wrap.Static("StasisPresentation", function()
+modutil.mod.Path.Context.Wrap.Static("StasisPresentation", function(origVictim)
 	modutil.mod.Path.Wrap("SetColor", function(base, args)
 		local victim = modutil.mod.Locals.Stacked(3).victim
 		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim and victim.ModsNikkelMHadesBiomesIsModdedEnemy and not victim.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy then

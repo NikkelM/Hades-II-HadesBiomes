@@ -59,13 +59,13 @@ modutil.mod.Path.Wrap("StartRoomPresentation", function(base, currentRun, curren
 	return base(currentRun, currentRoom, metaPointsAwarded)
 end)
 
-modutil.mod.Path.Wrap("RoomEntrancePortal", function(base, currentRun, currentRoom)
+modutil.mod.Path.Wrap("RoomEntrancePortal", function(base, currentRun, currentRoom, args)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and currentRoom.RoomSetName == "Chaos" then
 		-- To make sure we have the room reward preview icon loaded in case the next room is a story room
 		LoadPackages({ Names = { "ModsNikkelMHadesBiomesGUIOriginal" } })
 	end
 
-	return base(currentRun, currentRoom)
+	return base(currentRun, currentRoom, args)
 end)
 
 -- Always force using the original Hades room transition animation in modded runs
