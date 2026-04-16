@@ -71,6 +71,8 @@ local function on_ready()
 	mod.HiddenConfig = mod.HiddenConfig or mod.TryGetOrCreateCachedSjsonFile("hiddenConfig.sjson", mod.DefaultHiddenConfig)
 	mod.DebugPrint("Loaded hiddenConfig.sjson", 4)
 	mod.DebugPrint(mod.HiddenConfig, 4)
+	---@diagnostic disable-next-line: undefined-global
+	public.IsValidInstallation = mod.HiddenConfig.IsValidInstallation
 
 	if config.enabled == false then
 		local numMissingFiles = mod.CheckRequiredFiles(true)
@@ -185,13 +187,19 @@ local function on_ready()
 
 	local setupSuccessful = true
 	if config.firstTimeSetup then
-		setupSuccessful = mod.FirstTimeSetup()
+		-- Pre-install: Create/Copy files that are required before the loading bar starts
+		mod.InstallationPending = true
+		setupSuccessful = mod.CreateRequiredHookTargetFiles()
 	end
 
-	-- Only check for files if the first time setup was successful, or the mod was already installed
 	if setupSuccessful then
-		-- Before proceeding, check that required files exist
-		local numMissingFiles = mod.CheckRequiredFiles(false)
+		local numMissingFiles = 0
+		-- Only check if all required files exist here if we are not waiting on an install
+		-- After the installation completes, mod.CheckRequiredFiles is called again, so we are not missing the check
+		if not mod.InstallationPending then
+			numMissingFiles = mod.CheckRequiredFiles(false)
+		end
+
 		if numMissingFiles == 0 then
 			-- General data needed for map generation/display
 			import "Game/MapGroups.sjson.lua"
@@ -242,6 +250,7 @@ local function on_ready()
 			import "Game/Obstacles/Elysium.sjson.lua"
 			import "Game/Obstacles/Gameplay.sjson.lua"
 			import "Game/Obstacles/Graybox.sjson.lua"
+			import "Game/Obstacles/House.sjson.lua"
 			import "Game/Obstacles/Styx.sjson.lua"
 			import "Game/Obstacles/Surface.sjson.lua"
 			import "Game/Obstacles/Tartarus.sjson.lua"
@@ -403,6 +412,7 @@ local function on_ready()
 			DebugLogScriptImportProgress("Weapon Data")
 
 			-- Other data that must be loaded before SetupRunData()
+			import "Scripts/BadgeData.lua"
 			import "Scripts/BountyData.lua"
 			import "Scripts/CodexData.lua"
 			import "Scripts/ConsumableData.lua"
@@ -424,6 +434,7 @@ local function on_ready()
 			import "Scripts/ResourceData.lua"
 			import "Scripts/RequirementsData.lua"
 			import "Scripts/ShrineData.lua"
+			import "Scripts/TraitData_Chaos.lua"
 			import "Scripts/TraitData_Store.lua"
 			import "Scripts/TraitData.lua"
 			import "Scripts/TraitDataNPCs.lua"
@@ -466,6 +477,7 @@ local function on_ready()
 
 			-- "Normal" code changes
 			import "Scripts/AudioLogic.lua"
+			import "Scripts/BadgeLogic.lua"
 			import "Scripts/BiomeMapPresentation.lua"
 			import "Scripts/BountyLogic.lua"
 			import "Scripts/BountyPresentation.lua"
@@ -491,6 +503,7 @@ local function on_ready()
 			import "Scripts/PowersLogic.lua"
 			import "Scripts/QuestLogic.lua"
 			import "Scripts/RequirementsLogic.lua"
+			import "Scripts/ResourcePresentation.lua"
 			import "Scripts/RewardPresentation.lua"
 			import "Scripts/RoomEvents.lua"
 			import "Scripts/RoomLogic.lua"
@@ -500,14 +513,16 @@ local function on_ready()
 			import "Scripts/RunLogic.lua"
 			import "Scripts/SaveLogic.lua"
 			import "Scripts/SellTraitLogic.lua"
+			import "Scripts/ShrineLogic.lua"
 			import "Scripts/ShrinePresentation.lua"
+			import "Scripts/SpellLogic.lua"
 			import "Scripts/StoreLogic.lua"
 			import "Scripts/TraitLogic.lua"
 			import "Scripts/WeaponLogic.lua"
 			import "Scripts/WeaponSets.lua"
 			DebugLogScriptImportProgress("main logic and presentation scripts")
 
-			-- Ensure the FxOriginal package is loaded with every biome package
+			-- Ensure the required additional packages are loaded with every biome package immediately before map load
 			mod.SetBiomePackageLoadOverrides()
 			mod.DebugPrint(
 				"[Script Loading] Set biome package load overrides, took " .. (os.clock() - lastImportTime) .. " seconds", 4)
@@ -517,6 +532,8 @@ local function on_ready()
 			if mod.EncounteredInstallationIssues ~= true then
 				mod.HiddenConfig.IsValidInstallation = true
 				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+				---@diagnostic disable-next-line: undefined-global
+				public.IsValidInstallation = true
 
 				-- Check for any incompatible installed mods to display a warning to the user
 				if mod.AreIncompatibleModsInstalled() then
@@ -528,12 +545,20 @@ local function on_ready()
 						1)
 				end
 
+				-- Load the modded MainMenu package manually on first game start, the hash overrides do not work yet
+				-- The package will immediately be unloaded when loading into a save completes, so no worries on that being unnecessary
+				if game.GameState == nil then
+					game.LoadPackages({ Name = "NikkelM-HadesBiomesMainMenu", IgnoreAssert = true })
+				end
+
 				mod.DebugPrint("Mod loaded successfully! (took " .. os.clock() - startTime .. "s)", 3)
 			end
 		else
 			mod.HiddenConfig.IsValidInstallation = false
 			mod.HiddenConfig.InstallationFailReason = "MissingFiles"
 			mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+			---@diagnostic disable-next-line: undefined-global
+			public.IsValidInstallation = false
 
 			mod.DebugPrint(
 				"A total of " .. numMissingFiles ..
@@ -556,6 +581,7 @@ local function on_ready_late()
 	import "Scripts/CodexLogic_Late.lua"
 	import "Scripts/CombatLogic_Late.lua"
 	import "Scripts/DeathLoopLogic_Late.lua"
+	import "Scripts/EffectPresentation_Late.lua"
 	import "Scripts/EventPresentation_Late.lua"
 	import "Scripts/GhostLogic_Late.lua"
 	import "Scripts/HarvestLogic_Late.lua"
@@ -564,8 +590,12 @@ local function on_ready_late()
 	import "Scripts/InteractLogic_Late.lua"
 	import "Scripts/MarketLogic_Late.lua"
 	import "Scripts/ObjectiveLogic_Late.lua"
+	import "Scripts/PowersLogic_Late.lua"
+	import "Scripts/ResourceLogic_Late.lua"
+	import "Scripts/RewardPresentation_Late.lua"
 	import "Scripts/RoomLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
+	import "Scripts/RunClearLogic_Late.lua"
 	import "Scripts/WeaponUpgradeLogic_Late.lua"
 end
 

@@ -79,6 +79,7 @@ local hadesTwoObstacleModifications = {
 	SurfaceShovel01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	SurfacePitchfork01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	SurfaceCrate01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	SurfaceTravelBag01  = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 
 	-- These should not just plop out of existence when the player sprints at them
 	SurfaceGravemarker01 = { Life = { DieOnCollisionRequiredVelocity = 1000.0, }, },
@@ -90,6 +91,8 @@ local hadesTwoObstacleModifications = {
 }
 
 sjson.hook(hadesTwoSurfaceObstacleFile, function(data)
+	mod.RunInstallStep("Surface")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Surface"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

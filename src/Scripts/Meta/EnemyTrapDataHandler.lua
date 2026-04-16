@@ -89,6 +89,9 @@ function mod.ModifyEnemyTrapData(enemyData)
 	}
 
 	game.ProjectileData.BlastCubeExplosion.OutgoingDamageModifiers = { { NonPlayerMultiplier = 50, }, }
+
+	-- So it doesn't trigger Unseen Ire
+	game.ProjectileData.SmokeTrapWeapon.BypassRetaliate = true
 end
 
 -- For the PhalanxTrap/SpearTrap in Elysium

@@ -353,15 +353,15 @@ mod.RoomData.Tartarus = mod.RoomData.Tartarus or {
 						-- So...
 						{ Cue = "/VO/MegaeraField_0407", RequiredTextLines = { "MegaeraGift03" }, },
 						-- Oh.
-						-- { Cue = "/VO/MegaeraHome_0074", RequiredTextLines = { "MegaeraGift02" }, },
+						{ Cue = "/VO/MegaeraHome_0074", RequiredTextLines = { "MegaeraGift02" }, },
 						-- Hmph.
 						{ Cue = "/VO/MegaeraHome_0057",  RequiredTextLines = { "MegaeraGift02" }, },
 						-- <Laughter>
 						{ Cue = "/VO/MegaeraField_0375", RequiredTextLines = { "MegaeraGift10" }, },
 						-- <Laughter>
-						-- { Cue = "/VO/MegaeraField_0376", RequiredTextLines = { "MegaeraGift10" }, },
+						{ Cue = "/VO/MegaeraField_0376", RequiredTextLines = { "MegaeraGift10" }, },
 						-- <Laughter>
-						-- { Cue = "/VO/MegaeraField_0377", RequiredTextLines = { "MegaeraGift10" }, },
+						{ Cue = "/VO/MegaeraField_0377", RequiredTextLines = { "MegaeraGift10" }, },
 						-- Ready, Alecto.
 						{ Cue = "/VO/MegaeraField_0339", RequiredMaxSupportAINames = 1,                      RequiredSupportAINames = { "Alecto" }, },
 						-- Ready, Sister!

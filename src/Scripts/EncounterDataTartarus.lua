@@ -82,6 +82,14 @@ local encounterReplacements = {
 			{ FunctionName = "EncounterAudio" },
 			{ FunctionName = "BeginOpeningEncounter" },
 			{ FunctionName = "HandleEnemySpawns" },
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "DespawnThanatosIfActive",
+				Args = {
+					PlayBoonGiveAnimation = false,
+					PlayFarewellVoiceLines = true,
+					ExitDelay = 3.0,
+				},
+			},
 			{ FunctionName = "CheckForAllEnemiesDead" },
 			{ FunctionName = "PostCombatAudio" },
 		},
@@ -111,65 +119,65 @@ local encounterReplacements = {
 				PreLineAnim = "SisyphusIdleGreeting",
 
 				-- Well you take care!
-				{ Cue = "/VO/Sisyphus_0122" },
+				{ Cue = "/VO/Sisyphus_0122", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0122" } },
 				-- Bye now!
-				{ Cue = "/VO/Sisyphus_0123" },
+				{ Cue = "/VO/Sisyphus_0123", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0123" } },
 				-- You can do it!
-				{ Cue = "/VO/Sisyphus_0124" },
+				{ Cue = "/VO/Sisyphus_0124", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0124" } },
 				-- You got this, Prince!
-				-- { Cue = "/VO/Sisyphus_0125", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+				-- { Cue = "/VO/Sisyphus_0125", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0125" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 				-- Farewell, then!
-				{ Cue = "/VO/Sisyphus_0126" },
+				{ Cue = "/VO/Sisyphus_0126", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0126" } },
 				-- All right, bye!
-				{ Cue = "/VO/Sisyphus_0127" },
+				{ Cue = "/VO/Sisyphus_0127", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0127" } },
 				-- Careful out there!
-				{ Cue = "/VO/Sisyphus_0128" },
+				{ Cue = "/VO/Sisyphus_0128", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0128" } },
 				-- Take care out there!
-				{ Cue = "/VO/Sisyphus_0111" },
+				{ Cue = "/VO/Sisyphus_0111", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0111" } },
 				-- Good luck out there!
-				{ Cue = "/VO/Sisyphus_0112" },
+				{ Cue = "/VO/Sisyphus_0112", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0112" } },
 				-- Godspeed and all!
-				{ Cue = "/VO/Sisyphus_0113" },
+				{ Cue = "/VO/Sisyphus_0113", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0113" } },
 				-- Take care of yourself!
-				{ Cue = "/VO/Sisyphus_0114" },
+				{ Cue = "/VO/Sisyphus_0114", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0114" } },
 				-- Go get them, Prince!
-				-- { Cue = "/VO/Sisyphus_0115", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+				-- { Cue = "/VO/Sisyphus_0115", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0115" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 				-- Farewell, Highness!
-				{ Cue = "/VO/Sisyphus_0116" },
+				{ Cue = "/VO/Sisyphus_0116", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0116" } },
 				-- Safe travels!
-				{ Cue = "/VO/Sisyphus_0117" },
+				{ Cue = "/VO/Sisyphus_0117", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0117" } },
 				-- Bye now!
-				{ Cue = "/VO/Sisyphus_0118" },
+				{ Cue = "/VO/Sisyphus_0118", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0118" } },
 				-- You can do this!
-				{ Cue = "/VO/Sisyphus_0119" },
+				{ Cue = "/VO/Sisyphus_0119", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0119" } },
 				-- So long for now!
-				{ Cue = "/VO/Sisyphus_0120" },
+				{ Cue = "/VO/Sisyphus_0120", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0120" } },
 				-- Keep going, Prince!
-				-- { Cue = "/VO/Sisyphus_0121", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+				-- { Cue = "/VO/Sisyphus_0121", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0121" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 				-- See you again, all right?
-				{ Cue = "/VO/Sisyphus_0242" },
+				{ Cue = "/VO/Sisyphus_0242", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0242" } },
 				-- Do tell the Furies I said hi!
-				{ Cue = "/VO/Sisyphus_0243", RequiredCosmetics = { "ModsNikkelMHadesBiomes_SisyphusQuestItem" } },
+				{ Cue = "/VO/Sisyphus_0243", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0243" }, RequiredCosmetics = { "ModsNikkelMHadesBiomes_SisyphusQuestItem" } },
 				-- You have this, Prince!
-				-- { Cue = "/VO/Sisyphus_0244", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+				-- { Cue = "/VO/Sisyphus_0244", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0244" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 				-- Stop by again sometime!
-				{ Cue = "/VO/Sisyphus_0245", RequiredTextLines = { "SisyphusGift02" }, },
+				{ Cue = "/VO/Sisyphus_0245", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0245" }, RequiredTextLines = { "SisyphusGift02" }, },
 				-- Careful out there, all right?
-				{ Cue = "/VO/Sisyphus_0246" },
+				{ Cue = "/VO/Sisyphus_0246", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0246" } },
 				-- May you get out of here this time, Highness!
-				{ Cue = "/VO/Sisyphus_0247", RequiredTextLines = { "SisyphusGift02" }, },
+				{ Cue = "/VO/Sisyphus_0247", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0247" }, RequiredTextLines = { "SisyphusGift02" }, },
 				-- Always a pleasure, Prince!
-				-- { Cue = "/VO/Sisyphus_0248", Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+				-- { Cue = "/VO/Sisyphus_0248", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0248" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 				-- So long, Highness!
-				{ Cue = "/VO/Sisyphus_0249" },
+				{ Cue = "/VO/Sisyphus_0249", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0249" } },
 				-- Think he'll go all the way this time, Bouldy?
-				-- { Cue = "/VO/Sisyphus_0250", RequiredTextLines = { "SisyphusMeeting06" }, },
+				-- { Cue = "/VO/Sisyphus_0250", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0250" }, RequiredTextLines = { "SisyphusMeeting06" }, },
 				-- Keep fighting, Highness!
-				{ Cue = "/VO/Sisyphus_0251" },
+				{ Cue = "/VO/Sisyphus_0251", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0251" } },
 				-- Thanks for stopping by!
-				{ Cue = "/VO/Sisyphus_0252" },
+				{ Cue = "/VO/Sisyphus_0252", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0252" } },
 				-- Until next time, all right?
-				{ Cue = "/VO/Sisyphus_0253", RequiredTextLines = { "SisyphusGift02" }, },
+				{ Cue = "/VO/Sisyphus_0253", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0253" }, RequiredTextLines = { "SisyphusGift02" }, },
 			},
 		},
 		DistanceTriggers = {
@@ -183,61 +191,61 @@ local encounterReplacements = {
 						PreLineAnim = "SisyphusIdleGreeting",
 
 						-- Your Highness!
-						{ Cue = "/VO/Sisyphus_0058" },
+						{ Cue = "/VO/Sisyphus_0058", RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0058" } },
 						-- Hullo!
-						{ Cue = "/VO/Sisyphus_0054", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0054", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0054" } },
 						-- That who I think it is...?
-						{ Cue = "/VO/Sisyphus_0050", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0050", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0050" } },
 						-- Ahoy!
-						{ Cue = "/VO/Sisyphus_0051", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0051", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0051" } },
 						-- Ahoy there!
-						{ Cue = "/VO/Sisyphus_0052", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0052", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0052" } },
 						-- Look who!
-						{ Cue = "/VO/Sisyphus_0053", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0053", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0053" } },
 						-- Hullo, hullo!
-						{ Cue = "/VO/Sisyphus_0055", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0055", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0055" } },
 						-- Just on a little break!
-						{ Cue = "/VO/Sisyphus_0056", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0056", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0056" } },
 						-- Perfect timing!
-						{ Cue = "/VO/Sisyphus_0057", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0057", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0057" } },
 						-- Well, well!
-						{ Cue = "/VO/Sisyphus_0059", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0059", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0059" } },
 						-- Aren't you a sight!
-						{ Cue = "/VO/Sisyphus_0060", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0060", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0060" } },
 						-- Prince Z.!
-						-- { Cue = "/VO/Sisyphus_0061", RequiredPlayed = { "/VO/Sisyphus_0058" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- { Cue = "/VO/Sisyphus_0061", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0061" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 						-- Hey, hey!
-						{ Cue = "/VO/Sisyphus_0062", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0062", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0062" } },
 						-- Good morning or whenever!
-						{ Cue = "/VO/Sisyphus_0063", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0063", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0063" } },
 						-- Bouldy, look who!
-						{ Cue = "/VO/Sisyphus_0206", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredTextLines = { "SisyphusMeeting06" }, },
+						{ Cue = "/VO/Sisyphus_0206", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0206" }, RequiredTextLines = { "SisyphusMeeting06" }, },
 						-- Hullo, Your Highness!
-						{ Cue = "/VO/Sisyphus_0207", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0207", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0207" } },
 						-- You're back, welcome!
-						{ Cue = "/VO/Sisyphus_0208", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0208", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0208" } },
 						-- He's back again, Bouldy!
-						-- { Cue = "/VO/Sisyphus_0209", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredTextLines = { "SisyphusMeeting06" }, },
+						-- { Cue = "/VO/Sisyphus_0209", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0209" }, RequiredTextLines = { "SisyphusMeeting06" }, },
 						-- Good to see you!
-						{ Cue = "/VO/Sisyphus_0210", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0210", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0210" } },
 						-- Caught me on a break again!
-						{ Cue = "/VO/Sisyphus_0211", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0211", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0211" } },
 						-- Hullo, Prince Z.!
-						-- { Cue = "/VO/Sisyphus_0212", RequiredPlayed = { "/VO/Sisyphus_0058" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- { Cue = "/VO/Sisyphus_0212", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0212" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 						-- How nice to see you, Prince!
-						-- { Cue = "/VO/Sisyphus_0213", RequiredPlayed = { "/VO/Sisyphus_0058" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- { Cue = "/VO/Sisyphus_0213", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0213" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 						-- It's him, Bouldy!
-						{ Cue = "/VO/Sisyphus_0214", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredTextLines = { "SisyphusMeeting06" }, },
+						{ Cue = "/VO/Sisyphus_0214", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0214" }, RequiredTextLines = { "SisyphusMeeting06" }, },
 						-- Well if it isn't you!
-						{ Cue = "/VO/Sisyphus_0215", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0215", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0215" } },
 						-- Ahoy, what's new of late?
-						{ Cue = "/VO/Sisyphus_0216", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0216", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0216" } },
 						-- The Prince returns!
-						-- { Cue = "/VO/Sisyphus_0217", RequiredPlayed = { "/VO/Sisyphus_0058" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
+						-- { Cue = "/VO/Sisyphus_0217", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0217" }, Cooldowns = { { Name = "SisyphusSaidPrinceRecently", Time = 10 }, }, },
 						-- What a surprise!
-						{ Cue = "/VO/Sisyphus_0218", RequiredPlayed = { "/VO/Sisyphus_0058" }, },
+						{ Cue = "/VO/Sisyphus_0218", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0218" } },
 						-- Why, look who's here, Bouldy!
-						{ Cue = "/VO/Sisyphus_0219", RequiredPlayed = { "/VO/Sisyphus_0058" }, RequiredTextLines = { "SisyphusMeeting06" }, },
+						{ Cue = "/VO/Sisyphus_0219", RequiredPlayed = { "/VO/Sisyphus_0058" },             RequiredFalsePlayedThisRoom = { "/VO/Sisyphus_0219" }, RequiredTextLines = { "SisyphusMeeting06" }, },
 					},
 				},
 			},
@@ -254,33 +262,33 @@ local encounterReplacements = {
 					{
 						RandomRemaining = true,
 						-- Hello...!
-						{ Cue = "/VO/Orpheus_0060", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						{ Cue = "/VO/Orpheus_0060", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0060" }, RequiredPlayed = { "/VO/Orpheus_0061" }, },
 						-- Hello...
-						{ Cue = "/VO/Orpheus_0061", RequiredFalseTextLines = { "OrpheusAboutSingersReunionQuest01" }, },
+						{ Cue = "/VO/Orpheus_0061", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0061" }, RequiredFalseTextLines = { "OrpheusAboutSingersReunionQuest01" }, },
 						-- Hmm.
-						{ Cue = "/VO/Orpheus_0062", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						{ Cue = "/VO/Orpheus_0062", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0062" }, RequiredPlayed = { "/VO/Orpheus_0061" }, },
 						-- Ah.
-						{ Cue = "/VO/Orpheus_0063", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						{ Cue = "/VO/Orpheus_0063", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0063" }, RequiredPlayed = { "/VO/Orpheus_0061" }, },
 						-- Oh, um, hello.
-						{ Cue = "/VO/Orpheus_0064", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						{ Cue = "/VO/Orpheus_0064", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0064" }, RequiredPlayed = { "/VO/Orpheus_0061" }, },
 						-- Hello there.
-						{ Cue = "/VO/Orpheus_0065", RequiredPlayed = { "/VO/Orpheus_0061" }, },
+						{ Cue = "/VO/Orpheus_0065", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0065" }, RequiredPlayed = { "/VO/Orpheus_0061" }, },
 						-- Hello my friend.
-						{ Cue = "/VO/Orpheus_0093", RequiredPlayed = { "/VO/Orpheus_0061" },                                                         RequiredTextLines = { "OrpheusGift02" }, },
+						{ Cue = "/VO/Orpheus_0093", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0093" }, RequiredPlayed = { "/VO/Orpheus_0061" },                                                         RequiredTextLines = { "OrpheusGift02" }, },
 						-- Hello friend.
-						{ Cue = "/VO/Orpheus_0094", RequiredPlayed = { "/VO/Orpheus_0061" },                                                         RequiredTextLines = { "OrpheusGift06" }, },
+						{ Cue = "/VO/Orpheus_0094", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0094" }, RequiredPlayed = { "/VO/Orpheus_0061" },                                                         RequiredTextLines = { "OrpheusGift06" }, },
 						-- Greetings.
-						{ Cue = "/VO/Orpheus_0095", RequiredPlayed = { "/VO/Orpheus_0061" },                                                         RequiredTextLines = { "OrpheusGift02" }, },
+						{ Cue = "/VO/Orpheus_0095", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0095" }, RequiredPlayed = { "/VO/Orpheus_0061" },                                                         RequiredTextLines = { "OrpheusGift02" }, },
 						-- Perhaps a song would be in order at this time?
-						{ Cue = "/VO/Orpheus_0034", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						{ Cue = "/VO/Orpheus_0034", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0034" }, GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
 						-- Would you be interested in one of my songs?
-						{ Cue = "/VO/Orpheus_0035", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						{ Cue = "/VO/Orpheus_0035", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0035" }, GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
 						-- What might I do for you, my friend?
-						{ Cue = "/VO/Orpheus_0036", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						{ Cue = "/VO/Orpheus_0036", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0036" }, GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
 						-- Is there a song which you would like to hear?
-						{ Cue = "/VO/Orpheus_0037", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						{ Cue = "/VO/Orpheus_0037", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0037" }, GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
 						-- How about a little song, is that all right?
-						{ Cue = "/VO/Orpheus_0038", GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
+						{ Cue = "/VO/Orpheus_0038", RequiredFalsePlayedThisRoom = { "/VO/Orpheus_0038" }, GameStateRequirements = { NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgain", }, }, },
 					},
 				},
 			},
@@ -296,7 +304,7 @@ local encounterModifications = {
 		CountsForRoomEncounterDepth = true,
 	},
 	OpeningGenerated = {
-		LoadModdedVoiceBanks = { "Thanatos", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "ZagreusField" },
 		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
 		DifficultyModifier = -40,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies

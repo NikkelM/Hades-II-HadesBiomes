@@ -645,6 +645,7 @@ function mod.ClearStoredAmmoHero()
 	local hero = game.CurrentRun.Hero
 	if hero ~= nil and hero.StoredAmmo ~= nil then
 		hero.StoredAmmo = {}
+		game.RemoveIncomingDamageModifier(hero, "StoredAmmoVulnerability")
 	end
 	if game.ScreenAnchors.StoredAmmo ~= nil then
 		Destroy({ Ids = game.ScreenAnchors.StoredAmmo })
@@ -1033,6 +1034,39 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 
 	game.wait(0.3)
 
+	-- Modded Badge (after the wait to allow the "Victory" VFX to subside, which would overlap this)
+	if game.GameState.ModsNikkelMHadesBiomesBadgeRank ~= nil then
+		local badgeData = game.ModsNikkelMHadesBiomesBadgeData
+				[game.ModsNikkelMHadesBiomesBadgeOrderData[game.GameState.ModsNikkelMHadesBiomesBadgeRank]]
+
+		if badgeData ~= nil then
+			SetAnimation({
+				DestinationId = components.ModsNikkelMHadesBiomesBadgeRankVignette.Id,
+				Name = "ModsNikkelMHadesBiomes_RankBadgeVignette"
+			})
+			SetAnimation({ DestinationId = components.ModsNikkelMHadesBiomesBadgeRankIcon.Id, Name = badgeData.Icon })
+			SetAnimation({
+				DestinationId = components.ModsNikkelMHadesBiomesBadgeRankNameplate.Id,
+				Name = "ModsNikkelMHadesBiomes_BadgeNamePlate01"
+			})
+			CreateTextBox({
+				Id = components.ModsNikkelMHadesBiomesBadgeRankNameplate.Id,
+				Text = badgeData.Name,
+				FontSize = 20,
+				OffsetX = 0,
+				OffsetY = 10,
+				Color = { 255, 235, 118, 255 },
+				Font = "P22UndergroundSCLight",
+				ShadowBlur = 0,
+				ShadowColor = { 0, 0, 0, 1 },
+				ShadowOffset = { 0, 2 },
+				Justification = "Center",
+				OutlineThickness = 2,
+				OutlineColor = { 0, 0, 0, 1 },
+			})
+		end
+	end
+
 	local traitTrayScreen = game.OpenTraitTrayScreen({
 		DontDuckAudio = true,
 		DisableTooltips = true,
@@ -1242,4 +1276,120 @@ end
 function mod.ModsNikkelMHadesBiomesHadesPeacefulVictory()
 	game.GameState.PlayedRunClearMessages.ModsNikkelMHadesBiomes_RunClear_ClearNumTen = true
 	game.CurrentRun.VictoryMessage = "ModsNikkelMHadesBiomes_RunClear_ClearNumTen"
+end
+
+-- Custom function for Hades' HadesCastBeam attacks, to allow beam rotation while honouring BarrelLength
+function mod.ModsNikkelMHadesBiomesHadesCastBeamFire(enemy, aiData, currentRun, args)
+	local enemyId = enemy.ObjectId
+	local barrelLength = aiData.BarrelLength
+	local numProjectiles = aiData.NumProjectiles
+	local angleInterval = aiData.ProjectileAngleInterval
+	local fireDuration = aiData.FireDuration
+	local projectileName = aiData.ProjectileName
+	-- Graphic offset compensation: the Hades sprite pivot is not centered on the actual position, causing beams to appear offset from the model
+	-- ModsNikkelMHadesBiomes_BeamGraphicOffsetX: horizontal shift, varies with cos(angle). Positive = rightward when facing right
+	-- ModsNikkelMHadesBiomes_BeamGraphicOffsetY: vertical shift, varies with (1+sin(angle))/2. Positive = downward
+	-- Full effect when facing up, half at left/right, zero when facing down.
+	local graphicOffsetX = aiData.ModsNikkelMHadesBiomes_BeamGraphicOffsetX or 0
+	local graphicOffsetY = aiData.ModsNikkelMHadesBiomes_BeamGraphicOffsetY or 0
+
+	local baseAngle = GetAngle({ Id = enemyId }) or 0
+	local location = GetLocation({ Id = enemyId }) or {}
+
+	local anchors = {}
+	local beams = {}
+
+	-- Apply the rotation dampening
+	if aiData.FireRotationDampening ~= nil then
+		local dampenEffect = {
+			Id = enemy.ObjectId,
+			DestinationId = enemy.ObjectId,
+			EffectName = enemy.Name .. "FireRotationDampening"
+		}
+		dampenEffect.DataProperties = { Duration = 99, RotationMultiplier = aiData.FireRotationDampening, TimeModifierFraction = 1 }
+		ApplyEffect(dampenEffect)
+		table.insert(enemy.ClearEffectsOnHitStun, dampenEffect.EffectName)
+	end
+
+	for i = 1, numProjectiles do
+		local indexMultiplier = i - math.ceil(numProjectiles / 2)
+		local beamAngle = baseAngle + indexMultiplier * angleInterval
+		local beamAngleRad = math.rad(beamAngle)
+
+		local offset = game.CalcOffset(beamAngleRad, barrelLength) or {}
+		local angleRad = math.rad(baseAngle)
+		local shiftX = graphicOffsetX * math.cos(angleRad)
+		local shiftY = graphicOffsetY * (1 + math.sin(angleRad)) * 0.5
+
+		local anchorId = SpawnObstacle({
+			Name = "InvisibleTarget",
+			LocationX = location.X + offset.X + shiftX,
+			LocationY = location.Y + offset.Y + shiftY,
+			Group = "Standing",
+		})
+
+		local beamId = CreateProjectileFromUnit({
+			Name = projectileName,
+			Id = enemyId,
+			DestinationId = enemyId,
+			Angle = beamAngle,
+			BarrelLength = 0,
+		})
+
+		AttachProjectiles({ Ids = { beamId }, DestinationId = anchorId })
+		SetAngle({ ProjectileId = beamId, Angle = beamAngleRad })
+
+		table.insert(anchors, anchorId)
+		table.insert(beams, {
+			id = beamId,
+			angleOffset = indexMultiplier * angleInterval,
+		})
+	end
+
+	game.thread(function()
+		while #beams > 0 do
+			local currentAngle = GetAngle({ Id = enemyId }) or 0
+			local enemyLocation = GetLocation({ Id = enemyId }) or {}
+			local angleRad = math.rad(currentAngle)
+			local shiftX = graphicOffsetX * math.cos(angleRad)
+			local shiftY = graphicOffsetY * (1 + math.sin(angleRad)) * 0.5
+
+			for i = #beams, 1, -1 do
+				-- This should never happen, but better be safe
+				if not ProjectileExists({ Id = beams[i].id }) then
+					Destroy({ Id = anchors[i] })
+					table.remove(beams, i)
+					table.remove(anchors, i)
+				else
+					-- Calculate the new location for the beam - same distance from enemy, but potential different angle
+					local angle = math.rad(currentAngle + beams[i].angleOffset)
+					local offset = game.CalcOffset(angle, barrelLength) or {}
+
+					Teleport({
+						Id = anchors[i],
+						OffsetX = enemyLocation.X + offset.X + shiftX,
+						OffsetY = enemyLocation.Y + offset.Y + shiftY
+					})
+					SetAngle({ ProjectileId = beams[i].id, Angle = angle })
+				end
+			end
+
+			-- Process next location update in 0.001 seconds
+			game.waitUnmodified(0.001, game.RoomThreadName)
+		end
+	end)
+
+	-- Wait until the attack has completed firing
+	game.wait(game.CalcEnemyWait(enemy, fireDuration), enemy.AIThreadName)
+
+	if aiData.FireRotationDampening ~= nil then
+		ClearEffect({ Id = enemy.ObjectId, Name = enemy.Name .. "FireRotationDampening" })
+	end
+
+	-- Clean up the anchors after the attack has ended
+	for _, anchorId in ipairs(anchors) do
+		if anchorId then
+			Destroy({ Id = anchorId })
+		end
+	end
 end

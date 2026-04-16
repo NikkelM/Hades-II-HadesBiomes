@@ -207,13 +207,13 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
 	-- 	InheritFrom = "MusicMusicPlayerCharonShopThemeMusicPlayer",
 	-- 	Description =
-	-- 	"All items sold by {$Keywords.CharCharon} have a chance to cost less.",
+	-- 	"All items sold by {$Keywords.CharCharon} cost less.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoonDiscountStatDisplay",
 	-- 	InheritFrom = "BaseStatLine",
-	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Maximum Discount:",
-	-- 	Description = "{#UpgradeFormat}-{$TooltipData.ExtractData.TooltipMaxDiscount}%{#Prev}",
+	--  DisplayName = "{!Icons.Bullet}{#PropertyFormat}Random Discount:",
+	--  Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMinDiscount}-{$TooltipData.ExtractData.TooltipMaxDiscount}%{#Prev}",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon",
@@ -227,7 +227,8 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait",
 		DisplayName = "Освобождение пылающих колёс",
-		Description = "Определённые враги ({$TooltipData.BlockedEnemyTypes[1]}) больше не будут появляться в {$Keywords.EncounterPlural}.",
+		Description =
+		"Определённые враги ({$TooltipData.BlockedEnemyTypes[1]}) больше не будут появляться в {$Keywords.EncounterPlural}.",
 	},
 	-- #endregion
 }

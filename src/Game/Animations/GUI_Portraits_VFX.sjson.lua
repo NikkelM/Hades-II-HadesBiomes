@@ -73,6 +73,21 @@ local addParentAnimations = {
 		Material = "Unlit",
 		ChainTo = "ModsNikkelMHadesBiomes_DialogueBackground_ElysiumChampions",
 	},
+	ModsNikkelMHadesBiomes_DialogueBackground_Styx_In = {
+		Name = "ModsNikkelMHadesBiomes_DialogueBackground_Styx_In",
+		Scale = 1,
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\DialogueBackgrounds\\DialogueBackgroundStyx",
+		VideoTexture = "HadesBiomesDiaBackStyxDHub",
+		NumFrames = 32,
+		StartFrame = 1,
+		EndFrame = 32,
+		HoldLastFrame = false,
+		FlipHorizontal = true,
+		Loop = false,
+		PlaySpeed = 50,
+		Material = "Unlit",
+		ChainTo = "ModsNikkelMHadesBiomes_DialogueBackground_Styx",
+	},
 	ModsNikkelMHadesBiomes_DialogueBackground_StyxBoss_In = {
 		Name = "ModsNikkelMHadesBiomes_DialogueBackground_StyxBoss_In",
 		Scale = 1,
@@ -167,6 +182,24 @@ local addAnimations = {
 		PlayBackwards = true,
 		ChainTo = "null",
 	},
+	ModsNikkelMHadesBiomes_DialogueBackground_Styx = {
+		Name = "ModsNikkelMHadesBiomes_DialogueBackground_Styx",
+		InheritFrom = "ModsNikkelMHadesBiomes_DialogueBackground_Styx_In",
+		NumFrames = 1,
+		Duration = 2,
+		FlipHorizontal = true,
+		Loop = true,
+		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\DialogueBackgrounds\\DialogueBackgroundStyx",
+		ChainTo = "null",
+	},
+	ModsNikkelMHadesBiomes_DialogueBackground_Styx_Out = {
+		Name = "ModsNikkelMHadesBiomes_DialogueBackground_Styx_Out",
+		InheritFrom = "ModsNikkelMHadesBiomes_DialogueBackground_Styx_In",
+		PlaySpeed = 60,
+		FlipHorizontal = true,
+		PlayBackwards = true,
+		ChainTo = "null",
+	},
 	ModsNikkelMHadesBiomes_DialogueBackground_StyxBoss = {
 		Name = "ModsNikkelMHadesBiomes_DialogueBackground_StyxBoss",
 		InheritFrom = "ModsNikkelMHadesBiomes_DialogueBackground_StyxBoss_In",
@@ -226,6 +259,8 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoPortraitsFile, function(data)
+	mod.RunInstallStep("GUI_Portraits_VFX")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["GUI_Portraits_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

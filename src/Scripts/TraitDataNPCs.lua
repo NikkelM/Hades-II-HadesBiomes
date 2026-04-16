@@ -335,8 +335,12 @@ local newTraitData = {
 		CustomStatLinesWithShrineUpgrade = {
 			ShrineUpgradeName = "HealingReductionShrineUpgrade",
 			StatLines = {
+				"StoreUsesRemainingDisplay2",
 				"HealingReductionNotice",
 			},
+		},
+		StatLines = {
+			"StoreUsesRemainingDisplay2",
 		},
 	},
 	ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus = {
@@ -774,11 +778,17 @@ local newTraitData = {
 			TrackName = "{1d2d987b-853b-4a65-aa2d-a3e8c7e0e99b}",
 		},
 
-		ModsNikkelMHadesBiomesMaxStoreDiscount = 0.1,
+		ModsNikkelMHadesBiomesMinStoreDiscount = 0.05,
+		ModsNikkelMHadesBiomesMaxStoreDiscount = 0.15,
 		StatLines = {
 			"ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoonDiscountStatDisplay",
 		},
 		ExtractValues = {
+			{
+				Key = "ModsNikkelMHadesBiomesMinStoreDiscount",
+				ExtractAs = "TooltipMinDiscount",
+				Format = "Percent",
+			},
 			{
 				Key = "ModsNikkelMHadesBiomesMaxStoreDiscount",
 				ExtractAs = "TooltipMaxDiscount",

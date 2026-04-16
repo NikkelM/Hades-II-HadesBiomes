@@ -52,7 +52,6 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 	for _, id in pairs(game.SessionMapState.ShownMetaUpgradeCardIds) do
 		StopAnimation({ Names = { "MetaUpgradeCardFlip", "CardFlipGlowA", "CardFlipGlowB" }, DestinationId = id })
 	end
-	StopUnattachedAnimation({ Names = { "ErisBombardmentCrater", "ErisBombardmentCraterFade", }, PreventChain = true })
 	Destroy({ Ids = game.CollapseTable(game.SessionMapState.ShownMetaUpgradeCardIds) })
 
 	AddInputBlock({ Name = "BiomeMapPresentation" })

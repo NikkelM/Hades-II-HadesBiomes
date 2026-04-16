@@ -1,3 +1,4 @@
+-- #region Bounties/Testaments
 local newBountyTargetIcons = {
 	-- These must be the first encounter in the respective BountyData encounters list
 	BossHarpy1 = "GUIModded\\Screens\\Shrine\\BossHarpy",
@@ -134,3 +135,120 @@ for _, bountyEntry in ipairs(newBountyInsertOrder) do
 		table.insert(game.ScreenData.Shrine.BountyOrder, insertIndex, newBountyKey)
 	end
 end
+-- #endregion
+
+-- #region Skelly Statues/Gifts
+-- Fear requirements to unlock each of the three new statues
+game.ScreenData.Shrine.ModsNikkelMHadesBiomesShrinePointThresholds = { 8, 16, 32 }
+
+-- Show vanilla requirement rows in ShrineScreen when: TrophyQuestUnlocked AND (vanilla not done OR (modded started AND not all unveiled))
+local skellyQuestActiveRequirements = {
+	OrRequirements = {
+		{
+			{
+				PathFalse = { "GameState", "TextLinesRecord", "TrophyQuestComplete03" },
+			},
+		},
+		{
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueIntro01" },
+			},
+			{
+				PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil03" },
+			},
+		},
+	},
+	NamedRequirements = { "TrophyQuestUnlocked" },
+}
+
+-- Show "all complete" when: vanilla done AND (modded not started OR modded all unveiled)
+local skellyQuestAllCompleteRequirements = {
+	{
+		PathTrue = { "GameState", "TextLinesRecord", "TrophyQuestComplete03" },
+	},
+	OrRequirements = {
+		{
+			{
+				PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueIntro01" },
+			},
+		},
+		{
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil03" },
+			},
+		},
+	},
+}
+
+-- Modded route: show when started AND (not all unveiled OR vanilla not done)
+local skellyQuestModdedRouteRequirements = {
+	{
+		PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueIntro01" },
+	},
+	OrRequirements = {
+		{
+			{
+				PathFalse = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil03" },
+			},
+		},
+		{
+			{
+				PathFalse = { "GameState", "TextLinesRecord", "TrophyQuestComplete03" },
+			},
+		},
+	},
+}
+
+-- Modify vanilla component requirements to keep showing when modded quests are active
+game.ScreenData.Shrine.ComponentData.SkellyHeader.Requirements = skellyQuestActiveRequirements
+game.ScreenData.Shrine.ComponentData.SkellyHeader_Complete.Requirements = skellyQuestAllCompleteRequirements
+game.ScreenData.Shrine.ComponentData.SkellyQuestSurface.Requirements = skellyQuestActiveRequirements
+game.ScreenData.Shrine.ComponentData.SkellyQuestSurfaceStrikethrough.Requirements = skellyQuestActiveRequirements
+game.ScreenData.Shrine.ComponentData.SkellyQuestUnderworld.Requirements = skellyQuestActiveRequirements
+game.ScreenData.Shrine.ComponentData.SkellyQuestUnderworldStrikethrough.Requirements = skellyQuestActiveRequirements
+game.ScreenData.Shrine.ComponentData.SkellyQuestCompleteIcon.Requirements = skellyQuestAllCompleteRequirements
+
+-- Reposition and rescale vanilla components to make room for the modded route row
+game.ScreenData.Shrine.ComponentData.SkellyQuestSurface.X = 310
+game.ScreenData.Shrine.ComponentData.SkellyQuestSurface.Scale = 0.7
+game.ScreenData.Shrine.ComponentData.SkellyQuestSurface.TextArgs = game.MergeTables(
+	game.UIData.ShrineBountyAvailableTextArgs, { FontSize = 18, OffsetX = -155, OffsetY = 0 })
+
+game.ScreenData.Shrine.ComponentData.SkellyQuestUnderworld.X = 310
+game.ScreenData.Shrine.ComponentData.SkellyQuestUnderworld.Y = 574
+game.ScreenData.Shrine.ComponentData.SkellyQuestUnderworld.Scale = 0.7
+game.ScreenData.Shrine.ComponentData.SkellyQuestUnderworld.TextArgs = game.MergeTables(
+	game.UIData.ShrineBountyAvailableTextArgs, { FontSize = 18, OffsetX = -155, OffsetY = 0 })
+
+game.ScreenData.Shrine.ComponentData.SkellyQuestUnderworldStrikethrough.Y = 574
+
+-- Add modded route components
+game.ScreenData.Shrine.ComponentData.SkellyQuestModsNikkelMHadesBiomesModdedRoute = {
+	X = 310,
+	Y = 610,
+	Animation = "GUI\\Screens\\Shrine\\SkellyIncomplete",
+	Scale = 0.7,
+	TextArgs = game.MergeTables(
+		game.UIData.ShrineBountyAvailableTextArgs, { FontSize = 18, OffsetX = -155, OffsetY = 0 }),
+	Requirements = skellyQuestModdedRouteRequirements,
+}
+game.ScreenData.Shrine.ComponentData.SkellyQuestModsNikkelMHadesBiomesModdedRouteStrikethrough = {
+	X = 380,
+	Y = 610,
+	Alpha = 0.0,
+	AlphaTarget = 0.0,
+	Animation = "GUI\\Screens\\Shrine\\Strikethrough",
+	GroupName = "Combat_Menu_Overlay",
+	Requirements = skellyQuestModdedRouteRequirements,
+}
+
+-- Insert into Order array before SkellyQuestCompleteIcon
+local shrineOrder = game.ScreenData.Shrine.ComponentData.Order
+for i, name in ipairs(shrineOrder) do
+	if name == "SkellyQuestCompleteIcon" then
+		table.insert(shrineOrder, i, "SkellyQuestModsNikkelMHadesBiomesModdedRouteStrikethrough")
+		table.insert(shrineOrder, i, "SkellyQuestModsNikkelMHadesBiomesModdedRoute")
+		break
+	end
+end
+-- #endregion

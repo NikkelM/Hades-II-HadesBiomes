@@ -128,6 +128,8 @@ for i = #hadesWeaponsTable.Weapons, 1, -1 do
 end
 
 sjson.hook(hadesTwoPlayerWeaponsFile, function(data)
+	mod.RunInstallStep("EnemyWeapons")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["EnemyWeapons"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

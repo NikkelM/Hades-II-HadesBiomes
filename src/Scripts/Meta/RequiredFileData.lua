@@ -37,7 +37,7 @@ mod.SubtitleCsvFileNameMappings = {
 	Eurydice = "Eurydice_",
 	-- Hades = "HadesField_2",
 	HadesField = "HadesField_",
-	-- Hypnos = "Sisyphus_0",
+	-- Hypnos = "Sisyphus_1",
 	Intercom = "HadesField_1",
 	MegaeraField = "MegaeraField_",
 	MegaeraHome = "Megaera_3",
@@ -433,8 +433,9 @@ mod.BikFileNames = {
 	"NPC_OrpheusIdlePlaying_Bink",
 	-- #endregion
 	-- #region Megaera Story
-	-- "Enemy_Fury_IdleInHouse_Bink",
-	-- "Enemy_Fury_IdleInHouseGreeting_Bink",
+	"Enemy_Fury_IdleInHouse_Bink",
+	"Enemy_Fury_IdleInHouseGreeting_Bink",
+	"Enemy_Fury_IdleInHouseFidgetWhipTaunt_Bink",
 	-- #endregion
 }
 
@@ -444,6 +445,7 @@ mod.CustomBikFileNames = {
 	"HadesBiomesDiaBackAsphodel",
 	"HadesBiomesDiaBackElysium",
 	"HadesBiomesDiaBackEChamps",
+	"HadesBiomesDiaBackStyxDHub",
 	"HadesBiomesDiaBackStyxBoss",
 	"RunHistoryInHadesModdedXX",
 	"RunHistoryInModdedFailXXX",
@@ -731,6 +733,10 @@ mod.MapTextFileNames = {
 	C_Combat01 = true,
 	-- Need to add a Gears_02 group to better sort some chains and Gears
 	D_Intro = true,
+	-- New Standing group for the shop item stele
+	D_Hub = true,
+	-- New foreground groups for the flickering ghosts and other textures
+	Return03 = true,
 	-- A new Terrain group was added to resolve flickering tiles next to the exit door (same as for RoomOpening)
 	Return06 = true,
 }
@@ -748,4 +754,35 @@ mod.HelpTextLanguages = {
 	"pt-BR",
 	"ru",
 	"zh-CN"
+}
+
+-- Used in copyHadesNPCTexts. Keys are file names, values are speaker lookup tables (speaker = true)
+mod.NPCTextFileNames = {
+	_DeathLoopData = {
+		-- Hades = true,
+		Megaera = true,
+		-- Persephone = true,
+		Skelly = true,
+		-- Storyteller = true,
+		Thanatos = true,
+		Zagreus = true,
+	},
+	_NPCData = {
+		-- Achilles = true,
+		Charon = true,
+		-- Dusa = true,
+		Eurydice = true,
+		Hades = true,
+		-- Hypnos = true,
+		Megaera = true,
+		-- Nyx = true,
+		Orpheus = true,
+		Patroclus = true,
+		Persephone = true,
+		-- Scratch = true, -- This is a single Achilles line
+		Sisyphus = true,
+		Storyteller = true,
+		Thanatos = true,
+		Zagreus = true,
+	},
 }

@@ -224,6 +224,10 @@ function mod.ThanatosExit(source, args)
 	end
 
 	game.CheckCodexUnlock(mod.CodexChapterName, "NPC_Thanatos_01")
+
+	if args.RemoveThanatosFromActiveEnemies then
+		game.ActiveEnemies[source.ObjectId] = nil
+	end
 end
 
 function mod.ThanatosExitSilent(source, args)
@@ -357,11 +361,16 @@ end
 
 -- #region House version/RoomOpening
 function mod.CheckThanatosOrSpawnRoomReward(eventSource, args)
-	local thanatos = GetIdsByType({ Name = "NPC_Thanatos_01" })[1]
+	local thanatosId = GetIdsByType({ Name = "NPC_Thanatos_01" })[1]
 
-	if thanatos ~= nil then
-		-- Wait until his conversation is done
-		game.waitUntil("ThanatosRoomOpeningConversationDone")
+	if thanatosId ~= nil then
+		local thanatos = game.ActiveEnemies[thanatosId]
+		if thanatos and thanatos.NextInteractLines and not thanatos.NextInteractLines.PlayOnce then
+			-- Reward spawns immediately
+		else
+			-- Wait until his conversation is done
+			game.waitUntil("ThanatosRoomOpeningConversationDone")
+		end
 	end
 
 	game.SpawnRoomReward(eventSource, { WaitUntilPickup = true, })
@@ -370,22 +379,48 @@ end
 function mod.ThanatosRoomOpeningConversationDone(source, args)
 	args = args or {}
 
-	-- Cannot gift him when he's about to leave
+	-- Cannot gift or salute him when he's about to leave
 	source.CanReceiveGift = false
+	source.SpecialInteractFunctionName = nil
 
-	SetAnimation({ DestinationId = source.ObjectId, Name = "ThanatosIdleInhouseFidget_HairFlick" })
-	game.wait(1.0)
+	if args.PlayFarewellVoiceLines then
+		game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.ModsNikkelMHadesBiomes_ThanatosFarewellsRoomOpening)
+	end
+
+	if args.PlayBoonGiveAnimation then
+		SetAnimation({ DestinationId = source.ObjectId, Name = "ThanatosIdleInhouseFidget_HairFlick" })
+		game.wait(1.0)
+	end
 
 	-- This notification actually spawns the room reward in the room's UnthreadedEvent
 	game.notifyExistingWaiters("ThanatosRoomOpeningConversationDone")
 
 	-- Wait a little for any EndVoiceLines from Thanatos to play
-	game.wait(3.0)
+	game.wait(args.ExitDelay or 3.0)
 
 	args.PreExitRemoveFromGroup = "Standing"
 	args.PreExitAddToGroup = "PillarTops_01"
 	args.SkipExitReaction = true
+	args.RemoveThanatosFromActiveEnemies = true
 	mod.ThanatosExit(source, args)
+end
+
+-- If Thanatos is still active when the room reward is picked up, despawn him (possible when he has a repeatable textline, as it won't block the loot spawn in CheckThanatosOrSpawnRoomReward)
+function mod.DespawnThanatosIfActive(eventSource, args)
+	args = args or {}
+	local thanatosId = GetIdsByType({ Name = "NPC_Thanatos_01" })[1]
+	local thanatos = game.ActiveEnemies[thanatosId]
+
+	if thanatos then
+		UseableOff({ Id = thanatosId })
+		thanatos.NextInteractLines = nil
+		thanatos.CanReceiveGift = nil
+		thanatos.SpecialInteractFunctionName = nil
+		-- Force a redraw of the usetext in case the player is currently in range
+		game.SetAvailableUseText(thanatos)
+
+		mod.ThanatosRoomOpeningConversationDone(thanatos, args)
+	end
 end
 
 -- #endregion

@@ -525,7 +525,7 @@ function mod.OrpheusRaiseKilledEnemy(enemy, args)
 	local enemyName = enemy.Name
 	local enemyData = game.EnemyData[enemyName]
 	if enemyData and ((not enemyData.IsBoss and not enemyData.BlockRaiseDead) or enemyData.ForceAllowRaiseDead) then
-		game.IncrementTableValue(MapState, "OrpheusRaiseDeadCount")
+		game.IncrementTableValue(game.MapState, "OrpheusRaiseDeadCount")
 		local tempObstacle = SpawnObstacle({ Name = "BlankObstacle", DestinationId = enemy.ObjectId })
 		local summonArgs = game.ShallowCopyTable(game.WeaponData.WeaponSpellSummon.SummonMultipliers) or {}
 		if args.MaxHealthMultiplier then
@@ -542,9 +542,10 @@ function mod.OrpheusRaiseKilledEnemy(enemy, args)
 		end
 		summonArgs.SpawnPointId = tempObstacle
 		local newEnemy = game.CreateAlliedEnemy(enemyName, summonArgs) or {}
+		newEnemy.ImmuneToPolymorph = true
 		game.DestroyOnDelay({ tempObstacle }, 0.1)
-		game.CurrentRun.CurrentRoom.DestroyAssistUnitOnEncounterEndId = newEnemy.ObjectId
-		game.CurrentRun.CurrentRoom.AssistUnitName = enemyName
+		game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId = newEnemy.ObjectId
+		game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_AssistUnitName = enemyName
 		mod.OrpheusRaiseDeadPresentation(newEnemy)
 
 		if game.CurrentRun.CurrentRoom.Encounter ~= nil and game.CurrentRun.CurrentRoom.Encounter.ActiveEnemyCap ~= nil then
@@ -687,7 +688,9 @@ function mod.SurpriseNPCPresentation(source, args)
 end
 
 function mod.BedroomIntermissionApproach(source, args)
-	wait(0.35)
+	args = args or {}
+	local targetObjectId = args.ObjectId or source.ObjectId
+	game.wait(0.35)
 
 	AddInputBlock({ Name = "MoveHeroToRoomPosition" })
 	local initialSpeed = GetUnitDataValue({ Id = game.CurrentRun.Hero.ObjectId, Property = "Speed" })
@@ -696,12 +699,12 @@ function mod.BedroomIntermissionApproach(source, args)
 	SetUnitProperty({ Property = "MoveGraphic", Value = "MelinoeWalk", DestinationId = game.CurrentRun.Hero.ObjectId })
 	SetUnitProperty({ Property = "Speed", Value = 90, DestinationId = game.CurrentRun.Hero.ObjectId })
 
-	Move({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = source.ObjectId, Mode = "Precise" })
+	Move({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = targetObjectId, Mode = "Precise" })
 
-	local notifyName = "WithinDistance" .. source.ObjectId
+	local notifyName = "WithinDistance" .. targetObjectId
 	NotifyWithinDistance({
 		Id = game.CurrentRun.Hero.ObjectId,
-		DestinationId = source.ObjectId,
+		DestinationId = targetObjectId,
 		Distance = 100,
 		Notify = notifyName
 	})
@@ -718,7 +721,7 @@ function mod.BedroomIntermissionApproach(source, args)
 	wait(0.1)
 
 	SetAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "MelinoeIdleWeaponless" })
-	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = source.ObjectId })
+	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = args.AngleTowardTargetId or targetObjectId })
 end
 
 function mod.BedroomIntermissionPresentation(source, args)

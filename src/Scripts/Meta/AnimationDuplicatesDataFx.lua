@@ -122,6 +122,18 @@ mod.HadesFxAnimationModifications = {
 		SortMode = "Isometric",
 		OffsetY = 10,
 	},
+	PoisonSplashProjectileHead = {
+		ScaleX = 3,
+		ScaleY = 6,
+	},
+	PoisonSplashProjectileHeadParticle = {
+		StartScale = 0,
+		EndScale = 4,
+		ScaleMin = 2,
+		ScaleMax = 4,
+		StartOffsetZ = 40,
+		EndOffsetZ = 0,
+	},
 	SatyrDeathAnimation = {
 		SortMode = "Isometric",
 	},
@@ -134,13 +146,21 @@ mod.HadesFxAnimationModifications = {
 		OffsetY = 175,
 		UseAttachedMarkerLocation = "null"
 	},
+	["SnowFootstepL-Spawner-Hades"] = {
+		VisualFx = "null",
+	},
+	["SnowFootstepR-Spawner-Hades"] = {
+		VisualFx = "null",
+	},
 	["SnowFootstepL-Hades"] = {
 		FilePath = "Dev\\blank_invisible",
 		ClearCreateAnimations = true,
+		CreateAnimations = {},
 	},
 	["SnowFootstepR-Hades"] = {
 		FilePath = "Dev\\blank_invisible",
 		ClearCreateAnimations = true,
+		CreateAnimations = {},
 	},
 	CerberusRockFallFx = {
 		CreateAnimations = {

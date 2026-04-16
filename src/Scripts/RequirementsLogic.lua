@@ -166,6 +166,9 @@ function mod.HasSeenRoom(roomName, excludeThisRun)
 end
 
 function mod.HasSeenRoomEarlierInRun(run, roomName)
+	if run == nil then
+		return false
+	end
 	if run.RoomCountCache[roomName] ~= nil and run.RoomCountCache[roomName] > 0 then
 		return true
 	end
@@ -173,6 +176,9 @@ function mod.HasSeenRoomEarlierInRun(run, roomName)
 end
 
 function mod.HasSeenRoomInRun(run, roomName)
+	if run == nil then
+		return false
+	end
 	if run.CurrentRoom ~= nil and run.CurrentRoom.Name == roomName then
 		return true
 	end
@@ -332,6 +338,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		return true
 	end
 
+	-- #region Custom logic
 	-- Map Asphodel & Elysium room names for any requirement that has rooms in it
 	local roomRequirementOptions = {
 		RequiredRoom = "string",
@@ -343,6 +350,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		RequiredFalseSeenRooms = "table",
 		RequiredFalseSeenRoomThisRun = "string",
 		RequiredFalseSeenRoomsThisRun = "table",
+		RequiredFalseSeenRoomLastRun = "string",
 		RequiredSeenRoomsBeforeThisRun = "table",
 		RequiredFalseSeenRoomsBeforeThisRun = "table",
 		RequiredMinTimesSeenRoom = "string",
@@ -387,10 +395,28 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
+	if requirements.RequiredTrait then
+		-- Replace Shout/Wrath/Hex/Spell trait names with Hades II equivalents
+		local shoutTraitMappings = {
+			ZeusShoutTrait = "PolymorphZeusTalent",
+			PoseidonShoutTrait = "PotionPoseidonTalent",
+			AphroditeShoutTrait = "TransformAphroditeTalent",
+			AresShoutTrait = "MoonBeamAresTalent",
+			DemeterShoutTrait = "TimeSlowDemeterTalent",
+			-- Unused H2 traits: LaserApolloTalent, LeapHephaestusTalent, SummonHeraTalent, MeteorHestiaTalent,
+			-- Unused H1 shouts: HadesShoutTrait, AthenaShoutTrait, ArtemisShoutTrait, DionysusShoutTrait
+		}
+		if shoutTraitMappings[requirements.RequiredTrait] ~= nil then
+			requirements.RequiredTrait = shoutTraitMappings[requirements.RequiredTrait]
+		end
+	end
+
 	-- ChanceToPlay is already taken care of in the Hades II function call
 	-- if requirements.ChanceToPlay ~= nil and not RandomChance(requirements.ChanceToPlay) then
 	-- 	return false
 	-- end
+
+	-- #endregion
 
 	local currentRunDepth = 0
 	if game.CurrentRun.RunDepthCache ~= nil then
@@ -838,6 +864,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
+	-- For Megaera (D_Hub version)
+	if requirements.RequiredFalseSeenRoomLastRun ~= nil then
+		if mod.HasSeenRoomInRun(prevRun, requirements.RequiredFalseSeenRoomLastRun) then
+			return false
+		end
+	end
+
 	if requirements.RequiredMinTimesSeenRoom ~= nil then
 		for requiredRoom, requiredTimesSeen in pairs(requirements.RequiredMinTimesSeenRoom) do
 			if game.GameState.RoomCountCache[requiredRoom] == nil or game.GameState.RoomCountCache[requiredRoom] < requiredTimesSeen then
@@ -1103,7 +1136,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		-- if not DidFailRun(game.CurrentRun) or game.CurrentRun.CurrentRoom.Name ~= requirements.RequiredDeathRoom then
 		-- 	return false
 		-- end
-		if prevRun.BiomesReached ~= nil then
+		if prevRun ~= nil and prevRun.BiomesReached ~= nil then
 			if mod.HasSeenRoomInRun(prevRun, requirements.RequiredDeathRoom) then
 				-- For the encoded EndingRoomName for uninstall compatibility
 				if not prevRun.Cleared and prevRun.EndingRoomName == nil and prevRun.VictoryMessage ~= nil then
@@ -1127,7 +1160,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		-- if not DidFailRun(game.CurrentRun) or not Contains(requirements.RequiredAnyDeathRooms, game.CurrentRun.CurrentRoom.Name) then
 		-- 	return false
 		-- end
-		if prevRun.BiomesReached ~= nil then
+		if prevRun ~= nil and prevRun.BiomesReached ~= nil then
 			for _, roomName in ipairs(requirements.RequiredAnyDeathRooms) do
 				if mod.HasSeenRoomInRun(prevRun, roomName) then
 					-- For the encoded EndingRoomName for uninstall compatibility
@@ -1150,7 +1183,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 	if requirements.RequiredFalseDeathRoom ~= nil then -- and DidFailRun(game.CurrentRun) and game.CurrentRun.CurrentRoom.Name == requirements.RequiredFalseDeathRoom then
-		if prevRun.BiomesReached ~= nil then
+		if prevRun ~= nil and prevRun.BiomesReached ~= nil then
 			if mod.HasSeenRoomInRun(prevRun, requirements.RequiredFalseDeathRoom) then
 				-- For the encoded EndingRoomName for uninstall compatibility
 				if not prevRun.Cleared and prevRun.EndingRoomName == nil and prevRun.VictoryMessage ~= nil then
@@ -1171,7 +1204,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 	if requirements.RequiredFalseDeathRooms ~= nil then -- and DidFailRun(game.CurrentRun) and Contains(requirements.RequiredFalseDeathRooms, game.CurrentRun.CurrentRoom.Name) then
-		if prevRun.BiomesReached ~= nil then
+		if prevRun ~= nil and prevRun.BiomesReached ~= nil then
 			for _, roomName in ipairs(requirements.RequiredFalseDeathRooms) do
 				if mod.HasSeenRoomInRun(prevRun, roomName) then
 					-- For the encoded EndingRoomName for uninstall compatibility
@@ -1207,7 +1240,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	-- Custom: For Thanatos in RoomOpening
 	if requirements.RequiredFalseDeathEncountersThanatos ~= nil then
-		if prevRun.RoomHistory and prevRun.RoomHistory[#prevRun.RoomHistory] and prevRun.RoomHistory[#prevRun.RoomHistory].Encounter and game.Contains(requirements.RequiredFalseDeathEncountersThanatos, prevRun.RoomHistory[#prevRun.RoomHistory].Encounter.Name or "") then
+		if prevRun ~= nil and prevRun.RoomHistory and prevRun.RoomHistory[#prevRun.RoomHistory] and prevRun.RoomHistory[#prevRun.RoomHistory].Encounter and game.Contains(requirements.RequiredFalseDeathEncountersThanatos, prevRun.RoomHistory[#prevRun.RoomHistory].Encounter.Name or "") then
 			return false
 		end
 	end
@@ -3082,14 +3115,18 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredTrueFlags ~= nil then
 		for k, flag in pairs(requirements.RequiredTrueFlags) do
-			if not game.GameState.Flags[flag] and not game.GameState[flag] then
+			if flag == "ShrineUnlocked" and not game.IsGameStateEligible(source, { NamedRequirements = { "ShrineUnlocked" } }, args) then
+				return false
+			elseif not game.GameState.Flags[flag] and not game.GameState[flag] then
 				return false
 			end
 		end
 	end
 	if requirements.RequiredFalseFlags ~= nil then
 		for k, flag in pairs(requirements.RequiredFalseFlags) do
-			if game.GameState.Flags[flag] or game.GameState[flag] then
+			if flag == "ShrineUnlocked" and game.IsGameStateEligible(source, { NamedRequirements = { "ShrineUnlocked" } }, args) then
+				return false
+			elseif game.GameState.Flags[flag] or game.GameState[flag] then
 				return false
 			end
 		end
@@ -3137,7 +3174,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredAccumulatedMetaPoints ~= nil then
-		if GetTotalAccumulatedMetaPoints() < requirements.RequiredAccumulatedMetaPoints then
+		-- if GetTotalAccumulatedMetaPoints() < requirements.RequiredAccumulatedMetaPoints then
+		if not game.GameState.LifetimeResourcesGained or not game.GameState.LifetimeResourcesGained.MetaCurrency or game.GameState.LifetimeResourcesGained.MetaCurrency < requirements.RequiredAccumulatedMetaPoints then
 			return false
 		end
 	end
@@ -3151,6 +3189,12 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredActiveMetaPointsMax ~= nil then
 		-- if GetTotalSpentMetaPoints() > requirements.RequiredActiveMetaPointsMax then
 		if game.GameState.MetaUpgradeCostCache > requirements.RequiredActiveMetaPointsMax then
+			return false
+		end
+	end
+	-- Same as above, but fixed for Megaera dialogue requirements
+	if requirements.RequiredActiveMetaPointMax ~= nil then
+		if game.GameState.MetaUpgradeCostCache > requirements.RequiredActiveMetaPointMax then
 			return false
 		end
 	end
@@ -3445,12 +3489,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		return false
 	end
 
-	if requirements.RequiresAmbientMusicId ~= nil and game.AudioState.AmbientMusicId == nil then
-		return false
-	end
-	if requirements.RequiresNullAmbientMusicId ~= nil and game.AudioState.AmbientMusicId ~= nil then
-		return false
-	end
+	-- Disabled both to always allow these dialogues to play, as Ambient/Secret music is too intertwined in H2
+	-- if requirements.RequiresAmbientMusicId ~= nil and game.AudioState.AmbientMusicId == nil then
+	-- 	return false
+	-- end
+	-- if requirements.RequiresNullAmbientMusicId ~= nil and game.AudioState.AmbientMusicId ~= nil then
+	-- 	return false
+	-- end
 
 	if requirements.RequiredFalseInteractionThisRun ~= nil then
 		if game.CurrentRun.NPCInteractions[requirements.RequiredFalseInteractionThisRun] then

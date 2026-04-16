@@ -1,15 +1,3 @@
--- Sets the actual spawn point as the point the head returns to before attacking (only needed while Tethers do not work)
-function mod.ModsNikkelMHadesBiomesRememberHydraSpawnpoint(encounter, args)
-	local activeHydraHeadIds = encounter.ActiveSpawns or {}
-	for id, _ in pairs(activeHydraHeadIds) do
-		local hydraHead = game.ActiveEnemies[id]
-		if hydraHead ~= nil then
-			hydraHead.DefaultAIData.MoveToId = hydraHead.OccupyingSpawnPointId
-			hydraHead.DefaultAIData.MoveToClosestId = nil
-		end
-	end
-end
-
 modutil.mod.Path.Wrap("CalculateActiveEnemyCap", function(base, currentRun, currentRoom, currentEncounter)
 	local enemyCap = base(currentRun, currentRoom, currentEncounter)
 
@@ -17,6 +5,15 @@ modutil.mod.Path.Wrap("CalculateActiveEnemyCap", function(base, currentRun, curr
 		local modifierName = currentEncounter.EnemyCountShrineModifierName
 		enemyCap = math.floor(enemyCap +
 			(game.GetNumShrineUpgrades(modifierName) * currentEncounter.EnemyCountShineModifierAmount))
+	end
+
+	if game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
+		local assistUnit = game.ActiveEnemies
+				[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+		if assistUnit and not assistUnit.IsDead then
+			local activeCapWeight = assistUnit.ActiveCapWeight or 1
+			enemyCap = enemyCap + activeCapWeight
+		end
 	end
 
 	return enemyCap
@@ -47,7 +44,35 @@ modutil.mod.Path.Wrap("OnAllEnemiesDead", function(base, currentRoom, currentEnc
 	end
 end)
 
--- For ShadeNaked spawns
 modutil.mod.Path.Wrap("GetActiveEnemyCount", function(base, encounter)
-	return base(encounter) + (game.MapState.PlaceholderEnemyCount or 0)
+	local enemyCount = base(encounter)
+
+	-- For ShadeNaked
+	enemyCount = enemyCount + (game.MapState.PlaceholderEnemyCount or 0)
+
+	if game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
+		local assistUnit = game.ActiveEnemies
+				[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+		if assistUnit and not assistUnit.IsDead then
+			local activeCapWeight = assistUnit.ActiveCapWeight or 1
+			enemyCount = enemyCount + activeCapWeight
+		end
+	end
+
+	return enemyCount
+end)
+
+modutil.mod.Path.Wrap("GetEncounterActiveEnemyCount", function(base, encounter)
+	local enemyCount = base(encounter)
+
+	if game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
+		local assistUnit = game.ActiveEnemies
+				[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+		if assistUnit and not assistUnit.IsDead then
+			local activeCapWeight = assistUnit.ActiveCapWeight or 1
+			enemyCount = enemyCount + activeCapWeight
+		end
+	end
+
+	return enemyCount
 end)

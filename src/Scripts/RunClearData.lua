@@ -1,4 +1,4 @@
--- Damage maps
+-- #region Damage mappings
 local newDamageSourceMappings = {
 	-- #region TARTARUS
 	BloodMine = "HadesThiefMineLayer",
@@ -44,7 +44,9 @@ local newDamageSourceMappings = {
 	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.ScreenData.RunClear.DamageSourceMap, newDamageSourceMappings)
+-- #endregion
 
+-- #region Run Clear Messages
 game.GameData.ModsNikkelMHadesBiomesRunClearMessageData = {
 	DefaultMessage = {
 		DebugOnly = true,
@@ -882,3 +884,38 @@ game.GameData.ModsNikkelMHadesBiomesRunClearMessageData = {
 	-- #endregion
 }
 game.ProcessDataStore(game.GameData.ModsNikkelMHadesBiomesRunClearMessageData)
+-- #endregion
+
+-- #region Badge Ranks/Spirit Mixer
+-- Top right of the screen, aligned to have the rank text centered with the headers below
+game.ScreenData.RunClear.ComponentData.ModsNikkelMHadesBiomesBadgeRankVignette = {
+	GroupName = "Combat_Menu_TraitTray_Overlay",
+	Alpha = 0.0,
+	AlphaTarget = 1.0,
+	AlphaTargetDuration = 0.6,
+	RightOffset = 303,
+	Y = 119,
+}
+game.ScreenData.RunClear.ComponentData.ModsNikkelMHadesBiomesBadgeRankIcon = {
+	GroupName = "Combat_Menu_TraitTray_Overlay",
+	Y = 65,
+	RightOffset = 100,
+	Alpha = 0.0,
+	AlphaTarget = 1.0,
+	AlphaTargetDuration = 0.6,
+	Scale = 0.50,
+	FlipHorizontal = true
+}
+game.ScreenData.RunClear.ComponentData.ModsNikkelMHadesBiomesBadgeRankNameplate = {
+	GroupName = "Combat_Menu_TraitTray_Overlay",
+	Y = 60,
+	RightOffset = 222,
+	Alpha = 0.0,
+	AlphaTarget = 1.0,
+	AlphaTargetDuration = 0.6,
+	Scale = 0.50,
+}
+table.insert(game.ScreenData.RunClear.ComponentData.Order, "ModsNikkelMHadesBiomesBadgeRankVignette")
+table.insert(game.ScreenData.RunClear.ComponentData.Order, "ModsNikkelMHadesBiomesBadgeRankNameplate")
+table.insert(game.ScreenData.RunClear.ComponentData.Order, "ModsNikkelMHadesBiomesBadgeRankIcon")
+-- #endregion

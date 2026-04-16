@@ -12,7 +12,6 @@ local additionalEnemySets = {
 		"MultiEgg",
 		"MultiEgg",
 		"MultiEgg",
-		"MultiEgg",
 	},
 	-- #endregion
 
@@ -133,7 +132,6 @@ local additionalEnemySets = {
 		"RangedBurrowerElite",
 	},
 	EnemiesBiome2Thanatos = {
-		"CrusherUnit",
 		"BloodlessNaked",
 		"BloodlessNakedElite",
 		"BloodlessNakedBerserker",

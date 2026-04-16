@@ -16,11 +16,12 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 		if victim.KillSpawnsOnDeath then
 			local killInterval = victim.KillSpawnsInterval or 0.1
 			local delay = 0
-			local spawns = GetIds({ Name = "Spawner" .. victim.ObjectId })
+			local spawns = GetIds({ Name = "Spawner" .. victim.ObjectId }) or {}
 			for _, spawnId in pairs(spawns) do
 				if game.RequiredKillEnemies[spawnId] ~= nil then
 					delay = delay + killInterval
-					game.thread(mod.DelayedKill, game.RequiredKillEnemies[spawnId], { BlockRespawns = true, SkipDeathWeapons = true }, delay)
+					game.thread(mod.DelayedKill, game.RequiredKillEnemies[spawnId],
+						{ BlockRespawns = true, SkipDeathWeapons = true }, delay)
 				end
 			end
 		end
@@ -49,7 +50,7 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 
 		if victim.WipeEnemyTypesOnKill ~= nil then
 			for k, enemyType in pairs(victim.WipeEnemyTypesOnKill) do
-				for k, enemyId in pairs(GetIdsByType({ Name = enemyType })) do
+				for k, enemyId in pairs(GetIdsByType({ Name = enemyType }) or {}) do
 					if game.ActiveEnemies[enemyId] ~= nil then
 						game.Kill(game.ActiveEnemies[enemyId])
 					end
@@ -132,6 +133,24 @@ modutil.mod.Path.Wrap("CheckImpactReaction",
 
 		return base(attackerWeaponData, sourceProjectileData, victim, triggerArgs)
 	end)
+
+modutil.mod.Path.Wrap("DisableAllyUnits", function(base)
+	if game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
+		local assistUnit = game.ActiveEnemies
+				[CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+		if assistUnit ~= nil then
+			game.killTaggedThreads(assistUnit.AIThreadName)
+			game.killWaitUntilThreads(assistUnit.AINotifyName)
+			local aiData = game.GetWeaponAIData(assistUnit) or {}
+			local idleAnimation = aiData.IdleAnimation or GetThingDataValue({ Id = assistUnit.ObjectId, Property = "Graphic" })
+			if idleAnimation ~= nil then
+				SetAnimation({ Name = idleAnimation, DestinationId = assistUnit.ObjectId })
+			end
+		end
+	end
+
+	return base()
+end)
 
 function mod.DelayedKill(victim, triggerArgs, delay)
 	game.wait(delay, game.RoomThreadName)

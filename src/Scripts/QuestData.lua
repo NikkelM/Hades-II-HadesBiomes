@@ -10,8 +10,7 @@ local flippedArcanaActive = rom.mods["ReadEmAndWeep-Flip_the_Arcana_Mod"]
 local newQuestOrderData = {
 	-- key / mission-critical
 	"ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice",
-	-- TODO: Disabled while Meg NPC is not available to give the required dialogue to complete this
-	-- "ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
+	"ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
 	"ModsNikkelMHadesBiomes_QuestOrpheusRelease",
 	"ModsNikkelMHadesBiomes_QuestTenClears",
 	"ModsNikkelMHadesBiomes_QuestFirstClear",

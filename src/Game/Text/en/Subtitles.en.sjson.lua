@@ -1,7 +1,7 @@
 -- Need to add some additional english subtitles, localized subtitles for these already exist
--- Hooking into one of our own subtitle files
-local zagreusFieldSubtitleFile = rom.path.combine(rom.paths.Content(),
-	"Game\\Text\\en\\Z_ModsNikkelMHadesBiomesHadesField.en.sjson")
+-- Hooking into a base game text file to avoid depending on a mod-created file at hook registration time
+local subtitleHookFile = rom.path.combine(rom.paths.Content(),
+	"Game\\Text\\en\\_EnemyData_Chronos.en.sjson")
 
 local order = {
 	"Id",
@@ -332,6 +332,8 @@ local newData = {
 	-- #endregion
 }
 
-sjson.hook(zagreusFieldSubtitleFile, function(data)
+sjson.hook(subtitleHookFile, function(data)
+	mod.FinalizeInstallation()
+
 	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id", order)
 end)

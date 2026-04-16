@@ -197,6 +197,10 @@ local requiredGlobalVoiceLineModifications = {
 		Find = "Intercom_",
 		Replace = "HadesField_1",
 	},
+	MegaeraGreetingVoiceLines = {
+		Find = "MegaeraHome_",
+		Replace = "Megaera_3",
+	},
 	SurvivalEncounterStartVoiceLines = {
 		Find = "Intercom_",
 		Replace = "HadesField_1",
@@ -262,11 +266,16 @@ game.GlobalVoiceLines.HadesBeamAttackVoiceLines = game.GlobalVoiceLines.HadesBea
 game.GlobalVoiceLines.ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines = game.GlobalVoiceLines
 		.ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomesHadesPreDamageHimselfVoiceLines
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_HadesInvisibilityReactionVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_HadesInvisibilityReactionVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_HadesInvisibilityReactionVoiceLines
 game.GlobalVoiceLines.HadesSighVoiceLines = game.GlobalVoiceLines.HadesSighVoiceLines or
 		mod.GlobalVoiceLines.HadesSighVoiceLines
 
 game.GlobalVoiceLines.MultiFuryFightStartVoiceLines = game.GlobalVoiceLines.MultiFuryFightStartVoiceLines or
 		mod.GlobalVoiceLines.MultiFuryFightStartVoiceLines
+game.GlobalVoiceLines.MegaeraGreetingVoiceLines = game.GlobalVoiceLines.MegaeraGreetingVoiceLines or
+		mod.GlobalVoiceLines.MegaeraGreetingVoiceLines
 
 game.GlobalVoiceLines.ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines = game.GlobalVoiceLines
 		.ModsNikkelMHadesBiomesEnteredHydraChamberVoiceLines or
@@ -278,6 +287,9 @@ game.GlobalVoiceLines.ThanatosDeathTauntVoiceLines = game.GlobalVoiceLines.Thana
 		mod.GlobalVoiceLines.ThanatosDeathTauntVoiceLines
 game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines = game.GlobalVoiceLines.ThanatosSpecialExitVoiceLines or
 		mod.GlobalVoiceLines.ThanatosSpecialExitVoiceLines
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_ThanatosFarewellsRoomOpening = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_ThanatosFarewellsRoomOpening or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_ThanatosFarewellsRoomOpening
 
 game.GlobalVoiceLines.PatroclusGreetingLines = game.GlobalVoiceLines.PatroclusGreetingLines or
 		mod.GlobalVoiceLines.PatroclusGreetingLines
@@ -362,6 +374,14 @@ table.insert(game.HeroVoiceLines.FishNotCaughtVoiceLines, 1,
 game.GlobalVoiceLines.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines = game.GlobalVoiceLines
 		.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_StyxHubForkedPathVoiceLines
+
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_BadgeUpgradedVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_BadgeUpgradedVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_BadgeUpgradedVoiceLines
+
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_SaluteVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_SaluteVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_SaluteVoiceLines
 -- #endregion
 
 -- #region HeroVoiceLines
@@ -375,7 +395,8 @@ game.HeroVoiceLines.ThanatosSpawningVoiceLines = game.HeroVoiceLines.ThanatosSpa
 game.HeroVoiceLines.ThanatosExitReactionVoiceLines = game.HeroVoiceLines.ThanatosExitReactionVoiceLines or
 		mod.HeroVoiceLines.ThanatosExitReactionVoiceLines
 
-game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines = game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines or
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines = game.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_UsedLyreVoiceLines or
 		mod.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines
 
 game.HeroVoiceLines.ForbiddenShopItemTakenVoiceLines = game.HeroVoiceLines.ForbiddenShopItemTakenVoiceLines or
@@ -396,5 +417,14 @@ game.HeroVoiceLines.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = mod.Hero
 		.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_DeathReturnVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_DeathReturnVoiceLines
+
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyQuestUnlockedVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_TrophyQuestUnlockedVoiceLines
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyLockedVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_TrophyLockedVoiceLines
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyAdmirationVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_TrophyAdmirationVoiceLines
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyUnlockedVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_TrophyUnlockedVoiceLines
 -- #endregion
 -- #endregion

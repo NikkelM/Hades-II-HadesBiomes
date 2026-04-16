@@ -92,6 +92,15 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_Codex_BondForgedSisyphus",
 	-- 	DisplayName = "You and {$TempTextData.CharacterName} share a rock-solid bond.",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Codex_MegaeraUnlockHint01",
+	-- 	DisplayName =
+	-- 	"{$TempTextData.CharacterName} will not make time for {!TempTextData.ResourceIcon} while she feels that she alone bears her duty, with no one by her side."
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Codex_BondForgedMegaera",
+	-- 	DisplayName = "You and {$TempTextData.CharacterName} share an intense bond.",
+	-- },
 	-- #endregion
 	-- #region Relationship Dialogue Choices
 	{
@@ -134,7 +143,7 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_InstallSuccess",
 		DisplayName = "Installation erfolgreich!",
 		Description =
-		"Willkommen zu {#DialogLegendaryFormat}Zagreus\' Journey{#Prev}!\n\nDu kannst nun mit dem Chaos-Tor auf dem Übungsplatz interagieren, um Zagreus\' ursprüngliche Quest, {#DialogLegendaryFormat}der Unterwelt zu entkommen{#Prev}, durch Melinoë's Augen zu erfahren.\n\n\nSolltest du auf Probleme stoßen, starte bitte eine Diskussion auf\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nund teile dein Log aus {#DialogLegendaryFormat}Settings -> Copy log file {#Prev}in deinem Modmanager.",
+		"Willkommen zu {#DialogLegendaryFormat}Zagreus\' Journey{#Prev}!\n\nDu kannst nun mit dem Chaos-Tor auf dem Übungsplatz interagieren, um Zagreus\' ursprüngliche Quest, {#DialogLegendaryFormat}der Unterwelt zu entkommen{#Prev}, durch Melinoë's Augen zu erfahren!\n\nDu möchtest \"Danke\" sagen? Unterstütze die Entwicklung auf {#DialogLegendaryFormat}ko-fi.com/nikkelm{#Prev}.\n\nSolltest du auf Probleme stoßen, starte eine Diskussion auf\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nund teile dein Log aus {#DialogLegendaryFormat}Settings -> Copy log file {#Prev}in deinem Modmanager.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_InstallFailure",
@@ -197,6 +206,23 @@ local newData = {
 		DisplayName =
 		"{!Icons.ModsNikkelMHadesBiomesRunHistoryDoor} Höchste {!Icons.ShrinePoint}{#BoldFormatGraft}Furcht{#Prev}:",
 	},
+	-- #endregion
+
+	-- #region Shrine screen Skelly statues
+	-- {
+	-- 	Id = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete",
+	-- 	DisplayName =
+	-- 	"Conquer the {#BoldFormatGraft}{$Keywords.ModsNikkelMHadesBiomesModdedRoute} {#Prev}— {#ShrineHighlightFormat}{$ActiveScreens.Shrine.NextModsNikkelMHadesBiomesModdedRouteSkellyShrinePointGoal}{!Icons.ShrinePoint}",
+	-- },
+	-- {
+	-- 	Id = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Insufficient",
+	-- 	DisplayName =
+	-- 	"Conquer the {#BoldFormatGraft}{$Keywords.ModsNikkelMHadesBiomesModdedRoute} {#Prev}— {#ShrineHighlightInsufficientFormat}{$ActiveScreens.Shrine.NextModsNikkelMHadesBiomesModdedRouteSkellyShrinePointGoal}{!Icons.ShrinePoint}",
+	-- },
+	-- {
+	-- 	Id = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Complete",
+	-- 	InheritFrom = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete",
+	-- },
 	-- #endregion
 }
 

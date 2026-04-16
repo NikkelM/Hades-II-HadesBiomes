@@ -2,8 +2,8 @@ modutil.mod.Path.Wrap("ChooseNextRewardStore", function(base, run)
 	if run.ModsNikkelMHadesBiomesIsModdedRun then
 		-- For ShrineChallenge/Erebus rooms, they don't have the TargetMetaRewardsRatio set, so we need to copy it from the previous room
 		if run.TargetMetaRewardsRatio == nil and run.CurrentRoom.TargetMetaRewardsRatio == nil then
-			local prevRoom = game.GetPreviousRoom(run)
-			run.CurrentRoom.TargetMetaRewardsRatio = prevRoom.TargetMetaRewardsRatio
+			local prevRoom = game.GetPreviousRoom(run) or {}
+			run.CurrentRoom.TargetMetaRewardsRatio = prevRoom.TargetMetaRewardsRatio or 0.4
 		end
 	end
 
@@ -182,21 +182,20 @@ end)
 
 -- Overriding to add in the logic for the Styx miniboss and ShrineChallenge/Erebus room rewards
 modutil.mod.Path.Wrap("DoUnlockRoomExits", function(base, run, room)
-	-- TODO: Only while the mod is in early access
-	if run.ModsNikkelMHadesBiomesIsModdedRun and not mod.HiddenConfig.IgnoreShowFeedbackMessage then
-		if not game.CurrentRun.ModsNikkelMHadesBiomesHasShownFeedbackMessage then
-			game.CurrentRun.ModsNikkelMHadesBiomesHasShownFeedbackMessage = true
-			game.thread(game.InCombatTextArgs,
-				{ Text = "ModsNikkelMHadesBiomes_LeaveFeedback", TargetId = game.CurrentRun.Hero.ObjectId, SkipRise = true, SkipFlash = true, SkipShadow = true, Duration = 10.0, OffsetY = -160, PreDelay = 1.0 })
-		end
-	end
-
 	-- We are either in D_Hub and need to set up the miniboss exits, or the room has a ShrineChallenge/Erebus door, which also needs upgraded rewards
 	if run.ModsNikkelMHadesBiomesIsModdedRun and (room.Name == "D_Hub" or room.ShrinePointDoorChanceSuccess == true) then
 		return mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	else
 		return base(run, room)
 	end
+end)
+
+modutil.mod.Path.Wrap("RestoreUnlockRoomExits", function(base, currentRun, currentRoom)
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		game.RunEventsGeneric(game.RoomData[currentRoom.Name].RestoreUnlockRoomExitsUnthreadedEvents, currentRoom)
+	end
+
+	return base(currentRun, currentRoom)
 end)
 
 modutil.mod.Path.Wrap("DisableTrap", function(base, enemy)
@@ -312,6 +311,15 @@ end)
 modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentRoom, currentEncounter)
 	base(currentRun, currentRoom, currentEncounter)
 
+	if currentEncounter == nil or currentEncounter.EncounterType == "NonCombat" or currentEncounter.SkipEndEncounterEffects then
+		return
+	end
+
+	if currentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId ~= nil and not currentEncounter.SkipCleanupRaiseDead then
+		game.thread(mod.CleanupOrpheusRaiseDeadEncounter, currentRoom)
+	end
+
+	-- Must be in a modded run for the minor prophecy to be fulfilled
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		if game.HeroHasTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) then
 			local traitData = game.GetHeroTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) or {}
@@ -320,6 +328,24 @@ modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentR
 			end
 		end
 	end
+end)
+
+modutil.mod.Path.Wrap("LoadVoiceBanks", function(base, characters, persist, ignoreAssert)
+	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		if type(characters) == "table" then
+			for _, character in ipairs(characters) do
+				if mod.LootVoiceBankMappings[character] ~= nil then
+					game.LoadVoiceBanks(mod.LootVoiceBankMappings[character])
+				end
+			end
+		else
+			if mod.LootVoiceBankMappings[characters] ~= nil then
+				game.LoadVoiceBanks(mod.LootVoiceBankMappings[characters])
+			end
+		end
+	end
+
+	return base(characters, persist, ignoreAssert)
 end)
 
 -- This is essentially the same function as vanilla, and only inserts the logic to upgrade consumable rewards for Styx miniboss rooms and ShrineChallenge/Erebus rooms

@@ -222,9 +222,9 @@ local function parseSubtitleCsvFile(filePath, fileName, translatePrefix, whiteLi
 				local displayName = trimString(cols[8]) or ""
 
 				if baseId == "" or id == "" or displayName == "" then
-					mod.DebugPrint(
-						"Subtitle CSV missing baseId, id or displayName for integrated row in " ..
-						tostring(fileName) .. ": " .. tostring(line), 4)
+					-- mod.DebugPrint(
+					-- 	"Subtitle CSV missing baseId, id or displayName for integrated row in " ..
+					-- 	tostring(fileName) .. ": " .. tostring(line), 4)
 				else
 					-- Translate prefix: replace baseId or filename prefix with translatePrefix if requested
 					if translatePrefix and id ~= "" then
@@ -363,42 +363,44 @@ local function copyHadesHelpTexts()
 	end
 end
 
--- Similar to copyHadesHelpTexts, but only copies entries for specific NPCs and voicelines
 local function copyHadesNPCTexts()
-	local fileName = "_NPCData"
 	for _, language in ipairs(mod.HelpTextLanguages) do
-		if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
-			mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
-			local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
-				"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
+		for fileName, allowedSpeakers in pairs(mod.NPCTextFileNames) do
+			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
+				mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
+				local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
+					"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
 
-			if rom.path.exists(hadesTwoHelpTextFilePath) then
-				mod.DebugPrint("File already exists and will not be overwritten: " .. hadesTwoHelpTextFilePath, 2)
-			else
-				local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder,
-					"Content\\Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
-				local hadesHelpTextDataRaw = mod.DecodeSjsonFile(hadesHelpTextFile)
+				if rom.path.exists(hadesTwoHelpTextFilePath) then
+					mod.DebugPrint("File already exists and will not be overwritten: " .. hadesTwoHelpTextFilePath, 2)
+				else
+					local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder,
+						"Content\\Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
+					local hadesHelpTextDataRaw = mod.DecodeSjsonFile(hadesHelpTextFile)
 
-				-- Need to do in-place to ensure the lang key is before the Texts key, otherwise the file is not loaded correctly by the game
-				local filteredTexts = {}
-				for _, entry in ipairs(hadesHelpTextDataRaw.Texts) do
-					if entry.Id then
-						entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
-						entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
-						entry.Id = entry.Id:gsub("Persephone_", "Megaera_2")
-						entry.Id = entry.Id:gsub("MegaeraHome_", "Megaera_3")
-						entry.Id = entry.Id:gsub("Nyx_", "Megaera_4")
-						entry.Id = entry.Id:gsub("Hades_", "HadesField_0")
-						entry.Id = entry.Id:gsub("Hypnos_", "Sisyphus_0")
-						entry.Id = entry.Id:gsub("ZagreusHome_", "ZagreusField_0")
+					-- Need to do in-place to ensure the lang key is before the Texts key, otherwise the file is not loaded correctly by the game
+					local filteredTexts = {}
+					for _, entry in ipairs(hadesHelpTextDataRaw.Texts) do
+						if entry.Id and entry.Speaker and allowedSpeakers[entry.Speaker] then
+							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
+							entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
+							entry.Id = entry.Id:gsub("Persephone_", "Megaera_2")
+							entry.Id = entry.Id:gsub("MegaeraHome_", "Megaera_3")
+							entry.Id = entry.Id:gsub("MegaeraExtra_", "Megaera_5")
+							-- entry.Id = entry.Id:gsub("Nyx_", "Megaera_4")
+							entry.Id = entry.Id:gsub("Hades_", "HadesField_0")
+							entry.Id = entry.Id:gsub("Skelly_", "Sisyphus_0")
+							-- entry.Id = entry.Id:gsub("Hypnos_", "Sisyphus_1")
+							entry.Id = entry.Id:gsub("ZagreusHome_", "ZagreusField_0")
+							table.insert(filteredTexts, entry)
+						end
 					end
-					table.insert(filteredTexts, entry)
+
+					-- Replace the Texts array with the filtered version
+					hadesHelpTextDataRaw.Texts = filteredTexts
+
+					sjson.encode_file(hadesTwoHelpTextFilePath, hadesHelpTextDataRaw)
 				end
-
-				-- Replace the Texts array with the filtered version
-				hadesHelpTextDataRaw.Texts = filteredTexts
-
-				sjson.encode_file(hadesTwoHelpTextFilePath, hadesHelpTextDataRaw)
 			end
 		end
 	end
@@ -511,21 +513,24 @@ local function copyHadesCharacterAnimationsNPCs()
 		"CharacterAnimationsNPCs.sjson")
 end
 
-function mod.FirstTimeSetup()
-	mod.DebugPrint("Installing the mod...", 3)
+---Creates/Copies files that are needed before the loading bar.
+---Includes mod hook targets and files loaded by the game (e.g. .bik_atlas).
+---Also serves as the Olympus Extra detection check.
+---@return boolean success Whether the files were created/copied successfully.
+function mod.CreateRequiredHookTargetFiles()
+	mod.DebugPrint("[Pre-install] Copying files required for mod installation...", 3)
 
-	mod.DebugPrint("Ensuring no Hades mods are installed...", 3)
+	mod.DebugPrint("[Pre-install] Ensuring no Hades mods are installed...", 3)
 	if mod.AreHadesModsInstalled() then
 		return false
 	end
 
-	mod.DebugPrint("Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
+	mod.DebugPrint("[Pre-install] Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
 	local checksumsSrc = rom.path.combine(rom.paths.Content(), "Scripts\\checksums.txt")
 	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
 	copyFile(checksumsSrc, checksumsDest, true)
 
-	-- Doing an extra check to make sure Olympus Extra is not installed
-	mod.DebugPrint("Copying Fx animations...", 3)
+	mod.DebugPrint("[Pre-install] Copying Fx animations...", 3)
 	if not copyHadesFxAnimations() then
 		mod.DebugPrint(
 			"Bad Hades Sjson edits detected! It is very likely you have Olympus Extra or another mod for Hades installed. You must uninstall all mods for Hades before installing Zagreus' Journey. Aborting mod installation to prevent conflicts.",
@@ -534,31 +539,57 @@ function mod.FirstTimeSetup()
 		mod.HiddenConfig.IsValidInstallation = false
 		mod.HiddenConfig.InstallationFailReason = "HadesModsInstalled"
 		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+		---@diagnostic disable-next-line: undefined-global
+		public.IsValidInstallation = false
 
 		-- Ensure we get a new clean install next time
 		config.uninstall = true
 		config.firstTimeSetup = true
+		mod.InstallationPending = false
 		return false
 	end
 
-	copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank", "Audio ")
-
-	copyFiles(mod.BikFileNames, "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
-	copyFiles(mod.BikFileNames, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas", "1080p Hades Animation ")
-	copyFiles(mod.BikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
-	copyFiles(mod.BikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p Hades Animation ")
-
-	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\1080p\\", "Movies\\1080p\\", ".bik", "1080p custom Animation ",
-		true)
+	-- Copy all .bik_atlas files before the loading bar, as the engine resolves .bik_atlas manifests before the hook callbacks fire.
+	mod.DebugPrint("[Pre-install] Copying .bik_atlas files...", 3)
 	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\1080p\\", "Movies\\1080p\\", ".bik_atlas",
 		"1080p custom Animation ", true)
+	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas",
+		"720p custom Animation ", true)
+	copyFiles(mod.BikFileNames, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas", "1080p Hades Animation ")
+	copyFiles(mod.BikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p Hades Animation ")
 
-	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p custom Animation ", true)
-	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p custom Animation ",
-		true)
+	mod.DebugPrint("[Pre-install] Pre-install complete. Remaining installation will run during the loading bar.", 3)
+	return true
+end
 
-	-- Special treatment, as some are copied from the plugins_data, and some from the Hades installation
-	mod.DebugPrint("Copying .map_text files...", 3)
+-- #region Install steps
+---Splits an array into `numSlices` roughly equal-sized sub-arrays.
+local function splitIntoSlices(array, numSlices)
+	local total = #array
+	local baseSize = math.floor(total / numSlices)
+	-- Remainder gets added to slices one at a time until used up
+	local remainder = total % numSlices
+	local slices = {}
+	local index = 1
+	for sliceNum = 1, numSlices do
+		local sliceSize = baseSize + (sliceNum <= remainder and 1 or 0)
+		local slice = {}
+		for i = index, index + sliceSize - 1 do
+			table.insert(slice, array[i])
+		end
+		slices[sliceNum] = slice
+		index = index + sliceSize
+	end
+	return slices
+end
+
+-- Split BikFileNames into batches for distribution across hooks.
+local bikBatches1080p = splitIntoSlices(mod.BikFileNames, 7)
+local bikBatches720p = splitIntoSlices(mod.BikFileNames, 5)
+
+---Helper to copy .map_text files (special handling: some from plugins_data, some from Hades).
+local function copyMapTextFiles()
+	mod.DebugPrint("[Install] Copying .map_text files...", 3)
 	for src, dest in pairs(mod.MapFileMappings) do
 		local srcPath, destPath
 		if mod.MapTextFileNames[src] then
@@ -569,53 +600,158 @@ function mod.FirstTimeSetup()
 		destPath = rom.path.combine(rom.paths.Content(), "Maps\\" .. dest .. ".map_text")
 		copyFile(srcPath, destPath)
 	end
+end
 
-	copyFiles(mod.MapFileMappings, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", "Map binary ", true)
+local installSteps = {
+	Enemies = { "Audio .bank files", function()
+		copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank", "Audio ")
+	end },
 
-	copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", "Voiceline ", true)
-	copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", "Voiceline ", true)
+	EnemyWeapons = { "Voiceover .txt + .fsb files", function()
+		copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", "Voiceline ",
+			true)
+		copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", "Voiceline ",
+			true)
+	end },
 
-	mod.DebugPrint("Parsing subtitle CSV files...", 3)
-	loadSubtitleCsvFilesAndWriteToSjson()
+	Enemy_BiomeN_Projectiles = { ".map_text files", function()
+		copyMapTextFiles()
+	end },
 
-	applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", "Game\\", mod.SjsonFileModifications)
+	Enemy_Traps_Projectiles = { ".thing_bin files", function()
+		copyFiles(mod.MapFileMappings, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", "Map binary ", true)
+	end },
 
-	mod.DebugPrint("Copying text files...", 3)
-	copyHadesHelpTexts()
-	copyHadesNPCTexts()
+	Projectiles = { "Game data .sjson + custom .bik files", function()
+		applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", "Game\\", mod.SjsonFileModifications)
+		copyFiles(mod.CustomBikFileNames, "Content\\Movies\\1080p\\", "Movies\\1080p\\", ".bik", "1080p custom Animation ",
+			true)
+		copyFiles(mod.CustomBikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p custom Animation ",
+			true)
+	end },
 
-	mod.DebugPrint("Copying GUI animations...", 3)
-	copyHadesGUIAnimations()
+	Asphodel = { "1080p .bik batch 1", function()
+		copyFiles(bikBatches1080p[1], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	end },
 
-	mod.DebugPrint("Copying Portrait animations...", 3)
-	copyHadesPortraitAnimations()
+	Chaos = { "1080p .bik batch 2", function()
+		copyFiles(bikBatches1080p[2], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	end },
 
-	mod.DebugPrint("Copying Character animations...", 3)
-	copyHadesCharacterAnimationsNPCs()
+	Elysium = { "1080p .bik batch 3", function()
+		copyFiles(bikBatches1080p[3], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	end },
 
+	Graybox = { "1080p .bik batch 4", function()
+		copyFiles(bikBatches1080p[4], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	end },
+
+	Styx = { "1080p .bik batch 5", function()
+		copyFiles(bikBatches1080p[5], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	end },
+
+	Surface = { "1080p .bik batch 6", function()
+		copyFiles(bikBatches1080p[6], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	end },
+
+	Tartarus = { "1080p .bik batch 7", function()
+		copyFiles(bikBatches1080p[7], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	end },
+
+	Temple = { "Helptext .sjson files", function()
+		mod.DebugPrint("[Install] Copying help text files...", 3)
+		copyHadesHelpTexts()
+	end },
+
+	Travel = { "NPC helptext, GUI + Portrait animation .sjson files", function()
+		mod.DebugPrint("[Install] Copying NPC text files...", 3)
+		copyHadesNPCTexts()
+		mod.DebugPrint("[Install] Copying GUI animations...", 3)
+		copyHadesGUIAnimations()
+		mod.DebugPrint("[Install] Copying Portrait animations...", 3)
+		copyHadesPortraitAnimations()
+	end },
+
+	MapGroups = { "Character animation .sjson files", function()
+		mod.DebugPrint("[Install] Copying Character animations...", 3)
+		copyHadesCharacterAnimationsNPCs()
+	end },
+
+	Hero_Melinoe_Animation_Personality = { "Parse subtitle CSV files", function()
+		mod.DebugPrint("[Install] Parsing subtitle CSV files...", 3)
+		loadSubtitleCsvFilesAndWriteToSjson()
+	end },
+
+	GUI_HUD_VFX = { "720p .bik batch 1", function()
+		copyFiles(bikBatches720p[1], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+	end },
+
+	GUI_Portraits_VFX = { "720p .bik batch 2", function()
+		copyFiles(bikBatches720p[2], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+	end },
+
+	Items_General_VFX = { "720p .bik batch 3", function()
+		copyFiles(bikBatches720p[3], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+	end },
+
+	Items_Harvest_VFX = { "720p .bik batch 4", function()
+		copyFiles(bikBatches720p[4], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+	end },
+
+	Melinoe_Zeus_VFX = { "720p .bik batch 5", function()
+		copyFiles(bikBatches720p[5], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+	end },
+}
+
+---Runs the install step assigned to the given hookId.
+---Called at the top of each sjson.hook callback. No-op if not installing.
+---@param hookId string The identifier matching an entry in the installSteps table
+function mod.RunInstallStep(hookId)
+	if not mod.InstallationPending then return end
+	if not installSteps[hookId] then
+		mod.DebugPrint("[Install] No install step found for hookId: " .. hookId, 1)
+		return
+	end
+
+	mod.DebugPrint("[Install] Running hookId \"" .. hookId .. "\" install step: " .. installSteps[hookId][1], 3)
+	installSteps[hookId][2]()
+end
+
+-- #endregion Install steps
+
+function mod.FinalizeInstallation()
+	if not mod.InstallationPending then return end
+	mod.DebugPrint("[Install] Finalizing installation...", 3)
+
+	mod.DebugPrint("[Install] Ensuring all required files exist...", 3)
 	local numMissingFiles = mod.CheckRequiredFiles(false)
 	if numMissingFiles > 0 then
 		mod.DebugPrint(
 			numMissingFiles ..
-			" required files are missing immediately after first time setup. Do you have Hades installed in the correct folder? Check the \"hadesGameFolder\" setting in your config file.",
+			" required files are missing after installation. Do you have Hades installed in the correct folder? Check the \"hadesGameFolder\" setting in your config file.",
 			1)
 
 		mod.HiddenConfig.IsValidInstallation = false
 		mod.HiddenConfig.InstallationFailReason = "MissingFiles"
 		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+		---@diagnostic disable-next-line: undefined-global
+		public.IsValidInstallation = false
 
 		-- Ensure we get a new clean install next time
 		config.uninstall = true
 		config.firstTimeSetup = true
-		return false
+		mod.InstallationPending = false
+		return
 	end
 
+	mod.HiddenConfig.IsValidInstallation = true
 	-- If this is a reinstall, to show the successful install screen again
 	mod.HiddenConfig.HasShownSuccessfulInstallScreen = false
 	mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+	---@diagnostic disable-next-line: undefined-global
+	public.IsValidInstallation = true
 
 	config.firstTimeSetup = false
+	mod.InstallationPending = false
 	mod.DebugPrint("Finished mod installation and first time setup.", 3)
-
-	return true
 end

@@ -3,7 +3,21 @@
 local roomReplacements = {
 	-- GENERIC
 	BaseStyx = {
-		SecretDoorRequirements = game.DeepCopyTable(game.RoomSetData.Base.BaseRoom.SecretDoorRequirements),
+		SecretDoorRequirements = {
+			{
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsNone = {
+					"A_PreBoss01", "A_Boss01", "A_Boss02", "A_Boss03", "A_Shop01", "A_PostBoss01",
+					"X_PreBoss01", "X_Boss01", "X_Boss02", "X_Shop01", "X_PostBoss01",
+					"Y_PreBoss01", "Y_Boss01", "Y_Shop01", "Y_PostBoss01",
+				},
+			},
+			{
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsNone = { "Styx", "Challenge", "Surface" },
+			},
+			NamedRequirements = { "ChaosUnlocked", "NoRecentChaosEncounter" },
+		},
 		-- The Asphodel teleport in Hades II - we don't want it in Hades biomes
 		AnomalyDoorChance = 0.0,
 		RoomSetName = "Styx",
@@ -329,6 +343,12 @@ local roomReplacements = {
 	},
 
 	D_Hub = {
+		LegalEncounters = { "ModsNikkelMHadesBiomes_StyxHubShop" },
+		-- Same as EncounterDataStyx.ModsNikkelMHadesBiomes_StyxHubShop.StartRoomUnthreadedEvents
+		RestoreUnlockRoomExitsUnthreadedEvents = {
+			{ FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_FurySister_01" }, }, },
+			{ FunctionName = "CheckConversations" },
+		},
 		Binks = { "Cerberus_HubIdle_Bink", },
 
 		DistanceTriggers = {
@@ -426,8 +446,7 @@ local roomReplacements = {
 				PreLineWait = 1.35,
 				PlayOnceFromTableThisRun = true,
 				RequiredRoomThisRun = "D_Reprieve01",
-				SuccessiveChanceToPlay = 1, -- 0.33,
-
+				SuccessiveChanceToPlay = 0.33,
 				{ Cue = "/VO/MelinoeField_0620", Text = "Now to get out of here." },
 				{ Cue = "/VO/MelinoeField_0623", Text = "Time to go." },
 				{ Cue = "/VO/MelinoeField_0624", Text = "Finished here." },
@@ -440,9 +459,8 @@ local roomReplacements = {
 				PreLineWait = 1.35,
 				RequiredRoomThisRun = "D_Reprieve01",
 				PlayOnceFromTableThisRun = true,
-				SuccessiveChanceToPlayAll = 1, --0.33,
+				SuccessiveChanceToPlayAll = 0.33,
 				RequiredMaxDoorsClosedInRoom = 4,
-
 				{ Cue = "/VO/MelinoeField_2115", Text = "More to discover...", },
 				{ Cue = "/VO/MelinoeField_1077", Text = "There's more to find here still." },
 				{ Cue = "/VO/MelinoeField_1080", Text = "Still Boons and such to find." },
@@ -457,7 +475,7 @@ local roomReplacements = {
 				PreLineWait = 1.35,
 				RequiredRoomThisRun = "D_Hub",
 				RequiredFalseSeenRoomThisRun = "D_Reprieve01",
-				SuccessiveChanceToPlay = 1, --0.25,
+				SuccessiveChanceToPlay = 0.25,
 				{ Cue = "/VO/MelinoeField_0374", Text = "They're trying to slow me down..." },
 				{ Cue = "/VO/MelinoeField_0511", Text = "What next..." },
 				{ Cue = "/VO/MelinoeField_0513", Text = "Where next..." },
@@ -488,9 +506,22 @@ local roomReplacements = {
 						Path = { "CurrentRun", "CurrentRoom", "TimesVisited" },
 						Comparison = "<=",
 						Value = 1,
-					}
+					},
+					-- There is no Megaera "Bedroom" scene queued
+					{
+						FunctionName = "RequiredQueuedTextLine",
+						FunctionArgs = {
+							IsNone = {
+								"ModsNikkelMHadesBiomes_MegaeraBedroom01_Trigger",
+								"ModsNikkelMHadesBiomes_MegaeraBedroom02_Trigger",
+								"ModsNikkelMHadesBiomes_MegaeraBedroom02B_Trigger",
+								"ModsNikkelMHadesBiomes_BecameCloseWithMegaera01_Trigger",
+								"ModsNikkelMHadesBiomes_BecameCloseWithMegaera01_B_Trigger",
+							},
+						},
+					},
 				},
-				SuccessiveChanceToPlayAll = 1, -- 0.33,
+				SuccessiveChanceToPlayAll = 0.33,
 
 				{ Cue = "/VO/MelinoeField_0368", Text = "Best have a look around..." },
 				{ Cue = "/VO/MelinoeField_2117", Text = "Few things to find..." },
@@ -713,6 +744,9 @@ local roomModifications = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
 		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicStyxModded", },
+
+		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Styx",
+
 		-- "/Leftovers/Object Ambiences/CreepyIslandAmbience"
 		Ambience = "{ff413738-f0b8-400b-bbd6-c660e227583c}",
 		ReverbValue = 2.0,
@@ -786,8 +820,7 @@ local roomModifications = {
 		},
 	},
 	D_Hub = {
-		-- Megaera for Storyteller for Cerberus
-		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Megaera", "MegaeraField", "ZagreusField" },
 		-- "/Leftovers/Ambience/MatchSiteIPoolAmbience"
 		Ambience = "{e65b32ad-3a7e-4f88-9149-3260e929f04c}",
 		UnthreadedEvents = {

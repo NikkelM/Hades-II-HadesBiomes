@@ -16,9 +16,10 @@ ModsNikkelMHadesBiomes_BreakableValue3Incantation - Unlock high-value Gold Urns/
 ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation - Infernal Troves - after 3 runs
 ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation - Moon Moncuments - after completing 6 runs and clearing 2 runs
 ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after completing 7 and clearing 4 runs
-ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after completing 2 runs
+ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller - Unlock Hades Badges - after completing the story and having the vanilla badge seller upgrade
 ModsNikkelMHadesBiomes_HouseLyre01 - Unlock Lyre in Orpheus' story chamber for practicing - after OrpheusAboutMusicPlaying01
 ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation - Rename the Bone Hydra to Lernie in Asphodel - beating the Hydra 20 times
+ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after completing 2 runs
 WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic - New Music for the Music Maker - from Hades_OST_for_the_Music_Maker - after 1 run and meeting Orpheus
 ]] --
 
@@ -65,7 +66,6 @@ local newIncantations = {
 			{
 				Path = { "GameState", "TextLinesRecord" },
 				-- In the first game, also required some dialogue with Hades (in the House) and Nyx, as well as an inspect point in the administrative chamber
-				-- TODO: The Megaera line is not yet obtainable as the NPC version of her does not yet exist
 				HasAll = { "SisyphusLiberationQuest_Beginning_01", "MegaeraAboutSisyphusLiberationQuest01", "SisyphusGift06" },
 			},
 		},
@@ -531,8 +531,41 @@ local newIncantations = {
 	},
 	-- #endregion
 	-- #region Cosmetics
-	ModsNikkelMHadesBiomes_HouseLyre01 = {
+	ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "GUI\\Screens\\CriticalItemShop\\Icons\\cauldron_badge",
+		Cost = {
+			CosmeticsPoints = 400,
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 1,
+		},
+		GameStateRequirements = {
+			-- Has completed H1 story
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+			},
+			-- Has vanilla badge seller (required for basic setup events on the BadgeSeller ghost)
+			{
+				PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBadgeSeller" },
+			},
+			-- Hasn't just unlocked the vanilla badges. This check includes CurrentRun
+			{
+				SumPrevRuns = 2,
+				Path = { "WorldUpgradesAdded", "WorldUpgradeBadgeSeller" },
+				CountPathTrue = true,
+				Comparison = "<",
+				Value = 1,
+			},
+		},
+		PanDuration = 1.5,
+		PanHoldDuration = 2.0,
+		CameraFocusId = 590506, -- Bartender Ghost
+	},
+	ModsNikkelMHadesBiomes_HouseLyre01 = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },

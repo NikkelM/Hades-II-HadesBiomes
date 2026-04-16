@@ -350,6 +350,310 @@ The above makes sure that `Terrain_04` is rendered above `Terrain_03` and below 
 ...
 ```
 
+#### Return01
+
+In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
+
+For ID `552885`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
+
+SurfaceTree04:
+For ID `568587`, change the `GroupNames` property to `Lighting_01`.
+
+#### Return02
+
+In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
+
+For ID `553261`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
+
+#### Return03
+
+In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
+
+For ID `553268`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
+
+ElysiumBridge01:
+For ID `564662`, change the `GroupNames` property to `Foreground_04A`.
+
+ElysiumWallMoss07:
+For ID `564669`, change the `GroupNames` property to `Foreground_04B`.
+For ID `564695`, change the `GroupNames` property to `Foreground_04A`.
+
+ElysiumTerrainMossHill06:
+For ID `564673`, change the `GroupNames` property to `Foreground_04_Lower_B`.
+For ID `564674`, change the `GroupNames` property to `Foreground_04_Lower`.
+For ID `565061`, change the `GroupNames` property to `Foreground_04_Lower`.
+
+ElysiumTerrainMoss06:
+For ID `564684`, change the `GroupNames` property to `Foreground_04C`.
+For ID `564686`, change the `GroupNames` property to `Foreground_04C`.
+Delete ID `564692`.
+
+ElysiumTerrainMoss05:
+For ID `564687`, change the `GroupNames` property to `Foreground_04B`.
+For ID `564689`, change the `GroupNames` property to `Foreground_04B`.
+For ID `564690`, change the `GroupNames` property to `Foreground_04A`.
+For ID `564691`, change the `GroupNames` property to `Foreground_04C`.
+
+GroundFogIso:
+For ID `565794`, change the `GroupNames` property to `Foreground_04A`.
+
+ElysiumTerrainMossEdge03a:
+For ID `566119`, change the `GroupNames` property to `Terrain_01`.
+For ID `566120`, change the `GroupNames` property to `Terrain_01`.
+
+ElysiumBrazier01:
+For ID `567254`, change the `GroupNames` property to `Foreground_05A`.
+For ID `567257`, change the `GroupNames` property to `Foreground_05A`.
+
+ElysiumGhost01:
+For ID `570586`, change the `GroupNames` property to `Foreground_05A`.
+For ID `570587`, change the `GroupNames` property to `Foreground_05B`.
+For ID `570607`, change the `GroupNames` property to `Foreground_05A`.
+For ID `570608`, change the `GroupNames` property to `Foreground_05B`.
+For ID `570610`, change the `GroupNames` property to `Foreground_05B`.
+For ID `570611`, change the `GroupNames` property to `Foreground_05B`.
+For ID `571365`, change the `GroupNames` property to `Foreground_05A`.
+
+ElysiumRug03:
+For ID `571368`, change the `GroupNames` property to `Foreground_05B`.
+
+ElysiumFence01:
+For ID `571371`, change the `GroupNames` property to `Foreground_05A`.
+For ID `571383`, change the `GroupNames` property to `Foreground_05A`.
+
+ElysiumFencePost01:
+For ID `571380`, change the `GroupNames` property to `Foreground_05B`.
+
+Additionally, the new groups must be added to the `.map_text` file:
+
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410747,
+		"Name": "Foreground_04_Lower"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410748,
+		"Name": "Foreground_04_Lower_B"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410749,
+		"Name": "Foreground_04"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410750,
+		"Name": "Foreground_04A"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410751,
+		"Name": "Foreground_04B"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410752,
+		"Name": "Foreground_04C"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410784,
+		"Name": "Foreground_05"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410785,
+		"Name": "Foreground_05A"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410786,
+		"Name": "Foreground_05B"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+```
+
+```
+{
+	"Id": 410786,
+	"Name": "Foreground_05B"
+},
+{
+	"Id": 410785,
+	"Name": "Foreground_05A"
+},
+{
+	"Id": 410784,
+	"Name": "Foreground_05"
+},
+{
+	"Id": 410752,
+	"Name": "Foreground_04C"
+},
+{
+	"Id": 410751,
+	"Name": "Foreground_04B"
+},
+{
+	"Id": 410750,
+	"Name": "Foreground_04A"
+},
+{
+	"Id": 410749,
+	"Name": "Foreground_04"
+},
+{
+	"Id": 410748,
+	"Name": "Foreground_04_Lower_B"
+},
+{
+	"Id": 410747,
+	"Name": "Foreground_04_Lower"
+},
+```
+
+#### Return04
+
+In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
+
+For ID `561150`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
+
+AsphodelLavaBubble:
+Delete ID `563975`.
+
+#### Return05
+
+In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
+
+For ID `553264`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
+
 #### Return06
 
 In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
@@ -1051,6 +1355,10 @@ ElysiumFogCloudRollC:
 For ID `536469`, change the `GroupNames` property to `Terrain_Beneath_01`.
 For ID `536470`, change the `GroupNames` property to `Terrain_Beneath_01`.
 
+ElysiumVine04:
+Delete ID `536694`.
+Delete ID `536684`.
+
 #### Y_Story01
 
 ElysiumFogCloudRollC:
@@ -1168,9 +1476,177 @@ New map_text groups:
 
 #### D_Hub
 
-In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II.
+In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II, as well as add Megaera
 
 For ID `547487`, change the `Name` property from `NPC_Cerberus_Field_01` to `ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01`.
+
+Add the following after the last entry in the list, take care of the Angle and Location values for Megaera.
+The Impassable tile object is offscreen for when she needs to teleport away
+
+```
+{
+	"ActivateAtRange": false,
+	"ActivationRange": 600.0,
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 285.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Unit",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Standing"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 390082,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 9520.0,
+		"Y": 7220.0
+	},
+	"Name": "NPC_FurySister_01",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1.0,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": true,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Impassable"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 999111,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 0,
+		"Y": 0
+	},
+	"Name": "_Impassable_Tile64Iso",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+}
+```
+
+We also need to update the layering of some shop items, so they don't appear underneath the shop stele.
+
+TravelPillarBase05b:
+For ID `553243`, change the `GroupNames` property to `Standing_Lower`.
+For ID `553245`, change the `GroupNames` property to `Standing_Lower`.
+For ID `553246`, change the `GroupNames` property to `Standing_Lower`.
+For ID `553247`, change the `GroupNames` property to `Standing_Lower`.
+For ID `553248`, change the `GroupNames` property to `Standing_Lower`.
+For ID `553249`, change the `GroupNames` property to `Standing_Lower`.
+
+New map_text groups:
+
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410517,
+		"Name": "Standing_Lower"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410516,
+		"Name": "Standing"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+```
+
+```
+{
+	"Id": 410516,
+	"Name": "Standing"
+},
+{
+	"Id": 410517,
+	"Name": "Standing_Lower"
+},
+```
 
 #### D_Mini03
 
@@ -1205,36 +1681,6 @@ For ID `559274`, change the `Name` property from `NPC_Persephone_01` to `ModsNik
 
 SurfaceTerrainSnowLumps02:
 For ID `560916`, change the `GroupNames` property to `Terrain_Decor_03`.
-
-#### Return01
-
-In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
-
-For ID `552885`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
-
-#### Return02
-
-In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
-
-For ID `553261`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
-
-#### Return03
-
-In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
-
-For ID `553268`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
-
-#### Return04
-
-In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
-
-For ID `561150`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
-
-#### Return05
-
-In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
-
-For ID `553264`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
 
 ## Map packages
 

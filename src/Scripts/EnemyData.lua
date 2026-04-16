@@ -208,6 +208,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 					entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
 				elseif entry.Cue:find("^/VO/ZagreusHome_") then
 					entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+				elseif entry.Cue:find("^/VO/MegaeraHome_") then
+					entry.Cue = entry.Cue:gsub("^/VO/MegaeraHome_", "/VO/Megaera_3")
 				end
 			end
 		end
@@ -227,6 +229,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			"InteractTextLineSets",
 			"RepeatableTextLineSets",
 			"GiftTextLineSets",
+			"InteractVoiceLines",
 		}
 		for _, property in ipairs(bossPresentationProperties) do
 			if enemyData[property] then
@@ -745,6 +748,65 @@ local enemyReplacements = {
 	},
 	Hades = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
+		AssistActivatedVoiceLines = {
+			Queue = "Interrupt",
+			{
+				{
+					{
+						RandomRemaining = true,
+						PreLineWait = 0.05,
+						Source = { SubtitleColor = game.Color.HadesVoice },
+						Cooldowns = {
+							{ Name = "HadesAnyQuipSpeech", Time = 10 },
+						},
+						-- Cerberus!!
+						{ Cue = "/VO/HadesField_0625", RequiredPlayed = { "/VO/HadesField_0628" } },
+						-- Cerberus!!
+						{ Cue = "/VO/HadesField_0626", RequiredPlayed = { "/VO/HadesField_0628" } },
+						-- Cerberus?!
+						{ Cue = "/VO/HadesField_0627", RequiredPlayed = { "/VO/HadesField_0628" } },
+						-- Now, Cerberus!!
+						{ Cue = "/VO/HadesField_0628" },
+					},
+					{
+						SkipAnim = true,
+						NoTarget = true,
+						{ Cue = "/VO/CerberusBarks2" },
+					}
+				},
+				{
+					RandomRemaining = true,
+					PreLineWait = 0.25,
+					UsePlayerSource = true,
+					RequiredFalseBossPhase = 3,
+					Cooldowns = {
+						{ Name = "MelinoeAnyQuipSpeech" },
+					},
+					{ Cue = "/VO/MelinoeField_0918", Text = "No! Heel! Stay!" },
+					{ Cue = "/VO/MelinoeField_0535", Text = "Wha...?" },
+					{ Cue = "/VO/MelinoeField_0536", Text = "What?!" },
+					{ Cue = "/VO/MelinoeField_0539", Text = "Blast!" },
+					{ Cue = "/VO/MelinoeField_0542", Text = "Oh good...!" },
+					{ Cue = "/VO/MelinoeField_3000", Text = "{#Emph}<Gasp>" },
+					{ Cue = "/VO/MelinoeField_0528", Text = "Uh-oh...!" },
+					{ Cue = "/VO/MelinoeField_3115", Text = "Here he comes...!", },
+					{ Cue = "/VO/MelinoeField_3116", Text = "Here he comes...", },
+					{
+						Cue = "/VO/MelinoeField_3033",
+						Text = "Hecuba, meet Cerberus!",
+						GameStateRequirements = {
+							{
+								PathTrue = { "GameState", "EnemyKills", "InfestedCerberus" }
+							},
+							{
+								Path = { "GameState", "EquippedFamiliar" },
+								IsAny = { "HoundFamiliar" },
+							},
+						},
+					},
+				},
+			},
+		},
 	},
 	ModsNikkelMHadesBiomesHadesTombstone = {
 		InheritFrom = { "BaseTrap" },
@@ -840,17 +902,15 @@ local enemyModifications = {
 		ActivateFadeIn = true,
 		ActivateTint = true,
 		ActivateStartAlpha = 0.0,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 20 },
-			[2] = { Distance = 20 },
-			[3] = { Distance = 20 }
+			[1] = { ParentDeathAnimation = "HeavyRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HeavyRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HeavyRangedCrystal3Shatter" },
 		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		OnDeathTetherUpwardForce = 2200,
+		OnDeathTetherRandomForceMin = 800,
+		OnDeathTetherRandomForceMax = 1000,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 	},
 	Swarmer = {
@@ -866,18 +926,17 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		BlockRespawnShrineUpgrade = true,
+		PolymorphScaleOverride = 4.0,
 		EliteAttributeOptions = { "Fog", "HeavyArmor", "Orbit", "Radial", },
 	},
 	-- #endregion
 	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		OnDeathTetherUpwardForce = 2200,
+		OnDeathTetherRandomForceMin = 800,
+		OnDeathTetherRandomForceMax = 1000,
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
@@ -902,12 +961,7 @@ local enemyModifications = {
 	},
 	HeavyRangedSplitterMinibossSuperElite = {
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
 		-- Explicitly allow raising with Night Bloom
 		BlockRaiseDead = false,
@@ -1251,6 +1305,7 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyMedusaOnHit" },
 		ManualDeathAnimation = false,
 		DestroyDelay = 3.0,
+		PolymorphScaleOverride = 2.0,
 	},
 	FreezeShotUnitElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
@@ -1325,33 +1380,26 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		BlockRaiseDead = true,
 		BlockCharm = true,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 20 },
-			[2] = { Distance = 20 },
-			[3] = { Distance = 20 }
+			[1] = { ParentDeathAnimation = "HealRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
 		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
-		},
+		OnDeathTetherUpwardForce = 2200,
+		OnDeathTetherRandomForceMin = 800,
+		OnDeathTetherRandomForceMax = 1000,
 	},
 	ShieldRangedElite = {
 		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching" },
 	},
 	ShieldRangedSuperElite = {
 		HealthBuffer = 900,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 20 },
-			[2] = { Distance = 20 },
-			[3] = { Distance = 20 }
-		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
+			[1] = { ParentDeathAnimation = "HealRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
 		},
 	},
 	-- #endregion
@@ -1366,16 +1414,11 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		IgnoreSprintPhasingStasisStun = true,
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
-			[1] = { Distance = 30 },
-			[2] = { Distance = 30 },
-			[3] = { Distance = 30 }
-		},
-		SpawnEvents = {
-			{
-				FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",
-				Threaded = true,
-			},
+			[1] = { ParentDeathAnimation = "HealRangedCrystal1Shatter" },
+			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
+			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
 		},
 	},
 	SpreadShotUnitMiniboss = {
@@ -1449,12 +1492,14 @@ local enemyModifications = {
 			Delay = 0.16,
 		},
 		ImmuneToPolymorph = true,
-		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
-		-- While Tethers are broken - enemy returns to spawnpoint after attacking
 		DefaultAIData = {
-			MoveToId = 480903,
 			MoveWithinRange = true,
 			MoveWithinRangeTimeout = 2.0,
+		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { Distance = 83, FirstDrawBehind = true, ParentDeathAnimation = "HydraNeckDeath" },
+			[2] = { ParentDeathAnimation = "HydraBaseDeath" },
 		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HydraKillPresentation",
 		OnDeathFunctionArgs = {
@@ -1516,13 +1561,14 @@ local enemyModifications = {
 			-- Lining up with when the head actually touches the ground
 			Delay = 0.23,
 		},
-		-- SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
-		-- While Tethers are broken - enemy returns to nearest spawnpoint after attacking
 		DefaultAIData = {
-			-- Is overwritten by the actual spawnpoint in ModsNikkelMHadesBiomesRememberHydraSpawnpoint
-			MoveToClosestId = { 506375, 506376, 506377, 506378, 506380, 506381, },
 			MoveWithinRange = true,
 			MoveWithinRangeTimeout = 1.5,
+		},
+		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		Tethers = {
+			[1] = { Distance = 83, FirstDrawBehind = true, ParentDeathAnimation = "HydraNeckDeath" },
+			[2] = { ParentDeathAnimation = "HydraBaseDeath" },
 		},
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
@@ -2245,6 +2291,10 @@ local enemyModifications = {
 		BlockCharm = true,
 		ImmuneToPolymorph = true,
 		RunHistoryKilledByName = "NPC_Hades_01",
+		DefaultAIData = {
+			-- Otherwise the blast is delayed if the player moves out of range, as the static cast tries to "move" towards the player
+			MoveWithinRange = false,
+		},
 	},
 	NPC_Hades_Story_02 = {
 		IsBoss = false,
@@ -2286,6 +2336,17 @@ local enemyModifications = {
 	-- #endregion
 
 	-- #region ENVIRONMENT
+	BaseBreakable = {
+		CollisionReaction = mod.NilValue,
+		CollisionReactions = {
+			{
+				MinVelocity = 780,
+				KillSelf = true,
+			}
+		},
+		-- So that they also break when sprinted into when The Swift Runner/SprintShieldMetaUpgrade is active
+		ModsNikkelMHadesBiomesForceCollisionOnSprintPhase = true,
+	},
 	Breakable = {
 		CannotDieFromDamage = true,
 		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "BreakableOnHitModsNikkelMHadesBiomes",

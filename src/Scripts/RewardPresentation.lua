@@ -12,6 +12,11 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		local room = exitDoor.Room
 		chosenRewardType = chosenRewardType or room.ChosenRewardType
 
+		-- If the Chaos curse that hides room reward previews is active, clear the RewardPreviewOverride on story rooms so it doesn't override the hidden preview
+		if room and room.ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse and game.HasHeroTraitValue("HiddenRoomReward") then
+			room.RewardPreviewOverride = nil
+		end
+
 		local metaProgressRewardTypes = {
 			"MetaCurrencyDrop",
 			"MetaCurrencyBigDrop",
@@ -57,18 +62,14 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 			WeaponUpgrade = {
 				doorIconScale = -0.1,
 			},
-			Devotion = {
-				doorIconOffsetX = 10,
-				doorIconOffsetY = -5,
-			},
 			TalentDrop = {
 				doorIconScale = -0.2,
 			},
-			-- Start Dust
+			-- Star Dust
 			Mixer5CommonDrop = {
 				doorIconScale = -0.1,
 			},
-			-- The below are for Styx and Erebus doors
+			-- The below are for Styx and Erebus/Challenge doors
 			RoomMoneyBigDrop = {
 				doorIconScale = -0.1,
 			},
@@ -172,9 +173,9 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				doorIconFrontOffsetY = -130,
 			}
 
-			-- For some reason, the MetaReward icons are a little too low compared to RunProgress in Asphodel
+			-- MetaReward icons are a little too low compared to RunProgress in Asphodel
 			if game.Contains(metaProgressRewardTypes, chosenRewardType) then
-				properties.doorIconOffsetY = properties.doorIconOffsetY - 10
+				properties.doorIconOffsetY = properties.doorIconOffsetY - 5
 			end
 		elseif exitDoor.Name == "ElysiumExitDoor" then
 			-- Used for Y_Combat02, Y_Combat14, Y_Shop01
@@ -277,6 +278,11 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 				for property, value in pairs(properties) do
 					properties[property] = offsetMappings[game.CurrentRun.CurrentRoom.Name][property] or properties[property]
 				end
+			end
+
+			-- MetaReward icons are a little too low compared to RunProgress in Elysium
+			if game.Contains(metaProgressRewardTypes, chosenRewardType) then
+				properties.doorIconOffsetY = properties.doorIconOffsetY - 3
 			end
 		elseif exitDoor.Name == "TravelDoor03" then
 			properties = {
