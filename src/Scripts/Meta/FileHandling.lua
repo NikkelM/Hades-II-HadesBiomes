@@ -191,6 +191,7 @@ function mod.CheckRequiredFiles(failFast)
 	local missingFiles = 0
 	local contentRoot = rom.paths.Content()
 	local sjsonDataRoot = mod.SjsonDataBasePath
+	local pluginsDataContentRoot = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content")
 
 	-- Non-SJSON files: checked in the game install directory
 	missingFiles = missingFiles + checkFilesExist(mod.AudioFileMappings, contentRoot, "Audio\\Desktop\\", ".bank", failFast)
@@ -207,8 +208,8 @@ function mod.CheckRequiredFiles(failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik", failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, contentRoot, "Maps\\", ".map_text", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, contentRoot, "Maps\\bin\\", ".thing_bin", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\", ".map_text", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\bin\\", ".thing_bin", failFast)
 
 	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, contentRoot, "Audio\\Desktop\\VO\\", ".txt", failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, contentRoot, "Audio\\Desktop\\VO\\", ".fsb", failFast)

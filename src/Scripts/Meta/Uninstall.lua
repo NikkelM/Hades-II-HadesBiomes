@@ -30,7 +30,7 @@ local function removeSjsonDataFiles()
 	for _, fileName in ipairs(allHelpTextFileNames) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
-				mod.RemoveFile(rom.path.combine(mod.SjsonDataBasePath, 
+				mod.RemoveFile(rom.path.combine(mod.SjsonDataBasePath,
 					"Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"))
 			end
 		end
@@ -52,8 +52,9 @@ end
 function mod.Uninstall()
 	mod.DebugPrint("Uninstalling mod - removing files added by the mod", 3)
 	local contentRoot = rom.paths.Content()
+	local pluginsDataContentRoot = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content")
 
-	-- Non-SJSON files in Content/ (audio, bik, maps, voiceover)
+	-- Files in the game installation directory
 	removeFiles(mod.AudioFileMappings, contentRoot, "Audio\\Desktop\\", ".bank")
 
 	removeFiles(mod.BikFileNames, contentRoot, "Movies\\1080p\\", ".bik")
@@ -66,18 +67,25 @@ function mod.Uninstall()
 	removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik")
 	removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik_atlas")
 
-	removeFiles(mod.MapFileMappings, contentRoot, "Maps\\", ".map_text")
-	removeFiles(mod.MapFileMappings, contentRoot, "Maps\\bin\\", ".thing_bin")
-
 	removeFiles(mod.VoiceoverFileNames, contentRoot, "Audio\\Desktop\\VO\\", ".txt")
 	removeFiles(mod.VoiceoverFileNames, contentRoot, "Audio\\Desktop\\VO\\", ".fsb")
+
+	-- Map files: only remove Hades-1-copied .map_text from plugins_data (not mod-shipped ones)
+	for src, dest in pairs(mod.MapFileMappings) do
+		if not mod.MapTextFileNames[src] then
+			mod.RemoveFile(rom.path.combine(pluginsDataContentRoot, "Maps\\" .. dest .. ".map_text"))
+		end
+	end
 
 	-- SJSON files: remove from SJSON data (current location)
 	removeSjsonDataFiles()
 
-	-- SJSON files: also remove from the game install directory in case this is upgrading from a mod version before 1.0.0
+	-- Remove files from the game install directory in case this is upgrading from a mod version before 1.0.0
 	if not mod.HiddenConfig.HasCompletedLegacySjsonCleanup then
 		mod.RemoveLegacySjsonFilesFromContent()
+		removeFiles(mod.MapFileMappings, contentRoot, "Maps\\", ".map_text")
+		removeFiles(mod.MapFileMappings, contentRoot, "Maps\\bin\\", ".thing_bin")
+
 		mod.HiddenConfig.HasCompletedLegacySjsonCleanup = true
 		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 	end

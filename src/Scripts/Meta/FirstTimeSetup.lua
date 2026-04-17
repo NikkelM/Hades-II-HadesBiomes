@@ -306,7 +306,7 @@ local function copyHadesHelpTexts()
 				mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
 
 				local sjsonDataRelativePath = "Text\\" ..
-				language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
+						language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
 
 				if rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
 					mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
@@ -374,7 +374,7 @@ local function copyHadesNPCTexts()
 				mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
 
 				local sjsonDataRelativePath = "Text\\" ..
-				language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
+						language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
 
 				if rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
 					mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
@@ -597,21 +597,23 @@ local function splitIntoSlices(array, numSlices)
 end
 
 -- Split BikFileNames into batches for distribution across hooks.
-local bikBatches1080p = splitIntoSlices(mod.BikFileNames, 7)
+local bikBatches1080p = splitIntoSlices(mod.BikFileNames, 8)
 local bikBatches720p = splitIntoSlices(mod.BikFileNames, 5)
 
----Helper to copy .map_text files (special handling: some from plugins_data, some from Hades).
+---Helper to copy .map_text files from Hades to plugins_data, skipping those with custom modifications
 local function copyMapTextFiles()
 	mod.DebugPrint("[Install] Copying .map_text files...", 3)
 	for src, dest in pairs(mod.MapFileMappings) do
-		local srcPath, destPath
-		if mod.MapTextFileNames[src] then
-			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content\\Maps\\" .. src .. ".map_text")
-		else
-			srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Maps\\" .. src .. ".map_text")
+		-- Some .map_text files have custom changes and are shipped with the mod
+		if not mod.MapTextFileNames[src] then
+			local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Maps\\" .. src .. ".map_text")
+			local destPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content\\Maps\\" .. dest .. ".map_text")
+			copyFile(srcPath, destPath)
+			-- Register the new file as H2M didn't discover it on startup
+			if rom.data.register_map_file then
+				rom.data.register_map_file(dest .. ".map_text", destPath)
+			end
 		end
-		destPath = rom.path.combine(rom.paths.Content(), "Maps\\" .. dest .. ".map_text")
-		copyFile(srcPath, destPath)
 	end
 end
 
@@ -631,11 +633,7 @@ local installSteps = {
 		copyMapTextFiles()
 	end },
 
-	Enemy_Traps_Projectiles = { ".thing_bin files", function()
-		copyFiles(mod.MapFileMappings, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", "Map binary ", true)
-	end },
-
-	Projectiles = { "Game data .sjson + custom .bik files", function()
+	Enemy_Traps_Projectiles = { "Game data .sjson + custom .bik files", function()
 		applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", mod.SjsonFileModifications)
 		copyFiles(mod.CustomBikFileNames, "Content\\Movies\\1080p\\", "Movies\\1080p\\", ".bik", "1080p custom Animation ",
 			true)
@@ -643,32 +641,36 @@ local installSteps = {
 			true)
 	end },
 
-	Asphodel = { "1080p .bik batch 1", function()
+	Projectiles = { "1080p .bik batch 1", function()
 		copyFiles(bikBatches1080p[1], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
 	end },
 
-	Chaos = { "1080p .bik batch 2", function()
+	Asphodel = { "1080p .bik batch 2", function()
 		copyFiles(bikBatches1080p[2], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
 	end },
 
-	Elysium = { "1080p .bik batch 3", function()
+	Chaos = { "1080p .bik batch 3", function()
 		copyFiles(bikBatches1080p[3], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
 	end },
 
-	Graybox = { "1080p .bik batch 4", function()
+	Elysium = { "1080p .bik batch 4", function()
 		copyFiles(bikBatches1080p[4], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
 	end },
 
-	Styx = { "1080p .bik batch 5", function()
+	Graybox = { "1080p .bik batch 5", function()
 		copyFiles(bikBatches1080p[5], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
 	end },
 
-	Surface = { "1080p .bik batch 6", function()
+	Styx = { "1080p .bik batch 6", function()
 		copyFiles(bikBatches1080p[6], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
 	end },
 
-	Tartarus = { "1080p .bik batch 7", function()
+	Surface = { "1080p .bik batch 7", function()
 		copyFiles(bikBatches1080p[7], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	end },
+
+	Tartarus = { "1080p .bik batch 8", function()
+		copyFiles(bikBatches1080p[8], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
 	end },
 
 	Temple = { "Helptext .sjson files", function()
