@@ -15,7 +15,7 @@ mod.DefaultHiddenConfig = {
 	InstallationFailReason = "",
 	MustShowUninstallFailureScreen = false,
 	-- Will be set to true on the next mod install and then never reset
-	HasCompletedLegacySjsonCleanup = false,
+	HasCompletedLegacyInstallationCleanup = false,
 	-- For debugging purposes
 	EnableVanillaDebugKeybinds = false,
 }

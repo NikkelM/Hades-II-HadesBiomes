@@ -531,10 +531,10 @@ function mod.CreateRequiredHookTargetFiles()
 
 	-- Migration: remove any legacy SJSON files from the game installation directory left by older mod versions before 1.0.0
 	-- This must happen before the install to avoid the engine loading both the old and new files simultaneously
-	if not mod.HiddenConfig.HasCompletedLegacySjsonCleanup then
+	if not mod.HiddenConfig.HasCompletedLegacyInstallationCleanup then
 		mod.DebugPrint("[Pre-install] Removing legacy SJSON files from game installation directory (if any exist)...", 3)
 		mod.RemoveLegacySjsonFilesFromContent()
-		mod.HiddenConfig.HasCompletedLegacySjsonCleanup = true
+		mod.HiddenConfig.HasCompletedLegacyInstallationCleanup = true
 		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 	end
 
@@ -620,13 +620,6 @@ end
 local installSteps = {
 	Enemies = { "Audio .bank files", function()
 		copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank", "Audio ")
-	end },
-
-	EnemyWeapons = { "Voiceover .txt + .fsb files", function()
-		copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", "Voiceline ",
-			true)
-		copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", "Voiceline ",
-			true)
 	end },
 
 	Enemy_BiomeN_Projectiles = { ".map_text files", function()

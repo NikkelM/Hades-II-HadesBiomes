@@ -138,6 +138,7 @@ local encounterModifications = {
 		LoadModdedVoiceBanks = { "Megaera" },
 		PostUnthreadedEvents = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		SkipCombatBeginsVoiceLines = true,
 	},
 	BossHadesPeaceful = {
 		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicSurfaceModded", },
@@ -148,6 +149,7 @@ local encounterModifications = {
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHadesPeacefulVictory", Args = mod.NilValue, GameStateRequirements = mod.NilValue },
 		},
 		SkipBossTraits = true,
+		SkipCombatBeginsVoiceLines = true,
 	},
 }
 

@@ -211,8 +211,8 @@ function mod.CheckRequiredFiles(failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\", ".map_text", failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\bin\\", ".thing_bin", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, contentRoot, "Audio\\Desktop\\VO\\", ".txt", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, contentRoot, "Audio\\Desktop\\VO\\", ".fsb", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, pluginsDataContentRoot, "Audio\\Desktop\\VO\\", ".txt", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, pluginsDataContentRoot, "Audio\\Desktop\\VO\\", ".fsb", failFast)
 
 	-- SJSON files: placed in the SJSON data directory in plugins_data
 	missingFiles = missingFiles + checkFilesExist(mod.SjsonFileMappings, sjsonDataRoot, "", ".sjson", failFast)
