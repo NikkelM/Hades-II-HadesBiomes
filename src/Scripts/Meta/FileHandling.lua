@@ -94,6 +94,16 @@ function mod.CompareChecksums()
 	end
 end
 
+function mod.RemoveFile(filePath)
+	if rom.path.exists(filePath) then
+		mod.DebugPrint("Removing file: " .. filePath, 4)
+		local success, err = os.remove(filePath)
+		if not success then
+			mod.DebugPrint("Error removing file: " .. err, 1)
+		end
+	end
+end
+
 local function checkFileExistsWithRetry(filePath, retries, delay, failFast)
 	local function sleep(sleepFor)
 		local t0 = os.clock()
@@ -116,10 +126,10 @@ local function checkFileExistsWithRetry(filePath, retries, delay, failFast)
 	return false
 end
 
-local function checkFilesExist(fileMappings, basePath, extension, failFast)
+local function checkFilesExist(fileMappings, rootPath, basePath, extension, failFast)
 	local missingFiles = 0
 	for src, dest in pairs(fileMappings) do
-		local destPath = rom.path.combine(rom.paths.Content(), basePath .. dest .. extension)
+		local destPath = rom.path.combine(rootPath, basePath .. dest .. extension)
 		if not checkFileExistsWithRetry(destPath, 3, 0.2, failFast) then
 			if not failFast then
 				mod.DebugPrint("Missing file: " .. destPath, 1)
@@ -131,49 +141,103 @@ local function checkFilesExist(fileMappings, basePath, extension, failFast)
 	return missingFiles
 end
 
+-- Returns a combined list of help text and NPC text file names for iteration
+local function getAllHelpAndNPCTextFileNames()
+	local allFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames) or {}
+	for fileName, _ in pairs(mod.NPCTextFileNames) do
+		table.insert(allFileNames, fileName)
+	end
+	return allFileNames
+end
+
+-- #region Legacy cleanup to remove files copied to the game install directory (for migration from mod versions before 1.0.0)
+function mod.RemoveLegacySjsonFilesFromContent()
+	for src, dest in pairs(mod.SjsonFileMappings) do
+		mod.RemoveFile(rom.path.combine(rom.paths.Content(), "Game\\" .. dest .. ".sjson"))
+	end
+
+	mod.RemoveFile(rom.path.combine(rom.paths.Content(), "Game\\" .. mod.HadesFxSjsonDataPath))
+	mod.RemoveFile(rom.path.combine(rom.paths.Content(), "Game\\" .. mod.HadesGUIAnimationsSjsonDataPath))
+	mod.RemoveFile(rom.path.combine(rom.paths.Content(), "Game\\" .. mod.HadesPortraitAnimationsSjsonDataPath))
+	mod.RemoveFile(rom.path.combine(rom.paths.Content(), "Game\\" .. mod.HadesCharacterAnimationsNPCsSjsonDataPath))
+
+	for _, fileName in ipairs(getAllHelpAndNPCTextFileNames()) do
+		for _, language in ipairs(mod.HelpTextLanguages) do
+			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
+				mod.RemoveFile(rom.path.combine(rom.paths.Content(),
+					"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"))
+			end
+		end
+	end
+
+	local languages = {}
+	for key, value in pairs(mod.SubtitleCsvFolderNames or {}) do
+		for _, language in ipairs(value) do
+			languages[language] = true
+		end
+	end
+	for language, _ in pairs(languages) do
+		for speakerName, _ in pairs(mod.SubtitleCsvFileNameMappings or {}) do
+			mod.RemoveFile(rom.path.combine(rom.paths.Content(),
+				"Game\\Text\\" .. language .. "\\Z_ModsNikkelMHadesBiomes" .. speakerName .. "." .. language .. ".sjson"))
+		end
+	end
+end
+
+-- #endregion
+
 function mod.CheckRequiredFiles(failFast)
 	failFast = failFast or false
 	local missingFiles = 0
+	local contentRoot = rom.paths.Content()
+	local sjsonDataRoot = mod.SjsonDataBasePath
 
-	missingFiles = missingFiles + checkFilesExist(mod.AudioFileMappings, "Audio\\Desktop\\", ".bank", failFast)
+	-- Non-SJSON files: checked in the game install directory
+	missingFiles = missingFiles + checkFilesExist(mod.AudioFileMappings, contentRoot, "Audio\\Desktop\\", ".bank", failFast)
 	-- We only check once, since with a successful uninstall, there will be at least one missing file here already
 	if failFast and missingFiles > 0 then return missingFiles end
 
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, "Movies\\1080p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, "Movies\\1080p\\", ".bik_atlas", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, "Movies\\720p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, "Movies\\720p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, contentRoot, "Movies\\1080p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, contentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, contentRoot, "Movies\\720p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, contentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, "Movies\\1080p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, "Movies\\1080p\\", ".bik_atlas", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, "Movies\\720p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, "Movies\\720p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, contentRoot, "Movies\\1080p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, contentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.SjsonFileMappings, "Game\\", ".sjson", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, contentRoot, "Maps\\", ".map_text", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, contentRoot, "Maps\\bin\\", ".thing_bin", failFast)
 
-	missingFiles = missingFiles + checkFilesExist({ mod.HadesFxDestinationFilename }, "", "", failFast)
-	missingFiles = missingFiles + checkFilesExist({ mod.HadesGUIAnimationsDestinationFilename }, "", "", failFast)
-	missingFiles = missingFiles + checkFilesExist({ mod.HadesPortraitAnimationsDestinationFilename }, "", "", failFast)
-	missingFiles = missingFiles +
-			checkFilesExist({ mod.HadesCharacterAnimationsNPCsDestinationFilename }, "", "", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, contentRoot, "Audio\\Desktop\\VO\\", ".txt", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, contentRoot, "Audio\\Desktop\\VO\\", ".fsb", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, "Maps\\", ".map_text", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, "Maps\\bin\\", ".thing_bin", failFast)
+	-- SJSON files: placed in the SJSON data directory in plugins_data
+	missingFiles = missingFiles + checkFilesExist(mod.SjsonFileMappings, sjsonDataRoot, "", ".sjson", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".txt", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, "Audio\\Desktop\\VO\\", ".fsb", failFast)
+	for _, sjsonDataRelativePath in ipairs({
+		mod.HadesFxSjsonDataPath,
+		mod.HadesGUIAnimationsSjsonDataPath,
+		mod.HadesPortraitAnimationsSjsonDataPath,
+		mod.HadesCharacterAnimationsNPCsSjsonDataPath,
+	}) do
+		if not rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
+			if not failFast then
+				mod.DebugPrint("Missing SJSON data file: " .. sjsonDataRelativePath, 1)
+			end
+			missingFiles = missingFiles + 1
+			if failFast then return missingFiles end
+		end
+	end
 
-	-- The helpText files in the different languages
-	-- _NPCData files are installed differently, so not part of this table by default
-	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames) or {}
-	table.insert(allHelpTextFileNames, "_NPCData")
-	for _, fileName in ipairs(allHelpTextFileNames) do
+	-- Help text/NPC text SJSON files in the SJSON data directory
+	for _, fileName in ipairs(getAllHelpAndNPCTextFileNames()) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
-				local helpTextFile = rom.path.combine(rom.paths.Content(),
-					"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
-				if not checkFileExistsWithRetry(helpTextFile, 3, 1) then
-					mod.DebugPrint("Missing file: " .. helpTextFile, 1)
+				local sjsonDataRelativePath = "Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
+				if not rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
+					mod.DebugPrint("Missing SJSON data file: " .. sjsonDataRelativePath, 1)
 					missingFiles = missingFiles + 1
 				end
 			end
@@ -301,8 +365,8 @@ end
 ---Used by both the install and uninstall scripts to get the paths for sjson subtitle files that are created from Hades CSV files
 ---@param language string The language shorthand, e.g. "en"
 ---@param speakerName string The name of the speaker with which the subtitle CSV file is associated, e.g. "MegaeraField"
----@return string destPath The absolute path to the sjson subtitle file in the Hades II Content folder
+---@return string destPath The absolute path to the sjson subtitle file in the SJSON data directory
 function mod.GetSubtitleSjsonPath(language, speakerName)
-	return rom.path.combine(rom.paths.Content(),
-		"Game\\Text\\" .. language .. "\\Z_ModsNikkelMHadesBiomes" .. speakerName .. "." .. language .. ".sjson")
+	return rom.path.combine(mod.SjsonDataBasePath,
+		"Text\\" .. language .. "\\Z_ModsNikkelMHadesBiomes" .. speakerName .. "." .. language .. ".sjson")
 end

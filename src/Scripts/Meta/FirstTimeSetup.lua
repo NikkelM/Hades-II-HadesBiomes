@@ -81,7 +81,7 @@ local function removeDeprecatedAnimationProperties(animationsFile)
 	end
 end
 
-local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, destBasePath, modifications)
+local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, modifications)
 	mod.DebugPrint("Copying .sjson files...", 3)
 	for key, value in pairs(fileMappings) do
 		local src, dest
@@ -93,17 +93,17 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, de
 			dest = value
 		end
 
+		local sjsonDataRelativePath = dest .. ".sjson"
 		local srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. src .. ".sjson")
-		local destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest .. ".sjson")
 
-		if not rom.path.exists(destPath) then
+		if not rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
 			local fileData = mod.DecodeSjsonFile(srcPath)
 			mod.ApplyNestedSjsonModifications(fileData.Animations, modifications[src] or {})
 			removeDeprecatedAnimationProperties(fileData)
-			mod.DebugPrint("Copying file " .. srcPath .. " to " .. destPath, 4)
-			sjson.encode_file(destPath, fileData)
+			mod.DebugPrint("Copying file " .. srcPath .. " to " .. sjsonDataRelativePath, 4)
+			mod.WriteSjsonData(sjsonDataRelativePath, fileData)
 		else
-			mod.DebugPrint("File already exists and will not be overwritten: " .. destPath, 2)
+			mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
 		end
 	end
 end
@@ -281,13 +281,18 @@ local function loadSubtitleCsvFilesAndWriteToSjson()
 		"lang",
 		"Texts",
 	}
-	-- Afterwards, write the subtitle sjson files for each language into the Hades II Content folder
+	-- Afterwards, write the subtitle sjson files into the SJSON data directory
 	for language, subtitleFiles in pairs(hadesSubtitleData) do
 		for speakerName, entries in pairs(subtitleFiles) do
 			local destPath = mod.GetSubtitleSjsonPath(language, speakerName)
 			local subtitleData = sjson.to_object({ lang = language, Texts = entries }, order)
 			mod.DebugPrint("Writing subtitle sjson file: " .. destPath .. " with " .. tostring(#entries) .. " entries", 4)
 			sjson.encode_file(destPath, subtitleData)
+
+			-- Register with H2M
+			if rom.data.register_content_file then
+				rom.data.register_content_file(destPath)
+			end
 		end
 	end
 end
@@ -300,11 +305,11 @@ local function copyHadesHelpTexts()
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
 
-				local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
-					"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
+				local sjsonDataRelativePath = "Text\\" ..
+				language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
 
-				if rom.path.exists(hadesTwoHelpTextFilePath) then
-					mod.DebugPrint("File already exists and will not be overwritten: " .. hadesTwoHelpTextFilePath, 2)
+				if rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
+					mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
 				else
 					local helpTextFile = rom.path.combine(rom.paths.Content(),
 						"Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
@@ -355,8 +360,7 @@ local function copyHadesHelpTexts()
 						end
 					end
 
-					-- Encode the hadesHelpTextFile to a new file in the Hades II folder
-					sjson.encode_file(hadesTwoHelpTextFilePath, hadesHelpTextData)
+					mod.WriteSjsonData(sjsonDataRelativePath, hadesHelpTextData)
 				end
 			end
 		end
@@ -368,11 +372,12 @@ local function copyHadesNPCTexts()
 		for fileName, allowedSpeakers in pairs(mod.NPCTextFileNames) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
-				local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
-					"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
 
-				if rom.path.exists(hadesTwoHelpTextFilePath) then
-					mod.DebugPrint("File already exists and will not be overwritten: " .. hadesTwoHelpTextFilePath, 2)
+				local sjsonDataRelativePath = "Text\\" ..
+				language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
+
+				if rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
+					mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
 				else
 					local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder,
 						"Content\\Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
@@ -399,7 +404,7 @@ local function copyHadesNPCTexts()
 					-- Replace the Texts array with the filtered version
 					hadesHelpTextDataRaw.Texts = filteredTexts
 
-					sjson.encode_file(hadesTwoHelpTextFilePath, hadesHelpTextDataRaw)
+					mod.WriteSjsonData(sjsonDataRelativePath, hadesHelpTextDataRaw)
 				end
 			end
 		end
@@ -407,12 +412,13 @@ local function copyHadesNPCTexts()
 end
 
 -- Common function to copy and filter animations
-local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, modifications, parentAdditions, additions,
+local function copyAndFilterAnimations(srcPath, sjsonDataRelativePath, mappings, duplicates, modifications,
+																			 parentAdditions, additions,
 																			 animationType)
 	local animationsTable = mod.DecodeSjsonFile(srcPath)
 
-	if rom.path.exists(destPath) then
-		mod.DebugPrint("File already exists and will not be overwritten: " .. destPath, 2)
+	if rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
+		mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
 		-- Still marking as successful to not throw the bad edits error
 		return true
 	end
@@ -462,20 +468,19 @@ local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 
 	animationsTable.Animations = filteredAnimations
 
-	sjson.encode_file(destPath, animationsTable)
+	mod.WriteSjsonData(sjsonDataRelativePath, animationsTable)
 
 	return true
 end
 
 local function copyHadesFxAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\Fx.sjson")
-	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
 	local modifications = mod.HadesFxAnimationModifications or {}
 	local parentAdditions = mod.HadesFxAnimationParentAdditions or {}
 	local additions = mod.HadesFxAnimationAdditions or {}
 
 	-- Will return false if an Olympus Extra animation is detected
-	if not copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates, modifications, parentAdditions, additions, "Fx.sjson") then
+	if not copyAndFilterAnimations(sourceFilePath, mod.HadesFxSjsonDataPath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates, modifications, parentAdditions, additions, "Fx.sjson") then
 		return false
 	end
 
@@ -484,31 +489,30 @@ end
 
 local function copyHadesGUIAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\GUIAnimations.sjson")
-	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename)
 	local modifications = mod.HadesGUIAnimationModifications or {}
 	local parentAdditions = mod.HadesGUIAnimationParentAdditions or {}
 	local additions = mod.HadesGUIAnimationAdditions or {}
-	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.GUIAnimationMappings, mod.HadesGUIAnimationDuplicates,
+	copyAndFilterAnimations(sourceFilePath, mod.HadesGUIAnimationsSjsonDataPath, mod.GUIAnimationMappings,
+		mod.HadesGUIAnimationDuplicates,
 		modifications, parentAdditions, additions, "GUIAnimations.sjson")
 end
 
 local function copyHadesPortraitAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\PortraitAnimations.sjson")
-	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename)
 	local modifications = mod.HadesPortraitAnimationModifications or {}
 	local parentAdditions = mod.HadesPortraitAnimationAdditionsParents or {}
 	local additions = mod.HadesPortraitAnimationAdditions or {}
-	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.PortraitAnimationMappings,
+	copyAndFilterAnimations(sourceFilePath, mod.HadesPortraitAnimationsSjsonDataPath, mod.PortraitAnimationMappings,
 		mod.HadesPortraitAnimationDuplicates, modifications, parentAdditions, additions, "PortraitAnimations.sjson")
 end
 
 local function copyHadesCharacterAnimationsNPCs()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\CharacterAnimationsNPCs.sjson")
-	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesCharacterAnimationsNPCsDestinationFilename)
 	local modifications = mod.HadesCharacterAnimationsNPCsModifications or {}
 	local parentAdditions = mod.HadesCharacterAnimationsNPCsParentAdditions or {}
 	local additions = mod.HadesCharacterAnimationsNPCsAdditions or {}
-	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.CharacterAnimationsNPCsMappings,
+	copyAndFilterAnimations(sourceFilePath, mod.HadesCharacterAnimationsNPCsSjsonDataPath,
+		mod.CharacterAnimationsNPCsMappings,
 		mod.HadesCharacterAnimationsNPCsDuplicates, modifications, parentAdditions, additions,
 		"CharacterAnimationsNPCs.sjson")
 end
@@ -523,6 +527,15 @@ function mod.CreateRequiredHookTargetFiles()
 	mod.DebugPrint("[Pre-install] Ensuring no Hades mods are installed...", 3)
 	if mod.AreHadesModsInstalled() then
 		return false
+	end
+
+	-- Migration: remove any legacy SJSON files from the game installation directory left by older mod versions before 1.0.0
+	-- This must happen before the install to avoid the engine loading both the old and new files simultaneously
+	if not mod.HiddenConfig.HasCompletedLegacySjsonCleanup then
+		mod.DebugPrint("[Pre-install] Removing legacy SJSON files from game installation directory (if any exist)...", 3)
+		mod.RemoveLegacySjsonFilesFromContent()
+		mod.HiddenConfig.HasCompletedLegacySjsonCleanup = true
+		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 	end
 
 	mod.DebugPrint("[Pre-install] Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
@@ -623,7 +636,7 @@ local installSteps = {
 	end },
 
 	Projectiles = { "Game data .sjson + custom .bik files", function()
-		applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", "Game\\", mod.SjsonFileModifications)
+		applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", mod.SjsonFileModifications)
 		copyFiles(mod.CustomBikFileNames, "Content\\Movies\\1080p\\", "Movies\\1080p\\", ".bik", "1080p custom Animation ",
 			true)
 		copyFiles(mod.CustomBikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p custom Animation ",

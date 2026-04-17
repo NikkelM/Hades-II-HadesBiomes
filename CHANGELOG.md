@@ -20,8 +20,9 @@ Other fixes and improvements:
 - Melinoë will now react to Hades calling Cerberus to his aid.
 - Updated the description text of "Final Expense" offered by Orpheus to make it clearer that all shop items are always discounted.
 - Added [zannc](https://github.com/excellent-ae) to the Credits for the [SharedKeepsakePort](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) contribution.
-- Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
 - Removed an internal workaround for safeguarding against crashes after the mod is uninstalled, as this is now more easily handled through vanilla game logic.
+- Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
+- The mod will now install more file types to its own data directory instead of adding to the Hades II installation directory. This improves compatibility with future game patches, and a cleaner uninstall experience.
 - Balancing: Orpheus' "Final Expense" boon now reduces the price of Charon's wares between 5-15% instead of 0-10%.
 - Balancing: Elysian Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Slightly reduced the chance for the "Popper" elite perk to appear.

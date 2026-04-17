@@ -531,6 +531,23 @@ function mod.SaveCachedSjsonFile(fileName, data)
 	sjson.encode_file(path, data)
 end
 
+---Writes an SJSON file to the SJSON data directory in plugins_data and registers it with H2M.
+---@param sjsonDataRelativePath string Path relative to Hell2Modding-SJSON/, e.g. "Animations\\Foo.sjson".
+---@param data table The SJSON data to encode.
+---@return string absolutePath The absolute path the file was written to.
+function mod.WriteSjsonData(sjsonDataRelativePath, data)
+	local absolutePath = rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)
+
+	sjson.encode_file(absolutePath, data)
+
+	if rom.data.register_content_file then
+		rom.data.register_content_file(absolutePath)
+	end
+
+	mod.DebugPrint("Wrote file and registered with Hell2Modding: " .. sjsonDataRelativePath, 4)
+	return absolutePath
+end
+
 ---Checks if the user has Hades mods installed, which would conflict with this mod
 ---The installation/mod load will be aborted and a message shown to the user
 ---@return boolean True if Hades mods are installed, false otherwise

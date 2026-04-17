@@ -5,7 +5,8 @@ local hadesEnemyAnimationsFile = rom.path.combine(mod.hadesGameFolder,
 local hadesEnemyAnimationsTable = mod.DecodeSjsonFile(hadesEnemyAnimationsFile)
 
 -- These animations depend on some animations in various other files, so we hook into our own FX file, which is loaded last due to the Z_ prefix
-local hadesTwoEnemyAnimationsFile = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
+-- Building the path to the game folder as H2M will redirect the call for us
+local hadesTwoEnemyAnimationsFile = rom.path.combine(rom.paths.Content(), "Game\\" .. mod.HadesFxSjsonDataPath)
 
 -- Modifications
 -- These animations already exist in Hades II and may crash the game if added again
