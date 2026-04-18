@@ -99,7 +99,7 @@ function mod.SpawnHadesRunStartDoor(source, args)
 		StartingBiome = "Tartarus",
 		-- Don't play a voiceline - we do this when entering the Chaos gate
 		-- We have to do it then, as otherwise MelinoeField needs to be loaded in PreThingCreation
-		GlobalVoiceLines = "EmptyStartNewHadesRunVoiceLines",
+		GlobalVoiceLines = "ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines",
 		-- For the DirectionHintPresentation if LimitGraspShrineUpgradeEscapeDoorClosed is active
 		AltarId = 589766,
 	}
@@ -134,7 +134,7 @@ function mod.StartHadesRunSecretDoorPresentation(secretDoor, useAltDiveAnimation
 	-- preserve audio/VO presentation
 	game.CleanupCustomRoomSounds()
 	PlaySound({ Name = "/SFX/Menu Sounds/ChaosRoomEnterExit" })
-	game.thread(game.PlayVoiceLines, mod.StartNewHadesRunVoiceLines)
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_StartNewHadesRunVoiceLines)
 	Stop({ Id = game.CurrentRun.Hero.ObjectId })
 
 	local unequipAnimation = game.GetEquippedWeaponValue("UnequipAnimation") or "MelinoeIdleWeaponless"

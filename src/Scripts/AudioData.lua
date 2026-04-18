@@ -142,50 +142,6 @@ mod.CombatOverMusicEvents = {
 -- #endregion
 
 -- #region Voicelines
--- Played when starting a Hades run (when entering the Chaos gate at the crossroads)
-mod.StartNewHadesRunVoiceLines = {
-	Queue = "Never",
-	{
-		BreakIfPlayed = true,
-		PreLineWait = 0.35,
-		GameStateRequirements = {
-			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
-				Comparison = "==",
-				Value = 0,
-			},
-		},
-		{ Cue = "/VO/Melinoe_2888", Text = "What could go wrong...?" },
-	},
-	{
-		BreakIfPlayed = true,
-		RandomRemaining = true,
-		PreLineWait = 0.35,
-		GameStateRequirements = {
-			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
-				Comparison = ">=",
-				Value = 1,
-			},
-		},
-		-- Custom
-		{ Cue = "/VO/MelinoeField_0205", Text = "Every bad dream has an escape..." },
-		-- From the underworld route
-		{ Cue = "/VO/Melinoe_3391",      Text = "Hence I go...", },
-		{ Cue = "/VO/Melinoe_0108",      Text = "I go.", },
-		{ Cue = "/VO/Melinoe_0110",      Text = "Commencing.", },
-		{ Cue = "/VO/Melinoe_0111",      Text = "Once more.", },
-		{ Cue = "/VO/Melinoe_2482",      Text = "Once more, then." },
-		{ Cue = "/VO/Melinoe_0375",      Text = "Farewell, Commander.", },
-		{ Cue = "/VO/Melinoe_3058_B",    Text = "Here we go." },
-		-- From the surface route
-		{ Cue = "/VO/Melinoe_1665",      Text = "With the grace of the Moon." },
-		{ Cue = "/VO/Melinoe_2487",      Text = "New night, new path.", },
-	},
-}
-
-game.GlobalVoiceLines.EmptyStartNewHadesRunVoiceLines = {}
-
 -- Replace cues with the modded name
 local requiredGlobalVoiceLineModifications = {
 	-- These voicelines are not currently used
@@ -382,6 +338,10 @@ game.GlobalVoiceLines.ModsNikkelMHadesBiomes_BadgeUpgradedVoiceLines = game.Glob
 game.GlobalVoiceLines.ModsNikkelMHadesBiomes_SaluteVoiceLines = game.GlobalVoiceLines
 		.ModsNikkelMHadesBiomes_SaluteVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_SaluteVoiceLines
+
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines
 -- #endregion
 
 -- #region HeroVoiceLines
@@ -417,6 +377,8 @@ game.HeroVoiceLines.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = mod.Hero
 		.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_DeathReturnVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_DeathReturnVoiceLines
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_StartNewHadesRunVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_StartNewHadesRunVoiceLines
 
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyQuestUnlockedVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_TrophyQuestUnlockedVoiceLines
