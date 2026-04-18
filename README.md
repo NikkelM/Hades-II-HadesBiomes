@@ -92,6 +92,10 @@ Refer to the [Configuration](#configuration) section below for more information 
 
 If you would like more information or experience any issues, please refer to the [Installation](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Installation-&-Uninstallation) wiki page.
 
+### Installing on Steam Deck
+
+For instructions on how to install this mod on Steam Deck, please follow the instructions in the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki#can-i-install-this-mod-on-steam-deck).
+
 <!-- ## Configuration -->
 
 ![Configuration](./img/Readme/ConfigurationElysium.png)
