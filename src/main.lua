@@ -145,8 +145,8 @@ local function on_ready()
 	-- If so, trigger a full uninstall + reinstall to ensure all files are up to date
 	if mod.HiddenConfig.InstalledModVersion ~= _PLUGIN.version then
 		mod.DebugPrint(
-			"Mod version changed: \"" .. (mod.HiddenConfig.InstalledModVersion or "Not installed") .. "\" -> \"" .. _PLUGIN.version ..
-			"\". The mod will be (re)-installed.", 2)
+			"Mod version changed: " .. (mod.HiddenConfig.InstalledModVersion or "Not installed") ..
+			" -> " .. _PLUGIN.version .. ". The mod will be (re)-installed.", 2)
 		config.uninstall = true
 		config.firstTimeSetup = true
 	end
