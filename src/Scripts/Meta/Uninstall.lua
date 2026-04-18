@@ -7,11 +7,11 @@ end
 
 -- Removes all SJSON files from the SJSON data directory
 local function removeSjsonDataFiles()
-	if not rom.path.exists(mod.SjsonDataBasePath) then return end
+	if not rom.path.exists(_PLUGIN.sjson_data_path) then return end
 	mod.DebugPrint("Removing .sjson files...", 3)
 
 	for src, dest in pairs(mod.SjsonFileMappings) do
-		mod.RemoveFile(rom.path.combine(mod.SjsonDataBasePath, dest .. ".sjson"))
+		mod.RemoveFile(rom.path.combine(_PLUGIN.sjson_data_path, dest .. ".sjson"))
 	end
 
 	for _, sjsonDataRelativePath in ipairs({
@@ -20,7 +20,7 @@ local function removeSjsonDataFiles()
 		mod.HadesPortraitAnimationsSjsonDataPath,
 		mod.HadesCharacterAnimationsNPCsSjsonDataPath,
 	}) do
-		mod.RemoveFile(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath))
+		mod.RemoveFile(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath))
 	end
 
 	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames) or {}
@@ -30,7 +30,7 @@ local function removeSjsonDataFiles()
 	for _, fileName in ipairs(allHelpTextFileNames) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
-				mod.RemoveFile(rom.path.combine(mod.SjsonDataBasePath,
+				mod.RemoveFile(rom.path.combine(_PLUGIN.sjson_data_path,
 					"Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"))
 			end
 		end

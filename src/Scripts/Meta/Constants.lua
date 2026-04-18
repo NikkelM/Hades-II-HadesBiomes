@@ -4,10 +4,6 @@ local hadesOSTModReference = mods["NikkelM-Hades_OST_for_the_Music_Maker"]
 mod.NilValue = {}
 mod.TableValue = {}
 
--- Base path for the SJSON data directory
--- Files placed here with engine directory structure (Animations/, Text/{lang}/, etc.) are detected by Hell2Modding
-mod.SjsonDataBasePath = _PLUGIN.sjson_data_path
-
 mod.DefaultHiddenConfig = {
 	HasShownSuccessfulInstallScreen = false,
 	IsValidInstallation = false,

@@ -536,7 +536,7 @@ end
 ---@param data table The SJSON data to encode.
 ---@return string absolutePath The absolute path the file was written to.
 function mod.WriteSjsonData(sjsonDataRelativePath, data)
-	local absolutePath = rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)
+	local absolutePath = rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)
 
 	sjson.encode_file(absolutePath, data)
 	rom.data.register_sjson_file(absolutePath)

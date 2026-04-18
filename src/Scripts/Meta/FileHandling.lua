@@ -157,7 +157,7 @@ end
 function mod.CheckRequiredFiles(failFast)
 	failFast = failFast or false
 	local missingFiles = 0
-	local sjsonDataRoot = mod.SjsonDataBasePath
+	local sjsonDataRoot = _PLUGIN.sjson_data_path
 	local pluginsDataContentRoot = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content")
 
 	-- Non-SJSON files: checked in the game install directory
@@ -190,7 +190,7 @@ function mod.CheckRequiredFiles(failFast)
 		mod.HadesPortraitAnimationsSjsonDataPath,
 		mod.HadesCharacterAnimationsNPCsSjsonDataPath,
 	}) do
-		if not rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
+		if not rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
 			if not failFast then
 				mod.DebugPrint("Missing SJSON data file: " .. sjsonDataRelativePath, 1)
 			end
@@ -204,7 +204,7 @@ function mod.CheckRequiredFiles(failFast)
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				local sjsonDataRelativePath = "Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
-				if not rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
+				if not rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
 					mod.DebugPrint("Missing SJSON data file: " .. sjsonDataRelativePath, 1)
 					missingFiles = missingFiles + 1
 				end
@@ -335,6 +335,6 @@ end
 ---@param speakerName string The name of the speaker with which the subtitle CSV file is associated, e.g. "MegaeraField"
 ---@return string destPath The absolute path to the sjson subtitle file in the SJSON data directory
 function mod.GetSubtitleSjsonPath(language, speakerName)
-	return rom.path.combine(mod.SjsonDataBasePath,
+	return rom.path.combine(_PLUGIN.sjson_data_path,
 		"Text\\" .. language .. "\\Z_ModsNikkelMHadesBiomes" .. speakerName .. "." .. language .. ".sjson")
 end

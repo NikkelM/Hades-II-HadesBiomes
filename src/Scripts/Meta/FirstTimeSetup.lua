@@ -100,7 +100,7 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, mo
 		local sjsonDataRelativePath = dest .. ".sjson"
 		local srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. src .. ".sjson")
 
-		if not rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
+		if not rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
 			local fileData = mod.DecodeSjsonFile(srcPath)
 			mod.ApplyNestedSjsonModifications(fileData.Animations, modifications[src] or {})
 			removeDeprecatedAnimationProperties(fileData)
@@ -310,7 +310,7 @@ local function copyHadesHelpTexts()
 				local sjsonDataRelativePath = "Text\\" ..
 						language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
 
-				if rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
+				if rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
 					mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
 				else
 					local helpTextFile = rom.path.combine(rom.paths.Content(),
@@ -378,7 +378,7 @@ local function copyHadesNPCTexts()
 				local sjsonDataRelativePath = "Text\\" ..
 						language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
 
-				if rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
+				if rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
 					mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
 				else
 					local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder,
@@ -419,7 +419,7 @@ local function copyAndFilterAnimations(srcPath, sjsonDataRelativePath, mappings,
 																			 animationType)
 	local animationsTable = mod.DecodeSjsonFile(srcPath)
 
-	if rom.path.exists(rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)) then
+	if rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
 		mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
 		-- Still marking as successful to not throw the bad edits error
 		return true
