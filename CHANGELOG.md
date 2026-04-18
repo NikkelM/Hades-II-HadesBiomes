@@ -70,6 +70,7 @@ Other fixes and improvements:
 - Fixed: Family Dispute door reward previews are too large and clip out of the glass sphere.
 - Fixed: Ash and Bone door reward previews in Asphodel are located too high in the glass sphere.
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
+- Fixed: The Wretched Sneak and Wringer enemies summoned by Hades during his fight show up with incorrect names in the victory screen's damage taken table.
 - Fixed: Chaos Gates do not have specific spawn requirements adapted to Zagreus' Journey runs.
 - Fixed: "Enshrouded" (hidden room reward previews) Chaos Curse cannot appear in Zagreus' Journey runs.
 - Fixed: Relationship entries for story NPCs that unlock a keepsake do not show the related icon in the Codex.

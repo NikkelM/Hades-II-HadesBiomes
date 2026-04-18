@@ -849,6 +849,7 @@ local enemyModifications = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
 	},
 	DisembodiedHand = {
+		GenusName = "DisembodiedHand",
 		StunAnimations = { Default = "EnemyWringerOnHit" },
 		GeneratorData = {
 			BlockSolo = true,
@@ -932,6 +933,7 @@ local enemyModifications = {
 	-- #endregion
 	-- #region TARTARUS - Minibosses
 	HeavyRangedSplitterMiniboss = {
+		GenusName = "HeavyRangedSplitterMiniboss",
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		OnDeathTetherUpwardForce = 2200,
@@ -1018,7 +1020,11 @@ local enemyModifications = {
 			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 		},
 	},
+	WretchAssassinMiniboss = {
+		GenusName = "WretchAssassinMiniboss",
+	},
 	WretchAssassinMinibossSuperElite = {
+		GenusName = "WretchAssassinMiniboss",
 		-- Still targets the player for some reason
 		BlockRaiseDead = true,
 		IgnoreSprintPhasingStasisStun = true,
