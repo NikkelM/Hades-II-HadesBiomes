@@ -23,6 +23,18 @@ modutil.mod.Path.Wrap("RootApplyPresentation", function(base, victim, victimId)
 		end
 	end
 
+	-- Fix vanilla nil-check missing
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim == nil then
+		if victimId then
+			game.FrameState.DeferredPresentation = game.FrameState.DeferredPresentation or {}
+			game.FrameState.DeferredPresentation.DoRootApplyPresentation = game.FrameState.DeferredPresentation
+					.DoRootApplyPresentation or {}
+			table.insert(game.FrameState.DeferredPresentation.DoRootApplyPresentation, victimId)
+		end
+
+		return
+	end
+
 	return base(victim, victimId)
 end)
 

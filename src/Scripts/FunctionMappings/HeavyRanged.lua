@@ -99,17 +99,21 @@ function mod.HandleTetherParentDeath(victim, skipTetherCount, skipTetherAnimatio
 					}
 				end
 			else
-				-- Play death animation before destroying, CreateAnimation spawns a separate object that persists after the tether is destroyed
 				if tetherConfig ~= nil and tetherConfig.ParentDeathAnimation ~= nil then
-					-- CreateAnimation doesn't inherit the parent's OffsetZ, so read it to position correctly
-					local offsetZ = GetThingDataValue({ Id = id, Property = "OffsetZ" }) or 0
-					CreateAnimation({ Name = tetherConfig.ParentDeathAnimation, DestinationId = id, OffsetZ = offsetZ })
-				end
-				if victim.DestroyTethersOnDeath then
+					-- Play shatter on the tether itself to preserve visual effects (e.g. frozen hue)
+					SetAnimation({ Name = tetherConfig.ParentDeathAnimation, DestinationId = id })
+					-- Destroy once the shatter animation finishes
+					local destroyId = id
+					local animName = tetherConfig.ParentDeathAnimation
+					game.thread(function()
+						local notifyName = "ModsNikkelMHadesBiomesTetherShatter" .. destroyId
+						NotifyOnAnimationTimeRemaining({ Id = destroyId, Animation = animName, Remaining = 0.01, Notify = notifyName, Timeout = 5.0 })
+						game.waitUntil(notifyName)
+						Destroy({ Id = destroyId })
+					end)
+				else
 					Destroy({ Id = id })
 				end
-				-- Always destroy tethers without upward force to clean them up immediately
-				Destroy({ Id = id })
 			end
 			game.wait(0.04, game.RoomThreadName)
 		else
@@ -154,7 +158,17 @@ end
 -- Called by OnTouchdown when a launched tether crystal lands
 function mod.TetherOnTouchdownShatter(touchdowner, args)
 	if args ~= nil and args.DeathAnimation ~= nil then
-		CreateAnimation({ Name = args.DeathAnimation, DestinationId = touchdowner.ObjectId })
+		-- Play shatter on the tether itself to preserve visual effects (e.g. frozen hue)
+		SetThingProperty({ Property = "StopsProjectiles", Value = false, DestinationId = touchdowner.ObjectId })
+		SetThingProperty({ Property = "StopsUnits", Value = false, DestinationId = touchdowner.ObjectId })
+		SetAnimation({ Name = args.DeathAnimation, DestinationId = touchdowner.ObjectId })
+		-- Destroy once the shatter animation finishes
+		local destroyId = touchdowner.ObjectId
+		local notifyName = "ModsNikkelMHadesBiomesTetherShatter" .. destroyId
+		NotifyOnAnimationTimeRemaining({ Id = destroyId, Animation = args.DeathAnimation, Remaining = 0.01, Notify = notifyName, Timeout = 5.0 })
+		game.waitUntil(notifyName)
+		Destroy({ Id = destroyId })
+	else
+		Destroy({ Id = touchdowner.ObjectId })
 	end
-	Destroy({ Id = touchdowner.ObjectId })
 end

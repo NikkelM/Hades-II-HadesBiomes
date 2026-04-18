@@ -13,7 +13,8 @@
 - The mod no longer creates any files in the game's installation directory, making it entirely compatible with playing vanilla or switching profiles in r2modman. Installing this mod update will automatically remove any previously created files.
 
 Other fixes and improvements:
-- You can now salute story NPCs you meet along Zagreus' Journey.
+- The Chaos Gate in the Training Grounds can now only show once you have met Chaos.
+- You can now salute story NPCs you meet during Zagreus' Journey runs.
 - If Thanatos has no new unique dialogue when he visits you at the start of a run, you can now pick up the starting boon without speaking to him first.
 - Added a new dialogue background for conversations in the Temple of Styx.
 - Hades and Theseus will now react with specific voicelines for certain Gods when using Godsent Hex effects against them.

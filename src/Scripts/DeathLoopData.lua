@@ -39,16 +39,18 @@ table.insert(game.HubRoomData.Hub_Main.OnLoadEvents, 1, endingPortraitOnLoadEven
 -- #region Chaos Gate/Run start
 table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 	FunctionName = _PLUGIN.guid .. "." .. "SpawnHadesRunStartDoor",
+	GameStateRequirements = {
+		{
+			PathTrue = { _PLUGIN.guid, "HiddenConfig", "IsValidInstallation" }
+		},
+		{
+			-- Can only show after you have met Chaos, both for narrative consistency, and to fix the Chaos boon in RoomOpening playing ChaosFirstPickUp
+			PathTrue = { "GameState", "TextLinesRecord", "ChaosFirstPickUp" },
+		},
+	},
 })
 
 function mod.SpawnHadesRunStartDoor(source, args)
-	if not mod.HiddenConfig.IsValidInstallation then
-		mod.DebugPrint(
-			"The mod installation is invalid due to: " ..
-			(mod.HiddenConfig.InstallationFailReason or "UnknownReason") .. ", not spawning the Hades run start door.", 2)
-		return false
-	end
-
 	-- Run start door for the underworld
 	local spawnId = 420947
 
@@ -97,7 +99,7 @@ function mod.SpawnHadesRunStartDoor(source, args)
 		StartingBiome = "Tartarus",
 		-- Don't play a voiceline - we do this when entering the Chaos gate
 		-- We have to do it then, as otherwise MelinoeField needs to be loaded in PreThingCreation
-		GlobalVoiceLines = "EmptyStartNewHadesRunVoiceLines",
+		GlobalVoiceLines = "ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines",
 		-- For the DirectionHintPresentation if LimitGraspShrineUpgradeEscapeDoorClosed is active
 		AltarId = 589766,
 	}
@@ -132,7 +134,7 @@ function mod.StartHadesRunSecretDoorPresentation(secretDoor, useAltDiveAnimation
 	-- preserve audio/VO presentation
 	game.CleanupCustomRoomSounds()
 	PlaySound({ Name = "/SFX/Menu Sounds/ChaosRoomEnterExit" })
-	game.thread(game.PlayVoiceLines, mod.StartNewHadesRunVoiceLines)
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_StartNewHadesRunVoiceLines)
 	Stop({ Id = game.CurrentRun.Hero.ObjectId })
 
 	local unequipAnimation = game.GetEquippedWeaponValue("UnequipAnimation") or "MelinoeIdleWeaponless"
