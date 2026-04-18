@@ -13,6 +13,7 @@
 
 Other fixes and improvements:
 - The Chaos Gate in the Training Grounds can now only show once you have met Chaos.
+- Added some additional contextual voicelines in various situations.
 - You can now salute story NPCs you meet during Zagreus' Journey runs.
 - If Thanatos has no new unique dialogue when he visits you at the start of a run, you can now pick up the starting boon without speaking to him first.
 - Added a new dialogue background for conversations in the Temple of Styx.

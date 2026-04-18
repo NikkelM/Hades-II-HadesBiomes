@@ -3865,7 +3865,10 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_4352",      Text = "Hello again, good Shade." },
 			{ Cue = "/VO/MelinoeField_3045", Text = "You're always here, good Shade." },
 			{ Cue = "/VO/MelinoeField_3047", Text = "Something about my brother..." },
-			{ Cue = "/VO/MelinoeField_3048", Text = "My brother's biggest fan...?",              PlayFirst = true },
+			{ Cue = "/VO/MelinoeField_3048", Text = "My brother's biggest fan...?",                       PlayFirst = true },
+			{ Cue = "/VO/MelinoeField_4804", Text = "Good to see you again, good Shade!", },
+			{ Cue = "/VO/MelinoeField_4806", Text = "Hello again, good Shade!" },
+			{ Cue = "/VO/MelinoeField_5363", Text = "Cheers for believing in us, good Shade!" },
 			-- Generic voicelines
 			{ Cue = "/VO/Melinoe_4352",      Text = "Hello again, good Shade." },
 			{ Cue = "/VO/Melinoe_2321",      Text = "Hold fast to hope, good Shade." },
