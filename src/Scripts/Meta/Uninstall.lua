@@ -73,8 +73,10 @@ function mod.Uninstall()
 	-- SJSON files: remove from SJSON data (current location)
 	removeSjsonDataFiles()
 
-	-- Remove files from the game install directory in case this is upgrading from a mod version before 1.0.0
-	if not mod.HiddenConfig.HasCompletedLegacyInstallationCleanup then
+	-- Remove files from the game install directory for users upgrading from versions before 1.0.0
+	local previousVersion = mod.HiddenConfig.InstalledModVersion or ""
+	if previousVersion == "" or previousVersion < "1.0.0" then
+		mod.DebugPrint("Cleaning up legacy files from game install directory (upgrading from " .. previousVersion .. ")...", 3)
 		mod.RemoveLegacySjsonFilesFromContent()
 		removeFiles(mod.MapFileMappings, contentRoot, "Maps\\", ".map_text")
 		removeFiles(mod.MapFileMappings, contentRoot, "Maps\\bin\\", ".thing_bin")
@@ -89,20 +91,8 @@ function mod.Uninstall()
 		removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\1080p\\", ".bik_atlas")
 		removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik")
 		removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik_atlas")
-
-		mod.HiddenConfig.HasCompletedLegacyInstallationCleanup = true
-		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+		mod.RemoveFile(rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "checksums.txt"))
 	end
-
-	-- Set the content of checksumsDest to an empty string to prompt an installation on the next start if the mod is enabled again
-	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
-	local checksumsFile = io.open(checksumsDest, "w")
-	if not checksumsFile then
-		mod.DebugPrint("Error opening file: " .. checksumsDest, 1)
-		return
-	end
-	checksumsFile:write("")
-	checksumsFile:close()
 
 	config.uninstall = false
 	mod.DebugPrint("Uninstallation complete.", 3)

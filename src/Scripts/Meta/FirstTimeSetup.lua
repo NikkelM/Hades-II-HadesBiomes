@@ -531,20 +531,6 @@ function mod.CreateRequiredHookTargetFiles()
 		return false
 	end
 
-	-- Migration: remove any legacy SJSON files from the game installation directory left by older mod versions before 1.0.0
-	-- This must happen before the install to avoid the engine loading both the old and new files simultaneously
-	if not mod.HiddenConfig.HasCompletedLegacyInstallationCleanup then
-		mod.DebugPrint("[Pre-install] Removing legacy SJSON files from game installation directory (if any exist)...", 3)
-		mod.RemoveLegacySjsonFilesFromContent()
-		mod.HiddenConfig.HasCompletedLegacyInstallationCleanup = true
-		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
-	end
-
-	mod.DebugPrint("[Pre-install] Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
-	local checksumsSrc = rom.path.combine(rom.paths.Content(), "Scripts\\checksums.txt")
-	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
-	copyFile(checksumsSrc, checksumsDest, true)
-
 	mod.DebugPrint("[Pre-install] Copying Fx animations...", 3)
 	if not copyHadesFxAnimations() then
 		mod.DebugPrint(
@@ -770,6 +756,7 @@ function mod.FinalizeInstallation()
 	end
 
 	mod.HiddenConfig.IsValidInstallation = true
+	mod.HiddenConfig.InstalledModVersion = _PLUGIN.version
 	-- If this is a reinstall, to show the successful install screen again
 	mod.HiddenConfig.HasShownSuccessfulInstallScreen = false
 	mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)

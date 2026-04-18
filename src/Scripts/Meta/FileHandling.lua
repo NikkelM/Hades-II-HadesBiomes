@@ -62,38 +62,6 @@ function mod.AreIncompatibleModsInstalled()
 	return anyIncompatible
 end
 
--- Compare the contents of plugins_data/checksums.txt and Content/Scripts/checksums.txt
--- If they differ, the game has likely updated and the mod needs to be re-installed
-function mod.CompareChecksums()
-	local cachedChecksumsPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "checksums.txt")
-	local currentChecksumsPath = rom.path.combine(rom.paths.Content(), "Scripts", "checksums.txt")
-
-	local cachedChecksums = io.open(cachedChecksumsPath, "r")
-	local currentChecksums = io.open(currentChecksumsPath, "r")
-
-	if cachedChecksums and currentChecksums then
-		local cachedChecksumsContent = cachedChecksums:read("*a")
-		local currentChecksumsContent = currentChecksums:read("*a")
-
-		-- It will be empty on first install or mod update, and unequal on game update
-		if cachedChecksumsContent == "" or cachedChecksumsContent ~= currentChecksumsContent then
-			mod.DebugPrint(
-				"Game \"checksums.txt\" does not match the mod's \"checksums.txt\". This indicates a game or mod update or fresh install, the mod will be (re)-installed.",
-				2)
-			-- This will cause a re-installation of the mod immediately after this function call
-			config.uninstall = true
-			config.firstTimeSetup = true
-		else
-			mod.DebugPrint(
-				"Game \"checksums.txt\" matches the mod's cached \"checksums.txt\". No game update detected, proceeding normally, please wait...",
-				3)
-		end
-
-		cachedChecksums:close()
-		currentChecksums:close()
-	end
-end
-
 function mod.RemoveFile(filePath)
 	if rom.path.exists(filePath) then
 		mod.DebugPrint("Removing file: " .. filePath, 4)

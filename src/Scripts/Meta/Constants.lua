@@ -14,8 +14,8 @@ mod.DefaultHiddenConfig = {
 	MustShowIncompatibleModsInstallScreen = false,
 	InstallationFailReason = "",
 	MustShowUninstallFailureScreen = false,
-	-- Will be set to true on the next mod install and then never reset
-	HasCompletedLegacyInstallationCleanup = false,
+	-- Tracks which mod version was last installed to detect mod updates
+	InstalledModVersion = "",
 	-- For debugging purposes
 	EnableVanillaDebugKeybinds = false,
 }

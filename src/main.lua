@@ -141,10 +141,15 @@ local function on_ready()
 	import "Scripts/Meta/Uninstall.lua"
 	DebugLogScriptImportProgress("setup/uninstall")
 
-	-- If the game was updated, the file checksums very likely got updated as well
-	-- At the same time, if the mod gets updated, the checksums.txt will be reset to the empty file as well
-	-- We can use this to determine if we should re-install the mod, to make sure we do not interfere with any files the game modified
-	mod.CompareChecksums()
+	-- Check if the mod version has changed since last install (mod update or fresh install)
+	-- If so, trigger a full uninstall + reinstall to ensure all files are up to date
+	if mod.HiddenConfig.InstalledModVersion ~= _PLUGIN.version then
+		mod.DebugPrint(
+			"Mod version changed: \"" .. (mod.HiddenConfig.InstalledModVersion or "Not installed") .. "\" -> \"" .. _PLUGIN.version ..
+			"\". The mod will be (re)-installed.", 2)
+		config.uninstall = true
+		config.firstTimeSetup = true
+	end
 
 	-- If the mod is disabled, we also want to uninstall it and set the firstTimeSetup flag to true for the next time the mod is enabled again
 	if not config.enabled or config.uninstall then
