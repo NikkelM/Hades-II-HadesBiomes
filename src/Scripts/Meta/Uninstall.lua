@@ -57,15 +57,11 @@ function mod.Uninstall()
 	-- Files in the game installation directory
 	removeFiles(mod.AudioFileMappings, contentRoot, "Audio\\Desktop\\", ".bank")
 
-	removeFiles(mod.BikFileNames, contentRoot, "Movies\\1080p\\", ".bik")
-	removeFiles(mod.BikFileNames, contentRoot, "Movies\\1080p\\", ".bik_atlas")
-	removeFiles(mod.BikFileNames, contentRoot, "Movies\\720p\\", ".bik")
-	removeFiles(mod.BikFileNames, contentRoot, "Movies\\720p\\", ".bik_atlas")
-
-	removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\1080p\\", ".bik")
-	removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\1080p\\", ".bik_atlas")
-	removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik")
-	removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik_atlas")
+	-- Bik files: remove Hades-1-copied files from plugins_data (custom ones are shipped with the mod)
+	removeFiles(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik")
+	removeFiles(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik_atlas")
+	removeFiles(mod.BikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik")
+	removeFiles(mod.BikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik_atlas")
 
 	-- Map files: only remove Hades-1-copied .map_text from plugins_data (not mod-shipped ones)
 	for src, dest in pairs(mod.MapFileMappings) do
@@ -84,6 +80,14 @@ function mod.Uninstall()
 		removeFiles(mod.MapFileMappings, contentRoot, "Maps\\bin\\", ".thing_bin")
 		removeFiles(mod.VoiceoverFileNames, contentRoot, "Audio\\Desktop\\VO\\", ".txt")
 		removeFiles(mod.VoiceoverFileNames, contentRoot, "Audio\\Desktop\\VO\\", ".fsb")
+		removeFiles(mod.BikFileNames, contentRoot, "Movies\\1080p\\", ".bik")
+		removeFiles(mod.BikFileNames, contentRoot, "Movies\\1080p\\", ".bik_atlas")
+		removeFiles(mod.BikFileNames, contentRoot, "Movies\\720p\\", ".bik")
+		removeFiles(mod.BikFileNames, contentRoot, "Movies\\720p\\", ".bik_atlas")
+		removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\1080p\\", ".bik")
+		removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\1080p\\", ".bik_atlas")
+		removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik")
+		removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik_atlas")
 
 		mod.HiddenConfig.HasCompletedLegacyInstallationCleanup = true
 		mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)

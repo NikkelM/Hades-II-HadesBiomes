@@ -539,10 +539,7 @@ function mod.WriteSjsonData(sjsonDataRelativePath, data)
 	local absolutePath = rom.path.combine(mod.SjsonDataBasePath, sjsonDataRelativePath)
 
 	sjson.encode_file(absolutePath, data)
-
-	if rom.data.register_content_file then
-		rom.data.register_content_file(absolutePath)
-	end
+	rom.data.register_sjson_file(absolutePath)
 
 	mod.DebugPrint("Wrote file and registered with Hell2Modding: " .. sjsonDataRelativePath, 4)
 	return absolutePath

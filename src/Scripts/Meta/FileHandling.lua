@@ -198,15 +198,15 @@ function mod.CheckRequiredFiles(failFast)
 	-- We only check once, since with a successful uninstall, there will be at least one missing file here already
 	if failFast and missingFiles > 0 then return missingFiles end
 
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, contentRoot, "Movies\\1080p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, contentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, contentRoot, "Movies\\720p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, contentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, contentRoot, "Movies\\1080p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, contentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
 
 	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\", ".map_text", failFast)
 	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\bin\\", ".thing_bin", failFast)

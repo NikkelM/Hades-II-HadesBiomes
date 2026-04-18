@@ -34,7 +34,7 @@ local function copyFile(src, dest, skipCheck)
 	outputFile:close()
 end
 
-local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nameHint, usePluginData)
+local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nameHint, usePluginData, destUsePluginData)
 	nameHint = nameHint or ""
 	mod.DebugPrint("Copying " .. nameHint .. extension .. " files...", 3)
 	for key, value in pairs(fileMappings) do
@@ -53,7 +53,11 @@ local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nam
 		else
 			srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. src .. extension)
 		end
-		destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest .. extension)
+		if destUsePluginData then
+			destPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, destBasePath .. dest .. extension)
+		else
+			destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest .. extension)
+		end
 		copyFile(srcPath, destPath)
 	end
 end
@@ -290,9 +294,7 @@ local function loadSubtitleCsvFilesAndWriteToSjson()
 			sjson.encode_file(destPath, subtitleData)
 
 			-- Register with H2M
-			if rom.data.register_content_file then
-				rom.data.register_content_file(destPath)
-			end
+			rom.data.register_sjson_file(destPath)
 		end
 	end
 end
@@ -562,14 +564,25 @@ function mod.CreateRequiredHookTargetFiles()
 		return false
 	end
 
-	-- Copy all .bik_atlas files before the loading bar, as the engine resolves .bik_atlas manifests before the hook callbacks fire.
+	-- Copy .bik_atlas files from Hades 1 to plugins_data before the loading bar, as the engine resolves .bik_atlas manifests before the hook callbacks fire
 	mod.DebugPrint("[Pre-install] Copying .bik_atlas files...", 3)
-	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\1080p\\", "Movies\\1080p\\", ".bik_atlas",
-		"1080p custom Animation ", true)
-	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas",
-		"720p custom Animation ", true)
-	copyFiles(mod.BikFileNames, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas", "1080p Hades Animation ")
-	copyFiles(mod.BikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p Hades Animation ")
+	copyFiles(mod.BikFileNames, "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik_atlas", "1080p Hades Animation ",
+		false, true)
+	copyFiles(mod.BikFileNames, "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik_atlas", "720p Hades Animation ",
+		false, true)
+
+	-- Register the copied .bik_atlas files with H2M so they're injected into engine enumeration
+	local pluginsDataBase = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid)
+	for _, name in pairs(mod.BikFileNames) do
+		local atlas1080 = rom.path.combine(pluginsDataBase, "Content\\Movies\\1080p\\" .. name .. ".bik_atlas")
+		local atlas720 = rom.path.combine(pluginsDataBase, "Content\\Movies\\720p\\" .. name .. ".bik_atlas")
+		if rom.path.exists(atlas1080) then
+			rom.data.register_plugin_file(name .. ".bik_atlas", atlas1080)
+		end
+		if rom.path.exists(atlas720) then
+			rom.data.register_plugin_file(name .. ".bik_atlas", atlas720)
+		end
+	end
 
 	mod.DebugPrint("[Pre-install] Pre-install complete. Remaining installation will run during the loading bar.", 3)
 	return true
@@ -609,11 +622,18 @@ local function copyMapTextFiles()
 			local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Maps\\" .. src .. ".map_text")
 			local destPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content\\Maps\\" .. dest .. ".map_text")
 			copyFile(srcPath, destPath)
-			-- Register the new file as H2M didn't discover it on startup
-			if rom.data.register_map_file then
-				rom.data.register_map_file(dest .. ".map_text", destPath)
-			end
+			rom.data.register_plugin_file(dest .. ".map_text", destPath)
 		end
+	end
+end
+
+---Copies .bik files from Hades 1 to plugins_data and registers them with H2M
+local function copyBikFiles(fileMappings, srcBasePath, destBasePath, nameHint)
+	copyFiles(fileMappings, srcBasePath, destBasePath, ".bik", nameHint, false, true)
+	local pluginsDataBase = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid)
+	for _, dest in pairs(fileMappings) do
+		local destPath = rom.path.combine(pluginsDataBase, destBasePath .. dest .. ".bik")
+		rom.data.register_plugin_file(dest .. ".bik", destPath)
 	end
 end
 
@@ -626,44 +646,40 @@ local installSteps = {
 		copyMapTextFiles()
 	end },
 
-	Enemy_Traps_Projectiles = { "Game data .sjson + custom .bik files", function()
+	Enemy_Traps_Projectiles = { "Game data .sjson files", function()
 		applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", mod.SjsonFileModifications)
-		copyFiles(mod.CustomBikFileNames, "Content\\Movies\\1080p\\", "Movies\\1080p\\", ".bik", "1080p custom Animation ",
-			true)
-		copyFiles(mod.CustomBikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p custom Animation ",
-			true)
 	end },
 
 	Projectiles = { "1080p .bik batch 1", function()
-		copyFiles(bikBatches1080p[1], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+		copyBikFiles(bikBatches1080p[1], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
 	Asphodel = { "1080p .bik batch 2", function()
-		copyFiles(bikBatches1080p[2], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+		copyBikFiles(bikBatches1080p[2], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
 	Chaos = { "1080p .bik batch 3", function()
-		copyFiles(bikBatches1080p[3], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+		copyBikFiles(bikBatches1080p[3], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
 	Elysium = { "1080p .bik batch 4", function()
-		copyFiles(bikBatches1080p[4], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+		copyBikFiles(bikBatches1080p[4], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
 	Graybox = { "1080p .bik batch 5", function()
-		copyFiles(bikBatches1080p[5], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+		copyBikFiles(bikBatches1080p[5], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
 	Styx = { "1080p .bik batch 6", function()
-		copyFiles(bikBatches1080p[6], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+		copyBikFiles(bikBatches1080p[6], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
 	Surface = { "1080p .bik batch 7", function()
-		copyFiles(bikBatches1080p[7], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+		copyBikFiles(bikBatches1080p[7], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
 	Tartarus = { "1080p .bik batch 8", function()
-		copyFiles(bikBatches1080p[8], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+		copyBikFiles(bikBatches1080p[8], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
 	Temple = { "Helptext .sjson files", function()
@@ -691,23 +707,23 @@ local installSteps = {
 	end },
 
 	GUI_HUD_VFX = { "720p .bik batch 1", function()
-		copyFiles(bikBatches720p[1], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+		copyBikFiles(bikBatches720p[1], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
 	end },
 
 	GUI_Portraits_VFX = { "720p .bik batch 2", function()
-		copyFiles(bikBatches720p[2], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+		copyBikFiles(bikBatches720p[2], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
 	end },
 
 	Items_General_VFX = { "720p .bik batch 3", function()
-		copyFiles(bikBatches720p[3], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+		copyBikFiles(bikBatches720p[3], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
 	end },
 
 	Items_Harvest_VFX = { "720p .bik batch 4", function()
-		copyFiles(bikBatches720p[4], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+		copyBikFiles(bikBatches720p[4], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
 	end },
 
 	Melinoe_Zeus_VFX = { "720p .bik batch 5", function()
-		copyFiles(bikBatches720p[5], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+		copyBikFiles(bikBatches720p[5], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
 	end },
 }
 
