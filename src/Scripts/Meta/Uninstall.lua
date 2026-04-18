@@ -54,8 +54,8 @@ function mod.Uninstall()
 	local contentRoot = rom.paths.Content()
 	local pluginsDataContentRoot = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content")
 
-	-- Files in the game installation directory
-	removeFiles(mod.AudioFileMappings, contentRoot, "Audio\\Desktop\\", ".bank")
+	-- Audio banks: remove Hades-1-copied files from plugins_data (custom ones are shipped with the mod)
+	removeFiles(mod.AudioFileMappings, pluginsDataContentRoot, "Audio\\Desktop\\", ".bank")
 
 	-- Bik files: remove Hades-1-copied files from plugins_data (custom ones are shipped with the mod)
 	removeFiles(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik")
@@ -80,6 +80,7 @@ function mod.Uninstall()
 		removeFiles(mod.MapFileMappings, contentRoot, "Maps\\bin\\", ".thing_bin")
 		removeFiles(mod.VoiceoverFileNames, contentRoot, "Audio\\Desktop\\VO\\", ".txt")
 		removeFiles(mod.VoiceoverFileNames, contentRoot, "Audio\\Desktop\\VO\\", ".fsb")
+		removeFiles(mod.AudioFileMappings, contentRoot, "Audio\\Desktop\\", ".bank")
 		removeFiles(mod.BikFileNames, contentRoot, "Movies\\1080p\\", ".bik")
 		removeFiles(mod.BikFileNames, contentRoot, "Movies\\1080p\\", ".bik_atlas")
 		removeFiles(mod.BikFileNames, contentRoot, "Movies\\720p\\", ".bik")

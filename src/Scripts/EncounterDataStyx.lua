@@ -141,7 +141,7 @@ local encounterModifications = {
 		SkipCombatBeginsVoiceLines = true,
 	},
 	BossHadesPeaceful = {
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicSurfaceModded", },
+		LoadModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicSurfaceModded", },
 		-- We need the Hades symbol for the exit animation from BiomeI
 		LoadPackages = { "BiomeI" },
 		PostUnthreadedEvents = {

@@ -639,7 +639,8 @@ end
 
 local installSteps = {
 	Enemies = { "Audio .bank files", function()
-		copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank", "Audio ")
+		copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Content\\Audio\\Desktop\\", ".bank", "Audio ",
+			false, true)
 	end },
 
 	Enemy_BiomeN_Projectiles = { ".map_text files", function()

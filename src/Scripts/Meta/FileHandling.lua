@@ -189,12 +189,11 @@ end
 function mod.CheckRequiredFiles(failFast)
 	failFast = failFast or false
 	local missingFiles = 0
-	local contentRoot = rom.paths.Content()
 	local sjsonDataRoot = mod.SjsonDataBasePath
 	local pluginsDataContentRoot = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content")
 
 	-- Non-SJSON files: checked in the game install directory
-	missingFiles = missingFiles + checkFilesExist(mod.AudioFileMappings, contentRoot, "Audio\\Desktop\\", ".bank", failFast)
+	missingFiles = missingFiles + checkFilesExist(mod.AudioFileMappings, pluginsDataContentRoot, "Audio\\Desktop\\", ".bank", failFast)
 	-- We only check once, since with a successful uninstall, there will be at least one missing file here already
 	if failFast and missingFiles > 0 then return missingFiles end
 
