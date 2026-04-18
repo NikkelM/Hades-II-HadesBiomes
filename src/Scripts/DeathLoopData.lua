@@ -39,16 +39,18 @@ table.insert(game.HubRoomData.Hub_Main.OnLoadEvents, 1, endingPortraitOnLoadEven
 -- #region Chaos Gate/Run start
 table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 	FunctionName = _PLUGIN.guid .. "." .. "SpawnHadesRunStartDoor",
+	GameStateRequirements = {
+		{
+			PathTrue = { _PLUGIN.guid, "HiddenConfig", "IsValidInstallation" }
+		},
+		{
+			-- Can only show after you have met Chaos, both for narrative consistency, and to fix the Chaos boon in RoomOpening playing ChaosFirstPickUp
+			PathTrue = { "GameState", "TextLinesRecord", "ChaosFirstPickUp" },
+		},
+	},
 })
 
 function mod.SpawnHadesRunStartDoor(source, args)
-	if not mod.HiddenConfig.IsValidInstallation then
-		mod.DebugPrint(
-			"The mod installation is invalid due to: " ..
-			(mod.HiddenConfig.InstallationFailReason or "UnknownReason") .. ", not spawning the Hades run start door.", 2)
-		return false
-	end
-
 	-- Run start door for the underworld
 	local spawnId = 420947
 
