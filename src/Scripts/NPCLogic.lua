@@ -82,6 +82,12 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 		end
 	end
 
+	if game.CurrentRun.IsDreamRun then
+		for _, item in pairs(source.UpgradeOptions) do
+			item.Rarity = game.TraitRarityData.RarityUpgradeOrder[game.CurrentRun.EnteredBiomes]
+		end
+	end
+
 	-- Custom: Sort the source.UpgradeOptions by their order in source.Traits
 	if source.Traits then
 		table.sort(source.UpgradeOptions, function(a, b)
