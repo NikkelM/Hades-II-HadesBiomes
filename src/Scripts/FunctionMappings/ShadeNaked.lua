@@ -59,7 +59,7 @@ function mod.DoPickup(enemy, aiData, pickupTarget)
 
 	if pickupTarget == nil then
 		local eligibleTargets = GetIdsByType({ Names = aiData.AIPickupTypes })
-		pickupTarget = GetClosest({ Id = enemy.ObjectId, DestinationIds = eligibleTargets })
+		pickupTarget = game.GetRandomValue(eligibleTargets)
 	end
 
 	enemy.PickupTarget = game.MapState.ActiveObstacles[pickupTarget] or game.ActiveEnemies[pickupTarget]
