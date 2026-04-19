@@ -2019,3 +2019,6 @@ for _, cosmeticData in ipairs(preRunCosmetics) do
 	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
+
+-- Register the cosmetics package to be loaded automatically by the CosmeticsAPI when entering the Crossroads
+CosmeticsAPI.RegisterCrossroadsPackages({ "NikkelM-HadesBiomesCosmetics" })
