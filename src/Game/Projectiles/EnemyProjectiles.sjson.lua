@@ -171,9 +171,22 @@ local hadesProjectilesModifications = {
 	-- #endregion
 
 	-- #region ELYSIUM
+	ShadeDeathSpawn = {
+		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
+		SpawnOnDetonate = "null",
+		Speed = 1000,
+		SpeedVariance = 200,
+		MaxSpeed = 1800,
+		Gravity = 2200,
+	},
+	ShadeDeathSpawnElite = {
+		SpawnOnDetonate = "null",
+	},
+	ShadeDeathSpawnSuperElite = {
+		SpawnOnDetonate = "null",
+	},
 	EliteDeathMultiEgg = {
-		-- Drop instantly
-		Gravity = 999999,
+		SpawnOnDetonate = "null",
 	},
 	ShadeNakedEliteTrapDeath = {
 		-- Otherwise, doesn't explode if killed directly by the player
