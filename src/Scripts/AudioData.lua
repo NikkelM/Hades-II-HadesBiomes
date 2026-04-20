@@ -342,6 +342,14 @@ game.GlobalVoiceLines.ModsNikkelMHadesBiomes_SaluteVoiceLines = game.GlobalVoice
 game.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines = game.GlobalVoiceLines
 		.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines
+
+-- Block Melinoe's RecordRunDepthVoiceLines on the Surface (player is Zagreus there)
+if game.GlobalVoiceLines.RecordRunDepthVoiceLines then
+	table.insert(game.GlobalVoiceLines.RecordRunDepthVoiceLines.GameStateRequirements, {
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsNone = { "Surface" },
+	})
+end
 -- #endregion
 
 -- #region HeroVoiceLines
