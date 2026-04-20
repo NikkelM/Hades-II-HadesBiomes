@@ -14,14 +14,14 @@
 
 Other fixes and improvements:
 - The Chaos Gate in the Training Grounds can now only show once you have met Chaos.
-- Added some additional contextual voicelines in various situations.
+- Updated the description text of "Final Expense" offered by Orpheus to make it clearer that all shop items are always discounted.
 - You can now salute story NPCs you meet during Zagreus' Journey runs.
 - If Thanatos has no new unique dialogue when he visits you at the start of a run, you can now pick up the starting boon without speaking to him first.
 - Added a new dialogue background for conversations in the Temple of Styx.
 - Hades and Theseus will now react with specific voicelines for certain Gods when using Godsent Hex effects against them.
 - Hades will now react to Melinoë going dark using "Unseen Ire" in the fight against him.
 - Melinoë will now react to Hades calling Cerberus to his aid.
-- Updated the description text of "Final Expense" offered by Orpheus to make it clearer that all shop items are always discounted.
+- Added some additional contextual voicelines in various situations.
 - Added [zannc](https://github.com/excellent-ae) to the Credits for the [SharedKeepsakePort](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) contribution.
 - Removed an internal workaround for safeguarding against crashes after the mod is uninstalled, as this is now more easily handled through vanilla game logic.
 - Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
