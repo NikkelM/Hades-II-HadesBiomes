@@ -51,6 +51,7 @@ Other fixes and improvements:
 - Fixed: Exalted Shades always target the closest dropped weapon instead of a random one.
 - Fixed: Exalted Shades spawned by Elysian Shades always spawn in the direction opposite the player instead of a random direction.
 - Fixed: If the "Vow of Scars" is active and "HydraLite Gold" is offered by Patroclus, the number of locations the item will last is not shown.
+- Fixed: Saluting the Good Shade in Elysium will now more consistently play a voiceline.
 - Fixed: Melinoë's voicelines that play when (re-)entering the Styx Hub room play every time instead of only sometimes.
 - Fixed: Some shop items in the Styx shop can clip behind the base they sit on.
 - Fixed: The Snakestone's lasers do not disappear when it is frozen or morphed by "Twilight Curse".
