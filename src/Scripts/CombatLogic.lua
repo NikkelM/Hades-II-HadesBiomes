@@ -82,6 +82,7 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 				SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = victim.ObjectId })
 				victim.SpawnsEnemyOnDeath = false
 				victim.SpawnUnitOnDeath = nil
+				victim.OnDeathFireWeapons = nil
 			end
 		end
 	end

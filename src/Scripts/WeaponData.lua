@@ -2218,7 +2218,10 @@ local weaponModifications = {
 		AIData = {
 			DeepInheritance = true,
 			ProjectileName = "EliteDeathMultiEgg",
-			FireProjectileAtSelf = true,
+			CreateOwnTarget = true,
+			RandomTargetAngle = true,
+			TargetOffsetDistanceMin = 250,
+			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
 			-- Rifts ban
@@ -2229,7 +2232,40 @@ local weaponModifications = {
 		AIData = {
 			DeepInheritance = true,
 			ProjectileName = "ShadeNakedEliteTrapDeath",
-			FireProjectileAtSelf = true,
+		},
+	},
+	ShadeDeathSpawn = {
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "ShadeDeathSpawn",
+			CreateOwnTarget = true,
+			RandomTargetAngle = true,
+			TargetOffsetDistanceMin = 250,
+			TargetOffsetDistanceMax = 400,
+			PreAttackStop = true,
+			PreAttackDuration = 0.0,
+		},
+	},
+	ShadeDeathSpawnElite = {
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "ShadeDeathSpawnElite",
+			CreateOwnTarget = true,
+			RandomTargetAngle = true,
+			TargetOffsetDistanceMin = 250,
+			TargetOffsetDistanceMax = 400,
+			PreAttackStop = true,
+			PreAttackDuration = 0.0,
+		},
+	},
+	ShadeDeathSpawnSuperElite = {
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "ShadeDeathSpawnSuperElite",
+			CreateOwnTarget = true,
+			RandomTargetAngle = true,
+			TargetOffsetDistanceMin = 250,
+			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
 		},

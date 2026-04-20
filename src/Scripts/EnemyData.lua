@@ -1626,11 +1626,11 @@ local enemyModifications = {
 	},
 	ShadeNaked = {
 		StunAnimations = { Default = "ShadeNaked_Idle" },
-		-- Push the Shade away after spawning so it has to move to the pickupTarget
+		SkipActiveCount = true,
+		ActiveCapWeight = 0,
 		PostActivateEvents = {
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesShadeNakedPostActivate",
-				Args = { ForceMin = 3000, ForceMax = 3300, AngleOffsetMin = -60, AngleOffsetMax = 60, },
 			},
 		},
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -1656,6 +1656,8 @@ local enemyModifications = {
 	},
 	ShadeNakedEliteTrap = {
 		UseActivatePresentation = false,
+		SkipActiveCount = true,
+		ActiveCapWeight = 0,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		DeathAnimation = "ShadeNakedDeathVFX",
 		DeathFx = "null",
@@ -1667,54 +1669,51 @@ local enemyModifications = {
 	},
 	ShadeSpearUnit = {
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
-		SpawnUnitOnDeath = "ShadeNaked",
+		OnDeathFireWeapons = { "ShadeDeathSpawn" },
 		DefaultAIData = {
 			LeapSpeed = 1800,
 			LeapPrepareTime = 0.5,
 			LeapRecoveryTime = 0.75,
 			LeapOffsetRange = 450,
 		},
-		SkipActivatePresentationOnSpawns = true,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "ShadeSpearTouchdown",
 		},
 		SpellSummonDataOverrides = {
 			-- If charmed/resurrected on the player's team, don't spawn a ShadeNaked on death
-			-- This actually means it will never spawn, SGG messed up the if-clause checking this
-			SpawnUnitOnDeathChance = 1,
+			OnDeathFireWeapons = {},
 		},
 	},
 	ShadeSpearUnitElite = {
-		SpawnUnitOnDeath = "ShadeNakedElite",
+		OnDeathFireWeapons = { "ShadeDeathSpawnElite" },
 		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeathChance = 1,
+			OnDeathFireWeapons = {},
 		},
 	},
 	ShadeSpearUnitSuperElite = {
-		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+		OnDeathFireWeapons = { "ShadeDeathSpawnSuperElite" },
 		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeathChance = 1,
+			OnDeathFireWeapons = {},
 		},
 	},
 	ShadeBowUnit = {
 		StunAnimations = { Default = "ShadeBow_OnHit" },
-		SpawnUnitOnDeath = "ShadeNaked",
-		SkipActivatePresentationOnSpawns = true,
+		OnDeathFireWeapons = { "ShadeDeathSpawn" },
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeathChance = 1,
+			OnDeathFireWeapons = {},
 		},
 	},
 	ShadeBowUnitElite = {
-		SpawnUnitOnDeath = "ShadeNakedElite",
+		OnDeathFireWeapons = { "ShadeDeathSpawnElite" },
 		EliteAttributeOptions = game.CombineTables(
 			game.CombineTables(
 				game.CombineTables(
@@ -1725,11 +1724,11 @@ local enemyModifications = {
 			{ "Hex" }
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeathChance = 1,
+			OnDeathFireWeapons = {},
 		},
 	},
 	ShadeBowUnitSuperElite = {
-		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+		OnDeathFireWeapons = { "ShadeDeathSpawnSuperElite" },
 		EliteAttributeOptions = game.CombineTables(
 			game.CombineTables(
 				game.CombineTables(
@@ -1740,65 +1739,63 @@ local enemyModifications = {
 			{ "Hex" }
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeathChance = 1,
+			OnDeathFireWeapons = {},
 		},
 	},
 	ShadeShieldUnit = {
 		StunAnimations = { Default = "ShadeShield_OnHit" },
-		SpawnUnitOnDeath = "ShadeNaked",
-		SkipActivatePresentationOnSpawns = true,
+		OnDeathFireWeapons = { "ShadeDeathSpawn" },
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeathChance = 1,
+			OnDeathFireWeapons = {},
 		},
 	},
 	ShadeShieldUnitElite = {
-		SpawnUnitOnDeath = "ShadeNakedElite",
+		OnDeathFireWeapons = { "ShadeDeathSpawnElite" },
 		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeathChance = 1,
+			OnDeathFireWeapons = {},
 		},
 	},
 	ShadeShieldUnitSuperElite = {
-		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+		OnDeathFireWeapons = { "ShadeDeathSpawnSuperElite" },
 		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeathChance = 1,
+			OnDeathFireWeapons = {},
 		},
 	},
 	ShadeSwordUnit = {
 		StunAnimations = { Default = "ShadeSword_OnHit" },
-		SpawnUnitOnDeath = "ShadeNaked",
-		SkipActivatePresentationOnSpawns = true,
+		OnDeathFireWeapons = { "ShadeDeathSpawn" },
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeathChance = 1,
+			OnDeathFireWeapons = {},
 		},
 	},
 	ShadeSwordUnitElite = {
-		SpawnUnitOnDeath = "ShadeNakedElite",
+		OnDeathFireWeapons = { "ShadeDeathSpawnElite" },
 		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeathChance = 1,
+			OnDeathFireWeapons = {},
 		},
 	},
 	ShadeSwordUnitSuperElite = {
-		SpawnUnitOnDeath = "ShadeNakedSuperElite",
+		OnDeathFireWeapons = { "ShadeDeathSpawnSuperElite" },
 		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
 			game.EnemySets.ShadeOnlyEliteAttributes
 		),
 		SpellSummonDataOverrides = {
-			SpawnUnitOnDeathChance = 1,
+			OnDeathFireWeapons = {},
 		},
 	},
 	SplitShotUnit = {

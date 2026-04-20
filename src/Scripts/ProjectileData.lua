@@ -27,6 +27,12 @@ end
 local addProjectiles = {
 	ModsNikkelMHadesBiomesRubbleFall = game.DeepCopyTable(game.ProjectileData.RubbleFall),
 	ModsNikkelMHadesBiomesRubbleFallLarge = game.DeepCopyTable(game.ProjectileData.RubbleFallLarge),
+	ShadeDeathSpawnSuperElite = {
+		CarriesSpawns = true,
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ShadeDeathSpawnOnDeath",
+		SpawnName = "ShadeNakedSuperElite",
+		SpawnsSkipActivatePresentation = true,
+	},
 	HadesCast = {
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHandleHadesCastDeath",
 		SpawnName = "HadesAmmo",
@@ -52,6 +58,24 @@ end
 
 -- Also able to modify added projectiles here
 local projectileModifications = {
+	-- #region ELYSIUM
+	ShadeDeathSpawn = {
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ShadeDeathSpawnOnDeath",
+		SpawnName = "ShadeNaked",
+		SpawnsSkipActivatePresentation = true,
+	},
+	ShadeDeathSpawnElite = {
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ShadeDeathSpawnOnDeath",
+		SpawnName = "ShadeNakedElite",
+		SpawnsSkipActivatePresentation = true,
+	},
+	EliteDeathMultiEgg = {
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ShadeDeathSpawnOnDeath",
+		SpawnName = "ShadeNakedEliteTrap",
+		SpawnsSkipActivatePresentation = true,
+	},
+	-- #endregion
+
 	-- #region TARTARUS
 	HeavyRangedWeapon = {
 		ModsNikkelMHadesBiomesPreOnHitFunctionNames = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit" },
