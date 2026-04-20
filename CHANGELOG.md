@@ -120,11 +120,11 @@ Other fixes and improvements:
 
 Other fixes and improvements:
 - The mod now uses some new internal functions to optimize calls and prevent unexpected behaviour.
-- Fixed: Room transitions in some scenarios for vanilla runs could have an incorrect fade duration.
+- Fixed: Room transitions in some scenarios for vanilla runs can have an incorrect fade duration.
 - Fixed: Viewing Zagreus' Journey runs in the Run History screen shows an incorrect background animation.
 - Fixed: Some removed variables are being accessed by the mod which can crash the game.
-- Fixed: An internal variable tracking the number of visited biomes in the current run was renamed which caused some Chaos Trials to no longer function correctly.
-- Fixed: Some modded cosmetics appear inbetween vanilla cosmetics of the same group.
+- Fixed: An internal variable tracking the number of visited biomes in the current run was renamed which causes some Chaos Trials to no longer function correctly.
+- Fixed: Some modded cosmetics appear in between vanilla cosmetics of the same group.
 
 ## v0.7.2
 
