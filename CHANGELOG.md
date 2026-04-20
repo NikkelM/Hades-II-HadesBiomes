@@ -53,6 +53,7 @@ Other fixes and improvements:
 - Fixed: Exalted Shades always target the closest dropped weapon instead of a random one.
 - Fixed: Exalted Shades spawned by Elysian Shades always spawn in the direction opposite the player instead of a random direction.
 - Fixed: If the "Vow of Scars" is active and "HydraLite Gold" is offered by Patroclus, the number of locations the item will last is not shown.
+- Fixed: Saluting the Good Shade in Elysium will now more consistently play a voiceline.
 - Fixed: Melinoë's voicelines that play when (re-)entering the Styx Hub room play every time instead of only sometimes.
 - Fixed: Some shop items in the Styx shop can clip behind the base they sit on.
 - Fixed: The Snakestone's lasers do not disappear when it is frozen or morphed by "Twilight Curse".
@@ -63,6 +64,8 @@ Other fixes and improvements:
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.
 - Fixed: Hades' footsteps during his fight sometimes appear in random places.
+- Fixed: Entering a room on the Surface plays a voiceline from Melinoë if you have never reached that many chambers in any kind of run.
+- Fixed: The "Prophecy completed" sound effect can play over the death animation on the Surface. 
 - Fixed: Frozen and chilled enemies appear much darker than they should.
 - Fixed: There is an incorrectly layered lava bubble animation in the Asphodel credits scene.
 - Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
@@ -120,11 +123,11 @@ Other fixes and improvements:
 
 Other fixes and improvements:
 - The mod now uses some new internal functions to optimize calls and prevent unexpected behaviour.
-- Fixed: Room transitions in some scenarios for vanilla runs could have an incorrect fade duration.
+- Fixed: Room transitions in some scenarios for vanilla runs can have an incorrect fade duration.
 - Fixed: Viewing Zagreus' Journey runs in the Run History screen shows an incorrect background animation.
 - Fixed: Some removed variables are being accessed by the mod which can crash the game.
-- Fixed: An internal variable tracking the number of visited biomes in the current run was renamed which caused some Chaos Trials to no longer function correctly.
-- Fixed: Some modded cosmetics appear inbetween vanilla cosmetics of the same group.
+- Fixed: An internal variable tracking the number of visited biomes in the current run was renamed which causes some Chaos Trials to no longer function correctly.
+- Fixed: Some modded cosmetics appear in between vanilla cosmetics of the same group.
 
 ## v0.7.2
 

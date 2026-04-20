@@ -512,6 +512,13 @@ function mod.ReturnRoomEntrance(currentRun, currentRoom)
 		unit.TakingExitDoorId = 1
 	end
 
+	-- Prevent Hephaestus blast VFX
+	game.RemoveReadiedMassiveAttackPresentation("HephaestusWeaponBoon")
+	game.RemoveReadiedMassiveAttackPresentation("HephaestusSpecialBoon")
+	game.RemoveReadiedMassiveAttackPresentation("HephaestusSprintBoon")
+	-- Prevent Universal Donor/BloodRetentionBoon VFX
+	StopAnimation({ Name = "AresMelBuff", DestinationId = currentRun.Hero.ObjectId })
+
 	game.wait(0.03)
 	FadeIn({ Duration = 0.0 })
 	mod.FullScreenFadeInAnimationBoatRide()

@@ -557,6 +557,8 @@ local npcModifications = {
 	ModsNikkelMHadesBiomes_NPC_Persephone_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		-- So we don't play the Prophecy completed animation and SFX over the Zagreus death animation
+		TextLinesIgnoreQuests = true,
 		SubtitleColor = game.Color.PersephoneVoice,
 		InteractTextLineSets = {
 			PersephoneFirstMeeting = {
@@ -2705,6 +2707,10 @@ local npcChoiceMappings = {
 	},
 	ModsNikkelMHadesBiomes_NPC_Persephone_01 = {
 		TextLineGroups = { "InteractTextLineSets" },
+		-- Suppress prophecy completed check after Persephone dialogue (plays over death animation)
+		AlwaysAddKVPairs = {
+			InteractTextLineSets = { SkipQuestStatusCheck = true },
+		},
 		InnerAlwaysReplaceIfExist = {
 			PreLineThreadedFunctionName = {
 				Find = "SetupPersephoneMusic",

@@ -3856,6 +3856,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 	-- Plays when saluting the good shade in the Elysium boss room
 	ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines = {
 		UsePlayerSource = true,
+		Queue = "Interrupt",
 		{
 			PreLineWait = 0.4,
 			BreakIfPlayed = true,
@@ -3870,7 +3871,6 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_4806", Text = "Hello again, good Shade!" },
 			{ Cue = "/VO/MelinoeField_5363", Text = "Cheers for believing in us, good Shade!" },
 			-- Generic voicelines
-			{ Cue = "/VO/Melinoe_4352",      Text = "Hello again, good Shade." },
 			{ Cue = "/VO/Melinoe_2321",      Text = "Hold fast to hope, good Shade." },
 			{ Cue = "/VO/Melinoe_2322",      Text = "Moonlight guide you, good Shade." },
 			{ Cue = "/VO/Melinoe_5519",      Text = "Thank you for having faith in him and me.", },
