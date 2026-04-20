@@ -31,7 +31,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_sealedDocument_01",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cosmetic_sealedDocument_01",
 		Cost = {
 			ModsNikkelMHadesBiomes_BossResourceAsphodel = 3,
 			ModsNikkelMHadesBiomes_BossResourceElysium = 3,
@@ -55,7 +55,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_sealedDocument_01",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cosmetic_sealedDocument_01",
 		Cost = {
 			ModsNikkelMHadesBiomes_OreAsphodel = 6,
 			ModsNikkelMHadesBiomes_OreElysium = 5,
@@ -76,7 +76,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_sealedDocument_01",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cosmetic_sealedDocument_01",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantTartarus = 1,
 			ModsNikkelMHadesBiomes_BossResourceAsphodel = 1,
@@ -96,7 +96,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_giftRackUpgrade_01",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cosmetic_giftRackUpgrade_01",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantTartarus = 1,
 			ModsNikkelMHadesBiomes_OreTartarus = 2,
@@ -258,7 +258,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_tartarus",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cauldron_tartarus",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantTartarus = 3,
 			ModsNikkelMHadesBiomes_CropTartarus = 1,
@@ -281,7 +281,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_asphodel",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cauldron_asphodel",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantAsphodel = 3,
 			ModsNikkelMHadesBiomes_CropAsphodel = 1,
@@ -314,7 +314,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_elysium",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cauldron_elysium",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantElysium = 3,
 			ModsNikkelMHadesBiomes_CropElysium = 1,
@@ -349,7 +349,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_goldUrnUpgrades_01",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cosmetic_goldUrnUpgrades_01",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantTartarus = 2,
 			ModsNikkelMHadesBiomes_CropTartarus = 1,
@@ -382,7 +382,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_goldUrnUpgrades_01",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cosmetic_goldUrnUpgrades_01",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
 			ModsNikkelMHadesBiomes_CropElysium = 2,
@@ -406,7 +406,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_goldUrnUpgrades_01",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cosmetic_goldUrnUpgrades_01",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantStyx = 1,
 			ModsNikkelMHadesBiomes_OreElysium = 3,
@@ -503,7 +503,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_shrinePointGates_01",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cosmetic_shrinePointGates_01",
 		Cost = {
 			ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
 			ModsNikkelMHadesBiomes_BossResourceElysium = 1,
@@ -575,7 +575,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cosmetic_Lyre_01",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cosmetic_Lyre_01",
 		Cost = {
 			ModsNikkelMHadesBiomes_CropAsphodel = 1,
 			ModsNikkelMHadesBiomes_PlantElysium = 2,
@@ -596,7 +596,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_lernie",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cauldron_lernie",
 		Cost = {
 			ModsNikkelMHadesBiomes_PlantAsphodel = 4,
 			ModsNikkelMHadesBiomes_OreAsphodel = 5,
@@ -619,7 +619,7 @@ local newIncantations = {
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
-		Icon = "NikkelM-HadesBiomesCosmetics\\Cauldron\\cauldron_unlockCosmetics",
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cauldron_unlockCosmetics",
 		Cost = {
 			CosmeticsPoints = 150,
 			ModsNikkelMHadesBiomes_PlantTartarus = 2,

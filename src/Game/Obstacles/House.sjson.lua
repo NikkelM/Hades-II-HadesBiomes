@@ -17,7 +17,7 @@ local hadesObstacleAdditions = {
 		},
 		Thing = {
 			EditorOutlineDrawBounds = false,
-			Graphic = "NikkelM-HadesBiomesCosmetics\\Tilesets\\House\\House_StatueDraped_01",
+			Graphic = "NikkelM-HadesBiomesCrossroads\\Tilesets\\House\\House_StatueDraped_01",
 			Tallness = 1072.0,
 			Offset = { X = 0, Y = -240 },
 			Points = {
@@ -37,7 +37,7 @@ local hadesObstacleAdditions = {
 		},
 		Thing = {
 			EditorOutlineDrawBounds = false,
-			Graphic = "NikkelM-HadesBiomesCosmetics\\Tilesets\\House\\House_StatueSkelly_01",
+			Graphic = "NikkelM-HadesBiomesCrossroads\\Tilesets\\House\\House_StatueSkelly_01",
 			Tallness = 1035.0,
 			Offset = { X = 0, Y = -574 },
 			Points = {
@@ -57,7 +57,7 @@ local hadesObstacleAdditions = {
 		},
 		Thing = {
 			EditorOutlineDrawBounds = false,
-			Graphic = "NikkelM-HadesBiomesCosmetics\\Tilesets\\House\\House_StatueSkelly_02",
+			Graphic = "NikkelM-HadesBiomesCrossroads\\Tilesets\\House\\House_StatueSkelly_02",
 			Tallness = 1035.0,
 			Offset = { X = 0, Y = -571 },
 			Points = {
@@ -77,7 +77,7 @@ local hadesObstacleAdditions = {
 		},
 		Thing = {
 			EditorOutlineDrawBounds = false,
-			Graphic = "NikkelM-HadesBiomesCosmetics\\Tilesets\\House\\House_StatueSkelly_04",
+			Graphic = "NikkelM-HadesBiomesCrossroads\\Tilesets\\House\\House_StatueSkelly_04",
 			Tallness = 1035.0,
 			Offset = { X = 0, Y = -568 },
 			Points = {

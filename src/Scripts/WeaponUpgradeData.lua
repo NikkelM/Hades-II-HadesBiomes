@@ -1,5 +1,5 @@
 -- Replace the backing animation/texture with the longer one
-game.ScreenData.WeaponUpgradeScreen.ComponentData.StatsBox.AnimationName = "NikkelM-HadesBiomesCosmetics\\GUI\\Screens\\WeaponUpgrade\\StatsBacking"
+game.ScreenData.WeaponUpgradeScreen.ComponentData.StatsBox.AnimationName = "NikkelM-HadesBiomesCrossroads\\GUI\\Screens\\WeaponUpgrade\\StatsBacking"
 game.ScreenData.WeaponUpgradeScreen.ComponentData.StatsBox.Y = 845
 
 -- Add the new rows
