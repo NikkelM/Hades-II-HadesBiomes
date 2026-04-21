@@ -754,7 +754,7 @@ function mod.HadesConsumeHeal(enemy, weaponAIData, currentRun)
 end
 
 function mod.HitByGraveHandsPresentation(victim)
-	if not GetUnitDataValue({ Id = game.CurrentRun.Hero.ObjectId, Property = "ImmuneToStun" }) then
+	if victim ~= nil and victim.ObjectId == game.CurrentRun.Hero.ObjectId and not GetUnitDataValue({ Id = game.CurrentRun.Hero.ObjectId, Property = "ImmuneToStun" }) then
 		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.HitByGraveHandsVoiceLines, true)
 	end
 end
@@ -1221,11 +1221,14 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 		message = game.CurrentRun.ActiveBounty
 	else
 		-- Custom start
+		local superPriorityEligibleMessages = {}
 		local priorityEligibleMessages = {}
 		local eligibleMessages = {}
 		for name, origMessage in pairs(game.GameData.ModsNikkelMHadesBiomesRunClearMessageData) do
 			if not origMessage.DebugOnly and game.IsGameStateEligible(game.CurrentRun, origMessage.GameStateRequirements) then
-				if origMessage.Priority then
+				if origMessage.SuperPriority then
+					table.insert(superPriorityEligibleMessages, origMessage)
+				elseif origMessage.Priority then
 					table.insert(priorityEligibleMessages, origMessage)
 				else
 					table.insert(eligibleMessages, origMessage)
@@ -1233,7 +1236,9 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 			end
 		end
 		local messageData = nil
-		if not game.IsEmpty(priorityEligibleMessages) then
+		if not game.IsEmpty(superPriorityEligibleMessages) then
+			messageData = game.GetRandomValue(superPriorityEligibleMessages)
+		elseif not game.IsEmpty(priorityEligibleMessages) then
 			messageData = game.GetRandomValue(priorityEligibleMessages)
 		else
 			messageData = game.GetRandomValue(eligibleMessages)

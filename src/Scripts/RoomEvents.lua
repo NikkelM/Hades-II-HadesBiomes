@@ -7,6 +7,7 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 
 	game.PlayVoiceLines(args.VoiceLines)
 	local didPan = false
+	local panDuration = args.DurationIn or 1.5
 
 	if args.ProcessTextLinesIds ~= nil then
 		for k, id in ipairs(args.ProcessTextLinesIds) do
@@ -15,7 +16,8 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 				if not args.SkipAngleTowardTarget then
 					AngleTowardTarget({ Id = id, DestinationId = game.CurrentRun.Hero.ObjectId })
 				end
-				PanCamera({ Ids = id, Duration = args.DurationIn or 1.5, EaseIn = 0.05, EaseOut = 0.3 })
+				panDuration = args.DurationIn or 1.5
+				PanCamera({ Ids = id, Duration = panDuration, EaseIn = 0.05, EaseOut = 0.3 })
 				didPan = true
 				if args.UsePanSound then
 					PlaySound({ Name = "/Leftovers/World Sounds/MapZoomSlow" })
@@ -27,12 +29,12 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 				game.ProcessTextLines(enemy, enemy.BossPresentationIntroTextLineSets)
 				game.ProcessTextLines(enemy, enemy.BossPresentationTextLineSets)
 				game.ProcessTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
-				if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets) then
-					if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets) then
-						if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets) then
-							if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationIntroTextLineSets) then
-								if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationTextLineSets) then
-									mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
+				if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets, args) then
+					if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets, args) then
+						if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets, args) then
+							if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationIntroTextLineSets, args) then
+								if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationTextLineSets, args) then
+									mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets, args)
 								end
 							end
 						end
@@ -62,6 +64,11 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 		game.wait(args.UnlockDelay)
 	end
 	if didPan then
+		-- Wait for the camera pan to the boss to finish before locking the camera to the player, in case dialogue was skipped before the pan completed
+		local remainingPanTime = panDuration - (args.TotalElapsedTime or 0)
+		if remainingPanTime > 0 then
+			game.wait(remainingPanTime)
+		end
 		LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = args.DurationOut or 1.25, EaseIn = 0.04, EaseOut = 0.275 })
 	end
 

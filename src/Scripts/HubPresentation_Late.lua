@@ -9,7 +9,7 @@ modutil.mod.Path.Context.Wrap.Static("StartDeathLoopPresentation", function(curr
 	end)
 end)
 
-modutil.mod.Path.Context.Wrap.Static("HubPostBountyStartPresentation", function(currentRun)
+modutil.mod.Path.Context.Wrap.Static("HubPostBountyStartPresentation", function(currentRoom)
 	modutil.mod.Path.Wrap("PlayVoiceLines", function(base, voicelines, neverQueue, source, args)
 		-- For a modded run, we need to use different GameStateRequirements for the voicelines
 		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and voicelines == game.GlobalVoiceLines.EnteredDeathAreaVoiceLines then
@@ -20,7 +20,7 @@ modutil.mod.Path.Context.Wrap.Static("HubPostBountyStartPresentation", function(
 	end)
 end)
 
-modutil.mod.Path.Context.Wrap.Static("HubPostDreamStartPresentation", function(currentRun)
+modutil.mod.Path.Context.Wrap.Static("HubPostDreamStartPresentation", function(currentRoom)
 	modutil.mod.Path.Wrap("PlayVoiceLines", function(base, voicelines, neverQueue, source, args)
 		-- For a modded run, we need to use different GameStateRequirements for the voicelines
 		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and voicelines == game.GlobalVoiceLines.EnteredDeathAreaVoiceLines then

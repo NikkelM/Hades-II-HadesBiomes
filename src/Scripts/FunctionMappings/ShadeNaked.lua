@@ -21,27 +21,50 @@ function mod.PickupAI(enemy, currentRun)
 	end
 end
 
+-- Based on ProjectileSpawnUnitOnDeath, but skips the ActiveEnemyCap check
+-- ShadeNaked respawns should always succeed - they're rearming, not new spawns
+function mod.ShadeDeathSpawnOnDeath(projectileData, triggerArgs)
+	if game.SessionMapState.HandlingDeath or (triggerArgs and triggerArgs.BlockSpawns) then
+		return
+	end
+
+	local newSpawnData = game.EnemyData[projectileData.SpawnName]
+	if newSpawnData == nil then
+		return
+	end
+
+	local spawnPointId = SpawnObstacle({
+		Name = "InvisibleTarget",
+		LocationX = triggerArgs.LocationX,
+		LocationY = triggerArgs.LocationY,
+		Group = "Scripting",
+	})
+	if IsLocationBlocked({ Id = spawnPointId }) then
+		Destroy({ Id = spawnPointId })
+		return
+	end
+
+	local newEnemy = game.DeepCopyTable(newSpawnData) or {}
+
+	newEnemy.ObjectId = SpawnUnit({
+		Name = projectileData.SpawnName,
+		DestinationId = spawnPointId,
+		Group = "Standing",
+	})
+
+	if projectileData.SpawnsSkipActivatePresentation then
+		newEnemy.UseActivatePresentation = false
+	end
+
+	game.SetupUnit(newEnemy)
+	Destroy({ Id = spawnPointId })
+end
+
 function mod.ModsNikkelMHadesBiomesShadeNakedPostActivate(source, args)
 	-- If there is an active challenge encounter, we need to add the unit to the active spawns
 	if game.CurrentRun.CurrentRoom.ChallengeEncounter ~= nil and game.CurrentRun.CurrentRoom.ChallengeEncounter.InProgress and game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns ~= nil then
 		game.CurrentRun.CurrentRoom.ChallengeEncounter.ActiveSpawns[source.ObjectId] = true
 	end
-
-	-- If the enemy spawned normally (in the Butterfly miniboss chamber), we don't want to apply the force
-	if source.UseActivatePresentation then
-		return
-	end
-	-- To prevent being damaged from the same hit that killed the parent, set temporarily invulnerable on spawn
-	game.SetUnitInvulnerable(source, "ShadeNakedSpawnInvulnerability", { Silent = true })
-	game.thread(function()
-		game.wait(0.05)
-		game.SetUnitVulnerable(source, "ShadeNakedSpawnInvulnerability")
-	end)
-
-	local angle = GetAngleBetween({ DestinationId = source.ObjectId, Id = game.CurrentRun.Hero.ObjectId }) +
-			game.RandomFloat(args.AngleOffsetMin, args.AngleOffsetMax)
-	local force = game.RandomFloat(args.ForceMin, args.ForceMax)
-	ApplyForce({ Id = source.ObjectId, Speed = force, Angle = angle, SelfApplied = true })
 end
 
 function mod.ModsNikkelMHadesBiomesShadeNakedDeath(unit, args)
@@ -59,7 +82,7 @@ function mod.DoPickup(enemy, aiData, pickupTarget)
 
 	if pickupTarget == nil then
 		local eligibleTargets = GetIdsByType({ Names = aiData.AIPickupTypes })
-		pickupTarget = GetClosest({ Id = enemy.ObjectId, DestinationIds = eligibleTargets })
+		pickupTarget = game.GetRandomValue(eligibleTargets)
 	end
 
 	enemy.PickupTarget = game.MapState.ActiveObstacles[pickupTarget] or game.ActiveEnemies[pickupTarget]

@@ -393,8 +393,7 @@ local roomModifications = {
 	-- GENERIC
 	BaseAsphodel = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicAsphodelModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicAsphodelModded", },
 
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Asphodel",
 
@@ -543,6 +542,7 @@ local roomModifications = {
 		-- To not have the preview be created while the boat is still moving
 		UnlockExitsWait = 1,
 		BackupCauseOfDeath = "HydraHeadImmortal",
+		CombatResolvedVoiceLines = {},
 
 		HasPickaxePoint = false,
 	},
@@ -555,6 +555,7 @@ local roomModifications = {
 			},
 		},
 		BackupCauseOfDeath = "HydraHeadImmortal",
+		CombatResolvedVoiceLines = {},
 
 		HasPickaxePoint = false,
 	},

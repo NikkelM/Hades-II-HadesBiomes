@@ -557,6 +557,8 @@ local npcModifications = {
 	ModsNikkelMHadesBiomes_NPC_Persephone_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		-- So we don't play the Prophecy completed animation and SFX over the Zagreus death animation
+		TextLinesIgnoreQuests = true,
 		SubtitleColor = game.Color.PersephoneVoice,
 		InteractTextLineSets = {
 			PersephoneFirstMeeting = {
@@ -691,7 +693,6 @@ local npcModifications = {
 						},
 						TextLineSet = {
 							BecameCloseWithThanatos01 = {
-								Name = "BecameCloseWithThanatos01",
 								GameStateRequirements = {},
 								-- Removed for context
 								-- {
@@ -876,7 +877,6 @@ local npcModifications = {
 						},
 						TextLineSet = {
 							BecameCloseWithThanatos01_B = {
-								Name = "BecameCloseWithThanatos01_B",
 								GameStateRequirements = {},
 								-- Removed for context
 								-- {
@@ -1779,7 +1779,6 @@ local npcModifications = {
 						},
 						TextLineSet = {
 							MegaeraBedroom01 = {
-								Name = "MegaeraBedroom01",
 								-- Requirements are above
 								GameStateRequirements = {},
 								{
@@ -1846,7 +1845,6 @@ local npcModifications = {
 						},
 						TextLineSet = {
 							MegaeraBedroom02 = {
-								Name = "MegaeraBedroom02",
 								-- Requirements are above
 								GameStateRequirements = {},
 								{
@@ -1938,7 +1936,6 @@ local npcModifications = {
 						},
 						TextLineSet = {
 							MegaeraBedroom02B = {
-								Name = "MegaeraBedroom02B",
 								-- Requirements are above
 								GameStateRequirements = {},
 								{
@@ -2031,7 +2028,6 @@ local npcModifications = {
 						},
 						TextLineSet = {
 							BecameCloseWithMegaera01 = {
-								Name = "BecameCloseWithMegaera01",
 								-- Requirements are above
 								GameStateRequirements = {},
 								{
@@ -2225,7 +2221,6 @@ local npcModifications = {
 						},
 						TextLineSet = {
 							BecameCloseWithMegaera01_B = {
-								Name = "BecameCloseWithMegaera01_B",
 								-- Requirements are above
 								GameStateRequirements = {},
 								{
@@ -2705,6 +2700,10 @@ local npcChoiceMappings = {
 	},
 	ModsNikkelMHadesBiomes_NPC_Persephone_01 = {
 		TextLineGroups = { "InteractTextLineSets" },
+		-- Suppress prophecy completed check after Persephone dialogue (plays over death animation)
+		AlwaysAddKVPairs = {
+			InteractTextLineSets = { SkipQuestStatusCheck = true },
+		},
 		InnerAlwaysReplaceIfExist = {
 			PreLineThreadedFunctionName = {
 				Find = "SetupPersephoneMusic",

@@ -33,7 +33,7 @@ modutil.mod.Path.Wrap("ShrineScreenUpdateSkellyText", function(base, screen)
 			end
 		end
 
-		-- If goal is still nil, all thresholds are met — show last one as complete
+		-- If goal is still nil, all thresholds are met - show last one as complete
 		if screen.NextModsNikkelMHadesBiomesModdedRouteSkellyShrinePointGoal == nil then
 			local lastThreshold = screen.ModsNikkelMHadesBiomesShrinePointThresholds
 					[#screen.ModsNikkelMHadesBiomesShrinePointThresholds]

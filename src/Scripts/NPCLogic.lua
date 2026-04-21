@@ -82,6 +82,12 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 		end
 	end
 
+	if game.CurrentRun.IsDreamRun then
+		for _, item in pairs(source.UpgradeOptions) do
+			item.Rarity = game.TraitRarityData.RarityUpgradeOrder[game.CurrentRun.EnteredBiomes]
+		end
+	end
+
 	-- Custom: Sort the source.UpgradeOptions by their order in source.Traits
 	if source.Traits then
 		table.sort(source.UpgradeOptions, function(a, b)
@@ -657,16 +663,26 @@ function mod.SurpriseNPCPresentation(source, args)
 	end
 
 	AddInputBlock({ Name = "SurpriseNPCPresentation" })
-
-	game.EndAutoSprint()
-	CancelWeaponFireRequests({ Id = game.CurrentRun.Hero.ObjectId })
-	Stop({ Id = game.CurrentRun.Hero.ObjectId })
-	Halt({ Id = game.CurrentRun.Hero.ObjectId })
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
 
 	game.killWaitUntilThreads("ReattachCameraOnInput")
 
+	-- For the Thanatos and Megaera romance scenes where the player can move before this is called
+	if args.StopHeroImmediately then
+		game.EndAutoSprint()
+		CancelWeaponFireRequests({ Id = game.CurrentRun.Hero.ObjectId })
+		Stop({ Id = game.CurrentRun.Hero.ObjectId })
+		Halt({ Id = game.CurrentRun.Hero.ObjectId })
+	end
+
 	game.wait(args.IntroWait or 0.4, game.RoomThreadName)
+
+	if not args.StopHeroImmediately then
+		game.EndAutoSprint()
+		CancelWeaponFireRequests({ Id = game.CurrentRun.Hero.ObjectId })
+		Stop({ Id = game.CurrentRun.Hero.ObjectId })
+		Halt({ Id = game.CurrentRun.Hero.ObjectId })
+	end
 
 	AngleTowardTarget({ Id = source.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
 	if not args.SkipPan then
@@ -678,7 +694,7 @@ function mod.SurpriseNPCPresentation(source, args)
 	RemoveInputBlock({ Name = "SurpriseNPCPresentation" })
 
 	if args.TextLineSet ~= nil then
-		game.ProcessTextLines(args.TextLineSet)
+		game.ProcessTextLines(source, args.TextLineSet)
 		mod.PlayRandomRemainingTextLines(source, args.TextLineSet)
 	end
 

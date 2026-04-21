@@ -374,18 +374,282 @@ local encounterModifications = {
 
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Sisyphus_01", "ModsNikkelMHadesBiomes_NPC_Bouldy_01" }, }, },
+			-- Hades uses AddEncounterEvent which is broken in H2 (RunEvents reads from encounter template, ignoring anything we add later on), so we override with just the NPC activation
+			-- Presentation is in UnthreadedEvents below
 			[3] = {
+				FunctionName = "ActivatePrePlacedUnits",
+				GameStateRequirements = {
+					RequiredQueuedTextLines = "MegaeraWithSisyphus01_FollowUp",
+					RequiredTextLines = { "SisyphusMeeting04" },
+					RequiredKills = { Harpy = 2 },
+				},
+				Args = { Ids = { 506343 } },
+			},
+			[4] = {
+				FunctionName = "ActivatePrePlacedUnits",
+				GameStateRequirements = { RequiredQueuedTextLines = "MegaeraWithSisyphus02_FollowUp" },
+				Args = { Ids = { 506343 } },
+			},
+			[5] = {
+				FunctionName = "ActivatePrePlacedUnits",
+				GameStateRequirements = { RequiredQueuedTextLines = "MegaeraWithSisyphus03_FollowUp" },
+				Args = { Ids = { 506343 } },
+			},
+			[6] = {
+				FunctionName = "ActivatePrePlacedUnits",
+				GameStateRequirements = { RequiredQueuedTextLines = "ThanatosWithSisyphus01_FollowUp" },
+				Args = { Ids = { 506345 } },
+			},
+			[7] = {
+				FunctionName = "ActivatePrePlacedUnits",
+				GameStateRequirements = { RequiredQueuedTextLines = "ThanatosWithSisyphus02_FollowUp" },
+				Args = { Ids = { 506345 } },
+			},
+			[8] = {
+				FunctionName = "ActivatePrePlacedUnits",
+				GameStateRequirements = { RequiredQueuedTextLines = "ThanatosWithSisyphus03_FollowUp" },
+				Args = { Ids = { 506345 } },
+			},
+			-- Custom addition to accommodate Orpheus in the same room
+			[9] = {
 				FunctionName = _PLUGIN.guid .. "." .. "SecretMusicPlayerEvent",
-				GameStateRequirements = mod.NilValue,
 				Args = {
 					TrackName = "/Music/MusicExploration1_MC",
 				},
 			},
-			[4] = mod.NilValue,
-			[5] = mod.NilValue,
-			[6] = mod.NilValue,
-			[7] = mod.NilValue,
-			[8] = mod.NilValue,
+		},
+
+		-- Copies of the StartRoomUnthreadedEvents from Hades
+		UnthreadedEvents = {
+			{
+				FunctionName = "SurpriseNPCPresentation",
+				GameStateRequirements = {
+					RequiredQueuedTextLines = "MegaeraWithSisyphus01_FollowUp",
+					RequiredTextLines = { "SisyphusMeeting04" },
+					RequiredKills = { Harpy = 2 },
+				},
+				Args = {
+					SourceId = 506343,
+					IntroWait = 1.5,
+					PanIds = { 20077, 506343, 370001 },
+					VoiceLines = {
+						Queue = "Interrupt",
+						{ PreLineWait = 0.85, UsePlayerSource = true },
+					},
+					TextLineSet = {
+						MegaeraWithSisyphus01 = {
+							{
+								Cue = "/VO/MegaeraField_0030",
+								PreLineWait = 0.35,
+								AngleTowardTargetId = 370001,
+								PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+								PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+								Text =
+								"...You help him out again, you'll get a thousand lashes next we meet. And when I return, this little rock of yours had better be up there rather than here, or else you'll get a thousand more."
+							},
+							{
+								Cue = "/VO/Sisyphus_0167",
+								Portrait = "Portrait_Sisyphus_Default_01",
+								Speaker = "NPC_Sisyphus_01",
+								PostLineFunctionName = "ExitNPCPresentation",
+								PostLineFunctionArgs = { ObjectId = 506343, TeleportToId = 506344 },
+								PreLineAnim = "SisyphusExplaining",
+								PreLineAnimTarget = 370001,
+								Text =
+								"Sounds good, sounds good, Madam, that's more than equitable really, I'll hold you to that! Be seeing you around!"
+							},
+						},
+					},
+				},
+			},
+			{
+				FunctionName = "SurpriseNPCPresentation",
+				GameStateRequirements = { RequiredQueuedTextLines = "MegaeraWithSisyphus02_FollowUp" },
+				Args = {
+					SourceId = 506343,
+					IntroWait = 1.5,
+					PanIds = { 20077, 506343, 370001 },
+					VoiceLines = {
+						Queue = "Interrupt",
+						{ PreLineWait = 0.85, UsePlayerSource = true },
+					},
+					TextLineSet = {
+						MegaeraWithSisyphus02 = {
+							{
+								Cue = "/VO/MegaeraField_0031",
+								PreLineWait = 0.35,
+								AngleTowardTargetId = 370001,
+								PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+								PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+								Text =
+								"...And you'll keep busy with your boulder if you know what's good for you, you little cheat. Don't go thinking I'm not watching you."
+							},
+							{
+								Cue = "/VO/Sisyphus_0169",
+								Portrait = "Portrait_Sisyphus_Default_01",
+								Speaker = "NPC_Sisyphus_01",
+								PostLineFunctionName = "ExitNPCPresentation",
+								PostLineFunctionArgs = { ObjectId = 506343, TeleportToId = 506344 },
+								PreLineAnim = "SisyphusExplaining",
+								PreLineAnimTarget = 370001,
+								Text =
+								"I appreciate your vigilance, Madam, and surely I'll be getting Bouldy up this very hill in no time flat, despite the fact that I have never once achieved this!"
+							},
+						},
+					},
+				},
+			},
+			{
+				FunctionName = "SurpriseNPCPresentation",
+				GameStateRequirements = { RequiredQueuedTextLines = "MegaeraWithSisyphus03_FollowUp" },
+				Args = {
+					SourceId = 506343,
+					IntroWait = 1.5,
+					PanIds = { 20077, 506343, 370001 },
+					VoiceLines = {
+						Queue = "Interrupt",
+						{ PreLineWait = 0.85, UsePlayerSource = true },
+					},
+					TextLineSet = {
+						MegaeraWithSisyphus03 = {
+							{
+								Cue = "/VO/MegaeraField_0445",
+								PreLineWait = 0.35,
+								AngleTowardTargetId = 370001,
+								PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_Start",
+								PostLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
+								Text =
+								"...And when this matter with the Prince is over with, we will be getting back to how things used to be. Until such time, I'd better regularly see your boulder on that hill."
+							},
+							{
+								Cue = "/VO/Sisyphus_0174",
+								Portrait = "Portrait_Sisyphus_Default_01",
+								Speaker = "NPC_Sisyphus_01",
+								PostLineFunctionName = "ExitNPCPresentation",
+								PostLineFunctionArgs = { ObjectId = 506343, TeleportToId = 506344 },
+								PreLineAnim = "SisyphusExplaining",
+								PreLineAnimTarget = 370001,
+								Text =
+								"Entirely makes sense to me, Madam, and rest assured that Bouldy, {#DialogueItalicFormat}erm{#Prev}, that is to say this boulder here, that I will push it regularly, moving forward, same as ever! Now good-bye!"
+							},
+						},
+					},
+				},
+			},
+			{
+				FunctionName = "SurpriseNPCPresentation",
+				GameStateRequirements = { RequiredQueuedTextLines = "ThanatosWithSisyphus01_FollowUp" },
+				Args = {
+					SourceId = 506345,
+					IntroWait = 1.5,
+					PanIds = { 20077, 506345, 370001 },
+					VoiceLines = {
+						Queue = "Interrupt",
+						{ PreLineWait = 0.85, UsePlayerSource = true },
+					},
+					TextLineSet = {
+						ThanatosWithSisyphus01 = {
+							EndVoiceLines = {
+								PreLineWait = 1.0,
+								UsePlayerSource = true,
+							},
+							{
+								Cue = "/VO/Thanatos_0215",
+								PreLineWait = 0.35,
+								AngleTowardTargetId = 370001,
+								Text =
+								"...And, lastly, you're forbidden from offering further assistance to Prince Zagreus. Do we understand each other?"
+							},
+							{
+								Cue = "/VO/Sisyphus_0163",
+								Portrait = "Portrait_Sisyphus_Default_01",
+								Speaker = "NPC_Sisyphus_01",
+								Text =
+								"Why, absolutely, Master Thanatos, I wouldn't think of it! My mind is fully occupied with all the latest boulder-pushing strategies, besides."
+							},
+							{
+								Cue = "/VO/Thanatos_0216",
+								PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosExit",
+								PostLineFunctionArgs = { IgnoreMusic = true },
+								Text = "Enough! Get back to work, and I'll get back to mine."
+							},
+						},
+					},
+				},
+			},
+			{
+				FunctionName = "SurpriseNPCPresentation",
+				GameStateRequirements = { RequiredQueuedTextLines = "ThanatosWithSisyphus02_FollowUp" },
+				Args = {
+					SourceId = 506345,
+					IntroWait = 1.5,
+					PanIds = { 20077, 506345, 370001 },
+					VoiceLines = {
+						Queue = "Interrupt",
+						{ PreLineWait = 0.85, UsePlayerSource = true },
+					},
+					TextLineSet = {
+						ThanatosWithSisyphus02 = {
+							{
+								Cue = "/VO/Sisyphus_0165",
+								Portrait = "Portrait_Sisyphus_Default_01",
+								Speaker = "NPC_Sisyphus_01",
+								AngleTowardTargetId = 370001,
+								Text =
+								"I understand you, Master Thanatos, and will be doing as you say. No more assistance for Prince Zagreus, dead serious this time."
+							},
+							{
+								Cue = "/VO/ThanatosField_0218",
+								PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+								PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosExit",
+								PostLineFunctionArgs = { IgnoreMusic = true },
+								Text =
+								"Good. It shall be both our skins if you are caught in one of your deceptions. See to it that this doesn't happen."
+							},
+						},
+					},
+				},
+			},
+			{
+				FunctionName = "SurpriseNPCPresentation",
+				GameStateRequirements = { RequiredQueuedTextLines = "ThanatosWithSisyphus03_FollowUp" },
+				Args = {
+					SourceId = 506345,
+					IntroWait = 1.5,
+					PanIds = { 20077, 506345, 370001 },
+					VoiceLines = {
+						Queue = "Interrupt",
+						{ PreLineWait = 0.85, UsePlayerSource = true },
+					},
+					TextLineSet = {
+						ThanatosWithSisyphus03 = {
+							{
+								Cue = "/VO/ThanatosField_0216",
+								PreLineWait = 0.35,
+								AngleTowardTargetId = 370001,
+								Text =
+								"...You would be wise to heed my words next time, and fear the consequences of eluding me. Death can be most unpleasant, as I'm sure you know."
+							},
+							{
+								Cue = "/VO/Sisyphus_0176",
+								Portrait = "Portrait_Sisyphus_Default_01",
+								Speaker = "NPC_Sisyphus_01",
+								Text =
+								"Well, that's just it, Master Thanatos. I never was terribly fearful of you gods, if you'll forgive my saying so. Far as I can tell, all of you seem to have your struggles much like mortals do. A fear of death aside."
+							},
+							{
+								Cue = "/VO/ThanatosField_0217",
+								PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "ThanatosExit",
+								Emote = "PortraitEmoteFiredUp",
+								PreLineAnim = "ThanatosIdleInhouseFidget_HairFlick",
+								PostLineFunctionArgs = { IgnoreMusic = true },
+								Text =
+								"What would you know of the struggles of gods? Now you have eternity to think on what you've done. Maybe I'll check again with you after another aeon or two, see if you've learned anything more."
+							},
+						},
+					},
+				},
+			},
 		},
 
 		NextRoomResumeMusic = true,

@@ -1,7 +1,8 @@
 -- Defines animation names that already exist in Hades II and should therefore be skipped when the Hades GUIAnimations are imported
+-- Also defines some additional animations and modifications to existing animations required for the mod to work properly
 
--- The destination filename, used in a couple of places in the mod, therefore defined centrally
-mod.HadesGUIAnimationsDestinationFilename = "Game\\Animations\\Z_ModsNikkelmHadesBiomesGUIAnimations.sjson"
+-- The path relative to the Hell2Modding-SJSON/ data directory
+mod.HadesGUIAnimationsSjsonDataPath = "Animations\\Z_ModsNikkelmHadesBiomesGUIAnimations.sjson"
 
 mod.HadesGUIAnimationAdditions = {
 	{

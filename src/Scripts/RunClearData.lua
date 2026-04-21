@@ -54,42 +54,42 @@ game.GameData.ModsNikkelMHadesBiomesRunClearMessageData = {
 	-- #region ORIGINAL HADES MESSAGES
 	ModsNikkelMHadesBiomes_RunClear_ClearNumOne = {
 		InheritFrom = { "DefaultMessage" },
-		Priority = true,
+		SuperPriority = true,
 		GameStateRequirements = {
 			RequiredRunsCleared = 1,
 		},
 	},
 	ModsNikkelMHadesBiomes_RunClear_ClearNumTen = {
 		InheritFrom = { "DefaultMessage" },
-		Priority = true,
+		SuperPriority = true,
 		GameStateRequirements = {
 			RequiredRunsCleared = 10,
 		},
 	},
 	ModsNikkelMHadesBiomes_RunClear_ClearNumFifty = {
 		InheritFrom = { "DefaultMessage" },
-		Priority = true,
+		SuperPriority = true,
 		GameStateRequirements = {
 			RequiredRunsCleared = 50,
 		},
 	},
 	ModsNikkelMHadesBiomes_RunClear_ClearNumOneHundred = {
 		InheritFrom = { "DefaultMessage" },
-		Priority = true,
+		SuperPriority = true,
 		GameStateRequirements = {
 			RequiredRunsCleared = 100,
 		},
 	},
 	ModsNikkelMHadesBiomes_RunClear_ClearNumTwoFifty = {
 		InheritFrom = { "DefaultMessage" },
-		Priority = true,
+		SuperPriority = true,
 		GameStateRequirements = {
 			RequiredRunsCleared = 250,
 		},
 	},
 	ModsNikkelMHadesBiomes_RunClear_ClearNumFiveHundred = {
 		InheritFrom = { "DefaultMessage" },
-		Priority = true,
+		SuperPriority = true,
 		GameStateRequirements = {
 			RequiredRunsCleared = 500,
 		},

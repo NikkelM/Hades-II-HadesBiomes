@@ -2,8 +2,10 @@
 
 Some important notes:
 - The Portraits package is always loaded in both the Crossroads AND modded runs.
-- The Cosmetics package is only loaded in the Crossroads.
+- The Crossroads package is only loaded in the Crossroads.
 - The GUIModded package is only loaded in modded runs.
+
+- The Cosmetics package is only loaded in the Crossroads, through the CosmeticsAPI.
 
 # Creating new packages
 

@@ -65,7 +65,7 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 			end
 		end
 
-		-- We don't need to load LoadModdedAudioBanks or LoadCustomModdedAudioBanks here, as they were already loaded in AudioStateInit
+		-- We don't need to load LoadModdedAudioBanks here, as they were already loaded in AudioStateInit
 		if currentRoom.LoadModdedVoiceBanks ~= nil then
 			game.LoadVoiceBanks(currentRoom.LoadModdedVoiceBanks)
 		end

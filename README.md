@@ -3,7 +3,8 @@
 ![Zagreus' Journey](./img/Readme/ZagreusJourneyTartarus.png)
 
 _Zagreus' Journey_ is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
-Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past.
+Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past - all integrated into the main game as if it was always there: Naturally progress through the new biomes, unlock new incantations to perform, reveal and complete new Minor Prophecies, forge bonds with NPCs in familiar and new locations, collect over 30 new resources to spend on new cosmetics and music, and test your skills with new Testaments and Chaos Trials.
+Find the full list of features below!
 
 Wonder what it plays like?
 Take a look at what Haelian and Boated think of the mod:
@@ -33,7 +34,7 @@ It is highly recommended that you complete the main story of Hades before playin
 
 - Play through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
 - Discover and overcome the challenge of fighting all of the original game's enemies and bosses using Melinoë's unique abilities and weapons.
-- Relive Zagreus' story by escaping to the Surface, meeting your brother's old friends and conversing with the Fury Sisters, the Champions of Elysium and [REDACTED] himself.
+- Relive Zagreus' story by escaping to the Surface, forging bonds with your brother's old friends, and conversing with the Fury Sisters, the Champions of Elysium and [REDACTED] himself.
 - Benefit from a multitude of entirely new boons and effects offered to you by Sisyphus, Eurydice, Patroclus... and other familiar faces that you will now be able to meet along the way!
 - Collect **30+** new resources specific to the new biomes, use them for unlocks in this and other mods (see section below), and trade them with the Broker.
 - Unlock **29** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
@@ -79,11 +80,11 @@ The mod manager will automatically install any other mods this mod needs to work
 Start the game through the mod manager to make sure mods are enabled - use the `Start Modded` button on the top left.
 
 Starting the game the first time with the mod enabled will install a number of files.
-**This may take a few minutes depending on your hardware, and will cause the initial loading/splash screen to take longer than usual.**
+**This may take a few minutes depending on your hardware, and will cause the initial loading screen to take longer than usual.**
 
 If the mod was installed successfully, you will see a new logo appear in the main menu.
 
-This mod requires an additional 1GB of disk space.
+This mod requires an additional 5GB of disk space.
 
 If you have Hades and Hades II installed in different parent folders, such as through different storefronts (Steam/Epic Games/Microsoft Store/Game Pass), you will need to provide the path of your Hades installation in the mod's configuration file in your mod manager.
 Set the `hadesGameFolder` configuration option to the folder where Hades is installed (such as `C:\Program Files (x86)\Steam\steamapps\common\Hades` if installed through Steam, `C:\Program Files (x86)\Epic Games\Games\Hades` if installed through Epic Games, or `C:/Xbox/Hades` for Microsoft Store/Game Pass).
@@ -91,8 +92,9 @@ Refer to the [Configuration](#configuration) section below for more information 
 
 If you would like more information or experience any issues, please refer to the [Installation](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Installation-&-Uninstallation) wiki page.
 
-**Before removing** the mod from r2modman, you should first uninstall it through the `uninstall` configuration setting, to prevent any issues with leftover files.
-Only uninstall the mod while in the Crossroads to prevent issues.
+### Installing on Steam Deck
+
+For instructions on how to install this mod on Steam Deck, please follow the instructions in the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki#can-i-install-this-mod-on-steam-deck).
 
 <!-- ## Configuration -->
 

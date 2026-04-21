@@ -93,3 +93,13 @@ modutil.mod.Path.Wrap("RunShopGeneration", function(base, room)
 		room.Store = game.FillInShopOptions({ StoreData = game.StoreData.RoomShop, RoomName = room.Name })
 	end
 end)
+
+modutil.mod.Path.Wrap("UpdateStoreItemCostText", function(base)
+	-- Fix for Trial of Family adding RestockBoon before the room exists
+	if not game.CurrentRun.CurrentRoom then
+		return
+	end
+
+	return base()
+end)
+

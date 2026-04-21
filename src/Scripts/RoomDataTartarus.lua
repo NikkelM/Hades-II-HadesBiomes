@@ -539,8 +539,7 @@ local roomModifications = {
 	-- GENERIC
 	BaseTartarus = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicTartarusModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicTartarusModded", },
 
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Tartarus",
 
@@ -753,6 +752,8 @@ local roomModifications = {
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
 		BackupCauseOfDeath = "Harpy",
+		-- Setting to nil to prevent them from playing, we use boss victory voicelines
+		CombatResolvedVoiceLines = {},
 
 		HasFishingPoint = false,
 		HasPickaxePoint = false,
@@ -777,6 +778,7 @@ local roomModifications = {
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
 		BackupCauseOfDeath = "Harpy2",
+		CombatResolvedVoiceLines = {},
 
 		HasFishingPoint = false,
 		HasPickaxePoint = false,
@@ -816,7 +818,7 @@ local roomModifications = {
 
 	-- OTHER
 	A_Story01 = {
-		LoadModdedVoiceBanks = { "Sisyphus", "Orpheus", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Sisyphus", "Orpheus", "ZagreusField", "MegaeraField", "Thanatos", "ThanatosField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse = true,
 		GameStateRequirements = {

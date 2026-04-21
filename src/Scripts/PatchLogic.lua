@@ -87,13 +87,6 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 					game.CurrentRun.ModsNikkelMHadesBiomesActualCurrentRoomName = game.CurrentRun.CurrentRoom.Name
 					-- To prevent an error after uninstalling the mod, due to the room name being unknown
 					game.CurrentRun.CurrentRoom.Name = "BaseRoom"
-
-					-- Additionally, to prevent an error with opening the Run History screen after uninstalling the mod,
-					-- we need to encode the EndingRoomName into the VictoryMessage field, since if it is a modded room name, the game crashes trying to find it
-					-- This encoding is reversed when opening the Run History screen with the mod installed
-					game.CurrentRun.VictoryMessage = (game.CurrentRun.VictoryMessage or "") ..
-							"#" .. (game.CurrentRun.EndingRoomName or "")
-					game.CurrentRun.EndingRoomName = nil
 				end
 				-- #endregion
 			end
@@ -197,8 +190,42 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 9 then
+			-- Decode VictoryMessage encoding - base game ShowRunHistory now nil-checks RoomData[EndingRoomName], so we no longer need to hide EndingRoomName inside VictoryMessage for uninstall safety
+			if not game.IsEmpty(game.GameState.RunHistory) then
+				for _, runData in pairs(game.GameState.RunHistory) do
+					if mod.WasModdedRun(runData) and runData.EndingRoomName == nil and runData.VictoryMessage ~= nil then
+						local separatorIndex = string.find(runData.VictoryMessage, "#")
+						if separatorIndex ~= nil then
+							runData.EndingRoomName = string.sub(runData.VictoryMessage, separatorIndex + 1)
+							local originalVictoryMessage = string.sub(runData.VictoryMessage, 1, separatorIndex - 1)
+							if originalVictoryMessage == "" then
+								runData.VictoryMessage = nil
+							else
+								runData.VictoryMessage = originalVictoryMessage
+							end
+						end
+					end
+				end
+			end
+			-- Also decode CurrentRun if it was encoded by a previous version while in the hub
+			if game.CurrentRun ~= nil and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun
+					and game.CurrentRun.EndingRoomName == nil and game.CurrentRun.VictoryMessage ~= nil then
+				local separatorIndex = string.find(game.CurrentRun.VictoryMessage, "#")
+				if separatorIndex ~= nil then
+					game.CurrentRun.EndingRoomName = string.sub(game.CurrentRun.VictoryMessage, separatorIndex + 1)
+					local originalVictoryMessage = string.sub(game.CurrentRun.VictoryMessage, 1, separatorIndex - 1)
+					if originalVictoryMessage == "" then
+						game.CurrentRun.VictoryMessage = nil
+					else
+						game.CurrentRun.VictoryMessage = originalVictoryMessage
+					end
+				end
+			end
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 8
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 9
 	end
 
 	return base()

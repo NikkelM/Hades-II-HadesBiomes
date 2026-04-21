@@ -10,17 +10,24 @@
 - The **Lernaean Bone Hydra** has found its long-lost neck in the depths of Asphodel's lava.
 - You can now conclude **Sisyphus**' storyline by interacting with him and **Megaera**.
 - Added a new logo animation to the Main Menu to show that the mod is installed.
+- The mod no longer creates any files in the game's installation directory, making it entirely compatible with playing vanilla or switching profiles in r2modman. Installing this mod update will automatically remove any previously created files.
 
 Other fixes and improvements:
-- You can now salute story NPCs you meet along Zagreus' Journey.
+- The Chaos Gate in the Training Grounds can now only show once you have met Chaos.
+- You can now salute story NPCs you meet during Zagreus' Journey runs.
+- Updated the description text of "Final Expense" offered by Orpheus to make it clearer that all shop items are always discounted.
 - If Thanatos has no new unique dialogue when he visits you at the start of a run, you can now pick up the starting boon without speaking to him first.
+- Thanatos and Megaera can now pay Sisyphus a visit.
 - Added a new dialogue background for conversations in the Temple of Styx.
 - Hades and Theseus will now react with specific voicelines for certain Gods when using Godsent Hex effects against them.
 - Hades will now react to Melinoë going dark using "Unseen Ire" in the fight against him.
+- Selene may now react to Melinoë defeating a boss when the Vow of Rivals is active.
 - Melinoë will now react to Hades calling Cerberus to his aid.
-- Updated the description text of "Final Expense" offered by Orpheus to make it clearer that all shop items are always discounted.
+- Added some additional contextual voicelines in various situations.
 - Added [zannc](https://github.com/excellent-ae) to the Credits for the [SharedKeepsakePort](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) contribution.
+- Removed an internal workaround for safeguarding against crashes after the mod is uninstalled, as this is now more easily handled through vanilla game logic.
 - Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
+- The mod will no longer need to reinstall itself when the game updates. It will still reinstall when the mod itself receives an update.
 - Balancing: Orpheus' "Final Expense" boon now reduces the price of Charon's wares between 5-15% instead of 0-10%.
 - Balancing: Elysian Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Slightly reduced the chance for the "Popper" elite perk to appear.
@@ -28,6 +35,7 @@ Other fixes and improvements:
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
 - Fixed: The Chaos boon in the opening room during the first run can be transformed into an Onion by the Vow of Forfeit.
 - Fixed: The Chaos boon in the opening room during the first run can be purged.
+- Fixed: The player gets stuck after collecting the reward in Charon's boss fight room.
 - Fixed: Brimstone and Voidstone enemies have no small tethered crystals floating around them.
 - Fixed: If Gale attacks a Brimstone or Voidstone enemy with tethers attached to it, the game may crash.
 - Fixed: The Doomstone's lasers do not disappear when it is frozen. 
@@ -38,31 +46,44 @@ Other fixes and improvements:
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon reduce the amount of enemies spawned in subsequent waves in the same encounter.
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon can be transformed by "Twilight Curse".
 - Fixed: Megaera spins in place multiple times during an attack where she summons enemies to her aid, instead of spinning only once.
+- Fixed: After defeating Megaera, Alecto or the Hydra, multiple voicelines may play over each other in some cases.
 - Fixed: Skull-Crusher enemies can appear in encounters with Thanatos in Asphodel, even though Thanatos will rarely succeed in killing them.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
 - Fixed: Gorgons morphed by "Twilight Curse" turn into sheep that are smaller than they should be.
+- Fixed: If petrified by a Gorgon while sprinting, Melinoë continues sliding over the ground instead of coming to a stop.
 - Fixed: After receiving a blessing from Eurydice, Melinoë can react with a voiceline from Zagreus.
 - Fixed: The Lernaean Bone Hydra has no neck elements constraining its movements.
 - Fixed: Some fog and branches flicker on a specific Elysium map.
+- Fixed: Exalted Shades always target the closest dropped weapon instead of a random one.
+- Fixed: Exalted Shades spawned by Elysian Shades always spawn in the direction opposite the player instead of a random direction.
 - Fixed: If the "Vow of Scars" is active and "HydraLite Gold" is offered by Patroclus, the number of locations the item will last is not shown.
+- Fixed: Saluting the Good Shade in Elysium will now more consistently play a voiceline.
 - Fixed: Melinoë's voicelines that play when (re-)entering the Styx Hub room play every time instead of only sometimes.
 - Fixed: Some shop items in the Styx shop can clip behind the base they sit on.
 - Fixed: The Snakestone's lasers do not disappear when it is frozen or morphed by "Twilight Curse".
 - Fixed: The Dire Satyr Cultist cannot turn fast enough to face the player before firing its ranged poison dart attack.
 - Fixed: The Gigantic Vermin's poison shake attack does not show the flying poison projectiles before they land and produce the poison puddles.
+- Fixed: Melinoë may comment on starting the final boss fight with "For my Father!".
 - Fixed: If Boiling Blood is active during Hades' phase transition, the damage multiplier is not removed for the rest of the fight.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.
 - Fixed: Hades' footsteps during his fight sometimes appear in random places.
+- Fixed: If Hades is hit by one of his own urn traps, he plays a voiceline as if the player was hit.
+- Fixed: Victory messages for having completed a certain number of clears may not be awarded if another more generic message is also eligible.
+- Fixed: Entering a room on the Surface plays a voiceline from Melinoë if you have never reached that many chambers in any kind of run.
+- Fixed: The "Prophecy completed" sound effect can play over the death animation on the Surface.
 - Fixed: Frozen and chilled enemies appear much darker than they should.
 - Fixed: There is an incorrectly layered lava bubble animation in the Asphodel credits scene.
+- Fixed: When quickly skipping boss intro dialogue, the camera may snap back and forth quickly before the fight starts.
 - Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
 - Fixed: Enemies morphed by "Twilight Curse" play their original death animations when dying while morphed, instead of the Sheep's.
 - Fixed: Urns are not destroyed when sprinted into.
+- Fixed: The game crashes when starting the "Trial of Family".
 - Fixed: Family Dispute door reward previews are too large and clip out of the glass sphere.
 - Fixed: Ash and Bone door reward previews in Asphodel are located too high in the glass sphere.
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
+- Fixed: The Wretched Sneak and Wringer enemies summoned by Hades during his fight show up with incorrect names in the victory screen's damage taken table.
 - Fixed: Chaos Gates do not have specific spawn requirements adapted to Zagreus' Journey runs.
 - Fixed: "Enshrouded" (hidden room reward previews) Chaos Curse cannot appear in Zagreus' Journey runs.
 - Fixed: Relationship entries for story NPCs that unlock a keepsake do not show the related icon in the Codex.
@@ -73,7 +94,7 @@ Other fixes and improvements:
 - Fixed: In rare circumstances, the game can crash when checking requirements for actions taken during the previous Zagreus' Journey run.
 - Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
 - Fixed: Some unnecessary localization strings are copied during the mod installation.
-- Fixed: The log shows harmless "FMOD Error 74" messages.
+- Fixed: Entering certain rooms in the Fields of Mourning incorrectly shows the location banner animation.
 - Compatibility: The mod now exposes `IsValidInstallation` to denote to other mods if Zagreus' Journey is installed successfully. Mods can use this through `mods["NikkelM-Zagreus_Journey"].IsValidInstallation`.
 <!--Releasenotes end-->
 
@@ -110,11 +131,11 @@ Other fixes and improvements:
 
 Other fixes and improvements:
 - The mod now uses some new internal functions to optimize calls and prevent unexpected behaviour.
-- Fixed: Room transitions in some scenarios for vanilla runs could have an incorrect fade duration.
+- Fixed: Room transitions in some scenarios for vanilla runs can have an incorrect fade duration.
 - Fixed: Viewing Zagreus' Journey runs in the Run History screen shows an incorrect background animation.
 - Fixed: Some removed variables are being accessed by the mod which can crash the game.
-- Fixed: An internal variable tracking the number of visited biomes in the current run was renamed which caused some Chaos Trials to no longer function correctly.
-- Fixed: Some modded cosmetics appear inbetween vanilla cosmetics of the same group.
+- Fixed: An internal variable tracking the number of visited biomes in the current run was renamed which causes some Chaos Trials to no longer function correctly.
+- Fixed: Some modded cosmetics appear in between vanilla cosmetics of the same group.
 
 ## v0.7.2
 

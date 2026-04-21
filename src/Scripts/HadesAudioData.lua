@@ -3488,6 +3488,9 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		},
 	},
 	-- #endregion
+	-- #region Run Start
+	ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines = {},
+	-- #endregion
 }
 
 mod.HeroVoiceLines = mod.HeroVoiceLines or {
@@ -3853,6 +3856,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 	-- Plays when saluting the good shade in the Elysium boss room
 	ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines = {
 		UsePlayerSource = true,
+		Queue = "Interrupt",
 		{
 			PreLineWait = 0.4,
 			BreakIfPlayed = true,
@@ -3862,9 +3866,11 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_4352",      Text = "Hello again, good Shade." },
 			{ Cue = "/VO/MelinoeField_3045", Text = "You're always here, good Shade." },
 			{ Cue = "/VO/MelinoeField_3047", Text = "Something about my brother..." },
-			{ Cue = "/VO/MelinoeField_3048", Text = "My brother's biggest fan...?",              PlayFirst = true },
+			{ Cue = "/VO/MelinoeField_3048", Text = "My brother's biggest fan...?",                       PlayFirst = true },
+			{ Cue = "/VO/MelinoeField_4804", Text = "Good to see you again, good Shade!", },
+			{ Cue = "/VO/MelinoeField_4806", Text = "Hello again, good Shade!" },
+			{ Cue = "/VO/MelinoeField_5363", Text = "Cheers for believing in us, good Shade!" },
 			-- Generic voicelines
-			{ Cue = "/VO/Melinoe_4352",      Text = "Hello again, good Shade." },
 			{ Cue = "/VO/Melinoe_2321",      Text = "Hold fast to hope, good Shade." },
 			{ Cue = "/VO/Melinoe_2322",      Text = "Moonlight guide you, good Shade." },
 			{ Cue = "/VO/Melinoe_5519",      Text = "Thank you for having faith in him and me.", },
@@ -3888,6 +3894,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_4258", Text = "To further victories!", },
 		},
 	},
+	-- #region Hades Boss
 	-- Plays when exiting the Hades boss room
 	ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines = {
 		-- After the peaceful encounter
@@ -4041,6 +4048,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_1414", Text = "...Fall.", },
 		},
 	},
+	-- #endrgion
 	-- When entering an Erebus Gate/ShrineGate to a RoomChallenge
 	ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines = {
 		Queue = "Interrupt",
@@ -4080,6 +4088,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_5282",      Text = "Here we go again...!" },
 		},
 	},
+	-- #region Crossroads/Run Start/Returning
 	-- Returning to the Crossroads
 	ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = {
 		Queue = "Always",
@@ -6589,6 +6598,88 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_1393", Text = "Return to shadow, now...!" },
 		},
 	},
+	-- When entering the Chaos Gate
+	ModsNikkelMHadesBiomes_StartNewHadesRunVoiceLines = {
+		Queue = "Never",
+		{
+			BreakIfPlayed = true,
+			PreLineWait = 0.35,
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+					Comparison = "==",
+					Value = 0,
+				},
+			},
+			{ Cue = "/VO/Melinoe_2888", Text = "What could go wrong...?" },
+		},
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.35,
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+					Comparison = ">=",
+					Value = 1,
+				},
+			},
+			-- Custom
+			{ Cue = "/VO/MelinoeField_0205", Text = "Every bad dream has an escape..." },
+			-- From the underworld route
+			{ Cue = "/VO/Melinoe_3391",      Text = "Hence I go...", },
+			{ Cue = "/VO/Melinoe_0108",      Text = "I go.", },
+			{ Cue = "/VO/Melinoe_0110",      Text = "Commencing.", },
+			{ Cue = "/VO/Melinoe_0111",      Text = "Once more.", },
+			{ Cue = "/VO/Melinoe_2482",      Text = "Once more, then." },
+			{ Cue = "/VO/Melinoe_0375",      Text = "Farewell, Commander.", },
+			{ Cue = "/VO/Melinoe_3058_B",    Text = "Here we go." },
+			-- From the surface route
+			{ Cue = "/VO/Melinoe_1665",      Text = "With the grace of the Moon." },
+			{ Cue = "/VO/Melinoe_2487",      Text = "New night, new path.", },
+			-- From Dream Dives
+			{
+				Cue = "/VO/Melinoe_5834",
+				Text = "It's nice having dreams...",
+				GameStateRequirements = {
+					{
+						PathTrue = { "PrevRun", "Cleared" },
+					},
+					{
+						-- Keep the vanilla requirement to only play this once Dream Dives are unlocked
+						Path = { "GameState", "RoomsEntered", "Dream_Intro" },
+						Comparison = ">=",
+						Value = 2,
+					},
+				},
+			},
+			{
+				Cue = "/VO/Melinoe_5831",
+				Text = "Time for a Dive.",
+				GameStateRequirements = {
+					{
+						-- Keep the vanilla requirement to only play this once Dream Dives are unlocked
+						Path = { "GameState", "RoomsEntered", "Dream_Intro" },
+						Comparison = ">=",
+						Value = 2,
+					},
+				},
+			},
+			{
+				Cue = "/VO/Melinoe_5827",
+				Text = "Diving in.",
+				GameStateRequirements = {
+					{
+						-- Keep the vanilla requirement to only play this once Dream Dives are unlocked
+						Path = { "GameState", "RoomsEntered", "Dream_Intro" },
+						Comparison = ">=",
+						Value = 2,
+					},
+				},
+			},
+		},
+	},
+	-- #endregion
 	-- #region Skelly Statues
 	-- When being shown the Skelly statues the first time
 	ModsNikkelMHadesBiomes_TrophyQuestUnlockedVoiceLines = {

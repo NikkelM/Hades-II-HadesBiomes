@@ -1,4 +1,6 @@
 function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
+	-- Prevent leaks as args is written to during the sequence
+	args = ShallowCopyTable(args) or {}
 	local dataTable = {
 		Tartarus = {
 			FillGraphic = "GUI\\BiomeMap\\MapFill_Tartarus",
