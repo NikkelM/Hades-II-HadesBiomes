@@ -62,8 +62,9 @@ Other fixes and improvements:
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.
 - Fixed: Hades' footsteps during his fight sometimes appear in random places.
+- Fixed: Victory messages for having completed a certain number of clears may not be awarded if another more generic message is also eligible.
 - Fixed: Entering a room on the Surface plays a voiceline from Melinoë if you have never reached that many chambers in any kind of run.
-- Fixed: The "Prophecy completed" sound effect can play over the death animation on the Surface. 
+- Fixed: The "Prophecy completed" sound effect can play over the death animation on the Surface.
 - Fixed: Frozen and chilled enemies appear much darker than they should.
 - Fixed: There is an incorrectly layered lava bubble animation in the Asphodel credits scene.
 - Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
