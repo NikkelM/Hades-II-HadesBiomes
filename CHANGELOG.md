@@ -31,6 +31,7 @@ Other fixes and improvements:
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
 - Fixed: The Chaos boon in the opening room during the first run can be transformed into an Onion by the Vow of Forfeit.
 - Fixed: The Chaos boon in the opening room during the first run can be purged.
+- Fixed: The player gets stuck after collecting the reward in Charon's boss fight room.
 - Fixed: Brimstone and Voidstone enemies have no small tethered crystals floating around them.
 - Fixed: If Gale attacks a Brimstone or Voidstone enemy with tethers attached to it, the game may crash.
 - Fixed: The Doomstone's lasers do not disappear when it is frozen. 

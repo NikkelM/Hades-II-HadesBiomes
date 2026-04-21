@@ -205,6 +205,12 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 	game.ShowCombatUI("CharonFightEnd")
 end
 
+function mod.UseCharonStoreDiscount(consumableItem, args, user)
+	game.UseConsumableItem(consumableItem, args, user)
+	game.wait(0.7)
+	game.thread(mod.LeaveCharonFight, consumableItem, args)
+end
+
 function mod.LeaveCharonFight(eventSource, args)
 	args = args or {}
 	AddInputBlock({ Name = "LeaveCharonFight" })

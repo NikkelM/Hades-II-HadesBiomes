@@ -33,12 +33,11 @@ local newMiscConsumables = {
 		SpawnSound = "/SFX/CharonMembershipCardDrop",
 		ConsumeSound = "/SFX/CharonMembershipCardPickup",
 		UseText = "UseCharonStoreDiscount",
+		OnUsedFunctionName = _PLUGIN.guid .. "." .. "UseCharonStoreDiscount",
 		UseFunctionNames = { "AddTraitToHero" },
 		UseFunctionArgs = {
 			{ TraitName = "DiscountTrait" },
 		},
-		UseThreadedFunctionNames = { _PLUGIN.guid .. "." .. "LeaveCharonFight" },
-		UseThreadedFunctionArgs = {},
 		HideWorldText = true,
 
 		ConsumedVoiceLines = {
@@ -52,7 +51,7 @@ local newMiscConsumables = {
 			RandomRemaining = true,
 			BreakIfPlayed = true,
 			PreLineWait = 0.55,
-			SuccessiveChanceToPlayAll = 0.5,
+			-- SuccessiveChanceToPlayAll = 0.5,
 			{ Cue = "/VO/MelinoeField_4295", Text = "My entitlement.", },
 			{ Cue = "/VO/MelinoeField_4294", Text = "I earned this." },
 			{ Cue = "/VO/Melinoe_0554",      Text = "I'll take it.", },
@@ -62,6 +61,7 @@ local newMiscConsumables = {
 		PlayInteract = true,
 		CanDuplicate = false,
 		LastRewardEligible = false,
+		SkipCheckRoomExitsReady = true,
 	},
 }
 mod.AddTableKeysSkipDupes(game.ConsumableData, newMiscConsumables)
