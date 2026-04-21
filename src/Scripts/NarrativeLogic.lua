@@ -128,7 +128,7 @@ end)
 
 -- Reimplementation of Hades II's PlayRandomRemainingTextLines before it was removed in Post-Launch Patch 2
 -- Also adds custom logic to respect SuperPriority and Priority flags in modded runs
-function mod.PlayRandomRemainingTextLines(source, textLineSets)
+function mod.PlayRandomRemainingTextLines(source, textLineSets, args)
 	if textLineSets == nil then
 		return false
 	end
@@ -174,7 +174,7 @@ function mod.PlayRandomRemainingTextLines(source, textLineSets)
 		randomLines = game.GetRandomValue(eligibleUnplayedLines) or {}
 	end
 	game.GameState.PlayedRandomTextLines[randomLines.Name] = true
-	game.PlayTextLines(source, randomLines)
+	game.PlayTextLines(source, randomLines, args)
 	return true
 end
 

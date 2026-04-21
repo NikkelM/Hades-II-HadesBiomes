@@ -74,6 +74,7 @@ Other fixes and improvements:
 - Fixed: The "Prophecy completed" sound effect can play over the death animation on the Surface.
 - Fixed: Frozen and chilled enemies appear much darker than they should.
 - Fixed: There is an incorrectly layered lava bubble animation in the Asphodel credits scene.
+- Fixed: When quickly skipping boss intro dialogue, the camera may snap back and forth quickly before the fight starts.
 - Fixed: If NPCs greet you on approach, their dialogue status animation sometimes disappears.
 - Fixed: Enemies morphed by "Twilight Curse" play their original death animations when dying while morphed, instead of the Sheep's.
 - Fixed: Urns are not destroyed when sprinted into.
