@@ -48,6 +48,7 @@ Other fixes and improvements:
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
 - Fixed: Gorgons morphed by "Twilight Curse" turn into sheep that are smaller than they should be.
+- Fixed: If petrified by a Gorgon while sprinting, Melinoë continues sliding over the ground instead of coming to a stop.
 - Fixed: After receiving a blessing from Eurydice, Melinoë can react with a voiceline from Zagreus.
 - Fixed: The Lernaean Bone Hydra has no neck elements constraining its movements.
 - Fixed: Some fog and branches flicker on a specific Elysium map.

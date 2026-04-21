@@ -45,6 +45,14 @@ modutil.mod.Path.Wrap("DamageEchoTrigger",
 		end
 	end)
 
+modutil.mod.Path.Wrap("HitByFreezeWeapon", function(base, victim)
+	if victim and victim.ObjectId then
+		-- So the player doesn't slide while sprinting, brings them to a smooth stop
+		EndRamWeapons({ Id = victim.ObjectId })
+	end
+
+	return base(victim)
+end)
 
 modutil.mod.Path.Wrap("AddEffectBlock", function(base, args)
 	args = args or {}
