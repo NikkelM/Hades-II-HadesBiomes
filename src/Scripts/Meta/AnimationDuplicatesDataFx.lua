@@ -1,7 +1,8 @@
 -- Defines animation names that already exist in Hades II and should therefore be skipped when the Hades Fx are imported
+-- Also defines some modifications to existing animations required for the mod to work properly
 
--- The destination filename, used in a couple of places in the mod, therefore defined centrally
-mod.HadesFxDestinationFilename = "Game\\Animations\\Z_ModsNikkelmHadesBiomesFx.sjson"
+-- The path relative to the Hell2Modding-SJSON/ data directory
+mod.HadesFxSjsonDataPath = "Animations\\Z_ModsNikkelmHadesBiomesFx.sjson"
 
 mod.HadesFxAnimationModifications = {
 	-- #region GENERAL

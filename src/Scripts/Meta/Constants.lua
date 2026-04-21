@@ -10,6 +10,8 @@ mod.DefaultHiddenConfig = {
 	MustShowIncompatibleModsInstallScreen = false,
 	InstallationFailReason = "",
 	MustShowUninstallFailureScreen = false,
+	-- Tracks which mod version was last installed to detect mod updates
+	InstalledModVersion = "",
 	-- For debugging purposes
 	EnableVanillaDebugKeybinds = false,
 }

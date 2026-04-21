@@ -138,9 +138,10 @@ local encounterModifications = {
 		LoadModdedVoiceBanks = { "Megaera" },
 		PostUnthreadedEvents = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		SkipCombatBeginsVoiceLines = true,
 	},
 	BossHadesPeaceful = {
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicSurfaceModded", },
+		LoadModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicSurfaceModded", },
 		-- We need the Hades symbol for the exit animation from BiomeI
 		LoadPackages = { "BiomeI" },
 		PostUnthreadedEvents = {
@@ -148,6 +149,7 @@ local encounterModifications = {
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHadesPeacefulVictory", Args = mod.NilValue, GameStateRequirements = mod.NilValue },
 		},
 		SkipBossTraits = true,
+		SkipCombatBeginsVoiceLines = true,
 	},
 }
 

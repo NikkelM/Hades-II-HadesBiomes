@@ -382,8 +382,7 @@ local roomModifications = {
 	-- GENERIC
 	BaseElysium = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicElysiumModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicElysiumModded", },
 
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Elysium",
 

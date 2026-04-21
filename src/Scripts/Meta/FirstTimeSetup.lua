@@ -34,7 +34,7 @@ local function copyFile(src, dest, skipCheck)
 	outputFile:close()
 end
 
-local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nameHint, usePluginData)
+local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nameHint, usePluginData, destUsePluginData)
 	nameHint = nameHint or ""
 	mod.DebugPrint("Copying " .. nameHint .. extension .. " files...", 3)
 	for key, value in pairs(fileMappings) do
@@ -53,7 +53,11 @@ local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nam
 		else
 			srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. src .. extension)
 		end
-		destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest .. extension)
+		if destUsePluginData then
+			destPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, destBasePath .. dest .. extension)
+		else
+			destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest .. extension)
+		end
 		copyFile(srcPath, destPath)
 	end
 end
@@ -81,7 +85,7 @@ local function removeDeprecatedAnimationProperties(animationsFile)
 	end
 end
 
-local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, destBasePath, modifications)
+local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, modifications)
 	mod.DebugPrint("Copying .sjson files...", 3)
 	for key, value in pairs(fileMappings) do
 		local src, dest
@@ -93,17 +97,17 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, de
 			dest = value
 		end
 
+		local sjsonDataRelativePath = dest .. ".sjson"
 		local srcPath = rom.path.combine(mod.hadesGameFolder, srcBasePath .. src .. ".sjson")
-		local destPath = rom.path.combine(rom.paths.Content(), destBasePath .. dest .. ".sjson")
 
-		if not rom.path.exists(destPath) then
+		if not rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
 			local fileData = mod.DecodeSjsonFile(srcPath)
 			mod.ApplyNestedSjsonModifications(fileData.Animations, modifications[src] or {})
 			removeDeprecatedAnimationProperties(fileData)
-			mod.DebugPrint("Copying file " .. srcPath .. " to " .. destPath, 4)
-			sjson.encode_file(destPath, fileData)
+			mod.DebugPrint("Copying file " .. srcPath .. " to " .. sjsonDataRelativePath, 4)
+			mod.WriteSjsonData(sjsonDataRelativePath, fileData)
 		else
-			mod.DebugPrint("File already exists and will not be overwritten: " .. destPath, 2)
+			mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
 		end
 	end
 end
@@ -281,13 +285,16 @@ local function loadSubtitleCsvFilesAndWriteToSjson()
 		"lang",
 		"Texts",
 	}
-	-- Afterwards, write the subtitle sjson files for each language into the Hades II Content folder
+	-- Afterwards, write the subtitle sjson files into the SJSON data directory
 	for language, subtitleFiles in pairs(hadesSubtitleData) do
 		for speakerName, entries in pairs(subtitleFiles) do
 			local destPath = mod.GetSubtitleSjsonPath(language, speakerName)
 			local subtitleData = sjson.to_object({ lang = language, Texts = entries }, order)
 			mod.DebugPrint("Writing subtitle sjson file: " .. destPath .. " with " .. tostring(#entries) .. " entries", 4)
 			sjson.encode_file(destPath, subtitleData)
+
+			-- Register with H2M
+			rom.data.register_sjson_file(destPath)
 		end
 	end
 end
@@ -300,11 +307,11 @@ local function copyHadesHelpTexts()
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
 
-				local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
-					"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
+				local sjsonDataRelativePath = "Text\\" ..
+						language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
 
-				if rom.path.exists(hadesTwoHelpTextFilePath) then
-					mod.DebugPrint("File already exists and will not be overwritten: " .. hadesTwoHelpTextFilePath, 2)
+				if rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
+					mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
 				else
 					local helpTextFile = rom.path.combine(rom.paths.Content(),
 						"Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
@@ -355,8 +362,7 @@ local function copyHadesHelpTexts()
 						end
 					end
 
-					-- Encode the hadesHelpTextFile to a new file in the Hades II folder
-					sjson.encode_file(hadesTwoHelpTextFilePath, hadesHelpTextData)
+					mod.WriteSjsonData(sjsonDataRelativePath, hadesHelpTextData)
 				end
 			end
 		end
@@ -368,11 +374,12 @@ local function copyHadesNPCTexts()
 		for fileName, allowedSpeakers in pairs(mod.NPCTextFileNames) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
-				local hadesTwoHelpTextFilePath = rom.path.combine(rom.paths.Content(),
-					"Game\\Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson")
 
-				if rom.path.exists(hadesTwoHelpTextFilePath) then
-					mod.DebugPrint("File already exists and will not be overwritten: " .. hadesTwoHelpTextFilePath, 2)
+				local sjsonDataRelativePath = "Text\\" ..
+						language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
+
+				if rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
+					mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
 				else
 					local hadesHelpTextFile = rom.path.combine(mod.hadesGameFolder,
 						"Content\\Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
@@ -399,7 +406,7 @@ local function copyHadesNPCTexts()
 					-- Replace the Texts array with the filtered version
 					hadesHelpTextDataRaw.Texts = filteredTexts
 
-					sjson.encode_file(hadesTwoHelpTextFilePath, hadesHelpTextDataRaw)
+					mod.WriteSjsonData(sjsonDataRelativePath, hadesHelpTextDataRaw)
 				end
 			end
 		end
@@ -407,12 +414,13 @@ local function copyHadesNPCTexts()
 end
 
 -- Common function to copy and filter animations
-local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, modifications, parentAdditions, additions,
+local function copyAndFilterAnimations(srcPath, sjsonDataRelativePath, mappings, duplicates, modifications,
+																			 parentAdditions, additions,
 																			 animationType)
 	local animationsTable = mod.DecodeSjsonFile(srcPath)
 
-	if rom.path.exists(destPath) then
-		mod.DebugPrint("File already exists and will not be overwritten: " .. destPath, 2)
+	if rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
+		mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
 		-- Still marking as successful to not throw the bad edits error
 		return true
 	end
@@ -462,20 +470,19 @@ local function copyAndFilterAnimations(srcPath, destPath, mappings, duplicates, 
 
 	animationsTable.Animations = filteredAnimations
 
-	sjson.encode_file(destPath, animationsTable)
+	mod.WriteSjsonData(sjsonDataRelativePath, animationsTable)
 
 	return true
 end
 
 local function copyHadesFxAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\Fx.sjson")
-	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesFxDestinationFilename)
 	local modifications = mod.HadesFxAnimationModifications or {}
 	local parentAdditions = mod.HadesFxAnimationParentAdditions or {}
 	local additions = mod.HadesFxAnimationAdditions or {}
 
 	-- Will return false if an Olympus Extra animation is detected
-	if not copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates, modifications, parentAdditions, additions, "Fx.sjson") then
+	if not copyAndFilterAnimations(sourceFilePath, mod.HadesFxSjsonDataPath, mod.FxAnimationMappings, mod.HadesFxAnimationDuplicates, modifications, parentAdditions, additions, "Fx.sjson") then
 		return false
 	end
 
@@ -484,31 +491,30 @@ end
 
 local function copyHadesGUIAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\GUIAnimations.sjson")
-	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesGUIAnimationsDestinationFilename)
 	local modifications = mod.HadesGUIAnimationModifications or {}
 	local parentAdditions = mod.HadesGUIAnimationParentAdditions or {}
 	local additions = mod.HadesGUIAnimationAdditions or {}
-	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.GUIAnimationMappings, mod.HadesGUIAnimationDuplicates,
+	copyAndFilterAnimations(sourceFilePath, mod.HadesGUIAnimationsSjsonDataPath, mod.GUIAnimationMappings,
+		mod.HadesGUIAnimationDuplicates,
 		modifications, parentAdditions, additions, "GUIAnimations.sjson")
 end
 
 local function copyHadesPortraitAnimations()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\PortraitAnimations.sjson")
-	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesPortraitAnimationsDestinationFilename)
 	local modifications = mod.HadesPortraitAnimationModifications or {}
 	local parentAdditions = mod.HadesPortraitAnimationAdditionsParents or {}
 	local additions = mod.HadesPortraitAnimationAdditions or {}
-	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.PortraitAnimationMappings,
+	copyAndFilterAnimations(sourceFilePath, mod.HadesPortraitAnimationsSjsonDataPath, mod.PortraitAnimationMappings,
 		mod.HadesPortraitAnimationDuplicates, modifications, parentAdditions, additions, "PortraitAnimations.sjson")
 end
 
 local function copyHadesCharacterAnimationsNPCs()
 	local sourceFilePath = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Animations\\CharacterAnimationsNPCs.sjson")
-	local destinationFilePath = rom.path.combine(rom.paths.Content(), mod.HadesCharacterAnimationsNPCsDestinationFilename)
 	local modifications = mod.HadesCharacterAnimationsNPCsModifications or {}
 	local parentAdditions = mod.HadesCharacterAnimationsNPCsParentAdditions or {}
 	local additions = mod.HadesCharacterAnimationsNPCsAdditions or {}
-	copyAndFilterAnimations(sourceFilePath, destinationFilePath, mod.CharacterAnimationsNPCsMappings,
+	copyAndFilterAnimations(sourceFilePath, mod.HadesCharacterAnimationsNPCsSjsonDataPath,
+		mod.CharacterAnimationsNPCsMappings,
 		mod.HadesCharacterAnimationsNPCsDuplicates, modifications, parentAdditions, additions,
 		"CharacterAnimationsNPCs.sjson")
 end
@@ -524,11 +530,6 @@ function mod.CreateRequiredHookTargetFiles()
 	if mod.AreHadesModsInstalled() then
 		return false
 	end
-
-	mod.DebugPrint("[Pre-install] Caching the games' \"checksums.txt\" to be notified after a game update...", 3)
-	local checksumsSrc = rom.path.combine(rom.paths.Content(), "Scripts\\checksums.txt")
-	local checksumsDest = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\checksums.txt")
-	copyFile(checksumsSrc, checksumsDest, true)
 
 	mod.DebugPrint("[Pre-install] Copying Fx animations...", 3)
 	if not copyHadesFxAnimations() then
@@ -549,14 +550,25 @@ function mod.CreateRequiredHookTargetFiles()
 		return false
 	end
 
-	-- Copy all .bik_atlas files before the loading bar, as the engine resolves .bik_atlas manifests before the hook callbacks fire.
+	-- Copy .bik_atlas files from Hades 1 to plugins_data before the loading bar, as the engine resolves .bik_atlas manifests before the hook callbacks fire
 	mod.DebugPrint("[Pre-install] Copying .bik_atlas files...", 3)
-	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\1080p\\", "Movies\\1080p\\", ".bik_atlas",
-		"1080p custom Animation ", true)
-	copyFiles(mod.CustomBikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas",
-		"720p custom Animation ", true)
-	copyFiles(mod.BikFileNames, "Content\\Movies\\", "Movies\\1080p\\", ".bik_atlas", "1080p Hades Animation ")
-	copyFiles(mod.BikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik_atlas", "720p Hades Animation ")
+	copyFiles(mod.BikFileNames, "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik_atlas", "1080p Hades Animation ",
+		false, true)
+	copyFiles(mod.BikFileNames, "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik_atlas", "720p Hades Animation ",
+		false, true)
+
+	-- Register the copied .bik_atlas files with H2M so they're injected into engine enumeration
+	local pluginsDataBase = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid)
+	for _, name in pairs(mod.BikFileNames) do
+		local atlas1080 = rom.path.combine(pluginsDataBase, "Content\\Movies\\1080p\\" .. name .. ".bik_atlas")
+		local atlas720 = rom.path.combine(pluginsDataBase, "Content\\Movies\\720p\\" .. name .. ".bik_atlas")
+		if rom.path.exists(atlas1080) then
+			rom.data.register_plugin_file(name .. ".bik_atlas", atlas1080)
+		end
+		if rom.path.exists(atlas720) then
+			rom.data.register_plugin_file(name .. ".bik_atlas", atlas720)
+		end
+	end
 
 	mod.DebugPrint("[Pre-install] Pre-install complete. Remaining installation will run during the loading bar.", 3)
 	return true
@@ -584,78 +596,77 @@ local function splitIntoSlices(array, numSlices)
 end
 
 -- Split BikFileNames into batches for distribution across hooks.
-local bikBatches1080p = splitIntoSlices(mod.BikFileNames, 7)
+local bikBatches1080p = splitIntoSlices(mod.BikFileNames, 8)
 local bikBatches720p = splitIntoSlices(mod.BikFileNames, 5)
 
----Helper to copy .map_text files (special handling: some from plugins_data, some from Hades).
+---Helper to copy .map_text files from Hades to plugins_data, skipping those with custom modifications
 local function copyMapTextFiles()
 	mod.DebugPrint("[Install] Copying .map_text files...", 3)
 	for src, dest in pairs(mod.MapFileMappings) do
-		local srcPath, destPath
-		if mod.MapTextFileNames[src] then
-			srcPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content\\Maps\\" .. src .. ".map_text")
-		else
-			srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Maps\\" .. src .. ".map_text")
+		-- Some .map_text files have custom changes and are shipped with the mod
+		if not mod.MapTextFileNames[src] then
+			local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Maps\\" .. src .. ".map_text")
+			local destPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content\\Maps\\" .. dest .. ".map_text")
+			copyFile(srcPath, destPath)
+			rom.data.register_plugin_file(dest .. ".map_text", destPath)
 		end
-		destPath = rom.path.combine(rom.paths.Content(), "Maps\\" .. dest .. ".map_text")
-		copyFile(srcPath, destPath)
+	end
+end
+
+---Copies .bik files from Hades 1 to plugins_data and registers them with H2M
+local function copyBikFiles(fileMappings, srcBasePath, destBasePath, nameHint)
+	copyFiles(fileMappings, srcBasePath, destBasePath, ".bik", nameHint, false, true)
+	local pluginsDataBase = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid)
+	for _, dest in pairs(fileMappings) do
+		local destPath = rom.path.combine(pluginsDataBase, destBasePath .. dest .. ".bik")
+		rom.data.register_plugin_file(dest .. ".bik", destPath)
 	end
 end
 
 local installSteps = {
 	Enemies = { "Audio .bank files", function()
-		copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Audio\\Desktop\\", ".bank", "Audio ")
-	end },
-
-	EnemyWeapons = { "Voiceover .txt + .fsb files", function()
-		copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".txt", "Voiceline ",
-			true)
-		copyFiles(mod.VoiceoverFileNames, "Content\\Audio\\Desktop\\VO\\", "Audio\\Desktop\\VO\\", ".fsb", "Voiceline ",
-			true)
+		copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Content\\Audio\\Desktop\\", ".bank", "Audio ",
+			false, true)
 	end },
 
 	Enemy_BiomeN_Projectiles = { ".map_text files", function()
 		copyMapTextFiles()
 	end },
 
-	Enemy_Traps_Projectiles = { ".thing_bin files", function()
-		copyFiles(mod.MapFileMappings, "Content\\Maps\\bin\\", "Maps\\bin\\", ".thing_bin", "Map binary ", true)
+	Enemy_Traps_Projectiles = { "Game data .sjson files", function()
+		applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", mod.SjsonFileModifications)
 	end },
 
-	Projectiles = { "Game data .sjson + custom .bik files", function()
-		applyModificationsAndCopySjsonFiles(mod.SjsonFileMappings, "Content\\Game\\", "Game\\", mod.SjsonFileModifications)
-		copyFiles(mod.CustomBikFileNames, "Content\\Movies\\1080p\\", "Movies\\1080p\\", ".bik", "1080p custom Animation ",
-			true)
-		copyFiles(mod.CustomBikFileNames, "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p custom Animation ",
-			true)
+	Projectiles = { "1080p .bik batch 1", function()
+		copyBikFiles(bikBatches1080p[1], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
-	Asphodel = { "1080p .bik batch 1", function()
-		copyFiles(bikBatches1080p[1], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	Asphodel = { "1080p .bik batch 2", function()
+		copyBikFiles(bikBatches1080p[2], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
-	Chaos = { "1080p .bik batch 2", function()
-		copyFiles(bikBatches1080p[2], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	Chaos = { "1080p .bik batch 3", function()
+		copyBikFiles(bikBatches1080p[3], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
-	Elysium = { "1080p .bik batch 3", function()
-		copyFiles(bikBatches1080p[3], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	Elysium = { "1080p .bik batch 4", function()
+		copyBikFiles(bikBatches1080p[4], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
-	Graybox = { "1080p .bik batch 4", function()
-		copyFiles(bikBatches1080p[4], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	Graybox = { "1080p .bik batch 5", function()
+		copyBikFiles(bikBatches1080p[5], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
-	Styx = { "1080p .bik batch 5", function()
-		copyFiles(bikBatches1080p[5], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	Styx = { "1080p .bik batch 6", function()
+		copyBikFiles(bikBatches1080p[6], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
-	Surface = { "1080p .bik batch 6", function()
-		copyFiles(bikBatches1080p[6], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	Surface = { "1080p .bik batch 7", function()
+		copyBikFiles(bikBatches1080p[7], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
-	Tartarus = { "1080p .bik batch 7", function()
-		copyFiles(bikBatches1080p[7], "Content\\Movies\\", "Movies\\1080p\\", ".bik", "1080p Hades Animation ")
+	Tartarus = { "1080p .bik batch 8", function()
+		copyBikFiles(bikBatches1080p[8], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
 	end },
 
 	Temple = { "Helptext .sjson files", function()
@@ -683,23 +694,23 @@ local installSteps = {
 	end },
 
 	GUI_HUD_VFX = { "720p .bik batch 1", function()
-		copyFiles(bikBatches720p[1], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+		copyBikFiles(bikBatches720p[1], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
 	end },
 
 	GUI_Portraits_VFX = { "720p .bik batch 2", function()
-		copyFiles(bikBatches720p[2], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+		copyBikFiles(bikBatches720p[2], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
 	end },
 
 	Items_General_VFX = { "720p .bik batch 3", function()
-		copyFiles(bikBatches720p[3], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+		copyBikFiles(bikBatches720p[3], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
 	end },
 
 	Items_Harvest_VFX = { "720p .bik batch 4", function()
-		copyFiles(bikBatches720p[4], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+		copyBikFiles(bikBatches720p[4], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
 	end },
 
 	Melinoe_Zeus_VFX = { "720p .bik batch 5", function()
-		copyFiles(bikBatches720p[5], "Content\\Movies\\720p\\", "Movies\\720p\\", ".bik", "720p Hades Animation ")
+		copyBikFiles(bikBatches720p[5], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
 	end },
 }
 
@@ -745,6 +756,7 @@ function mod.FinalizeInstallation()
 	end
 
 	mod.HiddenConfig.IsValidInstallation = true
+	mod.HiddenConfig.InstalledModVersion = _PLUGIN.version
 	-- If this is a reinstall, to show the successful install screen again
 	mod.HiddenConfig.HasShownSuccessfulInstallScreen = false
 	mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)

@@ -27,8 +27,7 @@ local challengeRoomModifications = {
 		RoomSetName = "Challenge",
 
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", },
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
 
@@ -93,8 +92,8 @@ local charonRoomModifications = {
 		RoomSetName = "Challenge",
 		-- BiomeG for some of the SFX for Charon's attacks
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "BiomeG", },
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicErebusModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicErebusModded", },
+		LoadVanillaAudioBanks = { "BiomeG", },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
 
@@ -130,7 +129,7 @@ local surfaceRoomModifications = {
 		RoomSetName = "Surface",
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
-		LoadCustomModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicSurfaceModded", },
+		LoadModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicSurfaceModded", },
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "ReturnRoomEntrance",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "ReturnRoomExit",
 		UnthreadedEvents = {

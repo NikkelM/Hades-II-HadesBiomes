@@ -10,20 +10,22 @@
 - The **Lernaean Bone Hydra** has found its long-lost neck in the depths of Asphodel's lava.
 - You can now conclude **Sisyphus**' storyline by interacting with him and **Megaera**.
 - Added a new logo animation to the Main Menu to show that the mod is installed.
+- The mod no longer creates any files in the game's installation directory, making it entirely compatible with playing vanilla or switching profiles in r2modman. Installing this mod update will automatically remove any previously created files.
 
 Other fixes and improvements:
 - The Chaos Gate in the Training Grounds can now only show once you have met Chaos.
-- Added some additional contextual voicelines in various situations.
 - You can now salute story NPCs you meet during Zagreus' Journey runs.
+- Updated the description text of "Final Expense" offered by Orpheus to make it clearer that all shop items are always discounted.
 - If Thanatos has no new unique dialogue when he visits you at the start of a run, you can now pick up the starting boon without speaking to him first.
 - Added a new dialogue background for conversations in the Temple of Styx.
 - Hades and Theseus will now react with specific voicelines for certain Gods when using Godsent Hex effects against them.
 - Hades will now react to Melinoë going dark using "Unseen Ire" in the fight against him.
 - Melinoë will now react to Hades calling Cerberus to his aid.
-- Updated the description text of "Final Expense" offered by Orpheus to make it clearer that all shop items are always discounted.
+- Added some additional contextual voicelines in various situations.
 - Added [zannc](https://github.com/excellent-ae) to the Credits for the [SharedKeepsakePort](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) contribution.
-- Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
 - Removed an internal workaround for safeguarding against crashes after the mod is uninstalled, as this is now more easily handled through vanilla game logic.
+- Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
+- The mod will no longer need to reinstall itself when the game updates. It will still reinstall when the mod itself receives an update.
 - Balancing: Orpheus' "Final Expense" boon now reduces the price of Charon's wares between 5-15% instead of 0-10%.
 - Balancing: Elysian Shades no longer create a respawning Exalted Shade if they are killed while polymorphed.
 - Balancing: Slightly reduced the chance for the "Popper" elite perk to appear.
@@ -58,6 +60,7 @@ Other fixes and improvements:
 - Fixed: The Snakestone's lasers do not disappear when it is frozen or morphed by "Twilight Curse".
 - Fixed: The Dire Satyr Cultist cannot turn fast enough to face the player before firing its ranged poison dart attack.
 - Fixed: The Gigantic Vermin's poison shake attack does not show the flying poison projectiles before they land and produce the poison puddles.
+- Fixed: Melinoë may comment on starting the final boss fight with "For my Father!".
 - Fixed: If Boiling Blood is active during Hades' phase transition, the damage multiplier is not removed for the rest of the fight.
 - Fixed: The explosion and shockwave from Hades' Cast projectile is delayed after the countdown ends if the player is out of range when it first lands, until the player moves within range again.
 - Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.

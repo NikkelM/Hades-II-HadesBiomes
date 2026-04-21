@@ -17,21 +17,23 @@ modutil.mod.Path.Wrap("AudioStateInit", function(base, triggerArgs)
 
 	-- We need to load audio banks here so their events are ready to be used by AudioState init when it restores the MusicId
 	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.ValidModdedRunBiomes[currentRoom.RoomSetName] then
-		if currentRoom.LoadModdedAudioBanks ~= nil then
-			for _, bank in ipairs(currentRoom.LoadModdedAudioBanks) do
+		-- Load vanilla Hades II banks from the game's Content directory
+		if currentRoom.LoadVanillaAudioBanks ~= nil then
+			for _, bank in ipairs(currentRoom.LoadVanillaAudioBanks) do
 				rom.audio.load_bank(rom.path.combine(rom.paths.Content(), "Audio\\Desktop\\" .. bank .. ".bank"))
 			end
 		end
 
-		if currentRoom.LoadCustomModdedAudioBanks ~= nil then
-			for _, bank in ipairs(currentRoom.LoadCustomModdedAudioBanks) do
+		-- Load modded audio banks from plugins_data
+		if currentRoom.LoadModdedAudioBanks ~= nil then
+			for _, bank in ipairs(currentRoom.LoadModdedAudioBanks) do
 				rom.audio.load_bank(rom.path.combine(_PLUGIN.plugins_data_mod_folder_path,
 					"Content\\Audio\\Desktop\\" .. bank .. ".bank"))
 			end
 		end
 
-		if currentRoom.Encounter ~= nil and currentRoom.Encounter.LoadCustomModdedAudioBanks then
-			for _, bank in ipairs(currentRoom.Encounter.LoadCustomModdedAudioBanks) do
+		if currentRoom.Encounter ~= nil and currentRoom.Encounter.LoadModdedAudioBanks then
+			for _, bank in ipairs(currentRoom.Encounter.LoadModdedAudioBanks) do
 				rom.audio.load_bank(rom.path.combine(_PLUGIN.plugins_data_mod_folder_path,
 					"Content\\Audio\\Desktop\\" .. bank .. ".bank"))
 			end
