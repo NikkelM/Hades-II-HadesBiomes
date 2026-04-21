@@ -754,7 +754,7 @@ function mod.HadesConsumeHeal(enemy, weaponAIData, currentRun)
 end
 
 function mod.HitByGraveHandsPresentation(victim)
-	if not GetUnitDataValue({ Id = game.CurrentRun.Hero.ObjectId, Property = "ImmuneToStun" }) then
+	if victim ~= nil and victim.ObjectId == game.CurrentRun.Hero.ObjectId and not GetUnitDataValue({ Id = game.CurrentRun.Hero.ObjectId, Property = "ImmuneToStun" }) then
 		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.HitByGraveHandsVoiceLines, true)
 	end
 end
