@@ -542,6 +542,7 @@ local roomModifications = {
 		-- To not have the preview be created while the boat is still moving
 		UnlockExitsWait = 1,
 		BackupCauseOfDeath = "HydraHeadImmortal",
+		CombatResolvedVoiceLines = {},
 
 		HasPickaxePoint = false,
 	},
@@ -554,6 +555,7 @@ local roomModifications = {
 			},
 		},
 		BackupCauseOfDeath = "HydraHeadImmortal",
+		CombatResolvedVoiceLines = {},
 
 		HasPickaxePoint = false,
 	},

@@ -20,6 +20,7 @@ Other fixes and improvements:
 - Added a new dialogue background for conversations in the Temple of Styx.
 - Hades and Theseus will now react with specific voicelines for certain Gods when using Godsent Hex effects against them.
 - Hades will now react to Melinoë going dark using "Unseen Ire" in the fight against him.
+- Selene may now react to Melinoë defeating a boss when the Vow of Rivals is active.
 - Melinoë will now react to Hades calling Cerberus to his aid.
 - Added some additional contextual voicelines in various situations.
 - Added [zannc](https://github.com/excellent-ae) to the Credits for the [SharedKeepsakePort](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) contribution.
@@ -44,6 +45,7 @@ Other fixes and improvements:
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon reduce the amount of enemies spawned in subsequent waves in the same encounter.
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon can be transformed by "Twilight Curse".
 - Fixed: Megaera spins in place multiple times during an attack where she summons enemies to her aid, instead of spinning only once.
+- Fixed: After defeating Megaera, Alecto or the Hydra, multiple voicelines may play over each other in some cases.
 - Fixed: Skull-Crusher enemies can appear in encounters with Thanatos in Asphodel, even though Thanatos will rarely succeed in killing them.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".

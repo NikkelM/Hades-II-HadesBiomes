@@ -343,6 +343,16 @@ game.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines = g
 		.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines
 
+-- Add modded boss rooms to SeleneVictoryVoiceLines OrRequirements
+local seleneVictoryBossRoomRequirements = game.GlobalVoiceLines.SeleneVictoryVoiceLines.GameStateRequirements
+		.OrRequirements
+-- Rooms that are used for bosses when the Vow of Rivals is active
+table.insert(seleneVictoryBossRoomRequirements[1][1].IsAny, "X_Boss01")
+-- Rooms that do not change with the Vow, also checks BossDifficultyActive
+for _, room in ipairs({ "A_Boss01", "A_Boss02", "A_Boss03", "Y_Boss01", "D_Boss01" }) do
+	table.insert(seleneVictoryBossRoomRequirements[2][1].IsAny, room)
+end
+
 -- Block Melinoe's RecordRunDepthVoiceLines on the Surface (player is Zagreus there)
 if game.GlobalVoiceLines.RecordRunDepthVoiceLines then
 	table.insert(game.GlobalVoiceLines.RecordRunDepthVoiceLines.GameStateRequirements, {

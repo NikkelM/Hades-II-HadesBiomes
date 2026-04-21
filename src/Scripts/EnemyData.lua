@@ -499,6 +499,7 @@ local enemyReplacements = {
 		BossKillVoiceLines = {
 			Cooldowns = { { Name = "BossVanquishedSpeech", Time = 60 }, },
 			{ GlobalVoiceLines = "CatFamiliarBossFightLastHitVoiceLines" },
+			{ GlobalVoiceLines = "SeleneVictoryVoiceLines" },
 			{ GlobalVoiceLines = "BarelySurvivedBossFightVoiceLines" },
 			{
 				BreakIfPlayed = true,
@@ -638,6 +639,7 @@ local enemyReplacements = {
 		BossKillVoiceLines = {
 			Cooldowns = { { Name = "BossVanquishedSpeech", Time = 60 }, },
 			{ GlobalVoiceLines = "CatFamiliarBossFightLastHitVoiceLines" },
+			{ GlobalVoiceLines = "SeleneVictoryVoiceLines" },
 			{ GlobalVoiceLines = "BarelySurvivedBossFightVoiceLines" },
 			{
 				BreakIfPlayed = true,

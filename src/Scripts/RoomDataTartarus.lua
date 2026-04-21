@@ -752,6 +752,8 @@ local roomModifications = {
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
 		BackupCauseOfDeath = "Harpy",
+		-- Setting to nil to prevent them from playing, we use boss victory voicelines
+		CombatResolvedVoiceLines = {},
 
 		HasFishingPoint = false,
 		HasPickaxePoint = false,
@@ -776,6 +778,7 @@ local roomModifications = {
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
 		},
 		BackupCauseOfDeath = "Harpy2",
+		CombatResolvedVoiceLines = {},
 
 		HasFishingPoint = false,
 		HasPickaxePoint = false,
