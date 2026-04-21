@@ -167,6 +167,41 @@ local hadesNPCAdditions = {
 			SubtitleColor = { Red = 0.88, Green = 0.84, Blue = 0.25 },
 		},
 	},
+	{
+		Name = "NPC_FurySister_Story_01",
+		InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC",
+		CosmeticRotationSpeed = 280.0,
+		DisplayInEditor = true,
+		Thing = {
+			AttachedAnim = "MedusaShadow",
+			EditorOutlineDrawBounds = false,
+			Graphic = "FuryIdleInHouse",
+			Grip = 5000.0,
+			Tallness = 175.0,
+		},
+	},
+	{
+		Name = "NPC_Thanatos_Story_01",
+		InheritFrom = "ModsNikkelMHadesBiomes_BaseNPC",
+		CosmeticRotationSpeed = 300.0,
+		DisplayInEditor = true,
+		NoAllegiance = true,
+		Thing = {
+			AttachedAnim = "NPCShadow",
+			EditorOutlineDrawBounds = false,
+			Graphic = "ThanatosIdleInhouse",
+			Tallness = 170.0,
+			Interact = {
+				Distance = 200.0,
+			},
+			Points = {
+				{ X = 9,   Y = 20 },
+				{ X = 41,  Y = 3 },
+				{ X = 10,  Y = -12 },
+				{ X = -22, Y = 4 },
+			},
+		},
+	},
 	-- The exact same as BaseNPC, but we need to redefine it as we hook into the Enemies.sjson file where BaseNPC is not yet defined
 	{
 		Name = "ModsNikkelMHadesBiomes_BaseNPC",

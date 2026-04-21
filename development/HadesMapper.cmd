@@ -7,7 +7,6 @@ rem Laptop
 @REM set DECOMPILE_OUTPUT=C:\Users\nikke\Downloads
 @REM set HADES_MAPPER=C:\Users\nikke\AppData\Local\Programs\Python\Python310\Scripts\HadesMapper
 @REM set HADES_CONTENT=C:\Program Files (x86)\Steam\steamapps\common\Hades\Content\Win\Maps
-@REM set HADES_TWO_CONTENT=C:\Program Files (x86)\Steam\steamapps\common\Hades II\Content\Maps\bin
 @REM set OUTPUT_DIR_MOD=C:\Users\nikke\OneDrive\Privat\Projects\Hades-II-HadesBiomes\data\Content\Maps\bin
 @REM set OUTPUT_DIR_PLUGINS=C:\Users\nikke\AppData\Roaming\r2modmanPlus-local\HadesII\profiles\Default\ReturnOfModding\plugins_data\NikkelM-Zagreus_Journey\Content\Maps\bin
 
@@ -15,7 +14,6 @@ rem Desktop
 set DECOMPILE_OUTPUT=C:\Users\nikke\Downloads
 set HADES_MAPPER=C:\Users\nikke\AppData\Local\Programs\Python\Python39\Scripts\HadesMapper
 set HADES_CONTENT=D:\Program Files (x86)\Steam\steamapps\common\Hades\Content\Win\Maps
-set HADES_TWO_CONTENT=D:\Program Files (x86)\Steam\steamapps\common\Hades II\Content\Maps\bin
 set OUTPUT_DIR_MOD=F:\Users\nikke\OneDrive\Privat\Projects\Hades-II-HadesBiomes\data\Content\Maps\bin
 set OUTPUT_DIR_PLUGINS=C:\Users\nikke\AppData\Roaming\r2modmanPlus-local\HadesII\profiles\Default\ReturnOfModding\plugins_data\NikkelM-Zagreus_Journey\Content\Maps\bin
 
@@ -30,12 +28,11 @@ rem Loop through each file and process it
     @REM %HADES_MAPPER% dc -i "%HADES_CONTENT%\%%f" -o "%DECOMPILE_OUTPUT%\%%f_DECOMPILED"
 
     rem Decode the file (from Hades II)
-    %HADES_MAPPER% dc -s -i "%HADES_TWO_CONTENT%\%%f" -o "%DECOMPILE_OUTPUT%\%%f_DECOMPILED"
+    %HADES_MAPPER% dc -s -i "%OUTPUT_DIR_MOD%\%%f" -o "%DECOMPILE_OUTPUT%\%%f_DECOMPILED"
     
     rem Encode the file in the output directories
     @REM %HADES_MAPPER% ec -s -i "%DECOMPILE_OUTPUT%\%%f_DECOMPILED" -o "%OUTPUT_DIR_MOD%\%%f"
     @REM %HADES_MAPPER% ec -s -i "%DECOMPILE_OUTPUT%\%%f_DECOMPILED" -o "%OUTPUT_DIR_PLUGINS%\%%f"
-    @REM %HADES_MAPPER% ec -s -i "%DECOMPILE_OUTPUT%\%%f_DECOMPILED" -o "%HADES_TWO_CONTENT%\%%f"
     
     rem Remove the intermediate file
     @REM del "%DECOMPILE_OUTPUT%\%%f_DECOMPILED.thing_text"
