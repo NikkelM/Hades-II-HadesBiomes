@@ -755,6 +755,9 @@ local roomModifications = {
 		-- Setting to nil to prevent them from playing, we use boss victory voicelines
 		CombatResolvedVoiceLines = {},
 
+		CanSpawnDreamReward = true,
+		SkipTimedDropResourceInDream = true,
+
 		HasFishingPoint = false,
 		HasPickaxePoint = false,
 		ShovelPointChance = 0.3,

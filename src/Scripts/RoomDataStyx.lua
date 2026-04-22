@@ -930,6 +930,9 @@ local roomModifications = {
 			},
 		},
 		BackupCauseOfDeath = "Hades",
+
+		CanSpawnDreamReward = true,
+		SkipTimedDropResourceInDream = true,
 	},
 
 	-- OTHER

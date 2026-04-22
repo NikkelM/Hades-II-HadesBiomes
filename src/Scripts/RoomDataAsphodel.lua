@@ -544,6 +544,9 @@ local roomModifications = {
 		BackupCauseOfDeath = "HydraHeadImmortal",
 		CombatResolvedVoiceLines = {},
 
+		CanSpawnDreamReward = true,
+		SkipTimedDropResourceInDream = true,
+
 		HasPickaxePoint = false,
 	},
 	X_Boss02 = {
