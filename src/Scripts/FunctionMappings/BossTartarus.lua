@@ -50,6 +50,18 @@ function mod.HarpySupportAI(enemy)
 	end
 
 	while game.ActiveEnemies[enemy.ObjectId] ~= nil do
+		-- Clean up InvisibleTargets leaked by GetTargetId (mirrors DoAttackerAILoop cleanup)
+		if enemy.TargetIdsLeaked ~= nil then
+			for id, v in pairs(enemy.TargetIdsLeaked) do
+				Destroy({ Id = id })
+			end
+			enemy.TargetIdsLeaked = nil
+		end
+		if enemy.CreatedOwnTarget then
+			Destroy({ Id = enemy.CreatedOwnTarget })
+			enemy.CreatedOwnTarget = nil
+		end
+
 		local supportAIWeaponSetName = game.GetRandomValue(enemy.SupportAINames)
 		local weaponName = game.GetRandomValue(enemy.SupportAIWeaponOptions[supportAIWeaponSetName])
 		if weaponName ~= nil then
@@ -615,6 +627,7 @@ function mod.Harpy3MapRubbleFall()
 			OffsetY = offsetY
 		})
 		CreateProjectileFromUnit({ Name = "RubbleFall", Id = game.CurrentRun.Hero.ObjectId, DestinationId = targetId, FireFromTarget = true })
+		Destroy({ Id = targetId })
 		local rubbleWait = game.RandomFloat(0.06, 0.12)
 		game.wait(rubbleWait)
 	end
