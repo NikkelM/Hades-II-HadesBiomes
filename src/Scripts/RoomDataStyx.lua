@@ -913,7 +913,10 @@ local roomModifications = {
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "BossIntroHades",
-				Args = { DelayedStart = true, },
+				Args = {
+					DelayedStart = true,
+					DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "HadesDreamRunIntro",
+				},
 			},
 		},
 		TeleportCatFamiliarOnEncounterStart = true,

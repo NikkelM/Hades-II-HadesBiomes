@@ -12,6 +12,11 @@ function mod.BossIntroElysium(eventSource, args)
 	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args[shrineLevel])
 end
 
+function mod.ElysiumChampionsDreamRunIntro(source, args)
+	game.StartBossRoomMusic()
+	game.wait(0.7)
+end
+
 function mod.PlayPreLineTauntAnimFromSource(source, args)
 	if source ~= nil and source.TauntAnimation ~= nil then
 		SetAnimation({ Name = source.TauntAnimation, DestinationId = source.ObjectId })
@@ -112,8 +117,10 @@ function mod.MinotaurEarlyExitPresentation(boss, currentRun)
 	Stop({ Id = boss.ObjectId })
 	AngleTowardTarget({ Id = boss.ObjectId, DestinationId = currentRun.Hero.ObjectId })
 
-	game.ProcessTextLines(boss, boss.BossPresentationOutroTextLineSets)
-	game.ProcessTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		game.ProcessTextLines(boss, boss.BossPresentationOutroTextLineSets)
+		game.ProcessTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+	end
 
 	game.EndMusic(game.AudioState.MusicId, game.AudioState.MusicName)
 	game.RemoveEnemyUI(boss)

@@ -535,11 +535,11 @@ local roomModifications = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium",
 				Args = {
-					[0] = { DelayedStart = true, },
-					[1] = { DelayedStart = true, },
-					[2] = { DelayedStart = true, },
-					[3] = { DelayedStart = true, },
-					[4] = { DelayedStart = true, },
+					[0] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
+					[1] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
+					[2] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
+					[3] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
+					[4] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
 				},
 			},
 		},

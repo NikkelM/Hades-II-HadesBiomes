@@ -1,7 +1,14 @@
 function mod.BossIntroHydra(eventSource, args)
+	args = args or {}
 	args.ProcessTextLinesIds = { eventSource.Encounter.BossId }
 	args.SetupBossIds = { eventSource.Encounter.BossId }
+	args.DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "HydraDreamRunIntro"
 	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
+end
+
+function mod.HydraDreamRunIntro(source, args)
+	game.StartBossRoomMusic()
+	game.wait(0.7)
 end
 
 function mod.RoomEntranceBossHydra(currentRun, currentRoom)

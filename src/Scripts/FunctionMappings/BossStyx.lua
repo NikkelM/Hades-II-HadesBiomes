@@ -154,6 +154,13 @@ function mod.BossIntroHades(eventSource, args)
 	end
 end
 
+function mod.HadesDreamRunIntro(source, args)
+	-- TODO: Check if needed or if music event must have additional transition for this
+	-- mod.StartFinalBossRoomIntroMusic()
+	mod.StartFinalBossRoomMusic()
+	game.wait(0.7)
+end
+
 function mod.StartFinalBossRoomIntroMusic()
 	-- "/Music/BossFightMusic"
 	game.MusicPlayer("{fe196260-d08d-4a07-802d-6dfda39efa2e}")
@@ -397,17 +404,19 @@ function mod.HadesKillPresentation(unit, args)
 	end
 	game.thread(game.PlayVoiceLines, unit.DefeatedVoiceLines, true, unit)
 
-	if game.GameState.TextLinesRecord["LordHadesDefeated01"] then
-		game.wait(2.8, game.RoomThreadName)
-	else
-		game.wait(4.0, game.RoomThreadName)
-	end
+	if not game.CurrentRun.IsDreamRun then
+		if game.GameState.TextLinesRecord["LordHadesDefeated01"] then
+			game.wait(2.8, game.RoomThreadName)
+		else
+			game.wait(4.0, game.RoomThreadName)
+		end
 
-	game.ProcessTextLines(unit.BossPresentationOutroTextLineSets)
-	game.ProcessTextLines(unit.BossPresentationOutroRepeatableTextLineSets)
+		game.ProcessTextLines(unit.BossPresentationOutroTextLineSets)
+		game.ProcessTextLines(unit.BossPresentationOutroRepeatableTextLineSets)
 
-	if not mod.PlayRandomRemainingTextLines(unit, unit.BossPresentationOutroTextLineSets) then
-		mod.PlayRandomRemainingTextLines(unit, unit.BossPresentationOutroRepeatableTextLineSets)
+		if not mod.PlayRandomRemainingTextLines(unit, unit.BossPresentationOutroTextLineSets) then
+			mod.PlayRandomRemainingTextLines(unit, unit.BossPresentationOutroRepeatableTextLineSets)
+		end
 	end
 
 	game.SetMusicSection(10)
@@ -416,7 +425,10 @@ function mod.HadesKillPresentation(unit, args)
 	mod.HarpyKillPresentation(unit, args)
 	game.wait(1.0, game.RoomThreadName)
 	RemoveInputBlock({ Name = "HadesKillPresentation" })
-	mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
+	-- In Dream Dives, Hades might not be the final boss
+	if not game.CurrentRun.IsDreamRun then
+		mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
+	end
 	game.CurrentRun.ActiveBiomeTimer = false
 	game.CurrentRun.CurrentRoom.Encounter.BossKillPresentation = false
 	game.thread(game.CheckQuestStatus, { Silent = true })

@@ -817,3 +817,8 @@ end
 function mod.ModsNikkelMHadesBiomesHarpyBuildRageStart(enemy, aiData)
 	enemy.HarpyBuildRageEarlyExit = false
 end
+
+function mod.FuryDreamRunIntro(source, args)
+	game.StartBossRoomMusic()
+	game.wait(0.7)
+end

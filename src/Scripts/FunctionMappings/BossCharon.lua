@@ -182,13 +182,17 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 
 	game.wait(2.0, game.RoomThreadName)
 
-	game.ProcessTextLines(boss.BossPresentationOutroTextLineSets)
-	game.ProcessTextLines(boss.BossPresentationOutroRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		game.ProcessTextLines(boss.BossPresentationOutroTextLineSets)
+		game.ProcessTextLines(boss.BossPresentationOutroRepeatableTextLineSets)
+	end
 
 	game.RemoveEnemyUI(boss)
 
-	if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroTextLineSets) then
-		mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroTextLineSets) then
+			mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+		end
 	end
 
 	-- Similar lines being played through CharonStoreDiscount pickup

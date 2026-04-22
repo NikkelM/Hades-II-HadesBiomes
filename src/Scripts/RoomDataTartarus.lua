@@ -742,6 +742,7 @@ local roomModifications = {
 						[4] = { Cue = "/VO/Megaera_30057", },
 					},
 					DelayedStart = true,
+					DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "FuryDreamRunIntro",
 				},
 			},
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },

@@ -1,11 +1,44 @@
 function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 	args = args or {}
+
+	-- Dream Run shortcut: skip camera pan and dialogue, call a dedicated dream intro function
+	if game.CurrentRun.IsDreamRun and args.DreamRunIntroFunctionName ~= nil then
+		game.HideCombatUI("BossIntro")
+		AddInputBlock({ Name = "BossIntro" })
+		game.AddTimerBlock(game.CurrentRun, "BossIntro")
+		ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
+
+		if args.SetupBossIds ~= nil then
+			for k, id in ipairs(args.SetupBossIds) do
+				if game.ActiveEnemies[id] ~= nil then
+					local enemy = game.ActiveEnemies[id]
+					game.CallFunctionName(args.DreamRunIntroFunctionName, enemy, args)
+					game.thread(SetupBoss, enemy)
+					game.CurrentRun.CurrentRoom.BossId = id
+				end
+			end
+		end
+
+		SetAnimation({ Name = "MelinoeEquip", DestinationId = game.CurrentRun.Hero.ObjectId })
+		RemoveInputBlock({ Name = "BossIntro" })
+		game.RemoveTimerBlock(game.CurrentRun, "BossIntro")
+		ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
+		game.ShowCombatUI("BossIntro")
+		if args.DelayedStart then
+			game.StartEncounterEffects()
+		end
+
+		return
+	end
+
 	game.HideCombatUI("BossIntro")
 	AddInputBlock({ Name = "BossIntro" })
 	game.AddTimerBlock(game.CurrentRun, "BossIntro")
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
 
-	game.PlayVoiceLines(args.VoiceLines)
+	if not game.CurrentRun.IsDreamRun then
+		game.PlayVoiceLines(args.VoiceLines)
+	end
 	local didPan = false
 	local panDuration = args.DurationIn or 1.5
 
@@ -22,19 +55,21 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 				if args.UsePanSound then
 					PlaySound({ Name = "/Leftovers/World Sounds/MapZoomSlow" })
 				end
-				game.ProcessTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets)
-				-- BossPresentationHighPriorityIntroTextLineSets is custom for Hades EM
-				game.ProcessTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets)
-				game.ProcessTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets)
-				game.ProcessTextLines(enemy, enemy.BossPresentationIntroTextLineSets)
-				game.ProcessTextLines(enemy, enemy.BossPresentationTextLineSets)
-				game.ProcessTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
-				if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets, args) then
-					if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets, args) then
-						if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets, args) then
-							if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationIntroTextLineSets, args) then
-								if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationTextLineSets, args) then
-									mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets, args)
+				if not game.CurrentRun.IsDreamRun then
+					game.ProcessTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets)
+					-- BossPresentationHighPriorityIntroTextLineSets is custom for Hades EM
+					game.ProcessTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets)
+					game.ProcessTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets)
+					game.ProcessTextLines(enemy, enemy.BossPresentationIntroTextLineSets)
+					game.ProcessTextLines(enemy, enemy.BossPresentationTextLineSets)
+					game.ProcessTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
+					if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets, args) then
+						if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets, args) then
+							if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets, args) then
+								if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationIntroTextLineSets, args) then
+									if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationTextLineSets, args) then
+										mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets, args)
+									end
 								end
 							end
 						end
