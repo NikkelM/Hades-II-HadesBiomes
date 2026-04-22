@@ -491,6 +491,7 @@ local function on_ready()
 			import "Scripts/CombatLogic.lua"
 			import "Scripts/CombatPresentation.lua"
 			import "Scripts/DeathLoopLogic.lua"
+			import "Scripts/DreamRunLogic.lua"
 			import "Scripts/EffectLogic.lua"
 			import "Scripts/EffectPresentation.lua"
 			import "Scripts/EnemyAILogic.lua"
