@@ -198,6 +198,17 @@ local npcModifications = {
 	NPC_Sisyphus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		SubtitleColor = game.Color.SisyphusVoice,
+		SetupEvents = {
+			{
+				FunctionName = "SilenceForDreamRun",
+				Args = { ForceTextLines = "ModsNikkelMHadesBiomes_SisyphusDreamRun" },
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+		},
 		ActivateRequirements = mod.NilValue,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
@@ -279,6 +290,23 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesSisyphusTalentDrop",
 		},
 		InteractTextLineSets = {
+			ModsNikkelMHadesBiomes_SisyphusDreamRun = {
+				UseableOffSource = true,
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
+				PrePortraitExitFunctionArgs = mod.PresetEventArgs.SisyphusBenefitChoices,
+				{
+					SkipDialogue = true,
+					PostLineWait = 0,
+					InputDelay = 0,
+					BoxAnimation = "BlankObstacle",
+					BoxExitAnimation = "Blank"
+				},
+			},
 			SisyphusAboutBouldy01 = {
 				[4] = { PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "SetUpBouldyConversation", }
 			},
@@ -330,6 +358,17 @@ local npcModifications = {
 	},
 	ModsNikkelMHadesBiomes_NPC_Bouldy_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		SetupEvents = {
+			{
+				FunctionName = "SilenceForDreamRun",
+				Args = { BlockInteract = true },
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+		},
 		ActivateRequirements = mod.NilValue,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = false,
 		IgnoreInvincibubbleOnHit = true,
@@ -344,6 +383,17 @@ local npcModifications = {
 	NPC_Eurydice_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		SubtitleColor = game.Color.EurydiceVoice,
+		SetupEvents = {
+			{
+				FunctionName = "SilenceForDreamRun",
+				Args = { ForceTextLines = "ModsNikkelMHadesBiomes_EurydiceDreamRun" },
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+		},
 		ActivateRequirements = mod.NilValue,
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
 		ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines = true,
@@ -396,6 +446,23 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		},
 		InteractTextLineSets = {
+			ModsNikkelMHadesBiomes_EurydiceDreamRun = {
+				UseableOffSource = true,
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
+				PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
+				{
+					SkipDialogue = true,
+					PostLineWait = 0,
+					InputDelay = 0,
+					BoxAnimation = "BlankObstacle",
+					BoxExitAnimation = "Blank",
+				},
+			},
 			-- The new name from SharedKeepsakePort
 			EurydiceAboutAcorn01 = { RequiredKeepsake = mod.SharedKeepsakePortEurydiceKeepsakeTrait, },
 			EurydiceAboutAcorn02 = { RequiredKeepsake = mod.SharedKeepsakePortEurydiceKeepsakeTrait, },
@@ -439,6 +506,17 @@ local npcModifications = {
 	NPC_Patroclus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		SubtitleColor = game.Color.PatroclusVoice,
+		SetupEvents = {
+			{
+				FunctionName = "SilenceForDreamRun",
+				Args = { ForceTextLines = "ModsNikkelMHadesBiomes_PatroclusDreamRun" },
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+		},
 		ActivateRequirements = mod.NilValue,
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
@@ -507,6 +585,23 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesGainMinHealthMaxMana",
 		},
 		InteractTextLineSets = {
+			ModsNikkelMHadesBiomes_PatroclusDreamRun = {
+				UseableOffSource = true,
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
+				PrePortraitExitFunctionArgs = mod.PresetEventArgs.PatroclusBenefitChoices,
+				{
+					SkipDialogue = true,
+					PostLineWait = 0,
+					InputDelay = 0,
+					BoxAnimation = "BlankObstacle",
+					BoxExitAnimation = "Blank",
+				},
+			},
 			-- The new name from SharedKeepsakePort
 			PatroclusAboutKeepsake01 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
 			PatroclusAboutKeepsake02 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
@@ -543,6 +638,56 @@ local npcModifications = {
 	},
 	ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		SetupEvents = {
+			{
+				FunctionName = "SilenceForDreamRun",
+				Args = { ForceTextLines = "ModsNikkelMHadesBiomes_CerberusDreamRun" },
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+		},
+		InteractTextLineSets = {
+			ModsNikkelMHadesBiomes_CerberusDreamRun = {
+				UseableOff = true,
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+					{
+						PathTrue = { "CurrentRun", "RoomsEntered", "D_Reprieve01" },
+					},
+				},
+				{
+					SkipDialogue = true,
+					PostLineWait = 0,
+					InputDelay = 0,
+					BoxAnimation = "BlankObstacle",
+					BoxExitAnimation = "Blank",
+					PreLineFunctionName = "UnlockDoor",
+					PreLineFunctionArgs = { DoorId = 547460, RelockAllDoors = true, },
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					PostLineFunctionName = "ExitNPCPresentation",
+					PostLineFunctionArgs = {
+						InitialWaitTime = 0.2,
+						ObjectId = 547487,
+						TeleportToId = 551568,
+						DeleteId = 551569,
+						InitialExitSound = "/VO/CerberusGrowl",
+						FullFadeTime = 1.8,
+						EndSound = "/Leftovers/Menu Sounds/EmoteAffection",
+						UseAdditionalFootstepSounds = true,
+						EndUnlockText = "ClearedCerberus",
+						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
+						MoveSound = "/Leftovers/SFX/BallImpact",
+						HeroVoiceLines = "ClearedCerberusVoiceLines",
+					},
+				},
+			},
+		},
 		LineHistoryName = "Speaker_Homer",
 		SubtitleColor = game.Color.NarratorVoice,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
@@ -1269,6 +1414,17 @@ local npcModifications = {
 	NPC_Orpheus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		SubtitleColor = game.Color.OrpheusVoice,
+		SetupEvents = {
+			{
+				FunctionName = "SilenceForDreamRun",
+				Args = { ForceTextLines = "ModsNikkelMHadesBiomes_OrpheusDreamRun" },
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+		},
 		AnimOffsetZ = 275,
 		ActivateRequirements = mod.NilValue,
 		TextLinesPauseAmbientMusicVocals = mod.NilValue,
@@ -1340,6 +1496,23 @@ local npcModifications = {
 			"ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
 		},
 		InteractTextLineSets = {
+			ModsNikkelMHadesBiomes_OrpheusDreamRun = {
+				UseableOffSource = true,
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
+				PrePortraitExitFunctionArgs = mod.PresetEventArgs.OrpheusBenefitChoices,
+				{
+					SkipDialogue = true,
+					PostLineWait = 0,
+					InputDelay = 0,
+					BoxAnimation = "BlankObstacle",
+					BoxExitAnimation = "Blank",
+				},
+			},
 			OrpheusFirstMeeting = {
 				SuperPriority = true,
 				Priority = mod.NilValue,
@@ -1620,6 +1793,17 @@ local npcModifications = {
 		},
 	},
 	NPC_Orpheus_Story_01 = {
+		SetupEvents = {
+			{
+				FunctionName = "SilenceForDreamRun",
+				Args = { ForceTextLines = "ModsNikkelMHadesBiomes_OrpheusStoryDreamRun" },
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+		},
 		AnimOffsetZ = 230,
 		ActivateRequirements = {
 			RequiredFalseTextLinesLastRun = mod.NilValue,
@@ -1663,6 +1847,23 @@ local npcModifications = {
 			},
 		},
 		InteractTextLineSets = {
+			ModsNikkelMHadesBiomes_OrpheusStoryDreamRun = {
+				UseableOffSource = true,
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
+				PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
+				{
+					SkipDialogue = true,
+					PostLineWait = 0,
+					InputDelay = 0,
+					BoxAnimation = "BlankObstacle",
+					BoxExitAnimation = "Blank",
+				},
+			},
 			OrpheusWithEurydice01 = {
 				RequiredFalseTextLinesLastRun = mod.NilValue,
 				RequiredFalseTextLinesThisRun = { "OrpheusAboutSingersReunionQuest01" },
@@ -1688,6 +1889,10 @@ local npcModifications = {
 			-- Can't appear if she left after a dialogue (e.g. romance), set in game.ExitNPCPresentation()
 			{
 				PathFalse = { "CurrentRun", "ModsNikkelMHadesBiomesExitNPCRecord", "NPC_FurySister_01" },
+			},
+			-- Can't appear in Dream Dives
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" },
 			},
 		},
 		SpecialInteractFunctionName = "SpecialInteractSalute",

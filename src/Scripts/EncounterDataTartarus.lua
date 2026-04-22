@@ -339,6 +339,10 @@ local encounterModifications = {
 						Path = { "PrevRun", "EncountersOccurredCache", },
 						HasAny = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro", },
 					},
+					-- Don't spawn in Dream Dives
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" },
+					},
 					NamedRequirementsFalse = { "StandardPackageBountyActive", },
 				},
 				Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Thanatos_01" }, },
