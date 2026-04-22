@@ -1,8 +1,12 @@
--- Fully override the initial pool creation to control starting eligibility of H1 biomes.
 modutil.mod.Path.Wrap("SelectNextDreamBiome", function(base, source, args)
+	if config.z_ExcludeFromDreamDives then
+		return base(source, args)
+	end
+
 	args = args or {}
 	local nextRoomSet = nil
 	if game.IsEmpty(game.CurrentRun.DreamBiomePool) then
+		-- Fully override the initial pool creation to control starting eligibility of the new biomes
 		game.CurrentRun.DreamBiomePool = { "G", "H", "I", "O", "P", "Q", "Asphodel", "Elysium" }
 		if game.GameState.TextLinesRecord["Ending01"] then
 			table.insert(game.CurrentRun.DreamBiomePool, "Styx")
