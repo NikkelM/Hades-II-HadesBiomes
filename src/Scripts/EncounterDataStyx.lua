@@ -52,6 +52,12 @@ local encounterReplacements = {
 			{ FunctionName = "PostCombatAudio" },
 			{ FunctionName = "SpawnRoomReward" },
 		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { MoneyDropCapMin = 35, MoneyDropCapMax = 55 } },
+			[2] = { DataOverrides = { MoneyDropCapMin = 35, MoneyDropCapMax = 55 } },
+			[3] = { DataOverrides = { MoneyDropCapMin = 35, MoneyDropCapMax = 55 } },
+			[4] = { DataOverrides = { MoneyDropCapMin = 35, MoneyDropCapMax = 55 } },
+		},
 	},
 	GeneratedStyxMini = {
 		-- The original from Hades is 130
@@ -85,10 +91,12 @@ local encounterReplacements = {
 	PerfectClearChallengeStyx = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedStyx" },
 		EnemySet = game.EnemySets.EnemiesBiome4,
+		DreamBiomeData = "nil",
 	},
 	EliteChallengeStyx = {
 		InheritFrom = { "EliteChallenge", "GeneratedStyx" },
 		EnemySet = game.EnemySets.EnemiesBiome4_EliteChallenge,
+		DreamBiomeData = "nil",
 	},
 
 	-- New encounter for the D_Hub, to spawn Megaera there

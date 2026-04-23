@@ -71,6 +71,12 @@ local encounterReplacements = {
 		ActiveEnemyCapDepthRamp = 0.5,
 		-- The original from Hades is 11
 		DepthDifficultyRamp = 13,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 15, MoneyDropCapDepthRamp = 0 } },
+			[2] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 20, MoneyDropCapDepthRamp = 0, ActiveEnemyCapDepthRamp = 0.5 } },
+			[3] = { DataOverrides = { MoneyDropCapMin = 20, MoneyDropCapMax = 25, MoneyDropCapDepthRamp = 0, ActiveEnemyCapDepthRamp = 0.65 } },
+			[4] = { DataOverrides = { MoneyDropCapMin = 25, MoneyDropCapMax = 40, MoneyDropCapDepthRamp = 0, ActiveEnemyCapDepthRamp = 0.9 } },
+		},
 	},
 	OpeningGenerated = {
 		UnthreadedEvents = {
@@ -99,10 +105,12 @@ local encounterReplacements = {
 	PerfectClearChallengeTartarus = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedTartarus" },
 		EnemySet = EnemySets.EnemiesBiome1,
+		DreamBiomeData = "nil",
 	},
 	EliteChallengeTartarus = {
 		InheritFrom = { "EliteChallenge", "GeneratedTartarus" },
 		EnemySet = EnemySets.EnemiesBiome1_EliteChallenge,
+		DreamBiomeData = "nil",
 	},
 	BaseSurvival = {
 		UnthreadedEvents = mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsSurvival,
