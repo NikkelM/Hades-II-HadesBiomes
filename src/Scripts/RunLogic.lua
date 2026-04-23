@@ -45,6 +45,10 @@ modutil.mod.Path.Wrap("ChooseStartingRoom", function(base, currentRun, args)
 	if mod.ValidModdedRunBiomes[args.StartingBiome] then
 		game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun = true
 		currentRun.ModsNikkelMHadesBiomesIsModdedRun = true
+	elseif currentRun.IsDreamRun then
+		-- Reset when entering a vanilla biome during a Dream Run, so modded logic doesn't bleed over
+		game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun = false
+		currentRun.ModsNikkelMHadesBiomesIsModdedRun = false
 	end
 
 	-- Edge case: We also need to do these modifications for the first room of a run, as the IsModdedRun flag only gets set after RunStateInit is called
