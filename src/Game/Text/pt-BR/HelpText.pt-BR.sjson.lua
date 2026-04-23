@@ -152,39 +152,43 @@ local newData = {
 	-- Dream Run location variants
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
-		DisplayName = "TARTARUS?",
+		DisplayName = "TÁRTARO? (Pesadelo)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner",
+		DisplayName = "TÁRTARO?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
-		DisplayName = "ASPHODEL?",
+		DisplayName = "ASFÓDELO? (Pesadelo)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
+		DisplayName = "ASFÓDELO?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
-		DisplayName = "ELYSIUM?",
+		DisplayName = "ELÍSIO? (Pesadelo)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
+		DisplayName = "ELÍSIO?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
-		DisplayName = "STYX?",
+		DisplayName = "ESTIGE? (Pesadelo)",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
-		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Tártaro?]{$RoomSetData.Tartarus.BaseTartarus.DreamSaveProfileLocationText}{#Prev}",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
+		DisplayName = "ESTIGE?",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
-		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Asfódelo?]{$RoomSetData.Asphodel.BaseAsphodel.DreamSaveProfileLocationText}{#Prev}",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
+		DisplayName = "ÉREBO? (Pesadelo)",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
-		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Elísio?]{$RoomSetData.Elysium.BaseElysium.DreamSaveProfileLocationText}{#Prev}",
-	},
-	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
-		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Estige?]{$RoomSetData.Styx.BaseStyx.DreamSaveProfileLocationText}{#Prev}",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_DreamBanner",
+		DisplayName = "ÉREBO?",
 	},
 	-- #endregion
 

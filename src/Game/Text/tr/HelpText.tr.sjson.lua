@@ -150,39 +150,43 @@ local newData = {
 	-- Dream Run location variants
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
-		DisplayName = "TARTARUS?",
+		DisplayName = "TARTAROS? (Kâbus)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner",
+		DisplayName = "TARTAROS?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
-		DisplayName = "ASPHODEL?",
+		DisplayName = "ASFODELOS? (Kâbus)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
+		DisplayName = "ASFODELOS?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
-		DisplayName = "ELYSIUM?",
+		DisplayName = "ELYSİUM? (Kâbus)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
+		DisplayName = "ELYSİUM?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
-		DisplayName = "STYX?",
+		DisplayName = "STİKS? (Kâbus)",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
-		DisplayName =
-		"{#RunHistoryFailureFormat}{$RoomSetData.Tartarus.BaseTartarus.DreamSaveProfileLocationText}{#Prev}'ta Yenik Düştü",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
+		DisplayName = "STİKS?",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
-		DisplayName =
-		"{#RunHistoryFailureFormat}{$RoomSetData.Asphodel.BaseAsphodel.DreamSaveProfileLocationText}{#Prev}'da Yenik Düştü",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
+		DisplayName = "EREBOS? (Kâbus)",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
-		DisplayName =
-		"{#RunHistoryFailureFormat}{$RoomSetData.Elysium.BaseElysium.DreamSaveProfileLocationText}{#Prev}'da Yenik Düştü",
-	},
-	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
-		DisplayName =
-		"{#RunHistoryFailureFormat}{$RoomSetData.Styx.BaseStyx.DreamSaveProfileLocationText}{#Prev}'ta Yenik Düştü",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_DreamBanner",
+		DisplayName = "EREBOS?",
 	},
 	-- #endregion
 

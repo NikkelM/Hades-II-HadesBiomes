@@ -150,35 +150,43 @@ local newData = {
 	-- Dream Run location variants
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
-		DisplayName = "TARTARUS?",
+		DisplayName = "塔爾塔羅斯？ （夢魘）",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner",
+		DisplayName = "塔爾塔羅斯？",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
-		DisplayName = "ASPHODEL?",
+		DisplayName = "長春花草甸？ （夢魘）",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
+		DisplayName = "長春花草甸？",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
-		DisplayName = "ELYSIUM?",
+		DisplayName = "至福樂土？ （夢魘）",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
+		DisplayName = "至福樂土？",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
-		DisplayName = "STYX?",
+		DisplayName = "冥河？ （夢魘）",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
-		DisplayName = "於{#RunHistoryFailureFormat}{$RoomSetData.Tartarus.BaseTartarus.DreamSaveProfileLocationText}{#Prev}倒下",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
+		DisplayName = "冥河？",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
-		DisplayName = "於{#RunHistoryFailureFormat}{$RoomSetData.Asphodel.BaseAsphodel.DreamSaveProfileLocationText}{#Prev}倒下",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
+		DisplayName = "厄瑞玻斯？ （夢魘）",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
-		DisplayName = "於{#RunHistoryFailureFormat}{$RoomSetData.Elysium.BaseElysium.DreamSaveProfileLocationText}{#Prev}倒下",
-	},
-	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
-		DisplayName = "於{#RunHistoryFailureFormat}{$RoomSetData.Styx.BaseStyx.DreamSaveProfileLocationText}{#Prev}倒下",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_DreamBanner",
+		DisplayName = "厄瑞玻斯？",
 	},
 	-- #endregion
 

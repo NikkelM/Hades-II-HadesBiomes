@@ -150,39 +150,43 @@ local newData = {
 	-- Dream Run location variants
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
-		DisplayName = "TARTARUS?",
+		DisplayName = "ТАРТАР? (Кошмар)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner",
+		DisplayName = "ТАРТАР?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
-		DisplayName = "ASPHODEL?",
+		DisplayName = "АСФОДЕЛ? (Кошмар)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
+		DisplayName = "АСФОДЕЛ?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
-		DisplayName = "ELYSIUM?",
+		DisplayName = "ЕЛІСІУМ? (Кошмар)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
+		DisplayName = "ЕЛІСІУМ?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
-		DisplayName = "STYX?",
+		DisplayName = "СТІКС? (Кошмар)",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
-		DisplayName =
-		"Вас подолали у {#RunHistoryFailureFormat}[сні]{$RoomSetData.Tartarus.BaseTartarus.DreamSaveProfileLocationText}{#Prev}",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
+		DisplayName = "СТІКС?",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
-		DisplayName =
-		"Вас подолали у {#RunHistoryFailureFormat}[сні]{$RoomSetData.Asphodel.BaseAsphodel.DreamSaveProfileLocationText}{#Prev}",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
+		DisplayName = "ЕРЕБ? (Кошмар)",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
-		DisplayName =
-		"Вас подолали у {#RunHistoryFailureFormat}[сні]{$RoomSetData.Elysium.BaseElysium.DreamSaveProfileLocationText}{#Prev}",
-	},
-	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
-		DisplayName =
-		"Вас подолали у {#RunHistoryFailureFormat}[сні]{$RoomSetData.Styx.BaseStyx.DreamSaveProfileLocationText}{#Prev}",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_DreamBanner",
+		DisplayName = "ЕРЕБ?",
 	},
 	-- #endregion
 

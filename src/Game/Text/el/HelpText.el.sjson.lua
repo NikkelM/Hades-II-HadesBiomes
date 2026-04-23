@@ -148,38 +148,46 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge_Short",
 		DisplayName = "Ερεβος",
 	},
-	-- Dream Run location variants (with "?" suffix, matching vanilla pattern)
+	-- Dream Run location variants
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
-		DisplayName = "TARTARUS?",
+		DisplayName = "ΤΑΡΤΑΡΑ? (Εφιάλτης)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner",
+		DisplayName = "ΤΑΡΤΑΡΑ?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
-		DisplayName = "ASPHODEL?",
+		DisplayName = "ΑΣΦΟΔΕΛΟΣ? (Εφιάλτης)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
+		DisplayName = "ΑΣΦΟΔΕΛΟΣ?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
-		DisplayName = "ELYSIUM?",
+		DisplayName = "ΗΛΥΣΙΟ? (Εφιάλτης)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
+		DisplayName = "ΗΛΥΣΙΟ?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
-		DisplayName = "STYX?",
+		DisplayName = "ΣΤΥΓΑ? (Εφιάλτης)",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
-		DisplayName = "Περιοχή αποτυχίας: {#RunHistoryFailureFormat}{$RoomSetData.Tartarus.BaseTartarus.DreamSaveProfileLocationText}{#Prev}",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
+		DisplayName = "ΣΤΥΓΑ?",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
-		DisplayName = "Περιοχή αποτυχίας: {#RunHistoryFailureFormat}{$RoomSetData.Asphodel.BaseAsphodel.DreamSaveProfileLocationText}{#Prev}",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
+		DisplayName = "ΕΡΕΒΟΣ? (Εφιάλτης)",
 	},
 	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
-		DisplayName = "Περιοχή αποτυχίας: {#RunHistoryFailureFormat}{$RoomSetData.Elysium.BaseElysium.DreamSaveProfileLocationText}{#Prev}",
-	},
-	{
-		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
-		DisplayName = "Περιοχή αποτυχίας: {#RunHistoryFailureFormat}{$RoomSetData.Styx.BaseStyx.DreamSaveProfileLocationText}{#Prev}",
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_DreamBanner",
+		DisplayName = "ΕΡΕΒΟΣ?",
 	},
 	-- #endregion
 

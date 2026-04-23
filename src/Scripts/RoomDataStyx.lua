@@ -332,9 +332,69 @@ local roomReplacements = {
 				},
 			},
 		},
+
+		ThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+		PostCombatReloadThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
 	},
 
 	D_Intro = {
+		ThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText",
+				GameStateRequirements = {
+					NamedRequirementsFalse = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = {
+					AnimationName = "ModsNikkelMHadesBiomesInfoBannerStyxIn",
+					AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerStyxOut",
+					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
+				},
+			},
+			{
+				FunctionName = "DisplayInfoBanner",
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock",
+				Args = {
+					Biome = "Styx"
+				},
+			},
+		},
+
 		EnterVoiceLines = {
 			-- Chaos Trial/Bounty
 			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
@@ -759,7 +819,7 @@ local roomModifications = {
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
 		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
-		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
 		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeStyx" },
@@ -823,9 +883,22 @@ local roomModifications = {
 		EntranceDirection = "LeftRight",
 		StrictLeftRight = true,
 		FlipHorizontalChance = 0.0,
-		ThreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerStyxIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerStyxOut" }, },
-			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Styx" } },
+
+		-- For Dream Dives
+		NoReward = mod.NilValue,
+		ForcedRewardStore = "RunProgress",
+		IneligibleRewards = game.RewardSets.OpeningRoomBans,
+		SpawnRewardOnId = 40055,
+		DisableRewardMagnetisim = true,
+		RewardGameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				Path = { "CurrentRun", "EnteredBiomes" },
+				Comparison = "==",
+				Value = 0,
+			},
 		},
 	},
 	D_Hub = {

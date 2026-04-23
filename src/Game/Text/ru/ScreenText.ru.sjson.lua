@@ -224,6 +224,33 @@ local newData = {
 	-- 	InheritFrom = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete",
 	-- },
 	-- #endregion
+
+	-- #region Dream Run result texts for run history screen
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
+		DisplayName =
+		"Поражение в {#RunHistoryFailureFormat}[Тартаре (во сне)]{$RoomSetData.Tartarus.BaseTartarus.DreamSaveProfileLocationText}{#Prev}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
+		DisplayName =
+		"Поражение на {#RunHistoryFailureFormat}[Асфоделе (во сне)]{$RoomSetData.Asphodel.BaseAsphodel.DreamSaveProfileLocationText}{#Prev}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
+		DisplayName =
+		"Поражение в {#RunHistoryFailureFormat}[Элизиуме (во сне)]{$RoomSetData.Elysium.BaseElysium.DreamSaveProfileLocationText}{#Prev}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
+		DisplayName =
+		"Поражение на {#RunHistoryFailureFormat}[Стиксе (во сне)]{$RoomSetData.Styx.BaseStyx.DreamSaveProfileLocationText}{#Prev}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
+		DisplayName = "Поражение в {#RunHistoryFailureFormat}[Эребе (во сне)]{$RoomSetData.Challenge.RoomChallenge01.DreamSaveProfileLocationText}{#Prev}",
+	},
+	-- #endregion
 }
 
 sjson.hook(screenTextFile, function(data)

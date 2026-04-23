@@ -329,9 +329,69 @@ local roomReplacements = {
 			},
 		},
 
+		ThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+		PostCombatReloadThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+
 		CombatOverMusicEvents = mod.CombatOverMusicEvents.Generic,
 	},
 	X_Intro = {
+		ThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText",
+				GameStateRequirements = {
+					NamedRequirementsFalse = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = {
+					AnimationName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn",
+					AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut",
+					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
+				},
+			},
+			{
+				FunctionName = "DisplayInfoBanner",
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock",
+				Args = {
+					Biome = "Asphodel"
+				},
+			},
+		},
+
 		EnterVoiceLines = {
 			-- Chaos Trial/Bounty
 			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
@@ -404,7 +464,7 @@ local roomModifications = {
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
 		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
-		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
 		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeAsphodel" },
@@ -432,9 +492,23 @@ local roomModifications = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
 		},
-		ThreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut" }, },
-			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Asphodel" } },
+
+		-- For Dream Dives
+		NoReward = mod.NilValue,
+		ForcedRewardStore = "RunProgress",
+		IneligibleRewards = game.RewardSets.OpeningRoomBans,
+		-- The terrain tile itself
+		SpawnRewardOnId = 554486,
+		DisableRewardMagnetisim = true,
+		RewardGameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				Path = { "CurrentRun", "EnteredBiomes" },
+				Comparison = "==",
+				Value = 0,
+			},
 		},
 
 		HarvestPointChances = { 0.02, },

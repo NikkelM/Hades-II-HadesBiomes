@@ -224,6 +224,33 @@ local newData = {
 	-- 	InheritFrom = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete",
 	-- },
 	-- #endregion
+
+	-- #region Dream Run result texts for run history screen
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
+		DisplayName =
+		"Sucumbiu no {#RunHistoryFailureFormat}[Tártaro?]{$RoomSetData.Tartarus.BaseTartarus.DreamSaveProfileLocationText}{#Prev}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
+		DisplayName =
+		"Sucumbiu no {#RunHistoryFailureFormat}[Asfódelo?]{$RoomSetData.Asphodel.BaseAsphodel.DreamSaveProfileLocationText}{#Prev}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
+		DisplayName =
+		"Sucumbiu no {#RunHistoryFailureFormat}[Elísio?]{$RoomSetData.Elysium.BaseElysium.DreamSaveProfileLocationText}{#Prev}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
+		DisplayName =
+		"Sucumbiu no {#RunHistoryFailureFormat}[Estige?]{$RoomSetData.Styx.BaseStyx.DreamSaveProfileLocationText}{#Prev}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
+		DisplayName = "Sucumbiu no {#RunHistoryFailureFormat}[Érebo?]{$RoomSetData.Challenge.RoomChallenge01.DreamSaveProfileLocationText}{#Prev}",
+	},
+	-- #endregion
 }
 
 sjson.hook(screenTextFile, function(data)

@@ -315,6 +315,39 @@ local roomReplacements = {
 				},
 			},
 		},
+
+		ThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+		PostCombatReloadThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
 	},
 
 	-- OPENING ROOMS
@@ -325,6 +358,34 @@ local roomReplacements = {
 		MusicRequirements = mod.NilValue,
 		-- Will be set in the encounter instead
 		UnthreadedEvents = mod.NilValue,
+
+		ThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText",
+				GameStateRequirements = {
+					NamedRequirementsFalse = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = {
+					AnimationName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn",
+					AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut",
+					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner",
+				},
+			},
+			{
+				FunctionName = "DisplayInfoBanner",
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock",
+				Args = {
+					Biome = "Tartarus"
+				},
+			},
+			-- PatrolPaths
+		},
 
 		EnterVoiceLines = {
 			-- Chaos Trial/Bounty
@@ -549,7 +610,7 @@ local roomModifications = {
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus",
 		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
-		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner",
 		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeTartarus" },
@@ -574,12 +635,6 @@ local roomModifications = {
 		LegalEncounters = { "OpeningGenerated" },
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceDropRoomOpening",
 		EntranceFunctionArgs = { LandingAnimation = "Melinoe_HeroLanding", Sound = "/SFX/Player Sounds/MelWhooshDropIn", IntroHoldDuration = 2.34, StartZoomFraction = 0.65, ZoomDuration = 4 },
-		ThreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut" }, },
-			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Tartarus" } },
-			-- This will work with roomSetDataTartarus.RoomOpening.ThreadedEvents[3].Args.SpawnTypes = { "TartarusGhost01" }, but has the problem of spawning all Ghosts on the same ID
-			[3] = mod.NilValue
-		},
 		StartUnthreadedEvents = {
 			-- Don't start the demo presentation mode
 			[1] = mod.NilValue,
