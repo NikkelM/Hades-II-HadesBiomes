@@ -347,7 +347,14 @@ local roomReplacements = {
 		-- Same as EncounterDataStyx.ModsNikkelMHadesBiomes_StyxHubShop.StartRoomUnthreadedEvents
 		RestoreUnlockRoomExitsUnthreadedEvents = {
 			{ FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_FurySister_01" }, }, },
-			{ FunctionName = "CheckConversations" },
+			{
+				FunctionName = "CheckConversations",
+				GameStateRequirements = {
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
 		},
 		Binks = { "Cerberus_HubIdle_Bink", },
 
@@ -833,7 +840,16 @@ local roomModifications = {
 		DistanceTriggersPostCombatReload = true,
 		TimerBlock = "ShopEncounter",
 		StoreDataName = "Q_WorldShop",
-		PostCombatReloadThreadedEvents = { { FunctionName = "CheckConversations" } },
+		PostCombatReloadThreadedEvents = {
+			{
+				FunctionName = "CheckConversations",
+				GameStateRequirements = {
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+		},
 		-- We need to call this before the PostCombatReloadThreadedEvents as by then the room is already visible and the items would pop in
 		ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub = game.EncounterSets.ShopRoomEvents,
 		SaveWhitelist = {
