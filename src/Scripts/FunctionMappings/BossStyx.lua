@@ -730,6 +730,7 @@ function mod.HadesSpawnsPresentation(args)
 end
 
 function mod.HadesConsumeHeal(enemy, weaponAIData, currentRun)
+	local healPerTick = weaponAIData.HealPerTick * (enemy.HealingMultiplier or 1)
 	local urnsConsumed = 0
 	while urnsConsumed < weaponAIData.MaxConsumptions and not IsInvulnerable({ Id = enemy.ObjectId }) do
 		local urnId = game.GetRandomValue(GetIdsByType({ Name = "ModsNikkelMHadesBiomesHadesTombstone" }))
@@ -742,7 +743,7 @@ function mod.HadesConsumeHeal(enemy, weaponAIData, currentRun)
 		for i = 1, weaponAIData.HealTicksPerConsume do
 			game.wait(game.CalcEnemyWait(enemy, weaponAIData.HealTickInterval), enemy.AIThreadName)
 			if game.ActiveEnemies[urnId] ~= nil and not IsInvulnerable({ Id = enemy.ObjectId }) then
-				game.Heal(enemy, { HealAmount = weaponAIData.HealPerTick, triggeredById = enemy.ObjectId })
+				game.Heal(enemy, { HealAmount = healPerTick, triggeredById = enemy.ObjectId })
 				game.thread(game.UpdateHealthBar, enemy, { Force = true })
 			else
 				StopAnimation({ DestinationId = urnId, Name = weaponAIData.ConsumeFx })
