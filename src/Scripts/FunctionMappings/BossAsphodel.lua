@@ -239,10 +239,10 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 		spawnCount = #spawns
 	end
 
-	-- For Hades HadesChronosDebuffBoon - reduce spawn count
+	-- For Hades HadesChronosDebuffBoon - reduce spawn count when VoR is *not* active at this biome depth, as fewer, stronger enemies are spawned
+	-- With the dampening, a count of 1 could be reduced to 0 and no enemies would spawn
 	if weaponAIData.SpawnCountDampenTraits ~= nil then
-		-- If we should only apply the spawnDampenTraits when below a certain shrine level
-		if weaponAIData.SpawnCountDampenShrineUpgrade ~= nil and game.GetNumShrineUpgrades(weaponAIData.SpawnCountDampenShrineUpgrade) <= (weaponAIData.SpawnCountDampenMaxShrineLevel or 4) then
+		if weaponAIData.SpawnCountDampenShrineUpgrade ~= nil and not game.IsBossDifficultyShrineUpgradeActive() then
 			for traitName in pairs(weaponAIData.SpawnCountDampenTraits) do
 				if game.HeroHasTrait(traitName) then
 					local traitData = game.GetHeroTrait(traitName)

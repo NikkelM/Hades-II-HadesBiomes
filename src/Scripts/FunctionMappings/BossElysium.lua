@@ -4,7 +4,8 @@ function mod.ModsNikkelMHadesBiomesSetFlag(source, args)
 end
 
 function mod.BossIntroElysium(eventSource, args)
-	local shrineLevel = game.GetNumShrineUpgrades(eventSource.ShrineMetaUpgradeName)
+	-- Use EM intro if VoR is active at current biome depth, otherwise normal intro
+	local shrineLevel = game.IsBossDifficultyShrineUpgradeActive() and 4 or 0
 
 	-- In case of there being no music after certain room chains, resume or start new music
 	mod.SafetyResumeBossMusic()

@@ -14,10 +14,9 @@ function mod.MultiFuryIntro(eventSource, args)
 end
 
 function mod.SelectHarpySupportAIs(enemy)
-	local shrineLevel = game.GetNumShrineUpgrades(enemy.ShrineMetaUpgradeName)
 	enemy.SupportAINames = enemy.SupportAINames or {}
 
-	if shrineLevel > 0 then
+	if game.IsBossDifficultyShrineUpgradeActive() then
 		local supportCount = game.RandomInt(1, 2)
 		if game.GameState.TextLinesRecord.FurySistersUnion01 == nil then
 			supportCount = 2
@@ -281,7 +280,7 @@ function mod.HarpyKillPresentation(unit, args)
 		textMessage = deathPanSettings.AltMessage
 	end
 
-	if deathPanSettings.BossDifficultyMessage and game.GetNumShrineUpgrades("BossDifficultyShrineUpgrade") > 0 then
+	if deathPanSettings.BossDifficultyMessage and game.IsBossDifficultyShrineUpgradeActive() then
 		textMessage = deathPanSettings.BossDifficultyMessage
 	end
 

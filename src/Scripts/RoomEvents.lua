@@ -131,7 +131,8 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 end
 
 function mod.ActivatePrePlacedByShrineLevel(eventSource, args)
-	local shrineLevel = game.GetNumShrineUpgrades(eventSource.ShrineMetaUpgradeName)
+	-- Use maximum if EM is active for the current depth (needed for DreamRuns), otherwise use 0 (non-EM)
+	local shrineLevel = game.IsBossDifficultyShrineUpgradeActive() and 4 or 0
 	game.ActivatePrePlaced(eventSource, args[shrineLevel])
 end
 
