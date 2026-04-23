@@ -2966,13 +2966,3 @@ game.EnemyData.Elite.EliteAttributeData.Metallic.BlockAttributes = game.EnemyDat
 table.insert(game.EnemyData.Elite.EliteAttributeData.Metallic.BlockAttributes, "Disguise")
 
 mod.ApplyModificationsAndInheritEnemyData(mod.EnemyData, enemyModifications, enemyReplacements, enemyKeyReplacements)
-
--- Debug: log all H1 enemies and whether they received DreamBiomeData
-for enemyName, enemyData in pairs(game.EnemyData) do
-	if enemyData.ModsNikkelMHadesBiomesIsModdedEnemy then
-		print("\n\n")
-		print(enemyName)
-		mod.PrintTable(enemyData.DreamBiomeData or "No DreamBiomeData!")
-		print()
-	end
-end
