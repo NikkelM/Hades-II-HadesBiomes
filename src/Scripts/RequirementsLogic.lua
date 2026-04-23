@@ -476,6 +476,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredMinAnyTextLines ~= nil then
+		if requirements.RequiredMinAnyTextLines.TextLines == nil then
+			return false
+		end
 		local numTrue = 0
 		for k, textLineSet in pairs(requirements.RequiredMinAnyTextLines.TextLines) do
 			if game.GameState.TextLinesRecord[textLineSet] then
@@ -487,6 +490,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 	if requirements.RequiredMaxAnyTextLines ~= nil then
+		if requirements.RequiredMaxAnyTextLines.TextLines == nil then
+			return false
+		end
 		local numTrue = 0
 		for k, textLineSet in pairs(requirements.RequiredMaxAnyTextLines.TextLines) do
 			if game.GameState.TextLinesRecord[textLineSet] then
@@ -2923,6 +2929,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.MinRunsSinceAnyTextLines ~= nil then
+		if requirements.MinRunsSinceAnyTextLines.TextLines == nil then
+			return false
+		end
 		for _, textLines in pairs(requirements.MinRunsSinceAnyTextLines.TextLines) do
 			local runsSinceOccurred = 0
 			for runIndex = #game.GameState.RunHistory + 1, 1, -1 do
@@ -3045,6 +3054,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredMinAnyCosmetics ~= nil then
+		if requirements.RequiredMinAnyCosmetics.Cosmetics == nil then
+			return false
+		end
 		local numTrue = 0
 		for k, name in pairs(requirements.RequiredMinAnyCosmetics.Cosmetics) do
 			if game.GameState.WorldUpgrades[name] then
@@ -3056,6 +3068,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 	if requirements.RequiredMaxAnyCosmetics ~= nil then
+		if requirements.RequiredMaxAnyCosmetics.Cosmetics == nil then
+			return false
+		end
 		local numTrue = 0
 		for k, name in pairs(requirements.RequiredMaxAnyCosmetics.Cosmetics) do
 			if game.GameState.WorldUpgrades[name] then
