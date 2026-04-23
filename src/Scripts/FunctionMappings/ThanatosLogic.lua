@@ -12,7 +12,7 @@ function mod.ThanatosPreSpawnPresentation(eventSource)
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ThanatosSpawningVoiceLines, true)
 
 	game.wait(1.5, game.RoomThreadName)
-	game.thread(mod.DisplayLocationText, nil, {
+	game.thread(game.DisplayInfoBanner, nil, {
 		Text = "ThanatosMessage",
 		Delay = 0.95,
 		FadeColor = { 0, 1, 0.7, 1 },
