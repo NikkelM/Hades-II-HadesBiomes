@@ -268,11 +268,14 @@ function mod.PerfectClearEncounterEndPresentation(eventSource)
 	-- For the Quest tracking
 	game.GameState.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears = game.GameState
 			.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears or 0
-	if eventSource.PlayerTookDamage then
-		game.GameState.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears = 0
-	else
-		game.GameState.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears =
-				game.GameState.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears + 1
+	-- Lock once we reach three hitless encounters to ensure quest display stays correct
+	if game.GameState.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears < 3 then
+		if eventSource.PlayerTookDamage then
+			game.GameState.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears = 0
+		else
+			game.GameState.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears =
+					game.GameState.ModsNikkelMHadesBiomes_SuccessiveErebusEncounterClears + 1
+		end
 	end
 end
 
