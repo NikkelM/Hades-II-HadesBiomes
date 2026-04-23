@@ -7,9 +7,14 @@ modutil.mod.Path.Wrap("SelectNextDreamBiome", function(base, source, args)
 	local nextRoomSet = nil
 	if game.IsEmpty(game.CurrentRun.DreamBiomePool) then
 		-- Fully override the initial pool creation to control starting eligibility of the new biomes
-		game.CurrentRun.DreamBiomePool = { "G", "H", "I", "O", "P", "Q", "Asphodel", "Elysium" }
-		if game.GameState.TextLinesRecord["Ending01"] then
-			table.insert(game.CurrentRun.DreamBiomePool, "Styx")
+		game.CurrentRun.DreamBiomePool = { "G", "H", "I", "O", "P", "Q" }
+		-- Modded biomes are only eligible once you've beaten at least one run
+		if game.GameState.ModsNikkelMHadesBiomesClearedRunsCache >= 1 then
+			table.insert(game.CurrentRun.DreamBiomePool, "Asphodel")
+			table.insert(game.CurrentRun.DreamBiomePool, "Elysium")
+			if game.GameState.TextLinesRecord["Ending01"] then
+				table.insert(game.CurrentRun.DreamBiomePool, "Styx")
+			end
 		end
 
 		-- special handling for the first biome on the first dream run
@@ -29,7 +34,9 @@ modutil.mod.Path.Wrap("SelectNextDreamBiome", function(base, source, args)
 		-- can't start in F, N or Tartarus, but they're eligible afterwards!
 		table.insert(game.CurrentRun.DreamBiomePool, "F")
 		table.insert(game.CurrentRun.DreamBiomePool, "N")
-		table.insert(game.CurrentRun.DreamBiomePool, "Tartarus")
+		if game.GameState.ModsNikkelMHadesBiomesClearedRunsCache >= 1 then
+			table.insert(game.CurrentRun.DreamBiomePool, "Tartarus")
+		end
 	else
 		nextRoomSet = game.RemoveRandomValue(game.CurrentRun.DreamBiomePool)
 
