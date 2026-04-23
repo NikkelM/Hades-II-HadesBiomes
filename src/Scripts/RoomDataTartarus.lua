@@ -548,6 +548,9 @@ local roomModifications = {
 		MusicActiveStems = { "Bass" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeTartarus" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeTartarus" },

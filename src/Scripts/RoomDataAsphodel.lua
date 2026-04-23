@@ -403,6 +403,9 @@ local roomModifications = {
 		MusicActiveStems = { "Bass" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeAsphodel" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeAsphodel" },

@@ -758,6 +758,9 @@ local roomModifications = {
 		ReverbValue = 2.0,
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeStyx" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeStyx" },

@@ -393,6 +393,9 @@ local roomModifications = {
 		-- MusicActiveStems = { "Bass" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeElysium" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeElysium" },
