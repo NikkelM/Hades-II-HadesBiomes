@@ -231,6 +231,20 @@ local newData = {
 		"Определённые враги ({$TooltipData.BlockedEnemyTypes[1]}) больше не будут появляться в {$Keywords.EncounterPlural}.",
 	},
 	-- #endregion
+
+	-- #region Old Grudge Dream Run text
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "Старые распри",
+		Description = "При столкновении с [Кроносом]{$Keywords.CharChronos}, [Тифоном]{$Keywords.CharTyphon} или [Аидом]{$Keywords.CharHades} они получат сильный урон через {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} сек. после начала боя.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Урон [Кроносу]{$Keywords.CharChronos}, [Тифону]{$Keywords.CharTyphon} или [Аиду]{$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}–{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

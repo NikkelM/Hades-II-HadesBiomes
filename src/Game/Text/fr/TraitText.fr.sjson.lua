@@ -231,6 +231,20 @@ local newData = {
 		"Garantit l'absence de {$TooltipData.BlockedEnemyTypes[1]} de vos [Combats]{$Keywords.EncounterPlural}.",
 	},
 	-- #endregion
+
+	-- #region Old Grudge Dream Run text
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "Haine Ancestrale",
+		Description = "Si vous affrontez {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}, ceux-ci subiront une puissante salve de dégâts {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} s {#Prev}après le début du combat.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Dégâts infligés :",
+		Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1} {#Prev}{#ItalicFormat}de leur {!Icons.EnemyHealth}",
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

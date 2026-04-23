@@ -231,8 +231,18 @@ local newData = {
 		"Verhindert, dass {$TooltipData.BlockedEnemyTypes[1]} Gegner in {$Keywords.EncounterPlural} auftauchen.",
 	},
 	-- #endregion
-}
 
-sjson.hook(traitTextFile, function(data)
-	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id", order)
-end)
+	-- #region Old Grudge Dream Run text
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "Alter Groll",
+		Description = "{$Keywords.CharChronos}, {$Keywords.CharTyphon} und {$Keywords.CharHades} erleiden nach den ersten {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} Sek. {#Prev}des Kampfes Schaden.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Reduzierte Lebenskraft:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	-- #endregion
+}

@@ -230,6 +230,20 @@ local newData = {
 		Description = "Prevent {$TooltipData.BlockedEnemyTypes[1]} foes from appearing in {$Keywords.EncounterPlural}.",
 	},
 	-- #endregion
+
+	-- #region Old Grudge Dream Run text (includes Hades as valid target)
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "Old Grudge",
+		Description = "If you confront {$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades}, they take a burst of damage after the first {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} Sec.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades} Life Reduced:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)
