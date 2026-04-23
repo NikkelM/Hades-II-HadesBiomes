@@ -53,8 +53,8 @@ local encounterReplacements = {
 			{ FunctionName = "SpawnRoomReward" },
 		},
 		DreamBiomeData = {
-			[1] = { DataOverrides = { MoneyDropCapMin = 35, MoneyDropCapMax = 55 } },
-			[2] = { DataOverrides = { MoneyDropCapMin = 35, MoneyDropCapMax = 55 } },
+			[1] = { DataOverrides = { MoneyDropCapMin = 40, MoneyDropCapMax = 60 } },
+			[2] = { DataOverrides = { MoneyDropCapMin = 40, MoneyDropCapMax = 60 } },
 			[3] = { DataOverrides = { MoneyDropCapMin = 35, MoneyDropCapMax = 55 } },
 			[4] = { DataOverrides = { MoneyDropCapMin = 35, MoneyDropCapMax = 55 } },
 		},

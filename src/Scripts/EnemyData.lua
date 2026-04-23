@@ -2272,6 +2272,23 @@ local enemyModifications = {
 			[3] = { DataOverrides = { HealthMultiplier = 0.8, HealingMultiplier = 0.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
 			[4] = { DataOverrides = { HealthMultiplier = 1.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
 		},
+		SetupEvents = {
+			{
+				FunctionName = "OverwriteSelf",
+				Args = {
+					-- Reduced DreamBiomeData multipliers to compensate for EM's increased MaxHealth (36000 vs 30000)
+					DreamBiomeData = {
+						[1] = { DataOverrides = { HealthMultiplier = 0.2, HealingMultiplier = 0.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.35 } },
+						[2] = { DataOverrides = { HealthMultiplier = 0.3, HealingMultiplier = 0.3 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.6 } },
+						[3] = { DataOverrides = { HealthMultiplier = 0.64, HealingMultiplier = 0.64 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
+						[4] = { DataOverrides = { HealthMultiplier = 1.12 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
+					},
+				},
+				GameStateRequirements = {
+					NamedRequirements = { "BossDifficultyActive" },
+				},
+			},
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 36000,
 		},
