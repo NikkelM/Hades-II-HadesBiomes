@@ -175,7 +175,8 @@ function mod.HarpyKillPresentation(unit, args)
 		end
 	end
 	if game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
-		local assistUnit = game.ActiveEnemies[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+		local assistUnit = game.ActiveEnemies
+				[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
 		if assistUnit ~= nil then
 			game.killTaggedThreads(assistUnit.AIThreadName)
 			game.killWaitUntilThreads(assistUnit.AINotifyName)
@@ -819,6 +820,16 @@ function mod.ModsNikkelMHadesBiomesHarpyBuildRageStart(enemy, aiData)
 end
 
 function mod.FuryDreamRunIntro(source, args)
+	local furyTauntAnimations = {
+		Harpy = "FuryTaunt",
+		Harpy2 = "AlectoTaunt",
+		Harpy3 = "TisiphoneTaunt_2",
+	}
+
+	local tauntAnim = furyTauntAnimations[source.Name]
+	if tauntAnim then
+		SetAnimation({ Name = tauntAnim, DestinationId = source.ObjectId })
+	end
 	game.StartBossRoomMusic()
 	game.wait(0.7)
 end

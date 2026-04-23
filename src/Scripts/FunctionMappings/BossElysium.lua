@@ -13,6 +13,9 @@ function mod.BossIntroElysium(eventSource, args)
 end
 
 function mod.ElysiumChampionsDreamRunIntro(source, args)
+	if source.TauntAnimation ~= nil then
+		SetAnimation({ Name = source.TauntAnimation, DestinationId = source.ObjectId })
+	end
 	game.StartBossRoomMusic()
 	game.wait(0.7)
 end

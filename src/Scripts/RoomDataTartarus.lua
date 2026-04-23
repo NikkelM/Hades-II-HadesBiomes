@@ -777,6 +777,7 @@ local roomModifications = {
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
 				Args = {
 					DelayedStart = true,
+					DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "FuryDreamRunIntro",
 				},
 			},
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
@@ -802,6 +803,7 @@ local roomModifications = {
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
 				Args = {
 					DelayedStart = true,
+					DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "FuryDreamRunIntro",
 				},
 			},
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },

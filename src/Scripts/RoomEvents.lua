@@ -1,25 +1,37 @@
 function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 	args = args or {}
 
-	-- Dream Run shortcut: skip camera pan and dialogue, call a dedicated dream intro function
+	-- Dream Run shortcut: pan to boss, play taunt + music, skip dialogue, pan back
 	if game.CurrentRun.IsDreamRun and args.DreamRunIntroFunctionName ~= nil then
 		game.HideCombatUI("BossIntro")
 		AddInputBlock({ Name = "BossIntro" })
 		game.AddTimerBlock(game.CurrentRun, "BossIntro")
 		ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
 
+		local panDuration = args.DurationIn or 1.5
+
 		if args.SetupBossIds ~= nil then
 			for k, id in ipairs(args.SetupBossIds) do
 				if game.ActiveEnemies[id] ~= nil then
 					local enemy = game.ActiveEnemies[id]
+					if not args.SkipAngleTowardTarget then
+						AngleTowardTarget({ Id = id, DestinationId = game.CurrentRun.Hero.ObjectId })
+					end
+					if not args.SkipCameraPan then
+						PanCamera({ Ids = id, Duration = panDuration, EaseIn = 0.05, EaseOut = 0.3 })
+					end
 					game.CallFunctionName(args.DreamRunIntroFunctionName, enemy, args)
-					game.thread(SetupBoss, enemy)
+					game.thread(game.SetupBoss, enemy)
 					game.CurrentRun.CurrentRoom.BossId = id
 				end
 			end
 		end
 
-		LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = 1.25, EaseIn = 0.04, EaseOut = 0.275 })
+		-- Wait for the camera pan to complete before locking back to the hero
+		if not args.SkipCameraPan then
+			game.wait(panDuration)
+			LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = args.DurationOut or 1.25, EaseIn = 0.04, EaseOut = 0.275 })
+		end
 		SetAnimation({ Name = "MelinoeEquip", DestinationId = game.CurrentRun.Hero.ObjectId })
 		RemoveInputBlock({ Name = "BossIntro" })
 		game.RemoveTimerBlock(game.CurrentRun, "BossIntro")
