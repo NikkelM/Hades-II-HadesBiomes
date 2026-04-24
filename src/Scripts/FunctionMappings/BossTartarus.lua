@@ -368,7 +368,6 @@ function mod.HarpyKillPresentation(unit, args)
 	SetThingProperty({ Property = "AllowAnyFire", Value = true, DestinationId = game.CurrentRun.Hero.ObjectId, DataValue = false })
 	unit.Mute = true
 
-	-- For Dream Dive compatibility in case it comes in the future
 	if args.IsBiomeBoss and game.CurrentRun.IsDreamRun and game.CurrentRun.EnteredBiomes >= game.GameData.FullRunBiomeCount then
 		-- For e.g. Hydra arena where there is lava
 		game.SetPlayerInvulnerable("DreamRunCleared")

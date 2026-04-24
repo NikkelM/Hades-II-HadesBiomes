@@ -84,8 +84,10 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 
 	if game.CurrentRun.IsDreamRun then
 		for _, item in pairs(source.UpgradeOptions) do
-			item.Rarity = game.TraitRarityData.RarityUpgradeOrder[game.CurrentRun.EnteredBiomes]
+			-- Using math.min for potential future compatibility with longer Dream Run mods
+			item.Rarity = game.TraitRarityData.RarityUpgradeOrder[math.min(game.CurrentRun.EnteredBiomes, 4)]
 		end
+		mod.ScaleNPCTraitsForDreamRun(source.UpgradeOptions)
 	end
 
 	-- Custom: Sort the source.UpgradeOptions by their order in source.Traits
@@ -905,6 +907,61 @@ function mod.BedroomIntermissionPresentation(source, args)
 	})
 
 	game.ResumeMusic()
+end
+
+-- #endregion
+
+-- #region Dream Run NPC trait scaling
+function mod.ScaleNPCTraitsForDreamRun(upgradeOptions)
+	for _, option in pairs(upgradeOptions) do
+		local traitData = game.TraitData[option.ItemName]
+		if traitData ~= nil and traitData.ModsNikkelMHadesBiomesDreamRunScaling ~= nil and option.Rarity ~= nil then
+			local scaling = traitData.ModsNikkelMHadesBiomesDreamRunScaling
+			local rarityData = traitData.RarityLevels and traitData.RarityLevels[option.Rarity]
+			local multiplier = rarityData and rarityData.Multiplier or 1
+
+			-- Store original values on first call so repeated scaling doesn't compound
+			if traitData.ModsNikkelMHadesBiomes_OriginalDreamScaleValues == nil then
+				traitData.ModsNikkelMHadesBiomes_OriginalDreamScaleValues = {}
+				for keyIndex, keyPath in ipairs(scaling.ScaleKeys) do
+					local target = traitData
+					for i = 1, #keyPath - 1 do
+						target = target[keyPath[i]]
+						if target == nil then break end
+					end
+					if target ~= nil then
+						traitData.ModsNikkelMHadesBiomes_OriginalDreamScaleValues[keyIndex] = target[keyPath[#keyPath]]
+					end
+				end
+			end
+
+			-- Apply multiplier from original values
+			for keyIndex, keyPath in ipairs(scaling.ScaleKeys) do
+				local originalValue = traitData.ModsNikkelMHadesBiomes_OriginalDreamScaleValues[keyIndex]
+				if originalValue ~= nil then
+					local target = traitData
+					for i = 1, #keyPath - 1 do
+						target = target[keyPath[i]]
+						if target == nil then break end
+					end
+					if target ~= nil then
+						local isMultiplier = scaling.SourceIsMultiplier or
+								(scaling.SourceIsMultiplierKeys and scaling.SourceIsMultiplierKeys[keyIndex])
+						local newValue
+						if isMultiplier then
+							newValue = 1 + (originalValue - 1) * multiplier
+						else
+							newValue = originalValue * multiplier
+						end
+						if scaling.AsInt then
+							newValue = math.floor(newValue + 0.5)
+						end
+						target[keyPath[#keyPath]] = newValue
+					end
+				end
+			end
+		end
+	end
 end
 
 -- #endregion

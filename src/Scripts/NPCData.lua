@@ -35,7 +35,7 @@ local function applyNPCChoiceMappings(npcData, mappings)
 							if last and game.Contains(mappingData.TextToMatch, last.Text) then
 								textLineSet.ModsNikkelMHadesBiomesPreviousOfferText = last.Text
 								textLineSet.PrePortraitExitFunctionName = mappingData.PrePortraitExitFunctionName
-								textLineSet.PrePortraitExitFunctionArgs = mappingData.PrePortraitExitFunctionArgs
+								textLineSet.PrePortraitExitFunctionArgs = game.DeepCopyTable(mappingData.PrePortraitExitFunctionArgs)
 								if not mappingData.IgnoreSettingFlavorTextIds then
 									textLineSet.PrePortraitExitFunctionArgs.ModsNikkelMHadesBiomesFlavorTextIds = { last.Text }
 								end
