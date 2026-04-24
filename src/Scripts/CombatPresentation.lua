@@ -53,6 +53,33 @@ modutil.mod.Path.Wrap("UnitInvulnerableHitPresentation", function(base, blocker,
 	return base(blocker, args)
 end)
 
+-- Track Zagreus defeat for Dream Dive quest
+modutil.mod.Path.Wrap("ZagreusKillPresentation", function(base, unit, args)
+	if game.CurrentRun.IsDreamRun then
+		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedZagreus = true
+	end
+
+	return base(unit, args)
+end)
+
+-- Track EM Chronos defeat for Dream Dive quest (encounter name differentiates normal/EM)
+modutil.mod.Path.Wrap("ChronosKillPresentation", function(base, unit, args)
+	if game.CurrentRun.IsDreamRun and game.CurrentRun.CurrentRoom.Encounter.Name == "BossChronos02" then
+		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronos = true
+	end
+
+	return base(unit, args)
+end)
+
+-- Track EM Typhon defeat for Dream Dive quest (encounter name differentiates normal/EM)
+modutil.mod.Path.Wrap("TyphonHeadKillPresentation", function(base, unit, args)
+	if game.CurrentRun.IsDreamRun and game.CurrentRun.CurrentRoom.Encounter.Name == "BossTyphonHead02" then
+		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMTyphon = true
+	end
+
+	return base(unit, args)
+end)
+
 -- This is a very costly function!
 modutil.mod.Path.Wrap("UpdateHealthBarReal", function(base, args)
 	base(args)

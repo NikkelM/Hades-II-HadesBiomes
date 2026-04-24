@@ -1781,6 +1781,32 @@ local newData = {
 		Id = "OrpheusMusicProgress04",
 		DisplayName = "Achieve Mastery in Playing the Lyre",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Double Duty ",
+		Description = "The daughter of the god of the dead shall someday dream of defeating two of her dearest friends, who are also her greatest foes at times, in the same dream.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus_Condition",
+		DisplayName = "{!Icons.QuestProgressIncomplete} Defeat {$Keywords.CharCharon} and {$Keywords.CharZagreus} in a single Dream Dive",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus_Cleared",
+		DisplayName = "{!Icons.QuestProgressComplete} Defeat {$Keywords.CharCharon} and {$Keywords.CharZagreus} in a single Dream Dive",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} A True Nightmare ",
+		Description = "The daughter of the god of the dead shall someday dream of facing and overcoming all three of her strongest foes at their most terrifying power, in the same dream.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Condition",
+		DisplayName = "{!Icons.QuestProgressIncomplete} Defeat unrivalled {$Keywords.CharChronos}, {$Keywords.CharTyphon} and {$Keywords.CharHades} in a single Dream Dive",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Cleared",
+		DisplayName = "{!Icons.QuestProgressComplete} Defeat unrivalled {$Keywords.CharChronos}, {$Keywords.CharTyphon} and {$Keywords.CharHades} in a single Dream Dive",
+	},
 	-- #endregion
 
 	-- #region Chaos Trials/Bounties

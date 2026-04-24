@@ -419,6 +419,11 @@ function mod.HadesKillPresentation(unit, args)
 		end
 	end
 
+	-- Track EM Hades defeat for Dream Dive quest
+	if game.CurrentRun.IsDreamRun and game.IsBossDifficultyShrineUpgradeActive() then
+		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMHades = true
+	end
+
 	game.SetMusicSection(10)
 	-- ZeroSuperMeter()
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })

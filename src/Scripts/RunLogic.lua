@@ -168,6 +168,17 @@ end)
 modutil.mod.Path.Wrap("RecordRunCleared", function(base)
 	base()
 
+	if game.CurrentRun.IsDreamRun then
+		-- Defeated Charon + Zagreus in a single Dream Dive
+		if game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharon and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedZagreus then
+			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = true
+		end
+		-- Defeated EM Chronos, Typhon + Hades in a single Dream Dive
+		if game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronos and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMTyphon and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMHades then
+			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades = true
+		end
+	end
+
 	-- Most of the stats tracked here are for Quests
 	-- In Dream Runs, let vanilla handle stats recording
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and not game.CurrentRun.IsDreamRun and (game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics)) then

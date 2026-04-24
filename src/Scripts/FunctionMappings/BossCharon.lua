@@ -195,6 +195,10 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 		end
 	end
 
+	if game.CurrentRun.IsDreamRun then
+		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharon = true
+	end
+
 	-- Similar lines being played through CharonStoreDiscount pickup
 	-- game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.CharonFightRewardVoiceLines, true)
 
