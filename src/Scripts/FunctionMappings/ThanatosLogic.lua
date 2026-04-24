@@ -76,9 +76,11 @@ function mod.ThanatosSpawnPresentation(thanatos)
 
 	game.wait(2.0, game.RoomThreadName)
 
-	game.ProcessTextLines(thanatos.BossPresentationIntroTextLineSets)
-	game.ProcessTextLines(thanatos.BossPresentationTextLineSets)
-	game.ProcessTextLines(thanatos.BossPresentationRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		game.ProcessTextLines(thanatos.BossPresentationIntroTextLineSets)
+		game.ProcessTextLines(thanatos.BossPresentationTextLineSets)
+		game.ProcessTextLines(thanatos.BossPresentationRepeatableTextLineSets)
+	end
 
 	-- if game.GameState.TextLinesRecord["ThanatosFirstAppearance"] then
 	game.wait(0.5, game.RoomThreadName)
@@ -86,9 +88,11 @@ function mod.ThanatosSpawnPresentation(thanatos)
 	-- 	game.wait(2.0, game.RoomThreadName)
 	-- end
 
-	if not mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationIntroTextLineSets) then
-		if not mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationTextLineSets) then
-			mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		if not mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationIntroTextLineSets) then
+			if not mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationTextLineSets) then
+				mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationRepeatableTextLineSets)
+			end
 		end
 	end
 
@@ -271,6 +275,19 @@ function mod.HandleThanatosEncounterReward(thanatos, args)
 
 	game.NPCRewardDropPreProcessArgs(thanatos.KillChallengeArgs)
 	game.NPCRewardDrop(thanatos, thanatos.KillChallengeArgs)
+
+	-- Skip dialogue in Dream Runs - disappear immediately after reward
+	if game.CurrentRun.IsDreamRun then
+		game.CheckDistanceTrigger(mod.PresetEventArgs.ThanatosFarewells, thanatos)
+		game.ActivatedObjects[thanatos.ObjectId] = nil
+		game.MapState.RoomRequiredObjects[thanatos.ObjectId] = nil
+		game.wait(0.2, game.RoomThreadName)
+		if game.CheckRoomExitsReady(game.CurrentRun.CurrentRoom) then
+			game.UnlockRoomExits(game.CurrentRun, game.CurrentRun.CurrentRoom)
+		end
+
+		return
+	end
 
 	game.CheckAvailableTextLines(thanatos)
 	AngleTowardTarget({ Id = thanatos.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
