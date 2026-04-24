@@ -632,7 +632,7 @@ local roomModifications = {
 	-- OPENING ROOMS
 	RoomOpening = {
 		InheritFrom = { "BaseTartarus", "BiomeStartRoom", },
-		LegalEncounters = { "OpeningGenerated" },
+		FlipHorizontalChance = 0.0,
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceDropRoomOpening",
 		EntranceFunctionArgs = { LandingAnimation = "Melinoe_HeroLanding", Sound = "/SFX/Player Sounds/MelWhooshDropIn", IntroHoldDuration = 2.34, StartZoomFraction = 0.65, ZoomDuration = 4 },
 		StartUnthreadedEvents = {
