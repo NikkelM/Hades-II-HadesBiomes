@@ -40,7 +40,7 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 
 	source.UpgradeOptions = args.ModsNikkelMHadesBiomes_ForcedRewards or {}
 	source.BlockReroll = true
-	local options = ShallowCopyTable(args.UpgradeOptions) or {}
+	local options = game.DeepCopyTable(args.UpgradeOptions) or {}
 	local eligibleOptions = {}
 	local priorityOptions = {}
 
