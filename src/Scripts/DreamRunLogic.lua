@@ -51,3 +51,222 @@ modutil.mod.Path.Wrap("SelectNextDreamBiome", function(base, source, args)
 
 	game.CurrentRun.CurrentRoom.NextRoomSet = { nextRoomSet }
 end)
+
+-- #region Dream Run voiceline modifications
+
+-- NamedRequirements for correct guesses, known and reverse paths in RequirementsData.lua
+
+-- #region DreamBiomeStartVoiceLines
+-- Starting region lines
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5553", {
+	{
+		Path = { "CurrentRun", "EnteredBiomes" },
+		Comparison = "==",
+		Value = 1,
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "Q", "Styx" },
+	},
+})
+-- Final region aligned with normal runs
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5509", {
+	{
+		Path = { "CurrentRun", "EnteredBiomes" },
+		Comparison = "==",
+		Value = 4,
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "I", "Q", "Styx" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5510", {
+	{
+		Path = { "CurrentRun", "EnteredBiomes" },
+		Comparison = "==",
+		Value = 4,
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "I", "Q", "Styx" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5512", {
+	{
+		Path = { "CurrentRun", "EnteredBiomes" },
+		Comparison = "==",
+		Value = 4,
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "I", "Q", "Styx" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5513", {
+	{
+		Path = { "CurrentRun", "EnteredBiomes" },
+		Comparison = "==",
+		Value = 4,
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "I", "Q", "Styx" },
+	},
+})
+-- Final region in starting biomes
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5515", {
+	{
+		Path = { "CurrentRun", "EnteredBiomes" },
+		Comparison = "==",
+		Value = 4,
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "F", "N", "Tartarus" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5516", {
+	{
+		Path = { "CurrentRun", "EnteredBiomes" },
+		Comparison = "==",
+		Value = 4,
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "F", "N", "Tartarus" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5517", {
+	{
+		Path = { "CurrentRun", "EnteredBiomes" },
+		Comparison = "==",
+		Value = 4,
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "F", "N", "Tartarus" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5518", {
+	{
+		Path = { "CurrentRun", "EnteredBiomes" },
+		Comparison = "==",
+		Value = 4,
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "F", "N", "Tartarus" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5519", {
+	{
+		Path = { "CurrentRun", "EnteredBiomes" },
+		Comparison = "==",
+		Value = 4,
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "F", "N", "Tartarus" },
+	},
+})
+-- Mixed-up order
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5523", {
+	{
+		Path = { "CurrentRun", "PrevDreamBiome" },
+		IsAny = { "F", },
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "I", "O", "P", "Q", "Tartarus", "Asphodel", "Elysium", "Styx" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5524", {
+	{
+		Path = { "CurrentRun", "PrevDreamBiome" },
+		IsAny = { "G", },
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "I", "O", "P", "Q", "Tartarus", "Asphodel", "Elysium", "Styx" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5527", {
+	{
+		Path = { "CurrentRun", "PrevDreamBiome" },
+		IsAny = { "H", },
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "F", "O", "P", "Q", "Tartarus", "Asphodel", "Elysium", "Styx" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5528", {
+	{
+		Path = { "CurrentRun", "PrevDreamBiome" },
+		IsAny = { "N", },
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "G", "H", "I", "Q", "Tartarus", "Asphodel", "Elysium", "Styx" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5529", {
+	{
+		Path = { "CurrentRun", "PrevDreamBiome" },
+		IsAny = { "O", },
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "F", "G", "H", "I", "Tartarus", "Asphodel", "Elysium", "Styx" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5530", {
+	{
+		Path = { "CurrentRun", "PrevDreamBiome" },
+		IsAny = { "P", "Q" },
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "F", "G", "H", "I", "N", "Tartarus", "Asphodel", },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5531", {
+	{
+		Path = { "CurrentRun", "PrevDreamBiome" },
+		IsAny = { "Q", },
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "F", "G", "H", "I", "N", "O", "Tartarus", "Asphodel", "Elysium", "Styx" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamBiomeStartVoiceLines, "/VO/MelinoeField_5533", {
+	{
+		Path = { "CurrentRun", "PrevDreamBiome" },
+		IsAny = { "N", "O", "P", "Q", },
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "F", "G", "H", "I", "Tartarus", "Asphodel", "Elysium", "Styx" },
+	},
+})
+-- #endregion
+-- #region DreamRoomExitVoiceLines
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamRoomExitVoiceLines, "/VO/MelinoeField_5456", {
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsAny = { "I", "Tartarus" },
+	},
+})
+-- #endregion
+-- #region DreamPostBossExitVoiceLines
+mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamPostBossExitVoiceLines, "/VO/MelinoeField_5484", {
+	{
+		Path = { "CurrentRun", "BiomesReached" },
+		HasNone = { "I", "Tartarus" },
+	},
+})
+-- #endregion
+
+-- #endregion
