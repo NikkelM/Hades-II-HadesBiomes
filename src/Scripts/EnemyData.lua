@@ -1091,6 +1091,26 @@ local enemyModifications = {
 		-- Polyphemus EM Health: 10200
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 11000,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Harpy_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		DreamBiomeData = {
 			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
 			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
@@ -1129,6 +1149,16 @@ local enemyModifications = {
 		-- Base Health: 4600
 		-- EM Health: 4900
 		MaxHealth = 11100,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Harpy2_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		DreamBiomeData = {
 			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
 			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
@@ -1155,6 +1185,16 @@ local enemyModifications = {
 		-- Base Health: 5200
 		-- EM Health: 5600
 		MaxHealth = 11400,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Harpy3_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		DreamBiomeData = {
 			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
 			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
@@ -1554,12 +1594,48 @@ local enemyModifications = {
 		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
+			-- Lernie rename (non-Dream Run only)
 			{
 				Requirements = mod.NilValue,
 				GameStateRequirements = {
 					{
 						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation", },
 					},
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+			-- Dream Run: Visage of Lernie (if incantation performed)
+			{
+				TextId = "ModsNikkelMHadesBiomes_HydraHeadImmortal_DreamRun02",
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation", },
+					},
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+			-- Dream Run: Visage of the Bone Hydra (if incantation not performed)
+			{
+				TextId = "ModsNikkelMHadesBiomes_HydraHeadImmortal_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathFalse = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation", },
+					},
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{ PathTrue = { "CurrentRun", "IsDreamRun" } },
 				},
 			},
 		},
@@ -2017,6 +2093,47 @@ local enemyModifications = {
 		-- Heracles Health: 34000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 26500,
+		AltHealthBarTextIds = {
+			-- Miniboss fight: use full name (unless Dream Run)
+			{
+				TextId = "Minotaur_Full",
+				Requirements = { RequiredRoom = "C_MiniBoss01" },
+				GameStateRequirements = {
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+			-- Dream Run Miniboss: Visage of full name
+			{
+				TextId = "ModsNikkelMHadesBiomes_Minotaur_Full_DreamRun01",
+				Requirements = { RequiredRoom = "C_MiniBoss01" },
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+			-- Dream Run boss fight: Visage of nickname
+			{
+				TextId = "ModsNikkelMHadesBiomes_Minotaur_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		DreamBiomeData = {
 			[1] = { DataOverrides = { HealthMultiplier = 0.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
 			[2] = { DataOverrides = { HealthMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
@@ -2060,6 +2177,26 @@ local enemyModifications = {
 	Theseus = {
 		-- Base Health: 9000
 		MaxHealth = 20000,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Theseus_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		DreamBiomeData = {
 			[1] = { DataOverrides = { HealthMultiplier = 0.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
 			[2] = { DataOverrides = { HealthMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
@@ -2242,6 +2379,26 @@ local enemyModifications = {
 	CrawlerMiniBoss = {
 		MaxHealth = 14000,
 		RunHistoryKilledByName = "HadesCrawlerMiniBoss",
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_CrawlerMiniBoss_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation",
 		OnDeathFunctionArgs = { Message = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage", },
 		KillEnemyEvents = {
@@ -2293,6 +2450,26 @@ local enemyModifications = {
 			MaxHealth = 36000,
 		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Hades_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		SubtitleColor = game.Color.HadesVoice,
 		DestroyDelay = 0,
 		-- It's misaligned/not tracking correctly
@@ -2438,6 +2615,16 @@ local enemyModifications = {
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 21000,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Charon_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		SubtitleColor = game.Color.CharonVoice,
 		RunHistoryKilledByName = "NPC_Charon_01",
 		AIStages = {

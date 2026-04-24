@@ -100,7 +100,7 @@ local newData = {
 	-- },
 	-- #endregion
 
-	-- #region Save File Location Indicators
+	-- #region Save File & Location Indicators
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus",
 		DisplayName = "TARTARE (Cauchemar)",
@@ -149,7 +149,7 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge_Short",
 		DisplayName = "Érèbe",
 	},
-	-- Dream Run location variants
+	-- #region Dream Run location variants
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
 		DisplayName = "TARTARE ? (Cauchemar)",
@@ -191,6 +191,7 @@ local newData = {
 		DisplayName = "ÉRÈBE ?",
 	},
 	-- #endregion
+	-- #endregion
 
 	-- #region NPC/Unit Names
 	{
@@ -208,6 +209,52 @@ local newData = {
 	-- 	DisplayName = "Orpheus & Eurydice",
 	-- 	Description = "",
 	-- },
+	-- #region Dream Run Visage Names
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Harpy_DreamRun01",
+	-- 	DisplayName = "Visage of Megaera",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Harpy2_DreamRun01",
+	-- 	DisplayName = "Visage of Alecto",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Harpy3_DreamRun01",
+	-- 	DisplayName = "Visage of Tisiphone",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_HydraHeadImmortal_DreamRun01",
+	-- 	DisplayName = "Visage of the Bone Hydra",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_HydraHeadImmortal_DreamRun02",
+	-- 	DisplayName = "Visage of Lernie",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Minotaur_DreamRun01",
+	-- 	DisplayName = "Visage of the Minotaur",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Minotaur_Full_DreamRun01",
+	-- 	DisplayName = "Visage of Asterius",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Theseus_DreamRun01",
+	-- 	DisplayName = "Visage of Theseus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Hades_DreamRun01",
+	-- 	DisplayName = "Visage of Hades",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Charon_DreamRun01",
+	-- 	DisplayName = "Visage of Charon",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CrawlerMiniBoss_DreamRun01",
+	-- 	DisplayName = "Visage of the Tiny Vermin",
+	-- },
+	-- #endregion
 	-- #endregion
 
 	-- #region Credits

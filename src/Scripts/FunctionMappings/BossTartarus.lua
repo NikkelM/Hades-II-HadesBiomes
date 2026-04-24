@@ -284,6 +284,18 @@ function mod.HarpyKillPresentation(unit, args)
 		textMessage = deathPanSettings.BossDifficultyMessage
 	end
 
+	if unit.AltDeathMessageTextIds ~= nil then
+		local eligibleTextIds = {}
+		for _, altTextIdData in pairs(unit.AltDeathMessageTextIds) do
+			if altTextIdData.GameStateRequirements == nil or game.IsGameStateEligible(altTextIdData, altTextIdData.GameStateRequirements) then
+				table.insert(eligibleTextIds, altTextIdData.TextId)
+			end
+		end
+		if not game.IsEmpty(eligibleTextIds) then
+			textMessage = game.GetRandomValue(eligibleTextIds)
+		end
+	end
+
 	game.thread(game.DisplayInfoBanner, nil,
 		{
 			Text = textMessage or "BiomeClearedMessage",
