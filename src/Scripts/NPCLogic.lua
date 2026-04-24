@@ -231,6 +231,7 @@ function mod.ModsNikkelMHadesBiomesSingingPresentation(source, ars)
 end
 
 function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
+	args = args or {}
 	-- NPC_Orpheus_Story_01 or NPC_Eurydice_01 or NPC_Orpheus_01
 	source = source or game.ActiveEnemies[554419] or game.ActiveEnemies[514436] or game.ActiveEnemies[390000]
 

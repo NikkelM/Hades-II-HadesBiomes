@@ -453,7 +453,8 @@ local npcModifications = {
 						PathTrue = { "CurrentRun", "IsDreamRun" },
 					},
 				},
-				OnQueuedThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
+				OnQueuedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Eurydice,
 				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
 				PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
 				{
@@ -1504,7 +1505,6 @@ local npcModifications = {
 						PathTrue = { "CurrentRun", "IsDreamRun" },
 					},
 				},
-				OnQueuedThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
 				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
 				PrePortraitExitFunctionArgs = mod.PresetEventArgs.OrpheusBenefitChoices,
 				{
@@ -1856,7 +1856,8 @@ local npcModifications = {
 						PathTrue = { "CurrentRun", "IsDreamRun" },
 					},
 				},
-				OnQueuedThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
+				OnQueuedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
 				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
 				PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
 				{
