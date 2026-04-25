@@ -53,8 +53,7 @@ modutil.mod.Path.Wrap("SelectNextDreamBiome", function(base, source, args)
 end)
 
 -- #region Dream Run voiceline modifications
-
--- NamedRequirements for correct guesses, known and reverse paths in RequirementsData.lua
+-- NamedRequirements changes for correct guesses, known and reverse paths are in RequirementsData.lua
 
 -- #region DreamBiomeStartVoiceLines
 -- Starting region lines
