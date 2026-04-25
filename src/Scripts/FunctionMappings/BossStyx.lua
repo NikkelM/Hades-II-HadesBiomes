@@ -165,10 +165,8 @@ function mod.HadesDreamRunIntro(source, args)
 	mod.StartFinalBossRoomMusic()
 	AngleTowardTarget({ Id = source.ObjectId, DestinationId = 40000 })
 	SetAnimation({ Name = "HadesBattleIntro", DestinationId = source.ObjectId })
-	-- Ensure Hades can attack as soon as his animation completes
-	source.AISetupDelay = 1.0
-	-- Wait for the animation to complete
-	game.wait(5.5)
+	-- A little higher to line up with the camera movements
+	source.AISetupDelay = 6.5
 end
 
 function mod.StartFinalBossRoomIntroMusic()
