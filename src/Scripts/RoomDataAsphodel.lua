@@ -607,6 +607,7 @@ local roomModifications = {
 				Value = 2,
 			},
 		},
+		ThreadedEvents = mod.NilValue,
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroHydra", },
 		},
@@ -635,6 +636,7 @@ local roomModifications = {
 				Value = 2,
 			},
 		},
+		ThreadedEvents = mod.NilValue,
 		BackupCauseOfDeath = "HydraHeadImmortal",
 		CombatResolvedVoiceLines = {},
 

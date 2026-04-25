@@ -298,6 +298,10 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_CrawlerMiniBoss_DreamRun01",
 	-- 	DisplayName = "Visage of the Tiny Vermin",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_DreamBossesDefeatedMessage",
+	-- 	DisplayName = "VISAGES VANQUISHED",
+	-- },
 	-- #endregion
 	-- #endregion
 

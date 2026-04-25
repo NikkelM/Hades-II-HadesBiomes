@@ -1103,11 +1103,21 @@ local enemyModifications = {
 		},
 		AltDeathMessageTextIds = {
 			{
+				TextId = "ModsNikkelMHadesBiomes_DreamBossesDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+					NamedRequirements = { "BossDifficultyActive" },
+				},
+			},
+			{
 				TextId = "DreamBossDefeatedMessage",
 				GameStateRequirements = {
 					{
 						PathTrue = { "CurrentRun", "IsDreamRun" }
 					},
+					NamedRequirementsFalse = { "BossDifficultyActive" },
 				},
 			},
 		},
@@ -2126,7 +2136,7 @@ local enemyModifications = {
 		},
 		AltDeathMessageTextIds = {
 			{
-				TextId = "DreamBossDefeatedMessage",
+				TextId = "ModsNikkelMHadesBiomes_DreamBossesDefeatedMessage",
 				GameStateRequirements = {
 					{
 						PathTrue = { "CurrentRun", "IsDreamRun" }
@@ -2189,7 +2199,7 @@ local enemyModifications = {
 		},
 		AltDeathMessageTextIds = {
 			{
-				TextId = "DreamBossDefeatedMessage",
+				TextId = "ModsNikkelMHadesBiomes_DreamBossesDefeatedMessage",
 				GameStateRequirements = {
 					{
 						PathTrue = { "CurrentRun", "IsDreamRun" }
