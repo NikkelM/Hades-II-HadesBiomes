@@ -1008,7 +1008,9 @@ local roomModifications = {
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
-		ThreadedEvents = mod.NilValue,
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "BossIntroHades",

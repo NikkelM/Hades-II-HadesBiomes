@@ -607,7 +607,9 @@ local roomModifications = {
 				Value = 2,
 			},
 		},
-		ThreadedEvents = mod.NilValue,
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroHydra", },
 		},
@@ -636,7 +638,9 @@ local roomModifications = {
 				Value = 2,
 			},
 		},
-		ThreadedEvents = mod.NilValue,
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		BackupCauseOfDeath = "HydraHeadImmortal",
 		CombatResolvedVoiceLines = {},
 

@@ -790,7 +790,9 @@ local roomModifications = {
 				FunctionArgs = { BossRoom = "A_Boss01", },
 			},
 		},
-		ThreadedEvents = mod.NilValue,
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		-- Replaces MegaeraHome_ with Megaera_3 voicelines
 		UnthreadedEvents = {
 			[1] = {
@@ -832,7 +834,9 @@ local roomModifications = {
 				FunctionArgs = { BossRoom = "A_Boss02", },
 			},
 		},
-		ThreadedEvents = mod.NilValue,
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
@@ -859,7 +863,9 @@ local roomModifications = {
 				FunctionArgs = { BossRoom = "A_Boss03", },
 			},
 		},
-		ThreadedEvents = mod.NilValue,
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
