@@ -112,14 +112,21 @@ function mod.RoomEntranceHades(currentRun, currentRoom)
 			Notify = notifyName
 		})
 		game.waitUntil(notifyName)
-		-- So the weapon equip animation isn't seen
-		game.wait(0.1)
-		SetUnitProperty({ Property = "Speed", Value = 50, DestinationId = currentRun.Hero.ObjectId })
-		game.wait(0.5)
+
+		if not game.CurrentRun.IsDreamRun then
+			-- So the weapon equip animation isn't seen
+			game.wait(0.1)
+			SetUnitProperty({ Property = "Speed", Value = 50, DestinationId = currentRun.Hero.ObjectId })
+			game.wait(0.5)
+		end
 	end
 	Stop({ Id = currentRun.Hero.ObjectId })
 
-	game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = true })
+	if game.CurrentRun.IsDreamRun then
+		game.RestoreMelRun(currentRun.Hero)
+	else
+		game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = true })
+	end
 	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = currentRun.Hero.ObjectId })
 	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
 	game.wait(0.3)
@@ -155,10 +162,13 @@ function mod.BossIntroHades(eventSource, args)
 end
 
 function mod.HadesDreamRunIntro(source, args)
-	-- TODO: Check if needed or if music event must have additional transition for this
-	-- mod.StartFinalBossRoomIntroMusic()
 	mod.StartFinalBossRoomMusic()
-	game.wait(0.7)
+	AngleTowardTarget({ Id = source.ObjectId, DestinationId = 40000 })
+	SetAnimation({ Name = "HadesBattleIntro", DestinationId = source.ObjectId })
+	-- Ensure Hades can attack as soon as his animation completes
+	source.AISetupDelay = 1.0
+	-- Wait for the animation to complete
+	game.wait(5.5)
 end
 
 function mod.StartFinalBossRoomIntroMusic()
@@ -404,13 +414,13 @@ function mod.HadesKillPresentation(unit, args)
 	end
 	game.thread(game.PlayVoiceLines, unit.DefeatedVoiceLines, true, unit)
 
-	if not game.CurrentRun.IsDreamRun then
-		if game.GameState.TextLinesRecord["LordHadesDefeated01"] then
-			game.wait(2.8, game.RoomThreadName)
-		else
-			game.wait(4.0, game.RoomThreadName)
-		end
+	if game.GameState.TextLinesRecord["LordHadesDefeated01"] then
+		game.wait(2.8, game.RoomThreadName)
+	else
+		game.wait(4.0, game.RoomThreadName)
+	end
 
+	if not game.CurrentRun.IsDreamRun then
 		game.ProcessTextLines(unit.BossPresentationOutroTextLineSets)
 		game.ProcessTextLines(unit.BossPresentationOutroRepeatableTextLineSets)
 
