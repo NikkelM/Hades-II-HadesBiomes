@@ -47,16 +47,16 @@ local newIcons = {
 	-- #endregion
 	-- #region Dream Run biome icons
 	ModsNikkelMHadesBiomes_BiomeTartarusIcon = {
-		TexturePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\RunHistory\\BiomeTartarus",
+		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeTartarus",
 	},
 	ModsNikkelMHadesBiomes_BiomeAsphodelIcon = {
-		TexturePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\RunHistory\\BiomeAsphodel",
+		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeAsphodel",
 	},
 	ModsNikkelMHadesBiomes_BiomeElysiumIcon = {
-		TexturePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\RunHistory\\BiomeElysium",
+		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeElysium",
 	},
 	ModsNikkelMHadesBiomes_BiomeStyxIcon = {
-		TexturePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\RunHistory\\BiomeStyx",
+		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeStyx",
 	},
 	-- #endregion
 }

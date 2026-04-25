@@ -229,26 +229,27 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
 		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Tártaro?]{$RoomSetData.Tartarus.BaseTartarus.DreamSaveProfileLocationText}{#Prev}",
+		"Sucumbiu no {#RunHistoryFailureFormat}[Tártaro?]{$RoomSetData.Tartarus.BaseTartarus.DreamLocationText}{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
 		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Asfódelo?]{$RoomSetData.Asphodel.BaseAsphodel.DreamSaveProfileLocationText}{#Prev}",
+		"Sucumbiu no {#RunHistoryFailureFormat}[Asfódelo?]{$RoomSetData.Asphodel.BaseAsphodel.DreamLocationText}{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
 		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Elísio?]{$RoomSetData.Elysium.BaseElysium.DreamSaveProfileLocationText}{#Prev}",
+		"Sucumbiu no {#RunHistoryFailureFormat}[Elísio?]{$RoomSetData.Elysium.BaseElysium.DreamLocationText}{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
 		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Estige?]{$RoomSetData.Styx.BaseStyx.DreamSaveProfileLocationText}{#Prev}",
+		"Sucumbiu no {#RunHistoryFailureFormat}[Estige?]{$RoomSetData.Styx.BaseStyx.DreamLocationText}{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
-		DisplayName = "Sucumbiu no {#RunHistoryFailureFormat}[Érebo?]{$RoomSetData.Challenge.RoomChallenge01.DreamSaveProfileLocationText}{#Prev}",
+		DisplayName =
+		"Sucumbiu no {#RunHistoryFailureFormat}[Érebo?]{$RoomSetData.Challenge.RoomChallenge01.DreamLocationText}{#Prev}",
 	},
 	-- #endregion
 }
