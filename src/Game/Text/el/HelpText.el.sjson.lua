@@ -225,7 +225,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
-		DisplayName = "The TEMPLE of STYX?",
+		DisplayName = "Ο ΝΑΟΣ ΤΗΣ ΣΤΥΞ?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
