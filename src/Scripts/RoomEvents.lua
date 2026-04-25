@@ -1,54 +1,6 @@
 function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 	args = args or {}
 
-	-- Dream Run shortcut: pan to boss, play taunt + music, skip dialogue, pan back
-	if game.CurrentRun.IsDreamRun and args.DreamRunIntroFunctionName ~= nil then
-		game.HideCombatUI("BossIntro")
-		AddInputBlock({ Name = "BossIntro" })
-		game.AddTimerBlock(game.CurrentRun, "BossIntro")
-		ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
-
-		local panDuration = args.DurationIn or 1.5
-
-		if args.SetupBossIds ~= nil then
-			for k, id in ipairs(args.SetupBossIds) do
-				if game.ActiveEnemies[id] ~= nil then
-					local enemy = game.ActiveEnemies[id]
-					if not args.SkipAngleTowardTarget then
-						AngleTowardTarget({ Id = id, DestinationId = game.CurrentRun.Hero.ObjectId })
-					end
-					if not args.SkipCameraPan then
-						PanCamera({ Ids = id, Duration = panDuration, EaseIn = 0.05, EaseOut = 0.3 })
-					end
-					local introStartTime = game._worldTime
-					game.CallFunctionName(args.DreamRunIntroFunctionName, enemy, args)
-					args.TotalElapsedTime = (args.TotalElapsedTime or 0) + (game._worldTime - introStartTime)
-					game.thread(game.SetupBoss, enemy)
-					game.CurrentRun.CurrentRoom.BossId = id
-				end
-			end
-		end
-
-		-- Wait for remaining camera pan time before locking back to the hero
-		if not args.SkipCameraPan then
-			local remainingPanTime = panDuration - (args.TotalElapsedTime or 0)
-			if remainingPanTime > 0 then
-				game.wait(remainingPanTime)
-			end
-			LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = args.DurationOut or 1.25, EaseIn = 0.04, EaseOut = 0.275 })
-		end
-		SetAnimation({ Name = "MelinoeEquip", DestinationId = game.CurrentRun.Hero.ObjectId })
-		RemoveInputBlock({ Name = "BossIntro" })
-		game.RemoveTimerBlock(game.CurrentRun, "BossIntro")
-		ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
-		game.ShowCombatUI("BossIntro")
-		if args.DelayedStart then
-			game.StartEncounterEffects()
-		end
-
-		return
-	end
-
 	game.HideCombatUI("BossIntro")
 	AddInputBlock({ Name = "BossIntro" })
 	game.AddTimerBlock(game.CurrentRun, "BossIntro")
@@ -73,7 +25,9 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 				if args.UsePanSound then
 					PlaySound({ Name = "/Leftovers/World Sounds/MapZoomSlow" })
 				end
-				if not game.CurrentRun.IsDreamRun then
+				if game.CurrentRun.IsDreamRun and args.DreamRunIntroFunctionName ~= nil then
+					game.CallFunctionName(args.DreamRunIntroFunctionName, enemy, args)
+				else
 					game.ProcessTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets)
 					-- BossPresentationHighPriorityIntroTextLineSets is custom for Hades EM
 					game.ProcessTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets)
@@ -106,7 +60,7 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 	if args.SetupBossIds ~= nil then
 		for k, id in ipairs(args.SetupBossIds) do
 			if game.ActiveEnemies[id] ~= nil then
-				game.thread(SetupBoss, game.ActiveEnemies[id])
+				game.thread(game.SetupBoss, game.ActiveEnemies[id])
 				-- used for Final Boss EM4
 				game.CurrentRun.CurrentRoom.BossId = id
 			end
