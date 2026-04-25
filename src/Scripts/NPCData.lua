@@ -664,7 +664,9 @@ local npcModifications = {
 				},
 				{
 					SkipDialogue = true,
-					PostLineWait = 0,
+					SkipContextArt = true,
+					-- Give some time for the animation before fading out
+					PostLineWait = 0.5,
 					InputDelay = 0,
 					BoxAnimation = "BlankObstacle",
 					BoxExitAnimation = "Blank",
