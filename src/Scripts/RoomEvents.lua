@@ -20,16 +20,21 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 					if not args.SkipCameraPan then
 						PanCamera({ Ids = id, Duration = panDuration, EaseIn = 0.05, EaseOut = 0.3 })
 					end
+					local introStartTime = game._worldTime
 					game.CallFunctionName(args.DreamRunIntroFunctionName, enemy, args)
+					args.TotalElapsedTime = (args.TotalElapsedTime or 0) + (game._worldTime - introStartTime)
 					game.thread(game.SetupBoss, enemy)
 					game.CurrentRun.CurrentRoom.BossId = id
 				end
 			end
 		end
 
-		-- Wait for the camera pan to complete before locking back to the hero
+		-- Wait for remaining camera pan time before locking back to the hero
 		if not args.SkipCameraPan then
-			game.wait(panDuration)
+			local remainingPanTime = panDuration - (args.TotalElapsedTime or 0)
+			if remainingPanTime > 0 then
+				game.wait(remainingPanTime)
+			end
 			LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = args.DurationOut or 1.25, EaseIn = 0.04, EaseOut = 0.275 })
 		end
 		SetAnimation({ Name = "MelinoeEquip", DestinationId = game.CurrentRun.Hero.ObjectId })

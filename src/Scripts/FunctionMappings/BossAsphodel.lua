@@ -8,7 +8,6 @@ end
 
 function mod.HydraDreamRunIntro(source, args)
 	game.StartBossRoomMusic()
-	game.wait(0.7)
 end
 
 function mod.RoomEntranceBossHydra(currentRun, currentRoom)
