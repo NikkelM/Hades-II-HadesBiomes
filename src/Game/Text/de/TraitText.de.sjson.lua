@@ -236,7 +236,8 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Alter Groll",
-		Description = "{$Keywords.CharChronos}, {$Keywords.CharTyphon} und {$Keywords.CharHades} erleiden nach den ersten {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} Sek. {#Prev}des Kampfes Schaden.",
+		Description =
+		"{$Keywords.CharChronos}, {$Keywords.CharTyphon} und {$Keywords.CharHades} erleiden nach den ersten {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} Sek. {#Prev}des Kampfes Schaden.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
@@ -246,3 +247,7 @@ local newData = {
 	},
 	-- #endregion
 }
+
+sjson.hook(traitTextFile, function(data)
+	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id", order)
+end)

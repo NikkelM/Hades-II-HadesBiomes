@@ -1837,12 +1837,12 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Condition",
 	-- 	DisplayName =
-	-- 	"{!Icons.QuestProgressIncomplete} Defeat unrivalled {$Keywords.CharChronos}, {$Keywords.CharTyphon} and {$Keywords.CharHades} in a single Dream Dive",
+	-- 	"{!Icons.QuestProgressIncomplete} Defeat unrivaled {$Keywords.CharChronos}, {$Keywords.CharTyphon} and {$Keywords.CharHades} in a single Dream Dive",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Cleared",
 	-- 	DisplayName =
-	-- 	"{!Icons.QuestProgressComplete} Defeat unrivalled {$Keywords.CharChronos}, {$Keywords.CharTyphon} and {$Keywords.CharHades} in a single Dream Dive",
+	-- 	"{!Icons.QuestProgressComplete} Defeat unrivaled {$Keywords.CharChronos}, {$Keywords.CharTyphon} and {$Keywords.CharHades} in a single Dream Dive",
 	-- },
 	-- #endregion
 
