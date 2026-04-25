@@ -1124,8 +1124,8 @@ local enemyModifications = {
 		DreamBiomeData = {
 			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
 			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
-			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
-			[4] = { DataOverrides = { HealthMultiplier = 6.0, SpeedMultiplier = 1.45 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.9 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
 		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12000,
@@ -1172,8 +1172,8 @@ local enemyModifications = {
 		DreamBiomeData = {
 			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
 			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
-			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
-			[4] = { DataOverrides = { HealthMultiplier = 6.0, SpeedMultiplier = 1.45 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.9 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
 		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12200,
@@ -1208,8 +1208,8 @@ local enemyModifications = {
 		DreamBiomeData = {
 			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
 			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
-			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
-			[4] = { DataOverrides = { HealthMultiplier = 6.0, SpeedMultiplier = 1.45 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.9 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
 		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12400,
