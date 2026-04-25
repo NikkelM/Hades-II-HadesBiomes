@@ -164,7 +164,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
-		DisplayName = "阿斯福德罗斯？",
+		DisplayName = "水仙花平原？",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
@@ -180,7 +180,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
-		DisplayName = "冥河？",
+		DisplayName = "冥河神庙?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",

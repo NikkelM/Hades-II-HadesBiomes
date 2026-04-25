@@ -164,7 +164,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
-		DisplayName = "ASFODELO?",
+		DisplayName = "PRATI d'ASFODELO?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
@@ -172,7 +172,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
-		DisplayName = "ELISIO?",
+		DisplayName = "CAMPI ELISI?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
@@ -180,7 +180,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
-		DisplayName = "STIGE?",
+		DisplayName = "TEMPIO dello STIGE?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",

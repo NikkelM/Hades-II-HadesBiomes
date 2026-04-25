@@ -26,6 +26,7 @@ Other fixes and improvements:
 - Melinoë will now react to Hades calling Cerberus to his aid.
 - Added some additional contextual voicelines in various situations.
 - Added [zannc](https://github.com/excellent-ae) to the Credits for the [SharedKeepsakePort](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) contribution.
+- Added some additional location localizations for languages which did not have a localization in Hades.
 - Removed an internal workaround for safeguarding against crashes after the mod is uninstalled, as this is now more easily handled through vanilla game logic.
 - Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
 - The mod will no longer need to reinstall itself when the game updates. It will still reinstall when the mod itself receives an update.

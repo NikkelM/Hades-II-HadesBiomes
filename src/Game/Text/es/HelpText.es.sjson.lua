@@ -156,7 +156,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner",
-		DisplayName = "TÁRTARO?",
+		DisplayName = "El TÁRTARO?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
@@ -164,7 +164,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
-		DisplayName = "ASFÓDELO?",
+		DisplayName = "Los ASFÓDELOS?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
@@ -172,7 +172,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
-		DisplayName = "ELÍSEO?",
+		DisplayName = "El ELÍSEO?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
@@ -180,7 +180,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
-		DisplayName = "ESTIGIA?",
+		DisplayName = "El TEMPLO del ESTIGIA?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",

@@ -164,7 +164,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
-		DisplayName = "아스포델로스?",
+		DisplayName = "아스포델?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
@@ -172,7 +172,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
-		DisplayName = "엘리시온?",
+		DisplayName = "엘리시움?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
@@ -180,7 +180,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
-		DisplayName = "스틱스?",
+		DisplayName = "스틱스 신전?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",

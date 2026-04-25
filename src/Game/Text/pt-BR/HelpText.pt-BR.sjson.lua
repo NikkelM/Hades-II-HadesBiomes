@@ -180,7 +180,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
-		DisplayName = "ESTIGE?",
+		DisplayName = "O TEMPLO de ESTIGE?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",

@@ -148,6 +148,52 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge_Short",
 		DisplayName = "Ερεβος",
 	},
+	-- #region H1 biome location texts (English fallback)
+	{
+		Id = "Location_Tartarus",
+		DisplayName = "ΤΑΡΤΑΡΑ",
+	},
+	{
+		Id = "Location_Tartarus_Short",
+		DisplayName = "ΤΑΡΤΑΡΑ",
+	},
+	{
+		Id = "Location_Asphodel",
+		DisplayName = "ΑΣΦΟΔΕΛΟΣ",
+	},
+	{
+		Id = "Location_Asphodel_Short",
+		DisplayName = "ΑΣΦΟΔΕΛΟΣ",
+	},
+	{
+		Id = "Location_Elysium",
+		DisplayName = "ΕΛΥΣΙΟΥΜ",
+	},
+	{
+		Id = "Location_Elysium_Short",
+		DisplayName = "ΕΛΥΣΙΟΥΜ",
+	},
+	{
+		Id = "Location_Styx",
+		DisplayName = "Ο ΝΑΟΣ ΤΗΣ ΣΤΥΞ",
+	},
+	{
+		Id = "Location_Styx_Short",
+		DisplayName = "ΣΤΥΞ",
+	},
+	{
+		Id = "Location_Challenge",
+		DisplayName = "ΕΡΕΒΟΣ",
+	},
+	{
+		Id = "Location_Surface",
+		DisplayName = "ΕΛΛΑΔΑ",
+	},
+	{
+		Id = "Location_Surface_Alt",
+		DisplayName = "Η ΕΠΙΦΑΝΕΙΑ",
+	},
+	-- #endregion
 	-- #region Dream Run location variants
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
@@ -179,7 +225,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
-		DisplayName = "ΣΤΥΓΑ?",
+		DisplayName = "The TEMPLE of STYX?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",

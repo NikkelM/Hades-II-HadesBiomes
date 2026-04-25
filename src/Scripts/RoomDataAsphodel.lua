@@ -372,9 +372,10 @@ local roomReplacements = {
 					NamedRequirementsFalse = { "ShouldShowBountyInfoBanner" },
 				},
 				Args = {
+					Text = "Location_Asphodel",
+					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
 					AnimationName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn",
 					AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut",
-					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
 				},
 			},
 			{

@@ -385,9 +385,10 @@ local roomReplacements = {
 					NamedRequirementsFalse = { "ShouldShowBountyInfoBanner" },
 				},
 				Args = {
+					Text = "Location_Elysium",
+					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
 					AnimationName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn",
 					AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut",
-					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
 				},
 			},
 			{
