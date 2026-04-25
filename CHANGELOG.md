@@ -9,7 +9,7 @@
 - **Commander Schelemeus** has managed to procure a new set of the *Gifts of the Veil* from an unknown underworld contact... turn up the heat, errmm, fear, and escape the Nightmare Realm to earn these prestigious trophies.
 - The **Lernaean Bone Hydra** has found its long-lost neck in the depths of Asphodel's lava.
 - You can now conclude **Sisyphus**' storyline by interacting with him and **Megaera**.
-- Tartarus, Asphodel, Elysium and Styx can now appear in Dream Dives. You can use the `z_ExcludeFromDreamDives` config value to prevent them from appearing. 
+- Tartarus, Asphodel, Elysium and Styx can now appear in Dream Dives. You can use the `z_ExcludeFromDreamDives` config value to prevent them from appearing.
 - Added a new logo animation to the Main Menu to show that the mod is installed.
 - The mod no longer creates any files in the game's installation directory, making it entirely compatible with playing vanilla or switching profiles in r2modman. Installing this mod update will automatically remove any previously created files.
 
