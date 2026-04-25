@@ -91,6 +91,7 @@ Other fixes and improvements:
 - Fixed: "Enshrouded" (hidden room reward previews) Chaos Curse cannot appear in Zagreus' Journey runs.
 - Fixed: Relationship entries for story NPCs that unlock a keepsake do not show the related icon in the Codex.
 - Fixed: Relationship entries for story NPCs that unlock a minor prophecy do not show the related icon in the Codex.
+- Fixed: Progress for the "Hold The Onions" minor prophecy resets when taking damage during an Erebus encounter, even if you previously cleared three encounters hitless. 
 - Fixed: Thanatos' "Growing Closer" arrow in the Codex is placed after the wrong entry.
 - Fixed: Trying to navigate to the "Zagreus' Journey" cauldron category on keyboard or controller crashes the game if Alchemy has not been unlocked yet.
 - Fixed: Some text localizations for relationship dialogue are missing.
