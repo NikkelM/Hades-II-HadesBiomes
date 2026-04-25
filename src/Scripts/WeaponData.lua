@@ -1855,7 +1855,8 @@ local weaponModifications = {
 	HadesSpawns2 = {
 		AIData = {
 			-- ShieldRangedSuperElite since it's tethers wouldn't go invisible
-			SpawnSkipOverridesForTypes = { "WretchAssassinMinibossSuperElite", "ShieldRangedSuperElite" },
+			-- HeavyRangedSplitterMinibossSuperElite since its fragments will point lasers out of bounds
+			SpawnSkipOverridesForTypes = { "WretchAssassinMinibossSuperElite", "ShieldRangedSuperElite", "HeavyRangedSplitterMinibossSuperElite" },
 			SpawnDefaultAIDataOverrides = {
 				PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 				PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
