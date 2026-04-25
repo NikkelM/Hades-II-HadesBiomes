@@ -901,6 +901,7 @@ local roomModifications = {
 				Value = 0,
 			},
 		},
+		ModsNikkelMHadesBiomes_DreamRunHeroEndPoint = 50058,
 	},
 	D_Hub = {
 		LoadModdedVoiceBanks = { "Megaera", "MegaeraField", "ZagreusField" },

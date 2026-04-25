@@ -931,6 +931,63 @@ Delete ID `556625`.
 GiftRack:
 For ID `486504`, change the `Location.Y` property to `4107.464111328125` (+25).
 
+#### X_Intro
+
+We need to add a new HeroEnd point to be used for DreamRun entrances, as otherwise the smoke effects are mislayered with some obstacles.
+
+Add this below `HeroEnd` with ID `50059`:
+
+```
+{
+	"Active": true,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+			"A": 255,
+			"B": 255,
+			"G": 255,
+			"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+			"Scripting"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 50060,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+			"X": 3985.70849609375,
+			"Y": 7800.12109375
+	},
+	"Name": "BlankObstacle",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1.0,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+```
+
 #### X_Combat04
 
 SmokeRisingHardBright:
@@ -1419,6 +1476,62 @@ For ID `561144`, change the `GroupNames` property to `Gears_02`.
 
 TravelLever01:
 For ID `561145`, change the `GroupNames` property to `Additive_01`.
+
+
+We need to add a new HeroEnd point to be used for DreamRun entrances, as otherwise the smoke effects are mislayered with some obstacles.
+
+Add this below `HeroEnd` with ID `50059`:
+
+```
+{
+	"Active": true,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+			"A": 255,
+			"B": 255,
+			"G": 255,
+			"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+			"Scripting"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 50058,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+			"X": 6321.43701171875,
+			"Y": 8677.927734375
+	},
+	"Name": "BlankObstacle",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1.0,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+```
 
 New map_text groups:
 

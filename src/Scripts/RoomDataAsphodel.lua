@@ -511,6 +511,7 @@ local roomModifications = {
 				Value = 0,
 			},
 		},
+		ModsNikkelMHadesBiomes_DreamRunHeroEndPoint = 50060,
 
 		HarvestPointChances = { 0.02, },
 		ShovelPointChance = 0.02,
