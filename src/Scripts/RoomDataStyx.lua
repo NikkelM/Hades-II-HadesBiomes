@@ -908,6 +908,11 @@ local roomModifications = {
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
+				GameStateRequirements = {
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" }
+					},
+				},
 			},
 		},
 		-- Shorter as we add more wait time after the animation starts
