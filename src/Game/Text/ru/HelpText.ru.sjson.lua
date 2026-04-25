@@ -160,7 +160,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
-		DisplayName = "АСФОДЕЛ? (Кошмар)",
+		DisplayName = "АСФОДЕЛЬ? (Кошмар)",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",

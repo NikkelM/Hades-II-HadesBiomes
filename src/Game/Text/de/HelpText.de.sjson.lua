@@ -168,7 +168,7 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
-		DisplayName = "ELYSIUM? (Albtraum)",
+		DisplayName = "ELYSION? (Albtraum)",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",

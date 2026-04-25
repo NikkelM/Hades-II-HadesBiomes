@@ -204,23 +204,23 @@ local newData = {
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
-		DisplayName = "ASFODELOS? (Kâbus)",
+		DisplayName = "ASFODEL? (Kâbus)",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
-		DisplayName = "ASFODELOS?",
+		DisplayName = "ASFODEL?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
-		DisplayName = "ELYSİUM? (Kâbus)",
+		DisplayName = "ELİSYUM? (Kâbus)",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
-		DisplayName = "ELYSİUM?",
+		DisplayName = "ELİSYUM?",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
-		DisplayName = "STİKS? (Kâbus)",
+		DisplayName = "STIKS? (Kâbus)",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",

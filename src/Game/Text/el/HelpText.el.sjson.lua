@@ -197,43 +197,43 @@ local newData = {
 	-- #region Dream Run location variants
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
-		DisplayName = "ΤΑΡΤΑΡΑ? (Εφιάλτης)",
+		DisplayName = "ΤΑΡΤΑΡΑ; (Εφιάλτης)",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner",
-		DisplayName = "ΤΑΡΤΑΡΑ?",
+		DisplayName = "ΤΑΡΤΑΡΑ;",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
-		DisplayName = "ΑΣΦΟΔΕΛΟΣ? (Εφιάλτης)",
+		DisplayName = "ΑΣΦΟΔΕΛΟΣ; (Εφιάλτης)",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
-		DisplayName = "ΑΣΦΟΔΕΛΟΣ?",
+		DisplayName = "ΑΣΦΟΔΕΛΟΣ;",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
-		DisplayName = "ΗΛΥΣΙΟ? (Εφιάλτης)",
+		DisplayName = "ΕΛΥΣΙΟΥΜ; (Εφιάλτης)",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
-		DisplayName = "ΗΛΥΣΙΟ?",
+		DisplayName = "ΕΛΥΣΙΟΥΜ;",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
-		DisplayName = "ΣΤΥΓΑ? (Εφιάλτης)",
+		DisplayName = "ΣΤΥΓΑ; (Εφιάλτης)",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
-		DisplayName = "Ο ΝΑΟΣ ΤΗΣ ΣΤΥΞ?",
+		DisplayName = "Ο ΝΑΟΣ ΤΗΣ ΣΤΥΞ;",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
-		DisplayName = "ΕΡΕΒΟΣ? (Εφιάλτης)",
+		DisplayName = "ΕΡΕΒΟΣ; (Εφιάλτης)",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_DreamBanner",
-		DisplayName = "ΕΡΕΒΟΣ?",
+		DisplayName = "ΕΡΕΒΟΣ;",
 	},
 	-- #endregion
 	-- #endregion
