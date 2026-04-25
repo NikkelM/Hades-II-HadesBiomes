@@ -228,28 +228,23 @@ local newData = {
 	-- #region Dream Run result texts for run history screen
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
-		DisplayName =
-		"Περιοχή αποτυχίας: {#RunHistoryFailureFormat}{$RoomSetData.Tartarus.BaseTartarus.DreamLocationText}{#Prev}",
+		DisplayName = "Περιοχή αποτυχίας: {#RunHistoryFailureFormat}ΤΑΡΤΑΡΑ;{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
-		DisplayName =
-		"Περιοχή αποτυχίας: {#RunHistoryFailureFormat}{$RoomSetData.Asphodel.BaseAsphodel.DreamLocationText}{#Prev}",
+		DisplayName = "Περιοχή αποτυχίας: {#RunHistoryFailureFormat}ΑΣΦΟΔΕΛΟΣ;{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
-		DisplayName =
-		"Περιοχή αποτυχίας: {#RunHistoryFailureFormat}{$RoomSetData.Elysium.BaseElysium.DreamLocationText}{#Prev}",
+		DisplayName = "Περιοχή αποτυχίας: {#RunHistoryFailureFormat}ΕΛΥΣΙΟΥΜ;{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
-		DisplayName =
-		"Περιοχή αποτυχίας: {#RunHistoryFailureFormat}{$RoomSetData.Styx.BaseStyx.DreamLocationText}{#Prev}",
+		DisplayName = "Περιοχή αποτυχίας: {#RunHistoryFailureFormat}ΣΤΥΞ;{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
-		DisplayName =
-		"Περιοχή αποτυχίας: {#RunHistoryFailureFormat}{$RoomSetData.Challenge.RoomChallenge01.DreamLocationText}{#Prev}",
+		DisplayName = "Περιοχή αποτυχίας: {#RunHistoryFailureFormat}ΕΡΕΒΟΣ;{#Prev}",
 	},
 	-- #endregion
 }

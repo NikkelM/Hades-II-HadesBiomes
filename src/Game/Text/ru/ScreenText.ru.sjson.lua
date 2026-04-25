@@ -228,28 +228,23 @@ local newData = {
 	-- #region Dream Run result texts for run history screen
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
-		DisplayName =
-		"Поражение в {#RunHistoryFailureFormat}[Тартаре (во сне)]{$RoomSetData.Tartarus.BaseTartarus.DreamLocationText}{#Prev}",
+		DisplayName = "Поражение в {#RunHistoryFailureFormat}ТАРТАР?{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
-		DisplayName =
-		"Поражение на {#RunHistoryFailureFormat}[Асфоделе (во сне)]{$RoomSetData.Asphodel.BaseAsphodel.DreamLocationText}{#Prev}",
+		DisplayName = "Поражение на {#RunHistoryFailureFormat}АСФОДЕЛЬ?{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
-		DisplayName =
-		"Поражение в {#RunHistoryFailureFormat}[Элизиуме (во сне)]{$RoomSetData.Elysium.BaseElysium.DreamLocationText}{#Prev}",
+		DisplayName = "Поражение в {#RunHistoryFailureFormat}ЭЛИЗИУМ?{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
-		DisplayName =
-		"Поражение на {#RunHistoryFailureFormat}[Стиксе (во сне)]{$RoomSetData.Styx.BaseStyx.DreamLocationText}{#Prev}",
+		DisplayName = "Поражение на {#RunHistoryFailureFormat}СТИКС?{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
-		DisplayName =
-		"Поражение в {#RunHistoryFailureFormat}[Эребе (во сне)]{$RoomSetData.Challenge.RoomChallenge01.DreamLocationText}{#Prev}",
+		DisplayName = "Поражение в {#RunHistoryFailureFormat}ЭРЕБ?{#Prev}",
 	},
 	-- #endregion
 }

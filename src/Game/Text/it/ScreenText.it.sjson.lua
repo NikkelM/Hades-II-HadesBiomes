@@ -229,28 +229,23 @@ local newData = {
 	-- #region Dream Run result texts for run history screen
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
-		DisplayName =
-		"Fallito nel {#RunHistoryFailureFormat}[Tartaro?]{$RoomSetData.Tartarus.BaseTartarus.DreamLocationText}{#Prev}",
+		DisplayName = "Fallito nel {#RunHistoryFailureFormat}TARTARO?{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
-		DisplayName =
-		"Fallito nell'{#RunHistoryFailureFormat}[Asfodelo?]{$RoomSetData.Asphodel.BaseAsphodel.DreamLocationText}{#Prev}",
+		DisplayName = "Fallito nell'{#RunHistoryFailureFormat}ASFODELO?{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
-		DisplayName =
-		"Fallito nell'{#RunHistoryFailureFormat}[Elisio?]{$RoomSetData.Elysium.BaseElysium.DreamLocationText}{#Prev}",
+		DisplayName = "Fallito nell'{#RunHistoryFailureFormat}ELISIO?{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
-		DisplayName =
-		"Fallito nello {#RunHistoryFailureFormat}[Stige?]{$RoomSetData.Styx.BaseStyx.DreamLocationText}{#Prev}",
+		DisplayName = "Fallito nello {#RunHistoryFailureFormat}STIGE?{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
-		DisplayName =
-		"Fallito nell'{#RunHistoryFailureFormat}[Erebo?]{$RoomSetData.Challenge.RoomChallenge01.DreamLocationText}{#Prev}",
+		DisplayName = "Fallito nell'{#RunHistoryFailureFormat}EREBO?{#Prev}",
 	},
 	-- #endregion
 }

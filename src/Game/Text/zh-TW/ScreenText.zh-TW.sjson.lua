@@ -228,23 +228,23 @@ local newData = {
 	-- #region Dream Run result texts for run history screen
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
-		DisplayName = "於{#RunHistoryFailureFormat}{$RoomSetData.Tartarus.BaseTartarus.DreamLocationText}{#Prev}倒下",
+		DisplayName = "於{#RunHistoryFailureFormat}塔爾塔羅斯？{#Prev}倒下",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
-		DisplayName = "於{#RunHistoryFailureFormat}{$RoomSetData.Asphodel.BaseAsphodel.DreamLocationText}{#Prev}倒下",
+		DisplayName = "於{#RunHistoryFailureFormat}長春花草甸？{#Prev}倒下",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
-		DisplayName = "於{#RunHistoryFailureFormat}{$RoomSetData.Elysium.BaseElysium.DreamLocationText}{#Prev}倒下",
+		DisplayName = "於{#RunHistoryFailureFormat}至福樂土？{#Prev}倒下",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
-		DisplayName = "於{#RunHistoryFailureFormat}{$RoomSetData.Styx.BaseStyx.DreamLocationText}{#Prev}倒下",
+		DisplayName = "於{#RunHistoryFailureFormat}冥河？{#Prev}倒下",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
-		DisplayName = "於{#RunHistoryFailureFormat}{$RoomSetData.Challenge.RoomChallenge01.DreamLocationText}{#Prev}倒下",
+		DisplayName = "於{#RunHistoryFailureFormat}厄瑞玻斯？{#Prev}倒下",
 	},
 	-- #endregion
 }

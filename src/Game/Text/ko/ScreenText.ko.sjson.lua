@@ -229,25 +229,23 @@ local newData = {
 	-- #region Dream Run result texts for run history screen
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
-		DisplayName =
-		"{#RunHistoryFailureFormat}{$RoomSetData.Tartarus.BaseTartarus.DreamLocationText}{#Prev}에서 패배",
+		DisplayName = "{#RunHistoryFailureFormat}타르타로스?{#Prev}에서 패배",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
-		DisplayName =
-		"{#RunHistoryFailureFormat}{$RoomSetData.Asphodel.BaseAsphodel.DreamLocationText}{#Prev}에서 패배",
+		DisplayName = "{#RunHistoryFailureFormat}아스포델?{#Prev}에서 패배",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
-		DisplayName = "{#RunHistoryFailureFormat}{$RoomSetData.Elysium.BaseElysium.DreamLocationText}{#Prev}에서 패배",
+		DisplayName = "{#RunHistoryFailureFormat}엘리시움?{#Prev}에서 패배",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
-		DisplayName = "{#RunHistoryFailureFormat}{$RoomSetData.Styx.BaseStyx.DreamLocationText}{#Prev}에서 패배",
+		DisplayName = "{#RunHistoryFailureFormat}스틱스?{#Prev}에서 패배",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
-		DisplayName = "{#RunHistoryFailureFormat}{$RoomSetData.Challenge.RoomChallenge01.DreamLocationText}{#Prev}에서 패배",
+		DisplayName = "{#RunHistoryFailureFormat}에레보스?{#Prev}에서 패배",
 	},
 	-- #endregion
 }

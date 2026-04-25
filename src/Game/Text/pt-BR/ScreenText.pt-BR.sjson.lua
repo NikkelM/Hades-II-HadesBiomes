@@ -228,28 +228,23 @@ local newData = {
 	-- #region Dream Run result texts for run history screen
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
-		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Tártaro?]{$RoomSetData.Tartarus.BaseTartarus.DreamLocationText}{#Prev}",
+		DisplayName = "Sucumbiu no {#RunHistoryFailureFormat}TÁRTARO?{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
-		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Asfódelo?]{$RoomSetData.Asphodel.BaseAsphodel.DreamLocationText}{#Prev}",
+		DisplayName = "Sucumbiu no {#RunHistoryFailureFormat}ASFÓDELO?{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
-		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Elísio?]{$RoomSetData.Elysium.BaseElysium.DreamLocationText}{#Prev}",
+		DisplayName = "Sucumbiu no {#RunHistoryFailureFormat}ELÍSIO?{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
-		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Estige?]{$RoomSetData.Styx.BaseStyx.DreamLocationText}{#Prev}",
+		DisplayName = "Sucumbiu no {#RunHistoryFailureFormat}ESTIGE?{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
-		DisplayName =
-		"Sucumbiu no {#RunHistoryFailureFormat}[Érebo?]{$RoomSetData.Challenge.RoomChallenge01.DreamLocationText}{#Prev}",
+		DisplayName = "Sucumbiu no {#RunHistoryFailureFormat}ÉREBO?{#Prev}",
 	},
 	-- #endregion
 }
