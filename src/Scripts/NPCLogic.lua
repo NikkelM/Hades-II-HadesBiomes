@@ -132,6 +132,9 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 end
 
 function mod.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
+	-- Trait has been applied; restore any deep-copied TraitData entries from dream run scaling
+	mod.RestoreDreamRunScaledTraits()
+
 	args = args or {}
 	game.FreezePlayerUnit("ModsNikkelMHadesBiomesNPCPostChoicePresentation")
 
@@ -913,6 +916,17 @@ end
 -- #endregion
 
 -- #region Dream Run NPC trait scaling
+
+-- Track traits whose TraitData entries have been replaced with scaled deep copies
+local dreamRunScaledTraitOriginals = {}
+
+function mod.RestoreDreamRunScaledTraits()
+	for traitName, originalTraitData in pairs(dreamRunScaledTraitOriginals) do
+		game.TraitData[traitName] = originalTraitData
+	end
+	dreamRunScaledTraitOriginals = {}
+end
+
 function mod.ScaleNPCTraitsForDreamRun(upgradeOptions)
 	for _, option in pairs(upgradeOptions) do
 		local traitData = game.TraitData[option.ItemName]
@@ -921,31 +935,20 @@ function mod.ScaleNPCTraitsForDreamRun(upgradeOptions)
 			local rarityData = traitData.RarityLevels and traitData.RarityLevels[option.Rarity]
 			local multiplier = rarityData and rarityData.Multiplier or 1
 
-			-- Store original values on first call so repeated scaling doesn't compound
-			if traitData.ModsNikkelMHadesBiomes_OriginalDreamScaleValues == nil then
-				traitData.ModsNikkelMHadesBiomes_OriginalDreamScaleValues = {}
-				for keyIndex, keyPath in ipairs(scaling.ScaleKeys) do
-					local target = traitData
-					for i = 1, #keyPath - 1 do
-						target = target[keyPath[i]]
-						if target == nil then break end
-					end
-					if target ~= nil then
-						traitData.ModsNikkelMHadesBiomes_OriginalDreamScaleValues[keyIndex] = target[keyPath[#keyPath]]
-					end
-				end
-			end
+			dreamRunScaledTraitOriginals[option.ItemName] = traitData
+			local scaledCopy = game.DeepCopyTable(traitData)
+			game.TraitData[option.ItemName] = scaledCopy
 
-			-- Apply multiplier from original values
+			-- Apply multiplier to the copy
 			for keyIndex, keyPath in ipairs(scaling.ScaleKeys) do
-				local originalValue = traitData.ModsNikkelMHadesBiomes_OriginalDreamScaleValues[keyIndex]
-				if originalValue ~= nil then
-					local target = traitData
-					for i = 1, #keyPath - 1 do
-						target = target[keyPath[i]]
-						if target == nil then break end
-					end
-					if target ~= nil then
+				local target = scaledCopy or {}
+				for i = 1, #keyPath - 1 do
+					target = target[keyPath[i]]
+					if target == nil then break end
+				end
+				if target ~= nil then
+					local originalValue = target[keyPath[#keyPath]]
+					if originalValue ~= nil then
 						local isMultiplier = scaling.SourceIsMultiplier or
 								(scaling.SourceIsMultiplierKeys and scaling.SourceIsMultiplierKeys[keyIndex])
 						local newValue
