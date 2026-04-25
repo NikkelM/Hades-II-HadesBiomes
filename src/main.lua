@@ -499,6 +499,7 @@ local function on_ready()
 			import "Scripts/EventPresentation.lua"
 			import "Scripts/GameStatsLogic.lua"
 			import "Scripts/GardenLogic.lua"
+			import "Scripts/GhostAdminLogic.lua"
 			import "Scripts/HarvestPresentation.lua"
 			import "Scripts/HubPresentation.lua"
 			import "Scripts/KeepsakeData.lua"

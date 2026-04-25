@@ -91,6 +91,7 @@ Other fixes and improvements:
 - Fixed: Relationship entries for story NPCs that unlock a keepsake do not show the related icon in the Codex.
 - Fixed: Relationship entries for story NPCs that unlock a minor prophecy do not show the related icon in the Codex.
 - Fixed: Thanatos' "Growing Closer" arrow in the Codex is placed after the wrong entry.
+- Fixed: Trying to navigate to the "Zagreus' Journey" cauldron category on keyboard or controller crashes the game if Alchemy has not been unlocked yet.
 - Fixed: Some text localizations for relationship dialogue are missing.
 - Fixed: Some Codex entries for Greek, Turkish, Ukrainian and Traditional Chinese have unterminated italic text sections.
 - Fixed: In rare circumstances, the game can crash when checking requirements for actions taken during the previous Zagreus' Journey run.
