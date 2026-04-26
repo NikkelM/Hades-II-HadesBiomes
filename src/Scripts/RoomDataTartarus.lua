@@ -637,8 +637,8 @@ local roomModifications = {
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceDropRoomOpening",
 		EntranceFunctionArgs = { LandingAnimation = "Melinoe_HeroLanding", Sound = "/SFX/Player Sounds/MelWhooshDropIn", IntroHoldDuration = 2.34, StartZoomFraction = 0.65, ZoomDuration = 4 },
 		StartUnthreadedEvents = {
-			-- Don't start the demo presentation mode
-			[1] = mod.NilValue,
+			-- Override the demo presentation entry
+			[1] = { FunctionName = "EndBiomeRecords" },
 			-- Don't play the standard music event, it won't be able to get changed later
 			[3] = mod.NilValue,
 		},
@@ -655,7 +655,7 @@ local roomModifications = {
 		DisableRewardMagnetisim = true,
 		TeleportCatFamiliarOnEncounterStart = true,
 		StartThreadedEvents = {
-			{ FunctionName = "CheckBiomeStateStart" },
+			{ FunctionName = "EndAllBiomeStates" },
 			{ FunctionName = "ShadeMercManager",    Args = { StartingCountMin = 3, StartingCountMax = 12, ObjectNames = { "ShadeMerc" }, MaxActive = 12 } },
 		},
 		InspectPoints = {

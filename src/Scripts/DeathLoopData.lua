@@ -114,8 +114,6 @@ end
 
 function mod.StartHadesRun(source, args)
 	args = args or {}
-	-- Don't allow rain in modded runs
-	game.GameState.NextBiomeStateName = "VanillaState"
 
 	local useAltDiveAnimation = false
 	if (game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache or 0) > 2 and game.RandomChance(0.25) then
