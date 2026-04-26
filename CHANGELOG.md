@@ -77,6 +77,7 @@ Other fixes and improvements:
 - Fixed: If Hades is hit by one of his own urn traps, he plays a voiceline as if the player was hit.
 - Fixed: The Doomstone summoned by Hades can teleport, causing its fragments to connect lasers out of bounds.
 - Fixed: Victory messages for having completed a certain number of clears may not be awarded if another more generic message is also eligible.
+- Fixed: Falling rubble from destructible pillars is not correctly attributed as trap damage in the run clear screen.
 - Fixed: Entering a room on the Surface plays a voiceline from Melinoë if you have never reached that many chambers in any kind of run.
 - Fixed: The "Prophecy completed" sound effect can play over the death animation on the Surface.
 - Fixed: Frozen and chilled enemies appear much darker than they should.
