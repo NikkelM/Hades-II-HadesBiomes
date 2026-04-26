@@ -145,4 +145,81 @@ mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamPostBossExitVoiceLines,
 })
 -- #endregion
 
+-- #region Hypnos DeathTauntVoiceLines
+mod.ModifyVoiceLineRequirements(game.EnemyData.NPC_Hypnos_DreamRun.DeathTauntVoiceLines[3], "/VO/Hypnos_0204", {
+	{
+		-- Adding Witches' Circle Miniboss room
+		Path = { "CurrentRun", "CurrentRoom", "Name" },
+		IsAny = { "F_Boss01", "F_Boss02", "X_MiniBoss02" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.EnemyData.NPC_Hypnos_DreamRun.DeathTauntVoiceLines[3], "/VO/Hypnos_0211", {
+	OrRequirements = {
+		{
+			{
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsAny = { "P_Boss01", "H_Boss02" },
+			},
+		},
+		{
+			{
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsAny = { "B", "Asphodel" },
+			},
+		},
+	}
+})
+-- #endregion
+
+-- #region HypnosPostBossVoiceLines
+mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8280", {
+	{
+		Path = { "CurrentRun", "PrevDreamBiome" },
+		IsAny = { "I", "Styx" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8284", {
+	{
+		Path = { "CurrentRun", "PrevDreamBiome" },
+		IsAny = { "O", "Tartarus" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8288", {
+	OrRequirements = {
+		{
+			-- Original requirements
+			{
+				Path = { "CurrentRun", "PrevDreamBiome" },
+				IsAny = { "P" },
+			},
+			{
+				PathTrue = { "CurrentRun", "EnemyKills", "Heracles" },
+			},
+		},
+		{
+			-- New
+			{
+				Path = { "CurrentRun", "PrevDreamBiome" },
+				IsAny = { "Elysium" },
+			},
+		},
+	},
+})
+mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8291", {
+	{
+		Path = { "CurrentRun", "PrevDreamBiome" },
+		IsAny = { "Q", "Asphodel" },
+	},
+})
+mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8290", {
+	{
+		Path = { "CurrentRun", "PrevDreamBiome" },
+		IsAny = { "Q", "Asphodel" },
+	},
+	{
+		PathTrue = { "GameState", "SpeechRecord", "/VO/Intercom_8291" },
+	},
+})
+-- #endregion
+
 -- #endregion
