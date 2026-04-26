@@ -19,14 +19,15 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 				if not args.SkipAngleTowardTarget then
 					AngleTowardTarget({ Id = id, DestinationId = game.CurrentRun.Hero.ObjectId })
 				end
-				panDuration = args.DurationIn or 1.5
 				PanCamera({ Ids = id, Duration = panDuration, EaseIn = 0.05, EaseOut = 0.3 })
 				didPan = true
 				if args.UsePanSound then
 					PlaySound({ Name = "/Leftovers/World Sounds/MapZoomSlow" })
 				end
-				if game.CurrentRun.IsDreamRun and args.DreamRunIntroFunctionName ~= nil then
-					game.CallFunctionName(args.DreamRunIntroFunctionName, enemy, args)
+				if game.CurrentRun.IsDreamRun then
+					if args.DreamRunIntroFunctionName ~= nil then
+						game.CallFunctionName(args.DreamRunIntroFunctionName, enemy, args)
+					end
 				else
 					game.ProcessTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets)
 					-- BossPresentationHighPriorityIntroTextLineSets is custom for Hades EM
@@ -71,10 +72,12 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 		game.wait(args.UnlockDelay)
 	end
 	if didPan then
-		-- Wait for the camera pan to the boss to finish before locking the camera to the player, in case dialogue was skipped before the pan completed
-		local remainingPanTime = panDuration - (args.TotalElapsedTime or 0)
-		if remainingPanTime > 0 then
-			game.wait(remainingPanTime)
+		if not args.SkipWaitForInitialPan then
+			-- Wait for the camera pan to the boss to finish before locking the camera to the player, in case dialogue was skipped before the pan completed
+			local remainingPanTime = panDuration - (args.TotalElapsedTime or 0)
+			if remainingPanTime > 0 then
+				game.wait(remainingPanTime)
+			end
 		end
 		LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = args.DurationOut or 1.25, EaseIn = 0.04, EaseOut = 0.275 })
 	end
