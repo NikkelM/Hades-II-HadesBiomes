@@ -919,6 +919,319 @@ For ID `519371`, change the `GroupNames` property to `Lighting_01`.
 For ID `519236`, change the `GroupNames` property to `Lighting_01`.
 For ID `491056`, change the `GroupNames` property to `Lighting_01`.
 
+### A_PreBoss01
+
+Adding the ZagContractReward obstacles and required map groups:
+
+To the `.thing_bin`, add the following at the bottom (add `,` to previous last item):
+```
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 797541,
+	"AttachedIDs": [
+		797540
+	],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": true,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Terrain_ZagContract_01",
+		"Contract"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 797539,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 9796.273,
+		"Y": 6603.934
+	},
+	"Name": "HouseTerrainTransporter",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.15800000727176666,
+	"SkewAngle": 180.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 797539,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 0,
+		"G": 0,
+		"R": 0
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": true,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Terrain_ZagContract_01",
+		"Contract"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 797540,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 9799.098,
+		"Y": 6597.708
+	},
+	"Name": "AsphodelLavaLavaRippleB",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.2329999953508377,
+	"SkewAngle": 180.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [
+		797539
+	],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": true,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Terrain_ZagContract_01",
+		"Contract"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 797541,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 9800.714,
+		"Y": 6606.608
+	},
+	"Name": "AtmosphereShadowRound01",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.26499998569488525,
+	"SkewAngle": 180.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": true,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Default"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 776332,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 9800,
+		"Y": 6600
+	},
+	"Name": "InvisibleTarget",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1.0,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+}
+```
+
+To the `.map_text`, add the following:
+
+Under `Terrain_Lighting_01`, add `Terrain_ZagContract_01`:
+```
+{
+	"Id": 470009,
+	"Name": "Terrain_Lighting"
+},
+{
+	"Id": 440009,
+	"Name": "Terrain_ZagContract_01"
+},
+```
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 440009,
+		"Name": "Terrain_ZagContract_01"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 470009,
+		"Name": "Terrain_Lighting"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+```
+
+Under `Breakables`, add `Contract`:
+```
+{
+	"Id": 130012,
+	"Name": "Breakables"
+},
+{
+	"Id": 430191,
+	"Name": "Contract"
+},
+```
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 430191,
+		"Name": "Contract"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapLogic"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 130012,
+		"Name": "Breakables"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapLogic"
+	},
+	"Visible": true
+},
+```
+
 #### A_PostBoss01
 
 TravelChain01Anim:
@@ -1363,6 +1676,317 @@ New map_text groups:
 },
 ```
 
+Adding the ZagContractReward obstacles and required map groups:
+
+To the `.thing_bin`, add the following at the bottom (add `,` to previous last item):
+```
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 797541,
+	"AttachedIDs": [
+		797540
+	],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": true,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Terrain_ZagContract_01",
+		"Contract"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 797539,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 11056.273,
+		"Y": 6753.934
+	},
+	"Name": "HouseTerrainTransporter",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.15800000727176666,
+	"SkewAngle": 180.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 797539,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 0,
+		"G": 0,
+		"R": 0
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": true,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Terrain_ZagContract_01",
+		"Contract"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 797540,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 11059.098,
+		"Y": 6747.708
+	},
+	"Name": "AsphodelLavaLavaRippleB",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.2329999953508377,
+	"SkewAngle": 180.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [
+		797539
+	],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": true,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Terrain_ZagContract_01",
+		"Contract"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 797541,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 11060.714,
+		"Y": 6756.608
+	},
+	"Name": "AtmosphereShadowRound01",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.26499998569488525,
+	"SkewAngle": 180.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": true,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Default"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 776332,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 11060,
+		"Y": 6750
+	},
+	"Name": "InvisibleTarget",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1.0,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+}
+```
+
+To the `.map_text`, add the following:
+
+Under `Terrain_Lighting_01`, add `Terrain_ZagContract_01`:
+```
+{
+	"Id": 130003,
+	"Name": "Terrain_Lighting"
+},
+{
+	"Id": 440009,
+	"Name": "Terrain_ZagContract_01"
+},
+```
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 440009,
+		"Name": "Terrain_ZagContract_01"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 130003,
+		"Name": "Terrain_Lighting"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130018,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+```
+
+Under `Breakables`, add `Contract`:
+```
+{
+	"Id": 130012,
+	"Name": "Breakables"
+},
+{
+	"Id": 430191,
+	"Name": "Contract"
+},
+```
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 430191,
+		"Name": "Contract"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130029,
+		"Name": "MapLogic"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 130012,
+		"Name": "Breakables"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 130029,
+		"Name": "MapLogic"
+	},
+	"Visible": true
+},
+```
+
 #### X_Boss01
 
 For all obstacles of the following types, change `Collision` to `false`, to prevent the Hydra from getting stuck:
@@ -1420,6 +2044,319 @@ Delete ID `536684`.
 
 ElysiumFogCloudRollC:
 For ID `541367`, change the `GroupNames` property to `Terrain_Overlay_01`.
+
+#### Y_PreBoss01
+
+Adding the ZagContractReward obstacles and required map groups:
+
+To the `.thing_bin`, add the following at the bottom (add `,` to previous last item):
+```
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 797541,
+	"AttachedIDs": [
+		797540
+	],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": true,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Terrain_ZagContract_01",
+		"Contract"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 797539,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 5596.273,
+		"Y": 4103.934
+	},
+	"Name": "HouseTerrainTransporter",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.15800000727176666,
+	"SkewAngle": 180.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 797539,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 0,
+		"G": 0,
+		"R": 0
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": true,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Terrain_ZagContract_01",
+		"Contract"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 797540,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 5599.098,
+		"Y": 4097.708
+	},
+	"Name": "AsphodelLavaLavaRippleB",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.2329999953508377,
+	"SkewAngle": 180.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [
+		797539
+	],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": true,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Terrain_ZagContract_01",
+		"Contract"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 797541,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 5600.714,
+		"Y": 4106.608
+	},
+	"Name": "AtmosphereShadowRound01",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.26499998569488525,
+	"SkewAngle": 180.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": true,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Default"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 776332,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 5600,
+		"Y": 4100
+	},
+	"Name": "InvisibleTarget",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1.0,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+}
+```
+
+To the `.map_text`, add the following:
+
+Under `Terrain_Lighting_01`, add `Terrain_ZagContract_01`:
+```
+{
+	"Id": 430005,
+	"Name": "Terrain_Lighting_01"
+},
+{
+	"Id": 440009,
+	"Name": "Terrain_ZagContract_01"
+},
+```
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 440009,
+		"Name": "Terrain_ZagContract_01"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 430012,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 430005,
+		"Name": "Terrain_Lighting_01"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 430012,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+```
+
+Under `Breakables`, add `Contract`:
+```
+{
+	"Id": 430190,
+	"Name": "Breakables"
+},
+{
+	"Id": 430191,
+	"Name": "Contract"
+},
+```
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 430191,
+		"Name": "Contract"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 430020,
+		"Name": "MapLogic"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 430190,
+		"Name": "Breakables"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 430020,
+		"Name": "MapLogic"
+	},
+	"Visible": true
+},
+```
 
 #### Y_Boss01
 
@@ -1758,6 +2695,317 @@ New map_text groups:
 {
 	"Id": 410517,
 	"Name": "Standing_Lower"
+},
+```
+
+Adding the ZagContractReward obstacles and required map groups:
+
+To the `.thing_bin`, add the following at the bottom (add `,` to previous last item):
+```
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 797541,
+	"AttachedIDs": [
+		797540
+	],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": true,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Terrain_ZagContract_01",
+		"Contract"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 797539,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 11396.273,
+		"Y": 8203.934
+	},
+	"Name": "HouseTerrainTransporter",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.15800000727176666,
+	"SkewAngle": 180.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 797539,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 0,
+		"G": 0,
+		"R": 0
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": true,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Terrain_ZagContract_01",
+		"Contract"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 797540,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 11399.098,
+		"Y": 8197.708
+	},
+	"Name": "AsphodelLavaLavaRippleB",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.2329999953508377,
+	"SkewAngle": 180.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [
+		797539
+	],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": true,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Terrain_ZagContract_01",
+		"Contract"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 797541,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 11400.714,
+		"Y": 8206.608
+	},
+	"Name": "AtmosphereShadowRound01",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.26499998569488525,
+	"SkewAngle": 180.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+{
+	"Active": true,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Default"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 776332,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 11400,
+		"Y": 8200
+	},
+	"Name": "InvisibleTarget",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1.0,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+}
+```
+
+To the `.map_text`, add the following:
+
+Under `Terrain_Lighting_01`, add `Terrain_ZagContract_01`:
+```
+{
+	"Id": 410887,
+	"Name": "Terrain_Lighting_01"
+},
+{
+	"Id": 440009,
+	"Name": "Terrain_ZagContract_01"
+},
+```
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 440009,
+		"Name": "Terrain_ZagContract_01"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410887,
+		"Name": "Terrain_Lighting_01"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+```
+
+Under `Breakables`, add `Contract`:
+```
+{
+	"Id": 410520,
+	"Name": "Breakables"
+},
+{
+	"Id": 430191,
+	"Name": "Contract"
+},
+```
+```
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 430191,
+		"Name": "Contract"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410528,
+		"Name": "MapLogic"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410520,
+		"Name": "Breakables"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410528,
+		"Name": "MapLogic"
+	},
+	"Visible": true
 },
 ```
 

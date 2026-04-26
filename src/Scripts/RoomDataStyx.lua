@@ -952,6 +952,8 @@ local roomModifications = {
 		EncounterCompleteWait = 0.02,
 		UnlockExitsWait = 0.02,
 		SkipUnusedWeaponBonusReward = true,
+
+		ZagContractRewardDestinationId = 776332,
 	},
 
 	-- MINIBOSSES

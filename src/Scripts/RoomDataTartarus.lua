@@ -751,6 +751,8 @@ local roomModifications = {
 		IgnoreStemMixer = true,
 		MusicMutedStems = { "Drums", "Bass", "Guitar", },
 
+		ZagContractRewardDestinationId = 776332,
+
 		ShovelPointChance = 0.35,
 		PickaxePointChance = 0.35,
 		ExorcismPointChance = 0.25,
