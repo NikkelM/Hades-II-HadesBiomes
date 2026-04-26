@@ -883,7 +883,6 @@ local roomModifications = {
 		},
 		EntranceDirection = "LeftRight",
 		StrictLeftRight = true,
-		FlipHorizontalChance = 0.0,
 
 		-- For Dream Dives
 		NoReward = mod.NilValue,
