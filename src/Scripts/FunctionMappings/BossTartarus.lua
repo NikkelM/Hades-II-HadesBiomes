@@ -837,10 +837,10 @@ function mod.FuryDreamRunIntro(source, args)
 		Harpy3 = "TisiphoneTaunt_2",
 	}
 
+	game.StartBossRoomMusic()
 	local tauntAnim = furyTauntAnimations[source.Name]
 	if tauntAnim then
 		SetAnimation({ Name = tauntAnim, DestinationId = source.ObjectId })
 	end
-	game.StartBossRoomMusic()
 	game.wait(0.7)
 end
