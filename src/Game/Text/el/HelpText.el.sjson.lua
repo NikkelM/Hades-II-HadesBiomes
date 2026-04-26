@@ -98,7 +98,7 @@ local newData = {
 	-- },
 	-- #endregion
 
-	-- #region Save File Location Indicators
+	-- #region Save File & Location Indicators
 	{
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus",
 		DisplayName = "ΤΑΡΤΑΡΑ (Εφιάλτης)",
@@ -148,6 +148,94 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesLocation_Hades_Challenge_Short",
 		DisplayName = "Ερεβος",
 	},
+	-- #region H1 biome location texts (English fallback)
+	{
+		Id = "Location_Tartarus",
+		DisplayName = "ΤΑΡΤΑΡΑ",
+	},
+	{
+		Id = "Location_Tartarus_Short",
+		DisplayName = "ΤΑΡΤΑΡΑ",
+	},
+	{
+		Id = "Location_Asphodel",
+		DisplayName = "ΑΣΦΟΔΕΛΟΣ",
+	},
+	{
+		Id = "Location_Asphodel_Short",
+		DisplayName = "ΑΣΦΟΔΕΛΟΣ",
+	},
+	{
+		Id = "Location_Elysium",
+		DisplayName = "ΕΛΥΣΙΟΥΜ",
+	},
+	{
+		Id = "Location_Elysium_Short",
+		DisplayName = "ΕΛΥΣΙΟΥΜ",
+	},
+	{
+		Id = "Location_Styx",
+		DisplayName = "Ο ΝΑΟΣ ΤΗΣ ΣΤΥΞ",
+	},
+	{
+		Id = "Location_Styx_Short",
+		DisplayName = "ΣΤΥΞ",
+	},
+	{
+		Id = "Location_Challenge",
+		DisplayName = "ΕΡΕΒΟΣ",
+	},
+	{
+		Id = "Location_Surface",
+		DisplayName = "ΕΛΛΑΔΑ",
+	},
+	{
+		Id = "Location_Surface_Alt",
+		DisplayName = "Η ΕΠΙΦΑΝΕΙΑ",
+	},
+	-- #endregion
+	-- #region Dream Run location variants
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
+		DisplayName = "ΤΑΡΤΑΡΑ; (Εφιάλτης)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner",
+		DisplayName = "ΤΑΡΤΑΡΑ;",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
+		DisplayName = "ΑΣΦΟΔΕΛΟΣ; (Εφιάλτης)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
+		DisplayName = "ΑΣΦΟΔΕΛΟΣ;",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
+		DisplayName = "ΕΛΥΣΙΟΥΜ; (Εφιάλτης)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
+		DisplayName = "ΕΛΥΣΙΟΥΜ;",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
+		DisplayName = "ΣΤΥΓΑ; (Εφιάλτης)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
+		DisplayName = "Ο ΝΑΟΣ ΤΗΣ ΣΤΥΞ;",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
+		DisplayName = "ΕΡΕΒΟΣ; (Εφιάλτης)",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_DreamBanner",
+		DisplayName = "ΕΡΕΒΟΣ;",
+	},
+	-- #endregion
 	-- #endregion
 
 	-- #region NPC/Unit Names
@@ -166,6 +254,56 @@ local newData = {
 	-- 	DisplayName = "Orpheus & Eurydice",
 	-- 	Description = "",
 	-- },
+	-- #region Dream Run Visage Names
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Harpy_DreamRun01",
+	-- 	DisplayName = "Visage of Megaera",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Harpy2_DreamRun01",
+	-- 	DisplayName = "Visage of Alecto",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Harpy3_DreamRun01",
+	-- 	DisplayName = "Visage of Tisiphone",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_HydraHeadImmortal_DreamRun01",
+	-- 	DisplayName = "Visage of the Bone Hydra",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_HydraHeadImmortal_DreamRun02",
+	-- 	DisplayName = "Visage of Lernie",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Minotaur_DreamRun01",
+	-- 	DisplayName = "Visage of the Minotaur",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Minotaur_Full_DreamRun01",
+	-- 	DisplayName = "Visage of Asterius",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Theseus_DreamRun01",
+	-- 	DisplayName = "Visage of Theseus",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Hades_DreamRun01",
+	-- 	DisplayName = "Visage of Hades",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Charon_DreamRun01",
+	-- 	DisplayName = "Visage of Charon",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_CrawlerMiniBoss_DreamRun01",
+	-- 	DisplayName = "Visage of the Tiny Vermin",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_DreamBossesDefeatedMessage",
+	-- 	DisplayName = "VISAGES VANQUISHED",
+	-- },
+	-- #endregion
 	-- #endregion
 
 	-- #region Credits
@@ -1718,6 +1856,38 @@ local newData = {
 	-- {
 	-- 	Id = "OrpheusMusicProgress04",
 	-- 	DisplayName = "Achieve Mastery in Playing the Lyre",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Double Duty ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of defeating two of her dearest friends, who are also her greatest foes at times, in the same dream.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus_Condition",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressIncomplete} Defeat {$Keywords.CharCharon} and {$Keywords.CharZagreus} in a single Dream Dive",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus_Cleared",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressComplete} Defeat {$Keywords.CharCharon} and {$Keywords.CharZagreus} in a single Dream Dive",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} A True Nightmare ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of facing and overcoming all three of her strongest foes at their most terrifying power, in the same dream.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Condition",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressIncomplete} Defeat unrivaled {$Keywords.CharChronos}, {$Keywords.CharTyphon} and {$Keywords.CharHades} in a single Dream Dive",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Cleared",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressComplete} Defeat unrivaled {$Keywords.CharChronos}, {$Keywords.CharTyphon} and {$Keywords.CharHades} in a single Dream Dive",
 	-- },
 	-- #endregion
 

@@ -230,6 +230,20 @@ local newData = {
 		Description = "{$TooltipData.BlockedEnemyTypes[1]} 不会在{$Keywords.EncounterPlural}出现。",
 	},
 	-- #endregion
+
+	-- #region Old Grudge Dream Run text
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "宿仇旧怨",
+		Description = "面对{$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}时，于战斗开始 {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} 秒{#Prev}后令其受到爆发伤害。",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat} {$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}生命值减少：",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

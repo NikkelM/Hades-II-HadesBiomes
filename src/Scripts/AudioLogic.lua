@@ -56,10 +56,13 @@ end)
 
 -- Called in some boss intros - just in case there is no Music playing (either paused or MusicId == nil), we resume it/create it
 function mod.SafetyResumeBossMusic()
-	if game.AudioState.MusicId ~= nil and game.AudioState.MusicPaused then
+	if game.AudioState == nil then
+		return
+	end
+	if game.AudioState.MusicId ~= nil and game.AudioState.MusicId ~= 0 and game.AudioState.MusicPaused then
 		game.ResumeMusic()
 	end
-	if game.AudioState.MusicId == nil then
+	if game.AudioState.MusicId == nil or game.AudioState.MusicId == 0 then
 		game.MusicMixer({ PlayBiomeMusic = true, MusicSection = 0, UseRoomMusicSection = true, })
 	end
 end
@@ -73,7 +76,12 @@ function mod.EndSecretMusicAndResumeMusic()
 end
 
 function mod.PlaySoundWithSource(source, args)
-	PlaySound(args)
+	args = args or {}
+	args.Id = source.ObjectId
+	local soundId = PlaySound(args)
+	if args.Volume ~= nil then
+		SetVolume({ Id = soundId, Value = args.Volume })
+	end
 end
 
 function mod.SecretMusicPlayerEvent(source, args)

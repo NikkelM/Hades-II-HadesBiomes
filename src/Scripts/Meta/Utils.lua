@@ -616,6 +616,38 @@ function mod.SetBiomePackageLoadOverrides()
 	end
 end
 
+--- Finds a voiceline entry by its Cue within a nested voiceline table and replaces its GameStateRequirements.
+--- Searches up to 3 levels deep to handle the nested group structure of voiceline tables.
+---@param voiceLineTable table The voiceline table to search (e.g. game.HeroVoiceLines.DreamBiomeStartVoiceLines)
+---@param cue string The Cue path to match (e.g. "/VO/MelinoeField_5547")
+---@param newRequirements table The new GameStateRequirements table to set on the matched entry
+---@return nil Modifies the voiceline entry in-place. No-op if the table is nil or the cue is not found.
+function mod.ModifyVoiceLineRequirements(voiceLineTable, cue, newRequirements)
+	if voiceLineTable == nil then return end
+	for _, group in ipairs(voiceLineTable) do
+		if type(group) == "table" then
+			if group.Cue == cue then
+				group.GameStateRequirements = newRequirements
+				return
+			end
+			for _, entry in ipairs(group) do
+				if type(entry) == "table" then
+					if entry.Cue == cue then
+						entry.GameStateRequirements = newRequirements
+						return
+					end
+					for _, subEntry in ipairs(entry) do
+						if type(subEntry) == "table" and subEntry.Cue == cue then
+							subEntry.GameStateRequirements = newRequirements
+							return
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
 modutil.mod.Path.Wrap("DebugPrint", function(base, args)
 	mod.DebugPrint(args.Text, 4)
 	return base(args)

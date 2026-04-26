@@ -224,6 +224,29 @@ local newData = {
 	-- 	InheritFrom = "ShrineScreen_SkellyStatueModsNikkelMHadesBiomesModdedRun_Incomplete",
 	-- },
 	-- #endregion
+
+	-- #region Dream Run result texts for run history screen
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
+		DisplayName = "{#RunHistoryFailureFormat}TARTAROS?{#Prev}'ta Yenik Düştü",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
+		DisplayName = "{#RunHistoryFailureFormat}ASFODEL?{#Prev}'de Yenik Düştü",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
+		DisplayName = "{#RunHistoryFailureFormat}ELİSYUM?{#Prev}'da Yenik Düştü",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
+		DisplayName = "{#RunHistoryFailureFormat}STIKS?{#Prev}'ta Yenik Düştü",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
+		DisplayName = "{#RunHistoryFailureFormat}EREBOS?{#Prev}'ta Yenik Düştü",
+	},
+	-- #endregion
 }
 
 sjson.hook(screenTextFile, function(data)

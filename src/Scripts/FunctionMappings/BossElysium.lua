@@ -4,12 +4,23 @@ function mod.ModsNikkelMHadesBiomesSetFlag(source, args)
 end
 
 function mod.BossIntroElysium(eventSource, args)
-	local shrineLevel = game.GetNumShrineUpgrades(eventSource.ShrineMetaUpgradeName)
+	-- Use EM intro if VoR is active at current biome depth, otherwise normal intro
+	local shrineLevel = game.IsBossDifficultyShrineUpgradeActive() and 4 or 0
 
 	-- In case of there being no music after certain room chains, resume or start new music
 	mod.SafetyResumeBossMusic()
 
 	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args[shrineLevel])
+end
+
+function mod.ElysiumChampionsDreamRunIntro(source, args)
+	args = args or {}
+	args.SkipWaitForInitialPan = true
+	if source.TauntAnimation ~= nil then
+		SetAnimation({ Name = source.TauntAnimation, DestinationId = source.ObjectId })
+	end
+	game.StartBossRoomMusic()
+	game.wait(1.9)
 end
 
 function mod.PlayPreLineTauntAnimFromSource(source, args)
@@ -112,8 +123,10 @@ function mod.MinotaurEarlyExitPresentation(boss, currentRun)
 	Stop({ Id = boss.ObjectId })
 	AngleTowardTarget({ Id = boss.ObjectId, DestinationId = currentRun.Hero.ObjectId })
 
-	game.ProcessTextLines(boss, boss.BossPresentationOutroTextLineSets)
-	game.ProcessTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		game.ProcessTextLines(boss, boss.BossPresentationOutroTextLineSets)
+		game.ProcessTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+	end
 
 	game.EndMusic(game.AudioState.MusicId, game.AudioState.MusicName)
 	game.RemoveEnemyUI(boss)

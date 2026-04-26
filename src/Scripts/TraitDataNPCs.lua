@@ -6,11 +6,25 @@ local duplicateVeryStrongMultiplier = -0.20
 
 local newTraitData = {
 	-- #region Sisyphus
-	ModsNikkelMHadesBiomesSisyphusMoney = {
+	ModsNikkelMHadesBiomesBaseSisyphus = {
+		InheritFrom = { "ForceCommonAppearanceTrait" },
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		Hidden = true,
+	},
+	ModsNikkelMHadesBiomesSisyphusMoney = {
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseSisyphus" },
 		Icon = "Boon_Sisyphus_02",
+		RarityLevels = {
+			Common = { Multiplier = 1 },
+			Rare = { Multiplier = 1.25 },
+			Epic = { Multiplier = 1.5 },
+			Heroic = { Multiplier = 2 },
+		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = { { "AcquireFunctionArgs", "Currency", "BaseMin" }, { "AcquireFunctionArgs", "Currency", "BaseMax" } },
+			AsInt = true,
+		},
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusBuff",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
@@ -35,9 +49,7 @@ local newTraitData = {
 		},
 	},
 	ModsNikkelMHadesBiomesSisyphusHealing = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
-		Hidden = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseSisyphus" },
 		Icon = "Boon_Sisyphus_01",
 		AcquireFunctionName = "GiveRandomConsumables",
 		AcquireFunctionArgs = {
@@ -74,10 +86,18 @@ local newTraitData = {
 		},
 	},
 	ModsNikkelMHadesBiomesSisyphusMetapoints = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
-		Hidden = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseSisyphus" },
 		Icon = "Boon_Sisyphus_03",
+		RarityLevels = {
+			Common = { Multiplier = 1 },
+			Rare = { Multiplier = 1.25 },
+			Epic = { Multiplier = 1.5 },
+			Heroic = { Multiplier = 2 },
+		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = { { "AcquireFunctionArgs", "LootOptions", 1, "Overrides", "AddResources", "MetaCurrency" } },
+			AsInt = true,
+		},
 		AcquireFunctionName = "GiveRandomConsumables",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
@@ -110,10 +130,18 @@ local newTraitData = {
 		},
 	},
 	ModsNikkelMHadesBiomesSisyphusPomSlices = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
-		Hidden = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseSisyphus" },
 		Icon = "Boon_Sisyphus_04",
+		RarityLevels = {
+			Common = { Multiplier = 1 },
+			Rare = { Multiplier = 1 },
+			Epic = { Multiplier = 1.5 },
+			Heroic = { Multiplier = 2 },
+		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = { { "AcquireFunctionArgs", "LootOptions", 1, "Amount" } },
+			AsInt = true,
+		},
 		GameStateRequirements = {
 			NamedRequirements = { "StackUpgradeLegal", },
 		},
@@ -140,10 +168,18 @@ local newTraitData = {
 		},
 	},
 	ModsNikkelMHadesBiomesSisyphusCentaurSoul = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
-		Hidden = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseSisyphus" },
 		Icon = "Boon_Sisyphus_05",
+		RarityLevels = {
+			Common = { Multiplier = 1 },
+			Rare = { Multiplier = 1.25 },
+			Epic = { Multiplier = 1.5 },
+			Heroic = { Multiplier = 2 },
+		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = { { "AcquireFunctionArgs", "LootOptions", 1, "Overrides", "AddMaxHealth" } },
+			AsInt = true,
+		},
 		AcquireFunctionName = "GiveRandomConsumables",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
@@ -176,10 +212,18 @@ local newTraitData = {
 		},
 	},
 	ModsNikkelMHadesBiomesSisyphusMaxMana = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
-		Hidden = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseSisyphus" },
 		Icon = "Boon_Sisyphus_06",
+		RarityLevels = {
+			Common = { Multiplier = 1 },
+			Rare = { Multiplier = 1.25 },
+			Epic = { Multiplier = 1.5 },
+			Heroic = { Multiplier = 2 },
+		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = { { "AcquireFunctionArgs", "LootOptions", 1, "Overrides", "AddMaxMana" } },
+			AsInt = true,
+		},
 		AcquireFunctionName = "GiveRandomConsumables",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
@@ -212,10 +256,18 @@ local newTraitData = {
 		},
 	},
 	ModsNikkelMHadesBiomesSisyphusTalentDrop = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
-		Hidden = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseSisyphus" },
 		Icon = "Boon_Sisyphus_07",
+		RarityLevels = {
+			Common = { Multiplier = 1 },
+			Rare = { Multiplier = 1.5 },
+			Epic = { Multiplier = 2 },
+			Heroic = { Multiplier = 2 },
+		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = { { "AcquireFunctionArgs", "LootOptions", 1, "Overrides", "AddTalentPoints" } },
+			AsInt = true,
+		},
 		GameStateRequirements = {
 			NamedRequirements = { "TalentLegal" },
 		},
@@ -252,12 +304,26 @@ local newTraitData = {
 	-- #endregion
 
 	-- #region Eurydice
-	ModsNikkelMHadesBiomesBuffSlottedBoonRarity = {
+	ModsNikkelMHadesBiomesBaseEurydice = {
+		InheritFrom = { "ForceCommonAppearanceTrait" },
 		BlockStacking = true,
 		BlockInRunRarify = true,
 		Hidden = true,
+	},
+	ModsNikkelMHadesBiomesBuffSlottedBoonRarity = {
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseEurydice" },
 		Icon = "Boon_Eurydice_01",
-		-- At least one upgradeable boon available (not counting Heroic -> Perfect)
+		RarityLevels = {
+			Common = { Multiplier = 1 },
+			Rare = { Multiplier = 1 },
+			Epic = { Multiplier = 1.5 },
+			Heroic = { Multiplier = 2 },
+		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = { { "AcquireFunctionArgs", "NumTraits" } },
+			AsInt = true,
+		},
+		-- At least one upgradeable boon available
 		GameStateRequirements = {
 			{
 				Path = { "CurrentRun", "Hero", "GodBoonRarities" },
@@ -284,8 +350,18 @@ local newTraitData = {
 		},
 	},
 	ModsNikkelMHadesBiomesBuffMegaPom = {
-		InheritFrom = { "ModsNikkelMHadesBiomesBuffSlottedBoonRarity", },
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseEurydice", "ModsNikkelMHadesBiomesBuffSlottedBoonRarity" },
 		Icon = "Boon_Eurydice_02",
+		RarityLevels = {
+			Common = { Multiplier = 1 },
+			Rare = { Multiplier = 1 },
+			Epic = { Multiplier = 1.25 },
+			Heroic = { Multiplier = 5/4 },
+		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = { { "AcquireFunctionArgs", "NumTraits" } },
+			AsInt = true,
+		},
 		GameStateRequirements = {
 			NamedRequirements = { "StackUpgradeLegal", },
 		},
@@ -310,9 +386,19 @@ local newTraitData = {
 		},
 	},
 	ModsNikkelMHadesBiomesBuffFutureBoonRarity = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseEurydice" },
+		Hidden = false,
 		Icon = "Boon_Eurydice_03",
+		RarityLevels = {
+			Common = { Multiplier = 1 },
+			Rare = { Multiplier = 1 },
+			Epic = { Multiplier = 4/3 },
+			Heroic = { Multiplier = 4/3 },
+		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = { { "RemainingUses" } },
+			AsInt = true,
+		},
 		RarityBonus = {
 			Rare = 1,
 			Epic = 0.25,
@@ -323,10 +409,13 @@ local newTraitData = {
 	-- #endregion
 
 	-- #region Patroclus
-	ModsNikkelMHadesBiomesTemporaryDoorHealTrait_Patroclus = {
-		InheritFrom = { "TemporaryDoorHealTrait" },
+	ModsNikkelMHadesBiomesBasePatroclus = {
+		InheritFrom = { "ForceCommonAppearanceTrait" },
 		BlockStacking = true,
 		BlockInRunRarify = true,
+	},
+	ModsNikkelMHadesBiomesTemporaryDoorHealTrait_Patroclus = {
+		InheritFrom = { "ModsNikkelMHadesBiomesBasePatroclus", "TemporaryDoorHealTrait" },
 		NoFrame = false,
 		Icon = "Boon_Patroclus_02",
 		RemainingUses = 5,
@@ -344,9 +433,7 @@ local newTraitData = {
 		},
 	},
 	ModsNikkelMHadesBiomesTemporaryImprovedWeaponTrait_Patroclus = {
-		InheritFrom = { "ShopTrait" },
-		BlockStacking = true,
-		BlockInRunRarify = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBasePatroclus", "ShopTrait" },
 		NoFrame = false,
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusBuff",
 		Icon = "Boon_Patroclus_01",
@@ -369,6 +456,7 @@ local newTraitData = {
 		},
 	},
 	ModsNikkelMHadesBiomesBuffExtraChance = {
+		InheritFrom = { "ModsNikkelMHadesBiomesBasePatroclus" },
 		-- Adapted from EchoDeathDefianceRefill
 		Icon = "Boon_Patroclus_03",
 		Hidden = true,
@@ -402,9 +490,18 @@ local newTraitData = {
 	},
 	-- More Max Health than Mana
 	ModsNikkelMHadesBiomesGainMaxHealthMinMana = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBasePatroclus" },
 		Icon = "Boon_Patroclus_04",
+		RarityLevels = {
+			Common = { Multiplier = 1 },
+			Rare = { Multiplier = 1 },
+			Epic = { Multiplier = 1 },
+			Heroic = { Multiplier = 1.2 },
+		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = { { "AcquireFunctionArgs", "AddMaxHealth" }, { "AcquireFunctionArgs", "AddMaxMana" } },
+			AsInt = true,
+		},
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusBuff",
 		AcquireFunctionArgs = {
 			FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusAddMaxHealthMana",
@@ -439,11 +536,16 @@ local newTraitData = {
 				ReportedMaxMana = "AddMaxMana",
 			},
 		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = { { "AcquireFunctionArgs", "AddMaxHealth" }, { "AcquireFunctionArgs", "AddMaxMana" } },
+			AsInt = true,
+		},
 	},
 	-- #endregion
 
 	-- #region Bouldy
 	BouldyBlessing = {
+		InheritFrom = { "ForceCommonAppearanceTrait" },
 		Icon = "Boon_Bouldy_01",
 		BlockInRunRarify = true,
 		BlockStacking = true,
@@ -608,10 +710,14 @@ local newTraitData = {
 	-- #endregion
 
 	-- #region Orpheus
-	-- Primordial Chaos
-	ModsNikkelMHadesBiomesOrpheusChaosThemeBoon = {
+	ModsNikkelMHadesBiomesBaseOrpheus = {
+		InheritFrom = { "ForceCommonAppearanceTrait" },
 		BlockStacking = true,
 		BlockInRunRarify = true,
+	},
+	-- Primordial Chaos
+	ModsNikkelMHadesBiomesOrpheusChaosThemeBoon = {
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseOrpheus" },
 		Icon = "Boon_Orpheus_PrimordialChaos",
 		BoonInfoIgnoreRequirements = true,
 		GameStateRequirements = {
@@ -634,8 +740,7 @@ local newTraitData = {
 		RemainingUses = 2,
 	},
 	ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseOrpheus" },
 		Icon = "Boon_Orpheus_PrimordialChaos",
 		SecretDoorCostMultiplier = {
 			BaseMin = 0,
@@ -644,9 +749,20 @@ local newTraitData = {
 	},
 	-- God of the Dead
 	ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseOrpheus" },
 		Icon = "Boon_Orpheus_GodOfTheDead",
+		RarityLevels = {
+			Common = { Multiplier = 1 },
+			Rare = { Multiplier = 1.2 },
+			Epic = { Multiplier = 1.5 },
+			Heroic = { Multiplier = 2 },
+		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = {
+				{ "OnEnemyDeathFunction", "FunctionArgs", "DamageMultiplier" },
+			},
+			SourceIsMultiplier = true,
+		},
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
 		AcquireFunctionArgs = {
 			TrackName = "{fc71b797-75db-43af-8cc0-f50fdacb5dbc}",
@@ -686,8 +802,7 @@ local newTraitData = {
 	},
 	-- Lament of Orpheus
 	ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseOrpheus" },
 		ShowInHUD = true,
 		Icon = "Boon_Orpheus_LamentOfOrpheus",
 		BoonInfoIgnoreRequirements = true,
@@ -743,8 +858,7 @@ local newTraitData = {
 	},
 	-- Hymn to Zagreus
 	ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseOrpheus" },
 		ShowInHUD = true,
 		Icon = "Boon_Orpheus_HymnToZagreus",
 		BoonInfoIgnoreRequirements = true,
@@ -758,7 +872,7 @@ local newTraitData = {
 			TrackName = "{e044c3d0-8cf0-44ac-9d8e-75eda8c80501}",
 		},
 
-		ModsNikkelMHadesBiomesOrpheusLastStandHealFraction = { BaseValue = 0.1, },
+		ModsNikkelMHadesBiomesOrpheusLastStandHealFraction = 0.1,
 		ExtractValues = {
 			{
 				Key = "ModsNikkelMHadesBiomesOrpheusLastStandHealFraction",
@@ -770,9 +884,17 @@ local newTraitData = {
 	},
 	-- Final Expense
 	ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseOrpheus" },
 		Icon = "Boon_Orpheus_FinalExpense",
+		RarityLevels = {
+			Common = { Multiplier = 1 },
+			Rare = { Multiplier = 1.2 },
+			Epic = { Multiplier = 1.4 },
+			Heroic = { Multiplier = 25/15 },
+		},
+		ModsNikkelMHadesBiomesDreamRunScaling = {
+			ScaleKeys = { { "ModsNikkelMHadesBiomesMaxStoreDiscount" } },
+		},
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
 		AcquireFunctionArgs = {
 			TrackName = "{1d2d987b-853b-4a65-aa2d-a3e8c7e0e99b}",
@@ -798,8 +920,7 @@ local newTraitData = {
 	},
 	-- Good Riddance
 	ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon = {
-		BlockStacking = true,
-		BlockInRunRarify = true,
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseOrpheus" },
 		Icon = "Boon_Orpheus_GoodRiddance",
 		BoonInfoIgnoreRequirements = true,
 		GameStateRequirements = {

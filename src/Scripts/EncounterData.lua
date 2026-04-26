@@ -34,6 +34,7 @@ local encounterModifications = {
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		SpawnAggroed = true,
 		NextRoomResumeMusic = true,
+		SkipCombatBeginsVoiceLines = true,
 		-- For the taunt if the encounter was failed
 		ModsNikkelMHadesBiomesPostEncounterPlayHadesTaunt = true,
 	},
@@ -63,6 +64,7 @@ local encounterModifications = {
 		CanEncounterSkip = false,
 		BlockRespawnShrineUpgrade = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		SkipCombatBeginsVoiceLines = true,
 	},
 	-- #endregion
 }

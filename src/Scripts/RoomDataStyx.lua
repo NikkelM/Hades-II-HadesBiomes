@@ -332,9 +332,74 @@ local roomReplacements = {
 				},
 			},
 		},
+
+		ThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+		PostCombatReloadThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
 	},
 
 	D_Intro = {
+		ThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText",
+				GameStateRequirements = {
+					NamedRequirementsFalse = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = {
+					Text = "Location_Styx",
+					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
+					AnimationName = "ModsNikkelMHadesBiomesInfoBannerStyxIn",
+					AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerStyxOut",
+				},
+			},
+			{
+				FunctionName = "DisplayInfoBanner",
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock",
+				Args = {
+					Biome = "Styx"
+				},
+			},
+			{
+				FunctionName = "CheckObjectiveSetSource",
+				Args = { ObjectiveSetName = "BountyAdvancedTooltip" },
+			},
+		},
+
 		EnterVoiceLines = {
 			-- Chaos Trial/Bounty
 			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
@@ -347,19 +412,26 @@ local roomReplacements = {
 		-- Same as EncounterDataStyx.ModsNikkelMHadesBiomes_StyxHubShop.StartRoomUnthreadedEvents
 		RestoreUnlockRoomExitsUnthreadedEvents = {
 			{ FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_FurySister_01" }, }, },
-			{ FunctionName = "CheckConversations" },
+			{
+				FunctionName = "CheckConversations",
+				GameStateRequirements = {
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
 		},
 		Binks = { "Cerberus_HubIdle_Bink", },
 
 		DistanceTriggers = {
 			{
 				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
-				WithinDistance = 1500,
+				WithinDistance = 1650,
 				GameStateRequirements = {
 					RequiredRoomThisRun = "D_Reprieve01",
 				},
 				FunctionName = _PLUGIN.guid .. "." .. "PlaySoundWithSource",
-				Args = { Name = "/VO/CerberusBarks" },
+				Args = { Name = "/VO/CerberusBarks", Volume = 2 },
 			},
 			{
 				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
@@ -751,6 +823,9 @@ local roomModifications = {
 		ReverbValue = 2.0,
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Styx",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Styx_DreamBanner",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Styx_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeStyx" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeStyx" },
@@ -812,11 +887,24 @@ local roomModifications = {
 		},
 		EntranceDirection = "LeftRight",
 		StrictLeftRight = true,
-		FlipHorizontalChance = 0.0,
-		ThreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerStyxIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerStyxOut" }, },
-			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Styx" } },
+
+		-- For Dream Dives
+		NoReward = mod.NilValue,
+		ForcedRewardStore = "RunProgress",
+		IneligibleRewards = game.RewardSets.OpeningRoomBans,
+		SpawnRewardOnId = 40055,
+		DisableRewardMagnetisim = true,
+		RewardGameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				Path = { "CurrentRun", "EnteredBiomes" },
+				Comparison = "==",
+				Value = 0,
+			},
 		},
+		ModsNikkelMHadesBiomes_DreamRunHeroEndPoint = 50058,
 	},
 	D_Hub = {
 		LoadModdedVoiceBanks = { "Megaera", "MegaeraField", "ZagreusField" },
@@ -825,6 +913,11 @@ local roomModifications = {
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
+				GameStateRequirements = {
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" }
+					},
+				},
 			},
 		},
 		-- Shorter as we add more wait time after the animation starts
@@ -833,7 +926,16 @@ local roomModifications = {
 		DistanceTriggersPostCombatReload = true,
 		TimerBlock = "ShopEncounter",
 		StoreDataName = "Q_WorldShop",
-		PostCombatReloadThreadedEvents = { { FunctionName = "CheckConversations" } },
+		PostCombatReloadThreadedEvents = {
+			{
+				FunctionName = "CheckConversations",
+				GameStateRequirements = {
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+		},
 		-- We need to call this before the PostCombatReloadThreadedEvents as by then the room is already visible and the items would pop in
 		ModsNikkelMHadesBiomesPostCombatReloadThreadedEventsDHub = game.EncounterSets.ShopRoomEvents,
 		SaveWhitelist = {
@@ -850,6 +952,8 @@ local roomModifications = {
 		EncounterCompleteWait = 0.02,
 		UnlockExitsWait = 0.02,
 		SkipUnusedWeaponBonusReward = true,
+
+		ZagContractRewardDestinationId = 776332,
 	},
 
 	-- MINIBOSSES
@@ -910,10 +1014,16 @@ local roomModifications = {
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "BossIntroHades",
-				Args = { DelayedStart = true, },
+				Args = {
+					DelayedStart = true,
+					DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "HadesDreamRunIntro",
+				},
 			},
 		},
 		TeleportCatFamiliarOnEncounterStart = true,
@@ -930,6 +1040,9 @@ local roomModifications = {
 			},
 		},
 		BackupCauseOfDeath = "Hades",
+
+		CanSpawnDreamReward = true,
+		SkipTimedDropResourceInDream = true,
 	},
 
 	-- OTHER

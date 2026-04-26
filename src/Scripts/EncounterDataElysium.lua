@@ -77,6 +77,12 @@ local encounterReplacements = {
 			{ FunctionName = "PostCombatAudio" },
 			{ FunctionName = "SpawnRoomReward" },
 		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 20 } },
+			[2] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 25 } },
+			[3] = { DataOverrides = { MoneyDropCapMin = 25, MoneyDropCapMax = 30 } },
+			[4] = { DataOverrides = { MoneyDropCapMin = 30, MoneyDropCapMax = 45 } },
+		},
 	},
 
 	Story_Patroclus_01 = {
@@ -86,10 +92,12 @@ local encounterReplacements = {
 	PerfectClearChallengeElysium = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedElysium" },
 		EnemySet = game.EnemySets.EnemiesBiome3,
+		DreamBiomeData = "nil",
 	},
 	EliteChallengeElysium = {
 		InheritFrom = { "EliteChallenge", "GeneratedElysium" },
 		EnemySet = game.EnemySets.EnemiesBiome3_EliteChallenge,
+		DreamBiomeData = "nil",
 	},
 }
 

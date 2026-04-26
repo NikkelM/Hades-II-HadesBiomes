@@ -329,6 +329,39 @@ local roomReplacements = {
 			},
 		},
 
+		ThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+		PostCombatReloadThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+
 		CombatOverMusicEvents = mod.CombatOverMusicEvents.Generic,
 	},
 
@@ -345,6 +378,38 @@ local roomReplacements = {
 		},
 	},
 	Y_Intro = {
+		ThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText",
+				GameStateRequirements = {
+					NamedRequirementsFalse = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = {
+					Text = "Location_Elysium",
+					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
+					AnimationName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn",
+					AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut",
+				},
+			},
+			{
+				FunctionName = "DisplayInfoBanner",
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock",
+				Args = {
+					Biome = "Elysium"
+				},
+			},
+			{
+				FunctionName = "CheckObjectiveSetSource",
+				Args = { ObjectiveSetName = "BountyAdvancedTooltip" },
+			},
+		},
+
 		EnterVoiceLines = {
 			-- Chaos Trial/Bounty
 			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
@@ -393,6 +458,9 @@ local roomModifications = {
 		-- MusicActiveStems = { "Bass" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeElysium" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeElysium" },
@@ -419,10 +487,22 @@ local roomModifications = {
 		},
 		EntranceDirection = "LeftRight",
 		StrictLeftRight = true,
-		FlipHorizontalChance = 0.0,
-		ThreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut" }, },
-			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Elysium" } },
+
+		-- For Dream Dives
+		NoReward = mod.NilValue,
+		ForcedRewardStore = "RunProgress",
+		IneligibleRewards = game.RewardSets.OpeningRoomBans,
+		SpawnRewardOnId = 557204,
+		DisableRewardMagnetisim = true,
+		RewardGameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				Path = { "CurrentRun", "EnteredBiomes" },
+				Comparison = "==",
+				Value = 0,
+			},
 		},
 
 		HarvestPointChances = { 0.02, },
@@ -486,6 +566,8 @@ local roomModifications = {
 		IgnoreStemMixer = true,
 		MusicMutedStems = { "Drums", "Bass", "Guitar", },
 
+		ZagContractRewardDestinationId = 776332,
+
 		HarvestPointChances = { 0.3 },
 		ShovelPointChance = 0.3,
 		PickaxePointChance = 0.3,
@@ -531,18 +613,24 @@ local roomModifications = {
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium",
 				Args = {
-					[0] = { DelayedStart = true, },
-					[1] = { DelayedStart = true, },
-					[2] = { DelayedStart = true, },
-					[3] = { DelayedStart = true, },
-					[4] = { DelayedStart = true, },
+					[0] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
+					[1] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
+					[2] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
+					[3] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
+					[4] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
 				},
 			},
 		},
+
+		CanSpawnDreamReward = true,
+		SkipTimedDropResourceInDream = true,
 
 		-- It would get placed somewhere in the middle of the arena, and has collision so could interfere with gameplay
 		HasPickaxePoint = false,

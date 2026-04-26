@@ -825,12 +825,46 @@ local enemyReplacements = {
 	-- #endregion
 }
 
+-- #region Dream Run base enemy scaling
+-- DreamBiomeData for base (non-boss) H1 enemies, mirroring vanilla's per-biome base template pattern.
+-- Modded enemies scale slightly above their vanilla equivalents.
+-- Defined before enemyModifications so they can be referenced inside it and applied before inheritance processing.
+local tartarusEnemyDreamBiomeData = {
+	[1] = { DataOverrides = { HealthMultiplier = 1.15, MoneyMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.7 } },
+	[2] = { DataOverrides = { HealthMultiplier = 2.0, MoneyMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.5 } },
+	[3] = { DataOverrides = { HealthMultiplier = 4.2, SpeedMultiplier = 1.25, MoneyMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+	[4] = { DataOverrides = { HealthMultiplier = 7.5, SpeedMultiplier = 1.45, MoneyMultiplier = 2.5 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+}
+
+local asphodelEnemyDreamBiomeData = {
+	[1] = { DataOverrides = { HealthMultiplier = 0.65, MoneyMultiplier = 0.85 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
+	[2] = { DataOverrides = { HealthMultiplier = 1.1, MoneyMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.7 } },
+	[3] = { DataOverrides = { HealthMultiplier = 2.4, SpeedMultiplier = 1.15, MoneyMultiplier = 1.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.35 } },
+	[4] = { DataOverrides = { HealthMultiplier = 4.2, SpeedMultiplier = 1.25, MoneyMultiplier = 2.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.35 } },
+}
+
+local elysiumEnemyDreamBiomeData = {
+	[1] = { DataOverrides = { HealthMultiplier = 0.35, MoneyMultiplier = 0.55 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.85 } },
+	[2] = { DataOverrides = { HealthMultiplier = 0.65, MoneyMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.35 } },
+	[3] = { DataOverrides = { HealthMultiplier = 1.3, MoneyMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.75 } },
+	[4] = { DataOverrides = { HealthMultiplier = 2.4, MoneyMultiplier = 1.35 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.75 } },
+}
+
+local styxEnemyDreamBiomeData = {
+	[1] = { DataOverrides = { HealthMultiplier = 0.2, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.75 } },
+	[2] = { DataOverrides = { HealthMultiplier = 0.35, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.2 } },
+	[3] = { DataOverrides = { HealthMultiplier = 0.8, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.55 } },
+	[4] = { DataOverrides = { HealthMultiplier = 1.35, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.55 } },
+}
+-- #endregion
+
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
 local enemyModifications = {
 	-- #region TARTARUS
 	-- #region TARTARUS - Regular
 	BaseGlutton = {
 		LargeUnitCap = mod.NilValue,
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	PunchingBagUnit = {
 		StunAnimations = { Default = "EnemyWretchGluttonOnHit" },
@@ -843,6 +877,7 @@ local enemyModifications = {
 	},
 	BaseThug = {
 		LargeUnitCap = mod.NilValue,
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	HeavyMelee = {
 		StunAnimations = { Default = "EnemyWretchThugOnHit" },
@@ -853,6 +888,7 @@ local enemyModifications = {
 	DisembodiedHand = {
 		GenusName = "DisembodiedHand",
 		StunAnimations = { Default = "EnemyWringerOnHit" },
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 		GeneratorData = {
 			BlockSolo = true,
 		},
@@ -875,6 +911,7 @@ local enemyModifications = {
 	},
 	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	LightRangedSuperElite = {
 		DefaultAIData = {
@@ -883,6 +920,7 @@ local enemyModifications = {
 	},
 	ThiefMineLayer = {
 		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 		DefaultAIData = {
 			BlendTimeoutMin = 2.0,
 			BlendTimeoutMax = 3.5,
@@ -915,14 +953,17 @@ local enemyModifications = {
 		OnDeathTetherRandomForceMin = 800,
 		OnDeathTetherRandomForceMax = 1000,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
 		WeaponOptions = { "HadesSwarmerMelee" },
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	LightSpawner = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
 		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon", },
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 		DefaultAIData = { DeepInheritance = true, },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		OnDamagedFunctionName = "AggroSpawns",
@@ -937,6 +978,7 @@ local enemyModifications = {
 	HeavyRangedSplitterMiniboss = {
 		GenusName = "HeavyRangedSplitterMiniboss",
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		OnDeathTetherUpwardForce = 2200,
 		OnDeathTetherRandomForceMin = 800,
@@ -992,6 +1034,7 @@ local enemyModifications = {
 	HeavyRangedSplitterFragment = {
 		MaxHealth = 40,
 		HealthBuffer = 50,
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
 		UseActivatePresentation = false,
 		BlockRaiseDead = true,
@@ -1021,6 +1064,7 @@ local enemyModifications = {
 		DefaultAIData = {
 			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 		},
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	WretchAssassinMiniboss = {
 		GenusName = "WretchAssassinMiniboss",
@@ -1047,6 +1091,42 @@ local enemyModifications = {
 		-- Polyphemus EM Health: 10200
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 11000,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Harpy_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_DreamBossesDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+					NamedRequirements = { "BossDifficultyActive" },
+				},
+			},
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+					NamedRequirementsFalse = { "BossDifficultyActive" },
+				},
+			},
+		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12000,
 		},
@@ -1079,6 +1159,22 @@ local enemyModifications = {
 		-- Base Health: 4600
 		-- EM Health: 4900
 		MaxHealth = 11100,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Harpy2_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12200,
 		},
@@ -1099,6 +1195,22 @@ local enemyModifications = {
 		-- Base Health: 5200
 		-- EM Health: 5600
 		MaxHealth = 11400,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Harpy3_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12400,
 		},
@@ -1133,6 +1245,7 @@ local enemyModifications = {
 		DefaultAIData = { DeepInheritance = true, },
 		OnDamagedFunctionName = "AggroSpawns",
 		BlockAttributes = { "Disguise" },
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 	},
 	-- Need to manually modify these fields, as the enemies are DeepCopyTable'd from Hades II above
 	HadesBloodlessNaked = {
@@ -1312,6 +1425,7 @@ local enemyModifications = {
 	FreezeShotUnit = {
 		StunAnimations = { Default = "EnemyMedusaOnHit" },
 		ManualDeathAnimation = false,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		DestroyDelay = 3.0,
 		PolymorphScaleOverride = 2.0,
 	},
@@ -1321,6 +1435,7 @@ local enemyModifications = {
 	RangedBurrower = {
 		StunAnimations = { Default = "EnemyBoneDraconOnHit" },
 		UseActivatePresentation = false,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 	},
 	RangedBurrowerElite = {
 		BlockAttributes = { "Blink", "Orbit", "Beams" },
@@ -1333,6 +1448,7 @@ local enemyModifications = {
 	},
 	CrusherUnit = {
 		StunAnimations = { Default = "CrusherUnitOnHit" },
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		-- Don't create a new blank obstacle for this enemy, as the flipping logic would be hard to get right
 		ManualDeathAnimation = false,
 		DestroyDelay = 1.2,
@@ -1386,6 +1502,7 @@ local enemyModifications = {
 		MaxHealth = 480,
 		StunAnimations = { Default = "HealRangedCrystal4" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
@@ -1397,9 +1514,6 @@ local enemyModifications = {
 		OnDeathTetherUpwardForce = 2200,
 		OnDeathTetherRandomForceMin = 800,
 		OnDeathTetherRandomForceMax = 1000,
-	},
-	ShieldRangedElite = {
-		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching" },
 	},
 	ShieldRangedSuperElite = {
 		HealthBuffer = 900,
@@ -1445,6 +1559,7 @@ local enemyModifications = {
 		MaxHealth = 1650,
 		ManualDeathAnimation = false,
 		DestroyDelay = 3.0,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		BlockRespawnShrineUpgrade = true,
@@ -1481,14 +1596,56 @@ local enemyModifications = {
 		-- Eris Health: 16000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 18000,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 0.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.8, SpeedMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.4 } },
+			[4] = { DataOverrides = { HealthMultiplier = 2.7, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
+			-- Lernie rename (non-Dream Run only)
 			{
 				Requirements = mod.NilValue,
 				GameStateRequirements = {
 					{
 						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation", },
 					},
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+			-- Dream Run: Visage of Lernie (if incantation performed)
+			{
+				TextId = "ModsNikkelMHadesBiomes_HydraHeadImmortal_DreamRun02",
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation", },
+					},
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+			-- Dream Run: Visage of the Bone Hydra (if incantation not performed)
+			{
+				TextId = "ModsNikkelMHadesBiomes_HydraHeadImmortal_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathFalse = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation", },
+					},
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{ PathTrue = { "CurrentRun", "IsDreamRun" } },
 				},
 			},
 		},
@@ -1557,6 +1714,12 @@ local enemyModifications = {
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 1000,
 		HealthBuffer = 1000,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 0.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.8, SpeedMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.4 } },
+			[4] = { DataOverrides = { HealthMultiplier = 2.7, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		-- To unify all Hydra heads under the same "Damage Taken" entry
 		GenusName = "HydraHeadImmortal",
@@ -1587,6 +1750,7 @@ local enemyModifications = {
 	},
 	HydraTooth = {
 		StunAnimations = { Default = "HydraToothLanded" },
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		ActivateFx = "nil",
 		ActivateAnimation = "nil",
 		WeaponOptions = mod.NilValue,
@@ -1624,7 +1788,8 @@ local enemyModifications = {
 	-- #region ELYSIUM
 	-- #region ELYSIUM - Regular
 	BaseShade = {
-		ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed = true
+		ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed = true,
+		DreamBiomeData = elysiumEnemyDreamBiomeData,
 	},
 	ShadeNaked = {
 		StunAnimations = { Default = "ShadeNaked_Idle" },
@@ -1800,13 +1965,19 @@ local enemyModifications = {
 			OnDeathFireWeapons = {},
 		},
 	},
+	ShieldRangedElite = {
+		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching" },
+		DreamBiomeData = elysiumEnemyDreamBiomeData,
+	},
 	SplitShotUnit = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit_SplitShot" },
 		DeathAnimation = "EnemyWretchCasterDeath_SplitShot",
+		DreamBiomeData = elysiumEnemyDreamBiomeData,
 	},
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotOnHit" },
+		DreamBiomeData = elysiumEnemyDreamBiomeData,
 		-- IgnoreCastSlow = true,
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
@@ -1899,6 +2070,7 @@ local enemyModifications = {
 	FlurrySpawner = {
 		StunAnimations = { Default = "SoulSpawnerIdle" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DreamBiomeData = elysiumEnemyDreamBiomeData,
 		-- Minimum 0.15 to allow OnDeathWeapons to fire from this unit (e.g. ChaosDeathWeaponCurse)
 		DestroyDelay = 0.15,
 	},
@@ -1931,6 +2103,53 @@ local enemyModifications = {
 		-- Heracles Health: 34000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 26500,
+		AltHealthBarTextIds = {
+			-- Miniboss fight: use full name (unless Dream Run)
+			{
+				TextId = "Minotaur_Full",
+				Requirements = { RequiredRoom = "C_MiniBoss01" },
+				GameStateRequirements = {
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+			-- Dream Run Miniboss: Visage of full name
+			{
+				TextId = "ModsNikkelMHadesBiomes_Minotaur_Full_DreamRun01",
+				Requirements = { RequiredRoom = "C_MiniBoss01" },
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+			-- Dream Run boss fight: Visage of nickname
+			{
+				TextId = "ModsNikkelMHadesBiomes_Minotaur_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_DreamBossesDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 0.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
+			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
+		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.MinotaurVoice,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
@@ -1968,6 +2187,32 @@ local enemyModifications = {
 	Theseus = {
 		-- Base Health: 9000
 		MaxHealth = 20000,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Theseus_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_DreamBossesDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 0.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
+			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
+		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.TheseusVoice,
 		-- Doesn't seem to be used
@@ -2012,6 +2257,7 @@ local enemyModifications = {
 	SatyrRanged = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "SatyrOnHit" },
+		DreamBiomeData = styxEnemyDreamBiomeData,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		ActivateDuration = 0.4,
 		-- Their poison doesn't damage enemies
@@ -2030,6 +2276,7 @@ local enemyModifications = {
 	RatThug = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "EnemyRatThugOnHit" },
+		DreamBiomeData = styxEnemyDreamBiomeData,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		OnDeathThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOnDeathFireProjectile",
 		OnDeathFunctionArgs = {
@@ -2047,6 +2294,7 @@ local enemyModifications = {
 	Crawler = {
 		StunAnimations = { Default = "EnemyCrawlerIdle" },
 		IgnoreSpeedShrine = true,
+		DreamBiomeData = styxEnemyDreamBiomeData,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		SpellSummonDataOverrides = {
 			DeepInheritance = true,
@@ -2058,6 +2306,7 @@ local enemyModifications = {
 	HeavyRangedForked = {
 		StunAnimations = { Default = "HeavyRangedForkedCrystal4" },
 		DeathAnimation = "HeavyRangedForkedDeath",
+		DreamBiomeData = styxEnemyDreamBiomeData,
 		-- This plops a large model of the enemy on the ground which doesn't disappear
 		SpawnObstaclesOnDeath = mod.NilValue,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -2069,6 +2318,7 @@ local enemyModifications = {
 	ThiefImpulseMineLayer = {
 		StunAnimations = { Default = "EnemyStyxThiefOnHit" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DreamBiomeData = styxEnemyDreamBiomeData,
 		ActivateDuration = 0.5,
 		DefaultAIData = {
 			BlendTimeoutMin = 0.5,
@@ -2139,6 +2389,26 @@ local enemyModifications = {
 	CrawlerMiniBoss = {
 		MaxHealth = 14000,
 		RunHistoryKilledByName = "HadesCrawlerMiniBoss",
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_CrawlerMiniBoss_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation",
 		OnDeathFunctionArgs = { Message = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage", },
 		KillEnemyEvents = {
@@ -2163,10 +2433,53 @@ local enemyModifications = {
 		-- Typhon Health: 65000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 30000,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 0.25, HealingMultiplier = 0.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.35 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.38, HealingMultiplier = 0.38 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.6 } },
+			[3] = { DataOverrides = { HealthMultiplier = 0.8, HealingMultiplier = 0.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
+			[4] = { DataOverrides = { HealthMultiplier = 1.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
+		},
+		SetupEvents = {
+			{
+				FunctionName = "OverwriteSelf",
+				Args = {
+					-- Reduced DreamBiomeData multipliers to compensate for EM's increased MaxHealth (36000 vs 30000)
+					DreamBiomeData = {
+						[1] = { DataOverrides = { HealthMultiplier = 0.2, HealingMultiplier = 0.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.35 } },
+						[2] = { DataOverrides = { HealthMultiplier = 0.3, HealingMultiplier = 0.3 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.6 } },
+						[3] = { DataOverrides = { HealthMultiplier = 0.64, HealingMultiplier = 0.64 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
+						[4] = { DataOverrides = { HealthMultiplier = 1.12 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
+					},
+				},
+				GameStateRequirements = {
+					NamedRequirements = { "BossDifficultyActive" },
+				},
+			},
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 36000,
 		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Hades_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		SubtitleColor = game.Color.HadesVoice,
 		DestroyDelay = 0,
 		-- It's misaligned/not tracking correctly
@@ -2189,9 +2502,8 @@ local enemyModifications = {
 			InvisibilityFadeOutDuration = 0.85,
 			DashRequireLoS = true,
 			SpawnCountDampenTraits = { HadesChronosDebuffBoon = true, },
-			-- If we are on EM4, Deep Dissent's effect is converted into spawning normal Super Elite enemies, instead of fewer enemies, so don't apply the original effect
+			-- If VoR is active at the current biome depth, Deep Dissent's effect is converted into spawning normal Super Elite enemies, instead of fewer enemies
 			SpawnCountDampenShrineUpgrade = "BossDifficultyShrineUpgrade",
-			SpawnCountDampenMaxShrineLevel = 3,
 		},
 		-- Handled by the Cast projectile itself
 		OutgoingDamageModifiers = mod.NilValue,
@@ -2287,6 +2599,7 @@ local enemyModifications = {
 	},
 	HadesAmmo = {
 		MaxHealth = 350,
+		DreamBiomeData = styxEnemyDreamBiomeData,
 		AIOptions = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesAttackAndDie", },
 		AttackTimerOffsetY = -170,
 		UseActivatePresentation = false,
@@ -2312,6 +2625,16 @@ local enemyModifications = {
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 21000,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Charon_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		SubtitleColor = game.Color.CharonVoice,
 		RunHistoryKilledByName = "NPC_Charon_01",
 		AIStages = {

@@ -40,7 +40,7 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 
 	source.UpgradeOptions = args.ModsNikkelMHadesBiomes_ForcedRewards or {}
 	source.BlockReroll = true
-	local options = ShallowCopyTable(args.UpgradeOptions) or {}
+	local options = game.DeepCopyTable(args.UpgradeOptions) or {}
 	local eligibleOptions = {}
 	local priorityOptions = {}
 
@@ -84,8 +84,10 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 
 	if game.CurrentRun.IsDreamRun then
 		for _, item in pairs(source.UpgradeOptions) do
-			item.Rarity = game.TraitRarityData.RarityUpgradeOrder[game.CurrentRun.EnteredBiomes]
+			-- Using math.min for potential future compatibility with longer Dream Run mods
+			item.Rarity = game.TraitRarityData.RarityUpgradeOrder[math.min(game.CurrentRun.EnteredBiomes, 4)]
 		end
+		mod.ScaleNPCTraitsForDreamRun(source.UpgradeOptions)
 	end
 
 	-- Custom: Sort the source.UpgradeOptions by their order in source.Traits
@@ -130,6 +132,9 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 end
 
 function mod.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
+	-- Trait has been applied; restore any deep-copied TraitData entries from dream run scaling
+	mod.RestoreDreamRunScaledTraits()
+
 	args = args or {}
 	game.FreezePlayerUnit("ModsNikkelMHadesBiomesNPCPostChoicePresentation")
 
@@ -229,6 +234,7 @@ function mod.ModsNikkelMHadesBiomesSingingPresentation(source, ars)
 end
 
 function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
+	args = args or {}
 	-- NPC_Orpheus_Story_01 or NPC_Eurydice_01 or NPC_Orpheus_01
 	source = source or game.ActiveEnemies[554419] or game.ActiveEnemies[514436] or game.ActiveEnemies[390000]
 
@@ -905,6 +911,61 @@ function mod.BedroomIntermissionPresentation(source, args)
 	})
 
 	game.ResumeMusic()
+end
+
+-- #endregion
+
+-- #region Dream Run NPC trait scaling
+
+-- Track traits whose TraitData entries have been replaced with scaled deep copies
+local dreamRunScaledTraitOriginals = {}
+
+function mod.RestoreDreamRunScaledTraits()
+	for traitName, originalTraitData in pairs(dreamRunScaledTraitOriginals) do
+		game.TraitData[traitName] = originalTraitData
+	end
+	dreamRunScaledTraitOriginals = {}
+end
+
+function mod.ScaleNPCTraitsForDreamRun(upgradeOptions)
+	for _, option in pairs(upgradeOptions) do
+		local traitData = game.TraitData[option.ItemName]
+		if traitData ~= nil and traitData.ModsNikkelMHadesBiomesDreamRunScaling ~= nil and option.Rarity ~= nil then
+			local scaling = traitData.ModsNikkelMHadesBiomesDreamRunScaling
+			local rarityData = traitData.RarityLevels and traitData.RarityLevels[option.Rarity]
+			local multiplier = rarityData and rarityData.Multiplier or 1
+
+			dreamRunScaledTraitOriginals[option.ItemName] = traitData
+			local scaledCopy = game.DeepCopyTable(traitData)
+			game.TraitData[option.ItemName] = scaledCopy
+
+			-- Apply multiplier to the copy
+			for keyIndex, keyPath in ipairs(scaling.ScaleKeys) do
+				local target = scaledCopy or {}
+				for i = 1, #keyPath - 1 do
+					target = target[keyPath[i]]
+					if target == nil then break end
+				end
+				if target ~= nil then
+					local originalValue = target[keyPath[#keyPath]]
+					if originalValue ~= nil then
+						local isMultiplier = scaling.SourceIsMultiplier or
+								(scaling.SourceIsMultiplierKeys and scaling.SourceIsMultiplierKeys[keyIndex])
+						local newValue
+						if isMultiplier then
+							newValue = 1 + (originalValue - 1) * multiplier
+						else
+							newValue = originalValue * multiplier
+						end
+						if scaling.AsInt then
+							newValue = math.floor(newValue + 0.5)
+						end
+						target[keyPath[#keyPath]] = newValue
+					end
+				end
+			end
+		end
+	end
 end
 
 -- #endregion

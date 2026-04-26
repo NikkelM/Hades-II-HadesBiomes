@@ -14,10 +14,9 @@ function mod.MultiFuryIntro(eventSource, args)
 end
 
 function mod.SelectHarpySupportAIs(enemy)
-	local shrineLevel = game.GetNumShrineUpgrades(enemy.ShrineMetaUpgradeName)
 	enemy.SupportAINames = enemy.SupportAINames or {}
 
-	if shrineLevel > 0 then
+	if game.IsBossDifficultyShrineUpgradeActive() then
 		local supportCount = game.RandomInt(1, 2)
 		if game.GameState.TextLinesRecord.FurySistersUnion01 == nil then
 			supportCount = 2
@@ -138,6 +137,7 @@ function mod.HarpyKillPresentation(unit, args)
 		local ids = { game.ScreenAnchors.BossRageTitle, game.ScreenAnchors.BossRageBack, game.ScreenAnchors.BossRageFill }
 		Destroy({ Ids = ids })
 	end
+	AdjustColorGrading({ Name = "Off", Duration = 0.45 })
 
 	if unit.DeathFx ~= nil then
 		CreateAnimation({ Name = unit.DeathFx, DestinationId = unit.ObjectId, Angle = args.ImpactAngle })
@@ -175,7 +175,8 @@ function mod.HarpyKillPresentation(unit, args)
 		end
 	end
 	if game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
-		local assistUnit = game.ActiveEnemies[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+		local assistUnit = game.ActiveEnemies
+				[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
 		if assistUnit ~= nil then
 			game.killTaggedThreads(assistUnit.AIThreadName)
 			game.killWaitUntilThreads(assistUnit.AINotifyName)
@@ -280,8 +281,20 @@ function mod.HarpyKillPresentation(unit, args)
 		textMessage = deathPanSettings.AltMessage
 	end
 
-	if deathPanSettings.BossDifficultyMessage and game.GetNumShrineUpgrades("BossDifficultyShrineUpgrade") > 0 then
+	if deathPanSettings.BossDifficultyMessage and game.IsBossDifficultyShrineUpgradeActive() then
 		textMessage = deathPanSettings.BossDifficultyMessage
+	end
+
+	if unit.AltDeathMessageTextIds ~= nil then
+		local eligibleTextIds = {}
+		for _, altTextIdData in pairs(unit.AltDeathMessageTextIds) do
+			if altTextIdData.GameStateRequirements == nil or game.IsGameStateEligible(altTextIdData, altTextIdData.GameStateRequirements) then
+				table.insert(eligibleTextIds, altTextIdData.TextId)
+			end
+		end
+		if not game.IsEmpty(eligibleTextIds) then
+			textMessage = game.GetRandomValue(eligibleTextIds)
+		end
 	end
 
 	game.thread(game.DisplayInfoBanner, nil,
@@ -368,7 +381,6 @@ function mod.HarpyKillPresentation(unit, args)
 	SetThingProperty({ Property = "AllowAnyFire", Value = true, DestinationId = game.CurrentRun.Hero.ObjectId, DataValue = false })
 	unit.Mute = true
 
-	-- For Dream Dive compatibility in case it comes in the future
 	if args.IsBiomeBoss and game.CurrentRun.IsDreamRun and game.CurrentRun.EnteredBiomes >= game.GameData.FullRunBiomeCount then
 		-- For e.g. Hydra arena where there is lava
 		game.SetPlayerInvulnerable("DreamRunCleared")
@@ -816,4 +828,19 @@ end
 -- We need to reset this before the FireFunction, as the DumbFireAttack is called before it and would get cancelled otherwise
 function mod.ModsNikkelMHadesBiomesHarpyBuildRageStart(enemy, aiData)
 	enemy.HarpyBuildRageEarlyExit = false
+end
+
+function mod.FuryDreamRunIntro(source, args)
+	local furyTauntAnimations = {
+		Harpy = "FuryTaunt",
+		Harpy2 = "AlectoTaunt",
+		Harpy3 = "TisiphoneTaunt_2",
+	}
+
+	game.StartBossRoomMusic()
+	local tauntAnim = furyTauntAnimations[source.Name]
+	if tauntAnim then
+		SetAnimation({ Name = tauntAnim, DestinationId = source.ObjectId })
+	end
+	game.wait(0.7)
 end

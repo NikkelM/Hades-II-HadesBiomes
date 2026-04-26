@@ -112,14 +112,21 @@ function mod.RoomEntranceHades(currentRun, currentRoom)
 			Notify = notifyName
 		})
 		game.waitUntil(notifyName)
-		-- So the weapon equip animation isn't seen
-		game.wait(0.1)
-		SetUnitProperty({ Property = "Speed", Value = 50, DestinationId = currentRun.Hero.ObjectId })
-		game.wait(0.5)
+
+		if not game.CurrentRun.IsDreamRun then
+			-- So the weapon equip animation isn't seen
+			game.wait(0.1)
+			SetUnitProperty({ Property = "Speed", Value = 50, DestinationId = currentRun.Hero.ObjectId })
+			game.wait(0.5)
+		end
 	end
 	Stop({ Id = currentRun.Hero.ObjectId })
 
-	game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = true })
+	if game.CurrentRun.IsDreamRun then
+		game.RestoreMelRun(currentRun.Hero)
+	else
+		game.RestoreMelRun(currentRun.Hero, { SkipWalkStopAnimation = true })
+	end
 	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = currentRun.Hero.ObjectId })
 	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
 	game.wait(0.3)
@@ -152,6 +159,14 @@ function mod.BossIntroHades(eventSource, args)
 	if eventSource.Encounter.Name == "BossHadesPeaceful" then
 		game.CurrentRun.ActiveBiomeTimer = false
 	end
+end
+
+function mod.HadesDreamRunIntro(source, args)
+	mod.StartFinalBossRoomMusic()
+	AngleTowardTarget({ Id = source.ObjectId, DestinationId = 40000 })
+	SetAnimation({ Name = "HadesBattleIntro", DestinationId = source.ObjectId })
+	-- A little higher to line up with the camera movements
+	source.AISetupDelay = 6.5
 end
 
 function mod.StartFinalBossRoomIntroMusic()
@@ -330,6 +345,12 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 end
 
 function mod.HadesKillPresentation(unit, args)
+	-- Track EM Hades defeat for Dream Dive quest (modded boss uses same encounter name for normal/EM)
+	if game.CurrentRun.IsDreamRun and game.IsBossDifficultyShrineUpgradeActive() then
+		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMHades = true
+		mod.CheckDreamDiveQuestCompletion()
+	end
+
 	unit.InTransition = true
 	game.CurrentRun.CurrentRoom.Encounter.BossKillPresentation = true
 	local killerId = game.CurrentRun.Hero.ObjectId
@@ -403,11 +424,18 @@ function mod.HadesKillPresentation(unit, args)
 		game.wait(4.0, game.RoomThreadName)
 	end
 
-	game.ProcessTextLines(unit.BossPresentationOutroTextLineSets)
-	game.ProcessTextLines(unit.BossPresentationOutroRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		game.ProcessTextLines(unit.BossPresentationOutroTextLineSets)
+		game.ProcessTextLines(unit.BossPresentationOutroRepeatableTextLineSets)
 
-	if not mod.PlayRandomRemainingTextLines(unit, unit.BossPresentationOutroTextLineSets) then
-		mod.PlayRandomRemainingTextLines(unit, unit.BossPresentationOutroRepeatableTextLineSets)
+		if not mod.PlayRandomRemainingTextLines(unit, unit.BossPresentationOutroTextLineSets) then
+			mod.PlayRandomRemainingTextLines(unit, unit.BossPresentationOutroRepeatableTextLineSets)
+		end
+	end
+
+	-- Track EM Hades defeat for Dream Dive quest
+	if game.CurrentRun.IsDreamRun and game.IsBossDifficultyShrineUpgradeActive() then
+		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMHades = true
 	end
 
 	game.SetMusicSection(10)
@@ -416,7 +444,10 @@ function mod.HadesKillPresentation(unit, args)
 	mod.HarpyKillPresentation(unit, args)
 	game.wait(1.0, game.RoomThreadName)
 	RemoveInputBlock({ Name = "HadesKillPresentation" })
-	mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
+	-- In Dream Dives, Hades might not be the final boss
+	if not game.CurrentRun.IsDreamRun then
+		mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
+	end
 	game.CurrentRun.ActiveBiomeTimer = false
 	game.CurrentRun.CurrentRoom.Encounter.BossKillPresentation = false
 	game.thread(game.CheckQuestStatus, { Silent = true })
@@ -521,8 +552,8 @@ end
 
 function mod.SetupHadesSpawnOptions(enemy)
 	local enemySetPrefix = "EnemiesHades"
-	-- If the BossDifficultShrine is at EM4, use the harder enemies, except if the player has Deep Dissent
-	if game.GetNumShrineUpgrades(enemy.ShrineMetaUpgradeName) >= 4 and not game.HeroHasTrait("HadesChronosDebuffBoon") then
+	-- If the BossDifficultShrine is active for this biome depth, use the harder enemies, except if the player has Deep Dissent
+	if game.IsBossDifficultyShrineUpgradeActive() and not game.HeroHasTrait("HadesChronosDebuffBoon") then
 		enemySetPrefix = "EnemiesHadesEM"
 	end
 	enemy.SpawnOptions = {}
@@ -718,6 +749,7 @@ function mod.HadesSpawnsPresentation(args)
 end
 
 function mod.HadesConsumeHeal(enemy, weaponAIData, currentRun)
+	local healPerTick = weaponAIData.HealPerTick * (enemy.HealingMultiplier or 1)
 	local urnsConsumed = 0
 	while urnsConsumed < weaponAIData.MaxConsumptions and not IsInvulnerable({ Id = enemy.ObjectId }) do
 		local urnId = game.GetRandomValue(GetIdsByType({ Name = "ModsNikkelMHadesBiomesHadesTombstone" }))
@@ -730,7 +762,7 @@ function mod.HadesConsumeHeal(enemy, weaponAIData, currentRun)
 		for i = 1, weaponAIData.HealTicksPerConsume do
 			game.wait(game.CalcEnemyWait(enemy, weaponAIData.HealTickInterval), enemy.AIThreadName)
 			if game.ActiveEnemies[urnId] ~= nil and not IsInvulnerable({ Id = enemy.ObjectId }) then
-				game.Heal(enemy, { HealAmount = weaponAIData.HealPerTick, triggeredById = enemy.ObjectId })
+				game.Heal(enemy, { HealAmount = healPerTick, triggeredById = enemy.ObjectId })
 				game.thread(game.UpdateHealthBar, enemy, { Force = true })
 			else
 				StopAnimation({ DestinationId = urnId, Name = weaponAIData.ConsumeFx })

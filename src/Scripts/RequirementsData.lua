@@ -1,4 +1,5 @@
 -- #region Modifications
+-- #region Death Taunt, Devotion quips
 -- Block the Death Taunt when dying in a modded run
 local blockChronosNightmareInModdedRunsRequirement = {
 	PathFalse = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" }
@@ -10,10 +11,129 @@ game.NamedRequirementsData.IsDevotionEncounter[1].IsAny = game.CombineTables(
 	game.NamedRequirementsData.IsDevotionEncounter[1].IsAny, {
 		"DevotionTestTartarus", "DevotionTestAsphodel", "DevotionTestElysium"
 	})
+-- #endregion
 
+-- #region Chaos Trials/Bounties
 -- Add the new randomized Chaos Trials/Bounties to the check for the current bounty type
 game.NamedRequirementsData.StandardPackageBountyActive[2].IsNone = game.ConcatTableValuesIPairs(
 	game.NamedRequirementsData.StandardPackageBountyActive[2].IsNone, mod.RandomizedChaosTrialBountyNames)
+-- #endregion
+
+-- #region DreamRuns/Dream Dives
+-- Correctly guessing the next biome, known and reverse paths
+game.NamedRequirementsData.DreamRunCorrectBiomeGuess.OrRequirements[4][2].IsAny = { "I", "Tartarus" }
+
+game.NamedRequirementsData.DreamRunIncorrectBiomeGuess.OrRequirements[4][2].IsNone = { "I", "Tartarus" }
+
+local moddedDreamRunFamiliarPaths = {
+	{
+		{
+			Path = { "CurrentRun", "PrevDreamBiome" },
+			IsAny = { "Tartarus" },
+		},
+		{
+			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+			IsAny = { "Asphodel" },
+		},
+	},
+	{
+		{
+			Path = { "CurrentRun", "PrevDreamBiome" },
+			IsAny = { "Asphodel" },
+		},
+		{
+			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+			IsAny = { "Elysium" },
+		},
+	},
+	{
+		{
+			Path = { "CurrentRun", "PrevDreamBiome" },
+			IsAny = { "Elysium" },
+		},
+		{
+			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+			IsAny = { "Styx" },
+		},
+	},
+}
+for _, path in ipairs(moddedDreamRunFamiliarPaths) do
+	table.insert(game.NamedRequirementsData.DreamRunFamiliarPath.OrRequirements, path)
+end
+
+local moddedDreamRunUnfamiliarPaths = {
+	{
+		{
+			Path = { "CurrentRun", "PrevDreamBiome" },
+			IsAny = { "Tartarus" },
+		},
+		{
+			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+			IsNone = { "Asphodel" },
+		},
+	},
+	{
+		{
+			Path = { "CurrentRun", "PrevDreamBiome" },
+			IsAny = { "Asphodel" },
+		},
+		{
+			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+			IsNone = { "Elysium" },
+		},
+	},
+	{
+		{
+			Path = { "CurrentRun", "PrevDreamBiome" },
+			IsAny = { "Elysium" },
+		},
+		{
+			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+			IsNone = { "Styx" },
+		},
+	},
+}
+for _, path in ipairs(moddedDreamRunUnfamiliarPaths) do
+	table.insert(game.NamedRequirementsData.DreamRunUnfamiliarPath.OrRequirements, path)
+end
+
+local moddedDreamRunReversePaths = {
+	{
+		{
+			Path = { "CurrentRun", "PrevDreamBiome" },
+			IsAny = { "Styx" },
+		},
+		{
+			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+			IsAny = { "Elysium" },
+		},
+	},
+	{
+		{
+			Path = { "CurrentRun", "PrevDreamBiome" },
+			IsAny = { "Elysium" },
+		},
+		{
+			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+			IsAny = { "Asphodel" },
+		},
+	},
+	{
+		{
+			Path = { "CurrentRun", "PrevDreamBiome" },
+			IsAny = { "Asphodel" },
+		},
+		{
+			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+			IsAny = { "Tartarus" },
+		},
+	},
+}
+for _, path in ipairs(moddedDreamRunReversePaths) do
+	table.insert(game.NamedRequirementsData.DreamRunReversePath.OrRequirements, path)
+end
+-- #endregion
+
 -- #endregion
 
 -- #region New requirements

@@ -45,6 +45,20 @@ local newIcons = {
 		TexturePath = "GUI\\Icons\\Attributes\\Smoked",
 	},
 	-- #endregion
+	-- #region Dream Run biome icons
+	ModsNikkelMHadesBiomes_BiomeTartarusIcon = {
+		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeTartarus",
+	},
+	ModsNikkelMHadesBiomes_BiomeAsphodelIcon = {
+		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeAsphodel",
+	},
+	ModsNikkelMHadesBiomes_BiomeElysiumIcon = {
+		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeElysium",
+	},
+	ModsNikkelMHadesBiomes_BiomeStyxIcon = {
+		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeStyx",
+	},
+	-- #endregion
 }
 for iconName, iconData in pairs(newIcons) do
 	game.IconData[iconName] = game.IconData[iconName] or iconData

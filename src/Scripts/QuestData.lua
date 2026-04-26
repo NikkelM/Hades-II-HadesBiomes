@@ -49,6 +49,8 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestShutdownThanatos",
 	"ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
 	"ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
+	"ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses",
+	"ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus",
 }
 
 if flippedArcanaActive then
@@ -1363,6 +1365,68 @@ local newQuestData = {
 				PathTrue = { "GameState", "TextLinesRecord", "OrpheusMusicProgress04" },
 			},
 		},
+	},
+	-- Defeat both Charon and Zagreus in a single Dream Dive
+	ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus = {
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 2,
+		UnlockGameStateRequirements = {
+			-- Must have beaten Charon at least once
+			{
+				PathTrue = { "GameState", "EncountersCompletedCache", "BossCharon" },
+			},
+			-- Must have beaten Zagreus at least once
+			{
+				PathTrue = { "GameState", "EnemyKills", "Zagreus" },
+			},
+			-- Must have completed at least one Dream Dive
+			{
+				Path = { "GameState", "ClearedDreamRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus" },
+			},
+		},
+		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus_Condition",
+		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus_Cleared",
+	},
+	-- Defeat EM Chronos, Typhon, and Hades in a single Dream Dive
+	ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses = {
+		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 5,
+		UnlockGameStateRequirements = {
+			-- Must have beaten EM Chronos at least once
+			{
+				PathTrue = { "GameState", "EncountersCompletedCache", "BossChronos02" },
+			},
+			-- Must have beaten EM Typhon at least once
+			{
+				PathTrue = { "GameState", "EncountersCompletedCache", "BossTyphonHead02" },
+			},
+			-- Must have beaten EM Hades at least once
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "LordHadesExtremeMeasuresDefeat01" },
+			},
+			-- Must have completed at least three Dream Dives
+			{
+				Path = { "GameState", "ClearedDreamRunsCache" },
+				Comparison = ">=",
+				Value = 3,
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades" },
+			},
+		},
+		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Condition",
+		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Cleared",
 	},
 	-- #endregion
 }

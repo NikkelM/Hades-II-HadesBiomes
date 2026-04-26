@@ -46,7 +46,8 @@ It is highly recommended that you complete the main story of Hades before playin
 - Challenge yourself with a set of new **Chaos Trials**, including randomized "Chaos Within" trials in the spirit of (Great) Chaos Above and Below.
 - Advance through **50** new cosmetic-only ranks at the Spirit Mixer, from the lowly "_Alpha Warden_" to the feared "_Unseen One_".
 - Earn a new set of **three statues** from Commander Schelemeus by escaping the Nightmare Realm at progressively higher fear.
-- Read all about the new biomes, enemies, bosses and friends in a new chapter in your Codex.
+- **Dream** of the four new regions in a certain end-game mode.
+- Read all about the new biomes, enemies, bosses and friends in a **new chapter** in your Codex.
 
 ### Integrations with other Mods
 

@@ -329,9 +329,74 @@ local roomReplacements = {
 			},
 		},
 
+		ThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+		PostCombatReloadThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+
 		CombatOverMusicEvents = mod.CombatOverMusicEvents.Generic,
 	},
 	X_Intro = {
+		ThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText",
+				GameStateRequirements = {
+					NamedRequirementsFalse = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = {
+					Text = "Location_Asphodel",
+					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
+					AnimationName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn",
+					AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut",
+				},
+			},
+			{
+				FunctionName = "DisplayInfoBanner",
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock",
+				Args = {
+					Biome = "Asphodel"
+				},
+			},
+			{
+				FunctionName = "CheckObjectiveSetSource",
+				Args = { ObjectiveSetName = "BountyAdvancedTooltip" },
+			},
+		},
+
 		EnterVoiceLines = {
 			-- Chaos Trial/Bounty
 			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
@@ -403,6 +468,9 @@ local roomModifications = {
 		MusicActiveStems = { "Bass" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeAsphodel" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeAsphodel" },
@@ -429,10 +497,25 @@ local roomModifications = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
 		},
-		ThreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut" }, },
-			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Asphodel" } },
+
+		-- For Dream Dives
+		NoReward = mod.NilValue,
+		ForcedRewardStore = "RunProgress",
+		IneligibleRewards = game.RewardSets.OpeningRoomBans,
+		-- The terrain tile itself
+		SpawnRewardOnId = 554486,
+		DisableRewardMagnetisim = true,
+		RewardGameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				Path = { "CurrentRun", "EnteredBiomes" },
+				Comparison = "==",
+				Value = 0,
+			},
 		},
+		ModsNikkelMHadesBiomes_DreamRunHeroEndPoint = 50060,
 
 		HarvestPointChances = { 0.02, },
 		ShovelPointChance = 0.02,
@@ -498,6 +581,8 @@ local roomModifications = {
 		IgnoreStemMixer = true,
 		MusicMutedStems = { "Drums", "Bass", "Guitar", },
 
+		ZagContractRewardDestinationId = 776332,
+
 		ShovelPointChance = 0.35,
 		PickaxePointChance = 0.35,
 		ExorcismPointChance = 0.25,
@@ -529,6 +614,9 @@ local roomModifications = {
 				Value = 2,
 			},
 		},
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroHydra", },
 		},
@@ -544,6 +632,9 @@ local roomModifications = {
 		BackupCauseOfDeath = "HydraHeadImmortal",
 		CombatResolvedVoiceLines = {},
 
+		CanSpawnDreamReward = true,
+		SkipTimedDropResourceInDream = true,
+
 		HasPickaxePoint = false,
 	},
 	X_Boss02 = {
@@ -554,6 +645,9 @@ local roomModifications = {
 				Value = 2,
 			},
 		},
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		BackupCauseOfDeath = "HydraHeadImmortal",
 		CombatResolvedVoiceLines = {},
 

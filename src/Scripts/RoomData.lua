@@ -30,6 +30,9 @@ local challengeRoomModifications = {
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_DreamBanner",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
 
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
 
@@ -96,6 +99,9 @@ local charonRoomModifications = {
 		LoadVanillaAudioBanks = { "BiomeG", },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_DreamBanner",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
 
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerErebusIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerErebusOut",
