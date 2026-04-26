@@ -93,6 +93,7 @@ Other fixes and improvements:
 - Fixed: The Wretched Sneak and Wringer enemies summoned by Hades during his fight show up with incorrect names in the victory screen's damage taken table.
 - Fixed: Chaos Gates do not have specific spawn requirements adapted to Zagreus' Journey runs.
 - Fixed: "Enshrouded" (hidden room reward previews) Chaos Curse cannot appear in Zagreus' Journey runs.
+- Fixed: Starting a Chaos Trial in one of the new biomes does not prompt you to check your loadout.
 - Fixed: Relationship entries for story NPCs that unlock a keepsake do not show the related icon in the Codex.
 - Fixed: Relationship entries for story NPCs that unlock a minor prophecy do not show the related icon in the Codex.
 - Fixed: Progress for the "Hold The Onions" minor prophecy resets when taking damage during an Erebus encounter, even if you previously cleared three encounters hitless. 

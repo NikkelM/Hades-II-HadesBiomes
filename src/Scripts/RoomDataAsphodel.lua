@@ -391,6 +391,10 @@ local roomReplacements = {
 					Biome = "Asphodel"
 				},
 			},
+			{
+				FunctionName = "CheckObjectiveSetSource",
+				Args = { ObjectiveSetName = "BountyAdvancedTooltip" },
+			},
 		},
 
 		EnterVoiceLines = {

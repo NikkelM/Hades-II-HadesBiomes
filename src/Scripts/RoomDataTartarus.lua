@@ -385,6 +385,10 @@ local roomReplacements = {
 					Biome = "Tartarus"
 				},
 			},
+			{
+				FunctionName = "CheckObjectiveSetSource",
+				Args = { ObjectiveSetName = "BountyAdvancedTooltip" },
+			},
 			-- PatrolPaths
 		},
 

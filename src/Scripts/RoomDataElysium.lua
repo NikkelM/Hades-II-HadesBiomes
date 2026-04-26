@@ -404,6 +404,10 @@ local roomReplacements = {
 					Biome = "Elysium"
 				},
 			},
+			{
+				FunctionName = "CheckObjectiveSetSource",
+				Args = { ObjectiveSetName = "BountyAdvancedTooltip" },
+			},
 		},
 
 		EnterVoiceLines = {
