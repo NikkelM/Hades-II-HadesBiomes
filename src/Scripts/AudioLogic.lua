@@ -76,7 +76,12 @@ function mod.EndSecretMusicAndResumeMusic()
 end
 
 function mod.PlaySoundWithSource(source, args)
-	PlaySound(args)
+	args = args or {}
+	args.Id = source.ObjectId
+	local soundId = PlaySound(args)
+	if args.Volume ~= nil then
+		SetVolume({ Id = soundId, Value = args.Volume })
+	end
 end
 
 function mod.SecretMusicPlayerEvent(source, args)

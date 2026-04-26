@@ -426,12 +426,12 @@ local roomReplacements = {
 		DistanceTriggers = {
 			{
 				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",
-				WithinDistance = 1500,
+				WithinDistance = 1650,
 				GameStateRequirements = {
 					RequiredRoomThisRun = "D_Reprieve01",
 				},
 				FunctionName = _PLUGIN.guid .. "." .. "PlaySoundWithSource",
-				Args = { Name = "/VO/CerberusBarks" },
+				Args = { Name = "/VO/CerberusBarks", Volume = 2 },
 			},
 			{
 				TriggerObjectType = "ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01",

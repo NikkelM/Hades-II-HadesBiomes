@@ -67,6 +67,7 @@ Other fixes and improvements:
 - Fixed: Saluting the Good Shade in Elysium will now more consistently play a voiceline.
 - Fixed: Melinoë's voicelines that play when (re-)entering the Styx Hub room play every time instead of only sometimes.
 - Fixed: Some shop items in the Styx shop can clip behind the base they sit on.
+- Fixed: The Cerberus bark that plays when returning to the Styx hub room after visiting the fountain room does not originate from Cerberus.
 - Fixed: The Snakestone's lasers do not disappear when it is frozen or morphed by "Twilight Curse".
 - Fixed: The Dire Satyr Cultist cannot turn fast enough to face the player before firing its ranged poison dart attack.
 - Fixed: The Gigantic Vermin's poison shake attack does not show the flying poison projectiles before they land and produce the poison puddles.
