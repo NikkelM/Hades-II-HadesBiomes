@@ -91,7 +91,7 @@ modutil.mod.Path.Wrap("GodLootPickupPresentation", function(base, loot, args)
 
 	-- We want to play a custom pickup sound and visual effects if the next text line on this loot is modded
 	-- Getting the text line to play comes from LootPickupPresentation()
-	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and not loot.BlockTextLines then
 		if loot.RecheckConversationOnLootPickup and loot.NextInteractLines ~= nil and not game.IsTextLineEligible(game.CurrentRun, loot, loot.NextInteractLines) then
 			loot.NextInteractLines = nil
 		end
