@@ -137,6 +137,7 @@ function mod.HarpyKillPresentation(unit, args)
 		local ids = { game.ScreenAnchors.BossRageTitle, game.ScreenAnchors.BossRageBack, game.ScreenAnchors.BossRageFill }
 		Destroy({ Ids = ids })
 	end
+	AdjustColorGrading({ Name = "Off", Duration = 0.45 })
 
 	if unit.DeathFx ~= nil then
 		CreateAnimation({ Name = unit.DeathFx, DestinationId = unit.ObjectId, Angle = args.ImpactAngle })

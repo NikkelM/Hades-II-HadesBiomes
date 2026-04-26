@@ -48,6 +48,7 @@ Other fixes and improvements:
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon reduce the amount of enemies spawned in subsequent waves in the same encounter.
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon can be transformed by "Twilight Curse".
 - Fixed: Megaera spins in place multiple times during an attack where she summons enemies to her aid, instead of spinning only once.
+- Fixed: If Alecto is defeated very quickly after her final stage transition, the "rage" colour tint does not disappear until changing rooms.
 - Fixed: After defeating Megaera, Alecto or the Hydra, multiple voicelines may play over each other in some cases.
 - Fixed: Skull-Crusher enemies can appear in encounters with Thanatos in Asphodel, even though Thanatos will rarely succeed in killing them.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
