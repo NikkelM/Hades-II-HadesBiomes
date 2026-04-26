@@ -648,6 +648,21 @@ local npcModifications = {
 					{
 						PathTrue = { "CurrentRun", "IsDreamRun" },
 					},
+					{
+						PathTrue = { "CurrentRun", "RoomsEntered", "D_Reprieve01" },
+					},
+				},
+			},
+			{
+				FunctionName = "SilenceForDreamRun",
+				Args = { BlockInteract = true },
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+					{
+						PathFalse = { "CurrentRun", "RoomsEntered", "D_Reprieve01" },
+					},
 				},
 			},
 		},
