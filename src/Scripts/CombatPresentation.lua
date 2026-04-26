@@ -53,10 +53,24 @@ modutil.mod.Path.Wrap("UnitInvulnerableHitPresentation", function(base, blocker,
 	return base(blocker, args)
 end)
 
+-- Check if Dream Dive quest conditions are met after each boss kill, so the quest immediately completes and shows as such
+function mod.CheckDreamDiveQuestCompletion()
+	if not game.CurrentRun.IsDreamRun then
+		return
+	end
+	if game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharon and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedZagreus then
+		game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = true
+	end
+	if game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronos and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMTyphon and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMHades then
+		game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades = true
+	end
+end
+
 -- Track Zagreus defeat for Dream Dive quest
 modutil.mod.Path.Wrap("ZagreusKillPresentation", function(base, unit, args)
 	if game.CurrentRun.IsDreamRun then
 		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedZagreus = true
+		mod.CheckDreamDiveQuestCompletion()
 	end
 
 	return base(unit, args)
@@ -66,6 +80,7 @@ end)
 modutil.mod.Path.Wrap("ChronosKillPresentation", function(base, unit, args)
 	if game.CurrentRun.IsDreamRun and game.CurrentRun.CurrentRoom.Encounter.Name == "BossChronos02" then
 		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronos = true
+		mod.CheckDreamDiveQuestCompletion()
 	end
 
 	return base(unit, args)
@@ -75,6 +90,7 @@ end)
 modutil.mod.Path.Wrap("TyphonHeadKillPresentation", function(base, unit, args)
 	if game.CurrentRun.IsDreamRun and game.CurrentRun.CurrentRoom.Encounter.Name == "BossTyphonHead02" then
 		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMTyphon = true
+		mod.CheckDreamDiveQuestCompletion()
 	end
 
 	return base(unit, args)

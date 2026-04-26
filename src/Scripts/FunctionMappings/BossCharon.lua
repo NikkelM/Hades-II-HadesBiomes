@@ -197,6 +197,7 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 
 	if game.CurrentRun.IsDreamRun then
 		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharon = true
+		mod.CheckDreamDiveQuestCompletion()
 	end
 
 	-- Similar lines being played through CharonStoreDiscount pickup

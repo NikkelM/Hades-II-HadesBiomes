@@ -345,6 +345,12 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 end
 
 function mod.HadesKillPresentation(unit, args)
+	-- Track EM Hades defeat for Dream Dive quest (modded boss uses same encounter name for normal/EM)
+	if game.CurrentRun.IsDreamRun and game.IsBossDifficultyShrineUpgradeActive() then
+		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMHades = true
+		mod.CheckDreamDiveQuestCompletion()
+	end
+
 	unit.InTransition = true
 	game.CurrentRun.CurrentRoom.Encounter.BossKillPresentation = true
 	local killerId = game.CurrentRun.Hero.ObjectId
