@@ -54,6 +54,7 @@ Other fixes and improvements:
 - Fixed: If Alecto is defeated very quickly after her final stage transition, the "rage" colour tint does not disappear until changing rooms.
 - Fixed: After defeating Megaera, Alecto or the Hydra, multiple voicelines may play over each other in some cases.
 - Fixed: Skull-Crusher enemies can appear in encounters with Thanatos in Asphodel, even though Thanatos will rarely succeed in killing them.
+- Fixed: One of the biome music tracks for Asphodel is missing as it was removed from the base game files with Patch 2.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
 - Fixed: Gorgons morphed by "Twilight Curse" turn into sheep that are smaller than they should be.

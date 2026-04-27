@@ -9,7 +9,8 @@ game.MusicTrackData.Tartarus = {
 game.MusicTrackData.Asphodel = {
 	-- "/Music/MusicAsphodel1_MC"
 	{ Name = "{e798505f-3f49-4c12-9f8d-779ee6edec25}", },
-	{ Name = "/Music/MusicAsphodel2_MC", },
+	-- "/Music/MusicAsphodel2_MC"
+	{ Name = "{8907d7b3-9698-4cad-9bfa-9f9d42f28919}", },
 	-- "/Music/MusicAsphodel3_MC"
 	{ Name = "{9095ed41-3258-4161-ae60-23f686dfa394}", },
 }
