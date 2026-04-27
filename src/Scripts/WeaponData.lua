@@ -2069,7 +2069,7 @@ local weaponModifications = {
 				Cooldowns = {
 					{ Name = "CharonPreAttackSpeech", Time = 5 },
 				},
-				{ Cue = "/VO/Megaera_10005", Text = "{#DialogueItalicFormat}Haaahhhhhhhhh{#Prev}....", SkipAnim = true },
+				{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0005", Text = "{#DialogueItalicFormat}Haaahhhhhhhhh{#Prev}....", SkipAnim = true },
 			},
 		},
 	},
@@ -2087,7 +2087,7 @@ local weaponModifications = {
 				Cooldowns = {
 					{ Name = "CharonPreAttackSpeech", Time = 5 },
 				},
-				{ Cue = "/VO/Megaera_10026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
+				{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
 			},
 			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
 		},
@@ -2105,7 +2105,7 @@ local weaponModifications = {
 				Cooldowns = {
 					{ Name = "CharonPreAttackSpeech", Time = 5 },
 				},
-				{ Cue = "/VO/Megaera_10026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
+				{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
 			},
 			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
 		},
@@ -2118,7 +2118,7 @@ local weaponModifications = {
 				Cooldowns = {
 					{ Name = "CharonPreAttackSpeech", Time = 5 },
 				},
-				{ Cue = "/VO/Megaera_10026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
+				{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
 			},
 			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
 		},
@@ -2131,7 +2131,7 @@ local weaponModifications = {
 				Cooldowns = {
 					{ Name = "CharonPreAttackSpeech", Time = 5 },
 				},
-				{ Cue = "/VO/Megaera_10026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
+				{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
 			},
 			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
 		},

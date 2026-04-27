@@ -49,7 +49,7 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications, replaceme
 					for setName, setData in pairs(inspectPointData.InteractTextLineSets) do
 						for _, line in ipairs(setData) do
 							if line.Cue and line.Cue:find("^/VO/Storyteller_") then
-								line.Cue = line.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+								line.Cue = line.Cue:gsub("^/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
 							end
 						end
 					end

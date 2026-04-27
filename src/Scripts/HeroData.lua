@@ -510,12 +510,12 @@ mod.ModsNikkelMHadesBiomes_GameOutroData = {
 		},
 	},
 }
--- Convert Storyteller_ to Megaera_0
+-- Convert Storyteller_ to Modsnikkelmhadesbiomesstoryteller_
 for _, outroData in pairs(mod.ModsNikkelMHadesBiomes_GameOutroData) do
 	outroData.Name = outroData.Header
 	for _, line in ipairs(outroData.VoiceLines) do
 		if line.Cue:find("/VO/Storyteller_") then
-			line.Cue = line.Cue:gsub("/VO/Storyteller_", "/VO/Megaera_0")
+			line.Cue = line.Cue:gsub("/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
 		end
 	end
 end

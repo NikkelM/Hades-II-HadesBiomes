@@ -152,8 +152,8 @@ end)
 
 modutil.mod.Path.Wrap("SetupInspectPoint", function(base, inspectPointData)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentHubRoom == nil then
-		-- Storyteller voicelines are added to the Megaera voicebank, as the game can't load unknown voicebanks and Storyteller is already taken
-		game.LoadVoiceBanks({ Name = "Megaera" })
+		-- Storyteller voicelines are in the Modsnikkelmhadesbiomesstoryteller voicebank
+		game.LoadVoiceBanks({ Name = "Modsnikkelmhadesbiomesstoryteller" })
 	end
 
 	return base(inspectPointData)

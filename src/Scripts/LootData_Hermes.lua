@@ -441,6 +441,6 @@ local newPortedInteractTextLines = {
 }
 mod.AddNarrativeDataEntries(
 	newPortedInteractTextLines, "HermesUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Hermes = { "Dusa" } }, { Hermes_ = "Dusa_0" },
+	{ Hermes = { "Modsnikkelmhadesbiomeshermes" } }, { Hermes_ = "Modsnikkelmhadesbiomeshermes_" },
 	{ Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01" }
 )

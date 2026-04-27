@@ -514,7 +514,7 @@ local roomModifications = {
 
 	-- SHOPS
 	Y_Shop01 = {
-		LoadModdedVoiceBanks = { "Megaera" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon" },
 		StoreDataName = "WorldShop",
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		FamiliarsPreferSpawnPointMovement = true,
@@ -746,7 +746,7 @@ local roomModifications = {
 	},
 	Y_PostBoss01 = {
 		-- For Intercom
-		LoadModdedVoiceBanks = { "HadesField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesintercom" },
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",

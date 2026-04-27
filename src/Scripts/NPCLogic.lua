@@ -758,17 +758,17 @@ function mod.BedroomIntermissionPresentation(source, args)
 		PreLineWait = 0.55,
 		ObjectType = "NPC_FurySister_01",
 		-- Let's see, now...
-		{ Cue = "/VO/Megaera_30232" },
+		{ Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0232" },
 		-- What are we going to do.
-		{ Cue = "/VO/Megaera_30233" },
+		{ Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0233" },
 		-- What am I going to do with you.
-		{ Cue = "/VO/Megaera_30234" },
+		{ Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0234" },
 		-- Get over here, right now.
-		{ Cue = "/VO/Megaera_30235" },
+		{ Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0235" },
 		-- Oh I have an idea.
-		{ Cue = "/VO/Megaera_30236" },
+		{ Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0236" },
 		-- Ah, I know just the thing.
-		{ Cue = "/VO/Megaera_30237" },
+		{ Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0237" },
 	}
 
 	local megSound1 = nil
@@ -780,10 +780,10 @@ function mod.BedroomIntermissionPresentation(source, args)
 	local melSound3 = game.GetRandomMelBecomingCloserSound(source, { melSound1 = true })
 	if args.UseRandomSounds then
 		local megLaughSounds = {
-			"/VO/Megaera_30228",
-			"/VO/Megaera_30229",
-			"/VO/Megaera_30230",
-			"/VO/Megaera_30231",
+			"/VO/Modsnikkelmhadesbiomesmegaerahome_0228",
+			"/VO/Modsnikkelmhadesbiomesmegaerahome_0229",
+			"/VO/Modsnikkelmhadesbiomesmegaerahome_0230",
+			"/VO/Modsnikkelmhadesbiomesmegaerahome_0231",
 		}
 		megSound1 = game.RemoveRandomValue(megLaughSounds)
 		megSound2 = game.RemoveRandomValue(megLaughSounds)
@@ -830,7 +830,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
-		PlaySound({ Name = "/VO/Megaera_30228" })
+		PlaySound({ Name = "/VO/Modsnikkelmhadesbiomesmegaerahome_0228" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
@@ -859,7 +859,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
-		PlaySound({ Name = "/VO/Megaera_30231" })
+		PlaySound({ Name = "/VO/Modsnikkelmhadesbiomesmegaerahome_0231" })
 		game.wait(1.5)
 		PlaySound({ Name = melSound3 })
 		game.wait(1.5)
@@ -870,7 +870,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
-		PlaySound({ Name = megSound1 or "/VO/Megaera_30228" })
+		PlaySound({ Name = megSound1 or "/VO/Modsnikkelmhadesbiomesmegaerahome_0228" })
 		game.wait(0.5)
 		PlaySound({ Name = "/SFX/Enemy Sounds/Megaera/MegaeraWhipFlurryAttack" })
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
@@ -885,7 +885,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
-		PlaySound({ Name = megSound2 or "/VO/Megaera_30227" })
+		PlaySound({ Name = megSound2 or "/VO/Modsnikkelmhadesbiomesmegaerahome_0227" })
 		game.wait(0.8)
 		PlaySound({ Name = melSound1 })
 		game.wait(1.5)

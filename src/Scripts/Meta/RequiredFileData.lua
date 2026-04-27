@@ -10,18 +10,23 @@ mod.AudioFileMappings = {
 
 -- Voiceover .txt and .fsb file names
 -- The file name must be the same as the event names within the file
--- Some speaker names do not work (e.g. MegaeraHome)!
 mod.VoiceoverFileNames = {
 	Alecto = "Alecto",
-	Dusa = "Dusa", -- Contains voicelines from H1 Gods, used in LootData text lines
 	Eurydice = "Eurydice",
 	HadesField = "HadesField",
-	Megaera = "Megaera",
 	MegaeraField = "MegaeraField",
 	Minotaur = "Minotaur",
+	Modsnikkelmhadesbiomeschaos = "Modsnikkelmhadesbiomeschaos",
+	Modsnikkelmhadesbiomescharon = "Modsnikkelmhadesbiomescharon",
+	Modsnikkelmhadesbiomeshermes = "Modsnikkelmhadesbiomeshermes",
+	Modsnikkelmhadesbiomesintercom = "Modsnikkelmhadesbiomesintercom",
+	Modsnikkelmhadesbiomesmegaerahome = "Modsnikkelmhadesbiomesmegaerahome",
+	Modsnikkelmhadesbiomespersephone = "Modsnikkelmhadesbiomespersephone",
+	Modsnikkelmhadesbiomesskelly = "Modsnikkelmhadesbiomesskelly",
+	Modsnikkelmhadesbiomesstoryteller = "Modsnikkelmhadesbiomesstoryteller",
+	Modsnikkelmhadesbiomeszagreushome = "Modsnikkelmhadesbiomeszagreushome",
 	Orpheus = "Orpheus",
 	Patroclus = "Patroclus",
-	-- Persephone = "Persephone", -- Persephone already exists and was moved into Megaera_2xxxx
 	Sisyphus = "Sisyphus",
 	Thanatos = "Thanatos",
 	ThanatosField = "ThanatosField",
@@ -31,29 +36,29 @@ mod.VoiceoverFileNames = {
 }
 
 mod.SubtitleCsvFileNameMappings = {
-	-- Achilles = "Patroclus_0",
+	-- Achilles = "Modsnikkelmhadesbiomesachilles_",
 	Alecto = "Alecto_",
 	-- Dusa = "Dusa_",
 	Eurydice = "Eurydice_",
-	-- Hades = "HadesField_2",
+	-- Hades = "Modsnikkelmhadesbiomeshades_",
 	HadesField = "HadesField_",
-	-- Hypnos = "Sisyphus_1",
-	Intercom = "HadesField_1",
+	-- Hypnos = "Modsnikkelmhadesbiomeshypnos_",
+	Intercom = "Modsnikkelmhadesbiomesintercom_",
 	MegaeraField = "MegaeraField_",
-	MegaeraHome = "Megaera_3",
+	MegaeraHome = "Modsnikkelmhadesbiomesmegaerahome_",
 	Minotaur = "Minotaur_",
-	-- Nyx = "Megaera_4",
+	-- Nyx = "Modsnikkelmhadesbiomesnyx_"
 	Orpheus = "Orpheus_",
 	Patroclus = "Patroclus_",
-	Persephone = "Megaera_2",
+	Persephone = "Modsnikkelmhadesbiomespersephone_",
 	Sisyphus = "Sisyphus_",
-	Storyteller = "Megaera_0",
+	Storyteller = "Modsnikkelmhadesbiomesstoryteller_",
 	Thanatos = "Thanatos_",
 	ThanatosField = "ThanatosField_",
 	Theseus = "Theseus_",
 	Tisiphone = "Tisiphone_",
 	ZagreusField = "ZagreusField_",
-	ZagreusHome = "ZagreusField_0",
+	ZagreusHome = "Modsnikkelmhadesbiomeszagreushome_",
 }
 
 mod.SubtitleCsvFolderNames = {

@@ -147,47 +147,47 @@ local requiredGlobalVoiceLineModifications = {
 	-- These voicelines are not currently used
 	-- HadesDeathTauntVoiceLines = {
 	-- 	Find = "Hades_",
-	-- 	Replace = "HadesField_0"
+	-- 	Replace = "Modsnikkelmhadesbiomeshades_"
 	-- },
 	HadesPostBossVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	MegaeraGreetingVoiceLines = {
 		Find = "MegaeraHome_",
-		Replace = "Megaera_3",
+		Replace = "Modsnikkelmhadesbiomesmegaerahome_",
 	},
 	SurvivalEncounterStartVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	SurvivalEncounterSurvivedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	PerfectClearEncounterStartVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	PerfectClearEncounterFailedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	PerfectClearEncounterQuicklyFailedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	PerfectClearEncounterClearedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	PersephoneFishCaughtVoiceLines = {
 		Find = "Persephone_",
-		Replace = "Megaera_2",
+		Replace = "Modsnikkelmhadesbiomespersephone_",
 	},
 	ModsNikkelMHadesBiomes_FishNotCaughtVoiceLines = {
 		Find = "Persephone_",
-		Replace = "Megaera_2",
+		Replace = "Modsnikkelmhadesbiomespersephone_",
 	},
 }
 local function processCue(data, replacement)

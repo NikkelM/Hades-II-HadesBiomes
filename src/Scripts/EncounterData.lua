@@ -28,7 +28,7 @@ local encounterReplacements = {
 local encounterModifications = {
 	-- #region ShrineChallenge
 	BasePerfectClear = {
-		LoadModdedVoiceBanks = { "HadesField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesintercom" },
 		CanEncounterSkip = false,
 		BlockAthenaEncounterKeepsake = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,
@@ -58,7 +58,7 @@ local encounterModifications = {
 
 	-- #region Charon
 	BossCharon = {
-		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon", "ZagreusField" },
 		SkipBossTraits = true,
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,

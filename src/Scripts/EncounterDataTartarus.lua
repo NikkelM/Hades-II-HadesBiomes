@@ -312,7 +312,7 @@ local encounterModifications = {
 		CountsForRoomEncounterDepth = true,
 	},
 	OpeningGenerated = {
-		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
 		DifficultyModifier = -40,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
@@ -720,7 +720,7 @@ local encounterModifications = {
 		NextRoomResumeMusic = true,
 	},
 	BaseThanatos = {
-		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 			{
@@ -735,7 +735,7 @@ local encounterModifications = {
 		NextRoomResumeMusic = true,
 	},
 	BaseSurvival = {
-		LoadModdedVoiceBanks = { "HadesField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesintercom" },
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},

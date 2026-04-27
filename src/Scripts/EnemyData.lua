@@ -199,17 +199,17 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			end
 			if entry.Cue then
 				if entry.Cue:find("^/VO/Storyteller_") then
-					entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+					entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
 				elseif entry.Cue:find("^/VO/Charon_") then
-					entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+					entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
 					-- Use the H1 portrait
 					entry.Portrait = "ModsNikkelMHadesBiomes_Portrait_Charon_Default_01"
 				elseif entry.Cue:find("^/VO/Persephone_") then
-					entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+					entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
 				elseif entry.Cue:find("^/VO/ZagreusHome_") then
-					entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+					entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
 				elseif entry.Cue:find("^/VO/MegaeraHome_") then
-					entry.Cue = entry.Cue:gsub("^/VO/MegaeraHome_", "/VO/Megaera_3")
+					entry.Cue = entry.Cue:gsub("^/VO/MegaeraHome_", "/VO/Modsnikkelmhadesbiomesmegaerahome_")
 				end
 			end
 		end
@@ -337,26 +337,26 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 
 					if voicelineEntry.Cue then
 						if voicelineEntry.Cue:find("^/VO/Storyteller_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
 						elseif voicelineEntry.Cue:find("^/VO/Charon_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
 						elseif voicelineEntry.Cue:find("^/VO/Persephone_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
 						elseif voicelineEntry.Cue:find("^/VO/ZagreusHome_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
 						end
 					else
 						-- Handle nested voiceline entries (array of entries)
 						for _, innerEntry in ipairs(voicelineEntry) do
 							if innerEntry.Cue then
 								if innerEntry.Cue:find("^/VO/Storyteller_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
 								elseif innerEntry.Cue:find("^/VO/Charon_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
 								elseif innerEntry.Cue:find("^/VO/Persephone_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
 								elseif innerEntry.Cue:find("^/VO/ZagreusHome_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
 								end
 							end
 						end
@@ -1222,7 +1222,7 @@ local enemyModifications = {
 			Fury3Encounter10 = {
 				EndVoiceLines = {
 					[1] = {
-						[1] = { Cue = "/VO/Megaera_30289" }
+						[1] = { Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0289" }
 					},
 				},
 			},

@@ -134,7 +134,7 @@ local surfaceRoomModifications = {
 	Return01 = {
 		RoomSetName = "Surface",
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
-		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon", "Modsnikkelmhadesbiomespersephone", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		LoadModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicSurfaceModded", },
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "ReturnRoomEntrance",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "ReturnRoomExit",
@@ -164,7 +164,7 @@ local surfaceRoomModifications = {
 	Return02 = {
 		RoomSetName = "Surface",
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
-		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon", "Modsnikkelmhadesbiomespersephone", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return03", } },
 		},
@@ -191,7 +191,7 @@ local surfaceRoomModifications = {
 	Return03 = {
 		RoomSetName = "Surface",
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
-		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon", "Modsnikkelmhadesbiomespersephone", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return04", } },
 		},

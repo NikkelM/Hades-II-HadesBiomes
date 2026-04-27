@@ -526,7 +526,7 @@ local roomModifications = {
 
 	-- SHOPS
 	X_Shop01 = {
-		LoadModdedVoiceBanks = { "Megaera" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon" },
 		StoreDataName = "WorldShop",
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		FamiliarsPreferSpawnPointMovement = true,
@@ -656,7 +656,7 @@ local roomModifications = {
 
 	-- OTHER
 	X_Story01 = {
-		LoadModdedVoiceBanks = { "Eurydice", "Orpheus", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Eurydice", "Orpheus", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse = true,
 		-- We play our own music in this room, don't play any by default
@@ -762,7 +762,7 @@ local roomModifications = {
 	},
 	X_PostBoss01 = {
 		-- For Intercom
-		LoadModdedVoiceBanks = { "HadesField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesintercom" },
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",

@@ -330,7 +330,7 @@ function mod.TimePassesPresentation(source, args)
 		game.wait(0.5)
 		PlaySound({ Name = args.Sound or "/SFX/Menu Sounds/Lounge_BottlePour" })
 		game.wait(1.0)
-		PlaySound({ Name = args.Sound2 or "/VO/Megaera_30230" })
+		PlaySound({ Name = args.Sound2 or "/VO/Modsnikkelmhadesbiomesmegaerahome_0230" })
 		game.wait(0.5)
 	end
 
@@ -823,7 +823,7 @@ function mod.HubPostModdedCreditsStartPresentation(currentRun, args)
 end
 
 function mod.ViewModdedPortraitPresentation(eventSource, args)
-	LoadVoiceBanks({ "Megaera" })
+	LoadVoiceBanks({ "Modsnikkelmhadesbiomesstoryteller" })
 	if not game.PlayingTextLines then
 		UseableOff({ Id = eventSource.ObjectId })
 	end

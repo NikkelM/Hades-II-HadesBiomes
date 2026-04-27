@@ -150,7 +150,7 @@ local encounterModifications = {
 	BossHades = {
 		-- As we might spawn enemies from BiomeB from Hades II, and we need the Hades symbol for the exit animation from BiomeI
 		LoadPackages = { "BiomeB", "BiomeI" },
-		LoadModdedVoiceBanks = { "Megaera" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesstoryteller" },
 		PostUnthreadedEvents = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		SkipCombatBeginsVoiceLines = true,

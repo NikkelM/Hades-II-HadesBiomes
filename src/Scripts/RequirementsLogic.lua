@@ -1968,10 +1968,10 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			return voiceLine
 		end
 
-		local translated = voiceLine:gsub("/VO/Storyteller_", "/VO/Megaera_0")
-		translated = translated:gsub("/VO/Charon_", "/VO/Megaera_1")
-		translated = translated:gsub("/VO/Persephone_", "/VO/Megaera_2")
-		translated = translated:gsub("/VO/ZagreusHome_", "/VO/ZagreusField_0")
+		local translated = voiceLine:gsub("/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
+		translated = translated:gsub("/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
+		translated = translated:gsub("/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
+		translated = translated:gsub("/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
 
 		return translated
 	end
