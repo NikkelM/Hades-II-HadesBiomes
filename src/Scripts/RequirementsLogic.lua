@@ -1794,19 +1794,34 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	-- end
 
 	if requirements.RequiredMinActiveMetaUpgradeLevel ~= nil then
-		if GetNumShrineUpgrades(requirements.RequiredMinActiveMetaUpgradeLevel.Name) < requirements.RequiredMinActiveMetaUpgradeLevel.Count then
+		-- For BossDifficultyShrineUpgrade in Dream Runs, use the depth-aware check
+		if requirements.RequiredMinActiveMetaUpgradeLevel.Name == "BossDifficultyShrineUpgrade" and game.CurrentRun.IsDreamRun then
+			if not game.IsBossDifficultyShrineUpgradeActive() then
+				return false
+			end
+		elseif GetNumShrineUpgrades(requirements.RequiredMinActiveMetaUpgradeLevel.Name) < requirements.RequiredMinActiveMetaUpgradeLevel.Count then
 			return false
 		end
 	end
 
 	if requirements.RequiredMaxActiveMetaUpgradeLevel ~= nil then
-		if GetNumShrineUpgrades(requirements.RequiredMaxActiveMetaUpgradeLevel.Name) > requirements.RequiredMaxActiveMetaUpgradeLevel.Count then
+		-- For BossDifficultyShrineUpgrade in Dream Runs, use the depth-aware check
+		if requirements.RequiredMaxActiveMetaUpgradeLevel.Name == "BossDifficultyShrineUpgrade" and game.CurrentRun.IsDreamRun then
+			if game.IsBossDifficultyShrineUpgradeActive() then
+				return false
+			end
+		elseif GetNumShrineUpgrades(requirements.RequiredMaxActiveMetaUpgradeLevel.Name) > requirements.RequiredMaxActiveMetaUpgradeLevel.Count then
 			return false
 		end
 	end
 
 	if requirements.RequiredActiveMetaUpgradeLevel ~= nil then
-		if GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgradeLevel.Name) ~= requirements.RequiredActiveMetaUpgradeLevel.Count then
+		-- For BossDifficultyShrineUpgrade in Dream Runs, use the depth-aware check
+		if requirements.RequiredActiveMetaUpgradeLevel.Name == "BossDifficultyShrineUpgrade" and game.CurrentRun.IsDreamRun then
+			if not game.IsBossDifficultyShrineUpgradeActive() then
+				return false
+			end
+		elseif GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgradeLevel.Name) ~= requirements.RequiredActiveMetaUpgradeLevel.Count then
 			return false
 		end
 	end
