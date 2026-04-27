@@ -1955,6 +1955,8 @@ local enemyModifications = {
 		BlockCharm = true,
 		AIOptions = { _PLUGIN.guid .. "." .. "PickupAI", },
 		AIPickupRange = 45,
+		RespawningVoiceLines = mod.NilValue,
+		RespawnedVoiceLines = mod.NilValue,
 	},
 	ShadeNakedElite = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
