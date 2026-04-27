@@ -22,7 +22,8 @@
 ]] --
 
 -- In total, as of 2026-01-17: 48 cosmetics
--- CosmeticsShop_Tent
+
+-- #region CosmeticsShop_Tent
 local tentCosmetics = {
 	-- #region Fan Posters/Cosmetic_FanPoster01
 	{
@@ -433,8 +434,9 @@ for _, cosmeticData in ipairs(tentCosmetics) do
 	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
+-- #endregion
 
--- CosmeticsShop_Main
+-- #region CosmeticsShop_Main
 local mainHubAreaCosmetics = {
 	-- #region Banners/Cosmetic_HecateKey
 	{
@@ -999,8 +1001,9 @@ for _, cosmeticData in ipairs(mainHubAreaCosmetics) do
 	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
+-- #endregion
 
--- CosmeticsShop_Taverna
+-- #region CosmeticsShop_Taverna
 local tavernaCosmetics = {
 	-- #region Benches/Cosmetic_TavernaChairs01
 	{
@@ -1426,8 +1429,9 @@ for _, cosmeticData in ipairs(tavernaCosmetics) do
 	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
+-- #endregion
 
--- CosmeticsShop_PreRun
+-- #region CosmeticsShop_PreRun
 local preRunCosmetics = {
 	-- #region Exit Charms/Cosmetic_ExitCharm
 	{
@@ -2019,6 +2023,82 @@ for _, cosmeticData in ipairs(preRunCosmetics) do
 	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
 end
+-- #endregion
+
+-- #region Arcana Card Backs
+-- #region Biomes Pack
+CosmeticsAPI.RegisterCardBackPack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes",
+	Name = {
+		en = "Arcana, Escaping",
+	},
+	Description = {
+		en =
+		"{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}4 {#Prev}alternate themes, featuring the Underworld Zagreus once escaped from.",
+	},
+	FlavorText = {
+		en =
+		"Your brother's journey through his father's domain was a deadly one, but also filled with extraordinary sights.",
+	},
+	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Arcana\\Arcana_Biomes_Icon",
+	Cost = {
+		CosmeticsPoints = 2500,
+		ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+		ModsNikkelMHadesBiomes_CropElysium = 2,
+		ModsNikkelMHadesBiomes_OreStyx = 4,
+
+	},
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+		},
+	},
+	InsertAfterCosmetic = "Cosmetic_CardDeck08",
+	PreRevealVoiceLines = {
+		Queue = "Interrupt",
+		{
+			PreLineWait = 0.35,
+			UsePlayerSource = true,
+			{ Cue = "/VO/Melinoe_5386", Text = "May the Arcana always remind me of my heritage." },
+		},
+		{ GlobalVoiceLines = "DoraCosmeticReactionVoiceLines" },
+	},
+})
+
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes_Tartarus",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Biomes\\Deck_Tartarus",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Biomes\\DeckMouseover_Tartarus",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBiomesTartarus",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes_Asphodel",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Biomes\\Deck_Asphodel",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Biomes\\DeckMouseover_Asphodel",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBiomesAsphodel",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes_Elysium",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Biomes\\Deck_Elysium",
+	DeckArtMouseoverPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Biomes\\DeckMouseover_Elysium",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBiomesElysium",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes_Styx",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Biomes\\Deck_Styx",
+	DeckArtMouseoverPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Biomes\\DeckMouseover_Styx",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBiomesStyx",
+})
+-- #endregion
+-- #endregion
 
 -- Register the cosmetics package to be loaded automatically by the CosmeticsAPI when entering the Crossroads
 CosmeticsAPI.RegisterCrossroadsPackages({ "NikkelM-HadesBiomesCosmetics" })
+-- Register the arcana card back package to be loaded automatically by the CosmeticsAPI
+CosmeticsAPI.RegisterCrossroadsPackages({ "NikkelM-HadesBiomesCosmeticsCardbacks" })

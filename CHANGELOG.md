@@ -9,11 +9,12 @@
 - **Commander Schelemeus** has managed to procure a new set of the *Gifts of the Veil* from an unknown underworld contact... turn up the heat, errmm, fear, and escape the Nightmare Realm to earn these prestigious trophies.
 - The **Lernaean Bone Hydra** has found its long-lost neck in the depths of Asphodel's lava.
 - You can now conclude **Sisyphus**' storyline by interacting with him and **Megaera**.
+- Added a set of new **Arcana Card Backs** depicting the four new regions you can journey through.
 - Tartarus, Asphodel, Elysium and Styx can now appear in Dream Dives. You can use the `z_ExcludeFromDreamDives` config value to prevent them from appearing.
-- Added a new logo animation to the Main Menu to show that the mod is installed.
 - The mod no longer creates any files in the game's installation directory, making it entirely compatible with playing vanilla or switching profiles in r2modman. Installing this mod update will automatically remove any previously created files.
 
 Other fixes and improvements:
+- Added a new logo animation to the Main Menu to show that the mod is installed.
 - The Chaos Gate in the Training Grounds can now only show once you have met Chaos.
 - You can now salute story NPCs you meet during Zagreus' Journey runs.
 - Updated the description text of "Final Expense" offered by Orpheus to make it clearer that all shop items are always discounted.
