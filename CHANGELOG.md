@@ -95,6 +95,7 @@ Other fixes and improvements:
 - Fixed: Ash and Bone door reward previews in Asphodel are located too high in the glass sphere.
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
 - Fixed: The Wretched Sneak and Wringer enemies summoned by Hades during his fight show up with incorrect names in the victory screen's damage taken table.
+- Fixed: Some bosses do not acknowledge you are meeting them for the first time, instead referencing the Vow of Rivals being active, and instead initiate the first-time dialogue on a subsequent run.
 - Fixed: Chaos Gates do not have specific spawn requirements adapted to Zagreus' Journey runs.
 - Fixed: "Enshrouded" (hidden room reward previews) Chaos Curse cannot appear in Zagreus' Journey runs.
 - Fixed: Starting a Chaos Trial in one of the new biomes does not prompt you to check your loadout.

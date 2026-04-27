@@ -29,19 +29,23 @@ function mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 						game.CallFunctionName(args.DreamRunIntroFunctionName, enemy, args)
 					end
 				else
+					-- BossPresentationUltraSuperPriorityIntroTextLineSets is custom for some bosses
+					game.ProcessTextLines(enemy, enemy.BossPresentationUltraSuperPriorityIntroTextLineSets)
 					game.ProcessTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets)
-					-- BossPresentationHighPriorityIntroTextLineSets is custom for Hades EM
+					-- BossPresentationHighPriorityIntroTextLineSets is custom for some bosses
 					game.ProcessTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets)
 					game.ProcessTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets)
 					game.ProcessTextLines(enemy, enemy.BossPresentationIntroTextLineSets)
 					game.ProcessTextLines(enemy, enemy.BossPresentationTextLineSets)
 					game.ProcessTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets)
-					if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets, args) then
-						if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets, args) then
-							if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets, args) then
-								if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationIntroTextLineSets, args) then
-									if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationTextLineSets, args) then
-										mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets, args)
+					if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationUltraSuperPriorityIntroTextLineSets, args) then
+						if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationSuperPriorityIntroTextLineSets, args) then
+							if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationHighPriorityIntroTextLineSets, args) then
+								if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationPriorityIntroTextLineSets, args) then
+									if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationIntroTextLineSets, args) then
+										if not mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationTextLineSets, args) then
+											mod.PlayRandomRemainingTextLines(enemy, enemy.BossPresentationRepeatableTextLineSets, args)
+										end
 									end
 								end
 							end

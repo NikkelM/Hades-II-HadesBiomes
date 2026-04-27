@@ -1144,7 +1144,56 @@ local enemyModifications = {
 				FunctionName = "RecordBossKillerName",
 			},
 		},
+		BossPresentationUltraSuperPriorityIntroTextLineSets = {
+			-- Moved from BossPresentationIntroTextLineSets
+			FuryFirstAppearance = {
+				PlayOnce = true,
+				RequiredFalseTextLines = { "FuryFirstAppearanceFirstRun" },
+				{
+					Cue = "/VO/MegaeraField_0002",
+					Speaker = "NPC_FurySister_01",
+					Text = "Halt, Zagreus. Not one step further."
+				},
+				{
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Cue = "/VO/ZagreusField_0461",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Come on, Meg. Haven't we had more than enough of each other by now? Besides, don't you have someplace else to be?"
+				},
+				{
+					Cue = "/VO/MegaeraField_0004",
+					Speaker = "NPC_FurySister_01",
+					Text =
+					"Your father sent me. All in all, I'd rather be on your bad side than his. Now you can turn back like a good little man, or I can send you home the painful way. What'll it be?"
+				},
+				{
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Cue = "/VO/ZagreusField_0137",
+					PreLineWait = 0.35,
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "...I'll have to go with the painful way."
+				},
+				{
+					Cue = "/VO/MegaeraField_0005",
+					Speaker = "NPC_FurySister_01",
+					PreLineAnim = "FuryTaunt",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text = "A man after my own heart."
+				},
+			},
+		},
 		BossPresentationIntroTextLineSets = {
+			FuryFirstAppearance = mod.NilValue,
 			FuryDarknessReaction01 = {
 				RequiredActiveMetaPointsMin = 30,
 			},
@@ -1190,6 +1239,55 @@ local enemyModifications = {
 		},
 		-- Using OnKillVoiceLines from Harpy
 		OnKillGlobalVoiceLines = mod.NilValue,
+		BossPresentationHighPriorityIntroTextLineSets = {
+			-- Moved from BossPresentationIntroTextLineSets to ensure it plays before EM dialogues
+			Fury2FirstAppearance = {
+				PlayOnce = true,
+				PreEventWait = 0.4,
+				PreLineFunctionName = "EmoteShockPresentation",
+				PreLineThreadedFunctionArgs = { WaitTime = 0.1 },
+				{
+					Cue = "/VO/Alecto_0002",
+					Speaker = "NPC_FurySister_Unnamed_02",
+					SpeakerLabelOffsetY = 18,
+					Emote = "PortraitEmoteCheerful",
+					Text =
+					"{#DialogueItalicFormat}Ah, hah hah, hohohohohhh. {#PreviousFormat}Finally. I've been waiting for this! Really."
+				},
+				{
+					Cue = "/VO/ZagreusField_1408",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You must be one of Megaera's lovely sisters, I don't believe we've had the pleasure. Waiting for what, exactly?"
+				},
+				{
+					Cue = "/VO/Alecto_0003",
+					PreLineWait = 0.35,
+					Text = "...So sick of, you know, doing my regular job, uninterrupted. Not having to clean up Meg's messes!"
+				},
+				{
+					Cue = "/VO/ZagreusField_1409",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text = "I get the feeling we're starting off on the wrong foot."
+				},
+				{
+					Cue = "/VO/Alecto_0004",
+					PreLineAnim = "AlectoTaunt",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text = "Anyway. I always wanted to kill a god. You'll have to do."
+				},
+			},
+		},
+		BossPresentationIntroTextLineSets = {
+			Fury2FirstAppearance = mod.NilValue,
+		},
 	},
 	Harpy3 = {
 		-- Base Health: 5200
@@ -1233,6 +1331,54 @@ local enemyModifications = {
 		},
 		-- Using OnKillVoiceLines from Harpy
 		OnKillGlobalVoiceLines = mod.NilValue,
+		BossPresentationHighPriorityIntroTextLineSets = {
+			-- Moved from BossPresentationIntroTextLineSets
+			Fury3FirstAppearance = {
+				PlayOnce = true,
+				PreEventWait = 0.4,
+				{
+					Cue = "/VO/Tisiphone_0002",
+					Speaker = "NPC_FurySister_Unnamed_03",
+					SpeakerLabelOffsetY = 18,
+					Text = "{#DialogueItalicFormat}Mmmm... mmmurderer..."
+				},
+				{
+					Cue = "/VO/ZagreusField_1424",
+					PreLineWait = 0.3,
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, you must be one of Meg's sisters! Nice to finally meet you. My name's Zagreus. Not {#DialogueItalicFormat}Murderer{#PreviousFormat}. Definitely not."
+				},
+				{
+					Cue = "/VO/Tisiphone_0003",
+					Text = "Murderer... {#DialogueItalicFormat}mmmmurderrrerrrrrrrr...!"
+				},
+				{
+					Cue = "/VO/ZagreusField_1425",
+					PreLineWait = 0.3,
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text =
+					"{#DialogueItalicFormat}Erm{#PreviousFormat}... look, I've done some things that maybe aren't great, but I am very, very sure I haven't murdered anyone."
+				},
+				{
+					Cue = "/VO/Tisiphone_0004",
+					Emote = "PortraitEmoteAnger",
+					PreLineAnim = "TisiphoneTaunt_2",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text = "{#DialogueItalicFormat}Mmmmmurderrrerrrrrrrr{#PreviousFormat}...!"
+				},
+			},
+		},
+		BossPresentationIntroTextLineSets = {
+			Fury3FirstAppearance = mod.NilValue,
+		},
 	},
 	-- #endregion
 	-- #endregion
@@ -2170,6 +2316,82 @@ local enemyModifications = {
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
 		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
+		BossPresentationHighPriorityIntroTextLineSets = {
+			-- Both moved from BossPresentationIntroTextLineSets
+			MinotaurFirstAppearance_NotMetTheseus = {
+				PlayOnce = true,
+				RequiredFalseTextLines = { "TheseusFirstAppearance_MetBeatMinotaur", "TheseusFirstAppearance_MetNotBeatMinotaur", "TheseusFirstAppearance_NotMetMinotaur", "MinotaurFirstAppearance_MetTheseus" },
+				{
+					Cue = "/VO/Minotaur_0002",
+					Text = "You come from the bowels of hell. This is not your place."
+				},
+				{
+					Cue = "/VO/ZagreusField_1746",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Agreed on both counts! Just passing through, so if you'll excuse me..."
+				},
+				{
+					Cue = "/VO/Minotaur_0003",
+					Text =
+					"I will not. {#DialogueItalicFormat}<Snort> {#PreviousFormat}The Champion of Elysium would never back down from such a contest. Neither will I."
+				},
+				{
+					Cue = "/VO/ZagreusField_1747",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Wait, {#DialogueItalicFormat}you're {#PreviousFormat}not the Champion of Elysium...? You're the Bull of Minos! I can't imagine who's even stronger than you. Is it Heracles? Tell me it's Heracles."
+				},
+				{
+					Cue = "/VO/Minotaur_0004",
+					PreLineThreadedFunctionName = "PlayPreLineTauntAnimFromSource",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text =
+					"I will not. {#DialogueItalicFormat}<Snort> {#PreviousFormat}You talk too much, short one. Come get destroyed."
+				},
+			},
+			MinotaurFirstAppearance_MetTheseus = {
+				PlayOnce = true,
+				RequiredAnyTextLines = { "TheseusFirstAppearance_MetBeatMinotaur", "TheseusFirstAppearance_MetNotBeatMinotaur", "TheseusFirstAppearance_NotMetMinotaur" },
+				RequiredFalseTextLines = { "MinotaurFirstAppearance_NotMetTheseus" },
+				{
+					Cue = "/VO/Minotaur_0002",
+					Text = "You come from the bowels of hell. This is not your place."
+				},
+				{
+					Cue = "/VO/ZagreusField_1746",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Agreed on both counts! Just passing through, so if you'll excuse me..."
+				},
+				{
+					Cue = "/VO/Minotaur_0003",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					PreLineThreadedFunctionName = "PlayPreLineTauntAnimFromSource",
+					Text =
+					"I will not. {#DialogueItalicFormat}<Snort> {#PreviousFormat}The Champion of Elysium would never back down from such a contest. Neither will I."
+				},
+			},
+		},
+		BossPresentationIntroTextLineSets = {
+			MinotaurFirstAppearance_NotMetTheseus = mod.NilValue,
+			MinotaurFirstAppearance_MetTheseus = mod.NilValue,
+		},
 	},
 	Minotaur2 = {
 		-- Base Health: 16000
@@ -2237,6 +2459,121 @@ local enemyModifications = {
 		AIStages = {
 			[2] = { RandomAIFunctionNames = { _PLUGIN.guid .. "." .. "TheseusGodAI" }, },
 		},
+		BossPresentationUltraSuperPriorityIntroTextLineSets = {
+			-- All three moved from BossPresentationIntroTextLineSets
+			TheseusFirstAppearance_NotMetMinotaur = {
+				PlayOnce = true,
+				RequiredFalseTextLines = { "MinotaurFirstAppearance_NotMetTheseus", "MinotaurFirstAppearance_MetTheseus", "TheseusFirstAppearance_MetBeatMinotaur", "TheseusFirstAppearance_MetNotBeatMinotaur" },
+				{
+					Cue = "/VO/Theseus_0002",
+					Emote = "PortraitEmoteSparkly",
+					Text = "Hold, fiend! You'll walk not one more step toward the light of day, so long as I am here."
+				},
+				{
+					Cue = "/VO/Minotaur_0069",
+					Speaker = "Minotaur",
+					Portrait = "Portrait_Minotaur_Default_01",
+					Text =
+					"Two against one. Seems hardly fair.... Ah, well! {#DialogueItalicFormat}<Snort> {#PreviousFormat}Let's kill him and be done, king."
+				},
+				{
+					Cue = "/VO/ZagreusField_1763",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Theseus?! The Bull of Minos?! You two are legends! I'd be honored if we had a sporting contest here!"
+				},
+				{
+					Cue = "/VO/Theseus_0003",
+					PreLineThreadedFunctionName = "PlayPreLineTauntAnimFromSource",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text =
+					"{#DialogueItalicFormat}Ahh{#PreviousFormat}, a naked attempt to sway me from my convictions. Defend yourself, you blackguard! And may the gods show you some mercy, for I shall not!"
+				},
+			},
+			TheseusFirstAppearance_MetBeatMinotaur = {
+				PlayOnce = true,
+				Priority = true,
+				RequiredTextLines = { "MinotaurFirstAppearance_NotMetTheseus" },
+				RequiredFalseTextLines = { "TheseusFirstAppearance_NotMetMinotaur", "TheseusFirstAppearance_MetNotBeatMinotaur" },
+				RequiredKills = { Minotaur = 1 },
+				{
+					Cue = "/VO/Minotaur_0070",
+					Speaker = "Minotaur",
+					Portrait = "Portrait_Minotaur_Default_01",
+					Text =
+					"I warned you, short one. Now you face a foe more terrible even than I. The only other foe whom I have ever faced, who bested me."
+				},
+				{
+					Cue = "/VO/Theseus_0002",
+					Emote = "PortraitEmoteSparkly",
+					Text = "Hold, fiend! You'll walk not one more step toward the light of day, so long as I am here."
+				},
+				{
+					Cue = "/VO/ZagreusField_1764",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Theseus?! No way! You two are legends! I'd be honored if we had a sporting contest here!"
+				},
+				{
+					Cue = "/VO/Theseus_0003",
+					PreLineThreadedFunctionName = "PlayPreLineTauntAnimFromSource",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text =
+					"{#DialogueItalicFormat}Ahh{#PreviousFormat}, a naked attempt to sway me from my convictions. Defend yourself, you blackguard! And may the gods show you some mercy, for I shall not!"
+				},
+			},
+			TheseusFirstAppearance_MetNotBeatMinotaur = {
+				PlayOnce = true,
+				RequiredTextLines = { "MinotaurFirstAppearance_NotMetTheseus" },
+				RequiredFalseTextLines = { "TheseusFirstAppearance_NotMetMinotaur", "TheseusFirstAppearance_MetBeatMinotaur" },
+				RequiredFalseKills = { "Minotaur" },
+				{
+					Cue = "/VO/Minotaur_0071",
+					Speaker = "Minotaur",
+					Portrait = "Portrait_Minotaur_Default_01",
+					Text =
+					"Beware, short one. Now you face a foe more terrible even than I. The only foe whom I have ever faced, who bested me."
+				},
+				{
+					Cue = "/VO/Theseus_0002",
+					Emote = "PortraitEmoteSparkly",
+					Text = "Hold, fiend! You'll walk not one more step toward the light of day, so long as I am here."
+				},
+				{
+					Cue = "/VO/ZagreusField_1764",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Theseus?! No way! You two are legends! I'd be honored if we had a sporting contest here!"
+				},
+				{
+					Cue = "/VO/Theseus_0003",
+					PreLineThreadedFunctionName = "PlayPreLineTauntAnimFromSource",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text =
+					"{#DialogueItalicFormat}Ahh{#PreviousFormat}, a naked attempt to sway me from my convictions. Defend yourself, you blackguard! And may the gods show you some mercy, for I shall not!"
+				},
+			},
+		},
+		BossPresentationIntroTextLineSets = {
+			TheseusFirstAppearance_NotMetMinotaur = mod.NilValue,
+			TheseusFirstAppearance_MetBeatMinotaur = mod.NilValue,
+			TheseusFirstAppearance_MetNotBeatMinotaur = mod.NilValue,
+		}
 	},
 	Theseus2 = {
 		-- Base Health: 12000
