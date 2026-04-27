@@ -559,6 +559,7 @@ local roomModifications = {
 		SkipLastKillPresentation = true,
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
+		RewardPreviewIcon = "RoomRewardSubIcon_PreBoss",
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
