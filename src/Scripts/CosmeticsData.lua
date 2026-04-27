@@ -21,7 +21,8 @@
 	"ModsNikkelMHadesBiomes_BossResourceStyx",
 ]] --
 
--- In total, as of 2026-01-17: 48 cosmetics
+-- In total, as of 2026-04-27: 49 cosmetics
+-- Last added: Arcana, Escaping
 
 -- #region CosmeticsShop_Tent
 local tentCosmetics = {
@@ -2051,6 +2052,11 @@ CosmeticsAPI.RegisterCardBackPack({
 	GameStateRequirements = {
 		{
 			PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+		},
+		{
+			Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+			Comparison = ">=",
+			Value = 3,
 		},
 	},
 	InsertAfterCosmetic = "Cosmetic_CardDeck08",
