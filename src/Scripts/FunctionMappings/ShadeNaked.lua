@@ -33,16 +33,13 @@ function mod.ShadeDeathSpawnOnDeath(projectileData, triggerArgs)
 		return
 	end
 
+	-- Intentionally not checking if the location is invalid, they can spawn even over non-walkable spaces since they float
 	local spawnPointId = SpawnObstacle({
 		Name = "InvisibleTarget",
 		LocationX = triggerArgs.LocationX,
 		LocationY = triggerArgs.LocationY,
 		Group = "Scripting",
 	})
-	if IsLocationBlocked({ Id = spawnPointId }) then
-		Destroy({ Id = spawnPointId })
-		return
-	end
 
 	local newEnemy = game.DeepCopyTable(newSpawnData) or {}
 
