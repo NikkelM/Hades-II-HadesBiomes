@@ -98,6 +98,9 @@ function mod.WrappingEncounterEndPresentation(eventSource)
 
 	game.wait(0.7, game.RoomThreadName)
 	SetAnimation({ DestinationId = 548134, Name = "MurderBoatGateReverse" })
+
+	-- If biome music was nilled (e.g. after an Erebus gate) or paused, restore it
+	mod.SafetyResumeBossMusic()
 end
 
 function mod.WrappingPostCombatReloadPresentation(eventSource)

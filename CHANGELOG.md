@@ -62,6 +62,7 @@ Other fixes and improvements:
 - Fixed: If petrified by a Gorgon while sprinting, Melinoë continues sliding over the ground instead of coming to a stop.
 - Fixed: Eurydice's boon offering flavour text sometimes refers to her and Orpheus, even when she is alone.
 - Fixed: After receiving a blessing from Eurydice, Melinoë sometimes reacts with a voiceline from Zagreus.
+- Fixed: Music can sometimes go missing after a Barge of Death encounter, if a specific combinations of other encounters preceded it.
 - Fixed: The Lernaean Bone Hydra has no neck elements constraining its movements.
 - Fixed: Some fog and branches flicker on a specific Elysium map.
 - Fixed: Exalted Shades always target the closest dropped weapon instead of a random one.
