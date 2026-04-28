@@ -11,7 +11,7 @@ modutil.mod.Path.Context.Wrap.Static("CheckSprintPhasingCollision", function(ori
 		})
 		if id ~= nil and id ~= 0 then
 			local breakable = game.ActiveEnemies[id]
-			if breakable and breakable.ModsNikkelMHadesBiomesForceCollisionOnSprintPhase then
+			if breakable and breakable.ModsNikkelMHadesBiomesForceCollisionOnSprintPhase and not breakable.IgnoreDamage then
 				if breakable ~= nil and breakable.CollisionReactions ~= nil then
 					local playerVelocity = GetVelocity({ Id = game.CurrentRun.Hero.ObjectId })
 					for _, collisionReaction in pairs(breakable.CollisionReactions) do
