@@ -2031,11 +2031,11 @@ end
 CosmeticsAPI.RegisterCardBackPack({
 	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes",
 	Name = {
-		en = "Arcana, Escaping",
+		en = "Arcana, Far-Travelled",
 	},
 	Description = {
 		en =
-		"{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}4 {#Prev}alternate themes, featuring the Underworld Zagreus once escaped from.",
+		"{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}4 {#Prev}alternate themes, featuring the Underworld regions Zagreus once escaped from.",
 	},
 	FlavorText = {
 		en =

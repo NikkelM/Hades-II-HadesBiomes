@@ -4,13 +4,13 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Tartarus, Asphodel, Elysium and Styx can now appear in Dream Dives. You can use the `z_ExcludeFromDreamDives` config value to prevent them from appearing.
 - Meet **Megaera** in Styx, and have a friendly chat and a bottle of Ambrosia or two. This will also allow you to build a relationship with Megaera (including unlocking her keepsake).
 - Advance through **50** new cosmetic ranks offered by the **Spirit Mixer**, from the lowly _Alpha Warden_ to the feared _Unseen One_. These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
 - **Commander Schelemeus** has managed to procure a new set of the *Gifts of the Veil* from an unknown underworld contact... turn up the heat, errmm, fear, and escape the Nightmare Realm to earn these prestigious trophies.
 - The **Lernaean Bone Hydra** has found its long-lost neck in the depths of Asphodel's lava.
 - You can now conclude **Sisyphus**' storyline by interacting with him and **Megaera**.
 - Added a set of new **Arcana Card Backs** depicting the four new regions you can journey through.
-- Tartarus, Asphodel, Elysium and Styx can now appear in Dream Dives. You can use the `z_ExcludeFromDreamDives` config value to prevent them from appearing.
 - The mod no longer creates any files in the game's installation directory, making it entirely compatible with playing vanilla or switching profiles in r2modman. Installing this mod update will automatically remove any previously created files.
 
 Other fixes and improvements:
