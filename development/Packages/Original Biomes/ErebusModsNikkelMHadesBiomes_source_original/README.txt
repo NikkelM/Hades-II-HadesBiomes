@@ -25,9 +25,14 @@ _Impassable_Tile64Iso
 _Impassable_Tile64Iso_Half_01
 
 
+From Hades II Fx/Tilesets/House:
+House_TerrainMosaic_01
+
+
 From Hades II Fx/Tilesets/Tartarus:
 Tartarus_BlankIsoTile_01
 Tartarus_Terrain_Brick_09
+Tartarus_Terrain_Brick_17
 
 
 

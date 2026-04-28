@@ -39,6 +39,10 @@ _Impassable_Tile64Iso_Half_01
 Prototype_Tile_01
 
 
+From Hades II Fx/Tilesets/House:
+House_TerrainMosaic_01
+
+
 From Hades II Fx/Tilesets/Surface:
 Surface_Terrain_SnowLumps_02
 
@@ -49,9 +53,10 @@ Tartarus_BlankIsoTile_01
 Tartarus_Rubble_02
 Tartarus_Rubble_02b
 Tartarus_Rubble_02c
-Tartarus_WallBars_01
 Tartarus_Rubble_06
+Tartarus_Terrain_Brick_08
 Tartarus_Terrain_Brick_09
+Tartarus_WallBars_01
 
 
 

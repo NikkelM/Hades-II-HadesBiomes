@@ -107,6 +107,7 @@ Other fixes and improvements:
 - Fixed: Trying to navigate to the "Zagreus' Journey" cauldron category on keyboard or controller crashes the game if Alchemy has not been unlocked yet.
 - Fixed: Some text localizations for relationship dialogue are missing.
 - Fixed: Some Codex entries for Greek, Turkish, Ukrainian and Traditional Chinese have unterminated italic text sections.
+- Fixed: Texturing artifacts are visible on certain maps in certain situations.
 - Fixed: In rare circumstances, the game can crash when checking requirements for actions taken during the previous Zagreus' Journey run.
 - Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
 - Fixed: Some unnecessary localization strings are copied during the mod installation.

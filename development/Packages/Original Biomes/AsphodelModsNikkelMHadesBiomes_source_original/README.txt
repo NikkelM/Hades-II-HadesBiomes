@@ -3,6 +3,7 @@ Copy-Pasted the normal Asphodel package (atlas version).
 
 From Hades II Fx/Tilesets/Atmosphere:
 Atmosphere_Shadow_Rectangle_01
+Atmosphere_Shadow_Rectangle_02
 Atmosphere_Shadow_Rectangle_04
 Atmosphere_Shadow_Rectangle_06
 Atmosphere_Shadow_Rectangle_07
@@ -15,6 +16,7 @@ Atmosphere_Stroke_LongSingle_02
 Atmosphere_Stroke_ShortDouble_01
 Atmosphere_Stroke_ShortMulti_01
 Atmosphere_Stroke_ShortMulti_02
+Atmosphere_Water_Edge_01
 Basic_Glow_01
 
 
@@ -38,6 +40,7 @@ Tartarus_Rubble_02
 Tartarus_Rubble_02b
 Tartarus_Rubble_02c
 Tartarus_Terrain_Brick_09
+Tartarus_Terrain_Brick_17
 Tartarus_WallBars_01
 
 
