@@ -31,5 +31,8 @@ modutil.mod.Path.Wrap("SpawnZagContractRewards", function(base, room, args)
 		return
 	end
 
-	return base(room, args)
+	-- Prevent FillInShopOptions from overwriting the shop's persistent store with ZagContract options
+	local savedPersistentStore = game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore
+	base(room, args)
+	game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore = savedPersistentStore
 end)
