@@ -425,6 +425,67 @@ local roomReplacements = {
 		Binks = mod.NilValue,
 	},
 
+	Y_Boss01 = {
+		EnterVoiceLines = {
+			-- TODO: Additional Melinoe voicelines (where there were Zag voicelines before)
+			{ GlobalVoiceLines = "DreamRunFinalBossGreetingVoiceLines" },
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.4,
+				ChanceToPlayAgain = 0.05,
+				RequiredActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 3 },
+				ObjectType = "Theseus2",
+				-- Brothers in Death!!
+				{ Cue = "/VO/Theseus_0394" },
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 1.1,
+				SuccessiveChanceToPlayAll = 0.33,
+				ObjectType = "Theseus",
+				RequiredFalseFlags = { "HeroesMuted" },
+				-- You!
+				{ Cue = "/VO/Theseus_0456" },
+				-- You again!
+				{ Cue = "/VO/Theseus_0457" },
+				-- A challenger!
+				{ Cue = "/VO/Theseus_0458" },
+				-- A challenger?
+				{ Cue = "/VO/Theseus_0459" },
+				-- Ah, at last!
+				{ Cue = "/VO/Theseus_0460" },
+				-- Our sworn enemy!
+				{ Cue = "/VO/Theseus_0462" },
+				-- So...!
+				{ Cue = "/VO/Theseus_0463" },
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 1.1,
+				SuccessiveChanceToPlayAll = 0.33,
+				ObjectType = "Theseus2",
+				RequiredFalseFlags = { "HeroesMuted" },
+				-- You!
+				{ Cue = "/VO/Theseus_0456" },
+				-- You again!
+				{ Cue = "/VO/Theseus_0457" },
+				-- A challenger!
+				{ Cue = "/VO/Theseus_0458" },
+				-- A challenger?
+				{ Cue = "/VO/Theseus_0459" },
+				-- Ah, at last!
+				{ Cue = "/VO/Theseus_0460" },
+				-- Our sworn enemy!
+				{ Cue = "/VO/Theseus_0462" },
+				-- So...!
+				{ Cue = "/VO/Theseus_0463" },
+			},
+		},
+	},
+
 	Y_PostBoss01 = {
 		EnterVoiceLines = {
 			Cooldowns = {

@@ -220,4 +220,33 @@ mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, 
 })
 -- #endregion
 
+-- #region DreamRunFinalBossGreetingVoiceLines
+local pluralFinalOpponentVoiceLines = { "/VO/MelinoeField_5593", "/VO/MelinoeField_5609", "/VO/MelinoeField_5610", }
+for _, entry in ipairs(pluralFinalOpponentVoiceLines) do
+	mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.DreamRunFinalBossGreetingVoiceLines, entry, {
+		OrRequirements = {
+			{
+				{
+					Path = { "CurrentRun", "CurrentRoom", "Name" },
+					IsAny = { "P_Boss01", "N_Boss02", "Q_Boss02" },
+				},
+				NamedRequirements = { "BossDifficultyActive" },
+			},
+			{
+				{
+					Path = { "CurrentRun", "CurrentRoom", "Name" },
+					IsAny = { "Y_Boss01" },
+				},
+			},
+		}
+	})
+end
+mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.DreamRunFinalBossGreetingVoiceLines, "/VO/MelinoeField_5617", {
+	{
+		Path = { "CurrentRun", "CurrentRoom", "Name" },
+		IsNone = { "I_Boss01", "Q_Boss01", "Q_Boss02", "D_Boss01" },
+	},
+})
+-- #endregion
+
 -- #endregion

@@ -1427,6 +1427,10 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	},
 	-- #endregion
 	-- #region Megaera
+	EnteredFuryChamberVoiceLines = {
+		-- TODO: Additional Melinoe voicelines (where there were Zag voicelines before)
+		{ GlobalVoiceLines = "DreamRunFinalBossGreetingVoiceLines" },
+	},
 	MultiFuryFightStartVoiceLines = {
 		{
 			BreakIfPlayed = true,
@@ -1605,6 +1609,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			PreLineWait = 0.5,
 			{ Cue = "/VO/MelinoeField_3537", Text = "At least that magma's gone for now...", },
 		},
+		{ GlobalVoiceLines = "DreamRunFinalBossGreetingVoiceLines" },
 		{
 			RandomRemaining = true,
 			BreakIfPlayed = true,
@@ -2459,11 +2464,11 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			PreLineWait = 1.2,
 			NoTarget = true,
 			-- Thus was Hades, feared ruler of the dead, reunited with his long-lost bride, Persephone, the Queen; and, together with their firstborn son, Prince Zagreus, they would go on to reign eternally beneath the Earth, in relative harmony.
-			{ Cue = "/VO/Modsnikkelmhadesbiomesstoryteller_0340",    SubtitleColor = game.Color.NarratorVoice, },
+			{ Cue = "/VO/Modsnikkelmhadesbiomesstoryteller_0340", SubtitleColor = game.Color.NarratorVoice, },
 			-- The Queen's return marked an occasion of enthusiastic joy... so much as possible, in that dark, gloom-filled realm of the dead.
-			{ Cue = "/VO/Modsnikkelmhadesbiomesstoryteller_0341",    SubtitleColor = game.Color.NarratorVoice,                                                                                                                                                                           PreLineWait = 1 },
-			{ Cue = "/VO/Storyteller_0097", Text = "{#Emph}One rightly may imagine that this tale has a very thrilling end; although I am afraid for now, that we are out of Time.",                                                                            TextLimit = 300, PreLineWait = 0.8, NoTarget = true },
-			{ Cue = "/VO/Storyteller_0180", Text = "{#Emph}So lifelike was the nightmare tormenting the Princess of the Dead that she was very much surprised to learn that it was all a dream! Merely a dream, from which she shall awaken any moment now...", TextLimit = 300, PreLineWait = 0.8, NoTarget = true },
+			{ Cue = "/VO/Modsnikkelmhadesbiomesstoryteller_0341", SubtitleColor = game.Color.NarratorVoice,                                                                                                                                                                           PreLineWait = 1 },
+			{ Cue = "/VO/Storyteller_0097",                       Text = "{#Emph}One rightly may imagine that this tale has a very thrilling end; although I am afraid for now, that we are out of Time.",                                                                            TextLimit = 300, PreLineWait = 0.8, NoTarget = true },
+			{ Cue = "/VO/Storyteller_0180",                       Text = "{#Emph}So lifelike was the nightmare tormenting the Princess of the Dead that she was very much surprised to learn that it was all a dream! Merely a dream, from which she shall awaken any moment now...", TextLimit = 300, PreLineWait = 0.8, NoTarget = true },
 		},
 	},
 	-- #endregion
@@ -3864,7 +3869,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_4352",      Text = "Hello again, good Shade." },
 			{ Cue = "/VO/MelinoeField_3045", Text = "You're always here, good Shade." },
 			{ Cue = "/VO/MelinoeField_3047", Text = "Something about my brother..." },
-			{ Cue = "/VO/MelinoeField_3048", Text = "My brother's biggest fan...?",                       PlayFirst = true },
+			{ Cue = "/VO/MelinoeField_3048", Text = "My brother's biggest fan...?",              PlayFirst = true },
 			{ Cue = "/VO/MelinoeField_4804", Text = "Good to see you again, good Shade!", },
 			{ Cue = "/VO/MelinoeField_4806", Text = "Hello again, good Shade!" },
 			{ Cue = "/VO/MelinoeField_5363", Text = "Cheers for believing in us, good Shade!" },

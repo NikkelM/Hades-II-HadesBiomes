@@ -782,6 +782,7 @@ local roomReplacements = {
 				RequiredEncounters = { "BossHadesPeaceful" },
 				{ Cue = "/VO/MelinoeField_1906", Text = "Every time..." },
 			},
+			{ GlobalVoiceLines = "DreamRunFinalBossGreetingVoiceLines" },
 			-- Afterwards
 			{
 				BreakIfPlayed = true,
