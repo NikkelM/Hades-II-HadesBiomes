@@ -942,6 +942,7 @@ local roomModifications = {
 			ObjectStates = true,
 			DoorsChosen = true,
 			FirstPurchase = true,
+			ModsNikkelMHadesBiomes_ZagContractRewardPickedUp = true,
 		},
 		-- To make sure the shop is set up correctly when re-entering the room
 		ModsNikkelMHadesBiomesOnReloadStripEncounter = true,

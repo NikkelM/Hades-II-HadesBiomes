@@ -497,6 +497,7 @@ local function on_ready()
 			import "Scripts/EffectPresentation.lua"
 			import "Scripts/EnemyAILogic.lua"
 			import "Scripts/EncounterLogic.lua"
+			import "Scripts/EventLogic.lua"
 			import "Scripts/EventPresentation.lua"
 			import "Scripts/GameStatsLogic.lua"
 			import "Scripts/GardenLogic.lua"
