@@ -385,6 +385,8 @@ function mod.HarpyKillPresentation(unit, args)
 		-- For e.g. Hydra arena where there is lava
 		game.SetPlayerInvulnerable("DreamRunCleared")
 		game.wait(1.8)
+		-- Remove potentially leftover input block from HadesKillPresentation
+		RemoveInputBlock({ Name = "HadesKillPresentation" })
 		-- Using the vanilla function as it will use the new Dream Dive background and icons/texts
 		game.OpenRunClearScreen()
 	end
