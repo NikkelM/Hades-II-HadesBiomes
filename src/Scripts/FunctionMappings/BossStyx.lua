@@ -361,9 +361,11 @@ function mod.HadesKillPresentation(unit, args)
 	mod.ClearStoredAmmoHero()
 	mod.DestroyHadesFightObstacles()
 	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { unit.ObjectId }, BlockDeathWeapons = true })
-	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" } })
+	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow", "HadesReverseDarkness" } })
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
+	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignette" })
 	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignetteHold" })
+	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessGroundFog" })
 	SetAlpha({ Ids = GetIds({ Name = "Terrain_Lighting_01" }), Fraction = 1.0, Duration = 1.0 })
 
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = false })
@@ -423,6 +425,11 @@ function mod.HadesKillPresentation(unit, args)
 	else
 		game.wait(4.0, game.RoomThreadName)
 	end
+
+	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignette" })
+	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignetteHold" })
+	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessGroundFog" })
+	SetAlpha({ Ids = GetIds({ Name = "Terrain_Lighting_01" }), Fraction = 1.0, Duration = 0.5 })
 
 	if not game.CurrentRun.IsDreamRun then
 		game.ProcessTextLines(unit.BossPresentationOutroTextLineSets)
