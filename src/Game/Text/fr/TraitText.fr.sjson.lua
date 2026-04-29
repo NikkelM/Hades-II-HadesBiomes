@@ -232,7 +232,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- #region Old Grudge Dream Run text
+	-- #region Dream Run Trait Texts
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Haine Ancestrale",
@@ -243,6 +243,17 @@ local newData = {
 		InheritFrom = "BaseStatLine",
 		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Dégâts infligés :",
 		Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1} {#Prev}{#ItalicFormat}de leur {!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Dissidence Chronique",
+		Description = "Si vous affrontez {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}, ceux-ci invoqueront moins d'ennemis que d'habitude.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Quantité d'ennemis invoqués :",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

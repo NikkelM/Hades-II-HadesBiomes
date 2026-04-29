@@ -231,7 +231,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- #region Old Grudge Dream Run text
+	-- #region Dream Run Trait Texts
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "宿仇旧怨",
@@ -242,6 +242,17 @@ local newData = {
 		InheritFrom = "BaseStatLine",
 		DisplayName = "{!Icons.Bullet}{#PropertyFormat} {$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}生命值减少：",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "众怨难平",
+		Description = "面对{$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}时，敌方援军数量减少。",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat} {$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}召唤的援军：",
+		Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

@@ -231,7 +231,7 @@ local newData = {
 	-- },
 	-- #endregion
 
-	-- #region Old Grudge Dream Run text
+	-- #region Dream Run Trait Texts
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Birikmiş Hınç",
@@ -242,6 +242,17 @@ local newData = {
 		InheritFrom = "BaseStatLine",
 		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Azaltılan {$Keywords.CharChronos}, {$Keywords.CharTyphon} veya {$Keywords.CharHades} Canı:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Umulmadık Anlaşmazlık",
+		Description = "{$Keywords.CharChronos}, {$Keywords.CharTyphon} veya {$Keywords.CharHades}, karşılaşmanızda daha az düşman çağırır.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Çağırdığı Düşman Oranı:",
+		Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

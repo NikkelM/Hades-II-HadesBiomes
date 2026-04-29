@@ -231,7 +231,7 @@ local newData = {
 	-- },
 	-- #endregion
 
-	-- #region Old Grudge Dream Run text
+	-- #region Dream Run Trait Texts
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Παλιά χρωστούμενα",
@@ -242,6 +242,17 @@ local newData = {
 		InheritFrom = "BaseStatLine",
 		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Μείωση Ζωής [Κρόνου]{$Keywords.CharChronos}, [Τυφώνα]{$Keywords.CharTyphon} ή [Άδη]{$Keywords.CharHades}:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Βαθιά αντιγνωμία",
+		Description = "Αν αντιμετωπίσεις τον [Κρόνο]{$Keywords.CharChronos}, τον [Τυφώνα]{$Keywords.CharTyphon} ή τον [Άδη]{$Keywords.CharHades}, έχει λιγότερες ενισχύσεις με το μέρος του.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Εχθροί που καλεί ο {$Keywords.CharChronos}, ο {$Keywords.CharTyphon} ή ο {$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

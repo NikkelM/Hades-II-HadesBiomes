@@ -231,7 +231,7 @@ local newData = {
 	-- },
 	-- #endregion
 
-	-- #region Old Grudge Dream Run text
+	-- #region Dream Run Trait Texts
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Давня кривда",
@@ -242,6 +242,17 @@ local newData = {
 		InheritFrom = "BaseStatLine",
 		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Здоров'я [Кроноса]{$Keywords.CharChronos}, [Тифона]{$Keywords.CharTyphon} або [Аїда]{$Keywords.CharHades}:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Категорична незгода",
+		Description = "{$Keywords.CharChronos}, {$Keywords.CharTyphon} або {$Keywords.CharHades} викликатиме менше ворогів під час вашого двобою (якщо він буде).",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Посіпак [Кроноса]{$Keywords.CharChronos}, [Тифона]{$Keywords.CharTyphon} або [Аїда]{$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

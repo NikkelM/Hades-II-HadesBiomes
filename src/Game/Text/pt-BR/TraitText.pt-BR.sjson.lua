@@ -231,7 +231,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- #region Old Grudge Dream Run text
+	-- #region Dream Run Trait Texts
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Velha Mágoa",
@@ -242,6 +242,17 @@ local newData = {
 		InheritFrom = "BaseStatLine",
 		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Vida perdida por {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}:",
 		Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Cisão Profunda",
+		Description = "{$Keywords.CharChronos}, {$Keywords.CharTyphon} e {$Keywords.CharHades} invocam menos reforços em combate.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Inimigos invocados por {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

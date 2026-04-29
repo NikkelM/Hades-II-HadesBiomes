@@ -231,7 +231,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- #region Old Grudge Dream Run text
+	-- #region Dream Run Trait Texts
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Antico Rancore",
@@ -242,6 +242,17 @@ local newData = {
 		InheritFrom = "BaseStatLine",
 		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Riduzione Vita {$Keywords.CharChronos}, {$Keywords.CharTyphon} o {$Keywords.CharHades}:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Dissenso Cronico",
+		Description = "Se incontri {$Keywords.CharChronos}, {$Keywords.CharTyphon} o {$Keywords.CharHades}, evocheranno una quantità minore di rinforzi.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Nemici Evocati da {$Keywords.CharChronos}, {$Keywords.CharTyphon} o {$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

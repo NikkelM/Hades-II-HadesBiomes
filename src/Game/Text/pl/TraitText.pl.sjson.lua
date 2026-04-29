@@ -232,7 +232,7 @@ local newData = {
 	},
 	-- #endregion
 
-	-- #region Old Grudge Dream Run text
+	-- #region Dream Run Trait Texts
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Waśń Rodowa",
@@ -243,6 +243,17 @@ local newData = {
 		InheritFrom = "BaseStatLine",
 		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Redukcja zdrowia [Chronosa]{$Keywords.CharChronos}, [Tyfona]{$Keywords.CharTyphon} lub [Hadesa]{$Keywords.CharHades}:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Głęboki Rozłam",
+		Description = "{$Keywords.CharChronos}, {$Keywords.CharTyphon} lub {$Keywords.CharHades} przywołuje podczas walki mniejszą liczbę sojuszników.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Sojusznicy [Chronosa]{$Keywords.CharChronos}, [Tyfona]{$Keywords.CharTyphon} lub [Hadesa]{$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }
