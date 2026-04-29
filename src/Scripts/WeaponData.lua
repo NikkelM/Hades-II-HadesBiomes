@@ -2245,6 +2245,8 @@ local weaponModifications = {
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
+			-- Exclude from Massive elite attribute projectile size increase
+			ProjectileScaleMultiplier = 1,
 		},
 	},
 	ShadeDeathSpawnElite = {
@@ -2257,6 +2259,8 @@ local weaponModifications = {
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
+			-- Exclude from Massive elite attribute projectile size increase
+			ProjectileScaleMultiplier = 1,
 		},
 	},
 	ShadeDeathSpawnSuperElite = {
@@ -2269,6 +2273,8 @@ local weaponModifications = {
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
+			-- Exclude from Massive elite attribute projectile size increase
+			ProjectileScaleMultiplier = 1,
 		},
 	},
 	-- #endregion
