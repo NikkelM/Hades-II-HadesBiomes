@@ -55,14 +55,15 @@ Other fixes and improvements:
 - Fixed: If Alecto is defeated very quickly after her final stage transition, the "rage" colour tint does not disappear until changing rooms.
 - Fixed: After defeating Megaera, Alecto or the Hydra, multiple voicelines may play over each other in some cases.
 - Fixed: Skull-Crusher enemies can appear in encounters with Thanatos in Asphodel, even though Thanatos will rarely succeed in killing them.
-- Fixed: One of the biome music tracks for Asphodel is missing as it was removed from the base game files with Patch 2.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
 - Fixed: Gorgons morphed by "Twilight Curse" turn into sheep that are smaller than they should be.
 - Fixed: If petrified by a Gorgon while sprinting, Melinoë continues sliding over the ground instead of coming to a stop.
 - Fixed: Eurydice's boon offering flavour text sometimes refers to her and Orpheus, even when she is alone.
 - Fixed: After receiving a blessing from Eurydice, Melinoë sometimes reacts with a voiceline from Zagreus.
+- Fixed: One of the biome music tracks for Asphodel is missing as it was removed from the base game files with Patch 2.
 - Fixed: Music can sometimes go missing after a Barge of Death encounter, if a specific combinations of other encounters preceded it.
+- Fixed: Music events for Zagreus' Journey regions can sometimes be triggered in vanilla biomes during Dream Runs.
 - Fixed: The Lernaean Bone Hydra has no neck elements constraining its movements.
 - Fixed: Some fog and branches flicker on a specific Elysium map.
 - Fixed: Exalted Shades always target the closest dropped weapon instead of a random one.

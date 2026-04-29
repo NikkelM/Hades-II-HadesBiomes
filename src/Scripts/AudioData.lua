@@ -32,8 +32,8 @@ local tartarusRoomStartMusicEvents = {
 	{
 		GameStateRequirements = {
 			{
-				Path = { "CurrentRun", "BiomesReached" },
-				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge", "Surface" },
 			},
 			{
 				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
@@ -61,18 +61,14 @@ local tartarusRoomStartMusicEvents = {
 	{
 		GameStateRequirements = {
 			{
-				Path = { "CurrentRun", "BiomesReached" },
-				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsAny = { "Tartarus", "Asphodel", "Elysium", "Challenge", "Surface" },
 			},
 			{
 				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
 			},
 			{
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
-			},
-			{
-				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
-				IsNone = { "Styx" },
 			},
 			{
 				Path = { "CurrentRun", "RunDepthCache" },
@@ -86,8 +82,8 @@ local tartarusRoomStartMusicEvents = {
 	{
 		GameStateRequirements = {
 			{
-				Path = { "CurrentRun", "BiomesReached" },
-				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsAny = { "Tartarus", "Asphodel", "Elysium", "Challenge", "Surface" },
 			},
 			{
 				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
@@ -99,10 +95,6 @@ local tartarusRoomStartMusicEvents = {
 				Path = { "AudioState", "MusicSection", },
 				Comparison = "==",
 				Value = 0,
-			},
-			{
-				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
-				IsNone = { "Styx" },
 			},
 			{
 				FunctionName = "RequiredMusicSectionRoomDuration",
