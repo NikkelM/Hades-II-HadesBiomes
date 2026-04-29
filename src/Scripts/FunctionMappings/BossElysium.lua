@@ -20,7 +20,7 @@ function mod.ElysiumChampionsDreamRunIntro(source, args)
 		SetAnimation({ Name = source.TauntAnimation, DestinationId = source.ObjectId })
 	end
 	game.StartBossRoomMusic()
-	game.wait(1.9)
+	game.wait(3.7)
 end
 
 function mod.PlayPreLineTauntAnimFromSource(source, args)

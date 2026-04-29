@@ -124,6 +124,12 @@ function mod.BossIntroCharon(eventSource, args)
 	game.ShowCombatUI("BossIntroCharon")
 end
 
+function mod.CharonDreamRunIntro(source, args)
+	mod.StartCharonBossRoomMusic()
+	SetAnimation({ Name = "CharonTaunt", DestinationId = source.ObjectId })
+	game.wait(0.7)
+end
+
 function mod.StartCharonBossRoomMusic()
 	-- /Music/CharonFightTheme
 	game.SecretMusicPlayer("{c5808c4e-a192-4f33-bcae-1e1415b6f8e8}", { Section = 0 })
@@ -153,6 +159,7 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 
 	StopAnimation({ Name = "Invincibubble_Charon", DestinationId = boss.ObjectId })
 	SetLifeProperty({ DestinationId = boss.ObjectId, Property = "InvulnerableFx", Value = nil })
+	boss.IgnoreInvincibubbleOnHit = false
 	SetAnimation({ DestinationId = boss.ObjectId, Name = GetThingDataValue({ Id = boss.ObjectId, Property = "Graphic" }) })
 	LockCamera({ Id = boss.ObjectId, Duration = 1.25 })
 	Move({ Id = boss.ObjectId, DestinationId = 40055, SuccessDistance = 32 })
