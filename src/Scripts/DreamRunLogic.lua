@@ -12,9 +12,7 @@ modutil.mod.Path.Wrap("SelectNextDreamBiome", function(base, source, args)
 		if game.GameState.ModsNikkelMHadesBiomesClearedRunsCache >= 1 then
 			table.insert(game.CurrentRun.DreamBiomePool, "Asphodel")
 			table.insert(game.CurrentRun.DreamBiomePool, "Elysium")
-			if game.GameState.TextLinesRecord["Ending01"] then
-				table.insert(game.CurrentRun.DreamBiomePool, "Styx")
-			end
+			table.insert(game.CurrentRun.DreamBiomePool, "Styx")
 		end
 
 		-- special handling for the first biome on the first dream run

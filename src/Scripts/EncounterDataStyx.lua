@@ -156,6 +156,19 @@ local encounterModifications = {
 		SkipCombatBeginsVoiceLines = true,
 	},
 	BossHadesPeaceful = {
+		RequiredTextLines = mod.NilValue,
+		RequiredFalseTextLines = mod.NilValue,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "PersephoneMeeting09" }
+			},
+			{
+				PathFalse = { "GameState", "TextLinesRecord", "PersephoneReturnsHome01" }
+			},
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" }
+			},
+		},
 		LoadModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicSurfaceModded", },
 		-- We need the Hades symbol for the exit animation from BiomeI
 		LoadPackages = { "BiomeI" },
