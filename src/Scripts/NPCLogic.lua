@@ -4,7 +4,7 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	args = args or {}
 
 	-- Change the portrait if requested
-	if args.PortraitName ~= nil and screen.CurrentPortrait ~= args.PortraitName then
+	if args.PortraitName ~= nil and screen.CurrentPortrait ~= nil and screen.CurrentPortrait ~= args.PortraitName then
 		SetAnimation({ DestinationId = screen.PortraitId, Name = screen.CurrentPortrait .. "_Exit" })
 		game.waitUnmodified(source.PortraitExitWait or 0.3)
 		SetAnimation({ DestinationId = screen.PortraitId, Name = args.PortraitName })
