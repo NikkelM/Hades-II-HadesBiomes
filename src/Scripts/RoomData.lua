@@ -111,7 +111,12 @@ local charonRoomModifications = {
 		NextRoomResumeMusic = true,
 
 		UnthreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroCharon" },
+			[1] = {
+				FunctionName = _PLUGIN.guid .. "." .. "BossIntroCharon",
+				Args = {
+					DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "CharonDreamRunIntro",
+				},
+			},
 		},
 	},
 }
