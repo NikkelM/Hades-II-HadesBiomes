@@ -609,11 +609,7 @@ local roomModifications = {
 	-- GameStateRequirements to choose the correct arena depending on the EM level
 	X_Boss01 = {
 		GameStateRequirements = {
-			{
-				Path = { "GameState", "ShrineUpgrades", "BossDifficultyShrineUpgrade" },
-				Comparison = "<",
-				Value = 2,
-			},
+			NamedRequirementsFalse = { "BossDifficultyActive" },
 		},
 		-- Don't show bounty/Dream Run banners in boss room
 		ThreadedEvents = {},
@@ -640,11 +636,7 @@ local roomModifications = {
 	},
 	X_Boss02 = {
 		GameStateRequirements = {
-			{
-				Path = { "GameState", "ShrineUpgrades", "BossDifficultyShrineUpgrade" },
-				Comparison = ">=",
-				Value = 2,
-			},
+			NamedRequirements = { "BossDifficultyActive" },
 		},
 		-- Don't show bounty/Dream Run banners in boss room
 		ThreadedEvents = {},
