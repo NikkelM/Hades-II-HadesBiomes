@@ -43,7 +43,7 @@ Other fixes and improvements:
 - Fixed: The player gets stuck after collecting the reward in Charon's boss fight room.
 - Fixed: Brimstone and Voidstone enemies have no small tethered crystals floating around them.
 - Fixed: If Gale attacks a Brimstone or Voidstone enemy with tethers attached to it, the game may crash.
-- Fixed: The Doomstone's lasers do not disappear when it is frozen. 
+- Fixed: The Doomstone's lasers do not disappear when it is frozen.
 - Fixed: Skullomats morphed by "Twilight Curse" can still spawn Numbskulls.
 - Fixed: Skullomats morphed by "Twilight Curse" turn into sheep that are smaller than they should be.
 - Fixed: Some dialogues with Orpheus cannot be triggered.
@@ -106,7 +106,7 @@ Other fixes and improvements:
 - Fixed: Starting a Chaos Trial in one of the new biomes does not prompt you to check your loadout.
 - Fixed: Relationship entries for story NPCs that unlock a keepsake do not show the related icon in the Codex.
 - Fixed: Relationship entries for story NPCs that unlock a minor prophecy do not show the related icon in the Codex.
-- Fixed: Progress for the "Hold The Onions" minor prophecy resets when taking damage during an Erebus encounter, even if you previously cleared three encounters hitless. 
+- Fixed: Progress for the "Hold The Onions" minor prophecy resets when taking damage during an Erebus encounter, even if you previously cleared three encounters hitless.
 - Fixed: Thanatos' "Growing Closer" arrow in the Codex is placed after the wrong entry.
 - Fixed: Trying to navigate to the "Zagreus' Journey" cauldron category on keyboard or controller crashes the game if Alchemy has not been unlocked yet.
 - Fixed: Some text localizations for relationship dialogue are missing.
@@ -191,7 +191,7 @@ Other fixes and improvements:
 - Added a new incantation that allows you to remember Lernie's nickname.
 - Updated a number of boon icons with enhanced visuals.
 - Fixed: The game may crash if the last Zagreus' Journey run was more than ten runs ago.
-- Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlayed over the blacked-out death screen.
+- Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlaid over the blacked-out death screen.
 - Fixed: The Hydra can get stuck between obstacles after it dashes into the lava in very rare circumstances.
 - Fixed: Archer traps in Elysium sometimes fail to fire the arrow.
 - Fixed: Some codex entries overflow the intended area in the Codex.
@@ -534,7 +534,7 @@ Other fixes and improvements:
 - Balancing: Reduced the forward momentum of Theseus' spear spin attack to make it easier to dodge out of range.
 - Balancing: Slightly increased Chariot ram speed.
 - Balancing: Increased the time it takes for enemies to start attacking after the player enters a new room in Asphodel.
-- Fixed: Opening the Broker screen crashes the game if the mod was temporarily disabled and then enabled again, and the player loaded into the Crossroads inbetween.
+- Fixed: Opening the Broker screen crashes the game if the mod was temporarily disabled and then enabled again, and the player loaded into the Crossroads in between.
 - Fixed: Judgment and Crystal Figurine trigger for both Asterius and Theseus, doubling their effects.
 - Fixed: Vow of Menace can take effect in Boss encounters.
 - Fixed: Meeting Tiny Vermin for the first time could have a longer than expected wait time before the fight begins.

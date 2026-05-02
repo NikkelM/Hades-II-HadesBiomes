@@ -22,7 +22,7 @@ Take a look at what Haelian and Boated think of the mod:
 <br>
 After installing the mod, a Chaos Gate will appear in the Crossroads, which will allow you to experience Zagreus' journey through the Underworld as Melinoë.
 
-It is highly recommended that you complete the main story of Hades before playing with this mod, as not all story events are included.
+It is highly recommended that you complete the main story of the first Hades game before playing with this mod, as not all story events are included.
 
 > Refer to the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki) with any questions before opening an issue.
 
