@@ -303,6 +303,10 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_DreamBossesDefeatedMessage",
 	-- 	DisplayName = "VISAGES VANQUISHED",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_Objective_ThanatosKills_DreamRun",
+	-- 	DisplayName = "{#TeamFormat}Foes Slain by {#Prev}{#TeamThanFormat}Visage of Thanatos{#Prev}: {$ThanatosKills}",
+	-- },
 	-- #endregion
 	-- #endregion
 

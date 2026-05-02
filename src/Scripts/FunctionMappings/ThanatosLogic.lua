@@ -354,18 +354,18 @@ function mod.TrackThanatosChallengeProgress(encounter, victim, killer)
 	local maxTimeSincePlayerDamage = encounter.MaxTimeSincePlayerDamage or 5
 	if killer ~= nil and killer.ObjectId == encounter.ThanatosId then
 		encounter.ThanatosKills = encounter.ThanatosKills + 1
-		game.UpdateObjectiveDescription("ThanatosKills", "Objective_ThanatosKills", "ThanatosKills", encounter.ThanatosKills)
+		game.UpdateObjective("ThanatosKills", "ThanatosKills", encounter.ThanatosKills, { Pulse = true })
 	elseif killer ~= nil and killer == game.CurrentRun.Hero then
 		encounter.PlayerKills = encounter.PlayerKills + 1
-		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
+		game.UpdateObjective("PlayerKills", "PlayerKills", encounter.PlayerKills, { Pulse = true })
 	elseif victim ~= nil and (victim.ModsNikkelMHadesBiomesIsThanatosCursed or game.Contains(victim.ActiveEffectsAtDamageStart, "ThanatosCurse")) then
 		-- Custom case added
 		encounter.ThanatosKills = encounter.ThanatosKills + 1
-		game.UpdateObjectiveDescription("ThanatosKills", "Objective_ThanatosKills", "ThanatosKills", encounter.ThanatosKills)
+		game.UpdateObjective("ThanatosKills", "ThanatosKills", encounter.ThanatosKills, { Pulse = true })
 	elseif killer ~= nil and (killer.Charmed or killer.DamageType == "Ally") then
 		-- Charmed enemy or familiar kill
 		encounter.PlayerKills = encounter.PlayerKills + 1
-		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
+		game.UpdateObjective("PlayerKills", "PlayerKills", encounter.PlayerKills, { Pulse = true })
 	elseif victim ~= nil and victim.TimeOfLastPlayerDamage ~= nil and game._worldTime - victim.TimeOfLastPlayerDamage < maxTimeSincePlayerDamage then
 		-- Might be an environment kill, but the player recently damaged the enemy, so we count it as a player kill
 		encounter.PlayerKills = encounter.PlayerKills + 1
