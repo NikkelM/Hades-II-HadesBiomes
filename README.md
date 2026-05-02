@@ -3,7 +3,7 @@
 ![Zagreus' Journey](./img/Readme/ZagreusJourneyTartarus.png)
 
 _Zagreus' Journey_ is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
-Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past - all integrated into the main game as if it was always there: Naturally progress through the new biomes, unlock new incantations to perform, reveal and complete new Minor Prophecies, forge bonds with NPCs in familiar and new locations, collect over 30 new resources to spend on new cosmetics and music, and test your skills with new Testaments and Chaos Trials.
+Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past - all integrated into the main game as if it was always there: Naturally progress through the new biomes, unlock new incantations to perform, reveal and complete new Minor Prophecies, forge bonds with NPCs in familiar and new locations, collect over 30 new resources to spend on new cosmetics and music, and test your skills with new Testaments, Chaos Trials and in Dream Dives.
 Find the full list of features below!
 
 Wonder what it plays like?
