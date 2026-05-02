@@ -15,12 +15,16 @@ end
 
 function mod.ElysiumChampionsDreamRunIntro(source, args)
 	args = args or {}
+	game.StartBossRoomMusic()
 	args.SkipWaitForInitialPan = true
 	if source.TauntAnimation ~= nil then
 		SetAnimation({ Name = source.TauntAnimation, DestinationId = source.ObjectId })
 	end
-	game.StartBossRoomMusic()
-	game.wait(3.7)
+	if game.IsBossDifficultyShrineUpgradeActive() then
+		game.wait(2.3)
+	else
+		game.wait(3.7)
+	end
 end
 
 function mod.PlayPreLineTauntAnimFromSource(source, args)
