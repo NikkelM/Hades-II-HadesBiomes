@@ -64,7 +64,7 @@ function mod.HarpySupportAI(enemy)
 		local supportAIWeaponSetName = game.GetRandomValue(enemy.SupportAINames)
 		local weaponName = game.GetRandomValue(enemy.SupportAIWeaponOptions[supportAIWeaponSetName])
 		if weaponName ~= nil then
-			local weaponData = WeaponData[weaponName]
+			local weaponData = game.WeaponData[weaponName]
 			local weaponAIData = game.ShallowCopyTable(enemy.DefaultAIData) or enemy
 			if weaponData ~= nil then
 				if weaponData.AIData ~= nil then

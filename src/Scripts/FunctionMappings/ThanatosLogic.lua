@@ -63,7 +63,7 @@ function mod.ThanatosSpawnPresentation(thanatos)
 	CreateAnimation({ Name = "ThanatosTeleport", DestinationId = thanatos.ObjectId })
 
 	game.thread(game.PlayVoiceLines, thanatos.EntranceVoiceLines, nil, thanatos)
-	wait(0.5, game.RoomThreadName)
+	game.wait(0.5, game.RoomThreadName)
 
 	PanCamera({ Ids = thanatos.ObjectId, Duration = 1.5, EaseIn = 0.05, EaseOut = 0.3 })
 	PlaySound({ Name = "/Leftovers/World Sounds/MapZoomSlow" })

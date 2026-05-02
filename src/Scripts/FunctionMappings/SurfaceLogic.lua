@@ -42,7 +42,7 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 
 	-- Disable all weapons, as the DisableWeapons call through BlockCombat somehow doesn't block the ranged casts
 	for weaponName, _ in pairs(game.MapState.EquippedWeapons) do
-		SetWeaponProperty({ WeaponName = weaponName, DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
+		SetWeaponProperty({ WeaponName = weaponName, DestinationId = game.CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
 	end
 
 	AdjustZoom({ Fraction = game.CurrentRun.CurrentRoom.IntroZoomFraction or 0.7, Duration = 0.0 })
@@ -259,7 +259,7 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 
 	-- Disable all weapons, as the DisableWeapons call through BlockCombat somehow doesn't block the ranged casts
 	for weaponName, _ in pairs(game.MapState.EquippedWeapons) do
-		SetWeaponProperty({ WeaponName = weaponName, DestinationId = CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
+		SetWeaponProperty({ WeaponName = weaponName, DestinationId = game.CurrentRun.Hero.ObjectId, Property = "Enabled", Value = false })
 	end
 
 	-- Need to set the speech bubble higher as the model/anchor is different
@@ -632,7 +632,7 @@ function mod.HandleReturnBoatRide(eventSource, args)
 		})
 		SetAnimation({
 			DestinationId = persephoneId,
-			Name = CurrentRun.CurrentRoom.BoatAnimData.Persephone or "PersephoneEndingBoat_IdleLoop"
+			Name = game.CurrentRun.CurrentRoom.BoatAnimData.Persephone or "PersephoneEndingBoat_IdleLoop"
 		})
 		game.CurrentRun.CurrentRoom.BoatRideAnimationsSet = true
 	end

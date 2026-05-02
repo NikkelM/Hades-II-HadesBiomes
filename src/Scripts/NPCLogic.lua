@@ -740,7 +740,7 @@ function mod.BedroomIntermissionApproach(source, args)
 	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = game.CurrentRun.Hero.ObjectId })
 	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
 
-	wait(0.1)
+	game.wait(0.1)
 
 	SetAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "MelinoeIdleWeaponless" })
 	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = args.AngleTowardTargetId or targetObjectId })
