@@ -109,6 +109,7 @@ Other fixes and improvements:
 - Fixed: Progress for the "Hold The Onions" minor prophecy resets when taking damage during an Erebus encounter, even if you previously cleared three encounters hitless.
 - Fixed: Thanatos' "Growing Closer" arrow in the Codex is placed after the wrong entry.
 - Fixed: Trying to navigate to the "Zagreus' Journey" cauldron category on keyboard or controller crashes the game if Alchemy has not been unlocked yet.
+- Fixed: Some texts do not have their special formatting terminated correctly.
 - Fixed: Some text localizations for relationship dialogue are missing.
 - Fixed: Some Codex entries for Greek, Turkish, Ukrainian and Traditional Chinese have unterminated italic text sections.
 - Fixed: Texturing artifacts are visible on certain maps in certain situations.
