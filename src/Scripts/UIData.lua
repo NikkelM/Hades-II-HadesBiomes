@@ -1,3 +1,4 @@
+-- #region Icons
 -- "Rage" icon for Alecto
 local superIcon = {
 	TexturePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Icons\\Super",
@@ -63,3 +64,21 @@ local newIcons = {
 for iconName, iconData in pairs(newIcons) do
 	game.IconData[iconName] = game.IconData[iconName] or iconData
 end
+-- #endregiom
+
+-- #region Text
+local newTextFormats = {
+	TeamThanFormat = {
+		Graft = true,
+		Color = game.Color.ThanatosVoice,
+		Font = "LatoSemibold",
+	},
+}
+-- Adapted from SetupFormatContainers which runs on PreThingCreation before we can add to the table
+for formatName, formatData in pairs(newTextFormats) do
+	formatData.Name = formatName
+	formatData.AutoSetDataProperties = true
+	game.TextFormats[formatName] = formatData
+	CreateFormatContainer(formatData)
+end
+-- #endregion
