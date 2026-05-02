@@ -922,7 +922,7 @@ local roomModifications = {
 		ModsNikkelMHadesBiomes_DreamRunHeroEndPoint = 50058,
 	},
 	D_Hub = {
-		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesmegaerahome", "Modsnikkelmhadesbiomeszagreushome", "MegaeraField", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesmegaerahome", "Modsnikkelmhadesbiomeszagreushome", "Modsnikkelmhadesbiomesstoryteller", "MegaeraField", "ZagreusField" },
 		-- "/Leftovers/Ambience/MatchSiteIPoolAmbience"
 		Ambience = "{e65b32ad-3a7e-4f88-9149-3260e929f04c}",
 		UnthreadedEvents = {
