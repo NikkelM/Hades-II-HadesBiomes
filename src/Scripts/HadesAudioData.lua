@@ -1428,8 +1428,31 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- #endregion
 	-- #region Megaera
 	EnteredFuryChamberVoiceLines = {
-		-- TODO: Additional Melinoe voicelines (where there were Zag voicelines before)
 		{ GlobalVoiceLines = "DreamRunFinalBossGreetingVoiceLines" },
+		-- Extreme Measures active
+		{
+			PreLineWait = 1.35,
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			SuccessiveChanceToPlayAll = 0.1,
+			GameStateRequirements = {
+				NamedRequirements = { "BossDifficultyActive" },
+			},
+			{ Cue = "/VO/Melinoe_3525",      Text = "Hello, ladies...", },
+			{ Cue = "/VO/MelinoeField_3136", Text = "I don't like either one of you.", RequiredMaxSupportAINames = 1 },
+			{ Cue = "/VO/MelinoeField_3133", Text = "These two again.",                RequiredMaxSupportAINames = 1 },
+		},
+		-- All other cases
+		{
+			PreLineWait = 1.35,
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			SuccessiveChanceToPlay = 0.1,
+			{ Cue = "/VO/MelinoeField_0249", Text = "You don't know who you're dealing with..." },
+			{ Cue = "/VO/MelinoeField_0472", Text = "Let this be a message to your lord!", },
+			{ Cue = "/VO/MelinoeField_1132", Text = "My blood is not for you!" },
+			{ Cue = "/VO/MelinoeField_1133", Text = "Thirsty for more are we?" },
+		},
 	},
 	MultiFuryFightStartVoiceLines = {
 		{

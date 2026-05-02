@@ -413,7 +413,12 @@ local roomReplacements = {
 		EnterVoiceLines = {
 			-- Chaos Trial/Bounty
 			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
-			-- TODO: Normal Melinoe voicelines
+			{
+				RandomRemaining = true,
+				PreLineWait = 1.35,
+				SuccessiveChanceToPlayAll = 0.05,
+				{ Cue = "/VO/Melinoe_5124", Text = "{#Emph}Whew... {#Prev}too hot back there.", },
+			},
 		},
 	},
 
@@ -427,7 +432,6 @@ local roomReplacements = {
 
 	Y_Boss01 = {
 		EnterVoiceLines = {
-			-- TODO: Additional Melinoe voicelines (where there were Zag voicelines before)
 			{ GlobalVoiceLines = "DreamRunFinalBossGreetingVoiceLines" },
 			{
 				RandomRemaining = true,

@@ -14554,7 +14554,6 @@ mod.NPCData = mod.NPCData or {
 				PlayOnce = true,
 				UseInitialInteractSetup = true,
 				UseableOffSource = true,
-				-- TODO: Add the Sisyphus meetings
 				RequiredTextLines = { "ThanatosGift08", "SisyphusMeeting_AboutMegAndThanatos01", "SisyphusGift06" },
 				{
 					Cue = "/VO/ZagreusHome_1463",

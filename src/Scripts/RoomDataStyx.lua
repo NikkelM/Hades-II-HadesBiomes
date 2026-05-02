@@ -403,7 +403,21 @@ local roomReplacements = {
 		EnterVoiceLines = {
 			-- Chaos Trial/Bounty
 			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
-			-- TODO: Normal Melinoe voicelines
+			{
+				RandomRemaining = true,
+				PreLineWait = 1.35,
+				SuccessiveChanceToPlayAll = 0.3,
+				-- Tartarus
+				{ Cue = "/VO/Melinoe_1461",      Text = "Almost there..." },
+				{ Cue = "/VO/Melinoe_1462",      Text = "Not much farther now..." },
+				-- Oceanus
+				{ Cue = "/VO/MelinoeField_0130", Text = "There's that rancid scent...", },
+				{ Cue = "/VO/MelinoeField_0133", Text = "{#Emph}Brr{#Prev}, that's cold..." },
+				-- Olympus
+				{ Cue = "/VO/MelinoeField_2456", Text = "I'm here..." },
+				{ Cue = "/VO/MelinoeField_2457", Text = "Made it this far..." },
+				{ Cue = "/VO/Melinoe_1463",      Text = "Cold up here..." },
+			},
 		},
 	},
 
