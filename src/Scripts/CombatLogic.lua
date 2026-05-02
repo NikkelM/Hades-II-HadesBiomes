@@ -94,14 +94,6 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 		if victim.OnDeathCrowdReaction ~= nil then
 			game.thread(game.CrowdReactionPresentation, victim.OnDeathCrowdReaction)
 		end
-
-		if victim.StopBiomeTimerIfComboPartnerDead and not victim.CannotDieFromDamage then
-			local bothBossesDead = false
-			local partnerId = GetClosestUnitOfType({ Id = victim.ObjectId, DestinationName = victim.ComboPartnerName })
-			if partnerId == 0 or game.RequiredKillEnemies[partnerId] == nil or game.RequiredKillEnemies[partnerId].IsDead or game.RequiredKillEnemies[partnerId].Health <= 0 then
-				bothBossesDead = true
-			end
-		end
 	end
 end)
 
