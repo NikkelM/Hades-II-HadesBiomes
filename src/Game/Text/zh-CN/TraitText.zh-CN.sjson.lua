@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "重要客户",
 		Description =
-		"所有的物品价格变为 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}（仅限本次脱逃）{#Prev}。"
+		"所有的物品价格变为 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}（仅限本次脱逃）{#Prev}。"
 	},
 	-- #endregion
 
@@ -235,12 +235,14 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "宿仇旧怨",
-		Description = "面对{$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}时，于战斗开始 {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} 秒{#Prev}后令其受到爆发伤害。",
+		Description =
+		"面对{$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}时，于战斗开始 {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} 秒{#Prev}后令其受到爆发伤害。",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat} {$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}生命值减少：",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat} {$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}生命值减少：",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
 	},
 	{
@@ -251,7 +253,8 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat} {$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}召唤的援军：",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat} {$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}召唤的援军：",
 		Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion

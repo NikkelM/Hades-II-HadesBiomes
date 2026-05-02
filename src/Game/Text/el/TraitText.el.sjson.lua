@@ -151,7 +151,7 @@ local newData = {
 	-- 	Id = "DiscountTrait",
 	-- 	DisplayName = "Valued Customer",
 	-- 	Description =
-	-- 	"All items can be purchased for {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(this escape attempt){#Prev}.",
+	-- 	"All items can be purchased for {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}(this escape attempt){#Prev}.",
 	-- },
 	-- #endregion
 
@@ -235,23 +235,27 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Παλιά χρωστούμενα",
-		Description = "Αν αντιμετωπίζεις τον [Κρόνο]{$Keywords.CharChronos}, τον [Τυφώνα]{$Keywords.CharTyphon} ή τον [Άδη]{$Keywords.CharHades}, δέχεται μια μεγάλη ποσότητα ζημιάς αφού περάσουν {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} δευτ.",
+		Description =
+		"Αν αντιμετωπίζεις τον [Κρόνο]{$Keywords.CharChronos}, τον [Τυφώνα]{$Keywords.CharTyphon} ή τον [Άδη]{$Keywords.CharHades}, δέχεται μια μεγάλη ποσότητα ζημιάς αφού περάσουν {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} δευτ.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Μείωση Ζωής [Κρόνου]{$Keywords.CharChronos}, [Τυφώνα]{$Keywords.CharTyphon} ή [Άδη]{$Keywords.CharHades}:",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Μείωση Ζωής [Κρόνου]{$Keywords.CharChronos}, [Τυφώνα]{$Keywords.CharTyphon} ή [Άδη]{$Keywords.CharHades}:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
 		DisplayName = "Βαθιά αντιγνωμία",
-		Description = "Αν αντιμετωπίσεις τον [Κρόνο]{$Keywords.CharChronos}, τον [Τυφώνα]{$Keywords.CharTyphon} ή τον [Άδη]{$Keywords.CharHades}, έχει λιγότερες ενισχύσεις με το μέρος του.",
+		Description =
+		"Αν αντιμετωπίσεις τον [Κρόνο]{$Keywords.CharChronos}, τον [Τυφώνα]{$Keywords.CharTyphon} ή τον [Άδη]{$Keywords.CharHades}, έχει λιγότερες ενισχύσεις με το μέρος του.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Εχθροί που καλεί ο {$Keywords.CharChronos}, ο {$Keywords.CharTyphon} ή ο {$Keywords.CharHades}:",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Εχθροί που καλεί ο {$Keywords.CharChronos}, ο {$Keywords.CharTyphon} ή ο {$Keywords.CharHades}:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion

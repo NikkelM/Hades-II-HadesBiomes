@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "Geschätzter Kunde",
 		Description =
-		"Alle Artikel kosten {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(bei diesem Fluchtversuch){#Prev}."
+		"Alle Artikel kosten {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}(bei diesem Fluchtversuch){#Prev}."
 	},
 	-- #endregion
 
@@ -248,7 +248,8 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
 		DisplayName = "Tiefer Zwist",
-		Description = "{$Keywords.CharChronos}, {$Keywords.CharTyphon} und {$Keywords.CharHades} rufen im Kampf weniger Verstärkung herbei.",
+		Description =
+		"{$Keywords.CharChronos}, {$Keywords.CharTyphon} und {$Keywords.CharHades} rufen im Kampf weniger Verstärkung herbei.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",

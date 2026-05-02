@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "Cliente Valioso",
 		Description =
-		"Todos os itens podem ser comprados por {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(nesta tentativa de fuga){#Prev}."
+		"Todos os itens podem ser comprados por {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}(nesta tentativa de fuga){#Prev}."
 	},
 	-- #endregion
 
@@ -235,23 +235,27 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Velha Mágoa",
-		Description = "{$Keywords.CharChronos}, {$Keywords.CharTyphon} e {$Keywords.CharHades} sofrem uma rajada de dano {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} s {#Prev}após o início do combate.",
+		Description =
+		"{$Keywords.CharChronos}, {$Keywords.CharTyphon} e {$Keywords.CharHades} sofrem uma rajada de dano {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} s {#Prev}após o início do combate.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Vida perdida por {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}:",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Vida perdida por {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}:",
 		Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
 		DisplayName = "Cisão Profunda",
-		Description = "{$Keywords.CharChronos}, {$Keywords.CharTyphon} e {$Keywords.CharHades} invocam menos reforços em combate.",
+		Description =
+		"{$Keywords.CharChronos}, {$Keywords.CharTyphon} e {$Keywords.CharHades} invocam menos reforços em combate.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Inimigos invocados por {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}:",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Inimigos invocados por {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion

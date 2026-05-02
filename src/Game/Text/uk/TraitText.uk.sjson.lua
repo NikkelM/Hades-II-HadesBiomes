@@ -151,7 +151,7 @@ local newData = {
 	-- 	Id = "DiscountTrait",
 	-- 	DisplayName = "Valued Customer",
 	-- 	Description =
-	-- 	"All items can be purchased for {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(this escape attempt){#Prev}.",
+	-- 	"All items can be purchased for {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}(this escape attempt){#Prev}.",
 	-- },
 	-- #endregion
 
@@ -235,23 +235,27 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Давня кривда",
-		Description = "{$Keywords.CharChronos}, {$Keywords.CharTyphon} або {$Keywords.CharHades} зазнає разючої шкоди, коли мине {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} перші секунди {#Prev}вашого двобою (якщо він буде).",
+		Description =
+		"{$Keywords.CharChronos}, {$Keywords.CharTyphon} або {$Keywords.CharHades} зазнає разючої шкоди, коли мине {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} перші секунди {#Prev}вашого двобою (якщо він буде).",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Здоров'я [Кроноса]{$Keywords.CharChronos}, [Тифона]{$Keywords.CharTyphon} або [Аїда]{$Keywords.CharHades}:",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Здоров'я [Кроноса]{$Keywords.CharChronos}, [Тифона]{$Keywords.CharTyphon} або [Аїда]{$Keywords.CharHades}:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
 		DisplayName = "Категорична незгода",
-		Description = "{$Keywords.CharChronos}, {$Keywords.CharTyphon} або {$Keywords.CharHades} викликатиме менше ворогів під час вашого двобою (якщо він буде).",
+		Description =
+		"{$Keywords.CharChronos}, {$Keywords.CharTyphon} або {$Keywords.CharHades} викликатиме менше ворогів під час вашого двобою (якщо він буде).",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Посіпак [Кроноса]{$Keywords.CharChronos}, [Тифона]{$Keywords.CharTyphon} або [Аїда]{$Keywords.CharHades}:",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Посіпак [Кроноса]{$Keywords.CharChronos}, [Тифона]{$Keywords.CharTyphon} або [Аїда]{$Keywords.CharHades}:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
