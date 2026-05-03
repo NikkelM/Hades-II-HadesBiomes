@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "Prezioso Cliente",
 		Description =
-		"Tutti i prezzi d'acquisto sono ridotti del {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(per questo tentativo di fuga){#Prev}."
+		"Tutti i prezzi d'acquisto sono ridotti del {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}(per questo tentativo di fuga){#Prev}."
 	},
 	-- #endregion
 
@@ -228,6 +228,35 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait",
 		DisplayName = "Amnistia (Ruote Fiammanti)",
 		Description = "Impedisce la comparsa di nemici del tipo {$TooltipData.BlockedEnemyTypes[1]}.",
+	},
+	-- #endregion
+
+	-- #region Dream Run Trait Texts
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "Antico Rancore",
+		Description =
+		"Se incontri {$Keywords.CharChronos}, {$Keywords.CharTyphon} o {$Keywords.CharHades}, subiranno una scarica di danni dopo i primi {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} Sec.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Riduzione Vita {$Keywords.CharChronos}, {$Keywords.CharTyphon} o {$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Dissenso Cronico",
+		Description =
+		"Se incontri {$Keywords.CharChronos}, {$Keywords.CharTyphon} o {$Keywords.CharHades}, evocheranno una quantità minore di rinforzi.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Nemici Evocati da {$Keywords.CharChronos}, {$Keywords.CharTyphon} o {$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

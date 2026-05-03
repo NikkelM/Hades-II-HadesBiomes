@@ -3,6 +3,7 @@ modutil.mod.Path.Wrap("CalculateActiveEnemyCap", function(base, currentRun, curr
 
 	if currentEncounter.EnemyCountShrineModifierName then
 		local modifierName = currentEncounter.EnemyCountShrineModifierName
+		-- Typo intentional, used this way in Hades encounter definitions
 		enemyCap = math.floor(enemyCap +
 			(game.GetNumShrineUpgrades(modifierName) * currentEncounter.EnemyCountShineModifierAmount))
 	end

@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "Valued Customer",
 		Description =
-		"All items can be purchased for {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(this escape attempt){#Prev}.",
+		"All items can be purchased for {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}(this escape attempt){#Prev}.",
 	},
 	-- #endregion
 
@@ -228,6 +228,31 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait",
 		DisplayName = "Flame Wheels Release",
 		Description = "Prevent {$TooltipData.BlockedEnemyTypes[1]} foes from appearing in {$Keywords.EncounterPlural}.",
+	},
+	-- #endregion
+
+	-- #region Dream Run Trait Texts
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "Old Grudge",
+		Description = "If you confront {$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades}, they take a burst of damage after the first {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} Sec.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades} Life Reduced:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Deep Dissent",
+		Description = "If you confront {$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades}, they have fewer reinforcements to fight for them.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades} Foes Summoned:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

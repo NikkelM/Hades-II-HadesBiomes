@@ -196,12 +196,19 @@ function mod.HasSeenRoomInRun(run, roomName)
 end
 
 -- Check if a given Tartarus boss/Fury is eligible
--- Always returns true if there is no forced boss room on the current run, otherwise checks if the checked boss room is the one that is currently forced
 function mod.IsTartarusBossRoomEligible(source, args)
-	if not game.CurrentRun or not game.CurrentRun.ModsNikkelMHadesBiomesForcedTartarusBossRoom or not args.BossRoom then
-		return true
+	-- Some bounties/Chaos Trials force a certain boss to appear
+	if game.CurrentRun.ModsNikkelMHadesBiomesForcedTartarusBoss ~= nil then
+		return game.CurrentRun.ModsNikkelMHadesBiomesForcedTartarusBoss == args.BossName
 	end
-	return game.CurrentRun.ModsNikkelMHadesBiomesForcedTartarusBossRoom == args.BossRoom
+
+	-- This boss needs to have been killed in the past to be eligible for a Dream Run
+	if game.CurrentRun.IsDreamRun and args.BossName ~= nil then
+		return game.GameState.EnemyKills[args.BossName] ~= nil
+	end
+
+	-- By default, all bosses are eligible
+	return true
 end
 
 function mod.GetFastestRunClearTime(currentRun)
@@ -476,6 +483,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredMinAnyTextLines ~= nil then
+		if requirements.RequiredMinAnyTextLines.TextLines == nil then
+			return false
+		end
 		local numTrue = 0
 		for k, textLineSet in pairs(requirements.RequiredMinAnyTextLines.TextLines) do
 			if game.GameState.TextLinesRecord[textLineSet] then
@@ -487,6 +497,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 	if requirements.RequiredMaxAnyTextLines ~= nil then
+		if requirements.RequiredMaxAnyTextLines.TextLines == nil then
+			return false
+		end
 		local numTrue = 0
 		for k, textLineSet in pairs(requirements.RequiredMaxAnyTextLines.TextLines) do
 			if game.GameState.TextLinesRecord[textLineSet] then
@@ -1788,19 +1801,34 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	-- end
 
 	if requirements.RequiredMinActiveMetaUpgradeLevel ~= nil then
-		if GetNumShrineUpgrades(requirements.RequiredMinActiveMetaUpgradeLevel.Name) < requirements.RequiredMinActiveMetaUpgradeLevel.Count then
+		-- For BossDifficultyShrineUpgrade in Dream Runs, use the depth-aware check
+		if requirements.RequiredMinActiveMetaUpgradeLevel.Name == "BossDifficultyShrineUpgrade" and game.CurrentRun.IsDreamRun then
+			if not game.IsBossDifficultyShrineUpgradeActive() then
+				return false
+			end
+		elseif GetNumShrineUpgrades(requirements.RequiredMinActiveMetaUpgradeLevel.Name) < requirements.RequiredMinActiveMetaUpgradeLevel.Count then
 			return false
 		end
 	end
 
 	if requirements.RequiredMaxActiveMetaUpgradeLevel ~= nil then
-		if GetNumShrineUpgrades(requirements.RequiredMaxActiveMetaUpgradeLevel.Name) > requirements.RequiredMaxActiveMetaUpgradeLevel.Count then
+		-- For BossDifficultyShrineUpgrade in Dream Runs, use the depth-aware check
+		if requirements.RequiredMaxActiveMetaUpgradeLevel.Name == "BossDifficultyShrineUpgrade" and game.CurrentRun.IsDreamRun then
+			if game.IsBossDifficultyShrineUpgradeActive() then
+				return false
+			end
+		elseif GetNumShrineUpgrades(requirements.RequiredMaxActiveMetaUpgradeLevel.Name) > requirements.RequiredMaxActiveMetaUpgradeLevel.Count then
 			return false
 		end
 	end
 
 	if requirements.RequiredActiveMetaUpgradeLevel ~= nil then
-		if GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgradeLevel.Name) ~= requirements.RequiredActiveMetaUpgradeLevel.Count then
+		-- For BossDifficultyShrineUpgrade in Dream Runs, use the depth-aware check
+		if requirements.RequiredActiveMetaUpgradeLevel.Name == "BossDifficultyShrineUpgrade" and game.CurrentRun.IsDreamRun then
+			if not game.IsBossDifficultyShrineUpgradeActive() then
+				return false
+			end
+		elseif GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgradeLevel.Name) ~= requirements.RequiredActiveMetaUpgradeLevel.Count then
 			return false
 		end
 	end
@@ -1962,10 +1990,10 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			return voiceLine
 		end
 
-		local translated = voiceLine:gsub("/VO/Storyteller_", "/VO/Megaera_0")
-		translated = translated:gsub("/VO/Charon_", "/VO/Megaera_1")
-		translated = translated:gsub("/VO/Persephone_", "/VO/Megaera_2")
-		translated = translated:gsub("/VO/ZagreusHome_", "/VO/ZagreusField_0")
+		local translated = voiceLine:gsub("/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
+		translated = translated:gsub("/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
+		translated = translated:gsub("/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
+		translated = translated:gsub("/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
 
 		return translated
 	end
@@ -2923,6 +2951,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.MinRunsSinceAnyTextLines ~= nil then
+		if requirements.MinRunsSinceAnyTextLines.TextLines == nil then
+			return false
+		end
 		for _, textLines in pairs(requirements.MinRunsSinceAnyTextLines.TextLines) do
 			local runsSinceOccurred = 0
 			for runIndex = #game.GameState.RunHistory + 1, 1, -1 do
@@ -3045,6 +3076,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredMinAnyCosmetics ~= nil then
+		if requirements.RequiredMinAnyCosmetics.Cosmetics == nil then
+			return false
+		end
 		local numTrue = 0
 		for k, name in pairs(requirements.RequiredMinAnyCosmetics.Cosmetics) do
 			if game.GameState.WorldUpgrades[name] then
@@ -3056,6 +3090,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 	if requirements.RequiredMaxAnyCosmetics ~= nil then
+		if requirements.RequiredMaxAnyCosmetics.Cosmetics == nil then
+			return false
+		end
 		local numTrue = 0
 		for k, name in pairs(requirements.RequiredMaxAnyCosmetics.Cosmetics) do
 			if game.GameState.WorldUpgrades[name] then

@@ -329,9 +329,74 @@ local roomReplacements = {
 			},
 		},
 
+		ThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+		PostCombatReloadThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+
 		CombatOverMusicEvents = mod.CombatOverMusicEvents.Generic,
 	},
 	X_Intro = {
+		ThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText",
+				GameStateRequirements = {
+					NamedRequirementsFalse = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = {
+					Text = "Location_Asphodel",
+					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
+					AnimationName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn",
+					AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut",
+				},
+			},
+			{
+				FunctionName = "DisplayInfoBanner",
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock",
+				Args = {
+					Biome = "Asphodel"
+				},
+			},
+			{
+				FunctionName = "CheckObjectiveSetSource",
+				Args = { ObjectiveSetName = "BountyAdvancedTooltip" },
+			},
+		},
+
 		EnterVoiceLines = {
 			-- Chaos Trial/Bounty
 			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
@@ -403,6 +468,9 @@ local roomModifications = {
 		MusicActiveStems = { "Bass" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Asphodel_DreamBanner",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Asphodel_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeAsphodel" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeAsphodel" },
@@ -429,10 +497,25 @@ local roomModifications = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
 		},
-		ThreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerAsphodelIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerAsphodelOut" }, },
-			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Asphodel" } },
+
+		-- For Dream Dives
+		NoReward = mod.NilValue,
+		ForcedRewardStore = "RunProgress",
+		IneligibleRewards = game.RewardSets.OpeningRoomBans,
+		-- The terrain tile itself
+		SpawnRewardOnId = 554486,
+		DisableRewardMagnetisim = true,
+		RewardGameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				Path = { "CurrentRun", "EnteredBiomes" },
+				Comparison = "==",
+				Value = 0,
+			},
 		},
+		ModsNikkelMHadesBiomes_DreamRunHeroEndPoint = 50060,
 
 		HarvestPointChances = { 0.02, },
 		ShovelPointChance = 0.02,
@@ -443,7 +526,7 @@ local roomModifications = {
 
 	-- SHOPS
 	X_Shop01 = {
-		LoadModdedVoiceBanks = { "Megaera" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon" },
 		StoreDataName = "WorldShop",
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		FamiliarsPreferSpawnPointMovement = true,
@@ -487,6 +570,7 @@ local roomModifications = {
 		SkipLastKillPresentation = true,
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
+		RewardPreviewIcon = "RoomRewardSubIcon_PreBoss",
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 		-- Deciding which room to create, depending on EM level
@@ -497,6 +581,8 @@ local roomModifications = {
 		-- Disable all music if it's a free reward room (no Charon/Shop)
 		IgnoreStemMixer = true,
 		MusicMutedStems = { "Drums", "Bass", "Guitar", },
+
+		ZagContractRewardDestinationId = 776332,
 
 		ShovelPointChance = 0.35,
 		PickaxePointChance = 0.35,
@@ -523,12 +609,11 @@ local roomModifications = {
 	-- GameStateRequirements to choose the correct arena depending on the EM level
 	X_Boss01 = {
 		GameStateRequirements = {
-			{
-				Path = { "GameState", "ShrineUpgrades", "BossDifficultyShrineUpgrade" },
-				Comparison = "<",
-				Value = 2,
-			},
+			NamedRequirementsFalse = { "BossDifficultyActive" },
 		},
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroHydra", },
 		},
@@ -544,16 +629,18 @@ local roomModifications = {
 		BackupCauseOfDeath = "HydraHeadImmortal",
 		CombatResolvedVoiceLines = {},
 
+		CanSpawnDreamReward = true,
+		SkipTimedDropResourceInDream = true,
+
 		HasPickaxePoint = false,
 	},
 	X_Boss02 = {
 		GameStateRequirements = {
-			{
-				Path = { "GameState", "ShrineUpgrades", "BossDifficultyShrineUpgrade" },
-				Comparison = ">=",
-				Value = 2,
-			},
+			NamedRequirements = { "BossDifficultyActive" },
 		},
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		BackupCauseOfDeath = "HydraHeadImmortal",
 		CombatResolvedVoiceLines = {},
 
@@ -562,7 +649,7 @@ local roomModifications = {
 
 	-- OTHER
 	X_Story01 = {
-		LoadModdedVoiceBanks = { "Eurydice", "Orpheus", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Eurydice", "Orpheus", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse = true,
 		-- We play our own music in this room, don't play any by default
@@ -668,7 +755,7 @@ local roomModifications = {
 	},
 	X_PostBoss01 = {
 		-- For Intercom
-		LoadModdedVoiceBanks = { "HadesField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesintercom" },
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",

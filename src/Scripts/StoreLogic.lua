@@ -48,7 +48,8 @@ modutil.mod.Path.Wrap("RemoveStoreItem", function(base, args)
 		end
 
 		-- Ensure the persisted store is always up to date
-		game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore.StoreOptions = game.CurrentRun.CurrentRoom.Store.StoreOptions
+		game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore.StoreOptions = game.DeepCopyTable(game.CurrentRun.CurrentRoom
+			.Store.StoreOptions)
 	end
 end)
 
@@ -63,7 +64,8 @@ modutil.mod.Path.Wrap("GetShopCostMultiplier", function(base)
 
 	if game.HeroHasTrait("ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon") then
 		local traitData = game.GetHeroTrait("ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon") or {}
-		local orpheusMultiplier = game.RandomFloat(traitData.ModsNikkelMHadesBiomesMinStoreDiscount, traitData.ModsNikkelMHadesBiomesMaxStoreDiscount)
+		local orpheusMultiplier = game.RandomFloat(traitData.ModsNikkelMHadesBiomesMinStoreDiscount,
+			traitData.ModsNikkelMHadesBiomesMaxStoreDiscount)
 		multiplier = multiplier - orpheusMultiplier
 	end
 
@@ -79,7 +81,7 @@ modutil.mod.Path.Context.Wrap("RestockWorldItem", function(replacedIndex, restoc
 		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and room.Name and game.RoomData[room.Name] and game.RoomData[room.Name].PersistentStore then
 			if room.Store and room.Store.StoreOptions and room.Store.StoreOptions[replacedIndex] == nil then
 				room.Store.StoreOptions[replacedIndex] = itemData
-				game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore.StoreOptions = room.Store.StoreOptions
+				game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore.StoreOptions = game.DeepCopyTable(room.Store.StoreOptions)
 			end
 		end
 	end)
@@ -102,4 +104,3 @@ modutil.mod.Path.Wrap("UpdateStoreItemCostText", function(base)
 
 	return base()
 end)
-

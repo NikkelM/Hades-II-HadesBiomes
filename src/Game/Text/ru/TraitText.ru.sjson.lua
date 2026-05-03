@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "Ценный клиент",
 		Description =
-		"Все предметы продаются со скидкой {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(во время этой попытки побега){#Prev}."
+		"Все предметы продаются со скидкой {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}(во время этой попытки побега){#Prev}."
 	},
 	-- #endregion
 
@@ -229,6 +229,35 @@ local newData = {
 		DisplayName = "Освобождение пылающих колёс",
 		Description =
 		"Определённые враги ({$TooltipData.BlockedEnemyTypes[1]}) больше не будут появляться в {$Keywords.EncounterPlural}.",
+	},
+	-- #endregion
+
+	-- #region Dream Run Trait Texts
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "Старые распри",
+		Description =
+		"При столкновении с [Кроносом]{$Keywords.CharChronos}, [Тифоном]{$Keywords.CharTyphon} или [Аидом]{$Keywords.CharHades} они получат сильный урон через {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} сек. после начала боя.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Урон [Кроносу]{$Keywords.CharChronos}, [Тифону]{$Keywords.CharTyphon} или [Аиду]{$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}–{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Глубокий спуск",
+		Description =
+		"При столкновении с [Кроносом]{$Keywords.CharChronos}, [Тифоном]{$Keywords.CharTyphon} или [Аидом]{$Keywords.CharHades} на их стороне будет сражаться меньше прислужников.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Прислужников [Кроноса]{$Keywords.CharChronos}, [Тифона]{$Keywords.CharTyphon} или [Аида]{$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

@@ -114,8 +114,6 @@ end
 
 function mod.StartHadesRun(source, args)
 	args = args or {}
-	-- Don't allow rain in modded runs
-	game.GameState.NextBiomeStateName = "VanillaState"
 
 	local useAltDiveAnimation = false
 	if (game.GameState.ModsNikkelMHadesBiomesCompletedRunsCache or 0) > 2 and game.RandomChance(0.25) then
@@ -301,12 +299,12 @@ function mod.SpawnHadesSkellyStatues(source, args)
 		return
 	end
 
-	-- Check if the Sisyphus and ZagreusField voicebanks should be loaded
+	-- Check if the Skelly and ZagreusHome voicebanks should be loaded
 	local skellyId = GetIdsByType({ Name = "NPC_Skelly_01" })[1]
 	if skellyId ~= nil then
 		local skelly = game.ActiveEnemies[skellyId]
 		if skelly and skelly.NextInteractLines and game.Contains(mod.SkellyStatueConversations, skelly.NextInteractLines.Name) then
-			game.LoadVoiceBanks({ "Sisyphus", "ZagreusField" })
+			game.LoadVoiceBanks({ "Modsnikkelmhadesbiomesskelly", "Modsnikkelmhadesbiomeszagreushome" })
 		end
 	end
 
@@ -392,7 +390,7 @@ end
 local skellyPriorities = game.NarrativeData.NPC_Skelly_01.InteractTextLinePriorities
 for i, entry in ipairs(skellyPriorities) do
 	if entry == "SkellyAboutTrophyQuest03" then
-		-- Insert in reverse order so they end up: Intro → Unveil01 → Unveil02 → Unveil03
+		-- Insert in reverse order so they end up: Intro -> Unveil01 -> Unveil02 -> Unveil03
 		table.insert(skellyPriorities, i + 1, "ModsNikkelMHadesBiomes_HadesStatueUnveil03")
 		table.insert(skellyPriorities, i + 1, "ModsNikkelMHadesBiomes_HadesStatueUnveil02")
 		table.insert(skellyPriorities, i + 1, "ModsNikkelMHadesBiomes_HadesStatueUnveil01")
@@ -402,7 +400,7 @@ for i, entry in ipairs(skellyPriorities) do
 end
 
 game.EnemyData.NPC_Skelly_01.InteractTextLineSets = game.EnemyData.NPC_Skelly_01.InteractTextLineSets or {}
--- Manually renamed ZagreusHome_ to ZagreusField_0 and Skelly_ to Sisyphus_0
+-- Manually renamed ZagreusHome_ to Modsnikkelmhadesbiomeszagreushome_ and Skelly_ to Modsnikkelmhadesbiomesskelly_
 game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesStatueIntro01 = {
 	Name = "ModsNikkelMHadesBiomes_HadesStatueIntro01",
 	PlayOnce = true,
@@ -420,13 +418,13 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		},
 	},
 	{
-		Cue = "/VO/Sisyphus_00178",
+		Cue = "/VO/Modsnikkelmhadesbiomesskelly_0178",
 		PreLineAnim = "Skelly_Explaining",
 		Text =
 		"I'll level with you, pal. You have impressed somebody well above my pay grade here, and so... they have a little proposition for you, you listening?"
 	},
 	{
-		Cue = "/VO/ZagreusField_01054",
+		Cue = "/VO/Modsnikkelmhadesbiomeszagreushome_1054",
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
 		Speaker = "CharProtag",
 		UsePlayerSource = true,
@@ -438,7 +436,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		"Let me guess... they want me to fight all the way through the Underworld, having used the Pact of Punishment over there to make the going even more treacherous than it already is, and if I succeed, they'll reward me with some sort of useless trinket?"
 	},
 	{
-		Cue = "/VO/Sisyphus_00179",
+		Cue = "/VO/Modsnikkelmhadesbiomesskelly_0179",
 		PreLineAnim = "Skelly_Babbling",
 		Text =
 		"Wrong! We're talking something really big, here, pal, you see that thing back there? Trinket. Come on, what are you, scared?"
@@ -462,7 +460,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		},
 	},
 	{
-		Cue = "/VO/Sisyphus_00183",
+		Cue = "/VO/Modsnikkelmhadesbiomesskelly_0183",
 		PreLineAnim = "Skelly_Explaining",
 		PreLineFunctionName = _PLUGIN.guid .. "." .. "HadesStatueUnveilPresentation",
 		PreLineFunctionArgs = {
@@ -476,7 +474,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		"I just knew you had it in you, pal, enjoying your new prize? Pact of Punishment, {#DialogueItalicFormat}Shmact {#Prev}of Punishment, no problem, know what I mean? 'Course, that was just the easy one you got there, pretty sure I could've got that one, myself."
 	},
 	{
-		Cue = "/VO/ZagreusField_00678",
+		Cue = "/VO/Modsnikkelmhadesbiomeszagreushome_0678",
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
 		PreLineAnim = "MelTalkExplaining01",
 		PreLineAnimTarget = "Hero",
@@ -488,7 +486,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		"Wait, just so I understand. I literally toiled through hell and back, and my reward is just... a statue of you? Don't get me wrong, it's lovely, it's just... I don't know what I expected."
 	},
 	{
-		Cue = "/VO/Sisyphus_00184",
+		Cue = "/VO/Modsnikkelmhadesbiomesskelly_0184",
 		PreLineAnim = "Skelly_Babbling",
 		Text =
 		"Look, boyo, there was a little mix-up when we put in the request for that thing, see? I told 'em to make something that'll make me look good with my sources, and anyway that's how it all turned out. The other ones turned out much better, though, you'll see!"
@@ -512,7 +510,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		},
 	},
 	{
-		Cue = "/VO/ZagreusField_00681",
+		Cue = "/VO/Modsnikkelmhadesbiomeszagreushome_0681",
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
 		Speaker = "CharProtag",
 		PreLineAnim = "MelTalkBrooding01",
@@ -532,14 +530,14 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		"Skelly, let me ask you something. Did you really commission three nearly-identical statues of yourself to goad me into using the Pact of Punishment?"
 	},
 	{
-		Cue = "/VO/Sisyphus_00188",
+		Cue = "/VO/Modsnikkelmhadesbiomesskelly_0188",
 		PreLineAnim = "Skelly_Babbling",
 		Emote = "PortraitEmoteFiredUp",
 		Text =
 		"I am offended, pal! You haven't even seen the third one yet, so how can you insinuate a thing like that?! Maybe I was wrong about you. I thought you really were the one!"
 	},
 	{
-		Cue = "/VO/ZagreusField_00682",
+		Cue = "/VO/Modsnikkelmhadesbiomeszagreushome_0682",
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
 		Speaker = "CharProtag",
 		UsePlayerSource = true,
@@ -551,7 +549,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		"You're only saying that to get me to apologize and try and unlock the last of your three identical statues, aren't you."
 	},
 	{
-		Cue = "/VO/Sisyphus_00189",
+		Cue = "/VO/Modsnikkelmhadesbiomesskelly_0189",
 		PreLineAnim = "Skelly_Explaining",
 		Emote = "PortraitEmoteFiredUp",
 		Text =
@@ -576,7 +574,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		},
 	},
 	{
-		Cue = "/VO/Sisyphus_00193",
+		Cue = "/VO/Modsnikkelmhadesbiomesskelly_0193",
 		PreLineAnim = "Skelly_Babbling",
 		PreLineFunctionName = _PLUGIN.guid .. "." .. "HadesStatueUnveilPresentation",
 		PreLineFunctionArgs = {
@@ -590,7 +588,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		"Look I'm sorry I messed up your statues, boyo. Really. When I saw them, I just kind of freaked. But then I figured there's no way he's going to see how they turned out, so, I just rolled with it, you know?"
 	},
 	{
-		Cue = "/VO/ZagreusField_00686",
+		Cue = "/VO/Modsnikkelmhadesbiomeszagreushome_0686",
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Default_01",
 		PreLineAnim = "MelTalkPensive01",
 		PreLineAnimTarget = "Hero",
@@ -602,7 +600,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		"You shouldn't have underestimated me, mate. But... I shouldn't have said such awful things about your statues. You must have really gone out of your way to get them here."
 	},
 	{
-		Cue = "/VO/Sisyphus_00194",
+		Cue = "/VO/Modsnikkelmhadesbiomesskelly_0194",
 		PreLineAnim = "Skelly_Explaining",
 		Text =
 		"Oh you better believe it, pal! So how about we call it even. We've been through a lot. Both of us! Really learned from this experience, and now, we share a deeper understanding, yeah?"

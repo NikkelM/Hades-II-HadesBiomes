@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "Client Fidèle",
 		Description =
-		"Toutes les marchandises de Charon coûtent {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} moins cher {#ItalicFormat}(pour cette tentative d'évasion){#Prev}."
+		"Toutes les marchandises de Charon coûtent {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} moins cher {#ItalicFormat}(pour cette tentative d'évasion){#Prev}."
 	},
 	-- #endregion
 
@@ -229,6 +229,31 @@ local newData = {
 		DisplayName = "Amnistie (Chars Follets)",
 		Description =
 		"Garantit l'absence de {$TooltipData.BlockedEnemyTypes[1]} de vos [Combats]{$Keywords.EncounterPlural}.",
+	},
+	-- #endregion
+
+	-- #region Dream Run Trait Texts
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "Haine Ancestrale",
+		Description = "Si vous affrontez {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}, ceux-ci subiront une puissante salve de dégâts {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} s {#Prev}après le début du combat.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Dégâts infligés :",
+		Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1} {#Prev}{#ItalicFormat}de leur {!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Dissidence Chronique",
+		Description = "Si vous affrontez {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}, ceux-ci invoqueront moins d'ennemis que d'habitude.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Quantité d'ennemis invoqués :",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

@@ -1,4 +1,4 @@
--- These are translated to Megaera_0xxxx for Hades II
+-- These are translated to Modsnikkelmhadesbiomesstoryteller_xxxx for Hades II
 mod.StorytellerVoicelines = {
 	-- Misc
 	Storyteller_0220 = true,

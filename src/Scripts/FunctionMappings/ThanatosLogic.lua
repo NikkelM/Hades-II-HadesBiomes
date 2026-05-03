@@ -12,7 +12,7 @@ function mod.ThanatosPreSpawnPresentation(eventSource)
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ThanatosSpawningVoiceLines, true)
 
 	game.wait(1.5, game.RoomThreadName)
-	game.thread(mod.DisplayLocationText, nil, {
+	game.thread(game.DisplayInfoBanner, nil, {
 		Text = "ThanatosMessage",
 		Delay = 0.95,
 		FadeColor = { 0, 1, 0.7, 1 },
@@ -63,7 +63,7 @@ function mod.ThanatosSpawnPresentation(thanatos)
 	CreateAnimation({ Name = "ThanatosTeleport", DestinationId = thanatos.ObjectId })
 
 	game.thread(game.PlayVoiceLines, thanatos.EntranceVoiceLines, nil, thanatos)
-	wait(0.5, game.RoomThreadName)
+	game.wait(0.5, game.RoomThreadName)
 
 	PanCamera({ Ids = thanatos.ObjectId, Duration = 1.5, EaseIn = 0.05, EaseOut = 0.3 })
 	PlaySound({ Name = "/Leftovers/World Sounds/MapZoomSlow" })
@@ -76,9 +76,11 @@ function mod.ThanatosSpawnPresentation(thanatos)
 
 	game.wait(2.0, game.RoomThreadName)
 
-	game.ProcessTextLines(thanatos.BossPresentationIntroTextLineSets)
-	game.ProcessTextLines(thanatos.BossPresentationTextLineSets)
-	game.ProcessTextLines(thanatos.BossPresentationRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		game.ProcessTextLines(thanatos.BossPresentationIntroTextLineSets)
+		game.ProcessTextLines(thanatos.BossPresentationTextLineSets)
+		game.ProcessTextLines(thanatos.BossPresentationRepeatableTextLineSets)
+	end
 
 	-- if game.GameState.TextLinesRecord["ThanatosFirstAppearance"] then
 	game.wait(0.5, game.RoomThreadName)
@@ -86,9 +88,11 @@ function mod.ThanatosSpawnPresentation(thanatos)
 	-- 	game.wait(2.0, game.RoomThreadName)
 	-- end
 
-	if not mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationIntroTextLineSets) then
-		if not mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationTextLineSets) then
-			mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		if not mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationIntroTextLineSets) then
+			if not mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationTextLineSets) then
+				mod.PlayRandomRemainingTextLines(thanatos, thanatos.BossPresentationRepeatableTextLineSets)
+			end
 		end
 	end
 
@@ -272,6 +276,19 @@ function mod.HandleThanatosEncounterReward(thanatos, args)
 	game.NPCRewardDropPreProcessArgs(thanatos.KillChallengeArgs)
 	game.NPCRewardDrop(thanatos, thanatos.KillChallengeArgs)
 
+	-- Skip dialogue in Dream Runs - disappear immediately after reward
+	if game.CurrentRun.IsDreamRun then
+		game.CheckDistanceTrigger(mod.PresetEventArgs.ThanatosFarewells, thanatos)
+		game.ActivatedObjects[thanatos.ObjectId] = nil
+		game.MapState.RoomRequiredObjects[thanatos.ObjectId] = nil
+		game.wait(0.2, game.RoomThreadName)
+		if game.CheckRoomExitsReady(game.CurrentRun.CurrentRoom) then
+			game.UnlockRoomExits(game.CurrentRun, game.CurrentRun.CurrentRoom)
+		end
+
+		return
+	end
+
 	game.CheckAvailableTextLines(thanatos)
 	AngleTowardTarget({ Id = thanatos.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
 	if thanatos.NextInteractLines ~= nil then
@@ -337,18 +354,18 @@ function mod.TrackThanatosChallengeProgress(encounter, victim, killer)
 	local maxTimeSincePlayerDamage = encounter.MaxTimeSincePlayerDamage or 5
 	if killer ~= nil and killer.ObjectId == encounter.ThanatosId then
 		encounter.ThanatosKills = encounter.ThanatosKills + 1
-		game.UpdateObjectiveDescription("ThanatosKills", "Objective_ThanatosKills", "ThanatosKills", encounter.ThanatosKills)
+		game.UpdateObjective("ThanatosKills", "ThanatosKills", encounter.ThanatosKills, { Pulse = true })
 	elseif killer ~= nil and killer == game.CurrentRun.Hero then
 		encounter.PlayerKills = encounter.PlayerKills + 1
-		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
+		game.UpdateObjective("PlayerKills", "PlayerKills", encounter.PlayerKills, { Pulse = true })
 	elseif victim ~= nil and (victim.ModsNikkelMHadesBiomesIsThanatosCursed or game.Contains(victim.ActiveEffectsAtDamageStart, "ThanatosCurse")) then
 		-- Custom case added
 		encounter.ThanatosKills = encounter.ThanatosKills + 1
-		game.UpdateObjectiveDescription("ThanatosKills", "Objective_ThanatosKills", "ThanatosKills", encounter.ThanatosKills)
+		game.UpdateObjective("ThanatosKills", "ThanatosKills", encounter.ThanatosKills, { Pulse = true })
 	elseif killer ~= nil and (killer.Charmed or killer.DamageType == "Ally") then
 		-- Charmed enemy or familiar kill
 		encounter.PlayerKills = encounter.PlayerKills + 1
-		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
+		game.UpdateObjective("PlayerKills", "PlayerKills", encounter.PlayerKills, { Pulse = true })
 	elseif victim ~= nil and victim.TimeOfLastPlayerDamage ~= nil and game._worldTime - victim.TimeOfLastPlayerDamage < maxTimeSincePlayerDamage then
 		-- Might be an environment kill, but the player recently damaged the enemy, so we count it as a player kill
 		encounter.PlayerKills = encounter.PlayerKills + 1

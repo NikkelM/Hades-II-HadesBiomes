@@ -9,7 +9,8 @@ game.MusicTrackData.Tartarus = {
 game.MusicTrackData.Asphodel = {
 	-- "/Music/MusicAsphodel1_MC"
 	{ Name = "{e798505f-3f49-4c12-9f8d-779ee6edec25}", },
-	{ Name = "/Music/MusicAsphodel2_MC", },
+	-- "/Music/MusicAsphodel2_MC"
+	{ Name = "{8907d7b3-9698-4cad-9bfa-9f9d42f28919}", },
 	-- "/Music/MusicAsphodel3_MC"
 	{ Name = "{9095ed41-3258-4161-ae60-23f686dfa394}", },
 }
@@ -31,8 +32,8 @@ local tartarusRoomStartMusicEvents = {
 	{
 		GameStateRequirements = {
 			{
-				Path = { "CurrentRun", "BiomesReached" },
-				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge", "Surface" },
 			},
 			{
 				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
@@ -60,18 +61,14 @@ local tartarusRoomStartMusicEvents = {
 	{
 		GameStateRequirements = {
 			{
-				Path = { "CurrentRun", "BiomesReached" },
-				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsAny = { "Tartarus", "Asphodel", "Elysium", "Challenge", "Surface" },
 			},
 			{
 				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
 			},
 			{
 				PathFalse = { "CurrentRun", "Hero", "IsDead" }
-			},
-			{
-				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
-				IsNone = { "Styx" },
 			},
 			{
 				Path = { "CurrentRun", "RunDepthCache" },
@@ -85,8 +82,8 @@ local tartarusRoomStartMusicEvents = {
 	{
 		GameStateRequirements = {
 			{
-				Path = { "CurrentRun", "BiomesReached" },
-				HasAny = { "Tartarus", "Asphodel", "Elysium", "Styx", "Surface" },
+				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+				IsAny = { "Tartarus", "Asphodel", "Elysium", "Challenge", "Surface" },
 			},
 			{
 				PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
@@ -98,10 +95,6 @@ local tartarusRoomStartMusicEvents = {
 				Path = { "AudioState", "MusicSection", },
 				Comparison = "==",
 				Value = 0,
-			},
-			{
-				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
-				IsNone = { "Styx" },
 			},
 			{
 				FunctionName = "RequiredMusicSectionRoomDuration",
@@ -147,47 +140,47 @@ local requiredGlobalVoiceLineModifications = {
 	-- These voicelines are not currently used
 	-- HadesDeathTauntVoiceLines = {
 	-- 	Find = "Hades_",
-	-- 	Replace = "HadesField_0"
+	-- 	Replace = "Modsnikkelmhadesbiomeshades_"
 	-- },
 	HadesPostBossVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	MegaeraGreetingVoiceLines = {
 		Find = "MegaeraHome_",
-		Replace = "Megaera_3",
+		Replace = "Modsnikkelmhadesbiomesmegaerahome_",
 	},
 	SurvivalEncounterStartVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	SurvivalEncounterSurvivedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	PerfectClearEncounterStartVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	PerfectClearEncounterFailedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	PerfectClearEncounterQuicklyFailedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	PerfectClearEncounterClearedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "HadesField_1",
+		Replace = "Modsnikkelmhadesbiomesintercom_",
 	},
 	PersephoneFishCaughtVoiceLines = {
 		Find = "Persephone_",
-		Replace = "Megaera_2",
+		Replace = "Modsnikkelmhadesbiomespersephone_",
 	},
 	ModsNikkelMHadesBiomes_FishNotCaughtVoiceLines = {
 		Find = "Persephone_",
-		Replace = "Megaera_2",
+		Replace = "Modsnikkelmhadesbiomespersephone_",
 	},
 }
 local function processCue(data, replacement)
@@ -360,6 +353,19 @@ if game.GlobalVoiceLines.RecordRunDepthVoiceLines then
 		IsNone = { "Surface" },
 	})
 end
+
+-- #region Modifications to vanilla voiceline requirements
+-- Also prevents CombatResolved equivalent follow-up voiceline (Death to Chronos)
+mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/VO/Melinoe_1774", {
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsNone = { "Q", "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
+	},
+	{
+		PathFalse = { "GameState", "ReachedTrueEnding" },
+	},
+})
+-- #endregion
 -- #endregion
 
 -- #region HeroVoiceLines

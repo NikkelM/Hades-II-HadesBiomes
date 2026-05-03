@@ -4,20 +4,23 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Tartarus, Asphodel, Elysium and Styx can now appear in Dream Dives. You can use the `z_ExcludeFromDreamDives` config value to prevent them from appearing.
 - Meet **Megaera** in Styx, and have a friendly chat and a bottle of Ambrosia or two. This will also allow you to build a relationship with Megaera (including unlocking her keepsake).
 - Advance through **50** new cosmetic ranks offered by the **Spirit Mixer**, from the lowly _Alpha Warden_ to the feared _Unseen One_. These ranks add new badges to your inventory and run clear screens, and are purely cosmetic.
 - **Commander Schelemeus** has managed to procure a new set of the *Gifts of the Veil* from an unknown underworld contact... turn up the heat, errmm, fear, and escape the Nightmare Realm to earn these prestigious trophies.
 - The **Lernaean Bone Hydra** has found its long-lost neck in the depths of Asphodel's lava.
 - You can now conclude **Sisyphus**' storyline by interacting with him and **Megaera**.
-- Added a new logo animation to the Main Menu to show that the mod is installed.
+- Added a set of new **Arcana Card Backs** depicting the four new regions you can journey through.
 - The mod no longer creates any files in the game's installation directory, making it entirely compatible with playing vanilla or switching profiles in r2modman. Installing this mod update will automatically remove any previously created files.
 
 Other fixes and improvements:
+- Added a new logo animation to the Main Menu to show that the mod is installed.
 - The Chaos Gate in the Training Grounds can now only show once you have met Chaos.
 - You can now salute story NPCs you meet during Zagreus' Journey runs.
 - Updated the description text of "Final Expense" offered by Orpheus to make it clearer that all shop items are always discounted.
 - If Thanatos has no new unique dialogue when he visits you at the start of a run, you can now pick up the starting boon without speaking to him first.
 - Thanatos and Megaera can now pay Sisyphus a visit.
+- Added an indicator icon for shop room reward previews if it is the shop immediately before the region's boss.
 - Added a new dialogue background for conversations in the Temple of Styx.
 - Hades and Theseus will now react with specific voicelines for certain Gods when using Godsent Hex effects against them.
 - Hades will now react to Melinoë going dark using "Unseen Ire" in the fight against him.
@@ -25,6 +28,7 @@ Other fixes and improvements:
 - Melinoë will now react to Hades calling Cerberus to his aid.
 - Added some additional contextual voicelines in various situations.
 - Added [zannc](https://github.com/excellent-ae) to the Credits for the [SharedKeepsakePort](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) contribution.
+- Added some additional location localizations for languages which did not have a localization in Hades.
 - Removed an internal workaround for safeguarding against crashes after the mod is uninstalled, as this is now more easily handled through vanilla game logic.
 - Mod installation has been moved to the game's main loading screen, and you will no longer see a black screen after a mod update. The total time to install remains the same.
 - The mod will no longer need to reinstall itself when the game updates. It will still reinstall when the mod itself receives an update.
@@ -35,32 +39,44 @@ Other fixes and improvements:
 - Balancing: The shockwave created by Hades' Cast projectile can now also damage Hades and other enemies.
 - Fixed: The Chaos boon in the opening room during the first run can be transformed into an Onion by the Vow of Forfeit.
 - Fixed: The Chaos boon in the opening room during the first run can be purged.
+- Fixed: Melinoë comments on starting her fight with Charon as if it were a normal encounter.
 - Fixed: The player gets stuck after collecting the reward in Charon's boss fight room.
 - Fixed: Brimstone and Voidstone enemies have no small tethered crystals floating around them.
 - Fixed: If Gale attacks a Brimstone or Voidstone enemy with tethers attached to it, the game may crash.
-- Fixed: The Doomstone's lasers do not disappear when it is frozen. 
+- Fixed: The Doomstone's lasers do not disappear when it is frozen.
 - Fixed: Skullomats morphed by "Twilight Curse" can still spawn Numbskulls.
 - Fixed: Skullomats morphed by "Twilight Curse" turn into sheep that are smaller than they should be.
 - Fixed: Some dialogues with Orpheus cannot be triggered.
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon cannot coexist with those summoned by "Sun Worshiper".
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon reduce the amount of enemies spawned in subsequent waves in the same encounter.
 - Fixed: Enemies summoned by Orpheus' "God of the Dead" boon can be transformed by "Twilight Curse".
+- Fixed: Entering a boss room sometimes does not resume music and play the boss theme if multiple special room types were chained beforehand.
 - Fixed: Megaera spins in place multiple times during an attack where she summons enemies to her aid, instead of spinning only once.
+- Fixed: If Alecto is defeated very quickly after her final stage transition, the "rage" colour tint does not disappear until changing rooms.
 - Fixed: After defeating Megaera, Alecto or the Hydra, multiple voicelines may play over each other in some cases.
 - Fixed: Skull-Crusher enemies can appear in encounters with Thanatos in Asphodel, even though Thanatos will rarely succeed in killing them.
+- Fixed: The kill counter objective for Thanatos is not coloured with his theme colour.
+- Fixed: The kill counter objectives in Thanatos encounters do not pulse when updating.
 - Fixed: Sprinting into certain Stalagmites in Asphodel makes them disappear immediately.
 - Fixed: Smoke Traps in Asphodel and smoke created through the "Smoker" elite perk trigger "Unseen Ire".
 - Fixed: Gorgons morphed by "Twilight Curse" turn into sheep that are smaller than they should be.
 - Fixed: If petrified by a Gorgon while sprinting, Melinoë continues sliding over the ground instead of coming to a stop.
-- Fixed: After receiving a blessing from Eurydice, Melinoë can react with a voiceline from Zagreus.
+- Fixed: Eurydice's boon offering flavour text sometimes refers to her and Orpheus, even when she is alone.
+- Fixed: After receiving a blessing from Eurydice, Melinoë sometimes reacts with a voiceline from Zagreus.
+- Fixed: One of the biome music tracks for Asphodel is missing as it was removed from the base game files with Patch 2.
+- Fixed: Music can sometimes go missing after a Barge of Death encounter, if a specific combinations of other encounters preceded it.
+- Fixed: Music events for Zagreus' Journey regions can sometimes be triggered in vanilla biomes during Dream Runs.
 - Fixed: The Lernaean Bone Hydra has no neck elements constraining its movements.
 - Fixed: Some fog and branches flicker on a specific Elysium map.
+- Fixed: Destructible pillars and eggs in Elysium do not respawn after reloading a save.
 - Fixed: Exalted Shades always target the closest dropped weapon instead of a random one.
 - Fixed: Exalted Shades spawned by Elysian Shades always spawn in the direction opposite the player instead of a random direction.
+- Fixed: Exalted Shades spawned by Elysian Shades spawn immediately instead of through a projectile.
 - Fixed: If the "Vow of Scars" is active and "HydraLite Gold" is offered by Patroclus, the number of locations the item will last is not shown.
 - Fixed: Saluting the Good Shade in Elysium will now more consistently play a voiceline.
 - Fixed: Melinoë's voicelines that play when (re-)entering the Styx Hub room play every time instead of only sometimes.
 - Fixed: Some shop items in the Styx shop can clip behind the base they sit on.
+- Fixed: The Cerberus bark that plays when returning to the Styx hub room after visiting the fountain room does not originate from Cerberus.
 - Fixed: The Snakestone's lasers do not disappear when it is frozen or morphed by "Twilight Curse".
 - Fixed: The Dire Satyr Cultist cannot turn fast enough to face the player before firing its ranged poison dart attack.
 - Fixed: The Gigantic Vermin's poison shake attack does not show the flying poison projectiles before they land and produce the poison puddles.
@@ -70,7 +86,9 @@ Other fixes and improvements:
 - Fixed: Cerberus' portrait when Hades calls him during the fight is misaligned.
 - Fixed: Hades' footsteps during his fight sometimes appear in random places.
 - Fixed: If Hades is hit by one of his own urn traps, he plays a voiceline as if the player was hit.
+- Fixed: The Doomstone summoned by Hades can teleport, causing its fragments to connect lasers out of bounds.
 - Fixed: Victory messages for having completed a certain number of clears may not be awarded if another more generic message is also eligible.
+- Fixed: Falling rubble from destructible pillars is not correctly attributed as trap damage in the run clear screen.
 - Fixed: Entering a room on the Surface plays a voiceline from Melinoë if you have never reached that many chambers in any kind of run.
 - Fixed: The "Prophecy completed" sound effect can play over the death animation on the Surface.
 - Fixed: Frozen and chilled enemies appear much darker than they should.
@@ -84,16 +102,22 @@ Other fixes and improvements:
 - Fixed: Ash and Bone door reward previews in Asphodel are located too high in the glass sphere.
 - Fixed: Custom dialogue with Hermes is not voiced if started in a shop, or after transforming loot using "The Artificer".
 - Fixed: The Wretched Sneak and Wringer enemies summoned by Hades during his fight show up with incorrect names in the victory screen's damage taken table.
+- Fixed: Some bosses do not acknowledge you are meeting them for the first time, instead referencing the Vow of Rivals being active, and instead initiate the first-time dialogue on a subsequent run.
 - Fixed: Chaos Gates do not have specific spawn requirements adapted to Zagreus' Journey runs.
 - Fixed: "Enshrouded" (hidden room reward previews) Chaos Curse cannot appear in Zagreus' Journey runs.
+- Fixed: Starting a Chaos Trial in one of the new biomes does not prompt you to check your loadout.
 - Fixed: Relationship entries for story NPCs that unlock a keepsake do not show the related icon in the Codex.
 - Fixed: Relationship entries for story NPCs that unlock a minor prophecy do not show the related icon in the Codex.
+- Fixed: Progress for the "Hold The Onions" minor prophecy resets when taking damage during an Erebus encounter, even if you previously cleared three encounters hitless.
 - Fixed: Thanatos' "Growing Closer" arrow in the Codex is placed after the wrong entry.
+- Fixed: Trying to navigate to the "Zagreus' Journey" cauldron category on keyboard or controller crashes the game if Alchemy has not been unlocked yet.
+- Fixed: The "Valued Customer" trait description is missing a space.
+- Fixed: Some texts do not have their special formatting terminated correctly.
 - Fixed: Some text localizations for relationship dialogue are missing.
 - Fixed: Some Codex entries for Greek, Turkish, Ukrainian and Traditional Chinese have unterminated italic text sections.
+- Fixed: Texturing artifacts are visible on certain maps in certain situations.
 - Fixed: In rare circumstances, the game can crash when checking requirements for actions taken during the previous Zagreus' Journey run.
 - Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
-- Fixed: Some unnecessary localization strings are copied during the mod installation.
 - Fixed: Entering certain rooms in the Fields of Mourning incorrectly shows the location banner animation.
 - Compatibility: The mod now exposes `IsValidInstallation` to denote to other mods if Zagreus' Journey is installed successfully. Mods can use this through `mods["NikkelM-Zagreus_Journey"].IsValidInstallation`.
 <!--Releasenotes end-->
@@ -171,7 +195,7 @@ Other fixes and improvements:
 - Added a new incantation that allows you to remember Lernie's nickname.
 - Updated a number of boon icons with enhanced visuals.
 - Fixed: The game may crash if the last Zagreus' Journey run was more than ten runs ago.
-- Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlayed over the blacked-out death screen.
+- Fixed: When dying in Tartarus after room exits have been unlocked, part of the room reward preview animation is overlaid over the blacked-out death screen.
 - Fixed: The Hydra can get stuck between obstacles after it dashes into the lava in very rare circumstances.
 - Fixed: Archer traps in Elysium sometimes fail to fire the arrow.
 - Fixed: Some codex entries overflow the intended area in the Codex.
@@ -514,7 +538,7 @@ Other fixes and improvements:
 - Balancing: Reduced the forward momentum of Theseus' spear spin attack to make it easier to dodge out of range.
 - Balancing: Slightly increased Chariot ram speed.
 - Balancing: Increased the time it takes for enemies to start attacking after the player enters a new room in Asphodel.
-- Fixed: Opening the Broker screen crashes the game if the mod was temporarily disabled and then enabled again, and the player loaded into the Crossroads inbetween.
+- Fixed: Opening the Broker screen crashes the game if the mod was temporarily disabled and then enabled again, and the player loaded into the Crossroads in between.
 - Fixed: Judgment and Crystal Figurine trigger for both Asterius and Theseus, doubling their effects.
 - Fixed: Vow of Menace can take effect in Boss encounters.
 - Fixed: Meeting Tiny Vermin for the first time could have a longer than expected wait time before the fight begins.

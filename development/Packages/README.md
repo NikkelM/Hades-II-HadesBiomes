@@ -23,9 +23,6 @@ There are two modes for `deppth2 hpk`, with the modern TeamName-ModName format, 
 If the source package matches the TeamName-ModName format, all texture paths will have the TeamName-ModName prefix added to them automatically.
 If using the legacy "Any" format, the texture paths will not have any prefix added to them.
 
-The legacy format is a custom hack into deppth2, and not part of the pip package.
-<!-- TODO: Document the code changes for the hack! -->
-
 In the parent folder of the source folder:
 For the legacy format, run e.g. `deppth2 hpk -c BC7 -s ModsNikkelMHadesBiomesPortraits_source -t ModsNikkelMHadesBiomesPortraits`.
 
@@ -40,6 +37,48 @@ This will create a new package named `NikkelM-NewPackageName.pkg` and the corres
 For the original biome packages in the "Original Biomes" subfolder, they already have the manifests and atlases set up, as extracted from the Hades game files.
 
 To pack them, use the `pk` command: `deppth2 pk -c BC7 -s TartarusModsNikkelMHadesBiomes_source_original -t TartarusModsNikkelMHadesBiomes.pkg`.
+
+## Deppth2 modifications
+
+The legacy format is a custom modification to the local `deppth2` pip installation (not part of the upstream package at https://github.com/SGG-Modding/deppth).
+
+Changes made to `texpacking.py` in the installed `deppth2` package:
+
+In `build_atlases_hades`, replace the regex check block:
+```python
+if re.match(regexpattern, basename, flags=re.I|re.A):
+		pass
+else:
+		print("Please provide a target with your mod guid, example ThunderstoreTeamName-Modname")
+		return
+```
+with:
+```python
+includeBaseNameInFolderPath = True
+
+if re.match(regexpattern, basename, flags=re.I|re.A):
+		print("Using team name from target")
+		pass
+else:
+		print("Not using team name")
+		includeBaseNameInFolderPath = False
+```
+
+In the same function, pass the flag to `transform_atlas`:
+```python
+atlases.append(transform_atlas(target_dir, basename, f'{basename}{index}.json', namemap, hulls, source_dir, manifest_paths, includeBaseNameInFolderPath))
+```
+
+In `transform_atlas`, add the parameter and replace the subatlas name assignment:
+```python
+def transform_atlas(target_dir, basename, filename, namemap, hulls={}, source_dir='', manifest_paths=[], includeBaseNameInFolderPath=True):
+```
+```python
+if includeBaseNameInFolderPath:
+		subatlas['name'] = os.path.join(basename, os.path.splitext(os.path.relpath(namemap[texture_name], source_dir))[0])
+else:
+		subatlas['name'] = os.path.splitext(os.path.relpath(namemap[texture_name], source_dir))[0]
+```
 
 ## Old approach
 

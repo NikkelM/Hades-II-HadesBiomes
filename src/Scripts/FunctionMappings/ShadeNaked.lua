@@ -22,27 +22,26 @@ function mod.PickupAI(enemy, currentRun)
 end
 
 -- Based on ProjectileSpawnUnitOnDeath, but skips the ActiveEnemyCap check
--- ShadeNaked respawns should always succeed - they're rearming, not new spawns
+-- ShadeNaked respawns should always succeed - they're not new spawns
 function mod.ShadeDeathSpawnOnDeath(projectileData, triggerArgs)
 	if game.SessionMapState.HandlingDeath or (triggerArgs and triggerArgs.BlockSpawns) then
+		mod.CleanupPendingShadeSpawn()
 		return
 	end
 
 	local newSpawnData = game.EnemyData[projectileData.SpawnName]
 	if newSpawnData == nil then
+		mod.CleanupPendingShadeSpawn()
 		return
 	end
 
+	-- Intentionally not checking if the location is invalid, they can spawn even over non-walkable spaces since they float
 	local spawnPointId = SpawnObstacle({
 		Name = "InvisibleTarget",
 		LocationX = triggerArgs.LocationX,
 		LocationY = triggerArgs.LocationY,
 		Group = "Scripting",
 	})
-	if IsLocationBlocked({ Id = spawnPointId }) then
-		Destroy({ Id = spawnPointId })
-		return
-	end
 
 	local newEnemy = game.DeepCopyTable(newSpawnData) or {}
 
@@ -58,6 +57,26 @@ function mod.ShadeDeathSpawnOnDeath(projectileData, triggerArgs)
 
 	game.SetupUnit(newEnemy)
 	Destroy({ Id = spawnPointId })
+
+	-- SetupUnit runs PostActivateEvents which adds the ShadeNaked to ActiveSpawns, so it's safe to remove the placeholder now
+	mod.CleanupPendingShadeSpawn()
+end
+
+-- Remove the pending shade spawn placeholder and re-check encounter completion
+function mod.CleanupPendingShadeSpawn()
+	game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns = (game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns or 0) -
+			1
+
+	if game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns <= 0 then
+		game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns = 0
+		local challengeEncounter = game.CurrentRun.CurrentRoom.ChallengeEncounter
+		if challengeEncounter ~= nil and challengeEncounter.ActiveSpawns ~= nil then
+			challengeEncounter.ActiveSpawns["ModsNikkelMHadesBiomesPendingShadeSpawn"] = nil
+			if challengeEncounter.InProgress then
+				game.CheckAllRequiredKillEnemiesDead(challengeEncounter)
+			end
+		end
+	end
 end
 
 function mod.ModsNikkelMHadesBiomesShadeNakedPostActivate(source, args)

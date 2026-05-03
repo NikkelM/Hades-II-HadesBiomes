@@ -199,17 +199,17 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			end
 			if entry.Cue then
 				if entry.Cue:find("^/VO/Storyteller_") then
-					entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+					entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
 				elseif entry.Cue:find("^/VO/Charon_") then
-					entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+					entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
 					-- Use the H1 portrait
 					entry.Portrait = "ModsNikkelMHadesBiomes_Portrait_Charon_Default_01"
 				elseif entry.Cue:find("^/VO/Persephone_") then
-					entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+					entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
 				elseif entry.Cue:find("^/VO/ZagreusHome_") then
-					entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+					entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
 				elseif entry.Cue:find("^/VO/MegaeraHome_") then
-					entry.Cue = entry.Cue:gsub("^/VO/MegaeraHome_", "/VO/Megaera_3")
+					entry.Cue = entry.Cue:gsub("^/VO/MegaeraHome_", "/VO/Modsnikkelmhadesbiomesmegaerahome_")
 				end
 			end
 		end
@@ -337,26 +337,26 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 
 					if voicelineEntry.Cue then
 						if voicelineEntry.Cue:find("^/VO/Storyteller_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
 						elseif voicelineEntry.Cue:find("^/VO/Charon_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
 						elseif voicelineEntry.Cue:find("^/VO/Persephone_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
 						elseif voicelineEntry.Cue:find("^/VO/ZagreusHome_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
 						end
 					else
 						-- Handle nested voiceline entries (array of entries)
 						for _, innerEntry in ipairs(voicelineEntry) do
 							if innerEntry.Cue then
 								if innerEntry.Cue:find("^/VO/Storyteller_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Megaera_0")
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
 								elseif innerEntry.Cue:find("^/VO/Charon_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Charon_", "/VO/Megaera_1")
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
 								elseif innerEntry.Cue:find("^/VO/Persephone_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Persephone_", "/VO/Megaera_2")
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
 								elseif innerEntry.Cue:find("^/VO/ZagreusHome_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/ZagreusField_0")
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
 								end
 							end
 						end
@@ -825,12 +825,46 @@ local enemyReplacements = {
 	-- #endregion
 }
 
+-- #region Dream Run base enemy scaling
+-- DreamBiomeData for base (non-boss) H1 enemies, mirroring vanilla's per-biome base template pattern.
+-- Modded enemies scale slightly above their vanilla equivalents.
+-- Defined before enemyModifications so they can be referenced inside it and applied before inheritance processing.
+local tartarusEnemyDreamBiomeData = {
+	[1] = { DataOverrides = { HealthMultiplier = 1.15, MoneyMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.7 } },
+	[2] = { DataOverrides = { HealthMultiplier = 2.0, MoneyMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.5 } },
+	[3] = { DataOverrides = { HealthMultiplier = 4.2, SpeedMultiplier = 1.25, MoneyMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+	[4] = { DataOverrides = { HealthMultiplier = 7.5, SpeedMultiplier = 1.45, MoneyMultiplier = 2.5 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+}
+
+local asphodelEnemyDreamBiomeData = {
+	[1] = { DataOverrides = { HealthMultiplier = 0.65, MoneyMultiplier = 0.85 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
+	[2] = { DataOverrides = { HealthMultiplier = 1.1, MoneyMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.7 } },
+	[3] = { DataOverrides = { HealthMultiplier = 2.4, SpeedMultiplier = 1.15, MoneyMultiplier = 1.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.35 } },
+	[4] = { DataOverrides = { HealthMultiplier = 4.2, SpeedMultiplier = 1.25, MoneyMultiplier = 2.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.35 } },
+}
+
+local elysiumEnemyDreamBiomeData = {
+	[1] = { DataOverrides = { HealthMultiplier = 0.35, MoneyMultiplier = 0.55 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.85 } },
+	[2] = { DataOverrides = { HealthMultiplier = 0.65, MoneyMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.35 } },
+	[3] = { DataOverrides = { HealthMultiplier = 1.3, MoneyMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.75 } },
+	[4] = { DataOverrides = { HealthMultiplier = 2.4, MoneyMultiplier = 1.35 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.75 } },
+}
+
+local styxEnemyDreamBiomeData = {
+	[1] = { DataOverrides = { HealthMultiplier = 0.2, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.75 } },
+	[2] = { DataOverrides = { HealthMultiplier = 0.35, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.2 } },
+	[3] = { DataOverrides = { HealthMultiplier = 0.8, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.55 } },
+	[4] = { DataOverrides = { HealthMultiplier = 1.35, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.55 } },
+}
+-- #endregion
+
 -- Note: Modifications to Base enemy types (which are inherited from by other new enemy types) don't seem to work - need to apply the modifications to the resulting enemy directly
 local enemyModifications = {
 	-- #region TARTARUS
 	-- #region TARTARUS - Regular
 	BaseGlutton = {
 		LargeUnitCap = mod.NilValue,
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	PunchingBagUnit = {
 		StunAnimations = { Default = "EnemyWretchGluttonOnHit" },
@@ -843,6 +877,7 @@ local enemyModifications = {
 	},
 	BaseThug = {
 		LargeUnitCap = mod.NilValue,
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	HeavyMelee = {
 		StunAnimations = { Default = "EnemyWretchThugOnHit" },
@@ -853,6 +888,7 @@ local enemyModifications = {
 	DisembodiedHand = {
 		GenusName = "DisembodiedHand",
 		StunAnimations = { Default = "EnemyWringerOnHit" },
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 		GeneratorData = {
 			BlockSolo = true,
 		},
@@ -875,6 +911,7 @@ local enemyModifications = {
 	},
 	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	LightRangedSuperElite = {
 		DefaultAIData = {
@@ -883,6 +920,7 @@ local enemyModifications = {
 	},
 	ThiefMineLayer = {
 		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 		DefaultAIData = {
 			BlendTimeoutMin = 2.0,
 			BlendTimeoutMax = 3.5,
@@ -915,14 +953,17 @@ local enemyModifications = {
 		OnDeathTetherRandomForceMin = 800,
 		OnDeathTetherRandomForceMax = 1000,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
 		WeaponOptions = { "HadesSwarmerMelee" },
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	LightSpawner = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
 		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon", },
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 		DefaultAIData = { DeepInheritance = true, },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		OnDamagedFunctionName = "AggroSpawns",
@@ -937,6 +978,7 @@ local enemyModifications = {
 	HeavyRangedSplitterMiniboss = {
 		GenusName = "HeavyRangedSplitterMiniboss",
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		OnDeathTetherUpwardForce = 2200,
 		OnDeathTetherRandomForceMin = 800,
@@ -992,6 +1034,7 @@ local enemyModifications = {
 	HeavyRangedSplitterFragment = {
 		MaxHealth = 40,
 		HealthBuffer = 50,
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 		StunAnimations = { Default = "HeavyRangedSplitterFragment", },
 		UseActivatePresentation = false,
 		BlockRaiseDead = true,
@@ -1021,6 +1064,7 @@ local enemyModifications = {
 		DefaultAIData = {
 			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 		},
+		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	WretchAssassinMiniboss = {
 		GenusName = "WretchAssassinMiniboss",
@@ -1047,6 +1091,42 @@ local enemyModifications = {
 		-- Polyphemus EM Health: 10200
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 11000,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Harpy_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_DreamBossesDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+					NamedRequirements = { "BossDifficultyActive" },
+				},
+			},
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+					NamedRequirementsFalse = { "BossDifficultyActive" },
+				},
+			},
+		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12000,
 		},
@@ -1064,7 +1144,56 @@ local enemyModifications = {
 				FunctionName = "RecordBossKillerName",
 			},
 		},
+		BossPresentationUltraSuperPriorityIntroTextLineSets = {
+			-- Moved from BossPresentationIntroTextLineSets
+			FuryFirstAppearance = {
+				PlayOnce = true,
+				RequiredFalseTextLines = { "FuryFirstAppearanceFirstRun" },
+				{
+					Cue = "/VO/MegaeraField_0002",
+					Speaker = "NPC_FurySister_01",
+					Text = "Halt, Zagreus. Not one step further."
+				},
+				{
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Cue = "/VO/ZagreusField_0461",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Come on, Meg. Haven't we had more than enough of each other by now? Besides, don't you have someplace else to be?"
+				},
+				{
+					Cue = "/VO/MegaeraField_0004",
+					Speaker = "NPC_FurySister_01",
+					Text =
+					"Your father sent me. All in all, I'd rather be on your bad side than his. Now you can turn back like a good little man, or I can send you home the painful way. What'll it be?"
+				},
+				{
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Cue = "/VO/ZagreusField_0137",
+					PreLineWait = 0.35,
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "...I'll have to go with the painful way."
+				},
+				{
+					Cue = "/VO/MegaeraField_0005",
+					Speaker = "NPC_FurySister_01",
+					PreLineAnim = "FuryTaunt",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text = "A man after my own heart."
+				},
+			},
+		},
 		BossPresentationIntroTextLineSets = {
+			FuryFirstAppearance = mod.NilValue,
 			FuryDarknessReaction01 = {
 				RequiredActiveMetaPointsMin = 30,
 			},
@@ -1079,6 +1208,22 @@ local enemyModifications = {
 		-- Base Health: 4600
 		-- EM Health: 4900
 		MaxHealth = 11100,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Harpy2_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12200,
 		},
@@ -1094,11 +1239,76 @@ local enemyModifications = {
 		},
 		-- Using OnKillVoiceLines from Harpy
 		OnKillGlobalVoiceLines = mod.NilValue,
+		BossPresentationHighPriorityIntroTextLineSets = {
+			-- Moved from BossPresentationIntroTextLineSets to ensure it plays before EM dialogues
+			Fury2FirstAppearance = {
+				PlayOnce = true,
+				PreEventWait = 0.4,
+				PreLineFunctionName = "EmoteShockPresentation",
+				PreLineThreadedFunctionArgs = { WaitTime = 0.1 },
+				{
+					Cue = "/VO/Alecto_0002",
+					Speaker = "NPC_FurySister_Unnamed_02",
+					SpeakerLabelOffsetY = 18,
+					Emote = "PortraitEmoteCheerful",
+					Text =
+					"{#DialogueItalicFormat}Ah, hah hah, hohohohohhh. {#PreviousFormat}Finally. I've been waiting for this! Really."
+				},
+				{
+					Cue = "/VO/ZagreusField_1408",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You must be one of Megaera's lovely sisters, I don't believe we've had the pleasure. Waiting for what, exactly?"
+				},
+				{
+					Cue = "/VO/Alecto_0003",
+					PreLineWait = 0.35,
+					Text = "...So sick of, you know, doing my regular job, uninterrupted. Not having to clean up Meg's messes!"
+				},
+				{
+					Cue = "/VO/ZagreusField_1409",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text = "I get the feeling we're starting off on the wrong foot."
+				},
+				{
+					Cue = "/VO/Alecto_0004",
+					PreLineAnim = "AlectoTaunt",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text = "Anyway. I always wanted to kill a god. You'll have to do."
+				},
+			},
+		},
+		BossPresentationIntroTextLineSets = {
+			Fury2FirstAppearance = mod.NilValue,
+		},
 	},
 	Harpy3 = {
 		-- Base Health: 5200
 		-- EM Health: 5600
 		MaxHealth = 11400,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Harpy3_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12400,
 		},
@@ -1110,7 +1320,7 @@ local enemyModifications = {
 			Fury3Encounter10 = {
 				EndVoiceLines = {
 					[1] = {
-						[1] = { Cue = "/VO/Megaera_30289" }
+						[1] = { Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0289" }
 					},
 				},
 			},
@@ -1121,6 +1331,54 @@ local enemyModifications = {
 		},
 		-- Using OnKillVoiceLines from Harpy
 		OnKillGlobalVoiceLines = mod.NilValue,
+		BossPresentationHighPriorityIntroTextLineSets = {
+			-- Moved from BossPresentationIntroTextLineSets
+			Fury3FirstAppearance = {
+				PlayOnce = true,
+				PreEventWait = 0.4,
+				{
+					Cue = "/VO/Tisiphone_0002",
+					Speaker = "NPC_FurySister_Unnamed_03",
+					SpeakerLabelOffsetY = 18,
+					Text = "{#DialogueItalicFormat}Mmmm... mmmurderer..."
+				},
+				{
+					Cue = "/VO/ZagreusField_1424",
+					PreLineWait = 0.3,
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, you must be one of Meg's sisters! Nice to finally meet you. My name's Zagreus. Not {#DialogueItalicFormat}Murderer{#PreviousFormat}. Definitely not."
+				},
+				{
+					Cue = "/VO/Tisiphone_0003",
+					Text = "Murderer... {#DialogueItalicFormat}mmmmurderrrerrrrrrrr...!"
+				},
+				{
+					Cue = "/VO/ZagreusField_1425",
+					PreLineWait = 0.3,
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					Text =
+					"{#DialogueItalicFormat}Erm{#PreviousFormat}... look, I've done some things that maybe aren't great, but I am very, very sure I haven't murdered anyone."
+				},
+				{
+					Cue = "/VO/Tisiphone_0004",
+					Emote = "PortraitEmoteAnger",
+					PreLineAnim = "TisiphoneTaunt_2",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text = "{#DialogueItalicFormat}Mmmmmurderrrerrrrrrrr{#PreviousFormat}...!"
+				},
+			},
+		},
+		BossPresentationIntroTextLineSets = {
+			Fury3FirstAppearance = mod.NilValue,
+		},
 	},
 	-- #endregion
 	-- #endregion
@@ -1133,6 +1391,7 @@ local enemyModifications = {
 		DefaultAIData = { DeepInheritance = true, },
 		OnDamagedFunctionName = "AggroSpawns",
 		BlockAttributes = { "Disguise" },
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 	},
 	-- Need to manually modify these fields, as the enemies are DeepCopyTable'd from Hades II above
 	HadesBloodlessNaked = {
@@ -1312,6 +1571,7 @@ local enemyModifications = {
 	FreezeShotUnit = {
 		StunAnimations = { Default = "EnemyMedusaOnHit" },
 		ManualDeathAnimation = false,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		DestroyDelay = 3.0,
 		PolymorphScaleOverride = 2.0,
 	},
@@ -1321,6 +1581,7 @@ local enemyModifications = {
 	RangedBurrower = {
 		StunAnimations = { Default = "EnemyBoneDraconOnHit" },
 		UseActivatePresentation = false,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 	},
 	RangedBurrowerElite = {
 		BlockAttributes = { "Blink", "Orbit", "Beams" },
@@ -1333,6 +1594,7 @@ local enemyModifications = {
 	},
 	CrusherUnit = {
 		StunAnimations = { Default = "CrusherUnitOnHit" },
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		-- Don't create a new blank obstacle for this enemy, as the flipping logic would be hard to get right
 		ManualDeathAnimation = false,
 		DestroyDelay = 1.2,
@@ -1386,6 +1648,7 @@ local enemyModifications = {
 		MaxHealth = 480,
 		StunAnimations = { Default = "HealRangedCrystal4" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
@@ -1397,9 +1660,6 @@ local enemyModifications = {
 		OnDeathTetherUpwardForce = 2200,
 		OnDeathTetherRandomForceMin = 800,
 		OnDeathTetherRandomForceMax = 1000,
-	},
-	ShieldRangedElite = {
-		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching" },
 	},
 	ShieldRangedSuperElite = {
 		HealthBuffer = 900,
@@ -1445,6 +1705,7 @@ local enemyModifications = {
 		MaxHealth = 1650,
 		ManualDeathAnimation = false,
 		DestroyDelay = 3.0,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		BlockRaiseDead = true,
 		BlockCharm = true,
 		BlockRespawnShrineUpgrade = true,
@@ -1481,14 +1742,56 @@ local enemyModifications = {
 		-- Eris Health: 16000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 18000,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 0.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.8, SpeedMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.4 } },
+			[4] = { DataOverrides = { HealthMultiplier = 2.7, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
+			-- Lernie rename (non-Dream Run only)
 			{
 				Requirements = mod.NilValue,
 				GameStateRequirements = {
 					{
 						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation", },
 					},
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+			-- Dream Run: Visage of Lernie (if incantation performed)
+			{
+				TextId = "ModsNikkelMHadesBiomes_HydraHeadImmortal_DreamRun02",
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation", },
+					},
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+			-- Dream Run: Visage of the Bone Hydra (if incantation not performed)
+			{
+				TextId = "ModsNikkelMHadesBiomes_HydraHeadImmortal_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathFalse = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation", },
+					},
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{ PathTrue = { "CurrentRun", "IsDreamRun" } },
 				},
 			},
 		},
@@ -1557,6 +1860,12 @@ local enemyModifications = {
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 1000,
 		HealthBuffer = 1000,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 0.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.8, SpeedMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.4 } },
+			[4] = { DataOverrides = { HealthMultiplier = 2.7, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		-- To unify all Hydra heads under the same "Damage Taken" entry
 		GenusName = "HydraHeadImmortal",
@@ -1587,6 +1896,7 @@ local enemyModifications = {
 	},
 	HydraTooth = {
 		StunAnimations = { Default = "HydraToothLanded" },
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		ActivateFx = "nil",
 		ActivateAnimation = "nil",
 		WeaponOptions = mod.NilValue,
@@ -1624,7 +1934,8 @@ local enemyModifications = {
 	-- #region ELYSIUM
 	-- #region ELYSIUM - Regular
 	BaseShade = {
-		ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed = true
+		ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed = true,
+		DreamBiomeData = elysiumEnemyDreamBiomeData,
 	},
 	ShadeNaked = {
 		StunAnimations = { Default = "ShadeNaked_Idle" },
@@ -1644,6 +1955,8 @@ local enemyModifications = {
 		BlockCharm = true,
 		AIOptions = { _PLUGIN.guid .. "." .. "PickupAI", },
 		AIPickupRange = 45,
+		RespawningVoiceLines = mod.NilValue,
+		RespawnedVoiceLines = mod.NilValue,
 	},
 	ShadeNakedElite = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -1800,13 +2113,19 @@ local enemyModifications = {
 			OnDeathFireWeapons = {},
 		},
 	},
+	ShieldRangedElite = {
+		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching" },
+		DreamBiomeData = elysiumEnemyDreamBiomeData,
+	},
 	SplitShotUnit = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit_SplitShot" },
 		DeathAnimation = "EnemyWretchCasterDeath_SplitShot",
+		DreamBiomeData = elysiumEnemyDreamBiomeData,
 	},
 	Chariot = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotOnHit" },
+		DreamBiomeData = elysiumEnemyDreamBiomeData,
 		-- IgnoreCastSlow = true,
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
@@ -1899,6 +2218,7 @@ local enemyModifications = {
 	FlurrySpawner = {
 		StunAnimations = { Default = "SoulSpawnerIdle" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DreamBiomeData = elysiumEnemyDreamBiomeData,
 		-- Minimum 0.15 to allow OnDeathWeapons to fire from this unit (e.g. ChaosDeathWeaponCurse)
 		DestroyDelay = 0.15,
 	},
@@ -1931,6 +2251,53 @@ local enemyModifications = {
 		-- Heracles Health: 34000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 26500,
+		AltHealthBarTextIds = {
+			-- Miniboss fight: use full name (unless Dream Run)
+			{
+				TextId = "Minotaur_Full",
+				Requirements = { RequiredRoom = "C_MiniBoss01" },
+				GameStateRequirements = {
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+			-- Dream Run Miniboss: Visage of full name
+			{
+				TextId = "ModsNikkelMHadesBiomes_Minotaur_Full_DreamRun01",
+				Requirements = { RequiredRoom = "C_MiniBoss01" },
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+			-- Dream Run boss fight: Visage of nickname
+			{
+				TextId = "ModsNikkelMHadesBiomes_Minotaur_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_DreamBossesDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 0.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
+			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
+		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.MinotaurVoice,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
@@ -1951,6 +2318,82 @@ local enemyModifications = {
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
 		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
+		BossPresentationHighPriorityIntroTextLineSets = {
+			-- Both moved from BossPresentationIntroTextLineSets
+			MinotaurFirstAppearance_NotMetTheseus = {
+				PlayOnce = true,
+				RequiredFalseTextLines = { "TheseusFirstAppearance_MetBeatMinotaur", "TheseusFirstAppearance_MetNotBeatMinotaur", "TheseusFirstAppearance_NotMetMinotaur", "MinotaurFirstAppearance_MetTheseus" },
+				{
+					Cue = "/VO/Minotaur_0002",
+					Text = "You come from the bowels of hell. This is not your place."
+				},
+				{
+					Cue = "/VO/ZagreusField_1746",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Agreed on both counts! Just passing through, so if you'll excuse me..."
+				},
+				{
+					Cue = "/VO/Minotaur_0003",
+					Text =
+					"I will not. {#DialogueItalicFormat}<Snort> {#PreviousFormat}The Champion of Elysium would never back down from such a contest. Neither will I."
+				},
+				{
+					Cue = "/VO/ZagreusField_1747",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Wait, {#DialogueItalicFormat}you're {#PreviousFormat}not the Champion of Elysium...? You're the Bull of Minos! I can't imagine who's even stronger than you. Is it Heracles? Tell me it's Heracles."
+				},
+				{
+					Cue = "/VO/Minotaur_0004",
+					PreLineThreadedFunctionName = "PlayPreLineTauntAnimFromSource",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text =
+					"I will not. {#DialogueItalicFormat}<Snort> {#PreviousFormat}You talk too much, short one. Come get destroyed."
+				},
+			},
+			MinotaurFirstAppearance_MetTheseus = {
+				PlayOnce = true,
+				RequiredAnyTextLines = { "TheseusFirstAppearance_MetBeatMinotaur", "TheseusFirstAppearance_MetNotBeatMinotaur", "TheseusFirstAppearance_NotMetMinotaur" },
+				RequiredFalseTextLines = { "MinotaurFirstAppearance_NotMetTheseus" },
+				{
+					Cue = "/VO/Minotaur_0002",
+					Text = "You come from the bowels of hell. This is not your place."
+				},
+				{
+					Cue = "/VO/ZagreusField_1746",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Agreed on both counts! Just passing through, so if you'll excuse me..."
+				},
+				{
+					Cue = "/VO/Minotaur_0003",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					PreLineThreadedFunctionName = "PlayPreLineTauntAnimFromSource",
+					Text =
+					"I will not. {#DialogueItalicFormat}<Snort> {#PreviousFormat}The Champion of Elysium would never back down from such a contest. Neither will I."
+				},
+			},
+		},
+		BossPresentationIntroTextLineSets = {
+			MinotaurFirstAppearance_NotMetTheseus = mod.NilValue,
+			MinotaurFirstAppearance_MetTheseus = mod.NilValue,
+		},
 	},
 	Minotaur2 = {
 		-- Base Health: 16000
@@ -1968,6 +2411,32 @@ local enemyModifications = {
 	Theseus = {
 		-- Base Health: 9000
 		MaxHealth = 20000,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Theseus_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_DreamBossesDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 0.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
+			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
+		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.TheseusVoice,
 		-- Doesn't seem to be used
@@ -1992,6 +2461,121 @@ local enemyModifications = {
 		AIStages = {
 			[2] = { RandomAIFunctionNames = { _PLUGIN.guid .. "." .. "TheseusGodAI" }, },
 		},
+		BossPresentationUltraSuperPriorityIntroTextLineSets = {
+			-- All three moved from BossPresentationIntroTextLineSets
+			TheseusFirstAppearance_NotMetMinotaur = {
+				PlayOnce = true,
+				RequiredFalseTextLines = { "MinotaurFirstAppearance_NotMetTheseus", "MinotaurFirstAppearance_MetTheseus", "TheseusFirstAppearance_MetBeatMinotaur", "TheseusFirstAppearance_MetNotBeatMinotaur" },
+				{
+					Cue = "/VO/Theseus_0002",
+					Emote = "PortraitEmoteSparkly",
+					Text = "Hold, fiend! You'll walk not one more step toward the light of day, so long as I am here."
+				},
+				{
+					Cue = "/VO/Minotaur_0069",
+					Speaker = "Minotaur",
+					Portrait = "Portrait_Minotaur_Default_01",
+					Text =
+					"Two against one. Seems hardly fair.... Ah, well! {#DialogueItalicFormat}<Snort> {#PreviousFormat}Let's kill him and be done, king."
+				},
+				{
+					Cue = "/VO/ZagreusField_1763",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Theseus?! The Bull of Minos?! You two are legends! I'd be honored if we had a sporting contest here!"
+				},
+				{
+					Cue = "/VO/Theseus_0003",
+					PreLineThreadedFunctionName = "PlayPreLineTauntAnimFromSource",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text =
+					"{#DialogueItalicFormat}Ahh{#PreviousFormat}, a naked attempt to sway me from my convictions. Defend yourself, you blackguard! And may the gods show you some mercy, for I shall not!"
+				},
+			},
+			TheseusFirstAppearance_MetBeatMinotaur = {
+				PlayOnce = true,
+				Priority = true,
+				RequiredTextLines = { "MinotaurFirstAppearance_NotMetTheseus" },
+				RequiredFalseTextLines = { "TheseusFirstAppearance_NotMetMinotaur", "TheseusFirstAppearance_MetNotBeatMinotaur" },
+				RequiredKills = { Minotaur = 1 },
+				{
+					Cue = "/VO/Minotaur_0070",
+					Speaker = "Minotaur",
+					Portrait = "Portrait_Minotaur_Default_01",
+					Text =
+					"I warned you, short one. Now you face a foe more terrible even than I. The only other foe whom I have ever faced, who bested me."
+				},
+				{
+					Cue = "/VO/Theseus_0002",
+					Emote = "PortraitEmoteSparkly",
+					Text = "Hold, fiend! You'll walk not one more step toward the light of day, so long as I am here."
+				},
+				{
+					Cue = "/VO/ZagreusField_1764",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Theseus?! No way! You two are legends! I'd be honored if we had a sporting contest here!"
+				},
+				{
+					Cue = "/VO/Theseus_0003",
+					PreLineThreadedFunctionName = "PlayPreLineTauntAnimFromSource",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text =
+					"{#DialogueItalicFormat}Ahh{#PreviousFormat}, a naked attempt to sway me from my convictions. Defend yourself, you blackguard! And may the gods show you some mercy, for I shall not!"
+				},
+			},
+			TheseusFirstAppearance_MetNotBeatMinotaur = {
+				PlayOnce = true,
+				RequiredTextLines = { "MinotaurFirstAppearance_NotMetTheseus" },
+				RequiredFalseTextLines = { "TheseusFirstAppearance_NotMetMinotaur", "TheseusFirstAppearance_MetBeatMinotaur" },
+				RequiredFalseKills = { "Minotaur" },
+				{
+					Cue = "/VO/Minotaur_0071",
+					Speaker = "Minotaur",
+					Portrait = "Portrait_Minotaur_Default_01",
+					Text =
+					"Beware, short one. Now you face a foe more terrible even than I. The only foe whom I have ever faced, who bested me."
+				},
+				{
+					Cue = "/VO/Theseus_0002",
+					Emote = "PortraitEmoteSparkly",
+					Text = "Hold, fiend! You'll walk not one more step toward the light of day, so long as I am here."
+				},
+				{
+					Cue = "/VO/ZagreusField_1764",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Theseus?! No way! You two are legends! I'd be honored if we had a sporting contest here!"
+				},
+				{
+					Cue = "/VO/Theseus_0003",
+					PreLineThreadedFunctionName = "PlayPreLineTauntAnimFromSource",
+					PreLineWait = 0.35,
+					PreLineFunctionName = "StartBossRoomMusic",
+					Text =
+					"{#DialogueItalicFormat}Ahh{#PreviousFormat}, a naked attempt to sway me from my convictions. Defend yourself, you blackguard! And may the gods show you some mercy, for I shall not!"
+				},
+			},
+		},
+		BossPresentationIntroTextLineSets = {
+			TheseusFirstAppearance_NotMetMinotaur = mod.NilValue,
+			TheseusFirstAppearance_MetBeatMinotaur = mod.NilValue,
+			TheseusFirstAppearance_MetNotBeatMinotaur = mod.NilValue,
+		}
 	},
 	Theseus2 = {
 		-- Base Health: 12000
@@ -2012,6 +2596,7 @@ local enemyModifications = {
 	SatyrRanged = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "SatyrOnHit" },
+		DreamBiomeData = styxEnemyDreamBiomeData,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		ActivateDuration = 0.4,
 		-- Their poison doesn't damage enemies
@@ -2030,6 +2615,7 @@ local enemyModifications = {
 	RatThug = {
 		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "EnemyRatThugOnHit" },
+		DreamBiomeData = styxEnemyDreamBiomeData,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		OnDeathThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOnDeathFireProjectile",
 		OnDeathFunctionArgs = {
@@ -2047,6 +2633,7 @@ local enemyModifications = {
 	Crawler = {
 		StunAnimations = { Default = "EnemyCrawlerIdle" },
 		IgnoreSpeedShrine = true,
+		DreamBiomeData = styxEnemyDreamBiomeData,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		SpellSummonDataOverrides = {
 			DeepInheritance = true,
@@ -2058,6 +2645,7 @@ local enemyModifications = {
 	HeavyRangedForked = {
 		StunAnimations = { Default = "HeavyRangedForkedCrystal4" },
 		DeathAnimation = "HeavyRangedForkedDeath",
+		DreamBiomeData = styxEnemyDreamBiomeData,
 		-- This plops a large model of the enemy on the ground which doesn't disappear
 		SpawnObstaclesOnDeath = mod.NilValue,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -2069,6 +2657,7 @@ local enemyModifications = {
 	ThiefImpulseMineLayer = {
 		StunAnimations = { Default = "EnemyStyxThiefOnHit" },
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		DreamBiomeData = styxEnemyDreamBiomeData,
 		ActivateDuration = 0.5,
 		DefaultAIData = {
 			BlendTimeoutMin = 0.5,
@@ -2139,6 +2728,26 @@ local enemyModifications = {
 	CrawlerMiniBoss = {
 		MaxHealth = 14000,
 		RunHistoryKilledByName = "HadesCrawlerMiniBoss",
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_CrawlerMiniBoss_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation",
 		OnDeathFunctionArgs = { Message = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage", },
 		KillEnemyEvents = {
@@ -2163,10 +2772,53 @@ local enemyModifications = {
 		-- Typhon Health: 65000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 30000,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { HealthMultiplier = 0.25, HealingMultiplier = 0.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.35 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.38, HealingMultiplier = 0.38 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.6 } },
+			[3] = { DataOverrides = { HealthMultiplier = 0.8, HealingMultiplier = 0.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
+			[4] = { DataOverrides = { HealthMultiplier = 1.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
+		},
+		SetupEvents = {
+			{
+				FunctionName = "OverwriteSelf",
+				Args = {
+					-- Reduced DreamBiomeData multipliers to compensate for EM's increased MaxHealth (36000 vs 30000)
+					DreamBiomeData = {
+						[1] = { DataOverrides = { HealthMultiplier = 0.2, HealingMultiplier = 0.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.35 } },
+						[2] = { DataOverrides = { HealthMultiplier = 0.3, HealingMultiplier = 0.3 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.6 } },
+						[3] = { DataOverrides = { HealthMultiplier = 0.64, HealingMultiplier = 0.64 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
+						[4] = { DataOverrides = { HealthMultiplier = 1.12 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
+					},
+				},
+				GameStateRequirements = {
+					NamedRequirements = { "BossDifficultyActive" },
+				},
+			},
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 36000,
 		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Hades_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
+		AltDeathMessageTextIds = {
+			{
+				TextId = "DreamBossDefeatedMessage",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		SubtitleColor = game.Color.HadesVoice,
 		DestroyDelay = 0,
 		-- It's misaligned/not tracking correctly
@@ -2189,9 +2841,8 @@ local enemyModifications = {
 			InvisibilityFadeOutDuration = 0.85,
 			DashRequireLoS = true,
 			SpawnCountDampenTraits = { HadesChronosDebuffBoon = true, },
-			-- If we are on EM4, Deep Dissent's effect is converted into spawning normal Super Elite enemies, instead of fewer enemies, so don't apply the original effect
+			-- If VoR is active at the current biome depth, Deep Dissent's effect is converted into spawning normal Super Elite enemies, instead of fewer enemies
 			SpawnCountDampenShrineUpgrade = "BossDifficultyShrineUpgrade",
-			SpawnCountDampenMaxShrineLevel = 3,
 		},
 		-- Handled by the Cast projectile itself
 		OutgoingDamageModifiers = mod.NilValue,
@@ -2287,6 +2938,7 @@ local enemyModifications = {
 	},
 	HadesAmmo = {
 		MaxHealth = 350,
+		DreamBiomeData = styxEnemyDreamBiomeData,
 		AIOptions = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesAttackAndDie", },
 		AttackTimerOffsetY = -170,
 		UseActivatePresentation = false,
@@ -2312,6 +2964,16 @@ local enemyModifications = {
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 21000,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
+		AltHealthBarTextIds = {
+			{
+				TextId = "ModsNikkelMHadesBiomes_Charon_DreamRun01",
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+			},
+		},
 		SubtitleColor = game.Color.CharonVoice,
 		RunHistoryKilledByName = "NPC_Charon_01",
 		AIStages = {
@@ -2557,6 +3219,7 @@ local enemyModifications = {
 		OnDeathFireWeapons = { "BlastCubeExplosionElysium" },
 		FuseWarningProjectileName = "ModsNikkelMHadesBiomesBlastWarningDecalElysium",
 		IgnoreSprintPhasingStasisStun = true,
+		SkipRecordDestroyedState = true,
 	},
 	PhalanxTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,

@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "Wartościowy Klient",
 		Description =
-		"Wszystkie przedmioty mogą zostać zakupione za {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(podczas tej próby ucieczki){#Prev}."
+		"Wszystkie przedmioty mogą zostać zakupione za {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}(podczas tej próby ucieczki){#Prev}."
 	},
 	-- #endregion
 
@@ -229,6 +229,35 @@ local newData = {
 		DisplayName = "Dymisja Płomiennych Kół",
 		Description =
 		"Sprawia, że w kolejnych {$Keywords.EncounterPlural} nie pojawi się ten wróg: {$TooltipData.BlockedEnemyTypes[1]}.",
+	},
+	-- #endregion
+
+	-- #region Dream Run Trait Texts
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "Waśń Rodowa",
+		Description =
+		"{$Keywords.CharChronos}, {$Keywords.CharTyphon} lub {$Keywords.CharHades} otrzymuje gwałtowne obrażenia po upływie {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} sek. od rozpoczęcia walki.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Redukcja zdrowia [Chronosa]{$Keywords.CharChronos}, [Tyfona]{$Keywords.CharTyphon} lub [Hadesa]{$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Głęboki Rozłam",
+		Description =
+		"{$Keywords.CharChronos}, {$Keywords.CharTyphon} lub {$Keywords.CharHades} przywołuje podczas walki mniejszą liczbę sojuszników.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Sojusznicy [Chronosa]{$Keywords.CharChronos}, [Tyfona]{$Keywords.CharTyphon} lub [Hadesa]{$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

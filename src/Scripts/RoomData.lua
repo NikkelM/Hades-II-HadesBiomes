@@ -30,6 +30,9 @@ local challengeRoomModifications = {
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_DreamBanner",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
 
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
 
@@ -96,6 +99,9 @@ local charonRoomModifications = {
 		LoadVanillaAudioBanks = { "BiomeG", },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_DreamBanner",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Erebus_Dream",
 
 		LocationAnimName = "ModsNikkelMHadesBiomesInfoBannerErebusIn",
 		LocationAnimOutName = "ModsNikkelMHadesBiomesInfoBannerErebusOut",
@@ -105,7 +111,12 @@ local charonRoomModifications = {
 		NextRoomResumeMusic = true,
 
 		UnthreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "BossIntroCharon" },
+			[1] = {
+				FunctionName = _PLUGIN.guid .. "." .. "BossIntroCharon",
+				Args = {
+					DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "CharonDreamRunIntro",
+				},
+			},
 		},
 	},
 }
@@ -128,7 +139,7 @@ local surfaceRoomModifications = {
 	Return01 = {
 		RoomSetName = "Surface",
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
-		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon", "Modsnikkelmhadesbiomespersephone", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		LoadModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicSurfaceModded", },
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "ReturnRoomEntrance",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "ReturnRoomExit",
@@ -158,7 +169,7 @@ local surfaceRoomModifications = {
 	Return02 = {
 		RoomSetName = "Surface",
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
-		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon", "Modsnikkelmhadesbiomespersephone", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return03", } },
 		},
@@ -185,7 +196,7 @@ local surfaceRoomModifications = {
 	Return03 = {
 		RoomSetName = "Surface",
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
-		LoadModdedVoiceBanks = { "Megaera", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon", "Modsnikkelmhadesbiomespersephone", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		UnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "HandleReturnBoatRide", Args = { NextMap = "Return04", } },
 		},

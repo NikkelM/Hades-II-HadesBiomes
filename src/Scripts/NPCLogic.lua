@@ -4,7 +4,7 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	args = args or {}
 
 	-- Change the portrait if requested
-	if args.PortraitName ~= nil and screen.CurrentPortrait ~= args.PortraitName then
+	if args.PortraitName ~= nil and screen.CurrentPortrait ~= nil and screen.CurrentPortrait ~= args.PortraitName then
 		SetAnimation({ DestinationId = screen.PortraitId, Name = screen.CurrentPortrait .. "_Exit" })
 		game.waitUnmodified(source.PortraitExitWait or 0.3)
 		SetAnimation({ DestinationId = screen.PortraitId, Name = args.PortraitName })
@@ -40,7 +40,7 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 
 	source.UpgradeOptions = args.ModsNikkelMHadesBiomes_ForcedRewards or {}
 	source.BlockReroll = true
-	local options = ShallowCopyTable(args.UpgradeOptions) or {}
+	local options = game.DeepCopyTable(args.UpgradeOptions) or {}
 	local eligibleOptions = {}
 	local priorityOptions = {}
 
@@ -84,8 +84,10 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 
 	if game.CurrentRun.IsDreamRun then
 		for _, item in pairs(source.UpgradeOptions) do
-			item.Rarity = game.TraitRarityData.RarityUpgradeOrder[game.CurrentRun.EnteredBiomes]
+			-- Using math.min for potential future compatibility with longer Dream Run mods
+			item.Rarity = game.TraitRarityData.RarityUpgradeOrder[math.min(game.CurrentRun.EnteredBiomes, 4)]
 		end
+		mod.ScaleNPCTraitsForDreamRun(source.UpgradeOptions)
 	end
 
 	-- Custom: Sort the source.UpgradeOptions by their order in source.Traits
@@ -130,6 +132,9 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 end
 
 function mod.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
+	-- Trait has been applied; restore any deep-copied TraitData entries from dream run scaling
+	mod.RestoreDreamRunScaledTraits()
+
 	args = args or {}
 	game.FreezePlayerUnit("ModsNikkelMHadesBiomesNPCPostChoicePresentation")
 
@@ -229,6 +234,7 @@ function mod.ModsNikkelMHadesBiomesSingingPresentation(source, ars)
 end
 
 function mod.ModsNikkelMHadesBiomesEurydiceMusic(source, args)
+	args = args or {}
 	-- NPC_Orpheus_Story_01 or NPC_Eurydice_01 or NPC_Orpheus_01
 	source = source or game.ActiveEnemies[554419] or game.ActiveEnemies[514436] or game.ActiveEnemies[390000]
 
@@ -734,7 +740,7 @@ function mod.BedroomIntermissionApproach(source, args)
 	SetUnitProperty({ Property = "CollideWithObstacles", Value = true, DestinationId = game.CurrentRun.Hero.ObjectId })
 	RemoveInputBlock({ Name = "MoveHeroToRoomPosition" })
 
-	wait(0.1)
+	game.wait(0.1)
 
 	SetAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "MelinoeIdleWeaponless" })
 	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = args.AngleTowardTargetId or targetObjectId })
@@ -752,17 +758,17 @@ function mod.BedroomIntermissionPresentation(source, args)
 		PreLineWait = 0.55,
 		ObjectType = "NPC_FurySister_01",
 		-- Let's see, now...
-		{ Cue = "/VO/Megaera_30232" },
+		{ Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0232" },
 		-- What are we going to do.
-		{ Cue = "/VO/Megaera_30233" },
+		{ Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0233" },
 		-- What am I going to do with you.
-		{ Cue = "/VO/Megaera_30234" },
+		{ Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0234" },
 		-- Get over here, right now.
-		{ Cue = "/VO/Megaera_30235" },
+		{ Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0235" },
 		-- Oh I have an idea.
-		{ Cue = "/VO/Megaera_30236" },
+		{ Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0236" },
 		-- Ah, I know just the thing.
-		{ Cue = "/VO/Megaera_30237" },
+		{ Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0237" },
 	}
 
 	local megSound1 = nil
@@ -774,10 +780,10 @@ function mod.BedroomIntermissionPresentation(source, args)
 	local melSound3 = game.GetRandomMelBecomingCloserSound(source, { melSound1 = true })
 	if args.UseRandomSounds then
 		local megLaughSounds = {
-			"/VO/Megaera_30228",
-			"/VO/Megaera_30229",
-			"/VO/Megaera_30230",
-			"/VO/Megaera_30231",
+			"/VO/Modsnikkelmhadesbiomesmegaerahome_0228",
+			"/VO/Modsnikkelmhadesbiomesmegaerahome_0229",
+			"/VO/Modsnikkelmhadesbiomesmegaerahome_0230",
+			"/VO/Modsnikkelmhadesbiomesmegaerahome_0231",
 		}
 		megSound1 = game.RemoveRandomValue(megLaughSounds)
 		megSound2 = game.RemoveRandomValue(megLaughSounds)
@@ -824,7 +830,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
-		PlaySound({ Name = "/VO/Megaera_30228" })
+		PlaySound({ Name = "/VO/Modsnikkelmhadesbiomesmegaerahome_0228" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
@@ -853,7 +859,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
-		PlaySound({ Name = "/VO/Megaera_30231" })
+		PlaySound({ Name = "/VO/Modsnikkelmhadesbiomesmegaerahome_0231" })
 		game.wait(1.5)
 		PlaySound({ Name = melSound3 })
 		game.wait(1.5)
@@ -864,7 +870,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
-		PlaySound({ Name = megSound1 or "/VO/Megaera_30228" })
+		PlaySound({ Name = megSound1 or "/VO/Modsnikkelmhadesbiomesmegaerahome_0228" })
 		game.wait(0.5)
 		PlaySound({ Name = "/SFX/Enemy Sounds/Megaera/MegaeraWhipFlurryAttack" })
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
@@ -879,7 +885,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
-		PlaySound({ Name = megSound2 or "/VO/Megaera_30227" })
+		PlaySound({ Name = megSound2 or "/VO/Modsnikkelmhadesbiomesmegaerahome_0227" })
 		game.wait(0.8)
 		PlaySound({ Name = melSound1 })
 		game.wait(1.5)
@@ -905,6 +911,61 @@ function mod.BedroomIntermissionPresentation(source, args)
 	})
 
 	game.ResumeMusic()
+end
+
+-- #endregion
+
+-- #region Dream Run NPC trait scaling
+
+-- Track traits whose TraitData entries have been replaced with scaled deep copies
+local dreamRunScaledTraitOriginals = {}
+
+function mod.RestoreDreamRunScaledTraits()
+	for traitName, originalTraitData in pairs(dreamRunScaledTraitOriginals) do
+		game.TraitData[traitName] = originalTraitData
+	end
+	dreamRunScaledTraitOriginals = {}
+end
+
+function mod.ScaleNPCTraitsForDreamRun(upgradeOptions)
+	for _, option in pairs(upgradeOptions) do
+		local traitData = game.TraitData[option.ItemName]
+		if traitData ~= nil and traitData.ModsNikkelMHadesBiomesDreamRunScaling ~= nil and option.Rarity ~= nil then
+			local scaling = traitData.ModsNikkelMHadesBiomesDreamRunScaling
+			local rarityData = traitData.RarityLevels and traitData.RarityLevels[option.Rarity]
+			local multiplier = rarityData and rarityData.Multiplier or 1
+
+			dreamRunScaledTraitOriginals[option.ItemName] = traitData
+			local scaledCopy = game.DeepCopyTable(traitData)
+			game.TraitData[option.ItemName] = scaledCopy
+
+			-- Apply multiplier to the copy
+			for keyIndex, keyPath in ipairs(scaling.ScaleKeys) do
+				local target = scaledCopy or {}
+				for i = 1, #keyPath - 1 do
+					target = target[keyPath[i]]
+					if target == nil then break end
+				end
+				if target ~= nil then
+					local originalValue = target[keyPath[#keyPath]]
+					if originalValue ~= nil then
+						local isMultiplier = scaling.SourceIsMultiplier or
+								(scaling.SourceIsMultiplierKeys and scaling.SourceIsMultiplierKeys[keyIndex])
+						local newValue
+						if isMultiplier then
+							newValue = 1 + (originalValue - 1) * multiplier
+						else
+							newValue = originalValue * multiplier
+						end
+						if scaling.AsInt then
+							newValue = math.floor(newValue + 0.5)
+						end
+						target[keyPath[#keyPath]] = newValue
+					end
+				end
+			end
+		end
+	end
 end
 
 -- #endregion

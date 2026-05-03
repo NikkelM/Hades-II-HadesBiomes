@@ -151,7 +151,7 @@ local newData = {
 	-- 	Id = "DiscountTrait",
 	-- 	DisplayName = "Valued Customer",
 	-- 	Description =
-	-- 	"All items can be purchased for {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(this escape attempt){#Prev}.",
+	-- 	"All items can be purchased for {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}(this escape attempt){#Prev}.",
 	-- },
 	-- #endregion
 
@@ -229,6 +229,34 @@ local newData = {
 	-- 	DisplayName = "Flame Wheels Release",
 	-- 	Description = "Prevent {$TooltipData.BlockedEnemyTypes[1]} foes from appearing in {$Keywords.EncounterPlural}.",
 	-- },
+	-- #endregion
+
+	-- #region Dream Run Trait Texts
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "Birikmiş Hınç",
+		Description =
+		"{$Keywords.CharChronos}, {$Keywords.CharTyphon} veya {$Keywords.CharHades}, karşılaşmanızın {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay}. saniyesinden sonra {#Prev}kayda değer bir hasar alır.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Azaltılan {$Keywords.CharChronos}, {$Keywords.CharTyphon} veya {$Keywords.CharHades} Canı:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Umulmadık Anlaşmazlık",
+		Description =
+		"{$Keywords.CharChronos}, {$Keywords.CharTyphon} veya {$Keywords.CharHades}, karşılaşmanızda daha az düşman çağırır.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Çağırdığı Düşman Oranı:",
+		Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1}",
+	},
 	-- #endregion
 }
 

@@ -7,20 +7,22 @@ Atmosphere_Shadow_Brick_01
 Atmosphere_Shadow_Corner_02
 Atmosphere_Shadow_Corner_03
 Atmosphere_Shadow_Rectangle_01
+Atmosphere_Shadow_Rectangle_02
 Atmosphere_Shadow_Rectangle_04
 Atmosphere_Shadow_Rectangle_05
 Atmosphere_Shadow_Rectangle_06
 Atmosphere_Shadow_Rectangle_07
 Atmosphere_Shadow_Rectangle_08
+Atmosphere_Shadow_RoundCast_01
 Atmosphere_Shadow_Round_01
 Atmosphere_Shadow_Round_02
 Atmosphere_Shadow_Round_04
-Atmosphere_Shadow_RoundCast_01
 Atmosphere_Stroke_DotMulti_01
 Atmosphere_Stroke_LongSingle_01
 Atmosphere_Stroke_LongSingle_02
 Atmosphere_Stroke_ShortDouble_01
 Atmosphere_Stroke_ShortMulti_01
+Atmosphere_Water_Edge_01
 Basic_Glow_01
 
 
@@ -31,8 +33,10 @@ Tartarus_Rubble_02
 Tartarus_Rubble_02b
 Tartarus_Rubble_02c
 Tartarus_Rubble_06
-Tartarus_Terrain_Brick_09
 Tartarus_TerrainCrack_01
+Tartarus_Terrain_Brick_08
+Tartarus_Terrain_Brick_09
+Tartarus_Terrain_Brick_17
 Tartarus_WallBars_01
 
 
@@ -51,6 +55,8 @@ Prototype_Tile_01
 
 From Hades II Fx/Tilesets/House:
 House_Brazier_01
+House_TerrainMosaic_01
+House_TerrainSemiCircle_01
 
 
 From Hades II Fx/Fx:

@@ -85,6 +85,16 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 				victim.OnDeathFireWeapons = nil
 			end
 		end
+
+		-- Prevent early encounter completion while ShadeDeathSpawn projectile is in flight
+		-- The projectile spawns a ShadeNaked on landing, but between the shade dying and the projectile landing, the active enemy count may drop to 0 which would end the encounter and expire the projectile
+		if victim.OnDeathFireWeapons and game.ContainsAny(victim.OnDeathFireWeapons, { "ShadeDeathSpawn", "ShadeDeathSpawnElite", "ShadeDeathSpawnSuperElite" }) then
+			game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns = (game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns or 0) + 1
+			local challengeEncounter = game.CurrentRun.CurrentRoom.ChallengeEncounter
+			if challengeEncounter ~= nil and challengeEncounter.InProgress and challengeEncounter.ActiveSpawns ~= nil then
+				challengeEncounter.ActiveSpawns["ModsNikkelMHadesBiomesPendingShadeSpawn"] = true
+			end
+		end
 	end
 
 	base(victim, triggerArgs)
@@ -93,14 +103,6 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ObjectId ~= nil and (victim.ModsNikkelMHadesBiomesIsModdedEnemy or victim.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy) then
 		if victim.OnDeathCrowdReaction ~= nil then
 			game.thread(game.CrowdReactionPresentation, victim.OnDeathCrowdReaction)
-		end
-
-		if victim.StopBiomeTimerIfComboPartnerDead and not victim.CannotDieFromDamage then
-			local bothBossesDead = false
-			local partnerId = GetClosestUnitOfType({ Id = victim.ObjectId, DestinationName = victim.ComboPartnerName })
-			if partnerId == 0 or game.RequiredKillEnemies[partnerId] == nil or game.RequiredKillEnemies[partnerId].IsDead or game.RequiredKillEnemies[partnerId].Health <= 0 then
-				bothBossesDead = true
-			end
 		end
 	end
 end)
@@ -138,7 +140,7 @@ modutil.mod.Path.Wrap("CheckImpactReaction",
 modutil.mod.Path.Wrap("DisableAllyUnits", function(base)
 	if game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
 		local assistUnit = game.ActiveEnemies
-				[CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+				[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
 		if assistUnit ~= nil then
 			game.killTaggedThreads(assistUnit.AIThreadName)
 			game.killWaitUntilThreads(assistUnit.AINotifyName)

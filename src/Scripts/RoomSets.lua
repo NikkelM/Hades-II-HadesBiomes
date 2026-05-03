@@ -171,3 +171,12 @@ local newNextRoomSets = {
 for key, newNextRoomSet in pairs(newNextRoomSets) do
 	game.NextRoomSets[key] = newNextRoomSet
 end
+
+-- Biome icons for the Dream Run RunClearScreen and RunHistory
+local newRoomSetIcons = {
+	Tartarus = "ModsNikkelMHadesBiomes_BiomeTartarusIcon",
+	Asphodel = "ModsNikkelMHadesBiomes_BiomeAsphodelIcon",
+	Elysium  = "ModsNikkelMHadesBiomes_BiomeElysiumIcon",
+	Styx     = "ModsNikkelMHadesBiomes_BiomeStyxIcon",
+}
+mod.AddTableKeysSkipDupes(game.RoomSetIcons, newRoomSetIcons)

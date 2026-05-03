@@ -1427,6 +1427,33 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	},
 	-- #endregion
 	-- #region Megaera
+	EnteredFuryChamberVoiceLines = {
+		{ GlobalVoiceLines = "DreamRunFinalBossGreetingVoiceLines" },
+		-- Extreme Measures active
+		{
+			PreLineWait = 1.35,
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			SuccessiveChanceToPlayAll = 0.1,
+			GameStateRequirements = {
+				NamedRequirements = { "BossDifficultyActive" },
+			},
+			{ Cue = "/VO/Melinoe_3525",      Text = "Hello, ladies...", },
+			{ Cue = "/VO/MelinoeField_3136", Text = "I don't like either one of you.", RequiredMaxSupportAINames = 1 },
+			{ Cue = "/VO/MelinoeField_3133", Text = "These two again.",                RequiredMaxSupportAINames = 1 },
+		},
+		-- All other cases
+		{
+			PreLineWait = 1.35,
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			SuccessiveChanceToPlay = 0.1,
+			{ Cue = "/VO/MelinoeField_0249", Text = "You don't know who you're dealing with..." },
+			{ Cue = "/VO/MelinoeField_0472", Text = "Let this be a message to your lord!", },
+			{ Cue = "/VO/MelinoeField_1132", Text = "My blood is not for you!" },
+			{ Cue = "/VO/MelinoeField_1133", Text = "Thirsty for more are we?" },
+		},
+	},
 	MultiFuryFightStartVoiceLines = {
 		{
 			BreakIfPlayed = true,
@@ -1605,6 +1632,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			PreLineWait = 0.5,
 			{ Cue = "/VO/MelinoeField_3537", Text = "At least that magma's gone for now...", },
 		},
+		{ GlobalVoiceLines = "DreamRunFinalBossGreetingVoiceLines" },
 		{
 			RandomRemaining = true,
 			BreakIfPlayed = true,
@@ -2191,7 +2219,7 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	},
 	-- #endregion
 	-- #region Charon/ForbiddenShopItem/BossCharon
-	-- Custom: Replaced Charon_ with Megaera_1
+	-- Custom: Replaced Charon_ with Modsnikkelmhadesbiomescharon_
 	CharonSurprisedVoiceLines = {
 		Queue = "Interrupt",
 		{
@@ -2203,23 +2231,23 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 				{ Name = "CharonSurprisedSpeech", Time = 10 },
 			},
 			-- Hoh?
-			{ Cue = "/VO/Megaera_10052" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0052" },
 			-- Hrn?
-			{ Cue = "/VO/Megaera_10053" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0053" },
 			-- Hehh?
-			{ Cue = "/VO/Megaera_10054" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0054" },
 			-- Hraugh!
-			{ Cue = "/VO/Megaera_10055" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0055" },
 			-- Nrraugh?!
-			{ Cue = "/VO/Megaera_10068" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0068" },
 			-- Hrrngh?!
-			{ Cue = "/VO/Megaera_10069" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0069" },
 			-- Haaah?!
-			{ Cue = "/VO/Megaera_10070" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0070" },
 			-- Rraah!!
-			{ Cue = "/VO/Megaera_10071" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0071" },
 			-- Hrrnn!!
-			{ Cue = "/VO/Megaera_10072" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0072" },
 		},
 	},
 	EnteredCharonFightVoiceLines = {
@@ -2254,21 +2282,21 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			SuccessiveChanceToPlay = 0.66,
 			ObjectType = "Charon",
 			-- Harrhh...!
-			{ Cue = "/VO/Megaera_10028" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0028" },
 			-- Hrraahh...!
-			{ Cue = "/VO/Megaera_10029" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0029" },
 			-- Hrrrr...!
-			{ Cue = "/VO/Megaera_10030" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0030" },
 			-- Nrrrrhhh...!
-			{ Cue = "/VO/Megaera_10031" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0031" },
 			-- Hmmmm....!
-			{ Cue = "/VO/Megaera_10032" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0032" },
 			-- Guuhhhh...
-			{ Cue = "/VO/Megaera_10033" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0033" },
 			-- Heehhhh...
-			{ Cue = "/VO/Megaera_10034" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0034" },
 			-- Mrrrrnnn....
-			{ Cue = "/VO/Megaera_10035" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0035" },
 		},
 	},
 	-- #endregion
@@ -2425,8 +2453,8 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
 			SkipAnim = true,
 			-- Snow everywhere... Mother...
-			-- Replace Persephone_ with Megaera_2
-			{ Cue = "/VO/Megaera_20098" },
+			-- Custom: Replaced Persephone_ with Modsnikkelmhadesbiomespersephone_
+			{ Cue = "/VO/Modsnikkelmhadesbiomespersephone_0098" },
 		},
 	},
 	SunriseOverlookVoiceLines = {
@@ -2459,13 +2487,11 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			PreLineWait = 1.2,
 			NoTarget = true,
 			-- Thus was Hades, feared ruler of the dead, reunited with his long-lost bride, Persephone, the Queen; and, together with their firstborn son, Prince Zagreus, they would go on to reign eternally beneath the Earth, in relative harmony.
-			{ Cue = "/VO/Megaera_00340",    SubtitleColor = game.Color.NarratorVoice, },
+			{ Cue = "/VO/Modsnikkelmhadesbiomesstoryteller_0340", SubtitleColor = game.Color.NarratorVoice, },
 			-- The Queen's return marked an occasion of enthusiastic joy... so much as possible, in that dark, gloom-filled realm of the dead.
-			{ Cue = "/VO/Megaera_00341",    SubtitleColor = game.Color.NarratorVoice,                                                                                                                                                                           PreLineWait = 1 },
-			-- And, even after all this time, Olympus never did discover what transpired there in the Underworld.
-			-- { Cue = "/VO/Megaera_00342", SubtitleColor = Color.NarratorVoice, PreLineWait = 1 },
-			{ Cue = "/VO/Storyteller_0097", Text = "{#Emph}One rightly may imagine that this tale has a very thrilling end; although I am afraid for now, that we are out of Time.",                                                                            TextLimit = 300, PreLineWait = 0.8, NoTarget = true },
-			{ Cue = "/VO/Storyteller_0180", Text = "{#Emph}So lifelike was the nightmare tormenting the Princess of the Dead that she was very much surprised to learn that it was all a dream! Merely a dream, from which she shall awaken any moment now...", TextLimit = 300, PreLineWait = 0.8, NoTarget = true },
+			{ Cue = "/VO/Modsnikkelmhadesbiomesstoryteller_0341", SubtitleColor = game.Color.NarratorVoice,                                                                                                                                                                           PreLineWait = 1 },
+			{ Cue = "/VO/Storyteller_0097",                       Text = "{#Emph}One rightly may imagine that this tale has a very thrilling end; although I am afraid for now, that we are out of Time.",                                                                            TextLimit = 300, PreLineWait = 0.8, NoTarget = true },
+			{ Cue = "/VO/Storyteller_0180",                       Text = "{#Emph}So lifelike was the nightmare tormenting the Princess of the Dead that she was very much surprised to learn that it was all a dream! Merely a dream, from which she shall awaken any moment now...", TextLimit = 300, PreLineWait = 0.8, NoTarget = true },
 		},
 	},
 	-- #endregion
@@ -3826,20 +3852,20 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_3654",      Text = "Shall we liven things up?",          TriggerCooldowns = { "ForbiddenShopItemCaughtSpeech" }, PreLineWait = 1.5, },
 		},
 		{
-			-- Custom: Replaced Charon_ with Megaera_1
+			-- Custom: Replaced Charon_ with Modsnikkelmhadesbiomescharon_
 			RandomRemaining = true,
 			PreLineWait = 0.2,
 			ObjectType = "NPC_Charon_01",
 			-- Nrraaauuuggghhh!!
-			{ Cue = "/VO/Megaera_10041" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0041" },
 			-- Hhhaaaauuuhhhhh!!
-			{ Cue = "/VO/Megaera_10042" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0042" },
 			-- Hrrrauuugggghhhh!
-			{ Cue = "/VO/Megaera_10043" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0043" },
 			-- Grrraauuuggggghhh!
-			{ Cue = "/VO/Megaera_10044" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0044" },
 			-- Haaahhhhhhhhh....
-			{ Cue = "/VO/Megaera_10005" },
+			{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0005" },
 		},
 	},
 	ForbiddenShopItemCaughtVoiceLines = {
@@ -3866,7 +3892,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_4352",      Text = "Hello again, good Shade." },
 			{ Cue = "/VO/MelinoeField_3045", Text = "You're always here, good Shade." },
 			{ Cue = "/VO/MelinoeField_3047", Text = "Something about my brother..." },
-			{ Cue = "/VO/MelinoeField_3048", Text = "My brother's biggest fan...?",                       PlayFirst = true },
+			{ Cue = "/VO/MelinoeField_3048", Text = "My brother's biggest fan...?",              PlayFirst = true },
 			{ Cue = "/VO/MelinoeField_4804", Text = "Good to see you again, good Shade!", },
 			{ Cue = "/VO/MelinoeField_4806", Text = "Hello again, good Shade!" },
 			{ Cue = "/VO/MelinoeField_5363", Text = "Cheers for believing in us, good Shade!" },

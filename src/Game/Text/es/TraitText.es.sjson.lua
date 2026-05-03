@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "Cliente Preferente",
 		Description =
-		"Puedes comprar todos los objetos con un descuento del {#UpgradeFormat} {$TooltipData.ExtractData.TooltipDiscount} % de {!Icons.Currency}{#Prev} {#ItalicFormat}(en esta tentativa de huida){#Prev}."
+		"Puedes comprar todos los objetos con un descuento del {#UpgradeFormat} {$TooltipData.ExtractData.TooltipDiscount} % de {!Icons.Currency} {#Prev} {#ItalicFormat}(en esta tentativa de huida){#Prev}."
 	},
 	-- #endregion
 
@@ -229,6 +229,34 @@ local newData = {
 		DisplayName = "Cancelador de Carros Ígneos",
 		Description =
 		"Evita que los enemigos de tipo {$TooltipData.BlockedEnemyTypes[1]} aparezcan en los próximos {$Keywords.EncounterPlural}.",
+	},
+	-- #endregion
+
+	-- #region Dream Run Trait Texts
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "Viejas Rencillas",
+		Description =
+		"En el enfrentamiento, {$Keywords.CharChronos}, {$Keywords.CharTyphon} y {$Keywords.CharHades} reciben daño transcurridos los primeros {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} s{#Prev}.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}Reducción de vida de {$Keywords.CharChronos}, {$Keywords.CharTyphon} o {$Keywords.CharHades}:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Disidencia Total",
+		Description =
+		"En el enfrentamiento, {$Keywords.CharChronos}, {$Keywords.CharTyphon} y {$Keywords.CharHades} invocan menos refuerzos.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Enemigos invocados:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

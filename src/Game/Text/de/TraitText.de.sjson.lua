@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "Geschätzter Kunde",
 		Description =
-		"Alle Artikel kosten {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(bei diesem Fluchtversuch){#Prev}."
+		"Alle Artikel kosten {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}(bei diesem Fluchtversuch){#Prev}."
 	},
 	-- #endregion
 
@@ -229,6 +229,33 @@ local newData = {
 		DisplayName = "Flammenrad-Erlösung",
 		Description =
 		"Verhindert, dass {$TooltipData.BlockedEnemyTypes[1]} Gegner in {$Keywords.EncounterPlural} auftauchen.",
+	},
+	-- #endregion
+
+	-- #region Dream Run Trait Texts
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "Alter Groll",
+		Description =
+		"{$Keywords.CharChronos}, {$Keywords.CharTyphon} und {$Keywords.CharHades} erleiden nach den ersten {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} Sek. {#Prev}des Kampfes Schaden.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Reduzierte Lebenskraft:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "Tiefer Zwist",
+		Description =
+		"{$Keywords.CharChronos}, {$Keywords.CharTyphon} und {$Keywords.CharHades} rufen im Kampf weniger Verstärkung herbei.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Beschworene Gegner:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

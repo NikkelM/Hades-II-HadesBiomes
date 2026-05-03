@@ -193,7 +193,7 @@ local function parseCsvLine(rawLine, expectedColumnCount)
 	return normalizeColumns(columns, expectedColumnCount)
 end
 
-local function parseSubtitleCsvFile(filePath, fileName, translatePrefix, whiteListedCueTable)
+local function parseSubtitleCsvFile(filePath, fileName, translatePrefix)
 	local file = io.open(filePath, "r")
 	if not file then
 		mod.DebugPrint("Could not open subtitle CSV: " .. filePath, 1)
@@ -239,11 +239,8 @@ local function parseSubtitleCsvFile(filePath, fileName, translatePrefix, whiteLi
 						end
 					end
 
-					-- If a cue filter is provided, only include entries whose renamed ID is in the filter
-					if not whiteListedCueTable or whiteListedCueTable[id] then
-						table.insert(entries,
-							sjson.to_object({ Id = id, InheritFrom = "BaseSubtitle", DisplayName = displayName }, order))
-					end
+					table.insert(entries,
+						sjson.to_object({ Id = id, InheritFrom = "BaseSubtitle", DisplayName = displayName }, order))
 				end
 			end
 		end
@@ -266,13 +263,7 @@ local function loadSubtitleCsvFilesAndWriteToSjson()
 			local filePath = rom.path.combine(mod.hadesGameFolder,
 				"Content\\Subtitles\\" .. sourceFolderName .. "\\" .. fileName .. ".csv")
 
-			-- Filter ZagreusField and ZagreusHome subtitles to only non-dialogue cues to reduce file size and prevent the game crashing when launching vanilla
-			local whiteListedCueTable = nil
-			if fileName == "ZagreusField" or fileName == "ZagreusHome" then
-				whiteListedCueTable = mod.ZagreusSubtitleCues
-			end
-
-			local parsedSubtitles = parseSubtitleCsvFile(filePath, fileName, translatePrefix, whiteListedCueTable)
+			local parsedSubtitles = parseSubtitleCsvFile(filePath, fileName, translatePrefix)
 			mod.DebugPrint("Parsed " .. tostring(#parsedSubtitles) .. " subtitle rows from " .. fileName, 4)
 
 			for _, targetFolderName in ipairs(targetFolderNames) do
@@ -344,13 +335,13 @@ local function copyHadesHelpTexts()
 							table.remove(hadesHelpTextData.Texts, i)
 						end
 						if entry.Id then
-							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
-							entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
-							entry.Id = entry.Id:gsub("Persephone_", "Megaera_2")
-							entry.Id = entry.Id:gsub("ZagreusHome_", "ZagreusField_0")
+							entry.Id = entry.Id:gsub("Storyteller_", "Modsnikkelmhadesbiomesstoryteller_")
+							entry.Id = entry.Id:gsub("Charon_", "Modsnikkelmhadesbiomescharon_")
+							entry.Id = entry.Id:gsub("Persephone_", "Modsnikkelmhadesbiomespersephone_")
+							entry.Id = entry.Id:gsub("ZagreusHome_", "Modsnikkelmhadesbiomeszagreushome_")
 							-- LootData
-							entry.Id = entry.Id:gsub("Hermes_", "Dusa_0")
-							entry.Id = entry.Id:gsub("Chaos_", "Dusa_1")
+							entry.Id = entry.Id:gsub("Hermes_", "Modsnikkelmhadesbiomeshermes_")
+							entry.Id = entry.Id:gsub("Chaos_", "Modsnikkelmhadesbiomeschaos_")
 						end
 						if entry.DisplayName then
 							entry.DisplayName = string.gsub(entry.DisplayName, "{#PreviousFormat}", "{#Prev}")
@@ -389,16 +380,16 @@ local function copyHadesNPCTexts()
 					local filteredTexts = {}
 					for _, entry in ipairs(hadesHelpTextDataRaw.Texts) do
 						if entry.Id and entry.Speaker and allowedSpeakers[entry.Speaker] then
-							entry.Id = entry.Id:gsub("Storyteller_", "Megaera_0")
-							entry.Id = entry.Id:gsub("Charon_", "Megaera_1")
-							entry.Id = entry.Id:gsub("Persephone_", "Megaera_2")
-							entry.Id = entry.Id:gsub("MegaeraHome_", "Megaera_3")
-							entry.Id = entry.Id:gsub("MegaeraExtra_", "Megaera_5")
-							-- entry.Id = entry.Id:gsub("Nyx_", "Megaera_4")
-							entry.Id = entry.Id:gsub("Hades_", "HadesField_0")
-							entry.Id = entry.Id:gsub("Skelly_", "Sisyphus_0")
-							-- entry.Id = entry.Id:gsub("Hypnos_", "Sisyphus_1")
-							entry.Id = entry.Id:gsub("ZagreusHome_", "ZagreusField_0")
+							entry.Id = entry.Id:gsub("Storyteller_", "Modsnikkelmhadesbiomesstoryteller_")
+							entry.Id = entry.Id:gsub("Charon_", "Modsnikkelmhadesbiomescharon_")
+							entry.Id = entry.Id:gsub("Persephone_", "Modsnikkelmhadesbiomespersephone_")
+							entry.Id = entry.Id:gsub("MegaeraHome_", "Modsnikkelmhadesbiomesmegaerahome_")
+							entry.Id = entry.Id:gsub("MegaeraExtra_", "Modsnikkelmhadesbiomesmegaerahome_5")
+							-- entry.Id = entry.Id:gsub("Nyx_", "Modsnikkelmhadesbiomesnyx_")
+							-- entry.Id = entry.Id:gsub("Hades_", "Modsnikkelmhadesbiomeshades_")
+							entry.Id = entry.Id:gsub("Skelly_", "Modsnikkelmhadesbiomesskelly_")
+							-- entry.Id = entry.Id:gsub("Hypnos_", "Modsnikkelmhadesbiomeshypnos_")
+							entry.Id = entry.Id:gsub("ZagreusHome_", "Modsnikkelmhadesbiomeszagreushome_")
 							table.insert(filteredTexts, entry)
 						end
 					end
@@ -625,8 +616,8 @@ end
 
 local installSteps = {
 	Enemies = { "Audio .bank files", function()
-		copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Content\\Audio\\Desktop\\", ".bank", "Audio ",
-			false, true)
+		copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Content\\Audio\\Desktop\\", ".bank",
+			"Audio ", false, true)
 	end },
 
 	Enemy_BiomeN_Projectiles = { ".map_text files", function()

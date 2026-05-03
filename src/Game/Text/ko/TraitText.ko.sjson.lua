@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "소중한 고객",
 		Description =
-		"모든 상품을 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} 할인된 가격으로 구매할 수 있습니다{#ItalicFormat}(현재 탈출 시도에서){#Prev}."
+		"모든 상품을 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} 할인된 가격으로 구매할 수 있습니다{#ItalicFormat}(현재 탈출 시도에서){#Prev}."
 	},
 	-- #endregion
 
@@ -228,6 +228,31 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait",
 		DisplayName = "화염 수레바퀴 석방",
 		Description = "{$Keywords.EncounterPlural}에서 {$TooltipData.BlockedEnemyTypes[1]} 적들이 등장하는 것을 방지합니다.",
+	},
+	-- #endregion
+
+	-- #region Dream Run Trait Texts
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "해묵은 원한",
+		Description = "전투 시작 {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay}초 {#Prev}후, {$Keywords.CharChronos}/{$Keywords.CharTyphon}/{$Keywords.CharHades}이 큰 피해를 받습니다.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}/{$Keywords.CharTyphon}/{$Keywords.CharHades} 생명력 감소:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "갈등의 골",
+		Description = "전투 중, {$Keywords.CharChronos}/{$Keywords.CharTyphon}/{$Keywords.CharHades} 측 증원군이 덜 소환됩니다.",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}/{$Keywords.CharTyphon}/{$Keywords.CharHades} 증원군 수:",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

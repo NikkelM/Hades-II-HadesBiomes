@@ -1855,7 +1855,8 @@ local weaponModifications = {
 	HadesSpawns2 = {
 		AIData = {
 			-- ShieldRangedSuperElite since it's tethers wouldn't go invisible
-			SpawnSkipOverridesForTypes = { "WretchAssassinMinibossSuperElite", "ShieldRangedSuperElite" },
+			-- HeavyRangedSplitterMinibossSuperElite since its fragments will point lasers out of bounds
+			SpawnSkipOverridesForTypes = { "WretchAssassinMinibossSuperElite", "ShieldRangedSuperElite", "HeavyRangedSplitterMinibossSuperElite" },
 			SpawnDefaultAIDataOverrides = {
 				PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 				PreMoveFunctionName = _PLUGIN.guid .. "." .. "EnemyInvisibility",
@@ -2068,7 +2069,7 @@ local weaponModifications = {
 				Cooldowns = {
 					{ Name = "CharonPreAttackSpeech", Time = 5 },
 				},
-				{ Cue = "/VO/Megaera_10005", Text = "{#DialogueItalicFormat}Haaahhhhhhhhh{#Prev}....", SkipAnim = true },
+				{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0005", Text = "{#DialogueItalicFormat}Haaahhhhhhhhh{#Prev}....", SkipAnim = true },
 			},
 		},
 	},
@@ -2086,7 +2087,7 @@ local weaponModifications = {
 				Cooldowns = {
 					{ Name = "CharonPreAttackSpeech", Time = 5 },
 				},
-				{ Cue = "/VO/Megaera_10026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
+				{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
 			},
 			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
 		},
@@ -2104,7 +2105,7 @@ local weaponModifications = {
 				Cooldowns = {
 					{ Name = "CharonPreAttackSpeech", Time = 5 },
 				},
-				{ Cue = "/VO/Megaera_10026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
+				{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
 			},
 			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
 		},
@@ -2117,7 +2118,7 @@ local weaponModifications = {
 				Cooldowns = {
 					{ Name = "CharonPreAttackSpeech", Time = 5 },
 				},
-				{ Cue = "/VO/Megaera_10026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
+				{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
 			},
 			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
 		},
@@ -2130,7 +2131,7 @@ local weaponModifications = {
 				Cooldowns = {
 					{ Name = "CharonPreAttackSpeech", Time = 5 },
 				},
-				{ Cue = "/VO/Megaera_10026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
+				{ Cue = "/VO/Modsnikkelmhadesbiomescharon_0026", Text = "Hrreehhh hohhhhhh....", SkipAnim = true },
 			},
 			FireFunctionName = _PLUGIN.guid .. "." .. "CharonGhostCharge",
 		},
@@ -2244,6 +2245,8 @@ local weaponModifications = {
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
+			-- Exclude from Massive elite attribute projectile size increase
+			ProjectileScaleMultiplier = 1,
 		},
 	},
 	ShadeDeathSpawnElite = {
@@ -2256,6 +2259,8 @@ local weaponModifications = {
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
+			-- Exclude from Massive elite attribute projectile size increase
+			ProjectileScaleMultiplier = 1,
 		},
 	},
 	ShadeDeathSpawnSuperElite = {
@@ -2268,6 +2273,8 @@ local weaponModifications = {
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
 			PreAttackDuration = 0.0,
+			-- Exclude from Massive elite attribute projectile size increase
+			ProjectileScaleMultiplier = 1,
 		},
 	},
 	-- #endregion

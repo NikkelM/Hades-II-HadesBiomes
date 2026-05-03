@@ -1,15 +1,18 @@
 modutil.mod.Path.Wrap("StartedTextLinesPresentation", function(base, source, textLines)
-	if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
-		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 0 })
-	end
-	if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines then
-		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 0 })
-	end
-	if textLines ~= nil and textLines.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
-		SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 0 })
-	end
-	if textLines ~= nil and textLines.ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines then
-		SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 0 })
+	-- In Dream Runs, all dialogue is skipped, so singing should continue uninterrupted
+	if not game.CurrentRun.IsDreamRun then
+		if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
+			SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 0 })
+		end
+		if source ~= nil and source.ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines then
+			SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 0 })
+		end
+		if textLines ~= nil and textLines.ModsNikkelMHadesBiomesPauseMusicVocalsOnTextLines then
+			SetSoundCueValue({ Names = { "Vocals", }, Id = game.AudioState.SecretMusicId, Value = 0 })
+		end
+		if textLines ~= nil and textLines.ModsNikkelMHadesBiomesPauseMusicVocals2OnTextLines then
+			SetSoundCueValue({ Names = { "Vocals2", }, Id = game.AudioState.SecretMusicId, Value = 0 })
+		end
 	end
 
 	if textLines ~= nil and source.TextLinesPauseSingingFx then
@@ -88,7 +91,7 @@ modutil.mod.Path.Wrap("GodLootPickupPresentation", function(base, loot, args)
 
 	-- We want to play a custom pickup sound and visual effects if the next text line on this loot is modded
 	-- Getting the text line to play comes from LootPickupPresentation()
-	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and not loot.BlockTextLines then
 		if loot.RecheckConversationOnLootPickup and loot.NextInteractLines ~= nil and not game.IsTextLineEligible(game.CurrentRun, loot, loot.NextInteractLines) then
 			loot.NextInteractLines = nil
 		end

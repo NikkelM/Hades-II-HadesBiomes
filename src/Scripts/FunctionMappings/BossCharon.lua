@@ -124,6 +124,12 @@ function mod.BossIntroCharon(eventSource, args)
 	game.ShowCombatUI("BossIntroCharon")
 end
 
+function mod.CharonDreamRunIntro(source, args)
+	mod.StartCharonBossRoomMusic()
+	SetAnimation({ Name = "CharonTaunt", DestinationId = source.ObjectId })
+	game.wait(0.7)
+end
+
 function mod.StartCharonBossRoomMusic()
 	-- /Music/CharonFightTheme
 	game.SecretMusicPlayer("{c5808c4e-a192-4f33-bcae-1e1415b6f8e8}", { Section = 0 })
@@ -153,6 +159,7 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 
 	StopAnimation({ Name = "Invincibubble_Charon", DestinationId = boss.ObjectId })
 	SetLifeProperty({ DestinationId = boss.ObjectId, Property = "InvulnerableFx", Value = nil })
+	boss.IgnoreInvincibubbleOnHit = false
 	SetAnimation({ DestinationId = boss.ObjectId, Name = GetThingDataValue({ Id = boss.ObjectId, Property = "Graphic" }) })
 	LockCamera({ Id = boss.ObjectId, Duration = 1.25 })
 	Move({ Id = boss.ObjectId, DestinationId = 40055, SuccessDistance = 32 })
@@ -182,13 +189,22 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 
 	game.wait(2.0, game.RoomThreadName)
 
-	game.ProcessTextLines(boss.BossPresentationOutroTextLineSets)
-	game.ProcessTextLines(boss.BossPresentationOutroRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		game.ProcessTextLines(boss.BossPresentationOutroTextLineSets)
+		game.ProcessTextLines(boss.BossPresentationOutroRepeatableTextLineSets)
+	end
 
 	game.RemoveEnemyUI(boss)
 
-	if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroTextLineSets) then
-		mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroTextLineSets) then
+			mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+		end
+	end
+
+	if game.CurrentRun.IsDreamRun then
+		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharon = true
+		mod.CheckDreamDiveQuestCompletion()
 	end
 
 	-- Similar lines being played through CharonStoreDiscount pickup

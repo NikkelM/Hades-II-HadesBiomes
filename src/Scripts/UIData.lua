@@ -1,3 +1,4 @@
+-- #region Icons
 -- "Rage" icon for Alecto
 local superIcon = {
 	TexturePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Icons\\Super",
@@ -45,7 +46,39 @@ local newIcons = {
 		TexturePath = "GUI\\Icons\\Attributes\\Smoked",
 	},
 	-- #endregion
+	-- #region Dream Run biome icons
+	ModsNikkelMHadesBiomes_BiomeTartarusIcon = {
+		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeTartarus",
+	},
+	ModsNikkelMHadesBiomes_BiomeAsphodelIcon = {
+		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeAsphodel",
+	},
+	ModsNikkelMHadesBiomes_BiomeElysiumIcon = {
+		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeElysium",
+	},
+	ModsNikkelMHadesBiomes_BiomeStyxIcon = {
+		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeStyx",
+	},
+	-- #endregion
 }
 for iconName, iconData in pairs(newIcons) do
 	game.IconData[iconName] = game.IconData[iconName] or iconData
 end
+-- #endregiom
+
+-- #region Text
+local newTextFormats = {
+	TeamThanFormat = {
+		Graft = true,
+		Color = game.Color.ThanatosVoice,
+		Font = "LatoSemibold",
+	},
+}
+-- Adapted from SetupFormatContainers which runs on PreThingCreation before we can add to the table
+for formatName, formatData in pairs(newTextFormats) do
+	formatData.Name = formatName
+	formatData.AutoSetDataProperties = true
+	game.TextFormats[formatName] = formatData
+	CreateFormatContainer(formatData)
+end
+-- #endregion

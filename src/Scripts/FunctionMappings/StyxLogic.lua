@@ -310,6 +310,8 @@ function mod.ModsNikkelMHadesBiomesReturnToStyxHubPresentation(currentRun, curre
 		game.thread(game.DisplayBiomeLocationBanner, nil,
 			{
 				Text = currentRoom.LocationText,
+				DreamText = currentRoom.DreamLocationText,
+				SkipDreamSubtitle = true,
 				Delay = 0.65,
 				FadeColor = currentRoom.LocationTextColor or { 255, 0, 0, 255 },
 				Duration = 2.0,

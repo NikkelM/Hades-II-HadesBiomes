@@ -1216,6 +1216,7 @@ mod.HadesHelpTextAliases = {
 	CharEurydice = "NPC_Eurydice_01",
 	CharPatroclus = "NPC_Patroclus_01",
 	CharBouldy = "ModsNikkelMHadesBiomes_NPC_Bouldy_01",
+	CharZagreus = "Zagreus",
 	NPC_FurySister_Story_01 = "NPC_FurySister_01",
 	NPC_Thanatos_Story_01 = "NPC_Thanatos_01",
 }

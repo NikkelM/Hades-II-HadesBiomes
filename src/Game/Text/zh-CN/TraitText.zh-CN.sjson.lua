@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "重要客户",
 		Description =
-		"所有的物品价格变为 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}（仅限本次脱逃）{#Prev}。"
+		"所有的物品价格变为 {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}（仅限本次脱逃）{#Prev}。"
 	},
 	-- #endregion
 
@@ -228,6 +228,34 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait",
 		DisplayName = "火焰战车卸任",
 		Description = "{$TooltipData.BlockedEnemyTypes[1]} 不会在{$Keywords.EncounterPlural}出现。",
+	},
+	-- #endregion
+
+	-- #region Dream Run Trait Texts
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "宿仇旧怨",
+		Description =
+		"面对{$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}时，于战斗开始 {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} 秒{#Prev}后令其受到爆发伤害。",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat} {$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}生命值减少：",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "众怨难平",
+		Description = "面对{$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}时，敌方援军数量减少。",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat} {$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}召唤的援军：",
+		Description = "{#UpgradeFormat}{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

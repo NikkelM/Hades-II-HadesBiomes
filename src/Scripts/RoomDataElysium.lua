@@ -329,6 +329,39 @@ local roomReplacements = {
 			},
 		},
 
+		ThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+		PostCombatReloadThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+
 		CombatOverMusicEvents = mod.CombatOverMusicEvents.Generic,
 	},
 
@@ -345,10 +378,47 @@ local roomReplacements = {
 		},
 	},
 	Y_Intro = {
+		ThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText",
+				GameStateRequirements = {
+					NamedRequirementsFalse = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = {
+					Text = "Location_Elysium",
+					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
+					AnimationName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn",
+					AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut",
+				},
+			},
+			{
+				FunctionName = "DisplayInfoBanner",
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock",
+				Args = {
+					Biome = "Elysium"
+				},
+			},
+			{
+				FunctionName = "CheckObjectiveSetSource",
+				Args = { ObjectiveSetName = "BountyAdvancedTooltip" },
+			},
+		},
+
 		EnterVoiceLines = {
 			-- Chaos Trial/Bounty
 			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
-			-- TODO: Normal Melinoe voicelines
+			{
+				RandomRemaining = true,
+				PreLineWait = 1.35,
+				SuccessiveChanceToPlayAll = 0.05,
+				{ Cue = "/VO/Melinoe_5124", Text = "{#Emph}Whew... {#Prev}too hot back there.", },
+			},
 		},
 	},
 
@@ -358,6 +428,66 @@ local roomReplacements = {
 	},
 	Y_PreBoss01 = {
 		Binks = mod.NilValue,
+	},
+
+	Y_Boss01 = {
+		EnterVoiceLines = {
+			{ GlobalVoiceLines = "DreamRunFinalBossGreetingVoiceLines" },
+			{
+				RandomRemaining = true,
+				BreakIfPlayed = true,
+				PreLineWait = 0.4,
+				ChanceToPlayAgain = 0.05,
+				RequiredActiveMetaUpgradeLevel = { Name = "BossDifficultyShrineUpgrade", Count = 3 },
+				ObjectType = "Theseus2",
+				-- Brothers in Death!!
+				{ Cue = "/VO/Theseus_0394" },
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 1.1,
+				SuccessiveChanceToPlayAll = 0.33,
+				ObjectType = "Theseus",
+				RequiredFalseFlags = { "HeroesMuted" },
+				-- You!
+				{ Cue = "/VO/Theseus_0456" },
+				-- You again!
+				{ Cue = "/VO/Theseus_0457" },
+				-- A challenger!
+				{ Cue = "/VO/Theseus_0458" },
+				-- A challenger?
+				{ Cue = "/VO/Theseus_0459" },
+				-- Ah, at last!
+				{ Cue = "/VO/Theseus_0460" },
+				-- Our sworn enemy!
+				{ Cue = "/VO/Theseus_0462" },
+				-- So...!
+				{ Cue = "/VO/Theseus_0463" },
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				PreLineWait = 1.1,
+				SuccessiveChanceToPlayAll = 0.33,
+				ObjectType = "Theseus2",
+				RequiredFalseFlags = { "HeroesMuted" },
+				-- You!
+				{ Cue = "/VO/Theseus_0456" },
+				-- You again!
+				{ Cue = "/VO/Theseus_0457" },
+				-- A challenger!
+				{ Cue = "/VO/Theseus_0458" },
+				-- A challenger?
+				{ Cue = "/VO/Theseus_0459" },
+				-- Ah, at last!
+				{ Cue = "/VO/Theseus_0460" },
+				-- Our sworn enemy!
+				{ Cue = "/VO/Theseus_0462" },
+				-- So...!
+				{ Cue = "/VO/Theseus_0463" },
+			},
+		},
 	},
 
 	Y_PostBoss01 = {
@@ -393,6 +523,9 @@ local roomModifications = {
 		-- MusicActiveStems = { "Bass" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Elysium_DreamBanner",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Elysium_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeElysium" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeElysium" },
@@ -419,10 +552,22 @@ local roomModifications = {
 		},
 		EntranceDirection = "LeftRight",
 		StrictLeftRight = true,
-		FlipHorizontalChance = 0.0,
-		ThreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerElysiumIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerElysiumOut" }, },
-			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Elysium" } },
+
+		-- For Dream Dives
+		NoReward = mod.NilValue,
+		ForcedRewardStore = "RunProgress",
+		IneligibleRewards = game.RewardSets.OpeningRoomBans,
+		SpawnRewardOnId = 557204,
+		DisableRewardMagnetisim = true,
+		RewardGameStateRequirements = {
+			{
+				PathTrue = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				Path = { "CurrentRun", "EnteredBiomes" },
+				Comparison = "==",
+				Value = 0,
+			},
 		},
 
 		HarvestPointChances = { 0.02, },
@@ -434,7 +579,7 @@ local roomModifications = {
 
 	-- SHOPS
 	Y_Shop01 = {
-		LoadModdedVoiceBanks = { "Megaera" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon" },
 		StoreDataName = "WorldShop",
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		FamiliarsPreferSpawnPointMovement = true,
@@ -479,12 +624,15 @@ local roomModifications = {
 		SkipLastKillPresentation = true,
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
+		RewardPreviewIcon = "RoomRewardSubIcon_PreBoss",
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
 		-- Disable all music if it's a free reward room (no Charon/Shop)
 		IgnoreStemMixer = true,
 		MusicMutedStems = { "Drums", "Bass", "Guitar", },
+
+		ZagContractRewardDestinationId = 776332,
 
 		HarvestPointChances = { 0.3 },
 		ShovelPointChance = 0.3,
@@ -531,18 +679,24 @@ local roomModifications = {
 		ForcedRewardStore = mod.NilValue,
 		EligibleRewards = mod.NilValue,
 		RewardConsumableOverrides = mod.NilValue,
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium",
 				Args = {
-					[0] = { DelayedStart = true, },
-					[1] = { DelayedStart = true, },
-					[2] = { DelayedStart = true, },
-					[3] = { DelayedStart = true, },
-					[4] = { DelayedStart = true, },
+					[0] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
+					[1] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
+					[2] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
+					[3] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
+					[4] = { DelayedStart = true, DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "ElysiumChampionsDreamRunIntro", },
 				},
 			},
 		},
+
+		CanSpawnDreamReward = true,
+		SkipTimedDropResourceInDream = true,
 
 		-- It would get placed somewhere in the middle of the arena, and has collision so could interfere with gameplay
 		HasPickaxePoint = false,
@@ -658,7 +812,7 @@ local roomModifications = {
 	},
 	Y_PostBoss01 = {
 		-- For Intercom
-		LoadModdedVoiceBanks = { "HadesField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesintercom" },
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",

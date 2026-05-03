@@ -81,18 +81,24 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and (unit.ModsNikkelMHadesBiomesIsModdedEnemy or unit.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy) then
 		-- Overwrite weapon/AI data if necessary due to a vow
-		local shrineLevel = game.GetNumShrineUpgrades(unit.ShrineMetaUpgradeName)
-		local requiredShrineLevel = unit.ShrineMetaUpgradeRequiredLevel or 1
-		if unit.ShrineDataOverwrites ~= nil and shrineLevel >= requiredShrineLevel then
+		-- For BossDifficultyShrineUpgrade, use the depth-aware check so EM only applies when the shrine level covers the current biome depth
+		local isBossDifficultyUpgrade = unit.ShrineMetaUpgradeName == "BossDifficultyShrineUpgrade"
+		local shrineActive = false
+		if isBossDifficultyUpgrade then
+			shrineActive = game.IsBossDifficultyShrineUpgradeActive()
+		else
+			shrineActive = game.GetNumShrineUpgrades(unit.ShrineMetaUpgradeName) >= (unit.ShrineMetaUpgradeRequiredLevel or 1)
+		end
+		if unit.ShrineDataOverwrites ~= nil and shrineActive then
 			game.OverwriteTableKeys(unit, unit.ShrineDataOverwrites)
 		end
-		if unit.ShrineDefualtAIDataOverwrites ~= nil and shrineLevel > 0 then
+		if unit.ShrineDefualtAIDataOverwrites ~= nil and shrineActive then
 			if unit.DefaultAIData == nil then
 				unit.DefaultAIData = {}
 			end
 			game.OverwriteTableKeys(unit.DefaultAIData, unit.ShrineDefualtAIDataOverwrites)
 		end
-		if unit.ShrineWeaponOptionsOverwrite ~= nil and shrineLevel > 0 then
+		if unit.ShrineWeaponOptionsOverwrite ~= nil and shrineActive then
 			unit.WeaponOptions = unit.ShrineWeaponOptionsOverwrite
 		end
 
@@ -146,11 +152,25 @@ end)
 
 modutil.mod.Path.Wrap("SetupInspectPoint", function(base, inspectPointData)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentHubRoom == nil then
-		-- Storyteller voicelines are added to the Megaera voicebank, as the game can't load unknown voicebanks and Storyteller is already taken
-		game.LoadVoiceBanks({ Name = "Megaera" })
+		-- Storyteller voicelines are in the Modsnikkelmhadesbiomesstoryteller voicebank
+		game.LoadVoiceBanks({ Name = "Modsnikkelmhadesbiomesstoryteller" })
 	end
 
 	return base(inspectPointData)
+end)
+
+modutil.mod.Path.Wrap("RestoreObjectStates", function(base, room)
+	if room.ObjectStates ~= nil then
+		for id, _ in pairs(room.ObjectStates) do
+			local obstacle = game.MapState.ActiveObstacles[id]
+			-- Clear state for Elysium pillars as they would not respawn anymore
+			if obstacle ~= nil and game.ContainsAny({ obstacle.Name }, { "ElysiumDestructiblePillar", "ElysiumDestructiblePillarB", "ElysiumDestructiblePillarC" }) then
+				room.ObjectStates[id] = nil
+			end
+		end
+	end
+
+	return base(room)
 end)
 
 modutil.mod.Path.Wrap("StartRoom", function(base, currentRun, currentRoom)

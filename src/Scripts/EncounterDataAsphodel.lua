@@ -70,15 +70,23 @@ local encounterReplacements = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
 			{ FunctionName = "DisableRoomTraps" },
 		},
+		DreamBiomeData = {
+			[1] = { DataOverrides = { MoneyDropCapMin = 15, MoneyDropCapMax = 25 } },
+			[2] = { DataOverrides = { MoneyDropCapMin = 20, MoneyDropCapMax = 25 } },
+			[3] = { DataOverrides = { MoneyDropCapMin = 30, MoneyDropCapMax = 45, ActiveEnemyCapBase = 7 } },
+			[4] = { DataOverrides = { MoneyDropCapMin = 45, MoneyDropCapMax = 55, ActiveEnemyCapBase = 8 } },
+		},
 	},
 
 	PerfectClearChallengeAsphodel = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedAsphodel" },
 		EnemySet = EnemySets.EnemiesBiome2,
+		DreamBiomeData = "nil",
 	},
 	EliteChallengeAsphodel = {
 		InheritFrom = { "EliteChallenge", "GeneratedAsphodel" },
 		EnemySet = EnemySets.EnemiesBiome2_EliteChallenge,
+		DreamBiomeData = "nil",
 	},
 }
 
@@ -98,6 +106,7 @@ local encounterModifications = {
 		MaxWaves = 1,
 		CanEncounterSkip = false,
 		NextRoomResumeMusic = true,
+		DreamBiomeData = "nil",
 	},
 	MiniBossSpreadShot = {
 		InheritFrom = { "MinibossEncounter", "GeneratedAsphodel" },
@@ -106,6 +115,7 @@ local encounterModifications = {
 		CanEncounterSkip = false,
 		BlockEliteAttributes = true,
 		NextRoomResumeMusic = true,
+		DreamBiomeData = "nil",
 	},
 	WrappingAsphodel = {
 		BlockAthenaEncounterKeepsake = true,

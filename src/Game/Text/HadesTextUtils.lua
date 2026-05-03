@@ -6,6 +6,7 @@ function mod.ModifyHadesHelpTextEntries(inputHelpTextTable)
 				entry.Id = mod.EnemyNameMappings[entry.Id] or mod.HadesHelpTextCopyKeys[entry.Id]
 			end
 			if entry.DisplayName then
+				entry.DisplayName = string.gsub(entry.DisplayName, "{#PreviousFormat}", "{#Prev}")
 				entry.DisplayName = string.gsub(entry.DisplayName, "{!Icons.ReRoll_Small}", "{!Icons.ReRoll}")
 				-- Replace the first and second occurrence of RunClearStar with RunClearDotsLeft and RunClearDotsRight for run clear messages
 				local starCount = 0

@@ -1,6 +1,8 @@
 function mod.BossIntroHydra(eventSource, args)
+	args = args or {}
 	args.ProcessTextLinesIds = { eventSource.Encounter.BossId }
 	args.SetupBossIds = { eventSource.Encounter.BossId }
+	args.SkipWaitForInitialPan = true
 	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 end
 
@@ -24,9 +26,9 @@ function mod.RoomEntranceBossHydra(currentRun, currentRoom)
 
 	game.wait(0.05)
 	-- Move hydra into position
-	local acutalSpeed = GetUnitDataValue({ Id = hydraId, Property = "Speed" })
+	local actualSpeed = GetUnitDataValue({ Id = hydraId, Property = "Speed" })
 	SetUnitProperty({ Property = "Speed", Value = 7000, DestinationId = hydraId })
-	Move({ Id = hydraId, DestinationId = currentRoom.HydraStartingPosition or 554461, Duration = 0.01, SuccessDistance = 50 })
+	Move({ Id = hydraId, DestinationId = currentRoom.HydraStartingPosition or 554461, Duration = 0.01, SuccessDistance = 100 })
 	game.wait(0.35)
 	Stop({ Id = hydraId })
 	game.wait(0.05)
@@ -39,7 +41,7 @@ function mod.RoomEntranceBossHydra(currentRun, currentRoom)
 	currentRun.Hero.ExclusiveOnHitFunctionName = originalExclusiveOnHitFunctionName
 
 	game.wait(3.0)
-	SetUnitProperty({ Property = "Speed", Value = acutalSpeed, DestinationId = hydraId })
+	SetUnitProperty({ Property = "Speed", Value = actualSpeed, DestinationId = hydraId })
 	if hydra.SwapAnimations ~= nil then
 		SetAnimation({ Name = hydra.SwapAnimations["EnemyHydraSleep_Wake"] or "EnemyHydraSleep_Wake", DestinationId = hydraId })
 	end
@@ -232,10 +234,10 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 		spawnCount = #spawns
 	end
 
-	-- For Hades HadesChronosDebuffBoon - reduce spawn count
+	-- For Hades HadesChronosDebuffBoon - reduce spawn count when VoR is *not* active at this biome depth, as fewer, stronger enemies are spawned
+	-- With the dampening, a count of 1 could be reduced to 0 and no enemies would spawn
 	if weaponAIData.SpawnCountDampenTraits ~= nil then
-		-- If we should only apply the spawnDampenTraits when below a certain shrine level
-		if weaponAIData.SpawnCountDampenShrineUpgrade ~= nil and game.GetNumShrineUpgrades(weaponAIData.SpawnCountDampenShrineUpgrade) <= (weaponAIData.SpawnCountDampenMaxShrineLevel or 4) then
+		if weaponAIData.SpawnCountDampenShrineUpgrade ~= nil and not game.IsBossDifficultyShrineUpgradeActive() then
 			for traitName in pairs(weaponAIData.SpawnCountDampenTraits) do
 				if game.HeroHasTrait(traitName) then
 					local traitData = game.GetHeroTrait(traitName)

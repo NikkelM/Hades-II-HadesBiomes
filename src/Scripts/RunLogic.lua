@@ -45,6 +45,10 @@ modutil.mod.Path.Wrap("ChooseStartingRoom", function(base, currentRun, args)
 	if mod.ValidModdedRunBiomes[args.StartingBiome] then
 		game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun = true
 		currentRun.ModsNikkelMHadesBiomesIsModdedRun = true
+	elseif currentRun.IsDreamRun then
+		-- Reset when entering a vanilla biome during a Dream Run, so modded logic doesn't bleed over
+		game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun = false
+		currentRun.ModsNikkelMHadesBiomesIsModdedRun = false
 	end
 
 	-- Edge case: We also need to do these modifications for the first room of a run, as the IsModdedRun flag only gets set after RunStateInit is called
@@ -74,7 +78,8 @@ end)
 -- Recording stats after a run (clearing or losing)
 modutil.mod.Path.Wrap("RecordRunStats", function(base)
 	-- Don't record bounty runs, except for randomized bounties
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics)) then
+	-- In Dream Runs, let vanilla handle stats recording
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and not game.CurrentRun.IsDreamRun and (game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics)) then
 		game.CurrentRun.RunResult = game.GetRunResult(game.CurrentRun)
 		game.CurrentRun.EndingRoomName = game.CurrentRun.CurrentRoom.Name
 		game.CurrentRun.WeaponsCache = game.DeepCopyTable(game.CurrentRun.Hero.Weapons)
@@ -163,8 +168,20 @@ end)
 modutil.mod.Path.Wrap("RecordRunCleared", function(base)
 	base()
 
+	if game.CurrentRun.IsDreamRun then
+		-- Defeated Charon + Zagreus in a single Dream Dive
+		if game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharon and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedZagreus then
+			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = true
+		end
+		-- Defeated EM Chronos, Typhon + Hades in a single Dream Dive
+		if game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronos and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMTyphon and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMHades then
+			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades = true
+		end
+	end
+
 	-- Most of the stats tracked here are for Quests
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics)) then
+	-- In Dream Runs, let vanilla handle stats recording
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and not game.CurrentRun.IsDreamRun and (game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics)) then
 		local currentBiome = game.CurrentRun.CurrentRoom.RoomSetName
 
 		-- Record with which level of each ShrineUpgrades/Vows/Fear the run was cleared
@@ -186,7 +203,7 @@ modutil.mod.Path.Wrap("RecordRunCleared", function(base)
 end)
 
 modutil.mod.Path.Wrap("EndRun", function(base, run)
-	if run.ModsNikkelMHadesBiomesIsModdedRun then
+	if run.ModsNikkelMHadesBiomesIsModdedRun and not run.IsDreamRun then
 		if run.ModsNikkelMHadesBiomesActualCurrentRoomName ~= nil then
 			run.CurrentRoom.Name = run.ModsNikkelMHadesBiomesActualCurrentRoomName
 		end
@@ -196,7 +213,7 @@ modutil.mod.Path.Wrap("EndRun", function(base, run)
 end)
 
 modutil.mod.Path.Wrap("UpdateLifetimeTraitRecords", function(base, run)
-	if run.ModsNikkelMHadesBiomesIsModdedRun then
+	if run.ModsNikkelMHadesBiomesIsModdedRun and not run.IsDreamRun then
 		-- Bounty runs shouldn't count towards lifetime stats, except for randomized bounties
 		if game.CurrentRun.ActiveBounty == nil or (game.BountyData[game.CurrentRun.ActiveBounty] and game.BountyData[game.CurrentRun.ActiveBounty].ModsNikkelMHadesBiomesAllowRecordRunClearedStatistics) then
 			local clearCountRecordName = "ModsNikkelMHadesBiomesClearCount"
@@ -248,7 +265,6 @@ modutil.mod.Path.Wrap("GetRunResult", function(base, run)
 			return game.RunResultData.DreamFail
 		end
 	end
-
 
 	-- Run this before the base function, as the base function defaults to a surface run if it's not the underworld
 	if run.ModsNikkelMHadesBiomesIsModdedRun then

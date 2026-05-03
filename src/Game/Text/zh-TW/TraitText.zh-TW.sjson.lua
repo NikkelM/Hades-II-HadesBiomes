@@ -151,7 +151,7 @@ local newData = {
 	-- 	Id = "DiscountTrait",
 	-- 	DisplayName = "Valued Customer",
 	-- 	Description =
-	-- 	"All items can be purchased for {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}{#Prev} {#ItalicFormat}(this escape attempt){#Prev}.",
+	-- 	"All items can be purchased for {#UpgradeFormat}-{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency} {#Prev} {#ItalicFormat}(this escape attempt){#Prev}.",
 	-- },
 	-- #endregion
 
@@ -229,6 +229,34 @@ local newData = {
 	-- 	DisplayName = "Flame Wheels Release",
 	-- 	Description = "Prevent {$TooltipData.BlockedEnemyTypes[1]} foes from appearing in {$Keywords.EncounterPlural}.",
 	-- },
+	-- #endregion
+
+	-- #region Dream Run Trait Texts
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "宿仇難消",
+		Description =
+		"面對{$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}時，他們在開戰 {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} 秒{#Prev}後受到爆發傷害。",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}生命量減少：",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1} {!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "眾叛親離",
+		Description = "面對{$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}時，敵方援軍數量減少。",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}、{$Keywords.CharTyphon}或{$Keywords.CharHades}召喚之援軍：",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
+	},
 	-- #endregion
 }
 

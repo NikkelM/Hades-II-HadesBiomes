@@ -151,7 +151,7 @@ local newData = {
 		Id = "DiscountTrait",
 		DisplayName = "得意客",
 		Description =
-		"すべてのアイテムを{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}引き{#Prev} で購入できる{#ItalicFormat}（館に戻るまで）{#Prev}。"
+		"すべてのアイテムを{#UpgradeFormat}{$TooltipData.ExtractData.TooltipDiscount}% {!Icons.Currency}引き {#Prev} で購入できる{#ItalicFormat}（館に戻るまで）{#Prev}。"
 	},
 	-- #endregion
 
@@ -228,6 +228,31 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait",
 		DisplayName = "焔の車輪",
 		Description = "{$TooltipData.BlockedEnemyTypes[1]}が{$Keywords.EncounterPlural}に出現するのを阻止。",
+	},
+	-- #endregion
+
+	-- #region Dream Run Trait Texts
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
+		DisplayName = "積年の恨み",
+		Description = "{$Keywords.CharChronos}、{$Keywords.CharTyphon}、または{$Keywords.CharHades}との戦闘開始後{#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay}秒{#Prev}間、対象がダメージを受ける。",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}、{$Keywords.CharTyphon}、または{$Keywords.CharHades}の\nHP削減量：",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
+		DisplayName = "根深き不和",
+		Description = "{$Keywords.CharChronos}、{$Keywords.CharTyphon}、または{$Keywords.CharHades}との戦闘中、敵の援軍の数が減る。",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
+		InheritFrom = "BaseStatLine",
+		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}、{$Keywords.CharTyphon}、または{$Keywords.CharHades}が\n召喚する敵の数：",
+		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
 }

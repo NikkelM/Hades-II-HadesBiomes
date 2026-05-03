@@ -315,6 +315,39 @@ local roomReplacements = {
 				},
 			},
 		},
+
+		ThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
+		PostCombatReloadThreadedEvents = {
+			{
+				FunctionName = "DisplayInfoBanner",
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+			},
+			{
+				FunctionName = "DisplayBiomeLocationBanner",
+				Args = { DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner", Delay = 0.45, Duration = 2.0 },
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowDreamInfoBanner" },
+				},
+			},
+		},
 	},
 
 	-- OPENING ROOMS
@@ -325,6 +358,39 @@ local roomReplacements = {
 		MusicRequirements = mod.NilValue,
 		-- Will be set in the encounter instead
 		UnthreadedEvents = mod.NilValue,
+
+		ThreadedEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText",
+				GameStateRequirements = {
+					NamedRequirementsFalse = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = {
+					Text = "Location_Tartarus",
+					DreamText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner",
+					AnimationName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn",
+					AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut",
+				},
+			},
+			{
+				FunctionName = "DisplayInfoBanner",
+				GameStateRequirements = {
+					NamedRequirements = { "ShouldShowBountyInfoBanner" },
+				},
+				Args = game.RoomEventData.BountyInfoBannerArgs,
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock",
+				Args = {
+					Biome = "Tartarus"
+				},
+			},
+			{
+				FunctionName = "CheckObjectiveSetSource",
+				Args = { ObjectiveSetName = "BountyAdvancedTooltip" },
+			},
+			-- PatrolPaths
+		},
 
 		EnterVoiceLines = {
 			-- Chaos Trial/Bounty
@@ -548,6 +614,9 @@ local roomModifications = {
 		MusicActiveStems = { "Bass" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus",
+		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_Dream",
+		DreamLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Tartarus_DreamBanner",
+		DreamResultText = "ModsNikkelMHadesBiomesRunHistoryScreenResult_Tartarus_Dream",
 
 		TimeChallengeEncounterOptions = { "TimeChallengeTartarus" },
 		PerfectClearEncounterOptions = { "PerfectClearChallengeTartarus" },
@@ -568,18 +637,12 @@ local roomModifications = {
 	-- OPENING ROOMS
 	RoomOpening = {
 		InheritFrom = { "BaseTartarus", "BiomeStartRoom", },
-		LegalEncounters = { "OpeningGenerated" },
+		FlipHorizontalChance = 0.0,
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceDropRoomOpening",
 		EntranceFunctionArgs = { LandingAnimation = "Melinoe_HeroLanding", Sound = "/SFX/Player Sounds/MelWhooshDropIn", IntroHoldDuration = 2.34, StartZoomFraction = 0.65, ZoomDuration = 4 },
-		ThreadedEvents = {
-			[1] = { FunctionName = _PLUGIN.guid .. "." .. "DisplayLocationText", Args = { AnimationName = "ModsNikkelMHadesBiomesInfoBannerTartarusIn", AnimationOutName = "ModsNikkelMHadesBiomesInfoBannerTartarusOut" }, },
-			[2] = { FunctionName = _PLUGIN.guid .. "." .. "CheckLocationUnlock", Args = { Biome = "Tartarus" } },
-			-- This will work with roomSetDataTartarus.RoomOpening.ThreadedEvents[3].Args.SpawnTypes = { "TartarusGhost01" }, but has the problem of spawning all Ghosts on the same ID
-			[3] = mod.NilValue
-		},
 		StartUnthreadedEvents = {
-			-- Don't start the demo presentation mode
-			[1] = mod.NilValue,
+			-- Override the demo presentation entry
+			[1] = { FunctionName = "EndBiomeRecords" },
 			-- Don't play the standard music event, it won't be able to get changed later
 			[3] = mod.NilValue,
 		},
@@ -596,8 +659,8 @@ local roomModifications = {
 		DisableRewardMagnetisim = true,
 		TeleportCatFamiliarOnEncounterStart = true,
 		StartThreadedEvents = {
-			{ FunctionName = "CheckBiomeStateStart" },
-			{ FunctionName = "ShadeMercManager",    Args = { StartingCountMin = 3, StartingCountMax = 12, ObjectNames = { "ShadeMerc" }, MaxActive = 12 } },
+			{ FunctionName = "EndAllBiomeStates" },
+			{ FunctionName = "ShadeMercManager", Args = { StartingCountMin = 3, StartingCountMax = 12, ObjectNames = { "ShadeMerc" }, MaxActive = 12 } },
 		},
 		InspectPoints = {
 			[410183] = {
@@ -614,7 +677,7 @@ local roomModifications = {
 
 	-- SHOPS
 	A_Shop01 = {
-		LoadModdedVoiceBanks = { "Megaera" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon" },
 		ThreadedEvents = {
 			-- To get PatrolPath working, see RoomOpening
 			[1] = mod.NilValue,
@@ -681,12 +744,15 @@ local roomModifications = {
 		SkipLastKillPresentation = true,
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
 		IneligibleRewards = { "Devotion", "RoomMoneyDrop", },
+		RewardPreviewIcon = "RoomRewardSubIcon_PreBoss",
 		FamiliarsPreferSpawnPointMovement = true,
 		FrogFamiliarMaxLeapDistance = 800,
 
 		-- Disable all music if it's a free reward room (no Charon/Shop)
 		IgnoreStemMixer = true,
 		MusicMutedStems = { "Drums", "Bass", "Guitar", },
+
+		ZagContractRewardDestinationId = 776332,
 
 		ShovelPointChance = 0.35,
 		PickaxePointChance = 0.35,
@@ -721,27 +787,31 @@ local roomModifications = {
 
 	-- BOSSES
 	A_Boss01 = {
-		LoadModdedVoiceBanks = { "Megaera*", "Alecto*", "Tisiphone*", "ZagreusField" },
+		LoadModdedVoiceBanks = { "MegaeraField", "Modsnikkelmhadesbiomesmegaerahome", "Alecto", "Tisiphone", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		RewardPreviewIcon = "RoomRewardSubIcon_Boss",
 		GameStateRequirements = {
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "IsTartarusBossRoomEligible",
-				FunctionArgs = { BossRoom = "A_Boss01", },
+				FunctionArgs = { BossName = "Harpy" },
 			},
 		},
-		-- Replaces MegaeraHome_ with Megaera_3 voicelines
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
+		-- Replaces MegaeraHome_ with Modsnikkelmhadesbiomesmegaerahome_ voicelines
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
 				Args = {
 					VoiceLines = {
-						[1] = { Cue = "/VO/Megaera_30061" },
-						[2] = { Cue = "/VO/Megaera_30053", RequiredPlayed = { "/VO/Megaera_30061" }, },
-						[4] = { Cue = "/VO/Megaera_30057", },
+						[1] = { Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0061" },
+						[2] = { Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0053", RequiredPlayed = { "/VO/Modsnikkelmhadesbiomesmegaerahome_0061" }, },
+						[4] = { Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0057", },
 					},
 					DelayedStart = true,
+					DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "FuryDreamRunIntro",
 				},
 			},
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
@@ -755,6 +825,9 @@ local roomModifications = {
 		-- Setting to nil to prevent them from playing, we use boss victory voicelines
 		CombatResolvedVoiceLines = {},
 
+		CanSpawnDreamReward = true,
+		SkipTimedDropResourceInDream = true,
+
 		HasFishingPoint = false,
 		HasPickaxePoint = false,
 		ShovelPointChance = 0.3,
@@ -765,14 +838,18 @@ local roomModifications = {
 			RequiredKills = { Harpy = 4 },
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "IsTartarusBossRoomEligible",
-				FunctionArgs = { BossRoom = "A_Boss02", },
+				FunctionArgs = { BossName = "Harpy2", },
 			},
 		},
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
 				Args = {
 					DelayedStart = true,
+					DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "FuryDreamRunIntro",
 				},
 			},
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
@@ -790,14 +867,18 @@ local roomModifications = {
 			RequiredKills = { Harpy = 4 },
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "IsTartarusBossRoomEligible",
-				FunctionArgs = { BossRoom = "A_Boss03", },
+				FunctionArgs = { BossName = "Harpy3", },
 			},
 		},
+		-- Don't show bounty/Dream Run banners in boss room
+		ThreadedEvents = {},
+		PostCombatReloadThreadedEvents = {},
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
 				Args = {
 					DelayedStart = true,
+					DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "FuryDreamRunIntro",
 				},
 			},
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "MultiFuryIntro" },
@@ -818,7 +899,7 @@ local roomModifications = {
 
 	-- OTHER
 	A_Story01 = {
-		LoadModdedVoiceBanks = { "Sisyphus", "Orpheus", "ZagreusField", "MegaeraField", "Thanatos", "ThanatosField" },
+		LoadModdedVoiceBanks = { "Sisyphus", "Orpheus", "ZagreusField", "Modsnikkelmhadesbiomeszagreushome", "MegaeraField", "Thanatos", "ThanatosField" },
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse = true,
 		GameStateRequirements = {
@@ -931,7 +1012,7 @@ local roomModifications = {
 	},
 	A_PostBoss01 = {
 		-- For Intercom
-		LoadModdedVoiceBanks = { "HadesField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesintercom" },
 		-- "/Leftovers/Ambience/CreepyHauntedWindLoop"
 		Ambience = "{32411cfc-6220-4c71-a3b7-d39d6ec62214}",
 		ExitPreviewAnim = "ModsNikkelMHadesBiomes_ExitPreview",

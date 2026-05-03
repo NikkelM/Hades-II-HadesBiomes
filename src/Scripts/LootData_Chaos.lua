@@ -77,7 +77,7 @@ local newPortedInteractTextLines = {
 }
 mod.AddNarrativeDataEntries(
 	newPortedInteractTextLines, "TrialUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Chaos = { "Dusa", "ZagreusField" } }, { Chaos_ = "Dusa_1" },
+	{ Chaos = { "Modsnikkelmhadesbiomeschaos", "ZagreusField" } }, { Chaos_ = "Modsnikkelmhadesbiomeschaos_" },
 	{ Chaos_ = "ModsNikkelMHadesBiomes_Portrait_Chaos_Default_01" }
 )
 
@@ -374,7 +374,7 @@ local newModdedInteractTextLines = {
 }
 mod.AddNarrativeDataEntries(
 	newModdedInteractTextLines, "TrialUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Chaos = { "Dusa", "ZagreusField" } }, { Chaos_ = "Dusa_1" },
+	{ Chaos = { "Modsnikkelmhadesbiomeschaos", "ZagreusField" } }, { Chaos_ = "Modsnikkelmhadesbiomeschaos_" },
 	{ ModsNikkelMHadesBiomes_Chaos_ = "ModsNikkelMHadesBiomes_Portrait_Chaos_Default_01" },
 	"/VO/ChaosKeepsake_0280", "ChaosKeepsake"
 )

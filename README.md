@@ -3,16 +3,19 @@
 ![Zagreus' Journey](./img/Readme/ZagreusJourneyTartarus.png)
 
 _Zagreus' Journey_ is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
-Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past - all integrated into the main game as if it was always there: Naturally progress through the new biomes, unlock new incantations to perform, reveal and complete new Minor Prophecies, forge bonds with NPCs in familiar and new locations, collect over 30 new resources to spend on new cosmetics and music, and test your skills with new Testaments and Chaos Trials.
+Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past - all integrated into the main game as if it was always there: Naturally progress through the new biomes, unlock new incantations to perform, reveal and complete new Minor Prophecies, forge bonds with NPCs in familiar and new locations, collect over 30 new resources to spend on new cosmetics and music, and test your skills with new Testaments, Chaos Trials and in Dream Dives.
 Find the full list of features below!
 
 Wonder what it plays like?
-Take a look at what Haelian and Boated think of the mod:
+
+Check out the [Zagreus' Journey 1.0 Release Trailer](https://www.youtube.com/watch?v=rxuTLSPqIEE)
+
+Take a look at what Haelian and Boated think of the mod (from the first beta release):
 
 - [So, someone put Hades 1 in Hades 2 and it's amazing. | Haelian](https://www.youtube.com/watch?v=SIVrJya47YQ)
 - [They put Hades 1 in Hades 2 and it's PERFECT | Boated](https://www.youtube.com/watch?v=HYf_z8IV4LE)
 
-![Zagreus' Journey](./img/Key%20Art/Readme/Melinoe_Asphodel_Capsule_Glowing_Text.png)
+![Zagreus' Journey](./img/Key%20Art/KeyArt.png)
 
 <div style="display: flex; justify-content: space-between;">
   <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/face_your_father.jpg" alt="Face your Father" width="49.7%">
@@ -22,7 +25,7 @@ Take a look at what Haelian and Boated think of the mod:
 <br>
 After installing the mod, a Chaos Gate will appear in the Crossroads, which will allow you to experience Zagreus' journey through the Underworld as Melinoë.
 
-It is highly recommended that you complete the main story of Hades before playing with this mod, as not all story events are included.
+It is highly recommended that you complete the main story of the first Hades game before playing with this mod, as not all story events are included.
 
 > Refer to the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki) with any questions before opening an issue.
 
@@ -38,7 +41,7 @@ It is highly recommended that you complete the main story of Hades before playin
 - Benefit from a multitude of entirely new boons and effects offered to you by Sisyphus, Eurydice, Patroclus... and other familiar faces that you will now be able to meet along the way!
 - Collect **30+** new resources specific to the new biomes, use them for unlocks in this and other mods (see section below), and trade them with the Broker.
 - Unlock **29** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
-- Decorate the Crossroads with **45+** new cosmetics, including new **Cauldrons**, **Fan Posters** for your tent, and **Charms** inspired by Zagreus' companions from the first game.
+- Decorate the Crossroads with **45+** new cosmetics, including new **Cauldrons**, **Arcana Card Backs**, and **Charms** inspired by Zagreus' companions from the first game.
 - Discover and complete **35+** new Minor Prophecies at the Fated List.
 - Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
 - Discover and perform **20+** new incantations to unlock gameplay features and progress story events in Zagreus' Journey.
@@ -46,7 +49,8 @@ It is highly recommended that you complete the main story of Hades before playin
 - Challenge yourself with a set of new **Chaos Trials**, including randomized "Chaos Within" trials in the spirit of (Great) Chaos Above and Below.
 - Advance through **50** new cosmetic-only ranks at the Spirit Mixer, from the lowly "_Alpha Warden_" to the feared "_Unseen One_".
 - Earn a new set of **three statues** from Commander Schelemeus by escaping the Nightmare Realm at progressively higher fear.
-- Read all about the new biomes, enemies, bosses and friends in a new chapter in your Codex.
+- The four new regions can also appear in **Dream Dives** (but you can use the mod config to exclude them if you so wish).
+- Read all about the new biomes, enemies, bosses and friends in a **new chapter** in your Codex.
 
 ### Integrations with other Mods
 
@@ -54,8 +58,8 @@ Some other mods integrate with _Zagreus' Journey_ to provide additional features
 
 - [Charon's Tip Jar](https://thunderstore.io/c/hades-ii/p/NikkelM/Charons_Tip_Jar/) adds a tip jar to Charon's shop rooms during _Zagreus' Journey_ underworld runs.
 - [Flip the Arcana](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Flip_the_Arcana_Mod/) adds flipped versions of the Arcana cards with wildly different effects, and will require resources from _Zagreus' Journey_ to unlock them if both mods are installed.
-- [Biome Randomizer](https://thunderstore.io/c/hades-ii/p/zerp/BiomeRandomizer/) adds new randomized Chaos Trials that change between biomes of the different routes after each boss fight, including the new biomes from _Zagreus' Journey_ if both mods are installed.
 - [NPC Room Randomizer](https://thunderstore.io/c/hades-ii/p/zerp/NPCRoomRandomizer/) randomizes which NPCs appear in which biome, and will include NPCs from _Zagreus' Journey_ if both mods are installed.
+- [Biome Randomizer](https://thunderstore.io/c/hades-ii/p/zerp/BiomeRandomizer/) adds new randomized Chaos Trials in the style of Dream Dives, and includes the new biomes from _Zagreus' Journey_ if both mods are installed.
 
 > Are you developing a mod that integrates with _Zagreus' Journey_, or would like to add such an integration? Let me know on [Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 

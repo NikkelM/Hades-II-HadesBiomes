@@ -71,6 +71,12 @@ local encounterReplacements = {
 		ActiveEnemyCapDepthRamp = 0.5,
 		-- The original from Hades is 11
 		DepthDifficultyRamp = 13,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 15, MoneyDropCapDepthRamp = 0 } },
+			[2] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 20, MoneyDropCapDepthRamp = 0, ActiveEnemyCapDepthRamp = 0.5 } },
+			[3] = { DataOverrides = { MoneyDropCapMin = 20, MoneyDropCapMax = 25, MoneyDropCapDepthRamp = 0, ActiveEnemyCapDepthRamp = 0.65 } },
+			[4] = { DataOverrides = { MoneyDropCapMin = 25, MoneyDropCapMax = 40, MoneyDropCapDepthRamp = 0, ActiveEnemyCapDepthRamp = 0.9 } },
+		},
 	},
 	OpeningGenerated = {
 		UnthreadedEvents = {
@@ -99,10 +105,12 @@ local encounterReplacements = {
 	PerfectClearChallengeTartarus = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedTartarus" },
 		EnemySet = EnemySets.EnemiesBiome1,
+		DreamBiomeData = "nil",
 	},
 	EliteChallengeTartarus = {
 		InheritFrom = { "EliteChallenge", "GeneratedTartarus" },
 		EnemySet = EnemySets.EnemiesBiome1_EliteChallenge,
+		DreamBiomeData = "nil",
 	},
 	BaseSurvival = {
 		UnthreadedEvents = mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsSurvival,
@@ -304,7 +312,7 @@ local encounterModifications = {
 		CountsForRoomEncounterDepth = true,
 	},
 	OpeningGenerated = {
-		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
 		DifficultyModifier = -40,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
@@ -338,6 +346,10 @@ local encounterModifications = {
 					{
 						Path = { "PrevRun", "EncountersOccurredCache", },
 						HasAny = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro", },
+					},
+					-- Don't spawn in Dream Dives
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" },
 					},
 					NamedRequirementsFalse = { "StandardPackageBountyActive", },
 				},
@@ -708,7 +720,7 @@ local encounterModifications = {
 		NextRoomResumeMusic = true,
 	},
 	BaseThanatos = {
-		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 			{
@@ -723,7 +735,7 @@ local encounterModifications = {
 		NextRoomResumeMusic = true,
 	},
 	BaseSurvival = {
-		LoadModdedVoiceBanks = { "HadesField" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesintercom" },
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
