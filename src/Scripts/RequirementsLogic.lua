@@ -196,12 +196,19 @@ function mod.HasSeenRoomInRun(run, roomName)
 end
 
 -- Check if a given Tartarus boss/Fury is eligible
--- Always returns true if there is no forced boss room on the current run, otherwise checks if the checked boss room is the one that is currently forced
 function mod.IsTartarusBossRoomEligible(source, args)
-	if not game.CurrentRun or not game.CurrentRun.ModsNikkelMHadesBiomesForcedTartarusBossRoom or not args.BossRoom then
-		return true
+	-- Some bounties/Chaos Trials force a certain boss to appear
+	if game.CurrentRun.ModsNikkelMHadesBiomesForcedTartarusBoss ~= nil then
+		return game.CurrentRun.ModsNikkelMHadesBiomesForcedTartarusBoss == args.BossName
 	end
-	return game.CurrentRun.ModsNikkelMHadesBiomesForcedTartarusBossRoom == args.BossRoom
+
+	-- This boss needs to have been killed in the past to be eligible for a Dream Run
+	if game.CurrentRun.IsDreamRun and args.BossName ~= nil then
+		return game.GameState.EnemyKills[args.BossName] ~= nil
+	end
+
+	-- By default, all bosses are eligible
+	return true
 end
 
 function mod.GetFastestRunClearTime(currentRun)

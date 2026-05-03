@@ -794,7 +794,7 @@ local roomModifications = {
 		GameStateRequirements = {
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "IsTartarusBossRoomEligible",
-				FunctionArgs = { BossRoom = "A_Boss01", },
+				FunctionArgs = { BossName = "Harpy" },
 			},
 		},
 		-- Don't show bounty/Dream Run banners in boss room
@@ -838,7 +838,7 @@ local roomModifications = {
 			RequiredKills = { Harpy = 4 },
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "IsTartarusBossRoomEligible",
-				FunctionArgs = { BossRoom = "A_Boss02", },
+				FunctionArgs = { BossName = "Harpy2", },
 			},
 		},
 		-- Don't show bounty/Dream Run banners in boss room
@@ -867,7 +867,7 @@ local roomModifications = {
 			RequiredKills = { Harpy = 4 },
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "IsTartarusBossRoomEligible",
-				FunctionArgs = { BossRoom = "A_Boss03", },
+				FunctionArgs = { BossName = "Harpy3", },
 			},
 		},
 		-- Don't show bounty/Dream Run banners in boss room

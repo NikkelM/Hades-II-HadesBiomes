@@ -1192,7 +1192,7 @@ local newTargetedBiomeBounties = {
 				HeraUpgrade = 1,
 				HermesUpgrade = 1,
 			},
-			ModsNikkelMHadesBiomesForcedTartarusBossRoom = "A_Boss03",
+			ModsNikkelMHadesBiomesForcedTartarusBoss = "Harpy3",
 		},
 
 		StartingTraits = {
