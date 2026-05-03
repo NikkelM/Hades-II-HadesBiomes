@@ -216,6 +216,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 
 		-- Dialogues playing before boss fights or when meeting NPCs
 		local bossPresentationProperties = {
+			"BossPresentationUltraSuperPriorityIntroTextLineSets",
 			"BossPresentationSuperPriorityIntroTextLineSets",
 			"BossPresentationHighPriorityIntroTextLineSets",
 			"BossPresentationPriorityIntroTextLineSets",

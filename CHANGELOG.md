@@ -4,9 +4,8 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-
-Other fixes and improvements:
 - Fixed: The game may crash when starting a run if Thanatos would appear and want to play a certain dialogue.
+- Fixed: Portraits for Zagreus are missing in particular dialogues.
 <!--Releasenotes end-->
 
 ## v1.0.0
