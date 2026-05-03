@@ -7,7 +7,10 @@ Escape the Underworld as Melinoë, battle familiar foes and bosses using her uni
 Find the full list of features below!
 
 Wonder what it plays like?
-Take a look at what Haelian and Boated think of the mod:
+
+Check out the [Zagreus' Journey 1.0 Release Trailer](https://www.youtube.com/watch?v=rxuTLSPqIEE)
+
+Take a look at what Haelian and Boated think of the mod (from the first beta release):
 
 - [So, someone put Hades 1 in Hades 2 and it's amazing. | Haelian](https://www.youtube.com/watch?v=SIVrJya47YQ)
 - [They put Hades 1 in Hades 2 and it's PERFECT | Boated](https://www.youtube.com/watch?v=HYf_z8IV4LE)
