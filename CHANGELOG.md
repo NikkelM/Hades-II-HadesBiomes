@@ -1,8 +1,16 @@
 # Changelog
 
-## v1.0.0
+## v1.0.1
 
 <!--Releasenotes start-->
+### Patch Highlights:
+
+Other fixes and improvements:
+- Fixed: The game may crash when starting a run if Thanatos would appear and want to play a certain dialogue.
+<!--Releasenotes end-->
+
+## v1.0.0
+
 ### Patch Highlights:
 - Tartarus, Asphodel, Elysium and Styx can now appear in Dream Dives. You can use the `z_ExcludeFromDreamDives` config value to prevent them from appearing.
 - Meet **Megaera** in Styx, and have a friendly chat and a bottle of Ambrosia or two. This will also allow you to build a relationship with Megaera (including unlocking her keepsake).
@@ -120,7 +128,6 @@ Other fixes and improvements:
 - Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
 - Fixed: Entering certain rooms in the Fields of Mourning incorrectly shows the location banner animation.
 - Compatibility: The mod now exposes `IsValidInstallation` to denote to other mods if Zagreus' Journey is installed successfully. Mods can use this through `mods["NikkelM-Zagreus_Journey"].IsValidInstallation`.
-<!--Releasenotes end-->
 
 ## v0.7.4
 
