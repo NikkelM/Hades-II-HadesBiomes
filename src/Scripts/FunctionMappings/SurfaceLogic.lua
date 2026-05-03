@@ -5,6 +5,8 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or
 			0.0
 
+	-- Remove all armor to prevent the armor bar still being shown - the player won't need it anymore in this run
+	game.CurrentRun.Hero.HealthBuffer = 0
 	-- Prevent Hephaestus blast VFX
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusWeaponBoon")
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusSpecialBoon")

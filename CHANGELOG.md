@@ -1,13 +1,20 @@
 # Changelog
 
-## v1.0.1
+## v1.0.2
 
 <!--Releasenotes start-->
+### Patch Highlights:
+
+Other fixes and improvements:
+- Fixed: The armour overlay shows when on the Surface.
+<!--Releasenotes end-->
+
+## v1.0.1
+
 ### Patch Highlights:
 - Fixed: The game may crash when starting a run if Thanatos would appear and want to play a certain dialogue.
 - Fixed: Portraits for Zagreus are missing in particular dialogues.
 - Fixed: The game may crash if starting a run with Chaos' keepsake equipped.
-<!--Releasenotes end-->
 
 ## v1.0.0
 
