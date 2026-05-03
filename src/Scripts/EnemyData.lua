@@ -3219,6 +3219,7 @@ local enemyModifications = {
 		OnDeathFireWeapons = { "BlastCubeExplosionElysium" },
 		FuseWarningProjectileName = "ModsNikkelMHadesBiomesBlastWarningDecalElysium",
 		IgnoreSprintPhasingStasisStun = true,
+		SkipRecordDestroyedState = true,
 	},
 	PhalanxTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,

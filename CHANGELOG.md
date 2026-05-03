@@ -68,8 +68,10 @@ Other fixes and improvements:
 - Fixed: Music events for Zagreus' Journey regions can sometimes be triggered in vanilla biomes during Dream Runs.
 - Fixed: The Lernaean Bone Hydra has no neck elements constraining its movements.
 - Fixed: Some fog and branches flicker on a specific Elysium map.
+- Fixed: Destructible pillars and eggs in Elysium do not respawn after reloading a save.
 - Fixed: Exalted Shades always target the closest dropped weapon instead of a random one.
 - Fixed: Exalted Shades spawned by Elysian Shades always spawn in the direction opposite the player instead of a random direction.
+- Fixed: Exalted Shades spawned by Elysian Shades spawn immediately instead of through a projectile.
 - Fixed: If the "Vow of Scars" is active and "HydraLite Gold" is offered by Patroclus, the number of locations the item will last is not shown.
 - Fixed: Saluting the Good Shade in Elysium will now more consistently play a voiceline.
 - Fixed: Melinoë's voicelines that play when (re-)entering the Styx Hub room play every time instead of only sometimes.

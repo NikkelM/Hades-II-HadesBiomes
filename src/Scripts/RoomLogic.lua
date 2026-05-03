@@ -159,6 +159,20 @@ modutil.mod.Path.Wrap("SetupInspectPoint", function(base, inspectPointData)
 	return base(inspectPointData)
 end)
 
+modutil.mod.Path.Wrap("RestoreObjectStates", function(base, room)
+	if room.ObjectStates ~= nil then
+		for id, _ in pairs(room.ObjectStates) do
+			local obstacle = game.MapState.ActiveObstacles[id]
+			-- Clear state for Elysium pillars as they would not respawn anymore
+			if obstacle ~= nil and game.ContainsAny({ obstacle.Name }, { "ElysiumDestructiblePillar", "ElysiumDestructiblePillarB", "ElysiumDestructiblePillarC" }) then
+				room.ObjectStates[id] = nil
+			end
+		end
+	end
+
+	return base(room)
+end)
+
 modutil.mod.Path.Wrap("StartRoom", function(base, currentRun, currentRoom)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		if currentRoom.WingRoom then
