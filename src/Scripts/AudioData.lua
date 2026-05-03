@@ -353,6 +353,19 @@ if game.GlobalVoiceLines.RecordRunDepthVoiceLines then
 		IsNone = { "Surface" },
 	})
 end
+
+-- #region Modifications to vanilla voiceline requirements
+-- Also prevents CombatResolved equivalent follow-up voiceline (Death to Chronos)
+mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/VO/Melinoe_1774", {
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsNone = { "Q", "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
+	},
+	{
+		PathFalse = { "GameState", "ReachedTrueEnding" },
+	},
+})
+-- #endregion
 -- #endregion
 
 -- #region HeroVoiceLines
