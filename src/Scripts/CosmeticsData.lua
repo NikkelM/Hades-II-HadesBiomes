@@ -374,11 +374,9 @@ local tentCosmetics = {
 		AnimationScale = 3.5,
 		GameStateRequirements = {
 			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
-				Comparison = ">=",
-				Value = 5,
+				-- Zagreus mentions Hades must have a storage cabinet full of capes to burn
+				PathTrue = { "GameState", "TextLinesRecord", "LordHadesMiscEncounter05" },
 			},
-			NamedRequirements = { "T2Cosmetic" },
 		},
 		AlwaysRevealImmediately = true,
 		Cost = {
