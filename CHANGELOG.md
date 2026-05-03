@@ -6,6 +6,7 @@
 ### Patch Highlights:
 - Fixed: The game may crash when starting a run if Thanatos would appear and want to play a certain dialogue.
 - Fixed: Portraits for Zagreus are missing in particular dialogues.
+- Fixed: The game may crash if starting a run with Chaos' keepsake equipped.
 <!--Releasenotes end-->
 
 ## v1.0.0
