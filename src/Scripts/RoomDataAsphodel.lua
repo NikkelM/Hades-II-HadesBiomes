@@ -780,10 +780,22 @@ local roomModifications = {
 		ObstacleData = {
 			[486504] = {
 				SetupGameStateRequirements = {
-					{
-						PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation" },
-					},
 					RequiredCosmetics = mod.NilValue,
+				},
+				SetupEvents = {
+					{
+						FunctionName = "OverwriteSelf",
+						Args = {
+							OnUsedFunctionName = _PLUGIN.guid .. "." .. "LockedGiftRackPresentation",
+							UseText = "UseLockedGiftRack",
+							Animation = "GiftRackClosed",
+						},
+						GameStateRequirements = {
+							{
+								PathFalse = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation" },
+							},
+						},
+					},
 				},
 			},
 			-- Makes the exit door interactable

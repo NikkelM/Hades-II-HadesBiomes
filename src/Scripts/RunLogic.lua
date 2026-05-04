@@ -323,3 +323,8 @@ modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, ne
 
 	return isForced
 end)
+
+-- OnUsedFunctionName passes the obstacle table, but CannotUseKeepsakeRackPresentation expects an ObjectId
+function mod.LockedGiftRackPresentation(usee)
+	game.CannotUseKeepsakeRackPresentation(usee.ObjectId)
+end

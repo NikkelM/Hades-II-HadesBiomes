@@ -6,6 +6,7 @@
 ### Patch Highlights:
 
 Other fixes and improvements:
+- The Keepsake Cabinet will now always spawn in post-boss rooms, but only be accessible after performing the required incantation.
 - Fixed: The armour overlay shows when on the Surface.
 - Fixed: The "Thorn Of Thanatos" prophecy can be completed during Dream Dives.
 <!--Releasenotes end-->
