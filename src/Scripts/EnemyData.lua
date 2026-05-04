@@ -208,6 +208,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 					entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
 				elseif entry.Cue:find("^/VO/ZagreusHome_") then
 					entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
+				elseif entry.Cue:find("^/VO/Intercom_") then
+					entry.Cue = entry.Cue:gsub("^/VO/Intercom_", "/VO/Modsnikkelmhadesbiomesintercom_")
 				elseif entry.Cue:find("^/VO/MegaeraHome_") then
 					entry.Cue = entry.Cue:gsub("^/VO/MegaeraHome_", "/VO/Modsnikkelmhadesbiomesmegaerahome_")
 				end
@@ -295,7 +297,6 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 
 	-- Modify all enemies completely before processing inheritance, as that can mess up not-yet-modified parent enemies
 	for enemyName, enemyData in pairs(base) do
-		-- Update cooldowns on voicelines, as the Hades format no longer works for Hades II for some reason
 		local voicelineTables = {
 			"OnHitVoiceLines",
 			"KillingEnemyVoiceLines",
@@ -345,6 +346,10 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
 						elseif voicelineEntry.Cue:find("^/VO/ZagreusHome_") then
 							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
+						elseif voicelineEntry.Cue:find("^/VO/Intercom_") then
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Intercom_", "/VO/Modsnikkelmhadesbiomesintercom_")
+						elseif voicelineEntry.Cue:find("^/VO/MegaeraHome_") then
+							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/MegaeraHome_", "/VO/Modsnikkelmhadesbiomesmegaerahome_")
 						end
 					else
 						-- Handle nested voiceline entries (array of entries)
@@ -358,6 +363,10 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
 								elseif innerEntry.Cue:find("^/VO/ZagreusHome_") then
 									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
+								elseif innerEntry.Cue:find("^/VO/Intercom_") then
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Intercom_", "/VO/Modsnikkelmhadesbiomesintercom_")
+								elseif innerEntry.Cue:find("^/VO/MegaeraHome_") then
+									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/MegaeraHome_", "/VO/Modsnikkelmhadesbiomesmegaerahome_")
 								end
 							end
 						end

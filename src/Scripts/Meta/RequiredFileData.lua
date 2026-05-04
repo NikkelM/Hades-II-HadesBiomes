@@ -5,7 +5,6 @@ mod.AudioFileMappings = {
 	Tartarus = "TartarusModsNikkelMHadesBiomes",
 	Asphodel = "AsphodelModsNikkelMHadesBiomes",
 	Elysium = "ElysiumModsNikkelMHadesBiomes",
-	-- Styx = "StyxModsNikkelMHadesBiomes", -- There actually is no Styx audio bank
 }
 
 -- Voiceover .txt and .fsb file names

@@ -55,10 +55,12 @@ modutil.mod.Path.Context.Wrap.Static("EndEarlyAccessPresentation", function()
 			if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 				game.GameState.ModsNikkelMHadesBiomes_PlayedRunOutros = game.GameState.ModsNikkelMHadesBiomes_PlayedRunOutros or
 						{}
+				game.GameState.ModsNikkelMHadesBiomes_LastPlayedOutro = game.GameState.ModsNikkelMHadesBiomes_LastPlayedOutro or
+						{}
 				local eligibleOutroData = {}
 				local eligibleUnplayedOutroData = {}
 				for k, outroData in pairs(mod.ModsNikkelMHadesBiomes_GameOutroData) do
-					if outroData.Header ~= nil and game.IsGameStateEligible(game.CurrentRun, outroData) then
+					if outroData.Header ~= nil and game.IsGameStateEligible(game.CurrentRun, outroData.GameStateRequirements) then
 						table.insert(eligibleOutroData, outroData)
 						if not game.GameState.ModsNikkelMHadesBiomes_PlayedRunOutros[outroData.Header] then
 							table.insert(eligibleUnplayedOutroData, outroData)
@@ -68,7 +70,7 @@ modutil.mod.Path.Context.Wrap.Static("EndEarlyAccessPresentation", function()
 				local gameOutroData = nil
 				if game.IsEmpty(eligibleUnplayedOutroData) then
 					-- All played, start the record over
-					for index, outroData in pairs(game.GameOutroData) do
+					for k, outroData in pairs(mod.ModsNikkelMHadesBiomes_GameOutroData) do
 						if outroData.Header ~= nil then
 							game.GameState.ModsNikkelMHadesBiomes_PlayedRunOutros[outroData.Header] = nil
 						end
@@ -77,6 +79,9 @@ modutil.mod.Path.Context.Wrap.Static("EndEarlyAccessPresentation", function()
 				else
 					gameOutroData = game.GetRandomValue(eligibleUnplayedOutroData) or {}
 				end
+				-- Track which outro was played for repeat prevention and cycle rotation
+				game.GameState.ModsNikkelMHadesBiomes_LastPlayedOutro = { [gameOutroData.Header] = true }
+				game.GameState.ModsNikkelMHadesBiomes_PlayedRunOutros[gameOutroData.Header] = true
 				-- Set this here for all modded outros
 				gameOutroData.Animations = { { AnimationName = "ModsNikkelMHadesBiomes_RemBGIntro", }, }
 

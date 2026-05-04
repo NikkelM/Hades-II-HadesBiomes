@@ -1994,6 +1994,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		translated = translated:gsub("/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
 		translated = translated:gsub("/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
 		translated = translated:gsub("/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
+		translated = translated:gsub("/VO/Intercom_", "/VO/Modsnikkelmhadesbiomesintercom_")
+		translated = translated:gsub("/VO/MegaeraHome_", "/VO/Modsnikkelmhadesbiomesmegaerahome_")
 
 		return translated
 	end
