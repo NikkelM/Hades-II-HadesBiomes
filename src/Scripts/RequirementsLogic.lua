@@ -2144,8 +2144,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	-- Custom
-	if requirements.RequiredEncounterLastRun ~= nil and prevRun ~= nil then
-		if not HasEncounterOccurred(prevRun, requirements.RequiredEncounterLastRun) then
+	if requirements.RequiredEncounterLastRun ~= nil then
+		if prevRun == nil or not HasEncounterOccurred(prevRun, requirements.RequiredEncounterLastRun) then
 			return false
 		end
 	end
