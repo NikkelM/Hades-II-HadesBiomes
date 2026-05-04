@@ -7,6 +7,7 @@
 
 Other fixes and improvements:
 - Fixed: The armour overlay shows when on the Surface.
+- Fixed: The "Thorn Of Thanatos" prophecy can be completed during Dream Dives.
 <!--Releasenotes end-->
 
 ## v1.0.1

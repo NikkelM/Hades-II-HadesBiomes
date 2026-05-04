@@ -339,8 +339,8 @@ modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentR
 		game.thread(mod.CleanupOrpheusRaiseDeadEncounter, currentRoom)
 	end
 
-	-- Must be in a modded run for the minor prophecy to be fulfilled
-	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+	-- Must be in a normal modded run (not a Dream Run) for the minor prophecy to be fulfilled
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and not currentRun.IsDreamRun then
 		if game.HeroHasTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) then
 			local traitData = game.GetHeroTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) or {}
 			if traitData.AccumulatedDamageBonus >= 1.296 then
