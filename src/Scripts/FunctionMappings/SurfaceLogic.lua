@@ -405,6 +405,7 @@ function mod.SetupPersephoneMusic(eventSource, args)
 end
 
 function mod.SurfaceKillHero(source, args)
+	args = args or {}
 	game.wait(args.WaitTime or 0)
 
 	-- Since we set CurrentRun.CurrentRoom to BaseRoom in KillHero
@@ -417,6 +418,40 @@ function mod.SurfaceKillHero(source, args)
 	if cachedRoomOverrides ~= nil then
 		game.OverwriteSelf(game.CurrentRun.Hero, cachedRoomOverrides)
 	end
+end
+
+function mod.ChronosRemainsReturnPresentation(usee)
+	AddInputBlock({ Name = "ChronosRemainsReturn" })
+	UseableOff({ Id = usee.ObjectId })
+	game.HideUseButton(usee.ObjectId, usee)
+	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = usee.ObjectId })
+	game.wait(0.6)
+	RemoveInputBlock({ Name = "ChronosRemainsReturn" })
+	mod.SurfaceKillHero(usee, {})
+end
+
+function mod.SpawnChronosRemainsInStory(source, args)
+	local chronosRemains = game.DeepCopyTable(game.ObstacleData.ChronosRemains) or {}
+
+	chronosRemains.OnHitEvents = nil
+	chronosRemains.OnHitVoiceLines = nil
+	chronosRemains.DistanceTriggers = nil
+	chronosRemains.InteractDistance = 220
+
+	chronosRemains.UseText = "UseFinalBossDoor"
+	chronosRemains.OnUsedFunctionName = _PLUGIN.guid .. "." .. "ChronosRemainsReturnPresentation"
+	chronosRemains.OnUsedFunctionArgs = nil
+
+	chronosRemains.ObjectId = SpawnObstacle({
+		Name = "ModsNikkelMHadesBiomes_ChronosRemains",
+		Group = "Standing",
+		DestinationId = 554905,
+		AttachedTable = chronosRemains,
+		OffsetX = -110,
+		OffsetY = -140,
+	})
+
+	game.SetupObstacle(chronosRemains)
 end
 
 -- #endregion

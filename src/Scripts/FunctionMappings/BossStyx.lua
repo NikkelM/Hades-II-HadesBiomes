@@ -462,7 +462,7 @@ end
 
 function mod.CheckRunEndPresentation(currentRun, door)
 	AddInputBlock({ Name = "CheckRunEndPresentation" })
-	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
+	if not door.ModsNikkelMHadesBiomes_ProceedToSurface and game.GameState.TextLinesRecord["Ending01"] ~= nil then
 		currentRun.CurrentRoom.SkipLoadNextMap = true
 		currentRun.ModsNikkelMHadesBiomesSkipFindKiller = true
 		game.EndEarlyAccessPresentation()
@@ -480,6 +480,37 @@ function mod.CheckRunEndPresentation(currentRun, door)
 	end
 	RemoveInputBlock({ Name = "CheckRunEndPresentation" })
 end
+
+function mod.GetFinalBossExitDoorUseText(door)
+	-- Door is still locked - encounter not completed or reward not picked up
+	if game.MapState.OfferedExitDoors[door.ObjectId] == nil or not game.CheckRoomExitsReady(game.CurrentRun.CurrentRoom) then
+		return door.UseText
+	end
+
+	-- Ending01 has already been reached, allow quickly exiting through outro, or entering Surface anyways
+	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
+		door.CanBeRerolled = true
+		return "ModsNikkelMHadesBiomes_UseFinalBossDoorWithSurface"
+	end
+
+	-- Ending01 not reached yet, will always enter Surface
+	door.CanBeRerolled = false
+	return door.UnlockedUseText
+end
+
+modutil.mod.Path.Wrap("AttemptReroll", function(base, run, target)
+	-- The reroll function for this door isn't an actual reroll, but lets us enter the Surface instead
+	if target ~= nil and target.ModsNikkelMHadesBiomes_IsSurfaceDoor then
+		target.ModsNikkelMHadesBiomes_ProceedToSurface = true
+		if target.Room == nil then
+			target.Room = game.CreateRoom(game.RoomData["E_Intro"])
+		end
+		game.LeaveRoom(game.CurrentRun, target)
+		return
+	end
+
+	return base(run, target)
+end)
 
 function mod.SurfaceExitIncantationPresentation(usee, args, user)
 	args = args or {}

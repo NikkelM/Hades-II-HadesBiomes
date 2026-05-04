@@ -18,6 +18,11 @@ local newData = {
 	-- 	Id = "UseLeaveRoomAsphodel_Reroll",
 	-- 	DisplayName = "{I} Embark \n {RR} Alter {#UseGiftPointFormat}(-1{!Icons.ReRoll})",
 	-- },
+	{
+		Id = "ModsNikkelMHadesBiomes_UseFinalBossDoorWithSurface",
+		-- TODO: Localization for "Leave" is required
+		DisplayName = "{I} {#UseTextPreReqFormat}Leave{#Prev}\n {RR} {#UseTextPreReqFormat}Йти далі",
+	},
 	-- #region Badge Ranks/Spirit Mixer
 	-- TODO: Localizations for "Advance" are required
 	{

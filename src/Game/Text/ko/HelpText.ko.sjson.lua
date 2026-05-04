@@ -21,6 +21,10 @@ local newData = {
 		Id = "UseLeaveRoomAsphodel_Reroll",
 		DisplayName = "{I} 탑승 \n {RR} 변경 {#UseGiftPointFormat}(-1{!Icons.ReRoll})",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_UseFinalBossDoorWithSurface",
+		DisplayName = "{I} {#UseTextPreReqFormat}나가기{#Prev}\n {RR} {#UseTextPreReqFormat}입장",
+	},
 	-- #region Badge Ranks/Spirit Mixer
 	{
 		Id = "BadgeSeller_UseTextTalkAndGift_Both",

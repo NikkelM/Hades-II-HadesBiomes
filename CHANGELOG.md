@@ -4,6 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- You can now choose to visit the Surface even after completing the story of Zagreus' Journey. Simply use the new option shown at the exit door after the final boss fight.
 
 Other fixes and improvements:
 - The Keepsake Cabinet will now always spawn in post-boss rooms, but only be accessible after performing the required incantation.

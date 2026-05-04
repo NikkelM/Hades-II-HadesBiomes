@@ -431,6 +431,7 @@ mod.BikFileNames = {
 	"ZagreusEndingBoatIdleLoop_Bink",
 	"ZagreusEndingBoatIdleFidget1_Bink",
 	"ZagreusEndingBoatIdleFidget2_Bink",
+	"ZagreusDeathPostEndingFullscreen",
 	-- #endregion
 	-- #region ORPHEUS
 	"NPC_OrpheusIdle_Bink",

@@ -215,11 +215,19 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 
 			PlaySound({ Name = "/Leftovers/Menu Sounds/TextReveal2" })
 
-			SetThingProperty({
-				Property = "Graphic",
-				Value = "ZagreusInjured_SickStanding_ToDeath",
-				DestinationId = currentRun.Hero.ObjectId
-			})
+			local isPostEnding = game.GameState.TextLinesRecord["Ending01"] ~= nil
+
+			if isPostEnding then
+				CreateAnimation({ Name = "ZagreusDeathPostEndingFullscreen", DestinationId = currentRun.Hero.ObjectId })
+				-- /Music/HadesThemeStingerINTENSE
+				PlaySound({ Name = "{7db90cc9-1fdc-4c8d-9b6d-de6614593806}" })
+			else
+				SetThingProperty({
+					Property = "Graphic",
+					Value = "ZagreusInjured_SickStanding_ToDeath",
+					DestinationId = currentRun.Hero.ObjectId
+				})
+			end
 
 			CreateGroup({ Name = "Dark_FX", BlendMode = "Normal" })
 			InsertGroupBehind({ Name = "Dark_FX", DestinationName = "Standing_Back" })
@@ -233,9 +241,9 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 
 			game.thread(game.DisplayInfoBanner, nil,
 				{
-					Text = "ModsNikkelMHadesBiomes_OutroDeathMessageAlt",
-					Delay = 1.15,
-					TextColor = Color.Red,
+					Text = isPostEnding and "ModsNikkelMHadesBiomes_PostEndingDeathMessage" or "ModsNikkelMHadesBiomes_OutroDeathMessageAlt",
+					Delay = isPostEnding and 0.55 or 1.15,
+					TextColor = game.Color.Red,
 					FontScale = 0.85,
 					TextOffsetY = -20,
 					AnimationName = "LocationTextBGDeath",
@@ -244,11 +252,11 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 					Duration = 4.25,
 				})
 
-			game.wait(0.85)
+			game.wait(isPostEnding and 0.3 or 0.85)
 			local ambientSoundId = PlaySound({ Name = "/Leftovers/Object Ambiences/WaterRushingBloodFall" })
 
-			game.wait(11.8)
-			StopSound({ Id = ambientSoundId, Duration = 4 })
+			game.wait(isPostEnding and 5.5 or 11.8)
+			StopSound({ Id = ambientSoundId, Duration = isPostEnding and 2 or 4 })
 			game.WaitForSpeechFinished()
 
 			game.UnlockCameraMotion("DeathPresentation")

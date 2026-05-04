@@ -1053,6 +1053,9 @@ local roomModifications = {
 			[552590] = {
 				Template = "FinalBossExitDoor",
 				ActivateIds = { 552590, },
+				AllowReroll = true,
+				ModsNikkelMHadesBiomes_IsSurfaceDoor = true,
+				GetUseTextFunctionName = _PLUGIN.guid .. "." .. "GetFinalBossExitDoorUseText",
 			},
 		},
 		BackupCauseOfDeath = "Hades",
