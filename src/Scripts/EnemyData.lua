@@ -1903,6 +1903,8 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		IgnoreSprintPhasingStasisStun = true,
+		-- Neck tethers would not be removed
+		ImmuneToPolymorph = true,
 	},
 	HydraTooth = {
 		StunAnimations = { Default = "HydraToothLanded" },
