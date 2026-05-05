@@ -2265,20 +2265,26 @@ local enemyModifications = {
 			-- Miniboss fight: use full name (unless Dream Run)
 			{
 				TextId = "Minotaur_Full",
-				Requirements = { RequiredRoom = "C_MiniBoss01" },
 				GameStateRequirements = {
 					{
-						PathFalse = { "CurrentRun", "IsDreamRun" }
+						Path = { "CurrentRun", "CurrentRoom", "Name" },
+						IsAny = { "Y_MiniBoss01" },
+					},
+					{
+						PathFalse = { "CurrentRun", "IsDreamRun" },
 					},
 				},
 			},
 			-- Dream Run Miniboss: Visage of full name
 			{
 				TextId = "ModsNikkelMHadesBiomes_Minotaur_Full_DreamRun01",
-				Requirements = { RequiredRoom = "C_MiniBoss01" },
 				GameStateRequirements = {
 					{
-						PathTrue = { "CurrentRun", "IsDreamRun" }
+						Path = { "CurrentRun", "CurrentRoom", "Name" },
+						IsAny = { "Y_MiniBoss01" },
+					},
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
 					},
 				},
 			},
@@ -2287,7 +2293,7 @@ local enemyModifications = {
 				TextId = "ModsNikkelMHadesBiomes_Minotaur_DreamRun01",
 				GameStateRequirements = {
 					{
-						PathTrue = { "CurrentRun", "IsDreamRun" }
+						PathTrue = { "CurrentRun", "IsDreamRun" },
 					},
 				},
 			},
