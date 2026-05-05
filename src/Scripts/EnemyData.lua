@@ -2334,6 +2334,21 @@ local enemyModifications = {
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
 		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
+		PostActivateEvents = {
+			{
+				FunctionName = "GenericPresentation",
+				Args = {
+					OverwriteSourceKeys = {
+						PortraitSwapMap = {
+							Portrait_Minotaur_Default_01 = "Portrait_Minotaur_Armored_01",
+						},
+					},
+				},
+				GameStateRequirements = {
+					NamedRequirements = { "BossDifficultyActive" },
+				},
+			},
+		},
 		BossPresentationHighPriorityIntroTextLineSets = {
 			-- Both moved from BossPresentationIntroTextLineSets
 			MinotaurFirstAppearance_NotMetTheseus = {
@@ -2474,6 +2489,21 @@ local enemyModifications = {
 		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectTheseusGod",
 		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
 		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "TheseusDamaged",
+		PostActivateEvents = {
+			{
+				FunctionName = "GenericPresentation",
+				Args = {
+					OverwriteSourceKeys = {
+						PortraitSwapMap = {
+							Portrait_Theseus_Default_01 = "Portrait_Theseus_Armored_01",
+						},
+					},
+				},
+				GameStateRequirements = {
+					NamedRequirements = { "BossDifficultyActive" },
+				},
+			},
+		},
 		AIStages = {
 			[2] = { RandomAIFunctionNames = { _PLUGIN.guid .. "." .. "TheseusGodAI" }, },
 		},

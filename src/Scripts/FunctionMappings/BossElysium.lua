@@ -7,10 +7,22 @@ function mod.BossIntroElysium(eventSource, args)
 	-- Use EM intro if VoR is active at current biome depth, otherwise normal intro
 	local shrineLevel = game.IsBossDifficultyShrineUpgradeActive() and 4 or 0
 
+	-- Temporarily set PortraitSwapMap for EM portrait resolution
+	-- Minotaur dialogue lines use Source = "Minotaur" which resolves to EnemyData, not the actual spawned enemy
+	if shrineLevel > 0 then
+		game.EnemyData.Minotaur.PortraitSwapMap = {
+			Portrait_Minotaur_Default_01 = "Portrait_Minotaur_Armored_01",
+		}
+	else
+		game.EnemyData.Minotaur.PortraitSwapMap = nil
+	end
+
 	-- In case of there being no music after certain room chains, resume or start new music
 	mod.SafetyResumeBossMusic()
 
 	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args[shrineLevel])
+
+	game.EnemyData.Minotaur.PortraitSwapMap = nil
 end
 
 function mod.ElysiumChampionsDreamRunIntro(source, args)
