@@ -6,12 +6,16 @@ _Zagreus' Journey_ is a mod for Hades II that adds the original route Zagreus to
 Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past - all integrated into the main game as if it was always there: Naturally progress through the new biomes, unlock new incantations to perform, reveal and complete new Minor Prophecies, forge bonds with NPCs in familiar and new locations, collect over 30 new resources to spend on new cosmetics and music, and test your skills with new Testaments, Chaos Trials and in Dream Dives.
 Find the full list of features below!
 
+This mod has been officially endorsed by the developer!
+[Supergiant Games: We're blown away by this mod!](https://x.com/SupergiantGames/status/2051709669476012501)
+
 Wonder what it plays like?
 
-Check out the [Zagreus' Journey 1.0 Release Trailer](https://www.youtube.com/watch?v=rxuTLSPqIEE)
+Check out the [Zagreus' Journey 1.0 Release Trailer](https://www.youtube.com/watch?v=rxuTLSPqIEE).
 
-Take a look at what Haelian and Boated think of the mod (from the first beta release):
+Take a look at what Haelian and Boated think of the mod:
 
+- [The Most Amazing Mod for Hades 2 is Complete. | Haelian](https://www.youtube.com/watch?v=K7FGiTfv7fA)
 - [So, someone put Hades 1 in Hades 2 and it's amazing. | Haelian](https://www.youtube.com/watch?v=SIVrJya47YQ)
 - [They put Hades 1 in Hades 2 and it's PERFECT | Boated](https://www.youtube.com/watch?v=HYf_z8IV4LE)
 
