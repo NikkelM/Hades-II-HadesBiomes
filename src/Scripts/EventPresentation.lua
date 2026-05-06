@@ -95,6 +95,10 @@ end)
 modutil.mod.Path.Wrap("GodLootPickupPresentation", function(base, loot, args)
 	args = args or {}
 
+	-- Prevent double interaction from input spam during custom effects below
+	-- This InputBlock is cleared by game.HandleLootPickup() later on
+	AddInputBlock({ Name = "HandleLootPickup" })
+
 	-- We want to play a custom pickup sound and visual effects if the next text line on this loot is modded
 	-- Getting the text line to play comes from LootPickupPresentation()
 	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and not loot.BlockTextLines then

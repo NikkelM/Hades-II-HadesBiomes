@@ -7,6 +7,7 @@
 
 Other fixes and improvements:
 - Fixed: If Hades is killed while Phase Shift is active, no room reward may drop in rare circumstances, softlocking the player.
+- Fixed: If the "Use" button is spammed during loot pickups with Hermes or Chaos that would play custom dialogues, multiple dialogue and boon selection windows can appear.
 <!--Releasenotes end-->
 
 ## v1.0.2
