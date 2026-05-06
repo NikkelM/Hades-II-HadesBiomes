@@ -1016,6 +1016,10 @@ local enemyModifications = {
 		OnDamagedWeapons = mod.NilValue,
 	},
 	HeavyRangedSplitterMinibossSuperElite = {
+		-- Overwriting auto-scaled health, slightly reducing health and armour compared to what auto-scaling would do
+		MaxHealth = 1500,
+		HealthBuffer = 3300,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		StunAnimations = { Default = "HeavyRangedSplitterCrystalHit", },
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesMiniBossHeavyRangedSplitterDeath",
@@ -1101,6 +1105,10 @@ local enemyModifications = {
 		-- Polyphemus EM Health: 10200
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 11000,
+		ShrineDataOverwrites = {
+			MaxHealth = 12000,
+		},
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
 			{
 				TextId = "ModsNikkelMHadesBiomes_Harpy_DreamRun01",
@@ -1137,10 +1145,6 @@ local enemyModifications = {
 			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
 		},
-		ShrineDataOverwrites = {
-			MaxHealth = 12000,
-		},
-		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.MegVoice,
 		RunHistoryKilledByName = "NPC_FurySister_01",
 		ImmuneToPolymorph = true,
@@ -1218,6 +1222,10 @@ local enemyModifications = {
 		-- Base Health: 4600
 		-- EM Health: 4900
 		MaxHealth = 11100,
+		ShrineDataOverwrites = {
+			MaxHealth = 12200,
+		},
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
 			{
 				TextId = "ModsNikkelMHadesBiomes_Harpy2_DreamRun01",
@@ -1234,10 +1242,6 @@ local enemyModifications = {
 			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
 		},
-		ShrineDataOverwrites = {
-			MaxHealth = 12200,
-		},
-		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.AlectoVoice,
 		-- Gets overwritten by the Harpy value if not set
 		RunHistoryKilledByName = "Harpy2",
@@ -1303,6 +1307,10 @@ local enemyModifications = {
 		-- Base Health: 5200
 		-- EM Health: 5600
 		MaxHealth = 11400,
+		ShrineDataOverwrites = {
+			MaxHealth = 12400,
+		},
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
 			{
 				TextId = "ModsNikkelMHadesBiomes_Harpy3_DreamRun01",
@@ -1319,10 +1327,6 @@ local enemyModifications = {
 			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
 		},
-		ShrineDataOverwrites = {
-			MaxHealth = 12400,
-		},
-		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.TisiphoneVoice,
 		RunHistoryKilledByName = "Harpy3",
 		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectHarpySupportAIs",
@@ -1752,13 +1756,13 @@ local enemyModifications = {
 		-- Eris Health: 16000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 18000,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		DreamBiomeData = {
 			[1] = { DataOverrides = { HealthMultiplier = 0.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
 			[2] = { DataOverrides = { HealthMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
 			[3] = { DataOverrides = { HealthMultiplier = 1.8, SpeedMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.4 } },
 			[4] = { DataOverrides = { HealthMultiplier = 2.7, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 		},
-		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
 			-- Lernie rename (non-Dream Run only)
 			{
@@ -1870,13 +1874,13 @@ local enemyModifications = {
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 1000,
 		HealthBuffer = 1000,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		DreamBiomeData = {
 			[1] = { DataOverrides = { HealthMultiplier = 0.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
 			[2] = { DataOverrides = { HealthMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
 			[3] = { DataOverrides = { HealthMultiplier = 1.8, SpeedMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.4 } },
 			[4] = { DataOverrides = { HealthMultiplier = 2.7, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 		},
-		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		-- To unify all Hydra heads under the same "Damage Taken" entry
 		GenusName = "HydraHeadImmortal",
 		RunHistoryKilledByName = "HydraHeadImmortal",
@@ -2263,6 +2267,7 @@ local enemyModifications = {
 		-- Heracles Health: 34000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 26500,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
 			-- Miniboss fight: use full name (unless Dream Run)
 			{
@@ -2316,7 +2321,6 @@ local enemyModifications = {
 			[3] = { DataOverrides = { HealthMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
 			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
 		},
-		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.MinotaurVoice,
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
@@ -2444,6 +2448,7 @@ local enemyModifications = {
 	Theseus = {
 		-- Base Health: 9000
 		MaxHealth = 20000,
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
 			{
 				TextId = "ModsNikkelMHadesBiomes_Theseus_DreamRun01",
@@ -2470,7 +2475,6 @@ local enemyModifications = {
 			[3] = { DataOverrides = { HealthMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
 			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
 		},
-		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		SubtitleColor = game.Color.TheseusVoice,
 		-- Doesn't seem to be used
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
@@ -2820,6 +2824,10 @@ local enemyModifications = {
 		-- Typhon Health: 65000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 30000,
+		ShrineDataOverwrites = {
+			MaxHealth = 36000,
+		},
+		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		DreamBiomeData = {
 			[1] = { DataOverrides = { HealthMultiplier = 0.25, HealingMultiplier = 0.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.35 } },
 			[2] = { DataOverrides = { HealthMultiplier = 0.38, HealingMultiplier = 0.38 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.6 } },
@@ -2843,10 +2851,6 @@ local enemyModifications = {
 				},
 			},
 		},
-		ShrineDataOverwrites = {
-			MaxHealth = 36000,
-		},
-		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
 			{
 				TextId = "ModsNikkelMHadesBiomes_Hades_DreamRun01",

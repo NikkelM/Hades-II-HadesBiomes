@@ -9,6 +9,7 @@
 
 Other fixes and improvements:
 - The Keepsake Cabinet will now always spawn in post-boss rooms, but only be accessible after performing the required incantation.
+- Balancing: The Doomstone spawned by Hades in his unrivalled form now has less health and armour.
 - Fixed: Small Hydra heads can be polymorphed, which would turn them into sheep but leave the neck tethers intact.
 - Fixed: Asterius uses his full nameplate instead of the shortened version during the boss encounter in Elysium.
 - Fixed: Asterius and Theseus use their unarmoured dialogue portraits if you have the Vow of Rivals activated the first time you encounter them.
