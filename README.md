@@ -11,9 +11,7 @@ This mod has been officially endorsed by the developer!
 
 Wonder what it plays like?
 
-Check out the [Zagreus' Journey 1.0 Release Trailer](https://www.youtube.com/watch?v=rxuTLSPqIEE).
-
-Take a look at what Haelian and Boated think of the mod:
+Check out the [Zagreus' Journey 1.0 Release Trailer](https://www.youtube.com/watch?v=rxuTLSPqIEE), or take a look at what Haelian and Boated think of the mod:
 
 - [The Most Amazing Mod for Hades 2 is Complete. | Haelian](https://www.youtube.com/watch?v=K7FGiTfv7fA)
 - [So, someone put Hades 1 in Hades 2 and it's amazing. | Haelian](https://www.youtube.com/watch?v=SIVrJya47YQ)
