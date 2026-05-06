@@ -4,12 +4,12 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- You can now choose to visit the Surface even after completing the story of Zagreus' Journey. Simply use the new option shown at the exit door after the final boss fight.
-- Fixed: If playing on lower resolutions and immediately after installing the mod, some enemies appear enlarged and cut off until the game is restarted once.
+- You can now choose to visit the Surface even after completing the story of Zagreus' Journey. Simply use the new "Proceed" option shown at the exit door after the final boss fight. You can still exit immediately by using the "Leave" option.
+- Fixed: If playing on lower resolutions and immediately after installing the mod, some enemies appear enlarged and cut off until the game is restarted.
 
 Other fixes and improvements:
-- The Keepsake Cabinet will now always spawn in post-boss rooms, but only be accessible after performing the required incantation.
-- Balancing: The Doomstone spawned by Hades in his unrivalled form now has less health and armour.
+- The Keepsake Cabinet will now always spawn in post-boss rooms, but still only be accessible after performing the required incantation.
+- Balancing: The Doomstone spawned by Hades in his Vow of Rivals fight now has less health and armour.
 - Fixed: Small Hydra heads can be polymorphed, which would turn them into sheep but leave the neck tethers intact.
 - Fixed: Asterius uses his full nameplate instead of the shortened version during the boss encounter in Elysium.
 - Fixed: Asterius and Theseus use their unarmoured dialogue portraits if you have the Vow of Rivals activated the first time you encounter them.
