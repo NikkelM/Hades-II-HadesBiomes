@@ -155,7 +155,7 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomes_InstallFailure_HadesNotFound",
 		DisplayName = "Installation gescheitert!",
 		Description =
-		"Willkommen zu {#DialogLegendaryFormat}Zagreus\' Journey{#Prev}!\n\nLeider ist die Installation der Mod {#DialogLegendaryFormat}GESCHEITERT{#Prev}, oder deine existierende Installation ist kaputt, da die Mod {#DialogLegendaryFormat}keine Hades-Installation finden konnte{#Prev}.\nSetze die {#DialogLegendaryFormat}hadesGameFolder {#Prev}Konfiguration in deinem Modmanager.\n\nSollte das Problem weiterhin existieren, starte bitte eine Diskussion auf\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nund teile dein Log aus {#DialogLegendaryFormat}Settings -> Copy log file {#Prev}in deinem Modmanager.",
+		"Willkommen zu {#DialogLegendaryFormat}Zagreus\' Journey{#Prev}!\n\nLeider ist die Installation der Mod {#DialogLegendaryFormat}GESCHEITERT{#Prev}, oder deine existierende Installation ist kaputt, da die Mod {#DialogLegendaryFormat}keine Hades-Installation (das erste Spiel) finden konnte{#Prev}.\nSetze die {#DialogLegendaryFormat}hadesGameFolder {#Prev}Konfiguration in deinem Modmanager.\n\nSollte das Problem weiterhin existieren, starte bitte eine Diskussion auf\n{#ItalicFormat}github.com/NikkelM/Hades-II-HadesBiomes/discussions{#Prev}\nund teile dein Log aus {#DialogLegendaryFormat}Settings -> Copy log file {#Prev}in deinem Modmanager.",
 	},
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_InstallFailure_HadesModsInstalled",
