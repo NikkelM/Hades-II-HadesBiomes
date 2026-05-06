@@ -3,8 +3,10 @@
 local hadesNPCFile = rom.path.combine(mod.hadesGameFolder, "Content\\Game\\Units\\NPCs.sjson")
 local hadesNPCTable = mod.DecodeSjsonFile(hadesNPCFile)
 
--- We sometimes get a file-too-small error from H2M with the NPCs.sjson file
+-- We sometimes get a file-too-small error from H2M with the NPCs.sjson file, so we hook into the Enemies file
 local hadesTwoEnemiesFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\Enemies.sjson")
+-- Still need to load the NPCs file to make modifications
+local hadesTwoNPCsFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\NPCs.sjson")
 
 -- We don't need all NPCs, so only take the ones we actually need
 local hadesNPCsToCopy = {
@@ -246,6 +248,20 @@ local hadesNPCAdditions = {
 
 local NPCKeyReplacements = {}
 
+-- Modifications/overrides to the Hades II NPCs
+local hadesTwoNPCModifications = {
+	NPC_Thanatos_01 = {
+		Thing = {
+			ImmuneToForce = true,
+		},
+	},
+	NPC_FurySister_01 = {
+		Thing = {
+			ImmuneToForce = true,
+		},
+	},
+}
+
 mod.ApplyNestedSjsonModifications(hadesNPCTable.Units, hadesNPCModifications)
 
 -- Remove duplicates we don't want at all, as there is one defined in Hades II already
@@ -285,8 +301,16 @@ end
 
 sjson.hook(hadesTwoEnemiesFile, function(data)
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
-	sjsonLoads["NPCs"] = true
+	sjsonLoads["NPCs-Enemies"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
 
 	mod.AddTableKeysSkipDupes(data.Units, hadesNPCTable.Units, "Name")
+end)
+
+sjson.hook(hadesTwoNPCsFile, function(data)
+	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	sjsonLoads["NPCs-NPCs"] = true
+	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
+
+	mod.ApplyNestedSjsonModifications(data.Units, hadesTwoNPCModifications)
 end)

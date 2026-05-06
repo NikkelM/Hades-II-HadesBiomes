@@ -16,6 +16,7 @@ Other fixes and improvements:
 - Fixed: If a Family Dispute is encountered early on in a region, no enemies spawn and the second reward is granted for free.
 - Fixed: The armour overlay shows when on the Surface.
 - Fixed: The game may crash when trying to leave the final boss room after a previous ending sequence was skipped.
+- Fixed: Thanatos in the opening room and Megaera in Styx can be moved through pushback effects from certain boons.
 - Fixed: The "Thorn Of Thanatos" prophecy can be completed during Dream Dives.
 - Fixed: When quitting the game after returning from the Surface as Zagreus, and then reloading the save, Melinoë's subtitle and line history name are that of Zagreus.
 - Fixed: The mod is unable to discover the Hades installation if the `hadesGameFolder` config setting has leading or trailing quotes, apostrophes or spaces.
