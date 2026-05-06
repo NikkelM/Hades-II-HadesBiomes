@@ -4,6 +4,14 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+
+Other fixes and improvements:
+- Fixed: If Hades is killed while Phase Shift is active, no room reward may drop in rare circumstances, softlocking the player.
+<!--Releasenotes end-->
+
+## v1.0.2
+
+### Patch Highlights:
 - You can now choose to visit the Surface even after completing the story of Zagreus' Journey. Simply use the new "Proceed" option shown at the exit door after the final boss fight. You can still exit immediately by using the "Leave" option.
 - Fixed: If playing on lower resolutions and immediately after installing the mod, some enemies appear enlarged and cut off until the game is restarted.
 
@@ -20,7 +28,6 @@ Other fixes and improvements:
 - Fixed: The "Thorn Of Thanatos" prophecy can be completed during Dream Dives.
 - Fixed: When quitting the game after returning from the Surface as Zagreus, and then reloading the save, Melinoë's subtitle and line history name are that of Zagreus.
 - Fixed: The mod is unable to discover the Hades installation if the `hadesGameFolder` config setting has leading or trailing quotes, apostrophes or spaces.
-<!--Releasenotes end-->
 
 ## v1.0.1
 

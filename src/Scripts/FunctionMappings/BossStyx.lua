@@ -449,7 +449,7 @@ function mod.HadesKillPresentation(unit, args)
 	-- ZeroSuperMeter()
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
 	mod.HarpyKillPresentation(unit, args)
-	game.wait(1.0, game.RoomThreadName)
+	game.wait(1.0)
 	RemoveInputBlock({ Name = "HadesKillPresentation" })
 	-- In Dream Dives, Hades might not be the final boss
 	if not game.CurrentRun.IsDreamRun then
