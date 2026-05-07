@@ -458,6 +458,11 @@ function mod.HadesKillPresentation(unit, args)
 	game.CurrentRun.ActiveBiomeTimer = false
 	game.CurrentRun.CurrentRoom.Encounter.BossKillPresentation = false
 	game.thread(game.CheckQuestStatus, { Silent = true })
+
+	-- Safety net: if encounter hasn't completed after RunClearScreen, force it so the reward spawns
+	if not game.CurrentRun.CurrentRoom.Encounter.Completed then
+		game.notifyExistingWaiters("AllRequiredKillEnemiesDead")
+	end
 end
 
 function mod.CheckRunEndPresentation(currentRun, door)
