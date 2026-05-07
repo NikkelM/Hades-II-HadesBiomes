@@ -366,6 +366,12 @@ mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/
 		PathFalse = { "GameState", "ReachedTrueEnding" },
 	},
 })
+mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/VO/Melinoe_0263", {
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsNone = { "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
+	},
+})
 -- #endregion
 -- #endregion
 
