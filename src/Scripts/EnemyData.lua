@@ -1404,7 +1404,8 @@ local enemyModifications = {
 		WeaponOptions = { "HadesLightSpawnerEliteSpawnerWeapon", },
 		DefaultAIData = { DeepInheritance = true, },
 		OnDamagedFunctionName = "AggroSpawns",
-		BlockAttributes = { "Disguise" },
+		-- Same as ZombieSpawner_Elite
+		EliteAttributeOptions = { "Fog", "HeavyArmor", "Orbit", "Radial", },
 		DreamBiomeData = asphodelEnemyDreamBiomeData,
 	},
 	-- Need to manually modify these fields, as the enemies are DeepCopyTable'd from Hades II above
