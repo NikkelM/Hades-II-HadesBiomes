@@ -6,6 +6,7 @@
 ### Patch Highlights:
 
 Other fixes and improvements:
+- Fixed: The timer does not pause when leaving Charon's boss arena.
 - Fixed: Dire Skullomats could be imbued with elite perks that do not make sense.
 - Fixed: If Hades is killed while Phase Shift is active, no room reward may drop in rare circumstances, softlocking the player.
 - Fixed: If the "Use" button is spammed during loot pickups with Hermes or Chaos that would play custom dialogues, multiple dialogue and boon selection windows can appear.

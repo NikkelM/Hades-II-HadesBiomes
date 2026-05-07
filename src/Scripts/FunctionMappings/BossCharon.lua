@@ -229,6 +229,7 @@ end
 
 function mod.LeaveCharonFight(eventSource, args)
 	args = args or {}
+	game.AddTimerBlock(game.CurrentRun, "LeaveCharonFight")
 	AddInputBlock({ Name = "LeaveCharonFight" })
 	game.wait(args.Delay or 1.0, game.RoomThreadName)
 
@@ -247,6 +248,7 @@ function mod.LeaveCharonFight(eventSource, args)
 	game.FullScreenFadeOutAnimation()
 	game.wait(0.2)
 
+	game.RemoveTimerBlock(game.CurrentRun, "LeaveCharonFight")
 	RemoveInputBlock({ Name = "LeaveCharonFight" })
 	-- Custom: Does nothing (but must be assigned or it will cause a nil error)
 	game.CurrentRun.CurrentRoom.ExitFunctionName = _PLUGIN.guid .. "." .. "ExitFromCharonFightPresentation"
