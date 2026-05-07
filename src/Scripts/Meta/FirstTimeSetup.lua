@@ -390,6 +390,10 @@ local function copyHadesNPCTexts()
 							entry.Id = entry.Id:gsub("Skelly_", "Modsnikkelmhadesbiomesskelly_")
 							-- entry.Id = entry.Id:gsub("Hypnos_", "Modsnikkelmhadesbiomeshypnos_")
 							entry.Id = entry.Id:gsub("ZagreusHome_", "Modsnikkelmhadesbiomeszagreushome_")
+
+							if entry.DisplayName then
+								entry.DisplayName = entry.DisplayName:gsub("{#PreviousFormat}", "{#Prev}")
+							end
 							table.insert(filteredTexts, entry)
 						end
 					end
