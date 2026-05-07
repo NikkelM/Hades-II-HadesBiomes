@@ -6,6 +6,7 @@
 ### Patch Highlights:
 
 Other fixes and improvements:
+- The text informing you that poison will wear off automatically in Elysium will now track Melinoë for better readability. 
 - Fixed: The timer does not pause when leaving Charon's boss arena.
 - Fixed: Dire Skullomats could be imbued with elite perks that do not make sense.
 - Fixed: If Hades is killed while Phase Shift is active, no room reward may drop in rare circumstances, softlocking the player.

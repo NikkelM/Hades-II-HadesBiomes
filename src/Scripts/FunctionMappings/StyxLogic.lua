@@ -142,7 +142,14 @@ function mod.StartStyxPoisonPresentation(unit)
 		end
 	elseif game.CurrentRun.CurrentRoom.Encounter and game.CurrentRun.CurrentRoom.Encounter.ModsNikkelMHadesBiomesUnitTimesPoisoned == 1 then
 		-- We are not in Styx, and it's the first time we've been poisoned in this encounter
-		game.thread(game.InCombatText, game.CurrentRun.Hero.ObjectId, "ModsNikkelMHadesBiomesPoisonedNoCureHint", 3)
+		game.thread(game.InCombatTextArgs, {
+			TargetId = game.CurrentRun.Hero.ObjectId,
+			Text = "ModsNikkelMHadesBiomesPoisonedNoCureHint",
+			SkipRise = true,
+			SkipFlash = true,
+			Duration = 3,
+			OffsetY = -205,
+		})
 	end
 end
 
