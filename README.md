@@ -185,5 +185,5 @@ This mod does not, and never will, use generative AI for any art, voice or music
 
 ## Disclaimer
 
-This mod is a fan-project and not affiliated with or endorsed by Supergiant Games.
+This mod is a fan-project and while [endorsed by](https://x.com/SupergiantGames/status/2051709669476012501), it is not affiliated with by Supergiant Games.
 All original code, art, music, voice & game design of Hades is copyright Supergiant Games.
