@@ -9,6 +9,7 @@ Other fixes and improvements:
 - The text informing you that poison will wear off automatically in Elysium will now track Melinoë for better readability. 
 - Fixed: The timer does not pause when leaving Charon's boss arena.
 - Fixed: Dire Skullomats could be imbued with elite perks that do not make sense.
+- Fixed: The entrance camera pan during the miniboss fight against the Tiny Vermin pans to the vermin, to the player, then back to the vermin and to the player again.
 - Fixed: If Hades is killed while Phase Shift is active, no room reward may drop in rare circumstances, softlocking the player.
 - Fixed: If the "Use" button is spammed during loot pickups with Hermes or Chaos that would play custom dialogues, multiple dialogue and boon selection windows can appear.
 - Fixed: Localized dialogue texts do not correctly terminate _italicized_ text.

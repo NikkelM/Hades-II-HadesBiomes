@@ -992,7 +992,6 @@ local roomModifications = {
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
 				Args = {
-					ProcessTextLinesIds = { 552394 },
 					SetupBossIds = { 552394 },
 				},
 			},
