@@ -241,7 +241,8 @@ modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, ar
 
 			game.thread(game.DisplayInfoBanner, nil,
 				{
-					Text = isPostEnding and "ModsNikkelMHadesBiomes_PostEndingDeathMessage" or "ModsNikkelMHadesBiomes_OutroDeathMessageAlt",
+					Text = isPostEnding and "ModsNikkelMHadesBiomes_PostEndingDeathMessage" or
+							"ModsNikkelMHadesBiomes_OutroDeathMessageAlt",
 					Delay = isPostEnding and 0.55 or 1.15,
 					TextColor = game.Color.Red,
 					FontScale = 0.85,
@@ -280,6 +281,8 @@ function mod.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId,
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or
 			0.8
 
+	game.AsphodelBoatSoundId = PlaySound({ Name = "/SFX/AsphodelIslandTransitionLoop" })
+
 	AddInputBlock({ Name = "EnterRoomPresentation" })
 	game.SetPlayerInvulnerable("EnterRoomPresentation")
 	FadeIn({ Duration = 0.0 })
@@ -317,6 +320,7 @@ function mod.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId,
 
 	StopSound({ Id = game.AsphodelBoatSoundId, Duration = 0.2 })
 	game.AsphodelBoatSoundId = nil
+
 	local rumbleParams = { { ScreenPreWait = 0.02, Fraction = 0.15, Duration = 0.3 }, }
 	game.thread(game.DoRumble, rumbleParams)
 
@@ -446,15 +450,13 @@ function mod.AsphodelLeaveRoomPresentation(currentRun, exitDoor)
 
 	currentRun.Hero.ExclusiveOnHitFunctionName = originalExclusiveOnHitFunctionName
 
-	-- If the next room is X_PostBoss01, stop the boat sound early, as that room won't stop it itself
-	if door ~= nil and door.Room.Name == "X_PostBoss01" then
-		StopSound({ Id = game.AsphodelBoatSoundId, Duration = 0.2 })
-		game.AsphodelBoatSoundId = nil
-	end
-
 	RemoveInputBlock({ Name = "LeaveRoomPresentation" })
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
 	SetPlayerVulnerable("LeaveRoomPresentation")
+
+	-- Stop the sound before the next room starts, as there are sometimes cases where the sound won't be stopped by the entry function
+	StopSound({ Id = game.AsphodelBoatSoundId, Duration = 0.2 })
+	game.AsphodelBoatSoundId = nil
 end
 
 -- Doesn't do anything, used to not play the invulnerable hit presentation when leaving the room and not being centered on the boat
