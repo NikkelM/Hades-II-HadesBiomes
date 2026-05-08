@@ -7,13 +7,14 @@
 
 Other fixes and improvements:
 - Added detailed description texts to all resources, replacing the generic "Not even the Fates are privy to what purpose this may hold" placeholders.
-- The text informing you that poison will wear off automatically in Elysium will now track Melinoë for better readability. 
+- The text informing you that poison will wear off automatically in Elysium will now track Melinoë for better readability.
 - Fixed: The timer does not pause when leaving Charon's boss arena.
 - Fixed: Dire Skullomats could be imbued with elite perks that do not make sense.
 - Fixed: The sound make by the barge during Asphodel room transitions sometimes does not stop when exiting the barge.
 - Fixed: The entrance camera pan during the miniboss fight against the Tiny Vermin pans to the vermin, to the player, then back to the vermin and to the player again.
 - Fixed: The entrance voicelines when Melinoë first meets Hades may sometimes not play.
 - Fixed: In very rare circumstances, no room reward may drop after defeating Hades, softlocking the player.
+- Fixed: When entering a free Chaos Gate forced by "Primordial Chaos" from Orpheus, Melinoë may comment on paying for it with health.
 - Fixed: If the "Use" button is spammed during loot pickups with Hermes or Chaos that would play custom dialogues, multiple dialogue and boon selection windows can appear.
 - Fixed: The game may crash in rare circumstances when one of the upcoming room rewards is a Family Dispute.
 - Fixed: Localized dialogue texts do not correctly terminate _italicized_ text.

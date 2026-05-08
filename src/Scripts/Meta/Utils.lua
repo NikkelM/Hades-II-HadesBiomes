@@ -622,7 +622,7 @@ end
 ---@param cue string The Cue path to match (e.g. "/VO/MelinoeField_5547")
 ---@param newRequirements table The new GameStateRequirements table to set on the matched entry
 ---@return nil Modifies the voiceline entry in-place. No-op if the table is nil or the cue is not found.
-function mod.ModifyVoiceLineRequirements(voiceLineTable, cue, newRequirements)
+function mod.ReplaceVoiceLineRequirements(voiceLineTable, cue, newRequirements)
 	if voiceLineTable == nil then return end
 	for _, group in ipairs(voiceLineTable) do
 		if type(group) == "table" then

@@ -57,7 +57,7 @@ end)
 local dreamBiomeStartVoiceLines = game.HeroVoiceLines.DreamBiomeStartVoiceLines
 
 -- Starting region lines
-mod.ModifyVoiceLineRequirements(dreamBiomeStartVoiceLines, "/VO/MelinoeField_5553", {
+mod.ReplaceVoiceLineRequirements(dreamBiomeStartVoiceLines, "/VO/MelinoeField_5553", {
 	{
 		Path = { "CurrentRun", "EnteredBiomes" },
 		Comparison = "==",
@@ -71,7 +71,7 @@ mod.ModifyVoiceLineRequirements(dreamBiomeStartVoiceLines, "/VO/MelinoeField_555
 
 -- Final region aligned with normal runs
 for _, cue in ipairs({ "/VO/MelinoeField_5509", "/VO/MelinoeField_5510", "/VO/MelinoeField_5512", "/VO/MelinoeField_5513" }) do
-	mod.ModifyVoiceLineRequirements(dreamBiomeStartVoiceLines, cue, {
+	mod.ReplaceVoiceLineRequirements(dreamBiomeStartVoiceLines, cue, {
 		{
 			Path = { "CurrentRun", "EnteredBiomes" },
 			Comparison = "==",
@@ -86,7 +86,7 @@ end
 
 -- Final region in starting biomes
 for _, cue in ipairs({ "/VO/MelinoeField_5515", "/VO/MelinoeField_5516", "/VO/MelinoeField_5517", "/VO/MelinoeField_5518", "/VO/MelinoeField_5519" }) do
-	mod.ModifyVoiceLineRequirements(dreamBiomeStartVoiceLines, cue, {
+	mod.ReplaceVoiceLineRequirements(dreamBiomeStartVoiceLines, cue, {
 		{
 			Path = { "CurrentRun", "EnteredBiomes" },
 			Comparison = "==",
@@ -112,7 +112,7 @@ local mixedUpOrderVoiceLines = {
 	{ "/VO/MelinoeField_5533", { "N", "O", "P", "Q" }, { "F", "G", "H", "I", "Tartarus", "Asphodel", "Elysium", "Styx" } },
 }
 for _, entry in ipairs(mixedUpOrderVoiceLines) do
-	mod.ModifyVoiceLineRequirements(dreamBiomeStartVoiceLines, entry[1], {
+	mod.ReplaceVoiceLineRequirements(dreamBiomeStartVoiceLines, entry[1], {
 		{
 			Path = { "CurrentRun", "PrevDreamBiome" },
 			IsAny = entry[2]
@@ -126,7 +126,7 @@ end
 -- #endregion
 
 -- #region DreamRoomExitVoiceLines
-mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamRoomExitVoiceLines, "/VO/MelinoeField_5456", {
+mod.ReplaceVoiceLineRequirements(game.HeroVoiceLines.DreamRoomExitVoiceLines, "/VO/MelinoeField_5456", {
 	{
 		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
 		IsAny = { "I", "Tartarus" },
@@ -135,7 +135,7 @@ mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamRoomExitVoiceLines, "/V
 -- #endregion
 
 -- #region DreamPostBossExitVoiceLines
-mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamPostBossExitVoiceLines, "/VO/MelinoeField_5484", {
+mod.ReplaceVoiceLineRequirements(game.HeroVoiceLines.DreamPostBossExitVoiceLines, "/VO/MelinoeField_5484", {
 	{
 		Path = { "CurrentRun", "BiomesReached" },
 		HasNone = { "I", "Tartarus" },
@@ -144,14 +144,14 @@ mod.ModifyVoiceLineRequirements(game.HeroVoiceLines.DreamPostBossExitVoiceLines,
 -- #endregion
 
 -- #region Hypnos DeathTauntVoiceLines
-mod.ModifyVoiceLineRequirements(game.EnemyData.NPC_Hypnos_DreamRun.DeathTauntVoiceLines[3], "/VO/Hypnos_0204", {
+mod.ReplaceVoiceLineRequirements(game.EnemyData.NPC_Hypnos_DreamRun.DeathTauntVoiceLines[3], "/VO/Hypnos_0204", {
 	{
 		-- Adding Witches' Circle Miniboss room
 		Path = { "CurrentRun", "CurrentRoom", "Name" },
 		IsAny = { "F_Boss01", "F_Boss02", "X_MiniBoss02" },
 	},
 })
-mod.ModifyVoiceLineRequirements(game.EnemyData.NPC_Hypnos_DreamRun.DeathTauntVoiceLines[3], "/VO/Hypnos_0211", {
+mod.ReplaceVoiceLineRequirements(game.EnemyData.NPC_Hypnos_DreamRun.DeathTauntVoiceLines[3], "/VO/Hypnos_0211", {
 	OrRequirements = {
 		{
 			{
@@ -170,19 +170,19 @@ mod.ModifyVoiceLineRequirements(game.EnemyData.NPC_Hypnos_DreamRun.DeathTauntVoi
 -- #endregion
 
 -- #region HypnosPostBossVoiceLines
-mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8280", {
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8280", {
 	{
 		Path = { "CurrentRun", "PrevDreamBiome" },
 		IsAny = { "I", "Styx" },
 	},
 })
-mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8284", {
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8284", {
 	{
 		Path = { "CurrentRun", "PrevDreamBiome" },
 		IsAny = { "O", "Tartarus" },
 	},
 })
-mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8288", {
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8288", {
 	OrRequirements = {
 		{
 			-- Original requirements
@@ -203,13 +203,13 @@ mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, 
 		},
 	},
 })
-mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8291", {
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8291", {
 	{
 		Path = { "CurrentRun", "PrevDreamBiome" },
 		IsAny = { "Q", "Asphodel" },
 	},
 })
-mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8290", {
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, "/VO/Intercom_8290", {
 	{
 		Path = { "CurrentRun", "PrevDreamBiome" },
 		IsAny = { "Q", "Asphodel" },
@@ -223,7 +223,7 @@ mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.HypnosPostBossVoiceLines, 
 -- #region DreamRunFinalBossGreetingVoiceLines
 local pluralFinalOpponentVoiceLines = { "/VO/MelinoeField_5593", "/VO/MelinoeField_5609", "/VO/MelinoeField_5610", }
 for _, entry in ipairs(pluralFinalOpponentVoiceLines) do
-	mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.DreamRunFinalBossGreetingVoiceLines, entry, {
+	mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.DreamRunFinalBossGreetingVoiceLines, entry, {
 		OrRequirements = {
 			{
 				{
@@ -241,7 +241,7 @@ for _, entry in ipairs(pluralFinalOpponentVoiceLines) do
 		}
 	})
 end
-mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.DreamRunFinalBossGreetingVoiceLines, "/VO/MelinoeField_5617", {
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.DreamRunFinalBossGreetingVoiceLines, "/VO/MelinoeField_5617", {
 	{
 		Path = { "CurrentRun", "CurrentRoom", "Name" },
 		IsNone = { "I_Boss01", "Q_Boss01", "Q_Boss02", "D_Boss01" },

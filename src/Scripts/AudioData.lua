@@ -357,7 +357,7 @@ end
 
 -- #region Modifications to vanilla voiceline requirements
 -- Also prevents CombatResolved equivalent follow-up voiceline (Death to Chronos)
-mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/VO/Melinoe_1774", {
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/VO/Melinoe_1774", {
 	{
 		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
 		IsNone = { "Q", "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
@@ -366,7 +366,7 @@ mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/
 		PathFalse = { "GameState", "ReachedTrueEnding" },
 	},
 })
-mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/VO/Melinoe_0263", {
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/VO/Melinoe_0263", {
 	{
 		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
 		IsNone = { "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
@@ -419,5 +419,26 @@ game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyAdmirationVoiceLines = mod.Hero
 		.ModsNikkelMHadesBiomes_TrophyAdmirationVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyUnlockedVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_TrophyUnlockedVoiceLines
+-- #endregion
+
+-- #region Chaos Gate voiceline adjustments for Orpheus Chaos boon (free entry)
+local secretVoiceLines = game.HeroVoiceLines.SecretUnlockedVoiceLines
+local costOnlyReq = {
+	{
+		Path = { "CurrentRun", "CurrentRoom", "TraitUses" },
+		HasNone = { "TemporaryForcedSecretDoorTrait", "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon" }
+	},
+}
+mod.ReplaceVoiceLineRequirements(secretVoiceLines, "/VO/MelinoeField_0794", costOnlyReq)
+mod.ReplaceVoiceLineRequirements(secretVoiceLines, "/VO/MelinoeField_0795", costOnlyReq)
+mod.ReplaceVoiceLineRequirements(secretVoiceLines, "/VO/MelinoeField_0796", costOnlyReq)
+mod.ReplaceVoiceLineRequirements(secretVoiceLines, "/VO/MelinoeField_0797", costOnlyReq)
+-- Free-only line: also play when Orpheus Chaos boon is active
+mod.ReplaceVoiceLineRequirements(secretVoiceLines, "/VO/MelinoeField_0973", {
+	{
+		Path = { "CurrentRun", "CurrentRoom", "TraitUses" },
+		HasAny = { "TemporaryForcedSecretDoorTrait", "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon" }
+	},
+})
 -- #endregion
 -- #endregion
