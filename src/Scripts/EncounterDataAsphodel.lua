@@ -56,13 +56,13 @@ local encounterReplacements = {
 		-- The original from Hades is 5.0
 		ActiveEnemyCapBase = 6.2,
 		-- The original from Hades is 170
-		BaseDifficulty = 190,
+		BaseDifficulty = 184,
 		-- The original from Hades is 1.0
 		ActiveEnemyCapDepthRamp = 1.3,
 		-- The original from Hades is 0.35
 		TypeCountDepthRamp = 0.5,
 		-- The original from Hades is 25
-		DepthDifficultyRamp = 30,
+		DepthDifficultyRamp = 28,
 		-- Load the base Hades II Asphodel package, since we reuse some enemies
 		LoadPackages = { "BiomeB" },
 		-- Original is missing HandleEncounterPreSpawns

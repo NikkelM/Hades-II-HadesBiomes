@@ -7,6 +7,7 @@
 - Added detailed description texts to all resources, replacing the generic "Not even the Fates are privy to what purpose this may hold" placeholders.
 - When trying to interact with the locked Keepsake Cabinet in rooms between regions, Melinoë will now comment on needing to perform an incantation first.
 - Adjusted the volume balance of background music.
+- Balancing: Slightly reduced overall number of enemies per encounter in Tartarus, Asphodel and Elysium.
 - Fixed: For some background music tracks, the music could transition to a different section when it shouldn't yet, or miss transitioning sections when it should have.
 
 Other fixes and improvements:
