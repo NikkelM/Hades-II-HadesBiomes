@@ -19,6 +19,7 @@ Other fixes and improvements:
 - Fixed: When entering a free Chaos Gate forced by "Primordial Chaos" from Orpheus, Melinoë may comment on paying for it with health.
 - Fixed: If the "Use" button is spammed during loot pickups with Hermes or Chaos that would play custom dialogues, multiple dialogue and boon selection windows can appear.
 - Fixed: The game may crash in rare circumstances when one of the upcoming room rewards is a Family Dispute.
+- Fixed: Some trades in the new broker menu can show before having collected the required resources first.
 - Fixed: Localized dialogue texts do not correctly terminate _italicized_ text.
 <!--Releasenotes end-->
 

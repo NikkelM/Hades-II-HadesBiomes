@@ -323,6 +323,9 @@ local newBossResourceValues = {
 				Comparison = ">=",
 				Value = 3,
 			},
+			{
+				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceTartarus" },
+			},
 		},
 	},
 	{
@@ -337,6 +340,9 @@ local newBossResourceValues = {
 				Path = { "GameState", "LifetimeResourcesGained", "MixerNBoss" },
 				Comparison = ">=",
 				Value = 3,
+			},
+			{
+				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceTartarus" },
 			},
 		},
 	},
@@ -353,6 +359,9 @@ local newBossResourceValues = {
 				Comparison = ">=",
 				Value = 3,
 			},
+			{
+				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceAsphodel" },
+			},
 		},
 	},
 	{
@@ -367,6 +376,9 @@ local newBossResourceValues = {
 				Path = { "GameState", "LifetimeResourcesGained", "MixerOBoss" },
 				Comparison = ">=",
 				Value = 3,
+			},
+			{
+				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceAsphodel" },
 			},
 		},
 	},
@@ -384,6 +396,9 @@ local newBossResourceValues = {
 				Comparison = ">=",
 				Value = 3,
 			},
+			{
+				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceElysium" },
+			},
 		},
 	},
 	{
@@ -399,6 +414,9 @@ local newBossResourceValues = {
 				Comparison = ">=",
 				Value = 3,
 			},
+			{
+				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceElysium" },
+			},
 		},
 	},
 	-- Styx -> Tartarus/Summit
@@ -413,6 +431,9 @@ local newBossResourceValues = {
 			{
 				PathTrue = { "GameState", "ReachedTrueEnding" },
 			},
+			{
+				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceStyx" },
+			},
 		},
 	},
 	{
@@ -425,6 +446,9 @@ local newBossResourceValues = {
 		GameStateRequirements = {
 			{
 				PathTrue = { "GameState", "ReachedTrueEnding" },
+			},
+			{
+				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceStyx" },
 			},
 		},
 	},
@@ -466,7 +490,8 @@ mod.NewBrokerBossTradeCategory = {
 		}
 	},
 }
-mod.NewBrokerBossTradeCategory = game.ConcatTableValuesIPairs(mod.NewBrokerBossTradeCategory, newBossResourceValues) or {}
+mod.NewBrokerBossTradeCategory = game.ConcatTableValuesIPairs(mod.NewBrokerBossTradeCategory, newBossResourceValues) or
+		{}
 table.insert(game.ScreenData.MarketScreen.ItemCategories, mod.NewBrokerBossTradeCategory)
 -- #endregion
 
