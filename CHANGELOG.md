@@ -12,6 +12,7 @@ Other fixes and improvements:
 - Fixed: Dire Skullomats could be imbued with elite perks that do not make sense.
 - Fixed: The sound make by the barge during Asphodel room transitions sometimes does not stop when exiting the barge.
 - Fixed: The entrance camera pan during the miniboss fight against the Tiny Vermin pans to the vermin, to the player, then back to the vermin and to the player again.
+- Fixed: The entrance voicelines when Melinoë first meets Hades may sometimes not play.
 - Fixed: In very rare circumstances, no room reward may drop after defeating Hades, softlocking the player.
 - Fixed: If the "Use" button is spammed during loot pickups with Hermes or Chaos that would play custom dialogues, multiple dialogue and boon selection windows can appear.
 - Fixed: The game may crash in rare circumstances when one of the upcoming room rewards is a Family Dispute.

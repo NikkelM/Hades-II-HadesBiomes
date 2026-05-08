@@ -772,6 +772,7 @@ local roomReplacements = {
 		},
 
 		EnterVoiceLines = {
+			Queue = "Interrupt",
 			-- First meeting
 			{
 				PlayOnce = true,
