@@ -12,7 +12,8 @@ Other fixes and improvements:
 - Added a new minor prophecy if the [Nighmare Fear](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Nightmare_Fear/) mod is installed, tasking you with clearing the Nightmare Realm with each new Vow.
 - Balancing: The "Chthonic Knowledge" prophecy now requires unlocking more Codex entries before being completed.
 - Fixed: The timer does not pause when leaving Charon's boss arena.
-- Fixed: Dire Skullomats could be imbued with elite perks that do not make sense.
+- Fixed: Dire Skullomats can be imbued with elite perks that do not make sense.
+- Fixed: Enemies imbued with the "Linker" perk can try to link with other imbued enemies that are out of range of the laser.
 - Fixed: If a Brimstone or Voidstone is transformed by "Twilight Curse", their tether crystal remain visible around the sheep.
 - Fixed: The sound make by the barge during Asphodel room transitions sometimes does not stop when exiting the barge.
 - Fixed: The entrance camera pan during the miniboss fight against the Tiny Vermin pans to the vermin, to the player, then back to the vermin and to the player again.

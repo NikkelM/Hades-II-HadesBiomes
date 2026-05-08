@@ -2210,6 +2210,12 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region ELITE ATTRIBUTES
+	EliteBeams = {
+		AIData = {
+			-- To ensure they only try to link to enemies within range
+			TargetMaxDistance = 1100,
+		},
+	},
 	EliteClones = {
 		AIData = {
 			FireFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
