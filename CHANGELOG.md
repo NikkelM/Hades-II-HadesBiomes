@@ -12,6 +12,7 @@ Other fixes and improvements:
 - Balancing: The "Chthonic Knowledge" prophecy now requires unlocking more Codex entries before being completed.
 - Fixed: The timer does not pause when leaving Charon's boss arena.
 - Fixed: Dire Skullomats could be imbued with elite perks that do not make sense.
+- Fixed: If a Brimstone or Voidstone is transformed by "Twilight Curse", their tether crystal remain visible around the sheep.
 - Fixed: The sound make by the barge during Asphodel room transitions sometimes does not stop when exiting the barge.
 - Fixed: The entrance camera pan during the miniboss fight against the Tiny Vermin pans to the vermin, to the player, then back to the vermin and to the player again.
 - Fixed: The entrance voicelines when Melinoë first meets Hades may sometimes not play.
