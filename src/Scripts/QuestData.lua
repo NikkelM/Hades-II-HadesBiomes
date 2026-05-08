@@ -252,7 +252,7 @@ local newQuestData = {
 				Path = { "GameState", "ModsNikkelMHadesBiomesCodexEntriesUnlockedCache", },
 				CountOf = mod.CodexEntryNames,
 				Comparison = ">=",
-				Value = 15,
+				Value = 25,
 			},
 		},
 	},
