@@ -44,7 +44,7 @@ It is highly recommended that you complete the main story of the first Hades gam
 - Collect **30+** new resources specific to the new biomes, use them for unlocks in this and other mods (see section below), and trade them with the Broker.
 - Unlock **29** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
 - Decorate the Crossroads with **45+** new cosmetics, including new **Cauldrons**, **Arcana Card Backs**, and **Charms** inspired by Zagreus' companions from the first game.
-- Discover and complete **35+** new Minor Prophecies at the Fated List.
+- Discover and complete **40+** new Minor Prophecies at the Fated List.
 - Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
 - Discover and perform **20+** new incantations to unlock gameplay features and progress story events in Zagreus' Journey.
 - Unlock **six** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus, Orpheus, Megaera and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).

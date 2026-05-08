@@ -1851,6 +1851,12 @@ local newData = {
 	-- 	DisplayName =
 	-- 	"{!Icons.QuestProgressComplete} Defeat unrivaled {$Keywords.CharChronos}, {$Keywords.CharTyphon} and {$Keywords.CharHades} in a single Dream Dive",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestNightmareFearPactUpgrades",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Nightmarish Conditions ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, while under the influence of each of the alternate Vows from the {#Emph}Oath of the Unseen{#Prev}.",
+	-- },
 	-- #endregion
 
 	-- #region Chaos Trials/Bounties

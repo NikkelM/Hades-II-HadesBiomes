@@ -4,11 +4,12 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Added detailed description texts to all resources, replacing the generic "Not even the Fates are privy to what purpose this may hold" placeholders.
+- When trying to interact with the locked Keepsake Cabinet in rooms between regions, Melinoë will now comment on needing to perform an incantation first.
+- The text informing you that poison will wear off automatically in Elysium will now track Melinoë for better readability.
 
 Other fixes and improvements:
-- Added detailed description texts to all resources, replacing the generic "Not even the Fates are privy to what purpose this may hold" placeholders.
-- The text informing you that poison will wear off automatically in Elysium will now track Melinoë for better readability.
-- When trying to interact with the locked Keepsake Cabinet in rooms between regions, Melinoë will now comment on needing to perform an incantation first.
+- Added a new minor prophecy if the [Nighmare Fear](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Nightmare_Fear/) mod is installed, tasking you with clearing the Nightmare Realm with each new Vow.
 - Balancing: The "Chthonic Knowledge" prophecy now requires unlocking more Codex entries before being completed.
 - Fixed: The timer does not pause when leaving Charon's boss arena.
 - Fixed: Dire Skullomats could be imbued with elite perks that do not make sense.
