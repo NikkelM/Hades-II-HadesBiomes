@@ -6,15 +6,18 @@
 ### Patch Highlights:
 - Added detailed description texts to all resources, replacing the generic "Not even the Fates are privy to what purpose this may hold" placeholders.
 - When trying to interact with the locked Keepsake Cabinet in rooms between regions, Melinoë will now comment on needing to perform an incantation first.
-- The text informing you that poison will wear off automatically in Elysium will now track Melinoë for better readability.
+- Adjusted the volume balance of background music.
+- Fixed: For some background music tracks, the music could transition to a different section when it shouldn't yet, or miss transitioning sections when it should have.
 
 Other fixes and improvements:
+- The text informing you that poison will wear off automatically in Elysium will now track Melinoë for better readability.
 - Added a new minor prophecy if the [Nighmare Fear](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Nightmare_Fear/) mod is installed, tasking you with clearing the Nightmare Realm with each new Vow.
 - Balancing: The "Chthonic Knowledge" prophecy now requires unlocking more Codex entries before being completed.
 - Fixed: The timer does not pause when leaving Charon's boss arena.
 - Fixed: Dire Skullomats can be imbued with elite perks that do not make sense.
 - Fixed: Enemies imbued with the "Linker" perk can try to link with other imbued enemies that are out of range of the laser.
 - Fixed: If a Brimstone or Voidstone is transformed by "Twilight Curse", their tether crystal remain visible around the sheep.
+- Fixed: The song that Eurydice and Orpheus sing together in Asphodel does not begin again once it ends.
 - Fixed: The sound make by the barge during Asphodel room transitions sometimes does not stop when exiting the barge.
 - Fixed: The entrance camera pan during the miniboss fight against the Tiny Vermin pans to the vermin, to the player, then back to the vermin and to the player again.
 - Fixed: The entrance voicelines when Melinoë first meets Hades may sometimes not play.

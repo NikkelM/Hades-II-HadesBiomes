@@ -1,9 +1,11 @@
 -- #region Music
 game.MusicTrackData.Tartarus = {
-	-- TODO: Low volume on these compared to the rest?
-	{ Name = "/Music/MusicHadesReset_MC", },
-	{ Name = "/Music/MusicHadesReset2_MC", },
-	{ Name = "/Music/MusicHadesReset3_MC", },
+	-- "/Music/MusicHadesReset_MC"
+	{ Name = "{8c3b3234-2c7a-4fbe-ae8e-9847dddd200f}", },
+	-- "/Music/MusicHadesReset2_MC"
+	{ Name = "{8c3b3234-2c7a-4fbe-ae8e-9847dddd200f}", },
+	-- "/Music/MusicHadesReset3_MC"
+	{ Name = "{e0faac8e-9e80-47b9-948b-892e7bfdaf69}", },
 	-- "/Music/MusicTartarus4_MC"
 	{ Name = "{90ac2d7a-7b3a-4a41-a3de-5df2828bcfca}", },
 }
