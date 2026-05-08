@@ -4074,7 +4074,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_1414", Text = "...Fall.", },
 		},
 	},
-	-- #endrgion
+	-- #endregion
 	-- When entering an Erebus Gate/ShrineGate to a RoomChallenge
 	ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines = {
 		Queue = "Interrupt",
@@ -6831,5 +6831,17 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 		},
 	},
 	-- #endregion
+	ModsNikkelMHadesBiomes_GiftRackLockedVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.35,
+		GameStateRequirements = {},
+		Cooldowns = {
+			{ Name = "MelinoeAnyQuipSpeech" },
+		},
+		{ Cue = "/VO/Melinoe_5558",      Text = "Have to complete an incantation first..." },
+		{ Cue = "/VO/MelinoeField_1063", Text = "Should try an incantation back home..." },
+		{ Cue = "/VO/MelinoeField_1061", Text = "I'll have to use the cauldron first." },
+	},
 	-- #endregion
 }

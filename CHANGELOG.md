@@ -8,6 +8,7 @@
 Other fixes and improvements:
 - Added detailed description texts to all resources, replacing the generic "Not even the Fates are privy to what purpose this may hold" placeholders.
 - The text informing you that poison will wear off automatically in Elysium will now track Melinoë for better readability.
+- When trying to interact with the locked Keepsake Cabinet in rooms between regions, Melinoë will now comment on needing to perform an incantation first.
 - Fixed: The timer does not pause when leaving Charon's boss arena.
 - Fixed: Dire Skullomats could be imbued with elite perks that do not make sense.
 - Fixed: The sound make by the barge during Asphodel room transitions sometimes does not stop when exiting the barge.

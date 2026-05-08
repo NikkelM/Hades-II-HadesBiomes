@@ -398,12 +398,15 @@ game.HeroVoiceLines.ForbiddenShopItemCaughtVoiceLines = game.HeroVoiceLines.Forb
 -- Custom Voicelines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines
+
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_RunClearedVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_RunClearedVoiceLines
+
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines
+
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_DeathReturnVoiceLines = mod.HeroVoiceLines
@@ -419,6 +422,9 @@ game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyAdmirationVoiceLines = mod.Hero
 		.ModsNikkelMHadesBiomes_TrophyAdmirationVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyUnlockedVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_TrophyUnlockedVoiceLines
+
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_GiftRackLockedVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_GiftRackLockedVoiceLines
 -- #endregion
 
 -- #region Chaos Gate voiceline adjustments for Orpheus Chaos boon (free entry)
