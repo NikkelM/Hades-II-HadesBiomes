@@ -222,6 +222,8 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 end
 
 function mod.UseCharonStoreDiscount(consumableItem, args, user)
+	game.AddTimerBlock(game.CurrentRun, "LeaveCharonFight")
+	AddInputBlock({ Name = "LeaveCharonFight" })
 	game.UseConsumableItem(consumableItem, args, user)
 	game.wait(0.7)
 	game.thread(mod.LeaveCharonFight, consumableItem, args)
@@ -229,8 +231,6 @@ end
 
 function mod.LeaveCharonFight(eventSource, args)
 	args = args or {}
-	game.AddTimerBlock(game.CurrentRun, "LeaveCharonFight")
-	AddInputBlock({ Name = "LeaveCharonFight" })
 	game.wait(args.Delay or 1.0, game.RoomThreadName)
 
 	PlaySound({ Name = "/Leftovers/SFX/NomadSprint", DestinationId = game.CurrentRun.Hero.ObjectId })

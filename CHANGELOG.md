@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Fixed: If Melinoë dies while Theseus is starting to call a God to his aid, time briefly slows during the "Return to shadow now" animation.
 - Fixed: The lasers created by Hades' laser beam don't expire if a stage or phase transition is started while they fire.
 - Fixed: If a boss' attack is interrupted by a stage or phase transition, they will sometimes continue to perform some of its related actions, and can still damage the player.
+- Fixed: Melinoë can still move briefly after picking up the reward after beating Charon.
 - Fixed: Some bosses refer to Zagreus directly in contextual voicelines.
 - Fixed: Voicelines played by bosses that killed you are not correctly attributed to them in the line history in the inventory.
 - Fixed: If a fishing point is found on the Surface, a voiceline from Melinoë may play.
