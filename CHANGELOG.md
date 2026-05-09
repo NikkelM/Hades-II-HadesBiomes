@@ -4,12 +4,13 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Fixed: If a boss' attack is interrupted by a stage or phase transition, they will sometimes continue to perform some of its related actions, and can still damage the player.
 - Fixed: The sound made by Hades' laser beam attack is very loud.
-- Fixed: The lasers created by Hades' laser beam don't expire if a stage or phase transition is started while they fire.
 - Fixed: If Styx appears in a Dream Dive, the timer does not resume in the next biome.
 
 Other fixes and improvements:
 - Fixed: If Melinoë dies while Theseus is in the transition from his Chariot to foot, voicelines can play over each other or interrupt each other.
+- Fixed: The lasers created by Hades' laser beam don't expire if a stage or phase transition is started while they fire.
 - Fixed: Some bosses refer to Zagreus directly in contextual voicelines.
 - Fixed: Voicelines played by bosses that killed you are not correctly attributed to them in the line history in the inventory.
 <!--Releasenotes end-->

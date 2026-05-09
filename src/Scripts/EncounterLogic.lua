@@ -77,3 +77,15 @@ modutil.mod.Path.Wrap("GetEncounterActiveEnemyCount", function(base, encounter)
 
 	return enemyCount
 end)
+
+modutil.mod.Path.Wrap("BossStageTransition", function(base, boss, currentRun, aiStage)
+	if boss and boss.ModsNikkelMHadesBiomesIsModdedEnemy then
+		-- Stop the boss and end any weapon requests, e.g. Minotaur ram
+		Stop({ Id = boss.ObjectId })
+		EndRamWeapons({ Id = boss.ObjectId })
+		CancelWeaponFireRequests({ Id = boss.ObjectId })
+		SetUnitProperty({ Property = "InitiatedCollisionWeapon", Value = "null", DestinationId = boss.ObjectId })
+	end
+
+	return base(boss, currentRun, aiStage)
+end)
