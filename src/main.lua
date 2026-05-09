@@ -501,6 +501,7 @@ local function on_ready()
 			import "Scripts/EncounterLogic.lua"
 			import "Scripts/EventLogic.lua"
 			import "Scripts/EventPresentation.lua"
+			import "Scripts/FamiliarData.lua"
 			import "Scripts/GameStatsLogic.lua"
 			import "Scripts/GardenLogic.lua"
 			import "Scripts/GhostAdminLogic.lua"

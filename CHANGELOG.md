@@ -9,6 +9,7 @@
 - Fixed: If Styx appears in a Dream Dive, the timer does not resume in the next biome.
 
 Other fixes and improvements:
+- When confiding in Frinos, Melinoë can now refer to events in Zagreus' Journey runs.
 - Fixed: If Melinoë dies while Theseus is in the transition from his Chariot to foot, voicelines can play over each other or interrupt each other.
 - Fixed: If Melinoë dies while Theseus is starting to call a God to his aid, time briefly slows during the "Return to shadow now" animation.
 - Fixed: The lasers created by Hades' laser beam don't expire if a stage or phase transition is started while they fire.
