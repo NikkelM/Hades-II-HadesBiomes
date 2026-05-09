@@ -3950,7 +3950,6 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_1075",      Text = "{#Emph}By blood and darkness, let my will be done!" },
 			{ Cue = "/VO/MelinoeField_5192", Text = "OK. {#Emph}To the abyss of the subconscious I descend...!", },
 			{ Cue = "/VO/MelinoeField_5191", Text = "Again. {#Emph}To the abyss of the subconscious I descend...!", },
-			{ Cue = "/VO/Melinoe_4706",      Text = "{#Emph}The strongest dreams shall shatter if they must!" },
 		},
 	},
 	-- After defeating Hades, when opening the run clear scren
