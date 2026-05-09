@@ -451,6 +451,7 @@ function mod.HadesKillPresentation(unit, args)
 	mod.HarpyKillPresentation(unit, args)
 	game.wait(1.0)
 	RemoveInputBlock({ Name = "HadesKillPresentation" })
+	game.RemoveTimerBlock(game.CurrentRun, "HadesKillPresentation")
 	-- In Dream Dives, Hades might not be the final boss
 	if not game.CurrentRun.IsDreamRun then
 		mod.ModsNikkelMHadesBiomesOpenRunClearScreen()

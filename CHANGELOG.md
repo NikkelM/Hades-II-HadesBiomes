@@ -1,8 +1,17 @@
 # Changelog
 
-## v1.0.3
+## v1.0.4
 
 <!--Releasenotes start-->
+### Patch Highlights:
+- Fixed: If Styx appears in a Dream Dive, the timer does not resume in the next biome.
+
+Other fixes and improvements:
+
+<!--Releasenotes end-->
+
+## v1.0.3
+
 ### Patch Highlights:
 - Added detailed description texts to all resources, replacing the generic "Not even the Fates are privy to what purpose this may hold" placeholders.
 - When trying to interact with the locked Keepsake Cabinet in rooms between regions, Melinoë will now comment on needing to perform an incantation first.
@@ -28,7 +37,6 @@ Other fixes and improvements:
 - Fixed: The game may crash in rare circumstances when one of the upcoming room rewards is a Family Dispute.
 - Fixed: Some trades in the new broker menu can show before having collected the required resources first.
 - Fixed: Localized dialogue texts do not correctly terminate _italicized_ text.
-<!--Releasenotes end-->
 
 ## v1.0.2
 
