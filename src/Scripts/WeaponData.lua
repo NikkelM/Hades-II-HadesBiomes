@@ -2213,7 +2213,7 @@ local weaponModifications = {
 	EliteBeams = {
 		AIData = {
 			-- To ensure they only try to link to enemies within range
-			TargetMaxDistance = 1100,
+			TargetMaxDistance = 1000,
 		},
 	},
 	EliteClones = {

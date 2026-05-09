@@ -103,6 +103,7 @@ local hadesProjectilesModifications = {
 		DissipateGraphic = "null",
 		ImpactFx = "null",
 		DeathFx = "EnemyLaserEnd",
+		Range = 1500,
 	},
 	WretchAssassinRanged = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
