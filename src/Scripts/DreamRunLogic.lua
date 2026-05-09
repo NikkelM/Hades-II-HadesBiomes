@@ -6,10 +6,12 @@ modutil.mod.Path.Wrap("SelectNextDreamBiome", function(base, source, args)
 	args = args or {}
 	local nextRoomSet = nil
 	if game.IsEmpty(game.CurrentRun.DreamBiomePool) then
+		local moddedBiomesEligible = game.GameState.ModsNikkelMHadesBiomesClearedRunsCache >= 1
+
 		-- Fully override the initial pool creation to control starting eligibility of the new biomes
 		game.CurrentRun.DreamBiomePool = { "G", "H", "I", "O", "P", "Q" }
 		-- Modded biomes are only eligible once you've beaten at least one run
-		if game.GameState.ModsNikkelMHadesBiomesClearedRunsCache >= 1 then
+		if moddedBiomesEligible then
 			table.insert(game.CurrentRun.DreamBiomePool, "Asphodel")
 			table.insert(game.CurrentRun.DreamBiomePool, "Elysium")
 			table.insert(game.CurrentRun.DreamBiomePool, "Styx")
@@ -18,6 +20,10 @@ modutil.mod.Path.Wrap("SelectNextDreamBiome", function(base, source, args)
 		-- special handling for the first biome on the first dream run
 		if args.ForceHBiomeRequirements ~= nil and game.IsGameStateEligible(source, args.ForceHBiomeRequirements) then
 			nextRoomSet = game.RemoveValue(game.CurrentRun.DreamBiomePool, "H")
+		elseif moddedBiomesEligible and not game.GameState.ModsNikkelMHadesBiomes_ForcedElysiumDreamRun then
+			-- Force Elysium as the first biome on the first Dream Run with modded biomes eligible
+			game.GameState.ModsNikkelMHadesBiomes_ForcedElysiumDreamRun = true
+			nextRoomSet = game.RemoveValue(game.CurrentRun.DreamBiomePool, "Elysium")
 		else
 			nextRoomSet = game.RemoveRandomValue(game.CurrentRun.DreamBiomePool)
 		end
@@ -32,7 +38,7 @@ modutil.mod.Path.Wrap("SelectNextDreamBiome", function(base, source, args)
 		-- can't start in F, N or Tartarus, but they're eligible afterwards!
 		table.insert(game.CurrentRun.DreamBiomePool, "F")
 		table.insert(game.CurrentRun.DreamBiomePool, "N")
-		if game.GameState.ModsNikkelMHadesBiomesClearedRunsCache >= 1 then
+		if moddedBiomesEligible then
 			table.insert(game.CurrentRun.DreamBiomePool, "Tartarus")
 		end
 	else
