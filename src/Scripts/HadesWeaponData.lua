@@ -6244,7 +6244,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 					-- Enough!
 					{ Cue = "/VO/MegaeraField_0078" },
 					-- Run for it, little man!
-					{ Cue = "/VO/MegaeraField_0079" },
+					-- { Cue = "/VO/MegaeraField_0079" },
 					-- Have some of this...!
 					{ Cue = "/VO/MegaeraField_0081" },
 					-- I'll make you pay...!
@@ -6272,9 +6272,9 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 					-- I'll get you.
 					-- { Cue = "/VO/MegaeraField_0255" },
 					-- Pin him down!
-					{ Cue = "/VO/MegaeraField_0766", RequiredAnyActiveEnemyTypes = { "HeavyMelee", "LightRanged" } },
+					-- { Cue = "/VO/MegaeraField_0766", RequiredAnyActiveEnemyTypes = { "HeavyMelee", "LightRanged" } },
 					-- Get him!
-					{ Cue = "/VO/MegaeraField_0767", RequiredAnyActiveEnemyTypes = { "HeavyMelee", "LightRanged" } },
+					-- { Cue = "/VO/MegaeraField_0767", RequiredAnyActiveEnemyTypes = { "HeavyMelee", "LightRanged" } },
 				},
 				{
 					RandomRemaining = true,
@@ -6602,7 +6602,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 				-- Enough!
 				{ Cue = "/VO/MegaeraField_0078" },
 				-- Run for it, little man!
-				{ Cue = "/VO/MegaeraField_0079" },
+				-- { Cue = "/VO/MegaeraField_0079" },
 				-- You can't escape from me.
 				{ Cue = "/VO/MegaeraField_0080" },
 				-- Have some of this...!
@@ -6664,7 +6664,7 @@ mod.HadesWeaponData = mod.HadesWeaponData or {
 				-- Enough!
 				{ Cue = "/VO/MegaeraField_0078" },
 				-- Run for it, little man!
-				{ Cue = "/VO/MegaeraField_0079" },
+				-- { Cue = "/VO/MegaeraField_0079" },
 				-- You can't escape from me.
 				{ Cue = "/VO/MegaeraField_0080" },
 				-- Have some of this...!
