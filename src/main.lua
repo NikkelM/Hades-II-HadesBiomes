@@ -230,6 +230,7 @@ local function on_ready()
 			import "Game/Animations/Items_Harvest_VFX.sjson.lua"
 			DebugLogScriptImportProgress("Item Animation SJSON")
 
+			import "Game/Animations/Enemy_1Base_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"

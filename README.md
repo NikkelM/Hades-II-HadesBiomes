@@ -25,7 +25,7 @@ Check out the [Zagreus' Journey 1.0 Release Trailer](https://www.youtube.com/wat
 </div>
 
 <br>
-After installing the mod, a Chaos Gate will appear in the Crossroads, which will allow you to experience Zagreus' journey through the Underworld as Melinoë.
+After installing the mod and once you have met Chaos, a Chaos Gate will appear in the Crossroads, which will allow you to experience Zagreus' journey through the Underworld as Melinoë.
 
 It is highly recommended that you complete the main story of the first Hades game before playing with this mod, as not all story events are included.
 

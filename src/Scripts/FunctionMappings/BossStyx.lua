@@ -232,6 +232,7 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	mod.DestroyHadesFightObstacles()
 	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId }, BlockDeathWeapons = true })
 	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" }, ExcludeNames = { "HadesCerberusAssist" } })
+	mod.CleanupHadesBeams(boss)
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 
 	SetAnimation({ Name = "HadesBattleKnockDown", DestinationId = boss.ObjectId })
@@ -362,6 +363,7 @@ function mod.HadesKillPresentation(unit, args)
 	mod.DestroyHadesFightObstacles()
 	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { unit.ObjectId }, BlockDeathWeapons = true })
 	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow", "HadesReverseDarkness" } })
+	mod.CleanupHadesBeams(unit)
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignette" })
 	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignetteHold" })
@@ -1359,6 +1361,25 @@ function mod.ModsNikkelMHadesBiomesHadesPeacefulVictory()
 	game.CurrentRun.VictoryMessage = "ModsNikkelMHadesBiomes_RunClear_ClearNumTen"
 end
 
+function mod.CleanupHadesBeams(boss)
+	if boss.ModsNikkelMHadesBiomes_BeamLoopSoundId then
+		StopSound({ Id = boss.ModsNikkelMHadesBiomes_BeamLoopSoundId, Duration = 0.2 })
+		boss.ModsNikkelMHadesBiomes_BeamLoopSoundId = nil
+	end
+	ExpireProjectiles({ Names = { "HadesCastBeam", "HadesCastBeamNoTracking", "HadesRadialPush" } })
+	if boss.DumbFireThreadName then
+		game.killTaggedThreads(boss.DumbFireThreadName)
+	end
+	if boss.ModsNikkelMHadesBiomes_BeamAnchors then
+		for _, anchorId in ipairs(boss.ModsNikkelMHadesBiomes_BeamAnchors) do
+			if anchorId then
+				Destroy({ Id = anchorId })
+			end
+		end
+		boss.ModsNikkelMHadesBiomes_BeamAnchors = nil
+	end
+end
+
 -- Custom function for Hades' HadesCastBeam attacks, to allow beam rotation while honouring BarrelLength
 function mod.ModsNikkelMHadesBiomesHadesCastBeamFire(enemy, aiData, currentRun, args)
 	local enemyId = enemy.ObjectId
@@ -1391,6 +1412,12 @@ function mod.ModsNikkelMHadesBiomesHadesCastBeamFire(enemy, aiData, currentRun, 
 		ApplyEffect(dampenEffect)
 		table.insert(enemy.ClearEffectsOnHitStun, dampenEffect.EffectName)
 	end
+
+	-- Play the loop sound that was removed from HadesLaser as it is too loud when played from the sjson directly
+	local beamLoopSoundId = PlaySound({ Name = "/SFX/Enemy Sounds/Hades/HadesLaserBlastLoop", Id = enemyId })
+	-- Store on the enemy so phase transitions and kill can clean up
+	enemy.ModsNikkelMHadesBiomes_BeamLoopSoundId = beamLoopSoundId
+	enemy.ModsNikkelMHadesBiomes_BeamAnchors = anchors
 
 	for i = 1, numProjectiles do
 		local indexMultiplier = i - math.ceil(numProjectiles / 2)
@@ -1463,14 +1490,9 @@ function mod.ModsNikkelMHadesBiomesHadesCastBeamFire(enemy, aiData, currentRun, 
 	-- Wait until the attack has completed firing
 	game.wait(game.CalcEnemyWait(enemy, fireDuration), enemy.AIThreadName)
 
+	mod.CleanupHadesBeams(enemy)
+
 	if aiData.FireRotationDampening ~= nil then
 		ClearEffect({ Id = enemy.ObjectId, Name = enemy.Name .. "FireRotationDampening" })
-	end
-
-	-- Clean up the anchors after the attack has ended
-	for _, anchorId in ipairs(anchors) do
-		if anchorId then
-			Destroy({ Id = anchorId })
-		end
 	end
 end

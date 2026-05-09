@@ -4,6 +4,8 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Fixed: The sound made by Hades' laser beam attack is very loud.
+- Fixed: The lasers created by Hades' laser beam don't expire if a stage or phase transition is started while they fire.
 - Fixed: If Styx appears in a Dream Dive, the timer does not resume in the next biome.
 
 Other fixes and improvements:
