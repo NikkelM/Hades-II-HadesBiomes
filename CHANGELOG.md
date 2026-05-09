@@ -4,6 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- The Chaos Gate in the Training Grounds can now also appear before having met Chaos the first time.
 - Fixed: If a boss' attack is interrupted by a stage or phase transition, they will sometimes continue to perform some of its related actions, and can still damage the player.
 - Fixed: The sound made by Hades' laser beam attack is very loud.
 - Fixed: If Styx appears in a Dream Dive, the timer does not resume in the next biome.

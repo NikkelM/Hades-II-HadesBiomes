@@ -185,6 +185,9 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		elseif metadata.InsertAfterNarrativeTextLine ~= nil then
 			insertAfterLine(priorityTable, metadata.InsertAfterNarrativeTextLine, entry, key,
 				metadata.CreateNewPriorityGroup)
+		elseif metadata.InsertAtFirstPriority ~= nil then
+			-- Insert at the very top of the priorityTable
+			table.insert(priorityTable, 1, entry)
 		else
 			mod.DebugPrint("No insertion target specified for " .. key .. " in " .. narrativeDataKey, 1)
 			return

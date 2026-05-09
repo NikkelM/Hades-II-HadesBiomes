@@ -39,18 +39,12 @@ table.insert(game.HubRoomData.Hub_Main.OnLoadEvents, 1, endingPortraitOnLoadEven
 -- #region Chaos Gate/Run start
 table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 	FunctionName = _PLUGIN.guid .. "." .. "SpawnHadesRunStartDoor",
-	GameStateRequirements = {
-		{
-			-- Can only show after you have met Chaos, both for narrative consistency, and to fix the Chaos boon in RoomOpening playing ChaosFirstPickUp
-			PathTrue = { "GameState", "TextLinesRecord", "ChaosFirstPickUp" },
-		},
-	},
 })
 
 function mod.SpawnHadesRunStartDoor(source, args)
 	if not mod.HiddenConfig or not mod.HiddenConfig.IsValidInstallation then
 		mod.DebugPrint("Not spawning the Chaos Gate as IsValidInstallation is false", 2)
-		mod.PrintTable(mod.HiddenConfig)
+		mod.DebugPrint(mod.HiddenConfig, 2)
 		return
 	end
 
