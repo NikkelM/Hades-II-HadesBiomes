@@ -111,6 +111,8 @@ end)
 
 modutil.mod.Path.Wrap("DeathPresentation", function(base, currentRun, killer, args)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		game.killTaggedThreads("TheseusChariotRuined")
+
 		-- Stop any animations/destroy any IDs that we marked as such. E.g. Alecto rage meter or door reward front animations
 		local stopAnimationsOnDeath = currentRun.CurrentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath or {}
 		if not game.IsEmpty(stopAnimationsOnDeath) then

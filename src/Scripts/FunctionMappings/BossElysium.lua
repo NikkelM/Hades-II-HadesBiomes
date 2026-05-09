@@ -402,7 +402,7 @@ function mod.TheseusChariotDismount(boss, currentRun, aiStage)
 	boss.Dismounted = true
 	boss.ChainedWeapon = nil
 	game.thread(game.LastKillPresentation, boss)
-	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines, true)
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines, true, nil, { ThreadName = "TheseusChariotRuined" })
 
 	game.thread(game.CrowdReactionPresentation,
 		{ AnimationNames = { "StatusIconEmbarrassed", "StatusIconOhBoy" }, Sound = "/SFX/TheseusCrowdBoo", ReactionChance = 0.1, Delay = 1, Requirements = { RequiredRoom = "C_Boss01" } })

@@ -2121,6 +2121,12 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		PreLineWait = 0.1,
 		CooldownTime = 40,
 		CooldownName = "TheseusWrathLinesPlayedRecently",
+		GameStateRequirements = {
+			{
+				-- Don't interrupt DeathPresentation
+				PathFalse = { "CurrentRun", "Hero", "IsDead" },
+			},
+		},
 		-- Olympians! Aid us against this fiend!
 		{ Cue = "/VO/Theseus_0088", RequiredAnyUnitAlive = { "Minotaur", "Minotaur2" }, },
 		-- Olympians, I call upon your aid!
