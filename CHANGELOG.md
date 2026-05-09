@@ -13,6 +13,7 @@ Other fixes and improvements:
 - Fixed: The lasers created by Hades' laser beam don't expire if a stage or phase transition is started while they fire.
 - Fixed: Some bosses refer to Zagreus directly in contextual voicelines.
 - Fixed: Voicelines played by bosses that killed you are not correctly attributed to them in the line history in the inventory.
+- Fixed: If a fishing point is found on the Surface, a voiceline from Melinoë may play.
 <!--Releasenotes end-->
 
 ## v1.0.3

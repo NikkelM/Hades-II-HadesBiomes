@@ -339,6 +339,7 @@ game.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines = g
 		.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines
 
+-- #region Hades II GlobalVoiceLines modifications
 -- Add modded boss rooms to SeleneVictoryVoiceLines OrRequirements
 local seleneVictoryBossRoomRequirements = game.GlobalVoiceLines.SeleneVictoryVoiceLines.GameStateRequirements
 		.OrRequirements
@@ -349,13 +350,22 @@ for _, room in ipairs({ "A_Boss01", "A_Boss02", "A_Boss03", "Y_Boss01", "D_Boss0
 	table.insert(seleneVictoryBossRoomRequirements[2][1].IsAny, room)
 end
 
--- Block Melinoe's RecordRunDepthVoiceLines on the Surface (player is Zagreus there)
+-- Block RecordRunDepthVoiceLines on the Surface (player is Zagreus there)
 if game.GlobalVoiceLines.RecordRunDepthVoiceLines then
 	table.insert(game.GlobalVoiceLines.RecordRunDepthVoiceLines.GameStateRequirements, {
 		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
 		IsNone = { "Surface" },
 	})
 end
+
+-- Block HarvestPointFoundVoiceLines on the Surface
+if game.GlobalVoiceLines.HarvestPointFoundVoiceLines then
+	table.insert(game.GlobalVoiceLines.HarvestPointFoundVoiceLines.GameStateRequirements, {
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsNone = { "Surface" },
+	})
+end
+-- #endregion
 
 -- #region Modifications to vanilla voiceline requirements
 -- Also prevents CombatResolved equivalent follow-up voiceline (Death to Chronos)
