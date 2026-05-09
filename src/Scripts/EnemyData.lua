@@ -1105,6 +1105,14 @@ local enemyModifications = {
 		-- Polyphemus EM Health: 10200
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 11000,
+		CauseOfDeathVoiceLines = {
+			Queue = "Interrupt",
+			[1] = { Source = { LineHistoryName = "Harpy" } },
+			[2] = { Source = { LineHistoryName = "Harpy" } },
+			[3] = { Source = { LineHistoryName = "Harpy" } },
+			[4] = { Source = { LineHistoryName = "Harpy" } },
+			[5] = { Source = { LineHistoryName = "Harpy" } },
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12000,
 		},
@@ -1222,6 +1230,13 @@ local enemyModifications = {
 		-- Base Health: 4600
 		-- EM Health: 4900
 		MaxHealth = 11100,
+		CauseOfDeathVoiceLines = {
+			Queue = "Interrupt",
+			[1] = { Source = { LineHistoryName = "Harpy2" } },
+			[2] = { Source = { LineHistoryName = "Harpy2" } },
+			[3] = { Source = { LineHistoryName = "Harpy2" } },
+			[4] = { Source = { LineHistoryName = "Harpy2" } },
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12200,
 		},
@@ -1307,6 +1322,10 @@ local enemyModifications = {
 		-- Base Health: 5200
 		-- EM Health: 5600
 		MaxHealth = 11400,
+		CauseOfDeathVoiceLines = {
+			Queue = "Interrupt",
+			[1] = { Source = { LineHistoryName = "Harpy3" } },
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12400,
 		},
@@ -2268,6 +2287,10 @@ local enemyModifications = {
 		-- Heracles Health: 34000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 26500,
+		CauseOfDeathVoiceLines = {
+			Queue = "Interrupt",
+			[1] = { Source = { LineHistoryName = "Minotaur" } },
+		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
 			-- Miniboss fight: use full name (unless Dream Run)
@@ -2449,6 +2472,12 @@ local enemyModifications = {
 	Theseus = {
 		-- Base Health: 9000
 		MaxHealth = 20000,
+		CauseOfDeathVoiceLines = {
+			Queue = "Interrupt",
+			[1] = { Source = { LineHistoryName = "Theseus" } },
+			[2] = { Source = { LineHistoryName = "Theseus" } },
+			[3] = { Source = { LineHistoryName = "Theseus" } },
+		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
 			{
@@ -2825,6 +2854,14 @@ local enemyModifications = {
 		-- Typhon Health: 65000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 30000,
+		CauseOfDeathVoiceLines = {
+			Queue = "Interrupt",
+			[1] = { Source = { LineHistoryName = "Hades" } },
+			[2] = { Source = { LineHistoryName = "Hades" } },
+			[3] = { Source = { LineHistoryName = "Hades" } },
+			[4] = { Source = { LineHistoryName = "Hades" } },
+			[5] = { Source = { LineHistoryName = "Hades" } },
+		},
 		ShrineDataOverwrites = {
 			MaxHealth = 36000,
 		},
@@ -3016,6 +3053,10 @@ local enemyModifications = {
 	Charon = {
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 21000,
+		CauseOfDeathVoiceLines = {
+			Queue = "Interrupt",
+			[1] = { Source = { LineHistoryName = "Charon" } },
+		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
 			{

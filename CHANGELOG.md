@@ -9,7 +9,8 @@
 - Fixed: If Styx appears in a Dream Dive, the timer does not resume in the next biome.
 
 Other fixes and improvements:
-- Removed additional contextual voicelines where bosses refer to Zagreus directly.
+- Fixed: Some bosses refer to Zagreus directly in contextual voicelines.
+- Fixed: Voicelines played by bosses that killed you are not correctly attributed to them in the line history in the inventory.
 <!--Releasenotes end-->
 
 ## v1.0.3
