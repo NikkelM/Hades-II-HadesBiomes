@@ -19,7 +19,7 @@ Other fixes and improvements:
 - Fixed: Enemies imbued with the "Linker" perk can try to link with other imbued enemies that are out of range of the laser.
 - Fixed: If a Brimstone or Voidstone is transformed by "Twilight Curse", their tether crystal remain visible around the sheep.
 - Fixed: The song that Eurydice and Orpheus sing together in Asphodel does not begin again once it ends.
-- Fixed: The sound make by the barge during Asphodel room transitions sometimes does not stop when exiting the barge.
+- Fixed: The sound made by the barge during Asphodel room transitions sometimes does not stop when exiting the barge.
 - Fixed: The entrance camera pan during the miniboss fight against the Tiny Vermin pans to the vermin, to the player, then back to the vermin and to the player again.
 - Fixed: The entrance voicelines when Melinoë first meets Hades may sometimes not play.
 - Fixed: In very rare circumstances, no room reward may drop after defeating Hades, softlocking the player.
