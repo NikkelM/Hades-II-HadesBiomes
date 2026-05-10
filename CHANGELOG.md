@@ -6,11 +6,11 @@
 ### Patch Highlights:
 - The Chaos Gate in the Training Grounds can now also appear before having met Chaos the first time.
 - The first time that Zagreus' Journey regions are eligible in Dream Dives, Elysium will appear as the guaranteed first region (after you have already completed at least one total Dream Dive).
+- Added two new sets of Arcana card backs, depicting the various bosses and gods you encounter in Zagreus' Journey.
 - Fixed: The sound made by Hades' laser beam attack is very loud.
 - Fixed: If Styx appears in a Dream Dive, the timer does not resume in the next biome.
 
 Other fixes and improvements:
-- Added a new set of Arcana card backs, depicting the various bosses you encounter in Zagreus' Journey.
 - When confiding in Frinos, Melinoë can now refer to events in Zagreus' Journey runs.
 - Added a new configuration option to hide the "Poison will wear off automatically!" message that appears when poisoned in Elysium, called `z_HideElysiumPoisonMessage`.
 - Balancing: Enemies will now wake up and attack the player faster after entering a room
