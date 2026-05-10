@@ -8,14 +8,15 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		return
 	end
 
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.HadesExitDoorObstacleNames[exitDoor.Name] and not args.ReUseIds then
-		local room = exitDoor.Room
-		chosenRewardType = chosenRewardType or room.ChosenRewardType
+	local room = exitDoor.Room
 
-		-- If the Chaos curse that hides room reward previews is active, clear the RewardPreviewOverride on story rooms so it doesn't override the hidden preview
-		if room and room.ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse and game.HasHeroTraitValue("HiddenRoomReward") then
-			room.RewardPreviewOverride = nil
-		end
+	-- If the Chaos curse that hides room reward previews is active, clear the RewardPreviewOverride on story rooms so it doesn't override the hidden preview
+	if room and room.ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse and game.HasHeroTraitValue("HiddenRoomReward") then
+		room.RewardPreviewOverride = nil
+	end
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.HadesExitDoorObstacleNames[exitDoor.Name] and not args.ReUseIds then
+		chosenRewardType = chosenRewardType or room.ChosenRewardType
 
 		local metaProgressRewardTypes = {
 			"MetaCurrencyDrop",
