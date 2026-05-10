@@ -20,7 +20,8 @@ Other fixes and improvements:
 - Fixed: "Travel Deal" does not restock the first bought shop item in Styx.
 - Fixed: If a Gigantic Vermin dies while transformed by "Twilight Curse", it still creates a poison puddle.
 - Fixed: If the Vow of Frenzy is turned on and Hades is phased very quickly after the fight starts, he may not leave his invulnerability phase and softlock the player.
-- Fixed: The lasers created by Hades' laser beam don't expire if a stage or phase transition is started while they fire.
+- Fixed: The lasers creates by Hades' laser beam attack can lock onto the player just as the attack ends.
+- Fixed: The lasers created by Hades' laser beam attack don't expire if a stage or phase transition is started while they fire.
 - Fixed: If a boss' attack is interrupted by a stage or phase transition, they will sometimes continue to perform some of its related actions, and can still damage the player.
 - Fixed: Melinoë can still move briefly after picking up the reward after beating Charon.
 - Fixed: Some bosses refer to Zagreus directly in contextual voicelines.
