@@ -2786,6 +2786,7 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		IgnoreSprintPhasingStasisStun = true,
+		WeaponOptions = { "SatyrMinigun", "SatyrDash" },
 	},
 	RatThugMiniboss = {
 		Health = 1800,

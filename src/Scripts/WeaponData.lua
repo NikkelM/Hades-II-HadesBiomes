@@ -1701,6 +1701,9 @@ local weaponModifications = {
 	},
 	SatyrDash = {
 		AIData = {
+			ForceFirst = true,
+			-- Only fire naturally at the start, then only through PreAttackDash
+			MinAttacksBetweenUse = 99999,
 			ImmuneToProjectileSlow = true,
 		},
 	},
