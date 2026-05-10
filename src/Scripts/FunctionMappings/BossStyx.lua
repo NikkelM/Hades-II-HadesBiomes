@@ -471,8 +471,8 @@ function mod.HadesKillPresentation(unit, args)
 	-- In Dream Dives, Hades might not be the final boss
 	if not game.CurrentRun.IsDreamRun then
 		mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
+		game.CurrentRun.ActiveBiomeTimer = false
 	end
-	game.CurrentRun.ActiveBiomeTimer = false
 	game.CurrentRun.CurrentRoom.Encounter.BossKillPresentation = false
 	game.thread(game.CheckQuestStatus, { Silent = true })
 

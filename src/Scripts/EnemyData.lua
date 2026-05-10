@@ -2934,6 +2934,7 @@ local enemyModifications = {
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "HadesKillPresentation",
 		OnDeathFunctionArgs = {
 			IsBiomeBoss = true,
+			AddInterBiomeTimerBlock = true,
 		},
 		KillEnemyEvents = {
 			{
