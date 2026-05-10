@@ -140,8 +140,8 @@ function mod.StartStyxPoisonPresentation(unit)
 			game.thread(game.DirectionHintPresentation, { ObjectId = fountainId }, { Cooldown = 0 })
 			game.thread(game.InCombatText, fountainId, "UsePoisonCure", 1.75)
 		end
-	elseif game.CurrentRun.CurrentRoom.Encounter and game.CurrentRun.CurrentRoom.Encounter.ModsNikkelMHadesBiomesUnitTimesPoisoned == 1 then
-		-- We are not in Styx, and it's the first time we've been poisoned in this encounter
+	elseif game.CurrentRun.CurrentRoom.Encounter and game.CurrentRun.CurrentRoom.Encounter.ModsNikkelMHadesBiomesUnitTimesPoisoned == 1 and not config.z_HideElysiumPoisonMessage then
+		-- We are not in Styx, it's the first time we've been poisoned in this encounter, and the message is not disabled through the config
 		game.thread(game.InCombatTextArgs, {
 			TargetId = game.CurrentRun.Hero.ObjectId,
 			Text = "ModsNikkelMHadesBiomesPoisonedNoCureHint",

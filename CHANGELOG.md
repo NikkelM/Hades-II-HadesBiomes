@@ -12,6 +12,7 @@
 Other fixes and improvements:
 - Added a new set of Arcana card backs, depicting the various bosses you encounter in Zagreus' Journey.
 - When confiding in Frinos, Melinoë can now refer to events in Zagreus' Journey runs.
+- Added a new configuration option to hide the "Poison will wear off automatically!" message that appears when poisoned in Elysium, called `z_HideElysiumPoisonMessage`.
 - Balancing: Enemies will now wake up and attack the player faster after entering a room
 - Fixed: Many enemy attacks can be accidentally blocked by certain aspects.
 - Fixed: If Melinoë dies while Theseus is in the transition from his Chariot to foot, voicelines can play over each other or interrupt each other.
