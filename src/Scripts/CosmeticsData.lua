@@ -670,7 +670,7 @@ local mainHubAreaCosmetics = {
 		},
 		FlavorText = {
 			en =
-			"Chaos does as it pleases, and though it is in it's essence the opposite of structure, these pillars with their endless patterns seem to embody both concepts at once.",
+			"Chaos does as they please, and though they are in their essence the opposite of structure, these pillars with their endless patterns seem to embody both concepts at once.",
 		},
 		CosmeticsGroup = "Cosmetic_CauldronPillars01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Serpentine",
@@ -2056,6 +2056,11 @@ CosmeticsAPI.RegisterCardBackPack({
 			Comparison = ">=",
 			Value = 3,
 		},
+		{
+			Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+			Comparison = ">=",
+			Value = 1,
+		},
 	},
 	InsertAfterCosmetic = "Cosmetic_CardDeck08",
 	PreRevealVoiceLines = {
@@ -2098,6 +2103,72 @@ CosmeticsAPI.RegisterCardBack({
 	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Biomes\\Deck_Styx",
 	DeckArtMouseoverPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Biomes\\DeckMouseover_Styx",
 	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBiomesStyx",
+})
+-- #endregion
+-- #region Bosses Pack
+CosmeticsAPI.RegisterCardBackPack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
+	Name = {
+		en = "Arcana, Antagonistic",
+	},
+	Description = {
+		en =
+		"{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}4 {#Prev}alternate themes, featuring some of the Underworld's most notorious safe-keepers.",
+	},
+	FlavorText = {
+		en =
+		"Escaping the Underworld, while not impossible, is made that much more difficult through its various wardens.",
+	},
+	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Arcana\\Arcana_Bosses_Icon",
+	Cost = {
+		CosmeticsPoints = 2700,
+		ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+		ModsNikkelMHadesBiomes_CropStyx = 2,
+		ModsNikkelMHadesBiomes_OreElysium = 5,
+
+	},
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+		},
+		{
+			Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+			Comparison = ">=",
+			Value = 4,
+		},
+	},
+	InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes",
+})
+
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses_Furies",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\Deck_Furies",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\DeckMouseover_Furies",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBossesFuries",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses_Hydra",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\Deck_Hydra",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\DeckMouseover_Hydra",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBossesHydra",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses_Champions",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\Deck_Champions",
+	DeckArtMouseoverPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\DeckMouseover_Champions",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBossesChampions",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses_Hades",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\Deck_Hades",
+	DeckArtMouseoverPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\DeckMouseover_Hades",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBossesHades",
 })
 -- #endregion
 -- #endregion
