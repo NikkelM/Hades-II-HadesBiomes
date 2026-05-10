@@ -273,7 +273,7 @@ function mod.ProcessPickup(enemy, pickupTarget)
 			})
 		end
 		game.thread(game.PlayVoiceLines, oldEnemy.RespawnedVoiceLines, true)
-		mod.RemoveOnDeathWeapons(oldEnemy)
+		oldEnemy.OnDeathWeapons = nil
 		oldEnemy.ModsNikkelMHadesBiomesSkipDeathAnimation = true
 		game.Kill(oldEnemy)
 	end
@@ -292,8 +292,4 @@ function mod.ProcessPickup(enemy, pickupTarget)
 	if pickupData.AttachAnimation ~= nil then
 		CreateAnimation({ Name = pickupData.AttachAnimation, DestinationId = enemy.ObjectId })
 	end
-end
-
-function mod.RemoveOnDeathWeapons(unit)
-	unit.OnDeathWeapons = nil
 end

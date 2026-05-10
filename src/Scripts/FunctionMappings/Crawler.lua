@@ -92,6 +92,10 @@ end
 function mod.ModsNikkelMHadesBiomesOnDeathFireProjectile(unit, args)
 	args = args or {}
 
+	if unit and unit.ModsNikkelMHadesBiomesDiedWhilePolymorphed then
+		return
+	end
+
 	if args.FunctionName then
 		game.thread(game.CallFunctionName, args.FunctionName, unit)
 	end
