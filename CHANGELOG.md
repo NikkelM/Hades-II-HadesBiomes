@@ -18,6 +18,7 @@ Other fixes and improvements:
 - Fixed: If Melinoë dies while Theseus is in the transition from his Chariot to foot, voicelines can play over each other or interrupt each other.
 - Fixed: If Melinoë dies while Theseus is starting to call a God to his aid, time briefly slows during the "Return to shadow now" animation.
 - Fixed: "Travel Deal" does not restock the first bought shop item in Styx.
+- Fixed: Rerolling an upgraded reward door in Styx can reroll it into the same reward again immediately.
 - Fixed: The Dire Satyr Cultist attacks immediately after entering its room, instead of first moving around for a bit.
 - Fixed: If a Gigantic Vermin dies while transformed by "Twilight Curse", it still creates a poison puddle.
 - Fixed: If the Vow of Frenzy is turned on and Hades is phased very quickly after the fight starts, he may not leave his invulnerability phase and softlock the player.
