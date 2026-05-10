@@ -51,8 +51,6 @@ mod.UpdateField(encounterDataAsphodel, "Challenge", "TimeChallenge", { "InheritF
 -- Can still use modifications if the modified table did not exist beforehand
 local encounterReplacements = {
 	GeneratedAsphodel = {
-		-- To ensure we are not attacked while still running the entrance animation
-		PreSpawnAIWakeDelay = 1.6,
 		-- The original from Hades is 5.0
 		ActiveEnemyCapBase = 6.2,
 		-- The original from Hades is 170

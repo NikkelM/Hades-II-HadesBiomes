@@ -60,8 +60,6 @@ local encounterReplacements = {
 		BlockAthenaEncounterKeepsake = false,
 	},
 	GeneratedTartarus = {
-		-- To ensure we are not attacked while still running the entrance animation
-		PreSpawnAIWakeDelay = 1,
 		-- The original from Hades is 2.3
 		ActiveEnemyCapBase = 4.3,
 		-- The original from Hades is 30
