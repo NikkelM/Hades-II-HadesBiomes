@@ -42,12 +42,6 @@ table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 })
 
 function mod.SpawnHadesRunStartDoor(source, args)
-	if not mod.HiddenConfig or not mod.HiddenConfig.IsValidInstallation then
-		mod.DebugPrint("Not spawning the Chaos Gate as IsValidInstallation is false", 2)
-		mod.DebugPrint(mod.HiddenConfig, 2)
-		return
-	end
-
 	-- Run start door for the underworld
 	local spawnId = 420947
 
