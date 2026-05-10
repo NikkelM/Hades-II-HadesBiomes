@@ -27,6 +27,7 @@ Other fixes and improvements:
 - Fixed: Some bosses refer to Zagreus directly in contextual voicelines.
 - Fixed: Voicelines played by bosses that killed you are not correctly attributed to them in the line history in the inventory.
 - Fixed: If a fishing point is found on the Surface, a voiceline from Melinoë may play.
+- Fixed: A faint green light shows below the player model on the Surface.
 <!--Releasenotes end-->
 
 ## v1.0.3
