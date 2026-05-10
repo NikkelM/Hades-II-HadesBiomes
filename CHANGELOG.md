@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Fixed: Many enemy attacks can be accidentally blocked by certain aspects.
 - Fixed: If Melinoë dies while Theseus is in the transition from his Chariot to foot, voicelines can play over each other or interrupt each other.
 - Fixed: If Melinoë dies while Theseus is starting to call a God to his aid, time briefly slows during the "Return to shadow now" animation.
+- Fixed: If the Vow of Frenzy is turned on and Hades is phased very quickly after the fight starts, he may not leave his invulnerability phase and softlock the player.
 - Fixed: The lasers created by Hades' laser beam don't expire if a stage or phase transition is started while they fire.
 - Fixed: If a boss' attack is interrupted by a stage or phase transition, they will sometimes continue to perform some of its related actions, and can still damage the player.
 - Fixed: Melinoë can still move briefly after picking up the reward after beating Charon.

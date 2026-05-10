@@ -149,6 +149,19 @@ function mod.BossIntroHades(eventSource, args)
 		eventSource.BlockHadesAssistTraits = true
 	end
 
+	-- Scale the AI setup delay and intro camera timings by the speed shrine multiplier
+	local hadesBoss = game.ActiveEnemies[510857]
+	if hadesBoss and eventSource.Encounter.Name ~= "BossHadesPeaceful" then
+		local speedMult = hadesBoss.SpeedMultiplier or 1
+		hadesBoss.AISetupDelay = hadesBoss.AISetupDelay / speedMult
+		if args.UnlockDelay then
+			args.UnlockDelay = args.UnlockDelay / speedMult
+		end
+		if args.DurationIn then
+			args.DurationIn = args.DurationIn / speedMult
+		end
+	end
+
 	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 	-- Custom: To re-enable weapons disabled in RoomEntranceHades
 	game.SessionMapState.WeaponsDisabled = false
@@ -163,10 +176,11 @@ end
 
 function mod.HadesDreamRunIntro(source, args)
 	mod.StartFinalBossRoomMusic()
+	args.SkipWaitForInitialPan = true
 	AngleTowardTarget({ Id = source.ObjectId, DestinationId = 40000 })
 	SetAnimation({ Name = "HadesBattleIntro", DestinationId = source.ObjectId })
 	-- A little higher to line up with the camera movements
-	source.AISetupDelay = 6.5
+	source.AISetupDelay = 6.5 / (source.SpeedMultiplier or 1)
 end
 
 function mod.StartFinalBossRoomIntroMusic()

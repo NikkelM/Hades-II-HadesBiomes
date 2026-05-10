@@ -20,23 +20,49 @@ function mod.BossIntroElysium(eventSource, args)
 	-- In case of there being no music after certain room chains, resume or start new music
 	mod.SafetyResumeBossMusic()
 
-	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args[shrineLevel])
+	-- Scale the AI setup delay and intro camera timings by the speed shrine multiplier
+	local introArgs = args[shrineLevel]
+	if introArgs and introArgs.SetupBossIds then
+		for _, id in ipairs(introArgs.SetupBossIds) do
+			local boss = game.ActiveEnemies[id]
+			if boss then
+				local speedMult = boss.SpeedMultiplier or 1
+				boss.AISetupDelay = boss.AISetupDelay / speedMult
+			end
+		end
+		if introArgs.UnlockDelay then
+			local speedMult = game.MetaUpgradeData.EnemySpeedShrineUpgrade.ChangeValue
+			introArgs.UnlockDelay = introArgs.UnlockDelay / speedMult
+		end
+	end
+
+	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, introArgs)
 
 	game.EnemyData.Minotaur.PortraitSwapMap = nil
 end
 
 function mod.ElysiumChampionsDreamRunIntro(source, args)
 	args = args or {}
+	if args and args.SetupBossIds then
+		for _, id in ipairs(args.SetupBossIds) do
+			local boss = game.ActiveEnemies[id]
+			if boss then
+				if game.IsBossDifficultyShrineUpgradeActive() then
+					boss.AISetupDelay = boss.AISetupDelay - 0.6
+				else
+					boss.AISetupDelay = boss.AISetupDelay - 0.1
+				end
+			end
+		end
+	end
+	game.wait(0.9)
 	game.StartBossRoomMusic()
 	args.SkipWaitForInitialPan = true
 	if source.TauntAnimation ~= nil then
 		SetAnimation({ Name = source.TauntAnimation, DestinationId = source.ObjectId })
 	end
-	if game.IsBossDifficultyShrineUpgradeActive() then
-		game.wait(2.3)
-	else
-		game.wait(3.7)
-	end
+	local speedMult = source.SpeedMultiplier or 1
+	game.wait(2.2 / speedMult)
 end
 
 function mod.PlayPreLineTauntAnimFromSource(source, args)
