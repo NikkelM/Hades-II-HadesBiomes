@@ -69,46 +69,33 @@ Some other mods integrate with _Zagreus' Journey_ to provide additional features
 
 ![Installation](./img/Readme/InstallationAsphodel.png)
 
-> Installing on Steam Deck? Please also refer to the [Steam Deck Installation Guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/steam-deck) on the Hades II Mod wiki.
+You _must_ have **Hades** installed on your system at all times when playing with this mod.
 
-In order to use this mod you _must_ have Hades installed on your system at all times when playing Hades II.
-The mod will not work without it.
-If you have Hades and Hades II installed in different parent folders, please refer to the [Configuration](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) wiki page for instructions on how to ensure the mod can discover your Hades installation.
-You must start the game once to generate the configuration file.
+To install the mod, follow these simple steps:
 
-You **must** uninstall your Hades mods by renaming or deleting the `Mods` folder and running `modimporter.exe` before installing this mod!
-
-You can install this mod just like any other Hades II mod available on [Thunderstore](https://thunderstore.io/c/hades-ii/), the recommended mod manager is [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/).
-Install r2modman by using `Manual Download` on the linked page, and running the setup executable in the downloaded `.zip` file.
-
-Afterwards, you can find _Zagreus' Journey_ on the `Online` tab in r2modman, or use `Install with Mod Manager` on the [mod's Thunderstore page](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/).
-The mod manager will automatically install any other mods this mod needs to work correctly.
-Start the game through the mod manager to make sure mods are enabled - use the `Start Modded` button on the top left.
-
-Starting the game the first time with the mod enabled will install a number of files.
-**This may take a few minutes depending on your hardware, and will cause the initial loading screen to take longer than usual.**
+1. Install [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/) (use `Manual Download`, then run the setup executable).
+2. Find _Zagreus' Journey_ on the `Online` tab, or use `Install with Mod Manager` on the [mod's Thunderstore page](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/). All dependencies are installed automatically.
+3. Start the game through the mod manager using `Start Modded`. The loading screen on first launch will take longer than usual while the mod installs required files (~5GB additional disk space is needed in total).
 
 If the mod was installed successfully, you will see a new logo appear in the main menu.
 
-This mod requires an additional 5GB of disk space.
+Please also keep the following in mind:
 
-If you have Hades and Hades II installed in different parent folders, such as through different storefronts (Steam/Epic Games/Microsoft Store/Game Pass), you will need to provide the path of your Hades installation in the mod's configuration file in your mod manager.
-Set the `hadesGameFolder` configuration option to the folder where Hades is installed (such as `C:\Program Files (x86)\Steam\steamapps\common\Hades` if installed through Steam, `C:\Program Files (x86)\Epic Games\Games\Hades` if installed through Epic Games, or `C:/Xbox/Hades` for Microsoft Store/Game Pass).
-Refer to the [Configuration](#configuration) section below for more information on how to find the configuration file.
+- You must uninstall your Hades 1 mods (rename or delete the `Mods` folder and run `modimporter.exe`) before using this mod. Zagreus' Journey is compatible with other Hades II mods.
+- If Hades and Hades II are installed in different parent folders (e.g. through different storefronts), set the `hadesGameFolder` in the mod's [configuration file](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) to your Hades install path.
+- Installing the mod on Steam Deck? Follow the [Steam Deck guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/steam-deck) in the wiki.
+- Installing the mod on Mac? Follow the [Mac guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/mac) in the wiki.
 
-If you would like more information or experience any issues, please refer to the [Installation](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Installation-&-Uninstallation) wiki page.
-
-### Installing on Steam Deck
-
-For instructions on how to install this mod on Steam Deck, please follow the instructions in the [FAQ in the wiki](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki#can-i-install-this-mod-on-steam-deck).
+For more information or troubleshooting, see the [Installation wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Installation-&-Uninstallation).
 
 <!-- ## Configuration -->
 
 ![Configuration](./img/Readme/ConfigurationElysium.png)
 
 Note that the configuration file is only created after the first game start with the mod enabled in your mod manager.
-If you need to make any changes (such as to the `hadesGameFolder` setting), you will need to start the game once first to generate the config file.
-If you are using r2modman, you can modify the config directly through the mod manager, in the `Config editor` tab.
+
+If you are using r2modman or the Thunderstore Mod Manager, you can modify the config directly through the mod manager, in the `Config editor` tab.
+Make sure to save the file once done.
 
 You can find an explanation of all configuration options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
 
