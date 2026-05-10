@@ -593,6 +593,110 @@ end
 
 mod.ApplyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjectilesModifications)
 
+-- Build a name-to-projectile lookup for inheritance chain walking
+local projectilesByName = {}
+for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
+	if projectile.Name then
+		projectilesByName[projectile.Name] = projectile
+	end
+end
+
+-- Returns true if any ancestor in the InheritFrom chain is an H2 enemy base class
+local h2EnemyBaseClasses = {
+	["1_BaseEnemyProjectile"] = true,
+	["1_BaseEnemyProjectileReflectable"] = true,
+	["1_BaseEnemyProjectileUnblockable"] = true,
+	["1_BaseEnemyProjectileUndestroyable"] = true,
+}
+local function inheritsFromH2Base(projectile)
+	local visited = {}
+	local current = projectile
+	while current do
+		if visited[current.Name] then
+			break
+		end
+		visited[current.Name] = true
+		if h2EnemyBaseClasses[current.InheritFrom] then
+			return true
+		end
+		current = projectilesByName[current.InheritFrom]
+	end
+	return false
+end
+
+-- Projectiles that should be fully undestroyable (immune to suit block)
+local undestroyableProjectiles = {
+	CrusherUnitTouchdown = true,
+	CrusherUnitTouchdownElite = true,
+	HydraLavaSpitAccurate = true,
+	HydraTouchdown = true,
+	ChariotRamDeathWeapon = true,
+	MinotaurBoostedTouchdownSlam = true,
+	MinotaurArmoredOverheadTouchdown = true,
+	TheseusSpearTouchdown = true,
+	RatDeathPuddle = true,
+	RatPoisonShake = true,
+	RatPoisonShakeMiniboss = true,
+	RatSpawnWeapon = true,
+	RatSpawnWeaponSmall = true,
+	CrawlerReburrowShockwave = true,
+	CrawlerRamMiniBoss = true,
+	HadesSpikeTrapWeapon = true,
+	HadesAmmoDrop = true,
+	CharonRadialPush = true,
+	EliteBeams = true,
+	HeavyRangedWeaponSplitter = true,
+}
+
+-- Returns true if any ancestor in the InheritFrom chain has CanBeProjectileDefenseDestroyed explicitly set
+local function ancestorHasDefenseDestroyed(projectile)
+	local visited = {}
+	local current = projectilesByName[projectile.InheritFrom]
+	while current do
+		if visited[current.Name] then break end
+		visited[current.Name] = true
+		if current.CanBeProjectileDefenseDestroyed ~= nil then
+			return true
+		end
+		current = projectilesByName[current.InheritFrom]
+	end
+	return false
+end
+
+-- Returns true if any ancestor in the InheritFrom chain is in the undestroyable list
+local function ancestorIsUndestroyable(projectile)
+	local visited = {}
+	local current = projectilesByName[projectile.InheritFrom]
+	while current do
+		if visited[current.Name] then break end
+		visited[current.Name] = true
+		if undestroyableProjectiles[current.Name] then
+			return true
+		end
+		current = projectilesByName[current.InheritFrom]
+	end
+	return false
+end
+
+-- Skip projectiles whose inheritance chain reaches an H2 enemy base class, as the engine resolves these from inheritance.
+for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
+	if not inheritsFromH2Base(projectile) then
+		if projectile.CanBeProjectileDefenseDestroyed == nil and not ancestorHasDefenseDestroyed(projectile) then
+			projectile.CanBeProjectileDefenseDestroyed = false
+			mod.DebugPrint("Set CanBeProjectileDefenseDestroyed to false for " .. projectile.Name, 4)
+		end
+		if projectile.CanBeProjectileDefenseDestroyedByName2 == nil then
+			if undestroyableProjectiles[projectile.Name] or ancestorIsUndestroyable(projectile) then
+				projectile.CanBeProjectileDefenseDestroyedByName2 = "null"
+				mod.DebugPrint("Set CanBeProjectileDefenseDestroyedByName2 to null for " .. projectile.Name, 4)
+			else
+				projectile.CanBeProjectileDefenseDestroyedByName2 = "ExAttackSuitDefense"
+				mod.DebugPrint("Set CanBeProjectileDefenseDestroyedByName2 to ExAttackSuitDefense for " .. projectile.Name, 4)
+			end
+		end
+	end
+end
+
 sjson.hook(hadesTwoProjectilesFile, function(data)
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["EnemyProjectiles"] = true
