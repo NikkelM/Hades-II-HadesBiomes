@@ -746,6 +746,7 @@ local roomModifications = {
 	X_Reprieve01 = {
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "AsphodelEnterRoomPresentation",
 		SuppressRewardSpawnSounds = false,
+		SecretMusic = "/Music/BlankMusicCue",
 
 		HarvestPointChances = { 0.5, 0.3, },
 		ShovelPointChance = 0.2,
