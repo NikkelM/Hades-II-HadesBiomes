@@ -729,6 +729,7 @@ local encounterModifications = {
 		},
 		RequiredKillFunctionName = _PLUGIN.guid .. "." .. "TrackThanatosChallengeProgress",
 		BlockAthenaEncounterKeepsake = true,
+		CanEncounterSkip = false,
 		SkipExitReadyCheckpoint = true,
 		NextRoomResumeMusic = true,
 	},
