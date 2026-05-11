@@ -40,6 +40,7 @@ Other fixes and improvements:
 - Fixed: If a Chaos exit gate is connected to a story encounter while affected by the "Enshrouded" Chaos curse, the reward preview is not hidden.
 - Fixed: If a fishing point is found on the Surface, a voiceline from Melinoë may play.
 - Fixed: A faint green light shows below the player model on the Surface.
+- Fixed: If the mod is removed and then downloaded again without removing the config file, the mod is not re-installed automatically and files will be missing.
 <!--Releasenotes end-->
 
 ## v1.0.3

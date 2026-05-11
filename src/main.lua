@@ -151,6 +151,17 @@ local function on_ready()
 		config.firstTimeSetup = true
 	end
 
+	-- If the mod is enabled but firstTimeSetup is false and required files are missing, the mod was likely uninstalled and reinstalled without the config being reset
+	local numMissingFiles = -1
+	if config.enabled and not config.firstTimeSetup and not config.uninstall then
+		numMissingFiles = mod.CheckRequiredFiles(true)
+		if numMissingFiles > 0 then
+			mod.DebugPrint("Required files are missing but firstTimeSetup is false. Triggering reinstall.", 2)
+			config.uninstall = true
+			config.firstTimeSetup = true
+		end
+	end
+
 	-- If the mod is disabled, we also want to uninstall it and set the firstTimeSetup flag to true for the next time the mod is enabled again
 	if not config.enabled or config.uninstall then
 		local uninstallSuccessful = mod.Uninstall()
@@ -198,10 +209,9 @@ local function on_ready()
 	end
 
 	if setupSuccessful then
-		local numMissingFiles = 0
-		-- Only check if all required files exist here if we are not waiting on an install
+		-- Only check if all required files exist here if we are not waiting on an install, and haven't successfully checked them before
 		-- After the installation completes, mod.CheckRequiredFiles is called again, so we are not missing the check
-		if not mod.InstallationPending then
+		if not mod.InstallationPending and numMissingFiles == -1 then
 			numMissingFiles = mod.CheckRequiredFiles(false)
 		end
 
