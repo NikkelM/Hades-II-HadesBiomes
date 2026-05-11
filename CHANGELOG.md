@@ -16,6 +16,7 @@ Other fixes and improvements:
 - The "Poison will wear off automatically!" message that appears when poisoned in Elysium will now only show once per run, not once per encounter.
 - Balancing: Enemies will now wake up and attack the player faster after entering a room.
 - Balancing: "Primordial Chaos" offered by Orpheus will now force one Chaos Gate, down from two.
+- Balancing: "Centaur Tonic" and "Soul Heart" offered by Patroclus now give +40 Max Health/Mana and +25 Max Mana/Health (down from +50/+30).
 - Fixed: Many enemy attacks can be accidentally blocked by certain aspects.
 - Fixed: Encounters with Thanatos can be skipped by the "Fig Leaf".
 - Fixed: Combat music continues playing in the Asphodel fountain room.
