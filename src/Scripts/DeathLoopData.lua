@@ -39,21 +39,22 @@ table.insert(game.HubRoomData.Hub_Main.OnLoadEvents, 1, endingPortraitOnLoadEven
 -- #region Chaos Gate/Run start
 table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 	FunctionName = _PLUGIN.guid .. "." .. "SpawnHadesRunStartDoor",
+	GameStateRequirements = {
+		{
+			PathTrue = { _PLUGIN.guid, "HiddenConfig", "IsValidInstallation" }
+		},
+	}
 })
 
 function mod.SpawnHadesRunStartDoor(source, args)
-	-- Run start door for the underworld
-	local spawnId = 420947
-
 	local chaosGate = game.DeepCopyTable(game.ObstacleData.SecretDoor) or {}
 
 	chaosGate.ObjectId = SpawnObstacle({
 		Name = "ModsNikkelMHadesBiomes_HadesRunStartDoor",
 		Group = "FX_Terrain",
-		DestinationId = spawnId,
 		AttachedTable = chaosGate,
-		OffsetX = 800,
-		OffsetY = 10,
+		LocationX = 5623,
+		LocationY = 6899,
 	})
 	chaosGate.ActivateIds = { chaosGate.ObjectId }
 
@@ -192,8 +193,8 @@ mod.StatueDefinitions = {
 		-- Bronze/GoalShrinePointClear = 8
 		DrapedName = "ModsNikkelMHadesBiomes_HouseStatueDraped01",
 		UnveiledName = "ModsNikkelMHadesBiomes_HouseStatueSkelly01",
-		OffsetX = -240,
-		OffsetY = -2050,
+		LocationX = 4583,
+		LocationY = 4839,
 		FlipHorizontal = false,
 		HSV = { 0.55, 0, 0.15 },
 		UnveiledScale = 0.44,
@@ -203,8 +204,8 @@ mod.StatueDefinitions = {
 		-- Silver/GoalShrinePointClear = 16
 		DrapedName = "ModsNikkelMHadesBiomes_HouseStatueDraped01",
 		UnveiledName = "ModsNikkelMHadesBiomes_HouseStatueSkelly02",
-		OffsetX = -70,
-		OffsetY = -2160,
+		LocationX = 4753,
+		LocationY = 4729,
 		FlipHorizontal = true,
 		HSV = { 0.7, 0, 0 },
 		UnveiledScale = 0.44,
@@ -214,8 +215,8 @@ mod.StatueDefinitions = {
 		-- Gold/GoalShrinePointClear = 32
 		DrapedName = "ModsNikkelMHadesBiomes_HouseStatueDraped01",
 		UnveiledName = "ModsNikkelMHadesBiomes_HouseStatueSkelly04",
-		OffsetX = 150,
-		OffsetY = -2130,
+		LocationX = 4973,
+		LocationY = 4759,
 		FlipHorizontal = false,
 		HSV = nil,
 		UnveiledScale = 0.44,
@@ -283,7 +284,7 @@ function mod.SpawnHadesSkellyStatues(source, args)
 	-- Always do this, even if the statues aren't unlocked yet, to prevent confusion when it would suddenly move otherwise
 	local manaFountainId = GetIdsByType({ Name = "ManaFountain" })[1]
 	if manaFountainId ~= nil and manaFountainId ~= 0 then
-		Teleport({ Id = manaFountainId, DestinationId = manaFountainId, OffsetX = 840, OffsetY = -50 })
+		Teleport({ Id = manaFountainId, OffsetX = 5564, OffsetY = 4801 })
 	end
 
 	if not mod.ShouldShowHadesStatues() then
@@ -299,8 +300,6 @@ function mod.SpawnHadesSkellyStatues(source, args)
 		end
 	end
 
-	-- Run start door for the underworld
-	local spawnId = 420947
 	local numUnlocked = mod.GetNumUnlockedHadesStatues()
 
 	-- Store references for interaction and unveil presentation
@@ -315,9 +314,8 @@ function mod.SpawnHadesSkellyStatues(source, args)
 			Name = obstacleName,
 			Group = "Standing",
 			AttachedTable = statueDefinition,
-			DestinationId = spawnId,
-			OffsetX = statueDefinition.OffsetX,
-			OffsetY = statueDefinition.OffsetY,
+			LocationX = statueDefinition.LocationX,
+			LocationY = statueDefinition.LocationY,
 		})
 		obstacle.ActivateIds = { obstacle.ObjectId }
 
@@ -634,14 +632,12 @@ function mod.HadesStatueUnveilPresentation(source, args)
 	-- Destroy the draped obstacle and spawn the unveiled version
 	Destroy({ Id = obstacle.ObjectId })
 
-	local spawnId = 420947
 	local newObstacle = {}
 	newObstacle.ObjectId = SpawnObstacle({
 		Name = statueDefinition.UnveiledName,
 		Group = "Standing",
-		DestinationId = spawnId,
-		OffsetX = statueDefinition.OffsetX,
-		OffsetY = statueDefinition.OffsetY,
+		LocationX = statueDefinition.LocationX,
+		LocationY = statueDefinition.LocationY,
 	})
 	newObstacle.ActivateIds = { newObstacle.ObjectId }
 	SetScale({ Id = newObstacle.ObjectId, Fraction = statueDefinition.UnveiledScale })
