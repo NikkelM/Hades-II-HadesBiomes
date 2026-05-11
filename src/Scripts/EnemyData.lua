@@ -1932,7 +1932,10 @@ local enemyModifications = {
 			MoveWithinRange = true,
 			MoveWithinRangeTimeout = 1.5,
 		},
-		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
+		SpawnEvents = {
+			{ FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",       Threaded = true, },
+			{ FunctionName = _PLUGIN.guid .. "." .. "MarkSpawnKillRecord", },
+		},
 		Tethers = {
 			[1] = { Distance = 83, FirstDrawBehind = true, ParentDeathAnimation = "HydraNeckDeath" },
 			[2] = { ParentDeathAnimation = "HydraBaseDeath" },

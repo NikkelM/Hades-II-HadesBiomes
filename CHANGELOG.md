@@ -18,6 +18,7 @@ Other fixes and improvements:
 - Fixed: Many enemy attacks can be accidentally blocked by certain aspects.
 - Fixed: Encounters with Thanatos can be skipped by the "Fig Leaf".
 - Fixed: Combat music continues playing in the Asphodel fountain room.
+- Fixed: Minor heads spawned during the Hydra's boss fight can be destroyed by "Shocking Loss".
 - Fixed: If Melinoë dies while Theseus is in the transition from his Chariot to foot, voicelines can play over each other or interrupt each other.
 - Fixed: If Melinoë dies while Theseus is starting to call a God to his aid, time briefly slows during the "Return to shadow now" animation.
 - Fixed: "Travel Deal" does not restock the first bought shop item in Styx.

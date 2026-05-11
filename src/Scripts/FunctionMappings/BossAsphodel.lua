@@ -363,3 +363,10 @@ function mod.ModsNikkelMHadesBiomesHydraToothAI(enemy)
 
 	game.Kill(enemy)
 end
+
+-- Mark an enemy in SpawnKillRecord to exclude it from Zeus' Shocking Loss instant-kill
+function mod.MarkSpawnKillRecord(enemy)
+	if enemy and enemy.ObjectId and game.SessionMapState.SpawnKillRecord then
+		game.SessionMapState.SpawnKillRecord[enemy.ObjectId] = true
+	end
+end

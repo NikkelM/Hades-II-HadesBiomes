@@ -89,7 +89,8 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 		-- Prevent early encounter completion while ShadeDeathSpawn projectile is in flight
 		-- The projectile spawns a ShadeNaked on landing, but between the shade dying and the projectile landing, the active enemy count may drop to 0 which would end the encounter and expire the projectile
 		if victim.OnDeathFireWeapons and game.ContainsAny(victim.OnDeathFireWeapons, { "ShadeDeathSpawn", "ShadeDeathSpawnElite", "ShadeDeathSpawnSuperElite" }) then
-			game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns = (game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns or 0) + 1
+			game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns = (game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns or 0) +
+					1
 			local challengeEncounter = game.CurrentRun.CurrentRoom.ChallengeEncounter
 			if challengeEncounter ~= nil and challengeEncounter.InProgress and challengeEncounter.ActiveSpawns ~= nil then
 				challengeEncounter.ActiveSpawns["ModsNikkelMHadesBiomesPendingShadeSpawn"] = true
