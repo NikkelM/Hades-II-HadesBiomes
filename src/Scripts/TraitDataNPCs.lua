@@ -737,7 +737,7 @@ local newTraitData = {
 			"ModsNikkelMHadesBiomesOrpheusChaosThemeBoonChaosGatesStatDisplay",
 		},
 		ForceSecretDoor = true,
-		RemainingUses = 2,
+		RemainingUses = 1,
 	},
 	ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon = {
 		InheritFrom = { "ModsNikkelMHadesBiomesBaseOrpheus" },
