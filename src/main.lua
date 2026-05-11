@@ -606,6 +606,7 @@ local function on_ready_late()
 	import "Scripts/PowersLogic_Late.lua"
 	import "Scripts/ResourceLogic_Late.lua"
 	import "Scripts/RewardPresentation_Late.lua"
+	import "Scripts/RequirementsLogic_Late.lua"
 	import "Scripts/RoomLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
 	import "Scripts/RunClearLogic_Late.lua"
