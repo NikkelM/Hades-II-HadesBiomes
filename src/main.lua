@@ -509,6 +509,7 @@ local function on_ready()
 			import "Scripts/HubPresentation.lua"
 			import "Scripts/KeepsakeData.lua"
 			import "Scripts/MarketPresentation.lua"
+			import "Scripts/MetaUpgradeLogic.lua"
 			import "Scripts/NarrativeLogic.lua"
 			import "Scripts/NPCLogic.lua"
 			import "Scripts/PatchLogic.lua"

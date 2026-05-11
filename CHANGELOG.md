@@ -25,6 +25,7 @@ Other fixes and improvements:
 - Fixed: Rerolling an upgraded reward door in Styx can reroll it into the same reward again immediately.
 - Fixed: The Dire Satyr Cultist attacks immediately after entering its room, instead of first moving around for a bit.
 - Fixed: If a Gigantic Vermin dies while transformed by "Twilight Curse", it still creates a poison puddle.
+- Fixed: If an enemy that has a cast embedded through "Howling Soul" teleports, the cast teleports with them, exposing their new location.
 - Fixed: If the Vow of Frenzy is turned on and Hades is phased very quickly after the fight starts, he may not leave his invulnerability phase and softlock the player.
 - Fixed: The lasers creates by Hades' laser beam attack can lock onto the player just as the attack ends.
 - Fixed: The lasers created by Hades' laser beam attack don't expire if a stage or phase transition is started while they fire.

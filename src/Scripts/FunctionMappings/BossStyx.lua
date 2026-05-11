@@ -629,6 +629,9 @@ function mod.HadesTeleport(enemy, weaponAIData, args)
 	local teleportPointId = game.GetRandomValue(teleportPoints)
 	game.RemoveValue(teleportPoints, GetClosest({ Id = enemy.ObjectId, DestinationIds = teleportPoints }))
 
+	-- Detach any player cast projectiles (e.g. Howling Soul) attached to the enemy before teleporting
+	mod.DetachCastFromEnemy(enemy.ObjectId)
+
 	Teleport({ Id = enemy.ObjectId, DestinationId = teleportPointId })
 	local postTeleportWaitDuration = game.RandomFloat(weaponAIData.PostTeleportWaitDurationMin,
 		weaponAIData.PostTeleportWaitDurationMax)
@@ -730,6 +733,28 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 
 	game.SetupUnit(newUnit)
 	Destroy({ Id = spawnPointId })
+end
+
+-- Detach cast projectiles attached to a specific enemy
+function mod.DetachCastFromEnemy(enemyObjectId)
+	local castTargets = game.SessionMapState.ModsNikkelMHadesBiomesCastAttachTargets
+	if not castTargets or not game.SessionMapState.CastAttachedProjectiles then
+		return
+	end
+
+	local projectileIds = {}
+	for castId, attachedIds in pairs(game.SessionMapState.CastAttachedProjectiles) do
+		if castTargets[castId] == enemyObjectId then
+			table.insert(projectileIds, castId)
+			if attachedIds and not game.IsEmpty(attachedIds) then
+				projectileIds = game.ConcatTableValues(projectileIds, attachedIds)
+			end
+		end
+	end
+
+	if not game.IsEmpty(projectileIds) then
+		DetachProjectiles({ Ids = projectileIds })
+	end
 end
 
 function mod.ClearStoredAmmoHero()
