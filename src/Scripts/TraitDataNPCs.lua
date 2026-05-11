@@ -355,11 +355,11 @@ local newTraitData = {
 		RarityLevels = {
 			Common = { Multiplier = 1 },
 			Rare = { Multiplier = 1 },
-			Epic = { Multiplier = 1.25 },
-			Heroic = { Multiplier = 5/4 },
+			Epic = { Multiplier = 1.5 },
+			Heroic = { Multiplier = 2 },
 		},
 		ModsNikkelMHadesBiomesDreamRunScaling = {
-			ScaleKeys = { { "AcquireFunctionArgs", "NumTraits" } },
+			ScaleKeys = { { "AcquireFunctionArgs", "NumStacks" } },
 			AsInt = true,
 		},
 		GameStateRequirements = {
@@ -367,8 +367,8 @@ local newTraitData = {
 		},
 		AcquireFunctionArgs = {
 			FunctionName = "AddStackToTraits",
-			NumTraits = 4,
-			NumStacks = 1,
+			NumTraits = 3,
+			NumStacks = 2,
 			ReportValues = {
 				ReportedNumTraits = "NumTraits",
 				ReportedNumStacks = "NumStacks",
