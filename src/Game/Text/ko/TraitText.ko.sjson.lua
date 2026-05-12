@@ -160,7 +160,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 	-- 	InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
 	-- 	Description =
-	-- 	"Ensure {$Keywords.HealthGatePlural} spawn ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- 	"Ensure a {$Keywords.HealthGate} spawns ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonChaosGatesStatDisplay",
@@ -235,12 +235,14 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "해묵은 원한",
-		Description = "전투 시작 {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay}초 {#Prev}후, {$Keywords.CharChronos}/{$Keywords.CharTyphon}/{$Keywords.CharHades}이 큰 피해를 받습니다.",
+		Description =
+		"전투 시작 {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay}초 {#Prev}후, {$Keywords.CharChronos}/{$Keywords.CharTyphon}/{$Keywords.CharHades}이 큰 피해를 받습니다.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}/{$Keywords.CharTyphon}/{$Keywords.CharHades} 생명력 감소:",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}/{$Keywords.CharTyphon}/{$Keywords.CharHades} 생명력 감소:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
 	},
 	{
@@ -251,7 +253,8 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}/{$Keywords.CharTyphon}/{$Keywords.CharHades} 증원군 수:",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}/{$Keywords.CharTyphon}/{$Keywords.CharHades} 증원군 수:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
