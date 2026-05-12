@@ -215,7 +215,7 @@ local function on_ready()
 			numMissingFiles = mod.CheckRequiredFiles(false)
 		end
 
-		if numMissingFiles == 0 then
+		if numMissingFiles == 0 or mod.InstallationPending then
 			-- General data needed for map generation/display
 			import "Game/MapGroups.sjson.lua"
 			DebugLogScriptImportProgress("MapGroups SJSON")

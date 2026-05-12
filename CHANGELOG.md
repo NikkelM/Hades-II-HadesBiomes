@@ -21,7 +21,7 @@ Other fixes and improvements:
 - Balancing: "Pom Porridge" offered by Eurydice now increases the level of three boons by two, instead of four boons by one. The number of levels now scales in Dream Dives instead of the number of boons.
 - Balancing: "Centaur Tonic" and "Soul Heart" offered by Patroclus now give +40 Max Health/Mana and +25 Max Mana/Health (down from +50/+30).
 - Fixed: A Family Dispute can appear as a room reward on rooms with only one exit door if an Erebus Gate is also present in the room.
-- Fixed: Many enemy attacks can be accidentally blocked by certain aspects.
+- Fixed: Many enemy attacks can be accidentally blocked by certain weapon aspects.
 - Fixed: Encounters with Thanatos can be skipped by the "Fig Leaf".
 - Fixed: Combat music continues playing in the Asphodel fountain room.
 - Fixed: Minor heads spawned during the Hydra's boss fight can be destroyed by "Shocking Loss".
