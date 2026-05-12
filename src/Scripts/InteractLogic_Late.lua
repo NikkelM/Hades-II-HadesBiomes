@@ -8,7 +8,8 @@ modutil.mod.Path.Context.Wrap.Static("AttemptRerollDoor", function(rerollRun, do
 				if offeredDoor.Room ~= nil and offeredDoor.Room.UseOptionalOverrides and offeredDoor.Room.ChosenRewardType ~= nil then
 					for baseReward, upgradedReward in pairs(room.RewardConsumableOverrideMap) do
 						if upgradedReward == offeredDoor.Room.ChosenRewardType then
-							table.insert(previouslyChosenRewards, { RewardType = baseReward, ForceLootName = offeredDoor.Room.ForceLootName })
+							table.insert(previouslyChosenRewards,
+								{ RewardType = baseReward, ForceLootName = offeredDoor.Room.ForceLootName })
 							break
 						end
 					end
@@ -33,20 +34,24 @@ modutil.mod.Path.Context.Wrap.Static("AttemptRerollDoor", function(rerollRun, do
 
 	modutil.mod.Path.Wrap("CreateDoorRewardPreview",
 		function(base, exitDoor, chosenRewardType, chosenLootName, index, args)
+			base(exitDoor, chosenRewardType, chosenLootName, index, args)
+
 			if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.HadesExitDoorObstacleNames[exitDoor.Name] then
 				local prevChosenRewardType = modutil.mod.Locals.Stacked(2).prevChosenRewardType
+				local rewardType = chosenRewardType or (exitDoor.Room and exitDoor.Room.ChosenRewardType)
 				-- Rescale the reward icon for doors in modded runs that need them to be smaller to fit in the new frames
 				if game.CurrentRun.CurrentRoom.ChosenRewardType == "Devotion" and prevChosenRewardType ~= "Devotion" then
 					SetScale({ Ids = exitDoor.RewardPreviewIconIds, Fraction = 0.0, Duration = 0.1 })
 				else
+					local baseScale = mod.HadesDoorRoomRewardIconScales[exitDoor.Name] or 1.0
+					local rewardTypeDelta = (mod.HadesDoorRewardTypeModifications[rewardType] and mod.HadesDoorRewardTypeModifications[rewardType].doorIconScale) or
+							0
 					SetScale({
 						Ids = exitDoor.RewardPreviewIconIds,
-						Fraction = mod.HadesDoorRoomRewardIconScales[exitDoor.Name] or 1.0,
+						Fraction = baseScale + rewardTypeDelta,
 						Duration = 0.1
 					})
 				end
 			end
-
-			return base(exitDoor, chosenRewardType, chosenLootName, index, args)
 		end)
 end)

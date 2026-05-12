@@ -44,46 +44,6 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		local doorIconIsometricShiftZ = -3
 
 		local offsetMappings = {}
-		local additionalModifications = {
-			MetaCurrencyDrop = {
-				doorIconOffsetY = -5,
-				doorIconScale = -0.1,
-			},
-			MetaCurrencyBigDrop = {
-				doorIconOffsetX = 5,
-				doorIconScale = -0.1,
-			},
-			MetaCardPointsCommonBigDrop = {
-				doorIconOffsetX = 5,
-				doorIconScale = -0.05,
-			},
-			RoomRewardHealDrop = {
-				doorIconScale = -0.1,
-			},
-			WeaponUpgrade = {
-				doorIconScale = -0.1,
-			},
-			TalentDrop = {
-				doorIconScale = -0.2,
-			},
-			-- Star Dust
-			Mixer5CommonDrop = {
-				doorIconScale = -0.1,
-			},
-			-- The below are for Styx and Erebus/Challenge doors
-			RoomMoneyBigDrop = {
-				doorIconScale = -0.1,
-			},
-			MaxHealthDropBig = {
-				doorIconScale = -0.1,
-			},
-			MaxManaDropBig = {
-				doorIconScale = -0.1,
-			},
-			StackUpgradeBig = {
-				doorIconScale = -0.05,
-			},
-		}
 
 		if exitDoor.Name == "TartarusDoor03b" then
 			offsetMappings = {
@@ -379,9 +339,9 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		end
 
 		-- Add the additional modifications for the chosen reward type
-		if additionalModifications[chosenRewardType] then
+		if mod.HadesDoorRewardTypeModifications[chosenRewardType] then
 			for property, value in pairs(properties) do
-				properties[property] = properties[property] + (additionalModifications[chosenRewardType][property] or 0)
+				properties[property] = properties[property] + (mod.HadesDoorRewardTypeModifications[chosenRewardType][property] or 0)
 			end
 		end
 

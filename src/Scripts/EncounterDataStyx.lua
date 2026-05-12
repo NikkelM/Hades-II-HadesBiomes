@@ -37,9 +37,9 @@ local encounterReplacements = {
 		-- The original from Hades is 5
 		ActiveEnemyCapBase = 6,
 		-- The original from Hades is 8
-		ActiveEnemyCapMax = 8,
+		-- ActiveEnemyCapMax = 8,
 		-- The original from Hades is 900
-		BaseDifficulty = 1150,
+		BaseDifficulty = 1000,
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
 		},
@@ -60,30 +60,14 @@ local encounterReplacements = {
 		},
 	},
 	GeneratedStyxMini = {
-		-- The original from Hades is 130
-		BaseDifficultyMin = 150,
-		-- The original from Hades is 230
-		BaseDifficultyMax = 250,
-		-- The original from Hades is 3
-		ActiveEnemyCapBase = 4,
-		-- The original from Hades is 3
-		ActiveEnemyCapMin = 4,
-		-- The original from Hades is 3
-		ActiveEnemyCapMax = 4,
 		CanEncounterSkip = false,
 		BlockAthenaEncounterKeepsake = true,
 	},
 	GeneratedStyxMiniSingle = {
 		CanEncounterSkip = false,
 		BlockAthenaEncounterKeepsake = true,
-		-- The original from Hades is 10
-		BaseDifficultyMax = 30,
 	},
 	BaseStyxMiniboss = {
-		-- The original from Hades is 3
-		ActiveEnemyCapBase = 5,
-		-- The original from Hades is 8
-		ActiveEnemyCapMax = 12,
 		CanEncounterSkip = false,
 		BlockAthenaEncounterKeepsake = true,
 	},

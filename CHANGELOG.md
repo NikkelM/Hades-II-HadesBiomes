@@ -7,6 +7,8 @@
 - The Chaos Gate in the Training Grounds can now also appear before having met Chaos the first time.
 - The first time that Zagreus' Journey regions are eligible in Dream Dives, Elysium will appear as the guaranteed first region (after you have already completed at least one total Dream Dive).
 - Added two new sets of Arcana card backs, depicting the various bosses and gods you encounter in Zagreus' Journey.
+- Balancing: Slightly reduced overall number of enemies per encounter in all regions.
+- Balancing: Slightly reduced health and armour of non-boss enemies.
 - Fixed: The sound made by Hades' laser beam attack is very loud.
 - Fixed: If Styx appears in a Dream Dive, the timer does not resume in the next biome.
 
@@ -40,6 +42,7 @@ Other fixes and improvements:
 - Fixed: If a Chaos exit gate is connected to a story encounter while affected by the "Enshrouded" Chaos curse, the reward preview is not hidden.
 - Fixed: If a fishing point is found on the Surface, a voiceline from Melinoë may play.
 - Fixed: A faint green light shows below the player model on the Surface.
+- Fixed: After rerolling a door reward, the new reward preview icon may be larger than expected.
 - Fixed: If the mod is removed and then downloaded again without removing the config file, the mod is not re-installed automatically and files will be missing.
 <!--Releasenotes end-->
 

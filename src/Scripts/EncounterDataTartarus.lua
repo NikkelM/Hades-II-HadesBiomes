@@ -61,14 +61,14 @@ local encounterReplacements = {
 	},
 	GeneratedTartarus = {
 		-- The original from Hades is 2.3
-		ActiveEnemyCapBase = 4.3,
+		ActiveEnemyCapBase = 2.6,
 		-- The original from Hades is 30
 		-- Also change the DifficultyModifier in OpeningGenerated
-		BaseDifficulty = 38,
+		BaseDifficulty = 32,
 		-- The original from Hades is 0.35
-		ActiveEnemyCapDepthRamp = 0.5,
+		ActiveEnemyCapDepthRamp = 0.4,
 		-- The original from Hades is 11
-		DepthDifficultyRamp = 12,
+		-- DepthDifficultyRamp = 11,
 		DreamBiomeData = {
 			[1] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 15, MoneyDropCapDepthRamp = 0 } },
 			[2] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 20, MoneyDropCapDepthRamp = 0, ActiveEnemyCapDepthRamp = 0.5 } },
@@ -312,7 +312,7 @@ local encounterModifications = {
 	OpeningGenerated = {
 		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
-		DifficultyModifier = -38,
+		DifficultyModifier = -32,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
 		PreSpawnEnemies = false,
 		-- To not block Codex/Inventory before picking up the reward

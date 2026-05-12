@@ -23,18 +23,18 @@ mod.ExpectedNumSjsonHooks = 37
 -- All enemies have more health and armour in modded runs, scales with each biome
 -- Should not apply to bosses, which should opt out using ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and define their own modified health
 mod.ModdedUnitMaxHealthMultiplierBonus = {
-	Default = 0.4,
-	Tartarus = 0.35,
-	Asphodel = 0.4,
-	Elysium = 0.45,
-	Styx = 0.48
+	Default = 0.38,
+	Tartarus = 0.32,
+	Asphodel = 0.38,
+	Elysium = 0.40,
+	Styx = 0.45
 }
 mod.ModdedUnitHealthBufferMultiplierBonus = {
-	Default = 0.15,
-	Tartarus = 0.1,
-	Asphodel = 0.15,
-	Elysium = 0.2,
-	Styx = 0.22
+	Default = 0.13,
+	Tartarus = 0.09,
+	Asphodel = 0.13,
+	Elysium = 0.18,
+	Styx = 0.2
 }
 
 mod.ValidModdedRunBiomes = {
@@ -500,6 +500,50 @@ mod.HadesDoorRoomRewardIconScales = {
 	ShrinePointExitDoor = 0.9,
 }
 
+-- Reward preview scale adjustments per reward type
+mod.HadesDoorRewardTypeModifications = {
+	MetaCurrencyDrop = {
+		doorIconOffsetY = -5,
+		doorIconScale = -0.1
+	},
+	MetaCurrencyBigDrop = {
+		doorIconOffsetX = 5,
+		doorIconScale = -0.1
+	},
+	MetaCardPointsCommonBigDrop = {
+		doorIconOffsetX = 5,
+		doorIconScale = -0.05
+	},
+	RoomRewardHealDrop = {
+		doorIconScale = -0.1
+	},
+	WeaponUpgrade = {
+		doorIconScale = -0.1
+	},
+	TalentDrop = {
+		doorIconScale = -0.2
+	},
+	TalentBigDrop = {
+		doorIconScale = -0.22
+	},
+	-- Star Dust
+	Mixer5CommonDrop = {
+		doorIconScale = -0.1
+	},
+	-- The below are for Styx and Erebus/Challenge doors
+	RoomMoneyBigDrop = {
+		doorIconScale = -0.1
+	},
+	MaxHealthDropBig = {
+		doorIconScale = -0.1
+	},
+	MaxManaDropBig = {
+		doorIconScale = -0.1
+	},
+	StackUpgradeBig = {
+		doorIconScale = -0.05
+	},
+}
 mod.HadesExitDoorObstacleNames = {
 	TartarusDoor03b = true,
 	AsphodelBoat01b = true,

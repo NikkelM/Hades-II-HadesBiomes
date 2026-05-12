@@ -53,15 +53,15 @@ mod.UpdateField(encounterDataElysium, "Challenge", "TimeChallenge", { "InheritFr
 local encounterReplacements = {
 	GeneratedElysium = {
 		-- The original from Hades is 2.3 - inherited from Generated
-		ActiveEnemyCapBase = 5,
+		ActiveEnemyCapBase = 3,
 		-- The original from Hades is 220
-		BaseDifficulty = 245,
+		BaseDifficulty = 228,
 		-- The original from Hades is 0.4
-		ActiveEnemyCapDepthRamp = 0.6,
+		ActiveEnemyCapDepthRamp = 0.48,
 		-- The original from Hades is 0.35
-		TypeCountDepthRamp = 0.5,
+		TypeCountDepthRamp = 0.4,
 		-- The original from Hades is 70
-		DepthDifficultyRamp = 73,
+		DepthDifficultyRamp = 72,
 		-- Original is missing HandleEncounterPreSpawns
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
