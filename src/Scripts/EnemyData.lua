@@ -2365,6 +2365,13 @@ local enemyModifications = {
 			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
 		},
 		SubtitleColor = game.Color.MinotaurVoice,
+		AIStages = {
+			[2] = {
+				AIData = {
+					ThresholdOverrideIfInRoom = { Room = "Y_Boss01", Value = 0.0 },
+				},
+			},
+		},
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "MinotaurOverheadTouchdown",
@@ -2487,6 +2494,13 @@ local enemyModifications = {
 		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
 		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
+		AIStages = {
+			[2] = {
+				AIData = {
+					ThresholdOverrideIfInRoom = { Room = "Y_Boss01", Value = 0.0 },
+				},
+			},
+		},
 	},
 	Theseus = {
 		-- Base Health: 9000

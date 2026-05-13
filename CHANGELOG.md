@@ -25,6 +25,7 @@ Other fixes and improvements:
 - Fixed: Encounters with Thanatos can be skipped by the "Fig Leaf".
 - Fixed: Combat music continues playing in the Asphodel fountain room.
 - Fixed: Minor heads spawned during the Hydra's boss fight can be destroyed by "Shocking Loss".
+- Fixed: Asterius has a second invulnerability phase towards the end of his health bar in the final boss fight in Elysium.
 - Fixed: If Melinoë dies while Theseus is in the transition from his Chariot to foot, voicelines can play over each other or interrupt each other.
 - Fixed: If Melinoë dies while Theseus is starting to call a God to his aid, time briefly slows during the "Return to shadow now" animation.
 - Fixed: "Travel Deal" does not restock the first bought shop item in Styx.
