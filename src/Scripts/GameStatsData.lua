@@ -18,3 +18,12 @@ game.ScreenData.GameStats.WeaponColumnHeaders = {
 table.insert(game.ScreenData.GameStats.SortKeys, "ModsNikkelMHadesBiomesFastestTime")
 table.insert(game.ScreenData.GameStats.SortKeys, "ModsNikkelMHadesBiomesHighestShrinePoints")
 game.ScreenData.GameStats.SortInReverse["ModsNikkelMHadesBiomesFastestTime"] = true
+
+-- Reset to first column if closed on a modded column to not crash when opening this screen with the mod disabled
+modutil.mod.Path.Wrap("CloseGameStatsScreen", function(base, screen, button)
+	if game.GameState.RunHistoryGameStatsSortMode > 6 then
+		game.GameState.RunHistoryGameStatsSortMode = 1
+	end
+
+	return base(screen, button)
+end)

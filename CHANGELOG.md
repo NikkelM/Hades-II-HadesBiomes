@@ -45,6 +45,7 @@ Other fixes and improvements:
 - Fixed: A faint green light shows below the player model on the Surface.
 - Fixed: After rerolling a door reward, the new reward preview icon may be larger than expected.
 - Fixed: If the mod is removed and then downloaded again without removing the config file, the mod is not re-installed automatically and files will be missing.
+- Fixed: When opening the statistics screen while the mod is disabled and if the previously selected sort column was a modded column, the game crashes.
 <!--Releasenotes end-->
 
 ## v1.0.3
