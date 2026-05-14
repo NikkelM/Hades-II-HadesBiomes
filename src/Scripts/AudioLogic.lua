@@ -45,8 +45,7 @@ end)
 
 modutil.mod.Path.Wrap("ResumeMusic", function(base, args)
 	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		-- Sometimes after challenge encounters, the next room has doubled music, which is most likely caused by a double ResumeMusic at inopportune times
-		if game.AudioState.MusicId == nil or not game.AudioState.MusicPaused then
+		if not game.AudioState.MusicPaused then
 			return
 		end
 	end
