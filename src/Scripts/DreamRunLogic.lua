@@ -53,6 +53,11 @@ modutil.mod.Path.Wrap("SelectNextDreamBiome", function(base, source, args)
 		end
 	end
 
+	-- nextRoomSet can be nil if the only biome left is sequential, forcing the last biome left in that case
+	if nextRoomSet == nil then
+		nextRoomSet = game.RemoveRandomValue(game.CurrentRun.DreamBiomePool)
+	end
+
 	game.CurrentRun.CurrentRoom.NextRoomSet = { nextRoomSet }
 end)
 
