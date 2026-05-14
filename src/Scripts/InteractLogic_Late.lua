@@ -13,6 +13,16 @@ modutil.mod.Path.Context.Wrap.Static("AttemptRerollDoor", function(rerollRun, do
 							break
 						end
 					end
+					-- Also exclude the base version of the original reward (before any rerolls)
+					if offeredDoor.Room.OriginalChosenRewardType then
+						for baseReward, upgradedReward in pairs(room.RewardConsumableOverrideMap) do
+							if upgradedReward == offeredDoor.Room.OriginalChosenRewardType then
+								table.insert(previouslyChosenRewards,
+									{ RewardType = baseReward, ForceLootName = offeredDoor.Room.ForceLootName })
+								break
+							end
+						end
+					end
 				end
 			end
 		end

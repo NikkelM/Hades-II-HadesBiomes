@@ -29,7 +29,7 @@ Other fixes and improvements:
 - Fixed: If Melinoë dies while Theseus is in the transition from his Chariot to foot, voicelines can play over each other or interrupt each other.
 - Fixed: If Melinoë dies while Theseus is starting to call a God to his aid, time briefly slows during the "Return to shadow now" animation.
 - Fixed: "Travel Deal" does not restock the first bought shop item in Styx.
-- Fixed: Rerolling an upgraded reward door in Styx can reroll it into the same reward again immediately.
+- Fixed: Rerolling an upgraded reward door in Styx can reroll it into the same reward again.
 - Fixed: The Dire Satyr Cultist attacks immediately after entering its room, instead of first moving around for a bit.
 - Fixed: If a Gigantic Vermin dies while transformed by "Twilight Curse", it still creates a poison puddle.
 - Fixed: If an enemy that has a cast embedded through "Howling Soul" teleports, the cast teleports with them, exposing their new location.
