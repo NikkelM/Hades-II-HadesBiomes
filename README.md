@@ -83,6 +83,7 @@ Please also keep the following in mind:
 
 - You must uninstall your Hades 1 mods (rename or delete the `Mods` folder and run `modimporter.exe`) before using this mod. Zagreus' Journey is compatible with other Hades II mods.
 - If Hades and Hades II are installed in different parent folders (e.g. through different storefronts), set the `hadesGameFolder` in the mod's [configuration file](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) to your Hades install path.
+- Is your Hades II installed through Epic Games? You may need to follow [this FAQ entry](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/getting-started#i-own-hades-ii-on-epic-games-and-mods-do-not-work-when-playing-what-can-i-do) if mods don't seem to be active.
 - Installing the mod on Steam Deck? Follow the [Steam Deck guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/steam-deck) in the wiki.
 - Installing the mod on Mac? Follow the [Mac guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/mac) in the wiki.
 
