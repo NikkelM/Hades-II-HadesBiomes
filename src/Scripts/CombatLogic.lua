@@ -75,10 +75,14 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 		end
 
 		if victim.ModsNikkelMHadesBiomesIsThanatosCursed then
+			-- Prevent respawn eggs from spawning when killed by Thanatos
+			if killer.ObjectId ~= game.CurrentRun.Hero.ObjectId then
+				victim.BlockRespawnShrineUpgrade = true
+			end
 			if killer.ObjectId == game.CurrentRun.Hero.ObjectId then
 				-- Don't play the "DeathHead" animation, which should only play if Thanatos kills the enemy
 				StopAnimation({ Name = "ThanatosCurseIn", DestinationId = victim.ObjectId, PreventChain = true, })
-			elseif victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed and killer.ObjectId ~= game.CurrentRun.Hero.ObjectId then
+			elseif victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed then
 				SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = victim.ObjectId })
 				victim.SpawnsEnemyOnDeath = false
 				victim.SpawnUnitOnDeath = nil
