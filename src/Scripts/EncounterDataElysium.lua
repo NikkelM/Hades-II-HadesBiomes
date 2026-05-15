@@ -61,7 +61,7 @@ local encounterReplacements = {
 		-- The original from Hades is 0.35
 		TypeCountDepthRamp = 0.4,
 		-- The original from Hades is 70
-		DepthDifficultyRamp = 72,
+		DepthDifficultyRamp = 73,
 		-- Original is missing HandleEncounterPreSpawns
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
