@@ -19,6 +19,7 @@ Other fixes and improvements:
 - The "Poison will wear off automatically!" message that appears when poisoned in Elysium will now only show once per run, not once per encounter.
 - Balancing: Enemies will now wake up and attack the player faster after entering a room.
 - Balancing: "Primordial Chaos" offered by Orpheus will now force one Chaos Gate, down from two.
+- Balancing: The Death Defiance from "Hymn to Zagreus" offered by Orpheus now restores 100% health and magick, up from 10%.
 - Balancing: "Pom Porridge" offered by Eurydice now increases the level of three boons by two, instead of four boons by one. The number of levels now scales in Dream Dives instead of the number of boons.
 - Balancing: "Centaur Tonic" and "Soul Heart" offered by Patroclus now give +40 Max Health/Mana and +25 Max Mana/Health (down from +50/+30).
 - Fixed: A Family Dispute can appear as a room reward on rooms with only one exit door if an Erebus Gate is also present in the room.

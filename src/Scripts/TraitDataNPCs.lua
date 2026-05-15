@@ -872,7 +872,7 @@ local newTraitData = {
 			TrackName = "{e044c3d0-8cf0-44ac-9d8e-75eda8c80501}",
 		},
 
-		ModsNikkelMHadesBiomesOrpheusLastStandHealFraction = 0.1,
+		ModsNikkelMHadesBiomesOrpheusLastStandHealFraction = 1,
 		ExtractValues = {
 			{
 				Key = "ModsNikkelMHadesBiomesOrpheusLastStandHealFraction",
