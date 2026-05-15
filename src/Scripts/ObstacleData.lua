@@ -401,7 +401,7 @@ local addedObstacles = {
 	},
 	PoisonCureFountainStyx = {
 		UseText = "UsePoisonCure",
-		UseSound = "/SFX/PoisonCureFountainDrink",
+		UseSound = "/SFX/PoisonCureFountainDrink2",
 		CooldownNamePrefix = "PoisonCureFountain",
 		CooldownDuration = 3.0,
 		OnCooldownAnimation = "PoisonCureFountainEmpty",
