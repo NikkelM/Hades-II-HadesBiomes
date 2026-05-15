@@ -185,12 +185,12 @@ local roomReplacements = {
 					{
 						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreTartarus" },
 						Comparison = "<",
-						Value = 20,
+						Value = 14,
 					},
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 					{
 						SumPrevRooms = 2,
 						Path = { "NumShovelPoints" },
@@ -991,12 +991,12 @@ local roomModifications = {
 					{
 						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreTartarus" },
 						Comparison = "<",
-						Value = 20,
+						Value = 14,
 					},
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 				},
 			},
 		},

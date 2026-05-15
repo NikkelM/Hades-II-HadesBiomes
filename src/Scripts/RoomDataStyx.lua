@@ -207,7 +207,7 @@ local roomReplacements = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 					{
 						SumPrevRooms = 6,
 						Path = { "NumShovelPoints" },
@@ -1146,7 +1146,7 @@ local roomModifications = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 				},
 			},
 		},
