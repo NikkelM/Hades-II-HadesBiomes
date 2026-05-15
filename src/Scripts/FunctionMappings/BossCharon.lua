@@ -207,6 +207,10 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 		mod.CheckDreamDiveQuestCompletion()
 	end
 
+	if game.HeroHasTrait("AxeArmCastAspect") then
+		game.GameState.ModsNikkelMHadesBiomes_DefeatedCharonWithCharonAspect = true
+	end
+
 	-- Similar lines being played through CharonStoreDiscount pickup
 	-- game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.CharonFightRewardVoiceLines, true)
 

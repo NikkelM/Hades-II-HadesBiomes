@@ -1904,6 +1904,22 @@ local newData = {
 	-- 	Description =
 	-- 	"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, while under the influence of each of the alternate Vows from the {#Emph}Oath of the Unseen{#Prev}.",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Return To Sender ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of wielding the power of the stygian boatman, and use it to beat him at his own game.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect_Condition",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressIncomplete} Defeat {$Keywords.CharCharon} with the Aspect of Charon",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect_Cleared",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressComplete} Defeat {$Keywords.CharCharon} with the Aspect of Charon",
+	-- },
 	-- #endregion
 
 	-- #region Chaos Trials/Bounties

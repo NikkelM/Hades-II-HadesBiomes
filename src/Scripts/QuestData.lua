@@ -48,8 +48,9 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
 	"ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun",
 	"ModsNikkelMHadesBiomes_QuestShutdownThanatos",
-	"ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
 	"ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
+	"ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
+	"ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect",
 	"ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses",
 	"ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus",
 }
@@ -1443,6 +1444,29 @@ local newQuestData = {
 		},
 		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Condition",
 		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Cleared",
+	},
+	-- Defeat Charon with the Aspect of Charon
+	ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect = {
+		InheritFrom = { "DefaultQuestItem", "DefaultKillQuest" },
+		RewardResourceName = "CharonPoints",
+		RewardResourceAmount = 3,
+		UnlockGameStateRequirements = {
+			-- Must have beaten Charon at least once
+			{
+				PathTrue = { "GameState", "EncountersCompletedCache", "BossCharon" },
+			},
+			-- Must have the Aspect of Charon unlocked
+			{
+				PathTrue = { "GameState", "WeaponsUnlocked", "AxeArmCastAspect" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "ModsNikkelMHadesBiomes_DefeatedCharonWithCharonAspect" },
+			},
+		},
+		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect_Condition",
+		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect_Cleared",
 	},
 	-- #endregion
 }
