@@ -27,6 +27,7 @@ Other fixes and improvements:
 - Fixed: Enemies killed by Thanatos can turn into a Revenant.
 - Fixed: Combat music continues playing in the Asphodel fountain room.
 - Fixed: Minor heads spawned during the Hydra's boss fight can be destroyed by "Shocking Loss".
+- Fixed: Death Defiances refilled by Patroclus' "Kiss of Styx Premium" only restore 40% health and magick instead of the advertised 50%.
 - Fixed: Asterius has a second invulnerability phase towards the end of his health bar in the final boss fight in Elysium.
 - Fixed: If Melinoë dies while Theseus is in the transition from his Chariot to foot, voicelines can play over each other or interrupt each other.
 - Fixed: If Melinoë dies while Theseus is starting to call a God to his aid, time briefly slows during the "Return to shadow now" animation.

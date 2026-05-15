@@ -322,7 +322,7 @@ function mod.ModsNikkelMHadesBiomesPatroclusExitFunctionName(currentRun, exitDoo
 	game.LeaveRoomPresentation(currentRun, exitDoor)
 end
 
-function mod.ModsNikkelMHadesBiomesPatroclusRefillLastStands(args)
+function mod.ModsNikkelMHadesBiomesPatroclusRefillLastStands(source, args)
 	if not game.CurrentRun.Hero.MaxLastStands then
 		return
 	end
