@@ -124,8 +124,6 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 				insertedDummyCue = true
 			end
 
-			line.UseRoomContextArt = true
-
 			-- Update portraits, must be done before the Cues are modified
 			for cuePrefix, portraitName in pairs(portraitMappings) do
 				if line.Cue:find("^/VO/" .. cuePrefix) then

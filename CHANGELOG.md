@@ -24,6 +24,7 @@ Other fixes and improvements:
 - Balancing: "Centaur Tonic" and "Soul Heart" offered by Patroclus now give +40 Max Health/Mana and +25 Max Mana/Health (down from +50/+30).
 - Balancing: Slightly reduced the spawn rate of pickaxe points.
 - Fixed: A Family Dispute can appear as a room reward on rooms with only one exit door if an Erebus Gate is also present in the room.
+- Fixed: Custom dialogues with Hermes have the current region's background artwork, instead of the Olympus artwork.
 - Fixed: Many enemy attacks can be accidentally blocked by certain weapon aspects.
 - Fixed: Enemies spawned in earlier biomes through the Vow of Menace have less health and armour than they should.
 - Fixed: Encounters with Thanatos can be skipped by the "Fig Leaf" keepsake.
