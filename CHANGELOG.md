@@ -24,9 +24,11 @@ Other fixes and improvements:
 - Balancing: "Centaur Tonic" and "Soul Heart" offered by Patroclus now give +40 Max Health/Mana and +25 Max Mana/Health (down from +50/+30).
 - Fixed: A Family Dispute can appear as a room reward on rooms with only one exit door if an Erebus Gate is also present in the room.
 - Fixed: Many enemy attacks can be accidentally blocked by certain weapon aspects.
+- Fixed: Enemies spawned in earlier biomes through the Vow of Menace have less health and armour than they should.
 - Fixed: Encounters with Thanatos can be skipped by the "Fig Leaf" keepsake.
 - Fixed: Enemies killed by Thanatos can turn into a Revenant.
 - Fixed: Combat music continues playing in the Asphodel fountain room.
+- Fixed: Dire Brimstones can appear during trove challenge encounters in Asphodel.
 - Fixed: Minor heads spawned during the Hydra's boss fight can be destroyed by "Shocking Loss".
 - Fixed: Death Defiances refilled by Patroclus' "Kiss of Styx Premium" only restore 40% health and magick instead of the advertised 50%.
 - Fixed: Asterius has a second invulnerability phase towards the end of his health bar in the final boss fight in Elysium.

@@ -104,9 +104,10 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 
 		-- Increase the unit's health and armour, if it shouldn't be excluded from the modded modifiers
 		if not unit.ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers then
-			local healthBufferBonus = mod.ModdedUnitHealthBufferMultiplierBonus[currentRun.CurrentRoom.RoomSetName] or
+			local scalingBiome = mod.EnemyBelongsToBiome[unit.Name or ""] or currentRun.CurrentRoom.RoomSetName
+			local healthBufferBonus = mod.ModdedUnitHealthBufferMultiplierBonus[scalingBiome] or
 					mod.ModdedUnitHealthBufferMultiplierBonus.Default
-			local maxHealthBonus = mod.ModdedUnitMaxHealthMultiplierBonus[currentRun.CurrentRoom.RoomSetName] or
+			local maxHealthBonus = mod.ModdedUnitMaxHealthMultiplierBonus[scalingBiome] or
 					mod.ModdedUnitMaxHealthMultiplierBonus.Default
 
 			if unit.HealthBufferMultiplier ~= nil then
