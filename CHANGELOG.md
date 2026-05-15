@@ -13,6 +13,7 @@
 - Fixed: If Styx appears in a Dream Dive, the timer does not resume in the next biome.
 
 Other fixes and improvements:
+- Melinoë is now slightly smaller while in Zagreus' Journey rooms, to compensate for the difference in room and enemy scales.
 - When confiding in Frinos, Melinoë can now refer to events in Zagreus' Journey runs.
 - Added a new configuration option to hide the "Poison will wear off automatically!" message that appears when poisoned in Elysium, called `z_HideElysiumPoisonMessage`.
 - The "Poison will wear off automatically!" message that appears when poisoned in Elysium will now only show once per run, not once per encounter.

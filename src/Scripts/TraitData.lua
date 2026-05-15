@@ -19,3 +19,15 @@ if not config.z_ExcludeFromDreamDives then
 	"ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun"
 	game.TraitData.HadesChronosDebuffBoon.DreamRunStatLines = { "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun" }
 end
+
+-- Hidden trait to scale the player model during modded biomes
+-- Uses the SetupFunction mechanism so it re-applies on every room start and save reload, matching Circe's pattern
+game.TraitData.ModsNikkelMHadesBiomesPlayerScaleTrait = {
+	InheritFrom = { "BaseTrait" },
+	Hidden = true,
+	SetupFunction = {
+		Name = _PLUGIN.guid .. "." .. "ApplyModdedPlayerScale",
+		Args = { ScaleMultiplier = mod.ModdedPlayerScaleMultiplier },
+		RunOnce = false,
+	},
+}

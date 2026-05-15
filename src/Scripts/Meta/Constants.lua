@@ -183,6 +183,11 @@ mod.ModdedRoomNames = {
 	"CharonFight01",
 }
 
+mod.ModdedRoomNamesSet = {}
+for _, name in ipairs(mod.ModdedRoomNames) do
+	mod.ModdedRoomNamesSet[name] = true
+end
+
 mod.ModdedRoomNamesWithOldElysium = {
 	-- Tartarus
 	"RoomOpening",
@@ -581,3 +586,5 @@ mod.SkellyStatueConversations = {
 	"ModsNikkelMHadesBiomes_HadesStatueUnveil02",
 	"ModsNikkelMHadesBiomes_HadesStatueUnveil03",
 }
+
+mod.ModdedPlayerScaleMultiplier = 0.9

@@ -175,6 +175,16 @@ end)
 
 modutil.mod.Path.Wrap("StartRoom", function(base, currentRun, currentRoom)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		-- Scale the player model in modded rooms, unscale in vanilla rooms
+		if mod.ModdedRoomNamesSet[currentRoom.Name] then
+			if not game.HeroHasTrait("ModsNikkelMHadesBiomesPlayerScaleTrait") then
+				game.AddTraitToHero({ TraitName = "ModsNikkelMHadesBiomesPlayerScaleTrait" })
+			end
+		elseif game.HeroHasTrait("ModsNikkelMHadesBiomesPlayerScaleTrait") then
+			game.RemoveTrait(currentRun.Hero, "ModsNikkelMHadesBiomesPlayerScaleTrait")
+			mod.ResetPlayerScale()
+		end
+
 		if currentRoom.WingRoom then
 			currentRun.WingDepth = (currentRun.WingDepth or 0) + 1
 		else
