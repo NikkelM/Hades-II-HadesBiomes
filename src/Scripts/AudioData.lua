@@ -384,6 +384,48 @@ mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "
 		IsNone = { "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
 	},
 })
+
+-- Prevent "Death to Chronos" salute voiceline in modded runs
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.SaluteVoiceLines, "/VO/Melinoe_1700", {
+	{
+		PathFromArgs = true,
+		PathFalse = { "OriginalSource", "BlockDeathToChronosSalute" },
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsNone = { "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
+	},
+	OrRequirements = {
+		{
+			{
+				PathFalse = { "GameState", "TextLinesRecord", "TrueEnding01" },
+			},
+		},
+		{
+			{
+				PathTrue = { "GameState", "SpeechRecord", "/VO/Chronos_1058" },
+			},
+		},
+	},
+})
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.SaluteVoiceLines, "/VO/Melinoe_1700_2", {
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsNone = { "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
+	},
+	OrRequirements = {
+		{
+			{
+				PathFalse = { "GameState", "ReachedTrueEnding" },
+			},
+		},
+		{
+			{
+				PathTrue = { "GameState", "SpeechRecord", "/VO/Chronos_1058" },
+			},
+		},
+	},
+}, true)
 -- #endregion
 -- #endregion
 
