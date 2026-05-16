@@ -322,7 +322,7 @@ function mod.ModsNikkelMHadesBiomesPatroclusExitFunctionName(currentRun, exitDoo
 	game.LeaveRoomPresentation(currentRun, exitDoor)
 end
 
-function mod.ModsNikkelMHadesBiomesPatroclusRefillLastStands(args)
+function mod.ModsNikkelMHadesBiomesPatroclusRefillLastStands(source, args)
 	if not game.CurrentRun.Hero.MaxLastStands then
 		return
 	end
@@ -775,9 +775,16 @@ function mod.BedroomIntermissionPresentation(source, args)
 	local megSound2 = nil
 	local thanSound1 = nil
 	local thanSound2 = nil
-	local melSound1 = game.GetRandomMelBecomingCloserSound(source, { melSound1 = true })
-	local melSound2 = game.GetRandomMelBecomingCloserSound(source, { melSound2 = true })
-	local melSound3 = game.GetRandomMelBecomingCloserSound(source, { melSound1 = true })
+	local zagLaughSounds = {
+		"/VO/Modsnikkelmhadesbiomeszagreushome_1512",
+		"/VO/Modsnikkelmhadesbiomeszagreushome_1513",
+		"/VO/Modsnikkelmhadesbiomeszagreushome_1514",
+		"/VO/Modsnikkelmhadesbiomeszagreushome_1515",
+		"/VO/Modsnikkelmhadesbiomeszagreushome_1516",
+	}
+	local zagSound1 = game.RemoveRandomValue(zagLaughSounds)
+	local zagSound2 = game.RemoveRandomValue(zagLaughSounds)
+	local zagSound3 = game.RemoveRandomValue(zagLaughSounds)
 	if args.UseRandomSounds then
 		local megLaughSounds = {
 			"/VO/Modsnikkelmhadesbiomesmegaerahome_0228",
@@ -807,7 +814,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		PlaySound({ Name = "/Leftovers/SFX/RobeFlutter" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
-		PlaySound({ Name = melSound1 })
+		PlaySound({ Name = zagSound1 })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		PlaySound({ Name = thanSound1 or "/VO/Thanatos_0469" })
@@ -815,7 +822,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
-		PlaySound({ Name = melSound2 })
+		PlaySound({ Name = zagSound2 })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
@@ -841,7 +848,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
-		PlaySound({ Name = melSound1 })
+		PlaySound({ Name = zagSound1 })
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
@@ -853,7 +860,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
-		PlaySound({ Name = melSound2 })
+		PlaySound({ Name = zagSound2 })
 		game.wait(0.3)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
@@ -861,7 +868,7 @@ function mod.BedroomIntermissionPresentation(source, args)
 		game.wait(0.5)
 		PlaySound({ Name = "/VO/Modsnikkelmhadesbiomesmegaerahome_0231" })
 		game.wait(1.5)
-		PlaySound({ Name = melSound3 })
+		PlaySound({ Name = zagSound3 })
 		game.wait(1.5)
 	else
 		game.thread(game.PlayVoiceLines, megaeraFlirtVoiceLines, true)
@@ -881,13 +888,13 @@ function mod.BedroomIntermissionPresentation(source, args)
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.6)
-		PlaySound({ Name = "/VO/MelinoeEmotes/EmoteHurt" })
+		PlaySound({ Name = "/VO/ZagreusEmotes/EmoteHurt" })
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		game.wait(0.5)
 		PlaySound({ Name = "/Leftovers/World Sounds/CaravanCreak" })
 		PlaySound({ Name = megSound2 or "/VO/Modsnikkelmhadesbiomesmegaerahome_0227" })
 		game.wait(0.8)
-		PlaySound({ Name = melSound1 })
+		PlaySound({ Name = zagSound1 })
 		game.wait(1.5)
 	end
 

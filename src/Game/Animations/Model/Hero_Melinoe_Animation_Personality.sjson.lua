@@ -903,6 +903,26 @@ local newData = {
 			{ Frame = 129, Sound = "/VO/ZagreusEmotes/EmoteChoking" },
 		},
 	},
+	{
+		Name = "ZagreusDeathPostEndingFullscreen",
+		FilePath = "Screens\\ZagreusDeadPoolKnockback\\ZagreusDeadPoolKnockback",
+		GroupName = "Overlay",
+		Type = "Book",
+		VideoTexture = "ZagreusDeathPostEndingFullscreen",
+		AngleFromOwner = "Ignore",
+		Sound = "/SFX/Player Sounds/PlayerDeathBloodComponents2",
+		EndFrame = 250,
+		HoldLastFrame = true,
+		NumFrames = 250,
+		PlaySpeed = 60.0,
+		StartFrame = 1,
+		Material = "Unlit",
+		DisableOwnerInteract = true,
+		TimeModifierFraction = 0.1,
+		Slides = {
+			{ DurationFrames = 1, Sound = "/SFX/StabSplatter", Frame = 1 },
+		},
+	},
 	-- #endregion
 	-- #endregion
 }

@@ -16,7 +16,33 @@ local encounterReplacements = {}
 local encounterModifications = {
 	Story_Persephone_01 = {
 		StartRoomUnthreadedEvents = {
-			[1] = { Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "ModsNikkelMHadesBiomes_NPC_Persephone_01" }, }, },
+			[1] = {
+				GameStateRequirements = {
+					{
+						PathFalse = { "GameState", "TextLinesRecord", "Ending01" },
+					},
+				},
+				Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "ModsNikkelMHadesBiomes_NPC_Persephone_01" }, },
+			},
+			[2] = {
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "PersephoneMeeting09" },
+					},
+					{
+						PathFalse = { "GameState", "TextLinesRecord", "Ending01" },
+					},
+					RequiredTextLines = mod.NilValue,
+				},
+			},
+			[3] = {
+				FunctionName = _PLUGIN.guid .. "." .. "SpawnChronosRemainsInStory",
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+					},
+				},
+			},
 		},
 	},
 }

@@ -75,10 +75,14 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 		end
 
 		if victim.ModsNikkelMHadesBiomesIsThanatosCursed then
+			-- Prevent respawn eggs from spawning when killed by Thanatos
+			if killer.ObjectId ~= game.CurrentRun.Hero.ObjectId then
+				victim.BlockRespawnShrineUpgrade = true
+			end
 			if killer.ObjectId == game.CurrentRun.Hero.ObjectId then
 				-- Don't play the "DeathHead" animation, which should only play if Thanatos kills the enemy
 				StopAnimation({ Name = "ThanatosCurseIn", DestinationId = victim.ObjectId, PreventChain = true, })
-			elseif victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed and killer.ObjectId ~= game.CurrentRun.Hero.ObjectId then
+			elseif victim.ModsNikkelMHadesBiomesBlockOnDeathWeaponIfThanatosCursed then
 				SetUnitProperty({ Property = "OnDeathWeapon", Value = "null", DestinationId = victim.ObjectId })
 				victim.SpawnsEnemyOnDeath = false
 				victim.SpawnUnitOnDeath = nil
@@ -89,7 +93,8 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 		-- Prevent early encounter completion while ShadeDeathSpawn projectile is in flight
 		-- The projectile spawns a ShadeNaked on landing, but between the shade dying and the projectile landing, the active enemy count may drop to 0 which would end the encounter and expire the projectile
 		if victim.OnDeathFireWeapons and game.ContainsAny(victim.OnDeathFireWeapons, { "ShadeDeathSpawn", "ShadeDeathSpawnElite", "ShadeDeathSpawnSuperElite" }) then
-			game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns = (game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns or 0) + 1
+			game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns = (game.MapState.ModsNikkelMHadesBiomesPendingShadeSpawns or 0) +
+					1
 			local challengeEncounter = game.CurrentRun.CurrentRoom.ChallengeEncounter
 			if challengeEncounter ~= nil and challengeEncounter.InProgress and challengeEncounter.ActiveSpawns ~= nil then
 				challengeEncounter.ActiveSpawns["ModsNikkelMHadesBiomesPendingShadeSpawn"] = true

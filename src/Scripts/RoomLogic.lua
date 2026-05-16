@@ -104,9 +104,10 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 
 		-- Increase the unit's health and armour, if it shouldn't be excluded from the modded modifiers
 		if not unit.ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers then
-			local healthBufferBonus = mod.ModdedUnitHealthBufferMultiplierBonus[currentRun.CurrentRoom.RoomSetName] or
+			local scalingBiome = mod.EnemyBelongsToBiome[unit.Name or ""] or currentRun.CurrentRoom.RoomSetName
+			local healthBufferBonus = mod.ModdedUnitHealthBufferMultiplierBonus[scalingBiome] or
 					mod.ModdedUnitHealthBufferMultiplierBonus.Default
-			local maxHealthBonus = mod.ModdedUnitMaxHealthMultiplierBonus[currentRun.CurrentRoom.RoomSetName] or
+			local maxHealthBonus = mod.ModdedUnitMaxHealthMultiplierBonus[scalingBiome] or
 					mod.ModdedUnitMaxHealthMultiplierBonus.Default
 
 			if unit.HealthBufferMultiplier ~= nil then
@@ -175,6 +176,16 @@ end)
 
 modutil.mod.Path.Wrap("StartRoom", function(base, currentRun, currentRoom)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		-- Scale the player model in modded rooms, unscale in vanilla rooms
+		if mod.ModdedRoomNamesSet[currentRoom.Name] then
+			if not game.HeroHasTrait("ModsNikkelMHadesBiomesPlayerScaleTrait") then
+				game.AddTraitToHero({ TraitName = "ModsNikkelMHadesBiomesPlayerScaleTrait" })
+			end
+		elseif game.HeroHasTrait("ModsNikkelMHadesBiomesPlayerScaleTrait") then
+			game.RemoveTrait(currentRun.Hero, "ModsNikkelMHadesBiomesPlayerScaleTrait")
+			mod.ResetPlayerScale()
+		end
+
 		if currentRoom.WingRoom then
 			currentRun.WingDepth = (currentRun.WingDepth or 0) + 1
 		else
@@ -339,8 +350,8 @@ modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentR
 		game.thread(mod.CleanupOrpheusRaiseDeadEncounter, currentRoom)
 	end
 
-	-- Must be in a modded run for the minor prophecy to be fulfilled
-	if currentRun.ModsNikkelMHadesBiomesIsModdedRun then
+	-- Must be in a normal modded run (not a Dream Run) for the minor prophecy to be fulfilled
+	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and not currentRun.IsDreamRun then
 		if game.HeroHasTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) then
 			local traitData = game.GetHeroTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) or {}
 			if traitData.AccumulatedDamageBonus >= 1.296 then

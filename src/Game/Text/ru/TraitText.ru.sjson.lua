@@ -160,7 +160,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 	-- 	InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
 	-- 	Description =
-	-- 	"Ensure {$Keywords.HealthGatePlural} spawn ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- 	"Ensure a {$Keywords.HealthGate} spawns ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonChaosGatesStatDisplay",
@@ -201,7 +201,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
 	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong2MusicPlayer",
 	-- 	Description =
-	-- 	"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#BoldFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
+	-- 	"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#UpgradeFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",

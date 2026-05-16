@@ -1,6 +1,11 @@
 function mod.ConfirmHadesInstallation()
 	mod.hadesGameFolder = config.hadesGameFolder
 
+	-- Clean leading/trailing quotes, spaces and apostrophes from user-provided path
+	if mod.hadesGameFolder ~= nil then
+		mod.hadesGameFolder = mod.hadesGameFolder:gsub("^[\"'%s]+", ""):gsub("[\"'%s]+$", "")
+	end
+
 	-- "root" means we look for the Hades folder in the same parent directory as Hades II
 	if mod.hadesGameFolder == "root" or mod.hadesGameFolder == "" then
 		local hadesTwoContentFolder = rom.paths.Content()

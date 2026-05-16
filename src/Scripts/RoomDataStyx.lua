@@ -207,7 +207,7 @@ local roomReplacements = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 					{
 						SumPrevRooms = 6,
 						Path = { "NumShovelPoints" },
@@ -772,6 +772,7 @@ local roomReplacements = {
 		},
 
 		EnterVoiceLines = {
+			Queue = "Interrupt",
 			-- First meeting
 			{
 				PlayOnce = true,
@@ -992,7 +993,6 @@ local roomModifications = {
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBossIntro",
 				Args = {
-					ProcessTextLinesIds = { 552394 },
 					SetupBossIds = { 552394 },
 				},
 			},
@@ -1053,6 +1053,9 @@ local roomModifications = {
 			[552590] = {
 				Template = "FinalBossExitDoor",
 				ActivateIds = { 552590, },
+				AllowReroll = true,
+				ModsNikkelMHadesBiomes_IsSurfaceDoor = true,
+				GetUseTextFunctionName = _PLUGIN.guid .. "." .. "GetFinalBossExitDoorUseText",
 			},
 		},
 		BackupCauseOfDeath = "Hades",
@@ -1143,7 +1146,7 @@ local roomModifications = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 				},
 			},
 		},

@@ -160,7 +160,7 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 		InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
 		Description =
-		"Ensure {$Keywords.HealthGatePlural} spawn ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+		"Ensure a {$Keywords.HealthGate} spawns ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonChaosGatesStatDisplay",
@@ -201,7 +201,7 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
 		InheritFrom = "MusicMusicPlayerOrpheusSong2MusicPlayer",
 		Description =
-		"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#BoldFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
+		"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#UpgradeFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
@@ -213,7 +213,8 @@ local newData = {
 		Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoonDiscountStatDisplay",
 		InheritFrom = "BaseStatLine",
 		DisplayName = "{!Icons.Bullet}{#PropertyFormat}Random Discount:",
-		Description = "{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMinDiscount}-{$TooltipData.ExtractData.TooltipMaxDiscount}%{#Prev}",
+		Description =
+		"{#UpgradeFormat}{$TooltipData.ExtractData.TooltipMinDiscount}-{$TooltipData.ExtractData.TooltipMaxDiscount}%{#Prev}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon",
@@ -235,23 +236,27 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Old Grudge",
-		Description = "If you confront {$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades}, they take a burst of damage after the first {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} Sec.",
+		Description =
+		"If you confront {$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades}, they take a burst of damage after the first {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} Sec.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades} Life Reduced:",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades} Life Reduced:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
 		DisplayName = "Deep Dissent",
-		Description = "If you confront {$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades}, they have fewer reinforcements to fight for them.",
+		Description =
+		"If you confront {$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades}, they have fewer reinforcements to fight for them.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades} Foes Summoned:",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}, {$Keywords.CharTyphon}, or {$Keywords.CharHades} Foes Summoned:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion

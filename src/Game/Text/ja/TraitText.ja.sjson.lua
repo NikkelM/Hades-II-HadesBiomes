@@ -160,7 +160,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 	-- 	InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
 	-- 	Description =
-	-- 	"Ensure {$Keywords.HealthGatePlural} spawn ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- 	"Ensure a {$Keywords.HealthGate} spawns ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonChaosGatesStatDisplay",
@@ -201,7 +201,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
 	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong2MusicPlayer",
 	-- 	Description =
-	-- 	"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#BoldFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
+	-- 	"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#UpgradeFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
@@ -235,12 +235,14 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "積年の恨み",
-		Description = "{$Keywords.CharChronos}、{$Keywords.CharTyphon}、または{$Keywords.CharHades}との戦闘開始後{#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay}秒{#Prev}間、対象がダメージを受ける。",
+		Description =
+		"{$Keywords.CharChronos}、{$Keywords.CharTyphon}、または{$Keywords.CharHades}との戦闘開始後{#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay}秒{#Prev}間、対象がダメージを受ける。",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}、{$Keywords.CharTyphon}、または{$Keywords.CharHades}の\nHP削減量：",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}、{$Keywords.CharTyphon}、または{$Keywords.CharHades}の\nHP削減量：",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}{!Icons.EnemyHealth}",
 	},
 	{
@@ -251,7 +253,8 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
 		InheritFrom = "BaseStatLine",
-		DisplayName = "{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}、{$Keywords.CharTyphon}、または{$Keywords.CharHades}が\n召喚する敵の数：",
+		DisplayName =
+		"{!Icons.Bullet}{#PropertyFormat}{$Keywords.CharChronos}、{$Keywords.CharTyphon}、または{$Keywords.CharHades}が\n召喚する敵の数：",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion

@@ -13,6 +13,10 @@ local roomReplacements = {
 		HasFishingPoint = true,
 		FishingPointRequirements = {
 			{
+				-- No fishing if entering the Surface post-ending, to not have it be an incentive
+				PathFalse = { "GameState", "TextLinesRecord", "Ending01" },
+			},
+			{
 				PathTrue = { "GameState", "TextLinesRecord", "PersephoneFirstMeeting" },
 			},
 			{

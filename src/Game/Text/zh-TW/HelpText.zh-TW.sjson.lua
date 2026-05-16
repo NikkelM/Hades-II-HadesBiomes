@@ -18,6 +18,11 @@ local newData = {
 	-- 	Id = "UseLeaveRoomAsphodel_Reroll",
 	-- 	DisplayName = "{I} Embark \n {RR} Alter {#UseGiftPointFormat}(-1{!Icons.ReRoll})",
 	-- },
+	{
+		Id = "ModsNikkelMHadesBiomes_UseFinalBossDoorWithSurface",
+		-- TODO: Localization for "Leave" is required
+		DisplayName = "{I} {#UseTextPreReqFormat}Leave{#Prev}\n {RR} {#UseTextPreReqFormat}前進",
+	},
 	-- #region Badge Ranks/Spirit Mixer
 	-- TODO: Localizations for "Advance" are required
 	{
@@ -665,7 +670,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreTartarus",
 	-- 	DisplayName = "Candle Wax",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with continuity and resourcefulness.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreTartarus_Short",
@@ -690,7 +695,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreAsphodel",
 	-- 	DisplayName = "Granite",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with steadfastness and reliability.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreAsphodel_Short",
@@ -715,7 +720,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreElysium",
 	-- 	DisplayName = "Lapis Lazuli",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with insight and splendor.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreElysium_Short",
@@ -740,7 +745,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreStyx",
 	-- 	DisplayName = "Amber",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with longevity and brittleness.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_OreStyx_Short",
@@ -767,7 +772,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_PlantTartarus",
 	-- 	DisplayName = "Blood Root",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with resilience and hardiness.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_PlantTartarus_Short",
@@ -791,7 +796,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_PlantAsphodel",
 	-- 	DisplayName = "Volcanic Fumes",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with toxicity and intangibility.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_PlantAsphodel_Short",
@@ -815,7 +820,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_PlantElysium",
 	-- 	DisplayName = "Laurel",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with prestige and renown.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_PlantElysium_Short",
@@ -840,7 +845,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_PlantStyx",
 	-- 	DisplayName = "Horned Melon",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with fierceness and peculiarity.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_PlantStyx_Short",
@@ -972,7 +977,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_CropTartarus",
 	-- 	DisplayName = "Deathcap",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with notoriety and legacy.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_CropTartarus_Short",
@@ -996,7 +1001,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_CropAsphodel",
 	-- 	DisplayName = "Ash Flower",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with solitude and renewal.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_CropAsphodel_Short",
@@ -1020,7 +1025,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_CropElysium",
 	-- 	DisplayName = "Rose Quartz",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with grace and fragility.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_CropElysium_Short",
@@ -1044,7 +1049,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_CropStyx",
 	-- 	DisplayName = "Pumpkin",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with warmth and homeliness.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_CropStyx_Short",
@@ -1070,7 +1075,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceTartarus",
 	-- 	DisplayName = "Chthonic Key",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with secret-keeping and foreboding.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceTartarus_Short",
@@ -1094,7 +1099,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceAsphodel",
 	-- 	DisplayName = "Diamonds",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with brilliance and hardness.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceAsphodel_Short",
@@ -1118,7 +1123,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceElysium",
 	-- 	DisplayName = "Celestial Essence",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with sublimity and transcendence.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceElysium_Short",
@@ -1142,7 +1147,7 @@ local newData = {
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceStyx",
 	-- 	DisplayName = "Titan Blood",
-	-- 	Description = "Not even the Fates are privy to what purpose this may hold.",
+	-- 	Description = "Mostly associated with primordiality and impermanence.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomes_BossResourceStyx_Short",
@@ -1845,6 +1850,28 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Cleared",
 	-- 	DisplayName =
 	-- 	"{!Icons.QuestProgressComplete} Defeat unrivaled {$Keywords.CharChronos}, {$Keywords.CharTyphon} and {$Keywords.CharHades} in a single Dream Dive",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestNightmareFearPactUpgrades",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Nightmarish Conditions ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of breaking free from the realm in which she was born, while under the influence of each of the alternate Vows from the {#Emph}Oath of the Unseen{#Prev}.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Return To Sender ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of wielding the power of the stygian boatman, and use it to beat him at his own game.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect_Condition",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressIncomplete} Defeat {$Keywords.CharCharon} with the Aspect of Charon",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect_Cleared",
+	-- 	DisplayName =
+	-- 	"{!Icons.QuestProgressComplete} Defeat {$Keywords.CharCharon} with the Aspect of Charon",
 	-- },
 	-- #endregion
 

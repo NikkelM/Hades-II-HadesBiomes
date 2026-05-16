@@ -2996,6 +2996,7 @@ local npcChoiceMappings = {
 			RequiredEncounterThisRun = "RequiredEncounterLastRun",
 			RequiredKillsThisRun = "RequiredKillsLastRun",
 			RequiredFalseDeathEncounters = "RequiredFalseDeathEncountersThanatos",
+			RequiredRoomThisRun = "RequiredRoomLastRun",
 		},
 	},
 	NPC_Thanatos_Field_01 = {
@@ -3030,6 +3031,7 @@ local npcChoiceMappings = {
 			RequiresRunCleared = "RequiresLastRunCleared",
 			RequiresRunNotCleared = "RequiresLastRunNotCleared",
 			RequiredRoomThisRun = "RequiredRoomLastRun",
+			RequiredAnyRoomsThisRun = "RequiredAnyRoomsLastRun",
 		},
 		MoveEndVoiceLinesAndCuesToBenefitChoiceArgs = true,
 		MovePostLineThreadedFunctionNameToNPCPostChoicePresentationForTextLineSets = {

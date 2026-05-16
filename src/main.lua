@@ -151,6 +151,17 @@ local function on_ready()
 		config.firstTimeSetup = true
 	end
 
+	-- If the mod is enabled but firstTimeSetup is false and required files are missing, the mod was likely uninstalled and reinstalled without the config being reset
+	local numMissingFiles = -1
+	if config.enabled and not config.firstTimeSetup and not config.uninstall then
+		numMissingFiles = mod.CheckRequiredFiles(true)
+		if numMissingFiles > 0 then
+			mod.DebugPrint("Required files are missing but firstTimeSetup is false. Triggering reinstall.", 2)
+			config.uninstall = true
+			config.firstTimeSetup = true
+		end
+	end
+
 	-- If the mod is disabled, we also want to uninstall it and set the firstTimeSetup flag to true for the next time the mod is enabled again
 	if not config.enabled or config.uninstall then
 		local uninstallSuccessful = mod.Uninstall()
@@ -198,14 +209,13 @@ local function on_ready()
 	end
 
 	if setupSuccessful then
-		local numMissingFiles = 0
-		-- Only check if all required files exist here if we are not waiting on an install
+		-- Only check if all required files exist here if we are not waiting on an install, and haven't successfully checked them before
 		-- After the installation completes, mod.CheckRequiredFiles is called again, so we are not missing the check
-		if not mod.InstallationPending then
+		if not mod.InstallationPending and numMissingFiles == -1 then
 			numMissingFiles = mod.CheckRequiredFiles(false)
 		end
 
-		if numMissingFiles == 0 then
+		if numMissingFiles == 0 or mod.InstallationPending then
 			-- General data needed for map generation/display
 			import "Game/MapGroups.sjson.lua"
 			DebugLogScriptImportProgress("MapGroups SJSON")
@@ -230,6 +240,7 @@ local function on_ready()
 			import "Game/Animations/Items_Harvest_VFX.sjson.lua"
 			DebugLogScriptImportProgress("Item Animation SJSON")
 
+			import "Game/Animations/Enemy_1Base_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
@@ -252,6 +263,7 @@ local function on_ready()
 
 			import "Game/Obstacles/Asphodel.sjson.lua"
 			import "Game/Obstacles/Chaos.sjson.lua"
+			import "Game/Obstacles/ClockworkTartarus.sjson.lua"
 			import "Game/Obstacles/Elysium.sjson.lua"
 			import "Game/Obstacles/Gameplay.sjson.lua"
 			import "Game/Obstacles/Graybox.sjson.lua"
@@ -499,6 +511,7 @@ local function on_ready()
 			import "Scripts/EncounterLogic.lua"
 			import "Scripts/EventLogic.lua"
 			import "Scripts/EventPresentation.lua"
+			import "Scripts/FamiliarData.lua"
 			import "Scripts/GameStatsLogic.lua"
 			import "Scripts/GardenLogic.lua"
 			import "Scripts/GhostAdminLogic.lua"
@@ -506,6 +519,7 @@ local function on_ready()
 			import "Scripts/HubPresentation.lua"
 			import "Scripts/KeepsakeData.lua"
 			import "Scripts/MarketPresentation.lua"
+			import "Scripts/MetaUpgradeLogic.lua"
 			import "Scripts/NarrativeLogic.lua"
 			import "Scripts/NPCLogic.lua"
 			import "Scripts/PatchLogic.lua"
@@ -602,6 +616,7 @@ local function on_ready_late()
 	import "Scripts/PowersLogic_Late.lua"
 	import "Scripts/ResourceLogic_Late.lua"
 	import "Scripts/RewardPresentation_Late.lua"
+	import "Scripts/RequirementsLogic_Late.lua"
 	import "Scripts/RoomLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
 	import "Scripts/RunClearLogic_Late.lua"

@@ -73,6 +73,22 @@ modutil.mod.Path.Wrap("GetShopCostMultiplier", function(base)
 end)
 
 modutil.mod.Path.Context.Wrap("RestockWorldItem", function(replacedIndex, restockKitId, args)
+	-- Bypass the PersistentStore cache so FillInShopOptions generates fresh options for the restock
+	modutil.mod.Path.Wrap("FillInShopOptions", function(base, fillArgs)
+		local room = game.CurrentRun.CurrentRoom
+		local roomData = room and room.Name and game.RoomData[room.Name]
+		local hadPersistentStore = roomData and roomData.PersistentStore
+		roomData.PersistentStore = false
+
+		local result = base(fillArgs)
+
+		if hadPersistentStore then
+			roomData.PersistentStore = true
+		end
+
+		return result
+	end)
+
 	modutil.mod.Path.Wrap("SpawnStoreItemInWorld", function(base, itemData, kitId)
 		base(itemData, kitId)
 

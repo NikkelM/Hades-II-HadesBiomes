@@ -390,6 +390,10 @@ local function copyHadesNPCTexts()
 							entry.Id = entry.Id:gsub("Skelly_", "Modsnikkelmhadesbiomesskelly_")
 							-- entry.Id = entry.Id:gsub("Hypnos_", "Modsnikkelmhadesbiomeshypnos_")
 							entry.Id = entry.Id:gsub("ZagreusHome_", "Modsnikkelmhadesbiomeszagreushome_")
+
+							if entry.DisplayName then
+								entry.DisplayName = entry.DisplayName:gsub("{#PreviousFormat}", "{#Prev}")
+							end
 							table.insert(filteredTexts, entry)
 						end
 					end
@@ -549,6 +553,7 @@ function mod.CreateRequiredHookTargetFiles()
 		false, true)
 
 	-- Register the copied .bik_atlas files with H2M so they're injected into engine enumeration
+	-- Also pre-register the .bik file paths to ensure the engine can resolve 720p biks correctly on the first start
 	local pluginsDataBase = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid)
 	for _, name in pairs(mod.BikFileNames) do
 		local atlas1080 = rom.path.combine(pluginsDataBase, "Content\\Movies\\1080p\\" .. name .. ".bik_atlas")
@@ -559,6 +564,11 @@ function mod.CreateRequiredHookTargetFiles()
 		if rom.path.exists(atlas720) then
 			rom.data.register_plugin_file(name .. ".bik_atlas", atlas720)
 		end
+
+		local bik1080 = rom.path.combine(pluginsDataBase, "Content\\Movies\\1080p\\" .. name .. ".bik")
+		local bik720 = rom.path.combine(pluginsDataBase, "Content\\Movies\\720p\\" .. name .. ".bik")
+		rom.data.register_plugin_file(name .. ".bik", bik1080)
+		rom.data.register_plugin_file(name .. ".bik", bik720)
 	end
 
 	mod.DebugPrint("[Pre-install] Pre-install complete. Remaining installation will run during the loading bar.", 3)
@@ -610,7 +620,6 @@ local function copyBikFiles(fileMappings, srcBasePath, destBasePath, nameHint)
 	local pluginsDataBase = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid)
 	for _, dest in pairs(fileMappings) do
 		local destPath = rom.path.combine(pluginsDataBase, destBasePath .. dest .. ".bik")
-		rom.data.register_plugin_file(dest .. ".bik", destPath)
 	end
 end
 

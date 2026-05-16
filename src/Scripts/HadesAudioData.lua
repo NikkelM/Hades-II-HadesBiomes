@@ -2121,6 +2121,12 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		PreLineWait = 0.1,
 		CooldownTime = 40,
 		CooldownName = "TheseusWrathLinesPlayedRecently",
+		GameStateRequirements = {
+			{
+				-- Don't interrupt DeathPresentation
+				PathFalse = { "CurrentRun", "Hero", "IsDead" },
+			},
+		},
 		-- Olympians! Aid us against this fiend!
 		{ Cue = "/VO/Theseus_0088", RequiredAnyUnitAlive = { "Minotaur", "Minotaur2" }, },
 		-- Olympians, I call upon your aid!
@@ -3950,7 +3956,6 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_1075",      Text = "{#Emph}By blood and darkness, let my will be done!" },
 			{ Cue = "/VO/MelinoeField_5192", Text = "OK. {#Emph}To the abyss of the subconscious I descend...!", },
 			{ Cue = "/VO/MelinoeField_5191", Text = "Again. {#Emph}To the abyss of the subconscious I descend...!", },
-			{ Cue = "/VO/Melinoe_4706",      Text = "{#Emph}The strongest dreams shall shatter if they must!" },
 		},
 	},
 	-- After defeating Hades, when opening the run clear scren
@@ -4074,7 +4079,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/MelinoeField_1414", Text = "...Fall.", },
 		},
 	},
-	-- #endrgion
+	-- #endregion
 	-- When entering an Erebus Gate/ShrineGate to a RoomChallenge
 	ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines = {
 		Queue = "Interrupt",
@@ -6831,5 +6836,17 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 		},
 	},
 	-- #endregion
+	ModsNikkelMHadesBiomes_GiftRackLockedVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.35,
+		GameStateRequirements = {},
+		Cooldowns = {
+			{ Name = "MelinoeAnyQuipSpeech" },
+		},
+		{ Cue = "/VO/Melinoe_5558",      Text = "Have to complete an incantation first..." },
+		{ Cue = "/VO/MelinoeField_1063", Text = "Should try an incantation back home..." },
+		{ Cue = "/VO/MelinoeField_1061", Text = "I'll have to use the cauldron first." },
+	},
 	-- #endregion
 }

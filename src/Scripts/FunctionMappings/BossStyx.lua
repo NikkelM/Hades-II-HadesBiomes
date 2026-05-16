@@ -149,6 +149,19 @@ function mod.BossIntroHades(eventSource, args)
 		eventSource.BlockHadesAssistTraits = true
 	end
 
+	-- Scale the AI setup delay and intro camera timings by the speed shrine multiplier
+	local hadesBoss = game.ActiveEnemies[510857]
+	if hadesBoss and eventSource.Encounter.Name ~= "BossHadesPeaceful" then
+		local speedMult = hadesBoss.SpeedMultiplier or 1
+		hadesBoss.AISetupDelay = hadesBoss.AISetupDelay / speedMult
+		if args.UnlockDelay then
+			args.UnlockDelay = args.UnlockDelay / speedMult
+		end
+		if args.DurationIn then
+			args.DurationIn = args.DurationIn / speedMult
+		end
+	end
+
 	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args)
 	-- Custom: To re-enable weapons disabled in RoomEntranceHades
 	game.SessionMapState.WeaponsDisabled = false
@@ -163,10 +176,11 @@ end
 
 function mod.HadesDreamRunIntro(source, args)
 	mod.StartFinalBossRoomMusic()
+	args.SkipWaitForInitialPan = true
 	AngleTowardTarget({ Id = source.ObjectId, DestinationId = 40000 })
 	SetAnimation({ Name = "HadesBattleIntro", DestinationId = source.ObjectId })
 	-- A little higher to line up with the camera movements
-	source.AISetupDelay = 6.5
+	source.AISetupDelay = 6.5 / (source.SpeedMultiplier or 1)
 end
 
 function mod.StartFinalBossRoomIntroMusic()
@@ -232,6 +246,7 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	mod.DestroyHadesFightObstacles()
 	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId }, BlockDeathWeapons = true })
 	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" }, ExcludeNames = { "HadesCerberusAssist" } })
+	mod.CleanupHadesBeams(boss)
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 
 	SetAnimation({ Name = "HadesBattleKnockDown", DestinationId = boss.ObjectId })
@@ -362,6 +377,7 @@ function mod.HadesKillPresentation(unit, args)
 	mod.DestroyHadesFightObstacles()
 	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { unit.ObjectId }, BlockDeathWeapons = true })
 	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow", "HadesReverseDarkness" } })
+	mod.CleanupHadesBeams(unit)
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignette" })
 	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignetteHold" })
@@ -449,20 +465,26 @@ function mod.HadesKillPresentation(unit, args)
 	-- ZeroSuperMeter()
 	ToggleControl({ Names = { "AdvancedTooltip", }, Enabled = true })
 	mod.HarpyKillPresentation(unit, args)
-	game.wait(1.0, game.RoomThreadName)
+	game.wait(1.0)
 	RemoveInputBlock({ Name = "HadesKillPresentation" })
+	game.RemoveTimerBlock(game.CurrentRun, "HadesKillPresentation")
 	-- In Dream Dives, Hades might not be the final boss
 	if not game.CurrentRun.IsDreamRun then
 		mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
+		game.CurrentRun.ActiveBiomeTimer = false
 	end
-	game.CurrentRun.ActiveBiomeTimer = false
 	game.CurrentRun.CurrentRoom.Encounter.BossKillPresentation = false
 	game.thread(game.CheckQuestStatus, { Silent = true })
+
+	-- Safety net: if encounter hasn't completed after RunClearScreen, force it so the reward spawns
+	if not game.CurrentRun.CurrentRoom.Encounter.Completed then
+		game.notifyExistingWaiters("AllRequiredKillEnemiesDead")
+	end
 end
 
 function mod.CheckRunEndPresentation(currentRun, door)
 	AddInputBlock({ Name = "CheckRunEndPresentation" })
-	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
+	if not door.ModsNikkelMHadesBiomes_ProceedToSurface and game.GameState.TextLinesRecord["Ending01"] ~= nil then
 		currentRun.CurrentRoom.SkipLoadNextMap = true
 		currentRun.ModsNikkelMHadesBiomesSkipFindKiller = true
 		game.EndEarlyAccessPresentation()
@@ -480,6 +502,37 @@ function mod.CheckRunEndPresentation(currentRun, door)
 	end
 	RemoveInputBlock({ Name = "CheckRunEndPresentation" })
 end
+
+function mod.GetFinalBossExitDoorUseText(door)
+	-- Door is still locked - encounter not completed or reward not picked up
+	if game.MapState.OfferedExitDoors[door.ObjectId] == nil or not game.CheckRoomExitsReady(game.CurrentRun.CurrentRoom) then
+		return door.UseText
+	end
+
+	-- Ending01 has already been reached, allow quickly exiting through outro, or entering Surface anyways
+	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
+		door.CanBeRerolled = true
+		return "ModsNikkelMHadesBiomes_UseFinalBossDoorWithSurface"
+	end
+
+	-- Ending01 not reached yet, will always enter Surface
+	door.CanBeRerolled = false
+	return door.UnlockedUseText
+end
+
+modutil.mod.Path.Wrap("AttemptReroll", function(base, run, target)
+	-- The reroll function for this door isn't an actual reroll, but lets us enter the Surface instead
+	if target ~= nil and target.ModsNikkelMHadesBiomes_IsSurfaceDoor then
+		target.ModsNikkelMHadesBiomes_ProceedToSurface = true
+		if target.Room == nil then
+			target.Room = game.CreateRoom(game.RoomData["E_Intro"])
+		end
+		game.LeaveRoom(game.CurrentRun, target)
+		return
+	end
+
+	return base(run, target)
+end)
 
 function mod.SurfaceExitIncantationPresentation(usee, args, user)
 	args = args or {}
@@ -575,6 +628,9 @@ function mod.HadesTeleport(enemy, weaponAIData, args)
 	local teleportPoints = GetIds({ Name = weaponAIData.TeleportationPointsGroupName })
 	local teleportPointId = game.GetRandomValue(teleportPoints)
 	game.RemoveValue(teleportPoints, GetClosest({ Id = enemy.ObjectId, DestinationIds = teleportPoints }))
+
+	-- Detach any player cast projectiles (e.g. Howling Soul) attached to the enemy before teleporting
+	mod.DetachCastFromEnemy(enemy.ObjectId)
 
 	Teleport({ Id = enemy.ObjectId, DestinationId = teleportPointId })
 	local postTeleportWaitDuration = game.RandomFloat(weaponAIData.PostTeleportWaitDurationMin,
@@ -677,6 +733,28 @@ function mod.ModsNikkelMHadesBiomesHandleHadesCastDeath(projectileData, triggerA
 
 	game.SetupUnit(newUnit)
 	Destroy({ Id = spawnPointId })
+end
+
+-- Detach cast projectiles attached to a specific enemy
+function mod.DetachCastFromEnemy(enemyObjectId)
+	local castTargets = game.SessionMapState.ModsNikkelMHadesBiomesCastAttachTargets
+	if not castTargets or not game.SessionMapState.CastAttachedProjectiles then
+		return
+	end
+
+	local projectileIds = {}
+	for castId, attachedIds in pairs(game.SessionMapState.CastAttachedProjectiles) do
+		if castTargets[castId] == enemyObjectId then
+			table.insert(projectileIds, castId)
+			if attachedIds and not game.IsEmpty(attachedIds) then
+				projectileIds = game.ConcatTableValues(projectileIds, attachedIds)
+			end
+		end
+	end
+
+	if not game.IsEmpty(projectileIds) then
+		DetachProjectiles({ Ids = projectileIds })
+	end
 end
 
 function mod.ClearStoredAmmoHero()
@@ -1322,6 +1400,25 @@ function mod.ModsNikkelMHadesBiomesHadesPeacefulVictory()
 	game.CurrentRun.VictoryMessage = "ModsNikkelMHadesBiomes_RunClear_ClearNumTen"
 end
 
+function mod.CleanupHadesBeams(boss)
+	if boss.ModsNikkelMHadesBiomes_BeamLoopSoundId then
+		StopSound({ Id = boss.ModsNikkelMHadesBiomes_BeamLoopSoundId, Duration = 0.2 })
+		boss.ModsNikkelMHadesBiomes_BeamLoopSoundId = nil
+	end
+	ExpireProjectiles({ Names = { "HadesCastBeam", "HadesCastBeamNoTracking", "HadesRadialPush" } })
+	if boss.DumbFireThreadName then
+		game.killTaggedThreads(boss.DumbFireThreadName)
+	end
+	if boss.ModsNikkelMHadesBiomes_BeamAnchors then
+		for _, anchorId in ipairs(boss.ModsNikkelMHadesBiomes_BeamAnchors) do
+			if anchorId then
+				Destroy({ Id = anchorId })
+			end
+		end
+		boss.ModsNikkelMHadesBiomes_BeamAnchors = nil
+	end
+end
+
 -- Custom function for Hades' HadesCastBeam attacks, to allow beam rotation while honouring BarrelLength
 function mod.ModsNikkelMHadesBiomesHadesCastBeamFire(enemy, aiData, currentRun, args)
 	local enemyId = enemy.ObjectId
@@ -1354,6 +1451,12 @@ function mod.ModsNikkelMHadesBiomesHadesCastBeamFire(enemy, aiData, currentRun, 
 		ApplyEffect(dampenEffect)
 		table.insert(enemy.ClearEffectsOnHitStun, dampenEffect.EffectName)
 	end
+
+	-- Play the loop sound that was removed from HadesLaser as it is too loud when played from the sjson directly
+	local beamLoopSoundId = PlaySound({ Name = "/SFX/Enemy Sounds/Hades/HadesLaserBlastLoop", Id = enemyId })
+	-- Store on the enemy so phase transitions and kill can clean up
+	enemy.ModsNikkelMHadesBiomes_BeamLoopSoundId = beamLoopSoundId
+	enemy.ModsNikkelMHadesBiomes_BeamAnchors = anchors
 
 	for i = 1, numProjectiles do
 		local indexMultiplier = i - math.ceil(numProjectiles / 2)
@@ -1426,14 +1529,9 @@ function mod.ModsNikkelMHadesBiomesHadesCastBeamFire(enemy, aiData, currentRun, 
 	-- Wait until the attack has completed firing
 	game.wait(game.CalcEnemyWait(enemy, fireDuration), enemy.AIThreadName)
 
+	mod.CleanupHadesBeams(enemy)
+
 	if aiData.FireRotationDampening ~= nil then
 		ClearEffect({ Id = enemy.ObjectId, Name = enemy.Name .. "FireRotationDampening" })
-	end
-
-	-- Clean up the anchors after the attack has ended
-	for _, anchorId in ipairs(anchors) do
-		if anchorId then
-			Destroy({ Id = anchorId })
-		end
 	end
 end

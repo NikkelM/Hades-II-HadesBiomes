@@ -36,3 +36,38 @@ modutil.mod.Path.Wrap("SpawnZagContractRewards", function(base, room, args)
 	base(room, args)
 	game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore = savedPersistentStore
 end)
+
+-- #region Modded run player model size scaling
+function mod.ApplyModdedPlayerScale(unit, args, roomArgs)
+	local scaleMultiplier = args.ScaleMultiplier or mod.ModdedPlayerScaleMultiplier
+	local circeScale = unit.ModsNikkelMHadesBiomesCirceScale or 1.0
+	local finalScale = circeScale * scaleMultiplier
+	SetScale({ Id = unit.ObjectId, Fraction = finalScale, Duration = 0.1 })
+	unit.EffectVfxScale = finalScale
+end
+
+function mod.ResetPlayerScale()
+	-- Restore to Circe scale (or 1.0 if no Circe trait)
+	local circeScale = game.CurrentRun.Hero.ModsNikkelMHadesBiomesCirceScale or 1.0
+	SetScale({ Id = game.CurrentRun.Hero.ObjectId, Fraction = circeScale, Duration = 0.1 })
+	game.CurrentRun.Hero.EffectVfxScale = circeScale
+end
+
+modutil.mod.Path.Wrap("CirceEnlarge", function(base, unit, args, roomArgs)
+	unit.ModsNikkelMHadesBiomesCirceScale = args.ScaleMultiplier
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		args.ScaleMultiplier = args.ScaleMultiplier * mod.ModdedPlayerScaleMultiplier
+	end
+
+	return base(unit, args, roomArgs)
+end)
+
+modutil.mod.Path.Wrap("CirceShrink", function(base, unit, args, roomArgs)
+	unit.ModsNikkelMHadesBiomesCirceScale = args.ScaleMultiplier
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		args.ScaleMultiplier = args.ScaleMultiplier * mod.ModdedPlayerScaleMultiplier
+	end
+
+	return base(unit, args, roomArgs)
+end)
+-- #endregion

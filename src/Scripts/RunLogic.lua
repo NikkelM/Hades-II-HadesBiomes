@@ -323,3 +323,13 @@ modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, ne
 
 	return isForced
 end)
+
+-- OnUsedFunctionName passes the obstacle table, but CannotUseKeepsakeRackPresentation expects an ObjectId
+function mod.LockedGiftRackPresentation(usee)
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_GiftRackLockedVoiceLines, true)
+	if game.CheckCooldown("RackLocked", 1.3) then
+		PlaySound({ Name = game.RoomData.BaseRoom.LockedUseSound, Id = usee.ObjectId })
+		Shake({ Id = usee.ObjectId, Distance = 2, Speed = 300, Duration = 0.25 })
+		game.thread(game.InCombatText, game.CurrentRun.Hero.ObjectId, "AwardMenuLocked", 1.0)
+	end
+end

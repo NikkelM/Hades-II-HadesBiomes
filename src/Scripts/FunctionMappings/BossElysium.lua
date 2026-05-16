@@ -7,24 +7,62 @@ function mod.BossIntroElysium(eventSource, args)
 	-- Use EM intro if VoR is active at current biome depth, otherwise normal intro
 	local shrineLevel = game.IsBossDifficultyShrineUpgradeActive() and 4 or 0
 
+	-- Temporarily set PortraitSwapMap for EM portrait resolution
+	-- Minotaur dialogue lines use Source = "Minotaur" which resolves to EnemyData, not the actual spawned enemy
+	if shrineLevel > 0 then
+		game.EnemyData.Minotaur.PortraitSwapMap = {
+			Portrait_Minotaur_Default_01 = "Portrait_Minotaur_Armored_01",
+		}
+	else
+		game.EnemyData.Minotaur.PortraitSwapMap = nil
+	end
+
 	-- In case of there being no music after certain room chains, resume or start new music
 	mod.SafetyResumeBossMusic()
 
-	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, args[shrineLevel])
+	-- Scale the AI setup delay and intro camera timings by the speed shrine multiplier
+	local introArgs = args[shrineLevel]
+	if introArgs and introArgs.SetupBossIds then
+		for _, id in ipairs(introArgs.SetupBossIds) do
+			local boss = game.ActiveEnemies[id]
+			if boss then
+				local speedMult = boss.SpeedMultiplier or 1
+				boss.AISetupDelay = boss.AISetupDelay / speedMult
+			end
+		end
+		if introArgs.UnlockDelay then
+			local speedMult = game.MetaUpgradeData.EnemySpeedShrineUpgrade.ChangeValue
+			introArgs.UnlockDelay = introArgs.UnlockDelay / speedMult
+		end
+	end
+
+	mod.ModsNikkelMHadesBiomesBossIntro(eventSource, introArgs)
+
+	game.EnemyData.Minotaur.PortraitSwapMap = nil
 end
 
 function mod.ElysiumChampionsDreamRunIntro(source, args)
 	args = args or {}
+	if args and args.SetupBossIds then
+		for _, id in ipairs(args.SetupBossIds) do
+			local boss = game.ActiveEnemies[id]
+			if boss then
+				if game.IsBossDifficultyShrineUpgradeActive() then
+					boss.AISetupDelay = boss.AISetupDelay - 0.6
+				else
+					boss.AISetupDelay = boss.AISetupDelay - 0.1
+				end
+			end
+		end
+	end
+	game.wait(0.9)
 	game.StartBossRoomMusic()
 	args.SkipWaitForInitialPan = true
 	if source.TauntAnimation ~= nil then
 		SetAnimation({ Name = source.TauntAnimation, DestinationId = source.ObjectId })
 	end
-	if game.IsBossDifficultyShrineUpgradeActive() then
-		game.wait(2.3)
-	else
-		game.wait(3.7)
-	end
+	local speedMult = source.SpeedMultiplier or 1
+	game.wait(2.2 / speedMult)
 end
 
 function mod.PlayPreLineTauntAnimFromSource(source, args)
@@ -171,7 +209,7 @@ function mod.MinotaurEarlyExitPresentation(boss, currentRun)
 end
 
 function mod.TheseusEnragedPresentation(enemy, currentRun)
-	local screenId = ScreenAnchors.BossRageFill
+	local screenId = game.ScreenAnchors.BossRageFill
 
 	ShakeScreen({ Speed = 600, Distance = 6, FalloffSpeed = 2000, Duration = 1.0 })
 	Flash({ Id = screenId, Speed = 2.0, MinFraction = 0, MaxFraction = 0.8, Color = game.Color.Purple })
@@ -268,6 +306,11 @@ function mod.SelectTheseusGod(enemy, run, args)
 end
 
 function mod.TheseusGodAI(enemy, currentRun)
+	currentRun = currentRun or game.CurrentRun
+	if currentRun.Hero.IsDead then
+		return
+	end
+
 	-- In the selection function, we removed the "Upgrade" suffix from the god name to be able to load the correct packages
 	local theseusGodName = enemy.TheseusGodName .. "Upgrade"
 	-- Set current weapon name to fire the intro wrath attack
@@ -351,9 +394,15 @@ function mod.DoTheseusSuperPresentation(enemy, weaponAIData)
 end
 
 function mod.ShoutSlow()
+	if game.CurrentRun.Hero.IsDead then
+		return
+	end
 	for k, simData in ipairs(game.CurrentRun.Hero.ShoutSlowParameters) do
-		-- waitScreenTime(  simData.ScreenPreWait )
 		game.waitUnmodified(simData.ScreenPreWait)
+		if game.CurrentRun.Hero.IsDead then
+			game.RemoveSimSpeedChange("WeaponHit", { LerpTime = 0 })
+			return
+		end
 		if simData.Fraction < 1.0 then
 			game.AddSimSpeedChange("WeaponHit", { Fraction = simData.Fraction, LerpTime = simData.LerpTime })
 		else
@@ -390,7 +439,8 @@ function mod.TheseusChariotDismount(boss, currentRun, aiStage)
 	boss.Dismounted = true
 	boss.ChainedWeapon = nil
 	game.thread(game.LastKillPresentation, boss)
-	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines, true)
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.TheseusChariotRuinedVoiceLines, true, nil,
+		{ ThreadName = "TheseusChariotRuined" })
 
 	game.thread(game.CrowdReactionPresentation,
 		{ AnimationNames = { "StatusIconEmbarrassed", "StatusIconOhBoy" }, Sound = "/SFX/TheseusCrowdBoo", ReactionChance = 0.1, Delay = 1, Requirements = { RequiredRoom = "C_Boss01" } })

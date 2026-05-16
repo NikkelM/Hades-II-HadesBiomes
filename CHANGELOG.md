@@ -1,8 +1,125 @@
 # Changelog
 
-## v1.0.0
+## v1.0.4
 
 <!--Releasenotes start-->
+### Patch Highlights:
+- The Chaos Gate in the Training Grounds can now also appear before having met Chaos the first time.
+- The first time that Zagreus' Journey regions are eligible in Dream Dives, Elysium will appear as the guaranteed first region (after you have already completed at least one total Dream Dive).
+- Added two new sets of Arcana card backs, depicting the various bosses and gods you encounter in Zagreus' Journey.
+- Balancing: Slightly reduced overall number of enemies per encounter in all regions.
+- Balancing: Slightly reduced health and armour of non-boss enemies.
+- Fixed: The sound made by Hades' laser beam attack is very loud.
+- Fixed: If Styx appears in a Dream Dive, the timer does not resume in the next biome.
+
+Other fixes and improvements:
+- Melinoë is now slightly smaller while in Zagreus' Journey rooms, to compensate for the difference in room and enemy scales.
+- When confiding in Frinos, Melinoë can now refer to events in Zagreus' Journey runs.
+- Added a new configuration option to allow picking up the reward in the opening room of the run instead of talking to Thanatos, even if he still has unique dialogue left, called `z_SpeedrunSkipOpeningThanatos`.
+- Added a new configuration option to hide the "Poison will wear off automatically!" message that appears when poisoned in Elysium, called `z_HideElysiumPoisonMessage`.
+- The "Poison will wear off automatically!" message that appears when poisoned in Elysium will now only show once per run, not once per encounter.
+- The transition between a locked door reward and the next room's reward showing is now twice as fast.
+- Balancing: Enemies will now wake up and attack the player faster after entering a room.
+- Balancing: "Primordial Chaos" offered by Orpheus will now force one Chaos Gate, down from two.
+- Balancing: The Death Defiance from "Hymn to Zagreus" offered by Orpheus now restores 100% health and magick, up from 10%.
+- Balancing: "Pom Porridge" offered by Eurydice now increases the level of three boons by two, instead of four boons by one. The number of levels now scales in Dream Dives instead of the number of boons.
+- Balancing: "Centaur Tonic" and "Soul Heart" offered by Patroclus now give +40 Max Health/Mana and +25 Max Mana/Health (down from +50/+30).
+- Balancing: Slightly reduced the spawn rate of pickaxe points.
+- Fixed: A Family Dispute can appear as a room reward on rooms with only one exit door if an Erebus Gate is also present in the room.
+- Fixed: Custom dialogues with Hermes have the current region's background artwork, instead of the Olympus artwork.
+- Fixed: Some dialogues with Thanatos and Orpheus cannot trigger.
+- Fixed: Many enemy attacks can be accidentally blocked by certain weapon aspects.
+- Fixed: Enemies spawned in earlier biomes through the Vow of Menace have less health and armour than they should.
+- Fixed: Encounters with Thanatos can be skipped by the "Fig Leaf" keepsake.
+- Fixed: Enemies killed by Thanatos can turn into a Revenant.
+- Fixed: If all enemies in the opening room of a run are killed before Thanatos has left, he blocks the room exit from unlocking until he has left.
+- Fixed: Combat music continues playing in the Asphodel fountain room.
+- Fixed: Dire Brimstones can appear during trove challenge encounters in Asphodel.
+- Fixed: Minor heads spawned during the Hydra's boss fight can be destroyed by "Shocking Loss".
+- Fixed: Death Defiances refilled by Patroclus' "Kiss of Styx Premium" only restore 40% health and magick instead of the advertised 50%.
+- Fixed: Asterius has a second invulnerability phase towards the end of his health bar in the final boss fight in Elysium.
+- Fixed: If Melinoë dies while Theseus is in the transition from his Chariot to foot, voicelines can play over each other or interrupt each other.
+- Fixed: If Melinoë dies while Theseus is starting to call a God to his aid, time briefly slows during the "Return to shadow now" animation.
+- Fixed: "Travel Deal" does not restock the first bought shop item in Styx.
+- Fixed: Rerolling an upgraded reward door in Styx can reroll it into the same reward again.
+- Fixed: The sound made when using a poison cure fountain in Styx is of Zagreus drinking from it, not Melinoë.
+- Fixed: The Dire Satyr Cultist attacks immediately after entering its room, instead of first moving around for a bit.
+- Fixed: If a Gigantic Vermin dies while transformed by "Twilight Curse", it still creates a poison puddle.
+- Fixed: If an enemy that has a cast embedded through "Howling Soul" teleports, the cast teleports with them, exposing their new location.
+- Fixed: If the Vow of Frenzy is turned on and Hades is phased very quickly after the fight starts, he may not leave his invulnerability phase and softlock the player.
+- Fixed: The lasers creates by Hades' laser beam attack can lock onto the player just as the attack ends.
+- Fixed: The lasers created by Hades' laser beam attack don't expire if a stage or phase transition is started while they fire.
+- Fixed: If a boss' attack is interrupted by a stage or phase transition, they will sometimes continue to perform some of its related actions, and can still damage the player.
+- Fixed: Melinoë can still move briefly after picking up the reward after beating Charon.
+- Fixed: Some bosses refer to Zagreus directly in contextual voicelines.
+- Fixed: Voicelines played by bosses that killed you are not correctly attributed to them in the line history in the inventory.
+- Fixed: If a Chaos exit gate is connected to a story encounter while affected by the "Enshrouded" Chaos curse, the reward preview is not hidden.
+- Fixed: If a fishing point is found on the Surface, a voiceline from Melinoë may play.
+- Fixed: A faint green light shows below the player model on the Surface.
+- Fixed: After rerolling a door reward, the new reward preview icon may be larger than expected.
+- Fixed: Selene comments on Melinoë having vanquished a rival while in the non-rival Asphodel boss room, instead of the correct room.
+- Fixed: Melinoë can salute NPCs with "Death to Chronos!" during Zagreus' Journey runs.
+- Fixed: If the mod is removed and then downloaded again without removing the config file, the mod is not re-installed automatically and files will be missing.
+- Fixed: When opening the statistics screen while the mod is disabled and if the previously selected sort column was a modded column, the game crashes.
+<!--Releasenotes end-->
+
+## v1.0.3
+
+### Patch Highlights:
+- Added detailed description texts to all resources, replacing the generic "Not even the Fates are privy to what purpose this may hold" placeholders.
+- When trying to interact with the locked Keepsake Cabinet in rooms between regions, Melinoë will now comment on needing to perform an incantation first.
+- Adjusted the volume balance of background music.
+- Balancing: Slightly reduced overall number of enemies per encounter in Tartarus, Asphodel and Elysium.
+- Fixed: For some background music tracks, the music could transition to a different section when it shouldn't yet, or miss transitioning sections when it should have.
+
+Other fixes and improvements:
+- The text informing you that poison will wear off automatically in Elysium will now track Melinoë for better readability.
+- Added a new minor prophecy if the [Nighmare Fear](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Nightmare_Fear/) mod is installed, tasking you with clearing the Nightmare Realm with each new Vow.
+- Balancing: The "Chthonic Knowledge" prophecy now requires unlocking more Codex entries before being completed.
+- Fixed: The timer does not pause when leaving Charon's boss arena.
+- Fixed: Dire Skullomats can be imbued with elite perks that do not make sense.
+- Fixed: Enemies imbued with the "Linker" perk can try to link with other imbued enemies that are out of range of the laser.
+- Fixed: If a Brimstone or Voidstone is transformed by "Twilight Curse", their tether crystal remain visible around the sheep.
+- Fixed: The song that Eurydice and Orpheus sing together in Asphodel does not begin again once it ends.
+- Fixed: The sound made by the barge during Asphodel room transitions sometimes does not stop when exiting the barge.
+- Fixed: The entrance camera pan during the miniboss fight against the Tiny Vermin pans to the vermin, to the player, then back to the vermin and to the player again.
+- Fixed: The entrance voicelines when Melinoë first meets Hades may sometimes not play.
+- Fixed: In very rare circumstances, no room reward may drop after defeating Hades, softlocking the player.
+- Fixed: When entering a free Chaos Gate forced by "Primordial Chaos" from Orpheus, Melinoë may comment on paying for it with health.
+- Fixed: If the "Use" button is spammed during loot pickups with Hermes or Chaos that would play custom dialogues, multiple dialogue and boon selection windows can appear.
+- Fixed: The game may crash in rare circumstances when one of the upcoming room rewards is a Family Dispute.
+- Fixed: Some trades in the new broker menu can show before having collected the required resources first.
+- Fixed: Localized dialogue texts do not correctly terminate _italicized_ text.
+
+## v1.0.2
+
+### Patch Highlights:
+- You can now choose to visit the Surface even after completing the story of Zagreus' Journey. Simply use the new "Proceed" option shown at the exit door after the final boss fight. You can still exit immediately by using the "Leave" option.
+- Fixed: If playing on lower resolutions and immediately after installing the mod, some enemies appear enlarged and cut off until the game is restarted.
+
+Other fixes and improvements:
+- The Keepsake Cabinet will now always spawn in post-boss rooms, but still only be accessible after performing the required incantation.
+- Balancing: The Doomstone spawned by Hades in his Vow of Rivals fight now has less health and armour.
+- Fixed: Small Hydra heads can be polymorphed, which would turn them into sheep but leave the neck tethers intact.
+- Fixed: Asterius uses his full nameplate instead of the shortened version during the boss encounter in Elysium.
+- Fixed: Asterius and Theseus use their unarmoured dialogue portraits if you have the Vow of Rivals activated the first time you encounter them.
+- Fixed: If a Family Dispute is encountered early on in a region, no enemies spawn and the second reward is granted for free.
+- Fixed: The armour overlay shows when on the Surface.
+- Fixed: The game may crash when trying to leave the final boss room after a previous ending sequence was skipped.
+- Fixed: Thanatos in the opening room and Megaera in Styx can be moved through pushback effects from certain boons.
+- Fixed: The "Thorn Of Thanatos" prophecy can be completed during Dream Dives.
+- Fixed: When quitting the game after returning from the Surface as Zagreus, and then reloading the save, Melinoë's subtitle and line history name are that of Zagreus.
+- Fixed: The mod is unable to discover the Hades installation if the `hadesGameFolder` config setting has leading or trailing quotes, apostrophes or spaces.
+
+## v1.0.1
+
+### Patch Highlights:
+- Fixed: The game may crash when starting a run if Thanatos would appear and want to play a certain dialogue.
+- Fixed: Portraits for Zagreus are missing in particular dialogues.
+- Fixed: The game may crash if starting a run with Chaos' keepsake equipped.
+
+## v1.0.0
+
 ### Patch Highlights:
 - Tartarus, Asphodel, Elysium and Styx can now appear in Dream Dives. You can use the `z_ExcludeFromDreamDives` config value to prevent them from appearing.
 - Meet **Megaera** in Styx, and have a friendly chat and a bottle of Ambrosia or two. This will also allow you to build a relationship with Megaera (including unlocking her keepsake).
@@ -120,7 +237,6 @@ Other fixes and improvements:
 - Fixed: If the mod was uninstalled while an installation screen popup was queued from an earlier installation or update action, the game crashes when entering the Crossroads.
 - Fixed: Entering certain rooms in the Fields of Mourning incorrectly shows the location banner animation.
 - Compatibility: The mod now exposes `IsValidInstallation` to denote to other mods if Zagreus' Journey is installed successfully. Mods can use this through `mods["NikkelM-Zagreus_Journey"].IsValidInstallation`.
-<!--Releasenotes end-->
 
 ## v0.7.4
 

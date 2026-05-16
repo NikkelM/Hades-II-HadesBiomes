@@ -670,7 +670,7 @@ local mainHubAreaCosmetics = {
 		},
 		FlavorText = {
 			en =
-			"Chaos does as it pleases, and though it is in it's essence the opposite of structure, these pillars with their endless patterns seem to embody both concepts at once.",
+			"Chaos does as they please, and though they are in their essence the opposite of structure, these pillars with their endless patterns seem to embody both concepts at once.",
 		},
 		CosmeticsGroup = "Cosmetic_CauldronPillars01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Serpentine",
@@ -2056,6 +2056,11 @@ CosmeticsAPI.RegisterCardBackPack({
 			Comparison = ">=",
 			Value = 3,
 		},
+		{
+			Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+			Comparison = ">=",
+			Value = 1,
+		},
 	},
 	InsertAfterCosmetic = "Cosmetic_CardDeck08",
 	PreRevealVoiceLines = {
@@ -2098,6 +2103,209 @@ CosmeticsAPI.RegisterCardBack({
 	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Biomes\\Deck_Styx",
 	DeckArtMouseoverPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Biomes\\DeckMouseover_Styx",
 	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBiomesStyx",
+})
+-- #endregion
+-- #region Bosses Pack
+CosmeticsAPI.RegisterCardBackPack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
+	Name = {
+		en = "Arcana, Antagonistic",
+	},
+	Description = {
+		en =
+		"{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}4 {#Prev}alternate themes, featuring some of the Underworld's most notorious safe-keepers.",
+	},
+	FlavorText = {
+		en =
+		"Escaping the Underworld, while not impossible, is made that much more difficult through its various wardens.",
+	},
+	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Arcana\\Arcana_Bosses_Icon",
+	Cost = {
+		CosmeticsPoints = 2700,
+		ModsNikkelMHadesBiomes_PlantTartarus = 2,
+		ModsNikkelMHadesBiomes_CropStyx = 2,
+		ModsNikkelMHadesBiomes_OreElysium = 5,
+
+	},
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+		},
+		{
+			Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+			Comparison = ">=",
+			Value = 4,
+		},
+	},
+	InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes",
+})
+
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses_Furies",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\Deck_Furies",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\DeckMouseover_Furies",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBossesFuries",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses_Hydra",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\Deck_Hydra",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\DeckMouseover_Hydra",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBossesHydra",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses_Champions",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\Deck_Champions",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\DeckMouseover_Champions",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBossesChampions",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses_Hades",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\Deck_Hades",
+	DeckArtMouseoverPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Bosses\\DeckMouseover_Hades",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackBossesHades",
+})
+-- #endregion
+-- #region Gods Pack
+CosmeticsAPI.RegisterCardBackPack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	Name = {
+		en = "Arcana, Olympian",
+	},
+	Description = {
+		en =
+		"{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+	},
+	FlavorText = {
+		en =
+		"It is widely known that Gods can be vain, so it is no wonder they go out of their way to ensure they are ever on your mind.",
+	},
+	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Arcana\\Arcana_Gods_Icon",
+	Cost = {
+		CosmeticsPoints = 3000,
+		ModsNikkelMHadesBiomes_PlantElysium = 4,
+		ModsNikkelMHadesBiomes_OreTartarus = 7,
+		ModsNikkelMHadesBiomes_BossResourceElysium = 2,
+	},
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+		},
+		{
+			Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+			Comparison = ">=",
+			Value = 10,
+		},
+		{
+			Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+			Comparison = ">=",
+			Value = 5,
+		},
+	},
+	InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
+})
+
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Athena",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Athena",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Athena",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsAthena",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Artemis",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Artemis",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Artemis",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsArtemis",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Ares",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Ares",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Ares",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsAres",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Demeter",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Demeter",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Demeter",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsDemeter",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Zeus",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Zeus",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Zeus",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsZeus",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Dionysus",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Dionysus",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Dionysus",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsDionysus",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Aphrodite",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Aphrodite",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Aphrodite",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsAphrodite",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Apollo",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Apollo",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Apollo",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsApollo",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Hephaestus",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Hephaestus",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Hephaestus",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsHephaestus",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Hera",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Hera",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Hera",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsHera",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Hestia",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Hestia",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Hestia",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsHestia",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Poseidon",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Poseidon",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Poseidon",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsPoseidon",
 })
 -- #endregion
 -- #endregion

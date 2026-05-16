@@ -60,17 +60,15 @@ local encounterReplacements = {
 		BlockAthenaEncounterKeepsake = false,
 	},
 	GeneratedTartarus = {
-		-- To ensure we are not attacked while still running the entrance animation
-		PreSpawnAIWakeDelay = 1,
 		-- The original from Hades is 2.3
-		ActiveEnemyCapBase = 4.3,
+		ActiveEnemyCapBase = 2.6,
 		-- The original from Hades is 30
 		-- Also change the DifficultyModifier in OpeningGenerated
-		BaseDifficulty = 40,
+		BaseDifficulty = 32,
 		-- The original from Hades is 0.35
-		ActiveEnemyCapDepthRamp = 0.5,
+		ActiveEnemyCapDepthRamp = 0.4,
 		-- The original from Hades is 11
-		DepthDifficultyRamp = 13,
+		DepthDifficultyRamp = 12,
 		DreamBiomeData = {
 			[1] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 15, MoneyDropCapDepthRamp = 0 } },
 			[2] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 20, MoneyDropCapDepthRamp = 0, ActiveEnemyCapDepthRamp = 0.5 } },
@@ -314,7 +312,7 @@ local encounterModifications = {
 	OpeningGenerated = {
 		LoadModdedVoiceBanks = { "Thanatos", "ThanatosField", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
 		-- The modifier should get the difficulty down to 0 for the first room, orient from BaseDifficulty in GeneratedTartarus
-		DifficultyModifier = -40,
+		DifficultyModifier = -32,
 		-- First room of the run needs to wait for the boon pickup before spawning enemies
 		PreSpawnEnemies = false,
 		-- To not block Codex/Inventory before picking up the reward
@@ -360,6 +358,7 @@ local encounterModifications = {
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,
+		NextRoomResumeMusic = true,
 	},
 	Story_Sisyphus_01 = {
 		-- Set ineligible if the player has unlocked Orpheus but never met him - force Orpheus on the next run
@@ -731,6 +730,7 @@ local encounterModifications = {
 		},
 		RequiredKillFunctionName = _PLUGIN.guid .. "." .. "TrackThanatosChallengeProgress",
 		BlockAthenaEncounterKeepsake = true,
+		CanEncounterSkip = false,
 		SkipExitReadyCheckpoint = true,
 		NextRoomResumeMusic = true,
 	},

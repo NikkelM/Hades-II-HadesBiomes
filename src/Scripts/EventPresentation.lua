@@ -72,7 +72,13 @@ modutil.mod.Path.Wrap("FinishedTextLinesPresentation", function(base, source, te
 		SetAnimation({ DestinationId = source.PartnerObjectId, Name = textLines.EndPartnerTextLinesAnimation })
 	end
 	if source ~= nil and source.EndTextLinesVfx and not textLines.IgnoreSourceStartEndAnimations then
-		CreateAnimation({ Name = source.EndTextLinesVfx, DestinationId = source.ObjectId, OffsetX = source.AnimOffsetX, OffsetZ = source.AnimOffsetZ, Group = "Combat_UI_World" })
+		CreateAnimation({
+			Name = source.EndTextLinesVfx,
+			DestinationId = source.ObjectId,
+			OffsetX = source.AnimOffsetX,
+			OffsetZ = source.AnimOffsetZ,
+			Group = "Combat_UI_World"
+		})
 	end
 
 	return base(source, textLines)
@@ -88,6 +94,10 @@ end)
 
 modutil.mod.Path.Wrap("GodLootPickupPresentation", function(base, loot, args)
 	args = args or {}
+
+	-- Prevent double interaction from input spam during custom effects below
+	-- This InputBlock is cleared by game.HandleLootPickup() later on
+	AddInputBlock({ Name = "HandleLootPickup" })
 
 	-- We want to play a custom pickup sound and visual effects if the next text line on this loot is modded
 	-- Getting the text line to play comes from LootPickupPresentation()
@@ -173,4 +183,23 @@ modutil.mod.Path.Wrap("GodLootPickupPresentation", function(base, loot, args)
 	end
 
 	return base(loot, args)
+end)
+
+modutil.mod.Path.Wrap("ChaosKeepsakeAcquiredPresentation", function(base, newTraitName)
+	-- Base game function lacks a nil guard, within the if clause is the base game function contents without the wait() call
+	if not game.CurrentRun or not game.CurrentRun.CurrentRoom then
+		CreateAnimation({ Name = "ChaosShiftFx", DestinationId = game.CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
+		game.thread(game.InCombatTextArgs, {
+			TargetId = game.CurrentRun.Hero.ObjectId,
+			Text = "ChaosKeepsake_NewChoice",
+			SkipRise = false,
+			SkipFlash = false,
+			Duration = 1.5,
+			ShadowScaleX = 1.2,
+			LuaKey = "TempTextData",
+			LuaValue = { NewName = newTraitName }
+		})
+	else
+		return base(newTraitName)
+	end
 end)

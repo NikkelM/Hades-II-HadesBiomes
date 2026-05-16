@@ -192,12 +192,12 @@ local roomReplacements = {
 					{
 						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreElysium" },
 						Comparison = "<",
-						Value = 10,
+						Value = 11,
 					},
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 					{
 						SumPrevRooms = 2,
 						Path = { "NumShovelPoints" },
@@ -797,12 +797,12 @@ local roomModifications = {
 					{
 						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreElysium" },
 						Comparison = "<",
-						Value = 10,
+						Value = 11,
 					},
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 				},
 			},
 		},
@@ -837,10 +837,22 @@ local roomModifications = {
 		ObstacleData = {
 			[486504] = {
 				SetupGameStateRequirements = {
-					{
-						PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation" },
-					},
 					RequiredCosmetics = mod.NilValue,
+				},
+				SetupEvents = {
+					{
+						FunctionName = "OverwriteSelf",
+						Args = {
+							OnUsedFunctionName = _PLUGIN.guid .. "." .. "LockedGiftRackPresentation",
+							UseText = "UseLockedGiftRack",
+							Animation = "GiftRackClosed",
+						},
+						GameStateRequirements = {
+							{
+								PathFalse = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation" },
+							},
+						},
+					},
 				},
 			},
 			-- Makes the exit door interactable

@@ -17,7 +17,25 @@ modutil.mod.Path.Wrap("AttachCastAtLocation", function(base, triggerArgs)
 		triggerArgs.TriggeredByTable = nil
 	end
 
+	-- Store the target enemy ID so WeaponCastFired can pick it up for tracking
+	if triggerArgs.triggeredById and game.ActiveEnemies[triggerArgs.triggeredById] then
+		game.SessionMapState.ModsNikkelMHadesBiomesPendingCastAttachTarget = triggerArgs.triggeredById
+	end
+
 	return base(triggerArgs)
+end)
+
+modutil.mod.Path.Wrap("WeaponCastFired", function(base, owner, weaponData, args, triggerArgs)
+	base(owner, weaponData, args, triggerArgs)
+
+	-- Pick up the pending target from AttachCastAtLocation and associate it with the cast projectile ID
+	local pendingTarget = game.SessionMapState.ModsNikkelMHadesBiomesPendingCastAttachTarget
+	if pendingTarget and triggerArgs and triggerArgs.ProjectileId then
+		game.SessionMapState.ModsNikkelMHadesBiomesCastAttachTargets = game.SessionMapState
+				.ModsNikkelMHadesBiomesCastAttachTargets or {}
+		game.SessionMapState.ModsNikkelMHadesBiomesCastAttachTargets[triggerArgs.ProjectileId] = pendingTarget
+		game.SessionMapState.ModsNikkelMHadesBiomesPendingCastAttachTarget = nil
+	end
 end)
 
 modutil.mod.Path.Wrap("HadesInvisibility", function(base)

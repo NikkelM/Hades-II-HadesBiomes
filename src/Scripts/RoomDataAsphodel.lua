@@ -192,12 +192,12 @@ local roomReplacements = {
 					{
 						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreAsphodel" },
 						Comparison = "<",
-						Value = 15,
+						Value = 14,
 					},
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 					{
 						SumPrevRooms = 2,
 						Path = { "NumShovelPoints" },
@@ -733,12 +733,12 @@ local roomModifications = {
 					{
 						Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_OreAsphodel" },
 						Comparison = "<",
-						Value = 15,
+						Value = 14,
 					},
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 				},
 			},
 		},
@@ -746,6 +746,7 @@ local roomModifications = {
 	X_Reprieve01 = {
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "AsphodelEnterRoomPresentation",
 		SuppressRewardSpawnSounds = false,
+		SecretMusic = "/Music/BlankMusicCue",
 
 		HarvestPointChances = { 0.5, 0.3, },
 		ShovelPointChance = 0.2,
@@ -780,10 +781,22 @@ local roomModifications = {
 		ObstacleData = {
 			[486504] = {
 				SetupGameStateRequirements = {
-					{
-						PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation" },
-					},
 					RequiredCosmetics = mod.NilValue,
+				},
+				SetupEvents = {
+					{
+						FunctionName = "OverwriteSelf",
+						Args = {
+							OnUsedFunctionName = _PLUGIN.guid .. "." .. "LockedGiftRackPresentation",
+							UseText = "UseLockedGiftRack",
+							Animation = "GiftRackClosed",
+						},
+						GameStateRequirements = {
+							{
+								PathFalse = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation" },
+							},
+						},
+					},
 				},
 			},
 			-- Makes the exit door interactable

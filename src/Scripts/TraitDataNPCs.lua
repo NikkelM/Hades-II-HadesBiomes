@@ -355,11 +355,11 @@ local newTraitData = {
 		RarityLevels = {
 			Common = { Multiplier = 1 },
 			Rare = { Multiplier = 1 },
-			Epic = { Multiplier = 1.25 },
-			Heroic = { Multiplier = 5/4 },
+			Epic = { Multiplier = 1.5 },
+			Heroic = { Multiplier = 2 },
 		},
 		ModsNikkelMHadesBiomesDreamRunScaling = {
-			ScaleKeys = { { "AcquireFunctionArgs", "NumTraits" } },
+			ScaleKeys = { { "AcquireFunctionArgs", "NumStacks" } },
 			AsInt = true,
 		},
 		GameStateRequirements = {
@@ -367,8 +367,8 @@ local newTraitData = {
 		},
 		AcquireFunctionArgs = {
 			FunctionName = "AddStackToTraits",
-			NumTraits = 4,
-			NumStacks = 1,
+			NumTraits = 3,
+			NumStacks = 2,
 			ReportValues = {
 				ReportedNumTraits = "NumTraits",
 				ReportedNumStacks = "NumStacks",
@@ -505,8 +505,8 @@ local newTraitData = {
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusBuff",
 		AcquireFunctionArgs = {
 			FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusAddMaxHealthMana",
-			AddMaxHealth = 50,
-			AddMaxMana = 30,
+			AddMaxHealth = 40,
+			AddMaxMana = 25,
 			ReportValues = {
 				ReportedMaxHealth = "AddMaxHealth",
 				ReportedMaxMana = "AddMaxMana",
@@ -529,8 +529,8 @@ local newTraitData = {
 		Icon = "Boon_Patroclus_05",
 		AcquireFunctionArgs = {
 			FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusAddMaxHealthMana",
-			AddMaxHealth = 30,
-			AddMaxMana = 50,
+			AddMaxHealth = 25,
+			AddMaxMana = 40,
 			ReportValues = {
 				ReportedMaxHealth = "AddMaxHealth",
 				ReportedMaxMana = "AddMaxMana",
@@ -737,7 +737,7 @@ local newTraitData = {
 			"ModsNikkelMHadesBiomesOrpheusChaosThemeBoonChaosGatesStatDisplay",
 		},
 		ForceSecretDoor = true,
-		RemainingUses = 2,
+		RemainingUses = 1,
 	},
 	ModsNikkelMHadesBiomesOrpheusChaosTheme_EntryCostSubBoon = {
 		InheritFrom = { "ModsNikkelMHadesBiomesBaseOrpheus" },
@@ -872,7 +872,7 @@ local newTraitData = {
 			TrackName = "{e044c3d0-8cf0-44ac-9d8e-75eda8c80501}",
 		},
 
-		ModsNikkelMHadesBiomesOrpheusLastStandHealFraction = 0.1,
+		ModsNikkelMHadesBiomesOrpheusLastStandHealFraction = 1,
 		ExtractValues = {
 			{
 				Key = "ModsNikkelMHadesBiomesOrpheusLastStandHealFraction",

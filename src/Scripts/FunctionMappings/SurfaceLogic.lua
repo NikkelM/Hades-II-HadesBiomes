@@ -5,12 +5,16 @@ function mod.RoomEntranceE_Intro(currentRun, currentRoom)
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or
 			0.0
 
+	-- Remove all armor to prevent the armor bar still being shown - the player won't need it anymore in this run
+	game.CurrentRun.Hero.HealthBuffer = 0
 	-- Prevent Hephaestus blast VFX
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusWeaponBoon")
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusSpecialBoon")
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusSprintBoon")
 	-- Prevent Universal Donor/BloodRetentionBoon VFX
 	StopAnimation({ Name = "AresMelBuff", DestinationId = currentRun.Hero.ObjectId })
+	-- Prevent Melinoe's arm glow from showing at the model origin after the Zagreus model swap
+	StopAnimation({ Name = "MelArmGlow", DestinationId = currentRun.Hero.ObjectId })
 
 	FadeOut({ Color = game.Color.Black, Duration = 0 })
 	AdjustFullscreenBloom({ Name = "LightningStrike", Duration = 0 })
@@ -242,6 +246,8 @@ function mod.RoomEntranceSurface(currentRun, currentRoom)
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusSprintBoon")
 	-- Prevent Universal Donor/BloodRetentionBoon VFX
 	StopAnimation({ Name = "AresMelBuff", DestinationId = currentRun.Hero.ObjectId })
+	-- Prevent Melinoe's arm glow from showing at the model origin after the Zagreus model swap
+	StopAnimation({ Name = "MelArmGlow", DestinationId = currentRun.Hero.ObjectId })
 
 	FadeIn({ Duration = 5.5 })
 	PanCamera({ Id = currentRoom.CameraEndPoint, Duration = currentRoom.IntroSequenceDuration or 4, EaseIn = 0.0, EaseOut = 1.5 })
@@ -403,6 +409,7 @@ function mod.SetupPersephoneMusic(eventSource, args)
 end
 
 function mod.SurfaceKillHero(source, args)
+	args = args or {}
 	game.wait(args.WaitTime or 0)
 
 	-- Since we set CurrentRun.CurrentRoom to BaseRoom in KillHero
@@ -415,6 +422,40 @@ function mod.SurfaceKillHero(source, args)
 	if cachedRoomOverrides ~= nil then
 		game.OverwriteSelf(game.CurrentRun.Hero, cachedRoomOverrides)
 	end
+end
+
+function mod.ChronosRemainsReturnPresentation(usee)
+	AddInputBlock({ Name = "ChronosRemainsReturn" })
+	UseableOff({ Id = usee.ObjectId })
+	game.HideUseButton(usee.ObjectId, usee)
+	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = usee.ObjectId })
+	game.wait(0.6)
+	RemoveInputBlock({ Name = "ChronosRemainsReturn" })
+	mod.SurfaceKillHero(usee, {})
+end
+
+function mod.SpawnChronosRemainsInStory(source, args)
+	local chronosRemains = game.DeepCopyTable(game.ObstacleData.ChronosRemains) or {}
+
+	chronosRemains.OnHitEvents = nil
+	chronosRemains.OnHitVoiceLines = nil
+	chronosRemains.DistanceTriggers = nil
+	chronosRemains.InteractDistance = 220
+
+	chronosRemains.UseText = "UseFinalBossDoor"
+	chronosRemains.OnUsedFunctionName = _PLUGIN.guid .. "." .. "ChronosRemainsReturnPresentation"
+	chronosRemains.OnUsedFunctionArgs = nil
+
+	chronosRemains.ObjectId = SpawnObstacle({
+		Name = "ModsNikkelMHadesBiomes_ChronosRemains",
+		Group = "Standing",
+		DestinationId = 554905,
+		AttachedTable = chronosRemains,
+		OffsetX = -110,
+		OffsetY = -140,
+	})
+
+	game.SetupObstacle(chronosRemains)
 end
 
 -- #endregion
@@ -518,6 +559,8 @@ function mod.ReturnRoomEntrance(currentRun, currentRoom)
 	game.RemoveReadiedMassiveAttackPresentation("HephaestusSprintBoon")
 	-- Prevent Universal Donor/BloodRetentionBoon VFX
 	StopAnimation({ Name = "AresMelBuff", DestinationId = currentRun.Hero.ObjectId })
+	-- Prevent Melinoe's arm glow from showing at the model origin after the Zagreus model swap
+	StopAnimation({ Name = "MelArmGlow", DestinationId = currentRun.Hero.ObjectId })
 
 	game.wait(0.03)
 	FadeIn({ Duration = 0.0 })

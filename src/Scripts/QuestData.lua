@@ -5,8 +5,9 @@ game.ScreenData.QuestLog.CashedOutFormat.TextSymbolScale = 0
 game.ScreenData.QuestLog.ComponentData.InfoBoxTitle.TextArgs.TextSymbolScale = 0.5
 
 local flippedArcanaActive = rom.mods["ReadEmAndWeep-Flip_the_Arcana_Mod"]
+local nighmareFearActive = rom.mods["ReadEmAndWeep-Nightmare_Fear"]
 
--- The order of the quests in the Quest log, these will be appended to the end of the vanilla list
+-- #region The order of the quests in the Quest log, these will be appended to the end of the vanilla list
 local newQuestOrderData = {
 	-- key / mission-critical
 	"ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice",
@@ -47,8 +48,9 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
 	"ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun",
 	"ModsNikkelMHadesBiomes_QuestShutdownThanatos",
-	"ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
 	"ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
+	"ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
+	"ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect",
 	"ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses",
 	"ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus",
 }
@@ -65,7 +67,22 @@ if flippedArcanaActive then
 		table.insert(newQuestOrderData, insertIndex, "ModsNikkelMHadesBiomes_QuestFlippedMetaUpgrades")
 	end
 end
+
+if nighmareFearActive then
+	local insertIndex = nil
+	for index, questKey in ipairs(newQuestOrderData) do
+		if questKey == "ModsNikkelMHadesBiomes_QuestPactUpgrades" then
+			insertIndex = index + 1
+			break
+		end
+	end
+	if insertIndex then
+		table.insert(newQuestOrderData, insertIndex, "ModsNikkelMHadesBiomes_QuestNightmareFearPactUpgrades")
+	end
+end
+
 game.ConcatTableValuesIPairs(game.QuestOrderData, newQuestOrderData)
+-- #endregion
 
 local newQuestData = {
 	-- #region Base Hades Quests
@@ -252,7 +269,7 @@ local newQuestData = {
 				Path = { "GameState", "ModsNikkelMHadesBiomesCodexEntriesUnlockedCache", },
 				CountOf = mod.CodexEntryNames,
 				Comparison = ">=",
-				Value = 15,
+				Value = 30,
 			},
 		},
 	},
@@ -1428,6 +1445,29 @@ local newQuestData = {
 		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Condition",
 		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Cleared",
 	},
+	-- Defeat Charon with the Aspect of Charon
+	ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect = {
+		InheritFrom = { "DefaultQuestItem", "DefaultKillQuest" },
+		RewardResourceName = "CharonPoints",
+		RewardResourceAmount = 3,
+		UnlockGameStateRequirements = {
+			-- Must have beaten Charon at least once
+			{
+				PathTrue = { "GameState", "EncountersCompletedCache", "BossCharon" },
+			},
+			-- Must have the Aspect of Charon unlocked
+			{
+				PathTrue = { "GameState", "WeaponsUnlocked", "AxeArmCastAspect" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "ModsNikkelMHadesBiomes_DefeatedCharonWithCharonAspect" },
+			},
+		},
+		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect_Condition",
+		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect_Cleared",
+	},
 	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.QuestData, newQuestData)
@@ -1479,4 +1519,45 @@ if flippedArcanaActive then
 		},
 	}
 	mod.AddTableKeysSkipDupes(game.QuestData, flippedArcanaNewQuestData)
+end
+
+if nighmareFearActive then
+	-- Clearing with each Nightmare Fear Vow
+	local nighmareFearNewQuestData = {
+		ModsNikkelMHadesBiomes_QuestNightmareFearPactUpgrades = {
+			InheritFrom = { "DefaultQuestItem", "DefaultUnseenQuest" },
+			RewardResourceName = "WeaponPointsRare",
+			RewardResourceAmount = 4,
+			UnlockGameStateRequirements = {
+				{
+					PathTrue = { "GameState", "QuestsCompleted", "ModsNikkelMHadesBiomes_QuestPactUpgrades" },
+				},
+			},
+			CompleteGameStateRequirements = {
+				{
+					Path = { "GameState", "ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades", "Styx" },
+					HasAll = {
+						"NightmareFearNoManaMetaUpgrade",
+						"NightmareFearHammerlessMetaUpgrade",
+						"NightmareFearLowManaStartMetaUpgrade",
+						"NightmareFearEnemyDodgeMetaUpgrade",
+						"NightmareFearEclipseMetaUpgrade",
+						"NightmareFearFirstHitMetaUpgrade",
+						"NightmareFearBlindRewardMetaUpgrade",
+						"NightmareFearPurgingMetaUpgrade",
+						"NightmareFearNoElementsMetaUpgrade",
+						"NightmareFearTaxMetaUpgrade",
+						"NightmareFearNoHelpMetaUpgrade",
+						"NightmareFearPomLevelsMetaUpgrade",
+						"NightmareFearExpirationMetaUpgrade",
+						"NightmareFearKeepsakeLevelMetaUpgrade",
+						"NightmareFearLoweredRarityMetaUpgrade",
+						"NightmareFearLessChoicesMetaUpgrade",
+						"NightmareFearDevotionWeaponMetaUpgrade",
+					},
+				},
+			},
+		},
+	}
+	mod.AddTableKeysSkipDupes(game.QuestData, nighmareFearNewQuestData)
 end

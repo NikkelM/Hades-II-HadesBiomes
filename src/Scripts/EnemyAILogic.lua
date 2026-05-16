@@ -58,6 +58,17 @@ function mod.ModsNikkelMHadesBiomesBossAIStageHandler(enemy, args)
 		ClearEffect({ Id = enemy.ObjectId, Names = enemy.ClearEffectsOnHitStun })
 	end
 
+	if aiStage.AIData ~= nil then
+		enemy.AIEndHealthThreshold = nil
+		enemy.AIEndWithSpawnedEncounter = nil
+
+		if aiStage.AIData.ThresholdOverrideIfInRoom ~= nil and game.CurrentRun.CurrentRoom.Name == aiStage.AIData.ThresholdOverrideIfInRoom.Room then
+			aiStage.AIData.AIEndHealthThreshold = aiStage.AIData.ThresholdOverrideIfInRoom.Value
+		end
+
+		game.OverwriteTableKeys(enemy, aiStage.AIData)
+	end
+
 	if aiStage.UnequipWeapons ~= nil then
 		for k, weaponName in pairs(aiStage.UnequipWeapons) do
 			game.RemoveValueAndCollapse(enemy.WeaponOptions, weaponName)

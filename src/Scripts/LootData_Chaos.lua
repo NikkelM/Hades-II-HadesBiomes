@@ -87,7 +87,9 @@ local newModdedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ChaosFirstPickUp",
+			-- Place before the first vanilla Chaos dialogue, to ensure it will play in RoomOpening instead of that one
+			-- The ChaosFirstPickUp will still play normally the first time you enter a Chaos Gate, as this voiceline is additionally gated on only playing in RoomOpening
+			InsertAtFirstPriority = true,
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "ChaosInteractPresentation",

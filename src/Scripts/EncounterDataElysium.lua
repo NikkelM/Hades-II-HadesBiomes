@@ -52,18 +52,16 @@ mod.UpdateField(encounterDataElysium, "Challenge", "TimeChallenge", { "InheritFr
 -- Can still use modifications if the modified table did not exist beforehand
 local encounterReplacements = {
 	GeneratedElysium = {
-		-- To ensure we are not attacked while still running the entrance animation
-		PreSpawnAIWakeDelay = 1,
 		-- The original from Hades is 2.3 - inherited from Generated
 		ActiveEnemyCapBase = 3,
 		-- The original from Hades is 220
-		BaseDifficulty = 250,
+		BaseDifficulty = 228,
 		-- The original from Hades is 0.4
-		ActiveEnemyCapDepthRamp = 0.6,
+		ActiveEnemyCapDepthRamp = 0.48,
 		-- The original from Hades is 0.35
-		TypeCountDepthRamp = 0.5,
+		TypeCountDepthRamp = 0.4,
 		-- The original from Hades is 70
-		DepthDifficultyRamp = 76,
+		DepthDifficultyRamp = 73,
 		-- Original is missing HandleEncounterPreSpawns
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
@@ -115,6 +113,7 @@ local encounterModifications = {
 	},
 	DevotionTestElysium = {
 		CanEncounterSkip = false,
+		NextRoomResumeMusic = true,
 	},
 	Story_Patroclus_01 = {
 		ExitVoiceLines = { ObjectType = "NPC_Patroclus_01", },

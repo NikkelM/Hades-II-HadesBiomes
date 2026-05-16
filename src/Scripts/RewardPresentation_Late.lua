@@ -1,6 +1,7 @@
 modutil.mod.Path.Context.Wrap.Static("CreateDoorRewardPreview",
 	function(origExitDoor, origChosenRewardType, origChosenLootName, origIndex, origArgs)
 		modutil.mod.Path.Wrap("SpawnObstacle", function(base, args)
+			args = args or {}
 			local exitDoor = modutil.mod.Locals.Stacked(3).exitDoor
 			local chosenRewardType = modutil.mod.Locals.Stacked(3).chosenRewardType
 			if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.HadesExitDoorObstacleNames[exitDoor.Name] and not args.ReUseIds and chosenRewardType == "Devotion" then
@@ -8,6 +9,8 @@ modutil.mod.Path.Context.Wrap.Static("CreateDoorRewardPreview",
 				local doorIconOffsetX = modutil.mod.Locals.Stacked(3).doorIconOffsetX
 				local doorIconIsometricShiftX = modutil.mod.Locals.Stacked(3).doorIconIsometricShiftX
 				-- Determine if we are on LootA or LootB
+				args.OffsetX = args.OffsetX or 0
+				args.OffsetY = args.OffsetY or 0
 				if doorIconOffsetX + doorIconIsometricShiftX < args.OffsetX then
 					-- We are on LootA, which is on the lower left
 					args.OffsetX = args.OffsetX - 3

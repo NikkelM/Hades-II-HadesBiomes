@@ -51,18 +51,16 @@ mod.UpdateField(encounterDataAsphodel, "Challenge", "TimeChallenge", { "InheritF
 -- Can still use modifications if the modified table did not exist beforehand
 local encounterReplacements = {
 	GeneratedAsphodel = {
-		-- To ensure we are not attacked while still running the entrance animation
-		PreSpawnAIWakeDelay = 1.6,
 		-- The original from Hades is 5.0
-		ActiveEnemyCapBase = 6.2,
+		ActiveEnemyCapBase = 5.5,
 		-- The original from Hades is 170
-		BaseDifficulty = 190,
+		BaseDifficulty = 178,
 		-- The original from Hades is 1.0
-		ActiveEnemyCapDepthRamp = 1.3,
+		ActiveEnemyCapDepthRamp = 1.1,
 		-- The original from Hades is 0.35
-		TypeCountDepthRamp = 0.5,
+		TypeCountDepthRamp = 0.4,
 		-- The original from Hades is 25
-		DepthDifficultyRamp = 30,
+		DepthDifficultyRamp = 28,
 		-- Load the base Hades II Asphodel package, since we reuse some enemies
 		LoadPackages = { "BiomeB" },
 		-- Original is missing HandleEncounterPreSpawns
@@ -94,6 +92,7 @@ local encounterModifications = {
 	-- GENERIC
 	DevotionTestAsphodel = {
 		CanEncounterSkip = false,
+		NextRoomResumeMusic = true,
 	},
 	Story_Eurydice_01 = {
 		NextRoomResumeMusic = true,

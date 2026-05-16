@@ -8,14 +8,15 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		return
 	end
 
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.HadesExitDoorObstacleNames[exitDoor.Name] and not args.ReUseIds then
-		local room = exitDoor.Room
-		chosenRewardType = chosenRewardType or room.ChosenRewardType
+	local room = exitDoor.Room
 
-		-- If the Chaos curse that hides room reward previews is active, clear the RewardPreviewOverride on story rooms so it doesn't override the hidden preview
-		if room and room.ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse and game.HasHeroTraitValue("HiddenRoomReward") then
-			room.RewardPreviewOverride = nil
-		end
+	-- If the Chaos curse that hides room reward previews is active, clear the RewardPreviewOverride on story rooms so it doesn't override the hidden preview
+	if room and room.ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse and game.HasHeroTraitValue("HiddenRoomReward") then
+		room.RewardPreviewOverride = nil
+	end
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.HadesExitDoorObstacleNames[exitDoor.Name] and not args.ReUseIds then
+		chosenRewardType = chosenRewardType or room.ChosenRewardType
 
 		local metaProgressRewardTypes = {
 			"MetaCurrencyDrop",
@@ -43,46 +44,6 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		local doorIconIsometricShiftZ = -3
 
 		local offsetMappings = {}
-		local additionalModifications = {
-			MetaCurrencyDrop = {
-				doorIconOffsetY = -5,
-				doorIconScale = -0.1,
-			},
-			MetaCurrencyBigDrop = {
-				doorIconOffsetX = 5,
-				doorIconScale = -0.1,
-			},
-			MetaCardPointsCommonBigDrop = {
-				doorIconOffsetX = 5,
-				doorIconScale = -0.05,
-			},
-			RoomRewardHealDrop = {
-				doorIconScale = -0.1,
-			},
-			WeaponUpgrade = {
-				doorIconScale = -0.1,
-			},
-			TalentDrop = {
-				doorIconScale = -0.2,
-			},
-			-- Star Dust
-			Mixer5CommonDrop = {
-				doorIconScale = -0.1,
-			},
-			-- The below are for Styx and Erebus/Challenge doors
-			RoomMoneyBigDrop = {
-				doorIconScale = -0.1,
-			},
-			MaxHealthDropBig = {
-				doorIconScale = -0.1,
-			},
-			MaxManaDropBig = {
-				doorIconScale = -0.1,
-			},
-			StackUpgradeBig = {
-				doorIconScale = -0.05,
-			},
-		}
 
 		if exitDoor.Name == "TartarusDoor03b" then
 			offsetMappings = {
@@ -378,9 +339,9 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		end
 
 		-- Add the additional modifications for the chosen reward type
-		if additionalModifications[chosenRewardType] then
+		if mod.HadesDoorRewardTypeModifications[chosenRewardType] then
 			for property, value in pairs(properties) do
-				properties[property] = properties[property] + (additionalModifications[chosenRewardType][property] or 0)
+				properties[property] = properties[property] + (mod.HadesDoorRewardTypeModifications[chosenRewardType][property] or 0)
 			end
 		end
 

@@ -878,7 +878,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	-- For Megaera (D_Hub version)
-	if requirements.RequiredFalseSeenRoomLastRun ~= nil then
+	if requirements.RequiredFalseSeenRoomLastRun ~= nil and prevRun ~= nil then
 		if mod.HasSeenRoomInRun(prevRun, requirements.RequiredFalseSeenRoomLastRun) then
 			return false
 		end
@@ -1020,7 +1020,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			hasClear = true
 		else
 			for k, prevRun in pairs(game.GameState.RunHistory) do
-				if prevRun.Cleared and mod.RunHasTraits(prevRun, requirements.RequiredClearedWithTraits) then
+				if prevRun ~= nil and prevRun.Cleared and mod.RunHasTraits(prevRun, requirements.RequiredClearedWithTraits) then
 					hasClear = true
 					break
 				end
@@ -1627,7 +1627,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	local lastRunShrinePoints = 0
-	if prevRun and prevRun.ShrinePointsCache then
+	if prevRun ~= nil and prevRun.ShrinePointsCache then
 		lastRunShrinePoints = prevRun.ShrinePointsCache
 	end
 
@@ -1994,6 +1994,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		translated = translated:gsub("/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
 		translated = translated:gsub("/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
 		translated = translated:gsub("/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
+		translated = translated:gsub("/VO/Intercom_", "/VO/Modsnikkelmhadesbiomesintercom_")
+		translated = translated:gsub("/VO/MegaeraHome_", "/VO/Modsnikkelmhadesbiomesmegaerahome_")
 
 		return translated
 	end
@@ -2145,7 +2147,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	-- Custom
 	if requirements.RequiredEncounterLastRun ~= nil then
-		if not HasEncounterOccurred(prevRun, requirements.RequiredEncounterLastRun) then
+		if prevRun == nil or not HasEncounterOccurred(prevRun, requirements.RequiredEncounterLastRun) then
 			return false
 		end
 	end

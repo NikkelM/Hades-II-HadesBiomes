@@ -207,6 +207,10 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 		mod.CheckDreamDiveQuestCompletion()
 	end
 
+	if game.HeroHasTrait("AxeArmCastAspect") then
+		game.GameState.ModsNikkelMHadesBiomes_DefeatedCharonWithCharonAspect = true
+	end
+
 	-- Similar lines being played through CharonStoreDiscount pickup
 	-- game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.CharonFightRewardVoiceLines, true)
 
@@ -222,6 +226,8 @@ function mod.CharonFightEndPresentation(boss, currentRun)
 end
 
 function mod.UseCharonStoreDiscount(consumableItem, args, user)
+	game.AddTimerBlock(game.CurrentRun, "LeaveCharonFight")
+	AddInputBlock({ Name = "LeaveCharonFight" })
 	game.UseConsumableItem(consumableItem, args, user)
 	game.wait(0.7)
 	game.thread(mod.LeaveCharonFight, consumableItem, args)
@@ -229,7 +235,6 @@ end
 
 function mod.LeaveCharonFight(eventSource, args)
 	args = args or {}
-	AddInputBlock({ Name = "LeaveCharonFight" })
 	game.wait(args.Delay or 1.0, game.RoomThreadName)
 
 	PlaySound({ Name = "/Leftovers/SFX/NomadSprint", DestinationId = game.CurrentRun.Hero.ObjectId })
@@ -247,6 +252,7 @@ function mod.LeaveCharonFight(eventSource, args)
 	game.FullScreenFadeOutAnimation()
 	game.wait(0.2)
 
+	game.RemoveTimerBlock(game.CurrentRun, "LeaveCharonFight")
 	RemoveInputBlock({ Name = "LeaveCharonFight" })
 	-- Custom: Does nothing (but must be assigned or it will cause a nil error)
 	game.CurrentRun.CurrentRoom.ExitFunctionName = _PLUGIN.guid .. "." .. "ExitFromCharonFightPresentation"

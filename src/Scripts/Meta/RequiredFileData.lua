@@ -5,7 +5,6 @@ mod.AudioFileMappings = {
 	Tartarus = "TartarusModsNikkelMHadesBiomes",
 	Asphodel = "AsphodelModsNikkelMHadesBiomes",
 	Elysium = "ElysiumModsNikkelMHadesBiomes",
-	-- Styx = "StyxModsNikkelMHadesBiomes", -- There actually is no Styx audio bank
 }
 
 -- Voiceover .txt and .fsb file names
@@ -432,6 +431,7 @@ mod.BikFileNames = {
 	"ZagreusEndingBoatIdleLoop_Bink",
 	"ZagreusEndingBoatIdleFidget1_Bink",
 	"ZagreusEndingBoatIdleFidget2_Bink",
+	"ZagreusDeathPostEndingFullscreen",
 	-- #endregion
 	-- #region ORPHEUS
 	"NPC_OrpheusIdle_Bink",

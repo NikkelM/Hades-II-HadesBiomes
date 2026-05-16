@@ -1701,6 +1701,9 @@ local weaponModifications = {
 	},
 	SatyrDash = {
 		AIData = {
+			ForceFirst = true,
+			-- Only fire naturally at the start, then only through PreAttackDash
+			MinAttacksBetweenUse = 99999,
 			ImmuneToProjectileSlow = true,
 		},
 	},
@@ -2210,6 +2213,12 @@ local weaponModifications = {
 	-- #endregion
 
 	-- #region ELITE ATTRIBUTES
+	EliteBeams = {
+		AIData = {
+			-- To ensure they only try to link to enemies within range
+			TargetMaxDistance = 1000,
+		},
+	},
 	EliteClones = {
 		AIData = {
 			FireFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",

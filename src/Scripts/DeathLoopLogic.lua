@@ -51,6 +51,13 @@ modutil.mod.Path.Wrap("DeathAreaRoomTransition", function(base, source, args)
 	-- Load other textures such as incantation icons, screen backgrounds etc.
 	LoadPackages({ Name = "NikkelM-HadesBiomesCrossroads" })
 
+	-- Restore Melinoe identity if it was overwritten by a Surface room (will break if quitting and then loading directly after returning from run)
+	if game.CurrentRun.Hero.LineHistoryName == "NPC_Zagreus_Past_01" then
+		game.CurrentRun.Hero.LineHistoryName = "PlayerUnit"
+		game.CurrentRun.Hero.NarrativeFadeInColor = game.Color.Teal
+		game.CurrentRun.Hero.SubtitleColor = game.Color.White
+	end
+
 	return base(source, args)
 end)
 
@@ -77,4 +84,3 @@ modutil.mod.Path.Wrap("HubPostDreamLoad", function(base, source, args)
 
 	return base(source, args)
 end)
-

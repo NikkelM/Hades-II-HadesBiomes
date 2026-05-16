@@ -116,12 +116,12 @@ function mod.StartStyxPoisonPresentation(unit)
 	if game.CurrentRun.CurrentRoom.RoomSetName == "Styx" then
 		unit.TimesPoisoned = unit.TimesPoisoned + 1
 	elseif game.CurrentRun.CurrentRoom.Encounter then
-		game.CurrentRun.CurrentRoom.Encounter.ModsNikkelMHadesBiomesUnitTimesPoisoned = (game.CurrentRun.CurrentRoom.Encounter.ModsNikkelMHadesBiomesUnitTimesPoisoned or 0) +
+		game.CurrentRun.ModsNikkelMHadesBiomesTimesPoisonedInElysium = (game.CurrentRun.ModsNikkelMHadesBiomesTimesPoisonedInElysium or 0) +
 				1
 	end
 
 	-- Only show this text if we won't show the custom text
-	if game.CheckCooldown("PoisonAppliedTextCooldown", 1.5) and not (game.CurrentRun.CurrentRoom.Encounter and game.CurrentRun.CurrentRoom.Encounter.ModsNikkelMHadesBiomesUnitTimesPoisoned == 1) then
+	if game.CheckCooldown("PoisonAppliedTextCooldown", 1.5) and not (game.CurrentRun.ModsNikkelMHadesBiomesTimesPoisonedInElysium == 1) then
 		game.thread(game.InCombatText, unit.ObjectId, "DebuffPoisoned", 1.2)
 	end
 
@@ -140,9 +140,16 @@ function mod.StartStyxPoisonPresentation(unit)
 			game.thread(game.DirectionHintPresentation, { ObjectId = fountainId }, { Cooldown = 0 })
 			game.thread(game.InCombatText, fountainId, "UsePoisonCure", 1.75)
 		end
-	elseif game.CurrentRun.CurrentRoom.Encounter and game.CurrentRun.CurrentRoom.Encounter.ModsNikkelMHadesBiomesUnitTimesPoisoned == 1 then
-		-- We are not in Styx, and it's the first time we've been poisoned in this encounter
-		game.thread(game.InCombatText, game.CurrentRun.Hero.ObjectId, "ModsNikkelMHadesBiomesPoisonedNoCureHint", 3)
+	elseif game.CurrentRun.ModsNikkelMHadesBiomesTimesPoisonedInElysium == 1 and not config.z_HideElysiumPoisonMessage then
+		-- We are not in Styx, it's the first time we've been poisoned in this run, and the message is not disabled through the config
+		game.thread(game.InCombatTextArgs, {
+			TargetId = game.CurrentRun.Hero.ObjectId,
+			Text = "ModsNikkelMHadesBiomesPoisonedNoCureHint",
+			SkipRise = true,
+			SkipFlash = true,
+			Duration = 3,
+			OffsetY = -205,
+		})
 	end
 end
 

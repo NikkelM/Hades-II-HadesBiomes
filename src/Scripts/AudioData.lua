@@ -1,8 +1,11 @@
 -- #region Music
 game.MusicTrackData.Tartarus = {
-	{ Name = "/Music/MusicHadesReset_MC", },
-	{ Name = "/Music/MusicHadesReset2_MC", },
-	{ Name = "/Music/MusicHadesReset3_MC", },
+	-- "/Music/MusicHadesReset_MC"
+	{ Name = "{8c3b3234-2c7a-4fbe-ae8e-9847dddd200f}", },
+	-- "/Music/MusicHadesReset2_MC"
+	{ Name = "{8c3b3234-2c7a-4fbe-ae8e-9847dddd200f}", },
+	-- "/Music/MusicHadesReset3_MC"
+	{ Name = "{e0faac8e-9e80-47b9-948b-892e7bfdaf69}", },
 	-- "/Music/MusicTartarus4_MC"
 	{ Name = "{90ac2d7a-7b3a-4a41-a3de-5df2828bcfca}", },
 }
@@ -336,17 +339,18 @@ game.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines = g
 		.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines
 
+-- #region Hades II GlobalVoiceLines modifications
 -- Add modded boss rooms to SeleneVictoryVoiceLines OrRequirements
 local seleneVictoryBossRoomRequirements = game.GlobalVoiceLines.SeleneVictoryVoiceLines.GameStateRequirements
 		.OrRequirements
 -- Rooms that are used for bosses when the Vow of Rivals is active
-table.insert(seleneVictoryBossRoomRequirements[1][1].IsAny, "X_Boss01")
+table.insert(seleneVictoryBossRoomRequirements[1][1].IsAny, "X_Boss02")
 -- Rooms that do not change with the Vow, also checks BossDifficultyActive
 for _, room in ipairs({ "A_Boss01", "A_Boss02", "A_Boss03", "Y_Boss01", "D_Boss01" }) do
 	table.insert(seleneVictoryBossRoomRequirements[2][1].IsAny, room)
 end
 
--- Block Melinoe's RecordRunDepthVoiceLines on the Surface (player is Zagreus there)
+-- Block RecordRunDepthVoiceLines on the Surface (player is Zagreus there)
 if game.GlobalVoiceLines.RecordRunDepthVoiceLines then
 	table.insert(game.GlobalVoiceLines.RecordRunDepthVoiceLines.GameStateRequirements, {
 		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
@@ -354,9 +358,18 @@ if game.GlobalVoiceLines.RecordRunDepthVoiceLines then
 	})
 end
 
+-- Block HarvestPointFoundVoiceLines on the Surface
+if game.GlobalVoiceLines.HarvestPointFoundVoiceLines then
+	table.insert(game.GlobalVoiceLines.HarvestPointFoundVoiceLines.GameStateRequirements, {
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsNone = { "Surface" },
+	})
+end
+-- #endregion
+
 -- #region Modifications to vanilla voiceline requirements
 -- Also prevents CombatResolved equivalent follow-up voiceline (Death to Chronos)
-mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/VO/Melinoe_1774", {
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/VO/Melinoe_1774", {
 	{
 		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
 		IsNone = { "Q", "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
@@ -365,6 +378,54 @@ mod.ModifyVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/
 		PathFalse = { "GameState", "ReachedTrueEnding" },
 	},
 })
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "/VO/Melinoe_0263", {
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsNone = { "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
+	},
+})
+
+-- Prevent "Death to Chronos" salute voiceline in modded runs
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.SaluteVoiceLines, "/VO/Melinoe_1700", {
+	{
+		PathFromArgs = true,
+		PathFalse = { "OriginalSource", "BlockDeathToChronosSalute" },
+	},
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsNone = { "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
+	},
+	OrRequirements = {
+		{
+			{
+				PathFalse = { "GameState", "TextLinesRecord", "TrueEnding01" },
+			},
+		},
+		{
+			{
+				PathTrue = { "GameState", "SpeechRecord", "/VO/Chronos_1058" },
+			},
+		},
+	},
+})
+mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.SaluteVoiceLines, "/VO/Melinoe_1700_2", {
+	{
+		Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+		IsNone = { "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
+	},
+	OrRequirements = {
+		{
+			{
+				PathFalse = { "GameState", "ReachedTrueEnding" },
+			},
+		},
+		{
+			{
+				PathTrue = { "GameState", "SpeechRecord", "/VO/Chronos_1058" },
+			},
+		},
+	},
+}, true)
 -- #endregion
 -- #endregion
 
@@ -391,12 +452,15 @@ game.HeroVoiceLines.ForbiddenShopItemCaughtVoiceLines = game.HeroVoiceLines.Forb
 -- Custom Voicelines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_ElysiumShadeVoiceLines
+
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_MelinoeDBossExitVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_RunClearedVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_RunClearedVoiceLines
+
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_ShrineGateEnterVoiceLines
+
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_EnteredDeathAreaVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_DeathReturnVoiceLines = mod.HeroVoiceLines
@@ -412,5 +476,29 @@ game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyAdmirationVoiceLines = mod.Hero
 		.ModsNikkelMHadesBiomes_TrophyAdmirationVoiceLines
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyUnlockedVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_TrophyUnlockedVoiceLines
+
+game.HeroVoiceLines.ModsNikkelMHadesBiomes_GiftRackLockedVoiceLines = mod.HeroVoiceLines
+		.ModsNikkelMHadesBiomes_GiftRackLockedVoiceLines
+-- #endregion
+
+-- #region Chaos Gate voiceline adjustments for Orpheus Chaos boon (free entry)
+local secretVoiceLines = game.HeroVoiceLines.SecretUnlockedVoiceLines
+local costOnlyReq = {
+	{
+		Path = { "CurrentRun", "CurrentRoom", "TraitUses" },
+		HasNone = { "TemporaryForcedSecretDoorTrait", "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon" }
+	},
+}
+mod.ReplaceVoiceLineRequirements(secretVoiceLines, "/VO/MelinoeField_0794", costOnlyReq)
+mod.ReplaceVoiceLineRequirements(secretVoiceLines, "/VO/MelinoeField_0795", costOnlyReq)
+mod.ReplaceVoiceLineRequirements(secretVoiceLines, "/VO/MelinoeField_0796", costOnlyReq)
+mod.ReplaceVoiceLineRequirements(secretVoiceLines, "/VO/MelinoeField_0797", costOnlyReq)
+-- Free-only line: also play when Orpheus Chaos boon is active
+mod.ReplaceVoiceLineRequirements(secretVoiceLines, "/VO/MelinoeField_0973", {
+	{
+		Path = { "CurrentRun", "CurrentRoom", "TraitUses" },
+		HasAny = { "TemporaryForcedSecretDoorTrait", "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon" }
+	},
+})
 -- #endregion
 -- #endregion

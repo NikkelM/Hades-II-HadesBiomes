@@ -120,3 +120,27 @@ modutil.mod.Path.Wrap("UpdateHealthBarReal", function(base, args)
 		SetColor({ Id = falloffId, Color = game.Color.CurseFalloff })
 	end
 end)
+
+-- Hide tethers when an enemy is polymorphed, show them again when polymorph ends
+modutil.mod.Path.Wrap("PolymorphApplyPresentation", function(base, triggerArgs, args)
+	local victim = triggerArgs.Victim
+	if victim ~= nil and victim.TetherIds ~= nil then
+		for _, tetherId in ipairs(victim.TetherIds) do
+			SetAlpha({ Id = tetherId, Fraction = 0, Duration = 0.15 })
+		end
+	end
+
+	return base(triggerArgs, args)
+end)
+
+modutil.mod.Path.Wrap("PolymorphClearPresentation", function(base, triggerArgs, args)
+	local result = base(triggerArgs, args)
+	local victim = triggerArgs.Victim
+	if victim ~= nil and not victim.IsDead and victim.TetherIds ~= nil then
+		for _, tetherId in ipairs(victim.TetherIds) do
+			SetAlpha({ Id = tetherId, Fraction = 1.0, Duration = 0.3 })
+		end
+	end
+
+	return result
+end)

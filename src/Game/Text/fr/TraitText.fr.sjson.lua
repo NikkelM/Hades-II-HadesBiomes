@@ -160,7 +160,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 	-- 	InheritFrom = "MusicMusicPlayerChaosThemeMusicPlayer",
 	-- 	Description =
-	-- 	"Ensure {$Keywords.HealthGatePlural} spawn ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
+	-- 	"Ensure a {$Keywords.HealthGate} spawns ahead as soon as possible. {#Emph}All {#Prev}{$Keywords.HealthGatePlural} cost {#UpgradeFormat}0{#Prev}{!Icons.Health} to enter this night.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusChaosThemeBoonChaosGatesStatDisplay",
@@ -201,7 +201,7 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
 	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong2MusicPlayer",
 	-- 	Description =
-	-- 	"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#BoldFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
+	-- 	"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#UpgradeFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
@@ -236,7 +236,8 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun",
 		DisplayName = "Haine Ancestrale",
-		Description = "Si vous affrontez {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}, ceux-ci subiront une puissante salve de dégâts {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} s {#Prev}après le début du combat.",
+		Description =
+		"Si vous affrontez {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}, ceux-ci subiront une puissante salve de dégâts {#BoldFormatGraft}{$TraitData.HadesPreDamageBoon.EncounterPreDamage.Delay} s {#Prev}après le début du combat.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun",
@@ -247,7 +248,8 @@ local newData = {
 	{
 		Id = "ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun",
 		DisplayName = "Dissidence Chronique",
-		Description = "Si vous affrontez {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}, ceux-ci invoqueront moins d'ennemis que d'habitude.",
+		Description =
+		"Si vous affrontez {$Keywords.CharChronos}, {$Keywords.CharTyphon} ou {$Keywords.CharHades}, ceux-ci invoqueront moins d'ennemis que d'habitude.",
 	},
 	{
 		Id = "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun",
