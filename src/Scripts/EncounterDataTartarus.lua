@@ -358,6 +358,7 @@ local encounterModifications = {
 	},
 	DevotionTestTartarus = {
 		CanEncounterSkip = false,
+		NextRoomResumeMusic = true,
 	},
 	Story_Sisyphus_01 = {
 		-- Set ineligible if the player has unlocked Orpheus but never met him - force Orpheus on the next run

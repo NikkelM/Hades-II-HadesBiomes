@@ -113,6 +113,7 @@ local encounterModifications = {
 	},
 	DevotionTestElysium = {
 		CanEncounterSkip = false,
+		NextRoomResumeMusic = true,
 	},
 	Story_Patroclus_01 = {
 		ExitVoiceLines = { ObjectType = "NPC_Patroclus_01", },

@@ -92,6 +92,7 @@ local encounterModifications = {
 	-- GENERIC
 	DevotionTestAsphodel = {
 		CanEncounterSkip = false,
+		NextRoomResumeMusic = true,
 	},
 	Story_Eurydice_01 = {
 		NextRoomResumeMusic = true,
