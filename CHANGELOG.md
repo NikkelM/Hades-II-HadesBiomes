@@ -17,6 +17,7 @@ Other fixes and improvements:
 - When confiding in Frinos, Melinoë can now refer to events in Zagreus' Journey runs.
 - Added a new configuration option to hide the "Poison will wear off automatically!" message that appears when poisoned in Elysium, called `z_HideElysiumPoisonMessage`.
 - The "Poison will wear off automatically!" message that appears when poisoned in Elysium will now only show once per run, not once per encounter.
+- The transition between a locked door reward and the next room's reward showing is now twice as fast.
 - Balancing: Enemies will now wake up and attack the player faster after entering a room.
 - Balancing: "Primordial Chaos" offered by Orpheus will now force one Chaos Gate, down from two.
 - Balancing: The Death Defiance from "Hymn to Zagreus" offered by Orpheus now restores 100% health and magick, up from 10%.

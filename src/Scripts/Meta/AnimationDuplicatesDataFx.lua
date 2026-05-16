@@ -38,6 +38,7 @@ mod.HadesFxAnimationModifications = {
 	},
 	RoomRewardTransition = {
 		ChainTo = "null",
+		PlaySpeed = 60.0,
 		Scale = 0.74,
 		CreateAnimations = {
 			{ Name = "RoomRewardAvailable-Front" },
@@ -47,6 +48,7 @@ mod.HadesFxAnimationModifications = {
 	RoomRewardTransition_MetaReward = {
 		InheritFrom = "RoomRewardAvailable-Front",
 		FilePath = "Fx\\RoomRewardTransition\\RoomRewardTransition",
+		PlaySpeed = 60.0,
 		Scale = 0.74,
 		EndFrame = 9,
 		Loop = false,
