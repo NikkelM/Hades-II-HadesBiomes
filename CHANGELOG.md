@@ -25,6 +25,7 @@ Other fixes and improvements:
 - Balancing: Slightly reduced the spawn rate of pickaxe points.
 - Fixed: A Family Dispute can appear as a room reward on rooms with only one exit door if an Erebus Gate is also present in the room.
 - Fixed: Custom dialogues with Hermes have the current region's background artwork, instead of the Olympus artwork.
+- Fixed: Some dialogues with Thanatos and Orpheus cannot trigger.
 - Fixed: Many enemy attacks can be accidentally blocked by certain weapon aspects.
 - Fixed: Enemies spawned in earlier biomes through the Vow of Menace have less health and armour than they should.
 - Fixed: Encounters with Thanatos can be skipped by the "Fig Leaf" keepsake.
