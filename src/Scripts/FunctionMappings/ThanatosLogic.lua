@@ -228,10 +228,6 @@ function mod.ThanatosExit(source, args)
 	end
 
 	game.CheckCodexUnlock(mod.CodexChapterName, "NPC_Thanatos_01")
-
-	if args.RemoveThanatosFromActiveEnemies then
-		game.ActiveEnemies[source.ObjectId] = nil
-	end
 end
 
 function mod.ThanatosExitSilent(source, args)
@@ -382,7 +378,8 @@ function mod.CheckThanatosOrSpawnRoomReward(eventSource, args)
 
 	if thanatosId ~= nil then
 		local thanatos = game.ActiveEnemies[thanatosId]
-		if thanatos and thanatos.NextInteractLines and not thanatos.NextInteractLines.PlayOnce then
+		-- Thanatos has a conversation queued, or the config option to skip him is enabled (and we don't have the romance scene queued)
+		if (thanatos and thanatos.NextInteractLines and not thanatos.NextInteractLines.PlayOnce) or (config.z_SpeedrunSkipOpeningThanatos and not (thanatos.NextInteractLines.Name == "ModsNikkelMHadesBiomes_BecameCloseWithThanatos01_Trigger" or thanatos.NextInteractLines.Name == "ModsNikkelMHadesBiomes_BecameCloseWithThanatos01_B_Trigger")) then
 			-- Reward spawns immediately
 		else
 			-- Wait until his conversation is done
@@ -391,6 +388,16 @@ function mod.CheckThanatosOrSpawnRoomReward(eventSource, args)
 	end
 
 	game.SpawnRoomReward(eventSource, { WaitUntilPickup = true, })
+
+	-- Disable Thanatos interaction immediately after reward is picked up, to prevent talking to him while he starts to leave
+	if thanatosId ~= nil then
+		local thanatos = game.ActiveEnemies[thanatosId]
+		if thanatos then
+			UseableOff({ Id = thanatosId })
+			thanatos.CanReceiveGift = false
+			thanatos.SpecialInteractFunctionName = nil
+		end
+	end
 end
 
 function mod.ThanatosRoomOpeningConversationDone(source, args)
@@ -418,7 +425,6 @@ function mod.ThanatosRoomOpeningConversationDone(source, args)
 	args.PreExitRemoveFromGroup = "Standing"
 	args.PreExitAddToGroup = "PillarTops_01"
 	args.SkipExitReaction = true
-	args.RemoveThanatosFromActiveEnemies = true
 	mod.ThanatosExit(source, args)
 end
 
@@ -436,7 +442,8 @@ function mod.DespawnThanatosIfActive(eventSource, args)
 		-- Force a redraw of the usetext in case the player is currently in range
 		game.SetAvailableUseText(thanatos)
 
-		mod.ThanatosRoomOpeningConversationDone(thanatos, args)
+		-- Thread so the exit animation doesn't block encounter completion
+		game.thread(mod.ThanatosRoomOpeningConversationDone, thanatos, args)
 	end
 end
 

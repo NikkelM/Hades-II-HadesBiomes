@@ -7,6 +7,7 @@ local config = {
   z_SpeedrunForceTwoSack = false,
   z_ExcludeFromDreamDives = false,
   z_HideElysiumPoisonMessage = false,
+  z_SpeedrunSkipOpeningThanatos = false,
 }
 
 local configDesc = {
@@ -22,7 +23,10 @@ local configDesc = {
   "What kinds of logs should be printed to the console. Set a higher level to see more detailed logs. Set to one of: 0 = Off/No logs, 1 = Errors, 2 = Warnings, 3 = Info, 4 = Debug",
   z_SpeedrunForceTwoSack = "If set to \"true\", the Satyr Sack in Styx will always spawn in the second wing.",
   z_ExcludeFromDreamDives = "If set to \"true\", Tartarus, Asphodel, Elysium and Styx will *not* appear in Dream Dives.",
-  z_HideElysiumPoisonMessage = "If set to \"true\", the \"Poison will wear off automatically!\" message that appears when poisoned in Elysium will not be shown.",
+  z_HideElysiumPoisonMessage =
+  "If set to \"true\", the \"Poison will wear off automatically!\" message that appears when poisoned in Elysium will not be shown.",
+  z_SpeedrunSkipOpeningThanatos =
+  "If set to \"true\", the reward in the first room of the run will always spawn immediately and allow skipping dialogue with Thanatos, even if he has a unique dialogue queued.",
 }
 
 return config, configDesc

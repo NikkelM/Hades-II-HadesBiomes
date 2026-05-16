@@ -15,6 +15,7 @@
 Other fixes and improvements:
 - Melinoë is now slightly smaller while in Zagreus' Journey rooms, to compensate for the difference in room and enemy scales.
 - When confiding in Frinos, Melinoë can now refer to events in Zagreus' Journey runs.
+- Added a new configuration option to allow picking up the reward in the opening room of the run instead of talking to Thanatos, even if he still has unique dialogue left, called `z_SpeedrunSkipOpeningThanatos`.
 - Added a new configuration option to hide the "Poison will wear off automatically!" message that appears when poisoned in Elysium, called `z_HideElysiumPoisonMessage`.
 - The "Poison will wear off automatically!" message that appears when poisoned in Elysium will now only show once per run, not once per encounter.
 - The transition between a locked door reward and the next room's reward showing is now twice as fast.
@@ -31,6 +32,7 @@ Other fixes and improvements:
 - Fixed: Enemies spawned in earlier biomes through the Vow of Menace have less health and armour than they should.
 - Fixed: Encounters with Thanatos can be skipped by the "Fig Leaf" keepsake.
 - Fixed: Enemies killed by Thanatos can turn into a Revenant.
+- Fixed: If all enemies in the opening room of a run are killed before Thanatos has left, he blocks the room exit from unlocking until he has left.
 - Fixed: Combat music continues playing in the Asphodel fountain room.
 - Fixed: Dire Brimstones can appear during trove challenge encounters in Asphodel.
 - Fixed: Minor heads spawned during the Hydra's boss fight can be destroyed by "Shocking Loss".

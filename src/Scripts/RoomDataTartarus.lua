@@ -389,7 +389,6 @@ local roomReplacements = {
 				FunctionName = "CheckObjectiveSetSource",
 				Args = { ObjectiveSetName = "BountyAdvancedTooltip" },
 			},
-			-- PatrolPaths
 		},
 
 		EnterVoiceLines = {
