@@ -333,3 +333,27 @@ function mod.LockedGiftRackPresentation(usee)
 		game.thread(game.InCombatText, game.CurrentRun.Hero.ObjectId, "AwardMenuLocked", 1.0)
 	end
 end
+
+-- #region Fresh File runs
+mod.ForceFreshFileNewGame = false
+mod.NeedsFreshFileMapReload = false
+
+modutil.mod.Path.Wrap("StartNewGame", function(base, mapName)
+	mod.ForceFreshFileNewGame = config.z_SpeedrunFreshFileZagreusJourneyRun
+	mod.NeedsFreshFileMapReload = mod.ForceFreshFileNewGame
+	local result = base(mapName)
+	mod.ForceFreshFileNewGame = false
+
+	return result
+end)
+
+modutil.mod.Path.Wrap("StartNewRun", function(base, prevRun, args)
+	if mod.ForceFreshFileNewGame then
+		args = args or {}
+		args.RoomName = "RoomOpening"
+		args.StartingBiome = "Tartarus"
+	end
+
+	return base(prevRun, args)
+end)
+-- #endregion

@@ -8,6 +8,7 @@ local config = {
   z_ExcludeFromDreamDives = false,
   z_HideElysiumPoisonMessage = false,
   z_SpeedrunSkipOpeningThanatos = false,
+  z_SpeedrunFreshFileZagreusJourneyRun = false,
 }
 
 local configDesc = {
@@ -21,12 +22,13 @@ local configDesc = {
   "The path to the Hades game folder. When set to \"root\", resolves to the \"Hades\" directory in the same parent directory as your Hades II installation. I.e., leave like this if you have both games installed through the same store and on the same drive. Otherwise, set to the full path of your Hades installation, e.g. C:\\Program Files (x86)\\Steam\\steamapps\\common\\Hades for Steam, C:\\Program Files (x86)\\Epic Games\\Games\\Hades for Epic Games or C:\\Xbox\\Hades for the Microsoft Store.",
   logLevel =
   "What kinds of logs should be printed to the console. Set a higher level to see more detailed logs. Set to one of: 0 = Off/No logs, 1 = Errors, 2 = Warnings, 3 = Info, 4 = Debug",
-  z_SpeedrunForceTwoSack = "If set to \"true\", the Satyr Sack in Styx will always spawn in the second wing.",
+  z_SpeedrunForceTwoSack = "If set to \"true\", the Satyr Sack in Styx will always spawn in the second wing you visit.",
   z_ExcludeFromDreamDives = "If set to \"true\", Tartarus, Asphodel, Elysium and Styx will *not* appear in Dream Dives.",
   z_HideElysiumPoisonMessage =
   "If set to \"true\", the \"Poison will wear off automatically!\" message that appears when poisoned in Elysium will not be shown.",
   z_SpeedrunSkipOpeningThanatos =
   "If set to \"true\", the reward in the first room of the run will always spawn immediately and allow skipping dialogue with Thanatos, even if he has a unique dialogue queued.",
+  z_SpeedrunFreshFileZagreusJourneyRun = "[Preview] If set to \"true\", starting a fresh save file will force the first run to be a Zagreus' Journey run. This will follow all rules of a classic fresh file run. It may break some progression past the first run, so is only recommended for Fresh File speedrun attempts, not actual main save files.",
 }
 
 return config, configDesc
