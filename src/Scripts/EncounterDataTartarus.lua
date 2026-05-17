@@ -32,6 +32,7 @@ local encounterDataTartarus = {
 	EliteChallengeTartarus = game.DeepCopyTable(encounterData.EliteChallengeF),
 
 	-- Intro encounters
+	EnemyIntroFight01 = encounterData.EnemyIntroFight01,
 	ThiefMineLayerIntro = encounterData.ThiefMineLayerIntro,
 	HeavyRangedIntro = encounterData.HeavyRangedIntro,
 	PunchingBagIntro = encounterData.PunchingBagIntro,
@@ -801,6 +802,27 @@ local encounterModifications = {
 		},
 		DelayedStart = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+	},
+
+	-- INTRO ENCOUNTERS
+	EnemyIntroFight01 = {
+		RequiredFalseTextLines = mod.NilValue,
+		GameStateRequirements = {
+			{
+				PathFalse = { "GameState", "UseRecord", "ApolloUpgrade" },
+			},
+		},
+		UnthreadedEvents = game.EncounterSets.EncounterEventsDefault,
+		SkipIntroEncounterCheck = true,
+		SpawnWaves = {
+			[1] = {
+				Spawns = {
+					[1] = {
+						Name = "HeavyMelee",
+					},
+				},
+			},
+		},
 	},
 }
 

@@ -83,6 +83,17 @@ function mod.HarpySupportAI(enemy)
 
 			Teleport({ Id = enemy.ObjectId, DestinationId = targetId })
 			game.DoAttack(enemy, weaponAIData)
+			-- Clean up InvisibleTargets
+			if enemy.TargetIdsLeaked ~= nil then
+				for id, v in pairs(enemy.TargetIdsLeaked) do
+					Destroy({ Id = id })
+				end
+				enemy.TargetIdsLeaked = nil
+			end
+			if enemy.CreatedOwnTarget then
+				Destroy({ Id = enemy.CreatedOwnTarget })
+				enemy.CreatedOwnTarget = nil
+			end
 			if weaponAIData.ForcedEarlyExit then
 				SetAnimation({ DestinationId = enemy.ObjectId, Name = supportAIWeaponSetName .. "MultiFurySkyDiveFadeOut" })
 			end

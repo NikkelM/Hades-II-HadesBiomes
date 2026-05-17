@@ -56,6 +56,41 @@ modutil.mod.Path.Wrap("StartRoomPresentation", function(base, currentRun, curren
 			currentRoom)
 	end
 
+	-- #region Fresh file run
+	if mod.NeedsFreshFileMapReload then
+		mod.NeedsFreshFileMapReload = false
+
+		-- Reset the counters from the original room start
+		if currentRun.RoomsEntered and currentRun.RoomsEntered[currentRoom.Name] then
+			currentRun.RoomsEntered[currentRoom.Name] = currentRun.RoomsEntered[currentRoom.Name] - 1
+		end
+		if game.GameState.RoomsEntered and game.GameState.RoomsEntered[currentRoom.Name] then
+			game.GameState.RoomsEntered[currentRoom.Name] = game.GameState.RoomsEntered[currentRoom.Name] - 1
+		end
+
+		-- Destroy any reward preview icons spawned by the aborted first StartRoom to prevent double animations
+		if game.MapState and game.MapState.OfferedExitDoors then
+			for doorId, door in pairs(game.MapState.OfferedExitDoors) do
+				if door.RewardPreviewIconIds then
+					Destroy({ Ids = door.RewardPreviewIconIds })
+					door.RewardPreviewIconIds = nil
+				end
+				if door.RewardPreviewBackingIds then
+					Destroy({ Ids = door.RewardPreviewBackingIds })
+					door.RewardPreviewBackingIds = nil
+				end
+			end
+			game.MapState.OfferedExitDoors = {}
+		end
+
+		local nextRoom = game.ChooseStartingRoom(currentRun, { StartingBiome = "Tartarus" })
+		currentRun.CurrentRoom = game.CreateRoom(game.RoomData["F_Opening01"], { StartingBiome = "F" }) or {}
+		currentRun.CurrentRoom.ExitFunctionName = "FastExitPresentation"
+		game.LeaveRoom(currentRun, { Room = nextRoom })
+		return
+	end
+	-- #endregion
+
 	return base(currentRun, currentRoom, metaPointsAwarded)
 end)
 

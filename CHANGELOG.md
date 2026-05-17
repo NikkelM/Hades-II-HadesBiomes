@@ -15,6 +15,7 @@
 Other fixes and improvements:
 - Melinoë is now slightly smaller while in Zagreus' Journey rooms, to compensate for the difference in room and enemy scales.
 - When confiding in Frinos, Melinoë can now refer to events in Zagreus' Journey runs.
+- Added a new config setting that forces the first run of a fresh save file to be a Zagreus' Journey run, meant for speedrunning, called `z_SpeedrunFreshFileZagreusJourneyRun`. You should *only* use this for speedrunning, not for normal saves, as progression beyond the first run may break.
 - Added a new configuration option to allow picking up the reward in the opening room of the run instead of talking to Thanatos, even if he still has unique dialogue left, called `z_SpeedrunSkipOpeningThanatos`.
 - Added a new configuration option to hide the "Poison will wear off automatically!" message that appears when poisoned in Elysium, called `z_HideElysiumPoisonMessage`.
 - The "Poison will wear off automatically!" message that appears when poisoned in Elysium will now only show once per run, not once per encounter.

@@ -392,9 +392,22 @@ local roomReplacements = {
 		},
 
 		EnterVoiceLines = {
+			-- First run with fresh file config on
+			{
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "CompletedRunsCache" },
+						Comparison = "==",
+						Value = 0,
+					},
+				},
+				BreakIfPlayed = true,
+				PreLineWait = 0.9,
+				{ Cue = "/VO/MelinoeField_4814", Text = "In the name of Hades." },
+			},
 			-- Chaos Trial/Bounty
 			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
-			-- First run
+			-- First modded run
 			{
 				BreakIfPlayed = true,
 				RequiredCompletedRuns = 0,
@@ -548,12 +561,20 @@ local roomReplacements = {
 	},
 
 	RoomSimple01 = {
-		ForceIfEncounterNotCompleted = mod.NilValue,
-		LegalEncounters = { "GeneratedTartarus", },
-		ForcedRewardStore = mod.NilValue,
-		ForcedRewards = mod.NilValue,
-		ForceCommonLootFirstRun = mod.NilValue,
-		ForceLootTableFirstRun = mod.NilValue,
+		LegalEncounters = { "EnemyIntroFight01", "GeneratedTartarus", },
+		-- Mirrors vanilla ForcedRewards on fresh file
+		ForcedRewards = {
+			{
+				Name = "Boon",
+				LootName = "ApolloUpgrade",
+				GameStateRequirements = {
+					{
+						PathFalse = { "GameState", "UseRecord", "ApolloUpgrade" },
+					},
+				},
+			},
+		},
+		ForceLootTableFirstRun = { "ApolloWeaponBoon", "ApolloSprintBoon", "ApolloManaBoon" },
 	},
 
 	A_Reprieve01 = {

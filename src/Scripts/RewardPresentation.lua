@@ -3,9 +3,14 @@
 modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosenRewardType, chosenLootName, index, args)
 	args = args or {}
 
-	-- Don't create a preview for the Zag fight
-	if game.CurrentRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.Name == "C_Boss01" then
-		return
+	if game.CurrentRun and game.CurrentRun.CurrentRoom then
+		if game.CurrentRun.CurrentRoom.Name == "C_Boss01" then
+			-- Don't create a preview for the Zag fight
+			return
+		elseif game.CurrentRun.CurrentRoom.Name == "RoomOpening" and exitDoor and exitDoor.RewardPreviewIconIds and #exitDoor.RewardPreviewIconIds or 0 > 0 then
+			-- Prevent a duplicate preview from being created during fresh file modded runs
+			return
+		end
 	end
 
 	local room = exitDoor.Room
@@ -341,7 +346,8 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		-- Add the additional modifications for the chosen reward type
 		if mod.HadesDoorRewardTypeModifications[chosenRewardType] then
 			for property, value in pairs(properties) do
-				properties[property] = properties[property] + (mod.HadesDoorRewardTypeModifications[chosenRewardType][property] or 0)
+				properties[property] = properties[property] +
+						(mod.HadesDoorRewardTypeModifications[chosenRewardType][property] or 0)
 			end
 		end
 
