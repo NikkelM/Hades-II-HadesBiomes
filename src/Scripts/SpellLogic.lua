@@ -29,3 +29,22 @@ modutil.mod.Path.Wrap("PolymorphStunClear", function(base, triggerArgs)
 
 	return base(triggerArgs)
 end)
+
+modutil.mod.Path.Wrap("SpellTransform", function(base, user, weaponData, functionArgs, triggerArgs)
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and functionArgs.Scale then
+		functionArgs = game.ShallowCopyTable(functionArgs) or {}
+		functionArgs.Scale = functionArgs.Scale * mod.ModdedPlayerScaleMultiplier
+	end
+
+	return base(user, weaponData, functionArgs, triggerArgs)
+end)
+
+modutil.mod.Path.Wrap("EndSpellTransform", function(base)
+	base()
+
+	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.MapState.TransformArgs == nil then
+		if game.HeroHasTrait("ModsNikkelMHadesBiomesPlayerScaleTrait") then
+			mod.ApplyModdedPlayerScale(game.CurrentRun.Hero, { ScaleMultiplier = mod.ModdedPlayerScaleMultiplier })
+		end
+	end
+end)

@@ -4,6 +4,16 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Fixed: If Melinoë is affected by Circe's "Word of Greater Girth" or "Word of Smaller Stature", she will continuously shrink with each new room in Zagreus' Journey biomes.
+
+Other fixes and improvements:
+- If Melinoë is affected by Circe's "Word of Smaller Stature", she will now *not* be additionally scaled down in Zagreus' Journey rooms.
+- Fixed: If Melinoë is affected by Circe's "Word of Greater Girth" or "Word of Smaller Stature", using the "Dark Side" hex restores her to the scale set by the Circe boon, which is not multiplied by the size multiplier the mod sets.
+<!--Releasenotes end-->
+
+## v1.1.0
+
+### Patch Highlights:
 - The Chaos Gate in the Training Grounds can now also appear before having met Chaos the first time.
 - The first time that Zagreus' Journey regions are eligible in Dream Dives, Elysium will appear as the guaranteed first region (after you have already completed at least one total Dream Dive).
 - Added two new sets of Arcana card backs, depicting the various bosses and gods you can encounter during Zagreus' Journey.
@@ -62,7 +72,6 @@ Other fixes and improvements:
 - Fixed: Melinoë can salute NPCs with "Death to Chronos!" during Zagreus' Journey runs.
 - Fixed: If the mod is removed and then downloaded again without removing the config file, the mod is not re-installed automatically and files will be missing.
 - Fixed: When opening the statistics screen while the mod is disabled and if the previously selected sort column was a modded column, the game crashes.
-<!--Releasenotes end-->
 
 ## v1.0.3
 
