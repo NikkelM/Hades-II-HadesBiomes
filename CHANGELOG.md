@@ -1,9 +1,10 @@
 # Changelog
 
-## v1.1.0
+## v1.1.1
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Fixed: If the previous run was a Dream Dive that ended in a Zagreus' Journey biome, the save will fail to load if loaded without Zagreus' Journey active.
 - Fixed: If Melinoë is affected by Circe's "Word of Greater Girth" or "Word of Smaller Stature", she will continuously shrink with each new room in Zagreus' Journey biomes.
 
 Other fixes and improvements:
