@@ -21,8 +21,8 @@
 	"ModsNikkelMHadesBiomes_BossResourceStyx",
 ]] --
 
--- In total, as of 2026-04-27: 49 cosmetics
--- Last added: Arcana, Escaping
+-- In total, as of 2026-05-21: 52 cosmetics
+-- Last added: Bedding, Racer
 
 -- #region CosmeticsShop_Tent
 local tentCosmetics = {
@@ -348,6 +348,64 @@ local tentCosmetics = {
 			CosmeticsPoints = 180,
 			ModsNikkelMHadesBiomes_BossResourceElysium = 1,
 			ModsNikkelMHadesBiomes_PlantElysium = 2,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Chariot",
+		Name = {
+			en = "Bedding, Racer",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Sturdy and swift, and heavily inspired by a particular type of foe.",
+		},
+		FlavorText = {
+			en =
+			"Headmistress Hecate deeply regrets the day she allowed the young Princess to procure this particular piece.",
+		},
+		CosmeticsGroup = "Cosmetic_TentBlanket01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Olympic",
+		ShopCategory = "CosmeticsShop_Tent",
+		SetAnimationIds = { 566738 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Tent\\Blanket_Chariot_Icon",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Blanket_Chariot",
+		AnimationScale = 1.75,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 10,
+			},
+			-- Defeated 100 Chariots
+			{
+				Path = { "GameState", "EnemyKills" },
+				SumOf = { "Chariot", "ChariotSuicide", "ChariotElite", "ChariotSuicideElite" },
+				Comparison = ">=",
+				Value = 100,
+			},
+			NamedRequirements = { "T5Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 666,
+			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
+			ModsNikkelMHadesBiomes_OreElysium = 5,
+			ModsNikkelMHadesBiomes_CropElysium = 2,
+		},
+		PreRevealVoiceLines = {
+			Queue = "Interrupt",
+			{
+				PreLineWait = 0.35,
+				UsePlayerSource = true,
+				{ Cue = "/VO/Melinoe_1401", Text = "Always wanted something like this in the tent..." },
+			},
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0258", Text = "Guess it's OK...", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
 		},
 	},
 	-- #endregion

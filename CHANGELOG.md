@@ -1,8 +1,16 @@
 # Changelog
 
-## v1.1.1
+## v1.1.2
 
 <!--Releasenotes start-->
+### Patch Highlights:
+- Added a new bedding cosmetic inspired by the Chariots in Elysium.
+
+Other fixes and improvements:
+<!--Releasenotes end-->
+
+## v1.1.1
+
 ### Patch Highlights:
 - Fixed: If the previous run was a Dream Dive that ended in a Zagreus' Journey biome, the save will fail to load if loaded without Zagreus' Journey active.
 - Fixed: If Melinoë is affected by Circe's "Word of Greater Girth" or "Word of Smaller Stature", she will continuously shrink with each new room in Zagreus' Journey biomes.
@@ -10,7 +18,6 @@
 Other fixes and improvements:
 - If Melinoë is affected by Circe's "Word of Smaller Stature", she will now *not* be additionally scaled down in Zagreus' Journey rooms.
 - Fixed: If Melinoë is affected by Circe's "Word of Greater Girth" or "Word of Smaller Stature", using the "Dark Side" hex restores her to the scale set by the Circe boon, which is not multiplied by the size multiplier the mod sets.
-<!--Releasenotes end-->
 
 ## v1.1.0
 

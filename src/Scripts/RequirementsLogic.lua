@@ -2112,7 +2112,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredRoomLastRun ~= nil then
-		local roomData = RoomData[requirements.RequiredRoomLastRun]
+		local roomData = game.RoomData[requirements.RequiredRoomLastRun]
 		if roomData == nil or prevRun == nil or prevRun.RoomCountCache[roomData.Name] == nil or prevRun.RoomCountCache[roomData.Name] < 1 then
 			return false
 		end
