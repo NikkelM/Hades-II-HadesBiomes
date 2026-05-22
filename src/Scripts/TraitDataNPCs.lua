@@ -864,7 +864,7 @@ local newTraitData = {
 		BoonInfoIgnoreRequirements = true,
 		GameStateRequirements = {
 			{
-				PathTrue = { "GameState", "TextLinesRecord", "OrpheusSingsAgain_02" },
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusSingsAgain02" },
 			},
 		},
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
