@@ -2407,10 +2407,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredKillsThisRun ~= nil then
 		local numKillsThisRun = 0
 		for k, requiredKill in pairs(requirements.RequiredKillsThisRun) do
-			for roomOrder, room in pairs(game.CurrentRun.RoomHistory) do
-				if room.Kills ~= nil and room.Kills[requiredKill] ~= nil then
-					numKillsThisRun = numKillsThisRun + room.Kills[requiredKill]
-				end
+			-- for roomOrder, room in pairs(game.CurrentRun.RoomHistory) do
+			-- 	if room.Kills ~= nil and room.Kills[requiredKill] ~= nil then
+			-- 		numKillsThisRun = numKillsThisRun + room.Kills[requiredKill]
+			-- 	end
+			-- end
+			if game.CurrentRun.EnemyKills[requiredKill] ~= nil then
+				numKillsThisRun = numKillsThisRun + game.CurrentRun.EnemyKills[requiredKill]
 			end
 		end
 		if numKillsThisRun <= 0 then
@@ -2420,10 +2423,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredFalseKillsThisRun ~= nil then
 		local numKillsThisRun = 0
 		for k, requiredKill in pairs(requirements.RequiredFalseKillsThisRun) do
-			for roomOrder, room in pairs(game.CurrentRun.RoomHistory) do
-				if room.Kills ~= nil and room.Kills[requiredKill] ~= nil then
-					numKillsThisRun = numKillsThisRun + room.Kills[requiredKill]
-				end
+			-- for roomOrder, room in pairs(game.CurrentRun.RoomHistory) do
+			-- 	if room.Kills ~= nil and room.Kills[requiredKill] ~= nil then
+			-- 		numKillsThisRun = numKillsThisRun + room.Kills[requiredKill]
+			-- 	end
+			-- end
+			if game.CurrentRun.EnemyKills[requiredKill] ~= nil then
+				numKillsThisRun = numKillsThisRun + game.CurrentRun.EnemyKills[requiredKill]
 			end
 		end
 		if numKillsThisRun > 0 then
@@ -2434,11 +2440,15 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredAnyKillsThisRun ~= nil then
 		local anyKills = false
 		for k, requiredKill in pairs(requirements.RequiredAnyKillsThisRun) do
-			for roomOrder, room in pairs(game.CurrentRun.RoomHistory) do
-				if room.Kills ~= nil and room.Kills[requiredKill] ~= nil then
-					anyKills = true
-					break
-				end
+			-- for roomOrder, room in pairs(game.CurrentRun.RoomHistory) do
+			-- 	if room.Kills ~= nil and room.Kills[requiredKill] ~= nil then
+			-- 		anyKills = true
+			-- 		break
+			-- 	end
+			-- end
+			if game.CurrentRun.EnemyKills[requiredKill] ~= nil then
+				anyKills = true
+				break
 			end
 		end
 		if not anyKills then

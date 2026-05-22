@@ -1039,7 +1039,6 @@ local roomModifications = {
 		ThreadedEvents = {
 			[1] = { FunctionName = "HadesSpeakingPresentation", Args = { VoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines, StartDelay = 2.5, SubtitleColor = game.Color.HadesVoice, LineHistoryName = "Hades" } },
 		},
-		NextRoomSet = { "Asphodel" },
 		-- In vanilla the game adds a SetupGameStateRequirement to the obstacle, but we don't do that in modded rooms
 		-- So to prevent the well from spawning even without the incantation, we set ForceWellShop to false and just use the WellShopSpawnChance
 		ForceWellShop = false,
