@@ -20360,6 +20360,16 @@ mod.NPCData = mod.NPCData or {
 		},
 	},
 
+	-- Used in special visit scenes
+	NPC_Thanatos_Story_01 = {
+		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
+		UseText = "UseTalkToThanatos",
+		Portrait = "Portrait_Thanatos_Default_01",
+		AnimOffsetZ = 255,
+		Groups = { "NPCs" },
+		InteractTextLineSets = {},
+	},
+
 	-- Manually replaced PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] with mod.PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] to make it easier
 	-- FunctionName is still replaced in NPCData.lua
 	-- Orpheus, Id = 390000
@@ -29484,20 +29494,15 @@ mod.NPCData = mod.NPCData or {
 			},
 		},
 	},
-	-- used in special scenes
+
+	-- Used in special visit scenes
 	NPC_FurySister_Story_01 = {
 		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
-
 		UseText = "UseTalkToFury",
 		Portrait = "Portrait_FurySister01_Default_01",
 		AnimOffsetZ = 265,
 		Groups = { "NPCs" },
-
-		ActivateRequirements = {
-			-- Force = true,
-		},
-
-		InteractTextLineSets = {
-		},
+		ActivateRequirements = {},
+		InteractTextLineSets = {},
 	},
 }

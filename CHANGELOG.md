@@ -5,6 +5,7 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - Added a new bedding cosmetic inspired by the Chariots in Elysium.
+- Fixed: The game crashes when entering Sisyphus' chamber while a dialogue between him and Thanatos is queued.
 
 Other fixes and improvements:
 <!--Releasenotes end-->
