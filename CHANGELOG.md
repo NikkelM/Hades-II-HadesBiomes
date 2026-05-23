@@ -8,6 +8,7 @@
 - Fixed: "Hymn to Zagreus" from Orpheus could never be offered due to an incorrect dialogue requirement.
 - Fixed: Some of Megaera's key dialogues can't be triggered, locking out her romance and follow-up dialogues.
 - Fixed: The game crashes when entering Sisyphus' chamber while a dialogue between him and Thanatos is queued.
+- Fixed: If Hades is encountered during a Dream Dive when the next normal run would be the tenth clear, he will not engage in combat.
 <!--Releasenotes end-->
 
 ## v1.1.1

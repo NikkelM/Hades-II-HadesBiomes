@@ -143,6 +143,7 @@ local encounterModifications = {
 		RequiredTextLines = mod.NilValue,
 		RequiredFalseTextLines = mod.NilValue,
 		GameStateRequirements = {
+			-- Same as NPC_Hades_Story_02
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "PersephoneMeeting09" }
 			},

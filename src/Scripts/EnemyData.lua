@@ -190,10 +190,17 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 				end
 			end
 			if entry.SetFlagTrue then
+				-- Move potentially existing args to PostLineThreadedFunctionArgs as the game will prefer these for PostLineThreadedFunctionName over PostLineFunctionArgs
+				if entry.PostLineFunctionArgs and entry.PostLineThreadedFunctionName and not entry.PostLineThreadedFunctionArgs then
+					entry.PostLineThreadedFunctionArgs = entry.PostLineFunctionArgs
+				end
 				entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSetFlag"
 				entry.PostLineFunctionArgs = { FlagName = entry.SetFlagTrue, Value = true }
 			end
 			if entry.SetFlagFalse then
+				if entry.PostLineFunctionArgs and entry.PostLineThreadedFunctionName and not entry.PostLineThreadedFunctionArgs then
+					entry.PostLineThreadedFunctionArgs = entry.PostLineFunctionArgs
+				end
 				entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSetFlag"
 				entry.PostLineFunctionArgs = { FlagName = entry.SetFlagFalse, Value = false }
 			end
@@ -3095,6 +3102,20 @@ local enemyModifications = {
 		},
 	},
 	NPC_Hades_Story_02 = {
+		ActivateRequirements = {
+			RequiredTextLines = mod.NilValue,
+			RequiredFalseTextLines = mod.NilValue,
+			-- Same as BossHadesPeaceful
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "PersephoneMeeting09" }
+			},
+			{
+				PathFalse = { "GameState", "TextLinesRecord", "PersephoneReturnsHome01" }
+			},
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" }
+			},
+		},
 		IsBoss = false,
 	},
 	-- #endregion
