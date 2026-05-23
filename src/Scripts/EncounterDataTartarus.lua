@@ -809,7 +809,7 @@ local encounterModifications = {
 		RequiredFalseTextLines = mod.NilValue,
 		GameStateRequirements = {
 			{
-				PathFalse = { "GameState", "UseRecord", "ApolloUpgrade" },
+				PathFalse = { "GameState", "EncountersCompletedCache", "EnemyIntroFight01" },
 			},
 		},
 		UnthreadedEvents = game.EncounterSets.EncounterEventsDefault,
