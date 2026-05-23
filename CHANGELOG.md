@@ -6,6 +6,7 @@
 ### Patch Highlights:
 - Added a new bedding cosmetic inspired by the Chariots in Elysium.
 - Fixed: A specific room will always follow the opening room, instead of it being random.
+- Fixed: Rerolling the reward on the door out of the opening room doesn't change the displayed reward, but does change the actual reward you will receive in the next room.
 - Fixed: "Hymn to Zagreus" from Orpheus could never be offered due to an incorrect dialogue requirement.
 - Fixed: The game crashes when entering Sisyphus' chamber while a dialogue between him and Thanatos is queued.
 - Fixed: Some of Megaera's key dialogues can't be triggered, locking out her romance and follow-up dialogues.

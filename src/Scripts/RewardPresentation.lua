@@ -7,7 +7,7 @@ modutil.mod.Path.Wrap("CreateDoorRewardPreview", function(base, exitDoor, chosen
 		if game.CurrentRun.CurrentRoom.Name == "C_Boss01" then
 			-- Don't create a preview for the Zag fight
 			return
-		elseif game.CurrentRun.CurrentRoom.Name == "RoomOpening" and exitDoor and exitDoor.RewardPreviewIconIds and #exitDoor.RewardPreviewIconIds or 0 > 0 then
+		elseif game.CurrentRun.CurrentRoom.Name == "RoomOpening" and exitDoor and exitDoor.RewardPreviewIconIds and (#exitDoor.RewardPreviewIconIds or 0) > 0 and not (args and args.ReUseIds) then
 			-- Prevent a duplicate preview from being created during fresh file modded runs
 			return
 		end
