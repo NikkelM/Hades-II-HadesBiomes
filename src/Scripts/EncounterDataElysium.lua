@@ -122,12 +122,12 @@ local encounterModifications = {
 
 	-- MINIBOSSES
 	MiniBossNakedSpawners = {
-		CanEncounterSkip = false,
 		NextRoomResumeMusic = true,
 	},
 	MiniBossMinotaur = {
 		InheritFrom = { "MinibossEncounter" },
 		BlockAthenaEncounterKeepsake = true,
+		BlockDionysusEncounterKeepsake = true,
 		CanEncounterSkip = false,
 		BlockRespawnShrineUpgrade = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,

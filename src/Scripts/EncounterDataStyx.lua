@@ -98,21 +98,22 @@ local encounterModifications = {
 		},
 		WipeEnemiesOnKillAllTypes = { "HadesCrawlerMiniBoss" },
 		CancelSpawnsOnKillAllTypes = { "HadesCrawlerMiniBoss" },
+		BlockDionysusEncounterKeepsake = true,
 		CanEncounterSkip = false,
 		SkipBossTraits = true,
 		NextRoomResumeMusic = true,
 	},
 	MiniBossHeavyRangedForked = {
-		CanEncounterSkip = false,
+		BlockDionysusEncounterKeepsake = true,
 	},
 	MiniBossSatyr = {
-		CanEncounterSkip = false,
+		BlockDionysusEncounterKeepsake = true,
 	},
 	MiniBossMineLayer = {
-		CanEncounterSkip = false,
+		BlockDionysusEncounterKeepsake = true,
 	},
 	MiniBossRatThug = {
-		CanEncounterSkip = false,
+		BlockDionysusEncounterKeepsake = true,
 	},
 
 	ModsNikkelMHadesBiomes_StyxHubShop = {

@@ -103,12 +103,12 @@ local encounterReplacements = {
 
 	PerfectClearChallengeTartarus = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedTartarus" },
-		EnemySet = EnemySets.EnemiesBiome1,
+		EnemySet = game.EnemySets.EnemiesBiome1,
 		DreamBiomeData = "nil",
 	},
 	EliteChallengeTartarus = {
 		InheritFrom = { "EliteChallenge", "GeneratedTartarus" },
-		EnemySet = EnemySets.EnemiesBiome1_EliteChallenge,
+		EnemySet = game.EnemySets.EnemiesBiome1_EliteChallenge,
 		DreamBiomeData = "nil",
 	},
 	BaseSurvival = {
@@ -749,27 +749,24 @@ local encounterModifications = {
 	-- MINIBOSSES
 	MiniBossGrenadier = {
 		LoadPackages = { "BiomeB" },
-		CanEncounterSkip = false,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		NextRoomResumeMusic = true,
 	},
 	MiniBossHeavyRangedSplitter = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
-		CanEncounterSkip = false,
 		NextRoomResumeMusic = true,
 	},
 	MiniBossHeavyRangedSplitter2 = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
-		CanEncounterSkip = false,
 		NextRoomResumeMusic = true,
 	},
 	MiniBossWretchAssassin = {
 		WipeEnemiesOnKillAllTypes = { "WretchAssassinMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "WretchAssassinMiniboss" },
-		CanEncounterSkip = false,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		BlockDionysusEncounterKeepsake = true,
 		BlockEliteAttributes = true,
 		NextRoomResumeMusic = true,
 	},
