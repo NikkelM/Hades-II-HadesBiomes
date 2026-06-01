@@ -5,6 +5,7 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - Balancing: The "Fig Leaf" keepsake can now trigger in most miniboss encounters across all regions.
+- Fixed: In Dream Dives, the timer pauses when entering Tartarus and stays paused until the next region.
 
 Other fixes and improvements:
 <!--Releasenotes end-->
