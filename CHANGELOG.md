@@ -8,6 +8,7 @@
 - Fixed: In Dream Dives, the timer pauses when entering Tartarus and stays paused until the next region.
 
 Other fixes and improvements:
+- Fixed: "Good Riddance" offered by Orpheus is not required to complete the "Singer of Sorrows" prophecy.
 <!--Releasenotes end-->
 
 ## v1.1.2

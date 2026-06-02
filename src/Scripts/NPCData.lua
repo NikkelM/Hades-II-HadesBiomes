@@ -1513,6 +1513,7 @@ local npcModifications = {
 			-- Priority Traits
 			"ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
 			"ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
+			"ModsNikkelMHadesBiomesOrpheusEurydiceSong1Boon",
 		},
 		InteractTextLineSets = {
 			ModsNikkelMHadesBiomes_OrpheusDreamRun = {
