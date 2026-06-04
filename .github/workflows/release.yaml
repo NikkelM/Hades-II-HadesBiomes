@@ -1,5 +1,5 @@
 name: Release
-run-name: ${{ format('{0} {1}', (inputs.is-dry-run && 'Dry-run') || 'GitHub Release', inputs.tag) }}
+run-name: ${{ format('{0} {1}', ((inputs.is-dry-run && 'Dry-run') || inputs.is-github-release-only-run && 'GitHub Release') || 'Release', inputs.tag) }}
 
 on:
   workflow_dispatch:
