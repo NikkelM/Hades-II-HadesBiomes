@@ -5283,6 +5283,14 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				{
 					PathFalse = { "CurrentRun", "RoomsEntered", "I_Boss01" },
 				},
+				{
+					Path = { "CurrentRun", "TextLinesRecord" },
+					HasNone = {
+						"MorosPostRunAboutMorosKeepsake01",
+						"MorosPostRunAboutMorosKeepsake02",
+						"MorosPostRunAboutMorosAspect01",
+					},
+				},
 			},
 			RandomRemaining = true,
 			BreakIfPlayed = true,

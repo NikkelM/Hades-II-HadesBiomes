@@ -583,6 +583,7 @@ local roomModifications = {
 		MusicMutedStems = { "Drums", "Bass", "Guitar", },
 
 		ZagContractRewardDestinationId = 776332,
+		AutocompleteSurfaceShopDelivery = true,
 
 		ShovelPointChance = 0.35,
 		PickaxePointChance = 0.35,

@@ -971,6 +971,9 @@ local roomModifications = {
 		SkipUnusedWeaponBonusReward = true,
 
 		ZagContractRewardDestinationId = 776332,
+		-- You need to enter a bunch of rooms before you get the sack, so all Hermes deliveries will already complete correctly before the boss
+		-- Not adding this here as otherwise players might get deliveries too early when first entering the hub
+		-- AutocompleteSurfaceShopDelivery = true,
 	},
 
 	-- MINIBOSSES

@@ -25,40 +25,54 @@ game.NamedRequirementsData.DreamRunCorrectBiomeGuess.OrRequirements[4][2].IsAny 
 
 game.NamedRequirementsData.DreamRunIncorrectBiomeGuess.OrRequirements[4][2].IsNone = { "I", "Tartarus" }
 
-local moddedDreamRunFamiliarPaths = {
+local moddedDreamRunHasBothFinalBiomes = {
+	-- entering Tartarus, already visited Styx
 	{
-		{
-			Path = { "CurrentRun", "PrevDreamBiome" },
-			IsAny = { "Tartarus" },
-		},
 		{
 			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
-			IsAny = { "Asphodel" },
+			IsAny = { "I" },
+		},
+		{
+			Path = { "CurrentRun", "BiomesReached" },
+			HasAny = { "Styx" },
 		},
 	},
+	-- entering Typhon, already visited Styx
 	{
-		{
-			Path = { "CurrentRun", "PrevDreamBiome" },
-			IsAny = { "Asphodel" },
-		},
 		{
 			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
-			IsAny = { "Elysium" },
+			IsAny = { "Q" },
+		},
+		{
+			Path = { "CurrentRun", "BiomesReached" },
+			HasAny = { "Styx" },
 		},
 	},
+	-- entering Styx, already visited Tartarus
 	{
-		{
-			Path = { "CurrentRun", "PrevDreamBiome" },
-			IsAny = { "Elysium" },
-		},
 		{
 			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
 			IsAny = { "Styx" },
 		},
+		{
+			Path = { "CurrentRun", "BiomesReached" },
+			HasAny = { "I" },
+		},
+	},
+	-- entering Styx, already visited Typhon
+	{
+		{
+			Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+			IsAny = { "Styx" },
+		},
+		{
+			Path = { "CurrentRun", "BiomesReached" },
+			HasAny = { "Q" },
+		},
 	},
 }
-for _, path in ipairs(moddedDreamRunFamiliarPaths) do
-	table.insert(game.NamedRequirementsData.DreamRunFamiliarPath.OrRequirements, path)
+for _, path in ipairs(moddedDreamRunHasBothFinalBiomes) do
+	table.insert(game.NamedRequirementsData.DreamRunHasBothFinalBiomes.OrRequirements, path)
 end
 
 local moddedDreamRunUnfamiliarPaths = {
