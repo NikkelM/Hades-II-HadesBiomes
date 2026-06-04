@@ -4,10 +4,10 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Fixed issues introduced by the most recent game patch.
 - Balancing: The "Fig Leaf" keepsake can now trigger in most miniboss encounters across all regions.
 - Fixed: In Dream Dives, the timer pauses when entering Tartarus and stays paused until the next region.
-
-Other fixes and improvements:
+- Fixed: Relationship/story progress for Orpheus is blocked by an unobtainable dialogue, preventing him from offering "Hymn to Zagreus".
 - Fixed: "Good Riddance" offered by Orpheus is not required to complete the "Singer of Sorrows" prophecy.
 <!--Releasenotes end-->
 

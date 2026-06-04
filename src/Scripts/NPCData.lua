@@ -1603,6 +1603,10 @@ local npcModifications = {
 			OrpheusNonSingingChat08 = {
 				RequiredFalseCosmetics = { "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem", },
 			},
+			OrpheusTallTale04 = {
+				-- TODO: Remove once https://github.com/NikkelM/Hades-II-HadesBiomes/issues/610 and related DionysusAboutOrpheus01 have been added
+				RequiredTextLines = { "OrpheusTallTale03" },
+			},
 		},
 		CharacterInteractions = {
 			Rescue = {
