@@ -179,8 +179,10 @@ function mod.MinotaurEarlyExitPresentation(boss, currentRun)
 		game.wait(2.0, game.RoomThreadName)
 	end
 
-	if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroTextLineSets) then
-		mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroTextLineSets) then
+			mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+		end
 	end
 
 	game.wait(1.5, game.RoomThreadName)

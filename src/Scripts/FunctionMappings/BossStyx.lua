@@ -272,8 +272,10 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 
 	game.wait(1.25, boss.AIThreadName)
 
-	game.ProcessTextLines(boss.BossPresentationNextStageTextLineSets)
-	game.ProcessTextLines(boss.BossPresentationNextStageRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		game.ProcessTextLines(boss.BossPresentationNextStageTextLineSets)
+		game.ProcessTextLines(boss.BossPresentationNextStageRepeatableTextLineSets)
+	end
 
 	if game.GameState.TextLinesRecord["LordHadesR1FirstWin"] then
 		game.wait(0.5, game.RoomThreadName)
@@ -281,8 +283,10 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 		game.wait(2.0, game.RoomThreadName)
 	end
 
-	if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationNextStageTextLineSets) then
-		mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationNextStageRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationNextStageTextLineSets) then
+			mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationNextStageRepeatableTextLineSets)
+		end
 	end
 
 	game.wait(1.0, boss.AIThreadName)
