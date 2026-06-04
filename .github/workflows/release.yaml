@@ -31,7 +31,7 @@ env:
 
 jobs:
   release:
-    name: ${{ format('{0} {1}', (inputs.is-dry-run && 'Dry-run') || 'GitHub Release', inputs.tag) }}
+    name: ${{ format('{0} {1}', ((inputs.is-dry-run && 'Dry-run') || inputs.is-github-release-only-run && 'GitHub Release') || 'Release', inputs.tag) }}
     runs-on: ubuntu-latest
     steps:
       - name: Check input tag format
