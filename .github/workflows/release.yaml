@@ -71,12 +71,11 @@ jobs:
           path: ${{ env.artifact-path }}
           retention-days: 1
 
-          # Disabled on this repository, since we sometimes get a timeout when publishing the large package directly, which will fail the workflow and not publish the GitHub release
-      # - name: Publish package
-      #   if: ${{ !inputs.is-dry-run && !inputs.is-github-release-only-run }}
-      #   env:
-      #     TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
-      #   run: tcli publish --file ${{ env.artifact-path }}
+      - name: Publish package
+        if: ${{ !inputs.is-dry-run && !inputs.is-github-release-only-run }}
+        env:
+          TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
+        run: tcli publish --file ${{ env.artifact-path }}
 
       - name: Tag and push to repository
         if: ${{ !inputs.is-dry-run }}
