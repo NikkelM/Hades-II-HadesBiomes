@@ -71,12 +71,6 @@ jobs:
           path: ${{ env.artifact-path }}
           retention-days: 1
 
-      - name: Publish package
-        if: ${{ !inputs.is-dry-run && !inputs.is-github-release-only-run }}
-        env:
-          TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
-        run: tcli publish --file ${{ env.artifact-path }}
-
       - name: Tag and push to repository
         if: ${{ !inputs.is-dry-run }}
         run: |
@@ -127,3 +121,9 @@ jobs:
           asset_content_type: ${{ env.artifact-content-type }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish package
+        if: ${{ !inputs.is-dry-run && !inputs.is-github-release-only-run }}
+        env:
+          TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
+        run: tcli publish --file ${{ env.artifact-path }}
