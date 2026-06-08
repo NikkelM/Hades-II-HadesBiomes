@@ -354,7 +354,7 @@ modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentR
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and not currentRun.IsDreamRun then
 		if game.HeroHasTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) then
 			local traitData = game.GetHeroTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) or {}
-			if traitData.AccumulatedDamageBonus >= 1.296 then
+			if (traitData.AccumulatedDamageBonus or 0) >= 1.296 then
 				game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_ThanatosKeepsakeAchievedHighPercentage = true
 			end
 		end
