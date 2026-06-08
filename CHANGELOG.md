@@ -1,8 +1,14 @@
 # Changelog
 
-## v1.1.3
+## v1.1.4
 
 <!--Releasenotes start-->
+### Patch Highlights:
+- Fixed: If the Tiny Vermin in Styx is met before ever meeting King Vermin in Oceanus, the game crashes.
+<!--Releasenotes end-->
+
+## v1.1.3
+
 ### Patch Highlights:
 - Fixed issues introduced by the most recent game patch.
 - Balancing: The "Fig Leaf" keepsake can now trigger in most miniboss encounters across all regions.
@@ -10,7 +16,6 @@
 - Fixed: In Dream Dives, Asterius and Hades may start a dialogue in certain cases.
 - Fixed: Relationship/story progress for Orpheus is blocked by an unobtainable dialogue, preventing him from offering "Hymn to Zagreus".
 - Fixed: "Good Riddance" offered by Orpheus is not required to complete the "Singer of Sorrows" prophecy.
-<!--Releasenotes end-->
 
 ## v1.1.2
 
