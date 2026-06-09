@@ -4,6 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Added four new cosmetics: Two stages for the Music Maker, a set of pillars near the Cauldron, and a set of pillarets surrounding Hypnos.
 - Fixed: If the Tiny Vermin in Styx is met before ever meeting King Vermin in Oceanus, the game crashes.
 <!--Releasenotes end-->
 
