@@ -850,6 +850,8 @@ local roomModifications = {
 		CanSpawnDreamReward = true,
 		SkipTimedDropResourceInDream = true,
 
+		IgnoreForRewardStoreCount = true,
+
 		HasFishingPoint = false,
 		HasPickaxePoint = false,
 		ShovelPointChance = 0.3,
@@ -878,6 +880,8 @@ local roomModifications = {
 		},
 		BackupCauseOfDeath = "Harpy2",
 		CombatResolvedVoiceLines = {},
+
+		IgnoreForRewardStoreCount = true,
 
 		HasFishingPoint = false,
 		HasPickaxePoint = false,
@@ -910,6 +914,8 @@ local roomModifications = {
 		},
 		RestorePresentationFunction = mod.NilValue,
 		BackupCauseOfDeath = "Harpy3",
+
+		IgnoreForRewardStoreCount = true,
 
 		-- Tisiphone adds walls during her fight, so gatherables would become inaccessible
 		HasHarvestPoint = false,
