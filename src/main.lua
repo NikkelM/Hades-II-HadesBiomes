@@ -517,6 +517,7 @@ local function on_ready()
 			import "Scripts/GhostAdminLogic.lua"
 			import "Scripts/HarvestPresentation.lua"
 			import "Scripts/HubPresentation.lua"
+			import "Scripts/InteractLogic.lua"
 			import "Scripts/KeepsakeData.lua"
 			import "Scripts/MarketPresentation.lua"
 			import "Scripts/MetaUpgradeLogic.lua"
