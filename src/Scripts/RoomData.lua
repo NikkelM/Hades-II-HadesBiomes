@@ -110,6 +110,8 @@ local charonRoomModifications = {
 		SecretMusic = "/Music/BlankMusicCue",
 		NextRoomResumeMusic = true,
 
+		SkipTimedDropResources = true,
+
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "BossIntroCharon",
