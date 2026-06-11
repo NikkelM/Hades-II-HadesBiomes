@@ -60,7 +60,7 @@ function mod.SpawnHadesRunStartDoor(source, args)
 
 	chaosGate.SetupEvents = {
 		{
-			FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade",
+			FunctionName = _PLUGIN.guid .. "." .. "UpdateChaosGateEscapeDoorAvailability",
 		},
 	}
 	chaosGate.SpeakerName = nil
@@ -74,6 +74,11 @@ function mod.SpawnHadesRunStartDoor(source, args)
 			PlayOnce = true,
 			PlayOnceContext = "ModsNikkelMHadesBiomes_HadesRunStartDoorApproach",
 			UsePlayerSource = true,
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "ApolloFirstPickUp" }
+				},
+			},
 			{ Cue = "/VO/MelinoeField_2868", Text = "A Chaos Gate, up here?", },
 		},
 	}
