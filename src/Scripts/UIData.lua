@@ -86,6 +86,6 @@ end
 -- #region RunIntroData
 -- Prevent the RunIntroData from playing if the fresh file run is a modded run
 table.insert(game.RunIntroData[1].GameStateRequirements, {
-	PathFalse = { mod.ForceFreshFileNewGame },
+	PathFalse = { config.z_SpeedrunFreshFileZagreusJourneyRun },
 })
 -- #endregion
