@@ -1973,6 +1973,33 @@ local newData = {
 	},
 	-- #endregion
 	-- #endregion
+
+	-- #region Codex
+	{
+		Id = "ModsNikkelMHadesBiomes_BoonInfoRequirements_CustomHeader",
+		DisplayName = "Requires the Following:",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BoonInfoRequirements_PatroclusGainMaxHealthMinMana",
+		DisplayName = "{!Icons.Bullet}Have More {!Icons.ManaUp} Max Magick Than {!Icons.HealthUp} Max Life",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BoonInfoRequirements_PatroclusGainMinHealthMaxMana",
+		DisplayName = "{!Icons.Bullet}Have More {!Icons.HealthUp} Max Life Than {!Icons.ManaUp} Max Magick",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BoonInfoRequirements_OrpheusSong1",
+		DisplayName = "{!Icons.Bullet}Hear Orpheus Sing Again",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BoonInfoRequirements_OrpheusSong2",
+		DisplayName = "{!Icons.Bullet}Hear Orpheus Sing a Hymn to Your Brother",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BoonInfoRequirements_OrpheusEurydiceSong1",
+		DisplayName = "{!Icons.Bullet}Hear Orpheus Sing a Farewell to His Muse",
+	},
+	-- #endregion
 }
 
 local hadesHelpTextCopiedEntries = mod.ModifyHadesHelpTextEntries(hadesHelpTextTable)

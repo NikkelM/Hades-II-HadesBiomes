@@ -10,8 +10,8 @@ local nighmareFearActive = rom.mods["ReadEmAndWeep-Nightmare_Fear"]
 -- #region The order of the quests in the Quest log, these will be appended to the end of the vanilla list
 local newQuestOrderData = {
 	-- key / mission-critical
-	"ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice",
 	"ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
+	"ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice",
 	"ModsNikkelMHadesBiomes_QuestOrpheusRelease",
 	"ModsNikkelMHadesBiomes_QuestTenClears",
 	"ModsNikkelMHadesBiomes_QuestFirstClear",

@@ -332,7 +332,6 @@ local newTraitData = {
 				Value = 1,
 			},
 		},
-		-- Otherwises crashes the boon info screen as it doesn't have any logic to properly parse SumOf
 		BoonInfoIgnoreRequirements = true,
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceBuff",
 		AcquireFunctionArgs = {
@@ -392,8 +391,8 @@ local newTraitData = {
 		RarityLevels = {
 			Common = { Multiplier = 1 },
 			Rare = { Multiplier = 1 },
-			Epic = { Multiplier = 4/3 },
-			Heroic = { Multiplier = 4/3 },
+			Epic = { Multiplier = 4 / 3 },
+			Heroic = { Multiplier = 4 / 3 },
 		},
 		ModsNikkelMHadesBiomesDreamRunScaling = {
 			ScaleKeys = { { "RemainingUses" } },
@@ -498,6 +497,15 @@ local newTraitData = {
 			Epic = { Multiplier = 1 },
 			Heroic = { Multiplier = 1.2 },
 		},
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "Hero", "MaxHealth" },
+				Comparison = "<=",
+				ValuePath = { "CurrentRun", "Hero", "MaxMana" },
+			},
+		},
+		ModsNikkelMHadesBiomesCustomCodexRequirementsText =
+		"ModsNikkelMHadesBiomes_BoonInfoRequirements_PatroclusGainMaxHealthMinMana",
 		ModsNikkelMHadesBiomesDreamRunScaling = {
 			ScaleKeys = { { "AcquireFunctionArgs", "AddMaxHealth" }, { "AcquireFunctionArgs", "AddMaxMana" } },
 			AsInt = true,
@@ -527,6 +535,15 @@ local newTraitData = {
 	ModsNikkelMHadesBiomesGainMinHealthMaxMana = {
 		InheritFrom = { "ModsNikkelMHadesBiomesGainMaxHealthMinMana", },
 		Icon = "Boon_Patroclus_05",
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "Hero", "MaxHealth" },
+				Comparison = ">",
+				ValuePath = { "CurrentRun", "Hero", "MaxMana" },
+			},
+		},
+		ModsNikkelMHadesBiomesCustomCodexRequirementsText =
+		"ModsNikkelMHadesBiomes_BoonInfoRequirements_PatroclusGainMinHealthMaxMana",
 		AcquireFunctionArgs = {
 			FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusAddMaxHealthMana",
 			AddMaxHealth = 25,
@@ -806,6 +823,7 @@ local newTraitData = {
 		ShowInHUD = true,
 		Icon = "Boon_Orpheus_LamentOfOrpheus",
 		BoonInfoIgnoreRequirements = true,
+		ModsNikkelMHadesBiomesCustomCodexRequirementsText = "ModsNikkelMHadesBiomes_BoonInfoRequirements_OrpheusSong1",
 		GameStateRequirements = {
 			NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart", },
 		},
@@ -862,6 +880,7 @@ local newTraitData = {
 		ShowInHUD = true,
 		Icon = "Boon_Orpheus_HymnToZagreus",
 		BoonInfoIgnoreRequirements = true,
+		ModsNikkelMHadesBiomesCustomCodexRequirementsText = "ModsNikkelMHadesBiomes_BoonInfoRequirements_OrpheusSong2",
 		GameStateRequirements = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "OrpheusSingsAgain02" },
@@ -890,7 +909,7 @@ local newTraitData = {
 			Common = { Multiplier = 1 },
 			Rare = { Multiplier = 1.2 },
 			Epic = { Multiplier = 1.4 },
-			Heroic = { Multiplier = 25/15 },
+			Heroic = { Multiplier = 25 / 15 },
 		},
 		ModsNikkelMHadesBiomesDreamRunScaling = {
 			ScaleKeys = { { "ModsNikkelMHadesBiomesMaxStoreDiscount" } },
@@ -923,6 +942,8 @@ local newTraitData = {
 		InheritFrom = { "ModsNikkelMHadesBiomesBaseOrpheus" },
 		Icon = "Boon_Orpheus_GoodRiddance",
 		BoonInfoIgnoreRequirements = true,
+		ModsNikkelMHadesBiomesCustomCodexRequirementsText =
+		"ModsNikkelMHadesBiomes_BoonInfoRequirements_OrpheusEurydiceSong1",
 		GameStateRequirements = {
 			{
 				Path = { "GameState", "TextLinesRecord" },

@@ -496,6 +496,7 @@ local function on_ready()
 			import "Scripts/AudioLogic.lua"
 			import "Scripts/BadgeLogic.lua"
 			import "Scripts/BiomeMapPresentation.lua"
+			import "Scripts/BoonInfoLogic.lua"
 			import "Scripts/BountyLogic.lua"
 			import "Scripts/BountyPresentation.lua"
 			import "Scripts/CodexLogic.lua"

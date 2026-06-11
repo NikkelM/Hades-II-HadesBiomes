@@ -280,10 +280,6 @@ for groupName, groupData in pairs(hadesCodexData) do
 		groupData.UnlockType = nil
 
 		for name, entry in pairs(groupData.Entries) do
-			-- For the NPCs, add the NoRequirements flag to the top-level, to allow to always view their boons, even if the codex entry has not been unlocked yet
-			if game.Contains(storyNPCNames, name) then
-				entry.NoRequirements = true
-			end
 			-- Update the image path
 			entry.Image = "ModsNikkelMHadesBiomes_" .. entry.Image
 		end
