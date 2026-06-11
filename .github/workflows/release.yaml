@@ -122,8 +122,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish package
+      - name: Publish package to Thunderstore
         if: ${{ !inputs.is-dry-run && !inputs.is-github-release-only-run }}
         env:
           TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
         run: tcli publish --file ${{ env.artifact-path }}
+
+      - name: Publish package to Nexus Mods
+        if: ${{ !inputs.is-dry-run && !inputs.is-github-release-only-run }}
+        uses: Nexus-Mods/upload-action@0bf670d75d46988c176c9bfacc94ca0144e0fe3f # v1.0.0-beta.7
+        with:
+          api_key: ${{ secrets.NEXUSMODS_API_KEY }}
+          file_group_id: ${{ vars.NEXUSMODS_FILE_GROUP_ID }}
+          filename: ${{ env.artifact-path }}
+          version: ${{ inputs.tag }}
+          display_name: Zagreus' Journey
+          file_category: main
