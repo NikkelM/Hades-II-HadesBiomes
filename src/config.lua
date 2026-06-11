@@ -28,7 +28,7 @@ local configDesc = {
   "If set to \"true\", the \"Poison will wear off automatically!\" message that appears when poisoned in Elysium will not be shown.",
   z_SpeedrunSkipOpeningThanatos =
   "If set to \"true\", the reward in the first room of the run will always spawn immediately and allow skipping dialogue with Thanatos, even if he has a unique dialogue queued.",
-  z_SpeedrunFreshFileZagreusJourneyRun = "[Preview] If set to \"true\", starting a fresh save file will force the first run to be a Zagreus' Journey run. This will follow all rules of a classic fresh file run. It may break some progression past the first run, so is only recommended for Fresh File speedrun attempts, not actual main save files.",
+  z_SpeedrunFreshFileZagreusJourneyRun = "If set to \"true\", starting a fresh save file will force the first run to be a Zagreus' Journey run. This will follow all rules of a classic fresh file run. It may break some progression past the first run, so is only recommended for Fresh File speedrun attempts, not actual main save files.",
 }
 
 return config, configDesc
