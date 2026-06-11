@@ -6,7 +6,8 @@
 ### Patch Highlights:
 - Added four new cosmetics: Two stages for the Music Maker, a set of pillars near the Cauldron, and a set of pillarets surrounding Hypnos.
 - Fixed: Rewards from Shrines of Hermes and Icarus' "Supply Chain" boon can be delivered after defeating Charon, which softlocks the player if picked up.
-- Fixed: If the Tiny Vermin in Styx is met before ever meeting King Vermin in Oceanus, the game crashes.
+- Fixed: If the Tiny Vermin in Styx is met before meeting King Vermin in Oceanus, the game crashes.
+- Fixed: The Tiny Vermin is damaged by Medea's "Suffering on Sight" boon.
 <!--Releasenotes end-->
 
 ## v1.1.3

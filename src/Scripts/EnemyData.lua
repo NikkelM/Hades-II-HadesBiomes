@@ -723,10 +723,13 @@ local enemyReplacements = {
 	-- #endregion
 
 	-- #region STYX
+	-- #region STYX - Regular
 	Crawler = {
 		DefaultAIData = { DeepInheritance = true, },
 		WeaponOptions = { "HadesCrawlerRush" },
 	},
+	-- #endregion
+	-- #region STYX - Minibosses
 	CrawlerMiniBoss = {
 		DefaultAIData = { DeepInheritance = true, },
 		OnKillVoiceLines = {
@@ -765,6 +768,8 @@ local enemyReplacements = {
 			},
 		},
 	},
+	-- #endregion
+	-- #region STYX - Hades
 	Hades = {
 		InheritFrom = { "BaseBossEnemy", "HadesBossBaseVulnerableEnemy" },
 		AssistActivatedVoiceLines = {
@@ -839,6 +844,7 @@ local enemyReplacements = {
 			ProjectileName = "HadesGraspingHands",
 		},
 	},
+	-- #endregion
 	-- #endregion
 }
 
@@ -2887,6 +2893,8 @@ local enemyModifications = {
 				},
 			},
 		},
+		-- This enemy is pre-spawned, and shouldn't be damaged by the Medea curse
+		IgnoreCurseDamage = true,
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation",
 		OnDeathFunctionArgs = { Message = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage", },
 		KillEnemyEvents = {
