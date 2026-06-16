@@ -3388,12 +3388,34 @@ local enemyModifications = {
 			},
 		},
 	},
+	DartTrapEmitter = {
+		DreamBiomeData = {
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 35 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 42 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 50 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 50 } } } },
+		},
+	},
+	BlastCubeFused = {
+		DreamBiomeData = {
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 50 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 75 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 100 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 100 } } } },
+		},
+	},
 	BlastCubeFusedRegenerating = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		OnDeathFireWeapons = { "BlastCubeExplosionElysium" },
 		FuseWarningProjectileName = "ModsNikkelMHadesBiomesBlastWarningDecalElysium",
 		IgnoreSprintPhasingStasisStun = true,
 		SkipRecordDestroyedState = true,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 35 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 50 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 70 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 70 } } } },
+		},
 	},
 	PhalanxTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -3404,11 +3426,17 @@ local enemyModifications = {
 		OutgoingDamageModifiers = { { NonPlayerMultiplier = 15.0, }, },
 		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
 		IgnoreSprintPhasingStasisStun = true,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 15 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 19 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 23 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 23 } } } },
+		},
 	},
 	PhalanxTrapPassive = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		DefaultAIData = {
-			ProjectileName = "PhalanxTrapWeaponPassive",
+			ProjectileName = "PhalanxTrapWeapon",
 			-- Moved in here from the normal Enemy data
 			PreAttackFx = "ShieldCharge",
 			PreAttackEndShake = true,
@@ -3426,6 +3454,12 @@ local enemyModifications = {
 		},
 		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
 		IgnoreSprintPhasingStasisStun = true,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 15 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 19 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 23 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 23 } } } },
+		},
 	},
 	ArcherTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -3451,6 +3485,12 @@ local enemyModifications = {
 		},
 		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
 		IgnoreSprintPhasingStasisStun = true,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 30 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 38 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 45 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 45 } } } },
+		},
 	},
 	GasTrapPassive = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -3512,6 +3552,12 @@ local enemyModifications = {
 		},
 		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
 		IgnoreSprintPhasingStasisStun = true,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 30 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 38 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 45 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 45 } } } },
+		},
 	},
 	AxeTrap = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -3525,6 +3571,12 @@ local enemyModifications = {
 		WeaponName = "AxeTrapWeapon",
 		ModsNikkelMHadesBiomesFlipIfRoomFlipped = true,
 		IgnoreSprintPhasingStasisStun = true,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 20 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 25 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 30 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 30 } } } },
+		},
 	},
 	AxeTrapTrigger = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -3548,6 +3600,12 @@ local enemyModifications = {
 		AIOptions = { _PLUGIN.guid .. "." .. "RemoteAttackModsNikkelMHadesBiomes" },
 		WeaponName = "AxeTrapWeapon",
 		IgnoreSprintPhasingStasisStun = true,
+		DreamBiomeData = {
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 20 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 25 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 30 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 30 } } } },
+		},
 	},
 	-- #endregion
 
@@ -3630,6 +3688,12 @@ local enemyKeyReplacements = {
 -- Needs to be done before the enemy data is added to the game
 game.EnemyData.SpikeTrap.DefaultAIData.TargetGroups = { "GroundEnemies", "HeroTeam", }
 game.EnemyData.SpikeTrap.AIOptions = { "GuardAI", }
+game.EnemyData.SpikeTrap.DreamBiomeData = {
+	[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 20 } } } },
+	[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 25 } } } },
+	[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 30 } } } },
+	[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 30 } } } },
+}
 
 mod.AddTableKeysSkipDupes(game.EnemyData.Elite.EliteAttributeData, {
 	Smoked = {
