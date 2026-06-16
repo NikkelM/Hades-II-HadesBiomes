@@ -37,7 +37,8 @@ It is highly recommended that you complete the main story of the first Hades gam
 
 ![Features](./img/Readme/FeaturesStyx.png)
 
-- Play through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
+- Start playing at any time - the mod integrates seemlessly into the main game, and can be used on a fresh file as well as after completing the epilogue.
+- Journey through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
 - Discover and overcome the challenge of fighting all of the original game's enemies and bosses using Melinoë's unique abilities and weapons.
 - Relive Zagreus' story by escaping to the Surface, forging bonds with your brother's old friends, and conversing with the Fury Sisters, the Champions of Elysium and [REDACTED] himself.
 - Benefit from a multitude of entirely new boons and effects offered to you by Sisyphus, Eurydice, Patroclus... and other familiar faces that you will now be able to meet along the way!
