@@ -3390,18 +3390,18 @@ local enemyModifications = {
 	},
 	DartTrapEmitter = {
 		DreamBiomeData = {
-			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 35 } } } },
-			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 42 } } } },
-			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 50 } } } },
-			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 50 } } } },
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 30 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.6 }, { NonPlayerMultiplier = 35 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 3.0 }, { NonPlayerMultiplier = 40 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 3.0 }, { NonPlayerMultiplier = 40 } } } },
 		},
 	},
 	BlastCubeFused = {
 		DreamBiomeData = {
 			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 50 } } } },
-			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 75 } } } },
-			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 100 } } } },
-			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 100 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 60 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 70 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 70 } } } },
 		},
 	},
 	BlastCubeFusedRegenerating = {
@@ -3411,10 +3411,10 @@ local enemyModifications = {
 		IgnoreSprintPhasingStasisStun = true,
 		SkipRecordDestroyedState = true,
 		DreamBiomeData = {
-			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 35 } } } },
-			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 50 } } } },
-			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 70 } } } },
-			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 70 } } } },
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 30 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 35 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 45 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 45 } } } },
 		},
 	},
 	PhalanxTrap = {
@@ -3423,14 +3423,14 @@ local enemyModifications = {
 		DisabledAnimation = "PhalanxTrapIdle",
 		ProjectileName = "PhalanxTrapWeapon",
 		AIAttackDistance = 150,
-		OutgoingDamageModifiers = { { NonPlayerMultiplier = 15.0, }, },
+		OutgoingDamageModifiers = { { NonPlayerMultiplier = 10.0, }, },
 		AIOptions = { _PLUGIN.guid .. "." .. "AttackOnlyGroups", },
 		IgnoreSprintPhasingStasisStun = true,
 		DreamBiomeData = {
-			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 15 } } } },
-			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 19 } } } },
-			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 23 } } } },
-			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 23 } } } },
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 0.75 }, { NonPlayerMultiplier = 10 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 15 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 20 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 20 } } } },
 		},
 	},
 	PhalanxTrapPassive = {
@@ -3455,10 +3455,10 @@ local enemyModifications = {
 		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
 		IgnoreSprintPhasingStasisStun = true,
 		DreamBiomeData = {
-			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 15 } } } },
-			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 19 } } } },
-			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 23 } } } },
-			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 23 } } } },
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 0.75 }, { NonPlayerMultiplier = 10 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 15 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 20 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 20 } } } },
 		},
 	},
 	ArcherTrap = {
@@ -3486,10 +3486,10 @@ local enemyModifications = {
 		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
 		IgnoreSprintPhasingStasisStun = true,
 		DreamBiomeData = {
-			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 30 } } } },
-			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 38 } } } },
-			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 45 } } } },
-			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 45 } } } },
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 0.5 }, { NonPlayerMultiplier = 20 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 0.8 }, { NonPlayerMultiplier = 30 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.2 }, { NonPlayerMultiplier = 35 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.2 }, { NonPlayerMultiplier = 35 } } } },
 		},
 	},
 	GasTrapPassive = {
@@ -3553,10 +3553,10 @@ local enemyModifications = {
 		AIOptions = { _PLUGIN.guid .. "." .. "PassiveAttack", },
 		IgnoreSprintPhasingStasisStun = true,
 		DreamBiomeData = {
-			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 30 } } } },
-			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 38 } } } },
-			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 45 } } } },
-			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 45 } } } },
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 0.5 }, { NonPlayerMultiplier = 20 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 0.8 }, { NonPlayerMultiplier = 30 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.2 }, { NonPlayerMultiplier = 35 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.2 }, { NonPlayerMultiplier = 35 } } } },
 		},
 	},
 	AxeTrap = {
@@ -3572,10 +3572,10 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesFlipIfRoomFlipped = true,
 		IgnoreSprintPhasingStasisStun = true,
 		DreamBiomeData = {
-			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 20 } } } },
-			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 25 } } } },
-			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 30 } } } },
-			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 30 } } } },
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 0.3 }, { NonPlayerMultiplier = 5 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 0.7 }, { NonPlayerMultiplier = 12 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.2 }, { NonPlayerMultiplier = 25 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.2 }, { NonPlayerMultiplier = 25 } } } },
 		},
 	},
 	AxeTrapTrigger = {
@@ -3601,10 +3601,10 @@ local enemyModifications = {
 		WeaponName = "AxeTrapWeapon",
 		IgnoreSprintPhasingStasisStun = true,
 		DreamBiomeData = {
-			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 20 } } } },
-			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 25 } } } },
-			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 30 } } } },
-			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 30 } } } },
+			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 0.3 }, { NonPlayerMultiplier = 5 } } } },
+			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 0.7 }, { NonPlayerMultiplier = 10 } } } },
+			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.2 }, { NonPlayerMultiplier = 25 } } } },
+			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.2 }, { NonPlayerMultiplier = 25 } } } },
 		},
 	},
 	-- #endregion
@@ -3690,9 +3690,9 @@ game.EnemyData.SpikeTrap.DefaultAIData.TargetGroups = { "GroundEnemies", "HeroTe
 game.EnemyData.SpikeTrap.AIOptions = { "GuardAI", }
 game.EnemyData.SpikeTrap.DreamBiomeData = {
 	[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 20 } } } },
-	[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.25 }, { NonPlayerMultiplier = 25 } } } },
-	[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 30 } } } },
-	[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 30 } } } },
+	[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 25 } } } },
+	[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 4.0 }, { NonPlayerMultiplier = 30 } } } },
+	[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 4.0 }, { NonPlayerMultiplier = 30 } } } },
 }
 
 mod.AddTableKeysSkipDupes(game.EnemyData.Elite.EliteAttributeData, {
