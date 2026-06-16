@@ -1607,7 +1607,7 @@ local tavernaCosmetics = {
 			"Good music is known to focus the attention of entire crowds on the one performing it, and this stage will give them something to feast their eyes on as well.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaMusicStage01",
-		InsertAfterCosmetic = "Cosmetic_TavernaMusicStage_Serpentine",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaMusicStage_Serpentine",
 		ShopCategory = "CosmeticsShop_Taverna",
 		ActivateIds = { 800654 },
 		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Taverna\\Stage_Royal_Icon",
