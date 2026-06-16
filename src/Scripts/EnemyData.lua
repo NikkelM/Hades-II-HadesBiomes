@@ -3396,14 +3396,6 @@ local enemyModifications = {
 			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 3.0 }, { NonPlayerMultiplier = 40 } } } },
 		},
 	},
-	BlastCubeFused = {
-		DreamBiomeData = {
-			[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 50 } } } },
-			[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 60 } } } },
-			[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 70 } } } },
-			[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 70 } } } },
-		},
-	},
 	BlastCubeFusedRegenerating = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		OnDeathFireWeapons = { "BlastCubeExplosionElysium" },
@@ -3693,6 +3685,12 @@ game.EnemyData.SpikeTrap.DreamBiomeData = {
 	[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 25 } } } },
 	[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 4.0 }, { NonPlayerMultiplier = 30 } } } },
 	[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 4.0 }, { NonPlayerMultiplier = 30 } } } },
+}
+game.EnemyData.BlastCubeFused.DreamBiomeData = {
+	[1] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.0 }, { NonPlayerMultiplier = 50 } } } },
+	[2] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 1.5 }, { NonPlayerMultiplier = 60 } } } },
+	[3] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 70 } } } },
+	[4] = { DataOverrides = { OutgoingDamageModifiers = { { PlayerMultiplier = 2.0 }, { NonPlayerMultiplier = 70 } } } },
 }
 
 mod.AddTableKeysSkipDupes(game.EnemyData.Elite.EliteAttributeData, {
