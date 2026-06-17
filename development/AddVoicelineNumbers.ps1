@@ -3,7 +3,7 @@ $speakerName = "ZagreusField"
 $inputFile = ".\dev\FMOD\Fmod Bank Tools\wav\$speakerName\$speakerName.txt"
 $outputFile = ".\..\data\Content\Audio\Desktop\VO\$speakerName.txt"
 
-$content = Get-Content $inputFile
+$content = @(Get-Content $inputFile)
 $lineCount = $content.Length
 
 # Add the header lines with the speakerName

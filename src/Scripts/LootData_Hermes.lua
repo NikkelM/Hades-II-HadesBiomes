@@ -450,4 +450,3 @@ mod.AddNarrativeDataEntries(
 	{ Hermes = { "Modsnikkelmhadesbiomeshermes" } }, { Hermes_ = "Modsnikkelmhadesbiomeshermes_" },
 	{ Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01" }
 )
-mod.PrintTable(game.NarrativeData.HermesUpgrade)

@@ -235,7 +235,7 @@ function mod.PlayDummyLootPickupCue(source, args)
 		LoadVoiceBank({ Names = { args.DummyVoiceBank }, IgnoreAssert = true })
 	end
 
-	PlaySound({ Name = game.GetRandomValue(args.DummyCues), Id = source.ObjectId, })
+	PlaySound({ Name = game.GetRandomValue(args.DummyCues), Id = source.ObjectId })
 end
 
 -- #region Hermes-delivered voicelines
@@ -246,7 +246,9 @@ end
 ---@param voiceBankMappings table<string, table<string>> Voicebank mapping to load modded voicebanks with vanilla loads
 ---@param cueMappings table<string, string> Cue prefix mapping, applied to `/VO/<Find>` -> `/VO/<ReplaceWith>`
 ---@param portraitMappings table<string, string>  Mappings of Cue prefixes to Portrait names
-function mod.AddHermesDeliveredDialogues(deliveries, voiceBankMappings, cueMappings, portraitMappings)
+---@param preDeliverySoundCue string|nil If set, this cue is played as the delivered character's portrait transitions in
+function mod.AddHermesDeliveredDialogues(deliveries, voiceBankMappings, cueMappings, portraitMappings,
+																				 preDeliverySoundCue)
 	local hermesDeliveryIntroLines = {
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90013",
@@ -323,6 +325,8 @@ function mod.AddHermesDeliveredDialogues(deliveries, voiceBankMappings, cueMappi
 	portraitMappings.Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01"
 
 	for _, delivery in ipairs(deliveries) do
+		delivery.ModsNikkelMHadesBiomes_TextLineMetadata = delivery.ModsNikkelMHadesBiomes_TextLineMetadata or {}
+
 		for _, deliveredLine in ipairs(delivery) do
 			deliveredLine.UseRoomContextArt = true
 			-- By default the speaker name is Hermes if nothing else is set, so determine what speaker we need from the Cue if required
@@ -334,19 +338,34 @@ function mod.AddHermesDeliveredDialogues(deliveries, voiceBankMappings, cueMappi
 			end
 		end
 
-		-- Transition from the Hermes intro to the delivered speaker, matching the duo-boon pickup effects
-		local firstDeliveredLine = delivery[1]
-		firstDeliveredLine.PreLineFunctionName = "BoonInteractPresentation"
-		firstDeliveredLine.PreLineWait = 0.5
-
-		-- Add a random intro line, we don't care about these changing per-dialogue between game restarts
-		if #hermesDeliveryIntroLinesRemoveFrom <= 0 then
-			hermesDeliveryIntroLinesRemoveFrom = game.DeepCopyTable(hermesDeliveryIntroLines)
+		if delivery.PreEventFunctionName == nil then
+			delivery.PreEventFunctionName = "BoonInteractPresentation"
+			delivery.PreEventFunctionArgs = { PickupWait = 1.0, }
 		end
-		local introLine = game.DeepCopyTable(game.RemoveRandomValue(hermesDeliveryIntroLinesRemoveFrom))
-		introLine.PostLineRemoveContextArt = true
-		introLine.ExitPortraitImmediately = true
-		table.insert(delivery, 1, introLine)
+
+		if not delivery.ModsNikkelMHadesBiomes_TextLineMetadata.HermesDeliveredDialoguesSkipIntroLine then
+			-- Transition from the Hermes intro to the delivered speaker, matching the duo-boon pickup effects
+			local firstDeliveredLine = delivery[1]
+			firstDeliveredLine.PreLineFunctionName = "BoonInteractPresentation"
+			firstDeliveredLine.PreLineWait = 0.8
+
+			-- Add a random intro line, we don't care about these changing per-dialogue between game restarts
+			if #hermesDeliveryIntroLinesRemoveFrom <= 0 then
+				hermesDeliveryIntroLinesRemoveFrom = game.DeepCopyTable(hermesDeliveryIntroLines)
+			end
+			local introLine = game.DeepCopyTable(game.RemoveRandomValue(hermesDeliveryIntroLinesRemoveFrom))
+			introLine.PostLineRemoveContextArt = true
+			introLine.ExitPortraitImmediately = true
+
+			if preDeliverySoundCue then
+				introLine.PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayDummyLootPickupCue"
+				introLine.PostLineThreadedFunctionArgs = {
+					DummyCues = { preDeliverySoundCue },
+				}
+			end
+
+			table.insert(delivery, 1, introLine)
+		end
 
 		-- Suppresses Hermes' rushed dialogue cues when skipping the last dialogue (through a GameStateRequirement modification on his TextLineEndEvents)
 		delivery.EndEvents = { { FunctionName = _PLUGIN.guid .. "." .. "SetHermesDeliveryArgs", }, }

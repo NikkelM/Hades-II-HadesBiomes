@@ -63,6 +63,9 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		FilePath = "Portraits\\Portraits_Athena_01",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = 0,
+		StartOffsetX = -20.0,
+		StartOffsetY = 0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Dionysus_Default_01",
@@ -267,6 +270,7 @@ mod.HadesPortraitAnimationAdditions = {
 		Loop = true,
 		NumFrames = 6,
 		StartFrame = 1,
+		OffsetY = 0,
 		Scale = 0.8,
 		Slides = {
 			{ DurationFrames = 6, FilePath = "Portraits\\Animation\\Portrait_Athena_Blink01" },
@@ -283,6 +287,7 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\Portraits_Athena_01",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = 0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Dionysus_Blink",
