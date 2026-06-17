@@ -83,7 +83,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesSecondPickUp",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesPostTrueEnding01",
+			InsertAfterNarrativeTextLine = "HermesAboutUltimateProgress01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",

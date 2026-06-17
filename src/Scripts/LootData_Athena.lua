@@ -3,7 +3,8 @@ local newExclusiveHermesDeliveredDialogues = {
 	{
 		Name = "AthenaFirstPickUp",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesAboutUltimateProgress01",
+			InsertAfterNarrativeTextLine = "HermesPostTrueEnding01",
+			CreateNewPriorityGroup = true,
 			HermesDeliveredDialoguesSkipIntroLine = true,
 		},
 		PlayOnce = true,
