@@ -3,8 +3,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusFirstPickUp",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "HermesAboutApolloKeepsake01",
-			CreateNewPriorityGroup = true,
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "AthenaFirstPickUp", },

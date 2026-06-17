@@ -252,67 +252,54 @@ function mod.AddHermesDeliveredDialogues(deliveries, voiceBankMappings, cueMappi
 	local hermesDeliveryIntroLines = {
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90013",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Message for you, Coz!",
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90016",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Special delivery and all that, boss!",
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90073",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Message from Olympus for you, boss!",
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90074",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Message for you, boss.",
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90075",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Got you a message, Coz.",
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90101",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Express-delivered message for you, Coz.",
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90154",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Message for you, boss.",
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90155",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Another message for you!",
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90158",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Another message here!",
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90164",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Another message from Olympus, boss.",
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90176",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Message for you, Coz.",
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90177",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Another message for you, Coz.",
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90183",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Text = "Message for you, boss.",
 		},
 	}
@@ -354,6 +341,9 @@ function mod.AddHermesDeliveredDialogues(deliveries, voiceBankMappings, cueMappi
 				hermesDeliveryIntroLinesRemoveFrom = game.DeepCopyTable(hermesDeliveryIntroLines)
 			end
 			local introLine = game.DeepCopyTable(game.RemoveRandomValue(hermesDeliveryIntroLinesRemoveFrom))
+
+			introLine.Portrait = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01"
+			introLine.StartSound = "/Leftovers/World Sounds/MapZoomInShort"
 			introLine.PostLineRemoveContextArt = true
 			introLine.ExitPortraitImmediately = true
 

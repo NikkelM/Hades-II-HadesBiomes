@@ -1214,7 +1214,6 @@ local npcModifications = {
 				},
 			},
 			-- #endregion
-
 			ThanatosBackstory01_B = {
 				EndVoiceLines = {
 					RequiredMinElapsedTime = mod.NilValue,
@@ -1243,6 +1242,11 @@ local npcModifications = {
 			ThanatosPostEnding02 = {
 				AreIdsAlive = mod.NilValue,
 			},
+			ThanatosAboutQuestLog01 = {
+				RequiredCosmetics = mod.NilValue,
+				RequiredTextLines = { "MorosGrantsQuestLog" },
+			},
+			-- #region Repeatable Romance
 			ThanatosHomeIntermissionChat01 = {
 				AreIdsAlive = mod.NilValue,
 				[1] = {
@@ -1328,6 +1332,7 @@ local npcModifications = {
 					AngleHeroTowardTargetId = mod.NilValue,
 				},
 			},
+			-- #endregion
 		},
 		GiftTextLineSets = {
 			ThanatosGift01 = {

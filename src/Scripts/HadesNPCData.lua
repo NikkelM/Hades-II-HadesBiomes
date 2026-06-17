@@ -14876,7 +14876,6 @@ mod.NPCData = mod.NPCData or {
 				PlayOnce = true,
 				UseInitialInteractSetup = true,
 				UseableOffSource = true,
-				-- TODO:
 				RequiredTextLines = { "AresAboutThanatos02", },
 				-- Disturbingly all right!
 				EndCue = "/VO/ZagreusHome_1446",
@@ -15367,7 +15366,6 @@ mod.NPCData = mod.NPCData or {
 				UseableOffSource = true,
 				UseInitialInteractSetup = true,
 				RequiredMinNPCInteractions = { NPC_Thanatos_01 = 1 },
-				-- TODO: ?
 				RequiredCosmetics = { "QuestLog", },
 				RequiredFalseFlags = { "InFlashback" },
 				EndVoiceLines = {

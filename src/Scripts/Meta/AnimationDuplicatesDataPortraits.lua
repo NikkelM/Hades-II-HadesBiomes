@@ -54,7 +54,9 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		ChildAnimation = "ModsNikkelMHadesBiomes_Portrait_Ares_Blink",
 		EndFrame = 1,
 		StartFrame = 1,
-		OffsetY = -90,
+		OffsetY = -89,
+		StartOffsetX = -20.0,
+		StartOffsetY = 0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01",
@@ -244,7 +246,7 @@ mod.HadesPortraitAnimationAdditions = {
 		Loop = true,
 		AddColor = false,
 		OffsetX = 0,
-		OffsetY = -90,
+		OffsetY = -89,
 		Scale = 0.8,
 		Slides = {
 			{ DurationFrames = 4, FilePath = "Portraits\\Animation\\Ares\\Portrait_Ares_Blink01" },
@@ -259,7 +261,7 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\Portraits_Ares_01",
 		EndFrame = 1,
 		StartFrame = 1,
-		OffsetY = -90.0,
+		OffsetY = -89,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_AthenaBlink",

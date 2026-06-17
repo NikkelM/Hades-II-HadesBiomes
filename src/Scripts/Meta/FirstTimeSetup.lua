@@ -340,6 +340,7 @@ local function copyHadesHelpTexts()
 							entry.Id = entry.Id:gsub("Persephone_", "Modsnikkelmhadesbiomespersephone_")
 							entry.Id = entry.Id:gsub("ZagreusHome_", "Modsnikkelmhadesbiomeszagreushome_")
 							-- LootData
+							entry.Id = entry.Id:gsub("Ares_", "Modsnikkelmhadesbiomesares_")
 							entry.Id = entry.Id:gsub("Athena_", "Modsnikkelmhadesbiomesathena_")
 							entry.Id = entry.Id:gsub("Chaos_", "Modsnikkelmhadesbiomeschaos_")
 							entry.Id = entry.Id:gsub("Dionysus_", "Modsnikkelmhadesbiomesdionysus_")

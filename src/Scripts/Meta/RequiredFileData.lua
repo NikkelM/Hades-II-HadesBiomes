@@ -15,6 +15,7 @@ mod.VoiceoverFileNames = {
 	HadesField = "HadesField",
 	MegaeraField = "MegaeraField",
 	Minotaur = "Minotaur",
+	Modsnikkelmhadesbiomesares = "Modsnikkelmhadesbiomesares",
 	Modsnikkelmhadesbiomesathena = "Modsnikkelmhadesbiomesathena",
 	Modsnikkelmhadesbiomeschaos = "Modsnikkelmhadesbiomeschaos",
 	Modsnikkelmhadesbiomescharon = "Modsnikkelmhadesbiomescharon",
