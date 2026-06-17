@@ -1,3 +1,9 @@
+-- Don't play Hermes' rushed delivery cues if a Hermes delivery dialogue is skipped, as it's not Hermes who's speaking last
+table.insert(game.LootData.HermesUpgrade.TextLinesEndEvents[1].GameStateRequirements, {
+	PathFromArgs = true,
+	PathFalse = { "ModsNikkelMHadesBiomesIsHermesDeliveredDialogue" },
+})
+
 local newPortedInteractTextLines = {
 	-- #region Charon Fight Questline
 	{
@@ -191,7 +197,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesRunCleared02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesFirstRunCleared01",
+			InsertAfterNarrativeTextLine = "HermesRunCleared01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -369,7 +375,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutThanatos01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "HermesAboutApolloKeepsake01",
+			InsertAfterTextLineGroupContaining = "DionysusAboutOrpheus01",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
@@ -444,3 +450,4 @@ mod.AddNarrativeDataEntries(
 	{ Hermes = { "Modsnikkelmhadesbiomeshermes" } }, { Hermes_ = "Modsnikkelmhadesbiomeshermes_" },
 	{ Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01" }
 )
+mod.PrintTable(game.NarrativeData.HermesUpgrade)

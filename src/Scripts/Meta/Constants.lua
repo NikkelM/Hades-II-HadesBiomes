@@ -14,6 +14,7 @@ mod.DefaultHiddenConfig = {
 	InstalledModVersion = "",
 	-- For debugging purposes
 	EnableVanillaDebugKeybinds = false,
+	DeveloperMode = false,
 }
 
 -- This is the number of sjson.hook calls we normally make

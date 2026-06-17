@@ -1,22 +1,22 @@
 -- #region New/Imported text lines
 ---Add modded narrative text lines into NarrativeData and LootData/EnemyData with priority placement and voicebank mapping.
----@param newTextLines table<string, table> Text line sets keyed by text line id, each including `ModsNikkelMHadesBiomes_TextLineMetadata`
+---@param newTextLines table<integer, table> Text line sets keyed by text line id, each including `ModsNikkelMHadesBiomes_TextLineMetadata`
 ---@param narrativeDataKey string Key in `game.NarrativeData` and `game.LootData`/`game.EnemyData`
 ---@param textLineType string Field name on LootData/EnemyData to store sets (e.g. "InteractTextLineSets")
 ---@param textLinePriorityType string Field name on NarrativeData priority table (e.g. "InteractTextLinePriorities")
 ---@param voiceBankMappings table<string, table<string>> Voicebank mapping to load modded voicebanks with vanilla loads
 ---@param cueMappings table<string, string> Cue prefix mapping, applied to `/VO/<Find>` -> `/VO/<ReplaceWith>`
 ---@param portraitMappings table<string, string> Mappings of Cue prefixes to Portrait names
----@param dummyCue string|nil If not nil, this cue or sound will be played when the loot is picked up, in place of an actual voiced dialogue
----@param dummyVoiceBank string|nil If `dummyCue` is set, this voicebank will be loaded for it
+---@param dummyCues table<integer, string>|nil If not nil, a random cue from this table will be played when the loot is picked up, in place of an actual voiced dialogue
+---@param dummyVoiceBank string|nil If `dummyCues` is set, this voicebank will be loaded for it
 function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineType, textLinePriorityType,
-																		 voiceBankMappings, cueMappings, portraitMappings, dummyCue, dummyVoiceBank)
+																		 voiceBankMappings, cueMappings, portraitMappings, dummyCues, dummyVoiceBank)
 	if narrativeDataKey == nil or textLineType == nil or textLinePriorityType == nil or voiceBankMappings == nil or cueMappings == nil or portraitMappings == nil then
 		mod.DebugPrint("A required parameter is missing!", 1)
 		return
 	end
-	if dummyCue ~= nil and dummyVoiceBank == nil then
-		mod.DebugPrint("dummyCue is set but dummyVoiceBank is nil, both must be set to use a dummy cue!", 1)
+	if dummyCues ~= nil and dummyVoiceBank == nil then
+		mod.DebugPrint("dummyCues is set but dummyVoiceBank is nil, both must be set to use a dummy cue!", 1)
 		return
 	end
 
@@ -43,6 +43,32 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 	end
 
 	-- #region Helper functions
+	local function dialogueNameExistsInHadesTwo(name)
+		-- These tables don't contain dialogues (in NarrativeData) and should not be checked
+		local nonDialogueNarrativeFields = {
+			BonusGiftHeartRequirements = true,
+			SpecialGiftTrackHintRequirements = true,
+			SpecialKeepsakeEventRequirements = true,
+			ChoiceButtons = true,
+		}
+
+		for _, source in pairs(game.NarrativeData) do
+			if type(source) == "table" then
+				for key, childTable in pairs(source) do
+					if type(childTable) == "table" and not nonDialogueNarrativeFields[key] then
+						for _, entry in pairs(childTable) do
+							-- Entries are either a dialogue name or a group (table) of dialogue names
+							if entry == name or (type(entry) == "table" and game.Contains(entry, name)) then
+								return true
+							end
+						end
+					end
+				end
+			end
+		end
+		return false
+	end
+
 	local function insertAfterGroup(priorityTable, target, entry, textLineKey)
 		for i, group in ipairs(priorityTable) do
 			if type(group) == "table" then
@@ -93,6 +119,12 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 			mod.DebugPrint("A text line set is missing the Name field! (At index " .. index .. ")", 1)
 			return
 		end
+
+		-- Check if this name collides with an existing Hades II dialogue
+		if mod.HiddenConfig.DeveloperMode and dialogueNameExistsInHadesTwo(key) then
+			mod.DebugPrint("Text line set '" .. key .. "' already exists in Hades II.", 1)
+		end
+
 		local metadata = data.ModsNikkelMHadesBiomes_TextLineMetadata
 		-- #region Required modifications to all text lines
 		-- Mark as modded textline
@@ -108,7 +140,7 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- This requirement was missing in Hades' textlines
 		table.insert(data.GameStateRequirements, { PathFalse = { "CurrentRun", "UseRecord", narrativeDataKey } })
 
-		local insertedDummyCue = (not dummyCue) or false
+		local insertedDummyCue = (not dummyCues) or false
 		for _, line in ipairs(data) do
 			if not insertedDummyCue and not line.UserPlayerSource then
 				if line.PreLineThreadedFunctionName ~= nil then
@@ -117,7 +149,7 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 					-- Sound that is played after pickup for textlines without actual voiced dialogue
 					line.PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayDummyLootPickupCue"
 					line.PreLineThreadedFunctionArgs = {
-						DummyCue = dummyCue,
+						DummyCues = dummyCues,
 						DummyVoiceBank = dummyVoiceBank,
 					}
 				end
@@ -195,7 +227,7 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 end
 
 function mod.PlayDummyLootPickupCue(source, args)
-	if args == nil or args.DummyCue == nil then
+	if args == nil or args.DummyCues == nil then
 		return
 	end
 
@@ -203,15 +235,140 @@ function mod.PlayDummyLootPickupCue(source, args)
 		LoadVoiceBank({ Names = { args.DummyVoiceBank }, IgnoreAssert = true })
 	end
 
-	PlaySound({ Name = args.DummyCue, Id = source.ObjectId, })
+	PlaySound({ Name = game.GetRandomValue(args.DummyCues), Id = source.ObjectId, })
 end
+
+-- #region Hermes-delivered voicelines
+---Adds Hermes-delivered dialogues to the vanilla HermesUpgrade textlines.
+---Hermes speaks a random intro line, then starts the dialogue originally spoken by another character.
+---Should be used for characters that can't appear in modded runs (e.g. Dionysus, Athena).
+---@param deliveries table<integer, table> TextLineSets to add to Hermes' InteractTextLineSets
+---@param voiceBankMappings table<string, table<string>> Voicebank mapping to load modded voicebanks with vanilla loads
+---@param cueMappings table<string, string> Cue prefix mapping, applied to `/VO/<Find>` -> `/VO/<ReplaceWith>`
+---@param portraitMappings table<string, string>  Mappings of Cue prefixes to Portrait names
+function mod.AddHermesDeliveredDialogues(deliveries, voiceBankMappings, cueMappings, portraitMappings)
+	local hermesDeliveryIntroLines = {
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90013",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Message for you, Coz!",
+		},
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90016",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Special delivery and all that, boss!",
+		},
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90073",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Message from Olympus for you, boss!",
+		},
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90074",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Message for you, boss.",
+		},
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90075",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Got you a message, Coz.",
+		},
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90101",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Express-delivered message for you, Coz.",
+		},
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90154",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Message for you, boss.",
+		},
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90155",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Another message for you!",
+		},
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90158",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Another message here!",
+		},
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90164",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Another message from Olympus, boss.",
+		},
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90176",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Message for you, Coz.",
+		},
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90177",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Another message for you, Coz.",
+		},
+		{
+			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90183",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Message for you, boss.",
+		},
+	}
+	local hermesDeliveryIntroLinesRemoveFrom = game.DeepCopyTable(hermesDeliveryIntroLines)
+
+	-- Append the Hermes intro line's own voicebank, cue and portrait mappings to those passed in
+	voiceBankMappings.Hermes = voiceBankMappings.Hermes or {}
+	table.insert(voiceBankMappings.Hermes, "Modsnikkelmhadesbiomeshermes")
+	cueMappings.Hermes_ = "Modsnikkelmhadesbiomeshermes_"
+	portraitMappings.Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01"
+
+	for _, delivery in ipairs(deliveries) do
+		for _, deliveredLine in ipairs(delivery) do
+			deliveredLine.UseRoomContextArt = true
+			-- By default the speaker name is Hermes if nothing else is set, so determine what speaker we need from the Cue if required
+			if deliveredLine.Speaker == nil and deliveredLine.Source == nil and not deliveredLine.UsePlayerSource then
+				local character = string.match(deliveredLine.Cue, "^/VO/(%a+)_")
+				if character then
+					deliveredLine.Speaker = "NPC_" .. character .. "_01"
+				end
+			end
+		end
+
+		-- Transition from the Hermes intro to the delivered speaker, matching the duo-boon pickup effects
+		local firstDeliveredLine = delivery[1]
+		firstDeliveredLine.PreLineFunctionName = "BoonInteractPresentation"
+		firstDeliveredLine.PreLineWait = 0.5
+
+		-- Add a random intro line, we don't care about these changing per-dialogue between game restarts
+		if #hermesDeliveryIntroLinesRemoveFrom <= 0 then
+			hermesDeliveryIntroLinesRemoveFrom = game.DeepCopyTable(hermesDeliveryIntroLines)
+		end
+		local introLine = game.DeepCopyTable(game.RemoveRandomValue(hermesDeliveryIntroLinesRemoveFrom))
+		introLine.PostLineRemoveContextArt = true
+		introLine.ExitPortraitImmediately = true
+		table.insert(delivery, 1, introLine)
+
+		-- Suppresses Hermes' rushed dialogue cues when skipping the last dialogue (through a GameStateRequirement modification on his TextLineEndEvents)
+		delivery.EndEvents = { { FunctionName = _PLUGIN.guid .. "." .. "SetHermesDeliveryArgs", }, }
+	end
+
+	mod.AddNarrativeDataEntries(deliveries, "HermesUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
+		voiceBankMappings, cueMappings, portraitMappings)
+end
+
+function mod.SetHermesDeliveryArgs(source, eventArgs, args)
+	args = args or {}
+	args.ModsNikkelMHadesBiomesIsHermesDeliveredDialogue = true
+end
+
+-- #endregion
 
 -- #endregion
 
 -- #region Misc
 -- Update the requirements for the Devotion reward to require a minimum biome depth of 3, as that's where Elites become eligible
 local devotionOrRequirements = {
-	-- Either, we are not in a modded run, or we are in a modded run and at least at biome depth 3
+	-- Either we are not in a modded run, or we are in a modded run and at least at biome depth 3
 	{
 		{
 			PathFalse = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" },
