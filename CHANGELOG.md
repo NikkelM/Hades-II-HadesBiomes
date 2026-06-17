@@ -4,6 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Added new dialogues between Zagreus and various Gods, delivered by Hermes via his boons in Zagreus' Journey runs. This unblocks a number of NPC dialogues as well.
 - If boons offered by NPCs have specific requirements before they can be offered, these will now be shown in the Codex (Patroclus, Orpheus).
 - Added four new cosmetics: Two stages for the Music Maker, a set of pillars near the Cauldron, and a set of pillarets surrounding Hypnos.
 
