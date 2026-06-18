@@ -4,7 +4,7 @@ modutil.mod.Path.Wrap("GetWeaponAIData", function(base, enemy, weaponName)
 	local aiData = base(enemy, weaponName)
 	if game.WeaponData[weaponName] ~= nil and game.WeaponData[weaponName].AIData ~= nil then
 		if game.WeaponData[weaponName].ShrineAIDataOverwrites ~= nil and game.GetNumShrineUpgrades(game.WeaponData[enemy.WeaponName].ShrineMetaUpgradeName) >= game.WeaponData[enemy.WeaponName].ShrineMetaUpgradeRequiredLevel then
-			game.OverwriteTableKeys(aiData, WeaponData[weaponName].ShrineAIDataOverwrites)
+			game.OverwriteTableKeys(aiData, game.WeaponData[weaponName].ShrineAIDataOverwrites)
 		end
 	end
 	return aiData
@@ -46,6 +46,16 @@ modutil.mod.Path.Wrap("AIFireProjectile", function(base, enemy, aiData, projecti
 	end
 
 	return base(enemy, aiData, projectileData)
+end)
+
+modutil.mod.Path.Wrap("ProcessAttackSlots", function(base, enemy, aiData)
+	-- Safety check in case the target object no longer exists
+	local targetLocation = aiData.TargetId and GetLocation({ Id = aiData.TargetId })
+	if targetLocation == nil or targetLocation == {} then
+		aiData.TargetId = game.CurrentRun.Hero.ObjectId
+	end
+
+	return base(enemy, aiData)
 end)
 
 -- Gets called in a ThreadedEvents function in each boss's AIStage.

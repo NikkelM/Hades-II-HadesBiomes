@@ -11,6 +11,7 @@
 Other fixes and improvements:
 - Balancing: Trap damage now scales in Dream Dives.
 - Fixed: Rewards from Shrines of Hermes and Icarus' "Supply Chain" boon can be delivered after defeating Charon, which softlocks the player if picked up.
+- Fixed: In rare cases, the game may crash after Melinoë exits "Unseen Ire" while an enemy is performing a certain type of attack.
 - Fixed: If the Tiny Vermin in Styx is met before meeting King Vermin in Oceanus, the game crashes.
 - Fixed: The Tiny Vermin is damaged by Medea's "Suffering on Sight" boon.
 - Fixed: The intro video before the very first run of a new save does not play if Zagreus' Journey is installed.
