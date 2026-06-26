@@ -224,8 +224,16 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 10 then
+			-- Port over the fix for the game crashing if the GameStats were last sorted to a modded category, then the mod was uninstalled
+			-- Already fixed for everyone using the screen, but still broken for those that used it a while ago and never re-opened it before uninstalling
+			if game.GameState.RunHistoryGameStatsSortMode ~= nil and game.GameState.RunHistoryGameStatsSortMode > 6 then
+				game.GameState.RunHistoryGameStatsSortMode = 1
+			end
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 9
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 10
 	end
 
 	return base()

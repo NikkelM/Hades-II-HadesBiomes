@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Fixed: If the Tiny Vermin in Styx is met before meeting King Vermin in Oceanus, the game crashes.
 - Fixed: The Tiny Vermin is damaged by Medea's "Suffering on Sight" boon.
 - Fixed: The intro video before the very first run of a new save does not play if Zagreus' Journey is installed.
+- Fixed: When opening the statistics screen while the mod is disabled and if the previously selected sort column was a modded column, the game crashes if the statistics had not been viewed since version 1.1.0 of the mod.
 <!--Releasenotes end-->
 
 ## v1.1.3
