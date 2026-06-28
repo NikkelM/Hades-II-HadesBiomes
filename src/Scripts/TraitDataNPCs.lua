@@ -365,7 +365,7 @@ local newTraitData = {
 			NamedRequirements = { "StackUpgradeLegal", },
 		},
 		AcquireFunctionArgs = {
-			FunctionName = "AddStackToTraits",
+			FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesAddStackToTraits",
 			NumTraits = 3,
 			NumStacks = 2,
 			ReportValues = {
