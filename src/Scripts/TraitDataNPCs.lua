@@ -365,8 +365,9 @@ local newTraitData = {
 			NamedRequirements = { "StackUpgradeLegal", },
 		},
 		BoonInfoIgnoreRequirements = true,
-		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceBuffMegaPom",
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceBuff",
 		AcquireFunctionArgs = {
+			FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesAddStackToTraits",
 			NumTraits = 3,
 			NumStacks = 2,
 			ReportValues = {

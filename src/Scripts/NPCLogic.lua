@@ -294,21 +294,21 @@ function mod.ModsNikkelMHadesBiomesEurydiceBuff(args, source)
 	mod.ModsNikkelMHadesBiomesEurydicePostBuffPresentation(source, args)
 end
 
-function mod.ModsNikkelMHadesBiomesEurydiceBuffMegaPom(args, source)
+-- Fixed version of AddStackToTraits(), which only ever adds one level regardless of the passed args.NumStacks
+function mod.ModsNikkelMHadesBiomesAddStackToTraits(source, args)
 	args = args or {}
-	mod.ModsNikkelMHadesBiomesEurydicePreBuffPresentation(source, args)
 	local numTraits = args.NumTraits or 1
 	local numStacks = args.NumStacks or 1
 
-	local upgradableTraits = game.GetAllUpgradeableGodTraits( numStacks )
+	local upgradableTraits = game.GetAllUpgradeableGodTraits(numStacks)
 	local upgradedTraits = {}
 
-	while numTraits > 0 and not game.IsEmpty( upgradableTraits ) do
-		local name = game.GetRandomKey( upgradableTraits )
+	while numTraits > 0 and not game.IsEmpty(upgradableTraits) do
+		local name = game.GetRandomKey(upgradableTraits) or ""
 		upgradedTraits[name] = true
-		local traitData = game.GetHeroTrait(name)
+		local traitData = game.GetHeroTrait(name) or {}
 		if not traitData.BlockStacking then
-			game.IncreaseTraitLevel( traitData, numStacks )
+			game.IncreaseTraitLevel(traitData, numStacks)
 		end
 		numTraits = numTraits - 1
 		upgradableTraits[name] = nil
@@ -316,16 +316,15 @@ function mod.ModsNikkelMHadesBiomesEurydiceBuffMegaPom(args, source)
 
 	game.UpdateHeroTraitDictionary()
 
-	for i, traitData in ipairs( game.CurrentRun.Hero.Traits ) do
+	for i, traitData in ipairs(game.CurrentRun.Hero.Traits) do
 		if upgradedTraits[traitData.Name] then
 			game.wait(0.1)
-			game.TraitUIUpdateText( traitData )
+			game.TraitUIUpdateText(traitData)
 		end
 	end
 	if not args.Silent then
-		game.thread( game.IncreasedTraitLevelPresentation, upgradedTraits, numStacks )
+		game.thread(game.IncreasedTraitLevelPresentation, upgradedTraits, numStacks)
 	end
-	mod.ModsNikkelMHadesBiomesEurydicePostBuffPresentation(source, args)
 end
 
 function mod.ModsNikkelMHadesBiomesEurydicePreBuffPresentation(source, args)
