@@ -349,7 +349,7 @@ local newTraitData = {
 		},
 	},
 	ModsNikkelMHadesBiomesBuffMegaPom = {
-		InheritFrom = { "ModsNikkelMHadesBiomesBaseEurydice" },
+		InheritFrom = { "ModsNikkelMHadesBiomesBaseEurydice", "ModsNikkelMHadesBiomesBuffSlottedBoonRarity" },
 		Icon = "Boon_Eurydice_02",
 		RarityLevels = {
 			Common = { Multiplier = 1 },
@@ -364,8 +364,6 @@ local newTraitData = {
 		GameStateRequirements = {
 			NamedRequirements = { "StackUpgradeLegal", },
 		},
-		BoonInfoIgnoreRequirements = true,
-		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceBuff",
 		AcquireFunctionArgs = {
 			FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesAddStackToTraits",
 			NumTraits = 3,
