@@ -11,6 +11,7 @@
 Other fixes and improvements:
 - Balancing: Trap damage now scales in Dream Dives.
 - Fixed: Rewards from Shrines of Hermes and Icarus' "Supply Chain" boon can be delivered after defeating Charon, which softlocks the player if picked up.
+- Fixed: Some animations and textures are missing when loading a save in non-combat rooms in Asphodel. 
 - Fixed: Eurydice's "Pom Porridge" only upgrades boons by one instead of two levels (fix by zerp).
 - Fixed: In rare cases, the game may crash after Melinoë exits "Unseen Ire" while an enemy is performing a certain type of attack.
 - Fixed: If the Tiny Vermin in Styx is met before meeting King Vermin in Oceanus, the game crashes.
