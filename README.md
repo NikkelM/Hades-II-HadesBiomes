@@ -6,7 +6,7 @@ _Zagreus' Journey_ is a mod for Hades II that adds the original route Zagreus to
 Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past - all integrated into the main game as if it was always there: Naturally progress through the new biomes, unlock new incantations to perform, reveal and complete new Minor Prophecies, forge bonds with NPCs in familiar and new locations, collect over 30 new resources to spend on new cosmetics and music, and test your skills with new Testaments, Chaos Trials and in Dream Dives.
 Find the full list of features below!
 
-This mod has been officially endorsed by the developer!
+This mod has been officially endorsed by the developers!
 [Supergiant Games: We're blown away by this mod!](https://x.com/SupergiantGames/status/2051709669476012501)
 
 Wonder what it plays like?
@@ -82,7 +82,7 @@ If the mod was installed successfully, you will see a new logo appear in the mai
 
 Please also keep the following in mind:
 
-- You must uninstall your Hades 1 mods (rename or delete the `Mods` folder and run `modimporter.exe`) before using this mod. Zagreus' Journey is compatible with other Hades II mods.
+- You must uninstall your **Hades 1** mods (rename or delete the `Mods` folder and run `modimporter.exe`) before using this mod. Zagreus' Journey **is** compatible with other Hades II mods.
 - If Hades and Hades II are installed in different parent folders (e.g. through different storefronts), set the `hadesGameFolder` in the mod's [configuration file](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) to your Hades install path.
 - Is your Hades II installed through Epic Games? You may need to follow [this FAQ entry](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/getting-started#i-own-hades-ii-on-epic-games-and-mods-do-not-work-when-playing-what-can-i-do) if mods don't seem to be active.
 - Installing the mod on Steam Deck? Follow the [Steam Deck guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/steam-deck) in the wiki.
