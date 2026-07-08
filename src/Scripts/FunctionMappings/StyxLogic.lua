@@ -120,8 +120,11 @@ function mod.StartStyxPoisonPresentation(unit)
 				1
 	end
 
+	-- The "Poison will wear off automatically!" message applies outside of Styx only, on the first poison of the run, unless disabled via config
+	local showElysiumPoisonMessage = game.CurrentRun.CurrentRoom.RoomSetName ~= "Styx" and game.CurrentRun.ModsNikkelMHadesBiomesTimesPoisonedInElysium == 1 and not config.z_HideElysiumPoisonMessage
+
 	-- Only show this text if we won't show the custom text
-	if game.CheckCooldown("PoisonAppliedTextCooldown", 1.5) and not (game.CurrentRun.ModsNikkelMHadesBiomesTimesPoisonedInElysium == 1) then
+	if game.CheckCooldown("PoisonAppliedTextCooldown", 1.5) and not showElysiumPoisonMessage then
 		game.thread(game.InCombatText, unit.ObjectId, "DebuffPoisoned", 1.2)
 	end
 
@@ -140,7 +143,7 @@ function mod.StartStyxPoisonPresentation(unit)
 			game.thread(game.DirectionHintPresentation, { ObjectId = fountainId }, { Cooldown = 0 })
 			game.thread(game.InCombatText, fountainId, "UsePoisonCure", 1.75)
 		end
-	elseif game.CurrentRun.ModsNikkelMHadesBiomesTimesPoisonedInElysium == 1 and not config.z_HideElysiumPoisonMessage then
+	elseif showElysiumPoisonMessage then
 		-- We are not in Styx, it's the first time we've been poisoned in this run, and the message is not disabled through the config
 		game.thread(game.InCombatTextArgs, {
 			TargetId = game.CurrentRun.Hero.ObjectId,
