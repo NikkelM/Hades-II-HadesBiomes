@@ -11,7 +11,8 @@
 Other fixes and improvements:
 - Balancing: Trap damage now scales in Dream Dives.
 - Fixed: Rewards from Shrines of Hermes and Icarus' "Supply Chain" boon can be delivered after defeating Charon, which softlocks the player if picked up.
-- Fixed: Some animations and textures are missing when loading a save in non-combat rooms in Asphodel. 
+- Fixed: The boat in Asphodel sometimes enters a new room from an incorrect direction, in relation to the direction it exited the previous room.
+- Fixed: Some animations and textures are missing when loading a save in non-combat rooms in Asphodel.
 - Fixed: Eurydice's "Pom Porridge" only upgrades boons by one instead of two levels (fix by zerp).
 - Fixed: In rare cases, the game may crash after Melinoë exits "Unseen Ire" while an enemy is performing a certain type of attack.
 - Fixed: Megaera greets Melinoë each time she returns to the Styx Hub.

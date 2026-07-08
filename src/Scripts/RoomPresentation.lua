@@ -314,6 +314,46 @@ function mod.RoomEntranceDropRoomOpening(currentRun, currentRoom, args)
 	game.thread(game.RoomOpeningUIDelay)
 end
 
+modutil.mod.Path.Wrap("GatherRoomPresentationObjects", function(base, currentRun, currentRoom)
+	local roomData = game.RoomData[currentRoom.Name] or currentRoom
+
+	-- Ensure the boat always enters from the correct angle/direction in Asphodel (BaseAsphodel sets EntranceDirectionEndIdObstacleName)
+	if roomData.EntranceDirectionEndIdObstacleName ~= nil and not roomData.CardinalEntranceDirection and not roomData.StrictLeftRight and not game.CurrentRun.StoredHeroLocation and not (game.CurrentRun.NextHeroStartPoint ~= nil and game.CurrentRun.NextHeroEndPoint ~= nil) and (currentRoom.HeroStartPoint == nil or currentRoom.HeroEndPoint == nil) then
+		local heroStartIds = GetIdsByType({ Name = "HeroStart" }) or {}
+		table.sort(heroStartIds)
+		local heroEndIds = GetIdsByType({ Name = "HeroEnd" }) or {}
+		table.sort(heroEndIds)
+		local prevRoom = game.GetPreviousRoom(currentRun)
+		local eligibleStartPairs = {}
+		for _, startId in ipairs(heroStartIds) do
+			local endId = GetClosest({ Id = startId, DestinationIds = heroEndIds })
+			-- Direction is measured to the boat move point (H1 parity), not the walk-to HeroEnd point
+			local directionEndId = GetClosest({
+				Id = startId,
+				DestinationIds = GetIdsByType({ Name = roomData.EntranceDirectionEndIdObstacleName })
+			})
+			if directionEndId == nil or directionEndId <= 0 then
+				directionEndId = endId
+			end
+			local entranceAngle = game.GetAngleBetween({ Id = startId, DestinationId = directionEndId }) or 0
+			local entranceDirection = (entranceAngle < 90 or entranceAngle > 270) and "Right" or "Left"
+			if prevRoom == nil or prevRoom.ExitDirection == nil or prevRoom.ExitDirection == entranceDirection then
+				table.insert(eligibleStartPairs, { HeroStartPoint = startId, HeroEndPoint = endId })
+			end
+		end
+		if not game.IsEmpty(eligibleStartPairs) then
+			local chosenPair = game.GetRandomValue(eligibleStartPairs) or {}
+			currentRoom.HeroStartPoint = chosenPair.HeroStartPoint
+			currentRoom.HeroEndPoint = chosenPair.HeroEndPoint
+		else
+			currentRoom.HeroStartPoint = game.GetFirstValue(heroStartIds)
+			currentRoom.HeroEndPoint = game.GetFirstValue(heroEndIds)
+		end
+	end
+
+	return base(currentRun, currentRoom)
+end)
+
 function mod.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId, skipCameraLockOnEnd)
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or
 			0.8
