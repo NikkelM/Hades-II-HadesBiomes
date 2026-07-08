@@ -703,6 +703,7 @@ local npcModifications = {
 						FootstepSound = "/Leftovers/SFX/FootstepsHuge",
 						MoveSound = "/Leftovers/SFX/BallImpact",
 						HeroVoiceLines = "ClearedCerberusVoiceLines",
+						ModsNikkelMHadesBiomesAutocompleteSurfaceShopDelivery = true,
 					},
 				},
 			},

@@ -121,7 +121,8 @@ function mod.StartStyxPoisonPresentation(unit)
 	end
 
 	-- The "Poison will wear off automatically!" message applies outside of Styx only, on the first poison of the run, unless disabled via config
-	local showElysiumPoisonMessage = game.CurrentRun.CurrentRoom.RoomSetName ~= "Styx" and game.CurrentRun.ModsNikkelMHadesBiomesTimesPoisonedInElysium == 1 and not config.z_HideElysiumPoisonMessage
+	local showElysiumPoisonMessage = game.CurrentRun.CurrentRoom.RoomSetName ~= "Styx" and
+			game.CurrentRun.ModsNikkelMHadesBiomesTimesPoisonedInElysium == 1 and not config.z_HideElysiumPoisonMessage
 
 	-- Only show this text if we won't show the custom text
 	if game.CheckCooldown("PoisonAppliedTextCooldown", 1.5) and not showElysiumPoisonMessage then
@@ -278,6 +279,11 @@ function game.ExitNPCPresentation(source, args)
 				SubtitleData = { LuaKey = "TempTextData", LuaValue = { Name = game.CurrentRun.CurrentRoom.EndUnlockText } },
 				Delay = 0.6,
 			})
+	end
+
+	-- In Dream Dives, complete Hermes deliveries after giving the Satyr Sack to Cerberus
+	if args.ModsNikkelMHadesBiomesAutocompleteSurfaceShopDelivery and game.CurrentRun.IsDreamRun and game.CurrentRun.EnteredBiomes >= game.GameData.FullRunBiomeCount then
+		game.CompleteSurfaceShopItems()
 	end
 end
 
