@@ -339,6 +339,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- #endregion
 	-- #region Megaera
 	Sulking = {
+		Name = "ModsNikkelMHadesBiomes_MegaeraHubGreeting",
 		ChanceToTrigger = 0.5,
 		TriggerOnceThisRun = true,
 		PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
@@ -348,6 +349,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		},
 	},
 	SulkingRepeatable = {
+		Name = "ModsNikkelMHadesBiomes_MegaeraHubGreeting",
 		ChanceToTrigger = 0.5,
 		TriggerOnceThisRun = true,
 		PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
