@@ -590,21 +590,22 @@ function mod.SetBiomePackageLoadOverrides()
 	local originalFxHash = rom.data.get_hash_guid_from_string("ModsNikkelMHadesBiomesFxOriginal")
 	local moddedFxHash = rom.data.get_hash_guid_from_string("NikkelM-HadesBiomesFxModded")
 	local roomManagerHash = rom.data.get_hash_guid_from_string("RoomManagerModsNikkelMHadesBiomes")
+	local originalDevHash = rom.data.get_hash_guid_from_string("ModsNikkelMHadesBiomesDevOriginal")
 
 	rom.data.load_package_overrides_set(tartarusBiomeHash,
-		{ tartarusBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ tartarusBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 	rom.data.load_package_overrides_set(asphodelBiomeHash,
-		{ asphodelBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ asphodelBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 	rom.data.load_package_overrides_set(elysiumBiomeHash,
-		{ elysiumBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ elysiumBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 	rom.data.load_package_overrides_set(styxBiomeHash,
-		{ styxBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ styxBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 	rom.data.load_package_overrides_set(surfaceBiomeHash,
-		{ surfaceBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ surfaceBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 	rom.data.load_package_overrides_set(erebusBiomeHash,
-		{ erebusBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ erebusBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 	rom.data.load_package_overrides_set(charonBiomeHash,
-		{ charonBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ charonBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 
 	-- Main Menu package, only if installation is valid (so we don't show the logo on invalid installs to prevent confusion)
 	if mod.HiddenConfig.IsValidInstallation then

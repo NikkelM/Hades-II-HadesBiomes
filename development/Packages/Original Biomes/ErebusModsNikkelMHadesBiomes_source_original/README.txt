@@ -1,4 +1,4 @@
-Copy-Pasted the normal Surface package (atlas version).
+Copy-Pasted the normal Erebus package (atlas version).
 ,?\s*\{"name":\s*"Fx\\\\GroundFogIso[^"]*"(?:[^{}]|\{[^{}]*\})*\}
 
 From Hades II Fx/Fx:
