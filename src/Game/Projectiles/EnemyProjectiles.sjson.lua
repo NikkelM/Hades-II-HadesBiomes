@@ -209,13 +209,13 @@ local hadesProjectilesModifications = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		ImpactFx = "EnemyProjectileImpact",
 		DissipateFx = "EnemyProjectileMultiBreak",
-		-- Removing this, as otherwise the small projectiles all hit the player when spawning
-		SpawnOnDeath = "null",
-		SpawnOnDissipate = "SplitShotWeaponSmall",
 		UnpauseResetLocation = true,
 		AffectsSelf = false,
 		Fuse = 1.65,
 		Speed = 530,
+		-- After a big projectile hits the player, make them immune to being hit by the small projectile that splits off to prevent them from immediately damaging
+		ImmunityKey = "ModsNikkelMHadesBiomes_SplitShot",
+		ImmunityDuration = 0.4,
 	},
 	SplitShotWeaponSmall = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
@@ -226,6 +226,8 @@ local hadesProjectilesModifications = {
 		Thing = {
 			Graphic = "EnemyProjectileIn",
 		},
+		ImmunityKey = "ModsNikkelMHadesBiomes_SplitShot",
+		ImmunityDuration = 0.4,
 	},
 	ChariotRamSelfDestruct = {
 		AffectsEnemies = true,

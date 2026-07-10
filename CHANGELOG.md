@@ -14,12 +14,13 @@ Other fixes and improvements:
 - Fixed: The boat in Asphodel sometimes enters a new room from an incorrect direction, in relation to the direction it exited the previous room.
 - Fixed: Some animations and textures are missing when loading a save in non-combat rooms in Asphodel.
 - Fixed: Eurydice's "Pom Porridge" only upgrades boons by one instead of two levels (fix by zerp).
-- Fixed: In rare cases, the game may crash after Melinoë exits "Unseen Ire" while an enemy is performing a certain type of attack.
+- Fixed: The Splitter's large projectile does not split into small projectiles after hitting Melinoë or an obstacle, but only when expiring mid-flight.
 - Fixed: Megaera greets Melinoë each time she returns to the Styx Hub.
 - Fixed: If the Tiny Vermin in Styx is met before meeting King Vermin in Oceanus, the game crashes.
 - Fixed: The Tiny Vermin is damaged by Medea's "Suffering on Sight" boon.
 - Fixed: The "Poison will wear off automatically" message can incorrectly show in Styx, where this is not the case.
 - Fixed: If deliveries from a Shrine of Hermes are pending after giving the Satyr Sack to Cerberus in a Dream Dive, they will not be auto-delivered.
+- Fixed: In rare cases, the game may crash after Melinoë exits "Unseen Ire" while an enemy is performing a certain type of attack.
 - Fixed: The intro video before the very first run of a new save does not play if Zagreus' Journey is installed.
 - Fixed: When opening the statistics screen while the mod is disabled and if the previously selected sort column was a modded column, the game crashes if the statistics had not been viewed since version 1.1.0 of the mod.
 <!--Releasenotes end-->
