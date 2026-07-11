@@ -2237,6 +2237,7 @@ local weaponModifications = {
 			PreAttackDuration = 0.0,
 			-- Rifts ban
 			DumbFireWeapons = {},
+			ProjectileScaleMultiplier = 1,
 		},
 	},
 	ShadeNakedEliteTrapDeath = {
