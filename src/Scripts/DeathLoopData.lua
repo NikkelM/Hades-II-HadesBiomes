@@ -46,7 +46,22 @@ table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 	}
 })
 
+-- Check if we already have a Chaos Gate spawned
+function mod.HadesRunStartDoorExists()
+	for _, id in ipairs(GetIds({ Name = "ModsNikkelMHadesBiomes.RunStartDoor" }) or {}) do
+		if game.MapState.ActiveObstacles[id] ~= nil then
+			return true
+		end
+	end
+
+	return false
+end
+
 function mod.SpawnHadesRunStartDoor(source, args)
+	if mod.HadesRunStartDoorExists() then
+		return
+	end
+
 	local chaosGate = game.DeepCopyTable(game.ObstacleData.SecretDoor) or {}
 
 	chaosGate.ObjectId = SpawnObstacle({
@@ -107,6 +122,24 @@ function mod.SpawnHadesRunStartDoor(source, args)
 	AddToGroup({ Id = chaosGate.ObjectId, Name = "ModsNikkelMHadesBiomes.RunStartDoor" })
 	-- Enable MelinoeField voicelines when entering the Chaos gate
 	game.LoadVoiceBanks({ Name = "MelinoeField" })
+end
+
+function mod.EnsureHadesRunStartDoorExists(room)
+	if room == nil or room.Name ~= "Hub_PreRun" then
+		return
+	end
+
+	-- Only spawn on a valid installation
+	if not mod.HiddenConfig or not mod.HiddenConfig.IsValidInstallation then
+		return
+	end
+
+	if not mod.HadesRunStartDoorExists() then
+		mod.DebugPrint(
+			"The Chaos Gate failed to spawn on the expected path - re-attempting the creation. Please report this issue to the developer",
+			2)
+		mod.SpawnHadesRunStartDoor()
+	end
 end
 
 function mod.StartHadesRun(source, args)

@@ -58,7 +58,12 @@ modutil.mod.Path.Wrap("DeathAreaRoomTransition", function(base, source, args)
 		game.CurrentRun.Hero.SubtitleColor = game.Color.White
 	end
 
-	return base(source, args)
+	local returnValue = base(source, args)
+
+	-- Make sure the Chaos Gate exists even if its StartUnthreadedEvents event failed to register for some reason
+	mod.EnsureHadesRunStartDoorExists(source)
+
+	return returnValue
 end)
 
 -- If returning from a Chaos Trial, this will be called instead of DeathAreaRoomTransition
@@ -70,7 +75,19 @@ modutil.mod.Path.Wrap("HubPostBountyLoad", function(base, source, args)
 	-- Load other textures such as incantation icons, screen backgrounds etc.
 	LoadPackages({ Name = "NikkelM-HadesBiomesCrossroads" })
 
-	return base(source, args)
+	-- Restore Melinoe identity if it was overwritten by a Surface room (will break if quitting and then loading directly after returning from run)
+	if game.CurrentRun.Hero.LineHistoryName == "NPC_Zagreus_Past_01" then
+		game.CurrentRun.Hero.LineHistoryName = "PlayerUnit"
+		game.CurrentRun.Hero.NarrativeFadeInColor = game.Color.Teal
+		game.CurrentRun.Hero.SubtitleColor = game.Color.White
+	end
+
+	local returnValue = base(source, args)
+
+	-- Make sure the Chaos Gate exists even if its StartUnthreadedEvents event failed to register for some reason
+	mod.EnsureHadesRunStartDoorExists(source)
+
+	return returnValue
 end)
 
 -- If returning from a Dream Dive, this will be called instead of DeathAreaRoomTransition
@@ -82,5 +99,17 @@ modutil.mod.Path.Wrap("HubPostDreamLoad", function(base, source, args)
 	-- Load other textures such as incantation icons, screen backgrounds etc.
 	LoadPackages({ Name = "NikkelM-HadesBiomesCrossroads" })
 
-	return base(source, args)
+	-- Restore Melinoe identity if it was overwritten by a Surface room (will break if quitting and then loading directly after returning from run)
+	if game.CurrentRun.Hero.LineHistoryName == "NPC_Zagreus_Past_01" then
+		game.CurrentRun.Hero.LineHistoryName = "PlayerUnit"
+		game.CurrentRun.Hero.NarrativeFadeInColor = game.Color.Teal
+		game.CurrentRun.Hero.SubtitleColor = game.Color.White
+	end
+
+	local returnValue = base(source, args)
+
+	-- Make sure the Chaos Gate exists even if its StartUnthreadedEvents event failed to register for some reason
+	mod.EnsureHadesRunStartDoorExists(source)
+
+	return returnValue
 end)
