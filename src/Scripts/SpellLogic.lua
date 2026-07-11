@@ -15,6 +15,7 @@ modutil.mod.Path.Wrap("PolymorphStunClear", function(base, triggerArgs)
 			-- Suppress death weapons if killed under polymorph
 			enemy.SpawnUnitOnDeath = nil
 			enemy.OnDeathFireWeapons = nil
+			enemy.SpawnObstaclesOnDeath = nil
 			-- Flag so KillPresentation skips the mod's manual death animation
 			enemy.ModsNikkelMHadesBiomesDiedWhilePolymorphed = true
 			-- Prevent the base game from restoring the original model/animation, which would briefly flash the original sprite before the entity is destroyed

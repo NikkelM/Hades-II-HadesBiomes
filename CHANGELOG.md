@@ -5,11 +5,11 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - Added new dialogues between Zagreus and various Gods, delivered by Hermes via his boons in Zagreus' Journey runs. This unblocks a number of NPC dialogues as well.
-- If boons offered by NPCs have specific requirements before they can be offered, these will now be shown in the Codex (Patroclus, Orpheus).
-- Added four new cosmetics: Two stages for the Music Maker, a set of pillars near the Cauldron, and a set of pillarets surrounding Hypnos.
 - Improved visual fidelity across all biomes, and Elysium especially, by adding a group of previously missing environmental lighting elements.
+- Added four new cosmetics: Two stages for the Music Maker, a set of pillars near the Cauldron, and a set of pillarets surrounding Hypnos.
 
 Other fixes and improvements:
+- If boons offered by NPCs have specific requirements before they can be offered, these will now be shown in the Codex (Patroclus, Orpheus).
 - Balancing: Trap damage now scales in Dream Dives.
 - Fixed: Rewards from Shrines of Hermes and Icarus' "Supply Chain" boon can be delivered after defeating Charon, which softlocks the player if picked up.
 - Fixed: The boat in Asphodel sometimes enters a new room from an incorrect direction, in relation to the direction it exited the previous room.
@@ -17,6 +17,7 @@ Other fixes and improvements:
 - Fixed: Eurydice's "Pom Porridge" only upgrades boons by one instead of two levels (fix by zerp).
 - Fixed: The Splitter's large projectile does not split into small projectiles after hitting Melinoë or an obstacle, but only when expiring mid-flight.
 - Fixed: The Brightsword's dash does not have its direction randomized.
+- Fixed: If a Shade enemy in Elysium dies while polymorphed, it drops a weapon that is able to be picked up by Exalted Shades.
 - Fixed: If a Shade enemy in Elysium has both the "Massive" and "Popper" elite perks, the additional Exalted Shades produced by the "Popper" perk are enlarged until they land.
 - Fixed: Asterius' shockwave projectiles are created in front of instead of behind him during some attacks in his second phase.
 - Fixed: The Good Shade in Elysium can be saluted when Theseus was defeated, but Asterius is still alive.
