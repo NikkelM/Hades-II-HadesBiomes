@@ -16,6 +16,7 @@ Other fixes and improvements:
 - Fixed: Some animations and textures are missing when loading a save in non-combat rooms in Asphodel.
 - Fixed: Eurydice's "Pom Porridge" only upgrades boons by one instead of two levels (fix by zerp).
 - Fixed: The Splitter's large projectile does not split into small projectiles after hitting Melinoë or an obstacle, but only when expiring mid-flight.
+- Fixed: Asterius' crescent strike creates shockwave projectiles in front of instead of behind him during his second phase.
 - Fixed: Megaera greets Melinoë each time she returns to the Styx Hub.
 - Fixed: If the Tiny Vermin in Styx is met before meeting King Vermin in Oceanus, the game crashes.
 - Fixed: The Tiny Vermin is damaged by Medea's "Suffering on Sight" boon.

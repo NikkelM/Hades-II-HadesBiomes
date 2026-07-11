@@ -2359,7 +2359,7 @@ local weaponKeyReplacements = {
 	},
 }
 
-local SjsonToAIDataPropertyMappings = {
+local sjsonToAIDataPropertyMappings = {
 	SelfVelocity = "FireSelfVelocity",
 	SelfUpwardVelocity = "FireSelfUpwardVelocity",
 	BarrelLength = "BarrelLength",
@@ -2377,4 +2377,4 @@ local SjsonToAIDataPropertyMappings = {
 }
 
 applyModificationsAndInheritWeaponData(mod.HadesWeaponData, weaponModifications, weaponReplacements,
-	weaponKeyReplacements, SjsonToAIDataPropertyMappings)
+	weaponKeyReplacements, sjsonToAIDataPropertyMappings)
