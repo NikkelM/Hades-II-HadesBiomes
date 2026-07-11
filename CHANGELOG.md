@@ -18,6 +18,7 @@ Other fixes and improvements:
 - Fixed: The Splitter's large projectile does not split into small projectiles after hitting Melinoë or an obstacle, but only when expiring mid-flight.
 - Fixed: The Brightsword's dash does not have its direction randomized.
 - Fixed: Asterius' shockwave projectiles are created in front of instead of behind him during some attacks in his second phase.
+- Fixed: The Good Shade in Elysium can be saluted when Theseus was defeated, but Asterius is still alive.
 - Fixed: Megaera greets Melinoë each time she returns to the Styx Hub.
 - Fixed: If the Tiny Vermin in Styx is met before meeting King Vermin in Oceanus, the game crashes.
 - Fixed: The Tiny Vermin is damaged by Medea's "Suffering on Sight" boon.

@@ -712,8 +712,7 @@ local roomModifications = {
 				UseTextSpecial = "SpecialInteractShade",
 				SpecialInteractGameStateRequirements = {
 					{
-						Path = { "CurrentRun", "EnemyKills" },
-						HasAny = { "Theseus", "Theseus2" }
+						PathTrue = { "CurrentRun", "CurrentRoom", "Encounter", "Completed" },
 					},
 				},
 			},
