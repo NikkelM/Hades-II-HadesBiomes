@@ -7,7 +7,7 @@
 - Added new dialogues between Zagreus and various Gods, delivered by Hermes via his boons in Zagreus' Journey runs. This unblocks a number of NPC dialogues as well.
 - If boons offered by NPCs have specific requirements before they can be offered, these will now be shown in the Codex (Patroclus, Orpheus).
 - Added four new cosmetics: Two stages for the Music Maker, a set of pillars near the Cauldron, and a set of pillarets surrounding Hypnos.
-- Fixed: The majority of environmental lighting is missing in Elysium and other biomes.
+- Fixed: The majority of environmental lighting is missing in Elysium primarily, and in certain places in other biomes.
 
 Other fixes and improvements:
 - Balancing: Trap damage now scales in Dream Dives.
