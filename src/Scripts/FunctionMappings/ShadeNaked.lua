@@ -293,3 +293,7 @@ function mod.ProcessPickup(enemy, pickupTarget)
 		CreateAnimation({ Name = pickupData.AttachAnimation, DestinationId = enemy.ObjectId })
 	end
 end
+
+function mod.ShadeSideDashRandomizeFireAngle(enemy, weaponAIData, currentRun)
+	weaponAIData.FireSelfVelocityAngleOffset = game.RandomFloat(0, 360)
+end
