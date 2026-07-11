@@ -658,6 +658,16 @@ function mod.ReplaceVoiceLineRequirements(voiceLineTable, cue, newRequirements, 
 	end
 end
 
+function mod.IsOtherModActive(modIdentifier)
+	local modReference = rom.mods[modIdentifier]
+	-- Even though the mod is active in the mod manager, it is disabled in the config
+	if modReference and modReference.config and modReference.config.enabled == false then
+		return nil
+	end
+
+	return modReference
+end
+
 modutil.mod.Path.Wrap("DebugPrint", function(base, args)
 	mod.DebugPrint(args.Text, 4)
 	return base(args)

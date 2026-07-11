@@ -4,8 +4,8 @@ game.ScreenData.QuestLog.IncompleteFormat.TextSymbolScale = 0
 game.ScreenData.QuestLog.CashedOutFormat.TextSymbolScale = 0
 game.ScreenData.QuestLog.ComponentData.InfoBoxTitle.TextArgs.TextSymbolScale = 0.5
 
-local flippedArcanaActive = rom.mods["ReadEmAndWeep-Flip_the_Arcana_Mod"]
-local nighmareFearActive = rom.mods["ReadEmAndWeep-Nightmare_Fear"]
+local flippedArcanaActive = mod.IsOtherModActive("ReadEmAndWeep-Flip_the_Arcana_Mod")
+local nighmareFearActive = mod.IsOtherModActive("ReadEmAndWeep-Nightmare_Fear")
 
 -- #region The order of the quests in the Quest log, these will be appended to the end of the vanilla list
 local newQuestOrderData = {

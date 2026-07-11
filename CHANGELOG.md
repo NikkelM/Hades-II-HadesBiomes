@@ -27,6 +27,7 @@ Other fixes and improvements:
 - Fixed: In rare cases, the game may crash after Melinoë exits "Unseen Ire" while an enemy is performing a certain type of attack.
 - Fixed: The intro video before the very first run of a new save does not play if Zagreus' Journey is installed.
 - Fixed: When opening the statistics screen while the mod is disabled and if the previously selected sort column was a modded column, the game crashes if the statistics had not been viewed since version 1.1.0 of the mod.
+- Fixed: If certain mods that integrate with Zagreus' Journey are active in the mod manager, but disabled through the mod configuration file, Zagreus' Journey still thinks they are active.
 <!--Releasenotes end-->
 
 ## v1.1.3
