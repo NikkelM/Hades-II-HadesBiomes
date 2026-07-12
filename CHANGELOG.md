@@ -19,6 +19,7 @@ Other fixes and improvements:
 - Fixed: The Brightsword's dash does not have its direction randomized.
 - Fixed: If a Shade enemy in Elysium dies while polymorphed, it drops a weapon that is able to be picked up by Exalted Shades.
 - Fixed: If a Shade enemy in Elysium has both the "Massive" and "Popper" elite perks, the additional Exalted Shades produced by the "Popper" perk are enlarged until they land.
+- Fixed: If a Flame Wheel or Nemean Chariot is morphed by "Twilight Curse" while attacking, the sheep will continue performing the attack.
 - Fixed: Asterius' shockwave projectiles are created in front of instead of behind him during some attacks in his second phase.
 - Fixed: The Good Shade in Elysium can be saluted when Theseus was defeated, but Asterius is still alive.
 - Fixed: Megaera greets Melinoë each time she returns to the Styx Hub.

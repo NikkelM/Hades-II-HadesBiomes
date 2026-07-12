@@ -5,6 +5,17 @@ modutil.mod.Path.Wrap("PolymorphStunApply", function(base, triggerArgs)
 		game.killTaggedThreads(enemy.SpawnerThreadName)
 	end
 
+	-- The normal PolymorphStunApply isn't able to reset the manual speed modifier we set for Chariot and ChariotSuicide attacks
+	if enemy.ModsNikkelMHadesBiomesRamming and enemy.ModsNikkelMHadesBiomesRamResetProperties then
+		for _, property in ipairs(enemy.ModsNikkelMHadesBiomesRamResetProperties) do
+			SetUnitProperty({ DestinationId = enemy.ObjectId, Value = property.Value, Property = property.Property })
+		end
+		Stop({ Id = enemy.ObjectId })
+		enemy.ModsNikkelMHadesBiomesRamming = false
+		enemy.ModsNikkelMHadesBiomesRamResetProperties = nil
+		enemy.ModsNikkelMHadesBiomesRamInterrupted = true
+	end
+
 	return base(triggerArgs)
 end)
 
