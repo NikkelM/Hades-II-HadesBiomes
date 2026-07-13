@@ -919,6 +919,7 @@ local enemyModifications = {
 	-- #region TARTARUS - Regular
 	BaseGlutton = {
 		LargeUnitCap = mod.NilValue,
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 130,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	PunchingBagUnit = {
@@ -932,6 +933,7 @@ local enemyModifications = {
 	},
 	BaseThug = {
 		LargeUnitCap = mod.NilValue,
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 130,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	HeavyMelee = {
@@ -943,6 +945,7 @@ local enemyModifications = {
 	DisembodiedHand = {
 		GenusName = "DisembodiedHand",
 		StunAnimations = { Default = "EnemyWringerOnHit" },
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 130,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 		GeneratorData = {
 			BlockSolo = true,
@@ -975,6 +978,7 @@ local enemyModifications = {
 	},
 	ThiefMineLayer = {
 		StunAnimations = { Default = "EnemyWretchThiefOnHit" },
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 50,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 		DefaultAIData = {
 			BlendTimeoutMin = 2.0,
@@ -1008,11 +1012,13 @@ local enemyModifications = {
 		OnDeathTetherRandomForceMin = 800,
 		OnDeathTetherRandomForceMax = 1000,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 110,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
 		WeaponOptions = { "HadesSwarmerMelee" },
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 80,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	LightSpawner = {
@@ -1027,6 +1033,7 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		PolymorphScaleOverride = 4.0,
 		EliteAttributeOptions = { "Fog", "HeavyArmor", "Orbit", "Radial", },
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 90,
 	},
 	-- #endregion
 	-- #region TARTARUS - Minibosses
@@ -1059,6 +1066,7 @@ local enemyModifications = {
 		},
 		OnDamagedFireProjectilesCooldown = 0.3,
 		OnDamagedWeapons = mod.NilValue,
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 320,
 	},
 	HeavyRangedSplitterMinibossSuperElite = {
 		-- Overwriting auto-scaled health, slightly reducing health and armour compared to what auto-scaling would do
@@ -1089,6 +1097,7 @@ local enemyModifications = {
 		},
 		OnDamagedFireProjectilesCooldown = 0.2,
 		OnDamagedWeapons = mod.NilValue,
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 320,
 	},
 	HeavyRangedSplitterFragment = {
 		MaxHealth = 40,
@@ -1123,6 +1132,7 @@ local enemyModifications = {
 		DefaultAIData = {
 			PreAttackEndFunctionName = _PLUGIN.guid .. "." .. "EnemyHandleInvisibleAttack",
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 145,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	WretchAssassinMiniboss = {
@@ -1653,6 +1663,7 @@ local enemyModifications = {
 		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		DestroyDelay = 3.0,
 		PolymorphScaleOverride = 2.0,
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 90,
 	},
 	FreezeShotUnitElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
@@ -1767,6 +1778,7 @@ local enemyModifications = {
 			[2] = { ParentDeathAnimation = "HealRangedCrystal2Shatter" },
 			[3] = { ParentDeathAnimation = "HealRangedCrystal3Shatter" },
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 145,
 	},
 	SpreadShotUnitMiniboss = {
 		-- In Hades II, projectiles can't be destroyed by attacks by default
@@ -1781,6 +1793,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 	},
 	HitAndRunUnit = {
+		StunAnimations = { Default = "EnemyMedusaOnHit" },
 		MaxHealth = 1650,
 		ManualDeathAnimation = false,
 		DestroyDelay = 3.0,
@@ -1813,6 +1826,7 @@ local enemyModifications = {
 			ShrineMetaUpgradeName = "MinibossCountShrineUpgrade",
 			ShrineMetaUpgradeRequiredLevel = 1,
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 140,
 	},
 	-- #endregion
 	-- #region ASPHODEL - Bosses
@@ -1905,6 +1919,7 @@ local enemyModifications = {
 			[3] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
 			[4] = { TransitionFunction = _PLUGIN.guid .. "." .. "HydraFinalStageTransition", },
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 240,
 	},
 	HydraHeadImmortalLavamaker = {
 		PactDataStage2 = {
@@ -1977,6 +1992,7 @@ local enemyModifications = {
 		IgnoreSprintPhasingStasisStun = true,
 		-- Neck tethers would not be removed
 		ImmuneToPolymorph = true,
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 170,
 	},
 	HydraTooth = {
 		StunAnimations = { Default = "HydraToothLanded" },
@@ -2002,6 +2018,7 @@ local enemyModifications = {
 		StartCharmedDataOverrides = { TriggerGroups = { "EnemyTeam" }, },
 		IncomingDamageModifiers = { { NonPlayerMultiplier = 0.0, }, },
 		AIOptions = { _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHydraToothAI", },
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 50,
 	},
 	HydraTooth2 = {
 		MaxHealth = 150,
@@ -2083,6 +2100,7 @@ local enemyModifications = {
 			-- If charmed/resurrected on the player's team, don't spawn a ShadeNaked on death
 			OnDeathFireWeapons = {},
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 85,
 	},
 	ShadeSpearUnitElite = {
 		OnDeathFireWeapons = { "ShadeDeathSpawnElite" },
@@ -2110,6 +2128,7 @@ local enemyModifications = {
 		SpellSummonDataOverrides = {
 			OnDeathFireWeapons = {},
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 85,
 	},
 	ShadeBowUnitElite = {
 		OnDeathFireWeapons = { "ShadeDeathSpawnElite" },
@@ -2149,6 +2168,7 @@ local enemyModifications = {
 		SpellSummonDataOverrides = {
 			OnDeathFireWeapons = {},
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 100,
 	},
 	ShadeShieldUnitElite = {
 		OnDeathFireWeapons = { "ShadeDeathSpawnElite" },
@@ -2176,6 +2196,7 @@ local enemyModifications = {
 		SpellSummonDataOverrides = {
 			OnDeathFireWeapons = {},
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 85,
 	},
 	ShadeSwordUnitElite = {
 		OnDeathFireWeapons = { "ShadeDeathSpawnElite" },
@@ -2235,6 +2256,7 @@ local enemyModifications = {
 			RamTimeout = 3.0,
 			RamDistance = 120,
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 100,
 	},
 	ChariotElite = {
 		DefaultAIData = {
@@ -2298,6 +2320,7 @@ local enemyModifications = {
 			OnFiredFunctionName = "SelfDestruct",
 		},
 		WeaponOptions = { "ChariotRamDeathWeapon" },
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 50,
 	},
 	FlurrySpawner = {
 		StunAnimations = { Default = "SoulSpawnerIdle" },
@@ -2305,6 +2328,7 @@ local enemyModifications = {
 		DreamBiomeData = elysiumEnemyDreamBiomeData,
 		-- Minimum 0.15 to allow OnDeathWeapons to fire from this unit (e.g. ChaosDeathWeaponCurse)
 		DestroyDelay = 0.15,
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 140,
 	},
 	FlurrySpawnerSuperElite = {
 		-- For some reason EnemyPointRanged doesn't exist in D_Boss01, and setting this to nil doesn't work
@@ -2418,6 +2442,7 @@ local enemyModifications = {
 		ManualDeathAnimation = false,
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 160,
 		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
 		PostActivateEvents = {
 			{
@@ -2731,6 +2756,7 @@ local enemyModifications = {
 			[1] = { RandomAIFunctionNames = { _PLUGIN.guid .. "." .. "TheseusChariotAI" }, },
 			[2] = { RandomAIFunctionNames = { _PLUGIN.guid .. "." .. "TheseusGodAI" }, },
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 160,
 	},
 	-- #endregion
 	-- #endregion
@@ -2743,6 +2769,7 @@ local enemyModifications = {
 		DreamBiomeData = styxEnemyDreamBiomeData,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		ActivateDuration = 0.4,
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 80,
 		-- Their poison doesn't damage enemies
 		BlockCharm = true,
 		BlockRaiseDead = true,
@@ -2765,6 +2792,7 @@ local enemyModifications = {
 		OnDeathFunctionArgs = {
 			ProjectileName = "HadesPoisonPuddle",
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 40,
 		-- Don't allow poison attack when summoned on the player's side
 		SpellSummonDataOverrides = {
 			WeaponOptions = {
@@ -2779,6 +2807,7 @@ local enemyModifications = {
 		IgnoreSpeedShrine = true,
 		DreamBiomeData = styxEnemyDreamBiomeData,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 20,
 		SpellSummonDataOverrides = {
 			DeepInheritance = true,
 			OutgoingDamageModifiers = { { NonPlayerMultiplier = 25, }, },
@@ -2811,6 +2840,7 @@ local enemyModifications = {
 			AttackWhileMovingIntervalMin = 0.5,
 			AttackWhileMovingIntervalMax = 1.0,
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 50,
 	},
 	ThiefImpulseMineLayerElite = {
 		ActivateDuration = 0.5,
@@ -2833,6 +2863,7 @@ local enemyModifications = {
 		BlockCharm = true,
 		IgnoreSprintPhasingStasisStun = true,
 		WeaponOptions = { "SatyrMinigun", "SatyrDash" },
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 140,
 	},
 	RatThugMiniboss = {
 		Health = 1800,
@@ -2869,6 +2900,7 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		IgnoreSprintPhasingStasisStun = true,
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 100,
 	},
 	CrawlerMiniBoss = {
 		MaxHealth = 14000,
@@ -3010,6 +3042,7 @@ local enemyModifications = {
 			-- [3] is a potential Skelly summon commenting
 			[4] = { GlobalVoiceLines = "SeleneVictoryVoiceLines" },
 		},
+		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 200,
 
 		-- Moving EM voiceline to a custom lower priority to prevent it playing instead of a story event
 		BossPresentationSuperPriorityIntroTextLineSets = {

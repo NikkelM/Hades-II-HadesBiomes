@@ -1253,7 +1253,11 @@ mod.HadesCodexTextNameMappings = {
 ]]
 mod.ModdedGameObjectModifications = {}
 
--- Mappings for Effect VFX to be swapped out, used in EffectPresentation.lua
-mod.EffectVfxMappings = {
-	ZeusEchoDebuff = "ModsNikkelMHadesBiomesZeusEchoDebuff",
+-- Which VFX types need custom Z-Offset for H1 enemies
+mod.HeadMarkerEffectVfxes = {
+	-- Blitz
+	ZeusEchoDebuff = true,
+	-- Skyfall Hex
+	SorceryDebuffMoonLoopIn = true,
 }
+mod.DefaultModdedEnemyHeadVfxOffsetZ = 120

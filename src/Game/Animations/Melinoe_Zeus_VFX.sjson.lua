@@ -1,34 +1,21 @@
-local hadesTwoTartarusObstacleFile = rom.path.combine(rom.paths.Content(),
-	"Game\\Animations\\Melinoe_Zeus_VFX.sjson")
+local hadesTwoMelinoeZeusVFXFile = rom.path.combine(rom.paths.Content(), "Game\\Animations\\Melinoe_Zeus_VFX.sjson")
 
--- These need to be added before the others, as they are inherited from
-local addAnimationsParents = {}
-local addAnimations = {
-	ModsNikkelMHadesBiomesZeusEchoDebuff = {
-		Name = "ModsNikkelMHadesBiomesZeusEchoDebuff",
-		InheritFrom = "ZeusEchoDebuff",
-		ChainTo = "ModsNikkelMHadesBiomesZeusEchoDebuffOut",
-		OffsetZ = 300,
+local hadesTwoMelinoeZeusVFXModifications = {
+	ZeusEchoDebuff = {
+		ColorFromOwner = "Ignore"
 	},
-	ModsNikkelMHadesBiomesZeusEchoDebuffOut = {
-		Name = "ModsNikkelMHadesBiomesZeusEchoDebuffOut",
-		InheritFrom = "ZeusEchoDebuffOut",
-		OffsetZ = 300,
+	ZeusEchoDebuffOut = {
+		ColorFromOwner = "Ignore"
 	},
-	ModsNikkelMHadesBiomesZeusEchoDebuffSwell = {
-		Name = "ModsNikkelMHadesBiomesZeusEchoDebuffSwell",
-		InheritFrom = "ZeusEchoDebuffSwell",
-		OffsetZ = 300,
+	ZeusEchoDebuffSwell = {
+		ColorFromOwner = "Ignore"
 	},
 }
 
-sjson.hook(hadesTwoTartarusObstacleFile, function(data)
-	mod.RunInstallStep("Melinoe_Zeus_VFX")
-
+sjson.hook(hadesTwoMelinoeZeusVFXFile, function(data)
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Melinoe_Zeus_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
 
-	mod.AddTableKeysSkipDupes(data.Animations, addAnimationsParents, "Name")
-	mod.AddTableKeysSkipDupes(data.Animations, addAnimations, "Name")
+	mod.ApplyNestedSjsonModifications(data.Animations, hadesTwoMelinoeZeusVFXModifications)
 end)

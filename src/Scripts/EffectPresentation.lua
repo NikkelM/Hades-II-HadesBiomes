@@ -2,8 +2,15 @@ modutil.mod.Path.Wrap("EffectApplyPresentation", function(base, victim, effectDa
 	if effectData == nil then
 		return base(victim, effectData, args)
 	elseif game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy and not victim.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy then
-		if effectData.Vfx then
-			effectData.Vfx = mod.EffectVfxMappings[effectData.Vfx] or effectData.Vfx
+		local vfxOffsetZ = mod.GetModdedEnemyEffectVfxOffsetZ(victim, effectData.Vfx)
+		if vfxOffsetZ then
+			local previousOffsetZ = victim.EffectVfxOffsetZ
+			victim.EffectVfxOffsetZ = (previousOffsetZ or 0) + vfxOffsetZ
+
+			base(victim, effectData, args)
+
+			victim.EffectVfxOffsetZ = previousOffsetZ
+			return
 		end
 	end
 

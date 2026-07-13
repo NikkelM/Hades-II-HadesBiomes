@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Fixed: The boat in Asphodel sometimes enters a new room from an incorrect direction, in relation to the direction it exited the previous room.
 - Fixed: Some animations and textures are missing when loading a save in non-combat rooms in Asphodel.
 - Fixed: Eurydice's "Pom Porridge" only upgrades boons by one instead of two levels (fix by zerp).
+- Fixed: If the Megagorgon is stunned, it turns invisible and cannot be damaged.
 - Fixed: The Splitter's large projectile does not split into small projectiles after hitting Melinoë or an obstacle, but only when expiring mid-flight.
 - Fixed: The Brightsword's dash does not have its direction randomized.
 - Fixed: If a Shade enemy in Elysium dies while polymorphed, it drops a weapon that is able to be picked up by Exalted Shades.
@@ -28,6 +29,8 @@ Other fixes and improvements:
 - Fixed: The "Poison will wear off automatically" message can incorrectly show in Styx, where this is not the case.
 - Fixed: If deliveries from a Shrine of Hermes are pending after giving the Satyr Sack to Cerberus in a Dream Dive, they will not be auto-delivered.
 - Fixed: In rare cases, the game may crash after Melinoë exits "Unseen Ire" while an enemy is performing a certain type of attack.
+- Fixed: The cloud VFX added above enemies that are afflicted by Blitz is misaligned for enemies using Hades II models, if enemies using Hades models are also present in the room.
+- Fixed: The VFX added by Blitz and the "Skyfall" Hex are misaligned for many enemies from the first game.
 - Fixed: The intro video before the very first run of a new save does not play if Zagreus' Journey is installed.
 - Fixed: When opening the statistics screen while the mod is disabled and if the previously selected sort column was a modded column, the game crashes if the statistics had not been viewed since version 1.1.0 of the mod.
 - Fixed: If certain mods that integrate with Zagreus' Journey are active in the mod manager, but disabled through the mod configuration file, Zagreus' Journey still thinks they are active.

@@ -241,6 +241,7 @@ local function on_ready()
 			DebugLogScriptImportProgress("Item Animation SJSON")
 
 			import "Game/Animations/Enemy_1Base_VFX.sjson.lua"
+			import "Game/Animations/Melinoe_Spell_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
@@ -609,6 +610,7 @@ local function on_ready_late()
 	import "Scripts/CodexLogic_Late.lua"
 	import "Scripts/CombatLogic_Late.lua"
 	import "Scripts/DeathLoopLogic_Late.lua"
+	import "Scripts/EffectLogic_Late.lua"
 	import "Scripts/EffectPresentation_Late.lua"
 	import "Scripts/EventPresentation_Late.lua"
 	import "Scripts/GhostLogic_Late.lua"
