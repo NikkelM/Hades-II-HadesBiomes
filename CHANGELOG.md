@@ -10,6 +10,7 @@
 
 Other fixes and improvements:
 - If boons offered by NPCs have specific requirements before they can be offered, these will now be shown in the Codex (Patroclus, Orpheus).
+- Accessibility: Added support for the "Zoom In" accessibility option. A blanket 13% zoom will be applied to all rooms. If you use this option and find certain rooms to be too zoomed in, or still too zoomed out, please report this.
 - Balancing: Trap damage now scales in Dream Dives.
 - Fixed: Rewards from Shrines of Hermes and Icarus' "Supply Chain" boon can be delivered after defeating Charon, which softlocks the player if picked up.
 - Fixed: The boat in Asphodel sometimes enters a new room from an incorrect direction, in relation to the direction it exited the previous room.
