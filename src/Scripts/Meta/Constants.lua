@@ -589,3 +589,5 @@ mod.SkellyStatueConversations = {
 }
 
 mod.ModdedPlayerScaleMultiplier = 0.9
+
+mod.IncreasedZoomFractionOffset = 0.13
